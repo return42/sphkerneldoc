@@ -8,7 +8,14 @@ PTLRPC_BULK_OPS_BITS
 
 .. c:function::  PTLRPC_BULK_OPS_BITS()
 
-    In order for the client and server to properly negotiate the maximum possible transfer size, PTLRPC_BULK_OPS_COUNT must be a power-of-two value.  The client is free to limit the actual RPC size for any bulk transfer via cl_max_pages_per_rpc to some non-power-of-two value.
+    2=4MB/RPC, 5=32MB/RPC, ... In order for the client and server to properly negotiate the maximum possible transfer size, PTLRPC_BULK_OPS_COUNT must be a power-of-two value.  The client is free to limit the actual RPC size for any bulk transfer via cl_max_pages_per_rpc to some non-power-of-two value.
+
+.. _`ptlrpc_bulk_ops_bits.note`:
+
+NOTE
+----
+
+This is limited to 16 (=64GB RPCs) by IOOBJ_MAX_BRW_BITS.
 
 .. _`ptlrpc_bulk_ops_mask`:
 
@@ -65,31 +72,6 @@ OST_MAXREQSIZE
 ==============
 
 .. c:function::  OST_MAXREQSIZE()
-
-.. _`nrs_pol_desc_compat_t`:
-
-nrs_pol_desc_compat_t
-=====================
-
-.. c:function:: bool nrs_pol_desc_compat_t(const struct ptlrpc_service *svc, const struct ptlrpc_nrs_pol_desc *desc)
-
-    for handling RPCs of a particular PTLRPC service.
-
-    :param const struct ptlrpc_service \*svc:
-        *undescribed*
-
-    :param const struct ptlrpc_nrs_pol_desc \*desc:
-        *undescribed*
-
-.. _`nrs_pol_desc_compat_t.description`:
-
-Description
------------
-
-XXX:This should give the same result during policy registration and
-unregistration, and for all partitions of a service; so the result should not
-depend on temporal service or other properties, that may influence the
-result.
 
 .. _`ptlrpc_req_interpret`:
 

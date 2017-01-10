@@ -77,6 +77,42 @@ FPGA_MGR_STATE_WRITE_COMPLETE_ERR
 FPGA_MGR_STATE_OPERATING
     FPGA is programmed and operating
 
+.. _`fpga_image_info`:
+
+struct fpga_image_info
+======================
+
+.. c:type:: struct fpga_image_info
+
+    information specific to a FPGA image
+
+.. _`fpga_image_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fpga_image_info {
+        u32 flags;
+        u32 enable_timeout_us;
+        u32 disable_timeout_us;
+    }
+
+.. _`fpga_image_info.members`:
+
+Members
+-------
+
+flags
+    boolean flags as defined above
+
+enable_timeout_us
+    maximum time to enable traffic through bridge (uSec)
+
+disable_timeout_us
+    maximum time to disable traffic through bridge (uSec)
+
 .. _`fpga_manager_ops`:
 
 struct fpga_manager_ops
@@ -94,10 +130,11 @@ Definition
 .. code-block:: c
 
     struct fpga_manager_ops {
+        size_t initial_header_size;
         enum fpga_mgr_states (*state)(struct fpga_manager *mgr);
-        int (*write_init)(struct fpga_manager *mgr, u32 flags,const char *buf, size_t count);
+        int (*write_init)(struct fpga_manager *mgr,struct fpga_image_info *info,const char *buf, size_t count);
         int (*write)(struct fpga_manager *mgr, const char *buf, size_t count);
-        int (*write_complete)(struct fpga_manager *mgr, u32 flags);
+        int (*write_complete)(struct fpga_manager *mgr,struct fpga_image_info *info);
         void (*fpga_remove)(struct fpga_manager *mgr);
     }
 
@@ -105,6 +142,9 @@ Definition
 
 Members
 -------
+
+initial_header_size
+    Maximum number of bytes that should be passed into write_init
 
 state
     returns an enum value of the FPGA's state

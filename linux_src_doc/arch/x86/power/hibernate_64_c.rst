@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/x86/power/hibernate_64.c
 
+.. _`get_e820_md5`:
+
+get_e820_md5
+============
+
+.. c:function:: int get_e820_md5(struct e820map *map, void *buf)
+
+    calculate md5 according to given e820 map
+
+    :param struct e820map \*map:
+        the e820 map to be calculated
+
+    :param void \*buf:
+        the md5 result to be stored to
+
 .. _`arch_hibernation_header_save`:
 
 arch_hibernation_header_save

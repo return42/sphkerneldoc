@@ -648,6 +648,25 @@ san_buf
 scsi_buf
     pre-allocated buffer for scsi
 
+.. _`zfcp_dbf_hba_fsf_resp_suppress`:
+
+zfcp_dbf_hba_fsf_resp_suppress
+==============================
+
+.. c:function:: bool zfcp_dbf_hba_fsf_resp_suppress(struct zfcp_fsf_req *req)
+
+    true if we should not trace by default
+
+    :param struct zfcp_fsf_req \*req:
+        request that has been completed
+
+.. _`zfcp_dbf_hba_fsf_resp_suppress.description`:
+
+Description
+-----------
+
+Returns true if FCP response with only benign residual under count.
+
 .. _`zfcp_dbf_hba_fsf_response`:
 
 zfcp_dbf_hba_fsf_response
@@ -722,6 +741,21 @@ zfcp_dbf_scsi_devreset
 
     :param u8 flag:
         indicates type of reset (Target Reset, Logical Unit Reset)
+
+.. _`zfcp_dbf_scsi_nullcmnd`:
+
+zfcp_dbf_scsi_nullcmnd
+======================
+
+.. c:function:: void zfcp_dbf_scsi_nullcmnd(struct scsi_cmnd *scmnd, struct zfcp_fsf_req *fsf_req)
+
+    trace NULLify of SCSI command in dev/tgt-reset.
+
+    :param struct scsi_cmnd \*scmnd:
+        SCSI command that was NULLified.
+
+    :param struct zfcp_fsf_req \*fsf_req:
+        request that owned \ ``scmnd``\ .
 
 .. This file was automatic generated / don't edit.
 

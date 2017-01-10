@@ -25,6 +25,8 @@ brcmfmac
     fwsignal_c
     p2p_c
     p2p_h
+    pcie_c
+    pno_h
     sdio_c
     sdio_h
     vendor_h

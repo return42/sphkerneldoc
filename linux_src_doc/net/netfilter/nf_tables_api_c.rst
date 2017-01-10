@@ -85,12 +85,51 @@ Description
 
 Unregisters the expr typefor use with nf_tables.
 
+.. _`nft_register_obj`:
+
+nft_register_obj
+================
+
+.. c:function:: int nft_register_obj(struct nft_object_type *obj_type)
+
+    register nf_tables stateful object type
+
+    :param struct nft_object_type \*obj_type:
+        *undescribed*
+
+.. _`nft_register_obj.description`:
+
+Description
+-----------
+
+Registers the object type for use with nf_tables. Returns zero on
+success or a negative errno code otherwise.
+
+.. _`nft_unregister_obj`:
+
+nft_unregister_obj
+==================
+
+.. c:function:: void nft_unregister_obj(struct nft_object_type *obj_type)
+
+    unregister nf_tables object type
+
+    :param struct nft_object_type \*obj_type:
+        *undescribed*
+
+.. _`nft_unregister_obj.description`:
+
+Description
+-----------
+
+Unregisters the object type for use with nf_tables.
+
 .. _`nft_parse_u32_check`:
 
 nft_parse_u32_check
 ===================
 
-.. c:function:: unsigned int nft_parse_u32_check(const struct nlattr *attr, int max, u32 *dest)
+.. c:function:: int nft_parse_u32_check(const struct nlattr *attr, int max, u32 *dest)
 
     fetch u32 attribute and check for maximum value
 

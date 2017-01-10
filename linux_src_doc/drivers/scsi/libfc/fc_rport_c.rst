@@ -142,6 +142,13 @@ fc_rport_work
     :param struct work_struct \*work:
         Handle to the remote port being dequeued
 
+.. _`fc_rport_work.reference-counting`:
+
+Reference counting
+------------------
+
+drops kref on return
+
 .. _`fc_rport_login`:
 
 fc_rport_login
@@ -153,6 +160,19 @@ fc_rport_login
 
     :param struct fc_rport_priv \*rdata:
         The remote port to be logged in to
+
+.. _`fc_rport_login.description`:
+
+Description
+-----------
+
+Initiates the RP state machine. It is called from the LP module.
+This function will issue the following commands to the N_Port
+identified by the FC ID provided.
+
+- PLOGI
+- PRLI
+- RTV
 
 .. _`fc_rport_login.locking-note`:
 
@@ -196,6 +216,13 @@ Set the new event so that the old pending event will not occur.
 Since we have the mutex, even if \ :c:func:`fc_rport_work`\  is already started,
 it'll see the new event.
 
+.. _`fc_rport_enter_delete.reference-counting`:
+
+Reference counting
+------------------
+
+does not modify kref
+
 .. _`fc_rport_logoff`:
 
 fc_rport_logoff
@@ -237,6 +264,13 @@ Locking Note
 The rport lock is expected to be held before calling
 this routine.
 
+.. _`fc_rport_enter_ready.reference-counting`:
+
+Reference counting
+------------------
+
+schedules workqueue, does not modify kref
+
 .. _`fc_rport_timeout`:
 
 fc_rport_timeout
@@ -258,20 +292,27 @@ Called without the rport lock held. This
 function will hold the rport lock, call an \_enter\_\*
 function and then unlock the rport.
 
+.. _`fc_rport_timeout.reference-counting`:
+
+Reference counting
+------------------
+
+Drops kref on return.
+
 .. _`fc_rport_error`:
 
 fc_rport_error
 ==============
 
-.. c:function:: void fc_rport_error(struct fc_rport_priv *rdata, struct fc_frame *fp)
+.. c:function:: void fc_rport_error(struct fc_rport_priv *rdata, int err)
 
     Error handler, called once retries have been exhausted
 
     :param struct fc_rport_priv \*rdata:
         The remote port the error is happened on
 
-    :param struct fc_frame \*fp:
-        The error code encapsulated in a frame pointer
+    :param int err:
+        The error code
 
 .. _`fc_rport_error.locking-note`:
 
@@ -281,20 +322,27 @@ Locking Note
 The rport lock is expected to be held before
 calling this routine
 
+.. _`fc_rport_error.reference-counting`:
+
+Reference counting
+------------------
+
+does not modify kref
+
 .. _`fc_rport_error_retry`:
 
 fc_rport_error_retry
 ====================
 
-.. c:function:: void fc_rport_error_retry(struct fc_rport_priv *rdata, struct fc_frame *fp)
+.. c:function:: void fc_rport_error_retry(struct fc_rport_priv *rdata, int err)
 
     Handler for remote port state retries
 
     :param struct fc_rport_priv \*rdata:
         The remote port whose state is to be retried
 
-    :param struct fc_frame \*fp:
-        The error code encapsulated in a frame pointer
+    :param int err:
+        The error code
 
 .. _`fc_rport_error_retry.description`:
 
@@ -311,6 +359,13 @@ Locking Note
 
 The rport lock is expected to be held before
 calling this routine
+
+.. _`fc_rport_error_retry.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when scheduling retry_work
 
 .. _`fc_rport_login_complete`:
 
@@ -375,6 +430,13 @@ Locking Note
 The rport lock is expected to be held before calling
 this routine.
 
+.. _`fc_rport_enter_flogi.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when sending ELS
+
 .. _`fc_rport_recv_flogi_req`:
 
 fc_rport_recv_flogi_req
@@ -389,6 +451,13 @@ fc_rport_recv_flogi_req
 
     :param struct fc_frame \*rx_fp:
         The PLOGI request frame
+
+.. _`fc_rport_recv_flogi_req.reference-counting`:
+
+Reference counting
+------------------
+
+drops kref on return
 
 .. _`fc_rport_plogi_resp`:
 
@@ -437,6 +506,13 @@ Locking Note
 The rport lock is expected to be held before calling
 this routine.
 
+.. _`fc_rport_enter_plogi.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when sending ELS
+
 .. _`fc_rport_prli_resp`:
 
 fc_rport_prli_resp
@@ -483,6 +559,13 @@ Locking Note
 
 The rport lock is expected to be held before calling
 this routine.
+
+.. _`fc_rport_enter_prli.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when sending ELS
 
 .. _`fc_rport_rtv_resp`:
 
@@ -538,12 +621,41 @@ Locking Note
 The rport lock is expected to be held before calling
 this routine.
 
+.. _`fc_rport_enter_rtv.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when sending ELS
+
+.. _`fc_rport_recv_rtv_req`:
+
+fc_rport_recv_rtv_req
+=====================
+
+.. c:function:: void fc_rport_recv_rtv_req(struct fc_rport_priv *rdata, struct fc_frame *in_fp)
+
+    Handler for Read Timeout Value (RTV) requests
+
+    :param struct fc_rport_priv \*rdata:
+        The remote port that sent the RTV request
+
+    :param struct fc_frame \*in_fp:
+        The RTV request frame
+
+.. _`fc_rport_recv_rtv_req.locking-note`:
+
+Locking Note
+------------
+
+Called with the lport and rport locks held.
+
 .. _`fc_rport_logo_resp`:
 
 fc_rport_logo_resp
 ==================
 
-.. c:function:: void fc_rport_logo_resp(struct fc_seq *sp, struct fc_frame *fp, void *lport_arg)
+.. c:function:: void fc_rport_logo_resp(struct fc_seq *sp, struct fc_frame *fp, void *rdata_arg)
 
     Handler for logout (LOGO) responses
 
@@ -553,8 +665,8 @@ fc_rport_logo_resp
     :param struct fc_frame \*fp:
         The LOGO response frame
 
-    :param void \*lport_arg:
-        The local port
+    :param void \*rdata_arg:
+        *undescribed*
 
 .. _`fc_rport_enter_logo`:
 
@@ -575,6 +687,13 @@ Locking Note
 
 The rport lock is expected to be held before calling
 this routine.
+
+.. _`fc_rport_enter_logo.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when sending ELS
 
 .. _`fc_rport_adisc_resp`:
 
@@ -622,6 +741,13 @@ Locking Note
 
 The rport lock is expected to be held before calling
 this routine.
+
+.. _`fc_rport_enter_adisc.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref when sending ELS
 
 .. _`fc_rport_recv_adisc_req`:
 
@@ -698,6 +824,13 @@ Locking Note
 
 Called with the lport lock held.
 
+.. _`fc_rport_recv_els_req.reference-counting`:
+
+Reference counting
+------------------
+
+does not modify kref
+
 .. _`fc_rport_recv_req`:
 
 fc_rport_recv_req
@@ -720,6 +853,13 @@ Locking Note
 
 Called with the lport lock held.
 
+.. _`fc_rport_recv_req.reference-counting`:
+
+Reference counting
+------------------
+
+does not modify kref
+
 .. _`fc_rport_recv_plogi_req`:
 
 fc_rport_recv_plogi_req
@@ -741,6 +881,13 @@ Locking Note
 ------------
 
 The rport lock is held before calling this function.
+
+.. _`fc_rport_recv_plogi_req.reference-counting`:
+
+Reference counting
+------------------
+
+increments kref on return
 
 .. _`fc_rport_recv_prli_req`:
 
@@ -811,6 +958,13 @@ Locking Note
 The rport lock is expected to be held before calling
 this function.
 
+.. _`fc_rport_recv_logo_req.reference-counting`:
+
+Reference counting
+------------------
+
+drops kref on return
+
 .. _`fc_rport_flush_queue`:
 
 fc_rport_flush_queue
@@ -822,18 +976,6 @@ fc_rport_flush_queue
 
     :param  void:
         no arguments
-
-.. _`fc_rport_init`:
-
-fc_rport_init
-=============
-
-.. c:function:: int fc_rport_init(struct fc_lport *lport)
-
-    Initialize the remote port layer for a local port
-
-    :param struct fc_lport \*lport:
-        The local port to initialize the remote port layer for
 
 .. _`fc_rport_fcp_prli`:
 

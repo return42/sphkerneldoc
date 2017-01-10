@@ -203,29 +203,6 @@ Return
 \ ``-EEXIST``\  if changing a tunnel's parameters would cause a conflict
 \ ``-ENODEV``\  if attempting to change or delete a nonexisting device
 
-.. _`vti6_change_mtu`:
-
-vti6_change_mtu
-===============
-
-.. c:function:: int vti6_change_mtu(struct net_device *dev, int new_mtu)
-
-    change mtu manually for tunnel device
-
-    :param struct net_device \*dev:
-        virtual device associated with tunnel
-
-    :param int new_mtu:
-        the new mtu
-
-.. _`vti6_change_mtu.return`:
-
-Return
-------
-
-0 on success,
-\ ``-EINVAL``\  if mtu too small
-
 .. _`vti6_dev_setup`:
 
 vti6_dev_setup

@@ -43,25 +43,6 @@ srp_reconnect_work
     :param struct work_struct \*work:
         Work structure used for scheduling this operation.
 
-.. _`scsi_request_fn_active`:
-
-scsi_request_fn_active
-======================
-
-.. c:function:: int scsi_request_fn_active(struct Scsi_Host *shost)
-
-    number of kernel threads inside \ :c:func:`scsi_request_fn`\ 
-
-    :param struct Scsi_Host \*shost:
-        SCSI host for which to count the number of \ :c:func:`scsi_request_fn`\  callers.
-
-.. _`scsi_request_fn_active.to-do`:
-
-To do
------
-
-add support for scsi-mq in this function.
-
 .. _`rport_fast_io_fail_timedout`:
 
 rport_fast_io_fail_timedout

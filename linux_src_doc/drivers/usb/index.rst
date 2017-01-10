@@ -19,6 +19,7 @@ usb
     host/index
     isp1760/index
     misc/index
+    mtu3/index
     musb/index
     phy/index
     serial/index

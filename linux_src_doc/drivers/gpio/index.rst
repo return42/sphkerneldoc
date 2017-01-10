@@ -11,6 +11,7 @@ gpio
     gpio-104-dio-48e_c
     gpio-104-idi-48_c
     gpio-104-idio-16_c
+    gpio-altera-a10sr_c
     gpio-altera_c
     gpio-crystalcove_c
     gpio-davinci_c
@@ -26,7 +27,6 @@ gpio
     gpio-pl061_c
     gpio-spear-spics_c
     gpio-stp-xway_c
-    gpio-sx150x_c
     gpio-syscon_c
     gpio-tpic2810_c
     gpio-tz1090-pdc_c
@@ -36,6 +36,7 @@ gpio
     gpio-xilinx_c
     gpio-zynq_c
     gpiolib-acpi_c
+    gpiolib-devprop_c
     gpiolib-legacy_c
     gpiolib-of_c
     gpiolib-sysfs_c

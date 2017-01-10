@@ -670,11 +670,11 @@ will be added.
 txq_stop_maperr
 ===============
 
-.. c:function:: void txq_stop_maperr(struct sge_ofld_txq *q)
+.. c:function:: void txq_stop_maperr(struct sge_uld_txq *q)
 
     stop a Tx queue due to I/O MMU exhaustion
 
-    :param struct sge_ofld_txq \*q:
+    :param struct sge_uld_txq \*q:
         the queue to stop
 
 .. _`txq_stop_maperr.description`:
@@ -691,11 +691,11 @@ queues so marked.
 ofldtxq_stop
 ============
 
-.. c:function:: void ofldtxq_stop(struct sge_ofld_txq *q, struct sk_buff *skb)
+.. c:function:: void ofldtxq_stop(struct sge_uld_txq *q, struct sk_buff *skb)
 
     stop an offload Tx queue that has become full
 
-    :param struct sge_ofld_txq \*q:
+    :param struct sge_uld_txq \*q:
         the queue to stop
 
     :param struct sk_buff \*skb:
@@ -714,11 +714,11 @@ being written to request a wakeup.
 service_ofldq
 =============
 
-.. c:function:: void service_ofldq(struct sge_ofld_txq *q)
+.. c:function:: void service_ofldq(struct sge_uld_txq *q)
 
     service/restart a suspended offload queue
 
-    :param struct sge_ofld_txq \*q:
+    :param struct sge_uld_txq \*q:
         the offload queue
 
 .. _`service_ofldq.description`:
@@ -745,11 +745,11 @@ is ever running at a time ...
 ofld_xmit
 =========
 
-.. c:function:: int ofld_xmit(struct sge_ofld_txq *q, struct sk_buff *skb)
+.. c:function:: int ofld_xmit(struct sge_uld_txq *q, struct sk_buff *skb)
 
     send a packet through an offload queue
 
-    :param struct sge_ofld_txq \*q:
+    :param struct sge_uld_txq \*q:
         the Tx offload queue
 
     :param struct sk_buff \*skb:
@@ -872,6 +872,59 @@ Description
 -----------
 
 Sends an offload packet.  This is an exported version of \ ``t4_ofld_send``\ ,
+intended for ULDs.
+
+.. _`t4_crypto_send`:
+
+t4_crypto_send
+==============
+
+.. c:function:: int t4_crypto_send(struct adapter *adap, struct sk_buff *skb)
+
+    send crypto packet
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param struct sk_buff \*skb:
+        the packet
+
+.. _`t4_crypto_send.description`:
+
+Description
+-----------
+
+Sends crypto packet.  We use the packet queue_mapping to select the
+
+.. _`t4_crypto_send.appropriate-tx-queue-as-follows`:
+
+appropriate Tx queue as follows
+-------------------------------
+
+bit 0 indicates whether the packet
+should be sent as regular or control, bits 1-15 select the queue.
+
+.. _`cxgb4_crypto_send`:
+
+cxgb4_crypto_send
+=================
+
+.. c:function:: int cxgb4_crypto_send(struct net_device *dev, struct sk_buff *skb)
+
+    send crypto packet
+
+    :param struct net_device \*dev:
+        the net device
+
+    :param struct sk_buff \*skb:
+        the packet
+
+.. _`cxgb4_crypto_send.description`:
+
+Description
+-----------
+
+Sends crypto packet.  This is an exported version of \ ``t4_crypto_send``\ ,
 intended for ULDs.
 
 .. _`cxgb4_pktgl_to_skb`:

@@ -158,6 +158,66 @@ structure is meant to describe all the things at the other end of the cable.
 For sinks which provide an EDID this can be filled out by calling
 \ :c:func:`drm_add_edid_modes`\ .
 
+.. _`drm_tv_connector_state`:
+
+struct drm_tv_connector_state
+=============================
+
+.. c:type:: struct drm_tv_connector_state
+
+    TV connector related states
+
+.. _`drm_tv_connector_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_tv_connector_state {
+        enum drm_mode_subconnector subconnector;
+        struct margins;
+        unsigned int mode;
+        unsigned int brightness;
+        unsigned int contrast;
+        unsigned int flicker_reduction;
+        unsigned int overscan;
+        unsigned int saturation;
+        unsigned int hue;
+    }
+
+.. _`drm_tv_connector_state.members`:
+
+Members
+-------
+
+subconnector
+    selected subconnector
+
+margins
+    left/right/top/bottom margins
+
+mode
+    TV mode
+
+brightness
+    brightness in percent
+
+contrast
+    contrast in percent
+
+flicker_reduction
+    flicker reduction in percent
+
+overscan
+    overscan in percent
+
+saturation
+    saturation in percent
+
+hue
+    hue in percent
+
 .. _`drm_connector_state`:
 
 struct drm_connector_state
@@ -179,6 +239,7 @@ Definition
         struct drm_crtc *crtc;
         struct drm_encoder *best_encoder;
         struct drm_atomic_state *state;
+        struct drm_tv_connector_state tv;
     }
 
 .. _`drm_connector_state.members`:
@@ -199,6 +260,9 @@ best_encoder
 
 state
     backpointer to global drm_atomic_state
+
+tv
+    TV connector state
 
 .. _`drm_connector_funcs`:
 
@@ -230,6 +294,7 @@ Definition
         void (*atomic_destroy_state)(struct drm_connector *connector,struct drm_connector_state *state);
         int (*atomic_set_property)(struct drm_connector *connector,struct drm_connector_state *state,struct drm_property *property,uint64_t val);
         int (*atomic_get_property)(struct drm_connector *connector,const struct drm_connector_state *state,struct drm_property *property,uint64_t *val);
+        void (*atomic_print_state)(struct drm_printer *p,const struct drm_connector_state *state);
     }
 
 .. _`drm_connector_funcs.members`:
@@ -267,6 +332,9 @@ detect
     force is set to false whilst polling, true when checking the
     connector due to a user request. force can be used by the driver to
     avoid expensive, destructive operations during automated probing.
+
+    This callback is optional, if not implemented the connector will be
+    considered as always being attached.
 
     FIXME:
 
@@ -447,6 +515,14 @@ atomic_get_property
     0 on success, -EINVAL if the property isn't implemented by the
     driver (which shouldn't ever happen, the core only asks for
     properties attached to this connector).
+
+atomic_print_state
+
+    If driver subclasses struct \ :c:type:`struct drm_connector_state <drm_connector_state>`\ , it should implement
+    this optional hook for printing additional driver specific state.
+
+    Do not call this directly, use \ :c:func:`drm_atomic_connector_print_state`\ 
+    instead.
 
 .. _`drm_connector_funcs.description`:
 
@@ -775,6 +851,54 @@ Description
 -----------
 
 This function decrements the connector's refcount and frees it if it drops to zero.
+
+.. _`drm_tile_group`:
+
+struct drm_tile_group
+=====================
+
+.. c:type:: struct drm_tile_group
+
+    Tile group metadata
+
+.. _`drm_tile_group.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_tile_group {
+        struct kref refcount;
+        struct drm_device *dev;
+        int id;
+        u8 group_data[8];
+    }
+
+.. _`drm_tile_group.members`:
+
+Members
+-------
+
+refcount
+    reference count
+
+dev
+    DRM device
+
+id
+    tile group id exposed to userspace
+
+group_data
+    Sink-private data identifying this group
+
+.. _`drm_tile_group.description`:
+
+Description
+-----------
+
+@group_data corresponds to displayid vend/prod/serial for external screens
+with an EDID.
 
 .. _`drm_for_each_connector`:
 

@@ -24,10 +24,7 @@ Definition
         bool turbo;
         bool suspend;
         unsigned long rate;
-        unsigned long u_volt;
-        unsigned long u_volt_min;
-        unsigned long u_volt_max;
-        unsigned long u_amp;
+        struct dev_pm_opp_supply *supplies;
         unsigned long clock_latency_ns;
         struct opp_table *opp_table;
         struct rcu_head rcu_head;
@@ -67,17 +64,8 @@ suspend
 rate
     Frequency in hertz
 
-u_volt
-    Target voltage in microvolts corresponding to this OPP
-
-u_volt_min
-    Minimum voltage in microvolts corresponding to this OPP
-
-u_volt_max
-    Maximum voltage in microvolts corresponding to this OPP
-
-u_amp
-    Maximum current drawn by the device in microamperes
+supplies
+    Power supplies voltage/current values
 
 clock_latency_ns
     Latency (in nanoseconds) of switching to this OPP's
@@ -183,7 +171,10 @@ Definition
         unsigned int supported_hw_count;
         const char *prop_name;
         struct clk *clk;
-        struct regulator *regulator;
+        struct regulator **regulators;
+        unsigned int regulator_count;
+        int (*set_opp)(struct dev_pm_set_opp_data *data);
+        struct dev_pm_set_opp_data *set_opp_data;
     #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
         char dentry_name[NAME_MAX];
@@ -241,8 +232,17 @@ prop_name
 clk
     Device's clock handle
 
-regulator
-    Supply regulator
+regulators
+    Supply regulators
+
+regulator_count
+    Number of power supply regulators
+
+set_opp
+    Platform specific set_opp callback
+
+set_opp_data
+    Data to be passed to set_opp callback
 
 dentry
     debugfs dentry pointer of the real device directory (not links).

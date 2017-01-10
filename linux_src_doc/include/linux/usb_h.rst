@@ -1236,7 +1236,7 @@ Description
 -----------
 
 This structure is used for the \ :c:func:`usb_register_dev`\  and
-\ :c:func:`usb_unregister_dev`\  functions, to consolidate a number of the
+\ :c:func:`usb_deregister_dev`\  functions, to consolidate a number of the
 parameters used for them.
 
 .. _`module_usb_driver`:

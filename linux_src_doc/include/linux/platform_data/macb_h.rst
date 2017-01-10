@@ -22,6 +22,8 @@ Definition
         int phy_irq_pin;
         u8 is_rmii;
         u8 rev_eth_addr;
+        struct clk *pclk;
+        struct clk *hclk;
     }
 
 .. _`macb_platform_data.members`:
@@ -41,6 +43,12 @@ is_rmii
 
 rev_eth_addr
     reverse Ethernet address byte order
+
+pclk
+    platform clock
+
+hclk
+    AHB clock
 
 .. This file was automatic generated / don't edit.
 

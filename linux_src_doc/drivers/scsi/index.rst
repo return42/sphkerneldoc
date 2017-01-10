@@ -30,6 +30,7 @@ scsi
     megaraid/index
     mpt3sas/index
     pm8001/index
+    qedi/index
     qla2xxx/index
     qla4xxx/index
     sym53c8xx_2/index
@@ -67,6 +68,7 @@ scsi
     scsi_transport_srp_c
     scsicam_c
     sd_c
+    sd_zbc_c
     sr_c
     st_c
     virtio_scsi_c

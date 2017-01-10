@@ -310,12 +310,12 @@ end_page_writeback
 __lock_page
 ===========
 
-.. c:function:: void __lock_page(struct page *page)
+.. c:function:: void __lock_page(struct page *__page)
 
     get a lock on the page, assuming we need to sleep to get it
 
-    :param struct page \*page:
-        the page to lock
+    :param struct page \*__page:
+        *undescribed*
 
 .. _`page_cache_next_hole`:
 

@@ -128,6 +128,33 @@ than or equal to the one pointed to by idx, as determined by
 the mask in features.  Returns the index of the last setting
 if nothing else matches.
 
+.. _`phy_supported_speeds`:
+
+phy_supported_speeds
+====================
+
+.. c:function:: unsigned int phy_supported_speeds(struct phy_device *phy, unsigned int *speeds, unsigned int size)
+
+    return all speeds currently supported by a phy device
+
+    :param struct phy_device \*phy:
+        The phy device to return supported speeds of.
+
+    :param unsigned int \*speeds:
+        buffer to store supported speeds in.
+
+    :param unsigned int size:
+        size of speeds buffer.
+
+.. _`phy_supported_speeds.description`:
+
+Description
+-----------
+
+Returns the number of supported speeds, and fills the speeds
+buffer with the supported speeds. If speeds buffer is too small to contain
+all currently supported speeds, will return as many speeds as can fit.
+
 .. _`phy_check_valid`:
 
 phy_check_valid
@@ -356,7 +383,7 @@ Description
 -----------
 
 When a PHY interrupt occurs, the handler disables
-interrupts, and schedules a work task to clear the interrupt.
+interrupts, and uses phy_change to handle the interrupt.
 
 .. _`phy_enable_interrupts`:
 
@@ -422,9 +449,21 @@ phy_stop_interrupts
 phy_change
 ==========
 
-.. c:function:: void phy_change(struct work_struct *work)
+.. c:function:: void phy_change(struct phy_device *phydev)
 
-    Scheduled by the phy_interrupt/timer to handle PHY changes
+    Called by the phy_interrupt to handle PHY changes
+
+    :param struct phy_device \*phydev:
+        phy_device struct that interrupted
+
+.. _`phy_change_work`:
+
+phy_change_work
+===============
+
+.. c:function:: void phy_change_work(struct work_struct *work)
+
+    Scheduled by the phy_mac_interrupt to handle PHY changes
 
     :param struct work_struct \*work:
         work_struct that describes the work to be done
@@ -475,6 +514,30 @@ phy_state_machine
 
     :param struct work_struct \*work:
         work_struct that describes the work to be done
+
+.. _`phy_mac_interrupt`:
+
+phy_mac_interrupt
+=================
+
+.. c:function:: void phy_mac_interrupt(struct phy_device *phydev, int new_link)
+
+    MAC says the link has changed
+
+    :param struct phy_device \*phydev:
+        phy_device struct with changed link
+
+    :param int new_link:
+        Link is Up/Down.
+
+.. _`phy_mac_interrupt.description`:
+
+Description
+-----------
+
+The MAC layer is able indicate there has been a change
+in the PHY link status. Set the new link status, and trigger the
+state machine, work a work queue.
 
 .. _`phy_read_mmd_indirect`:
 

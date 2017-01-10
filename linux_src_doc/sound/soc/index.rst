@@ -25,3 +25,4 @@ soc
     soc-jack_c
     soc-ops_c
     soc-pcm_c
+    soc-topology_c

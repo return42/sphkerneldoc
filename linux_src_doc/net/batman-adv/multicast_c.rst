@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/multicast.c
 
+.. _`batadv_mcast_start_timer`:
+
+batadv_mcast_start_timer
+========================
+
+.. c:function:: void batadv_mcast_start_timer(struct batadv_priv *bat_priv)
+
+    schedule the multicast periodic worker
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
 .. _`batadv_mcast_get_bridge`:
 
 batadv_mcast_get_bridge
@@ -155,12 +167,9 @@ items added to the mcast_list otherwise.
 batadv_mcast_mla_list_free
 ==========================
 
-.. c:function:: void batadv_mcast_mla_list_free(struct batadv_priv *bat_priv, struct hlist_head *mcast_list)
+.. c:function:: void batadv_mcast_mla_list_free(struct hlist_head *mcast_list)
 
     free a list of multicast addresses
-
-    :param struct batadv_priv \*bat_priv:
-        the bat priv with all the soft interface information
 
     :param struct hlist_head \*mcast_list:
         the list to free
@@ -197,6 +206,8 @@ translation table except the ones listed in the given mcast_list.
 
 If mcast_list is NULL then all are retracted.
 
+Do not call outside of the mcast worker! (or cancel mcast worker first)
+
 .. _`batadv_mcast_mla_tt_add`:
 
 batadv_mcast_mla_tt_add
@@ -219,6 +230,8 @@ Description
 
 Adds multicast listener announcements from the given mcast_list to the
 translation table if they have not been added yet.
+
+Do not call outside of the mcast worker! (or cancel mcast worker first)
 
 .. _`batadv_mcast_has_bridge`:
 
@@ -379,17 +392,42 @@ Return
 false if we want all IPv4 && IPv6 multicast traffic and true
 otherwise.
 
-.. _`batadv_mcast_mla_update`:
+.. _`__batadv_mcast_mla_update`:
 
-batadv_mcast_mla_update
-=======================
+__batadv_mcast_mla_update
+=========================
 
-.. c:function:: void batadv_mcast_mla_update(struct batadv_priv *bat_priv)
+.. c:function:: void __batadv_mcast_mla_update(struct batadv_priv *bat_priv)
 
     update the own MLAs
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
+
+.. _`__batadv_mcast_mla_update.description`:
+
+Description
+-----------
+
+Updates the own multicast listener announcements in the translation
+table as well as the own, announced multicast tvlv container.
+
+Note that non-conflicting reads and writes to bat_priv->mcast.mla_list
+in \ :c:func:`batadv_mcast_mla_tt_retract`\  and \ :c:func:`batadv_mcast_mla_tt_add`\  are
+ensured by the non-parallel execution of the worker this function
+belongs to.
+
+.. _`batadv_mcast_mla_update`:
+
+batadv_mcast_mla_update
+=======================
+
+.. c:function:: void batadv_mcast_mla_update(struct work_struct *work)
+
+    update the own MLAs
+
+    :param struct work_struct \*work:
+        kernel work struct
 
 .. _`batadv_mcast_mla_update.description`:
 
@@ -398,6 +436,8 @@ Description
 
 Updates the own multicast listener announcements in the translation
 table as well as the own, announced multicast tvlv container.
+
+In the end, reschedules the work timer.
 
 .. _`batadv_mcast_is_report_ipv4`:
 

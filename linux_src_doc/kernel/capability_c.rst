@@ -274,6 +274,28 @@ when the file was opened.
 This does not set PF_SUPERPRIV because the caller may not
 actually be privileged.
 
+.. _`privileged_wrt_inode_uidgid`:
+
+privileged_wrt_inode_uidgid
+===========================
+
+.. c:function:: bool privileged_wrt_inode_uidgid(struct user_namespace *ns, const struct inode *inode)
+
+    Do capabilities in the namespace work over the inode?
+
+    :param struct user_namespace \*ns:
+        The user namespace in question
+
+    :param const struct inode \*inode:
+        The inode in question
+
+.. _`privileged_wrt_inode_uidgid.description`:
+
+Description
+-----------
+
+Return true if the inode uid and gid are within the namespace.
+
 .. _`capable_wrt_inode_uidgid`:
 
 capable_wrt_inode_uidgid
@@ -297,6 +319,29 @@ Description
 Return true if the current task has the given capability targeted at
 its own user namespace and that the given inode's uid and gid are
 mapped into the current user namespace.
+
+.. _`ptracer_capable`:
+
+ptracer_capable
+===============
+
+.. c:function:: bool ptracer_capable(struct task_struct *tsk, struct user_namespace *ns)
+
+    Determine if the ptracer holds CAP_SYS_PTRACE in the namespace
+
+    :param struct task_struct \*tsk:
+        The task that may be ptraced
+
+    :param struct user_namespace \*ns:
+        The user namespace to search for CAP_SYS_PTRACE in
+
+.. _`ptracer_capable.description`:
+
+Description
+-----------
+
+Return true if the task that is ptracing the current task had CAP_SYS_PTRACE
+in the specified user namespace.
 
 .. This file was automatic generated / don't edit.
 

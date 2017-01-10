@@ -1,59 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/cxlflash/main.c
 
-.. _`cmd_checkout`:
-
-cmd_checkout
-============
-
-.. c:function:: struct afu_cmd *cmd_checkout(struct afu *afu)
-
-    checks out an AFU command
-
-    :param struct afu \*afu:
-        AFU to checkout from.
-
-.. _`cmd_checkout.description`:
-
-Description
------------
-
-Commands are checked out in a round-robin fashion. Note that since
-the command pool is larger than the hardware queue, the majority of
-times we will only loop once or twice before getting a command. The
-buffer and CDB within the command are initialized (zeroed) prior to
-returning.
-
-.. _`cmd_checkout.return`:
-
-Return
-------
-
-The checked out command or NULL when command pool is empty.
-
-.. _`cmd_checkin`:
-
-cmd_checkin
-===========
-
-.. c:function:: void cmd_checkin(struct afu_cmd *cmd)
-
-    checks in an AFU command
-
-    :param struct afu_cmd \*cmd:
-        AFU command to checkin.
-
-.. _`cmd_checkin.description`:
-
-Description
------------
-
-Safe to pass commands that have already been checked in. Several
-internal tracking fields are reset as part of the checkin. Note
-that these are intentionally reset prior to toggling the free bit
-to avoid clobbering values in the event that the command is checked
-out right away.
-
 .. _`process_cmd_err`:
 
 process_cmd_err
@@ -95,35 +42,28 @@ Description
 
 Prepares and submits command that has either completed or timed out to
 the SCSI stack. Checks AFU command back into command pool for non-internal
-(rcb.scp populated) commands.
+(cmd->scp populated) commands.
 
-.. _`context_reset`:
+.. _`context_reset_ioarrin`:
 
-context_reset
-=============
+context_reset_ioarrin
+=====================
 
-.. c:function:: void context_reset(struct afu_cmd *cmd)
+.. c:function:: void context_reset_ioarrin(struct afu_cmd *cmd)
 
-    timeout handler for AFU commands
+    reset command owner context via IOARRIN register
 
     :param struct afu_cmd \*cmd:
         AFU command that timed out.
 
-.. _`context_reset.description`:
+.. _`send_cmd_ioarrin`:
 
-Description
------------
+send_cmd_ioarrin
+================
 
-Sends a reset to the AFU.
+.. c:function:: int send_cmd_ioarrin(struct afu *afu, struct afu_cmd *cmd)
 
-.. _`send_cmd`:
-
-send_cmd
-========
-
-.. c:function:: int send_cmd(struct afu *afu, struct afu_cmd *cmd)
-
-    sends an AFU command
+    sends an AFU command via IOARRIN register
 
     :param struct afu \*afu:
         AFU associated with the host.
@@ -131,7 +71,7 @@ send_cmd
     :param struct afu_cmd \*cmd:
         AFU command to send.
 
-.. _`send_cmd.return`:
+.. _`send_cmd_ioarrin.return`:
 
 Return
 ------
@@ -143,7 +83,7 @@ Return
 wait_resp
 =========
 
-.. c:function:: void wait_resp(struct afu *afu, struct afu_cmd *cmd)
+.. c:function:: int wait_resp(struct afu *afu, struct afu_cmd *cmd)
 
     polls for a response or timeout to a sent AFU command
 
@@ -152,6 +92,13 @@ wait_resp
 
     :param struct afu_cmd \*cmd:
         AFU command that was sent.
+
+.. _`wait_resp.return`:
+
+Return
+------
+
+0 on success, -1 on timeout/error
 
 .. _`send_tmf`:
 
@@ -262,15 +209,8 @@ Description
 
 Safe to call with AFU in a partially allocated/initialized state.
 
-Cleans up all state associated with the command queue, and unmaps
+Waits for any active internal AFU commands to timeout and then unmaps
 the MMIO space.
-
-- \ :c:func:`complete`\  will take care of commands we initiated (they'll be checked
-in as part of the cleanup that occurs after the completion)
-
-- \ :c:func:`cmd_checkin`\  will take care of entries that we did not initiate and that
-have not (and will not) complete because they are sitting on a [now stale]
-hardware queue
 
 .. _`term_intr`:
 
@@ -1315,7 +1255,6 @@ Handles the following events
 
 - Link reset which cannot be performed on interrupt context due to
 blocking up to a few seconds
-- Read AFU command room
 - Rescan the host
 
 .. _`cxlflash_probe`:

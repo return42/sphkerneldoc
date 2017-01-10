@@ -192,7 +192,7 @@ Returns non-zero if a failure occurred, else zero.
 qla24xx_build_scsi_iocbs
 ========================
 
-.. c:function:: void qla24xx_build_scsi_iocbs(srb_t *sp, struct cmd_type_7 *cmd_pkt, uint16_t tot_dsds)
+.. c:function:: void qla24xx_build_scsi_iocbs(srb_t *sp, struct cmd_type_7 *cmd_pkt, uint16_t tot_dsds, struct req_que *req)
 
     Build IOCB command utilizing Command Type 7 IOCB types.
 
@@ -204,6 +204,9 @@ qla24xx_build_scsi_iocbs
 
     :param uint16_t tot_dsds:
         Total number of segments to transfer
+
+    :param struct req_que \*req:
+        pointer to request queue
 
 .. _`qla24xx_build_scsi_crc_2_iocbs`:
 
@@ -261,6 +264,44 @@ qla24xx_dif_start_scsi
         command to send to the ISP
 
 .. _`qla24xx_dif_start_scsi.description`:
+
+Description
+-----------
+
+Returns non-zero if a failure occurred, else zero.
+
+.. _`qla2xxx_start_scsi_mq`:
+
+qla2xxx_start_scsi_mq
+=====================
+
+.. c:function:: int qla2xxx_start_scsi_mq(srb_t *sp)
+
+    Send a SCSI command to the ISP
+
+    :param srb_t \*sp:
+        command to send to the ISP
+
+.. _`qla2xxx_start_scsi_mq.description`:
+
+Description
+-----------
+
+Returns non-zero if a failure occurred, else zero.
+
+.. _`qla2xxx_dif_start_scsi_mq`:
+
+qla2xxx_dif_start_scsi_mq
+=========================
+
+.. c:function:: int qla2xxx_dif_start_scsi_mq(srb_t *sp)
+
+    Send a SCSI command to the ISP
+
+    :param srb_t \*sp:
+        command to send to the ISP
+
+.. _`qla2xxx_dif_start_scsi_mq.description`:
 
 Description
 -----------

@@ -133,6 +133,7 @@ Definition
 .. code-block:: c
 
     struct drm_atomic_state {
+        struct kref ref;
         struct drm_device *dev;
         bool allow_modeset:1;
         bool legacy_cursor_update:1;
@@ -149,6 +150,9 @@ Definition
 
 Members
 -------
+
+ref
+    count of all references to this state (will not be freed until zero)
 
 dev
     parent DRM device
@@ -181,6 +185,45 @@ commit_work
 
     Work item which can be used by the driver or helpers to execute the
     commit without blocking.
+
+.. _`drm_atomic_state_get`:
+
+drm_atomic_state_get
+====================
+
+.. c:function:: struct drm_atomic_state *drm_atomic_state_get(struct drm_atomic_state *state)
+
+    acquire a reference to the atomic state
+
+    :param struct drm_atomic_state \*state:
+        The atomic state
+
+.. _`drm_atomic_state_get.description`:
+
+Description
+-----------
+
+Returns a new reference to the \ ``state``\ 
+
+.. _`drm_atomic_state_put`:
+
+drm_atomic_state_put
+====================
+
+.. c:function:: void drm_atomic_state_put(struct drm_atomic_state *state)
+
+    release a reference to the atomic state
+
+    :param struct drm_atomic_state \*state:
+        The atomic state
+
+.. _`drm_atomic_state_put.description`:
+
+Description
+-----------
+
+This releases a reference to \ ``state``\  which is freed after removing the
+final reference. No locking required and callable from any context.
 
 .. _`drm_atomic_get_existing_crtc_state`:
 
@@ -305,11 +348,11 @@ Read-only pointer to the current plane state.
 drm_atomic_crtc_needs_modeset
 =============================
 
-.. c:function:: bool drm_atomic_crtc_needs_modeset(struct drm_crtc_state *state)
+.. c:function:: bool drm_atomic_crtc_needs_modeset(const struct drm_crtc_state *state)
 
     compute combined modeset need
 
-    :param struct drm_crtc_state \*state:
+    :param const struct drm_crtc_state \*state:
         &drm_crtc_state for the CRTC
 
 .. _`drm_atomic_crtc_needs_modeset.description`:
@@ -324,8 +367,17 @@ To give drivers flexibility struct \ :c:type:`struct drm_crtc_state <drm_crtc_st
 whether the state CRTC changed enough to need a full modeset cycle
 ------------------------------------------------------------------
 
-connectors_changed, mode_changed and active_change. This helper simply
+connectors_changed, mode_changed and active_changed. This helper simply
 combines these three to compute the overall need for a modeset for \ ``state``\ .
+
+The atomic helper code sets these booleans, but drivers can and should
+change them appropriately to accurately represent whether a modeset is
+really needed. In general, drivers should avoid full modesets whenever
+possible.
+
+For example if the CRTC mode has changed, and the hardware is able to enact
+the requested mode change without going through a full modeset, the driver
+should clear mode_changed during its ->atomic_check.
 
 .. This file was automatic generated / don't edit.
 

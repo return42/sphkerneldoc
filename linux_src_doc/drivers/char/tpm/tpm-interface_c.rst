@@ -69,16 +69,25 @@ The TPM driver should be built-in, but for whatever reason it
 isn't, protect against the chip disappearing, by incrementing
 the module usage count.
 
-.. _`tpm_ord_pcr_extend`:
+.. _`tpm_pcr_extend`:
 
-TPM_ORD_PCR_EXTEND
-==================
+tpm_pcr_extend
+==============
 
-.. c:function::  TPM_ORD_PCR_EXTEND()
+.. c:function:: int tpm_pcr_extend(u32 chip_num, int pcr_idx, const u8 *hash)
 
     extend pcr value with hash
 
-.. _`tpm_ord_pcr_extend.description`:
+    :param u32 chip_num:
+        tpm idx # or AN&
+
+    :param int pcr_idx:
+        pcr idx to extend
+
+    :param const u8 \*hash:
+        hash value used to extend pcr value
+
+.. _`tpm_pcr_extend.description`:
 
 Description
 -----------

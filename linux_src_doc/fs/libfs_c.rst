@@ -81,6 +81,8 @@ is not called, so a filesystem that actually does store data in .write_inode
 should extend on what's done here with a call to \ :c:func:`mark_inode_dirty`\  in the
 case that i_size has changed.
 
+Use \*ONLY\* with \ :c:func:`simple_readpage`\ 
+
 .. _`simple_read_from_buffer`:
 
 simple_read_from_buffer

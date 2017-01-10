@@ -477,5 +477,38 @@ Description
 
 Must be set before identifier is in the listening state.
 
+.. _`rdma_is_consumer_reject`:
+
+rdma_is_consumer_reject
+=======================
+
+.. c:function:: bool rdma_is_consumer_reject(struct rdma_cm_id *id, int reason)
+
+    return true if the consumer rejected the connect request.
+
+    :param struct rdma_cm_id \*id:
+        Communication identifier that received the REJECT event.
+
+    :param int reason:
+        Value returned in the REJECT event status field.
+
+.. _`rdma_consumer_reject_data`:
+
+rdma_consumer_reject_data
+=========================
+
+.. c:function:: const void *rdma_consumer_reject_data(struct rdma_cm_id *id, struct rdma_cm_event *ev, u8 *data_len)
+
+    return the consumer reject private data and length, if any.
+
+    :param struct rdma_cm_id \*id:
+        Communication identifier that received the REJECT event.
+
+    :param struct rdma_cm_event \*ev:
+        RDMA CM reject event.
+
+    :param u8 \*data_len:
+        Pointer to the resulting length of the consumer data.
+
 .. This file was automatic generated / don't edit.
 

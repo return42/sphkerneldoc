@@ -255,7 +255,7 @@ Definition
         __u8 padding1;
         __u8 type;
         __le16 nlen;
-        __u8 padding2[4];
+        __le32 cookie;
         __u8 name[];
     }
 
@@ -282,8 +282,9 @@ type
 nlen
     name length
 
-padding2
-    reserved for future, zeroes
+cookie
+    A 32bits random number, used to construct a 64bits
+    identifier.
 
 name
     zero-terminated name
@@ -317,7 +318,7 @@ Definition
         __u8 key[UBIFS_MAX_KEY_LEN];
         __le32 size;
         __le16 compr_type;
-        __u8 padding[2];
+        __le16 compr_size;
         __u8 data[];
     }
 
@@ -338,19 +339,11 @@ size
 compr_type
     compression type (%UBIFS_COMPR_NONE, \ ``UBIFS_COMPR_LZO``\ , etc)
 
-padding
-    reserved for future, zeroes
+compr_size
+    compressed data size in bytes, only valid when data is encrypted
 
 data
     data
-
-.. _`ubifs_data_node.description`:
-
-Description
------------
-
-Note, do not forget to amend 'zero_data_node_unused()' function when
-changing the padding fields.
 
 .. _`ubifs_trun_node`:
 

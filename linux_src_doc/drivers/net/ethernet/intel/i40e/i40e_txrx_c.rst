@@ -90,31 +90,6 @@ Description
 
 Returns 0 if the filters were successfully added or removed
 
-.. _`i40e_add_del_fdir_sctpv4`:
-
-i40e_add_del_fdir_sctpv4
-========================
-
-.. c:function:: int i40e_add_del_fdir_sctpv4(struct i40e_vsi *vsi, struct i40e_fdir_filter *fd_data, bool add)
-
-    Add/Remove SCTPv4 Flow Director filters for a specific flow spec
-
-    :param struct i40e_vsi \*vsi:
-        pointer to the targeted VSI
-
-    :param struct i40e_fdir_filter \*fd_data:
-        the flow director data required for the FDir descriptor
-
-    :param bool add:
-        true adds a filter, false removes it
-
-.. _`i40e_add_del_fdir_sctpv4.description`:
-
-Description
------------
-
-Returns 0 if the filters were successfully added or removed
-
 .. _`i40e_add_del_fdir_ipv4`:
 
 i40e_add_del_fdir_ipv4

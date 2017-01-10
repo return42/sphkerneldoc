@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/core/flow_dissector.c
 
+.. _`skb_flow_get_be16`:
+
+skb_flow_get_be16
+=================
+
+.. c:function:: __be16 skb_flow_get_be16(const struct sk_buff *skb, int poff, void *data, int hlen)
+
+    extract be16 entity
+
+    :param const struct sk_buff \*skb:
+        sk_buff to extract from
+
+    :param int poff:
+        offset to extract at
+
+    :param void \*data:
+        raw buffer pointer to the packet
+
+    :param int hlen:
+        packet header length
+
+.. _`skb_flow_get_be16.description`:
+
+Description
+-----------
+
+The function will try to retrieve a be32 entity at
+offset poff
+
 .. _`__skb_flow_get_ports`:
 
 __skb_flow_get_ports

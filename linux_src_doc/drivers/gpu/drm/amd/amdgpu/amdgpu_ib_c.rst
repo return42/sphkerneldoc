@@ -36,7 +36,7 @@ Returns 0 on success, error on failure.
 amdgpu_ib_free
 ==============
 
-.. c:function:: void amdgpu_ib_free(struct amdgpu_device *adev, struct amdgpu_ib *ib, struct fence *f)
+.. c:function:: void amdgpu_ib_free(struct amdgpu_device *adev, struct amdgpu_ib *ib, struct dma_fence *f)
 
     free an IB (Indirect Buffer)
 
@@ -46,7 +46,7 @@ amdgpu_ib_free
     :param struct amdgpu_ib \*ib:
         IB object to free
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         the fence SA bo need wait on for the ib alloation
 
 .. _`amdgpu_ib_free.description`:
@@ -61,7 +61,7 @@ Free an IB (all asics).
 amdgpu_ib_schedule
 ==================
 
-.. c:function:: int amdgpu_ib_schedule(struct amdgpu_ring *ring, unsigned num_ibs, struct amdgpu_ib *ibs, struct fence *last_vm_update, struct amdgpu_job *job, struct fence **f)
+.. c:function:: int amdgpu_ib_schedule(struct amdgpu_ring *ring, unsigned num_ibs, struct amdgpu_ib *ibs, struct dma_fence *last_vm_update, struct amdgpu_job *job, struct dma_fence **f)
 
     schedule an IB (Indirect Buffer) on the ring
 
@@ -74,13 +74,13 @@ amdgpu_ib_schedule
     :param struct amdgpu_ib \*ibs:
         IB objects to schedule
 
-    :param struct fence \*last_vm_update:
+    :param struct dma_fence \*last_vm_update:
         *undescribed*
 
     :param struct amdgpu_job \*job:
         *undescribed*
 
-    :param struct fence \*\*f:
+    :param struct dma_fence \*\*f:
         fence created during this submission
 
 .. _`amdgpu_ib_schedule.description`:

@@ -26,7 +26,7 @@ This function enble the PPS ouput on the timer channel.
 fec_ptp_read
 ============
 
-.. c:function:: cycle_t fec_ptp_read(const struct cyclecounter *cc)
+.. c:function:: u64 fec_ptp_read(const struct cyclecounter *cc)
 
     read raw cycle counter (to be used by time counter)
 

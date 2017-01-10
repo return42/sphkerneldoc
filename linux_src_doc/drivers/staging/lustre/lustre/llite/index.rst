@@ -12,7 +12,6 @@ llite
     file_c
     lcommon_cl_c
     lcommon_misc_c
-    llite_close_c
     llite_internal_h
     llite_lib_c
     llite_mmap_c
@@ -23,8 +22,7 @@ llite
     rw_c
     statahead_c
     vvp_dev_c
-    vvp_internal_h
     vvp_io_c
     vvp_page_c
-    vvp_req_c
     xattr_cache_c
+    xattr_security_c

@@ -32,14 +32,14 @@ pci_iov_release
     :param struct pci_dev \*dev:
         the PCI device
 
-.. _`pci_iov_resource_bar`:
+.. _`pci_iov_update_resource`:
 
-pci_iov_resource_bar
-====================
+pci_iov_update_resource
+=======================
 
-.. c:function:: int pci_iov_resource_bar(struct pci_dev *dev, int resno)
+.. c:function:: void pci_iov_update_resource(struct pci_dev *dev, int resno)
 
-    get position of the SR-IOV BAR
+    update a VF BAR
 
     :param struct pci_dev \*dev:
         the PCI device
@@ -47,12 +47,12 @@ pci_iov_resource_bar
     :param int resno:
         the resource number
 
-.. _`pci_iov_resource_bar.description`:
+.. _`pci_iov_update_resource.description`:
 
 Description
 -----------
 
-Returns position of the BAR encapsulated in the SR-IOV capability.
+Update a VF BAR in the SR-IOV capability of a PF.
 
 .. _`pci_sriov_resource_alignment`:
 

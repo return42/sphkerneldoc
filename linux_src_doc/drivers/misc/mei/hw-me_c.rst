@@ -230,6 +230,36 @@ Return
 
 MEI_PG_OFF if aliveness is on and MEI_PG_ON otherwise
 
+.. _`me_intr_disable`:
+
+me_intr_disable
+===============
+
+.. c:function:: void me_intr_disable(struct mei_device *dev, u32 hcsr)
+
+    disables mei device interrupts using supplied hcsr register value.
+
+    :param struct mei_device \*dev:
+        the device structure
+
+    :param u32 hcsr:
+        supplied hcsr register value
+
+.. _`me_intr_clear`:
+
+me_intr_clear
+=============
+
+.. c:function:: void me_intr_clear(struct mei_device *dev, u32 hcsr)
+
+    clear and stop interrupts
+
+    :param struct mei_device \*dev:
+        the device structure
+
+    :param u32 hcsr:
+        supplied hcsr register value
+
 .. _`mei_me_intr_clear`:
 
 mei_me_intr_clear
@@ -262,6 +292,18 @@ mei_me_intr_disable
 .. c:function:: void mei_me_intr_disable(struct mei_device *dev)
 
     disables mei device interrupts
+
+    :param struct mei_device \*dev:
+        the device structure
+
+.. _`mei_me_synchronize_irq`:
+
+mei_me_synchronize_irq
+======================
+
+.. c:function:: void mei_me_synchronize_irq(struct mei_device *dev)
+
+    wait for pending IRQ handlers
 
     :param struct mei_device \*dev:
         the device structure
@@ -442,14 +484,14 @@ Return
 
 size of hw buffer in bytes
 
-.. _`mei_me_write_message`:
+.. _`mei_me_hbuf_write`:
 
-mei_me_write_message
-====================
+mei_me_hbuf_write
+=================
 
-.. c:function:: int mei_me_write_message(struct mei_device *dev, struct mei_msg_hdr *header, unsigned char *buf)
+.. c:function:: int mei_me_hbuf_write(struct mei_device *dev, struct mei_msg_hdr *header, const unsigned char *buf)
 
-    writes a message to mei device.
+    writes a message to host hw buffer.
 
     :param struct mei_device \*dev:
         the device structure
@@ -457,10 +499,10 @@ mei_me_write_message
     :param struct mei_msg_hdr \*header:
         mei HECI header of message
 
-    :param unsigned char \*buf:
+    :param const unsigned char \*buf:
         message payload will be written
 
-.. _`mei_me_write_message.return`:
+.. _`mei_me_hbuf_write.return`:
 
 Return
 ------
@@ -726,24 +768,30 @@ mei_me_pg_legacy_intr
 mei_me_d0i3_intr
 ================
 
-.. c:function:: void mei_me_d0i3_intr(struct mei_device *dev)
+.. c:function:: void mei_me_d0i3_intr(struct mei_device *dev, u32 intr_source)
 
     perform d0i3 processing in interrupt thread handler
 
     :param struct mei_device \*dev:
         the device structure
 
+    :param u32 intr_source:
+        interrupt source
+
 .. _`mei_me_pg_intr`:
 
 mei_me_pg_intr
 ==============
 
-.. c:function:: void mei_me_pg_intr(struct mei_device *dev)
+.. c:function:: void mei_me_pg_intr(struct mei_device *dev, u32 intr_source)
 
     perform pg processing in interrupt thread handler
 
     :param struct mei_device \*dev:
         the device structure
+
+    :param u32 intr_source:
+        interrupt source
 
 .. _`mei_me_pg_enter_sync`:
 

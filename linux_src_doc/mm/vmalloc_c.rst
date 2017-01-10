@@ -322,6 +322,26 @@ Search for the kernel VM area starting at \ ``addr``\ , and remove it.
 This function returns the found VM area, but using it is NOT safe
 on SMP machines, except for its size or flags.
 
+.. _`vfree_atomic`:
+
+vfree_atomic
+============
+
+.. c:function:: void vfree_atomic(const void *addr)
+
+    release memory allocated by \ :c:func:`vmalloc`\ 
+
+    :param const void \*addr:
+        memory base address
+
+.. _`vfree_atomic.description`:
+
+Description
+-----------
+
+This one is just like \ :c:func:`vfree`\  but can be called in any atomic context
+except NMIs.
+
 .. _`vfree`:
 
 vfree

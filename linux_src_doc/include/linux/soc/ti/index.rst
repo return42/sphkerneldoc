@@ -10,3 +10,4 @@ ti
     knav_dma_h
     knav_qmss_h
     ti-msgmgr_h
+    ti_sci_protocol_h

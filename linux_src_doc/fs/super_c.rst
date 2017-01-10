@@ -306,6 +306,28 @@ mounted on the device. The superblock is returned once it is thawed
 (or immediately if it was not frozen). \ ``NULL``\  is returned if no match
 is found.
 
+.. _`get_super_exclusive_thawed`:
+
+get_super_exclusive_thawed
+==========================
+
+.. c:function:: struct super_block *get_super_exclusive_thawed(struct block_device *bdev)
+
+    get thawed superblock of a device
+
+    :param struct block_device \*bdev:
+        device to get the superblock for
+
+.. _`get_super_exclusive_thawed.description`:
+
+Description
+-----------
+
+Scans the superblock list and finds the superblock of the file system
+mounted on the device. The superblock is returned once it is thawed
+(or immediately if it was not frozen) and s_umount semaphore is held
+in exclusive mode. \ ``NULL``\  is returned if no match is found.
+
 .. _`get_active_super`:
 
 get_active_super

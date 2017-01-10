@@ -86,6 +86,8 @@ Definition
         int max_pstate_physical;
         int scaling;
         int turbo_pstate;
+        unsigned int max_freq;
+        unsigned int turbo_freq;
     }
 
 .. _`pstate_data.members`:
@@ -113,6 +115,12 @@ scaling
 
 turbo_pstate
     Max Turbo P state possible for this platform
+
+max_freq
+    @max_pstate frequency in cpufreq units
+
+turbo_freq
+    @turbo_pstate frequency in cpufreq units
 
 .. _`pstate_data.description`:
 
@@ -231,6 +239,91 @@ Description
 
 Stores PID coefficients and last error for PID controller.
 
+.. _`perf_limits`:
+
+struct perf_limits
+==================
+
+.. c:type:: struct perf_limits
+
+    Store user and policy limits
+
+.. _`perf_limits.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct perf_limits {
+        int no_turbo;
+        int turbo_disabled;
+        int max_perf_pct;
+        int min_perf_pct;
+        int32_t max_perf;
+        int32_t min_perf;
+        int max_policy_pct;
+        int max_sysfs_pct;
+        int min_policy_pct;
+        int min_sysfs_pct;
+    }
+
+.. _`perf_limits.members`:
+
+Members
+-------
+
+no_turbo
+    User requested turbo state from intel_pstate sysfs
+
+turbo_disabled
+    Platform turbo status either from msr
+    MSR_IA32_MISC_ENABLE or when maximum available pstate
+    matches the maximum turbo pstate
+
+max_perf_pct
+    Effective maximum performance limit in percentage, this
+    is minimum of either limits enforced by cpufreq policy
+    or limits from user set limits via intel_pstate sysfs
+
+min_perf_pct
+    Effective minimum performance limit in percentage, this
+    is maximum of either limits enforced by cpufreq policy
+    or limits from user set limits via intel_pstate sysfs
+
+max_perf
+    This is a scaled value between 0 to 255 for max_perf_pct
+    This value is used to limit max pstate
+
+min_perf
+    This is a scaled value between 0 to 255 for min_perf_pct
+    This value is used to limit min pstate
+
+max_policy_pct
+    The maximum performance in percentage enforced by
+    cpufreq setpolicy interface
+
+max_sysfs_pct
+    The maximum performance in percentage enforced by
+    intel pstate sysfs interface, unused when per cpu
+    controls are enforced
+
+min_policy_pct
+    The minimum performance in percentage enforced by
+    cpufreq setpolicy interface
+
+min_sysfs_pct
+    The minimum performance in percentage enforced by
+    intel pstate sysfs interface, unused when per cpu
+    controls are enforced
+
+.. _`perf_limits.description`:
+
+Description
+-----------
+
+Storage for user and policy defined limits.
+
 .. _`cpudata`:
 
 struct cpudata
@@ -262,11 +355,16 @@ Definition
         u64 prev_tsc;
         u64 prev_cummulative_iowait;
         struct sample sample;
+        struct perf_limits *perf_limits;
     #ifdef CONFIG_ACPI
         struct acpi_processor_performance acpi_perf_data;
         bool valid_pss_table;
     #endif
         unsigned int iowait_boost;
+        s16 epp_powersave;
+        s16 epp_policy;
+        s16 epp_default;
+        s16 epp_saved;
     }
 
 .. _`cpudata.members`:
@@ -317,6 +415,11 @@ prev_cummulative_iowait
 sample
     Storage for storing last Sample data
 
+perf_limits
+    Pointer to perf_limit unique to this CPU
+    Not all field in the structure are applicable
+    when per cpu controls are enforced
+
 acpi_perf_data
     Stores ACPI perf information read from \_PSS
 
@@ -325,6 +428,22 @@ valid_pss_table
 
 iowait_boost
     iowait-related boost fraction
+
+epp_powersave
+    Last saved HWP energy performance preference
+    (EPP) or energy performance bias (EPB),
+    when policy switched to performance
+
+epp_policy
+    Last saved policy used to set EPP/EPB
+
+epp_default
+    Power on default HWP energy performance
+    preference/bias
+
+epp_saved
+    Saved EPP/EPB during system suspend or CPU offline
+    operation
 
 .. _`cpudata.description`:
 
@@ -357,7 +476,6 @@ Definition
         int p_gain_pct;
         int d_gain_pct;
         int i_gain_pct;
-        bool boost_iowait;
     }
 
 .. _`pstate_adjust_policy.members`:
@@ -385,9 +503,6 @@ d_gain_pct
 
 i_gain_pct
     PID integral gain
-
-boost_iowait
-    Whether or not to use iowait boosting.
 
 .. _`pstate_adjust_policy.description`:
 
@@ -491,89 +606,6 @@ pid_policy
 
 funcs
     Callback function data
-
-.. _`perf_limits`:
-
-struct perf_limits
-==================
-
-.. c:type:: struct perf_limits
-
-    Store user and policy limits
-
-.. _`perf_limits.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct perf_limits {
-        int no_turbo;
-        int turbo_disabled;
-        int max_perf_pct;
-        int min_perf_pct;
-        int32_t max_perf;
-        int32_t min_perf;
-        int max_policy_pct;
-        int max_sysfs_pct;
-        int min_policy_pct;
-        int min_sysfs_pct;
-    }
-
-.. _`perf_limits.members`:
-
-Members
--------
-
-no_turbo
-    User requested turbo state from intel_pstate sysfs
-
-turbo_disabled
-    Platform turbo status either from msr
-    MSR_IA32_MISC_ENABLE or when maximum available pstate
-    matches the maximum turbo pstate
-
-max_perf_pct
-    Effective maximum performance limit in percentage, this
-    is minimum of either limits enforced by cpufreq policy
-    or limits from user set limits via intel_pstate sysfs
-
-min_perf_pct
-    Effective minimum performance limit in percentage, this
-    is maximum of either limits enforced by cpufreq policy
-    or limits from user set limits via intel_pstate sysfs
-
-max_perf
-    This is a scaled value between 0 to 255 for max_perf_pct
-    This value is used to limit max pstate
-
-min_perf
-    This is a scaled value between 0 to 255 for min_perf_pct
-    This value is used to limit min pstate
-
-max_policy_pct
-    The maximum performance in percentage enforced by
-    cpufreq setpolicy interface
-
-max_sysfs_pct
-    The maximum performance in percentage enforced by
-    intel pstate sysfs interface
-
-min_policy_pct
-    The minimum performance in percentage enforced by
-    cpufreq setpolicy interface
-
-min_sysfs_pct
-    The minimum performance in percentage enforced by
-    intel pstate sysfs interface
-
-.. _`perf_limits.description`:
-
-Description
------------
-
-Storage for user and policy defined limits.
 
 .. This file was automatic generated / don't edit.
 

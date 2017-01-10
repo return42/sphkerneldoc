@@ -273,6 +273,44 @@ dvb_register_device
         Number of demux outputs, to be used to create the TS
         outputs via the Media Controller.
 
+.. _`dvb_remove_device`:
+
+dvb_remove_device
+=================
+
+.. c:function:: void dvb_remove_device(struct dvb_device *dvbdev)
+
+    Remove a registered DVB device
+
+    :param struct dvb_device \*dvbdev:
+        pointer to struct dvb_device
+
+.. _`dvb_remove_device.description`:
+
+Description
+-----------
+
+This does not free memory.  To do that, call \ :c:func:`dvb_free_device`\ .
+
+.. _`dvb_free_device`:
+
+dvb_free_device
+===============
+
+.. c:function:: void dvb_free_device(struct dvb_device *dvbdev)
+
+    Free memory occupied by a DVB device.
+
+    :param struct dvb_device \*dvbdev:
+        pointer to struct dvb_device
+
+.. _`dvb_free_device.description`:
+
+Description
+-----------
+
+Call \ :c:func:`dvb_unregister_device`\  before calling this function.
+
 .. _`dvb_unregister_device`:
 
 dvb_unregister_device
@@ -284,6 +322,16 @@ dvb_unregister_device
 
     :param struct dvb_device \*dvbdev:
         pointer to struct dvb_device
+
+.. _`dvb_unregister_device.description`:
+
+Description
+-----------
+
+This is a combination of \ :c:func:`dvb_remove_device`\  and \ :c:func:`dvb_free_device`\ .
+Using this function is usually a mistake, and is often an indicator
+for a use-after-free bug (when a userspace process keeps a file
+handle to a detached device).
 
 .. _`dvb_create_media_graph`:
 

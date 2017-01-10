@@ -227,7 +227,6 @@ Definition
         u32 xretries;
         u32 a_aggr;
         u32 a_queued_hw;
-        u32 a_queued_sw;
         u32 a_completed;
         u32 a_retries;
         u32 a_xretries;
@@ -269,9 +268,6 @@ a_aggr
 
 a_queued_hw
     Total AMPDUs queued to hardware
-
-a_queued_sw
-    Total AMPDUs queued to software queues
 
 a_completed
     Total AMPDUs completed

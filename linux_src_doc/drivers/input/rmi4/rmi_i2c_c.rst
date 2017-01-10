@@ -22,7 +22,6 @@ Definition
         struct i2c_client *client;
         struct mutex page_mutex;
         int page;
-        int irq;
         u8 *tx_buf;
         size_t tx_buf_size;
         struct regulator_bulk_data supplies[2];
@@ -45,9 +44,6 @@ page_mutex
 
 page
     Keeps track of the current virtual page
-
-irq
-    *undescribed*
 
 tx_buf
     Buffer used for transmitting data to the sensor over i2c.

@@ -35,14 +35,14 @@ This function returns the inherited flags.
 ubifs_new_inode
 ===============
 
-.. c:function:: struct inode *ubifs_new_inode(struct ubifs_info *c, const struct inode *dir, umode_t mode)
+.. c:function:: struct inode *ubifs_new_inode(struct ubifs_info *c, struct inode *dir, umode_t mode)
 
     allocate new UBIFS inode object.
 
     :param struct ubifs_info \*c:
         UBIFS file-system description object
 
-    :param const struct inode \*dir:
+    :param struct inode \*dir:
         parent directory inode
 
     :param umode_t mode:
@@ -116,22 +116,19 @@ unlock_2_inodes
     :param struct inode \*inode2:
         second inode
 
-.. _`check_dir_empty`:
+.. _`ubifs_check_dir_empty`:
 
-check_dir_empty
-===============
+ubifs_check_dir_empty
+=====================
 
-.. c:function:: int check_dir_empty(struct ubifs_info *c, struct inode *dir)
+.. c:function:: int ubifs_check_dir_empty(struct inode *dir)
 
     check if a directory is empty or not.
-
-    :param struct ubifs_info \*c:
-        UBIFS file-system description object
 
     :param struct inode \*dir:
         VFS inode object of the directory to check
 
-.. _`check_dir_empty.description`:
+.. _`ubifs_check_dir_empty.description`:
 
 Description
 -----------

@@ -6,7 +6,7 @@
 intel_fb_obj_invalidate
 =======================
 
-.. c:function:: void intel_fb_obj_invalidate(struct drm_i915_gem_object *obj, enum fb_op_origin origin)
+.. c:function:: bool intel_fb_obj_invalidate(struct drm_i915_gem_object *obj, enum fb_op_origin origin)
 
     invalidate frontbuffer object
 

@@ -19,13 +19,12 @@ mdc_update_max_ea_from_body
 Description
 -----------
 
-The values are learned from ptlrpc replies sent by the MDT.  The
-default easize and cookiesize is initialized to the minimum value but
-allowed to grow up to a single page in size if required to handle the
+This value is learned from ptlrpc replies sent by the MDT. The
+default easize is initialized to the minimum value but allowed
+to grow up to a single page in size if required to handle the
 common case.
 
-\see client_obd::cl_default_mds_easize and
-client_obd::cl_default_mds_cookiesize
+\see client_obd::cl_default_mds_easize
 
 \param[in] exp       export for MDC device
 \param[in] body      body of ptlrpc reply from MDT

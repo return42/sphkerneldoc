@@ -24,23 +24,5 @@ Description
 stolen from eth.c out of the linux kernel, hacked for dvb-device
 by Michael Holzt <kju@debian.org>
 
-.. _`dvb_net_ule`:
-
-dvb_net_ule
-===========
-
-.. c:function:: void dvb_net_ule(struct net_device *dev, const u8 *buf, size_t buf_len)
-
-    ietf-ipdvb-ule-03.txt from a sequence of TS cells of a single PID.
-
-    :param struct net_device \*dev:
-        *undescribed*
-
-    :param const u8 \*buf:
-        *undescribed*
-
-    :param size_t buf_len:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

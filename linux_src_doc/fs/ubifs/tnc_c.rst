@@ -226,12 +226,12 @@ lnc_free
     :param struct ubifs_zbranch \*zbr:
         zbranch of leaf node
 
-.. _`tnc_read_node_nm`:
+.. _`tnc_read_hashed_node`:
 
-tnc_read_node_nm
-================
+tnc_read_hashed_node
+====================
 
-.. c:function:: int tnc_read_node_nm(struct ubifs_info *c, struct ubifs_zbranch *zbr, void *node)
+.. c:function:: int tnc_read_hashed_node(struct ubifs_info *c, struct ubifs_zbranch *zbr, void *node)
 
     read a "hashed" leaf node.
 
@@ -244,7 +244,7 @@ tnc_read_node_nm
     :param void \*node:
         node is returned here
 
-.. _`tnc_read_node_nm.description`:
+.. _`tnc_read_hashed_node.description`:
 
 Description
 -----------
@@ -335,7 +335,7 @@ if the node is not present, and a negative error code in the case of error.
 matches_name
 ============
 
-.. c:function:: int matches_name(struct ubifs_info *c, struct ubifs_zbranch *zbr, const struct qstr *nm)
+.. c:function:: int matches_name(struct ubifs_info *c, struct ubifs_zbranch *zbr, const struct fscrypt_name *nm)
 
     determine if a direntry or xattr entry matches a given name.
 
@@ -345,7 +345,7 @@ matches_name
     :param struct ubifs_zbranch \*zbr:
         zbranch of dent
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         name to match
 
 .. _`matches_name.description`:
@@ -440,7 +440,7 @@ there is no next entry, or a negative error code otherwise.
 resolve_collision
 =================
 
-.. c:function:: int resolve_collision(struct ubifs_info *c, const union ubifs_key *key, struct ubifs_znode **zn, int *n, const struct qstr *nm)
+.. c:function:: int resolve_collision(struct ubifs_info *c, const union ubifs_key *key, struct ubifs_znode **zn, int *n, const struct fscrypt_name *nm)
 
     resolve a collision.
 
@@ -456,7 +456,7 @@ resolve_collision
     :param int \*n:
         zbranch number is passed and returned here
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         name of the entry
 
 .. _`resolve_collision.description`:
@@ -477,7 +477,7 @@ previous one. A negative error code is returned on failures.
 fallible_matches_name
 =====================
 
-.. c:function:: int fallible_matches_name(struct ubifs_info *c, struct ubifs_zbranch *zbr, const struct qstr *nm)
+.. c:function:: int fallible_matches_name(struct ubifs_info *c, struct ubifs_zbranch *zbr, const struct fscrypt_name *nm)
 
     determine if a dent matches a given name.
 
@@ -487,7 +487,7 @@ fallible_matches_name
     :param struct ubifs_zbranch \*zbr:
         zbranch of dent
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         name to match
 
 .. _`fallible_matches_name.description`:
@@ -509,7 +509,7 @@ error code is returned in case of failure.
 fallible_resolve_collision
 ==========================
 
-.. c:function:: int fallible_resolve_collision(struct ubifs_info *c, const union ubifs_key *key, struct ubifs_znode **zn, int *n, const struct qstr *nm, int adding)
+.. c:function:: int fallible_resolve_collision(struct ubifs_info *c, const union ubifs_key *key, struct ubifs_znode **zn, int *n, const struct fscrypt_name *nm, int adding)
 
     resolve a collision even if nodes are missing.
 
@@ -525,7 +525,7 @@ fallible_resolve_collision
     :param int \*n:
         branch number is passed and returned here
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         name of directory entry
 
     :param int adding:
@@ -914,7 +914,7 @@ failure.
 do_lookup_nm
 ============
 
-.. c:function:: int do_lookup_nm(struct ubifs_info *c, const union ubifs_key *key, void *node, const struct qstr *nm)
+.. c:function:: int do_lookup_nm(struct ubifs_info *c, const union ubifs_key *key, void *node, const struct fscrypt_name *nm)
 
     look up a "hashed" node.
 
@@ -927,7 +927,7 @@ do_lookup_nm
     :param void \*node:
         the node is returned here
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         node name
 
 .. _`do_lookup_nm.description`:
@@ -935,7 +935,7 @@ do_lookup_nm
 Description
 -----------
 
-This function look up and reads a node which contains name hash in the key.
+This function looks up and reads a node which contains name hash in the key.
 Since the hash may have collisions, there may be many nodes with the same
 key, so we have to sequentially look to all of them until the needed one is
 found. This function returns zero in case of success, \ ``-ENOENT``\  if the node
@@ -946,7 +946,7 @@ was not found, and a negative error code in case of failure.
 ubifs_tnc_lookup_nm
 ===================
 
-.. c:function:: int ubifs_tnc_lookup_nm(struct ubifs_info *c, const union ubifs_key *key, void *node, const struct qstr *nm)
+.. c:function:: int ubifs_tnc_lookup_nm(struct ubifs_info *c, const union ubifs_key *key, void *node, const struct fscrypt_name *nm)
 
     look up a "hashed" node.
 
@@ -959,7 +959,7 @@ ubifs_tnc_lookup_nm
     :param void \*node:
         the node is returned here
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         node name
 
 .. _`ubifs_tnc_lookup_nm.description`:
@@ -967,10 +967,43 @@ ubifs_tnc_lookup_nm
 Description
 -----------
 
-This function look up and reads a node which contains name hash in the key.
+This function looks up and reads a node which contains name hash in the key.
 Since the hash may have collisions, there may be many nodes with the same
 key, so we have to sequentially look to all of them until the needed one is
 found. This function returns zero in case of success, \ ``-ENOENT``\  if the node
+was not found, and a negative error code in case of failure.
+
+.. _`ubifs_tnc_lookup_dh`:
+
+ubifs_tnc_lookup_dh
+===================
+
+.. c:function:: int ubifs_tnc_lookup_dh(struct ubifs_info *c, const union ubifs_key *key, void *node, uint32_t cookie)
+
+    look up a "double hashed" node.
+
+    :param struct ubifs_info \*c:
+        UBIFS file-system description object
+
+    :param const union ubifs_key \*key:
+        node key to lookup
+
+    :param void \*node:
+        the node is returned here
+
+    :param uint32_t cookie:
+        node cookie for collision resolution
+
+.. _`ubifs_tnc_lookup_dh.description`:
+
+Description
+-----------
+
+This function looks up and reads a node which contains name hash in the key.
+Since the hash may have collisions, there may be many nodes with the same
+key, so we have to sequentially look to all of them until the needed one
+with the same cookie value is found.
+This function returns zero in case of success, \ ``-ENOENT``\  if the node
 was not found, and a negative error code in case of failure.
 
 .. _`correct_parent_keys`:
@@ -1133,7 +1166,7 @@ Returns \ ``0``\  on success or negative error code on failure.
 ubifs_tnc_add_nm
 ================
 
-.. c:function:: int ubifs_tnc_add_nm(struct ubifs_info *c, const union ubifs_key *key, int lnum, int offs, int len, const struct qstr *nm)
+.. c:function:: int ubifs_tnc_add_nm(struct ubifs_info *c, const union ubifs_key *key, int lnum, int offs, int len, const struct fscrypt_name *nm)
 
     add a "hashed" node to TNC.
 
@@ -1152,7 +1185,7 @@ ubifs_tnc_add_nm
     :param int len:
         node length
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         node name
 
 .. _`ubifs_tnc_add_nm.description`:
@@ -1216,7 +1249,7 @@ Returns \ ``0``\  on success or negative error code on failure.
 ubifs_tnc_remove_nm
 ===================
 
-.. c:function:: int ubifs_tnc_remove_nm(struct ubifs_info *c, const union ubifs_key *key, const struct qstr *nm)
+.. c:function:: int ubifs_tnc_remove_nm(struct ubifs_info *c, const union ubifs_key *key, const struct fscrypt_name *nm)
 
     remove an index entry for a "hashed" node.
 
@@ -1226,7 +1259,7 @@ ubifs_tnc_remove_nm
     :param const union ubifs_key \*key:
         key of node
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         directory entry name
 
 .. _`ubifs_tnc_remove_nm.description`:
@@ -1320,7 +1353,7 @@ error code in case of failure.
 ubifs_tnc_next_ent
 ==================
 
-.. c:function:: struct ubifs_dent_node *ubifs_tnc_next_ent(struct ubifs_info *c, union ubifs_key *key, const struct qstr *nm)
+.. c:function:: struct ubifs_dent_node *ubifs_tnc_next_ent(struct ubifs_info *c, union ubifs_key *key, const struct fscrypt_name *nm)
 
     walk directory or extended attribute entries.
 
@@ -1330,7 +1363,7 @@ ubifs_tnc_next_ent
     :param union ubifs_key \*key:
         key of last entry
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         name of last entry found or \ ``NULL``\ 
 
 .. _`ubifs_tnc_next_ent.description`:

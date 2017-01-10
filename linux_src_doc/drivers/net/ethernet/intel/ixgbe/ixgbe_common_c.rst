@@ -244,6 +244,26 @@ disables transmit and receive units. The adapter_stopped flag is used by
 the shared code and drivers to determine if the adapter is in a stopped
 state and should not touch the hardware.
 
+.. _`ixgbe_init_led_link_act_generic`:
+
+ixgbe_init_led_link_act_generic
+===============================
+
+.. c:function:: s32 ixgbe_init_led_link_act_generic(struct ixgbe_hw *hw)
+
+    Store the LED index link/activity.
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+.. _`ixgbe_init_led_link_act_generic.description`:
+
+Description
+-----------
+
+Store the index for the link active LED. This will be used to support
+blinking the LED.
+
 .. _`ixgbe_led_on_generic`:
 
 ixgbe_led_on_generic

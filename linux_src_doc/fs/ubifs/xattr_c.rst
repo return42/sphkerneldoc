@@ -6,7 +6,7 @@
 create_xattr
 ============
 
-.. c:function:: int create_xattr(struct ubifs_info *c, struct inode *host, const struct qstr *nm, const void *value, int size)
+.. c:function:: int create_xattr(struct ubifs_info *c, struct inode *host, const struct fscrypt_name *nm, const void *value, int size)
 
     create an extended attribute.
 
@@ -16,7 +16,7 @@ create_xattr
     :param struct inode \*host:
         host inode
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         extended attribute name
 
     :param const void \*value:

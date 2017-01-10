@@ -16,7 +16,10 @@ kernel
     eeh_pe_c
     eeh_sysfs_c
     fadump_c
+    ima_kexec_c
     isa-bridge_c
+    kexec_elf_64_c
+    machine_kexec_file_64_c
     nvram_64_c
     pci-common_c
     pci-hotplug_c
@@ -28,4 +31,3 @@ kernel
     setup-common_c
     sysfs_c
     uprobes_c
-    vio_c

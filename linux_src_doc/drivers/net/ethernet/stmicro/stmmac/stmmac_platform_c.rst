@@ -140,6 +140,28 @@ Description
 this function is to read the driver parameters from device-tree and
 set some private fields that will be used by the main at runtime.
 
+.. _`stmmac_remove_config_dt`:
+
+stmmac_remove_config_dt
+=======================
+
+.. c:function:: void stmmac_remove_config_dt(struct platform_device *pdev, struct plat_stmmacenet_data *plat)
+
+    undo the effects of \ :c:func:`stmmac_probe_config_dt`\ 
+
+    :param struct platform_device \*pdev:
+        platform_device structure
+
+    :param struct plat_stmmacenet_data \*plat:
+        driver data platform structure
+
+.. _`stmmac_remove_config_dt.description`:
+
+Description
+-----------
+
+Release resources claimed by \ :c:func:`stmmac_probe_config_dt`\ .
+
 .. _`stmmac_pltfr_remove`:
 
 stmmac_pltfr_remove

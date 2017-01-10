@@ -297,21 +297,24 @@ hns_dsaf_tcam_uc_cfg
 hns_dsaf_tcam_mc_cfg
 ====================
 
-.. c:function:: void hns_dsaf_tcam_mc_cfg(struct dsaf_device *dsaf_dev, u32 address, struct dsaf_tbl_tcam_data *ptbl_tcam_data, struct dsaf_tbl_tcam_mcast_cfg *ptbl_tcam_mcast)
+.. c:function:: void hns_dsaf_tcam_mc_cfg(struct dsaf_device *dsaf_dev, u32 address, struct dsaf_tbl_tcam_data *ptbl_tcam_data, struct dsaf_tbl_tcam_data *ptbl_tcam_mask, struct dsaf_tbl_tcam_mcast_cfg *ptbl_tcam_mcast)
 
-    INT
+    cfg the tcam for mc
 
     :param struct dsaf_device \*dsaf_dev:
-        *undescribed*
+        dsa fabric device struct pointer
 
     :param u32 address:
-        *undescribed*
+        tcam index
 
     :param struct dsaf_tbl_tcam_data \*ptbl_tcam_data:
+        tcam data struct pointer
+
+    :param struct dsaf_tbl_tcam_data \*ptbl_tcam_mask:
         *undescribed*
 
     :param struct dsaf_tbl_tcam_mcast_cfg \*ptbl_tcam_mcast:
-        *undescribed*
+        tcam mask struct pointer, it must be null for HNSv1
 
 .. _`hns_dsaf_tcam_mc_invld`:
 

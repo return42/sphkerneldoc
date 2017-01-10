@@ -31,6 +31,7 @@ crtc_state->connectors_changed is set when a connector is added or
 removed from the crtc.
 crtc_state->active_changed is set when crtc_state->active changes,
 which is used for dpms.
+See also: \ :c:func:`drm_atomic_crtc_needs_modeset`\ 
 
 .. _`drm_atomic_helper_check_modeset.important`:
 
@@ -38,7 +39,7 @@ IMPORTANT
 ---------
 
 
-Drivers which update ->mode_changed (e.g. in their ->atomic_check hooks if a
+Drivers which set ->mode_changed (e.g. in their ->atomic_check hooks if a
 plane update can't be done without a full modeset) _must_ call this function
 afterwards after that change. It is permitted to call this function multiple
 times for the same update, e.g. when the ->atomic_check functions depend upon
@@ -226,7 +227,8 @@ drm_atomic_helper_wait_for_fences
         atomic state object with old state structures
 
     :param bool pre_swap:
-        if true, do an interruptible wait
+        If true, do an interruptible wait, and \ ``state``\  is the new state.
+        Otherwise \ ``state``\  is the old state.
 
 .. _`drm_atomic_helper_wait_for_fences.description`:
 
@@ -238,7 +240,14 @@ incoming fb's and stash it in the drm_plane_state.  This is called after
 \ :c:func:`drm_atomic_helper_swap_state`\  so it uses the current plane state (and
 just uses the atomic state to find the changed planes)
 
-Returns zero if success or < 0 if \ :c:func:`fence_wait`\  fails.
+Note that \ ``pre_swap``\  is needed since the point where we block for fences moves
+around depending upon whether an atomic commit is blocking or
+non-blocking. For async commit all waiting needs to happen after
+\ :c:func:`drm_atomic_helper_swap_state`\  is called, but for synchronous commits we want
+to wait **before** we do anything that can't be easily rolled back. That is
+before we call \ :c:func:`drm_atomic_helper_swap_state`\ .
+
+Returns zero if success or < 0 if \ :c:func:`dma_fence_wait`\  fails.
 
 .. _`drm_atomic_helper_framebuffer_changed`:
 
@@ -306,12 +315,12 @@ plane update use-case.
 drm_atomic_helper_commit_tail
 =============================
 
-.. c:function:: void drm_atomic_helper_commit_tail(struct drm_atomic_state *state)
+.. c:function:: void drm_atomic_helper_commit_tail(struct drm_atomic_state *old_state)
 
     commit atomic update to hardware
 
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
+    :param struct drm_atomic_state \*old_state:
+        atomic state object with old state structures
 
 .. _`drm_atomic_helper_commit_tail.description`:
 
@@ -327,11 +336,11 @@ that it doesn't mesh well with runtime PM at all.
 
 For drivers supporting runtime PM the recommended sequence is instead ::
 
-    drm_atomic_helper_commit_modeset_disables(dev, state);
+    drm_atomic_helper_commit_modeset_disables(dev, old_state);
 
-    drm_atomic_helper_commit_modeset_enables(dev, state);
+    drm_atomic_helper_commit_modeset_enables(dev, old_state);
 
-    drm_atomic_helper_commit_planes(dev, state,
+    drm_atomic_helper_commit_planes(dev, old_state,
                                     DRM_PLANE_COMMIT_ACTIVE_ONLY);
 
 for committing the atomic update to hardware.  See the kerneldoc entries for
@@ -364,9 +373,6 @@ This function commits a with \ :c:func:`drm_atomic_helper_check`\  pre-validated
 object. This can still fail when e.g. the framebuffer reservation fails. This
 function implements nonblocking commits, using
 \ :c:func:`drm_atomic_helper_setup_commit`\  and related functions.
-
-Note that right now this function does not support nonblocking commits, hence
-driver writers must implement their own version for now.
 
 Committing the actual hardware state is done through the
 ->atomic_commit_tail() callback of the \ :c:type:`struct drm_mode_config_helper_funcs <drm_mode_config_helper_funcs>`\  vtable,
@@ -445,12 +451,12 @@ Return
 drm_atomic_helper_wait_for_dependencies
 =======================================
 
-.. c:function:: void drm_atomic_helper_wait_for_dependencies(struct drm_atomic_state *state)
+.. c:function:: void drm_atomic_helper_wait_for_dependencies(struct drm_atomic_state *old_state)
 
     wait for required preceeding commits
 
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
+    :param struct drm_atomic_state \*old_state:
+        atomic state object with old state structures
 
 .. _`drm_atomic_helper_wait_for_dependencies.description`:
 
@@ -458,7 +464,7 @@ Description
 -----------
 
 This function waits for all preceeding commits that touch the same CRTC as
-\ ``state``\  to both be committed to the hardware (as signalled by
+\ ``old_state``\  to both be committed to the hardware (as signalled by
 drm_atomic_helper_commit_hw_done) and executed by the hardware (as signalled
 by calling drm_crtc_vblank_send_event on the event member of
 \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ ).
@@ -471,12 +477,12 @@ This is part of the atomic helper support for nonblocking commits, see
 drm_atomic_helper_commit_hw_done
 ================================
 
-.. c:function:: void drm_atomic_helper_commit_hw_done(struct drm_atomic_state *state)
+.. c:function:: void drm_atomic_helper_commit_hw_done(struct drm_atomic_state *old_state)
 
     setup possible nonblocking commit
 
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
+    :param struct drm_atomic_state \*old_state:
+        atomic state object with old state structures
 
 .. _`drm_atomic_helper_commit_hw_done.description`:
 
@@ -499,21 +505,21 @@ This is part of the atomic helper support for nonblocking commits, see
 drm_atomic_helper_commit_cleanup_done
 =====================================
 
-.. c:function:: void drm_atomic_helper_commit_cleanup_done(struct drm_atomic_state *state)
+.. c:function:: void drm_atomic_helper_commit_cleanup_done(struct drm_atomic_state *old_state)
 
     signal completion of commit
 
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
+    :param struct drm_atomic_state \*old_state:
+        atomic state object with old state structures
 
 .. _`drm_atomic_helper_commit_cleanup_done.description`:
 
 Description
 -----------
 
-This signals completion of the atomic update \ ``state``\ , including any cleanup
-work. If used, it must be called right before calling
-\ :c:func:`drm_atomic_state_free`\ .
+This signals completion of the atomic update \ ``old_state``\ , including any
+cleanup work. If used, it must be called right before calling
+\ :c:func:`drm_atomic_state_put`\ .
 
 This is part of the atomic helper support for nonblocking commits, see
 \ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.

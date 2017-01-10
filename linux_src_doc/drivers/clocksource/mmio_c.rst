@@ -6,7 +6,7 @@
 clocksource_mmio_init
 =====================
 
-.. c:function:: int clocksource_mmio_init(void __iomem *base, const char *name, unsigned long hz, int rating, unsigned bits, cycle_t (*read)(struct clocksource *))
+.. c:function:: int clocksource_mmio_init(void __iomem *base, const char *name, unsigned long hz, int rating, unsigned bits, u64 (*read)(struct clocksource *))
 
     Initialize a simple mmio based clocksource
 
@@ -25,7 +25,7 @@ clocksource_mmio_init
     :param unsigned bits:
         Number of valid bits
 
-    :param cycle_t (\*read)(struct clocksource \*):
+    :param u64 (\*read)(struct clocksource \*):
         One of clocksource_mmio_read\*() above
 
 .. This file was automatic generated / don't edit.

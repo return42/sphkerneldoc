@@ -274,7 +274,7 @@ Definition
 
     struct dvb_tuner_ops {
         struct dvb_tuner_info info;
-        int (*release)(struct dvb_frontend *fe);
+        void (*release)(struct dvb_frontend *fe);
         int (*init)(struct dvb_frontend *fe);
         int (*sleep)(struct dvb_frontend *fe);
         int (*suspend)(struct dvb_frontend *fe);
@@ -495,6 +495,7 @@ Definition
     struct dvb_frontend_ops {
         struct dvb_frontend_info info;
         u8 delsys[MAX_DELSYS];
+        void (*detach)(struct dvb_frontend *fe);
         void (*release)(struct dvb_frontend* fe);
         void (*release_sec)(struct dvb_frontend* fe);
         int (*init)(struct dvb_frontend* fe);
@@ -539,8 +540,14 @@ info
 delsys
     Delivery systems supported by the frontend
 
+detach
+    callback function called when frontend is detached.
+    drivers should clean up, but not yet free the struct
+    dvb_frontend allocation.
+
 release
-    callback function called when frontend is dettached.
+    callback function called when frontend is ready to be
+    freed.
     drivers should free any allocated memory.
 
 release_sec
@@ -949,6 +956,7 @@ Definition
 .. code-block:: c
 
     struct dvb_frontend {
+        struct kref refcount;
         struct dvb_frontend_ops ops;
         struct dvb_adapter *dvb;
         void *demodulator_priv;
@@ -968,6 +976,9 @@ Definition
 
 Members
 -------
+
+refcount
+    *undescribed*
 
 ops
     embedded struct dvb_frontend_ops

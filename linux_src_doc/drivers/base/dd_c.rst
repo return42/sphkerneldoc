@@ -270,6 +270,10 @@ Description
 Manually detach device from driver.
 When called for a USB interface, \ ``dev``\ ->parent lock must be held.
 
+If this function is to be called with \ ``dev``\ ->parent lock held, ensure that
+the device's consumers are unbound in advance or that their locks can be
+acquired under the \ ``dev``\ ->parent lock.
+
 .. _`driver_detach`:
 
 driver_detach

@@ -462,38 +462,6 @@ seqno
 elp_interval
     currently used ELP sending interval in ms
 
-.. _`batadv_icmp_user_cmd_type`:
-
-enum batadv_icmp_user_cmd_type
-==============================
-
-.. c:type:: enum batadv_icmp_user_cmd_type
-
-    types for batman-adv icmp cmd modes
-
-.. _`batadv_icmp_user_cmd_type.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum batadv_icmp_user_cmd_type {
-        BATADV_TP_START,
-        BATADV_TP_STOP
-    };
-
-.. _`batadv_icmp_user_cmd_type.constants`:
-
-Constants
----------
-
-BATADV_TP_START
-    start a throughput meter run
-
-BATADV_TP_STOP
-    stop a throughput meter run
-
 .. _`batadv_icmp_header`:
 
 struct batadv_icmp_header

@@ -83,6 +83,7 @@ Definition
     enum hw_event_mc_err_type {
         HW_EVENT_ERR_CORRECTED,
         HW_EVENT_ERR_UNCORRECTED,
+        HW_EVENT_ERR_DEFERRED,
         HW_EVENT_ERR_FATAL,
         HW_EVENT_ERR_INFO
     };
@@ -103,12 +104,21 @@ HW_EVENT_ERR_UNCORRECTED
     or the memory controller could recover from
     it for example, by re-trying the operation).
 
+HW_EVENT_ERR_DEFERRED
+    Deferred Error - Indicates an uncorrectable
+    error whose handling is not urgent. This could
+    be due to hardware data poisoning where the
+    system can continue operation until the poisoned
+    data is consumed. Preemptive measures may also
+    be taken, e.g. offlining pages, etc.
+
 HW_EVENT_ERR_FATAL
     Fatal Error - Uncorrected error that could not
     be recovered.
 
 HW_EVENT_ERR_INFO
-    *undescribed*
+    Informational - The CPER spec defines a forth
+    type of error: informational logs.
 
 .. _`mem_type`:
 
@@ -146,7 +156,8 @@ Definition
         MEM_RDDR3,
         MEM_LRDDR3,
         MEM_DDR4,
-        MEM_RDDR4
+        MEM_RDDR4,
+        MEM_LRDDR4
     };
 
 .. _`mem_type.constants`:
@@ -155,7 +166,7 @@ Constants
 ---------
 
 MEM_EMPTY
-    *undescribed*
+    Empty csrow
 
 MEM_RESERVED
     Reserved csrow type
@@ -222,10 +233,9 @@ MEM_DDR3
 MEM_RDDR3
     Registered DDR3 RAM
     This is a variant of the DDR3 memories.
-    \ ``MEM_LRDDR3``\           Load-Reduced DDR3 memory.
 
 MEM_LRDDR3
-    *undescribed*
+    Load-Reduced DDR3 memory.
 
 MEM_DDR4
     Unbuffered DDR4 RAM
@@ -234,12 +244,8 @@ MEM_RDDR4
     Registered DDR4 RAM
     This is a variant of the DDR4 memories.
 
-.. _`mem_type.description`:
-
-Description
------------
-
-@MEM_EMPTY           Empty csrow
+MEM_LRDDR4
+    Load-Reduced DDR4 memory.
 
 .. _`edac_type`:
 
@@ -312,7 +318,7 @@ enum scrub_type
 
 .. c:type:: enum scrub_type
 
-    scrubbing capabilities \ ``SCRUB_UNKNOWN``\                Unknown if scrubber is available
+    scrubbing capabilities
 
 .. _`scrub_type.definition`:
 
@@ -340,7 +346,7 @@ Constants
 ---------
 
 SCRUB_UNKNOWN
-    *undescribed*
+    Unknown if scrubber is available
 
 SCRUB_NONE
     No scrubber
@@ -367,14 +373,7 @@ SCRUB_HW_PROG_SRC
     Progressive hardware scrub from an error
 
 SCRUB_HW_TUNABLE
-    *undescribed*
-
-.. _`scrub_type.scrub_hw_tunable`:
-
-SCRUB_HW_TUNABLE
-----------------
-
-Hardware scrub frequency is tunable
+    Hardware scrub frequency is tunable
 
 .. _`edac_mc_layer_type`:
 
@@ -458,7 +457,7 @@ Members
 -------
 
 type
-    *undescribed*
+    layer type
 
 size
     number of components per layer. For example,
@@ -483,7 +482,7 @@ EDAC_DIMM_OFF
         were allocated for each layer
 
     :param  nlayers:
-        *undescribed*
+        Number of layers at the \ ``layers``\  array
 
     :param  layer0:
         layer0 position
@@ -499,14 +498,17 @@ EDAC_DIMM_OFF
 Description
 -----------
 
-For 1 layer, this macro returns \ :c:type:`struct var <var>`\ [layer0] - \ :c:type:`struct var <var>`\ 
+For 1 layer, this macro returns "var[layer0] - var";
+
 For 2 layers, this macro is similar to allocate a bi-dimensional array
-and to return "&var[layer0][layer1] - \ :c:type:`struct var <var>`\ "
+and to return "var[layer0][layer1] - var";
+
 For 3 layers, this macro is similar to allocate a tri-dimensional array
-and to return "&var[layer0][layer1][layer2] - \ :c:type:`struct var <var>`\ "
+and to return "var[layer0][layer1][layer2] - var".
 
 A loop could be used here to make it more generic, but, as we only have
 3 layers, this is a little faster.
+
 By design, layers can never be 0 or more than 3. If that ever happens,
 a NULL is returned, causing an OOPS during the memory allocation routine,
 with would point to the developer that he's doing something wrong.
@@ -529,7 +531,7 @@ EDAC_DIMM_PTR
         (like mci->dimms)
 
     :param  nlayers:
-        *undescribed*
+        Number of layers at the \ ``layers``\  array
 
     :param  layer0:
         layer0 position
@@ -545,11 +547,13 @@ EDAC_DIMM_PTR
 Description
 -----------
 
-For 1 layer, this macro returns \ :c:type:`struct var <var>`\ [layer0]
+For 1 layer, this macro returns "var[layer0]";
+
 For 2 layers, this macro is similar to allocate a bi-dimensional array
-and to return "&var[layer0][layer1]"
+and to return "var[layer0][layer1]";
+
 For 3 layers, this macro is similar to allocate a tri-dimensional array
-and to return "&var[layer0][layer1][layer2]"
+and to return "var[layer0][layer1][layer2]";
 
 .. _`rank_info`:
 
@@ -594,14 +598,92 @@ dimm
 ce_count
     number of correctable errors for this rank
 
-.. _`rank_info.fixme`:
+.. _`rank_info.description`:
 
-FIXME
------
+Description
+-----------
 
-Currently, the EDAC core model will assume one DIMM per rank.
-This is a bad assumption, but it makes this patch easier. Later
-patches in this series will fix this issue.
+FIXME: Currently, the EDAC core model will assume one DIMM per rank.
+       This is a bad assumption, but it makes this patch easier. Later
+       patches in this series will fix this issue.
+
+.. _`edac_raw_error_desc`:
+
+struct edac_raw_error_desc
+==========================
+
+.. c:type:: struct edac_raw_error_desc
+
+    Raw error report structure
+
+.. _`edac_raw_error_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct edac_raw_error_desc {
+        char location[LOCATION_SIZE];
+        char label[(EDAC_MC_LABEL_LEN + 1 + sizeof(OTHER_LABEL)) * EDAC_MAX_LABELS];
+        long grain;
+        u16 error_count;
+        int top_layer;
+        int mid_layer;
+        int low_layer;
+        unsigned long page_frame_number;
+        unsigned long offset_in_page;
+        unsigned long syndrome;
+        const char *msg;
+        const char *other_detail;
+        bool enable_per_layer_report;
+    }
+
+.. _`edac_raw_error_desc.members`:
+
+Members
+-------
+
+location
+    location of the error
+
+label
+    label of the affected DIMM(s)
+
+grain
+    minimum granularity for an error report, in bytes
+
+error_count
+    number of errors of the same type
+
+top_layer
+    top layer of the error (layer[0])
+
+mid_layer
+    middle layer of the error (layer[1])
+
+low_layer
+    low layer of the error (layer[2])
+
+page_frame_number
+    page where the error happened
+
+offset_in_page
+    page offset
+
+syndrome
+    syndrome of the error (or 0 if unknown or if
+    the syndrome is not applicable)
+
+msg
+    error message
+
+other_detail
+    other driver-specific detail about the error
+
+enable_per_layer_report
+    if false, the error affects all layers
+    (typically, a memory controller error)
 
 .. This file was automatic generated / don't edit.
 

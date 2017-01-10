@@ -29,6 +29,44 @@ Return
 
 pointer of DAI, or NULL if not found.
 
+.. _`snd_soc_find_dai_link`:
+
+snd_soc_find_dai_link
+=====================
+
+.. c:function:: struct snd_soc_dai_link *snd_soc_find_dai_link(struct snd_soc_card *card, int id, const char *name, const char *stream_name)
+
+    Find a DAI link
+
+    :param struct snd_soc_card \*card:
+        soc card
+
+    :param int id:
+        DAI link ID to match
+
+    :param const char \*name:
+        DAI link name to match, optional
+
+    :param const char \*stream_name:
+        *undescribed*
+
+.. _`snd_soc_find_dai_link.description`:
+
+Description
+-----------
+
+This function will search all existing DAI links of the soc card to
+find the link of the same ID. Since DAI links may not have their
+unique ID, so name and stream name should also match if being
+specified.
+
+.. _`snd_soc_find_dai_link.return`:
+
+Return
+------
+
+pointer of DAI link, or NULL if not found.
+
 .. _`snd_soc_add_dai_link`:
 
 snd_soc_add_dai_link

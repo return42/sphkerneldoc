@@ -384,5 +384,31 @@ or not, and then do the rate + parent change if supported. Returns
 -EINVAL if not supported, 0 for success, and potential error codes
 from the clock rate change.
 
+.. _`omap3_dpll5_set_rate`:
+
+omap3_dpll5_set_rate
+====================
+
+.. c:function:: int omap3_dpll5_set_rate(struct clk_hw *hw, unsigned long rate, unsigned long parent_rate)
+
+    set rate for omap3 dpll5
+
+    :param struct clk_hw \*hw:
+        clock to change
+
+    :param unsigned long rate:
+        target rate for clock
+
+    :param unsigned long parent_rate:
+        rate of the parent clock
+
+.. _`omap3_dpll5_set_rate.description`:
+
+Description
+-----------
+
+Set rate for the DPLL5 clock. Apply the sprz319 advisory 2.1 on OMAP36xx if
+the DPLL is used for USB host (detected through the requested rate).
+
 .. This file was automatic generated / don't edit.
 

@@ -24,11 +24,10 @@ Definition
         struct mei_me_client *me_cl;
         struct mei_cl *cl;
         char name[MEI_CL_NAME_SIZE];
-        struct work_struct event_work;
-        mei_cldev_event_cb_t event_cb;
-        void *event_context;
-        unsigned long events_mask;
-        unsigned long events;
+        struct work_struct rx_work;
+        mei_cldev_cb_t rx_cb;
+        struct work_struct notif_work;
+        mei_cldev_cb_t notif_cb;
         unsigned int do_match:1;
         unsigned int is_added:1;
         void *priv_data;
@@ -57,21 +56,19 @@ cl
 name
     device name
 
-event_work
-    async work to execute event callback
+rx_work
+    async work to execute Rx event callback
 
-event_cb
+rx_cb
     Drivers register this callback to get asynchronous ME
-    events (e.g. Rx buffer pending) notifications.
+    Rx buffer pending notifications.
 
-event_context
-    event callback run context
+notif_work
+    async work to execute FW notif event callback
 
-events_mask
-    Events bit mask requested by driver.
-
-events
-    Events bitmask sent to the driver.
+notif_cb
+    Drivers register this callback to get asynchronous ME
+    FW notification pending notifications.
 
 do_match
     wheather device can be matched with a driver
@@ -81,6 +78,26 @@ is_added
 
 priv_data
     client private data
+
+.. _`module_mei_cl_driver`:
+
+module_mei_cl_driver
+====================
+
+.. c:function::  module_mei_cl_driver( __mei_cldrv)
+
+    Helper macro for registering mei cl driver
+
+    :param  __mei_cldrv:
+        mei_cl_driver structure
+
+.. _`module_mei_cl_driver.description`:
+
+Description
+-----------
+
+Helper macro for mei cl drivers which do not do anything special in module
+init/exit, for eliminating a boilerplate code.
 
 .. This file was automatic generated / don't edit.
 

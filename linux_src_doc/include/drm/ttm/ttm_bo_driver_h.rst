@@ -155,7 +155,7 @@ Definition
         spinlock_t move_lock;
         struct list_head io_reserve_lru;
         struct list_head lru;
-        struct fence *move;
+        struct dma_fence *move;
     }
 
 .. _`ttm_mem_type_manager.members`:
@@ -249,14 +249,15 @@ Definition
         void (*ttm_tt_unpopulate)(struct ttm_tt *ttm);
         int (*invalidate_caches)(struct ttm_bo_device *bdev, uint32_t flags);
         int (*init_mem_type)(struct ttm_bo_device *bdev, uint32_t type,struct ttm_mem_type_manager *man);
-        void(*evict_flags)(struct ttm_buffer_object *bo,struct ttm_placement *placement);
-        int (*move)(struct ttm_buffer_object *bo,bool evict, bool interruptible,bool no_wait_gpu,struct ttm_mem_reg *new_mem);
+        bool (*eviction_valuable)(struct ttm_buffer_object *bo,const struct ttm_place *place);
+        void (*evict_flags)(struct ttm_buffer_object *bo,struct ttm_placement *placement);
+        int (*move)(struct ttm_buffer_object *bo, bool evict,bool interruptible, bool no_wait_gpu,struct ttm_mem_reg *new_mem);
         int (*verify_access)(struct ttm_buffer_object *bo,struct file *filp);
         void (*move_notify)(struct ttm_buffer_object *bo,struct ttm_mem_reg *new_mem);
         int (*fault_reserve_notify)(struct ttm_buffer_object *bo);
         void (*swap_notify)(struct ttm_buffer_object *bo);
-        int (*io_mem_reserve)(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem);
-        void (*io_mem_free)(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem);
+        int (*io_mem_reserve)(struct ttm_bo_device *bdev,struct ttm_mem_reg *mem);
+        void (*io_mem_free)(struct ttm_bo_device *bdev,struct ttm_mem_reg *mem);
         void (*lru_removal)(struct ttm_buffer_object *bo);
         struct list_head *(*lru_tail)(struct ttm_buffer_object *bo);
         struct list_head *(*swap_lru_tail)(struct ttm_buffer_object *bo);
@@ -283,6 +284,9 @@ invalidate_caches
 init_mem_type
     Callback to initialize a struct ttm_mem_type_manager
     structure.
+
+eviction_valuable
+    *undescribed*
 
 evict_flags
     Callback to obtain placement flags when a buffer is evicted.
@@ -1088,12 +1092,12 @@ Utility function to free an old placement after a successful move.
 ttm_bo_move_accel_cleanup
 =========================
 
-.. c:function:: int ttm_bo_move_accel_cleanup(struct ttm_buffer_object *bo, struct fence *fence, bool evict, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_move_accel_cleanup(struct ttm_buffer_object *bo, struct dma_fence *fence, bool evict, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         A fence object that signals when moving is complete.
 
     :param bool evict:
@@ -1119,12 +1123,12 @@ buffer moves.
 ttm_bo_pipeline_move
 ====================
 
-.. c:function:: int ttm_bo_pipeline_move(struct ttm_buffer_object *bo, struct fence *fence, bool evict, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_pipeline_move(struct ttm_buffer_object *bo, struct dma_fence *fence, bool evict, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         A fence object that signals when moving is complete.
 
     :param bool evict:

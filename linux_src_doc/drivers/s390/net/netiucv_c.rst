@@ -353,29 +353,6 @@ Returns interface statistics of a device.
 
 Returns pointer to stats struct of this interface.
 
-.. _`netiucv_change_mtu`:
-
-netiucv_change_mtu
-==================
-
-.. c:function:: int netiucv_change_mtu(struct net_device *dev, int new_mtu)
-
-    :param struct net_device \*dev:
-        Pointer to interface struct.
-
-    :param int new_mtu:
-        The new MTU to use for this interface.
-
-.. _`netiucv_change_mtu.description`:
-
-Description
------------
-
-Sets MTU of an interface.
-
-Returns 0 on success, -EINVAL if MTU is out of valid range.
-(valid range is 576 .. NETIUCV_MTU_MAX).
-
 .. _`netiucv_new_connection`:
 
 netiucv_new_connection

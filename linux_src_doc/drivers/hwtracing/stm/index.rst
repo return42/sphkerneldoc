@@ -8,3 +8,4 @@ stm
     :maxdepth: 1
 
     core_c
+    ftrace_c

@@ -11,6 +11,7 @@ platform
     davinci/index
     exynos-gsc/index
     exynos4-is/index
+    mtk-mdp/index
     mtk-vcodec/index
     mtk-vpu/index
     omap3isp/index
@@ -25,6 +26,7 @@ platform
     xilinx/index
     pxa_camera_c
     rcar-fcp_c
+    rcar_fdp1_c
     rcar_jpu_c
     sh_veu_c
     vim2m_c

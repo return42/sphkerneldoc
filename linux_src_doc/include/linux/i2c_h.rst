@@ -22,6 +22,7 @@ Definition
         int (*attach_adapter)(struct i2c_adapter *);
         int (*probe)(struct i2c_client *, const struct i2c_device_id *);
         int (*remove)(struct i2c_client *);
+        int (*probe_new)(struct i2c_client *);
         void (*shutdown)(struct i2c_client *);
         void (*alert)(struct i2c_client *, enum i2c_alert_protocol protocol,unsigned int data);
         int (*command)(struct i2c_client *client, unsigned int cmd, void *arg);
@@ -44,10 +45,13 @@ attach_adapter
     Callback for bus addition (deprecated)
 
 probe
-    Callback for device binding
+    Callback for device binding - soon to be deprecated
 
 remove
     Callback for device unbinding
+
+probe_new
+    New callback for device binding
 
 shutdown
     Callback for device shutdown

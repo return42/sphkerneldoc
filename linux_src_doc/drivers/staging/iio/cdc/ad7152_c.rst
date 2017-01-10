@@ -1,0 +1,45 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/cdc/ad7152.c
+
+.. _`ad7152_read_raw_samp_freq`:
+
+ad7152_read_raw_samp_freq
+=========================
+
+.. c:function:: int ad7152_read_raw_samp_freq(struct device *dev, int *val)
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param int \*val:
+        *undescribed*
+
+.. _`ad7152_read_raw_samp_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. _`ad7152_write_raw_samp_freq`:
+
+ad7152_write_raw_samp_freq
+==========================
+
+.. c:function:: int ad7152_write_raw_samp_freq(struct device *dev, int val)
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param int val:
+        *undescribed*
+
+.. _`ad7152_write_raw_samp_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. This file was automatic generated / don't edit.
+

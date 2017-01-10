@@ -8,6 +8,5 @@ adc
     :maxdepth: 1
 
     ad7192_h
-    ad7606_core_c
+    ad7606_c
     ad7606_h
-    ad7606_ring_c

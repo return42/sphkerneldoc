@@ -266,6 +266,29 @@ Description
 Attempt to add a page to the bio_vec maplist. This will only fail
 if either bio->bi_vcnt == bio->bi_max_vecs or it's a cloned bio.
 
+.. _`bio_iov_iter_get_pages`:
+
+bio_iov_iter_get_pages
+======================
+
+.. c:function:: int bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
+
+    pin user or kernel pages and add them to a bio
+
+    :param struct bio \*bio:
+        bio to add pages to
+
+    :param struct iov_iter \*iter:
+        iov iterator describing the region to be mapped
+
+.. _`bio_iov_iter_get_pages.description`:
+
+Description
+-----------
+
+Pins as many pages from \*iter and appends them to \ ``bio``\ 's bvec array. The
+pages will have to be released using \ :c:func:`put_page`\  when done.
+
 .. _`submit_bio_wait`:
 
 submit_bio_wait

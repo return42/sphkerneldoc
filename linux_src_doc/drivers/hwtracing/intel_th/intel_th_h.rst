@@ -77,6 +77,7 @@ Definition
         unsigned int num_resources;
         unsigned int type;
         int id;
+        bool host_mode;
         struct intel_th_output output;
         char name[];
     }
@@ -100,6 +101,9 @@ type
 
 id
     device instance or -1
+
+host_mode
+    Intel TH is controlled by an external debug host
 
 output
     output descriptor for INTEL_TH_OUTPUT devices

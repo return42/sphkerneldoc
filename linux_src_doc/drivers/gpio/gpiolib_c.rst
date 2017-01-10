@@ -383,14 +383,14 @@ determined by a user supplied \ ``match``\  callback.  The callback should retur
 non-zero, this function will return to the caller and not iterate over any
 more gpio_chips.
 
-.. _`gpiochip_set_chained_irqchip`:
+.. _`gpiochip_set_cascaded_irqchip`:
 
-gpiochip_set_chained_irqchip
-============================
+gpiochip_set_cascaded_irqchip
+=============================
 
-.. c:function:: void gpiochip_set_chained_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq, irq_flow_handler_t parent_handler)
+.. c:function:: void gpiochip_set_cascaded_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq, irq_flow_handler_t parent_handler)
 
-    sets a chained irqchip to a gpiochip
+    connects a cascaded irqchip to a gpiochip
 
     :param struct gpio_chip \*gpiochip:
         the gpiochip to set the irqchip chain to
@@ -406,6 +406,49 @@ gpiochip_set_chained_irqchip
         the parent interrupt handler for the accumulated IRQ
         coming out of the gpiochip. If the interrupt is nested rather than
         cascaded, pass NULL in this handler argument
+
+.. _`gpiochip_set_chained_irqchip`:
+
+gpiochip_set_chained_irqchip
+============================
+
+.. c:function:: void gpiochip_set_chained_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq, irq_flow_handler_t parent_handler)
+
+    connects a chained irqchip to a gpiochip
+
+    :param struct gpio_chip \*gpiochip:
+        the gpiochip to set the irqchip chain to
+
+    :param struct irq_chip \*irqchip:
+        the irqchip to chain to the gpiochip
+
+    :param int parent_irq:
+        the irq number corresponding to the parent IRQ for this
+        chained irqchip
+
+    :param irq_flow_handler_t parent_handler:
+        the parent interrupt handler for the accumulated IRQ
+        coming out of the gpiochip. If the interrupt is nested rather than
+        cascaded, pass NULL in this handler argument
+
+.. _`gpiochip_set_nested_irqchip`:
+
+gpiochip_set_nested_irqchip
+===========================
+
+.. c:function:: void gpiochip_set_nested_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq)
+
+    connects a nested irqchip to a gpiochip
+
+    :param struct gpio_chip \*gpiochip:
+        the gpiochip to set the irqchip nested handler to
+
+    :param struct irq_chip \*irqchip:
+        the irqchip to nest to the gpiochip
+
+    :param int parent_irq:
+        the irq number corresponding to the parent IRQ for this
+        nested irqchip
 
 .. _`gpiochip_irq_map`:
 
@@ -458,7 +501,7 @@ This is called only from \ :c:func:`gpiochip_remove`\
 _gpiochip_irqchip_add
 =====================
 
-.. c:function:: int _gpiochip_irqchip_add(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, struct lock_class_key *lock_key)
+.. c:function:: int _gpiochip_irqchip_add(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool nested, struct lock_class_key *lock_key)
 
     adds an irqchip to a gpiochip
 
@@ -478,6 +521,10 @@ _gpiochip_irqchip_add
     :param unsigned int type:
         the default type for IRQs on this irqchip, pass IRQ_TYPE_NONE
         to have the core avoid setting up any default type in the hardware.
+
+    :param bool nested:
+        whether this is a nested irqchip calling \ :c:func:`handle_nested_irq`\ 
+        in its IRQ handler
 
     :param struct lock_class_key \*lock_key:
         lockdep class

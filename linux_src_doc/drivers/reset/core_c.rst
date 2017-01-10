@@ -24,6 +24,7 @@ Definition
         unsigned int refcnt;
         int shared;
         atomic_t deassert_count;
+        atomic_t triggered_count;
     }
 
 .. _`reset_control.members`:
@@ -50,6 +51,11 @@ shared
 
 deassert_count
     *undescribed*
+
+triggered_count
+    Number of times this reset line has been reset. Currently
+    only used for shared resets, which means that the value
+    will be either 0 or 1.
 
 .. _`of_reset_simple_xlate`:
 
@@ -139,7 +145,17 @@ reset_control_reset
 Description
 -----------
 
-Calling this on a shared reset controller is an error.
+On a shared reset line the actual reset pulse is only triggered once for the
+
+.. _`reset_control_reset.lifetime-of-the-reset_control-instance`:
+
+lifetime of the reset_control instance
+--------------------------------------
+
+for all but the first caller this is
+a no-op.
+Consumers must not use reset_control_(de)assert on shared reset lines when
+reset_control_reset has been used.
 
 .. _`reset_control_assert`:
 
@@ -164,6 +180,8 @@ still be deasserted, as long as other users keep it so.
 
 For shared reset controls a driver cannot expect the hw's registers and
 internal state to be reset, but must be prepared for this to happen.
+Consumers must not use reset_control_reset on shared reset lines when
+reset_control_(de)assert has been used.
 
 .. _`reset_control_deassert`:
 
@@ -183,6 +201,8 @@ Description
 -----------
 
 After calling this function, the reset is guaranteed to be deasserted.
+Consumers must not use reset_control_reset on shared reset lines when
+reset_control_(de)assert has been used.
 
 .. _`reset_control_status`:
 

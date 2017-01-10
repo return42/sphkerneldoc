@@ -1430,6 +1430,21 @@ nla_get_in6_addr
     :param const struct nlattr \*nla:
         IPv6 address netlink attribute
 
+.. _`nla_memdup`:
+
+nla_memdup
+==========
+
+.. c:function:: void *nla_memdup(const struct nlattr *src, gfp_t gfp)
+
+    duplicate attribute memory (kmemdup)
+
+    :param const struct nlattr \*src:
+        netlink attribute to duplicate from
+
+    :param gfp_t gfp:
+        GFP mask
+
 .. _`nla_nest_start`:
 
 nla_nest_start

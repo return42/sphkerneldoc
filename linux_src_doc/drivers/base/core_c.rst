@@ -1,6 +1,262 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/base/core.c
 
+.. _`device_is_dependent`:
+
+device_is_dependent
+===================
+
+.. c:function:: int device_is_dependent(struct device *dev, void *target)
+
+    Check if one device depends on another one
+
+    :param struct device \*dev:
+        Device to check dependencies for.
+
+    :param void \*target:
+        Device to check against.
+
+.. _`device_is_dependent.description`:
+
+Description
+-----------
+
+Check if \ ``target``\  depends on \ ``dev``\  or any device dependent on it (its child or
+its consumer etc).  Return 1 if that is the case or 0 otherwise.
+
+.. _`device_link_add`:
+
+device_link_add
+===============
+
+.. c:function:: struct device_link *device_link_add(struct device *consumer, struct device *supplier, u32 flags)
+
+    Create a link between two devices.
+
+    :param struct device \*consumer:
+        Consumer end of the link.
+
+    :param struct device \*supplier:
+        Supplier end of the link.
+
+    :param u32 flags:
+        Link flags.
+
+.. _`device_link_add.description`:
+
+Description
+-----------
+
+The caller is responsible for the proper synchronization of the link creation
+with runtime PM.  First, setting the DL_FLAG_PM_RUNTIME flag will cause the
+runtime PM framework to take the link into account.  Second, if the
+DL_FLAG_RPM_ACTIVE flag is set in addition to it, the supplier devices will
+be forced into the active metastate and reference-counted upon the creation
+of the link.  If DL_FLAG_PM_RUNTIME is not set, DL_FLAG_RPM_ACTIVE will be
+ignored.
+
+If the DL_FLAG_AUTOREMOVE is set, the link will be removed automatically
+when the consumer device driver unbinds from it.  The combination of both
+DL_FLAG_AUTOREMOVE and DL_FLAG_STATELESS set is invalid and will cause NULL
+to be returned.
+
+A side effect of the link creation is re-ordering of dpm_list and the
+devices_kset list by moving the consumer device and all devices depending
+on it to the ends of these lists (that does not happen to devices that have
+not been registered when this function is called).
+
+The supplier device is required to be registered when this function is called
+and NULL will be returned if that is not the case.  The consumer device need
+not be registered, however.
+
+.. _`device_link_del`:
+
+device_link_del
+===============
+
+.. c:function:: void device_link_del(struct device_link *link)
+
+    Delete a link between two devices.
+
+    :param struct device_link \*link:
+        Device link to delete.
+
+.. _`device_link_del.description`:
+
+Description
+-----------
+
+The caller must ensure proper synchronization of this function with runtime
+PM.
+
+.. _`device_links_check_suppliers`:
+
+device_links_check_suppliers
+============================
+
+.. c:function:: int device_links_check_suppliers(struct device *dev)
+
+    Check presence of supplier drivers.
+
+    :param struct device \*dev:
+        Consumer device.
+
+.. _`device_links_check_suppliers.description`:
+
+Description
+-----------
+
+Check links from this device to any suppliers.  Walk the list of the device's
+links to suppliers and see if all of them are available.  If not, simply
+return -EPROBE_DEFER.
+
+We need to guarantee that the supplier will not go away after the check has
+been positive here.  It only can go away in \ :c:func:`__device_release_driver`\  and
+that function  checks the device's links to consumers.  This means we need to
+mark the link as "consumer probe in progress" to make the supplier removal
+wait for us to complete (or bad things may happen).
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+.. _`device_links_driver_bound`:
+
+device_links_driver_bound
+=========================
+
+.. c:function:: void device_links_driver_bound(struct device *dev)
+
+    Update device links after probing its driver.
+
+    :param struct device \*dev:
+        Device to update the links for.
+
+.. _`device_links_driver_bound.description`:
+
+Description
+-----------
+
+The probe has been successful, so update links from this device to any
+consumers by changing their status to "available".
+
+Also change the status of \ ``dev``\ 's links to suppliers to "active".
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+.. _`__device_links_no_driver`:
+
+__device_links_no_driver
+========================
+
+.. c:function:: void __device_links_no_driver(struct device *dev)
+
+    Update links of a device without a driver.
+
+    :param struct device \*dev:
+        Device without a drvier.
+
+.. _`__device_links_no_driver.description`:
+
+Description
+-----------
+
+Delete all non-persistent links from this device to any suppliers.
+
+Persistent links stay around, but their status is changed to "available",
+unless they already are in the "supplier unbind in progress" state in which
+case they need not be updated.
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+.. _`device_links_driver_cleanup`:
+
+device_links_driver_cleanup
+===========================
+
+.. c:function:: void device_links_driver_cleanup(struct device *dev)
+
+    Update links after driver removal.
+
+    :param struct device \*dev:
+        Device whose driver has just gone away.
+
+.. _`device_links_driver_cleanup.description`:
+
+Description
+-----------
+
+Update links to consumers for \ ``dev``\  by changing their status to "dormant" and
+invoke \ ``__device_links_no_driver``\ () to update links to suppliers for it as
+appropriate.
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+.. _`device_links_busy`:
+
+device_links_busy
+=================
+
+.. c:function:: bool device_links_busy(struct device *dev)
+
+    Check if there are any busy links to consumers.
+
+    :param struct device \*dev:
+        Device to check.
+
+.. _`device_links_busy.description`:
+
+Description
+-----------
+
+Check each consumer of the device and return 'true' if its link's status
+is one of "consumer probe" or "active" (meaning that the given consumer is
+probing right now or its driver is present).  Otherwise, change the link
+state to "supplier unbind" to prevent the consumer from being probed
+successfully going forward.
+
+Return 'false' if there are no probing or active consumers.
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+.. _`device_links_unbind_consumers`:
+
+device_links_unbind_consumers
+=============================
+
+.. c:function:: void device_links_unbind_consumers(struct device *dev)
+
+    Force unbind consumers of the given device.
+
+    :param struct device \*dev:
+        Device to unbind the consumers of.
+
+.. _`device_links_unbind_consumers.description`:
+
+Description
+-----------
+
+Walk the list of links to consumers for \ ``dev``\  and if any of them is in the
+"consumer probe" state, wait for all device probes in progress to complete
+and start over.
+
+If that's not the case, change the status of the link to "supplier unbind"
+and check if the link was in the "active" state.  If so, force the consumer
+driver to unbind and start over (the consumer will not re-probe as we have
+changed the state of the link already).
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+.. _`device_links_purge`:
+
+device_links_purge
+==================
+
+.. c:function:: void device_links_purge(struct device *dev)
+
+    Delete existing links to other devices.
+
+    :param struct device \*dev:
+        Target device.
+
 .. _`dev_driver_string`:
 
 dev_driver_string

@@ -50,7 +50,7 @@ for the NULL \ ``xattr_name``\  return the first cached \ ``xattr``\ .
 ll_xattr_cache_add
 ==================
 
-.. c:function:: int ll_xattr_cache_add(struct list_head *cache, const char *xattr_name, const char *xattr_val, unsigned xattr_val_len)
+.. c:function:: int ll_xattr_cache_add(struct list_head *cache, const char *xattr_name, const char *xattr_val, unsigned int xattr_val_len)
 
     :param struct list_head \*cache:
         *undescribed*
@@ -61,7 +61,7 @@ ll_xattr_cache_add
     :param const char \*xattr_val:
         *undescribed*
 
-    :param unsigned xattr_val_len:
+    :param unsigned int xattr_val_len:
         *undescribed*
 
 .. _`ll_xattr_cache_add.description`:

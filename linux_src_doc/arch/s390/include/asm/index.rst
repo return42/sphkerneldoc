@@ -7,6 +7,7 @@ asm
 .. toctree::
     :maxdepth: 1
 
+    trace/index
     bitops_h
     ccwdev_h
     ccwgroup_h

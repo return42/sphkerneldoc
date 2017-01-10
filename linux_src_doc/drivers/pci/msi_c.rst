@@ -30,7 +30,7 @@ pci_msi_unmask_irq
 msi_capability_init
 ===================
 
-.. c:function:: int msi_capability_init(struct pci_dev *dev, int nvec, bool affinity)
+.. c:function:: int msi_capability_init(struct pci_dev *dev, int nvec, const struct irq_affinity *affd)
 
     configure device's MSI capability structure
 
@@ -40,8 +40,8 @@ msi_capability_init
     :param int nvec:
         number of interrupts to allocate
 
-    :param bool affinity:
-        flag to indicate cpu irq affinity mask should be set
+    :param const struct irq_affinity \*affd:
+        *undescribed*
 
 .. _`msi_capability_init.description`:
 
@@ -59,7 +59,7 @@ which could have been allocated.
 msix_capability_init
 ====================
 
-.. c:function:: int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries, int nvec, bool affinity)
+.. c:function:: int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries, int nvec, const struct irq_affinity *affd)
 
     configure device's MSI-X capability
 
@@ -72,8 +72,8 @@ msix_capability_init
     :param int nvec:
         number of \ ``entries``\ 
 
-    :param bool affinity:
-        flag to indicate cpu irq affinity mask should be set
+    :param const struct irq_affinity \*affd:
+        Optional pointer to enable automatic affinity assignement
 
 .. _`msix_capability_init.description`:
 
@@ -262,12 +262,12 @@ If it succeeds, it returns the actual number of interrupts allocated and
 indicates the successful configuration of MSI-X capability structure
 with new allocated MSI-X interrupts.
 
-.. _`pci_alloc_irq_vectors`:
+.. _`pci_alloc_irq_vectors_affinity`:
 
-pci_alloc_irq_vectors
-=====================
+pci_alloc_irq_vectors_affinity
+==============================
 
-.. c:function:: int pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs, unsigned int max_vecs, unsigned int flags)
+.. c:function:: int pci_alloc_irq_vectors_affinity(struct pci_dev *dev, unsigned int min_vecs, unsigned int max_vecs, unsigned int flags, const struct irq_affinity *affd)
 
     allocate multiple IRQs for a device
 
@@ -283,7 +283,10 @@ pci_alloc_irq_vectors
     :param unsigned int flags:
         flags or quirks for the allocation
 
-.. _`pci_alloc_irq_vectors.description`:
+    :param const struct irq_affinity \*affd:
+        optional description of the affinity requirements
+
+.. _`pci_alloc_irq_vectors_affinity.description`:
 
 Description
 -----------

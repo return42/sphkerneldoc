@@ -23,7 +23,7 @@ trace_signal_generate
         shared or private
 
     :param int result:
-        TRACE_SIGNAL\_\*
+        TRACE_SIGNAL_*
 
 .. _`trace_signal_generate.description`:
 

@@ -552,9 +552,12 @@ Returns 0 only if success.
 ufshcd_map_sg
 =============
 
-.. c:function:: int ufshcd_map_sg(struct ufshcd_lrb *lrbp)
+.. c:function:: int ufshcd_map_sg(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
 
     Map scatter-gather list to prdt \ ``lrbp``\  - pointer to local reference block
+
+    :param struct ufs_hba \*hba:
+        *undescribed*
 
     :param struct ufshcd_lrb \*lrbp:
         *undescribed*
@@ -2282,6 +2285,29 @@ PA_Hibern8Time parameter can be tuned manually if UniPro version is less than
 1.61. PA_Hibern8Time needs to be maximum of local M-PHY's
 TX_HIBERN8TIME_CAPABILITY & peer M-PHY's RX_HIBERN8TIME_CAPABILITY.
 This optimal value can help reduce the hibern8 exit latency.
+
+Returns zero on success, non-zero error value on failure.
+
+.. _`ufshcd_quirk_tune_host_pa_tactivate`:
+
+ufshcd_quirk_tune_host_pa_tactivate
+===================================
+
+.. c:function:: int ufshcd_quirk_tune_host_pa_tactivate(struct ufs_hba *hba)
+
+    Ensures that host PA_TACTIVATE is less than device PA_TACTIVATE time.
+
+    :param struct ufs_hba \*hba:
+        per-adapter instance
+
+.. _`ufshcd_quirk_tune_host_pa_tactivate.description`:
+
+Description
+-----------
+
+Some UFS devices require host PA_TACTIVATE to be lower than device
+PA_TACTIVATE, we need to enable UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE quirk
+for such devices.
 
 Returns zero on success, non-zero error value on failure.
 

@@ -68,7 +68,7 @@ Reset the driver's copy of the wptr (all asics).
 amdgpu_ring_init
 ================
 
-.. c:function:: int amdgpu_ring_init(struct amdgpu_device *adev, struct amdgpu_ring *ring, unsigned max_dw, u32 nop, u32 align_mask, struct amdgpu_irq_src *irq_src, unsigned irq_type, enum amdgpu_ring_type ring_type)
+.. c:function:: int amdgpu_ring_init(struct amdgpu_device *adev, struct amdgpu_ring *ring, unsigned max_dw, struct amdgpu_irq_src *irq_src, unsigned irq_type)
 
     init driver ring struct.
 
@@ -81,19 +81,10 @@ amdgpu_ring_init
     :param unsigned max_dw:
         *undescribed*
 
-    :param u32 nop:
-        nop packet for this ring
-
-    :param u32 align_mask:
-        *undescribed*
-
     :param struct amdgpu_irq_src \*irq_src:
         *undescribed*
 
     :param unsigned irq_type:
-        *undescribed*
-
-    :param enum amdgpu_ring_type ring_type:
         *undescribed*
 
 .. _`amdgpu_ring_init.description`:

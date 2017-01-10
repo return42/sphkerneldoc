@@ -231,6 +231,18 @@ Description
 
 Interruptible version of \ :c:func:`drm_modeset_backoff`\ 
 
+.. _`drm_modeset_lock_init`:
+
+drm_modeset_lock_init
+=====================
+
+.. c:function:: void drm_modeset_lock_init(struct drm_modeset_lock *lock)
+
+    initialize lock
+
+    :param struct drm_modeset_lock \*lock:
+        lock to init
+
 .. _`drm_modeset_lock`:
 
 drm_modeset_lock

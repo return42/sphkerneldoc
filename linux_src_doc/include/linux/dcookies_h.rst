@@ -45,11 +45,11 @@ any dcookie values returned from \ :c:func:`get_dcookie`\ .
 get_dcookie
 ===========
 
-.. c:function:: int get_dcookie(struct path *path, unsigned long *cookie)
+.. c:function:: int get_dcookie(const struct path *path, unsigned long *cookie)
 
     acquire a dcookie
 
-    :param struct path \*path:
+    :param const struct path \*path:
         *undescribed*
 
     :param unsigned long \*cookie:

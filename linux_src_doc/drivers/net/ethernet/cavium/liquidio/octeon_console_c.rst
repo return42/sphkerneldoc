@@ -1,54 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/cavium/liquidio/octeon_console.c
 
-.. _`sizeof_field`:
-
-SIZEOF_FIELD
-============
-
-.. c:function::  SIZEOF_FIELD( s,  field)
-
-    Logically it is the same as "sizeof(s::field)" in C++, but C lacks the "::" operator.
-
-    :param  s:
-        *undescribed*
-
-    :param  field:
-        *undescribed*
-
-.. _`cvmx_bootmem_desc_get_field`:
-
-CVMX_BOOTMEM_DESC_GET_FIELD
-===========================
-
-.. c:function::  CVMX_BOOTMEM_DESC_GET_FIELD( oct,  field)
-
-    structure. These members can't be directly addressed as they might be in memory not directly reachable. In the case where bootmem is compiled with LINUX_HOST, the structure itself might be located on a remote Octeon. The argument "field" is the member name of the cvmx_bootmem_desc to read. Regardless of the type of the field, the return type is always a u64.
-
-    :param  oct:
-        *undescribed*
-
-    :param  field:
-        *undescribed*
-
-.. _`cvmx_bootmem_named_get_field`:
-
-CVMX_BOOTMEM_NAMED_GET_FIELD
-============================
-
-.. c:function::  CVMX_BOOTMEM_NAMED_GET_FIELD( oct,  addr,  field)
-
-    cvmx_bootmem_named_block_desc structure. These members can't be directly addressed as they might be in memory not directly reachable. In the case where bootmem is compiled with LINUX_HOST, the structure itself might be located on a remote Octeon. The argument "field" is the member name of the cvmx_bootmem_named_block_desc to read. Regardless of the type of the field, the return type is always a u64. The "addr" parameter is the physical address of the structure.
-
-    :param  oct:
-        *undescribed*
-
-    :param  addr:
-        *undescribed*
-
-    :param  field:
-        *undescribed*
-
 .. _`__cvmx_bootmem_desc_get`:
 
 __cvmx_bootmem_desc_get

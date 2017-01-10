@@ -67,7 +67,7 @@ Variant of \ :c:func:`napi_schedule`\ , assuming hard irqs are masked.
 napi_complete
 =============
 
-.. c:function:: void napi_complete(struct napi_struct *n)
+.. c:function:: bool napi_complete(struct napi_struct *n)
 
     NAPI processing complete
 
@@ -81,34 +81,7 @@ Description
 
 Mark NAPI processing as complete.
 Consider using \ :c:func:`napi_complete_done`\  instead.
-
-.. _`napi_hash_add`:
-
-napi_hash_add
-=============
-
-.. c:function:: void napi_hash_add(struct napi_struct *napi)
-
-    add a NAPI to global hashtable
-
-    :param struct napi_struct \*napi:
-        NAPI context
-
-.. _`napi_hash_add.description`:
-
-Description
------------
-
-Generate a new napi_id and store a \ ``napi``\  under it in napi_hash.
-Used for busy polling (CONFIG_NET_RX_BUSY_POLL).
-
-.. _`napi_hash_add.note`:
-
-Note
-----
-
-This is normally automatically done from \ :c:func:`netif_napi_add`\ ,
-so might disappear in a future Linux version.
+Return false if device should avoid rearming interrupts.
 
 .. _`napi_hash_del`:
 
@@ -508,7 +481,7 @@ tc_to_txq
     XXX: need comments on this one
 
 prio_tc_map
-    need comments on this one
+    XXX: need comments on this one
 
 fcoe_ddp_xid
     Max exchange id for FCoE LRO by ddp

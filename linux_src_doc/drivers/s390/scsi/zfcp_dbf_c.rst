@@ -119,6 +119,24 @@ Description
 
 The adapter->erp_lock has to be held.
 
+.. _`zfcp_dbf_rec_run_lvl`:
+
+zfcp_dbf_rec_run_lvl
+====================
+
+.. c:function:: void zfcp_dbf_rec_run_lvl(int level, char *tag, struct zfcp_erp_action *erp)
+
+    trace event related to running recovery
+
+    :param int level:
+        trace level to be used for event
+
+    :param char \*tag:
+        identifier for event
+
+    :param struct zfcp_erp_action \*erp:
+        erp_action running
+
 .. _`zfcp_dbf_rec_run`:
 
 zfcp_dbf_rec_run

@@ -846,6 +846,39 @@ Description
 The address handle is used to reference a local or global destination
 in all UD QP post sends.
 
+.. _`ib_get_gids_from_rdma_hdr`:
+
+ib_get_gids_from_rdma_hdr
+=========================
+
+.. c:function:: int ib_get_gids_from_rdma_hdr(const union rdma_network_hdr *hdr, enum rdma_network_type net_type, union ib_gid *sgid, union ib_gid *dgid)
+
+    Get sgid and dgid from GRH or IPv4 header work completion.
+
+    :param const union rdma_network_hdr \*hdr:
+        the L3 header to parse
+
+    :param enum rdma_network_type net_type:
+        type of header to parse
+
+    :param union ib_gid \*sgid:
+        place to store source gid
+
+    :param union ib_gid \*dgid:
+        place to store destination gid
+
+.. _`ib_get_rdma_header_version`:
+
+ib_get_rdma_header_version
+==========================
+
+.. c:function:: int ib_get_rdma_header_version(const union rdma_network_hdr *hdr)
+
+    Get the header version
+
+    :param const union rdma_network_hdr \*hdr:
+        the L3 header to parse
+
 .. _`ib_init_ah_from_wc`:
 
 ib_init_ah_from_wc

@@ -6,7 +6,7 @@
 toptree_alloc
 =============
 
-.. c:function:: struct toptree *toptree_alloc(int level, int id)
+.. c:function:: struct toptree __ref *toptree_alloc(int level, int id)
 
     Allocate and initialize a new tree node.
 
@@ -55,7 +55,7 @@ masks will be updated to reflect the loss of the child.
 toptree_free
 ============
 
-.. c:function:: void toptree_free(struct toptree *cand)
+.. c:function:: void __ref toptree_free(struct toptree *cand)
 
     discard a tree node
 

@@ -284,7 +284,7 @@ negative errno if failed.
 lmv_get_info
 ============
 
-.. c:function:: int lmv_get_info(const struct lu_env *env, struct obd_export *exp, __u32 keylen, void *key, __u32 *vallen, void *val, struct lov_stripe_md *lsm)
+.. c:function:: int lmv_get_info(const struct lu_env *env, struct obd_export *exp, __u32 keylen, void *key, __u32 *vallen, void *val)
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -304,9 +304,6 @@ lmv_get_info
     :param void \*val:
         *undescribed*
 
-    :param struct lov_stripe_md \*lsm:
-        *undescribed*
-
 .. _`lmv_get_info.description`:
 
 Description
@@ -320,7 +317,6 @@ Dispatch request to lower-layer devices as needed.
 \param[in]  key      identifier of key to get value for
 \param[in]  vallen   size of \a val
 \param[out] val      pointer to storage location for value
-\param[in]  lsm      optional striping metadata of object
 
 \retval 0            on success
 \retval negative     negated errno on failure

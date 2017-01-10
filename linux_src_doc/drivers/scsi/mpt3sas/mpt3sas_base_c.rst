@@ -1153,12 +1153,12 @@ Glue for handling an atomic 64 bit word to MMIO. This special handling takes
 care of 32 bit environment where its not quarenteed to send the entire word
 in one transfer.
 
-.. _`mpt3sas_base_put_smid_scsi_io`:
+.. _`_base_put_smid_scsi_io`:
 
-mpt3sas_base_put_smid_scsi_io
-=============================
+_base_put_smid_scsi_io
+======================
 
-.. c:function:: void mpt3sas_base_put_smid_scsi_io(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
+.. c:function:: void _base_put_smid_scsi_io(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
     send SCSI_IO request to firmware
 
@@ -1171,19 +1171,19 @@ mpt3sas_base_put_smid_scsi_io
     :param u16 handle:
         device handle
 
-.. _`mpt3sas_base_put_smid_scsi_io.description`:
+.. _`_base_put_smid_scsi_io.description`:
 
 Description
 -----------
 
 Return nothing.
 
-.. _`mpt3sas_base_put_smid_fast_path`:
+.. _`_base_put_smid_fast_path`:
 
-mpt3sas_base_put_smid_fast_path
-===============================
+_base_put_smid_fast_path
+========================
 
-.. c:function:: void mpt3sas_base_put_smid_fast_path(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
+.. c:function:: void _base_put_smid_fast_path(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
     send fast path request to firmware
 
@@ -1196,21 +1196,21 @@ mpt3sas_base_put_smid_fast_path
     :param u16 handle:
         device handle
 
-.. _`mpt3sas_base_put_smid_fast_path.description`:
+.. _`_base_put_smid_fast_path.description`:
 
 Description
 -----------
 
 Return nothing.
 
-.. _`mpt3sas_base_put_smid_hi_priority`:
+.. _`_base_put_smid_hi_priority`:
 
-mpt3sas_base_put_smid_hi_priority
-=================================
+_base_put_smid_hi_priority
+==========================
 
-.. c:function:: void mpt3sas_base_put_smid_hi_priority(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
+.. c:function:: void _base_put_smid_hi_priority(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
 
-    send Task Managment request to firmware
+    send Task Management request to firmware
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         per adapter object
@@ -1222,12 +1222,12 @@ mpt3sas_base_put_smid_hi_priority
         msix_task will be same as msix of IO incase of task abort else 0.
         Return nothing.
 
-.. _`mpt3sas_base_put_smid_default`:
+.. _`_base_put_smid_default`:
 
-mpt3sas_base_put_smid_default
-=============================
+_base_put_smid_default
+======================
 
-.. c:function:: void mpt3sas_base_put_smid_default(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+.. c:function:: void _base_put_smid_default(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
     Default, primarily used for config pages
 
@@ -1237,7 +1237,98 @@ mpt3sas_base_put_smid_default
     :param u16 smid:
         system request message index
 
-.. _`mpt3sas_base_put_smid_default.description`:
+.. _`_base_put_smid_default.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_base_put_smid_scsi_io_atomic`:
+
+_base_put_smid_scsi_io_atomic
+=============================
+
+.. c:function:: void _base_put_smid_scsi_io_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
+
+    send SCSI_IO request to firmware using Atomic Request Descriptor
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+    :param u16 handle:
+        device handle, unused in this function, for function type match
+
+.. _`_base_put_smid_scsi_io_atomic.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_base_put_smid_fast_path_atomic`:
+
+_base_put_smid_fast_path_atomic
+===============================
+
+.. c:function:: void _base_put_smid_fast_path_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
+
+    send fast path request to firmware using Atomic Request Descriptor
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+    :param u16 handle:
+        device handle, unused in this function, for function type match
+        Return nothing
+
+.. _`_base_put_smid_hi_priority_atomic`:
+
+_base_put_smid_hi_priority_atomic
+=================================
+
+.. c:function:: void _base_put_smid_hi_priority_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
+
+    send Task Management request to firmware using Atomic Request Descriptor
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+    :param u16 msix_task:
+        msix_task will be same as msix of IO incase of task abort else 0
+
+.. _`_base_put_smid_hi_priority_atomic.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_base_put_smid_default_atomic`:
+
+_base_put_smid_default_atomic
+=============================
+
+.. c:function:: void _base_put_smid_default_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    Default, primarily used for config pages use Atomic Request Descriptor
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`_base_put_smid_default_atomic.description`:
 
 Description
 -----------

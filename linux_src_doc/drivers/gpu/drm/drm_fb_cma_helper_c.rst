@@ -82,6 +82,34 @@ Return the CMA GEM object for given framebuffer.
 
 This function will usually be called from the CRTC callback functions.
 
+.. _`drm_fb_cma_prepare_fb`:
+
+drm_fb_cma_prepare_fb
+=====================
+
+.. c:function:: int drm_fb_cma_prepare_fb(struct drm_plane *plane, struct drm_plane_state *state)
+
+    Prepare CMA framebuffer
+
+    :param struct drm_plane \*plane:
+        Which plane
+
+    :param struct drm_plane_state \*state:
+        Plane state attach fence to
+
+.. _`drm_fb_cma_prepare_fb.description`:
+
+Description
+-----------
+
+This should be put into prepare_fb hook of struct \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  .
+
+This function checks if the plane FB has an dma-buf attached, extracts
+the exclusive fence and attaches it to plane state for the atomic helper
+to wait on.
+
+There is no need for cleanup_fb for CMA based framebuffer drivers.
+
 .. _`drm_fb_cma_debugfs_show`:
 
 drm_fb_cma_debugfs_show

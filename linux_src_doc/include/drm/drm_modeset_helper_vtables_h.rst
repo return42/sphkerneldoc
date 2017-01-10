@@ -300,8 +300,8 @@ atomic_begin
 
     Note that the power state of the display pipe when this function is
     called depends upon the exact helpers and calling sequence the driver
-    has picked. See \ :c:func:`drm_atomic_commit_planes`\  for a discussion of the
-    tradeoffs and variants of plane commit helpers.
+    has picked. See \ :c:func:`drm_atomic_helper_commit_planes`\  for a discussion of
+    the tradeoffs and variants of plane commit helpers.
 
     This callback is used by the atomic modeset helpers and by the
     transitional plane helpers, but it is optional.
@@ -321,8 +321,8 @@ atomic_flush
 
     Note that the power state of the display pipe when this function is
     called depends upon the exact helpers and calling sequence the driver
-    has picked. See \ :c:func:`drm_atomic_commit_planes`\  for a discussion of the
-    tradeoffs and variants of plane commit helpers.
+    has picked. See \ :c:func:`drm_atomic_helper_commit_planes`\  for a discussion of
+    the tradeoffs and variants of plane commit helpers.
 
     This callback is used by the atomic modeset helpers and by the
     transitional plane helpers, but it is optional.
@@ -906,8 +906,8 @@ atomic_update
 
     Note that the power state of the display pipe when this function is
     called depends upon the exact helpers and calling sequence the driver
-    has picked. See \ :c:func:`drm_atomic_commit_planes`\  for a discussion of the
-    tradeoffs and variants of plane commit helpers.
+    has picked. See \ :c:func:`drm_atomic_helper_commit_planes`\  for a discussion of
+    the tradeoffs and variants of plane commit helpers.
 
     This callback is used by the atomic modeset helpers and by the
     transitional plane helpers, but it is optional.
@@ -926,8 +926,8 @@ atomic_disable
 
     Note that the power state of the display pipe when this function is
     called depends upon the exact helpers and calling sequence the driver
-    has picked. See \ :c:func:`drm_atomic_commit_planes`\  for a discussion of the
-    tradeoffs and variants of plane commit helpers.
+    has picked. See \ :c:func:`drm_atomic_helper_commit_planes`\  for a discussion of
+    the tradeoffs and variants of plane commit helpers.
 
     This callback is used by the atomic modeset helpers and by the
     transitional plane helpers, but it is optional.
@@ -988,10 +988,14 @@ atomic_commit_tail
     to implement blocking and nonblocking commits easily. It is not used
     by the atomic helpers
 
-    This hook should first commit the given atomic state to the hardware.
-    But drivers can add more waiting calls at the start of their
-    implementation, e.g. to wait for driver-internal request for implicit
-    syncing, before starting to commit the update to the hardware.
+    This function is called when the new atomic state has already been
+    swapped into the various state pointers. The passed in state
+    therefore contains copies of the old/previous state. This hook should
+    commit the new state into hardware. Note that the helpers have
+    already waited for preceeding atomic commits and fences, but drivers
+    can add more waiting calls at the start of their implementation, e.g.
+    to wait for driver-internal request for implicit syncing, before
+    starting to commit the update to the hardware.
 
     After the atomic update is committed to the hardware this hook needs
     to call \ :c:func:`drm_atomic_helper_commit_hw_done`\ . Then wait for the upate

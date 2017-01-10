@@ -129,6 +129,34 @@ event_data
 event_size
     size in bytes of the event data.
 
+.. _`cros_ec_sensor_platform`:
+
+struct cros_ec_sensor_platform
+==============================
+
+.. c:type:: struct cros_ec_sensor_platform
+
+    ChromeOS EC sensor platform information
+
+.. _`cros_ec_sensor_platform.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cros_ec_sensor_platform {
+        u8 sensor_num;
+    }
+
+.. _`cros_ec_sensor_platform.members`:
+
+Members
+-------
+
+sensor_num
+    Id of the sensor, as reported by the EC.
+
 .. _`cros_ec_suspend`:
 
 cros_ec_suspend

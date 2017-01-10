@@ -1720,7 +1720,7 @@ _scsih_block_io_all_device
 Description
 -----------
 
-During device pull we need to appropiately set the sdev state.
+During device pull we need to appropriately set the sdev state.
 
 .. _`_scsih_block_io_device`:
 
@@ -1742,7 +1742,7 @@ _scsih_block_io_device
 Description
 -----------
 
-During device pull we need to appropiately set the sdev state.
+During device pull we need to appropriately set the sdev state.
 
 .. _`_scsih_block_io_to_children_attached_to_ex`:
 
@@ -2293,7 +2293,7 @@ _scsih_setup_eedp
         pointer to scsi command object
 
     :param Mpi2SCSIIORequest_t \*mpi_request:
-        pointer to the SCSI_IO reqest message frame
+        pointer to the SCSI_IO request message frame
 
 .. _`_scsih_setup_eedp.description`:
 
@@ -4098,6 +4098,26 @@ scsih_pci_mmio_enabled
 
     :param struct pci_dev \*pdev:
         pointer to PCI device
+
+.. _`scsih_ncq_prio_supp`:
+
+scsih_ncq_prio_supp
+===================
+
+.. c:function:: bool scsih_ncq_prio_supp(struct scsi_device *sdev)
+
+    Check for NCQ command priority support
+
+    :param struct scsi_device \*sdev:
+        scsi device struct
+
+.. _`scsih_ncq_prio_supp.description`:
+
+Description
+-----------
+
+This is called when a user indicates they would like to enable
+ncq command priorities. This works only on SATA devices.
 
 .. _`scsih_init`:
 

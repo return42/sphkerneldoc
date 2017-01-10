@@ -158,9 +158,9 @@ dev_pm_enable_wake_irq
 Description
 -----------
 
-Called from the bus code or the device driver for
-\ :c:func:`runtime_suspend`\  to enable the wake-up interrupt while
-the device is running.
+Optionally called from the bus code or the device driver for
+\ :c:func:`runtime_resume`\  to override the PM runtime core managed wake-up
+interrupt handling to enable the wake-up interrupt.
 
 Note that for \ :c:func:`runtime_suspend`\ ) the wake-up interrupts
 should be unconditionally enabled unlike for \ :c:func:`suspend`\ 
@@ -183,9 +183,58 @@ dev_pm_disable_wake_irq
 Description
 -----------
 
-Called from the bus code or the device driver for
-\ :c:func:`runtime_resume`\  to disable the wake-up interrupt while
-the device is running.
+Optionally called from the bus code or the device driver for
+\ :c:func:`runtime_suspend`\  to override the PM runtime core managed wake-up
+interrupt handling to disable the wake-up interrupt.
+
+.. _`dev_pm_enable_wake_irq_check`:
+
+dev_pm_enable_wake_irq_check
+============================
+
+.. c:function:: void dev_pm_enable_wake_irq_check(struct device *dev, bool can_change_status)
+
+    Checks and enables wake-up interrupt
+
+    :param struct device \*dev:
+        Device
+
+    :param bool can_change_status:
+        Can change wake-up interrupt status
+
+.. _`dev_pm_enable_wake_irq_check.description`:
+
+Description
+-----------
+
+Enables wakeirq conditionally. We need to enable wake-up interrupt
+lazily on the first \ :c:func:`rpm_suspend`\ . This is needed as the consumer device
+starts in RPM_SUSPENDED state, and the the first \ :c:func:`pm_runtime_get`\  would
+otherwise try to disable already disabled wakeirq. The wake-up interrupt
+starts disabled with IRQ_NOAUTOEN set.
+
+Should be only called from \ :c:func:`rpm_suspend`\  and \ :c:func:`rpm_resume`\  path.
+Caller must hold \ :c:type:`dev->power <dev>`\ .lock to change wirq->status
+
+.. _`dev_pm_disable_wake_irq_check`:
+
+dev_pm_disable_wake_irq_check
+=============================
+
+.. c:function:: void dev_pm_disable_wake_irq_check(struct device *dev)
+
+    Checks and disables wake-up interrupt
+
+    :param struct device \*dev:
+        Device
+
+.. _`dev_pm_disable_wake_irq_check.description`:
+
+Description
+-----------
+
+Disables wake-up interrupt conditionally based on status.
+Should be only called from \ :c:func:`rpm_suspend`\  and \ :c:func:`rpm_resume`\  path.
 
 .. _`dev_pm_arm_wake_irq`:
 

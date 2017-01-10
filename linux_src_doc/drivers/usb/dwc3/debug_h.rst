@@ -54,12 +54,15 @@ dwc3_gadget_event_string
 dwc3_ep_event_string
 ====================
 
-.. c:function:: const char *dwc3_ep_event_string(const struct dwc3_event_depevt *event)
+.. c:function:: const char *dwc3_ep_event_string(const struct dwc3_event_depevt *event, u32 ep0state)
 
     returns event name
 
     :param const struct dwc3_event_depevt \*event:
         then event code
+
+    :param u32 ep0state:
+        *undescribed*
 
 .. _`dwc3_gadget_event_type_string`:
 

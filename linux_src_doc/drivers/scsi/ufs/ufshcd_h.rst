@@ -279,11 +279,15 @@ Definition
         void (*exit)(struct ufs_hba *);
         u32 (*get_ufs_hci_version)(struct ufs_hba *);
         int (*clk_scale_notify)(struct ufs_hba *, bool,enum ufs_notify_change_status);
-        int (*setup_clocks)(struct ufs_hba *, bool);
+        int (*setup_clocks)(struct ufs_hba *, bool,enum ufs_notify_change_status);
         int (*setup_regulators)(struct ufs_hba *, bool);
         int (*hce_enable_notify)(struct ufs_hba *,enum ufs_notify_change_status);
         int (*link_startup_notify)(struct ufs_hba *,enum ufs_notify_change_status);
         int (*pwr_change_notify)(struct ufs_hba *,enum ufs_notify_change_status status,struct ufs_pa_layer_attr *,struct ufs_pa_layer_attr *);
+        void (*setup_xfer_req)(struct ufs_hba *, int, bool);
+        void (*setup_task_mgmt)(struct ufs_hba *, int, u8);
+        void (*hibern8_notify)(struct ufs_hba *, enum uic_cmd_dme,enum ufs_notify_change_status);
+        int (*apply_dev_quirks)(struct ufs_hba *);
         int (*suspend)(struct ufs_hba *, enum ufs_pm_op);
         int (*resume)(struct ufs_hba *, enum ufs_pm_op);
         void (*dbg_register_dump)(struct ufs_hba *hba);
@@ -328,6 +332,20 @@ pwr_change_notify
     called before and after a power mode change
     is carried out to allow vendor spesific capabilities
     to be set.
+
+setup_xfer_req
+    called before any transfer request is issued
+    to set some things
+
+setup_task_mgmt
+    called before any task management request is issued
+    to set some things
+
+hibern8_notify
+    called around hibern8 enter/exit
+
+apply_dev_quirks
+    called to apply device specific quirks
 
 suspend
     called during host controller PM callback
@@ -475,6 +493,7 @@ Definition
     #define UFSHCD_QUIRK_BROKEN_PA_RXHSUNTERMCAP UFS_BIT(3)
     #define UFSHCD_QUIRK_DME_PEER_ACCESS_AUTO_MODE UFS_BIT(4)
     #define UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION UFS_BIT(5)
+    #define UFSHCD_QUIRK_PRDT_BYTE_GRAN UFS_BIT(7)
         unsigned int quirks;
         unsigned int dev_quirks;
         wait_queue_head_t tm_wq;

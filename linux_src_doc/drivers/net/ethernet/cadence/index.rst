@@ -8,3 +8,4 @@ cadence
     :maxdepth: 1
 
     macb_c
+    macb_pci_c

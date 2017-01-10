@@ -57,11 +57,11 @@ tv_usec
 vmw_fence_obj_destroy
 =====================
 
-.. c:function:: void vmw_fence_obj_destroy(struct fence *f)
+.. c:function:: void vmw_fence_obj_destroy(struct dma_fence *f)
 
     Typically the vmw_fences_update function is called
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`vmw_fence_obj_destroy.description`:

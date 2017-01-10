@@ -36,7 +36,7 @@ Return
 ------
 
 negative values corresponding to error codes or ret != 0
-for ending the reading activity
+        for ending the reading activity
 
 .. _`iio_buffer_poll`:
 
@@ -59,8 +59,8 @@ iio_buffer_poll
 Return
 ------
 
-(POLLIN \| POLLRDNORM) if data is available for reading
-or 0 for other cases
+(POLLIN | POLLRDNORM) if data is available for reading
+        or 0 for other cases
 
 .. _`iio_buffer_wakeup_poll`:
 

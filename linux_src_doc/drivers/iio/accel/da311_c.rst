@@ -1,0 +1,26 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/accel/da311.c
+
+.. _`da311_chip_id`:
+
+DA311_CHIP_ID
+=============
+
+.. c:function::  DA311_CHIP_ID()
+
+    axis accelerometer
+
+.. _`da311_chip_id.description`:
+
+Description
+-----------
+
+Copyright (c) 2016 Hans de Goede <hdegoede@redhat.com>
+Copyright (c) 2011-2013 MiraMEMS Sensing Technology Co., Ltd.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms and conditions of the GNU General Public License,
+version 2, as published by the Free Software Foundation.
+
+.. This file was automatic generated / don't edit.
+

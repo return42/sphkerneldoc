@@ -9,3 +9,4 @@ soc
 
     bcm2835/index
     fsl/index
+    tegra/index

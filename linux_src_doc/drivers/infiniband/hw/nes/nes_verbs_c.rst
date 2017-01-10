@@ -166,12 +166,15 @@ nes_dealloc_pd
 nes_create_ah
 =============
 
-.. c:function:: struct ib_ah *nes_create_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr)
+.. c:function:: struct ib_ah *nes_create_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr, struct ib_udata *udata)
 
     :param struct ib_pd \*pd:
         *undescribed*
 
     :param struct ib_ah_attr \*ah_attr:
+        *undescribed*
+
+    :param struct ib_udata \*udata:
         *undescribed*
 
 .. _`nes_destroy_ah`:

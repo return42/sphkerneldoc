@@ -55,22 +55,19 @@ pdc_build_txd
     :param u32 flags:
         Flags to be stored in descriptor
 
-.. _`pdc_receive`:
+.. _`pdc_receive_one`:
 
-pdc_receive
-===========
+pdc_receive_one
+===============
 
-.. c:function:: int pdc_receive(struct pdc_state *pdcs, struct brcm_message *mssg)
+.. c:function:: int pdc_receive_one(struct pdc_state *pdcs)
 
     Receive a response message from a given SPU.
 
     :param struct pdc_state \*pdcs:
         PDC state for the SPU to receive from
 
-    :param struct brcm_message \*mssg:
-        mailbox message to be returned to client
-
-.. _`pdc_receive.description`:
+.. _`pdc_receive_one.description`:
 
 Description
 -----------
@@ -78,17 +75,7 @@ Description
 When the return code indicates success, the response message is available in
 the receive buffers provided prior to submission of the request.
 
-.. _`pdc_receive.input`:
-
-Input
------
-
-pdcs - PDC state structure for the SPU to be polled
-mssg - mailbox message to be returned to client. This function sets the
-context pointer on the message to help the client associate the
-response with a request.
-
-.. _`pdc_receive.return`:
+.. _`pdc_receive_one.return`:
 
 Return
 ------
@@ -96,6 +83,25 @@ Return
 PDC_SUCCESS if one or more receive descriptors was processed
 -EAGAIN indicates that no response message is available
 -EIO an error occurred
+
+.. _`pdc_receive`:
+
+pdc_receive
+===========
+
+.. c:function:: int pdc_receive(struct pdc_state *pdcs)
+
+    Process as many responses as are available in the rx ring.
+
+    :param struct pdc_state \*pdcs:
+        PDC state
+
+.. _`pdc_receive.description`:
+
+Description
+-----------
+
+Called within the hard IRQ.
 
 .. _`pdc_tx_list_sg_add`:
 
@@ -228,15 +234,15 @@ PDC_SUCCESS if successful
 pdc_irq_handler
 ===============
 
-.. c:function:: irqreturn_t pdc_irq_handler(int irq, void *cookie)
+.. c:function:: irqreturn_t pdc_irq_handler(int irq, void *data)
 
     Interrupt handler called in interrupt context.
 
     :param int irq:
         Interrupt number that has fired
 
-    :param void \*cookie:
-        PDC state for DMA engine that generated the interrupt
+    :param void \*data:
+        device struct for DMA engine that generated the interrupt
 
 .. _`pdc_irq_handler.description`:
 
@@ -255,37 +261,17 @@ Return
 IRQ_WAKE_THREAD if interrupt is ours
 IRQ_NONE otherwise
 
-.. _`pdc_irq_thread`:
+.. _`pdc_tasklet_cb`:
 
-pdc_irq_thread
+pdc_tasklet_cb
 ==============
 
-.. c:function:: irqreturn_t pdc_irq_thread(int irq, void *cookie)
+.. c:function:: void pdc_tasklet_cb(unsigned long data)
 
-    Function invoked on deferred thread when a DMA tx has completed or data is available to receive.
+    Tasklet callback that runs the deferred processing after a DMA receive interrupt. Reenables the receive interrupt.
 
-    :param int irq:
-        Interrupt number
-
-    :param void \*cookie:
-        PDC state for PDC that generated the interrupt
-
-.. _`pdc_irq_thread.description`:
-
-Description
------------
-
-On DMA tx complete, notify the mailbox client. On DMA rx complete, process
-as many SPU response messages as are available and send each to the mailbox
-client.
-
-.. _`pdc_irq_thread.return`:
-
-Return
-------
-
-IRQ_HANDLED if we recognized and handled the interrupt
-IRQ_NONE otherwise
+    :param unsigned long data:
+        PDC state structure
 
 .. _`pdc_ring_init`:
 
@@ -309,6 +295,70 @@ Return
 
 PDC_SUCCESS if ring initialized
 < 0 otherwise
+
+.. _`pdc_desc_count`:
+
+pdc_desc_count
+==============
+
+.. c:function:: u32 pdc_desc_count(struct scatterlist *sg)
+
+    Count the number of DMA descriptors that will be required for a given scatterlist. Account for the max length of a DMA buffer.
+
+    :param struct scatterlist \*sg:
+        Scatterlist to be DMA'd
+
+.. _`pdc_desc_count.return`:
+
+Return
+------
+
+Number of descriptors required
+
+.. _`pdc_rings_full`:
+
+pdc_rings_full
+==============
+
+.. c:function:: bool pdc_rings_full(struct pdc_state *pdcs, int tx_cnt, int rx_cnt)
+
+    Check whether the tx ring has room for tx_cnt descriptors and the rx ring has room for rx_cnt descriptors.
+
+    :param struct pdc_state \*pdcs:
+        PDC state
+
+    :param int tx_cnt:
+        The number of descriptors required in the tx ring
+
+    :param int rx_cnt:
+        The number of descriptors required i the rx ring
+
+.. _`pdc_rings_full.return`:
+
+Return
+------
+
+true if one of the rings does not have enough space
+false if sufficient space is available in both rings
+
+.. _`pdc_last_tx_done`:
+
+pdc_last_tx_done
+================
+
+.. c:function:: bool pdc_last_tx_done(struct mbox_chan *chan)
+
+    If both the tx and rx rings have at least PDC_RING_SPACE_MIN descriptors available, then indicate that the mailbox framework can submit another message.
+
+    :param struct mbox_chan \*chan:
+        mailbox channel to check
+
+.. _`pdc_last_tx_done.return`:
+
+Return
+------
+
+true if PDC can accept another message on this channel
 
 .. _`pdc_send_data`:
 
@@ -363,6 +413,18 @@ pdc_hw_init
 
     :param struct pdc_state \*pdcs:
         state of the PDC
+
+.. _`pdc_hw_disable`:
+
+pdc_hw_disable
+==============
+
+.. c:function:: void pdc_hw_disable(struct pdc_state *pdcs)
+
+    Disable the tx and rx control in the hw.
+
+    :param struct pdc_state \*pdcs:
+        PDC state structure
 
 .. _`pdc_rx_buf_pool_create`:
 

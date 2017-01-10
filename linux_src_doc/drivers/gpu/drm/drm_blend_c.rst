@@ -1,34 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_blend.c
 
-.. _`drm_mode_create_rotation_property`:
+.. _`drm_plane_create_rotation_property`:
 
-drm_mode_create_rotation_property
-=================================
+drm_plane_create_rotation_property
+==================================
 
-.. c:function:: struct drm_property *drm_mode_create_rotation_property(struct drm_device *dev, unsigned int supported_rotations)
+.. c:function:: int drm_plane_create_rotation_property(struct drm_plane *plane, unsigned int rotation, unsigned int supported_rotations)
 
     create a new rotation property
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_plane \*plane:
+        drm plane
+
+    :param unsigned int rotation:
+        initial value of the rotation property
 
     :param unsigned int supported_rotations:
         bitmask of supported rotations and reflections
 
-.. _`drm_mode_create_rotation_property.description`:
+.. _`drm_plane_create_rotation_property.description`:
 
 Description
 -----------
 
 This creates a new property with the selected support for transformations.
-The resulting property should be stored in \ ``rotation_property``\  in
-\ :c:type:`struct drm_mode_config <drm_mode_config>`\ . It then must be attached to each plane which supports
-rotations using \ :c:func:`drm_object_attach_property`\ .
-
-FIXME: Probably better if the rotation property is created on each plane,
-like the zpos property. Otherwise it's not possible to allow different
-rotation modes on different planes.
 
 Since a rotation by 180° degress is the same as reflecting both along the x
 and the y axis the rotation property is somewhat redundant. Drivers can use
@@ -37,7 +33,7 @@ and the y axis the rotation property is somewhat redundant. Drivers can use
 The property exposed to userspace is a bitmask property (see
 \ :c:func:`drm_property_create_bitmask`\ ) called "rotation" and has the following
 
-.. _`drm_mode_create_rotation_property.drm_rotate_0`:
+.. _`drm_plane_create_rotation_property.drm_rotate_0`:
 
 DRM_ROTATE_0
 ------------
@@ -45,35 +41,35 @@ DRM_ROTATE_0
 
      "rotate-0"
 
-.. _`drm_mode_create_rotation_property.drm_rotate_90`:
+.. _`drm_plane_create_rotation_property.drm_rotate_90`:
 
 DRM_ROTATE_90
 -------------
 
      "rotate-90"
 
-.. _`drm_mode_create_rotation_property.drm_rotate_180`:
+.. _`drm_plane_create_rotation_property.drm_rotate_180`:
 
 DRM_ROTATE_180
 --------------
 
      "rotate-180"
 
-.. _`drm_mode_create_rotation_property.drm_rotate_270`:
+.. _`drm_plane_create_rotation_property.drm_rotate_270`:
 
 DRM_ROTATE_270
 --------------
 
      "rotate-270"
 
-.. _`drm_mode_create_rotation_property.drm_reflect_x`:
+.. _`drm_plane_create_rotation_property.drm_reflect_x`:
 
 DRM_REFLECT_X
 -------------
 
      "reflect-x"
 
-.. _`drm_mode_create_rotation_property.drm_refelct_y`:
+.. _`drm_plane_create_rotation_property.drm_refelct_y`:
 
 DRM_REFELCT_Y
 -------------

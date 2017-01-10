@@ -9,7 +9,6 @@ dwc3
 
     core_c
     core_h
-    debug_c
     debug_h
     debugfs_c
     dwc3-keystone_c

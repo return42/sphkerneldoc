@@ -21,7 +21,7 @@ Description
 Some userspace presumes that the first connected connector is the main
 display, where it's supposed to display e.g. the login screen. For
 laptops, this should be the main panel. Use this function to sort all
-(eDP/LVDS) panels to the front of the connector list, instead of
+(eDP/LVDS/DSI) panels to the front of the connector list, instead of
 painstakingly trying to initialize them in the right order.
 
 .. _`drm_helper_mode_fill_fb_struct`:

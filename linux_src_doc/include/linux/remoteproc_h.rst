@@ -753,7 +753,7 @@ Definition
         struct list_head node;
         struct iommu_domain *domain;
         const char *name;
-        const char *firmware;
+        char *firmware;
         void *priv;
         const struct rproc_ops *ops;
         struct device dev;
@@ -769,6 +769,7 @@ Definition
         struct completion firmware_loading_complete;
         u32 bootaddr;
         struct list_head rvdevs;
+        struct list_head subdevs;
         struct idr notifyids;
         int index;
         struct work_struct crash_handler;
@@ -777,7 +778,6 @@ Definition
         bool recovery_disabled;
         int max_notifyid;
         struct resource_table *table_ptr;
-        struct resource_table *cached_table;
         bool has_iommu;
         bool auto_boot;
     }
@@ -844,6 +844,9 @@ bootaddr
 rvdevs
     list of remote virtio devices
 
+subdevs
+    list of subdevices, to following the running state
+
 notifyids
     idr for dynamically assigning rproc-wide unique notify ids
 
@@ -866,16 +869,49 @@ max_notifyid
     largest allocated notify id.
 
 table_ptr
-    pointer to the resource table in effect
-
-cached_table
-    copy of the resource table
+    our copy of the resource table
 
 has_iommu
     flag to indicate if remote processor is behind an MMU
 
 auto_boot
     *undescribed*
+
+.. _`rproc_subdev`:
+
+struct rproc_subdev
+===================
+
+.. c:type:: struct rproc_subdev
+
+    subdevice tied to a remoteproc
+
+.. _`rproc_subdev.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rproc_subdev {
+        struct list_head node;
+        int (*probe)(struct rproc_subdev *subdev);
+        void (*remove)(struct rproc_subdev *subdev);
+    }
+
+.. _`rproc_subdev.members`:
+
+Members
+-------
+
+node
+    list node related to the rproc subdevs list
+
+probe
+    probe function, called as the rproc is started
+
+remove
+    remove function, called as the rproc is stopped
 
 .. _`rproc_vring`:
 
@@ -950,6 +986,9 @@ Definition
 .. code-block:: c
 
     struct rproc_vdev {
+        struct kref refcount;
+        struct rproc_subdev subdev;
+        unsigned int id;
         struct list_head node;
         struct rproc *rproc;
         struct virtio_device vdev;
@@ -961,6 +1000,15 @@ Definition
 
 Members
 -------
+
+refcount
+    reference counter for the vdev and vring allocations
+
+subdev
+    handle for registering the vdev as a rproc subdevice
+
+id
+    virtio device id (as in virtio_ids.h)
 
 node
     list node

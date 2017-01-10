@@ -270,6 +270,27 @@ Description
 
 Return the current frame number
 
+.. _`dwc2_gadget_get_chain_limit`:
+
+dwc2_gadget_get_chain_limit
+===========================
+
+.. c:function:: unsigned int dwc2_gadget_get_chain_limit(struct dwc2_hsotg_ep *hs_ep)
+
+    get the maximum data payload value of the DMA descriptor chain prepared for specific endpoint
+
+    :param struct dwc2_hsotg_ep \*hs_ep:
+        The endpoint
+
+.. _`dwc2_gadget_get_chain_limit.description`:
+
+Description
+-----------
+
+Return the maximum data that can be queued in one go on a given endpoint
+depending on its descriptor chain capacity so that transfers that
+are too long can be split.
+
 .. _`dwc2_hsotg_start_req`:
 
 dwc2_hsotg_start_req
@@ -751,7 +772,7 @@ dwc2_hsotg_ep0_mps
 dwc2_hsotg_set_ep_maxpacket
 ===========================
 
-.. c:function:: void dwc2_hsotg_set_ep_maxpacket(struct dwc2_hsotg *hsotg, unsigned int ep, unsigned int mps, unsigned int dir_in)
+.. c:function:: void dwc2_hsotg_set_ep_maxpacket(struct dwc2_hsotg *hsotg, unsigned int ep, unsigned int mps, unsigned int mc, unsigned int dir_in)
 
     set endpoint's max-packet field
 
@@ -763,6 +784,9 @@ dwc2_hsotg_set_ep_maxpacket
 
     :param unsigned int mps:
         The maximum packet size in bytes
+
+    :param unsigned int mc:
+        The multicount value
 
     :param unsigned int dir_in:
         *undescribed*

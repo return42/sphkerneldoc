@@ -65,6 +65,26 @@ Description
 Returns the associated domain number from DT in the range [0-0xffff], or
 a negative value if the required property is not found.
 
+.. _`of_pci_get_max_link_speed`:
+
+of_pci_get_max_link_speed
+=========================
+
+.. c:function:: int of_pci_get_max_link_speed(struct device_node *node)
+
+    a property called "max-link-speed" of the given device node.
+
+    :param struct device_node \*node:
+        device tree node with the max link speed information
+
+.. _`of_pci_get_max_link_speed.description`:
+
+Description
+-----------
+
+Returns the associated max link speed from DT, or a negative value if the
+required property is not found or is invalid.
+
 .. _`of_pci_check_probe_only`:
 
 of_pci_check_probe_only

@@ -582,35 +582,6 @@ Description
 
 \see cl_page_operations::cpo_flush()
 
-.. _`cl_page_is_under_lock`:
-
-cl_page_is_under_lock
-=====================
-
-.. c:function:: int cl_page_is_under_lock(const struct lu_env *env, struct cl_io *io, struct cl_page *page, pgoff_t *max_index)
-
-    mode.
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct cl_io \*io:
-        *undescribed*
-
-    :param struct cl_page \*page:
-        *undescribed*
-
-    :param pgoff_t \*max_index:
-        *undescribed*
-
-.. _`cl_page_is_under_lock.description`:
-
-Description
------------
-
-\return the same as in cl_page_operations::cpo_is_under_lock() method.
-\see cl_page_operations::cpo_is_under_lock()
-
 .. _`cl_page_clip`:
 
 cl_page_clip

@@ -39,5 +39,45 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
+.. _`dwc3_pci`:
+
+struct dwc3_pci
+===============
+
+.. c:type:: struct dwc3_pci
+
+    Driver private structure
+
+.. _`dwc3_pci.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dwc3_pci {
+        struct platform_device *dwc3;
+        struct pci_dev *pci;
+        u8 uuid[16];
+        unsigned int has_dsm_for_pm:1;
+    }
+
+.. _`dwc3_pci.members`:
+
+Members
+-------
+
+dwc3
+    child dwc3 platform_device
+
+pci
+    our link to PCI bus
+
+uuid
+    _DSM UUID
+
+has_dsm_for_pm
+    true for devices which need to run \_DSM on runtime PM
+
 .. This file was automatic generated / don't edit.
 

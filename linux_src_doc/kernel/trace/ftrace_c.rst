@@ -384,6 +384,26 @@ Description
 Filters denote which functions should be enabled when tracing is enabled
 If \ ``ip``\  is NULL, it failes to update filter.
 
+.. _`ftrace_ops_set_global_filter`:
+
+ftrace_ops_set_global_filter
+============================
+
+.. c:function:: void ftrace_ops_set_global_filter(struct ftrace_ops *ops)
+
+    setup ops to use global filters \ ``ops``\  - the ops which will use the global filters
+
+    :param struct ftrace_ops \*ops:
+        *undescribed*
+
+.. _`ftrace_ops_set_global_filter.description`:
+
+Description
+-----------
+
+ftrace users who need global function trace filtering should call this.
+It can set the global filter only if ops were not initialized before.
+
 .. _`ftrace_set_filter`:
 
 ftrace_set_filter

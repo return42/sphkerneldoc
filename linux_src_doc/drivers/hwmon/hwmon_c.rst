@@ -37,7 +37,7 @@ Returns the pointer to the new device.
 hwmon_device_register_with_info
 ===============================
 
-.. c:function:: struct device *hwmon_device_register_with_info(struct device *dev, const char *name, void *drvdata, const struct hwmon_chip_info *chip, const struct attribute_group **groups)
+.. c:function:: struct device *hwmon_device_register_with_info(struct device *dev, const char *name, void *drvdata, const struct hwmon_chip_info *chip, const struct attribute_group **extra_groups)
 
     register w/ hwmon
 
@@ -53,8 +53,8 @@ hwmon_device_register_with_info
     :param const struct hwmon_chip_info \*chip:
         *undescribed*
 
-    :param const struct attribute_group \*\*groups:
-        *undescribed*
+    :param const struct attribute_group \*\*extra_groups:
+        pointer to list of additional non-standard attribute groups
 
 .. _`hwmon_device_register_with_info.description`:
 

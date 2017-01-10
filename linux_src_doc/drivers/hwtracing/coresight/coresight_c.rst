@@ -33,17 +33,45 @@ csdev
 link
     hook to the list.
 
+.. _`coresight_get_enabled_sink`:
+
+coresight_get_enabled_sink
+==========================
+
+.. c:function:: struct coresight_device *coresight_get_enabled_sink(bool deactivate)
+
+    returns the first enabled sink found on the bus
+
+    :param bool deactivate:
+        Whether the 'enable_sink' flag should be reset
+
+.. _`coresight_get_enabled_sink.description`:
+
+Description
+-----------
+
+When operated from perf the deactivate parameter should be set to 'true'.
+That way the "enabled_sink" flag of the sink that was selected can be reset,
+allowing for other concurrent perf sessions to choose a different sink.
+
+When operated from sysFS users have full control and as such the deactivate
+parameter should be set to 'false', hence mandating users to explicitly
+clear the flag.
+
 .. _`_coresight_build_path`:
 
 _coresight_build_path
 =====================
 
-.. c:function:: int _coresight_build_path(struct coresight_device *csdev, struct list_head *path)
+.. c:function:: int _coresight_build_path(struct coresight_device *csdev, struct coresight_device *sink, struct list_head *path)
 
     recursively build a path from a \ ``csdev``\  to a sink.
 
     :param struct coresight_device \*csdev:
         The device to start from.
+
+    :param struct coresight_device \*sink:
+        *undescribed*
 
     :param struct list_head \*path:
         The list to add devices to.

@@ -37,6 +37,9 @@ Definition
         bool signal_direction;
         bool pwrreg_clkgate;
         bool busy_detect;
+        u32 busy_dpsm_flag;
+        u32 busy_detect_flag;
+        u32 busy_detect_mask;
         bool pwrreg_nopower;
         bool explicit_mclk_control;
         bool qcom_fifo;
@@ -107,7 +110,18 @@ pwrreg_clkgate
     MMCIPOWER register must be used to gate the clock
 
 busy_detect
-    true if busy detection on dat0 is supported
+    true if the variant supports busy detection on DAT0.
+
+busy_dpsm_flag
+    bitmask enabling busy detection in the DPSM
+
+busy_detect_flag
+    bitmask identifying the bit in the MMCISTATUS register
+    indicating that the card is busy
+
+busy_detect_mask
+    bitmask identifying the bit in the MMCIMASK0 to mask for
+    getting busy end detection interrupts
 
 pwrreg_nopower
     bits in MMCIPOWER don't controls ext. power supply

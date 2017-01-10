@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct clocksource {
-        cycle_t (*read)(struct clocksource *cs);
-        cycle_t mask;
+        u64 (*read)(struct clocksource *cs);
+        u64 mask;
         u32 mult;
         u32 shift;
         u64 max_idle_ns;
@@ -173,11 +173,11 @@ clocksource shift value
 clocksource_cyc2ns
 ==================
 
-.. c:function:: s64 clocksource_cyc2ns(cycle_t cycles, u32 mult, u32 shift)
+.. c:function:: s64 clocksource_cyc2ns(u64 cycles, u32 mult, u32 shift)
 
     converts clocksource cycles to nanoseconds
 
-    :param cycle_t cycles:
+    :param u64 cycles:
         cycles
 
     :param u32 mult:
@@ -191,7 +191,10 @@ clocksource_cyc2ns
 Description
 -----------
 
-Converts cycles to nanoseconds, using the given mult and shift.
+Converts clocksource cycles to nanoseconds, using the given \ ``mult``\  and \ ``shift``\ .
+The code is optimized for performance and is not intended to work
+with absolute clocksource cycles (as those will easily overflow),
+but is only intended to be used with relative (delta) clocksource cycles.
 
 XXX - This could use some \ :c:func:`mult_lxl_ll`\  asm optimization
 

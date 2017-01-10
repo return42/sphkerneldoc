@@ -1580,5 +1580,35 @@ Description
 
 This can be used to allocate a paged skb, given a maximal order for frags.
 
+.. _`skb_condense`:
+
+skb_condense
+============
+
+.. c:function:: void skb_condense(struct sk_buff *skb)
+
+    try to get rid of fragments/frag_list if possible
+
+    :param struct sk_buff \*skb:
+        buffer
+
+.. _`skb_condense.description`:
+
+Description
+-----------
+
+Can be used to save memory before skb is added to a busy queue.
+If packet has bytes in frags and enough tail room in skb->head,
+pull all of them, so that we can free the frags right now and adjust
+truesize.
+
+.. _`skb_condense.notes`:
+
+Notes
+-----
+
+We do not reallocate skb->head thus can not fail.
+Caller must re-evaluate skb->truesize if needed.
+
 .. This file was automatic generated / don't edit.
 

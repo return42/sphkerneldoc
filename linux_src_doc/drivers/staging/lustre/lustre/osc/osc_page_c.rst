@@ -40,6 +40,47 @@ osc_page_submit
     :param int brw_flags:
         *undescribed*
 
+.. _`lru_shrink_min`:
+
+lru_shrink_min
+==============
+
+.. c:function:: int lru_shrink_min(struct client_obd *cli)
+
+    number of pages to avoid running out of LRU slots.
+
+    :param struct client_obd \*cli:
+        *undescribed*
+
+.. _`lru_shrink_max`:
+
+lru_shrink_max
+==============
+
+.. c:function:: int lru_shrink_max(struct client_obd *cli)
+
+    :param struct client_obd \*cli:
+        *undescribed*
+
+.. _`osc_cache_too_much`:
+
+osc_cache_too_much
+==================
+
+.. c:function:: int osc_cache_too_much(struct client_obd *cli)
+
+    we should free slots aggressively. In this way, slots are freed in a steady step to maintain fairness among OSCs.
+
+    :param struct client_obd \*cli:
+        *undescribed*
+
+.. _`osc_cache_too_much.description`:
+
+Description
+-----------
+
+Return how many LRU pages should be freed.
+
 .. _`osc_lru_del`:
 
 osc_lru_del
@@ -107,6 +148,21 @@ osc_lru_shrink
         *undescribed*
 
     :param bool force:
+        *undescribed*
+
+.. _`osc_lru_reclaim`:
+
+osc_lru_reclaim
+===============
+
+.. c:function:: long osc_lru_reclaim(struct client_obd *cli, unsigned long npages)
+
+    @npages of LRU slots. For performance consideration, it's better to drop LRU pages in batch. Therefore, the actual number is adjusted at least max_pages_per_rpc.
+
+    :param struct client_obd \*cli:
+        *undescribed*
+
+    :param unsigned long npages:
         *undescribed*
 
 .. _`osc_lru_reserve`:

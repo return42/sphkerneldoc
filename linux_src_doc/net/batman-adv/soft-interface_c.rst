@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/soft-interface.c
 
+.. _`batadv_sum_counter`:
+
+batadv_sum_counter
+==================
+
+.. c:function:: u64 batadv_sum_counter(struct batadv_priv *bat_priv, size_t idx)
+
+    Sum the cpu-local counters for index 'idx'
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param size_t idx:
+        index of counter to sum up
+
+.. _`batadv_sum_counter.return`:
+
+Return
+------
+
+sum of all cpu-local counters
+
 .. _`batadv_interface_set_rx_mode`:
 
 batadv_interface_set_rx_mode

@@ -30,13 +30,16 @@ NULL.
 If neigh_node is NULL, then the packet is broadcasted using hard_iface,
 otherwise it is sent as unicast to the given neighbor.
 
+Regardless of the return value, the skb is consumed.
+
 .. _`batadv_send_skb_packet.return`:
 
 Return
 ------
 
-NET_TX_DROP in case of error or the result of dev_queue_xmit(skb)
-otherwise
+A negative errno code is returned on a failure. A success does not
+guarantee the frame will be transmitted as it may be dropped due
+to congestion or traffic shaping.
 
 .. _`batadv_send_skb_to_orig`:
 
@@ -71,11 +74,9 @@ attempted.
 Return
 ------
 
--1 on failure (and the skb is not consumed), -EINPROGRESS if the
-skb is buffered for later transmit or the NET_XMIT status returned by the
+negative errno code on a failure, -EINPROGRESS if the skb is
+buffered for later transmit or the NET_XMIT status returned by the
 lower routine if the packet has been passed down.
-
-If the returning value is not -1 the skb has been consumed.
 
 .. _`batadv_send_skb_push_fill_unicast`:
 
@@ -280,12 +281,15 @@ NET_XMIT_DROP in case of error or NET_XMIT_SUCCESS otherwise.
 batadv_forw_packet_free
 =======================
 
-.. c:function:: void batadv_forw_packet_free(struct batadv_forw_packet *forw_packet)
+.. c:function:: void batadv_forw_packet_free(struct batadv_forw_packet *forw_packet, bool dropped)
 
     free a forwarding packet
 
     :param struct batadv_forw_packet \*forw_packet:
         The packet to free
+
+    :param bool dropped:
+        whether the packet is freed because is is dropped
 
 .. _`batadv_forw_packet_free.description`:
 
@@ -332,12 +336,214 @@ Return
 
 An allocated forwarding packet on success, NULL otherwise.
 
+.. _`batadv_forw_packet_was_stolen`:
+
+batadv_forw_packet_was_stolen
+=============================
+
+.. c:function:: bool batadv_forw_packet_was_stolen(struct batadv_forw_packet *forw_packet)
+
+    check whether someone stole this packet
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the forwarding packet to check
+
+.. _`batadv_forw_packet_was_stolen.description`:
+
+Description
+-----------
+
+This function checks whether the given forwarding packet was claimed by
+someone else for \ :c:func:`free`\ .
+
+.. _`batadv_forw_packet_was_stolen.return`:
+
+Return
+------
+
+True if someone stole it, false otherwise.
+
+.. _`batadv_forw_packet_steal`:
+
+batadv_forw_packet_steal
+========================
+
+.. c:function:: bool batadv_forw_packet_steal(struct batadv_forw_packet *forw_packet, spinlock_t *lock)
+
+    claim a forw_packet for \ :c:func:`free`\ 
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the forwarding packet to steal
+
+    :param spinlock_t \*lock:
+        a key to the store to steal from (e.g. forw_{bat,bcast}_list_lock)
+
+.. _`batadv_forw_packet_steal.description`:
+
+Description
+-----------
+
+This function tries to steal a specific forw_packet from global
+visibility for the purpose of getting it for \ :c:func:`free`\ . That means
+the caller is \*not\* allowed to requeue it afterwards.
+
+.. _`batadv_forw_packet_steal.return`:
+
+Return
+------
+
+True if stealing was successful. False if someone else stole it
+before us.
+
+.. _`batadv_forw_packet_list_steal`:
+
+batadv_forw_packet_list_steal
+=============================
+
+.. c:function:: void batadv_forw_packet_list_steal(struct hlist_head *forw_list, struct hlist_head *cleanup_list, const struct batadv_hard_iface *hard_iface)
+
+    claim a list of forward packets for \ :c:func:`free`\ 
+
+    :param struct hlist_head \*forw_list:
+        the to be stolen forward packets
+
+    :param struct hlist_head \*cleanup_list:
+        a backup pointer, to be able to dispose the packet later
+
+    :param const struct batadv_hard_iface \*hard_iface:
+        the interface to steal forward packets from
+
+.. _`batadv_forw_packet_list_steal.description`:
+
+Description
+-----------
+
+This function claims responsibility to free any forw_packet queued on the
+given hard_iface. If hard_iface is NULL forwarding packets on all hard
+interfaces will be claimed.
+
+The packets are being moved from the forw_list to the cleanup_list and
+by that allows already running threads to notice the claiming.
+
+.. _`batadv_forw_packet_list_free`:
+
+batadv_forw_packet_list_free
+============================
+
+.. c:function:: void batadv_forw_packet_list_free(struct hlist_head *head)
+
+    free a list of forward packets
+
+    :param struct hlist_head \*head:
+        a list of to be freed forw_packets
+
+.. _`batadv_forw_packet_list_free.description`:
+
+Description
+-----------
+
+This function cancels the scheduling of any packet in the provided list,
+waits for any possibly running packet forwarding thread to finish and
+finally, safely frees this forward packet.
+
+This function might sleep.
+
+.. _`batadv_forw_packet_queue`:
+
+batadv_forw_packet_queue
+========================
+
+.. c:function:: void batadv_forw_packet_queue(struct batadv_forw_packet *forw_packet, spinlock_t *lock, struct hlist_head *head, unsigned long send_time)
+
+    try to queue a forwarding packet
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the forwarding packet to queue
+
+    :param spinlock_t \*lock:
+        a key to the store (e.g. forw_{bat,bcast}_list_lock)
+
+    :param struct hlist_head \*head:
+        the shelve to queue it on (e.g. forw_{bat,bcast}_list)
+
+    :param unsigned long send_time:
+        timestamp (jiffies) when the packet is to be sent
+
+.. _`batadv_forw_packet_queue.description`:
+
+Description
+-----------
+
+This function tries to (re)queue a forwarding packet. Requeuing
+is prevented if the according interface is shutting down
+(e.g. if \ :c:func:`batadv_forw_packet_list_steal`\  was called for this
+packet earlier).
+
+Calling \ :c:func:`batadv_forw_packet_queue`\  after a call to
+\ :c:func:`batadv_forw_packet_steal`\  is forbidden!
+
+Caller needs to ensure that forw_packet->delayed_work was initialized.
+
+.. _`batadv_forw_packet_bcast_queue`:
+
+batadv_forw_packet_bcast_queue
+==============================
+
+.. c:function:: void batadv_forw_packet_bcast_queue(struct batadv_priv *bat_priv, struct batadv_forw_packet *forw_packet, unsigned long send_time)
+
+    try to queue a broadcast packet
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the forwarding packet to queue
+
+    :param unsigned long send_time:
+        timestamp (jiffies) when the packet is to be sent
+
+.. _`batadv_forw_packet_bcast_queue.description`:
+
+Description
+-----------
+
+This function tries to (re)queue a broadcast packet.
+
+Caller needs to ensure that forw_packet->delayed_work was initialized.
+
+.. _`batadv_forw_packet_ogmv1_queue`:
+
+batadv_forw_packet_ogmv1_queue
+==============================
+
+.. c:function:: void batadv_forw_packet_ogmv1_queue(struct batadv_priv *bat_priv, struct batadv_forw_packet *forw_packet, unsigned long send_time)
+
+    try to queue an OGMv1 packet
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the forwarding packet to queue
+
+    :param unsigned long send_time:
+        timestamp (jiffies) when the packet is to be sent
+
+.. _`batadv_forw_packet_ogmv1_queue.description`:
+
+Description
+-----------
+
+This function tries to (re)queue an OGMv1 packet.
+
+Caller needs to ensure that forw_packet->delayed_work was initialized.
+
 .. _`batadv_add_bcast_packet_to_list`:
 
 batadv_add_bcast_packet_to_list
 ===============================
 
-.. c:function:: int batadv_add_bcast_packet_to_list(struct batadv_priv *bat_priv, const struct sk_buff *skb, unsigned long delay)
+.. c:function:: int batadv_add_bcast_packet_to_list(struct batadv_priv *bat_priv, const struct sk_buff *skb, unsigned long delay, bool own_packet)
 
     queue broadcast packet for multiple sends
 
@@ -349,6 +555,9 @@ batadv_add_bcast_packet_to_list
 
     :param unsigned long delay:
         number of jiffies to wait before sending
+
+    :param bool own_packet:
+        true if it is a self-generated broadcast packet
 
 .. _`batadv_add_bcast_packet_to_list.description`:
 
@@ -367,6 +576,32 @@ Return
 ------
 
 NETDEV_TX_OK on success and NETDEV_TX_BUSY on errors.
+
+.. _`batadv_purge_outstanding_packets`:
+
+batadv_purge_outstanding_packets
+================================
+
+.. c:function:: void batadv_purge_outstanding_packets(struct batadv_priv *bat_priv, const struct batadv_hard_iface *hard_iface)
+
+    stop/purge scheduled bcast/OGMv1 packets
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param const struct batadv_hard_iface \*hard_iface:
+        the hard interface to cancel and purge bcast/ogm packets on
+
+.. _`batadv_purge_outstanding_packets.description`:
+
+Description
+-----------
+
+This method cancels and purges any broadcast and OGMv1 packet on the given
+hard_iface. If hard_iface is NULL, broadcast and OGMv1 packets on all hard
+interfaces will be canceled and purged.
+
+This function might sleep.
 
 .. This file was automatic generated / don't edit.
 

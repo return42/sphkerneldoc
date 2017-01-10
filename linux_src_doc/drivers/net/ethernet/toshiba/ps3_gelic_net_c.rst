@@ -511,28 +511,6 @@ Description
 
 returns the number of the processed packets
 
-.. _`gelic_net_change_mtu`:
-
-gelic_net_change_mtu
-====================
-
-.. c:function:: int gelic_net_change_mtu(struct net_device *netdev, int new_mtu)
-
-    changes the MTU of an interface
-
-    :param struct net_device \*netdev:
-        interface device structure
-
-    :param int new_mtu:
-        new MTU value
-
-.. _`gelic_net_change_mtu.description`:
-
-Description
------------
-
-returns 0 on success, <0 on failure
-
 .. _`gelic_card_interrupt`:
 
 gelic_card_interrupt

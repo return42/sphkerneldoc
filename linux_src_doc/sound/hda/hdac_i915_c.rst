@@ -89,7 +89,7 @@ at ELD notifier for the hotplug.
 snd_hdac_sync_audio_rate
 ========================
 
-.. c:function:: int snd_hdac_sync_audio_rate(struct hdac_device *codec, hda_nid_t nid, int rate)
+.. c:function:: int snd_hdac_sync_audio_rate(struct hdac_device *codec, hda_nid_t nid, int dev_id, int rate)
 
     Set N/CTS based on the sample rate
 
@@ -98,6 +98,9 @@ snd_hdac_sync_audio_rate
 
     :param hda_nid_t nid:
         the pin widget NID
+
+    :param int dev_id:
+        device identifier
 
     :param int rate:
         the sample rate to set
@@ -118,7 +121,7 @@ Returns zero for success, or a negative error code.
 snd_hdac_acomp_get_eld
 ======================
 
-.. c:function:: int snd_hdac_acomp_get_eld(struct hdac_device *codec, hda_nid_t nid, bool *audio_enabled, char *buffer, int max_bytes)
+.. c:function:: int snd_hdac_acomp_get_eld(struct hdac_device *codec, hda_nid_t nid, int dev_id, bool *audio_enabled, char *buffer, int max_bytes)
 
     Get the audio state and ELD via component
 
@@ -127,6 +130,9 @@ snd_hdac_acomp_get_eld
 
     :param hda_nid_t nid:
         the pin widget NID
+
+    :param int dev_id:
+        device identifier
 
     :param bool \*audio_enabled:
         the pointer to store the current audio state

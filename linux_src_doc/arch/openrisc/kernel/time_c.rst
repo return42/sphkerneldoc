@@ -6,7 +6,7 @@
 openrisc_timer_read
 ===================
 
-.. c:function:: cycle_t openrisc_timer_read(struct clocksource *cs)
+.. c:function:: u64 openrisc_timer_read(struct clocksource *cs)
 
     Based on OpenRISC timer/counter
 

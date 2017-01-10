@@ -77,6 +77,51 @@ COMEDI_SUBD_SERIAL
 COMEDI_SUBD_PWM
     Pulse-Width Modulation output.
 
+.. _`comedi_io_direction`:
+
+enum comedi_io_direction
+========================
+
+.. c:type:: enum comedi_io_direction
+
+    COMEDI I/O directions
+
+.. _`comedi_io_direction.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum comedi_io_direction {
+        COMEDI_INPUT,
+        COMEDI_OUTPUT,
+        COMEDI_OPENDRAIN
+    };
+
+.. _`comedi_io_direction.constants`:
+
+Constants
+---------
+
+COMEDI_INPUT
+    Input.
+
+COMEDI_OUTPUT
+    Output.
+
+COMEDI_OPENDRAIN
+    Open-drain (or open-collector) output.
+
+.. _`comedi_io_direction.description`:
+
+Description
+-----------
+
+These are used by the \ ``INSN_CONFIG_DIO_QUERY``\  configuration instruction to
+report a direction.  They may also be used in other places where a direction
+needs to be specified.
+
 .. _`configuration_ids`:
 
 enum configuration_ids
@@ -347,51 +392,6 @@ Some sequences of \ ``INSN_CONFIG_DIGITAL_TRIG``\  instructions may have a (part
 accumulative effect, depending on the low-level driver.  This is useful
 when setting up a trigger that has more than 32 inputs, or has a combination
 of edge- and level-triggered inputs.
-
-.. _`comedi_io_direction`:
-
-enum comedi_io_direction
-========================
-
-.. c:type:: enum comedi_io_direction
-
-    COMEDI I/O directions
-
-.. _`comedi_io_direction.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum comedi_io_direction {
-        COMEDI_INPUT,
-        COMEDI_OUTPUT,
-        COMEDI_OPENDRAIN
-    };
-
-.. _`comedi_io_direction.constants`:
-
-Constants
----------
-
-COMEDI_INPUT
-    Input.
-
-COMEDI_OUTPUT
-    Output.
-
-COMEDI_OPENDRAIN
-    Open-drain (or open-collector) output.
-
-.. _`comedi_io_direction.description`:
-
-Description
------------
-
-These are used by the \ ``INSN_CONFIG_DIO_QUERY``\  configuration instruction to
-report a direction.  They may also be used in other places where a direction
-needs to be specified.
 
 .. _`comedi_support_level`:
 

@@ -278,7 +278,7 @@ Definition
     enum iwl_sta_modify_flag {
         STA_MODIFY_QUEUE_REMOVAL,
         STA_MODIFY_TID_DISABLE_TX,
-        STA_MODIFY_TX_RATE,
+        STA_MODIFY_UAPSD_ACS,
         STA_MODIFY_ADD_BA_TID,
         STA_MODIFY_REMOVE_BA_TID,
         STA_MODIFY_SLEEPING_STA_TX_COUNT,
@@ -297,8 +297,8 @@ STA_MODIFY_QUEUE_REMOVAL
 STA_MODIFY_TID_DISABLE_TX
     this command modifies \ ``tid_disable_tx``\ 
 
-STA_MODIFY_TX_RATE
-    unused
+STA_MODIFY_UAPSD_ACS
+    this command modifies \ ``uapsd_trigger_acs``\ 
 
 STA_MODIFY_ADD_BA_TID
     this command modifies \ ``add_immediate_ba_tid``\ 
@@ -578,7 +578,8 @@ Definition
         __le16 beamform_flags;
         __le32 tfd_queue_msk;
         __le16 rx_ba_window;
-        __le16 reserved;
+        u8 scd_queue_bank;
+        u8 uapsd_trigger_acs;
     }
 
 .. _`iwl_mvm_add_sta_cmd.members`:
@@ -655,7 +656,11 @@ tfd_queue_msk
 rx_ba_window
     aggregation window size
 
-reserved
+scd_queue_bank
+    queue bank in used. Each bank contains 32 queues. 0 means
+    that the queues used by this station are in the first 32.
+
+uapsd_trigger_acs
     *undescribed*
 
 .. _`iwl_mvm_add_sta_cmd.description`:

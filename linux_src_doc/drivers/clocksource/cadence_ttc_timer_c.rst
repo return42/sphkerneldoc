@@ -84,7 +84,7 @@ Always IRQ_HANDLED - success
 __ttc_clocksource_read
 ======================
 
-.. c:function:: cycle_t __ttc_clocksource_read(struct clocksource *cs)
+.. c:function:: u64 __ttc_clocksource_read(struct clocksource *cs)
 
     Reads the timer counter register
 

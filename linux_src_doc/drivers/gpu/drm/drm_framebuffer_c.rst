@@ -297,6 +297,16 @@ those used for fbdev. Note that the caller must hold a reference of it's own,
 i.e. the object may not be destroyed through this call (since it'll lead to a
 locking inversion).
 
+.. _`drm_framebuffer_unregister_private.note`:
+
+NOTE
+----
+
+This function is deprecated. For driver-private framebuffers it is not
+recommended to embed a framebuffer struct info fbdev struct, instead, a
+framebuffer pointer is preferred and \ :c:func:`drm_framebuffer_unreference`\  should be
+called when the framebuffer is to be cleaned up.
+
 .. _`drm_framebuffer_cleanup`:
 
 drm_framebuffer_cleanup

@@ -20,8 +20,13 @@ Definition
     struct pmc_dev {
         u32 base_addr;
         void __iomem *regbase;
+        const struct pmc_reg_map *map;
+    #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
+    #endif
         bool has_slp_s0_res;
+        int pmc_xram_read_bit;
+        struct mutex lock;
     }
 
 .. _`pmc_dev.members`:
@@ -35,10 +40,19 @@ base_addr
 regbase
     pointer to io-remapped memory location
 
+map
+    *undescribed*
+
 dbgfs_dir
     path to debug fs interface
 
 has_slp_s0_res
+    *undescribed*
+
+pmc_xram_read_bit
+    *undescribed*
+
+lock
     *undescribed*
 
 .. _`pmc_dev.description`:

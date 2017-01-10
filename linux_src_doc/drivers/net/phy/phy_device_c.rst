@@ -24,6 +24,24 @@ phy_register_fixup
     :param int (\*run)(struct phy_device \*):
         The actual code to be run when a matching PHY is found
 
+.. _`phy_unregister_fixup`:
+
+phy_unregister_fixup
+====================
+
+.. c:function:: int phy_unregister_fixup(const char *bus_id, u32 phy_uid, u32 phy_uid_mask)
+
+    remove a phy_fixup from the list
+
+    :param const char \*bus_id:
+        A string matches fixup->bus_id (or PHY_ANY_ID) in phy_fixup_list
+
+    :param u32 phy_uid:
+        A phy id matches fixup->phy_id (or PHY_ANY_UID) in phy_fixup_list
+
+    :param u32 phy_uid_mask:
+        Applied to phy_uid and fixup->phy_uid before comparison
+
 .. _`get_phy_c45_ids`:
 
 get_phy_c45_ids
@@ -388,6 +406,27 @@ Writes MII_ADVERTISE with the appropriate values,
 after sanitizing the values to make sure we only advertise
 what is supported.  Returns < 0 on error, 0 if the PHY's advertisement
 hasn't changed, and > 0 if it has changed.
+
+.. _`genphy_config_eee_advert`:
+
+genphy_config_eee_advert
+========================
+
+.. c:function:: int genphy_config_eee_advert(struct phy_device *phydev)
+
+    disable unwanted eee mode advertisement
+
+    :param struct phy_device \*phydev:
+        target phy_device struct
+
+.. _`genphy_config_eee_advert.description`:
+
+Description
+-----------
+
+Writes MDIO_AN_EEE_ADV after disabling unsupported energy
+efficent ethernet modes. Returns 0 if the PHY's advertisement hasn't
+changed, and 1 if it has changed.
 
 .. _`genphy_setup_forced`:
 

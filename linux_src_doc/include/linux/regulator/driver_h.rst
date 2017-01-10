@@ -82,6 +82,7 @@ Definition
         int (*is_enabled)(struct regulator_dev *);
         int (*set_mode)(struct regulator_dev *, unsigned int mode);
         unsigned int (*get_mode)(struct regulator_dev *);
+        int (*get_error_flags)(struct regulator_dev *, unsigned int *flags);
         int (*enable_time)(struct regulator_dev *);
         int (*set_ramp_delay)(struct regulator_dev *, int ramp_delay);
         int (*set_voltage_time)(struct regulator_dev *, int old_uV,int new_uV);
@@ -160,6 +161,9 @@ set_mode
 
 get_mode
     Get the configured operating mode for the regulator.
+
+get_error_flags
+    Get the current error(s) for the regulator.
 
 enable_time
     Time taken for the regulator voltage output voltage to

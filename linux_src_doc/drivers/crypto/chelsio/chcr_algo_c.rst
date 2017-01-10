@@ -6,15 +6,12 @@
 create_cipher_wr
 ================
 
-.. c:function:: struct sk_buff *create_cipher_wr(struct crypto_async_request *req_base, struct chcr_context *ctx, unsigned short qid, unsigned short op_type)
+.. c:function:: struct sk_buff *create_cipher_wr(struct ablkcipher_request *req, unsigned short qid, unsigned short op_type)
 
     form the WR for cipher operations
 
-    :param struct crypto_async_request \*req_base:
-        *undescribed*
-
-    :param struct chcr_context \*ctx:
-        crypto driver context of the request.
+    :param struct ablkcipher_request \*req:
+        cipher req.
 
     :param unsigned short qid:
         ingress qid where response of this WR should be received.
@@ -22,12 +19,12 @@ create_cipher_wr
     :param unsigned short op_type:
         encryption or decryption
 
-.. _`create_final_hash_wr`:
+.. _`create_hash_wr`:
 
-create_final_hash_wr
-====================
+create_hash_wr
+==============
 
-.. c:function:: struct sk_buff *create_final_hash_wr(struct ahash_request *req, struct hash_wr_param *param)
+.. c:function:: struct sk_buff *create_hash_wr(struct ahash_request *req, struct hash_wr_param *param)
 
     Create hash work request \ ``req``\  - Cipher req base
 

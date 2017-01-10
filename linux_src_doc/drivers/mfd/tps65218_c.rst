@@ -1,24 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mfd/tps65218.c
 
-.. _`tps65218_reg_read`:
-
-tps65218_reg_read
-=================
-
-.. c:function:: int tps65218_reg_read(struct tps65218 *tps, unsigned int reg, unsigned int *val)
-
-    Read a single tps65218 register.
-
-    :param struct tps65218 \*tps:
-        Device to read from.
-
-    :param unsigned int reg:
-        Register to read.
-
-    :param unsigned int \*val:
-        Contians the value
-
 .. _`tps65218_reg_write`:
 
 tps65218_reg_write

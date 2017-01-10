@@ -12,10 +12,10 @@ stmmac_mdio_read
         points to the mii_bus structure
 
     :param int phyaddr:
-        MII addr reg bits 15-11
+        MII addr
 
     :param int phyreg:
-        MII addr reg bits 10-6
+        MII reg
 
 .. _`stmmac_mdio_read.description`:
 
@@ -38,10 +38,10 @@ stmmac_mdio_write
         points to the mii_bus structure
 
     :param int phyaddr:
-        MII addr reg bits 15-11
+        MII addr
 
     :param int phyreg:
-        MII addr reg bits 10-6
+        MII reg
 
     :param u16 phydata:
         phy data
@@ -52,57 +52,6 @@ Description
 -----------
 
 it writes the data into the MII register from within the device.
-
-.. _`stmmac_mdio_read_gmac4`:
-
-stmmac_mdio_read_gmac4
-======================
-
-.. c:function:: int stmmac_mdio_read_gmac4(struct mii_bus *bus, int phyaddr, int phyreg)
-
-    :param struct mii_bus \*bus:
-        points to the mii_bus structure
-
-    :param int phyaddr:
-        MII addr reg bits 25-21
-
-    :param int phyreg:
-        MII addr reg bits 20-16
-
-.. _`stmmac_mdio_read_gmac4.description`:
-
-Description
------------
-
-it reads data from the MII register of GMAC4 from within
-the phy device.
-
-.. _`stmmac_mdio_write_gmac4`:
-
-stmmac_mdio_write_gmac4
-=======================
-
-.. c:function:: int stmmac_mdio_write_gmac4(struct mii_bus *bus, int phyaddr, int phyreg, u16 phydata)
-
-    :param struct mii_bus \*bus:
-        points to the mii_bus structure
-
-    :param int phyaddr:
-        MII addr reg bits 25-21
-
-    :param int phyreg:
-        MII addr reg bits 20-16
-
-    :param u16 phydata:
-        phy data
-
-.. _`stmmac_mdio_write_gmac4.description`:
-
-Description
------------
-
-it writes the data into the MII register of GMAC4 from within
-the device.
 
 .. _`stmmac_mdio_reset`:
 

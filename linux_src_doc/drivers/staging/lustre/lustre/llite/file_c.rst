@@ -8,8 +8,6 @@ ll_prepare_close
 
 .. c:function:: void ll_prepare_close(struct inode *inode, struct md_op_data *op_data, struct obd_client_handle *och)
 
-    the CLOSE rpc.
-
     :param struct inode \*inode:
         *undescribed*
 
@@ -19,20 +17,38 @@ ll_prepare_close
     :param struct obd_client_handle \*och:
         *undescribed*
 
-.. _`ll_ioepoch_open`:
+.. _`ll_close_inode_openhandle`:
 
-ll_ioepoch_open
-===============
+ll_close_inode_openhandle
+=========================
 
-.. c:function:: void ll_ioepoch_open(struct ll_inode_info *lli, __u64 ioepoch)
+.. c:function:: int ll_close_inode_openhandle(struct obd_export *md_exp, struct obd_client_handle *och, struct inode *inode, enum mds_op_bias bias, void *data)
 
-    not believe attributes if a few ioepoch holders exist. Attributes for previous ioepoch if new one is opened are also skipped by MDS.
+    The meaning of "data" depends on the value of "bias".
 
-    :param struct ll_inode_info \*lli:
+    :param struct obd_export \*md_exp:
         *undescribed*
 
-    :param __u64 ioepoch:
+    :param struct obd_client_handle \*och:
         *undescribed*
+
+    :param struct inode \*inode:
+        *undescribed*
+
+    :param enum mds_op_bias bias:
+        *undescribed*
+
+    :param void \*data:
+        *undescribed*
+
+.. _`ll_close_inode_openhandle.description`:
+
+Description
+-----------
+
+If \a bias is MDS_HSM_RELEASE then \a data is a pointer to the data version.
+If \a bias is MDS_CLOSE_LAYOUT_SWAP then \a data is a pointer to the inode to
+swap layouts with.
 
 .. _`ll_lease_open`:
 
@@ -53,6 +69,30 @@ ll_lease_open
     :param __u64 open_flags:
         *undescribed*
 
+.. _`ll_check_swap_layouts_validity`:
+
+ll_check_swap_layouts_validity
+==============================
+
+.. c:function:: int ll_check_swap_layouts_validity(struct inode *inode1, struct inode *inode2)
+
+    :param struct inode \*inode1:
+        *undescribed*
+
+    :param struct inode \*inode2:
+        *undescribed*
+
+.. _`ll_check_swap_layouts_validity.description`:
+
+Description
+-----------
+
+\param[in] inode1  First inode to check
+\param[in] inode2  Second inode to check
+
+\retval 0 on success, layout swap can be performed between both inodes
+\retval negative error code if requirements are not met
+
 .. _`ll_lease_close`:
 
 ll_lease_close
@@ -69,27 +109,6 @@ ll_lease_close
         *undescribed*
 
     :param bool \*lease_broken:
-        *undescribed*
-
-.. _`ll_inode_getattr`:
-
-ll_inode_getattr
-================
-
-.. c:function:: int ll_inode_getattr(struct inode *inode, struct obdo *obdo, __u64 ioepoch, int sync)
-
-    If \ ``sync``\  != 0, perform the getattr under the server-side lock.
-
-    :param struct inode \*inode:
-        *undescribed*
-
-    :param struct obdo \*obdo:
-        *undescribed*
-
-    :param __u64 ioepoch:
-        *undescribed*
-
-    :param int sync:
         *undescribed*
 
 .. _`ll_release_openhandle`:
@@ -121,18 +140,26 @@ Description
 ll_do_fiemap
 ============
 
-.. c:function:: int ll_do_fiemap(struct inode *inode, struct ll_user_fiemap *fiemap, size_t num_bytes)
+.. c:function:: int ll_do_fiemap(struct inode *inode, struct fiemap *fiemap, size_t num_bytes)
 
     Make the FIEMAP get_info call and returns the result.
 
     :param struct inode \*inode:
         *undescribed*
 
-    :param struct ll_user_fiemap \*fiemap:
+    :param struct fiemap \*fiemap:
         *undescribed*
 
     :param size_t num_bytes:
         *undescribed*
+
+.. _`ll_do_fiemap.description`:
+
+Description
+-----------
+
+\param fiemap        kernel buffer to hold extens
+\param num_bytes     kernel buffer size
 
 .. _`cl_sync_file_range`:
 
@@ -188,7 +215,7 @@ ll_have_md_lock
 ll_layout_lock_set
 ==================
 
-.. c:function:: int ll_layout_lock_set(struct lustre_handle *lockh, enum ldlm_mode mode, struct inode *inode, __u32 *gen, bool reconf)
+.. c:function:: int ll_layout_lock_set(struct lustre_handle *lockh, enum ldlm_mode mode, struct inode *inode)
 
     in this function.
 
@@ -199,12 +226,6 @@ ll_layout_lock_set
         *undescribed*
 
     :param struct inode \*inode:
-        *undescribed*
-
-    :param __u32 \*gen:
-        *undescribed*
-
-    :param bool reconf:
         *undescribed*
 
 .. _`ll_layout_refresh`:

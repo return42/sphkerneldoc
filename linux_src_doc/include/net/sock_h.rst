@@ -86,6 +86,9 @@ Definition
     #define sk_flags __sk_common.skc_flags
     #define sk_rxhash __sk_common.skc_rxhash
         socket_lock_t sk_lock;
+        atomic_t sk_drops;
+        int sk_rcvlowat;
+        struct sk_buff_head sk_error_queue;
         struct sk_buff_head sk_receive_queue;
         struct {unnamed_struct};
     #ifdef CONFIG_XFRM
@@ -93,10 +96,40 @@ Definition
     #endif
         struct dst_entry *sk_rx_dst;
         struct dst_entry __rcu *sk_dst_cache;
-        atomic_t sk_wmem_alloc;
         atomic_t sk_omem_alloc;
         int sk_sndbuf;
+        int sk_wmem_queued;
+        atomic_t sk_wmem_alloc;
+        unsigned long sk_tsq_flags;
+        struct sk_buff *sk_send_head;
         struct sk_buff_head sk_write_queue;
+        __s32 sk_peek_off;
+        int sk_write_pending;
+        long sk_sndtimeo;
+        struct timer_list sk_timer;
+        __u32 sk_priority;
+        __u32 sk_mark;
+        u32 sk_pacing_rate;
+        u32 sk_max_pacing_rate;
+        struct page_frag sk_frag;
+        netdev_features_t sk_route_caps;
+        netdev_features_t sk_route_nocaps;
+        int sk_gso_type;
+        unsigned int sk_gso_max_size;
+        gfp_t sk_allocation;
+        __u32 sk_txhash;
+        unsigned int __sk_flags_offset[0];
+    #ifdef __BIG_ENDIAN_BITFIELD
+    #define SK_FL_PROTO_SHIFT 16
+    #define SK_FL_PROTO_MASK 0x00ff0000
+    #define SK_FL_TYPE_SHIFT 0
+    #define SK_FL_TYPE_MASK 0x0000ffff
+    #else
+    #define SK_FL_PROTO_SHIFT 8
+    #define SK_FL_PROTO_MASK 0x0000ff00
+    #define SK_FL_TYPE_SHIFT 16
+    #define SK_FL_TYPE_MASK 0xffff0000
+    #endif
         unsigned int sk_padding:2;
         unsigned int sk_no_check_tx:2:1;
         unsigned int sk_no_check_rx:2:1:1;
@@ -104,41 +137,24 @@ Definition
         unsigned int sk_protocol:2:1:1:4:8;
         unsigned int sk_type:2:1:1:4:8:16;
     #define SK_PROTOCOL_MAX U8_MAX
-        int sk_wmem_queued;
-        gfp_t sk_allocation;
-        u32 sk_pacing_rate;
-        u32 sk_max_pacing_rate;
-        netdev_features_t sk_route_caps;
-        netdev_features_t sk_route_nocaps;
-        int sk_gso_type;
-        unsigned int sk_gso_max_size;
         u16 sk_gso_max_segs;
-        int sk_rcvlowat;
         unsigned long sk_lingertime;
-        struct sk_buff_head sk_error_queue;
         struct proto *sk_prot_creator;
         rwlock_t sk_callback_lock;
         int sk_err;
         int sk_err_soft;
         u32 sk_ack_backlog;
         u32 sk_max_ack_backlog;
-        __u32 sk_priority;
-        __u32 sk_mark;
+        kuid_t sk_uid;
         struct pid *sk_peer_pid;
         const struct cred *sk_peer_cred;
         long sk_rcvtimeo;
-        long sk_sndtimeo;
-        struct timer_list sk_timer;
         ktime_t sk_stamp;
         u16 sk_tsflags;
         u8 sk_shutdown;
         u32 sk_tskey;
         struct socket *sk_socket;
         void *sk_user_data;
-        struct page_frag sk_frag;
-        struct sk_buff *sk_send_head;
-        __s32 sk_peek_off;
-        int sk_write_pending;
     #ifdef CONFIG_SECURITY
         void *sk_security;
     #endif
@@ -165,6 +181,15 @@ __sk_common
 sk_lock
     synchronizer
 
+sk_drops
+    raw/udp drops counter
+
+sk_rcvlowat
+    %SO_RCVLOWAT setting
+
+sk_error_queue
+    rarely used
+
 sk_receive_queue
     incoming packets
 
@@ -181,17 +206,71 @@ sk_rx_dst
 sk_dst_cache
     destination cache
 
-sk_wmem_alloc
-    transmit queue bytes committed
-
 sk_omem_alloc
     "o" is "option" or "other"
 
 sk_sndbuf
     size of send buffer in bytes
 
+sk_wmem_queued
+    persistent queue size
+
+sk_wmem_alloc
+    transmit queue bytes committed
+
+sk_tsq_flags
+    *undescribed*
+
+sk_send_head
+    front of stuff to transmit
+
 sk_write_queue
     Packet sending queue
+
+sk_peek_off
+    current peek_offset value
+
+sk_write_pending
+    a write to stream socket waits to start
+
+sk_sndtimeo
+    %SO_SNDTIMEO setting
+
+sk_timer
+    sock cleanup timer
+
+sk_priority
+    %SO_PRIORITY setting
+
+sk_mark
+    generic packet mark
+
+sk_pacing_rate
+    Pacing rate (if supported by transport/packet scheduler)
+
+sk_max_pacing_rate
+    Maximum pacing rate (%SO_MAX_PACING_RATE)
+
+sk_frag
+    cached page frag
+
+sk_route_caps
+    route capabilities (e.g. \ ``NETIF_F_TSO``\ )
+
+sk_route_nocaps
+    forbidden route capabilities (e.g NETIF_F_GSO_MASK)
+
+sk_gso_type
+    GSO type (e.g. \ ``SKB_GSO_TCPV4``\ )
+
+sk_gso_max_size
+    Maximum GSO segment size to build
+
+sk_allocation
+    allocation mode
+
+sk_txhash
+    computed flow hash for use on transmit
 
 sk_padding
     unused element for alignment
@@ -211,41 +290,11 @@ sk_protocol
 sk_type
     socket type (%SOCK_STREAM, etc)
 
-sk_wmem_queued
-    persistent queue size
-
-sk_allocation
-    allocation mode
-
-sk_pacing_rate
-    Pacing rate (if supported by transport/packet scheduler)
-
-sk_max_pacing_rate
-    Maximum pacing rate (%SO_MAX_PACING_RATE)
-
-sk_route_caps
-    route capabilities (e.g. \ ``NETIF_F_TSO``\ )
-
-sk_route_nocaps
-    forbidden route capabilities (e.g NETIF_F_GSO_MASK)
-
-sk_gso_type
-    GSO type (e.g. \ ``SKB_GSO_TCPV4``\ )
-
-sk_gso_max_size
-    Maximum GSO segment size to build
-
 sk_gso_max_segs
     Maximum number of GSO segments
 
-sk_rcvlowat
-    %SO_RCVLOWAT setting
-
 sk_lingertime
     %SO_LINGER l_linger setting
-
-sk_error_queue
-    rarely used
 
 sk_prot_creator
     sk_prot of original sock creator (see ipv6_setsockopt,
@@ -267,11 +316,8 @@ sk_ack_backlog
 sk_max_ack_backlog
     listen backlog set in \ :c:func:`listen`\ 
 
-sk_priority
-    %SO_PRIORITY setting
-
-sk_mark
-    generic packet mark
+sk_uid
+    *undescribed*
 
 sk_peer_pid
     &struct pid for this socket's peer
@@ -281,12 +327,6 @@ sk_peer_cred
 
 sk_rcvtimeo
     %SO_RCVTIMEO setting
-
-sk_sndtimeo
-    %SO_SNDTIMEO setting
-
-sk_timer
-    sock cleanup timer
 
 sk_stamp
     time stamp of last packet received
@@ -305,18 +345,6 @@ sk_socket
 
 sk_user_data
     RPC layer private data
-
-sk_frag
-    cached page frag
-
-sk_send_head
-    front of stuff to transmit
-
-sk_peek_off
-    current peek_offset value
-
-sk_write_pending
-    a write to stream socket waits to start
 
 sk_security
     used by security modules

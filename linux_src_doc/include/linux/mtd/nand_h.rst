@@ -244,6 +244,10 @@ Definition
 .. code-block:: c
 
     struct nand_sdr_timings {
+        u32 tBERS_max;
+        u32 tCCS_min;
+        u32 tPROG_max;
+        u32 tR_max;
         u32 tALH_min;
         u32 tADL_min;
         u32 tALS_min;
@@ -284,6 +288,18 @@ Definition
 
 Members
 -------
+
+tBERS_max
+    Block erase time
+
+tCCS_min
+    Change column setup time
+
+tPROG_max
+    Page program time
+
+tR_max
+    Page read time
 
 tALH_min
     ALE hold time

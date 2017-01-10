@@ -11,6 +11,7 @@ iio
     adc/index
     buffer/index
     common/index
+    counter/index
     dac/index
     dummy/index
     gyro/index

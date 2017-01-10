@@ -19,3 +19,4 @@ pseries
     setup_c
     smp_c
     suspend_c
+    vio_c

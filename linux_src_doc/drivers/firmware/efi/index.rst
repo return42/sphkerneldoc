@@ -10,6 +10,7 @@ efi
     libstub/index
     capsule-loader_c
     capsule_c
+    dev-path-parser_c
     efi-pstore_c
     efi_c
     efivars_c

@@ -6,7 +6,7 @@
 cpdma_chan_split_pool
 =====================
 
-.. c:function:: void cpdma_chan_split_pool(struct cpdma_ctlr *ctlr)
+.. c:function:: int cpdma_chan_split_pool(struct cpdma_ctlr *ctlr)
 
     Splits ctrl pool between all channels. Has to be called under ctlr lock
 

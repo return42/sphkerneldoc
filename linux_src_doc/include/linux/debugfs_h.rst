@@ -6,11 +6,11 @@
 debugfs_real_fops
 =================
 
-.. c:function:: const struct file_operations *debugfs_real_fops(struct file *filp)
+.. c:function:: const struct file_operations *debugfs_real_fops(const struct file *filp)
 
     getter for the real file operation
 
-    :param struct file \*filp:
+    :param const struct file \*filp:
         a pointer to a struct file
 
 .. _`debugfs_real_fops.description`:

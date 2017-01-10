@@ -10,5 +10,6 @@ osc
     osc_cache_c
     osc_io_c
     osc_lock_c
+    osc_object_c
     osc_page_c
     osc_request_c

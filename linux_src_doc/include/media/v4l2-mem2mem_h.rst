@@ -172,6 +172,14 @@ finished
 priv
     Instance private data
 
+.. _`v4l2_m2m_ctx.description`:
+
+Description
+-----------
+
+The memory to memory context is specific to a file handle, NOT to e.g.
+a device.
+
 .. _`v4l2_m2m_buffer`:
 
 struct v4l2_m2m_buffer

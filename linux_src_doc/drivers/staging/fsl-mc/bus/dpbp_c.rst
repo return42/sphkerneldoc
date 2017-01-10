@@ -80,12 +80,15 @@ Return
 dpbp_create
 ===========
 
-.. c:function:: int dpbp_create(struct fsl_mc_io *mc_io, u32 cmd_flags, const struct dpbp_cfg *cfg, u16 *token)
+.. c:function:: int dpbp_create(struct fsl_mc_io *mc_io, u16 dprc_token, u32 cmd_flags, const struct dpbp_cfg *cfg, u32 *obj_id)
 
     Create the DPBP object.
 
     :param struct fsl_mc_io \*mc_io:
         Pointer to MC portal's I/O object
+
+    :param u16 dprc_token:
+        Parent container token; '0' for default container
 
     :param u32 cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
@@ -93,8 +96,8 @@ dpbp_create
     :param const struct dpbp_cfg \*cfg:
         Configuration structure
 
-    :param u16 \*token:
-        Returned token; use in subsequent API calls
+    :param u32 \*obj_id:
+        Returned object id; use in subsequent API calls
 
 .. _`dpbp_create.description`:
 
@@ -104,14 +107,10 @@ Description
 Create the DPBP object, allocate required resources and
 perform required initialization.
 
-The object can be created either by declaring it in the
-DPL file, or by calling this function.
-This function returns a unique authentication token,
-associated with the specific object ID and the specific MC
-portal; this token must be used in all subsequent calls to
-this specific object. For objects that are created using the
-DPL file, call dpbp_open function to get an authentication
-token first.
+This function accepts an authentication token of a parent
+container that this object should be assigned to and returns
+an object id. This object_id will be used in all subsequent calls to
+this specific object.
 
 .. _`dpbp_create.return`:
 
@@ -125,18 +124,21 @@ Return
 dpbp_destroy
 ============
 
-.. c:function:: int dpbp_destroy(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token)
+.. c:function:: int dpbp_destroy(struct fsl_mc_io *mc_io, u16 dprc_token, u32 cmd_flags, u32 obj_id)
 
     Destroy the DPBP object and release all its resources.
 
     :param struct fsl_mc_io \*mc_io:
         Pointer to MC portal's I/O object
 
+    :param u16 dprc_token:
+        Parent container token; '0' for default container
+
     :param u32 cmd_flags:
         Command flags; one or more of 'MC_CMD_FLAG_'
 
-    :param u16 token:
-        Token of DPBP object
+    :param u32 obj_id:
+        ID of DPBP object
 
 .. _`dpbp_destroy.return`:
 
@@ -611,6 +613,34 @@ dpbp_get_notifications
         notifications configuration
 
 .. _`dpbp_get_notifications.return`:
+
+Return
+------
+
+'0' on Success; Error code otherwise.
+
+.. _`dpbp_get_api_version`:
+
+dpbp_get_api_version
+====================
+
+.. c:function:: int dpbp_get_api_version(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 *major_ver, u16 *minor_ver)
+
+    Get Data Path Buffer Pool API version
+
+    :param struct fsl_mc_io \*mc_io:
+        Pointer to Mc portal's I/O object
+
+    :param u32 cmd_flags:
+        Command flags; one or more of 'MC_CMD_FLAG_'
+
+    :param u16 \*major_ver:
+        Major version of Buffer Pool API
+
+    :param u16 \*minor_ver:
+        Minor version of Buffer Pool API
+
+.. _`dpbp_get_api_version.return`:
 
 Return
 ------

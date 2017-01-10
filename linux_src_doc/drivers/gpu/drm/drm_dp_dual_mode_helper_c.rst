@@ -231,5 +231,50 @@ Return
 
 String representation of the DP dual mode adaptor type
 
+.. _`drm_lspcon_get_mode`:
+
+drm_lspcon_get_mode
+===================
+
+.. c:function:: int drm_lspcon_get_mode(struct i2c_adapter *adapter, enum drm_lspcon_mode *mode)
+
+    Get LSPCON's current mode of operation by reading offset (0x80, 0x41)
+
+    :param struct i2c_adapter \*adapter:
+        I2C-over-aux adapter
+
+    :param enum drm_lspcon_mode \*mode:
+        current lspcon mode of operation output variable
+
+.. _`drm_lspcon_get_mode.return`:
+
+Return
+------
+
+0 on success, sets the current_mode value to appropriate mode
+-error on failure
+
+.. _`drm_lspcon_set_mode`:
+
+drm_lspcon_set_mode
+===================
+
+.. c:function:: int drm_lspcon_set_mode(struct i2c_adapter *adapter, enum drm_lspcon_mode mode)
+
+    Change LSPCON's mode of operation by writing offset (0x80, 0x40)
+
+    :param struct i2c_adapter \*adapter:
+        I2C-over-aux adapter
+
+    :param enum drm_lspcon_mode mode:
+        required mode of operation
+
+.. _`drm_lspcon_set_mode.return`:
+
+Return
+------
+
+0 on success, -error on failure/timeout
+
 .. This file was automatic generated / don't edit.
 

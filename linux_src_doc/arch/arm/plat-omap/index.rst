@@ -10,4 +10,3 @@ plat-omap
     include/index
     counter_32k_c
     dmtimer_c
-    i2c_c

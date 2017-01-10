@@ -6,7 +6,7 @@
 __skb_try_recv_datagram
 =======================
 
-.. c:function:: struct sk_buff *__skb_try_recv_datagram(struct sock *sk, unsigned int flags, int *peeked, int *off, int *err, struct sk_buff **last)
+.. c:function:: struct sk_buff *__skb_try_recv_datagram(struct sock *sk, unsigned int flags, void (*destructor)(struct sock *sk, struct sk_buff *skb), int *peeked, int *off, int *err, struct sk_buff **last)
 
     Receive a datagram skbuff
 
@@ -15,6 +15,9 @@ __skb_try_recv_datagram
 
     :param unsigned int flags:
         MSG\_ flags
+
+    :param void (\*destructor)(struct sock \*sk, struct sk_buff \*skb):
+        invoked under the receive lock on successful dequeue
 
     :param int \*peeked:
         returns non-zero if this packet has been seen before

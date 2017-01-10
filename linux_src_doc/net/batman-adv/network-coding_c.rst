@@ -176,12 +176,15 @@ batadv_nc_path_put
 batadv_nc_packet_free
 =====================
 
-.. c:function:: void batadv_nc_packet_free(struct batadv_nc_packet *nc_packet)
+.. c:function:: void batadv_nc_packet_free(struct batadv_nc_packet *nc_packet, bool dropped)
 
     frees nc packet
 
     :param struct batadv_nc_packet \*nc_packet:
         the nc packet to free
+
+    :param bool dropped:
+        whether the packet is freed because is is dropped
 
 .. _`batadv_nc_to_purge_nc_node`:
 

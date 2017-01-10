@@ -66,18 +66,6 @@ dwc3_core_soft_reset
     :param struct dwc3 \*dwc:
         pointer to our context structure
 
-.. _`dwc3_soft_reset`:
-
-dwc3_soft_reset
-===============
-
-.. c:function:: int dwc3_soft_reset(struct dwc3 *dwc)
-
-    Issue soft reset
-
-    :param struct dwc3 \*dwc:
-        Pointer to our controller context structure
-
 .. _`dwc3_free_one_event_buffer`:
 
 dwc3_free_one_event_buffer

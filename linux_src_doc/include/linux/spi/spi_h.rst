@@ -339,6 +339,7 @@ Definition
     #define SPI_MASTER_NO_TX BIT(2)
     #define SPI_MASTER_MUST_RX BIT(3)
     #define SPI_MASTER_MUST_TX BIT(4)
+    #define SPI_MASTER_GPIO_SS BIT(5)
         size_t (*max_transfer_size)(struct spi_device *spi);
         size_t (*max_message_size)(struct spi_device *spi);
         struct mutex io_mutex;

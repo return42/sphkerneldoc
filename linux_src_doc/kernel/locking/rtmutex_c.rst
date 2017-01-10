@@ -210,7 +210,11 @@ Description
 -----------
 
 No locking. Caller has to do serializing itself
-Special API call for PI-futex support
+
+Special API call for PI-futex support. This initializes the rtmutex and
+assigns it to \ ``proxy_owner``\ . Concurrent operations on the rtmutex are not
+possible at this point because the pi_state which contains the rtmutex
+is not yet visible to other tasks.
 
 .. _`rt_mutex_proxy_unlock`:
 
@@ -233,7 +237,11 @@ Description
 -----------
 
 No locking. Caller has to do serializing itself
-Special API call for PI-futex support
+
+Special API call for PI-futex support. This merrily cleans up the rtmutex
+(debugging) state. Concurrent operations on this rt_mutex are not
+possible because it belongs to the pi_state which is about to be freed
+and it is not longer visible to other tasks.
 
 .. _`rt_mutex_start_proxy_lock`:
 

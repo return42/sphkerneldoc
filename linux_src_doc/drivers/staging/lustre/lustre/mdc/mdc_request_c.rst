@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/mdc/mdc_request.c
 
-.. _`mdc_replay_open`:
-
-mdc_replay_open
-===============
-
-.. c:function:: void mdc_replay_open(struct ptlrpc_request *req)
-
-    CLOSE and SETATTR-DONE_WRITING RPC chains.
-
-    :param struct ptlrpc_request \*req:
-        *undescribed*
-
 .. _`mdc_read_page_remote`:
 
 mdc_read_page_remote

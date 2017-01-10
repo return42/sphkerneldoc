@@ -287,6 +287,42 @@ cl_object_getstripe
     :param struct lov_user_md __user \*uarg:
         *undescribed*
 
+.. _`cl_object_fiemap`:
+
+cl_object_fiemap
+================
+
+.. c:function:: int cl_object_fiemap(const struct lu_env *env, struct cl_object *obj, struct ll_fiemap_info_key *key, struct fiemap *fiemap, size_t *buflen)
+
+    :param const struct lu_env \*env:
+        *undescribed*
+
+    :param struct cl_object \*obj:
+        *undescribed*
+
+    :param struct ll_fiemap_info_key \*key:
+        *undescribed*
+
+    :param struct fiemap \*fiemap:
+        *undescribed*
+
+    :param size_t \*buflen:
+        *undescribed*
+
+.. _`cl_object_fiemap.description`:
+
+Description
+-----------
+
+\param env [in]      lustre environment
+\param obj [in]      file object
+\param key [in]      fiemap request argument
+\param fiemap [out]  fiemap extents mapping retrived
+\param buflen [in]   max buffer length of \ ``fiemap``\ 
+
+\retval 0    success
+\retval < 0  error
+
 .. _`cl_object_kill`:
 
 cl_object_kill
@@ -355,33 +391,6 @@ cl_site_stats_print
 
     :param struct seq_file \*m:
         *undescribed*
-
-.. _`list_head`:
-
-LIST_HEAD
-=========
-
-.. c:function::  LIST_HEAD( cl_envs)
-
-    structures. On Linux, it wont' be easy to use task_struct->journal_info because Lustre code may call into other fs which has certain assumptions about journal_info. Currently following fields in task_struct are identified
-
-    :param  cl_envs:
-        *undescribed*
-
-.. _`list_head.can-be-used-for-this-purpose`:
-
-can be used for this purpose
-----------------------------
-
-- tux_info: only on RedHat kernel.
-- ...
-\note As long as we use task_struct to store cl_env, we assume that once
-called into Lustre, we'll never call into the other part of the kernel
-which will use those fields in task_struct without explicitly exiting
-Lustre.
-
-If there's no space in task_struct is available, hash will be used.
-bz20044, bz22683.
 
 .. _`cl_env_get`:
 
@@ -462,72 +471,6 @@ Description
 Decrement \a env reference counter. When counter drops to 0, nothing in
 this thread is using environment and it is returned to the allocation
 cache, or freed straight away, if cache is large enough.
-
-.. _`cl_env_reenter`:
-
-cl_env_reenter
-==============
-
-.. c:function:: void *cl_env_reenter( void)
-
-    entrancy.
-
-    :param  void:
-        no arguments
-
-.. _`cl_env_reenter.description`:
-
-Description
------------
-
-\see \ :c:func:`cl_env_reexit`\ 
-
-.. _`cl_env_reexit`:
-
-cl_env_reexit
-=============
-
-.. c:function:: void cl_env_reexit(void *cookie)
-
-    entrancy.
-
-    :param void \*cookie:
-        *undescribed*
-
-.. _`cl_env_implant`:
-
-cl_env_implant
-==============
-
-.. c:function:: void cl_env_implant(struct lu_env *env, int *refcheck)
-
-    supplied \a env as a current environment. This is to be used to guaranteed that environment exists even when \ :c:func:`cl_env_get`\  fails. It is up to user to ensure proper concurrency control.
-
-    :param struct lu_env \*env:
-        *undescribed*
-
-    :param int \*refcheck:
-        *undescribed*
-
-.. _`cl_env_implant.description`:
-
-Description
------------
-
-\see \ :c:func:`cl_env_unplant`\ 
-
-.. _`cl_env_unplant`:
-
-cl_env_unplant
-==============
-
-.. c:function:: void cl_env_unplant(struct lu_env *env, int *refcheck)
-
-    :param struct lu_env \*env:
-        *undescribed*
-
-    :param int \*refcheck:
-        *undescribed*
 
 .. _`cl_lvb2attr`:
 

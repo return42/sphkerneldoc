@@ -47,8 +47,8 @@ Definition
 .. code-block:: c
 
     struct dpmcp_irq_cfg {
-        uint64_t paddr;
-        uint32_t val;
+        u64 paddr;
+        u32 val;
         int irq_num;
     }
 
@@ -84,7 +84,6 @@ Definition
 
     struct dpmcp_attr {
         int id;
-        struct version;
     }
 
 .. _`dpmcp_attr.members`:
@@ -94,9 +93,6 @@ Members
 
 id
     DPMCP object ID
-
-version
-    DPMCP version
 
 .. This file was automatic generated / don't edit.
 

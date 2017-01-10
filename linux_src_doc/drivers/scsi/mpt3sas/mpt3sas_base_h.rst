@@ -85,6 +85,7 @@ Definition
         u8 block;
         u8 tlr_snoop_check;
         u8 ignore_delay_remove;
+        u8 ncq_prio_enable;
     }
 
 .. _`mpt3sas_device.members`:
@@ -111,6 +112,9 @@ tlr_snoop_check
     flag used in determining whether to disable TLR
 
 ignore_delay_remove
+    *undescribed*
+
+ncq_prio_enable
     *undescribed*
 
 .. _`_internal_cmd`:
@@ -918,6 +922,8 @@ Definition
         void *blocking_handles;
         void *pd_handles;
         u16 pd_handles_sz;
+        void *pend_os_device_add;
+        u16 pend_os_device_add_sz;
         u16 config_page_sz;
         void *config_page;
         dma_addr_t config_page_dma;
@@ -977,7 +983,8 @@ Definition
         struct dma_pool *reply_post_free_dma_pool;
         u8 reply_queue_count;
         struct list_head reply_queue_list;
-        u8 msix96_vector;
+        u8 combined_reply_queue;
+        u8 combined_reply_index_count;
         resource_size_t **replyPostRegisterIndex;
         struct list_head delayed_tr_list;
         struct list_head delayed_tr_volume_list;
@@ -1004,6 +1011,14 @@ Definition
         struct SL_WH_EVENT_TRIGGERS_T diag_trigger_event;
         struct SL_WH_SCSI_TRIGGERS_T diag_trigger_scsi;
         struct SL_WH_MPI_TRIGGERS_T diag_trigger_mpi;
+        void *device_remove_in_progress;
+        u16 device_remove_in_progress_sz;
+        u8 is_gen35_ioc;
+        u8 atomic_desc_capable;
+        PUT_SMID_IO_FP_HIP put_smid_scsi_io;
+        PUT_SMID_IO_FP_HIP put_smid_fast_path;
+        PUT_SMID_IO_FP_HIP put_smid_hi_priority;
+        PUT_SMID_DEFAULT put_smid_default;
     }
 
 .. _`mpt3sas_adapter.members`:
@@ -1324,6 +1339,12 @@ pd_handles
 pd_handles_sz
     size of pd_handle bitmask
 
+pend_os_device_add
+    *undescribed*
+
+pend_os_device_add_sz
+    *undescribed*
+
 config_page_sz
     config page size
 
@@ -1503,8 +1524,11 @@ reply_queue_count
 reply_queue_list
     link list contaning the reply queue info
 
-msix96_vector
-    96 MSI-X vector support
+combined_reply_queue
+    *undescribed*
+
+combined_reply_index_count
+    *undescribed*
 
 replyPostRegisterIndex
     index of next position in Reply Desc Post Queue
@@ -1566,6 +1590,30 @@ diag_trigger_scsi
     *undescribed*
 
 diag_trigger_mpi
+    *undescribed*
+
+device_remove_in_progress
+    *undescribed*
+
+device_remove_in_progress_sz
+    *undescribed*
+
+is_gen35_ioc
+    *undescribed*
+
+atomic_desc_capable
+    *undescribed*
+
+put_smid_scsi_io
+    *undescribed*
+
+put_smid_fast_path
+    *undescribed*
+
+put_smid_hi_priority
+    *undescribed*
+
+put_smid_default
     *undescribed*
 
 .. This file was automatic generated / don't edit.

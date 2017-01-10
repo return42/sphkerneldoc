@@ -382,15 +382,12 @@ i_mutex held, and will take the i_mutex itself if necessary.
 mountpoint_last
 ===============
 
-.. c:function:: int mountpoint_last(struct nameidata *nd, struct path *path)
+.. c:function:: int mountpoint_last(struct nameidata *nd)
 
     look up last component for umount
 
     :param struct nameidata \*nd:
         pathwalk nameidata - currently pointing at parent directory of "last"
-
-    :param struct path \*path:
-        pointer to container for result
 
 .. _`mountpoint_last.description`:
 
@@ -412,16 +409,13 @@ Return
 ------
 
 -error: if there was an error during lookup. This includes -ENOENT if the
-lookup found a negative dentry. The nd->path reference will also be
-put in this case.
+lookup found a negative dentry.
 
-0:      if we successfully resolved nd->path and found it to not to be a
-symlink that needs to be followed. "path" will also be populated.
-The nd->path reference will also be put.
+0:      if we successfully resolved nd->last and found it to not to be a
+symlink that needs to be followed.
 
 1:      if we successfully resolved nd->last and found it to be a symlink
-that needs to be followed. "path" will be populated with the path
-to the link, and nd->path will \*not\* be put.
+that needs to be followed.
 
 .. _`path_mountpoint`:
 
@@ -631,6 +625,33 @@ we are removing the target. Solution: we will have to grab ->i_mutex
 in the fhandle_to_dentry code. [FIXME - current nfsfh.c relies on
 ->i_mutex on parents, which works but leads to some truly excessive
 locking].
+
+.. _`vfs_readlink`:
+
+vfs_readlink
+============
+
+.. c:function:: int vfs_readlink(struct dentry *dentry, char __user *buffer, int buflen)
+
+    copy symlink body into userspace buffer
+
+    :param struct dentry \*dentry:
+        dentry on which to get symbolic link
+
+    :param char __user \*buffer:
+        user memory pointer
+
+    :param int buflen:
+        size of buffer
+
+.. _`vfs_readlink.description`:
+
+Description
+-----------
+
+Does not touch atime.  That's up to the caller if necessary
+
+Does not call security hook.
 
 .. _`vfs_get_link`:
 

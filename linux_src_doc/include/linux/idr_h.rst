@@ -1,6 +1,50 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/idr.h
 
+.. _`idr_get_cursor`:
+
+idr_get_cursor
+==============
+
+.. c:function:: unsigned int idr_get_cursor(struct idr *idr)
+
+    Return the current position of the cyclic allocator
+
+    :param struct idr \*idr:
+        idr handle
+
+.. _`idr_get_cursor.description`:
+
+Description
+-----------
+
+The value returned is the value that will be next returned from
+\ :c:func:`idr_alloc_cyclic`\  if it is free (otherwise the search will start from
+this position).
+
+.. _`idr_set_cursor`:
+
+idr_set_cursor
+==============
+
+.. c:function:: void idr_set_cursor(struct idr *idr, unsigned int val)
+
+    Set the current position of the cyclic allocator
+
+    :param struct idr \*idr:
+        idr handle
+
+    :param unsigned int val:
+        new position
+
+.. _`idr_set_cursor.description`:
+
+Description
+-----------
+
+The next call to \ :c:func:`idr_alloc_cyclic`\  will return \ ``val``\  if it is free
+(otherwise the search will start from this position).
+
 .. _`idr_preload_end`:
 
 idr_preload_end

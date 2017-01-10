@@ -898,7 +898,8 @@ Definition
         ETH_SS_FEATURES,
         ETH_SS_RSS_HASH_FUNCS,
         ETH_SS_TUNABLES,
-        ETH_SS_PHY_STATS
+        ETH_SS_PHY_STATS,
+        ETH_SS_PHY_TUNABLES
     };
 
 .. _`ethtool_stringset.constants`:
@@ -931,6 +932,9 @@ ETH_SS_TUNABLES
 
 ETH_SS_PHY_STATS
     Statistic names, for use with \ ``ETHTOOL_GPHYSTATS``\ 
+
+ETH_SS_PHY_TUNABLES
+    PHY tunable names
 
 .. _`ethtool_gstrings`:
 

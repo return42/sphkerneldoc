@@ -168,45 +168,30 @@ hot reset. The routine is used to collected the information for
 the indicated device and its children so that the bunch of the
 devices could be reset properly.
 
-.. _`eeh_reset_pe_once`:
+.. _`eeh_pe_reset_full`:
 
-eeh_reset_pe_once
+eeh_pe_reset_full
 =================
 
-.. c:function:: void eeh_reset_pe_once(struct eeh_pe *pe)
+.. c:function:: int eeh_pe_reset_full(struct eeh_pe *pe)
 
-    Assert the pci #RST line for 1/4 second
-
-    :param struct eeh_pe \*pe:
-        EEH PE
-
-.. _`eeh_reset_pe_once.description`:
-
-Description
------------
-
-Assert the PCI #RST line for 1/4 second.
-
-.. _`eeh_reset_pe`:
-
-eeh_reset_pe
-============
-
-.. c:function:: int eeh_reset_pe(struct eeh_pe *pe)
-
-    Reset the indicated PE
+    Complete a full reset process on the indicated PE
 
     :param struct eeh_pe \*pe:
         EEH PE
 
-.. _`eeh_reset_pe.description`:
+.. _`eeh_pe_reset_full.description`:
 
 Description
 -----------
 
-This routine should be called to reset indicated device, including
-PE. A PE might include multiple PCI devices and sometimes PCI bridges
-might be involved as well.
+This function executes a full reset procedure on a PE, including setting
+the appropriate flags, performing a fundamental or hot reset, and then
+deactivating the reset status.  It is designed to be used within the EEH
+subsystem, as opposed to eeh_pe_reset which is exported to drivers and
+only performs a single operation at a time.
+
+This function will attempt to reset a PE three times before failing.
 
 .. _`eeh_save_bars`:
 

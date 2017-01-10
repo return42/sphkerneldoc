@@ -44,28 +44,6 @@ cdv_intel_lvds_set_power
     :param bool on:
         *undescribed*
 
-.. _`cdv_intel_lvds_detect`:
-
-cdv_intel_lvds_detect
-=====================
-
-.. c:function:: enum drm_connector_status cdv_intel_lvds_detect(struct drm_connector *connector, bool force)
-
-    :param struct drm_connector \*connector:
-        *undescribed*
-
-    :param bool force:
-        *undescribed*
-
-.. _`cdv_intel_lvds_detect.description`:
-
-Description
------------
-
-This always returns CONNECTOR_STATUS_CONNECTED.
-This connector should only have
-been set up if the LVDS was actually connected anyway.
-
 .. _`cdv_intel_lvds_get_modes`:
 
 cdv_intel_lvds_get_modes

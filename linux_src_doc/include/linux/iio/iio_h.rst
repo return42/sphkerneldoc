@@ -268,9 +268,13 @@ Definition
         int scan_index;
         struct scan_type;
         long info_mask_separate;
+        long info_mask_separate_available;
         long info_mask_shared_by_type;
+        long info_mask_shared_by_type_available;
         long info_mask_shared_by_dir;
+        long info_mask_shared_by_dir_available;
         long info_mask_shared_by_all;
+        long info_mask_shared_by_all_available;
         const struct iio_event_spec *event_spec;
         unsigned int num_event_specs;
         const struct iio_chan_spec_ext_info *ext_info;
@@ -323,17 +327,35 @@ info_mask_separate
     What information is to be exported that is specific to
     this channel.
 
+info_mask_separate_available
+    What availability information is to be
+    exported that is specific to this channel.
+
 info_mask_shared_by_type
     What information is to be exported that is shared
     by all channels of the same type.
+
+info_mask_shared_by_type_available
+    What availability information is to be
+    exported that is shared by all channels of the same
+    type.
 
 info_mask_shared_by_dir
     What information is to be exported that is shared
     by all channels of the same direction.
 
+info_mask_shared_by_dir_available
+    What availability information is to be
+    exported that is shared by all channels of the same
+    direction.
+
 info_mask_shared_by_all
     What information is to be exported that is shared
     by all channels.
+
+info_mask_shared_by_all_available
+    What availability information is to be
+    exported that is shared by all channels.
 
 event_spec
     Array of events which should be registered for this
@@ -398,6 +420,29 @@ Description
 Returns true if the channels supports reporting values for the given info
 attribute type, false otherwise.
 
+.. _`iio_channel_has_available`:
+
+iio_channel_has_available
+=========================
+
+.. c:function:: bool iio_channel_has_available(const struct iio_chan_spec *chan, enum iio_chan_info_enum type)
+
+    Checks if a channel has an available attribute
+
+    :param const struct iio_chan_spec \*chan:
+        The channel to be queried
+
+    :param enum iio_chan_info_enum type:
+        Type of the available attribute to be checked
+
+.. _`iio_channel_has_available.description`:
+
+Description
+-----------
+
+Returns true if the channel supports reporting available values for the
+given attribute type, false otherwise.
+
 .. _`iio_info`:
 
 struct iio_info
@@ -416,10 +461,11 @@ Definition
 
     struct iio_info {
         struct module *driver_module;
-        struct attribute_group *event_attrs;
+        const struct attribute_group *event_attrs;
         const struct attribute_group *attrs;
         int (*read_raw)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int *val,int *val2,long mask);
         int (*read_raw_multi)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int max_len,int *vals,int *val_len,long mask);
+        int (*read_avail)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,const int **vals,int *type,int *length,long mask);
         int (*write_raw)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int val,int val2,long mask);
         int (*write_raw_get_fmt)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,long mask);
         int (*read_event_config)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir);
@@ -466,6 +512,16 @@ read_raw_multi
     vals pointer can contain. val_len is used to return
     length of valid elements in vals.
 
+read_avail
+    function to return the available values from the device.
+    mask specifies which value. Note 0 means the available
+    values for the channel in question.  Return value
+    specifies if a IIO_AVAIL_LIST or a IIO_AVAIL_RANGE is
+    returned in vals. The type of the vals are returned in
+    type and the number of vals is returned in length. For
+    ranges, there are always three vals returned; min, step
+    and max. For lists, all possible values are enumerated.
+
 write_raw
     function to write a value to the device.
     Parameters are the same as for read_raw.
@@ -502,12 +558,12 @@ of_xlate
     function pointer to obtain channel specifier index.
     When #iio-cells is greater than '0', the driver could
     provide a custom of_xlate function that reads the
-    \*args\* and returns the appropriate index in registered
+    *args* and returns the appropriate index in registered
     IIO channels array.
 
 hwfifo_set_watermark
     function pointer to set the current hardware
-    fifo watermark level; see hwfifo\_\* entries in
+    fifo watermark level; see hwfifo_* entries in
     Documentation/ABI/testing/sysfs-bus-iio for details on
     how the hardware fifo operates
 
@@ -903,7 +959,7 @@ IIO_G_TO_M_S_2
 
 .. c:function::  IIO_G_TO_M_S_2( g)
 
-    Convert g to meter / second\*\*2
+    Convert g to meter / second**2
 
     :param  g:
         A value in g
@@ -913,7 +969,7 @@ IIO_G_TO_M_S_2
 Description
 -----------
 
-Returns the given value converted from g to meter / second\*\*2
+Returns the given value converted from g to meter / second**2
 
 .. _`iio_m_s_2_to_g`:
 
@@ -922,17 +978,17 @@ IIO_M_S_2_TO_G
 
 .. c:function::  IIO_M_S_2_TO_G( ms2)
 
-    Convert meter / second\*\*2 to g
+    Convert meter / second**2 to g
 
     :param  ms2:
-        A value in meter / second\*\*2
+        A value in meter / second**2
 
 .. _`iio_m_s_2_to_g.description`:
 
 Description
 -----------
 
-Returns the given value converted from meter / second\*\*2 to g
+Returns the given value converted from meter / second**2 to g
 
 .. This file was automatic generated / don't edit.
 

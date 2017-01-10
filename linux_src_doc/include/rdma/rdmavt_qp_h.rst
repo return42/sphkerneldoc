@@ -25,6 +25,25 @@ rvt_put_qp
     :param struct rvt_qp \*qp:
         *undescribed*
 
+.. _`rvt_put_swqe`:
+
+rvt_put_swqe
+============
+
+.. c:function:: void rvt_put_swqe(struct rvt_swqe *wqe)
+
+    drop mr refs held by swqe \ ``wqe``\  - the send wqe
+
+    :param struct rvt_swqe \*wqe:
+        *undescribed*
+
+.. _`rvt_put_swqe.description`:
+
+Description
+-----------
+
+This drops any mr references held by the swqe
+
 .. _`rvt_qp_wqe_reserve`:
 
 rvt_qp_wqe_reserve
@@ -77,6 +96,35 @@ s_avail.
 An \ :c:func:`smp_mp__after_atomic`\  is used to insure
 the compiler does not juggle the order of the s_last
 ring index and the decrementing of s_reserved_used.
+
+.. _`rvt_qp_swqe_complete`:
+
+rvt_qp_swqe_complete
+====================
+
+.. c:function:: void rvt_qp_swqe_complete(struct rvt_qp *qp, struct rvt_swqe *wqe, enum ib_wc_status status)
+
+    insert send completion \ ``qp``\  - the qp \ ``wqe``\  - the send wqe \ ``status``\  - completion status
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param struct rvt_swqe \*wqe:
+        *undescribed*
+
+    :param enum ib_wc_status status:
+        *undescribed*
+
+.. _`rvt_qp_swqe_complete.description`:
+
+Description
+-----------
+
+Insert a send completion into the completion
+queue if the qp indicates it should be done.
+
+See IBTA 10.7.3.1 for info on completion
+control.
 
 .. This file was automatic generated / don't edit.
 

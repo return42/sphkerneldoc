@@ -20,7 +20,6 @@ Definition
     struct cec_devnode {
         struct device dev;
         struct cdev cdev;
-        struct device *parent;
         int minor;
         bool registered;
         bool unregistered;
@@ -38,9 +37,6 @@ dev
 
 cdev
     cec character device
-
-parent
-    parent device
 
 minor
     device node minor number

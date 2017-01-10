@@ -8,6 +8,7 @@ serial
     :maxdepth: 1
 
     8250/index
+    amba-pl011_c
     earlycon_c
     ifx6x60_c
     ioc3_serial_c

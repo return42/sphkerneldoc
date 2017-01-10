@@ -245,6 +245,21 @@ blk_queue_max_write_same_sectors
     :param unsigned int max_write_same_sectors:
         maximum number of sectors to write per command
 
+.. _`blk_queue_max_write_zeroes_sectors`:
+
+blk_queue_max_write_zeroes_sectors
+==================================
+
+.. c:function:: void blk_queue_max_write_zeroes_sectors(struct request_queue *q, unsigned int max_write_zeroes_sectors)
+
+    set max sectors for a single write zeroes
+
+    :param struct request_queue \*q:
+        the request queue for the device
+
+    :param unsigned int max_write_zeroes_sectors:
+        maximum number of sectors to write per command
+
 .. _`blk_queue_max_segments`:
 
 blk_queue_max_segments
@@ -750,6 +765,21 @@ the current queue alignment is updated to the new value, otherwise it
 is left alone.  The design of this is to allow multiple objects
 (driver, device, transport etc) to set their respective
 alignments without having them interfere.
+
+.. _`blk_set_queue_depth`:
+
+blk_set_queue_depth
+===================
+
+.. c:function:: void blk_set_queue_depth(struct request_queue *q, unsigned int depth)
+
+    tell the block layer about the device queue depth
+
+    :param struct request_queue \*q:
+        the request queue for the device
+
+    :param unsigned int depth:
+        queue depth
 
 .. _`blk_queue_write_cache`:
 

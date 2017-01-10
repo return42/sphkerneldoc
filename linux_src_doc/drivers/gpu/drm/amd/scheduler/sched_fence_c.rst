@@ -25,11 +25,11 @@ Free up the fence memory after the RCU grace period.
 amd_sched_fence_release_scheduled
 =================================
 
-.. c:function:: void amd_sched_fence_release_scheduled(struct fence *f)
+.. c:function:: void amd_sched_fence_release_scheduled(struct dma_fence *f)
 
     callback that fence can be freed
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`amd_sched_fence_release_scheduled.description`:
@@ -45,11 +45,11 @@ It just RCU schedules freeing up the fence.
 amd_sched_fence_release_finished
 ================================
 
-.. c:function:: void amd_sched_fence_release_finished(struct fence *f)
+.. c:function:: void amd_sched_fence_release_finished(struct dma_fence *f)
 
     drop extra reference
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         fence
 
 .. _`amd_sched_fence_release_finished.description`:

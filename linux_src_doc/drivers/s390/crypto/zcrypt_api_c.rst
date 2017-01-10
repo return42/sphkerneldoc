@@ -18,98 +18,6 @@ Description
 
 Returns 1, if the rescan has been processed, otherwise 0.
 
-.. _`__zcrypt_increase_preference`:
-
-__zcrypt_increase_preference
-============================
-
-.. c:function:: void __zcrypt_increase_preference(struct zcrypt_device *zdev)
-
-    Increase preference of a crypto device.
-
-    :param struct zcrypt_device \*zdev:
-        Pointer the crypto device
-
-.. _`__zcrypt_increase_preference.description`:
-
-Description
------------
-
-Move the device towards the head of the device list.
-Need to be called while holding the zcrypt device list lock.
-
-.. _`__zcrypt_increase_preference.note`:
-
-Note
-----
-
-cards with speed_rating of 0 are kept at the end of the list.
-
-.. _`__zcrypt_decrease_preference`:
-
-__zcrypt_decrease_preference
-============================
-
-.. c:function:: void __zcrypt_decrease_preference(struct zcrypt_device *zdev)
-
-    Decrease preference of a crypto device.
-
-    :param struct zcrypt_device \*zdev:
-        Pointer to a crypto device.
-
-.. _`__zcrypt_decrease_preference.description`:
-
-Description
------------
-
-Move the device towards the tail of the device list.
-Need to be called while holding the zcrypt device list lock.
-
-.. _`__zcrypt_decrease_preference.note`:
-
-Note
-----
-
-cards with speed_rating of 0 are kept at the end of the list.
-
-.. _`zcrypt_device_register`:
-
-zcrypt_device_register
-======================
-
-.. c:function:: int zcrypt_device_register(struct zcrypt_device *zdev)
-
-    Register a crypto device.
-
-    :param struct zcrypt_device \*zdev:
-        Pointer to a crypto device
-
-.. _`zcrypt_device_register.description`:
-
-Description
------------
-
-Register a crypto device. Returns 0 if successful.
-
-.. _`zcrypt_device_unregister`:
-
-zcrypt_device_unregister
-========================
-
-.. c:function:: void zcrypt_device_unregister(struct zcrypt_device *zdev)
-
-    Unregister a crypto device.
-
-    :param struct zcrypt_device \*zdev:
-        Pointer to crypto device
-
-.. _`zcrypt_device_unregister.description`:
-
-Description
------------
-
-Unregister a crypto device.
-
 .. _`zcrypt_read`:
 
 zcrypt_read
@@ -256,7 +164,7 @@ The module initialization code.
 zcrypt_api_exit
 ===============
 
-.. c:function:: void zcrypt_api_exit( void)
+.. c:function:: void __exit zcrypt_api_exit( void)
 
     Module termination.
 

@@ -80,7 +80,7 @@ command_mode_resp
     uniquely identifiable through their E7 responses.
 
 protocol_info
-    information about protcol used by the device.
+    information about protocol used by the device.
 
 .. _`alps_model_info.description`:
 

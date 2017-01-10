@@ -64,9 +64,6 @@ Definition
         int num_cs;
         bool no_cs;
         int (*cfg_gpio)(void);
-        dma_filter_fn filter;
-        void *dma_tx;
-        void *dma_rx;
     }
 
 .. _`s3c64xx_spi_info.members`:
@@ -85,15 +82,6 @@ no_cs
 
 cfg_gpio
     Configure pins for this SPI controller.
-
-filter
-    *undescribed*
-
-dma_tx
-    *undescribed*
-
-dma_rx
-    *undescribed*
 
 .. _`s3c64xx_spi0_set_platdata`:
 

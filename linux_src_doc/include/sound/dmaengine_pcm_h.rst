@@ -35,7 +35,6 @@ Definition
         u32 maxburst;
         unsigned int slave_id;
         void *filter_data;
-        const char *chan_name;
         unsigned int fifo_size;
         unsigned int flags;
     }
@@ -62,9 +61,6 @@ slave_id
 filter_data
     Custom DMA channel filter data, this will usually be used when
     requesting the DMA channel.
-
-chan_name
-    Custom channel name to use when requesting DMA channel.
 
 fifo_size
     FIFO size of the DAI controller in bytes

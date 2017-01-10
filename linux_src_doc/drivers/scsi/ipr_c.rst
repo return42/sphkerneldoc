@@ -5569,8 +5569,7 @@ ipr_test_msi
 Description
 -----------
 
-The return value from \ :c:func:`pci_enable_msi_range`\  can not always be
-trusted.  This routine sets up and initiates a test interrupt to determine
+This routine sets up and initiates a test interrupt to determine
 if the interrupt is received via the \ :c:func:`ipr_test_intr`\  service routine.
 If the tests fails, the driver will fall back to LSI.
 

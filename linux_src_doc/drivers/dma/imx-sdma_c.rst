@@ -257,6 +257,7 @@ Definition
         unsigned int event_id1;
         enum dma_slave_buswidth word_size;
         unsigned int buf_tail;
+        unsigned int buf_ptail;
         unsigned int num_bd;
         unsigned int period_len;
         struct sdma_buffer_descriptor *bd;
@@ -308,6 +309,9 @@ word_size
     *undescribed*
 
 buf_tail
+    *undescribed*
+
+buf_ptail
     *undescribed*
 
 num_bd
@@ -386,6 +390,7 @@ Description
 \ ``event_id1``\            for channels that use 2 events
 \ ``word_size``\            peripheral access size
 \ ``buf_tail``\             ID of the buffer that was processed
+\ ``buf_ptail``\            ID of the previous buffer that was processed
 \ ``num_bd``\               max NUM_BD. number of descriptors currently handling
 
 .. _`sdma_firmware_header`:

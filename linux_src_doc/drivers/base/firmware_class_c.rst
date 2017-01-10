@@ -259,9 +259,9 @@ Description
 
      Asynchronous variant of \ :c:func:`request_firmware`\  for user contexts:
              - sleep for as small periods as possible since it may
-             increase kernel boot time of built-in device drivers
-             requesting firmware in their ->probe() methods, if
-             \ ``gfp``\  is GFP_KERNEL.
+               increase kernel boot time of built-in device drivers
+               requesting firmware in their ->probe() methods, if
+               \ ``gfp``\  is GFP_KERNEL.
 
              - can't sleep at all if \ ``gfp``\  is GFP_ATOMIC.
 

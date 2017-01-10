@@ -52,7 +52,7 @@ account.
 ufs_qcom_setup_clocks
 =====================
 
-.. c:function:: int ufs_qcom_setup_clocks(struct ufs_hba *hba, bool on)
+.. c:function:: int ufs_qcom_setup_clocks(struct ufs_hba *hba, bool on, enum ufs_notify_change_status status)
 
     enables/disable clocks
 
@@ -61,6 +61,9 @@ ufs_qcom_setup_clocks
 
     :param bool on:
         If true, enable clocks else disable them.
+
+    :param enum ufs_notify_change_status status:
+        PRE_CHANGE or POST_CHANGE notify
 
 .. _`ufs_qcom_setup_clocks.description`:
 

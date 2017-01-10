@@ -21,7 +21,7 @@ Definition
         struct rcu_head rcu;
         u32 shared_count;
         u32 shared_max;
-        struct fence __rcu  *shared[];
+        struct dma_fence __rcu  *shared[];
     }
 
 .. _`reservation_object_list.members`:
@@ -60,7 +60,7 @@ Definition
     struct reservation_object {
         struct ww_mutex lock;
         seqcount_t seq;
-        struct fence __rcu *fence_excl;
+        struct dma_fence __rcu *fence_excl;
         struct reservation_object_list __rcu *fence;
         struct reservation_object_list *staged;
     }
@@ -134,7 +134,7 @@ the fence.  The obj->lock must be held.
 reservation_object_get_excl
 ===========================
 
-.. c:function:: struct fence *reservation_object_get_excl(struct reservation_object *obj)
+.. c:function:: struct dma_fence *reservation_object_get_excl(struct reservation_object *obj)
 
     get the reservation object's exclusive fence, with update-side lock held
 
@@ -157,7 +157,7 @@ The exclusive fence or NULL
 reservation_object_get_excl_rcu
 ===============================
 
-.. c:function:: struct fence *reservation_object_get_excl_rcu(struct reservation_object *obj)
+.. c:function:: struct dma_fence *reservation_object_get_excl_rcu(struct reservation_object *obj)
 
     get the reservation object's exclusive fence, without lock held.
 

@@ -6,15 +6,15 @@
 radix_tree_find_next_bit
 ========================
 
-.. c:function:: unsigned long radix_tree_find_next_bit(const unsigned long *addr, unsigned long size, unsigned long offset)
+.. c:function:: unsigned long radix_tree_find_next_bit(struct radix_tree_node *node, unsigned int tag, unsigned long offset)
 
     find the next set bit in a memory region
 
-    :param const unsigned long \*addr:
-        The address to base the search on
+    :param struct radix_tree_node \*node:
+        *undescribed*
 
-    :param unsigned long size:
-        The bitmap size in bits
+    :param unsigned int tag:
+        *undescribed*
 
     :param unsigned long offset:
         The bitnumber to start searching at
@@ -27,6 +27,24 @@ Description
 Unrollable variant of \ :c:func:`find_next_bit`\  for constant size arrays.
 Tail bits starting from size to roundup(size, BITS_PER_LONG) must be zero.
 Returns next bit offset, or size if nothing found.
+
+.. _`radix_tree_shrink`:
+
+radix_tree_shrink
+=================
+
+.. c:function:: void radix_tree_shrink(struct radix_tree_root *root, radix_tree_update_node_t update_node, void *private)
+
+    shrink radix tree to minimum height \ ``root``\            radix tree root
+
+    :param struct radix_tree_root \*root:
+        *undescribed*
+
+    :param radix_tree_update_node_t update_node:
+        *undescribed*
+
+    :param void \*private:
+        *undescribed*
 
 .. _`__radix_tree_create`:
 
@@ -154,6 +172,175 @@ must manage lifetimes of leaf nodes (eg. RCU may also be used to free
 them safely). No RCU barriers are required to access or modify the
 returned item, however.
 
+.. _`__radix_tree_replace`:
+
+__radix_tree_replace
+====================
+
+.. c:function:: void __radix_tree_replace(struct radix_tree_root *root, struct radix_tree_node *node, void **slot, void *item, radix_tree_update_node_t update_node, void *private)
+
+    replace item in a slot
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param struct radix_tree_node \*node:
+        pointer to tree node
+
+    :param void \*\*slot:
+        pointer to slot in \ ``node``\ 
+
+    :param void \*item:
+        new item to store in the slot.
+
+    :param radix_tree_update_node_t update_node:
+        callback for changing leaf nodes
+
+    :param void \*private:
+        private data to pass to \ ``update_node``\ 
+
+.. _`__radix_tree_replace.description`:
+
+Description
+-----------
+
+For use with \__radix_tree_lookup().  Caller must hold tree write locked
+across slot lookup and replacement.
+
+.. _`radix_tree_replace_slot`:
+
+radix_tree_replace_slot
+=======================
+
+.. c:function:: void radix_tree_replace_slot(struct radix_tree_root *root, void **slot, void *item)
+
+    replace item in a slot
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param void \*\*slot:
+        pointer to slot
+
+    :param void \*item:
+        new item to store in the slot.
+
+.. _`radix_tree_replace_slot.description`:
+
+Description
+-----------
+
+For use with \ :c:func:`radix_tree_lookup_slot`\ , \ :c:func:`radix_tree_gang_lookup_slot`\ ,
+\ :c:func:`radix_tree_gang_lookup_tag_slot`\ .  Caller must hold tree write locked
+across slot lookup and replacement.
+
+.. _`radix_tree_replace_slot.note`:
+
+NOTE
+----
+
+This cannot be used to switch between non-entries (empty slots),
+regular entries, and exceptional entries, as that requires accounting
+inside the radix tree node. When switching from one type of entry or
+deleting, use \__radix_tree_lookup() and \__radix_tree_replace() or
+\ :c:func:`radix_tree_iter_replace`\ .
+
+.. _`radix_tree_iter_replace`:
+
+radix_tree_iter_replace
+=======================
+
+.. c:function:: void radix_tree_iter_replace(struct radix_tree_root *root, const struct radix_tree_iter *iter, void **slot, void *item)
+
+    replace item in a slot
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param const struct radix_tree_iter \*iter:
+        *undescribed*
+
+    :param void \*\*slot:
+        pointer to slot
+
+    :param void \*item:
+        new item to store in the slot.
+
+.. _`radix_tree_iter_replace.description`:
+
+Description
+-----------
+
+For use with \ :c:func:`radix_tree_split`\  and \ :c:func:`radix_tree_for_each_slot`\ .
+Caller must hold tree write locked across split and replacement.
+
+.. _`radix_tree_join`:
+
+radix_tree_join
+===============
+
+.. c:function:: int radix_tree_join(struct radix_tree_root *root, unsigned long index, unsigned order, void *item)
+
+    replace multiple entries with one multiorder entry
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param unsigned long index:
+        an index inside the new entry
+
+    :param unsigned order:
+        order of the new entry
+
+    :param void \*item:
+        new entry
+
+.. _`radix_tree_join.description`:
+
+Description
+-----------
+
+Call this function to replace several entries with one larger entry.
+The existing entries are presumed to not need freeing as a result of
+this call.
+
+The replacement entry will have all the tags set on it that were set
+on any of the entries it is replacing.
+
+.. _`radix_tree_split`:
+
+radix_tree_split
+================
+
+.. c:function:: int radix_tree_split(struct radix_tree_root *root, unsigned long index, unsigned order)
+
+    Split an entry into smaller entries
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param unsigned long index:
+        An index within the large entry
+
+    :param unsigned order:
+        Order of new entries
+
+.. _`radix_tree_split.description`:
+
+Description
+-----------
+
+Call this function as the first step in replacing a multiorder entry
+with several entries of lower order.  After this function returns,
+loop over the relevant portion of the tree using \ :c:func:`radix_tree_for_each_slot`\ 
+and call \ :c:func:`radix_tree_iter_replace`\  to set up each new entry.
+
+The tags from this entry are replicated to all the new entries.
+
+The radix tree should be locked against modification during the entire
+replacement operation.  Lock-free lookups will see RADIX_TREE_RETRY which
+should prompt RCU walkers to restart the lookup from the root.
+
 .. _`radix_tree_tag_set`:
 
 radix_tree_tag_set
@@ -183,6 +370,24 @@ the root all the way down to the leaf node.
 
 Returns the address of the tagged item.  Setting a tag on a not-present
 item is a bug.
+
+.. _`radix_tree_iter_tag_set`:
+
+radix_tree_iter_tag_set
+=======================
+
+.. c:function:: void radix_tree_iter_tag_set(struct radix_tree_root *root, const struct radix_tree_iter *iter, unsigned int tag)
+
+    set a tag on the current iterator entry
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param const struct radix_tree_iter \*iter:
+        iterator state
+
+    :param unsigned int tag:
+        tag to set
 
 .. _`radix_tree_tag_clear`:
 
@@ -245,55 +450,6 @@ Return values
 Note that the return value of this function may not be relied on, even if
 the RCU lock is held, unless tag modification and node deletion are excluded
 from concurrency.
-
-.. _`radix_tree_range_tag_if_tagged`:
-
-radix_tree_range_tag_if_tagged
-==============================
-
-.. c:function:: unsigned long radix_tree_range_tag_if_tagged(struct radix_tree_root *root, unsigned long *first_indexp, unsigned long last_index, unsigned long nr_to_tag, unsigned int iftag, unsigned int settag)
-
-    for each item in given range set given tag if item has another tag set
-
-    :param struct radix_tree_root \*root:
-        radix tree root
-
-    :param unsigned long \*first_indexp:
-        pointer to a starting index of a range to scan
-
-    :param unsigned long last_index:
-        last index of a range to scan
-
-    :param unsigned long nr_to_tag:
-        maximum number items to tag
-
-    :param unsigned int iftag:
-        tag index to test
-
-    :param unsigned int settag:
-        tag index to set if tested tag is set
-
-.. _`radix_tree_range_tag_if_tagged.description`:
-
-Description
------------
-
-This function scans range of radix tree from first_index to last_index
-(inclusive).  For each item in the range if iftag is set, the function sets
-also settag. The function stops either after tagging nr_to_tag items or
-after reaching last_index.
-
-The tags must be set from the leaf level only and propagated back up the
-path to the root. We must do this so that we resolve the full path before
-setting any tags on intermediate nodes. If we set tags as we descend, then
-we can get to the leaf node and find that the index that has the iftag
-set is outside the range we are scanning. This reults in dangling tags and
-can lead to problems with later tag operations (e.g. livelocks on lookups).
-
-The function returns the number of leaves where the tag was set and sets
-\*first_indexp to the first unscanned index.
-WARNING! \*first_indexp can wrap if last_index is ULONG_MAX. Caller must
-be prepared to handle that.
 
 .. _`radix_tree_gang_lookup`:
 
@@ -439,48 +595,12 @@ Performs an index-ascending scan of the tree for present items which
 have the tag indexed by \ ``tag``\  set.  Places the slots at \*@results and
 returns the number of slots which were placed at \*@results.
 
-.. _`radix_tree_locate_item`:
-
-radix_tree_locate_item
-======================
-
-.. c:function:: unsigned long radix_tree_locate_item(struct radix_tree_root *root, void *item)
-
-    search through radix tree for item
-
-    :param struct radix_tree_root \*root:
-        radix tree root
-
-    :param void \*item:
-        item to be found
-
-.. _`radix_tree_locate_item.description`:
-
-Description
------------
-
-Returns index where item was found, or -1 if not found.
-Caller must hold no lock (since this time-consuming function needs
-to be preemptible), and must check afterwards if item is still there.
-
-.. _`radix_tree_shrink`:
-
-radix_tree_shrink
-=================
-
-.. c:function:: bool radix_tree_shrink(struct radix_tree_root *root)
-
-    shrink radix tree to minimum height \ ``root``\            radix tree root
-
-    :param struct radix_tree_root \*root:
-        *undescribed*
-
 .. _`__radix_tree_delete_node`:
 
 __radix_tree_delete_node
 ========================
 
-.. c:function:: bool __radix_tree_delete_node(struct radix_tree_root *root, struct radix_tree_node *node)
+.. c:function:: void __radix_tree_delete_node(struct radix_tree_root *root, struct radix_tree_node *node)
 
     try to free node after clearing a slot
 
@@ -498,8 +618,6 @@ Description
 After clearing the slot at \ ``index``\  in \ ``node``\  from radix tree
 rooted at \ ``root``\ , call this function to attempt freeing the
 node and shrinking the tree.
-
-Returns \ ``true``\  if \ ``node``\  was freed, \ ``false``\  otherwise.
 
 .. _`radix_tree_delete_item`:
 

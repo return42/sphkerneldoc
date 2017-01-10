@@ -28,11 +28,11 @@ If there's a bounce page in the context, this frees that.
 fscrypt_get_ctx
 ===============
 
-.. c:function:: struct fscrypt_ctx *fscrypt_get_ctx(struct inode *inode, gfp_t gfp_flags)
+.. c:function:: struct fscrypt_ctx *fscrypt_get_ctx(const struct inode *inode, gfp_t gfp_flags)
 
     Gets an encryption context
 
-    :param struct inode \*inode:
+    :param const struct inode \*inode:
         The inode for which we are doing the crypto
 
     :param gfp_t gfp_flags:
@@ -73,15 +73,29 @@ page_crypt_complete
 fscrypt_encrypt_page
 ====================
 
-.. c:function:: struct page *fscrypt_encrypt_page(struct inode *inode, struct page *plaintext_page, gfp_t gfp_flags)
+.. c:function:: struct page *fscrypt_encrypt_page(const struct inode *inode, struct page *page, unsigned int len, unsigned int offs, u64 lblk_num, gfp_t gfp_flags)
 
     Encrypts a page
 
-    :param struct inode \*inode:
+    :param const struct inode \*inode:
         The inode for which the encryption should take place
 
-    :param struct page \*plaintext_page:
-        The page to encrypt. Must be locked.
+    :param struct page \*page:
+        The page to encrypt. Must be locked for bounce-page
+        encryption.
+
+    :param unsigned int len:
+        Length of data to encrypt in \ ``page``\  and encrypted
+        data in returned page.
+
+    :param unsigned int offs:
+        Offset of data within \ ``page``\  and returned
+        page holding encrypted data.
+
+    :param u64 lblk_num:
+        Logical block number. This must be unique for multiple
+        calls with same inode, except when overwriting
+        previously written data.
 
     :param gfp_t gfp_flags:
         The gfp flag for memory allocation
@@ -91,19 +105,26 @@ fscrypt_encrypt_page
 Description
 -----------
 
-Allocates a ciphertext page and encrypts plaintext_page into it using the ctx
-encryption context.
+Encrypts \ ``page``\  using the ctx encryption context. Performs encryption
+either in-place or into a newly allocated bounce page.
+Called on the page write path.
 
-Called on the page write path.  The caller must call
+Bounce page allocation is the default.
+In this case, the contents of \ ``page``\  are encrypted and stored in an
+allocated bounce page. \ ``page``\  has to be locked and the caller must call
 \ :c:func:`fscrypt_restore_control_page`\  on the returned ciphertext page to
 release the bounce buffer and the encryption context.
+
+In-place encryption is used by setting the FS_CFLG_OWN_PAGES flag in
+fscrypt_operations. Here, the input-page is returned with its content
+encrypted.
 
 .. _`fscrypt_encrypt_page.return`:
 
 Return
 ------
 
-An allocated page with the encrypted content on success. Else, an
+A page with the encrypted content on success. Else, an
 error value or NULL.
 
 .. _`fscrypt_decrypt_page`:
@@ -111,12 +132,25 @@ error value or NULL.
 fscrypt_decrypt_page
 ====================
 
-.. c:function:: int fscrypt_decrypt_page(struct page *page)
+.. c:function:: int fscrypt_decrypt_page(const struct inode *inode, struct page *page, unsigned int len, unsigned int offs, u64 lblk_num)
 
     Decrypts a page in-place
 
+    :param const struct inode \*inode:
+        The corresponding inode for the page to decrypt.
+
     :param struct page \*page:
-        The page to decrypt. Must be locked.
+        The page to decrypt. Must be locked in case
+        it is a writeback page (FS_CFLG_OWN_PAGES unset).
+
+    :param unsigned int len:
+        Number of bytes in \ ``page``\  to be decrypted.
+
+    :param unsigned int offs:
+        Start of data in \ ``page``\ .
+
+    :param u64 lblk_num:
+        Logical block number.
 
 .. _`fscrypt_decrypt_page.description`:
 
@@ -139,12 +173,12 @@ Zero on success, non-zero otherwise.
 fscrypt_initialize
 ==================
 
-.. c:function:: int fscrypt_initialize( void)
+.. c:function:: int fscrypt_initialize(unsigned int cop_flags)
 
     allocate major buffers for fs encryption.
 
-    :param  void:
-        no arguments
+    :param unsigned int cop_flags:
+        fscrypt operations flags
 
 .. _`fscrypt_initialize.description`:
 

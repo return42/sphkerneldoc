@@ -8,3 +8,4 @@ cdc
     :maxdepth: 1
 
     ad7150_c
+    ad7152_c

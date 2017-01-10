@@ -1638,6 +1638,31 @@ This is the firmware assigned device handle
 
 A sysfs 'read-only' shost attribute.
 
+.. _`_ctl_device_ncq_prio_enable_show`:
+
+_ctl_device_ncq_prio_enable_show
+================================
+
+.. c:function:: ssize_t _ctl_device_ncq_prio_enable_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    send prioritized io commands to device \ ``dev``\  - pointer to embedded device \ ``buf``\  - the buffer returned
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param struct device_attribute \*attr:
+        *undescribed*
+
+    :param char \*buf:
+        *undescribed*
+
+.. _`_ctl_device_ncq_prio_enable_show.description`:
+
+Description
+-----------
+
+A sysfs 'read/write' sdev attribute, only works with SATA
+
 .. _`mpt3sas_ctl_init`:
 
 mpt3sas_ctl_init

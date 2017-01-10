@@ -19,13 +19,9 @@ Definition
 
     struct xt_action_param {
         union {unnamed_union};
-        struct net *net;
-        const struct net_device *in;
-        const struct net_device * *out;
+        const struct nf_hook_state *state;
         int fragoff;
         unsigned int thoff;
-        unsigned int hooknum;
-        u_int8_t family;
         bool hotdrop;
     }
 
@@ -38,27 +34,14 @@ Members
     anonymous
 
 
-net
-    *undescribed*
-
-in
-    input netdevice
-
-out
-    output netdevice
+state
+    pointer to hook state this packet came from
 
 fragoff
     packet is a fragment, this is the data offset
 
 thoff
     position of transport header relative to skb->data
-
-hooknum
-    *undescribed*
-
-family
-    Actual NFPROTO\_\* through which the function is invoked
-    (helpful when match->family == NFPROTO_UNSPEC)
 
 hotdrop
     drop packet if we had inspection problems

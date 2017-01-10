@@ -111,7 +111,7 @@ has failed.
 ttm_eu_fence_buffer_objects
 ===========================
 
-.. c:function:: void ttm_eu_fence_buffer_objects(struct ww_acquire_ctx *ticket, struct list_head *list, struct fence *fence)
+.. c:function:: void ttm_eu_fence_buffer_objects(struct ww_acquire_ctx *ticket, struct list_head *list, struct dma_fence *fence)
 
     :param struct ww_acquire_ctx \*ticket:
         ww_acquire_ctx from reserve call
@@ -119,7 +119,7 @@ ttm_eu_fence_buffer_objects
     :param struct list_head \*list:
         thread private list of ttm_validate_buffer structs.
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         The new exclusive fence for the buffers.
 
 .. _`ttm_eu_fence_buffer_objects.description`:

@@ -378,6 +378,42 @@ Return
 
 0 for success else failure code
 
+.. _`timed_wait_for_timeout`:
+
+timed_wait_for_timeout
+======================
+
+.. c:function:: int timed_wait_for_timeout(struct ishtp_device *dev, int condition, unsigned int timeinc, unsigned int timeout)
+
+    wait special event with timeout
+
+    :param struct ishtp_device \*dev:
+        ISHTP device pointer
+
+    :param int condition:
+        indicate the condition for waiting
+
+    :param unsigned int timeinc:
+        time slice for every wait cycle, in ms
+
+    :param unsigned int timeout:
+        time in ms for timeout
+
+.. _`timed_wait_for_timeout.description`:
+
+Description
+-----------
+
+This function will check special event to be ready in a loop, the loop
+period is specificd in timeinc. Wait timeout will causes failure.
+
+.. _`timed_wait_for_timeout.return`:
+
+Return
+------
+
+0 for success else failure code
+
 .. _`ish_fw_reset_handler`:
 
 ish_fw_reset_handler
@@ -494,6 +530,52 @@ Description
 
 ISH IRQ handler. If interrupt is generated and is for ISH it will process
 the interrupt.
+
+.. _`ish_disable_dma`:
+
+ish_disable_dma
+===============
+
+.. c:function:: int ish_disable_dma(struct ishtp_device *dev)
+
+    disable dma communication between host and ISHFW
+
+    :param struct ishtp_device \*dev:
+        ishtp device pointer
+
+.. _`ish_disable_dma.description`:
+
+Description
+-----------
+
+Clear the dma enable bit and wait for dma inactive.
+
+.. _`ish_disable_dma.return`:
+
+Return
+------
+
+0 for success else error code.
+
+.. _`ish_wakeup`:
+
+ish_wakeup
+==========
+
+.. c:function:: void ish_wakeup(struct ishtp_device *dev)
+
+    wakeup ishfw from waiting-for-host state
+
+    :param struct ishtp_device \*dev:
+        ishtp device pointer
+
+.. _`ish_wakeup.description`:
+
+Description
+-----------
+
+Set the dma enable bit and send a void message to FW,
+it wil wakeup FW from waiting-for-host state.
 
 .. _`_ish_hw_reset`:
 

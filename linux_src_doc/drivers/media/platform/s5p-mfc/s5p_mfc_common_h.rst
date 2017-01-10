@@ -294,9 +294,11 @@ Definition
 .. code-block:: c
 
     struct s5p_mfc_pm {
-        struct clk *clock;
         struct clk *clock_gate;
-        atomic_t power;
+        const char **clk_names;
+        struct clk  *clocks[MFC_MAX_CLOCKS];
+        int num_clocks;
+        bool use_clock_gating;
         struct device *device;
     }
 
@@ -305,13 +307,16 @@ Definition
 Members
 -------
 
-clock
-    *undescribed*
-
 clock_gate
     *undescribed*
 
-power
+clk_names
+    *undescribed*
+
+num_clocks
+    *undescribed*
+
+use_clock_gating
     *undescribed*
 
 device

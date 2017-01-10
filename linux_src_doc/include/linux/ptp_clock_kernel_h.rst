@@ -27,6 +27,7 @@ Definition
         int n_pins;
         int pps;
         struct ptp_pin_desc *pin_config;
+        int (*adjfine)(struct ptp_clock_info *ptp, long scaled_ppm);
         int (*adjfreq)(struct ptp_clock_info *ptp, s32 delta);
         int (*adjtime)(struct ptp_clock_info *ptp, s64 delta);
         int (*gettime64)(struct ptp_clock_info *ptp, struct timespec64 *ts);
@@ -72,8 +73,16 @@ pin_config
     programmable pins is nonzero, then drivers must
     allocate and initialize this array.
 
+adjfine
+    Adjusts the frequency of the hardware clock.
+    parameter scaled_ppm: Desired frequency offset from
+    nominal frequency in parts per million, but with a
+    16 bit binary fractional field.
+
 adjfreq
     Adjusts the frequency of the hardware clock.
+    This method is deprecated.  New drivers should implement
+    the \ ``adjfine``\  method instead.
     parameter delta: Desired frequency offset from nominal frequency
     in parts per billion
 
@@ -125,43 +134,6 @@ structure, obtaining a reference to it using \ :c:func:`container_of`\ .
 
 The callbacks must all return zero on success, non-zero otherwise.
 
-.. _`ptp_clock_register`:
-
-ptp_clock_register
-==================
-
-.. c:function:: struct ptp_clock *ptp_clock_register(struct ptp_clock_info *info, struct device *parent)
-
-    register a PTP hardware clock driver
-
-    :param struct ptp_clock_info \*info:
-        Structure describing the new clock.
-
-    :param struct device \*parent:
-        Pointer to the parent device of the new clock.
-
-.. _`ptp_clock_register.description`:
-
-Description
------------
-
-Returns a valid pointer on success or PTR_ERR on failure.  If PHC
-support is missing at the configuration level, this function
-returns NULL, and drivers are expected to gracefully handle that
-case separately.
-
-.. _`ptp_clock_unregister`:
-
-ptp_clock_unregister
-====================
-
-.. c:function:: int ptp_clock_unregister(struct ptp_clock *ptp)
-
-    unregister a PTP hardware clock driver
-
-    :param struct ptp_clock \*ptp:
-        The clock to remove from service.
-
 .. _`ptp_clock_event`:
 
 struct ptp_clock_event
@@ -198,6 +170,43 @@ index
 {unnamed_union}
     anonymous
 
+
+.. _`ptp_clock_register`:
+
+ptp_clock_register
+==================
+
+.. c:function:: struct ptp_clock *ptp_clock_register(struct ptp_clock_info *info, struct device *parent)
+
+    register a PTP hardware clock driver
+
+    :param struct ptp_clock_info \*info:
+        Structure describing the new clock.
+
+    :param struct device \*parent:
+        Pointer to the parent device of the new clock.
+
+.. _`ptp_clock_register.description`:
+
+Description
+-----------
+
+Returns a valid pointer on success or PTR_ERR on failure.  If PHC
+support is missing at the configuration level, this function
+returns NULL, and drivers are expected to gracefully handle that
+case separately.
+
+.. _`ptp_clock_unregister`:
+
+ptp_clock_unregister
+====================
+
+.. c:function:: int ptp_clock_unregister(struct ptp_clock *ptp)
+
+    unregister a PTP hardware clock driver
+
+    :param struct ptp_clock \*ptp:
+        The clock to remove from service.
 
 .. _`ptp_clock_event`:
 

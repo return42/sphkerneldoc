@@ -37,8 +37,12 @@ Definition
 
     enum ipi_id {
         IPI_VPU_INIT,
+        IPI_VDEC_H264,
+        IPI_VDEC_VP8,
+        IPI_VDEC_VP9,
         IPI_VENC_H264,
         IPI_VENC_VP8,
+        IPI_MDP,
         IPI_MAX
     };
 
@@ -49,12 +53,42 @@ Constants
 
 IPI_VPU_INIT
     The interrupt from vpu is to notfiy kernel
+    VPU initialization completed.
+    IPI_VPU_INIT is sent from VPU when firmware is
+    loaded. AP doesn't need to send IPI_VPU_INIT
+    command to VPU.
+    For other IPI below, AP should send the request
+    to VPU to trigger the interrupt.
+
+IPI_VDEC_H264
+    The interrupt from vpu is to notify kernel to
+    handle H264 vidoe decoder job, and vice versa.
+    Decode output format is always MT21 no matter what
+    the input format is.
+
+IPI_VDEC_VP8
+    The interrupt from is to notify kernel to
+    handle VP8 video decoder job, and vice versa.
+    Decode output format is always MT21 no matter what
+    the input format is.
+
+IPI_VDEC_VP9
+    The interrupt from vpu is to notify kernel to
+    handle VP9 video decoder job, and vice versa.
+    Decode output format is always MT21 no matter what
+    the input format is.
 
 IPI_VENC_H264
     The interrupt from vpu is to notify kernel to
+    handle H264 video encoder job, and vice versa.
 
 IPI_VENC_VP8
     The interrupt fro vpu is to notify kernel to
+    handle VP8 video encoder job,, and vice versa.
+
+IPI_MDP
+    The interrupt from vpu is to notify kernel to
+    handle MDP (Media Data Path) job, and vice versa.
 
 IPI_MAX
     The maximum IPI number
@@ -77,6 +111,8 @@ Definition
 
     enum rst_id {
         VPU_RST_ENC,
+        VPU_RST_DEC,
+        VPU_RST_MDP,
         VPU_RST_MAX
     };
 
@@ -87,6 +123,12 @@ Constants
 
 VPU_RST_ENC
     encoder reset id
+
+VPU_RST_DEC
+    decoder reset id
+
+VPU_RST_MDP
+    MDP (Media Data Path) reset id
 
 VPU_RST_MAX
     maximum reset id
@@ -223,6 +265,25 @@ Return
 
 Return 0 if the handler is added successfully,
 otherwise it is failed.
+
+.. _`vpu_get_vdec_hw_capa`:
+
+vpu_get_vdec_hw_capa
+====================
+
+.. c:function:: unsigned int vpu_get_vdec_hw_capa(struct platform_device *pdev)
+
+    get video decoder hardware capability
+
+    :param struct platform_device \*pdev:
+        VPU platform device
+
+.. _`vpu_get_vdec_hw_capa.return`:
+
+Return
+------
+
+video decoder hardware capability
 
 .. _`vpu_get_venc_hw_capa`:
 

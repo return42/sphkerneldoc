@@ -60,9 +60,7 @@ Definition
         struct most_channel_capability *cap;
         struct most_channel_config *conf;
         struct most_dci_obj *dci;
-        u8 hw_addr[6];
         u8 *ep_address;
-        u16 link_stat;
         char description[MAX_STRING_LEN];
         char suffix[MAX_NUM_ENDPOINTS][MAX_SUFFIX_LEN];
         spinlock_t channel_lock[MAX_NUM_ENDPOINTS];
@@ -98,14 +96,8 @@ conf
 dci
     direct communication interface of hardware
 
-hw_addr
-    MAC address of hardware
-
 ep_address
     endpoint address table
-
-link_stat
-    link status of hardware
 
 description
     device description
@@ -183,24 +175,6 @@ Description
 -----------
 
 This is writes data to INIC's direct register communication interface
-
-.. _`free_anchored_buffers`:
-
-free_anchored_buffers
-=====================
-
-.. c:function:: void free_anchored_buffers(struct most_dev *mdev, unsigned int channel, enum mbo_status_flags status)
-
-    free device's anchored items
-
-    :param struct most_dev \*mdev:
-        the device
-
-    :param unsigned int channel:
-        channel ID
-
-    :param enum mbo_status_flags status:
-        status of MBO termination
 
 .. _`get_stream_frame_size`:
 
@@ -502,25 +476,18 @@ hdm_configure_channel
     :param struct most_channel_config \*conf:
         structure that holds the configuration information
 
-.. _`hdm_update_netinfo`:
-
-hdm_update_netinfo
-==================
-
-.. c:function:: int hdm_update_netinfo(struct most_dev *mdev)
-
-    retrieve latest networking information
-
-    :param struct most_dev \*mdev:
-        device interface
-
-.. _`hdm_update_netinfo.description`:
+.. _`hdm_configure_channel.description`:
 
 Description
 -----------
 
-This triggers the USB vendor requests to read the hardware address and
-the current link status of the attached device.
+The attached network interface controller (NIC) supports a padding mode
+to avoid short packets on USB, hence increasing the performance due to a
+lower interrupt load. This mode is default for synchronous data and can
+be switched on for isochronous data. In case padding is active the
+driver needs to know the frame size of the payload in order to calculate
+the number of bytes it needs to pad when transmitting or to cut off when
+receiving data.
 
 .. _`hdm_request_netinfo`:
 
@@ -552,7 +519,7 @@ link_stat_timer_handler
 
 .. c:function:: void link_stat_timer_handler(unsigned long data)
 
-    add work to link_stat work queue
+    schedule work obtaining mac address and link status
 
     :param unsigned long data:
         pointer to USB device instance
@@ -572,7 +539,7 @@ wq_netinfo
 
 .. c:function:: void wq_netinfo(struct work_struct *wq_obj)
 
-    work queue function
+    work queue function to deliver latest networking information
 
     :param struct work_struct \*wq_obj:
         object that holds data for our deferred work to do
@@ -583,8 +550,6 @@ Description
 -----------
 
 This retrieves the network interface status of the USB INIC
-and compares it with the current status. If the status has
-changed, it updates the status of the core.
 
 .. _`wq_clear_halt`:
 

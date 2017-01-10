@@ -9,6 +9,7 @@ mach-omap1
 
     clock_c
     clock_h
+    i2c_c
     pm_c
     reset_c
     timer_c

@@ -784,8 +784,6 @@ Definition
         int (*sync_callback)(struct ubifs_info *c, int lnum, int free, int pad);
         struct mutex io_mutex;
         spinlock_t lock;
-        ktime_t softlimit;
-        unsigned long long delta;
         struct hrtimer timer;
         unsigned int no_timer:1;
         unsigned int need_sync:1;
@@ -832,13 +830,6 @@ io_mutex
 lock
     serializes \ ``buf``\ , \ ``lnum``\ , \ ``offs``\ , \ ``avail``\ , \ ``used``\ , \ ``next_ino``\  and \ ``inodes``\ 
     fields
-
-softlimit
-    soft write-buffer timeout interval
-
-delta
-    hard and soft timeouts delta (the timer expire interval is \ ``softlimit``\ 
-    and \ ``softlimit``\  + \ ``delta``\ )
 
 timer
     write-buffer timer
@@ -1594,6 +1585,8 @@ Definition
         wait_queue_head_t cmt_wq;
         unsigned int big_lpt:1;
         unsigned int space_fixup:1;
+        unsigned int double_hash:1;
+        unsigned int encrypted:1;
         unsigned int no_chk_data_crc:1;
         unsigned int bulk_read:1;
         unsigned int default_compr:2;
@@ -1863,6 +1856,12 @@ big_lpt
 
 space_fixup
     flag indicating that free space in LEBs needs to be cleaned up
+
+double_hash
+    flag indicating that we can do lookups by hash
+
+encrypted
+    flag indicating that this file system contains encrypted files
 
 no_chk_data_crc
     do not check CRCs when reading data nodes (except during

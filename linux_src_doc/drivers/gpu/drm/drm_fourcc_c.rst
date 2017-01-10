@@ -29,46 +29,43 @@ Useful in fbdev emulation code, since that deals in those values.
 drm_get_format_name
 ===================
 
-.. c:function:: char *drm_get_format_name(uint32_t format)
+.. c:function:: const char *drm_get_format_name(uint32_t format, struct drm_format_name_buf *buf)
 
-    return a string for drm fourcc format
+    fill a string with a drm fourcc format's name
 
     :param uint32_t format:
         format to compute name of
 
-.. _`drm_get_format_name.description`:
+    :param struct drm_format_name_buf \*buf:
+        caller-supplied buffer
 
-Description
------------
+.. _`drm_format_info`:
 
-Note that the buffer returned by this function is owned by the caller
-and will need to be freed using \ :c:func:`kfree`\ .
+drm_format_info
+===============
 
-.. _`drm_fb_get_bpp_depth`:
+.. c:function:: const struct drm_format_info *drm_format_info(u32 format)
 
-drm_fb_get_bpp_depth
-====================
+    query information for a given format
 
-.. c:function:: void drm_fb_get_bpp_depth(uint32_t format, unsigned int *depth, int *bpp)
-
-    get the bpp/depth values for format
-
-    :param uint32_t format:
+    :param u32 format:
         pixel format (DRM_FORMAT_*)
 
-    :param unsigned int \*depth:
-        storage for the depth value
-
-    :param int \*bpp:
-        storage for the bpp value
-
-.. _`drm_fb_get_bpp_depth.description`:
+.. _`drm_format_info.description`:
 
 Description
 -----------
 
-This only supports RGB formats here for compat with code that doesn't use
-pixel formats directly yet.
+The caller should only pass a supported pixel format to this function.
+Unsupported pixel formats will generate a warning in the kernel log.
+
+.. _`drm_format_info.return`:
+
+Return
+------
+
+The instance of struct drm_format_info that describes the pixel format, or
+NULL if the format is unsupported.
 
 .. _`drm_format_num_planes`:
 

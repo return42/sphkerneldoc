@@ -203,33 +203,6 @@ bnx2i_percpu_thread_create
     :param unsigned int cpu:
         cpu index for the online cpu
 
-.. _`bnx2i_cpu_callback`:
-
-bnx2i_cpu_callback
-==================
-
-.. c:function:: int bnx2i_cpu_callback(struct notifier_block *nfb, unsigned long action, void *hcpu)
-
-    Handler for CPU hotplug events
-
-    :param struct notifier_block \*nfb:
-        The callback data block
-
-    :param unsigned long action:
-        The event triggering the callback
-
-    :param void \*hcpu:
-        The index of the CPU that the event is for
-
-.. _`bnx2i_cpu_callback.description`:
-
-Description
------------
-
-This creates or destroys per-CPU data for iSCSI
-
-Returns NOTIFY_OK always.
-
 .. _`bnx2i_mod_init`:
 
 bnx2i_mod_init

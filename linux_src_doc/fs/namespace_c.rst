@@ -205,11 +205,11 @@ a non-destructive way to look for easily umountable filesystems.
 clone_private_mount
 ===================
 
-.. c:function:: struct vfsmount *clone_private_mount(struct path *path)
+.. c:function:: struct vfsmount *clone_private_mount(const struct path *path)
 
     create a private clone of a path
 
-    :param struct path \*path:
+    :param const struct path \*path:
         *undescribed*
 
 .. _`clone_private_mount.description`:

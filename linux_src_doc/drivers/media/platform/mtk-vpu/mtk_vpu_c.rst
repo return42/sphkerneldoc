@@ -197,6 +197,7 @@ Definition
     struct vpu_run {
         u32 signaled;
         char fw_ver[VPU_FW_VER_LEN];
+        unsigned int dec_capability;
         unsigned int enc_capability;
         wait_queue_head_t wq;
     }
@@ -211,6 +212,10 @@ signaled
 
 fw_ver
     VPU firmware version
+
+dec_capability
+    decoder capability which is not used for now and
+    the value is reserved for future use
 
 enc_capability
     encoder capability which is not used for now and

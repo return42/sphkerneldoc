@@ -7,4 +7,5 @@ samples
 .. toctree::
     :maxdepth: 1
 
+    bpf/index
     v4l/index

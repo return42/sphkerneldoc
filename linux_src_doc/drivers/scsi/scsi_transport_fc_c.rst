@@ -261,12 +261,12 @@ fc_rport_final_delete
     :param struct work_struct \*work:
         remote port to be deleted.
 
-.. _`fc_rport_create`:
+.. _`fc_remote_port_create`:
 
-fc_rport_create
-===============
+fc_remote_port_create
+=====================
 
-.. c:function:: struct fc_rport *fc_rport_create(struct Scsi_Host *shost, int channel, struct fc_rport_identifiers *ids)
+.. c:function:: struct fc_rport *fc_remote_port_create(struct Scsi_Host *shost, int channel, struct fc_rport_identifiers *ids)
 
     allocates and creates a remote FC port.
 
@@ -280,7 +280,7 @@ fc_rport_create
         The world wide names, fc address, and FC4 port
         roles for the remote port.
 
-.. _`fc_rport_create.description`:
+.. _`fc_remote_port_create.description`:
 
 Description
 -----------
@@ -288,7 +288,7 @@ Description
 Allocates and creates the remoter port structure, including the
 class and sysfs creation.
 
-.. _`fc_rport_create.notes`:
+.. _`fc_remote_port_create.notes`:
 
 Notes
 -----
@@ -649,42 +649,6 @@ fc_vport_sched_delete
     :param struct work_struct \*work:
         vport to be deleted.
 
-.. _`fc_destroy_bsgjob`:
-
-fc_destroy_bsgjob
-=================
-
-.. c:function:: void fc_destroy_bsgjob(struct fc_bsg_job *job)
-
-    routine to teardown/delete a fc bsg job
-
-    :param struct fc_bsg_job \*job:
-        fc_bsg_job that is to be torn down
-
-.. _`fc_bsg_jobdone`:
-
-fc_bsg_jobdone
-==============
-
-.. c:function:: void fc_bsg_jobdone(struct fc_bsg_job *job)
-
-    completion routine for bsg requests that the LLD has completed
-
-    :param struct fc_bsg_job \*job:
-        fc_bsg_job that is complete
-
-.. _`fc_bsg_softirq_done`:
-
-fc_bsg_softirq_done
-===================
-
-.. c:function:: void fc_bsg_softirq_done(struct request *rq)
-
-    softirq done routine for destroying the bsg requests
-
-    :param struct request \*rq:
-        BSG request that holds the job to be destroyed
-
 .. _`fc_bsg_job_timeout`:
 
 fc_bsg_job_timeout
@@ -697,40 +661,19 @@ fc_bsg_job_timeout
     :param struct request \*req:
         request that timed out
 
-.. _`fc_req_to_bsgjob`:
-
-fc_req_to_bsgjob
-================
-
-.. c:function:: int fc_req_to_bsgjob(struct Scsi_Host *shost, struct fc_rport *rport, struct request *req)
-
-    Allocate/create the fc_bsg_job structure for the bsg request
-
-    :param struct Scsi_Host \*shost:
-        SCSI Host corresponding to the bsg object
-
-    :param struct fc_rport \*rport:
-        (optional) FC Remote Port corresponding to the bsg object
-
-    :param struct request \*req:
-        BSG request that needs a job structure
-
 .. _`fc_bsg_host_dispatch`:
 
 fc_bsg_host_dispatch
 ====================
 
-.. c:function:: enum fc_dispatch_result fc_bsg_host_dispatch(struct request_queue *q, struct Scsi_Host *shost, struct fc_bsg_job *job)
+.. c:function:: int fc_bsg_host_dispatch(struct Scsi_Host *shost, struct bsg_job *job)
 
     process fc host bsg requests and dispatch to LLDD
-
-    :param struct request_queue \*q:
-        fc host request queue
 
     :param struct Scsi_Host \*shost:
         scsi host rport attached to
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         bsg job to be processed
 
 .. _`fc_bsg_rport_dispatch`:
@@ -738,66 +681,15 @@ fc_bsg_host_dispatch
 fc_bsg_rport_dispatch
 =====================
 
-.. c:function:: enum fc_dispatch_result fc_bsg_rport_dispatch(struct request_queue *q, struct Scsi_Host *shost, struct fc_rport *rport, struct fc_bsg_job *job)
+.. c:function:: int fc_bsg_rport_dispatch(struct Scsi_Host *shost, struct bsg_job *job)
 
     process rport bsg requests and dispatch to LLDD
-
-    :param struct request_queue \*q:
-        rport request queue
 
     :param struct Scsi_Host \*shost:
         scsi host rport attached to
 
-    :param struct fc_rport \*rport:
-        rport request destined to
-
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         bsg job to be processed
-
-.. _`fc_bsg_request_handler`:
-
-fc_bsg_request_handler
-======================
-
-.. c:function:: void fc_bsg_request_handler(struct request_queue *q, struct Scsi_Host *shost, struct fc_rport *rport, struct device *dev)
-
-    generic handler for bsg requests
-
-    :param struct request_queue \*q:
-        request queue to manage
-
-    :param struct Scsi_Host \*shost:
-        Scsi_Host related to the bsg object
-
-    :param struct fc_rport \*rport:
-        FC remote port related to the bsg object (optional)
-
-    :param struct device \*dev:
-        device structure for bsg object
-
-.. _`fc_bsg_host_handler`:
-
-fc_bsg_host_handler
-===================
-
-.. c:function:: void fc_bsg_host_handler(struct request_queue *q)
-
-    handler for bsg requests for a fc host
-
-    :param struct request_queue \*q:
-        fc host request queue
-
-.. _`fc_bsg_rport_handler`:
-
-fc_bsg_rport_handler
-====================
-
-.. c:function:: void fc_bsg_rport_handler(struct request_queue *q)
-
-    handler for bsg requests for a fc rport
-
-    :param struct request_queue \*q:
-        rport request queue
 
 .. _`fc_bsg_hostadd`:
 

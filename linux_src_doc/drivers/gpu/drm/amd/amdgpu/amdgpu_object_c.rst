@@ -70,14 +70,14 @@ unmaps and unpin a BO for kernel internal use.
 amdgpu_bo_fence
 ===============
 
-.. c:function:: void amdgpu_bo_fence(struct amdgpu_bo *bo, struct fence *fence, bool shared)
+.. c:function:: void amdgpu_bo_fence(struct amdgpu_bo *bo, struct dma_fence *fence, bool shared)
 
     add fence to buffer object
 
     :param struct amdgpu_bo \*bo:
         buffer object in question
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         fence to add
 
     :param bool shared:

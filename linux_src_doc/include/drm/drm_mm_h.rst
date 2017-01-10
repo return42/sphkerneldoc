@@ -264,5 +264,37 @@ Return
 
 0 on success, -ENOSPC if there's no suitable hole.
 
+.. _`drm_mm_for_each_node_in_range`:
+
+drm_mm_for_each_node_in_range
+=============================
+
+.. c:function::  drm_mm_for_each_node_in_range( node__,  mm__,  start__,  end__)
+
+    iterator to walk over a range of allocated nodes
+
+    :param  node__:
+        drm_mm_node structure to assign to in each iteration step
+
+    :param  mm__:
+        drm_mm allocator to walk
+
+    :param  start__:
+        starting offset, the first node will overlap this
+
+    :param  end__:
+        ending offset, the last node will start before this (but may overlap)
+
+.. _`drm_mm_for_each_node_in_range.description`:
+
+Description
+-----------
+
+This iterator walks over all nodes in the range allocator that lie
+between \ ``start``\  and \ ``end``\ . It is implemented similarly to \ :c:func:`list_for_each`\ ,
+but using the internal interval tree to accelerate the search for the
+starting node, and so not safe against removal of elements. It assumes
+that \ ``end``\  is within (or is the upper limit of) the drm_mm allocator.
+
 .. This file was automatic generated / don't edit.
 

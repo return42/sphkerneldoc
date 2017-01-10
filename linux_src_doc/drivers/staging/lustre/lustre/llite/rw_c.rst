@@ -57,7 +57,7 @@ get a zero ra window, although there is still ra space remaining. - Jay
 ll_read_ahead_page
 ==================
 
-.. c:function:: int ll_read_ahead_page(const struct lu_env *env, struct cl_io *io, struct cl_page_list *queue, pgoff_t index, pgoff_t *max_index)
+.. c:function:: int ll_read_ahead_page(const struct lu_env *env, struct cl_io *io, struct cl_page_list *queue, pgoff_t index)
 
     ahead of a page with given index.
 
@@ -73,20 +73,15 @@ ll_read_ahead_page
     :param pgoff_t index:
         *undescribed*
 
-    :param pgoff_t \*max_index:
-        *undescribed*
-
 .. _`ll_read_ahead_page.description`:
 
 Description
 -----------
 
-\retval     +ve: page was added to \a queue.
-
-\retval -ENOLCK: there is no extent lock for this part of a file, stop
-read-ahead.
-
-\retval  -ve, 0: page wasn't added to \a queue for other reason.
+\retval +ve: page was already uptodate so it will be skipped
+from being added;
+\retval -ve: page wasn't added to \a queue for error;
+\retval   0: page was added into \a queue for read ahead.
 
 .. This file was automatic generated / don't edit.
 

@@ -148,6 +148,46 @@ the update. Timestamps taken from that NMI context might be ahead
 of the following timestamps. Callers need to be aware of that and
 deal with it.
 
+.. _`ktime_get_boot_fast_ns`:
+
+ktime_get_boot_fast_ns
+======================
+
+.. c:function:: u64 notrace ktime_get_boot_fast_ns( void)
+
+    NMI safe and fast access to boot clock.
+
+    :param  void:
+        no arguments
+
+.. _`ktime_get_boot_fast_ns.description`:
+
+Description
+-----------
+
+To keep it NMI safe since we're accessing from tracing, we're not using a
+separate timekeeper with updates to monotonic clock and boot offset
+protected with seqlocks. This has the following minor side effects:
+
+(1) Its possible that a timestamp be taken after the boot offset is updated
+but before the timekeeper is updated. If this happens, the new boot offset
+is added to the old timekeeping making the clock appear to update slightly
+
+.. _`ktime_get_boot_fast_ns.earlier`:
+
+earlier
+-------
+
+CPU 0                                        CPU 1
+\ :c:func:`timekeeping_inject_sleeptime64`\ 
+\__timekeeping_inject_sleeptime(tk, delta);
+\ :c:func:`timestamp`\ ;
+timekeeping_update(tk, TK_CLEAR_NTP...);
+
+(2) On 32-bit systems, the 64-bit boot offset (tk->offs_boot) may be
+partially updated.  Since the tk->offs_boot update is a rare event, this
+should be a rare occurrence which postprocessing should be able to handle.
+
 .. _`halt_fast_timekeeper`:
 
 halt_fast_timekeeper
@@ -380,17 +420,17 @@ ktime_get_snapshot
 adjust_historical_crosststamp
 =============================
 
-.. c:function:: int adjust_historical_crosststamp(struct system_time_snapshot *history, cycle_t partial_history_cycles, cycle_t total_history_cycles, bool discontinuity, struct system_device_crosststamp *ts)
+.. c:function:: int adjust_historical_crosststamp(struct system_time_snapshot *history, u64 partial_history_cycles, u64 total_history_cycles, bool discontinuity, struct system_device_crosststamp *ts)
 
     adjust crosstimestamp previous to current interval
 
     :param struct system_time_snapshot \*history:
         Snapshot representing start of history
 
-    :param cycle_t partial_history_cycles:
+    :param u64 partial_history_cycles:
         Cycle offset into history (fractional part)
 
-    :param cycle_t total_history_cycles:
+    :param u64 total_history_cycles:
         Total history length in cycles
 
     :param bool discontinuity:
@@ -799,14 +839,14 @@ It also calls into the NTP code to handle leapsecond processing.
 logarithmic_accumulation
 ========================
 
-.. c:function:: cycle_t logarithmic_accumulation(struct timekeeper *tk, cycle_t offset, u32 shift, unsigned int *clock_set)
+.. c:function:: u64 logarithmic_accumulation(struct timekeeper *tk, u64 offset, u32 shift, unsigned int *clock_set)
 
     shifted accumulation of cycles
 
     :param struct timekeeper \*tk:
         *undescribed*
 
-    :param cycle_t offset:
+    :param u64 offset:
         *undescribed*
 
     :param u32 shift:

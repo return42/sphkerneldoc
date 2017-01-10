@@ -327,6 +327,36 @@ devm_clk_get should not be called from within interrupt context.
 The clock will automatically be freed when the device is unbound
 from the bus.
 
+.. _`devm_get_clk_from_child`:
+
+devm_get_clk_from_child
+=======================
+
+.. c:function:: struct clk *devm_get_clk_from_child(struct device *dev, struct device_node *np, const char *con_id)
+
+    lookup and obtain a managed reference to a clock producer from child node.
+
+    :param struct device \*dev:
+        device for clock "consumer"
+
+    :param struct device_node \*np:
+        pointer to clock consumer node
+
+    :param const char \*con_id:
+        clock consumer ID
+
+.. _`devm_get_clk_from_child.description`:
+
+Description
+-----------
+
+This function parses the clocks, and uses them to look up the
+struct clk from the registered list of clock providers by using
+\ ``np``\  and \ ``con_id``\ 
+
+The clock will automatically be freed when the device is unbound
+from the bus.
+
 .. _`clk_enable`:
 
 clk_enable

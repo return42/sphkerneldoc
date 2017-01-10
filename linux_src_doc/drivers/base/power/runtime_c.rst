@@ -666,6 +666,60 @@ pm_runtime_remove
     :param struct device \*dev:
         Device object being removed from device hierarchy.
 
+.. _`pm_runtime_clean_up_links`:
+
+pm_runtime_clean_up_links
+=========================
+
+.. c:function:: void pm_runtime_clean_up_links(struct device *dev)
+
+    Prepare links to consumers for driver removal.
+
+    :param struct device \*dev:
+        Device whose driver is going to be removed.
+
+.. _`pm_runtime_clean_up_links.description`:
+
+Description
+-----------
+
+Check links from this device to any consumers and if any of them have active
+runtime PM references to the device, drop the usage counter of the device
+(once per link).
+
+Links with the DL_FLAG_STATELESS flag set are ignored.
+
+Since the device is guaranteed to be runtime-active at the point this is
+called, nothing else needs to be done here.
+
+Moreover, this is called after \ :c:func:`device_links_busy`\  has returned 'false', so
+the status of each link is guaranteed to be DL_STATE_SUPPLIER_UNBIND and
+therefore rpm_active can't be manipulated concurrently.
+
+.. _`pm_runtime_get_suppliers`:
+
+pm_runtime_get_suppliers
+========================
+
+.. c:function:: void pm_runtime_get_suppliers(struct device *dev)
+
+    Resume and reference-count supplier devices.
+
+    :param struct device \*dev:
+        Consumer device.
+
+.. _`pm_runtime_put_suppliers`:
+
+pm_runtime_put_suppliers
+========================
+
+.. c:function:: void pm_runtime_put_suppliers(struct device *dev)
+
+    Drop references to supplier devices.
+
+    :param struct device \*dev:
+        Consumer device.
+
 .. _`pm_runtime_force_suspend`:
 
 pm_runtime_force_suspend
@@ -698,7 +752,7 @@ pm_runtime_force_resume
 
 .. c:function:: int pm_runtime_force_resume(struct device *dev)
 
-    Force a device into resume state.
+    Force a device into resume state if needed.
 
     :param struct device \*dev:
         Device to resume.
@@ -710,11 +764,15 @@ Description
 
 Prior invoking this function we expect the user to have brought the device
 into low power state by a call to \ :c:func:`pm_runtime_force_suspend`\ . Here we reverse
-those actions and brings the device into full power. We update the runtime PM
-status and re-enables runtime PM.
+those actions and brings the device into full power, if it is expected to be
+used on system resume. To distinguish that, we check whether the runtime PM
+usage count is greater than 1 (the PM core increases the usage count in the
+system PM prepare phase), as that indicates a real user (such as a subsystem,
+driver, userspace, etc.) is using it. If that is the case, the device is
+expected to be used on system resume as well, so then we resume it. In the
+other case, we defer the resume to be managed via runtime PM.
 
-Typically this function may be invoked from a system resume callback to make
-sure the device is put into full power state.
+Typically this function may be invoked from a system resume callback.
 
 .. This file was automatic generated / don't edit.
 

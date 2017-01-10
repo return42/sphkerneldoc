@@ -191,6 +191,31 @@ Description
 The XL710 does not support any of the ancillary features of the PHC
 subsystem, so this function may just return.
 
+.. _`i40e_ptp_get_rx_events`:
+
+i40e_ptp_get_rx_events
+======================
+
+.. c:function:: u32 i40e_ptp_get_rx_events(struct i40e_pf *pf)
+
+    Read I40E_PRTTSYN_STAT_1 and latch events
+
+    :param struct i40e_pf \*pf:
+        the PF data structure
+
+.. _`i40e_ptp_get_rx_events.description`:
+
+Description
+-----------
+
+This function reads I40E_PRTTSYN_STAT_1 and updates the corresponding timers
+for noticed latch events. This allows the driver to keep track of the first
+time a latch event was noticed which will be used to help clear out Rx
+timestamps for packets that got dropped or lost.
+
+This function will return the current value of I40E_PRTTSYN_STAT_1 and is
+expected to be called only while under the ptp_rx_lock.
+
 .. _`i40e_ptp_rx_hang`:
 
 i40e_ptp_rx_hang

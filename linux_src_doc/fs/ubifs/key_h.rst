@@ -129,7 +129,7 @@ highest_ino_key
 dent_key_init
 =============
 
-.. c:function:: void dent_key_init(const struct ubifs_info *c, union ubifs_key *key, ino_t inum, const struct qstr *nm)
+.. c:function:: void dent_key_init(const struct ubifs_info *c, union ubifs_key *key, ino_t inum, const struct fscrypt_name *nm)
 
     initialize directory entry key.
 
@@ -142,8 +142,8 @@ dent_key_init
     :param ino_t inum:
         parent inode number
 
-    :param const struct qstr \*nm:
-        direntry name and length
+    :param const struct fscrypt_name \*nm:
+        direntry name and length. Not a string when encrypted!
 
 .. _`dent_key_init_hash`:
 
@@ -171,7 +171,7 @@ dent_key_init_hash
 dent_key_init_flash
 ===================
 
-.. c:function:: void dent_key_init_flash(const struct ubifs_info *c, void *k, ino_t inum, const struct qstr *nm)
+.. c:function:: void dent_key_init_flash(const struct ubifs_info *c, void *k, ino_t inum, const struct fscrypt_name *nm)
 
     initialize on-flash directory entry key.
 
@@ -184,7 +184,7 @@ dent_key_init_flash
     :param ino_t inum:
         parent inode number
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         direntry name and length
 
 .. _`lowest_dent_key`:
@@ -210,7 +210,7 @@ lowest_dent_key
 xent_key_init
 =============
 
-.. c:function:: void xent_key_init(const struct ubifs_info *c, union ubifs_key *key, ino_t inum, const struct qstr *nm)
+.. c:function:: void xent_key_init(const struct ubifs_info *c, union ubifs_key *key, ino_t inum, const struct fscrypt_name *nm)
 
     initialize extended attribute entry key.
 
@@ -223,7 +223,7 @@ xent_key_init
     :param ino_t inum:
         host inode number
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         extended attribute entry name and length
 
 .. _`xent_key_init_flash`:
@@ -231,7 +231,7 @@ xent_key_init
 xent_key_init_flash
 ===================
 
-.. c:function:: void xent_key_init_flash(const struct ubifs_info *c, void *k, ino_t inum, const struct qstr *nm)
+.. c:function:: void xent_key_init_flash(const struct ubifs_info *c, void *k, ino_t inum, const struct fscrypt_name *nm)
 
     initialize on-flash extended attribute entry key.
 
@@ -244,7 +244,7 @@ xent_key_init_flash
     :param ino_t inum:
         host inode number
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         extended attribute entry name and length
 
 .. _`lowest_xent_key`:

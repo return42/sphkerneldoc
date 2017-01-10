@@ -31,6 +31,33 @@ hns_xgmac_rx_enable
     :param u32 value:
         *undescribed*
 
+.. _`hns_xgmac_lf_rf_insert`:
+
+hns_xgmac_lf_rf_insert
+======================
+
+.. c:function:: void hns_xgmac_lf_rf_insert(struct mac_driver *mac_drv, u32 mode)
+
+    insert lf rf control about xgmac
+
+    :param struct mac_driver \*mac_drv:
+        mac driver
+
+    :param u32 mode:
+        inserf rf or lf
+
+.. _`hns_xgmac_lf_rf_control_init`:
+
+hns_xgmac_lf_rf_control_init
+============================
+
+.. c:function:: void hns_xgmac_lf_rf_control_init(struct mac_driver *mac_drv)
+
+    initial the lf rf control register
+
+    :param struct mac_driver \*mac_drv:
+        mac driver
+
 .. _`hns_xgmac_enable`:
 
 hns_xgmac_enable

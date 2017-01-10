@@ -60,6 +60,8 @@ Return
 voltage in micro volt corresponding to the opp, else
 return 0
 
+This is useful only for devices with single power supply.
+
 .. _`dev_pm_opp_get_voltage.locking`:
 
 Locking
@@ -847,32 +849,36 @@ to keep the integrity of the internal data structures. Callers should ensure
 that this function is \*NOT\* called under RCU protection or in contexts where
 mutex cannot be locked.
 
-.. _`dev_pm_opp_set_regulator`:
+.. _`dev_pm_opp_set_regulators`:
 
-dev_pm_opp_set_regulator
-========================
+dev_pm_opp_set_regulators
+=========================
 
-.. c:function:: int dev_pm_opp_set_regulator(struct device *dev, const char *name)
+.. c:function:: struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names[], unsigned int count)
 
-    Set regulator name for the device
+    Set regulator names for the device
 
     :param struct device \*dev:
         Device for which regulator name is being set.
 
-    :param const char \*name:
-        Name of the regulator.
+    :param const char \* const names:
+        Array of pointers to the names of the regulator.
 
-.. _`dev_pm_opp_set_regulator.description`:
+    :param unsigned int count:
+        Number of regulators.
+
+.. _`dev_pm_opp_set_regulators.description`:
 
 Description
 -----------
 
 In order to support OPP switching, OPP layer needs to know the name of the
-device's regulator, as the core would be required to switch voltages as well.
+device's regulators, as the core would be required to switch voltages as
+well.
 
 This must be called before any OPPs are initialized for the device.
 
-.. _`dev_pm_opp_set_regulator.locking`:
+.. _`dev_pm_opp_set_regulators.locking`:
 
 Locking
 -------
@@ -883,19 +889,78 @@ to keep the integrity of the internal data structures. Callers should ensure
 that this function is \*NOT\* called under RCU protection or in contexts where
 mutex cannot be locked.
 
-.. _`dev_pm_opp_put_regulator`:
+.. _`dev_pm_opp_put_regulators`:
 
-dev_pm_opp_put_regulator
-========================
+dev_pm_opp_put_regulators
+=========================
 
-.. c:function:: void dev_pm_opp_put_regulator(struct device *dev)
+.. c:function:: void dev_pm_opp_put_regulators(struct opp_table *opp_table)
 
     Releases resources blocked for regulator
 
-    :param struct device \*dev:
-        Device for which regulator was set.
+    :param struct opp_table \*opp_table:
+        OPP table returned from \ :c:func:`dev_pm_opp_set_regulators`\ .
 
-.. _`dev_pm_opp_put_regulator.locking`:
+.. _`dev_pm_opp_put_regulators.locking`:
+
+Locking
+-------
+
+The internal opp_table and opp structures are RCU protected.
+Hence this function internally uses RCU updater strategy with mutex locks
+to keep the integrity of the internal data structures. Callers should ensure
+that this function is \*NOT\* called under RCU protection or in contexts where
+mutex cannot be locked.
+
+.. _`dev_pm_opp_register_set_opp_helper`:
+
+dev_pm_opp_register_set_opp_helper
+==================================
+
+.. c:function:: int dev_pm_opp_register_set_opp_helper(struct device *dev, int (*set_opp)(struct dev_pm_set_opp_data *data))
+
+    Register custom set OPP helper
+
+    :param struct device \*dev:
+        Device for which the helper is getting registered.
+
+    :param int (\*set_opp)(struct dev_pm_set_opp_data \*data):
+        Custom set OPP helper.
+
+.. _`dev_pm_opp_register_set_opp_helper.description`:
+
+Description
+-----------
+
+This is useful to support complex platforms (like platforms with multiple
+regulators per device), instead of the generic OPP set rate helper.
+
+This must be called before any OPPs are initialized for the device.
+
+.. _`dev_pm_opp_register_set_opp_helper.locking`:
+
+Locking
+-------
+
+The internal opp_table and opp structures are RCU protected.
+Hence this function internally uses RCU updater strategy with mutex locks
+to keep the integrity of the internal data structures. Callers should ensure
+that this function is \*NOT\* called under RCU protection or in contexts where
+mutex cannot be locked.
+
+.. _`dev_pm_opp_register_put_opp_helper`:
+
+dev_pm_opp_register_put_opp_helper
+==================================
+
+.. c:function:: void dev_pm_opp_register_put_opp_helper(struct device *dev)
+
+    Releases resources blocked for set_opp helper
+
+    :param struct device \*dev:
+        Device for which custom set_opp helper has to be cleared.
+
+.. _`dev_pm_opp_register_put_opp_helper.locking`:
 
 Locking
 -------

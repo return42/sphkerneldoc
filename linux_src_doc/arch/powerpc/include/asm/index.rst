@@ -16,7 +16,6 @@ asm
     hvcall_h
     io_h
     local_h
-    mutex_h
     ps3_h
     ptrace_h
     rtas_h

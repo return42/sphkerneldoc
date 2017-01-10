@@ -19,4 +19,5 @@ dwc2
     hcd_intr_c
     hcd_queue_c
     hw_h
+    params_c
     platform_c

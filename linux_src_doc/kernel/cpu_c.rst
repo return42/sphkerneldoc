@@ -98,14 +98,23 @@ __cpuhp_setup_state
         teardown callback function
 
     :param bool multi_instance:
-        *undescribed*
+        State is set up for multiple instances which get
+        added afterwards.
 
-.. _`__cpuhp_setup_state.description`:
+.. _`__cpuhp_setup_state.on-success`:
 
-Description
------------
+On success
+----------
 
-Returns 0 if successful, otherwise a proper error code
+Positive state number if \ ``state``\  is CPUHP_AP_ONLINE_DYN
+0 for all other states
+
+.. _`__cpuhp_setup_state.on-failure`:
+
+On failure
+----------
+
+proper (negative) error code
 
 .. _`__cpuhp_remove_state`:
 

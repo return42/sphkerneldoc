@@ -332,6 +332,7 @@ Definition
     #define DVB_USB_STATE_REMOTE 0x004
         int state;
         int powered;
+        struct mutex data_mutex;
         struct mutex usb_mutex;
         struct mutex i2c_mutex;
         struct i2c_adapter i2c_adap;
@@ -368,11 +369,17 @@ powered
     indicated whether the device is power or not.
     Powered is in/decremented for each call to modify the state.
 
+data_mutex
+    mutex to protect the data structure used to store URB data
+
 usb_mutex
-    semaphore of USB control messages (reading needs two messages)
+    mutex of USB control messages (reading needs two messages).
+    Please notice that this mutex is used internally at the generic
+    URB control functions. So, drivers using \ :c:func:`dvb_usb_generic_rw`\  and
+    derivated functions should not lock it internally.
 
 i2c_mutex
-    semaphore for i2c-transfers
+    mutex for i2c-transfers
 
 i2c_adap
     device's i2c_adapter if it uses I2CoverUSB

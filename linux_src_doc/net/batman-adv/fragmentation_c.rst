@@ -6,12 +6,15 @@
 batadv_frag_clear_chain
 =======================
 
-.. c:function:: void batadv_frag_clear_chain(struct hlist_head *head)
+.. c:function:: void batadv_frag_clear_chain(struct hlist_head *head, bool dropped)
 
     delete entries in the fragment buffer chain
 
     :param struct hlist_head \*head:
         head of chain with entries.
+
+    :param bool dropped:
+        whether the chain is cleared because all fragments are dropped
 
 .. _`batadv_frag_clear_chain.description`:
 
@@ -279,8 +282,7 @@ batadv_frag_send_packet
 Return
 ------
 
-the netdev tx status or -1 in case of error.
-When -1 is returned the skb is not consumed.
+the netdev tx status or a negative errno code on a failure
 
 .. This file was automatic generated / don't edit.
 

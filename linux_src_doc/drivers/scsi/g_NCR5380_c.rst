@@ -1,17 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/g_NCR5380.c
 
+.. _`g_ncr5380_probe_irq`:
+
+g_NCR5380_probe_irq
+===================
+
+.. c:function:: int g_NCR5380_probe_irq(struct Scsi_Host *instance)
+
+    find the IRQ of a NCR5380 or equivalent
+
+    :param struct Scsi_Host \*instance:
+        SCSI host instance
+
+.. _`g_ncr5380_probe_irq.description`:
+
+Description
+-----------
+
+Autoprobe for the IRQ line used by the card by triggering an IRQ
+and then looking to see what interrupt actually turned up.
+
 .. _`generic_ncr5380_pread`:
 
 generic_NCR5380_pread
 =====================
 
-.. c:function:: int generic_NCR5380_pread(struct Scsi_Host *instance, unsigned char *dst, int len)
+.. c:function:: int generic_NCR5380_pread(struct NCR5380_hostdata *hostdata, unsigned char *dst, int len)
 
     pseudo DMA read
 
-    :param struct Scsi_Host \*instance:
-        adapter to read from
+    :param struct NCR5380_hostdata \*hostdata:
+        scsi host private data
 
     :param unsigned char \*dst:
         buffer to read into
@@ -32,12 +52,12 @@ controller
 generic_NCR5380_pwrite
 ======================
 
-.. c:function:: int generic_NCR5380_pwrite(struct Scsi_Host *instance, unsigned char *src, int len)
+.. c:function:: int generic_NCR5380_pwrite(struct NCR5380_hostdata *hostdata, unsigned char *src, int len)
 
     pseudo DMA write
 
-    :param struct Scsi_Host \*instance:
-        adapter to read from
+    :param struct NCR5380_hostdata \*hostdata:
+        scsi host private data
 
     :param unsigned char \*src:
         *undescribed*

@@ -132,6 +132,43 @@ is underway against any of the blocks which are outside the truncation
 point.  Because the caller is about to free (and possibly reuse) those
 blocks on-disk.
 
+.. _`clean_bdev_aliases`:
+
+clean_bdev_aliases
+==================
+
+.. c:function:: void clean_bdev_aliases(struct block_device *bdev, sector_t block, sector_t len)
+
+    clean a range of buffers in block device
+
+    :param struct block_device \*bdev:
+        Block device to clean buffers in
+
+    :param sector_t block:
+        Start of a range of blocks to clean
+
+    :param sector_t len:
+        Number of blocks to clean
+
+.. _`clean_bdev_aliases.description`:
+
+Description
+-----------
+
+We are taking a range of blocks for data and we don't want writeback of any
+buffer-cache aliases starting from return from this function and until the
+moment when something will explicitly mark the buffer dirty (hopefully that
+will not happen until we will free that block ;-) We don't even need to mark
+it not-uptodate - nobody can expect anything from a newly allocated buffer
+anyway. We used to use \ :c:func:`unmap_buffer`\  for such invalidation, but that was
+wrong. We definitely don't want to mark the alias unmapped, for example - it
+would confuse anyone who might pick it with \ :c:func:`bread`\  afterwards...
+
+Also..  Note that \ :c:func:`bforget`\  doesn't lock the buffer.  So there can be
+writeout I/O going on against recently-freed buffers.  We don't wait on that
+I/O in \ :c:func:`bforget`\  - it's more efficient to wait on the I/O only if we really
+need to.  That happens here.
+
 .. _`ll_rw_block`:
 
 ll_rw_block
@@ -145,7 +182,7 @@ ll_rw_block
         whether to \ ``READ``\  or \ ``WRITE``\ 
 
     :param int op_flags:
-        rq_flag_bits
+        req_flag_bits
 
     :param int nr:
         number of \ :c:type:`struct buffer_heads <buffer_heads>`\  in the array

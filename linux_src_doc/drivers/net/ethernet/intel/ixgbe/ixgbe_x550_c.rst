@@ -133,6 +133,118 @@ ixgbe_check_cs4227
     :param struct ixgbe_hw \*hw:
         pointer to hardware structure
 
+.. _`ixgbe_read_i2c_combined_generic`:
+
+ixgbe_read_i2c_combined_generic
+===============================
+
+.. c:function:: s32 ixgbe_read_i2c_combined_generic(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 *val)
+
+    Perform I2C read combined operation
+
+    :param struct ixgbe_hw \*hw:
+        pointer to the hardware structure
+
+    :param u8 addr:
+        I2C bus address to read from
+
+    :param u16 reg:
+        I2C device register to read from
+
+    :param u16 \*val:
+        pointer to location to receive read value
+
+.. _`ixgbe_read_i2c_combined_generic.description`:
+
+Description
+-----------
+
+Returns an error code on error.
+
+.. _`ixgbe_read_i2c_combined_generic_unlocked`:
+
+ixgbe_read_i2c_combined_generic_unlocked
+========================================
+
+.. c:function:: s32 ixgbe_read_i2c_combined_generic_unlocked(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 *val)
+
+    Do I2C read combined operation
+
+    :param struct ixgbe_hw \*hw:
+        pointer to the hardware structure
+
+    :param u8 addr:
+        I2C bus address to read from
+
+    :param u16 reg:
+        I2C device register to read from
+
+    :param u16 \*val:
+        pointer to location to receive read value
+
+.. _`ixgbe_read_i2c_combined_generic_unlocked.description`:
+
+Description
+-----------
+
+Returns an error code on error.
+
+.. _`ixgbe_write_i2c_combined_generic`:
+
+ixgbe_write_i2c_combined_generic
+================================
+
+.. c:function:: s32 ixgbe_write_i2c_combined_generic(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 val)
+
+    Perform I2C write combined operation
+
+    :param struct ixgbe_hw \*hw:
+        pointer to the hardware structure
+
+    :param u8 addr:
+        I2C bus address to write to
+
+    :param u16 reg:
+        I2C device register to write to
+
+    :param u16 val:
+        value to write
+
+.. _`ixgbe_write_i2c_combined_generic.description`:
+
+Description
+-----------
+
+Returns an error code on error.
+
+.. _`ixgbe_write_i2c_combined_generic_unlocked`:
+
+ixgbe_write_i2c_combined_generic_unlocked
+=========================================
+
+.. c:function:: s32 ixgbe_write_i2c_combined_generic_unlocked(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 val)
+
+    Do I2C write combined operation
+
+    :param struct ixgbe_hw \*hw:
+        pointer to the hardware structure
+
+    :param u8 addr:
+        I2C bus address to write to
+
+    :param u16 reg:
+        I2C device register to write to
+
+    :param u16 val:
+        value to write
+
+.. _`ixgbe_write_i2c_combined_generic_unlocked.description`:
+
+Description
+-----------
+
+Returns an error code on error.
+
 .. _`ixgbe_iosf_wait`:
 
 ixgbe_iosf_wait
@@ -248,6 +360,37 @@ Description
 Sets bus link width and speed to unknown because X550em is
 not a PCI device.
 
+.. _`ixgbe_setup_ixfi_x550em_x`:
+
+ixgbe_setup_ixfi_x550em_x
+=========================
+
+.. c:function:: s32 ixgbe_setup_ixfi_x550em_x(struct ixgbe_hw *hw)
+
+    MAC specific iXFI configuration
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+.. _`ixgbe_setup_ixfi_x550em_x.description`:
+
+Description
+-----------
+
+iXfI configuration needed for ixgbe_mac_X550EM_x devices.
+
+.. _`ixgbe_restart_an_internal_phy_x550em`:
+
+ixgbe_restart_an_internal_phy_x550em
+====================================
+
+.. c:function:: s32 ixgbe_restart_an_internal_phy_x550em(struct ixgbe_hw *hw)
+
+    restart autonegotiation for the internal PHY
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
 .. _`ixgbe_supported_sfp_modules_x550em`:
 
 ixgbe_supported_sfp_modules_X550em
@@ -287,6 +430,29 @@ Description
 -----------
 
 Configures the extern PHY and the integrated KR PHY for SFP support.
+
+.. _`ixgbe_setup_sfi_x550a`:
+
+ixgbe_setup_sfi_x550a
+=====================
+
+.. c:function:: s32 ixgbe_setup_sfi_x550a(struct ixgbe_hw *hw, ixgbe_link_speed *speed)
+
+    Configure the internal PHY for native SFI mode
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+    :param ixgbe_link_speed \*speed:
+        the link speed to force
+
+.. _`ixgbe_setup_sfi_x550a.description`:
+
+Description
+-----------
+
+Configures the integrated PHY for native SFI mode. Used to connect the
+internal PHY directly to an SFP cage, without autonegotiation.
 
 .. _`ixgbe_setup_mac_link_sfp_n`:
 
@@ -540,6 +706,30 @@ ixgbe_setup_fc_x550em
     :param struct ixgbe_hw \*hw:
         pointer to hardware structure
 
+.. _`ixgbe_fc_autoneg_backplane_x550em_a`:
+
+ixgbe_fc_autoneg_backplane_x550em_a
+===================================
+
+.. c:function:: void ixgbe_fc_autoneg_backplane_x550em_a(struct ixgbe_hw *hw)
+
+    Enable flow control IEEE clause 37
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+.. _`ixgbe_fc_autoneg_fiber_x550em_a`:
+
+ixgbe_fc_autoneg_fiber_x550em_a
+===============================
+
+.. c:function:: void ixgbe_fc_autoneg_fiber_x550em_a(struct ixgbe_hw *hw)
+
+    passthrough FC settings
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
 .. _`ixgbe_read_mng_if_sel_x550em`:
 
 ixgbe_read_mng_if_sel_x550em
@@ -570,6 +760,25 @@ ixgbe_set_mdio_speed
 
     :param struct ixgbe_hw \*hw:
         pointer to hardware structure
+
+.. _`ixgbe_setup_fc_backplane_x550em_a`:
+
+ixgbe_setup_fc_backplane_x550em_a
+=================================
+
+.. c:function:: s32 ixgbe_setup_fc_backplane_x550em_a(struct ixgbe_hw *hw)
+
+    Set up flow control
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+.. _`ixgbe_setup_fc_backplane_x550em_a.description`:
+
+Description
+-----------
+
+Called at init time to set up flow control.
 
 .. _`ixgbe_set_mux`:
 

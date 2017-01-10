@@ -80,7 +80,7 @@ result is not meaningful.
 mmc_pre_req
 ===========
 
-.. c:function:: void mmc_pre_req(struct mmc_host *host, struct mmc_request *mrq, bool is_first_req)
+.. c:function:: void mmc_pre_req(struct mmc_host *host, struct mmc_request *mrq)
 
     Prepare for a new request
 
@@ -89,10 +89,6 @@ mmc_pre_req
 
     :param struct mmc_request \*mrq:
         MMC request to prepare for
-
-    :param bool is_first_req:
-        true if there is no previous started request
-        that may run in parellel to this call, otherwise false
 
 .. _`mmc_pre_req.description`:
 
@@ -134,7 +130,7 @@ a request may be performed while another reuqest is running.
 mmc_start_req
 =============
 
-.. c:function:: struct mmc_async_req *mmc_start_req(struct mmc_host *host, struct mmc_async_req *areq, int *error)
+.. c:function:: struct mmc_async_req *mmc_start_req(struct mmc_host *host, struct mmc_async_req *areq, enum mmc_blk_status *ret_stat)
 
     start a non-blocking request
 
@@ -144,8 +140,8 @@ mmc_start_req
     :param struct mmc_async_req \*areq:
         async request to start
 
-    :param int \*error:
-        out parameter returns 0 for success, otherwise non zero
+    :param enum mmc_blk_status \*ret_stat:
+        *undescribed*
 
 .. _`mmc_start_req.description`:
 

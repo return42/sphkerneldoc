@@ -195,6 +195,7 @@ Definition
         bool tt_tx_protection;
         bool disable_tx;
         bool tlc_amsdu;
+        bool sleeping;
         u8 agg_tids;
         u8 sleep_tx_count;
         u8 avg_energy;
@@ -272,6 +273,9 @@ disable_tx
 
 tlc_amsdu
     true if A-MSDU is allowed
+
+sleeping
+    *undescribed*
 
 agg_tids
     bitmap of tids whose status is operational aggregated (IWL_AGG_ON)

@@ -6,11 +6,11 @@
 alloc_file
 ==========
 
-.. c:function:: struct file *alloc_file(struct path *path, fmode_t mode, const struct file_operations *fop)
+.. c:function:: struct file *alloc_file(const struct path *path, fmode_t mode, const struct file_operations *fop)
 
     allocate and initialize a 'struct file'
 
-    :param struct path \*path:
+    :param const struct path \*path:
         the (dentry, vfsmount) pair for the new file
 
     :param fmode_t mode:

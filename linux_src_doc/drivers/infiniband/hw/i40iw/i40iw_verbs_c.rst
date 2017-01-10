@@ -351,12 +351,12 @@ cq_free_resources
     :param struct i40iw_cq \*iwcq:
         cq ptr
 
-.. _`cq_wq_destroy`:
+.. _`i40iw_cq_wq_destroy`:
 
-cq_wq_destroy
-=============
+i40iw_cq_wq_destroy
+===================
 
-.. c:function:: void cq_wq_destroy(struct i40iw_device *iwdev, struct i40iw_sc_cq *cq)
+.. c:function:: void i40iw_cq_wq_destroy(struct i40iw_device *iwdev, struct i40iw_sc_cq *cq)
 
     send cq destroy cqp
 
@@ -443,12 +443,9 @@ i40iw_create_stag
 i40iw_next_pbl_addr
 ===================
 
-.. c:function:: u64 *i40iw_next_pbl_addr(struct i40iw_pble_alloc *palloc, u64 *pbl, struct i40iw_pble_info **pinfo, u32 *idx)
+.. c:function:: u64 *i40iw_next_pbl_addr(u64 *pbl, struct i40iw_pble_info **pinfo, u32 *idx)
 
     Get next pbl address
-
-    :param struct i40iw_pble_alloc \*palloc:
-        Poiner to allocated pbles
 
     :param u64 \*pbl:
         pointer to a pble
@@ -477,6 +474,68 @@ i40iw_copy_user_pgaddrs
     :param enum i40iw_pble_level level:
         indicated level 0, 1 or 2
 
+.. _`i40iw_set_hugetlb_values`:
+
+i40iw_set_hugetlb_values
+========================
+
+.. c:function:: void i40iw_set_hugetlb_values(u64 addr, struct i40iw_mr *iwmr)
+
+    set MR pg size and mask to huge pg values.
+
+    :param u64 addr:
+        virtual address
+
+    :param struct i40iw_mr \*iwmr:
+        mr pointer for this memory registration
+
+.. _`i40iw_check_mem_contiguous`:
+
+i40iw_check_mem_contiguous
+==========================
+
+.. c:function:: bool i40iw_check_mem_contiguous(u64 *arr, u32 npages, u32 pg_size)
+
+    check if pbls stored in arr are contiguous
+
+    :param u64 \*arr:
+        lvl1 pbl array
+
+    :param u32 npages:
+        page count
+
+    :param u32 pg_size:
+        *undescribed*
+
+.. _`i40iw_check_mem_contiguous.pg_size`:
+
+pg_size
+-------
+
+page size
+
+.. _`i40iw_check_mr_contiguous`:
+
+i40iw_check_mr_contiguous
+=========================
+
+.. c:function:: bool i40iw_check_mr_contiguous(struct i40iw_pble_alloc *palloc, u32 pg_size)
+
+    check if MR is physically contiguous
+
+    :param struct i40iw_pble_alloc \*palloc:
+        pbl allocation struct
+
+    :param u32 pg_size:
+        *undescribed*
+
+.. _`i40iw_check_mr_contiguous.pg_size`:
+
+pg_size
+-------
+
+page size
+
 .. _`i40iw_setup_pbles`:
 
 i40iw_setup_pbles
@@ -493,7 +552,7 @@ i40iw_setup_pbles
         mr pointer for this memory registration
 
     :param bool use_pbles:
-        flag if to use pble's or memory (level 0)
+        flag if to use pble's
 
 .. _`i40iw_handle_q_mem`:
 
@@ -975,7 +1034,7 @@ i40iw_query_pkey
 i40iw_create_ah
 ===============
 
-.. c:function:: struct ib_ah *i40iw_create_ah(struct ib_pd *ibpd, struct ib_ah_attr *attr)
+.. c:function:: struct ib_ah *i40iw_create_ah(struct ib_pd *ibpd, struct ib_ah_attr *attr, struct ib_udata *udata)
 
     create address handle
 
@@ -983,6 +1042,9 @@ i40iw_create_ah
         ptr of pd
 
     :param struct ib_ah_attr \*attr:
+        *undescribed*
+
+    :param struct ib_udata \*udata:
         *undescribed*
 
 .. _`i40iw_destroy_ah`:

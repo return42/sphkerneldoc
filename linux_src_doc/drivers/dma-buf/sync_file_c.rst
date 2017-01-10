@@ -6,11 +6,11 @@
 sync_file_create
 ================
 
-.. c:function:: struct sync_file *sync_file_create(struct fence *fence)
+.. c:function:: struct sync_file *sync_file_create(struct dma_fence *fence)
 
     creates a sync file
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         fence to add to the sync_fence
 
 .. _`sync_file_create.description`:
@@ -47,7 +47,7 @@ backing file. Returns the sync_file or NULL in case of error.
 sync_file_get_fence
 ===================
 
-.. c:function:: struct fence *sync_file_get_fence(int fd)
+.. c:function:: struct dma_fence *sync_file_get_fence(int fd)
 
     get the fence related to the sync_file fd
 

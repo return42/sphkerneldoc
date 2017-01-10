@@ -198,6 +198,34 @@ hence we may omit checks after joining wait queue.
 We check receive queue before \ :c:func:`schedule`\  only as optimization;
 it is very likely that \ :c:func:`release_sock`\  added new data.
 
+.. _`__sk_mem_raise_allocated`:
+
+__sk_mem_raise_allocated
+========================
+
+.. c:function:: int __sk_mem_raise_allocated(struct sock *sk, int size, int amt, int kind)
+
+    increase memory_allocated
+
+    :param struct sock \*sk:
+        socket
+
+    :param int size:
+        memory size to allocate
+
+    :param int amt:
+        pages to allocate
+
+    :param int kind:
+        allocation type
+
+.. _`__sk_mem_raise_allocated.description`:
+
+Description
+-----------
+
+Similar to \__sk_mem_schedule(), but does not update sk_forward_alloc
+
 .. _`__sk_mem_schedule`:
 
 __sk_mem_schedule
@@ -225,6 +253,28 @@ If kind is SK_MEM_SEND, it means wmem allocation. Otherwise it means
 rmem allocation. This function assumes that protocols which have
 memory_pressure use sk_wmem_queued as write buffer accounting.
 
+.. _`__sk_mem_reduce_allocated`:
+
+__sk_mem_reduce_allocated
+=========================
+
+.. c:function:: void __sk_mem_reduce_allocated(struct sock *sk, int amount)
+
+    reclaim memory_allocated
+
+    :param struct sock \*sk:
+        socket
+
+    :param int amount:
+        number of quanta
+
+.. _`__sk_mem_reduce_allocated.description`:
+
+Description
+-----------
+
+Similar to \__sk_mem_reclaim(), but does not update sk_forward_alloc
+
 .. _`__sk_mem_reclaim`:
 
 __sk_mem_reclaim
@@ -232,7 +282,7 @@ __sk_mem_reclaim
 
 .. c:function:: void __sk_mem_reclaim(struct sock *sk, int amount)
 
-    reclaim memory_allocated
+    reclaim sk_forward_alloc and memory_allocated
 
     :param struct sock \*sk:
         socket

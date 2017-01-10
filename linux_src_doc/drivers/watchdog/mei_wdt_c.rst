@@ -385,35 +385,17 @@ Return
 
 0 if success, negative errno code for failure
 
-.. _`mei_wdt_event_rx`:
+.. _`mei_wdt_rx`:
 
-mei_wdt_event_rx
-================
+mei_wdt_rx
+==========
 
-.. c:function:: void mei_wdt_event_rx(struct mei_cl_device *cldev)
+.. c:function:: void mei_wdt_rx(struct mei_cl_device *cldev)
 
     callback for data receive
 
     :param struct mei_cl_device \*cldev:
         bus device
-
-.. _`mei_wdt_event`:
-
-mei_wdt_event
-=============
-
-.. c:function:: void mei_wdt_event(struct mei_cl_device *cldev, u32 events, void *context)
-
-    callback for event receive
-
-    :param struct mei_cl_device \*cldev:
-        bus device
-
-    :param u32 events:
-        event mask
-
-    :param void \*context:
-        callback context
 
 .. This file was automatic generated / don't edit.
 

@@ -62,7 +62,7 @@ psb_gtt_insert
         our GTT range
 
     :param int resume:
-        *undescribed*
+        on resume
 
 .. _`psb_gtt_insert.description`:
 
@@ -236,7 +236,7 @@ psb_gtt_alloc_range
         resource should be backed by stolen pages
 
     :param u32 align:
-        *undescribed*
+        requested alignment
 
 .. _`psb_gtt_alloc_range.description`:
 

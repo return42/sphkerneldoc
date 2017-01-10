@@ -29,7 +29,7 @@ necessary because it can change based on the link speed.
 ixgbe_ptp_read_X550
 ===================
 
-.. c:function:: cycle_t ixgbe_ptp_read_X550(const struct cyclecounter *hw_cc)
+.. c:function:: u64 ixgbe_ptp_read_X550(const struct cyclecounter *hw_cc)
 
     read cycle counter value
 
@@ -52,7 +52,7 @@ result of SYSTIME is 32bits of "billions of cycles" and 32 bits of
 ixgbe_ptp_read_82599
 ====================
 
-.. c:function:: cycle_t ixgbe_ptp_read_82599(const struct cyclecounter *cc)
+.. c:function:: u64 ixgbe_ptp_read_82599(const struct cyclecounter *cc)
 
     read raw cycle counter (to be used by time counter)
 

@@ -28,9 +28,9 @@ Description
 -----------
 
 This creates a new generic drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 .. _`drm_property_create.return`:
 
@@ -69,9 +69,9 @@ Description
 -----------
 
 This creates a new generic drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 Userspace is only allowed to set one of the predefined values for enumeration
 properties.
@@ -116,9 +116,9 @@ Description
 -----------
 
 This creates a new bitmask drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 Compared to plain enumeration properties userspace is allowed to set any
 or'ed together combination of the predefined property bitflag values
@@ -160,9 +160,9 @@ Description
 -----------
 
 This creates a new generic drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 Userspace is allowed to set any unsigned integer value in the (min, max)
 range inclusive.
@@ -204,9 +204,9 @@ Description
 -----------
 
 This creates a new generic drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 Userspace is allowed to set any signed integer value in the (min, max)
 range inclusive.
@@ -245,9 +245,9 @@ Description
 -----------
 
 This creates a new generic drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 Userspace is only allowed to set this to any property value of the given
 \ ``type``\ . Only useful for atomic properties, which is enforced.
@@ -283,9 +283,9 @@ Description
 -----------
 
 This creates a new generic drm property which can then be attached to a drm
-object with drm_object_attach_property. The returned property object must be
-freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when calling
-\ :c:func:`drm_mode_config_cleanup`\ .
+object with \ :c:func:`drm_object_attach_property`\ . The returned property object must
+be freed with \ :c:func:`drm_property_destroy`\ , which is done automatically when
+calling \ :c:func:`drm_mode_config_cleanup`\ .
 
 This is implemented as a ranged property with only {0, 1} as valid values.
 

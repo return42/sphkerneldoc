@@ -176,5 +176,27 @@ Description
 
 Return true if HPD should be inverted for \ ``port``\ .
 
+.. _`intel_bios_is_lspcon_present`:
+
+intel_bios_is_lspcon_present
+============================
+
+.. c:function:: bool intel_bios_is_lspcon_present(struct drm_i915_private *dev_priv, enum port port)
+
+    if LSPCON is attached on \ ``port``\ 
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+    :param enum port port:
+        port to check
+
+.. _`intel_bios_is_lspcon_present.description`:
+
+Description
+-----------
+
+Return true if LSPCON is present on this port
+
 .. This file was automatic generated / don't edit.
 

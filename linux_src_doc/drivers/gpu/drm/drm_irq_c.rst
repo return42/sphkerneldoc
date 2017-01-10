@@ -285,39 +285,6 @@ Return
 
 True if timestamp is considered to be very precise, false otherwise.
 
-.. _`drm_vblank_count`:
-
-drm_vblank_count
-================
-
-.. c:function:: u32 drm_vblank_count(struct drm_device *dev, unsigned int pipe)
-
-    retrieve "cooked" vblank counter value
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        index of CRTC for which to retrieve the counter
-
-.. _`drm_vblank_count.description`:
-
-Description
------------
-
-Fetches the "cooked" vblank count value that represents the number of
-vblank events since the system was booted, including lost events due to
-modesetting activity.
-
-This is the legacy version of \ :c:func:`drm_crtc_vblank_count`\ .
-
-.. _`drm_vblank_count.return`:
-
-Return
-------
-
-The software vblank counter.
-
 .. _`drm_crtc_vblank_count`:
 
 drm_crtc_vblank_count
@@ -338,8 +305,6 @@ Description
 Fetches the "cooked" vblank count value that represents the number of
 vblank events since the system was booted, including lost events due to
 modesetting activity.
-
-This is the native KMS version of \ :c:func:`drm_vblank_count`\ .
 
 .. _`drm_crtc_vblank_count.return`:
 
@@ -664,35 +629,6 @@ This waits for one vblank to pass on \ ``crtc``\ , using the irq driver interfac
 It is a failure to call this when the vblank irq for \ ``crtc``\  is disabled, e.g.
 due to lack of driver support or because the crtc is off.
 
-.. _`drm_vblank_off`:
-
-drm_vblank_off
-==============
-
-.. c:function:: void drm_vblank_off(struct drm_device *dev, unsigned int pipe)
-
-    disable vblank events on a CRTC
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC index
-
-.. _`drm_vblank_off.description`:
-
-Description
------------
-
-Drivers can use this function to shut down the vblank interrupt handling when
-disabling a crtc. This function ensures that the latest vblank frame count is
-stored so that \ :c:func:`drm_vblank_on`\  can restore it again.
-
-Drivers must use this function when the hardware vblank counter can get
-reset, e.g. when suspending.
-
-This is the legacy version of \ :c:func:`drm_crtc_vblank_off`\ .
-
 .. _`drm_crtc_vblank_off`:
 
 drm_crtc_vblank_off
@@ -717,8 +653,6 @@ stored so that drm_vblank_on can restore it again.
 Drivers must use this function when the hardware vblank counter can get
 reset, e.g. when suspending.
 
-This is the native kms version of \ :c:func:`drm_vblank_off`\ .
-
 .. _`drm_crtc_vblank_reset`:
 
 drm_crtc_vblank_reset
@@ -742,33 +676,6 @@ Drivers should use this together with the \ :c:func:`drm_crtc_vblank_off`\  and
 \ :c:func:`drm_crtc_vblank_off`\  is that this function doesn't save the vblank counter
 and hence doesn't need to call any driver hooks.
 
-.. _`drm_vblank_on`:
-
-drm_vblank_on
-=============
-
-.. c:function:: void drm_vblank_on(struct drm_device *dev, unsigned int pipe)
-
-    enable vblank events on a CRTC
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC index
-
-.. _`drm_vblank_on.description`:
-
-Description
------------
-
-This functions restores the vblank interrupt state captured with
-\ :c:func:`drm_vblank_off`\  again. Note that calls to \ :c:func:`drm_vblank_on`\  and
-\ :c:func:`drm_vblank_off`\  can be unbalanced and so can also be unconditionally called
-in driver load code to reflect the current hardware state of the crtc.
-
-This is the legacy version of \ :c:func:`drm_crtc_vblank_on`\ .
-
 .. _`drm_crtc_vblank_on`:
 
 drm_crtc_vblank_on
@@ -787,72 +694,9 @@ Description
 -----------
 
 This functions restores the vblank interrupt state captured with
-\ :c:func:`drm_vblank_off`\  again. Note that calls to \ :c:func:`drm_vblank_on`\  and
-\ :c:func:`drm_vblank_off`\  can be unbalanced and so can also be unconditionally called
+\ :c:func:`drm_crtc_vblank_off`\  again. Note that calls to \ :c:func:`drm_crtc_vblank_on`\  and
+\ :c:func:`drm_crtc_vblank_off`\  can be unbalanced and so can also be unconditionally called
 in driver load code to reflect the current hardware state of the crtc.
-
-This is the native kms version of \ :c:func:`drm_vblank_on`\ .
-
-.. _`drm_vblank_pre_modeset`:
-
-drm_vblank_pre_modeset
-======================
-
-.. c:function:: void drm_vblank_pre_modeset(struct drm_device *dev, unsigned int pipe)
-
-    account for vblanks across mode sets
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC index
-
-.. _`drm_vblank_pre_modeset.description`:
-
-Description
------------
-
-Account for vblank events across mode setting events, which will likely
-reset the hardware frame counter.
-
-This is done by grabbing a temporary vblank reference to ensure that the
-vblank interrupt keeps running across the modeset sequence. With this the
-software-side vblank frame counting will ensure that there are no jumps or
-discontinuities.
-
-Unfortunately this approach is racy and also doesn't work when the vblank
-interrupt stops running, e.g. across system suspend resume. It is therefore
-highly recommended that drivers use the newer \ :c:func:`drm_vblank_off`\  and
-\ :c:func:`drm_vblank_on`\  instead. \ :c:func:`drm_vblank_pre_modeset`\  only works correctly when
-using "cooked" software vblank frame counters and not relying on any hardware
-counters.
-
-Drivers must call \ :c:func:`drm_vblank_post_modeset`\  when re-enabling the same crtc
-again.
-
-.. _`drm_vblank_post_modeset`:
-
-drm_vblank_post_modeset
-=======================
-
-.. c:function:: void drm_vblank_post_modeset(struct drm_device *dev, unsigned int pipe)
-
-    undo drm_vblank_pre_modeset changes
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC index
-
-.. _`drm_vblank_post_modeset.description`:
-
-Description
------------
-
-This function again drops the temporary vblank reference acquired in
-drm_vblank_pre_modeset.
 
 .. _`drm_handle_vblank`:
 

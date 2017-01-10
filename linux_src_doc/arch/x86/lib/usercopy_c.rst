@@ -1,0 +1,80 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: arch/x86/lib/usercopy.c
+
+.. _`_copy_to_user`:
+
+_copy_to_user
+=============
+
+.. c:function:: unsigned long _copy_to_user(void __user *to, const void *from, unsigned n)
+
+    - Copy a block of data into user space.
+
+    :param void __user \*to:
+        Destination address, in user space.
+
+    :param const void \*from:
+        Source address, in kernel space.
+
+    :param unsigned n:
+        Number of bytes to copy.
+
+.. _`_copy_to_user.context`:
+
+Context
+-------
+
+User context only. This function may sleep if pagefaults are
+enabled.
+
+.. _`_copy_to_user.description`:
+
+Description
+-----------
+
+Copy data from kernel space to user space.
+
+Returns number of bytes that could not be copied.
+On success, this will be zero.
+
+.. _`_copy_from_user`:
+
+_copy_from_user
+===============
+
+.. c:function:: unsigned long _copy_from_user(void *to, const void __user *from, unsigned n)
+
+    - Copy a block of data from user space.
+
+    :param void \*to:
+        Destination address, in kernel space.
+
+    :param const void __user \*from:
+        Source address, in user space.
+
+    :param unsigned n:
+        Number of bytes to copy.
+
+.. _`_copy_from_user.context`:
+
+Context
+-------
+
+User context only. This function may sleep if pagefaults are
+enabled.
+
+.. _`_copy_from_user.description`:
+
+Description
+-----------
+
+Copy data from user space to kernel space.
+
+Returns number of bytes that could not be copied.
+On success, this will be zero.
+
+If some data could not be copied, this function will pad the copied
+data to the requested size using zero bytes.
+
+.. This file was automatic generated / don't edit.
+

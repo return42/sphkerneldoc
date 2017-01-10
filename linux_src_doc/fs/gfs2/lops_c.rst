@@ -106,7 +106,7 @@ gfs2_log_flush_bio
         REQ_OP
 
     :param int op_flags:
-        rq_flag_bits
+        req_flag_bits
 
 .. _`gfs2_log_flush_bio.description`:
 

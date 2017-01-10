@@ -117,18 +117,15 @@ if the room in the socket buffer was not sufficient.
 gnet_stats_copy_rate_est
 ========================
 
-.. c:function:: int gnet_stats_copy_rate_est(struct gnet_dump *d, const struct gnet_stats_basic_packed *b, struct gnet_stats_rate_est64 *r)
+.. c:function:: int gnet_stats_copy_rate_est(struct gnet_dump *d, struct net_rate_estimator __rcu **rate_est)
 
     copy rate estimator statistics into statistics TLV
 
     :param struct gnet_dump \*d:
         dumping handle
 
-    :param const struct gnet_stats_basic_packed \*b:
-        basic statistics
-
-    :param struct gnet_stats_rate_est64 \*r:
-        rate estimator statistics
+    :param struct net_rate_estimator __rcu \*\*rate_est:
+        rate estimator
 
 .. _`gnet_stats_copy_rate_est.description`:
 

@@ -16,7 +16,6 @@ host
     fotg210-hcd_c
     imx21-hcd_c
     ohci-at91_c
-    ohci-da8xx_c
     ohci-omap3_c
     ohci-omap_c
     ohci-pxa27x_c

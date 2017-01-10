@@ -50,6 +50,27 @@ encoder.
 
 See Documentation/devicetree/bindings/graph.txt for the bindings.
 
+.. _`drm_of_component_match_add`:
+
+drm_of_component_match_add
+==========================
+
+.. c:function:: void drm_of_component_match_add(struct device *master, struct component_match **matchptr, int (*compare)(struct device *, void *), struct device_node *node)
+
+    Add a component helper OF node match rule
+
+    :param struct device \*master:
+        master device
+
+    :param struct component_match \*\*matchptr:
+        component match pointer
+
+    :param int (\*compare)(struct device \*, void \*):
+        compare function used for matching component
+
+    :param struct device_node \*node:
+        of_node
+
 .. _`drm_of_component_probe`:
 
 drm_of_component_probe

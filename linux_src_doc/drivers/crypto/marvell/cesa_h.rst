@@ -452,7 +452,6 @@ Definition
         struct dma_pool *op_pool;
         struct dma_pool *cache_pool;
         struct dma_pool *padding_pool;
-        struct dma_pool *iv_pool;
     }
 
 .. _`mv_cesa_dev_dma.members`:
@@ -473,9 +472,6 @@ cache_pool
 padding_pool
     padding pool (used by hash implementation when hardware
     padding cannot be used)
-
-iv_pool
-    *undescribed*
 
 .. _`mv_cesa_dev_dma.description`:
 

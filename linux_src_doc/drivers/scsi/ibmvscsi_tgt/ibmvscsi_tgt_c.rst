@@ -225,89 +225,6 @@ EXECUTION ENVIRONMENT
 
 Process level only, interrupt lock held
 
-.. _`ibmvscsis_establish_new_q`:
-
-ibmvscsis_establish_new_q
-=========================
-
-.. c:function:: long ibmvscsis_establish_new_q(struct scsi_info *vscsi, uint new_state)
-
-    Establish new CRQ queue
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-    :param uint new_state:
-        New state being established after resetting the queue
-
-.. _`ibmvscsis_establish_new_q.description`:
-
-Description
------------
-
-Must be called with interrupt lock held.
-
-.. _`ibmvscsis_reset_queue`:
-
-ibmvscsis_reset_queue
-=====================
-
-.. c:function:: void ibmvscsis_reset_queue(struct scsi_info *vscsi, uint new_state)
-
-    Reset CRQ Queue
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-    :param uint new_state:
-        New state to establish after resetting the queue
-
-.. _`ibmvscsis_reset_queue.description`:
-
-Description
------------
-
-This function calls h_free_q and then calls h_reg_q and does all
-of the bookkeeping to get us back to where we can communicate.
-
-Actually, we don't always call h_free_crq.  A problem was discovered
-where one partition would close and reopen his queue, which would
-cause his partner to get a transport event, which would cause him to
-close and reopen his queue, which would cause the original partition
-to get a transport event, etc., etc.  To prevent this, we don't
-actually close our queue if the client initiated the reset, (i.e.
-either we got a transport event or we have detected that the client's
-queue is gone)
-
-.. _`ibmvscsis_reset_queue.execution-environment`:
-
-EXECUTION ENVIRONMENT
----------------------
-
-Process environment, called with interrupt lock held
-
-.. _`ibmvscsis_free_cmd_resources`:
-
-ibmvscsis_free_cmd_resources
-============================
-
-.. c:function:: void ibmvscsis_free_cmd_resources(struct scsi_info *vscsi, struct ibmvscsis_cmd *cmd)
-
-    Free command resources
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-    :param struct ibmvscsis_cmd \*cmd:
-        Command which is not longer in use
-
-.. _`ibmvscsis_free_cmd_resources.description`:
-
-Description
------------
-
-Must be called with interrupt lock held.
-
 .. _`ibmvscsis_disconnect`:
 
 ibmvscsis_disconnect
@@ -371,6 +288,143 @@ PRECONDITION
 ------------
 
 interrupt lock is held
+
+.. _`ibmvscsis_handle_init_compl_msg`:
+
+ibmvscsis_handle_init_compl_msg
+===============================
+
+.. c:function:: long ibmvscsis_handle_init_compl_msg(struct scsi_info *vscsi)
+
+    Respond to an Init Complete Message
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+.. _`ibmvscsis_handle_init_compl_msg.description`:
+
+Description
+-----------
+
+Must be called with interrupt lock held.
+
+.. _`ibmvscsis_handle_init_msg`:
+
+ibmvscsis_handle_init_msg
+=========================
+
+.. c:function:: long ibmvscsis_handle_init_msg(struct scsi_info *vscsi)
+
+    Respond to an Init Message
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+.. _`ibmvscsis_handle_init_msg.description`:
+
+Description
+-----------
+
+Must be called with interrupt lock held.
+
+.. _`ibmvscsis_init_msg`:
+
+ibmvscsis_init_msg
+==================
+
+.. c:function:: long ibmvscsis_init_msg(struct scsi_info *vscsi, struct viosrp_crq *crq)
+
+    Respond to an init message
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+    :param struct viosrp_crq \*crq:
+        Pointer to CRQ element containing the Init Message
+
+.. _`ibmvscsis_init_msg.execution-environment`:
+
+EXECUTION ENVIRONMENT
+---------------------
+
+Interrupt, interrupt lock held
+
+.. _`ibmvscsis_establish_new_q`:
+
+ibmvscsis_establish_new_q
+=========================
+
+.. c:function:: long ibmvscsis_establish_new_q(struct scsi_info *vscsi)
+
+    Establish new CRQ queue
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+.. _`ibmvscsis_establish_new_q.description`:
+
+Description
+-----------
+
+Must be called with interrupt lock held.
+
+.. _`ibmvscsis_reset_queue`:
+
+ibmvscsis_reset_queue
+=====================
+
+.. c:function:: void ibmvscsis_reset_queue(struct scsi_info *vscsi)
+
+    Reset CRQ Queue
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+.. _`ibmvscsis_reset_queue.description`:
+
+Description
+-----------
+
+This function calls h_free_q and then calls h_reg_q and does all
+of the bookkeeping to get us back to where we can communicate.
+
+Actually, we don't always call h_free_crq.  A problem was discovered
+where one partition would close and reopen his queue, which would
+cause his partner to get a transport event, which would cause him to
+close and reopen his queue, which would cause the original partition
+to get a transport event, etc., etc.  To prevent this, we don't
+actually close our queue if the client initiated the reset, (i.e.
+either we got a transport event or we have detected that the client's
+queue is gone)
+
+.. _`ibmvscsis_reset_queue.execution-environment`:
+
+EXECUTION ENVIRONMENT
+---------------------
+
+Process environment, called with interrupt lock held
+
+.. _`ibmvscsis_free_cmd_resources`:
+
+ibmvscsis_free_cmd_resources
+============================
+
+.. c:function:: void ibmvscsis_free_cmd_resources(struct scsi_info *vscsi, struct ibmvscsis_cmd *cmd)
+
+    Free command resources
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+    :param struct ibmvscsis_cmd \*cmd:
+        Command which is not longer in use
+
+.. _`ibmvscsis_free_cmd_resources.description`:
+
+Description
+-----------
+
+Must be called with interrupt lock held.
 
 .. _`ibmvscsis_trans_event`:
 
@@ -558,7 +612,7 @@ ibmvscsis_adapter_info
 EXECUTION ENVIRONMENT
 ---------------------
 
-Interrupt adpater lock is held
+Interrupt adapter lock is held
 
 .. _`ibmvscsis_cap_mad`:
 
@@ -682,7 +736,7 @@ ibmvscsis_mad
 EXECUTION ENVIRONMENT
 ---------------------
 
-Interrupt  called with adapter lock held
+Interrupt, called with adapter lock held
 
 .. _`ibmvscsis_login_rsp`:
 
@@ -813,66 +867,6 @@ response then the client is either not accepting or receiving
 interrupts.  Disconnect with an error.
 
 .. _`ibmvscsis_ping_response.execution-environment`:
-
-EXECUTION ENVIRONMENT
----------------------
-
-Interrupt, interrupt lock held
-
-.. _`ibmvscsis_handle_init_compl_msg`:
-
-ibmvscsis_handle_init_compl_msg
-===============================
-
-.. c:function:: long ibmvscsis_handle_init_compl_msg(struct scsi_info *vscsi)
-
-    Respond to an Init Complete Message
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-.. _`ibmvscsis_handle_init_compl_msg.description`:
-
-Description
------------
-
-Must be called with interrupt lock held.
-
-.. _`ibmvscsis_handle_init_msg`:
-
-ibmvscsis_handle_init_msg
-=========================
-
-.. c:function:: long ibmvscsis_handle_init_msg(struct scsi_info *vscsi)
-
-    Respond to an Init Message
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-.. _`ibmvscsis_handle_init_msg.description`:
-
-Description
------------
-
-Must be called with interrupt lock held.
-
-.. _`ibmvscsis_init_msg`:
-
-ibmvscsis_init_msg
-==================
-
-.. c:function:: long ibmvscsis_init_msg(struct scsi_info *vscsi, struct viosrp_crq *crq)
-
-    Respond to an init message
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-    :param struct viosrp_crq \*crq:
-        Pointer to CRQ element containing the Init Message
-
-.. _`ibmvscsis_init_msg.execution-environment`:
 
 EXECUTION ENVIRONMENT
 ---------------------
@@ -1012,37 +1006,6 @@ EXECUTION ENVIRONMENT
 ---------------------
 
 called at interrupt level
-
-.. _`ibmvscsis_check_q`:
-
-ibmvscsis_check_q
-=================
-
-.. c:function:: long ibmvscsis_check_q(struct scsi_info *vscsi)
-
-    Helper function to Check Init Message Valid
-
-    :param struct scsi_info \*vscsi:
-        Pointer to our adapter structure
-
-.. _`ibmvscsis_check_q.description`:
-
-Description
------------
-
-Checks if a initialize message was queued by the initiatior
-while the timing window was open.  This function is called from
-probe after the CRQ is created and interrupts are enabled.
-It would only be used by adapters who wait for some event before
-completing the init handshake with the client.  For ibmvscsi, this
-event is waiting for the port to be enabled.
-
-.. _`ibmvscsis_check_q.execution-environment`:
-
-EXECUTION ENVIRONMENT
----------------------
-
-Process level only, interrupt lock held
 
 .. _`ibmvscsis_enable_change_state`:
 

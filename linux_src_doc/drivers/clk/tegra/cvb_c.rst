@@ -11,13 +11,13 @@ tegra_cvb_add_opp_table
     build OPP table from Tegra CVB tables
 
     :param struct device \*dev:
-        *undescribed*
+        the struct device \* for which the OPP table is built
 
     :param const struct cvb_table \*tables:
-        *undescribed*
+        array of CVB tables
 
     :param size_t count:
-        *undescribed*
+        size of the previously mentioned array
 
     :param int process_id:
         process id of the HW module
@@ -29,7 +29,7 @@ tegra_cvb_add_opp_table
         speedo value of the HW module
 
     :param unsigned long max_freq:
-        *undescribed*
+        highest safe clock rate
 
 .. _`tegra_cvb_add_opp_table.description`:
 
@@ -40,7 +40,7 @@ On Tegra, a CVB table encodes the relationship between operating voltage
 and safe maximal frequency for a given module (e.g. GPU or CPU). This
 function calculates the optimal voltage-frequency operating points
 for the given arguments and exports them via the OPP library for the
-given \ ``opp_dev``\ . Returns a pointer to the struct cvb_table that matched
+given \ ``dev``\ . Returns a pointer to the struct cvb_table that matched
 or an ERR_PTR on failure.
 
 .. This file was automatic generated / don't edit.

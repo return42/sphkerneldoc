@@ -9,3 +9,4 @@ dac
 
     ad5421_h
     ad5791_h
+    mcp4725_h

@@ -109,9 +109,9 @@ The encoded string is roughly 4/3 times the size of the input string.
 fscrypt_fname_alloc_buffer
 ==========================
 
-.. c:function:: int fscrypt_fname_alloc_buffer(struct inode *inode, u32 ilen, struct fscrypt_str *crypto_str)
+.. c:function:: int fscrypt_fname_alloc_buffer(const struct inode *inode, u32 ilen, struct fscrypt_str *crypto_str)
 
-    :param struct inode \*inode:
+    :param const struct inode \*inode:
         *undescribed*
 
     :param u32 ilen:

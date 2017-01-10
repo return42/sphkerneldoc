@@ -64,18 +64,6 @@ Description
 Returns GPIO descriptor to use with Linux GPIO API, or one of the errno
 value on the error condition.
 
-.. _`of_gpiochip_set_names`:
-
-of_gpiochip_set_names
-=====================
-
-.. c:function:: void of_gpiochip_set_names(struct gpio_chip *gc)
-
-    set up the names of the lines
-
-    :param struct gpio_chip \*gc:
-        *undescribed*
-
 .. _`of_gpiochip_scan_gpios`:
 
 of_gpiochip_scan_gpios

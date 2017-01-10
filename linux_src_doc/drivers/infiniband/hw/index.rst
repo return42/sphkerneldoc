@@ -13,3 +13,4 @@ hw
     mlx5/index
     nes/index
     qib/index
+    vmw_pvrdma/index

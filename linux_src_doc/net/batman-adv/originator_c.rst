@@ -336,7 +336,7 @@ neighbor when found. Othwerwise NULL
 batadv_hardif_neigh_create
 ==========================
 
-.. c:function:: struct batadv_hardif_neigh_node *batadv_hardif_neigh_create(struct batadv_hard_iface *hard_iface, const u8 *neigh_addr)
+.. c:function:: struct batadv_hardif_neigh_node *batadv_hardif_neigh_create(struct batadv_hard_iface *hard_iface, const u8 *neigh_addr, struct batadv_orig_node *orig_node)
 
     create a hardif neighbour node
 
@@ -345,6 +345,9 @@ batadv_hardif_neigh_create
 
     :param const u8 \*neigh_addr:
         the interface address of the neighbour to retrieve
+
+    :param struct batadv_orig_node \*orig_node:
+        originator object representing the neighbour
 
 .. _`batadv_hardif_neigh_create.return`:
 
@@ -358,7 +361,7 @@ the hardif neighbour node if found or created or NULL otherwise.
 batadv_hardif_neigh_get_or_create
 =================================
 
-.. c:function:: struct batadv_hardif_neigh_node *batadv_hardif_neigh_get_or_create(struct batadv_hard_iface *hard_iface, const u8 *neigh_addr)
+.. c:function:: struct batadv_hardif_neigh_node *batadv_hardif_neigh_get_or_create(struct batadv_hard_iface *hard_iface, const u8 *neigh_addr, struct batadv_orig_node *orig_node)
 
     retrieve or create a hardif neighbour node
 
@@ -367,6 +370,9 @@ batadv_hardif_neigh_get_or_create
 
     :param const u8 \*neigh_addr:
         the interface address of the neighbour to retrieve
+
+    :param struct batadv_orig_node \*orig_node:
+        originator object representing the neighbour
 
 .. _`batadv_hardif_neigh_get_or_create.return`:
 

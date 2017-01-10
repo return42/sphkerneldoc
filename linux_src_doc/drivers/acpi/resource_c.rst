@@ -286,5 +286,26 @@ Description
 This is a helper function to support \ :c:func:`acpi_dev_get_resources`\ , which filters
 ACPI resource objects according to resource types.
 
+.. _`acpi_resource_consumer`:
+
+acpi_resource_consumer
+======================
+
+.. c:function:: struct acpi_device *acpi_resource_consumer(struct resource *res)
+
+    Find the ACPI device that consumes \ ``res``\ .
+
+    :param struct resource \*res:
+        Resource to search for.
+
+.. _`acpi_resource_consumer.description`:
+
+Description
+-----------
+
+Search the current resource settings (_CRS) of every ACPI device node
+for \ ``res``\ .  If we find an ACPI device whose \_CRS includes \ ``res``\ , return
+it.  Otherwise, return NULL.
+
 .. This file was automatic generated / don't edit.
 

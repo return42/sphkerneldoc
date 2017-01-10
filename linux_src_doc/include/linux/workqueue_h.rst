@@ -358,17 +358,5 @@ Description
 After waiting for a given time this puts a job in the kernel-global
 workqueue.
 
-.. _`keventd_up`:
-
-keventd_up
-==========
-
-.. c:function:: bool keventd_up( void)
-
-    is workqueue initialized yet?
-
-    :param  void:
-        no arguments
-
 .. This file was automatic generated / don't edit.
 

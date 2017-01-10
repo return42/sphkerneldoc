@@ -1162,15 +1162,15 @@ e1000e_down
 e1000e_sanitize_systim
 ======================
 
-.. c:function:: cycle_t e1000e_sanitize_systim(struct e1000_hw *hw, cycle_t systim)
+.. c:function:: u64 e1000e_sanitize_systim(struct e1000_hw *hw, u64 systim)
 
     sanitize raw cycle counter reads
 
     :param struct e1000_hw \*hw:
         pointer to the HW structure
 
-    :param cycle_t systim:
-        cycle_t value read, sanitized and returned
+    :param u64 systim:
+        time value read, sanitized and returned
 
 .. _`e1000e_sanitize_systim.description`:
 
@@ -1186,7 +1186,7 @@ rate and is a multiple of incvalue.
 e1000e_cyclecounter_read
 ========================
 
-.. c:function:: cycle_t e1000e_cyclecounter_read(const struct cyclecounter *cc)
+.. c:function:: u64 e1000e_cyclecounter_read(const struct cyclecounter *cc)
 
     read raw cycle counter (used by time counter)
 

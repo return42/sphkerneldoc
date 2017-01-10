@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pci/host/pcie-iproc.c
 
+.. _`iproc_pcie_apb_err_disable`:
+
+iproc_pcie_apb_err_disable
+==========================
+
+.. c:function:: void iproc_pcie_apb_err_disable(struct pci_bus *bus, bool disable)
+
+    registers of the endpoint device, to prevent unsupported requests (typically seen during enumeration with multi-function devices) from triggering a system exception.
+
+    :param struct pci_bus \*bus:
+        *undescribed*
+
+    :param bool disable:
+        *undescribed*
+
 .. _`iproc_pcie_map_cfg_bus`:
 
 iproc_pcie_map_cfg_bus

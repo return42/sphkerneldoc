@@ -160,7 +160,7 @@ Definition
         unsigned int bpp;
         unsigned int fps;
         int txbuflen;
-        int *init_sequence;
+        s16 *init_sequence;
         char *gamma;
         int gamma_num;
         int gamma_len;

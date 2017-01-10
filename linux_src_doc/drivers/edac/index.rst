@@ -8,8 +8,10 @@ edac
     :maxdepth: 1
 
     amd76x_edac_c
-    edac_device_c
+    edac_device_h
     edac_mc_c
+    edac_mc_h
+    edac_pci_h
     edac_pci_sysfs_c
     i7300_edac_c
     octeon_edac-pc_c

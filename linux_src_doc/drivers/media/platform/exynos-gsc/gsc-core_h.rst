@@ -531,7 +531,8 @@ Definition
 
     struct gsc_driverdata {
         struct gsc_variant  *variant[GSC_MAX_DEVS];
-        unsigned long lclk_frequency;
+        const char  *clk_names[GSC_MAX_CLOCKS];
+        int num_clocks;
         int num_entities;
     }
 
@@ -543,8 +544,8 @@ Members
 variant
     the variant information for this driver.
 
-lclk_frequency
-    G-Scaler clock frequency
+num_clocks
+    *undescribed*
 
 num_entities
     the number of g-scalers
@@ -571,7 +572,8 @@ Definition
         struct platform_device *pdev;
         struct gsc_variant *variant;
         u16 id;
-        struct clk *clock;
+        int num_clocks;
+        struct clk  *clock[GSC_MAX_CLOCKS];
         void __iomem *regs;
         wait_queue_head_t irq_queue;
         struct gsc_m2m_device m2m;
@@ -599,6 +601,9 @@ variant
 
 id
     G-Scaler device index (0..GSC_MAX_DEVS)
+
+num_clocks
+    *undescribed*
 
 clock
     clocks required for G-Scaler operation

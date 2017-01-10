@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct fc_bsg_info {
-        struct fc_bsg_job *job;
+        struct bsg_job *job;
         struct fc_lport *lport;
         u16 rsp_code;
         struct scatterlist *sg;
@@ -122,6 +122,14 @@ fc_lport_ptp_setup
 
     :param u64 remote_wwnn:
         The WWNN of the ptp rport
+
+.. _`fc_lport_ptp_setup.locking-note`:
+
+Locking Note
+------------
+
+The lport lock is expected to be held before calling
+this routine.
 
 .. _`fc_get_host_port_state`:
 
@@ -569,12 +577,12 @@ Locking Note
 This function should not be called with the lport
 lock held because it will grab the lock.
 
-.. _`fc_lport_recv_req`:
+.. _`fc_lport_recv`:
 
-fc_lport_recv_req
-=================
+fc_lport_recv
+=============
 
-.. c:function:: void fc_lport_recv_req(struct fc_lport *lport, struct fc_frame *fp)
+.. c:function:: void fc_lport_recv(struct fc_lport *lport, struct fc_frame *fp)
 
     The generic lport request handler
 
@@ -584,7 +592,7 @@ fc_lport_recv_req
     :param struct fc_frame \*fp:
         The frame the request is in
 
-.. _`fc_lport_recv_req.locking-note`:
+.. _`fc_lport_recv.locking-note`:
 
 Locking Note
 ------------
@@ -1036,11 +1044,11 @@ fc_lport_bsg_resp
 fc_lport_els_request
 ====================
 
-.. c:function:: int fc_lport_els_request(struct fc_bsg_job *job, struct fc_lport *lport, u32 did, u32 tov)
+.. c:function:: int fc_lport_els_request(struct bsg_job *job, struct fc_lport *lport, u32 did, u32 tov)
 
     Send ELS passthrough request
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         The BSG Passthrough job
 
     :param struct fc_lport \*lport:
@@ -1065,11 +1073,11 @@ this routine.
 fc_lport_ct_request
 ===================
 
-.. c:function:: int fc_lport_ct_request(struct fc_bsg_job *job, struct fc_lport *lport, u32 did, u32 tov)
+.. c:function:: int fc_lport_ct_request(struct bsg_job *job, struct fc_lport *lport, u32 did, u32 tov)
 
     Send CT Passthrough request
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         The BSG Passthrough job
 
     :param struct fc_lport \*lport:
@@ -1094,11 +1102,11 @@ this routine.
 fc_lport_bsg_request
 ====================
 
-.. c:function:: int fc_lport_bsg_request(struct fc_bsg_job *job)
+.. c:function:: int fc_lport_bsg_request(struct bsg_job *job)
 
     The common entry point for sending FC Passthrough requests
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         The BSG passthrough job
 
 .. This file was automatic generated / don't edit.

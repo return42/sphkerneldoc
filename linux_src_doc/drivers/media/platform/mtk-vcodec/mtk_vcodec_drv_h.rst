@@ -379,6 +379,8 @@ Definition
 .. code-block:: c
 
     struct mtk_vcodec_pm {
+        struct clk *vdec_bus_clk_src;
+        struct clk *vencpll;
         struct clk *vcodecpll;
         struct clk *univpll_d2;
         struct clk *clk_cci400_sel;
@@ -399,6 +401,12 @@ Definition
 
 Members
 -------
+
+vdec_bus_clk_src
+    *undescribed*
+
+vencpll
+    *undescribed*
 
 vcodecpll
     *undescribed*
@@ -442,6 +450,66 @@ dev
 mtkdev
     *undescribed*
 
+.. _`vdec_pic_info`:
+
+struct vdec_pic_info
+====================
+
+.. c:type:: struct vdec_pic_info
+
+    picture size information
+
+.. _`vdec_pic_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vdec_pic_info {
+        unsigned int pic_w;
+        unsigned int pic_h;
+        unsigned int buf_w;
+        unsigned int buf_h;
+        unsigned int y_bs_sz;
+        unsigned int c_bs_sz;
+        unsigned int y_len_sz;
+        unsigned int c_len_sz;
+    }
+
+.. _`vdec_pic_info.members`:
+
+Members
+-------
+
+pic_w
+    picture width
+
+pic_h
+    picture height
+
+buf_w
+    picture buffer width (64 aligned up from pic_w)
+
+buf_h
+    picture buffer heiht (64 aligned up from pic_h)
+
+y_bs_sz
+    Y bitstream size
+
+c_bs_sz
+    CbCr bitstream size
+
+y_len_sz
+    additional size required to store decompress information for y
+    plane
+
+c_len_sz
+    additional size required to store decompress information for cbcr
+    plane
+    E.g. suppose picture size is 176x144,
+    buffer size will be aligned to 176x160.
+
 .. _`mtk_vcodec_ctx`:
 
 struct mtk_vcodec_ctx
@@ -469,18 +537,25 @@ Definition
         enum mtk_instance_state state;
         enum mtk_encode_param param_change;
         struct mtk_enc_params enc_params;
+        const struct vdec_common_if *dec_if;
         const struct venc_common_if *enc_if;
         unsigned long drv_handle;
+        struct vdec_pic_info picinfo;
+        int dpb_size;
         int int_cond;
         int int_type;
         wait_queue_head_t queue;
         unsigned int irq_status;
         struct v4l2_ctrl_handler ctrl_hdl;
+        struct work_struct decode_work;
         struct work_struct encode_work;
+        struct vdec_pic_info last_decoded_picinfo;
         enum v4l2_colorspace colorspace;
         enum v4l2_ycbcr_encoding ycbcr_enc;
         enum v4l2_quantization quantization;
         enum v4l2_xfer_func xfer_func;
+        int decoded_frame_cnt;
+        struct mutex lock;
     }
 
 .. _`mtk_vcodec_ctx.members`:
@@ -519,11 +594,20 @@ param_change
 enc_params
     encoding parameters
 
+dec_if
+    hooked decoder driver interface
+
 enc_if
     hoooked encoder driver interface
 
 drv_handle
     driver handle for specific decode/encode instance
+
+picinfo
+    store picture info after header parsing
+
+dpb_size
+    store dpb count after header parsing
 
 int_cond
     variable used by the waitqueue
@@ -541,8 +625,14 @@ irq_status
 ctrl_hdl
     handler for v4l2 framework
 
+decode_work
+    worker for the decoding
+
 encode_work
     worker for the encoding
+
+last_decoded_picinfo
+    pic information get from latest decode
 
 colorspace
     enum v4l2_colorspace; supplemental to pixelformat
@@ -555,6 +645,13 @@ quantization
 
 xfer_func
     enum v4l2_xfer_func, colorspace transfer function
+
+decoded_frame_cnt
+    *undescribed*
+
+lock
+    protect variables accessed by V4L2 threads and worker thread such as
+    mtk_video_dec_buf.
 
 .. _`mtk_vcodec_dev`:
 
@@ -574,7 +671,9 @@ Definition
 
     struct mtk_vcodec_dev {
         struct v4l2_device v4l2_dev;
+        struct video_device *vfd_dec;
         struct video_device *vfd_enc;
+        struct v4l2_m2m_dev *m2m_dev_dec;
         struct v4l2_m2m_dev *m2m_dev_enc;
         struct platform_device *plat_dev;
         struct platform_device *vpu_plat_dev;
@@ -583,14 +682,16 @@ Definition
         struct mtk_vcodec_ctx *curr_ctx;
         void __iomem  *reg_base[NUM_MAX_VCODEC_REG_BASE];
         unsigned long id_counter;
-        int num_instances;
+        struct workqueue_struct *decode_workqueue;
         struct workqueue_struct *encode_workqueue;
         int int_cond;
         int int_type;
         struct mutex dev_mutex;
         wait_queue_head_t queue;
+        int dec_irq;
         int enc_irq;
         int enc_lt_irq;
+        struct mutex dec_mutex;
         struct mutex enc_mutex;
         struct mtk_vcodec_pm pm;
         unsigned int dec_capability;
@@ -605,8 +706,14 @@ Members
 v4l2_dev
     V4L2 device to register video devices for.
 
+vfd_dec
+    Video device for decoder
+
 vfd_enc
     Video device for encoder.
+
+m2m_dev_dec
+    m2m device for decoder
 
 m2m_dev_enc
     m2m device for encoder.
@@ -632,8 +739,8 @@ reg_base
 id_counter
     used to identify current opened instance
 
-num_instances
-    counter of active MTK Vcodec instances
+decode_workqueue
+    *undescribed*
 
 encode_workqueue
     encode work queue
@@ -650,11 +757,17 @@ dev_mutex
 queue
     waitqueue for waiting for completion of device commands
 
+dec_irq
+    decoder irq resource
+
 enc_irq
     h264 encoder irq resource
 
 enc_lt_irq
     vp8 encoder irq resource
+
+dec_mutex
+    decoder hardware lock
 
 enc_mutex
     encoder hardware lock.

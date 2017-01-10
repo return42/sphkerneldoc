@@ -41,5 +41,34 @@ Description
 
 Returns 1 if the mutex is locked, 0 if unlocked.
 
+.. _`mutex_trylock_recursive`:
+
+mutex_trylock_recursive
+=======================
+
+.. c:function:: enum mutex_trylock_recursive_enum mutex_trylock_recursive(struct mutex *lock)
+
+    trylock variant that allows recursive locking
+
+    :param struct mutex \*lock:
+        mutex to be locked
+
+.. _`mutex_trylock_recursive.description`:
+
+Description
+-----------
+
+This function should not be used, \_ever_. It is purely for hysterical GEM
+raisins, and once those are gone this will be removed.
+
+.. _`mutex_trylock_recursive.return`:
+
+Return
+------
+
+MUTEX_TRYLOCK_FAILED    - trylock failed,
+MUTEX_TRYLOCK_SUCCESS   - lock acquired,
+MUTEX_TRYLOCK_RECURSIVE - we already owned the lock.
+
 .. This file was automatic generated / don't edit.
 

@@ -7,6 +7,5 @@ mmc
 .. toctree::
     :maxdepth: 1
 
-    card/index
     core/index
     host/index

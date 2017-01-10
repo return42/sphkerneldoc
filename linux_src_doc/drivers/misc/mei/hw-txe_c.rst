@@ -502,6 +502,18 @@ mei_txe_intr_enable
     :param struct mei_device \*dev:
         the device structure
 
+.. _`mei_txe_synchronize_irq`:
+
+mei_txe_synchronize_irq
+=======================
+
+.. c:function:: void mei_txe_synchronize_irq(struct mei_device *dev)
+
+    wait for pending IRQ handlers
+
+    :param struct mei_device \*dev:
+        the device structure
+
 .. _`mei_txe_pending_interrupts`:
 
 mei_txe_pending_interrupts
@@ -735,7 +747,7 @@ once at the device probe time
 mei_txe_write
 =============
 
-.. c:function:: int mei_txe_write(struct mei_device *dev, struct mei_msg_hdr *header, unsigned char *buf)
+.. c:function:: int mei_txe_write(struct mei_device *dev, struct mei_msg_hdr *header, const unsigned char *buf)
 
     writes a message to device.
 
@@ -745,7 +757,7 @@ mei_txe_write
     :param struct mei_msg_hdr \*header:
         header of message
 
-    :param unsigned char \*buf:
+    :param const unsigned char \*buf:
         message buffer will be written
 
 .. _`mei_txe_write.return`:

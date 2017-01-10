@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct cyclecounter {
-        cycle_t (*read)(const struct cyclecounter *cc);
-        cycle_t mask;
+        u64 (*read)(const struct cyclecounter *cc);
+        u64 mask;
         u32 mult;
         u32 shift;
     }
@@ -61,7 +61,7 @@ Definition
 
     struct timecounter {
         const struct cyclecounter *cc;
-        cycle_t cycle_last;
+        u64 cycle_last;
         u64 nsec;
         u64 mask;
         u64 frac;
@@ -93,14 +93,14 @@ frac
 cyclecounter_cyc2ns
 ===================
 
-.. c:function:: u64 cyclecounter_cyc2ns(const struct cyclecounter *cc, cycle_t cycles, u64 mask, u64 *frac)
+.. c:function:: u64 cyclecounter_cyc2ns(const struct cyclecounter *cc, u64 cycles, u64 mask, u64 *frac)
 
     converts cycle counter cycles to nanoseconds
 
     :param const struct cyclecounter \*cc:
         Pointer to cycle counter.
 
-    :param cycle_t cycles:
+    :param u64 cycles:
         Cycles
 
     :param u64 mask:
@@ -176,14 +176,14 @@ the function which generated the initial time stamp.
 timecounter_cyc2time
 ====================
 
-.. c:function:: u64 timecounter_cyc2time(struct timecounter *tc, cycle_t cycle_tstamp)
+.. c:function:: u64 timecounter_cyc2time(struct timecounter *tc, u64 cycle_tstamp)
 
     convert a cycle counter to same time base as values returned by \ :c:func:`timecounter_read`\ 
 
     :param struct timecounter \*tc:
         Pointer to time counter.
 
-    :param cycle_t cycle_tstamp:
+    :param u64 cycle_tstamp:
         a value returned by tc->cc->read()
 
 .. _`timecounter_cyc2time.description`:

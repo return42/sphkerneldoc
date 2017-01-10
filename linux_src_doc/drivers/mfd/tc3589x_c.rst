@@ -147,7 +147,7 @@ tc3589x_set_bits
         Mask of bits to set
 
     :param u8 val:
-        *undescribed*
+        Value to set
 
 .. This file was automatic generated / don't edit.
 

@@ -125,6 +125,40 @@ release
     structure must only be freed when this function is
     called or later.
 
+.. _`irq_affinity`:
+
+struct irq_affinity
+===================
+
+.. c:type:: struct irq_affinity
+
+    Description for automatic irq affinity assignements
+
+.. _`irq_affinity.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct irq_affinity {
+        int pre_vectors;
+        int post_vectors;
+    }
+
+.. _`irq_affinity.members`:
+
+Members
+-------
+
+pre_vectors
+    Don't apply affinity to \ ``pre_vectors``\  at beginning of
+    the MSI(-X) vector space
+
+post_vectors
+    Don't apply affinity to \ ``post_vectors``\  at end of
+    the MSI(-X) vector space
+
 .. _`irq_set_affinity`:
 
 irq_set_affinity

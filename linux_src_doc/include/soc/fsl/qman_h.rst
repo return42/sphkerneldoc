@@ -170,11 +170,11 @@ adjacent memory for user-defined fields (see the definition of "struct
 qman_fq" for more info). NO_MODIFY is only intended for enqueuing to
 pre-existing frame-queues that aren't to be otherwise interfered with, it
 prevents all other modifications to the frame queue. The TO_DCPORTAL flag
-causes the driver to honour any contextB modifications requested in the
+causes the driver to honour any context_b modifications requested in the
 \ :c:func:`qm_init_fq`\  API, as this indicates the frame queue will be consumed by a
 direct-connect portal (PME, CAAM, or Fman). When frame queues are consumed by
-software portals, the contextB field is controlled by the driver and can't be
-modified by the caller.
+software portals, the context_b field is controlled by the driver and can't
+be modified by the caller.
 
 .. _`qman_destroy_fq`:
 

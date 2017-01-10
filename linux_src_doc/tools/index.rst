@@ -8,6 +8,7 @@ tools
     :maxdepth: 1
 
     arch/index
+    gpio/index
     iio/index
     include/index
     lib/index

@@ -42,6 +42,7 @@ kernel
     futex_c
     groups_c
     kallsyms_c
+    kexec_file_c
     kmod_c
     kprobes_c
     kthread_c

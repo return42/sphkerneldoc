@@ -100,14 +100,14 @@ and is called when Axi Ethernet driver reset is called.
 axienet_set_mac_address
 =======================
 
-.. c:function:: void axienet_set_mac_address(struct net_device *ndev, void *address)
+.. c:function:: void axienet_set_mac_address(struct net_device *ndev, const void *address)
 
     Write the MAC address
 
     :param struct net_device \*ndev:
         Pointer to the net_device structure
 
-    :param void \*address:
+    :param const void \*address:
         6 byte Address to be written as MAC address
 
 .. _`axienet_set_mac_address.description`:

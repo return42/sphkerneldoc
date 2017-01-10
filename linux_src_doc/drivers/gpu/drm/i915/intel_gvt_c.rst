@@ -37,7 +37,7 @@ intel_gvt_cleanup
     cleanup GVT components when i915 driver is unloading
 
     :param struct drm_i915_private \*dev_priv:
-        drm i915 private \*
+        drm i915 private *
 
 .. _`intel_gvt_cleanup.description`:
 

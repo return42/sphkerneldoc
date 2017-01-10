@@ -83,7 +83,6 @@ Definition
 
     struct dpbp_attr {
         int id;
-        struct version;
         u16 bpid;
     }
 
@@ -94,9 +93,6 @@ Members
 
 id
     DPBP object ID
-
-version
-    DPBP version
 
 bpid
     Hardware buffer pool ID; should be used as an argument in

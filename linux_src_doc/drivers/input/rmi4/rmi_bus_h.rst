@@ -129,6 +129,26 @@ Description
 
 All callbacks are expected to return 0 on success, error code on failure.
 
+.. _`rmi_reset`:
+
+rmi_reset
+=========
+
+.. c:function:: int rmi_reset(struct rmi_device *d)
+
+    reset a RMI4 device
+
+    :param struct rmi_device \*d:
+        Pointer to an RMI device
+
+.. _`rmi_reset.description`:
+
+Description
+-----------
+
+Calls for a reset of each function implemented by a specific device.
+Returns 0 on success or a negative error code.
+
 .. _`rmi_read`:
 
 rmi_read

@@ -305,6 +305,50 @@ Description
 This is used by netconsole to send skbs without having to re-enable
 interrupts.  It's not called while the normal interrupt routine is executing.
 
+.. _`i40evf_irq_affinity_notify`:
+
+i40evf_irq_affinity_notify
+==========================
+
+.. c:function:: void i40evf_irq_affinity_notify(struct irq_affinity_notify *notify, const cpumask_t *mask)
+
+    Callback for affinity changes
+
+    :param struct irq_affinity_notify \*notify:
+        context as to what irq was changed
+
+    :param const cpumask_t \*mask:
+        the new affinity mask
+
+.. _`i40evf_irq_affinity_notify.description`:
+
+Description
+-----------
+
+This is a callback function used by the irq_set_affinity_notifier function
+so that we may register to receive changes to the irq affinity masks.
+
+.. _`i40evf_irq_affinity_release`:
+
+i40evf_irq_affinity_release
+===========================
+
+.. c:function:: void i40evf_irq_affinity_release(struct kref *ref)
+
+    Callback for affinity notifier release
+
+    :param struct kref \*ref:
+        internal core kernel usage
+
+.. _`i40evf_irq_affinity_release.description`:
+
+Description
+-----------
+
+This is a callback function used by the irq_set_affinity_notifier function
+to inform the current notification subscriber that they will no longer
+receive notifications.
+
 .. _`i40evf_request_traffic_irqs`:
 
 i40evf_request_traffic_irqs
@@ -1138,6 +1182,24 @@ Description
 -----------
 
 Returns 0 on success, negative on failure
+
+.. _`i40evf_features_check`:
+
+i40evf_features_check
+=====================
+
+.. c:function:: netdev_features_t i40evf_features_check(struct sk_buff *skb, struct net_device *dev, netdev_features_t features)
+
+    Validate encapsulated packet conforms to limits
+
+    :param struct sk_buff \*skb:
+        skb buff
+
+    :param struct net_device \*dev:
+        *undescribed*
+
+    :param netdev_features_t features:
+        Offload features that the stack believes apply
 
 .. _`i40evf_fix_features`:
 

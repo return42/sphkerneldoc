@@ -6,7 +6,7 @@
 gen_new_estimator
 =================
 
-.. c:function:: int gen_new_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct gnet_stats_rate_est64 *rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
+.. c:function:: int gen_new_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct net_rate_estimator __rcu **rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
 
     create a new rate estimator
 
@@ -16,7 +16,7 @@ gen_new_estimator
     :param struct gnet_stats_basic_cpu __percpu \*cpu_bstats:
         bstats per cpu
 
-    :param struct gnet_stats_rate_est64 \*rate_est:
+    :param struct net_rate_estimator __rcu \*\*rate_est:
         rate estimator statistics
 
     :param spinlock_t \*stats_lock:
@@ -46,31 +46,26 @@ Returns 0 on success or a negative error code.
 gen_kill_estimator
 ==================
 
-.. c:function:: void gen_kill_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_rate_est64 *rate_est)
+.. c:function:: void gen_kill_estimator(struct net_rate_estimator __rcu **rate_est)
 
     remove a rate estimator
 
-    :param struct gnet_stats_basic_packed \*bstats:
-        basic statistics
-
-    :param struct gnet_stats_rate_est64 \*rate_est:
-        rate estimator statistics
+    :param struct net_rate_estimator __rcu \*\*rate_est:
+        rate estimator
 
 .. _`gen_kill_estimator.description`:
 
 Description
 -----------
 
-Removes the rate estimator specified by \ :c:type:`struct bstats <bstats>`\  and \ :c:type:`struct rate_est <rate_est>`\ .
-
-Note : Caller should respect an RCU grace period before freeing stats_lock
+Removes the rate estimator.
 
 .. _`gen_replace_estimator`:
 
 gen_replace_estimator
 =====================
 
-.. c:function:: int gen_replace_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct gnet_stats_rate_est64 *rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
+.. c:function:: int gen_replace_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct net_rate_estimator __rcu **rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
 
     replace rate estimator configuration
 
@@ -80,7 +75,7 @@ gen_replace_estimator
     :param struct gnet_stats_basic_cpu __percpu \*cpu_bstats:
         bstats per cpu
 
-    :param struct gnet_stats_rate_est64 \*rate_est:
+    :param struct net_rate_estimator __rcu \*\*rate_est:
         rate estimator statistics
 
     :param spinlock_t \*stats_lock:
@@ -107,15 +102,12 @@ Returns 0 on success or a negative error code.
 gen_estimator_active
 ====================
 
-.. c:function:: bool gen_estimator_active(const struct gnet_stats_basic_packed *bstats, const struct gnet_stats_rate_est64 *rate_est)
+.. c:function:: bool gen_estimator_active(struct net_rate_estimator __rcu **rate_est)
 
     test if estimator is currently in use
 
-    :param const struct gnet_stats_basic_packed \*bstats:
-        basic statistics
-
-    :param const struct gnet_stats_rate_est64 \*rate_est:
-        rate estimator statistics
+    :param struct net_rate_estimator __rcu \*\*rate_est:
+        rate estimator
 
 .. _`gen_estimator_active.description`:
 

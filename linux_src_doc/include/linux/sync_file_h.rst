@@ -25,8 +25,8 @@ Definition
         struct list_head sync_file_list;
     #endif
         wait_queue_head_t wq;
-        struct fence *fence;
-        struct fence_cb cb;
+        struct dma_fence *fence;
+        struct dma_fence_cb cb;
     }
 
 .. _`sync_file.members`:

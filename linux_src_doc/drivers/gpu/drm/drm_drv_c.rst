@@ -1,58 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_drv.c
 
-.. _`drm_minor_acquire`:
-
-drm_minor_acquire
-=================
-
-.. c:function:: struct drm_minor *drm_minor_acquire(unsigned int minor_id)
-
-    Acquire a DRM minor
-
-    :param unsigned int minor_id:
-        Minor ID of the DRM-minor
-
-.. _`drm_minor_acquire.description`:
-
-Description
------------
-
-Looks up the given minor-ID and returns the respective DRM-minor object. The
-refence-count of the underlying device is increased so you must release this
-object with \ :c:func:`drm_minor_release`\ .
-
-As long as you hold this minor, it is guaranteed that the object and the
-minor->dev pointer will stay valid! However, the device may get unplugged and
-unregistered while you hold the minor.
-
-.. _`drm_minor_acquire.return`:
-
-Return
-------
-
-Pointer to minor-object with increased device-refcount, or PTR_ERR on
-failure.
-
-.. _`drm_minor_release`:
-
-drm_minor_release
-=================
-
-.. c:function:: void drm_minor_release(struct drm_minor *minor)
-
-    Release DRM minor
-
-    :param struct drm_minor \*minor:
-        Pointer to DRM minor object
-
-.. _`drm_minor_release.description`:
-
-Description
------------
-
-Release a minor that was previously acquired via \ :c:func:`drm_minor_acquire`\ .
-
 .. _`drm_put_dev`:
 
 drm_put_dev
@@ -282,6 +230,37 @@ Unregister the DRM device from the system. This does the reverse of
 
 This should be called first in the device teardown code to make sure
 userspace can't access the device instance any more.
+
+.. _`drm_dev_set_unique`:
+
+drm_dev_set_unique
+==================
+
+.. c:function:: int drm_dev_set_unique(struct drm_device *dev, const char *name)
+
+    Set the unique name of a DRM device
+
+    :param struct drm_device \*dev:
+        device of which to set the unique name
+
+    :param const char \*name:
+        unique name
+
+.. _`drm_dev_set_unique.description`:
+
+Description
+-----------
+
+Sets the unique name of a DRM device using the specified string. Drivers
+can use this at driver probe time if the unique name of the devices they
+drive is static.
+
+.. _`drm_dev_set_unique.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
 
 .. This file was automatic generated / don't edit.
 

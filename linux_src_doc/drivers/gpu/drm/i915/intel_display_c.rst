@@ -6,11 +6,11 @@
 intel_PLL_is_valid
 ==================
 
-.. c:function:: bool intel_PLL_is_valid(struct drm_device *dev, const struct intel_limit *limit, const struct dpll *clock)
+.. c:function:: bool intel_PLL_is_valid(struct drm_i915_private *dev_priv, const struct intel_limit *limit, const struct dpll *clock)
 
     the given connectors.
 
-    :param struct drm_device \*dev:
+    :param struct drm_i915_private \*dev_priv:
         *undescribed*
 
     :param const struct intel_limit \*limit:
@@ -156,12 +156,12 @@ completely hide the primary plane.
 vlv_force_pll_on
 ================
 
-.. c:function:: int vlv_force_pll_on(struct drm_device *dev, enum pipe pipe, const struct dpll *dpll)
+.. c:function:: int vlv_force_pll_on(struct drm_i915_private *dev_priv, enum pipe pipe, const struct dpll *dpll)
 
     forcibly enable just the PLL
 
-    :param struct drm_device \*dev:
-        *undescribed*
+    :param struct drm_i915_private \*dev_priv:
+        i915 private structure
 
     :param enum pipe pipe:
         pipe PLL to enable
@@ -183,12 +183,12 @@ be enabled.
 vlv_force_pll_off
 =================
 
-.. c:function:: void vlv_force_pll_off(struct drm_device *dev, enum pipe pipe)
+.. c:function:: void vlv_force_pll_off(struct drm_i915_private *dev_priv, enum pipe pipe)
 
     forcibly disable just the PLL
 
-    :param struct drm_device \*dev:
-        *undescribed*
+    :param struct drm_i915_private \*dev_priv:
+        i915 private structure
 
     :param enum pipe pipe:
         pipe PLL to disable
@@ -266,15 +266,6 @@ Description
 
 This function commits a top-level state object that has been validated
 with \ :c:func:`drm_atomic_helper_check`\ .
-
-.. _`intel_atomic_commit.fixme`:
-
-FIXME
------
-
-Atomic modeset support for i915 is not yet complete.  At the moment
-nonblocking commits are only safe for pure plane updates. Everything else
-should work though.
 
 RETURNS
 Zero for success or -errno.

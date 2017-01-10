@@ -150,7 +150,7 @@ Close all VCE handles still open by this file pointer
 amdgpu_vce_get_create_msg
 =========================
 
-.. c:function:: int amdgpu_vce_get_create_msg(struct amdgpu_ring *ring, uint32_t handle, struct fence **fence)
+.. c:function:: int amdgpu_vce_get_create_msg(struct amdgpu_ring *ring, uint32_t handle, struct dma_fence **fence)
 
     generate a VCE create msg
 
@@ -160,7 +160,7 @@ amdgpu_vce_get_create_msg
     :param uint32_t handle:
         VCE session handle to use
 
-    :param struct fence \*\*fence:
+    :param struct dma_fence \*\*fence:
         optional fence to return
 
 .. _`amdgpu_vce_get_create_msg.description`:
@@ -175,7 +175,7 @@ Open up a stream for HW test
 amdgpu_vce_get_destroy_msg
 ==========================
 
-.. c:function:: int amdgpu_vce_get_destroy_msg(struct amdgpu_ring *ring, uint32_t handle, bool direct, struct fence **fence)
+.. c:function:: int amdgpu_vce_get_destroy_msg(struct amdgpu_ring *ring, uint32_t handle, bool direct, struct dma_fence **fence)
 
     generate a VCE destroy msg
 
@@ -188,7 +188,7 @@ amdgpu_vce_get_destroy_msg
     :param bool direct:
         *undescribed*
 
-    :param struct fence \*\*fence:
+    :param struct dma_fence \*\*fence:
         optional fence to return
 
 .. _`amdgpu_vce_get_destroy_msg.description`:
@@ -266,6 +266,21 @@ amdgpu_vce_ring_parse_cs
 .. c:function:: int amdgpu_vce_ring_parse_cs(struct amdgpu_cs_parser *p, uint32_t ib_idx)
 
     parse and validate the command stream
+
+    :param struct amdgpu_cs_parser \*p:
+        parser context
+
+    :param uint32_t ib_idx:
+        *undescribed*
+
+.. _`amdgpu_vce_ring_parse_cs_vm`:
+
+amdgpu_vce_ring_parse_cs_vm
+===========================
+
+.. c:function:: int amdgpu_vce_ring_parse_cs_vm(struct amdgpu_cs_parser *p, uint32_t ib_idx)
+
+    parse the command stream in VM mode
 
     :param struct amdgpu_cs_parser \*p:
         parser context

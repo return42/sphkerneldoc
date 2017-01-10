@@ -425,5 +425,86 @@ Return
 
 Zero on success, negative errno on failure.
 
+.. _`drm_mode_put_tile_group`:
+
+drm_mode_put_tile_group
+=======================
+
+.. c:function:: void drm_mode_put_tile_group(struct drm_device *dev, struct drm_tile_group *tg)
+
+    drop a reference to a tile group.
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_tile_group \*tg:
+        tile group to drop reference to.
+
+.. _`drm_mode_put_tile_group.description`:
+
+Description
+-----------
+
+drop reference to tile group and free if 0.
+
+.. _`drm_mode_get_tile_group`:
+
+drm_mode_get_tile_group
+=======================
+
+.. c:function:: struct drm_tile_group *drm_mode_get_tile_group(struct drm_device *dev, char topology[8])
+
+    get a reference to an existing tile group
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param char topology:
+        8-bytes unique per monitor.
+
+.. _`drm_mode_get_tile_group.description`:
+
+Description
+-----------
+
+Use the unique bytes to get a reference to an existing tile group.
+
+.. _`drm_mode_get_tile_group.return`:
+
+Return
+------
+
+tile group or NULL if not found.
+
+.. _`drm_mode_create_tile_group`:
+
+drm_mode_create_tile_group
+==========================
+
+.. c:function:: struct drm_tile_group *drm_mode_create_tile_group(struct drm_device *dev, char topology[8])
+
+    create a tile group from a displayid description
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param char topology:
+        8-bytes unique per monitor.
+
+.. _`drm_mode_create_tile_group.description`:
+
+Description
+-----------
+
+Create a tile group for the unique monitor, and get a unique
+identifier for the tile group.
+
+.. _`drm_mode_create_tile_group.return`:
+
+Return
+------
+
+new tile group or error.
+
 .. This file was automatic generated / don't edit.
 

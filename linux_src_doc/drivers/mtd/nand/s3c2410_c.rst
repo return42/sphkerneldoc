@@ -264,7 +264,7 @@ all pointers are setup and the necessary control routines selected.
 s3c2410_nand_update_chip
 ========================
 
-.. c:function:: void s3c2410_nand_update_chip(struct s3c2410_nand_info *info, struct s3c2410_nand_mtd *nmtd)
+.. c:function:: int s3c2410_nand_update_chip(struct s3c2410_nand_info *info, struct s3c2410_nand_mtd *nmtd)
 
     post probe update
 

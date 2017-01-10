@@ -229,11 +229,11 @@ value is < the requested value.  Helper function for
 radeon_fence_enable_signaling
 =============================
 
-.. c:function:: bool radeon_fence_enable_signaling(struct fence *f)
+.. c:function:: bool radeon_fence_enable_signaling(struct dma_fence *f)
 
     enable signalling on fence
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`radeon_fence_enable_signaling.description`:

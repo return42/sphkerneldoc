@@ -188,6 +188,39 @@ Note, if d==NULL, the function only returns the protocol result.
 It is very similar to previous wil_tx_desc_offload_setup_tso. This
 is "if unrolling" to optimize the critical path.
 
+.. _`__wil_update_net_queues`:
+
+__wil_update_net_queues
+=======================
+
+.. c:function:: void __wil_update_net_queues(struct wil6210_priv *wil, struct vring *vring, bool check_stop)
+
+    :param struct wil6210_priv \*wil:
+        *undescribed*
+
+    :param struct vring \*vring:
+        *undescribed*
+
+    :param bool check_stop:
+        *undescribed*
+
+.. _`__wil_update_net_queues.this-function-does-one-of-two-checks`:
+
+This function does one of two checks
+------------------------------------
+
+In case check_stop is true, will check if net queues need to be stopped. If
+the conditions for stopping are met, \ :c:func:`netif_tx_stop_all_queues`\  is called.
+In case check_stop is false, will check if net queues need to be waked. If
+the conditions for waking are met, \ :c:func:`netif_tx_wake_all_queues`\  is called.
+vring is the vring which is currently being modified by either adding
+descriptors (tx) into it or removing descriptors (tx complete) from it. Can
+be null when irrelevant (e.g. connect/disconnect events).
+
+The implementation is to stop net queues if modified vring has low
+descriptor availability. Wake if all vrings are not in low descriptor
+availability and modified vring has high descriptor availability.
+
 .. _`wil_tx_complete`:
 
 wil_tx_complete

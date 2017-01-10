@@ -183,5 +183,39 @@ Description
 This function will create the nf_hook_ops that the x_table needs
 to hand to \ :c:func:`xt_hook_link_net`\ .
 
+.. _`xt_percpu_counter_alloc`:
+
+xt_percpu_counter_alloc
+=======================
+
+.. c:function:: bool xt_percpu_counter_alloc(struct xt_percpu_counter_alloc_state *state, struct xt_counters *counter)
+
+    allocate x_tables rule counter
+
+    :param struct xt_percpu_counter_alloc_state \*state:
+        pointer to xt_percpu allocation state
+
+    :param struct xt_counters \*counter:
+        pointer to counter struct inside the ip(6)/arpt_entry struct
+
+.. _`xt_percpu_counter_alloc.description`:
+
+Description
+-----------
+
+On SMP, the packet counter [ ip(6)t_entry->counters.pcnt ] will then
+contain the address of the real (percpu) counter.
+
+Rule evaluation needs to use \ :c:func:`xt_get_this_cpu_counter`\  helper
+to fetch the real percpu counter.
+
+To speed up allocation and improve data locality, a 4kb block is
+allocated.
+
+xt_percpu_counter_alloc_state contains the base address of the
+allocated page and the current sub-offset.
+
+returns false on error.
+
 .. This file was automatic generated / don't edit.
 

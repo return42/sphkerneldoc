@@ -385,7 +385,7 @@ Block address read from \ ``tf``\ .
 ata_build_rw_tf
 ===============
 
-.. c:function:: int ata_build_rw_tf(struct ata_taskfile *tf, struct ata_device *dev, u64 block, u32 n_block, unsigned int tf_flags, unsigned int tag)
+.. c:function:: int ata_build_rw_tf(struct ata_taskfile *tf, struct ata_device *dev, u64 block, u32 n_block, unsigned int tf_flags, unsigned int tag, int class)
 
     Build ATA taskfile for given read/write request
 
@@ -406,6 +406,9 @@ ata_build_rw_tf
 
     :param unsigned int tag:
         tag
+
+    :param int class:
+        IO priority class
 
 .. _`ata_build_rw_tf.locking`:
 

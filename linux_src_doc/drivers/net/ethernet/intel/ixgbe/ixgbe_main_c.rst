@@ -991,12 +991,15 @@ ixgbe_tx_timeout
 ixgbe_sw_init
 =============
 
-.. c:function:: int ixgbe_sw_init(struct ixgbe_adapter *adapter)
+.. c:function:: int ixgbe_sw_init(struct ixgbe_adapter *adapter, const struct ixgbe_info *ii)
 
     Initialize general software structures (struct ixgbe_adapter)
 
     :param struct ixgbe_adapter \*adapter:
         board private structure to initialize
+
+    :param const struct ixgbe_info \*ii:
+        *undescribed*
 
 .. _`ixgbe_sw_init.description`:
 

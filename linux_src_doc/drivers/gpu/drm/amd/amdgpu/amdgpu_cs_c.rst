@@ -52,6 +52,84 @@ Description
 
 Wait for the command submission identified by handle to finish.
 
+.. _`amdgpu_cs_get_fence`:
+
+amdgpu_cs_get_fence
+===================
+
+.. c:function:: struct dma_fence *amdgpu_cs_get_fence(struct amdgpu_device *adev, struct drm_file *filp, struct drm_amdgpu_fence *user)
+
+    helper to get fence from drm_amdgpu_fence
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device
+
+    :param struct drm_file \*filp:
+        file private
+
+    :param struct drm_amdgpu_fence \*user:
+        drm_amdgpu_fence copied from user space
+
+.. _`amdgpu_cs_wait_all_fences`:
+
+amdgpu_cs_wait_all_fences
+=========================
+
+.. c:function:: int amdgpu_cs_wait_all_fences(struct amdgpu_device *adev, struct drm_file *filp, union drm_amdgpu_wait_fences *wait, struct drm_amdgpu_fence *fences)
+
+    wait on all fences to signal
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device
+
+    :param struct drm_file \*filp:
+        file private
+
+    :param union drm_amdgpu_wait_fences \*wait:
+        wait parameters
+
+    :param struct drm_amdgpu_fence \*fences:
+        array of drm_amdgpu_fence
+
+.. _`amdgpu_cs_wait_any_fence`:
+
+amdgpu_cs_wait_any_fence
+========================
+
+.. c:function:: int amdgpu_cs_wait_any_fence(struct amdgpu_device *adev, struct drm_file *filp, union drm_amdgpu_wait_fences *wait, struct drm_amdgpu_fence *fences)
+
+    wait on any fence to signal
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device
+
+    :param struct drm_file \*filp:
+        file private
+
+    :param union drm_amdgpu_wait_fences \*wait:
+        wait parameters
+
+    :param struct drm_amdgpu_fence \*fences:
+        array of drm_amdgpu_fence
+
+.. _`amdgpu_cs_wait_fences_ioctl`:
+
+amdgpu_cs_wait_fences_ioctl
+===========================
+
+.. c:function:: int amdgpu_cs_wait_fences_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
+
+    wait for multiple command submissions to finish
+
+    :param struct drm_device \*dev:
+        drm device
+
+    :param void \*data:
+        data from userspace
+
+    :param struct drm_file \*filp:
+        file private
+
 .. _`amdgpu_cs_find_mapping`:
 
 amdgpu_cs_find_mapping

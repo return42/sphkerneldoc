@@ -1,23 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/sunxi-ng/ccu_div.h
 
-.. _`_ccu_div`:
+.. _`ccu_div_internal`:
 
-struct \_ccu_div
-================
+struct ccu_div_internal
+=======================
 
-.. c:type:: struct _ccu_div
+.. c:type:: struct ccu_div_internal
 
     Internal divider description
 
-.. _`_ccu_div.definition`:
+.. _`ccu_div_internal.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct _ccu_div {
+    struct ccu_div_internal {
         u8 shift;
         u8 width;
         u32 max;
@@ -25,7 +25,7 @@ Definition
         struct clk_div_table *table;
     }
 
-.. _`_ccu_div.members`:
+.. _`ccu_div_internal.members`:
 
 Members
 -------
@@ -47,7 +47,7 @@ flags
 table
     Divider table pointer (if applicable)
 
-.. _`_ccu_div.description`:
+.. _`ccu_div_internal.description`:
 
 Description
 -----------

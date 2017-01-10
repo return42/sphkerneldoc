@@ -1187,5 +1187,58 @@ Return
 
 '0' on Success; -ENAVAIL if connection does not exist.
 
+.. _`dprc_get_api_version`:
+
+dprc_get_api_version
+====================
+
+.. c:function:: int dprc_get_api_version(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 *major_ver, u16 *minor_ver)
+
+    Get Data Path Resource Container API version
+
+    :param struct fsl_mc_io \*mc_io:
+        Pointer to Mc portal's I/O object
+
+    :param u32 cmd_flags:
+        Command flags; one or more of 'MC_CMD_FLAG_'
+
+    :param u16 \*major_ver:
+        Major version of Data Path Resource Container API
+
+    :param u16 \*minor_ver:
+        Minor version of Data Path Resource Container API
+
+.. _`dprc_get_api_version.return`:
+
+Return
+------
+
+'0' on Success; Error code otherwise.
+
+.. _`dprc_get_container_id`:
+
+dprc_get_container_id
+=====================
+
+.. c:function:: int dprc_get_container_id(struct fsl_mc_io *mc_io, u32 cmd_flags, int *container_id)
+
+    Get container ID associated with a given portal.
+
+    :param struct fsl_mc_io \*mc_io:
+        Pointer to Mc portal's I/O object
+
+    :param u32 cmd_flags:
+        Command flags; one or more of 'MC_CMD_FLAG_'
+
+    :param int \*container_id:
+        Requested container id
+
+.. _`dprc_get_container_id.return`:
+
+Return
+------
+
+'0' on Success; Error code otherwise.
+
 .. This file was automatic generated / don't edit.
 

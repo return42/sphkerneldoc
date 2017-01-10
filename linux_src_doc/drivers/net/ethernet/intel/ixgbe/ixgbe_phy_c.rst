@@ -98,62 +98,6 @@ Description
 
 Returns an error code on error.
 
-.. _`ixgbe_read_i2c_combined_generic`:
-
-ixgbe_read_i2c_combined_generic
-===============================
-
-.. c:function:: s32 ixgbe_read_i2c_combined_generic(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 *val)
-
-    Perform I2C read combined operation
-
-    :param struct ixgbe_hw \*hw:
-        pointer to the hardware structure
-
-    :param u8 addr:
-        I2C bus address to read from
-
-    :param u16 reg:
-        I2C device register to read from
-
-    :param u16 \*val:
-        pointer to location to receive read value
-
-.. _`ixgbe_read_i2c_combined_generic.description`:
-
-Description
------------
-
-Returns an error code on error.
-
-.. _`ixgbe_read_i2c_combined_generic_unlocked`:
-
-ixgbe_read_i2c_combined_generic_unlocked
-========================================
-
-.. c:function:: s32 ixgbe_read_i2c_combined_generic_unlocked(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 *val)
-
-    Unlocked I2C read combined
-
-    :param struct ixgbe_hw \*hw:
-        pointer to the hardware structure
-
-    :param u8 addr:
-        I2C bus address to read from
-
-    :param u16 reg:
-        I2C device register to read from
-
-    :param u16 \*val:
-        pointer to location to receive read value
-
-.. _`ixgbe_read_i2c_combined_generic_unlocked.description`:
-
-Description
------------
-
-Returns an error code on error.
-
 .. _`ixgbe_write_i2c_combined_generic_int`:
 
 ixgbe_write_i2c_combined_generic_int
@@ -185,61 +129,27 @@ Description
 
 Returns an error code on error.
 
-.. _`ixgbe_write_i2c_combined_generic`:
+.. _`ixgbe_probe_phy`:
 
-ixgbe_write_i2c_combined_generic
-================================
+ixgbe_probe_phy
+===============
 
-.. c:function:: s32 ixgbe_write_i2c_combined_generic(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 val)
+.. c:function:: bool ixgbe_probe_phy(struct ixgbe_hw *hw, u16 phy_addr)
 
-    Perform I2C write combined operation
+    Probe a single address for a PHY
 
     :param struct ixgbe_hw \*hw:
-        pointer to the hardware structure
+        pointer to hardware structure
 
-    :param u8 addr:
-        I2C bus address to write to
+    :param u16 phy_addr:
+        PHY address to probe
 
-    :param u16 reg:
-        I2C device register to write to
-
-    :param u16 val:
-        value to write
-
-.. _`ixgbe_write_i2c_combined_generic.description`:
+.. _`ixgbe_probe_phy.description`:
 
 Description
 -----------
 
-Returns an error code on error.
-
-.. _`ixgbe_write_i2c_combined_generic_unlocked`:
-
-ixgbe_write_i2c_combined_generic_unlocked
-=========================================
-
-.. c:function:: s32 ixgbe_write_i2c_combined_generic_unlocked(struct ixgbe_hw *hw, u8 addr, u16 reg, u16 val)
-
-    Unlocked I2C write combined
-
-    :param struct ixgbe_hw \*hw:
-        pointer to the hardware structure
-
-    :param u8 addr:
-        I2C bus address to write to
-
-    :param u16 reg:
-        I2C device register to write to
-
-    :param u16 val:
-        value to write
-
-.. _`ixgbe_write_i2c_combined_generic_unlocked.description`:
-
-Description
------------
-
-Returns an error code on error.
+Returns true if PHY found
 
 .. _`ixgbe_identify_phy_generic`:
 

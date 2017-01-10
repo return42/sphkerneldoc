@@ -1392,6 +1392,59 @@ Description
 
 Used for channel switch
 
+.. _`iface_combination_params`:
+
+struct iface_combination_params
+===============================
+
+.. c:type:: struct iface_combination_params
+
+    input parameters for interface combinations
+
+.. _`iface_combination_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iface_combination_params {
+        int num_different_channels;
+        u8 radar_detect;
+        int iftype_num[NUM_NL80211_IFTYPES];
+        u32 new_beacon_int;
+    }
+
+.. _`iface_combination_params.members`:
+
+Members
+-------
+
+num_different_channels
+    the number of different channels we want
+    to use for verification
+
+radar_detect
+    a bitmap where each bit corresponds to a channel
+    width where radar detection is needed, as in the definition of
+    \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .@radar_detect_widths
+
+iftype_num
+    array with the number of interfaces of each interface
+    type.  The index is the interface type as specified in \ :c:type:`enum nl80211_iftype <nl80211_iftype>`\ .
+
+new_beacon_int
+    set this to the beacon interval of a new interface
+    that's not operating yet, if such is to be checked as part of
+    the verification
+
+.. _`iface_combination_params.description`:
+
+Description
+-----------
+
+Used to pass interface combination parameters
+
 .. _`station_parameters_apply_mask`:
 
 enum station_parameters_apply_mask
@@ -3472,8 +3525,8 @@ Definition
         const u8 *key;
         u8 key_len;
         u8 key_idx;
-        const u8 *sae_data;
-        size_t sae_data_len;
+        const u8 *auth_data;
+        size_t auth_data_len;
     }
 
 .. _`cfg80211_auth_request.members`:
@@ -3503,12 +3556,14 @@ key_len
 key_idx
     index of WEP key for shared key authentication
 
-sae_data
-    Non-IE data to use with SAE or \ ``NULL``\ . This starts with
-    Authentication transaction sequence number field.
+auth_data
+    Fields and elements in Authentication frames. This contains
+    the authentication frame body (non-IE and IE data), excluding the
+    Authentication algorithm number, i.e., starting at the Authentication
+    transaction sequence number field.
 
-sae_data_len
-    Length of sae_data buffer in octets
+auth_data_len
+    Length of auth_data buffer in octets
 
 .. _`cfg80211_auth_request.description`:
 
@@ -3582,6 +3637,9 @@ Definition
         struct ieee80211_ht_cap ht_capa_mask;
         struct ieee80211_vht_cap vht_capa;
         struct ieee80211_vht_cap vht_capa_mask;
+        const u8 *fils_kek;
+        size_t fils_kek_len;
+        const u8 *fils_nonces;
     }
 
 .. _`cfg80211_assoc_request.members`:
@@ -3630,6 +3688,18 @@ vht_capa
 
 vht_capa_mask
     VHT capability mask indicating which fields to use
+
+fils_kek
+    FILS KEK for protecting (Re)Association Request/Response frame or
+    \ ``NULL``\  if FILS is not used.
+
+fils_kek_len
+    Length of fils_kek in octets
+
+fils_nonces
+    FILS nonces (part of AAD) for protecting (Re)Association
+    Request/Response frame or \ ``NULL``\  if FILS is not used. This field starts
+    with 16 octets of STA Nonce followed by 16 octets of AP Nonce.
 
 .. _`cfg80211_assoc_request.description`:
 
@@ -4051,6 +4121,42 @@ Description
 
 This structure provides information needed to complete IEEE 802.11
 authentication and association.
+
+.. _`cfg80211_connect_params_changed`:
+
+enum cfg80211_connect_params_changed
+====================================
+
+.. c:type:: enum cfg80211_connect_params_changed
+
+    Connection parameters being updated
+
+.. _`cfg80211_connect_params_changed.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cfg80211_connect_params_changed {
+        UPDATE_ASSOC_IES
+    };
+
+.. _`cfg80211_connect_params_changed.constants`:
+
+Constants
+---------
+
+UPDATE_ASSOC_IES
+    Indicates whether association request IEs are updated
+
+.. _`cfg80211_connect_params_changed.description`:
+
+Description
+-----------
+
+This enum provides information of all connect parameters that
+have to be updated as part of \ :c:func:`update_connect_params`\  call.
 
 .. _`wiphy_params_flags`:
 
@@ -5135,6 +5241,7 @@ Definition
         int (*deauth)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_deauth_request *req);
         int (*disassoc)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_disassoc_request *req);
         int (*connect)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_connect_params *sme);
+        int (*update_connect_params)(struct wiphy *wiphy,struct net_device *dev,struct cfg80211_connect_params *sme,u32 changed);
         int (*disconnect)(struct wiphy *wiphy, struct net_device *dev,u16 reason_code);
         int (*join_ibss)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_ibss_params *params);
         int (*leave_ibss)(struct wiphy *wiphy, struct net_device *dev);
@@ -5191,6 +5298,7 @@ Definition
         int (*add_nan_func)(struct wiphy *wiphy, struct wireless_dev *wdev,struct cfg80211_nan_func *nan_func);
         void (*del_nan_func)(struct wiphy *wiphy, struct wireless_dev *wdev,u64 cookie);
         int (*nan_change_conf)(struct wiphy *wiphy,struct wireless_dev *wdev,struct cfg80211_nan_conf *conf,u32 changes);
+        int (*set_multicast_to_unicast)(struct wiphy *wiphy,struct net_device *dev,const bool enabled);
     }
 
 .. _`cfg80211_ops.members`:
@@ -5384,10 +5492,21 @@ connect
     \ :c:func:`cfg80211_roamed`\  or \ :c:func:`cfg80211_roamed_bss`\ .
     (invoked with the wireless_dev mutex held)
 
-disconnect
-    Disconnect from the BSS/ESS. Once done, call
-    \ :c:func:`cfg80211_disconnected`\ .
+update_connect_params
+    Update the connect parameters while connected to a
+    BSS. The updated parameters can be used by driver/firmware for
+    subsequent BSS selection (roaming) decisions and to form the
+    Authentication/(Re)Association Request frames. This call does not
+    request an immediate disassociation or reassociation with the current
+    BSS, i.e., this impacts only subsequent (re)associations. The bits in
+    changed are defined in \ :c:type:`enum cfg80211_connect_params_changed <cfg80211_connect_params_changed>`\ .
     (invoked with the wireless_dev mutex held)
+
+disconnect
+    Disconnect from the BSS/ESS or stop connection attempts if
+    connection is in progress. Once done, call \ :c:func:`cfg80211_disconnected`\  in
+    case connection was already established (invoked with the
+    wireless_dev mutex held), otherwise call \ :c:func:`cfg80211_connect_timeout`\ .
 
 join_ibss
     Join the specified IBSS (or create if necessary). Once done, call
@@ -5630,6 +5749,9 @@ nan_change_conf
     be specified in \ ``changes``\  (using \ :c:type:`enum cfg80211_nan_conf_changes <cfg80211_nan_conf_changes>`\ );
     All other parameters must be ignored.
 
+set_multicast_to_unicast
+    configure multicast to unicast conversion for BSS
+
 .. _`cfg80211_ops.description`:
 
 Description
@@ -5823,6 +5945,7 @@ Definition
         bool beacon_int_infra_match;
         u8 radar_detect_widths;
         u8 radar_detect_regions;
+        u32 beacon_int_min_gcd;
     }
 
 .. _`ieee80211_iface_combination.members`:
@@ -5853,6 +5976,14 @@ radar_detect_widths
 
 radar_detect_regions
     bitmap of regions supported for radar detection
+
+beacon_int_min_gcd
+    This interface combination supports different
+    beacon intervals.
+    = 0 - all beacon intervals for different interface must be same.
+    > 0 - any beacon interval for the interface part of this combination AND
+    *GCD* of all beacon intervals from beaconing interfaces of this
+    combination must be greater or equal to this value.
 
 .. _`ieee80211_iface_combination.description`:
 
@@ -6823,8 +6954,7 @@ Definition
         spinlock_t mgmt_registrations_lock;
         struct mutex mtx;
         bool use_4addr;
-        bool p2p_started;
-        bool nan_started;
+        bool is_running;
         u8 address[ETH_ALEN];
         u8 ssid[IEEE80211_MAX_SSID_LEN];
         u8 ssid_len;
@@ -6890,11 +7020,9 @@ use_4addr
     netdev and may otherwise be used by driver read-only, will be update
     by cfg80211 on change_interface
 
-p2p_started
-    true if this is a P2P Device that has been started
-
-nan_started
-    true if this is a NAN interface that has been started
+is_running
+    true if this is a non-netdev device that has been started, e.g.
+    the P2P Device.
 
 address
     The address for this device, valid only if \ ``netdev``\  is \ ``NULL``\ 
@@ -7519,6 +7647,42 @@ Note
 There are no checks on the element length other than
 having to fit into the given data.
 
+.. _`cfg80211_find_ext_ie`:
+
+cfg80211_find_ext_ie
+====================
+
+.. c:function:: const u8 *cfg80211_find_ext_ie(u8 ext_eid, const u8 *ies, int len)
+
+    find information element with EID Extension in data
+
+    :param u8 ext_eid:
+        element ID Extension
+
+    :param const u8 \*ies:
+        data consisting of IEs
+
+    :param int len:
+        length of data
+
+.. _`cfg80211_find_ext_ie.return`:
+
+Return
+------
+
+%NULL if the extended element ID could not be found or if
+the element is invalid (claims to be longer than the given
+data), or a pointer to the first byte of the requested
+element, that is the byte containing the element ID.
+
+.. _`cfg80211_find_ext_ie.note`:
+
+Note
+----
+
+There are no checks on the element length other than
+having to fit into the given data.
+
 .. _`cfg80211_find_vendor_ie`:
 
 cfg80211_find_vendor_ie
@@ -8106,7 +8270,8 @@ cfg80211_rx_assoc_resp
         length of the frame data
 
     :param int uapsd_queues:
-        bitmap of ACs configured to uapsd. -1 if n/a.
+        bitmap of queues configured for uapsd. Same format
+        as the AC bitmap in the QoS info field
 
 .. _`cfg80211_rx_assoc_resp.description`:
 
@@ -8138,6 +8303,30 @@ cfg80211_assoc_timeout
 Description
 -----------
 
+This function may sleep. The caller must hold the corresponding wdev's mutex.
+
+.. _`cfg80211_abandon_assoc`:
+
+cfg80211_abandon_assoc
+======================
+
+.. c:function:: void cfg80211_abandon_assoc(struct net_device *dev, struct cfg80211_bss *bss)
+
+    notify cfg80211 of abandoned association attempt
+
+    :param struct net_device \*dev:
+        network device
+
+    :param struct cfg80211_bss \*bss:
+        The BSS entry with which association was abandoned.
+
+.. _`cfg80211_abandon_assoc.description`:
+
+Description
+-----------
+
+Call this whenever - for reasons reported through other API, like deauth RX,
+an association attempt was abandoned.
 This function may sleep. The caller must hold the corresponding wdev's mutex.
 
 .. _`cfg80211_tx_mlme_mgmt`:
@@ -9823,25 +10012,15 @@ the number of channels supported by the device.
 cfg80211_check_combinations
 ===========================
 
-.. c:function:: int cfg80211_check_combinations(struct wiphy *wiphy, const int num_different_channels, const u8 radar_detect, const int iftype_num[NUM_NL80211_IFTYPES])
+.. c:function:: int cfg80211_check_combinations(struct wiphy *wiphy, struct iface_combination_params *params)
 
     check interface combinations
 
     :param struct wiphy \*wiphy:
         the wiphy
 
-    :param const int num_different_channels:
-        the number of different channels we want
-        to use for verification
-
-    :param const u8 radar_detect:
-        a bitmap where each bit corresponds to a channel
-        width where radar detection is needed, as in the definition of
-        \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .@radar_detect_widths
-
-    :param const int iftype_num:
-        array with the numbers of interfaces of each interface
-        type.  The index is the interface type as specified in \ :c:type:`enum nl80211_iftype <nl80211_iftype>`\ .
+    :param struct iface_combination_params \*params:
+        the interface combinations parameter
 
 .. _`cfg80211_check_combinations.description`:
 
@@ -9857,25 +10036,15 @@ the interface combinations.
 cfg80211_iter_combinations
 ==========================
 
-.. c:function:: int cfg80211_iter_combinations(struct wiphy *wiphy, const int num_different_channels, const u8 radar_detect, const int iftype_num[NUM_NL80211_IFTYPES], void (*iter)(const struct ieee80211_iface_combination *c, void *data), void *data)
+.. c:function:: int cfg80211_iter_combinations(struct wiphy *wiphy, struct iface_combination_params *params, void (*iter)(const struct ieee80211_iface_combination *c, void *data), void *data)
 
     iterate over matching combinations
 
     :param struct wiphy \*wiphy:
         the wiphy
 
-    :param const int num_different_channels:
-        the number of different channels we want
-        to use for verification
-
-    :param const u8 radar_detect:
-        a bitmap where each bit corresponds to a channel
-        width where radar detection is needed, as in the definition of
-        \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .@radar_detect_widths
-
-    :param const int iftype_num:
-        array with the numbers of interfaces of each interface
-        type.  The index is the interface type as specified in \ :c:type:`enum nl80211_iftype <nl80211_iftype>`\ .
+    :param struct iface_combination_params \*params:
+        the interface combinations parameter
 
     :param void (\*iter)(const struct ieee80211_iface_combination \*c, void \*data):
         function to call for each matching combination

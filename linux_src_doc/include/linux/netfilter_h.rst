@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/netfilter.h
 
-.. _`nf_hook_thresh`:
+.. _`nf_hook`:
 
-nf_hook_thresh
-==============
+nf_hook
+=======
 
-.. c:function:: int nf_hook_thresh(u_int8_t pf, unsigned int hook, struct net *net, struct sock *sk, struct sk_buff *skb, struct net_device *indev, struct net_device *outdev, int (*okfn)(struct net *, struct sock *, struct sk_buff *), int thresh)
+.. c:function:: int nf_hook(u_int8_t pf, unsigned int hook, struct net *net, struct sock *sk, struct sk_buff *skb, struct net_device *indev, struct net_device *outdev, int (*okfn)(struct net *, struct sock *, struct sk_buff *))
 
     call a netfilter hook
 
@@ -34,10 +34,7 @@ nf_hook_thresh
     :param int (\*okfn)(struct net \*, struct sock \*, struct sk_buff \*):
         *undescribed*
 
-    :param int thresh:
-        *undescribed*
-
-.. _`nf_hook_thresh.description`:
+.. _`nf_hook.description`:
 
 Description
 -----------

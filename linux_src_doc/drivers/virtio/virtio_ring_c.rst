@@ -196,7 +196,7 @@ virtqueue_get_buf
 Description
 -----------
 
-If the driver wrote data into the buffer, \ ``len``\  will be set to the
+If the device wrote data into the buffer, \ ``len``\  will be set to the
 amount written.  This means you don't need to clear the buffer
 beforehand to ensure there's no data leakage in the case of short
 writes.

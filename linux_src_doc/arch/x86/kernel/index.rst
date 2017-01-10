@@ -18,6 +18,7 @@ kernel
     early-quirks_c
     hpet_c
     i8259_c
+    itmt_c
     kgdb_c
     ptrace_c
     setup_c

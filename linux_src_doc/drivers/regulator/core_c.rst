@@ -1013,6 +1013,28 @@ Description
 
 Get the current regulator operating mode.
 
+.. _`regulator_get_error_flags`:
+
+regulator_get_error_flags
+=========================
+
+.. c:function:: int regulator_get_error_flags(struct regulator *regulator, unsigned int *flags)
+
+    get regulator error information
+
+    :param struct regulator \*regulator:
+        regulator source
+
+    :param unsigned int \*flags:
+        pointer to store error flags
+
+.. _`regulator_get_error_flags.description`:
+
+Description
+-----------
+
+Get the current regulator error information.
+
 .. _`regulator_set_load`:
 
 regulator_set_load

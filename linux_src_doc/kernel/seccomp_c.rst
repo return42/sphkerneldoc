@@ -38,7 +38,7 @@ prev
     points to a previously installed, or inherited, filter
 
 prog
-    *undescribed*
+    the BPF program to evaluate
 
 .. _`seccomp_filter.description`:
 
@@ -89,10 +89,10 @@ seccomp_run_filters
 
 .. c:function:: u32 seccomp_run_filters(const struct seccomp_data *sd)
 
-    evaluates all seccomp filters against \ ``syscall``\ 
+    evaluates all seccomp filters against \ ``sd``\ 
 
     :param const struct seccomp_data \*sd:
-        *undescribed*
+        optional seccomp data to be passed to filters
 
 .. _`seccomp_run_filters.description`:
 

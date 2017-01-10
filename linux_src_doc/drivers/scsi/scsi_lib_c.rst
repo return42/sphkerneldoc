@@ -414,6 +414,38 @@ Description
 
 Assert scsi device event asynchronously, given an event type.
 
+.. _`scsi_request_fn_active`:
+
+scsi_request_fn_active
+======================
+
+.. c:function:: int scsi_request_fn_active(struct scsi_device *sdev)
+
+    number of kernel threads inside \ :c:func:`scsi_request_fn`\ 
+
+    :param struct scsi_device \*sdev:
+        SCSI device to count the number of \ :c:func:`scsi_request_fn`\  callers for.
+
+.. _`scsi_wait_for_queuecommand`:
+
+scsi_wait_for_queuecommand
+==========================
+
+.. c:function:: void scsi_wait_for_queuecommand(struct scsi_device *sdev)
+
+    wait for ongoing \ :c:func:`queuecommand`\  calls
+
+    :param struct scsi_device \*sdev:
+        SCSI device pointer.
+
+.. _`scsi_wait_for_queuecommand.description`:
+
+Description
+-----------
+
+Wait until the ongoing shost->hostt->queuecommand() calls that are
+invoked from \ :c:func:`scsi_request_fn`\  have finished.
+
 .. _`scsi_device_quiesce`:
 
 scsi_device_quiesce
@@ -482,8 +514,7 @@ Description
 -----------
 
 Block request made by scsi lld's to temporarily stop all
-scsi commands on the specified device.  Called from interrupt
-or normal process context.
+scsi commands on the specified device. May sleep.
 
 Returns zero if successful or error if not
 
@@ -496,6 +527,15 @@ This routine transitions the device to the SDEV_BLOCK state
 (which must be a legal transition).  When the device is in this
 state, all commands are deferred until the scsi lld reenables
 the device with scsi_device_unblock or device_block_tmo fires.
+
+.. _`scsi_internal_device_block.to-do`:
+
+To do
+-----
+
+avoid that \ :c:func:`scsi_send_eh_cmnd`\  calls \ :c:func:`queuecommand`\  after
+\ :c:func:`scsi_internal_device_block`\  has blocked a SCSI device and also
+remove the rport mutex lock and unlock calls from \ :c:func:`srp_queuecommand`\ .
 
 .. _`scsi_internal_device_unblock`:
 

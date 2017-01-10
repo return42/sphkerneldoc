@@ -67,6 +67,33 @@ Description
 
 Return enum dev_dma_attr.
 
+.. _`acpi_dma_configure`:
+
+acpi_dma_configure
+==================
+
+.. c:function:: void acpi_dma_configure(struct device *dev, enum dev_dma_attr attr)
+
+    Set-up DMA configuration for the device.
+
+    :param struct device \*dev:
+        The pointer to the device
+
+    :param enum dev_dma_attr attr:
+        device dma attributes
+
+.. _`acpi_dma_deconfigure`:
+
+acpi_dma_deconfigure
+====================
+
+.. c:function:: void acpi_dma_deconfigure(struct device *dev)
+
+    Tear-down DMA configuration for the device.
+
+    :param struct device \*dev:
+        The pointer to the device
+
 .. _`acpi_bus_scan`:
 
 acpi_bus_scan

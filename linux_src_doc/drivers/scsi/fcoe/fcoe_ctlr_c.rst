@@ -466,15 +466,15 @@ fcoe_ctlr_recv_els
 fcoe_ctlr_recv_clr_vlink
 ========================
 
-.. c:function:: void fcoe_ctlr_recv_clr_vlink(struct fcoe_ctlr *fip, struct fip_header *fh)
+.. c:function:: void fcoe_ctlr_recv_clr_vlink(struct fcoe_ctlr *fip, struct sk_buff *skb)
 
     Handle an incoming link reset frame
 
     :param struct fcoe_ctlr \*fip:
         The FCoE controller that received the frame
 
-    :param struct fip_header \*fh:
-        The received FIP header
+    :param struct sk_buff \*skb:
+        *undescribed*
 
 .. _`fcoe_ctlr_recv_clr_vlink.description`:
 

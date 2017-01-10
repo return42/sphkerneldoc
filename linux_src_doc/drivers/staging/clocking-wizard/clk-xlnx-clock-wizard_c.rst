@@ -24,7 +24,7 @@ Definition
         struct clk *axi_clk;
         struct clk  *clks_internal[wzrd_clk_int_max];
         struct clk  *clkout[WZRD_NUM_OUTPUTS];
-        int speed_grade;
+        unsigned int speed_grade;
         bool suspended;
     }
 

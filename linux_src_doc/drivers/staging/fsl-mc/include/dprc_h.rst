@@ -133,7 +133,6 @@ Definition
         u16 icid;
         int portal_id;
         u64 options;
-        struct version;
     }
 
 .. _`dprc_attributes.members`:
@@ -152,9 +151,6 @@ portal_id
 
 options
     Container's options as set at container's creation
-
-version
-    DPRC version
 
 .. _`dprc_res_req`:
 

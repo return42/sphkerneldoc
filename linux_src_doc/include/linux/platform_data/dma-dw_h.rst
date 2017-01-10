@@ -69,7 +69,6 @@ Definition
         unsigned int nr_channels;
         bool is_private;
         bool is_memcpy;
-        bool is_nollp;
     #define CHAN_ALLOCATION_ASCENDING 0
     #define CHAN_ALLOCATION_DESCENDING 1
         unsigned char chan_allocation_order;
@@ -79,6 +78,7 @@ Definition
         unsigned int block_size;
         unsigned char nr_masters;
         unsigned char data_width[DW_DMA_MAX_NR_MASTERS];
+        unsigned char multi_block[DW_DMA_MAX_NR_CHANNELS];
     }
 
 .. _`dw_dma_platform_data.members`:
@@ -96,9 +96,6 @@ is_private
 is_memcpy
     The device channels do support memory-to-memory transfers.
 
-is_nollp
-    The device channels does not support multi block transfers.
-
 chan_allocation_order
     Allocate channels starting from 0 or 7
 
@@ -114,6 +111,9 @@ nr_masters
 data_width
     Maximum data width supported by hardware per AHB master
     (in bytes, power of 2)
+
+multi_block
+    Multi block transfers supported by hardware per channel.
 
 .. This file was automatic generated / don't edit.
 

@@ -7,6 +7,9 @@ caam
 .. toctree::
     :maxdepth: 1
 
+    caamalg_desc_c
     caampkc_c
     ctrl_c
+    desc_constr_h
     jr_c
+    key_gen_c

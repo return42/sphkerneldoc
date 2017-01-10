@@ -29,14 +29,14 @@ Zero for success, or -errno
 reservation_object_add_shared_fence
 ===================================
 
-.. c:function:: void reservation_object_add_shared_fence(struct reservation_object *obj, struct fence *fence)
+.. c:function:: void reservation_object_add_shared_fence(struct reservation_object *obj, struct dma_fence *fence)
 
     Add a fence to a shared slot
 
     :param struct reservation_object \*obj:
         the reservation object
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         the shared fence to add
 
 .. _`reservation_object_add_shared_fence.description`:
@@ -52,14 +52,14 @@ Add a fence to a shared slot, obj->lock must be held, and
 reservation_object_add_excl_fence
 =================================
 
-.. c:function:: void reservation_object_add_excl_fence(struct reservation_object *obj, struct fence *fence)
+.. c:function:: void reservation_object_add_excl_fence(struct reservation_object *obj, struct dma_fence *fence)
 
     Add an exclusive fence.
 
     :param struct reservation_object \*obj:
         the reservation object
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         the shared fence to add
 
 .. _`reservation_object_add_excl_fence.description`:
@@ -74,20 +74,20 @@ Add a fence to the exclusive slot.  The obj->lock must be held.
 reservation_object_get_fences_rcu
 =================================
 
-.. c:function:: int reservation_object_get_fences_rcu(struct reservation_object *obj, struct fence **pfence_excl, unsigned *pshared_count, struct fence ***pshared)
+.. c:function:: int reservation_object_get_fences_rcu(struct reservation_object *obj, struct dma_fence **pfence_excl, unsigned *pshared_count, struct dma_fence ***pshared)
 
     Get an object's shared and exclusive fences without update side lock held
 
     :param struct reservation_object \*obj:
         the reservation object
 
-    :param struct fence \*\*pfence_excl:
+    :param struct dma_fence \*\*pfence_excl:
         the returned exclusive fence (or NULL)
 
     :param unsigned \*pshared_count:
         the number of shared fences returned
 
-    :param struct fence \*\*\*pshared:
+    :param struct dma_fence \*\*\*pshared:
         the array of shared fence ptrs returned (array is krealloc'd to
         the required size, and must be freed by caller)
 

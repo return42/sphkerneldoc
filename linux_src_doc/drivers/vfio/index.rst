@@ -7,4 +7,5 @@ vfio
 .. toctree::
     :maxdepth: 1
 
+    mdev/index
     vfio_c

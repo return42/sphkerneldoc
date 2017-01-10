@@ -228,30 +228,30 @@ nes_netdev_set_pauseparam
     :param struct ethtool_pauseparam \*et_pauseparam:
         *undescribed*
 
-.. _`nes_netdev_get_settings`:
+.. _`nes_netdev_get_link_ksettings`:
 
-nes_netdev_get_settings
-=======================
+nes_netdev_get_link_ksettings
+=============================
 
-.. c:function:: int nes_netdev_get_settings(struct net_device *netdev, struct ethtool_cmd *et_cmd)
-
-    :param struct net_device \*netdev:
-        *undescribed*
-
-    :param struct ethtool_cmd \*et_cmd:
-        *undescribed*
-
-.. _`nes_netdev_set_settings`:
-
-nes_netdev_set_settings
-=======================
-
-.. c:function:: int nes_netdev_set_settings(struct net_device *netdev, struct ethtool_cmd *et_cmd)
+.. c:function:: int nes_netdev_get_link_ksettings(struct net_device *netdev, struct ethtool_link_ksettings *cmd)
 
     :param struct net_device \*netdev:
         *undescribed*
 
-    :param struct ethtool_cmd \*et_cmd:
+    :param struct ethtool_link_ksettings \*cmd:
+        *undescribed*
+
+.. _`nes_netdev_set_link_ksettings`:
+
+nes_netdev_set_link_ksettings
+=============================
+
+.. c:function:: int nes_netdev_set_link_ksettings(struct net_device *netdev, const struct ethtool_link_ksettings *cmd)
+
+    :param struct net_device \*netdev:
+        *undescribed*
+
+    :param const struct ethtool_link_ksettings \*cmd:
         *undescribed*
 
 .. _`nes_netdev_init`:

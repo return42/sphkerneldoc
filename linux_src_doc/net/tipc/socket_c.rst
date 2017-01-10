@@ -19,7 +19,6 @@ Definition
 
     struct tipc_sock {
         struct sock sk;
-        int connected;
         u32 conn_type;
         u32 conn_instance;
         int published;
@@ -29,17 +28,16 @@ Definition
         struct list_head sock_list;
         struct list_head publications;
         u32 pub_count;
-        u32 probing_state;
-        unsigned long probing_intv;
         uint conn_timeout;
         atomic_t dupl_rcvcnt;
+        bool probe_unacked;
         bool link_cong;
         u16 snt_unacked;
         u16 snd_win;
         u16 peer_caps;
         u16 rcv_unacked;
         u16 rcv_win;
-        struct sockaddr_tipc remote;
+        struct sockaddr_tipc peer;
         struct rhash_head node;
         struct rcu_head rcu;
     }
@@ -51,9 +49,6 @@ Members
 
 sk
     socket - interacts with 'port' and with user via the socket API
-
-connected
-    non-zero if port is currently connected to a peer port
 
 conn_type
     TIPC type used when connection was established
@@ -82,17 +77,14 @@ publications
 pub_count
     total # of publications port has made during its lifetime
 
-probing_state
-    *undescribed*
-
-probing_intv
-    *undescribed*
-
 conn_timeout
     the time we can wait for an unresponded setup request
 
 dupl_rcvcnt
     number of bytes counted twice, in both backlog and rcv queue
+
+probe_unacked
+    *undescribed*
 
 link_cong
     non-zero if owner must sleep because of link congestion
@@ -112,7 +104,7 @@ rcv_unacked
 rcv_win
     *undescribed*
 
-remote
+peer
     'connected' peer for dgram/rdm
 
 node
@@ -332,32 +324,6 @@ It appears that the usual socket locking mechanisms are not useful here
 since the pollmask info is potentially out-of-date the moment this routine
 exits.  TCP and other protocols seem to rely on higher level poll routines
 to handle any preventable race conditions, so TIPC will do the same ...
-
-.. _`tipc_poll.tipc-sets-the-returned-events-as-follows`:
-
-TIPC sets the returned events as follows
-----------------------------------------
-
-
-socket state         flags set
-------------         ---------
-unconnected          no read flags
-POLLOUT if port is not congested
-
-connecting           POLLIN/POLLRDNORM if ACK/NACK in rx queue
-no write flags
-
-connected            POLLIN/POLLRDNORM if data in rx queue
-POLLOUT if port is not congested
-
-disconnecting        POLLIN/POLLRDNORM/POLLHUP
-no write flags
-
-listening            POLLIN if SYN in rx queue
-no write flags
-
-ready                POLLIN/POLLRDNORM if data in rx queue
-[connectionless]     POLLOUT (since port cannot be congested)
 
 .. _`tipc_poll.important`:
 

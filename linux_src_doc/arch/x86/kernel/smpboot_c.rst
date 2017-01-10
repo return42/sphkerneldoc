@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/x86/kernel/smpboot.c
 
+.. _`topology_update_package_map`:
+
+topology_update_package_map
+===========================
+
+.. c:function:: int topology_update_package_map(unsigned int pkg, unsigned int cpu)
+
+    Update the physical to logical package map
+
+    :param unsigned int pkg:
+        The physical package id as retrieved via CPUID
+
+    :param unsigned int cpu:
+        The cpu for which this is updated
+
 .. _`topology_phys_to_logical_pkg`:
 
 topology_phys_to_logical_pkg

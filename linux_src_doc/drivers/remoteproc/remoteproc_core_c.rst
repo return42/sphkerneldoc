@@ -297,15 +297,12 @@ registers and stack dump, information to help to debug the fatal error, etc.
 __rproc_boot
 ============
 
-.. c:function:: int __rproc_boot(struct rproc *rproc, bool wait)
+.. c:function:: int __rproc_boot(struct rproc *rproc)
 
     boot a remote processor
 
     :param struct rproc \*rproc:
         handle of a remote processor
-
-    :param bool wait:
-        wait for rproc registration completion
 
 .. _`__rproc_boot.description`:
 
@@ -330,25 +327,6 @@ rproc_boot
 
     :param struct rproc \*rproc:
         handle of a remote processor
-
-.. _`rproc_boot_nowait`:
-
-rproc_boot_nowait
-=================
-
-.. c:function:: int rproc_boot_nowait(struct rproc *rproc)
-
-    boot a remote processor
-
-    :param struct rproc \*rproc:
-        handle of a remote processor
-
-.. _`rproc_boot_nowait.description`:
-
-Description
------------
-
-Same as \ :c:func:`rproc_boot`\  but don't wait for rproc registration completion
 
 .. _`rproc_shutdown`:
 
@@ -591,6 +569,42 @@ of the outstanding reference created by rproc_alloc. To decrement that
 one last refcount, one still needs to call \ :c:func:`rproc_free`\ .
 
 Returns 0 on success and -EINVAL if \ ``rproc``\  isn't valid.
+
+.. _`rproc_add_subdev`:
+
+rproc_add_subdev
+================
+
+.. c:function:: void rproc_add_subdev(struct rproc *rproc, struct rproc_subdev *subdev, int (*probe)(struct rproc_subdev *subdev), void (*remove)(struct rproc_subdev *subdev))
+
+    add a subdevice to a remoteproc
+
+    :param struct rproc \*rproc:
+        rproc handle to add the subdevice to
+
+    :param struct rproc_subdev \*subdev:
+        subdev handle to register
+
+    :param int (\*probe)(struct rproc_subdev \*subdev):
+        function to call when the rproc boots
+
+    :param void (\*remove)(struct rproc_subdev \*subdev):
+        function to call when the rproc shuts down
+
+.. _`rproc_remove_subdev`:
+
+rproc_remove_subdev
+===================
+
+.. c:function:: void rproc_remove_subdev(struct rproc *rproc, struct rproc_subdev *subdev)
+
+    remove a subdevice from a remoteproc
+
+    :param struct rproc \*rproc:
+        rproc handle to remove the subdevice from
+
+    :param struct rproc_subdev \*subdev:
+        subdev handle, previously registered with \ :c:func:`rproc_add_subdev`\ 
 
 .. _`rproc_report_crash`:
 

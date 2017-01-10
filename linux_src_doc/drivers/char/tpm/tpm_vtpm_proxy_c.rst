@@ -76,5 +76,34 @@ Description
 
 Call to undo vtpm_proxy_fops_open
 
+.. _`vtpmx_ioc_new_dev`:
+
+vtpmx_ioc_new_dev
+=================
+
+.. c:function:: long vtpmx_ioc_new_dev(struct file *file, unsigned int ioctl, unsigned long arg)
+
+    handler for the \ ``VTPM_PROXY_IOC_NEW_DEV``\  ioctl
+
+    :param struct file \*file:
+        /dev/vtpmx
+
+    :param unsigned int ioctl:
+        the ioctl number
+
+    :param unsigned long arg:
+        pointer to the struct vtpmx_proxy_new_dev
+
+.. _`vtpmx_ioc_new_dev.description`:
+
+Description
+-----------
+
+Creates an anonymous file that is used by the process acting as a TPM to
+communicate with the client processes. The function will also add a new TPM
+device through which data is proxied to this TPM acting process. The caller
+will be provided with a file descriptor to communicate with the clients and
+major and minor numbers for the TPM device.
+
 .. This file was automatic generated / don't edit.
 

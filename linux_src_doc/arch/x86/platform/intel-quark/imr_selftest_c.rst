@@ -22,24 +22,20 @@ IMR self test. The purpose of this module is to run a set of tests on the
 IMR API to validate it's sanity. We check for overlapping, reserved
 addresses and setup/teardown sanity.
 
-.. _`imr_self_test_result`:
+.. _`__printf`:
 
-imr_self_test_result
-====================
+__printf
+========
 
-.. c:function:: void imr_self_test_result(int res, const char *fmt,  ...)
+.. c:function::  __printf( 2,  3)
 
     Print result string for self test.
 
-    :param int res:
-        result code - true if test passed false otherwise.
+    :param  2:
+        *undescribed*
 
-    :param const char \*fmt:
-        format string.
-        ...          variadic argument list.
-
-    :param ... :
-        variable arguments
+    :param  3:
+        *undescribed*
 
 .. _`imr_self_test`:
 

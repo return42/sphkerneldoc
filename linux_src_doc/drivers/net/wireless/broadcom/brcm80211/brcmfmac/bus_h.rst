@@ -96,7 +96,9 @@ Definition
         struct brcmf_commonring **flowrings;
         u32 rx_dataoffset;
         u32 max_rxbufpost;
-        u32 nrof_flowrings;
+        u16 max_flowrings;
+        u16 max_submissionrings;
+        u16 max_completionrings;
     }
 
 .. _`brcmf_bus_msgbuf.members`:
@@ -116,8 +118,14 @@ rx_dataoffset
 max_rxbufpost
     maximum number of buffers to post for rx.
 
-nrof_flowrings
-    number of flowrings.
+max_flowrings
+    maximum number of tx flow rings supported.
+
+max_submissionrings
+    maximum number of submission rings(h2d) supported.
+
+max_completionrings
+    maximum number of completion rings(d2h) supported.
 
 .. _`brcmf_bus`:
 

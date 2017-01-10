@@ -136,6 +136,33 @@ Description
 
 This function disables FBC regardless of which CRTC is associated with it.
 
+.. _`intel_fbc_handle_fifo_underrun_irq`:
+
+intel_fbc_handle_fifo_underrun_irq
+==================================
+
+.. c:function:: void intel_fbc_handle_fifo_underrun_irq(struct drm_i915_private *dev_priv)
+
+    disable FBC when we get a FIFO underrun
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+.. _`intel_fbc_handle_fifo_underrun_irq.description`:
+
+Description
+-----------
+
+Without FBC, most underruns are harmless and don't really cause too many
+problems, except for an annoying message on dmesg. With FBC, underruns can
+become black screens or even worse, especially when paired with bad
+watermarks. So in order for us to be on the safe side, completely disable FBC
+in case we ever detect a FIFO underrun on any pipe. An underrun on any pipe
+already suggests that watermarks may be bad, so try to be as safe as
+possible.
+
+This function is called from the IRQ handler.
+
 .. _`intel_fbc_init_pipe_state`:
 
 intel_fbc_init_pipe_state

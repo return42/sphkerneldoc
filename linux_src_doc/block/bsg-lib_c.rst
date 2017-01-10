@@ -6,12 +6,12 @@
 bsg_destroy_job
 ===============
 
-.. c:function:: void bsg_destroy_job(struct bsg_job *job)
+.. c:function:: void bsg_destroy_job(struct kref *kref)
 
     routine to teardown/delete a bsg job
 
-    :param struct bsg_job \*job:
-        bsg_job that is to be torn down
+    :param struct kref \*kref:
+        *undescribed*
 
 .. _`bsg_job_done`:
 

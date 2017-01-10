@@ -68,6 +68,7 @@ Definition
         struct vc4_texture_sample_info *texture_samples;
         uint32_t num_uniform_addr_offsets;
         uint32_t *uniform_addr_offsets;
+        bool is_threaded;
     }
 
 .. _`vc4_validated_shader_info.members`:
@@ -91,6 +92,9 @@ num_uniform_addr_offsets
     *undescribed*
 
 uniform_addr_offsets
+    *undescribed*
+
+is_threaded
     *undescribed*
 
 .. _`vc4_validated_shader_info.description`:

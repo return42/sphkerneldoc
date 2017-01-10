@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/phy.h
 
+.. _`phy_supported_speeds`:
+
+phy_supported_speeds
+====================
+
+.. c:function:: unsigned int phy_supported_speeds(struct phy_device *phy, unsigned int *speeds, unsigned int size)
+
+    return all speeds currently supported by a phy device
+
+    :param struct phy_device \*phy:
+        The phy device to return supported speeds of.
+
+    :param unsigned int \*speeds:
+        buffer to store supported speeds in.
+
+    :param unsigned int size:
+        size of speeds buffer.
+
+.. _`phy_supported_speeds.description`:
+
+Description
+-----------
+
+Returns the number of supported speeds, and
+fills the speeds \* buffer with the supported speeds. If speeds buffer is
+too small to contain \* all currently supported speeds, will return as
+many speeds as can fit.
+
 .. _`phy_modes`:
 
 phy_modes

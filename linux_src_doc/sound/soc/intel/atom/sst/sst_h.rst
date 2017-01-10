@@ -340,6 +340,7 @@ Definition
         struct sst_ipc_reg ipc_reg;
         struct sst_mem_mgr lib_mem_mgr;
         char firmware_name[FW_NAME_SIZE];
+        struct snd_sst_fw_version fw_version;
         struct sst_fw_save *fw_save;
     }
 
@@ -495,6 +496,9 @@ ipc_reg
     *undescribed*
 
 lib_mem_mgr
+    *undescribed*
+
+fw_version
     *undescribed*
 
 fw_save

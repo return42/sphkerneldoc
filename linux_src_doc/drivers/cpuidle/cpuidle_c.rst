@@ -20,6 +20,26 @@ Description
 
 Returns in case of an error or no driver
 
+.. _`cpuidle_use_deepest_state`:
+
+cpuidle_use_deepest_state
+=========================
+
+.. c:function:: void cpuidle_use_deepest_state(bool enable)
+
+    Set/clear governor override flag.
+
+    :param bool enable:
+        New value of the flag.
+
+.. _`cpuidle_use_deepest_state.description`:
+
+Description
+-----------
+
+Set/unset the current CPU to use the deepest idle state (override governors
+going forward if set).
+
 .. _`cpuidle_find_deepest_state`:
 
 cpuidle_find_deepest_state

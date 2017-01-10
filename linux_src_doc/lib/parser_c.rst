@@ -87,6 +87,33 @@ Given a \ :c:type:`struct substring_t <substring_t>`\  and a base, attempts to p
 as a number in that base. On success, sets \ ``result``\  to the integer represented
 by the string and returns 0. Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
 
+.. _`match_u64int`:
+
+match_u64int
+============
+
+.. c:function:: int match_u64int(substring_t *s, u64 *result, int base)
+
+    scan a number in the given base from a substring_t
+
+    :param substring_t \*s:
+        substring to be scanned
+
+    :param u64 \*result:
+        resulting u64 on success
+
+    :param int base:
+        base to use when converting string
+
+.. _`match_u64int.description`:
+
+Description
+-----------
+
+Given a \ :c:type:`struct substring_t <substring_t>`\  and a base, attempts to parse the substring
+as a number in that base. On success, sets \ ``result``\  to the integer represented
+by the string and returns 0. Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
+
 .. _`match_int`:
 
 match_int
@@ -109,6 +136,31 @@ Description
 
 Attempts to parse the \ :c:type:`struct substring_t <substring_t>`\  \ ``s``\  as a decimal integer. On
 success, sets \ ``result``\  to the integer represented by the string and returns 0.
+Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
+
+.. _`match_u64`:
+
+match_u64
+=========
+
+.. c:function:: int match_u64(substring_t *s, u64 *result)
+
+    - scan a decimal representation of a u64 from a substring_t
+
+    :param substring_t \*s:
+        substring_t to be scanned
+
+    :param u64 \*result:
+        resulting unsigned long long on success
+
+.. _`match_u64.description`:
+
+Description
+-----------
+
+Attempts to parse the \ :c:type:`struct substring_t <substring_t>`\  \ ``s``\  as a long decimal
+integer. On success, sets \ ``result``\  to the integer represented by the
+string and returns 0.
 Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
 
 .. _`match_octal`:

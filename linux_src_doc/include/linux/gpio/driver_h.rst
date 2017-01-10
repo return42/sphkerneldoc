@@ -74,7 +74,6 @@ Definition
         u16 ngpio;
         const char *const *names;
         bool can_sleep;
-        bool irq_not_threaded;
     #if IS_ENABLED(CONFIG_GPIO_GENERIC)
         unsigned long (*read_reg)(void __iomem *reg);
         void (*write_reg)(void __iomem *reg, unsigned long data);
@@ -94,7 +93,8 @@ Definition
         unsigned int irq_base;
         irq_flow_handler_t irq_handler;
         unsigned int irq_default_type;
-        int irq_parent;
+        int irq_chained_parent;
+        bool irq_nested;
         bool irq_need_valid_mask;
         unsigned long *irq_valid_mask;
         struct lock_class_key *lock_key;
@@ -197,10 +197,6 @@ can_sleep
     as the chip access may sleep when e.g. reading out the IRQ status
     registers.
 
-irq_not_threaded
-    flag must be set if \ ``can_sleep``\  is set but the
-    IRQs don't need to be threaded
-
 read_reg
     reader function for generic GPIO
 
@@ -219,7 +215,7 @@ reg_set
     output set register (out=high) for generic GPIO
 
 reg_clr
-    *undescribed*
+    output clear register (out=low) for generic GPIO
 
 reg_dir
     direction setting register for generic GPIO
@@ -258,9 +254,13 @@ irq_default_type
     default IRQ triggering type applied during GPIO driver
     initialization, provided by GPIO driver
 
-irq_parent
+irq_chained_parent
     GPIO IRQ chip parent/bank linux irq number,
-    provided by GPIO driver
+    provided by GPIO driver for chained interrupt (not for nested
+    interrupts).
+
+irq_nested
+    True if set the interrupt handling is nested.
 
 irq_need_valid_mask
     If set core allocates \ ``irq_valid_mask``\  with all

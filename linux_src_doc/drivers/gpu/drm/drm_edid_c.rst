@@ -615,34 +615,6 @@ Return
 The HDMI/DP sink's audio-video sync delay in milliseconds or 0 if
 the sink doesn't support audio or video.
 
-.. _`drm_select_eld`:
-
-drm_select_eld
-==============
-
-.. c:function:: struct drm_connector *drm_select_eld(struct drm_encoder *encoder)
-
-    select one ELD from multiple HDMI/DP sinks
-
-    :param struct drm_encoder \*encoder:
-        the encoder just changed display mode
-
-.. _`drm_select_eld.description`:
-
-Description
------------
-
-It's possible for one encoder to be associated with multiple HDMI/DP sinks.
-The policy is now hard coded to simply use the first HDMI/DP sink's ELD.
-
-.. _`drm_select_eld.return`:
-
-Return
-------
-
-The connector associated with the first HDMI/DP sink that has ELD
-attached to it.
-
 .. _`drm_detect_hdmi_monitor`:
 
 drm_detect_hdmi_monitor

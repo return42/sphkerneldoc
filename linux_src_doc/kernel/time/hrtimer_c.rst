@@ -212,15 +212,19 @@ but may decide to fire the timer earlier, but no earlier than \ ``expires``\ .
 You can set the task state as follows -
 
 \ ``TASK_UNINTERRUPTIBLE``\  - at least \ ``timeout``\  time is guaranteed to
-pass before the routine returns.
+pass before the routine returns unless the current task is explicitly
+woken up, (e.g. by \ :c:func:`wake_up_process`\ ).
 
 \ ``TASK_INTERRUPTIBLE``\  - the routine may return early if a signal is
-delivered to the current task.
+delivered to the current task or the current task is explicitly woken
+up.
 
 The current task state is guaranteed to be TASK_RUNNING when this
 routine returns.
 
-Returns 0 when the timer has expired otherwise -EINTR
+Returns 0 when the timer has expired. If the task was woken before the
+timer expired by a signal (only possible in state TASK_INTERRUPTIBLE) or
+by an explicit wakeup, it returns -EINTR.
 
 .. _`schedule_hrtimeout`:
 
@@ -249,15 +253,19 @@ the current task state has been set (see \ :c:func:`set_current_state`\ ).
 You can set the task state as follows -
 
 \ ``TASK_UNINTERRUPTIBLE``\  - at least \ ``timeout``\  time is guaranteed to
-pass before the routine returns.
+pass before the routine returns unless the current task is explicitly
+woken up, (e.g. by \ :c:func:`wake_up_process`\ ).
 
 \ ``TASK_INTERRUPTIBLE``\  - the routine may return early if a signal is
-delivered to the current task.
+delivered to the current task or the current task is explicitly woken
+up.
 
 The current task state is guaranteed to be TASK_RUNNING when this
 routine returns.
 
-Returns 0 when the timer has expired otherwise -EINTR
+Returns 0 when the timer has expired. If the task was woken before the
+timer expired by a signal (only possible in state TASK_INTERRUPTIBLE) or
+by an explicit wakeup, it returns -EINTR.
 
 .. This file was automatic generated / don't edit.
 

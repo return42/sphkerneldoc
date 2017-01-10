@@ -199,63 +199,12 @@ i915_gem_active_isset() returns true if the active tracker is currently
 assigned to a request. Due to the lazy retiring, that request may be idle
 and this may report stale information.
 
-.. _`i915_gem_active_is_idle`:
-
-i915_gem_active_is_idle
-=======================
-
-.. c:function:: bool i915_gem_active_is_idle(const struct i915_gem_active *active, struct mutex *mutex)
-
-    report whether the active tracker is idle \ ``active``\  - the active tracker
-
-    :param const struct i915_gem_active \*active:
-        *undescribed*
-
-    :param struct mutex \*mutex:
-        *undescribed*
-
-.. _`i915_gem_active_is_idle.description`:
-
-Description
------------
-
-i915_gem_active_is_idle() returns true if the active tracker is currently
-unassigned or if the request is complete (but not yet retired). Requires
-the caller to hold struct_mutex (but that can be relaxed if desired).
-
 .. _`i915_gem_active_wait`:
 
 i915_gem_active_wait
 ====================
 
-.. c:function:: int i915_gem_active_wait(const struct i915_gem_active *active, struct mutex *mutex)
-
-    waits until the request is completed \ ``active``\  - the active request on which to wait
-
-    :param const struct i915_gem_active \*active:
-        *undescribed*
-
-    :param struct mutex \*mutex:
-        *undescribed*
-
-.. _`i915_gem_active_wait.description`:
-
-Description
------------
-
-i915_gem_active_wait() waits until the request is completed before
-returning. Note that it does not guarantee that the request is
-retired first, see \ :c:func:`i915_gem_active_retire`\ .
-
-\ :c:func:`i915_gem_active_wait`\  returns immediately if the active
-request is already complete.
-
-.. _`i915_gem_active_wait_unlocked`:
-
-i915_gem_active_wait_unlocked
-=============================
-
-.. c:function:: int i915_gem_active_wait_unlocked(const struct i915_gem_active *active, unsigned int flags, s64 *timeout, struct intel_rps_client *rps)
+.. c:function:: int i915_gem_active_wait(const struct i915_gem_active *active, unsigned int flags)
 
     waits until the request is completed \ ``active``\  - the active request on which to wait \ ``flags``\  - how to wait \ ``timeout``\  - how long to wait at most \ ``rps``\  - userspace client to charge for a waitboost
 
@@ -265,18 +214,12 @@ i915_gem_active_wait_unlocked
     :param unsigned int flags:
         *undescribed*
 
-    :param s64 \*timeout:
-        *undescribed*
-
-    :param struct intel_rps_client \*rps:
-        *undescribed*
-
-.. _`i915_gem_active_wait_unlocked.description`:
+.. _`i915_gem_active_wait.description`:
 
 Description
 -----------
 
-i915_gem_active_wait_unlocked() waits until the request is completed before
+i915_gem_active_wait() waits until the request is completed before
 returning, without requiring any locks to be held. Note that it does not
 retire any requests before returning.
 

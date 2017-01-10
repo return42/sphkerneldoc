@@ -387,18 +387,15 @@ Determine io_context to use for request allocation for \ ``bio``\ .  May return
 __get_request
 =============
 
-.. c:function:: struct request *__get_request(struct request_list *rl, int op, int op_flags, struct bio *bio, gfp_t gfp_mask)
+.. c:function:: struct request *__get_request(struct request_list *rl, unsigned int op, struct bio *bio, gfp_t gfp_mask)
 
     get a free request
 
     :param struct request_list \*rl:
         request list to allocate from
 
-    :param int op:
-        REQ_OP_READ/REQ_OP_WRITE
-
-    :param int op_flags:
-        rq_flag_bits
+    :param unsigned int op:
+        operation and flags
 
     :param struct bio \*bio:
         bio to allocate request for (can be \ ``NULL``\ )
@@ -423,18 +420,15 @@ Returns request pointer on success, with \ ``q``\ ->queue_lock \*not held\*.
 get_request
 ===========
 
-.. c:function:: struct request *get_request(struct request_queue *q, int op, int op_flags, struct bio *bio, gfp_t gfp_mask)
+.. c:function:: struct request *get_request(struct request_queue *q, unsigned int op, struct bio *bio, gfp_t gfp_mask)
 
     get a free request
 
     :param struct request_queue \*q:
         request_queue to allocate request from
 
-    :param int op:
-        REQ_OP_READ/REQ_OP_WRITE
-
-    :param int op_flags:
-        rq_flag_bits
+    :param unsigned int op:
+        operation and flags
 
     :param struct bio \*bio:
         bio to allocate request for (can be \ ``NULL``\ )
@@ -520,39 +514,6 @@ second, leading to >100% utilisation.  To deal with that, we call this
 function to do a round-off before returning the results when reading
 /proc/diskstats.  This accounts immediately for all queue usage up to
 the current jiffies and restarts the counters again.
-
-.. _`blk_add_request_payload`:
-
-blk_add_request_payload
-=======================
-
-.. c:function:: void blk_add_request_payload(struct request *rq, struct page *page, int offset, unsigned int len)
-
-    add a payload to a request
-
-    :param struct request \*rq:
-        request to update
-
-    :param struct page \*page:
-        page backing the payload
-
-    :param int offset:
-        offset in page
-
-    :param unsigned int len:
-        length of the payload.
-
-.. _`blk_add_request_payload.description`:
-
-Description
------------
-
-This allows to later add a payload to an already submitted request by
-a block driver.  The driver needs to take care of freeing the payload
-itself.
-
-Note that this is a quite horrible hack and nothing but handling of
-discard requests should ever use it.
 
 .. _`blk_attempt_plug_merge`:
 

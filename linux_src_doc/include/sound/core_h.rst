@@ -6,14 +6,14 @@
 snd_printk
 ==========
 
-.. c:function::  snd_printk( fmt,  args...)
+.. c:function::  snd_printk( fmt,  ...)
 
     printk wrapper
 
     :param  fmt:
         format string
 
-    :param  args...:
+    :param ... :
         variable arguments
 
 .. _`snd_printk.description`:
@@ -29,14 +29,14 @@ when configured with CONFIG_SND_VERBOSE_PRINTK.
 snd_printd
 ==========
 
-.. c:function::  snd_printd( fmt,  args...)
+.. c:function::  snd_printd( fmt,  ...)
 
     debug printk
 
     :param  fmt:
         format string
 
-    :param  args...:
+    :param ... :
         variable arguments
 
 .. _`snd_printd.description`:
@@ -102,14 +102,14 @@ otherwise just evaluates the conditional and returns the value.
 snd_printdd
 ===========
 
-.. c:function::  snd_printdd( format,  args...)
+.. c:function::  snd_printdd( format,  ...)
 
     debug printk
 
     :param  format:
         format string
 
-    :param  args...:
+    :param ... :
         variable arguments
 
 .. _`snd_printdd.description`:

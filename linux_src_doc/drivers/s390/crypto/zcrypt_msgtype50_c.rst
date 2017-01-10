@@ -23,13 +23,13 @@ Note that all reserved fields must be zeroes.
 ICAMEX_msg_to_type50MEX_msg
 ===========================
 
-.. c:function:: int ICAMEX_msg_to_type50MEX_msg(struct zcrypt_device *zdev, struct ap_message *ap_msg, struct ica_rsa_modexpo *mex)
+.. c:function:: int ICAMEX_msg_to_type50MEX_msg(struct zcrypt_queue *zq, struct ap_message *ap_msg, struct ica_rsa_modexpo *mex)
 
-    :param struct zcrypt_device \*zdev:
-        crypto device pointer
+    :param struct zcrypt_queue \*zq:
+        crypto queue pointer
 
     :param struct ap_message \*ap_msg:
-        *undescribed*
+        crypto request pointer
 
     :param struct ica_rsa_modexpo \*mex:
         pointer to user input data
@@ -46,13 +46,13 @@ Returns 0 on success or -EFAULT.
 ICACRT_msg_to_type50CRT_msg
 ===========================
 
-.. c:function:: int ICACRT_msg_to_type50CRT_msg(struct zcrypt_device *zdev, struct ap_message *ap_msg, struct ica_rsa_modexpo_crt *crt)
+.. c:function:: int ICACRT_msg_to_type50CRT_msg(struct zcrypt_queue *zq, struct ap_message *ap_msg, struct ica_rsa_modexpo_crt *crt)
 
-    :param struct zcrypt_device \*zdev:
-        crypto device pointer
+    :param struct zcrypt_queue \*zq:
+        crypto queue pointer
 
     :param struct ap_message \*ap_msg:
-        *undescribed*
+        crypto request pointer
 
     :param struct ica_rsa_modexpo_crt \*crt:
         pointer to user input data
@@ -69,9 +69,9 @@ Returns 0 on success or -EFAULT.
 convert_type80
 ==============
 
-.. c:function:: int convert_type80(struct zcrypt_device *zdev, struct ap_message *reply, char __user *outputdata, unsigned int outputdatalength)
+.. c:function:: int convert_type80(struct zcrypt_queue *zq, struct ap_message *reply, char __user *outputdata, unsigned int outputdatalength)
 
-    :param struct zcrypt_device \*zdev:
+    :param struct zcrypt_queue \*zq:
         crypto device pointer
 
     :param struct ap_message \*reply:
@@ -95,11 +95,11 @@ Returns 0 on success or -EFAULT.
 zcrypt_cex2a_receive
 ====================
 
-.. c:function:: void zcrypt_cex2a_receive(struct ap_device *ap_dev, struct ap_message *msg, struct ap_message *reply)
+.. c:function:: void zcrypt_cex2a_receive(struct ap_queue *aq, struct ap_message *msg, struct ap_message *reply)
 
     "msg" has finished with the reply message "reply". It is called from tasklet context.
 
-    :param struct ap_device \*ap_dev:
+    :param struct ap_queue \*aq:
         pointer to the AP device
 
     :param struct ap_message \*msg:
@@ -113,12 +113,12 @@ zcrypt_cex2a_receive
 zcrypt_cex2a_modexpo
 ====================
 
-.. c:function:: long zcrypt_cex2a_modexpo(struct zcrypt_device *zdev, struct ica_rsa_modexpo *mex)
+.. c:function:: long zcrypt_cex2a_modexpo(struct zcrypt_queue *zq, struct ica_rsa_modexpo *mex)
 
     device to handle a modexpo request.
 
-    :param struct zcrypt_device \*zdev:
-        pointer to zcrypt_device structure that identifies the
+    :param struct zcrypt_queue \*zq:
+        pointer to zcrypt_queue structure that identifies the
         CEX2A device to the request distributor
 
     :param struct ica_rsa_modexpo \*mex:
@@ -129,12 +129,12 @@ zcrypt_cex2a_modexpo
 zcrypt_cex2a_modexpo_crt
 ========================
 
-.. c:function:: long zcrypt_cex2a_modexpo_crt(struct zcrypt_device *zdev, struct ica_rsa_modexpo_crt *crt)
+.. c:function:: long zcrypt_cex2a_modexpo_crt(struct zcrypt_queue *zq, struct ica_rsa_modexpo_crt *crt)
 
     device to handle a modexpo_crt request.
 
-    :param struct zcrypt_device \*zdev:
-        pointer to zcrypt_device structure that identifies the
+    :param struct zcrypt_queue \*zq:
+        pointer to zcrypt_queue structure that identifies the
         CEX2A device to the request distributor
 
     :param struct ica_rsa_modexpo_crt \*crt:

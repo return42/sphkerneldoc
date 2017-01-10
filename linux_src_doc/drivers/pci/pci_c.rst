@@ -1231,47 +1231,6 @@ Description
 This function checks if it is possible to move the bridge to D3.
 Currently we only allow D3 for recent enough PCIe ports.
 
-.. _`pci_bridge_d3_device_changed`:
-
-pci_bridge_d3_device_changed
-============================
-
-.. c:function:: void pci_bridge_d3_device_changed(struct pci_dev *dev)
-
-    Update bridge D3 capabilities on change
-
-    :param struct pci_dev \*dev:
-        PCI device that was changed
-
-.. _`pci_bridge_d3_device_changed.description`:
-
-Description
------------
-
-If a device is added or its PM configuration, such as is it allowed to
-enter D3cold, is changed this function updates upstream bridge PM
-capabilities accordingly.
-
-.. _`pci_bridge_d3_device_removed`:
-
-pci_bridge_d3_device_removed
-============================
-
-.. c:function:: void pci_bridge_d3_device_removed(struct pci_dev *dev)
-
-    Update bridge D3 capabilities on remove
-
-    :param struct pci_dev \*dev:
-        PCI device being removed
-
-.. _`pci_bridge_d3_device_removed.description`:
-
-Description
------------
-
-Function updates upstream bridge PM capabilities based on other devices
-still left on the bus.
-
 .. _`pci_d3cold_enable`:
 
 pci_d3cold_enable
@@ -2626,31 +2585,6 @@ Description
 -----------
 
 This helper routine makes bar mask from the type of resource.
-
-.. _`pci_resource_bar`:
-
-pci_resource_bar
-================
-
-.. c:function:: int pci_resource_bar(struct pci_dev *dev, int resno, enum pci_bar_type *type)
-
-    get position of the BAR associated with a resource
-
-    :param struct pci_dev \*dev:
-        the PCI device
-
-    :param int resno:
-        the resource number
-
-    :param enum pci_bar_type \*type:
-        the BAR type to be filled in
-
-.. _`pci_resource_bar.description`:
-
-Description
------------
-
-Returns BAR position in config space, or 0 if the BAR is invalid.
 
 .. _`pci_set_vga_state`:
 

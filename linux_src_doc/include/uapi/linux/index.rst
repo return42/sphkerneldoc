@@ -17,7 +17,9 @@ linux
     spi/index
     usb/index
     batman_adv_h
+    blkzoned_h
     can_h
+    cec_h
     cycx_cfm_h
     dcbnl_h
     dccp_h
@@ -54,5 +56,6 @@ linux
     v4l2-subdev_h
     vfio_h
     videodev2_h
+    vtpm_proxy_h
     wil6210_uapi_h
     wimax_h

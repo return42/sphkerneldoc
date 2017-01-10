@@ -408,18 +408,15 @@ Add \ ``from``\ 's count including the aux one to \ ``to``\ 's aux count.
 blkg_rwstat_add
 ===============
 
-.. c:function:: void blkg_rwstat_add(struct blkg_rwstat *rwstat, int op, int op_flags, uint64_t val)
+.. c:function:: void blkg_rwstat_add(struct blkg_rwstat *rwstat, unsigned int op, uint64_t val)
 
     add a value to a blkg_rwstat
 
     :param struct blkg_rwstat \*rwstat:
         target blkg_rwstat
 
-    :param int op:
-        REQ_OP
-
-    :param int op_flags:
-        rq_flag_bits
+    :param unsigned int op:
+        REQ_OP and flags
 
     :param uint64_t val:
         value to add

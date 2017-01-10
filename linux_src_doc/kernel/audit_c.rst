@@ -22,6 +22,104 @@ Emit at least 1 message per second, even if audit_rate_check is
 throttling.
 Always increment the lost messages counter.
 
+.. _`kauditd_hold_skb`:
+
+kauditd_hold_skb
+================
+
+.. c:function:: void kauditd_hold_skb(struct sk_buff *skb)
+
+    Queue an audit record, waiting for auditd
+
+    :param struct sk_buff \*skb:
+        audit record
+
+.. _`kauditd_hold_skb.description`:
+
+Description
+-----------
+
+Queue the audit record, waiting for an instance of auditd.  When this
+function is called we haven't given up yet on sending the record, but things
+are not looking good.  The first thing we want to do is try to write the
+record via printk and then see if we want to try and hold on to the record
+and queue it, if we have room.  If we want to hold on to the record, but we
+don't have room, record a record lost message.
+
+.. _`kauditd_retry_skb`:
+
+kauditd_retry_skb
+=================
+
+.. c:function:: void kauditd_retry_skb(struct sk_buff *skb)
+
+    Queue an audit record, attempt to send again to auditd
+
+    :param struct sk_buff \*skb:
+        audit record
+
+.. _`kauditd_retry_skb.description`:
+
+Description
+-----------
+
+Not as serious as \ :c:func:`kauditd_hold_skb`\  as we still have a connected auditd,
+but for some reason we are having problems sending it audit records so
+queue the given record and attempt to resend.
+
+.. _`auditd_reset`:
+
+auditd_reset
+============
+
+.. c:function:: void auditd_reset( void)
+
+    Disconnect the auditd connection
+
+    :param  void:
+        no arguments
+
+.. _`auditd_reset.description`:
+
+Description
+-----------
+
+Break the auditd/kauditd connection and move all the records in the retry
+queue into the hold queue in case auditd reconnects.  The audit_cmd_mutex
+must be held when calling this function.
+
+.. _`kauditd_send_unicast_skb`:
+
+kauditd_send_unicast_skb
+========================
+
+.. c:function:: int kauditd_send_unicast_skb(struct sk_buff *skb)
+
+    Send a record via unicast to auditd
+
+    :param struct sk_buff \*skb:
+        audit record
+
+.. _`kauditd_wake_condition`:
+
+kauditd_wake_condition
+======================
+
+.. c:function:: int kauditd_wake_condition( void)
+
+    Return true when it is time to wake kauditd_thread
+
+    :param  void:
+        no arguments
+
+.. _`kauditd_wake_condition.description`:
+
+Description
+-----------
+
+This function is for use by the \ :c:func:`wait_event_freezable`\  call in
+\ :c:func:`kauditd_thread`\ .
+
 .. _`audit_send_reply`:
 
 audit_send_reply
@@ -278,7 +376,7 @@ determine string length.
 audit_log_name
 ==============
 
-.. c:function:: void audit_log_name(struct audit_context *context, struct audit_names *n, struct path *path, int record_num, int *call_panic)
+.. c:function:: void audit_log_name(struct audit_context *context, struct audit_names *n, const struct path *path, int record_num, int *call_panic)
 
     produce AUDIT_PATH record from struct audit_names
 
@@ -288,7 +386,7 @@ audit_log_name
     :param struct audit_names \*n:
         audit_names structure with reportable details
 
-    :param struct path \*path:
+    :param const struct path \*path:
         optional path to report instead of audit_names->name
 
     :param int record_num:
@@ -302,14 +400,14 @@ audit_log_name
 audit_log_link_denied
 =====================
 
-.. c:function:: void audit_log_link_denied(const char *operation, struct path *link)
+.. c:function:: void audit_log_link_denied(const char *operation, const struct path *link)
 
     report a link restriction denial
 
     :param const char \*operation:
         specific link operation
 
-    :param struct path \*link:
+    :param const struct path \*link:
         the path that triggered the restriction
 
 .. _`audit_log_end`:
@@ -329,10 +427,10 @@ audit_log_end
 Description
 -----------
 
-netlink_unicast() cannot be called inside an irq context because it blocks
-(last arg, flags, is not set to MSG_DONTWAIT), so the audit buffer is placed
-on a queue and a tasklet is scheduled to remove them from the queue outside
-the irq context.  May be called in any context.
+We can not do a netlink send inside an irq context because it blocks (last
+arg, flags, is not set to MSG_DONTWAIT), so the audit buffer is placed on a
+queue and a tasklet is scheduled to remove them from the queue outside the
+irq context.  May be called in any context.
 
 .. _`audit_log`:
 

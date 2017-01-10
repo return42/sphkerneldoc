@@ -19,6 +19,7 @@ Definition
 
     struct dwc3_event_buffer {
         void *buf;
+        void *cache;
         unsigned length;
         unsigned int lpos;
         unsigned int count;
@@ -35,6 +36,9 @@ Members
 
 buf
     _THE\_ buffer
+
+cache
+    The buffer cache used in the threaded interrupt
 
 length
     size of this buffer
@@ -74,11 +78,11 @@ Definition
         struct usb_ep endpoint;
         struct list_head pending_list;
         struct list_head started_list;
+        wait_queue_head_t wait_end_transfer;
         spinlock_t lock;
         void __iomem *regs;
         struct dwc3_trb *trb_pool;
         dma_addr_t trb_pool_dma;
-        const struct usb_ss_ep_comp_descriptor *comp_desc;
         struct dwc3 *dwc;
         u32 saved_state;
         unsigned flags;
@@ -88,6 +92,8 @@ Definition
     #define DWC3_EP_BUSY (1 << 4)
     #define DWC3_EP_PENDING_REQUEST (1 << 5)
     #define DWC3_EP_MISSED_ISOC (1 << 6)
+    #define DWC3_EP_END_TRANSFER_PENDING (1 << 7)
+    #define DWC3_EP_TRANSFER_STARTED (1 << 8)
     #define DWC3_EP0_DIR_IN (1 << 31)
         u8 trb_enqueue;
         u8 trb_dequeue;
@@ -116,6 +122,9 @@ pending_list
 started_list
     list of started requests on this endpoint
 
+wait_end_transfer
+    wait_queue_head_t for waiting on End Transfer complete
+
 lock
     spinlock for endpoint request queue traversal
 
@@ -127,9 +136,6 @@ trb_pool
 
 trb_pool_dma
     dma address of \ ``trb_pool``\ 
-
-comp_desc
-    *undescribed*
 
 dwc
     pointer to DWC controller
@@ -235,7 +241,7 @@ Definition
         struct dwc3_ep *dep;
         struct scatterlist *sg;
         unsigned num_pending_sgs;
-        u8 first_trb_index;
+        unsigned remaining;
         u8 epnum;
         struct dwc3_trb *trb;
         dma_addr_t trb_dma;
@@ -264,8 +270,8 @@ sg
 num_pending_sgs
     counter to pending sgs
 
-first_trb_index
-    index to first trb used by this request
+remaining
+    amount of data remaining
 
 epnum
     endpoint number to which this request refers
@@ -313,8 +319,10 @@ Definition
         dma_addr_t ep0_bounce_addr;
         dma_addr_t scratch_addr;
         struct dwc3_request ep0_usb_req;
+        struct completion ep0_in_setup;
         spinlock_t lock;
         struct device *dev;
+        struct device *sysdev;
         struct platform_device *xhci;
         struct resource xhci_resources[DWC3_XHCI_RESOURCES_NUM];
         struct dwc3_event_buffer *ev_buf;
@@ -355,10 +363,12 @@ Definition
     #define DWC3_REVISION_260A 0x5533260a
     #define DWC3_REVISION_270A 0x5533270a
     #define DWC3_REVISION_280A 0x5533280a
+    #define DWC3_REVISION_290A 0x5533290a
     #define DWC3_REVISION_300A 0x5533300a
     #define DWC3_REVISION_310A 0x5533310a
     #define DWC3_REVISION_IS_DWC31 0x80000000
     #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_DWC31)
+    #define DWC3_USB31_REVISION_120A (0x3132302a | DWC3_REVISION_IS_DWC31)
         enum dwc3_ep0_next ep0_next_event;
         enum dwc3_ep0_state ep0state;
         enum dwc3_link_state link_state;
@@ -370,7 +380,6 @@ Definition
         u8 speed;
         u8 num_out_eps;
         u8 num_in_eps;
-        void *mem;
         struct dwc3_hwparams hwparams;
         struct dentry *root;
         struct debugfs_regset32 *regset;
@@ -384,6 +393,7 @@ Definition
         unsigned ep0_bounced:1;
         unsigned ep0_expect_in:1;
         unsigned has_hibernation:1;
+        unsigned sysdev_is_parent:1;
         unsigned has_lpm_erratum:1;
         unsigned is_utmi_l1_suspend:1;
         unsigned is_fpga:1;
@@ -408,6 +418,7 @@ Definition
         unsigned dis_del_phy_power_chg_quirk:1;
         unsigned tx_de_emphasis_quirk:1;
         unsigned tx_de_emphasis:2;
+        u16 imod_interval;
     }
 
 .. _`dwc3.members`:
@@ -448,11 +459,17 @@ scratch_addr
 ep0_usb_req
     dummy req used while handling STD USB requests
 
+ep0_in_setup
+    one control transfer is completed and enter setup phase
+
 lock
     for synchronizing
 
 dev
     pointer to our struct device
+
+sysdev
+    *undescribed*
 
 xhci
     pointer to our xHCI child
@@ -546,9 +563,6 @@ num_out_eps
 num_in_eps
     number of in endpoints
 
-mem
-    points to start of memory which is used for this struct.
-
 hwparams
     copy of hwparams registers
 
@@ -587,6 +601,9 @@ ep0_expect_in
 
 has_hibernation
     true when dwc3 was configured with Hibernation
+
+sysdev_is_parent
+    true when dwc3 device has a parent driver
 
 has_lpm_erratum
     true when core was configured with LPM Erratum. Note that
@@ -671,6 +688,10 @@ tx_de_emphasis
     2       - No de-emphasis
     3       - Reserved
 
+imod_interval
+    set the interrupt moderation interval in 250ns
+    increments or 0 to disable.
+
 .. _`dwc3_event_depevt`:
 
 struct dwc3_event_depevt
@@ -702,9 +723,11 @@ Definition
     #define DEPEVT_STREAMEVT_NOTFOUND 2
     #define DEPEVT_STATUS_CONTROL_DATA 1
     #define DEPEVT_STATUS_CONTROL_STATUS 2
+    #define DEPEVT_STATUS_CONTROL_PHASE(n) ((n) & 3)
     #define DEPEVT_TRANSFER_NO_RESOURCE 1
     #define DEPEVT_TRANSFER_BUS_EXPIRY 2
         u32 parameters:16;
+    #define DEPEVT_PARAMETER_CMD(n) (((n) & (0xf << 8)) >> 8)
     }
 
 .. _`dwc3_event_depevt.members`:

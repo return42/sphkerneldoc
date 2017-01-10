@@ -387,6 +387,9 @@ If memory is required, it will return \ ``-EAGAIN``\ , you should unlock
 and go back to the \ :c:func:`ida_pre_get`\  call.  If the ida is full, it will
 return \ ``-ENOSPC``\ .
 
+Note that callers must ensure that concurrent access to \ ``ida``\  is not possible.
+See \ :c:func:`ida_simple_get`\  for a varaint which takes care of locking.
+
 \ ``p_id``\  returns a value in the range \ ``starting_id``\  ... \ ``0x7fffffff``\ .
 
 .. _`ida_remove`:
@@ -445,6 +448,9 @@ Description
 Allocates an id in the range start <= id < end, or returns -ENOSPC.
 On memory allocation failure, returns -ENOMEM.
 
+Compared to \ :c:func:`ida_get_new_above`\  this function does its own locking, and
+should be used unless there are special requirements.
+
 Use \ :c:func:`ida_simple_remove`\  to get rid of an id.
 
 .. _`ida_simple_remove`:
@@ -461,6 +467,16 @@ ida_simple_remove
 
     :param unsigned int id:
         the id returned by ida_simple_get.
+
+.. _`ida_simple_remove.description`:
+
+Description
+-----------
+
+Use to release an id allocated with \ :c:func:`ida_simple_get`\ .
+
+Compared to \ :c:func:`ida_remove`\  this function does its own locking, and should be
+used unless there are special requirements.
 
 .. _`ida_init`:
 

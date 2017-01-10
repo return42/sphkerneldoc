@@ -72,14 +72,14 @@ vmw_framebuffer_pin
 vmw_create_dmabuf_proxy
 =======================
 
-.. c:function:: int vmw_create_dmabuf_proxy(struct drm_device *dev, const struct drm_mode_fb_cmd *mode_cmd, struct vmw_dma_buffer *dmabuf_mob, struct vmw_surface **srf_out)
+.. c:function:: int vmw_create_dmabuf_proxy(struct drm_device *dev, const struct drm_mode_fb_cmd2 *mode_cmd, struct vmw_dma_buffer *dmabuf_mob, struct vmw_surface **srf_out)
 
     create a proxy surface for the DMA buf
 
     :param struct drm_device \*dev:
         DRM device
 
-    :param const struct drm_mode_fb_cmd \*mode_cmd:
+    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
         parameters for the new surface
 
     :param struct vmw_dma_buffer \*dmabuf_mob:
@@ -109,7 +109,7 @@ Return
 vmw_kms_new_framebuffer
 =======================
 
-.. c:function:: struct vmw_framebuffer *vmw_kms_new_framebuffer(struct vmw_private *dev_priv, struct vmw_dma_buffer *dmabuf, struct vmw_surface *surface, bool only_2d, const struct drm_mode_fb_cmd *mode_cmd)
+.. c:function:: struct vmw_framebuffer *vmw_kms_new_framebuffer(struct vmw_private *dev_priv, struct vmw_dma_buffer *dmabuf, struct vmw_surface *surface, bool only_2d, const struct drm_mode_fb_cmd2 *mode_cmd)
 
     Create a new framebuffer.
 
@@ -128,7 +128,7 @@ vmw_kms_new_framebuffer
         No presents will occur to this dma buffer based framebuffer. This
         Helps the code to do some important optimizations.
 
-    :param const struct drm_mode_fb_cmd \*mode_cmd:
+    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
         Frame-buffer metadata.
 
 .. _`vmw_get_vblank_counter`:

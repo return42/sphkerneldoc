@@ -198,7 +198,7 @@ lpfc_sli4_post_scsi_sgl_list
 
 .. c:function:: int lpfc_sli4_post_scsi_sgl_list(struct lpfc_hba *phba, struct list_head *post_sblist, int sb_count)
 
-    Psot blocks of scsi buffer sgls from a list
+    Post blocks of scsi buffer sgls from a list
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
@@ -235,7 +235,7 @@ lpfc_sli4_repost_scsi_sgl_list
 
 .. c:function:: int lpfc_sli4_repost_scsi_sgl_list(struct lpfc_hba *phba)
 
-    Repsot all the allocated scsi buffer sgls
+    Repost all the allocated scsi buffer sgls
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
@@ -508,7 +508,7 @@ Description
 
 This routine does the pci dma mapping for scatter-gather list of scsi cmnd
 field of \ ``lpfc_cmd``\  for device with SLI-3 interface spec. This routine scans
-through sg elements and format the bdea. This routine also initializes all
+through sg elements and format the bde. This routine also initializes all
 IOCB fields which are dependent on scsi command request buffer.
 
 .. _`lpfc_scsi_prep_dma_buf_s3.return-codes`:
@@ -518,6 +518,15 @@ Return codes
 
 1 - Error
 0 - Success
+
+.. _`bg_err_check`:
+
+BG_ERR_CHECK
+============
+
+.. c:function::  BG_ERR_CHECK()
+
+    error injection
 
 .. _`lpfc_bg_err_inject`:
 
@@ -1505,17 +1514,17 @@ Return code :
 lpfc_send_taskmgmt
 ==================
 
-.. c:function:: int lpfc_send_taskmgmt(struct lpfc_vport *vport, struct lpfc_rport_data *rdata, unsigned tgt_id, uint64_t lun_id, uint8_t task_mgmt_cmd)
+.. c:function:: int lpfc_send_taskmgmt(struct lpfc_vport *vport, struct scsi_cmnd *cmnd, unsigned int tgt_id, uint64_t lun_id, uint8_t task_mgmt_cmd)
 
     Generic SCSI Task Mgmt Handler
 
     :param struct lpfc_vport \*vport:
         The virtual port for which this call is being executed.
 
-    :param struct lpfc_rport_data \*rdata:
-        Pointer to remote port local data
+    :param struct scsi_cmnd \*cmnd:
+        *undescribed*
 
-    :param unsigned tgt_id:
+    :param unsigned int tgt_id:
         Target ID of remote device.
 
     :param uint64_t lun_id:

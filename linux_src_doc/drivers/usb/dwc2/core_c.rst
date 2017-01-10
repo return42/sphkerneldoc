@@ -169,18 +169,6 @@ dwc2_flush_rx_fifo
     :param struct dwc2_hsotg \*hsotg:
         Programming view of DWC_otg controller
 
-.. _`dwc2_get_hwparams`:
-
-dwc2_get_hwparams
-=================
-
-.. c:function:: int dwc2_get_hwparams(struct dwc2_hsotg *hsotg)
-
-    registers and interpret the contents.
-
-    :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
-
 .. _`dwc2_enable_global_interrupts`:
 
 dwc2_enable_global_interrupts

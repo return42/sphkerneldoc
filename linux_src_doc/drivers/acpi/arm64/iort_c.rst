@@ -1,6 +1,60 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/acpi/arm64/iort.c
 
+.. _`iort_set_fwnode`:
+
+iort_set_fwnode
+===============
+
+.. c:function:: int iort_set_fwnode(struct acpi_iort_node *iort_node, struct fwnode_handle *fwnode)
+
+    Create iort_fwnode and use it to register iommu data in the iort_fwnode_list
+
+    :param struct acpi_iort_node \*iort_node:
+        *undescribed*
+
+    :param struct fwnode_handle \*fwnode:
+        fwnode associated with the IORT node
+
+.. _`iort_set_fwnode.return`:
+
+Return
+------
+
+0 on success
+<0 on failure
+
+.. _`iort_get_fwnode`:
+
+iort_get_fwnode
+===============
+
+.. c:function:: struct fwnode_handle *iort_get_fwnode(struct acpi_iort_node *node)
+
+    Retrieve fwnode associated with an IORT node
+
+    :param struct acpi_iort_node \*node:
+        IORT table node to be looked-up
+
+.. _`iort_get_fwnode.return`:
+
+Return
+------
+
+fwnode_handle pointer on success, NULL on failure
+
+.. _`iort_delete_fwnode`:
+
+iort_delete_fwnode
+==================
+
+.. c:function:: void iort_delete_fwnode(struct acpi_iort_node *node)
+
+    Delete fwnode associated with an IORT node
+
+    :param struct acpi_iort_node \*node:
+        IORT table node associated with fwnode to delete
+
 .. _`iort_register_domain_token`:
 
 iort_register_domain_token
@@ -132,6 +186,57 @@ Return
 ------
 
 the MSI domain for this device, NULL otherwise
+
+.. _`iort_set_dma_mask`:
+
+iort_set_dma_mask
+=================
+
+.. c:function:: void iort_set_dma_mask(struct device *dev)
+
+    Set-up dma mask for a device.
+
+    :param struct device \*dev:
+        device to configure
+
+.. _`iort_iommu_configure`:
+
+iort_iommu_configure
+====================
+
+.. c:function:: const struct iommu_ops *iort_iommu_configure(struct device *dev)
+
+    Set-up IOMMU configuration for a device.
+
+    :param struct device \*dev:
+        device to configure
+
+.. _`iort_iommu_configure.return`:
+
+Return
+------
+
+iommu_ops pointer on configuration success
+NULL on configuration failure
+
+.. _`iort_add_smmu_platform_device`:
+
+iort_add_smmu_platform_device
+=============================
+
+.. c:function:: int iort_add_smmu_platform_device(struct acpi_iort_node *node)
+
+    Allocate a platform device for SMMU
+
+    :param struct acpi_iort_node \*node:
+        Pointer to SMMU ACPI IORT node
+
+.. _`iort_add_smmu_platform_device.return`:
+
+Return
+------
+
+0 on success, <0 failure
 
 .. This file was automatic generated / don't edit.
 

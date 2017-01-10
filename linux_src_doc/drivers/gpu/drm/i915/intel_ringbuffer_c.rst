@@ -59,19 +59,22 @@ Post-sync nonzero is what triggered this second workaround, so we
 can't use that one either.  Notify enable is IRQs, which aren't
 really our business.  That leaves only stall at scoreboard.
 
-.. _`gen6_sema_emit_request`:
+.. _`gen6_sema_emit_breadcrumb`:
 
-gen6_sema_emit_request
-======================
+gen6_sema_emit_breadcrumb
+=========================
 
-.. c:function:: int gen6_sema_emit_request(struct drm_i915_gem_request *req)
+.. c:function:: void gen6_sema_emit_breadcrumb(struct drm_i915_gem_request *req, u32 *out)
 
     Update the semaphore mailbox registers
 
     :param struct drm_i915_gem_request \*req:
         *undescribed*
 
-.. _`gen6_sema_emit_request.description`:
+    :param u32 \*out:
+        *undescribed*
+
+.. _`gen6_sema_emit_breadcrumb.description`:
 
 Description
 -----------

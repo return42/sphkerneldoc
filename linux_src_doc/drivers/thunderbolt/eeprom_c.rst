@@ -188,6 +188,21 @@ Description
 
 Drom must have been copied to sw->drom.
 
+.. _`tb_drom_copy_efi`:
+
+tb_drom_copy_efi
+================
+
+.. c:function:: int tb_drom_copy_efi(struct tb_switch *sw, u16 *size)
+
+    copy drom supplied by EFI to sw->drom if present
+
+    :param struct tb_switch \*sw:
+        *undescribed*
+
+    :param u16 \*size:
+        *undescribed*
+
 .. _`tb_drom_read`:
 
 tb_drom_read

@@ -144,10 +144,9 @@ exit
 reqsize
     Request context size required by algorithm
     implementation
-    \ ``base``\                 Common crypto API algorithm data structure
 
 base
-    *undescribed*
+    Common crypto API algorithm data structure
 
 .. _`crypto_alloc_kpp`:
 
@@ -181,7 +180,7 @@ Return
 ------
 
 allocated handle in case of success; \ :c:func:`IS_ERR`\  is true in case of
-an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_kpp`:
 
@@ -354,10 +353,14 @@ crypto_kpp_set_secret
         tfm handle
 
     :param void \*buffer:
-        *undescribed*
+        Buffer holding the packet representation of the private
+        key. The structure of the packet key depends on the particular
+        KPP implementation. Packing and unpacking helpers are provided
+        for ECDH and DH (see the respective header files for those
+        implementations).
 
     :param unsigned int len:
-        *undescribed*
+        Length of the packet private key buffer.
 
 .. _`crypto_kpp_set_secret.description`:
 
@@ -391,7 +394,10 @@ Description
 -----------
 
 Function invokes the specific kpp operation for generating the public part
-for a given kpp algorithm
+for a given kpp algorithm.
+
+To generate a private key, the caller should use a random number generator.
+The output of the requested length serves as the private key.
 
 .. _`crypto_kpp_generate_public_key.return`:
 

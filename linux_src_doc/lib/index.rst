@@ -44,7 +44,6 @@ lib
     kobject_c
     kobject_uevent_c
     kstrtox_c
-    list_debug_c
     list_sort_c
     llist_c
     lockref_c

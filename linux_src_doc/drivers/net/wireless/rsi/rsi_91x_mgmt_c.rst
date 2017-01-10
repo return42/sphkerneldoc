@@ -197,7 +197,7 @@ Return
 rsi_set_vap_capabilities
 ========================
 
-.. c:function:: int rsi_set_vap_capabilities(struct rsi_common *common, enum opmode mode)
+.. c:function:: int rsi_set_vap_capabilities(struct rsi_common *common, enum opmode mode, u8 vap_status)
 
     This function send vap capability to firmware.
 
@@ -205,6 +205,9 @@ rsi_set_vap_capabilities
         Pointer to the driver private structure.
 
     :param enum opmode mode:
+        *undescribed*
+
+    :param u8 vap_status:
         *undescribed*
 
 .. _`rsi_set_vap_capabilities.return`:
@@ -291,17 +294,36 @@ Return
 rsi_set_channel
 ===============
 
-.. c:function:: int rsi_set_channel(struct rsi_common *common, u16 channel)
+.. c:function:: int rsi_set_channel(struct rsi_common *common, struct ieee80211_channel *channel)
 
     This function programs the channel.
 
     :param struct rsi_common \*common:
         Pointer to the driver private structure.
 
-    :param u16 channel:
+    :param struct ieee80211_channel \*channel:
         Channel value to be set.
 
 .. _`rsi_set_channel.return`:
+
+Return
+------
+
+0 on success, corresponding error code on failure.
+
+.. _`rsi_send_radio_params_update`:
+
+rsi_send_radio_params_update
+============================
+
+.. c:function:: int rsi_send_radio_params_update(struct rsi_common *common)
+
+    This function sends the radio parameters update to device
+
+    :param struct rsi_common \*common:
+        Pointer to the driver private structure.
+
+.. _`rsi_send_radio_params_update.return`:
 
 Return
 ------
@@ -444,6 +466,43 @@ Description
 @param common Pointer to the driver private structure.
 \ ``param``\  block event - block if true, unblock if false
 \ ``return``\  0 on success, -1 on failure.
+
+.. _`rsi_send_rx_filter_frame`:
+
+rsi_send_rx_filter_frame
+========================
+
+.. c:function:: int rsi_send_rx_filter_frame(struct rsi_common *common, u16 rx_filter_word)
+
+    Sends a frame to filter the RX packets
+
+    :param struct rsi_common \*common:
+        Pointer to the driver private structure.
+
+    :param u16 rx_filter_word:
+        Flags of filter packets
+
+.. _`rsi_set_antenna`:
+
+rsi_set_antenna
+===============
+
+.. c:function:: int rsi_set_antenna(struct rsi_common *common, u8 antenna)
+
+    This fuction send antenna configuration request to device
+
+    :param struct rsi_common \*common:
+        Pointer to the driver private structure.
+
+    :param u8 antenna:
+        bitmap for tx antenna selection
+
+.. _`rsi_set_antenna.return`:
+
+Return
+------
+
+0 on Success, negative error code on failure
 
 .. _`rsi_handle_ta_confirm_type`:
 

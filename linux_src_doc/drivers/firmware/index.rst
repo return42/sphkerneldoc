@@ -17,3 +17,5 @@ firmware
     qcom_scm-64_c
     qcom_scm_c
     raspberrypi_c
+    ti_sci_c
+    ti_sci_h

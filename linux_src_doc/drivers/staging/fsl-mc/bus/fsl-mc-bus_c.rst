@@ -38,7 +38,7 @@ Members
 -------
 
 root_mc_bus_dev
-    MC object device representing the root DPRC
+    fsl-mc device representing the root DPRC
 
 num_translation_ranges
     number of entries in addr_translation_ranges
@@ -97,10 +97,10 @@ fsl_mc_bus_match
     device to driver matching callback
 
     :param struct device \*dev:
-        the MC object device structure to match against
+        the fsl-mc device to match against
 
     :param struct device_driver \*drv:
-        the device driver to search for matching MC object device id
+        the device driver to search for matching fsl-mc object type
         structures
 
 .. _`fsl_mc_bus_match.description`:
@@ -207,6 +207,8 @@ fsl_mc_device_add
 
 .. c:function:: int fsl_mc_device_add(struct dprc_obj_desc *obj_desc, struct fsl_mc_io *mc_io, struct device *parent_dev, struct fsl_mc_device **new_mc_dev)
 
+    mc device to be visible in Linux
+
     :param struct dprc_obj_desc \*obj_desc:
         *undescribed*
 
@@ -226,10 +228,10 @@ fsl_mc_device_remove
 
 .. c:function:: void fsl_mc_device_remove(struct fsl_mc_device *mc_dev)
 
-    Remove a MC object device from being visible to Linux
+    Remove an fsl-mc device from being visible to Linux
 
     :param struct fsl_mc_device \*mc_dev:
-        Pointer to a MC object device object
+        Pointer to an fsl-mc device
 
 .. _`fsl_mc_bus_probe`:
 

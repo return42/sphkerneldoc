@@ -7,5 +7,6 @@ target
 .. toctree::
     :maxdepth: 1
 
+    fc_c
     nvmet_h
     rdma_c

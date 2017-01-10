@@ -6,7 +6,7 @@
 drm_universal_plane_init
 ========================
 
-.. c:function:: int drm_universal_plane_init(struct drm_device *dev, struct drm_plane *plane, unsigned long possible_crtcs, const struct drm_plane_funcs *funcs, const uint32_t *formats, unsigned int format_count, enum drm_plane_type type, const char *name,  ...)
+.. c:function:: int drm_universal_plane_init(struct drm_device *dev, struct drm_plane *plane, uint32_t possible_crtcs, const struct drm_plane_funcs *funcs, const uint32_t *formats, unsigned int format_count, enum drm_plane_type type, const char *name,  ...)
 
     Initialize a new universal plane object
 
@@ -16,7 +16,7 @@ drm_universal_plane_init
     :param struct drm_plane \*plane:
         plane object to init
 
-    :param unsigned long possible_crtcs:
+    :param uint32_t possible_crtcs:
         bitmask of possible CRTCs
 
     :param const struct drm_plane_funcs \*funcs:
@@ -56,7 +56,7 @@ Zero on success, error code on failure.
 drm_plane_init
 ==============
 
-.. c:function:: int drm_plane_init(struct drm_device *dev, struct drm_plane *plane, unsigned long possible_crtcs, const struct drm_plane_funcs *funcs, const uint32_t *formats, unsigned int format_count, bool is_primary)
+.. c:function:: int drm_plane_init(struct drm_device *dev, struct drm_plane *plane, uint32_t possible_crtcs, const struct drm_plane_funcs *funcs, const uint32_t *formats, unsigned int format_count, bool is_primary)
 
     Initialize a legacy plane
 
@@ -66,7 +66,7 @@ drm_plane_init
     :param struct drm_plane \*plane:
         plane object to init
 
-    :param unsigned long possible_crtcs:
+    :param uint32_t possible_crtcs:
         bitmask of possible CRTCs
 
     :param const struct drm_plane_funcs \*funcs:

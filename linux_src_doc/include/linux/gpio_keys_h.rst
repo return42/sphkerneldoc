@@ -28,7 +28,6 @@ Definition
         bool can_disable;
         int value;
         unsigned int irq;
-        struct gpio_desc *gpiod;
     }
 
 .. _`gpio_keys_button.members`:
@@ -68,9 +67,6 @@ value
 irq
     Irq number in case of interrupt keys
 
-gpiod
-    GPIO descriptor
-
 .. _`gpio_keys_platform_data`:
 
 struct gpio_keys_platform_data
@@ -88,7 +84,7 @@ Definition
 .. code-block:: c
 
     struct gpio_keys_platform_data {
-        struct gpio_keys_button *buttons;
+        const struct gpio_keys_button *buttons;
         int nbuttons;
         unsigned int poll_interval;
         unsigned int rep:1;

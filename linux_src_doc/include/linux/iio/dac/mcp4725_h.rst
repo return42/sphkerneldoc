@@ -1,0 +1,46 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: include/linux/iio/dac/mcp4725.h
+
+.. _`mcp4725_platform_data`:
+
+struct mcp4725_platform_data
+============================
+
+.. c:type:: struct mcp4725_platform_data
+
+    MCP4725/6 DAC specific data.
+
+.. _`mcp4725_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mcp4725_platform_data {
+        bool use_vref;
+        bool vref_buffered;
+    }
+
+.. _`mcp4725_platform_data.members`:
+
+Members
+-------
+
+use_vref
+    Whether an external reference voltage on Vref pin should be used.
+    Additional vref-supply must be specified when used.
+
+vref_buffered
+    Controls buffering of the external reference voltage.
+
+.. _`mcp4725_platform_data.description`:
+
+Description
+-----------
+
+Vref related settings are available only on MCP4756. See
+Documentation/devicetree/bindings/iio/dac/mcp4725.txt for more information.
+
+.. This file was automatic generated / don't edit.
+

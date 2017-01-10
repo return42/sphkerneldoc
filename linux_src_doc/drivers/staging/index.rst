@@ -28,7 +28,6 @@ staging
     rtl8712/index
     rts5208/index
     skein/index
-    speakup/index
     unisys/index
     vc04_services/index
     vt6655/index

@@ -351,7 +351,26 @@ usb_endpoint_maxp
 Description
 -----------
 
-Returns \ ``epd``\ 's max packet
+Returns \ ``epd``\ 's max packet bits [10:0]
+
+.. _`usb_endpoint_maxp_mult`:
+
+usb_endpoint_maxp_mult
+======================
+
+.. c:function:: int usb_endpoint_maxp_mult(const struct usb_endpoint_descriptor *epd)
+
+    get endpoint's transactional opportunities
+
+    :param const struct usb_endpoint_descriptor \*epd:
+        endpoint to be checked
+
+.. _`usb_endpoint_maxp_mult.description`:
+
+Description
+-----------
+
+Return \ ``epd``\ 's wMaxPacketSize[12:11] + 1
 
 .. This file was automatic generated / don't edit.
 

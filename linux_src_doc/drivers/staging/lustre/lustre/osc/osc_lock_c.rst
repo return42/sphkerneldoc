@@ -280,7 +280,7 @@ ones to the server, as necessary);
 osc_dlmlock_at_pgoff
 ====================
 
-.. c:function:: struct ldlm_lock *osc_dlmlock_at_pgoff(const struct lu_env *env, struct osc_object *obj, pgoff_t index, int pending, int canceling)
+.. c:function:: struct ldlm_lock *osc_dlmlock_at_pgoff(const struct lu_env *env, struct osc_object *obj, pgoff_t index, enum osc_dap_flags dap_flags)
 
     given \a except lock.
 
@@ -293,10 +293,7 @@ osc_dlmlock_at_pgoff
     :param pgoff_t index:
         *undescribed*
 
-    :param int pending:
-        *undescribed*
-
-    :param int canceling:
+    :param enum osc_dap_flags dap_flags:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

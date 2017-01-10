@@ -194,7 +194,7 @@ Definition
         struct list_head ddestroy;
         struct list_head swap;
         struct list_head io_reserve_lru;
-        struct fence *moving;
+        struct dma_fence *moving;
         struct drm_vma_offset_node vma_node;
         uint64_t offset;
         uint32_t cur_placement;
@@ -557,6 +557,26 @@ Description
 -----------
 
 Allows the delayed workqueue to run.
+
+.. _`ttm_bo_eviction_valuable`:
+
+ttm_bo_eviction_valuable
+========================
+
+.. c:function:: bool ttm_bo_eviction_valuable(struct ttm_buffer_object *bo, const struct ttm_place *place)
+
+    :param struct ttm_buffer_object \*bo:
+        The buffer object to evict
+
+    :param const struct ttm_place \*place:
+        the placement we need to make room for
+
+.. _`ttm_bo_eviction_valuable.description`:
+
+Description
+-----------
+
+Check if it is valuable to evict the BO to make room for the given placement.
 
 .. _`ttm_bo_synccpu_write_grab`:
 

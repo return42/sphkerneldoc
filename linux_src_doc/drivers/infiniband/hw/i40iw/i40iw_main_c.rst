@@ -827,7 +827,7 @@ Return 0 if successful, otherwise return error
 i40iw_deinit_device
 ===================
 
-.. c:function:: void i40iw_deinit_device(struct i40iw_device *iwdev, bool reset, bool del_hdl)
+.. c:function:: void i40iw_deinit_device(struct i40iw_device *iwdev, bool reset)
 
     clean up the device resources
 
@@ -836,9 +836,6 @@ i40iw_deinit_device
 
     :param bool reset:
         true if called before reset
-
-    :param bool del_hdl:
-        true if delete hdl entry
 
 .. _`i40iw_deinit_device.description`:
 
@@ -875,6 +872,25 @@ Initialize the iwarp device and its hdl information
 using the ldev and client information
 Return 0 if successful, otherwise return error
 
+.. _`i40iw_get_used_rsrc`:
+
+i40iw_get_used_rsrc
+===================
+
+.. c:function:: void i40iw_get_used_rsrc(struct i40iw_device *iwdev)
+
+    determine resources used internally
+
+    :param struct i40iw_device \*iwdev:
+        iwarp device
+
+.. _`i40iw_get_used_rsrc.description`:
+
+Description
+-----------
+
+Called after internal allocations
+
 .. _`i40iw_open`:
 
 i40iw_open
@@ -899,6 +915,18 @@ Called by the lan driver during the processing of client register
 Create device resources, set up queues, pble and hmc objects and
 register the device with the ib verbs interface
 Return 0 if successful, otherwise return error
+
+.. _`i40iw_l2params_worker`:
+
+i40iw_l2params_worker
+=====================
+
+.. c:function:: void i40iw_l2params_worker(struct work_struct *work)
+
+    worker for l2 params change
+
+    :param struct work_struct \*work:
+        work pointer for l2 params
 
 .. _`i40iw_l2param_change`:
 

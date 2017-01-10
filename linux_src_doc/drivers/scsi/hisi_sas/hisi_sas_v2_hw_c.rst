@@ -6,11 +6,14 @@
 get_free_slot_v2_hw
 ===================
 
-.. c:function:: int get_free_slot_v2_hw(struct hisi_hba *hisi_hba, int *q, int *s)
+.. c:function:: int get_free_slot_v2_hw(struct hisi_hba *hisi_hba, u32 dev_id, int *q, int *s)
 
     Slots are allocated from queues in a round-robin fashion.
 
     :param struct hisi_hba \*hisi_hba:
+        *undescribed*
+
+    :param u32 dev_id:
         *undescribed*
 
     :param int \*q:

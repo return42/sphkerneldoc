@@ -1,0 +1,203 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/gyro/mpu3050.h
+
+.. _`mpu3050_fullscale`:
+
+enum mpu3050_fullscale
+======================
+
+.. c:type:: enum mpu3050_fullscale
+
+    indicates the full range of the sensor in deg/sec
+
+.. _`mpu3050_fullscale.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mpu3050_fullscale {
+        FS_250_DPS,
+        FS_500_DPS,
+        FS_1000_DPS,
+        FS_2000_DPS
+    };
+
+.. _`mpu3050_fullscale.constants`:
+
+Constants
+---------
+
+FS_250_DPS
+    *undescribed*
+
+FS_500_DPS
+    *undescribed*
+
+FS_1000_DPS
+    *undescribed*
+
+FS_2000_DPS
+    *undescribed*
+
+.. _`mpu3050_lpf`:
+
+enum mpu3050_lpf
+================
+
+.. c:type:: enum mpu3050_lpf
+
+    indicates the low pass filter width
+
+.. _`mpu3050_lpf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mpu3050_lpf {
+        LPF_256_HZ_NOLPF,
+        LPF_188_HZ,
+        LPF_98_HZ,
+        LPF_42_HZ,
+        LPF_20_HZ,
+        LPF_10_HZ,
+        LPF_5_HZ,
+        LPF_2100_HZ_NOLPF
+    };
+
+.. _`mpu3050_lpf.constants`:
+
+Constants
+---------
+
+LPF_256_HZ_NOLPF
+    *undescribed*
+
+LPF_188_HZ
+    *undescribed*
+
+LPF_98_HZ
+    *undescribed*
+
+LPF_42_HZ
+    *undescribed*
+
+LPF_20_HZ
+    *undescribed*
+
+LPF_10_HZ
+    *undescribed*
+
+LPF_5_HZ
+    *undescribed*
+
+LPF_2100_HZ_NOLPF
+    *undescribed*
+
+.. _`mpu3050`:
+
+struct mpu3050
+==============
+
+.. c:type:: struct mpu3050
+
+    instance state container for the device
+
+.. _`mpu3050.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mpu3050 {
+        struct device *dev;
+        struct iio_mount_matrix orientation;
+        struct regmap *map;
+        struct mutex lock;
+        int irq;
+        struct regulator_bulk_data regs[2];
+        enum mpu3050_fullscale fullscale;
+        enum mpu3050_lpf lpf;
+        u8 divisor;
+        s16 calibration[3];
+        struct iio_trigger *trig;
+        bool hw_irq_trigger;
+        bool irq_actl;
+        bool irq_latch;
+        bool irq_opendrain;
+        bool pending_fifo_footer;
+        s64 hw_timestamp;
+        struct i2c_mux_core *i2cmux;
+    }
+
+.. _`mpu3050.members`:
+
+Members
+-------
+
+dev
+    parent device for this instance
+
+orientation
+    mounting matrix, flipped axis etc
+
+map
+    regmap to reach the registers
+
+lock
+    serialization lock to marshal all requests
+
+irq
+    the IRQ used for this device
+
+regs
+    the regulators to power this device
+
+fullscale
+    the current fullscale setting for the device
+
+lpf
+    digital low pass filter setting for the device
+
+divisor
+    base frequency divider: divides 8 or 1 kHz
+
+calibration
+    the three signed 16-bit calibration settings that
+    get written into the offset registers for each axis to compensate
+    for DC offsets
+
+trig
+    trigger for the MPU-3050 interrupt, if present
+
+hw_irq_trigger
+    hardware interrupt trigger is in use
+
+irq_actl
+    interrupt is active low
+
+irq_latch
+    latched IRQ, this means that it is a level IRQ
+
+irq_opendrain
+    the interrupt line shall be configured open drain
+
+pending_fifo_footer
+    tells us if there is a pending footer in the FIFO
+    that we have to read out first when handling the FIFO
+
+hw_timestamp
+    latest hardware timestamp from the trigger IRQ, when in
+    use
+
+i2cmux
+    an I2C mux reflecting the fact that this sensor is a hub with
+    a pass-through I2C interface coming out of it: this device needs to be
+    powered up in order to reach devices on the other side of this mux
+
+.. This file was automatic generated / don't edit.
+

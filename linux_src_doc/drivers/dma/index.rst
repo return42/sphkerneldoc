@@ -38,6 +38,7 @@ dma
     mv_xor_v2_c
     nbpfaxi_c
     of-dma_c
+    st_fdma_h
     ste_dma40_c
     ste_dma40_ll_h
     sun4i-dma_c

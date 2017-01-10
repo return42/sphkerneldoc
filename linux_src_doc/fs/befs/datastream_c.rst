@@ -64,8 +64,6 @@ Returns BEFS_OK or BEFS_ERR.
 Calls specialized functions for each of the three possible
 datastream regions.
 
-2001-11-15 Will Dyson
-
 .. _`befs_read_lsymlink`:
 
 befs_read_lsymlink

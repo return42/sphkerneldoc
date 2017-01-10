@@ -189,6 +189,26 @@ This function is called by iommu drivers and users to get the group
 for the specified device.  If found, the group is returned and the group
 reference in incremented, else NULL.
 
+.. _`iommu_group_ref_get`:
+
+iommu_group_ref_get
+===================
+
+.. c:function:: struct iommu_group *iommu_group_ref_get(struct iommu_group *group)
+
+    Increment reference on a group
+
+    :param struct iommu_group \*group:
+        the group to use, must not be NULL
+
+.. _`iommu_group_ref_get.description`:
+
+Description
+-----------
+
+This function is called by iommu drivers to take additional references on an
+existing group.  Returns the given group for convenience.
+
 .. _`iommu_group_put`:
 
 iommu_group_put

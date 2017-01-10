@@ -79,6 +79,7 @@ Definition
         struct regulator_desc desc[TPS65218_NUM_REGULATOR];
         struct tps_info  *info[TPS65218_NUM_REGULATOR];
         struct regmap *regmap;
+        u8 *strobes;
     }
 
 .. _`tps65218.members`:
@@ -108,6 +109,9 @@ irq_data
     *undescribed*
 
 regmap
+    *undescribed*
+
+strobes
     *undescribed*
 
 .. _`tps65218.description`:

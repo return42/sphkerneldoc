@@ -107,6 +107,8 @@ Definition
         bool topbuttonpad;
         bool kernel_tracking;
         int dmax;
+        int dribble;
+        int palm_detect;
     }
 
 .. _`rmi_2d_sensor_platform_data.members`:
@@ -141,6 +143,12 @@ kernel_tracking
 dmax
     *undescribed*
 
+dribble
+    *undescribed*
+
+palm_detect
+    *undescribed*
+
 .. _`rmi_f30_data`:
 
 struct rmi_f30_data
@@ -148,7 +156,7 @@ struct rmi_f30_data
 
 .. c:type:: struct rmi_f30_data
 
-    overrides defaults for a single F30 GPIOs/LED chip. \ ``buttonpad``\  - the touchpad is a buttonpad, so enable only the first actual button that is found. \ ``trackstick_buttons``\  - Set when the function 30 is handling the physical buttons of the trackstick (as a PD/2 passthrough device. \ ``disable``\  - the touchpad incorrectly reports F30 and it should be ignored. This is a special case which is due to misconfigured firmware.
+    overrides defaults for a single F30 GPIOs/LED chip. \ ``buttonpad``\  - the touchpad is a buttonpad, so enable only the first actual button that is found. \ ``trackstick_buttons``\  - Set when the function 30 is handling the physical buttons of the trackstick (as a PS/2 passthrough device). \ ``disable``\  - the touchpad incorrectly reports F30 and it should be ignored. This is a special case which is due to misconfigured firmware.
 
 .. _`rmi_f30_data.definition`:
 
@@ -194,7 +202,7 @@ Definition
 .. code-block:: c
 
     struct rmi_f01_power_management {
-        enum rmi_f01_nosleep nosleep;
+        enum rmi_reg_state nosleep;
         u8 wakeup_threshold;
         u8 doze_holdoff;
         u8 doze_interval;
@@ -349,10 +357,11 @@ Definition
 
     struct rmi_device_platform_data {
         int reset_delay_ms;
+        int irq;
         struct rmi_device_platform_data_spi spi_data;
-        struct rmi_2d_sensor_platform_data *sensor_pdata;
+        struct rmi_2d_sensor_platform_data sensor_pdata;
         struct rmi_f01_power_management power_management;
-        struct rmi_f30_data *f30_data;
+        struct rmi_f30_data f30_data;
     }
 
 .. _`rmi_device_platform_data.members`:
@@ -362,6 +371,9 @@ Members
 
 reset_delay_ms
     *undescribed*
+
+irq
+    irq associated with the attn gpio line, or negative
 
 spi_data
     *undescribed*
@@ -467,8 +479,6 @@ Definition
         const struct rmi_transport_ops *ops;
         struct rmi_device_platform_data pdata;
         struct input_dev *input;
-        void *attn_data;
-        int attn_size;
     }
 
 .. _`rmi_transport_dev.members`:
@@ -492,12 +502,6 @@ pdata
     *undescribed*
 
 input
-    *undescribed*
-
-attn_data
-    *undescribed*
-
-attn_size
     *undescribed*
 
 .. _`rmi_transport_dev.description`:

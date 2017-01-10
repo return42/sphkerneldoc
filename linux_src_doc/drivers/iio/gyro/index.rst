@@ -10,3 +10,5 @@ gyro
     adis16080_c
     adis16130_c
     adxrs450_c
+    mpu3050-core_c
+    mpu3050_h

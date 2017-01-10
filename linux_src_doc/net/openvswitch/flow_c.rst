@@ -41,17 +41,20 @@ The caller must ensure that skb->len >= ETH_HLEN.
 
 Returns 0 if successful, otherwise a negative errno value.
 
-Initializes \ ``skb``\  header pointers as follows:
+Initializes \ ``skb``\  header fields as follows:
 
-- skb->mac_header: the Ethernet header.
+- skb->mac_header: the L2 header.
 
-- skb->network_header: just past the Ethernet header, or just past the
-VLAN header, to the first byte of the Ethernet payload.
+- skb->network_header: just past the L2 header, or just past the
+VLAN header, to the first byte of the L2 payload.
 
 - skb->transport_header: If key->eth.type is ETH_P_IP or ETH_P_IPV6
 on output, then just past the IP header, if one is present and
 of a correct length, otherwise the same as skb->network_header.
 For other key->eth.type values it is left untouched.
+
+- skb->protocol: the type of the data starting at skb->network_header.
+Equals to key->eth.type.
 
 .. This file was automatic generated / don't edit.
 

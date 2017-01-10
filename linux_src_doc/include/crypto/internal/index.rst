@@ -7,6 +7,8 @@ internal
 .. toctree::
     :maxdepth: 1
 
+    acompress_h
     aead_h
     akcipher_h
     kpp_h
+    scompress_h

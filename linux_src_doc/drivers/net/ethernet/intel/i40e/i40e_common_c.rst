@@ -945,6 +945,28 @@ i40e_aq_set_vsi_uc_promisc_on_vlan
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
 
+.. _`i40e_aq_set_vsi_bc_promisc_on_vlan`:
+
+i40e_aq_set_vsi_bc_promisc_on_vlan
+==================================
+
+.. c:function:: i40e_status i40e_aq_set_vsi_bc_promisc_on_vlan(struct i40e_hw *hw, u16 seid, bool enable, u16 vid, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u16 seid:
+        vsi number
+
+    :param bool enable:
+        set broadcast promiscuous enable/disable for a given VLAN
+
+    :param u16 vid:
+        The VLAN tag filter - capture any broadcast packet with this VLAN tag
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
 .. _`i40e_aq_set_vsi_broadcast`:
 
 i40e_aq_set_vsi_broadcast
@@ -2490,12 +2512,64 @@ Description
 
 Configure partitions guaranteed/max bw
 
-.. _`i40e_read_phy_register`:
+.. _`i40e_read_phy_register_clause22`:
 
-i40e_read_phy_register
-======================
+i40e_read_phy_register_clause22
+===============================
 
-.. c:function:: i40e_status i40e_read_phy_register(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 *value)
+.. c:function:: i40e_status i40e_read_phy_register_clause22(struct i40e_hw *hw, u16 reg, u8 phy_addr, u16 *value)
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 reg:
+        register address in the page
+
+    :param u8 phy_addr:
+        *undescribed*
+
+    :param u16 \*value:
+        PHY register value
+
+.. _`i40e_read_phy_register_clause22.description`:
+
+Description
+-----------
+
+Reads specified PHY register value
+
+.. _`i40e_write_phy_register_clause22`:
+
+i40e_write_phy_register_clause22
+================================
+
+.. c:function:: i40e_status i40e_write_phy_register_clause22(struct i40e_hw *hw, u16 reg, u8 phy_addr, u16 value)
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 reg:
+        register address in the page
+
+    :param u8 phy_addr:
+        *undescribed*
+
+    :param u16 value:
+        PHY register value
+
+.. _`i40e_write_phy_register_clause22.description`:
+
+Description
+-----------
+
+Writes specified PHY register value
+
+.. _`i40e_read_phy_register_clause45`:
+
+i40e_read_phy_register_clause45
+===============================
+
+.. c:function:: i40e_status i40e_read_phy_register_clause45(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 *value)
 
     :param struct i40e_hw \*hw:
         pointer to the HW structure
@@ -2512,12 +2586,41 @@ i40e_read_phy_register
     :param u16 \*value:
         PHY register value
 
-.. _`i40e_read_phy_register.description`:
+.. _`i40e_read_phy_register_clause45.description`:
 
 Description
 -----------
 
 Reads specified PHY register value
+
+.. _`i40e_write_phy_register_clause45`:
+
+i40e_write_phy_register_clause45
+================================
+
+.. c:function:: i40e_status i40e_write_phy_register_clause45(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 value)
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u8 page:
+        registers page number
+
+    :param u16 reg:
+        register address in the page
+
+    :param u8 phy_addr:
+        *undescribed*
+
+    :param u16 value:
+        PHY register value
+
+.. _`i40e_write_phy_register_clause45.description`:
+
+Description
+-----------
+
+Writes value to specified PHY register
 
 .. _`i40e_write_phy_register`:
 
@@ -2547,6 +2650,35 @@ Description
 -----------
 
 Writes value to specified PHY register
+
+.. _`i40e_read_phy_register`:
+
+i40e_read_phy_register
+======================
+
+.. c:function:: i40e_status i40e_read_phy_register(struct i40e_hw *hw, u8 page, u16 reg, u8 phy_addr, u16 *value)
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u8 page:
+        registers page number
+
+    :param u16 reg:
+        register address in the page
+
+    :param u8 phy_addr:
+        *undescribed*
+
+    :param u16 \*value:
+        PHY register value
+
+.. _`i40e_read_phy_register.description`:
+
+Description
+-----------
+
+Reads specified PHY register value
 
 .. _`i40e_get_phy_address`:
 

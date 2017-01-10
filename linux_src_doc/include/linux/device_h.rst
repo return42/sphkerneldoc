@@ -364,6 +364,7 @@ Definition
         const char *name;
         struct module *owner;
         struct class_attribute *class_attrs;
+        const struct attribute_group **class_groups;
         const struct attribute_group **dev_groups;
         struct kobject *dev_kobj;
         int (*dev_uevent)(struct device *dev, struct kobj_uevent_env *env);
@@ -390,6 +391,9 @@ owner
     The module owner.
 
 class_attrs
+    Default attributes of this class.
+
+class_groups
     Default attributes of this class.
 
 dev_groups
@@ -443,6 +447,218 @@ at the class level, they are all simply disks. Classes allow user space
 to work with devices based on what they do, rather than how they are
 connected or how they work.
 
+.. _`devm_alloc_percpu`:
+
+devm_alloc_percpu
+=================
+
+.. c:function::  devm_alloc_percpu( dev,  type)
+
+    Resource-managed alloc_percpu
+
+    :param  dev:
+        Device to allocate per-cpu memory for
+
+    :param  type:
+        Type to allocate per-cpu memory for
+
+.. _`devm_alloc_percpu.description`:
+
+Description
+-----------
+
+Managed alloc_percpu. Per-cpu memory allocated with this function is
+automatically freed on driver detach.
+
+.. _`devm_alloc_percpu.return`:
+
+Return
+------
+
+Pointer to allocated memory on success, NULL on failure.
+
+.. _`device_link_state`:
+
+enum device_link_state
+======================
+
+.. c:type:: enum device_link_state
+
+    Device link states.
+
+.. _`device_link_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum device_link_state {
+        DL_STATE_NONE,
+        DL_STATE_DORMANT,
+        DL_STATE_AVAILABLE,
+        DL_STATE_CONSUMER_PROBE,
+        DL_STATE_ACTIVE,
+        DL_STATE_SUPPLIER_UNBIND
+    };
+
+.. _`device_link_state.constants`:
+
+Constants
+---------
+
+DL_STATE_NONE
+    The presence of the drivers is not being tracked.
+
+DL_STATE_DORMANT
+    None of the supplier/consumer drivers is present.
+
+DL_STATE_AVAILABLE
+    The supplier driver is present, but the consumer is not.
+
+DL_STATE_CONSUMER_PROBE
+    The consumer is probing (supplier driver present).
+
+DL_STATE_ACTIVE
+    Both the supplier and consumer drivers are present.
+
+DL_STATE_SUPPLIER_UNBIND
+    The supplier driver is unbinding.
+
+.. _`device_link`:
+
+struct device_link
+==================
+
+.. c:type:: struct device_link
+
+    Device link representation.
+
+.. _`device_link.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct device_link {
+        struct device *supplier;
+        struct list_head s_node;
+        struct device *consumer;
+        struct list_head c_node;
+        enum device_link_state status;
+        u32 flags;
+        bool rpm_active;
+    #ifdef CONFIG_SRCU
+        struct rcu_head rcu_head;
+    #endif
+    }
+
+.. _`device_link.members`:
+
+Members
+-------
+
+supplier
+    The device on the supplier end of the link.
+
+s_node
+    Hook to the supplier device's list of links to consumers.
+
+consumer
+    The device on the consumer end of the link.
+
+c_node
+    Hook to the consumer device's list of links to suppliers.
+
+status
+    The state of the link (with respect to the presence of drivers).
+
+flags
+    Link flags.
+
+rpm_active
+    Whether or not the consumer device is runtime-PM-active.
+
+rcu_head
+    An RCU head to use for deferred execution of SRCU callbacks.
+
+.. _`dl_dev_state`:
+
+enum dl_dev_state
+=================
+
+.. c:type:: enum dl_dev_state
+
+    Device driver presence tracking information.
+
+.. _`dl_dev_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dl_dev_state {
+        DL_DEV_NO_DRIVER,
+        DL_DEV_PROBING,
+        DL_DEV_DRIVER_BOUND,
+        DL_DEV_UNBINDING
+    };
+
+.. _`dl_dev_state.constants`:
+
+Constants
+---------
+
+DL_DEV_NO_DRIVER
+    There is no driver attached to the device.
+
+DL_DEV_PROBING
+    A driver is probing.
+
+DL_DEV_DRIVER_BOUND
+    The driver has been bound to the device.
+
+DL_DEV_UNBINDING
+    The driver is unbinding from the device.
+
+.. _`dev_links_info`:
+
+struct dev_links_info
+=====================
+
+.. c:type:: struct dev_links_info
+
+    Device data related to device links.
+
+.. _`dev_links_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dev_links_info {
+        struct list_head suppliers;
+        struct list_head consumers;
+        enum dl_dev_state status;
+    }
+
+.. _`dev_links_info.members`:
+
+Members
+-------
+
+suppliers
+    List of links to supplier devices.
+
+consumers
+    List of links to consumer devices.
+
+status
+    Driver status information.
+
 .. _`device`:
 
 struct device
@@ -470,6 +686,7 @@ Definition
         struct device_driver *driver;
         void *platform_data;
         void *driver_data;
+        struct dev_links_info links;
         struct dev_pm_info power;
         struct dev_pm_domain *pm_domain;
     #ifdef CONFIG_GENERIC_MSI_IRQ_DOMAIN
@@ -557,6 +774,9 @@ platform_data
 
 driver_data
     Private pointer for driver specific info.
+
+links
+    Links to suppliers and consumers of this device.
 
 power
     For device power management.

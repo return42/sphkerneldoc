@@ -33,6 +33,7 @@ amdgpu
     amdgpu_uvd_c
     amdgpu_vce_c
     amdgpu_vm_c
+    amdgpu_vram_mgr_c
     ci_dpm_c
     cik_c
     cik_ih_c

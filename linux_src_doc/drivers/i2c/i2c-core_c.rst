@@ -275,6 +275,36 @@ iterators like \ ``device_for_each_child``\ (), you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_adapter.
 
+.. _`i2c_handle_smbus_host_notify`:
+
+i2c_handle_smbus_host_notify
+============================
+
+.. c:function:: int i2c_handle_smbus_host_notify(struct i2c_adapter *adap, unsigned short addr)
+
+    Forward a Host Notify event to the correct I2C client.
+
+    :param struct i2c_adapter \*adap:
+        the adapter
+
+    :param unsigned short addr:
+        the I2C address of the notifying device
+
+.. _`i2c_handle_smbus_host_notify.context`:
+
+Context
+-------
+
+can't sleep
+
+.. _`i2c_handle_smbus_host_notify.description`:
+
+Description
+-----------
+
+Helper function to be called from an I2C bus driver's interrupt
+handler. It will schedule the Host Notify IRQ.
+
 .. _`__i2c_add_numbered_adapter`:
 
 __i2c_add_numbered_adapter

@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/rmap.c
 
-.. _`anon_vma_prepare`:
+.. _`__anon_vma_prepare`:
 
-anon_vma_prepare
-================
+__anon_vma_prepare
+==================
 
-.. c:function:: int anon_vma_prepare(struct vm_area_struct *vma)
+.. c:function:: int __anon_vma_prepare(struct vm_area_struct *vma)
 
     attach an anon_vma to a memory region
 
     :param struct vm_area_struct \*vma:
         the memory region in question
 
-.. _`anon_vma_prepare.description`:
+.. _`__anon_vma_prepare.description`:
 
 Description
 -----------
@@ -22,7 +22,8 @@ This makes sure the memory mapping described by 'vma' has
 an 'anon_vma' attached to it, so that we can associate the
 anonymous pages mapped into it with that anon_vma.
 
-The common case will be that we already have one, but if
+The common case will be that we already have one, which
+is handled inline by \ :c:func:`anon_vma_prepare`\ . But if
 not we either need to find an adjacent mapping that we
 can re-use the anon_vma from (very common when the only
 reason for splitting a vma has been \ :c:func:`mprotect`\ ), or we

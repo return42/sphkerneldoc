@@ -488,5 +488,77 @@ cookie
 data
     payload
 
+.. _`iwl_mvm_pm_event`:
+
+enum iwl_mvm_pm_event
+=====================
+
+.. c:type:: enum iwl_mvm_pm_event
+
+    type of station PM event
+
+.. _`iwl_mvm_pm_event.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_mvm_pm_event {
+        IWL_MVM_PM_EVENT_AWAKE,
+        IWL_MVM_PM_EVENT_ASLEEP,
+        IWL_MVM_PM_EVENT_UAPSD,
+        IWL_MVM_PM_EVENT_PS_POLL
+    };
+
+.. _`iwl_mvm_pm_event.constants`:
+
+Constants
+---------
+
+IWL_MVM_PM_EVENT_AWAKE
+    station woke up
+
+IWL_MVM_PM_EVENT_ASLEEP
+    station went to sleep
+
+IWL_MVM_PM_EVENT_UAPSD
+    station sent uAPSD trigger
+
+IWL_MVM_PM_EVENT_PS_POLL
+    station sent PS-Poll
+
+.. _`iwl_mvm_pm_state_notification`:
+
+struct iwl_mvm_pm_state_notification
+====================================
+
+.. c:type:: struct iwl_mvm_pm_state_notification
+
+    station PM state notification
+
+.. _`iwl_mvm_pm_state_notification.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_pm_state_notification {
+        u8 sta_id;
+        u8 type;
+    }
+
+.. _`iwl_mvm_pm_state_notification.members`:
+
+Members
+-------
+
+sta_id
+    station ID of the station changing state
+
+type
+    the new powersave state, see IWL_MVM_PM_EVENT\_ above
+
 .. This file was automatic generated / don't edit.
 

@@ -16,5 +16,4 @@ sysdev
     mpc5xxx_clocks_c
     mpic_timer_c
     msi_bitmap_c
-    xilinx_intc_c
     xilinx_pci_c

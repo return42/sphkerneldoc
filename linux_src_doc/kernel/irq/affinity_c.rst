@@ -6,16 +6,15 @@
 irq_create_affinity_masks
 =========================
 
-.. c:function:: struct cpumask *irq_create_affinity_masks(const struct cpumask *affinity, int nvec)
+.. c:function:: struct cpumask *irq_create_affinity_masks(int nvecs, const struct irq_affinity *affd)
 
     Create affinity masks for multiqueue spreading
 
-    :param const struct cpumask \*affinity:
-        The affinity mask to spread. If NULL cpu_online_mask
-        is used
+    :param int nvecs:
+        The total number of vectors
 
-    :param int nvec:
-        *undescribed*
+    :param const struct irq_affinity \*affd:
+        Description of the affinity requirements
 
 .. _`irq_create_affinity_masks.description`:
 
@@ -29,16 +28,15 @@ Returns the masks pointer or NULL if allocation failed.
 irq_calc_affinity_vectors
 =========================
 
-.. c:function:: int irq_calc_affinity_vectors(const struct cpumask *affinity, int maxvec)
+.. c:function:: int irq_calc_affinity_vectors(int maxvec, const struct irq_affinity *affd)
 
-    Calculate to optimal number of vectors for a given affinity mask
-
-    :param const struct cpumask \*affinity:
-        The affinity mask to spread. If NULL cpu_online_mask
-        is used
+    Calculate the optimal number of vectors
 
     :param int maxvec:
         The maximum number of vectors available
+
+    :param const struct irq_affinity \*affd:
+        Description of the affinity requirements
 
 .. This file was automatic generated / don't edit.
 

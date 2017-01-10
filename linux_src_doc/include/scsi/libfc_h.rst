@@ -624,6 +624,7 @@ Definition
         struct fc_seq *seq_ptr;
         struct timer_list timer;
         int wait_for_comp;
+        int timer_delay;
         u32 recov_retry;
         struct fc_seq *recov_seq;
         struct completion tm_done;
@@ -702,6 +703,9 @@ timer
 
 wait_for_comp
     Indicator to wait for completion of the I/O (in jiffies)
+
+timer_delay
+    *undescribed*
 
 recov_retry
     Number of recovery retries

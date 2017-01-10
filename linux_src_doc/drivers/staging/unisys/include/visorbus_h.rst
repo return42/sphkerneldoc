@@ -114,6 +114,8 @@ Definition
         struct controlvm_message_header *pending_msg_hdr;
         void *vbus_hdr_info;
         uuid_le partition_uuid;
+        struct dentry *debugfs_dir;
+        struct dentry *debugfs_client_bus_info;
     }
 
 .. _`visor_device.members`:
@@ -186,6 +188,12 @@ partition_uuid
     Indicates client partion id. This should be the
     same across all visor_devices in the current
     guest. Private use by bus driver only.
+
+debugfs_dir
+    *undescribed*
+
+debugfs_client_bus_info
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

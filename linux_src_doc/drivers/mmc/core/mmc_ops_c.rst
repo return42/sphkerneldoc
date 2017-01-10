@@ -6,7 +6,7 @@
 __mmc_switch
 ============
 
-.. c:function:: int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value, unsigned int timeout_ms, bool use_busy_signal, bool send_status, bool ignore_crc)
+.. c:function:: int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value, unsigned int timeout_ms, unsigned char timing, bool use_busy_signal, bool send_status, bool retry_crc_err)
 
     modify EXT_CSD register
 
@@ -26,14 +26,17 @@ __mmc_switch
         timeout (ms) for operation performed by register write,
         timeout of zero implies maximum possible timeout
 
+    :param unsigned char timing:
+        new timing to change to
+
     :param bool use_busy_signal:
         use the busy signal as response type
 
     :param bool send_status:
         send status cmd to poll for busy
 
-    :param bool ignore_crc:
-        ignore CRC errors when sending status cmd to poll for busy
+    :param bool retry_crc_err:
+        retry when CRC errors when polling with CMD13 for busy
 
 .. _`__mmc_switch.description`:
 

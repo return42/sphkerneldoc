@@ -220,6 +220,24 @@ pf_del_hmc_obj_callback
     :param void \*work_vf_dev:
         pointer to the VF Device
 
+.. _`i40iw_vf_init_pestat`:
+
+i40iw_vf_init_pestat
+====================
+
+.. c:function:: void i40iw_vf_init_pestat(struct i40iw_sc_dev *dev, struct i40iw_vsi_pestat *stats, u16 index)
+
+    Initialize stats for VF \ ``devL``\  pointer to the VF Device
+
+    :param struct i40iw_sc_dev \*dev:
+        *undescribed*
+
+    :param struct i40iw_vsi_pestat \*stats:
+        Statistics structure pointer
+
+    :param u16 index:
+        Stats index
+
 .. _`i40iw_vchnl_recv_pf`:
 
 i40iw_vchnl_recv_pf

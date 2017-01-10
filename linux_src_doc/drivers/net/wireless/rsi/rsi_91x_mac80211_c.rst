@@ -212,6 +212,25 @@ Return
 
 0 on success, negative error code on failure.
 
+.. _`rsi_config_power`:
+
+rsi_config_power
+================
+
+.. c:function:: int rsi_config_power(struct ieee80211_hw *hw)
+
+    This function configures tx power to device
+
+    :param struct ieee80211_hw \*hw:
+        Pointer to the ieee80211_hw structure.
+
+.. _`rsi_config_power.return`:
+
+Return
+------
+
+0 on success, negative error code on failure.
+
 .. _`rsi_mac80211_config`:
 
 rsi_mac80211_config
@@ -577,6 +596,56 @@ rsi_mac80211_sta_remove
         Pointer to the ieee80211_sta structure.
 
 .. _`rsi_mac80211_sta_remove.return`:
+
+Return
+------
+
+0 on success, -1 on failure.
+
+.. _`rsi_mac80211_set_antenna`:
+
+rsi_mac80211_set_antenna
+========================
+
+.. c:function:: int rsi_mac80211_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+
+    This function is used to configure tx and rx antennas.
+
+    :param struct ieee80211_hw \*hw:
+        Pointer to the ieee80211_hw structure.
+
+    :param u32 tx_ant:
+        Bitmap for tx antenna
+
+    :param u32 rx_ant:
+        Bitmap for rx antenna
+
+.. _`rsi_mac80211_set_antenna.return`:
+
+Return
+------
+
+0 on success, Negative error code on failure.
+
+.. _`rsi_mac80211_get_antenna`:
+
+rsi_mac80211_get_antenna
+========================
+
+.. c:function:: int rsi_mac80211_get_antenna(struct ieee80211_hw *hw, u32 *tx_ant, u32 *rx_ant)
+
+    This function is used to configure tx and rx antennas.
+
+    :param struct ieee80211_hw \*hw:
+        Pointer to the ieee80211_hw structure.
+
+    :param u32 \*tx_ant:
+        Bitmap for tx antenna
+
+    :param u32 \*rx_ant:
+        Bitmap for rx antenna
+
+.. _`rsi_mac80211_get_antenna.return`:
 
 Return
 ------

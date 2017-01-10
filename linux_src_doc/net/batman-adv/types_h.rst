@@ -189,6 +189,46 @@ throughput_override
 flags
     interface specific flags
 
+.. _`batadv_hard_iface_wifi_flags`:
+
+enum batadv_hard_iface_wifi_flags
+=================================
+
+.. c:type:: enum batadv_hard_iface_wifi_flags
+
+    Flags describing the wifi configuration of a batadv_hard_iface
+
+.. _`batadv_hard_iface_wifi_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum batadv_hard_iface_wifi_flags {
+        BATADV_HARDIF_WIFI_WEXT_DIRECT,
+        BATADV_HARDIF_WIFI_CFG80211_DIRECT,
+        BATADV_HARDIF_WIFI_WEXT_INDIRECT,
+        BATADV_HARDIF_WIFI_CFG80211_INDIRECT
+    };
+
+.. _`batadv_hard_iface_wifi_flags.constants`:
+
+Constants
+---------
+
+BATADV_HARDIF_WIFI_WEXT_DIRECT
+    it is a wext wifi device
+
+BATADV_HARDIF_WIFI_CFG80211_DIRECT
+    it is a cfg80211 wifi device
+
+BATADV_HARDIF_WIFI_WEXT_INDIRECT
+    link device is a wext wifi device
+
+BATADV_HARDIF_WIFI_CFG80211_INDIRECT
+    link device is a cfg80211 wifi device
+
 .. _`batadv_hard_iface`:
 
 struct batadv_hard_iface
@@ -209,8 +249,9 @@ Definition
         struct list_head list;
         s16 if_num;
         char if_status;
-        struct net_device *net_dev;
         u8 num_bcasts;
+        u32 wifi_flags;
+        struct net_device *net_dev;
         struct kobject *hardif_obj;
         struct kref refcount;
         struct packet_type batman_adv_ptype;
@@ -239,11 +280,14 @@ if_num
 if_status
     status of the interface for batman-adv
 
-net_dev
-    pointer to the net_device
-
 num_bcasts
     number of payload re-broadcasts on this interface (ARQ)
+
+wifi_flags
+    flags whether this is (directly or indirectly) a wifi interface
+
+net_dev
+    pointer to the net_device
 
 hardif_obj
     kobject of the per interface sysfs "mesh" directory
@@ -353,7 +397,7 @@ Definition
 .. code-block:: c
 
     struct batadv_frag_table_entry {
-        struct hlist_head head;
+        struct hlist_head fragment_list;
         spinlock_t lock;
         unsigned long timestamp;
         u16 seqno;
@@ -366,7 +410,7 @@ Definition
 Members
 -------
 
-head
+fragment_list
     head of list with fragments
 
 lock
@@ -865,6 +909,7 @@ Definition
     struct batadv_hardif_neigh_node {
         struct hlist_node list;
         u8 addr[ETH_ALEN];
+        u8 orig[ETH_ALEN];
         struct batadv_hard_iface *if_incoming;
         unsigned long last_seen;
     #ifdef CONFIG_BATMAN_ADV_BATMAN_V
@@ -884,6 +929,9 @@ list
 
 addr
     the MAC address of the neighboring interface
+
+orig
+    the address of the originator this neighbor node belongs to
 
 if_incoming
     pointer to incoming hard-interface
@@ -1533,7 +1581,7 @@ Definition
 .. code-block:: c
 
     struct batadv_priv_gw {
-        struct hlist_head list;
+        struct hlist_head gateway_list;
         spinlock_t list_lock;
         struct batadv_gw_node __rcu *curr_gw;
         atomic_t mode;
@@ -1548,11 +1596,11 @@ Definition
 Members
 -------
 
-list
+gateway_list
     list of available gateway nodes
 
 list_lock
-    lock protecting gw_list & curr_gw
+    lock protecting gateway_list & curr_gw
 
 curr_gw
     pointer to currently selected gateway node
@@ -1712,6 +1760,7 @@ Definition
         atomic_t num_want_all_ipv4;
         atomic_t num_want_all_ipv6;
         spinlock_t want_lists_lock;
+        struct delayed_work work;
     }
 
 .. _`batadv_priv_mcast.members`:
@@ -1762,6 +1811,9 @@ num_want_all_ipv6
 want_lists_lock
     lock for protecting modifications to mcast want lists
     (traversals are rcu-locked)
+
+work
+    work queue callback item for multicast TT and TVLV updates
 
 .. _`batadv_priv_nc`:
 
@@ -3101,6 +3153,7 @@ Definition
 
     struct batadv_forw_packet {
         struct hlist_node list;
+        struct hlist_node cleanup_list;
         unsigned long send_time;
         u8 own;
         struct sk_buff *skb;
@@ -3119,7 +3172,10 @@ Members
 -------
 
 list
-    list node for batadv_socket_client::queue_list
+    list node for batadv_priv::forw_{bat,bcast}_list
+
+cleanup_list
+    list node for purging functions
 
 send_time
     execution time for delayed_work (packet sending)

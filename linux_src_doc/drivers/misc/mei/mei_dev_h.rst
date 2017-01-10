@@ -53,6 +53,42 @@ MEI_FOP_NOTIFY_START
 MEI_FOP_NOTIFY_STOP
     stop notification
 
+.. _`mei_cl_io_mode`:
+
+enum mei_cl_io_mode
+===================
+
+.. c:type:: enum mei_cl_io_mode
+
+    io mode between driver and fw
+
+.. _`mei_cl_io_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mei_cl_io_mode {
+        MEI_CL_IO_TX_BLOCKING,
+        MEI_CL_IO_TX_INTERNAL,
+        MEI_CL_IO_RX_NONBLOCK
+    };
+
+.. _`mei_cl_io_mode.constants`:
+
+Constants
+---------
+
+MEI_CL_IO_TX_BLOCKING
+    send is blocking
+
+MEI_CL_IO_TX_INTERNAL
+    internal communication between driver and FW
+
+MEI_CL_IO_RX_NONBLOCK
+    recv is non-blocking
+
 .. _`mei_me_client`:
 
 struct mei_me_client
@@ -130,6 +166,7 @@ Definition
         const struct file *fp;
         int status;
         u32 internal:1;
+        u32 blocking:1;
         u32 completed:1;
     }
 
@@ -161,6 +198,9 @@ status
 
 internal
     communication between driver and FW flag
+
+blocking
+    transmission blocking mode
 
 completed
     the transfer or reception has completed
@@ -302,10 +342,11 @@ Definition
         void (*intr_clear)(struct mei_device *dev);
         void (*intr_enable)(struct mei_device *dev);
         void (*intr_disable)(struct mei_device *dev);
+        void (*synchronize_irq)(struct mei_device *dev);
         int (*hbuf_free_slots)(struct mei_device *dev);
         bool (*hbuf_is_ready)(struct mei_device *dev);
         size_t (*hbuf_max_len)(const struct mei_device *dev);
-        int (*write)(struct mei_device *dev,struct mei_msg_hdr *hdr,unsigned char *buf);
+        int (*write)(struct mei_device *dev,struct mei_msg_hdr *hdr,const unsigned char *buf);
         int (*rdbuf_full_slots)(struct mei_device *dev);
         u32 (*read_hdr)(const struct mei_device *dev);
         int (*read)(struct mei_device *dev,unsigned char *buf, unsigned long len);
@@ -351,6 +392,9 @@ intr_enable
 
 intr_disable
     disable interrupts
+
+synchronize_irq
+    synchronize irqs
 
 hbuf_free_slots
     query for write buffer empty slots

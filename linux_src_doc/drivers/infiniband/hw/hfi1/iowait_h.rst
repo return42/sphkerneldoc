@@ -23,6 +23,7 @@ Definition
         int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx,unsigned seq);
         void (*wakeup)(struct iowait *wait, int reason);
         void (*sdma_drained)(struct iowait *wait);
+        seqlock_t *lock;
         struct work_struct iowork;
         wait_queue_head_t wait_dma;
         wait_queue_head_t wait_pio;
@@ -52,6 +53,9 @@ wakeup
 
 sdma_drained
     sdma count drained
+
+lock
+    uses to record the list head lock
 
 iowork
     workqueue overhead
@@ -97,6 +101,11 @@ Both potentially have locks help
 so sleeping is not allowed.
 
 The wait_dma member along with the iow
+
+The lock field is used by waiters to record
+the seqlock_t that guards the list head.
+Waiters explicity know that, but the destroy
+code that unwaits QPs does not.
 
 .. _`iowait_init`:
 

@@ -41,11 +41,13 @@ drm
     drm_crtc_c
     drm_crtc_helper_c
     drm_debugfs_c
+    drm_debugfs_crc_c
     drm_dma_c
     drm_dp_dual_mode_helper_c
     drm_dp_helper_c
     drm_dp_mst_topology_c
     drm_drv_c
+    drm_dumb_buffers_c
     drm_edid_c
     drm_encoder_c
     drm_encoder_slave_c
@@ -64,6 +66,7 @@ drm
     drm_lock_c
     drm_mipi_dsi_c
     drm_mm_c
+    drm_mode_config_c
     drm_mode_object_c
     drm_modes_c
     drm_modeset_helper_c
@@ -75,6 +78,7 @@ drm
     drm_plane_helper_c
     drm_platform_c
     drm_prime_c
+    drm_print_c
     drm_probe_helper_c
     drm_property_c
     drm_rect_c

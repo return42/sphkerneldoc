@@ -57,6 +57,7 @@ platform_data
     lp8755_h
     macb_h
     max197_h
+    mlxcpld-hotplug_h
     mmc-esdhc-imx_h
     mmc-s3cmci_h
     mmc-sdhci-s3c_h

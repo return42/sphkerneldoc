@@ -1370,6 +1370,30 @@ Find out if a device is linked to specified upper device and return true
 in case it is. Note that this checks only immediate upper device,
 not through a complete stack of devices. The caller must hold the RTNL lock.
 
+.. _`netdev_has_upper_dev_all_rcu`:
+
+netdev_has_upper_dev_all_rcu
+============================
+
+.. c:function:: bool netdev_has_upper_dev_all_rcu(struct net_device *dev, struct net_device *upper_dev)
+
+    Check if device is linked to an upper device
+
+    :param struct net_device \*dev:
+        device
+
+    :param struct net_device \*upper_dev:
+        upper device to check
+
+.. _`netdev_has_upper_dev_all_rcu.description`:
+
+Description
+-----------
+
+Find out if a device is linked to specified upper device and return true
+in case it is. Note that this checks the entire upper device chain.
+The caller must hold rcu lock.
+
 .. _`netdev_has_any_upper_dev`:
 
 netdev_has_any_upper_dev
@@ -1410,6 +1434,26 @@ Description
 Find a master upper device and return pointer to it or NULL in case
 it's not there. The caller must hold the RTNL lock.
 
+.. _`netdev_has_any_lower_dev`:
+
+netdev_has_any_lower_dev
+========================
+
+.. c:function:: bool netdev_has_any_lower_dev(struct net_device *dev)
+
+    Check if device is linked to some device
+
+    :param struct net_device \*dev:
+        device
+
+.. _`netdev_has_any_lower_dev.description`:
+
+Description
+-----------
+
+Find out if a device is linked to a lower device and return true in case
+it is. The caller must hold the RTNL lock.
+
 .. _`netdev_upper_get_next_dev_rcu`:
 
 netdev_upper_get_next_dev_rcu
@@ -1426,29 +1470,6 @@ netdev_upper_get_next_dev_rcu
         list_head \*\* of the current position
 
 .. _`netdev_upper_get_next_dev_rcu.description`:
-
-Description
------------
-
-Gets the next device from the dev's upper list, starting from iter
-position. The caller must hold RCU read lock.
-
-.. _`netdev_all_upper_get_next_dev_rcu`:
-
-netdev_all_upper_get_next_dev_rcu
-=================================
-
-.. c:function:: struct net_device *netdev_all_upper_get_next_dev_rcu(struct net_device *dev, struct list_head **iter)
-
-    Get the next dev from upper list
-
-    :param struct net_device \*dev:
-        device
-
-    :param struct list_head \*\*iter:
-        list_head \*\* of the current position
-
-.. _`netdev_all_upper_get_next_dev_rcu.description`:
 
 Description
 -----------
@@ -1528,54 +1549,6 @@ Gets the next netdev_adjacent from the dev's lower neighbour
 list, starting from iter position. The caller must hold RTNL lock or
 its own locking that guarantees that the neighbour lower
 list will remain unchanged.
-
-.. _`netdev_all_lower_get_next`:
-
-netdev_all_lower_get_next
-=========================
-
-.. c:function:: struct net_device *netdev_all_lower_get_next(struct net_device *dev, struct list_head **iter)
-
-    Get the next device from all lower neighbour list
-
-    :param struct net_device \*dev:
-        device
-
-    :param struct list_head \*\*iter:
-        list_head \*\* of the current position
-
-.. _`netdev_all_lower_get_next.description`:
-
-Description
------------
-
-Gets the next netdev_adjacent from the dev's all lower neighbour
-list, starting from iter position. The caller must hold RTNL lock or
-its own locking that guarantees that the neighbour all lower
-list will remain unchanged.
-
-.. _`netdev_all_lower_get_next_rcu`:
-
-netdev_all_lower_get_next_rcu
-=============================
-
-.. c:function:: struct net_device *netdev_all_lower_get_next_rcu(struct net_device *dev, struct list_head **iter)
-
-    Get the next device from all lower neighbour list, RCU variant
-
-    :param struct net_device \*dev:
-        device
-
-    :param struct list_head \*\*iter:
-        list_head \*\* of the current position
-
-.. _`netdev_all_lower_get_next_rcu.description`:
-
-Description
------------
-
-Gets the next netdev_adjacent from the dev's all lower neighbour
-list, starting from iter position. The caller must hold RCU read lock.
 
 .. _`netdev_lower_get_first_private_rcu`:
 
@@ -1994,7 +1967,7 @@ port.
 dev_change_xdp_fd
 =================
 
-.. c:function:: int dev_change_xdp_fd(struct net_device *dev, int fd)
+.. c:function:: int dev_change_xdp_fd(struct net_device *dev, int fd, u32 flags)
 
     set or clear a bpf program for a device rx path
 
@@ -2003,6 +1976,9 @@ dev_change_xdp_fd
 
     :param int fd:
         new program fd or negative value to clear
+
+    :param u32 flags:
+        xdp-related flags
 
 .. _`dev_change_xdp_fd.description`:
 

@@ -45,12 +45,12 @@ Return
 
 integer error code indicating the status of the removal
 
-.. _`visorchannel_signalempty`:
+.. _`queue_empty`:
 
-visorchannel_signalempty
-========================
+queue_empty
+===========
 
-.. c:function:: bool visorchannel_signalempty(struct visorchannel *channel, u32 queue)
+.. c:function:: bool queue_empty(struct visorchannel *channel, u32 queue)
 
     checks if the designated channel/queue contains any messages
 
@@ -60,7 +60,7 @@ visorchannel_signalempty
     :param u32 queue:
         the queue in the channel to query
 
-.. _`visorchannel_signalempty.return`:
+.. _`queue_empty.return`:
 
 Return
 ------

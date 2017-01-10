@@ -137,7 +137,8 @@ Definition
         u32 dstat:8;
         u32 cstat:8;
         u32 fcxs:8;
-        u32 schxs:8;
+        u32 ifob:1;
+        u32 sesq:7;
     }
 
 .. _`tm_scsw.members`:
@@ -190,8 +191,11 @@ cstat
 fcxs
     FCX status
 
-schxs
-    subchannel-extended status
+ifob
+    *undescribed*
+
+sesq
+    *undescribed*
 
 .. _`eadm_scsw`:
 

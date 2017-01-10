@@ -209,6 +209,30 @@ i40iw_handle_cqp_op
     :param struct i40iw_cqp_request \*cqp_request:
         cqp request to process
 
+.. _`i40iw_add_devusecount`:
+
+i40iw_add_devusecount
+=====================
+
+.. c:function:: void i40iw_add_devusecount(struct i40iw_device *iwdev)
+
+    add dev refcount
+
+    :param struct i40iw_device \*iwdev:
+        dev for refcount
+
+.. _`i40iw_rem_devusecount`:
+
+i40iw_rem_devusecount
+=====================
+
+.. c:function:: void i40iw_rem_devusecount(struct i40iw_device *iwdev)
+
+    decrement refcount for dev
+
+    :param struct i40iw_device \*iwdev:
+        device
+
 .. _`i40iw_add_pdusecount`:
 
 i40iw_add_pdusecount
@@ -407,6 +431,39 @@ i40iw_cqp_sds_cmd
     :param struct i40iw_update_sds_info \*sdinfo:
         *undescribed*
 
+.. _`i40iw_qp_suspend_resume`:
+
+i40iw_qp_suspend_resume
+=======================
+
+.. c:function:: void i40iw_qp_suspend_resume(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp, bool suspend)
+
+    cqp command for suspend/resume
+
+    :param struct i40iw_sc_dev \*dev:
+        hardware control device structure
+
+    :param struct i40iw_sc_qp \*qp:
+        hardware control qp
+
+    :param bool suspend:
+        flag if suspend or resume
+
+.. _`i40iw_qp_mss_modify`:
+
+i40iw_qp_mss_modify
+===================
+
+.. c:function:: void i40iw_qp_mss_modify(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp)
+
+    modify mss for qp
+
+    :param struct i40iw_sc_dev \*dev:
+        hardware control device structure
+
+    :param struct i40iw_sc_qp \*qp:
+        hardware control qp
+
 .. _`i40iw_term_modify_qp`:
 
 i40iw_term_modify_qp
@@ -597,6 +654,66 @@ i40iw_vf_wait_vchnl_resp
     :param struct i40iw_sc_dev \*dev:
         *undescribed*
 
+.. _`i40iw_cqp_cq_create_cmd`:
+
+i40iw_cqp_cq_create_cmd
+=======================
+
+.. c:function:: enum i40iw_status_code i40iw_cqp_cq_create_cmd(struct i40iw_sc_dev *dev, struct i40iw_sc_cq *cq)
+
+    create a cq for the cqp
+
+    :param struct i40iw_sc_dev \*dev:
+        device pointer
+
+    :param struct i40iw_sc_cq \*cq:
+        pointer to created cq
+
+.. _`i40iw_cqp_qp_create_cmd`:
+
+i40iw_cqp_qp_create_cmd
+=======================
+
+.. c:function:: enum i40iw_status_code i40iw_cqp_qp_create_cmd(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp)
+
+    create a qp for the cqp
+
+    :param struct i40iw_sc_dev \*dev:
+        device pointer
+
+    :param struct i40iw_sc_qp \*qp:
+        pointer to created qp
+
+.. _`i40iw_cqp_cq_destroy_cmd`:
+
+i40iw_cqp_cq_destroy_cmd
+========================
+
+.. c:function:: void i40iw_cqp_cq_destroy_cmd(struct i40iw_sc_dev *dev, struct i40iw_sc_cq *cq)
+
+    destroy the cqp cq
+
+    :param struct i40iw_sc_dev \*dev:
+        device pointer
+
+    :param struct i40iw_sc_cq \*cq:
+        pointer to cq
+
+.. _`i40iw_cqp_qp_destroy_cmd`:
+
+i40iw_cqp_qp_destroy_cmd
+========================
+
+.. c:function:: void i40iw_cqp_qp_destroy_cmd(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp)
+
+    destroy the cqp
+
+    :param struct i40iw_sc_dev \*dev:
+        device pointer
+
+    :param struct i40iw_sc_qp \*qp:
+        pointer to qp
+
 .. _`i40iw_ieq_mpa_crc_ae`:
 
 i40iw_ieq_mpa_crc_ae
@@ -725,36 +842,36 @@ i40iw_puda_get_tcpip_info
 i40iw_hw_stats_timeout
 ======================
 
-.. c:function:: void i40iw_hw_stats_timeout(unsigned long dev)
+.. c:function:: void i40iw_hw_stats_timeout(unsigned long vsi)
 
     Stats timer-handler which updates all HW stats
 
-    :param unsigned long dev:
-        hardware control device structure
+    :param unsigned long vsi:
+        pointer to the vsi structure
 
 .. _`i40iw_hw_stats_start_timer`:
 
 i40iw_hw_stats_start_timer
 ==========================
 
-.. c:function:: void i40iw_hw_stats_start_timer(struct i40iw_sc_dev *dev)
+.. c:function:: void i40iw_hw_stats_start_timer(struct i40iw_sc_vsi *vsi)
 
     Start periodic stats timer
 
-    :param struct i40iw_sc_dev \*dev:
-        hardware control device structure
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
 
-.. _`i40iw_hw_stats_del_timer`:
+.. _`i40iw_hw_stats_stop_timer`:
 
-i40iw_hw_stats_del_timer
-========================
+i40iw_hw_stats_stop_timer
+=========================
 
-.. c:function:: void i40iw_hw_stats_del_timer(struct i40iw_sc_dev *dev)
+.. c:function:: void i40iw_hw_stats_stop_timer(struct i40iw_sc_vsi *vsi)
 
     Delete periodic stats timer
 
-    :param struct i40iw_sc_dev \*dev:
-        hardware control device structure
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
 
 .. This file was automatic generated / don't edit.
 

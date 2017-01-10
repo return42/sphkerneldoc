@@ -65,14 +65,14 @@ Description
 Add the page directory to the list of BOs to
 validate for command submission.
 
-.. _`amdgpu_vm_get_pt_bos`:
+.. _`amdgpu_vm_validate_pt_bos`:
 
-amdgpu_vm_get_pt_bos
-====================
+amdgpu_vm_validate_pt_bos
+=========================
 
-.. c:function:: void amdgpu_vm_get_pt_bos(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct list_head *duplicates)
+.. c:function:: int amdgpu_vm_validate_pt_bos(struct amdgpu_device *adev, struct amdgpu_vm *vm, int (*validate)(void *p, struct amdgpu_bo *bo), void *param)
 
-    add the vm BOs to a duplicates list
+    validate the page table BOs
 
     :param struct amdgpu_device \*adev:
         amdgpu device pointer
@@ -80,16 +80,18 @@ amdgpu_vm_get_pt_bos
     :param struct amdgpu_vm \*vm:
         vm providing the BOs
 
-    :param struct list_head \*duplicates:
-        head of duplicates list
+    :param int (\*validate)(void \*p, struct amdgpu_bo \*bo):
+        callback to do the validation
 
-.. _`amdgpu_vm_get_pt_bos.description`:
+    :param void \*param:
+        parameter for the validation callback
+
+.. _`amdgpu_vm_validate_pt_bos.description`:
 
 Description
 -----------
 
-Add the page directory to the BO duplicates list
-for command submission.
+Validate the page table BOs on command submission if neccessary.
 
 .. _`amdgpu_vm_move_pt_bos_in_lru`:
 
@@ -118,7 +120,7 @@ Move the PT BOs to the tail of the LRU.
 amdgpu_vm_grab_id
 =================
 
-.. c:function:: int amdgpu_vm_grab_id(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct fence *fence, struct amdgpu_job *job)
+.. c:function:: int amdgpu_vm_grab_id(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct dma_fence *fence, struct amdgpu_job *job)
 
     allocate the next free VMID
 
@@ -131,7 +133,7 @@ amdgpu_vm_grab_id
     :param struct amdgpu_sync \*sync:
         sync object where we add dependencies
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         fence protecting ID from reuse
 
     :param struct amdgpu_job \*job:
@@ -283,31 +285,6 @@ Description
 
 Traces the parameters and calls the DMA function to copy the PTEs.
 
-.. _`amdgpu_vm_clear_bo`:
-
-amdgpu_vm_clear_bo
-==================
-
-.. c:function:: int amdgpu_vm_clear_bo(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_bo *bo)
-
-    initially clear the page dir/table
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_vm \*vm:
-        *undescribed*
-
-    :param struct amdgpu_bo \*bo:
-        bo to clear
-
-.. _`amdgpu_vm_clear_bo.description`:
-
-Description
------------
-
-need to reserve bo first before calling it.
-
 .. _`amdgpu_vm_map_gart`:
 
 amdgpu_vm_map_gart
@@ -370,14 +347,14 @@ Update the page tables in the range \ ``start``\  - \ ``end``\ .
 amdgpu_vm_bo_update_mapping
 ===========================
 
-.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct fence *exclusive, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint32_t flags, uint64_t addr, struct fence **fence)
+.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint32_t flags, uint64_t addr, struct dma_fence **fence)
 
     update a mapping in the vm page table
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-    :param struct fence \*exclusive:
+    :param struct dma_fence \*exclusive:
         fence we need to sync to
 
     :param uint64_t src:
@@ -401,7 +378,7 @@ amdgpu_vm_bo_update_mapping
     :param uint64_t addr:
         addr to set the area to
 
-    :param struct fence \*\*fence:
+    :param struct dma_fence \*\*fence:
         optional resulting fence
 
 .. _`amdgpu_vm_bo_update_mapping.description`:
@@ -417,14 +394,14 @@ Returns 0 for success, -EINVAL for failure.
 amdgpu_vm_bo_split_mapping
 ==========================
 
-.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct fence *exclusive, uint32_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint32_t flags, uint64_t addr, struct fence **fence)
+.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint32_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint32_t flags, struct drm_mm_node *nodes, struct dma_fence **fence)
 
     split a mapping into smaller chunks
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-    :param struct fence \*exclusive:
+    :param struct dma_fence \*exclusive:
         fence we need to sync to
 
     :param uint32_t gtt_flags:
@@ -442,10 +419,10 @@ amdgpu_vm_bo_split_mapping
     :param uint32_t flags:
         HW flags for the mapping
 
-    :param uint64_t addr:
-        addr to set the area to
+    :param struct drm_mm_node \*nodes:
+        array of drm_mm_nodes with the MC addresses
 
-    :param struct fence \*\*fence:
+    :param struct dma_fence \*\*fence:
         optional resulting fence
 
 .. _`amdgpu_vm_bo_split_mapping.description`:

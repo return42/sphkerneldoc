@@ -859,6 +859,27 @@ Description
 return 0 if equal or greater
 return 1 if smaller or the ip_block doesn't exist
 
+.. _`amdgpu_ip_block_add`:
+
+amdgpu_ip_block_add
+===================
+
+.. c:function:: int amdgpu_ip_block_add(struct amdgpu_device *adev, const struct amdgpu_ip_block_version *ip_block_version)
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param const struct amdgpu_ip_block_version \*ip_block_version:
+        pointer to the IP to add
+
+.. _`amdgpu_ip_block_add.description`:
+
+Description
+-----------
+
+Adds the IP block driver information to the collection of IPs
+on the asic.
+
 .. _`amdgpu_device_init`:
 
 amdgpu_device_init

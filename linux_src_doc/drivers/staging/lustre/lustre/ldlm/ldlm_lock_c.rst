@@ -6,15 +6,15 @@
 ldlm_convert_policy_to_wire
 ===========================
 
-.. c:function:: void ldlm_convert_policy_to_wire(enum ldlm_type type, const ldlm_policy_data_t *lpolicy, ldlm_wire_policy_data_t *wpolicy)
+.. c:function:: void ldlm_convert_policy_to_wire(enum ldlm_type type, const union ldlm_policy_data *lpolicy, union ldlm_wire_policy_data *wpolicy)
 
     :param enum ldlm_type type:
         *undescribed*
 
-    :param const ldlm_policy_data_t \*lpolicy:
+    :param const union ldlm_policy_data \*lpolicy:
         *undescribed*
 
-    :param ldlm_wire_policy_data_t \*wpolicy:
+    :param union ldlm_wire_policy_data \*wpolicy:
         *undescribed*
 
 .. _`ldlm_convert_policy_to_local`:
@@ -22,7 +22,7 @@ ldlm_convert_policy_to_wire
 ldlm_convert_policy_to_local
 ============================
 
-.. c:function:: void ldlm_convert_policy_to_local(struct obd_export *exp, enum ldlm_type type, const ldlm_wire_policy_data_t *wpolicy, ldlm_policy_data_t *lpolicy)
+.. c:function:: void ldlm_convert_policy_to_local(struct obd_export *exp, enum ldlm_type type, const union ldlm_wire_policy_data *wpolicy, union ldlm_policy_data *lpolicy)
 
     :param struct obd_export \*exp:
         *undescribed*
@@ -30,10 +30,10 @@ ldlm_convert_policy_to_local
     :param enum ldlm_type type:
         *undescribed*
 
-    :param const ldlm_wire_policy_data_t \*wpolicy:
+    :param const union ldlm_wire_policy_data \*wpolicy:
         *undescribed*
 
-    :param ldlm_policy_data_t \*lpolicy:
+    :param union ldlm_policy_data \*lpolicy:
         *undescribed*
 
 .. _`ldlm_lock_get`:
@@ -322,14 +322,14 @@ ldlm_add_ast_work_item
 ldlm_lock_addref
 ================
 
-.. c:function:: void ldlm_lock_addref(const struct lustre_handle *lockh, __u32 mode)
+.. c:function:: void ldlm_lock_addref(const struct lustre_handle *lockh, enum ldlm_mode mode)
 
     r/w reference type is determined by \a mode Calls ldlm_lock_addref_internal.
 
     :param const struct lustre_handle \*lockh:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_addref_internal_nolock`:
@@ -337,14 +337,14 @@ ldlm_lock_addref
 ldlm_lock_addref_internal_nolock
 ================================
 
-.. c:function:: void ldlm_lock_addref_internal_nolock(struct ldlm_lock *lock, __u32 mode)
+.. c:function:: void ldlm_lock_addref_internal_nolock(struct ldlm_lock *lock, enum ldlm_mode mode)
 
     Add specified reader/writer reference to LDLM lock \a lock. r/w reference type is determined by \a mode Removes lock from LRU if it is there. Assumes the LDLM lock is already locked.
 
     :param struct ldlm_lock \*lock:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_addref_try`:
@@ -352,14 +352,14 @@ ldlm_lock_addref_internal_nolock
 ldlm_lock_addref_try
 ====================
 
-.. c:function:: int ldlm_lock_addref_try(const struct lustre_handle *lockh, __u32 mode)
+.. c:function:: int ldlm_lock_addref_try(const struct lustre_handle *lockh, enum ldlm_mode mode)
 
     fails if lock is already LDLM_FL_CBPENDING or destroyed.
 
     :param const struct lustre_handle \*lockh:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_addref_try.description`:
@@ -376,14 +376,14 @@ Description
 ldlm_lock_addref_internal
 =========================
 
-.. c:function:: void ldlm_lock_addref_internal(struct ldlm_lock *lock, __u32 mode)
+.. c:function:: void ldlm_lock_addref_internal(struct ldlm_lock *lock, enum ldlm_mode mode)
 
     Locks LDLM lock and calls ldlm_lock_addref_internal_nolock to do the work. Only called for local locks.
 
     :param struct ldlm_lock \*lock:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_decref_internal_nolock`:
@@ -391,14 +391,14 @@ ldlm_lock_addref_internal
 ldlm_lock_decref_internal_nolock
 ================================
 
-.. c:function:: void ldlm_lock_decref_internal_nolock(struct ldlm_lock *lock, __u32 mode)
+.. c:function:: void ldlm_lock_decref_internal_nolock(struct ldlm_lock *lock, enum ldlm_mode mode)
 
     Assumes LDLM lock is already locked. only called in ldlm_flock_destroy and for local locks. Does NOT add lock to LRU if no r/w references left to accommodate flock locks that cannot be placed in LRU.
 
     :param struct ldlm_lock \*lock:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_decref_internal`:
@@ -406,14 +406,14 @@ ldlm_lock_decref_internal_nolock
 ldlm_lock_decref_internal
 =========================
 
-.. c:function:: void ldlm_lock_decref_internal(struct ldlm_lock *lock, __u32 mode)
+.. c:function:: void ldlm_lock_decref_internal(struct ldlm_lock *lock, enum ldlm_mode mode)
 
     Locks LDLM lock first. If the lock is determined to be client lock on a client and r/w refcount drops to zero and the lock is not blocked, the lock is added to LRU lock on the namespace. For blocked LDLM locks if r/w count drops to zero, blocking_ast is called.
 
     :param struct ldlm_lock \*lock:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_decref`:
@@ -421,12 +421,12 @@ ldlm_lock_decref_internal
 ldlm_lock_decref
 ================
 
-.. c:function:: void ldlm_lock_decref(const struct lustre_handle *lockh, __u32 mode)
+.. c:function:: void ldlm_lock_decref(const struct lustre_handle *lockh, enum ldlm_mode mode)
 
     :param const struct lustre_handle \*lockh:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
 
 .. _`ldlm_lock_decref_and_cancel`:
@@ -434,22 +434,15 @@ ldlm_lock_decref
 ldlm_lock_decref_and_cancel
 ===========================
 
-.. c:function:: void ldlm_lock_decref_and_cancel(const struct lustre_handle *lockh, __u32 mode)
+.. c:function:: void ldlm_lock_decref_and_cancel(const struct lustre_handle *lockh, enum ldlm_mode mode)
 
     \a lockh and mark it for subsequent cancellation once r/w refcount drops to zero instead of putting into LRU.
 
     :param const struct lustre_handle \*lockh:
         *undescribed*
 
-    :param __u32 mode:
+    :param enum ldlm_mode mode:
         *undescribed*
-
-.. _`ldlm_lock_decref_and_cancel.description`:
-
-Description
------------
-
-Typical usage is for GROUP locks which we cannot allow to be cached.
 
 .. _`search_granted_lock`:
 
@@ -557,29 +550,63 @@ called by
 
 must be called with lr_lock held
 
+.. _`lock_matches`:
+
+lock_matches
+============
+
+.. c:function:: int lock_matches(struct ldlm_lock *lock, struct lock_match_data *data)
+
+    A reference on the lock is taken if matched.
+
+    :param struct ldlm_lock \*lock:
+        *undescribed*
+
+    :param struct lock_match_data \*data:
+        *undescribed*
+
+.. _`lock_matches.description`:
+
+Description
+-----------
+
+\param lock  test-against this lock
+\param data  parameters
+
+.. _`search_itree`:
+
+search_itree
+============
+
+.. c:function:: struct ldlm_lock *search_itree(struct ldlm_resource *res, struct lock_match_data *data)
+
+    :param struct ldlm_resource \*res:
+        *undescribed*
+
+    :param struct lock_match_data \*data:
+        *undescribed*
+
+.. _`search_itree.description`:
+
+Description
+-----------
+
+\param res   search for a lock in this resource
+\param data  parameters
+
+\retval      a referenced lock or NULL.
+
 .. _`search_queue`:
 
 search_queue
 ============
 
-.. c:function:: struct ldlm_lock *search_queue(struct list_head *queue, enum ldlm_mode *mode, ldlm_policy_data_t *policy, struct ldlm_lock *old_lock, __u64 flags, int unref)
+.. c:function:: struct ldlm_lock *search_queue(struct list_head *queue, struct lock_match_data *data)
 
     :param struct list_head \*queue:
         *undescribed*
 
-    :param enum ldlm_mode \*mode:
-        *undescribed*
-
-    :param ldlm_policy_data_t \*policy:
-        *undescribed*
-
-    :param struct ldlm_lock \*old_lock:
-        *undescribed*
-
-    :param __u64 flags:
-        *undescribed*
-
-    :param int unref:
+    :param struct lock_match_data \*data:
         *undescribed*
 
 .. _`search_queue.description`:
@@ -587,8 +614,10 @@ search_queue
 Description
 -----------
 
-\retval a referenced lock or NULL.  See the flag descriptions below, in the
-comment above ldlm_lock_match
+\param queue search for a lock in this queue
+\param data  parameters
+
+\retval      a referenced lock or NULL.
 
 .. _`ldlm_lock_allow_match_locked`:
 
@@ -626,7 +655,7 @@ ldlm_lock_allow_match
 ldlm_lock_match
 ===============
 
-.. c:function:: enum ldlm_mode ldlm_lock_match(struct ldlm_namespace *ns, __u64 flags, const struct ldlm_res_id *res_id, enum ldlm_type type, ldlm_policy_data_t *policy, enum ldlm_mode mode, struct lustre_handle *lockh, int unref)
+.. c:function:: enum ldlm_mode ldlm_lock_match(struct ldlm_namespace *ns, __u64 flags, const struct ldlm_res_id *res_id, enum ldlm_type type, union ldlm_policy_data *policy, enum ldlm_mode mode, struct lustre_handle *lockh, int unref)
 
     :param struct ldlm_namespace \*ns:
         *undescribed*
@@ -640,7 +669,7 @@ ldlm_lock_match
     :param enum ldlm_type type:
         *undescribed*
 
-    :param ldlm_policy_data_t \*policy:
+    :param union ldlm_policy_data \*policy:
         *undescribed*
 
     :param enum ldlm_mode mode:

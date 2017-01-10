@@ -11,8 +11,11 @@ core
     core_c
     host_c
     mmc_ops_c
+    mmc_test_c
+    queue_c
     sd_ops_c
     sdio_bus_c
     sdio_io_c
     sdio_irq_c
+    sdio_uart_c
     slot-gpio_c

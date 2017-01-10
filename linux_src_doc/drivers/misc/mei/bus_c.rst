@@ -6,7 +6,7 @@
 __mei_cl_send
 =============
 
-.. c:function:: ssize_t __mei_cl_send(struct mei_cl *cl, u8 *buf, size_t length, bool blocking)
+.. c:function:: ssize_t __mei_cl_send(struct mei_cl *cl, u8 *buf, size_t length, unsigned int mode)
 
     internal client send (write)
 
@@ -19,8 +19,8 @@ __mei_cl_send
     :param size_t length:
         buffer length
 
-    :param bool blocking:
-        wait for write completion
+    :param unsigned int mode:
+        sending mode
 
 .. _`__mei_cl_send.return`:
 
@@ -34,7 +34,7 @@ written size bytes or < 0 on error
 __mei_cl_recv
 =============
 
-.. c:function:: ssize_t __mei_cl_recv(struct mei_cl *cl, u8 *buf, size_t length)
+.. c:function:: ssize_t __mei_cl_recv(struct mei_cl *cl, u8 *buf, size_t length, unsigned int mode)
 
     internal client receive (read)
 
@@ -46,6 +46,9 @@ __mei_cl_recv
 
     :param size_t length:
         buffer length
+
+    :param unsigned int mode:
+        io mode
 
 .. _`__mei_cl_recv.return`:
 
@@ -79,6 +82,32 @@ Return
 
 written size in bytes or < 0 on error
 
+.. _`mei_cldev_recv_nonblock`:
+
+mei_cldev_recv_nonblock
+=======================
+
+.. c:function:: ssize_t mei_cldev_recv_nonblock(struct mei_cl_device *cldev, u8 *buf, size_t length)
+
+    non block client receive (read)
+
+    :param struct mei_cl_device \*cldev:
+        me client device
+
+    :param u8 \*buf:
+        buffer to receive
+
+    :param size_t length:
+        buffer length
+
+.. _`mei_cldev_recv_nonblock.return`:
+
+Return
+------
+
+read size in bytes of < 0 on error
+-EAGAIN if function will block.
+
 .. _`mei_cldev_recv`:
 
 mei_cldev_recv
@@ -104,14 +133,26 @@ Return
 
 read size in bytes of < 0 on error
 
-.. _`mei_cl_bus_event_work`:
+.. _`mei_cl_bus_rx_work`:
 
-mei_cl_bus_event_work
+mei_cl_bus_rx_work
+==================
+
+.. c:function:: void mei_cl_bus_rx_work(struct work_struct *work)
+
+    dispatch rx event for a bus device
+
+    :param struct work_struct \*work:
+        work
+
+.. _`mei_cl_bus_notif_work`:
+
+mei_cl_bus_notif_work
 =====================
 
-.. c:function:: void mei_cl_bus_event_work(struct work_struct *work)
+.. c:function:: void mei_cl_bus_notif_work(struct work_struct *work)
 
-    dispatch rx event for a bus device and schedule new work
+    dispatch FW notif event for a bus device
 
     :param struct work_struct \*work:
         work
@@ -156,28 +197,46 @@ Return
 true if event was scheduled
 false if the client is not waiting for event
 
-.. _`mei_cldev_register_event_cb`:
+.. _`mei_cldev_register_rx_cb`:
 
-mei_cldev_register_event_cb
-===========================
+mei_cldev_register_rx_cb
+========================
 
-.. c:function:: int mei_cldev_register_event_cb(struct mei_cl_device *cldev, unsigned long events_mask, mei_cldev_event_cb_t event_cb, void *context)
+.. c:function:: int mei_cldev_register_rx_cb(struct mei_cl_device *cldev, mei_cldev_cb_t rx_cb)
 
-    register event callback
+    register Rx event callback
 
     :param struct mei_cl_device \*cldev:
         me client devices
 
-    :param unsigned long events_mask:
-        requested events bitmask
-
-    :param mei_cldev_event_cb_t event_cb:
+    :param mei_cldev_cb_t rx_cb:
         callback function
 
-    :param void \*context:
-        driver context data
+.. _`mei_cldev_register_rx_cb.return`:
 
-.. _`mei_cldev_register_event_cb.return`:
+Return
+------
+
+0 on success
+-EALREADY if an callback is already registered
+<0 on other errors
+
+.. _`mei_cldev_register_notif_cb`:
+
+mei_cldev_register_notif_cb
+===========================
+
+.. c:function:: int mei_cldev_register_notif_cb(struct mei_cl_device *cldev, mei_cldev_cb_t notif_cb)
+
+    register FW notification event callback
+
+    :param struct mei_cl_device \*cldev:
+        me client devices
+
+    :param mei_cldev_cb_t notif_cb:
+        callback function
+
+.. _`mei_cldev_register_notif_cb.return`:
 
 Return
 ------

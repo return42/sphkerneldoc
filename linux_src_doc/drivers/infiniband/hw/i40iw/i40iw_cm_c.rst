@@ -6,12 +6,12 @@
 i40iw_free_sqbuf
 ================
 
-.. c:function:: void i40iw_free_sqbuf(struct i40iw_sc_dev *dev, void *bufp)
+.. c:function:: void i40iw_free_sqbuf(struct i40iw_sc_vsi *vsi, void *bufp)
 
     put back puda buffer if refcount = 0
 
-    :param struct i40iw_sc_dev \*dev:
-        FPK device
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to vsi structure
 
     :param void \*bufp:
         *undescribed*
@@ -1104,12 +1104,12 @@ i40iw_cm_close
 i40iw_receive_ilq
 =================
 
-.. c:function:: void i40iw_receive_ilq(struct i40iw_sc_dev *dev, struct i40iw_puda_buf *rbuf)
+.. c:function:: void i40iw_receive_ilq(struct i40iw_sc_vsi *vsi, struct i40iw_puda_buf *rbuf)
 
     recv an ETHERNET packet, and process it through CM
 
-    :param struct i40iw_sc_dev \*dev:
-        FPK dev struct
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
 
     :param struct i40iw_puda_buf \*rbuf:
         receive buffer
@@ -1176,7 +1176,7 @@ i40iw_cm_init_tsa_conn
 i40iw_cm_disconn
 ================
 
-.. c:function:: int i40iw_cm_disconn(struct i40iw_qp *iwqp)
+.. c:function:: void i40iw_cm_disconn(struct i40iw_qp *iwqp)
 
     when a connection is being closed
 
@@ -1341,6 +1341,80 @@ i40iw_cm_post_event
 
     :param struct i40iw_cm_event \*event:
         cm node's info for up event call
+
+.. _`i40iw_qhash_ctrl`:
+
+i40iw_qhash_ctrl
+================
+
+.. c:function:: void i40iw_qhash_ctrl(struct i40iw_device *iwdev, struct i40iw_cm_listener *parent_listen_node, struct i40iw_cm_info *nfo, u32 *ipaddr, bool ipv4, bool ifup)
+
+    enable/disable qhash for list
+
+    :param struct i40iw_device \*iwdev:
+        device pointer
+
+    :param struct i40iw_cm_listener \*parent_listen_node:
+        parent listen node
+
+    :param struct i40iw_cm_info \*nfo:
+        cm info node
+
+    :param u32 \*ipaddr:
+        Pointer to IPv4 or IPv6 address
+
+    :param bool ipv4:
+        flag indicating IPv4 when true
+
+    :param bool ifup:
+        flag indicating interface up when true
+
+.. _`i40iw_qhash_ctrl.description`:
+
+Description
+-----------
+
+Enables or disables the qhash for the node in the child
+listen list that matches ipaddr. If no matching IP was found
+it will allocate and add a new child listen node to the
+parent listen node. The listen_list_lock is assumed to be
+held when called.
+
+.. _`i40iw_cm_disconnect_all`:
+
+i40iw_cm_disconnect_all
+=======================
+
+.. c:function:: void i40iw_cm_disconnect_all(struct i40iw_device *iwdev)
+
+    disconnect all connected qp's
+
+    :param struct i40iw_device \*iwdev:
+        device pointer
+
+.. _`i40iw_if_notify`:
+
+i40iw_if_notify
+===============
+
+.. c:function:: void i40iw_if_notify(struct i40iw_device *iwdev, struct net_device *netdev, u32 *ipaddr, bool ipv4, bool ifup)
+
+    process an ifdown on an interface
+
+    :param struct i40iw_device \*iwdev:
+        device pointer
+
+    :param struct net_device \*netdev:
+        *undescribed*
+
+    :param u32 \*ipaddr:
+        Pointer to IPv4 or IPv6 address
+
+    :param bool ipv4:
+        flag indicating IPv4 when true
+
+    :param bool ifup:
+        flag indicating interface up when true
 
 .. This file was automatic generated / don't edit.
 

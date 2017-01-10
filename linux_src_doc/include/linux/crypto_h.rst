@@ -300,7 +300,7 @@ cra_users
 
 cra_flags
     Flags describing this transformation. See include/linux/crypto.h
-    CRYPTO_ALG\_\* flags for the flags which go in here. Those are
+    CRYPTO_ALG_* flags for the flags which go in here. Those are
     used for fine-tuning the description of the transformation
     algorithm.
 
@@ -438,7 +438,7 @@ Return
 ------
 
 true when the ablkcipher is known to the kernel crypto API; false
-otherwise
+        otherwise
 
 .. _`crypto_ablkcipher_ivsize`:
 
@@ -580,7 +580,7 @@ Description
 
 Encrypt plaintext data using the ablkcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-ablkcipher_request\_\* functions.
+ablkcipher_request_* functions.
 
 .. _`crypto_ablkcipher_encrypt.return`:
 
@@ -609,7 +609,7 @@ Description
 
 Decrypt ciphertext data using the ablkcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-ablkcipher_request\_\* functions.
+ablkcipher_request_* functions.
 
 .. _`crypto_ablkcipher_decrypt.return`:
 
@@ -743,9 +743,9 @@ This function allows setting the callback function that is triggered once the
 cipher operation completes.
 
 The callback function is registered with the ablkcipher_request handle and
-must comply with the following template
+must comply with the following template::
 
-void callback_function(struct crypto_async_request \*req, int error)
+     void callback_function(struct crypto_async_request *req, int error)
 
 .. _`ablkcipher_request_set_crypt`:
 
@@ -818,7 +818,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_blkcipher`:
 
@@ -857,7 +857,7 @@ Return
 ------
 
 true when the block cipher is known to the kernel crypto API; false
-otherwise
+        otherwise
 
 .. _`crypto_blkcipher_name`:
 
@@ -1223,7 +1223,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_cipher`:
 
@@ -1262,7 +1262,7 @@ Return
 ------
 
 true when the single block cipher is known to the kernel crypto API;
-false otherwise
+        false otherwise
 
 .. _`crypto_cipher_blocksize`:
 

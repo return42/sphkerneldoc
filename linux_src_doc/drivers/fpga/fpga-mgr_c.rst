@@ -6,15 +6,15 @@
 fpga_mgr_buf_load
 =================
 
-.. c:function:: int fpga_mgr_buf_load(struct fpga_manager *mgr, u32 flags, const char *buf, size_t count)
+.. c:function:: int fpga_mgr_buf_load(struct fpga_manager *mgr, struct fpga_image_info *info, const char *buf, size_t count)
 
     load fpga from image in buffer
 
     :param struct fpga_manager \*mgr:
         fpga manager
 
-    :param u32 flags:
-        flags setting fpga confuration modes
+    :param struct fpga_image_info \*info:
+        fpga image specific information
 
     :param const char \*buf:
         buffer contain fpga image
@@ -30,7 +30,8 @@ Description
 Step the low level fpga manager through the device-specific steps of getting
 an FPGA ready to be configured, writing the image to it, then doing whatever
 post-configuration steps necessary.  This code assumes the caller got the
-mgr pointer from \ :c:func:`of_fpga_mgr_get`\  and checked that it is not an error code.
+mgr pointer from \ :c:func:`of_fpga_mgr_get`\  or \ :c:func:`fpga_mgr_get`\  and checked that it is
+not an error code.
 
 .. _`fpga_mgr_buf_load.return`:
 
@@ -44,15 +45,15 @@ Return
 fpga_mgr_firmware_load
 ======================
 
-.. c:function:: int fpga_mgr_firmware_load(struct fpga_manager *mgr, u32 flags, const char *image_name)
+.. c:function:: int fpga_mgr_firmware_load(struct fpga_manager *mgr, struct fpga_image_info *info, const char *image_name)
 
     request firmware and load to fpga
 
     :param struct fpga_manager \*mgr:
         fpga manager
 
-    :param u32 flags:
-        flags setting fpga confuration modes
+    :param struct fpga_image_info \*info:
+        fpga image specific information
 
     :param const char \*image_name:
         name of image file on the firmware search path
@@ -65,7 +66,8 @@ Description
 Request an FPGA image using the firmware class, then write out to the FPGA.
 Update the state before each step to provide info on what step failed if
 there is a failure.  This code assumes the caller got the mgr pointer
-from \ :c:func:`of_fpga_mgr_get`\  and checked that it is not an error code.
+from \ :c:func:`of_fpga_mgr_get`\  or \ :c:func:`fpga_mgr_get`\  and checked that it is not an error
+code.
 
 .. _`fpga_mgr_firmware_load.return`:
 
@@ -73,6 +75,32 @@ Return
 ------
 
 0 on success, negative error code otherwise.
+
+.. _`fpga_mgr_get`:
+
+fpga_mgr_get
+============
+
+.. c:function:: struct fpga_manager *fpga_mgr_get(struct device *dev)
+
+    get an exclusive reference to a fpga mgr
+
+    :param struct device \*dev:
+        parent device that fpga mgr was registered with
+
+.. _`fpga_mgr_get.description`:
+
+Description
+-----------
+
+Given a device, get an exclusive reference to a fpga mgr.
+
+.. _`fpga_mgr_get.return`:
+
+Return
+------
+
+fpga manager struct or \ :c:func:`IS_ERR`\  condition containing error code.
 
 .. _`of_fpga_mgr_get`:
 

@@ -34,7 +34,7 @@ delimiter.
 cfs_str2num_check
 =================
 
-.. c:function:: int cfs_str2num_check(char *str, int nob, unsigned *num, unsigned min, unsigned max)
+.. c:function:: int cfs_str2num_check(char *str, int nob, unsigned int *num, unsigned int min, unsigned int max)
 
     :param char \*str:
         *undescribed*
@@ -42,13 +42,13 @@ cfs_str2num_check
     :param int nob:
         *undescribed*
 
-    :param unsigned \*num:
+    :param unsigned int \*num:
         *undescribed*
 
-    :param unsigned min:
+    :param unsigned int min:
         *undescribed*
 
-    :param unsigned max:
+    :param unsigned int max:
         *undescribed*
 
 .. _`cfs_str2num_check.description`:
@@ -67,17 +67,17 @@ hexadecimal integer in the range [\a min, \a max]
 cfs_range_expr_parse
 ====================
 
-.. c:function:: int cfs_range_expr_parse(struct cfs_lstr *src, unsigned min, unsigned max, int bracketed, struct cfs_range_expr **expr)
+.. c:function:: int cfs_range_expr_parse(struct cfs_lstr *src, unsigned int min, unsigned int max, int bracketed, struct cfs_range_expr **expr)
 
     \a src should only have a single token which can be \<number\> or  \\*
 
     :param struct cfs_lstr \*src:
         *undescribed*
 
-    :param unsigned min:
+    :param unsigned int min:
         *undescribed*
 
-    :param unsigned max:
+    :param unsigned int max:
         *undescribed*
 
     :param int bracketed:
@@ -157,9 +157,9 @@ Description
 cfs_expr_list_match
 ===================
 
-.. c:function:: int cfs_expr_list_match(__u32 value, struct cfs_expr_list *expr_list)
+.. c:function:: int cfs_expr_list_match(u32 value, struct cfs_expr_list *expr_list)
 
-    :param __u32 value:
+    :param u32 value:
         *undescribed*
 
     :param struct cfs_expr_list \*expr_list:
@@ -178,7 +178,7 @@ Description
 cfs_expr_list_values
 ====================
 
-.. c:function:: int cfs_expr_list_values(struct cfs_expr_list *expr_list, int max, __u32 **valpp)
+.. c:function:: int cfs_expr_list_values(struct cfs_expr_list *expr_list, int max, u32 **valpp)
 
     :param struct cfs_expr_list \*expr_list:
         *undescribed*
@@ -186,7 +186,7 @@ cfs_expr_list_values
     :param int max:
         *undescribed*
 
-    :param __u32 \*\*valpp:
+    :param u32 \*\*valpp:
         *undescribed*
 
 .. _`cfs_expr_list_values.description`:
@@ -220,7 +220,7 @@ Description
 cfs_expr_list_parse
 ===================
 
-.. c:function:: int cfs_expr_list_parse(char *str, int len, unsigned min, unsigned max, struct cfs_expr_list **elpp)
+.. c:function:: int cfs_expr_list_parse(char *str, int len, unsigned int min, unsigned int max, struct cfs_expr_list **elpp)
 
     :param char \*str:
         *undescribed*
@@ -228,10 +228,10 @@ cfs_expr_list_parse
     :param int len:
         *undescribed*
 
-    :param unsigned min:
+    :param unsigned int min:
         *undescribed*
 
-    :param unsigned max:
+    :param unsigned int max:
         *undescribed*
 
     :param struct cfs_expr_list \*\*elpp:

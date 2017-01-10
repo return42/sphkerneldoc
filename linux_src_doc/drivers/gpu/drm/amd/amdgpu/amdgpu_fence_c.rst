@@ -48,14 +48,14 @@ Returns the value of the fence read from memory.
 amdgpu_fence_emit
 =================
 
-.. c:function:: int amdgpu_fence_emit(struct amdgpu_ring *ring, struct fence **f)
+.. c:function:: int amdgpu_fence_emit(struct amdgpu_ring *ring, struct dma_fence **f)
 
     emit a fence on the requested ring
 
     :param struct amdgpu_ring \*ring:
         ring the fence is associated with
 
-    :param struct fence \*\*f:
+    :param struct dma_fence \*\*f:
         resulting fence object
 
 .. _`amdgpu_fence_emit.description`:
@@ -326,11 +326,11 @@ that will never complete.
 amdgpu_fence_enable_signaling
 =============================
 
-.. c:function:: bool amdgpu_fence_enable_signaling(struct fence *f)
+.. c:function:: bool amdgpu_fence_enable_signaling(struct dma_fence *f)
 
     enable signalling on fence
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`amdgpu_fence_enable_signaling.description`:
@@ -366,11 +366,11 @@ Free up the fence memory after the RCU grace period.
 amdgpu_fence_release
 ====================
 
-.. c:function:: void amdgpu_fence_release(struct fence *f)
+.. c:function:: void amdgpu_fence_release(struct dma_fence *f)
 
     callback that fence can be freed
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`amdgpu_fence_release.description`:

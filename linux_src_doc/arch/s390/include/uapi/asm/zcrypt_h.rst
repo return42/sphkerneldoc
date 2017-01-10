@@ -289,6 +289,62 @@ resp_len
 resp
     Addr to response block
 
+.. _`zcrypt_device_status`:
+
+struct zcrypt_device_status
+===========================
+
+.. c:type:: struct zcrypt_device_status
+
+
+.. _`zcrypt_device_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct zcrypt_device_status {
+        unsigned int hwtype:8;
+        unsigned int qid:14;
+        unsigned int online:1;
+        unsigned int functions:6;
+        unsigned int reserved:3;
+    }
+
+.. _`zcrypt_device_status.members`:
+
+Members
+-------
+
+hwtype
+    raw hardware type
+
+qid
+    6 bit device index, 8 bit domain
+
+online
+    *undescribed*
+
+functions
+    AP device function bit field 'abcdef'
+    a, b, c = reserved
+    d = CCA coprocessor
+    e = Accelerator
+    f = EP11 coprocessor
+    \ ``online``\               online status
+    \ ``reserved``\             reserved
+
+reserved
+    *undescribed*
+
+.. _`max_zdev_entries`:
+
+MAX_ZDEV_ENTRIES
+================
+
+.. c:function::  MAX_ZDEV_ENTRIES()
+
 .. _`icarsamodexpo`:
 
 ICARSAMODEXPO

@@ -182,7 +182,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_aead`:
 
@@ -368,16 +368,16 @@ Description
 -----------
 
 Encrypt plaintext data using the aead_request handle. That data structure
-and how it is filled with data is discussed with the aead_request\_\*
+and how it is filled with data is discussed with the aead_request_*
 functions.
 
 IMPORTANT NOTE The encryption operation creates the authentication data /
-tag. That data is concatenated with the created ciphertext.
-The ciphertext memory size is therefore the given number of
-block cipher blocks + the size defined by the
-crypto_aead_setauthsize invocation. The caller must ensure
-that sufficient memory is available for the ciphertext and
-the authentication tag.
+               tag. That data is concatenated with the created ciphertext.
+               The ciphertext memory size is therefore the given number of
+               block cipher blocks + the size defined by the
+               crypto_aead_setauthsize invocation. The caller must ensure
+               that sufficient memory is available for the ciphertext and
+               the authentication tag.
 
 .. _`crypto_aead_encrypt.return`:
 
@@ -405,13 +405,13 @@ Description
 -----------
 
 Decrypt ciphertext data using the aead_request handle. That data structure
-and how it is filled with data is discussed with the aead_request\_\*
+and how it is filled with data is discussed with the aead_request_*
 functions.
 
 IMPORTANT NOTE The caller must concatenate the ciphertext followed by the
-authentication data / tag. That authentication data / tag
-must have the size defined by the crypto_aead_setauthsize
-invocation.
+               authentication data / tag. That authentication data / tag
+               must have the size defined by the crypto_aead_setauthsize
+               invocation.
 
 .. _`crypto_aead_decrypt.return`:
 
@@ -419,11 +419,11 @@ Return
 ------
 
 0 if the cipher operation was successful; -EBADMSG: The AEAD
-cipher operation performs the authentication of the data during the
-decryption operation. Therefore, the function returns this error if
-the authentication of the ciphertext was unsuccessful (i.e. the
-integrity of the ciphertext or the associated data was violated);
-< 0 if an error occurred.
+        cipher operation performs the authentication of the data during the
+        decryption operation. Therefore, the function returns this error if
+        the authentication of the ciphertext was unsuccessful (i.e. the
+        integrity of the ciphertext or the associated data was violated);
+        < 0 if an error occurred.
 
 .. _`crypto_aead_reqsize`:
 
@@ -550,9 +550,9 @@ Setting the callback function that is triggered once the cipher operation
 completes
 
 The callback function is registered with the aead_request handle and
-must comply with the following template
+must comply with the following template::
 
-void callback_function(struct crypto_async_request \*req, int error)
+     void callback_function(struct crypto_async_request *req, int error)
 
 .. _`aead_request_set_crypt`:
 
@@ -592,30 +592,22 @@ For encryption, the source is treated as the plaintext and the
 destination is the ciphertext. For a decryption operation, the use is
 reversed - the source is the ciphertext and the destination is the plaintext.
 
-For both src/dst the layout is associated data, plain/cipher text,
-authentication tag.
+.. _`aead_request_set_crypt.the-memory-structure-for-cipher-operation-has-the-following-structure`:
 
-The content of the AD in the destination buffer after processing
-will either be untouched, or it will contain a copy of the AD
-from the source buffer.  In order to ensure that it always has
-a copy of the AD, the user must copy the AD over either before
-or after processing.  Of course this is not relevant if the user
-is doing in-place processing where src == dst.
+The memory structure for cipher operation has the following structure
+---------------------------------------------------------------------
 
-IMPORTANT NOTE AEAD requires an authentication tag (MAC). For decryption,
-the caller must concatenate the ciphertext followed by the
-authentication tag and provide the entire data stream to the
-decryption operation (i.e. the data length used for the
-initialization of the scatterlist and the data length for the
-decryption operation is identical). For encryption, however,
-the authentication tag is created while encrypting the data.
-The destination buffer must hold sufficient space for the
-ciphertext and the authentication tag while the encryption
-invocation must only point to the plaintext data size. The
-following code snippet illustrates the memory usage
-buffer = kmalloc(ptbuflen + (enc ? authsize : 0));
-sg_init_one(&sg, buffer, ptbuflen + (enc ? authsize : 0));
-aead_request_set_crypt(req, \ :c:type:`struct sg <sg>`\ , \ :c:type:`struct sg <sg>`\ , ptbuflen, iv);
+
+- AEAD encryption input:  assoc data || plaintext
+- AEAD encryption output: assoc data || cipherntext || auth tag
+- AEAD decryption input:  assoc data || ciphertext || auth tag
+- AEAD decryption output: assoc data || plaintext
+
+Albeit the kernel requires the presence of the AAD buffer, however,
+the kernel does not fill the AAD buffer in the output case. If the
+caller wants to have that data buffer filled, the caller must either
+use an in-place cipher operation (i.e. same memory location for
+input/output memory location).
 
 .. _`aead_request_set_ad`:
 

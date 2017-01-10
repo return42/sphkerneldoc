@@ -409,23 +409,23 @@ Examples
 --------
 
 
-Input: "mdev0:ch0@ep_81:my_channel\n" or
-"mdev0:ch0@ep_81:my_channel"
+Input: "mdev0:ch6:my_channel\n" or
+"mdev0:ch6:my_channel"
 
 .. _`split_string.output`:
 
 Output
 ------
 
-\*a -> "mdev0", \*b -> "ch0@ep_81", \*c -> "my_channel"
+\*a -> "mdev0", \*b -> "ch6", \*c -> "my_channel"
 
-Input: "mdev0:ch0@ep_81\n"
+Input: "mdev1:ep81\n"
 
-\*a -> "mdev0", \*b -> "ch0@ep_81", \*c -> ""
+\*a -> "mdev1", \*b -> "ep81", \*c -> ""
 
-Input: "mdev0:ch0@ep_81"
+Input: "mdev1:ep81"
 
-\*a -> "mdev0", \*b -> "ch0@ep_81", \*c == NULL
+\*a -> "mdev1", \*b -> "ep81", \*c == NULL
 
 .. _`get_channel_by_name`:
 
@@ -449,12 +449,12 @@ Description
 
 This retrieves the pointer to a channel object.
 
-.. _`store_add_link`:
+.. _`add_link_store`:
 
-store_add_link
+add_link_store
 ==============
 
-.. c:function:: ssize_t store_add_link(struct most_aim_obj *aim_obj, struct most_aim_attribute *attr, const char *buf, size_t len)
+.. c:function:: ssize_t add_link_store(struct most_aim_obj *aim_obj, struct most_aim_attribute *attr, const char *buf, size_t len)
 
     store() function for add_link attribute
 
@@ -470,7 +470,7 @@ store_add_link
     :param size_t len:
         buffer length
 
-.. _`store_add_link.description`:
+.. _`add_link_store.description`:
 
 Description
 -----------
@@ -483,26 +483,26 @@ inherit the channel's name within sysfs.
 
 Searches for a pair of device and channel and probes the AIM
 
-.. _`store_add_link.example`:
+.. _`add_link_store.example`:
 
 Example
 -------
 
 .. code-block:: c
 
-    (1) echo -n -e "mdev0:ch0@ep_81:my_rxchannel\n" >add_link
-    (2) echo -n -e "mdev0:ch0@ep_81\n" >add_link
+    (1) echo "mdev0:ch6:my_rxchannel" >add_link
+    (2) echo "mdev1:ep81" >add_link
 
     (1) would create the device node /dev/my_rxchannel
-    (2) would create the device node /dev/mdev0-ch0@ep_81
+    (2) would create the device node /dev/mdev1-ep81
 
 
-.. _`store_remove_link`:
+.. _`remove_link_store`:
 
-store_remove_link
+remove_link_store
 =================
 
-.. c:function:: ssize_t store_remove_link(struct most_aim_obj *aim_obj, struct most_aim_attribute *attr, const char *buf, size_t len)
+.. c:function:: ssize_t remove_link_store(struct most_aim_obj *aim_obj, struct most_aim_attribute *attr, const char *buf, size_t len)
 
     store function for remove_link attribute
 
@@ -518,14 +518,14 @@ store_remove_link
     :param size_t len:
         buffer length
 
-.. _`store_remove_link.example`:
+.. _`remove_link_store.example`:
 
 Example
 -------
 
 .. code-block:: c
 
-    echo -n -e "mdev0:ch0@ep_81\n" >remove_link
+    echo "mdev0:ep81" >remove_link
 
 
 .. _`create_most_aim_obj`:

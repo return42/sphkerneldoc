@@ -84,6 +84,7 @@ iio_format_value
 
     :param char \*buf:
         The buffer to which the formatted value gets written
+        which is assumed to be big enough (i.e. PAGE_SIZE).
 
     :param unsigned int type:
         One of the IIO_VAL_... constants. This decides how the val
@@ -102,8 +103,8 @@ Return
 ------
 
 0 by default, a negative number on failure or the
-total number of characters written for a type that belongs
-to the IIO_VAL_... constant.
+        total number of characters written for a type that belongs
+        to the IIO_VAL_... constant.
 
 .. _`iio_str_to_fixpoint`:
 

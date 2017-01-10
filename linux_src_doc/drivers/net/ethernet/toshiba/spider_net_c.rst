@@ -660,28 +660,6 @@ spider_net_poll returns all packets from the rx descriptors to the stack
 (using netif_receive_skb). If all/enough packets are up, the driver
 reenables interrupts and returns 0. If not, 1 is returned.
 
-.. _`spider_net_change_mtu`:
-
-spider_net_change_mtu
-=====================
-
-.. c:function:: int spider_net_change_mtu(struct net_device *netdev, int new_mtu)
-
-    changes the MTU of an interface
-
-    :param struct net_device \*netdev:
-        interface device structure
-
-    :param int new_mtu:
-        new MTU value
-
-.. _`spider_net_change_mtu.description`:
-
-Description
------------
-
-returns 0 on success, <0 on failure
-
 .. _`spider_net_set_mac`:
 
 spider_net_set_mac

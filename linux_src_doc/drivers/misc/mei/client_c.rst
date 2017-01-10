@@ -463,7 +463,7 @@ mei_cl_alloc_cb
         size of the buffer
 
     :param enum mei_cb_file_ops fop_type:
-        *undescribed*
+        operation type
 
     :param const struct file \*fp:
         associated file pointer (might be NULL)
@@ -491,7 +491,7 @@ mei_cl_enqueue_ctrl_wr_cb
         size of the buffer
 
     :param enum mei_cb_file_ops fop_type:
-        *undescribed*
+        operation type
 
     :param const struct file \*fp:
         associated file pointer (might be NULL)
@@ -1113,7 +1113,7 @@ Return
 mei_cl_write
 ============
 
-.. c:function:: int mei_cl_write(struct mei_cl *cl, struct mei_cl_cb *cb, bool blocking)
+.. c:function:: int mei_cl_write(struct mei_cl *cl, struct mei_cl_cb *cb)
 
     submit a write cb to mei device assumes device_lock is locked
 
@@ -1122,9 +1122,6 @@ mei_cl_write
 
     :param struct mei_cl_cb \*cb:
         write callback with filled data
-
-    :param bool blocking:
-        block until completed
 
 .. _`mei_cl_write.return`:
 

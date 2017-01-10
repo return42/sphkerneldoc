@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct nfp_net_tx_buf {
-        struct sk_buff *skb;
+        union {unnamed_union};
         dma_addr_t dma_addr;
         short int fidx;
         u16 pkt_cnt;
@@ -30,8 +30,9 @@ Definition
 Members
 -------
 
-skb
-    sk_buff associated with this buffer
+{unnamed_union}
+    anonymous
+
 
 dma_addr
     DMA mapping address of the buffer
@@ -142,7 +143,7 @@ Definition
 .. code-block:: c
 
     struct nfp_net_rx_buf {
-        struct sk_buff *skb;
+        void *frag;
         dma_addr_t dma_addr;
     }
 
@@ -151,8 +152,8 @@ Definition
 Members
 -------
 
-skb
-    sk_buff associated with this buffer
+frag
+    page fragment buffer
 
 dma_addr
     DMA mapping address of the buffer
@@ -272,6 +273,7 @@ Definition
         u64 hw_csum_rx_ok;
         u64 hw_csum_rx_inner_ok;
         u64 hw_csum_rx_error;
+        struct nfp_net_tx_ring *xdp_ring;
         struct u64_stats_sync tx_sync;
         u64 tx_pkts;
         u64 tx_bytes;
@@ -326,6 +328,9 @@ hw_csum_rx_inner_ok
 
 hw_csum_rx_error
     Counter of packets with bad checksums
+
+xdp_ring
+    Pointer to an extra TX ring for XDP
 
 tx_sync
     Seqlock for atomic updates of TX stats
@@ -394,12 +399,13 @@ Definition
         struct net_device *netdev;
         unsigned nfp_fallback:1;
         unsigned is_vf:1;
-        unsigned is_nfp3200:1;
         unsigned fw_loaded:1;
         unsigned bpf_offload_skip_sw:1;
+        unsigned bpf_offload_xdp:1;
         u32 ctrl;
         u32 fl_bufsz;
         u32 rx_offset;
+        struct bpf_prog *xdp_prog;
         struct nfp_net_tx_ring *tx_rings;
         struct nfp_net_rx_ring *rx_rings;
     #ifdef CONFIG_PCI_IOV
@@ -423,18 +429,19 @@ Definition
         unsigned long rx_filter_change;
         struct timer_list rx_filter_stats_timer;
         spinlock_t rx_filter_lock;
-        int max_tx_rings;
-        int max_rx_rings;
-        int num_tx_rings;
-        int num_rx_rings;
+        unsigned int max_tx_rings;
+        unsigned int max_rx_rings;
+        unsigned int num_tx_rings;
+        unsigned int num_stack_tx_rings;
+        unsigned int num_rx_rings;
         int stride_tx;
         int stride_rx;
         int txd_cnt;
         int rxd_cnt;
-        u8 num_irqs;
-        u8 num_r_vecs;
-        struct nfp_net_r_vector r_vecs[NFP_NET_MAX_TX_RINGS];
-        struct msix_entry irq_entries[NFP_NET_NON_Q_VECTORS +NFP_NET_MAX_TX_RINGS];
+        unsigned int max_r_vecs;
+        unsigned int num_r_vecs;
+        struct nfp_net_r_vector r_vecs[NFP_NET_MAX_R_VECS];
+        struct msix_entry irq_entries[NFP_NET_MAX_IRQS];
         irq_handler_t lsc_handler;
         char lsc_name[IFNAMSIZ + 8];
         irq_handler_t exn_handler;
@@ -480,14 +487,14 @@ nfp_fallback
 is_vf
     Is the driver attached to a VF?
 
-is_nfp3200
-    Is the driver for a NFP-3200 card?
-
 fw_loaded
     Is the firmware loaded?
 
 bpf_offload_skip_sw
     Offloaded BPF program will not be rerun by cls_bpf
+
+bpf_offload_xdp
+    Offloaded BPF program is XDP
 
 ctrl
     Local copy of the control register/word.
@@ -497,6 +504,9 @@ fl_bufsz
 
 rx_offset
     Offset in the RX buffers where packet data starts
+
+xdp_prog
+    Installed XDP program
 
 tx_rings
     Array of pre-allocated TX ring structures
@@ -570,6 +580,9 @@ max_rx_rings
 num_tx_rings
     Currently configured number of TX rings
 
+num_stack_tx_rings
+    Number of TX rings used by the stack (not XDP)
+
 num_rx_rings
     Currently configured number of RX rings
 
@@ -585,8 +598,8 @@ txd_cnt
 rxd_cnt
     Size of the RX ring in number of descriptors
 
-num_irqs
-    Number of allocated interrupt vectors
+max_r_vecs
+    Number of allocated interrupt vectors for RX/TX
 
 num_r_vecs
     Number of used ring vectors

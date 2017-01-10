@@ -7,4 +7,5 @@ asm
 .. toctree::
     :maxdepth: 1
 
+    ptrace_h
     topology_64_h

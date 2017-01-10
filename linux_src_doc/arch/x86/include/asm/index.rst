@@ -13,12 +13,12 @@ asm
     bitops_h
     checksum_64_h
     intel-mid_h
+    intel_rdt_common_h
+    intel_rdt_h
     io_h
     iosf_mbi_h
     local_h
     msr_h
-    mutex_32_h
-    mutex_64_h
     pmem_h
     ptrace_h
     qspinlock_h

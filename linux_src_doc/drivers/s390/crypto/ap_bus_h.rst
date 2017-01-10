@@ -8,7 +8,7 @@ typedef ap_qid_t
 
 .. c:type:: typedef ap_qid_t
 
-    6 bit device index and a 4 bit queue index (domain).
+    6 bit card index and a 4 bit queue index (domain).
 
 .. _`ap_queue_status`:
 
@@ -57,7 +57,7 @@ int_enabled
     Shows if interrupts are enabled for the AP
 
 response_code
-    *undescribed*
+    Holds the 8 bit response code
 
 pad2
     A 16 bit pad

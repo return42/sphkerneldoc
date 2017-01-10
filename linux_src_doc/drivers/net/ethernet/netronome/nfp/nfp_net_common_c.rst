@@ -71,29 +71,6 @@ Return
 
 Negative errno on error, 0 on success
 
-.. _`nfp_net_irq_unmask_msix`:
-
-nfp_net_irq_unmask_msix
-=======================
-
-.. c:function:: void nfp_net_irq_unmask_msix(struct nfp_net *nn, unsigned int entry_nr)
-
-    Unmask MSI-X after automasking
-
-    :param struct nfp_net \*nn:
-        NFP Network structure
-
-    :param unsigned int entry_nr:
-        MSI-X table entry
-
-.. _`nfp_net_irq_unmask_msix.description`:
-
-Description
------------
-
-Clear the MSI-X table mask bit for the given entry bypassing Linux irq
-handling subsystem.  Use \*only\* to reenable automasked vectors.
-
 .. _`nfp_net_irq_unmask`:
 
 nfp_net_irq_unmask
@@ -114,8 +91,7 @@ nfp_net_irq_unmask
 Description
 -----------
 
-If MSI-X auto-masking is enabled clear the mask bit, otherwise
-clear the ICR for the entry.
+Clear the ICR for the IRQ entry.
 
 .. _`nfp_net_msix_alloc`:
 
@@ -145,33 +121,6 @@ Return
 ------
 
 Number of MSI-X vectors obtained or 0 on error.
-
-.. _`nfp_net_irqs_wanted`:
-
-nfp_net_irqs_wanted
-===================
-
-.. c:function:: int nfp_net_irqs_wanted(struct nfp_net *nn)
-
-    Work out how many interrupt vectors we want
-
-    :param struct nfp_net \*nn:
-        NFP Network structure
-
-.. _`nfp_net_irqs_wanted.description`:
-
-Description
------------
-
-We want a vector per CPU (or ring), whatever is smaller plus
-NFP_NET_NON_Q_VECTORS for LSC etc.
-
-.. _`nfp_net_irqs_wanted.return`:
-
-Return
-------
-
-Number of interrupts wanted
 
 .. _`nfp_net_irqs_alloc`:
 
@@ -567,40 +516,14 @@ Description
 
 Assumes that the device is stopped
 
-.. _`nfp_net_rx_space`:
-
-nfp_net_rx_space
-================
-
-.. c:function:: int nfp_net_rx_space(struct nfp_net_rx_ring *rx_ring)
-
-    return the number of free slots on the RX ring
-
-    :param struct nfp_net_rx_ring \*rx_ring:
-        RX ring structure
-
-.. _`nfp_net_rx_space.description`:
-
-Description
------------
-
-Make sure we leave at least one slot free.
-
-.. _`nfp_net_rx_space.return`:
-
-Return
-------
-
-True if there is space on the RX ring
-
 .. _`nfp_net_rx_alloc_one`:
 
 nfp_net_rx_alloc_one
 ====================
 
-.. c:function:: struct sk_buff *nfp_net_rx_alloc_one(struct nfp_net_rx_ring *rx_ring, dma_addr_t *dma_addr, unsigned int fl_bufsz)
+.. c:function:: void *nfp_net_rx_alloc_one(struct nfp_net_rx_ring *rx_ring, dma_addr_t *dma_addr, unsigned int fl_bufsz, bool xdp)
 
-    Allocate and map skb for RX
+    Allocate and map page frag for RX
 
     :param struct nfp_net_rx_ring \*rx_ring:
         RX ring structure of the skb
@@ -611,34 +534,37 @@ nfp_net_rx_alloc_one
     :param unsigned int fl_bufsz:
         size of freelist buffers
 
+    :param bool xdp:
+        Whether XDP is enabled
+
 .. _`nfp_net_rx_alloc_one.description`:
 
 Description
 -----------
 
-This function will allcate a new skb, map it for DMA.
+This function will allcate a new page frag, map it for DMA.
 
 .. _`nfp_net_rx_alloc_one.return`:
 
 Return
 ------
 
-allocated skb or NULL on failure.
+allocated page frag or NULL on failure.
 
 .. _`nfp_net_rx_give_one`:
 
 nfp_net_rx_give_one
 ===================
 
-.. c:function:: void nfp_net_rx_give_one(struct nfp_net_rx_ring *rx_ring, struct sk_buff *skb, dma_addr_t dma_addr)
+.. c:function:: void nfp_net_rx_give_one(struct nfp_net_rx_ring *rx_ring, void *frag, dma_addr_t dma_addr)
 
     Put mapped skb on the software and hardware rings
 
     :param struct nfp_net_rx_ring \*rx_ring:
         RX ring structure
 
-    :param struct sk_buff \*skb:
-        Skb to put on rings
+    :param void \*frag:
+        page fragment buffer
 
     :param dma_addr_t dma_addr:
         DMA address of skb mapping
@@ -668,7 +594,7 @@ Do \*not\* call if ring buffers were never put on the FW freelist
 nfp_net_rx_ring_bufs_free
 =========================
 
-.. c:function:: void nfp_net_rx_ring_bufs_free(struct nfp_net *nn, struct nfp_net_rx_ring *rx_ring)
+.. c:function:: void nfp_net_rx_ring_bufs_free(struct nfp_net *nn, struct nfp_net_rx_ring *rx_ring, bool xdp)
 
     Free any buffers currently on the RX ring
 
@@ -677,6 +603,9 @@ nfp_net_rx_ring_bufs_free
 
     :param struct nfp_net_rx_ring \*rx_ring:
         RX ring to remove buffers from
+
+    :param bool xdp:
+        Whether XDP is enabled
 
 .. _`nfp_net_rx_ring_bufs_free.description`:
 
@@ -692,7 +621,7 @@ to restore required ring geometry.
 nfp_net_rx_ring_bufs_alloc
 ==========================
 
-.. c:function:: int nfp_net_rx_ring_bufs_alloc(struct nfp_net *nn, struct nfp_net_rx_ring *rx_ring)
+.. c:function:: int nfp_net_rx_ring_bufs_alloc(struct nfp_net *nn, struct nfp_net_rx_ring *rx_ring, bool xdp)
 
     Fill RX ring with buffers (don't give to FW)
 
@@ -701,6 +630,9 @@ nfp_net_rx_ring_bufs_alloc
 
     :param struct nfp_net_rx_ring \*rx_ring:
         RX ring to remove buffers from
+
+    :param bool xdp:
+        Whether XDP is enabled
 
 .. _`nfp_net_rx_ring_fill_freelist`:
 
@@ -771,26 +703,6 @@ Note, this function is separated out from the napi poll function to
 more cleanly separate packet receive code from other bookkeeping
 functions performed in the napi poll function.
 
-There are differences between the NFP-3200 firmware and the
-NFP-6000 firmware.  The NFP-3200 firmware uses a dedicated RX queue
-to indicate that new packets have arrived.  The NFP-6000 does not
-have this queue and uses the DD bit in the RX descriptor. This
-method cannot be used on the NFP-3200 as it causes a race
-
-.. _`nfp_net_rx.condition`:
-
-condition
----------
-
-The RX ring write pointer on the NFP-3200 is updated
-after packets (and descriptors) have been DMAed.  If the DD bit is
-used and subsequently the read pointer is updated this may lead to
-the RX queue to underflow (if the firmware has not yet update the
-write pointer).  Therefore we use slightly ugly conditional code
-below to handle the differences.  We may, in the future update the
-NFP-3200 firmware to behave the same as the firmware on the
-NFP-6000.
-
 .. _`nfp_net_rx.return`:
 
 Return
@@ -837,7 +749,7 @@ nfp_net_tx_ring_free
 nfp_net_tx_ring_alloc
 =====================
 
-.. c:function:: int nfp_net_tx_ring_alloc(struct nfp_net_tx_ring *tx_ring, u32 cnt)
+.. c:function:: int nfp_net_tx_ring_alloc(struct nfp_net_tx_ring *tx_ring, u32 cnt, bool is_xdp)
 
     Allocate resource for a TX ring
 
@@ -846,6 +758,9 @@ nfp_net_tx_ring_alloc
 
     :param u32 cnt:
         Ring buffer count
+
+    :param bool is_xdp:
+        True if ring will be used for XDP
 
 .. _`nfp_net_tx_ring_alloc.return`:
 
@@ -1079,17 +994,17 @@ nfp_net_info
 nfp_net_netdev_alloc
 ====================
 
-.. c:function:: struct nfp_net *nfp_net_netdev_alloc(struct pci_dev *pdev, int max_tx_rings, int max_rx_rings)
+.. c:function:: struct nfp_net *nfp_net_netdev_alloc(struct pci_dev *pdev, unsigned int max_tx_rings, unsigned int max_rx_rings)
 
     Allocate netdev and related structure
 
     :param struct pci_dev \*pdev:
         PCI device
 
-    :param int max_tx_rings:
+    :param unsigned int max_tx_rings:
         Maximum number of TX rings supported by device
 
-    :param int max_rx_rings:
+    :param unsigned int max_rx_rings:
         Maximum number of RX rings supported by device
 
 .. _`nfp_net_netdev_alloc.description`:

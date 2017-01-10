@@ -156,6 +156,7 @@ Definition
     struct samsung_pin_bank_data {
         const struct samsung_pin_bank_type *type;
         u32 pctl_offset;
+        u8 pctl_res_idx;
         u8 nr_pins;
         u8 eint_func;
         enum eint_type eint_type;
@@ -174,6 +175,9 @@ type
 
 pctl_offset
     starting offset of the pin-bank registers.
+
+pctl_res_idx
+    index of base address for pin-bank registers.
 
 nr_pins
     number of pins included in this bank.
@@ -211,8 +215,10 @@ Definition
 
     struct samsung_pin_bank {
         const struct samsung_pin_bank_type *type;
+        void __iomem *pctl_base;
         u32 pctl_offset;
         u8 nr_pins;
+        void __iomem *eint_base;
         u8 eint_func;
         enum eint_type eint_type;
         u32 eint_mask;
@@ -238,11 +244,17 @@ Members
 type
     type of the bank (register offsets and bitfield widths)
 
+pctl_base
+    base address of the pin-bank registers
+
 pctl_offset
     starting offset of the pin-bank registers.
 
 nr_pins
     number of pins included in this bank.
+
+eint_base
+    base address of the pin-bank EINT registers.
 
 eint_func
     function to set in CON register to configure pin as EINT.
@@ -308,6 +320,7 @@ Definition
     struct samsung_pin_ctrl {
         const struct samsung_pin_bank_data *pin_banks;
         u32 nr_banks;
+        int nr_ext_resources;
         int (*eint_gpio_init)(struct samsung_pinctrl_drv_data *);
         int (*eint_wkup_init)(struct samsung_pinctrl_drv_data *);
         void (*suspend)(struct samsung_pinctrl_drv_data *);
@@ -324,6 +337,9 @@ pin_banks
 
 nr_banks
     number of pin banks.
+
+nr_ext_resources
+    number of the extra base address for pin banks.
 
 eint_gpio_init
     platform specific callback to setup the external gpio
@@ -357,7 +373,6 @@ Definition
 
     struct samsung_pinctrl_drv_data {
         struct list_head node;
-        void __iomem *virt_base;
         struct device *dev;
         int irq;
         struct pinctrl_desc pctl;
@@ -381,9 +396,6 @@ Members
 
 node
     global list node
-
-virt_base
-    register base address of the controller.
 
 dev
     device instance representing the controller.

@@ -142,7 +142,7 @@ cfs_hash_lookup
 cfs_hash_for_each_tight
 =======================
 
-.. c:function:: __u64 cfs_hash_for_each_tight(struct cfs_hash *hs, cfs_hash_for_each_cb_t func, void *data, int remove_safe)
+.. c:function:: u64 cfs_hash_for_each_tight(struct cfs_hash *hs, cfs_hash_for_each_cb_t func, void *data, int remove_safe)
 
     and pass to it as an argument each hash item and the private \ ``data``\ .
 

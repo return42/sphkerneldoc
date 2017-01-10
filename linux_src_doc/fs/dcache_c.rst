@@ -171,25 +171,25 @@ Description
 
 The \ ``enter``\ () and \ ``finish``\ () callbacks are called with d_lock held.
 
-.. _`have_submounts`:
+.. _`path_has_submounts`:
 
-have_submounts
-==============
+path_has_submounts
+==================
 
-.. c:function:: int have_submounts(struct dentry *parent)
+.. c:function:: int path_has_submounts(const struct path *parent)
 
-    check for mounts over a dentry
+    check for mounts over a dentry in the current namespace.
 
-    :param struct dentry \*parent:
-        dentry to check.
+    :param const struct path \*parent:
+        path to check.
 
-.. _`have_submounts.description`:
+.. _`path_has_submounts.description`:
 
 Description
 -----------
 
 Return true if the parent or its subdirectories contain
-a mount point
+a mount point in the current namespace.
 
 .. _`shrink_dcache_parent`:
 

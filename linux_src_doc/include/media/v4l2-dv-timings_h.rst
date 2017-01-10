@@ -124,6 +124,29 @@ function (if non-NULL).
 On success it will fill in \ ``t``\  with the found timings and it returns true.
 On failure it will return false.
 
+.. _`v4l2_find_dv_timings_cea861_vic`:
+
+v4l2_find_dv_timings_cea861_vic
+===============================
+
+.. c:function:: bool v4l2_find_dv_timings_cea861_vic(struct v4l2_dv_timings *t, u8 vic)
+
+    find timings based on CEA-861 VIC
+
+    :param struct v4l2_dv_timings \*t:
+        the timings data.
+
+    :param u8 vic:
+        CEA-861 VIC code
+
+.. _`v4l2_find_dv_timings_cea861_vic.description`:
+
+Description
+-----------
+
+On success it will fill in \ ``t``\  with the found timings and it returns true.
+On failure it will return false.
+
 .. _`v4l2_match_dv_timings`:
 
 v4l2_match_dv_timings
@@ -284,6 +307,18 @@ Description
 Determines the aspect ratio from the EDID.
 See VESA Enhanced EDID standard, release A, rev 2, section 3.6.2:
 "Horizontal and Vertical Screen Size or Aspect Ratio"
+
+.. _`v4l2_dv_timings_aspect_ratio`:
+
+v4l2_dv_timings_aspect_ratio
+============================
+
+.. c:function:: struct v4l2_fract v4l2_dv_timings_aspect_ratio(const struct v4l2_dv_timings *t)
+
+    calculate the aspect ratio based on the v4l2_dv_timings information.
+
+    :param const struct v4l2_dv_timings \*t:
+        the timings data.
 
 .. This file was automatic generated / don't edit.
 

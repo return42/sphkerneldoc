@@ -26,6 +26,31 @@ The \ ``ecmd``\  parameter is expected to have been cleared before calling
 
 Returns 0 for success, negative on error.
 
+.. _`mii_ethtool_get_link_ksettings`:
+
+mii_ethtool_get_link_ksettings
+==============================
+
+.. c:function:: int mii_ethtool_get_link_ksettings(struct mii_if_info *mii, struct ethtool_link_ksettings *cmd)
+
+    get settings that are specified in \ ``cmd``\ 
+
+    :param struct mii_if_info \*mii:
+        MII interface
+
+    :param struct ethtool_link_ksettings \*cmd:
+        requested ethtool_link_ksettings
+
+.. _`mii_ethtool_get_link_ksettings.description`:
+
+Description
+-----------
+
+The \ ``cmd``\  parameter is expected to have been cleared before calling
+\ :c:func:`mii_ethtool_get_link_ksettings`\ .
+
+Returns 0 for success, negative on error.
+
 .. _`mii_ethtool_sset`:
 
 mii_ethtool_sset
@@ -42,6 +67,28 @@ mii_ethtool_sset
         requested ethtool_cmd
 
 .. _`mii_ethtool_sset.description`:
+
+Description
+-----------
+
+Returns 0 for success, negative on error.
+
+.. _`mii_ethtool_set_link_ksettings`:
+
+mii_ethtool_set_link_ksettings
+==============================
+
+.. c:function:: int mii_ethtool_set_link_ksettings(struct mii_if_info *mii, const struct ethtool_link_ksettings *cmd)
+
+    set settings that are specified in \ ``cmd``\ 
+
+    :param struct mii_if_info \*mii:
+        MII interfaces
+
+    :param const struct ethtool_link_ksettings \*cmd:
+        requested ethtool_link_ksettings
+
+.. _`mii_ethtool_set_link_ksettings.description`:
 
 Description
 -----------

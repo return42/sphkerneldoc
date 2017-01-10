@@ -282,7 +282,6 @@ Definition
         u16 ssn;
         u16 buf_size;
         u16 timeout;
-        u8 dialog_token;
         bool auto_seq;
         bool removed;
     }
@@ -333,9 +332,6 @@ buf_size
 timeout
     reset timer value (in TUs).
 
-dialog_token
-    dialog token for aggregation session
-
 auto_seq
     used for offloaded BA sessions to automatically pick head_seq_and
     and ssn.
@@ -375,6 +371,7 @@ Definition
     struct sta_ampdu_mlme {
         struct mutex mtx;
         struct tid_ampdu_rx __rcu  *tid_rx[IEEE80211_NUM_TIDS];
+        u8 tid_rx_token[IEEE80211_NUM_TIDS];
         unsigned long tid_rx_timer_expired[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
         unsigned long tid_rx_stop_requested[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
         unsigned long agg_session_valid[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
@@ -399,6 +396,9 @@ mtx
 
 tid_rx
     aggregation info for Rx per TID -- RCU protected
+
+tid_rx_token
+    dialog tokens for valid aggregation sessions
 
 tid_rx_timer_expired
     bitmap indicating on which TIDs the

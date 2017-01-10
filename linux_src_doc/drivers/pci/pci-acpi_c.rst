@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pci/pci-acpi.c
 
+.. _`pciehp_is_native`:
+
+pciehp_is_native
+================
+
+.. c:function:: bool pciehp_is_native(struct pci_dev *pdev)
+
+    Check whether a hotplug port is handled by the OS
+
+    :param struct pci_dev \*pdev:
+        Hotplug port to check
+
+.. _`pciehp_is_native.description`:
+
+Description
+-----------
+
+Walk up from \ ``pdev``\  to the host bridge, obtain its cached \_OSC Control Field
+and return the value of the "PCI Express Native Hot Plug control" bit.
+On failure to obtain the \_OSC Control Field return \ ``false``\ .
+
 .. _`pci_acpi_wake_bus`:
 
 pci_acpi_wake_bus

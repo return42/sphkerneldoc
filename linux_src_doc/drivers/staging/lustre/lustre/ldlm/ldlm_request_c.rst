@@ -231,7 +231,7 @@ that needs to be performed.
 ldlm_cli_enqueue
 ================
 
-.. c:function:: int ldlm_cli_enqueue(struct obd_export *exp, struct ptlrpc_request **reqp, struct ldlm_enqueue_info *einfo, const struct ldlm_res_id *res_id, ldlm_policy_data_t const *policy, __u64 *flags, void *lvb, __u32 lvb_len, enum lvb_type lvb_type, struct lustre_handle *lockh, int async)
+.. c:function:: int ldlm_cli_enqueue(struct obd_export *exp, struct ptlrpc_request **reqp, struct ldlm_enqueue_info *einfo, const struct ldlm_res_id *res_id, union ldlm_policy_data const *policy, __u64 *flags, void *lvb, __u32 lvb_len, enum lvb_type lvb_type, struct lustre_handle *lockh, int async)
 
     side lock enqueue.
 
@@ -247,7 +247,7 @@ ldlm_cli_enqueue
     :param const struct ldlm_res_id \*res_id:
         *undescribed*
 
-    :param ldlm_policy_data_t const \*policy:
+    :param union ldlm_policy_data const \*policy:
         *undescribed*
 
     :param __u64 \*flags:
@@ -574,7 +574,7 @@ callback will be performed in this function.
 ldlm_cancel_resource_local
 ==========================
 
-.. c:function:: int ldlm_cancel_resource_local(struct ldlm_resource *res, struct list_head *cancels, ldlm_policy_data_t *policy, enum ldlm_mode mode, __u64 lock_flags, enum ldlm_cancel_flags cancel_flags, void *opaque)
+.. c:function:: int ldlm_cancel_resource_local(struct ldlm_resource *res, struct list_head *cancels, union ldlm_policy_data *policy, enum ldlm_mode mode, __u64 lock_flags, enum ldlm_cancel_flags cancel_flags, void *opaque)
 
     given policy, mode. GET the found locks and add them into the \a cancels list.
 
@@ -584,7 +584,7 @@ ldlm_cancel_resource_local
     :param struct list_head \*cancels:
         *undescribed*
 
-    :param ldlm_policy_data_t \*policy:
+    :param union ldlm_policy_data \*policy:
         *undescribed*
 
     :param enum ldlm_mode mode:
@@ -625,7 +625,7 @@ ldlm_cli_cancel_list
 ldlm_cli_cancel_unused_resource
 ===============================
 
-.. c:function:: int ldlm_cli_cancel_unused_resource(struct ldlm_namespace *ns, const struct ldlm_res_id *res_id, ldlm_policy_data_t *policy, enum ldlm_mode mode, enum ldlm_cancel_flags flags, void *opaque)
+.. c:function:: int ldlm_cli_cancel_unused_resource(struct ldlm_namespace *ns, const struct ldlm_res_id *res_id, union ldlm_policy_data *policy, enum ldlm_mode mode, enum ldlm_cancel_flags flags, void *opaque)
 
     :param struct ldlm_namespace \*ns:
         *undescribed*
@@ -633,7 +633,7 @@ ldlm_cli_cancel_unused_resource
     :param const struct ldlm_res_id \*res_id:
         *undescribed*
 
-    :param ldlm_policy_data_t \*policy:
+    :param union ldlm_policy_data \*policy:
         *undescribed*
 
     :param enum ldlm_mode mode:

@@ -170,18 +170,12 @@ first, and which should only happen in one of the above conditions.
 __dwc3_gadget_ep_enable
 =======================
 
-.. c:function:: int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, const struct usb_endpoint_descriptor *desc, const struct usb_ss_ep_comp_descriptor *comp_desc, bool modify, bool restore)
+.. c:function:: int __dwc3_gadget_ep_enable(struct dwc3_ep *dep, bool modify, bool restore)
 
     Initializes a HW endpoint
 
     :param struct dwc3_ep \*dep:
         endpoint to be initialized
-
-    :param const struct usb_endpoint_descriptor \*desc:
-        USB Endpoint Descriptor
-
-    :param const struct usb_ss_ep_comp_descriptor \*comp_desc:
-        *undescribed*
 
     :param bool modify:
         *undescribed*

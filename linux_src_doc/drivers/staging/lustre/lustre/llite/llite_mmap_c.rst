@@ -6,17 +6,14 @@
 ll_fault_io_init
 ================
 
-.. c:function:: struct cl_io *ll_fault_io_init(struct vm_area_struct *vma, struct lu_env **env_ret, struct cl_env_nest *nest, pgoff_t index, unsigned long *ra_flags)
+.. c:function:: struct cl_io *ll_fault_io_init(struct lu_env *env, struct vm_area_struct *vma, pgoff_t index, unsigned long *ra_flags)
 
-    \param vma - virtual memory area addressed to page fault \param env - corespondent lu_env to processing \param nest - nested level \param index - page index corespondent to fault. \parm ra_flags - vma readahead flags.
+    \param vma - virtual memory area addressed to page fault \param env - corespondent lu_env to processing \param index - page index corespondent to fault. \parm ra_flags - vma readahead flags.
+
+    :param struct lu_env \*env:
+        *undescribed*
 
     :param struct vm_area_struct \*vma:
-        *undescribed*
-
-    :param struct lu_env \*\*env_ret:
-        *undescribed*
-
-    :param struct cl_env_nest \*nest:
         *undescribed*
 
     :param pgoff_t index:
@@ -30,9 +27,7 @@ ll_fault_io_init
 Description
 -----------
 
-\return allocated and initialized env for fault operation.
-\retval EINVAL if env can't allocated
-\return other error codes from cl_io_init.
+\return error codes from cl_io_init.
 
 .. _`ll_fault0`:
 

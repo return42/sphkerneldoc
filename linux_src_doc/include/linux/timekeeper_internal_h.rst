@@ -19,9 +19,9 @@ Definition
 
     struct tk_read_base {
         struct clocksource *clock;
-        cycle_t (*read)(struct clocksource *cs);
-        cycle_t mask;
-        cycle_t cycle_last;
+        u64 (*read)(struct clocksource *cs);
+        u64 mask;
+        u64 cycle_last;
         u32 mult;
         u32 shift;
         u64 xtime_nsec;
@@ -98,7 +98,7 @@ Definition
         u8 cs_was_changed_seq;
         ktime_t next_leap_ktime;
         struct timespec64 raw_time;
-        cycle_t cycle_interval;
+        u64 cycle_interval;
         u64 xtime_interval;
         s64 xtime_remainder;
         u32 raw_interval;

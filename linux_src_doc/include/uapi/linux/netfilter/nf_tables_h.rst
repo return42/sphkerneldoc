@@ -210,6 +210,10 @@ Definition
         NFT_MSG_NEWGEN,
         NFT_MSG_GETGEN,
         NFT_MSG_TRACE,
+        NFT_MSG_NEWOBJ,
+        NFT_MSG_GETOBJ,
+        NFT_MSG_DELOBJ,
+        NFT_MSG_GETOBJ_RESET,
         NFT_MSG_MAX
     };
 
@@ -271,6 +275,18 @@ NFT_MSG_GETGEN
 
 NFT_MSG_TRACE
     trace event (enum nft_trace_attributes)
+
+NFT_MSG_NEWOBJ
+    create a stateful object (enum nft_obj_attributes)
+
+NFT_MSG_GETOBJ
+    get a stateful object (enum nft_obj_attributes)
+
+NFT_MSG_DELOBJ
+    delete a stateful object (enum nft_obj_attributes)
+
+NFT_MSG_GETOBJ_RESET
+    get and reset a stateful object (enum nft_obj_attributes)
 
 NFT_MSG_MAX
     *undescribed*
@@ -653,7 +669,8 @@ Definition
         NFT_SET_INTERVAL,
         NFT_SET_MAP,
         NFT_SET_TIMEOUT,
-        NFT_SET_EVAL
+        NFT_SET_EVAL,
+        NFT_SET_OBJECT
     };
 
 .. _`nft_set_flags.constants`:
@@ -678,6 +695,9 @@ NFT_SET_TIMEOUT
 
 NFT_SET_EVAL
     set contains expressions for evaluation
+
+NFT_SET_OBJECT
+    set contains stateful objects
 
 .. _`nft_set_policies`:
 
@@ -779,6 +799,7 @@ Definition
         NFTA_SET_GC_INTERVAL,
         NFTA_SET_USERDATA,
         NFTA_SET_PAD,
+        NFTA_SET_OBJ_TYPE,
         __NFTA_SET_MAX
     };
 
@@ -831,6 +852,9 @@ NFTA_SET_USERDATA
 
 NFTA_SET_PAD
     *undescribed*
+
+NFTA_SET_OBJ_TYPE
+    stateful object type (NLA_U32: NFT_OBJECT\_\*)
 
 __NFTA_SET_MAX
     *undescribed*
@@ -889,6 +913,7 @@ Definition
         NFTA_SET_ELEM_USERDATA,
         NFTA_SET_ELEM_EXPR,
         NFTA_SET_ELEM_PAD,
+        NFTA_SET_ELEM_OBJREF,
         __NFTA_SET_ELEM_MAX
     };
 
@@ -923,6 +948,9 @@ NFTA_SET_ELEM_EXPR
 
 NFTA_SET_ELEM_PAD
     *undescribed*
+
+NFTA_SET_ELEM_OBJREF
+    stateful object reference (NLA_STRING)
 
 __NFTA_SET_ELEM_MAX
     *undescribed*
@@ -1739,6 +1767,7 @@ Definition
         NFTA_PAYLOAD_SREG,
         NFTA_PAYLOAD_CSUM_TYPE,
         NFTA_PAYLOAD_CSUM_OFFSET,
+        NFTA_PAYLOAD_CSUM_FLAGS,
         __NFTA_PAYLOAD_MAX
     };
 
@@ -1770,6 +1799,9 @@ NFTA_PAYLOAD_CSUM_TYPE
 
 NFTA_PAYLOAD_CSUM_OFFSET
     checksum offset relative to base (NLA_U32)
+
+NFTA_PAYLOAD_CSUM_FLAGS
+    checksum flags (NLA_U32)
 
 __NFTA_PAYLOAD_MAX
     *undescribed*
@@ -1946,6 +1978,42 @@ NFT_META_CGROUP
 NFT_META_PRANDOM
     a 32bit pseudo-random number
 
+.. _`nft_rt_keys`:
+
+enum nft_rt_keys
+================
+
+.. c:type:: enum nft_rt_keys
+
+    nf_tables routing expression keys
+
+.. _`nft_rt_keys.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_rt_keys {
+        NFT_RT_CLASSID,
+        NFT_RT_NEXTHOP4,
+        NFT_RT_NEXTHOP6
+    };
+
+.. _`nft_rt_keys.constants`:
+
+Constants
+---------
+
+NFT_RT_CLASSID
+    realm value of packet's route (skb->dst->tclassid)
+
+NFT_RT_NEXTHOP4
+    routing nexthop for IPv4
+
+NFT_RT_NEXTHOP6
+    routing nexthop for IPv6
+
 .. _`nft_hash_attributes`:
 
 enum nft_hash_attributes
@@ -2044,6 +2112,46 @@ NFTA_META_SREG
     source register (NLA_U32)
 
 __NFTA_META_MAX
+    *undescribed*
+
+.. _`nft_rt_attributes`:
+
+enum nft_rt_attributes
+======================
+
+.. c:type:: enum nft_rt_attributes
+
+    nf_tables routing expression netlink attributes
+
+.. _`nft_rt_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_rt_attributes {
+        NFTA_RT_UNSPEC,
+        NFTA_RT_DREG,
+        NFTA_RT_KEY,
+        __NFTA_RT_MAX
+    };
+
+.. _`nft_rt_attributes.constants`:
+
+Constants
+---------
+
+NFTA_RT_UNSPEC
+    *undescribed*
+
+NFTA_RT_DREG
+    destination register (NLA_U32)
+
+NFTA_RT_KEY
+    routing data item to load (NLA_U32: nft_rt_keys)
+
+__NFTA_RT_MAX
     *undescribed*
 
 .. _`nft_ct_keys`:
@@ -2407,6 +2515,7 @@ Definition
         NFTA_QUOTA_BYTES,
         NFTA_QUOTA_FLAGS,
         NFTA_QUOTA_PAD,
+        NFTA_QUOTA_CONSUMED,
         __NFTA_QUOTA_MAX
     };
 
@@ -2426,6 +2535,9 @@ NFTA_QUOTA_FLAGS
 
 NFTA_QUOTA_PAD
     *undescribed*
+
+NFTA_QUOTA_CONSUMED
+    quota already consumed in bytes (NLA_U64)
 
 __NFTA_QUOTA_MAX
     *undescribed*
@@ -2813,6 +2925,58 @@ NFTA_FWD_SREG_DEV
 __NFTA_FWD_MAX
     *undescribed*
 
+.. _`nft_objref_attributes`:
+
+enum nft_objref_attributes
+==========================
+
+.. c:type:: enum nft_objref_attributes
+
+    nf_tables stateful object expression netlink attributes
+
+.. _`nft_objref_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_objref_attributes {
+        NFTA_OBJREF_UNSPEC,
+        NFTA_OBJREF_IMM_TYPE,
+        NFTA_OBJREF_IMM_NAME,
+        NFTA_OBJREF_SET_SREG,
+        NFTA_OBJREF_SET_NAME,
+        NFTA_OBJREF_SET_ID,
+        __NFTA_OBJREF_MAX
+    };
+
+.. _`nft_objref_attributes.constants`:
+
+Constants
+---------
+
+NFTA_OBJREF_UNSPEC
+    *undescribed*
+
+NFTA_OBJREF_IMM_TYPE
+    object type for immediate reference (NLA_U32: nft_register)
+
+NFTA_OBJREF_IMM_NAME
+    object name for immediate reference (NLA_STRING)
+
+NFTA_OBJREF_SET_SREG
+    source register of the data to look for (NLA_U32: nft_registers)
+
+NFTA_OBJREF_SET_NAME
+    name of the set where to look for (NLA_STRING)
+
+NFTA_OBJREF_SET_ID
+    id of the set where to look for in this transaction (NLA_U32)
+
+__NFTA_OBJREF_MAX
+    *undescribed*
+
 .. _`nft_gen_attributes`:
 
 enum nft_gen_attributes
@@ -2847,6 +3011,58 @@ NFTA_GEN_ID
     Ruleset generation ID (NLA_U32)
 
 __NFTA_GEN_MAX
+    *undescribed*
+
+.. _`nft_object_attributes`:
+
+enum nft_object_attributes
+==========================
+
+.. c:type:: enum nft_object_attributes
+
+    nf_tables stateful object netlink attributes
+
+.. _`nft_object_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_object_attributes {
+        NFTA_OBJ_UNSPEC,
+        NFTA_OBJ_TABLE,
+        NFTA_OBJ_NAME,
+        NFTA_OBJ_TYPE,
+        NFTA_OBJ_DATA,
+        NFTA_OBJ_USE,
+        __NFTA_OBJ_MAX
+    };
+
+.. _`nft_object_attributes.constants`:
+
+Constants
+---------
+
+NFTA_OBJ_UNSPEC
+    *undescribed*
+
+NFTA_OBJ_TABLE
+    name of the table containing the expression (NLA_STRING)
+
+NFTA_OBJ_NAME
+    name of this expression type (NLA_STRING)
+
+NFTA_OBJ_TYPE
+    stateful object type (NLA_U32)
+
+NFTA_OBJ_DATA
+    stateful object data (NLA_NESTED)
+
+NFTA_OBJ_USE
+    number of references to this expression (NLA_U32)
+
+__NFTA_OBJ_MAX
     *undescribed*
 
 .. _`nft_trace_attributes`:

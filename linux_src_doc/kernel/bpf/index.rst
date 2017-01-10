@@ -7,4 +7,5 @@ bpf
 .. toctree::
     :maxdepth: 1
 
+    cgroup_c
     core_c

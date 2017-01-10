@@ -406,24 +406,18 @@ Update the various stats for this VSI and its related entities.
 i40e_find_filter
 ================
 
-.. c:function:: struct i40e_mac_filter *i40e_find_filter(struct i40e_vsi *vsi, u8 *macaddr, s16 vlan, bool is_vf, bool is_netdev)
+.. c:function:: struct i40e_mac_filter *i40e_find_filter(struct i40e_vsi *vsi, const u8 *macaddr, s16 vlan)
 
     Search VSI filter list for specific mac/vlan filter
 
     :param struct i40e_vsi \*vsi:
         the VSI to be searched
 
-    :param u8 \*macaddr:
+    :param const u8 \*macaddr:
         the MAC address
 
     :param s16 vlan:
         the vlan
-
-    :param bool is_vf:
-        make sure its a VF filter, else doesn't matter
-
-    :param bool is_netdev:
-        make sure its a netdev filter, else doesn't matter
 
 .. _`i40e_find_filter.description`:
 
@@ -437,21 +431,15 @@ Returns ptr to the filter object or NULL
 i40e_find_mac
 =============
 
-.. c:function:: struct i40e_mac_filter *i40e_find_mac(struct i40e_vsi *vsi, u8 *macaddr, bool is_vf, bool is_netdev)
+.. c:function:: struct i40e_mac_filter *i40e_find_mac(struct i40e_vsi *vsi, const u8 *macaddr)
 
     Find a mac addr in the macvlan filters list
 
     :param struct i40e_vsi \*vsi:
         the VSI to be searched
 
-    :param u8 \*macaddr:
+    :param const u8 \*macaddr:
         the MAC address we are searching for
-
-    :param bool is_vf:
-        make sure its a VF filter, else doesn't matter
-
-    :param bool is_netdev:
-        make sure its a netdev filter, else doesn't matter
 
 .. _`i40e_find_mac.description`:
 
@@ -480,66 +468,58 @@ Description
 
 Returns true if VSI is in vlan mode or false otherwise
 
-.. _`i40e_put_mac_in_vlan`:
+.. _`i40e_correct_mac_vlan_filters`:
 
-i40e_put_mac_in_vlan
-====================
+i40e_correct_mac_vlan_filters
+=============================
 
-.. c:function:: struct i40e_mac_filter *i40e_put_mac_in_vlan(struct i40e_vsi *vsi, u8 *macaddr, bool is_vf, bool is_netdev)
+.. c:function:: int i40e_correct_mac_vlan_filters(struct i40e_vsi *vsi, struct hlist_head *tmp_add_list, struct hlist_head *tmp_del_list, int vlan_filters)
 
-    Make macvlan filters from macaddrs and vlans
+    Correct non-VLAN filters if necessary
 
     :param struct i40e_vsi \*vsi:
-        the VSI to be searched
+        the VSI to configure
 
-    :param u8 \*macaddr:
-        the mac address to be filtered
+    :param struct hlist_head \*tmp_add_list:
+        list of filters ready to be added
 
-    :param bool is_vf:
-        true if it is a VF
+    :param struct hlist_head \*tmp_del_list:
+        list of filters ready to be deleted
 
-    :param bool is_netdev:
-        true if it is a netdev
+    :param int vlan_filters:
+        the number of active VLAN filters
 
-.. _`i40e_put_mac_in_vlan.description`:
+.. _`i40e_correct_mac_vlan_filters.description`:
 
 Description
 -----------
 
-Goes through all the macvlan filters and adds a
-macvlan filter for each unique vlan that already exists
+Update VLAN=0 and VLAN=-1 (I40E_VLAN_ANY) filters properly so that they
+behave as expected. If we have any active VLAN filters remaining or about
+to be added then we need to update non-VLAN filters to be marked as VLAN=0
+so that they only match against untagged traffic. If we no longer have any
+active VLAN filters, we need to make all non-VLAN filters marked as VLAN=-1
+so that they match against both tagged and untagged traffic. In this way,
+we ensure that we correctly receive the desired traffic. This ensures that
+when we have an active VLAN we will receive only untagged traffic and
+traffic matching active VLANs. If we have no active VLANs then we will
+operate in non-VLAN mode and receive all traffic, tagged or untagged.
 
-Returns first filter found on success, else NULL
+Finally, in a similar fashion, this function also corrects filters when
+there is an active PVID assigned to this VSI.
 
-.. _`i40e_del_mac_all_vlan`:
+In case of memory allocation failure return -ENOMEM. Otherwise, return 0.
 
-i40e_del_mac_all_vlan
-=====================
+This function is only expected to be called from within
+i40e_sync_vsi_filters.
 
-.. c:function:: int i40e_del_mac_all_vlan(struct i40e_vsi *vsi, u8 *macaddr, bool is_vf, bool is_netdev)
+.. _`i40e_correct_mac_vlan_filters.note`:
 
-    Remove a MAC filter from all VLANS
+NOTE
+----
 
-    :param struct i40e_vsi \*vsi:
-        the VSI to be searched
-
-    :param u8 \*macaddr:
-        the mac address to be removed
-
-    :param bool is_vf:
-        true if it is a VF
-
-    :param bool is_netdev:
-        true if it is a netdev
-
-.. _`i40e_del_mac_all_vlan.description`:
-
-Description
------------
-
-Removes a given MAC address from a VSI, regardless of VLAN
-
-Returns 0 for success, or error
+This function expects to be called while under the
+mac_filter_hash_lock
 
 .. _`i40e_rm_default_mac_filter`:
 
@@ -569,24 +549,18 @@ its own filtering intelligently.
 i40e_add_filter
 ===============
 
-.. c:function:: struct i40e_mac_filter *i40e_add_filter(struct i40e_vsi *vsi, u8 *macaddr, s16 vlan, bool is_vf, bool is_netdev)
+.. c:function:: struct i40e_mac_filter *i40e_add_filter(struct i40e_vsi *vsi, const u8 *macaddr, s16 vlan)
 
     Add a mac/vlan filter to the VSI
 
     :param struct i40e_vsi \*vsi:
         the VSI to be searched
 
-    :param u8 \*macaddr:
+    :param const u8 \*macaddr:
         the MAC address
 
     :param s16 vlan:
         the vlan
-
-    :param bool is_vf:
-        make sure its a VF filter, else doesn't matter
-
-    :param bool is_netdev:
-        make sure its a netdev filter, else doesn't matter
 
 .. _`i40e_add_filter.description`:
 
@@ -600,39 +574,74 @@ Returns ptr to the filter object or NULL when no memory available.
 NOTE
 ----
 
-This function is expected to be called with mac_filter_list_lock
+This function is expected to be called with mac_filter_hash_lock
 being held.
+
+.. _`__i40e_del_filter`:
+
+__i40e_del_filter
+=================
+
+.. c:function:: void __i40e_del_filter(struct i40e_vsi *vsi, struct i40e_mac_filter *f)
+
+    Remove a specific filter from the VSI
+
+    :param struct i40e_vsi \*vsi:
+        VSI to remove from
+
+    :param struct i40e_mac_filter \*f:
+        the filter to remove from the list
+
+.. _`__i40e_del_filter.description`:
+
+Description
+-----------
+
+This function should be called instead of i40e_del_filter only if you know
+the exact filter you will remove already, such as via i40e_find_filter or
+i40e_find_mac.
+
+.. _`__i40e_del_filter.note`:
+
+NOTE
+----
+
+This function is expected to be called with mac_filter_hash_lock
+being held.
+
+.. _`__i40e_del_filter.another-note`:
+
+ANOTHER NOTE
+------------
+
+This function MUST be called from within the context of
+the "safe" variants of any list iterators, e.g. \ :c:func:`list_for_each_entry_safe`\ 
+instead of \ :c:func:`list_for_each_entry`\ .
 
 .. _`i40e_del_filter`:
 
 i40e_del_filter
 ===============
 
-.. c:function:: void i40e_del_filter(struct i40e_vsi *vsi, u8 *macaddr, s16 vlan, bool is_vf, bool is_netdev)
+.. c:function:: void i40e_del_filter(struct i40e_vsi *vsi, const u8 *macaddr, s16 vlan)
 
-    Remove a mac/vlan filter from the VSI
+    Remove a MAC/VLAN filter from the VSI
 
     :param struct i40e_vsi \*vsi:
         the VSI to be searched
 
-    :param u8 \*macaddr:
+    :param const u8 \*macaddr:
         the MAC address
 
     :param s16 vlan:
-        the vlan
-
-    :param bool is_vf:
-        make sure it's a VF filter, else doesn't matter
-
-    :param bool is_netdev:
-        make sure it's a netdev filter, else doesn't matter
+        the VLAN
 
 .. _`i40e_del_filter.note`:
 
 NOTE
 ----
 
-This function is expected to be called with mac_filter_list_lock
+This function is expected to be called with mac_filter_hash_lock
 being held.
 
 .. _`i40e_del_filter.another-note`:
@@ -643,6 +652,56 @@ ANOTHER NOTE
 This function MUST be called from within the context of
 the "safe" variants of any list iterators, e.g. \ :c:func:`list_for_each_entry_safe`\ 
 instead of \ :c:func:`list_for_each_entry`\ .
+
+.. _`i40e_put_mac_in_vlan`:
+
+i40e_put_mac_in_vlan
+====================
+
+.. c:function:: struct i40e_mac_filter *i40e_put_mac_in_vlan(struct i40e_vsi *vsi, const u8 *macaddr)
+
+    Make macvlan filters from macaddrs and vlans
+
+    :param struct i40e_vsi \*vsi:
+        the VSI to be searched
+
+    :param const u8 \*macaddr:
+        the mac address to be filtered
+
+.. _`i40e_put_mac_in_vlan.description`:
+
+Description
+-----------
+
+Goes through all the macvlan filters and adds a macvlan filter for each
+unique vlan that already exists. If a PVID has been assigned, instead only
+add the macaddr to that VLAN.
+
+Returns last filter added on success, else NULL
+
+.. _`i40e_del_mac_all_vlan`:
+
+i40e_del_mac_all_vlan
+=====================
+
+.. c:function:: int i40e_del_mac_all_vlan(struct i40e_vsi *vsi, const u8 *macaddr)
+
+    Remove a MAC filter from all VLANS
+
+    :param struct i40e_vsi \*vsi:
+        the VSI to be searched
+
+    :param const u8 \*macaddr:
+        the mac address to be removed
+
+.. _`i40e_del_mac_all_vlan.description`:
+
+Description
+-----------
+
+Removes a given MAC address from a VSI, regardless of VLAN
+
+Returns 0 for success, or error
 
 .. _`i40e_set_mac`:
 
@@ -694,6 +753,52 @@ Description
 
 Setup VSI queue mapping for enabled traffic classes.
 
+.. _`i40e_addr_sync`:
+
+i40e_addr_sync
+==============
+
+.. c:function:: int i40e_addr_sync(struct net_device *netdev, const u8 *addr)
+
+    Callback for dev_(mc\|uc)_sync to add address
+
+    :param struct net_device \*netdev:
+        the netdevice
+
+    :param const u8 \*addr:
+        address to add
+
+.. _`i40e_addr_sync.description`:
+
+Description
+-----------
+
+Called by \__dev_(mc\|uc)_sync when an address needs to be added. We call
+\__dev_(uc\|mc)_sync from .set_rx_mode and guarantee to hold the hash lock.
+
+.. _`i40e_addr_unsync`:
+
+i40e_addr_unsync
+================
+
+.. c:function:: int i40e_addr_unsync(struct net_device *netdev, const u8 *addr)
+
+    Callback for dev_(mc\|uc)_sync to remove address
+
+    :param struct net_device \*netdev:
+        the netdevice
+
+    :param const u8 \*addr:
+        address to add
+
+.. _`i40e_addr_unsync.description`:
+
+Description
+-----------
+
+Called by \__dev_(mc\|uc)_sync when an address needs to be removed. We call
+\__dev_(uc\|mc)_sync from .set_rx_mode and guarantee to hold the hash lock.
+
 .. _`i40e_set_rx_mode`:
 
 i40e_set_rx_mode
@@ -706,35 +811,36 @@ i40e_set_rx_mode
     :param struct net_device \*netdev:
         network interface device structure
 
-.. _`i40e_undo_del_filter_entries`:
+.. _`i40e_undo_filter_entries`:
 
-i40e_undo_del_filter_entries
-============================
+i40e_undo_filter_entries
+========================
 
-.. c:function:: void i40e_undo_del_filter_entries(struct i40e_vsi *vsi, struct list_head *from)
+.. c:function:: void i40e_undo_filter_entries(struct i40e_vsi *vsi, struct hlist_head *from)
 
     Undo the changes made to MAC filter entries
 
     :param struct i40e_vsi \*vsi:
-        pointer to vsi struct
+        Pointer to VSI struct
 
-    :param struct list_head \*from:
+    :param struct hlist_head \*from:
         Pointer to list which contains MAC filter entries - changes to
         those entries needs to be undone.
 
-.. _`i40e_undo_del_filter_entries.description`:
+.. _`i40e_undo_filter_entries.description`:
 
 Description
 -----------
 
-MAC filter entries from list were slated to be removed from device.
+MAC filter entries from list were slated to be sent to firmware, either for
+addition or deletion.
 
 .. _`i40e_update_filter_state`:
 
 i40e_update_filter_state
 ========================
 
-.. c:function:: int i40e_update_filter_state(int count, struct i40e_aqc_add_macvlan_element_data *add_list, struct i40e_mac_filter *add_head, int aq_err)
+.. c:function:: int i40e_update_filter_state(int count, struct i40e_aqc_add_macvlan_element_data *add_list, struct i40e_mac_filter *add_head)
 
     Update filter state based on return data from firmware
 
@@ -747,9 +853,6 @@ i40e_update_filter_state
     :param struct i40e_mac_filter \*add_head:
         *undescribed*
 
-    :param int aq_err:
-        status from fw
-
 .. _`i40e_update_filter_state.description`:
 
 Description
@@ -757,6 +860,103 @@ Description
 
 MAC filter entries from list were slated to be added to device. Returns
 number of successful filters. Note that 0 does NOT mean success!
+
+.. _`i40e_aqc_del_filters`:
+
+i40e_aqc_del_filters
+====================
+
+.. c:function:: void i40e_aqc_del_filters(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_aqc_remove_macvlan_element_data *list, int num_del, int *retval)
+
+    Request firmware to delete a set of filters
+
+    :param struct i40e_vsi \*vsi:
+        ptr to the VSI
+
+    :param const char \*vsi_name:
+        name to display in messages
+
+    :param struct i40e_aqc_remove_macvlan_element_data \*list:
+        the list of filters to send to firmware
+
+    :param int num_del:
+        the number of filters to delete
+
+    :param int \*retval:
+        Set to -EIO on failure to delete
+
+.. _`i40e_aqc_del_filters.description`:
+
+Description
+-----------
+
+Send a request to firmware via AdminQ to delete a set of filters. Uses
+\*retval instead of a return value so that success does not force ret_val to
+be set to 0. This ensures that a sequence of calls to this function
+preserve the previous value of \*retval on successful delete.
+
+.. _`i40e_aqc_add_filters`:
+
+i40e_aqc_add_filters
+====================
+
+.. c:function:: void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_aqc_add_macvlan_element_data *list, struct i40e_mac_filter *add_head, int num_add, bool *promisc_changed)
+
+    Request firmware to add a set of filters
+
+    :param struct i40e_vsi \*vsi:
+        ptr to the VSI
+
+    :param const char \*vsi_name:
+        name to display in messages
+
+    :param struct i40e_aqc_add_macvlan_element_data \*list:
+        the list of filters to send to firmware
+
+    :param struct i40e_mac_filter \*add_head:
+        Position in the add hlist
+
+    :param int num_add:
+        the number of filters to add
+
+    :param bool \*promisc_changed:
+        *undescribed*
+
+.. _`i40e_aqc_add_filters.description`:
+
+Description
+-----------
+
+Send a request to firmware via AdminQ to add a chunk of filters. Will set
+promisc_changed to true if the firmware has run out of space for more
+filters.
+
+.. _`i40e_aqc_broadcast_filter`:
+
+i40e_aqc_broadcast_filter
+=========================
+
+.. c:function:: void i40e_aqc_broadcast_filter(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_mac_filter *f)
+
+    Set promiscuous broadcast flags
+
+    :param struct i40e_vsi \*vsi:
+        pointer to the VSI
+
+    :param const char \*vsi_name:
+        *undescribed*
+
+    :param struct i40e_mac_filter \*f:
+        filter data
+
+.. _`i40e_aqc_broadcast_filter.description`:
+
+Description
+-----------
+
+This function sets or clears the promiscuous broadcast flags for VLAN
+filters in order to properly receive broadcast frames. Assumes that only
+broadcast filters are passed.
 
 .. _`i40e_sync_vsi_filters`:
 
@@ -870,14 +1070,14 @@ i40e_vlan_rx_register
     :param u32 features:
         netdev features to test if VLAN offload is enabled or not
 
-.. _`i40e_vsi_add_vlan`:
+.. _`i40e_add_vlan_all_mac`:
 
-i40e_vsi_add_vlan
-=================
+i40e_add_vlan_all_mac
+=====================
 
-.. c:function:: int i40e_vsi_add_vlan(struct i40e_vsi *vsi, s16 vid)
+.. c:function:: int i40e_add_vlan_all_mac(struct i40e_vsi *vsi, s16 vid)
 
-    Add vsi membership for given vlan
+    Add a MAC/VLAN filter for each existing MAC address
 
     :param struct i40e_vsi \*vsi:
         the vsi being configured
@@ -885,14 +1085,47 @@ i40e_vsi_add_vlan
     :param s16 vid:
         vlan id to be added (0 = untagged only , -1 = any)
 
-.. _`i40e_vsi_kill_vlan`:
+.. _`i40e_add_vlan_all_mac.description`:
 
-i40e_vsi_kill_vlan
-==================
+Description
+-----------
 
-.. c:function:: int i40e_vsi_kill_vlan(struct i40e_vsi *vsi, s16 vid)
+This is a helper function for adding a new MAC/VLAN filter with the
+specified VLAN for each existing MAC address already in the hash table.
+This function does \*not\* perform any accounting to update filters based on
+VLAN mode.
 
-    Remove vsi membership for given vlan
+.. _`i40e_add_vlan_all_mac.note`:
+
+NOTE
+----
+
+this function expects to be called while under the
+mac_filter_hash_lock
+
+.. _`i40e_vsi_add_vlan`:
+
+i40e_vsi_add_vlan
+=================
+
+.. c:function:: int i40e_vsi_add_vlan(struct i40e_vsi *vsi, s16 vid)
+
+    Add VSI membership for given VLAN
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured
+
+    :param s16 vid:
+        VLAN id to be added (0 = untagged only , -1 = any)
+
+.. _`i40e_rm_vlan_all_mac`:
+
+i40e_rm_vlan_all_mac
+====================
+
+.. c:function:: void i40e_rm_vlan_all_mac(struct i40e_vsi *vsi, s16 vid)
+
+    Remove MAC/VLAN pair for all MAC with the given VLAN
 
     :param struct i40e_vsi \*vsi:
         the vsi being configured
@@ -900,12 +1133,38 @@ i40e_vsi_kill_vlan
     :param s16 vid:
         vlan id to be removed (0 = untagged only , -1 = any)
 
-.. _`i40e_vsi_kill_vlan.return`:
+.. _`i40e_rm_vlan_all_mac.description`:
 
-Return
-------
+Description
+-----------
 
-0 on success or negative otherwise
+This function should be used to remove all VLAN filters which match the
+given VID. It does not schedule the service event and does not take the
+mac_filter_hash_lock so it may be combined with other operations under
+a single invocation of the mac_filter_hash_lock.
+
+.. _`i40e_rm_vlan_all_mac.note`:
+
+NOTE
+----
+
+this function expects to be called while under the
+mac_filter_hash_lock
+
+.. _`i40e_vsi_kill_vlan`:
+
+i40e_vsi_kill_vlan
+==================
+
+.. c:function:: void i40e_vsi_kill_vlan(struct i40e_vsi *vsi, s16 vid)
+
+    Remove VSI membership for given VLAN
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured
+
+    :param s16 vid:
+        VLAN id to be removed (0 = untagged only , -1 = any)
 
 .. _`i40e_vlan_rx_add_vid`:
 
@@ -1341,6 +1600,50 @@ i40e_msix_clean_rings
     :param void \*data:
         pointer to a q_vector
 
+.. _`i40e_irq_affinity_notify`:
+
+i40e_irq_affinity_notify
+========================
+
+.. c:function:: void i40e_irq_affinity_notify(struct irq_affinity_notify *notify, const cpumask_t *mask)
+
+    Callback for affinity changes
+
+    :param struct irq_affinity_notify \*notify:
+        context as to what irq was changed
+
+    :param const cpumask_t \*mask:
+        the new affinity mask
+
+.. _`i40e_irq_affinity_notify.description`:
+
+Description
+-----------
+
+This is a callback function used by the irq_set_affinity_notifier function
+so that we may register to receive changes to the irq affinity masks.
+
+.. _`i40e_irq_affinity_release`:
+
+i40e_irq_affinity_release
+=========================
+
+.. c:function:: void i40e_irq_affinity_release(struct kref *ref)
+
+    Callback for affinity notifier release
+
+    :param struct kref \*ref:
+        internal core kernel usage
+
+.. _`i40e_irq_affinity_release.description`:
+
+Description
+-----------
+
+This is a callback function used by the irq_set_affinity_notifier function
+to inform the current notification subscriber that they will no longer
+receive notifications.
+
 .. _`i40e_vsi_request_irq_msix`:
 
 i40e_vsi_request_irq_msix
@@ -1621,20 +1924,29 @@ i40e_vsi_control_rx
     :param bool enable:
         start or stop the rings
 
-.. _`i40e_vsi_control_rings`:
+.. _`i40e_vsi_start_rings`:
 
-i40e_vsi_control_rings
-======================
+i40e_vsi_start_rings
+====================
 
-.. c:function:: int i40e_vsi_control_rings(struct i40e_vsi *vsi, bool request)
+.. c:function:: int i40e_vsi_start_rings(struct i40e_vsi *vsi)
 
-    Start or stop a VSI's rings
+    Start a VSI's rings
 
     :param struct i40e_vsi \*vsi:
         the VSI being configured
 
-    :param bool request:
-        *undescribed*
+.. _`i40e_vsi_stop_rings`:
+
+i40e_vsi_stop_rings
+===================
+
+.. c:function:: void i40e_vsi_stop_rings(struct i40e_vsi *vsi)
+
+    Stop a VSI's rings
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured
 
 .. _`i40e_vsi_free_irq`:
 
@@ -2447,18 +2759,6 @@ Description
 
 Handler for LAN Queue Overflow Event generated by the firmware for PF
 and VF queues
-
-.. _`i40e_service_event_complete`:
-
-i40e_service_event_complete
-===========================
-
-.. c:function:: void i40e_service_event_complete(struct i40e_pf *pf)
-
-    Finish up the service event
-
-    :param struct i40e_pf \*pf:
-        board private structure
 
 .. _`i40e_get_cur_guaranteed_fd_count`:
 

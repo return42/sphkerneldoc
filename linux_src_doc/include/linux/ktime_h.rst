@@ -23,35 +23,6 @@ Return
 
 The ktime_t representation of the value.
 
-.. _`ktime_equal`:
-
-ktime_equal
-===========
-
-.. c:function:: int ktime_equal(const ktime_t cmp1, const ktime_t cmp2)
-
-    Compares two ktime_t variables to see if they are equal
-
-    :param const ktime_t cmp1:
-        comparable1
-
-    :param const ktime_t cmp2:
-        comparable2
-
-.. _`ktime_equal.description`:
-
-Description
------------
-
-Compare two ktime_t variables.
-
-.. _`ktime_equal.return`:
-
-Return
-------
-
-1 if equal.
-
 .. _`ktime_compare`:
 
 ktime_compare

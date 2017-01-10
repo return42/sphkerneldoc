@@ -35,20 +35,23 @@ ptlrpc_uuid_to_connection
 ptlrpc_new_bulk
 ===============
 
-.. c:function:: struct ptlrpc_bulk_desc *ptlrpc_new_bulk(unsigned npages, unsigned max_brw, unsigned type, unsigned portal)
+.. c:function:: struct ptlrpc_bulk_desc *ptlrpc_new_bulk(unsigned int nfrags, unsigned int max_brw, enum ptlrpc_bulk_op_type type, unsigned int portal, const struct ptlrpc_bulk_frag_ops *ops)
 
     Returns pointer to the descriptor or NULL on error.
 
-    :param unsigned npages:
+    :param unsigned int nfrags:
         *undescribed*
 
-    :param unsigned max_brw:
+    :param unsigned int max_brw:
         *undescribed*
 
-    :param unsigned type:
+    :param enum ptlrpc_bulk_op_type type:
         *undescribed*
 
-    :param unsigned portal:
+    :param unsigned int portal:
+        *undescribed*
+
+    :param const struct ptlrpc_bulk_frag_ops \*ops:
         *undescribed*
 
 .. _`ptlrpc_prep_bulk_imp`:
@@ -56,62 +59,26 @@ ptlrpc_new_bulk
 ptlrpc_prep_bulk_imp
 ====================
 
-.. c:function:: struct ptlrpc_bulk_desc *ptlrpc_prep_bulk_imp(struct ptlrpc_request *req, unsigned npages, unsigned max_brw, unsigned type, unsigned portal)
+.. c:function:: struct ptlrpc_bulk_desc *ptlrpc_prep_bulk_imp(struct ptlrpc_request *req, unsigned int nfrags, unsigned int max_brw, unsigned int type, unsigned int portal, const struct ptlrpc_bulk_frag_ops *ops)
 
-    can fit \a npages \* pages. \a type is bulk type. \a portal is where the bulk to be sent. Used on client-side. Returns pointer to newly allocated initialized bulk descriptor or NULL on error.
+    can fit \a nfrags \* pages. \a type is bulk type. \a portal is where the bulk to be sent. Used on client-side. Returns pointer to newly allocated initialized bulk descriptor or NULL on error.
 
     :param struct ptlrpc_request \*req:
         *undescribed*
 
-    :param unsigned npages:
+    :param unsigned int nfrags:
         *undescribed*
 
-    :param unsigned max_brw:
+    :param unsigned int max_brw:
         *undescribed*
 
-    :param unsigned type:
+    :param unsigned int type:
         *undescribed*
 
-    :param unsigned portal:
+    :param unsigned int portal:
         *undescribed*
 
-.. _`__ptlrpc_prep_bulk_page`:
-
-__ptlrpc_prep_bulk_page
-=======================
-
-.. c:function:: void __ptlrpc_prep_bulk_page(struct ptlrpc_bulk_desc *desc, struct page *page, int pageoffset, int len, int pin)
-
-    Data to transfer in the page starts at offset \a pageoffset and amount of data to transfer from the page is \a len
-
-    :param struct ptlrpc_bulk_desc \*desc:
-        *undescribed*
-
-    :param struct page \*page:
-        *undescribed*
-
-    :param int pageoffset:
-        *undescribed*
-
-    :param int len:
-        *undescribed*
-
-    :param int pin:
-        *undescribed*
-
-.. _`__ptlrpc_free_bulk`:
-
-__ptlrpc_free_bulk
-==================
-
-.. c:function:: void __ptlrpc_free_bulk(struct ptlrpc_bulk_desc *desc, int unpin)
-
-    Works on bulk descriptors both from server and client side.
-
-    :param struct ptlrpc_bulk_desc \*desc:
-        *undescribed*
-
-    :param int unpin:
+    :param const struct ptlrpc_bulk_frag_ops \*ops:
         *undescribed*
 
 .. _`ptlrpc_at_set_req_timeout`:
@@ -820,6 +787,18 @@ xid must align to a power-of-two value.
 
 This is assumed to be true due to the initial ptlrpc_last_xid
 value also being initialized to a power-of-two value. LU-1431
+
+.. _`ptlrpc_set_bulk_mbits`:
+
+ptlrpc_set_bulk_mbits
+=====================
+
+.. c:function:: void ptlrpc_set_bulk_mbits(struct ptlrpc_request *req)
+
+    use this XID as matchbits of bulk, otherwise allocate a new matchbits for request to ensure previous bulk fails and avoid problems with lost replies and therefore several transfers landing into the same buffer from different sending attempts.
+
+    :param struct ptlrpc_request \*req:
+        *undescribed*
 
 .. _`ptlrpc_sample_next_xid`:
 

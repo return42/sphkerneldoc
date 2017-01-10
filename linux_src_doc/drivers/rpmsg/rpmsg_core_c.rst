@@ -83,7 +83,8 @@ Description
 -----------
 
 Should be used by drivers to destroy an rpmsg endpoint previously
-created with \ :c:func:`rpmsg_create_ept`\ .
+created with \ :c:func:`rpmsg_create_ept`\ . As with other types of "free" NULL
+is a valid parameter.
 
 .. _`rpmsg_send`:
 

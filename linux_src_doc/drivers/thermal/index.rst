@@ -24,4 +24,6 @@ thermal
     rockchip_thermal_c
     step_wise_c
     thermal_core_c
+    thermal_helpers_c
+    thermal_sysfs_c
     user_space_c

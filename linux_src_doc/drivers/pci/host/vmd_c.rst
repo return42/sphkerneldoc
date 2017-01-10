@@ -19,7 +19,6 @@ Definition
 
     struct vmd_irq {
         struct list_head node;
-        struct rcu_head rcu;
         struct vmd_irq_list *irq;
         bool enabled;
         unsigned int virq;
@@ -32,9 +31,6 @@ Members
 
 node
     list item for parent traversal.
-
-rcu
-    RCU callback item for freeing.
 
 irq
     back pointer to parent.
@@ -71,6 +67,7 @@ Definition
 
     struct vmd_irq_list {
         struct list_head irq_list;
+        struct srcu_struct srcu;
         unsigned int count;
     }
 
@@ -81,6 +78,9 @@ Members
 
 irq_list
     the list of irq's the VMD one demuxes to.
+
+srcu
+    SRCU struct for local synchronization.
 
 count
     number of child IRQs assigned to this vector; used to track

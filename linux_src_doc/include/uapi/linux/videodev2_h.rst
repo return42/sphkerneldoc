@@ -367,7 +367,7 @@ Definition
         struct v4l2_plane_pix_format plane_fmt[VIDEO_MAX_PLANES];
         __u8 num_planes;
         __u8 flags;
-        __u8 ycbcr_enc;
+        union {unnamed_union};
         __u8 quantization;
         __u8 xfer_func;
         __u8 reserved[7];
@@ -402,8 +402,9 @@ num_planes
 flags
     format flags (V4L2_PIX_FMT_FLAG\_\*)
 
-ycbcr_enc
-    enum v4l2_ycbcr_encoding, Y'CbCr encoding
+{unnamed_union}
+    anonymous
+
 
 quantization
     enum v4l2_quantization, colorspace quantization

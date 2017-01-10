@@ -69,36 +69,36 @@ Returns 0 if successful, else propagates up the lower layer error.
 i915_wait_request
 =================
 
-.. c:function:: int i915_wait_request(struct drm_i915_gem_request *req, unsigned int flags, s64 *timeout, struct intel_rps_client *rps)
+.. c:function:: long i915_wait_request(struct drm_i915_gem_request *req, unsigned int flags, long timeout)
 
     wait until execution of request has finished
 
     :param struct drm_i915_gem_request \*req:
-        duh!
+        the request to wait upon
 
     :param unsigned int flags:
         how to wait
 
-    :param s64 \*timeout:
-        in - how long to wait (NULL forever); out - how much time remaining
+    :param long timeout:
+        how long to wait in jiffies
 
-    :param struct intel_rps_client \*rps:
-        client to charge for RPS boosting
+.. _`i915_wait_request.description`:
 
-.. _`i915_wait_request.note`:
+Description
+-----------
 
-Note
-----
+i915_wait_request() waits for the request to be completed, for a
+maximum of \ ``timeout``\  jiffies (with MAX_SCHEDULE_TIMEOUT implying an
+unbounded wait).
 
-It is of utmost importance that the passed in seqno and reset_counter
-values have been read by the caller in an smp safe manner. Where read-side
-locks are involved, it is sufficient to read the reset_counter before
-unlocking the lock that protects the seqno. For lockless tricks, the
-reset_counter \_must\_ be read before, and an appropriate smp_rmb must be
-inserted.
+If the caller holds the struct_mutex, the caller must pass I915_WAIT_LOCKED
+in via the flags, and vice versa if the struct_mutex is not held, the caller
+must not specify that the wait is locked.
 
-Returns 0 if the request was found within the alloted time. Else returns the
-errno with remaining time filled in timeout argument.
+Returns the remaining time (in jiffies) if the request completed, which may
+be zero or -ETIME if the request is unfinished after the timeout expires.
+May return -EINTR is called with I915_WAIT_INTERRUPTIBLE and a signal is
+pending before the request completes.
 
 .. This file was automatic generated / don't edit.
 

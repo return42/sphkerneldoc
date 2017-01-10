@@ -1,16 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
 
-.. _`dmac_map_area`:
+.. _`total_slots`:
 
-dmac_map_area
-=============
+TOTAL_SLOTS
+===========
 
-.. c:function::  dmac_map_area()
+.. c:function::  TOTAL_SLOTS()
 
     2012 Broadcom. All rights reserved.
 
-.. _`dmac_map_area.description`:
+.. _`total_slots.description`:
 
 Description
 -----------
@@ -18,7 +18,7 @@ Description
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions
 
-.. _`dmac_map_area.are-met`:
+.. _`total_slots.are-met`:
 
 are met
 -------

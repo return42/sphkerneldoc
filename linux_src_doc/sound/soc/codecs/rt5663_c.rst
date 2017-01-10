@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/codecs/rt5663.c
 
-.. _`rt5668_jack_detect`:
+.. _`rt5663_v2_jack_detect`:
 
-rt5668_jack_detect
-==================
+rt5663_v2_jack_detect
+=====================
 
-.. c:function:: int rt5668_jack_detect(struct snd_soc_codec *codec, int jack_insert)
+.. c:function:: int rt5663_v2_jack_detect(struct snd_soc_codec *codec, int jack_insert)
 
     Detect headset.
 
@@ -16,7 +16,7 @@ rt5668_jack_detect
     :param int jack_insert:
         Jack insert or not.
 
-.. _`rt5668_jack_detect.description`:
+.. _`rt5663_v2_jack_detect.description`:
 
 Description
 -----------
@@ -72,7 +72,7 @@ rt5663_sel_asrc_clk_src
 Description
 -----------
 
-The ASRC function is for asynchronous MCLK and LRCK. Also, since RT5668 can
+The ASRC function is for asynchronous MCLK and LRCK. Also, since RT5663 can
 only support standard 32fs or 64fs i2s format, ASRC should be enabled to
 support special i2s clock format such as Intel's 100fs(100 \* sampling rate).
 ASRC function will track i2s clock and generate a corresponding system clock

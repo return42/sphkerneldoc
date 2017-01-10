@@ -18,6 +18,7 @@ Definition
 .. code-block:: c
 
     struct cacheinfo {
+        unsigned int id;
         enum cache_type type;
         unsigned int level;
         unsigned int coherency_line_size;
@@ -33,7 +34,8 @@ Definition
         (CACHE_WRITE_THROUGH | CACHE_WRITE_BACK)#define CACHE_READ_ALLOCATE BIT(2);
     #define CACHE_WRITE_ALLOCATE BIT(3)
     #define CACHE_ALLOCATE_POLICY_MASK \
-        (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE)struct device_node *of_node;
+        (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE)#define CACHE_ID BIT(4);
+        struct device_node *of_node;
         bool disable_sysfs;
         void *priv;
     }
@@ -42,6 +44,9 @@ Definition
 
 Members
 -------
+
+id
+    This cache's id. It is unique among caches with the same (type, level).
 
 type
     type of the cache - data, inst or unified
@@ -76,6 +81,9 @@ attributes
     bitfield representing various cache attributes
 
 BIT(2)
+    *undescribed*
+
+BIT(4)
     *undescribed*
 
 of_node

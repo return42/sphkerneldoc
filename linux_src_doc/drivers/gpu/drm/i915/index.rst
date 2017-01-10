@@ -18,9 +18,10 @@ i915
     i915_gem_context_c
     i915_gem_evict_c
     i915_gem_execbuffer_c
-    i915_gem_fence_c
+    i915_gem_fence_reg_c
     i915_gem_gtt_c
-    i915_gem_gtt_h
+    i915_gem_internal_c
+    i915_gem_object_h
     i915_gem_request_c
     i915_gem_request_h
     i915_gem_shrinker_c
@@ -32,9 +33,10 @@ i915
     i915_irq_c
     i915_memcpy_c
     i915_mm_c
-    i915_reg_h
     i915_trace_h
     i915_vgpu_c
+    i915_vma_c
+    i915_vma_h
     intel_atomic_c
     intel_atomic_plane_c
     intel_audio_c
@@ -43,6 +45,7 @@ i915
     intel_csr_c
     intel_display_c
     intel_dp_c
+    intel_dpio_phy_c
     intel_dpll_mgr_c
     intel_drv_h
     intel_dvo_c

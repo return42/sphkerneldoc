@@ -18,5 +18,6 @@ x86
     intel_scu_ipc_c
     intel_scu_ipcutil_c
     intel_telemetry_core_c
+    mlxcpld-hotplug_c
     thinkpad_acpi_c
     wmi_c

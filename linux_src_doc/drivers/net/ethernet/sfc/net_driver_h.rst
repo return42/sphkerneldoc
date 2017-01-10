@@ -111,6 +111,7 @@ Definition
 .. code-block:: c
 
     struct efx_tx_buffer {
+        const struct sk_buff *skb;
         union {unnamed_union};
         unsigned short flags;
         unsigned short len;
@@ -122,6 +123,10 @@ Definition
 
 Members
 -------
+
+skb
+    When \ ``flags``\  & \ ``EFX_TX_BUF_SKB``\ , the associated socket buffer to be
+    freed when descriptor completes
 
 {unnamed_union}
     anonymous
@@ -164,12 +169,13 @@ Definition
         struct efx_channel *channel;
         struct netdev_queue *core_txq;
         struct efx_tx_buffer *buffer;
-        struct efx_buffer *tsoh_page;
+        struct efx_buffer *cb_page;
         struct efx_special_buffer txd;
         unsigned int ptr_mask;
         void __iomem *piobuf;
         unsigned int piobuf_offset;
         bool initialised;
+        int (*handle_tso)(struct efx_tx_queue*, struct sk_buff*, bool *);
         unsigned int empty_read_count ____cacheline_aligned_in_smp;
         unsigned int old_write_count;
         unsigned int merge_events;
@@ -181,9 +187,11 @@ Definition
         unsigned int tso_bursts;
         unsigned int tso_long_headers;
         unsigned int tso_packets;
+        unsigned int tso_fallbacks;
         unsigned int pushes;
         unsigned int pio_packets;
         bool xmit_more_available;
+        unsigned int cb_packets;
         unsigned long tx_packets;
         unsigned int empty_read_count ____cacheline_aligned_in_smp;
     #define EFX_EMPTY_COUNT_VALID 0x80000000
@@ -213,8 +221,9 @@ core_txq
 buffer
     The software buffer ring
 
-tsoh_page
-    Array of pages of TSO header buffers
+cb_page
+    Array of pages of copy buffers.  Carved up according to
+    \ ``EFX_TX_CB_ORDER``\  into \ ``EFX_TX_CB_SIZE-sized``\  chunks.
 
 txd
     The hardware descriptor ring
@@ -231,6 +240,10 @@ piobuf_offset
 
 initialised
     Has hardware queue been initialised?
+
+handle_tso
+    TSO xmit preparation handler.  Sets up the TSO metadata and
+    may also map tx data, depending on the nature of the TSO implementation.
 
 ____cacheline_aligned_in_smp
     *undescribed*
@@ -278,6 +291,9 @@ tso_long_headers
 tso_packets
     Number of packets via the TSO xmit path
 
+tso_fallbacks
+    Number of times TSO fallback used
+
 pushes
     Number of times the TX push feature has been used
 
@@ -286,6 +302,9 @@ pio_packets
 
 xmit_more_available
     Are any packets waiting to be pushed to the NIC
+
+cb_packets
+    Number of times the TX copybreak feature has been used
 
 tx_packets
     *undescribed*
@@ -887,8 +906,8 @@ Definition
         void (*remove)(struct efx_nic *efx);
         int (*reconfigure)(struct efx_nic *efx);
         bool (*poll)(struct efx_nic *efx);
-        void (*get_settings)(struct efx_nic *efx,struct ethtool_cmd *ecmd);
-        int (*set_settings)(struct efx_nic *efx,struct ethtool_cmd *ecmd);
+        void (*get_link_ksettings)(struct efx_nic *efx,struct ethtool_link_ksettings *cmd);
+        int (*set_link_ksettings)(struct efx_nic *efx,const struct ethtool_link_ksettings *cmd);
         void (*set_npage_adv)(struct efx_nic *efx, u32);
         int (*test_alive)(struct efx_nic *efx);
         const char *(*test_name)(struct efx_nic *efx, unsigned int index);
@@ -922,10 +941,10 @@ poll
     Update \ ``link_state``\  and report whether it changed.
     Serialised by the mac_lock.
 
-get_settings
+get_link_ksettings
     Get ethtool settings. Serialised by the mac_lock.
 
-set_settings
+set_link_ksettings
     Set ethtool settings. Serialised by the mac_lock.
 
 set_npage_adv
@@ -1101,6 +1120,7 @@ Definition
         u8 rx_hash_key[40];
         u32 rx_indir_table[128];
         bool rx_scatter;
+        bool rx_hash_udp_4tuple;
         unsigned int_error_count;
         unsigned long int_error_expire;
         bool irq_soft_enabled;
@@ -1342,6 +1362,9 @@ rx_indir_table
 
 rx_scatter
     Scatter mode enabled for receives
+
+rx_hash_udp_4tuple
+    UDP 4-tuple hashing enabled
 
 int_error_count
     Number of internal errors seen recently
@@ -1605,6 +1628,7 @@ Definition
         void (*tx_init)(struct efx_tx_queue *tx_queue);
         void (*tx_remove)(struct efx_tx_queue *tx_queue);
         void (*tx_write)(struct efx_tx_queue *tx_queue);
+        unsigned int (*tx_limit_len)(struct efx_tx_queue *tx_queue,dma_addr_t dma_addr, unsigned int len);
         int (*rx_push_rss_config)(struct efx_nic *efx, bool user,const u32 *rx_indir_table);
         int (*rx_probe)(struct efx_rx_queue *rx_queue);
         void (*rx_init)(struct efx_rx_queue *rx_queue);
@@ -1663,6 +1687,7 @@ Definition
         void (*vswitching_remove)(struct efx_nic *efx);
         int (*get_mac_address)(struct efx_nic *efx, unsigned char *perm_addr);
         int (*set_mac_address)(struct efx_nic *efx);
+        u32 (*tso_versions)(struct efx_nic *efx);
         int revision;
         unsigned int txd_ptr_tbl_base;
         unsigned int rxd_ptr_tbl_base;
@@ -1857,6 +1882,9 @@ tx_remove
 tx_write
     Write TX descriptors and doorbell
 
+tx_limit_len
+    *undescribed*
+
 rx_push_rss_config
     Write RSS hash key and indirection table to the NIC
 
@@ -2030,6 +2058,10 @@ get_mac_address
 
 set_mac_address
     Set the MAC address of the device
+
+tso_versions
+    Returns mask of firmware-assisted TSO versions supported.
+    If \ ``NULL``\ , then device does not support any TSO version.
 
 revision
     Hardware architecture revision

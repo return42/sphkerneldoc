@@ -1,0 +1,535 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/accel/sca3000.c
+
+.. _`sca3000_state`:
+
+struct sca3000_state
+====================
+
+.. c:type:: struct sca3000_state
+
+    device instance state information
+
+.. _`sca3000_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sca3000_state {
+        struct spi_device *us;
+        const struct sca3000_chip_info *info;
+        s64 last_timestamp;
+        int mo_det_use_count;
+        struct mutex lock;
+        u8 rx[384] ____cacheline_aligned;
+        u8 tx[6] ____cacheline_aligned;
+    }
+
+.. _`sca3000_state.members`:
+
+Members
+-------
+
+us
+    the associated spi device
+
+info
+    chip variant information
+
+last_timestamp
+    the timestamp of the last event
+
+mo_det_use_count
+    reference counter for the motion detection unit
+
+lock
+    lock used to protect elements of sca3000_state
+    and the underlying device state.
+
+rx
+    dma-able receive buffer
+
+tx
+    dma-able transmit buffer
+
+.. _`sca3000_chip_info`:
+
+struct sca3000_chip_info
+========================
+
+.. c:type:: struct sca3000_chip_info
+
+    model dependent parameters
+
+.. _`sca3000_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct sca3000_chip_info {
+        unsigned int scale;
+        bool temp_output;
+        int measurement_mode_freq;
+        int measurement_mode_3db_freq;
+        int option_mode_1;
+        int option_mode_1_freq;
+        int option_mode_1_3db_freq;
+        int option_mode_2;
+        int option_mode_2_freq;
+        int option_mode_2_3db_freq;
+        int mot_det_mult_xz[6];
+        int mot_det_mult_y[7];
+    }
+
+.. _`sca3000_chip_info.members`:
+
+Members
+-------
+
+scale
+    scale \* 10^-6
+
+temp_output
+    some devices have temperature sensors.
+
+measurement_mode_freq
+    normal mode sampling frequency
+
+measurement_mode_3db_freq
+    3db cutoff frequency of the low pass filter for
+    the normal measurement mode.
+
+option_mode_1
+    first optional mode. Not all models have one
+
+option_mode_1_freq
+    option mode 1 sampling frequency
+
+option_mode_1_3db_freq
+    3db cutoff frequency of the low pass filter for
+    the first option mode.
+
+option_mode_2
+    second optional mode. Not all chips have one
+
+option_mode_2_freq
+    option mode 2 sampling frequency
+
+option_mode_2_3db_freq
+    3db cutoff frequency of the low pass filter for
+    the second option mode.
+
+.. _`sca3000_chip_info.description`:
+
+Description
+-----------
+
+This structure is used to hold information about the functionality of a given
+sca3000 variant.
+
+.. _`sca3000_reg_lock_on`:
+
+sca3000_reg_lock_on
+===================
+
+.. c:function:: int sca3000_reg_lock_on(struct sca3000_state *st)
+
+    test if the ctrl register lock is on
+
+    :param struct sca3000_state \*st:
+        Driver specific device instance data.
+
+.. _`sca3000_reg_lock_on.description`:
+
+Description
+-----------
+
+Lock must be held.
+
+.. _`__sca3000_unlock_reg_lock`:
+
+__sca3000_unlock_reg_lock
+=========================
+
+.. c:function:: int __sca3000_unlock_reg_lock(struct sca3000_state *st)
+
+    unlock the control registers
+
+    :param struct sca3000_state \*st:
+        Driver specific device instance data.
+
+.. _`__sca3000_unlock_reg_lock.description`:
+
+Description
+-----------
+
+Note the device does not appear to support doing this in a single transfer.
+This should only ever be used as part of ctrl reg read.
+Lock must be held before calling this
+
+.. _`sca3000_write_ctrl_reg`:
+
+sca3000_write_ctrl_reg
+======================
+
+.. c:function:: int sca3000_write_ctrl_reg(struct sca3000_state *st, u8 sel, uint8_t val)
+
+    :param struct sca3000_state \*st:
+        Driver specific device instance data.
+
+    :param u8 sel:
+        selects which registers we wish to write to
+
+    :param uint8_t val:
+        the value to be written
+
+.. _`sca3000_write_ctrl_reg.description`:
+
+Description
+-----------
+
+Certain control registers are protected against overwriting by the lock
+register and use a shared write address. This function allows writing of
+these registers.
+Lock must be held.
+
+.. _`sca3000_read_ctrl_reg`:
+
+sca3000_read_ctrl_reg
+=====================
+
+.. c:function:: int sca3000_read_ctrl_reg(struct sca3000_state *st, u8 ctrl_reg)
+
+    :param struct sca3000_state \*st:
+        Driver specific device instance data.
+
+    :param u8 ctrl_reg:
+        Which ctrl register do we want to read.
+
+.. _`sca3000_read_ctrl_reg.description`:
+
+Description
+-----------
+
+Lock must be held.
+
+.. _`sca3000_print_rev`:
+
+sca3000_print_rev
+=================
+
+.. c:function:: int sca3000_print_rev(struct iio_dev *indio_dev)
+
+    sysfs interface to read the chip revision number
+
+    :param struct iio_dev \*indio_dev:
+        Device instance specific generic IIO data.
+        Driver specific device instance data can be obtained via
+        via iio_priv(indio_dev)
+
+.. _`__sca3000_get_base_freq`:
+
+__sca3000_get_base_freq
+=======================
+
+.. c:function:: int __sca3000_get_base_freq(struct sca3000_state *st, const struct sca3000_chip_info *info, int *base_freq)
+
+    obtain mode specific base frequency
+
+    :param struct sca3000_state \*st:
+        Private driver specific device instance specific state.
+
+    :param const struct sca3000_chip_info \*info:
+        chip type specific information.
+
+    :param int \*base_freq:
+        Base frequency for the current measurement mode.
+
+.. _`__sca3000_get_base_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. _`sca3000_read_raw_samp_freq`:
+
+sca3000_read_raw_samp_freq
+==========================
+
+.. c:function:: int sca3000_read_raw_samp_freq(struct sca3000_state *st, int *val)
+
+    read_raw handler for IIO_CHAN_INFO_SAMP_FREQ
+
+    :param struct sca3000_state \*st:
+        Private driver specific device instance specific state.
+
+    :param int \*val:
+        The frequency read back.
+
+.. _`sca3000_read_raw_samp_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. _`sca3000_write_raw_samp_freq`:
+
+sca3000_write_raw_samp_freq
+===========================
+
+.. c:function:: int sca3000_write_raw_samp_freq(struct sca3000_state *st, int val)
+
+    write_raw handler for IIO_CHAN_INFO_SAMP_FREQ
+
+    :param struct sca3000_state \*st:
+        Private driver specific device instance specific state.
+
+    :param int val:
+        The frequency desired.
+
+.. _`sca3000_write_raw_samp_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. _`sca3000_read_av_freq`:
+
+sca3000_read_av_freq
+====================
+
+.. c:function:: ssize_t sca3000_read_av_freq(struct device *dev, struct device_attribute *attr, char *buf)
+
+    sysfs function to get available frequencies
+
+    :param struct device \*dev:
+        Device structure for this device.
+
+    :param struct device_attribute \*attr:
+        Description of the attribute.
+
+    :param char \*buf:
+        Incoming string
+
+.. _`sca3000_read_av_freq.description`:
+
+Description
+-----------
+
+The later modes are only relevant to the ring buffer - and depend on current
+mode. Note that data sheet gives rather wide tolerances for these so integer
+division will give good enough answer and not all chips have them specified
+at all.
+
+.. _`sca3000_read_event_value`:
+
+sca3000_read_event_value
+========================
+
+.. c:function:: int sca3000_read_event_value(struct iio_dev *indio_dev, const struct iio_chan_spec *chan, enum iio_event_type type, enum iio_event_direction dir, enum iio_event_info info, int *val, int *val2)
+
+    query of a threshold or period
+
+    :param struct iio_dev \*indio_dev:
+        *undescribed*
+
+    :param const struct iio_chan_spec \*chan:
+        *undescribed*
+
+    :param enum iio_event_type type:
+        *undescribed*
+
+    :param enum iio_event_direction dir:
+        *undescribed*
+
+    :param enum iio_event_info info:
+        *undescribed*
+
+    :param int \*val:
+        *undescribed*
+
+    :param int \*val2:
+        *undescribed*
+
+.. _`sca3000_write_event_value`:
+
+sca3000_write_event_value
+=========================
+
+.. c:function:: int sca3000_write_event_value(struct iio_dev *indio_dev, const struct iio_chan_spec *chan, enum iio_event_type type, enum iio_event_direction dir, enum iio_event_info info, int val, int val2)
+
+    control of threshold and period
+
+    :param struct iio_dev \*indio_dev:
+        Device instance specific IIO information.
+
+    :param const struct iio_chan_spec \*chan:
+        Description of the channel for which the event is being
+        configured.
+
+    :param enum iio_event_type type:
+        The type of event being configured, here magnitude rising
+        as everything else is read only.
+
+    :param enum iio_event_direction dir:
+        Direction of the event (here rising)
+
+    :param enum iio_event_info info:
+        What information about the event are we configuring.
+        Here the threshold only.
+
+    :param int val:
+        Integer part of the value being written..
+
+    :param int val2:
+        Non integer part of the value being written. Here always 0.
+
+.. _`sca3000_ring_int_process`:
+
+sca3000_ring_int_process
+========================
+
+.. c:function:: void sca3000_ring_int_process(u8 val, struct iio_dev *indio_dev)
+
+    ring specific interrupt handling.
+
+    :param u8 val:
+        Value of the interrupt status register.
+
+    :param struct iio_dev \*indio_dev:
+        Device instance specific IIO device structure.
+
+.. _`sca3000_event_handler`:
+
+sca3000_event_handler
+=====================
+
+.. c:function:: irqreturn_t sca3000_event_handler(int irq, void *private)
+
+    handling ring and non ring events
+
+    :param int irq:
+        The irq being handled.
+
+    :param void \*private:
+        struct iio_device pointer for the device.
+
+.. _`sca3000_event_handler.description`:
+
+Description
+-----------
+
+Ring related interrupt handler. Depending on event, push to
+the ring buffer event chrdev or the event one.
+
+This function is complicated by the fact that the devices can signify ring
+and non ring events via the same interrupt line and they can only
+be distinguished via a read of the relevant status register.
+
+.. _`sca3000_read_event_config`:
+
+sca3000_read_event_config
+=========================
+
+.. c:function:: int sca3000_read_event_config(struct iio_dev *indio_dev, const struct iio_chan_spec *chan, enum iio_event_type type, enum iio_event_direction dir)
+
+    :param struct iio_dev \*indio_dev:
+        *undescribed*
+
+    :param const struct iio_chan_spec \*chan:
+        *undescribed*
+
+    :param enum iio_event_type type:
+        *undescribed*
+
+    :param enum iio_event_direction dir:
+        *undescribed*
+
+.. _`sca3000_write_event_config`:
+
+sca3000_write_event_config
+==========================
+
+.. c:function:: int sca3000_write_event_config(struct iio_dev *indio_dev, const struct iio_chan_spec *chan, enum iio_event_type type, enum iio_event_direction dir, int state)
+
+    simple on off control for motion detector
+
+    :param struct iio_dev \*indio_dev:
+        IIO device instance specific structure. Data specific to this
+        particular driver may be accessed via iio_priv(indio_dev).
+
+    :param const struct iio_chan_spec \*chan:
+        Description of the channel whose event we are configuring.
+
+    :param enum iio_event_type type:
+        The type of event.
+
+    :param enum iio_event_direction dir:
+        The direction of the event.
+
+    :param int state:
+        Desired state of event being configured.
+
+.. _`sca3000_write_event_config.description`:
+
+Description
+-----------
+
+This is a per axis control, but enabling any will result in the
+motion detector unit being enabled.
+N.B. enabling motion detector stops normal data acquisition.
+There is a complexity in knowing which mode to return to when
+this mode is disabled.  Currently normal mode is assumed.
+
+.. _`sca3000_hw_ring_preenable`:
+
+sca3000_hw_ring_preenable
+=========================
+
+.. c:function:: int sca3000_hw_ring_preenable(struct iio_dev *indio_dev)
+
+    hw ring buffer preenable function
+
+    :param struct iio_dev \*indio_dev:
+        structure representing the IIO device. Device instance
+        specific state can be accessed via iio_priv(indio_dev).
+
+.. _`sca3000_hw_ring_preenable.description`:
+
+Description
+-----------
+
+Very simple enable function as the chip will allows normal reads
+during ring buffer operation so as long as it is indeed running
+before we notify the core, the precise ordering does not matter.
+
+.. _`sca3000_clean_setup`:
+
+sca3000_clean_setup
+===================
+
+.. c:function:: int sca3000_clean_setup(struct sca3000_state *st)
+
+    get the device into a predictable state
+
+    :param struct sca3000_state \*st:
+        Device instance specific private data structure
+
+.. _`sca3000_clean_setup.description`:
+
+Description
+-----------
+
+Devices use flash memory to store many of the register values
+and hence can come up in somewhat unpredictable states.
+Hence reset everything on driver load.
+
+.. This file was automatic generated / don't edit.
+

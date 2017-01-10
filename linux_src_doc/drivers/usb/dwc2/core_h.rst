@@ -40,6 +40,11 @@ Definition
         unsigned int target_frame;
     #define TARGET_FRAME_INITIAL 0xFFFFFFFF
         bool frame_overrun;
+        dma_addr_t desc_list_dma;
+        struct dwc2_dma_desc *desc_list;
+        u8 desc_count;
+        unsigned char isoc_chain_num;
+        unsigned int next_desc;
         char name[10];
     }
 
@@ -116,6 +121,21 @@ target_frame
 frame_overrun
     Indicates SOF number overrun in DSTS
 
+desc_list_dma
+    The DMA address of descriptor chain currently in use.
+
+desc_list
+    Pointer to descriptor DMA chain head currently in use.
+
+desc_count
+    Count of entries within the DMA descriptor chain of EP.
+
+isoc_chain_num
+    Number of ISOC chain currently in use - either 0 or 1.
+
+next_desc
+    index of next free descriptor in the ISOC chain under SW control.
+
 name
     The name array passed to the USB core.
 
@@ -190,11 +210,16 @@ Definition
 
     struct dwc2_core_params {
         int otg_cap;
+    #define DWC2_CAP_PARAM_HNP_SRP_CAPABLE 0
+    #define DWC2_CAP_PARAM_SRP_ONLY_CAPABLE 1
+    #define DWC2_CAP_PARAM_NO_HNP_SRP_CAPABLE 2
         int otg_ver;
-        int dma_enable;
         int dma_desc_enable;
         int dma_desc_fs_enable;
         int speed;
+    #define DWC2_SPEED_PARAM_HIGH 0
+    #define DWC2_SPEED_PARAM_FULL 1
+    #define DWC2_SPEED_PARAM_LOW 2
         int enable_dynamic_fifo;
         int en_multiple_tx_fifo;
         int host_rx_fifo_size;
@@ -204,19 +229,32 @@ Definition
         int max_packet_count;
         int host_channels;
         int phy_type;
+    #define DWC2_PHY_TYPE_PARAM_FS 0
+    #define DWC2_PHY_TYPE_PARAM_UTMI 1
+    #define DWC2_PHY_TYPE_PARAM_ULPI 2
         int phy_utmi_width;
         int phy_ulpi_ddr;
         int phy_ulpi_ext_vbus;
+    #define DWC2_PHY_ULPI_INTERNAL_VBUS 0
+    #define DWC2_PHY_ULPI_EXTERNAL_VBUS 1
         int i2c_enable;
         int ulpi_fs_ls;
         int host_support_fs_ls_low_power;
         int host_ls_low_power_phy_clk;
+    #define DWC2_HOST_LS_LOW_POWER_PHY_CLK_PARAM_48MHZ 0
+    #define DWC2_HOST_LS_LOW_POWER_PHY_CLK_PARAM_6MHZ 1
         int ts_dline;
         int reload_ctl;
         int ahbcfg;
         int uframe_sched;
         int external_id_pin_ctl;
         int hibernation;
+        bool host_dma;
+        bool g_dma;
+        bool g_dma_desc;
+        u16 g_rx_fifo_size;
+        u16 g_np_tx_fifo_size;
+        u32 g_tx_fifo_size[MAX_EPS_CHANNELS];
     }
 
 .. _`dwc2_core_params.members`:
@@ -235,13 +273,6 @@ otg_ver
     OTG version supported
     0 - 1.3 (default)
     1 - 2.0
-
-dma_enable
-    Specifies whether to use slave or DMA mode for accessing
-    the data FIFOs. The driver will automatically detect the
-    value for this parameter if none is specified.
-    0 - Slave (always available)
-    1 - DMA (default, if available)
 
 dma_desc_enable
     When DMA mode is enabled, specifies whether to use
@@ -275,7 +306,8 @@ enable_dynamic_fifo
 
 en_multiple_tx_fifo
     Specifies whether dedicated per-endpoint transmit FIFOs
-    are enabled
+    are enabled for non-periodic IN endpoints in device
+    mode.
 
 host_rx_fifo_size
     Number of 4-byte words in the Rx FIFO in host mode when
@@ -419,6 +451,37 @@ hibernation
     0 - No (default)
     1 - Yes
 
+host_dma
+    Specifies whether to use slave or DMA mode for accessing
+    the data FIFOs. The driver will automatically detect the
+    value for this parameter if none is specified.
+    0 - Slave (always available)
+    1 - DMA (default, if available)
+
+g_dma
+    Enables gadget dma usage (default: autodetect).
+
+g_dma_desc
+    Enables gadget descriptor DMA (default: autodetect).
+
+g_rx_fifo_size
+    The periodic rx fifo size for the device, in
+    DWORDS from 16-32768 (default: 2048 if
+    possible, otherwise autodetect).
+
+g_np_tx_fifo_size
+    The non-periodic tx fifo size for the device in
+    DWORDS from 16-32768 (default: 1024 if
+    possible, otherwise autodetect).
+
+g_tx_fifo_size
+    An array of TX fifo sizes in dedicated fifo
+    mode. Each value corresponds to one EP
+    starting from EP1 (max 15 values). Sizes are
+    in DWORDS with possible values from from
+    16-32768 (default: 256, 256, 256, 256, 768,
+    768, 768, 768, 0, 0, 0, 0, 0, 0, 0).
+
 .. _`dwc2_core_params.description`:
 
 Description
@@ -450,10 +513,9 @@ Definition
         unsigned op_mode:3;
         unsigned arch:2;
         unsigned dma_desc_enable:1;
-        unsigned dma_desc_fs_enable:1;
         unsigned enable_dynamic_fifo:1;
         unsigned en_multiple_tx_fifo:1;
-        unsigned host_rx_fifo_size:16;
+        unsigned rx_fifo_size:16;
         unsigned host_nperio_tx_fifo_size:16;
         unsigned dev_nperio_tx_fifo_size:16;
         unsigned host_perio_tx_fifo_size:16;
@@ -489,16 +551,13 @@ arch
 dma_desc_enable
     *undescribed*
 
-dma_desc_fs_enable
-    *undescribed*
-
 enable_dynamic_fifo
     *undescribed*
 
 en_multiple_tx_fifo
     *undescribed*
 
-host_rx_fifo_size
+rx_fifo_size
     *undescribed*
 
 host_nperio_tx_fifo_size
@@ -826,7 +885,7 @@ Definition
         struct device *dev;
         void __iomem *regs;
         struct dwc2_hw_params hw_params;
-        struct dwc2_core_params *core_params;
+        struct dwc2_core_params params;
         enum usb_otg_state op_state;
         enum usb_dr_mode dr_mode;
         unsigned int hcd_enabled:1;
@@ -859,6 +918,8 @@ Definition
     #define DWC2_CORE_REV_2_94a 0x4f54294a
     #define DWC2_CORE_REV_3_00a 0x4f54300a
     #define DWC2_CORE_REV_3_10a 0x4f54310a
+    #define DWC2_FS_IOT_REV_1_00a 0x5531100a
+    #define DWC2_HS_IOT_REV_1_00a 0x5532100a
     #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
         union dwc2_hcd_internal_flags flags;
         struct list_head non_periodic_sched_inactive;
@@ -928,15 +989,17 @@ Definition
         void *ctrl_buff;
         enum dwc2_ep0_state ep0_state;
         u8 test_mode;
+        dma_addr_t setup_desc_dma[2];
+        struct dwc2_dma_desc  *setup_desc[2];
+        dma_addr_t ctrl_in_desc_dma;
+        struct dwc2_dma_desc *ctrl_in_desc;
+        dma_addr_t ctrl_out_desc_dma;
+        struct dwc2_dma_desc *ctrl_out_desc;
         struct usb_gadget gadget;
         unsigned int enabled:1;
         unsigned int connected:1;
         struct dwc2_hsotg_ep  *eps_in[MAX_EPS_CHANNELS];
         struct dwc2_hsotg_ep  *eps_out[MAX_EPS_CHANNELS];
-        u32 g_using_dma;
-        u32 g_rx_fifo_sz;
-        u32 g_np_g_tx_fifo_sz;
-        u32 g_tx_fifo_sz[MAX_EPS_CHANNELS];
     #endif
     }
 
@@ -955,8 +1018,8 @@ hw_params
     Parameters that were autodetected from the
     hardware registers
 
-core_params
-    Parameters that define how the core should be configured
+params
+    *undescribed*
 
 op_state
     The operational State, during transitions (a_host=>
@@ -1279,6 +1342,24 @@ ep0_state
 test_mode
     USB test mode requested by the host
 
+setup_desc_dma
+    EP0 setup stage desc chain DMA address
+
+setup_desc
+    EP0 setup stage desc chain pointer
+
+ctrl_in_desc_dma
+    EP0 IN data phase desc chain DMA address
+
+ctrl_in_desc
+    EP0 IN data phase desc chain pointer
+
+ctrl_out_desc_dma
+    EP0 OUT data phase desc chain DMA address
+
+ctrl_out_desc
+    EP0 OUT data phase desc chain pointer
+
 gadget
     *undescribed*
 
@@ -1287,18 +1368,6 @@ enabled
 
 connected
     *undescribed*
-
-g_using_dma
-    Indicate if dma usage is enabled
-
-g_rx_fifo_sz
-    Contains rx fifo size value
-
-g_np_g_tx_fifo_sz
-    Contains Non-Periodic tx fifo size value
-
-g_tx_fifo_sz
-    Contains tx fifo size value per endpoints
 
 .. This file was automatic generated / don't edit.
 

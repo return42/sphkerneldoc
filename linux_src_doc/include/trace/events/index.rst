@@ -13,4 +13,5 @@ events
     irq_h
     signal_h
     timer_h
+    wbt_h
     workqueue_h

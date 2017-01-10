@@ -178,7 +178,7 @@ Definition
         __be32 residual_transfer_count;
         __be32 reserved[4];
         __be16 sense_data_len;
-        u8 sense_data[18];
+        u8 sense_data[RESPONSE_UPIU_SENSE_DATA_LENGTH];
     }
 
 .. _`utp_cmd_rsp.members`:

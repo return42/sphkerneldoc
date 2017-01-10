@@ -294,45 +294,6 @@ We should be able to drop this eventually by adding
 support for registering pins individually in the pinctrl
 framework for those drivers that don't need a static array.
 
-.. _`pcs_name`:
-
-struct pcs_name
-===============
-
-.. c:type:: struct pcs_name
-
-    register name for a pin
-
-.. _`pcs_name.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct pcs_name {
-        char name[PCS_REG_NAME_LEN];
-    }
-
-.. _`pcs_name.members`:
-
-Members
--------
-
-name
-    name of the pinctrl register
-
-.. _`pcs_name.revisit`:
-
-REVISIT
--------
-
-We may want to make names optional in the pinctrl
-framework as some drivers may not care about pin names to
-avoid kernel bloat. The pin names can be deciphered by user
-space tools using debugfs based on the register address and
-SoC packaging information.
-
 .. _`pcs_soc_data`:
 
 struct pcs_soc_data
@@ -398,11 +359,13 @@ Definition
         void __iomem *base;
         unsigned size;
         struct device *dev;
+        struct device_node *np;
         struct pinctrl_dev *pctl;
         unsigned flags;
     #define PCS_QUIRK_SHARED_IRQ (1 << 2)
     #define PCS_FEAT_IRQ (1 << 1)
     #define PCS_FEAT_PINCONF (1 << 0)
+        struct property *missing_nr_pinctrl_cells;
         struct pcs_soc_data socdata;
         raw_spinlock_t lock;
         struct mutex mutex;
@@ -413,7 +376,6 @@ Definition
         unsigned fmax;
         bool bits_per_mux;
         unsigned bits_per_pin;
-        struct pcs_name *names;
         struct pcs_data pins;
         struct radix_tree_root pgtree;
         struct radix_tree_root ftree;
@@ -447,14 +409,20 @@ size
 dev
     device entry
 
+np
+    device tree node
+
 pctl
     pin controller device
 
 flags
     mask of PCS_FEAT_xxx values
 
+missing_nr_pinctrl_cells
+    for legacy binding, may go away
+
 socdata
-    *undescribed*
+    soc specific data
 
 lock
     spinlock for register access
@@ -478,13 +446,10 @@ fmax
     max number of functions in fmask
 
 bits_per_mux
-    *undescribed*
+    number of bits per mux
 
 bits_per_pin
     number of bits per pin
-
-names
-    array of register names for pins
 
 pins
     physical pins on the SoC
@@ -904,6 +869,33 @@ pcs_irq_init_chained_handler
 
     :param struct device_node \*np:
         device node pointer
+
+.. _`pcs_quirk_missing_pinctrl_cells`:
+
+pcs_quirk_missing_pinctrl_cells
+===============================
+
+.. c:function:: int pcs_quirk_missing_pinctrl_cells(struct pcs_device *pcs, struct device_node *np, int cells)
+
+    handle legacy binding
+
+    :param struct pcs_device \*pcs:
+        pinctrl driver instance
+
+    :param struct device_node \*np:
+        device tree node
+
+    :param int cells:
+        number of cells
+
+.. _`pcs_quirk_missing_pinctrl_cells.description`:
+
+Description
+-----------
+
+Handle legacy binding with no #pinctrl-cells. This should be
+always two pinctrl-single,bit-per-mux and one for others.
+At some point we may want to consider removing this.
 
 .. This file was automatic generated / don't edit.
 

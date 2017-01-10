@@ -203,31 +203,6 @@ Description
 If there is a client of the specified type attached to this PF, call
 its vf_capable routine
 
-.. _`i40e_vsi_lookup`:
-
-i40e_vsi_lookup
-===============
-
-.. c:function:: struct i40e_vsi *i40e_vsi_lookup(struct i40e_pf *pf, enum i40e_vsi_type type, struct i40e_vsi *start_vsi)
-
-    finds a matching VSI from the PF list starting at start_vsi
-
-    :param struct i40e_pf \*pf:
-        board private structure
-
-    :param enum i40e_vsi_type type:
-        vsi type
-
-    :param struct i40e_vsi \*start_vsi:
-        a VSI pointer from where to start the search
-
-.. _`i40e_vsi_lookup.description`:
-
-Description
------------
-
-Returns non NULL on success or NULL for failure
-
 .. _`i40e_client_add_instance`:
 
 i40e_client_add_instance

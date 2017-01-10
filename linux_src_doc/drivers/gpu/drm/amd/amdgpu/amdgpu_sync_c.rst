@@ -25,14 +25,14 @@ Just clear the sync object for now.
 amdgpu_sync_same_dev
 ====================
 
-.. c:function:: bool amdgpu_sync_same_dev(struct amdgpu_device *adev, struct fence *f)
+.. c:function:: bool amdgpu_sync_same_dev(struct amdgpu_device *adev, struct dma_fence *f)
 
     test if fence belong to us
 
     :param struct amdgpu_device \*adev:
         amdgpu device to use for the test
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         fence to test
 
 .. _`amdgpu_sync_same_dev.description`:
@@ -47,11 +47,11 @@ Test if the fence was issued by us.
 amdgpu_sync_get_owner
 =====================
 
-.. c:function:: void *amdgpu_sync_get_owner(struct fence *f)
+.. c:function:: void *amdgpu_sync_get_owner(struct dma_fence *f)
 
     extract the owner of a fence
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`amdgpu_sync_get_owner.description`:
@@ -66,14 +66,14 @@ Extract who originally created the fence.
 amdgpu_sync_keep_later
 ======================
 
-.. c:function:: void amdgpu_sync_keep_later(struct fence **keep, struct fence *fence)
+.. c:function:: void amdgpu_sync_keep_later(struct dma_fence **keep, struct dma_fence *fence)
 
     Keep the later fence
 
-    :param struct fence \*\*keep:
+    :param struct dma_fence \*\*keep:
         existing fence to test
 
-    :param struct fence \*fence:
+    :param struct dma_fence \*fence:
         new fence
 
 .. _`amdgpu_sync_keep_later.description`:
@@ -88,14 +88,14 @@ Either keep the existing fence or the new one, depending which one is later.
 amdgpu_sync_add_later
 =====================
 
-.. c:function:: bool amdgpu_sync_add_later(struct amdgpu_sync *sync, struct fence *f)
+.. c:function:: bool amdgpu_sync_add_later(struct amdgpu_sync *sync, struct dma_fence *f)
 
     add the fence to the hash
 
     :param struct amdgpu_sync \*sync:
         sync object to add the fence to
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         fence to add
 
 .. _`amdgpu_sync_add_later.description`:
@@ -111,7 +111,7 @@ was found, false otherwise.
 amdgpu_sync_fence
 =================
 
-.. c:function:: int amdgpu_sync_fence(struct amdgpu_device *adev, struct amdgpu_sync *sync, struct fence *f)
+.. c:function:: int amdgpu_sync_fence(struct amdgpu_device *adev, struct amdgpu_sync *sync, struct dma_fence *f)
 
     remember to sync to this fence
 
@@ -121,7 +121,7 @@ amdgpu_sync_fence
     :param struct amdgpu_sync \*sync:
         sync object to add fence to
 
-    :param struct fence \*f:
+    :param struct dma_fence \*f:
         *undescribed*
 
 .. _`amdgpu_sync_resv`:
@@ -157,7 +157,7 @@ Sync to the fence
 amdgpu_sync_peek_fence
 ======================
 
-.. c:function:: struct fence *amdgpu_sync_peek_fence(struct amdgpu_sync *sync, struct amdgpu_ring *ring)
+.. c:function:: struct dma_fence *amdgpu_sync_peek_fence(struct amdgpu_sync *sync, struct amdgpu_ring *ring)
 
     get the next fence not signaled yet
 
@@ -180,7 +180,7 @@ object.
 amdgpu_sync_get_fence
 =====================
 
-.. c:function:: struct fence *amdgpu_sync_get_fence(struct amdgpu_sync *sync)
+.. c:function:: struct dma_fence *amdgpu_sync_get_fence(struct amdgpu_sync *sync)
 
     get the next fence from the sync object
 

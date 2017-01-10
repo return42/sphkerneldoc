@@ -14,7 +14,7 @@ kobject_action_type
         buffer containing the action string, newline is ignored
 
     :param size_t count:
-        *undescribed*
+        length of buffer
 
     :param enum kobject_action \*type:
         pointer to the location to store the action type

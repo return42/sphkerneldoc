@@ -201,12 +201,15 @@ i40iw_puda_qp_setctx
 i40iw_puda_qp_wqe
 =================
 
-.. c:function:: enum i40iw_status_code i40iw_puda_qp_wqe(struct i40iw_puda_rsrc *rsrc)
+.. c:function:: enum i40iw_status_code i40iw_puda_qp_wqe(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp)
 
     setup wqe for qp create
 
-    :param struct i40iw_puda_rsrc \*rsrc:
-        resource for qp
+    :param struct i40iw_sc_dev \*dev:
+        *undescribed*
+
+    :param struct i40iw_sc_qp \*qp:
+        *undescribed*
 
 .. _`i40iw_puda_qp_create`:
 
@@ -220,6 +223,21 @@ i40iw_puda_qp_create
     :param struct i40iw_puda_rsrc \*rsrc:
         resource to use for buffer
 
+.. _`i40iw_puda_cq_wqe`:
+
+i40iw_puda_cq_wqe
+=================
+
+.. c:function:: enum i40iw_status_code i40iw_puda_cq_wqe(struct i40iw_sc_dev *dev, struct i40iw_sc_cq *cq)
+
+    setup wqe for cq create
+
+    :param struct i40iw_sc_dev \*dev:
+        *undescribed*
+
+    :param struct i40iw_sc_cq \*cq:
+        *undescribed*
+
 .. _`i40iw_puda_cq_create`:
 
 i40iw_puda_cq_create
@@ -232,17 +250,41 @@ i40iw_puda_cq_create
     :param struct i40iw_puda_rsrc \*rsrc:
         resource for which cq to create
 
+.. _`i40iw_puda_free_qp`:
+
+i40iw_puda_free_qp
+==================
+
+.. c:function:: void i40iw_puda_free_qp(struct i40iw_puda_rsrc *rsrc)
+
+    free qp for resource
+
+    :param struct i40iw_puda_rsrc \*rsrc:
+        resource for which qp to free
+
+.. _`i40iw_puda_free_cq`:
+
+i40iw_puda_free_cq
+==================
+
+.. c:function:: void i40iw_puda_free_cq(struct i40iw_puda_rsrc *rsrc)
+
+    free cq for resource
+
+    :param struct i40iw_puda_rsrc \*rsrc:
+        resource for which cq to free
+
 .. _`i40iw_puda_dele_resources`:
 
 i40iw_puda_dele_resources
 =========================
 
-.. c:function:: void i40iw_puda_dele_resources(struct i40iw_sc_dev *dev, enum puda_resource_type type, bool reset)
+.. c:function:: void i40iw_puda_dele_resources(struct i40iw_sc_vsi *vsi, enum puda_resource_type type, bool reset)
 
     delete all resources during close
 
-    :param struct i40iw_sc_dev \*dev:
-        iwarp device
+    :param struct i40iw_sc_vsi \*vsi:
+        *undescribed*
 
     :param enum puda_resource_type type:
         type of resource to dele
@@ -270,12 +312,12 @@ i40iw_puda_allocbufs
 i40iw_puda_create_rsrc
 ======================
 
-.. c:function:: enum i40iw_status_code i40iw_puda_create_rsrc(struct i40iw_sc_dev *dev, struct i40iw_puda_rsrc_info *info)
+.. c:function:: enum i40iw_status_code i40iw_puda_create_rsrc(struct i40iw_sc_vsi *vsi, struct i40iw_puda_rsrc_info *info)
 
     create resouce (ilq or ieq)
 
-    :param struct i40iw_sc_dev \*dev:
-        iwarp device
+    :param struct i40iw_sc_vsi \*vsi:
+        *undescribed*
 
     :param struct i40iw_puda_rsrc_info \*info:
         resource information
@@ -486,12 +528,12 @@ i40iw_ieq_handle_exception
 i40iw_ieq_receive
 =================
 
-.. c:function:: void i40iw_ieq_receive(struct i40iw_sc_dev *dev, struct i40iw_puda_buf *buf)
+.. c:function:: void i40iw_ieq_receive(struct i40iw_sc_vsi *vsi, struct i40iw_puda_buf *buf)
 
     received exception buffer
 
-    :param struct i40iw_sc_dev \*dev:
-        iwarp device
+    :param struct i40iw_sc_vsi \*vsi:
+        *undescribed*
 
     :param struct i40iw_puda_buf \*buf:
         exception buffer received
@@ -501,12 +543,12 @@ i40iw_ieq_receive
 i40iw_ieq_tx_compl
 ==================
 
-.. c:function:: void i40iw_ieq_tx_compl(struct i40iw_sc_dev *dev, void *sqwrid)
+.. c:function:: void i40iw_ieq_tx_compl(struct i40iw_sc_vsi *vsi, void *sqwrid)
 
     put back after sending completed exception buffer
 
-    :param struct i40iw_sc_dev \*dev:
-        iwarp device
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
 
     :param void \*sqwrid:
         pointer to puda buffer
@@ -516,12 +558,12 @@ i40iw_ieq_tx_compl
 i40iw_ieq_cleanup_qp
 ====================
 
-.. c:function:: void i40iw_ieq_cleanup_qp(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp)
+.. c:function:: void i40iw_ieq_cleanup_qp(struct i40iw_puda_rsrc *ieq, struct i40iw_sc_qp *qp)
 
     qp is being destroyed
 
-    :param struct i40iw_sc_dev \*dev:
-        iwarp device
+    :param struct i40iw_puda_rsrc \*ieq:
+        ieq resource
 
     :param struct i40iw_sc_qp \*qp:
         all pending fpdu buffers

@@ -67,6 +67,18 @@ ptlrpc_connect_import
     :param struct obd_import \*imp:
         *undescribed*
 
+.. _`ptlrpc_prepare_replay`:
+
+ptlrpc_prepare_replay
+=====================
+
+.. c:function:: void ptlrpc_prepare_replay(struct obd_import *imp)
+
+    so that we can make sure the known replied XID is always increased only even if when replaying requests.
+
+    :param struct obd_import \*imp:
+        *undescribed*
+
 .. _`ptlrpc_connect_interpret`:
 
 ptlrpc_connect_interpret

@@ -96,17 +96,11 @@ This disables \ :c:func:`printk`\  while we go into suspend states
 console_cpu_notify
 ==================
 
-.. c:function:: int console_cpu_notify(struct notifier_block *self, unsigned long action, void *hcpu)
+.. c:function:: int console_cpu_notify(unsigned int cpu)
 
     print deferred console messages after CPU hotplug
 
-    :param struct notifier_block \*self:
-        notifier struct
-
-    :param unsigned long action:
-        CPU hotplug event
-
-    :param void \*hcpu:
+    :param unsigned int cpu:
         unused
 
 .. _`console_cpu_notify.description`:

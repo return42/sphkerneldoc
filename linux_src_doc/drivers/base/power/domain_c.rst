@@ -827,5 +827,32 @@ that if a power-domain exists for the device, but it cannot be found or
 turned on, then return -EPROBE_DEFER to ensure that the device is not
 probed and to re-try again later.
 
+.. _`of_genpd_parse_idle_states`:
+
+of_genpd_parse_idle_states
+==========================
+
+.. c:function:: int of_genpd_parse_idle_states(struct device_node *dn, struct genpd_power_state **states, int *n)
+
+    Return array of idle states for the genpd.
+
+    :param struct device_node \*dn:
+        The genpd device node
+
+    :param struct genpd_power_state \*\*states:
+        The pointer to which the state array will be saved.
+
+    :param int \*n:
+        The count of elements in the array returned from this function.
+
+.. _`of_genpd_parse_idle_states.description`:
+
+Description
+-----------
+
+Returns the device states parsed from the OF node. The memory for the states
+is allocated by this function and is the responsibility of the caller to
+free the memory after use.
+
 .. This file was automatic generated / don't edit.
 

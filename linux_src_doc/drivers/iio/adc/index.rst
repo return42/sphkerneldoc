@@ -18,6 +18,9 @@ adc
     qcom-spmi-iadc_c
     qcom-spmi-vadc_c
     rockchip_saradc_c
+    stm32-adc-core_c
+    stm32-adc-core_h
+    stm32-adc_c
     stx104_c
     twl4030-madc_c
     twl6030-gpadc_c

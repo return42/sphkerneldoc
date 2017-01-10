@@ -63,7 +63,7 @@ power_supply_get_by_phandle
         Pointer to device node holding phandle property
 
     :param const char \*property:
-        *undescribed*
+        Name of property holding a power supply name
 
 .. _`power_supply_get_by_phandle.description`:
 
@@ -95,7 +95,7 @@ devm_power_supply_get_by_phandle
         Pointer to device holding phandle property
 
     :param const char \*property:
-        *undescribed*
+        Name of property holding a power supply phandle
 
 .. _`devm_power_supply_get_by_phandle.return`:
 

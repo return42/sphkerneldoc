@@ -2198,5 +2198,52 @@ Description
 
 If \ ``wq``\  is registered to sysfs by \ :c:func:`workqueue_sysfs_register`\ , unregister.
 
+.. _`workqueue_init_early`:
+
+workqueue_init_early
+====================
+
+.. c:function:: int workqueue_init_early( void)
+
+    early init for workqueue subsystem
+
+    :param  void:
+        no arguments
+
+.. _`workqueue_init_early.description`:
+
+Description
+-----------
+
+This is the first half of two-staged workqueue subsystem initialization
+and invoked as soon as the bare basics - memory allocation, cpumasks and
+idr are up.  It sets up all the data structures and system workqueues
+and allows early boot code to create workqueues and queue/cancel work
+items.  Actual work item execution starts only after kthreads can be
+created and scheduled right before early initcalls.
+
+.. _`workqueue_init`:
+
+workqueue_init
+==============
+
+.. c:function:: int workqueue_init( void)
+
+    bring workqueue subsystem fully online
+
+    :param  void:
+        no arguments
+
+.. _`workqueue_init.description`:
+
+Description
+-----------
+
+This is the latter half of two-staged workqueue subsystem initialization
+and invoked as soon as kthreads can be created and scheduled.
+Workqueues have been created and work items queued on them, but there
+are no kworkers executing the work items yet.  Populate the worker pools
+with the initial workers and enable future kworker creations.
+
 .. This file was automatic generated / don't edit.
 

@@ -6,15 +6,15 @@
 rng_type6CPRB_msgX
 ==================
 
-.. c:function:: void rng_type6CPRB_msgX(struct ap_device *ap_dev, struct ap_message *ap_msg, unsigned random_number_length)
-
-    :param struct ap_device \*ap_dev:
-        AP device pointer
+.. c:function:: void rng_type6CPRB_msgX(struct ap_message *ap_msg, unsigned int random_number_length, unsigned int *domain)
 
     :param struct ap_message \*ap_msg:
         pointer to AP message
 
-    :param unsigned random_number_length:
+    :param unsigned int random_number_length:
+        *undescribed*
+
+    :param unsigned int \*domain:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

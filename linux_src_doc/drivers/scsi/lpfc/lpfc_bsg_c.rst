@@ -40,11 +40,11 @@ sleeps for the iocb completion.
 lpfc_bsg_send_mgmt_cmd
 ======================
 
-.. c:function:: int lpfc_bsg_send_mgmt_cmd(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_send_mgmt_cmd(struct bsg_job *job)
 
     send a CT command from a bsg request
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         fc_bsg_job to handle
 
 .. _`lpfc_bsg_rport_els_cmp`:
@@ -86,11 +86,11 @@ sleeps for the iocb completion.
 lpfc_bsg_rport_els
 ==================
 
-.. c:function:: int lpfc_bsg_rport_els(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_rport_els(struct bsg_job *job)
 
     send an ELS command from a bsg request
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         fc_bsg_job to handle
 
 .. _`lpfc_bsg_event_free`:
@@ -229,11 +229,11 @@ no context exists.
 lpfc_bsg_hba_set_event
 ======================
 
-.. c:function:: int lpfc_bsg_hba_set_event(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_hba_set_event(struct bsg_job *job)
 
     process a SET_EVENT bsg vendor command
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         SET_EVENT fc_bsg_job
 
 .. _`lpfc_bsg_hba_get_event`:
@@ -241,11 +241,11 @@ lpfc_bsg_hba_set_event
 lpfc_bsg_hba_get_event
 ======================
 
-.. c:function:: int lpfc_bsg_hba_get_event(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_hba_get_event(struct bsg_job *job)
 
     process a GET_EVENT bsg vendor command
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         GET_EVENT fc_bsg_job
 
 .. _`lpfc_issue_ct_rsp_cmp`:
@@ -287,14 +287,14 @@ sleeps for the iocb completion.
 lpfc_issue_ct_rsp
 =================
 
-.. c:function:: int lpfc_issue_ct_rsp(struct lpfc_hba *phba, struct fc_bsg_job *job, uint32_t tag, struct lpfc_dmabuf *cmp, struct lpfc_dmabuf *bmp, int num_entry)
+.. c:function:: int lpfc_issue_ct_rsp(struct lpfc_hba *phba, struct bsg_job *job, uint32_t tag, struct lpfc_dmabuf *cmp, struct lpfc_dmabuf *bmp, int num_entry)
 
     issue a ct response
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         Pointer to the job object.
 
     :param uint32_t tag:
@@ -314,11 +314,11 @@ lpfc_issue_ct_rsp
 lpfc_bsg_send_mgmt_rsp
 ======================
 
-.. c:function:: int lpfc_bsg_send_mgmt_rsp(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_send_mgmt_rsp(struct bsg_job *job)
 
     process a SEND_MGMT_RESP bsg vendor command
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         SEND_MGMT_RESP fc_bsg_job
 
 .. _`lpfc_bsg_diag_mode_enter`:
@@ -366,14 +366,14 @@ diag loopback mode on device.
 lpfc_sli3_bsg_diag_loopback_mode
 ================================
 
-.. c:function:: int lpfc_sli3_bsg_diag_loopback_mode(struct lpfc_hba *phba, struct fc_bsg_job *job)
+.. c:function:: int lpfc_sli3_bsg_diag_loopback_mode(struct lpfc_hba *phba, struct bsg_job *job)
 
     process an sli3 bsg vendor command
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         LPFC_BSG_VENDOR_DIAG_MODE
 
 .. _`lpfc_sli3_bsg_diag_loopback_mode.description`:
@@ -457,14 +457,14 @@ includes all the rpis, vfi, and also vpi.
 lpfc_sli4_bsg_diag_loopback_mode
 ================================
 
-.. c:function:: int lpfc_sli4_bsg_diag_loopback_mode(struct lpfc_hba *phba, struct fc_bsg_job *job)
+.. c:function:: int lpfc_sli4_bsg_diag_loopback_mode(struct lpfc_hba *phba, struct bsg_job *job)
 
     process an sli4 bsg vendor command
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         LPFC_BSG_VENDOR_DIAG_MODE
 
 .. _`lpfc_sli4_bsg_diag_loopback_mode.description`:
@@ -480,11 +480,11 @@ loopback mode in order to perform a diagnostic loopback test.
 lpfc_bsg_diag_loopback_mode
 ===========================
 
-.. c:function:: int lpfc_bsg_diag_loopback_mode(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_diag_loopback_mode(struct bsg_job *job)
 
     bsg vendor command for diag loopback mode
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         LPFC_BSG_VENDOR_DIAG_MODE
 
 .. _`lpfc_bsg_diag_loopback_mode.description`:
@@ -500,11 +500,11 @@ command from the user to proper driver action routines.
 lpfc_sli4_bsg_diag_mode_end
 ===========================
 
-.. c:function:: int lpfc_sli4_bsg_diag_mode_end(struct fc_bsg_job *job)
+.. c:function:: int lpfc_sli4_bsg_diag_mode_end(struct bsg_job *job)
 
     sli4 bsg vendor command for ending diag mode
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         LPFC_BSG_VENDOR_DIAG_MODE_END
 
 .. _`lpfc_sli4_bsg_diag_mode_end.description`:
@@ -520,11 +520,11 @@ command from the user to proper driver action routines.
 lpfc_sli4_bsg_link_diag_test
 ============================
 
-.. c:function:: int lpfc_sli4_bsg_link_diag_test(struct fc_bsg_job *job)
+.. c:function:: int lpfc_sli4_bsg_link_diag_test(struct bsg_job *job)
 
     sli4 bsg vendor command for diag link test
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         LPFC_BSG_VENDOR_DIAG_LINK_TEST
 
 .. _`lpfc_sli4_bsg_link_diag_test.description`:
@@ -738,11 +738,11 @@ an unsolicted CT command.
 lpfc_bsg_diag_loopback_run
 ==========================
 
-.. c:function:: int lpfc_bsg_diag_loopback_run(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_diag_loopback_run(struct bsg_job *job)
 
     run loopback on a port by issue ct cmd to itself
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         LPFC_BSG_VENDOR_DIAG_TEST fc_bsg_job
 
 .. _`lpfc_bsg_diag_loopback_run.description`:
@@ -770,11 +770,11 @@ of loopback mode.
 lpfc_bsg_get_dfc_rev
 ====================
 
-.. c:function:: int lpfc_bsg_get_dfc_rev(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_get_dfc_rev(struct bsg_job *job)
 
     process a GET_DFC_REV bsg vendor command
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         GET_DFC_REV fc_bsg_job
 
 .. _`lpfc_bsg_issue_mbox_cmpl`:
@@ -854,7 +854,7 @@ command session.
 lpfc_bsg_issue_mbox_ext_handle_job
 ==================================
 
-.. c:function:: struct fc_bsg_job *lpfc_bsg_issue_mbox_ext_handle_job(struct lpfc_hba *phba, LPFC_MBOXQ_t *pmboxq)
+.. c:function:: struct bsg_job *lpfc_bsg_issue_mbox_ext_handle_job(struct lpfc_hba *phba, LPFC_MBOXQ_t *pmboxq)
 
     job handler for multi-buffer mbox cmpl
 
@@ -923,14 +923,14 @@ external buffers.
 lpfc_bsg_sli_cfg_read_cmd_ext
 =============================
 
-.. c:function:: int lpfc_bsg_sli_cfg_read_cmd_ext(struct lpfc_hba *phba, struct fc_bsg_job *job, enum nemb_type nemb_tp, struct lpfc_dmabuf *dmabuf)
+.. c:function:: int lpfc_bsg_sli_cfg_read_cmd_ext(struct lpfc_hba *phba, struct bsg_job *job, enum nemb_type nemb_tp, struct lpfc_dmabuf *dmabuf)
 
     sli_config non-embedded mailbox cmd read
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param enum nemb_type nemb_tp:
@@ -952,14 +952,14 @@ non-embedded external bufffers.
 lpfc_bsg_sli_cfg_write_cmd_ext
 ==============================
 
-.. c:function:: int lpfc_bsg_sli_cfg_write_cmd_ext(struct lpfc_hba *phba, struct fc_bsg_job *job, enum nemb_type nemb_tp, struct lpfc_dmabuf *dmabuf)
+.. c:function:: int lpfc_bsg_sli_cfg_write_cmd_ext(struct lpfc_hba *phba, struct bsg_job *job, enum nemb_type nemb_tp, struct lpfc_dmabuf *dmabuf)
 
     sli_config non-embedded mailbox cmd write
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param enum nemb_type nemb_tp:
@@ -981,14 +981,14 @@ non-embedded external bufffers.
 lpfc_bsg_handle_sli_cfg_mbox
 ============================
 
-.. c:function:: int lpfc_bsg_handle_sli_cfg_mbox(struct lpfc_hba *phba, struct fc_bsg_job *job, struct lpfc_dmabuf *dmabuf)
+.. c:function:: int lpfc_bsg_handle_sli_cfg_mbox(struct lpfc_hba *phba, struct bsg_job *job, struct lpfc_dmabuf *dmabuf)
 
     handle sli-cfg mailbox cmd with ext buffer
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param struct lpfc_dmabuf \*dmabuf:
@@ -1028,14 +1028,14 @@ multiple external buffers due to error condition.
 lpfc_bsg_read_ebuf_get
 ======================
 
-.. c:function:: int lpfc_bsg_read_ebuf_get(struct lpfc_hba *phba, struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_read_ebuf_get(struct lpfc_hba *phba, struct bsg_job *job)
 
     get the next mailbox read external buffer
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
 .. _`lpfc_bsg_read_ebuf_get.description`:
@@ -1051,14 +1051,14 @@ user space through BSG.
 lpfc_bsg_write_ebuf_set
 =======================
 
-.. c:function:: int lpfc_bsg_write_ebuf_set(struct lpfc_hba *phba, struct fc_bsg_job *job, struct lpfc_dmabuf *dmabuf)
+.. c:function:: int lpfc_bsg_write_ebuf_set(struct lpfc_hba *phba, struct bsg_job *job, struct lpfc_dmabuf *dmabuf)
 
     set the next mailbox write external buffer
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param struct lpfc_dmabuf \*dmabuf:
@@ -1077,14 +1077,14 @@ from user space through BSG.
 lpfc_bsg_handle_sli_cfg_ebuf
 ============================
 
-.. c:function:: int lpfc_bsg_handle_sli_cfg_ebuf(struct lpfc_hba *phba, struct fc_bsg_job *job, struct lpfc_dmabuf *dmabuf)
+.. c:function:: int lpfc_bsg_handle_sli_cfg_ebuf(struct lpfc_hba *phba, struct bsg_job *job, struct lpfc_dmabuf *dmabuf)
 
     handle ext buffer with sli-cfg mailbox cmd
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param struct lpfc_dmabuf \*dmabuf:
@@ -1103,14 +1103,14 @@ command with multiple non-embedded external buffers.
 lpfc_bsg_handle_sli_cfg_ext
 ===========================
 
-.. c:function:: int lpfc_bsg_handle_sli_cfg_ext(struct lpfc_hba *phba, struct fc_bsg_job *job, struct lpfc_dmabuf *dmabuf)
+.. c:function:: int lpfc_bsg_handle_sli_cfg_ext(struct lpfc_hba *phba, struct bsg_job *job, struct lpfc_dmabuf *dmabuf)
 
     handle sli-cfg mailbox with external buffer
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param struct lpfc_dmabuf \*dmabuf:
@@ -1129,14 +1129,14 @@ This routine checkes and handles non-embedded multi-buffer SLI_CONFIG
 lpfc_bsg_issue_mbox
 ===================
 
-.. c:function:: int lpfc_bsg_issue_mbox(struct lpfc_hba *phba, struct fc_bsg_job *job, struct lpfc_vport *vport)
+.. c:function:: int lpfc_bsg_issue_mbox(struct lpfc_hba *phba, struct bsg_job *job, struct lpfc_vport *vport)
 
     issues a mailbox command on behalf of an app
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         *undescribed*
 
     :param struct lpfc_vport \*vport:
@@ -1159,11 +1159,11 @@ let our completion handler finish the command.
 lpfc_bsg_mbox_cmd
 =================
 
-.. c:function:: int lpfc_bsg_mbox_cmd(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_mbox_cmd(struct bsg_job *job)
 
     process an fc bsg LPFC_BSG_VENDOR_MBOX command
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         MBOX fc_bsg_job for LPFC_BSG_VENDOR_MBOX.
 
 .. _`lpfc_bsg_menlo_cmd_cmp`:
@@ -1205,11 +1205,11 @@ sleeps for the iocb completion.
 lpfc_menlo_cmd
 ==============
 
-.. c:function:: int lpfc_menlo_cmd(struct fc_bsg_job *job)
+.. c:function:: int lpfc_menlo_cmd(struct bsg_job *job)
 
     send an ioctl for menlo hardware
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         fc_bsg_job to handle
 
 .. _`lpfc_menlo_cmd.description`:
@@ -1227,11 +1227,11 @@ supplied in the menlo request header xri field.
 lpfc_bsg_hst_vendor
 ===================
 
-.. c:function:: int lpfc_bsg_hst_vendor(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_hst_vendor(struct bsg_job *job)
 
     process a vendor-specific fc_bsg_job
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         fc_bsg_job to handle
 
 .. _`lpfc_bsg_request`:
@@ -1239,11 +1239,11 @@ lpfc_bsg_hst_vendor
 lpfc_bsg_request
 ================
 
-.. c:function:: int lpfc_bsg_request(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_request(struct bsg_job *job)
 
     handle a bsg request from the FC transport
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         fc_bsg_job to handle
 
 .. _`lpfc_bsg_timeout`:
@@ -1251,11 +1251,11 @@ lpfc_bsg_request
 lpfc_bsg_timeout
 ================
 
-.. c:function:: int lpfc_bsg_timeout(struct fc_bsg_job *job)
+.. c:function:: int lpfc_bsg_timeout(struct bsg_job *job)
 
     handle timeout of a bsg request from the FC transport
 
-    :param struct fc_bsg_job \*job:
+    :param struct bsg_job \*job:
         fc_bsg_job that has timed out
 
 .. _`lpfc_bsg_timeout.description`:

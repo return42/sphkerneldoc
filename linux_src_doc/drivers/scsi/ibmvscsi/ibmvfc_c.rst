@@ -1060,12 +1060,12 @@ ibmvfc_bsg_timeout_done
 ibmvfc_bsg_timeout
 ==================
 
-.. c:function:: int ibmvfc_bsg_timeout(struct fc_bsg_job *job)
+.. c:function:: int ibmvfc_bsg_timeout(struct bsg_job *job)
 
     Handle a BSG timeout
 
-    :param struct fc_bsg_job \*job:
-        struct fc_bsg_job that timed out
+    :param struct bsg_job \*job:
+        struct bsg_job that timed out
 
 .. _`ibmvfc_bsg_timeout.return`:
 
@@ -1101,12 +1101,12 @@ Return
 ibmvfc_bsg_request
 ==================
 
-.. c:function:: int ibmvfc_bsg_request(struct fc_bsg_job *job)
+.. c:function:: int ibmvfc_bsg_request(struct bsg_job *job)
 
     Handle a BSG request
 
-    :param struct fc_bsg_job \*job:
-        struct fc_bsg_job to be executed
+    :param struct bsg_job \*job:
+        struct bsg_job to be executed
 
 .. _`ibmvfc_bsg_request.return`:
 

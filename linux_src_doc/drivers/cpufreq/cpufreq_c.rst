@@ -678,7 +678,7 @@ Reads the current cpufreq policy.
 cpufreq_update_policy
 =====================
 
-.. c:function:: int cpufreq_update_policy(unsigned int cpu)
+.. c:function:: void cpufreq_update_policy(unsigned int cpu)
 
     re-evaluate an existing cpufreq policy
 

@@ -324,6 +324,7 @@ Definition
         int (*insert)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem,struct nft_set_ext **ext);
         void (*activate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
         void * (*deactivate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
+        bool (*deactivate_one)(const struct net *net,const struct nft_set *set,void *priv);
         void (*remove)(const struct nft_set *set,const struct nft_set_elem *elem);
         void (*walk)(const struct nft_ctx *ctx,const struct nft_set *set,struct nft_set_iter *iter);
         unsigned int (*privsize)(const struct nlattr * const nla[]);
@@ -354,6 +355,9 @@ activate
     activate new element in the next generation
 
 deactivate
+    lookup for element and deactivate it in the next generation
+
+deactivate_one
     deactivate element in the next generation
 
 remove
@@ -408,6 +412,7 @@ Definition
         char name[NFT_SET_MAXNAMELEN];
         u32 ktype;
         u32 dtype;
+        u32 objtype;
         u32 size;
         atomic_t nelems;
         u32 ndeact;
@@ -444,6 +449,9 @@ ktype
 dtype
     data type (verdict or numeric type defined by userspace)
 
+objtype
+    object type (see NFT_OBJECT\_\* definitions)
+
 size
     maximum set size
 
@@ -454,7 +462,7 @@ ndeact
     number of deactivated elements queued for removal
 
 timeout
-    default timeout value in msecs
+    default timeout value in jiffies
 
 gc_int
     garbage collection interval in msecs
@@ -554,6 +562,7 @@ Definition
         NFT_SET_EXT_EXPIRATION,
         NFT_SET_EXT_USERDATA,
         NFT_SET_EXT_EXPR,
+        NFT_SET_EXT_OBJREF,
         NFT_SET_EXT_NUM
     };
 
@@ -582,6 +591,9 @@ NFT_SET_EXT_USERDATA
 
 NFT_SET_EXT_EXPR
     expression assiociated with the element
+
+NFT_SET_EXT_OBJREF
+    stateful object reference associated with element
 
 NFT_SET_EXT_NUM
     number of extension types
@@ -1074,6 +1086,7 @@ Definition
         struct list_head list;
         struct list_head chains;
         struct list_head sets;
+        struct list_head objects;
         u64 hgenerator;
         u32 use;
         u16 flags:14;
@@ -1094,6 +1107,9 @@ chains
 
 sets
     sets in the table
+
+objects
+    stateful objects in the table
 
 hgenerator
     handle generator state
@@ -1169,6 +1185,122 @@ hook_ops_init
 
 hooks
     hookfn overrides for packet validation
+
+.. _`nft_object`:
+
+struct nft_object
+=================
+
+.. c:type:: struct nft_object
+
+    nf_tables stateful object
+
+.. _`nft_object.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nft_object {
+        struct list_head list;
+        char name[NFT_OBJ_MAXNAMELEN];
+        struct nft_table *table;
+        u32 genmask:2;
+        u32 use:2:30;
+        const struct nft_object_type *type ____cacheline_aligned;
+        unsigned char data[]__attribute__((aligned(__alignof__(u64))));
+    }
+
+.. _`nft_object.members`:
+
+Members
+-------
+
+list
+    table stateful object list node
+
+name
+    name of this stateful object
+
+table
+    table this object belongs to
+
+genmask
+    generation mask
+
+use
+    number of references to this stateful object
+
+____cacheline_aligned
+    *undescribed*
+
+data
+    object data, layout depends on type
+
+.. _`nft_object_type`:
+
+struct nft_object_type
+======================
+
+.. c:type:: struct nft_object_type
+
+    stateful object type
+
+.. _`nft_object_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nft_object_type {
+        void (*eval)(struct nft_object *obj,struct nft_regs *regs,const struct nft_pktinfo *pkt);
+        struct list_head list;
+        u32 type;
+        unsigned int size;
+        unsigned int maxattr;
+        struct module *owner;
+        const struct nla_policy *policy;
+        int (*init)(const struct nlattr * const tb[],struct nft_object *obj);
+        void (*destroy)(struct nft_object *obj);
+        int (*dump)(struct sk_buff *skb,struct nft_object *obj,bool reset);
+    }
+
+.. _`nft_object_type.members`:
+
+Members
+-------
+
+eval
+    stateful object evaluation function
+
+list
+    list node in list of object types
+
+type
+    stateful object numeric type
+
+size
+    stateful object size
+
+maxattr
+    maximum netlink attribute
+
+owner
+    module owner
+
+policy
+    netlink attribute policy
+
+init
+    initialize object from netlink attributes
+
+destroy
+    release existing stateful object
+
+dump
+    netlink dump stateful object
 
 .. _`nft_traceinfo`:
 

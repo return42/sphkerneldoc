@@ -18,6 +18,9 @@ of_find_device_by_node
 Description
 -----------
 
+Takes a reference to the embedded struct device which needs to be dropped
+after use.
+
 Returns platform_device pointer, or NULL if not found
 
 .. _`of_device_make_bus_id`:
@@ -246,9 +249,6 @@ Complementary to \ :c:func:`of_platform_populate`\ , this function removes child
 of the given device (and, recurrently, their children) that have been
 created from their respective device tree nodes (and only those,
 leaving others - eg. manually created - unharmed).
-
-Returns 0 when all children devices have been removed or
--EBUSY when some children remained.
 
 .. This file was automatic generated / don't edit.
 

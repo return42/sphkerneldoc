@@ -349,35 +349,6 @@ exact function of this bit varies on a per-module basis.  This
 function does not write to the hardware.  Returns -EINVAL upon
 error or 0 upon success.
 
-.. _`_set_idle_ioring_wakeup`:
-
-_set_idle_ioring_wakeup
-=======================
-
-.. c:function:: void _set_idle_ioring_wakeup(struct omap_hwmod *oh, bool set_wake)
-
-    enable/disable IO pad wakeup on hwmod idle for mux
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*
-
-    :param bool set_wake:
-        bool value indicating to set (true) or clear (false) wakeup enable
-
-.. _`_set_idle_ioring_wakeup.description`:
-
-Description
------------
-
-Set or clear the I/O pad wakeup flag in the mux entries for the
-hwmod \ ``oh``\ .  This function changes the \ ``oh``\ ->mux->pads_dynamic array
-in memory.  If the hwmod is currently idled, and the new idle
-values don't match the previous ones, this function will also
-update the SCM PADCTRL registers.  Otherwise, if the hwmod is not
-currently idled, this function won't touch the hardware: the new
-mux settings are written to the SCM PADCTRL registers when the
-hwmod is idled.  No return value.
-
 .. _`_enable_wakeup`:
 
 _enable_wakeup
@@ -1235,32 +1206,6 @@ Passes along the return value from either \_ocp_softreset() or the
 custom reset function - these must return -EINVAL if the hwmod
 cannot be reset this way or if the hwmod is in the wrong state,
 -ETIMEDOUT if the module did not reset in time, or 0 upon success.
-
-.. _`_reconfigure_io_chain`:
-
-_reconfigure_io_chain
-=====================
-
-.. c:function:: void _reconfigure_io_chain( void)
-
-    clear any I/O chain wakeups and reconfigure chain
-
-    :param  void:
-        no arguments
-
-.. _`_reconfigure_io_chain.description`:
-
-Description
------------
-
-Call the appropriate PRM function to clear any logged I/O chain
-wakeups and to reconfigure the chain.  This apparently needs to be
-done upon every mux change.  Since hwmods can be concurrently
-enabled and idled, hold a spinlock around the I/O chain
-reconfiguration sequence.  No return value.
-
-XXX When the PRM code is moved to drivers, this function can be removed,
-as the PRM infrastructure should abstract this.
 
 .. _`_omap4_update_context_lost`:
 

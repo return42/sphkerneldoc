@@ -280,7 +280,7 @@ fw_status_show
 
 .. c:function:: ssize_t fw_status_show(struct device *device, struct device_attribute *attr, char *buf)
 
-    mei device attribute show method
+    mei device fw_status attribute show method
 
     :param struct device \*device:
         device pointer
@@ -292,6 +292,56 @@ fw_status_show
         char out buffer
 
 .. _`fw_status_show.return`:
+
+Return
+------
+
+number of the bytes printed into buf or error
+
+.. _`hbm_ver_show`:
+
+hbm_ver_show
+============
+
+.. c:function:: ssize_t hbm_ver_show(struct device *device, struct device_attribute *attr, char *buf)
+
+    display HBM protocol version negotiated with FW
+
+    :param struct device \*device:
+        device pointer
+
+    :param struct device_attribute \*attr:
+        attribute pointer
+
+    :param char \*buf:
+        char out buffer
+
+.. _`hbm_ver_show.return`:
+
+Return
+------
+
+number of the bytes printed into buf or error
+
+.. _`hbm_ver_drv_show`:
+
+hbm_ver_drv_show
+================
+
+.. c:function:: ssize_t hbm_ver_drv_show(struct device *device, struct device_attribute *attr, char *buf)
+
+    display HBM protocol version advertised by driver
+
+    :param struct device \*device:
+        device pointer
+
+    :param struct device_attribute \*attr:
+        attribute pointer
+
+    :param char \*buf:
+        char out buffer
+
+.. _`hbm_ver_drv_show.return`:
 
 Return
 ------

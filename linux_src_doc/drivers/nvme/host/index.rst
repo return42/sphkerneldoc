@@ -10,4 +10,5 @@ host
     core_c
     fabrics_c
     fabrics_h
+    fc_c
     pci_c

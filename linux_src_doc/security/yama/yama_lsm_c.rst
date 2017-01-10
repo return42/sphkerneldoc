@@ -139,7 +139,7 @@ ptracer_exception_found
 Description
 -----------
 
-Returns 1 if tracer has is ptracer exception ancestor for tracee.
+Returns 1 if tracer has a ptracer exception ancestor for tracee.
 
 .. _`yama_ptrace_access_check`:
 

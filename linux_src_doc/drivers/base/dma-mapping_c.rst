@@ -72,7 +72,7 @@ dmam_alloc_noncoherent
 
 .. c:function:: void *dmam_alloc_noncoherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t gfp)
 
-    Managed \ :c:func:`dma_alloc_non_coherent`\ 
+    Managed \ :c:func:`dma_alloc_noncoherent`\ 
 
     :param struct device \*dev:
         Device to allocate non_coherent memory for
@@ -91,7 +91,7 @@ dmam_alloc_noncoherent
 Description
 -----------
 
-Managed \ :c:func:`dma_alloc_non_coherent`\ .  Memory allocated using this
+Managed \ :c:func:`dma_alloc_noncoherent`\ .  Memory allocated using this
 function will be automatically released on driver detach.
 
 .. _`dmam_alloc_noncoherent.return`:

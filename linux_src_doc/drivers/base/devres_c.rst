@@ -722,5 +722,60 @@ Description
 Free memory allocated with \ :c:func:`devm_get_free_pages`\ . Unlike free_pages,
 there is no need to supply the \ ``order``\ .
 
+.. _`__devm_alloc_percpu`:
+
+__devm_alloc_percpu
+===================
+
+.. c:function:: void __percpu *__devm_alloc_percpu(struct device *dev, size_t size, size_t align)
+
+    Resource-managed alloc_percpu
+
+    :param struct device \*dev:
+        Device to allocate per-cpu memory for
+
+    :param size_t size:
+        Size of per-cpu memory to allocate
+
+    :param size_t align:
+        Alignment of per-cpu memory to allocate
+
+.. _`__devm_alloc_percpu.description`:
+
+Description
+-----------
+
+Managed alloc_percpu. Per-cpu memory allocated with this function is
+automatically freed on driver detach.
+
+.. _`__devm_alloc_percpu.return`:
+
+Return
+------
+
+Pointer to allocated memory on success, NULL on failure.
+
+.. _`devm_free_percpu`:
+
+devm_free_percpu
+================
+
+.. c:function:: void devm_free_percpu(struct device *dev, void __percpu *pdata)
+
+    Resource-managed free_percpu
+
+    :param struct device \*dev:
+        Device this memory belongs to
+
+    :param void __percpu \*pdata:
+        Per-cpu memory to free
+
+.. _`devm_free_percpu.description`:
+
+Description
+-----------
+
+Free memory allocated with \ :c:func:`devm_alloc_percpu`\ .
+
 .. This file was automatic generated / don't edit.
 

@@ -283,12 +283,12 @@ sdma_exit
     :param struct hfi1_devdata \*dd:
         hfi1_devdata
 
-.. _`sdma_txclean`:
+.. _`__sdma_txclean`:
 
-sdma_txclean
-============
+__sdma_txclean
+==============
 
-.. c:function:: void sdma_txclean(struct hfi1_devdata *dd, struct sdma_txreq *tx)
+.. c:function:: void __sdma_txclean(struct hfi1_devdata *dd, struct sdma_txreq *tx)
 
     clean tx of mappings, descp \*kmalloc's
 
@@ -298,7 +298,7 @@ sdma_txclean
     :param struct sdma_txreq \*tx:
         tx request to clean
 
-.. _`sdma_txclean.description`:
+.. _`__sdma_txclean.description`:
 
 Description
 -----------

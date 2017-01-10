@@ -29,6 +29,7 @@ block
     blk-tag_c
     blk-throttle_c
     blk-timeout_c
+    blk-zoned_c
     blk_h
     bsg-lib_c
     cfq-iosched_c

@@ -176,5 +176,35 @@ zfcp_reqlist_move
     :param struct list_head \*list:
         The list where to move all entries
 
+.. _`zfcp_reqlist_apply_for_all`:
+
+zfcp_reqlist_apply_for_all
+==========================
+
+.. c:function:: void zfcp_reqlist_apply_for_all(struct zfcp_reqlist *rl, void (*f)(struct zfcp_fsf_req *, void *), void *data)
+
+    apply a function to every request.
+
+    :param struct zfcp_reqlist \*rl:
+        the requestlist that contains the target requests.
+
+    :param void (\*f)(struct zfcp_fsf_req \*, void \*):
+        the function to apply to each request; the first parameter of the
+        function will be the target-request; the second parameter is the same
+        pointer as given with the argument \ ``data``\ .
+
+    :param void \*data:
+        freely chosen argument; passed through to \ ``f``\  as second parameter.
+
+.. _`zfcp_reqlist_apply_for_all.description`:
+
+Description
+-----------
+
+Uses :c:macro:\`list_for_each_entry\` to iterate over the lists in the hash-
+table (not a 'safe' variant, so don't modify the list).
+
+Holds \ ``rl``\ ->lock over the entire request-iteration.
+
 .. This file was automatic generated / don't edit.
 

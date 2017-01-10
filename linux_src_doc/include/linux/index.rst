@@ -29,7 +29,9 @@ linux
     pinctrl/index
     platform_data/index
     power/index
+    qed/index
     regulator/index
+    remoteproc/index
     rtc/index
     soc/index
     spi/index
@@ -67,7 +69,6 @@ linux
     cacheinfo_h
     cb710_h
     ccp_h
-    cec_h
     cgroup-defs_h
     cgroup_h
     clk-provider_h
@@ -104,6 +105,8 @@ linux
     device_h
     dma-buf_h
     dma-contiguous_h
+    dma-fence-array_h
+    dma-fence_h
     dma-mapping_h
     dmaengine_h
     drbd_genl_api_h
@@ -115,8 +118,6 @@ linux
     ethtool_h
     exportfs_h
     extcon_h
-    fence-array_h
-    fence_h
     fixp-arith_h
     freezer_h
     fs_h
@@ -170,6 +171,7 @@ linux
     jz4780-nemc_h
     kernel_h
     kernfs_h
+    kexec_h
     key_h
     kfifo_h
     kgdb_h
@@ -197,6 +199,7 @@ linux
     mailbox_controller_h
     math64_h
     mcb_h
+    mdev_h
     mdio_h
     mei_cl_bus_h
     memblock_h
@@ -221,6 +224,7 @@ linux
     nmi_h
     nodemask_h
     ntb_h
+    nvme-fc-driver_h
     nvme-rdma_h
     of_device_h
     of_gpio_h
@@ -243,6 +247,7 @@ linux
     plist_h
     pm2301_charger_h
     pm_h
+    pm_opp_h
     pm_wakeup_h
     pmem_h
     pnp_h

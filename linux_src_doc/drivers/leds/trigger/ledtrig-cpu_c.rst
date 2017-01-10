@@ -19,7 +19,7 @@ Description
 -----------
 
 Emit a CPU event on a CPU core, which will trigger a
-binded LED to turn on or turn off.
+bound LED to turn on or turn off.
 
 .. This file was automatic generated / don't edit.
 

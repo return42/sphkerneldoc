@@ -18,6 +18,8 @@ include
     lustre_lib_h
     lustre_mdc_h
     lustre_net_h
+    lustre_nrs_h
     lustre_sec_h
     obd_h
     obd_support_h
+    seq_range_h

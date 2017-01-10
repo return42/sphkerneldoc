@@ -1,6 +1,64 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/radix-tree.h
 
+.. _`radix_tree_iter`:
+
+struct radix_tree_iter
+======================
+
+.. c:type:: struct radix_tree_iter
+
+    radix tree iterator state
+
+.. _`radix_tree_iter.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct radix_tree_iter {
+        unsigned long index;
+        unsigned long next_index;
+        unsigned long tags;
+        struct radix_tree_node *node;
+    #ifdef CONFIG_RADIX_TREE_MULTIORDER
+        unsigned int shift;
+    #endif
+    }
+
+.. _`radix_tree_iter.members`:
+
+Members
+-------
+
+index
+    index of current slot
+
+next_index
+    one beyond the last index for this chunk
+
+tags
+    bit-mask for tag-iterating
+
+node
+    node that contains current slot
+
+shift
+    shift for the node that holds our slots
+
+.. _`radix_tree_iter.description`:
+
+Description
+-----------
+
+This radix tree iterator works in terms of "chunks" of slots.  A chunk is a
+subinterval of slots contained within one radix tree leaf node.  It is
+described by a pointer to its first slot and a struct radix_tree_iter
+which holds the chunk's position in the tree and its size.  For tagged
+iteration radix_tree_iter also holds the slots' bit-mask for one chosen
+radix tree tag.
+
 .. _`radix_tree_deref_slot`:
 
 radix_tree_deref_slot
@@ -155,83 +213,6 @@ Return
 ------
 
 0 if well-aligned pointer, non-0 if either kind of exception.
-
-.. _`radix_tree_replace_slot`:
-
-radix_tree_replace_slot
-=======================
-
-.. c:function:: void radix_tree_replace_slot(void **pslot, void *item)
-
-    replace item in a slot
-
-    :param void \*\*pslot:
-        pointer to slot, returned by radix_tree_lookup_slot
-
-    :param void \*item:
-        new item to store in the slot.
-
-.. _`radix_tree_replace_slot.description`:
-
-Description
------------
-
-For use with \ :c:func:`radix_tree_lookup_slot`\ .  Caller must hold tree write locked
-across slot lookup and replacement.
-
-.. _`radix_tree_iter`:
-
-struct radix_tree_iter
-======================
-
-.. c:type:: struct radix_tree_iter
-
-    radix tree iterator state
-
-.. _`radix_tree_iter.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct radix_tree_iter {
-        unsigned long index;
-        unsigned long next_index;
-        unsigned long tags;
-    #ifdef CONFIG_RADIX_TREE_MULTIORDER
-        unsigned int shift;
-    #endif
-    }
-
-.. _`radix_tree_iter.members`:
-
-Members
--------
-
-index
-    index of current slot
-
-next_index
-    one beyond the last index for this chunk
-
-tags
-    bit-mask for tag-iterating
-
-shift
-    shift for the node that holds our slots
-
-.. _`radix_tree_iter.description`:
-
-Description
------------
-
-This radix tree iterator works in terms of "chunks" of slots.  A chunk is a
-subinterval of slots contained within one radix tree leaf node.  It is
-described by a pointer to its first slot and a struct radix_tree_iter
-which holds the chunk's position in the tree and its size.  For tagged
-iteration radix_tree_iter also holds the slots' bit-mask for one chosen
-radix tree tag.
 
 .. _`radix_tree_chunk_size`:
 

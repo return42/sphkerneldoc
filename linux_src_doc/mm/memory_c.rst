@@ -296,6 +296,32 @@ we'll figure out the rest from the vma information.
 NOTE! Some drivers might want to tweak vma->vm_page_prot first to get
 whatever write-combining details or similar.
 
+.. _`finish_mkwrite_fault`:
+
+finish_mkwrite_fault
+====================
+
+.. c:function:: int finish_mkwrite_fault(struct vm_fault *vmf)
+
+    finish page fault for a shared mapping, making PTE writeable once the page is prepared
+
+    :param struct vm_fault \*vmf:
+        structure describing the fault
+
+.. _`finish_mkwrite_fault.description`:
+
+Description
+-----------
+
+This function handles all that is needed to finish a write page fault in a
+shared mapping due to PTE being read-only once the mapped page is prepared.
+It handles locking of PTE and modifying it. The function returns
+VM_FAULT_WRITE on success, 0 when PTE got changed before we acquired PTE
+lock.
+
+The function expects the page to be locked or other protection against
+concurrent faults / writeback (such as DAX radix tree locks).
+
 .. _`unmap_mapping_range`:
 
 unmap_mapping_range
@@ -329,11 +355,11 @@ unmap_mapping_range
 alloc_set_pte
 =============
 
-.. c:function:: int alloc_set_pte(struct fault_env *fe, struct mem_cgroup *memcg, struct page *page)
+.. c:function:: int alloc_set_pte(struct vm_fault *vmf, struct mem_cgroup *memcg, struct page *page)
 
     setup new PTE entry for given page and add reverse page mapping. If needed, the fucntion allocates page table or use pre-allocated.
 
-    :param struct fault_env \*fe:
+    :param struct vm_fault \*vmf:
         fault environment
 
     :param struct mem_cgroup \*memcg:
@@ -347,10 +373,37 @@ alloc_set_pte
 Description
 -----------
 
-Caller must take care of unlocking fe->ptl, if fe->pte is non-NULL on return.
+Caller must take care of unlocking vmf->ptl, if vmf->pte is non-NULL on
+return.
 
 Target users are page handler itself and implementations of
 vm_ops->map_pages.
+
+.. _`finish_fault`:
+
+finish_fault
+============
+
+.. c:function:: int finish_fault(struct vm_fault *vmf)
+
+    finish page fault once we have prepared the page to fault
+
+    :param struct vm_fault \*vmf:
+        structure describing the fault
+
+.. _`finish_fault.description`:
+
+Description
+-----------
+
+This function handles all that is needed to finish a page fault once the
+page to fault in is prepared. It handles locking of PTEs, inserts PTE for
+given page, adds reverse page mapping, handles memcg charges and LRU
+addition. The function returns 0 on success, VM_FAULT\_ code in case of
+error.
+
+The function expects the page to be locked and on success it consumes a
+reference of a page being mapped (for the PTE which maps it).
 
 .. _`follow_pfn`:
 

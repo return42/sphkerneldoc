@@ -30,7 +30,6 @@ fs
     jffs2/index
     kernfs/index
     lockd/index
-    logfs/index
     ncpfs/index
     nfs/index
     nfs_common/index

@@ -82,7 +82,7 @@ modes
     Supported operating modes by this buffer type
 
 flags
-    A bitmask combination of INDIO_BUFFER_FLAG\_\*
+    A bitmask combination of INDIO_BUFFER_FLAG_*
 
 .. _`iio_buffer_access_funcs.description`:
 

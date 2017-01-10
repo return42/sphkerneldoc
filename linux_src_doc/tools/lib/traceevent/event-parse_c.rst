@@ -564,7 +564,7 @@ pevent_data_pid
 
 .. c:function:: int pevent_data_pid(struct pevent *pevent, struct pevent_record *rec)
 
-    parse the PID from raw data
+    parse the PID from record
 
     :param struct pevent \*pevent:
         a handle to the pevent
@@ -577,7 +577,53 @@ pevent_data_pid
 Description
 -----------
 
-This returns the PID from a raw data.
+This returns the PID from a record.
+
+.. _`pevent_data_prempt_count`:
+
+pevent_data_prempt_count
+========================
+
+.. c:function:: int pevent_data_prempt_count(struct pevent *pevent, struct pevent_record *rec)
+
+    parse the preempt count from the record
+
+    :param struct pevent \*pevent:
+        a handle to the pevent
+
+    :param struct pevent_record \*rec:
+        the record to parse
+
+.. _`pevent_data_prempt_count.description`:
+
+Description
+-----------
+
+This returns the preempt count from a record.
+
+.. _`pevent_data_flags`:
+
+pevent_data_flags
+=================
+
+.. c:function:: int pevent_data_flags(struct pevent *pevent, struct pevent_record *rec)
+
+    parse the latency flags from the record
+
+    :param struct pevent \*pevent:
+        a handle to the pevent
+
+    :param struct pevent_record \*rec:
+        the record to parse
+
+.. _`pevent_data_flags.description`:
+
+Description
+-----------
+
+This returns the latency flags from a record.
+
+Use trace_flag_type enum for the flags (see event-parse.h).
 
 .. _`pevent_data_comm_from_pid`:
 

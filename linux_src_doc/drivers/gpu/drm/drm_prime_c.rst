@@ -23,7 +23,8 @@ Description
 
 This wraps \ :c:func:`dma_buf_export`\  for use by generic GEM drivers that are using
 \ :c:func:`drm_gem_dmabuf_release`\ . In addition to calling \ :c:func:`dma_buf_export`\ , we take
-a reference to the drm_device which is released by \ :c:func:`drm_gem_dmabuf_release`\ .
+a reference to the \ :c:type:`struct drm_device <drm_device>`\  and the exported \ :c:type:`struct drm_gem_object <drm_gem_object>`\  (stored in
+exp_info->priv) which is released by \ :c:func:`drm_gem_dmabuf_release`\ .
 
 Returns the new dmabuf.
 

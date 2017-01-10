@@ -13,7 +13,7 @@ NFP_NET_CFG_BAR_SZ
 Description
 -----------
 
-The configuration BAR is 8K in size, but on the NFP6000, due to
+The configuration BAR is 8K in size, but due to
 THB-350, 32k needs to be reserved.
 
 .. _`nfp_net_rx_offset`:
@@ -78,23 +78,12 @@ TODO
 
 - define more STS bits
 
-.. _`nfp_net_cfg_spare_addr`:
-
-NFP_NET_CFG_SPARE_ADDR
-======================
-
-.. c:function::  NFP_NET_CFG_SPARE_ADDR()
-
-    3200 workaround (0x0050 - 0x0058)
-
 .. _`nfp_net_cfg_rx_offset`:
 
 NFP_NET_CFG_RX_OFFSET
 =====================
 
 .. c:function::  NFP_NET_CFG_RX_OFFSET()
-
-    Prepend configuration
 
 .. _`nfp_net_cfg_vxlan_port`:
 
@@ -103,16 +92,12 @@ NFP_NET_CFG_VXLAN_PORT
 
 .. c:function::  NFP_NET_CFG_VXLAN_PORT()
 
-    VXLAN/UDP encap configuration
-
 .. _`nfp_net_cfg_bpf_abi`:
 
 NFP_NET_CFG_BPF_ABI
 ===================
 
 .. c:function::  NFP_NET_CFG_BPF_ABI()
-
-    BPF section
 
 .. _`nfp_net_cfg_reserved`:
 

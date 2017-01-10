@@ -77,6 +77,7 @@ Definition
     struct fc_exch_mgr {
         struct fc_exch_pool __percpu *pool;
         mempool_t *ep_pool;
+        struct fc_lport *lport;
         enum fc_class class;
         struct kref kref;
         u16 min_xid;
@@ -95,6 +96,9 @@ pool
 
 ep_pool
     Reserved exchange pointers
+
+lport
+    *undescribed*
 
 class
     Default class for new sequences
@@ -476,6 +480,18 @@ fc_exch_abort_locked
 
     :param unsigned int timer_msec:
         The period of time to wait before aborting
+
+.. _`fc_exch_abort_locked.description`:
+
+Description
+-----------
+
+Abort an exchange and sequence. Generally called because of a
+exchange timeout or an abort from the upper layer.
+
+A timer_msec can be specified for abort timeout, if non-zero
+timer_msec value is specified then exchange resp handler
+will be called with timeout error if no response to abort.
 
 .. _`fc_exch_abort_locked.locking-notes`:
 
@@ -1232,6 +1248,24 @@ fc_exch_seq_send
 
 Description
 -----------
+
+The exchange response handler is set in this routine to \ :c:func:`resp`\ 
+function pointer. It can be called in two scenarios: if a timeout
+occurs or if a response frame is received for the exchange. The
+fc_frame pointer in response handler will also indicate timeout
+as error using IS_ERR related macros.
+
+The exchange destructor handler is also set in this routine.
+The destructor handler is invoked by EM layer when exchange
+is about to free, this can be used by caller to free its
+resources along with exchange free.
+
+The arg is passed back to resp and destructor handler.
+
+The timeout value (in msec) for an exchange is set if non zero
+timer_msec argument is specified. The timer is canceled when
+it fires or when the exchange is done. The exchange timeout handler
+is registered by EM layer.
 
 The frame pointer with some of the header's fields must be
 filled before calling this routine, those fields are:

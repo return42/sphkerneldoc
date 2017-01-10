@@ -23,6 +23,7 @@ Definition
         struct regmap *regmap;
         unsigned int gdscr;
         unsigned int gds_hw_ctrl;
+        unsigned int clamp_io_ctrl;
         unsigned int *cxcs;
         unsigned int cxc_count;
         const u8 pwrsts;
@@ -33,6 +34,8 @@ Definition
     #define PWRSTS_RET_ON (PWRSTS_RET | PWRSTS_ON)
         const u8 flags;
     #define VOTABLE BIT(0)
+    #define CLAMP_IO BIT(1)
+    #define HW_CTRL BIT(2)
         struct reset_controller_dev *rcdev;
         unsigned int *resets;
         unsigned int reset_count;
@@ -57,6 +60,9 @@ gdscr
 
 gds_hw_ctrl
     gds_hw_ctrl register
+
+clamp_io_ctrl
+    *undescribed*
 
 cxcs
     offsets of branch registers to toggle mem/periph bits in

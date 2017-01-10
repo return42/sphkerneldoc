@@ -229,7 +229,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_skcipher`:
 
@@ -268,7 +268,7 @@ Return
 ------
 
 true when the skcipher is known to the kernel crypto API; false
-otherwise
+        otherwise
 
 .. _`crypto_has_skcipher2`:
 
@@ -295,7 +295,7 @@ Return
 ------
 
 true when the skcipher is known to the kernel crypto API; false
-otherwise
+        otherwise
 
 .. _`crypto_skcipher_ivsize`:
 
@@ -466,7 +466,7 @@ Description
 
 Encrypt plaintext data using the skcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-skcipher_request\_\* functions.
+skcipher_request_* functions.
 
 .. _`crypto_skcipher_encrypt.return`:
 
@@ -495,7 +495,7 @@ Description
 
 Decrypt ciphertext data using the skcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-skcipher_request\_\* functions.
+skcipher_request_* functions.
 
 .. _`crypto_skcipher_decrypt.return`:
 
@@ -629,9 +629,9 @@ This function allows setting the callback function that is triggered once the
 cipher operation completes.
 
 The callback function is registered with the skcipher_request handle and
-must comply with the following template
+must comply with the following template::
 
-void callback_function(struct crypto_async_request \*req, int error)
+     void callback_function(struct crypto_async_request *req, int error)
 
 .. _`skcipher_request_set_crypt`:
 

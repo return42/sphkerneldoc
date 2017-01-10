@@ -23,6 +23,7 @@ codecs
     rt5659_c
     rt5660_c
     rt5663_c
+    rt5665_c
     rt5670_c
     rt5677_c
     sigmadsp-i2c_c

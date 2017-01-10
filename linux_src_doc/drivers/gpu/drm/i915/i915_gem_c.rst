@@ -1,20 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem.c
 
-.. _`i915_gem_object_wait_rendering`:
+.. _`i915_gem_object_wait`:
 
-i915_gem_object_wait_rendering
-==============================
+i915_gem_object_wait
+====================
 
-.. c:function:: int i915_gem_object_wait_rendering(struct drm_i915_gem_object *obj, bool readonly)
-
-    safe to unbind from the GTT or access from the CPU.
+.. c:function:: int i915_gem_object_wait(struct drm_i915_gem_object *obj, unsigned int flags, long timeout, struct intel_rps_client *rps)
 
     :param struct drm_i915_gem_object \*obj:
         i915 gem object
 
-    :param bool readonly:
-        waiting for just read access or read-write access
+    :param unsigned int flags:
+        how to wait (under a lock, for all rendering or just for writes etc)
+
+    :param long timeout:
+        how long to wait
+
+    :param struct intel_rps_client \*rps:
+        client (user process) to charge for any waitboosting
 
 .. _`i915_gem_create_ioctl`:
 
@@ -60,21 +64,15 @@ On error, the contents of *data are undefined.
 i915_gem_gtt_pwrite_fast
 ========================
 
-.. c:function:: int i915_gem_gtt_pwrite_fast(struct drm_i915_private *i915, struct drm_i915_gem_object *obj, struct drm_i915_gem_pwrite *args, struct drm_file *file)
+.. c:function:: int i915_gem_gtt_pwrite_fast(struct drm_i915_gem_object *obj, const struct drm_i915_gem_pwrite *args)
 
     user into the GTT, uncached.
 
-    :param struct drm_i915_private \*i915:
-        i915 device private data
-
     :param struct drm_i915_gem_object \*obj:
-        i915 gem object
+        i915 GEM object
 
-    :param struct drm_i915_gem_pwrite \*args:
+    :param const struct drm_i915_gem_pwrite \*args:
         pwrite arguments structure
-
-    :param struct drm_file \*file:
-        drm file pointer
 
 .. _`i915_gem_pwrite_ioctl`:
 
@@ -426,43 +424,6 @@ nanoseconds on an object becoming unbusy. Since the wait itself does so
 without holding struct_mutex the object may become re-busied before this
 function completes. A similar but shorter * race condition exists in the busy
 ioctl
-
-.. _`i915_vma_insert`:
-
-i915_vma_insert
-===============
-
-.. c:function:: int i915_vma_insert(struct i915_vma *vma, u64 size, u64 alignment, u64 flags)
-
-    finds a slot for the vma in its address space
-
-    :param struct i915_vma \*vma:
-        the vma
-
-    :param u64 size:
-        requested size in bytes (can be larger than the VMA)
-
-    :param u64 alignment:
-        required alignment
-
-    :param u64 flags:
-        mask of PIN_* flags to use
-
-.. _`i915_vma_insert.description`:
-
-Description
------------
-
-First we try to allocate some free space that meets the requirements for
-the VMA. Failiing that, if the flags permit, it will evict an old VMA,
-preferrably the oldest idle entry to make room for the new VMA.
-
-.. _`i915_vma_insert.return`:
-
-Return
-------
-
-0 on success, negative error code otherwise.
 
 .. _`i915_gem_object_set_to_gtt_domain`:
 

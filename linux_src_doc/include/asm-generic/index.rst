@@ -14,8 +14,6 @@ asm-generic
     getorder_h
     io_h
     msi_h
-    mutex-dec_h
-    mutex-xchg_h
     qrwlock_h
     qspinlock_h
     sections_h

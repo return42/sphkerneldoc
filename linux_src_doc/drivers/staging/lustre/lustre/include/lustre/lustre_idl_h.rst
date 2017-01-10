@@ -1,51 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/include/lustre/lustre_idl.h
 
-.. _`fld_range_is_any`:
-
-fld_range_is_any
-================
-
-.. c:function:: unsigned fld_range_is_any(const struct lu_seq_range *range)
-
-    but it does not know whether the seq is MDT or OST, so it will send req with ALL type, which means either seq type gotten from lookup can be expected.
-
-    :param const struct lu_seq_range \*range:
-        *undescribed*
-
-.. _`range_space`:
-
-range_space
-===========
-
-.. c:function:: __u64 range_space(const struct lu_seq_range *range)
-
-    :param const struct lu_seq_range \*range:
-        *undescribed*
-
-.. _`range_init`:
-
-range_init
-==========
-
-.. c:function:: void range_init(struct lu_seq_range *range)
-
-    :param struct lu_seq_range \*range:
-        *undescribed*
-
-.. _`range_within`:
-
-range_within
-============
-
-.. c:function:: bool range_within(const struct lu_seq_range *range, __u64 s)
-
-    :param const struct lu_seq_range \*range:
-        *undescribed*
-
-    :param __u64 s:
-        *undescribed*
-
 .. _`fid_seq_is_igif`:
 
 fid_seq_is_igif

@@ -249,5 +249,81 @@ tegra_pmc_cpu_remove_clamping
     :param unsigned int cpuid:
         CPU partition ID
 
+.. _`tegra_io_pad_power_enable`:
+
+tegra_io_pad_power_enable
+=========================
+
+.. c:function:: int tegra_io_pad_power_enable(enum tegra_io_pad id)
+
+    enable power to I/O pad
+
+    :param enum tegra_io_pad id:
+        Tegra I/O pad ID for which to enable power
+
+.. _`tegra_io_pad_power_enable.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`tegra_io_pad_power_disable`:
+
+tegra_io_pad_power_disable
+==========================
+
+.. c:function:: int tegra_io_pad_power_disable(enum tegra_io_pad id)
+
+    disable power to I/O pad
+
+    :param enum tegra_io_pad id:
+        Tegra I/O pad ID for which to disable power
+
+.. _`tegra_io_pad_power_disable.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`tegra_io_rail_power_on`:
+
+tegra_io_rail_power_on
+======================
+
+.. c:function:: int tegra_io_rail_power_on(unsigned int id)
+
+    enable power to I/O rail
+
+    :param unsigned int id:
+        Tegra I/O pad ID for which to enable power
+
+.. _`tegra_io_rail_power_on.see-also`:
+
+See also
+--------
+
+tegra_io_pad_power_enable()
+
+.. _`tegra_io_rail_power_off`:
+
+tegra_io_rail_power_off
+=======================
+
+.. c:function:: int tegra_io_rail_power_off(unsigned int id)
+
+    disable power to I/O rail
+
+    :param unsigned int id:
+        Tegra I/O pad ID for which to disable power
+
+.. _`tegra_io_rail_power_off.see-also`:
+
+See also
+--------
+
+tegra_io_pad_power_disable()
+
 .. This file was automatic generated / don't edit.
 

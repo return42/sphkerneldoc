@@ -8,24 +8,16 @@ fsl_mc_resource_pool_add_device
 
 .. c:function:: int fsl_mc_resource_pool_add_device(struct fsl_mc_bus *mc_bus, enum fsl_mc_pool_type pool_type, struct fsl_mc_device *mc_dev)
 
-    add allocatable device to a resource pool of a given MC bus
+    add allocatable object to a resource pool of a given fsl-mc bus
 
     :param struct fsl_mc_bus \*mc_bus:
-        pointer to the MC bus
+        pointer to the fsl-mc bus
 
     :param enum fsl_mc_pool_type pool_type:
-        MC bus pool type
+        pool type
 
     :param struct fsl_mc_device \*mc_dev:
-        Pointer to allocatable MC object device
-
-.. _`fsl_mc_resource_pool_add_device.description`:
-
-Description
------------
-
-It adds an allocatable MC object device to a container's resource pool of
-the given resource type
+        pointer to allocatable fsl-mc device
 
 .. _`fsl_mc_resource_pool_remove_device`:
 
@@ -37,15 +29,15 @@ fsl_mc_resource_pool_remove_device
     remove an allocatable device from a resource pool
 
     :param struct fsl_mc_device \*mc_dev:
-        Pointer to allocatable MC object device
+        pointer to allocatable fsl-mc device
 
 .. _`fsl_mc_resource_pool_remove_device.description`:
 
 Description
 -----------
 
-It permanently removes an allocatable MC object device from the resource
-pool, the device is currently in, as long as it is in the pool's free list.
+It permanently removes an allocatable fsl-mc device from the resource
+pool. It's an error if the device is in use.
 
 .. _`fsl_mc_object_allocate`:
 
@@ -54,13 +46,14 @@ fsl_mc_object_allocate
 
 .. c:function:: int fsl_mc_object_allocate(struct fsl_mc_device *mc_dev, enum fsl_mc_pool_type pool_type, struct fsl_mc_device **new_mc_adev)
 
-    Allocates a MC object device of the given pool type from a given MC bus
+    Allocates an fsl-mc object of the given pool type from a given fsl-mc bus instance
 
     :param struct fsl_mc_device \*mc_dev:
-        MC device for which the MC object device is to be allocated
+        fsl-mc device which is used in conjunction with the
+        allocated object
 
     :param enum fsl_mc_pool_type pool_type:
-        MC bus resource pool type
+        pool type
 
     :param struct fsl_mc_device \*\*new_mc_adev:
         *undescribed*
@@ -70,9 +63,9 @@ fsl_mc_object_allocate
 Description
 -----------
 
-This function allocates a MC object device from the device's parent DPRC,
-from the corresponding MC bus' pool of allocatable MC object devices of
-the given resource type. mc_dev cannot be a DPRC itself.
+Allocatable objects are always used in conjunction with some functional
+device.  This function allocates an object of the specified type from
+the DPRC containing the functional device.
 
 .. _`fsl_mc_object_allocate.note`:
 
@@ -90,10 +83,10 @@ fsl_mc_object_free
 
 .. c:function:: void fsl_mc_object_free(struct fsl_mc_device *mc_adev)
 
-    Returns an allocatable MC object device to the corresponding resource pool of a given MC bus.
+    Returns an fsl-mc object to the resource pool where it came from.
 
     :param struct fsl_mc_device \*mc_adev:
-        Pointer to the MC object device
+        Pointer to the fsl-mc device
 
 .. _`fsl_mc_cleanup_irq_pool`:
 
@@ -102,7 +95,7 @@ fsl_mc_cleanup_irq_pool
 
 .. c:function:: void fsl_mc_cleanup_irq_pool(struct fsl_mc_bus *mc_bus)
 
-    It frees the IRQs that were allocated to the pool, back to the GIC-ITS.
+    mc bus. It frees the IRQs that were allocated to the pool, back to the GIC-ITS.
 
     :param struct fsl_mc_bus \*mc_bus:
         *undescribed*
@@ -114,7 +107,7 @@ fsl_mc_allocate_irqs
 
 .. c:function:: int fsl_mc_allocate_irqs(struct fsl_mc_device *mc_dev)
 
-    IRQs are allocated from the interrupt pool associated with the MC bus that contains the device, if the device is not a DPRC device. Otherwise, the IRQs are allocated from the interrupt pool associated with the MC bus that represents the DPRC device itself.
+    mc device.
 
     :param struct fsl_mc_device \*mc_dev:
         *undescribed*

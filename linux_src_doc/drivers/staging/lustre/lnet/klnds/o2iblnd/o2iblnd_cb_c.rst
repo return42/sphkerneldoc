@@ -17,7 +17,7 @@ KIB_RECONN_BREAK
 
 .. c:function::  KIB_RECONN_BREAK()
 
-    reconnection attemps.
+    reconnection attempts.
 
 .. This file was automatic generated / don't edit.
 

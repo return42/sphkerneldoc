@@ -21,6 +21,7 @@ Definition
         int id;
         char type[THERMAL_NAME_LENGTH];
         struct device device;
+        struct attribute_group trips_attribute_group;
         struct thermal_attr *trip_temp_attrs;
         struct thermal_attr *trip_type_attrs;
         struct thermal_attr *trip_hyst_attrs;
@@ -62,6 +63,9 @@ type
 
 device
     &struct device for this thermal zone
+
+trips_attribute_group
+    *undescribed*
 
 trip_temp_attrs
     attributes for trip points for sysfs: trip temperature

@@ -18,7 +18,6 @@ Definition
 .. code-block:: c
 
     struct s3c2410_nand_set {
-        unsigned int disable_ecc:1;
         unsigned int flash_bbt:1;
         unsigned int options;
         int nr_chips;
@@ -26,15 +25,13 @@ Definition
         char *name;
         int *nr_map;
         struct mtd_partition *partitions;
+        struct device_node *of_node;
     }
 
 .. _`s3c2410_nand_set.members`:
 
 Members
 -------
-
-disable_ecc
-    Entirely disable ECC - Dangerous
 
 flash_bbt
     Openmoko u-boot can create a Bad Block Table
@@ -59,6 +56,9 @@ nr_map
 
 partitions
     The mtd partition list
+
+of_node
+    *undescribed*
 
 .. _`s3c2410_nand_set.description`:
 

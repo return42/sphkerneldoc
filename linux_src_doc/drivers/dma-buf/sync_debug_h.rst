@@ -74,7 +74,7 @@ Definition
 .. code-block:: c
 
     struct sync_pt {
-        struct fence base;
+        struct dma_fence base;
         struct list_head child_list;
         struct list_head active_list;
     }

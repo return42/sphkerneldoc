@@ -8,9 +8,12 @@ crypto
     :maxdepth: 1
 
     internal/index
+    acompress_h
     aead_h
     akcipher_h
     algapi_h
+    dh_h
+    ecdh_h
     hash_h
     kpp_h
     rng_h

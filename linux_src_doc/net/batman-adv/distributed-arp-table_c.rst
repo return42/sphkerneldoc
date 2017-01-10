@@ -277,7 +277,7 @@ batadv_dat_entry_add
 batadv_dbg_arp
 ==============
 
-.. c:function:: void batadv_dbg_arp(struct batadv_priv *bat_priv, struct sk_buff *skb, u16 type, int hdr_size, char *msg)
+.. c:function:: void batadv_dbg_arp(struct batadv_priv *bat_priv, struct sk_buff *skb, int hdr_size, char *msg)
 
     print a debug message containing all the ARP packet details
 
@@ -286,9 +286,6 @@ batadv_dbg_arp
 
     :param struct sk_buff \*skb:
         ARP packet
-
-    :param u16 type:
-        ARP type
 
     :param int hdr_size:
         size of the possible header before the ARP packet
@@ -593,6 +590,48 @@ Return
 If the packet embedded in the skb is vlan tagged this function
 returns the VID with the BATADV_VLAN_HAS_TAG flag. Otherwise BATADV_NO_FLAGS
 is returned.
+
+.. _`batadv_dat_arp_create_reply`:
+
+batadv_dat_arp_create_reply
+===========================
+
+.. c:function:: struct sk_buff *batadv_dat_arp_create_reply(struct batadv_priv *bat_priv, __be32 ip_src, __be32 ip_dst, u8 *hw_src, u8 *hw_dst, unsigned short vid)
+
+    create an ARP Reply
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param __be32 ip_src:
+        ARP sender IP
+
+    :param __be32 ip_dst:
+        ARP target IP
+
+    :param u8 \*hw_src:
+        Ethernet source and ARP sender MAC
+
+    :param u8 \*hw_dst:
+        Ethernet destination and ARP target MAC
+
+    :param unsigned short vid:
+        VLAN identifier (optional, set to zero otherwise)
+
+.. _`batadv_dat_arp_create_reply.description`:
+
+Description
+-----------
+
+Creates an ARP Reply from the given values, optionally encapsulated in a
+VLAN header.
+
+.. _`batadv_dat_arp_create_reply.return`:
+
+Return
+------
+
+An skb containing an ARP Reply.
 
 .. _`batadv_dat_snoop_outgoing_arp_request`:
 

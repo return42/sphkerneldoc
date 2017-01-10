@@ -278,16 +278,9 @@ btrfs_add_reserved_bytes
 Description
 -----------
 
-This is called by the allocator when it reserves space. Metadata
-reservations should be called with RESERVE_ALLOC so we do the proper
-ENOSPC accounting.  For data we handle the reservation through clearing the
-delalloc bits in the io_tree.  We have to do this since we could end up
-allocating less disk space for the amount of data we have reserved in the
-case of compression.
-
-If this is a reservation and the block group has become read only we cannot
-make the reservation and return -EAGAIN, otherwise this function always
-succeeds.
+This is called by the allocator when it reserves space. If this is a
+reservation and the block group has become read only we cannot make the
+reservation and return -EAGAIN, otherwise this function always succeeds.
 
 .. _`btrfs_free_reserved_bytes`:
 

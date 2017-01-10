@@ -825,6 +825,8 @@ Definition
         OVS_ACTION_ATTR_SET_MASKED,
         OVS_ACTION_ATTR_CT,
         OVS_ACTION_ATTR_TRUNC,
+        OVS_ACTION_ATTR_PUSH_ETH,
+        OVS_ACTION_ATTR_POP_ETH,
         __OVS_ACTION_ATTR_MAX,
         OVS_ACTION_ATTR_SET_TO_MASKED
     };
@@ -894,6 +896,14 @@ OVS_ACTION_ATTR_CT
 
 OVS_ACTION_ATTR_TRUNC
     Output packet to port with truncated packet size.
+
+OVS_ACTION_ATTR_PUSH_ETH
+    Push a new outermost Ethernet header onto the
+    packet.
+
+OVS_ACTION_ATTR_POP_ETH
+    Pop the outermost Ethernet header off the
+    packet.
 
 __OVS_ACTION_ATTR_MAX
     *undescribed*

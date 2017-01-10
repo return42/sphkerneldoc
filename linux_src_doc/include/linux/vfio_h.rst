@@ -85,6 +85,10 @@ Definition
         int (*mmap)(void *iommu_data, struct vm_area_struct *vma);
         int (*attach_group)(void *iommu_data,struct iommu_group *group);
         void (*detach_group)(void *iommu_data,struct iommu_group *group);
+        int (*pin_pages)(void *iommu_data, unsigned long *user_pfn,int npage, int prot,unsigned long *phys_pfn);
+        int (*unpin_pages)(void *iommu_data,unsigned long *user_pfn, int npage);
+        int (*register_notifier)(void *iommu_data,unsigned long *events,struct notifier_block *nb);
+        int (*unregister_notifier)(void *iommu_data,struct notifier_block *nb);
     }
 
 .. _`vfio_iommu_driver_ops.members`:
@@ -120,6 +124,18 @@ attach_group
     *undescribed*
 
 detach_group
+    *undescribed*
+
+pin_pages
+    *undescribed*
+
+unpin_pages
+    *undescribed*
+
+register_notifier
+    *undescribed*
+
+unregister_notifier
     *undescribed*
 
 .. This file was automatic generated / don't edit.

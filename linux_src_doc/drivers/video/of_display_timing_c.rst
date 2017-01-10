@@ -47,11 +47,11 @@ of_parse_display_timing
 of_get_display_timing
 =====================
 
-.. c:function:: int of_get_display_timing(struct device_node *np, const char *name, struct display_timing *dt)
+.. c:function:: int of_get_display_timing(const struct device_node *np, const char *name, struct display_timing *dt)
 
     parse a display_timing entry
 
-    :param struct device_node \*np:
+    :param const struct device_node \*np:
         device_node with the timing subnode
 
     :param const char \*name:
@@ -65,11 +65,11 @@ of_get_display_timing
 of_get_display_timings
 ======================
 
-.. c:function:: struct display_timings *of_get_display_timings(struct device_node *np)
+.. c:function:: struct display_timings *of_get_display_timings(const struct device_node *np)
 
     parse all display_timing entries from a device_node
 
-    :param struct device_node \*np:
+    :param const struct device_node \*np:
         device_node with the subnodes
 
 .. _`of_display_timings_exist`:
@@ -77,11 +77,11 @@ of_get_display_timings
 of_display_timings_exist
 ========================
 
-.. c:function:: int of_display_timings_exist(struct device_node *np)
+.. c:function:: int of_display_timings_exist(const struct device_node *np)
 
     check if a display-timings node is provided
 
-    :param struct device_node \*np:
+    :param const struct device_node \*np:
         device_node with the timing
 
 .. This file was automatic generated / don't edit.

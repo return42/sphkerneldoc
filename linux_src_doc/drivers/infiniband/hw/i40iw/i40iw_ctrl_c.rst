@@ -107,12 +107,90 @@ Description
 parses fpm query buffer and copy max_cnt and
 size value of hmc objects in hmc_info
 
+.. _`i40iw_fill_qos_list`:
+
+i40iw_fill_qos_list
+===================
+
+.. c:function:: void i40iw_fill_qos_list(u16 *qs_list)
+
+    Change all unknown qs handles to available ones
+
+    :param u16 \*qs_list:
+        list of qs_handles to be fixed with valid qs_handles
+
+.. _`i40iw_qp_from_entry`:
+
+i40iw_qp_from_entry
+===================
+
+.. c:function:: struct i40iw_sc_qp *i40iw_qp_from_entry(struct list_head *entry)
+
+    Given entry, get to the qp structure
+
+    :param struct list_head \*entry:
+        Points to list of qp structure
+
+.. _`i40iw_get_qp`:
+
+i40iw_get_qp
+============
+
+.. c:function:: struct i40iw_sc_qp *i40iw_get_qp(struct list_head *head, struct i40iw_sc_qp *qp)
+
+    get the next qp from the list given current qp
+
+    :param struct list_head \*head:
+        Listhead of qp's
+
+    :param struct i40iw_sc_qp \*qp:
+        current qp
+
+.. _`i40iw_change_l2params`:
+
+i40iw_change_l2params
+=====================
+
+.. c:function:: void i40iw_change_l2params(struct i40iw_sc_vsi *vsi, struct i40iw_l2params *l2params)
+
+    given the new l2 parameters, change all qp
+
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
+
+    :param struct i40iw_l2params \*l2params:
+        New paramaters from l2
+
+.. _`i40iw_qp_rem_qos`:
+
+i40iw_qp_rem_qos
+================
+
+.. c:function:: void i40iw_qp_rem_qos(struct i40iw_sc_qp *qp)
+
+    remove qp from qos lists during destroy qp
+
+    :param struct i40iw_sc_qp \*qp:
+        qp to be removed from qos
+
+.. _`i40iw_qp_add_qos`:
+
+i40iw_qp_add_qos
+================
+
+.. c:function:: void i40iw_qp_add_qos(struct i40iw_sc_qp *qp)
+
+    called during setctx fot qp to be added to qos
+
+    :param struct i40iw_sc_qp \*qp:
+        qp to be added to qos
+
 .. _`i40iw_sc_pd_init`:
 
 i40iw_sc_pd_init
 ================
 
-.. c:function:: void i40iw_sc_pd_init(struct i40iw_sc_dev *dev, struct i40iw_sc_pd *pd, u16 pd_id)
+.. c:function:: void i40iw_sc_pd_init(struct i40iw_sc_dev *dev, struct i40iw_sc_pd *pd, u16 pd_id, int abi_ver)
 
     initialize sc pd struct
 
@@ -124,6 +202,9 @@ i40iw_sc_pd_init
 
     :param u16 pd_id:
         pd_id for allocated pd
+
+    :param int abi_ver:
+        ABI version from user context, -1 if not valid
 
 .. _`i40iw_get_encoded_wqe_size`:
 
@@ -167,15 +248,12 @@ Initializes the object and context buffers for a control Queue Pair.
 i40iw_sc_cqp_create
 ===================
 
-.. c:function:: enum i40iw_status_code i40iw_sc_cqp_create(struct i40iw_sc_cqp *cqp, bool disable_pfpdus, u16 *maj_err, u16 *min_err)
+.. c:function:: enum i40iw_status_code i40iw_sc_cqp_create(struct i40iw_sc_cqp *cqp, u16 *maj_err, u16 *min_err)
 
     create cqp during bringup
 
     :param struct i40iw_sc_cqp \*cqp:
         struct for cqp hw
-
-    :param bool disable_pfpdus:
-        if pfpdu to be disabled
 
     :param u16 \*maj_err:
         If error, major err number
@@ -1673,125 +1751,164 @@ i40iw_terminate_received
     :param struct i40iw_aeqe_info \*info:
         the struct contiaing AE information
 
-.. _`i40iw_hw_stat_init`:
+.. _`i40iw_sc_vsi_init`:
 
-i40iw_hw_stat_init
-==================
+i40iw_sc_vsi_init
+=================
 
-.. c:function:: void i40iw_hw_stat_init(struct i40iw_dev_pestat *devstat, u8 fcn_idx, struct i40iw_hw *hw, bool is_pf)
+.. c:function:: void i40iw_sc_vsi_init(struct i40iw_sc_vsi *vsi, struct i40iw_vsi_init_info *info)
+
+    Initialize virtual device
+
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
+
+    :param struct i40iw_vsi_init_info \*info:
+        parameters to initialize vsi
+
+.. _`i40iw_hw_stats_init`:
+
+i40iw_hw_stats_init
+===================
+
+.. c:function:: void i40iw_hw_stats_init(struct i40iw_vsi_pestat *stats, u8 fcn_idx, bool is_pf)
 
     Initiliaze HW stats table
 
-    :param struct i40iw_dev_pestat \*devstat:
+    :param struct i40iw_vsi_pestat \*stats:
         pestat struct
 
     :param u8 fcn_idx:
         PCI fn id
 
-    :param struct i40iw_hw \*hw:
-        PF i40iw_hw structure.
-
     :param bool is_pf:
         Is it a PF?
 
-.. _`i40iw_hw_stat_init.description`:
+.. _`i40iw_hw_stats_init.description`:
 
 Description
 -----------
 
-Populate the HW stat table with register offset addr for each
-stat. And start the perioidic stats timer.
+Populate the HW stats table with register offset addr for each
+stats. And start the perioidic stats timer.
 
-.. _`i40iw_hw_stat_read_32`:
+.. _`i40iw_hw_stats_read_32`:
 
-i40iw_hw_stat_read_32
-=====================
-
-.. c:function:: void i40iw_hw_stat_read_32(struct i40iw_dev_pestat *devstat, enum i40iw_hw_stat_index_32b index, u64 *value)
-
-    Read 32-bit HW stat counters and accommodates for roll-overs.
-
-    :param struct i40iw_dev_pestat \*devstat:
-        pestat struct
-
-    :param enum i40iw_hw_stat_index_32b index:
-        index in HW stat table which contains offset reg-addr
-
-    :param u64 \*value:
-        hw stat value
-
-.. _`i40iw_hw_stat_read_64`:
-
-i40iw_hw_stat_read_64
-=====================
-
-.. c:function:: void i40iw_hw_stat_read_64(struct i40iw_dev_pestat *devstat, enum i40iw_hw_stat_index_64b index, u64 *value)
-
-    Read HW stat counters (greater than 32-bit) and accommodates for roll-overs.
-
-    :param struct i40iw_dev_pestat \*devstat:
-        pestat struct
-
-    :param enum i40iw_hw_stat_index_64b index:
-        index in HW stat table which contains offset reg-addr
-
-    :param u64 \*value:
-        hw stat value
-
-.. _`i40iw_hw_stat_read_all`:
-
-i40iw_hw_stat_read_all
+i40iw_hw_stats_read_32
 ======================
 
-.. c:function:: void i40iw_hw_stat_read_all(struct i40iw_dev_pestat *devstat, struct i40iw_dev_hw_stats *stat_values)
+.. c:function:: void i40iw_hw_stats_read_32(struct i40iw_vsi_pestat *stats, enum i40iw_hw_stats_index_32b index, u64 *value)
+
+    Read 32-bit HW stats counters and accommodates for roll-overs.
+
+    :param struct i40iw_vsi_pestat \*stats:
+        *undescribed*
+
+    :param enum i40iw_hw_stats_index_32b index:
+        index in HW stats table which contains offset reg-addr
+
+    :param u64 \*value:
+        hw stats value
+
+.. _`i40iw_hw_stats_read_64`:
+
+i40iw_hw_stats_read_64
+======================
+
+.. c:function:: void i40iw_hw_stats_read_64(struct i40iw_vsi_pestat *stats, enum i40iw_hw_stats_index_64b index, u64 *value)
+
+    Read HW stats counters (greater than 32-bit) and accommodates for roll-overs.
+
+    :param struct i40iw_vsi_pestat \*stats:
+        pestat struct
+
+    :param enum i40iw_hw_stats_index_64b index:
+        index in HW stats table which contains offset reg-addr
+
+    :param u64 \*value:
+        hw stats value
+
+.. _`i40iw_hw_stats_read_all`:
+
+i40iw_hw_stats_read_all
+=======================
+
+.. c:function:: void i40iw_hw_stats_read_all(struct i40iw_vsi_pestat *stats, struct i40iw_dev_hw_stats *stats_values)
 
     read all HW stat counters
 
-    :param struct i40iw_dev_pestat \*devstat:
+    :param struct i40iw_vsi_pestat \*stats:
         pestat struct
 
-    :param struct i40iw_dev_hw_stats \*stat_values:
+    :param struct i40iw_dev_hw_stats \*stats_values:
         hw stats structure
 
-.. _`i40iw_hw_stat_read_all.description`:
+.. _`i40iw_hw_stats_read_all.description`:
 
 Description
 -----------
 
 Read all the HW stat counters and populates hw_stats structure
-of passed-in dev's pestat as well as copy created in stat_values.
+of passed-in vsi's pestat as well as copy created in stat_values.
 
-.. _`i40iw_hw_stat_refresh_all`:
+.. _`i40iw_hw_stats_refresh_all`:
 
-i40iw_hw_stat_refresh_all
-=========================
+i40iw_hw_stats_refresh_all
+==========================
 
-.. c:function:: void i40iw_hw_stat_refresh_all(struct i40iw_dev_pestat *devstat)
+.. c:function:: void i40iw_hw_stats_refresh_all(struct i40iw_vsi_pestat *stats)
 
-    Update all HW stat structs
+    Update all HW stats structs
 
-    :param struct i40iw_dev_pestat \*devstat:
+    :param struct i40iw_vsi_pestat \*stats:
         pestat struct
 
-.. _`i40iw_hw_stat_refresh_all.description`:
+.. _`i40iw_hw_stats_refresh_all.description`:
 
 Description
 -----------
 
-Read all the HW stat counters to refresh values in hw_stats structure
+Read all the HW stats counters to refresh values in hw_stats structure
 of passed-in dev's pestat
 
-.. _`i40iw_device_init_pestat`:
+.. _`i40iw_get_fcn_id`:
 
-i40iw_device_init_pestat
-========================
+i40iw_get_fcn_id
+================
 
-.. c:function:: enum i40iw_status_code i40iw_device_init_pestat(struct i40iw_dev_pestat *devstat)
+.. c:function:: u8 i40iw_get_fcn_id(struct i40iw_sc_dev *dev)
 
-    Initialize the pestat structure
+    Return the function id
 
-    :param struct i40iw_dev_pestat \*devstat:
-        *undescribed*
+    :param struct i40iw_sc_dev \*dev:
+        pointer to the device
+
+.. _`i40iw_vsi_stats_init`:
+
+i40iw_vsi_stats_init
+====================
+
+.. c:function:: enum i40iw_status_code i40iw_vsi_stats_init(struct i40iw_sc_vsi *vsi, struct i40iw_vsi_stats_info *info)
+
+    Initialize the vsi statistics
+
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
+
+    :param struct i40iw_vsi_stats_info \*info:
+        The info structure used for initialization
+
+.. _`i40iw_vsi_stats_free`:
+
+i40iw_vsi_stats_free
+====================
+
+.. c:function:: void i40iw_vsi_stats_free(struct i40iw_sc_vsi *vsi)
+
+    Free the vsi stats
+
+    :param struct i40iw_sc_vsi \*vsi:
+        pointer to the vsi structure
 
 .. _`i40iw_device_init`:
 

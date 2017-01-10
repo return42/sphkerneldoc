@@ -6,7 +6,7 @@
 ldlm_namespace_new
 ==================
 
-.. c:function:: struct ldlm_namespace *ldlm_namespace_new(struct obd_device *obd, char *name, ldlm_side_t client, enum ldlm_appetite apt, enum ldlm_ns_type ns_type)
+.. c:function:: struct ldlm_namespace *ldlm_namespace_new(struct obd_device *obd, char *name, enum ldlm_side client, enum ldlm_appetite apt, enum ldlm_ns_type ns_type)
 
     :param struct obd_device \*obd:
         *undescribed*
@@ -14,7 +14,7 @@ ldlm_namespace_new
     :param char \*name:
         *undescribed*
 
-    :param ldlm_side_t client:
+    :param enum ldlm_side client:
         *undescribed*
 
     :param enum ldlm_appetite apt:
@@ -194,11 +194,11 @@ ldlm_resource_add_lock
 ldlm_dump_all_namespaces
 ========================
 
-.. c:function:: void ldlm_dump_all_namespaces(ldlm_side_t client, int level)
+.. c:function:: void ldlm_dump_all_namespaces(enum ldlm_side client, int level)
 
     log.
 
-    :param ldlm_side_t client:
+    :param enum ldlm_side client:
         *undescribed*
 
     :param int level:

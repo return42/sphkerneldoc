@@ -155,7 +155,7 @@ dw_apb_clocksource_register
 dw_apb_clocksource_read
 =======================
 
-.. c:function:: cycle_t dw_apb_clocksource_read(struct dw_apb_clocksource *dw_cs)
+.. c:function:: u64 dw_apb_clocksource_read(struct dw_apb_clocksource *dw_cs)
 
     read the current value of a clocksource.
 

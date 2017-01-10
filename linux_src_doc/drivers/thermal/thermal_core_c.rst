@@ -53,35 +53,32 @@ Return
 
 0 on success, an error if the new governor's \ :c:func:`bind_to_tz`\  failed.
 
-.. _`thermal_zone_get_temp`:
+.. _`thermal_notify_framework`:
 
-thermal_zone_get_temp
-=====================
+thermal_notify_framework
+========================
 
-.. c:function:: int thermal_zone_get_temp(struct thermal_zone_device *tz, int *temp)
+.. c:function:: void thermal_notify_framework(struct thermal_zone_device *tz, int trip)
 
-    returns the temperature of a thermal zone
+    Sensor drivers use this API to notify framework
 
     :param struct thermal_zone_device \*tz:
-        a valid pointer to a struct thermal_zone_device
+        thermal zone device
 
-    :param int \*temp:
-        a valid pointer to where to store the resulting temperature.
+    :param int trip:
+        indicates which trip point has been crossed
 
-.. _`thermal_zone_get_temp.description`:
+.. _`thermal_notify_framework.description`:
 
 Description
 -----------
 
-When a valid thermal zone reference is passed, it will fetch its
-temperature and fill \ ``temp``\ .
-
-.. _`thermal_zone_get_temp.return`:
-
-Return
-------
-
-On success returns 0, an error code otherwise
+This function handles the trip events from sensor drivers. It starts
+throttling the cooling devices according to the policy configured.
+For CRITICAL and HOT trip points, this notifies the respective drivers,
+and does actual throttling for other trip points i.e ACTIVE and PASSIVE.
+The throttling policy is based on the configured platform data; if no
+platform data is provided, this uses the step_wise throttling policy.
 
 .. _`power_actor_get_max_power`:
 
@@ -158,7 +155,7 @@ power_actor_set_power
 
 .. c:function:: int power_actor_set_power(struct thermal_cooling_device *cdev, struct thermal_instance *instance, u32 power)
 
-    limit the maximum power that a cooling device can consume
+    limit the maximum power a cooling device consumes
 
     :param struct thermal_cooling_device \*cdev:
         pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
@@ -174,7 +171,8 @@ power_actor_set_power
 Description
 -----------
 
-Set the cooling device to consume at most \ ``power``\  milliwatts.
+Set the cooling device to consume at most \ ``power``\  milliwatts. The limit is
+expected to be a cap at the maximum power consumption.
 
 .. _`power_actor_set_power.return`:
 
@@ -390,7 +388,7 @@ thermal_cooling_device_unregister
 
 .. c:function:: void thermal_cooling_device_unregister(struct thermal_cooling_device *cdev)
 
-    removes the registered thermal cooling device
+    removes a thermal cooling device
 
     :param struct thermal_cooling_device \*cdev:
         the thermal cooling device to remove.
@@ -400,65 +398,8 @@ thermal_cooling_device_unregister
 Description
 -----------
 
-thermal_cooling_device_unregister() must be called when the device is no
-longer needed.
-
-.. _`thermal_notify_framework`:
-
-thermal_notify_framework
-========================
-
-.. c:function:: void thermal_notify_framework(struct thermal_zone_device *tz, int trip)
-
-    Sensor drivers use this API to notify framework
-
-    :param struct thermal_zone_device \*tz:
-        thermal zone device
-
-    :param int trip:
-        indicates which trip point has been crossed
-
-.. _`thermal_notify_framework.description`:
-
-Description
------------
-
-This function handles the trip events from sensor drivers. It starts
-throttling the cooling devices according to the policy configured.
-For CRITICAL and HOT trip points, this notifies the respective drivers,
-and does actual throttling for other trip points i.e ACTIVE and PASSIVE.
-The throttling policy is based on the configured platform data; if no
-platform data is provided, this uses the step_wise throttling policy.
-
-.. _`create_trip_attrs`:
-
-create_trip_attrs
-=================
-
-.. c:function:: int create_trip_attrs(struct thermal_zone_device *tz, int mask)
-
-    create attributes for trip points
-
-    :param struct thermal_zone_device \*tz:
-        the thermal zone device
-
-    :param int mask:
-        Writeable trip point bitmap.
-
-.. _`create_trip_attrs.description`:
-
-Description
------------
-
-helper function to instantiate sysfs entries for every trip
-point and its properties of a struct thermal_zone_device.
-
-.. _`create_trip_attrs.return`:
-
-Return
-------
-
-0 on success, the proper error value otherwise.
+thermal_cooling_device_unregister() must be called when a registered
+thermal cooling device is no longer needed.
 
 .. _`thermal_zone_device_register`:
 
@@ -555,46 +496,6 @@ Return
 On success returns a reference to an unique thermal zone with
 matching name equals to \ ``name``\ , an ERR_PTR otherwise (-EINVAL for invalid
 paramenters, -ENODEV for not found and -EEXIST for multiple matches).
-
-.. _`thermal_zone_get_slope`:
-
-thermal_zone_get_slope
-======================
-
-.. c:function:: int thermal_zone_get_slope(struct thermal_zone_device *tz)
-
-    return the slope attribute of the thermal zone
-
-    :param struct thermal_zone_device \*tz:
-        thermal zone device with the slope attribute
-
-.. _`thermal_zone_get_slope.return`:
-
-Return
-------
-
-If the thermal zone device has a slope attribute, return it, else
-return 1.
-
-.. _`thermal_zone_get_offset`:
-
-thermal_zone_get_offset
-=======================
-
-.. c:function:: int thermal_zone_get_offset(struct thermal_zone_device *tz)
-
-    return the offset attribute of the thermal zone
-
-    :param struct thermal_zone_device \*tz:
-        thermal zone device with the offset attribute
-
-.. _`thermal_zone_get_offset.return`:
-
-Return
-------
-
-If the thermal zone device has a offset attribute, return it, else
-return 0.
 
 .. This file was automatic generated / don't edit.
 

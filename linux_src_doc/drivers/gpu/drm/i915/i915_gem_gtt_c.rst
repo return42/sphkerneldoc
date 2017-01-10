@@ -172,32 +172,5 @@ i915_ggtt_init_hw
     :param struct drm_i915_private \*dev_priv:
         i915 device
 
-.. _`i915_vma_bind`:
-
-i915_vma_bind
-=============
-
-.. c:function:: int i915_vma_bind(struct i915_vma *vma, enum i915_cache_level cache_level, u32 flags)
-
-    Sets up PTEs for an VMA in it's corresponding address space.
-
-    :param struct i915_vma \*vma:
-        VMA to map
-
-    :param enum i915_cache_level cache_level:
-        mapping cache level
-
-    :param u32 flags:
-        flags like global or local mapping
-
-.. _`i915_vma_bind.description`:
-
-Description
------------
-
-DMA addresses are taken from the scatter-gather table of this object (or of
-this VMA in case of non-default GGTT views) and PTE entries set up.
-Note that DMA addresses are also the only part of the SG table we care about.
-
 .. This file was automatic generated / don't edit.
 

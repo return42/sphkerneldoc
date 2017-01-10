@@ -110,19 +110,19 @@ relies on.
 Hence we must clear all cached state and completely start over, using this
 function.
 
-.. _`drm_atomic_state_free`:
+.. _`__drm_atomic_state_free`:
 
-drm_atomic_state_free
-=====================
+__drm_atomic_state_free
+=======================
 
-.. c:function:: void drm_atomic_state_free(struct drm_atomic_state *state)
+.. c:function:: void __drm_atomic_state_free(struct kref *ref)
 
     free all memory for an atomic state
 
-    :param struct drm_atomic_state \*state:
-        atomic state to deallocate
+    :param struct kref \*ref:
+        This atomic state to deallocate
 
-.. _`drm_atomic_state_free.description`:
+.. _`__drm_atomic_state_free.description`:
 
 Description
 -----------
@@ -667,6 +667,38 @@ to the new fb and drop the reference to the old fb, if there is one. This
 function takes care of all these details besides updating the pointer in the
 state object itself.
 
+.. _`drm_atomic_set_fence_for_plane`:
+
+drm_atomic_set_fence_for_plane
+==============================
+
+.. c:function:: void drm_atomic_set_fence_for_plane(struct drm_plane_state *plane_state, struct dma_fence *fence)
+
+    set fence for plane
+
+    :param struct drm_plane_state \*plane_state:
+        atomic state object for the plane
+
+    :param struct dma_fence \*fence:
+        dma_fence to use for the plane
+
+.. _`drm_atomic_set_fence_for_plane.description`:
+
+Description
+-----------
+
+Helper to setup the plane_state fence in case it is not set yet.
+By using this drivers doesn't need to worry if the user choose
+implicit or explicit fencing.
+
+This function will not set the fence to the state if it was set
+via explicit fencing interfaces on the atomic ioctl. It will
+all drope the reference to the fence as we not storing it
+anywhere.
+
+Otherwise, if plane_state->fence is not set this function we
+just set it with the received implict fence.
+
 .. _`drm_atomic_set_crtc_for_connector`:
 
 drm_atomic_set_crtc_for_connector
@@ -889,6 +921,36 @@ Return
 ------
 
 0 on success, negative error code on failure.
+
+.. _`drm_state_dump`:
+
+drm_state_dump
+==============
+
+.. c:function:: void drm_state_dump(struct drm_device *dev, struct drm_printer *p)
+
+    dump entire device atomic state
+
+    :param struct drm_device \*dev:
+        the drm device
+
+    :param struct drm_printer \*p:
+        where to print the state to
+
+.. _`drm_state_dump.description`:
+
+Description
+-----------
+
+Just for debugging.  Drivers might want an option to dump state
+to dmesg in case of error irq's.  (Hint, you probably want to
+ratelimit this!)
+
+The caller must \ :c:func:`drm_modeset_lock_all`\ , or if this is called
+from error irq handler, it should not be enabled by default.
+(Ie. if you are debugging errors you might not care that this
+is racey.  But calling this without all modeset locks held is
+not inherently safe.)
 
 .. _`drm_atomic_clean_old_fb`:
 

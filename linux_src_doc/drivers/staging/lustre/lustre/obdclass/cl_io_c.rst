@@ -283,12 +283,12 @@ cl_io_end
     :param struct cl_io \*io:
         *undescribed*
 
-.. _`cl_io_read_page`:
+.. _`cl_io_read_ahead`:
 
-cl_io_read_page
-===============
+cl_io_read_ahead
+================
 
-.. c:function:: int cl_io_read_page(const struct lu_env *env, struct cl_io *io, struct cl_page *page)
+.. c:function:: int cl_io_read_ahead(const struct lu_env *env, struct cl_io *io, pgoff_t start, struct cl_read_ahead *ra)
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -296,15 +296,18 @@ cl_io_read_page
     :param struct cl_io \*io:
         *undescribed*
 
-    :param struct cl_page \*page:
+    :param pgoff_t start:
         *undescribed*
 
-.. _`cl_io_read_page.description`:
+    :param struct cl_read_ahead \*ra:
+        *undescribed*
+
+.. _`cl_io_read_ahead.description`:
 
 Description
 -----------
 
-\see cl_io_operations::cio_read_page()
+\see cl_io_operations::cio_read_ahead()
 
 .. _`cl_io_commit_async`:
 
@@ -698,136 +701,22 @@ Description
 
 \see \ :c:func:`cl_object_top`\ 
 
-.. _`cl_req_slice_add`:
-
-cl_req_slice_add
-================
-
-.. c:function:: void cl_req_slice_add(struct cl_req *req, struct cl_req_slice *slice, struct cl_device *dev, const struct cl_req_operations *ops)
-
-    :param struct cl_req \*req:
-        *undescribed*
-
-    :param struct cl_req_slice \*slice:
-        *undescribed*
-
-    :param struct cl_device \*dev:
-        *undescribed*
-
-    :param const struct cl_req_operations \*ops:
-        *undescribed*
-
-.. _`cl_req_slice_add.description`:
-
-Description
------------
-
-This is called by cl_device_operations::cdo_req_init() methods to add a
-per-layer state to the request. New state is added at the end of
-cl_req::crq_layers list, that is, it is at the bottom of the stack.
-
-\see \ :c:func:`cl_lock_slice_add`\ , \ :c:func:`cl_page_slice_add`\ , \ :c:func:`cl_io_slice_add`\ 
-
-.. _`cl_req_completion`:
-
-cl_req_completion
-=================
-
-.. c:function:: void cl_req_completion(const struct lu_env *env, struct cl_req *req, int rc)
-
-    request transfer completion call-backs (cl_req_operations::cro_completion()) bottom-to-top.
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct cl_req \*req:
-        *undescribed*
-
-    :param int rc:
-        *undescribed*
-
-.. _`cl_req_alloc`:
-
-cl_req_alloc
-============
-
-.. c:function:: struct cl_req *cl_req_alloc(const struct lu_env *env, struct cl_page *page, enum cl_req_type crt, int nr_objects)
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct cl_page \*page:
-        *undescribed*
-
-    :param enum cl_req_type crt:
-        *undescribed*
-
-    :param int nr_objects:
-        *undescribed*
-
-.. _`cl_req_page_add`:
-
-cl_req_page_add
-===============
-
-.. c:function:: void cl_req_page_add(const struct lu_env *env, struct cl_req *req, struct cl_page *page)
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct cl_req \*req:
-        *undescribed*
-
-    :param struct cl_page \*page:
-        *undescribed*
-
-.. _`cl_req_page_done`:
-
-cl_req_page_done
-================
-
-.. c:function:: void cl_req_page_done(const struct lu_env *env, struct cl_page *page)
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct cl_page \*page:
-        *undescribed*
-
-.. _`cl_req_prep`:
-
-cl_req_prep
-===========
-
-.. c:function:: int cl_req_prep(const struct lu_env *env, struct cl_req *req)
-
-    cl_req_operations::cro_prep() top-to-bottom.
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct cl_req \*req:
-        *undescribed*
-
 .. _`cl_req_attr_set`:
 
 cl_req_attr_set
 ===============
 
-.. c:function:: void cl_req_attr_set(const struct lu_env *env, struct cl_req *req, struct cl_req_attr *attr, u64 flags)
+.. c:function:: void cl_req_attr_set(const struct lu_env *env, struct cl_object *obj, struct cl_req_attr *attr)
 
     attributes from \a flags may be touched. This can be called multiple times for the same request.
 
     :param const struct lu_env \*env:
         *undescribed*
 
-    :param struct cl_req \*req:
+    :param struct cl_object \*obj:
         *undescribed*
 
     :param struct cl_req_attr \*attr:
-        *undescribed*
-
-    :param u64 flags:
         *undescribed*
 
 .. _`cl_sync_io_init`:

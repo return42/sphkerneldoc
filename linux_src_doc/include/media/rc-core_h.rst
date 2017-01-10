@@ -121,6 +121,7 @@ Definition
     struct rc_dev {
         struct device dev;
         atomic_t initialized;
+        bool managed_alloc;
         const struct attribute_group  *sysfs_groups[5];
         const char *input_name;
         const char *input_phys;
@@ -183,6 +184,9 @@ dev
 
 initialized
     1 if the device init has completed, 0 otherwise
+
+managed_alloc
+    devm_rc_allocate_device was used to create rc_dev
 
 sysfs_groups
     sysfs attribute groups
@@ -362,6 +366,19 @@ Description
 
 returns a pointer to struct rc_dev.
 
+.. _`devm_rc_allocate_device`:
+
+devm_rc_allocate_device
+=======================
+
+.. c:function:: struct rc_dev *devm_rc_allocate_device(struct device *dev)
+
+    Managed RC device allocation
+
+    :param struct device \*dev:
+        pointer to struct device
+        returns a pointer to struct rc_dev.
+
 .. _`rc_free_device`:
 
 rc_free_device
@@ -382,6 +399,21 @@ rc_register_device
 .. c:function:: int rc_register_device(struct rc_dev *dev)
 
     Registers a RC device
+
+    :param struct rc_dev \*dev:
+        pointer to struct rc_dev.
+
+.. _`devm_rc_register_device`:
+
+devm_rc_register_device
+=======================
+
+.. c:function:: int devm_rc_register_device(struct device *parent, struct rc_dev *dev)
+
+    Manageded registering of a RC device
+
+    :param struct device \*parent:
+        pointer to struct device.
 
     :param struct rc_dev \*dev:
         pointer to struct rc_dev.

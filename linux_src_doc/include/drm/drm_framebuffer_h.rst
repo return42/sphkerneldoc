@@ -94,7 +94,7 @@ Definition
         const struct drm_framebuffer_funcs *funcs;
         unsigned int pitches[4];
         unsigned int offsets[4];
-        uint64_t modifier[4];
+        uint64_t modifier;
         unsigned int width;
         unsigned int height;
         unsigned int depth;
@@ -143,7 +143,7 @@ offsets
     instead done through the source rectangle in struct \ :c:type:`struct drm_plane_state <drm_plane_state>`\ .
 
 modifier
-    Data layout modifier, per buffer. This is used to describetiling, or also special layouts (like compression) of auxiliary
+    Data layout modifier. This is used to describetiling, or also special layouts (like compression) of auxiliary
     buffers. For userspace created object this is copied from
     drm_mode_fb_cmd2.
 
@@ -252,28 +252,28 @@ Description
 
 This functions returns the framebuffer's reference count.
 
-.. _`drm_for_each_fb`:
+.. _`drm_framebuffer_assign`:
 
-drm_for_each_fb
-===============
+drm_framebuffer_assign
+======================
 
-.. c:function::  drm_for_each_fb( fb,  dev)
+.. c:function:: void drm_framebuffer_assign(struct drm_framebuffer **p, struct drm_framebuffer *fb)
 
-    iterate over all framebuffers
+    store a reference to the fb
 
-    :param  fb:
-        the loop cursor
+    :param struct drm_framebuffer \*\*p:
+        location to store framebuffer
 
-    :param  dev:
-        the DRM device
+    :param struct drm_framebuffer \*fb:
+        new framebuffer (maybe NULL)
 
-.. _`drm_for_each_fb.description`:
+.. _`drm_framebuffer_assign.description`:
 
 Description
 -----------
 
-Iterate over all framebuffers of \ ``dev``\ . User must hold the fb_lock from
-\ :c:type:`struct drm_mode_config <drm_mode_config>`\ .
+This functions sets the location to store a reference to the framebuffer,
+unreferencing the framebuffer that was previously stored in that location.
 
 .. This file was automatic generated / don't edit.
 

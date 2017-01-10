@@ -33,7 +33,7 @@ digestsize
     must be available to the \ ``final``\  and \ ``finup``\  calls, so they can
     store the resulting hash into it. For various predefined sizes,
     search include/crypto/ using
-    git grep \_DIGEST_SIZE include/crypto.
+    git grep _DIGEST_SIZE include/crypto.
 
 statesize
     Size of the block for partial state of the transformation. A
@@ -261,7 +261,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_ahash`:
 
@@ -300,7 +300,7 @@ Return
 ------
 
 true when the ahash is known to the kernel crypto API; false
-otherwise
+        otherwise
 
 .. _`crypto_ahash_blocksize`:
 
@@ -473,7 +473,7 @@ Return
 ------
 
 0 if the message digest creation was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`crypto_ahash_final`:
 
@@ -503,7 +503,7 @@ Return
 ------
 
 0 if the message digest creation was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`crypto_ahash_digest`:
 
@@ -533,7 +533,7 @@ Return
 ------
 
 0 if the message digest creation was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`crypto_ahash_export`:
 
@@ -608,7 +608,7 @@ crypto_ahash_init
 
     :param struct ahash_request \*req:
         ahash_request handle that already is initialized with all necessary
-        data using the ahash_request\_\* API functions
+        data using the ahash_request_* API functions
 
 .. _`crypto_ahash_init.description`:
 
@@ -625,7 +625,7 @@ Return
 ------
 
 0 if the message digest initialization was successful; < 0 if an
-error occurred
+        error occurred
 
 .. _`crypto_ahash_update`:
 
@@ -655,7 +655,7 @@ Return
 ------
 
 0 if the message digest update was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`ahash_request_set_tfm`:
 
@@ -764,9 +764,9 @@ This function allows setting the callback function that is triggered once
 the cipher operation completes.
 
 The callback function is registered with the \ :c:type:`struct ahash_request <ahash_request>`\  handle and
-must comply with the following template
+must comply with the following template::
 
-void callback_function(struct crypto_async_request \*req, int error)
+     void callback_function(struct crypto_async_request *req, int error)
 
 .. _`ahash_request_set_crypt`:
 
@@ -833,7 +833,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_shash`:
 
@@ -1004,7 +1004,7 @@ Return
 ------
 
 0 if the message digest creation was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`crypto_shash_export`:
 
@@ -1095,7 +1095,7 @@ Return
 ------
 
 0 if the message digest initialization was successful; < 0 if an
-error occurred
+        error occurred
 
 .. _`crypto_shash_update`:
 
@@ -1128,7 +1128,7 @@ Return
 ------
 
 0 if the message digest update was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`crypto_shash_final`:
 
@@ -1161,7 +1161,7 @@ Return
 ------
 
 0 if the message digest creation was successful; < 0 if an error
-occurred
+        occurred
 
 .. _`crypto_shash_finup`:
 
@@ -1199,7 +1199,7 @@ Return
 ------
 
 0 if the message digest creation was successful; < 0 if an error
-occurred
+        occurred
 
 .. This file was automatic generated / don't edit.
 

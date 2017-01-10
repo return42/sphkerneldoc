@@ -147,10 +147,10 @@ i915_driver_load
     setup chip and create an initial config
 
     :param struct pci_dev \*pdev:
-        *undescribed*
+        PCI device
 
     :param const struct pci_device_id \*ent:
-        *undescribed*
+        matching PCI ID entry
 
 .. _`i915_driver_load.the-driver-load-routine-has-to-do-several-things`:
 

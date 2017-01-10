@@ -49,5 +49,45 @@ l2tp_scope_id
 l2tp_conn_id
     connection id of tunnel
 
+.. _`l2tp_debug_flags`:
+
+enum l2tp_debug_flags
+=====================
+
+.. c:type:: enum l2tp_debug_flags
+
+    debug message categories for L2TP tunnels/sessions
+
+.. _`l2tp_debug_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum l2tp_debug_flags {
+        L2TP_MSG_DEBUG,
+        L2TP_MSG_CONTROL,
+        L2TP_MSG_SEQ,
+        L2TP_MSG_DATA
+    };
+
+.. _`l2tp_debug_flags.constants`:
+
+Constants
+---------
+
+L2TP_MSG_DEBUG
+    verbose debug (if compiled in)
+
+L2TP_MSG_CONTROL
+    userspace - kernel interface
+
+L2TP_MSG_SEQ
+    sequence numbers
+
+L2TP_MSG_DATA
+    data packets
+
 .. This file was automatic generated / don't edit.
 

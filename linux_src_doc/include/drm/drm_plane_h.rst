@@ -21,7 +21,7 @@ Definition
         struct drm_plane *plane;
         struct drm_crtc *crtc;
         struct drm_framebuffer *fb;
-        struct fence *fence;
+        struct dma_fence *fence;
         int32_t crtc_x;
         int32_t crtc_y;
         uint32_t crtc_w;
@@ -48,19 +48,29 @@ plane
     backpointer to the plane
 
 crtc
-    currently bound CRTC, NULL if disabled
+
+    Currently bound CRTC, NULL if disabled. Do not this write directly,
+    use \ :c:func:`drm_atomic_set_crtc_for_plane`\ 
 
 fb
-    currently bound framebuffer
+
+    Currently bound framebuffer. Do not write this directly, use
+    \ :c:func:`drm_atomic_set_fb_for_plane`\ 
 
 fence
-    optional fence to wait for before scanning out \ ``fb``\ 
+
+    Optional fence to wait for before scanning out \ ``fb``\ . Do not write this
+    directly, use \ :c:func:`drm_atomic_set_fence_for_plane`\ 
 
 crtc_x
-    left position of visible portion of plane on crtc
+
+    Left position of visible portion of plane on crtc, signed dest
+    location allows it to be partially off screen.
 
 crtc_y
-    upper position of visible portion of plane on crtc
+
+    Upper position of visible portion of plane on crtc, signed dest
+    location allows it to be partially off screen.
 
 crtc_w
     width of visible portion of plane on crtc
@@ -105,7 +115,9 @@ dst
     clipped destination coordinates of the plane
 
 visible
-    visibility of the plane
+
+    Visibility of the plane. This can be false even if fb!=NULL and
+    crtc!=NULL, due to clipping.
 
 state
     backpointer to global drm_atomic_state
@@ -138,6 +150,7 @@ Definition
         int (*atomic_get_property)(struct drm_plane *plane,const struct drm_plane_state *state,struct drm_property *property,uint64_t *val);
         int (*late_register)(struct drm_plane *plane);
         void (*early_unregister)(struct drm_plane *plane);
+        void (*atomic_print_state)(struct drm_printer *p,const struct drm_plane_state *state);
     }
 
 .. _`drm_plane_funcs.members`:
@@ -325,6 +338,14 @@ early_unregister
     early in the driver unload sequence to disable userspace access
     before data structures are torndown.
 
+atomic_print_state
+
+    If driver subclasses struct \ :c:type:`struct drm_plane_state <drm_plane_state>`\ , it should implement
+    this optional hook for printing additional driver specific state.
+
+    Do not call this directly, use \ :c:func:`drm_atomic_plane_print_state`\ 
+    instead.
+
 .. _`drm_plane_type`:
 
 enum drm_plane_type
@@ -426,6 +447,7 @@ Definition
         const struct drm_plane_helper_funcs *helper_private;
         struct drm_plane_state *state;
         struct drm_property *zpos_property;
+        struct drm_property *rotation_property;
     }
 
 .. _`drm_plane.members`:
@@ -493,6 +515,9 @@ state
 
 zpos_property
     zpos property for this plane
+
+rotation_property
+    rotation property for this plane
 
 .. _`drm_plane_index`:
 

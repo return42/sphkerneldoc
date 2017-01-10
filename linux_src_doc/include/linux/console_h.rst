@@ -26,7 +26,7 @@ Definition
         void (*con_putc)(struct vc_data *, int, int, int);
         void (*con_putcs)(struct vc_data *, const unsigned short *, int, int, int);
         void (*con_cursor)(struct vc_data *, int);
-        int (*con_scroll)(struct vc_data *, int, int, int, int);
+        bool (*con_scroll)(struct vc_data *, unsigned int top,unsigned int bottom, enum con_scroll dir,unsigned int lines);
         int (*con_switch)(struct vc_data *);
         int (*con_blank)(struct vc_data *, int, int);
         int (*con_font_set)(struct vc_data *, struct console_font *, unsigned);
@@ -76,7 +76,9 @@ con_cursor
     *undescribed*
 
 con_scroll
-    *undescribed*
+    move lines from \ ``top``\  to \ ``bottom``\  in direction \ ``dir``\  by \ ``lines``\ .
+    Return true if no generic handling should be done.
+    Invoked by csi_M and printing to the console.
 
 con_switch
     *undescribed*

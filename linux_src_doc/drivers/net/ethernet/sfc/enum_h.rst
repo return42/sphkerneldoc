@@ -165,7 +165,6 @@ Definition
         RESET_TYPE_MAX_METHOD,
         RESET_TYPE_TX_WATCHDOG,
         RESET_TYPE_INT_ERROR,
-        RESET_TYPE_RX_RECOVERY,
         RESET_TYPE_DMA_ERROR,
         RESET_TYPE_TX_SKIP,
         RESET_TYPE_MC_FAILURE,
@@ -212,9 +211,6 @@ RESET_TYPE_TX_WATCHDOG
 
 RESET_TYPE_INT_ERROR
     reset due to internal error
-
-RESET_TYPE_RX_RECOVERY
-    reset to recover from RX datapath errors
 
 RESET_TYPE_DMA_ERROR
     DMA error

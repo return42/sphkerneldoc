@@ -23,7 +23,7 @@ Definition
         unsigned int height;
         unsigned int setaddrwin;
         unsigned int regwidth;
-        int *init_seq;
+        s16 *init_seq;
         int init_seq_sz;
     }
 

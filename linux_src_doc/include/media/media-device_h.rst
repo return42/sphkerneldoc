@@ -42,8 +42,10 @@ notify
 Description
 -----------
 
-Drivers may register a callback to take action when
-new entities get registered with the media device.
+Drivers may register a callback to take action when new entities get
+registered with the media device. This handler is intended for creating
+links between existing entities and should not create entities and register
+them.
 
 .. _`media_device_ops`:
 
@@ -536,44 +538,6 @@ media_device_unregister_entity_notify
 
     :param struct media_entity_notify \*nptr:
         The media_entity_notify
-
-.. _`media_device_get_devres`:
-
-media_device_get_devres
-=======================
-
-.. c:function:: struct media_device *media_device_get_devres(struct device *dev)
-
-    get media device as device resource creates if one doesn't exist
-
-    :param struct device \*dev:
-        pointer to struct \ :c:type:`struct device <device>`\ .
-
-.. _`media_device_get_devres.description`:
-
-Description
------------
-
-Sometimes, the media controller \ :c:type:`struct media_device <media_device>`\  needs to be shared by more
-than one driver. This function adds support for that, by dynamically
-allocating the \ :c:type:`struct media_device <media_device>`\  and allowing it to be obtained from the
-struct \ :c:type:`struct device <device>`\  associated with the common device where all sub-device
-components belong. So, for example, on an USB device with multiple
-interfaces, each interface may be handled by a separate per-interface
-drivers. While each interface have its own \ :c:type:`struct device <device>`\ , they all share a
-common \ :c:type:`struct device <device>`\  associated with the hole USB device.
-
-.. _`media_device_find_devres`:
-
-media_device_find_devres
-========================
-
-.. c:function:: struct media_device *media_device_find_devres(struct device *dev)
-
-    find media device as device resource
-
-    :param struct device \*dev:
-        pointer to struct \ :c:type:`struct device <device>`\ .
 
 .. _`media_device_pci_init`:
 

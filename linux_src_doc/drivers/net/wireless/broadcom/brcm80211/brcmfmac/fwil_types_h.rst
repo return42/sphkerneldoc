@@ -468,6 +468,46 @@ exp
 slow_freq
     slow scan period.
 
+.. _`brcmf_pno_config_le`:
+
+struct brcmf_pno_config_le
+==========================
+
+.. c:type:: struct brcmf_pno_config_le
+
+    PNO channel configuration.
+
+.. _`brcmf_pno_config_le.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_pno_config_le {
+        __le32 reporttype;
+        __le32 channel_num;
+        __le16 channel_list[BRCMF_NUMCHANNELS];
+        __le32 flags;
+    }
+
+.. _`brcmf_pno_config_le.members`:
+
+Members
+-------
+
+reporttype
+    determines what is reported.
+
+channel_num
+    number of channels specified in \ ``channel_list``\ .
+
+channel_list
+    channels to use in PNO scan.
+
+flags
+    reserved.
+
 .. _`brcmf_pno_net_param_le`:
 
 struct brcmf_pno_net_param_le

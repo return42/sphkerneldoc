@@ -28,8 +28,6 @@ mach-omap2
     hdq1w_c
     i2c_c
     msdi_c
-    mux_c
-    mux_h
     omap-mpuss-lowpower_c
     omap-pm-noop_c
     omap-pm_h
@@ -67,10 +65,8 @@ mach-omap2
     prminst44xx_c
     sdrc_c
     sdrc_h
-    serial_c
     ti81xx-restart_c
     timer_c
-    usb-host_c
     vc_c
     vc_h
     voltage_c

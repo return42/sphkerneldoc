@@ -101,7 +101,7 @@ Return
 ------
 
 allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
+        of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_rng_alg`:
 

@@ -130,7 +130,7 @@ fc_fcp_pkt_destroy
 Description
 -----------
 
-This routine is called by a destructor callback in the \ :c:func:`exch_seq_send`\ 
+This routine is called by a destructor callback in the \ :c:func:`fc_exch_seq_send`\ 
 routine of the libfc Transport Template. The 'struct fc_seq' is a required
 argument even though it is not used by this routine.
 
@@ -225,12 +225,15 @@ fc_fcp_send_abort
 fc_fcp_retry_cmd
 ================
 
-.. c:function:: void fc_fcp_retry_cmd(struct fc_fcp_pkt *fsp)
+.. c:function:: void fc_fcp_retry_cmd(struct fc_fcp_pkt *fsp, int status_code)
 
     Retry a fcp_pkt
 
     :param struct fc_fcp_pkt \*fsp:
         The FCP packet to be retried
+
+    :param int status_code:
+        *undescribed*
 
 .. _`fc_fcp_retry_cmd.description`:
 
@@ -303,6 +306,25 @@ be trying to execute too many commands. We let the running
 commands complete or timeout, then try again with a reduced
 can_queue. Eventually we will hit the point where we run
 on all reserved structs.
+
+.. _`get_fsp_rec_tov`:
+
+get_fsp_rec_tov
+===============
+
+.. c:function:: unsigned int get_fsp_rec_tov(struct fc_fcp_pkt *fsp)
+
+    Helper function to get REC_TOV
+
+    :param struct fc_fcp_pkt \*fsp:
+        the FCP packet
+
+.. _`get_fsp_rec_tov.description`:
+
+Description
+-----------
+
+Returns rec tov in jiffies as rpriv->e_d_tov + 1 second
 
 .. _`fc_fcp_recv_data`:
 
@@ -510,25 +532,6 @@ Locks
 -----
 
 Called without locks held
-
-.. _`get_fsp_rec_tov`:
-
-get_fsp_rec_tov
-===============
-
-.. c:function:: unsigned int get_fsp_rec_tov(struct fc_fcp_pkt *fsp)
-
-    Helper function to get REC_TOV
-
-    :param struct fc_fcp_pkt \*fsp:
-        the FCP packet
-
-.. _`get_fsp_rec_tov.description`:
-
-Description
------------
-
-Returns rec tov in jiffies as rpriv->e_d_tov + 1 second
 
 .. _`fc_fcp_cmd_send`:
 

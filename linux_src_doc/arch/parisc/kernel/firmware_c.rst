@@ -873,14 +873,14 @@ at the specified location.
 pdc_pat_cpu_get_number
 ======================
 
-.. c:function:: int pdc_pat_cpu_get_number(struct pdc_pat_cpu_num *cpu_info, void *hpa)
+.. c:function:: int pdc_pat_cpu_get_number(struct pdc_pat_cpu_num *cpu_info, unsigned long hpa)
 
     Retrieve the cpu number.
 
     :param struct pdc_pat_cpu_num \*cpu_info:
         The return buffer.
 
-    :param void \*hpa:
+    :param unsigned long hpa:
         The Hard Physical Address of the CPU.
 
 .. _`pdc_pat_cpu_get_number.description`:

@@ -46,7 +46,7 @@ Definition
 .. code-block:: c
 
     struct genl_family {
-        unsigned int id;
+        int id;
         unsigned int hdrsize;
         char name[GENL_NAMSIZ];
         unsigned int version;
@@ -63,7 +63,6 @@ Definition
         unsigned int n_ops;
         unsigned int n_mcgrps;
         unsigned int mcgrp_offset;
-        struct list_head family_list;
         struct module *module;
     }
 
@@ -73,7 +72,7 @@ Members
 -------
 
 id
-    protocol family idenfitier
+    protocol family identifier (private)
 
 hdrsize
     length of user specific header in bytes
@@ -114,25 +113,23 @@ mcast_unbind
     sockets.
 
 attrbuf
-    buffer to store parsed attributes
+    buffer to store parsed attributes (private)
 
 ops
-    the operations supported by this family (private)
+    the operations supported by this family
 
 mcgrps
-    multicast groups used by this family (private)
+    multicast groups used by this family
 
 n_ops
-    number of operations supported by this family (private)
+    number of operations supported by this family
 
 n_mcgrps
-    number of multicast groups (private)
+    number of multicast groups
 
 mcgrp_offset
     starting number of multicast group IDs in this family
-
-family_list
-    family list
+    (private)
 
 module
     *undescribed*
@@ -249,63 +246,19 @@ internal_flags
 flags
     flags
 
-.. _`_genl_register_family_with_ops_grps`:
-
-_genl_register_family_with_ops_grps
-===================================
-
-.. c:function:: int _genl_register_family_with_ops_grps(struct genl_family *family, const struct genl_ops *ops, size_t n_ops, const struct genl_multicast_group *mcgrps, size_t n_mcgrps)
-
-    register a generic netlink family with ops
-
-    :param struct genl_family \*family:
-        generic netlink family
-
-    :param const struct genl_ops \*ops:
-        operations to be registered
-
-    :param size_t n_ops:
-        number of elements to register
-
-    :param const struct genl_multicast_group \*mcgrps:
-        *undescribed*
-
-    :param size_t n_mcgrps:
-        *undescribed*
-
-.. _`_genl_register_family_with_ops_grps.description`:
-
-Description
------------
-
-Registers the specified family and operations from the specified table.
-Only one family may be registered with the same family name or identifier.
-
-The family id may equal GENL_ID_GENERATE causing an unique id to
-be automatically generated and assigned.
-
-Either a doit or dumpit callback must be specified for every registered
-operation or the function will fail. Only one operation structure per
-command identifier may be registered.
-
-See include/net/genetlink.h for more documenation on the operations
-structure.
-
-Return 0 on success or a negative error code.
-
 .. _`genlmsg_nlhdr`:
 
 genlmsg_nlhdr
 =============
 
-.. c:function:: struct nlmsghdr *genlmsg_nlhdr(void *user_hdr, struct genl_family *family)
+.. c:function:: struct nlmsghdr *genlmsg_nlhdr(void *user_hdr, const struct genl_family *family)
 
     Obtain netlink header from user specified header
 
     :param void \*user_hdr:
         user header as returned from \ :c:func:`genlmsg_put`\ 
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         generic netlink family
 
 .. _`genlmsg_nlhdr.description`:
@@ -344,7 +297,7 @@ genlmsg_parse
 genl_dump_check_consistent
 ==========================
 
-.. c:function:: void genl_dump_check_consistent(struct netlink_callback *cb, void *user_hdr, struct genl_family *family)
+.. c:function:: void genl_dump_check_consistent(struct netlink_callback *cb, void *user_hdr, const struct genl_family *family)
 
     check if sequence is consistent and advertise if not
 
@@ -354,7 +307,7 @@ genl_dump_check_consistent
     :param void \*user_hdr:
         user header as returned from \ :c:func:`genlmsg_put`\ 
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         generic netlink family
 
 .. _`genl_dump_check_consistent.description`:
@@ -370,7 +323,7 @@ simpler to use with generic netlink.
 genlmsg_put_reply
 =================
 
-.. c:function:: void *genlmsg_put_reply(struct sk_buff *skb, struct genl_info *info, struct genl_family *family, int flags, u8 cmd)
+.. c:function:: void *genlmsg_put_reply(struct sk_buff *skb, struct genl_info *info, const struct genl_family *family, int flags, u8 cmd)
 
     Add generic netlink header to a reply message
 
@@ -380,7 +333,7 @@ genlmsg_put_reply
     :param struct genl_info \*info:
         receiver info
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         generic netlink family
 
     :param int flags:
@@ -431,11 +384,11 @@ genlmsg_cancel
 genlmsg_multicast_netns
 =======================
 
-.. c:function:: int genlmsg_multicast_netns(struct genl_family *family, struct net *net, struct sk_buff *skb, u32 portid, unsigned int group, gfp_t flags)
+.. c:function:: int genlmsg_multicast_netns(const struct genl_family *family, struct net *net, struct sk_buff *skb, u32 portid, unsigned int group, gfp_t flags)
 
     multicast a netlink message to a specific netns
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         the generic netlink family
 
     :param struct net \*net:
@@ -458,11 +411,11 @@ genlmsg_multicast_netns
 genlmsg_multicast
 =================
 
-.. c:function:: int genlmsg_multicast(struct genl_family *family, struct sk_buff *skb, u32 portid, unsigned int group, gfp_t flags)
+.. c:function:: int genlmsg_multicast(const struct genl_family *family, struct sk_buff *skb, u32 portid, unsigned int group, gfp_t flags)
 
     multicast a netlink message to the default netns
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         the generic netlink family
 
     :param struct sk_buff \*skb:
@@ -482,11 +435,11 @@ genlmsg_multicast
 genlmsg_multicast_allns
 =======================
 
-.. c:function:: int genlmsg_multicast_allns(struct genl_family *family, struct sk_buff *skb, u32 portid, unsigned int group, gfp_t flags)
+.. c:function:: int genlmsg_multicast_allns(const struct genl_family *family, struct sk_buff *skb, u32 portid, unsigned int group, gfp_t flags)
 
     multicast a netlink message to all net namespaces
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         the generic netlink family
 
     :param struct sk_buff \*skb:
@@ -609,11 +562,11 @@ genlmsg_new
 genl_set_err
 ============
 
-.. c:function:: int genl_set_err(struct genl_family *family, struct net *net, u32 portid, u32 group, int code)
+.. c:function:: int genl_set_err(const struct genl_family *family, struct net *net, u32 portid, u32 group, int code)
 
     report error to genetlink broadcast listeners
 
-    :param struct genl_family \*family:
+    :param const struct genl_family \*family:
         the generic netlink family
 
     :param struct net \*net:

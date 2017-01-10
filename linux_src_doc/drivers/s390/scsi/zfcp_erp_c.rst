@@ -193,6 +193,18 @@ zfcp_erp_timeout_handler
     :param unsigned long data:
         ERP action (from timer data)
 
+.. _`zfcp_erp_try_rport_unblock`:
+
+zfcp_erp_try_rport_unblock
+==========================
+
+.. c:function:: void zfcp_erp_try_rport_unblock(struct zfcp_port *port)
+
+    unblock rport if no more/new recovery
+
+    :param struct zfcp_port \*port:
+        zfcp_port whose fc_rport we should try to unblock
+
 .. _`zfcp_erp_thread_setup`:
 
 zfcp_erp_thread_setup

@@ -6,12 +6,18 @@
 intel_audio_codec_enable
 ========================
 
-.. c:function:: void intel_audio_codec_enable(struct intel_encoder *intel_encoder)
+.. c:function:: void intel_audio_codec_enable(struct intel_encoder *intel_encoder, const struct intel_crtc_state *crtc_state, const struct drm_connector_state *conn_state)
 
     Enable the audio codec for HD audio
 
     :param struct intel_encoder \*intel_encoder:
         encoder on which to enable audio
+
+    :param const struct intel_crtc_state \*crtc_state:
+        pointer to the current crtc state.
+
+    :param const struct drm_connector_state \*conn_state:
+        pointer to the current connector state.
 
 .. _`intel_audio_codec_enable.description`:
 

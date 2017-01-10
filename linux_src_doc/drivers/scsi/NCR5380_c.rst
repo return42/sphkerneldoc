@@ -25,32 +25,32 @@ Set up the internal fields in the SCSI command.
 NCR5380_poll_politely2
 ======================
 
-.. c:function:: int NCR5380_poll_politely2(struct Scsi_Host *instance, int reg1, int bit1, int val1, int reg2, int bit2, int val2, int wait)
+.. c:function:: int NCR5380_poll_politely2(struct NCR5380_hostdata *hostdata, unsigned int reg1, u8 bit1, u8 val1, unsigned int reg2, u8 bit2, u8 val2, unsigned long wait)
 
     wait for two chip register values
 
-    :param struct Scsi_Host \*instance:
-        controller to poll
+    :param struct NCR5380_hostdata \*hostdata:
+        host private data
 
-    :param int reg1:
+    :param unsigned int reg1:
         5380 register to poll
 
-    :param int bit1:
+    :param u8 bit1:
         Bitmask to check
 
-    :param int val1:
+    :param u8 val1:
         Expected value
 
-    :param int reg2:
+    :param unsigned int reg2:
         Second 5380 register to poll
 
-    :param int bit2:
+    :param u8 bit2:
         Second bitmask to check
 
-    :param int val2:
+    :param u8 val2:
         Second expected value
 
-    :param int wait:
+    :param unsigned long wait:
         Time-out in jiffies
 
 .. _`ncr5380_poll_politely2.description`:
@@ -102,52 +102,6 @@ Description
 -----------
 
 Print the current SCSI phase for debugging purposes
-
-.. _`probe_intr`:
-
-probe_intr
-==========
-
-.. c:function:: irqreturn_t probe_intr(int irq, void *dev_id)
-
-    helper for IRQ autoprobe
-
-    :param int irq:
-        interrupt number
-
-    :param void \*dev_id:
-        unused
-
-.. _`probe_intr.description`:
-
-Description
------------
-
-Set a flag to indicate the IRQ in question was received. This is
-used by the IRQ probe code.
-
-.. _`ncr5380_probe_irq`:
-
-NCR5380_probe_irq
-=================
-
-.. c:function:: int __maybe_unused NCR5380_probe_irq(struct Scsi_Host *instance, int possible)
-
-    find the IRQ of an NCR5380
-
-    :param struct Scsi_Host \*instance:
-        NCR5380 controller
-
-    :param int possible:
-        bitmask of ISA IRQ lines
-
-.. _`ncr5380_probe_irq.description`:
-
-Description
------------
-
-Autoprobe for the IRQ line used by the NCR5380 by triggering an IRQ
-and then looking to see what interrupt actually turned up.
 
 .. _`ncr5380_info`:
 

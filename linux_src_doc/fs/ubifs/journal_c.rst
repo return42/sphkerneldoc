@@ -25,18 +25,6 @@ zero_dent_node_unused
     :param struct ubifs_dent_node \*dent:
         the directory entry to zero out
 
-.. _`zero_data_node_unused`:
-
-zero_data_node_unused
-=====================
-
-.. c:function:: void zero_data_node_unused(struct ubifs_data_node *data)
-
-    zero out unused fields of an on-flash data node.
-
-    :param struct ubifs_data_node \*data:
-        the data node to zero out
-
 .. _`zero_trun_node_unused`:
 
 zero_trun_node_unused
@@ -293,7 +281,7 @@ just do nothing.
 ubifs_jnl_update
 ================
 
-.. c:function:: int ubifs_jnl_update(struct ubifs_info *c, const struct inode *dir, const struct qstr *nm, const struct inode *inode, int deletion, int xent)
+.. c:function:: int ubifs_jnl_update(struct ubifs_info *c, const struct inode *dir, const struct fscrypt_name *nm, const struct inode *inode, int deletion, int xent)
 
     update inode.
 
@@ -303,7 +291,7 @@ ubifs_jnl_update
     :param const struct inode \*dir:
         parent inode or host inode in case of extended attributes
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         directory entry name
 
     :param const struct inode \*inode:
@@ -443,7 +431,7 @@ case of failure.
 ubifs_jnl_xrename
 =================
 
-.. c:function:: int ubifs_jnl_xrename(struct ubifs_info *c, const struct inode *fst_dir, const struct dentry *fst_dentry, const struct inode *snd_dir, const struct dentry *snd_dentry, int sync)
+.. c:function:: int ubifs_jnl_xrename(struct ubifs_info *c, const struct inode *fst_dir, const struct inode *fst_inode, const struct fscrypt_name *fst_nm, const struct inode *snd_dir, const struct inode *snd_inode, const struct fscrypt_name *snd_nm, int sync)
 
     cross rename two directory entries.
 
@@ -453,14 +441,20 @@ ubifs_jnl_xrename
     :param const struct inode \*fst_dir:
         parent inode of 1st directory entry to exchange
 
-    :param const struct dentry \*fst_dentry:
-        1st directory entry to exchange
+    :param const struct inode \*fst_inode:
+        1st inode to exchange
+
+    :param const struct fscrypt_name \*fst_nm:
+        name of 1st inode to exchange
 
     :param const struct inode \*snd_dir:
         parent inode of 2nd directory entry to exchange
 
-    :param const struct dentry \*snd_dentry:
-        2nd directory entry to exchange
+    :param const struct inode \*snd_inode:
+        2nd inode to exchange
+
+    :param const struct fscrypt_name \*snd_nm:
+        name of 2nd inode to exchange
 
     :param int sync:
         non-zero if the write-buffer has to be synchronized
@@ -480,7 +474,7 @@ returned.
 ubifs_jnl_rename
 ================
 
-.. c:function:: int ubifs_jnl_rename(struct ubifs_info *c, const struct inode *old_dir, const struct dentry *old_dentry, const struct inode *new_dir, const struct dentry *new_dentry, const struct inode *whiteout, int sync)
+.. c:function:: int ubifs_jnl_rename(struct ubifs_info *c, const struct inode *old_dir, const struct inode *old_inode, const struct fscrypt_name *old_nm, const struct inode *new_dir, const struct inode *new_inode, const struct fscrypt_name *new_nm, const struct inode *whiteout, int sync)
 
     rename a directory entry.
 
@@ -490,14 +484,20 @@ ubifs_jnl_rename
     :param const struct inode \*old_dir:
         parent inode of directory entry to rename
 
-    :param const struct dentry \*old_dentry:
-        directory entry to rename
+    :param const struct inode \*old_inode:
+        *undescribed*
+
+    :param const struct fscrypt_name \*old_nm:
+        *undescribed*
 
     :param const struct inode \*new_dir:
         parent inode of directory entry to rename
 
-    :param const struct dentry \*new_dentry:
-        new directory entry (or directory entry to replace)
+    :param const struct inode \*new_inode:
+        *undescribed*
+
+    :param const struct fscrypt_name \*new_nm:
+        *undescribed*
 
     :param const struct inode \*whiteout:
         *undescribed*
@@ -515,17 +515,23 @@ to 4 inodes and 2 directory entries. It marks the written inodes as clean
 and returns zero on success. In case of failure, a negative error code is
 returned.
 
-.. _`recomp_data_node`:
+.. _`truncate_data_node`:
 
-recomp_data_node
-================
+truncate_data_node
+==================
 
-.. c:function:: int recomp_data_node(const struct ubifs_info *c, struct ubifs_data_node *dn, int *new_len)
+.. c:function:: int truncate_data_node(const struct ubifs_info *c, const struct inode *inode, unsigned int block, struct ubifs_data_node *dn, int *new_len)
 
-    re-compress a truncated data node.
+    re-compress/encrypt a truncated data node.
 
     :param const struct ubifs_info \*c:
-        *undescribed*
+        UBIFS file-system description object
+
+    :param const struct inode \*inode:
+        inode which referes to the data node
+
+    :param unsigned int block:
+        data block number
 
     :param struct ubifs_data_node \*dn:
         data node to re-compress
@@ -533,13 +539,13 @@ recomp_data_node
     :param int \*new_len:
         new length
 
-.. _`recomp_data_node.description`:
+.. _`truncate_data_node.description`:
 
 Description
 -----------
 
 This function is used when an inode is truncated and the last data node of
-the inode has to be re-compressed and re-written.
+the inode has to be re-compressed/encrypted and re-written.
 
 .. _`ubifs_jnl_truncate`:
 
@@ -580,7 +586,7 @@ of failure, a negative error code is returned.
 ubifs_jnl_delete_xattr
 ======================
 
-.. c:function:: int ubifs_jnl_delete_xattr(struct ubifs_info *c, const struct inode *host, const struct inode *inode, const struct qstr *nm)
+.. c:function:: int ubifs_jnl_delete_xattr(struct ubifs_info *c, const struct inode *host, const struct inode *inode, const struct fscrypt_name *nm)
 
     delete an extended attribute.
 
@@ -593,7 +599,7 @@ ubifs_jnl_delete_xattr
     :param const struct inode \*inode:
         extended attribute inode
 
-    :param const struct qstr \*nm:
+    :param const struct fscrypt_name \*nm:
         extended attribute entry name
 
 .. _`ubifs_jnl_delete_xattr.description`:

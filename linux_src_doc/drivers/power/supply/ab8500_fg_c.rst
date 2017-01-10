@@ -933,10 +933,9 @@ ab8500_fg_battok_calc
 
     :param struct ab8500_fg \*di:
         pointer to the ab8500_fg structure
-        \ ``target``\     target voltage
 
     :param int target:
-        *undescribed*
+        target voltage
 
 .. _`ab8500_fg_battok_calc.description`:
 

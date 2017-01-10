@@ -11,4 +11,3 @@ asm
     bitops_h
     fpswa_h
     io_h
-    mutex_h

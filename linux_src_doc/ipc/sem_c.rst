@@ -65,14 +65,14 @@ Description
 
 Called with sem_ids.rwsem held (as a writer)
 
-.. _`perform_atomic_semop`:
+.. _`perform_atomic_semop_slow`:
 
-perform_atomic_semop
-====================
+perform_atomic_semop_slow
+=========================
 
-.. c:function:: int perform_atomic_semop(struct sem_array *sma, struct sem_queue *q)
+.. c:function:: int perform_atomic_semop_slow(struct sem_array *sma, struct sem_queue *q)
 
-    Perform (if possible) a semaphore operation
+    Attempt to perform semaphore operations on a given array.
 
     :param struct sem_array \*sma:
         semaphore array
@@ -80,43 +80,28 @@ perform_atomic_semop
     :param struct sem_queue \*q:
         struct sem_queue that describes the operation
 
-.. _`perform_atomic_semop.description`:
+.. _`perform_atomic_semop_slow.description`:
 
 Description
 -----------
+
+Caller blocking are as follows, based the value
+indicated by the semaphore operation (sem_op):
+
+(1) >0 never blocks.
+(2)  0 (wait-for-zero operation): semval is non-zero.
+(3) <0 attempting to decrement semval to a value smaller than zero.
 
 Returns 0 if the operation was possible.
 Returns 1 if the operation is impossible, the caller must sleep.
-Negative values are error codes.
-
-.. _`wake_up_sem_queue_do`:
-
-wake_up_sem_queue_do
-====================
-
-.. c:function:: void wake_up_sem_queue_do(struct list_head *pt)
-
-    do the actual wake-up
-
-    :param struct list_head \*pt:
-        list of tasks to be woken up
-
-.. _`wake_up_sem_queue_do.description`:
-
-Description
------------
-
-Do the actual wake-up.
-The function is called without any locks held, thus the semaphore array
-could be destroyed already and the tasks can disappear as soon as the
-status is set to the actual return code.
+Returns <0 for error codes.
 
 .. _`wake_const_ops`:
 
 wake_const_ops
 ==============
 
-.. c:function:: int wake_const_ops(struct sem_array *sma, int semnum, struct list_head *pt)
+.. c:function:: int wake_const_ops(struct sem_array *sma, int semnum, struct wake_q_head *wake_q)
 
     wake up non-alter tasks
 
@@ -126,8 +111,8 @@ wake_const_ops
     :param int semnum:
         semaphore that was modified.
 
-    :param struct list_head \*pt:
-        list head for the tasks that must be woken up.
+    :param struct wake_q_head \*wake_q:
+        lockless wake-queue head.
 
 .. _`wake_const_ops.description`:
 
@@ -138,7 +123,7 @@ wake_const_ops must be called after a semaphore in a semaphore array
 was set to 0. If complex const operations are pending, wake_const_ops must
 be called with semnum = -1, as well as with the number of each modified
 semaphore.
-The tasks that must be woken up are added to \ ``pt``\ . The return code
+The tasks that must be woken up are added to \ ``wake_q``\ . The return code
 is stored in q->pid.
 The function returns 1 if at least one operation was completed successfully.
 
@@ -147,7 +132,7 @@ The function returns 1 if at least one operation was completed successfully.
 do_smart_wakeup_zero
 ====================
 
-.. c:function:: int do_smart_wakeup_zero(struct sem_array *sma, struct sembuf *sops, int nsops, struct list_head *pt)
+.. c:function:: int do_smart_wakeup_zero(struct sem_array *sma, struct sembuf *sops, int nsops, struct wake_q_head *wake_q)
 
     wakeup all wait for zero tasks
 
@@ -160,8 +145,8 @@ do_smart_wakeup_zero
     :param int nsops:
         number of operations
 
-    :param struct list_head \*pt:
-        list head of the tasks that must be woken up.
+    :param struct wake_q_head \*wake_q:
+        lockless wake-queue head
 
 .. _`do_smart_wakeup_zero.description`:
 
@@ -177,7 +162,7 @@ The function returns 1 if at least one operation was completed successfully.
 update_queue
 ============
 
-.. c:function:: int update_queue(struct sem_array *sma, int semnum, struct list_head *pt)
+.. c:function:: int update_queue(struct sem_array *sma, int semnum, struct wake_q_head *wake_q)
 
     look for tasks that can be completed.
 
@@ -187,8 +172,8 @@ update_queue
     :param int semnum:
         semaphore that was modified.
 
-    :param struct list_head \*pt:
-        list head for the tasks that must be woken up.
+    :param struct wake_q_head \*wake_q:
+        lockless wake-queue head.
 
 .. _`update_queue.description`:
 
@@ -199,7 +184,7 @@ update_queue must be called after a semaphore in a semaphore array
 was modified. If multiple semaphores were modified, update_queue must
 be called with semnum = -1, as well as with the number of each modified
 semaphore.
-The tasks that must be woken up are added to \ ``pt``\ . The return code
+The tasks that must be woken up are added to \ ``wake_q``\ . The return code
 is stored in q->pid.
 The function internally checks if const operations can now succeed.
 
@@ -233,7 +218,7 @@ This function sets one instance to the current time.
 do_smart_update
 ===============
 
-.. c:function:: void do_smart_update(struct sem_array *sma, struct sembuf *sops, int nsops, int otime, struct list_head *pt)
+.. c:function:: void do_smart_update(struct sem_array *sma, struct sembuf *sops, int nsops, int otime, struct wake_q_head *wake_q)
 
     optimized update_queue
 
@@ -249,8 +234,8 @@ do_smart_update
     :param int otime:
         force setting otime
 
-    :param struct list_head \*pt:
-        list head of the tasks that must be woken up.
+    :param struct wake_q_head \*wake_q:
+        lockless wake-queue head
 
 .. _`do_smart_update.description`:
 
@@ -260,7 +245,7 @@ Description
 do_smart_update() does the required calls to update_queue and wakeup_zero,
 based on the actual changes that were performed on the semaphore array.
 Note that the function does not do the actual wake-up: the caller is
-responsible for calling wake_up_sem_queue_do(@pt).
+responsible for calling \ :c:func:`wake_up_q`\ .
 It is safe to perform this call after dropping all locks.
 
 .. _`find_alloc_undo`:
@@ -288,37 +273,6 @@ The size of the undo structure depends on the size of the semaphore
 array, thus the alloc path is not that straightforward.
 Lifetime-rules: sem_undo is rcu-protected, on success, the function
 performs a \ :c:func:`rcu_read_lock`\ .
-
-.. _`get_queue_result`:
-
-get_queue_result
-================
-
-.. c:function:: int get_queue_result(struct sem_queue *q)
-
-    retrieve the result code from sem_queue
-
-    :param struct sem_queue \*q:
-        Pointer to queue structure
-
-.. _`get_queue_result.description`:
-
-Description
------------
-
-Retrieve the return code from the pending queue. If IN_WAKEUP is found in
-q->status, then we must loop until the value is replaced with the final
-
-.. _`get_queue_result.value`:
-
-value
------
-
-This may happen if a task is woken up by an unrelated event (e.g.
-signal) and in parallel the task is woken up by another task because it got
-the requested semaphores.
-
-The function can be called with or without holding the semaphore spinlock.
 
 .. This file was automatic generated / don't edit.
 

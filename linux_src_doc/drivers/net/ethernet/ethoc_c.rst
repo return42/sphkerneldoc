@@ -37,6 +37,8 @@ Definition
         struct mii_bus *mdio;
         struct clk *clk;
         s8 phy_id;
+        int old_link;
+        int old_duplex;
     }
 
 .. _`ethoc.members`:
@@ -100,6 +102,12 @@ clk
 
 phy_id
     address of attached PHY
+
+old_link
+    *undescribed*
+
+old_duplex
+    *undescribed*
 
 .. _`ethoc_bd`:
 

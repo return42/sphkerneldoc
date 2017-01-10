@@ -719,7 +719,7 @@ struct ccp_cmd
 
 .. c:type:: struct ccp_cmd
 
-    CPP operation request
+    CCP operation request
 
 .. _`ccp_cmd.definition`:
 

@@ -46,11 +46,11 @@ will occur, and a display engine hang could result.
 intel_update_watermarks
 =======================
 
-.. c:function:: void intel_update_watermarks(struct drm_crtc *crtc)
+.. c:function:: void intel_update_watermarks(struct intel_crtc *crtc)
 
     update FIFO watermark values based on current modes
 
-    :param struct drm_crtc \*crtc:
+    :param struct intel_crtc \*crtc:
         *undescribed*
 
 .. _`intel_update_watermarks.description`:
@@ -260,6 +260,48 @@ Setup the hooks that configure which clocks of a given platform can be
 gated and also apply various GT and display specific workarounds for these
 platforms. Note that some GT specific workarounds are applied separately
 when GPU contexts or batchbuffers start their execution.
+
+.. _`skl_pcode_request`:
+
+skl_pcode_request
+=================
+
+.. c:function:: int skl_pcode_request(struct drm_i915_private *dev_priv, u32 mbox, u32 request, u32 reply_mask, u32 reply, int timeout_base_ms)
+
+    send PCODE request until acknowledgment
+
+    :param struct drm_i915_private \*dev_priv:
+        device private
+
+    :param u32 mbox:
+        PCODE mailbox ID the request is targeted for
+
+    :param u32 request:
+        request ID
+
+    :param u32 reply_mask:
+        mask used to check for request acknowledgment
+
+    :param u32 reply:
+        value used to check for request acknowledgment
+
+    :param int timeout_base_ms:
+        timeout for polling with preemption enabled
+
+.. _`skl_pcode_request.description`:
+
+Description
+-----------
+
+Keep resending the \ ``request``\  to \ ``mbox``\  until PCODE acknowledges it, PCODE
+reports an error or an overall timeout of \ ``timeout_base_ms``\ +10 ms expires.
+The request is acknowledged once the PCODE reply dword equals \ ``reply``\  after
+applying \ ``reply_mask``\ . Polling is first attempted with preemption enabled
+for \ ``timeout_base_ms``\  and if this times out for another 10 ms with
+preemption disabled.
+
+Returns 0 on success, \ ``-ETIMEDOUT``\  in case of a timeout, <0 in case of some
+other error as reported by PCODE.
 
 .. This file was automatic generated / don't edit.
 
