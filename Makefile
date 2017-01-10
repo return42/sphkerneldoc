@@ -143,6 +143,8 @@ The TeX and PDF output and the *math* extension require TexLive:\n\n\
 # usage
 # ------------------------------------------------------------------------------
 
+.DEFAULT_GOAL=help
+
 PHONY += help help-rqmts
 
 help-rqmts: msg-sphinx-builder msg-TeXLive
