@@ -122,6 +122,54 @@ Description
 Frees both the pages associated with the buffer, and the array
 describing them
 
+.. _`iommu_dma_alloc`:
+
+iommu_dma_alloc
+===============
+
+.. c:function:: struct page **iommu_dma_alloc(struct device *dev, size_t size, gfp_t gfp, unsigned long attrs, int prot, dma_addr_t *handle, void (*flush_page)(struct device *, const void *, phys_addr_t))
+
+    Allocate and map a buffer contiguous in IOVA space
+
+    :param struct device \*dev:
+        Device to allocate memory for. Must be a real device
+        attached to an iommu_dma_domain
+
+    :param size_t size:
+        Size of buffer in bytes
+
+    :param gfp_t gfp:
+        Allocation flags
+
+    :param unsigned long attrs:
+        DMA attributes for this allocation
+
+    :param int prot:
+        IOMMU mapping flags
+
+    :param dma_addr_t \*handle:
+        Out argument for allocated DMA handle
+
+    :param void (\*flush_page)(struct device \*, const void \*, phys_addr_t):
+        Arch callback which must ensure PAGE_SIZE bytes from the
+        given VA/PA are visible to the given non-coherent device.
+
+.. _`iommu_dma_alloc.description`:
+
+Description
+-----------
+
+If \ ``size``\  is less than PAGE_SIZE, then a full CPU page will be allocated,
+but an IOMMU which supports smaller pages might not map the whole thing.
+
+.. _`iommu_dma_alloc.return`:
+
+Return
+------
+
+Array of struct page pointers describing the buffer,
+or NULL on failure.
+
 .. _`iommu_dma_mmap`:
 
 iommu_dma_mmap

@@ -145,6 +145,34 @@ Until there is more than one item in the tree, no nodes are
 allocated and \ ``root``\ ->rnode is used as a direct slot instead of
 pointing to a node, in which case \*@nodep will be NULL.
 
+.. _`radix_tree_lookup_slot`:
+
+radix_tree_lookup_slot
+======================
+
+.. c:function:: void **radix_tree_lookup_slot(struct radix_tree_root *root, unsigned long index)
+
+    lookup a slot in a radix tree
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param unsigned long index:
+        index key
+
+.. _`radix_tree_lookup_slot.return`:
+
+Return
+------
+
+the slot corresponding to the position \ ``index``\  in the
+radix tree \ ``root``\ . This is useful for update-if-exists operations.
+
+This function can be called under rcu_read_lock iff the slot is not
+modified by radix_tree_replace_slot, otherwise it must be called
+exclusive from other writers. Any dereference of the slot must be done
+using radix_tree_deref_slot.
+
 .. _`radix_tree_lookup`:
 
 radix_tree_lookup
@@ -450,6 +478,31 @@ Return values
 Note that the return value of this function may not be relied on, even if
 the RCU lock is held, unless tag modification and node deletion are excluded
 from concurrency.
+
+.. _`radix_tree_next_chunk`:
+
+radix_tree_next_chunk
+=====================
+
+.. c:function:: void **radix_tree_next_chunk(struct radix_tree_root *root, struct radix_tree_iter *iter, unsigned flags)
+
+    find next chunk of slots for iteration
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param struct radix_tree_iter \*iter:
+        iterator state
+
+    :param unsigned flags:
+        RADIX_TREE_ITER\_\* flags and tag index
+
+.. _`radix_tree_next_chunk.return`:
+
+Return
+------
+
+pointer to chunk first slot, or NULL if iteration is over
 
 .. _`radix_tree_gang_lookup`:
 

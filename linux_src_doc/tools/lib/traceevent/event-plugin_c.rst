@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: tools/lib/traceevent/event-plugin.c
 
+.. _`traceevent_plugin_list_options`:
+
+traceevent_plugin_list_options
+==============================
+
+.. c:function:: char **traceevent_plugin_list_options( void)
+
+    get list of plugin options
+
+    :param  void:
+        no arguments
+
+.. _`traceevent_plugin_list_options.description`:
+
+Description
+-----------
+
+Returns an array of char strings that list the currently registered
+plugin options in the format of <plugin>:<option>. This list can be
+used by toggling the option.
+
+Returns NULL if there's no options registered. On error it returns
+INVALID_PLUGIN_LIST_OPTION
+
+Must be freed with \ :c:func:`traceevent_plugin_free_options_list`\ .
+
 .. _`traceevent_plugin_add_options`:
 
 traceevent_plugin_add_options

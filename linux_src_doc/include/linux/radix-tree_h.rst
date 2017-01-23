@@ -214,6 +214,106 @@ Return
 
 0 if well-aligned pointer, non-0 if either kind of exception.
 
+.. _`radix_tree_iter_init`:
+
+radix_tree_iter_init
+====================
+
+.. c:function:: void **radix_tree_iter_init(struct radix_tree_iter *iter, unsigned long start)
+
+    initialize radix tree iterator
+
+    :param struct radix_tree_iter \*iter:
+        pointer to iterator state
+
+    :param unsigned long start:
+        iteration starting index
+
+.. _`radix_tree_iter_init.return`:
+
+Return
+------
+
+NULL
+
+.. _`radix_tree_next_chunk`:
+
+radix_tree_next_chunk
+=====================
+
+.. c:function:: void **radix_tree_next_chunk(struct radix_tree_root *root, struct radix_tree_iter *iter, unsigned flags)
+
+    find next chunk of slots for iteration
+
+    :param struct radix_tree_root \*root:
+        radix tree root
+
+    :param struct radix_tree_iter \*iter:
+        iterator state
+
+    :param unsigned flags:
+        RADIX_TREE_ITER\_\* flags and tag index
+
+.. _`radix_tree_next_chunk.return`:
+
+Return
+------
+
+pointer to chunk first slot, or NULL if there no more left
+
+This function looks up the next chunk in the radix tree starting from
+\ ``iter``\ ->next_index.  It returns a pointer to the chunk's first slot.
+Also it fills \ ``iter``\  with data about chunk: position in the tree (index),
+its end (next_index), and constructs a bit mask for tagged iterating (tags).
+
+.. _`radix_tree_iter_retry`:
+
+radix_tree_iter_retry
+=====================
+
+.. c:function:: void **radix_tree_iter_retry(struct radix_tree_iter *iter)
+
+    retry this chunk of the iteration
+
+    :param struct radix_tree_iter \*iter:
+        iterator state
+
+.. _`radix_tree_iter_retry.description`:
+
+Description
+-----------
+
+If we iterate over a tree protected only by the RCU lock, a race
+against deletion or creation may result in seeing a slot for which
+\ :c:func:`radix_tree_deref_retry`\  returns true.  If so, call this function
+and continue the iteration.
+
+.. _`radix_tree_iter_resume`:
+
+radix_tree_iter_resume
+======================
+
+.. c:function:: void **radix_tree_iter_resume(void **slot, struct radix_tree_iter *iter)
+
+    resume iterating when the chunk may be invalid
+
+    :param void \*\*slot:
+        pointer to current slot
+
+    :param struct radix_tree_iter \*iter:
+        iterator state
+
+.. _`radix_tree_iter_resume.return`:
+
+Return
+------
+
+New slot pointer
+
+If the iterator needs to release then reacquire a lock, the chunk may
+have been invalidated by an insertion or deletion.  Call this function
+before releasing the lock to continue the iteration from the next index.
+
 .. _`radix_tree_chunk_size`:
 
 radix_tree_chunk_size
@@ -232,6 +332,42 @@ Return
 ------
 
 current chunk size
+
+.. _`radix_tree_next_slot`:
+
+radix_tree_next_slot
+====================
+
+.. c:function:: void **radix_tree_next_slot(void **slot, struct radix_tree_iter *iter, unsigned flags)
+
+    find next slot in chunk
+
+    :param void \*\*slot:
+        pointer to current slot
+
+    :param struct radix_tree_iter \*iter:
+        pointer to interator state
+
+    :param unsigned flags:
+        RADIX_TREE_ITER\_\*, should be constant
+
+.. _`radix_tree_next_slot.return`:
+
+Return
+------
+
+pointer to next slot, or NULL if there no more left
+
+This function updates \ ``iter``\ ->index in the case of a successful lookup.
+For tagged lookup it also eats \ ``iter``\ ->tags.
+
+There are several cases where 'slot' can be passed in as NULL to this
+function.  These cases result from the use of \ :c:func:`radix_tree_iter_resume`\  or
+\ :c:func:`radix_tree_iter_retry`\ .  In these cases we don't end up dereferencing
+'slot' because either:
+a) we are doing tagged iteration and iter->tags has been set to 0, or
+b) we are doing non-tagged iteration, and iter->index and iter->next_index
+have been set up so that \ :c:func:`radix_tree_chunk_size`\  returns 1 or 0.
 
 .. _`radix_tree_for_each_slot`:
 

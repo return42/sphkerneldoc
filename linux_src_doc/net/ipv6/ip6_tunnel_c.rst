@@ -22,6 +22,36 @@ tunnel matching given end-points if found,
 else fallback tunnel if its device is up,
 else \ ``NULL``\ 
 
+.. _`ip6_tnl_bucket`:
+
+ip6_tnl_bucket
+==============
+
+.. c:function:: struct ip6_tnl __rcu **ip6_tnl_bucket(struct ip6_tnl_net *ip6n, const struct __ip6_tnl_parm *p)
+
+    get head of list matching given tunnel parameters
+
+    :param struct ip6_tnl_net \*ip6n:
+        *undescribed*
+
+    :param const struct __ip6_tnl_parm \*p:
+        parameters containing tunnel end-points
+
+.. _`ip6_tnl_bucket.description`:
+
+Description
+-----------
+
+ip6_tnl_bucket() returns the head of the list matching the
+\ :c:type:`struct in6_addr <in6_addr>`\  entries laddr and raddr in \ ``p``\ .
+
+.. _`ip6_tnl_bucket.return`:
+
+Return
+------
+
+head of IPv6 tunnel list
+
 .. _`ip6_tnl_link`:
 
 ip6_tnl_link
