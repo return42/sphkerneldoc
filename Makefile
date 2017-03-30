@@ -18,6 +18,7 @@ export srctree
 SPHINXBUILD    := sphinx-build
 DBTOOLS_SCRIPT := linux-db2rst
 AUTODOC_SCRIPT := kernel-autodoc
+DB2RST_ARGS    := --nochunk
 
 # We need some generic definitions (do not try to remake the file).
 Kbuild.include: ;
@@ -392,7 +393,7 @@ dbxml2rst.post:
 
 .PHONY:	$(DB2RST)
 $(DB2RST):
-	$(DBTOOLS_SCRIPT) --out=$(BOOKS_MIGRATED_FOLDER) db2rst $(srctree) $(patsubst %.rst,%.tmpl,${@})
+	$(DBTOOLS_SCRIPT) --out=$(BOOKS_MIGRATED_FOLDER) db2rst $(DB2RST_ARGS) $(srctree) $(patsubst %.rst,%.tmpl,${@})
 
 
 # ------------------------------------------------------------------------------

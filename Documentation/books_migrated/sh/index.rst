@@ -30,12 +30,108 @@ For more details see the file COPYING in the source distribution of
 Linux.
 
 
-.. toctree::
-    :maxdepth: 1
+.. _mm:
 
-    mm
-    mach
-    busses
+*****************
+Memory Management
+*****************
+
+
+.. _sh4:
+
+SH-4
+====
+
+
+.. _sq:
+
+Store Queue API
+---------------
+
+
+.. kernel-doc:: arch/sh/kernel/cpu/sh4/sq.c
+    :man-sect: 9
+    :export:
+
+
+.. _sh5:
+
+SH-5
+====
+
+
+.. _tlb:
+
+TLB Interfaces
+--------------
+
+
+.. kernel-doc:: arch/sh/mm/tlb-sh5.c
+    :man-sect: 9
+    :internal:
+
+
+.. kernel-doc:: arch/sh/include/asm/tlb_64.h
+    :man-sect: 9
+    :internal:
+
+
+.. _mach:
+
+***************************
+Machine Specific Interfaces
+***************************
+
+
+.. _dreamcast:
+
+mach-dreamcast
+==============
+
+
+.. kernel-doc:: arch/sh/boards/mach-dreamcast/rtc.c
+    :man-sect: 9
+    :internal:
+
+
+.. _x3proto:
+
+mach-x3proto
+============
+
+
+.. kernel-doc:: arch/sh/boards/mach-x3proto/ilsel.c
+    :man-sect: 9
+    :export:
+
+
+.. _busses:
+
+******
+Busses
+******
+
+
+.. _superhyway:
+
+SuperHyway
+==========
+
+
+.. kernel-doc:: drivers/sh/superhyway/superhyway.c
+    :man-sect: 9
+    :export:
+
+
+.. _maple:
+
+Maple
+=====
+
+
+.. kernel-doc:: drivers/sh/maple/maple.c
+    :man-sect: 9
+    :export:
 
 
 
