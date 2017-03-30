@@ -93,7 +93,7 @@ For ATAPI commands,
    *probably* indicates CHECK CONDITION and doesn't fall in this
    category.
 
-Of errors detected as above, the followings are not ATA/ATAPI device
+Of errors detected as above, the following are not ATA/ATAPI device
 errors but ATA bus errors and should be handled according to
 :ref:`excatATAbusErr`.
 

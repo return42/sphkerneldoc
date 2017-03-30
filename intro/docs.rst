@@ -89,9 +89,6 @@ content, which was has been automatic converted by this POC to the reST markup
 The DocBook/reST conversion is done with the reST with the :ref:`DocBook-XML to
 reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
 
-* `Bus-Independent Device Accesses <books/deviceiobook/index.html>`_
-  (`pdf <books/deviceiobook/pdf>`__, `man <books/deviceiobook/man>`__)
-
 * `Linux Filesystems API <books/filesystems/index.html>`_
   (`pdf <books/filesystems/pdf>`__, `man <books/filesystems/man>`__)
 
@@ -131,9 +128,6 @@ reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
 * `RapidIO Subsystem Guide <books/rapidio/index.html>`_
   (`pdf <books/rapidio/pdf>`__, `man <books/rapidio/man>`__)
 
-* `Voltage and current regulator API <books/regulator/index.html>`_
-  (`pdf <books/regulator/pdf>`__, `man <books/regulator/man>`__)
-
 * `Writing s390 channel device drivers <books/s390-drivers/index.html>`_
   (`pdf <books/s390-drivers/pdf>`__, `man <books/s390-drivers/man>`__)
 
@@ -142,9 +136,6 @@ reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
 
 * `SuperH Interfaces Guide <books/sh/index.html>`_
   (`pdf <books/sh/pdf>`__, `man <books/sh/man>`__)
-
-* `The Userspace I/O HOWTO <books/uio-howto/index.html>`_
-  (`pdf <books/uio-howto/pdf>`__, `man <books/uio-howto/man>`__)
 
 * `The Linux-USB Host Side API <books/usb/index.html>`_
   (`pdf <books/usb/pdf>`__, `man <books/usb/man>`__)

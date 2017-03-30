@@ -34,12 +34,12 @@ such as gdb to more accurately construct stack back traces while
 debugging the kernel.
 
 If the architecture that you are using supports the kernel option
-CONFIG_DEBUG_RODATA, you should consider turning it off. This option
-will prevent the use of software breakpoints because it marks certain
-regions of the kernel's memory space as read-only. If kgdb supports it
-for the architecture you are using, you can use hardware breakpoints if
-you desire to run with the CONFIG_DEBUG_RODATA option turned on, else
-you need to turn off this option.
+CONFIG_STRICT_KERNEL_RWX, you should consider turning it off. This
+option will prevent the use of software breakpoints because it marks
+certain regions of the kernel's memory space as read-only. If kgdb
+supports it for the architecture you are using, you can use hardware
+breakpoints if you desire to run with the CONFIG_STRICT_KERNEL_RWX
+option turned on, else you need to turn off this option.
 
 Next you should choose one of more I/O drivers to interconnect debugging
 host and debugged target. Early boot debugging requires a KGDB I/O
@@ -50,7 +50,7 @@ section that describes the parameter "kgdboc".
 
 Here is an example set of .config symbols to enable or disable for kgdb:
 
--  # CONFIG_DEBUG_RODATA is not set
+-  # CONFIG_STRICT_KERNEL_RWX is not set
 
 -  CONFIG_FRAME_POINTER=y
 
@@ -85,7 +85,7 @@ option only works with kdb.
 
 Here is an example set of .config symbols to enable/disable kdb:
 
--  # CONFIG_DEBUG_RODATA is not set
+-  # CONFIG_STRICT_KERNEL_RWX is not set
 
 -  CONFIG_FRAME_POINTER=y
 
