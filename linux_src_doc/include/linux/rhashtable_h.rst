@@ -19,6 +19,7 @@ Definition
 
     struct bucket_table {
         unsigned int size;
+        unsigned int nest;
         unsigned int rehash;
         u32 hash_rnd;
         unsigned int locks_mask;
@@ -36,6 +37,9 @@ Members
 
 size
     Number of hash buckets
+
+nest
+    Number of bits of first-level nested table.
 
 rehash
     Current bucket being rehashed
@@ -110,17 +114,15 @@ Definition
 .. code-block:: c
 
     struct rhashtable_params {
-        size_t nelem_hint;
-        size_t key_len;
-        size_t key_offset;
-        size_t head_offset;
-        unsigned int insecure_max_entries;
+        u16 nelem_hint;
+        u16 key_len;
+        u16 key_offset;
+        u16 head_offset;
         unsigned int max_size;
-        unsigned int min_size;
-        u32 nulls_base;
-        bool insecure_elasticity;
+        u16 min_size;
         bool automatic_shrinking;
-        size_t locks_mul;
+        u8 locks_mul;
+        u32 nulls_base;
         rht_hashfn_t hashfn;
         rht_obj_hashfn_t obj_hashfn;
         rht_obj_cmpfn_t obj_cmpfn;
@@ -143,26 +145,20 @@ key_offset
 head_offset
     Offset of rhash_head in struct to be hashed
 
-insecure_max_entries
-    Maximum number of entries (may be exceeded)
-
 max_size
     Maximum size while expanding
 
 min_size
     Minimum size while shrinking
 
-nulls_base
-    Base value to generate nulls marker
-
-insecure_elasticity
-    Set to true to disable chain length checks
-
 automatic_shrinking
     Enable automatic shrinking of tables
 
 locks_mul
     Number of bucket locks to allocate per cpu (default: 128)
+
+nulls_base
+    Base value to generate nulls marker
 
 hashfn
     Hash function (default: jhash2 if !(key_len % 4), or jhash)
@@ -193,8 +189,8 @@ Definition
         struct bucket_table __rcu *tbl;
         atomic_t nelems;
         unsigned int key_len;
-        unsigned int elasticity;
         struct rhashtable_params p;
+        unsigned int max_elems;
         bool rhlist;
         struct work_struct run_work;
         struct mutex mutex;
@@ -215,11 +211,11 @@ nelems
 key_len
     Key length for hashfn
 
-elasticity
-    Maximum chain length before rehash
-
 p
     Configuration parameters
+
+max_elems
+    Maximum number of elements in table
 
 rhlist
     True if this is an rhltable
@@ -935,6 +931,33 @@ It is safe to call this function from atomic context.
 Will trigger an automatic deferred table resizing if the size grows
 beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
 to \ :c:func:`rhashtable_init`\ .
+
+.. _`rhashtable_lookup_get_insert_fast`:
+
+rhashtable_lookup_get_insert_fast
+=================================
+
+.. c:function:: void *rhashtable_lookup_get_insert_fast(struct rhashtable *ht, struct rhash_head *obj, const struct rhashtable_params params)
+
+    lookup and insert object into hash table
+
+    :param struct rhashtable \*ht:
+        hash table
+
+    :param struct rhash_head \*obj:
+        pointer to hash head inside object
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhashtable_lookup_get_insert_fast.description`:
+
+Description
+-----------
+
+Just like \ :c:func:`rhashtable_lookup_insert_fast`\ , but this function returns the
+object if it exists, NULL if it did not and the insertion was successful,
+and an ERR_PTR otherwise.
 
 .. _`rhashtable_lookup_insert_key`:
 

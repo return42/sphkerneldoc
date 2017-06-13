@@ -32,19 +32,23 @@ ovs_nla_get_match
 ovs_nla_get_flow_metadata
 =========================
 
-.. c:function:: int ovs_nla_get_flow_metadata(struct net *net, const struct nlattr *attr, struct sw_flow_key *key, bool log)
+.. c:function:: int ovs_nla_get_flow_metadata(struct net *net, const struct nlattr  *a[OVS_KEY_ATTR_MAX + 1], u64 attrs, struct sw_flow_key *key, bool log)
 
     parses Netlink attributes into a flow key.
 
     :param struct net \*net:
-        *undescribed*
+        Network namespace.
 
-    :param const struct nlattr \*attr:
-        Netlink attribute holding nested \ ``OVS_KEY_ATTR``\ \_\* Netlink attribute
-        sequence.
+    :param const struct nlattr  \*a:
+        Array of netlink attributes holding parsed \ ``OVS_KEY_ATTR``\ \_\* Netlink
+        attributes.
+
+    :param u64 attrs:
+        Bit mask for the netlink attributes included in \ ``a``\ .
 
     :param struct sw_flow_key \*key:
-        Receives extracted in_port, priority, tun_key and skb_mark.
+        Receives extracted in_port, priority, tun_key, skb_mark and conntrack
+        metadata.
 
     :param bool log:
         Boolean to allow kernel error logging.  Normally true, but when
@@ -60,6 +64,8 @@ This parses a series of Netlink attributes that form a flow key, which must
 take the same form accepted by \ :c:func:`flow_from_nlattrs`\ , but only enough of it to
 get the metadata, that is, the parts of the flow key that cannot be
 extracted from the packet itself.
+
+This must be called before the packet key fields are filled in 'key'.
 
 .. This file was automatic generated / don't edit.
 

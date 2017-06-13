@@ -435,36 +435,6 @@ This function always returns success, this is nessary since
 it is called via a function pointer that could call other
 functions that could return an error.
 
-.. _`ixgbe_get_phy_firmware_version_tnx`:
-
-ixgbe_get_phy_firmware_version_tnx
-==================================
-
-.. c:function:: s32 ixgbe_get_phy_firmware_version_tnx(struct ixgbe_hw *hw, u16 *firmware_version)
-
-    Gets the PHY Firmware Version
-
-    :param struct ixgbe_hw \*hw:
-        pointer to hardware structure
-
-    :param u16 \*firmware_version:
-        pointer to the PHY Firmware Version
-
-.. _`ixgbe_get_phy_firmware_version_generic`:
-
-ixgbe_get_phy_firmware_version_generic
-======================================
-
-.. c:function:: s32 ixgbe_get_phy_firmware_version_generic(struct ixgbe_hw *hw, u16 *firmware_version)
-
-    Gets the PHY Firmware Version
-
-    :param struct ixgbe_hw \*hw:
-        pointer to hardware structure
-
-    :param u16 \*firmware_version:
-        pointer to the PHY Firmware Version
-
 .. _`ixgbe_reset_phy_nl`:
 
 ixgbe_reset_phy_nl

@@ -447,13 +447,7 @@ copied but only a referenced will be made. The struct usb_gadget_strings
 array may contain multiple languages and should be NULL terminated.
 The ->language pointer of each struct usb_gadget_strings has to contain the
 same amount of entries.
-
-.. _`usb_gstrings_attach.for-instance`:
-
-For instance
-------------
-
-sp[0] is en-US, sp[1] is es-ES. It is expected that the first
+For instance: sp[0] is en-US, sp[1] is es-ES. It is expected that the first
 usb_string entry of es-ES contains the translation of the first usb_string
 entry of en-US. Therefore both entries become the same id assign.
 

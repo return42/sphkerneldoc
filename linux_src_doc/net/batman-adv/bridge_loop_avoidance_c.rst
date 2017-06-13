@@ -1181,5 +1181,38 @@ Return
 
 message length.
 
+.. _`batadv_bla_check_claim`:
+
+batadv_bla_check_claim
+======================
+
+.. c:function:: bool batadv_bla_check_claim(struct batadv_priv *bat_priv, u8 *addr, unsigned short vid)
+
+    check if address is claimed
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param u8 \*addr:
+        mac address of which the claim status is checked
+
+    :param unsigned short vid:
+        the VLAN ID
+
+.. _`batadv_bla_check_claim.description`:
+
+Description
+-----------
+
+addr is checked if this address is claimed by the local device itself.
+
+.. _`batadv_bla_check_claim.return`:
+
+Return
+------
+
+true if bla is disabled or the mac is claimed by the device,
+false if the device addr is already claimed by another gateway
+
 .. This file was automatic generated / don't edit.
 

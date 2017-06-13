@@ -146,12 +146,9 @@ MAC_address
 tveeprom_hauppauge_analog
 =========================
 
-.. c:function:: void tveeprom_hauppauge_analog(struct i2c_client *c, struct tveeprom *tvee, unsigned char *eeprom_data)
+.. c:function:: void tveeprom_hauppauge_analog(struct tveeprom *tvee, unsigned char *eeprom_data)
 
     Fill struct tveeprom using the contents of the eeprom previously filled at \ ``eeprom_data``\  field.
-
-    :param struct i2c_client \*c:
-        I2C client struct
 
     :param struct tveeprom \*tvee:
         Struct to where the eeprom parsed data will be filled;

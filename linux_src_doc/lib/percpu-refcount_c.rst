@@ -92,6 +92,27 @@ This function may block if \ ``ref``\  is in the process of switching to atomic
 mode.  If the caller ensures that \ ``ref``\  is not in the process of
 switching to atomic mode, this function can be called from any context.
 
+.. _`percpu_ref_switch_to_atomic_sync`:
+
+percpu_ref_switch_to_atomic_sync
+================================
+
+.. c:function:: void percpu_ref_switch_to_atomic_sync(struct percpu_ref *ref)
+
+    switch a percpu_ref to atomic mode
+
+    :param struct percpu_ref \*ref:
+        percpu_ref to switch to atomic mode
+
+.. _`percpu_ref_switch_to_atomic_sync.description`:
+
+Description
+-----------
+
+Schedule switching the ref to atomic mode, and wait for the
+switch to complete.  Caller must ensure that no other thread
+will switch back to percpu mode.
+
 .. _`percpu_ref_switch_to_percpu`:
 
 percpu_ref_switch_to_percpu

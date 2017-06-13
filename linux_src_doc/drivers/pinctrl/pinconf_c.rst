@@ -36,7 +36,7 @@ pinconf_dbg_config_write
         "config_pin" or "config_group", alternatives like config_mux are not
         supported yet.
         <devicename> <state> <name> are values that should match the pinctrl-maps
-        <newvalue> reflects the new config and is driver dependant
+        <newvalue> reflects the new config and is driver dependent
 
     :param size_t count:
         *undescribed*

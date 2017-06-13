@@ -168,5 +168,61 @@ regulatory_indoor_allowed
     :param  void:
         no arguments
 
+.. _`regulatory_pre_cac_allowed`:
+
+regulatory_pre_cac_allowed
+==========================
+
+.. c:function:: bool regulatory_pre_cac_allowed(struct wiphy *wiphy)
+
+    if pre-CAC allowed in the current dfs domain
+
+    :param struct wiphy \*wiphy:
+        wiphy for which pre-CAC capability is checked.
+        Pre-CAC is allowed only in ETSI domain.
+
+.. _`regulatory_propagate_dfs_state`:
+
+regulatory_propagate_dfs_state
+==============================
+
+.. c:function:: void regulatory_propagate_dfs_state(struct wiphy *wiphy, struct cfg80211_chan_def *chandef, enum nl80211_dfs_state dfs_state, enum nl80211_radar_event event)
+
+    Propagate DFS channel state to other wiphys \ ``wiphy``\  - wiphy on which radar is detected and the event will be propagated to other available wiphys having the same DFS domain \ ``chandef``\  - Channel definition of radar detected channel \ ``dfs_state``\  - DFS channel state to be set \ ``event``\  - Type of radar event which triggered this DFS state change
+
+    :param struct wiphy \*wiphy:
+        *undescribed*
+
+    :param struct cfg80211_chan_def \*chandef:
+        *undescribed*
+
+    :param enum nl80211_dfs_state dfs_state:
+        *undescribed*
+
+    :param enum nl80211_radar_event event:
+        *undescribed*
+
+.. _`regulatory_propagate_dfs_state.description`:
+
+Description
+-----------
+
+This function should be called with rtnl lock held.
+
+.. _`reg_dfs_domain_same`:
+
+reg_dfs_domain_same
+===================
+
+.. c:function:: bool reg_dfs_domain_same(struct wiphy *wiphy1, struct wiphy *wiphy2)
+
+    Checks if both wiphy have same DFS domain configured \ ``wiphy1``\  - wiphy it's dfs_region to be checked against that of wiphy2 \ ``wiphy2``\  - wiphy it's dfs_region to be checked against that of wiphy1
+
+    :param struct wiphy \*wiphy1:
+        *undescribed*
+
+    :param struct wiphy \*wiphy2:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

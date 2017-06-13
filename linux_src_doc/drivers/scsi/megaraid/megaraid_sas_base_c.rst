@@ -748,6 +748,21 @@ Description
 Sets the FW busy flag and reduces the host->can_queue if the
 cmd has not been completed within the timeout period.
 
+.. _`megasas_dump_frame`:
+
+megasas_dump_frame
+==================
+
+.. c:function:: void megasas_dump_frame(void *mpi_request, int sz)
+
+    This function will dump MPT/MFI frame
+
+    :param void \*mpi_request:
+        *undescribed*
+
+    :param int sz:
+        *undescribed*
+
 .. _`megasas_reset_bus_host`:
 
 megasas_reset_bus_host

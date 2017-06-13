@@ -1,12 +1,98 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/iio/frequency/ad9832.c
 
+.. _`ad9832_state`:
+
+struct ad9832_state
+===================
+
+.. c:type:: struct ad9832_state
+
+    driver instance specific data
+
+.. _`ad9832_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad9832_state {
+        struct spi_device *spi;
+        struct regulator *avdd;
+        struct regulator *dvdd;
+        unsigned long mclk;
+        unsigned short ctrl_fp;
+        unsigned short ctrl_ss;
+        unsigned short ctrl_src;
+        struct spi_transfer xfer;
+        struct spi_message msg;
+        struct spi_transfer freq_xfer[4];
+        struct spi_message freq_msg;
+        struct spi_transfer phase_xfer[2];
+        struct spi_message phase_msg;
+        struct mutex lock;
+        union {unnamed_union};
+    }
+
+.. _`ad9832_state.members`:
+
+Members
+-------
+
+spi
+    spi_device
+
+avdd
+    supply regulator for the analog section
+
+dvdd
+    supply regulator for the digital section
+
+mclk
+    external master clock
+
+ctrl_fp
+    cached frequency/phase control word
+
+ctrl_ss
+    cached sync/selsrc control word
+
+ctrl_src
+    cached sleep/reset/clr word
+
+xfer
+    default spi transfer
+
+msg
+    default spi message
+
+freq_xfer
+    tuning word spi transfer
+
+freq_msg
+    tuning word spi message
+
+phase_xfer
+    tuning word spi transfer
+
+phase_msg
+    tuning word spi message
+    \ ``lock``\                 protect sensor state
+
+lock
+    *undescribed*
+
+{unnamed_union}
+    anonymous
+
+
 .. _`iio_dev_attr_freq`:
 
 IIO_DEV_ATTR_FREQ
 =================
 
-.. c:function::  IIO_DEV_ATTR_FREQ( 0,  0,  S_IWUSR,  NULL,  ad9832_write,  AD9832_FREQ0HM)
+.. c:function::  IIO_DEV_ATTR_FREQ( 0,  0,  0200,  NULL,  ad9832_write,  AD9832_FREQ0HM)
 
     :param  0:
         *undescribed*
@@ -14,7 +100,7 @@ IIO_DEV_ATTR_FREQ
     :param  0:
         *undescribed*
 
-    :param  S_IWUSR:
+    :param  0200:
         *undescribed*
 
     :param  NULL:

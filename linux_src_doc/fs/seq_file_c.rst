@@ -21,14 +21,14 @@ seq_open
 Description
 -----------
 
-seq_open() sets \ ``file``\ , associating it with a sequence described
-by \ ``op``\ .  \ ``op``\ ->start() sets the iterator up and returns the first
-element of sequence. \ ``op``\ ->stop() shuts it down.  \ ``op``\ ->next()
-returns the next element of sequence.  \ ``op``\ ->show() prints element
-into the buffer.  In case of error ->start() and ->next() return
-ERR_PTR(error).  In the end of sequence they return \ ``NULL``\ . ->show()
-returns 0 in case of success and negative number in case of error.
-Returning SEQ_SKIP means "discard this element and move on".
+     \ :c:func:`seq_open`\  sets \ ``file``\ , associating it with a sequence described
+     by \ ``op``\ .  \ ``op``\ ->start() sets the iterator up and returns the first
+     element of sequence. \ ``op``\ ->stop() shuts it down.  \ ``op``\ ->next()
+     returns the next element of sequence.  \ ``op``\ ->show() prints element
+     into the buffer.  In case of error ->start() and ->next() return
+     ERR_PTR(error).  In the end of sequence they return \ ``NULL``\ . ->show()
+     returns 0 in case of success and negative number in case of error.
+     Returning SEQ_SKIP means "discard this element and move on".
 
 .. _`seq_open.note`:
 
@@ -36,7 +36,7 @@ Note
 ----
 
 seq_open() will allocate a struct seq_file and store its
-pointer in \ ``file``\ ->private_data. This pointer should not be modified.
+     pointer in \ ``file``\ ->private_data. This pointer should not be modified.
 
 .. _`seq_read`:
 
@@ -64,7 +64,7 @@ seq_read
 Description
 -----------
 
-Ready-made ->f_op->read()
+     Ready-made ->f_op->read()
 
 .. _`seq_lseek`:
 
@@ -89,7 +89,7 @@ seq_lseek
 Description
 -----------
 
-Ready-made ->f_op->llseek()
+     Ready-made ->f_op->llseek()
 
 .. _`seq_release`:
 
@@ -111,8 +111,8 @@ seq_release
 Description
 -----------
 
-Frees the structures associated with sequential file; can be used
-as ->f_op->release() if you don't have private data to destroy.
+     Frees the structures associated with sequential file; can be used
+     as ->f_op->release() if you don't have private data to destroy.
 
 .. _`seq_escape`:
 
@@ -137,9 +137,9 @@ seq_escape
 Description
 -----------
 
-Puts string into buffer, replacing each occurrence of character from
-\ ``esc``\  with usual octal escape.
-Use \ :c:func:`seq_has_overflowed`\  to check for errors.
+     Puts string into buffer, replacing each occurrence of character from
+     \ ``esc``\  with usual octal escape.
+     Use \ :c:func:`seq_has_overflowed`\  to check for errors.
 
 .. _`mangle_path`:
 
@@ -164,10 +164,10 @@ mangle_path
 Description
 -----------
 
-Copy the path from \ ``p``\  to \ ``s``\ , replacing each occurrence of character from
-\ ``esc``\  with usual octal escape.
-Returns pointer past last written character in \ ``s``\ , or NULL in case of
-failure.
+     Copy the path from \ ``p``\  to \ ``s``\ , replacing each occurrence of character from
+     \ ``esc``\  with usual octal escape.
+     Returns pointer past last written character in \ ``s``\ , or NULL in case of
+     failure.
 
 .. _`seq_path`:
 
@@ -353,7 +353,7 @@ Description
 Called at seq_file->op->start().
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`seq_hlist_start_head_rcu`:
@@ -380,7 +380,7 @@ Called at seq_file->op->start(). Call this function if you want to
 print a header at the top of the output.
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`seq_hlist_next_rcu`:
@@ -409,7 +409,7 @@ Description
 Called at seq_file->op->next().
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`seq_hlist_start_percpu`:

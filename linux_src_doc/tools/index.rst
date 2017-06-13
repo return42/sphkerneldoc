@@ -13,6 +13,7 @@ tools
     include/index
     lib/index
     objtool/index
+    pci/index
     perf/index
     power/index
     testing/index

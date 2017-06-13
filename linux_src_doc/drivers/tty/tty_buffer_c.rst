@@ -301,14 +301,14 @@ guarantee the buffer is a DMA target!
 tty_ldisc_receive_buf
 =====================
 
-.. c:function:: int tty_ldisc_receive_buf(struct tty_ldisc *ld, unsigned char *p, char *f, int count)
+.. c:function:: int tty_ldisc_receive_buf(struct tty_ldisc *ld, const unsigned char *p, char *f, int count)
 
     forward data to line discipline
 
     :param struct tty_ldisc \*ld:
         line discipline to process input
 
-    :param unsigned char \*p:
+    :param const unsigned char \*p:
         char buffer
 
     :param char \*f:

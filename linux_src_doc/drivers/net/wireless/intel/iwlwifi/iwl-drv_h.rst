@@ -6,15 +6,12 @@
 iwl_drv_start
 =============
 
-.. c:function:: struct iwl_drv *iwl_drv_start(struct iwl_trans *trans, const struct iwl_cfg *cfg)
+.. c:function:: struct iwl_drv *iwl_drv_start(struct iwl_trans *trans)
 
     start the drv
 
     :param struct iwl_trans \*trans:
         *undescribed*
-
-    :param const struct iwl_cfg \*cfg:
-        device specific constants / virtual functions
 
 .. _`iwl_drv_start.starts-the-driver`:
 

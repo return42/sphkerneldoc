@@ -24,14 +24,14 @@ Description
 This implements the state changes for the wimax devices. It will
 
 - verify that the state transition is legal (for now it'll just
-print a warning if not) according to the table in
-linux/wimax.h's documentation for 'enum wimax_st'.
+  print a warning if not) according to the table in
+  linux/wimax.h's documentation for 'enum wimax_st'.
 
 - perform the actions needed for leaving the current state and
-whichever are needed for entering the new state.
+  whichever are needed for entering the new state.
 
 - issue a report to user space indicating the new state (and an
-optional payload with information about the new state).
+  optional payload with information about the new state).
 
 .. _`wimax_state_change.note`:
 
@@ -110,7 +110,7 @@ Note that the parts that will allow interaction with user space are
 setup at the very end, when the rest is in place, as once that
 happens, the driver might get user space control requests via
 netlink or from debugfs that might translate into calls into
-wimax_dev->op\_\*().
+wimax_dev->op_*().
 
 .. _`wimax_dev_rm`:
 
@@ -139,7 +139,7 @@ control requests (via netlink or debugfs) and thus to wimax_dev->ops.
 
 Reentrancy control is ensured by setting the state to
 \ ``__WIMAX_ST_QUIESCING``\ . rfkill operations coming through
-wimax\_\*rfkill\*() will be stopped by the quiescing state; ops coming
+wimax_*rfkill*() will be stopped by the quiescing state; ops coming
 from the rfkill subsystem will be stopped by the support being
 removed by \ :c:func:`wimax_rfkill_rm`\ .
 

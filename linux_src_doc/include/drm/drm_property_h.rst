@@ -32,7 +32,7 @@ value
     numeric property value for this enum entry
 
 head
-    list of enum values, linked to enum_list in \ :c:type:`struct drm_property <drm_property>`\ 
+    list of enum values, linked to \ :c:type:`drm_property.enum_list <drm_property>`\ 
 
 name
     symbolic name for the enum
@@ -240,11 +240,11 @@ dev
     DRM device
 
 head_global
-    entry on the global blob list in \ :c:type:`struct drm_mode_config <drm_mode_config>`\ 
-    property_blob_list.
+    entry on the global blob list in
+    \ :c:type:`drm_mode_config.property_blob_list <drm_mode_config>`\ .
 
 head_file
-    entry on the per-file blob list in \ :c:type:`struct drm_file <drm_file>`\  blobs list.
+    entry on the per-file blob list in \ :c:type:`drm_file.blobs <drm_file>`\  list.
 
 length
     size of the blob in bytes, invariant over the lifetime of the object
@@ -260,9 +260,8 @@ Description
 Blobs are used to store bigger values than what fits directly into the 64
 bits available for a \ :c:type:`struct drm_property <drm_property>`\ .
 
-Blobs are reference counted using \ :c:func:`drm_property_reference_blob`\  and
-\ :c:func:`drm_property_unreference_blob`\ . They are created using
-\ :c:func:`drm_property_create_blob`\ .
+Blobs are reference counted using \ :c:func:`drm_property_blob_get`\  and
+\ :c:func:`drm_property_blob_put`\ . They are created using \ :c:func:`drm_property_create_blob`\ .
 
 .. _`drm_property_type_is`:
 
@@ -286,6 +285,46 @@ Description
 
 This is a helper function becauase the uapi encoding of property types is
 a bit special for historical reasons.
+
+.. _`drm_property_reference_blob`:
+
+drm_property_reference_blob
+===========================
+
+.. c:function:: struct drm_property_blob *drm_property_reference_blob(struct drm_property_blob *blob)
+
+    acquire a blob property reference
+
+    :param struct drm_property_blob \*blob:
+        DRM blob property
+
+.. _`drm_property_reference_blob.description`:
+
+Description
+-----------
+
+This is a compatibility alias for \ :c:func:`drm_property_blob_get`\  and should not be
+used by new code.
+
+.. _`drm_property_unreference_blob`:
+
+drm_property_unreference_blob
+=============================
+
+.. c:function:: void drm_property_unreference_blob(struct drm_property_blob *blob)
+
+    release a blob property reference
+
+    :param struct drm_property_blob \*blob:
+        DRM blob property
+
+.. _`drm_property_unreference_blob.description`:
+
+Description
+-----------
+
+This is a compatibility alias for \ :c:func:`drm_property_blob_put`\  and should not be
+used by new code.
 
 .. _`drm_property_find`:
 

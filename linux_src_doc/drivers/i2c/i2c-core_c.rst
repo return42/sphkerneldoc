@@ -44,6 +44,45 @@ devices connected to this bus and use the speed of slowest device.
 
 Returns the speed in Hz or zero
 
+.. _`i2c_acpi_new_device`:
+
+i2c_acpi_new_device
+===================
+
+.. c:function:: struct i2c_client *i2c_acpi_new_device(struct device *dev, int index, struct i2c_board_info *info)
+
+    Create i2c-client for the Nth I2cSerialBus resource
+
+    :param struct device \*dev:
+        Device owning the ACPI resources to get the client from
+
+    :param int index:
+        Index of ACPI resource to get
+
+    :param struct i2c_board_info \*info:
+        describes the I2C device; note this is modified (addr gets set)
+
+.. _`i2c_acpi_new_device.context`:
+
+Context
+-------
+
+can sleep
+
+.. _`i2c_acpi_new_device.description`:
+
+Description
+-----------
+
+By default the i2c subsys creates an i2c-client for the first I2cSerialBus
+resource of an acpi_device, but some acpi_devices have multiple I2cSerialBus
+resources, in that case this function can be used to create an i2c-client
+for other I2cSerialBus resources in the Current Resource Settings table.
+
+Also see i2c_new_device, which this function calls to create the i2c-client.
+
+Returns a pointer to the new i2c-client, or NULL if the adapter is not found.
+
 .. _`i2c_verify_client`:
 
 i2c_verify_client
@@ -912,6 +951,31 @@ must be mapped to a linear region, so that a block read will have the same
 effect as a byte read. Before using this function you must double-check
 if the I2C slave does support exchanging a block transfer with a byte
 transfer.
+
+.. _`i2c_detect_slave_mode`:
+
+i2c_detect_slave_mode
+=====================
+
+.. c:function:: bool i2c_detect_slave_mode(struct device *dev)
+
+    detect operation mode
+
+    :param struct device \*dev:
+        The device owning the bus
+
+.. _`i2c_detect_slave_mode.description`:
+
+Description
+-----------
+
+This checks the device nodes for an I2C slave by checking the address
+used in the reg property. If the address match the I2C_OWN_SLAVE_ADDRESS
+flag this means the device is configured to act as a I2C slave and it will
+be listening at that address.
+
+Returns true if an I2C own slave address is detected, otherwise returns
+false.
 
 .. This file was automatic generated / don't edit.
 

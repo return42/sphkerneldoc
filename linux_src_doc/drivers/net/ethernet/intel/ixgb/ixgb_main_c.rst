@@ -401,26 +401,6 @@ ixgb_tx_timeout
     :param struct net_device \*netdev:
         network interface device structure
 
-.. _`ixgb_get_stats`:
-
-ixgb_get_stats
-==============
-
-.. c:function:: struct net_device_stats *ixgb_get_stats(struct net_device *netdev)
-
-    Get System Network Statistics
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-.. _`ixgb_get_stats.description`:
-
-Description
------------
-
-Returns the address of the device statistics structure.
-The statistics are actually updated from the timer callback.
-
 .. _`ixgb_change_mtu`:
 
 ixgb_change_mtu

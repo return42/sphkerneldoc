@@ -1,0 +1,57 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/cm3605.c
+
+.. _`cm3605`:
+
+struct cm3605
+=============
+
+.. c:type:: struct cm3605
+
+    CM3605 state
+
+.. _`cm3605.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cm3605 {
+        struct device *dev;
+        struct regulator *vdd;
+        struct gpio_desc *aset;
+        struct iio_channel *aout;
+        s32 als_max;
+        enum iio_event_direction dir;
+        struct led_trigger *led;
+    }
+
+.. _`cm3605.members`:
+
+Members
+-------
+
+dev
+    pointer to parent device
+
+vdd
+    regulator controlling VDD
+
+aset
+    sleep enable GPIO, high = sleep
+
+aout
+    IIO ADC channel to convert the AOUT signal
+
+als_max
+    maximum LUX detection (depends on RSET)
+
+dir
+    proximity direction: start as FALLING
+
+led
+    trigger for the infrared LED used by the proximity sensor
+
+.. This file was automatic generated / don't edit.
+

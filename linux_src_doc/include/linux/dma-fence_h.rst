@@ -27,7 +27,7 @@ Definition
         unsigned seqno;
         unsigned long flags;
         ktime_t timestamp;
-        int status;
+        int error;
     }
 
 .. _`dma_fence.members`:
@@ -64,7 +64,7 @@ flags
 timestamp
     Timestamp when the fence was signaled.
 
-status
+error
     Optional, only valid if < 0, must be set before calling
     dma_fence_signal, indicates that the fence has completed with an error.
 
@@ -213,7 +213,7 @@ A return value of false indicates the fence already passed,
 or some failure occurred that made it impossible to enable
 signaling. True indicates successful enabling.
 
-fence->status may be set in enable_signaling, but only when false is
+fence->error may be set in enable_signaling, but only when false is
 returned.
 
 Calling dma_fence_signal before enable_signaling is called allows
@@ -229,7 +229,7 @@ the second time will be a noop since it was already signaled.
 Notes on signaled
 -----------------
 
-May set fence->status if returning true.
+May set fence->error if returning true.
 
 .. _`dma_fence_ops.notes-on-wait`:
 
@@ -324,7 +324,7 @@ Description
 
 Function returns NULL if no refcount could be obtained, or the fence.
 This function handles acquiring a reference to a fence that may be
-reallocated within the RCU grace period (such as with SLAB_DESTROY_BY_RCU),
+reallocated within the RCU grace period (such as with SLAB_TYPESAFE_BY_RCU),
 so long as the caller is using RCU on the pointer to the fence.
 
 An alternative mechanism is to employ a seqlock to protect a bunch of
@@ -431,6 +431,59 @@ Description
 Returns NULL if both fences are signaled, otherwise the fence that would be
 signaled last. Both fences must be from the same context, since a seqno is
 not re-used across contexts.
+
+.. _`dma_fence_get_status_locked`:
+
+dma_fence_get_status_locked
+===========================
+
+.. c:function:: int dma_fence_get_status_locked(struct dma_fence *fence)
+
+    returns the status upon completion
+
+    :param struct dma_fence \*fence:
+        [in] the dma_fence to query
+
+.. _`dma_fence_get_status_locked.description`:
+
+Description
+-----------
+
+Drivers can supply an optional error status condition before they signal
+the fence (to indicate whether the fence was completed due to an error
+rather than success). The value of the status condition is only valid
+if the fence has been signaled, \ :c:func:`dma_fence_get_status_locked`\  first checks
+the signal state before reporting the error status.
+
+Returns 0 if the fence has not yet been signaled, 1 if the fence has
+been signaled without an error condition, or a negative error code
+if the fence has been completed in err.
+
+.. _`dma_fence_set_error`:
+
+dma_fence_set_error
+===================
+
+.. c:function:: void dma_fence_set_error(struct dma_fence *fence, int error)
+
+    flag an error condition on the fence
+
+    :param struct dma_fence \*fence:
+        [in] the dma_fence
+
+    :param int error:
+        [in] the error to store
+
+.. _`dma_fence_set_error.description`:
+
+Description
+-----------
+
+Drivers can supply an optional error status condition before they signal
+the fence, to indicate that the fence was completed due to an error
+rather than success. This must be set before signaling (so that the value
+is visible before any waiters on the signal callback are woken). This
+helper exists to help catching erroneous setting of #dma_fence.error.
 
 .. _`dma_fence_wait`:
 

@@ -46,6 +46,25 @@ Description
 
 This function is used to free the HW resource owned by a vGPU.
 
+.. _`intel_vgpu_reset_resource`:
+
+intel_vgpu_reset_resource
+=========================
+
+.. c:function:: void intel_vgpu_reset_resource(struct intel_vgpu *vgpu)
+
+    reset resource state owned by a vGPU
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_reset_resource.description`:
+
+Description
+-----------
+
+This function is used to reset resource state owned by a vGPU.
+
 .. _`intel_vgpu_alloc_resource`:
 
 intel_vgpu_alloc_resource

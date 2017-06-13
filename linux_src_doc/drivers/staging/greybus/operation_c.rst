@@ -6,7 +6,7 @@
 gb_operation_request_send
 =========================
 
-.. c:function:: int gb_operation_request_send(struct gb_operation *operation, gb_operation_callback callback, gfp_t gfp)
+.. c:function:: int gb_operation_request_send(struct gb_operation *operation, gb_operation_callback callback, unsigned int timeout, gfp_t gfp)
 
     send an operation request message
 
@@ -15,6 +15,9 @@ gb_operation_request_send
 
     :param gb_operation_callback callback:
         the operation completion callback
+
+    :param unsigned int timeout:
+        operation timeout in milliseconds, or zero for no timeout
 
     :param gfp_t gfp:
         the memory flags to use for any allocations

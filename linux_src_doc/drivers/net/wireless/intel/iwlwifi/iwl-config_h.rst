@@ -92,6 +92,7 @@ Definition
     struct iwl_cfg {
         const char *name;
         const char *fw_name_pre;
+        const char *fw_name_pre_next_step;
         const struct iwl_base_params *base_params;
         const struct iwl_ht_params *ht_params;
         const struct iwl_eeprom_params *eeprom_params;
@@ -126,6 +127,8 @@ Definition
         u16 rf_id:1:1:1:1:1:1:1:1:1:1:1:1;
         u16 integrated:1:1:1:1:1:1:1:1:1:1:1:1:1;
         u16 use_tfh:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 gen2:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 cdb:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         u8 non_shared_ant;
@@ -150,6 +153,10 @@ fw_name_pre
     Firmware filename prefix. The api version and extension
     (.ucode) will be added to filename before loading from disk. The
     filename is constructed as fw_name_pre<api>.ucode.
+
+fw_name_pre_next_step
+    same as \ ``fw_name_pre``\ , only for next step
+    (if supported)
 
 base_params
     pointer to basic parameters
@@ -253,6 +260,12 @@ integrated
 
 use_tfh
     *undescribed*
+
+gen2
+    a000 and on transport operation
+
+cdb
+    CDB support
 
 valid_tx_ant
     valid transmit antenna

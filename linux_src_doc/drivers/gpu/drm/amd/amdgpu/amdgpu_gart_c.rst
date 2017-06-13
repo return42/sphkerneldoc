@@ -160,7 +160,7 @@ replaces them with the dummy page (all asics).
 amdgpu_gart_bind
 ================
 
-.. c:function:: int amdgpu_gart_bind(struct amdgpu_device *adev, uint64_t offset, int pages, struct page **pagelist, dma_addr_t *dma_addr, uint32_t flags)
+.. c:function:: int amdgpu_gart_bind(struct amdgpu_device *adev, uint64_t offset, int pages, struct page **pagelist, dma_addr_t *dma_addr, uint64_t flags)
 
     bind pages into the gart page table
 
@@ -179,7 +179,7 @@ amdgpu_gart_bind
     :param dma_addr_t \*dma_addr:
         DMA addresses of pages
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         *undescribed*
 
 .. _`amdgpu_gart_bind.description`:

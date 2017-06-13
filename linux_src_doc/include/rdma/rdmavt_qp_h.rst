@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/rdmavt_qp.h
 
+.. _`rvt_is_user_qp`:
+
+rvt_is_user_qp
+==============
+
+.. c:function:: bool rvt_is_user_qp(struct rvt_qp *qp)
+
+    return if this is user mode QP \ ``qp``\  - the target QP
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
 .. _`rvt_get_qp`:
 
 rvt_get_qp
@@ -102,7 +114,7 @@ ring index and the decrementing of s_reserved_used.
 rvt_qp_swqe_complete
 ====================
 
-.. c:function:: void rvt_qp_swqe_complete(struct rvt_qp *qp, struct rvt_swqe *wqe, enum ib_wc_status status)
+.. c:function:: void rvt_qp_swqe_complete(struct rvt_qp *qp, struct rvt_swqe *wqe, enum ib_wc_opcode opcode, enum ib_wc_status status)
 
     insert send completion \ ``qp``\  - the qp \ ``wqe``\  - the send wqe \ ``status``\  - completion status
 
@@ -110,6 +122,9 @@ rvt_qp_swqe_complete
         *undescribed*
 
     :param struct rvt_swqe \*wqe:
+        *undescribed*
+
+    :param enum ib_wc_opcode opcode:
         *undescribed*
 
     :param enum ib_wc_status status:
@@ -125,6 +140,47 @@ queue if the qp indicates it should be done.
 
 See IBTA 10.7.3.1 for info on completion
 control.
+
+.. _`rvt_compute_aeth`:
+
+rvt_compute_aeth
+================
+
+.. c:function:: __be32 rvt_compute_aeth(struct rvt_qp *qp)
+
+    compute the AETH (syndrome + MSN)
+
+    :param struct rvt_qp \*qp:
+        the queue pair to compute the AETH for
+
+.. _`rvt_compute_aeth.description`:
+
+Description
+-----------
+
+Returns the AETH.
+
+.. _`rvt_get_credit`:
+
+rvt_get_credit
+==============
+
+.. c:function:: void rvt_get_credit(struct rvt_qp *qp, u32 aeth)
+
+    flush the send work queue of a QP
+
+    :param struct rvt_qp \*qp:
+        the qp who's send work queue to flush
+
+    :param u32 aeth:
+        the Acknowledge Extended Transport Header
+
+.. _`rvt_get_credit.description`:
+
+Description
+-----------
+
+The QP s_lock should be held.
 
 .. This file was automatic generated / don't edit.
 

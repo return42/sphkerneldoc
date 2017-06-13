@@ -1,6 +1,77 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/char/tpm/tpm-interface.c
 
+.. _`tpm_transmit`:
+
+tpm_transmit
+============
+
+.. c:function:: ssize_t tpm_transmit(struct tpm_chip *chip, struct tpm_space *space, u8 *buf, size_t bufsiz, unsigned int flags)
+
+    Internal kernel interface to transmit TPM commands.
+
+    :param struct tpm_chip \*chip:
+        TPM chip to use
+
+    :param struct tpm_space \*space:
+        *undescribed*
+
+    :param u8 \*buf:
+        TPM command buffer
+
+    :param size_t bufsiz:
+        length of the TPM command buffer
+
+    :param unsigned int flags:
+        tpm transmit flags - bitmap
+
+.. _`tpm_transmit.return`:
+
+Return
+------
+
+0 when the operation is successful.
+A negative number for system errors (errno).
+
+.. _`tpm_transmit_cmd`:
+
+tpm_transmit_cmd
+================
+
+.. c:function:: ssize_t tpm_transmit_cmd(struct tpm_chip *chip, struct tpm_space *space, const void *buf, size_t bufsiz, size_t min_rsp_body_length, unsigned int flags, const char *desc)
+
+    send a tpm command to the device The function extracts tpm out header return code
+
+    :param struct tpm_chip \*chip:
+        TPM chip to use
+
+    :param struct tpm_space \*space:
+        *undescribed*
+
+    :param const void \*buf:
+        TPM command buffer
+
+    :param size_t bufsiz:
+        length of the buffer
+
+    :param size_t min_rsp_body_length:
+        minimum expected length of response body
+
+    :param unsigned int flags:
+        tpm transmit flags - bitmap
+
+    :param const char \*desc:
+        command description used in the error message
+
+.. _`tpm_transmit_cmd.return`:
+
+Return
+------
+
+0 when the operation is successful.
+A negative number for system errors (errno).
+A positive number for a TPM error.
+
 .. _`tpm_continue_selftest`:
 
 tpm_continue_selftest

@@ -39,11 +39,13 @@ appropriate X.509 certificate, or:
 
 (\*) -EBADMSG if some part of the message was invalid, or:
 
-(\*) -ENOPKG if none of the signature chains are verifiable because suitable
-crypto modules couldn't be found, or:
+(\*) 0 if no signature chains were found to be blacklisted or to contain
+unsupported crypto, or:
 
-(\*) 0 if all the signature chains that don't incur -ENOPKG can be verified
-(note that a signature chain may be of zero length), or:
+(\*) -EKEYREJECTED if a blacklisted key was encountered, or:
+
+(\*) -ENOPKG if none of the signature chains are verifiable because suitable
+crypto modules couldn't be found.
 
 .. _`pkcs7_supply_detached_data`:
 

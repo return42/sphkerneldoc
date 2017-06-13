@@ -1,34 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/rhashtable.c
 
-.. _`rhashtable_expand`:
-
-rhashtable_expand
-=================
-
-.. c:function:: int rhashtable_expand(struct rhashtable *ht)
-
-    Expand hash table while allowing concurrent lookups
-
-    :param struct rhashtable \*ht:
-        the hash table to expand
-
-.. _`rhashtable_expand.description`:
-
-Description
------------
-
-A secondary bucket array is allocated and the hash entries are migrated.
-
-This function may only be called in a context where it is safe to call
-\ :c:func:`synchronize_rcu`\ , e.g. not within a \ :c:func:`rcu_read_lock`\  section.
-
-The caller must ensure that no concurrent resizing occurs by holding
-ht->mutex.
-
-It is valid to have concurrent insertions and deletions protected by per
-bucket locks or concurrent RCU protected lookups and traversals.
-
 .. _`rhashtable_shrink`:
 
 rhashtable_shrink

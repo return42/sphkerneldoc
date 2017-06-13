@@ -204,7 +204,7 @@ dvb_ringbuffer_read_user
 
 .. c:function:: ssize_t dvb_ringbuffer_read_user(struct dvb_ringbuffer *rbuf, u8 __user *buf, size_t len)
 
-    Reads a buffer into an user pointer
+    Reads a buffer into a user pointer
 
     :param struct dvb_ringbuffer \*rbuf:
         pointer to struct dvb_ringbuffer
@@ -316,7 +316,7 @@ dvb_ringbuffer_write_user
 
 .. c:function:: ssize_t dvb_ringbuffer_write_user(struct dvb_ringbuffer *rbuf, const u8 __user *buf, size_t len)
 
-    Writes a buffer received via an user pointer
+    Writes a buffer received via a user pointer
 
     :param struct dvb_ringbuffer \*rbuf:
         pointer to struct dvb_ringbuffer

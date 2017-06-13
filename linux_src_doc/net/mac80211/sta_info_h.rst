@@ -282,8 +282,9 @@ Definition
         u16 ssn;
         u16 buf_size;
         u16 timeout;
-        bool auto_seq;
-        bool removed;
+        u8 auto_seq:1;
+        u8 removed:1:1;
+        u8 started:1:1:1;
     }
 
 .. _`tid_ampdu_rx.members`:
@@ -338,6 +339,9 @@ auto_seq
 
 removed
     this session is removed (but might have been found due to RCU)
+
+started
+    this session has started (head ssn or higher was received)
 
 .. _`tid_ampdu_rx.description`:
 
@@ -610,7 +614,7 @@ Definition
         enum nl80211_mesh_power_mode local_pm;
         enum nl80211_mesh_power_mode peer_pm;
         enum nl80211_mesh_power_mode nonpeer_pm;
-        unsigned int fail_avg;
+        struct ewma_mesh_fail_avg fail_avg;
     }
 
 .. _`mesh_sta.members`:

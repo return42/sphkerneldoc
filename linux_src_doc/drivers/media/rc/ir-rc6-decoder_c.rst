@@ -23,5 +23,36 @@ Description
 
 This function returns -EINVAL if the pulse violates the state machine
 
+.. _`ir_rc6_encode`:
+
+ir_rc6_encode
+=============
+
+.. c:function:: int ir_rc6_encode(enum rc_type protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
+
+    Encode a scancode as a stream of raw events
+
+    :param enum rc_type protocol:
+        protocol to encode
+
+    :param u32 scancode:
+        scancode to encode
+
+    :param struct ir_raw_event \*events:
+        array of raw ir events to write into
+
+    :param unsigned int max:
+        maximum size of \ ``events``\ 
+
+.. _`ir_rc6_encode.return`:
+
+Return
+------
+
+The number of events written.
+-ENOBUFS if there isn't enough space in the array to fit the
+encoding. In this case all \ ``max``\  events will have been written.
+-EINVAL if the scancode is ambiguous or invalid.
+
 .. This file was automatic generated / don't edit.
 

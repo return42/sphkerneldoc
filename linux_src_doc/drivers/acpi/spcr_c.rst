@@ -23,7 +23,7 @@ defined to parse ACPI SPCR table.  As a result of the parsing preferred
 console is registered and if \ ``earlycon``\  is true, earlycon is set up.
 
 When CONFIG_ACPI_SPCR_TABLE is defined, this function should be called
-from arch inintialization code as soon as the DT/ACPI decision is made.
+from arch initialization code as soon as the DT/ACPI decision is made.
 
 .. This file was automatic generated / don't edit.
 

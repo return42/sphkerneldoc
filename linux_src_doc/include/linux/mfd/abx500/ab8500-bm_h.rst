@@ -28,7 +28,7 @@ Members
 -------
 
 temp
-    battery pack temperature in Celcius
+    battery pack temperature in Celsius
 
 resist
     NTC resistor net total resistance
@@ -60,7 +60,7 @@ Members
 -------
 
 temp
-    battery pack temperature in Celcius
+    battery pack temperature in Celsius
 
 resist
     battery internal reistance in mOhm

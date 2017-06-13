@@ -63,10 +63,10 @@ jbd2_journal_init_dev
 Return
 ------
 
-a newly created journal_t \*
+a newly created journal_t *
 
-jbd2_journal_init_dev creates a journal which maps a fixed contiguous
-range of blocks on an arbitrary block device.
+ jbd2_journal_init_dev creates a journal which maps a fixed contiguous
+ range of blocks on an arbitrary block device.
 
 .. _`jbd2_journal_init_inode`:
 
@@ -333,7 +333,7 @@ Description
 
 Wipe out all of the contents of a journal, safely.  This will produce
 a warning if the journal contains any valid recovery information.
-Must be called between journal_init\_\*() and \ :c:func:`jbd2_journal_load`\ .
+Must be called between journal_init_*() and \ :c:func:`jbd2_journal_load`\ .
 
 If 'write' is non-zero, then we wipe out the journal on disk; otherwise
 we merely suppress recovery.
@@ -374,7 +374,7 @@ immediately and no further transaction commits will be honoured.
 
 Any dirty, journaled buffers will be written back to disk without
 hitting the journal.  Atomicity cannot be guaranteed on an aborted
-filesystem, but we \_do\_ attempt to leave as much data as possible
+filesystem, but we _do_ attempt to leave as much data as possible
 behind for fsck to use for cleanup.
 
 Any attempt to get a new transaction handle on a journal which is in

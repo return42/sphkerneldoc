@@ -54,10 +54,10 @@ efi_pstore_scan_sysfs_exit
 efi_pstore_sysfs_entry_iter
 ===========================
 
-.. c:function:: int efi_pstore_sysfs_entry_iter(void *data, struct efivar_entry **pos)
+.. c:function:: int efi_pstore_sysfs_entry_iter(struct pstore_record *record, struct efivar_entry **pos)
 
-    :param void \*data:
-        function-specific data to pass to callback
+    :param struct pstore_record \*record:
+        pstore record to pass to callback
 
     :param struct efivar_entry \*\*pos:
         entry to begin iterating from
@@ -80,30 +80,9 @@ To begin iterating from the beginning of the list \ ``pos``\  must be \ ``NULL``
 efi_pstore_read
 ===============
 
-.. c:function:: ssize_t efi_pstore_read(u64 *id, enum pstore_type_id *type, int *count, struct timespec *timespec, char **buf, bool *compressed, ssize_t *ecc_notice_size, struct pstore_info *psi)
+.. c:function:: ssize_t efi_pstore_read(struct pstore_record *record)
 
-    :param u64 \*id:
-        *undescribed*
-
-    :param enum pstore_type_id \*type:
-        *undescribed*
-
-    :param int \*count:
-        *undescribed*
-
-    :param struct timespec \*timespec:
-        *undescribed*
-
-    :param char \*\*buf:
-        *undescribed*
-
-    :param bool \*compressed:
-        *undescribed*
-
-    :param ssize_t \*ecc_notice_size:
-        *undescribed*
-
-    :param struct pstore_info \*psi:
+    :param struct pstore_record \*record:
         *undescribed*
 
 .. _`efi_pstore_read.description`:

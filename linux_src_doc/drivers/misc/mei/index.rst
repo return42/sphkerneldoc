@@ -7,7 +7,6 @@ mei
 .. toctree::
     :maxdepth: 1
 
-    amthif_c
     bus-fixup_c
     bus_c
     client_c

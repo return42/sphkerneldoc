@@ -63,6 +63,26 @@ Description
 
 This routine releases our reference to the command and frees it if possible.
 
+.. _`target_put_sess_cmd`:
+
+target_put_sess_cmd
+===================
+
+.. c:function:: int target_put_sess_cmd(struct se_cmd *se_cmd)
+
+    decrease the command reference count
+
+    :param struct se_cmd \*se_cmd:
+        command to drop a reference from
+
+.. _`target_put_sess_cmd.description`:
+
+Description
+-----------
+
+Returns 1 if and only if this \ :c:func:`target_put_sess_cmd`\  call caused the
+refcount to drop to zero. Returns zero otherwise.
+
 .. _`transport_wait_for_tasks`:
 
 transport_wait_for_tasks
@@ -70,18 +90,10 @@ transport_wait_for_tasks
 
 .. c:function:: bool transport_wait_for_tasks(struct se_cmd *cmd)
 
-    wait for completion to occur
+    set CMD_T_STOP and wait for t_transport_stop_comp
 
     :param struct se_cmd \*cmd:
-        command to wait
-
-.. _`transport_wait_for_tasks.description`:
-
-Description
------------
-
-Called from frontend fabric context to wait for storage engine
-to pause and/or release frontend generated struct se_cmd.
+        command to wait on
 
 .. This file was automatic generated / don't edit.
 

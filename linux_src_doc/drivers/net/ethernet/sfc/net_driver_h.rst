@@ -183,6 +183,7 @@ Definition
         unsigned int pkts_compl;
         unsigned int empty_read_count ____cacheline_aligned_in_smp;
         unsigned int write_count;
+        unsigned int packet_write_count;
         unsigned int old_read_count;
         unsigned int tso_bursts;
         unsigned int tso_long_headers;
@@ -272,6 +273,14 @@ write_count
     Current write pointer
     This is the number of buffers that have been added to the
     hardware ring.
+
+packet_write_count
+    Completable write pointer
+    This is the write pointer of the last packet written.
+    Normally this will equal \ ``write_count``\ , but as option descriptors
+    don't produce completion events, they won't update this.
+    Filled in iff \ ``efx``\ ->type->option_descriptors; only used for PIO.
+    Thus, this is written and used on EF10, and neither on farch.
 
 old_read_count
     The value of read_count when last checked.
@@ -602,13 +611,18 @@ Definition
     #define RPS_FLOW_ID_INVALID 0xFFFFFFFF
         u32 *rps_flow_id;
     #endif
-        unsigned n_rx_tobe_disc;
-        unsigned n_rx_ip_hdr_chksum_err;
-        unsigned n_rx_tcp_udp_chksum_err;
-        unsigned n_rx_mcast_mismatch;
-        unsigned n_rx_frm_trunc;
-        unsigned n_rx_overlength;
-        unsigned n_skbuff_leaks;
+        unsigned int n_rx_tobe_disc;
+        unsigned int n_rx_ip_hdr_chksum_err;
+        unsigned int n_rx_tcp_udp_chksum_err;
+        unsigned int n_rx_outer_ip_hdr_chksum_err;
+        unsigned int n_rx_outer_tcp_udp_chksum_err;
+        unsigned int n_rx_inner_ip_hdr_chksum_err;
+        unsigned int n_rx_inner_tcp_udp_chksum_err;
+        unsigned int n_rx_eth_crc_err;
+        unsigned int n_rx_mcast_mismatch;
+        unsigned int n_rx_frm_trunc;
+        unsigned int n_rx_overlength;
+        unsigned int n_skbuff_leaks;
         unsigned int n_rx_nodesc_trunc;
         unsigned int n_rx_merge_events;
         unsigned int n_rx_merge_packets;
@@ -689,6 +703,21 @@ n_rx_ip_hdr_chksum_err
 
 n_rx_tcp_udp_chksum_err
     Count of RX TCP and UDP checksum errors
+
+n_rx_outer_ip_hdr_chksum_err
+    *undescribed*
+
+n_rx_outer_tcp_udp_chksum_err
+    *undescribed*
+
+n_rx_inner_ip_hdr_chksum_err
+    *undescribed*
+
+n_rx_inner_tcp_udp_chksum_err
+    *undescribed*
+
+n_rx_eth_crc_err
+    *undescribed*
 
 n_rx_mcast_mismatch
     Count of unmatched multicast frames
@@ -1120,6 +1149,7 @@ Definition
         u8 rx_hash_key[40];
         u32 rx_indir_table[128];
         bool rx_scatter;
+        bool rss_active;
         bool rx_hash_udp_4tuple;
         unsigned int_error_count;
         unsigned long int_error_expire;
@@ -1362,6 +1392,9 @@ rx_indir_table
 
 rx_scatter
     Scatter mode enabled for receives
+
+rss_active
+    RSS enabled on hardware
 
 rx_hash_udp_4tuple
     UDP 4-tuple hashing enabled
@@ -1629,7 +1662,8 @@ Definition
         void (*tx_remove)(struct efx_tx_queue *tx_queue);
         void (*tx_write)(struct efx_tx_queue *tx_queue);
         unsigned int (*tx_limit_len)(struct efx_tx_queue *tx_queue,dma_addr_t dma_addr, unsigned int len);
-        int (*rx_push_rss_config)(struct efx_nic *efx, bool user,const u32 *rx_indir_table);
+        int (*rx_push_rss_config)(struct efx_nic *efx, bool user,const u32 *rx_indir_table, const u8 *key);
+        int (*rx_pull_rss_config)(struct efx_nic *efx);
         int (*rx_probe)(struct efx_rx_queue *rx_queue);
         void (*rx_init)(struct efx_rx_queue *rx_queue);
         void (*rx_remove)(struct efx_rx_queue *rx_queue);
@@ -1671,6 +1705,7 @@ Definition
         int (*sriov_configure)(struct efx_nic *efx, int num_vfs);
         int (*vlan_rx_add_vid)(struct efx_nic *efx, __be16 proto, u16 vid);
         int (*vlan_rx_kill_vid)(struct efx_nic *efx, __be16 proto, u16 vid);
+        int (*get_phys_port_id)(struct efx_nic *efx,struct netdev_phys_item_id *ppid);
         int (*sriov_init)(struct efx_nic *efx);
         void (*sriov_fini)(struct efx_nic *efx);
         bool (*sriov_wanted)(struct efx_nic *efx);
@@ -1681,13 +1716,16 @@ Definition
         int (*sriov_set_vf_spoofchk)(struct efx_nic *efx, int vf_i,bool spoofchk);
         int (*sriov_get_vf_config)(struct efx_nic *efx, int vf_i,struct ifla_vf_info *ivi);
         int (*sriov_set_vf_link_state)(struct efx_nic *efx, int vf_i,int link_state);
-        int (*sriov_get_phys_port_id)(struct efx_nic *efx,struct netdev_phys_item_id *ppid);
         int (*vswitching_probe)(struct efx_nic *efx);
         int (*vswitching_restore)(struct efx_nic *efx);
         void (*vswitching_remove)(struct efx_nic *efx);
         int (*get_mac_address)(struct efx_nic *efx, unsigned char *perm_addr);
         int (*set_mac_address)(struct efx_nic *efx);
         u32 (*tso_versions)(struct efx_nic *efx);
+        int (*udp_tnl_push_ports)(struct efx_nic *efx);
+        int (*udp_tnl_add_port)(struct efx_nic *efx, struct efx_udp_tunnel tnl);
+        bool (*udp_tnl_has_port)(struct efx_nic *efx, __be16 port);
+        int (*udp_tnl_del_port)(struct efx_nic *efx, struct efx_udp_tunnel tnl);
         int revision;
         unsigned int txd_ptr_tbl_base;
         unsigned int rxd_ptr_tbl_base;
@@ -1701,12 +1739,15 @@ Definition
         unsigned int rx_buffer_padding;
         bool can_rx_scatter;
         bool always_rx_scatter;
+        bool option_descriptors;
+        unsigned int min_interrupt_mode;
         unsigned int max_interrupt_mode;
         unsigned int timer_period_max;
         netdev_features_t offload_features;
         int mcdi_max_ver;
         unsigned int max_rx_ip_filters;
         u32 hwtstamp_filters;
+        unsigned int rx_hash_key_size;
     }
 
 .. _`efx_nic_type.members`:
@@ -1888,6 +1929,9 @@ tx_limit_len
 rx_push_rss_config
     Write RSS hash key and indirection table to the NIC
 
+rx_pull_rss_config
+    Read RSS hash key and indirection table back from the NIC
+
 rx_probe
     Allocate resources for RX queue
 
@@ -2011,6 +2055,9 @@ vlan_rx_add_vid
 vlan_rx_kill_vid
     *undescribed*
 
+get_phys_port_id
+    Get the underlying physical port id.
+
 sriov_init
     *undescribed*
 
@@ -2041,9 +2088,6 @@ sriov_get_vf_config
 sriov_set_vf_link_state
     *undescribed*
 
-sriov_get_phys_port_id
-    *undescribed*
-
 vswitching_probe
     *undescribed*
 
@@ -2062,6 +2106,18 @@ set_mac_address
 tso_versions
     Returns mask of firmware-assisted TSO versions supported.
     If \ ``NULL``\ , then device does not support any TSO version.
+
+udp_tnl_push_ports
+    Push the list of UDP tunnel ports to the NIC if required.
+
+udp_tnl_add_port
+    Add a UDP tunnel port
+
+udp_tnl_has_port
+    Check if a port has been added as UDP tunnel
+
+udp_tnl_del_port
+    Remove a UDP tunnel port
 
 revision
     Hardware architecture revision
@@ -2102,9 +2158,16 @@ can_rx_scatter
 always_rx_scatter
     NIC will always scatter packets to multiple buffers
 
+option_descriptors
+    NIC supports TX option descriptors
+
+min_interrupt_mode
+    Lowest capability interrupt mode supported
+    from \ :c:type:`enum efx_int_mode <efx_int_mode>`\ .
+
 max_interrupt_mode
     Highest capability interrupt mode supported
-    from \ :c:type:`enum efx_init_mode <efx_init_mode>`\ .
+    from \ :c:type:`enum efx_int_mode <efx_int_mode>`\ .
 
 timer_period_max
     Maximum period of interrupt timer (in ticks)
@@ -2121,6 +2184,9 @@ max_rx_ip_filters
 
 hwtstamp_filters
     Mask of hardware timestamp filter types supported
+
+rx_hash_key_size
+    *undescribed*
 
 .. _`efx_frame_pad`:
 

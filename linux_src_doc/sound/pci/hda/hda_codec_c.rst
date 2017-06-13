@@ -148,6 +148,29 @@ Parses the connection list of the widget \ ``mux``\  and checks whether the
 widget \ ``nid``\  is present.  If it is, return the connection index.
 Otherwise it returns -1.
 
+.. _`snd_hda_get_num_devices`:
+
+snd_hda_get_num_devices
+=======================
+
+.. c:function:: unsigned int snd_hda_get_num_devices(struct hda_codec *codec, hda_nid_t nid)
+
+    get DEVLIST_LEN parameter of the given widget
+
+    :param struct hda_codec \*codec:
+        the HDA codec
+
+    :param hda_nid_t nid:
+        NID of the pin to parse
+
+.. _`snd_hda_get_num_devices.description`:
+
+Description
+-----------
+
+Get the device entry number on the given widget. This is a feature of
+DP MST audio. Each pin can have several device entries in it.
+
 .. _`snd_hda_get_devices`:
 
 snd_hda_get_devices
@@ -176,6 +199,55 @@ Description
 
 Copy the device list. This info is dynamic and so not cached.
 Currently called only from hda_proc.c, so not exported.
+
+.. _`snd_hda_get_dev_select`:
+
+snd_hda_get_dev_select
+======================
+
+.. c:function:: int snd_hda_get_dev_select(struct hda_codec *codec, hda_nid_t nid)
+
+    get device entry select on the pin
+
+    :param struct hda_codec \*codec:
+        the HDA codec
+
+    :param hda_nid_t nid:
+        NID of the pin to get device entry select
+
+.. _`snd_hda_get_dev_select.description`:
+
+Description
+-----------
+
+Get the devcie entry select on the pin. Return the device entry
+id selected on the pin. Return 0 means the first device entry
+is selected or MST is not supported.
+
+.. _`snd_hda_set_dev_select`:
+
+snd_hda_set_dev_select
+======================
+
+.. c:function:: int snd_hda_set_dev_select(struct hda_codec *codec, hda_nid_t nid, int dev_id)
+
+    set device entry select on the pin
+
+    :param struct hda_codec \*codec:
+        the HDA codec
+
+    :param hda_nid_t nid:
+        NID of the pin to set device entry select
+
+    :param int dev_id:
+        device entry id to be set
+
+.. _`snd_hda_set_dev_select.description`:
+
+Description
+-----------
+
+Set the device entry select on the pin nid.
 
 .. _`snd_hda_codec_set_pincfg`:
 

@@ -180,7 +180,7 @@ trace_hrtimer_cancel
 trace_itimer_state
 ==================
 
-.. c:function:: void trace_itimer_state(int which, const struct itimerval *const value, cputime_t expires)
+.. c:function:: void trace_itimer_state(int which, const struct itimerval *const value, unsigned long long expires)
 
     called when itimer is started or canceled
 
@@ -191,7 +191,7 @@ trace_itimer_state
         the itimers value, itimer is canceled if value->it_value is
         zero, otherwise it is started
 
-    :param cputime_t expires:
+    :param unsigned long long expires:
         the itimers expiry time
 
 .. _`trace_itimer_expire`:
@@ -199,7 +199,7 @@ trace_itimer_state
 trace_itimer_expire
 ===================
 
-.. c:function:: void trace_itimer_expire(int which, struct pid *pid, cputime_t now)
+.. c:function:: void trace_itimer_expire(int which, struct pid *pid, unsigned long long now)
 
     called when itimer expires
 
@@ -209,7 +209,7 @@ trace_itimer_expire
     :param struct pid \*pid:
         pid of the process which owns the timer
 
-    :param cputime_t now:
+    :param unsigned long long now:
         current time, used to calculate the latency of itimer
 
 .. This file was automatic generated / don't edit.

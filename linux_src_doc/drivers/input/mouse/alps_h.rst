@@ -61,7 +61,6 @@ Definition
 
     struct alps_model_info {
         u8 signature[3];
-        u8 command_mode_resp;
         struct alps_protocol_info protocol_info;
     }
 
@@ -72,12 +71,6 @@ Members
 
 signature
     E7 response string to match.
-
-command_mode_resp
-    For V3/V4 touchpads, the final byte of the EC response
-    (aka command mode response) identifies the firmware minor version.  This
-    can be used to distinguish different hardware models which are not
-    uniquely identifiable through their E7 responses.
 
 protocol_info
     information about protocol used by the device.
@@ -242,6 +235,7 @@ Definition
         u16 proto_version;
         u8 byte0;
         u8 mask0;
+        u8 dev_id[3];
         u8 fw_ver[3];
         int flags;
         int x_max;

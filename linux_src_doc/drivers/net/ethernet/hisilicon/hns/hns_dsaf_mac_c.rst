@@ -37,24 +37,6 @@ hns_mac_change_vf_addr
     :param char \*addr:
         *undescribed*
 
-.. _`hns_mac_del_mac`:
-
-hns_mac_del_mac
-===============
-
-.. c:function:: int hns_mac_del_mac(struct hns_mac_cb *mac_cb, u32 vfn, char *mac)
-
-    delete mac address into dsaf table,can't delete the same address twice \ ``net_dev``\ : net device \ ``vfn``\  :   vf lan \ ``mac``\  : mac address return status
-
-    :param struct hns_mac_cb \*mac_cb:
-        *undescribed*
-
-    :param u32 vfn:
-        *undescribed*
-
-    :param char \*mac:
-        *undescribed*
-
 .. _`hns_mac_port_config_bc_en`:
 
 hns_mac_port_config_bc_en

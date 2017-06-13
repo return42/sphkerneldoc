@@ -25,7 +25,9 @@ Definition
         CIP_WRONG_DBS,
         CIP_SKIP_DBC_ZERO_CHECK,
         CIP_EMPTY_HAS_WRONG_DBC,
-        CIP_JUMBO_PAYLOAD
+        CIP_JUMBO_PAYLOAD,
+        CIP_HEADER_WITHOUT_EOH,
+        CIP_NO_HEADER
     };
 
 .. _`cip_flags.constants`:
@@ -48,8 +50,8 @@ CIP_EMPTY_WITH_TAG0
     Only for in-stream. Empty in-packets have TAG0.
 
 CIP_DBC_IS_END_EVENT
-    Only for in-stream. The value of dbc in an in-packet
-    corresponds to the end of event in the packet. Out of IEC 61883.
+    The value of dbc in an packet corresponds to the end
+    of event in the packet. Out of IEC 61883.
 
 CIP_WRONG_DBS
     Only for in-stream. The value of dbs is wrong in in-packets.
@@ -67,6 +69,13 @@ CIP_JUMBO_PAYLOAD
     Only for in-stream. The number of data blocks in an
     packet is larger than IEC 61883-6 defines. Current implementation
     allows 5 times as large as IEC 61883-6 defines.
+
+CIP_HEADER_WITHOUT_EOH
+    Only for in-stream. CIP Header doesn't include
+    valid EOH.
+
+CIP_NO_HEADER
+    *undescribed*
 
 .. _`cip_sfc`:
 

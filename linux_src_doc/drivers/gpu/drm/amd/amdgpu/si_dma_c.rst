@@ -139,7 +139,7 @@ Update PTEs by writing them manually using DMA (SI).
 si_dma_vm_set_pte_pde
 =====================
 
-.. c:function:: void si_dma_vm_set_pte_pde(struct amdgpu_ib *ib, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+.. c:function:: void si_dma_vm_set_pte_pde(struct amdgpu_ib *ib, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     update the page tables using sDMA
 
@@ -158,7 +158,7 @@ si_dma_vm_set_pte_pde
     :param uint32_t incr:
         increase next addr by incr bytes
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         access flags
 
 .. _`si_dma_vm_set_pte_pde.description`:

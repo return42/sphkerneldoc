@@ -392,43 +392,43 @@ Return
 New blob property with a single reference on success, or an ERR_PTR
 value on failure.
 
-.. _`drm_property_unreference_blob`:
+.. _`drm_property_blob_put`:
 
-drm_property_unreference_blob
-=============================
+drm_property_blob_put
+=====================
 
-.. c:function:: void drm_property_unreference_blob(struct drm_property_blob *blob)
+.. c:function:: void drm_property_blob_put(struct drm_property_blob *blob)
 
-    Unreference a blob property
+    release a blob property reference
 
     :param struct drm_property_blob \*blob:
-        Pointer to blob property
+        DRM blob property
 
-.. _`drm_property_unreference_blob.description`:
+.. _`drm_property_blob_put.description`:
 
 Description
 -----------
 
-Drop a reference on a blob property. May free the object.
+Releases a reference to a blob property. May free the object.
 
-.. _`drm_property_reference_blob`:
+.. _`drm_property_blob_get`:
 
-drm_property_reference_blob
-===========================
+drm_property_blob_get
+=====================
 
-.. c:function:: struct drm_property_blob *drm_property_reference_blob(struct drm_property_blob *blob)
+.. c:function:: struct drm_property_blob *drm_property_blob_get(struct drm_property_blob *blob)
 
-    Take a reference on an existing property
+    acquire blob property reference
 
     :param struct drm_property_blob \*blob:
-        Pointer to blob property
+        DRM blob property
 
-.. _`drm_property_reference_blob.description`:
+.. _`drm_property_blob_get.description`:
 
 Description
 -----------
 
-Take a new reference on an existing blob property. Returns \ ``blob``\ , which
+Acquires a reference to an existing blob property. Returns \ ``blob``\ , which
 allows this to be used as a shorthand in assignments.
 
 .. _`drm_property_lookup_blob`:
@@ -453,7 +453,7 @@ Description
 
 If successful, this takes an additional reference to the blob property.
 callers need to make sure to eventually unreference the returned property
-again, using \ ``drm_property_unreference_blob``\ .
+again, using \ :c:func:`drm_property_blob_put`\ .
 
 .. _`drm_property_lookup_blob.return`:
 

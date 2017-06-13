@@ -21,9 +21,9 @@ relay_mmap_buf
 Description
 -----------
 
-Returns 0 if ok, negative on error
+     Returns 0 if ok, negative on error
 
-Caller should already have grabbed mmap_sem.
+     Caller should already have grabbed mmap_sem.
 
 .. _`relay_alloc_buf`:
 
@@ -45,8 +45,8 @@ relay_alloc_buf
 Description
 -----------
 
-Returns a pointer to the resulting buffer, \ ``NULL``\  if unsuccessful. The
-passed in size will get page aligned, if it isn't already.
+     Returns a pointer to the resulting buffer, \ ``NULL``\  if unsuccessful. The
+     passed in size will get page aligned, if it isn't already.
 
 .. _`relay_create_buf`:
 
@@ -65,7 +65,7 @@ relay_create_buf
 Description
 -----------
 
-Returns channel buffer if successful, \ ``NULL``\  otherwise.
+     Returns channel buffer if successful, \ ``NULL``\  otherwise.
 
 .. _`relay_destroy_channel`:
 
@@ -84,7 +84,7 @@ relay_destroy_channel
 Description
 -----------
 
-Should only be called from \ :c:func:`kref_put`\ .
+     Should only be called from \ :c:func:`kref_put`\ .
 
 .. _`relay_destroy_buf`:
 
@@ -115,9 +115,9 @@ relay_remove_buf
 Description
 -----------
 
-Removes the file from the filesystem, which also frees the
-rchan_buf_struct and the channel buffer.  Should only be called from
-\ :c:func:`kref_put`\ .
+     Removes the file from the filesystem, which also frees the
+     rchan_buf_struct and the channel buffer.  Should only be called from
+     \ :c:func:`kref_put`\ .
 
 .. _`relay_buf_empty`:
 
@@ -136,7 +136,7 @@ relay_buf_empty
 Description
 -----------
 
-Returns 1 if the buffer is empty, 0 otherwise.
+     Returns 1 if the buffer is empty, 0 otherwise.
 
 .. _`relay_buf_full`:
 
@@ -155,7 +155,7 @@ relay_buf_full
 Description
 -----------
 
-Returns 1 if the buffer is full, 0 otherwise.
+     Returns 1 if the buffer is full, 0 otherwise.
 
 .. _`wakeup_readers`:
 
@@ -174,7 +174,7 @@ wakeup_readers
 Description
 -----------
 
-This is the function used to defer reader waking
+     This is the function used to defer reader waking
 
 .. _`__relay_reset`:
 
@@ -196,7 +196,7 @@ __relay_reset
 Description
 -----------
 
-See \ :c:func:`relay_reset`\  for description of effect.
+     See \ :c:func:`relay_reset`\  for description of effect.
 
 .. _`relay_reset`:
 
@@ -215,12 +215,12 @@ relay_reset
 Description
 -----------
 
-This has the effect of erasing all data from all channel buffers
-and restarting the channel in its initial state.  The buffers
-are not freed, so any mappings are still in effect.
+     This has the effect of erasing all data from all channel buffers
+     and restarting the channel in its initial state.  The buffers
+     are not freed, so any mappings are still in effect.
 
-NOTE. Care should be taken that the channel isn't actually
-being used by anything when this call is made.
+     NOTE. Care should be taken that the channel isn't actually
+     being used by anything when this call is made.
 
 .. _`relay_close_buf`:
 
@@ -239,9 +239,9 @@ relay_close_buf
 Description
 -----------
 
-Marks the buffer finalized and restores the default callbacks.
-The channel buffer and channel buffer data structure are then freed
-automatically when the last reference is given up.
+     Marks the buffer finalized and restores the default callbacks.
+     The channel buffer and channel buffer data structure are then freed
+     automatically when the last reference is given up.
 
 .. _`relay_open`:
 
@@ -275,16 +275,16 @@ relay_open
 Description
 -----------
 
-Returns channel pointer if successful, \ ``NULL``\  otherwise.
+     Returns channel pointer if successful, \ ``NULL``\  otherwise.
 
-Creates a channel buffer for each cpu using the sizes and
-attributes specified.  The created channel buffer files
-will be named base_filename0...base_filenameN-1.  File
-permissions will be \ ``S_IRUSR``\ .
+     Creates a channel buffer for each cpu using the sizes and
+     attributes specified.  The created channel buffer files
+     will be named base_filename0...base_filenameN-1.  File
+     permissions will be \ ``S_IRUSR``\ .
 
-If opening a buffer (@parent = NULL) that you later wish to register
-in a filesystem, call \ :c:func:`relay_late_setup_files`\  once the \ ``parent``\  dentry
-is available.
+     If opening a buffer (@parent = NULL) that you later wish to register
+     in a filesystem, call \ :c:func:`relay_late_setup_files`\  once the \ ``parent``\  dentry
+     is available.
 
 .. _`relay_late_setup_files`:
 
@@ -309,14 +309,14 @@ relay_late_setup_files
 Description
 -----------
 
-Returns 0 if successful, non-zero otherwise.
+     Returns 0 if successful, non-zero otherwise.
 
-Use to setup files for a previously buffer-only channel created
-by \ :c:func:`relay_open`\  with a NULL parent dentry.
+     Use to setup files for a previously buffer-only channel created
+     by \ :c:func:`relay_open`\  with a NULL parent dentry.
 
-For example, this is useful for perfomring early tracing in kernel,
-before VFS is up and then exposing the early results once the dentry
-is available.
+     For example, this is useful for perfomring early tracing in kernel,
+     before VFS is up and then exposing the early results once the dentry
+     is available.
 
 .. _`relay_switch_subbuf`:
 
@@ -338,10 +338,10 @@ relay_switch_subbuf
 Description
 -----------
 
-Returns either the length passed in or 0 if full.
+     Returns either the length passed in or 0 if full.
 
-Performs sub-buffer-switch tasks such as invoking callbacks,
-updating padding counts, waking up readers, etc.
+     Performs sub-buffer-switch tasks such as invoking callbacks,
+     updating padding counts, waking up readers, etc.
 
 .. _`relay_subbufs_consumed`:
 
@@ -366,12 +366,12 @@ relay_subbufs_consumed
 Description
 -----------
 
-Adds to the channel buffer's consumed sub-buffer count.
-subbufs_consumed should be the number of sub-buffers newly consumed,
-not the total consumed.
+     Adds to the channel buffer's consumed sub-buffer count.
+     subbufs_consumed should be the number of sub-buffers newly consumed,
+     not the total consumed.
 
-NOTE. Kernel clients don't need to call this function if the channel
-mode is 'overwrite'.
+     NOTE. Kernel clients don't need to call this function if the channel
+     mode is 'overwrite'.
 
 .. _`relay_close`:
 
@@ -390,7 +390,7 @@ relay_close
 Description
 -----------
 
-Closes all channel buffers and frees the channel.
+     Closes all channel buffers and frees the channel.
 
 .. _`relay_flush`:
 
@@ -409,7 +409,7 @@ relay_flush
 Description
 -----------
 
-Flushes all channel buffers, i.e. forces buffer switch.
+     Flushes all channel buffers, i.e. forces buffer switch.
 
 .. _`relay_file_open`:
 
@@ -431,7 +431,7 @@ relay_file_open
 Description
 -----------
 
-Increments the channel buffer refcount.
+     Increments the channel buffer refcount.
 
 .. _`relay_file_mmap`:
 
@@ -453,7 +453,7 @@ relay_file_mmap
 Description
 -----------
 
-Calls upon \ :c:func:`relay_mmap_buf`\  to map the file into user space.
+     Calls upon \ :c:func:`relay_mmap_buf`\  to map the file into user space.
 
 .. _`relay_file_poll`:
 
@@ -475,7 +475,7 @@ relay_file_poll
 Description
 -----------
 
-Poll implemention.
+     Poll implemention.
 
 .. _`relay_file_release`:
 
@@ -497,8 +497,8 @@ relay_file_release
 Description
 -----------
 
-Decrements the channel refcount, as the filesystem is
-no longer using it.
+     Decrements the channel refcount, as the filesystem is
+     no longer using it.
 
 .. _`relay_file_read_subbuf_avail`:
 
@@ -535,9 +535,9 @@ relay_file_read_start_pos
 Description
 -----------
 
-If the \ ``read_pos``\  is in the middle of padding, return the
-position of the first actually available byte, otherwise
-return the original value.
+     If the \ ``read_pos``\  is in the middle of padding, return the
+     position of the first actually available byte, otherwise
+     return the original value.
 
 .. _`relay_file_read_end_pos`:
 

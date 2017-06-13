@@ -7,4 +7,5 @@ dax
 .. toctree::
     :maxdepth: 1
 
-    dax_c
+    dax-private_h
+    super_c

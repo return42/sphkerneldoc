@@ -1,17 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_engine_cs.c
 
+.. _`intel_engines_init_early`:
+
+intel_engines_init_early
+========================
+
+.. c:function:: int intel_engines_init_early(struct drm_i915_private *dev_priv)
+
+    allocate the Engine Command Streamers
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
+
+.. _`intel_engines_init_early.return`:
+
+Return
+------
+
+non-zero if the initialization failed.
+
 .. _`intel_engines_init`:
 
 intel_engines_init
 ==================
 
-.. c:function:: int intel_engines_init(struct drm_device *dev)
+.. c:function:: int intel_engines_init(struct drm_i915_private *dev_priv)
 
     allocate, populate and init the Engine Command Streamers
 
-    :param struct drm_device \*dev:
-        DRM device.
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`intel_engines_init.return`:
 
@@ -84,6 +103,26 @@ Description
 -----------
 
 This cleans up everything created by the common helpers.
+
+.. _`intel_engine_is_idle`:
+
+intel_engine_is_idle
+====================
+
+.. c:function:: bool intel_engine_is_idle(struct intel_engine_cs *engine)
+
+    Report if the engine has finished process all work
+
+    :param struct intel_engine_cs \*engine:
+        the intel_engine_cs
+
+.. _`intel_engine_is_idle.description`:
+
+Description
+-----------
+
+Return true if there are no requests pending, nothing left to be submitted
+to hardware, and that the engine is idle.
 
 .. This file was automatic generated / don't edit.
 

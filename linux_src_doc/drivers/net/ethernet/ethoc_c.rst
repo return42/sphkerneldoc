@@ -20,8 +20,6 @@ Definition
     struct ethoc {
         void __iomem *iobase;
         void __iomem *membase;
-        int dma_alloc;
-        resource_size_t io_region_size;
         bool big_endian;
         unsigned int num_bd;
         unsigned int num_tx;
@@ -51,12 +49,6 @@ iobase
 
 membase
     pointer to buffer memory region
-
-dma_alloc
-    dma allocated buffer size
-
-io_region_size
-    I/O memory region size
 
 big_endian
     *undescribed*

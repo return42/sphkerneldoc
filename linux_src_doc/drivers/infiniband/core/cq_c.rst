@@ -30,8 +30,8 @@ context and does not ask for completion interrupts from the HCA.
 Note
 ----
 
-for compatibility reasons -1 can be passed in \ ``budget``\  for unlimited
-polling.  Do not use this feature in new code, it will be removed soon.
+do not pass -1 as \ ``budget``\  unless it is guaranteed that the number
+of completions that will be processed is small.
 
 .. _`ib_alloc_cq`:
 
@@ -64,7 +64,7 @@ Description
 
 This is the proper interface to allocate a CQ for in-kernel users. A
 CQ allocated with this interface will automatically be polled from the
-specified context.  The ULP needs must use wr->wr_cqe instead of wr->wr_id
+specified context. The ULP must use wr->wr_cqe instead of wr->wr_id
 to use this CQ abstraction.
 
 .. _`ib_free_cq`:

@@ -124,7 +124,7 @@ Definition
         unsigned long input_rate;
         unsigned long output_rate;
         u32 n;
-        u16 m;
+        u32 m;
         u8 p;
         u8 cpcon;
         u16 sdm_data;
@@ -805,6 +805,8 @@ Definition
     struct tegra_clk_super_mux {
         struct clk_hw hw;
         void __iomem *reg;
+        struct tegra_clk_frac_div frac_div;
+        const struct clk_ops *div_ops;
         u8 width;
         u8 flags;
         u8 div2_index;
@@ -822,6 +824,12 @@ hw
 
 reg
     register controlling multiplexer
+
+frac_div
+    *undescribed*
+
+div_ops
+    *undescribed*
 
 width
     width of the multiplexer bit field

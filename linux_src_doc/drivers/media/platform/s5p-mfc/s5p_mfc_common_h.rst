@@ -295,7 +295,7 @@ Definition
 
     struct s5p_mfc_pm {
         struct clk *clock_gate;
-        const char **clk_names;
+        const char * const *clk_names;
         struct clk  *clocks[MFC_MAX_CLOCKS];
         int num_clocks;
         bool use_clock_gating;
@@ -343,6 +343,7 @@ Definition
         void *virt;
         dma_addr_t dma;
         size_t size;
+        unsigned int ctx;
     }
 
 .. _`s5p_mfc_priv_buf.members`:
@@ -362,6 +363,9 @@ dma
 
 size
     size of the buffer
+
+ctx
+    memory context (bank) used for this allocation
 
 .. _`s5p_mfc_dev`:
 
@@ -384,14 +388,13 @@ Definition
         struct video_device *vfd_dec;
         struct video_device *vfd_enc;
         struct platform_device *plat_dev;
-        struct device *mem_dev_l;
-        struct device *mem_dev_r;
+        struct device  *mem_dev[BANK_CTX_NUM];
         void __iomem *regs_base;
         int irq;
         struct v4l2_ctrl_handler dec_ctrl_handler;
         struct v4l2_ctrl_handler enc_ctrl_handler;
         struct s5p_mfc_pm pm;
-        struct s5p_mfc_variant *variant;
+        const struct s5p_mfc_variant *variant;
         int num_inst;
         spinlock_t irqlock;
         spinlock_t condlock;
@@ -400,10 +403,12 @@ Definition
         int int_type;
         unsigned int int_err;
         wait_queue_head_t queue;
-        size_t fw_size;
-        void *fw_virt_addr;
-        dma_addr_t bank1;
-        dma_addr_t bank2;
+        struct s5p_mfc_priv_buf fw_buf;
+        size_t mem_size;
+        dma_addr_t mem_base;
+        unsigned long *mem_bitmap;
+        void *mem_virt;
+        dma_addr_t dma_base[BANK_CTX_NUM];
         unsigned long hw_lock;
         struct s5p_mfc_ctx  *ctx[MFC_NUM_CONTEXTS];
         int curr_ctx;
@@ -439,11 +444,8 @@ vfd_enc
 plat_dev
     platform device
 
-mem_dev_l
-    child device of the left memory bank (0)
-
-mem_dev_r
-    child device of the right memory bank (1)
+mem_dev
+    child devices of the memory banks
 
 regs_base
     base address of the MFC hw registers
@@ -488,17 +490,23 @@ int_err
 queue
     waitqueue for waiting for completion of device commands
 
-fw_size
-    size of firmware
+fw_buf
+    *undescribed*
 
-fw_virt_addr
-    virtual firmware address
+mem_size
+    *undescribed*
 
-bank1
-    address of the beginning of bank 1 memory
+mem_base
+    *undescribed*
 
-bank2
-    address of the beginning of bank 2 memory
+mem_bitmap
+    *undescribed*
+
+mem_virt
+    *undescribed*
+
+dma_base
+    address of the beginning of memory banks
 
 hw_lock
     used for hardware locking

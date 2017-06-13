@@ -14,7 +14,7 @@ devm_ioremap
         Generic device to remap IO address for
 
     :param resource_size_t offset:
-        BUS offset to map
+        Resource address to map
 
     :param resource_size_t size:
         Size of map
@@ -39,7 +39,7 @@ devm_ioremap_nocache
         Generic device to remap IO address for
 
     :param resource_size_t offset:
-        BUS offset to map
+        Resource address to map
 
     :param resource_size_t size:
         Size of map
@@ -65,7 +65,7 @@ devm_ioremap_wc
         Generic device to remap IO address for
 
     :param resource_size_t offset:
-        BUS offset to map
+        Resource address to map
 
     :param resource_size_t size:
         Size of map

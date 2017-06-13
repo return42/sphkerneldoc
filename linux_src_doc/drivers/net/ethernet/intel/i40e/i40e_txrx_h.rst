@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40e/i40e_txrx.h
 
+.. _`i40e_intrl_usec_to_reg`:
+
+i40e_intrl_usec_to_reg
+======================
+
+.. c:function:: u16 i40e_intrl_usec_to_reg(int intrl)
+
+    convert interrupt rate limit to register
+
+    :param int intrl:
+        interrupt rate limit to convert
+
+.. _`i40e_intrl_usec_to_reg.description`:
+
+Description
+-----------
+
+This function converts a decimal interrupt rate limit to the appropriate
+register format expected by the firmware when setting interrupt rate limit.
+
 .. _`i40e_test_staterr`:
 
 i40e_test_staterr
@@ -162,18 +182,6 @@ Note
 Our HW can't scatter-gather more than 8 fragments to build
 a packet on the wire and so we need to figure out the cases where we
 need to linearize the skb.
-
-.. _`i40e_rx_is_fcoe`:
-
-i40e_rx_is_fcoe
-===============
-
-.. c:function:: bool i40e_rx_is_fcoe(u16 ptype)
-
-    returns true if the Rx packet type is FCoE
-
-    :param u16 ptype:
-        the packet type field from Rx descriptor write-back
 
 .. _`txring_txq`:
 

@@ -510,5 +510,48 @@ Description
 This function is called at the driver unloading stage, to clean up the
 the mm components of a GVT device.
 
+.. _`intel_vgpu_reset_ggtt`:
+
+intel_vgpu_reset_ggtt
+=====================
+
+.. c:function:: void intel_vgpu_reset_ggtt(struct intel_vgpu *vgpu)
+
+    reset the GGTT entry
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_reset_ggtt.description`:
+
+Description
+-----------
+
+This function is called at the vGPU create stage
+to reset all the GGTT entries.
+
+.. _`intel_vgpu_reset_gtt`:
+
+intel_vgpu_reset_gtt
+====================
+
+.. c:function:: void intel_vgpu_reset_gtt(struct intel_vgpu *vgpu, bool dmlr)
+
+    reset the all GTT related status
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+    :param bool dmlr:
+        true for vGPU Device Model Level Reset, false for GT Reset
+
+.. _`intel_vgpu_reset_gtt.description`:
+
+Description
+-----------
+
+This function is called from vfio core to reset reset all
+GTT related status, including GGTT, PPGTT, scratch page.
+
 .. This file was automatic generated / don't edit.
 

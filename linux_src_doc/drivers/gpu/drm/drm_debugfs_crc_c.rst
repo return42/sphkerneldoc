@@ -1,33 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_debugfs_crc.c
 
-.. _`drm_debugfs_crtc_crc_add`:
-
-drm_debugfs_crtc_crc_add
-========================
-
-.. c:function:: int drm_debugfs_crtc_crc_add(struct drm_crtc *crtc)
-
-    Add files to debugfs for capture of frame CRCs
-
-    :param struct drm_crtc \*crtc:
-        CRTC to whom the frames will belong
-
-.. _`drm_debugfs_crtc_crc_add.description`:
-
-Description
------------
-
-Adds files to debugfs directory that allows userspace to control the
-generation of frame CRCs and to read them.
-
-.. _`drm_debugfs_crtc_crc_add.return`:
-
-Return
-------
-
-Zero on success, error code on failure.
-
 .. _`drm_crtc_add_crc_entry`:
 
 drm_crtc_add_crc_entry

@@ -89,5 +89,23 @@ Description
 This function will build a TX descriptor array with applicable
 L2/L3/L4 packet header descriptors to be sent by send_subcrq_indirect.
 
+.. _`do_reset`:
+
+do_reset
+========
+
+.. c:function:: int do_reset(struct ibmvnic_adapter *adapter, struct ibmvnic_rwi *rwi, u32 reset_state)
+
+    non-zero if we hit a fatal error and must halt.
+
+    :param struct ibmvnic_adapter \*adapter:
+        *undescribed*
+
+    :param struct ibmvnic_rwi \*rwi:
+        *undescribed*
+
+    :param u32 reset_state:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

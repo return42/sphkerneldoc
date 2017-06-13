@@ -124,12 +124,7 @@ The available types are
 
 \ ``MTRR_TYPE_WRTHROUGH``\  - Cache reads but not writes
 
-.. _`mtrr_add_page.bugs`:
-
-BUGS
-----
-
-Needs a quiet flag for the cases where drivers do not mind
+BUGS: Needs a quiet flag for the cases where drivers do not mind
 failures and do not wish system log messages to be sent.
 
 .. _`mtrr_add`:
@@ -183,12 +178,7 @@ The available types are
 
 \ ``MTRR_TYPE_WRTHROUGH``\  - Cache reads but not writes
 
-.. _`mtrr_add.bugs`:
-
-BUGS
-----
-
-Needs a quiet flag for the cases where drivers do not mind
+BUGS: Needs a quiet flag for the cases where drivers do not mind
 failures and do not wish system log messages to be sent.
 
 .. _`mtrr_del_page`:

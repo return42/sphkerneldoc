@@ -458,6 +458,26 @@ list or the network interface flags are updated.  This routine is
 responsible for configuring the hardware for proper multicast,
 promiscuous mode, and all-multi behavior.
 
+.. _`igbvf_set_uni`:
+
+igbvf_set_uni
+=============
+
+.. c:function:: int igbvf_set_uni(struct net_device *netdev)
+
+    Configure unicast MAC filters
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+.. _`igbvf_set_uni.description`:
+
+Description
+-----------
+
+This routine is responsible for configuring the hardware for proper
+unicast filters.
+
 .. _`igbvf_configure`:
 
 igbvf_configure
@@ -597,26 +617,6 @@ igbvf_tx_timeout
 
     :param struct net_device \*netdev:
         network interface device structure
-
-.. _`igbvf_get_stats`:
-
-igbvf_get_stats
-===============
-
-.. c:function:: struct net_device_stats *igbvf_get_stats(struct net_device *netdev)
-
-    Get System Network Statistics
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-.. _`igbvf_get_stats.description`:
-
-Description
------------
-
-Returns the address of the device statistics structure.
-The statistics are actually updated from the timer callback.
 
 .. _`igbvf_change_mtu`:
 

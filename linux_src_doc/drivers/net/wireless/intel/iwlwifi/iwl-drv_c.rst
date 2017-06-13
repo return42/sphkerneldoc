@@ -23,7 +23,6 @@ Definition
         struct iwl_op_mode *op_mode;
         struct iwl_trans *trans;
         struct device *dev;
-        const struct iwl_cfg *cfg;
         int fw_index;
         char firmware_name[64];
         struct completion request_firmware_complete;
@@ -53,9 +52,6 @@ trans
 
 dev
     for debug prints only
-
-cfg
-    configuration struct
 
 fw_index
     firmware revision to try loading

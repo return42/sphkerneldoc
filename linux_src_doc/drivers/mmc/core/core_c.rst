@@ -125,25 +125,45 @@ Description
 Let the host post process a completed request. Post processing of
 a request may be performed while another reuqest is running.
 
-.. _`mmc_start_req`:
+.. _`mmc_finalize_areq`:
 
-mmc_start_req
-=============
+mmc_finalize_areq
+=================
 
-.. c:function:: struct mmc_async_req *mmc_start_req(struct mmc_host *host, struct mmc_async_req *areq, enum mmc_blk_status *ret_stat)
+.. c:function:: enum mmc_blk_status mmc_finalize_areq(struct mmc_host *host)
 
-    start a non-blocking request
+    finalize an asynchronous request
+
+    :param struct mmc_host \*host:
+        MMC host to finalize any ongoing request on
+
+.. _`mmc_finalize_areq.description`:
+
+Description
+-----------
+
+Returns the status of the ongoing asynchronous request, but
+MMC_BLK_SUCCESS if no request was going on.
+
+.. _`mmc_start_areq`:
+
+mmc_start_areq
+==============
+
+.. c:function:: struct mmc_async_req *mmc_start_areq(struct mmc_host *host, struct mmc_async_req *areq, enum mmc_blk_status *ret_stat)
+
+    start an asynchronous request
 
     :param struct mmc_host \*host:
         MMC host to start command
 
     :param struct mmc_async_req \*areq:
-        async request to start
+        asynchronous request to start
 
     :param enum mmc_blk_status \*ret_stat:
-        *undescribed*
+        out parameter for status
 
-.. _`mmc_start_req.description`:
+.. _`mmc_start_areq.description`:
 
 Description
 -----------

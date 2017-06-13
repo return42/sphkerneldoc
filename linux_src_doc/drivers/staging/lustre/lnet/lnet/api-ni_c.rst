@@ -130,14 +130,14 @@ LNetCtl
 LNetGetId
 =========
 
-.. c:function:: int LNetGetId(unsigned int index, lnet_process_id_t *id)
+.. c:function:: int LNetGetId(unsigned int index, struct lnet_process_id *id)
 
     all interfaces share a same PID, as requested by \ :c:func:`LNetNIInit`\ .
 
     :param unsigned int index:
         *undescribed*
 
-    :param lnet_process_id_t \*id:
+    :param struct lnet_process_id \*id:
         *undescribed*
 
 .. _`lnetgetid.description`:
@@ -147,28 +147,10 @@ Description
 
 \param index Index of the interface to look up.
 \param id On successful return, this location will hold the
-lnet_process_id_t ID of the interface.
+lnet_process_id ID of the interface.
 
 \retval 0 If an interface exists at \a index.
 \retval -ENOENT If no interface has been found.
-
-.. _`lnetsnprinthandle`:
-
-LNetSnprintHandle
-=================
-
-.. c:function:: void LNetSnprintHandle(char *str, int len, lnet_handle_any_t h)
-
-    \a len bytes.
-
-    :param char \*str:
-        *undescribed*
-
-    :param int len:
-        *undescribed*
-
-    :param lnet_handle_any_t h:
-        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

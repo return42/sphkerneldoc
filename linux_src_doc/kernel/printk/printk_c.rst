@@ -109,9 +109,9 @@ Description
 -----------
 
 If \ :c:func:`printk`\  is called from a CPU that is not online yet, the messages
-will be spooled but will not show up on the console.  This function is
-called when a new CPU comes online (or fails to come up), and ensures
-that any such output gets printed.
+will be printed on the console only if there are CON_ANYTIME consoles.
+This function is called when a new CPU comes online (or fails to come
+up) or goes offline.
 
 .. _`console_lock`:
 

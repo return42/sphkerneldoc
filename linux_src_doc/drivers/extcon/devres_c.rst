@@ -161,5 +161,52 @@ devm_extcon_unregister_notifier
     :param struct notifier_block \*nb:
         a notifier block to be registered.
 
+.. _`devm_extcon_register_notifier_all`:
+
+devm_extcon_register_notifier_all
+=================================
+
+.. c:function:: int devm_extcon_register_notifier_all(struct device *dev, struct extcon_dev *edev, struct notifier_block *nb)
+
+    - Resource-managed \ :c:func:`extcon_register_notifier_all`\ 
+
+    :param struct device \*dev:
+        device to allocate extcon device
+
+    :param struct extcon_dev \*edev:
+        the extcon device that has the external connecotr.
+
+    :param struct notifier_block \*nb:
+        a notifier block to be registered.
+
+.. _`devm_extcon_register_notifier_all.description`:
+
+Description
+-----------
+
+This function manages automatically the notifier of extcon device using
+device resource management and simplify the control of unregistering
+the notifier of extcon device. To get more information, refer that function.
+
+Returns 0 if success or negaive error number if failure.
+
+.. _`devm_extcon_unregister_notifier_all`:
+
+devm_extcon_unregister_notifier_all
+===================================
+
+.. c:function:: void devm_extcon_unregister_notifier_all(struct device *dev, struct extcon_dev *edev, struct notifier_block *nb)
+
+    - Resource-managed \ :c:func:`extcon_unregister_notifier_all`\ 
+
+    :param struct device \*dev:
+        device to allocate extcon device
+
+    :param struct extcon_dev \*edev:
+        the extcon device that has the external connecotr.
+
+    :param struct notifier_block \*nb:
+        a notifier block to be registered.
+
 .. This file was automatic generated / don't edit.
 

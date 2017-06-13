@@ -26,14 +26,14 @@ given, and then disables \ ``cdev``\ .
 Return
 ------
 
-%0 on success and a negative error value on failure.
+  \ ``0``\  on success and a negative error value on failure.
 
 .. _`ccw_device_set_offline.context`:
 
 Context
 -------
 
-enabled, ccw device lock not held
+ enabled, ccw device lock not held
 
 .. _`ccw_device_set_online`:
 
@@ -61,14 +61,14 @@ disabled again.
 Return
 ------
 
-%0 on success and a negative error value on failure.
+  \ ``0``\  on success and a negative error value on failure.
 
 .. _`ccw_device_set_online.context`:
 
 Context
 -------
 
-enabled, ccw device lock not held
+ enabled, ccw device lock not held
 
 .. _`get_ccwdev_by_dev_id`:
 
@@ -95,8 +95,8 @@ matching \ ``dev_id``\ .
 Return
 ------
 
-If a device is found its reference count is increased and returned;
-else \ ``NULL``\  is returned.
+ If a device is found its reference count is increased and returned;
+ else \ ``NULL``\  is returned.
 
 .. _`ccw_purge_blacklisted`:
 
@@ -191,8 +191,8 @@ id matching \ ``bus_id``\ .
 Return
 ------
 
-If a match is found, its reference count of the found device is increased
-and it is returned; else \ ``NULL``\  is returned.
+ If a match is found, its reference count of the found device is increased
+ and it is returned; else \ ``NULL``\  is returned.
 
 .. _`ccw_driver_register`:
 
@@ -218,7 +218,7 @@ This function is mainly a wrapper around \ :c:func:`driver_register`\ .
 Return
 ------
 
-%0 on success and a negative error value on failure.
+  \ ``0``\  on success and a negative error value on failure.
 
 .. _`ccw_driver_unregister`:
 

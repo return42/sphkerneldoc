@@ -142,7 +142,7 @@ regcache_cache_only
         map to configure
 
     :param bool enable:
-        *undescribed*
+        flag if changes should be written to the hardware
 
 .. _`regcache_cache_only.description`:
 
@@ -193,7 +193,7 @@ regcache_cache_bypass
         map to configure
 
     :param bool enable:
-        *undescribed*
+        flag if changes should not be written to the cache
 
 .. _`regcache_cache_bypass.description`:
 

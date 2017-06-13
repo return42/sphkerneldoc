@@ -45,7 +45,7 @@ __shost_for_each_device
 Description
 -----------
 
-Iterator that returns each device attached to \ ``shost``\ .  It does \_not\_
+Iterator that returns each device attached to \ ``shost``\ .  It does _not_
 take a reference on the scsi_device, so the whole loop must be
 protected by shost->host_lock.
 

@@ -21,7 +21,7 @@ v9fs_set_super
 v9fs_fill_super
 ===============
 
-.. c:function:: void v9fs_fill_super(struct super_block *sb, struct v9fs_session_info *v9ses, int flags, void *data)
+.. c:function:: int v9fs_fill_super(struct super_block *sb, struct v9fs_session_info *v9ses, int flags, void *data)
 
     populate superblock with info
 

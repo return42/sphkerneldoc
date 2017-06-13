@@ -46,7 +46,7 @@ aa_audit_msg
 aa_audit
 ========
 
-.. c:function:: int aa_audit(int type, struct aa_profile *profile, gfp_t gfp, struct common_audit_data *sa, void (*cb)(struct audit_buffer *, void *))
+.. c:function:: int aa_audit(int type, struct aa_profile *profile, struct common_audit_data *sa, void (*cb)(struct audit_buffer *, void *))
 
     Log a profile based audit event to the audit subsystem
 
@@ -55,9 +55,6 @@ aa_audit
 
     :param struct aa_profile \*profile:
         profile to check against (NOT NULL)
-
-    :param gfp_t gfp:
-        allocation flags to use
 
     :param struct common_audit_data \*sa:
         audit event (NOT NULL)

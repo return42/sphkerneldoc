@@ -139,8 +139,8 @@ Definition
 .. code-block:: c
 
     struct drm_plane_funcs {
-        int (*update_plane)(struct drm_plane *plane,struct drm_crtc *crtc, struct drm_framebuffer *fb,int crtc_x, int crtc_y,unsigned int crtc_w, unsigned int crtc_h,uint32_t src_x, uint32_t src_y,uint32_t src_w, uint32_t src_h);
-        int (*disable_plane)(struct drm_plane *plane);
+        int (*update_plane)(struct drm_plane *plane,struct drm_crtc *crtc, struct drm_framebuffer *fb,int crtc_x, int crtc_y,unsigned int crtc_w, unsigned int crtc_h,uint32_t src_x, uint32_t src_y,uint32_t src_w, uint32_t src_h,struct drm_modeset_acquire_ctx *ctx);
+        int (*disable_plane)(struct drm_plane *plane,struct drm_modeset_acquire_ctx *ctx);
         void (*destroy)(struct drm_plane *plane);
         void (*reset)(struct drm_plane *plane);
         int (*set_property)(struct drm_plane *plane,struct drm_property *property, uint64_t val);
@@ -230,19 +230,19 @@ set_property
 atomic_duplicate_state
 
     Duplicate the current atomic state for this plane and return it.
-    The core and helpers gurantee that any atomic state duplicated with
+    The core and helpers guarantee that any atomic state duplicated with
     this hook and still owned by the caller (i.e. not transferred to the
-    driver by calling ->atomic_commit() from struct
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`\ ) will be cleaned up by calling the
-    \ ``atomic_destroy_state``\  hook in this structure.
+    driver by calling \ :c:type:`drm_mode_config_funcs.atomic_commit <drm_mode_config_funcs>`\ ) will be
+    cleaned up by calling the \ ``atomic_destroy_state``\  hook in this
+    structure.
 
-    Atomic drivers which don't subclass struct \ :c:type:`struct drm_plane_state <drm_plane_state>`\  should use
+    Atomic drivers which don't subclass \ :c:type:`struct drm_plane_state <drm_plane_state>`\  should use
     \ :c:func:`drm_atomic_helper_plane_duplicate_state`\ . Drivers that subclass the
     state structure to extend it with driver-private state should use
     \ :c:func:`__drm_atomic_helper_plane_duplicate_state`\  to make sure shared state is
     duplicated in a consistent fashion across drivers.
 
-    It is an error to call this hook before plane->state has been
+    It is an error to call this hook before \ :c:type:`drm_plane.state <drm_plane>`\  has been
     initialized correctly.
 
     NOTE:
@@ -334,13 +334,13 @@ early_unregister
 
     This optional hook should be used to unregister the additional
     userspace interfaces attached to the plane from
-    \ :c:func:`late_unregister`\ . It is called from \ :c:func:`drm_dev_unregister`\ ,
+    \ ``late_register``\ . It is called from \ :c:func:`drm_dev_unregister`\ ,
     early in the driver unload sequence to disable userspace access
     before data structures are torndown.
 
 atomic_print_state
 
-    If driver subclasses struct \ :c:type:`struct drm_plane_state <drm_plane_state>`\ , it should implement
+    If driver subclasses \ :c:type:`struct drm_plane_state <drm_plane_state>`\ , it should implement
     this optional hook for printing additional driver specific state.
 
     Do not call this directly, use \ :c:func:`drm_atomic_plane_print_state`\ 
@@ -382,8 +382,8 @@ DRM_PLANE_TYPE_PRIMARY
 
     Primary planes represent a "main" plane for a CRTC.  Primary planes
     are the planes operated upon by CRTC modesetting and flipping
-    operations described in the page_flip and set_config hooks in struct
-    \ :c:type:`struct drm_crtc_funcs <drm_crtc_funcs>`\ .
+    operations described in the \ :c:type:`drm_crtc_funcs.page_flip <drm_crtc_funcs>`\  and
+    \ :c:type:`drm_crtc_funcs.set_config <drm_crtc_funcs>`\  hooks.
 
 DRM_PLANE_TYPE_CURSOR
 
@@ -466,9 +466,11 @@ name
 
 mutex
 
-    Protects modeset plane state, together with the mutex of \ :c:type:`struct drm_crtc <drm_crtc>`\ 
-    this plane is linked to (when active, getting actived or getting
-    disabled).
+    Protects modeset plane state, together with the \ :c:type:`drm_crtc.mutex <drm_crtc>`\  of
+    CRTC this plane is linked to (when active, getting activated or
+    getting disabled).
+
+    For atomic drivers specifically this protects \ ``state``\ .
 
 base
     base mode object
@@ -511,7 +513,16 @@ helper_private
     mid-layer private data
 
 state
-    current atomic state for this plane
+
+    Current atomic state for this plane.
+
+    This is protected by \ ``mutex``\ . Note that nonblocking atomic commits
+    access the current plane state without taking locks. Either by going
+    through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointers, see
+    \ :c:func:`for_each_plane_in_state`\ , \ :c:func:`for_each_oldnew_plane_in_state`\ ,
+    \ :c:func:`for_each_old_plane_in_state`\  and \ :c:func:`for_each_new_plane_in_state`\ . Or
+    through careful ordering of atomic commit operations as implemented
+    in the atomic helpers, see \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
 
 zpos_property
     zpos property for this plane
@@ -609,7 +620,7 @@ Description
 
 Iterate over all legacy planes of \ ``dev``\ , excluding primary and cursor planes.
 This is useful for implementing userspace apis when userspace is not
-universal plane aware. See also enum \ :c:type:`struct drm_plane_type <drm_plane_type>`\ .
+universal plane aware. See also \ :c:type:`enum drm_plane_type <drm_plane_type>`\ .
 
 .. _`drm_for_each_plane`:
 

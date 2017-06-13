@@ -177,14 +177,14 @@ pvrdma_dealloc_pd
 pvrdma_create_ah
 ================
 
-.. c:function:: struct ib_ah *pvrdma_create_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr, struct ib_udata *udata)
+.. c:function:: struct ib_ah *pvrdma_create_ah(struct ib_pd *pd, struct rdma_ah_attr *ah_attr, struct ib_udata *udata)
 
     create an address handle
 
     :param struct ib_pd \*pd:
         the protection domain
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         the attributes of the AH
 
     :param struct ib_udata \*udata:

@@ -121,7 +121,7 @@ w1_triplet
 
 .. c:function:: u8 w1_triplet(struct w1_master *dev, int bdir)
 
-    \* Does a triplet - used for searching ROM addresses.
+    * Does a triplet - used for searching ROM addresses.
 
     :param struct w1_master \*dev:
         the master device
@@ -134,9 +134,9 @@ w1_triplet
 Return bits
 -----------
 
-bit 0 = id_bit
-bit 1 = comp_bit
-bit 2 = dir_taken
+ bit 0 = id_bit
+ bit 1 = comp_bit
+ bit 2 = dir_taken
 If both bits 0 & 1 are set, the search should be restarted.
 
 .. _`w1_triplet.return`:

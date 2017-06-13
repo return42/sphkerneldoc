@@ -998,7 +998,7 @@ struct scu_registers
 
 .. c:type:: struct scu_registers
 
-    SCU regsiters including both PEG registers if we turn on that compile option. All of these registers are in the memory mapped space returned from BAR1.
+    SCU registers including both PEG registers if we turn on that compile option. All of these registers are in the memory mapped space returned from BAR1.
 
 .. _`scu_registers.definition`:
 

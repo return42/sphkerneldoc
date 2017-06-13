@@ -1034,14 +1034,14 @@ i40iw_query_pkey
 i40iw_create_ah
 ===============
 
-.. c:function:: struct ib_ah *i40iw_create_ah(struct ib_pd *ibpd, struct ib_ah_attr *attr, struct ib_udata *udata)
+.. c:function:: struct ib_ah *i40iw_create_ah(struct ib_pd *ibpd, struct rdma_ah_attr *attr, struct ib_udata *udata)
 
     create address handle
 
     :param struct ib_pd \*ibpd:
         ptr of pd
 
-    :param struct ib_ah_attr \*attr:
+    :param struct rdma_ah_attr \*attr:
         *undescribed*
 
     :param struct ib_udata \*udata:

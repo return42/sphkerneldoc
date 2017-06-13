@@ -241,12 +241,15 @@ either be reserved or pinned.
 vmw_move_notify
 ===============
 
-.. c:function:: void vmw_move_notify(struct ttm_buffer_object *bo, struct ttm_mem_reg *mem)
+.. c:function:: void vmw_move_notify(struct ttm_buffer_object *bo, bool evict, struct ttm_mem_reg *mem)
 
     TTM move_notify_callback
 
     :param struct ttm_buffer_object \*bo:
         The TTM buffer object about to move.
+
+    :param bool evict:
+        *undescribed*
 
     :param struct ttm_mem_reg \*mem:
         The struct ttm_mem_reg indicating to what memory

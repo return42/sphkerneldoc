@@ -8,7 +8,7 @@ struct gsm_mux_net
 
 .. c:type:: struct gsm_mux_net
 
-    network interface \ ``struct``\  gsm_dlci\* dlci \ ``struct``\  net_device_stats stats;
+    network interface \ ``struct``\  gsm_dlci\* dlci
 
 .. _`gsm_mux_net.definition`:
 
@@ -20,7 +20,6 @@ Definition
     struct gsm_mux_net {
         struct kref ref;
         struct gsm_dlci *dlci;
-        struct net_device_stats stats;
     }
 
 .. _`gsm_mux_net.members`:
@@ -32,9 +31,6 @@ ref
     *undescribed*
 
 dlci
-    *undescribed*
-
-stats
     *undescribed*
 
 .. _`gsm_mux_net.description`:

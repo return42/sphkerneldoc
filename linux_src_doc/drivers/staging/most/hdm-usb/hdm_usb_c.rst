@@ -412,7 +412,7 @@ controller use to indicate a transfer has failed because of device
 disconnect.  In the interval before the hub driver starts disconnect
 processing, devices may receive such fault reports for every request.
 
-See <https://www.kernel.org/doc/Documentation/usb/error-codes.txt>
+See <https://www.kernel.org/doc/Documentation/driver-api/usb/error-codes.rst>
 
 .. _`hdm_read_completion.context`:
 

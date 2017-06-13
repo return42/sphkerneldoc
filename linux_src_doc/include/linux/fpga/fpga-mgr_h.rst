@@ -97,6 +97,7 @@ Definition
         u32 flags;
         u32 enable_timeout_us;
         u32 disable_timeout_us;
+        u32 config_complete_timeout_us;
     }
 
 .. _`fpga_image_info.members`:
@@ -112,6 +113,10 @@ enable_timeout_us
 
 disable_timeout_us
     maximum time to disable traffic through bridge (uSec)
+
+config_complete_timeout_us
+    maximum time for FPGA to switch to operating
+    status in the write_complete op.
 
 .. _`fpga_manager_ops`:
 
@@ -134,6 +139,7 @@ Definition
         enum fpga_mgr_states (*state)(struct fpga_manager *mgr);
         int (*write_init)(struct fpga_manager *mgr,struct fpga_image_info *info,const char *buf, size_t count);
         int (*write)(struct fpga_manager *mgr, const char *buf, size_t count);
+        int (*write_sg)(struct fpga_manager *mgr, struct sg_table *sgt);
         int (*write_complete)(struct fpga_manager *mgr,struct fpga_image_info *info);
         void (*fpga_remove)(struct fpga_manager *mgr);
     }
@@ -154,6 +160,9 @@ write_init
 
 write
     write count bytes of configuration data to the FPGA
+
+write_sg
+    write the scatter list of configuration data to the FPGA
 
 write_complete
     set FPGA to operating state after writing is done

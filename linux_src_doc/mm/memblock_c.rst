@@ -386,6 +386,28 @@ Description
 
 Return 0 on success, -errno on failure.
 
+.. _`memblock_clear_nomap`:
+
+memblock_clear_nomap
+====================
+
+.. c:function:: int __init_memblock memblock_clear_nomap(phys_addr_t base, phys_addr_t size)
+
+    Clear flag MEMBLOCK_NOMAP for a specified region.
+
+    :param phys_addr_t base:
+        the base phys addr of the region
+
+    :param phys_addr_t size:
+        the size of the region
+
+.. _`memblock_clear_nomap.description`:
+
+Description
+-----------
+
+Return 0 on success, -errno on failure.
+
 .. _`__next_reserved_mem_region`:
 
 __next_reserved_mem_region

@@ -208,8 +208,8 @@ MEM_RMBS
 
 MEM_DDR2
     DDR2 RAM, as described at JEDEC JESD79-2F.
-    Those memories are labed as "PC2-" instead of "PC" to
-    differenciate from DDR.
+    Those memories are labeled as "PC2-" instead of "PC" to
+    differentiate from DDR.
 
 MEM_FB_DDR2
     Fully-Buffered DDR2, as described at JEDEC Std No. 205

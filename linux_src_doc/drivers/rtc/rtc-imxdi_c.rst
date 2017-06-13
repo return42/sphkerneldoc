@@ -21,7 +21,6 @@ Definition
         struct platform_device *pdev;
         struct rtc_device *rtc;
         void __iomem *ioaddr;
-        int irq;
         struct clk *clk;
         u32 dsr;
         spinlock_t irq_lock;
@@ -43,9 +42,6 @@ rtc
 
 ioaddr
     IO registers pointer
-
-irq
-    dryice normal interrupt
 
 clk
     input reference clock

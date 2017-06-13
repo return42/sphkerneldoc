@@ -44,66 +44,72 @@ Description
 This function dumps all entries from a queue specified by the queue
 descriptor \ ``q``\ .
 
-.. _`lpfc_debug_dump_fcp_wq`:
+.. _`lpfc_debug_dump_wq`:
 
-lpfc_debug_dump_fcp_wq
-======================
+lpfc_debug_dump_wq
+==================
 
-.. c:function:: void lpfc_debug_dump_fcp_wq(struct lpfc_hba *phba, int fcp_wqidx)
+.. c:function:: void lpfc_debug_dump_wq(struct lpfc_hba *phba, int qtype, int wqidx)
 
-    dump all entries from a fcp work queue
-
-    :param struct lpfc_hba \*phba:
-        Pointer to HBA context object.
-
-    :param int fcp_wqidx:
-        Index to a FCP work queue.
-
-.. _`lpfc_debug_dump_fcp_wq.description`:
-
-Description
------------
-
-This function dumps all entries from a FCP work queue specified by the
-\ ``fcp_wqidx``\ .
-
-.. _`lpfc_debug_dump_fcp_cq`:
-
-lpfc_debug_dump_fcp_cq
-======================
-
-.. c:function:: void lpfc_debug_dump_fcp_cq(struct lpfc_hba *phba, int fcp_wqidx)
-
-    dump all entries from a fcp work queue's cmpl queue
+    dump all entries from the fcp or nvme work queue
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param int fcp_wqidx:
-        Index to a FCP work queue.
+    :param int qtype:
+        *undescribed*
 
-.. _`lpfc_debug_dump_fcp_cq.description`:
+    :param int wqidx:
+        Index to a FCP or NVME work queue.
+
+.. _`lpfc_debug_dump_wq.description`:
 
 Description
 -----------
 
-This function dumps all entries from a FCP complete queue which is
-associated to the FCP work queue specified by the \ ``fcp_wqidx``\ .
+This function dumps all entries from a FCP or NVME work queue specified
+by the wqidx.
+
+.. _`lpfc_debug_dump_cq`:
+
+lpfc_debug_dump_cq
+==================
+
+.. c:function:: void lpfc_debug_dump_cq(struct lpfc_hba *phba, int qtype, int wqidx)
+
+    dump all entries from a fcp or nvme work queue's cmpl queue
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param int qtype:
+        *undescribed*
+
+    :param int wqidx:
+        Index to a FCP work queue.
+
+.. _`lpfc_debug_dump_cq.description`:
+
+Description
+-----------
+
+This function dumps all entries from a FCP or NVME completion queue
+which is associated to the work queue specified by the \ ``wqidx``\ .
 
 .. _`lpfc_debug_dump_hba_eq`:
 
 lpfc_debug_dump_hba_eq
 ======================
 
-.. c:function:: void lpfc_debug_dump_hba_eq(struct lpfc_hba *phba, int fcp_wqidx)
+.. c:function:: void lpfc_debug_dump_hba_eq(struct lpfc_hba *phba, int qidx)
 
     dump all entries from a fcp work queue's evt queue
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param int fcp_wqidx:
-        Index to a FCP work queue.
+    :param int qidx:
+        *undescribed*
 
 .. _`lpfc_debug_dump_hba_eq.description`:
 
@@ -112,44 +118,6 @@ Description
 
 This function dumps all entries from a FCP event queue which is
 associated to the FCP work queue specified by the \ ``fcp_wqidx``\ .
-
-.. _`lpfc_debug_dump_els_wq`:
-
-lpfc_debug_dump_els_wq
-======================
-
-.. c:function:: void lpfc_debug_dump_els_wq(struct lpfc_hba *phba)
-
-    dump all entries from the els work queue
-
-    :param struct lpfc_hba \*phba:
-        Pointer to HBA context object.
-
-.. _`lpfc_debug_dump_els_wq.description`:
-
-Description
------------
-
-This function dumps all entries from the ELS work queue.
-
-.. _`lpfc_debug_dump_mbx_wq`:
-
-lpfc_debug_dump_mbx_wq
-======================
-
-.. c:function:: void lpfc_debug_dump_mbx_wq(struct lpfc_hba *phba)
-
-    dump all entries from the mbox work queue
-
-    :param struct lpfc_hba \*phba:
-        Pointer to HBA context object.
-
-.. _`lpfc_debug_dump_mbx_wq.description`:
-
-Description
------------
-
-This function dumps all entries from the MBOX work queue.
 
 .. _`lpfc_debug_dump_dat_rq`:
 
@@ -188,44 +156,6 @@ Description
 -----------
 
 This function dumps all entries from the receive header queue.
-
-.. _`lpfc_debug_dump_els_cq`:
-
-lpfc_debug_dump_els_cq
-======================
-
-.. c:function:: void lpfc_debug_dump_els_cq(struct lpfc_hba *phba)
-
-    dump all entries from the els complete queue
-
-    :param struct lpfc_hba \*phba:
-        Pointer to HBA context object.
-
-.. _`lpfc_debug_dump_els_cq.description`:
-
-Description
------------
-
-This function dumps all entries from the els complete queue.
-
-.. _`lpfc_debug_dump_mbx_cq`:
-
-lpfc_debug_dump_mbx_cq
-======================
-
-.. c:function:: void lpfc_debug_dump_mbx_cq(struct lpfc_hba *phba)
-
-    dump all entries from the mbox complete queue
-
-    :param struct lpfc_hba \*phba:
-        Pointer to HBA context object.
-
-.. _`lpfc_debug_dump_mbx_cq.description`:
-
-Description
------------
-
-This function dumps all entries from the mbox complete queue.
 
 .. _`lpfc_debug_dump_wq_by_id`:
 

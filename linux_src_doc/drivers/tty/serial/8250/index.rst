@@ -8,4 +8,5 @@
     :maxdepth: 1
 
     8250_core_c
+    8250_exar_c
     8250_port_c

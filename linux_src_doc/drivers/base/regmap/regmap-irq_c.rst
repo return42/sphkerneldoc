@@ -11,57 +11,27 @@ regmap_add_irq_chip
     Use standard regmap IRQ controller handling
 
     :param struct regmap \*map:
-        *undescribed*
+        The regmap for the device.
 
     :param int irq:
-        *undescribed*
+        The IRQ the device uses to signal interrupts.
 
     :param int irq_flags:
-        *undescribed*
+        The IRQF\_ flags to use for the primary interrupt.
 
     :param int irq_base:
-        *undescribed*
+        Allocate at specific IRQ number if irq_base > 0.
 
     :param const struct regmap_irq_chip \*chip:
-        *undescribed*
+        Configuration for the interrupt controller.
 
     :param struct regmap_irq_chip_data \*\*data:
-        *undescribed*
+        Runtime data structure for the controller, allocated on success.
 
-.. _`regmap_add_irq_chip.map`:
+.. _`regmap_add_irq_chip.description`:
 
-map
----
-
-The regmap for the device.
-
-.. _`regmap_add_irq_chip.irq`:
-
-irq
----
-
-The IRQ the device uses to signal interrupts
-
-.. _`regmap_add_irq_chip.irq_flags`:
-
-irq_flags
----------
-
-The IRQF\_ flags to use for the primary interrupt.
-
-.. _`regmap_add_irq_chip.chip`:
-
-chip
-----
-
-Configuration for the interrupt controller.
-
-.. _`regmap_add_irq_chip.data`:
-
-data
-----
-
-Runtime data structure for the controller, allocated on success
+Description
+-----------
 
 Returns 0 on success or an errno on failure.
 
@@ -82,14 +52,14 @@ regmap_del_irq_chip
         Primary IRQ for the device
 
     :param struct regmap_irq_chip_data \*d:
-        regmap_irq_chip_data allocated by \ :c:func:`regmap_add_irq_chip`\ 
+        &regmap_irq_chip_data allocated by \ :c:func:`regmap_add_irq_chip`\ 
 
 .. _`regmap_del_irq_chip.description`:
 
 Description
 -----------
 
-This function also dispose all mapped irq on chip.
+This function also disposes of all mapped IRQs on the chip.
 
 .. _`devm_regmap_add_irq_chip`:
 
@@ -113,7 +83,7 @@ devm_regmap_add_irq_chip
         The IRQF\_ flags to use for the primary interrupt.
 
     :param int irq_base:
-        *undescribed*
+        Allocate at specific IRQ number if irq_base > 0.
 
     :param const struct regmap_irq_chip \*chip:
         Configuration for the interrupt controller.
@@ -128,7 +98,7 @@ Description
 
 Returns 0 on success or an errno on failure.
 
-The regmap_irq_chip data automatically be released when the device is
+The \ :c:type:`struct regmap_irq_chip_data <regmap_irq_chip_data>`\  will be automatically released when the device is
 unbound.
 
 .. _`devm_regmap_del_irq_chip`:
@@ -144,10 +114,17 @@ devm_regmap_del_irq_chip
         Device for which which resource was allocated.
 
     :param int irq:
-        Primary IRQ for the device
+        Primary IRQ for the device.
 
     :param struct regmap_irq_chip_data \*data:
-        *undescribed*
+        &regmap_irq_chip_data allocated by \ :c:func:`regmap_add_irq_chip`\ .
+
+.. _`devm_regmap_del_irq_chip.description`:
+
+Description
+-----------
+
+A resource managed version of \ :c:func:`regmap_del_irq_chip`\ .
 
 .. _`regmap_irq_chip_get_base`:
 
@@ -159,7 +136,7 @@ regmap_irq_chip_get_base
     Retrieve interrupt base for a regmap IRQ chip
 
     :param struct regmap_irq_chip_data \*data:
-        regmap_irq controller to operate on.
+        regmap irq controller to operate on.
 
 .. _`regmap_irq_chip_get_base.description`:
 
@@ -178,10 +155,10 @@ regmap_irq_get_virq
     Map an interrupt on a chip to a virtual IRQ
 
     :param struct regmap_irq_chip_data \*data:
-        regmap_irq controller to operate on.
+        regmap irq controller to operate on.
 
     :param int irq:
-        index of the interrupt requested in the chip IRQs
+        index of the interrupt requested in the chip IRQs.
 
 .. _`regmap_irq_get_virq.description`:
 

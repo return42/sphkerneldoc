@@ -12,7 +12,7 @@ dma_buf_export
 
     :param const struct dma_buf_export_info \*exp_info:
         [in]    holds all the export related information provided
-        by the exporter. see struct dma_buf_export_info
+        by the exporter. see \ :c:type:`struct dma_buf_export_info <dma_buf_export_info>`\ 
         for further details.
 
 .. _`dma_buf_export.description`:
@@ -23,6 +23,9 @@ Description
 Returns, on success, a newly created dma_buf object, which wraps the
 supplied private data and operations for dma_buf_ops. On either missing
 ops, or error in allocating struct dma_buf, will return negative error.
+
+For most cases the easiest way to create \ ``exp_info``\  is through the
+\ ``DEFINE_DMA_BUF_EXPORT_INFO``\  macro.
 
 .. _`dma_buf_fd`:
 
@@ -84,7 +87,11 @@ dma_buf_put
 Description
 -----------
 
-Uses file's refcounting done implicitly by \ :c:func:`fput`\ 
+Uses file's refcounting done implicitly by \ :c:func:`fput`\ .
+
+If, as a result of this call, the refcount becomes 0, the 'release' file
+operation related to this fd is called. It calls \ :c:type:`dma_buf_ops.release <dma_buf_ops>`\  vfunc
+in turn, and frees the memory allocated for dmabuf when exported.
 
 .. _`dma_buf_attach`:
 
@@ -106,8 +113,21 @@ dma_buf_attach
 Description
 -----------
 
-Returns struct dma_buf_attachment * for this attachment; returns ERR_PTR on
-error.
+Returns struct dma_buf_attachment pointer for this attachment. Attachments
+must be cleaned up by calling \ :c:func:`dma_buf_detach`\ .
+
+.. _`dma_buf_attach.return`:
+
+Return
+------
+
+
+A pointer to newly created \ :c:type:`struct dma_buf_attachment <dma_buf_attachment>`\  on success, or a negative
+error code wrapped into a pointer on failure.
+
+Note that this can fail if the backing storage of \ ``dmabuf``\  is in a place not
+accessible to \ ``dev``\ , and cannot be moved to a more suitable place. This is
+indicated with the error code -EBUSY.
 
 .. _`dma_buf_detach`:
 
@@ -123,6 +143,13 @@ dma_buf_detach
 
     :param struct dma_buf_attachment \*attach:
         [in]    attachment to be detached; is free'd after this call.
+
+.. _`dma_buf_detach.description`:
+
+Description
+-----------
+
+Clean up a device attachment obtained by calling \ :c:func:`dma_buf_attach`\ .
 
 .. _`dma_buf_map_attachment`:
 
@@ -145,7 +172,12 @@ Description
 -----------
 
 Returns sg_table containing the scatterlist to be returned; returns ERR_PTR
-on error.
+on error. May return -EINTR if it is interrupted by a signal.
+
+A mapping must be unmapped again using \ :c:func:`dma_buf_map_attachment`\ . Note that
+the underlying backing storage is pinned for as long as a mapping exists,
+therefore users/importers should not hold onto a mapping for undue amounts of
+time.
 
 .. _`dma_buf_unmap_attachment`:
 
@@ -164,6 +196,13 @@ dma_buf_unmap_attachment
 
     :param enum dma_data_direction direction:
         [in]    direction of DMA transfer
+
+.. _`dma_buf_unmap_attachment.description`:
+
+Description
+-----------
+
+This unmaps a DMA mapping for \ ``attached``\  obtained by \ :c:func:`dma_buf_map_attachment`\ .
 
 .. _`dma_buf_begin_cpu_access`:
 
@@ -184,6 +223,10 @@ dma_buf_begin_cpu_access
 
 Description
 -----------
+
+After the cpu access is complete the caller should call
+\ :c:func:`dma_buf_end_cpu_access`\ . Only when cpu access is braketed by both calls is
+it guaranteed to be coherent with other DMA access.
 
 Can return negative error values, returns 0 on success.
 
@@ -206,6 +249,8 @@ dma_buf_end_cpu_access
 
 Description
 -----------
+
+This terminates CPU access started with \ :c:func:`dma_buf_begin_cpu_access`\ .
 
 Can return negative error values, returns 0 on success.
 

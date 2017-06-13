@@ -214,7 +214,7 @@ cgroup_taskset_for_each_leader
         the destination css
 
     :param  tset:
-        takset to iterate
+        taskset to iterate
 
 .. _`cgroup_taskset_for_each_leader.description`:
 

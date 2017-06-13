@@ -7,8 +7,9 @@ include
 .. toctree::
     :maxdepth: 1
 
-    apparmor_h
     context_h
     file_h
+    lib_h
     match_h
     policy_h
+    policy_ns_h

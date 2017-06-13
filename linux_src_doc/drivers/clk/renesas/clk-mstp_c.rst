@@ -22,6 +22,7 @@ Definition
         void __iomem *smstpcr;
         void __iomem *mstpsr;
         spinlock_t lock;
+        bool width_8bit;
     }
 
 .. _`mstp_clock_group.members`:
@@ -40,6 +41,9 @@ mstpsr
 
 lock
     protects writes to SMSTPCR
+
+width_8bit
+    registers are 8-bit, not 32-bit
 
 .. _`mstp_clock`:
 

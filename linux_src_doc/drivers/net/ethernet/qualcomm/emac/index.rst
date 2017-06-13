@@ -8,3 +8,4 @@ emac
     :maxdepth: 1
 
     emac-phy_c
+    emac_c

@@ -31,6 +31,61 @@ rpcrdma_wc_receive
     :param struct ib_wc \*wc:
         completed WR
 
+.. _`rpcrdma_ia_open`:
+
+rpcrdma_ia_open
+===============
+
+.. c:function:: int rpcrdma_ia_open(struct rpcrdma_xprt *xprt, struct sockaddr *addr)
+
+    Open and initialize an Interface Adapter.
+
+    :param struct rpcrdma_xprt \*xprt:
+        controlling transport
+
+    :param struct sockaddr \*addr:
+        IP address of remote peer
+
+.. _`rpcrdma_ia_open.description`:
+
+Description
+-----------
+
+Returns 0 on success, negative errno if an appropriate
+Interface Adapter could not be found and opened.
+
+.. _`rpcrdma_ia_remove`:
+
+rpcrdma_ia_remove
+=================
+
+.. c:function:: void rpcrdma_ia_remove(struct rpcrdma_ia *ia)
+
+    Handle device driver unload
+
+    :param struct rpcrdma_ia \*ia:
+        interface adapter being removed
+
+.. _`rpcrdma_ia_remove.description`:
+
+Description
+-----------
+
+Divest transport H/W resources associated with this adapter,
+but allow it to be restored later.
+
+.. _`rpcrdma_ia_close`:
+
+rpcrdma_ia_close
+================
+
+.. c:function:: void rpcrdma_ia_close(struct rpcrdma_ia *ia)
+
+    Clean up/close an IA.
+
+    :param struct rpcrdma_ia \*ia:
+        interface adapter to close
+
 .. _`rpcrdma_alloc_regbuf`:
 
 rpcrdma_alloc_regbuf

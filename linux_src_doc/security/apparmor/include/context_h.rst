@@ -6,9 +6,9 @@
 aa_alloc_file_context
 =====================
 
-.. c:function:: struct aa_file_cxt *aa_alloc_file_context(gfp_t gfp)
+.. c:function:: struct aa_file_ctx *aa_alloc_file_context(gfp_t gfp)
 
-    allocate file_cxt
+    allocate file_ctx
 
     :param gfp_t gfp:
         gfp flags for allocation
@@ -18,44 +18,44 @@ aa_alloc_file_context
 Return
 ------
 
-file_cxt or NULL on failure
+file_ctx or NULL on failure
 
 .. _`aa_free_file_context`:
 
 aa_free_file_context
 ====================
 
-.. c:function:: void aa_free_file_context(struct aa_file_cxt *cxt)
+.. c:function:: void aa_free_file_context(struct aa_file_ctx *ctx)
 
-    free a file_cxt
+    free a file_ctx
 
-    :param struct aa_file_cxt \*cxt:
-        file_cxt to free  (MAYBE_NULL)
+    :param struct aa_file_ctx \*ctx:
+        file_ctx to free  (MAYBE_NULL)
 
-.. _`aa_task_cxt`:
+.. _`aa_task_ctx`:
 
-struct aa_task_cxt
+struct aa_task_ctx
 ==================
 
-.. c:type:: struct aa_task_cxt
+.. c:type:: struct aa_task_ctx
 
     primary label for confined tasks
 
-.. _`aa_task_cxt.definition`:
+.. _`aa_task_ctx.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct aa_task_cxt {
+    struct aa_task_ctx {
         struct aa_profile *profile;
         struct aa_profile *onexec;
         struct aa_profile *previous;
         u64 token;
     }
 
-.. _`aa_task_cxt.members`:
+.. _`aa_task_ctx.members`:
 
 Members
 -------
@@ -72,7 +72,7 @@ previous
 token
     magic value the task must know for returning to \ ``previous_profile``\ 
 
-.. _`aa_task_cxt.description`:
+.. _`aa_task_ctx.description`:
 
 Description
 -----------
@@ -80,7 +80,7 @@ Description
 Contains the task's current profile (which could change due to
 change_hat).  Plus the hat_magic needed during change_hat.
 
-.. _`aa_task_cxt.todo`:
+.. _`aa_task_ctx.todo`:
 
 TODO
 ----
@@ -192,16 +192,16 @@ up to date confining profile or the ns unconfined profile (NOT NULL)
 This fn will update the tasks cred structure if the profile has been
 replaced.  Not safe to call inside locks
 
-.. _`aa_clear_task_cxt_trans`:
+.. _`aa_clear_task_ctx_trans`:
 
-aa_clear_task_cxt_trans
+aa_clear_task_ctx_trans
 =======================
 
-.. c:function:: void aa_clear_task_cxt_trans(struct aa_task_cxt *cxt)
+.. c:function:: void aa_clear_task_ctx_trans(struct aa_task_ctx *ctx)
 
-    clear transition tracking info from the cxt
+    clear transition tracking info from the ctx
 
-    :param struct aa_task_cxt \*cxt:
+    :param struct aa_task_ctx \*ctx:
         task context to clear (NOT NULL)
 
 .. This file was automatic generated / don't edit.

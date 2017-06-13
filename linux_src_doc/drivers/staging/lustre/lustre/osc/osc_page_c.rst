@@ -165,23 +165,23 @@ osc_lru_reclaim
     :param unsigned long npages:
         *undescribed*
 
-.. _`osc_lru_reserve`:
+.. _`osc_lru_alloc`:
 
-osc_lru_reserve
-===============
+osc_lru_alloc
+=============
 
-.. c:function:: int osc_lru_reserve(const struct lu_env *env, struct osc_object *obj, struct osc_page *opg)
+.. c:function:: int osc_lru_alloc(const struct lu_env *env, struct client_obd *cli, struct osc_page *opg)
 
     :param const struct lu_env \*env:
         *undescribed*
 
-    :param struct osc_object \*obj:
+    :param struct client_obd \*cli:
         *undescribed*
 
     :param struct osc_page \*opg:
         *undescribed*
 
-.. _`osc_lru_reserve.description`:
+.. _`osc_lru_alloc.description`:
 
 Description
 -----------
@@ -189,6 +189,49 @@ Description
 Usually the LRU slots are reserved in \ :c:func:`osc_io_iter_rw_init`\ .
 Only in the case that the LRU slots are in extreme shortage, it should
 have reserved enough slots for an IO.
+
+.. _`osc_lru_reserve`:
+
+osc_lru_reserve
+===============
+
+.. c:function:: unsigned long osc_lru_reserve(struct client_obd *cli, unsigned long npages)
+
+    :param struct client_obd \*cli:
+        *undescribed*
+
+    :param unsigned long npages:
+        *undescribed*
+
+.. _`osc_lru_reserve.description`:
+
+Description
+-----------
+
+The benefit of doing this is to reduce contention against atomic counter
+cl_lru_left by changing it from per-page access to per-IO access.
+
+.. _`osc_lru_unreserve`:
+
+osc_lru_unreserve
+=================
+
+.. c:function:: void osc_lru_unreserve(struct client_obd *cli, unsigned long npages)
+
+    :param struct client_obd \*cli:
+        *undescribed*
+
+    :param unsigned long npages:
+        *undescribed*
+
+.. _`osc_lru_unreserve.description`:
+
+Description
+-----------
+
+LRU slots reserved by \ :c:func:`osc_lru_reserve`\  may have entries left due to several
+reasons such as page already existing or I/O error. Those reserved slots
+should be freed by calling this function.
 
 .. _`unstable_page_accounting`:
 
@@ -237,6 +280,57 @@ osc_over_unstable_soft_limit
 
     :param struct client_obd \*cli:
         *undescribed*
+
+.. _`osc_cache_shrink_count`:
+
+osc_cache_shrink_count
+======================
+
+.. c:function:: unsigned long osc_cache_shrink_count(struct shrinker *sk, struct shrink_control *sc)
+
+    :param struct shrinker \*sk:
+        *undescribed*
+
+    :param struct shrink_control \*sc:
+        *undescribed*
+
+.. _`osc_cache_shrink_count.return`:
+
+Return
+------
+
+return # of cached LRU pages times reclaimation tendency
+SHRINK_STOP if it cannot do any scanning in this time
+
+.. _`osc_cache_shrink_scan`:
+
+osc_cache_shrink_scan
+=====================
+
+.. c:function:: unsigned long osc_cache_shrink_scan(struct shrinker *sk, struct shrink_control *sc)
+
+    >nr_to_scan cached LRU pages
+
+    :param struct shrinker \*sk:
+        *undescribed*
+
+    :param struct shrink_control \*sc:
+        *undescribed*
+
+.. _`osc_cache_shrink_scan.return`:
+
+Return
+------
+
+number of cached LRU pages reclaimed
+SHRINK_STOP if it cannot do any scanning in this time
+
+Linux kernel will loop calling this shrinker scan routine with
+sc->nr_to_scan = SHRINK_BATCH(128 for now) until kernel got enough memory.
+
+If sc->nr_to_scan is 0, the VM is querying the cache size, we don't need
+to scan and try to reclaim LRU pages, just return 0 and
+\ :c:func:`osc_cache_shrink_count`\  will report the LRU page number.
 
 .. This file was automatic generated / don't edit.
 

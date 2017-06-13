@@ -156,12 +156,9 @@ If some of the blocks are already allocated, thats ok too.
 gfs2_page_mkwrite
 =================
 
-.. c:function:: int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
+.. c:function:: int gfs2_page_mkwrite(struct vm_fault *vmf)
 
     Make a shared, \ :c:func:`mmap`\ ed, page writable
-
-    :param struct vm_area_struct \*vma:
-        The virtual memory area
 
     :param struct vm_fault \*vmf:
         The virtual memory fault containing the page to become writable

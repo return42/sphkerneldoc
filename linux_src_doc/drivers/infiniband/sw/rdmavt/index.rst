@@ -15,5 +15,6 @@ rdmavt
     mr_c
     pd_c
     qp_c
+    rc_c
     srq_c
     vt_c

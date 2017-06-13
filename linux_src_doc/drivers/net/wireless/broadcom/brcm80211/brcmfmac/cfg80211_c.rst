@@ -6,7 +6,7 @@
 brcmf_ap_add_vif
 ================
 
-.. c:function:: struct wireless_dev *brcmf_ap_add_vif(struct wiphy *wiphy, const char *name, u32 *flags, struct vif_params *params)
+.. c:function:: struct wireless_dev *brcmf_ap_add_vif(struct wiphy *wiphy, const char *name, struct vif_params *params)
 
     create a new AP virtual interface for multiple BSS
 
@@ -15,9 +15,6 @@ brcmf_ap_add_vif
 
     :param const char \*name:
         name of the new interface.
-
-    :param u32 \*flags:
-        not used.
 
     :param struct vif_params \*params:
         contains mac address for AP device.

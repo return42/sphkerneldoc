@@ -8,6 +8,7 @@ kernel
     :maxdepth: 1
 
     bpf/index
+    cgroup/index
     debug/index
     events/index
     gcov/index
@@ -26,13 +27,9 @@ kernel
     auditfilter_c
     auditsc_c
     capability_c
-    cgroup_c
-    cgroup_freezer_c
-    cgroup_pids_c
     context_tracking_c
     cpu_c
     cpu_pm_c
-    cpuset_c
     cred_c
     dma_c
     exit_c

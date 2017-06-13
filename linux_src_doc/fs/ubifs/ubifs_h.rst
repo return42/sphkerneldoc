@@ -1556,7 +1556,6 @@ Definition
 
     struct ubifs_info {
         struct super_block *vfs_sb;
-        struct backing_dev_info bdi;
         ino_t highest_inum;
         unsigned long long max_sqnum;
         unsigned long long cmt_no;
@@ -1765,9 +1764,6 @@ Members
 
 vfs_sb
     VFS \ ``struct``\  super_block object
-
-bdi
-    backing device info object to make VFS happy and disable read-ahead
 
 highest_inum
     highest used inode number

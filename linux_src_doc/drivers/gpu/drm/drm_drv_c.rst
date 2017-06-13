@@ -68,7 +68,14 @@ The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_ref`\  and
 Note that for purely virtual devices \ ``parent``\  can be NULL.
 
 Drivers that do not want to allocate their own device struct
-embedding struct \ :c:type:`struct drm_device <drm_device>`\  can call \ :c:func:`drm_dev_alloc`\  instead.
+embedding \ :c:type:`struct drm_device <drm_device>`\  can call \ :c:func:`drm_dev_alloc`\  instead. For drivers
+that do embed \ :c:type:`struct drm_device <drm_device>`\  it must be placed first in the overall
+structure, and the overall structure must be allocated using \ :c:func:`kmalloc`\ : The
+drm core's release function unconditionally calls \ :c:func:`kfree`\  on the \ ``dev``\  pointer
+when the final reference is released. To override this behaviour, and so
+allow embedding of the drm_device inside the driver's device struct at an
+arbitrary offset, you must supply a \ :c:type:`drm_driver.release <drm_driver>`\  callback and control
+the finalization explicitly.
 
 .. _`drm_dev_init.return`:
 
@@ -76,6 +83,31 @@ Return
 ------
 
 0 on success, or error code on failure.
+
+.. _`drm_dev_fini`:
+
+drm_dev_fini
+============
+
+.. c:function:: void drm_dev_fini(struct drm_device *dev)
+
+    Finalize a dead DRM device
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_dev_fini.description`:
+
+Description
+-----------
+
+Finalize a dead DRM device. This is the converse to \ :c:func:`drm_dev_init`\  and
+frees up all data allocated by it. All driver private data should be
+finalized first. Note that this function does not free the \ ``dev``\ , that is
+left to the caller.
+
+The ref-count of \ ``dev``\  must be zero, and \ :c:func:`drm_dev_fini`\  should only be called
+from a \ :c:type:`drm_driver.release <drm_driver>`\  callback.
 
 .. _`drm_dev_alloc`:
 
@@ -108,7 +140,7 @@ The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_ref`\  and
 
 Note that for purely virtual devices \ ``parent``\  can be NULL.
 
-Drivers that wish to subclass or embed struct \ :c:type:`struct drm_device <drm_device>`\  into their
+Drivers that wish to subclass or embed \ :c:type:`struct drm_device <drm_device>`\  into their
 own struct should look at using \ :c:func:`drm_dev_init`\  instead.
 
 .. _`drm_dev_alloc.return`:
@@ -195,9 +227,9 @@ NOTE
 ----
 
 To ensure backward compatibility with existing drivers method this
-function calls the ->load() method after registering the device nodes,
-creating race conditions. Usage of the ->load() methods is therefore
-deprecated, drivers must perform all initialization before calling
+function calls the \ :c:type:`drm_driver.load <drm_driver>`\  method after registering the device
+nodes, creating race conditions. Usage of the \ :c:type:`drm_driver.load <drm_driver>`\  methods is
+therefore deprecated, drivers must perform all initialization before calling
 \ :c:func:`drm_dev_register`\ .
 
 .. _`drm_dev_register.return`:

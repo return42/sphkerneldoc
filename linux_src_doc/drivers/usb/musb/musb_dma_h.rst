@@ -75,17 +75,22 @@ Definition
 .. code-block:: c
 
     struct dma_controller {
+        struct musb *musb;
         struct dma_channel *(*channel_alloc)(struct dma_controller *,struct musb_hw_ep *, u8 is_tx);
         void (*channel_release)(struct dma_channel *);
         int (*channel_program)(struct dma_channel *channel,u16 maxpacket, u8 mode,dma_addr_t dma_addr,u32 length);
         int (*channel_abort)(struct dma_channel *);
         int (*is_compatible)(struct dma_channel *channel,u16 maxpacket,void *buf, u32 length);
+        void (*dma_callback)(struct dma_controller *);
     }
 
 .. _`dma_controller.members`:
 
 Members
 -------
+
+musb
+    the usb controller
 
 channel_alloc
     call this to allocate a DMA channel
@@ -102,6 +107,10 @@ channel_abort
 
 is_compatible
     *undescribed*
+
+dma_callback
+    invoked on DMA completion, useful to run platform
+    code such IRQ acknowledgment.
 
 .. _`dma_controller.description`:
 

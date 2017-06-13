@@ -8,6 +8,7 @@ platform_data
     :maxdepth: 1
 
     media/index
+    x86/index
     ad5449_h
     ad5755_h
     ad5761_h
@@ -47,8 +48,8 @@ platform_data
     i2c-mux-reg_h
     i2c-s3c2410_h
     ina2xx_h
+    intel-spi_h
     invensense_mpu6050_h
-    iommu-omap_h
     keyboard-spear_h
     keypad-ep93xx_h
     keypad-nomadik-ske_h

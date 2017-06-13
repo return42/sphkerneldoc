@@ -32,3 +32,7 @@ cio
     qdio_thinint_c
     scm_c
     trace_h
+    vfio_ccw_cp_c
+    vfio_ccw_cp_h
+    vfio_ccw_drv_c
+    vfio_ccw_private_h

@@ -242,6 +242,138 @@ Return Value
 This routine returns the amount of bytes that were dumped into \ ``buf``\  and will
 not exceed \ ``size``\ .
 
+.. _`lpfc_debugfs_nvmestat_data`:
+
+lpfc_debugfs_nvmestat_data
+==========================
+
+.. c:function:: int lpfc_debugfs_nvmestat_data(struct lpfc_vport *vport, char *buf, int size)
+
+    Dump target node list to a buffer
+
+    :param struct lpfc_vport \*vport:
+        The vport to gather target node info from.
+
+    :param char \*buf:
+        The buffer to dump log into.
+
+    :param int size:
+        The maximum amount of data to process.
+
+.. _`lpfc_debugfs_nvmestat_data.description`:
+
+Description
+-----------
+
+This routine dumps the NVME statistics associated with \ ``vport``\ 
+
+.. _`lpfc_debugfs_nvmestat_data.return-value`:
+
+Return Value
+------------
+
+This routine returns the amount of bytes that were dumped into \ ``buf``\  and will
+not exceed \ ``size``\ .
+
+.. _`lpfc_debugfs_nvmektime_data`:
+
+lpfc_debugfs_nvmektime_data
+===========================
+
+.. c:function:: int lpfc_debugfs_nvmektime_data(struct lpfc_vport *vport, char *buf, int size)
+
+    Dump target node list to a buffer
+
+    :param struct lpfc_vport \*vport:
+        The vport to gather target node info from.
+
+    :param char \*buf:
+        The buffer to dump log into.
+
+    :param int size:
+        The maximum amount of data to process.
+
+.. _`lpfc_debugfs_nvmektime_data.description`:
+
+Description
+-----------
+
+This routine dumps the NVME statistics associated with \ ``vport``\ 
+
+.. _`lpfc_debugfs_nvmektime_data.return-value`:
+
+Return Value
+------------
+
+This routine returns the amount of bytes that were dumped into \ ``buf``\  and will
+not exceed \ ``size``\ .
+
+.. _`lpfc_debugfs_nvmeio_trc_data`:
+
+lpfc_debugfs_nvmeio_trc_data
+============================
+
+.. c:function:: int lpfc_debugfs_nvmeio_trc_data(struct lpfc_hba *phba, char *buf, int size)
+
+    Dump NVME IO trace list to a buffer
+
+    :param struct lpfc_hba \*phba:
+        The phba to gather target node info from.
+
+    :param char \*buf:
+        The buffer to dump log into.
+
+    :param int size:
+        The maximum amount of data to process.
+
+.. _`lpfc_debugfs_nvmeio_trc_data.description`:
+
+Description
+-----------
+
+This routine dumps the NVME IO trace associated with \ ``phba``\ 
+
+.. _`lpfc_debugfs_nvmeio_trc_data.return-value`:
+
+Return Value
+------------
+
+This routine returns the amount of bytes that were dumped into \ ``buf``\  and will
+not exceed \ ``size``\ .
+
+.. _`lpfc_debugfs_cpucheck_data`:
+
+lpfc_debugfs_cpucheck_data
+==========================
+
+.. c:function:: int lpfc_debugfs_cpucheck_data(struct lpfc_vport *vport, char *buf, int size)
+
+    Dump target node list to a buffer
+
+    :param struct lpfc_vport \*vport:
+        The vport to gather target node info from.
+
+    :param char \*buf:
+        The buffer to dump log into.
+
+    :param int size:
+        The maximum amount of data to process.
+
+.. _`lpfc_debugfs_cpucheck_data.description`:
+
+Description
+-----------
+
+This routine dumps the NVME statistics associated with \ ``vport``\ 
+
+.. _`lpfc_debugfs_cpucheck_data.return-value`:
+
+Return Value
+------------
+
+This routine returns the amount of bytes that were dumped into \ ``buf``\  and will
+not exceed \ ``size``\ .
+
 .. _`lpfc_debugfs_disc_trc`:
 
 lpfc_debugfs_disc_trc
@@ -311,6 +443,39 @@ Description
 
 This routine is used by the driver code to add a debugfs log entry to the
 discovery trace buffer associated with \ ``vport``\ . \ ``fmt``\ , \ ``data1``\ , \ ``data2``\ , and
+\ ``data3``\  are used like printf when displaying the log.
+
+.. _`lpfc_debugfs_nvme_trc`:
+
+lpfc_debugfs_nvme_trc
+=====================
+
+.. c:function:: void lpfc_debugfs_nvme_trc(struct lpfc_hba *phba, char *fmt, uint16_t data1, uint16_t data2, uint32_t data3)
+
+    Store NVME/NVMET trace log
+
+    :param struct lpfc_hba \*phba:
+        The phba to associate this trace string with for retrieval.
+
+    :param char \*fmt:
+        Format string to be displayed when dumping the log.
+
+    :param uint16_t data1:
+        1st data parameter to be applied to \ ``fmt``\ .
+
+    :param uint16_t data2:
+        2nd data parameter to be applied to \ ``fmt``\ .
+
+    :param uint32_t data3:
+        3rd data parameter to be applied to \ ``fmt``\ .
+
+.. _`lpfc_debugfs_nvme_trc.description`:
+
+Description
+-----------
+
+This routine is used by the driver code to add a debugfs log entry to the
+nvme trace buffer associated with \ ``phba``\ . \ ``fmt``\ , \ ``data1``\ , \ ``data2``\ , and
 \ ``data3``\  are used like printf when displaying the log.
 
 .. _`lpfc_debugfs_disc_trc_open`:
@@ -923,6 +1088,9 @@ Description
 
 This routine reads data from the \ ``phba``\  SLI4 PCI function queue information,
 and copies to user \ ``buf``\ .
+This routine only returns 1 EQs worth of information. It remembers the last
+EQ read and jumps to the next EQ. Thus subsequent calls to queInfo will
+retrieve all EQs allocated for the phba.
 
 .. _`lpfc_idiag_queinfo_read.return`:
 

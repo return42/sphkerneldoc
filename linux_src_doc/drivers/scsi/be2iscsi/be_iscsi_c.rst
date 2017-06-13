@@ -69,24 +69,6 @@ beiscsi_conn_create
     :param u32 cid:
         iscsi cid
 
-.. _`beiscsi_bindconn_cid`:
-
-beiscsi_bindconn_cid
-====================
-
-.. c:function:: int beiscsi_bindconn_cid(struct beiscsi_hba *phba, struct beiscsi_conn *beiscsi_conn, unsigned int cid)
-
-    Bind the beiscsi_conn with phba connection table
-
-    :param struct beiscsi_hba \*phba:
-        The phba instance
-
-    :param struct beiscsi_conn \*beiscsi_conn:
-        The pointer to  beiscsi_conn structure
-
-    :param unsigned int cid:
-        The cid to free
-
 .. _`beiscsi_conn_bind`:
 
 beiscsi_conn_bind
@@ -433,35 +415,24 @@ Description
 Before the connection resource are freed flush
 all the CQ enteries
 
-.. _`beiscsi_close_conn`:
+.. _`beiscsi_conn_close`:
 
-beiscsi_close_conn
+beiscsi_conn_close
 ==================
 
-.. c:function:: int beiscsi_close_conn(struct beiscsi_endpoint *beiscsi_ep, int flag)
+.. c:function:: int beiscsi_conn_close(struct beiscsi_endpoint *beiscsi_ep)
 
-    Upload the  connection
+    Invalidate and upload connection
 
     :param struct beiscsi_endpoint \*beiscsi_ep:
         *undescribed*
 
-    :param int flag:
-        The type of connection closure
+.. _`beiscsi_conn_close.description`:
 
-.. _`beiscsi_unbind_conn_to_cid`:
+Description
+-----------
 
-beiscsi_unbind_conn_to_cid
-==========================
-
-.. c:function:: int beiscsi_unbind_conn_to_cid(struct beiscsi_hba *phba, unsigned int cid)
-
-    Unbind the beiscsi_conn from phba conn table
-
-    :param struct beiscsi_hba \*phba:
-        The phba instance
-
-    :param unsigned int cid:
-        The cid to free
+Returns 0 on success,  -1 on failure.
 
 .. _`beiscsi_ep_disconnect`:
 

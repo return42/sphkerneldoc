@@ -153,6 +153,7 @@ Return \ ``port``\ 's speed in 802.3ad enum format. i.e. one of:
 \ ``AD_LINK_SPEED_2500MBPS``\ ,
 \ ``AD_LINK_SPEED_10000MBPS``\ 
 \ ``AD_LINK_SPEED_20000MBPS``\ 
+\ ``AD_LINK_SPEED_25000MBPS``\ 
 \ ``AD_LINK_SPEED_40000MBPS``\ 
 \ ``AD_LINK_SPEED_56000MBPS``\ 
 \ ``AD_LINK_SPEED_100000MBPS``\ 

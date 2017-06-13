@@ -395,6 +395,25 @@ cxlflash_restore_luntable
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
 
+.. _`get_num_ports`:
+
+get_num_ports
+=============
+
+.. c:function:: u8 get_num_ports(u32 psm)
+
+    compute number of ports from port selection mask
+
+    :param u32 psm:
+        Port selection mask.
+
+.. _`get_num_ports.return`:
+
+Return
+------
+
+Population count of port selection mask
+
 .. _`init_luntable`:
 
 init_luntable
@@ -415,9 +434,9 @@ init_luntable
 Description
 -----------
 
-On successful return, a LUN table entry is created.
-At the top for LUNs visible on both ports.
-At the bottom for LUNs visible only on one port.
+On successful return, a LUN table entry is created:
+- at the top for LUNs visible on multiple ports.
+- at the bottom for LUNs visible only on one port.
 
 .. _`init_luntable.return`:
 

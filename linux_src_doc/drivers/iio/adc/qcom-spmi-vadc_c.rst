@@ -1,82 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iio/adc/qcom-spmi-vadc.c
 
-.. _`vadc_linear_graph`:
-
-struct vadc_linear_graph
-========================
-
-.. c:type:: struct vadc_linear_graph
-
-    Represent ADC characteristics.
-
-.. _`vadc_linear_graph.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct vadc_linear_graph {
-        s32 dy;
-        s32 dx;
-        s32 gnd;
-    }
-
-.. _`vadc_linear_graph.members`:
-
-Members
--------
-
-dy
-    numerator slope to calculate the gain.
-
-dx
-    denominator slope to calculate the gain.
-
-gnd
-    A/D word of the ground reference used for the channel.
-
-.. _`vadc_linear_graph.description`:
-
-Description
------------
-
-Each ADC device has different offset and gain parameters which are
-computed to calibrate the device.
-
-.. _`vadc_prescale_ratio`:
-
-struct vadc_prescale_ratio
-==========================
-
-.. c:type:: struct vadc_prescale_ratio
-
-    Represent scaling ratio for ADC input.
-
-.. _`vadc_prescale_ratio.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct vadc_prescale_ratio {
-        u32 num;
-        u32 den;
-    }
-
-.. _`vadc_prescale_ratio.members`:
-
-Members
--------
-
-num
-    the inverse numerator of the gain applied to the input channel.
-
-den
-    the inverse denominator of the gain applied to the input channel.
-
 .. _`vadc_channel_prop`:
 
 struct vadc_channel_prop
@@ -100,6 +24,7 @@ Definition
         unsigned int prescale;
         unsigned int hw_settle_time;
         unsigned int avg_samples;
+        enum vadc_scale_fn_type scale_fn_type;
     }
 
 .. _`vadc_channel_prop.members`:
@@ -126,6 +51,10 @@ hw_settle_time
 avg_samples
     ability to provide single result from the ADC
     that is an average of multiple measurements.
+
+scale_fn_type
+    Represents the scaling function to convert voltage
+    physical units desired by the client for the channel.
 
 .. _`vadc_priv`:
 

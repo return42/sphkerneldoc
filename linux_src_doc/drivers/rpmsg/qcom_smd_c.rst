@@ -19,6 +19,7 @@ Definition
 
     struct qcom_smd_edge {
         struct device dev;
+        const char *name;
         struct device_node *of_node;
         unsigned edge_id;
         unsigned remote_pid;
@@ -41,6 +42,9 @@ Members
 -------
 
 dev
+    *undescribed*
+
+name
     *undescribed*
 
 of_node

@@ -71,7 +71,7 @@ Description
 
 Allows platform initialisation code to define and constrain
 regulator circuits e.g. valid voltage/current ranges, etc.  NOTE:
-Constraints \*must\* be set by platform code in order for some
+Constraints *must* be set by platform code in order for some
 regulator operations to proceed i.e. set_voltage, set_current_limit,
 set_mode.
 
@@ -132,7 +132,7 @@ need to provide board-specific regulator names as platform data.
 regulator_dev_lookup
 ====================
 
-.. c:function:: struct regulator_dev *regulator_dev_lookup(struct device *dev, const char *supply, int *ret)
+.. c:function:: struct regulator_dev *regulator_dev_lookup(struct device *dev, const char *supply)
 
     lookup a regulator device.
 
@@ -142,18 +142,17 @@ regulator_dev_lookup
     :param const char \*supply:
         Supply name or regulator ID.
 
-    :param int \*ret:
-        0 on success, -ENODEV if lookup fails permanently, -EPROBE_DEFER if
-        lookup could succeed in the future.
-
 .. _`regulator_dev_lookup.description`:
 
 Description
 -----------
 
 If successful, returns a struct regulator_dev that corresponds to the name
-\ ``supply``\  and with the embedded struct device refcount incremented by one,
-or NULL on failure. The refcount must be dropped by calling \ :c:func:`put_device`\ .
+\ ``supply``\  and with the embedded struct device refcount incremented by one.
+The refcount must be dropped by calling \ :c:func:`put_device`\ .
+On failure one of the following ERR-PTR-encoded values is returned:
+-ENODEV if lookup fails permanently, -EPROBE_DEFER if lookup could succeed
+in the future.
 
 .. _`regulator_get`:
 
@@ -431,7 +430,7 @@ Delay for the requested amount of time as per the guidelines in
 ---------------------------------------------------------------
 
 
-Documentation/timers/timers-howto.txt
+    Documentation/timers/timers-howto.txt
 
 The assumption here is that regulators will never be enabled in
 atomic context and therefore sleeping functions can be used.
@@ -519,7 +518,7 @@ Forcibly disable the regulator output voltage or current.
 NOTE
 ----
 
-this \*will\* disable the regulator output even if other consumer
+this *will* disable the regulator output even if other consumer
 devices have it enabled. This should be used for situations when device
 damage will likely occur if the regulator is not disabled (e.g. over temp).
 
@@ -1065,9 +1064,9 @@ consumption tables) when they change operational status and hence power
 state. Examples of operational state changes that can affect power
 consumption are :-
 
-o Device is opened / closed.
-o Device I/O is about to begin or has just finished.
-o Device is idling in between work.
+   o Device is opened / closed.
+   o Device I/O is about to begin or has just finished.
+   o Device is idling in between work.
 
 This information is also exported via sysfs to userspace.
 

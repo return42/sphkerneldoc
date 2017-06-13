@@ -58,14 +58,8 @@ __list_del_entry
 
     :param struct list_head \*entry:
         the element to delete from the list.
-
-.. _`__list_del_entry.note`:
-
-Note
-----
-
-list_empty() on entry does not return true after this, the entry is
-in an undefined state.
+        Note: \ :c:func:`list_empty`\  on entry does not return true after this, the entry is
+        in an undefined state.
 
 .. _`list_replace`:
 
@@ -175,7 +169,7 @@ list_empty_careful
 Description
 -----------
 
-tests whether a list is empty \_and\_ checks that no other CPU might be
+tests whether a list is empty _and_ checks that no other CPU might be
 in the process of modifying either member (next or prev)
 
 .. _`list_empty_careful.note`:
@@ -420,7 +414,7 @@ list_next_entry
     get the next element in list
 
     :param  pos:
-        the type \* to cursor
+        the type * to cursor
 
     :param  member:
         the name of the list_head within the struct.
@@ -435,7 +429,7 @@ list_prev_entry
     get the prev element in list
 
     :param  pos:
-        the type \* to cursor
+        the type * to cursor
 
     :param  member:
         the name of the list_head within the struct.
@@ -516,7 +510,7 @@ list_for_each_entry
     iterate over list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -534,7 +528,7 @@ list_for_each_entry_reverse
     iterate backwards over list of given type.
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -552,7 +546,7 @@ list_prepare_entry
     prepare a pos entry for use in \ :c:func:`list_for_each_entry_continue`\ 
 
     :param  pos:
-        the type \* to use as a start point
+        the type * to use as a start point
 
     :param  head:
         the head of the list
@@ -577,7 +571,7 @@ list_for_each_entry_continue
     continue iteration over list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -603,7 +597,7 @@ list_for_each_entry_continue_reverse
     iterate backwards from the given point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -629,7 +623,7 @@ list_for_each_entry_from
     iterate over list of given type from the current point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -644,6 +638,31 @@ Description
 
 Iterate over list of given type, continuing from current position.
 
+.. _`list_for_each_entry_from_reverse`:
+
+list_for_each_entry_from_reverse
+================================
+
+.. c:function::  list_for_each_entry_from_reverse( pos,  head,  member)
+
+    iterate backwards over list of given type from the current point
+
+    :param  pos:
+        the type * to use as a loop cursor.
+
+    :param  head:
+        the head for your list.
+
+    :param  member:
+        the name of the list_head within the struct.
+
+.. _`list_for_each_entry_from_reverse.description`:
+
+Description
+-----------
+
+Iterate backwards over list of given type, continuing from current position.
+
 .. _`list_for_each_entry_safe`:
 
 list_for_each_entry_safe
@@ -654,10 +673,10 @@ list_for_each_entry_safe
     iterate over list of given type safe against removal of list entry
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  n:
-        another type \* to use as temporary storage
+        another type * to use as temporary storage
 
     :param  head:
         the head for your list.
@@ -675,10 +694,10 @@ list_for_each_entry_safe_continue
     continue list iteration safe against removal
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  n:
-        another type \* to use as temporary storage
+        another type * to use as temporary storage
 
     :param  head:
         the head for your list.
@@ -704,10 +723,10 @@ list_for_each_entry_safe_from
     iterate over list from current point safe against removal
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  n:
-        another type \* to use as temporary storage
+        another type * to use as temporary storage
 
     :param  head:
         the head for your list.
@@ -733,10 +752,10 @@ list_for_each_entry_safe_reverse
     iterate backwards over list safe against removal
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  n:
-        another type \* to use as temporary storage
+        another type * to use as temporary storage
 
     :param  head:
         the head for your list.
@@ -791,7 +810,7 @@ hlist_for_each_entry
     iterate over list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -809,7 +828,7 @@ hlist_for_each_entry_continue
     iterate over a hlist continuing after current point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  member:
         the name of the hlist_node within the struct.
@@ -824,7 +843,7 @@ hlist_for_each_entry_from
     iterate over a hlist continuing from current point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  member:
         the name of the hlist_node within the struct.
@@ -839,7 +858,7 @@ hlist_for_each_entry_safe
     iterate over list of given type safe against removal of list entry
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  n:
         another \ :c:type:`struct hlist_node <hlist_node>`\  to use as temporary storage

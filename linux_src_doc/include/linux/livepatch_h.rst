@@ -21,10 +21,14 @@ Definition
         const char *old_name;
         void *new_func;
         unsigned long old_sympos;
+        bool immediate;
         unsigned long old_addr;
         struct kobject kobj;
-        enum klp_state state;
         struct list_head stack_node;
+        unsigned long old_size;
+        unsigned long new_size;
+        bool patched;
+        bool transition;
     }
 
 .. _`klp_func.members`:
@@ -42,17 +46,49 @@ old_sympos
     a hint indicating which symbol position the old function
     can be found (optional)
 
+immediate
+    patch the func immediately, bypassing safety mechanisms
+
 old_addr
     the address of the function being patched
 
 kobj
     kobject for sysfs resources
 
-state
-    tracks function-level patch application state
-
 stack_node
     list node for klp_ops func_stack list
+
+old_size
+    size of the old function
+
+new_size
+    size of the new function
+
+patched
+    the func has been added to the klp_ops list
+
+transition
+    the func is currently being applied or reverted
+
+.. _`klp_func.description`:
+
+Description
+-----------
+
+The patched and transition variables define the func's patching state.  When
+patching, a func is always in one of the following states:
+
+patched=0 transition=0: unpatched
+patched=0 transition=1: unpatched, temporary starting state
+patched=1 transition=1: patched, may be visible to some tasks
+patched=1 transition=0: patched, visible to all tasks
+
+And when unpatching, it goes in the reverse order:
+
+patched=1 transition=0: patched, visible to all tasks
+patched=1 transition=1: patched, may be visible to some tasks
+patched=0 transition=1: unpatched, temporary ending state
+patched=0 transition=0: unpatched
 
 .. _`klp_object`:
 
@@ -75,7 +111,7 @@ Definition
         struct klp_func *funcs;
         struct kobject kobj;
         struct module *mod;
-        enum klp_state state;
+        bool patched;
     }
 
 .. _`klp_object.members`:
@@ -96,8 +132,8 @@ mod
     kernel module associated with the patched object
     (NULL for vmlinux)
 
-state
-    tracks object-level patch application state
+patched
+    the object's funcs have been added to the klp_ops list
 
 .. _`klp_patch`:
 
@@ -118,9 +154,11 @@ Definition
     struct klp_patch {
         struct module *mod;
         struct klp_object *objs;
+        bool immediate;
         struct list_head list;
         struct kobject kobj;
-        enum klp_state state;
+        bool enabled;
+        struct completion finish;
     }
 
 .. _`klp_patch.members`:
@@ -134,14 +172,20 @@ mod
 objs
     object entries for kernel objects to be patched
 
+immediate
+    patch all funcs immediately, bypassing safety mechanisms
+
 list
     list node for global list of registered patches
 
 kobj
     kobject for sysfs resources
 
-state
-    tracks patch-level application state
+enabled
+    the patch is enabled (but operation may be incomplete)
+
+finish
+    for waiting till it is safe to remove the patch module
 
 .. This file was automatic generated / don't edit.
 

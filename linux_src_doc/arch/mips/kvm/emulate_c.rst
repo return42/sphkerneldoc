@@ -1,6 +1,74 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/kvm/emulate.c
 
+.. _`kvm_get_badinstr`:
+
+kvm_get_badinstr
+================
+
+.. c:function:: int kvm_get_badinstr(u32 *opc, struct kvm_vcpu *vcpu, u32 *out)
+
+    Get bad instruction encoding.
+
+    :param u32 \*opc:
+        Guest pointer to faulting instruction.
+
+    :param struct kvm_vcpu \*vcpu:
+        KVM VCPU information.
+
+    :param u32 \*out:
+        *undescribed*
+
+.. _`kvm_get_badinstr.description`:
+
+Description
+-----------
+
+Gets the instruction encoding of the faulting instruction, using the saved
+BadInstr register value if it exists, otherwise falling back to reading guest
+memory at \ ``opc``\ .
+
+.. _`kvm_get_badinstr.return`:
+
+Return
+------
+
+The instruction encoding of the faulting instruction.
+
+.. _`kvm_get_badinstrp`:
+
+kvm_get_badinstrp
+=================
+
+.. c:function:: int kvm_get_badinstrp(u32 *opc, struct kvm_vcpu *vcpu, u32 *out)
+
+    Get bad prior instruction encoding.
+
+    :param u32 \*opc:
+        Guest pointer to prior faulting instruction.
+
+    :param struct kvm_vcpu \*vcpu:
+        KVM VCPU information.
+
+    :param u32 \*out:
+        *undescribed*
+
+.. _`kvm_get_badinstrp.description`:
+
+Description
+-----------
+
+Gets the instruction encoding of the prior faulting instruction (the branch
+containing the delay slot which faulted), using the saved BadInstrP register
+value if it exists, otherwise falling back to reading guest memory at \ ``opc``\ .
+
+.. _`kvm_get_badinstrp.return`:
+
+Return
+------
+
+The instruction encoding of the prior faulting instruction.
+
 .. _`kvm_mips_count_disabled`:
 
 kvm_mips_count_disabled
@@ -200,6 +268,52 @@ handled by \ :c:func:`kvm_mips_freeze_timer`\ .
 
 Assumes !kvm_mips_count_disabled(@vcpu) (guest CP0_Count timer is running).
 
+.. _`kvm_mips_restore_hrtimer`:
+
+kvm_mips_restore_hrtimer
+========================
+
+.. c:function:: int kvm_mips_restore_hrtimer(struct kvm_vcpu *vcpu, ktime_t before, u32 count, int min_drift)
+
+    Restore hrtimer after a gap, updating expiry.
+
+    :param struct kvm_vcpu \*vcpu:
+        Virtual CPU.
+
+    :param ktime_t before:
+        Time before Count was saved, lower bound of drift calculation.
+
+    :param u32 count:
+        CP0_Count at point of restore.
+
+    :param int min_drift:
+        Minimum amount of drift permitted before correction.
+        Must be <= 0.
+
+.. _`kvm_mips_restore_hrtimer.description`:
+
+Description
+-----------
+
+Restores the timer from a particular \ ``count``\ , accounting for drift. This can
+be used in conjunction with \ :c:func:`kvm_mips_freeze_timer`\  when a hardware timer is
+to be used for a period of time, but the exact ktime corresponding to the
+final Count that must be restored is not known.
+
+It is gauranteed that a timer interrupt immediately after restore will be
+handled, but not if CP0_Compare is exactly at \ ``count``\ . That case should
+already be handled when the hardware timer state is saved.
+
+Assumes !kvm_mips_count_disabled(@vcpu) (guest CP0_Count timer is not
+stopped).
+
+.. _`kvm_mips_restore_hrtimer.return`:
+
+Return
+------
+
+Amount of correction to count_bias due to drift.
+
 .. _`kvm_mips_write_count`:
 
 kvm_mips_write_count
@@ -227,20 +341,23 @@ Sets the CP0_Count value and updates the timer accordingly.
 kvm_mips_init_count
 ===================
 
-.. c:function:: void kvm_mips_init_count(struct kvm_vcpu *vcpu)
+.. c:function:: void kvm_mips_init_count(struct kvm_vcpu *vcpu, unsigned long count_hz)
 
     Initialise timer.
 
     :param struct kvm_vcpu \*vcpu:
         Virtual CPU.
 
+    :param unsigned long count_hz:
+        Frequency of timer.
+
 .. _`kvm_mips_init_count.description`:
 
 Description
 -----------
 
-Initialise the timer to a sensible frequency, namely 100MHz, zero it, and set
-it going if it's enabled.
+Initialise the timer to the specified frequency, zero it, and set it going if
+it's enabled.
 
 .. _`kvm_mips_set_count_hz`:
 
@@ -565,6 +682,26 @@ Description
 
 Finds the mask of bits which are writable in the guest's Config5 CP0
 register, by the guest itself.
+
+.. _`kvm_mips_guest_exception_base`:
+
+kvm_mips_guest_exception_base
+=============================
+
+.. c:function:: long kvm_mips_guest_exception_base(struct kvm_vcpu *vcpu)
+
+    Find guest exception vector base address.
+
+    :param struct kvm_vcpu \*vcpu:
+        *undescribed*
+
+.. _`kvm_mips_guest_exception_base.return`:
+
+Return
+------
+
+The base address of the current guest exception vector, taking
+both Guest.CP0_Status.BEV and Guest.CP0_EBase into account.
 
 .. This file was automatic generated / don't edit.
 

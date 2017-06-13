@@ -497,7 +497,7 @@ ixgbe_atr_compute_perfect_hash_82599
 Description
 -----------
 
-This function serves two main purposes.  First it applys the input_mask
+This function serves two main purposes.  First it applies the input_mask
 to the atr_input resulting in a cleaned up atr_input data stream.
 Secondly it computes the hash and stores it in the bkt_hash field at
 the end of the input byte stream.  This way it will be available for

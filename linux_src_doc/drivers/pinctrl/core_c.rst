@@ -245,13 +245,148 @@ pinctrl_remove_gpio_range
 
 .. c:function:: void pinctrl_remove_gpio_range(struct pinctrl_dev *pctldev, struct pinctrl_gpio_range *range)
 
-    remove a range of GPIOs fro a pin controller
+    remove a range of GPIOs from a pin controller
 
     :param struct pinctrl_dev \*pctldev:
         pin controller device to remove the range from
 
     :param struct pinctrl_gpio_range \*range:
         the GPIO range to remove
+
+.. _`pinctrl_generic_get_group_count`:
+
+pinctrl_generic_get_group_count
+===============================
+
+.. c:function:: int pinctrl_generic_get_group_count(struct pinctrl_dev *pctldev)
+
+    returns the number of pin groups
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+.. _`pinctrl_generic_get_group_name`:
+
+pinctrl_generic_get_group_name
+==============================
+
+.. c:function:: const char *pinctrl_generic_get_group_name(struct pinctrl_dev *pctldev, unsigned int selector)
+
+    returns the name of a pin group
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+    :param unsigned int selector:
+        group number
+
+.. _`pinctrl_generic_get_group_pins`:
+
+pinctrl_generic_get_group_pins
+==============================
+
+.. c:function:: int pinctrl_generic_get_group_pins(struct pinctrl_dev *pctldev, unsigned int selector, const unsigned int **pins, unsigned int *num_pins)
+
+    gets the pin group pins
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+    :param unsigned int selector:
+        group number
+
+    :param const unsigned int \*\*pins:
+        pins in the group
+
+    :param unsigned int \*num_pins:
+        number of pins in the group
+
+.. _`pinctrl_generic_get_group`:
+
+pinctrl_generic_get_group
+=========================
+
+.. c:function:: struct group_desc *pinctrl_generic_get_group(struct pinctrl_dev *pctldev, unsigned int selector)
+
+    returns a pin group based on the number
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+    :param unsigned int selector:
+        *undescribed*
+
+.. _`pinctrl_generic_add_group`:
+
+pinctrl_generic_add_group
+=========================
+
+.. c:function:: int pinctrl_generic_add_group(struct pinctrl_dev *pctldev, const char *name, int *pins, int num_pins, void *data)
+
+    adds a new pin group
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+    :param const char \*name:
+        name of the pin group
+
+    :param int \*pins:
+        pins in the pin group
+
+    :param int num_pins:
+        number of pins in the pin group
+
+    :param void \*data:
+        pin controller driver specific data
+
+.. _`pinctrl_generic_add_group.description`:
+
+Description
+-----------
+
+Note that the caller must take care of locking.
+
+.. _`pinctrl_generic_remove_group`:
+
+pinctrl_generic_remove_group
+============================
+
+.. c:function:: int pinctrl_generic_remove_group(struct pinctrl_dev *pctldev, unsigned int selector)
+
+    removes a numbered pin group
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+    :param unsigned int selector:
+        group number
+
+.. _`pinctrl_generic_remove_group.description`:
+
+Description
+-----------
+
+Note that the caller must take care of locking.
+
+.. _`pinctrl_generic_free_groups`:
+
+pinctrl_generic_free_groups
+===========================
+
+.. c:function:: void pinctrl_generic_free_groups(struct pinctrl_dev *pctldev)
+
+    removes all pin groups
+
+    :param struct pinctrl_dev \*pctldev:
+        pin controller device
+
+.. _`pinctrl_generic_free_groups.description`:
+
+Description
+-----------
+
+Note that the caller must take care of locking.
 
 .. _`pinctrl_get_group_selector`:
 
@@ -351,6 +486,30 @@ Description
 This function should \*ONLY\* be used from gpiolib-based GPIO drivers,
 as part of their \ :c:func:`gpio_direction_output`\  semantics, platforms and individual
 drivers shall \*NOT\* touch pin control GPIO calls.
+
+.. _`pinctrl_gpio_set_config`:
+
+pinctrl_gpio_set_config
+=======================
+
+.. c:function:: int pinctrl_gpio_set_config(unsigned gpio, unsigned long config)
+
+    Apply config to given GPIO pin
+
+    :param unsigned gpio:
+        the GPIO pin number from the GPIO subsystem number space
+
+    :param unsigned long config:
+        the configuration to apply to the GPIO
+
+.. _`pinctrl_gpio_set_config.description`:
+
+Description
+-----------
+
+This function should \*ONLY\* be used from gpiolib-based GPIO drivers, if
+they need to call the underlying pin controller to change GPIO config
+(for example set debounce time).
 
 .. _`pinctrl_get`:
 
@@ -551,6 +710,24 @@ pinctrl_pm_select_idle_state
     :param struct device \*dev:
         device to select idle state for
 
+.. _`pinctrl_init_controller`:
+
+pinctrl_init_controller
+=======================
+
+.. c:function:: struct pinctrl_dev *pinctrl_init_controller(struct pinctrl_desc *pctldesc, struct device *dev, void *driver_data)
+
+    init a pin controller device
+
+    :param struct pinctrl_desc \*pctldesc:
+        descriptor for this pin controller
+
+    :param struct device \*dev:
+        parent device for this pin controller
+
+    :param void \*driver_data:
+        private pin controller data for this pin controller
+
 .. _`pinctrl_register`:
 
 pinctrl_register
@@ -568,6 +745,45 @@ pinctrl_register
 
     :param void \*driver_data:
         private pin controller data for this pin controller
+
+.. _`pinctrl_register.description`:
+
+Description
+-----------
+
+Note that \ :c:func:`pinctrl_register`\  is known to have problems as the pin
+controller driver functions are called before the driver has a
+struct pinctrl_dev handle. To avoid issues later on, please use the
+new \ :c:func:`pinctrl_register_and_init`\  below instead.
+
+.. _`pinctrl_register_and_init`:
+
+pinctrl_register_and_init
+=========================
+
+.. c:function:: int pinctrl_register_and_init(struct pinctrl_desc *pctldesc, struct device *dev, void *driver_data, struct pinctrl_dev **pctldev)
+
+    register and init pin controller device
+
+    :param struct pinctrl_desc \*pctldesc:
+        descriptor for this pin controller
+
+    :param struct device \*dev:
+        parent device for this pin controller
+
+    :param void \*driver_data:
+        private pin controller data for this pin controller
+
+    :param struct pinctrl_dev \*\*pctldev:
+        pin controller device
+
+.. _`pinctrl_register_and_init.description`:
+
+Description
+-----------
+
+Note that \ :c:func:`pinctrl_enable`\  still needs to be manually called after
+this once the driver is ready.
 
 .. _`pinctrl_unregister`:
 
@@ -607,6 +823,37 @@ devm_pinctrl_register
         private pin controller data for this pin controller
 
 .. _`devm_pinctrl_register.description`:
+
+Description
+-----------
+
+Returns an error pointer if pincontrol register failed. Otherwise
+it returns valid pinctrl handle.
+
+The pinctrl device will be automatically released when the device is unbound.
+
+.. _`devm_pinctrl_register_and_init`:
+
+devm_pinctrl_register_and_init
+==============================
+
+.. c:function:: int devm_pinctrl_register_and_init(struct device *dev, struct pinctrl_desc *pctldesc, void *driver_data, struct pinctrl_dev **pctldev)
+
+    Resource managed pinctrl register and init
+
+    :param struct device \*dev:
+        parent device for this pin controller
+
+    :param struct pinctrl_desc \*pctldesc:
+        descriptor for this pin controller
+
+    :param void \*driver_data:
+        private pin controller data for this pin controller
+
+    :param struct pinctrl_dev \*\*pctldev:
+        *undescribed*
+
+.. _`devm_pinctrl_register_and_init.description`:
 
 Description
 -----------

@@ -140,6 +140,54 @@ Description
 Set or clear the mask for an individual endpoint's interrupt
 request.
 
+.. _`dwc2_hsotg_tx_fifo_count`:
+
+dwc2_hsotg_tx_fifo_count
+========================
+
+.. c:function:: int dwc2_hsotg_tx_fifo_count(struct dwc2_hsotg *hsotg)
+
+    return count of TX FIFOs in device mode
+
+    :param struct dwc2_hsotg \*hsotg:
+        *undescribed*
+
+.. _`dwc2_hsotg_ep_info_size`:
+
+dwc2_hsotg_ep_info_size
+=======================
+
+.. c:function:: int dwc2_hsotg_ep_info_size(struct dwc2_hsotg *hsotg)
+
+    return Endpoint Info Control block size in DWORDs
+
+    :param struct dwc2_hsotg \*hsotg:
+        *undescribed*
+
+.. _`dwc2_hsotg_tx_fifo_total_depth`:
+
+dwc2_hsotg_tx_fifo_total_depth
+==============================
+
+.. c:function:: int dwc2_hsotg_tx_fifo_total_depth(struct dwc2_hsotg *hsotg)
+
+    return total FIFO depth available for device mode TX FIFOs
+
+    :param struct dwc2_hsotg \*hsotg:
+        *undescribed*
+
+.. _`dwc2_hsotg_tx_fifo_average_depth`:
+
+dwc2_hsotg_tx_fifo_average_depth
+================================
+
+.. c:function:: int dwc2_hsotg_tx_fifo_average_depth(struct dwc2_hsotg *hsotg)
+
+    returns average depth of device mode TX FIFOs
+
+    :param struct dwc2_hsotg \*hsotg:
+        *undescribed*
+
 .. _`dwc2_hsotg_init_fifo`:
 
 dwc2_hsotg_init_fifo
@@ -236,7 +284,7 @@ This routine is only needed for PIO
 get_ep_limit
 ============
 
-.. c:function:: unsigned get_ep_limit(struct dwc2_hsotg_ep *hs_ep)
+.. c:function:: unsigned int get_ep_limit(struct dwc2_hsotg_ep *hs_ep)
 
     get the maximum data legnth for this endpoint
 
@@ -1286,7 +1334,7 @@ dwc2_hsotg_init
 
 .. c:function:: void dwc2_hsotg_init(struct dwc2_hsotg *hsotg)
 
-    initalize the usb core
+    initialize the usb core
 
     :param struct dwc2_hsotg \*hsotg:
         The driver state
@@ -1379,14 +1427,14 @@ Connect/Disconnect the USB PHY pullup
 dwc2_hsotg_vbus_draw
 ====================
 
-.. c:function:: int dwc2_hsotg_vbus_draw(struct usb_gadget *gadget, unsigned mA)
+.. c:function:: int dwc2_hsotg_vbus_draw(struct usb_gadget *gadget, unsigned int mA)
 
     report bMaxPower field
 
     :param struct usb_gadget \*gadget:
         The usb gadget state
 
-    :param unsigned mA:
+    :param unsigned int mA:
         Amount of current
 
 .. _`dwc2_hsotg_vbus_draw.description`:

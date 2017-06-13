@@ -55,11 +55,11 @@ and divide by 512
 ns = (todval \* 125) >> 9;
 
 In order to avoid an overflow with the multiplication we can rewrite this.
-With a split todval == 2^32 \* th + tl (th upper 32 bits, tl lower 32 bits)
+With a split todval == 2^9 \* th + tl (th upper 55 bits, tl lower 9 bits)
 we end up with
 
-ns = ((2^32 \* th + tl) \* 125 ) >> 9;
--> ns = (2^23 \* th \* 125) + ((tl \* 125) >> 9);
+ns = ((2^9 \* th + tl) \* 125 ) >> 9;
+-> ns = (th \* 125) + ((tl \* 125) >> 9);
 
 .. This file was automatic generated / don't edit.
 

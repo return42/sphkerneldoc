@@ -31,21 +31,6 @@ svc_rdma_wc_send
     :param struct ib_wc \*wc:
         completed WR
 
-.. _`svc_rdma_wc_write`:
-
-svc_rdma_wc_write
-=================
-
-.. c:function:: void svc_rdma_wc_write(struct ib_cq *cq, struct ib_wc *wc)
-
-    Invoked by RDMA provider for each polled Write WC
-
-    :param struct ib_cq \*cq:
-        completion queue
-
-    :param struct ib_wc \*wc:
-        completed WR
-
 .. _`svc_rdma_wc_reg`:
 
 svc_rdma_wc_reg

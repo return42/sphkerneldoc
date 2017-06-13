@@ -68,7 +68,7 @@ blk_set_default_limits
 Description
 -----------
 
-Returns a queue_limit struct to its default state.
+  Returns a queue_limit struct to its default state.
 
 .. _`blk_set_stacking_limits`:
 
@@ -87,8 +87,8 @@ blk_set_stacking_limits
 Description
 -----------
 
-Returns a queue_limit struct to its default state. Should be used
-by stacking drivers like DM that have no internal limits.
+  Returns a queue_limit struct to its default state. Should be used
+  by stacking drivers like DM that have no internal limits.
 
 .. _`blk_queue_make_request`:
 
@@ -110,25 +110,25 @@ blk_queue_make_request
 Description
 -----------
 
-The normal way for \ :c:type:`struct bios <bios>`\  to be passed to a device
-driver is for them to be collected into requests on a request
-queue, and then to allow the device driver to select requests
-off that queue when it is ready.  This works well for many block
-devices. However some block devices (typically virtual devices
-such as md or lvm) do not benefit from the processing on the
-request queue, and are served best by having the requests passed
-directly to them.  This can be achieved by providing a function
-to \ :c:func:`blk_queue_make_request`\ .
+   The normal way for \ :c:type:`struct bios <bios>`\  to be passed to a device
+   driver is for them to be collected into requests on a request
+   queue, and then to allow the device driver to select requests
+   off that queue when it is ready.  This works well for many block
+   devices. However some block devices (typically virtual devices
+   such as md or lvm) do not benefit from the processing on the
+   request queue, and are served best by having the requests passed
+   directly to them.  This can be achieved by providing a function
+   to \ :c:func:`blk_queue_make_request`\ .
 
 .. _`blk_queue_make_request.caveat`:
 
 Caveat
 ------
 
-The driver that does this \*must\* be able to deal appropriately
-with buffers in "highmemory". This can be accomplished by either calling
-\__bio_kmap_atomic() to get a temporary kernel mapping, or by calling
-\ :c:func:`blk_queue_bounce`\  to create a buffer in normal memory.
+   The driver that does this *must* be able to deal appropriately
+   with buffers in "highmemory". This can be accomplished by either calling
+   \ :c:func:`__bio_kmap_atomic`\  to get a temporary kernel mapping, or by calling
+   \ :c:func:`blk_queue_bounce`\  to create a buffer in normal memory.
 
 .. _`blk_queue_bounce_limit`:
 
@@ -150,10 +150,10 @@ blk_queue_bounce_limit
 Description
 -----------
 
-Different hardware can have different requirements as to what pages
-it can do I/O directly to. A low level driver can call
-blk_queue_bounce_limit to have lower memory pages allocated as bounce
-buffers for doing I/O to pages residing above \ ``max_addr``\ .
+   Different hardware can have different requirements as to what pages
+   it can do I/O directly to. A low level driver can call
+   blk_queue_bounce_limit to have lower memory pages allocated as bounce
+   buffers for doing I/O to pages residing above \ ``max_addr``\ .
 
 .. _`blk_queue_max_hw_sectors`:
 
@@ -175,18 +175,18 @@ blk_queue_max_hw_sectors
 Description
 -----------
 
-Enables a low level driver to set a hard upper limit,
-max_hw_sectors, on the size of requests.  max_hw_sectors is set by
-the device driver based upon the capabilities of the I/O
-controller.
+   Enables a low level driver to set a hard upper limit,
+   max_hw_sectors, on the size of requests.  max_hw_sectors is set by
+   the device driver based upon the capabilities of the I/O
+   controller.
 
-max_dev_sectors is a hard limit imposed by the storage device for
-READ/WRITE requests. It is set by the disk driver.
+   max_dev_sectors is a hard limit imposed by the storage device for
+   READ/WRITE requests. It is set by the disk driver.
 
-max_sectors is a soft limit imposed by the block layer for
-filesystem type requests.  This value can be overridden on a
-per-device basis in /sys/block/<device>/queue/max_sectors_kb.
-The soft limit can not exceed max_hw_sectors.
+   max_sectors is a soft limit imposed by the block layer for
+   filesystem type requests.  This value can be overridden on a
+   per-device basis in /sys/block/<device>/queue/max_sectors_kb.
+   The soft limit can not exceed max_hw_sectors.
 
 .. _`blk_queue_chunk_sectors`:
 
@@ -208,12 +208,12 @@ blk_queue_chunk_sectors
 Description
 -----------
 
-If a driver doesn't want IOs to cross a given chunk size, it can set
-this limit and prevent merging across chunks. Note that the chunk size
-must currently be a power-of-2 in sectors. Also note that the block
-layer must accept a page worth of data at any offset. So if the
-crossing of chunks is a hard limitation in the driver, it must still be
-prepared to split single page bios.
+   If a driver doesn't want IOs to cross a given chunk size, it can set
+   this limit and prevent merging across chunks. Note that the chunk size
+   must currently be a power-of-2 in sectors. Also note that the block
+   layer must accept a page worth of data at any offset. So if the
+   crossing of chunks is a hard limitation in the driver, it must still be
+   prepared to split single page bios.
 
 .. _`blk_queue_max_discard_sectors`:
 
@@ -280,8 +280,31 @@ blk_queue_max_segments
 Description
 -----------
 
-Enables a low level driver to set an upper limit on the number of
-hw data segments in a request.
+   Enables a low level driver to set an upper limit on the number of
+   hw data segments in a request.
+
+.. _`blk_queue_max_discard_segments`:
+
+blk_queue_max_discard_segments
+==============================
+
+.. c:function:: void blk_queue_max_discard_segments(struct request_queue *q, unsigned short max_segments)
+
+    set max segments for discard requests
+
+    :param struct request_queue \*q:
+        the request queue for the device
+
+    :param unsigned short max_segments:
+        max number of segments
+
+.. _`blk_queue_max_discard_segments.description`:
+
+Description
+-----------
+
+   Enables a low level driver to set an upper limit on the number of
+   segments in a discard request.
 
 .. _`blk_queue_max_segment_size`:
 
@@ -303,8 +326,8 @@ blk_queue_max_segment_size
 Description
 -----------
 
-Enables a low level driver to set an upper limit on the size of a
-coalesced segment
+   Enables a low level driver to set an upper limit on the size of a
+   coalesced segment
 
 .. _`blk_queue_logical_block_size`:
 
@@ -326,9 +349,9 @@ blk_queue_logical_block_size
 Description
 -----------
 
-This should be set to the lowest possible block size that the
-storage device can address.  The default of 512 covers most
-hardware.
+  This should be set to the lowest possible block size that the
+  storage device can address.  The default of 512 covers most
+  hardware.
 
 .. _`blk_queue_physical_block_size`:
 
@@ -350,9 +373,9 @@ blk_queue_physical_block_size
 Description
 -----------
 
-This should be set to the lowest possible sector size that the
-hardware can operate on without reverting to read-modify-write
-operations.
+  This should be set to the lowest possible sector size that the
+  hardware can operate on without reverting to read-modify-write
+  operations.
 
 .. _`blk_queue_alignment_offset`:
 
@@ -374,10 +397,10 @@ blk_queue_alignment_offset
 Description
 -----------
 
-Some devices are naturally misaligned to compensate for things like
-the legacy DOS partition table 63-sector offset.  Low-level drivers
-should call this function for devices whose first sector is not
-naturally aligned.
+  Some devices are naturally misaligned to compensate for things like
+  the legacy DOS partition table 63-sector offset.  Low-level drivers
+  should call this function for devices whose first sector is not
+  naturally aligned.
 
 .. _`blk_limits_io_min`:
 
@@ -399,10 +422,10 @@ blk_limits_io_min
 Description
 -----------
 
-Some devices have an internal block size bigger than the reported
-hardware sector size.  This function can be used to signal the
-smallest I/O the device can perform without incurring a performance
-penalty.
+  Some devices have an internal block size bigger than the reported
+  hardware sector size.  This function can be used to signal the
+  smallest I/O the device can perform without incurring a performance
+  penalty.
 
 .. _`blk_queue_io_min`:
 
@@ -424,13 +447,13 @@ blk_queue_io_min
 Description
 -----------
 
-Storage devices may report a granularity or preferred minimum I/O
-size which is the smallest request the device can perform without
-incurring a performance penalty.  For disk drives this is often the
-physical block size.  For RAID arrays it is often the stripe chunk
-size.  A properly aligned multiple of minimum_io_size is the
-preferred request size for workloads where a high number of I/O
-operations is desired.
+  Storage devices may report a granularity or preferred minimum I/O
+  size which is the smallest request the device can perform without
+  incurring a performance penalty.  For disk drives this is often the
+  physical block size.  For RAID arrays it is often the stripe chunk
+  size.  A properly aligned multiple of minimum_io_size is the
+  preferred request size for workloads where a high number of I/O
+  operations is desired.
 
 .. _`blk_limits_io_opt`:
 
@@ -452,12 +475,12 @@ blk_limits_io_opt
 Description
 -----------
 
-Storage devices may report an optimal I/O size, which is the
-device's preferred unit for sustained I/O.  This is rarely reported
-for disk drives.  For RAID arrays it is usually the stripe width or
-the internal track size.  A properly aligned multiple of
-optimal_io_size is the preferred request size for workloads where
-sustained throughput is desired.
+  Storage devices may report an optimal I/O size, which is the
+  device's preferred unit for sustained I/O.  This is rarely reported
+  for disk drives.  For RAID arrays it is usually the stripe width or
+  the internal track size.  A properly aligned multiple of
+  optimal_io_size is the preferred request size for workloads where
+  sustained throughput is desired.
 
 .. _`blk_queue_io_opt`:
 
@@ -479,12 +502,12 @@ blk_queue_io_opt
 Description
 -----------
 
-Storage devices may report an optimal I/O size, which is the
-device's preferred unit for sustained I/O.  This is rarely reported
-for disk drives.  For RAID arrays it is usually the stripe width or
-the internal track size.  A properly aligned multiple of
-optimal_io_size is the preferred request size for workloads where
-sustained throughput is desired.
+  Storage devices may report an optimal I/O size, which is the
+  device's preferred unit for sustained I/O.  This is rarely reported
+  for disk drives.  For RAID arrays it is usually the stripe width or
+  the internal track size.  A properly aligned multiple of
+  optimal_io_size is the preferred request size for workloads where
+  sustained throughput is desired.
 
 .. _`blk_queue_stack_limits`:
 
@@ -524,19 +547,19 @@ blk_stack_limits
 Description
 -----------
 
-This function is used by stacking drivers like MD and DM to ensure
-that all component devices have compatible block sizes and
-alignments.  The stacking driver must provide a queue_limits
-struct (top) and then iteratively call the stacking function for
-all component (bottom) devices.  The stacking function will
-attempt to combine the values and ensure proper alignment.
+   This function is used by stacking drivers like MD and DM to ensure
+   that all component devices have compatible block sizes and
+   alignments.  The stacking driver must provide a queue_limits
+   struct (top) and then iteratively call the stacking function for
+   all component (bottom) devices.  The stacking function will
+   attempt to combine the values and ensure proper alignment.
 
-Returns 0 if the top and bottom queue_limits are compatible.  The
-top device's block sizes and alignment offsets may be adjusted to
-ensure alignment with the bottom device. If no compatible sizes
-and alignments exist, -1 is returned and the resulting top
-queue_limits will have the misaligned flag set to indicate that
-the alignment_offset is undefined.
+   Returns 0 if the top and bottom queue_limits are compatible.  The
+   top device's block sizes and alignment offsets may be adjusted to
+   ensure alignment with the bottom device. If no compatible sizes
+   and alignments exist, -1 is returned and the resulting top
+   queue_limits will have the misaligned flag set to indicate that
+   the alignment_offset is undefined.
 
 .. _`bdev_stack_limits`:
 
@@ -561,9 +584,9 @@ bdev_stack_limits
 Description
 -----------
 
-Merges queue limits for a top device and a block_device.  Returns
-0 if alignment didn't change.  Returns -1 if adding the bottom
-device caused misalignment.
+   Merges queue limits for a top device and a block_device.  Returns
+   0 if alignment didn't change.  Returns -1 if adding the bottom
+   device caused misalignment.
 
 .. _`disk_stack_limits`:
 
@@ -588,8 +611,8 @@ disk_stack_limits
 Description
 -----------
 
-Merges the limits for a top level gendisk and a bottom level
-block_device.
+   Merges the limits for a top level gendisk and a bottom level
+   block_device.
 
 .. _`blk_queue_dma_pad`:
 
@@ -736,8 +759,8 @@ blk_queue_dma_alignment
 Description
 -----------
 
-set required memory and length alignment for direct dma transactions.
-this is used when building direct io requests for the queue.
+   set required memory and length alignment for direct dma transactions.
+   this is used when building direct io requests for the queue.
 
 .. _`blk_queue_update_dma_alignment`:
 
@@ -759,12 +782,12 @@ blk_queue_update_dma_alignment
 Description
 -----------
 
-update required memory and length alignment for direct dma transactions.
-If the requested alignment is larger than the current alignment, then
-the current queue alignment is updated to the new value, otherwise it
-is left alone.  The design of this is to allow multiple objects
-(driver, device, transport etc) to set their respective
-alignments without having them interfere.
+   update required memory and length alignment for direct dma transactions.
+   If the requested alignment is larger than the current alignment, then
+   the current queue alignment is updated to the new value, otherwise it
+   is left alone.  The design of this is to allow multiple objects
+   (driver, device, transport etc) to set their respective
+   alignments without having them interfere.
 
 .. _`blk_set_queue_depth`:
 

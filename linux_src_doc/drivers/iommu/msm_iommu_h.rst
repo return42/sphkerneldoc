@@ -28,6 +28,7 @@ Definition
         struct list_head dom_node;
         struct list_head ctx_list;
         unsigned long context_map[BITS_TO_LONGS(IOMMU_MAX_CBS)];
+        struct iommu_device iommu;
     }
 
 .. _`msm_iommu_dev.members`:
@@ -60,6 +61,9 @@ dom_node
     *undescribed*
 
 ctx_list
+    *undescribed*
+
+iommu
     *undescribed*
 
 .. _`msm_iommu_dev.dev`:

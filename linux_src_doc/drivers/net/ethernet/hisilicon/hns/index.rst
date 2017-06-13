@@ -8,7 +8,6 @@ hns
     :maxdepth: 1
 
     hnae_c
-    hns_dsaf_gmac_c
     hns_dsaf_mac_c
     hns_dsaf_main_c
     hns_dsaf_misc_c

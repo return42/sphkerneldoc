@@ -61,7 +61,7 @@ Free an IB (all asics).
 amdgpu_ib_schedule
 ==================
 
-.. c:function:: int amdgpu_ib_schedule(struct amdgpu_ring *ring, unsigned num_ibs, struct amdgpu_ib *ibs, struct dma_fence *last_vm_update, struct amdgpu_job *job, struct dma_fence **f)
+.. c:function:: int amdgpu_ib_schedule(struct amdgpu_ring *ring, unsigned num_ibs, struct amdgpu_ib *ibs, struct amdgpu_job *job, struct dma_fence **f)
 
     schedule an IB (Indirect Buffer) on the ring
 
@@ -73,9 +73,6 @@ amdgpu_ib_schedule
 
     :param struct amdgpu_ib \*ibs:
         IB objects to schedule
-
-    :param struct dma_fence \*last_vm_update:
-        *undescribed*
 
     :param struct amdgpu_job \*job:
         *undescribed*

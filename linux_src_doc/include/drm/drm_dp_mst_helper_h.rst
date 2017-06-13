@@ -252,7 +252,7 @@ Definition
 .. code-block:: c
 
     struct drm_dp_mst_topology_mgr {
-        struct device *dev;
+        struct drm_device *dev;
         const struct drm_dp_mst_topology_cbs *cbs;
         int max_dpcd_transaction_bytes;
         struct drm_dp_aux *aux;
@@ -266,9 +266,6 @@ Definition
         u8 dpcd[DP_RECEIVER_CAP_SIZE];
         u8 sink_count;
         int pbn_div;
-        int total_slots;
-        int avail_slots;
-        int total_pbn;
         struct mutex qlock;
         struct list_head tx_msg_downq;
         struct mutex payload_lock;
@@ -333,17 +330,8 @@ sink_count
 pbn_div
     PBN to slots divisor.
 
-total_slots
-    Total slots that can be allocated.
-
-avail_slots
-    Still available slots that can be allocated.
-
-total_pbn
-    Total PBN count.
-
 qlock
-    protects \ ``tx_msg_downq``\ , the tx_slots in struct&drm_dp_mst_branch and txmsg->state once they are queued
+    protects \ ``tx_msg_downq``\ , the \ :c:type:`drm_dp_mst_branch.txslost <drm_dp_mst_branch>`\  and&drm_dp_sideband_msg_tx.state once they are queued
 
 tx_msg_downq
     List of pending down replies.
@@ -352,8 +340,7 @@ payload_lock
     Protect payload information.
 
 proposed_vcpis
-    Array of pointers for the new VCPI allocation. TheVCPI structure itself is embedded into the corresponding
-    \ :c:type:`struct drm_dp_mst_port <drm_dp_mst_port>`\  structure.
+    Array of pointers for the new VCPI allocation. TheVCPI structure itself is \ :c:type:`drm_dp_mst_port.vcpi <drm_dp_mst_port>`\ .
 
 payloads
     Array of payloads.

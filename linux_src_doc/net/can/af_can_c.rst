@@ -116,9 +116,12 @@ Reduced can_id to have a preprocessed filter compare value.
 can_rx_register
 ===============
 
-.. c:function:: int can_rx_register(struct net_device *dev, canid_t can_id, canid_t mask, void (*func)(struct sk_buff *, void *), void *data, char *ident)
+.. c:function:: int can_rx_register(struct net *net, struct net_device *dev, canid_t can_id, canid_t mask, void (*func)(struct sk_buff *, void *), void *data, char *ident, struct sock *sk)
 
     subscribe CAN frames from a specific interface
+
+    :param struct net \*net:
+        *undescribed*
 
     :param struct net_device \*dev:
         pointer to netdevice (NULL => subcribe from 'all' CAN devices list)
@@ -137,6 +140,9 @@ can_rx_register
 
     :param char \*ident:
         string for calling module identification
+
+    :param struct sock \*sk:
+        socket pointer (might be NULL)
 
 .. _`can_rx_register.description`:
 
@@ -171,9 +177,12 @@ Return
 can_rx_unregister
 =================
 
-.. c:function:: void can_rx_unregister(struct net_device *dev, canid_t can_id, canid_t mask, void (*func)(struct sk_buff *, void *), void *data)
+.. c:function:: void can_rx_unregister(struct net *net, struct net_device *dev, canid_t can_id, canid_t mask, void (*func)(struct sk_buff *, void *), void *data)
 
     unsubscribe CAN frames from a specific interface
+
+    :param struct net \*net:
+        *undescribed*
 
     :param struct net_device \*dev:
         pointer to netdevice (NULL => unsubscribe from 'all' CAN devices list)

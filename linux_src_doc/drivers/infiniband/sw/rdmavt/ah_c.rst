@@ -6,14 +6,14 @@
 rvt_check_ah
 ============
 
-.. c:function:: int rvt_check_ah(struct ib_device *ibdev, struct ib_ah_attr *ah_attr)
+.. c:function:: int rvt_check_ah(struct ib_device *ibdev, struct rdma_ah_attr *ah_attr)
 
     validate the attributes of AH
 
     :param struct ib_device \*ibdev:
         the ib device
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         the attributes of the AH
 
 .. _`rvt_check_ah.description`:
@@ -36,14 +36,14 @@ Return
 rvt_create_ah
 =============
 
-.. c:function:: struct ib_ah *rvt_create_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr)
+.. c:function:: struct ib_ah *rvt_create_ah(struct ib_pd *pd, struct rdma_ah_attr *ah_attr)
 
     create an address handle
 
     :param struct ib_pd \*pd:
         the protection domain
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         the attributes of the AH
 
 .. _`rvt_create_ah.description`:
@@ -84,14 +84,14 @@ Return
 rvt_modify_ah
 =============
 
-.. c:function:: int rvt_modify_ah(struct ib_ah *ibah, struct ib_ah_attr *ah_attr)
+.. c:function:: int rvt_modify_ah(struct ib_ah *ibah, struct rdma_ah_attr *ah_attr)
 
     modify an ah with given attrs
 
     :param struct ib_ah \*ibah:
         address handle to modify
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         attrs to apply
 
 .. _`rvt_modify_ah.return`:
@@ -106,14 +106,14 @@ Return
 rvt_query_ah
 ============
 
-.. c:function:: int rvt_query_ah(struct ib_ah *ibah, struct ib_ah_attr *ah_attr)
+.. c:function:: int rvt_query_ah(struct ib_ah *ibah, struct rdma_ah_attr *ah_attr)
 
     return attrs for ah
 
     :param struct ib_ah \*ibah:
         address handle to query
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         return info in this
 
 .. _`rvt_query_ah.return`:

@@ -81,7 +81,7 @@ Return
 
  0 when the timer was not active
  1 when the timer was active
--1 when the timer is currently excuting the callback function and
+-1 when the timer is currently executing the callback function and
    cannot be stopped
 
 .. _`hrtimer_cancel`:

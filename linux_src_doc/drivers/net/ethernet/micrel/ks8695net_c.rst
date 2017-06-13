@@ -696,34 +696,34 @@ ks8695_set_msglevel
     :param u32 value:
         The messages to set for emission
 
-.. _`ks8695_wan_get_settings`:
+.. _`ks8695_wan_get_link_ksettings`:
 
-ks8695_wan_get_settings
-=======================
+ks8695_wan_get_link_ksettings
+=============================
 
-.. c:function:: int ks8695_wan_get_settings(struct net_device *ndev, struct ethtool_cmd *cmd)
+.. c:function:: int ks8695_wan_get_link_ksettings(struct net_device *ndev, struct ethtool_link_ksettings *cmd)
 
     Get device-specific settings.
 
     :param struct net_device \*ndev:
         The network device to read settings from
 
-    :param struct ethtool_cmd \*cmd:
+    :param struct ethtool_link_ksettings \*cmd:
         The ethtool structure to read into
 
-.. _`ks8695_wan_set_settings`:
+.. _`ks8695_wan_set_link_ksettings`:
 
-ks8695_wan_set_settings
-=======================
+ks8695_wan_set_link_ksettings
+=============================
 
-.. c:function:: int ks8695_wan_set_settings(struct net_device *ndev, struct ethtool_cmd *cmd)
+.. c:function:: int ks8695_wan_set_link_ksettings(struct net_device *ndev, const struct ethtool_link_ksettings *cmd)
 
     Set device-specific settings.
 
     :param struct net_device \*ndev:
         The network device to configure
 
-    :param struct ethtool_cmd \*cmd:
+    :param const struct ethtool_link_ksettings \*cmd:
         The settings to configure
 
 .. _`ks8695_wan_nwayreset`:

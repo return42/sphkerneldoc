@@ -82,6 +82,21 @@ Description
 Wakes up the event waitqueue used for \ :c:func:`poll`\ . Should usually
 be called when the device is unregistered.
 
+.. _`iio_buffer_set_attrs`:
+
+iio_buffer_set_attrs
+====================
+
+.. c:function:: void iio_buffer_set_attrs(struct iio_buffer *buffer, const struct attribute **attrs)
+
+    Set buffer specific attributes
+
+    :param struct iio_buffer \*buffer:
+        The buffer for which we are setting attributes
+
+    :param const struct attribute \*\*attrs:
+        Pointer to a null terminated list of pointers to attributes
+
 .. _`iio_scan_mask_set`:
 
 iio_scan_mask_set
@@ -108,30 +123,6 @@ Description
 Note that at this point we have no way of knowing what other
 buffers might request, hence this code only verifies that the
 individual buffers request is plausible.
-
-.. _`iio_validate_scan_mask_onehot`:
-
-iio_validate_scan_mask_onehot
-=============================
-
-.. c:function:: bool iio_validate_scan_mask_onehot(struct iio_dev *indio_dev, const unsigned long *mask)
-
-    Validates that exactly one channel is selected
-
-    :param struct iio_dev \*indio_dev:
-        the iio device
-
-    :param const unsigned long \*mask:
-        scan mask to be checked
-
-.. _`iio_validate_scan_mask_onehot.description`:
-
-Description
------------
-
-Return true if exactly one bit is set in the scan mask, false otherwise. It
-can be used for devices where only one channel can be active for sampling at
-a time.
 
 .. _`iio_demux_table`:
 
@@ -172,6 +163,45 @@ length
 
 l
     list head used for management
+
+.. _`iio_validate_scan_mask_onehot`:
+
+iio_validate_scan_mask_onehot
+=============================
+
+.. c:function:: bool iio_validate_scan_mask_onehot(struct iio_dev *indio_dev, const unsigned long *mask)
+
+    Validates that exactly one channel is selected
+
+    :param struct iio_dev \*indio_dev:
+        the iio device
+
+    :param const unsigned long \*mask:
+        scan mask to be checked
+
+.. _`iio_validate_scan_mask_onehot.description`:
+
+Description
+-----------
+
+Return true if exactly one bit is set in the scan mask, false otherwise. It
+can be used for devices where only one channel can be active for sampling at
+a time.
+
+.. _`iio_push_to_buffers`:
+
+iio_push_to_buffers
+===================
+
+.. c:function:: int iio_push_to_buffers(struct iio_dev *indio_dev, const void *data)
+
+    push to a registered buffer.
+
+    :param struct iio_dev \*indio_dev:
+        iio_dev structure for device.
+
+    :param const void \*data:
+        Full scan.
 
 .. _`iio_buffer_release`:
 
@@ -225,6 +255,30 @@ iio_buffer_put
 
     :param struct iio_buffer \*buffer:
         The buffer to release the reference for, may be NULL
+
+.. _`iio_device_attach_buffer`:
+
+iio_device_attach_buffer
+========================
+
+.. c:function:: void iio_device_attach_buffer(struct iio_dev *indio_dev, struct iio_buffer *buffer)
+
+    Attach a buffer to a IIO device
+
+    :param struct iio_dev \*indio_dev:
+        The device the buffer should be attached to
+
+    :param struct iio_buffer \*buffer:
+        The buffer to attach to the device
+
+.. _`iio_device_attach_buffer.description`:
+
+Description
+-----------
+
+This function attaches a buffer to a IIO device. The buffer stays attached to
+the device until the device is freed. The function should only be called at
+most once per device.
 
 .. This file was automatic generated / don't edit.
 

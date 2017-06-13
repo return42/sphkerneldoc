@@ -66,7 +66,7 @@ reserve in range from \ ``base``\  to \ ``limit``\ .
 dma_alloc_from_contiguous
 =========================
 
-.. c:function:: struct page *dma_alloc_from_contiguous(struct device *dev, size_t count, unsigned int align)
+.. c:function:: struct page *dma_alloc_from_contiguous(struct device *dev, size_t count, unsigned int align, gfp_t gfp_mask)
 
     allocate pages from contiguous area
 
@@ -78,6 +78,9 @@ dma_alloc_from_contiguous
 
     :param unsigned int align:
         Requested alignment of pages (in PAGE_SIZE order).
+
+    :param gfp_t gfp_mask:
+        GFP flags to use for this allocation.
 
 .. _`dma_alloc_from_contiguous.description`:
 

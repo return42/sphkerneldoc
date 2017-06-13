@@ -230,15 +230,115 @@ location pointed to by \ ``val``\ .
 acpi_get_next_subnode
 =====================
 
-.. c:function:: struct fwnode_handle *acpi_get_next_subnode(struct device *dev, struct fwnode_handle *child)
+.. c:function:: struct fwnode_handle *acpi_get_next_subnode(struct fwnode_handle *fwnode, struct fwnode_handle *child)
 
-    Return the next child node handle for a device.
+    Return the next child node handle for a fwnode
 
-    :param struct device \*dev:
-        Device to find the next child node for.
+    :param struct fwnode_handle \*fwnode:
+        Firmware node to find the next child node for.
 
     :param struct fwnode_handle \*child:
         Handle to one of the device's child nodes or a null handle.
+
+.. _`acpi_node_get_parent`:
+
+acpi_node_get_parent
+====================
+
+.. c:function:: struct fwnode_handle *acpi_node_get_parent(struct fwnode_handle *fwnode)
+
+    Return parent fwnode of this fwnode
+
+    :param struct fwnode_handle \*fwnode:
+        Firmware node whose parent to get
+
+.. _`acpi_node_get_parent.description`:
+
+Description
+-----------
+
+Returns parent node of an ACPI device or data firmware node or \ ``NULL``\  if
+not available.
+
+.. _`acpi_graph_get_next_endpoint`:
+
+acpi_graph_get_next_endpoint
+============================
+
+.. c:function:: struct fwnode_handle *acpi_graph_get_next_endpoint(struct fwnode_handle *fwnode, struct fwnode_handle *prev)
+
+    Get next endpoint ACPI firmware node
+
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the parent firmware node
+
+    :param struct fwnode_handle \*prev:
+        Previous endpoint node or \ ``NULL``\  to get the first
+
+.. _`acpi_graph_get_next_endpoint.description`:
+
+Description
+-----------
+
+Looks up next endpoint ACPI firmware node below a given \ ``fwnode``\ . Returns
+\ ``NULL``\  if there is no next endpoint, \ :c:func:`ERR_PTR`\  in case of error. In case
+of success the next endpoint is returned.
+
+.. _`acpi_graph_get_child_prop_value`:
+
+acpi_graph_get_child_prop_value
+===============================
+
+.. c:function:: struct fwnode_handle *acpi_graph_get_child_prop_value(struct fwnode_handle *fwnode, const char *prop_name, unsigned int val)
+
+    Return a child with a given property value
+
+    :param struct fwnode_handle \*fwnode:
+        device fwnode
+
+    :param const char \*prop_name:
+        The name of the property to look for
+
+    :param unsigned int val:
+        the desired property value
+
+.. _`acpi_graph_get_child_prop_value.description`:
+
+Description
+-----------
+
+Return the port node corresponding to a given port number. Returns
+the child node on success, NULL otherwise.
+
+.. _`acpi_graph_get_remote_endpoint`:
+
+acpi_graph_get_remote_endpoint
+==============================
+
+.. c:function:: int acpi_graph_get_remote_endpoint(struct fwnode_handle *fwnode, struct fwnode_handle **parent, struct fwnode_handle **port, struct fwnode_handle **endpoint)
+
+    Parses and returns remote end of an endpoint
+
+    :param struct fwnode_handle \*fwnode:
+        Endpoint firmware node pointing to a remote device
+
+    :param struct fwnode_handle \*\*parent:
+        Firmware node of remote port parent is filled here if not \ ``NULL``\ 
+
+    :param struct fwnode_handle \*\*port:
+        Firmware node of remote port is filled here if not \ ``NULL``\ 
+
+    :param struct fwnode_handle \*\*endpoint:
+        Firmware node of remote endpoint is filled here if not \ ``NULL``\ 
+
+.. _`acpi_graph_get_remote_endpoint.description`:
+
+Description
+-----------
+
+Function parses remote end of ACPI firmware remote endpoint and fills in
+fields requested by the caller. Returns \ ``0``\  in case of success and
+negative errno otherwise.
 
 .. This file was automatic generated / don't edit.
 

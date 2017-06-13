@@ -324,12 +324,12 @@ cur
     The control's current value.
 
 p_new
-    The control's new value represented via an union with provides
+    The control's new value represented via a union with provides
     a standard way of accessing control types
     through a pointer.
 
 p_cur
-    The control's current value represented via an union with
+    The control's current value represented via a union with
     provides a standard way of accessing control types
     through a pointer.
 

@@ -21,7 +21,7 @@ Definition
         RC_TYPE_UNKNOWN,
         RC_TYPE_OTHER,
         RC_TYPE_RC5,
-        RC_TYPE_RC5X,
+        RC_TYPE_RC5X_20,
         RC_TYPE_RC5_SZ,
         RC_TYPE_JVC,
         RC_TYPE_SONY12,
@@ -31,7 +31,8 @@ Definition
         RC_TYPE_NECX,
         RC_TYPE_NEC32,
         RC_TYPE_SANYO,
-        RC_TYPE_MCE_KBD,
+        RC_TYPE_MCIR2_KBD,
+        RC_TYPE_MCIR2_MSE,
         RC_TYPE_RC6_0,
         RC_TYPE_RC6_6A_20,
         RC_TYPE_RC6_6A_24,
@@ -56,8 +57,8 @@ RC_TYPE_OTHER
 RC_TYPE_RC5
     Philips RC5 protocol
 
-RC_TYPE_RC5X
-    Philips RC5x protocol
+RC_TYPE_RC5X_20
+    Philips RC5x 20 bit protocol
 
 RC_TYPE_RC5_SZ
     StreamZap variant of RC5
@@ -86,8 +87,11 @@ RC_TYPE_NEC32
 RC_TYPE_SANYO
     Sanyo protocol
 
-RC_TYPE_MCE_KBD
-    RC6-ish MCE keyboard/mouse
+RC_TYPE_MCIR2_KBD
+    RC6-ish MCE keyboard
+
+RC_TYPE_MCIR2_MSE
+    RC6-ish MCE mouse
 
 RC_TYPE_RC6_0
     Philips RC6-0-16 protocol

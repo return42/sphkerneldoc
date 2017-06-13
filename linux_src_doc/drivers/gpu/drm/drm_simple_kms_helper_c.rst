@@ -34,26 +34,6 @@ Return
 
 Zero on success, negative error code on failure.
 
-.. _`drm_simple_display_pipe_detach_bridge`:
-
-drm_simple_display_pipe_detach_bridge
-=====================================
-
-.. c:function:: void drm_simple_display_pipe_detach_bridge(struct drm_simple_display_pipe *pipe)
-
-    Detach the bridge from the display pipe
-
-    :param struct drm_simple_display_pipe \*pipe:
-        simple display pipe object
-
-.. _`drm_simple_display_pipe_detach_bridge.description`:
-
-Description
------------
-
-Detaches the drm bridge previously attached with
-\ :c:func:`drm_simple_display_pipe_attach_bridge`\ 
-
 .. _`drm_simple_display_pipe_init`:
 
 drm_simple_display_pipe_init

@@ -579,12 +579,12 @@ Description
 
 This returns the PID from a record.
 
-.. _`pevent_data_prempt_count`:
+.. _`pevent_data_preempt_count`:
 
-pevent_data_prempt_count
-========================
+pevent_data_preempt_count
+=========================
 
-.. c:function:: int pevent_data_prempt_count(struct pevent *pevent, struct pevent_record *rec)
+.. c:function:: int pevent_data_preempt_count(struct pevent *pevent, struct pevent_record *rec)
 
     parse the preempt count from the record
 
@@ -594,7 +594,7 @@ pevent_data_prempt_count
     :param struct pevent_record \*rec:
         the record to parse
 
-.. _`pevent_data_prempt_count.description`:
+.. _`pevent_data_preempt_count.description`:
 
 Description
 -----------

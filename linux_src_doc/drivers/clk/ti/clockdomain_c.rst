@@ -48,6 +48,27 @@ by \ ``hw``\ ; if the usecount is 0, the clockdomain will be "disabled."
 Only needed for clocks that don't use \ :c:func:`omap2_dflt_clk_disable`\  as their
 disable function pointer.  No return value.
 
+.. _`omap2_init_clk_clkdm`:
+
+omap2_init_clk_clkdm
+====================
+
+.. c:function:: void omap2_init_clk_clkdm(struct clk_hw *hw)
+
+    look up a clockdomain name, store pointer in clk
+
+    :param struct clk_hw \*hw:
+        *undescribed*
+
+.. _`omap2_init_clk_clkdm.description`:
+
+Description
+-----------
+
+Convert a clockdomain name stored in a struct clk 'clk' into a
+clockdomain pointer, and save it into the struct clk.  Intended to be
+called during \ :c:func:`clk_register`\ .  No return value.
+
 .. _`ti_dt_clockdomains_setup`:
 
 ti_dt_clockdomains_setup

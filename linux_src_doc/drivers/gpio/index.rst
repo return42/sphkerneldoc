@@ -15,6 +15,7 @@ gpio
     gpio-altera_c
     gpio-crystalcove_c
     gpio-davinci_c
+    gpio-ftgpio010_c
     gpio-gpio-mm_c
     gpio-it87_c
     gpio-max730x_c
@@ -23,8 +24,10 @@ gpio
     gpio-mm-lantiq_c
     gpio-omap_c
     gpio-pch_c
+    gpio-pci-idio-16_c
     gpio-pisosr_c
     gpio-pl061_c
+    gpio-reg_c
     gpio-spear-spics_c
     gpio-stp-xway_c
     gpio-syscon_c

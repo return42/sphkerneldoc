@@ -6,14 +6,14 @@
 LNetMEAttach
 ============
 
-.. c:function:: int LNetMEAttach(unsigned int portal, lnet_process_id_t match_id, __u64 match_bits, __u64 ignore_bits, lnet_unlink_t unlink, lnet_ins_pos_t pos, lnet_handle_me_t *handle)
+.. c:function:: int LNetMEAttach(unsigned int portal, struct lnet_process_id match_id, __u64 match_bits, __u64 ignore_bits, enum lnet_unlink unlink, enum lnet_ins_pos pos, struct lnet_handle_me *handle)
 
     ME is empty, i.e. not associated with a memory descriptor. \ :c:func:`LNetMDAttach`\  can be used to attach a MD to an empty ME.
 
     :param unsigned int portal:
         *undescribed*
 
-    :param lnet_process_id_t match_id:
+    :param struct lnet_process_id match_id:
         *undescribed*
 
     :param __u64 match_bits:
@@ -22,13 +22,13 @@ LNetMEAttach
     :param __u64 ignore_bits:
         *undescribed*
 
-    :param lnet_unlink_t unlink:
+    :param enum lnet_unlink unlink:
         *undescribed*
 
-    :param lnet_ins_pos_t pos:
+    :param enum lnet_ins_pos pos:
         *undescribed*
 
-    :param lnet_handle_me_t \*handle:
+    :param struct lnet_handle_me \*handle:
         *undescribed*
 
 .. _`lnetmeattach.description`:
@@ -39,7 +39,7 @@ Description
 \param portal The portal table index where the ME should be attached.
 \param match_id Specifies the match criteria for the process ID of
 the requester. The constants LNET_PID_ANY and LNET_NID_ANY can be
-used to wildcard either of the identifiers in the lnet_process_id_t
+used to wildcard either of the identifiers in the lnet_process_id
 structure.
 \param match_bits,ignore_bits Specify the match criteria to apply
 to the match bits in the incoming request. The ignore bits are used
@@ -66,14 +66,14 @@ object is saved here. This handle can be used later in \ :c:func:`LNetMEInsert`\
 LNetMEInsert
 ============
 
-.. c:function:: int LNetMEInsert(lnet_handle_me_t current_meh, lnet_process_id_t match_id, __u64 match_bits, __u64 ignore_bits, lnet_unlink_t unlink, lnet_ins_pos_t pos, lnet_handle_me_t *handle)
+.. c:function:: int LNetMEInsert(struct lnet_handle_me current_meh, struct lnet_process_id match_id, __u64 match_bits, __u64 ignore_bits, enum lnet_unlink unlink, enum lnet_ins_pos pos, struct lnet_handle_me *handle)
 
     \a current_meh. The new ME is empty, i.e. not associated with a memory descriptor. \ :c:func:`LNetMDAttach`\  can be used to attach a MD to an empty ME.
 
-    :param lnet_handle_me_t current_meh:
+    :param struct lnet_handle_me current_meh:
         *undescribed*
 
-    :param lnet_process_id_t match_id:
+    :param struct lnet_process_id match_id:
         *undescribed*
 
     :param __u64 match_bits:
@@ -82,13 +82,13 @@ LNetMEInsert
     :param __u64 ignore_bits:
         *undescribed*
 
-    :param lnet_unlink_t unlink:
+    :param enum lnet_unlink unlink:
         *undescribed*
 
-    :param lnet_ins_pos_t pos:
+    :param enum lnet_ins_pos pos:
         *undescribed*
 
-    :param lnet_handle_me_t \*handle:
+    :param struct lnet_handle_me \*handle:
         *undescribed*
 
 .. _`lnetmeinsert.description`:
@@ -113,9 +113,9 @@ for \ :c:func:`LNetMEAttach`\ .
 LNetMEUnlink
 ============
 
-.. c:function:: int LNetMEUnlink(lnet_handle_me_t meh)
+.. c:function:: int LNetMEUnlink(struct lnet_handle_me meh)
 
-    :param lnet_handle_me_t meh:
+    :param struct lnet_handle_me meh:
         *undescribed*
 
 .. _`lnetmeunlink.description`:

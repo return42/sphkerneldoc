@@ -241,12 +241,9 @@ Caveats
 i915_gem_fault
 ==============
 
-.. c:function:: int i915_gem_fault(struct vm_area_struct *area, struct vm_fault *vmf)
+.. c:function:: int i915_gem_fault(struct vm_fault *vmf)
 
     fault a page into the GTT
-
-    :param struct vm_area_struct \*area:
-        CPU VMA in question
 
     :param struct vm_fault \*vmf:
         fault info
@@ -296,61 +293,6 @@ resource pressure. Similarly if the object has been moved out of the
 aperture, than pages mapped into userspace must be revoked. Removing the
 mapping will then trigger a page fault on the next user access, allowing
 fixup by \ :c:func:`i915_gem_fault`\ .
-
-.. _`i915_gem_get_ggtt_size`:
-
-i915_gem_get_ggtt_size
-======================
-
-.. c:function:: u64 i915_gem_get_ggtt_size(struct drm_i915_private *dev_priv, u64 size, int tiling_mode)
-
-    return required global GTT size for an object
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device
-
-    :param u64 size:
-        object size
-
-    :param int tiling_mode:
-        tiling mode
-
-.. _`i915_gem_get_ggtt_size.description`:
-
-Description
------------
-
-Return the required global GTT size for an object, taking into account
-potential fence register mapping.
-
-.. _`i915_gem_get_ggtt_alignment`:
-
-i915_gem_get_ggtt_alignment
-===========================
-
-.. c:function:: u64 i915_gem_get_ggtt_alignment(struct drm_i915_private *dev_priv, u64 size, int tiling_mode, bool fenced)
-
-    return required global GTT alignment
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device
-
-    :param u64 size:
-        object size
-
-    :param int tiling_mode:
-        tiling mode
-
-    :param bool fenced:
-        is fenced alignment required or not
-
-.. _`i915_gem_get_ggtt_alignment.description`:
-
-Description
------------
-
-Return the required global GTT alignment for an object, taking into account
-potential fence register mapping.
 
 .. _`i915_gem_mmap_gtt_ioctl`:
 

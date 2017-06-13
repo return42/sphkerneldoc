@@ -236,6 +236,25 @@ i40e_release_rx_desc
     :param u32 val:
         new head index
 
+.. _`i40e_rx_offset`:
+
+i40e_rx_offset
+==============
+
+.. c:function:: unsigned int i40e_rx_offset(struct i40e_ring *rx_ring)
+
+    Return expected offset into page to access data
+
+    :param struct i40e_ring \*rx_ring:
+        Ring we are requesting offset of
+
+.. _`i40e_rx_offset.description`:
+
+Description
+-----------
+
+Returns the offset value for ring into the data buffer.
+
 .. _`i40e_alloc_mapped_page`:
 
 i40e_alloc_mapped_page
@@ -317,13 +336,6 @@ i40e_rx_checksum
     :param union i40e_rx_desc \*rx_desc:
         the receive descriptor
 
-.. _`i40e_rx_checksum.description`:
-
-Description
------------
-
-skb->protocol must be set before this function is called
-
 .. _`i40e_ptype_to_htype`:
 
 i40e_ptype_to_htype
@@ -394,33 +406,6 @@ This function checks the ring, descriptor, and packet information in
 order to populate the hash, checksum, VLAN, protocol, and
 other fields within the skb.
 
-.. _`i40e_pull_tail`:
-
-i40e_pull_tail
-==============
-
-.. c:function:: void i40e_pull_tail(struct i40e_ring *rx_ring, struct sk_buff *skb)
-
-    i40e specific version of skb_pull_tail
-
-    :param struct i40e_ring \*rx_ring:
-        rx descriptor ring packet is being transacted on
-
-    :param struct sk_buff \*skb:
-        pointer to current skb being adjusted
-
-.. _`i40e_pull_tail.description`:
-
-Description
------------
-
-This function is an i40e specific version of \__pskb_pull_tail.  The
-main difference between this version and the original function is that
-this function can make several assumptions about the state of things
-that allow for significant optimizations versus the standard function.
-As a result we can do things like drop a frag and maintain an accurate
-truesize for the skb.
-
 .. _`i40e_cleanup_headers`:
 
 i40e_cleanup_headers
@@ -471,24 +456,70 @@ Description
 
 Synchronizes page for reuse by the adapter
 
-.. _`i40e_page_is_reserved`:
+.. _`i40e_page_is_reusable`:
 
-i40e_page_is_reserved
+i40e_page_is_reusable
 =====================
 
-.. c:function:: bool i40e_page_is_reserved(struct page *page)
+.. c:function:: bool i40e_page_is_reusable(struct page *page)
 
-    check if reuse is possible
+    check if any reuse is possible
 
     :param struct page \*page:
         page struct to check
+
+.. _`i40e_page_is_reusable.description`:
+
+Description
+-----------
+
+A page is not reusable if it was allocated under low memory
+conditions, or it's not in the same NUMA node as this CPU.
+
+.. _`i40e_can_reuse_rx_page`:
+
+i40e_can_reuse_rx_page
+======================
+
+.. c:function:: bool i40e_can_reuse_rx_page(struct i40e_rx_buffer *rx_buffer)
+
+    Determine if this page can be reused by the adapter for another receive
+
+    :param struct i40e_rx_buffer \*rx_buffer:
+        buffer containing the page
+
+.. _`i40e_can_reuse_rx_page.description`:
+
+Description
+-----------
+
+If page is reusable, rx_buffer->page_offset is adjusted to point to
+an unused region in the page.
+
+For small pages, \ ``truesize``\  will be a constant value, half the size
+of the memory at page.  We'll attempt to alternate between high and
+low halves of the page, with one half ready for use by the hardware
+and the other half being consumed by the stack.  We use the page
+ref count to determine whether the stack has finished consuming the
+portion of this page that was passed up with a previous packet.  If
+the page ref count is >1, we'll assume the "other" half page is
+still busy, and this page cannot be reused.
+
+For larger pages, \ ``truesize``\  will be the actual space used by the
+received packet (adjusted upward to an even multiple of the cache
+line size).  This will advance through the page by the amount
+actually consumed by the received packets while there is still
+space for a buffer.  Each region of larger pages will be used at
+most once, after which the page will not be reused.
+
+In either case, if the page is reusable its refcount is increased.
 
 .. _`i40e_add_rx_frag`:
 
 i40e_add_rx_frag
 ================
 
-.. c:function:: bool i40e_add_rx_frag(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, union i40e_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: void i40e_add_rx_frag(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, struct sk_buff *skb, unsigned int size)
 
     Add contents of Rx buffer to sk_buff
 
@@ -498,11 +529,11 @@ i40e_add_rx_frag
     :param struct i40e_rx_buffer \*rx_buffer:
         buffer containing page to add
 
-    :param union i40e_rx_desc \*rx_desc:
-        descriptor containing length of buffer written by hardware
-
     :param struct sk_buff \*skb:
         sk_buff to place the data into
+
+    :param unsigned int size:
+        packet length from rx_desc
 
 .. _`i40e_add_rx_frag.description`:
 
@@ -510,37 +541,108 @@ Description
 -----------
 
 This function will add the data contained in rx_buffer->page to the skb.
-This is done either through a direct copy if the data in the buffer is
-less than the skb header size, otherwise it will just attach the page as
-a frag to the skb.
+It will just attach the page as a frag to the skb.
 
-The function will then update the page offset if necessary and return
-true if the buffer can be reused by the adapter.
+The function will then update the page offset.
 
-.. _`i40evf_fetch_rx_buffer`:
+.. _`i40e_get_rx_buffer`:
 
-i40evf_fetch_rx_buffer
-======================
+i40e_get_rx_buffer
+==================
 
-.. c:function:: struct sk_buff *i40evf_fetch_rx_buffer(struct i40e_ring *rx_ring, union i40e_rx_desc *rx_desc)
+.. c:function:: struct i40e_rx_buffer *i40e_get_rx_buffer(struct i40e_ring *rx_ring, const unsigned int size)
+
+    Fetch Rx buffer and synchronize data for use
+
+    :param struct i40e_ring \*rx_ring:
+        rx descriptor ring to transact packets on
+
+    :param const unsigned int size:
+        size of buffer to add to skb
+
+.. _`i40e_get_rx_buffer.description`:
+
+Description
+-----------
+
+This function will pull an Rx buffer from the ring and synchronize it
+for use by the CPU.
+
+.. _`i40e_construct_skb`:
+
+i40e_construct_skb
+==================
+
+.. c:function:: struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, unsigned int size)
 
     Allocate skb and populate it
 
     :param struct i40e_ring \*rx_ring:
         rx descriptor ring to transact packets on
 
-    :param union i40e_rx_desc \*rx_desc:
-        descriptor containing info written by hardware
+    :param struct i40e_rx_buffer \*rx_buffer:
+        rx buffer to pull data from
 
-.. _`i40evf_fetch_rx_buffer.description`:
+    :param unsigned int size:
+        size of buffer to add to skb
+
+.. _`i40e_construct_skb.description`:
 
 Description
 -----------
 
-This function allocates an skb on the fly, and populates it with the page
-data from the current receive descriptor, taking care to set up the skb
-correctly, as well as handling calling the page recycle function if
-necessary.
+This function allocates an skb.  It then populates it with the page
+data from the current receive descriptor, taking care to set up the
+skb correctly.
+
+.. _`i40e_build_skb`:
+
+i40e_build_skb
+==============
+
+.. c:function:: struct sk_buff *i40e_build_skb(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, unsigned int size)
+
+    Build skb around an existing buffer
+
+    :param struct i40e_ring \*rx_ring:
+        Rx descriptor ring to transact packets on
+
+    :param struct i40e_rx_buffer \*rx_buffer:
+        Rx buffer to pull data from
+
+    :param unsigned int size:
+        size of buffer to add to skb
+
+.. _`i40e_build_skb.description`:
+
+Description
+-----------
+
+This function builds an skb around an existing Rx buffer, taking care
+to set up the skb correctly and avoid any memcpy overhead.
+
+.. _`i40e_put_rx_buffer`:
+
+i40e_put_rx_buffer
+==================
+
+.. c:function:: void i40e_put_rx_buffer(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer)
+
+    Clean up used buffer and either recycle or free
+
+    :param struct i40e_ring \*rx_ring:
+        rx descriptor ring to transact packets on
+
+    :param struct i40e_rx_buffer \*rx_buffer:
+        rx buffer to pull data from
+
+.. _`i40e_put_rx_buffer.description`:
+
+Description
+-----------
+
+This function will clean up the contents of the rx_buffer.  It will
+either recycle the bufer or unmap it and free the associated resources.
 
 .. _`i40e_is_non_eop`:
 
@@ -670,12 +772,12 @@ otherwise  returns 0 to indicate the flags has been set properly.
 i40e_tso
 ========
 
-.. c:function:: int i40e_tso(struct sk_buff *skb, u8 *hdr_len, u64 *cd_type_cmd_tso_mss)
+.. c:function:: int i40e_tso(struct i40e_tx_buffer *first, u8 *hdr_len, u64 *cd_type_cmd_tso_mss)
 
     set up the tso context descriptor
 
-    :param struct sk_buff \*skb:
-        ptr to the skb we're sending
+    :param struct i40e_tx_buffer \*first:
+        pointer to first Tx buffer for xmit
 
     :param u8 \*hdr_len:
         ptr to the size of the packet header

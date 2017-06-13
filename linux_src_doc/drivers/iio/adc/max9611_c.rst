@@ -1,0 +1,63 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/adc/max9611.c
+
+.. _`max9611_read_single`:
+
+max9611_read_single
+===================
+
+.. c:function:: int max9611_read_single(struct max9611_dev *max9611, enum max9611_conf_ids selector, u16 *raw_val)
+
+    read a single value from ADC interface
+
+    :param struct max9611_dev \*max9611:
+        max9611 device
+
+    :param enum max9611_conf_ids selector:
+        index for mux and register configuration
+
+    :param u16 \*raw_val:
+        the value returned from ADC
+
+.. _`max9611_read_single.description`:
+
+Description
+-----------
+
+Data registers are 16 bit long, spread between two 8 bit registers
+with consecutive addresses.
+Configure ADC mux first, then read register at address "reg_addr".
+The smbus_read_word routine asks for 16 bits and the ADC is kind enough
+to return values from "reg_addr" and "reg_addr + 1" consecutively.
+Data are transmitted with big-endian ordering: MSB arrives first.
+
+.. _`max9611_read_csa_voltage`:
+
+max9611_read_csa_voltage
+========================
+
+.. c:function:: int max9611_read_csa_voltage(struct max9611_dev *max9611, u16 *adc_raw, enum max9611_csa_gain *csa_gain)
+
+    read current sense amplifier output voltage
+
+    :param struct max9611_dev \*max9611:
+        max9611 device
+
+    :param u16 \*adc_raw:
+        raw value read from ADC output
+
+    :param enum max9611_csa_gain \*csa_gain:
+        gain configuration option selector
+
+.. _`max9611_read_csa_voltage.description`:
+
+Description
+-----------
+
+Current sense amplifier output voltage is read through a configurable
+1x, 4x or 8x gain.
+Start with plain 1x gain, and adjust gain control properly until a
+meaningful value is read from ADC output.
+
+.. This file was automatic generated / don't edit.
+

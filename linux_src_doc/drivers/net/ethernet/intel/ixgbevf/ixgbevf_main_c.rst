@@ -469,6 +469,25 @@ Description
 
 Configure the Tx unit of the MAC after a reset.
 
+.. _`ixgbevf_init_rss_key`:
+
+ixgbevf_init_rss_key
+====================
+
+.. c:function:: int ixgbevf_init_rss_key(struct ixgbevf_adapter *adapter)
+
+    Initialize adapter RSS key
+
+    :param struct ixgbevf_adapter \*adapter:
+        device handle
+
+.. _`ixgbevf_init_rss_key.description`:
+
+Description
+-----------
+
+Allocates and initializes the RSS key if it is not allocated.
+
 .. _`ixgbevf_configure_rx`:
 
 ixgbevf_configure_rx
@@ -1018,6 +1037,26 @@ active by the system (IFF_UP).  At this point all resources needed
 for transmit and receive operations are allocated, the interrupt
 handler is registered with the OS, the watchdog timer is started,
 and the stack is notified that the interface is ready.
+
+.. _`ixgbevf_close_suspend`:
+
+ixgbevf_close_suspend
+=====================
+
+.. c:function:: void ixgbevf_close_suspend(struct ixgbevf_adapter *adapter)
+
+    actions necessary to both suspend and close flows
+
+    :param struct ixgbevf_adapter \*adapter:
+        the private adapter struct
+
+.. _`ixgbevf_close_suspend.description`:
+
+Description
+-----------
+
+This function should contain the necessary work common to both suspending
+and closing of the device.
 
 .. _`ixgbevf_close`:
 

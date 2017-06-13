@@ -75,7 +75,7 @@ snd_soc_free_ac97_codec
     free AC97 codec device
 
     :param struct snd_ac97 \*ac97:
-        *undescribed*
+        snd_ac97 device to be freed
 
 .. _`snd_soc_free_ac97_codec.description`:
 

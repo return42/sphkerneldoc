@@ -21,9 +21,9 @@ kgdb_skipexception
 Description
 -----------
 
-On some architectures it is required to skip a breakpoint
-exception when it occurs after a breakpoint has been removed.
-This can be implemented in the architecture specific portion of kgdb.
+     On some architectures it is required to skip a breakpoint
+     exception when it occurs after a breakpoint has been removed.
+     This can be implemented in the architecture specific portion of kgdb.
 
 .. _`kgdb_breakpoint`:
 
@@ -42,9 +42,9 @@ kgdb_breakpoint
 Description
 -----------
 
-This will be implemented as a static inline per architecture.  This
-function is called by the kgdb core to execute an architecture
-specific trap to cause kgdb to enter the exception processing.
+     This will be implemented as a static inline per architecture.  This
+     function is called by the kgdb core to execute an architecture
+     specific trap to cause kgdb to enter the exception processing.
 
 .. _`kgdb_arch_init`:
 
@@ -63,8 +63,8 @@ kgdb_arch_init
 Description
 -----------
 
-This function will handle the initalization of any architecture
-specific callbacks.
+     This function will handle the initalization of any architecture
+     specific callbacks.
 
 .. _`kgdb_arch_exit`:
 
@@ -83,8 +83,8 @@ kgdb_arch_exit
 Description
 -----------
 
-This function will handle the uninitalization of any architecture
-specific callbacks, for dynamic registration and unregistration.
+     This function will handle the uninitalization of any architecture
+     specific callbacks, for dynamic registration and unregistration.
 
 .. _`pt_regs_to_gdb_regs`:
 
@@ -106,8 +106,8 @@ pt_regs_to_gdb_regs
 Description
 -----------
 
-Convert the pt_regs in \ ``regs``\  into the format for registers that
-GDB expects, stored in \ ``gdb_regs``\ .
+     Convert the pt_regs in \ ``regs``\  into the format for registers that
+     GDB expects, stored in \ ``gdb_regs``\ .
 
 .. _`sleeping_thread_to_gdb_regs`:
 
@@ -129,12 +129,12 @@ sleeping_thread_to_gdb_regs
 Description
 -----------
 
-Convert the register values of the sleeping process in \ ``p``\  to
-the format that GDB expects.
-This function is called when kgdb does not have access to the
-\ :c:type:`struct pt_regs <pt_regs>`\  and therefore it should fill the gdb registers
-\ ``gdb_regs``\  with what has been saved in \ :c:type:`struct thread_struct <thread_struct>`\ 
-thread field during switch_to.
+     Convert the register values of the sleeping process in \ ``p``\  to
+     the format that GDB expects.
+     This function is called when kgdb does not have access to the
+     \ :c:type:`struct pt_regs <pt_regs>`\  and therefore it should fill the gdb registers
+     \ ``gdb_regs``\  with what has been saved in \ :c:type:`struct thread_struct <thread_struct>`\ 
+     thread field during switch_to.
 
 .. _`gdb_regs_to_pt_regs`:
 
@@ -156,8 +156,8 @@ gdb_regs_to_pt_regs
 Description
 -----------
 
-Convert the GDB regs in \ ``gdb_regs``\  into the pt_regs, and store them
-in \ ``regs``\ .
+     Convert the GDB regs in \ ``gdb_regs``\  into the pt_regs, and store them
+     in \ ``regs``\ .
 
 .. _`kgdb_arch_handle_exception`:
 
@@ -191,12 +191,12 @@ kgdb_arch_handle_exception
 Description
 -----------
 
-This function MUST handle the 'c' and 's' command packets,
-as well packets to set / remove a hardware breakpoint, if used.
-If there are additional packets which the hardware needs to handle,
-they are handled here.  The code should return -1 if it wants to
-process more packets, and a \ ``0``\  or \ ``1``\  if it wants to exit from the
-kgdb callback.
+     This function MUST handle the 'c' and 's' command packets,
+     as well packets to set / remove a hardware breakpoint, if used.
+     If there are additional packets which the hardware needs to handle,
+     they are handled here.  The code should return -1 if it wants to
+     process more packets, and a \ ``0``\  or \ ``1``\  if it wants to exit from the
+     kgdb callback.
 
 .. _`kgdb_roundup_cpus`:
 
@@ -215,17 +215,17 @@ kgdb_roundup_cpus
 Description
 -----------
 
-On SMP systems, we need to get the attention of the other CPUs
-and get them into a known state.  This should do what is needed
-to get the other CPUs to call \ :c:func:`kgdb_wait`\ . Note that on some arches,
-the NMI approach is not used for rounding up all the CPUs. For example,
-in case of MIPS, \ :c:func:`smp_call_function`\  is used to roundup CPUs. In
-this case, we have to make sure that interrupts are enabled before
-calling \ :c:func:`smp_call_function`\ . The argument to this function is
-the flags that will be used when restoring the interrupts. There is
-\ :c:func:`local_irq_save`\  call before \ :c:func:`kgdb_roundup_cpus`\ .
+     On SMP systems, we need to get the attention of the other CPUs
+     and get them into a known state.  This should do what is needed
+     to get the other CPUs to call \ :c:func:`kgdb_wait`\ . Note that on some arches,
+     the NMI approach is not used for rounding up all the CPUs. For example,
+     in case of MIPS, \ :c:func:`smp_call_function`\  is used to roundup CPUs. In
+     this case, we have to make sure that interrupts are enabled before
+     calling \ :c:func:`smp_call_function`\ . The argument to this function is
+     the flags that will be used when restoring the interrupts. There is
+     \ :c:func:`local_irq_save`\  call before \ :c:func:`kgdb_roundup_cpus`\ .
 
-On non-SMP systems, this is not called.
+     On non-SMP systems, this is not called.
 
 .. _`kgdb_arch_set_pc`:
 
@@ -247,8 +247,8 @@ kgdb_arch_set_pc
 Description
 -----------
 
-This function handles updating the program counter and requires an
-architecture specific implementation.
+     This function handles updating the program counter and requires an
+     architecture specific implementation.
 
 .. _`kgdb_arch_late`:
 
@@ -267,10 +267,10 @@ kgdb_arch_late
 Description
 -----------
 
-This function will handle the late initalization of any
-architecture specific callbacks.  This is an optional function for
-handling things like late initialization of hw breakpoints.  The
-default implementation does nothing.
+     This function will handle the late initalization of any
+     architecture specific callbacks.  This is an optional function for
+     handling things like late initialization of hw breakpoints.  The
+     default implementation does nothing.
 
 .. _`kgdb_arch`:
 

@@ -24,7 +24,6 @@ Definition
         struct tty_struct *backup_tty;
         int tbusy;
         int woke_up;
-        struct n_hdlc_buf *tbuf;
         struct n_hdlc_buf_list tx_buf_list;
         struct n_hdlc_buf_list rx_buf_list;
         struct n_hdlc_buf_list tx_free_buf_list;
@@ -53,14 +52,10 @@ tbusy
 
 woke_up
     describe this field
-    \ ``tbuf``\  - currently transmitting tx buffer
     \ ``tx_buf_list``\  - list of pending transmit frame buffers
     \ ``rx_buf_list``\  - list of received frame buffers
     \ ``tx_free_buf_list``\  - list unused transmit frame buffers
     \ ``rx_free_buf_list``\  - list unused received frame buffers
-
-tbuf
-    *undescribed*
 
 tx_buf_list
     *undescribed*
@@ -327,16 +322,31 @@ Description
 
 Returns a pointer to newly created structure if success, otherwise \ ``NULL``\ 
 
+.. _`n_hdlc_buf_return`:
+
+n_hdlc_buf_return
+=================
+
+.. c:function:: void n_hdlc_buf_return(struct n_hdlc_buf_list *buf_list, struct n_hdlc_buf *buf)
+
+    put the HDLC buffer after the head of the specified list \ ``buf_list``\  - pointer to the buffer list \ ``buf``\  - pointer to the buffer
+
+    :param struct n_hdlc_buf_list \*buf_list:
+        *undescribed*
+
+    :param struct n_hdlc_buf \*buf:
+        *undescribed*
+
 .. _`n_hdlc_buf_put`:
 
 n_hdlc_buf_put
 ==============
 
-.. c:function:: void n_hdlc_buf_put(struct n_hdlc_buf_list *list, struct n_hdlc_buf *buf)
+.. c:function:: void n_hdlc_buf_put(struct n_hdlc_buf_list *buf_list, struct n_hdlc_buf *buf)
 
-    add specified HDLC buffer to tail of specified list \ ``list``\  - pointer to buffer list \ ``buf``\  - pointer to buffer
+    add specified HDLC buffer to tail of specified list \ ``buf_list``\  - pointer to buffer list \ ``buf``\  - pointer to buffer
 
-    :param struct n_hdlc_buf_list \*list:
+    :param struct n_hdlc_buf_list \*buf_list:
         *undescribed*
 
     :param struct n_hdlc_buf \*buf:
@@ -347,11 +357,11 @@ n_hdlc_buf_put
 n_hdlc_buf_get
 ==============
 
-.. c:function:: struct n_hdlc_buf*n_hdlc_buf_get(struct n_hdlc_buf_list *list)
+.. c:function:: struct n_hdlc_buf *n_hdlc_buf_get(struct n_hdlc_buf_list *buf_list)
 
-    remove and return an HDLC buffer from list \ ``list``\  - pointer to HDLC buffer list
+    remove and return an HDLC buffer from list \ ``buf_list``\  - pointer to HDLC buffer list
 
-    :param struct n_hdlc_buf_list \*list:
+    :param struct n_hdlc_buf_list \*buf_list:
         *undescribed*
 
 .. _`n_hdlc_buf_get.description`:

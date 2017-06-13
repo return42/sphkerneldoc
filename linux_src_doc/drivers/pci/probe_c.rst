@@ -60,8 +60,8 @@ comparing the first dword of each potential alias to the vendor/device ID.
 Known offenders
 ---------------
 
-ASM1083/1085 PCIe-to-PCI Reversible Bridge (1b21:1080, rev 01 & 03)
-AMD/ATI SBx00 PCI to PCI Bridge (1002:4384, rev 40)
+  ASM1083/1085 PCIe-to-PCI Reversible Bridge (1b21:1080, rev 01 & 03)
+  AMD/ATI SBx00 PCI to PCI Bridge (1002:4384, rev 40)
 
 .. _`pci_cfg_space_size_ext`:
 
@@ -129,26 +129,6 @@ Description
 
 Will be called only by the device core when all users of this pci device are
 done.
-
-.. _`pci_dma_configure`:
-
-pci_dma_configure
-=================
-
-.. c:function:: void pci_dma_configure(struct pci_dev *dev)
-
-    Setup DMA configuration
-
-    :param struct pci_dev \*dev:
-        ptr to pci_dev struct of the PCI device
-
-.. _`pci_dma_configure.description`:
-
-Description
------------
-
-Function to update PCI devices's DMA configuration using the same
-info from the OF node or ACPI node of host bridge's parent (if any).
 
 .. _`pci_scan_slot`:
 

@@ -21,7 +21,7 @@ audit_cb
 audit_caps
 ==========
 
-.. c:function:: int audit_caps(struct aa_profile *profile, int cap, int error)
+.. c:function:: int audit_caps(struct aa_profile *profile, int cap, int audit, int error)
 
     audit a capability
 
@@ -30,6 +30,9 @@ audit_caps
 
     :param int cap:
         capability tested
+
+    :param int audit:
+        *undescribed*
 
     :param int error:
         error code returned by test

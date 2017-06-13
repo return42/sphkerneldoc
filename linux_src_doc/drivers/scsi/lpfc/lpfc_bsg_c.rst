@@ -628,7 +628,7 @@ lpfc_bsg_dma_page_alloc
 Description
 -----------
 
-This function allocates BSG_MBOX_SIZE (4KB) page size dma buffer and.
+This function allocates BSG_MBOX_SIZE (4KB) page size dma buffer and
 returns the pointer to the buffer.
 
 .. _`lpfc_bsg_dma_page_free`:

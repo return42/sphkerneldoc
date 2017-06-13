@@ -16,6 +16,5 @@ firewire
     iso-resources_c
     iso-resources_h
     lib_c
-    lib_h
     packets-buffer_c
     packets-buffer_h

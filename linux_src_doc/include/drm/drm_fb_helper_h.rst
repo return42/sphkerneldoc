@@ -253,7 +253,7 @@ Description
 
 This is the main structure used by the fbdev helpers. Drivers supporting
 fbdev emulation should embedded this into their overall driver structure.
-Drivers must also fill out a struct \ :c:type:`struct drm_fb_helper_funcs <drm_fb_helper_funcs>`\  with a few
+Drivers must also fill out a \ :c:type:`struct drm_fb_helper_funcs <drm_fb_helper_funcs>`\  with a few
 operations.
 
 .. _`drm_fb_helper_default_ops`:

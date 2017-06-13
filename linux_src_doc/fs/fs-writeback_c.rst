@@ -17,7 +17,7 @@ inode_io_list_move_locked
         target bdi_writeback
 
     :param struct list_head \*head:
-        one of \ ``wb``\ ->b_{dirty\|io\|more_io}
+        one of \ ``wb``\ ->b_{dirty|io|more_io}
 
 .. _`inode_io_list_move_locked.description`:
 
@@ -48,7 +48,7 @@ inode_io_list_del_locked
 Description
 -----------
 
-Remove \ ``inode``\  which may be on one of \ ``wb``\ ->b_{dirty\|io\|more_io} lists and
+Remove \ ``inode``\  which may be on one of \ ``wb``\ ->b_{dirty|io|more_io} lists and
 clear \ ``WB_has_dirty_io``\  if all are empty afterwards.
 
 .. _`wb_wait_for_completion`:
@@ -367,10 +367,10 @@ wb_start_background_writeback
 Description
 -----------
 
-This makes sure WB_SYNC_NONE background writeback happens. When
-this function returns, it is only guaranteed that for given wb
-some IO is happening if we are over background dirty threshold.
-Caller need not hold sb s_umount semaphore.
+  This makes sure WB_SYNC_NONE background writeback happens. When
+  this function returns, it is only guaranteed that for given wb
+  some IO is happening if we are over background dirty threshold.
+  Caller need not hold sb s_umount semaphore.
 
 .. _`__mark_inode_dirty`:
 
@@ -386,13 +386,14 @@ __mark_inode_dirty
 
     :param int flags:
         what kind of dirty (i.e. I_DIRTY_SYNC)
-        Mark an inode as dirty. Callers should use mark_inode_dirty or
-        mark_inode_dirty_sync.
 
 .. _`__mark_inode_dirty.description`:
 
 Description
 -----------
+
+Mark an inode as dirty. Callers should use mark_inode_dirty or
+mark_inode_dirty_sync.
 
 Put the inode on the super block's dirty list.
 
@@ -401,7 +402,7 @@ dirty list only if it is hashed or if it refers to a blockdev.
 If it was not hashed, it will never be added to the dirty list
 even if it is later hashed, as it will have been marked dirty already.
 
-In short, make sure you hash any inodes \_before\_ you start marking
+In short, make sure you hash any inodes _before_ you start marking
 them dirty.
 
 Note that for blockdevs, inode->dirtied_when represents the dirtying time of

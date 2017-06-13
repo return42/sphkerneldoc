@@ -7,4 +7,5 @@ qed
 .. toctree::
     :maxdepth: 1
 
+    qed_fcoe_if_h
     qed_iscsi_if_h

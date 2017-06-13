@@ -129,6 +129,82 @@ Description
 Returns the shared fence list.  Does NOT take references to
 the fence.  The obj->lock must be held.
 
+.. _`reservation_object_lock`:
+
+reservation_object_lock
+=======================
+
+.. c:function:: int reservation_object_lock(struct reservation_object *obj, struct ww_acquire_ctx *ctx)
+
+    lock the reservation object
+
+    :param struct reservation_object \*obj:
+        the reservation object
+
+    :param struct ww_acquire_ctx \*ctx:
+        the locking context
+
+.. _`reservation_object_lock.description`:
+
+Description
+-----------
+
+Locks the reservation object for exclusive access and modification. Note,
+that the lock is only against other writers, readers will run concurrently
+with a writer under RCU. The seqlock is used to notify readers if they
+overlap with a writer.
+
+As the reservation object may be locked by multiple parties in an
+undefined order, a #ww_acquire_ctx is passed to unwind if a cycle
+is detected. See \ :c:func:`ww_mutex_lock`\  and \ :c:func:`ww_acquire_init`\ . A reservation
+object may be locked by itself by passing NULL as \ ``ctx``\ .
+
+.. _`reservation_object_trylock`:
+
+reservation_object_trylock
+==========================
+
+.. c:function:: bool reservation_object_trylock(struct reservation_object *obj)
+
+    trylock the reservation object
+
+    :param struct reservation_object \*obj:
+        the reservation object
+
+.. _`reservation_object_trylock.description`:
+
+Description
+-----------
+
+Tries to lock the reservation object for exclusive access and modification.
+Note, that the lock is only against other writers, readers will run
+concurrently with a writer under RCU. The seqlock is used to notify readers
+if they overlap with a writer.
+
+Also note that since no context is provided, no deadlock protection is
+possible.
+
+Returns true if the lock was acquired, false otherwise.
+
+.. _`reservation_object_unlock`:
+
+reservation_object_unlock
+=========================
+
+.. c:function:: void reservation_object_unlock(struct reservation_object *obj)
+
+    unlock the reservation object
+
+    :param struct reservation_object \*obj:
+        the reservation object
+
+.. _`reservation_object_unlock.description`:
+
+Description
+-----------
+
+Unlocks the reservation object following exclusive access.
+
 .. _`reservation_object_get_excl`:
 
 reservation_object_get_excl

@@ -336,6 +336,7 @@ Definition
         struct omap_hwmod_addr_space *addr;
         const char *clk;
         struct clk *_clk;
+        struct list_head node;
         union fw;
         u8 width;
         u8 user;
@@ -362,6 +363,9 @@ clk
 
 _clk
     pointer to the interface struct clk (filled in at runtime)
+
+node
+    *undescribed*
 
 fw
     interface firewall data
@@ -464,7 +468,6 @@ Definition
         struct omap_hwmod_sysc_fields *sysc_fields;
         u8 srst_udelay;
         u8 idlemodes;
-        u8 clockact;
     }
 
 .. _`omap_hwmod_class_sysconfig.members`:
@@ -498,9 +501,6 @@ srst_udelay
 
 idlemodes
     One or more of {SIDLE,MSTANDBY}_{OFF,FORCE,SMART}
-
-clockact
-    the default value of the module CLOCKACTIVITY bits
 
 .. _`omap_hwmod_class_sysconfig.description`:
 
@@ -721,38 +721,6 @@ executed in place of the standard hwmod \_reset() code in
 mach-omap2/omap_hwmod.c.  This is needed for IP blocks which have
 unusual reset sequences - usually processor IP blocks like the IVA.
 
-.. _`omap_hwmod_link`:
-
-struct omap_hwmod_link
-======================
-
-.. c:type:: struct omap_hwmod_link
-
-    internal structure linking hwmods with ocp_ifs
-
-.. _`omap_hwmod_link.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_hwmod_link {
-        struct omap_hwmod_ocp_if *ocp_if;
-        struct list_head node;
-    }
-
-.. _`omap_hwmod_link.members`:
-
-Members
--------
-
-ocp_if
-    OCP interface structure record pointer
-
-node
-    list_head pointing to next struct omap_hwmod_link in a list
-
 .. _`omap_hwmod`:
 
 struct omap_hwmod
@@ -781,9 +749,8 @@ Definition
         const char *main_clk;
         struct clk *_clk;
         struct omap_hwmod_opt_clk *opt_clks;
-        char *clkdm_name;
+        const char *clkdm_name;
         struct clockdomain *clkdm;
-        struct list_head master_ports;
         struct list_head slave_ports;
         void *dev_attr;
         u32 _sysc_cache;
@@ -793,12 +760,11 @@ Definition
         struct list_head node;
         struct omap_hwmod_ocp_if *_mpu_port;
         unsigned int (*xlate_irq)(unsigned int);
-        u16 flags;
+        u32 flags;
         u8 mpu_rt_idx;
         u8 response_lat;
         u8 rst_lines_cnt;
         u8 opt_clks_cnt;
-        u8 masters_cnt;
         u8 slaves_cnt;
         u8 hwmods_cnt;
         u8 _int_flags;
@@ -851,9 +817,6 @@ clkdm_name
 clkdm
     *undescribed*
 
-master_ports
-    *undescribed*
-
 slave_ports
     *undescribed*
 
@@ -895,9 +858,6 @@ rst_lines_cnt
 
 opt_clks_cnt
     number of \ ``opt_clks``\ 
-
-masters_cnt
-    *undescribed*
 
 slaves_cnt
     number of \ ``slave``\  entries

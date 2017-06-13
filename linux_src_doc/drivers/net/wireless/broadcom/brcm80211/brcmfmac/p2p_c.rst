@@ -943,7 +943,7 @@ brcmf_p2p_create_p2pdev
 brcmf_p2p_add_vif
 =================
 
-.. c:function:: struct wireless_dev *brcmf_p2p_add_vif(struct wiphy *wiphy, const char *name, unsigned char name_assign_type, enum nl80211_iftype type, u32 *flags, struct vif_params *params)
+.. c:function:: struct wireless_dev *brcmf_p2p_add_vif(struct wiphy *wiphy, const char *name, unsigned char name_assign_type, enum nl80211_iftype type, struct vif_params *params)
 
     create a new P2P virtual interface.
 
@@ -958,9 +958,6 @@ brcmf_p2p_add_vif
 
     :param enum nl80211_iftype type:
         nl80211 interface type.
-
-    :param u32 \*flags:
-        not used.
 
     :param struct vif_params \*params:
         contains mac address for P2P device.

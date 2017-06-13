@@ -856,6 +856,29 @@ Description
 
 Returns the smid stored scmd pointer.
 
+.. _`__scsih_scsi_lookup_get_clear`:
+
+__scsih_scsi_lookup_get_clear
+=============================
+
+.. c:function:: struct scsi_cmnd *__scsih_scsi_lookup_get_clear(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    returns scmd entry without holding any lock.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`__scsih_scsi_lookup_get_clear.description`:
+
+Description
+-----------
+
+Returns the smid stored scmd pointer.
+Then will dereference the stored scmd pointer.
+
 .. _`_scsih_scsi_lookup_get_clear`:
 
 _scsih_scsi_lookup_get_clear

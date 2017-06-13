@@ -6,7 +6,7 @@
 aspeed_sig_desc_eval
 ====================
 
-.. c:function:: bool aspeed_sig_desc_eval(const struct aspeed_sig_desc *desc, bool enabled, struct regmap *map)
+.. c:function:: int aspeed_sig_desc_eval(const struct aspeed_sig_desc *desc, bool enabled, struct regmap *map)
 
     :param const struct aspeed_sig_desc \*desc:
         The signal descriptor of interest
@@ -17,13 +17,14 @@ aspeed_sig_desc_eval
     :param struct regmap \*map:
         *undescribed*
 
-.. _`aspeed_sig_desc_eval.description`:
+.. _`aspeed_sig_desc_eval.return`:
 
-Description
------------
+Return
+------
 
-@return True if the descriptor's bitfield is configured to the state
-selected by \ ``enabled``\ , false otherwise
+1 if the descriptor's bitfield is configured to the state
+selected by \ ``enabled``\ , 0 if not, and less than zero if an unrecoverable
+failure occurred
 
 Evaluation of descriptor state is non-trivial in that it is not a binary
 
@@ -42,7 +43,7 @@ is enabled). Thus we must explicitly test for either condition as required.
 aspeed_sig_expr_eval
 ====================
 
-.. c:function:: bool aspeed_sig_expr_eval(const struct aspeed_sig_expr *expr, bool enabled, struct regmap *map)
+.. c:function:: int aspeed_sig_expr_eval(const struct aspeed_sig_expr *expr, bool enabled, struct regmap * const *maps)
 
     :param const struct aspeed_sig_expr \*expr:
         An expression controlling the signal for a mux function on a pin
@@ -50,16 +51,16 @@ aspeed_sig_expr_eval
     :param bool enabled:
         True to query the enabled state, false to query disabled state
 
-    :param struct regmap \*map:
-        *undescribed*
+    :param struct regmap \* const \*maps:
+        The list of regmap instances
 
-.. _`aspeed_sig_expr_eval.description`:
+.. _`aspeed_sig_expr_eval.return`:
 
-Description
------------
+Return
+------
 
-@return True if the expression composed by \ ``enabled``\  evaluates true, false
-otherwise
+1 if the expression composed by \ ``enabled``\  evaluates true, 0 if not,
+and less than zero if an unrecoverable failure occurred.
 
 A mux function is enabled or disabled if the function's signal expression
 for each pin in the function's pin group evaluates true for the desired
@@ -77,7 +78,7 @@ either condition as required.
 aspeed_sig_expr_set
 ===================
 
-.. c:function:: bool aspeed_sig_expr_set(const struct aspeed_sig_expr *expr, bool enable, struct regmap *map)
+.. c:function:: int aspeed_sig_expr_set(const struct aspeed_sig_expr *expr, bool enable, struct regmap * const *maps)
 
     all descriptors in the expression.
 
@@ -89,36 +90,36 @@ aspeed_sig_expr_set
         true to enable an function's signal through a pin's signal
         expression, false to disable the function's signal
 
-    :param struct regmap \*map:
-        The SCU's regmap instance for pinmux register access.
+    :param struct regmap \* const \*maps:
+        The list of regmap instances for pinmux register access.
 
-.. _`aspeed_sig_expr_set.description`:
+.. _`aspeed_sig_expr_set.return`:
 
-Description
------------
+Return
+------
 
-@return true if the expression is configured as requested, false otherwise
+0 if the expression is configured as requested and a negative error
+code otherwise
 
 .. _`aspeed_disable_sig`:
 
 aspeed_disable_sig
 ==================
 
-.. c:function:: bool aspeed_disable_sig(const struct aspeed_sig_expr **exprs, struct regmap *map)
+.. c:function:: int aspeed_disable_sig(const struct aspeed_sig_expr **exprs, struct regmap * const *maps)
 
     :param const struct aspeed_sig_expr \*\*exprs:
         The list of signal expressions (from a priority level on a pin)
 
-    :param struct regmap \*map:
-        The SCU's regmap instance for pinmux register access.
+    :param struct regmap \* const \*maps:
+        The list of regmap instances for pinmux register access.
 
-.. _`aspeed_disable_sig.description`:
+.. _`aspeed_disable_sig.return`:
 
-Description
------------
+Return
+------
 
-@return true if all expressions in the list are successfully disabled, false
-otherwise
+0 if all expressions are disabled, otherwise a negative error code
 
 .. _`aspeed_find_expr_by_name`:
 
@@ -135,12 +136,12 @@ aspeed_find_expr_by_name
     :param const char \*name:
         The name of the requested function (needle)
 
-.. _`aspeed_find_expr_by_name.description`:
+.. _`aspeed_find_expr_by_name.return`:
 
-Description
------------
+Return
+------
 
-@return A pointer to the signal expression whose function tag matches the
+A pointer to the signal expression whose function tag matches the
 provided name, otherwise NULL.
 
 .. This file was automatic generated / don't edit.

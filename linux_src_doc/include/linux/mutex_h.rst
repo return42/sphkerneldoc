@@ -58,7 +58,7 @@ mutex_trylock_recursive
 Description
 -----------
 
-This function should not be used, \_ever_. It is purely for hysterical GEM
+This function should not be used, _ever_. It is purely for hysterical GEM
 raisins, and once those are gone this will be removed.
 
 .. _`mutex_trylock_recursive.return`:
@@ -66,9 +66,9 @@ raisins, and once those are gone this will be removed.
 Return
 ------
 
-MUTEX_TRYLOCK_FAILED    - trylock failed,
-MUTEX_TRYLOCK_SUCCESS   - lock acquired,
-MUTEX_TRYLOCK_RECURSIVE - we already owned the lock.
+ - MUTEX_TRYLOCK_FAILED    - trylock failed,
+ - MUTEX_TRYLOCK_SUCCESS   - lock acquired,
+ - MUTEX_TRYLOCK_RECURSIVE - we already owned the lock.
 
 .. This file was automatic generated / don't edit.
 

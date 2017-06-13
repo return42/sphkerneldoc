@@ -6,7 +6,7 @@
 nlmclnt_proc
 ============
 
-.. c:function:: int nlmclnt_proc(struct nlm_host *host, int cmd, struct file_lock *fl)
+.. c:function:: int nlmclnt_proc(struct nlm_host *host, int cmd, struct file_lock *fl, void *data)
 
     Perform a single client-side lock request
 
@@ -18,6 +18,9 @@ nlmclnt_proc
 
     :param struct file_lock \*fl:
         address of arguments for the lock operation
+
+    :param void \*data:
+        address of data to be sent to callback operations
 
 .. This file was automatic generated / don't edit.
 

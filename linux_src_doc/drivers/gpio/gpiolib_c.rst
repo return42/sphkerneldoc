@@ -388,7 +388,7 @@ more gpio_chips.
 gpiochip_set_cascaded_irqchip
 =============================
 
-.. c:function:: void gpiochip_set_cascaded_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq, irq_flow_handler_t parent_handler)
+.. c:function:: void gpiochip_set_cascaded_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int parent_irq, irq_flow_handler_t parent_handler)
 
     connects a cascaded irqchip to a gpiochip
 
@@ -398,7 +398,7 @@ gpiochip_set_cascaded_irqchip
     :param struct irq_chip \*irqchip:
         the irqchip to chain to the gpiochip
 
-    :param int parent_irq:
+    :param unsigned int parent_irq:
         the irq number corresponding to the parent IRQ for this
         chained irqchip
 
@@ -412,7 +412,7 @@ gpiochip_set_cascaded_irqchip
 gpiochip_set_chained_irqchip
 ============================
 
-.. c:function:: void gpiochip_set_chained_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq, irq_flow_handler_t parent_handler)
+.. c:function:: void gpiochip_set_chained_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int parent_irq, irq_flow_handler_t parent_handler)
 
     connects a chained irqchip to a gpiochip
 
@@ -422,7 +422,7 @@ gpiochip_set_chained_irqchip
     :param struct irq_chip \*irqchip:
         the irqchip to chain to the gpiochip
 
-    :param int parent_irq:
+    :param unsigned int parent_irq:
         the irq number corresponding to the parent IRQ for this
         chained irqchip
 
@@ -436,7 +436,7 @@ gpiochip_set_chained_irqchip
 gpiochip_set_nested_irqchip
 ===========================
 
-.. c:function:: void gpiochip_set_nested_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, int parent_irq)
+.. c:function:: void gpiochip_set_nested_irqchip(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int parent_irq)
 
     connects a nested irqchip to a gpiochip
 
@@ -446,7 +446,7 @@ gpiochip_set_nested_irqchip
     :param struct irq_chip \*irqchip:
         the irqchip to nest to the gpiochip
 
-    :param int parent_irq:
+    :param unsigned int parent_irq:
         the irq number corresponding to the parent IRQ for this
         nested irqchip
 
@@ -496,12 +496,12 @@ Description
 
 This is called only from \ :c:func:`gpiochip_remove`\ 
 
-.. _`_gpiochip_irqchip_add`:
+.. _`gpiochip_irqchip_add_key`:
 
-_gpiochip_irqchip_add
-=====================
+gpiochip_irqchip_add_key
+========================
 
-.. c:function:: int _gpiochip_irqchip_add(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool nested, struct lock_class_key *lock_key)
+.. c:function:: int gpiochip_irqchip_add_key(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool nested, struct lock_class_key *lock_key)
 
     adds an irqchip to a gpiochip
 
@@ -529,7 +529,7 @@ _gpiochip_irqchip_add
     :param struct lock_class_key \*lock_key:
         lockdep class
 
-.. _`_gpiochip_irqchip_add.description`:
+.. _`gpiochip_irqchip_add_key.description`:
 
 Description
 -----------
@@ -577,6 +577,24 @@ gpiochip_generic_free
 
     :param unsigned offset:
         the offset of the GPIO to free from GPIO function
+
+.. _`gpiochip_generic_config`:
+
+gpiochip_generic_config
+=======================
+
+.. c:function:: int gpiochip_generic_config(struct gpio_chip *chip, unsigned offset, unsigned long config)
+
+    apply configuration for a pin
+
+    :param struct gpio_chip \*chip:
+        the gpiochip owning the GPIO
+
+    :param unsigned offset:
+        the offset of the GPIO to apply the configuration
+
+    :param unsigned long config:
+        the configuration to be applied
 
 .. _`gpiochip_add_pingroup_range`:
 
@@ -1376,7 +1394,7 @@ occurred while trying to acquire the GPIO.
 fwnode_get_named_gpiod
 ======================
 
-.. c:function:: struct gpio_desc *fwnode_get_named_gpiod(struct fwnode_handle *fwnode, const char *propname)
+.. c:function:: struct gpio_desc *fwnode_get_named_gpiod(struct fwnode_handle *fwnode, const char *propname, int index, enum gpiod_flags dflags, const char *label)
 
     obtain a GPIO from firmware node
 
@@ -1385,6 +1403,15 @@ fwnode_get_named_gpiod
 
     :param const char \*propname:
         name of the firmware property representing the GPIO
+
+    :param int index:
+        index of the GPIO to obtain in the consumer
+
+    :param enum gpiod_flags dflags:
+        GPIO initialization flags
+
+    :param const char \*label:
+        *undescribed*
 
 .. _`fwnode_get_named_gpiod.description`:
 
@@ -1397,6 +1424,9 @@ from firmware.
 Function properly finds the corresponding GPIO using whatever is the
 underlying firmware interface and then makes sure that the GPIO
 descriptor is requested before it is returned to the caller.
+
+On successful request the GPIO pin is configured in accordance with
+provided \ ``dflags``\ .
 
 In case of error an \ :c:func:`ERR_PTR`\  is returned.
 

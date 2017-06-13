@@ -136,7 +136,7 @@ Definition
         void *desc;
         __le32 iv[2];
         dma_addr_t skb_dma;
-        struct queue_entry *entry;
+        struct ieee80211_sta *sta;
     }
 
 .. _`skb_frame_desc.members`:
@@ -167,8 +167,8 @@ iv
 skb_dma
     (PCI-only) the DMA address associated with the sk buffer.
 
-entry
-    The entry to which this sk buffer belongs.
+sta
+    The station where sk buffer was sent.
 
 .. _`skb_frame_desc.description`:
 
@@ -275,6 +275,9 @@ Definition
         int flags;
         int dev_flags;
         u16 rate_mode;
+        u16 enc_flags;
+        enum mac80211_rx_encoding encoding;
+        enum rate_info_bw bw;
         u8 cipher;
         u8 cipher_status;
         __le32 iv[2];
@@ -306,6 +309,15 @@ dev_flags
 
 rate_mode
     Rate mode (See \ ``enum``\  rate_modulation).
+
+enc_flags
+    *undescribed*
+
+encoding
+    *undescribed*
+
+bw
+    *undescribed*
 
 cipher
     Cipher type used during decryption.
@@ -348,7 +360,8 @@ Definition
         TXDONE_FALLBACK,
         TXDONE_FAILURE,
         TXDONE_EXCESSIVE_RETRY,
-        TXDONE_AMPDU
+        TXDONE_AMPDU,
+        TXDONE_NO_ACK_REQ
     };
 
 .. _`txdone_entry_desc_flags.constants`:
@@ -373,6 +386,9 @@ TXDONE_EXCESSIVE_RETRY
     frame transmission failed due to excessive retries.
 
 TXDONE_AMPDU
+    *undescribed*
+
+TXDONE_NO_ACK_REQ
     *undescribed*
 
 .. _`txdone_entry_desc_flags.description`:

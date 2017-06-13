@@ -6,12 +6,12 @@
 get_next_freq
 =============
 
-.. c:function:: unsigned int get_next_freq(struct sugov_cpu *sg_cpu, unsigned long util, unsigned long max)
+.. c:function:: unsigned int get_next_freq(struct sugov_policy *sg_policy, unsigned long util, unsigned long max)
 
     Compute a new frequency for a given cpufreq policy.
 
-    :param struct sugov_cpu \*sg_cpu:
-        schedutil cpu object to compute the new frequency for.
+    :param struct sugov_policy \*sg_policy:
+        schedutil policy object to compute the new frequency for.
 
     :param unsigned long util:
         Current CPU utilization.

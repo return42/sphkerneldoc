@@ -197,6 +197,7 @@ Definition
         struct dma_pool *td_pool;
         struct usb_gadget gadget;
         struct usb_gadget_driver *driver;
+        enum usb_device_state resume_state;
         unsigned hw_ep_max;
         struct ci_hw_ep ci_hw_ep[ENDPT_MAX];
         u32 ep0_dir;
@@ -210,6 +211,10 @@ Definition
         u8 test_mode;
         struct ci_hdrc_platform_data *platdata;
         int vbus_active;
+    #ifdef CONFIG_USB_CHIPIDEA_ULPI
+        struct ulpi *ulpi;
+        struct ulpi_ops ulpi_ops;
+    #endif
         struct phy *phy;
         struct usb_phy *usb_phy;
         struct usb_hcd *hcd;
@@ -285,6 +290,9 @@ gadget
 driver
     gadget driver
 
+resume_state
+    save the state of gadget suspend from
+
 hw_ep_max
     total number of endpoints supported by hardware
 
@@ -323,6 +331,12 @@ platdata
 
 vbus_active
     is VBUS active
+
+ulpi
+    pointer to ULPI device, if any
+
+ulpi_ops
+    ULPI read/write ops for this device
 
 phy
     pointer to PHY, if any

@@ -74,12 +74,12 @@ structure.
 intel_lvds_init
 ===============
 
-.. c:function:: void intel_lvds_init(struct drm_device *dev)
+.. c:function:: void intel_lvds_init(struct drm_i915_private *dev_priv)
 
     setup LVDS connectors on this device
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        *undescribed*
 
 .. _`intel_lvds_init.description`:
 

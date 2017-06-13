@@ -1,6 +1,47 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: virt/kvm/arm/vgic/vgic-init.c
 
+.. _`kvm_vgic_early_init`:
+
+kvm_vgic_early_init
+===================
+
+.. c:function:: void kvm_vgic_early_init(struct kvm *kvm)
+
+    Initialize static VGIC VCPU data structures
+
+    :param struct kvm \*kvm:
+        The VM whose VGIC districutor should be initialized
+
+.. _`kvm_vgic_early_init.description`:
+
+Description
+-----------
+
+Only do initialization of static structures that don't require any
+allocation or sizing information from userspace.  \ :c:func:`vgic_init`\  called
+\ :c:func:`kvm_vgic_dist_init`\  which takes care of the rest.
+
+.. _`kvm_vgic_vcpu_early_init`:
+
+kvm_vgic_vcpu_early_init
+========================
+
+.. c:function:: void kvm_vgic_vcpu_early_init(struct kvm_vcpu *vcpu)
+
+    Initialize static VGIC VCPU data structures
+
+    :param struct kvm_vcpu \*vcpu:
+        The VCPU whose VGIC data structures whould be initialized
+
+.. _`kvm_vgic_vcpu_early_init.description`:
+
+Description
+-----------
+
+Only do initialization, but do not actually enable the VGIC CPU interface
+yet.
+
 .. _`kvm_vgic_create`:
 
 kvm_vgic_create
@@ -36,12 +77,12 @@ kvm_vgic_dist_init
 kvm_vgic_vcpu_init
 ==================
 
-.. c:function:: void kvm_vgic_vcpu_init(struct kvm_vcpu *vcpu)
+.. c:function:: int kvm_vgic_vcpu_init(struct kvm_vcpu *vcpu)
 
-    initialize the vcpu data structures and enable the VCPU interface
+    Register VCPU-specific KVM iodevs
 
     :param struct kvm_vcpu \*vcpu:
-        the VCPU which's VGIC should be initialized
+        pointer to the VCPU being created and initialized
 
 .. _`vgic_lazy_init`:
 
@@ -66,6 +107,25 @@ kvm_vgic_map_resources
 
     :param struct kvm \*kvm:
         kvm struct pointer
+
+.. _`kvm_vgic_init_cpu_hardware`:
+
+kvm_vgic_init_cpu_hardware
+==========================
+
+.. c:function:: void kvm_vgic_init_cpu_hardware( void)
+
+    initialize the GIC VE hardware
+
+    :param  void:
+        no arguments
+
+.. _`kvm_vgic_init_cpu_hardware.description`:
+
+Description
+-----------
+
+For a specific CPU, initialize the GIC VE hardware.
 
 .. _`kvm_vgic_hyp_init`:
 

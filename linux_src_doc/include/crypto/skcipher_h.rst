@@ -111,6 +111,7 @@ Definition
         unsigned int max_keysize;
         unsigned int ivsize;
         unsigned int chunksize;
+        unsigned int walksize;
         struct crypto_alg base;
     }
 
@@ -184,6 +185,11 @@ ivsize
 chunksize
     Equal to the block size except for stream ciphers such as
     CTR where it is set to the underlying block size.
+
+walksize
+    Equal to the chunk size except in cases where the algorithm is
+    considerably more efficient if it can operate on multiple chunks
+    in parallel. Should be a multiple of chunksize.
 
 base
     Definition of a generic crypto algorithm.
@@ -352,6 +358,35 @@ Return
 ------
 
 chunk size in bytes
+
+.. _`crypto_skcipher_walksize`:
+
+crypto_skcipher_walksize
+========================
+
+.. c:function:: unsigned int crypto_skcipher_walksize(struct crypto_skcipher *tfm)
+
+    obtain walk size
+
+    :param struct crypto_skcipher \*tfm:
+        cipher handle
+
+.. _`crypto_skcipher_walksize.description`:
+
+Description
+-----------
+
+In some cases, algorithms can only perform optimally when operating on
+multiple blocks in parallel. This is reflected by the walksize, which
+must be a multiple of the chunksize (or equal if the concern does not
+apply)
+
+.. _`crypto_skcipher_walksize.return`:
+
+Return
+------
+
+walk size in bytes
 
 .. _`crypto_skcipher_blocksize`:
 

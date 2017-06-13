@@ -13,13 +13,6 @@ userfaultfd_ctx_get
     :param struct userfaultfd_ctx \*ctx:
         [in] Pointer to the userfaultfd context.
 
-.. _`userfaultfd_ctx_get.return`:
-
-Return
-------
-
-In case of success, returns not zero.
-
 .. _`userfaultfd_ctx_put`:
 
 userfaultfd_ctx_put
@@ -47,7 +40,7 @@ userfaultfd_file_create
 
 .. c:function:: struct file *userfaultfd_file_create(int flags)
 
-    Creates an userfaultfd file pointer.
+    Creates a userfaultfd file pointer.
 
     :param int flags:
         Flags for the userfaultfd file.
@@ -57,14 +50,14 @@ userfaultfd_file_create
 Description
 -----------
 
-This function creates an userfaultfd file pointer, w/out installing
+This function creates a userfaultfd file pointer, w/out installing
 it into the fd table. This is useful when the userfaultfd file is
 used during the initialization of data structures that require
 extra setup after the userfaultfd creation. So the userfaultfd
 creation is split into the file pointer creation phase, and the
 file descriptor installation phase.  In this way races with
 userspace closing the newly installed file descriptor can be
-avoided.  Returns an userfaultfd file pointer, or a proper error
+avoided.  Returns a userfaultfd file pointer, or a proper error
 pointer.
 
 .. This file was automatic generated / don't edit.

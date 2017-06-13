@@ -180,40 +180,5 @@ Description
 
 This function returns an error code
 
-.. _`hw_wait_reg`:
-
-hw_wait_reg
-===========
-
-.. c:function:: int hw_wait_reg(struct ci_hdrc *ci, enum ci_hw_regs reg, u32 mask, u32 value, unsigned int timeout_ms)
-
-    wait the register value
-
-    :param struct ci_hdrc \*ci:
-        the controller
-
-    :param enum ci_hw_regs reg:
-        register index
-
-    :param u32 mask:
-        mast bit
-
-    :param u32 value:
-        the bit value to wait
-
-    :param unsigned int timeout_ms:
-        timeout in millisecond
-
-.. _`hw_wait_reg.description`:
-
-Description
------------
-
-Sometimes, it needs to wait register value before going on.
-Eg, when switch to device mode, the vbus value should be lower
-than OTGSC_BSV before connects to host.
-
-This function returns an error code if timeout
-
 .. This file was automatic generated / don't edit.
 

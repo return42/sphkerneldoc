@@ -26,7 +26,7 @@ pci_bus_alloc_resource
         minimum /proc/iomem address to allocate
 
     :param unsigned long type_mask:
-        IORESOURCE\_\* type flags
+        IORESOURCE_* type flags
 
     :param resource_size_t (\*alignf)(void \*, const struct resource \*, resource_size_t, resource_size_t):
         resource alignment function

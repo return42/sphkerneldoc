@@ -517,12 +517,12 @@ spin_lock_irqsave(host lock)
 ata_sff_data_xfer
 =================
 
-.. c:function:: unsigned int ata_sff_data_xfer(struct ata_device *dev, unsigned char *buf, unsigned int buflen, int rw)
+.. c:function:: unsigned int ata_sff_data_xfer(struct ata_queued_cmd *qc, unsigned char *buf, unsigned int buflen, int rw)
 
     Transfer data by PIO
 
-    :param struct ata_device \*dev:
-        device to target
+    :param struct ata_queued_cmd \*qc:
+        queued command
 
     :param unsigned char \*buf:
         data buffer
@@ -559,12 +559,12 @@ Bytes consumed.
 ata_sff_data_xfer32
 ===================
 
-.. c:function:: unsigned int ata_sff_data_xfer32(struct ata_device *dev, unsigned char *buf, unsigned int buflen, int rw)
+.. c:function:: unsigned int ata_sff_data_xfer32(struct ata_queued_cmd *qc, unsigned char *buf, unsigned int buflen, int rw)
 
     Transfer data by PIO
 
-    :param struct ata_device \*dev:
-        device to target
+    :param struct ata_queued_cmd \*qc:
+        queued command
 
     :param unsigned char \*buf:
         data buffer
@@ -602,12 +602,12 @@ Bytes consumed.
 ata_sff_data_xfer_noirq
 =======================
 
-.. c:function:: unsigned int ata_sff_data_xfer_noirq(struct ata_device *dev, unsigned char *buf, unsigned int buflen, int rw)
+.. c:function:: unsigned int ata_sff_data_xfer_noirq(struct ata_queued_cmd *qc, unsigned char *buf, unsigned int buflen, int rw)
 
     Transfer data by PIO
 
-    :param struct ata_device \*dev:
-        device to target
+    :param struct ata_queued_cmd \*qc:
+        queued command
 
     :param unsigned char \*buf:
         data buffer

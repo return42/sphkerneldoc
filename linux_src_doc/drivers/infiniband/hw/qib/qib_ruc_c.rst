@@ -55,7 +55,7 @@ will pass through here.
 qib_make_grh
 ============
 
-.. c:function:: u32 qib_make_grh(struct qib_ibport *ibp, struct ib_grh *hdr, struct ib_global_route *grh, u32 hwords, u32 nwords)
+.. c:function:: u32 qib_make_grh(struct qib_ibport *ibp, struct ib_grh *hdr, const struct ib_global_route *grh, u32 hwords, u32 nwords)
 
     construct a GRH header
 
@@ -65,7 +65,7 @@ qib_make_grh
     :param struct ib_grh \*hdr:
         a pointer to the GRH header being constructed
 
-    :param struct ib_global_route \*grh:
+    :param const struct ib_global_route \*grh:
         the global route address to send to
 
     :param u32 hwords:

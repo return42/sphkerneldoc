@@ -1,6 +1,44 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/crypto/policy.c
 
+.. _`fscrypt_has_permitted_context`:
+
+fscrypt_has_permitted_context
+=============================
+
+.. c:function:: int fscrypt_has_permitted_context(struct inode *parent, struct inode *child)
+
+    is a file's encryption policy permitted within its directory?
+
+    :param struct inode \*parent:
+        inode for parent directory
+
+    :param struct inode \*child:
+        inode for file being looked up, opened, or linked into \ ``parent``\ 
+
+.. _`fscrypt_has_permitted_context.description`:
+
+Description
+-----------
+
+Filesystems must call this before permitting access to an inode in a
+situation where the parent directory is encrypted (either before allowing
+->lookup() to succeed, or for a regular file before allowing it to be opened)
+and before any operation that involves linking an inode into an encrypted
+directory, including link, rename, and cross rename.  It enforces the
+constraint that within a given encrypted directory tree, all files use the
+same encryption policy.  The pre-access check is needed to detect potentially
+malicious offline violations of this constraint, while the link and rename
+checks are needed to prevent online violations of this constraint.
+
+.. _`fscrypt_has_permitted_context.return`:
+
+Return
+------
+
+1 if permitted, 0 if forbidden.  If forbidden, the caller must fail
+the filesystem operation with EPERM.
+
 .. _`fscrypt_inherit_context`:
 
 fscrypt_inherit_context
@@ -20,14 +58,14 @@ fscrypt_inherit_context
         private data given by FS.
 
     :param bool preload:
-        preload child i_crypt_info
+        preload child i_crypt_info if true
 
 .. _`fscrypt_inherit_context.return`:
 
 Return
 ------
 
-Zero on success, non-zero otherwise
+0 on success, -errno on failure
 
 .. This file was automatic generated / don't edit.
 

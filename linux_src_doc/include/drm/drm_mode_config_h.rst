@@ -19,6 +19,7 @@ Definition
 
     struct drm_mode_config_funcs {
         struct drm_framebuffer *(*fb_create)(struct drm_device *dev,struct drm_file *file_priv,const struct drm_mode_fb_cmd2 *mode_cmd);
+        const struct drm_format_info *(*get_format_info)(const struct drm_mode_fb_cmd2 *mode_cmd);
         void (*output_poll_changed)(struct drm_device *dev);
         int (*atomic_check)(struct drm_device *dev,struct drm_atomic_state *state);
         int (*atomic_commit)(struct drm_device *dev,struct drm_atomic_state *state,bool nonblock);
@@ -36,7 +37,7 @@ fb_create
 
     Create a new framebuffer object. The core does basic checks on the
     requested metadata, but most of that is left to the driver. See
-    struct \ :c:type:`struct drm_mode_fb_cmd2 <drm_mode_fb_cmd2>`\  for details.
+    \ :c:type:`struct drm_mode_fb_cmd2 <drm_mode_fb_cmd2>`\  for details.
 
     If the parameters are deemed valid and the backing storage objects in
     the underlying memory manager all exist, then the driver allocates
@@ -53,6 +54,16 @@ fb_create
 
     A new framebuffer with an initial reference count of 1 or a negative
     error code encoded with \ :c:func:`ERR_PTR`\ .
+
+get_format_info
+
+    Allows a driver to return custom format information for special
+    fb layouts (eg. ones with auxiliary compression control planes).
+
+    RETURNS:
+
+    The format information specific to the given fb metadata, or
+    NULL if none is found.
 
 output_poll_changed
 
@@ -113,10 +124,10 @@ atomic_check
        that before calling this hook.
 
     See the documentation of \ ``atomic_commit``\  for an exhaustive list of
-    error conditions which don't have to be checked at the
-    ->atomic_check() stage?
+    error conditions which don't have to be checked at the in this
+    callback.
 
-    See the documentation for struct \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  for how exactly
+    See the documentation for \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  for how exactly
     an atomic modeset update is described.
 
     Drivers using the atomic helpers can implement this hook using
@@ -148,7 +159,7 @@ atomic_commit
     calling this function, and that nothing has been changed in the
     interim.
 
-    See the documentation for struct \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  for how exactly
+    See the documentation for \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  for how exactly
     an atomic modeset update is described.
 
     Drivers using the atomic helpers can implement this hook using
@@ -175,10 +186,10 @@ atomic_commit
     completed. These events are per-CRTC and can be distinguished by the
     CRTC index supplied in \ :c:type:`struct drm_event <drm_event>`\  to userspace.
 
-    The drm core will supply a struct \ :c:type:`struct drm_event <drm_event>`\  in the event
-    member of each CRTC's \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  structure. See the
-    documentation for \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  for more details about the precise
-    semantics of this event.
+    The drm core will supply a \ :c:type:`struct drm_event <drm_event>`\  in each CRTC's
+    \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\ . See the documentation for
+    \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\  for more details about the precise semantics of
+    this event.
 
     NOTE:
 
@@ -236,7 +247,7 @@ atomic_state_clear
     passed-in \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ . This hook is called when the caller
     encountered a \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\  deadlock and needs to drop all
     already acquired locks as part of the deadlock avoidance dance
-    implemented in \ :c:func:`drm_modeset_lock_backoff`\ .
+    implemented in \ :c:func:`drm_modeset_backoff`\ .
 
     Any duplicated state must be invalidated since a concurrent atomic
     update might change it, and the drm atomic interfaces always apply
@@ -251,8 +262,8 @@ atomic_state_free
     itself. Note that the core first calls \ :c:func:`drm_atomic_state_clear`\  to
     avoid code duplicate between the clear and free hooks.
 
-    Drivers that implement this must call \ :c:func:`drm_atomic_state_default_free`\ 
-    to release common resources.
+    Drivers that implement this must call
+    \ :c:func:`drm_atomic_state_default_release`\  to release common resources.
 
 .. _`drm_mode_config_funcs.description`:
 
@@ -288,6 +299,7 @@ Definition
         struct mutex fb_lock;
         int num_fb;
         struct list_head fb_list;
+        spinlock_t connector_list_lock;
         int num_connector;
         struct ida connector_ida;
         struct list_head connector_list;
@@ -315,6 +327,7 @@ Definition
         struct drm_property *dpms_property;
         struct drm_property *path_property;
         struct drm_property *tile_property;
+        struct drm_property *link_status_property;
         struct drm_property *plane_type_property;
         struct drm_property *prop_src_x;
         struct drm_property *prop_src_y;
@@ -360,7 +373,7 @@ Definition
         bool allow_fb_modifiers;
         uint32_t cursor_width;
         uint32_t cursor_height;
-        struct drm_mode_config_helper_funcs *helper_private;
+        const struct drm_mode_config_helper_funcs *helper_private;
     }
 
 .. _`drm_mode_config.members`:
@@ -369,14 +382,27 @@ Members
 -------
 
 mutex
-    mutex protecting KMS related lists and structures
+
+    This is the big scary modeset BKL which protects everything that
+    isn't protect otherwise. Scope is unclear and fuzzy, try to remove
+    anything from under it's protection and move it into more well-scoped
+    locks.
+
+    The one important thing this protects is the use of \ ``acquire_ctx``\ .
 
 connection_mutex
-    ww mutex protecting connector state and routing
+
+    This protects connector state and the connector to encoder to CRTC
+    routing chain.
+
+    For atomic drivers specifically this protects \ :c:type:`drm_connector.state <drm_connector>`\ .
 
 acquire_ctx
-    global implicit acquire context used by atomic drivers for
-    legacy IOCTLs
+
+    Global implicit acquire context used by atomic drivers for legacy
+    IOCTLs. Deprecated, since implicit locking contexts make it
+    impossible to use driver-private \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\ . Users of
+    this must hold \ ``mutex``\ .
 
 idr_mutex
 
@@ -394,46 +420,77 @@ tile_idr
     high-res DP MST screens.
 
 fb_lock
-    mutex to protect fb state and lists
+    Mutex to protect fb the global \ ``fb_list``\  and \ ``num_fb``\ .
 
 num_fb
-    number of fbs available
+    Number of entries on \ ``fb_list``\ .
 
 fb_list
-    list of framebuffers available
+    List of all \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
+
+connector_list_lock
+    Protects \ ``num_connector``\  and@connector_list.
 
 num_connector
-    Number of connectors on this device.
+    Number of connectors on this device. Protected by@connector_list_lock.
 
 connector_ida
     ID allocator for connector indices.
 
 connector_list
-    List of connector objects.
+
+    List of connector objects linked with \ :c:type:`drm_connector.head <drm_connector>`\ . Protected
+    by \ ``connector_list_lock``\ . Only use \ :c:func:`drm_for_each_connector_iter`\  and
+    \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\  to walk this list.
 
 num_encoder
-    number of encoders on this device
+
+    Number of encoders on this device. This is invariant over the
+    lifetime of a device and hence doesn't need any locks.
 
 encoder_list
-    list of encoder objects
+
+    List of encoder objects linked with \ :c:type:`drm_encoder.head <drm_encoder>`\ . This is
+    invariant over the lifetime of a device and hence doesn't need any
+    locks.
 
 num_overlay_plane
-    number of overlay planes on this device
+
+    Number of overlay planes on this device, excluding primary and cursor
+    planes.
+
+    Track number of overlay planes separately from number of total
+    planes.  By default we only advertise overlay planes to userspace; if
+    userspace sets the "universal plane" capability bit, we'll go ahead
+    and expose all planes. This is invariant over the lifetime of a
+    device and hence doesn't need any locks.
 
 num_total_plane
-    number of universal (i.e. with primary/curso) planes on this device
+
+    Number of universal (i.e. with primary/curso) planes on this device.
+    This is invariant over the lifetime of a device and hence doesn't
+    need any locks.
 
 plane_list
-    list of plane objects
+
+    List of plane objects linked with \ :c:type:`drm_plane.head <drm_plane>`\ . This is invariant
+    over the lifetime of a device and hence doesn't need any locks.
 
 num_crtc
-    number of CRTCs on this device
+
+    Number of CRTCs on this device linked with \ :c:type:`drm_crtc.head <drm_crtc>`\ . This is invariant over the lifetime
+    of a device and hence doesn't need any locks.
 
 crtc_list
-    list of CRTC objects
+
+    List of CRTC objects linked with \ :c:type:`drm_crtc.head <drm_crtc>`\ . This is invariant
+    over the lifetime of a device and hence doesn't need any locks.
 
 property_list
-    list of property objects
+
+    List of property type objects linked with \ :c:type:`drm_property.head <drm_property>`\ . This is
+    invariant over the lifetime of a device and hence doesn't need any
+    locks.
 
 min_width
     minimum pixel width on this device
@@ -466,11 +523,14 @@ output_poll_work
     delayed work for polling in process context
 
 blob_lock
-    mutex for blob property allocation and management
-    @*_property: core property tracking
+
+    Mutex for blob property allocation and management, protects
+    \ ``property_blob_list``\  and \ :c:type:`drm_file.blobs <drm_file>`\ .
 
 property_blob_list
-    list of all the blob property objects
+
+    List of all the blob property objects linked with
+    \ :c:type:`drm_property_blob.head <drm_property_blob>`\ . Protected by \ ``blob_lock``\ .
 
 edid_property
     Default connector property to hold the EDID of thecurrently connected sink, if any.
@@ -484,6 +544,9 @@ path_property
 tile_property
     Default connector property to store the tileposition of a tiled screen, for sinks which need to be driven with
     multiple CRTCs.
+
+link_status_property
+    Default connector property for link statusof a connector
 
 plane_type_property
     Default plane property to differentiateCURSOR, PRIMARY and OVERLAY legacy uses of planes.
@@ -520,7 +583,7 @@ prop_in_fence_fd
 
 prop_out_fence_ptr
     Sync File fd pointer representing theoutgoing fences for a CRTC. Userspace should provide a pointer to a
-    value of type s64, and then cast that pointer to u64.
+    value of type s32, and then cast that pointer to u64.
 
 prop_crtc_id
     Default atomic plane property to specify the&drm_crtc.

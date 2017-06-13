@@ -189,6 +189,26 @@ irq_find_matching_fwspec
     :param enum irq_domain_bus_token bus_token:
         domain-specific data
 
+.. _`irq_domain_check_msi_remap`:
+
+irq_domain_check_msi_remap
+==========================
+
+.. c:function:: bool irq_domain_check_msi_remap( void)
+
+    Check whether all MSI irq domains implement IRQ remapping
+
+    :param  void:
+        no arguments
+
+.. _`irq_domain_check_msi_remap.return`:
+
+Return
+------
+
+false if any MSI irq domain does not support IRQ remapping,
+true otherwise (including if there is no MSI irq domain)
+
 .. _`irq_set_default_host`:
 
 irq_set_default_host
@@ -753,6 +773,18 @@ Description
 
 It calls domain_ops->deactivate to program interrupt controllers to disable
 interrupt delivery.
+
+.. _`irq_domain_hierarchical_is_msi_remap`:
+
+irq_domain_hierarchical_is_msi_remap
+====================================
+
+.. c:function:: bool irq_domain_hierarchical_is_msi_remap(struct irq_domain *domain)
+
+    Check if the domain or any parent has MSI remapping support
+
+    :param struct irq_domain \*domain:
+        domain pointer
 
 .. _`irq_domain_get_irq_data`:
 

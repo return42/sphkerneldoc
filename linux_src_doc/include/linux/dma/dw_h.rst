@@ -19,6 +19,7 @@ Definition
 
     struct dw_dma_chip {
         struct device *dev;
+        int id;
         int irq;
         void __iomem *regs;
         struct clk *clk;
@@ -33,6 +34,9 @@ Members
 
 dev
     struct device of the DMA controller
+
+id
+    instance ID
 
 irq
     irq line

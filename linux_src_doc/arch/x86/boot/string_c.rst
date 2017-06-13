@@ -46,5 +46,20 @@ strstr
     :param const char \*s2:
         The string to search for
 
+.. _`strchr`:
+
+strchr
+======
+
+.. c:function:: char *strchr(const char *s, int c)
+
+    Find the first occurrence of the character c in the string s.
+
+    :param const char \*s:
+        the string to be searched
+
+    :param int c:
+        the character to search for
+
 .. This file was automatic generated / don't edit.
 

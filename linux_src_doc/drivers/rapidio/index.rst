@@ -11,5 +11,4 @@ rapidio
     rio-access_c
     rio-driver_c
     rio-scan_c
-    rio-sysfs_c
     rio_c

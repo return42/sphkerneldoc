@@ -48,7 +48,7 @@ WIMAX_ST_DOWN
     power as possible.
     This state is the default after a call to \ :c:func:`wimax_dev_add`\ . It
     is ok to have drivers move directly to \ ``WIMAX_ST_UNINITIALIZED``\ 
-    or \ ``WIMAX_ST_RADIO_OFF``\  in \_probe() after the call to
+    or \ ``WIMAX_ST_RADIO_OFF``\  in \ :c:func:`_probe`\  after the call to
     \ :c:func:`wimax_dev_add`\ .
     It is recommended that the driver leaves this state when
     calling 'ifconfig DEV up' and enters it back on 'ifconfig DEV
@@ -104,7 +104,7 @@ Transitions from one state to another one are atomic and can only
 be caused in kernel space with \ :c:func:`wimax_state_change`\ . To read the
 state, use \ :c:func:`wimax_state_get`\ .
 
-States starting with _\_ are internal and shall not be used or
+States starting with __ are internal and shall not be used or
 referred to by drivers or userspace. They look ugly, but that's the
 point -- if any use is made non-internal to the stack, it is easier
 to catch on review.

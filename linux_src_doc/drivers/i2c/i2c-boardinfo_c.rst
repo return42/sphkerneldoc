@@ -39,6 +39,7 @@ allocation.
 
 The board info passed can safely be __initdata, but be careful of embedded
 pointers (for platform_data, functions, etc) since that won't be copied.
+Device properties are deep-copied though.
 
 .. This file was automatic generated / don't edit.
 

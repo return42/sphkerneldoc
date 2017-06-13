@@ -66,6 +66,8 @@ OR
 
 /../..
 
+[3] when \ ``kn_to``\  is NULL result will be "(null)"
+
 Returns the length of the full path.  If the full length is equal to or
 greater than \ ``buflen``\ , \ ``buf``\  contains the truncated path with the trailing
 '\0'.  On error, -errno is returned.
@@ -96,6 +98,8 @@ Description
 Copies the name of \ ``kn``\  into \ ``buf``\  of \ ``buflen``\  bytes.  The behavior is
 similar to \ :c:func:`strlcpy`\ .  It returns the length of \ ``kn``\ 's name and if \ ``buf``\ 
 isn't long enough, it's filled upto \ ``buflen``\ -1 and nul terminated.
+
+Fills buffer with "(null)" if \ ``kn``\  is NULL.
 
 This function can be called from any context.
 

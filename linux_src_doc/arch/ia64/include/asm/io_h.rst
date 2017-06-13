@@ -22,7 +22,7 @@ Ensure ordering of I/O space writes.  This will make sure that writes
 following the barrier will arrive after all previous writes.  For most
 ia64 platforms, this is a simple 'mf.a' instruction.
 
-See Documentation/DocBook/deviceiobook.tmpl for more information.
+See Documentation/driver-api/device-io.rst for more information.
 
 .. This file was automatic generated / don't edit.
 

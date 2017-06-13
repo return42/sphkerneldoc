@@ -240,14 +240,14 @@ Posix timer callback for expired alarm timers.
 alarm_clock_getres
 ==================
 
-.. c:function:: int alarm_clock_getres(const clockid_t which_clock, struct timespec *tp)
+.. c:function:: int alarm_clock_getres(const clockid_t which_clock, struct timespec64 *tp)
 
     posix getres interface
 
     :param const clockid_t which_clock:
         clockid
 
-    :param struct timespec \*tp:
+    :param struct timespec64 \*tp:
         timespec to fill
 
 .. _`alarm_clock_getres.description`:
@@ -262,14 +262,14 @@ Returns the granularity of underlying alarm base clock
 alarm_clock_get
 ===============
 
-.. c:function:: int alarm_clock_get(clockid_t which_clock, struct timespec *tp)
+.. c:function:: int alarm_clock_get(clockid_t which_clock, struct timespec64 *tp)
 
     posix clock_get interface
 
     :param clockid_t which_clock:
         clockid
 
-    :param struct timespec \*tp:
+    :param struct timespec64 \*tp:
         timespec to fill.
 
 .. _`alarm_clock_get.description`:
@@ -303,14 +303,14 @@ Initializes the k_itimer structure.
 alarm_timer_get
 ===============
 
-.. c:function:: void alarm_timer_get(struct k_itimer *timr, struct itimerspec *cur_setting)
+.. c:function:: void alarm_timer_get(struct k_itimer *timr, struct itimerspec64 *cur_setting)
 
     posix timer_get interface
 
     :param struct k_itimer \*timr:
         *undescribed*
 
-    :param struct itimerspec \*cur_setting:
+    :param struct itimerspec64 \*cur_setting:
         itimerspec data to fill
 
 .. _`alarm_timer_get.description`:
@@ -344,7 +344,7 @@ Cancels any programmed alarms for the given timer.
 alarm_timer_set
 ===============
 
-.. c:function:: int alarm_timer_set(struct k_itimer *timr, int flags, struct itimerspec *new_setting, struct itimerspec *old_setting)
+.. c:function:: int alarm_timer_set(struct k_itimer *timr, int flags, struct itimerspec64 *new_setting, struct itimerspec64 *old_setting)
 
     posix timer_set interface
 
@@ -354,10 +354,10 @@ alarm_timer_set
     :param int flags:
         timer flags
 
-    :param struct itimerspec \*new_setting:
+    :param struct itimerspec64 \*new_setting:
         itimerspec to be used
 
-    :param struct itimerspec \*old_setting:
+    :param struct itimerspec64 \*old_setting:
         itimerspec being replaced
 
 .. _`alarm_timer_set.description`:
@@ -461,7 +461,7 @@ Handles restarted clock_nanosleep calls
 alarm_timer_nsleep
 ==================
 
-.. c:function:: int alarm_timer_nsleep(const clockid_t which_clock, int flags, struct timespec *tsreq, struct timespec __user *rmtp)
+.. c:function:: int alarm_timer_nsleep(const clockid_t which_clock, int flags, struct timespec64 *tsreq, struct timespec __user *rmtp)
 
     alarmtimer nanosleep
 
@@ -471,7 +471,7 @@ alarm_timer_nsleep
     :param int flags:
         determins abstime or relative
 
-    :param struct timespec \*tsreq:
+    :param struct timespec64 \*tsreq:
         requested sleep time (abs or rel)
 
     :param struct timespec __user \*rmtp:

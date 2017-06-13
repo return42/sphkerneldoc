@@ -11,10 +11,10 @@ vc4_create_object
     Implementation of driver->gem_create_object.
 
     :param struct drm_device \*dev:
-        *undescribed*
+        DRM device
 
     :param size_t size:
-        *undescribed*
+        Size in bytes of the memory the object will reference
 
 .. _`vc4_create_object.description`:
 

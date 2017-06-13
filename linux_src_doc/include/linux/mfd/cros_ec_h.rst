@@ -34,6 +34,7 @@ Definition
         int din_size;
         int dout_size;
         bool wake_enabled;
+        bool suspended;
         int (*cmd_xfer)(struct cros_ec_device *ec,struct cros_ec_command *msg);
         int (*pkt_xfer)(struct cros_ec_device *ec,struct cros_ec_command *msg);
         struct mutex lock;
@@ -104,6 +105,9 @@ dout_size
 
 wake_enabled
     true if this device can wake the system from sleep
+
+suspended
+    true if this device had been suspended
 
 cmd_xfer
     send command to EC and get response

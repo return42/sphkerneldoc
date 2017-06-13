@@ -1,6 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/input/matrix-keymap.c
 
+.. _`matrix_keypad_parse_properties`:
+
+matrix_keypad_parse_properties
+==============================
+
+.. c:function:: int matrix_keypad_parse_properties(struct device *dev, unsigned int *rows, unsigned int *cols)
+
+    Read properties of matrix keypad
+
+    :param struct device \*dev:
+        Device containing properties
+
+    :param unsigned int \*rows:
+        Returns number of matrix rows
+
+    :param unsigned int \*cols:
+        Returns number of matrix columns
+        \ ``return``\  0 if OK, <0 on error
+
 .. _`matrix_keypad_build_keymap`:
 
 matrix_keypad_build_keymap

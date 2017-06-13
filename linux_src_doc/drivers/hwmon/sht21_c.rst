@@ -20,10 +20,11 @@ Definition
     struct sht21 {
         struct i2c_client *client;
         struct mutex lock;
-        char valid;
         unsigned long last_update;
         int temperature;
         int humidity;
+        char valid;
+        char eic[18];
     }
 
 .. _`sht21.members`:
@@ -37,9 +38,6 @@ client
 lock
     mutex to protect measurement values
 
-valid
-    only 0 before first measurement is taken
-
 last_update
     time of last update (jiffies)
 
@@ -48,6 +46,12 @@ temperature
 
 humidity
     cached humidity measurement value
+
+valid
+    only 0 before first measurement is taken
+
+eic
+    cached electronic identification code text
 
 .. _`sht21_temp_ticks_to_millicelsius`:
 
@@ -142,6 +146,32 @@ Description
 -----------
 
 Will be called on read access to humidity1_input sysfs attribute.
+Returns number of bytes written into buffer, negative errno on error.
+
+.. _`eic_show`:
+
+eic_show
+========
+
+.. c:function:: ssize_t eic_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    show Electronic Identification Code in sysfs
+
+    :param struct device \*dev:
+        device
+
+    :param struct device_attribute \*attr:
+        device attribute
+
+    :param char \*buf:
+        sysfs buffer (PAGE_SIZE) where EIC is written
+
+.. _`eic_show.description`:
+
+Description
+-----------
+
+Will be called on read access to eic sysfs attribute.
 Returns number of bytes written into buffer, negative errno on error.
 
 .. This file was automatic generated / don't edit.

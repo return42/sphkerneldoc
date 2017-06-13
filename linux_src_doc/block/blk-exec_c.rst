@@ -45,22 +45,22 @@ blk_execute_rq_nowait
 Description
 -----------
 
-Insert a fully prepared request at the back of the I/O scheduler queue
-for execution.  Don't wait for completion.
+   Insert a fully prepared request at the back of the I/O scheduler queue
+   for execution.  Don't wait for completion.
 
 .. _`blk_execute_rq_nowait.note`:
 
 Note
 ----
 
-This function will invoke \ ``done``\  directly if the queue is dead.
+   This function will invoke \ ``done``\  directly if the queue is dead.
 
 .. _`blk_execute_rq`:
 
 blk_execute_rq
 ==============
 
-.. c:function:: int blk_execute_rq(struct request_queue *q, struct gendisk *bd_disk, struct request *rq, int at_head)
+.. c:function:: void blk_execute_rq(struct request_queue *q, struct gendisk *bd_disk, struct request *rq, int at_head)
 
     insert a request into queue for execution
 
@@ -81,8 +81,8 @@ blk_execute_rq
 Description
 -----------
 
-Insert a fully prepared request at the back of the I/O scheduler queue
-for execution and wait for completion.
+   Insert a fully prepared request at the back of the I/O scheduler queue
+   for execution and wait for completion.
 
 .. This file was automatic generated / don't edit.
 

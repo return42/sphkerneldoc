@@ -35,8 +35,8 @@ Members
 Description
 -----------
 
-This is the minimal network layer representation of sockets, the header
-for struct sock and struct inet_timewait_sock.
+     This is the minimal network layer representation of sockets, the header
+     for struct sock and struct inet_timewait_sock.
 
 .. _`sock`:
 
@@ -105,6 +105,7 @@ Definition
         struct sk_buff_head sk_write_queue;
         __s32 sk_peek_off;
         int sk_write_pending;
+        __u32 sk_dst_pending_confirm;
         long sk_sndtimeo;
         struct timer_list sk_timer;
         __u32 sk_priority;
@@ -130,12 +131,13 @@ Definition
     #define SK_FL_TYPE_SHIFT 16
     #define SK_FL_TYPE_MASK 0xffff0000
     #endif
-        unsigned int sk_padding:2;
-        unsigned int sk_no_check_tx:2:1;
-        unsigned int sk_no_check_rx:2:1:1;
-        unsigned int sk_userlocks:2:1:1:4;
-        unsigned int sk_protocol:2:1:1:4:8;
-        unsigned int sk_type:2:1:1:4:8:16;
+        unsigned int sk_padding:1;
+        unsigned int sk_kern_sock:1:1;
+        unsigned int sk_no_check_tx:1:1:1;
+        unsigned int sk_no_check_rx:1:1:1:1;
+        unsigned int sk_userlocks:1:1:1:1:4;
+        unsigned int sk_protocol:1:1:1:1:4:8;
+        unsigned int sk_type:1:1:1:1:4:8:16;
     #define SK_PROTOCOL_MAX U8_MAX
         u16 sk_gso_max_segs;
         unsigned long sk_lingertime;
@@ -233,6 +235,9 @@ sk_peek_off
 sk_write_pending
     a write to stream socket waits to start
 
+sk_dst_pending_confirm
+    need to confirm neighbour
+
 sk_sndtimeo
     %SO_SNDTIMEO setting
 
@@ -274,6 +279,9 @@ sk_txhash
 
 sk_padding
     unused element for alignment
+
+sk_kern_sock
+    True if sock is using kernel lock classes
 
 sk_no_check_tx
     %SO_NO_CHECK setting, set checksum in TX packets
@@ -389,7 +397,7 @@ sk_for_each_entry_offset_rcu
     iterate over a list at a given struct offset
 
     :param  tpos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  pos:
         the \ :c:type:`struct hlist_node <hlist_node>`\  to use as a loop cursor.
@@ -502,28 +510,23 @@ Returns true if socket_wq has waiting processes
 The purpose of the skwq_has_sleeper and sock_poll_wait is to wrap the memory
 barrier call. They were added due to the race found within the tcp code.
 
-.. _`skwq_has_sleeper.consider-following-tcp-code-paths`:
+Consider following tcp code paths::
 
-Consider following tcp code paths
----------------------------------
+  CPU1                CPU2
+  sys_select          receive packet
+  ...                 ...
+  __add_wait_queue    update tp->rcv_nxt
+  ...                 ...
+  tp->rcv_nxt check   sock_def_readable
+  ...                 {
+  schedule               \ :c:func:`rcu_read_lock`\ ;
+                         wq = rcu_dereference(sk->sk_wq);
+                         if (wq && waitqueue_active(&wq->wait))
+                             wake_up_interruptible(&wq->wait)
+                         ...
+                      }
 
-
-CPU1                  CPU2
-
-sys_select            receive packet
-...                 ...
-\__add_wait_queue    update tp->rcv_nxt
-...                 ...
-tp->rcv_nxt check   sock_def_readable
-...                 {
-schedule               \ :c:func:`rcu_read_lock`\ ;
-wq = rcu_dereference(sk->sk_wq);
-if (wq && waitqueue_active(&wq->wait))
-wake_up_interruptible(&wq->wait)
-...
-}
-
-The race for tcp fires when the \__add_wait_queue changes done by CPU1 stay
+The race for tcp fires when the __add_wait_queue changes done by CPU1 stay
 in its cache, and so does the tp->rcv_nxt update on CPU2 side.  The CPU1
 could then endup calling schedule and sleep forever if there are no more
 data on the socket.
@@ -591,12 +594,12 @@ sock_tx_timestamp
     :param __u8 \*tx_flags:
         completed with instructions for time stamping
 
-.. _`sock_tx_timestamp.description`:
+.. _`sock_tx_timestamp.note`:
 
-Description
------------
+Note
+----
 
-Note : callers should take care of initial \*tx_flags value (usually 0)
+callers should take care of initial ``*tx_flags`` value (usually 0)
 
 .. _`sk_eat_skb`:
 

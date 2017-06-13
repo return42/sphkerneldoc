@@ -20,4 +20,6 @@ misc
     atmel_tclib_c
     enclosure_c
     pch_phub_c
+    pci_endpoint_test_c
     pti_c
+    sram-exec_c

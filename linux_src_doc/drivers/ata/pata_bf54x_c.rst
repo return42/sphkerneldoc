@@ -351,12 +351,12 @@ bfin_bmdma_status
 bfin_data_xfer
 ==============
 
-.. c:function:: unsigned int bfin_data_xfer(struct ata_device *dev, unsigned char *buf, unsigned int buflen, int rw)
+.. c:function:: unsigned int bfin_data_xfer(struct ata_queued_cmd *qc, unsigned char *buf, unsigned int buflen, int rw)
 
     Transfer data by PIO
 
-    :param struct ata_device \*dev:
-        *undescribed*
+    :param struct ata_queued_cmd \*qc:
+        queued command
 
     :param unsigned char \*buf:
         data buffer

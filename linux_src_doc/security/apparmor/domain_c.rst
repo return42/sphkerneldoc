@@ -45,14 +45,14 @@ Return
 change_profile_perms
 ====================
 
-.. c:function:: struct file_perms change_profile_perms(struct aa_profile *profile, struct aa_namespace *ns, const char *name, u32 request, unsigned int start)
+.. c:function:: struct file_perms change_profile_perms(struct aa_profile *profile, struct aa_ns *ns, const char *name, u32 request, unsigned int start)
 
     find permissions for change_profile
 
     :param struct aa_profile \*profile:
         the current profile  (NOT NULL)
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         the namespace being switched to  (NOT NULL)
 
     :param const char \*name:
@@ -115,11 +115,11 @@ profile or NULL if no match found
 find_attach
 ===========
 
-.. c:function:: struct aa_profile *find_attach(struct aa_namespace *ns, struct list_head *list, const char *name)
+.. c:function:: struct aa_profile *find_attach(struct aa_ns *ns, struct list_head *list, const char *name)
 
     do attachment search for unconfined processes
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         the current namespace  (NOT NULL)
 
     :param struct list_head \*list:
@@ -362,21 +362,21 @@ Returns \ ``0``\  on success, error otherwise.
 aa_change_profile
 =================
 
-.. c:function:: int aa_change_profile(const char *ns_name, const char *hname, bool onexec, bool permtest)
+.. c:function:: int aa_change_profile(const char *fqname, bool onexec, bool permtest, bool stack)
 
     perform a one-way profile transition
 
-    :param const char \*ns_name:
-        name of the profile namespace to change to (MAYBE NULL)
-
-    :param const char \*hname:
-        name of profile to change to (MAYBE NULL)
+    :param const char \*fqname:
+        name of profile may include namespace (NOT NULL)
 
     :param bool onexec:
         whether this transition is to take place immediately or at exec
 
     :param bool permtest:
         true if this is just a permission test
+
+    :param bool stack:
+        *undescribed*
 
 .. _`aa_change_profile.description`:
 

@@ -8,7 +8,7 @@ RIO_LOP_READ
 
 .. c:function::  RIO_LOP_READ( size,  type,  len)
 
-    Generate rio_local_read_config\_\* functions
+    Generate rio_local_read_config_* functions
 
     :param  size:
         Size of configuration space read (8, 16, 32 bits)
@@ -24,7 +24,7 @@ RIO_LOP_READ
 Description
 -----------
 
-Generates rio_local_read_config\_\* functions used to access
+Generates rio_local_read_config_* functions used to access
 configuration space registers on the local device.
 
 .. _`rio_lop_write`:
@@ -34,7 +34,7 @@ RIO_LOP_WRITE
 
 .. c:function::  RIO_LOP_WRITE( size,  type,  len)
 
-    Generate rio_local_write_config\_\* functions
+    Generate rio_local_write_config_* functions
 
     :param  size:
         Size of configuration space write (8, 16, 32 bits)
@@ -50,7 +50,7 @@ RIO_LOP_WRITE
 Description
 -----------
 
-Generates rio_local_write_config\_\* functions used to access
+Generates rio_local_write_config_* functions used to access
 configuration space registers on the local device.
 
 .. _`rio_op_read`:
@@ -60,7 +60,7 @@ RIO_OP_READ
 
 .. c:function::  RIO_OP_READ( size,  type,  len)
 
-    Generate rio_mport_read_config\_\* functions
+    Generate rio_mport_read_config_* functions
 
     :param  size:
         Size of configuration space read (8, 16, 32 bits)
@@ -76,7 +76,7 @@ RIO_OP_READ
 Description
 -----------
 
-Generates rio_mport_read_config\_\* functions used to access
+Generates rio_mport_read_config_* functions used to access
 configuration space registers on the local device.
 
 .. _`rio_op_write`:
@@ -86,7 +86,7 @@ RIO_OP_WRITE
 
 .. c:function::  RIO_OP_WRITE( size,  type,  len)
 
-    Generate rio_mport_write_config\_\* functions
+    Generate rio_mport_write_config_* functions
 
     :param  size:
         Size of configuration space write (8, 16, 32 bits)
@@ -102,7 +102,7 @@ RIO_OP_WRITE
 Description
 -----------
 
-Generates rio_mport_write_config\_\* functions used to access
+Generates rio_mport_write_config_* functions used to access
 configuration space registers on the local device.
 
 .. _`rio_mport_send_doorbell`:

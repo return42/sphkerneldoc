@@ -6,14 +6,14 @@
 manage_rcvq
 ===========
 
-.. c:function:: int manage_rcvq(struct hfi1_ctxtdata *uctxt, unsigned subctxt, int start_stop)
+.. c:function:: int manage_rcvq(struct hfi1_ctxtdata *uctxt, u16 subctxt, int start_stop)
 
     manage a context's receive queue
 
     :param struct hfi1_ctxtdata \*uctxt:
         the context
 
-    :param unsigned subctxt:
+    :param u16 subctxt:
         the sub-context
 
     :param int start_stop:

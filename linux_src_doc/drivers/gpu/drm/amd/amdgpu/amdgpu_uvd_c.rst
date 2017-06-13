@@ -179,5 +179,24 @@ Description
 
 Test if we can successfully execute an IB
 
+.. _`amdgpu_uvd_used_handles`:
+
+amdgpu_uvd_used_handles
+=======================
+
+.. c:function:: uint32_t amdgpu_uvd_used_handles(struct amdgpu_device *adev)
+
+    returns used UVD handles
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`amdgpu_uvd_used_handles.description`:
+
+Description
+-----------
+
+Returns the number of UVD handles in use
+
 .. This file was automatic generated / don't edit.
 

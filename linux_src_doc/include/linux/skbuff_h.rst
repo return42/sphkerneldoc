@@ -301,7 +301,7 @@ skb_queue_empty
 Description
 -----------
 
-Returns true if the queue is empty, false otherwise.
+     Returns true if the queue is empty, false otherwise.
 
 .. _`skb_queue_is_last`:
 
@@ -323,7 +323,7 @@ skb_queue_is_last
 Description
 -----------
 
-Returns true if \ ``skb``\  is the last buffer on the list.
+     Returns true if \ ``skb``\  is the last buffer on the list.
 
 .. _`skb_queue_is_first`:
 
@@ -345,7 +345,7 @@ skb_queue_is_first
 Description
 -----------
 
-Returns true if \ ``skb``\  is the first buffer on the list.
+     Returns true if \ ``skb``\  is the first buffer on the list.
 
 .. _`skb_queue_next`:
 
@@ -367,8 +367,8 @@ skb_queue_next
 Description
 -----------
 
-Return the next packet in \ ``list``\  after \ ``skb``\ .  It is only valid to
-call this if \ :c:func:`skb_queue_is_last`\  evaluates to false.
+     Return the next packet in \ ``list``\  after \ ``skb``\ .  It is only valid to
+     call this if \ :c:func:`skb_queue_is_last`\  evaluates to false.
 
 .. _`skb_queue_prev`:
 
@@ -390,8 +390,8 @@ skb_queue_prev
 Description
 -----------
 
-Return the prev packet in \ ``list``\  before \ ``skb``\ .  It is only valid to
-call this if \ :c:func:`skb_queue_is_first`\  evaluates to false.
+     Return the prev packet in \ ``list``\  before \ ``skb``\ .  It is only valid to
+     call this if \ :c:func:`skb_queue_is_first`\  evaluates to false.
 
 .. _`skb_get`:
 
@@ -410,8 +410,8 @@ skb_get
 Description
 -----------
 
-Makes another reference to a socket buffer and returns a pointer
-to the buffer.
+     Makes another reference to a socket buffer and returns a pointer
+     to the buffer.
 
 .. _`skb_cloned`:
 
@@ -430,9 +430,9 @@ skb_cloned
 Description
 -----------
 
-Returns true if the buffer was generated with \ :c:func:`skb_clone`\  and is
-one of multiple shared copies of the buffer. Cloned buffers are
-shared data so must not be written to under normal circumstances.
+     Returns true if the buffer was generated with \ :c:func:`skb_clone`\  and is
+     one of multiple shared copies of the buffer. Cloned buffers are
+     shared data so must not be written to under normal circumstances.
 
 .. _`skb_header_cloned`:
 
@@ -451,8 +451,8 @@ skb_header_cloned
 Description
 -----------
 
-Returns true if modifying the header part of the buffer requires
-the data to be copied.
+     Returns true if modifying the header part of the buffer requires
+     the data to be copied.
 
 .. _`skb_header_release`:
 
@@ -471,10 +471,10 @@ skb_header_release
 Description
 -----------
 
-Drop a reference to the header part of the buffer.  This is done
-by acquiring a payload reference.  You must not read from the header
-part of skb->data after this.
-Note : Check if you can use \__skb_header_release() instead.
+     Drop a reference to the header part of the buffer.  This is done
+     by acquiring a payload reference.  You must not read from the header
+     part of skb->data after this.
+     Note : Check if you can use \ :c:func:`__skb_header_release`\  instead.
 
 .. _`__skb_header_release`:
 
@@ -493,8 +493,8 @@ __skb_header_release
 Description
 -----------
 
-Variant of \ :c:func:`skb_header_release`\  assuming skb is private to caller.
-We can avoid one atomic operation.
+     Variant of \ :c:func:`skb_header_release`\  assuming skb is private to caller.
+     We can avoid one atomic operation.
 
 .. _`skb_shared`:
 
@@ -513,8 +513,8 @@ skb_shared
 Description
 -----------
 
-Returns true if more than one person has a reference to this
-buffer.
+     Returns true if more than one person has a reference to this
+     buffer.
 
 .. _`skb_share_check`:
 
@@ -536,13 +536,13 @@ skb_share_check
 Description
 -----------
 
-If the buffer is shared the buffer is cloned and the old copy
-drops a reference. A new clone with a single reference is returned.
-If the buffer is not shared the original buffer is returned. When
-being called from interrupt status or with spinlocks held pri must
-be GFP_ATOMIC.
+     If the buffer is shared the buffer is cloned and the old copy
+     drops a reference. A new clone with a single reference is returned.
+     If the buffer is not shared the original buffer is returned. When
+     being called from interrupt status or with spinlocks held pri must
+     be GFP_ATOMIC.
 
-NULL is returned on a memory allocation failure.
+     NULL is returned on a memory allocation failure.
 
 .. _`skb_unshare`:
 
@@ -564,13 +564,13 @@ skb_unshare
 Description
 -----------
 
-If the socket buffer is a clone then this function creates a new
-copy of the data, drops a reference count on the old copy and returns
-the new copy with the reference count at 1. If the buffer is not a clone
-the original buffer is returned. When called with a spinlock held or
-from interrupt state \ ``pri``\  must be \ ``GFP_ATOMIC``\ 
+     If the socket buffer is a clone then this function creates a new
+     copy of the data, drops a reference count on the old copy and returns
+     the new copy with the reference count at 1. If the buffer is not a clone
+     the original buffer is returned. When called with a spinlock held or
+     from interrupt state \ ``pri``\  must be \ ``GFP_ATOMIC``\ 
 
-\ ``NULL``\  is returned on a memory allocation failure.
+     \ ``NULL``\  is returned on a memory allocation failure.
 
 .. _`skb_peek`:
 
@@ -589,14 +589,14 @@ skb_peek
 Description
 -----------
 
-Peek an \ :c:type:`struct sk_buff <sk_buff>`\ . Unlike most other operations you \_MUST\_
-be careful with this one. A peek leaves the buffer on the
-list and someone else may run off with it. You must hold
-the appropriate locks or have a private queue to do this.
+     Peek an \ :c:type:`struct sk_buff <sk_buff>`\ . Unlike most other operations you _MUST_
+     be careful with this one. A peek leaves the buffer on the
+     list and someone else may run off with it. You must hold
+     the appropriate locks or have a private queue to do this.
 
-Returns \ ``NULL``\  for an empty list or a pointer to the head element.
-The reference count is not incremented and the reference is therefore
-volatile. Use with caution.
+     Returns \ ``NULL``\  for an empty list or a pointer to the head element.
+     The reference count is not incremented and the reference is therefore
+     volatile. Use with caution.
 
 .. _`skb_peek_next`:
 
@@ -618,9 +618,9 @@ skb_peek_next
 Description
 -----------
 
-Returns \ ``NULL``\  when the end of the list is met or a pointer to the
-next element. The reference count is not incremented and the
-reference is therefore volatile. Use with caution.
+     Returns \ ``NULL``\  when the end of the list is met or a pointer to the
+     next element. The reference count is not incremented and the
+     reference is therefore volatile. Use with caution.
 
 .. _`skb_peek_tail`:
 
@@ -639,14 +639,14 @@ skb_peek_tail
 Description
 -----------
 
-Peek an \ :c:type:`struct sk_buff <sk_buff>`\ . Unlike most other operations you \_MUST\_
-be careful with this one. A peek leaves the buffer on the
-list and someone else may run off with it. You must hold
-the appropriate locks or have a private queue to do this.
+     Peek an \ :c:type:`struct sk_buff <sk_buff>`\ . Unlike most other operations you _MUST_
+     be careful with this one. A peek leaves the buffer on the
+     list and someone else may run off with it. You must hold
+     the appropriate locks or have a private queue to do this.
 
-Returns \ ``NULL``\  for an empty list or a pointer to the tail element.
-The reference count is not incremented and the reference is therefore
-volatile. Use with caution.
+     Returns \ ``NULL``\  for an empty list or a pointer to the tail element.
+     The reference count is not incremented and the reference is therefore
+     volatile. Use with caution.
 
 .. _`skb_queue_len`:
 
@@ -665,7 +665,7 @@ skb_queue_len
 Description
 -----------
 
-Return the length of an \ :c:type:`struct sk_buff <sk_buff>`\  queue.
+     Return the length of an \ :c:type:`struct sk_buff <sk_buff>`\  queue.
 
 .. _`__skb_queue_head_init`:
 
@@ -684,11 +684,11 @@ __skb_queue_head_init
 Description
 -----------
 
-This initializes only the list and queue length aspects of
-an sk_buff_head object.  This allows to initialize the list
-aspects of an sk_buff_head without reinitializing things like
-the spinlock.  It can also be used for on-stack sk_buff_head
-objects where the spinlock is known to not be used.
+     This initializes only the list and queue length aspects of
+     an sk_buff_head object.  This allows to initialize the list
+     aspects of an sk_buff_head without reinitializing things like
+     the spinlock.  It can also be used for on-stack sk_buff_head
+     objects where the spinlock is known to not be used.
 
 .. _`skb_queue_splice`:
 
@@ -725,7 +725,7 @@ skb_queue_splice_init
 Description
 -----------
 
-The list at \ ``list``\  is reinitialised
+     The list at \ ``list``\  is reinitialised
 
 .. _`skb_queue_splice_tail`:
 
@@ -762,8 +762,8 @@ skb_queue_splice_tail_init
 Description
 -----------
 
-Each of the lists is a queue.
-The list at \ ``list``\  is reinitialised
+     Each of the lists is a queue.
+     The list at \ ``list``\  is reinitialised
 
 .. _`__skb_queue_after`:
 
@@ -788,10 +788,10 @@ __skb_queue_after
 Description
 -----------
 
-Queue a buffer int the middle of a list. This function takes no locks
-and you must therefore hold required locks before calling it.
+     Queue a buffer int the middle of a list. This function takes no locks
+     and you must therefore hold required locks before calling it.
 
-A buffer cannot be placed on two lists at the same time.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_queue_head`:
 
@@ -813,10 +813,10 @@ skb_queue_head
 Description
 -----------
 
-Queue a buffer at the start of a list. This function takes no locks
-and you must therefore hold required locks before calling it.
+     Queue a buffer at the start of a list. This function takes no locks
+     and you must therefore hold required locks before calling it.
 
-A buffer cannot be placed on two lists at the same time.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_queue_tail`:
 
@@ -838,10 +838,10 @@ skb_queue_tail
 Description
 -----------
 
-Queue a buffer at the end of a list. This function takes no locks
-and you must therefore hold required locks before calling it.
+     Queue a buffer at the end of a list. This function takes no locks
+     and you must therefore hold required locks before calling it.
 
-A buffer cannot be placed on two lists at the same time.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_dequeue`:
 
@@ -860,9 +860,9 @@ skb_dequeue
 Description
 -----------
 
-Remove the head of the list. This function does not take any locks
-so must be used with appropriate locks held only. The head item is
-returned or \ ``NULL``\  if the list is empty.
+     Remove the head of the list. This function does not take any locks
+     so must be used with appropriate locks held only. The head item is
+     returned or \ ``NULL``\  if the list is empty.
 
 .. _`skb_dequeue_tail`:
 
@@ -881,9 +881,9 @@ skb_dequeue_tail
 Description
 -----------
 
-Remove the tail of the list. This function does not take any locks
-so must be used with appropriate locks held only. The tail item is
-returned or \ ``NULL``\  if the list is empty.
+     Remove the tail of the list. This function does not take any locks
+     so must be used with appropriate locks held only. The tail item is
+     returned or \ ``NULL``\  if the list is empty.
 
 .. _`__skb_fill_page_desc`:
 
@@ -948,7 +948,7 @@ skb_fill_page_desc
 Description
 -----------
 
-As per \__skb_fill_page_desc() -- initialises the \ ``i``\ 'th fragment of
+As per \ :c:func:`__skb_fill_page_desc`\  -- initialises the \ ``i``\ 'th fragment of
 \ ``skb``\  to point to \ ``size``\  bytes at offset \ ``off``\  within \ ``page``\ . In
 addition updates \ ``skb``\  such that \ ``i``\  is the last fragment.
 
@@ -971,7 +971,7 @@ skb_headroom
 Description
 -----------
 
-Return the number of bytes of free space at the head of an \ :c:type:`struct sk_buff <sk_buff>`\ .
+     Return the number of bytes of free space at the head of an \ :c:type:`struct sk_buff <sk_buff>`\ .
 
 .. _`skb_tailroom`:
 
@@ -990,7 +990,7 @@ skb_tailroom
 Description
 -----------
 
-Return the number of bytes of free space at the tail of an sk_buff
+     Return the number of bytes of free space at the tail of an sk_buff
 
 .. _`skb_availroom`:
 
@@ -1009,8 +1009,8 @@ skb_availroom
 Description
 -----------
 
-Return the number of bytes of free space at the tail of an sk_buff
-allocated by \ :c:func:`sk_stream_alloc`\ 
+     Return the number of bytes of free space at the tail of an sk_buff
+     allocated by \ :c:func:`sk_stream_alloc`\ 
 
 .. _`skb_reserve`:
 
@@ -1032,8 +1032,8 @@ skb_reserve
 Description
 -----------
 
-Increase the headroom of an empty \ :c:type:`struct sk_buff <sk_buff>`\  by reducing the tail
-room. This is only allowed for an empty buffer.
+     Increase the headroom of an empty \ :c:type:`struct sk_buff <sk_buff>`\  by reducing the tail
+     room. This is only allowed for an empty buffer.
 
 .. _`skb_tailroom_reserve`:
 
@@ -1058,11 +1058,11 @@ skb_tailroom_reserve
 Description
 -----------
 
-Set reserved_tailroom so that headlen can be as large as possible but
-not larger than mtu and tailroom cannot be smaller than
-needed_tailroom.
-The required headroom should already have been reserved before using
-this function.
+     Set reserved_tailroom so that headlen can be as large as possible but
+     not larger than mtu and tailroom cannot be smaller than
+     needed_tailroom.
+     The required headroom should already have been reserved before using
+     this function.
 
 .. _`pskb_trim_unique`:
 
@@ -1084,9 +1084,9 @@ pskb_trim_unique
 Description
 -----------
 
-This is identical to pskb_trim except that the caller knows that
-the skb is not cloned so we should never get an error due to out-
-of-memory.
+     This is identical to pskb_trim except that the caller knows that
+     the skb is not cloned so we should never get an error due to out-
+     of-memory.
 
 .. _`skb_orphan`:
 
@@ -1105,9 +1105,9 @@ skb_orphan
 Description
 -----------
 
-If a buffer currently has an owner then we call the owner's
-destructor function and make the \ ``skb``\  unowned. The buffer continues
-to exist but is no longer charged to its former owner.
+     If a buffer currently has an owner then we call the owner's
+     destructor function and make the \ ``skb``\  unowned. The buffer continues
+     to exist but is no longer charged to its former owner.
 
 .. _`skb_orphan_frags`:
 
@@ -1129,9 +1129,9 @@ skb_orphan_frags
 Description
 -----------
 
-For each frag in the SKB which needs a destructor (i.e. has an
-owner) create a copy of that frag and release the original
-page by calling the destructor.
+     For each frag in the SKB which needs a destructor (i.e. has an
+     owner) create a copy of that frag and release the original
+     page by calling the destructor.
 
 .. _`skb_queue_purge`:
 
@@ -1150,9 +1150,9 @@ skb_queue_purge
 Description
 -----------
 
-Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  list. Each buffer is removed from
-the list and one reference dropped. This function does not take the
-list lock and the caller must hold the relevant locks to use it.
+     Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  list. Each buffer is removed from
+     the list and one reference dropped. This function does not take the
+     list lock and the caller must hold the relevant locks to use it.
 
 .. _`netdev_alloc_skb`:
 
@@ -1174,13 +1174,13 @@ netdev_alloc_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\  and assign it a usage count of one. The
-buffer has unspecified headroom built in. Users should allocate
-the headroom they think they need without accounting for the
-built in space. The built in space is used for optimisations.
+     Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\  and assign it a usage count of one. The
+     buffer has unspecified headroom built in. Users should allocate
+     the headroom they think they need without accounting for the
+     built in space. The built in space is used for optimisations.
 
-\ ``NULL``\  is returned if there is no free memory. Although this function
-allocates memory it can be called from an interrupt.
+     \ ``NULL``\  is returned if there is no free memory. Although this function
+     allocates memory it can be called from an interrupt.
 
 .. _`__dev_alloc_pages`:
 
@@ -1192,7 +1192,7 @@ __dev_alloc_pages
     allocate page for network Rx
 
     :param gfp_t gfp_mask:
-        allocation priority. Set \__GFP_NOMEMALLOC if not for network Rx
+        allocation priority. Set __GFP_NOMEMALLOC if not for network Rx
 
     :param unsigned int order:
         size of the allocation
@@ -1216,7 +1216,7 @@ __dev_alloc_page
     allocate a page for network Rx
 
     :param gfp_t gfp_mask:
-        allocation priority. Set \__GFP_NOMEMALLOC if not for network Rx
+        allocation priority. Set __GFP_NOMEMALLOC if not for network Rx
 
 .. _`__dev_alloc_page.description`:
 
@@ -1453,7 +1453,7 @@ skb_frag_dma_map
         the number of bytes to map
 
     :param enum dma_data_direction dir:
-        the direction of the mapping (%PCI_DMA\_\*)
+        the direction of the mapping (``PCI_DMA_*``)
 
 .. _`skb_frag_dma_map.description`:
 
@@ -1482,8 +1482,8 @@ skb_clone_writable
 Description
 -----------
 
-Returns true if modifying the header part of the cloned buffer
-does not requires the data to be copied.
+     Returns true if modifying the header part of the cloned buffer
+     does not requires the data to be copied.
 
 .. _`skb_cow`:
 
@@ -1505,12 +1505,12 @@ skb_cow
 Description
 -----------
 
-If the skb passed lacks sufficient headroom or its data part
-is shared, data is reallocated. If reallocation fails, an error
-is returned and original skb is not changed.
+     If the skb passed lacks sufficient headroom or its data part
+     is shared, data is reallocated. If reallocation fails, an error
+     is returned and original skb is not changed.
 
-The result is skb with writable area skb->head...skb->tail
-and at least \ ``headroom``\  of space at head.
+     The result is skb with writable area skb->head...skb->tail
+     and at least \ ``headroom``\  of space at head.
 
 .. _`skb_cow_head`:
 
@@ -1532,10 +1532,10 @@ skb_cow_head
 Description
 -----------
 
-This function is identical to skb_cow except that we replace the
-skb_cloned check by skb_header_cloned.  It should be used when
-you only need to push on some header and do not need to modify
-the data.
+     This function is identical to skb_cow except that we replace the
+     skb_cloned check by skb_header_cloned.  It should be used when
+     you only need to push on some header and do not need to modify
+     the data.
 
 .. _`skb_padto`:
 
@@ -1557,10 +1557,10 @@ skb_padto
 Description
 -----------
 
-Pads up a buffer to ensure the trailing bytes exist and are
-blanked. If the buffer already contains sufficient data it
-is untouched. Otherwise it is extended. Returns zero on
-success. The skb is freed on error.
+     Pads up a buffer to ensure the trailing bytes exist and are
+     blanked. If the buffer already contains sufficient data it
+     is untouched. Otherwise it is extended. Returns zero on
+     success. The skb is freed on error.
 
 .. _`skb_put_padto`:
 
@@ -1582,10 +1582,10 @@ skb_put_padto
 Description
 -----------
 
-Pads up a buffer to ensure the trailing bytes exist and are
-blanked. If the buffer already contains sufficient data it
-is untouched. Otherwise it is extended. Returns zero on
-success. The skb is freed on error.
+     Pads up a buffer to ensure the trailing bytes exist and are
+     blanked. If the buffer already contains sufficient data it
+     is untouched. Otherwise it is extended. Returns zero on
+     success. The skb is freed on error.
 
 .. _`skb_linearize`:
 
@@ -1604,8 +1604,8 @@ skb_linearize
 Description
 -----------
 
-If there is no free memory -ENOMEM is returned, otherwise zero
-is returned and the old skb data released.
+     If there is no free memory -ENOMEM is returned, otherwise zero
+     is returned and the old skb data released.
 
 .. _`skb_has_shared_frag`:
 
@@ -1644,8 +1644,8 @@ skb_linearize_cow
 Description
 -----------
 
-If there is no free memory -ENOMEM is returned, otherwise zero
-is returned and the old skb data released.
+     If there is no free memory -ENOMEM is returned, otherwise zero
+     is returned and the old skb data released.
 
 .. _`skb_postpull_rcsum`:
 
@@ -1670,9 +1670,9 @@ skb_postpull_rcsum
 Description
 -----------
 
-After doing a pull on a received packet, you need to call this to
-update the CHECKSUM_COMPLETE checksum, or set ip_summed to
-CHECKSUM_NONE so that it can be recomputed from scratch.
+     After doing a pull on a received packet, you need to call this to
+     update the CHECKSUM_COMPLETE checksum, or set ip_summed to
+     CHECKSUM_NONE so that it can be recomputed from scratch.
 
 .. _`skb_postpush_rcsum`:
 
@@ -1697,8 +1697,8 @@ skb_postpush_rcsum
 Description
 -----------
 
-After doing a push on a received packet, you need to call this to
-update the CHECKSUM_COMPLETE checksum.
+     After doing a push on a received packet, you need to call this to
+     update the CHECKSUM_COMPLETE checksum.
 
 .. _`skb_push_rcsum`:
 
@@ -1720,11 +1720,11 @@ skb_push_rcsum
 Description
 -----------
 
-This function performs an skb_push on the packet and updates
-the CHECKSUM_COMPLETE checksum.  It should be used on
-receive path processing instead of skb_push unless you know
-that the checksum difference is zero (e.g., a valid IP header)
-or you are setting ip_summed to CHECKSUM_NONE.
+     This function performs an skb_push on the packet and updates
+     the CHECKSUM_COMPLETE checksum.  It should be used on
+     receive path processing instead of skb_push unless you know
+     that the checksum difference is zero (e.g., a valid IP header)
+     or you are setting ip_summed to CHECKSUM_NONE.
 
 .. _`pskb_trim_rcsum`:
 
@@ -1746,8 +1746,8 @@ pskb_trim_rcsum
 Description
 -----------
 
-This is exactly the same as pskb_trim except that it ensures the
-checksum of received packets are still valid after the operation.
+     This is exactly the same as pskb_trim except that it ensures the
+     checksum of received packets are still valid after the operation.
 
 .. _`skb_needs_linearize`:
 
@@ -1769,8 +1769,8 @@ skb_needs_linearize
 Returns true if either
 ----------------------
 
-1. skb has frag_list and the device doesn't support FRAGLIST, or
-2. skb is fragmented and the device does not support SG.
+     1. skb has frag_list and the device doesn't support FRAGLIST, or
+     2. skb is fragmented and the device does not support SG.
 
 .. _`skb_get_timestamp`:
 
@@ -1792,9 +1792,9 @@ skb_get_timestamp
 Description
 -----------
 
-Timestamps are stored in the skb as offsets to a base timestamp.
-This function converts the offset back to a struct timeval and stores
-it in stamp.
+     Timestamps are stored in the skb as offsets to a base timestamp.
+     This function converts the offset back to a struct timeval and stores
+     it in stamp.
 
 .. _`skb_complete_tx_timestamp`:
 
@@ -1903,17 +1903,17 @@ skb_checksum_complete
 Description
 -----------
 
-This function calculates the checksum over the entire packet plus
-the value of skb->csum.  The latter can be used to supply the
-checksum of a pseudo header as used by TCP/UDP.  It returns the
-checksum.
+     This function calculates the checksum over the entire packet plus
+     the value of skb->csum.  The latter can be used to supply the
+     checksum of a pseudo header as used by TCP/UDP.  It returns the
+     checksum.
 
-For protocols that contain complete checksums such as ICMP/TCP/UDP,
-this function can be used to verify that checksum on received
-packets.  In that case the function should return zero if the
-checksum is correct.  In particular, this function will return zero
-if skb->ip_summed is CHECKSUM_UNNECESSARY which indicates that the
-hardware has already verified the correctness of the checksum.
+     For protocols that contain complete checksums such as ICMP/TCP/UDP,
+     this function can be used to verify that checksum on received
+     packets.  In that case the function should return zero if the
+     checksum is correct.  In particular, this function will return zero
+     if skb->ip_summed is CHECKSUM_UNNECESSARY which indicates that the
+     hardware has already verified the correctness of the checksum.
 
 .. _`skb_checksum_none_assert`:
 

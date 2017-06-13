@@ -667,6 +667,39 @@ property data isn't large enough.
 
 The out_value is modified only if a valid u32 value can be decoded.
 
+.. _`of_property_read_u64_index`:
+
+of_property_read_u64_index
+==========================
+
+.. c:function:: int of_property_read_u64_index(const struct device_node *np, const char *propname, u32 index, u64 *out_value)
+
+    Find and read a u64 from a multi-value property.
+
+    :param const struct device_node \*np:
+        device node from which the property value is to be read.
+
+    :param const char \*propname:
+        name of the property to be searched.
+
+    :param u32 index:
+        index of the u64 in the list of values
+
+    :param u64 \*out_value:
+        pointer to return value, modified only if no error.
+
+.. _`of_property_read_u64_index.description`:
+
+Description
+-----------
+
+Search for a property in a device node and read nth 64-bit value from
+it. Returns 0 on success, -EINVAL if the property does not exist,
+-ENODATA if property does not have a value, and -EOVERFLOW if the
+property data isn't large enough.
+
+The out_value is modified only if a valid u64 value can be decoded.
+
 .. _`of_property_read_variable_u8_array`:
 
 of_property_read_variable_u8_array
@@ -1300,6 +1333,26 @@ Returns a node pointer with refcount incremented, use
 \ :c:func:`of_node_put`\  on it when done.  Caller should hold a reference
 to np.
 
+.. _`of_find_last_cache_level`:
+
+of_find_last_cache_level
+========================
+
+.. c:function:: int of_find_last_cache_level(unsigned int cpu)
+
+    Find the level at which the last cache is present for the given logical cpu
+
+    :param unsigned int cpu:
+        cpu number(logical index) for which the last cache level is needed
+
+.. _`of_find_last_cache_level.description`:
+
+Description
+-----------
+
+Returns the the level at which the last cache is present. It is exactly
+same as  the total number of cache levels for the given logical cpu.
+
 .. _`of_graph_parse_endpoint`:
 
 of_graph_parse_endpoint
@@ -1433,6 +1486,32 @@ Return
 ------
 
 Remote port node associated with remote endpoint node linked
+to \ ``node``\ . Use \ :c:func:`of_node_put`\  on it when done.
+
+.. _`of_graph_get_remote_node`:
+
+of_graph_get_remote_node
+========================
+
+.. c:function:: struct device_node *of_graph_get_remote_node(const struct device_node *node, u32 port, u32 endpoint)
+
+    get remote parent device_node for given port/endpoint
+
+    :param const struct device_node \*node:
+        pointer to parent device_node containing graph port/endpoint
+
+    :param u32 port:
+        identifier (value of reg property) of the parent port node
+
+    :param u32 endpoint:
+        identifier (value of reg property) of the endpoint node
+
+.. _`of_graph_get_remote_node.return`:
+
+Return
+------
+
+Remote device node associated with remote endpoint node linked
 to \ ``node``\ . Use \ :c:func:`of_node_put`\  on it when done.
 
 .. This file was automatic generated / don't edit.

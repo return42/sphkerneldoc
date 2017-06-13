@@ -84,6 +84,26 @@ edac_mc_free
     :param struct mem_ctl_info \*mci:
         pointer to a struct mem_ctl_info structure
 
+.. _`edac_has_mcs`:
+
+edac_has_mcs
+============
+
+.. c:function:: bool edac_has_mcs( void)
+
+    Check if any MCs have been allocated.
+
+    :param  void:
+        no arguments
+
+.. _`edac_has_mcs.return`:
+
+Return
+------
+
+     True if MC instances have been registered successfully.
+     False otherwise.
+
 .. _`edac_mc_find`:
 
 edac_mc_find

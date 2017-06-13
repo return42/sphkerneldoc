@@ -8,3 +8,4 @@ spi-nor
     :maxdepth: 1
 
     hisi-sfc_c
+    intel-spi_c

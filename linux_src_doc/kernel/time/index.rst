@@ -25,4 +25,3 @@ time
     timecounter_c
     timekeeping_c
     timer_c
-    timer_stats_c

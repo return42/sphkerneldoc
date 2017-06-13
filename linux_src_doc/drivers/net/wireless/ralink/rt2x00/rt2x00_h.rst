@@ -300,7 +300,7 @@ any pending frames.
 rt2x00debug_dump_frame
 ======================
 
-.. c:function:: void rt2x00debug_dump_frame(struct rt2x00_dev *rt2x00dev, enum rt2x00_dump_type type, struct sk_buff *skb)
+.. c:function:: void rt2x00debug_dump_frame(struct rt2x00_dev *rt2x00dev, enum rt2x00_dump_type type, struct queue_entry *entry)
 
     Dump a frame to userspace through debugfs.
 
@@ -310,8 +310,8 @@ rt2x00debug_dump_frame
     :param enum rt2x00_dump_type type:
         The type of frame that is being dumped.
 
-    :param struct sk_buff \*skb:
-        The skb containing the frame to be dumped.
+    :param struct queue_entry \*entry:
+        The queue entry containing the frame to be dumped.
 
 .. This file was automatic generated / don't edit.
 

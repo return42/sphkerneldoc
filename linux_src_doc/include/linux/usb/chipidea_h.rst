@@ -18,8 +18,9 @@ Definition
 .. code-block:: c
 
     struct ci_hdrc_cable {
-        bool state;
+        bool connected;
         bool changed;
+        bool enabled;
         struct extcon_dev *edev;
         struct ci_hdrc *ci;
         struct notifier_block nb;
@@ -30,11 +31,14 @@ Definition
 Members
 -------
 
-state
-    current state of the line
+connected
+    true if cable is connected, false otherwise
 
 changed
     set to true when extcon event happen
+
+enabled
+    set to true if we've enabled the vbus or id interrupt
 
 edev
     device which generate events

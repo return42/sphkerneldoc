@@ -182,6 +182,38 @@ pages have to be faulted in, it may turn out to be slightly slower so
 callers need to carefully consider what to use. On many architectures,
 get_user_pages_fast simply falls back to get_user_pages.
 
+.. _`kvmalloc_node`:
+
+kvmalloc_node
+=============
+
+.. c:function:: void *kvmalloc_node(size_t size, gfp_t flags, int node)
+
+    attempt to allocate physically contiguous memory, but upon failure, fall back to non-contiguous (vmalloc) allocation.
+
+    :param size_t size:
+        size of the request.
+
+    :param gfp_t flags:
+        gfp mask for the allocation - must be compatible (superset) with GFP_KERNEL.
+
+    :param int node:
+        numa node to allocate from
+
+.. _`kvmalloc_node.description`:
+
+Description
+-----------
+
+Uses kmalloc to get the memory but if the allocation fails then falls back
+to the vmalloc allocator. Use kvfree for freeing the memory.
+
+Reclaim modifiers - __GFP_NORETRY and __GFP_NOFAIL are not supported. __GFP_REPEAT
+is supported only for large (>32kB) allocations, and it should be used only if
+kmalloc is preferable to the vmalloc fallback, due to visible performance drawbacks.
+
+Any use of gfp flags outside of GFP_KERNEL should be consulted with mm people.
+
 .. _`get_cmdline`:
 
 get_cmdline

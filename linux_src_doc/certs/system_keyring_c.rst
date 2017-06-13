@@ -6,17 +6,20 @@
 restrict_link_by_builtin_trusted
 ================================
 
-.. c:function:: int restrict_link_by_builtin_trusted(struct key *keyring, const struct key_type *type, const union key_payload *payload)
+.. c:function:: int restrict_link_by_builtin_trusted(struct key *dest_keyring, const struct key_type *type, const union key_payload *payload, struct key *restriction_key)
 
     Restrict keyring addition by built in CA
 
-    :param struct key \*keyring:
+    :param struct key \*dest_keyring:
         *undescribed*
 
     :param const struct key_type \*type:
         *undescribed*
 
     :param const union key_payload \*payload:
+        *undescribed*
+
+    :param struct key \*restriction_key:
         *undescribed*
 
 .. _`restrict_link_by_builtin_trusted.description`:
@@ -32,17 +35,20 @@ being vouched for by a key in the built in system keyring.
 restrict_link_by_builtin_and_secondary_trusted
 ==============================================
 
-.. c:function:: int restrict_link_by_builtin_and_secondary_trusted(struct key *keyring, const struct key_type *type, const union key_payload *payload)
+.. c:function:: int restrict_link_by_builtin_and_secondary_trusted(struct key *dest_keyring, const struct key_type *type, const union key_payload *payload, struct key *restrict_key)
 
     Restrict keyring addition by both builtin and secondary keyrings
 
-    :param struct key \*keyring:
+    :param struct key \*dest_keyring:
         *undescribed*
 
     :param const struct key_type \*type:
         *undescribed*
 
     :param const union key_payload \*payload:
+        *undescribed*
+
+    :param struct key \*restrict_key:
         *undescribed*
 
 .. _`restrict_link_by_builtin_and_secondary_trusted.description`:
@@ -53,6 +59,18 @@ Description
 Restrict the addition of keys into a keyring based on the key-to-be-added
 being vouched for by a key in either the built-in or the secondary system
 keyrings.
+
+.. _`get_builtin_and_secondary_restriction`:
+
+get_builtin_and_secondary_restriction
+=====================================
+
+.. c:function:: struct key_restriction *get_builtin_and_secondary_restriction( void)
+
+    keyring. Only for use in \ :c:func:`system_trusted_keyring_init`\ .
+
+    :param  void:
+        no arguments
 
 .. _`verify_pkcs7_signature`:
 

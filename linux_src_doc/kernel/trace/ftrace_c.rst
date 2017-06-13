@@ -40,6 +40,31 @@ Description
 This NULLs the ftrace function and in essence stops
 tracing.  There may be lag
 
+.. _`ftrace_lookup_ip`:
+
+ftrace_lookup_ip
+================
+
+.. c:function:: struct ftrace_func_entry *ftrace_lookup_ip(struct ftrace_hash *hash, unsigned long ip)
+
+    Test to see if an ip exists in an ftrace_hash
+
+    :param struct ftrace_hash \*hash:
+        The hash to look at
+
+    :param unsigned long ip:
+        The instruction pointer to test
+
+.. _`ftrace_lookup_ip.description`:
+
+Description
+-----------
+
+Search a given \ ``hash``\  to see if a given instruction pointer (@ip)
+exists in it.
+
+Returns the entry that holds the \ ``ip``\  if found. NULL otherwise.
+
 .. _`ftrace_location_range`:
 
 ftrace_location_range
@@ -355,6 +380,124 @@ routine if \ ``flag``\  has FTRACE_ITER_FILTER set, or
 \ :c:func:`tracing_lseek`\  should be used as the lseek routine, and
 release must call \ :c:func:`ftrace_regex_release`\ .
 
+.. _`allocate_ftrace_func_mapper`:
+
+allocate_ftrace_func_mapper
+===========================
+
+.. c:function:: struct ftrace_func_mapper *allocate_ftrace_func_mapper( void)
+
+    allocate a new ftrace_func_mapper
+
+    :param  void:
+        no arguments
+
+.. _`allocate_ftrace_func_mapper.description`:
+
+Description
+-----------
+
+Returns a ftrace_func_mapper descriptor that can be used to map ips to data.
+
+.. _`ftrace_func_mapper_find_ip`:
+
+ftrace_func_mapper_find_ip
+==========================
+
+.. c:function:: void **ftrace_func_mapper_find_ip(struct ftrace_func_mapper *mapper, unsigned long ip)
+
+    Find some data mapped to an ip
+
+    :param struct ftrace_func_mapper \*mapper:
+        The mapper that has the ip maps
+
+    :param unsigned long ip:
+        the instruction pointer to find the data for
+
+.. _`ftrace_func_mapper_find_ip.description`:
+
+Description
+-----------
+
+Returns the data mapped to \ ``ip``\  if found otherwise NULL. The return
+is actually the address of the mapper data pointer. The address is
+returned for use cases where the data is no bigger than a long, and
+the user can use the data pointer as its data instead of having to
+allocate more memory for the reference.
+
+.. _`ftrace_func_mapper_add_ip`:
+
+ftrace_func_mapper_add_ip
+=========================
+
+.. c:function:: int ftrace_func_mapper_add_ip(struct ftrace_func_mapper *mapper, unsigned long ip, void *data)
+
+    Map some data to an ip
+
+    :param struct ftrace_func_mapper \*mapper:
+        The mapper that has the ip maps
+
+    :param unsigned long ip:
+        The instruction pointer address to map \ ``data``\  to
+
+    :param void \*data:
+        The data to map to \ ``ip``\ 
+
+.. _`ftrace_func_mapper_add_ip.description`:
+
+Description
+-----------
+
+Returns 0 on succes otherwise an error.
+
+.. _`ftrace_func_mapper_remove_ip`:
+
+ftrace_func_mapper_remove_ip
+============================
+
+.. c:function:: void *ftrace_func_mapper_remove_ip(struct ftrace_func_mapper *mapper, unsigned long ip)
+
+    Remove an ip from the mapping
+
+    :param struct ftrace_func_mapper \*mapper:
+        The mapper that has the ip maps
+
+    :param unsigned long ip:
+        The instruction pointer address to remove the data from
+
+.. _`ftrace_func_mapper_remove_ip.description`:
+
+Description
+-----------
+
+Returns the data if it is found, otherwise NULL.
+Note, if the data pointer is used as the data itself, (see
+\ :c:func:`ftrace_func_mapper_find_ip`\ , then the return value may be meaningless,
+if the data pointer was set to zero.
+
+.. _`free_ftrace_func_mapper`:
+
+free_ftrace_func_mapper
+=======================
+
+.. c:function:: void free_ftrace_func_mapper(struct ftrace_func_mapper *mapper, ftrace_mapper_func free_func)
+
+    free a mapping of ips and data
+
+    :param struct ftrace_func_mapper \*mapper:
+        The mapper that has the ip maps
+
+    :param ftrace_mapper_func free_func:
+        A function to be called on each data item.
+
+.. _`free_ftrace_func_mapper.description`:
+
+Description
+-----------
+
+This is used to free the function mapper. The \ ``free_func``\  is optional
+and can be used if the data needs to be freed as well.
+
 .. _`ftrace_set_filter_ip`:
 
 ftrace_set_filter_ip
@@ -536,7 +679,7 @@ Description
 Normally the mcount trampoline will call the ops->func, but there
 are times that it should not. For example, if the ops does not
 have its own recursion protection, then it should call the
-\ :c:func:`ftrace_ops_recurs_func`\  instead.
+\ :c:func:`ftrace_ops_assist_func`\  instead.
 
 Returns the function that the trampoline should call for \ ``ops``\ .
 

@@ -276,7 +276,7 @@ rsi_disconnect
 
 .. c:function:: void rsi_disconnect(struct usb_interface *pfunction)
 
-    This function performs the reverse of the probe function, it deintialize the driver structure.
+    This function performs the reverse of the probe function, it deinitialize the driver structure.
 
     :param struct usb_interface \*pfunction:
         Pointer to the USB interface structure.

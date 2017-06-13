@@ -43,25 +43,6 @@ setup.
 
 Returns 0 on success, -EINVAL on failure
 
-.. _`hfi1_compute_aeth`:
-
-hfi1_compute_aeth
-=================
-
-.. c:function:: __be32 hfi1_compute_aeth(struct rvt_qp *qp)
-
-    compute the AETH (syndrome + MSN)
-
-    :param struct rvt_qp \*qp:
-        the queue pair to compute the AETH for
-
-.. _`hfi1_compute_aeth.description`:
-
-Description
------------
-
-Returns the AETH.
-
 .. _`_hfi1_schedule_send`:
 
 _hfi1_schedule_send
@@ -103,28 +84,6 @@ Description
 
 This schedules qp progress and caller should hold
 the s_lock.
-
-.. _`hfi1_get_credit`:
-
-hfi1_get_credit
-===============
-
-.. c:function:: void hfi1_get_credit(struct rvt_qp *qp, u32 aeth)
-
-    handle credit in aeth
-
-    :param struct rvt_qp \*qp:
-        the qp
-
-    :param u32 aeth:
-        the Acknowledge Extended Transport Header
-
-.. _`hfi1_get_credit.description`:
-
-Description
------------
-
-The QP s_lock should be held.
 
 .. _`hfi1_error_port_qps`:
 

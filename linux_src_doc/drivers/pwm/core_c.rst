@@ -471,24 +471,5 @@ Release a PWM previously allocated using \ :c:func:`devm_pwm_get`\ . Calling thi
 function is usually not needed because devm-allocated resources are
 automatically released on driver detach.
 
-.. _`pwm_can_sleep`:
-
-pwm_can_sleep
-=============
-
-.. c:function:: bool pwm_can_sleep(struct pwm_device *pwm)
-
-    report whether PWM access will sleep
-
-    :param struct pwm_device \*pwm:
-        PWM device
-
-.. _`pwm_can_sleep.return`:
-
-Return
-------
-
-True if accessing the PWM can sleep, false otherwise.
-
 .. This file was automatic generated / don't edit.
 

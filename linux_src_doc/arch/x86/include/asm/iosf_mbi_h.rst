@@ -109,5 +109,105 @@ Return
 
 Nonzero on error
 
+.. _`iosf_mbi_punit_acquire`:
+
+iosf_mbi_punit_acquire
+======================
+
+.. c:function:: void iosf_mbi_punit_acquire( void)
+
+    Acquire access to the P-Unit
+
+    :param  void:
+        no arguments
+
+.. _`iosf_mbi_punit_acquire.description`:
+
+Description
+-----------
+
+One some systems the P-Unit accesses the PMIC to change various voltages
+through the same bus as other kernel drivers use for e.g. battery monitoring.
+
+If a driver sends requests to the P-Unit which require the P-Unit to access
+the PMIC bus while another driver is also accessing the PMIC bus various bad
+things happen.
+
+To avoid these problems this function must be called before accessing the
+P-Unit or the PMIC, be it through iosf_mbi\* functions or through other means.
+
+Note on these systems the i2c-bus driver will request a sempahore from the
+P-Unit for exclusive access to the PMIC bus when i2c drivers are accessing
+it, but this does not appear to be sufficient, we still need to avoid making
+certain P-Unit requests during the access window to avoid problems.
+
+This function locks a mutex, as such it may sleep.
+
+.. _`iosf_mbi_punit_release`:
+
+iosf_mbi_punit_release
+======================
+
+.. c:function:: void iosf_mbi_punit_release( void)
+
+    Release access to the P-Unit
+
+    :param  void:
+        no arguments
+
+.. _`iosf_mbi_register_pmic_bus_access_notifier`:
+
+iosf_mbi_register_pmic_bus_access_notifier
+==========================================
+
+.. c:function:: int iosf_mbi_register_pmic_bus_access_notifier(struct notifier_block *nb)
+
+    Register PMIC bus notifier
+
+    :param struct notifier_block \*nb:
+        notifier_block to register
+
+.. _`iosf_mbi_register_pmic_bus_access_notifier.description`:
+
+Description
+-----------
+
+This function can be used by drivers which may need to acquire P-Unit
+managed resources from interrupt context, where \ :c:func:`iosf_mbi_punit_acquire`\ 
+can not be used.
+
+This function allows a driver to register a notifier to get notified (in a
+process context) before other drivers start accessing the PMIC bus.
+
+This allows the driver to acquire any resources, which it may need during
+the window the other driver is accessing the PMIC, before hand.
+
+.. _`iosf_mbi_unregister_pmic_bus_access_notifier`:
+
+iosf_mbi_unregister_pmic_bus_access_notifier
+============================================
+
+.. c:function:: int iosf_mbi_unregister_pmic_bus_access_notifier(struct notifier_block *nb)
+
+    Unregister PMIC bus notifier
+
+    :param struct notifier_block \*nb:
+        notifier_block to unregister
+
+.. _`iosf_mbi_call_pmic_bus_access_notifier_chain`:
+
+iosf_mbi_call_pmic_bus_access_notifier_chain
+============================================
+
+.. c:function:: int iosf_mbi_call_pmic_bus_access_notifier_chain(unsigned long val, void *v)
+
+    Call PMIC bus notifier chain
+
+    :param unsigned long val:
+        action to pass into listener's notifier_call function
+
+    :param void \*v:
+        data pointer to pass into listener's notifier_call function
+
 .. This file was automatic generated / don't edit.
 

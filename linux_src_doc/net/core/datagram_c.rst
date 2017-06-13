@@ -14,7 +14,7 @@ __skb_try_recv_datagram
         socket
 
     :param unsigned int flags:
-        MSG\_ flags
+        MSG_ flags
 
     :param void (\*destructor)(struct sock \*sk, struct sk_buff \*skb):
         invoked under the receive lock on successful dequeue
@@ -38,29 +38,29 @@ __skb_try_recv_datagram
 Description
 -----------
 
-Get a datagram skbuff, understands the peeking, nonblocking wakeups
-and possible races. This replaces identical code in packet, raw and
-udp, as well as the IPX AX.25 and Appletalk. It also finally fixes
-the long standing peek and read race for datagram sockets. If you
-alter this routine remember it must be re-entrant.
+     Get a datagram skbuff, understands the peeking, nonblocking wakeups
+     and possible races. This replaces identical code in packet, raw and
+     udp, as well as the IPX AX.25 and Appletalk. It also finally fixes
+     the long standing peek and read race for datagram sockets. If you
+     alter this routine remember it must be re-entrant.
 
-This function will lock the socket if a skb is returned, so
-the caller needs to unlock the socket in that case (usually by
-calling skb_free_datagram). Returns NULL with \*err set to
--EAGAIN if no data was available or to some other value if an
-error was detected.
+     This function will lock the socket if a skb is returned, so
+     the caller needs to unlock the socket in that case (usually by
+     calling skb_free_datagram). Returns NULL with \ ``err``\  set to
+     -EAGAIN if no data was available or to some other value if an
+     error was detected.
 
-\* It does not lock socket since today. This function is
-\* free of race conditions. This measure should/can improve
-\* significantly datagram socket latencies at high loads,
-\* when data copying to user space takes lots of time.
-\* (BTW I've just killed the last \ :c:func:`cli`\  in IP/IPv6/core/netlink/packet
-\*  8) Great win.)
-\*                                           --ANK (980729)
+     * It does not lock socket since today. This function is
+     * free of race conditions. This measure should/can improve
+     * significantly datagram socket latencies at high loads,
+     * when data copying to user space takes lots of time.
+     * (BTW I've just killed the last \ :c:func:`cli`\  in IP/IPv6/core/netlink/packet
+     *  8) Great win.)
+     *                                           --ANK (980729)
 
-The order of the tests when we find no data waiting are specified
-quite explicitly by POSIX 1003.1g, don't change them without having
-the standard around please.
+     The order of the tests when we find no data waiting are specified
+     quite explicitly by POSIX 1003.1g, don't change them without having
+     the standard around please.
 
 .. _`skb_kill_datagram`:
 
@@ -78,26 +78,26 @@ skb_kill_datagram
         datagram skbuff
 
     :param unsigned int flags:
-        MSG\_ flags
+        MSG_ flags
 
 .. _`skb_kill_datagram.description`:
 
 Description
 -----------
 
-This function frees a datagram skbuff that was received by
-skb_recv_datagram.  The flags argument must match the one
-used for skb_recv_datagram.
+     This function frees a datagram skbuff that was received by
+     skb_recv_datagram.  The flags argument must match the one
+     used for skb_recv_datagram.
 
-If the MSG_PEEK flag is set, and the packet is still on the
-receive queue of the socket, it will be taken off the queue
-before it is freed.
+     If the MSG_PEEK flag is set, and the packet is still on the
+     receive queue of the socket, it will be taken off the queue
+     before it is freed.
 
-This function currently only disables BH when acquiring the
-sk_receive_queue lock.  Therefore it must not be used in a
-context where that lock is acquired in an IRQ context.
+     This function currently only disables BH when acquiring the
+     sk_receive_queue lock.  Therefore it must not be used in a
+     context where that lock is acquired in an IRQ context.
 
-It returns 0 if the packet was removed by us.
+     It returns 0 if the packet was removed by us.
 
 .. _`skb_copy_datagram_iter`:
 
@@ -146,7 +146,7 @@ skb_copy_datagram_from_iter
 Description
 -----------
 
-Returns 0 or -EFAULT.
+     Returns 0 or -EFAULT.
 
 .. _`zerocopy_sg_from_iter`:
 
@@ -168,10 +168,10 @@ zerocopy_sg_from_iter
 Description
 -----------
 
-The function will first copy up to headlen, and then pin the userspace
-pages and build frags through them.
+     The function will first copy up to headlen, and then pin the userspace
+     pages and build frags through them.
 
-Returns 0, -EFAULT or -EMSGSIZE.
+     Returns 0, -EFAULT or -EMSGSIZE.
 
 .. _`skb_copy_and_csum_datagram_msg`:
 
@@ -196,7 +196,7 @@ skb_copy_and_csum_datagram_msg
 Description
 -----------
 
-Caller \_must\_ check that skb will fit to this iovec.
+     Caller _must_ check that skb will fit to this iovec.
 
 .. _`skb_copy_and_csum_datagram_msg.return`:
 
@@ -204,8 +204,8 @@ Return
 ------
 
 0       - success.
--EINVAL - checksum failure.
--EFAULT - fault during copy.
+              -EINVAL - checksum failure.
+              -EFAULT - fault during copy.
 
 .. _`datagram_poll`:
 
@@ -225,23 +225,23 @@ datagram_poll
     :param poll_table \*wait:
         poll table
 
-.. _`datagram_poll.datagram-poll`:
+.. _`datagram_poll.description`:
 
-Datagram poll
--------------
+Description
+-----------
 
-Again totally generic. This also handles
-sequenced packet sockets providing the socket receive queue
-is only ever holding data ready to receive.
+     Datagram poll: Again totally generic. This also handles
+     sequenced packet sockets providing the socket receive queue
+     is only ever holding data ready to receive.
 
 .. _`datagram_poll.note`:
 
 Note
 ----
 
-when you \_don't\_ use this routine for this protocol,
-and you use a different write policy from \ :c:func:`sock_writeable`\ 
-then please supply your own write_space callback.
+when you _don't_ use this routine for this protocol,
+     and you use a different write policy from \ :c:func:`sock_writeable`\ 
+     then please supply your own write_space callback.
 
 .. This file was automatic generated / don't edit.
 

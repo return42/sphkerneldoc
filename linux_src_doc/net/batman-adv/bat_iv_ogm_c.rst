@@ -900,6 +900,18 @@ Return
 true if the metric via neigh1 is equally good or better than
 the metric via neigh2, false otherwise.
 
+.. _`batadv_iv_init_sel_class`:
+
+batadv_iv_init_sel_class
+========================
+
+.. c:function:: void batadv_iv_init_sel_class(struct batadv_priv *bat_priv)
+
+    initialize GW selection class
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
 .. _`batadv_iv_gw_dump_entry`:
 
 batadv_iv_gw_dump_entry

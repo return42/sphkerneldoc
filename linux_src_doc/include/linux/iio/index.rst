@@ -16,6 +16,7 @@ iio
     magnetometer/index
     buffer-dma_h
     buffer_h
+    buffer_impl_h
     consumer_h
     driver_h
     events_h

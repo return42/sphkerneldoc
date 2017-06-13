@@ -58,31 +58,11 @@ which remains valid until the context is unpinned.
 
 This is what a descriptor looks like, from LSB to MSB::
 
-     bits  0-11:    flags, GEN8_CTX_* (cached in ctx_desc_template)
+     bits  0-11:    flags, GEN8_CTX_* (cached in ctx->desc_template)
      bits 12-31:    LRCA, GTT address of (the HWSP of) this context
      bits 32-52:    ctx ID, a globally unique tag
      bits 53-54:    mbz, reserved for use by hardware
      bits 55-63:    group ID, currently unused and set to 0
-
-.. _`intel_execlists_idle`:
-
-intel_execlists_idle
-====================
-
-.. c:function:: bool intel_execlists_idle(struct drm_i915_private *dev_priv)
-
-    Determine if all engine submission ports are idle
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
-
-.. _`intel_execlists_idle.description`:
-
-Description
------------
-
-Return true if there are no requests pending on any of the submission ports
-of any engines.
 
 .. _`intel_logical_ring_cleanup`:
 

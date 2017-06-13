@@ -44,6 +44,8 @@ Returns the number of pages mapped in success, negative error code
 for failure.
 An -EAGAIN error code is returned when a concurrent mmu notifier prevents
 the function from completing its task.
+An -ENOENT error code indicates that userspace process is being terminated
+and mm was already destroyed.
 
 .. This file was automatic generated / don't edit.
 

@@ -169,7 +169,7 @@ this ioctl to flush out the changes on manual-update display outputs, e.g.
 usb display-link, mipi manual update panels or edp panel self refresh modes.
 
 Modesetting drivers which always update the frontbuffer do not need to
-implement the corresponding ->dirty framebuffer callback.
+implement the corresponding \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  callback.
 
 Called by the user via ioctl.
 
@@ -273,7 +273,7 @@ Description
 
 If successful, this grabs an additional reference to the framebuffer -
 callers need to make sure to eventually unreference the returned framebuffer
-again, using \ ``drm_framebuffer_unreference``\ .
+again, using \ :c:func:`drm_framebuffer_put`\ .
 
 .. _`drm_framebuffer_unregister_private`:
 
@@ -304,8 +304,8 @@ NOTE
 
 This function is deprecated. For driver-private framebuffers it is not
 recommended to embed a framebuffer struct info fbdev struct, instead, a
-framebuffer pointer is preferred and \ :c:func:`drm_framebuffer_unreference`\  should be
-called when the framebuffer is to be cleaned up.
+framebuffer pointer is preferred and \ :c:func:`drm_framebuffer_put`\  should be called
+when the framebuffer is to be cleaned up.
 
 .. _`drm_framebuffer_cleanup`:
 
@@ -325,10 +325,10 @@ Description
 -----------
 
 Cleanup framebuffer. This function is intended to be used from the drivers
-->destroy callback. It can also be used to clean up driver private
-framebuffers embedded into a larger structure.
+\ :c:type:`drm_framebuffer_funcs.destroy <drm_framebuffer_funcs>`\  callback. It can also be used to clean up
+driver private framebuffers embedded into a larger structure.
 
-Note that this function does not remove the fb from active usuage - if it is
+Note that this function does not remove the fb from active usage - if it is
 still used anywhere, hilarity can ensue since userspace could call getfb on
 the id and get back -EINVAL. Obviously no concern at driver unload time.
 
@@ -361,6 +361,56 @@ passed-in framebuffer. Might take the modeset locks.
 Note that this function optimizes the cleanup away if the caller holds the
 last reference to the framebuffer. It is also guaranteed to not take the
 modeset locks in this case.
+
+.. _`drm_framebuffer_plane_width`:
+
+drm_framebuffer_plane_width
+===========================
+
+.. c:function:: int drm_framebuffer_plane_width(int width, const struct drm_framebuffer *fb, int plane)
+
+    width of the plane given the first plane
+
+    :param int width:
+        width of the first plane
+
+    :param const struct drm_framebuffer \*fb:
+        the framebuffer
+
+    :param int plane:
+        plane index
+
+.. _`drm_framebuffer_plane_width.return`:
+
+Return
+------
+
+The width of \ ``plane``\ , given that the width of the first plane is \ ``width``\ .
+
+.. _`drm_framebuffer_plane_height`:
+
+drm_framebuffer_plane_height
+============================
+
+.. c:function:: int drm_framebuffer_plane_height(int height, const struct drm_framebuffer *fb, int plane)
+
+    height of the plane given the first plane
+
+    :param int height:
+        height of the first plane
+
+    :param const struct drm_framebuffer \*fb:
+        the framebuffer
+
+    :param int plane:
+        plane index
+
+.. _`drm_framebuffer_plane_height.return`:
+
+Return
+------
+
+The height of \ ``plane``\ , given that the height of the first plane is \ ``height``\ .
 
 .. This file was automatic generated / don't edit.
 

@@ -6,11 +6,11 @@
 mangle_name
 ===========
 
-.. c:function:: int mangle_name(char *name, char *target)
+.. c:function:: int mangle_name(const char *name, char *target)
 
     mangle a profile name to std profile layout form
 
-    :param char \*name:
+    :param const char \*name:
         profile name to mangle  (NOT NULL)
 
     :param char \*target:
@@ -28,12 +28,9 @@ length of mangled name
 aa_simple_write_to_buffer
 =========================
 
-.. c:function:: char *aa_simple_write_to_buffer(int op, const char __user *userbuf, size_t alloc_size, size_t copy_size, loff_t *pos)
+.. c:function:: struct aa_loaddata *aa_simple_write_to_buffer(const char __user *userbuf, size_t alloc_size, size_t copy_size, loff_t *pos)
 
     common routine for getting policy from user
-
-    :param int op:
-        operation doing the user buffer copy
 
     :param const char __user \*userbuf:
         user buffer to copy data from  (NOT NULL)
@@ -55,22 +52,109 @@ Return
 kernel buffer containing copy of user buffer data or an
 ERR_PTR on failure.
 
-.. _`__next_namespace`:
+.. _`query_data`:
 
-__next_namespace
-================
+query_data
+==========
 
-.. c:function:: struct aa_namespace *__next_namespace(struct aa_namespace *root, struct aa_namespace *ns)
+.. c:function:: ssize_t query_data(char *buf, size_t buf_len, char *query, size_t query_len)
+
+    queries a policy and writes its data to buf
+
+    :param char \*buf:
+        the resulting data is stored here (NOT NULL)
+
+    :param size_t buf_len:
+        size of buf
+
+    :param char \*query:
+        query string used to retrieve data
+
+    :param size_t query_len:
+        size of query including second NUL byte
+
+.. _`query_data.description`:
+
+Description
+-----------
+
+The buffers pointed to by buf and query may overlap. The query buffer is
+parsed before buf is written to.
+
+The query should look like "<LABEL>\0<KEY>\0", where <LABEL> is the name of
+the security confinement context and <KEY> is the name of the data to
+retrieve. <LABEL> and <KEY> must not be NUL-terminated.
+
+Don't expect the contents of buf to be preserved on failure.
+
+.. _`query_data.return`:
+
+Return
+------
+
+number of characters written to buf or -errno on failure
+
+.. _`aa_write_access`:
+
+aa_write_access
+===============
+
+.. c:function:: ssize_t aa_write_access(struct file *file, const char __user *ubuf, size_t count, loff_t *ppos)
+
+    generic permissions and data query
+
+    :param struct file \*file:
+        pointer to open apparmorfs/access file
+
+    :param const char __user \*ubuf:
+        user buffer containing the complete query string (NOT NULL)
+
+    :param size_t count:
+        size of ubuf
+
+    :param loff_t \*ppos:
+        position in the file (MUST BE ZERO)
+
+.. _`aa_write_access.description`:
+
+Description
+-----------
+
+Allows for one permissions or data query per \ :c:func:`open`\ , \ :c:func:`write`\ , and \ :c:func:`read`\ 
+sequence. The only queries currently supported are label-based queries for
+permissions or data.
+
+For permissions queries, ubuf must begin with "label\0", followed by the
+profile query specific format described in the \ :c:func:`query_label`\  function
+documentation.
+
+For data queries, ubuf must have the form "data\0<LABEL>\0<KEY>\0", where
+<LABEL> is the name of the security confinement context and <KEY> is the
+name of the data to retrieve.
+
+.. _`aa_write_access.return`:
+
+Return
+------
+
+number of bytes written or -errno on failure
+
+.. _`__next_ns`:
+
+__next_ns
+=========
+
+.. c:function:: struct aa_ns *__next_ns(struct aa_ns *root, struct aa_ns *ns)
 
     find the next namespace to list
 
-    :param struct aa_namespace \*root:
+    :param struct aa_ns \*root:
         root namespace to stop search at (NOT NULL)
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         current ns position (NOT NULL)
 
-.. _`__next_namespace.description`:
+.. _`__next_ns.description`:
 
 Description
 -----------
@@ -78,21 +162,21 @@ Description
 Find the next namespace from \ ``ns``\  under \ ``root``\  and handle all locking needed
 while switching current namespace.
 
-.. _`__next_namespace.return`:
+.. _`__next_ns.return`:
 
 Return
 ------
 
 next namespace or NULL if at last namespace under \ ``root``\ 
 
-.. _`__next_namespace.requires`:
+.. _`__next_ns.requires`:
 
 Requires
 --------
 
 ns->parent->lock to be held
 
-.. _`__next_namespace.note`:
+.. _`__next_ns.note`:
 
 NOTE
 ----
@@ -104,14 +188,14 @@ will not unlock root->lock
 __first_profile
 ===============
 
-.. c:function:: struct aa_profile *__first_profile(struct aa_namespace *root, struct aa_namespace *ns)
+.. c:function:: struct aa_profile *__first_profile(struct aa_ns *root, struct aa_ns *ns)
 
     find the first profile in a namespace
 
-    :param struct aa_namespace \*root:
+    :param struct aa_ns \*root:
         namespace that is root of profiles being displayed (NOT NULL)
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         namespace to start in   (NOT NULL)
 
 .. _`__first_profile.return`:
@@ -166,11 +250,11 @@ profile->ns.lock to be held
 next_profile
 ============
 
-.. c:function:: struct aa_profile *next_profile(struct aa_namespace *root, struct aa_profile *profile)
+.. c:function:: struct aa_profile *next_profile(struct aa_ns *root, struct aa_profile *profile)
 
     step to the next profile in where ever it may be
 
-    :param struct aa_namespace \*root:
+    :param struct aa_ns \*root:
         root namespace  (NOT NULL)
 
     :param struct aa_profile \*profile:

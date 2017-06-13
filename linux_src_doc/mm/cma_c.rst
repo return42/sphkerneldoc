@@ -6,7 +6,7 @@
 cma_init_reserved_mem
 =====================
 
-.. c:function:: int cma_init_reserved_mem(phys_addr_t base, phys_addr_t size, unsigned int order_per_bit, struct cma **res_cma)
+.. c:function:: int cma_init_reserved_mem(phys_addr_t base, phys_addr_t size, unsigned int order_per_bit, const char *name, struct cma **res_cma)
 
     create custom contiguous area from reserved memory
 
@@ -18,6 +18,9 @@ cma_init_reserved_mem
 
     :param unsigned int order_per_bit:
         Order of pages represented by one bit on bitmap.
+
+    :param const char \*name:
+        *undescribed*
 
     :param struct cma \*\*res_cma:
         Pointer to store the created cma region.
@@ -34,7 +37,7 @@ This function creates custom contiguous area from already reserved memory.
 cma_declare_contiguous
 ======================
 
-.. c:function:: int cma_declare_contiguous(phys_addr_t base, phys_addr_t size, phys_addr_t limit, phys_addr_t alignment, unsigned int order_per_bit, bool fixed, struct cma **res_cma)
+.. c:function:: int cma_declare_contiguous(phys_addr_t base, phys_addr_t size, phys_addr_t limit, phys_addr_t alignment, unsigned int order_per_bit, bool fixed, const char *name, struct cma **res_cma)
 
     reserve custom contiguous area
 
@@ -55,6 +58,9 @@ cma_declare_contiguous
 
     :param bool fixed:
         hint about where to place the reserved area
+
+    :param const char \*name:
+        *undescribed*
 
     :param struct cma \*\*res_cma:
         Pointer to store the created cma region.
@@ -77,7 +83,7 @@ reserve in range from \ ``base``\  to \ ``limit``\ .
 cma_alloc
 =========
 
-.. c:function:: struct page *cma_alloc(struct cma *cma, size_t count, unsigned int align)
+.. c:function:: struct page *cma_alloc(struct cma *cma, size_t count, unsigned int align, gfp_t gfp_mask)
 
     allocate pages from contiguous area
 
@@ -89,6 +95,9 @@ cma_alloc
 
     :param unsigned int align:
         Requested alignment of pages (in PAGE_SIZE order).
+
+    :param gfp_t gfp_mask:
+        *undescribed*
 
 .. _`cma_alloc.description`:
 

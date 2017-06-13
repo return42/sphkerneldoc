@@ -7,10 +7,10 @@ meter
 .. toctree::
     :maxdepth: 1
 
-    ade7753_h
-    ade7754_h
+    ade7753_c
+    ade7754_c
     ade7758_h
     ade7758_ring_c
     ade7758_trigger_c
-    ade7759_h
+    ade7759_c
     ade7854_h

@@ -17,7 +17,7 @@ blk_flush_complete_seq
         flush queue
 
     :param unsigned int seq:
-        sequences to complete (mask of \ ``REQ_FSEQ``\ \_\*, can be zero)
+        sequences to complete (mask of \ ``REQ_FSEQ_``\ *, can be zero)
 
     :param int error:
         whether an error occurred
@@ -98,8 +98,8 @@ blk_insert_flush
 Description
 -----------
 
-To be called from \__elv_add_request() for \ ``ELEVATOR_INSERT_FLUSH``\  insertions.
-or \__blk_mq_run_hw_queue() to dispatch request.
+To be called from \ :c:func:`__elv_add_request`\  for \ ``ELEVATOR_INSERT_FLUSH``\  insertions.
+or \ :c:func:`__blk_mq_run_hw_queue`\  to dispatch request.
 \ ``rq``\  is being submitted.  Analyze what needs to be done and put it on the
 right queue.
 
@@ -133,10 +133,9 @@ blkdev_issue_flush
 Description
 -----------
 
-Issue a flush for the block device in question. Caller can supply
-room for storing the error offset in case of a flush error, if they
-wish to. If WAIT flag is not passed then caller may check only what
-request was pushed in some internal queue for later handling.
+   Issue a flush for the block device in question. Caller can supply
+   room for storing the error offset in case of a flush error, if they
+   wish to.
 
 .. This file was automatic generated / don't edit.
 

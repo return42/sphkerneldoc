@@ -86,15 +86,15 @@ Definition
         struct dwc3 *dwc;
         u32 saved_state;
         unsigned flags;
-    #define DWC3_EP_ENABLED (1 << 0)
-    #define DWC3_EP_STALL (1 << 1)
-    #define DWC3_EP_WEDGE (1 << 2)
-    #define DWC3_EP_BUSY (1 << 4)
-    #define DWC3_EP_PENDING_REQUEST (1 << 5)
-    #define DWC3_EP_MISSED_ISOC (1 << 6)
-    #define DWC3_EP_END_TRANSFER_PENDING (1 << 7)
-    #define DWC3_EP_TRANSFER_STARTED (1 << 8)
-    #define DWC3_EP0_DIR_IN (1 << 31)
+    #define DWC3_EP_ENABLED BIT(0)
+    #define DWC3_EP_STALL BIT(1)
+    #define DWC3_EP_WEDGE BIT(2)
+    #define DWC3_EP_BUSY BIT(4)
+    #define DWC3_EP_PENDING_REQUEST BIT(5)
+    #define DWC3_EP_MISSED_ISOC BIT(6)
+    #define DWC3_EP_END_TRANSFER_PENDING BIT(7)
+    #define DWC3_EP_TRANSFER_STARTED BIT(8)
+    #define DWC3_EP0_DIR_IN BIT(31)
         u8 trb_enqueue;
         u8 trb_dequeue;
         u8 number;
@@ -245,9 +245,11 @@ Definition
         u8 epnum;
         struct dwc3_trb *trb;
         dma_addr_t trb_dma;
+        unsigned unaligned:1;
         unsigned direction:1;
         unsigned mapped:1;
         unsigned started:1;
+        unsigned zero:1;
     }
 
 .. _`dwc3_request.members`:
@@ -282,6 +284,9 @@ trb
 trb_dma
     DMA address of \ ``trb``\ 
 
+unaligned
+    true for OUT endpoints with length not divisible by maxp
+
 direction
     IN or OUT direction flag
 
@@ -291,6 +296,9 @@ mapped
 started
     *undescribed*
 
+zero
+    *undescribed*
+
 .. _`dwc3`:
 
 struct dwc3
@@ -298,7 +306,7 @@ struct dwc3
 
 .. c:type:: struct dwc3
 
-    representation of our controller
+    representation of our controller \ ``drd_work``\  - workqueue used for role swapping
 
 .. _`dwc3.definition`:
 
@@ -308,15 +316,13 @@ Definition
 .. code-block:: c
 
     struct dwc3 {
-        struct usb_ctrlrequest *ctrl_req;
+        struct work_struct drd_work;
         struct dwc3_trb *ep0_trb;
-        void *ep0_bounce;
-        void *zlp_buf;
+        void *bounce;
         void *scratchbuf;
         u8 *setup_buf;
-        dma_addr_t ctrl_req_addr;
         dma_addr_t ep0_trb_addr;
-        dma_addr_t ep0_bounce_addr;
+        dma_addr_t bounce_addr;
         dma_addr_t scratch_addr;
         struct dwc3_request ep0_usb_req;
         struct completion ep0_in_setup;
@@ -337,6 +343,10 @@ Definition
         void __iomem *regs;
         size_t regs_size;
         enum usb_dr_mode dr_mode;
+        u32 current_dr_role;
+        u32 desired_dr_role;
+        struct extcon_dev *edev;
+        struct notifier_block edev_nb;
         enum usb_phy_interface hsphy_mode;
         u32 fladj;
         u32 irq_gadget;
@@ -378,8 +388,7 @@ Definition
         u8 u1sel;
         u8 u1pel;
         u8 speed;
-        u8 num_out_eps;
-        u8 num_in_eps;
+        u8 num_eps;
         struct dwc3_hwparams hwparams;
         struct dentry *root;
         struct debugfs_regset32 *regset;
@@ -426,17 +435,14 @@ Definition
 Members
 -------
 
-ctrl_req
-    usb control request which is used for ep0
+drd_work
+    *undescribed*
 
 ep0_trb
     dma address of ep0_trb
 
-ep0_bounce
-    bounce buffer for ep0
-
-zlp_buf
-    used when request->zero is set
+bounce
+    *undescribed*
 
 scratchbuf
     *undescribed*
@@ -444,14 +450,11 @@ scratchbuf
 setup_buf
     used while precessing STD USB requests
 
-ctrl_req_addr
-    dma address of ctrl_req
-
 ep0_trb_addr
     *undescribed*
 
-ep0_bounce_addr
-    dma address of ep0_bounce
+bounce_addr
+    *undescribed*
 
 scratch_addr
     dma address of scratchbuf
@@ -507,6 +510,18 @@ regs_size
 dr_mode
     requested mode of operation
 
+current_dr_role
+    current role of operation when in dual-role mode
+
+desired_dr_role
+    desired role of operation when in dual-role mode
+
+edev
+    extcon handle
+
+edev_nb
+    extcon notifier
+
 hsphy_mode
     UTMI phy mode, one of following:
     - USBPHY_INTERFACE_MODE_UTMI
@@ -557,11 +572,8 @@ u1pel
 speed
     device speed (super, high, full, low)
 
-num_out_eps
-    number of out endpoints
-
-num_in_eps
-    number of in endpoints
+num_eps
+    number of endpoints
 
 hwparams
     copy of hwparams registers
@@ -714,11 +726,11 @@ Definition
         u32 endpoint_event:4;
         u32 reserved11_10:2;
         u32 status:4;
-    #define DEPEVT_STATUS_TRANSFER_ACTIVE (1 << 3)
-    #define DEPEVT_STATUS_BUSERR (1 << 0)
-    #define DEPEVT_STATUS_SHORT (1 << 1)
-    #define DEPEVT_STATUS_IOC (1 << 2)
-    #define DEPEVT_STATUS_LST (1 << 3)
+    #define DEPEVT_STATUS_TRANSFER_ACTIVE BIT(3)
+    #define DEPEVT_STATUS_BUSERR BIT(0)
+    #define DEPEVT_STATUS_SHORT BIT(1)
+    #define DEPEVT_STATUS_IOC BIT(2)
+    #define DEPEVT_STATUS_LST BIT(3)
     #define DEPEVT_STREAMEVT_FOUND 1
     #define DEPEVT_STREAMEVT_NOTFOUND 2
     #define DEPEVT_STATUS_CONTROL_DATA 1

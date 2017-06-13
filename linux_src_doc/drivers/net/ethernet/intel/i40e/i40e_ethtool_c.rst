@@ -36,15 +36,15 @@ i40e_phy_type_to_ethtool
 i40e_get_settings_link_up
 =========================
 
-.. c:function:: void i40e_get_settings_link_up(struct i40e_hw *hw, struct ethtool_cmd *ecmd, struct net_device *netdev, struct i40e_pf *pf)
+.. c:function:: void i40e_get_settings_link_up(struct i40e_hw *hw, struct ethtool_link_ksettings *cmd, struct net_device *netdev, struct i40e_pf *pf)
 
     Get the Link settings for when link is up
 
     :param struct i40e_hw \*hw:
         hw structure
 
-    :param struct ethtool_cmd \*ecmd:
-        ethtool command to fill in
+    :param struct ethtool_link_ksettings \*cmd:
+        *undescribed*
 
     :param struct net_device \*netdev:
         network interface device structure
@@ -57,15 +57,15 @@ i40e_get_settings_link_up
 i40e_get_settings_link_down
 ===========================
 
-.. c:function:: void i40e_get_settings_link_down(struct i40e_hw *hw, struct ethtool_cmd *ecmd, struct i40e_pf *pf)
+.. c:function:: void i40e_get_settings_link_down(struct i40e_hw *hw, struct ethtool_link_ksettings *cmd, struct i40e_pf *pf)
 
     Get the Link settings for when link is down
 
     :param struct i40e_hw \*hw:
         hw structure
 
-    :param struct ethtool_cmd \*ecmd:
-        ethtool command to fill in
+    :param struct ethtool_link_ksettings \*cmd:
+        *undescribed*
 
     :param struct i40e_pf \*pf:
         *undescribed*
@@ -77,44 +77,44 @@ Description
 
 Reports link settings that can be determined when link is down
 
-.. _`i40e_get_settings`:
+.. _`i40e_get_link_ksettings`:
 
-i40e_get_settings
-=================
+i40e_get_link_ksettings
+=======================
 
-.. c:function:: int i40e_get_settings(struct net_device *netdev, struct ethtool_cmd *ecmd)
+.. c:function:: int i40e_get_link_ksettings(struct net_device *netdev, struct ethtool_link_ksettings *cmd)
 
     Get Link Speed and Duplex settings
 
     :param struct net_device \*netdev:
         network interface device structure
 
-    :param struct ethtool_cmd \*ecmd:
-        ethtool command
+    :param struct ethtool_link_ksettings \*cmd:
+        *undescribed*
 
-.. _`i40e_get_settings.description`:
+.. _`i40e_get_link_ksettings.description`:
 
 Description
 -----------
 
 Reports speed/duplex settings based on media_type
 
-.. _`i40e_set_settings`:
+.. _`i40e_set_link_ksettings`:
 
-i40e_set_settings
-=================
+i40e_set_link_ksettings
+=======================
 
-.. c:function:: int i40e_set_settings(struct net_device *netdev, struct ethtool_cmd *ecmd)
+.. c:function:: int i40e_set_link_ksettings(struct net_device *netdev, const struct ethtool_link_ksettings *cmd)
 
     Set Speed and Duplex
 
     :param struct net_device \*netdev:
         network interface device structure
 
-    :param struct ethtool_cmd \*ecmd:
-        ethtool command
+    :param const struct ethtool_link_ksettings \*cmd:
+        *undescribed*
 
-.. _`i40e_set_settings.description`:
+.. _`i40e_set_link_ksettings.description`:
 
 Description
 -----------
@@ -361,6 +361,86 @@ Description
 
 Returns Success if the flow is supported, else Invalid Input.
 
+.. _`i40e_check_mask`:
+
+i40e_check_mask
+===============
+
+.. c:function:: int i40e_check_mask(u64 mask, u64 field)
+
+    Check whether a mask field is set
+
+    :param u64 mask:
+        the full mask value
+        \ ``field``\ ; mask of the field to check
+
+    :param u64 field:
+        *undescribed*
+
+.. _`i40e_check_mask.description`:
+
+Description
+-----------
+
+If the given mask is fully set, return positive value. If the mask for the
+field is fully unset, return zero. Otherwise return a negative error code.
+
+.. _`i40e_parse_rx_flow_user_data`:
+
+i40e_parse_rx_flow_user_data
+============================
+
+.. c:function:: int i40e_parse_rx_flow_user_data(struct ethtool_rx_flow_spec *fsp, struct i40e_rx_flow_userdef *data)
+
+    Deconstruct user-defined data
+
+    :param struct ethtool_rx_flow_spec \*fsp:
+        pointer to rx flow specification
+
+    :param struct i40e_rx_flow_userdef \*data:
+        pointer to userdef data structure for storage
+
+.. _`i40e_parse_rx_flow_user_data.description`:
+
+Description
+-----------
+
+Read the user-defined data and deconstruct the value into a structure. No
+other code should read the user-defined data, so as to ensure that every
+place consistently reads the value correctly.
+
+The user-defined field is a 64bit Big Endian format value, which we
+deconstruct by reading bits or bit fields from it. Single bit flags shall
+be defined starting from the highest bits, while small bit field values
+shall be defined starting from the lowest bits.
+
+Returns 0 if the data is valid, and non-zero if the userdef data is invalid
+and the filter should be rejected. The data structure will always be
+modified even if FLOW_EXT is not set.
+
+.. _`i40e_fill_rx_flow_user_data`:
+
+i40e_fill_rx_flow_user_data
+===========================
+
+.. c:function:: void i40e_fill_rx_flow_user_data(struct ethtool_rx_flow_spec *fsp, struct i40e_rx_flow_userdef *data)
+
+    Fill in user-defined data field
+
+    :param struct ethtool_rx_flow_spec \*fsp:
+        pointer to rx_flow specification
+
+    :param struct i40e_rx_flow_userdef \*data:
+        *undescribed*
+
+.. _`i40e_fill_rx_flow_user_data.description`:
+
+Description
+-----------
+
+Reads the userdef data structure and properly fills in the user defined
+fields of the rx_flow_spec.
+
 .. _`i40e_get_ethtool_fdir_all`:
 
 i40e_get_ethtool_fdir_all
@@ -484,28 +564,6 @@ Description
 
 Returns Success if the flow input set is supported.
 
-.. _`i40e_match_fdir_input_set`:
-
-i40e_match_fdir_input_set
-=========================
-
-.. c:function:: bool i40e_match_fdir_input_set(struct i40e_fdir_filter *rule, struct i40e_fdir_filter *input)
-
-    Match a new filter against an existing one
-
-    :param struct i40e_fdir_filter \*rule:
-        The filter already added
-
-    :param struct i40e_fdir_filter \*input:
-        The new filter to comapre against
-
-.. _`i40e_match_fdir_input_set.description`:
-
-Description
------------
-
-Returns true if the two input set match
-
 .. _`i40e_update_ethtool_fdir_entry`:
 
 i40e_update_ethtool_fdir_entry
@@ -537,6 +595,27 @@ the hlist of the corresponding PF
 
 Returns 0 on success
 
+.. _`i40e_prune_flex_pit_list`:
+
+i40e_prune_flex_pit_list
+========================
+
+.. c:function:: void i40e_prune_flex_pit_list(struct i40e_pf *pf)
+
+    Cleanup unused entries in FLX_PIT table
+
+    :param struct i40e_pf \*pf:
+        pointer to PF structure
+
+.. _`i40e_prune_flex_pit_list.description`:
+
+Description
+-----------
+
+This function searches the list of filters and determines which FLX_PIT
+entries are still required. It will prune any entries which are no longer
+in use after the deletion.
+
 .. _`i40e_del_fdir_entry`:
 
 i40e_del_fdir_entry
@@ -561,6 +640,250 @@ The function removes a Flow Director filter entry from the
 hlist of the corresponding PF
 
 Returns 0 on success
+
+.. _`i40e_unused_pit_index`:
+
+i40e_unused_pit_index
+=====================
+
+.. c:function:: u8 i40e_unused_pit_index(struct i40e_pf *pf)
+
+    Find an unused PIT index for given list
+
+    :param struct i40e_pf \*pf:
+        the PF data structure
+
+.. _`i40e_unused_pit_index.description`:
+
+Description
+-----------
+
+Find the first unused flexible PIT index entry. We search both the L3 and
+L4 flexible PIT lists so that the returned index is unique and unused by
+either currently programmed L3 or L4 filters. We use a bit field as storage
+to track which indexes are already used.
+
+.. _`i40e_find_flex_offset`:
+
+i40e_find_flex_offset
+=====================
+
+.. c:function:: struct i40e_flex_pit *i40e_find_flex_offset(struct list_head *flex_pit_list, u16 src_offset)
+
+    Find an existing flex src_offset
+
+    :param struct list_head \*flex_pit_list:
+        L3 or L4 flex PIT list
+
+    :param u16 src_offset:
+        new src_offset to find
+
+.. _`i40e_find_flex_offset.description`:
+
+Description
+-----------
+
+Searches the flex_pit_list for an existing offset. If no offset is
+currently programmed, then this will return an ERR_PTR if there is no space
+to add a new offset, otherwise it returns NULL.
+
+.. _`i40e_add_flex_offset`:
+
+i40e_add_flex_offset
+====================
+
+.. c:function:: int i40e_add_flex_offset(struct list_head *flex_pit_list, u16 src_offset, u8 pit_index)
+
+    Add src_offset to flex PIT table list
+
+    :param struct list_head \*flex_pit_list:
+        L3 or L4 flex PIT list
+
+    :param u16 src_offset:
+        new src_offset to add
+
+    :param u8 pit_index:
+        the PIT index to program
+
+.. _`i40e_add_flex_offset.description`:
+
+Description
+-----------
+
+This function programs the new src_offset to the list. It is expected that
+i40e_find_flex_offset has already been tried and returned NULL, indicating
+that this offset is not programmed, and that the list has enough space to
+store another offset.
+
+Returns 0 on success, and negative value on error.
+
+.. _`__i40e_reprogram_flex_pit`:
+
+__i40e_reprogram_flex_pit
+=========================
+
+.. c:function:: void __i40e_reprogram_flex_pit(struct i40e_pf *pf, struct list_head *flex_pit_list, int flex_pit_start)
+
+    Re-program specific FLX_PIT table
+
+    :param struct i40e_pf \*pf:
+        Pointer to the PF structure
+
+    :param struct list_head \*flex_pit_list:
+        list of flexible src offsets in use
+        #flex_pit_start: index to first entry for this section of the table
+
+    :param int flex_pit_start:
+        *undescribed*
+
+.. _`__i40e_reprogram_flex_pit.description`:
+
+Description
+-----------
+
+In order to handle flexible data, the hardware uses a table of values
+called the FLX_PIT table. This table is used to indicate which sections of
+the input correspond to what PIT index values. Unfortunately, hardware is
+very restrictive about programming this table. Entries must be ordered by
+src_offset in ascending order, without duplicates. Additionally, unused
+entries must be set to the unused index value, and must have valid size and
+length according to the src_offset ordering.
+
+This function will reprogram the FLX_PIT register from a book-keeping
+structure that we guarantee is already ordered correctly, and has no more
+than 3 entries.
+
+To make things easier, we only support flexible values of one word length,
+rather than allowing variable length flexible values.
+
+.. _`i40e_reprogram_flex_pit`:
+
+i40e_reprogram_flex_pit
+=======================
+
+.. c:function:: void i40e_reprogram_flex_pit(struct i40e_pf *pf)
+
+    Reprogram all FLX_PIT tables after input set change
+
+    :param struct i40e_pf \*pf:
+        pointer to the PF structure
+
+.. _`i40e_reprogram_flex_pit.description`:
+
+Description
+-----------
+
+This function reprograms both the L3 and L4 FLX_PIT tables. See the
+internal helper function for implementation details.
+
+.. _`i40e_flow_str`:
+
+i40e_flow_str
+=============
+
+.. c:function:: const char *i40e_flow_str(struct ethtool_rx_flow_spec *fsp)
+
+    Converts a flow_type into a human readable string
+
+    :param struct ethtool_rx_flow_spec \*fsp:
+        *undescribed*
+
+.. _`i40e_flow_str.description`:
+
+Description
+-----------
+
+Currently only flow types we support are included here, and the string
+value attempts to match what ethtool would use to configure this flow type.
+
+.. _`i40e_pit_index_to_mask`:
+
+i40e_pit_index_to_mask
+======================
+
+.. c:function:: u64 i40e_pit_index_to_mask(int pit_index)
+
+    Return the FLEX mask for a given PIT index
+
+    :param int pit_index:
+        PIT index to convert
+
+.. _`i40e_pit_index_to_mask.description`:
+
+Description
+-----------
+
+Returns the mask for a given PIT index. Will return 0 if the pit_index is
+of range.
+
+.. _`i40e_print_input_set`:
+
+i40e_print_input_set
+====================
+
+.. c:function:: void i40e_print_input_set(struct i40e_vsi *vsi, u64 old, u64 new)
+
+    Show changes between two input sets
+
+    :param struct i40e_vsi \*vsi:
+        the vsi being configured
+
+    :param u64 old:
+        the old input set
+
+    :param u64 new:
+        the new input set
+
+.. _`i40e_print_input_set.description`:
+
+Description
+-----------
+
+Print the difference between old and new input sets by showing which series
+of words are toggled on or off. Only displays the bits we actually support
+changing.
+
+.. _`i40e_check_fdir_input_set`:
+
+i40e_check_fdir_input_set
+=========================
+
+.. c:function:: int i40e_check_fdir_input_set(struct i40e_vsi *vsi, struct ethtool_rx_flow_spec *fsp, struct i40e_rx_flow_userdef *userdef)
+
+    Check that a given rx_flow_spec mask is valid
+
+    :param struct i40e_vsi \*vsi:
+        pointer to the targeted VSI
+
+    :param struct ethtool_rx_flow_spec \*fsp:
+        pointer to Rx flow specification
+
+    :param struct i40e_rx_flow_userdef \*userdef:
+        userdefined data from flow specification
+
+.. _`i40e_check_fdir_input_set.description`:
+
+Description
+-----------
+
+Ensures that a given ethtool_rx_flow_spec has a valid mask. Some support
+for partial matches exists with a few limitations. First, hardware only
+supports masking by word boundary (2 bytes) and not per individual bit.
+Second, hardware is limited to using one mask for a flow type and cannot
+use a separate mask for each filter.
+
+To support these limitations, if we already have a configured filter for
+the specified type, this function enforces that new filters of the type
+match the configured input set. Otherwise, if we do not have a filter of
+the specified type, we allow the input set to be updated to match the
+desired filter.
+
+To help ensure that administrators understand why filters weren't displayed
+as supported, we print a diagnostic message displaying how the input set
+would change and warning to delete the preexisting filters if required.
+
+Returns 0 on successful input set match, and a negative return code on
+failure.
 
 .. _`i40e_add_fdir_ethtool`:
 
@@ -752,7 +1075,7 @@ Description
 -----------
 
 The get string set count and the string set should be matched for each
-flag returned.  Add new strings for each flag to the i40e_priv_flags_strings
+flag returned.  Add new strings for each flag to the i40e_gstrings_priv_flags
 array.
 
 Returns a u32 bitmap of flags.

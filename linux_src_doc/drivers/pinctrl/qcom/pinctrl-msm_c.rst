@@ -23,7 +23,7 @@ Definition
         struct gpio_chip chip;
         struct notifier_block restart_nb;
         int irq;
-        spinlock_t lock;
+        raw_spinlock_t lock;
         unsigned long dual_edge_irqs[BITS_TO_LONGS(MAX_NR_GPIO)];
         unsigned long enabled_irqs[BITS_TO_LONGS(MAX_NR_GPIO)];
         const struct msm_pinctrl_soc_data *soc;

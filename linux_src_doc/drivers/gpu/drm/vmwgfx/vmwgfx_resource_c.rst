@@ -283,18 +283,6 @@ Description
 This function checks the ioctl arguments for validity and calls the
 relevant synccpu functions.
 
-.. _`vmw_user_stream_base_release`:
-
-vmw_user_stream_base_release
-============================
-
-.. c:function:: void vmw_user_stream_base_release(struct ttm_base_object **p_base)
-
-    base object. It releases the base-object's reference on the resource object.
-
-    :param struct ttm_base_object \*\*p_base:
-        *undescribed*
-
 .. _`vmw_dumb_create`:
 
 vmw_dumb_create

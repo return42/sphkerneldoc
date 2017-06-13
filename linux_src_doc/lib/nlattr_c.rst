@@ -6,7 +6,7 @@
 nla_validate
 ============
 
-.. c:function:: int nla_validate(const struct nlattr *head, int len, int maxtype, const struct nla_policy *policy)
+.. c:function:: int nla_validate(const struct nlattr *head, int len, int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     Validate a stream of attributes
 
@@ -21,6 +21,9 @@ nla_validate
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`nla_validate.description`:
 
@@ -64,7 +67,7 @@ Returns 0 on success or a negative error code.
 nla_parse
 =========
 
-.. c:function:: int nla_parse(struct nlattr **tb, int maxtype, const struct nlattr *head, int len, const struct nla_policy *policy)
+.. c:function:: int nla_parse(struct nlattr **tb, int maxtype, const struct nlattr *head, int len, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     Parse a stream of attributes into a tb buffer
 
@@ -82,6 +85,9 @@ nla_parse
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        *undescribed*
 
 .. _`nla_parse.description`:
 

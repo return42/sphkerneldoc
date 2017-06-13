@@ -557,12 +557,12 @@ if there is no slot avaiable for the other rrq information.
 returns 0 rrq actived for this xri
 < 0 No memory or invalid ndlp.
 
-.. _`__lpfc_sli_get_sglq`:
+.. _`__lpfc_sli_get_els_sglq`:
 
-__lpfc_sli_get_sglq
-===================
+__lpfc_sli_get_els_sglq
+=======================
 
-.. c:function:: struct lpfc_sglq *__lpfc_sli_get_sglq(struct lpfc_hba *phba, struct lpfc_iocbq *piocbq)
+.. c:function:: struct lpfc_sglq *__lpfc_sli_get_els_sglq(struct lpfc_hba *phba, struct lpfc_iocbq *piocbq)
 
     Allocates an iocb object from sgl pool
 
@@ -572,12 +572,37 @@ __lpfc_sli_get_sglq
     :param struct lpfc_iocbq \*piocbq:
         *undescribed*
 
-.. _`__lpfc_sli_get_sglq.description`:
+.. _`__lpfc_sli_get_els_sglq.description`:
 
 Description
 -----------
 
 This function is called with the ring lock held. This function
+gets a new driver sglq object from the sglq list. If the
+list is not empty then it is successful, it returns pointer to the newly
+allocated sglq object else it returns NULL.
+
+.. _`__lpfc_sli_get_nvmet_sglq`:
+
+__lpfc_sli_get_nvmet_sglq
+=========================
+
+.. c:function:: struct lpfc_sglq *__lpfc_sli_get_nvmet_sglq(struct lpfc_hba *phba, struct lpfc_iocbq *piocbq)
+
+    Allocates an iocb object from sgl pool
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param struct lpfc_iocbq \*piocbq:
+        *undescribed*
+
+.. _`__lpfc_sli_get_nvmet_sglq.description`:
+
+Description
+-----------
+
+This function is called with the sgl_list lock held. This function
 gets a new driver sglq object from the sglq list. If the
 list is not empty then it is successful, it returns pointer to the newly
 allocated sglq object else it returns NULL.
@@ -635,7 +660,7 @@ the entry in the array. If the status of the IO indiactes that
 this IO was aborted then the sglq entry it put on the
 lpfc_abts_els_sgl_list until the CQ_ABORTED_XRI is received. If the
 IO has good status or fails for any other reason then the sglq
-entry is added to the free list (lpfc_sgl_list).
+entry is added to the free list (lpfc_els_sgl_list).
 
 .. _`__lpfc_sli_release_iocbq_s3`:
 
@@ -1237,6 +1262,29 @@ Description
 This function removes the first hbq buffer on an hbq list and returns a
 pointer to that buffer. If it finds no buffers on the list it returns NULL.
 
+.. _`lpfc_sli_rqbuf_get`:
+
+lpfc_sli_rqbuf_get
+==================
+
+.. c:function:: struct rqb_dmabuf *lpfc_sli_rqbuf_get(struct lpfc_hba *phba, struct lpfc_queue *hrq)
+
+    Remove the first dma buffer off of an RQ list
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param struct lpfc_queue \*hrq:
+        *undescribed*
+
+.. _`lpfc_sli_rqbuf_get.description`:
+
+Description
+-----------
+
+This function removes the first RQ buffer on an RQ buffer list and returns a
+pointer to that buffer. If it finds no buffers on the list it returns NULL.
+
 .. _`lpfc_sli_hbqbuf_find`:
 
 lpfc_sli_hbqbuf_find
@@ -1794,6 +1842,31 @@ objects in txq. This function issues an abort iocb for all the iocb commands
 in txcmplq. The iocbs in the txcmplq is not guaranteed to complete before
 the return of this function. The caller is not required to hold any locks.
 
+.. _`lpfc_sli_abort_wqe_ring`:
+
+lpfc_sli_abort_wqe_ring
+=======================
+
+.. c:function:: void lpfc_sli_abort_wqe_ring(struct lpfc_hba *phba, struct lpfc_sli_ring *pring)
+
+    Abort all iocbs in the ring
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param struct lpfc_sli_ring \*pring:
+        Pointer to driver SLI ring object.
+
+.. _`lpfc_sli_abort_wqe_ring.description`:
+
+Description
+-----------
+
+This function aborts all iocbs in the given ring and frees all the iocb
+objects in txq. This function issues an abort iocb for all the iocb commands
+in txcmplq. The iocbs in the txcmplq is not guaranteed to complete before
+the return of this function. The caller is not required to hold any locks.
+
 .. _`lpfc_sli_abort_fcp_rings`:
 
 lpfc_sli_abort_fcp_rings
@@ -1816,6 +1889,28 @@ objects in txq. This function issues an abort iocb for all the iocb commands
 in txcmplq. The iocbs in the txcmplq is not guaranteed to complete before
 the return of this function. The caller is not required to hold any locks.
 
+.. _`lpfc_sli_abort_nvme_rings`:
+
+lpfc_sli_abort_nvme_rings
+=========================
+
+.. c:function:: void lpfc_sli_abort_nvme_rings(struct lpfc_hba *phba)
+
+    Abort all wqes in all NVME rings
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+.. _`lpfc_sli_abort_nvme_rings.description`:
+
+Description
+-----------
+
+This function aborts all wqes in NVME rings. This function issues an
+abort wqe for all the outstanding IO commands in txcmplq. The iocbs in
+the txcmplq is not guaranteed to complete before the return of this
+function. The caller is not required to hold any locks.
+
 .. _`lpfc_sli_flush_fcp_rings`:
 
 lpfc_sli_flush_fcp_rings
@@ -1836,6 +1931,29 @@ Description
 This function flushes all iocbs in the fcp ring and frees all the iocb
 objects in txq and txcmplq. This function will not issue abort iocbs
 for all the iocb commands in txcmplq, they will just be returned with
+IOERR_SLI_DOWN. This function is invoked with EEH when device's PCI
+slot has been permanently disabled.
+
+.. _`lpfc_sli_flush_nvme_rings`:
+
+lpfc_sli_flush_nvme_rings
+=========================
+
+.. c:function:: void lpfc_sli_flush_nvme_rings(struct lpfc_hba *phba)
+
+    flush all wqes in the nvme rings
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+.. _`lpfc_sli_flush_nvme_rings.description`:
+
+Description
+-----------
+
+This function flushes all wqes in the nvme rings and frees all resources
+in the txcmplq. This function does not issue abort wqes for the IO
+commands in txcmplq, they will just be returned with
 IOERR_SLI_DOWN. This function is invoked with EEH when device's PCI
 slot has been permanently disabled.
 
@@ -2223,7 +2341,7 @@ lpfc_sli_config_port
 Description
 -----------
 
-This function is called by the sli intialization code path
+This function is called by the sli initialization code path
 to issue config_port mailbox command. This function restarts the
 HBA firmware and issues a config_port mailbox command to configure
 the SLI interface in the sli mode specified by sli_mode
@@ -2238,7 +2356,7 @@ lpfc_sli_hba_setup
 
 .. c:function:: int lpfc_sli_hba_setup(struct lpfc_hba *phba)
 
-    SLI intialization function
+    SLI initialization function
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
@@ -2248,8 +2366,8 @@ lpfc_sli_hba_setup
 Description
 -----------
 
-This function is the main SLI intialization function. This function
-is called by the HBA intialization code, HBA reset code and HBA
+This function is the main SLI initialization function. This function
+is called by the HBA initialization code, HBA reset code and HBA
 error attention handler code. Caller is not required to hold any
 locks. This function issues config_port mailbox command to configure
 the SLI, setup iocb rings and HBQ rings. In the end the function
@@ -2576,32 +2694,38 @@ Description
 This function calls the port to read the host allocated extents
 for a particular type.
 
-.. _`lpfc_sli4_repost_els_sgl_list`:
+.. _`lpfc_sli4_repost_sgl_list`:
 
-lpfc_sli4_repost_els_sgl_list
-=============================
+lpfc_sli4_repost_sgl_list
+=========================
 
-.. c:function:: int lpfc_sli4_repost_els_sgl_list(struct lpfc_hba *phba)
+.. c:function:: int lpfc_sli4_repost_sgl_list(struct lpfc_hba *phba, struct list_head *sgl_list, int cnt)
 
-    Repsot the els buffers sgl pages as block
+    Repost the buffers sgl pages as block
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
 
-.. _`lpfc_sli4_repost_els_sgl_list.description`:
+    :param struct list_head \*sgl_list:
+        linked link of sgl buffers to post
+
+    :param int cnt:
+        number of linked list buffers
+
+.. _`lpfc_sli4_repost_sgl_list.description`:
 
 Description
 -----------
 
-This routine walks the list of els buffers that have been allocated and
+This routine walks the list of buffers that have been allocated and
 repost them to the port by using SGL block post. This is needed after a
 pci_function_reset/warm_start or start. It attempts to construct blocks
-of els buffer sgls which contains contiguous xris and uses the non-embedded
-SGL block post mailbox commands to post them to the port. For single els
+of buffer sgls which contains contiguous xris and uses the non-embedded
+SGL block post mailbox commands to post them to the port. For single
 buffer sgl with non-contiguous xri, if any, it shall use embedded SGL post
 mailbox command for posting.
 
-.. _`lpfc_sli4_repost_els_sgl_list.return`:
+.. _`lpfc_sli4_repost_sgl_list.return`:
 
 Return
 ------
@@ -2615,7 +2739,7 @@ lpfc_sli4_hba_setup
 
 .. c:function:: int lpfc_sli4_hba_setup(struct lpfc_hba *phba)
 
-    SLI4 device intialization PCI function
+    SLI4 device initialization PCI function
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
@@ -2625,8 +2749,8 @@ lpfc_sli4_hba_setup
 Description
 -----------
 
-This function is the main SLI4 device intialization PCI function. This
-function is called by the HBA intialization code, HBA reset code and
+This function is the main SLI4 device initialization PCI function. This
+function is called by the HBA initialization code, HBA reset code and
 HBA error attention handler code. Caller is not required to hold any
 locks.
 
@@ -3257,33 +3381,30 @@ Return
 
 0 - success, -ENODEV - failure.
 
-.. _`lpfc_sli_calc_ring`:
+.. _`lpfc_sli4_calc_ring`:
 
-lpfc_sli_calc_ring
-==================
+lpfc_sli4_calc_ring
+===================
 
-.. c:function:: int lpfc_sli_calc_ring(struct lpfc_hba *phba, uint32_t ring_number, struct lpfc_iocbq *piocb)
+.. c:function:: struct lpfc_sli_ring *lpfc_sli4_calc_ring(struct lpfc_hba *phba, struct lpfc_iocbq *piocb)
 
     Calculates which ring to use
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-    :param uint32_t ring_number:
-        Initial ring
-
     :param struct lpfc_iocbq \*piocb:
         Pointer to command iocb.
 
-.. _`lpfc_sli_calc_ring.description`:
+.. _`lpfc_sli4_calc_ring.description`:
 
 Description
 -----------
 
-For SLI4, FCP IO can deferred to one fo many WQs, based on
-fcp_wqidx, thus we need to calculate the corresponding ring.
+For SLI4 only, FCP IO can deferred to one fo many WQs, based on
+hba_wqidx, thus we need to calculate the corresponding ring.
 Since ABORTS must go on the same WQ of the command they are
-aborting, we use command's fcp_wqidx.
+aborting, we use command's hba_wqidx.
 
 .. _`lpfc_sli_issue_iocb`:
 
@@ -3339,7 +3460,7 @@ HBA to setup the extra ring. The extra ring is used
 only when driver needs to support target mode functionality
 or IP over FC functionalities.
 
-This function is called with no lock held.
+This function is called with no lock held. SLI3 only.
 
 .. _`lpfc_sli_async_event_handler`:
 
@@ -3371,6 +3492,30 @@ Currently this function handles only temperature related
 ASYNC events. The function decodes the temperature sensor
 event message and posts events for the management applications.
 
+.. _`lpfc_sli4_setup`:
+
+lpfc_sli4_setup
+===============
+
+.. c:function:: int lpfc_sli4_setup(struct lpfc_hba *phba)
+
+    SLI ring setup function
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+.. _`lpfc_sli4_setup.description`:
+
+Description
+-----------
+
+lpfc_sli_setup sets up rings of the SLI interface with
+number of iocbs per ring and iotags. This function is
+called while driver attach to the HBA and before the
+interrupts are enabled. So there is no need for locking.
+
+This function always returns 0.
+
 .. _`lpfc_sli_setup`:
 
 lpfc_sli_setup
@@ -3393,26 +3538,50 @@ number of iocbs per ring and iotags. This function is
 called while driver attach to the HBA and before the
 interrupts are enabled. So there is no need for locking.
 
-This function always returns 0.
+This function always returns 0. SLI3 only.
 
-.. _`lpfc_sli_queue_setup`:
+.. _`lpfc_sli4_queue_init`:
 
-lpfc_sli_queue_setup
+lpfc_sli4_queue_init
 ====================
 
-.. c:function:: int lpfc_sli_queue_setup(struct lpfc_hba *phba)
+.. c:function:: void lpfc_sli4_queue_init(struct lpfc_hba *phba)
 
     Queue initialization function
 
     :param struct lpfc_hba \*phba:
         Pointer to HBA context object.
 
-.. _`lpfc_sli_queue_setup.description`:
+.. _`lpfc_sli4_queue_init.description`:
 
 Description
 -----------
 
-lpfc_sli_queue_setup sets up mailbox queues and iocb queues for each
+lpfc_sli4_queue_init sets up mailbox queues and iocb queues for each
+ring. This function also initializes ring indices of each ring.
+This function is called during the initialization of the SLI
+interface of an HBA.
+This function is called with no lock held and always returns
+1.
+
+.. _`lpfc_sli_queue_init`:
+
+lpfc_sli_queue_init
+===================
+
+.. c:function:: void lpfc_sli_queue_init(struct lpfc_hba *phba)
+
+    Queue initialization function
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+.. _`lpfc_sli_queue_init.description`:
+
+Description
+-----------
+
+lpfc_sli_queue_init sets up mailbox queues and iocb queues for each
 ring. This function also initializes ring indices of each ring.
 This function is called during the initialization of the SLI
 interface of an HBA.
@@ -3801,6 +3970,35 @@ ring. Instead, the callback function shall be changed to those commands
 so that nothing happens when them finishes. This function is called with
 hbalock held. The function returns 0 when the command iocb is an abort
 request.
+
+.. _`lpfc_sli4_abort_nvme_io`:
+
+lpfc_sli4_abort_nvme_io
+=======================
+
+.. c:function:: int lpfc_sli4_abort_nvme_io(struct lpfc_hba *phba, struct lpfc_sli_ring *pring, struct lpfc_iocbq *cmdiocb)
+
+    Issue abort for a command iocb
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param struct lpfc_sli_ring \*pring:
+        Pointer to driver SLI ring object.
+
+    :param struct lpfc_iocbq \*cmdiocb:
+        Pointer to driver command iocb object.
+
+.. _`lpfc_sli4_abort_nvme_io.description`:
+
+Description
+-----------
+
+This function issues an abort iocb for the provided command iocb down to
+the port. Other than the case the outstanding command iocb is an abort
+request, this function issues abort out unconditionally. This function is
+called with hbalock held. The function returns 0 when it fails due to
+memory allocation failure or when the command iocb is an abort request.
 
 .. _`lpfc_sli_hba_iocb_abort`:
 
@@ -4429,6 +4627,26 @@ Description
 This routine is invoked by the worker thread to process all the pending
 SLI4 FCP abort XRI events.
 
+.. _`lpfc_sli4_nvme_xri_abort_event_proc`:
+
+lpfc_sli4_nvme_xri_abort_event_proc
+===================================
+
+.. c:function:: void lpfc_sli4_nvme_xri_abort_event_proc(struct lpfc_hba *phba)
+
+    Process nvme xri abort event
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_sli4_nvme_xri_abort_event_proc.description`:
+
+Description
+-----------
+
+This routine is invoked by the worker thread to process all the pending
+SLI4 NVME abort XRI events.
+
 .. _`lpfc_sli4_els_xri_abort_event_proc`:
 
 lpfc_sli4_els_xri_abort_event_proc
@@ -4653,7 +4871,7 @@ lpfc_sli4_sp_handle_rel_wcqe
 Description
 -----------
 
-This routine handles slow-path WQ entry comsumed event by invoking the
+This routine handles slow-path WQ entry consumed event by invoking the
 proper WQ release routine to the slow-path WQ.
 
 .. _`lpfc_sli4_sp_handle_abort_xri_wcqe`:
@@ -4829,15 +5047,47 @@ lpfc_sli4_fp_handle_rel_wcqe
 Description
 -----------
 
-This routine handles an fast-path WQ entry comsumed event by invoking the
+This routine handles an fast-path WQ entry consumed event by invoking the
 proper WQ release routine to the slow-path WQ.
 
-.. _`lpfc_sli4_fp_handle_wcqe`:
+.. _`lpfc_sli4_nvmet_handle_rcqe`:
 
-lpfc_sli4_fp_handle_wcqe
-========================
+lpfc_sli4_nvmet_handle_rcqe
+===========================
 
-.. c:function:: int lpfc_sli4_fp_handle_wcqe(struct lpfc_hba *phba, struct lpfc_queue *cq, struct lpfc_cqe *cqe)
+.. c:function:: bool lpfc_sli4_nvmet_handle_rcqe(struct lpfc_hba *phba, struct lpfc_queue *cq, struct lpfc_rcqe *rcqe)
+
+    Process a receive-queue completion queue entry
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param struct lpfc_queue \*cq:
+        *undescribed*
+
+    :param struct lpfc_rcqe \*rcqe:
+        Pointer to receive-queue completion queue entry.
+
+.. _`lpfc_sli4_nvmet_handle_rcqe.description`:
+
+Description
+-----------
+
+This routine process a receive-queue completion queue entry.
+
+.. _`lpfc_sli4_nvmet_handle_rcqe.return`:
+
+Return
+------
+
+true if work posted to worker thread, otherwise false.
+
+.. _`lpfc_sli4_fp_handle_cqe`:
+
+lpfc_sli4_fp_handle_cqe
+=======================
+
+.. c:function:: int lpfc_sli4_fp_handle_cqe(struct lpfc_hba *phba, struct lpfc_queue *cq, struct lpfc_cqe *cqe)
 
     Process fast-path work queue completion entry
 
@@ -4850,7 +5100,7 @@ lpfc_sli4_fp_handle_wcqe
     :param struct lpfc_cqe \*cqe:
         *undescribed*
 
-.. _`lpfc_sli4_fp_handle_wcqe.description`:
+.. _`lpfc_sli4_fp_handle_cqe.description`:
 
 Description
 -----------
@@ -5096,12 +5346,12 @@ This function shall perform iomap of the specified PCI BAR address to host
 memory address if not already done so and return it. The returned host
 memory address can be NULL.
 
-.. _`lpfc_modify_fcp_eq_delay`:
+.. _`lpfc_modify_hba_eq_delay`:
 
-lpfc_modify_fcp_eq_delay
+lpfc_modify_hba_eq_delay
 ========================
 
-.. c:function:: int lpfc_modify_fcp_eq_delay(struct lpfc_hba *phba, uint32_t startq)
+.. c:function:: int lpfc_modify_hba_eq_delay(struct lpfc_hba *phba, uint32_t startq)
 
     Modify Delay Multiplier on FCP EQs
 
@@ -5111,12 +5361,14 @@ lpfc_modify_fcp_eq_delay
     :param uint32_t startq:
         The starting FCP EQ to modify
 
-.. _`lpfc_modify_fcp_eq_delay.description`:
+.. _`lpfc_modify_hba_eq_delay.description`:
 
 Description
 -----------
 
 This function sends an MODIFY_EQ_DELAY mailbox command to the HBA.
+The command allows up to LPFC_MAX_EQ_DELAY_EQID_CNT EQ ID's to be
+updated in one mailbox command.
 
 The \ ``phba``\  struct is used to send mailbox command to HBA. The \ ``startq``\ 
 is used to get the starting FCP EQ to change.
@@ -5201,6 +5453,51 @@ is used to get the entry count and entry size that are necessary to
 determine the number of pages to allocate and use for this queue. The \ ``eq``\ 
 is used to indicate which event queue to bind this completion queue to. This
 function will send the CQ_CREATE mailbox command to the HBA to setup the
+completion queue. This function is asynchronous and will wait for the mailbox
+command to finish before continuing.
+
+On success this function will return a zero. If unable to allocate enough
+memory this function will return -ENOMEM. If the queue create mailbox command
+fails this function will return -ENXIO.
+
+.. _`lpfc_cq_create_set`:
+
+lpfc_cq_create_set
+==================
+
+.. c:function:: int lpfc_cq_create_set(struct lpfc_hba *phba, struct lpfc_queue **cqp, struct lpfc_queue **eqp, uint32_t type, uint32_t subtype)
+
+    Create a set of Completion Queues on the HBA for MRQ
+
+    :param struct lpfc_hba \*phba:
+        HBA structure that indicates port to create a queue on.
+
+    :param struct lpfc_queue \*\*cqp:
+        The queue structure array to use to create the completion queues.
+
+    :param struct lpfc_queue \*\*eqp:
+        The event queue array to bind these completion queues to.
+
+    :param uint32_t type:
+        *undescribed*
+
+    :param uint32_t subtype:
+        *undescribed*
+
+.. _`lpfc_cq_create_set.description`:
+
+Description
+-----------
+
+This function creates a set of  completion queue, s to support MRQ
+as detailed in \ ``cqp``\ , on a port,
+described by \ ``phba``\  by sending a CREATE_CQ_SET mailbox command to the HBA.
+
+The \ ``phba``\  struct is used to send mailbox command to HBA. The \ ``cq``\  struct
+is used to get the entry count and entry size that are necessary to
+determine the number of pages to allocate and use for this queue. The \ ``eq``\ 
+is used to indicate which event queue to bind this completion queue to. This
+function will send the CREATE_CQ_SET mailbox command to the HBA to setup the
 completion queue. This function is asynchronous and will wait for the mailbox
 command to finish before continuing.
 
@@ -5374,6 +5671,51 @@ lpfc_rq_create
         *undescribed*
 
 .. _`lpfc_rq_create.description`:
+
+Description
+-----------
+
+This function creates a receive buffer queue pair , as detailed in \ ``hrq``\  and
+\ ``drq``\ , on a port, described by \ ``phba``\  by sending a RQ_CREATE mailbox command
+to the HBA.
+
+The \ ``phba``\  struct is used to send mailbox command to HBA. The \ ``drq``\  and \ ``hrq``\ 
+struct is used to get the entry count that is necessary to determine the
+number of pages to use for this queue. The \ ``cq``\  is used to indicate which
+completion queue to bind received buffers that are posted to these queues to.
+This function will send the RQ_CREATE mailbox command to the HBA to setup the
+receive queue pair. This function is asynchronous and will wait for the
+mailbox command to finish before continuing.
+
+On success this function will return a zero. If unable to allocate enough
+memory this function will return -ENOMEM. If the queue create mailbox command
+fails this function will return -ENXIO.
+
+.. _`lpfc_mrq_create`:
+
+lpfc_mrq_create
+===============
+
+.. c:function:: int lpfc_mrq_create(struct lpfc_hba *phba, struct lpfc_queue **hrqp, struct lpfc_queue **drqp, struct lpfc_queue **cqp, uint32_t subtype)
+
+    Create MRQ Receive Queues on the HBA
+
+    :param struct lpfc_hba \*phba:
+        HBA structure that indicates port to create a queue on.
+
+    :param struct lpfc_queue \*\*hrqp:
+        The queue structure array to use to create the header receive queues.
+
+    :param struct lpfc_queue \*\*drqp:
+        The queue structure array to use to create the data receive queues.
+
+    :param struct lpfc_queue \*\*cqp:
+        The completion queue array to bind these receive queues to.
+
+    :param uint32_t subtype:
+        *undescribed*
+
+.. _`lpfc_mrq_create.description`:
 
 Description
 -----------
@@ -5677,12 +6019,12 @@ The function returns the allocated xritag if successful, else returns zero.
 Zero is not a valid xritag.
 The caller is not required to hold any lock.
 
-.. _`lpfc_sli4_post_els_sgl_list`:
+.. _`lpfc_sli4_post_sgl_list`:
 
-lpfc_sli4_post_els_sgl_list
-===========================
+lpfc_sli4_post_sgl_list
+=======================
 
-.. c:function:: int lpfc_sli4_post_els_sgl_list(struct lpfc_hba *phba, struct list_head *post_sgl_list, int post_cnt)
+.. c:function:: int lpfc_sli4_post_sgl_list(struct lpfc_hba *phba, struct list_head *post_sgl_list, int post_cnt)
 
     post a block of ELS sgls to the port.
 
@@ -5695,7 +6037,7 @@ lpfc_sli4_post_els_sgl_list
     :param int post_cnt:
         *undescribed*
 
-.. _`lpfc_sli4_post_els_sgl_list.description`:
+.. _`lpfc_sli4_post_sgl_list.description`:
 
 Description
 -----------
@@ -5783,7 +6125,7 @@ or 0 if no VSAN Header exists.
 lpfc_fc_frame_to_vport
 ======================
 
-.. c:function:: struct lpfc_vport *lpfc_fc_frame_to_vport(struct lpfc_hba *phba, struct fc_frame_header *fc_hdr, uint16_t fcfi)
+.. c:function:: struct lpfc_vport *lpfc_fc_frame_to_vport(struct lpfc_hba *phba, struct fc_frame_header *fc_hdr, uint16_t fcfi, uint32_t did)
 
     Finds the vport that a frame is destined to
 
@@ -5795,6 +6137,9 @@ lpfc_fc_frame_to_vport
 
     :param uint16_t fcfi:
         The FC Fabric ID that the frame came from
+
+    :param uint32_t did:
+        *undescribed*
 
 .. _`lpfc_fc_frame_to_vport.description`:
 
@@ -6146,8 +6491,7 @@ Description
 This function is called with no lock held. This function processes all
 the received buffers and gives it to upper layers when a received buffer
 indicates that it is the final frame in the sequence. The interrupt
-service routine processes received buffers at interrupt contexts and adds
-received dma buffers to the rb_pend_list queue and signals the worker thread.
+service routine processes received buffers at interrupt contexts.
 Worker thread calls lpfc_sli4_handle_received_buffer, which will call the
 appropriate receive function when the final frame in a sequence is received.
 
@@ -6822,6 +7166,58 @@ to the adapter.  For SLI4 adapters, the txq contains
 ELS IOCBs that have been deferred because the there
 are no SGLs.  This congestion can occur with large
 vport counts during node discovery.
+
+.. _`lpfc_wqe_bpl2sgl`:
+
+lpfc_wqe_bpl2sgl
+================
+
+.. c:function:: uint16_t lpfc_wqe_bpl2sgl(struct lpfc_hba *phba, struct lpfc_iocbq *pwqeq, struct lpfc_sglq *sglq)
+
+    Convert the bpl/bde to a sgl.
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param struct lpfc_iocbq \*pwqeq:
+        *undescribed*
+
+    :param struct lpfc_sglq \*sglq:
+        Pointer to the scatter gather queue object.
+
+.. _`lpfc_wqe_bpl2sgl.description`:
+
+Description
+-----------
+
+This routine converts the bpl or bde that is in the WQE
+to a sgl list for the sli4 hardware. The physical address
+of the bpl/bde is converted back to a virtual address.
+If the WQE contains a BPL then the list of BDE's is
+converted to sli4_sge's. If the WQE contains a single
+BDE then it is converted to a single sli_sge.
+The WQE is still in cpu endianness so the contents of
+the bpl can be used without byte swapping.
+
+Returns valid XRI = Success, NO_XRI = Failure.
+
+.. _`lpfc_sli4_issue_wqe`:
+
+lpfc_sli4_issue_wqe
+===================
+
+.. c:function:: int lpfc_sli4_issue_wqe(struct lpfc_hba *phba, uint32_t ring_number, struct lpfc_iocbq *pwqe)
+
+    Issue an SLI4 Work Queue Entry (WQE)
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+    :param uint32_t ring_number:
+        Base sli ring number
+
+    :param struct lpfc_iocbq \*pwqe:
+        Pointer to command WQE.
 
 .. This file was automatic generated / don't edit.
 

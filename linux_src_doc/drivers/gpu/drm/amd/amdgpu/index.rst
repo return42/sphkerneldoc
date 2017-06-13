@@ -32,6 +32,8 @@ amdgpu
     amdgpu_sync_c
     amdgpu_uvd_c
     amdgpu_vce_c
+    amdgpu_virt_c
+    amdgpu_virt_h
     amdgpu_vm_c
     amdgpu_vram_mgr_c
     ci_dpm_c
@@ -47,17 +49,24 @@ amdgpu
     gfx_v6_0_c
     gfx_v7_0_c
     gfx_v8_0_c
+    gfxhub_v1_0_c
     gmc_v7_0_c
     gmc_v8_0_c
+    gmc_v9_0_c
     iceland_ih_c
+    mmhub_v1_0_c
     sdma_v2_4_c
     sdma_v3_0_c
+    sdma_v4_0_c
     si_dma_c
     si_dpm_c
     tonga_ih_c
     uvd_v4_2_c
     uvd_v5_0_c
     uvd_v6_0_c
+    uvd_v7_0_c
     vce_v2_0_c
     vce_v3_0_c
+    vce_v4_0_c
+    vega10_ih_c
     vi_c

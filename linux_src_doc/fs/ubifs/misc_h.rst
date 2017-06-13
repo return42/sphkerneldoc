@@ -287,18 +287,6 @@ ubifs_idx_key
     :param const struct ubifs_idx_node \*idx:
         index node
 
-.. _`ubifs_current_time`:
-
-ubifs_current_time
-==================
-
-.. c:function:: struct timespec ubifs_current_time(struct inode *inode)
-
-    round current time to time granularity.
-
-    :param struct inode \*inode:
-        inode
-
 .. _`ubifs_tnc_lookup`:
 
 ubifs_tnc_lookup

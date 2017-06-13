@@ -75,9 +75,14 @@ Definition
 
     struct vmw_screen_target_display_unit {
         struct vmw_display_unit base;
-        struct vmw_surface *display_srf;
+        const struct vmw_surface *display_srf;
         enum stdu_content_type content_fb_type;
+        s32 display_width;
+        s32 display_height;
         bool defined;
+        struct ttm_bo_kmap_obj host_map;
+        struct ttm_bo_kmap_obj guest_map;
+        unsigned int cpp;
     }
 
 .. _`vmw_screen_target_display_unit.members`:
@@ -98,30 +103,23 @@ display_srf
 content_fb_type
     *undescribed*
 
+display_width
+    *undescribed*
+
+display_height
+    *undescribed*
+
 defined
     true if the current display unit has been initialized
 
-.. _`vmw_stdu_unpin_display`:
+host_map
+    *undescribed*
 
-vmw_stdu_unpin_display
-======================
+guest_map
+    *undescribed*
 
-.. c:function:: void vmw_stdu_unpin_display(struct vmw_screen_target_display_unit *stdu)
-
-    unpins the resource associated with display surface
-
-    :param struct vmw_screen_target_display_unit \*stdu:
-        contains the display surface
-
-.. _`vmw_stdu_unpin_display.description`:
-
-Description
------------
-
-If the display surface was privatedly allocated by
-\ :c:func:`vmw_surface_gb_priv_define`\  and not registered as a framebuffer, then it
-won't be automatically cleaned up when all the framebuffers are freed.  As
-such, we have to explicitly call \ :c:func:`vmw_resource_unreference`\  to get it freed.
+cpp
+    *undescribed*
 
 .. _`vmw_stdu_crtc_destroy`:
 
@@ -179,7 +177,7 @@ Return
 vmw_stdu_bind_st
 ================
 
-.. c:function:: int vmw_stdu_bind_st(struct vmw_private *dev_priv, struct vmw_screen_target_display_unit *stdu, struct vmw_resource *res)
+.. c:function:: int vmw_stdu_bind_st(struct vmw_private *dev_priv, struct vmw_screen_target_display_unit *stdu, const struct vmw_resource *res)
 
     Binds a surface to a Screen Target
 
@@ -189,7 +187,7 @@ vmw_stdu_bind_st
     :param struct vmw_screen_target_display_unit \*stdu:
         display unit affected
 
-    :param struct vmw_resource \*res:
+    :param const struct vmw_resource \*res:
         Buffer to bind to the screen target.  Set to NULL to blank screen.
 
 .. _`vmw_stdu_bind_st.description`:
@@ -272,68 +270,31 @@ vmw_stdu_destroy_st
     :param struct vmw_screen_target_display_unit \*stdu:
         display unit to destroy
 
-.. _`vmw_stdu_bind_fb`:
+.. _`vmw_stdu_crtc_mode_set_nofb`:
 
-vmw_stdu_bind_fb
-================
+vmw_stdu_crtc_mode_set_nofb
+===========================
 
-.. c:function:: int vmw_stdu_bind_fb(struct vmw_private *dev_priv, struct drm_crtc *crtc, struct drm_display_mode *mode, struct drm_framebuffer *new_fb)
+.. c:function:: void vmw_stdu_crtc_mode_set_nofb(struct drm_crtc *crtc)
 
-    Bind an fb to a defined screen target
-
-    :param struct vmw_private \*dev_priv:
-        Pointer to a device private struct.
+    Updates screen target size
 
     :param struct drm_crtc \*crtc:
-        The crtc holding the screen target.
+        CRTC associated with the screen target
 
-    :param struct drm_display_mode \*mode:
-        The mode currently used by the screen target. Must be non-NULL.
-
-    :param struct drm_framebuffer \*new_fb:
-        The new framebuffer to bind. Must be non-NULL.
-
-.. _`vmw_stdu_bind_fb.return`:
-
-Return
-------
-
-0 on success, error code on failure.
-
-.. _`vmw_stdu_crtc_set_config`:
-
-vmw_stdu_crtc_set_config
-========================
-
-.. c:function:: int vmw_stdu_crtc_set_config(struct drm_mode_set *set)
-
-    Sets a mode
-
-    :param struct drm_mode_set \*set:
-        mode parameters
-
-.. _`vmw_stdu_crtc_set_config.description`:
+.. _`vmw_stdu_crtc_mode_set_nofb.description`:
 
 Description
 -----------
 
-This function is the device-specific portion of the DRM CRTC mode set.
-For the SVGA device, we do this by defining a Screen Target, binding a
-GB Surface to that target, and finally update the screen target.
-
-.. _`vmw_stdu_crtc_set_config.return`:
-
-Return
-------
-
-0 on success, error code otherwise
+This function defines/destroys a screen target
 
 .. _`vmw_stdu_crtc_page_flip`:
 
 vmw_stdu_crtc_page_flip
 =======================
 
-.. c:function:: int vmw_stdu_crtc_page_flip(struct drm_crtc *crtc, struct drm_framebuffer *new_fb, struct drm_pending_vblank_event *event, uint32_t flags)
+.. c:function:: int vmw_stdu_crtc_page_flip(struct drm_crtc *crtc, struct drm_framebuffer *new_fb, struct drm_pending_vblank_event *event, uint32_t flags, struct drm_modeset_acquire_ctx *ctx)
 
     Binds a buffer to a screen target
 
@@ -348,6 +309,9 @@ vmw_stdu_crtc_page_flip
         using k[mz]alloc, and should've been completely initialized.
 
     :param uint32_t flags:
+        *undescribed*
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
         *undescribed*
 
 .. _`vmw_stdu_crtc_page_flip.description`:
@@ -408,6 +372,45 @@ Description
 
 Fills in the missing fields in a DMA command, and optionally encodes
 a screen target update command, depending on transfer direction.
+
+.. _`vmw_stdu_dmabuf_cpu_clip`:
+
+vmw_stdu_dmabuf_cpu_clip
+========================
+
+.. c:function:: void vmw_stdu_dmabuf_cpu_clip(struct vmw_kms_dirty *dirty)
+
+    Callback to encode a CPU blit
+
+    :param struct vmw_kms_dirty \*dirty:
+        The closure structure.
+
+.. _`vmw_stdu_dmabuf_cpu_clip.description`:
+
+Description
+-----------
+
+This function calculates the bounding box for all the incoming clips
+
+.. _`vmw_stdu_dmabuf_cpu_commit`:
+
+vmw_stdu_dmabuf_cpu_commit
+==========================
+
+.. c:function:: void vmw_stdu_dmabuf_cpu_commit(struct vmw_kms_dirty *dirty)
+
+    Callback to do a CPU blit from DMAbuf
+
+    :param struct vmw_kms_dirty \*dirty:
+        The closure structure.
+
+.. _`vmw_stdu_dmabuf_cpu_commit.description`:
+
+Description
+-----------
+
+For the special case when we cannot create a proxy surface in a
+2D VM, we have to do a CPU blit ourselves.
 
 .. _`vmw_kms_stdu_dma`:
 
@@ -596,6 +599,81 @@ vmwgfx cleans up crtc/encoder/connector all at the same time so technically
 this can be a no-op.  Nevertheless, it doesn't hurt of have this in case
 the common KMS code changes and somehow \ :c:func:`vmw_stdu_crtc_destroy`\  doesn't
 get called.
+
+.. _`vmw_stdu_primary_plane_cleanup_fb`:
+
+vmw_stdu_primary_plane_cleanup_fb
+=================================
+
+.. c:function:: void vmw_stdu_primary_plane_cleanup_fb(struct drm_plane *plane, struct drm_plane_state *old_state)
+
+    Unpins the display surface
+
+    :param struct drm_plane \*plane:
+        display plane
+
+    :param struct drm_plane_state \*old_state:
+        Contains the FB to clean up
+
+.. _`vmw_stdu_primary_plane_cleanup_fb.description`:
+
+Description
+-----------
+
+Unpins the display surface
+
+Returns 0 on success
+
+.. _`vmw_stdu_primary_plane_prepare_fb`:
+
+vmw_stdu_primary_plane_prepare_fb
+=================================
+
+.. c:function:: int vmw_stdu_primary_plane_prepare_fb(struct drm_plane *plane, struct drm_plane_state *new_state)
+
+    Readies the display surface
+
+    :param struct drm_plane \*plane:
+        display plane
+
+    :param struct drm_plane_state \*new_state:
+        info on the new plane state, including the FB
+
+.. _`vmw_stdu_primary_plane_prepare_fb.description`:
+
+Description
+-----------
+
+This function allocates a new display surface if the content is
+backed by a DMA.  The display surface is pinned here, and it'll
+be unpinned in .cleanup_fb()
+
+Returns 0 on success
+
+.. _`vmw_stdu_primary_plane_atomic_update`:
+
+vmw_stdu_primary_plane_atomic_update
+====================================
+
+.. c:function:: void vmw_stdu_primary_plane_atomic_update(struct drm_plane *plane, struct drm_plane_state *old_state)
+
+    formally switches STDU to new plane
+
+    :param struct drm_plane \*plane:
+        display plane
+
+    :param struct drm_plane_state \*old_state:
+        Only used to get crtc info
+
+.. _`vmw_stdu_primary_plane_atomic_update.description`:
+
+Description
+-----------
+
+Formally update stdu->display_srf to the new plane, and bind the new
+plane STDU.  This function is called during the commit phase when
+all the preparation have been done and all the configurations have
+been checked.
 
 .. _`vmw_stdu_init`:
 

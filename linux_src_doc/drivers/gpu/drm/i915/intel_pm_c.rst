@@ -294,10 +294,10 @@ Description
 -----------
 
 Keep resending the \ ``request``\  to \ ``mbox``\  until PCODE acknowledges it, PCODE
-reports an error or an overall timeout of \ ``timeout_base_ms``\ +10 ms expires.
+reports an error or an overall timeout of \ ``timeout_base_ms``\ +50 ms expires.
 The request is acknowledged once the PCODE reply dword equals \ ``reply``\  after
 applying \ ``reply_mask``\ . Polling is first attempted with preemption enabled
-for \ ``timeout_base_ms``\  and if this times out for another 10 ms with
+for \ ``timeout_base_ms``\  and if this times out for another 50 ms with
 preemption disabled.
 
 Returns 0 on success, \ ``-ETIMEDOUT``\  in case of a timeout, <0 in case of some

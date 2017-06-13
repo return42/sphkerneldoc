@@ -20,25 +20,17 @@ Description
 
 Free OPPs created using static entries present in DT.
 
-.. _`dev_pm_opp_of_remove_table.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function indirectly uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
-
 .. _`_opp_add_static_v2`:
 
 _opp_add_static_v2
 ==================
 
-.. c:function:: int _opp_add_static_v2(struct device *dev, struct device_node *np)
+.. c:function:: int _opp_add_static_v2(struct opp_table *opp_table, struct device *dev, struct device_node *np)
 
     Allocate static OPPs (As per 'v2' DT bindings)
+
+    :param struct opp_table \*opp_table:
+        OPP table
 
     :param struct device \*dev:
         device for which we do this operation
@@ -54,17 +46,6 @@ Description
 This function adds an opp definition to the opp table and returns status. The
 opp can be controlled using dev_pm_opp_enable/disable functions and may be
 removed by dev_pm_opp_remove.
-
-.. _`_opp_add_static_v2.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
 
 .. _`_opp_add_static_v2.return`:
 
@@ -96,17 +77,6 @@ Description
 -----------
 
 Register the initial OPP table with the OPP library for given device.
-
-.. _`dev_pm_opp_of_add_table.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function indirectly uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
 
 .. _`dev_pm_opp_of_add_table.return`:
 
@@ -143,17 +113,6 @@ Description
 This removes the OPP tables for CPUs present in the \ ``cpumask``\ .
 This should be used only to remove static entries created from DT.
 
-.. _`dev_pm_opp_of_cpumask_remove_table.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
-
 .. _`dev_pm_opp_of_cpumask_add_table`:
 
 dev_pm_opp_of_cpumask_add_table
@@ -172,17 +131,6 @@ Description
 -----------
 
 This adds the OPP tables for CPUs present in the \ ``cpumask``\ .
-
-.. _`dev_pm_opp_of_cpumask_add_table.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
 
 .. _`dev_pm_opp_of_get_sharing_cpus`:
 
@@ -207,17 +155,6 @@ Description
 This updates the \ ``cpumask``\  with CPUs that are sharing OPPs with \ ``cpu_dev``\ .
 
 Returns -ENOENT if operating-points-v2 isn't present for \ ``cpu_dev``\ .
-
-.. _`dev_pm_opp_of_get_sharing_cpus.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
 
 .. This file was automatic generated / don't edit.
 

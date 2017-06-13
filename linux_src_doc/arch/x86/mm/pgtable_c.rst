@@ -21,6 +21,50 @@ Description
 Can be used to relocate the fixmap area and poke a hole in the top
 of kernel address space to make room for a hypervisor.
 
+.. _`p4d_set_huge`:
+
+p4d_set_huge
+============
+
+.. c:function:: int p4d_set_huge(p4d_t *p4d, phys_addr_t addr, pgprot_t prot)
+
+    setup kernel P4D mapping
+
+    :param p4d_t \*p4d:
+        *undescribed*
+
+    :param phys_addr_t addr:
+        *undescribed*
+
+    :param pgprot_t prot:
+        *undescribed*
+
+.. _`p4d_set_huge.description`:
+
+Description
+-----------
+
+No 512GB pages yet -- always return 0
+
+.. _`p4d_clear_huge`:
+
+p4d_clear_huge
+==============
+
+.. c:function:: int p4d_clear_huge(p4d_t *p4d)
+
+    clear kernel P4D mapping when it is set
+
+    :param p4d_t \*p4d:
+        *undescribed*
+
+.. _`p4d_clear_huge.description`:
+
+Description
+-----------
+
+No 512GB pages yet -- always return 0
+
 .. _`pud_set_huge`:
 
 pud_set_huge

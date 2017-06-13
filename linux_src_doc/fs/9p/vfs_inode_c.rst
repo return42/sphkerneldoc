@@ -311,18 +311,21 @@ v9fs_vfs_rename
 v9fs_vfs_getattr
 ================
 
-.. c:function:: int v9fs_vfs_getattr(struct vfsmount *mnt, struct dentry *dentry, struct kstat *stat)
+.. c:function:: int v9fs_vfs_getattr(const struct path *path, struct kstat *stat, u32 request_mask, unsigned int flags)
 
     retrieve file metadata
 
-    :param struct vfsmount \*mnt:
-        mount information
-
-    :param struct dentry \*dentry:
-        file to get attributes on
+    :param const struct path \*path:
+        Object to query
 
     :param struct kstat \*stat:
         metadata structure to populate
+
+    :param u32 request_mask:
+        Mask of STATX_xxx flags indicating the caller's interests
+
+    :param unsigned int flags:
+        AT_STATX_xxx setting
 
 .. _`v9fs_vfs_setattr`:
 

@@ -31,6 +31,7 @@ Definition
         int (*detect)(struct i2c_client *, struct i2c_board_info *);
         const unsigned short *address_list;
         struct list_head clients;
+        bool disable_i2c_core_irq_mapping;
     }
 
 .. _`i2c_driver.members`:
@@ -76,6 +77,9 @@ address_list
 
 clients
     List of detected clients we created (for i2c-core use only)
+
+disable_i2c_core_irq_mapping
+    Tell the i2c-core to not do irq-mapping
 
 .. _`i2c_driver.description`:
 
@@ -197,6 +201,9 @@ Definition
         struct dev_archdata *archdata;
         struct device_node *of_node;
         struct fwnode_handle *fwnode;
+        const struct property_entry *properties;
+        const struct resource *resources;
+        unsigned int num_resources;
         int irq;
     }
 
@@ -225,6 +232,15 @@ of_node
 
 fwnode
     device node supplied by the platform firmware
+
+properties
+    additional device properties for the device
+
+resources
+    resources associated with the device
+
+num_resources
+    number of resources in the \ ``resources``\  array
 
 irq
     stored in i2c_client.irq

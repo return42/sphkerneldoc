@@ -15,6 +15,7 @@ batman-adv
     bitarray_c
     bitarray_h
     bridge_loop_avoidance_c
+    bridge_loop_avoidance_h
     debugfs_c
     distributed-arp-table_c
     distributed-arp-table_h

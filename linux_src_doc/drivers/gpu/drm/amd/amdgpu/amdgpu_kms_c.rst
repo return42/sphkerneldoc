@@ -6,7 +6,7 @@
 amdgpu_driver_unload_kms
 ========================
 
-.. c:function:: int amdgpu_driver_unload_kms(struct drm_device *dev)
+.. c:function:: void amdgpu_driver_unload_kms(struct drm_device *dev)
 
     Main unload function for KMS.
 
@@ -135,29 +135,6 @@ Description
 -----------
 
 On device post close, tear down vm on cayman+ (all asics).
-
-.. _`amdgpu_driver_preclose_kms`:
-
-amdgpu_driver_preclose_kms
-==========================
-
-.. c:function:: void amdgpu_driver_preclose_kms(struct drm_device *dev, struct drm_file *file_priv)
-
-    drm callback for pre close
-
-    :param struct drm_device \*dev:
-        drm dev pointer
-
-    :param struct drm_file \*file_priv:
-        drm file
-
-.. _`amdgpu_driver_preclose_kms.description`:
-
-Description
------------
-
-On device pre close, tear down hyperz and cmask filps on r1xx-r5xx
-(all asics).
 
 .. _`amdgpu_get_vblank_counter_kms`:
 

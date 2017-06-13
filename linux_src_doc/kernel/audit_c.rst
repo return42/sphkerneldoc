@@ -1,6 +1,92 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/audit.c
 
+.. _`audit_net`:
+
+struct audit_net
+================
+
+.. c:type:: struct audit_net
+
+    audit private network namespace data
+
+.. _`audit_net.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct audit_net {
+        struct sock *sk;
+    }
+
+.. _`audit_net.members`:
+
+Members
+-------
+
+sk
+    communication socket
+
+.. _`auditd_test_task`:
+
+auditd_test_task
+================
+
+.. c:function:: int auditd_test_task(struct task_struct *task)
+
+    Check to see if a given task is an audit daemon
+
+    :param struct task_struct \*task:
+        the task to check
+
+.. _`auditd_test_task.description`:
+
+Description
+-----------
+
+Return 1 if the task is a registered audit daemon, 0 otherwise.
+
+.. _`auditd_pid_vnr`:
+
+auditd_pid_vnr
+==============
+
+.. c:function:: pid_t auditd_pid_vnr( void)
+
+    Return the auditd PID relative to the namespace
+
+    :param  void:
+        no arguments
+
+.. _`auditd_pid_vnr.description`:
+
+Description
+-----------
+
+Returns the PID in relation to the namespace, 0 on failure.
+
+.. _`audit_get_sk`:
+
+audit_get_sk
+============
+
+.. c:function:: struct sock *audit_get_sk(const struct net *net)
+
+    Return the audit socket for the given network namespace
+
+    :param const struct net \*net:
+        the destination network namespace
+
+.. _`audit_get_sk.description`:
+
+Description
+-----------
+
+Returns the sock pointer if valid, NULL otherwise.  The caller must ensure
+that a reference is held for the network namespace while the sock is in use.
+
 .. _`audit_log_lost`:
 
 audit_log_lost
@@ -21,6 +107,92 @@ Description
 Emit at least 1 message per second, even if audit_rate_check is
 throttling.
 Always increment the lost messages counter.
+
+.. _`auditd_conn_free`:
+
+auditd_conn_free
+================
+
+.. c:function:: void auditd_conn_free(struct rcu_head *rcu)
+
+    RCU helper to release an auditd connection struct
+
+    :param struct rcu_head \*rcu:
+        RCU head
+
+.. _`auditd_conn_free.description`:
+
+Description
+-----------
+
+Drop any references inside the auditd connection tracking struct and free
+the memory.
+
+.. _`auditd_set`:
+
+auditd_set
+==========
+
+.. c:function:: int auditd_set(struct pid *pid, u32 portid, struct net *net)
+
+    Set/Reset the auditd connection state
+
+    :param struct pid \*pid:
+        auditd PID
+
+    :param u32 portid:
+        auditd netlink portid
+
+    :param struct net \*net:
+        auditd network namespace pointer
+
+.. _`auditd_set.description`:
+
+Description
+-----------
+
+This function will obtain and drop network namespace references as
+necessary.  Returns zero on success, negative values on failure.
+
+.. _`kauditd_printk_skb`:
+
+kauditd_printk_skb
+==================
+
+.. c:function:: void kauditd_printk_skb(struct sk_buff *skb)
+
+    Print the audit record to the ring buffer
+
+    :param struct sk_buff \*skb:
+        audit record
+
+.. _`kauditd_printk_skb.description`:
+
+Description
+-----------
+
+Whatever the reason, this packet may not make it to the auditd connection
+so write it via printk so the information isn't completely lost.
+
+.. _`kauditd_rehold_skb`:
+
+kauditd_rehold_skb
+==================
+
+.. c:function:: void kauditd_rehold_skb(struct sk_buff *skb)
+
+    Handle a audit record send failure in the hold queue
+
+    :param struct sk_buff \*skb:
+        audit record
+
+.. _`kauditd_rehold_skb.description`:
+
+Description
+-----------
+
+This should only be used by the kauditd_thread when it fails to flush the
+hold queue.
 
 .. _`kauditd_hold_skb`:
 
@@ -84,41 +256,79 @@ auditd_reset
 Description
 -----------
 
-Break the auditd/kauditd connection and move all the records in the retry
-queue into the hold queue in case auditd reconnects.  The audit_cmd_mutex
-must be held when calling this function.
+Break the auditd/kauditd connection and move all the queued records into the
+hold queue in case auditd reconnects.
 
-.. _`kauditd_send_unicast_skb`:
+.. _`auditd_send_unicast_skb`:
 
-kauditd_send_unicast_skb
-========================
+auditd_send_unicast_skb
+=======================
 
-.. c:function:: int kauditd_send_unicast_skb(struct sk_buff *skb)
+.. c:function:: int auditd_send_unicast_skb(struct sk_buff *skb)
 
     Send a record via unicast to auditd
 
     :param struct sk_buff \*skb:
         audit record
 
-.. _`kauditd_wake_condition`:
-
-kauditd_wake_condition
-======================
-
-.. c:function:: int kauditd_wake_condition( void)
-
-    Return true when it is time to wake kauditd_thread
-
-    :param  void:
-        no arguments
-
-.. _`kauditd_wake_condition.description`:
+.. _`auditd_send_unicast_skb.description`:
 
 Description
 -----------
 
-This function is for use by the \ :c:func:`wait_event_freezable`\  call in
-\ :c:func:`kauditd_thread`\ .
+Send a skb to the audit daemon, returns positive/zero values on success and
+negative values on failure; in all cases the skb will be consumed by this
+function.  If the send results in -ECONNREFUSED the connection with auditd
+will be reset.  This function may sleep so callers should not hold any locks
+where this would cause a problem.
+
+.. _`kauditd_send_queue`:
+
+kauditd_send_queue
+==================
+
+.. c:function:: int kauditd_send_queue(struct sock *sk, u32 portid, struct sk_buff_head *queue, unsigned int retry_limit, void (*skb_hook)(struct sk_buff *skb), void (*err_hook)(struct sk_buff *skb))
+
+    Helper for kauditd_thread to flush skb queues
+
+    :param struct sock \*sk:
+        the sending sock
+
+    :param u32 portid:
+        the netlink destination
+
+    :param struct sk_buff_head \*queue:
+        the skb queue to process
+
+    :param unsigned int retry_limit:
+        limit on number of netlink unicast failures
+
+    :param void (\*skb_hook)(struct sk_buff \*skb):
+        per-skb hook for additional processing
+
+    :param void (\*err_hook)(struct sk_buff \*skb):
+        hook called if the skb fails the netlink unicast send
+
+.. _`kauditd_send_queue.description`:
+
+Description
+-----------
+
+Run through the given queue and attempt to send the audit records to auditd,
+returns zero on success, negative values on failure.  It is up to the caller
+to ensure that the \ ``sk``\  is valid for the duration of this function.
+
+.. _`kauditd_thread`:
+
+kauditd_thread
+==============
+
+.. c:function:: int kauditd_thread(void *dummy)
+
+    Worker thread to send audit records to userspace
+
+    :param void \*dummy:
+        unused
 
 .. _`audit_send_reply`:
 
@@ -157,6 +367,26 @@ Description
 
 Allocates an skb, builds the netlink message, and sends it to the port id.
 No failure notifications.
+
+.. _`audit_receive`:
+
+audit_receive
+=============
+
+.. c:function:: void audit_receive(struct sk_buff *skb)
+
+    receive messages from a netlink control socket
+
+    :param struct sk_buff \*skb:
+        the message buffer
+
+.. _`audit_receive.description`:
+
+Description
+-----------
+
+Parse the provided skb and deal with any messages that may be present,
+malformed skbs are discarded.
 
 .. _`audit_serial`:
 
@@ -221,7 +451,7 @@ Returns audit_buffer pointer on success or NULL on error.
 
 Obtain an audit buffer.  This routine does locking to obtain the
 audit buffer, but then no locking is required for calls to
-audit_log\_\*format.  If the task (ctx) is a task that is currently in a
+audit_log_*format.  If the task (ctx) is a task that is currently in a
 syscall, then the syscall is marked as auditable and an audit record
 will be written at syscall exit.  If there is no associated task, then
 task context (ctx) should be NULL.

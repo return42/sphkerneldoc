@@ -344,5 +344,46 @@ Return
 PSR setup time for the panel in microseconds,  negative
 error code on failure.
 
+.. _`drm_dp_start_crc`:
+
+drm_dp_start_crc
+================
+
+.. c:function:: int drm_dp_start_crc(struct drm_dp_aux *aux, struct drm_crtc *crtc)
+
+    start capture of frame CRCs
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+    :param struct drm_crtc \*crtc:
+        CRTC displaying the frames whose CRCs are to be captured
+
+.. _`drm_dp_start_crc.description`:
+
+Description
+-----------
+
+Returns 0 on success or a negative error code on failure.
+
+.. _`drm_dp_stop_crc`:
+
+drm_dp_stop_crc
+===============
+
+.. c:function:: int drm_dp_stop_crc(struct drm_dp_aux *aux)
+
+    stop capture of frame CRCs
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+.. _`drm_dp_stop_crc.description`:
+
+Description
+-----------
+
+Returns 0 on success or a negative error code on failure.
+
 .. This file was automatic generated / don't edit.
 

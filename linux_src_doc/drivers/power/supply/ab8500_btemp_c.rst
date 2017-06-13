@@ -83,8 +83,8 @@ curr_source
     What current source we use, in uA
 
 bat_temp
-    Dispatched battery temperature in degree Celcius
-    \ ``prev_bat_temp``\        Last measured battery temperature in degree Celcius
+    Dispatched battery temperature in degree Celsius
+    \ ``prev_bat_temp``\        Last measured battery temperature in degree Celsius
 
 prev_bat_temp
     *undescribed*
@@ -245,7 +245,7 @@ ab8500_btemp_res_to_temp
 Description
 -----------
 
-This function returns the battery temperature in degrees Celcius
+This function returns the battery temperature in degrees Celsius
 based on the NTC resistance.
 
 .. _`ab8500_btemp_measure_temp`:

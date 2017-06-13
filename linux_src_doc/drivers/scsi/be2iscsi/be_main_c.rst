@@ -179,25 +179,6 @@ beiscsi_find_mem_req
     :param struct beiscsi_hba \*phba:
         ptr to HBA struct
 
-.. _`find_num_cpus`:
-
-find_num_cpus
-=============
-
-.. c:function:: void find_num_cpus(struct beiscsi_hba *phba)
-
-    Get the CPU online count
-
-    :param struct beiscsi_hba \*phba:
-        ptr to priv structure
-
-.. _`find_num_cpus.description`:
-
-Description
------------
-
-CPU count is used for creating EQ.
-
 .. _`beiscsi_free_mgmt_task_handles`:
 
 beiscsi_free_mgmt_task_handles

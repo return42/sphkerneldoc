@@ -6,12 +6,12 @@
 pcpu_get_pages
 ==============
 
-.. c:function:: struct page **pcpu_get_pages(struct pcpu_chunk *chunk_alloc)
+.. c:function:: struct page **pcpu_get_pages( void)
 
     get temp pages array
 
-    :param struct pcpu_chunk \*chunk_alloc:
-        *undescribed*
+    :param  void:
+        no arguments
 
 .. _`pcpu_get_pages.description`:
 

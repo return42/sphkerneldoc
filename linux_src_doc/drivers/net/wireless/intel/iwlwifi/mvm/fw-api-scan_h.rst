@@ -140,39 +140,75 @@ tsf_high
 results
     an array of scan results, only "scanned_channels" of them are valid
 
-.. _`iwl_scan_config`:
+.. _`iwl_scan_dwell`:
 
-struct iwl_scan_config
-======================
+struct iwl_scan_dwell
+=====================
 
-.. c:type:: struct iwl_scan_config
+.. c:type:: struct iwl_scan_dwell
 
 
-.. _`iwl_scan_config.definition`:
+.. _`iwl_scan_dwell.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_scan_config {
+    struct iwl_scan_dwell {
+        u8 active;
+        u8 passive;
+        u8 fragmented;
+        u8 extended;
+    }
+
+.. _`iwl_scan_dwell.members`:
+
+Members
+-------
+
+active
+    default dwell time for active scan
+
+passive
+    default dwell time for passive scan
+
+fragmented
+    default dwell time for fragmented scan
+
+extended
+    default dwell time for channels 1, 6 and 11
+
+.. _`iwl_scan_config_v1`:
+
+struct iwl_scan_config_v1
+=========================
+
+.. c:type:: struct iwl_scan_config_v1
+
+
+.. _`iwl_scan_config_v1.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_scan_config_v1 {
         __le32 flags;
         __le32 tx_chains;
         __le32 rx_chains;
         __le32 legacy_rates;
         __le32 out_of_channel_time;
         __le32 suspend_time;
-        u8 dwell_active;
-        u8 dwell_passive;
-        u8 dwell_fragmented;
-        u8 dwell_extended;
+        struct iwl_scan_dwell dwell;
         u8 mac_addr[ETH_ALEN];
         u8 bcast_sta_id;
         u8 channel_flags;
         u8 channel_array[];
     }
 
-.. _`iwl_scan_config.members`:
+.. _`iwl_scan_config_v1.members`:
 
 Members
 -------
@@ -195,17 +231,8 @@ out_of_channel_time
 suspend_time
     default max suspend time
 
-dwell_active
-    default dwell time for active scan
-
-dwell_passive
-    default dwell time for passive scan
-
-dwell_fragmented
-    default dwell time for fragmented scan
-
-dwell_extended
-    default dwell time for channels 1, 6 and 11
+dwell
+    dwells for the scan
 
 mac_addr
     default mac address to be used in probes
@@ -364,13 +391,7 @@ Definition
         u8 active_dwell;
         u8 passive_dwell;
         u8 fragmented_dwell;
-        __le32 max_out_time;
-        __le32 suspend_time;
-        __le32 scan_priority;
-        u8 channel_flags;
-        u8 n_channels;
-        __le16 reserved;
-        u8 data[];
+        union {unnamed_union};
     }
 
 .. _`iwl_scan_req_umac.members`:
@@ -408,27 +429,9 @@ passive_dwell
 fragmented_dwell
     dwell time for fragmented passive scan
 
-max_out_time
-    max out of serving channel time
+{unnamed_union}
+    anonymous
 
-suspend_time
-    max suspend time
-
-scan_priority
-    scan internal prioritization \ :c:type:`enum iwl_scan_priority <iwl_scan_priority>`\ 
-
-channel_flags
-    &enum iwl_scan_channel_flags
-
-n_channels
-    num of channels in scan request
-
-reserved
-    for future use and alignment
-
-data
-    &struct iwl_scan_channel_cfg_umac and
-    \ :c:type:`struct iwl_scan_req_umac_tail <iwl_scan_req_umac_tail>`\ 
 
 .. _`iwl_umac_scan_abort`:
 

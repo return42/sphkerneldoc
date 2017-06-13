@@ -1,0 +1,56 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: sound/soc/codecs/nau8824.c
+
+.. _`nau8824_calc_fll_param`:
+
+nau8824_calc_fll_param
+======================
+
+.. c:function:: int nau8824_calc_fll_param(unsigned int fll_in, unsigned int fs, struct nau8824_fll *fll_param)
+
+    Calculate FLL parameters.
+
+    :param unsigned int fll_in:
+        external clock provided to codec.
+
+    :param unsigned int fs:
+        sampling rate.
+
+    :param struct nau8824_fll \*fll_param:
+        Pointer to structure of FLL parameters.
+
+.. _`nau8824_calc_fll_param.description`:
+
+Description
+-----------
+
+Calculate FLL parameters to configure codec.
+
+Returns 0 for success or negative error code.
+
+.. _`nau8824_enable_jack_detect`:
+
+nau8824_enable_jack_detect
+==========================
+
+.. c:function:: int nau8824_enable_jack_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+
+    Specify a jack for event reporting
+
+    :param struct snd_soc_codec \*codec:
+        *undescribed*
+
+    :param struct snd_soc_jack \*jack:
+        jack to use to report headset and button events on
+
+.. _`nau8824_enable_jack_detect.description`:
+
+Description
+-----------
+
+After this function has been called the headset insert/remove and button
+events will be routed to the given jack.  Jack can be null to stop
+reporting.
+
+.. This file was automatic generated / don't edit.
+

@@ -38,6 +38,7 @@ net
     rfkill/index
     rxrpc/index
     sched/index
+    smc/index
     sunrpc/index
     tipc/index
     wimax/index

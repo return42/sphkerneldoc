@@ -83,7 +83,7 @@ Description
 -----------
 
 On error the create_bsg_job function should return a -Exyz error value
-that will be set to the req->errors.
+that will be set to ->result.
 
 Drivers/subsys should pass this to the queue init function.
 
@@ -92,15 +92,12 @@ Drivers/subsys should pass this to the queue init function.
 bsg_setup_queue
 ===============
 
-.. c:function:: int bsg_setup_queue(struct device *dev, struct request_queue *q, char *name, bsg_job_fn *job_fn, int dd_job_size)
+.. c:function:: struct request_queue *bsg_setup_queue(struct device *dev, char *name, bsg_job_fn *job_fn, int dd_job_size)
 
     Create and add the bsg hooks so we can receive requests
 
     :param struct device \*dev:
         device to attach bsg device to
-
-    :param struct request_queue \*q:
-        request queue setup by caller
 
     :param char \*name:
         device to give bsg device
@@ -110,14 +107,6 @@ bsg_setup_queue
 
     :param int dd_job_size:
         size of LLD data needed for each job
-
-.. _`bsg_setup_queue.description`:
-
-Description
------------
-
-The caller should have setup the reuqest queue with bsg_request_fn
-as the request_fn.
 
 .. This file was automatic generated / don't edit.
 

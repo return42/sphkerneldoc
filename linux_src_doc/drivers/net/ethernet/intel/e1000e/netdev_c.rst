@@ -1451,7 +1451,7 @@ e1000_tx_timeout
 e1000e_get_stats64
 ==================
 
-.. c:function:: struct rtnl_link_stats64 *e1000e_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+.. c:function:: void e1000e_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
 
     Get System Network Statistics
 

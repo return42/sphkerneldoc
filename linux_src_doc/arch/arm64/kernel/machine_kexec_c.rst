@@ -77,5 +77,17 @@ Description
 
 Called from the core kexec code for a sys_reboot with LINUX_REBOOT_CMD_KEXEC.
 
+.. _`machine_crash_shutdown`:
+
+machine_crash_shutdown
+======================
+
+.. c:function:: void machine_crash_shutdown(struct pt_regs *regs)
+
+    shutdown non-crashing cpus and save registers
+
+    :param struct pt_regs \*regs:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

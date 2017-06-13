@@ -203,17 +203,23 @@ i915_handle_error
 
     :param u32 engine_mask:
         mask representing engines that are hung
-        Do some basic checking of register state at error time and
-        dump it to the syslog.  Also call \ :c:func:`i915_capture_error_state`\  to make
-        sure we get a record and make it available in debugfs.  Fire a uevent
-        so userspace knows something bad happened (should trigger collection
-        of a ring dump etc.).
 
     :param const char \*fmt:
         Error message format string
 
     :param ... :
         variable arguments
+
+.. _`i915_handle_error.description`:
+
+Description
+-----------
+
+Do some basic checking of register state at error time and
+dump it to the syslog.  Also call \ :c:func:`i915_capture_error_state`\  to make
+sure we get a record and make it available in debugfs.  Fire a uevent
+so userspace knows something bad happened (should trigger collection
+of a ring dump etc.).
 
 .. _`intel_irq_init`:
 

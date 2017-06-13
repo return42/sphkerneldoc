@@ -6,7 +6,7 @@
 radeon_driver_unload_kms
 ========================
 
-.. c:function:: int radeon_driver_unload_kms(struct drm_device *dev)
+.. c:function:: void radeon_driver_unload_kms(struct drm_device *dev)
 
     Main unload function for KMS.
 
@@ -169,30 +169,8 @@ radeon_driver_postclose_kms
 Description
 -----------
 
-On device post close, tear down vm on cayman+ (all asics).
-
-.. _`radeon_driver_preclose_kms`:
-
-radeon_driver_preclose_kms
-==========================
-
-.. c:function:: void radeon_driver_preclose_kms(struct drm_device *dev, struct drm_file *file_priv)
-
-    drm callback for pre close
-
-    :param struct drm_device \*dev:
-        drm dev pointer
-
-    :param struct drm_file \*file_priv:
-        drm file
-
-.. _`radeon_driver_preclose_kms.description`:
-
-Description
------------
-
-On device pre close, tear down hyperz and cmask filps on r1xx-r5xx
-(all asics).
+On device close, tear down hyperz and cmask filps on r1xx-r5xx
+(all asics).  And tear down vm on cayman+ (all asics).
 
 .. _`radeon_get_vblank_counter_kms`:
 

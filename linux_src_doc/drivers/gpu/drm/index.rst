@@ -11,9 +11,9 @@ drm
     bridge/index
     exynos/index
     gma500/index
-    i810/index
     i915/index
     mediatek/index
+    meson/index
     mga/index
     msm/index
     nouveau/index
@@ -24,6 +24,7 @@ drm
     rockchip/index
     sti/index
     tegra/index
+    tinydrm/index
     ttm/index
     vc4/index
     vgem/index
@@ -35,6 +36,7 @@ drm
     drm_blend_c
     drm_bridge_c
     drm_bufs_c
+    drm_cache_c
     drm_color_mgmt_c
     drm_connector_c
     drm_context_c
@@ -53,12 +55,13 @@ drm
     drm_encoder_slave_c
     drm_fb_cma_helper_c
     drm_fb_helper_c
+    drm_file_c
     drm_flip_work_c
-    drm_fops_c
     drm_fourcc_c
     drm_framebuffer_c
     drm_gem_c
     drm_gem_cma_helper_c
+    drm_global_c
     drm_info_c
     drm_ioc32_c
     drm_ioctl_c
@@ -76,12 +79,12 @@ drm
     drm_pci_c
     drm_plane_c
     drm_plane_helper_c
-    drm_platform_c
     drm_prime_c
     drm_print_c
     drm_probe_helper_c
     drm_property_c
     drm_rect_c
+    drm_scdc_helper_c
     drm_simple_kms_helper_c
     drm_sysfs_c
     drm_vm_c

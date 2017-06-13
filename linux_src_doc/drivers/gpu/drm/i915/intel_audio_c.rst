@@ -108,5 +108,29 @@ Description
 Deregisters the audio component, breaking any existing binding to the
 corresponding snd_hda_intel driver's master component.
 
+.. _`intel_audio_init`:
+
+intel_audio_init
+================
+
+.. c:function:: void intel_audio_init(struct drm_i915_private *dev_priv)
+
+    Initialize the audio driver either using component framework or using lpe audio bridge
+
+    :param struct drm_i915_private \*dev_priv:
+        the i915 drm device private data
+
+.. _`intel_audio_deinit`:
+
+intel_audio_deinit
+==================
+
+.. c:function:: void intel_audio_deinit(struct drm_i915_private *dev_priv)
+
+    deinitialize the audio driver
+
+    :param struct drm_i915_private \*dev_priv:
+        the i915 drm device private data
+
 .. This file was automatic generated / don't edit.
 

@@ -43,12 +43,15 @@ Return
 meson_sm_call_read
 ==================
 
-.. c:function:: int meson_sm_call_read(void *buffer, unsigned int cmd_index, u32 arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4)
+.. c:function:: int meson_sm_call_read(void *buffer, unsigned int bsize, unsigned int cmd_index, u32 arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4)
 
     retrieve data from secure-monitor
 
     :param void \*buffer:
         Buffer to store the retrieved data
+
+    :param unsigned int bsize:
+        Size of the buffer
 
     :param unsigned int cmd_index:
         Index of the SMC32 function ID
@@ -74,6 +77,8 @@ Return
 ------
 
 size of read data on success, a negative value on error
+When 0 is returned there is no guarantee about the amount of
+data read and bsize bytes are copied in buffer.
 
 .. _`meson_sm_call_write`:
 

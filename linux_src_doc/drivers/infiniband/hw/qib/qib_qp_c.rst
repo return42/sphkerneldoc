@@ -13,47 +13,6 @@ qib_free_all_qps
     :param struct rvt_dev_info \*rdi:
         *undescribed*
 
-.. _`qib_compute_aeth`:
-
-qib_compute_aeth
-================
-
-.. c:function:: __be32 qib_compute_aeth(struct rvt_qp *qp)
-
-    compute the AETH (syndrome + MSN)
-
-    :param struct rvt_qp \*qp:
-        the queue pair to compute the AETH for
-
-.. _`qib_compute_aeth.description`:
-
-Description
------------
-
-Returns the AETH.
-
-.. _`qib_get_credit`:
-
-qib_get_credit
-==============
-
-.. c:function:: void qib_get_credit(struct rvt_qp *qp, u32 aeth)
-
-    flush the send work queue of a QP
-
-    :param struct rvt_qp \*qp:
-        the qp who's send work queue to flush
-
-    :param u32 aeth:
-        the Acknowledge Extended Transport Header
-
-.. _`qib_get_credit.description`:
-
-Description
------------
-
-The QP s_lock should be held.
-
 .. _`qib_check_send_wqe`:
 
 qib_check_send_wqe

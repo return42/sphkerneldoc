@@ -1,30 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/iommu.h
 
-.. _`iommu_dm_region`:
+.. _`iommu_resv_region`:
 
-struct iommu_dm_region
-======================
+struct iommu_resv_region
+========================
 
-.. c:type:: struct iommu_dm_region
+.. c:type:: struct iommu_resv_region
 
-    descriptor for a direct mapped memory region
+    descriptor for a reserved memory region
 
-.. _`iommu_dm_region.definition`:
+.. _`iommu_resv_region.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iommu_dm_region {
+    struct iommu_resv_region {
         struct list_head list;
         phys_addr_t start;
         size_t length;
         int prot;
+        enum iommu_resv_type type;
     }
 
-.. _`iommu_dm_region.members`:
+.. _`iommu_resv_region.members`:
 
 Members
 -------
@@ -40,6 +41,9 @@ length
 
 prot
     IOMMU Protection flags (READ/WRITE/...)
+
+type
+    Type of the reserved region
 
 .. _`iommu_ops`:
 
@@ -72,9 +76,9 @@ Definition
         struct iommu_group *(*device_group)(struct device *dev);
         int (*domain_get_attr)(struct iommu_domain *domain,enum iommu_attr attr, void *data);
         int (*domain_set_attr)(struct iommu_domain *domain,enum iommu_attr attr, void *data);
-        void (*get_dm_regions)(struct device *dev, struct list_head *list);
-        void (*put_dm_regions)(struct device *dev, struct list_head *list);
-        void (*apply_dm_region)(struct device *dev, struct iommu_domain *domain,struct iommu_dm_region *region);
+        void (*get_resv_regions)(struct device *dev, struct list_head *list);
+        void (*put_resv_regions)(struct device *dev, struct list_head *list);
+        void (*apply_resv_region)(struct device *dev,struct iommu_domain *domain,struct iommu_resv_region *region);
         int (*domain_window_enable)(struct iommu_domain *domain, u32 wnd_nr,phys_addr_t paddr, u64 size, int prot);
         void (*domain_window_disable)(struct iommu_domain *domain, u32 wnd_nr);
         int (*domain_set_windows)(struct iommu_domain *domain, u32 w_count);
@@ -131,13 +135,13 @@ domain_get_attr
 domain_set_attr
     Change domain attributes
 
-get_dm_regions
-    Request list of direct mapping requirements for a device
+get_resv_regions
+    Request list of reserved regions for a device
 
-put_dm_regions
-    Free list of direct mapping requirements for a device
+put_resv_regions
+    Free list of reserved regions for a device
 
-apply_dm_region
+apply_resv_region
     Temporary helper call-back for iova reserved ranges
 
 domain_window_enable
@@ -158,52 +162,45 @@ of_xlate
 pgsize_bitmap
     bitmap of all possible supported page sizes
 
-.. _`report_iommu_fault`:
+.. _`iommu_device`:
 
-report_iommu_fault
-==================
+struct iommu_device
+===================
 
-.. c:function:: int report_iommu_fault(struct iommu_domain *domain, struct device *dev, unsigned long iova, int flags)
+.. c:type:: struct iommu_device
 
-    report about an IOMMU fault to the IOMMU framework
+    IOMMU core representation of one IOMMU hardware instance
 
-    :param struct iommu_domain \*domain:
-        the iommu domain where the fault has happened
+.. _`iommu_device.definition`:
 
-    :param struct device \*dev:
-        the device where the fault has happened
+Definition
+----------
 
-    :param unsigned long iova:
-        the faulting address
+.. code-block:: c
 
-    :param int flags:
-        mmu fault flags (e.g. IOMMU_FAULT_READ/IOMMU_FAULT_WRITE/...)
+    struct iommu_device {
+        struct list_head list;
+        const struct iommu_ops *ops;
+        struct fwnode_handle *fwnode;
+        struct device dev;
+    }
 
-.. _`report_iommu_fault.description`:
+.. _`iommu_device.members`:
 
-Description
------------
+Members
+-------
 
-This function should be called by the low-level IOMMU implementations
-whenever IOMMU faults happen, to allow high-level users, that are
-interested in such events, to know about them.
+list
+    Used by the iommu-core to keep a list of registered iommus
 
-.. _`report_iommu_fault.this-event-may-be-useful-for-several-possible-use-cases`:
+ops
+    iommu-ops for talking to this iommu
 
-This event may be useful for several possible use cases
--------------------------------------------------------
+fwnode
+    *undescribed*
 
-- mere logging of the event
-- dynamic TLB/PTE loading
-- if restarting of the faulting device is required
-
-Returns 0 on success and an appropriate error code otherwise (if dynamic
-PTE/TLB loading will one day be supported, implementations will be able
-to tell whether it succeeded or not according to this return value).
-
-Specifically, -ENOSYS is returned if a fault handler isn't installed
-(though fault handlers can also return -ENOSYS, in case they want to
-elicit the default behavior of the IOMMU drivers).
+dev
+    struct device for sysfs handling
 
 .. _`iommu_fwspec`:
 

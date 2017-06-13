@@ -60,8 +60,14 @@ cleanup_srcu_struct
 Description
 -----------
 
-Must invoke this after you are finished using a given srcu_struct that
-was initialized via \ :c:func:`init_srcu_struct`\ , else you leak memory.
+Must invoke this only after you are finished using a given srcu_struct
+that was initialized via \ :c:func:`init_srcu_struct`\ .  This code does some
+probabalistic checking, spotting late uses of \ :c:func:`srcu_read_lock`\ ,
+\ :c:func:`synchronize_srcu`\ , \ :c:func:`synchronize_srcu_expedited`\ , and \ :c:func:`call_srcu`\ .
+If any such late uses are detected, the per-CPU memory associated with
+the srcu_struct is simply leaked and \ :c:func:`WARN_ON`\  is invoked.  If the
+caller frees the srcu_struct itself, a use-after-free crash will likely
+ensue, but at least there will be a warning printed.
 
 .. _`synchronize_srcu`:
 

@@ -67,42 +67,5 @@ and isochronous communication. To avoid this problem, this function is used
 to postpone sound card registration after the state. The callers must
 set up instance of delayed work in advance.
 
-.. _`snd_fw_async_midi_port_init`:
-
-snd_fw_async_midi_port_init
-===========================
-
-.. c:function:: int snd_fw_async_midi_port_init(struct snd_fw_async_midi_port *port, struct fw_unit *unit, u64 addr, unsigned int len, snd_fw_async_midi_port_fill fill)
-
-    initialize asynchronous MIDI port structure
-
-    :param struct snd_fw_async_midi_port \*port:
-        the asynchronous MIDI port to initialize
-
-    :param struct fw_unit \*unit:
-        the target of the asynchronous transaction
-
-    :param u64 addr:
-        the address to which transactions are transferred
-
-    :param unsigned int len:
-        the length of transaction
-
-    :param snd_fw_async_midi_port_fill fill:
-        the callback function to fill given buffer, and returns the
-        number of consumed bytes for MIDI message.
-
-.. _`snd_fw_async_midi_port_destroy`:
-
-snd_fw_async_midi_port_destroy
-==============================
-
-.. c:function:: void snd_fw_async_midi_port_destroy(struct snd_fw_async_midi_port *port)
-
-    free asynchronous MIDI port structure
-
-    :param struct snd_fw_async_midi_port \*port:
-        the asynchronous MIDI port structure
-
 .. This file was automatic generated / don't edit.
 

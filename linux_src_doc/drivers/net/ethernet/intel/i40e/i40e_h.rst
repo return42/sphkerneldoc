@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40e/i40e.h
 
-.. _`i40e_is_mac_710`:
-
-i40e_is_mac_710
-===============
-
-.. c:function:: bool i40e_is_mac_710(struct i40e_hw *hw)
-
-    Return true if MAC is X710/XL710
-
-    :param struct i40e_hw \*hw:
-        ptr to the hardware info
-
 .. _`i40e_addr_to_hkey`:
 
 i40e_addr_to_hkey
@@ -63,28 +51,6 @@ Description
 
 Return the PF struct for the given netdev
 
-.. _`i40e_rx_is_programming_status`:
-
-i40e_rx_is_programming_status
-=============================
-
-.. c:function:: bool i40e_rx_is_programming_status(u64 qw)
-
-    check for programming status descriptor
-
-    :param u64 qw:
-        the first quad word of the program status descriptor
-
-.. _`i40e_rx_is_programming_status.description`:
-
-Description
------------
-
-The value of in the descriptor length field indicate if this
-is a programming status descriptor for flow director or FCoE
-by the value of I40E_RX_PROG_STATUS_DESC_LENGTH, otherwise
-it is a packet descriptor.
-
 .. _`i40e_get_fd_cnt_all`:
 
 i40e_get_fd_cnt_all
@@ -96,6 +62,55 @@ i40e_get_fd_cnt_all
 
     :param struct i40e_pf \*pf:
         pointer to the PF struct
+
+.. _`i40e_read_fd_input_set`:
+
+i40e_read_fd_input_set
+======================
+
+.. c:function:: u64 i40e_read_fd_input_set(struct i40e_pf *pf, u16 addr)
+
+    reads value of flow director input set register
+
+    :param struct i40e_pf \*pf:
+        pointer to the PF struct
+
+    :param u16 addr:
+        register addr
+
+.. _`i40e_read_fd_input_set.description`:
+
+Description
+-----------
+
+This function reads value of flow director input set register
+specified by 'addr' (which is specific to flow-type)
+
+.. _`i40e_write_fd_input_set`:
+
+i40e_write_fd_input_set
+=======================
+
+.. c:function:: void i40e_write_fd_input_set(struct i40e_pf *pf, u16 addr, u64 val)
+
+    writes value into flow director input set register
+
+    :param struct i40e_pf \*pf:
+        pointer to the PF struct
+
+    :param u16 addr:
+        register addr
+
+    :param u64 val:
+        value to be written
+
+.. _`i40e_write_fd_input_set.description`:
+
+Description
+-----------
+
+This function writes specified value to the register specified by 'addr'.
+This register is input set register based on flow-type.
 
 .. _`i40e_find_vsi_by_type`:
 

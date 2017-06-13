@@ -1,22 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40evf/i40evf_ethtool.c
 
-.. _`i40evf_get_settings`:
+.. _`i40evf_get_link_ksettings`:
 
-i40evf_get_settings
-===================
+i40evf_get_link_ksettings
+=========================
 
-.. c:function:: int i40evf_get_settings(struct net_device *netdev, struct ethtool_cmd *ecmd)
+.. c:function:: int i40evf_get_link_ksettings(struct net_device *netdev, struct ethtool_link_ksettings *cmd)
 
     Get Link Speed and Duplex settings
 
     :param struct net_device \*netdev:
         network interface device structure
 
-    :param struct ethtool_cmd \*ecmd:
+    :param struct ethtool_link_ksettings \*cmd:
         ethtool command
 
-.. _`i40evf_get_settings.description`:
+.. _`i40evf_get_link_ksettings.description`:
 
 Description
 -----------
@@ -96,6 +96,44 @@ Description
 -----------
 
 Builds stats string table.
+
+.. _`i40evf_get_priv_flags`:
+
+i40evf_get_priv_flags
+=====================
+
+.. c:function:: u32 i40evf_get_priv_flags(struct net_device *netdev)
+
+    report device private flags
+
+    :param struct net_device \*netdev:
+        *undescribed*
+
+.. _`i40evf_get_priv_flags.description`:
+
+Description
+-----------
+
+The get string set count and the string set should be matched for each
+flag returned.  Add new strings for each flag to the i40e_gstrings_priv_flags
+array.
+
+Returns a u32 bitmap of flags.
+
+.. _`i40evf_set_priv_flags`:
+
+i40evf_set_priv_flags
+=====================
+
+.. c:function:: int i40evf_set_priv_flags(struct net_device *netdev, u32 flags)
+
+    set private flags
+
+    :param struct net_device \*netdev:
+        *undescribed*
+
+    :param u32 flags:
+        bit flags to be set
 
 .. _`i40evf_get_msglevel`:
 

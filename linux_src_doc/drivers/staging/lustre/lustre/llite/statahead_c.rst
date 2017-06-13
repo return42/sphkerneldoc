@@ -6,7 +6,7 @@
 sa_prep_data
 ============
 
-.. c:function:: int sa_prep_data(struct inode *dir, struct inode *child, struct sa_entry *entry, struct md_enqueue_info **pmi, struct ldlm_enqueue_info **pei)
+.. c:function:: struct md_enqueue_info *sa_prep_data(struct inode *dir, struct inode *child, struct sa_entry *entry)
 
     :param struct inode \*dir:
         *undescribed*
@@ -15,12 +15,6 @@ sa_prep_data
         *undescribed*
 
     :param struct sa_entry \*entry:
-        *undescribed*
-
-    :param struct md_enqueue_info \*\*pmi:
-        *undescribed*
-
-    :param struct ldlm_enqueue_info \*\*pei:
         *undescribed*
 
 .. _`sa_revalidate`:

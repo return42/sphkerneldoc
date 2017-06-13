@@ -1,52 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/be2iscsi/be_mgmt.c
 
-.. _`beiscsi_modify_eq_delay`:
-
-beiscsi_modify_eq_delay
-=======================
-
-.. c:function:: int beiscsi_modify_eq_delay(struct beiscsi_hba *phba, struct be_set_eqd *set_eqd, int num)
-
-    2016 Broadcom All rights reserved.
-
-    :param struct beiscsi_hba \*phba:
-        *undescribed*
-
-    :param struct be_set_eqd \*set_eqd:
-        *undescribed*
-
-    :param int num:
-        *undescribed*
-
-.. _`beiscsi_modify_eq_delay.description`:
-
-Description
------------
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License version 2
-as published by the Free Software Foundation.  The full GNU General
-Public License is included in this distribution in the file called COPYING.
-
-.. _`beiscsi_modify_eq_delay.written-by`:
-
-Written by
-----------
-
-Jayamohan Kallickal (jayamohan.kallickal@broadcom.com)
-
-.. _`beiscsi_modify_eq_delay.contact-information`:
-
-Contact Information
--------------------
-
-linux-drivers@broadcom.com
-
-Emulex
-3333 Susan Street
-Costa Mesa, CA 92626
-
 .. _`mgmt_open_connection`:
 
 mgmt_open_connection

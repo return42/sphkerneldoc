@@ -79,6 +79,31 @@ standardised, this function does not attempt to decode them.  Use
 \ :c:func:`mdio45_ethtool_gset_npage`\  to specify advertisement bits from next
 pages.
 
+.. _`mdio45_ethtool_ksettings_get`:
+
+mdio45_ethtool_ksettings_get
+============================
+
+.. c:function:: void mdio45_ethtool_ksettings_get(const struct mdio_if_info *mdio, struct ethtool_link_ksettings *cmd)
+
+    get settings for ETHTOOL_GLINKSETTINGS
+
+    :param const struct mdio_if_info \*mdio:
+        MDIO interface
+
+    :param struct ethtool_link_ksettings \*cmd:
+        Ethtool request structure
+
+.. _`mdio45_ethtool_ksettings_get.description`:
+
+Description
+-----------
+
+Since the CSRs for auto-negotiation using next pages are not fully
+standardised, this function does not attempt to decode them.  Use
+\ :c:func:`mdio45_ethtool_ksettings_get_npage`\  to specify advertisement bits
+from next pages.
+
 .. _`mmd_eee_cap_to_ethtool_sup_t`:
 
 mmd_eee_cap_to_ethtool_sup_t

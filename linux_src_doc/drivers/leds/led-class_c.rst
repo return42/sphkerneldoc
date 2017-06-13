@@ -25,17 +25,20 @@ led_classdev_resume
     :param struct led_classdev \*led_cdev:
         the led_classdev to resume.
 
-.. _`led_classdev_register`:
+.. _`of_led_classdev_register`:
 
-led_classdev_register
-=====================
+of_led_classdev_register
+========================
 
-.. c:function:: int led_classdev_register(struct device *parent, struct led_classdev *led_cdev)
+.. c:function:: int of_led_classdev_register(struct device *parent, struct device_node *np, struct led_classdev *led_cdev)
 
     register a new object of led_classdev class.
 
     :param struct device \*parent:
-        The device to register.
+        parent of LED device
+
+    :param struct device_node \*np:
+        DT node describing this LED
 
     :param struct led_classdev \*led_cdev:
         the led_classdev structure for this device.
@@ -59,17 +62,20 @@ Description
 
 Unregisters a previously registered via led_classdev_register object.
 
-.. _`devm_led_classdev_register`:
+.. _`devm_of_led_classdev_register`:
 
-devm_led_classdev_register
-==========================
+devm_of_led_classdev_register
+=============================
 
-.. c:function:: int devm_led_classdev_register(struct device *parent, struct led_classdev *led_cdev)
+.. c:function:: int devm_of_led_classdev_register(struct device *parent, struct device_node *np, struct led_classdev *led_cdev)
 
     resource managed \ :c:func:`led_classdev_register`\ 
 
     :param struct device \*parent:
-        The device to register.
+        parent of LED device
+
+    :param struct device_node \*np:
+        *undescribed*
 
     :param struct led_classdev \*led_cdev:
         the led_classdev structure for this device.

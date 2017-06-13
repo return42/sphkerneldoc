@@ -20,5 +20,48 @@ Description
 
 Handle when the guest attempts to use MSA when it is disabled.
 
+.. _`kvm_trap_emul_gva_lockless_begin`:
+
+kvm_trap_emul_gva_lockless_begin
+================================
+
+.. c:function:: void kvm_trap_emul_gva_lockless_begin(struct kvm_vcpu *vcpu)
+
+    Begin lockless access to GVA space.
+
+    :param struct kvm_vcpu \*vcpu:
+        VCPU pointer.
+
+.. _`kvm_trap_emul_gva_lockless_begin.description`:
+
+Description
+-----------
+
+Call before a GVA space access outside of guest mode, to ensure that
+asynchronous TLB flush requests are handled or delayed until completion of
+the GVA access (as indicated by a matching \ :c:func:`kvm_trap_emul_gva_lockless_end`\ ).
+
+Should be called with IRQs already enabled.
+
+.. _`kvm_trap_emul_gva_lockless_end`:
+
+kvm_trap_emul_gva_lockless_end
+==============================
+
+.. c:function:: void kvm_trap_emul_gva_lockless_end(struct kvm_vcpu *vcpu)
+
+    End lockless access to GVA space.
+
+    :param struct kvm_vcpu \*vcpu:
+        VCPU pointer.
+
+.. _`kvm_trap_emul_gva_lockless_end.description`:
+
+Description
+-----------
+
+Called after a GVA space access outside of guest mode. Should have a matching
+call to \ :c:func:`kvm_trap_emul_gva_lockless_begin`\ .
+
 .. This file was automatic generated / don't edit.
 

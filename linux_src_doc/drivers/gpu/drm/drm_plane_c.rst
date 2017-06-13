@@ -139,7 +139,7 @@ Description
 -----------
 
 Given a plane index, return the registered plane from DRM device's
-list of planes with matching index.
+list of planes with matching index. This is the inverse of \ :c:func:`drm_plane_index`\ .
 
 .. _`drm_plane_force_disable`:
 
@@ -162,6 +162,12 @@ Forces the plane to be disabled.
 
 Used when the plane's current framebuffer is destroyed,
 and when restoring fbdev mode.
+
+Note that this function is not suitable for atomic drivers, since it doesn't
+wire through the lock acquisition context properly and hence can't handle
+retries or driver private locks. You probably want to use
+\ :c:func:`drm_atomic_helper_disable_plane`\  or
+\ :c:func:`drm_atomic_helper_disable_planes_on_crtc`\  instead.
 
 .. _`drm_mode_plane_set_obj_prop`:
 

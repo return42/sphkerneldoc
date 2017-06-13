@@ -22,13 +22,7 @@ The various sysv ipc resources (semaphores, messages and shared
 memory) are initialised.
 
 A callback routine is registered into the memory hotplug notifier
-
-.. _`ipc_init.chain`:
-
-chain
------
-
-since msgmni scales to lowmem this callback routine will be
+chain: since msgmni scales to lowmem this callback routine will be
 called upon successful memory add / remove to recompute msmgni.
 
 .. _`ipc_init_ids`:
@@ -350,7 +344,7 @@ Description
 Check user, group, other permissions for access
 to ipc resources. return 0 if allowed
 
-\ ``flag``\  will most probably be 0 or S_...UGO from <linux/stat.h>
+\ ``flag``\  will most probably be 0 or ``S_...UGO`` from <linux/stat.h>
 
 .. _`kernel_to_ipc64_perm`:
 
@@ -419,7 +413,7 @@ Description
 Look for an id in the ipc ids idr and return associated ipc object.
 
 Call inside the RCU critical section.
-The ipc object is \*not\* locked on exit.
+The ipc object is *not* locked on exit.
 
 .. _`ipc_lock`:
 
@@ -467,7 +461,7 @@ Similar to \ :c:func:`ipc_obtain_object_idr`\  but also checks
 the ipc object reference counter.
 
 Call inside the RCU critical section.
-The ipc object is \*not\* locked on exit.
+The ipc object is *not* locked on exit.
 
 .. _`ipcget`:
 
@@ -476,7 +470,7 @@ ipcget
 
 .. c:function:: int ipcget(struct ipc_namespace *ns, struct ipc_ids *ids, const struct ipc_ops *ops, struct ipc_params *params)
 
-    Common sys\_\*get() code
+    Common sys_*get() code
 
     :param struct ipc_namespace \*ns:
         namespace
@@ -547,10 +541,17 @@ Description
 
 This function does some common audit and permissions check for some IPC_XXX
 cmd and is called from semctl_down, shmctl_down and msgctl_down.
+
+.. _`ipcctl_pre_down_nolock.it-must-be-called-without-any-lock-held-and`:
+
 It must be called without any lock held and
-- retrieves the ipc with the given id in the given table.
-- performs some audit and permission check, depending on the given cmd
-- returns a pointer to the ipc object or otherwise, the corresponding error.
+-------------------------------------------
+
+
+  - retrieves the ipc with the given id in the given table.
+  - performs some audit and permission check, depending on the given cmd
+  - returns a pointer to the ipc object or otherwise, the corresponding
+    error.
 
 Call holding the both the rwsem and the rcu read lock.
 

@@ -762,12 +762,12 @@ rio_clr_err_stopped
     :param u32 err_status:
         port error status (if 0 reads register from device)
 
-.. _`rio_clr_err_stopped.todo`:
+.. _`rio_clr_err_stopped.description`:
 
-TODO
-----
+Description
+-----------
 
-Currently this routine is not compatible with recovery process
+TODO: Currently this routine is not compatible with recovery process
 specified for idt_gen3 RapidIO switch devices. It has to be reviewed
 to implement universal recovery process that is compatible full range
 off available devices.
@@ -1250,7 +1250,7 @@ Return
 ------
 
 pointer to DMA transaction descriptor if successful,
-error-valued pointer or NULL if failed.
+         error-valued pointer or NULL if failed.
 
 .. _`rio_dma_prep_slave_sg`:
 
@@ -1291,7 +1291,7 @@ Return
 ------
 
 pointer to DMA transaction descriptor if successful,
-error-valued pointer or NULL if failed.
+         error-valued pointer or NULL if failed.
 
 .. _`rio_find_mport`:
 

@@ -18,7 +18,7 @@ scsi_sysfs_add_sdev
 Return value
 ------------
 
-0 on Success / non-zero on Failure
+     0 on Success / non-zero on Failure
 
 .. _`scsi_remove_device`:
 

@@ -66,7 +66,7 @@ Definition
         void (*register_backlight)(struct fbtft_par *par);
         void (*unregister_backlight)(struct fbtft_par *par);
         int (*set_var)(struct fbtft_par *par);
-        int (*set_gamma)(struct fbtft_par *par, unsigned long *curves);
+        int (*set_gamma)(struct fbtft_par *par, u32 *curves);
     }
 
 .. _`fbtft_ops.members`:
@@ -160,7 +160,7 @@ Definition
         unsigned int bpp;
         unsigned int fps;
         int txbuflen;
-        s16 *init_sequence;
+        const s16 *init_sequence;
         char *gamma;
         int gamma_num;
         int gamma_len;

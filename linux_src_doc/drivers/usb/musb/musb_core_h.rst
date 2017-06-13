@@ -18,6 +18,8 @@ Definition
 .. code-block:: c
 
     struct musb_platform_ops {
+    #define MUSB_DA8XX BIT(8)
+    #define MUSB_PRESERVE_SESSION BIT(7)
     #define MUSB_DMA_UX500 BIT(6)
     #define MUSB_DMA_CPPI41 BIT(5)
     #define MUSB_DMA_CPPI BIT(4)
@@ -54,6 +56,7 @@ Definition
         void (*pre_root_reset_end)(struct musb *musb);
         void (*post_root_reset_end)(struct musb *musb);
         int (*phy_callback)(enum musb_vbus_id_status status);
+        void (*clear_ep_rxintr)(struct musb *musb, int epnum);
     }
 
 .. _`musb_platform_ops.members`:
@@ -147,6 +150,9 @@ post_root_reset_end
 
 phy_callback
     optional callback function for the phy to call
+
+clear_ep_rxintr
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

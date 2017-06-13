@@ -11,14 +11,14 @@ adf_disable_sriov
     Disable SRIOV for the device
 
     :param struct adf_accel_dev \*accel_dev:
-        *undescribed*
+        Pointer to accel device.
 
 .. _`adf_disable_sriov.description`:
 
 Description
 -----------
 
-Function disables SRIOV for the pci device.
+Function disables SRIOV for the accel device.
 
 .. _`adf_disable_sriov.return`:
 

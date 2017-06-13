@@ -91,38 +91,6 @@ zeropage
     dummy page used as RX buffer when only TX buffer is passed in by
     the client
 
-.. _`ep93xx_spi_chip`:
-
-struct ep93xx_spi_chip
-======================
-
-.. c:type:: struct ep93xx_spi_chip
-
-    SPI device hardware settings
-
-.. _`ep93xx_spi_chip.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct ep93xx_spi_chip {
-        const struct spi_device *spi;
-        struct ep93xx_spi_chip_ops *ops;
-    }
-
-.. _`ep93xx_spi_chip.members`:
-
-Members
--------
-
-spi
-    back pointer to the SPI device
-
-ops
-    private chip operations
-
 .. _`ep93xx_spi_calc_divisors`:
 
 ep93xx_spi_calc_divisors
@@ -143,69 +111,6 @@ ep93xx_spi_calc_divisors
 
     :param u8 \*div_scr:
         pointer to return the scr divider
-
-.. _`ep93xx_spi_setup`:
-
-ep93xx_spi_setup
-================
-
-.. c:function:: int ep93xx_spi_setup(struct spi_device *spi)
-
-    setup an SPI device
-
-    :param struct spi_device \*spi:
-        SPI device to setup
-
-.. _`ep93xx_spi_setup.description`:
-
-Description
------------
-
-This function sets up SPI device mode, speed etc. Can be called multiple
-times for a single device. Returns \ ``0``\  in case of success, negative error in
-case of failure. When this function returns success, the device is
-deselected.
-
-.. _`ep93xx_spi_cleanup`:
-
-ep93xx_spi_cleanup
-==================
-
-.. c:function:: void ep93xx_spi_cleanup(struct spi_device *spi)
-
-    cleans up master controller specific state
-
-    :param struct spi_device \*spi:
-        SPI device to cleanup
-
-.. _`ep93xx_spi_cleanup.description`:
-
-Description
------------
-
-This function releases master controller specific state for given \ ``spi``\ 
-device.
-
-.. _`ep93xx_spi_chip_setup`:
-
-ep93xx_spi_chip_setup
-=====================
-
-.. c:function:: int ep93xx_spi_chip_setup(const struct ep93xx_spi *espi, const struct ep93xx_spi_chip *chip, u32 speed_hz, u8 bits_per_word)
-
-    configures hardware according to given \ ``chip``\ 
-
-    :param const struct ep93xx_spi \*espi:
-        ep93xx SPI controller struct
-
-    :param const struct ep93xx_spi_chip \*chip:
-        chip specific settings
-
-    :param u32 speed_hz:
-        transfer speed
-
-    :param u8 bits_per_word:
-        transfer bits_per_word
 
 .. _`ep93xx_spi_read_write`:
 

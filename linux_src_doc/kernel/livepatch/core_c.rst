@@ -1,53 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/livepatch/core.c
 
-.. _`klp_ops`:
-
-struct klp_ops
-==============
-
-.. c:type:: struct klp_ops
-
-    structure for tracking registered ftrace ops structs
-
-.. _`klp_ops.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct klp_ops {
-        struct list_head node;
-        struct list_head func_stack;
-        struct ftrace_ops fops;
-    }
-
-.. _`klp_ops.members`:
-
-Members
--------
-
-node
-    node for the global klp_ops list
-
-func_stack
-    list head for the stack of klp_func's (active func is on top)
-
-fops
-    registered ftrace ops struct
-
-.. _`klp_ops.description`:
-
-Description
------------
-
-A single ftrace_ops is shared between all enabled replacement functions
-(klp_func structs) which have the same old_addr.  This allows the switch
-between function versions to happen instantaneously by updating the klp_ops
-struct's func_stack list.  The winner is the klp_func at the top of the
-func_stack (front of the list).
-
 .. _`klp_disable_patch`:
 
 klp_disable_patch
@@ -146,6 +99,9 @@ Description
 
 Initializes the data structure associated with the patch and
 creates the sysfs interface.
+
+There is no need to take the reference on the patch module here. It is done
+later when the patch is enabled.
 
 .. _`klp_register_patch.return`:
 

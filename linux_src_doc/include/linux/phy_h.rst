@@ -98,32 +98,6 @@ Description
 
 Same rules as for \ :c:func:`phy_read`\ ;
 
-.. _`phy_read_mmd_indirect`:
-
-phy_read_mmd_indirect
-=====================
-
-.. c:function:: int phy_read_mmd_indirect(struct phy_device *phydev, int prtad, int devad)
-
-    reads data from the MMD registers
-
-    :param struct phy_device \*phydev:
-        The PHY device bus
-
-    :param int prtad:
-        MMD Address
-
-    :param int devad:
-        *undescribed*
-
-.. _`phy_read_mmd_indirect.description`:
-
-Description
------------
-
-it reads data from the MMD registers (clause 22 to access to
-clause 45) of the specified phy address.
-
 .. _`phy_read`:
 
 phy_read
@@ -246,35 +220,6 @@ Description
 -----------
 
 Same rules as for \ :c:func:`phy_write`\ ;
-
-.. _`phy_write_mmd_indirect`:
-
-phy_write_mmd_indirect
-======================
-
-.. c:function:: void phy_write_mmd_indirect(struct phy_device *phydev, int prtad, int devad, u32 data)
-
-    writes data to the MMD registers
-
-    :param struct phy_device \*phydev:
-        The PHY device
-
-    :param int prtad:
-        MMD Address
-
-    :param int devad:
-        MMD DEVAD
-
-    :param u32 data:
-        data to write in the MMD register
-
-.. _`phy_write_mmd_indirect.description`:
-
-Description
------------
-
-Write data from the MMD registers of the specified
-phy address.
 
 .. _`phy_module_driver`:
 

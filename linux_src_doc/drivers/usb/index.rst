@@ -15,6 +15,7 @@ usb
     core/index
     dwc2/index
     dwc3/index
+    early/index
     gadget/index
     host/index
     isp1760/index
@@ -23,5 +24,6 @@ usb
     musb/index
     phy/index
     serial/index
+    typec/index
     usbip/index
     wusbcore/index

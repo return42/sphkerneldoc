@@ -57,6 +57,25 @@ hns_nic_init_phy
     :param struct hnae_handle \*h:
         *undescribed*
 
+.. _`hns_nic_clear_all_rx_fetch`:
+
+hns_nic_clear_all_rx_fetch
+==========================
+
+.. c:function:: int hns_nic_clear_all_rx_fetch(struct net_device *ndev)
+
+    clear the chip fetched descriptions. The function as follows: 1. if one rx ring has found the page_offset is not equal 0 between head and tail, it means that the chip fetched the wrong descs for the ring which buffer size is 4096. 2. we set the chip serdes loopback and set rss indirection to the ring. 3. construct 64-bytes ip broadcast packages, wait the associated rx ring recieving all packages and it will fetch new descriptions. 4. recover to the original state.
+
+    :param struct net_device \*ndev:
+        *undescribed*
+
+.. _`hns_nic_clear_all_rx_fetch.description`:
+
+Description
+-----------
+
+@ndev: net device
+
 .. _`hns_set_multicast_list`:
 
 hns_set_multicast_list

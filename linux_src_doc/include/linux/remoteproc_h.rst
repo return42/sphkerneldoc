@@ -651,6 +651,7 @@ Definition
         RPROC_SUSPENDED,
         RPROC_RUNNING,
         RPROC_CRASHED,
+        RPROC_DELETED,
         RPROC_LAST
     };
 
@@ -671,6 +672,9 @@ RPROC_RUNNING
 
 RPROC_CRASHED
     device has crashed; need to start recovery
+
+RPROC_DELETED
+    device is deleted
 
 RPROC_LAST
     just keep this one at the end
@@ -766,7 +770,6 @@ Definition
         int num_traces;
         struct list_head carveouts;
         struct list_head mappings;
-        struct completion firmware_loading_complete;
         u32 bootaddr;
         struct list_head rvdevs;
         struct list_head subdevs;
@@ -778,6 +781,7 @@ Definition
         bool recovery_disabled;
         int max_notifyid;
         struct resource_table *table_ptr;
+        struct resource_table *cached_table;
         bool has_iommu;
         bool auto_boot;
     }
@@ -835,9 +839,6 @@ carveouts
 mappings
     list of iommu mappings we initiated, needed on shutdown
 
-firmware_loading_complete
-    marks e/o asynchronous firmware loading
-
 bootaddr
     address of first instruction to boot rproc with (optional)
 
@@ -869,7 +870,10 @@ max_notifyid
     largest allocated notify id.
 
 table_ptr
-    our copy of the resource table
+    pointer to the resource table in effect
+
+cached_table
+    copy of the resource table
 
 has_iommu
     flag to indicate if remote processor is behind an MMU

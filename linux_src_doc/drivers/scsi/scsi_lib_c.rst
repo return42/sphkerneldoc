@@ -35,7 +35,7 @@ file.
 scsi_execute
 ============
 
-.. c:function:: int scsi_execute(struct scsi_device *sdev, const unsigned char *cmd, int data_direction, void *buffer, unsigned bufflen, unsigned char *sense, int timeout, int retries, u64 flags, int *resid)
+.. c:function:: int scsi_execute(struct scsi_device *sdev, const unsigned char *cmd, int data_direction, void *buffer, unsigned bufflen, unsigned char *sense, struct scsi_sense_hdr *sshdr, int timeout, int retries, u64 flags, req_flags_t rq_flags, int *resid)
 
     insert request and wait for the result
 
@@ -57,6 +57,9 @@ scsi_execute
     :param unsigned char \*sense:
         optional sense buffer
 
+    :param struct scsi_sense_hdr \*sshdr:
+        optional decoded sense header
+
     :param int timeout:
         request timeout in seconds
 
@@ -64,7 +67,10 @@ scsi_execute
         number of times to retry request
 
     :param u64 flags:
-        or into request flags;
+        flags for ->cmd_flags
+
+    :param req_flags_t rq_flags:
+        flags for ->rq_flags
 
     :param int \*resid:
         optional residual length
@@ -74,8 +80,8 @@ scsi_execute
 Description
 -----------
 
-returns the req->errors value which is the scsi_cmnd result
-field.
+Returns the scsi_cmnd result field if a command was executed, or a negative
+Linux error code if we didn't get that far.
 
 .. _`__scsi_error_from_host_byte`:
 
@@ -155,6 +161,26 @@ calls \ :c:func:`blk_complete_request`\  for further processing.
 
 This function is interrupt context safe.
 
+.. _`scsi_device_from_queue`:
+
+scsi_device_from_queue
+======================
+
+.. c:function:: struct scsi_device *scsi_device_from_queue(struct request_queue *q)
+
+    return sdev associated with a request_queue
+
+    :param struct request_queue \*q:
+        The request queue to return the sdev from
+
+.. _`scsi_device_from_queue.description`:
+
+Description
+-----------
+
+Return the sdev associated with a request queue or NULL if the
+request_queue does not reference a SCSI device.
+
 .. _`scsi_mode_select`:
 
 scsi_mode_select
@@ -200,8 +226,8 @@ scsi_mode_select
 Description
 -----------
 
-Returns zero if successful; negative error number or scsi
-status on error
+     Returns zero if successful; negative error number or scsi
+     status on error
 
 .. _`scsi_mode_sense`:
 
@@ -245,16 +271,16 @@ scsi_mode_sense
 Description
 -----------
 
-Returns zero if unsuccessful, or the header offset (either 4
-or 8 depending on whether a six or ten byte command was
-issued) if successful.
+     Returns zero if unsuccessful, or the header offset (either 4
+     or 8 depending on whether a six or ten byte command was
+     issued) if successful.
 
 .. _`scsi_test_unit_ready`:
 
 scsi_test_unit_ready
 ====================
 
-.. c:function:: int scsi_test_unit_ready(struct scsi_device *sdev, int timeout, int retries, struct scsi_sense_hdr *sshdr_external)
+.. c:function:: int scsi_test_unit_ready(struct scsi_device *sdev, int timeout, int retries, struct scsi_sense_hdr *sshdr)
 
     test if unit is ready
 
@@ -267,18 +293,16 @@ scsi_test_unit_ready
     :param int retries:
         number of retries before failing
 
-    :param struct scsi_sense_hdr \*sshdr_external:
-        Optional pointer to struct scsi_sense_hdr for
-        returning sense. Make sure that this is cleared before passing
-        in.
+    :param struct scsi_sense_hdr \*sshdr:
+        outpout pointer for decoded sense information.
 
 .. _`scsi_test_unit_ready.description`:
 
 Description
 -----------
 
-Returns zero if unsuccessful or an error if TUR failed.  For
-removable media, UNIT_ATTENTION sets ->changed flag.
+     Returns zero if unsuccessful or an error if TUR failed.  For
+     removable media, UNIT_ATTENTION sets ->changed flag.
 
 .. _`scsi_device_set_state`:
 
@@ -300,8 +324,8 @@ scsi_device_set_state
 Description
 -----------
 
-Returns zero if unsuccessful or an error if the requested
-transition is illegal.
+     Returns zero if unsuccessful or an error if the requested
+     transition is illegal.
 
 .. _`scsi_evt_emit`:
 
@@ -323,7 +347,7 @@ scsi_evt_emit
 Description
 -----------
 
-Send a single uevent (scsi_event) to the associated scsi_device.
+     Send a single uevent (scsi_event) to the associated scsi_device.
 
 .. _`scsi_evt_thread`:
 
@@ -342,8 +366,8 @@ scsi_evt_thread
 Description
 -----------
 
-Dispatch queued events to their associated scsi_device kobjects
-as uevents.
+     Dispatch queued events to their associated scsi_device kobjects
+     as uevents.
 
 .. _`sdev_evt_send`:
 
@@ -365,7 +389,7 @@ sdev_evt_send
 Description
 -----------
 
-Assert scsi device event asynchronously.
+     Assert scsi device event asynchronously.
 
 .. _`sdev_evt_alloc`:
 
@@ -387,7 +411,7 @@ sdev_evt_alloc
 Description
 -----------
 
-Allocates and returns a new scsi_event.
+     Allocates and returns a new scsi_event.
 
 .. _`sdev_evt_send_simple`:
 
@@ -412,7 +436,7 @@ sdev_evt_send_simple
 Description
 -----------
 
-Assert scsi device event asynchronously, given an event type.
+     Assert scsi device event asynchronously, given an event type.
 
 .. _`scsi_request_fn_active`:
 
@@ -463,16 +487,16 @@ scsi_device_quiesce
 Description
 -----------
 
-This works by trying to transition to the SDEV_QUIESCE state
-(which must be a legal transition).  When the device is in this
-state, only special requests will be accepted, all others will
-be deferred.  Since special requests may also be requeued requests,
-a successful return doesn't guarantee the device will be
-totally quiescent.
+     This works by trying to transition to the SDEV_QUIESCE state
+     (which must be a legal transition).  When the device is in this
+     state, only special requests will be accepted, all others will
+     be deferred.  Since special requests may also be requeued requests,
+     a successful return doesn't guarantee the device will be
+     totally quiescent.
 
-Must be called with user context, may sleep.
+     Must be called with user context, may sleep.
 
-Returns zero if unsuccessful or an error if not.
+     Returns zero if unsuccessful or an error if not.
 
 .. _`scsi_device_resume`:
 
@@ -491,22 +515,26 @@ scsi_device_resume
 Description
 -----------
 
-Moves the device from quiesced back to running and restarts the
-queues.
+     Moves the device from quiesced back to running and restarts the
+     queues.
 
-Must be called with user context, may sleep.
+     Must be called with user context, may sleep.
 
 .. _`scsi_internal_device_block`:
 
 scsi_internal_device_block
 ==========================
 
-.. c:function:: int scsi_internal_device_block(struct scsi_device *sdev)
+.. c:function:: int scsi_internal_device_block(struct scsi_device *sdev, bool wait)
 
     internal function to put a device temporarily into the SDEV_BLOCK state
 
     :param struct scsi_device \*sdev:
         device to block
+
+    :param bool wait:
+        Whether or not to wait until ongoing .queuecommand() /
+        .queue_rq() calls have finished.
 
 .. _`scsi_internal_device_block.description`:
 
@@ -523,17 +551,12 @@ Returns zero if successful or error if not
 Notes
 -----
 
-This routine transitions the device to the SDEV_BLOCK state
-(which must be a legal transition).  When the device is in this
-state, all commands are deferred until the scsi lld reenables
-the device with scsi_device_unblock or device_block_tmo fires.
+     This routine transitions the device to the SDEV_BLOCK state
+     (which must be a legal transition).  When the device is in this
+     state, all commands are deferred until the scsi lld reenables
+     the device with scsi_device_unblock or device_block_tmo fires.
 
-.. _`scsi_internal_device_block.to-do`:
-
-To do
------
-
-avoid that \ :c:func:`scsi_send_eh_cmnd`\  calls \ :c:func:`queuecommand`\  after
+To do: avoid that \ :c:func:`scsi_send_eh_cmnd`\  calls \ :c:func:`queuecommand`\  after
 \ :c:func:`scsi_internal_device_block`\  has blocked a SCSI device and also
 remove the rport mutex lock and unlock calls from \ :c:func:`srp_queuecommand`\ .
 
@@ -568,9 +591,9 @@ Returns zero if successful or error if not.
 Notes
 -----
 
-This routine transitions the device to the SDEV_RUNNING state
-or to one of the offline states (which must be a legal transition)
-allowing the midlayer to goose the queue for this device.
+     This routine transitions the device to the SDEV_RUNNING state
+     or to one of the offline states (which must be a legal transition)
+     allowing the midlayer to goose the queue for this device.
 
 .. _`scsi_kmap_atomic_sg`:
 

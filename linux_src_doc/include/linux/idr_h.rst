@@ -6,11 +6,11 @@
 idr_get_cursor
 ==============
 
-.. c:function:: unsigned int idr_get_cursor(struct idr *idr)
+.. c:function:: unsigned int idr_get_cursor(const struct idr *idr)
 
     Return the current position of the cyclic allocator
 
-    :param struct idr \*idr:
+    :param const struct idr \*idr:
         idr handle
 
 .. _`idr_get_cursor.description`:
@@ -70,11 +70,11 @@ function.  See \ :c:func:`idr_preload`\  for details.
 idr_find
 ========
 
-.. c:function:: void *idr_find(struct idr *idr, int id)
+.. c:function:: void *idr_find(const struct idr *idr, int id)
 
     return pointer for given id
 
-    :param struct idr \*idr:
+    :param const struct idr \*idr:
         idr handle
 
     :param int id:
@@ -97,15 +97,15 @@ pointers lifetimes are correctly managed.
 idr_for_each_entry
 ==================
 
-.. c:function::  idr_for_each_entry( idp,  entry,  id)
+.. c:function::  idr_for_each_entry( idr,  entry,  id)
 
     iterate over an idr's elements of a given type
 
-    :param  idp:
+    :param  idr:
         idr handle
 
     :param  entry:
-        the type \* to use as cursor
+        the type * to use as cursor
 
     :param  id:
         id entry's key
@@ -124,15 +124,15 @@ is convenient for a "not found" value.
 idr_for_each_entry_continue
 ===========================
 
-.. c:function::  idr_for_each_entry_continue( idp,  entry,  id)
+.. c:function::  idr_for_each_entry_continue( idr,  entry,  id)
 
     continue iteration over an idr's elements of a given type
 
-    :param  idp:
+    :param  idr:
         idr handle
 
     :param  entry:
-        the type \* to use as cursor
+        the type * to use as cursor
 
     :param  id:
         id entry's key

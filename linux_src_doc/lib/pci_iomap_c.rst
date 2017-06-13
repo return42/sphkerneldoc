@@ -27,8 +27,8 @@ pci_iomap_range
 Description
 -----------
 
-Using this function you will get a \__iomem address to your device BAR.
-You can access it using ioread\*() and iowrite\*(). These functions hide
+Using this function you will get a __iomem address to your device BAR.
+You can access it using ioread*() and iowrite*(). These functions hide
 the details if this is a MMIO or PIO address space and will just do what
 you expect from them in the correct way.
 
@@ -61,8 +61,8 @@ pci_iomap_wc_range
 Description
 -----------
 
-Using this function you will get a \__iomem address to your device BAR.
-You can access it using ioread\*() and iowrite\*(). These functions hide
+Using this function you will get a __iomem address to your device BAR.
+You can access it using ioread*() and iowrite*(). These functions hide
 the details if this is a MMIO or PIO address space and will just do what
 you expect from them in the correct way. When possible write combining
 is used.
@@ -93,8 +93,8 @@ pci_iomap
 Description
 -----------
 
-Using this function you will get a \__iomem address to your device BAR.
-You can access it using ioread\*() and iowrite\*(). These functions hide
+Using this function you will get a __iomem address to your device BAR.
+You can access it using ioread*() and iowrite*(). These functions hide
 the details if this is a MMIO or PIO address space and will just do what
 you expect from them in the correct way.
 
@@ -124,8 +124,8 @@ pci_iomap_wc
 Description
 -----------
 
-Using this function you will get a \__iomem address to your device BAR.
-You can access it using ioread\*() and iowrite\*(). These functions hide
+Using this function you will get a __iomem address to your device BAR.
+You can access it using ioread*() and iowrite*(). These functions hide
 the details if this is a MMIO or PIO address space and will just do what
 you expect from them in the correct way. When possible write combining
 is used.

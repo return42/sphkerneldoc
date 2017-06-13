@@ -425,6 +425,21 @@ Description
 This routine is used to signal that a key has been pressed on the
 remote control. The driver must manually call \ :c:func:`rc_keyup`\  at a later stage.
 
+.. _`rc_validate_filter`:
+
+rc_validate_filter
+==================
+
+.. c:function:: int rc_validate_filter(struct rc_dev *dev, struct rc_scancode_filter *filter)
+
+    checks that the scancode and mask are valid and provides sensible defaults
+
+    :param struct rc_dev \*dev:
+        the struct rc_dev descriptor of the device
+
+    :param struct rc_scancode_filter \*filter:
+        the scancode and mask
+
 .. _`rc_filter_attribute`:
 
 struct rc_filter_attribute
@@ -468,7 +483,7 @@ show_protocols
 
 .. c:function:: ssize_t show_protocols(struct device *device, struct device_attribute *mattr, char *buf)
 
-    shows the current/wakeup IR protocol(s)
+    shows the current IR protocol(s)
 
     :param struct device \*device:
         the device descriptor
@@ -485,7 +500,7 @@ Description
 -----------
 
 This routine is a callback routine for input read the IR protocol type(s).
-it is trigged by reading /sys/class/rc/rc?/[wakeup_]protocols.
+it is trigged by reading /sys/class/rc/rc?/protocols.
 It returns the protocol names of supported protocols.
 Enabled protocols are printed in brackets.
 
@@ -623,6 +638,70 @@ compared against input scancodes and non-matching scancodes are discarded.
 
 dev->lock is taken to guard against races between device registration,
 store_filter and show_filter.
+
+.. _`show_wakeup_protocols`:
+
+show_wakeup_protocols
+=====================
+
+.. c:function:: ssize_t show_wakeup_protocols(struct device *device, struct device_attribute *mattr, char *buf)
+
+    shows the wakeup IR protocol
+
+    :param struct device \*device:
+        the device descriptor
+
+    :param struct device_attribute \*mattr:
+        the device attribute struct
+
+    :param char \*buf:
+        a pointer to the output buffer
+
+.. _`show_wakeup_protocols.description`:
+
+Description
+-----------
+
+This routine is a callback routine for input read the IR protocol type(s).
+it is trigged by reading /sys/class/rc/rc?/wakeup_protocols.
+It returns the protocol names of supported protocols.
+The enabled protocols are printed in brackets.
+
+dev->lock is taken to guard against races between device
+registration, store_protocols and show_protocols.
+
+.. _`store_wakeup_protocols`:
+
+store_wakeup_protocols
+======================
+
+.. c:function:: ssize_t store_wakeup_protocols(struct device *device, struct device_attribute *mattr, const char *buf, size_t len)
+
+    changes the wakeup IR protocol(s)
+
+    :param struct device \*device:
+        the device descriptor
+
+    :param struct device_attribute \*mattr:
+        the device attribute struct
+
+    :param const char \*buf:
+        a pointer to the input buffer
+
+    :param size_t len:
+        length of the input buffer
+
+.. _`store_wakeup_protocols.description`:
+
+Description
+-----------
+
+This routine is for changing the IR protocol type.
+It is trigged by writing to /sys/class/rc/rc?/wakeup_protocols.
+Returns \ ``len``\  on success or a negative error code.
+
+dev->lock is taken to guard against races between device
+registration, store_protocols and show_protocols.
 
 .. This file was automatic generated / don't edit.
 

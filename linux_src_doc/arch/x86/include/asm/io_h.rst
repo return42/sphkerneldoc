@@ -18,13 +18,13 @@ virt_to_phys
 Description
 -----------
 
-The returned physical address is the physical (CPU) mapping for
-the memory address given. It is only valid to use this function on
-addresses directly mapped or allocated via kmalloc.
+     The returned physical address is the physical (CPU) mapping for
+     the memory address given. It is only valid to use this function on
+     addresses directly mapped or allocated via kmalloc.
 
-This function does not give bus mappings for DMA transfers. In
-almost all conceivable cases a device driver should not be using
-this function
+     This function does not give bus mappings for DMA transfers. In
+     almost all conceivable cases a device driver should not be using
+     this function
 
 .. _`phys_to_virt`:
 
@@ -43,20 +43,20 @@ phys_to_virt
 Description
 -----------
 
-The returned virtual address is a current CPU mapping for
-the memory address given. It is only valid to use this function on
-addresses that have a kernel mapping
+     The returned virtual address is a current CPU mapping for
+     the memory address given. It is only valid to use this function on
+     addresses that have a kernel mapping
 
-This function does not handle bus mappings for DMA transfers. In
-almost all conceivable cases a device driver should not be using
-this function
+     This function does not handle bus mappings for DMA transfers. In
+     almost all conceivable cases a device driver should not be using
+     this function
 
-.. _`ioremap_nocache`:
+.. _`ioremap`:
 
-ioremap_nocache
-===============
+ioremap
+=======
 
-.. c:function:: void __iomem *ioremap_nocache(resource_size_t offset, unsigned long size)
+.. c:function:: void __iomem *ioremap(resource_size_t offset, unsigned long size)
 
     map bus memory into CPU space
 
@@ -66,7 +66,7 @@ ioremap_nocache
     :param unsigned long size:
         size of the resource to map
 
-.. _`ioremap_nocache.description`:
+.. _`ioremap.description`:
 
 Description
 -----------
@@ -79,6 +79,75 @@ address.
 
 If the area you are trying to map is a PCI BAR you should have a
 look at \ :c:func:`pci_iomap`\ .
+
+.. _`memset_io`:
+
+memset_io
+=========
+
+.. c:function:: void memset_io(volatile void __iomem *addr, unsigned char val, size_t count)
+
+    :param volatile void __iomem \*addr:
+        The beginning of the I/O-memory range to set
+
+    :param unsigned char val:
+        The value to set the memory to
+
+    :param size_t count:
+        The number of bytes to set
+
+.. _`memset_io.description`:
+
+Description
+-----------
+
+Set a range of I/O memory to a given value.
+
+.. _`memcpy_fromio`:
+
+memcpy_fromio
+=============
+
+.. c:function:: void memcpy_fromio(void *dst, const volatile void __iomem *src, size_t count)
+
+    :param void \*dst:
+        The (RAM) destination for the copy
+
+    :param const volatile void __iomem \*src:
+        The (I/O memory) source for the data
+
+    :param size_t count:
+        The number of bytes to copy
+
+.. _`memcpy_fromio.description`:
+
+Description
+-----------
+
+Copy a block of data from I/O memory.
+
+.. _`memcpy_toio`:
+
+memcpy_toio
+===========
+
+.. c:function:: void memcpy_toio(volatile void __iomem *dst, const void *src, size_t count)
+
+    :param volatile void __iomem \*dst:
+        The (I/O memory) destination for the copy
+
+    :param const void \*src:
+        The (RAM) source for the data
+
+    :param size_t count:
+        The number of bytes to copy
+
+.. _`memcpy_toio.description`:
+
+Description
+-----------
+
+Copy a block of data to I/O memory.
 
 .. This file was automatic generated / don't edit.
 

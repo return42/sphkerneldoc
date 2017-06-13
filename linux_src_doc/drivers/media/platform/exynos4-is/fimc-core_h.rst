@@ -575,7 +575,7 @@ min_out_pixsize
     minimum output pixel size
 
 hor_offs_align
-    horizontal pixel offset aligment
+    horizontal pixel offset alignment
 
 min_vsize_align
     minimum vertical pixel size alignment

@@ -40,9 +40,9 @@ edd_release
 Description
 -----------
 
-This is called when the refcount of the edd structure
-reaches 0. This should happen right after we unregister,
-but just in case, we use the release callback anyway.
+     This is called when the refcount of the edd structure
+     reaches 0. This should happen right after we unregister,
+     but just in case, we use the release callback anyway.
 
 .. _`edd_dev_is_type`:
 

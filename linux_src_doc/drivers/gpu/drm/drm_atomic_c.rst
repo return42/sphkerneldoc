@@ -104,8 +104,8 @@ When the w/w mutex algorithm detects a deadlock we need to back off and drop
 all locks. So someone else could sneak in and change the current modeset
 configuration. Which means that all the state assembled in \ ``state``\  is no
 longer an atomic update to the current state, but to some arbitrary earlier
-state. Which could break assumptions the driver's ->atomic_check likely
-relies on.
+state. Which could break assumptions the driver's
+\ :c:type:`drm_mode_config_funcs.atomic_check <drm_mode_config_funcs>`\  likely relies on.
 
 Hence we must clear all cached state and completely start over, using this
 function.
@@ -184,9 +184,8 @@ drm_atomic_set_mode_for_crtc
 Description
 -----------
 
-Set a mode (originating from the kernel) on the desired CRTC state. Does
-not change any other state properties, including enable, active, or
-mode_changed.
+Set a mode (originating from the kernel) on the desired CRTC state and update
+the enable property.
 
 .. _`drm_atomic_set_mode_for_crtc.return`:
 
@@ -278,11 +277,10 @@ drm_atomic_crtc_set_property
 Description
 -----------
 
-Use this instead of calling crtc->atomic_set_property directly.
-This function handles generic/core properties and calls out to
-driver's ->atomic_set_property() for driver properties.  To ensure
-consistent behavior you must call this function rather than the
-driver hook directly.
+This function handles generic/core properties and calls out to driver's
+\ :c:type:`drm_crtc_funcs.atomic_set_property <drm_crtc_funcs>`\  for driver properties. To ensure
+consistent behavior you must call this function rather than the driver hook
+directly.
 
 .. _`drm_atomic_crtc_set_property.return`:
 
@@ -317,10 +315,10 @@ drm_atomic_crtc_get_property
 Description
 -----------
 
-This function handles generic/core properties and calls out to
-driver's ->atomic_get_property() for driver properties.  To ensure
-consistent behavior you must call this function rather than the
-driver hook directly.
+This function handles generic/core properties and calls out to driver's
+\ :c:type:`drm_crtc_funcs.atomic_get_property <drm_crtc_funcs>`\  for driver properties. To ensure
+consistent behavior you must call this function rather than the driver hook
+directly.
 
 .. _`drm_atomic_crtc_get_property.return`:
 
@@ -418,11 +416,10 @@ drm_atomic_plane_set_property
 Description
 -----------
 
-Use this instead of calling plane->atomic_set_property directly.
-This function handles generic/core properties and calls out to
-driver's ->atomic_set_property() for driver properties.  To ensure
-consistent behavior you must call this function rather than the
-driver hook directly.
+This function handles generic/core properties and calls out to driver's
+\ :c:type:`drm_plane_funcs.atomic_set_property <drm_plane_funcs>`\  for driver properties.  To ensure
+consistent behavior you must call this function rather than the driver hook
+directly.
 
 .. _`drm_atomic_plane_set_property.return`:
 
@@ -457,10 +454,10 @@ drm_atomic_plane_get_property
 Description
 -----------
 
-This function handles generic/core properties and calls out to
-driver's ->atomic_get_property() for driver properties.  To ensure
-consistent behavior you must call this function rather than the
-driver hook directly.
+This function handles generic/core properties and calls out to driver's
+\ :c:type:`drm_plane_funcs.atomic_get_property <drm_plane_funcs>`\  for driver properties.  To ensure
+consistent behavior you must call this function rather than the driver hook
+directly.
 
 .. _`drm_atomic_plane_get_property.return`:
 
@@ -558,11 +555,10 @@ drm_atomic_connector_set_property
 Description
 -----------
 
-Use this instead of calling connector->atomic_set_property directly.
-This function handles generic/core properties and calls out to
-driver's ->atomic_set_property() for driver properties.  To ensure
-consistent behavior you must call this function rather than the
-driver hook directly.
+This function handles generic/core properties and calls out to driver's
+\ :c:type:`drm_connector_funcs.atomic_set_property <drm_connector_funcs>`\  for driver properties.  To ensure
+consistent behavior you must call this function rather than the driver hook
+directly.
 
 .. _`drm_atomic_connector_set_property.return`:
 
@@ -597,10 +593,10 @@ drm_atomic_connector_get_property
 Description
 -----------
 
-This function handles generic/core properties and calls out to
-driver's ->atomic_get_property() for driver properties.  To ensure
-consistent behavior you must call this function rather than the
-driver hook directly.
+This function handles generic/core properties and calls out to driver's
+\ :c:type:`drm_connector_funcs.atomic_get_property <drm_connector_funcs>`\  for driver properties.  To ensure
+consistent behavior you must call this function rather than the driver hook
+directly.
 
 .. _`drm_atomic_connector_get_property.return`:
 
@@ -692,12 +688,11 @@ By using this drivers doesn't need to worry if the user choose
 implicit or explicit fencing.
 
 This function will not set the fence to the state if it was set
-via explicit fencing interfaces on the atomic ioctl. It will
-all drope the reference to the fence as we not storing it
-anywhere.
-
-Otherwise, if plane_state->fence is not set this function we
-just set it with the received implict fence.
+via explicit fencing interfaces on the atomic ioctl. In that case it will
+drop the reference to the fence as we are not storing it anywhere.
+Otherwise, if \ :c:type:`drm_plane_state.fence <drm_plane_state>`\  is not set this function we just set it
+with the received implicit fence. In both cases this function consumes a
+reference for \ ``fence``\ .
 
 .. _`drm_atomic_set_crtc_for_connector`:
 
@@ -877,10 +872,8 @@ Note that this function can return -EDEADLK if the driver needed to acquire
 more locks but encountered a deadlock. The caller must then do the usual w/w
 backoff dance and restart. All other errors are fatal.
 
-Also note that on successful execution ownership of \ ``state``\  is transferred
-from the caller of this function to the function itself. The caller must not
-free or in any other way access \ ``state``\ . If the function fails then the caller
-must clean up \ ``state``\  itself.
+This function will take its own reference on \ ``state``\ .
+Callers should always release their reference with \ :c:func:`drm_atomic_state_put`\ .
 
 .. _`drm_atomic_commit.return`:
 
@@ -896,7 +889,7 @@ drm_atomic_nonblocking_commit
 
 .. c:function:: int drm_atomic_nonblocking_commit(struct drm_atomic_state *state)
 
-    atomic&nonblocking configuration commit
+    atomic nonblocking commit
 
     :param struct drm_atomic_state \*state:
         atomic configuration to check
@@ -910,10 +903,8 @@ Note that this function can return -EDEADLK if the driver needed to acquire
 more locks but encountered a deadlock. The caller must then do the usual w/w
 backoff dance and restart. All other errors are fatal.
 
-Also note that on successful execution ownership of \ ``state``\  is transferred
-from the caller of this function to the function itself. The caller must not
-free or in any other way access \ ``state``\ . If the function fails then the caller
-must clean up \ ``state``\  itself.
+This function will take its own reference on \ ``state``\ .
+Callers should always release their reference with \ :c:func:`drm_atomic_state_put`\ .
 
 .. _`drm_atomic_nonblocking_commit.return`:
 
@@ -975,10 +966,10 @@ drm_atomic_clean_old_fb
 Description
 -----------
 
-Before doing an update plane->old_fb is set to plane->fb,
-but before dropping the locks old_fb needs to be set to NULL
-and plane->fb updated. This is a common operation for each
-atomic update, so this call is split off as a helper.
+Before doing an update \ :c:type:`drm_plane.old_fb <drm_plane>`\  is set to \ :c:type:`drm_plane.fb <drm_plane>`\ , but before
+dropping the locks old_fb needs to be set to NULL and plane->fb updated. This
+is a common operation for each atomic update, so this call is split off as a
+helper.
 
 .. This file was automatic generated / don't edit.
 

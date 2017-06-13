@@ -6,27 +6,24 @@
 vsp1_du_setup_lif
 =================
 
-.. c:function:: int vsp1_du_setup_lif(struct device *dev, unsigned int width, unsigned int height)
+.. c:function:: int vsp1_du_setup_lif(struct device *dev, const struct vsp1_du_lif_config *cfg)
 
     Setup the output part of the VSP pipeline
 
     :param struct device \*dev:
         the VSP device
 
-    :param unsigned int width:
-        output frame width in pixels
-
-    :param unsigned int height:
-        output frame height in pixels
+    :param const struct vsp1_du_lif_config \*cfg:
+        the LIF configuration
 
 .. _`vsp1_du_setup_lif.description`:
 
 Description
 -----------
 
-Configure the output part of VSP DRM pipeline for the given frame \ ``width``\  and
-\ ``height``\ . This sets up formats on the BRU source pad, the WPF0 sink and source
-pads, and the LIF sink pad.
+Configure the output part of VSP DRM pipeline for the given frame \ ``cfg``\ .width
+and \ ``cfg``\ .height. This sets up formats on the BRU source pad, the WPF0 sink
+and source pads, and the LIF sink pad.
 
 As the media bus code on the BRU source pad is conditioned by the
 configuration of the BRU sink 0 pad, we also set up the formats on all BRU

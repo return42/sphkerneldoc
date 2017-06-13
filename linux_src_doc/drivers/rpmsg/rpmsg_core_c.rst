@@ -269,6 +269,31 @@ Can only be called from process context (for now).
 
 Returns 0 on success and an appropriate error value on failure.
 
+.. _`rpmsg_poll`:
+
+rpmsg_poll
+==========
+
+.. c:function:: unsigned int rpmsg_poll(struct rpmsg_endpoint *ept, struct file *filp, poll_table *wait)
+
+    poll the endpoint's send buffers
+
+    :param struct rpmsg_endpoint \*ept:
+        the rpmsg endpoint
+
+    :param struct file \*filp:
+        file for \ :c:func:`poll_wait`\ 
+
+    :param poll_table \*wait:
+        poll_table for \ :c:func:`poll_wait`\ 
+
+.. _`rpmsg_poll.description`:
+
+Description
+-----------
+
+Returns mask representing the current state of the endpoint's send buffers
+
 .. _`rpmsg_trysend_offchannel`:
 
 rpmsg_trysend_offchannel

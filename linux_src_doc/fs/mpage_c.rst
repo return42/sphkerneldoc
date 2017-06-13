@@ -20,7 +20,7 @@ mpage_readpages
         issued in \ ``pages``\ ->prev to \ ``pages``\ ->next order.
 
     :param unsigned nr_pages:
-        The number of pages at \*@pages
+        The number of pages at *@pages
 
     :param get_block_t get_block:
         The filesystem's block mapper function.
@@ -60,7 +60,8 @@ So an mpage read of the first 16 blocks of an ext2 file will cause I/O to be
 submitted in the following order
 --------------------------------
 
-12 0 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16
+
+     12 0 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16
 
 because the indirect block has to be read to get the mappings of blocks
 13,14,15,16.  Obviously, this impacts performance.
@@ -85,7 +86,7 @@ mpage_writepages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*@wbc->nr_to_write
+        subtract the number of written pages from *@wbc->nr_to_write
 
     :param get_block_t get_block:
         the filesystem's block mapper function.

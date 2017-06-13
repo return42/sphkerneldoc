@@ -164,9 +164,9 @@ encode_rs8
 Description
 -----------
 
-The parity uses a uint16_t data type to enable
-symbol size > 8. The calling code must take care of encoding of the
-syndrome result for storage itself.
+ The parity uses a uint16_t data type to enable
+ symbol size > 8. The calling code must take care of encoding of the
+ syndrome result for storage itself.
 
 .. _`decode_rs8`:
 
@@ -209,10 +209,10 @@ decode_rs8
 Description
 -----------
 
-The syndrome and parity uses a uint16_t data type to enable
-symbol size > 8. The calling code must take care of decoding of the
-syndrome result and the received parity before calling this code.
-Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
+ The syndrome and parity uses a uint16_t data type to enable
+ symbol size > 8. The calling code must take care of decoding of the
+ syndrome result and the received parity before calling this code.
+ Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
 
 .. _`encode_rs16`:
 
@@ -243,7 +243,7 @@ encode_rs16
 Description
 -----------
 
-Each field in the data array contains up to symbol size bits of valid data.
+ Each field in the data array contains up to symbol size bits of valid data.
 
 .. _`decode_rs16`:
 
@@ -286,8 +286,8 @@ decode_rs16
 Description
 -----------
 
-Each field in the data array contains up to symbol size bits of valid data.
-Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
+ Each field in the data array contains up to symbol size bits of valid data.
+ Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
 
 .. This file was automatic generated / don't edit.
 

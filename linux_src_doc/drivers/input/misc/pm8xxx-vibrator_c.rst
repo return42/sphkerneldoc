@@ -21,6 +21,7 @@ Definition
         struct input_dev *vib_input_dev;
         struct work_struct work;
         struct regmap *regmap;
+        const struct pm8xxx_regs *regs;
         int speed;
         int level;
         bool active;
@@ -41,6 +42,9 @@ work
 regmap
     regmap for register read/write
 
+regs
+    registers' info
+
 speed
     speed of vibration set from userland
 
@@ -51,7 +55,7 @@ active
     state of vibrator
 
 reg_vib_drv
-    VIB_DRV register value
+    regs->drv_addr register value
 
 .. _`pm8xxx_vib_set`:
 

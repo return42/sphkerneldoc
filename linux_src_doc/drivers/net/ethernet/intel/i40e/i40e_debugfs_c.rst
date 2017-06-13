@@ -160,6 +160,33 @@ i40e_dbg_dump_veb_all
     :param struct i40e_pf \*pf:
         the i40e_pf created in command write
 
+.. _`i40e_dbg_dump_vf`:
+
+i40e_dbg_dump_vf
+================
+
+.. c:function:: void i40e_dbg_dump_vf(struct i40e_pf *pf, int vf_id)
+
+    dump VF info
+
+    :param struct i40e_pf \*pf:
+        the i40e_pf created in command write
+
+    :param int vf_id:
+        the vf_id from the user
+
+.. _`i40e_dbg_dump_vf_all`:
+
+i40e_dbg_dump_vf_all
+====================
+
+.. c:function:: void i40e_dbg_dump_vf_all(struct i40e_pf *pf)
+
+    dump VF info for all VFs
+
+    :param struct i40e_pf \*pf:
+        the i40e_pf created in command write
+
 .. _`i40e_dbg_command_write`:
 
 i40e_dbg_command_write

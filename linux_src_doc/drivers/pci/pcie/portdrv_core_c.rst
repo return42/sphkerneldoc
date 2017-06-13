@@ -21,44 +21,19 @@ Description
 Invoked automatically when device is being removed in response to
 device_unregister(dev).  Release all resources being claimed.
 
-.. _`pcie_port_msix_add_entry`:
-
-pcie_port_msix_add_entry
-========================
-
-.. c:function:: int pcie_port_msix_add_entry(struct msix_entry *entries, int new_entry, int nr_entries)
-
-    add entry to given array of MSI-X entries
-
-    :param struct msix_entry \*entries:
-        Array of MSI-X entries
-
-    :param int new_entry:
-        Index of the entry to add to the array
-
-    :param int nr_entries:
-        Number of entries already in the array
-
-.. _`pcie_port_msix_add_entry.return-value`:
-
-Return value
-------------
-
-Position of the added entry in the array
-
 .. _`pcie_port_enable_msix`:
 
 pcie_port_enable_msix
 =====================
 
-.. c:function:: int pcie_port_enable_msix(struct pci_dev *dev, int *vectors, int mask)
+.. c:function:: int pcie_port_enable_msix(struct pci_dev *dev, int *irqs, int mask)
 
     try to set up MSI-X as interrupt mode for given port
 
     :param struct pci_dev \*dev:
         PCI Express port to handle
 
-    :param int \*vectors:
+    :param int \*irqs:
         Array of interrupt vectors to populate
 
     :param int mask:
@@ -71,12 +46,12 @@ Return value
 
 0 on success, error code on failure
 
-.. _`init_service_irqs`:
+.. _`pcie_init_service_irqs`:
 
-init_service_irqs
-=================
+pcie_init_service_irqs
+======================
 
-.. c:function:: int init_service_irqs(struct pci_dev *dev, int *irqs, int mask)
+.. c:function:: int pcie_init_service_irqs(struct pci_dev *dev, int *irqs, int mask)
 
     initialize irqs for PCI Express port services
 
@@ -89,7 +64,7 @@ init_service_irqs
     :param int mask:
         Bitmask of port capabilities returned by \ :c:func:`get_port_device_capability`\ 
 
-.. _`init_service_irqs.return-value`:
+.. _`pcie_init_service_irqs.return-value`:
 
 Return value
 ------------

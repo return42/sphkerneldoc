@@ -305,6 +305,10 @@ ixgbe_cleanup_headers
 Description
 -----------
 
+Check if the skb is valid in the XDP case it will be an error pointer.
+Return true in this case to abort processing and advance to next
+descriptor.
+
 Check for corrupted packet headers caused by senders on the local L2
 embedded NIC switch not setting up their Tx Descriptors right.  These
 should be very rare.
@@ -344,7 +348,7 @@ Synchronizes page for reuse by the adapter
 ixgbe_add_rx_frag
 =================
 
-.. c:function:: bool ixgbe_add_rx_frag(struct ixgbe_ring *rx_ring, struct ixgbe_rx_buffer *rx_buffer, union ixgbe_adv_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: void ixgbe_add_rx_frag(struct ixgbe_ring *rx_ring, struct ixgbe_rx_buffer *rx_buffer, struct sk_buff *skb, unsigned int size)
 
     Add contents of Rx buffer to sk_buff
 
@@ -354,11 +358,11 @@ ixgbe_add_rx_frag
     :param struct ixgbe_rx_buffer \*rx_buffer:
         buffer containing page to add
 
-    :param union ixgbe_adv_rx_desc \*rx_desc:
-        descriptor containing length of buffer written by hardware
-
     :param struct sk_buff \*skb:
         sk_buff to place the data into
+
+    :param unsigned int size:
+        *undescribed*
 
 .. _`ixgbe_add_rx_frag.description`:
 
@@ -667,6 +671,44 @@ Description
 - X550(non-SRIOV mode): 512
 - X550(SRIOV mode):     64
 
+.. _`ixgbe_store_key`:
+
+ixgbe_store_key
+===============
+
+.. c:function:: void ixgbe_store_key(struct ixgbe_adapter *adapter)
+
+    Write the RSS key to HW
+
+    :param struct ixgbe_adapter \*adapter:
+        device handle
+
+.. _`ixgbe_store_key.description`:
+
+Description
+-----------
+
+Write the RSS key stored in adapter.rss_key to HW.
+
+.. _`ixgbe_init_rss_key`:
+
+ixgbe_init_rss_key
+==================
+
+.. c:function:: int ixgbe_init_rss_key(struct ixgbe_adapter *adapter)
+
+    Initialize adapter RSS key
+
+    :param struct ixgbe_adapter \*adapter:
+        device handle
+
+.. _`ixgbe_init_rss_key.description`:
+
+Description
+-----------
+
+Allocates and initializes the RSS key if it is not allocated.
+
 .. _`ixgbe_store_reta`:
 
 ixgbe_store_reta
@@ -974,6 +1016,18 @@ ixgbe_clean_all_tx_rings
     :param struct ixgbe_adapter \*adapter:
         board private structure
 
+.. _`ixgbe_set_eee_capable`:
+
+ixgbe_set_eee_capable
+=====================
+
+.. c:function:: void ixgbe_set_eee_capable(struct ixgbe_adapter *adapter)
+
+    helper function to determine EEE support on X550
+
+    :param struct ixgbe_adapter \*adapter:
+        board private structure
+
 .. _`ixgbe_tx_timeout`:
 
 ixgbe_tx_timeout
@@ -1057,9 +1111,12 @@ Return 0 on success, negative on failure
 ixgbe_setup_rx_resources
 ========================
 
-.. c:function:: int ixgbe_setup_rx_resources(struct ixgbe_ring *rx_ring)
+.. c:function:: int ixgbe_setup_rx_resources(struct ixgbe_adapter *adapter, struct ixgbe_ring *rx_ring)
 
     allocate Rx resources (Descriptors)
+
+    :param struct ixgbe_adapter \*adapter:
+        *undescribed*
 
     :param struct ixgbe_ring \*rx_ring:
         rx descriptor ring (for a specific queue) to setup

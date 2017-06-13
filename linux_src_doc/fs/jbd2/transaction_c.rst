@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/jbd2/transaction.c
 
-.. _`jbd2__journal_start`:
+.. _`jbd2_journal_start`:
 
-jbd2__journal_start
-===================
+jbd2_journal_start
+==================
 
-.. c:function:: handle_t *jbd2__journal_start(journal_t *journal, int nblocks, int rsv_blocks, gfp_t gfp_mask, unsigned int type, unsigned int line_no)
+.. c:function:: handle_t *jbd2_journal_start(journal_t *journal, int nblocks)
 
     Obtain a new handle.
 
@@ -16,19 +16,7 @@ jbd2__journal_start
     :param int nblocks:
         number of block buffer we might modify
 
-    :param int rsv_blocks:
-        *undescribed*
-
-    :param gfp_t gfp_mask:
-        *undescribed*
-
-    :param unsigned int type:
-        *undescribed*
-
-    :param unsigned int line_no:
-        *undescribed*
-
-.. _`jbd2__journal_start.description`:
+.. _`jbd2_journal_start.description`:
 
 Description
 -----------
@@ -205,15 +193,15 @@ jbd2_journal_get_write_access
     :param struct buffer_head \*bh:
         bh to be used for metadata writes
 
-.. _`jbd2_journal_get_write_access.description`:
+.. _`jbd2_journal_get_write_access.return`:
 
-Description
------------
+Return
+------
 
-Returns an error code or 0 on success.
+error code or 0 on success.
 
 In full data journalling mode the buffer may be of type BJ_AsyncData,
-because we're \ :c:func:`write`\ ing a buffer which is also part of a shared mapping.
+because we're ``write()ing`` a buffer which is also part of a shared mapping.
 
 .. _`jbd2_journal_get_create_access`:
 
@@ -338,13 +326,7 @@ Returns error number or 0 on success.
 Special care needs to be taken if the buffer already belongs to the
 current committing transaction (in which case we should have frozen
 data present for that commit).  In that case, we don't relink the
-
-.. _`jbd2_journal_dirty_metadata.buffer`:
-
-buffer
-------
-
-that only gets done when the old transaction finally
+buffer: that only gets done when the old transaction finally
 completes its commit.
 
 .. _`jbd2_journal_forget`:
@@ -425,7 +407,7 @@ jbd2_journal_try_to_free_buffers
 
     :param gfp_t gfp_mask:
         we use the mask to detect how hard should we try to release
-        buffers. If \__GFP_DIRECT_RECLAIM and \__GFP_FS is set, we wait for commit
+        buffers. If __GFP_DIRECT_RECLAIM and __GFP_FS is set, we wait for commit
         code to release the buffers.
 
 .. _`jbd2_journal_try_to_free_buffers.description`:
@@ -445,9 +427,9 @@ us to perform sync or async writeout.
 
 This complicates JBD locking somewhat.  We aren't protected by the
 BKL here.  We wish to remove the buffer from its committing or
-running transaction's ->t_datalist via \__jbd2_journal_unfile_buffer.
+running transaction's ->t_datalist via __jbd2_journal_unfile_buffer.
 
-This may \*change\* the value of transaction_t->t_datalist, so anyone
+This may *change* the value of transaction_t->t_datalist, so anyone
 who looks at t_datalist needs to lock against this function.
 
 Even worse, someone may be doing a jbd2_journal_dirty_data on this

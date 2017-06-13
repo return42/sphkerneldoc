@@ -37,8 +37,16 @@ sas_remove_host
 Description
 -----------
 
-Removes all SAS PHYs and remote PHYs for a given Scsi_Host.
-Must be called just before scsi_remove_host for SAS HBAs.
+Removes all SAS PHYs and remote PHYs for a given Scsi_Host and remove the
+Scsi_Host as well.
+
+.. _`sas_remove_host.note`:
+
+Note
+----
+
+Do not call \ :c:func:`scsi_remove_host`\  on the Scsi_Host any more, as it is
+already removed.
 
 .. _`sas_get_address`:
 
@@ -146,7 +154,7 @@ or sas_rphy.
 Return
 ------
 
-SAS PHY allocated or \ ``NULL``\  if the allocation failed.
+     SAS PHY allocated or \ ``NULL``\  if the allocation failed.
 
 .. _`sas_phy_add`:
 
@@ -191,8 +199,8 @@ Frees the specified SAS PHY.
 Note
 ----
 
-This function must only be called on a PHY that has not
-successfully been added using \ :c:func:`sas_phy_add`\ .
+  This function must only be called on a PHY that has not
+  successfully been added using \ :c:func:`sas_phy_add`\ .
 
 .. _`sas_phy_delete`:
 
@@ -231,7 +239,7 @@ scsi_is_sas_phy
 Return
 ------
 
-%1 if the device represents a SAS PHY, \ ``0``\  else
+     \ ``1``\  if the device represents a SAS PHY, \ ``0``\  else
 
 .. _`sas_port_add`:
 
@@ -276,8 +284,8 @@ Frees the specified SAS PORT.
 Note
 ----
 
-This function must only be called on a PORT that has not
-successfully been added using \ :c:func:`sas_port_add`\ .
+  This function must only be called on a PORT that has not
+  successfully been added using \ :c:func:`sas_port_add`\ .
 
 .. _`sas_port_delete`:
 
@@ -316,7 +324,7 @@ scsi_is_sas_port
 Return
 ------
 
-%1 if the device represents a SAS Port, \ ``0``\  else
+     \ ``1``\  if the device represents a SAS Port, \ ``0``\  else
 
 .. _`sas_port_get_phy`:
 
@@ -387,7 +395,7 @@ sas_rphy_initialize
 
 .. c:function:: void sas_rphy_initialize(struct sas_rphy *rphy)
 
-    common rphy intialization
+    common rphy initialization
 
     :param struct sas_rphy \*rphy:
         rphy to initialise
@@ -424,7 +432,7 @@ Allocates an SAS remote PHY structure, connected to \ ``parent``\ .
 Return
 ------
 
-SAS PHY allocated or \ ``NULL``\  if the allocation failed.
+     SAS PHY allocated or \ ``NULL``\  if the allocation failed.
 
 .. _`sas_expander_alloc`:
 
@@ -453,7 +461,7 @@ Allocates an SAS remote PHY structure, connected to \ ``parent``\ .
 Return
 ------
 
-SAS PHY allocated or \ ``NULL``\  if the allocation failed.
+     SAS PHY allocated or \ ``NULL``\  if the allocation failed.
 
 .. _`sas_rphy_add`:
 
@@ -498,9 +506,9 @@ Frees the specified SAS remote PHY.
 Note
 ----
 
-This function must only be called on a remote
-PHY that has not successfully been added using
-\ :c:func:`sas_rphy_add`\  (or has been \ :c:func:`sas_rphy_remove`\ 'd)
+  This function must only be called on a remote
+  PHY that has not successfully been added using
+  \ :c:func:`sas_rphy_add`\  (or has been \ :c:func:`sas_rphy_remove`\ 'd)
 
 .. _`sas_rphy_delete`:
 
@@ -576,7 +584,7 @@ scsi_is_sas_rphy
 Return
 ------
 
-%1 if the device represents a SAS remote PHY, \ ``0``\  else
+     \ ``1``\  if the device represents a SAS remote PHY, \ ``0``\  else
 
 .. _`sas_attach_transport`:
 

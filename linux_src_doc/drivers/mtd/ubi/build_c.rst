@@ -194,42 +194,6 @@ This function searches UBI device number object by its major number. If UBI
 device was not found, this function returns -ENODEV, otherwise the UBI device
 number is returned.
 
-.. _`ubi_sysfs_init`:
-
-ubi_sysfs_init
-==============
-
-.. c:function:: int ubi_sysfs_init(struct ubi_device *ubi, int *ref)
-
-    initialize sysfs for an UBI device.
-
-    :param struct ubi_device \*ubi:
-        UBI device description object
-
-    :param int \*ref:
-        set to \ ``1``\  on exit in case of failure if a reference to \ ``ubi``\ ->dev was
-        taken
-
-.. _`ubi_sysfs_init.description`:
-
-Description
------------
-
-This function returns zero in case of success and a negative error code in
-case of failure.
-
-.. _`ubi_sysfs_close`:
-
-ubi_sysfs_close
-===============
-
-.. c:function:: void ubi_sysfs_close(struct ubi_device *ubi)
-
-    close sysfs for an UBI device.
-
-    :param struct ubi_device \*ubi:
-        UBI device description object
-
 .. _`kill_volumes`:
 
 kill_volumes
@@ -247,16 +211,12 @@ kill_volumes
 uif_init
 ========
 
-.. c:function:: int uif_init(struct ubi_device *ubi, int *ref)
+.. c:function:: int uif_init(struct ubi_device *ubi)
 
     initialize user interfaces for an UBI device.
 
     :param struct ubi_device \*ubi:
         UBI device description object
-
-    :param int \*ref:
-        set to \ ``1``\  on exit in case of failure if a reference to \ ``ubi``\ ->dev was
-        taken, otherwise set to \ ``0``\ 
 
 .. _`uif_init.description`:
 
@@ -265,12 +225,7 @@ Description
 
 This function initializes various user interfaces for an UBI device. If the
 initialization fails at an early stage, this function frees all the
-resources it allocated, returns an error, and \ ``ref``\  is set to \ ``0``\ . However,
-if the initialization fails after the UBI device was registered in the
-driver core subsystem, this function takes a reference to \ ``ubi``\ ->dev, because
-otherwise the release function ('dev_release()') would free whole \ ``ubi``\ 
-object. The \ ``ref``\  argument is set to \ ``1``\  in this case. The caller has to put
-this reference.
+resources it allocated, returns an error.
 
 This function returns zero in case of success and a negative error code in
 case of failure.

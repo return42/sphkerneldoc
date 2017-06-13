@@ -257,18 +257,6 @@ Description
 
 Called by a notifier that uses devfreq->nb.
 
-.. _`_remove_devfreq`:
-
-_remove_devfreq
-===============
-
-.. c:function:: void _remove_devfreq(struct devfreq *devfreq)
-
-    Remove devfreq from the list and release its resources.
-
-    :param struct devfreq \*devfreq:
-        the devfreq struct
-
 .. _`devfreq_dev_release`:
 
 devfreq_dev_release
@@ -286,7 +274,7 @@ devfreq_dev_release
 Description
 -----------
 
-This calls \_remove_devfreq() if \_remove_devfreq() is not called.
+Remove devfreq from the list and release its resources.
 
 .. _`devfreq_add_device`:
 
@@ -459,16 +447,13 @@ devfreq_recommended_opp
     :param u32 flags:
         Flags handed from devfreq framework.
 
-.. _`devfreq_recommended_opp.locking`:
+.. _`devfreq_recommended_opp.description`:
 
-Locking
--------
+Description
+-----------
 
-This function must be called under \ :c:func:`rcu_read_lock`\ . opp is a rcu
-protected pointer. The reason for the same is that the opp pointer which is
-returned will remain valid for use with opp_get_{voltage, freq} only while
-under the locked area. The pointer returned must be used prior to unlocking
-with \ :c:func:`rcu_read_unlock`\  to maintain the integrity of the pointer.
+The callers are required to call \ :c:func:`dev_pm_opp_put`\  for the returned OPP after
+use.
 
 .. _`devfreq_register_opp_notifier`:
 

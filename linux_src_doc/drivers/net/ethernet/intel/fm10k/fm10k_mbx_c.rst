@@ -1491,7 +1491,7 @@ on error.
 fm10k_sm_mbx_process_reset
 ==========================
 
-.. c:function:: void fm10k_sm_mbx_process_reset(struct fm10k_hw *hw, struct fm10k_mbx_info *mbx)
+.. c:function:: s32 fm10k_sm_mbx_process_reset(struct fm10k_hw *hw, struct fm10k_mbx_info *mbx)
 
     Process header with version == 0 (RESET)
 

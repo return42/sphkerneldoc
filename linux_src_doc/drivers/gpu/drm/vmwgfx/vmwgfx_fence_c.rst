@@ -165,6 +165,31 @@ vmw_fence_fifo_down
     :param struct vmw_fence_manager \*fman:
         *undescribed*
 
+.. _`vmw_fence_obj_lookup`:
+
+vmw_fence_obj_lookup
+====================
+
+.. c:function:: struct ttm_base_object *vmw_fence_obj_lookup(struct ttm_object_file *tfile, u32 handle)
+
+    Look up a user-space fence object
+
+    :param struct ttm_object_file \*tfile:
+        A struct ttm_object_file identifying the caller.
+
+    :param u32 handle:
+        A handle identifying the fence object.
+
+.. _`vmw_fence_obj_lookup.description`:
+
+Description
+-----------
+
+The fence object is looked up and type-checked. The caller needs
+to have opened the fence object first, but since that happens on
+creation and fence objects aren't shareable, that's not an
+issue currently.
+
 .. _`vmw_event_fence_action_seq_passed`:
 
 vmw_event_fence_action_seq_passed

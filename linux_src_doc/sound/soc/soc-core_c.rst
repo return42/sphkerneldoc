@@ -18,7 +18,7 @@ snd_soc_find_dai
 Description
 -----------
 
-This function will search all regsitered components and their DAIs to
+This function will search all registered components and their DAIs to
 find the DAI of the same name. The component's of_node and name
 should also match if being specified.
 
@@ -48,7 +48,7 @@ snd_soc_find_dai_link
         DAI link name to match, optional
 
     :param const char \*stream_name:
-        *undescribed*
+        DAI link stream name to match, optional
 
 .. _`snd_soc_find_dai_link.description`:
 
@@ -153,6 +153,56 @@ Note
 
 For setups with a static format set the dai_fmt field in the
 corresponding snd_dai_link struct instead of using this function.
+
+Returns 0 on success, otherwise a negative error code.
+
+.. _`snd_soc_set_dmi_name`:
+
+snd_soc_set_dmi_name
+====================
+
+.. c:function:: int snd_soc_set_dmi_name(struct snd_soc_card *card, const char *flavour)
+
+    Register DMI names to card
+
+    :param struct snd_soc_card \*card:
+        The card to register DMI names
+
+    :param const char \*flavour:
+        The flavour "differentiator" for the card amongst its peers.
+
+.. _`snd_soc_set_dmi_name.description`:
+
+Description
+-----------
+
+An Intel machine driver may be used by many different devices but are
+difficult for userspace to differentiate, since machine drivers ususally
+use their own name as the card short name and leave the card long name
+blank. To differentiate such devices and fix bugs due to lack of
+device-specific configurations, this function allows DMI info to be used
+as the sound card long name, in the format of
+"vendor-product-version-board"
+(Character '-' is used to separate different DMI fields here).
+This will help the user space to load the device-specific Use Case Manager
+(UCM) configurations for the card.
+
+.. _`snd_soc_set_dmi_name.possible-card-long-names-may-be`:
+
+Possible card long names may be
+-------------------------------
+
+DellInc.-XPS139343-01-0310JH
+ASUSTeKCOMPUTERINC.-T100TA-1.0-T100TA
+Circuitco-MinnowboardMaxD0PLATFORM-D0-MinnowBoardMAX
+
+This function also supports flavoring the card longname to provide
+the extra differentiation, like "vendor-product-version-board-flavor".
+
+We only keep number and alphabet characters and a few separator characters
+in the card long name since UCM in the user space uses the card long names
+as card configuration directory names and AudoConf cannot support special
+charactors like SPACE.
 
 Returns 0 on success, otherwise a negative error code.
 

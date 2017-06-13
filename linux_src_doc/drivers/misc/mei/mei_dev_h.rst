@@ -513,10 +513,10 @@ Definition
         struct device *dev;
         struct cdev cdev;
         int minor;
-        struct mei_cl_cb write_list;
-        struct mei_cl_cb write_waiting_list;
-        struct mei_cl_cb ctrl_wr_list;
-        struct mei_cl_cb ctrl_rd_list;
+        struct list_head write_list;
+        struct list_head write_waiting_list;
+        struct list_head ctrl_wr_list;
+        struct list_head ctrl_rd_list;
         struct list_head file_list;
         long open_handle_count;
         struct mutex device_lock;
@@ -544,18 +544,13 @@ Definition
         unsigned int hbm_f_ev_supported:1;
         unsigned int hbm_f_fa_supported:1;
         unsigned int hbm_f_ie_supported:1;
+        unsigned int hbm_f_os_supported:1;
         struct rw_semaphore me_clients_rwsem;
         struct list_head me_clients;
         unsigned long me_clients_map[BITS_TO_LONGS(MEI_CLIENTS_MAX)];
         unsigned long host_clients_map[BITS_TO_LONGS(MEI_CLIENTS_MAX)];
         bool allow_fixed_address;
         bool override_fixed_address;
-        struct mei_cl_cb amthif_cmd_list;
-        struct mei_cl iamthif_cl;
-        long iamthif_open_count;
-        u32 iamthif_stall_timer;
-        enum iamthif_states iamthif_state;
-        bool iamthif_canceled;
         struct work_struct reset_work;
         struct work_struct bus_rescan_work;
         struct list_head device_list;
@@ -668,6 +663,9 @@ hbm_f_fa_supported
 hbm_f_ie_supported
     hbm feature immediate reply to enum request
 
+hbm_f_os_supported
+    hbm feature support OS ver message
+
 me_clients_rwsem
     rw lock over me_clients list
 
@@ -685,24 +683,6 @@ allow_fixed_address
 
 override_fixed_address
     force allow fixed address behavior
-
-amthif_cmd_list
-    amthif list for cmd waiting
-
-iamthif_cl
-    amthif host client
-
-iamthif_open_count
-    number of opened amthif connections
-
-iamthif_stall_timer
-    timer to detect amthif hang
-
-iamthif_state
-    amthif processor state
-
-iamthif_canceled
-    current amthif command is canceled
 
 reset_work
     work item for the device reset

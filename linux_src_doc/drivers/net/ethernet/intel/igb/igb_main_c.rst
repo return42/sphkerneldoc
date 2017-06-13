@@ -1127,34 +1127,6 @@ Return
 0 on no addresses written
 X on writing X addresses to MTA
 
-.. _`igb_write_uc_addr_list`:
-
-igb_write_uc_addr_list
-======================
-
-.. c:function:: int igb_write_uc_addr_list(struct net_device *netdev)
-
-    write unicast addresses to RAR table
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-.. _`igb_write_uc_addr_list.description`:
-
-Description
------------
-
-Writes unicast address list to the RAR table.
-
-.. _`igb_write_uc_addr_list.return`:
-
-Return
-------
-
--ENOMEM on failure/insufficient address space
-0 on no addresses written
-X on writing X addresses to the RAR table
-
 .. _`igb_set_rx_mode`:
 
 igb_set_rx_mode
@@ -1301,7 +1273,7 @@ igb_tx_timeout
 igb_get_stats64
 ===============
 
-.. c:function:: struct rtnl_link_stats64 *igb_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+.. c:function:: void igb_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
 
     Get System Network Statistics
 
@@ -1468,7 +1440,7 @@ Synchronizes page for reuse by the adapter
 igb_add_rx_frag
 ===============
 
-.. c:function:: bool igb_add_rx_frag(struct igb_ring *rx_ring, struct igb_rx_buffer *rx_buffer, unsigned int size, union e1000_adv_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: void igb_add_rx_frag(struct igb_ring *rx_ring, struct igb_rx_buffer *rx_buffer, struct sk_buff *skb, unsigned int size)
 
     Add contents of Rx buffer to sk_buff
 
@@ -1478,14 +1450,11 @@ igb_add_rx_frag
     :param struct igb_rx_buffer \*rx_buffer:
         buffer containing page to add
 
-    :param unsigned int size:
-        *undescribed*
-
-    :param union e1000_adv_rx_desc \*rx_desc:
-        descriptor containing length of buffer written by hardware
-
     :param struct sk_buff \*skb:
         sk_buff to place the data into
+
+    :param unsigned int size:
+        size of buffer to be added
 
 .. _`igb_add_rx_frag.description`:
 
@@ -1493,12 +1462,6 @@ Description
 -----------
 
 This function will add the data contained in rx_buffer->page to the skb.
-This is done either through a direct copy if the data in the buffer is
-less than the skb header size, otherwise it will just attach the page as
-a frag to the skb.
-
-The function will then update the page offset if necessary and return
-true if the buffer can be reused by the adapter.
 
 .. _`igb_is_non_eop`:
 
@@ -1693,6 +1656,21 @@ Description
 This callback is called when the error recovery driver tells us that
 its OK to resume normal operation. Implementation resembles the
 second-half of the igb_resume routine.
+
+.. _`igb_rar_set_index`:
+
+igb_rar_set_index
+=================
+
+.. c:function:: void igb_rar_set_index(struct igb_adapter *adapter, u32 index)
+
+    Sync RAL[index] and RAH[index] registers with MAC table
+
+    :param struct igb_adapter \*adapter:
+        Pointer to adapter structure
+
+    :param u32 index:
+        Index of the RAR entry which need to be synced with MAC table
 
 .. _`igb_read_i2c_byte`:
 

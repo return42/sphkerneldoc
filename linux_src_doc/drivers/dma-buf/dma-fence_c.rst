@@ -159,6 +159,34 @@ the creator of the fence is required to keep the fence alive until
 after it signals with dma_fence_signal. The callback itself can be called
 from irq context.
 
+Returns 0 in case of success, -ENOENT if the fence is already signaled
+and -EINVAL in case of error.
+
+.. _`dma_fence_get_status`:
+
+dma_fence_get_status
+====================
+
+.. c:function:: int dma_fence_get_status(struct dma_fence *fence)
+
+    returns the status upon completion
+
+    :param struct dma_fence \*fence:
+        [in] the dma_fence to query
+
+.. _`dma_fence_get_status.description`:
+
+Description
+-----------
+
+This wraps \ :c:func:`dma_fence_get_status_locked`\  to return the error status
+condition on a signaled fence. See \ :c:func:`dma_fence_get_status_locked`\  for more
+details.
+
+Returns 0 if the fence has not yet been signaled, 1 if the fence has
+been signaled without an error condition, or a negative error code
+if the fence has been completed in err.
+
 .. _`dma_fence_remove_callback`:
 
 dma_fence_remove_callback

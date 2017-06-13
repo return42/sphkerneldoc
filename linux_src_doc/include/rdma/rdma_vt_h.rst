@@ -27,5 +27,17 @@ Description
 The caller must hold the \ :c:func:`rcu_read_lock`\ , and keep the lock until
 the returned qp is no longer in use.
 
+.. _`rvt_mod_retry_timer`:
+
+rvt_mod_retry_timer
+===================
+
+.. c:function:: void rvt_mod_retry_timer(struct rvt_qp *qp)
+
+    mod a retry timer \ ``qp``\  - the QP Modify a potentially already running retry timer
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

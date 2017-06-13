@@ -1633,14 +1633,14 @@ pointer to sglist / NULL on failure
 pmcraid_copy_sglist
 ===================
 
-.. c:function:: int pmcraid_copy_sglist(struct pmcraid_sglist *sglist, unsigned long buffer, u32 len, int direction)
+.. c:function:: int pmcraid_copy_sglist(struct pmcraid_sglist *sglist, void __user *buffer, u32 len, int direction)
 
     Copy user buffer to kernel buffer's SG list
 
     :param struct pmcraid_sglist \*sglist:
         scatter/gather list pointer
 
-    :param unsigned long buffer:
+    :param void __user \*buffer:
         buffer pointer
 
     :param u32 len:
@@ -1794,7 +1794,7 @@ Return value
 pmcraid_ioctl_passthrough
 =========================
 
-.. c:function:: long pmcraid_ioctl_passthrough(struct pmcraid_instance *pinstance, unsigned int ioctl_cmd, unsigned int buflen, unsigned long arg)
+.. c:function:: long pmcraid_ioctl_passthrough(struct pmcraid_instance *pinstance, unsigned int ioctl_cmd, unsigned int buflen, void __user *arg)
 
     handling passthrough IOCTL commands
 
@@ -1807,7 +1807,7 @@ pmcraid_ioctl_passthrough
     :param unsigned int buflen:
         *undescribed*
 
-    :param unsigned long arg:
+    :param void __user \*arg:
         pointer to pmcraid_passthrough_buffer user buffer
 
 .. _`pmcraid_ioctl_passthrough.description`:

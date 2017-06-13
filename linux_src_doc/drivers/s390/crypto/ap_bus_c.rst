@@ -312,24 +312,5 @@ Description
 
 Initializes the module.
 
-.. _`ap_module_exit`:
-
-ap_module_exit
-==============
-
-.. c:function:: void ap_module_exit( void)
-
-    The module termination code
-
-    :param  void:
-        no arguments
-
-.. _`ap_module_exit.description`:
-
-Description
------------
-
-Terminates the module.
-
 .. This file was automatic generated / don't edit.
 

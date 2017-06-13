@@ -21,11 +21,6 @@ intel_xpower_pmic_get_raw_temp
 Description
 -----------
 
-We could get the sensor value by manipulating the HW regs here, but since
-the axp288 IIO driver may also access the same regs at the same time, the
-APIs provided by IIO subsystem are used here instead to avoid problems. As
-a result, the two passed in params are of no actual use.
-
 Return a positive value on success, errno on failure.
 
 .. This file was automatic generated / don't edit.

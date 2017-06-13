@@ -28,7 +28,7 @@ Returns true on valid VBT.
 intel_bios_init
 ===============
 
-.. c:function:: int intel_bios_init(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_bios_init(struct drm_i915_private *dev_priv)
 
     find VBT and initialize settings from the BIOS
 
@@ -40,10 +40,9 @@ intel_bios_init
 Description
 -----------
 
-Loads the Video BIOS and checks that the VBT exists.  Sets scratch registers
-to appropriate values.
-
-Returns 0 on success, nonzero on failure.
+Parse and initialize settings from the Video BIOS Tables (VBT). If the VBT
+was not found in ACPI OpRegion, try to find it in PCI ROM first. Also
+initialize some defaults if the VBT is not present at all.
 
 .. _`intel_bios_is_tv_present`:
 

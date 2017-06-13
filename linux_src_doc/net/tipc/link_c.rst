@@ -336,17 +336,16 @@ tipc_link_fsm_evt
 link_schedule_user
 ==================
 
-.. c:function:: int link_schedule_user(struct tipc_link *link, struct sk_buff_head *list)
+.. c:function:: int link_schedule_user(struct tipc_link *l, struct tipc_msg *hdr)
 
     schedule a message sender for wakeup after congestion
 
-    :param struct tipc_link \*link:
+    :param struct tipc_link \*l:
         congested link
 
-    :param struct sk_buff_head \*list:
-        message that was attempted sent
+    :param struct tipc_msg \*hdr:
+        header of message that is being sent
         Create pseudo msg to send back to user when congestion abates
-        Does not consume buffer list
 
 .. _`link_prepare_wakeup`:
 
@@ -358,7 +357,9 @@ link_prepare_wakeup
     prepare users for wakeup after congestion
 
     :param struct tipc_link \*l:
-        *undescribed*
+        congested link
+        Wake up a number of waiting users, as permitted by available space
+        in the send queue
 
 .. _`tipc_link_xmit`:
 
@@ -383,8 +384,7 @@ tipc_link_xmit
 Description
 -----------
 
-Consumes the buffer chain, except when returning -ELINKCONG,
-since the caller then may want to make more send attempts.
+Consumes the buffer chain.
 Returns 0 if success, or errno: -ELINKCONG, -EMSGSIZE or -ENOBUFS
 Messages at TIPC_SYSTEM_IMPORTANCE are always accepted
 

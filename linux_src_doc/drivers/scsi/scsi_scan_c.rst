@@ -43,8 +43,8 @@ scsi_unlock_floptical
 Description
 -----------
 
-Send a vendor specific MODE SENSE (not a MODE SELECT) command.
-Called for BLIST_KEY devices.
+    Send a vendor specific MODE SENSE (not a MODE SELECT) command.
+    Called for BLIST_KEY devices.
 
 .. _`scsi_alloc_sdev`:
 
@@ -69,16 +69,16 @@ scsi_alloc_sdev
 Description
 -----------
 
-Allocate, initialize for io, and return a pointer to a scsi_Device.
-Stores the \ ``shost``\ , \ ``channel``\ , \ ``id``\ , and \ ``lun``\  in the scsi_Device, and
-adds scsi_Device to the appropriate list.
+    Allocate, initialize for io, and return a pointer to a scsi_Device.
+    Stores the \ ``shost``\ , \ ``channel``\ , \ ``id``\ , and \ ``lun``\  in the scsi_Device, and
+    adds scsi_Device to the appropriate list.
 
 .. _`scsi_alloc_sdev.return-value`:
 
 Return value
 ------------
 
-scsi_Device pointer, or NULL on failure.
+    scsi_Device pointer, or NULL on failure.
 
 .. _`scsi_target_reap_ref_release`:
 
@@ -172,13 +172,13 @@ scsi_sanitize_inquiry_string
 Description
 -----------
 
-The SCSI spec says that INQUIRY vendor, product, and revision
-strings must consist entirely of graphic ASCII characters,
-padded on the right with spaces.  Since not all devices obey
-this rule, we will replace non-graphic or non-ASCII characters
-with spaces.  Exception: a NUL character is interpreted as a
-string terminator, so all the following characters are set to
-spaces.
+     The SCSI spec says that INQUIRY vendor, product, and revision
+     strings must consist entirely of graphic ASCII characters,
+     padded on the right with spaces.  Since not all devices obey
+     this rule, we will replace non-graphic or non-ASCII characters
+     with spaces.  Exception: a NUL character is interpreted as a
+     string terminator, so all the following characters are set to
+     spaces.
 
 .. _`scsi_probe_lun`:
 
@@ -206,11 +206,11 @@ scsi_probe_lun
 Description
 -----------
 
-Probe the lun associated with \ ``req``\  using a standard SCSI INQUIRY;
+    Probe the lun associated with \ ``req``\  using a standard SCSI INQUIRY;
 
-If the INQUIRY is successful, zero is returned and the
-INQUIRY data is in \ ``inq_result``\ ; the scsi_level and INQUIRY length
-are copied to the scsi_device any flags value is stored in \*@bflags.
+    If the INQUIRY is successful, zero is returned and the
+    INQUIRY data is in \ ``inq_result``\ ; the scsi_level and INQUIRY length
+    are copied to the scsi_device any flags value is stored in *@bflags.
 
 .. _`scsi_add_lun`:
 
@@ -238,22 +238,16 @@ scsi_add_lun
 Description
 -----------
 
-Initialize the scsi_device \ ``sdev``\ .  Optionally set fields based
-on values in \*@bflags.
+    Initialize the scsi_device \ ``sdev``\ .  Optionally set fields based
+    on values in *@bflags.
 
-.. _`scsi_add_lun.scsi_scan_no_response`:
+.. _`scsi_add_lun.return`:
 
-SCSI_SCAN_NO_RESPONSE
----------------------
+Return
+------
 
-could not allocate or setup a scsi_device
-
-.. _`scsi_add_lun.scsi_scan_lun_present`:
-
-SCSI_SCAN_LUN_PRESENT
----------------------
-
-a new scsi_device was allocated and initialized
+    SCSI_SCAN_NO_RESPONSE: could not allocate or setup a scsi_device
+    SCSI_SCAN_LUN_PRESENT: a new scsi_device was allocated and initialized
 
 .. _`scsi_inq_str`:
 
@@ -309,30 +303,19 @@ scsi_probe_and_add_lun
 Description
 -----------
 
-Call scsi_probe_lun, if a LUN with an attached device is found,
-allocate and set it up by calling scsi_add_lun.
+    Call scsi_probe_lun, if a LUN with an attached device is found,
+    allocate and set it up by calling scsi_add_lun.
 
-.. _`scsi_probe_and_add_lun.scsi_scan_no_response`:
+.. _`scsi_probe_and_add_lun.return`:
 
-SCSI_SCAN_NO_RESPONSE
----------------------
+Return
+------
 
-could not allocate or setup a scsi_device
 
-.. _`scsi_probe_and_add_lun.scsi_scan_target_present`:
-
-SCSI_SCAN_TARGET_PRESENT
-------------------------
-
-target responded, but no device is
-attached at the LUN
-
-.. _`scsi_probe_and_add_lun.scsi_scan_lun_present`:
-
-SCSI_SCAN_LUN_PRESENT
----------------------
-
-a new scsi_device was allocated and initialized
+  - SCSI_SCAN_NO_RESPONSE: could not allocate or setup a scsi_device
+  - SCSI_SCAN_TARGET_PRESENT: target responded, but no device is
+        attached at the LUN
+  - SCSI_SCAN_LUN_PRESENT: a new scsi_device was allocated and initialized
 
 .. _`scsi_sequential_lun_scan`:
 
@@ -360,11 +343,11 @@ scsi_sequential_lun_scan
 Description
 -----------
 
-Generally, scan from LUN 1 (LUN 0 is assumed to already have been
-scanned) to some maximum lun until a LUN is found with no device
-attached. Use the bflags to figure out any oddities.
+    Generally, scan from LUN 1 (LUN 0 is assumed to already have been
+    scanned) to some maximum lun until a LUN is found with no device
+    attached. Use the bflags to figure out any oddities.
 
-Modifies sdevscan->lun.
+    Modifies sdevscan->lun.
 
 .. _`scsi_report_lun_scan`:
 
@@ -389,22 +372,22 @@ scsi_report_lun_scan
 Description
 -----------
 
-Fast scanning for modern (SCSI-3) devices by sending a REPORT LUN command.
-Scan the resulting list of LUNs by calling scsi_probe_and_add_lun.
+  Fast scanning for modern (SCSI-3) devices by sending a REPORT LUN command.
+  Scan the resulting list of LUNs by calling scsi_probe_and_add_lun.
 
-If BLINK_REPORTLUN2 is set, scan a target that supports more than 8
-LUNs even if it's older than SCSI-3.
-If BLIST_NOREPORTLUN is set, return 1 always.
-If BLIST_NOLUN is set, return 0 always.
-If starget->no_report_luns is set, return 1 always.
+  If BLINK_REPORTLUN2 is set, scan a target that supports more than 8
+  LUNs even if it's older than SCSI-3.
+  If BLIST_NOREPORTLUN is set, return 1 always.
+  If BLIST_NOLUN is set, return 0 always.
+  If starget->no_report_luns is set, return 1 always.
 
 .. _`scsi_report_lun_scan.return`:
 
 Return
 ------
 
-0: scan completed (or no memory, so further scanning is futile)
-1: could not scan with REPORT LUN
+    0: scan completed (or no memory, so further scanning is futile)
+    1: could not scan with REPORT LUN
 
 .. _`scsi_scan_target`:
 
@@ -438,11 +421,11 @@ scsi_scan_target
 Description
 -----------
 
-Scan the target id on \ ``parent``\ , \ ``channel``\ , and \ ``id``\ . Scan at least LUN 0,
-and possibly all LUNs on the target id.
+    Scan the target id on \ ``parent``\ , \ ``channel``\ , and \ ``id``\ . Scan at least LUN 0,
+    and possibly all LUNs on the target id.
 
-First try a REPORT LUN scan, if that does not scan the target, do a
-sequential scan of LUNs on the target id.
+    First try a REPORT LUN scan, if that does not scan the target, do a
+    sequential scan of LUNs on the target id.
 
 .. _`scsi_prep_async_scan`:
 
@@ -513,12 +496,12 @@ scsi_get_host_dev
     :param struct Scsi_Host \*shost:
         Host that needs a scsi_device
 
-.. _`scsi_get_host_dev.lock-status`:
+.. _`scsi_get_host_dev.description`:
 
-Lock status
+Description
 -----------
 
-None assumed.
+Lock status: None assumed.
 
 .. _`scsi_get_host_dev.return`:
 
@@ -532,13 +515,13 @@ The scsi_device or NULL
 Notes
 -----
 
-Attach a single scsi_device to the Scsi_Host - this should
-be made to look like a "pseudo-device" that points to the
-HA itself.
+     Attach a single scsi_device to the Scsi_Host - this should
+     be made to look like a "pseudo-device" that points to the
+     HA itself.
 
-Note - this device is not accessible from any high-level
-drivers (including generics), which is probably not
-optimal.  We can add hooks later to attach.
+     Note - this device is not accessible from any high-level
+     drivers (including generics), which is probably not
+     optimal.  We can add hooks later to attach.
 
 .. _`scsi_free_host_dev`:
 
@@ -552,12 +535,12 @@ scsi_free_host_dev
     :param struct scsi_device \*sdev:
         Host device to be freed
 
-.. _`scsi_free_host_dev.lock-status`:
+.. _`scsi_free_host_dev.description`:
 
-Lock status
+Description
 -----------
 
-None assumed.
+Lock status: None assumed.
 
 .. _`scsi_free_host_dev.return`:
 

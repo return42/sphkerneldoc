@@ -24,9 +24,9 @@ move_addr_to_kernel
 Description
 -----------
 
-The address is copied into kernel space. If the provided address is
-too long an error code of -EINVAL is returned. If the copy gives
-invalid addresses -EFAULT is returned. On a success 0 is returned.
+     The address is copied into kernel space. If the provided address is
+     too long an error code of -EINVAL is returned. If the copy gives
+     invalid addresses -EFAULT is returned. On a success 0 is returned.
 
 .. _`move_addr_to_user`:
 
@@ -54,14 +54,14 @@ move_addr_to_user
 Description
 -----------
 
-The value pointed to by ulen on entry is the buffer length available.
-This is overwritten with the buffer space used. -EINVAL is returned
-if an overlong buffer is specified or a negative buffer size. -EFAULT
-is returned if either the buffer or the length field are not
-accessible.
-After copying the data up to the limit the user specifies, the true
-length of the data is written over the length limit the user
-specified. Zero is returned for a success.
+     The value pointed to by ulen on entry is the buffer length available.
+     This is overwritten with the buffer space used. -EINVAL is returned
+     if an overlong buffer is specified or a negative buffer size. -EFAULT
+     is returned if either the buffer or the length field are not
+     accessible.
+     After copying the data up to the limit the user specifies, the true
+     length of the data is written over the length limit the user
+     specified. Zero is returned for a success.
 
 .. _`sockfd_lookup`:
 
@@ -83,12 +83,12 @@ sockfd_lookup
 Description
 -----------
 
-The file handle passed in is locked and the socket it is bound
-too is returned. If an error occurs the err pointer is overwritten
-with a negative errno code and NULL is returned. The function checks
-for both invalid handles and passing a handle which is not a socket.
+     The file handle passed in is locked and the socket it is bound
+     too is returned. If an error occurs the err pointer is overwritten
+     with a negative errno code and NULL is returned. The function checks
+     for both invalid handles and passing a handle which is not a socket.
 
-On a success the socket object pointer is returned.
+     On a success the socket object pointer is returned.
 
 .. _`sock_alloc`:
 
@@ -107,9 +107,9 @@ sock_alloc
 Description
 -----------
 
-Allocate a new inode and socket object. The two are bound together
-and initialised. The socket is then returned. If we are out of inodes
-NULL is returned.
+     Allocate a new inode and socket object. The two are bound together
+     and initialised. The socket is then returned. If we are out of inodes
+     NULL is returned.
 
 .. _`sock_release`:
 
@@ -128,9 +128,9 @@ sock_release
 Description
 -----------
 
-The socket is released from the protocol stack if it has a release
-callback, and the inode is then released if the socket is bound to
-an inode not a file.
+     The socket is released from the protocol stack if it has a release
+     callback, and the inode is then released if the socket is bound to
+     an inode not a file.
 
 .. _`kernel_recvmsg`:
 
@@ -187,10 +187,10 @@ sock_register
 Description
 -----------
 
-This function is called by a protocol handler that wants to
-advertise its address family, and have it linked into the
-socket interface. The value ops->family corresponds to the
-socket system call protocol family.
+     This function is called by a protocol handler that wants to
+     advertise its address family, and have it linked into the
+     socket interface. The value ops->family corresponds to the
+     socket system call protocol family.
 
 .. _`sock_unregister`:
 
@@ -209,14 +209,14 @@ sock_unregister
 Description
 -----------
 
-This function is called by a protocol handler that wants to
-remove its address family, and have it unlinked from the
-new socket creation.
+     This function is called by a protocol handler that wants to
+     remove its address family, and have it unlinked from the
+     new socket creation.
 
-If protocol handler is a module, then it can use module reference
-counts to protect against new references. If protocol handler is not
-a module then it needs to provide its own protection in
-the ops->create routine.
+     If protocol handler is a module, then it can use module reference
+     counts to protect against new references. If protocol handler is not
+     a module then it needs to provide its own protection in
+     the ops->create routine.
 
 .. This file was automatic generated / don't edit.
 

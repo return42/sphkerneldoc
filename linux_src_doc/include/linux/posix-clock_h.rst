@@ -20,13 +20,13 @@ Definition
     struct posix_clock_operations {
         struct module *owner;
         int (*clock_adjtime)(struct posix_clock *pc, struct timex *tx);
-        int (*clock_gettime)(struct posix_clock *pc, struct timespec *ts);
-        int (*clock_getres)(struct posix_clock *pc, struct timespec *ts);
-        int (*clock_settime)(struct posix_clock *pc,const struct timespec *ts);
+        int (*clock_gettime)(struct posix_clock *pc, struct timespec64 *ts);
+        int (*clock_getres)(struct posix_clock *pc, struct timespec64 *ts);
+        int (*clock_settime)(struct posix_clock *pc,const struct timespec64 *ts);
         int (*timer_create)(struct posix_clock *pc, struct k_itimer *kit);
         int (*timer_delete)(struct posix_clock *pc, struct k_itimer *kit);
-        void (*timer_gettime)(struct posix_clock *pc,struct k_itimer *kit, struct itimerspec *tsp);
-        int (*timer_settime)(struct posix_clock *pc,struct k_itimer *kit, int flags,struct itimerspec *tsp, struct itimerspec *old);
+        void (*timer_gettime)(struct posix_clock *pc,struct k_itimer *kit, struct itimerspec64 *tsp);
+        int (*timer_settime)(struct posix_clock *pc,struct k_itimer *kit, int flags,struct itimerspec64 *tsp, struct itimerspec64 *old);
         int (*fasync)(struct posix_clock *pc,int fd, struct file *file, int on);
         long (*ioctl)(struct posix_clock *pc,unsigned int cmd, unsigned long arg);
         int (*mmap)(struct posix_clock *pc,struct vm_area_struct *vma);

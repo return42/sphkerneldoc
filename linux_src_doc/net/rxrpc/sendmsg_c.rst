@@ -37,7 +37,7 @@ more data to come, otherwise this data will end the transmission phase.
 rxrpc_kernel_abort_call
 =======================
 
-.. c:function:: void rxrpc_kernel_abort_call(struct socket *sock, struct rxrpc_call *call, u32 abort_code, int error, const char *why)
+.. c:function:: bool rxrpc_kernel_abort_call(struct socket *sock, struct rxrpc_call *call, u32 abort_code, int error, const char *why)
 
     Allow a kernel service to abort a call
 
@@ -61,7 +61,8 @@ rxrpc_kernel_abort_call
 Description
 -----------
 
-Allow a kernel service to abort a call, if it's still in an abortable state.
+Allow a kernel service to abort a call, if it's still in an abortable state
+and return true if the call was aborted, false if it was already complete.
 
 .. This file was automatic generated / don't edit.
 

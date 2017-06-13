@@ -37,12 +37,15 @@ rvt_mcast_qp_alloc
 rvt_mcast_alloc
 ===============
 
-.. c:function:: struct rvt_mcast *rvt_mcast_alloc(union ib_gid *mgid)
+.. c:function:: struct rvt_mcast *rvt_mcast_alloc(union ib_gid *mgid, u16 lid)
 
     allocate the multicast GID structure
 
     :param union ib_gid \*mgid:
         the multicast GID
+
+    :param u16 lid:
+        the muilticast LID (host order)
 
 .. _`rvt_mcast_alloc.description`:
 
@@ -56,15 +59,26 @@ A list of QPs will be attached to this structure.
 rvt_mcast_find
 ==============
 
-.. c:function:: struct rvt_mcast *rvt_mcast_find(struct rvt_ibport *ibp, union ib_gid *mgid)
+.. c:function:: struct rvt_mcast *rvt_mcast_find(struct rvt_ibport *ibp, union ib_gid *mgid, u16 lid)
 
-    search the global table for the given multicast GID
+    search the global table for the given multicast GID/LID
 
     :param struct rvt_ibport \*ibp:
         the IB port structure
 
     :param union ib_gid \*mgid:
         the multicast GID to search for
+
+    :param u16 lid:
+        the multicast LID portion of the multicast address (host order)
+
+.. _`rvt_mcast_find.note`:
+
+NOTE
+----
+
+It is valid to have 1 MLID with multiple MGIDs.  It is not valid
+to have 1 MGID with multiple MLIDs.
 
 .. _`rvt_mcast_find.description`:
 
@@ -108,7 +122,8 @@ Return
 
 zero if both were added.  Return EEXIST if the GID was already in
 the table but the QP was added.  Return ESRCH if the QP was already
-attached and neither structure was added.
+attached and neither structure was added. Return EINVAL if the MGID was
+found, but the MLID did NOT match.
 
 .. _`rvt_attach_mcast`:
 

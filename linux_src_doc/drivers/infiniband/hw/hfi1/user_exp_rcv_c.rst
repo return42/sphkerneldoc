@@ -6,12 +6,12 @@
 program_rcvarray
 ================
 
-.. c:function:: int program_rcvarray(struct file *fp, unsigned long vaddr, struct tid_group *grp, struct tid_pageset *sets, unsigned start, u16 count, struct page **pages, u32 *tidlist, unsigned *tididx, unsigned *pmapped)
+.. c:function:: int program_rcvarray(struct hfi1_filedata *fd, unsigned long vaddr, struct tid_group *grp, struct tid_pageset *sets, unsigned start, u16 count, struct page **pages, u32 *tidlist, unsigned *tididx, unsigned *pmapped)
 
     program an RcvArray group with receive buffers
 
-    :param struct file \*fp:
-        file pointer
+    :param struct hfi1_filedata \*fd:
+        filedata pointer
 
     :param unsigned long vaddr:
         starting user virtual address

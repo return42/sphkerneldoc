@@ -6,11 +6,11 @@
 ptl_send_buf
 ============
 
-.. c:function:: int ptl_send_buf(lnet_handle_md_t *mdh, void *base, int len, lnet_ack_req_t ack, struct ptlrpc_cb_id *cbid, struct ptlrpc_connection *conn, int portal, __u64 xid, unsigned int offset)
+.. c:function:: int ptl_send_buf(struct lnet_handle_md *mdh, void *base, int len, enum lnet_ack_req ack, struct ptlrpc_cb_id *cbid, struct ptlrpc_connection *conn, int portal, __u64 xid, unsigned int offset)
 
     over \a conn connection to portal \a portal. Returns 0 on success or error code.
 
-    :param lnet_handle_md_t \*mdh:
+    :param struct lnet_handle_md \*mdh:
         *undescribed*
 
     :param void \*base:
@@ -19,7 +19,7 @@ ptl_send_buf
     :param int len:
         *undescribed*
 
-    :param lnet_ack_req_t ack:
+    :param enum lnet_ack_req ack:
         *undescribed*
 
     :param struct ptlrpc_cb_id \*cbid:

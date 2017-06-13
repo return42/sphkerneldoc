@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_color_mgmt.c
 
+.. _`drm_color_lut_extract`:
+
+drm_color_lut_extract
+=====================
+
+.. c:function:: uint32_t drm_color_lut_extract(uint32_t user_input, uint32_t bit_precision)
+
+    clamp and round LUT entries
+
+    :param uint32_t user_input:
+        input value
+
+    :param uint32_t bit_precision:
+        number of bits the hw LUT supports
+
+.. _`drm_color_lut_extract.description`:
+
+Description
+-----------
+
+Extract a degamma/gamma LUT value provided by user (in the form of
+\ :c:type:`struct drm_color_lut <drm_color_lut>`\  entries) and round it to the precision supported by the
+hardware.
+
 .. _`drm_crtc_enable_color_mgmt`:
 
 drm_crtc_enable_color_mgmt

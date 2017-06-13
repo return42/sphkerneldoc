@@ -27,6 +27,8 @@ busses
     i2c-qup_c
     i2c-rk3x_c
     i2c-st_c
+    i2c-stm32f4_c
     i2c-stu300_c
+    i2c-tegra-bpmp_c
     i2c-tegra_c
     i2c-xiic_c

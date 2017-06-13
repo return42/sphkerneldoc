@@ -65,5 +65,36 @@ Description
 Return one on success, return zero when any error occurs
 and \ ``end``\  will point to the end of the parsed string.
 
+.. _`inet_pton_with_scope`:
+
+inet_pton_with_scope
+====================
+
+.. c:function:: int inet_pton_with_scope(struct net *net, __kernel_sa_family_t af, const char *src, const char *port, struct sockaddr_storage *addr)
+
+    convert an IPv4/IPv6 and port to socket address
+
+    :param struct net \*net:
+        net namespace (used for scope handling)
+
+    :param __kernel_sa_family_t af:
+        address family, AF_INET, AF_INET6 or AF_UNSPEC for either
+
+    :param const char \*src:
+        the start of the address string
+
+    :param const char \*port:
+        the start of the port string (or NULL for none)
+
+    :param struct sockaddr_storage \*addr:
+        output socket address
+
+.. _`inet_pton_with_scope.description`:
+
+Description
+-----------
+
+Return zero on success, return errno when any error occurs.
+
 .. This file was automatic generated / don't edit.
 

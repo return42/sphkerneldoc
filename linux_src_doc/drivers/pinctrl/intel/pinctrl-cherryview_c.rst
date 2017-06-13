@@ -182,6 +182,7 @@ Definition
         size_t ngpio_ranges;
         size_t ngpios;
         size_t nirqs;
+        acpi_adr_space_type acpi_space_id;
     }
 
 .. _`chv_community.members`:
@@ -221,6 +222,9 @@ ngpios
 
 nirqs
     Total number of IRQs this community can generate
+
+acpi_space_id
+    *undescribed*
 
 .. _`chv_pinctrl`:
 

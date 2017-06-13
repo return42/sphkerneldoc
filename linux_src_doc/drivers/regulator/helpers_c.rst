@@ -302,6 +302,30 @@ regulator_set_bypass_regmap
     :param bool enable:
         state to set.
 
+.. _`regulator_set_soft_start_regmap`:
+
+regulator_set_soft_start_regmap
+===============================
+
+.. c:function:: int regulator_set_soft_start_regmap(struct regulator_dev *rdev)
+
+    Default \ :c:func:`set_soft_start`\  using regmap
+
+    :param struct regulator_dev \*rdev:
+        device to operate on.
+
+.. _`regulator_set_pull_down_regmap`:
+
+regulator_set_pull_down_regmap
+==============================
+
+.. c:function:: int regulator_set_pull_down_regmap(struct regulator_dev *rdev)
+
+    Default \ :c:func:`set_pull_down`\  using regmap
+
+    :param struct regulator_dev \*rdev:
+        device to operate on.
+
 .. _`regulator_get_bypass_regmap`:
 
 regulator_get_bypass_regmap

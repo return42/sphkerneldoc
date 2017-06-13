@@ -248,6 +248,7 @@ Definition
         unsigned long tid_rx_stop_requested[BITS_TO_LONGS(WIL_STA_TID_NUM)];
         struct wil_tid_crypto_rx tid_crypto_rx[WIL_STA_TID_NUM];
         struct wil_tid_crypto_rx group_crypto_rx;
+        u8 aid;
     }
 
 .. _`wil_sta_info.members`:
@@ -265,6 +266,9 @@ tid_rx_lock
     *undescribed*
 
 group_crypto_rx
+    *undescribed*
+
+aid
     *undescribed*
 
 .. _`wil_sta_info.description`:

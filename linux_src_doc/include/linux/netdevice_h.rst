@@ -1,28 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/netdevice.h
 
-.. _`napi_schedule_prep`:
-
-napi_schedule_prep
-==================
-
-.. c:function:: bool napi_schedule_prep(struct napi_struct *n)
-
-    check if NAPI can be scheduled
-
-    :param struct napi_struct \*n:
-        NAPI context
-
-.. _`napi_schedule_prep.description`:
-
-Description
------------
-
-Test if NAPI routine is already running, and if not mark
-it as running.  This is used as a condition variable to
-insure only one NAPI poll instance runs.  We also make
-sure there is no pending NAPI disable.
-
 .. _`napi_schedule`:
 
 napi_schedule
@@ -95,12 +73,12 @@ napi_hash_del
     :param struct napi_struct \*napi:
         NAPI context
 
-.. _`napi_hash_del.warning`:
+.. _`napi_hash_del.description`:
 
-Warning
--------
+Description
+-----------
 
-caller must observe RCU grace period
+Warning: caller must observe RCU grace period
 before freeing memory containing \ ``napi``\ , if
 this function returns true.
 
@@ -334,7 +312,7 @@ struct net_device
 
 .. c:type:: struct net_device
 
-    The DEVICE structure. Actually, this whole structure is a big mistake.  It mixes I/O data with strictly "high-level" data, and it has to know about almost every data structure used in the INET module.
+    The DEVICE structure.
 
 .. _`net_device.definition`:
 
@@ -360,8 +338,12 @@ Definition
         struct list_head ptype_all;
         struct list_head ptype_specific;
         struct {unnamed_struct};
+    #if IS_ENABLED(CONFIG_GARP)
         struct garp_port __rcu *garp_port;
+    #endif
+    #if IS_ENABLED(CONFIG_MRP)
         struct mrp_port __rcu *mrp_port;
+    #endif
         struct device dev;
         const struct attribute_group  *sysfs_groups[4];
         const struct attribute_group *sysfs_rx_queue_group;
@@ -504,13 +486,17 @@ proto_down
     switch driver and used to set the phys state of the
     switch port.
 
-.. _`net_device.fixme`:
+.. _`net_device.description`:
 
-FIXME
------
+Description
+-----------
 
-cleanup struct net_device such that network protocol info
-moves out.
+     Actually, this whole structure is a big mistake.  It mixes I/O
+     data with strictly "high-level" data, and it has to know about
+     almost every data structure used in the INET module.
+
+     FIXME: cleanup struct net_device such that network protocol info
+     moves out.
 
 .. _`netdev_priv`:
 
@@ -558,7 +544,7 @@ Description
 -----------
 
 netif_napi_add() must be used to initialize a NAPI context prior to calling
-\*any\* of the other NAPI-related functions.
+*any* of the other NAPI-related functions.
 
 .. _`netif_tx_napi_add`:
 
@@ -607,7 +593,7 @@ netif_napi_del
 Description
 -----------
 
-netif_napi_del() removes a NAPI context from the network device NAPI list
+ \ :c:func:`netif_napi_del`\  removes a NAPI context from the network device NAPI list
 
 .. _`netif_start_queue`:
 
@@ -626,7 +612,7 @@ netif_start_queue
 Description
 -----------
 
-Allow upper layers to call the device hard_start_xmit routine.
+     Allow upper layers to call the device hard_start_xmit routine.
 
 .. _`netif_wake_queue`:
 
@@ -645,8 +631,8 @@ netif_wake_queue
 Description
 -----------
 
-Allow upper layers to call the device hard_start_xmit routine.
-Used for flow control when transmit resources are available.
+     Allow upper layers to call the device hard_start_xmit routine.
+     Used for flow control when transmit resources are available.
 
 .. _`netif_stop_queue`:
 
@@ -665,8 +651,8 @@ netif_stop_queue
 Description
 -----------
 
-Stop upper layers calling the device hard_start_xmit routine.
-Used for flow control when transmit resources are unavailable.
+     Stop upper layers calling the device hard_start_xmit routine.
+     Used for flow control when transmit resources are unavailable.
 
 .. _`netif_queue_stopped`:
 
@@ -685,7 +671,7 @@ netif_queue_stopped
 Description
 -----------
 
-Test if transmit queue on device is currently unable to send.
+     Test if transmit queue on device is currently unable to send.
 
 .. _`netdev_txq_bql_enqueue_prefetchw`:
 
@@ -747,9 +733,9 @@ netdev_sent_queue
 Description
 -----------
 
-Report the number of bytes queued for sending/completion to the network
-device hardware queue. \ ``bytes``\  should be a good approximation and should
-exactly match \ :c:func:`netdev_completed_queue`\  \ ``bytes``\ 
+     Report the number of bytes queued for sending/completion to the network
+     device hardware queue. \ ``bytes``\  should be a good approximation and should
+     exactly match \ :c:func:`netdev_completed_queue`\  \ ``bytes``\ 
 
 .. _`netdev_completed_queue`:
 
@@ -774,9 +760,9 @@ netdev_completed_queue
 Description
 -----------
 
-Report the number of bytes and packets transmitted by the network device
-hardware queue over the physical medium, \ ``bytes``\  must exactly match the
-\ ``bytes``\  amount passed to \ :c:func:`netdev_sent_queue`\ 
+     Report the number of bytes and packets transmitted by the network device
+     hardware queue over the physical medium, \ ``bytes``\  must exactly match the
+     \ ``bytes``\  amount passed to \ :c:func:`netdev_sent_queue`\ 
 
 .. _`netdev_reset_queue`:
 
@@ -795,8 +781,8 @@ netdev_reset_queue
 Description
 -----------
 
-Reset the bytes and packet count of a network device and clear the
-software flow control OFF bit for this network device
+     Reset the bytes and packet count of a network device and clear the
+     software flow control OFF bit for this network device
 
 .. _`netdev_cap_txqueue`:
 
@@ -818,8 +804,8 @@ netdev_cap_txqueue
 Description
 -----------
 
-Returns 0 if given tx queue index >= number of device tx queues,
-otherwise returns the originally passed tx queue index.
+     Returns 0 if given tx queue index >= number of device tx queues,
+     otherwise returns the originally passed tx queue index.
 
 .. _`netif_running`:
 
@@ -838,7 +824,7 @@ netif_running
 Description
 -----------
 
-Test if the device has been brought up.
+     Test if the device has been brought up.
 
 .. _`netif_start_subqueue`:
 
@@ -905,6 +891,28 @@ Description
 -----------
 
 Check individual transmit queue of a device with multiple transmit queues.
+
+.. _`netif_wake_subqueue`:
+
+netif_wake_subqueue
+===================
+
+.. c:function:: void netif_wake_subqueue(struct net_device *dev, u16 queue_index)
+
+    allow sending packets on subqueue
+
+    :param struct net_device \*dev:
+        network device
+
+    :param u16 queue_index:
+        sub queue index
+
+.. _`netif_wake_subqueue.description`:
+
+Description
+-----------
+
+Resume individual transmit queue of a device with multiple transmit queues.
 
 .. _`netif_is_multiqueue`:
 
@@ -1033,7 +1041,7 @@ netif_dormant
 
 .. c:function:: bool netif_dormant(const struct net_device *dev)
 
-    test if carrier present
+    test if device is dormant
 
     :param const struct net_device \*dev:
         network device
@@ -1043,7 +1051,7 @@ netif_dormant
 Description
 -----------
 
-Check if carrier is present on device
+Check if device is dormant.
 
 .. _`netif_oper_up`:
 
@@ -1125,8 +1133,8 @@ __dev_uc_sync
 Description
 -----------
 
-Add newly added addresses to the interface, and release
-addresses that have been deleted.
+ Add newly added addresses to the interface, and release
+ addresses that have been deleted.
 
 .. _`__dev_uc_unsync`:
 
@@ -1148,7 +1156,7 @@ __dev_uc_unsync
 Description
 -----------
 
-Remove all addresses that were added to the device by \ :c:func:`dev_uc_sync`\ .
+ Remove all addresses that were added to the device by \ :c:func:`dev_uc_sync`\ .
 
 .. _`__dev_mc_sync`:
 
@@ -1173,8 +1181,8 @@ __dev_mc_sync
 Description
 -----------
 
-Add newly added addresses to the interface, and release
-addresses that have been deleted.
+ Add newly added addresses to the interface, and release
+ addresses that have been deleted.
 
 .. _`__dev_mc_unsync`:
 
@@ -1196,7 +1204,7 @@ __dev_mc_unsync
 Description
 -----------
 
-Remove all addresses that were added to the device by \ :c:func:`dev_mc_sync`\ .
+ Remove all addresses that were added to the device by \ :c:func:`dev_mc_sync`\ .
 
 .. This file was automatic generated / don't edit.
 

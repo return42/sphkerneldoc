@@ -253,6 +253,49 @@ This routine must be called to do reset on the indicated PE.
 During the reset, udev might be invoked because those affected
 PCI devices will be removed and then added.
 
+.. _`eeh_handle_normal_event`:
+
+eeh_handle_normal_event
+=======================
+
+.. c:function:: bool eeh_handle_normal_event(struct eeh_pe *pe)
+
+    Handle EEH events on a specific PE
+
+    :param struct eeh_pe \*pe:
+        EEH PE
+
+.. _`eeh_handle_normal_event.description`:
+
+Description
+-----------
+
+Attempts to recover the given PE.  If recovery fails or the PE has failed
+too many times, remove the PE.
+
+Returns true if \ ``pe``\  should no longer be used, else false.
+
+.. _`eeh_handle_special_event`:
+
+eeh_handle_special_event
+========================
+
+.. c:function:: void eeh_handle_special_event( void)
+
+    Handle EEH events without a specific failing PE
+
+    :param  void:
+        no arguments
+
+.. _`eeh_handle_special_event.description`:
+
+Description
+-----------
+
+Called when an EEH event is detected but can't be narrowed down to a
+specific PE.  Iterates through possible failures and handles them as
+necessary.
+
 .. _`eeh_handle_event`:
 
 eeh_handle_event

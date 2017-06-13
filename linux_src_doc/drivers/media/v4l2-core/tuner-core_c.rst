@@ -31,7 +31,7 @@ set_type
 Description
 -----------
 
-This function applys the tuner config to tuner specified
+This function applies the tuner config to tuner specified
 by tun_setup structure. It contains several per-tuner initialization "magic"
 
 .. _`tuner_s_type_addr`:
@@ -54,7 +54,7 @@ tuner_s_type_addr
 Description
 -----------
 
-This function applys the tuner config to tuner specified
+This function applies the tuner config to tuner specified
 by tun_setup structure.
 If tuner I2C address is UNSET, then it will only set the device
 if the tuner supports the mode specified in the call.

@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/fsl/fsl_ssi.c
 
-.. _`fslssi_i2s_rates`:
-
-FSLSSI_I2S_RATES
-================
-
-.. c:function::  FSLSSI_I2S_RATES()
-
-    sample rates supported by the I2S
-
-.. _`fslssi_i2s_rates.description`:
-
-Description
------------
-
-This driver currently only supports the SSI running in I2S slave mode,
-which means the codec determines the sample rate.  Therefore, we tell
-ALSA that we support all rates and let the codec driver decide what rates
-are really supported.
-
 .. _`fslssi_i2s_formats`:
 
 FSLSSI_I2S_FORMATS

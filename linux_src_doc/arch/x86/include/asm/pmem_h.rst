@@ -48,7 +48,8 @@ Description
 -----------
 
 Write back a cache range using the CLWB (cache line write back)
-instruction.
+instruction. Note that \ ``size``\  is internally rounded up to be cache
+line size aligned.
 
 .. _`arch_copy_from_iter_pmem`:
 

@@ -60,7 +60,7 @@ The struct is aligned to size of pointer. On most architectures it happens
 naturally due ABI requirements, but some architectures (like CRIS) have
 weird ABI and we need to ask it explicitly.
 
-The alignment is required to guarantee that bits 0 and 1 of \ ``next``\  will be
+The alignment is required to guarantee that bit 0 of \ ``next``\  will be
 clear under normal conditions -- as long as we use \ :c:func:`call_rcu`\ ,
 \ :c:func:`call_rcu_bh`\ , \ :c:func:`call_rcu_sched`\ , or \ :c:func:`call_srcu`\  to queue callback.
 

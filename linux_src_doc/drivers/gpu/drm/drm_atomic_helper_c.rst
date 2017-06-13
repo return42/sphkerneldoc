@@ -23,14 +23,25 @@ Description
 
 Check the state object to see if the requested state is physically possible.
 This does all the crtc and connector related computations for an atomic
-update and adds any additional connectors needed for full modesets and calls
-down into ->mode_fixup functions of the driver backend.
+update and adds any additional connectors needed for full modesets. It calls
+the various per-object callbacks in the follow order:
 
-crtc_state->mode_changed is set when the input mode is changed.
-crtc_state->connectors_changed is set when a connector is added or
-removed from the crtc.
-crtc_state->active_changed is set when crtc_state->active changes,
-which is used for dpms.
+1. \ :c:type:`drm_connector_helper_funcs.atomic_best_encoder <drm_connector_helper_funcs>`\  for determining the new encoder.
+2. \ :c:type:`drm_connector_helper_funcs.atomic_check <drm_connector_helper_funcs>`\  to validate the connector state.
+3. If it's determined a modeset is needed then all connectors on the affected crtc
+   crtc are added and \ :c:type:`drm_connector_helper_funcs.atomic_check <drm_connector_helper_funcs>`\  is run on them.
+4. \ :c:type:`drm_bridge_funcs.mode_fixup <drm_bridge_funcs>`\  is called on all encoder bridges.
+5. \ :c:type:`drm_encoder_helper_funcs.atomic_check <drm_encoder_helper_funcs>`\  is called to validate any encoder state.
+   This function is only called when the encoder will be part of a configured crtc,
+   it must not be used for implementing connector property validation.
+   If this function is NULL, \ :c:type:`drm_atomic_encoder_helper_funcs.mode_fixup <drm_atomic_encoder_helper_funcs>`\  is called
+   instead.
+6. \ :c:type:`drm_crtc_helper_funcs.mode_fixup <drm_crtc_helper_funcs>`\  is called last, to fix up the mode with crtc constraints.
+
+\ :c:type:`drm_crtc_state.mode_changed <drm_crtc_state>`\  is set when the input mode is changed.
+\ :c:type:`drm_crtc_state.connectors_changed <drm_crtc_state>`\  is set when a connector is added or
+removed from the crtc.  \ :c:type:`drm_crtc_state.active_changed <drm_crtc_state>`\  is set when
+\ :c:type:`drm_crtc_state.active <drm_crtc_state>`\  changes, which is used for DPMS.
 See also: \ :c:func:`drm_atomic_crtc_needs_modeset`\ 
 
 .. _`drm_atomic_helper_check_modeset.important`:
@@ -39,11 +50,13 @@ IMPORTANT
 ---------
 
 
-Drivers which set ->mode_changed (e.g. in their ->atomic_check hooks if a
-plane update can't be done without a full modeset) _must_ call this function
-afterwards after that change. It is permitted to call this function multiple
-times for the same update, e.g. when the ->atomic_check functions depend upon
-the adjusted dotclock for fifo space allocation and watermark computation.
+Drivers which set \ :c:type:`drm_crtc_state.mode_changed <drm_crtc_state>`\  (e.g. in their
+\ :c:type:`drm_plane_helper_funcs.atomic_check <drm_plane_helper_funcs>`\  hooks if a plane update can't be done
+without a full modeset) _must_ call this function afterwards after that
+change. It is permitted to call this function multiple times for the same
+update, e.g. when the \ :c:type:`drm_crtc_helper_funcs.atomic_check <drm_crtc_helper_funcs>`\  functions depend
+upon the adjusted dotclock for fifo space allocation and watermark
+computation.
 
 .. _`drm_atomic_helper_check_modeset.return`:
 
@@ -74,9 +87,10 @@ Description
 
 Check the state object to see if the requested state is physically possible.
 This does all the plane update related checks using by calling into the
-->atomic_check hooks provided by the driver.
+\ :c:type:`drm_crtc_helper_funcs.atomic_check <drm_crtc_helper_funcs>`\  and \ :c:type:`drm_plane_helper_funcs.atomic_check <drm_plane_helper_funcs>`\ 
+hooks provided by the driver.
 
-It also sets crtc_state->planes_changed to indicate that a crtc has
+It also sets \ :c:type:`drm_crtc_state.planes_changed <drm_crtc_state>`\  to indicate that a crtc has
 updated planes.
 
 .. _`drm_atomic_helper_check_planes.return`:
@@ -109,14 +123,15 @@ Description
 Check the state object to see if the requested state is physically possible.
 Only crtcs and planes have check callbacks, so for any additional (global)
 checking that a driver needs it can simply wrap that around this function.
-Drivers without such needs can directly use this as their ->atomic_check()
-callback.
+Drivers without such needs can directly use this as their
+\ :c:type:`drm_mode_config_funcs.atomic_check <drm_mode_config_funcs>`\  callback.
 
 This just wraps the two parts of the state checking for planes and modeset
 state in the default order: First it calls \ :c:func:`drm_atomic_helper_check_modeset`\ 
 and then \ :c:func:`drm_atomic_helper_check_planes`\ . The assumption is that the
-->atomic_check functions depend upon an updated adjusted_mode.clock to
-e.g. properly compute watermarks.
+\ ``drm_plane_helper_funcs``\ .atomic_check and \ ``drm_crtc_helper_funcs``\ .atomic_check
+functions depend upon an updated adjusted_mode.clock to e.g. properly compute
+watermarks.
 
 .. _`drm_atomic_helper_check.return`:
 
@@ -249,41 +264,6 @@ before we call \ :c:func:`drm_atomic_helper_swap_state`\ .
 
 Returns zero if success or < 0 if \ :c:func:`dma_fence_wait`\  fails.
 
-.. _`drm_atomic_helper_framebuffer_changed`:
-
-drm_atomic_helper_framebuffer_changed
-=====================================
-
-.. c:function:: bool drm_atomic_helper_framebuffer_changed(struct drm_device *dev, struct drm_atomic_state *old_state, struct drm_crtc *crtc)
-
-    check if framebuffer has changed
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param struct drm_atomic_state \*old_state:
-        atomic state object with old state structures
-
-    :param struct drm_crtc \*crtc:
-        DRM crtc
-
-.. _`drm_atomic_helper_framebuffer_changed.description`:
-
-Description
------------
-
-Checks whether the framebuffer used for this CRTC changes as a result of
-the atomic update.  This is useful for drivers which cannot use
-\ :c:func:`drm_atomic_helper_wait_for_vblanks`\  and need to reimplement its
-functionality.
-
-.. _`drm_atomic_helper_framebuffer_changed.return`:
-
-Return
-------
-
-true if the framebuffer changed.
-
 .. _`drm_atomic_helper_wait_for_vblanks`:
 
 drm_atomic_helper_wait_for_vblanks
@@ -327,8 +307,8 @@ drm_atomic_helper_commit_tail
 Description
 -----------
 
-This is the default implemenation for the ->atomic_commit_tail() hook of the
-\ :c:type:`struct drm_mode_config_helper_funcs <drm_mode_config_helper_funcs>`\  vtable.
+This is the default implementation for the
+\ :c:type:`drm_mode_config_helper_funcs.atomic_commit_tail <drm_mode_config_helper_funcs>`\  hook.
 
 Note that the default ordering of how the various stages are called is to
 match the legacy modeset helper library closest. One peculiarity of that is
@@ -375,8 +355,8 @@ function implements nonblocking commits, using
 \ :c:func:`drm_atomic_helper_setup_commit`\  and related functions.
 
 Committing the actual hardware state is done through the
-->atomic_commit_tail() callback of the \ :c:type:`struct drm_mode_config_helper_funcs <drm_mode_config_helper_funcs>`\  vtable,
-or it's default implementation \ :c:func:`drm_atomic_helper_commit_tail`\ .
+\ :c:type:`drm_mode_config_helper_funcs.atomic_commit_tail <drm_mode_config_helper_funcs>`\  callback, or it's default
+implementation \ :c:func:`drm_atomic_helper_commit_tail`\ .
 
 .. _`drm_atomic_helper_commit.return`:
 
@@ -407,14 +387,15 @@ Description
 
 This function prepares \ ``state``\  to be used by the atomic helper's support for
 nonblocking commits. Drivers using the nonblocking commit infrastructure
-should always call this function from their ->atomic_commit hook.
+should always call this function from their
+\ :c:type:`drm_mode_config_funcs.atomic_commit <drm_mode_config_funcs>`\  hook.
 
 To be able to use this support drivers need to use a few more helper
 functions. \ :c:func:`drm_atomic_helper_wait_for_dependencies`\  must be called before
 actually committing the hardware state, and for nonblocking commits this call
 must be placed in the async worker. See also \ :c:func:`drm_atomic_helper_swap_state`\ 
 and it's stall parameter, for when a driver's commit hooks look at the
-->state pointers of struct \ :c:type:`struct drm_crtc <drm_crtc>`\ , \ :c:type:`struct drm_plane <drm_plane>`\  or \ :c:type:`struct drm_connector <drm_connector>`\  directly.
+\ :c:type:`drm_crtc.state <drm_crtc>`\ , \ :c:type:`drm_plane.state <drm_plane>`\  or \ :c:type:`drm_connector.state <drm_connector>`\  pointer directly.
 
 Completion of the hardware commit step must be signalled using
 \ :c:func:`drm_atomic_helper_commit_hw_done`\ . After this step the driver is not allowed
@@ -466,8 +447,7 @@ Description
 This function waits for all preceeding commits that touch the same CRTC as
 \ ``old_state``\  to both be committed to the hardware (as signalled by
 drm_atomic_helper_commit_hw_done) and executed by the hardware (as signalled
-by calling drm_crtc_vblank_send_event on the event member of
-\ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ ).
+by calling \ :c:func:`drm_crtc_vblank_send_event`\  on the \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\ ).
 
 This is part of the atomic helper support for nonblocking commits, see
 \ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.
@@ -545,8 +525,9 @@ Description
 -----------
 
 This function prepares plane state, specifically framebuffers, for the new
-configuration. If any failure is encountered this function will call
-->cleanup_fb on any already successfully prepared framebuffer.
+configuration, by calling \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\ . If any failure
+is encountered this function will call \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_helper_funcs>`\  on
+any already successfully prepared framebuffer.
 
 .. _`drm_atomic_helper_prepare_planes.return`:
 
@@ -604,10 +585,10 @@ with updates on disabled CRTCs, for example when supporting runtime PM.
 
 Drivers may set the NO_DISABLE_AFTER_MODESET flag in \ ``flags``\  if the relevant
 display controllers require to disable a CRTC's planes when the CRTC is
-disabled. This function would skip the ->atomic_disable call for a plane if
-the CRTC of the old plane state needs a modesetting operation. Of course,
-the drivers need to disable the planes in their CRTC disable callbacks
-since no one else would do that.
+disabled. This function would skip the \ :c:type:`drm_plane_helper_funcs.atomic_disable <drm_plane_helper_funcs>`\ 
+call for a plane if the CRTC of the old plane state needs a modesetting
+operation. Of course, the drivers need to disable the planes in their CRTC
+disable callbacks since no one else would do that.
 
 The \ :c:func:`drm_atomic_helper_commit`\  default implementation doesn't set the
 ACTIVE_ONLY flag to most closely match the behaviour of the legacy helpers.
@@ -672,7 +653,7 @@ atomic_begin hook before and atomic_flush hook after disabling the
 planes.
 
 It is a bug to call this function without having implemented the
-->atomic_disable() plane hook.
+\ :c:type:`drm_plane_helper_funcs.atomic_disable <drm_plane_helper_funcs>`\  plane hook.
 
 .. _`drm_atomic_helper_cleanup_planes`:
 
@@ -742,8 +723,8 @@ With that sequence it fits perfectly into the plane prepare/cleanup sequence:
 contains the old state. Also do any other cleanup required with that state.
 
 \ ``stall``\  must be set when nonblocking commits for this driver directly access
-the ->state pointer of \ :c:type:`struct drm_plane <drm_plane>`\ , \ :c:type:`struct drm_crtc <drm_crtc>`\  or \ :c:type:`struct drm_connector <drm_connector>`\ . With the
-current atomic helpers this is almost always the case, since the helpers
+the \ :c:type:`drm_plane.state <drm_plane>`\ , \ :c:type:`drm_crtc.state <drm_crtc>`\  or \ :c:type:`drm_connector.state <drm_connector>`\  pointer. With
+the current atomic helpers this is almost always the case, since the helpers
 don't pass the right state structures to the callbacks.
 
 .. _`drm_atomic_helper_update_plane`:
@@ -751,7 +732,7 @@ don't pass the right state structures to the callbacks.
 drm_atomic_helper_update_plane
 ==============================
 
-.. c:function:: int drm_atomic_helper_update_plane(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
+.. c:function:: int drm_atomic_helper_update_plane(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h, struct drm_modeset_acquire_ctx *ctx)
 
     Helper for primary plane update using atomic
 
@@ -788,6 +769,9 @@ drm_atomic_helper_update_plane
     :param uint32_t src_h:
         height of source rectangle in \ ``fb``\ 
 
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquire context
+
 .. _`drm_atomic_helper_update_plane.description`:
 
 Description
@@ -807,12 +791,15 @@ Zero on success, error code on failure
 drm_atomic_helper_disable_plane
 ===============================
 
-.. c:function:: int drm_atomic_helper_disable_plane(struct drm_plane *plane)
+.. c:function:: int drm_atomic_helper_disable_plane(struct drm_plane *plane, struct drm_modeset_acquire_ctx *ctx)
 
     Helper for primary plane disable using * atomic
 
     :param struct drm_plane \*plane:
         plane to disable
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquire context
 
 .. _`drm_atomic_helper_disable_plane.description`:
 
@@ -833,12 +820,15 @@ Zero on success, error code on failure
 drm_atomic_helper_set_config
 ============================
 
-.. c:function:: int drm_atomic_helper_set_config(struct drm_mode_set *set)
+.. c:function:: int drm_atomic_helper_set_config(struct drm_mode_set *set, struct drm_modeset_acquire_ctx *ctx)
 
     set a new config from userspace
 
     :param struct drm_mode_set \*set:
         mode set configuration
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquisition context
 
 .. _`drm_atomic_helper_set_config.description`:
 
@@ -846,6 +836,17 @@ Description
 -----------
 
 Provides a default crtc set_config handler using the atomic driver interface.
+
+.. _`drm_atomic_helper_set_config.note`:
+
+NOTE
+----
+
+For backwards compatibility with old userspace this automatically
+resets the "link-status" property to GOOD, to force any link
+re-training. The SETCRTC ioctl does not define whether an update does
+need a full modeset or just a plane update, hence we're allowed to do
+that. See also \ :c:func:`drm_mode_connector_set_link_status_property`\ .
 
 .. _`drm_atomic_helper_set_config.return`:
 
@@ -879,7 +880,8 @@ turns them off by setting their DPMS mode to OFF and deactivating the CRTC
 that they are connected to.
 
 This is used for example in suspend/resume to disable all currently active
-functions when suspending.
+functions when suspending. If you just want to shut down everything at e.g.
+driver unload, look at \ :c:func:`drm_atomic_helper_shutdown`\ .
 
 Note that if callers haven't already acquired all modeset locks this might
 return -EDEADLK, which must be handled by calling \ :c:func:`drm_modeset_backoff`\ .
@@ -896,7 +898,32 @@ Return
 See also
 --------
 
-drm_atomic_helper_suspend(), \ :c:func:`drm_atomic_helper_resume`\ 
+drm_atomic_helper_suspend(), \ :c:func:`drm_atomic_helper_resume`\  and
+\ :c:func:`drm_atomic_helper_shutdown`\ .
+
+.. _`drm_atomic_helper_shutdown`:
+
+drm_atomic_helper_shutdown
+==========================
+
+.. c:function:: void drm_atomic_helper_shutdown(struct drm_device *dev)
+
+    shutdown all CRTC
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_atomic_helper_shutdown.description`:
+
+Description
+-----------
+
+This shuts down all CRTC, which is useful for driver unloading. Shutdown on
+suspend should instead be handled with \ :c:func:`drm_atomic_helper_suspend`\ , since
+that also takes a snapshot of the modeset state to be restored on resume.
+
+This is just a convenience wrapper around \ :c:func:`drm_atomic_helper_disable_all`\ ,
+and it is the atomic version of \ :c:func:`drm_crtc_force_disable_all`\ .
 
 .. _`drm_atomic_helper_suspend`:
 
@@ -942,7 +969,45 @@ See also
 --------
 
 drm_atomic_helper_duplicate_state(), \ :c:func:`drm_atomic_helper_disable_all`\ ,
-\ :c:func:`drm_atomic_helper_resume`\ 
+\ :c:func:`drm_atomic_helper_resume`\ , \ :c:func:`drm_atomic_helper_commit_duplicated_state`\ 
+
+.. _`drm_atomic_helper_commit_duplicated_state`:
+
+drm_atomic_helper_commit_duplicated_state
+=========================================
+
+.. c:function:: int drm_atomic_helper_commit_duplicated_state(struct drm_atomic_state *state, struct drm_modeset_acquire_ctx *ctx)
+
+    commit duplicated state
+
+    :param struct drm_atomic_state \*state:
+        duplicated atomic state to commit
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        pointer to acquire_ctx to use for commit.
+
+.. _`drm_atomic_helper_commit_duplicated_state.description`:
+
+Description
+-----------
+
+The state returned by \ :c:func:`drm_atomic_helper_duplicate_state`\  and
+\ :c:func:`drm_atomic_helper_suspend`\  is partially invalid, and needs to
+be fixed up before commit.
+
+.. _`drm_atomic_helper_commit_duplicated_state.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`drm_atomic_helper_commit_duplicated_state.see-also`:
+
+See also
+--------
+
+drm_atomic_helper_suspend()
 
 .. _`drm_atomic_helper_resume`:
 
@@ -1087,7 +1152,7 @@ Zero on success, error code on failure
 drm_atomic_helper_page_flip
 ===========================
 
-.. c:function:: int drm_atomic_helper_page_flip(struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_pending_vblank_event *event, uint32_t flags)
+.. c:function:: int drm_atomic_helper_page_flip(struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_pending_vblank_event *event, uint32_t flags, struct drm_modeset_acquire_ctx *ctx)
 
     execute a legacy page flip
 
@@ -1103,18 +1168,68 @@ drm_atomic_helper_page_flip
     :param uint32_t flags:
         flip flags for non-vblank sync'ed updates
 
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquisition context
+
 .. _`drm_atomic_helper_page_flip.description`:
 
 Description
 -----------
 
-Provides a default page flip implementation using the atomic driver interface.
-
-Note that for now so called async page flips (i.e. updates which are not
-synchronized to vblank) are not supported, since the atomic interfaces have
-no provisions for this yet.
+Provides a default \ :c:type:`drm_crtc_funcs.page_flip <drm_crtc_funcs>`\  implementation
+using the atomic driver interface.
 
 .. _`drm_atomic_helper_page_flip.return`:
+
+Return
+------
+
+Returns 0 on success, negative errno numbers on failure.
+
+.. _`drm_atomic_helper_page_flip.see-also`:
+
+See also
+--------
+
+drm_atomic_helper_page_flip_target()
+
+.. _`drm_atomic_helper_page_flip_target`:
+
+drm_atomic_helper_page_flip_target
+==================================
+
+.. c:function:: int drm_atomic_helper_page_flip_target(struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_pending_vblank_event *event, uint32_t flags, uint32_t target, struct drm_modeset_acquire_ctx *ctx)
+
+    do page flip on target vblank period.
+
+    :param struct drm_crtc \*crtc:
+        DRM crtc
+
+    :param struct drm_framebuffer \*fb:
+        DRM framebuffer
+
+    :param struct drm_pending_vblank_event \*event:
+        optional DRM event to signal upon completion
+
+    :param uint32_t flags:
+        flip flags for non-vblank sync'ed updates
+
+    :param uint32_t target:
+        specifying the target vblank period when the flip to take effect
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquisition context
+
+.. _`drm_atomic_helper_page_flip_target.description`:
+
+Description
+-----------
+
+Provides a default \ :c:type:`drm_crtc_funcs.page_flip_target <drm_crtc_funcs>`\  implementation.
+Similar to \ :c:func:`drm_atomic_helper_page_flip`\  with extra parameter to specify
+target vblank period to flip.
+
+.. _`drm_atomic_helper_page_flip_target.return`:
 
 Return
 ------
@@ -1143,8 +1258,8 @@ Description
 
 This is the main helper function provided by the atomic helper framework for
 implementing the legacy DPMS connector interface. It computes the new desired
-->active state for the corresponding CRTC (if the connector is enabled) and
-updates it.
+\ :c:type:`drm_crtc_state.active <drm_crtc_state>`\  state for the corresponding CRTC (if the connector is
+enabled) and updates it.
 
 .. _`drm_atomic_helper_connector_dpms.return`:
 
@@ -1160,7 +1275,7 @@ drm_atomic_helper_best_encoder
 
 .. c:function:: struct drm_encoder *drm_atomic_helper_best_encoder(struct drm_connector *connector)
 
-    Helper for \ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`\  ->best_encoder callback
+    Helper for \ :c:type:`drm_connector_helper_funcs.best_encoder <drm_connector_helper_funcs>`\  callback
 
     :param struct drm_connector \*connector:
         Connector control structure
@@ -1170,7 +1285,7 @@ drm_atomic_helper_best_encoder
 Description
 -----------
 
-This is a \ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`\  ->best_encoder callback helper for
+This is a \ :c:type:`drm_connector_helper_funcs.best_encoder <drm_connector_helper_funcs>`\  callback helper for
 connectors that support exactly 1 encoder, statically determined at driver
 init time.
 
@@ -1181,7 +1296,7 @@ drm_atomic_helper_crtc_reset
 
 .. c:function:: void drm_atomic_helper_crtc_reset(struct drm_crtc *crtc)
 
-    default ->reset hook for CRTCs
+    default \ :c:type:`drm_crtc_funcs.reset <drm_crtc_funcs>`\  hook for CRTCs
 
     :param struct drm_crtc \*crtc:
         drm CRTC
@@ -1288,7 +1403,7 @@ drm_atomic_helper_plane_reset
 
 .. c:function:: void drm_atomic_helper_plane_reset(struct drm_plane *plane)
 
-    default ->reset hook for planes
+    default \ :c:type:`drm_plane_funcs.reset <drm_plane_funcs>`\  hook for planes
 
     :param struct drm_plane \*plane:
         drm plane
@@ -1409,8 +1524,9 @@ Description
 -----------
 
 Initializes the newly allocated \ ``conn_state``\  and assigns it to
-#connector ->state, usually required when initializing the drivers
-or when called from the ->reset hook.
+the \ :c:type:`drm_conector->state <drm_conector>`\  pointer of \ ``connector``\ , usually required when
+initializing the drivers or when called from the \ :c:type:`drm_connector_funcs.reset <drm_connector_funcs>`\ 
+hook.
 
 This is useful for drivers that subclass the connector state.
 
@@ -1421,7 +1537,7 @@ drm_atomic_helper_connector_reset
 
 .. c:function:: void drm_atomic_helper_connector_reset(struct drm_connector *connector)
 
-    default ->reset hook for connectors
+    default \ :c:type:`drm_connector_funcs.reset <drm_connector_funcs>`\  hook for connectors
 
     :param struct drm_connector \*connector:
         drm connector
@@ -1574,7 +1690,7 @@ subclassed connector state structure.
 drm_atomic_helper_legacy_gamma_set
 ==================================
 
-.. c:function:: int drm_atomic_helper_legacy_gamma_set(struct drm_crtc *crtc, u16 *red, u16 *green, u16 *blue, uint32_t size)
+.. c:function:: int drm_atomic_helper_legacy_gamma_set(struct drm_crtc *crtc, u16 *red, u16 *green, u16 *blue, uint32_t size, struct drm_modeset_acquire_ctx *ctx)
 
     set the legacy gamma correction table
 
@@ -1592,6 +1708,9 @@ drm_atomic_helper_legacy_gamma_set
 
     :param uint32_t size:
         size of the tables
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquire context
 
 .. _`drm_atomic_helper_legacy_gamma_set.description`:
 

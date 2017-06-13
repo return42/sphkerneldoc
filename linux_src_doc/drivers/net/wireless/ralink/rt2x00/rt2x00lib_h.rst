@@ -346,54 +346,6 @@ Description
 After this function completed the watchdog monitoring will not
 be running until \ :c:type:`struct rt2x00link_start_watchdog <rt2x00link_start_watchdog>`\  is called.
 
-.. _`rt2x00link_start_agc`:
-
-rt2x00link_start_agc
-====================
-
-.. c:function:: void rt2x00link_start_agc(struct rt2x00_dev *rt2x00dev)
-
-    Start periodic gain calibration
-
-    :param struct rt2x00_dev \*rt2x00dev:
-        Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
-
-.. _`rt2x00link_start_vcocal`:
-
-rt2x00link_start_vcocal
-=======================
-
-.. c:function:: void rt2x00link_start_vcocal(struct rt2x00_dev *rt2x00dev)
-
-    Start periodic VCO calibration
-
-    :param struct rt2x00_dev \*rt2x00dev:
-        Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
-
-.. _`rt2x00link_stop_agc`:
-
-rt2x00link_stop_agc
-===================
-
-.. c:function:: void rt2x00link_stop_agc(struct rt2x00_dev *rt2x00dev)
-
-    Stop periodic gain calibration
-
-    :param struct rt2x00_dev \*rt2x00dev:
-        Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
-
-.. _`rt2x00link_stop_vcocal`:
-
-rt2x00link_stop_vcocal
-======================
-
-.. c:function:: void rt2x00link_stop_vcocal(struct rt2x00_dev *rt2x00dev)
-
-    Stop periodic VCO calibration
-
-    :param struct rt2x00_dev \*rt2x00dev:
-        Pointer to \ :c:type:`struct rt2x00_dev <rt2x00_dev>`\ .
-
 .. _`rt2x00link_register`:
 
 rt2x00link_register

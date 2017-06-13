@@ -13,6 +13,18 @@ isa_bridge_find_early
     :param struct pci_controller \*hose:
         *undescribed*
 
+.. _`isa_bridge_init_non_pci`:
+
+isa_bridge_init_non_pci
+=======================
+
+.. c:function:: void isa_bridge_init_non_pci(struct device_node *np)
+
+    Find and map the ISA IO space early before main PCI discovery. This is optionally called by the arch code when adding PCI PHBs to get early access to ISA IO ports
+
+    :param struct device_node \*np:
+        *undescribed*
+
 .. _`isa_bridge_find_late`:
 
 isa_bridge_find_late

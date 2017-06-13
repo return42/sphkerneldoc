@@ -24,14 +24,14 @@ __ata_ehi_push_desc
 Description
 -----------
 
-Format string according to \ ``fmt``\  and append it to \ ``ehi``\ ->desc.
+     Format string according to \ ``fmt``\  and append it to \ ``ehi``\ ->desc.
 
 .. _`__ata_ehi_push_desc.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_ehi_push_desc`:
 
@@ -56,15 +56,15 @@ ata_ehi_push_desc
 Description
 -----------
 
-Format string according to \ ``fmt``\  and append it to \ ``ehi``\ ->desc.
-If \ ``ehi``\ ->desc is not empty, ", " is added in-between.
+     Format string according to \ ``fmt``\  and append it to \ ``ehi``\ ->desc.
+     If \ ``ehi``\ ->desc is not empty, ", " is added in-between.
 
 .. _`ata_ehi_push_desc.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_ehi_clear_desc`:
 
@@ -83,14 +83,14 @@ ata_ehi_clear_desc
 Description
 -----------
 
-Clear \ ``ehi``\ ->desc.
+     Clear \ ``ehi``\ ->desc.
 
 .. _`ata_ehi_clear_desc.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_port_desc`:
 
@@ -115,17 +115,17 @@ ata_port_desc
 Description
 -----------
 
-Format string according to \ ``fmt``\  and append it to port
-description.  If port description is not empty, " " is added
-in-between.  This function is to be used while initializing
-ata_host.  The description is printed on host registration.
+     Format string according to \ ``fmt``\  and append it to port
+     description.  If port description is not empty, " " is added
+     in-between.  This function is to be used while initializing
+     ata_host.  The description is printed on host registration.
 
 .. _`ata_port_desc.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_port_pbar_desc`:
 
@@ -153,17 +153,17 @@ ata_port_pbar_desc
 Description
 -----------
 
-If \ ``offset``\  is negative, this function formats a string which
-contains the name, address, size and type of the BAR and
-appends it to the port description.  If \ ``offset``\  is zero or
-positive, only name and offsetted address is appended.
+     If \ ``offset``\  is negative, this function formats a string which
+     contains the name, address, size and type of the BAR and
+     appends it to the port description.  If \ ``offset``\  is zero or
+     positive, only name and offsetted address is appended.
 
 .. _`ata_port_pbar_desc.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_internal_cmd_timeout`:
 
@@ -185,21 +185,21 @@ ata_internal_cmd_timeout
 Description
 -----------
 
-Determine timeout for internal command \ ``cmd``\  for \ ``dev``\ .
+     Determine timeout for internal command \ ``cmd``\  for \ ``dev``\ .
 
 .. _`ata_internal_cmd_timeout.locking`:
 
 LOCKING
 -------
 
-EH context.
+     EH context.
 
 .. _`ata_internal_cmd_timeout.return`:
 
 Return
 ------
 
-Determined timeout.
+     Determined timeout.
 
 .. _`ata_internal_cmd_timed_out`:
 
@@ -221,16 +221,16 @@ ata_internal_cmd_timed_out
 Description
 -----------
 
-Notify EH that internal command \ ``cmd``\  for \ ``dev``\  timed out.  This
-function should be called only for commands whose timeouts are
-determined using \ :c:func:`ata_internal_cmd_timeout`\ .
+     Notify EH that internal command \ ``cmd``\  for \ ``dev``\  timed out.  This
+     function should be called only for commands whose timeouts are
+     determined using \ :c:func:`ata_internal_cmd_timeout`\ .
 
 .. _`ata_internal_cmd_timed_out.locking`:
 
 LOCKING
 -------
 
-EH context.
+     EH context.
 
 .. _`ata_eh_acquire`:
 
@@ -249,16 +249,16 @@ ata_eh_acquire
 Description
 -----------
 
-Acquire EH ownership for \ ``ap``\ .  This is the basic exclusion
-mechanism for ports sharing a host.  Only one port hanging off
-the same host can claim the ownership of EH.
+     Acquire EH ownership for \ ``ap``\ .  This is the basic exclusion
+     mechanism for ports sharing a host.  Only one port hanging off
+     the same host can claim the ownership of EH.
 
 .. _`ata_eh_acquire.locking`:
 
 LOCKING
 -------
 
-EH context.
+     EH context.
 
 .. _`ata_eh_release`:
 
@@ -277,15 +277,15 @@ ata_eh_release
 Description
 -----------
 
-Release EH ownership for \ ``ap``\  if the caller.  The caller must
-have acquired EH ownership using \ :c:func:`ata_eh_acquire`\  previously.
+     Release EH ownership for \ ``ap``\  if the caller.  The caller must
+     have acquired EH ownership using \ :c:func:`ata_eh_acquire`\  previously.
 
 .. _`ata_eh_release.locking`:
 
 LOCKING
 -------
 
-EH context.
+     EH context.
 
 .. _`ata_scsi_timed_out`:
 
@@ -304,33 +304,28 @@ ata_scsi_timed_out
 Description
 -----------
 
-Handles SCSI layer timeout.  We race with normal completion of
-the qc for \ ``cmd``\ .  If the qc is already gone, we lose and let
-the scsi command finish (EH_HANDLED).  Otherwise, the qc has
-timed out and EH should be invoked.  Prevent \ :c:func:`ata_qc_complete`\ 
-from finishing it by setting EH_SCHEDULED and return
-EH_NOT_HANDLED.
+     Handles SCSI layer timeout.  We race with normal completion of
+     the qc for \ ``cmd``\ .  If the qc is already gone, we lose and let
+     the scsi command finish (EH_HANDLED).  Otherwise, the qc has
+     timed out and EH should be invoked.  Prevent \ :c:func:`ata_qc_complete`\ 
+     from finishing it by setting EH_SCHEDULED and return
+     EH_NOT_HANDLED.
 
-.. _`ata_scsi_timed_out.todo`:
-
-TODO
-----
-
-kill this function once old EH is gone.
+     TODO: kill this function once old EH is gone.
 
 .. _`ata_scsi_timed_out.locking`:
 
 LOCKING
 -------
 
-Called from timer context
+     Called from timer context
 
 .. _`ata_scsi_timed_out.return`:
 
 Return
 ------
 
-EH_HANDLED or EH_NOT_HANDLED
+     EH_HANDLED or EH_NOT_HANDLED
 
 .. _`ata_scsi_error`:
 
@@ -349,21 +344,21 @@ ata_scsi_error
 Description
 -----------
 
-Handles SCSI-layer-thrown error events.
+     Handles SCSI-layer-thrown error events.
 
 .. _`ata_scsi_error.locking`:
 
 LOCKING
 -------
 
-Inherited from SCSI layer (none, can sleep)
+     Inherited from SCSI layer (none, can sleep)
 
 .. _`ata_scsi_error.return`:
 
 Return
 ------
 
-Zero.
+     Zero.
 
 .. _`ata_scsi_cmd_error_handler`:
 
@@ -432,14 +427,14 @@ ata_port_wait_eh
 Description
 -----------
 
-Wait until the currently pending EH is complete.
+     Wait until the currently pending EH is complete.
 
 .. _`ata_port_wait_eh.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_set_pending`:
 
@@ -461,16 +456,16 @@ ata_eh_set_pending
 Description
 -----------
 
-Set ATA_PFLAG_EH_PENDING and activate fast drain if \ ``fastdrain``\ 
-is non-zero and EH wasn't pending before.  Fast drain ensures
-that EH kicks in in timely manner.
+     Set ATA_PFLAG_EH_PENDING and activate fast drain if \ ``fastdrain``\ 
+     is non-zero and EH wasn't pending before.  Fast drain ensures
+     that EH kicks in in timely manner.
 
 .. _`ata_eh_set_pending.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_qc_schedule_eh`:
 
@@ -489,15 +484,15 @@ ata_qc_schedule_eh
 Description
 -----------
 
-Schedule error handling for \ ``qc``\ .  EH will kick in as soon as
-other commands are drained.
+     Schedule error handling for \ ``qc``\ .  EH will kick in as soon as
+     other commands are drained.
 
 .. _`ata_qc_schedule_eh.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_std_sched_eh`:
 
@@ -511,13 +506,13 @@ ata_std_sched_eh
     :param struct ata_port \*ap:
         ATA port to schedule EH for
 
-.. _`ata_std_sched_eh.locking`:
+.. _`ata_std_sched_eh.description`:
 
-LOCKING
--------
+Description
+-----------
 
-inherited from ata_port_schedule_eh
-spin_lock_irqsave(host lock)
+     LOCKING: inherited from ata_port_schedule_eh
+     spin_lock_irqsave(host lock)
 
 .. _`ata_std_end_eh`:
 
@@ -546,7 +541,7 @@ these events.
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_port_schedule_eh`:
 
@@ -565,15 +560,15 @@ ata_port_schedule_eh
 Description
 -----------
 
-Schedule error handling for \ ``ap``\ .  EH will kick in as soon as
-all commands are drained.
+     Schedule error handling for \ ``ap``\ .  EH will kick in as soon as
+     all commands are drained.
 
 .. _`ata_port_schedule_eh.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_link_abort`:
 
@@ -592,21 +587,21 @@ ata_link_abort
 Description
 -----------
 
-Abort all active qc's active on \ ``link``\  and schedule EH.
+     Abort all active qc's active on \ ``link``\  and schedule EH.
 
 .. _`ata_link_abort.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_link_abort.return`:
 
 Return
 ------
 
-Number of aborted qc's.
+     Number of aborted qc's.
 
 .. _`ata_port_abort`:
 
@@ -625,21 +620,21 @@ ata_port_abort
 Description
 -----------
 
-Abort all active qc's of \ ``ap``\  and schedule EH.
+     Abort all active qc's of \ ``ap``\  and schedule EH.
 
 .. _`ata_port_abort.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host_set lock)
+     spin_lock_irqsave(host_set lock)
 
 .. _`ata_port_abort.return`:
 
 Return
 ------
 
-Number of aborted qc's.
+     Number of aborted qc's.
 
 .. _`__ata_port_freeze`:
 
@@ -658,23 +653,23 @@ __ata_port_freeze
 Description
 -----------
 
-This function is called when HSM violation or some other
-condition disrupts normal operation of the port.  Frozen port
-is not allowed to perform any operation until the port is
-thawed, which usually follows a successful reset.
+     This function is called when HSM violation or some other
+     condition disrupts normal operation of the port.  Frozen port
+     is not allowed to perform any operation until the port is
+     thawed, which usually follows a successful reset.
 
-ap->ops->freeze() callback can be used for freezing the port
-hardware-wise (e.g. mask interrupt and stop DMA engine).  If a
-port cannot be frozen hardware-wise, the interrupt handler
-must ack and clear interrupts unconditionally while the port
-is frozen.
+     ap->ops->freeze() callback can be used for freezing the port
+     hardware-wise (e.g. mask interrupt and stop DMA engine).  If a
+     port cannot be frozen hardware-wise, the interrupt handler
+     must ack and clear interrupts unconditionally while the port
+     is frozen.
 
 .. _`__ata_port_freeze.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_port_freeze`:
 
@@ -693,23 +688,23 @@ ata_port_freeze
 Description
 -----------
 
-Abort and freeze \ ``ap``\ .  The freeze operation must be called
-first, because some hardware requires special operations
-before the taskfile registers are accessible.
+     Abort and freeze \ ``ap``\ .  The freeze operation must be called
+     first, because some hardware requires special operations
+     before the taskfile registers are accessible.
 
 .. _`ata_port_freeze.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_port_freeze.return`:
 
 Return
 ------
 
-Number of aborted commands.
+     Number of aborted commands.
 
 .. _`sata_async_notification`:
 
@@ -728,22 +723,22 @@ sata_async_notification
 Description
 -----------
 
-Handler to be called when async notification via SDB FIS is
-received.  This function schedules EH if necessary.
+     Handler to be called when async notification via SDB FIS is
+     received.  This function schedules EH if necessary.
 
 .. _`sata_async_notification.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`sata_async_notification.return`:
 
 Return
 ------
 
-1 if EH is scheduled, 0 otherwise.
+     1 if EH is scheduled, 0 otherwise.
 
 .. _`ata_eh_freeze_port`:
 
@@ -762,14 +757,14 @@ ata_eh_freeze_port
 Description
 -----------
 
-Freeze \ ``ap``\ .
+     Freeze \ ``ap``\ .
 
 .. _`ata_eh_freeze_port.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_eh_thaw_port`:
 
@@ -788,14 +783,14 @@ ata_eh_thaw_port
 Description
 -----------
 
-Thaw frozen port \ ``ap``\ .
+     Thaw frozen port \ ``ap``\ .
 
 .. _`ata_eh_thaw_port.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_eh_qc_complete`:
 
@@ -814,8 +809,8 @@ ata_eh_qc_complete
 Description
 -----------
 
-Indicate to the mid and upper layers that an ATA command has
-completed.  To be used from EH.
+     Indicate to the mid and upper layers that an ATA command has
+     completed.  To be used from EH.
 
 .. _`ata_eh_qc_retry`:
 
@@ -834,12 +829,12 @@ ata_eh_qc_retry
 Description
 -----------
 
-Indicate to the mid and upper layers that an ATA command
-should be retried.  To be used from EH.
+     Indicate to the mid and upper layers that an ATA command
+     should be retried.  To be used from EH.
 
-SCSI midlayer limits the number of retries to scmd->allowed.
-scmd->allowed is incremented for commands which get retried
-due to unrelated failures (qc->err_mask is zero).
+     SCSI midlayer limits the number of retries to scmd->allowed.
+     scmd->allowed is incremented for commands which get retried
+     due to unrelated failures (qc->err_mask is zero).
 
 .. _`ata_dev_disable`:
 
@@ -858,14 +853,14 @@ ata_dev_disable
 Description
 -----------
 
-Disable \ ``dev``\ .
+     Disable \ ``dev``\ .
 
 .. _`ata_dev_disable.locking`:
 
 Locking
 -------
 
-EH context.
+     EH context.
 
 .. _`ata_eh_detach_dev`:
 
@@ -884,14 +879,14 @@ ata_eh_detach_dev
 Description
 -----------
 
-Detach \ ``dev``\ .
+     Detach \ ``dev``\ .
 
 .. _`ata_eh_detach_dev.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_eh_about_to_do`:
 
@@ -916,16 +911,16 @@ ata_eh_about_to_do
 Description
 -----------
 
-Called just before performing EH actions to clear related bits
-in \ ``link``\ ->eh_info such that eh actions are not unnecessarily
-repeated.
+     Called just before performing EH actions to clear related bits
+     in \ ``link``\ ->eh_info such that eh actions are not unnecessarily
+     repeated.
 
 .. _`ata_eh_about_to_do.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_eh_done`:
 
@@ -950,15 +945,15 @@ ata_eh_done
 Description
 -----------
 
-Called right after performing EH actions to clear related bits
-in \ ``link``\ ->eh_context.
+     Called right after performing EH actions to clear related bits
+     in \ ``link``\ ->eh_context.
 
 .. _`ata_eh_done.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_err_string`:
 
@@ -977,23 +972,23 @@ ata_err_string
 Description
 -----------
 
-Convert \ ``err_mask``\  to descriptive string.  Errors are
-prioritized according to severity and only the most severe
-error is reported.
+     Convert \ ``err_mask``\  to descriptive string.  Errors are
+     prioritized according to severity and only the most severe
+     error is reported.
 
 .. _`ata_err_string.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_err_string.return`:
 
 Return
 ------
 
-Descriptive string for \ ``err_mask``\ 
+     Descriptive string for \ ``err_mask``\ 
 
 .. _`ata_read_log_page`:
 
@@ -1024,21 +1019,21 @@ ata_read_log_page
 Description
 -----------
 
-Read log page using READ_LOG_EXT command.
+     Read log page using READ_LOG_EXT command.
 
 .. _`ata_read_log_page.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_read_log_page.return`:
 
 Return
 ------
 
-0 on success, AC_ERR\_\* mask otherwise.
+     0 on success, AC_ERR_* mask otherwise.
 
 .. _`ata_eh_read_log_10h`:
 
@@ -1063,22 +1058,22 @@ ata_eh_read_log_10h
 Description
 -----------
 
-Read log page 10h to obtain NCQ error details and clear error
-condition.
+     Read log page 10h to obtain NCQ error details and clear error
+     condition.
 
 .. _`ata_eh_read_log_10h.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_read_log_10h.return`:
 
 Return
 ------
 
-0 on success, -errno otherwise.
+     0 on success, -errno otherwise.
 
 .. _`atapi_eh_tur`:
 
@@ -1100,21 +1095,21 @@ atapi_eh_tur
 Description
 -----------
 
-Perform ATAPI TEST_UNIT_READY.
+     Perform ATAPI TEST_UNIT_READY.
 
 .. _`atapi_eh_tur.locking`:
 
 LOCKING
 -------
 
-EH context (may sleep).
+     EH context (may sleep).
 
 .. _`atapi_eh_tur.return`:
 
 Return
 ------
 
-0 on success, AC_ERR\_\* mask on failure.
+     0 on success, AC_ERR_* mask on failure.
 
 .. _`ata_eh_request_sense`:
 
@@ -1136,15 +1131,15 @@ ata_eh_request_sense
 Description
 -----------
 
-Perform REQUEST_SENSE_DATA_EXT after the device reported CHECK
-SENSE.  This function is an EH helper.
+     Perform REQUEST_SENSE_DATA_EXT after the device reported CHECK
+     SENSE.  This function is an EH helper.
 
 .. _`ata_eh_request_sense.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`atapi_eh_request_sense`:
 
@@ -1169,22 +1164,22 @@ atapi_eh_request_sense
 Description
 -----------
 
-Perform ATAPI REQUEST_SENSE after the device reported CHECK
-SENSE.  This function is EH helper.
+     Perform ATAPI REQUEST_SENSE after the device reported CHECK
+     SENSE.  This function is EH helper.
 
 .. _`atapi_eh_request_sense.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`atapi_eh_request_sense.return`:
 
 Return
 ------
 
-0 on success, AC_ERR\_\* mask on failure
+     0 on success, AC_ERR_* mask on failure
 
 .. _`ata_eh_analyze_serror`:
 
@@ -1203,15 +1198,15 @@ ata_eh_analyze_serror
 Description
 -----------
 
-Analyze SError if available and further determine cause of
-failure.
+     Analyze SError if available and further determine cause of
+     failure.
 
 .. _`ata_eh_analyze_serror.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_eh_analyze_ncq_error`:
 
@@ -1230,17 +1225,17 @@ ata_eh_analyze_ncq_error
 Description
 -----------
 
-Read log page 10h, determine the offending qc and acquire
-error status TF.  For NCQ device errors, all LLDDs have to do
-is setting AC_ERR_DEV in ehi->err_mask.  This function takes
-care of the rest.
+     Read log page 10h, determine the offending qc and acquire
+     error status TF.  For NCQ device errors, all LLDDs have to do
+     is setting AC_ERR_DEV in ehi->err_mask.  This function takes
+     care of the rest.
 
 .. _`ata_eh_analyze_ncq_error.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_analyze_tf`:
 
@@ -1262,23 +1257,23 @@ ata_eh_analyze_tf
 Description
 -----------
 
-Analyze taskfile of \ ``qc``\  and further determine cause of
-failure.  This function also requests ATAPI sense data if
-available.
+     Analyze taskfile of \ ``qc``\  and further determine cause of
+     failure.  This function also requests ATAPI sense data if
+     available.
 
 .. _`ata_eh_analyze_tf.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_analyze_tf.return`:
 
 Return
 ------
 
-Determined recovery action
+     Determined recovery action
 
 .. _`ata_eh_speed_down_verdict`:
 
@@ -1297,66 +1292,66 @@ ata_eh_speed_down_verdict
 Description
 -----------
 
-This function examines error ring of \ ``dev``\  and determines
-whether NCQ needs to be turned off, transfer speed should be
-stepped down, or falling back to PIO is necessary.
+     This function examines error ring of \ ``dev``\  and determines
+     whether NCQ needs to be turned off, transfer speed should be
+     stepped down, or falling back to PIO is necessary.
 
-ECAT_ATA_BUS    : ATA_BUS error for any command
+     ECAT_ATA_BUS    : ATA_BUS error for any command
 
-ECAT_TOUT_HSM   : TIMEOUT for any command or HSM violation for
-IO commands
+     ECAT_TOUT_HSM   : TIMEOUT for any command or HSM violation for
+                       IO commands
 
-ECAT_UNK_DEV    : Unknown DEV error for IO commands
+     ECAT_UNK_DEV    : Unknown DEV error for IO commands
 
-ECAT_DUBIOUS\_\*  : Identical to above three but occurred while
-data transfer hasn't been verified.
+     ECAT_DUBIOUS_*  : Identical to above three but occurred while
+                       data transfer hasn't been verified.
 
-Verdicts are
+     Verdicts are
 
-NCQ_OFF         : Turn off NCQ.
+     NCQ_OFF         : Turn off NCQ.
 
-SPEED_DOWN      : Speed down transfer speed but don't fall back
-to PIO.
+     SPEED_DOWN      : Speed down transfer speed but don't fall back
+                       to PIO.
 
-FALLBACK_TO_PIO : Fall back to PIO.
+     FALLBACK_TO_PIO : Fall back to PIO.
 
-Even if multiple verdicts are returned, only one action is
-taken per error.  An action triggered by non-DUBIOUS errors
-clears ering, while one triggered by DUBIOUS\_\* errors doesn't.
-This is to expedite speed down decisions right after device is
-initially configured.
+     Even if multiple verdicts are returned, only one action is
+     taken per error.  An action triggered by non-DUBIOUS errors
+     clears ering, while one triggered by DUBIOUS_* errors doesn't.
+     This is to expedite speed down decisions right after device is
+     initially configured.
 
-The followings are speed down rules.  #1 and #2 deal with
-DUBIOUS errors.
+     The following are speed down rules.  #1 and #2 deal with
+     DUBIOUS errors.
 
-1. If more than one DUBIOUS_ATA_BUS or DUBIOUS_TOUT_HSM errors
-occurred during last 5 mins, SPEED_DOWN and FALLBACK_TO_PIO.
+     1. If more than one DUBIOUS_ATA_BUS or DUBIOUS_TOUT_HSM errors
+        occurred during last 5 mins, SPEED_DOWN and FALLBACK_TO_PIO.
 
-2. If more than one DUBIOUS_TOUT_HSM or DUBIOUS_UNK_DEV errors
-occurred during last 5 mins, NCQ_OFF.
+     2. If more than one DUBIOUS_TOUT_HSM or DUBIOUS_UNK_DEV errors
+        occurred during last 5 mins, NCQ_OFF.
 
-3. If more than 8 ATA_BUS, TOUT_HSM or UNK_DEV errors
-occurred during last 5 mins, FALLBACK_TO_PIO
+     3. If more than 8 ATA_BUS, TOUT_HSM or UNK_DEV errors
+        occurred during last 5 mins, FALLBACK_TO_PIO
 
-4. If more than 3 TOUT_HSM or UNK_DEV errors occurred
-during last 10 mins, NCQ_OFF.
+     4. If more than 3 TOUT_HSM or UNK_DEV errors occurred
+        during last 10 mins, NCQ_OFF.
 
-5. If more than 3 ATA_BUS or TOUT_HSM errors, or more than 6
-UNK_DEV errors occurred during last 10 mins, SPEED_DOWN.
+     5. If more than 3 ATA_BUS or TOUT_HSM errors, or more than 6
+        UNK_DEV errors occurred during last 10 mins, SPEED_DOWN.
 
 .. _`ata_eh_speed_down_verdict.locking`:
 
 LOCKING
 -------
 
-Inherited from caller.
+     Inherited from caller.
 
 .. _`ata_eh_speed_down_verdict.return`:
 
 Return
 ------
 
-OR of ATA_EH_SPDN\_\* flags.
+     OR of ATA_EH_SPDN_* flags.
 
 .. _`ata_eh_speed_down`:
 
@@ -1371,7 +1366,7 @@ ata_eh_speed_down
         Failed device
 
     :param unsigned int eflags:
-        mask of ATA_EFLAG\_\* flags
+        mask of ATA_EFLAG_* flags
 
     :param unsigned int err_mask:
         err_mask of the error
@@ -1381,24 +1376,24 @@ ata_eh_speed_down
 Description
 -----------
 
-Record error and examine error history to determine whether
-adjusting transmission speed is necessary.  It also sets
-transmission limits appropriately if such adjustment is
-necessary.
+     Record error and examine error history to determine whether
+     adjusting transmission speed is necessary.  It also sets
+     transmission limits appropriately if such adjustment is
+     necessary.
 
 .. _`ata_eh_speed_down.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_speed_down.return`:
 
 Return
 ------
 
-Determined recovery action.
+     Determined recovery action.
 
 .. _`ata_eh_worth_retry`:
 
@@ -1417,10 +1412,10 @@ ata_eh_worth_retry
 Description
 -----------
 
-Look at the cause of the error and decide if a retry
-might be useful or not.  We don't want to retry media errors
-because the drive itself has probably already taken 10-30 seconds
-doing its own internal retries before reporting the failure.
+     Look at the cause of the error and decide if a retry
+     might be useful or not.  We don't want to retry media errors
+     because the drive itself has probably already taken 10-30 seconds
+     doing its own internal retries before reporting the failure.
 
 .. _`ata_eh_link_autopsy`:
 
@@ -1439,16 +1434,16 @@ ata_eh_link_autopsy
 Description
 -----------
 
-Analyze why \ ``link``\  failed and determine which recovery actions
-are needed.  This function also sets more detailed AC_ERR\_\*
-values and fills sense data for ATAPI CHECK SENSE.
+     Analyze why \ ``link``\  failed and determine which recovery actions
+     are needed.  This function also sets more detailed AC_ERR_*
+     values and fills sense data for ATAPI CHECK SENSE.
 
 .. _`ata_eh_link_autopsy.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_autopsy`:
 
@@ -1467,15 +1462,15 @@ ata_eh_autopsy
 Description
 -----------
 
-Analyze all links of \ ``ap``\  and determine why they failed and
-which recovery actions are needed.
+     Analyze all links of \ ``ap``\  and determine why they failed and
+     which recovery actions are needed.
 
 .. _`ata_eh_autopsy.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_get_cmd_descript`:
 
@@ -1494,15 +1489,15 @@ ata_get_cmd_descript
 Description
 -----------
 
-Return a textual description of the given command, or NULL if the
-command is not known.
+     Return a textual description of the given command, or NULL if the
+     command is not known.
 
 .. _`ata_get_cmd_descript.locking`:
 
 LOCKING
 -------
 
-None
+     None
 
 .. _`ata_eh_link_report`:
 
@@ -1521,14 +1516,14 @@ ata_eh_link_report
 Description
 -----------
 
-Report EH to user.
+     Report EH to user.
 
 .. _`ata_eh_link_report.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_eh_report`:
 
@@ -1547,14 +1542,14 @@ ata_eh_report
 Description
 -----------
 
-Report EH to user.
+     Report EH to user.
 
 .. _`ata_eh_report.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_set_mode`:
 
@@ -1576,23 +1571,23 @@ ata_set_mode
 Description
 -----------
 
-Set ATA device disk transfer mode (PIO3, UDMA6, etc.).  If
-\ :c:func:`ata_set_mode`\  fails, pointer to the failing device is
-returned in \ ``r_failed_dev``\ .
+     Set ATA device disk transfer mode (PIO3, UDMA6, etc.).  If
+     \ :c:func:`ata_set_mode`\  fails, pointer to the failing device is
+     returned in \ ``r_failed_dev``\ .
 
 .. _`ata_set_mode.locking`:
 
 LOCKING
 -------
 
-PCI/etc. bus probe sem.
+     PCI/etc. bus probe sem.
 
 .. _`ata_set_mode.return`:
 
 Return
 ------
 
-0 on success, negative errno otherwise
+     0 on success, negative errno otherwise
 
 .. _`atapi_eh_clear_ua`:
 
@@ -1611,23 +1606,23 @@ atapi_eh_clear_ua
 Description
 -----------
 
-Resets and other operations can make an ATAPI device raise
-UNIT ATTENTION which causes the next operation to fail.  This
-function clears UA.
+     Resets and other operations can make an ATAPI device raise
+     UNIT ATTENTION which causes the next operation to fail.  This
+     function clears UA.
 
 .. _`atapi_eh_clear_ua.locking`:
 
 LOCKING
 -------
 
-EH context (may sleep).
+     EH context (may sleep).
 
 .. _`atapi_eh_clear_ua.return`:
 
 Return
 ------
 
-0 on success, -errno on failure.
+     0 on success, -errno on failure.
 
 .. _`ata_eh_maybe_retry_flush`:
 
@@ -1646,22 +1641,22 @@ ata_eh_maybe_retry_flush
 Description
 -----------
 
-If \ ``dev``\  failed FLUSH, it needs to be reported upper layer
-immediately as it means that \ ``dev``\  failed to remap and already
-lost at least a sector and further FLUSH retrials won't make
-any difference to the lost sector.  However, if FLUSH failed
-for other reasons, for example transmission error, FLUSH needs
-to be retried.
+     If \ ``dev``\  failed FLUSH, it needs to be reported upper layer
+     immediately as it means that \ ``dev``\  failed to remap and already
+     lost at least a sector and further FLUSH retrials won't make
+     any difference to the lost sector.  However, if FLUSH failed
+     for other reasons, for example transmission error, FLUSH needs
+     to be retried.
 
-This function determines whether FLUSH failure retry is
-necessary and performs it if so.
+     This function determines whether FLUSH failure retry is
+     necessary and performs it if so.
 
 .. _`ata_eh_maybe_retry_flush.return`:
 
 Return
 ------
 
-0 if EH can continue, -errno if EH needs to be repeated.
+     0 if EH can continue, -errno if EH needs to be repeated.
 
 .. _`ata_eh_set_lpm`:
 
@@ -1686,24 +1681,24 @@ ata_eh_set_lpm
 Description
 -----------
 
-Enable SATA Interface power management.  This will enable
-Device Interface Power Management (DIPM) for min_power
-policy, and then call driver specific callbacks for
-enabling Host Initiated Power management.
+     Enable SATA Interface power management.  This will enable
+     Device Interface Power Management (DIPM) for min_power
+     policy, and then call driver specific callbacks for
+     enabling Host Initiated Power management.
 
 .. _`ata_eh_set_lpm.locking`:
 
 LOCKING
 -------
 
-EH context.
+     EH context.
 
 .. _`ata_eh_set_lpm.return`:
 
 Return
 ------
 
-0 on success, -errno on failure.
+     0 on success, -errno on failure.
 
 .. _`ata_eh_recover`:
 
@@ -1737,26 +1732,26 @@ ata_eh_recover
 Description
 -----------
 
-This is the alpha and omega, eum and yang, heart and soul of
-libata exception handling.  On entry, actions required to
-recover each link and hotplug requests are recorded in the
-link's eh_context.  This function executes all the operations
-with appropriate retrials and fallbacks to resurrect failed
-devices, detach goners and greet newcomers.
+     This is the alpha and omega, eum and yang, heart and soul of
+     libata exception handling.  On entry, actions required to
+     recover each link and hotplug requests are recorded in the
+     link's eh_context.  This function executes all the operations
+     with appropriate retrials and fallbacks to resurrect failed
+     devices, detach goners and greet newcomers.
 
 .. _`ata_eh_recover.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_recover.return`:
 
 Return
 ------
 
-0 on success, -errno on failure.
+     0 on success, -errno on failure.
 
 .. _`ata_eh_finish`:
 
@@ -1775,15 +1770,15 @@ ata_eh_finish
 Description
 -----------
 
-Recovery is complete.  Clean up EH states and retry or finish
-failed qcs.
+     Recovery is complete.  Clean up EH states and retry or finish
+     failed qcs.
 
 .. _`ata_eh_finish.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_do_eh`:
 
@@ -1814,14 +1809,14 @@ ata_do_eh
 Description
 -----------
 
-Perform standard error handling sequence.
+     Perform standard error handling sequence.
 
 .. _`ata_do_eh.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_std_error_handler`:
 
@@ -1840,14 +1835,14 @@ ata_std_error_handler
 Description
 -----------
 
-Standard error handler
+     Standard error handler
 
 .. _`ata_std_error_handler.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_handle_port_suspend`:
 
@@ -1866,14 +1861,14 @@ ata_eh_handle_port_suspend
 Description
 -----------
 
-Suspend \ ``ap``\ .
+     Suspend \ ``ap``\ .
 
 .. _`ata_eh_handle_port_suspend.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_eh_handle_port_resume`:
 
@@ -1892,14 +1887,14 @@ ata_eh_handle_port_resume
 Description
 -----------
 
-Resume \ ``ap``\ .
+     Resume \ ``ap``\ .
 
 .. _`ata_eh_handle_port_resume.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. This file was automatic generated / don't edit.
 

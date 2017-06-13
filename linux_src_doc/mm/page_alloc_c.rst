@@ -149,7 +149,8 @@ Description
 nr_free_zone_pages() counts the number of counts pages which are beyond the
 high watermark within all zones at or below a given zone index.  For each
 zone, the number of pages is calculated as:
-managed_pages - high_pages
+
+    nr_free_zone_pages = managed_pages - high_pages
 
 .. _`nr_free_buffer_pages`:
 
@@ -424,7 +425,7 @@ setup_per_zone_wmarks
 
 .. c:function:: void setup_per_zone_wmarks( void)
 
-    called when min_free_kbytes changes or when memory is hot-{added\|removed}
+    called when min_free_kbytes changes or when memory is hot-{added|removed}
 
     :param  void:
         no arguments
@@ -442,7 +443,7 @@ correctly with respect to min_free_kbytes.
 alloc_contig_range
 ==================
 
-.. c:function:: int alloc_contig_range(unsigned long start, unsigned long end, unsigned migratetype)
+.. c:function:: int alloc_contig_range(unsigned long start, unsigned long end, unsigned migratetype, gfp_t gfp_mask)
 
     - tries to allocate given range of pages
 
@@ -457,6 +458,9 @@ alloc_contig_range
         #MIGRATE_MOVABLE or #MIGRATE_CMA).  All pageblocks
         in range must have the same migratetype and it must
         be either of the two.
+
+    :param gfp_t gfp_mask:
+        GFP mask to use during compaction
 
 .. _`alloc_contig_range.description`:
 

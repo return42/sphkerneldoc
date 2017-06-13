@@ -184,18 +184,12 @@ Description
 The transport code maintains an estimate on the maximum number of out-
 standing RPC requests, using a smoothed version of the congestion
 avoidance implemented in 44BSD. This is basically the Van Jacobson
-
-.. _`xprt_adjust_cwnd.congestion-algorithm`:
-
-congestion algorithm
---------------------
-
-If a retransmit occurs, the congestion window is
+congestion algorithm: If a retransmit occurs, the congestion window is
 halved; otherwise, it is incremented by 1/cwnd when
 
--       a reply is received and
--       a full number of requests are outstanding and
--       the congestion window hasn't been updated recently.
+     -       a reply is received and
+     -       a full number of requests are outstanding and
+     -       the congestion window hasn't been updated recently.
 
 .. _`xprt_wake_pending_tasks`:
 

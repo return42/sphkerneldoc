@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct qcom_smd_rpm {
-        struct qcom_smd_channel *rpm_channel;
+        struct rpmsg_endpoint *rpm_channel;
         struct device *dev;
         struct completion ack;
         struct mutex lock;

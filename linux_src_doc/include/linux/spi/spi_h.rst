@@ -372,6 +372,7 @@ Definition
         int (*prepare_message)(struct spi_master *master,struct spi_message *message);
         int (*unprepare_message)(struct spi_master *master,struct spi_message *message);
         int (*spi_flash_read)(struct spi_device *spi,struct spi_flash_read_message *msg);
+        bool (*spi_flash_can_dma)(struct spi_device *spi,struct spi_flash_read_message *msg);
         bool (*flash_read_supported)(struct spi_device *spi);
         void (*set_cs)(struct spi_device *spi, bool enable);
         int (*transfer_one)(struct spi_master *master, struct spi_device *spi,struct spi_transfer *transfer);
@@ -543,6 +544,10 @@ unprepare_message
 spi_flash_read
     to support spi-controller hardwares that provide
     accelerated interface to read from flash devices.
+
+spi_flash_can_dma
+    analogous to \ :c:func:`can_dma`\  interface, but for
+    controllers implementing spi_flash_read.
 
 flash_read_supported
     spi device supports flash read
@@ -1304,6 +1309,7 @@ Definition
     struct spi_board_info {
         char modalias[SPI_NAME_SIZE];
         const void *platform_data;
+        const struct property_entry *properties;
         void *controller_data;
         int irq;
         u32 max_speed_hz;
@@ -1323,6 +1329,9 @@ modalias
 platform_data
     Initializes spi_device.platform_data; the particular
     data stored there is driver-specific.
+
+properties
+    Additional device properties for the device.
 
 controller_data
     Initializes spi_device.controller_data; some

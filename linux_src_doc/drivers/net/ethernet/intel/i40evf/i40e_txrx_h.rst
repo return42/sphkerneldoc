@@ -76,26 +76,6 @@ operations into
 
 return ((size \* 85) >> 20) + 1;
 
-.. _`i40e_get_head`:
-
-i40e_get_head
-=============
-
-.. c:function:: u32 i40e_get_head(struct i40e_ring *tx_ring)
-
-    Retrieve head from head writeback
-
-    :param struct i40e_ring \*tx_ring:
-        Tx ring to fetch head of
-
-.. _`i40e_get_head.description`:
-
-Description
------------
-
-Returns value of Tx ring head based on value stored
-in head write-back location
-
 .. _`i40e_xmit_descriptor_count`:
 
 i40e_xmit_descriptor_count
@@ -162,30 +142,6 @@ Note
 Our HW can't scatter-gather more than 8 fragments to build
 a packet on the wire and so we need to figure out the cases where we
 need to linearize the skb.
-
-.. _`i40e_rx_is_fcoe`:
-
-i40e_rx_is_fcoe
-===============
-
-.. c:function:: bool i40e_rx_is_fcoe(u16 ptype)
-
-    returns true if the Rx packet type is FCoE
-
-    :param u16 ptype:
-        the packet type field from Rx descriptor write-back
-
-.. _`txring_txq`:
-
-txring_txq
-==========
-
-.. c:function:: struct netdev_queue *txring_txq(const struct i40e_ring *ring)
-
-    Find the netdev Tx ring based on the i40e Tx ring
-
-    :param const struct i40e_ring \*ring:
-        Tx ring to find the netdev equivalent of
 
 .. This file was automatic generated / don't edit.
 

@@ -25,3 +25,4 @@ cpufreq
     speedstep-centrino_c
     speedstep-ich_c
     speedstep-smi_c
+    ti-cpufreq_c

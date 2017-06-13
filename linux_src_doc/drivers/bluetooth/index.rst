@@ -11,3 +11,4 @@ bluetooth
     btmrvl_sdio_c
     btmrvl_sdio_h
     btwilink_c
+    hci_ll_c

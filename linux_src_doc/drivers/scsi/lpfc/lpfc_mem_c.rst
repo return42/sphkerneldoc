@@ -21,7 +21,7 @@ lpfc_mem_alloc
 Description
 -----------
 
-Creates and allocates PCI pools lpfc_scsi_dma_buf_pool,
+Creates and allocates PCI pools lpfc_sg_dma_buf_pool,
 lpfc_mbuf_pool, lpfc_hrb_pool.  Creates and allocates kmalloc-backed mempools
 for LPFC_MBOXQ_t and lpfc_nodelist.  Also allocates the VPI bitmask.
 
@@ -86,7 +86,7 @@ Description
 -----------
 
 Free memory from PCI and driver memory pools and also those
-used : lpfc_scsi_dma_buf_pool, lpfc_mbuf_pool, lpfc_hrb_pool. Frees
+used : lpfc_sg_dma_buf_pool, lpfc_mbuf_pool, lpfc_hrb_pool. Frees
 kmalloc-backed mempools for LPFC_MBOXQ_t and lpfc_nodelist. Also frees
 the VPI bitmask.
 
@@ -216,6 +216,65 @@ Notes
 Takes phba->hbalock.  Can be called with or without other locks held.
 
 .. _`lpfc_mbuf_free.return`:
+
+Return
+------
+
+None
+
+.. _`lpfc_nvmet_buf_alloc`:
+
+lpfc_nvmet_buf_alloc
+====================
+
+.. c:function:: void *lpfc_nvmet_buf_alloc(struct lpfc_hba *phba, int mem_flags, dma_addr_t *handle)
+
+    Allocate an nvmet_buf from the lpfc_sg_dma_buf_pool PCI pool
+
+    :param struct lpfc_hba \*phba:
+        HBA which owns the pool to allocate from
+
+    :param int mem_flags:
+        indicates if this is a priority (MEM_PRI) allocation
+
+    :param dma_addr_t \*handle:
+        used to return the DMA-mapped address of the nvmet_buf
+
+.. _`lpfc_nvmet_buf_alloc.description`:
+
+Description
+-----------
+
+Allocates a DMA-mapped buffer from the lpfc_sg_dma_buf_pool
+PCI pool.  Allocates from generic pci_pool_alloc function.
+
+.. _`lpfc_nvmet_buf_alloc.return`:
+
+Return
+------
+
+pointer to the allocated nvmet_buf on success
+NULL on failure
+
+.. _`lpfc_nvmet_buf_free`:
+
+lpfc_nvmet_buf_free
+===================
+
+.. c:function:: void lpfc_nvmet_buf_free(struct lpfc_hba *phba, void *virt, dma_addr_t dma)
+
+    Free an nvmet_buf from the lpfc_sg_dma_buf_pool PCI pool
+
+    :param struct lpfc_hba \*phba:
+        HBA which owns the pool to return to
+
+    :param void \*virt:
+        nvmet_buf to free
+
+    :param dma_addr_t dma:
+        the DMA-mapped address of the lpfc_sg_dma_buf_pool to be freed
+
+.. _`lpfc_nvmet_buf_free.return`:
 
 Return
 ------
@@ -366,6 +425,78 @@ Return
 
 None
 
+.. _`lpfc_sli4_nvmet_alloc`:
+
+lpfc_sli4_nvmet_alloc
+=====================
+
+.. c:function:: struct rqb_dmabuf *lpfc_sli4_nvmet_alloc(struct lpfc_hba *phba)
+
+    Allocate an SLI4 Receive buffer
+
+    :param struct lpfc_hba \*phba:
+        HBA to allocate a receive buffer for
+
+.. _`lpfc_sli4_nvmet_alloc.description`:
+
+Description
+-----------
+
+Allocates a DMA-mapped receive buffer from the lpfc_hrb_pool PCI
+pool along a non-DMA-mapped container for it.
+
+.. _`lpfc_sli4_nvmet_alloc.notes`:
+
+Notes
+-----
+
+Not interrupt-safe.  Must be called with no locks held.
+
+.. _`lpfc_sli4_nvmet_alloc.return`:
+
+Return
+------
+
+pointer to HBQ on success
+NULL on failure
+
+.. _`lpfc_sli4_nvmet_free`:
+
+lpfc_sli4_nvmet_free
+====================
+
+.. c:function:: void lpfc_sli4_nvmet_free(struct lpfc_hba *phba, struct rqb_dmabuf *dmab)
+
+    Frees a receive buffer
+
+    :param struct lpfc_hba \*phba:
+        HBA buffer was allocated for
+
+    :param struct rqb_dmabuf \*dmab:
+        DMA Buffer container returned by lpfc_sli4_rbq_alloc
+
+.. _`lpfc_sli4_nvmet_free.description`:
+
+Description
+-----------
+
+Frees both the container and the DMA-mapped buffers returned by
+lpfc_sli4_nvmet_alloc.
+
+.. _`lpfc_sli4_nvmet_free.notes`:
+
+Notes
+-----
+
+Can be called with or without locks held.
+
+.. _`lpfc_sli4_nvmet_free.return`:
+
+Return
+------
+
+None
+
 .. _`lpfc_in_buf_free`:
 
 lpfc_in_buf_free
@@ -397,6 +528,43 @@ Notes
 Takes phba->hbalock.  Can be called with or without other locks held.
 
 .. _`lpfc_in_buf_free.return`:
+
+Return
+------
+
+None
+
+.. _`lpfc_rq_buf_free`:
+
+lpfc_rq_buf_free
+================
+
+.. c:function:: void lpfc_rq_buf_free(struct lpfc_hba *phba, struct lpfc_dmabuf *mp)
+
+    Free a RQ DMA buffer
+
+    :param struct lpfc_hba \*phba:
+        HBA buffer is associated with
+
+    :param struct lpfc_dmabuf \*mp:
+        Buffer to free
+
+.. _`lpfc_rq_buf_free.description`:
+
+Description
+-----------
+
+Frees the given DMA buffer in the appropriate way given by
+reposting it to its associated RQ so it can be reused.
+
+.. _`lpfc_rq_buf_free.notes`:
+
+Notes
+-----
+
+Takes phba->hbalock.  Can be called with or without other locks held.
+
+.. _`lpfc_rq_buf_free.return`:
 
 Return
 ------

@@ -643,7 +643,7 @@ Description
 
 This allows ownership of the specified buffer to returned to the driver,
 allowing an application to read the buffer without fear that firmware is
-overwritting information in the buffer.
+overwriting information in the buffer.
 
 .. _`mpt3_diag_read_buffer`:
 

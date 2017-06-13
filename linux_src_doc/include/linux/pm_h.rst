@@ -8,7 +8,7 @@ struct dev_pm_ops
 
 .. c:type:: struct dev_pm_ops
 
-    device PM callbacks
+    device PM callbacks.
 
 .. _`dev_pm_ops.definition`:
 
@@ -58,6 +58,27 @@ prepare
     that the PM core can execute it once again (e.g. after a new child has
     been registered) to recover from the race condition.
     This method is executed for all kinds of suspend transitions and is
+    followed by one of the suspend callbacks: \ ``suspend``\ (), \ ``freeze``\ (), or
+    \ ``poweroff``\ ().  If the transition is a suspend to memory or standby (that
+    is, not related to hibernation), the return value of \ ``prepare``\ () may be
+    used to indicate to the PM core to leave the device in runtime suspend
+    if applicable.  Namely, if \ ``prepare``\ () returns a positive number, the PM
+    core will understand that as a declaration that the device appears to be
+    runtime-suspended and it may be left in that state during the entire
+    transition and during the subsequent resume if all of its descendants
+    are left in runtime suspend too.  If that happens, \ ``complete``\ () will be
+    executed directly after \ ``prepare``\ () and it must ensure the proper
+    functioning of the device after the system resume.
+    The PM core executes subsystem-level \ ``prepare``\ () for all devices before
+    starting to invoke suspend callbacks for any of them, so generally
+    devices may be assumed to be functional or to respond to runtime resume
+    requests while \ ``prepare``\ () is being executed.  However, device drivers
+    may NOT assume anything about the availability of user space at that
+    time and it is NOT valid to request firmware from within \ ``prepare``\ ()
+    (it's too late to do that).  It also is NOT valid to allocate
+    substantial amounts of memory from \ ``prepare``\ () in the GFP_KERNEL mode.
+    [To work around these limitations, drivers may register suspend and
+    hibernation notifiers to be executed before the freezing of tasks.]
 
 complete
     Undo the changes made by \ ``prepare``\ ().  This method is executed for
@@ -239,137 +260,95 @@ to the rest of the driver stack (such as a driver that's ON gating off
 clocks which are not in active use).
 
 The externally visible transitions are handled with the help of callbacks
-included in this structure in such a way that two levels of callbacks are
-involved.  First, the PM core executes callbacks provided by PM domains,
-device types, classes and bus types.  They are the subsystem-level callbacks
-supposed to execute callbacks provided by device drivers, although they may
-choose not to do that.  If the driver callbacks are executed, they have to
-collaborate with the subsystem-level callbacks to achieve the goals
+included in this structure in such a way that, typically, two levels of
+callbacks are involved.  First, the PM core executes callbacks provided by PM
+domains, device types, classes and bus types.  They are the subsystem-level
+callbacks expected to execute callbacks provided by device drivers, although
+they may choose not to do that.  If the driver callbacks are executed, they
+have to collaborate with the subsystem-level callbacks to achieve the goals
 appropriate for the given system transition, given transition phase and the
 subsystem the device belongs to.
 
 All of the above callbacks, except for \ ``complete``\ (), return error codes.
-However, the error codes returned by the resume operations, \ ``resume``\ (),
-\ ``thaw``\ (), \ ``restore``\ (), \ ``resume_noirq``\ (), \ ``thaw_noirq``\ (), and \ ``restore_noirq``\ (), do
-not cause the PM core to abort the resume transition during which they are
-returned.  The error codes returned in those cases are only printed by the PM
-core to the system logs for debugging purposes.  Still, it is recommended
-that drivers only return error codes from their resume methods in case of an
-unrecoverable failure (i.e. when the device being handled refuses to resume
-and becomes unusable) to allow us to modify the PM core in the future, so
-that it can avoid attempting to handle devices that failed to resume and
-their children.
+However, the error codes returned by \ ``resume``\ (), \ ``thaw``\ (), \ ``restore``\ (),
+\ ``resume_noirq``\ (), \ ``thaw_noirq``\ (), and \ ``restore_noirq``\ (), do not cause the PM
+core to abort the resume transition during which they are returned.  The
+error codes returned in those cases are only printed to the system logs for
+debugging purposes.  Still, it is recommended that drivers only return error
+codes from their resume methods in case of an unrecoverable failure (i.e.
+when the device being handled refuses to resume and becomes unusable) to
+allow the PM core to be modified in the future, so that it can avoid
+attempting to handle devices that failed to resume and their children.
 
 It is allowed to unregister devices while the above callbacks are being
-executed.  However, a callback routine must NOT try to unregister the device
+executed.  However, a callback routine MUST NOT try to unregister the device
 it was called for, although it may unregister children of that device (for
 example, if it detects that a child was unplugged while the system was
 asleep).
 
-Refer to Documentation/power/admin-guide/devices.rst for more information about the role
-of the above callbacks in the system suspend process.
-
 There also are callbacks related to runtime power management of devices.
-Again, these callbacks are executed by the PM core only for subsystems
+Again, as a rule these callbacks are executed by the PM core for subsystems
 (PM domains, device types, classes and bus types) and the subsystem-level
-callbacks are supposed to invoke the driver callbacks.  Moreover, the exact
+callbacks are expected to invoke the driver callbacks.  Moreover, the exact
 actions to be performed by a device driver's callbacks generally depend on
 the platform and subsystem the device belongs to.
 
 Refer to Documentation/power/runtime_pm.txt for more information about the
-role of the above callbacks in device runtime power management.
+role of the \ ``runtime_suspend``\ (), \ ``runtime_resume``\ () and \ ``runtime_idle``\ ()
+callbacks in device runtime power management.
 
-.. _`dev_pm_ops.followed-by-one-of-the-suspend-callbacks`:
+.. _`dev_pm_domain`:
 
-followed by one of the suspend callbacks
-----------------------------------------
+struct dev_pm_domain
+====================
 
-@suspend(), \ ``freeze``\ (), or
-\ ``poweroff``\ ().  If the transition is a suspend to memory or standby (that
-is, not related to hibernation), the return value of \ ``prepare``\ () may be
-used to indicate to the PM core to leave the device in runtime suspend
-if applicable.  Namely, if \ ``prepare``\ () returns a positive number, the PM
-core will understand that as a declaration that the device appears to be
-runtime-suspended and it may be left in that state during the entire
-transition and during the subsequent resume if all of its descendants
-are left in runtime suspend too.  If that happens, \ ``complete``\ () will be
-executed directly after \ ``prepare``\ () and it must ensure the proper
-functioning of the device after the system resume.
-The PM core executes subsystem-level \ ``prepare``\ () for all devices before
-starting to invoke suspend callbacks for any of them, so generally
-devices may be assumed to be functional or to respond to runtime resume
-requests while \ ``prepare``\ () is being executed.  However, device drivers
-may NOT assume anything about the availability of user space at that
-time and it is NOT valid to request firmware from within \ ``prepare``\ ()
-(it's too late to do that).  It also is NOT valid to allocate
-substantial amounts of memory from \ ``prepare``\ () in the GFP_KERNEL mode.
-[To work around these limitations, drivers may register suspend and
-hibernation notifiers to be executed before the freezing of tasks.]
+.. c:type:: struct dev_pm_domain
 
-.. _`pm_event_invalid`:
+    power management domain representation.
 
-PM_EVENT_INVALID
-================
+.. _`dev_pm_domain.definition`:
 
-.. c:function::  PM_EVENT_INVALID()
+Definition
+----------
 
-.. _`pm_event_invalid.description`:
+.. code-block:: c
+
+    struct dev_pm_domain {
+        struct dev_pm_ops ops;
+        void (*detach)(struct device *dev, bool power_off);
+        int (*activate)(struct device *dev);
+        void (*sync)(struct device *dev);
+        void (*dismiss)(struct device *dev);
+    }
+
+.. _`dev_pm_domain.members`:
+
+Members
+-------
+
+ops
+    Power management operations associated with this domain.
+
+detach
+    Called when removing a device from the domain.
+
+activate
+    Called before executing probe routines for bus types and drivers.
+
+sync
+    Called after successful driver probe.
+
+dismiss
+    Called after unsuccessful driver probe and after driver removal.
+
+.. _`dev_pm_domain.description`:
 
 Description
 -----------
 
-The following PM_EVENT\_ messages are defined for the internal use of the PM
-core, in order to provide a mechanism allowing the high level suspend and
-hibernation code to convey the necessary information to the device PM core
-
-.. _`pm_event_invalid.code`:
-
-code
-----
-
-
-ON           No transition.
-
-FREEZE       System is going to hibernate, call ->prepare() and ->freeze()
-for all devices.
-
-SUSPEND      System is going to suspend, call ->prepare() and ->suspend()
-for all devices.
-
-HIBERNATE    Hibernation image has been saved, call ->prepare() and
-->poweroff() for all devices.
-
-QUIESCE      Contents of main memory are going to be restored from a (loaded)
-hibernation image, call ->prepare() and ->freeze() for all
-devices.
-
-RESUME       System is resuming, call ->resume() and ->complete() for all
-devices.
-
-THAW         Hibernation image has been created, call ->thaw() and
-->complete() for all devices.
-
-RESTORE      Contents of main memory have been restored from a hibernation
-image, call ->restore() and ->complete() for all devices.
-
-RECOVER      Creation of a hibernation image or restoration of the main
-memory contents from a hibernation image has failed, call
-->thaw() and ->complete() for all devices.
-
-The following PM_EVENT\_ messages are defined for internal use by
-kernel subsystems.  They are never issued by the PM core.
-
-USER_SUSPEND         Manual selective suspend was issued by userspace.
-
-USER_RESUME          Manual selective resume was issued by userspace.
-
-REMOTE_WAKEUP        Remote-wakeup request was received from the device.
-
-AUTO_SUSPEND         Automatic (device idle) runtime suspend was
-initiated by the subsystem.
-
-AUTO_RESUME          Automatic (device needed) runtime resume was
-requested by a driver.
+Power domains provide callbacks that are executed during system suspend,
+hibernation, system resume and during runtime PM transitions instead of
+subsystem-level and driver-level callbacks.
 
 .. This file was automatic generated / don't edit.
 

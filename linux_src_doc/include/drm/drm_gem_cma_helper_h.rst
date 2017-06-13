@@ -41,5 +41,31 @@ sgt
 vaddr
     kernel virtual address of the backing memory
 
+.. _`define_drm_gem_cma_fops`:
+
+DEFINE_DRM_GEM_CMA_FOPS
+=======================
+
+.. c:function::  DEFINE_DRM_GEM_CMA_FOPS( name)
+
+    macro to generate file operations for CMA drivers
+
+    :param  name:
+        name for the generated structure
+
+.. _`define_drm_gem_cma_fops.description`:
+
+Description
+-----------
+
+This macro autogenerates a suitable \ :c:type:`struct file_operations <file_operations>`\  for CMA based
+drivers, which can be assigned to \ :c:type:`drm_driver.fops <drm_driver>`\ . Note that this structure
+cannot be shared between drivers, because it contains a reference to the
+current module using THIS_MODULE.
+
+Note that the declaration is already marked as static - if you need a
+non-static version of this you're probably doing it wrong and will break the
+THIS_MODULE reference by accident.
+
 .. This file was automatic generated / don't edit.
 

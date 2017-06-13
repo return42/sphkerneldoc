@@ -7,7 +7,5 @@ mmc
 .. toctree::
     :maxdepth: 1
 
-    core_h
-    dw_mmc_h
     host_h
     sdio_func_h

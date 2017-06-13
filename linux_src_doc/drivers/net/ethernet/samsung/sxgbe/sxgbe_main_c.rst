@@ -190,7 +190,7 @@ init_tx_ring
         *undescribed*
 
     :param struct sxgbe_tx_queue \*tx_ring:
-        ring to be intialised
+        ring to be initialised
 
     :param int tx_rsize:
         ring size
@@ -215,7 +215,7 @@ free_rx_ring
         net device structure
 
     :param struct sxgbe_rx_queue \*rx_ring:
-        ring to be intialised
+        ring to be initialised
 
     :param int rx_rsize:
         ring size
@@ -243,7 +243,7 @@ init_rx_ring
         *undescribed*
 
     :param struct sxgbe_rx_queue \*rx_ring:
-        ring to be intialised
+        ring to be initialised
 
     :param int rx_rsize:
         ring size
@@ -268,7 +268,7 @@ free_tx_ring
         net device structure
 
     :param struct sxgbe_tx_queue \*tx_ring:
-        ring to be intialised
+        ring to be initialised
 
     :param int tx_rsize:
         ring size

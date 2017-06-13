@@ -20,9 +20,8 @@ Definition
     struct z3fold_pool {
         spinlock_t lock;
         struct list_head unbuddied[NCHUNKS];
-        struct list_head buddied;
         struct list_head lru;
-        u64 pages_nr;
+        atomic64_t pages_nr;
         const struct z3fold_ops *ops;
         struct zpool *zpool;
         const struct zpool_ops *zpool_ops;
@@ -41,10 +40,6 @@ unbuddied
     array of lists tracking z3fold pages that contain 2- buddies;
     the lists each z3fold page is added to depends on the size of
     its free region.
-
-buddied
-    list tracking the z3fold pages that contain 3 buddies;
-    these z3fold pages are full
 
 lru
     list tracking the z3fold pages in LRU order by most recently
@@ -297,8 +292,7 @@ z3fold_get_pool_size
 Return
 ------
 
-size in pages of the given pool.  The pool lock need not be
-taken to access pages_nr.
+size in pages of the given pool.
 
 .. This file was automatic generated / don't edit.
 

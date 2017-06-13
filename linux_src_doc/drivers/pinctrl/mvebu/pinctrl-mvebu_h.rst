@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pinctrl/mvebu/pinctrl-mvebu.h
 
+.. _`mvebu_mpp_ctrl_data`:
+
+struct mvebu_mpp_ctrl_data
+==========================
+
+.. c:type:: struct mvebu_mpp_ctrl_data
+
+    private data for the mpp ctrl operations
+
+.. _`mvebu_mpp_ctrl_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mvebu_mpp_ctrl_data {
+        union {unnamed_union};
+    }
+
+.. _`mvebu_mpp_ctrl_data.members`:
+
+Members
+-------
+
+{unnamed_union}
+    anonymous
+
+
 .. _`mvebu_mpp_ctrl`:
 
 struct mvebu_mpp_ctrl
@@ -22,10 +51,10 @@ Definition
         u8 pid;
         u8 npins;
         unsigned *pins;
-        int (*mpp_get)(unsigned pid, unsigned long *config);
-        int (*mpp_set)(unsigned pid, unsigned long config);
-        int (*mpp_gpio_req)(unsigned pid);
-        int (*mpp_gpio_dir)(unsigned pid, bool input);
+        int (*mpp_get)(struct mvebu_mpp_ctrl_data *data, unsigned pid,unsigned long *config);
+        int (*mpp_set)(struct mvebu_mpp_ctrl_data *data, unsigned pid,unsigned long config);
+        int (*mpp_gpio_req)(struct mvebu_mpp_ctrl_data *data, unsigned pid);
+        int (*mpp_gpio_dir)(struct mvebu_mpp_ctrl_data *data, unsigned pid,bool input);
     }
 
 .. _`mvebu_mpp_ctrl.members`:
@@ -195,7 +224,8 @@ Definition
 
     struct mvebu_pinctrl_soc_info {
         u8 variant;
-        struct mvebu_mpp_ctrl *controls;
+        const struct mvebu_mpp_ctrl *controls;
+        struct mvebu_mpp_ctrl_data *control_data;
         int ncontrols;
         struct mvebu_mpp_mode *modes;
         int nmodes;
@@ -213,6 +243,9 @@ variant
 
 controls
     list of available mvebu_mpp_ctrls
+
+control_data
+    optional array, one entry for each control
 
 ncontrols
     number of available mvebu_mpp_ctrls

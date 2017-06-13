@@ -108,16 +108,10 @@ the addresses pgto_base and pgfrom_base are both calculated in
 the same way
 ------------
 
-if a memory area starts at byte 'base' in page 'pages[i]',
-then its address is given as (i << PAGE_SHIFT) + base
-
-.. _`_shift_data_right_pages.also-note`:
-
-Also note
----------
-
-pgfrom_base must be < pgto_base, but the memory areas
-they point to may overlap.
+           if a memory area starts at byte 'base' in page 'pages[i]',
+           then its address is given as (i << PAGE_SHIFT) + base
+Also note: pgfrom_base must be < pgto_base, but the memory areas
+     they point to may overlap.
 
 .. _`_copy_to_pages`:
 
@@ -253,11 +247,11 @@ Note
 ----
 
 at the moment the RPC client only passes the length of our
-scratch buffer in the xdr_buf's header kvec. Previously this
-meant we needed to call \ :c:func:`xdr_adjust_iovec`\  after encoding the
-data. With the new scheme, the xdr_stream manages the details
-of the buffer length, and takes care of adjusting the kvec
-length for us.
+      scratch buffer in the xdr_buf's header kvec. Previously this
+      meant we needed to call \ :c:func:`xdr_adjust_iovec`\  after encoding the
+      data. With the new scheme, the xdr_stream manages the details
+      of the buffer length, and takes care of adjusting the kvec
+      length for us.
 
 .. _`xdr_commit_encode`:
 
@@ -338,7 +332,7 @@ that the end pointer should be set to the end of the current page,
 except in the case of the head buffer when we assume the head
 buffer's current length represents the end of the available buffer.
 
-This is \*not\* safe to use on a buffer that already has inlined page
+This is *not* safe to use on a buffer that already has inlined page
 cache pages (as in a zero-copy server read reply), except for the
 simple case of truncating from one position in the tail to another.
 
@@ -415,7 +409,7 @@ xdr_init_decode_pages
 
 .. c:function:: void xdr_init_decode_pages(struct xdr_stream *xdr, struct xdr_buf *buf, struct page **pages, unsigned int len)
 
-    Initialize an xdr_stream for decoding data.
+    Initialize an xdr_stream for decoding into pages
 
     :param struct xdr_stream \*xdr:
         pointer to xdr_stream struct
@@ -590,6 +584,37 @@ Trim an xdr_buf by the given number of bytes by fixing up the lengths. Note
 that it's possible that we'll trim less than that amount if the xdr_buf is
 too small, or if (for instance) it's all in the head and the parser has
 already read too far into it.
+
+.. _`xdr_stream_decode_string_dup`:
+
+xdr_stream_decode_string_dup
+============================
+
+.. c:function:: ssize_t xdr_stream_decode_string_dup(struct xdr_stream *xdr, char **str, size_t maxlen, gfp_t gfp_flags)
+
+    Decode and duplicate variable length string
+
+    :param struct xdr_stream \*xdr:
+        pointer to xdr_stream
+
+    :param char \*\*str:
+        location to store pointer to string
+
+    :param size_t maxlen:
+        maximum acceptable string length
+
+    :param gfp_t gfp_flags:
+        GFP mask to use
+
+.. _`xdr_stream_decode_string_dup.return-values`:
+
+Return values
+-------------
+
+  On success, returns length of NUL-terminated string stored in *@ptr
+  \ ``-EBADMSG``\  on XDR buffer overflow
+  \ ``-EMSGSIZE``\  if the size of the string would exceed \ ``maxlen``\ 
+  \ ``-ENOMEM``\  on memory allocation failure
 
 .. This file was automatic generated / don't edit.
 

@@ -8,10 +8,13 @@ crypto
     :maxdepth: 1
 
     amcc/index
+    bcm/index
     caam/index
+    cavium/index
     ccp/index
     chelsio/index
     marvell/index
+    mediatek/index
     nx/index
     qat/index
     qce/index

@@ -11,8 +11,6 @@ ctxfi
     ctatc_c
     ctdaio_c
     cthardware_c
-    cthw20k1_c
-    cthw20k2_c
     ctimap_c
     ctresource_c
     ctsrc_c

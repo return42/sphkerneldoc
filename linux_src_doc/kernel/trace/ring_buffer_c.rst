@@ -1038,12 +1038,15 @@ The page allocated, or NULL on error.
 ring_buffer_free_read_page
 ==========================
 
-.. c:function:: void ring_buffer_free_read_page(struct ring_buffer *buffer, void *data)
+.. c:function:: void ring_buffer_free_read_page(struct ring_buffer *buffer, int cpu, void *data)
 
     free an allocated read page
 
     :param struct ring_buffer \*buffer:
         the buffer the page was allocate for
+
+    :param int cpu:
+        the cpu buffer the page came from
 
     :param void \*data:
         the page to free

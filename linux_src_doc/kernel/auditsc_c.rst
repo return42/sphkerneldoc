@@ -180,7 +180,7 @@ __audit_inode_child
         dentry being audited
 
     :param const unsigned char type:
-        AUDIT_TYPE\_\* value that we're looking for
+        AUDIT_TYPE_* value that we're looking for
 
 .. _`__audit_inode_child.description`:
 
@@ -200,15 +200,15 @@ unsuccessful attempts.
 auditsc_get_stamp
 =================
 
-.. c:function:: int auditsc_get_stamp(struct audit_context *ctx, struct timespec *t, unsigned int *serial)
+.. c:function:: int auditsc_get_stamp(struct audit_context *ctx, struct timespec64 *t, unsigned int *serial)
 
     get local copies of audit_context values
 
     :param struct audit_context \*ctx:
         audit_context for the task
 
-    :param struct timespec \*t:
-        timespec to store time recorded in the audit_context
+    :param struct timespec64 \*t:
+        timespec64 to store time recorded in the audit_context
 
     :param unsigned int \*serial:
         serial value that is recorded in the audit_context
@@ -402,12 +402,12 @@ Description
 
 Returns 0 for success or NULL context or < 0 on error.
 
-.. _`__audit_signal_info`:
+.. _`audit_signal_info`:
 
-__audit_signal_info
-===================
+audit_signal_info
+=================
 
-.. c:function:: int __audit_signal_info(int sig, struct task_struct *t)
+.. c:function:: int audit_signal_info(int sig, struct task_struct *t)
 
     record signal info for shutting down audit subsystem
 
@@ -417,7 +417,7 @@ __audit_signal_info
     :param struct task_struct \*t:
         task being signaled
 
-.. _`__audit_signal_info.description`:
+.. _`audit_signal_info.description`:
 
 Description
 -----------

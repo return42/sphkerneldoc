@@ -6,12 +6,12 @@
 intel_setup_gmbus
 =================
 
-.. c:function:: int intel_setup_gmbus(struct drm_device *dev)
+.. c:function:: int intel_setup_gmbus(struct drm_i915_private *dev_priv)
 
     instantiate all Intel i2c GMBuses
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. This file was automatic generated / don't edit.
 

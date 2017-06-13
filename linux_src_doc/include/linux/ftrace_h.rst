@@ -69,6 +69,51 @@ It must be called with preemption disabled and only on ftrace_ops
 registered with FTRACE_OPS_FL_PER_CPU. If called without preemption
 disabled, this_cpu_ptr will complain when CONFIG_DEBUG_PREEMPT is enabled.
 
+.. _`stack_tracer_disable`:
+
+stack_tracer_disable
+====================
+
+.. c:function:: void stack_tracer_disable( void)
+
+    temporarily disable the stack tracer
+
+    :param  void:
+        no arguments
+
+.. _`stack_tracer_disable.description`:
+
+Description
+-----------
+
+There's a few locations (namely in RCU) where stack tracing
+cannot be executed. This function is used to disable stack
+tracing during those critical sections.
+
+This function must be called with preemption or interrupts
+disabled and \ :c:func:`stack_tracer_enable`\  must be called shortly after
+while preemption or interrupts are still disabled.
+
+.. _`stack_tracer_enable`:
+
+stack_tracer_enable
+===================
+
+.. c:function:: void stack_tracer_enable( void)
+
+    re-enable the stack tracer
+
+    :param  void:
+        no arguments
+
+.. _`stack_tracer_enable.description`:
+
+Description
+-----------
+
+After \ :c:func:`stack_tracer_disable`\  is called, \ :c:func:`stack_tracer_enable`\ 
+must be called shortly afterward.
+
 .. _`ftrace_make_nop`:
 
 ftrace_make_nop

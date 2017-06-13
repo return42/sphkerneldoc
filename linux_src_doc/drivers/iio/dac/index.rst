@@ -22,3 +22,6 @@ dac
     ad5791_c
     ad7303_c
     cio-dac_c
+    stm32-dac-core_c
+    stm32-dac-core_h
+    stm32-dac_c

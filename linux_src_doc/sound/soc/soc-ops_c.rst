@@ -81,7 +81,7 @@ snd_soc_read_signed
 
 .. c:function:: int snd_soc_read_signed(struct snd_soc_component *component, unsigned int reg, unsigned int mask, unsigned int shift, unsigned int sign_bit, int *signed_val)
 
-    Read a codec register and interprete as signed value
+    Read a codec register and interpret as signed value
 
     :param struct snd_soc_component \*component:
         component

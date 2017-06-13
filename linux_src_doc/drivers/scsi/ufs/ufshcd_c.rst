@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/ufs/ufshcd.c
 
+.. _`ufshcd_print_pwr_info`:
+
+ufshcd_print_pwr_info
+=====================
+
+.. c:function:: void ufshcd_print_pwr_info(struct ufs_hba *hba)
+
+    print power params as saved in hba power info
+
+    :param struct ufs_hba \*hba:
+        per-adapter instance
+
 .. _`ufshcd_get_intr_mask`:
 
 ufshcd_get_intr_mask
@@ -44,7 +56,7 @@ Returns UFSHCI version supported by the controller
 ufshcd_is_device_present
 ========================
 
-.. c:function:: int ufshcd_is_device_present(struct ufs_hba *hba)
+.. c:function:: bool ufshcd_is_device_present(struct ufs_hba *hba)
 
     Check if any device connected to the host controller
 
@@ -56,7 +68,7 @@ ufshcd_is_device_present
 Description
 -----------
 
-Returns 1 if device present, 0 if no device detected
+Returns true if device present, false if no device detected
 
 .. _`ufshcd_get_tr_ocs`:
 
@@ -336,7 +348,7 @@ ufshcd_hba_start
 ufshcd_is_hba_active
 ====================
 
-.. c:function:: int ufshcd_is_hba_active(struct ufs_hba *hba)
+.. c:function:: bool ufshcd_is_hba_active(struct ufs_hba *hba)
 
     Get controller state
 
@@ -348,7 +360,77 @@ ufshcd_is_hba_active
 Description
 -----------
 
-Returns zero if controller is active, 1 otherwise
+Returns false if controller is active, true otherwise
+
+.. _`ufshcd_is_devfreq_scaling_required`:
+
+ufshcd_is_devfreq_scaling_required
+==================================
+
+.. c:function:: bool ufshcd_is_devfreq_scaling_required(struct ufs_hba *hba, bool scale_up)
+
+    check if scaling is required or not
+
+    :param struct ufs_hba \*hba:
+        per adapter instance
+
+    :param bool scale_up:
+        True if scaling up and false if scaling down
+
+.. _`ufshcd_is_devfreq_scaling_required.description`:
+
+Description
+-----------
+
+Returns true if scaling is required, false otherwise.
+
+.. _`ufshcd_scale_gear`:
+
+ufshcd_scale_gear
+=================
+
+.. c:function:: int ufshcd_scale_gear(struct ufs_hba *hba, bool scale_up)
+
+    scale up/down UFS gear
+
+    :param struct ufs_hba \*hba:
+        per adapter instance
+
+    :param bool scale_up:
+        True for scaling up gear and false for scaling down
+
+.. _`ufshcd_scale_gear.description`:
+
+Description
+-----------
+
+Returns 0 for success,
+Returns -EBUSY if scaling can't happen at this time
+Returns non-zero for any other errors
+
+.. _`ufshcd_devfreq_scale`:
+
+ufshcd_devfreq_scale
+====================
+
+.. c:function:: int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
+
+    scale up/down UFS clocks and gear
+
+    :param struct ufs_hba \*hba:
+        per adapter instance
+
+    :param bool scale_up:
+        True for scaling up and false for scalin down
+
+.. _`ufshcd_devfreq_scale.description`:
+
+Description
+-----------
+
+Returns 0 for success,
+Returns -EBUSY if scaling can't happen at this time
+Returns non-zero for any other errors
 
 .. _`ufshcd_hold`:
 
@@ -1058,12 +1140,65 @@ Returns 0 for success, non-zero in case of failure.
 The buf_len parameter will contain, on return, the length parameter
 received on the response.
 
+.. _`ufshcd_read_desc_length`:
+
+ufshcd_read_desc_length
+=======================
+
+.. c:function:: int ufshcd_read_desc_length(struct ufs_hba *hba, enum desc_idn desc_id, int desc_index, int *desc_length)
+
+    read the specified descriptor length from header
+
+    :param struct ufs_hba \*hba:
+        Pointer to adapter instance
+
+    :param enum desc_idn desc_id:
+        descriptor idn value
+
+    :param int desc_index:
+        descriptor index
+
+    :param int \*desc_length:
+        pointer to variable to read the length of descriptor
+
+.. _`ufshcd_read_desc_length.description`:
+
+Description
+-----------
+
+Return 0 in case of success, non-zero otherwise
+
+.. _`ufshcd_map_desc_id_to_length`:
+
+ufshcd_map_desc_id_to_length
+============================
+
+.. c:function:: int ufshcd_map_desc_id_to_length(struct ufs_hba *hba, enum desc_idn desc_id, int *desc_len)
+
+    map descriptor IDN to its length
+
+    :param struct ufs_hba \*hba:
+        Pointer to adapter instance
+
+    :param enum desc_idn desc_id:
+        descriptor idn value
+
+    :param int \*desc_len:
+        mapped desc length (out)
+
+.. _`ufshcd_map_desc_id_to_length.description`:
+
+Description
+-----------
+
+Return 0 in case of success, non-zero otherwise
+
 .. _`ufshcd_read_desc_param`:
 
 ufshcd_read_desc_param
 ======================
 
-.. c:function:: int ufshcd_read_desc_param(struct ufs_hba *hba, enum desc_idn desc_id, int desc_index, u32 param_offset, u8 *param_read_buf, u32 param_size)
+.. c:function:: int ufshcd_read_desc_param(struct ufs_hba *hba, enum desc_idn desc_id, int desc_index, u8 param_offset, u8 *param_read_buf, u8 param_size)
 
     read the specified descriptor parameter
 
@@ -1076,13 +1211,13 @@ ufshcd_read_desc_param
     :param int desc_index:
         descriptor index
 
-    :param u32 param_offset:
+    :param u8 param_offset:
         offset of the parameter to read
 
     :param u8 \*param_read_buf:
         pointer to buffer where parameter would be read
 
-    :param u32 param_size:
+    :param u8 param_size:
         sizeof(param_read_buf)
 
 .. _`ufshcd_read_desc_param.description`:
@@ -1092,31 +1227,16 @@ Description
 
 Return 0 in case of success, non-zero otherwise
 
-.. _`ufshcd_read_string_desc`:
+.. _`ascii_std`:
 
-ufshcd_read_string_desc
-=======================
+ASCII_STD
+=========
 
-.. c:function:: int ufshcd_read_string_desc(struct ufs_hba *hba, int desc_index, u8 *buf, u32 size, bool ascii)
+.. c:function::  ASCII_STD()
 
     read string descriptor
 
-    :param struct ufs_hba \*hba:
-        pointer to adapter instance
-
-    :param int desc_index:
-        descriptor index
-
-    :param u8 \*buf:
-        pointer to buffer where descriptor would be read
-
-    :param u32 size:
-        size of buf
-
-    :param bool ascii:
-        if true convert from unicode to ascii characters
-
-.. _`ufshcd_read_string_desc.description`:
+.. _`ascii_std.description`:
 
 Description
 -----------
@@ -1811,7 +1931,7 @@ ufshcd_force_reset_auto_bkops
 
 .. c:function:: void ufshcd_force_reset_auto_bkops(struct ufs_hba *hba)
 
-    force enable of auto bkops
+    force reset auto bkops state
 
     :param struct ufs_hba \*hba:
         per adapter instance
@@ -1823,7 +1943,8 @@ Description
 
 After a device reset the device may toggle the BKOPS_EN flag
 to default value. The s/w tracking variables should be updated
-as well. Do this by forcing enable of auto bkops.
+as well. This function would change the auto-bkops state based on
+UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND.
 
 .. _`ufshcd_bkops_ctrl`:
 

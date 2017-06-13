@@ -16,6 +16,7 @@ i915
     i915_gem_batch_pool_c
     i915_gem_c
     i915_gem_context_c
+    i915_gem_context_h
     i915_gem_evict_c
     i915_gem_execbuffer_c
     i915_gem_fence_reg_c
@@ -33,6 +34,7 @@ i915
     i915_irq_c
     i915_memcpy_c
     i915_mm_c
+    i915_perf_c
     i915_trace_h
     i915_vgpu_c
     i915_vma_c
@@ -41,12 +43,14 @@ i915
     intel_atomic_plane_c
     intel_audio_c
     intel_bios_c
+    intel_cdclk_c
     intel_crt_c
     intel_csr_c
     intel_display_c
     intel_dp_c
     intel_dpio_phy_c
     intel_dpll_mgr_c
+    intel_dpll_mgr_h
     intel_drv_h
     intel_dvo_c
     intel_engine_cs_c
@@ -56,15 +60,17 @@ i915
     intel_frontbuffer_h
     intel_guc_fwif_h
     intel_guc_loader_c
+    intel_guc_log_c
     intel_gvt_c
     intel_hotplug_c
+    intel_huc_c
     intel_i2c_c
+    intel_lpe_audio_c
     intel_lrc_c
     intel_lvds_c
     intel_mocs_c
     intel_mocs_h
     intel_modes_c
-    intel_overlay_c
     intel_panel_c
     intel_pm_c
     intel_psr_c

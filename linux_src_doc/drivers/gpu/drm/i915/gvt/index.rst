@@ -16,7 +16,6 @@ gvt
     gvt_c
     handlers_c
     interrupt_c
-    kvmgt_c
     mmio_c
     mpt_h
     opregion_c

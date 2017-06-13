@@ -8,7 +8,7 @@ devm_regmap_field_alloc
 
 .. c:function:: struct regmap_field *devm_regmap_field_alloc(struct device *dev, struct regmap *regmap, struct reg_field reg_field)
 
-    Allocate and initialise a register field in a register map.
+    Allocate and initialise a register field.
 
     :param struct device \*dev:
         Device that will be interacted with
@@ -35,13 +35,22 @@ devm_regmap_field_free
 
 .. c:function:: void devm_regmap_field_free(struct device *dev, struct regmap_field *field)
 
-    Free register field allocated using devm_regmap_field_alloc. Usally drivers need not call this function, as the memory allocated via devm will be freed as per device-driver life-cyle.
+    Free a register field allocated using devm_regmap_field_alloc.
 
     :param struct device \*dev:
         Device that will be interacted with
 
     :param struct regmap_field \*field:
         regmap field which should be freed.
+
+.. _`devm_regmap_field_free.description`:
+
+Description
+-----------
+
+Free register field allocated using \ :c:func:`devm_regmap_field_alloc`\ . Usually
+drivers need not call this function, as the memory allocated via devm
+will be freed as per device-driver life-cyle.
 
 .. _`regmap_field_alloc`:
 
@@ -50,7 +59,7 @@ regmap_field_alloc
 
 .. c:function:: struct regmap_field *regmap_field_alloc(struct regmap *regmap, struct reg_field reg_field)
 
-    Allocate and initialise a register field in a register map.
+    Allocate and initialise a register field.
 
     :param struct regmap \*regmap:
         regmap bank in which this register field is located.
@@ -74,7 +83,7 @@ regmap_field_free
 
 .. c:function:: void regmap_field_free(struct regmap_field *field)
 
-    Free register field allocated using regmap_field_alloc
+    Free register field allocated using regmap_field_alloc.
 
     :param struct regmap_field \*field:
         regmap field which should be freed.
@@ -117,7 +126,7 @@ regmap_exit
     Free a previously allocated register map
 
     :param struct regmap \*map:
-        *undescribed*
+        Register map to operate on.
 
 .. _`dev_get_regmap`:
 
@@ -293,7 +302,7 @@ regmap_field_update_bits_base
 
 .. c:function:: int regmap_field_update_bits_base(struct regmap_field *field, unsigned int mask, unsigned int val, bool *change, bool async, bool force)
 
-    Perform a read/modify/write cycle on the register field with change, async, force option
+    Perform a read/modify/write cycle a register field.
 
     :param struct regmap_field \*field:
         Register field to write to
@@ -318,6 +327,9 @@ regmap_field_update_bits_base
 Description
 -----------
 
+Perform a read/modify/write cycle on the register field with change,
+async, force option.
+
 A value of zero will be returned on success, a negative errno will
 be returned in error cases.
 
@@ -328,7 +340,7 @@ regmap_fields_update_bits_base
 
 .. c:function:: int regmap_fields_update_bits_base(struct regmap_field *field, unsigned int id, unsigned int mask, unsigned int val, bool *change, bool async, bool force)
 
-    Perform a read/modify/write cycle on the register field with change, async, force option
+    Perform a read/modify/write cycle a register field with port ID
 
     :param struct regmap_field \*field:
         Register field to write to
@@ -355,6 +367,106 @@ regmap_fields_update_bits_base
 
 Description
 -----------
+
+A value of zero will be returned on success, a negative errno will
+be returned in error cases.
+
+.. _`regmap_bulk_write`:
+
+regmap_bulk_write
+=================
+
+.. c:function:: int regmap_bulk_write(struct regmap *map, unsigned int reg, const void *val, size_t val_count)
+
+    Write multiple registers to the device
+
+    :param struct regmap \*map:
+        Register map to write to
+
+    :param unsigned int reg:
+        First register to be write from
+
+    :param const void \*val:
+        Block of data to be written, in native register size for device
+
+    :param size_t val_count:
+        Number of registers to write
+
+.. _`regmap_bulk_write.description`:
+
+Description
+-----------
+
+This function is intended to be used for writing a large block of
+data to the device either in single transfer or multiple transfer.
+
+A value of zero will be returned on success, a negative errno will
+be returned in error cases.
+
+.. _`regmap_multi_reg_write`:
+
+regmap_multi_reg_write
+======================
+
+.. c:function:: int regmap_multi_reg_write(struct regmap *map, const struct reg_sequence *regs, int num_regs)
+
+    Write multiple registers to the device
+
+    :param struct regmap \*map:
+        Register map to write to
+
+    :param const struct reg_sequence \*regs:
+        Array of structures containing register,value to be written
+
+    :param int num_regs:
+        Number of registers to write
+
+.. _`regmap_multi_reg_write.description`:
+
+Description
+-----------
+
+Write multiple registers to the device where the set of register, value
+pairs are supplied in any order, possibly not all in a single range.
+
+The 'normal' block write mode will send ultimately send data on the
+target bus as R,V1,V2,V3,..,Vn where successively higher registers are
+addressed. However, this alternative block multi write mode will send
+the data as R1,V1,R2,V2,..,Rn,Vn on the target bus. The target device
+must of course support the mode.
+
+A value of zero will be returned on success, a negative errno will be
+returned in error cases.
+
+.. _`regmap_multi_reg_write_bypassed`:
+
+regmap_multi_reg_write_bypassed
+===============================
+
+.. c:function:: int regmap_multi_reg_write_bypassed(struct regmap *map, const struct reg_sequence *regs, int num_regs)
+
+    Write multiple registers to the device but not the cache
+
+    :param struct regmap \*map:
+        Register map to write to
+
+    :param const struct reg_sequence \*regs:
+        Array of structures containing register,value to be written
+
+    :param int num_regs:
+        Number of registers to write
+
+.. _`regmap_multi_reg_write_bypassed.description`:
+
+Description
+-----------
+
+Write multiple registers to the device but not the cache where the set
+of register are supplied in any order.
+
+This function is intended to be used for writing a large block of data
+atomically to the device in single transfer for those I2C client devices
+that implement this alternative block write mode.
 
 A value of zero will be returned on success, a negative errno will
 be returned in error cases.
@@ -538,7 +650,7 @@ regmap_update_bits_base
 
 .. c:function:: int regmap_update_bits_base(struct regmap *map, unsigned int reg, unsigned int mask, unsigned int val, bool *change, bool async, bool force)
 
-    Perform a read/modify/write cycle on the register map with change, async, force option
+    Perform a read/modify/write cycle on a register
 
     :param struct regmap \*map:
         Register map to update
@@ -566,10 +678,18 @@ regmap_update_bits_base
 Description
 -----------
 
-if async was true,
-With most buses the read must be done synchronously so this is most
-useful for devices with a cache which do not need to interact with
-the hardware to determine the current register value.
+Perform a read/modify/write cycle on a register map with change, async, force
+options.
+
+.. _`regmap_update_bits_base.if-async-is-true`:
+
+If async is true
+----------------
+
+
+With most buses the read must be done synchronously so this is most useful
+for devices with a cache which do not need to interact with the hardware to
+determine the current register value.
 
 Returns zero for success, a negative number on error.
 
@@ -625,6 +745,26 @@ as the updates some vendors provide to undocumented registers.
 The caller must ensure that this function cannot be called
 concurrently with either itself or \ :c:func:`regcache_sync`\ .
 
+.. _`regmap_get_val_bytes`:
+
+regmap_get_val_bytes
+====================
+
+.. c:function:: int regmap_get_val_bytes(struct regmap *map)
+
+    Report the size of a register value
+
+    :param struct regmap \*map:
+        Register map to operate on.
+
+.. _`regmap_get_val_bytes.description`:
+
+Description
+-----------
+
+Report the size of a register value, mainly intended to for use by
+generic infrastructure built on top of regmap.
+
 .. _`regmap_get_max_register`:
 
 regmap_get_max_register
@@ -635,7 +775,7 @@ regmap_get_max_register
     Report the max register value
 
     :param struct regmap \*map:
-        *undescribed*
+        Register map to operate on.
 
 .. _`regmap_get_max_register.description`:
 
@@ -655,7 +795,7 @@ regmap_get_reg_stride
     Report the register address stride
 
     :param struct regmap \*map:
-        *undescribed*
+        Register map to operate on.
 
 .. _`regmap_get_reg_stride.description`:
 

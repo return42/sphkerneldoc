@@ -21,11 +21,11 @@ generic_pipe_buf_steal
 Description
 -----------
 
-This function attempts to steal the \ :c:type:`struct page <page>`\  attached to
-\ ``buf``\ . If successful, this function returns 0 and returns with
-the page locked. The caller may then reuse the page for whatever
-he wishes; the typical use is insertion into a different file
-page cache.
+     This function attempts to steal the \ :c:type:`struct page <page>`\  attached to
+     \ ``buf``\ . If successful, this function returns 0 and returns with
+     the page locked. The caller may then reuse the page for whatever
+     he wishes; the typical use is insertion into a different file
+     page cache.
 
 .. _`generic_pipe_buf_get`:
 
@@ -47,9 +47,9 @@ generic_pipe_buf_get
 Description
 -----------
 
-This function grabs an extra reference to \ ``buf``\ . It's used in
-in the \ :c:func:`tee`\  system call, when we duplicate the buffers in one
-pipe into another.
+     This function grabs an extra reference to \ ``buf``\ . It's used in
+     in the \ :c:func:`tee`\  system call, when we duplicate the buffers in one
+     pipe into another.
 
 .. _`generic_pipe_buf_confirm`:
 
@@ -71,8 +71,8 @@ generic_pipe_buf_confirm
 Description
 -----------
 
-This function does nothing, because the generic pipe code uses
-pages that are always good when inserted into the pipe.
+     This function does nothing, because the generic pipe code uses
+     pages that are always good when inserted into the pipe.
 
 .. _`generic_pipe_buf_release`:
 
@@ -94,7 +94,7 @@ generic_pipe_buf_release
 Description
 -----------
 
-This function releases a reference to \ ``buf``\ .
+     This function releases a reference to \ ``buf``\ .
 
 .. This file was automatic generated / don't edit.
 

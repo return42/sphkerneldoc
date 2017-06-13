@@ -39,16 +39,16 @@ dev
     Link back to the DRM device
 
 unique
-    Unique identifier: e.g. busid. Protected by drm_global_mutex.
+    Unique identifier: e.g. busid. Protected by&drm_device.master_mutex.
 
 unique_len
-    Length of unique field. Protected by drm_global_mutex.
+    Length of unique field. Protected by&drm_device.master_mutex.
 
 magic_map
-    Map of used authentication tokens. Protected by struct_mutex.
+    Map of used authentication tokens. Protected by&drm_device.master_mutex.
 
 lock
-    DRI lock information.
+    DRI1 lock information.
 
 driver_priv
     Pointer to driver-private information.

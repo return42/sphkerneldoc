@@ -100,6 +100,8 @@ Definition
         IWL_UCODE_TLV_API_LQ_SS_PARAMS,
         IWL_UCODE_TLV_API_NEW_VERSION,
         IWL_UCODE_TLV_API_SCAN_TSF_REPORT,
+        IWL_UCODE_TLV_API_TKIP_MIC_KEYS,
+        IWL_UCODE_TLV_API_STA_TYPE,
         NUM_IWL_UCODE_TLV_API
     };
 
@@ -126,6 +128,13 @@ IWL_UCODE_TLV_API_SCAN_TSF_REPORT
     iteration complete notification, and the timestamp reported for RX
     received during scan, are reported in TSF of the mac specified in the
     scan request.
+
+IWL_UCODE_TLV_API_TKIP_MIC_KEYS
+    This ucode supports version 2 of
+    ADD_MODIFY_STA_KEY_API_S_VER_2.
+
+IWL_UCODE_TLV_API_STA_TYPE
+    This ucode supports station type assignement.
 
 NUM_IWL_UCODE_TLV_API
     number of bits used
@@ -170,6 +179,8 @@ Definition
         IWL_UCODE_TLV_CAPA_BT_COEX_RRC,
         IWL_UCODE_TLV_CAPA_GSCAN_SUPPORT,
         IWL_UCODE_TLV_CAPA_STA_PM_NOTIF,
+        IWL_UCODE_TLV_CAPA_BINDING_CDB_SUPPORT,
+        IWL_UCODE_TLV_CAPA_CDB_SUPPORT,
         IWL_UCODE_TLV_CAPA_EXTENDED_DTS_MEASURE,
         IWL_UCODE_TLV_CAPA_SHORT_PM_TIMEOUTS,
         IWL_UCODE_TLV_CAPA_BT_MPLUT_SUPPORT,
@@ -270,6 +281,12 @@ IWL_UCODE_TLV_CAPA_GSCAN_SUPPORT
 
 IWL_UCODE_TLV_CAPA_STA_PM_NOTIF
     firmware will send STA PM notification
+
+IWL_UCODE_TLV_CAPA_BINDING_CDB_SUPPORT
+    *undescribed*
+
+IWL_UCODE_TLV_CAPA_CDB_SUPPORT
+    *undescribed*
 
 IWL_UCODE_TLV_CAPA_EXTENDED_DTS_MEASURE
     extended DTS measurement
@@ -469,45 +486,41 @@ MARBH_MODE
 MIPI_MODE
     monitor outputs the data through the MIPI interface
 
-.. _`iwl_fw_dbg_mem_seg_type`:
+.. _`iwl_fw_mem_seg_type`:
 
-enum iwl_fw_dbg_mem_seg_type
-============================
+enum iwl_fw_mem_seg_type
+========================
 
-.. c:type:: enum iwl_fw_dbg_mem_seg_type
+.. c:type:: enum iwl_fw_mem_seg_type
 
-    data types for dumping on error
+    memory segment type
 
-.. _`iwl_fw_dbg_mem_seg_type.definition`:
+.. _`iwl_fw_mem_seg_type.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    enum iwl_fw_dbg_mem_seg_type {
-        FW_DBG_MEM_DCCM_LMAC,
-        FW_DBG_MEM_DCCM_UMAC,
-        FW_DBG_MEM_SMEM,
-        FW_DBG_MEM_MAX
+    enum iwl_fw_mem_seg_type {
+        FW_DBG_MEM_TYPE_MASK,
+        FW_DBG_MEM_TYPE_REGULAR,
+        FW_DBG_MEM_TYPE_PRPH
     };
 
-.. _`iwl_fw_dbg_mem_seg_type.constants`:
+.. _`iwl_fw_mem_seg_type.constants`:
 
 Constants
 ---------
 
-FW_DBG_MEM_DCCM_LMAC
-    the data type is DCCM_LMAC
+FW_DBG_MEM_TYPE_MASK
+    mask for the type indication
 
-FW_DBG_MEM_DCCM_UMAC
-    the data type is DCCM_UMAC
+FW_DBG_MEM_TYPE_REGULAR
+    regular memory
 
-FW_DBG_MEM_SMEM
-    the data type is SMEM
-
-FW_DBG_MEM_MAX
-    *undescribed*
+FW_DBG_MEM_TYPE_PRPH
+    periphery memory (requires special reading)
 
 .. _`iwl_fw_dbg_mem_seg_tlv`:
 
@@ -537,7 +550,8 @@ Members
 -------
 
 data_type
-    enum \ ``iwl_fw_mem_seg_type``\ 
+    the memory segment type to record, see \ :c:type:`enum iwl_fw_mem_seg_type <iwl_fw_mem_seg_type>`\ 
+    for what we care about
 
 ofs
     the memory segment offset

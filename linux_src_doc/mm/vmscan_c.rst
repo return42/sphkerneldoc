@@ -27,6 +27,24 @@ allocation and configurability.
 This function tests whether the vmscan currently in progress can assume
 that the normal dirty throttling mechanism is operational.
 
+.. _`lruvec_lru_size`:
+
+lruvec_lru_size
+===============
+
+.. c:function:: unsigned long lruvec_lru_size(struct lruvec *lruvec, enum lru_list lru, int zone_idx)
+
+    Returns the number of pages on the given LRU list.
+
+    :param struct lruvec \*lruvec:
+        lru vector
+
+    :param enum lru_list lru:
+        lru to use
+
+    :param int zone_idx:
+        zones to consider (use MAX_NR_ZONES for the whole LRU list)
+
 .. _`shrink_slab`:
 
 shrink_slab

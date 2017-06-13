@@ -72,7 +72,10 @@ Notes
 -----
 
 1/ \ ``ref``\  must be 'live' on entry and 'dead' before \ :c:func:`devm_memunmap_pages`\  time
-(or devm release event).
+(or devm release event). The expected order of events is that \ ``ref``\  has
+been through \ :c:func:`percpu_ref_kill`\  before \ :c:func:`devm_memremap_pages_release`\ . The
+wait for the completion of all references being dropped and
+\ :c:func:`percpu_ref_exit`\  must occur after \ :c:func:`devm_memremap_pages_release`\ .
 
 2/ \ ``res``\  is expected to be a host memory range that could feasibly be
 treated as a "System RAM" range, i.e. not a device mmio range, but

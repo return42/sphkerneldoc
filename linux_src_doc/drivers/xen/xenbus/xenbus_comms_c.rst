@@ -6,14 +6,14 @@
 xb_write
 ========
 
-.. c:function:: int xb_write(const void *data, unsigned len)
+.. c:function:: int xb_write(const void *data, unsigned int len)
 
     low level write
 
     :param const void \*data:
         buffer to send
 
-    :param unsigned len:
+    :param unsigned int len:
         length of buffer
 
 .. _`xb_write.description`:
@@ -21,7 +21,7 @@ xb_write
 Description
 -----------
 
-Returns 0 on success, error otherwise.
+Returns number of bytes written or -err.
 
 .. _`xb_init_comms`:
 

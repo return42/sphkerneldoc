@@ -181,21 +181,6 @@ hns_xgmac_set_tx_auto_pause_frames
     :param u16 enable:
         *undescribed*
 
-.. _`hns_xgmac_get_id`:
-
-hns_xgmac_get_id
-================
-
-.. c:function:: void hns_xgmac_get_id(void *mac_drv, u8 *mac_id)
-
-    get xgmac port id \ ``mac_drv``\ : mac driver \ ``newval``\ :xgmac max frame length
-
-    :param void \*mac_drv:
-        *undescribed*
-
-    :param u8 \*mac_id:
-        *undescribed*
-
 .. _`hns_xgmac_config_max_frame_length`:
 
 hns_xgmac_config_max_frame_length

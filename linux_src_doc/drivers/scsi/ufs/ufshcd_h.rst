@@ -74,6 +74,10 @@ Definition
         struct utp_upiu_req *ucd_req_ptr;
         struct utp_upiu_rsp *ucd_rsp_ptr;
         struct ufshcd_sg_entry *ucd_prdt_ptr;
+        dma_addr_t utrd_dma_addr;
+        dma_addr_t ucd_req_dma_addr;
+        dma_addr_t ucd_rsp_dma_addr;
+        dma_addr_t ucd_prdt_dma_addr;
         struct scsi_cmnd *cmd;
         u8 *sense_buffer;
         unsigned int sense_bufflen;
@@ -82,6 +86,8 @@ Definition
         int task_tag;
         u8 lun;
         bool intr_cmd;
+        ktime_t issue_time_stamp;
+        bool req_abort_skip;
     }
 
 .. _`ufshcd_lrb.members`:
@@ -100,6 +106,18 @@ ucd_rsp_ptr
 
 ucd_prdt_ptr
     PRDT address of the command
+
+utrd_dma_addr
+    UTRD dma address for debug
+
+ucd_req_dma_addr
+    UPIU request dma address for debug
+
+ucd_rsp_dma_addr
+    UPIU response dma address for debug
+
+ucd_prdt_dma_addr
+    PRDT dma address for debug
 
 cmd
     pointer to SCSI command
@@ -124,6 +142,12 @@ lun
 
 intr_cmd
     Interrupt command (doesn't participate in interrupt aggregation)
+
+issue_time_stamp
+    time stamp for debug purposes
+
+req_abort_skip
+    skip request abort task flag
 
 .. _`ufs_query`:
 
@@ -382,6 +406,8 @@ Definition
         unsigned long delay_ms;
         bool is_suspended;
         struct device_attribute delay_attr;
+        struct device_attribute enable_attr;
+        bool is_enabled;
         int active_reqs;
     }
 
@@ -411,9 +437,90 @@ is_suspended
 delay_attr
     sysfs attribute to control delay_attr
 
+enable_attr
+    sysfs attribute to enable/disable clock gating
+
+is_enabled
+    Indicates the current status of clock gating
+
 active_reqs
     number of requests that are pending and should be waited for
     completion before gating clocks.
+
+.. _`ufs_clk_scaling`:
+
+struct ufs_clk_scaling
+======================
+
+.. c:type:: struct ufs_clk_scaling
+
+    UFS clock scaling related data
+
+.. _`ufs_clk_scaling.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ufs_clk_scaling {
+        int active_reqs;
+        unsigned long tot_busy_t;
+        unsigned long window_start_t;
+        ktime_t busy_start_t;
+        struct device_attribute enable_attr;
+        struct ufs_saved_pwr_info saved_pwr_info;
+        struct workqueue_struct *workq;
+        struct work_struct suspend_work;
+        struct work_struct resume_work;
+        bool is_allowed;
+        bool is_busy_started;
+        bool is_suspended;
+    }
+
+.. _`ufs_clk_scaling.members`:
+
+Members
+-------
+
+active_reqs
+    number of requests that are pending. If this is zero when
+    devfreq ->target() function is called then schedule "suspend_work" to
+    suspend devfreq.
+
+tot_busy_t
+    Total busy time in current polling window
+
+window_start_t
+    Start time (in jiffies) of the current polling window
+
+busy_start_t
+    Start time of current busy period
+
+enable_attr
+    sysfs attribute to enable/disable clock scaling
+
+saved_pwr_info
+    UFS power mode may also be changed during scaling and this
+    one keeps track of previous power mode.
+
+workq
+    workqueue to schedule devfreq suspend/resume work
+
+suspend_work
+    worker to suspend devfreq
+
+resume_work
+    worker to resume devfreq
+
+is_allowed
+    tracks if scaling is currently allowed or not
+
+is_busy_started
+    tracks if busy period has started or not
+
+is_suspended
+    tracks if devfreq is suspended or not
 
 .. _`ufs_init_prefetch`:
 
@@ -442,6 +549,96 @@ Members
 
 icc_level
     icc level which was read during initialization
+
+.. _`ufs_uic_err_reg_hist`:
+
+struct ufs_uic_err_reg_hist
+===========================
+
+.. c:type:: struct ufs_uic_err_reg_hist
+
+    keeps history of uic errors
+
+.. _`ufs_uic_err_reg_hist.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ufs_uic_err_reg_hist {
+        int pos;
+        u32 reg[UIC_ERR_REG_HIST_LENGTH];
+        ktime_t tstamp[UIC_ERR_REG_HIST_LENGTH];
+    }
+
+.. _`ufs_uic_err_reg_hist.members`:
+
+Members
+-------
+
+pos
+    index to indicate cyclic buffer position
+
+reg
+    cyclic buffer for registers value
+
+tstamp
+    cyclic buffer for time stamp
+
+.. _`ufs_stats`:
+
+struct ufs_stats
+================
+
+.. c:type:: struct ufs_stats
+
+    keeps usage/err statistics
+
+.. _`ufs_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ufs_stats {
+        u32 hibern8_exit_cnt;
+        ktime_t last_hibern8_exit_tstamp;
+        struct ufs_uic_err_reg_hist pa_err;
+        struct ufs_uic_err_reg_hist dl_err;
+        struct ufs_uic_err_reg_hist nl_err;
+        struct ufs_uic_err_reg_hist tl_err;
+        struct ufs_uic_err_reg_hist dme_err;
+    }
+
+.. _`ufs_stats.members`:
+
+Members
+-------
+
+hibern8_exit_cnt
+    Counter to keep track of number of exits,
+    reset this after link-startup.
+
+last_hibern8_exit_tstamp
+    Set time after the hibern8 exit.
+    Clear after the first successful command completion.
+
+pa_err
+    tracks pa-uic errors
+
+dl_err
+    tracks dl-uic errors
+
+nl_err
+    tracks nl-uic errors
+
+tl_err
+    tracks tl-uic errors
+
+dme_err
+    tracks dme errors
 
 .. _`ufs_hba`:
 
@@ -474,6 +671,8 @@ Definition
         enum uic_link_state uic_link_state;
         enum ufs_pm_level rpm_lvl;
         enum ufs_pm_level spm_lvl;
+        struct device_attribute rpm_lvl_attr;
+        struct device_attribute spm_lvl_attr;
         int pm_op_in_progress;
         struct ufshcd_lrb *lrb;
         unsigned long lrb_in_use;
@@ -516,6 +715,7 @@ Definition
         u32 uic_error;
         u32 saved_err;
         u32 saved_uic_err;
+        struct ufs_stats ufs_stats;
         struct ufs_dev_cmd dev_cmd;
         ktime_t last_dme_cmd_tstamp;
         struct ufs_dev_info dev_info;
@@ -523,6 +723,7 @@ Definition
         struct ufs_vreg_info vreg_info;
         struct list_head clk_list_head;
         bool wlun_dev_clr_ua;
+        int req_abort_count;
         u32 lanes_per_direction;
         struct ufs_pa_layer_attr pwr_info;
         struct ufs_pwr_mode_info max_pwr_info;
@@ -533,11 +734,14 @@ Definition
     #define UFSHCD_CAP_CLK_SCALING (1 << 2)
     #define UFSHCD_CAP_AUTO_BKOPS_SUSPEND (1 << 3)
     #define UFSHCD_CAP_INTR_AGGR (1 << 4)
+    #define UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND (1 << 5)
         struct devfreq *devfreq;
         struct ufs_clk_scaling clk_scaling;
         bool is_sys_suspended;
         enum bkops_status urgent_bkops_lvl;
         bool is_urgent_bkops_lvl_checked;
+        struct rw_semaphore clk_scaling_lock;
+        struct ufs_desc_size desc_size;
     }
 
 .. _`ufs_hba.members`:
@@ -585,6 +789,12 @@ rpm_lvl
     *undescribed*
 
 spm_lvl
+    *undescribed*
+
+rpm_lvl_attr
+    *undescribed*
+
+spm_lvl_attr
     *undescribed*
 
 pm_op_in_progress
@@ -692,6 +902,9 @@ saved_err
 saved_uic_err
     sticky UIC error mask
 
+ufs_stats
+    *undescribed*
+
 dev_cmd
     ufs device management command information
 
@@ -711,6 +924,9 @@ clk_list_head
     UFS host controller clocks list node head
 
 wlun_dev_clr_ua
+    *undescribed*
+
+req_abort_count
     *undescribed*
 
 lanes_per_direction
@@ -743,6 +959,12 @@ urgent_bkops_lvl
 is_urgent_bkops_lvl_checked
     keeps track if the urgent bkops level for
     device is known or not.
+
+clk_scaling_lock
+    *undescribed*
+
+desc_size
+    descriptor sizes reported by device
 
 .. _`ufshcd_rmwl`:
 

@@ -178,7 +178,7 @@ It is wrong to inject a guest exception.
 write_guest
 ===========
 
-.. c:function:: int write_guest(struct kvm_vcpu *vcpu, unsigned long ga, ar_t ar, void *data, unsigned long len)
+.. c:function:: int write_guest(struct kvm_vcpu *vcpu, unsigned long ga, u8 ar, void *data, unsigned long len)
 
     copy data from kernel space to guest space
 
@@ -188,7 +188,7 @@ write_guest
     :param unsigned long ga:
         guest address
 
-    :param ar_t ar:
+    :param u8 ar:
         access register
 
     :param void \*data:
@@ -264,7 +264,7 @@ if data has been changed in guest space in case of an exception.
 read_guest
 ==========
 
-.. c:function:: int read_guest(struct kvm_vcpu *vcpu, unsigned long ga, ar_t ar, void *data, unsigned long len)
+.. c:function:: int read_guest(struct kvm_vcpu *vcpu, unsigned long ga, u8 ar, void *data, unsigned long len)
 
     copy data from guest space to kernel space
 
@@ -274,7 +274,7 @@ read_guest
     :param unsigned long ga:
         guest address
 
-    :param ar_t ar:
+    :param u8 ar:
         access register
 
     :param void \*data:
@@ -298,12 +298,15 @@ data will be copied from guest space to kernel space.
 read_guest_instr
 ================
 
-.. c:function:: int read_guest_instr(struct kvm_vcpu *vcpu, void *data, unsigned long len)
+.. c:function:: int read_guest_instr(struct kvm_vcpu *vcpu, unsigned long ga, void *data, unsigned long len)
 
     copy instruction data from guest space to kernel space
 
     :param struct kvm_vcpu \*vcpu:
         virtual cpu
+
+    :param unsigned long ga:
+        guest address
 
     :param void \*data:
         destination address in kernel space
@@ -316,7 +319,7 @@ read_guest_instr
 Description
 -----------
 
-Copy \ ``len``\  bytes from the current psw address (guest space) to \ ``data``\  (kernel
+Copy \ ``len``\  bytes from the given address (guest space) to \ ``data``\  (kernel
 space).
 
 The behaviour of read_guest_instr is identical to read_guest, except that

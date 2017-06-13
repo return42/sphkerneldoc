@@ -15,6 +15,7 @@ soc
     omap/index
     pxa/index
     samsung/index
+    stm/index
     soc-ac97_c
     soc-compress_c
     soc-core_c

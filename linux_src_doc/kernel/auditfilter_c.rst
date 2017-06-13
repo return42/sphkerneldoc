@@ -6,15 +6,12 @@
 audit_rule_change
 =================
 
-.. c:function:: int audit_rule_change(int type, __u32 portid, int seq, void *data, size_t datasz)
+.. c:function:: int audit_rule_change(int type, int seq, void *data, size_t datasz)
 
     apply all rules to the specified message type
 
     :param int type:
         audit message type
-
-    :param __u32 portid:
-        target port id for netlink audit messages
 
     :param int seq:
         netlink audit message sequence (serial) number

@@ -86,6 +86,7 @@ Definition
         u8 tlr_snoop_check;
         u8 ignore_delay_remove;
         u8 ncq_prio_enable;
+        unsigned long ata_command_pending;
     }
 
 .. _`mpt3sas_device.members`:
@@ -116,6 +117,9 @@ ignore_delay_remove
 
 ncq_prio_enable
     *undescribed*
+
+ata_command_pending
+    SATL passthrough outstanding for device
 
 .. _`_internal_cmd`:
 
@@ -759,12 +763,10 @@ Definition
     struct adapter_reply_queue {
         struct MPT3SAS_ADAPTER *ioc;
         u8 msix_index;
-        unsigned int vector;
         u32 reply_post_host_index;
         Mpi2ReplyDescriptorsUnion_t *reply_post_free;
         char name[MPT_NAME_LENGTH];
         atomic_t busy;
-        cpumask_var_t affinity_hint;
         struct list_head list;
     }
 
@@ -779,9 +781,6 @@ ioc
 msix_index
     msix index into vector table
 
-vector
-    irq vector
-
 reply_post_host_index
     head index in the pool where FW completes IO
 
@@ -793,9 +792,6 @@ name
 
 busy
     isr is actively processing replies on another cpu
-
-affinity_hint
-    *undescribed*
 
 list
     this list
@@ -844,6 +840,7 @@ Definition
         u8 broadcast_aen_busy;
         u16 broadcast_aen_pending;
         u8 shost_recovery;
+        u8 got_task_abort_from_ioctl;
         struct mutex reset_in_progress_mutex;
         spinlock_t ioc_reset_in_progress_lock;
         u8 ioc_link_reset_in_progress;
@@ -1103,6 +1100,9 @@ broadcast_aen_pending
 
 shost_recovery
     host reset in progress
+
+got_task_abort_from_ioctl
+    *undescribed*
 
 reset_in_progress_mutex
     *undescribed*

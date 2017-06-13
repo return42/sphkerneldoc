@@ -265,6 +265,43 @@ Return
 
 Non-negative allocated bit number if successful, -1 otherwise.
 
+.. _`sbitmap_get_shallow`:
+
+sbitmap_get_shallow
+===================
+
+.. c:function:: int sbitmap_get_shallow(struct sbitmap *sb, unsigned int alloc_hint, unsigned long shallow_depth)
+
+    Try to allocate a free bit from a \ :c:type:`struct sbitmap <sbitmap>`\ , limiting the depth used from each word.
+
+    :param struct sbitmap \*sb:
+        Bitmap to allocate from.
+
+    :param unsigned int alloc_hint:
+        Hint for where to start searching for a free bit.
+
+    :param unsigned long shallow_depth:
+        The maximum number of bits to allocate from a single word.
+
+.. _`sbitmap_get_shallow.description`:
+
+Description
+-----------
+
+This rather specific operation allows for having multiple users with
+different allocation limits. E.g., there can be a high-priority class that
+uses \ :c:func:`sbitmap_get`\  and a low-priority class that uses \ :c:func:`sbitmap_get_shallow`\ 
+with a \ ``shallow_depth``\  of (1 << (@sb->shift - 1)). Then, the low-priority
+class can only allocate half of the total bits in the bitmap, preventing it
+from starving out the high-priority class.
+
+.. _`sbitmap_get_shallow.return`:
+
+Return
+------
+
+Non-negative allocated bit number if successful, -1 otherwise.
+
 .. _`sbitmap_any_bit_set`:
 
 sbitmap_any_bit_set
@@ -328,6 +365,51 @@ Description
 
 This is inline even though it's non-trivial so that the function calls to the
 callback will hopefully get optimized away.
+
+.. _`sbitmap_show`:
+
+sbitmap_show
+============
+
+.. c:function:: void sbitmap_show(struct sbitmap *sb, struct seq_file *m)
+
+    Dump \ :c:type:`struct sbitmap <sbitmap>`\  information to a \ :c:type:`struct seq_file <seq_file>`\ .
+
+    :param struct sbitmap \*sb:
+        Bitmap to show.
+
+    :param struct seq_file \*m:
+        struct seq_file to write to.
+
+.. _`sbitmap_show.description`:
+
+Description
+-----------
+
+This is intended for debugging. The format may change at any time.
+
+.. _`sbitmap_bitmap_show`:
+
+sbitmap_bitmap_show
+===================
+
+.. c:function:: void sbitmap_bitmap_show(struct sbitmap *sb, struct seq_file *m)
+
+    Write a hex dump of a \ :c:type:`struct sbitmap <sbitmap>`\  to a \ :c:type:`struct seq_file <seq_file>`\ .
+
+    :param struct sbitmap \*sb:
+        Bitmap to show.
+
+    :param struct seq_file \*m:
+        struct seq_file to write to.
+
+.. _`sbitmap_bitmap_show.description`:
+
+Description
+-----------
+
+This is intended for debugging. The output isn't guaranteed to be internally
+consistent.
 
 .. _`sbitmap_queue_init_node`:
 
@@ -418,6 +500,29 @@ Return
 
 Non-negative allocated bit number if successful, -1 otherwise.
 
+.. _`__sbitmap_queue_get_shallow`:
+
+__sbitmap_queue_get_shallow
+===========================
+
+.. c:function:: int __sbitmap_queue_get_shallow(struct sbitmap_queue *sbq, unsigned int shallow_depth)
+
+    Try to allocate a free bit from a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ , limiting the depth used from each word, with preemption already disabled.
+
+    :param struct sbitmap_queue \*sbq:
+        Bitmap queue to allocate from.
+
+    :param unsigned int shallow_depth:
+        The maximum number of bits to allocate from a single word.
+        See \ :c:func:`sbitmap_get_shallow`\ .
+
+.. _`__sbitmap_queue_get_shallow.return`:
+
+Return
+------
+
+Non-negative allocated bit number if successful, -1 otherwise.
+
 .. _`sbitmap_queue_get`:
 
 sbitmap_queue_get
@@ -435,6 +540,33 @@ sbitmap_queue_get
         \ :c:func:`sbitmap_queue_clear`\ ).
 
 .. _`sbitmap_queue_get.return`:
+
+Return
+------
+
+Non-negative allocated bit number if successful, -1 otherwise.
+
+.. _`sbitmap_queue_get_shallow`:
+
+sbitmap_queue_get_shallow
+=========================
+
+.. c:function:: int sbitmap_queue_get_shallow(struct sbitmap_queue *sbq, unsigned int *cpu, unsigned int shallow_depth)
+
+    Try to allocate a free bit from a \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\ , limiting the depth used from each word.
+
+    :param struct sbitmap_queue \*sbq:
+        Bitmap queue to allocate from.
+
+    :param unsigned int \*cpu:
+        Output parameter; will contain the CPU we ran on (e.g., to be passed to
+        \ :c:func:`sbitmap_queue_clear`\ ).
+
+    :param unsigned int shallow_depth:
+        The maximum number of bits to allocate from a single word.
+        See \ :c:func:`sbitmap_get_shallow`\ .
+
+.. _`sbitmap_queue_get_shallow.return`:
 
 Return
 ------
@@ -485,6 +617,28 @@ sbitmap_queue_wake_all
 
     :param struct sbitmap_queue \*sbq:
         Bitmap queue to wake up.
+
+.. _`sbitmap_queue_show`:
+
+sbitmap_queue_show
+==================
+
+.. c:function:: void sbitmap_queue_show(struct sbitmap_queue *sbq, struct seq_file *m)
+
+    Dump \ :c:type:`struct sbitmap_queue <sbitmap_queue>`\  information to a \ :c:type:`struct seq_file <seq_file>`\ .
+
+    :param struct sbitmap_queue \*sbq:
+        Bitmap queue to show.
+
+    :param struct seq_file \*m:
+        struct seq_file to write to.
+
+.. _`sbitmap_queue_show.description`:
+
+Description
+-----------
+
+This is intended for debugging. The format may change at any time.
 
 .. This file was automatic generated / don't edit.
 

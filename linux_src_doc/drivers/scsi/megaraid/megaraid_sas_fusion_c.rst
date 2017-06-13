@@ -72,10 +72,18 @@ megasas_fire_cmd_fusion
     Sends command to the FW
 
     :param struct megasas_instance \*instance:
-        *undescribed*
+        Adapter soft state
 
     :param union MEGASAS_REQUEST_DESCRIPTOR_UNION \*req_desc:
-        *undescribed*
+        32bit or 64bit Request descriptor
+
+.. _`megasas_fire_cmd_fusion.description`:
+
+Description
+-----------
+
+Perform PCI Write. Ventura supports 32 bit Descriptor.
+Prior to Ventura (12G) MR controller supports 64 bit Descriptor.
 
 .. _`megasas_fusion_update_can_queue`:
 
@@ -249,12 +257,15 @@ This is the main function for initializing firmware.
 map_cmd_status
 ==============
 
-.. c:function:: void map_cmd_status(struct megasas_cmd_fusion *cmd, u8 status, u8 ext_status)
+.. c:function:: void map_cmd_status(struct fusion_context *fusion, struct scsi_cmnd *scmd, u8 status, u8 ext_status, u32 data_length, u8 *sense)
 
     Maps FW cmd status to OS cmd status
 
-    :param struct megasas_cmd_fusion \*cmd:
-        Pointer to cmd
+    :param struct fusion_context \*fusion:
+        *undescribed*
+
+    :param struct scsi_cmnd \*scmd:
+        *undescribed*
 
     :param u8 status:
         status of cmd returned by FW
@@ -262,12 +273,76 @@ map_cmd_status
     :param u8 ext_status:
         ext status of cmd returned by FW
 
+    :param u32 data_length:
+        *undescribed*
+
+    :param u8 \*sense:
+        *undescribed*
+
+.. _`megasas_is_prp_possible`:
+
+megasas_is_prp_possible
+=======================
+
+.. c:function:: bool megasas_is_prp_possible(struct megasas_instance *instance, struct scsi_cmnd *scmd, int sge_count)
+
+    Checks if native NVMe PRPs can be built for the IO
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+    :param struct scsi_cmnd \*scmd:
+        SCSI command from the mid-layer
+
+    :param int sge_count:
+        scatter gather element count.
+
+.. _`megasas_is_prp_possible.return`:
+
+Return
+------
+
+true: PRPs can be built
+false: IEEE SGLs needs to be built
+
+.. _`megasas_make_prp_nvme`:
+
+megasas_make_prp_nvme
+=====================
+
+.. c:function:: bool megasas_make_prp_nvme(struct megasas_instance *instance, struct scsi_cmnd *scmd, struct MPI25_IEEE_SGE_CHAIN64 *sgl_ptr, struct megasas_cmd_fusion *cmd, int sge_count)
+
+    Prepare PRPs(Physical Region Page)- SGLs specific to NVMe drives only
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+    :param struct scsi_cmnd \*scmd:
+        SCSI command from the mid-layer
+
+    :param struct MPI25_IEEE_SGE_CHAIN64 \*sgl_ptr:
+        SGL to be filled in
+
+    :param struct megasas_cmd_fusion \*cmd:
+        Fusion command frame
+
+    :param int sge_count:
+        scatter gather element count.
+
+.. _`megasas_make_prp_nvme.return`:
+
+Return
+------
+
+true: PRPs are built
+false: IEEE SGLs needs to be built
+
 .. _`megasas_make_sgl_fusion`:
 
 megasas_make_sgl_fusion
 =======================
 
-.. c:function:: int megasas_make_sgl_fusion(struct megasas_instance *instance, struct scsi_cmnd *scp, struct MPI25_IEEE_SGE_CHAIN64 *sgl_ptr, struct megasas_cmd_fusion *cmd)
+.. c:function:: void megasas_make_sgl_fusion(struct megasas_instance *instance, struct scsi_cmnd *scp, struct MPI25_IEEE_SGE_CHAIN64 *sgl_ptr, struct megasas_cmd_fusion *cmd, int sge_count)
 
     Prepares 32-bit SGL
 
@@ -282,13 +357,40 @@ megasas_make_sgl_fusion
 
     :param struct megasas_cmd_fusion \*cmd:
         cmd we are working on
+        \ ``sge_count``\            sge count
 
-.. _`megasas_make_sgl_fusion.description`:
+    :param int sge_count:
+        *undescribed*
+
+.. _`megasas_make_sgl`:
+
+megasas_make_sgl
+================
+
+.. c:function:: int megasas_make_sgl(struct megasas_instance *instance, struct scsi_cmnd *scp, struct megasas_cmd_fusion *cmd)
+
+    Build Scatter Gather List(SGLs)
+
+    :param struct megasas_instance \*instance:
+        Soft instance of controller
+
+    :param struct scsi_cmnd \*scp:
+        SCSI command pointer
+
+    :param struct megasas_cmd_fusion \*cmd:
+        Fusion command pointer
+
+.. _`megasas_make_sgl.description`:
 
 Description
 -----------
 
-If successful, this function returns the number of SG elements.
+This function will build sgls based on device type.
+For nvme drives, there is different way of building sgls in nvme native
+format- PRPs(Physical Region Page).
+
+Returns the number of sg lists actually used, zero if the sg lists
+is NULL, or -ENOMEM if the mapping failed
 
 .. _`megasas_set_pd_lba`:
 
@@ -323,6 +425,48 @@ Description
 -----------
 
 Used to set the PD LBA in CDB for FP IOs
+
+.. _`megasas_stream_detect`:
+
+megasas_stream_detect
+=====================
+
+.. c:function:: void megasas_stream_detect(struct megasas_instance *instance, struct megasas_cmd_fusion *cmd, struct IO_REQUEST_INFO *io_info)
+
+    stream detection on read and and write IOs
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+    :param struct megasas_cmd_fusion \*cmd:
+        Command to be prepared
+
+    :param struct IO_REQUEST_INFO \*io_info:
+        IO Request info
+
+.. _`megasas_set_raidflag_cpu_affinity`:
+
+megasas_set_raidflag_cpu_affinity
+=================================
+
+.. c:function:: void megasas_set_raidflag_cpu_affinity(union RAID_CONTEXT_UNION *praid_context, struct MR_LD_RAID *raid, bool fp_possible, u8 is_read, u32 scsi_buff_len)
+
+    This function sets the cpu affinity (cpu of the controller) and raid_flags in the raid context based on IO type.
+
+    :param union RAID_CONTEXT_UNION \*praid_context:
+        IO RAID context
+
+    :param struct MR_LD_RAID \*raid:
+        LD raid map
+
+    :param bool fp_possible:
+        Is fast path possible?
+
+    :param u8 is_read:
+        Is read IO?
+
+    :param u32 scsi_buff_len:
+        *undescribed*
 
 .. _`megasas_build_ldio_fusion`:
 
@@ -380,7 +524,7 @@ Prepares the io_request frame for non-rw io cmds for vd.
 megasas_build_syspd_fusion
 ==========================
 
-.. c:function:: void megasas_build_syspd_fusion(struct megasas_instance *instance, struct scsi_cmnd *scmd, struct megasas_cmd_fusion *cmd, u8 fp_possible)
+.. c:function:: void megasas_build_syspd_fusion(struct megasas_instance *instance, struct scsi_cmnd *scmd, struct megasas_cmd_fusion *cmd, bool fp_possible)
 
     prepares rw/non-rw ios for syspd
 
@@ -393,7 +537,7 @@ megasas_build_syspd_fusion
     :param struct megasas_cmd_fusion \*cmd:
         Command to be prepared
 
-    :param u8 fp_possible:
+    :param bool fp_possible:
         parameter to detect fast path or firmware path io.
 
 .. _`megasas_build_syspd_fusion.description`:
@@ -444,6 +588,21 @@ megasas_build_and_issue_cmd_fusion
     :param struct scsi_cmnd \*scmd:
         pointer to scsi cmd from OS
 
+.. _`megasas_complete_r1_command`:
+
+megasas_complete_r1_command
+===========================
+
+.. c:function:: void megasas_complete_r1_command(struct megasas_instance *instance, struct megasas_cmd_fusion *cmd)
+
+    completes R1 FP write commands which has valid peer smid
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+    :param struct megasas_cmd_fusion \*cmd:
+        *undescribed*
+
 .. _`complete_cmd_fusion`:
 
 complete_cmd_fusion
@@ -458,6 +617,18 @@ complete_cmd_fusion
         Completes all commands that is in reply descriptor queue
 
     :param u32 MSIxIndex:
+        *undescribed*
+
+.. _`megasas_sync_irqs`:
+
+megasas_sync_irqs
+=================
+
+.. c:function:: void megasas_sync_irqs(unsigned long instance_addr)
+
+    Synchronizes all IRQs owned by adapter
+
+    :param unsigned long instance_addr:
         *undescribed*
 
 .. _`megasas_complete_cmd_dpc_fusion`:
@@ -499,7 +670,7 @@ megasas_isr_fusion
 build_mpt_mfi_pass_thru
 =======================
 
-.. c:function:: u8 build_mpt_mfi_pass_thru(struct megasas_instance *instance, struct megasas_cmd *mfi_cmd)
+.. c:function:: void build_mpt_mfi_pass_thru(struct megasas_instance *instance, struct megasas_cmd *mfi_cmd)
 
     builds a cmd fo MFI Pass thru
 
@@ -536,7 +707,7 @@ build_mpt_cmd
 megasas_issue_dcmd_fusion
 =========================
 
-.. c:function:: int megasas_issue_dcmd_fusion(struct megasas_instance *instance, struct megasas_cmd *cmd)
+.. c:function:: void megasas_issue_dcmd_fusion(struct megasas_instance *instance, struct megasas_cmd *cmd)
 
     Issues a MFI Pass thru cmd
 

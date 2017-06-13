@@ -1,0 +1,77 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/comedi/drivers/s626.c
+
+.. _`s626_private`:
+
+struct s626_private
+===================
+
+.. c:type:: struct s626_private
+
+    Working data for s626 driver.
+
+.. _`s626_private.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct s626_private {
+        u8 ai_cmd_running;
+        unsigned int ai_sample_timer;
+        int ai_convert_count;
+        unsigned int ai_convert_timer;
+        u16 counter_int_enabs;
+        u8 adc_items;
+        struct s626_buffer_dma rps_buf;
+        struct s626_buffer_dma ana_buf;
+        u32 *dac_wbuf;
+        u16 dacpol;
+        u8 trim_setpoint[12];
+        u32 i2c_adrs;
+    }
+
+.. _`s626_private.members`:
+
+Members
+-------
+
+ai_cmd_running
+    non-zero if ai_cmd is running.
+
+ai_sample_timer
+    time between samples in units of the timer.
+
+ai_convert_count
+    conversion counter.
+
+ai_convert_timer
+    time between conversion in units of the timer.
+
+counter_int_enabs
+    counter interrupt enable mask for MISC2 register.
+
+adc_items
+    number of items in ADC poll list.
+
+rps_buf
+    DMA buffer used to hold ADC (RPS1) program.
+
+ana_buf
+    DMA buffer used to receive ADC data and hold DAC data.
+
+dac_wbuf
+    pointer to logical adrs of DMA buffer used to hold DAC data.
+
+dacpol
+    image of DAC polarity register.
+
+trim_setpoint
+    images of TrimDAC setpoints.
+
+i2c_adrs
+    I2C device address for onboard EEPROM (board rev dependent)
+
+.. This file was automatic generated / don't edit.
+

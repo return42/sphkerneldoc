@@ -412,8 +412,6 @@ Definition
         struct temp_sensor_data *ts_data;
         struct temp_sensor_registers *registers;
         char *domain;
-        const int slope;
-        const int constant;
         const int slope_pcb;
         const int constant_pcb;
         int (*register_cooling)(struct ti_bandgap *bgp, int id);
@@ -433,12 +431,6 @@ registers
 
 domain
     the name of the domain where the sensor is located
-
-slope
-    sensor gradient slope info for hotspot extrapolation equation
-
-constant
-    sensor gradient const info for hotspot extrapolation equation
 
 slope_pcb
     sensor gradient slope info for hotspot extrapolation equation

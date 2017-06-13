@@ -141,7 +141,7 @@ sk_clone_lock
 Description
 -----------
 
-Caller must unlock socket even in error path (bh_unlock_sock(newsk))
+     Caller must unlock socket even in error path (bh_unlock_sock(newsk))
 
 .. _`skb_page_frag_refill`:
 
@@ -224,7 +224,7 @@ __sk_mem_raise_allocated
 Description
 -----------
 
-Similar to \__sk_mem_schedule(), but does not update sk_forward_alloc
+     Similar to \ :c:func:`__sk_mem_schedule`\ , but does not update sk_forward_alloc
 
 .. _`__sk_mem_schedule`:
 
@@ -249,9 +249,9 @@ __sk_mem_schedule
 Description
 -----------
 
-If kind is SK_MEM_SEND, it means wmem allocation. Otherwise it means
-rmem allocation. This function assumes that protocols which have
-memory_pressure use sk_wmem_queued as write buffer accounting.
+     If kind is SK_MEM_SEND, it means wmem allocation. Otherwise it means
+     rmem allocation. This function assumes that protocols which have
+     memory_pressure use sk_wmem_queued as write buffer accounting.
 
 .. _`__sk_mem_reduce_allocated`:
 
@@ -273,7 +273,7 @@ __sk_mem_reduce_allocated
 Description
 -----------
 
-Similar to \__sk_mem_reclaim(), but does not update sk_forward_alloc
+     Similar to \ :c:func:`__sk_mem_reclaim`\ , but does not update sk_forward_alloc
 
 .. _`__sk_mem_reclaim`:
 
@@ -308,10 +308,22 @@ Description
 -----------
 
 This version should be used for very small section, where process wont block
+
+.. _`lock_sock_fast.return-false-if-fast-path-is-taken`:
+
 return false if fast path is taken
-sk_lock.slock locked, owned = 0, BH disabled
+----------------------------------
+
+
+  sk_lock.slock locked, owned = 0, BH disabled
+
+.. _`lock_sock_fast.return-true-if-slow-path-is-taken`:
+
 return true if slow path is taken
-sk_lock.slock unlocked, owned = 1, BH enabled
+---------------------------------
+
+
+  sk_lock.slock unlocked, owned = 1, BH enabled
 
 .. This file was automatic generated / don't edit.
 

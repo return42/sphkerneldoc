@@ -121,28 +121,20 @@ rt_mutex_unlock
     :param struct rt_mutex \*lock:
         the rt_mutex to be unlocked
 
-.. _`rt_mutex_futex_unlock`:
+.. _`__rt_mutex_futex_unlock`:
 
-rt_mutex_futex_unlock
-=====================
+__rt_mutex_futex_unlock
+=======================
 
-.. c:function:: bool __sched rt_mutex_futex_unlock(struct rt_mutex *lock, struct wake_q_head *wqh)
+.. c:function:: bool __sched __rt_mutex_futex_unlock(struct rt_mutex *lock, struct wake_q_head *wake_q)
 
-    Futex variant of rt_mutex_unlock
+    path, can be simple and will not need to retry.
 
     :param struct rt_mutex \*lock:
-        the rt_mutex to be unlocked
-
-    :param struct wake_q_head \*wqh:
         *undescribed*
 
-.. _`rt_mutex_futex_unlock.return`:
-
-Return
-------
-
-true/false indicating whether priority adjustment is
-required or not.
+    :param struct wake_q_head \*wake_q:
+        *undescribed*
 
 .. _`rt_mutex_destroy`:
 
@@ -296,14 +288,14 @@ itself.
 
 Special API call for PI-futex support
 
-.. _`rt_mutex_finish_proxy_lock`:
+.. _`rt_mutex_wait_proxy_lock`:
 
-rt_mutex_finish_proxy_lock
-==========================
+rt_mutex_wait_proxy_lock
+========================
 
-.. c:function:: int rt_mutex_finish_proxy_lock(struct rt_mutex *lock, struct hrtimer_sleeper *to, struct rt_mutex_waiter *waiter)
+.. c:function:: int rt_mutex_wait_proxy_lock(struct rt_mutex *lock, struct hrtimer_sleeper *to, struct rt_mutex_waiter *waiter)
 
-    Complete lock acquisition
+    Wait for lock acquisition
 
     :param struct rt_mutex \*lock:
         the rt_mutex we were woken on
@@ -315,14 +307,16 @@ rt_mutex_finish_proxy_lock
     :param struct rt_mutex_waiter \*waiter:
         the pre-initialized rt_mutex_waiter
 
-.. _`rt_mutex_finish_proxy_lock.description`:
+.. _`rt_mutex_wait_proxy_lock.description`:
 
 Description
 -----------
 
-Complete the lock acquisition started our behalf by another thread.
+Wait for the the lock acquisition started on our behalf by
+\ :c:func:`rt_mutex_start_proxy_lock`\ . Upon failure, the caller must call
+\ :c:func:`rt_mutex_cleanup_proxy_lock`\ .
 
-.. _`rt_mutex_finish_proxy_lock.return`:
+.. _`rt_mutex_wait_proxy_lock.return`:
 
 Return
 ------
@@ -330,7 +324,45 @@ Return
 0 - success
 <0 - error, one of -EINTR, -ETIMEDOUT
 
-Special API call for PI-futex requeue support
+Special API call for PI-futex support
+
+.. _`rt_mutex_cleanup_proxy_lock`:
+
+rt_mutex_cleanup_proxy_lock
+===========================
+
+.. c:function:: bool rt_mutex_cleanup_proxy_lock(struct rt_mutex *lock, struct rt_mutex_waiter *waiter)
+
+    Cleanup failed lock acquisition
+
+    :param struct rt_mutex \*lock:
+        the rt_mutex we were woken on
+
+    :param struct rt_mutex_waiter \*waiter:
+        the pre-initialized rt_mutex_waiter
+
+.. _`rt_mutex_cleanup_proxy_lock.description`:
+
+Description
+-----------
+
+Attempt to clean up after a failed \ :c:func:`rt_mutex_wait_proxy_lock`\ .
+
+Unless we acquired the lock; we're still enqueued on the wait-list and can
+in fact still be granted ownership until we're removed. Therefore we can
+find we are in fact the owner and must disregard the
+\ :c:func:`rt_mutex_wait_proxy_lock`\  failure.
+
+.. _`rt_mutex_cleanup_proxy_lock.return`:
+
+Return
+------
+
+true  - did the cleanup, we done.
+false - we acquired the lock after \ :c:func:`rt_mutex_wait_proxy_lock`\  returned,
+caller should disregards its return value.
+
+Special API call for PI-futex support
 
 .. This file was automatic generated / don't edit.
 

@@ -7,9 +7,10 @@ bus
 .. toctree::
     :maxdepth: 1
 
+    dpio/index
     dpbp_c
+    dpcon_c
     dpmcp_c
-    dpmcp_h
     dpmng_c
     dprc-driver_c
     dprc_c

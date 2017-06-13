@@ -239,90 +239,50 @@ Description
 
 Stores PID coefficients and last error for PID controller.
 
-.. _`perf_limits`:
+.. _`global_params`:
 
-struct perf_limits
-==================
+struct global_params
+====================
 
-.. c:type:: struct perf_limits
+.. c:type:: struct global_params
 
-    Store user and policy limits
+    Global parameters, mostly tunable via sysfs.
 
-.. _`perf_limits.definition`:
+.. _`global_params.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct perf_limits {
-        int no_turbo;
-        int turbo_disabled;
+    struct global_params {
+        bool no_turbo;
+        bool turbo_disabled;
         int max_perf_pct;
         int min_perf_pct;
-        int32_t max_perf;
-        int32_t min_perf;
-        int max_policy_pct;
-        int max_sysfs_pct;
-        int min_policy_pct;
-        int min_sysfs_pct;
     }
 
-.. _`perf_limits.members`:
+.. _`global_params.members`:
 
 Members
 -------
 
 no_turbo
-    User requested turbo state from intel_pstate sysfs
+    Whether or not to use turbo P-states.
 
 turbo_disabled
-    Platform turbo status either from msr
-    MSR_IA32_MISC_ENABLE or when maximum available pstate
-    matches the maximum turbo pstate
+    Whethet or not turbo P-states are available at all,
+    based on the MSR_IA32_MISC_ENABLE value and whether or
+    not the maximum reported turbo P-state is different from
+    the maximum reported non-turbo one.
 
 max_perf_pct
-    Effective maximum performance limit in percentage, this
-    is minimum of either limits enforced by cpufreq policy
-    or limits from user set limits via intel_pstate sysfs
+    Maximum capacity limit in percent of the maximum turbo
+    P-state capacity.
 
 min_perf_pct
-    Effective minimum performance limit in percentage, this
-    is maximum of either limits enforced by cpufreq policy
-    or limits from user set limits via intel_pstate sysfs
-
-max_perf
-    This is a scaled value between 0 to 255 for max_perf_pct
-    This value is used to limit max pstate
-
-min_perf
-    This is a scaled value between 0 to 255 for min_perf_pct
-    This value is used to limit min pstate
-
-max_policy_pct
-    The maximum performance in percentage enforced by
-    cpufreq setpolicy interface
-
-max_sysfs_pct
-    The maximum performance in percentage enforced by
-    intel pstate sysfs interface, unused when per cpu
-    controls are enforced
-
-min_policy_pct
-    The minimum performance in percentage enforced by
-    cpufreq setpolicy interface
-
-min_sysfs_pct
-    The minimum performance in percentage enforced by
-    intel pstate sysfs interface, unused when per cpu
-    controls are enforced
-
-.. _`perf_limits.description`:
-
-Description
------------
-
-Storage for user and policy defined limits.
+    Minimum capacity limit in percent of the maximum turbo
+    P-state capacity.
 
 .. _`cpudata`:
 
@@ -355,7 +315,8 @@ Definition
         u64 prev_tsc;
         u64 prev_cummulative_iowait;
         struct sample sample;
-        struct perf_limits *perf_limits;
+        int32_t min_perf;
+        int32_t max_perf;
     #ifdef CONFIG_ACPI
         struct acpi_processor_performance acpi_perf_data;
         bool valid_pss_table;
@@ -415,10 +376,13 @@ prev_cummulative_iowait
 sample
     Storage for storing last Sample data
 
-perf_limits
-    Pointer to perf_limit unique to this CPU
-    Not all field in the structure are applicable
-    when per cpu controls are enforced
+min_perf
+    Minimum capacity limit as a fraction of the maximum
+    turbo P-state capacity.
+
+max_perf
+    Maximum capacity limit as a fraction of the maximum
+    turbo P-state capacity.
 
 acpi_perf_data
     Stores ACPI perf information read from \_PSS
@@ -535,7 +499,7 @@ Definition
         int (*get_scaling)(void);
         u64 (*get_val)(struct cpudata*, int pstate);
         void (*get_vid)(struct cpudata *);
-        int32_t (*get_target_pstate)(struct cpudata *);
+        void (*update_util)(struct update_util_data *data, u64 time,unsigned int flags);
     }
 
 .. _`pstate_funcs.members`:
@@ -564,8 +528,8 @@ get_val
 get_vid
     Callback to get VID data for Atom platforms
 
-get_target_pstate
-    Callback to a function to calculate next P state to use
+update_util
+    Active mode utilization update callback.
 
 .. _`pstate_funcs.description`:
 
@@ -574,38 +538,6 @@ Description
 
 Core and Atom CPU models have different way to get P State limits. This
 structure is used to store those callbacks.
-
-.. _`cpu_defaults`:
-
-struct cpu_defaults
-===================
-
-.. c:type:: struct cpu_defaults
-
-    Per CPU model default config data
-
-.. _`cpu_defaults.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct cpu_defaults {
-        struct pstate_adjust_policy pid_policy;
-        struct pstate_funcs funcs;
-    }
-
-.. _`cpu_defaults.members`:
-
-Members
--------
-
-pid_policy
-    PID config data
-
-funcs
-    Callback function data
 
 .. This file was automatic generated / don't edit.
 

@@ -21,7 +21,7 @@ Definition
         void *base;
         int mask;
         int fd;
-        atomic_t refcnt;
+        refcount_t refcnt;
         u64 prev;
         struct auxtrace_mmap auxtrace_mmap;
         char event_copy[PERF_SAMPLE_MAX_SIZE] __attribute__((aligned(8)));

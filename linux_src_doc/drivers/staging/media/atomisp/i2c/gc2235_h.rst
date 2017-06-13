@@ -1,0 +1,48 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/media/atomisp/i2c/gc2235.h
+
+.. _`gc2235_reg`:
+
+struct gc2235_reg
+=================
+
+.. c:type:: struct gc2235_reg
+
+    MI sensor  register format
+
+.. _`gc2235_reg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gc2235_reg {
+        enum gc2235_tok_type type;
+        u8 reg;
+        u32 val;
+    }
+
+.. _`gc2235_reg.members`:
+
+Members
+-------
+
+type
+    type of the register
+
+reg
+    8-bit offset to register
+
+val
+    8/16/32-bit register value
+
+.. _`gc2235_reg.description`:
+
+Description
+-----------
+
+Define a structure for sensor register initialization values
+
+.. This file was automatic generated / don't edit.
+

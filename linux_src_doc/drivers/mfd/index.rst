@@ -10,6 +10,7 @@ mfd
     ab3100-otp_c
     ab8500-debugfs_c
     ab8500-gpadc_c
+    atmel-smc_c
     cros_ec_spi_c
     db8500-prcmu_c
     dm355evm_msp_c

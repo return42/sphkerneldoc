@@ -8,5 +8,4 @@ mga
     :maxdepth: 1
 
     mga_dma_c
-    mga_drv_c
     mga_ioc32_c

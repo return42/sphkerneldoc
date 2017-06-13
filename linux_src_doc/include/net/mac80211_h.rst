@@ -362,7 +362,8 @@ Definition
         BSS_CHANGED_BEACON_INFO,
         BSS_CHANGED_BANDWIDTH,
         BSS_CHANGED_OCB,
-        BSS_CHANGED_MU_GROUPS
+        BSS_CHANGED_MU_GROUPS,
+        BSS_CHANGED_KEEP_ALIVE
     };
 
 .. _`ieee80211_bss_change.constants`:
@@ -450,6 +451,10 @@ BSS_CHANGED_OCB
 
 BSS_CHANGED_MU_GROUPS
     VHT MU-MIMO group id or user position changed
+
+BSS_CHANGED_KEEP_ALIVE
+    keep alive options (idle period or protected
+    keep alive) changed.
 
 .. _`ieee80211_bss_change.description`:
 
@@ -818,6 +823,8 @@ Definition
         u16 ht_operation_mode;
         s32 cqm_rssi_thold;
         u32 cqm_rssi_hyst;
+        s32 cqm_rssi_low;
+        s32 cqm_rssi_high;
         struct cfg80211_chan_def chandef;
         struct ieee80211_mu_group_data mu_group;
         __be32 arp_addr_list[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
@@ -832,6 +839,8 @@ Definition
         enum nl80211_tx_power_setting txpower_type;
         struct ieee80211_p2p_noa_attr p2p_noa_attr;
         bool allow_p2p_go_ps;
+        u16 max_idle_period;
+        bool protected_keep_alive;
     }
 
 .. _`ieee80211_bss_conf.members`:
@@ -924,6 +933,14 @@ cqm_rssi_thold
 cqm_rssi_hyst
     Connection quality monitor RSSI hysteresis
 
+cqm_rssi_low
+    Connection quality monitor RSSI lower threshold, a zero value
+    implies disabled.  This is an alternative mechanism to the single
+    threshold event and can't be enabled simultaneously with it.
+
+cqm_rssi_high
+    Connection quality monitor RSSI upper threshold.
+
 chandef
     Channel definition for this BSS -- the hardware might be
     configured a higher bandwidth than this BSS uses, for example.
@@ -981,6 +998,17 @@ allow_p2p_go_ps
     indication for AP or P2P GO interface, whether it's allowed
     to use P2P PS mechanism or not. AP/P2P GO is not allowed to use P2P PS
     if it has associated clients without P2P PS support.
+
+max_idle_period
+    the time period during which the station can refrain from
+    transmitting frames to its associated AP without being disassociated.
+    In units of 1000 TUs. Zero value indicates that the AP did not include
+    a (valid) BSS Max Idle Period Element.
+
+protected_keep_alive
+    if set, indicates that the station should send an RSN
+    protected frame to the AP to reset the idle timer at the AP for the
+    station.
 
 .. _`ieee80211_bss_conf.description`:
 
@@ -1469,6 +1497,42 @@ This structure is placed in skb->cb for three uses:
  (2) driver internal use (if applicable)
  (3) TX status information - driver tells mac80211 what happened
 
+.. _`ieee80211_tx_status`:
+
+struct ieee80211_tx_status
+==========================
+
+.. c:type:: struct ieee80211_tx_status
+
+    extended tx staus info for rate control
+
+.. _`ieee80211_tx_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_tx_status {
+        struct ieee80211_sta *sta;
+        struct ieee80211_tx_info *info;
+        struct sk_buff *skb;
+    }
+
+.. _`ieee80211_tx_status.members`:
+
+Members
+-------
+
+sta
+    Station that the packet was transmitted for
+
+info
+    Basic tx status information
+
+skb
+    Packet skb (can be NULL if not provided by the driver)
+
 .. _`ieee80211_scan_ies`:
 
 struct ieee80211_scan_ies
@@ -1574,12 +1638,7 @@ Definition
         RX_FLAG_FAILED_FCS_CRC,
         RX_FLAG_FAILED_PLCP_CRC,
         RX_FLAG_MACTIME_START,
-        RX_FLAG_SHORTPRE,
-        RX_FLAG_HT,
-        RX_FLAG_40MHZ,
-        RX_FLAG_SHORT_GI,
         RX_FLAG_NO_SIGNAL_VAL,
-        RX_FLAG_HT_GF,
         RX_FLAG_AMPDU_DETAILS,
         RX_FLAG_PN_VALIDATED,
         RX_FLAG_DUP_VALIDATED,
@@ -1588,17 +1647,13 @@ Definition
         RX_FLAG_AMPDU_DELIM_CRC_ERROR,
         RX_FLAG_AMPDU_DELIM_CRC_KNOWN,
         RX_FLAG_MACTIME_END,
-        RX_FLAG_VHT,
-        RX_FLAG_LDPC,
         RX_FLAG_ONLY_MONITOR,
         RX_FLAG_SKIP_MONITOR,
-        RX_FLAG_STBC_MASK,
-        RX_FLAG_10MHZ,
-        RX_FLAG_5MHZ,
         RX_FLAG_AMSDU_MORE,
         RX_FLAG_RADIOTAP_VENDOR_DATA,
         RX_FLAG_MIC_STRIPPED,
-        RX_FLAG_ALLOW_SAME_PN
+        RX_FLAG_ALLOW_SAME_PN,
+        RX_FLAG_ICV_STRIPPED
     };
 
 .. _`mac80211_rx_flags.constants`:
@@ -1622,7 +1677,7 @@ RX_FLAG_MMIC_STRIPPED
     verification has been done by the hardware.
 
 RX_FLAG_IV_STRIPPED
-    The IV/ICV are stripped from this frame.
+    The IV and ICV are stripped from this frame.
     If this flag is set, the stack cannot do any replay detection
     hence the driver or hardware will have to do that.
 
@@ -1640,26 +1695,9 @@ RX_FLAG_MACTIME_START
     was received. This is useful in monitor mode and for proper IBSS
     merging.
 
-RX_FLAG_SHORTPRE
-    Short preamble was used for this frame
-
-RX_FLAG_HT
-    HT MCS was used and rate_idx is MCS index
-
-RX_FLAG_40MHZ
-    HT40 (40 MHz) was used
-
-RX_FLAG_SHORT_GI
-    Short guard interval was used
-
 RX_FLAG_NO_SIGNAL_VAL
     The signal strength value is not present.
     Valid only for data frames (mainly A-MPDU)
-
-RX_FLAG_HT_GF
-    This frame was received in a HT-greenfield transmission, if
-    the driver fills this value it should add \ ``IEEE80211_RADIOTAP_MCS_HAVE_FMT``\ 
-    to hw.radiotap_mcs_details to advertise that fact
 
 RX_FLAG_AMPDU_DETAILS
     A-MPDU details are known, in particular the reference
@@ -1696,12 +1734,6 @@ RX_FLAG_MACTIME_END
     field) is valid and contains the time the last symbol of the MPDU
     (including FCS) was received.
 
-RX_FLAG_VHT
-    VHT MCS was used and rate_index is MCS index
-
-RX_FLAG_LDPC
-    LDPC was used
-
 RX_FLAG_ONLY_MONITOR
     Report frame only to monitor interfaces without
     processing it in any regular way.
@@ -1713,15 +1745,6 @@ RX_FLAG_SKIP_MONITOR
     monitor interfaces.
     This is useful if drivers offload some frames but still want to report
     them for sniffing purposes.
-
-RX_FLAG_STBC_MASK
-    STBC 2 bit bitmask. 1 - Nss=1, 2 - Nss=2, 3 - Nss=3
-
-RX_FLAG_10MHZ
-    10 MHz (half channel) was used
-
-RX_FLAG_5MHZ
-    5 MHz (quarter channel) was used
 
 RX_FLAG_AMSDU_MORE
     Some drivers may prefer to report separate A-MSDU
@@ -1748,6 +1771,10 @@ RX_FLAG_ALLOW_SAME_PN
     This is used for AMSDU subframes which can have the same PN as
     the first subframe.
 
+RX_FLAG_ICV_STRIPPED
+    The ICV is stripped from this frame. CRC checking must
+    be done in the hardware.
+
 .. _`mac80211_rx_flags.description`:
 
 Description
@@ -1755,49 +1782,56 @@ Description
 
 These flags are used with the \ ``flag``\  member of \ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ .
 
-.. _`mac80211_rx_vht_flags`:
+.. _`mac80211_rx_encoding_flags`:
 
-enum mac80211_rx_vht_flags
-==========================
+enum mac80211_rx_encoding_flags
+===============================
 
-.. c:type:: enum mac80211_rx_vht_flags
+.. c:type:: enum mac80211_rx_encoding_flags
 
-    receive VHT flags
+    MCS & bandwidth flags
 
-.. _`mac80211_rx_vht_flags.definition`:
+.. _`mac80211_rx_encoding_flags.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    enum mac80211_rx_vht_flags {
-        RX_VHT_FLAG_80MHZ,
-        RX_VHT_FLAG_160MHZ,
-        RX_VHT_FLAG_BF
+    enum mac80211_rx_encoding_flags {
+        RX_ENC_FLAG_SHORTPRE,
+        RX_ENC_FLAG_SHORT_GI,
+        RX_ENC_FLAG_HT_GF,
+        RX_ENC_FLAG_STBC_MASK,
+        RX_ENC_FLAG_LDPC,
+        RX_ENC_FLAG_BF
     };
 
-.. _`mac80211_rx_vht_flags.constants`:
+.. _`mac80211_rx_encoding_flags.constants`:
 
 Constants
 ---------
 
-RX_VHT_FLAG_80MHZ
-    80 MHz was used
+RX_ENC_FLAG_SHORTPRE
+    Short preamble was used for this frame
 
-RX_VHT_FLAG_160MHZ
-    160 MHz was used
+RX_ENC_FLAG_SHORT_GI
+    Short guard interval was used
 
-RX_VHT_FLAG_BF
+RX_ENC_FLAG_HT_GF
+    This frame was received in a HT-greenfield transmission,
+    if the driver fills this value it should add
+    \ ``IEEE80211_RADIOTAP_MCS_HAVE_FMT``\ 
+    to hw.radiotap_mcs_details to advertise that fact
+
+RX_ENC_FLAG_STBC_MASK
+    STBC 2 bit bitmask. 1 - Nss=1, 2 - Nss=2, 3 - Nss=3
+
+RX_ENC_FLAG_LDPC
+    LDPC was used
+
+RX_ENC_FLAG_BF
     packet was beamformed
-
-.. _`mac80211_rx_vht_flags.description`:
-
-Description
------------
-
-These flags are used with the \ ``vht_flag``\  member of
-     \ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ .
 
 .. _`ieee80211_rx_status`:
 
@@ -1820,11 +1854,13 @@ Definition
         u64 boottime_ns;
         u32 device_timestamp;
         u32 ampdu_reference;
-        u64 flag;
+        u32 flag;
         u16 freq;
-        u8 vht_flag;
+        u8 enc_flags;
+        u8 encoding:2;
+        u8 bw:2:3;
         u8 rate_idx;
-        u8 vht_nss;
+        u8 nss;
         u8 rx_flags;
         u8 band;
         u8 antenna;
@@ -1863,15 +1899,21 @@ freq
     This field must be set for management frames, but isn't strictly needed
     for data (other) frames - for those it only affects radiotap reporting.
 
-vht_flag
-    %RX_VHT_FLAG_\*
+enc_flags
+    uses bits from \ :c:type:`enum mac80211_rx_encoding_flags <mac80211_rx_encoding_flags>`\ 
+
+encoding
+    &enum mac80211_rx_encoding
+
+bw
+    &enum rate_info_bw
 
 rate_idx
     index of data rate into band's supported rates or MCS index if
     HT or VHT is used (%RX_FLAG_HT/%RX_FLAG_VHT)
 
-vht_nss
-    number of streams (VHT only)
+nss
+    number of streams (VHT and HE only)
 
 rx_flags
     internal RX flags for mac80211
@@ -3023,15 +3065,18 @@ max_amsdu_subframes
     unlimited.
 
 max_amsdu_len
-    indicates the maximal length of an A-MSDU in bytes. This
-    field is always valid for packets with a VHT preamble. For packets
-    with a HT preamble, additional limits apply:
-    + If the skb is transmitted as part of a BA agreement, the
-    A-MSDU maximal size is min(max_amsdu_len, 4065) bytes.
-    + If the skb is not part of a BA aggreement, the A-MSDU maximal
-    size is min(max_amsdu_len, 7935) bytes.
-    Both additional HT limits must be enforced by the low level driver.
-    This is defined by the spec (IEEE 802.11-2012 section 8.3.2.2 NOTE 2).
+    indicates the maximal length of an A-MSDU in bytes.
+    This field is always valid for packets with a VHT preamble.
+    For packets with a HT preamble, additional limits apply:
+
+    * If the skb is transmitted as part of a BA agreement, the
+      A-MSDU maximal size is min(max_amsdu_len, 4065) bytes.
+    * If the skb is not part of a BA aggreement, the A-MSDU maximal
+      size is min(max_amsdu_len, 7935) bytes.
+
+    Both additional HT limits must be enforced by the low level
+    driver. This is defined by the spec (IEEE 802.11-2012 section
+    8.3.2.2 NOTE 2).
 
 support_p2p_ps
     indicates whether the STA supports P2P PS mechanism or not.
@@ -4661,7 +4706,7 @@ tx_last_beacon
     The callback can sleep.
 
 ampdu_action
-    Perform a certain A-MPDU action
+    Perform a certain A-MPDU action.
     The RA/TID combination determines the destination and TID we want
     the ampdu action to be performed for. The action is defined through
     ieee80211_ampdu_mlme_action.
@@ -4669,16 +4714,23 @@ ampdu_action
     may neither send aggregates containing more subframes than \ ``buf_size``\ 
     nor send aggregates in a way that lost frames would exceed the
     buffer size. If just limiting the aggregate size, this would be
-
     possible with a buf_size of 8:
 
-    - TX: 1.....7
-    - RX:  2....7 (lost frame #1)
-    - TX:        8..1...
+    - ``TX: 1.....7``
+    - ``RX:  2....7`` (lost frame #1)
+    - ``TX:        8..1...``
+
     which is invalid since #1 was now re-transmitted well past the
     buffer size of 8. Correct ways to retransmit #1 would be:
-    - TX:       1 or 18 or 81
-    Even "189" would be wrong since 1 could be lost again.
+
+    - ``TX:        1   or``
+    - ``TX:        18  or``
+    - ``TX:        81``
+
+    Even ``189`` would be wrong since 1 could be lost again.
+
+    Returns a negative error code on failure.
+    The callback can sleep.
 
 get_survey
     Return per-channel survey information
@@ -4897,7 +4949,7 @@ channel_switch_beacon
 pre_channel_switch
     This is an optional callback that is called
     before a channel switch procedure is started (ie. when a STA
-    gets a CSA or an userspace initiated channel-switch), allowing
+    gets a CSA or a userspace initiated channel-switch), allowing
     the driver to prepare for the channel switch.
 
 post_channel_switch
@@ -4985,9 +5037,6 @@ Description
 This structure contains various callbacks that the driver may
 handle or, in some cases, must handle, for example to configure
 the hardware to a new channel or to transmit a frame.
-
-     Returns a negative error code on failure.
-     The callback can sleep.
 
 .. _`ieee80211_alloc_hw_nm`:
 
@@ -5731,6 +5780,34 @@ for a single hardware must be synchronized against each other. Calls
 to this function, \ :c:func:`ieee80211_tx_status_ni`\  and \ :c:func:`ieee80211_tx_status_irqsafe`\ 
 may not be mixed for a single hardware. Must not run concurrently with
 \ :c:func:`ieee80211_rx`\  or \ :c:func:`ieee80211_rx_ni`\ .
+
+.. _`ieee80211_tx_status_ext`:
+
+ieee80211_tx_status_ext
+=======================
+
+.. c:function:: void ieee80211_tx_status_ext(struct ieee80211_hw *hw, struct ieee80211_tx_status *status)
+
+    extended transmit status callback
+
+    :param struct ieee80211_hw \*hw:
+        the hardware the frame was transmitted by
+
+    :param struct ieee80211_tx_status \*status:
+        tx status information
+
+.. _`ieee80211_tx_status_ext.description`:
+
+Description
+-----------
+
+This function can be used as a replacement for ieee80211_tx_status
+in drivers that may want to provide extra information that does not
+fit into \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\ .
+
+Calls to this function for a single hardware must be synchronized
+against each other. Calls to this function, \ :c:func:`ieee80211_tx_status_ni`\ 
+and \ :c:func:`ieee80211_tx_status_irqsafe`\  may not be mixed for a single hardware.
 
 .. _`ieee80211_tx_status_noskb`:
 
@@ -7684,7 +7761,7 @@ key configuration paths (if it supports HW crypto).
 ieee80211_cqm_rssi_notify
 =========================
 
-.. c:function:: void ieee80211_cqm_rssi_notify(struct ieee80211_vif *vif, enum nl80211_cqm_rssi_threshold_event rssi_event, gfp_t gfp)
+.. c:function:: void ieee80211_cqm_rssi_notify(struct ieee80211_vif *vif, enum nl80211_cqm_rssi_threshold_event rssi_event, s32 rssi_level, gfp_t gfp)
 
     inform a configured connection quality monitoring rssi threshold triggered
 
@@ -7693,6 +7770,9 @@ ieee80211_cqm_rssi_notify
 
     :param enum nl80211_cqm_rssi_threshold_event rssi_event:
         the RSSI trigger event type
+
+    :param s32 rssi_level:
+        new RSSI level value or 0 if not available
 
     :param gfp_t gfp:
         context flags
@@ -7982,7 +8062,6 @@ Definition
         struct ieee80211_tx_rate reported_rate;
         bool rts;
         bool short_preamble;
-        u8 max_rate_idx;
         u32 rate_idx_mask;
         u8 *rate_idx_mcs_mask;
         bool bss;
@@ -8018,11 +8097,6 @@ rts
 short_preamble
     whether mac80211 will request short-preamble transmission
     if the selected rate supports it
-
-max_rate_idx
-    user-requested maximum (legacy) rate
-    (deprecated; this will be removed once drivers get updated to use
-    rate_idx_mask)
 
 rate_idx_mask
     user-requested (legacy) rate mask

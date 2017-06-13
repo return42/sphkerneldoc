@@ -19,7 +19,7 @@ Description
 -----------
 
 Reads the first sector from the device and returns \ ``0x42``\  bytes
-starting at offset \ ``0x1be``\ .
+             starting at offset \ ``0x1be``\ .
 
 .. _`scsi_bios_ptable.return`:
 
@@ -52,8 +52,8 @@ Description
 -----------
 
 Description : determine the BIOS mapping/geometry used for a drive in a
-SCSI-CAM system, storing the results in ip as required
-by the HDIO_GETGEO \ :c:func:`ioctl`\ .
+     SCSI-CAM system, storing the results in ip as required
+     by the HDIO_GETGEO \ :c:func:`ioctl`\ .
 
 Returns : -1 on failure, 0 on success.
 
@@ -86,8 +86,8 @@ scsi_partsize
 Description
 -----------
 
-determine the BIOS mapping/geometry used to create the partition
-table, storing the results in \*cyls, \*hds, and \*secs
+Determine the BIOS mapping/geometry used to create the partition
+table, storing the results in \ ``cyls``\ , \ ``hds``\ , and \ ``secs``\ 
 
 .. _`scsi_partsize.return`:
 

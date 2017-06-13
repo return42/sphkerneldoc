@@ -70,6 +70,7 @@ Definition
         int (*trysend)(struct rpmsg_endpoint *ept, void *data, int len);
         int (*trysendto)(struct rpmsg_endpoint *ept, void *data, int len, u32 dst);
         int (*trysend_offchannel)(struct rpmsg_endpoint *ept, u32 src, u32 dst,void *data, int len);
+        unsigned int (*poll)(struct rpmsg_endpoint *ept, struct file *filp,poll_table *wait);
     }
 
 .. _`rpmsg_endpoint_ops.members`:
@@ -98,6 +99,9 @@ trysendto
 trysend_offchannel
     see \ ``rpmsg_trysend_offchannel``\ (), optional
 
+poll
+    *undescribed*
+
 .. _`rpmsg_endpoint_ops.description`:
 
 Description
@@ -106,6 +110,26 @@ Description
 Indirection table for the operations that a rpmsg backend should implement.
 In addition to \ ``destroy_ept``\ , the backend must at least implement \ ``send``\  and
 \ ``trysend``\ , while the variants sending data off-channel are optional.
+
+.. _`rpmsg_chrdev_register_device`:
+
+rpmsg_chrdev_register_device
+============================
+
+.. c:function:: int rpmsg_chrdev_register_device(struct rpmsg_device *rpdev)
+
+    register chrdev device based on rpdev
+
+    :param struct rpmsg_device \*rpdev:
+        prepared rpdev to be used for creating endpoints
+
+.. _`rpmsg_chrdev_register_device.description`:
+
+Description
+-----------
+
+This function wraps \ :c:func:`rpmsg_register_device`\  preparing the rpdev for use as
+basis for the rpmsg chrdev.
 
 .. This file was automatic generated / don't edit.
 

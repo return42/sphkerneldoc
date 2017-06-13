@@ -1,6 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/slab_common.c
 
+.. _`slab_deactivate_memcg_cache_rcu_sched`:
+
+slab_deactivate_memcg_cache_rcu_sched
+=====================================
+
+.. c:function:: void slab_deactivate_memcg_cache_rcu_sched(struct kmem_cache *s, void (*deact_fn)(struct kmem_cache *))
+
+    schedule deactivation after a sched RCU grace period
+
+    :param struct kmem_cache \*s:
+        target kmem_cache
+
+    :param void (\*deact_fn)(struct kmem_cache \*):
+        deactivation function to call
+
+.. _`slab_deactivate_memcg_cache_rcu_sched.description`:
+
+Description
+-----------
+
+Schedule \ ``deact_fn``\  to be invoked with online cpus, mems and slab_mutex
+held after a sched RCU grace period.  The slab is guaranteed to stay
+alive until \ ``deact_fn``\  is finished.  This is to be used from
+\__kmemcg_cache_deactivate().
+
 .. _`kmem_cache_shrink`:
 
 kmem_cache_shrink

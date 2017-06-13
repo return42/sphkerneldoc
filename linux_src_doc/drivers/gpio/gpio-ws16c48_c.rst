@@ -21,11 +21,10 @@ Definition
         struct gpio_chip chip;
         unsigned char io_state[6];
         unsigned char out_state[6];
-        spinlock_t lock;
+        raw_spinlock_t lock;
         unsigned long irq_mask;
         unsigned long flow_mask;
         unsigned base;
-        unsigned irq;
     }
 
 .. _`ws16c48_gpio.members`:
@@ -53,9 +52,6 @@ flow_mask
 
 base
     base port address of the GPIO device
-
-irq
-    Interrupt line number
 
 .. This file was automatic generated / don't edit.
 

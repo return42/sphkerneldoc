@@ -1,0 +1,45 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/vl6180.c
+
+.. _`vl6180_chan_regs`:
+
+struct vl6180_chan_regs
+=======================
+
+.. c:type:: struct vl6180_chan_regs
+
+    Registers for accessing channels
+
+.. _`vl6180_chan_regs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vl6180_chan_regs {
+        u8 drdy_mask;
+        u16 start_reg;
+        u16 value_reg;
+        bool word;
+    }
+
+.. _`vl6180_chan_regs.members`:
+
+Members
+-------
+
+drdy_mask
+    Data ready bit in status register
+
+start_reg
+    Conversion start register
+
+value_reg
+    Result value register
+
+word
+    Register word length
+
+.. This file was automatic generated / don't edit.
+

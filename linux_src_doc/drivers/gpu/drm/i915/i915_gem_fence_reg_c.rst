@@ -64,6 +64,29 @@ Return
 
 0 on success, negative error code on failure.
 
+.. _`i915_gem_revoke_fences`:
+
+i915_gem_revoke_fences
+======================
+
+.. c:function:: void i915_gem_revoke_fences(struct drm_i915_private *dev_priv)
+
+    revoke fence state
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
+
+.. _`i915_gem_revoke_fences.description`:
+
+Description
+-----------
+
+Removes all GTT mmappings via the fence registers. This forces any user
+of the fence to reacquire that fence before continuing with their access.
+One use is during GPU reset where the fence register is lost and we need to
+revoke concurrent userspace access via GTT mmaps until the hardware has been
+reset and the fence registers have been restored.
+
 .. _`i915_gem_restore_fences`:
 
 i915_gem_restore_fences

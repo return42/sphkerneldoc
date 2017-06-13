@@ -6,15 +6,12 @@
 omap_irq_enable_vblank
 ======================
 
-.. c:function:: int omap_irq_enable_vblank(struct drm_device *dev, unsigned int pipe)
+.. c:function:: int omap_irq_enable_vblank(struct drm_crtc *crtc)
 
     enable vblank interrupt events
 
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        which irq to enable
+    :param struct drm_crtc \*crtc:
+        *undescribed*
 
 .. _`omap_irq_enable_vblank.description`:
 
@@ -34,15 +31,12 @@ interrupt cannot be enabled.
 omap_irq_disable_vblank
 =======================
 
-.. c:function:: void omap_irq_disable_vblank(struct drm_device *dev, unsigned int pipe)
+.. c:function:: void omap_irq_disable_vblank(struct drm_crtc *crtc)
 
     disable vblank interrupt events
 
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        which irq to enable
+    :param struct drm_crtc \*crtc:
+        *undescribed*
 
 .. _`omap_irq_disable_vblank.description`:
 

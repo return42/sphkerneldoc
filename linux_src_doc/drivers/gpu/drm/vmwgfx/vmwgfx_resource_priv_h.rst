@@ -106,5 +106,85 @@ commit_notify
     callback to notify that a define or remove command
     has been committed to the device.
 
+.. _`vmw_simple_resource_func`:
+
+struct vmw_simple_resource_func
+===============================
+
+.. c:type:: struct vmw_simple_resource_func
+
+    members and functions common for the simple resource helpers.
+
+.. _`vmw_simple_resource_func.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vmw_simple_resource_func {
+        const struct vmw_res_func res_func;
+        int ttm_res_type;
+        size_t size;
+        int (*init)(struct vmw_resource *res, void *data);
+        void (*hw_destroy)(struct vmw_resource *res);
+        void (*set_arg_handle)(void *data, u32 handle);
+    }
+
+.. _`vmw_simple_resource_func.members`:
+
+Members
+-------
+
+res_func
+    struct vmw_res_func as described above.
+
+ttm_res_type
+    TTM resource type used for handle recognition.
+
+size
+    Size of the simple resource information struct.
+
+init
+    Initialize the simple resource information.
+
+hw_destroy
+    A resource hw_destroy function.
+
+set_arg_handle
+    Set the handle output argument of the ioctl create struct.
+
+.. _`vmw_simple_resource`:
+
+struct vmw_simple_resource
+==========================
+
+.. c:type:: struct vmw_simple_resource
+
+    Kernel only side simple resource
+
+.. _`vmw_simple_resource.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct vmw_simple_resource {
+        struct vmw_resource res;
+        const struct vmw_simple_resource_func *func;
+    }
+
+.. _`vmw_simple_resource.members`:
+
+Members
+-------
+
+res
+    The resource we derive from.
+
+func
+    The method and member virtual table.
+
 .. This file was automatic generated / don't edit.
 

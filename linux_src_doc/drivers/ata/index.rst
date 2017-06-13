@@ -23,7 +23,6 @@ ata
     pata_ali_c
     pata_amd_c
     pata_artop_c
-    pata_at91_c
     pata_atiixp_c
     pata_bf54x_c
     pata_cmd640_c

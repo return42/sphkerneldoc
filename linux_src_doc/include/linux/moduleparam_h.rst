@@ -355,5 +355,73 @@ Description
 This exposes a different name than the actual variable name.  See
 \ :c:func:`module_param_named`\  for why this might be necessary.
 
+.. _`module_param_hw_named`:
+
+module_param_hw_named
+=====================
+
+.. c:function::  module_param_hw_named( name,  value,  type,  hwtype,  perm)
+
+    A parameter representing a hw parameters
+
+    :param  name:
+        a valid C identifier which is the parameter name.
+
+    :param  value:
+        the actual lvalue to alter.
+
+    :param  type:
+        the type of the parameter
+
+    :param  hwtype:
+        what the value represents (enum hwparam_type)
+
+    :param  perm:
+        visibility in sysfs.
+
+.. _`module_param_hw_named.description`:
+
+Description
+-----------
+
+Usually it's a good idea to have variable names and user-exposed names the
+same, but that's harder if the variable must be non-static or is inside a
+structure.  This allows exposure under a different name.
+
+.. _`module_param_hw_array`:
+
+module_param_hw_array
+=====================
+
+.. c:function::  module_param_hw_array( name,  type,  hwtype,  nump,  perm)
+
+    A parameter representing an array of hw parameters
+
+    :param  name:
+        the name of the array variable
+
+    :param  type:
+        the type, as per \ :c:func:`module_param`\ 
+
+    :param  hwtype:
+        what the value represents (enum hwparam_type)
+
+    :param  nump:
+        optional pointer filled in with the number written
+
+    :param  perm:
+        visibility in sysfs
+
+.. _`module_param_hw_array.description`:
+
+Description
+-----------
+
+Input and output are as comma-separated values.  Commas inside values
+don't work properly (eg. an array of charp).
+
+ARRAY_SIZE(@name) is used to determine the number of elements in the
+array, so the definition must be visible.
+
 .. This file was automatic generated / don't edit.
 

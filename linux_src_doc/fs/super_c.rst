@@ -18,7 +18,7 @@ destroy_super
 Description
 -----------
 
-Frees a superblock.
+     Frees a superblock.
 
 .. _`alloc_super`:
 
@@ -43,8 +43,8 @@ alloc_super
 Description
 -----------
 
-Allocates and initializes a new \ :c:type:`struct super_block <super_block>`\ .  \ :c:func:`alloc_super`\ 
-returns a pointer new superblock or \ ``NULL``\  if allocation had failed.
+     Allocates and initializes a new \ :c:type:`struct super_block <super_block>`\ .  \ :c:func:`alloc_super`\ 
+     returns a pointer new superblock or \ ``NULL``\  if allocation had failed.
 
 .. _`put_super`:
 
@@ -63,8 +63,8 @@ put_super
 Description
 -----------
 
-Drops a temporary reference, frees superblock if there's no
-references left.
+     Drops a temporary reference, frees superblock if there's no
+     references left.
 
 .. _`deactivate_locked_super`:
 
@@ -83,12 +83,12 @@ deactivate_locked_super
 Description
 -----------
 
-Drops an active reference to superblock, converting it into a temporary
-one if there is no other active references left.  In that case we
-tell fs driver to shut it down and drop the temporary reference we
-had just acquired.
+     Drops an active reference to superblock, converting it into a temporary
+     one if there is no other active references left.  In that case we
+     tell fs driver to shut it down and drop the temporary reference we
+     had just acquired.
 
-Caller holds exclusive lock on superblock; that lock is released.
+     Caller holds exclusive lock on superblock; that lock is released.
 
 .. _`deactivate_super`:
 
@@ -107,9 +107,9 @@ deactivate_super
 Description
 -----------
 
-Variant of \ :c:func:`deactivate_locked_super`\ , except that superblock is \*not\*
-locked by caller.  If we are going to drop the final active reference,
-lock will be acquired prior to that.
+     Variant of \ :c:func:`deactivate_locked_super`\ , except that superblock is *not*
+     locked by caller.  If we are going to drop the final active reference,
+     lock will be acquired prior to that.
 
 .. _`grab_super`:
 
@@ -128,14 +128,14 @@ grab_super
 Description
 -----------
 
-Tries to acquire an active reference.  \ :c:func:`grab_super`\  is used when we
-had just found a superblock in super_blocks or fs_type->fs_supers
-and want to turn it into a full-blown active reference.  \ :c:func:`grab_super`\ 
-is called with sb_lock held and drops it.  Returns 1 in case of
-success, 0 if we had failed (superblock contents was already dead or
-dying when \ :c:func:`grab_super`\  had been called).  Note that this is only
-called for superblocks not in rundown mode (== ones still on ->fs_supers
-of their type), so increment of ->s_count is OK here.
+     Tries to acquire an active reference.  \ :c:func:`grab_super`\  is used when we
+     had just found a superblock in super_blocks or fs_type->fs_supers
+     and want to turn it into a full-blown active reference.  \ :c:func:`grab_super`\ 
+     is called with sb_lock held and drops it.  Returns 1 in case of
+     success, 0 if we had failed (superblock contents was already dead or
+     dying when \ :c:func:`grab_super`\  had been called).  Note that this is only
+     called for superblocks not in rundown mode (== ones still on ->fs_supers
+     of their type), so increment of ->s_count is OK here.
 
 .. _`generic_shutdown_super`:
 
@@ -154,15 +154,15 @@ generic_shutdown_super
 Description
 -----------
 
-generic_shutdown_super() does all fs-independent work on superblock
-shutdown.  Typical ->kill_sb() should pick all fs-specific objects
-that need destruction out of superblock, call \ :c:func:`generic_shutdown_super`\ 
-and release aforementioned objects.  Note: dentries and inodes \_are\_
-taken care of and do not need specific handling.
+     \ :c:func:`generic_shutdown_super`\  does all fs-independent work on superblock
+     shutdown.  Typical ->kill_sb() should pick all fs-specific objects
+     that need destruction out of superblock, call \ :c:func:`generic_shutdown_super`\ 
+     and release aforementioned objects.  Note: dentries and inodes _are_
+     taken care of and do not need specific handling.
 
-Upon calling this function, the filesystem may no longer alter or
-rearrange the set of dentries belonging to this super_block, nor may it
-change the attachments of dentries to inodes.
+     Upon calling this function, the filesystem may no longer alter or
+     rearrange the set of dentries belonging to this super_block, nor may it
+     change the attachments of dentries to inodes.
 
 .. _`sget_userns`:
 
@@ -235,8 +235,8 @@ iterate_supers
 Description
 -----------
 
-Scans the superblock list and calls given function, passing it
-locked superblock and given argument.
+     Scans the superblock list and calls given function, passing it
+     locked superblock and given argument.
 
 .. _`iterate_supers_type`:
 
@@ -261,8 +261,8 @@ iterate_supers_type
 Description
 -----------
 
-Scans the superblock list and calls given function, passing it
-locked superblock and given argument.
+     Scans the superblock list and calls given function, passing it
+     locked superblock and given argument.
 
 .. _`get_super`:
 
@@ -281,8 +281,8 @@ get_super
 Description
 -----------
 
-Scans the superblock list and finds the superblock of the file system
-mounted on the device given. \ ``NULL``\  is returned if no match is found.
+     Scans the superblock list and finds the superblock of the file system
+     mounted on the device given. \ ``NULL``\  is returned if no match is found.
 
 .. _`get_super_thawed`:
 
@@ -301,10 +301,10 @@ get_super_thawed
 Description
 -----------
 
-Scans the superblock list and finds the superblock of the file system
-mounted on the device. The superblock is returned once it is thawed
-(or immediately if it was not frozen). \ ``NULL``\  is returned if no match
-is found.
+     Scans the superblock list and finds the superblock of the file system
+     mounted on the device. The superblock is returned once it is thawed
+     (or immediately if it was not frozen). \ ``NULL``\  is returned if no match
+     is found.
 
 .. _`get_super_exclusive_thawed`:
 
@@ -323,10 +323,10 @@ get_super_exclusive_thawed
 Description
 -----------
 
-Scans the superblock list and finds the superblock of the file system
-mounted on the device. The superblock is returned once it is thawed
-(or immediately if it was not frozen) and s_umount semaphore is held
-in exclusive mode. \ ``NULL``\  is returned if no match is found.
+     Scans the superblock list and finds the superblock of the file system
+     mounted on the device. The superblock is returned once it is thawed
+     (or immediately if it was not frozen) and s_umount semaphore is held
+     in exclusive mode. \ ``NULL``\  is returned if no match is found.
 
 .. _`get_active_super`:
 
@@ -375,7 +375,7 @@ do_remount_sb
 Description
 -----------
 
-Alters the mount options of a mounted file system.
+     Alters the mount options of a mounted file system.
 
 .. _`sb_wait_write`:
 
@@ -423,40 +423,20 @@ freeze_fs.  Subsequent calls to this without first thawing the fs will return
 
 During this function, sb->s_writers.frozen goes through these values:
 
-.. _`freeze_super.sb_unfrozen`:
+SB_UNFROZEN: File system is normal, all writes progress as usual.
 
-SB_UNFROZEN
------------
-
-File system is normal, all writes progress as usual.
-
-.. _`freeze_super.sb_freeze_write`:
-
-SB_FREEZE_WRITE
----------------
-
-The file system is in the process of being frozen.  New
+SB_FREEZE_WRITE: The file system is in the process of being frozen.  New
 writes should be blocked, though page faults are still allowed. We wait for
 all writes to complete and then proceed to the next stage.
 
-.. _`freeze_super.sb_freeze_pagefault`:
-
-SB_FREEZE_PAGEFAULT
--------------------
-
-Freezing continues. Now also page faults are blocked
+SB_FREEZE_PAGEFAULT: Freezing continues. Now also page faults are blocked
 but internal fs threads can still modify the filesystem (although they
 should not dirty new pages or inodes), writeback can run etc. After waiting
 for all running page faults we sync the filesystem which will clean all
 dirty pages and inodes (no new dirty pages or inodes can be created when
 sync is running).
 
-.. _`freeze_super.sb_freeze_fs`:
-
-SB_FREEZE_FS
-------------
-
-The file system is frozen. Now all internal sources of fs
+SB_FREEZE_FS: The file system is frozen. Now all internal sources of fs
 modification are blocked (e.g. XFS preallocation truncation on inode
 reclaim). This is usually implemented by blocking new transactions for
 filesystems that have them and need this additional guard. After all

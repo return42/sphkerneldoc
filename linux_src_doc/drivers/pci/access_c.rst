@@ -114,7 +114,7 @@ Description
 
 When access is locked, any userspace reads or writes to config
 space and concurrent lock requests will sleep until access is
-allowed via pci_cfg_access_unlocked again.
+allowed via \ :c:func:`pci_cfg_access_unlock`\  again.
 
 .. _`pci_cfg_access_trylock`:
 

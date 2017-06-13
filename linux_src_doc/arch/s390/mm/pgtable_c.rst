@@ -91,5 +91,92 @@ Description
 
 Returns < 0 in case of error, otherwise the cc to be reported to the guest.
 
+.. _`pgste_perform_essa`:
+
+pgste_perform_essa
+==================
+
+.. c:function:: int pgste_perform_essa(struct mm_struct *mm, unsigned long hva, int orc, unsigned long *oldpte, unsigned long *oldpgste)
+
+    perform ESSA actions on the PGSTE.
+
+    :param struct mm_struct \*mm:
+        the memory context. It must have PGSTEs, no check is performed here!
+
+    :param unsigned long hva:
+        the host virtual address of the page whose PGSTE is to be processed
+
+    :param int orc:
+        the specific action to perform, see the ESSA_SET\_\* macros.
+
+    :param unsigned long \*oldpte:
+        the PTE will be saved there if the pointer is not NULL.
+
+    :param unsigned long \*oldpgste:
+        the old PGSTE will be saved there if the pointer is not NULL.
+
+.. _`pgste_perform_essa.return`:
+
+Return
+------
+
+1 if the page is to be added to the CBRL, otherwise 0,
+or < 0 in case of error. -EINVAL is returned for invalid values
+of orc, -EFAULT for invalid addresses.
+
+.. _`set_pgste_bits`:
+
+set_pgste_bits
+==============
+
+.. c:function:: int set_pgste_bits(struct mm_struct *mm, unsigned long hva, unsigned long bits, unsigned long value)
+
+    set specific PGSTE bits.
+
+    :param struct mm_struct \*mm:
+        the memory context. It must have PGSTEs, no check is performed here!
+
+    :param unsigned long hva:
+        the host virtual address of the page whose PGSTE is to be processed
+
+    :param unsigned long bits:
+        a bitmask representing the bits that will be touched
+
+    :param unsigned long value:
+        the values of the bits to be written. Only the bits in the mask
+        will be written.
+
+.. _`set_pgste_bits.return`:
+
+Return
+------
+
+0 on success, < 0 in case of error.
+
+.. _`get_pgste`:
+
+get_pgste
+=========
+
+.. c:function:: int get_pgste(struct mm_struct *mm, unsigned long hva, unsigned long *pgstep)
+
+    get the current PGSTE for the given address.
+
+    :param struct mm_struct \*mm:
+        the memory context. It must have PGSTEs, no check is performed here!
+
+    :param unsigned long hva:
+        the host virtual address of the page whose PGSTE is to be processed
+
+    :param unsigned long \*pgstep:
+        will be written with the current PGSTE for the given address.
+
+.. _`get_pgste.return`:
+
+Return
+------
+
+0 on success, < 0 in case of error.
+
 .. This file was automatic generated / don't edit.
 

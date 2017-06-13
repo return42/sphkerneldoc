@@ -126,12 +126,12 @@ Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits.
 intel_psr_init
 ==============
 
-.. c:function:: void intel_psr_init(struct drm_device *dev)
+.. c:function:: void intel_psr_init(struct drm_i915_private *dev_priv)
 
     Init basic PSR work and mutex.
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`intel_psr_init.description`:
 

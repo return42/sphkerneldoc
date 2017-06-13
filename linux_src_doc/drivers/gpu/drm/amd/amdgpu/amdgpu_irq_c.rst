@@ -192,12 +192,15 @@ Tears down the work irq handlers, vblank handlers, MSIs, etc. (all asics).
 amdgpu_irq_add_id
 =================
 
-.. c:function:: int amdgpu_irq_add_id(struct amdgpu_device *adev, unsigned src_id, struct amdgpu_irq_src *source)
+.. c:function:: int amdgpu_irq_add_id(struct amdgpu_device *adev, unsigned client_id, unsigned src_id, struct amdgpu_irq_src *source)
 
     register irq source
 
     :param struct amdgpu_device \*adev:
         amdgpu device pointer
+
+    :param unsigned client_id:
+        *undescribed*
 
     :param unsigned src_id:
         source id for this source

@@ -25,25 +25,31 @@ Calculate the timeout in jiffies from an absolute timeout in ns.
 amdgpu_gem_va_update_vm
 =======================
 
-.. c:function:: void amdgpu_gem_va_update_vm(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, uint32_t operation)
+.. c:function:: void amdgpu_gem_va_update_vm(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_bo_va *bo_va, struct list_head *list, uint32_t operation)
 
     update the bo_va in its VM
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
+    :param struct amdgpu_vm \*vm:
+        vm to update
+
     :param struct amdgpu_bo_va \*bo_va:
         bo_va to update
 
+    :param struct list_head \*list:
+        validation list
+
     :param uint32_t operation:
-        *undescribed*
+        map, unmap or clear
 
 .. _`amdgpu_gem_va_update_vm.description`:
 
 Description
 -----------
 
-Update the bo_va directly after setting it's address. Errors are not
+Update the bo_va directly after setting its address. Errors are not
 vital here, so they are not reported back to userspace.
 
 .. This file was automatic generated / don't edit.

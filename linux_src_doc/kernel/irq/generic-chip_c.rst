@@ -222,10 +222,10 @@ __irq_alloc_domain_generic_chips
         Default flow handler associated with these chips
 
     :param unsigned int clr:
-        IRQ\_\* bits to clear in the mapping function
+        IRQ_* bits to clear in the mapping function
 
     :param unsigned int set:
-        IRQ\_\* bits to set in the mapping function
+        IRQ_* bits to set in the mapping function
 
     :param enum irq_gc_flags gcflags:
         Generic chip specific setup flags
@@ -264,10 +264,10 @@ irq_setup_generic_chip
         Flags for initialization
 
     :param unsigned int clr:
-        IRQ\_\* bits to clear
+        IRQ_* bits to clear
 
     :param unsigned int set:
-        IRQ\_\* bits to set
+        IRQ_* bits to set
 
 .. _`irq_setup_generic_chip.description`:
 
@@ -316,10 +316,10 @@ irq_remove_generic_chip
         Bitmask holding the irqs to initialize relative to gc->irq_base
 
     :param unsigned int clr:
-        IRQ\_\* bits to clear
+        IRQ_* bits to clear
 
     :param unsigned int set:
-        IRQ\_\* bits to set
+        IRQ_* bits to set
 
 .. _`irq_remove_generic_chip.description`:
 

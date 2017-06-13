@@ -16,4 +16,3 @@ ishtp
     hbm_c
     hbm_h
     init_c
-    ishtp-dev_h

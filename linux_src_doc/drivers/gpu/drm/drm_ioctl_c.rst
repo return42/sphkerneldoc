@@ -62,6 +62,36 @@ use this function.
 
 Always fails with a return value of -EINVAL.
 
+.. _`drm_ioctl_permit`:
+
+drm_ioctl_permit
+================
+
+.. c:function:: int drm_ioctl_permit(u32 flags, struct drm_file *file_priv)
+
+    Check ioctl permissions against caller
+
+    :param u32 flags:
+        ioctl permission flags.
+
+    :param struct drm_file \*file_priv:
+        Pointer to struct drm_file identifying the caller.
+
+.. _`drm_ioctl_permit.description`:
+
+Description
+-----------
+
+Checks whether the caller is allowed to run an ioctl with the
+indicated permissions.
+
+.. _`drm_ioctl_permit.return`:
+
+Return
+------
+
+Zero if allowed, -EACCES otherwise.
+
 .. _`drm_ioctl`:
 
 drm_ioctl
@@ -85,8 +115,9 @@ drm_ioctl
 Description
 -----------
 
-Looks up the ioctl function in the ::ioctls table, checking for root
-previleges if so required, and dispatches to the respective function.
+Looks up the ioctl function in the DRM core and the driver dispatch table,
+stored in \ :c:type:`drm_driver.ioctls <drm_driver>`\ . It checks for necessary permission by calling
+\ :c:func:`drm_ioctl_permit`\ , and dispatches to the respective function.
 
 .. _`drm_ioctl.return`:
 

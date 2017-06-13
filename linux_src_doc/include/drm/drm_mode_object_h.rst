@@ -59,10 +59,10 @@ properties like \ ``id``\  and \ ``type``\  it provides two services:
   \ :c:func:`drm_object_attach_property`\  before the object is visible to userspace.
 
 - For objects with dynamic lifetimes (as indicated by a non-NULL \ ``free_cb``\ ) it
-  provides reference counting through \ :c:func:`drm_mode_object_reference`\  and
-  \ :c:func:`drm_mode_object_unreference`\ . This is used by \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ ,
-  \ :c:type:`struct drm_connector <drm_connector>`\  and \ :c:type:`struct drm_property_blob <drm_property_blob>`\ . These objects provide specialized
-  reference counting wrappers.
+  provides reference counting through \ :c:func:`drm_mode_object_get`\  and
+  \ :c:func:`drm_mode_object_put`\ . This is used by \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ , \ :c:type:`struct drm_connector <drm_connector>`\ 
+  and \ :c:type:`struct drm_property_blob <drm_property_blob>`\ . These objects provide specialized reference
+  counting wrappers.
 
 .. _`drm_object_properties`:
 
@@ -107,11 +107,56 @@ values
 
     Note that atomic drivers do not store mutable properties in this
     array, but only the decoded values in the corresponding state
-    structure. The decoding is done using the ->atomic_get_property and
-    ->atomic_set_property hooks of the corresponding object. Hence atomic
-    drivers should not use \ :c:func:`drm_object_property_set_value`\  and
-    \ :c:func:`drm_object_property_get_value`\  on mutable objects, i.e. those
+    structure. The decoding is done using the \ :c:type:`drm_crtc.atomic_get_property <drm_crtc>`\  and
+    \ :c:type:`drm_crtc.atomic_set_property <drm_crtc>`\  hooks for \ :c:type:`struct drm_crtc <drm_crtc>`\ . For
+    \ :c:type:`struct drm_plane <drm_plane>`\  the hooks are \ :c:type:`drm_plane_funcs.atomic_get_property <drm_plane_funcs>`\  and
+    \ :c:type:`drm_plane_funcs.atomic_set_property <drm_plane_funcs>`\ . And for \ :c:type:`struct drm_connector <drm_connector>`\ 
+    the hooks are \ :c:type:`drm_connector_funcs.atomic_get_property <drm_connector_funcs>`\  and
+    \ :c:type:`drm_connector_funcs.atomic_set_property <drm_connector_funcs>`\  .
+
+    Hence atomic drivers should not use \ :c:func:`drm_object_property_set_value`\ 
+    and \ :c:func:`drm_object_property_get_value`\  on mutable objects, i.e. those
     without the DRM_MODE_PROP_IMMUTABLE flag set.
+
+.. _`drm_mode_object_reference`:
+
+drm_mode_object_reference
+=========================
+
+.. c:function:: void drm_mode_object_reference(struct drm_mode_object *obj)
+
+    acquire a mode object reference
+
+    :param struct drm_mode_object \*obj:
+        DRM mode object
+
+.. _`drm_mode_object_reference.description`:
+
+Description
+-----------
+
+This is a compatibility alias for \ :c:func:`drm_mode_object_get`\  and should not be
+used by new code.
+
+.. _`drm_mode_object_unreference`:
+
+drm_mode_object_unreference
+===========================
+
+.. c:function:: void drm_mode_object_unreference(struct drm_mode_object *obj)
+
+    release a mode object reference
+
+    :param struct drm_mode_object \*obj:
+        DRM mode object
+
+.. _`drm_mode_object_unreference.description`:
+
+Description
+-----------
+
+This is a compatibility alias for \ :c:func:`drm_mode_object_put`\  and should not be
+used by new code.
 
 .. This file was automatic generated / don't edit.
 

@@ -53,6 +53,46 @@ Return
 
 0 on success, an error if the new governor's \ :c:func:`bind_to_tz`\  failed.
 
+.. _`thermal_emergency_poweroff_func`:
+
+thermal_emergency_poweroff_func
+===============================
+
+.. c:function:: void thermal_emergency_poweroff_func(struct work_struct *work)
+
+    emergency poweroff work after a known delay
+
+    :param struct work_struct \*work:
+        work_struct associated with the emergency poweroff function
+
+.. _`thermal_emergency_poweroff_func.description`:
+
+Description
+-----------
+
+This function is called in very critical situations to force
+a kernel poweroff after a configurable timeout value.
+
+.. _`thermal_emergency_poweroff`:
+
+thermal_emergency_poweroff
+==========================
+
+.. c:function:: void thermal_emergency_poweroff( void)
+
+    Trigger an emergency system poweroff
+
+    :param  void:
+        no arguments
+
+.. _`thermal_emergency_poweroff.description`:
+
+Description
+-----------
+
+This may be called from any critical situation to trigger a system shutdown
+after a known period of time. By default this is not scheduled.
+
 .. _`thermal_notify_framework`:
 
 thermal_notify_framework

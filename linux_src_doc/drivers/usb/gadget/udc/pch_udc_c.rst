@@ -249,8 +249,8 @@ Definition
         struct pci_dev *pdev;
         struct pch_udc_ep ep[PCH_UDC_EP_NUM];
         spinlock_t lock;
-        struct pci_pool *data_requests;
-        struct pci_pool *stp_requests;
+        struct dma_pool *data_requests;
+        struct dma_pool *stp_requests;
         dma_addr_t dma_addr;
         struct usb_ctrlrequest setup_data;
         void __iomem *base_addr;
@@ -1310,7 +1310,7 @@ Return codes
 ------------
 
 0:              success,
--ENOMEM:        pci_pool_alloc invocation fails
+-ENOMEM:        dma_pool_alloc invocation fails
 
 .. _`prepare_dma`:
 

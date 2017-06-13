@@ -133,14 +133,14 @@ Return
 set_gamma
 =========
 
-.. c:function:: int set_gamma(struct fbtft_par *par, unsigned long *curves)
+.. c:function:: int set_gamma(struct fbtft_par *par, u32 *curves)
 
     set gamma curves
 
     :param struct fbtft_par \*par:
         FBTFT parameter object
 
-    :param unsigned long \*curves:
+    :param u32 \*curves:
         gamma curves
 
 .. _`set_gamma.description`:

@@ -159,6 +159,7 @@ Definition
         struct nlattr **attrs;
         possible_net_t _net;
         void *user_ptr[2];
+        struct netlink_ext_ack *extack;
     }
 
 .. _`genl_info.members`:
@@ -189,6 +190,9 @@ _net
 
 user_ptr
     user pointers
+
+extack
+    extended ACK report struct
 
 .. _`genl_ops`:
 
@@ -273,7 +277,7 @@ Returns pointer to netlink header.
 genlmsg_parse
 =============
 
-.. c:function:: int genlmsg_parse(const struct nlmsghdr *nlh, const struct genl_family *family, struct nlattr  *tb[], int maxtype, const struct nla_policy *policy)
+.. c:function:: int genlmsg_parse(const struct nlmsghdr *nlh, const struct genl_family *family, struct nlattr  *tb[], int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     parse attributes of a genetlink message
 
@@ -291,6 +295,9 @@ genlmsg_parse
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`genl_dump_check_consistent`:
 

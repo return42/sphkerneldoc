@@ -12,4 +12,3 @@ lib
     insn_c
     msr_c
     usercopy_32_c
-    usercopy_c

@@ -30,7 +30,7 @@ Definition
         struct irq_domain *irq_domain;
         int *irqs;
         unsigned *pm_wakeup_sources;
-        unsigned *pm_suspend_backup;
+        struct *pm_suspend_backup;
         struct device *dev;
         struct device_node *node;
     }

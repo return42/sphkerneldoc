@@ -28,7 +28,8 @@ Definition
         EFX_FILTER_MATCH_INNER_VID,
         EFX_FILTER_MATCH_OUTER_VID,
         EFX_FILTER_MATCH_IP_PROTO,
-        EFX_FILTER_MATCH_LOC_MAC_IG
+        EFX_FILTER_MATCH_LOC_MAC_IG,
+        EFX_FILTER_MATCH_ENCAP_TYPE
     };
 
 .. _`efx_filter_match_flags.constants`:
@@ -68,6 +69,9 @@ EFX_FILTER_MATCH_IP_PROTO
 
 EFX_FILTER_MATCH_LOC_MAC_IG
     Match by local MAC address I/G bit.
+
+EFX_FILTER_MATCH_ENCAP_TYPE
+    Match by encapsulation type.
     Used for RX default unicast and multicast/broadcast filters.
 
 .. _`efx_filter_match_flags.description`:
@@ -216,6 +220,7 @@ Definition
         __be32 rem_host[4];
         __be16 loc_port;
         __be16 rem_port;
+        u32 encap_type:4;
     }
 
 .. _`efx_filter_spec.members`:
@@ -270,6 +275,10 @@ loc_port
 
 rem_port
     Remote TCP/UDP port to match, if \ ``EFX_FILTER_MATCH_REM_PORT``\  is set
+
+encap_type
+    Encapsulation type to match (from \ :c:type:`enum efx_encap_type <efx_encap_type>`\ ), if
+    \ ``EFX_FILTER_MATCH_ENCAP_TYPE``\  is set
 
 .. _`efx_filter_spec.description`:
 

@@ -42,33 +42,6 @@ Description
 Releases any resources related to command parsing that may have been
 initialized for the specified engine.
 
-.. _`intel_engine_needs_cmd_parser`:
-
-intel_engine_needs_cmd_parser
-=============================
-
-.. c:function:: bool intel_engine_needs_cmd_parser(struct intel_engine_cs *engine)
-
-    should a given engine use software command parsing?
-
-    :param struct intel_engine_cs \*engine:
-        the engine in question
-
-.. _`intel_engine_needs_cmd_parser.description`:
-
-Description
------------
-
-Only certain platforms require software batch buffer command parsing, and
-only when enabled via module parameter.
-
-.. _`intel_engine_needs_cmd_parser.return`:
-
-Return
-------
-
-true if the engine requires software command parsing
-
 .. _`intel_engine_cmd_parser`:
 
 intel_engine_cmd_parser

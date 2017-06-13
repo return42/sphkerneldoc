@@ -1,25 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/hid/intel-ish-hid/ipc/pci-ish.c
 
-.. _`ish_event_tracer`:
+.. _`__printf`:
 
-ish_event_tracer
-================
+__printf
+========
 
-.. c:function:: void ish_event_tracer(struct ishtp_device *dev, char *format,  ...)
+.. c:function::  __printf( 2,  3)
 
     Callback function to dump trace messages
 
-    :param struct ishtp_device \*dev:
-        ishtp device
+    :param  2:
+        *undescribed*
 
-    :param char \*format:
-        printf style format
+    :param  3:
+        *undescribed*
 
-    :param ... :
-        variable arguments
-
-.. _`ish_event_tracer.description`:
+.. _`__printf.description`:
 
 Description
 -----------
@@ -120,7 +117,7 @@ Description
 -----------
 
 The resume work function to complete resume function asynchronously.
-There are two types of platforms, one where ISH is not powered off,
+There are two resume paths, one where ISH is not powered off,
 in that case a simple resume message is enough, others we need
 a reset sequence.
 

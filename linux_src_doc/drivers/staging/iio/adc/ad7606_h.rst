@@ -32,6 +32,7 @@ channels
 
 num_channels
     number of channels
+    \ ``lock``\                 protect sensor state
 
 .. _`ad7606_state`:
 
@@ -40,7 +41,7 @@ struct ad7606_state
 
 .. c:type:: struct ad7606_state
 
-    driver instance specific data
+    driver instance specific data \ ``lock``\                 protect sensor state
 
 .. _`ad7606_state.definition`:
 
@@ -60,6 +61,7 @@ Definition
         unsigned int oversampling;
         bool done;
         void __iomem *base_address;
+        struct mutex lock;
         struct gpio_desc *gpio_convst;
         struct gpio_desc *gpio_reset;
         struct gpio_desc *gpio_range;
@@ -102,6 +104,9 @@ done
     *undescribed*
 
 base_address
+    *undescribed*
+
+lock
     *undescribed*
 
 gpio_convst

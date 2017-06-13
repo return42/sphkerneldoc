@@ -27,4 +27,5 @@ dvb-frontends
     stb6000_h
     tda10071_h
     tda826x_h
+    zd1301_demod_h
     zl10036_c

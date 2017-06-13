@@ -8,4 +8,3 @@ lightnvm
     :maxdepth: 1
 
     core_c
-    gennvm_c

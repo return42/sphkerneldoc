@@ -34,5 +34,26 @@ Return
 
 Pointer to the flattened device tree blob.
 
+.. _`plat_fdt_relocated`:
+
+plat_fdt_relocated
+==================
+
+.. c:function:: void plat_fdt_relocated(void *new_location)
+
+    Update platform's information about relocated dtb
+
+    :param void \*new_location:
+        *undescribed*
+
+.. _`plat_fdt_relocated.description`:
+
+Description
+-----------
+
+This function provides a platform-independent API to set platform's
+information about relocated DTB if it needs to be moved due to kernel
+relocation occurring at boot.
+
 .. This file was automatic generated / don't edit.
 

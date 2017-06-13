@@ -266,5 +266,42 @@ call from a \ :c:func:`subsys_initcall`\  or earlier (use \ :c:func:`acpi_get_de
 instead). Calling from \ :c:func:`module_init`\  is fine (which is synonymous
 with \ :c:func:`device_initcall`\ ).
 
+.. _`acpi_dev_present`:
+
+acpi_dev_present
+================
+
+.. c:function:: bool acpi_dev_present(const char *hid, const char *uid, s64 hrv)
+
+    Detect that a given ACPI device is present
+
+    :param const char \*hid:
+        Hardware ID of the device.
+
+    :param const char \*uid:
+        Unique ID of the device, pass NULL to not check \_UID
+
+    :param s64 hrv:
+        Hardware Revision of the device, pass -1 to not check \_HRV
+
+.. _`acpi_dev_present.description`:
+
+Description
+-----------
+
+Return \ ``true``\  if a matching device was present at the moment of invocation.
+Note that if the device is pluggable, it may since have disappeared.
+
+Note that unlike \ :c:func:`acpi_dev_found`\  this function checks the status
+of the device. So for devices which are present in the dsdt, but
+which are disabled (their \_STA callback returns 0) this function
+will return false.
+
+For this function to work, \ :c:func:`acpi_bus_scan`\  must have been executed
+which happens in the \ :c:func:`subsys_initcall`\  subsection. Hence, do not
+call from a \ :c:func:`subsys_initcall`\  or earlier (use \ :c:func:`acpi_get_devices`\ 
+instead). Calling from \ :c:func:`module_init`\  is fine (which is synonymous
+with \ :c:func:`device_initcall`\ ).
+
 .. This file was automatic generated / don't edit.
 

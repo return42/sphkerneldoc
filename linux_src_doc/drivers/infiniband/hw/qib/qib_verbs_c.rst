@@ -22,24 +22,6 @@ qib_copy_sge
     :param int release:
         *undescribed*
 
-.. _`qib_skip_sge`:
-
-qib_skip_sge
-============
-
-.. c:function:: void qib_skip_sge(struct rvt_sge_state *ss, u32 length, int release)
-
-    skip over SGE memory - XXX almost dup of prev func
-
-    :param struct rvt_sge_state \*ss:
-        the SGE state
-
-    :param u32 length:
-        the number of bytes to skip
-
-    :param int release:
-        *undescribed*
-
 .. _`qib_qp_rcv`:
 
 qib_qp_rcv

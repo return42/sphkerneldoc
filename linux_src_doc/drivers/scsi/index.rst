@@ -17,6 +17,7 @@ scsi
     csiostor/index
     cxgbi/index
     cxlflash/index
+    device_handler/index
     esas2r/index
     fcoe/index
     fnic/index
@@ -30,6 +31,7 @@ scsi
     megaraid/index
     mpt3sas/index
     pm8001/index
+    qedf/index
     qedi/index
     qla2xxx/index
     qla4xxx/index

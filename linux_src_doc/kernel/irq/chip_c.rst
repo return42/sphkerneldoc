@@ -29,7 +29,7 @@ irq_set_irq_type
         irq number
 
     :param unsigned int type:
-        IRQ_TYPE_{LEVEL,EDGE}_\* value - see include/linux/irq.h
+        IRQ_TYPE_{LEVEL,EDGE}_* value - see include/linux/irq.h
 
 .. _`irq_set_handler_data`:
 
@@ -51,7 +51,7 @@ irq_set_handler_data
 Description
 -----------
 
-Set the hardware irq controller data for an irq
+     Set the hardware irq controller data for an irq
 
 .. _`irq_set_msi_desc_off`:
 
@@ -76,7 +76,7 @@ irq_set_msi_desc_off
 Description
 -----------
 
-Set the MSI descriptor entry for an irq at offset
+     Set the MSI descriptor entry for an irq at offset
 
 .. _`irq_set_msi_desc`:
 
@@ -98,7 +98,7 @@ irq_set_msi_desc
 Description
 -----------
 
-Set the MSI descriptor entry for an irq
+     Set the MSI descriptor entry for an irq
 
 .. _`irq_set_chip_data`:
 
@@ -120,7 +120,7 @@ irq_set_chip_data
 Description
 -----------
 
-Set the hardware irq chip data for an irq
+     Set the hardware irq chip data for an irq
 
 .. _`irq_disable`:
 
@@ -172,9 +172,9 @@ handle_simple_irq
 Description
 -----------
 
-Simple interrupts are either sent from a demultiplexing interrupt
-handler or come from hardware, where no interrupt hardware control
-is necessary.
+     Simple interrupts are either sent from a demultiplexing interrupt
+     handler or come from hardware, where no interrupt hardware control
+     is necessary.
 
 .. _`handle_simple_irq.note`:
 
@@ -182,7 +182,7 @@ Note
 ----
 
 The caller is expected to handle the ack, clear, mask and
-unmask issues if necessary.
+     unmask issues if necessary.
 
 .. _`handle_untracked_irq`:
 
@@ -201,11 +201,11 @@ handle_untracked_irq
 Description
 -----------
 
-Untracked interrupts are sent from a demultiplexing interrupt
-handler when the demultiplexer does not know which device it its
-multiplexed irq domain generated the interrupt. IRQ's handled
-through here are not subjected to stats tracking, randomness, or
-spurious interrupt detection.
+     Untracked interrupts are sent from a demultiplexing interrupt
+     handler when the demultiplexer does not know which device it its
+     multiplexed irq domain generated the interrupt. IRQ's handled
+     through here are not subjected to stats tracking, randomness, or
+     spurious interrupt detection.
 
 .. _`handle_untracked_irq.note`:
 
@@ -213,7 +213,7 @@ Note
 ----
 
 Like handle_simple_irq, the caller is expected to handle
-the ack, clear, mask and unmask issues if necessary.
+     the ack, clear, mask and unmask issues if necessary.
 
 .. _`handle_level_irq`:
 
@@ -232,10 +232,10 @@ handle_level_irq
 Description
 -----------
 
-Level type interrupts are active as long as the hardware line has
-the active level. This may require to mask the interrupt and unmask
-it after the associated handler has acknowledged the device, so the
-interrupt line is back to inactive.
+     Level type interrupts are active as long as the hardware line has
+     the active level. This may require to mask the interrupt and unmask
+     it after the associated handler has acknowledged the device, so the
+     interrupt line is back to inactive.
 
 .. _`handle_fasteoi_irq`:
 
@@ -249,15 +249,15 @@ handle_fasteoi_irq
     :param struct irq_desc \*desc:
         the interrupt description structure for this irq
 
-.. _`handle_fasteoi_irq.only-a-single-callback-will-be-issued-to-the-chip`:
+.. _`handle_fasteoi_irq.description`:
 
-Only a single callback will be issued to the chip
--------------------------------------------------
+Description
+-----------
 
-an ->eoi()
-call when the interrupt has been serviced. This enables support
-for modern forms of interrupt handlers, which handle the flow
-details in hardware, transparently.
+     Only a single callback will be issued to the chip: an ->eoi()
+     call when the interrupt has been serviced. This enables support
+     for modern forms of interrupt handlers, which handle the flow
+     details in hardware, transparently.
 
 .. _`handle_edge_irq`:
 
@@ -276,16 +276,16 @@ handle_edge_irq
 Description
 -----------
 
-Interrupt occures on the falling and/or rising edge of a hardware
-signal. The occurrence is latched into the irq controller hardware
-and must be acked in order to be reenabled. After the ack another
-interrupt can happen on the same source even before the first one
-is handled by the associated event handler. If this happens it
-might be necessary to disable (mask) the interrupt depending on the
-controller hardware. This requires to reenable the interrupt inside
-of the loop which handles the interrupts which have arrived while
-the handler was running. If all pending interrupts are handled, the
-loop is left.
+     Interrupt occures on the falling and/or rising edge of a hardware
+     signal. The occurrence is latched into the irq controller hardware
+     and must be acked in order to be reenabled. After the ack another
+     interrupt can happen on the same source even before the first one
+     is handled by the associated event handler. If this happens it
+     might be necessary to disable (mask) the interrupt depending on the
+     controller hardware. This requires to reenable the interrupt inside
+     of the loop which handles the interrupts which have arrived while
+     the handler was running. If all pending interrupts are handled, the
+     loop is left.
 
 .. _`handle_edge_eoi_irq`:
 
@@ -324,7 +324,7 @@ handle_percpu_irq
 Description
 -----------
 
-Per CPU interrupts on SMP machines without locking requirements
+     Per CPU interrupts on SMP machines without locking requirements
 
 .. _`handle_percpu_devid_irq`:
 
@@ -367,8 +367,8 @@ irq_cpu_online
 Description
 -----------
 
-Iterate through all irqs and invoke the chip.irq_cpu_online()
-for each.
+     Iterate through all irqs and invoke the chip.irq_cpu_online()
+     for each.
 
 .. _`irq_cpu_offline`:
 
@@ -387,8 +387,8 @@ irq_cpu_offline
 Description
 -----------
 
-Iterate through all irqs and invoke the chip.irq_cpu_offline()
-for each.
+     Iterate through all irqs and invoke the chip.irq_cpu_offline()
+     for each.
 
 .. _`irq_chip_enable_parent`:
 
@@ -500,7 +500,7 @@ irq_chip_set_type_parent
         Pointer to interrupt specific data
 
     :param unsigned int type:
-        IRQ_TYPE_{LEVEL,EDGE}_\* value - see include/linux/irq.h
+        IRQ_TYPE_{LEVEL,EDGE}_* value - see include/linux/irq.h
 
 .. _`irq_chip_set_type_parent.description`:
 

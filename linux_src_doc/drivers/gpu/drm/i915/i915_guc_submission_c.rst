@@ -30,25 +30,22 @@ Reservation allows the caller to determine in advance that space
 will be available for the next submission before committing resources
 to it, and helps avoid late failures with complicated recovery paths.
 
-.. _`i915_guc_submit`:
+.. _`__i915_guc_submit`:
 
-i915_guc_submit
-===============
+__i915_guc_submit
+=================
 
-.. c:function:: void i915_guc_submit(struct drm_i915_gem_request *rq)
+.. c:function:: void __i915_guc_submit(struct drm_i915_gem_request *rq)
 
     Submit commands through GuC
 
     :param struct drm_i915_gem_request \*rq:
         request associated with the commands
 
-.. _`i915_guc_submit.return`:
+.. _`__i915_guc_submit.description`:
 
-Return
-------
-
-0 on success, otherwise an errno.
-             (Note: nonzero really shouldn't happen!)
+Description
+-----------
 
 The caller must have already called \ :c:func:`i915_guc_wq_reserve`\  above with
 a result of 0 (success), guaranteeing that there is space in the work
@@ -61,12 +58,12 @@ a different number of times from (successful) calls to \ :c:func:`_reserve`\ .
 The only error here arises if the doorbell hardware isn't functioning
 as expected, which really shouln't happen.
 
-.. _`guc_allocate_vma`:
+.. _`intel_guc_allocate_vma`:
 
-guc_allocate_vma
-================
+intel_guc_allocate_vma
+======================
 
-.. c:function:: struct i915_vma *guc_allocate_vma(struct intel_guc *guc, u32 size)
+.. c:function:: struct i915_vma *intel_guc_allocate_vma(struct intel_guc *guc, u32 size)
 
     Allocate a GGTT VMA for GuC usage
 
@@ -76,7 +73,7 @@ guc_allocate_vma
     :param u32 size:
         size of area to allocate (both virtual space and memory)
 
-.. _`guc_allocate_vma.description`:
+.. _`intel_guc_allocate_vma.description`:
 
 Description
 -----------
@@ -87,7 +84,7 @@ both some backing storage and a range inside the Global GTT. We must pin
 it in the GGTT somewhere other than than [0, GUC_WOPCM_TOP) because that
 range is reserved inside GuC.
 
-.. _`guc_allocate_vma.return`:
+.. _`intel_guc_allocate_vma.return`:
 
 Return
 ------
@@ -131,24 +128,24 @@ An i915_guc_client object if success, else NULL.
 intel_guc_suspend
 =================
 
-.. c:function:: int intel_guc_suspend(struct drm_device *dev)
+.. c:function:: int intel_guc_suspend(struct drm_i915_private *dev_priv)
 
     notify GuC entering suspend state
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`intel_guc_resume`:
 
 intel_guc_resume
 ================
 
-.. c:function:: int intel_guc_resume(struct drm_device *dev)
+.. c:function:: int intel_guc_resume(struct drm_i915_private *dev_priv)
 
     notify GuC resuming from suspend state
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. This file was automatic generated / don't edit.
 

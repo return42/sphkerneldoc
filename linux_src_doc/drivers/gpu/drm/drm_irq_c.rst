@@ -98,7 +98,7 @@ installation.
 
 This is the simplified helper interface provided for drivers with no special
 needs. Drivers which need to install interrupt handlers for multiple
-interrupts must instead set drm_device->irq_enabled to signal the DRM core
+interrupts must instead set \ :c:type:`drm_device.irq_enabled <drm_device>`\  to signal the DRM core
 that vblank interrupts are available.
 
 .. _`drm_irq_install.return`:
@@ -128,7 +128,7 @@ Description
 Calls the driver's \ :c:func:`irq_uninstall`\  function and unregisters the IRQ handler.
 This should only be called by drivers which used \ :c:func:`drm_irq_install`\  to set up
 their interrupt handler. Other drivers must only reset
-drm_device->irq_enabled to false.
+\ :c:type:`drm_device.irq_enabled <drm_device>`\  to false.
 
 Note that for kernel modesetting drivers it is a bug if this function fails.
 The sanity checks are only to catch buggy user modesetting drivers which call
@@ -399,17 +399,11 @@ behaviour.
 NOTE
 ----
 
-Drivers using this to send out the event in struct \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ 
-as part of an atomic commit must ensure that the next vblank happens at
-exactly the same time as the atomic commit is committed to the hardware. This
-function itself does **not** protect again the next vblank interrupt racing
-with either this function call or the atomic commit operation. A possible
-
-.. _`drm_crtc_arm_vblank_event.sequence-could-be`:
-
-sequence could be
------------------
-
+Drivers using this to send out the \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\  as part of an
+atomic commit must ensure that the next vblank happens at exactly the same
+time as the atomic commit is committed to the hardware. This function itself
+does **not** protect again the next vblank interrupt racing with either this
+function call or the atomic commit operation. A possible sequence could be:
 
 1. Driver commits new hardware state into vblank-synchronized registers.
 2. A vblank happens, committing the hardware state. Also the corresponding
@@ -751,36 +745,6 @@ Return
 ------
 
 True if the event was successfully handled, false on failure.
-
-.. _`drm_vblank_no_hw_counter`:
-
-drm_vblank_no_hw_counter
-========================
-
-.. c:function:: u32 drm_vblank_no_hw_counter(struct drm_device *dev, unsigned int pipe)
-
-    "No hw counter" implementation of .get_vblank_counter()
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC for which to read the counter
-
-.. _`drm_vblank_no_hw_counter.description`:
-
-Description
------------
-
-Drivers can plug this into the .get_vblank_counter() function if
-there is no useable hardware frame counter available.
-
-.. _`drm_vblank_no_hw_counter.return`:
-
-Return
-------
-
-0
 
 .. This file was automatic generated / don't edit.
 

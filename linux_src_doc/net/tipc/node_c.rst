@@ -226,7 +226,7 @@ tipc_node_xmit
 
     :param int selector:
         a number used for deterministic link selection
-        Consumes the buffer chain, except when returning -ELINKCONG
+        Consumes the buffer chain.
         Returns 0 if success, otherwise: -ELINKCONG,-EHOSTUNREACH,-EMSGSIZE,-ENOBUF
 
 .. _`tipc_node_bc_rcv`:

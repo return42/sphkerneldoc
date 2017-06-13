@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: virt/kvm/arm/vgic/vgic-mmio-v3.c
 
+.. _`vgic_register_redist_iodev`:
+
+vgic_register_redist_iodev
+==========================
+
+.. c:function:: int vgic_register_redist_iodev(struct kvm_vcpu *vcpu)
+
+    register a single redist iodev
+
+    :param struct kvm_vcpu \*vcpu:
+        The VCPU to which the redistributor belongs
+
+.. _`vgic_register_redist_iodev.description`:
+
+Description
+-----------
+
+Register a KVM iodev for this VCPU's redistributor using the address
+provided.
+
+Return 0 on success, -ERRNO otherwise.
+
 .. _`vgic_v3_dispatch_sgi`:
 
 vgic_v3_dispatch_sgi

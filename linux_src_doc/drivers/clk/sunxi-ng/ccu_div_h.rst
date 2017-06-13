@@ -21,6 +21,7 @@ Definition
         u8 shift;
         u8 width;
         u32 max;
+        u32 offset;
         u32 flags;
         struct clk_div_table *table;
     }
@@ -40,6 +41,9 @@ max
     Maximum value allowed for that divider. This is the
     arithmetic value, not the maximum value to be set in the
     register.
+
+offset
+    *undescribed*
 
 flags
     clk_divider flags to apply on this divider

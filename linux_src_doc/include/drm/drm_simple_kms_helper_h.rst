@@ -21,7 +21,7 @@ Definition
         void (*enable)(struct drm_simple_display_pipe *pipe,struct drm_crtc_state *crtc_state);
         void (*disable)(struct drm_simple_display_pipe *pipe);
         int (*check)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state,struct drm_crtc_state *crtc_state);
-        void (*update)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state);
+        void (*update)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *old_plane_state);
         int (*prepare_fb)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state);
         void (*cleanup_fb)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state);
     }
@@ -72,15 +72,15 @@ update
 
 prepare_fb
 
-    Optional, called by struct \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  ->prepare_fb .
-    Please read the documentation for the ->prepare_fb hook in
-    struct \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  for more details.
+    Optional, called by \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\ .  Please read
+    the documentation for the \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\  hook for
+    more details.
 
 cleanup_fb
 
-    Optional, called by struct \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  ->cleanup_fb .
-    Please read the documentation for the ->cleanup_fb hook in
-    struct \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  for more details.
+    Optional, called by \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_helper_funcs>`\ .  Please read
+    the documentation for the \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_helper_funcs>`\  hook for
+    more details.
 
 .. _`drm_simple_display_pipe`:
 

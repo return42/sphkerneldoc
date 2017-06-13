@@ -6,7 +6,7 @@
 parse_vlan_tag
 ==============
 
-.. c:function:: int parse_vlan_tag(struct sk_buff *skb, struct vlan_head *key_vh)
+.. c:function:: int parse_vlan_tag(struct sk_buff *skb, struct vlan_head *key_vh, bool untag_vlan)
 
     Returns ERROR on memory error. Returns 0 if it encounters a non-vlan or incomplete packet. Returns 1 after successfully parsing vlan tag.
 
@@ -14,6 +14,9 @@ parse_vlan_tag
         *undescribed*
 
     :param struct vlan_head \*key_vh:
+        *undescribed*
+
+    :param bool untag_vlan:
         *undescribed*
 
 .. _`key_extract`:

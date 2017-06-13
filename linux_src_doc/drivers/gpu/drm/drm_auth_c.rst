@@ -34,7 +34,7 @@ drm_master_get
     reference a master pointer
 
     :param struct drm_master \*master:
-        struct \ :c:type:`struct drm_master <drm_master>`\ 
+        &struct drm_master
 
 .. _`drm_master_get.description`:
 
@@ -53,7 +53,7 @@ drm_master_put
     unreference and clear a master pointer
 
     :param struct drm_master \*\*master:
-        pointer to a pointer of struct \ :c:type:`struct drm_master <drm_master>`\ 
+        pointer to a pointer of \ :c:type:`struct drm_master <drm_master>`\ 
 
 .. _`drm_master_put.description`:
 

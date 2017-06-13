@@ -6,14 +6,14 @@
 rdma_set_ib_paths
 =================
 
-.. c:function:: int rdma_set_ib_paths(struct rdma_cm_id *id, struct ib_sa_path_rec *path_rec, int num_paths)
+.. c:function:: int rdma_set_ib_paths(struct rdma_cm_id *id, struct sa_path_rec *path_rec, int num_paths)
 
     Manually sets the path records used to establish a connection.
 
     :param struct rdma_cm_id \*id:
         Connection identifier associated with the request.
 
-    :param struct ib_sa_path_rec \*path_rec:
+    :param struct sa_path_rec \*path_rec:
         Reference to the path record
 
     :param int num_paths:

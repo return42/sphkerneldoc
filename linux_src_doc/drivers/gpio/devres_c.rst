@@ -85,12 +85,12 @@ Managed \ :c:func:`gpiod_get_index`\ . GPIO descriptors returned from this funct
 automatically disposed on driver detach. See \ :c:func:`gpiod_get_index`\  for detailed
 information about behavior and return values.
 
-.. _`devm_get_gpiod_from_child`:
+.. _`devm_fwnode_get_index_gpiod_from_child`:
 
-devm_get_gpiod_from_child
-=========================
+devm_fwnode_get_index_gpiod_from_child
+======================================
 
-.. c:function:: struct gpio_desc *devm_get_gpiod_from_child(struct device *dev, const char *con_id, struct fwnode_handle *child)
+.. c:function:: struct gpio_desc *devm_fwnode_get_index_gpiod_from_child(struct device *dev, const char *con_id, int index, struct fwnode_handle *child, enum gpiod_flags flags, const char *label)
 
     get a GPIO descriptor from a device's child node
 
@@ -100,16 +100,28 @@ devm_get_gpiod_from_child
     :param const char \*con_id:
         function within the GPIO consumer
 
+    :param int index:
+        index of the GPIO to obtain in the consumer
+
     :param struct fwnode_handle \*child:
         firmware node (child of \ ``dev``\ )
 
-.. _`devm_get_gpiod_from_child.description`:
+    :param enum gpiod_flags flags:
+        GPIO initialization flags
+
+    :param const char \*label:
+        *undescribed*
+
+.. _`devm_fwnode_get_index_gpiod_from_child.description`:
 
 Description
 -----------
 
 GPIO descriptors returned from this function are automatically disposed on
 driver detach.
+
+On successful request the GPIO pin is configured in accordance with
+provided \ ``flags``\ .
 
 .. _`devm_gpiod_get_index_optional`:
 

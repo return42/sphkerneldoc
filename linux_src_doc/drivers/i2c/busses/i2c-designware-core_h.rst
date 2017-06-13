@@ -22,6 +22,7 @@ Definition
         void __iomem *base;
         struct completion cmd_complete;
         struct clk *clk;
+        struct reset_control *rst;
         u32 (*get_clk_rate_khz)(struct dw_i2c_dev *dev);
         struct dw_pci_controller *controller;
         int cmd_err;
@@ -37,7 +38,7 @@ Definition
         unsigned int status;
         u32 abort_source;
         int irq;
-        u32 accessor_flags;
+        u32 flags;
         struct i2c_adapter adapter;
         u32 functionality;
         u32 master_cfg;
@@ -56,10 +57,10 @@ Definition
         u16 fp_lcnt;
         u16 hs_hcnt;
         u16 hs_lcnt;
+        struct pm_qos_request pm_qos;
         int (*acquire_lock)(struct dw_i2c_dev *dev);
         void (*release_lock)(struct dw_i2c_dev *dev);
-        bool pm_runtime_disabled;
-        bool dynamic_tar_update_enabled;
+        bool pm_disabled;
     }
 
 .. _`dw_i2c_dev.members`:
@@ -78,6 +79,9 @@ cmd_complete
 
 clk
     input reference clock
+
+rst
+    *undescribed*
 
 get_clk_rate_khz
     *undescribed*
@@ -126,7 +130,7 @@ abort_source
 irq
     interrupt number for the i2c master
 
-accessor_flags
+flags
     *undescribed*
 
 adapter
@@ -183,17 +187,17 @@ hs_hcnt
 hs_lcnt
     high speed LCNT value
 
+pm_qos
+    pm_qos_request used while holding a hardware lock on the bus
+
 acquire_lock
     function to acquire a hardware lock on the bus
 
 release_lock
     function to release a hardware lock on the bus
 
-pm_runtime_disabled
-    true if pm runtime is disabled
-
-dynamic_tar_update_enabled
-    *undescribed*
+pm_disabled
+    true if power-management should be disabled for this i2c-bus
 
 .. _`dw_i2c_dev.description`:
 

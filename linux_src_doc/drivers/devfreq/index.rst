@@ -9,4 +9,5 @@ devfreq
 
     devfreq-event_c
     devfreq_c
+    governor_h
     tegra-devfreq_c

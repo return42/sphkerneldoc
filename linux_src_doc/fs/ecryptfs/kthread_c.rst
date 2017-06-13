@@ -45,7 +45,7 @@ ecryptfs_privileged_open
 Description
 -----------
 
-This function gets a r/w file opened againt the lower dentry.
+This function gets a r/w file opened against the lower dentry.
 
 Returns zero on success; non-zero otherwise
 

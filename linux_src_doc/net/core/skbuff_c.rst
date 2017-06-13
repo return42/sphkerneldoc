@@ -27,10 +27,10 @@ skb_panic
 Description
 -----------
 
-Out-of-line support for \ :c:func:`skb_put`\  and \ :c:func:`skb_push`\ .
-Called via the wrapper \ :c:func:`skb_over_panic`\  or \ :c:func:`skb_under_panic`\ .
-Keep out of line to prevent kernel bloat.
-\__builtin_return_address is not used because it is not always reliable.
+     Out-of-line support for \ :c:func:`skb_put`\  and \ :c:func:`skb_push`\ .
+     Called via the wrapper \ :c:func:`skb_over_panic`\  or \ :c:func:`skb_under_panic`\ .
+     Keep out of line to prevent kernel bloat.
+     __builtin_return_address is not used because it is not always reliable.
 
 .. _`__alloc_skb`:
 
@@ -50,7 +50,7 @@ __alloc_skb
     :param int flags:
         If SKB_ALLOC_FCLONE is set, allocate from fclone cache
         instead of head cache and allocate a cloned (child) skb.
-        If SKB_ALLOC_RX is set, \__GFP_MEMALLOC will be used for
+        If SKB_ALLOC_RX is set, __GFP_MEMALLOC will be used for
         allocations in case the data is required for writeback
 
     :param int node:
@@ -61,12 +61,12 @@ __alloc_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\ . The returned buffer has no headroom and a
-tail room of at least size bytes. The object has a reference count
-of one. The return is the buffer. On a failure the return is \ ``NULL``\ .
+     Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\ . The returned buffer has no headroom and a
+     tail room of at least size bytes. The object has a reference count
+     of one. The return is the buffer. On a failure the return is \ ``NULL``\ .
 
-Buffers may only be allocated from interrupts using a \ ``gfp_mask``\  of
-\ ``GFP_ATOMIC``\ .
+     Buffers may only be allocated from interrupts using a \ ``gfp_mask``\  of
+     \ ``GFP_ATOMIC``\ .
 
 .. _`__build_skb`:
 
@@ -91,16 +91,16 @@ Description
 Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\ . Caller provides space holding head and
 skb_shared_info. \ ``data``\  must have been allocated by \ :c:func:`kmalloc`\  only if
 \ ``frag_size``\  is 0, otherwise data should come from the page allocator
-or \ :c:func:`vmalloc`\ 
+ or \ :c:func:`vmalloc`\ 
 The return is the new skb buffer.
 On a failure the return is \ ``NULL``\ , and \ ``data``\  is not freed.
 Notes :
-Before IO, driver allocates only data buffer where NIC put incoming frame
-Driver should add room at head (NET_SKB_PAD) and
-MUST add room at tail (SKB_DATA_ALIGN(skb_shared_info))
-After IO, driver calls \ :c:func:`build_skb`\ , to allocate sk_buff and populate it
-before giving packet to stack.
-RX rings only contains data buffers, not full skbs.
+ Before IO, driver allocates only data buffer where NIC put incoming frame
+ Driver should add room at head (NET_SKB_PAD) and
+ MUST add room at tail (SKB_DATA_ALIGN(skb_shared_info))
+ After IO, driver calls \ :c:func:`build_skb`\ , to allocate sk_buff and populate it
+ before giving packet to stack.
+ RX rings only contains data buffers, not full skbs.
 
 .. _`netdev_alloc_frag`:
 
@@ -145,12 +145,12 @@ __netdev_alloc_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\  and assign it a usage count of one. The
-buffer has NET_SKB_PAD headroom built in. Users should allocate
-the headroom they think they need without accounting for the
-built in space. The built in space is used for optimisations.
+     Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\  and assign it a usage count of one. The
+     buffer has NET_SKB_PAD headroom built in. Users should allocate
+     the headroom they think they need without accounting for the
+     built in space. The built in space is used for optimisations.
 
-\ ``NULL``\  is returned if there is no free memory.
+     \ ``NULL``\  is returned if there is no free memory.
 
 .. _`__napi_alloc_skb`:
 
@@ -175,12 +175,12 @@ __napi_alloc_skb
 Description
 -----------
 
-Allocate a new sk_buff for use in NAPI receive.  This buffer will
-attempt to allocate the head from a special reserved region used
-only for NAPI Rx allocation.  By doing this we can save several
-CPU cycles by avoiding having to disable and re-enable IRQs.
+     Allocate a new sk_buff for use in NAPI receive.  This buffer will
+     attempt to allocate the head from a special reserved region used
+     only for NAPI Rx allocation.  By doing this we can save several
+     CPU cycles by avoiding having to disable and re-enable IRQs.
 
-\ ``NULL``\  is returned if there is no free memory.
+     \ ``NULL``\  is returned if there is no free memory.
 
 .. _`__kfree_skb`:
 
@@ -199,9 +199,9 @@ __kfree_skb
 Description
 -----------
 
-Free an sk_buff. Release anything attached to the buffer.
-Clean the state. This is an internal helper function. Users should
-always call kfree_skb
+     Free an sk_buff. Release anything attached to the buffer.
+     Clean the state. This is an internal helper function. Users should
+     always call kfree_skb
 
 .. _`kfree_skb`:
 
@@ -220,8 +220,8 @@ kfree_skb
 Description
 -----------
 
-Drop a reference to the buffer and free it if the usage count has
-hit zero.
+     Drop a reference to the buffer and free it if the usage count has
+     hit zero.
 
 .. _`skb_tx_error`:
 
@@ -240,8 +240,8 @@ skb_tx_error
 Description
 -----------
 
-Report xmit error if a device callback is tracking this skb.
-skb must be freed afterwards.
+     Report xmit error if a device callback is tracking this skb.
+     skb must be freed afterwards.
 
 .. _`consume_skb`:
 
@@ -260,9 +260,9 @@ consume_skb
 Description
 -----------
 
-Drop a ref to the buffer and free it if the usage count has hit zero
-Functions identically to kfree_skb, but kfree_skb assumes that the frame
-is being dropped after a failure and notes that
+     Drop a ref to the buffer and free it if the usage count has hit zero
+     Functions identically to kfree_skb, but kfree_skb assumes that the frame
+     is being dropped after a failure and notes that
 
 .. _`skb_morph`:
 
@@ -284,10 +284,10 @@ skb_morph
 Description
 -----------
 
-This is identical to skb_clone except that the target skb is
-supplied by the user.
+     This is identical to skb_clone except that the target skb is
+     supplied by the user.
 
-The target skb is returned upon exit.
+     The target skb is returned upon exit.
 
 .. _`skb_copy_ubufs`:
 
@@ -309,15 +309,15 @@ skb_copy_ubufs
 Description
 -----------
 
-This must be called on SKBTX_DEV_ZEROCOPY skb.
-It will copy all frags into kernel and drop the reference
-to userspace pages.
+     This must be called on SKBTX_DEV_ZEROCOPY skb.
+     It will copy all frags into kernel and drop the reference
+     to userspace pages.
 
-If this function is called from an interrupt \ :c:func:`gfp_mask`\  must be
-\ ``GFP_ATOMIC``\ .
+     If this function is called from an interrupt \ :c:func:`gfp_mask`\  must be
+     \ ``GFP_ATOMIC``\ .
 
-Returns 0 on success or a negative error code on failure
-to allocate kernel memory to copy to.
+     Returns 0 on success or a negative error code on failure
+     to allocate kernel memory to copy to.
 
 .. _`skb_clone`:
 
@@ -339,13 +339,13 @@ skb_clone
 Description
 -----------
 
-Duplicate an \ :c:type:`struct sk_buff <sk_buff>`\ . The new one is not owned by a socket. Both
-copies share the same packet data but not structure. The new
-buffer has a reference count of 1. If the allocation fails the
-function returns \ ``NULL``\  otherwise the new buffer is returned.
+     Duplicate an \ :c:type:`struct sk_buff <sk_buff>`\ . The new one is not owned by a socket. Both
+     copies share the same packet data but not structure. The new
+     buffer has a reference count of 1. If the allocation fails the
+     function returns \ ``NULL``\  otherwise the new buffer is returned.
 
-If this function is called from an interrupt \ :c:func:`gfp_mask`\  must be
-\ ``GFP_ATOMIC``\ .
+     If this function is called from an interrupt \ :c:func:`gfp_mask`\  must be
+     \ ``GFP_ATOMIC``\ .
 
 .. _`skb_copy`:
 
@@ -367,16 +367,16 @@ skb_copy
 Description
 -----------
 
-Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and its data. This is used when the
-caller wishes to modify the data and needs a private copy of the
-data to alter. Returns \ ``NULL``\  on failure or the pointer to the buffer
-on success. The returned buffer has a reference count of 1.
+     Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and its data. This is used when the
+     caller wishes to modify the data and needs a private copy of the
+     data to alter. Returns \ ``NULL``\  on failure or the pointer to the buffer
+     on success. The returned buffer has a reference count of 1.
 
-As by-product this function converts non-linear \ :c:type:`struct sk_buff <sk_buff>`\  to linear
-one, so that \ :c:type:`struct sk_buff <sk_buff>`\  becomes completely private and caller is allowed
-to modify all the data of returned buffer. This means that this
-function is not recommended for use in circumstances when only
-header is going to be modified. Use \ :c:func:`pskb_copy`\  instead.
+     As by-product this function converts non-linear \ :c:type:`struct sk_buff <sk_buff>`\  to linear
+     one, so that \ :c:type:`struct sk_buff <sk_buff>`\  becomes completely private and caller is allowed
+     to modify all the data of returned buffer. This means that this
+     function is not recommended for use in circumstances when only
+     header is going to be modified. Use \ :c:func:`pskb_copy`\  instead.
 
 .. _`__pskb_copy_fclone`:
 
@@ -406,12 +406,12 @@ __pskb_copy_fclone
 Description
 -----------
 
-Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and part of its data, located
-in header. Fragmented data remain shared. This is used when
-the caller wishes to modify only header of \ :c:type:`struct sk_buff <sk_buff>`\  and needs
-private copy of the header to alter. Returns \ ``NULL``\  on failure
-or the pointer to the buffer on success.
-The returned buffer has a reference count of 1.
+     Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and part of its data, located
+     in header. Fragmented data remain shared. This is used when
+     the caller wishes to modify only header of \ :c:type:`struct sk_buff <sk_buff>`\  and needs
+     private copy of the header to alter. Returns \ ``NULL``\  on failure
+     or the pointer to the buffer on success.
+     The returned buffer has a reference count of 1.
 
 .. _`pskb_expand_head`:
 
@@ -439,13 +439,13 @@ pskb_expand_head
 Description
 -----------
 
-Expands (or creates identical copy, if \ ``nhead``\  and \ ``ntail``\  are zero)
-header of \ ``skb``\ . \ :c:type:`struct sk_buff <sk_buff>`\  itself is not changed. \ :c:type:`struct sk_buff <sk_buff>`\  MUST have
-reference count of 1. Returns zero in the case of success or error,
-if expansion failed. In the last case, \ :c:type:`struct sk_buff <sk_buff>`\  is not changed.
+     Expands (or creates identical copy, if \ ``nhead``\  and \ ``ntail``\  are zero)
+     header of \ ``skb``\ . \ :c:type:`struct sk_buff <sk_buff>`\  itself is not changed. \ :c:type:`struct sk_buff <sk_buff>`\  MUST have
+     reference count of 1. Returns zero in the case of success or error,
+     if expansion failed. In the last case, \ :c:type:`struct sk_buff <sk_buff>`\  is not changed.
 
-All the pointers pointing into skb header may change and must be
-reloaded after call to this function.
+     All the pointers pointing into skb header may change and must be
+     reloaded after call to this function.
 
 .. _`skb_copy_expand`:
 
@@ -473,16 +473,16 @@ skb_copy_expand
 Description
 -----------
 
-Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and its data and while doing so
-allocate additional space.
+     Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and its data and while doing so
+     allocate additional space.
 
-This is used when the caller wishes to modify the data and needs a
-private copy of the data to alter as well as more space for new fields.
-Returns \ ``NULL``\  on failure or the pointer to the buffer
-on success. The returned buffer has a reference count of 1.
+     This is used when the caller wishes to modify the data and needs a
+     private copy of the data to alter as well as more space for new fields.
+     Returns \ ``NULL``\  on failure or the pointer to the buffer
+     on success. The returned buffer has a reference count of 1.
 
-You must pass \ ``GFP_ATOMIC``\  as the allocation priority if this function
-is called from an interrupt.
+     You must pass \ ``GFP_ATOMIC``\  as the allocation priority if this function
+     is called from an interrupt.
 
 .. _`skb_pad`:
 
@@ -504,11 +504,11 @@ skb_pad
 Description
 -----------
 
-Ensure that a buffer is followed by a padding area that is zero
-filled. Used by network drivers which may DMA or transfer data
-beyond the buffer end onto the wire.
+     Ensure that a buffer is followed by a padding area that is zero
+     filled. Used by network drivers which may DMA or transfer data
+     beyond the buffer end onto the wire.
 
-May return error in out of memory cases. The skb is freed on error.
+     May return error in out of memory cases. The skb is freed on error.
 
 .. _`pskb_put`:
 
@@ -533,11 +533,11 @@ pskb_put
 Description
 -----------
 
-This function extends the used data area of the potentially
-fragmented buffer. \ ``tail``\  must be the last fragment of \ ``skb``\  -- or
-\ ``skb``\  itself. If this would exceed the total buffer size the kernel
-will panic. A pointer to the first byte of the extra data is
-returned.
+     This function extends the used data area of the potentially
+     fragmented buffer. \ ``tail``\  must be the last fragment of \ ``skb``\  -- or
+     \ ``skb``\  itself. If this would exceed the total buffer size the kernel
+     will panic. A pointer to the first byte of the extra data is
+     returned.
 
 .. _`skb_put`:
 
@@ -559,9 +559,9 @@ skb_put
 Description
 -----------
 
-This function extends the used data area of the buffer. If this would
-exceed the total buffer size the kernel will panic. A pointer to the
-first byte of the extra data is returned.
+     This function extends the used data area of the buffer. If this would
+     exceed the total buffer size the kernel will panic. A pointer to the
+     first byte of the extra data is returned.
 
 .. _`skb_push`:
 
@@ -583,9 +583,9 @@ skb_push
 Description
 -----------
 
-This function extends the used data area of the buffer at the buffer
-start. If this would exceed the total buffer headroom the kernel will
-panic. A pointer to the first byte of the extra data is returned.
+     This function extends the used data area of the buffer at the buffer
+     start. If this would exceed the total buffer headroom the kernel will
+     panic. A pointer to the first byte of the extra data is returned.
 
 .. _`skb_pull`:
 
@@ -607,10 +607,10 @@ skb_pull
 Description
 -----------
 
-This function removes data from the start of a buffer, returning
-the memory to the headroom. A pointer to the next data in the buffer
-is returned. Once the data has been pulled future pushes will overwrite
-the old data.
+     This function removes data from the start of a buffer, returning
+     the memory to the headroom. A pointer to the next data in the buffer
+     is returned. Once the data has been pulled future pushes will overwrite
+     the old data.
 
 .. _`skb_trim`:
 
@@ -632,9 +632,9 @@ skb_trim
 Description
 -----------
 
-Cut the length of a buffer down by removing data from the tail. If
-the buffer is already under the length specified it is not modified.
-The skb must be linear.
+     Cut the length of a buffer down by removing data from the tail. If
+     the buffer is already under the length specified it is not modified.
+     The skb must be linear.
 
 .. _`__pskb_pull_tail`:
 
@@ -656,17 +656,17 @@ __pskb_pull_tail
 Description
 -----------
 
-The function makes a sense only on a fragmented \ :c:type:`struct sk_buff <sk_buff>`\ ,
-it expands header moving its tail forward and copying necessary
-data from fragmented part.
+     The function makes a sense only on a fragmented \ :c:type:`struct sk_buff <sk_buff>`\ ,
+     it expands header moving its tail forward and copying necessary
+     data from fragmented part.
 
-\ :c:type:`struct sk_buff <sk_buff>`\  MUST have reference count of 1.
+     \ :c:type:`struct sk_buff <sk_buff>`\  MUST have reference count of 1.
 
-Returns \ ``NULL``\  (and \ :c:type:`struct sk_buff <sk_buff>`\  does not change) if pull failed
-or value of new tail of skb in the case of success.
+     Returns \ ``NULL``\  (and \ :c:type:`struct sk_buff <sk_buff>`\  does not change) if pull failed
+     or value of new tail of skb in the case of success.
 
-All the pointers pointing into skb header may change and must be
-reloaded after call to this function.
+     All the pointers pointing into skb header may change and must be
+     reloaded after call to this function.
 
 .. _`skb_copy_bits`:
 
@@ -694,13 +694,13 @@ skb_copy_bits
 Description
 -----------
 
-Copy the specified number of bytes from the source skb to the
-destination buffer.
+     Copy the specified number of bytes from the source skb to the
+     destination buffer.
 
-CAUTION ! :
-If its prototype is ever changed,
-check arch/{\*}/net/{\*}.S files,
-since it is called from BPF assembly code.
+     CAUTION ! :
+             If its prototype is ever changed,
+             check arch/{*}/net/{*}.S files,
+             since it is called from BPF assembly code.
 
 .. _`skb_store_bits`:
 
@@ -728,9 +728,9 @@ skb_store_bits
 Description
 -----------
 
-Copy the specified number of bytes from the source buffer to the
-destination skb.  This function handles all the messy bits of
-traversing fragment lists and such.
+     Copy the specified number of bytes from the source buffer to the
+     destination skb.  This function handles all the messy bits of
+     traversing fragment lists and such.
 
 .. _`skb_zerocopy`:
 
@@ -758,20 +758,20 @@ skb_zerocopy
 Description
 -----------
 
-Copies up to \`len\` bytes from \`from\` to \`to\` by creating references
-to the frags in the source buffer.
+     Copies up to `len` bytes from `from` to `to` by creating references
+     to the frags in the source buffer.
 
-The \`hlen\` as calculated by \ :c:func:`skb_zerocopy_headlen`\  specifies the
-headroom in the \`to\` buffer.
+     The `hlen` as calculated by \ :c:func:`skb_zerocopy_headlen`\  specifies the
+     headroom in the `to` buffer.
 
 .. _`skb_zerocopy.return-value`:
 
 Return value
 ------------
 
-0: everything is OK
--ENOMEM: couldn't orphan frags of \ ``from``\  due to lack of memory
--EFAULT: \ :c:func:`skb_copy_bits`\  found some problem with skb geometry
+     0: everything is OK
+     -ENOMEM: couldn't orphan frags of \ ``from``\  due to lack of memory
+     -EFAULT: \ :c:func:`skb_copy_bits`\  found some problem with skb geometry
 
 .. _`skb_dequeue`:
 
@@ -790,9 +790,9 @@ skb_dequeue
 Description
 -----------
 
-Remove the head of the list. The list lock is taken so the function
-may be used safely with other locking list functions. The head item is
-returned or \ ``NULL``\  if the list is empty.
+     Remove the head of the list. The list lock is taken so the function
+     may be used safely with other locking list functions. The head item is
+     returned or \ ``NULL``\  if the list is empty.
 
 .. _`skb_dequeue_tail`:
 
@@ -811,9 +811,9 @@ skb_dequeue_tail
 Description
 -----------
 
-Remove the tail of the list. The list lock is taken so the function
-may be used safely with other locking list functions. The tail item is
-returned or \ ``NULL``\  if the list is empty.
+     Remove the tail of the list. The list lock is taken so the function
+     may be used safely with other locking list functions. The tail item is
+     returned or \ ``NULL``\  if the list is empty.
 
 .. _`skb_queue_purge`:
 
@@ -832,9 +832,9 @@ skb_queue_purge
 Description
 -----------
 
-Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  list. Each buffer is removed from
-the list and one reference dropped. This function takes the list
-lock and is atomic with respect to other list locking functions.
+     Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  list. Each buffer is removed from
+     the list and one reference dropped. This function takes the list
+     lock and is atomic with respect to other list locking functions.
 
 .. _`skb_rbtree_purge`:
 
@@ -853,10 +853,10 @@ skb_rbtree_purge
 Description
 -----------
 
-Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  rbtree. Each buffer is removed from
-the list and one reference dropped. This function does not take
-any lock. Synchronization should be handled by the caller (e.g., TCP
-out-of-order queue is protected by the socket lock).
+     Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  rbtree. Each buffer is removed from
+     the list and one reference dropped. This function does not take
+     any lock. Synchronization should be handled by the caller (e.g., TCP
+     out-of-order queue is protected by the socket lock).
 
 .. _`skb_queue_head`:
 
@@ -878,11 +878,11 @@ skb_queue_head
 Description
 -----------
 
-Queue a buffer at the start of the list. This function takes the
-list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>`\  functions
-safely.
+     Queue a buffer at the start of the list. This function takes the
+     list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>`\  functions
+     safely.
 
-A buffer cannot be placed on two lists at the same time.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_queue_tail`:
 
@@ -904,11 +904,11 @@ skb_queue_tail
 Description
 -----------
 
-Queue a buffer at the tail of the list. This function takes the
-list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>`\  functions
-safely.
+     Queue a buffer at the tail of the list. This function takes the
+     list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>`\  functions
+     safely.
 
-A buffer cannot be placed on two lists at the same time.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_unlink`:
 
@@ -930,10 +930,10 @@ skb_unlink
 Description
 -----------
 
-Remove a packet from a list. The list locks are taken and this
-function is atomic with respect to other list locked calls
+     Remove a packet from a list. The list locks are taken and this
+     function is atomic with respect to other list locked calls
 
-You must know what list the SKB is on.
+     You must know what list the SKB is on.
 
 .. _`skb_append`:
 
@@ -958,9 +958,9 @@ skb_append
 Description
 -----------
 
-Place a packet after a given packet in a list. The list locks are taken
-and this function is atomic with respect to other list locked calls.
-A buffer cannot be placed on two lists at the same time.
+     Place a packet after a given packet in a list. The list locks are taken
+     and this function is atomic with respect to other list locked calls.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_insert`:
 
@@ -985,11 +985,11 @@ skb_insert
 Description
 -----------
 
-Place a packet before a given packet in a list. The list locks are
-taken and this function is atomic with respect to other list locked
-calls.
+     Place a packet before a given packet in a list. The list locks are
+     taken and this function is atomic with respect to other list locked
+     calls.
 
-A buffer cannot be placed on two lists at the same time.
+     A buffer cannot be placed on two lists at the same time.
 
 .. _`skb_split`:
 
@@ -1041,12 +1041,7 @@ If \ ``tgt``\  runs out of frags, the whole operation is aborted.
 Skb cannot include anything else but paged data while tgt is allowed
 to have non-paged data as well.
 
-.. _`skb_shift.todo`:
-
-TODO
-----
-
-full sized shift could be optimized but that would need
+TODO: full sized shift could be optimized but that would need
 specialized skb free'er to handle frags without up-to-date nr_frags.
 
 .. _`skb_prepare_seq_read`:
@@ -1112,23 +1107,13 @@ returned, i.e. \ ``consumed``\  is typically set to the number
 of bytes already consumed and the next call to
 \ :c:func:`skb_seq_read`\  will return the remaining part of the block.
 
-.. _`skb_seq_read.note-1`:
+Note 1: The size of each block of data returned can be arbitrary,
+      this limitation is the cost for zerocopy sequential
+      reads of potentially non linear data.
 
-Note 1
-------
-
-The size of each block of data returned can be arbitrary,
-this limitation is the cost for zerocopy sequential
-reads of potentially non linear data.
-
-.. _`skb_seq_read.note-2`:
-
-Note 2
-------
-
-Fragment lists within fragments are not implemented
-at the moment, state->root_skb could be replaced with
-a stack for this purpose.
+Note 2: Fragment lists within fragments are not implemented
+      at the moment, state->root_skb could be replaced with
+      a stack for this purpose.
 
 .. _`skb_abort_seq_read`:
 
@@ -1233,11 +1218,11 @@ skb_pull_rcsum
 Description
 -----------
 
-This function performs an skb_pull on the packet and updates
-the CHECKSUM_COMPLETE checksum.  It should be used on
-receive path processing instead of skb_pull unless you know
-that the checksum difference is zero (e.g., a valid IP header)
-or you are setting ip_summed to CHECKSUM_NONE.
+     This function performs an skb_pull on the packet and updates
+     the CHECKSUM_COMPLETE checksum.  It should be used on
+     receive path processing instead of skb_pull unless you know
+     that the checksum difference is zero (e.g., a valid IP header)
+     or you are setting ip_summed to CHECKSUM_NONE.
 
 .. _`skb_segment`:
 
@@ -1259,9 +1244,9 @@ skb_segment
 Description
 -----------
 
-This function performs segmentation on the given skb.  It returns
-a pointer to the first in a list of new skbs for the segments.
-In case of error it returns ERR_PTR(err).
+     This function performs segmentation on the given skb.  It returns
+     a pointer to the first in a list of new skbs for the segments.
+     In case of error it returns ERR_PTR(err).
 
 .. _`__skb_to_sgvec`:
 
@@ -1289,8 +1274,8 @@ __skb_to_sgvec
 Description
 -----------
 
-Fill the specified scatter-gather list with mappings/pointers into a
-region of the buffer space attached to a socket buffer.
+     Fill the specified scatter-gather list with mappings/pointers into a
+     region of the buffer space attached to a socket buffer.
 
 .. _`skb_cow_data`:
 
@@ -1315,16 +1300,16 @@ skb_cow_data
 Description
 -----------
 
-Make sure that the data buffers attached to a socket buffer are
-writable. If they are not, private copies are made of the data buffers
-and the socket buffer is set to use these instead.
+     Make sure that the data buffers attached to a socket buffer are
+     writable. If they are not, private copies are made of the data buffers
+     and the socket buffer is set to use these instead.
 
-If \ ``tailbits``\  is given, make sure that there is space to write \ ``tailbits``\ 
-bytes of data beyond current end of socket buffer.  \ ``trailer``\  will be
-set to point to the skb in which this space begins.
+     If \ ``tailbits``\  is given, make sure that there is space to write \ ``tailbits``\ 
+     bytes of data beyond current end of socket buffer.  \ ``trailer``\  will be
+     set to point to the skb in which this space begins.
 
-The number of scatterlist elements required to completely map the
-COW'd and extended socket buffer will be returned.
+     The number of scatterlist elements required to completely map the
+     COW'd and extended socket buffer will be returned.
 
 .. _`skb_clone_sk`:
 
@@ -1607,8 +1592,8 @@ truesize.
 Notes
 -----
 
-We do not reallocate skb->head thus can not fail.
-Caller must re-evaluate skb->truesize if needed.
+     We do not reallocate skb->head thus can not fail.
+     Caller must re-evaluate skb->truesize if needed.
 
 .. This file was automatic generated / don't edit.
 

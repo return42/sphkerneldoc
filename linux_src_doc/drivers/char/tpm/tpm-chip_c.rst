@@ -89,12 +89,14 @@ This is used as the release function for the character device.
 tpm_chip_alloc
 ==============
 
-.. c:function:: struct tpm_chip *tpm_chip_alloc(struct device *dev, const struct tpm_class_ops *ops)
+.. c:function:: struct tpm_chip *tpm_chip_alloc(struct device *pdev, const struct tpm_class_ops *ops)
 
     allocate a new struct tpm_chip instance
 
-    :param struct device \*dev:
-        *undescribed*
+    :param struct device \*pdev:
+        device to which the chip is associated
+        At this point pdev mst be initialized, but does not have to
+        be registered
 
     :param const struct tpm_class_ops \*ops:
         struct tpm_class_ops instance

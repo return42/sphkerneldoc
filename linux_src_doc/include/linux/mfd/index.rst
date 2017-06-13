@@ -9,6 +9,7 @@ mfd
 
     abx500/index
     samsung/index
+    syscon/index
     ab3100_h
     abx500_h
     altera-a10sr_h
@@ -24,6 +25,7 @@ mfd
     max8997_h
     max8998-private_h
     max8998_h
+    mxs-lradc_h
     palmas_h
     si476x-core_h
     si476x-platform_h
@@ -31,6 +33,7 @@ mfd
     stmpe_h
     stw481x_h
     tc3589x_h
+    ti-lmu_h
     tps6105x_h
     tps6507x_h
     tps65086_h

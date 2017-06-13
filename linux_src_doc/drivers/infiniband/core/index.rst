@@ -8,6 +8,7 @@ core
     :maxdepth: 1
 
     cache_c
+    cgroup_c
     cm_c
     cq_c
     device_c

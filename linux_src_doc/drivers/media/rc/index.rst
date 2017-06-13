@@ -19,6 +19,7 @@ rc
     ir-sharp-decoder_c
     ir-sony-decoder_c
     ir-xmp-decoder_c
+    rc-core-priv_h
     rc-ir-raw_c
     rc-main_c
     st_rc_c

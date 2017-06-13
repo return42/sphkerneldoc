@@ -287,7 +287,7 @@ tty_port_block_til_ready
         the tty device being bound
 
     :param struct file \*filp:
-        the file pointer of the opener
+        the file pointer of the opener or NULL
 
 .. _`tty_port_block_til_ready.description`:
 

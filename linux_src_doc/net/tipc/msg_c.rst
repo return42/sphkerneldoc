@@ -6,12 +6,15 @@
 tipc_buf_acquire
 ================
 
-.. c:function:: struct sk_buff *tipc_buf_acquire(u32 size)
+.. c:function:: struct sk_buff *tipc_buf_acquire(u32 size, gfp_t gfp)
 
     creates a TIPC message buffer
 
     :param u32 size:
         message size (including TIPC header)
+
+    :param gfp_t gfp:
+        *undescribed*
 
 .. _`tipc_buf_acquire.description`:
 

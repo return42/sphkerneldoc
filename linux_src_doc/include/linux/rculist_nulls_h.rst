@@ -160,5 +160,26 @@ as this loop can be restarted [2]
 [1] Documentation/atomic_ops.txt around line 114
 [2] Documentation/RCU/rculist_nulls.txt around line 146
 
+.. _`hlist_nulls_for_each_entry_safe`:
+
+hlist_nulls_for_each_entry_safe
+===============================
+
+.. c:function::  hlist_nulls_for_each_entry_safe( tpos,  pos,  head,  member)
+
+    iterate over list of given type safe against removal of list entry
+
+    :param  tpos:
+        the type \* to use as a loop cursor.
+
+    :param  pos:
+        the \ :c:type:`struct hlist_nulls_node <hlist_nulls_node>`\  to use as a loop cursor.
+
+    :param  head:
+        the head for your list.
+
+    :param  member:
+        the name of the hlist_nulls_node within the struct.
+
 .. This file was automatic generated / don't edit.
 

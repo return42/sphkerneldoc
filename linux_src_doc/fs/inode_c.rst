@@ -8,7 +8,7 @@ inode_init_always
 
 .. c:function:: int inode_init_always(struct super_block *sb, struct inode *inode)
 
-    perform inode structure intialisation
+    perform inode structure initialisation
 
     :param struct super_block \*sb:
         superblock inode belongs to
@@ -146,7 +146,7 @@ __insert_inode_hash
 Description
 -----------
 
-Add an inode to the inode hash for this superblock.
+     Add an inode to the inode hash for this superblock.
 
 .. _`__remove_inode_hash`:
 
@@ -165,7 +165,7 @@ __remove_inode_hash
 Description
 -----------
 
-Remove an inode from the superblock.
+     Remove an inode from the superblock.
 
 .. _`evict_inodes`:
 
@@ -231,11 +231,11 @@ new_inode_pseudo
 Description
 -----------
 
-Allocates a new inode for given superblock.
-Inode wont be chained in superblock s_inodes list
-This means :
-- fs can't be unmount
-- quotas, fsnotify, writeback can't work
+     Allocates a new inode for given superblock.
+     Inode wont be chained in superblock s_inodes list
+     This means :
+     - fs can't be unmount
+     - quotas, fsnotify, writeback can't work
 
 .. _`new_inode`:
 
@@ -254,12 +254,12 @@ new_inode
 Description
 -----------
 
-Allocates a new inode for given superblock. The default gfp_mask
-for allocations related to inode->i_mapping is GFP_HIGHUSER_MOVABLE.
-If HIGHMEM pages are unsuitable or it is known that pages allocated
-for the page cache are not reclaimable or migratable,
-\ :c:func:`mapping_set_gfp_mask`\  must be called with suitable flags on the
-newly created inode's mapping
+     Allocates a new inode for given superblock. The default gfp_mask
+     for allocations related to inode->i_mapping is GFP_HIGHUSER_MOVABLE.
+     If HIGHMEM pages are unsuitable or it is known that pages allocated
+     for the page cache are not reclaimable or migratable,
+     \ :c:func:`mapping_set_gfp_mask`\  must be called with suitable flags on the
+     newly created inode's mapping
 
 .. _`unlock_new_inode`:
 
@@ -408,18 +408,18 @@ iunique
 Description
 -----------
 
-Obtain an inode number that is unique on the system for a given
-superblock. This is used by file systems that have no natural
-permanent inode numbering system. An inode number is returned that
-is higher than the reserved limit but unique.
+     Obtain an inode number that is unique on the system for a given
+     superblock. This is used by file systems that have no natural
+     permanent inode numbering system. An inode number is returned that
+     is higher than the reserved limit but unique.
 
 .. _`iunique.bugs`:
 
 BUGS
 ----
 
-With a large number of inodes live on the file system this function
-currently becomes quite slow.
+     With a large number of inodes live on the file system this function
+     currently becomes quite slow.
 
 .. _`ilookup5_nowait`:
 
@@ -459,12 +459,7 @@ Note
 I_NEW is not waited upon so you have to be very careful what you do
 with the returned inode.  You probably should be using \ :c:func:`ilookup5`\  instead.
 
-.. _`ilookup5_nowait.note2`:
-
-Note2
------
-
-@test is called with the inode_hash_lock held, so can't sleep.
+Note2: \ ``test``\  is called with the inode_hash_lock held, so can't sleep.
 
 .. _`ilookup5`:
 
@@ -567,7 +562,7 @@ the inode_hash_lock spinlock held.
 
 This is a even more generalized version of \ :c:func:`ilookup5`\  when the
 function must never block --- \ :c:func:`find_inode`\  can block in
-\__wait_on_freeing_inode() --- or when the caller can not increment
+\ :c:func:`__wait_on_freeing_inode`\  --- or when the caller can not increment
 the reference count because the resulting \ :c:func:`iput`\  might cause an
 inode eviction.  The tradeoff is that the \ ``match``\  funtion must be
 very carefully implemented.
@@ -589,10 +584,10 @@ iput
 Description
 -----------
 
-Puts an inode, dropping its usage count. If the inode use count hits
-zero, the inode is then freed and may also be destroyed.
+     Puts an inode, dropping its usage count. If the inode use count hits
+     zero, the inode is then freed and may also be destroyed.
 
-Consequently, \ :c:func:`iput`\  can sleep.
+     Consequently, \ :c:func:`iput`\  can sleep.
 
 .. _`bmap`:
 
@@ -614,11 +609,11 @@ bmap
 Description
 -----------
 
-Returns the block number on the device holding the inode that
-is the disk block number for the block of the file requested.
-That is, asked for block 4 of inode 1 the function will return the
-disk block relative to the disk start that holds that block of the
-file.
+     Returns the block number on the device holding the inode that
+     is the disk block number for the block of the file requested.
+     That is, asked for block 4 of inode 1 the function will return the
+     disk block relative to the disk start that holds that block of the
+     file.
 
 .. _`__atime_needs_update`:
 
@@ -643,9 +638,9 @@ __atime_needs_update
 Description
 -----------
 
-Update the accessed time on an inode and mark it for writeback.
-This function automatically handles read only file systems and media,
-as well as the "noatime" flag and inode specific "noatime" markers.
+     Update the accessed time on an inode and mark it for writeback.
+     This function automatically handles read only file systems and media,
+     as well as the "noatime" flag and inode specific "noatime" markers.
 
 .. _`file_update_time`:
 
@@ -664,13 +659,13 @@ file_update_time
 Description
 -----------
 
-Update the mtime and ctime members of an inode and mark the inode
-for writeback.  Note that this function is meant exclusively for
-usage in the file write path of filesystems, and filesystems may
-choose to explicitly ignore update via this function with the
-S_NOCMTIME inode flag, e.g. for network filesystem where these
-timestamps are handled by the server.  This can return an error for
-file systems who need to allocate space in order to update an inode.
+     Update the mtime and ctime members of an inode and mark the inode
+     for writeback.  Note that this function is meant exclusively for
+     usage in the file write path of filesystems, and filesystems may
+     choose to explicitly ignore update via this function with the
+     S_NOCMTIME inode flag, e.g. for network filesystem where these
+     timestamps are handled by the server.  This can return an error for
+     file systems who need to allocate space in order to update an inode.
 
 .. _`inode_init_owner`:
 

@@ -63,10 +63,10 @@ Description
 
 This structure is not used directly, to wait for a
 notification declare it on the stack, and call
-\ :c:func:`iwlagn_init_notification_wait`\  with appropriate
+\ :c:func:`iwl_init_notification_wait`\  with appropriate
 parameters. Then do whatever will cause the ucode
 to notify the driver, and to wait for that then
-call \ :c:func:`iwlagn_wait_notification`\ .
+call \ :c:func:`iwl_wait_notification`\ .
 
 Each notification is one-shot. If at some point we
 need to support multi-shot notifications (which

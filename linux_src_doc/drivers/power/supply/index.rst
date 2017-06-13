@@ -13,6 +13,5 @@ supply
     abx500_chargalg_c
     act8945a_charger_c
     charger-manager_c
-    intel_mid_battery_c
     power_supply_core_c
     smb347-charger_c

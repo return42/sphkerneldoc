@@ -45,12 +45,12 @@ Return
 
 integer error code indicating the status of the removal
 
-.. _`queue_empty`:
+.. _`visorchannel_signalempty`:
 
-queue_empty
-===========
+visorchannel_signalempty
+========================
 
-.. c:function:: bool queue_empty(struct visorchannel *channel, u32 queue)
+.. c:function:: bool visorchannel_signalempty(struct visorchannel *channel, u32 queue)
 
     checks if the designated channel/queue contains any messages
 
@@ -60,55 +60,13 @@ queue_empty
     :param u32 queue:
         the queue in the channel to query
 
-.. _`queue_empty.return`:
+.. _`visorchannel_signalempty.return`:
 
 Return
 ------
 
 boolean indicating whether any messages in the designated
 channel/queue are present
-
-.. _`visorchannel_create_guts`:
-
-visorchannel_create_guts
-========================
-
-.. c:function:: struct visorchannel *visorchannel_create_guts(u64 physaddr, unsigned long channel_bytes, gfp_t gfp, uuid_le guid, bool needs_lock)
-
-    creates the struct visorchannel abstraction for a data area in memory, but does NOT modify this data area
-
-    :param u64 physaddr:
-        physical address of start of channel
-
-    :param unsigned long channel_bytes:
-        size of the channel in bytes; this may 0 if the channel has
-        already been initialized in memory (which is true for all
-        channels provided to guest environments by the s-Par
-        back-end), in which case the actual channel size will be
-        read from the channel header in memory
-
-    :param gfp_t gfp:
-        gfp_t to use when allocating memory for the data struct
-
-    :param uuid_le guid:
-        uuid that identifies channel type; this may 0 if the channel
-        has already been initialized in memory (which is true for all
-        channels provided to guest environments by the s-Par
-        back-end), in which case the actual channel guid will be
-        read from the channel header in memory
-
-    :param bool needs_lock:
-        must specify true if you have multiple threads of execution
-        that will be calling visorchannel methods of this
-        visorchannel at the same time
-
-.. _`visorchannel_create_guts.return`:
-
-Return
-------
-
-pointer to visorchannel that was created if successful,
-otherwise NULL
 
 .. _`visorchannel_signalinsert`:
 

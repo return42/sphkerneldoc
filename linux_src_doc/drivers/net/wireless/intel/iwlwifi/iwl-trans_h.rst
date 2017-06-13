@@ -438,6 +438,95 @@ cb_data_offs
     offset inside skb->cb to store transport data at, must have
     space for at least two pointers
 
+.. _`iwl_tx_queue_cfg_cmd`:
+
+struct iwl_tx_queue_cfg_cmd
+===========================
+
+.. c:type:: struct iwl_tx_queue_cfg_cmd
+
+    txq hw scheduler config command
+
+.. _`iwl_tx_queue_cfg_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_tx_queue_cfg_cmd {
+        u8 sta_id;
+        u8 tid;
+        __le16 flags;
+        __le32 cb_size;
+        __le64 byte_cnt_addr;
+        __le64 tfdq_addr;
+    }
+
+.. _`iwl_tx_queue_cfg_cmd.members`:
+
+Members
+-------
+
+sta_id
+    station id
+
+tid
+    tid of the queue
+
+flags
+    Bit 0 - on enable, off - disable, Bit 1 - short TFD format
+
+cb_size
+    size of TFD cyclic buffer. Value is exponent - 3.
+    Minimum value 0 (8 TFDs), maximum value 5 (256 TFDs)
+
+byte_cnt_addr
+    address of byte count table
+
+tfdq_addr
+    address of TFD circular buffer
+
+.. _`iwl_tx_queue_cfg_rsp`:
+
+struct iwl_tx_queue_cfg_rsp
+===========================
+
+.. c:type:: struct iwl_tx_queue_cfg_rsp
+
+    response to txq hw scheduler config
+
+.. _`iwl_tx_queue_cfg_rsp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_tx_queue_cfg_rsp {
+        __le16 queue_number;
+        __le16 flags;
+        __le16 write_pointer;
+        __le16 reserved;
+    }
+
+.. _`iwl_tx_queue_cfg_rsp.members`:
+
+Members
+-------
+
+queue_number
+    queue number assigned to this RA -TID
+
+flags
+    set on failure
+
+write_pointer
+    initial value for write pointer
+
+reserved
+    *undescribed*
+
 .. _`iwl_trans_ops`:
 
 struct iwl_trans_ops
@@ -468,9 +557,10 @@ Definition
         void (*reclaim)(struct iwl_trans *trans, int queue, int ssn,struct sk_buff_head *skbs);
         void (*txq_enable)(struct iwl_trans *trans, int queue, u16 ssn,const struct iwl_trans_txq_scd_cfg *cfg,unsigned int queue_wdg_timeout);
         void (*txq_disable)(struct iwl_trans *trans, int queue,bool configure_scd);
+        int (*txq_alloc)(struct iwl_trans *trans,struct iwl_tx_queue_cfg_cmd *cmd,int cmd_id,unsigned int queue_wdg_timeout);
+        void (*txq_free)(struct iwl_trans *trans, int queue);
         void (*txq_set_shared_mode)(struct iwl_trans *trans, u32 txq_id,bool shared);
-        dma_addr_t (*get_txq_byte_table)(struct iwl_trans *trans, int txq_id);
-        int (*wait_tx_queue_empty)(struct iwl_trans *trans, u32 txq_bm);
+        int (*wait_tx_queues_empty)(struct iwl_trans *trans, u32 txq_bm);
         void (*freeze_txq_timer)(struct iwl_trans *trans, unsigned long txqs,bool freeze);
         void (*block_txq_ptrs)(struct iwl_trans *trans, bool block);
         void (*write8)(struct iwl_trans *trans, u32 ofs, u8 val);
@@ -566,14 +656,17 @@ txq_disable
     de-configure a Tx queue to send AMPDUs
     Must be atomic
 
+txq_alloc
+    *undescribed*
+
+txq_free
+    *undescribed*
+
 txq_set_shared_mode
     change Tx queue shared/unshared marking
 
-get_txq_byte_table
+wait_tx_queues_empty
     *undescribed*
-
-wait_tx_queue_empty
-    wait until tx queues are empty. May sleep.
 
 freeze_txq_timer
     prevents the timer of the queue from firing until the
@@ -777,7 +870,6 @@ Definition
         bool wide_cmd_header;
         u8 num_rx_queues;
         struct kmem_cache *dev_cmd_pool;
-        size_t dev_cmd_headroom;
         char dev_cmd_pool_name[50];
         struct dentry *dbgfs_dir;
     #ifdef CONFIG_LOCKDEP
@@ -871,11 +963,6 @@ num_rx_queues
 
 dev_cmd_pool
     pool for Tx cmd allocation - for internal use only.
-    The user should use iwl_trans_{alloc,free}_tx_cmd.
-
-dev_cmd_headroom
-    room needed for the transport's private use before the
-    device_cmd for Tx - for internal use only
     The user should use iwl_trans_{alloc,free}_tx_cmd.
 
 dbgfs_dir

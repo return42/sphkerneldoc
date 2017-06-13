@@ -60,8 +60,8 @@ sysfs_create_link_nowarn
 Description
 -----------
 
-This function does the same as \ :c:func:`sysfs_create_link`\ , but it
-doesn't warn if the link already exists.
+     This function does the same as \ :c:func:`sysfs_create_link`\ , but it
+     doesn't warn if the link already exists.
 
 .. _`sysfs_delete_link`:
 
@@ -86,8 +86,8 @@ sysfs_delete_link
 Description
 -----------
 
-Unlike sysfs_remove_link sysfs_delete_link has enough information
-to successfully delete symlinks in tagged directories.
+     Unlike sysfs_remove_link sysfs_delete_link has enough information
+     to successfully delete symlinks in tagged directories.
 
 .. _`sysfs_remove_link`:
 
@@ -133,7 +133,7 @@ sysfs_rename_link_ns
 Description
 -----------
 
-A helper function for the common rename symlink idiom.
+     A helper function for the common rename symlink idiom.
 
 .. This file was automatic generated / don't edit.
 

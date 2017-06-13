@@ -50,6 +50,55 @@ Description
 Writes \ ``v``\  to the doorbell aperture at the
 requested doorbell index (CIK).
 
+.. _`amdgpu_mm_rdoorbell64`:
+
+amdgpu_mm_rdoorbell64
+=====================
+
+.. c:function:: u64 amdgpu_mm_rdoorbell64(struct amdgpu_device *adev, u32 index)
+
+    read a doorbell Qword
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param u32 index:
+        doorbell index
+
+.. _`amdgpu_mm_rdoorbell64.description`:
+
+Description
+-----------
+
+Returns the value in the doorbell aperture at the
+requested doorbell index (VEGA10+).
+
+.. _`amdgpu_mm_wdoorbell64`:
+
+amdgpu_mm_wdoorbell64
+=====================
+
+.. c:function:: void amdgpu_mm_wdoorbell64(struct amdgpu_device *adev, u32 index, u64 v)
+
+    write a doorbell Qword
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param u32 index:
+        doorbell index
+
+    :param u64 v:
+        value to write
+
+.. _`amdgpu_mm_wdoorbell64.description`:
+
+Description
+-----------
+
+Writes \ ``v``\  to the doorbell aperture at the
+requested doorbell index (VEGA10+).
+
 .. _`amdgpu_invalid_rreg`:
 
 amdgpu_invalid_rreg
@@ -315,6 +364,29 @@ Description
 Allocate a wb slot for use by the driver (all asics).
 Returns 0 on success or -EINVAL on failure.
 
+.. _`amdgpu_wb_get_64bit`:
+
+amdgpu_wb_get_64bit
+===================
+
+.. c:function:: int amdgpu_wb_get_64bit(struct amdgpu_device *adev, u32 *wb)
+
+    Allocate a wb entry
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param u32 \*wb:
+        wb index
+
+.. _`amdgpu_wb_get_64bit.description`:
+
+Description
+-----------
+
+Allocate a wb slot for use by the driver (all asics).
+Returns 0 on success or -EINVAL on failure.
+
 .. _`amdgpu_wb_free`:
 
 amdgpu_wb_free
@@ -331,6 +403,28 @@ amdgpu_wb_free
         wb index
 
 .. _`amdgpu_wb_free.description`:
+
+Description
+-----------
+
+Free a wb slot allocated for use by the driver (all asics)
+
+.. _`amdgpu_wb_free_64bit`:
+
+amdgpu_wb_free_64bit
+====================
+
+.. c:function:: void amdgpu_wb_free_64bit(struct amdgpu_device *adev, u32 wb)
+
+    Free a wb entry
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param u32 wb:
+        wb index
+
+.. _`amdgpu_wb_free_64bit.description`:
 
 Description
 -----------
@@ -428,26 +522,26 @@ FIXME
 
 when reducing GTT size align new size on power of 2.
 
-.. _`amdgpu_card_posted`:
+.. _`amdgpu_need_post`:
 
-amdgpu_card_posted
-==================
+amdgpu_need_post
+================
 
-.. c:function:: bool amdgpu_card_posted(struct amdgpu_device *adev)
+.. c:function:: bool amdgpu_need_post(struct amdgpu_device *adev)
 
-    check if the hw has already been initialized
+    check if the hw need post or not
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-.. _`amdgpu_card_posted.description`:
+.. _`amdgpu_need_post.description`:
 
 Description
 -----------
 
-Check if the asic has been initialized (all asics).
-Used at driver startup.
-Returns true if initialized or false if not.
+Check if the asic has been initialized (all asics) at driver startup
+or post is needed if  hw reset is performed.
+Returns true if need or false if not.
 
 .. _`amdgpu_dummy_page_init`:
 
@@ -983,6 +1077,31 @@ Description
 Bring the hw back to operating state (all asics).
 Returns 0 for success or an error on failure.
 Called at driver resume.
+
+.. _`amdgpu_sriov_gpu_reset`:
+
+amdgpu_sriov_gpu_reset
+======================
+
+.. c:function:: int amdgpu_sriov_gpu_reset(struct amdgpu_device *adev, bool voluntary)
+
+    reset the asic
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device pointer
+
+    :param bool voluntary:
+        if this reset is requested by guest.
+        (true means by guest and false means by HYPERVISOR )
+
+.. _`amdgpu_sriov_gpu_reset.description`:
+
+Description
+-----------
+
+Attempt the reset the GPU if it has hung (all asics).
+for SRIOV case.
+Returns 0 for success or an error on failure.
 
 .. _`amdgpu_gpu_reset`:
 

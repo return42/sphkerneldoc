@@ -206,10 +206,17 @@ dtim_reciprocal
     2^32 / dtim_interval
 
 mcast_qid
-    queue ID for multicast traffic
+    queue ID for multicast traffic.
 
 beacon_template
     beacon template ID
+
+.. _`iwl_mac_data_ap.note`:
+
+NOTE
+----
+
+obsolete from VER2 and on
 
 .. _`iwl_mac_data_ibss`:
 

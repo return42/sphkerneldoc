@@ -195,17 +195,17 @@ Description
 Returns 0 for the query func, number of processed bytes for
 encryption/decryption funcs
 
-.. _`cpacf_ppno`:
+.. _`cpacf_prno`:
 
-cpacf_ppno
+cpacf_prno
 ==========
 
-.. c:function:: void cpacf_ppno(unsigned long func, void *param, u8 *dest, long dest_len, const u8 *seed, long seed_len)
+.. c:function:: void cpacf_prno(unsigned long func, void *param, u8 *dest, unsigned long dest_len, const u8 *seed, unsigned long seed_len)
 
-    executes the PPNO (PERFORM PSEUDORANDOM NUMBER OPERATION) instruction
+    executes the PRNO (PERFORM RANDOM NUMBER OPERATION) instruction
 
     :param unsigned long func:
-        the function code passed to PPNO; see CPACF_PPNO_xxx defines
+        the function code passed to PRNO; see CPACF_PRNO_xxx defines
 
     :param void \*param:
         address of parameter block; see POP for details on each func
@@ -213,14 +213,35 @@ cpacf_ppno
     :param u8 \*dest:
         address of destination memory area
 
-    :param long dest_len:
+    :param unsigned long dest_len:
         size of destination memory area in bytes
 
     :param const u8 \*seed:
         address of seed data
 
-    :param long seed_len:
+    :param unsigned long seed_len:
         size of seed data in bytes
+
+.. _`cpacf_trng`:
+
+cpacf_trng
+==========
+
+.. c:function:: void cpacf_trng(u8 *ucbuf, unsigned long ucbuf_len, u8 *cbuf, unsigned long cbuf_len)
+
+    executes the TRNG subfunction of the PRNO instruction
+
+    :param u8 \*ucbuf:
+        buffer for unconditioned data
+
+    :param unsigned long ucbuf_len:
+        amount of unconditioned data to fetch in bytes
+
+    :param u8 \*cbuf:
+        buffer for conditioned data
+
+    :param unsigned long cbuf_len:
+        amount of conditioned data to fetch in bytes
 
 .. _`cpacf_pcc`:
 
@@ -236,6 +257,28 @@ cpacf_pcc
 
     :param void \*param:
         address of parameter block; see POP for details on each func
+
+.. _`cpacf_pckmo`:
+
+cpacf_pckmo
+===========
+
+.. c:function:: void cpacf_pckmo(long func, void *param)
+
+    executes the PCKMO (PERFORM CRYPTOGRAPHIC KEY MANAGEMENT) instruction
+
+    :param long func:
+        the function code passed to PCKMO; see CPACF_PCKMO_xxx defines
+
+    :param void \*param:
+        address of parameter block; see POP for details on each func
+
+.. _`cpacf_pckmo.description`:
+
+Description
+-----------
+
+Returns 0.
 
 .. This file was automatic generated / don't edit.
 

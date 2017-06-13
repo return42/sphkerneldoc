@@ -290,6 +290,12 @@ Definition
         unsigned int active_discharge_off;
         unsigned int active_discharge_mask;
         unsigned int active_discharge_reg;
+        unsigned int soft_start_reg;
+        unsigned int soft_start_mask;
+        unsigned int soft_start_val_on;
+        unsigned int pull_down_reg;
+        unsigned int pull_down_mask;
+        unsigned int pull_down_val_on;
         unsigned int enable_time;
         unsigned int off_on_delay;
         unsigned int (*of_map_mode)(unsigned int mode);
@@ -435,6 +441,26 @@ active_discharge_mask
 active_discharge_reg
     Register for control when using regmap
     set_active_discharge
+
+soft_start_reg
+    Register for control when using regmap set_soft_start
+
+soft_start_mask
+    Mask for control when using regmap set_soft_start
+
+soft_start_val_on
+    Enabling value for control when using regmap
+    set_soft_start
+
+pull_down_reg
+    Register for control when using regmap set_pull_down
+
+pull_down_mask
+    Mask for control when using regmap set_pull_down
+
+pull_down_val_on
+    Enabling value for control when using regmap
+    set_pull_down
 
 enable_time
     Time taken for initial enable of regulator (in uS).

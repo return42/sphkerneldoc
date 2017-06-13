@@ -25,9 +25,13 @@ Gather stats about HPD irqs from the specified \ ``pin``\ , and detect irq
 storms. Only the pin specific stats and state are changed, the caller is
 responsible for further action.
 
-\ ``HPD_STORM_THRESHOLD``\  irqs are allowed within \ ``HPD_STORM_DETECT_PERIOD``\  ms,
-otherwise it's considered an irq storm, and the irq state is set to
-\ ``HPD_MARK_DISABLED``\ .
+The number of irqs that are allowed within \ ``HPD_STORM_DETECT_PERIOD``\  is
+stored in \ ``dev_priv``\ ->hotplug.hpd_storm_threshold which defaults to
+\ ``HPD_STORM_DEFAULT_THRESHOLD``\ . If this threshold is exceeded, it's
+considered an irq storm and the irq state is set to \ ``HPD_MARK_DISABLED``\ .
+
+The HPD threshold can be controlled through i915_hpd_storm_ctl in debugfs,
+and should only be adjusted for automated hotplug testing.
 
 Return true if an irq storm was detected on \ ``pin``\ .
 

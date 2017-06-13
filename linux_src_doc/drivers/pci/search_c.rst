@@ -218,12 +218,12 @@ pci_dev_present
         A pointer to a null terminated list of struct pci_device_id structures
         that describe the type of PCI device the caller is trying to find.
 
-.. _`pci_dev_present.obvious-fact`:
+.. _`pci_dev_present.description`:
 
-Obvious fact
-------------
+Description
+-----------
 
-You do not have a reference to any device that might be found
+Obvious fact: You do not have a reference to any device that might be found
 by this function, so if that device is removed from the system right after
 this function is finished, the value will be stale.  Use this function to
 find devices that are usually built into a system, or for a general hint as

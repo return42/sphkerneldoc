@@ -97,49 +97,25 @@ Description
 \param fmt \ :c:func:`printf`\  like format string.
 \param arg arguments
 
-.. _`drm_ioctl_t`:
+.. _`drm_drv_uses_atomic_modeset`:
 
-drm_ioctl_t
-===========
+drm_drv_uses_atomic_modeset
+===========================
 
-.. c:function:: int drm_ioctl_t(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: bool drm_drv_uses_atomic_modeset(struct drm_device *dev)
+
+    check if the driver implements \ :c:func:`atomic_commit`\ 
 
     :param struct drm_device \*dev:
-        *undescribed*
+        DRM device
 
-    :param void \*data:
-        *undescribed*
-
-    :param struct drm_file \*file_priv:
-        *undescribed*
-
-.. _`drm_ioctl_t.description`:
+.. _`drm_drv_uses_atomic_modeset.description`:
 
 Description
 -----------
 
-\param inode device inode.
-\param file_priv DRM file private pointer.
-\param cmd command.
-\param arg argument.
-
-.. _`drm_ioctl_def_drv`:
-
-DRM_IOCTL_DEF_DRV
-=================
-
-.. c:function::  DRM_IOCTL_DEF_DRV( ioctl,  _func,  _flags)
-
-    ioctl, for use by \ :c:func:`drm_ioctl`\ .
-
-    :param  ioctl:
-        *undescribed*
-
-    :param  _func:
-        *undescribed*
-
-    :param  _flags:
-        *undescribed*
+This check is useful if drivers do not have DRIVER_ATOMIC set but
+have atomic modesetting internally implemented.
 
 .. This file was automatic generated / don't edit.
 

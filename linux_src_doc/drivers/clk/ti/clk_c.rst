@@ -76,7 +76,7 @@ once all the other clocks have been initialized.
 ti_clk_get_reg_addr
 ===================
 
-.. c:function:: void __iomem *ti_clk_get_reg_addr(struct device_node *node, int index)
+.. c:function:: int ti_clk_get_reg_addr(struct device_node *node, int index, struct clk_omap_reg *reg)
 
     get register address for a clock register
 
@@ -86,14 +86,17 @@ ti_clk_get_reg_addr
     :param int index:
         register index from the clock node
 
+    :param struct clk_omap_reg \*reg:
+        pointer to target register struct
+
 .. _`ti_clk_get_reg_addr.description`:
 
 Description
 -----------
 
-Builds clock register address from device tree information. This
-is a struct of type clk_omap_reg. Returns a pointer to the register
-address, or a pointer error value in failure.
+Builds clock register address from device tree information, and returns
+the data via the provided output pointer \ ``reg``\ . Returns 0 on success,
+negative error value on failure.
 
 .. _`omap2_clk_provider_init`:
 
@@ -172,6 +175,25 @@ reasons being missing parent node(s) during earlier init. This
 typically happens only for DPLLs which need to have both of their
 parent clocks ready during init.
 
+.. _`ti_clk_add_aliases`:
+
+ti_clk_add_aliases
+==================
+
+.. c:function:: void ti_clk_add_aliases( void)
+
+    setup clock aliases
+
+    :param  void:
+        no arguments
+
+.. _`ti_clk_add_aliases.description`:
+
+Description
+-----------
+
+Sets up any missing clock aliases. No return value.
+
 .. _`ti_clk_setup_features`:
 
 ti_clk_setup_features
@@ -236,6 +258,60 @@ Prepare and enable a list of clocks, named by \ ``clk_names``\ .  No
 return value. XXX Deprecated; only needed until these clocks are
 properly claimed and enabled by the drivers or core code that uses
 them.  XXX What code disables & calls clk_put on these clocks?
+
+.. _`ti_clk_add_alias`:
+
+ti_clk_add_alias
+================
+
+.. c:function:: int ti_clk_add_alias(struct device *dev, struct clk *clk, const char *con)
+
+    add a clock alias for a TI clock
+
+    :param struct device \*dev:
+        device alias for this clock
+
+    :param struct clk \*clk:
+        clock handle to create alias for
+
+    :param const char \*con:
+        connection ID for this clock
+
+.. _`ti_clk_add_alias.description`:
+
+Description
+-----------
+
+Creates a clock alias for a TI clock. Allocates the clock lookup entry
+and assigns the data to it. Returns 0 if successful, negative error
+value otherwise.
+
+.. _`ti_clk_register`:
+
+ti_clk_register
+===============
+
+.. c:function:: struct clk *ti_clk_register(struct device *dev, struct clk_hw *hw, const char *con)
+
+    register a TI clock to the common clock framework
+
+    :param struct device \*dev:
+        device for this clock
+
+    :param struct clk_hw \*hw:
+        hardware clock handle
+
+    :param const char \*con:
+        connection ID for this clock
+
+.. _`ti_clk_register.description`:
+
+Description
+-----------
+
+Registers a TI clock to the common clock framework, and adds a clock
+alias for it. Returns a handle to the registered clock if successful,
+ERR_PTR value in failure.
 
 .. This file was automatic generated / don't edit.
 

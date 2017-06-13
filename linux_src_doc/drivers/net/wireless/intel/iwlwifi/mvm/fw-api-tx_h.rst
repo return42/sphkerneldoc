@@ -127,6 +127,44 @@ TX_CMD_FLG_PAPD_TYPE
 TX_CMD_FLG_HCCA_CHUNK
     mark start of TSPEC chunk
 
+.. _`iwl_tx_cmd_flags`:
+
+enum iwl_tx_cmd_flags
+=====================
+
+.. c:type:: enum iwl_tx_cmd_flags
+
+    bitmasks for tx_flags in TX command for a000
+
+.. _`iwl_tx_cmd_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_tx_cmd_flags {
+        IWL_TX_FLAGS_CMD_RATE,
+        IWL_TX_FLAGS_ENCRYPT_DIS,
+        IWL_TX_FLAGS_HIGH_PRI
+    };
+
+.. _`iwl_tx_cmd_flags.constants`:
+
+Constants
+---------
+
+IWL_TX_FLAGS_CMD_RATE
+    use rate from the TX command
+
+IWL_TX_FLAGS_ENCRYPT_DIS
+    frame should not be encrypted, even if it belongs
+    to a secured STA
+
+IWL_TX_FLAGS_HIGH_PRI
+    high priority frame (like EAPOL) - can affect rate
+    selection, retry limits and BT kill
+
 .. _`iwl_tx_pm_timeouts`:
 
 enum iwl_tx_pm_timeouts
@@ -408,6 +446,52 @@ Range of len
 After the struct fields the MAC header is placed, plus any padding,
 and then the actial payload.
 
+.. _`iwl_tx_cmd_gen2`:
+
+struct iwl_tx_cmd_gen2
+======================
+
+.. c:type:: struct iwl_tx_cmd_gen2
+
+    TX command struct to FW for a000 devices ( TX_CMD = 0x1c )
+
+.. _`iwl_tx_cmd_gen2.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_tx_cmd_gen2 {
+        __le16 len;
+        __le16 offload_assist;
+        __le32 flags;
+        struct iwl_dram_sec_info dram_info;
+        __le32 rate_n_flags;
+        struct ieee80211_hdr hdr[0];
+    }
+
+.. _`iwl_tx_cmd_gen2.members`:
+
+Members
+-------
+
+len
+    in bytes of the payload, see below for details
+
+offload_assist
+    TX offload configuration
+
+flags
+    *undescribed*
+
+dram_info
+    FW internal DRAM storage
+
+rate_n_flags
+    rate for \*all\* Tx attempts, if TX_CMD_FLG_STA_RATE_MSK is
+    cleared. Combination of RATE_MCS\_\*
+
 .. _`agg_tx_status`:
 
 struct agg_tx_status
@@ -476,7 +560,7 @@ Definition
         u8 tlc_info;
         u8 ra_tid;
         __le16 frame_ctrl;
-        struct agg_tx_status status;
+        union {unnamed_union};
     }
 
 .. _`iwl_mvm_tx_resp.members`:
@@ -542,8 +626,9 @@ ra_tid
 frame_ctrl
     frame control
 
-status
-    for non-agg:  frame status TX_STATUS\_\*
+{unnamed_union}
+    anonymous
+
 
 .. _`iwl_mvm_tx_resp.for-agg`:
 
@@ -555,6 +640,7 @@ in usec.
 
 status of 1st frame, AGG_TX_STATE\_\*; other frame status fields
 follow this one, up to frame_count.
+For version 6 TX response isn't received for aggregation at all.
 
 After the array of statuses comes the SSN of the SCD. Look at
 \ ``iwl_mvm_get_scd_ssn``\  for more details.
@@ -654,9 +740,11 @@ Definition
 .. code-block:: c
 
     struct iwl_mvm_compressed_ba_tfd {
-        u8 q_num;
-        u8 reserved;
+        __le16 q_num;
         __le16 tfd_index;
+        u8 scd_queue;
+        u8 reserved;
+        __le16 reserved2;
     }
 
 .. _`iwl_mvm_compressed_ba_tfd.members`:
@@ -667,11 +755,17 @@ Members
 q_num
     TFD queue number
 
+tfd_index
+    Index of first un-acked frame in the  TFD queue
+
+scd_queue
+    For debug only - the physical queue the TFD queue is bound to
+
 reserved
     *undescribed*
 
-tfd_index
-    Index of first un-acked frame in the  TFD queue
+reserved2
+    *undescribed*
 
 .. _`iwl_mvm_compressed_ba_ratid`:
 
@@ -735,6 +829,7 @@ Definition
         __le16 query_frame_cnt;
         __le16 txed;
         __le16 done;
+        __le16 reserved;
         __le32 wireless_time;
         __le32 tx_rate;
         __le16 tfd_cnt;
@@ -777,6 +872,9 @@ txed
 done
     number of frames that were Acked by the BA (all-TIDs)
 
+reserved
+    *undescribed*
+
 wireless_time
     Wireless-media time
 
@@ -788,6 +886,10 @@ tfd_cnt
 
 ra_tid_cnt
     number of RATID-Q elements
+
+ra_tid
+    array of RA-TID queue status updates. For debug purposes only. See
+    \ :c:type:`struct iwl_mvm_compressed_ba_ratid <iwl_mvm_compressed_ba_ratid>`\  for more details.
 
 .. _`iwl_mac_beacon_cmd_v6`:
 
@@ -834,24 +936,23 @@ tim_size
 frame
     the template of the beacon frame
 
-.. _`iwl_mac_beacon_cmd`:
+.. _`iwl_mac_beacon_cmd_data`:
 
-struct iwl_mac_beacon_cmd
-=========================
+struct iwl_mac_beacon_cmd_data
+==============================
 
-.. c:type:: struct iwl_mac_beacon_cmd
+.. c:type:: struct iwl_mac_beacon_cmd_data
 
-    beacon template command with offloaded CSA
+    data of beacon template with offloaded CSA
 
-.. _`iwl_mac_beacon_cmd.definition`:
+.. _`iwl_mac_beacon_cmd_data.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_mac_beacon_cmd {
-        struct iwl_tx_cmd tx;
+    struct iwl_mac_beacon_cmd_data {
         __le32 template_id;
         __le32 tim_idx;
         __le32 tim_size;
@@ -860,13 +961,10 @@ Definition
         struct ieee80211_hdr frame[0];
     }
 
-.. _`iwl_mac_beacon_cmd.members`:
+.. _`iwl_mac_beacon_cmd_data.members`:
 
 Members
 -------
-
-tx
-    the tx commands associated with the beacon frame
 
 template_id
     currently equal to the mac context id of the coresponding
@@ -886,6 +984,78 @@ csa_offset
 
 frame
     the template of the beacon frame
+
+.. _`iwl_mac_beacon_cmd_v7`:
+
+struct iwl_mac_beacon_cmd_v7
+============================
+
+.. c:type:: struct iwl_mac_beacon_cmd_v7
+
+    beacon template command with offloaded CSA
+
+.. _`iwl_mac_beacon_cmd_v7.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mac_beacon_cmd_v7 {
+        struct iwl_tx_cmd tx;
+        struct iwl_mac_beacon_cmd_data data;
+    }
+
+.. _`iwl_mac_beacon_cmd_v7.members`:
+
+Members
+-------
+
+tx
+    the tx commands associated with the beacon frame
+
+data
+    see \ :c:type:`struct iwl_mac_beacon_cmd_data <iwl_mac_beacon_cmd_data>`\ 
+
+.. _`iwl_mac_beacon_cmd`:
+
+struct iwl_mac_beacon_cmd
+=========================
+
+.. c:type:: struct iwl_mac_beacon_cmd
+
+    beacon template command with offloaded CSA
+
+.. _`iwl_mac_beacon_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mac_beacon_cmd {
+        __le16 byte_cnt;
+        __le16 flags;
+        __le64 reserved;
+        struct iwl_mac_beacon_cmd_data data;
+    }
+
+.. _`iwl_mac_beacon_cmd.members`:
+
+Members
+-------
+
+byte_cnt
+    byte count of the beacon frame
+
+flags
+    for future use
+
+reserved
+    *undescribed*
+
+data
+    see \ :c:type:`struct iwl_mac_beacon_cmd_data <iwl_mac_beacon_cmd_data>`\ 
 
 .. _`iwl_extended_beacon_notif`:
 
@@ -991,32 +1161,6 @@ flush_ctl
 
 reserved
     reserved
-
-.. _`iwl_mvm_get_scd_ssn`:
-
-iwl_mvm_get_scd_ssn
-===================
-
-.. c:function:: u32 iwl_mvm_get_scd_ssn(struct iwl_mvm_tx_resp *tx_resp)
-
-    returns the SSN of the SCD
-
-    :param struct iwl_mvm_tx_resp \*tx_resp:
-        the Tx response from the fw (agg or non-agg)
-
-.. _`iwl_mvm_get_scd_ssn.description`:
-
-Description
------------
-
-When the fw sends an AMPDU, it fetches the MPDUs one after the other. Since
-it can't know that everything will go well until the end of the AMPDU, it
-can't know in advance the number of MPDUs that will be sent in the current
-batch. This is why it writes the agg Tx response while it fetches the MPDUs.
-Hence, it can't know in advance what the SSN of the SCD will be at the end
-of the batch. This is why the SSN of the SCD is written at the end of the
-whole struct at a variable offset. This function knows how to cope with the
-variable offset and returns the SSN of the SCD.
 
 .. _`iwl_scd_txq_cfg_cmd`:
 

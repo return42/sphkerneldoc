@@ -121,29 +121,29 @@ bmap
 idx_max
     Number of bits in bmap
 
-.. _`media_entity_graph`:
+.. _`media_graph`:
 
-struct media_entity_graph
-=========================
+struct media_graph
+==================
 
-.. c:type:: struct media_entity_graph
+.. c:type:: struct media_graph
 
     Media graph traversal state
 
-.. _`media_entity_graph.definition`:
+.. _`media_graph.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct media_entity_graph {
+    struct media_graph {
         struct stack[MEDIA_ENTITY_ENUM_MAX_DEPTH];
         struct media_entity_enum ent_enum;
         int top;
     }
 
-.. _`media_entity_graph.members`:
+.. _`media_graph.members`:
 
 Members
 -------
@@ -177,7 +177,7 @@ Definition
 
     struct media_pipeline {
         int streaming_count;
-        struct media_entity_graph graph;
+        struct media_graph graph;
     }
 
 .. _`media_pipeline.members`:
@@ -317,7 +317,7 @@ link_setup
 
 link_validate
     Return whether a link is valid from the entity point of
-    view. The \ :c:func:`media_entity_pipeline_start`\  function
+    view. The \ :c:func:`media_pipeline_start`\  function
     validates all links by calling this operation. Optional.
 
 .. _`media_entity_operations.description`:
@@ -1296,31 +1296,31 @@ Return
 
 returns a pointer to the entity on success or \ ``NULL``\  on failure.
 
-.. _`media_entity_graph_walk_init`:
+.. _`media_graph_walk_init`:
 
-media_entity_graph_walk_init
-============================
+media_graph_walk_init
+=====================
 
-.. c:function:: int media_entity_graph_walk_init(struct media_entity_graph *graph, struct media_device *mdev)
+.. c:function:: int media_graph_walk_init(struct media_graph *graph, struct media_device *mdev)
 
     Allocate resources used by graph walk.
 
-    :param struct media_entity_graph \*graph:
+    :param struct media_graph \*graph:
         Media graph structure that will be used to walk the graph
 
     :param struct media_device \*mdev:
         Pointer to the \ :c:type:`struct media_device <media_device>`\  that contains the object
 
-.. _`media_entity_graph_walk_cleanup`:
+.. _`media_graph_walk_cleanup`:
 
-media_entity_graph_walk_cleanup
-===============================
+media_graph_walk_cleanup
+========================
 
-.. c:function:: void media_entity_graph_walk_cleanup(struct media_entity_graph *graph)
+.. c:function:: void media_graph_walk_cleanup(struct media_graph *graph)
 
     Release resources used by graph walk.
 
-    :param struct media_entity_graph \*graph:
+    :param struct media_graph \*graph:
         Media graph structure that will be used to walk the graph
 
 .. _`media_entity_put`:
@@ -1344,47 +1344,47 @@ Release the reference count acquired by \ :c:func:`media_entity_get`\ .
 
 The function will return immediately if \ ``entity``\  is \ ``NULL``\ .
 
-.. _`media_entity_graph_walk_start`:
+.. _`media_graph_walk_start`:
 
-media_entity_graph_walk_start
-=============================
+media_graph_walk_start
+======================
 
-.. c:function:: void media_entity_graph_walk_start(struct media_entity_graph *graph, struct media_entity *entity)
+.. c:function:: void media_graph_walk_start(struct media_graph *graph, struct media_entity *entity)
 
     Start walking the media graph at a given entity
 
-    :param struct media_entity_graph \*graph:
+    :param struct media_graph \*graph:
         Media graph structure that will be used to walk the graph
 
     :param struct media_entity \*entity:
         Starting entity
 
-.. _`media_entity_graph_walk_start.description`:
+.. _`media_graph_walk_start.description`:
 
 Description
 -----------
 
-Before using this function, \ :c:func:`media_entity_graph_walk_init`\  must be
+Before using this function, \ :c:func:`media_graph_walk_init`\  must be
 used to allocate resources used for walking the graph. This
 function initializes the graph traversal structure to walk the
 entities graph starting at the given entity. The traversal
 structure must not be modified by the caller during graph
 traversal. After the graph walk, the resources must be released
-using \ :c:func:`media_entity_graph_walk_cleanup`\ .
+using \ :c:func:`media_graph_walk_cleanup`\ .
 
-.. _`media_entity_graph_walk_next`:
+.. _`media_graph_walk_next`:
 
-media_entity_graph_walk_next
-============================
+media_graph_walk_next
+=====================
 
-.. c:function:: struct media_entity *media_entity_graph_walk_next(struct media_entity_graph *graph)
+.. c:function:: struct media_entity *media_graph_walk_next(struct media_graph *graph)
 
     Get the next entity in the graph
 
-    :param struct media_entity_graph \*graph:
+    :param struct media_graph \*graph:
         Media graph structure
 
-.. _`media_entity_graph_walk_next.description`:
+.. _`media_graph_walk_next.description`:
 
 Description
 -----------
@@ -1392,9 +1392,9 @@ Description
 Perform a depth-first traversal of the given media entities graph.
 
 The graph structure must have been previously initialized with a call to
-\ :c:func:`media_entity_graph_walk_start`\ .
+\ :c:func:`media_graph_walk_start`\ .
 
-.. _`media_entity_graph_walk_next.return`:
+.. _`media_graph_walk_next.return`:
 
 Return
 ------
@@ -1402,12 +1402,12 @@ Return
 returns the next entity in the graph or \ ``NULL``\  if the whole graph
 have been traversed.
 
-.. _`media_entity_pipeline_start`:
+.. _`media_pipeline_start`:
 
-media_entity_pipeline_start
-===========================
+media_pipeline_start
+====================
 
-.. c:function:: int media_entity_pipeline_start(struct media_entity *entity, struct media_pipeline *pipe)
+.. c:function:: int media_pipeline_start(struct media_entity *entity, struct media_pipeline *pipe)
 
     Mark a pipeline as streaming
 
@@ -1417,7 +1417,7 @@ media_entity_pipeline_start
     :param struct media_pipeline \*pipe:
         Media pipeline to be assigned to all entities in the pipeline.
 
-.. _`media_entity_pipeline_start.description`:
+.. _`media_pipeline_start.description`:
 
 Description
 -----------
@@ -1427,16 +1427,16 @@ directly or indirectly, as streaming. The given pipeline object is assigned
 to every entity in the pipeline and stored in the media_entity pipe field.
 
 Calls to this function can be nested, in which case the same number of
-\ :c:func:`media_entity_pipeline_stop`\  calls will be required to stop streaming. The
+\ :c:func:`media_pipeline_stop`\  calls will be required to stop streaming. The
 pipeline pointer must be identical for all nested calls to
-\ :c:func:`media_entity_pipeline_start`\ .
+\ :c:func:`media_pipeline_start`\ .
 
-.. _`__media_entity_pipeline_start`:
+.. _`__media_pipeline_start`:
 
-__media_entity_pipeline_start
-=============================
+__media_pipeline_start
+======================
 
-.. c:function:: int __media_entity_pipeline_start(struct media_entity *entity, struct media_pipeline *pipe)
+.. c:function:: int __media_pipeline_start(struct media_entity *entity, struct media_pipeline *pipe)
 
     Mark a pipeline as streaming
 
@@ -1446,26 +1446,26 @@ __media_entity_pipeline_start
     :param struct media_pipeline \*pipe:
         Media pipeline to be assigned to all entities in the pipeline.
 
-.. _`__media_entity_pipeline_start.description`:
+.. _`__media_pipeline_start.description`:
 
 Description
 -----------
 
-..note:: This is the non-locking version of \ :c:func:`media_entity_pipeline_start`\ 
+..note:: This is the non-locking version of \ :c:func:`media_pipeline_start`\ 
 
-.. _`media_entity_pipeline_stop`:
+.. _`media_pipeline_stop`:
 
-media_entity_pipeline_stop
-==========================
+media_pipeline_stop
+===================
 
-.. c:function:: void media_entity_pipeline_stop(struct media_entity *entity)
+.. c:function:: void media_pipeline_stop(struct media_entity *entity)
 
     Mark a pipeline as not streaming
 
     :param struct media_entity \*entity:
         Starting entity
 
-.. _`media_entity_pipeline_stop.description`:
+.. _`media_pipeline_stop.description`:
 
 Description
 -----------
@@ -1474,28 +1474,28 @@ Mark all entities connected to a given entity through enabled links, either
 directly or indirectly, as not streaming. The media_entity pipe field is
 reset to \ ``NULL``\ .
 
-If multiple calls to \ :c:func:`media_entity_pipeline_start`\  have been made, the same
+If multiple calls to \ :c:func:`media_pipeline_start`\  have been made, the same
 number of calls to this function are required to mark the pipeline as not
 streaming.
 
-.. _`__media_entity_pipeline_stop`:
+.. _`__media_pipeline_stop`:
 
-__media_entity_pipeline_stop
-============================
+__media_pipeline_stop
+=====================
 
-.. c:function:: void __media_entity_pipeline_stop(struct media_entity *entity)
+.. c:function:: void __media_pipeline_stop(struct media_entity *entity)
 
     Mark a pipeline as not streaming
 
     :param struct media_entity \*entity:
         Starting entity
 
-.. _`__media_entity_pipeline_stop.description`:
+.. _`__media_pipeline_stop.description`:
 
 Description
 -----------
 
-.. note:: This is the non-locking version of \ :c:func:`media_entity_pipeline_stop`\ 
+.. note:: This is the non-locking version of \ :c:func:`media_pipeline_stop`\ 
 
 .. _`media_devnode_create`:
 

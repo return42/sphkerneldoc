@@ -1081,5 +1081,43 @@ Description
 
 Argument to the DRM_VMW_CREATE_EXTENDED_CONTEXT Ioctl.
 
+.. _`drm_vmw_handle_close_arg`:
+
+struct drm_vmw_handle_close_arg
+===============================
+
+.. c:type:: struct drm_vmw_handle_close_arg
+
+
+.. _`drm_vmw_handle_close_arg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_vmw_handle_close_arg {
+        __u32 handle;
+        __u32 pad64;
+    }
+
+.. _`drm_vmw_handle_close_arg.members`:
+
+Members
+-------
+
+handle
+    Handle to close.
+
+pad64
+    *undescribed*
+
+.. _`drm_vmw_handle_close_arg.description`:
+
+Description
+-----------
+
+Argument to the DRM_VMW_HANDLE_CLOSE Ioctl.
+
 .. This file was automatic generated / don't edit.
 

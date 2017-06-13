@@ -1,23 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mdev.h
 
-.. _`parent_ops`:
+.. _`mdev_parent_ops`:
 
-struct parent_ops
-=================
+struct mdev_parent_ops
+======================
 
-.. c:type:: struct parent_ops
+.. c:type:: struct mdev_parent_ops
 
     Structure to be registered for each parent device to register the device to mdev module.
 
-.. _`parent_ops.definition`:
+.. _`mdev_parent_ops.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct parent_ops {
+    struct mdev_parent_ops {
         struct module *owner;
         const struct attribute_group **dev_attr_groups;
         const struct attribute_group **mdev_attr_groups;
@@ -28,11 +28,11 @@ Definition
         void (*release)(struct mdev_device *mdev);
         ssize_t (*read)(struct mdev_device *mdev, char __user *buf,size_t count, loff_t *ppos);
         ssize_t (*write)(struct mdev_device *mdev, const char __user *buf,size_t count, loff_t *ppos);
-        ssize_t (*ioctl)(struct mdev_device *mdev, unsigned int cmd,unsigned long arg);
+        long (*ioctl)(struct mdev_device *mdev, unsigned int cmd,unsigned long arg);
         int (*mmap)(struct mdev_device *mdev, struct vm_area_struct *vma);
     }
 
-.. _`parent_ops.members`:
+.. _`mdev_parent_ops.members`:
 
 Members
 -------
@@ -103,7 +103,7 @@ mmap
     \ ``mdev``\ : mediated device structure
     \ ``vma``\ : vma structure
     Parent device that support mediated device should be registered with mdev
-    module with parent_ops structure.
+    module with mdev_parent_ops structure.
 
 .. _`mdev_driver`:
 

@@ -7,8 +7,10 @@ core
 .. toctree::
     :maxdepth: 1
 
+    block_c
     bus_c
     core_c
+    core_h
     host_c
     mmc_ops_c
     mmc_test_c

@@ -63,7 +63,7 @@ irq
     interrupt number
 
 flags
-    flags (see IRQF\_\* above)
+    flags (see IRQF_* above)
 
 thread_flags
     flags related to \ ``thread``\ 

@@ -84,6 +84,7 @@ Definition
         suspend_state_t initial_state;
         unsigned int initial_mode;
         unsigned int ramp_delay;
+        unsigned int settling_time;
         unsigned int enable_time;
         unsigned int active_discharge;
         unsigned always_on:1;
@@ -152,6 +153,10 @@ initial_mode
 
 ramp_delay
     Time to settle down after voltage change (unit: uV/us)
+
+settling_time
+    Time to settle down after voltage change when voltage
+    change is non-linear (unit: microseconds).
 
 enable_time
     Turn-on time of the rails (unit: microseconds)

@@ -6,18 +6,15 @@
 qla2x00_prep_ms_iocb
 ====================
 
-.. c:function:: void *qla2x00_prep_ms_iocb(scsi_qla_host_t *vha, uint32_t req_size, uint32_t rsp_size)
+.. c:function:: void *qla2x00_prep_ms_iocb(scsi_qla_host_t *vha, struct ct_arg *arg)
 
     Prepare common MS/CT IOCB fields for SNS CT query.
 
     :param scsi_qla_host_t \*vha:
         *undescribed*
 
-    :param uint32_t req_size:
-        request size in bytes
-
-    :param uint32_t rsp_size:
-        response size in bytes
+    :param struct ct_arg \*arg:
+        *undescribed*
 
 .. _`qla2x00_prep_ms_iocb.description`:
 
@@ -31,18 +28,15 @@ Returns a pointer to the \ ``ha``\ 's ms_iocb.
 qla24xx_prep_ms_iocb
 ====================
 
-.. c:function:: void *qla24xx_prep_ms_iocb(scsi_qla_host_t *vha, uint32_t req_size, uint32_t rsp_size)
+.. c:function:: void *qla24xx_prep_ms_iocb(scsi_qla_host_t *vha, struct ct_arg *arg)
 
     Prepare common CT IOCB fields for SNS CT query.
 
     :param scsi_qla_host_t \*vha:
         *undescribed*
 
-    :param uint32_t req_size:
-        request size in bytes
-
-    :param uint32_t rsp_size:
-        response size in bytes
+    :param struct ct_arg \*arg:
+        *undescribed*
 
 .. _`qla24xx_prep_ms_iocb.description`:
 

@@ -17,6 +17,8 @@ lpfc
     lpfc_mbox_c
     lpfc_mem_c
     lpfc_nportdisc_c
+    lpfc_nvme_c
+    lpfc_nvmet_c
     lpfc_scsi_c
     lpfc_sli_c
     lpfc_vport_c

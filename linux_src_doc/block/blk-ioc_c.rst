@@ -77,7 +77,7 @@ ioc_clear_queue
 Description
 -----------
 
-Walk \ ``q``\ ->icq_list and exit all io_cq's.  Must be called with \ ``q``\  locked.
+Walk \ ``q``\ ->icq_list and exit all io_cq's.
 
 .. _`get_task_io_context`:
 

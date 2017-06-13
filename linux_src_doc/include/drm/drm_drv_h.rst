@@ -19,20 +19,16 @@ Definition
 
     struct drm_driver {
         int (*load)(struct drm_device *, unsigned long flags);
-        int (*firstopen)(struct drm_device *);
         int (*open)(struct drm_device *, struct drm_file *);
         void (*preclose)(struct drm_device *, struct drm_file *file_priv);
         void (*postclose)(struct drm_device *, struct drm_file *);
         void (*lastclose)(struct drm_device *);
-        int (*unload)(struct drm_device *);
-        int (*dma_ioctl)(struct drm_device *dev, void *data, struct drm_file *file_priv);
-        int (*dma_quiescent)(struct drm_device *);
-        int (*context_dtor)(struct drm_device *dev, int context);
+        void (*unload)(struct drm_device *);
+        void (*release)(struct drm_device *);
         int (*set_busid)(struct drm_device *dev, struct drm_master *master);
         u32 (*get_vblank_counter)(struct drm_device *dev, unsigned int pipe);
         int (*enable_vblank)(struct drm_device *dev, unsigned int pipe);
         void (*disable_vblank)(struct drm_device *dev, unsigned int pipe);
-        int (*device_is_agp)(struct drm_device *dev);
         int (*get_scanout_position)(struct drm_device *dev, unsigned int pipe,unsigned int flags, int *vpos, int *hpos,ktime_t *stime, ktime_t *etime,const struct drm_display_mode *mode);
         int (*get_vblank_timestamp)(struct drm_device *dev, unsigned int pipe,int *max_error,struct timeval *vblank_time,unsigned flags);
         irqreturn_t(*irq_handler)(int irq, void *arg);
@@ -44,7 +40,6 @@ Definition
         int (*master_set)(struct drm_device *dev, struct drm_file *file_priv,bool from_open);
         void (*master_drop)(struct drm_device *dev, struct drm_file *file_priv);
         int (*debugfs_init)(struct drm_minor *minor);
-        void (*debugfs_cleanup)(struct drm_minor *minor);
         void (*gem_free_object)(struct drm_gem_object *obj);
         void (*gem_free_object_unlocked)(struct drm_gem_object *obj);
         int (*gem_open_object)(struct drm_gem_object *, struct drm_file *);
@@ -62,7 +57,6 @@ Definition
         void *(*gem_prime_vmap)(struct drm_gem_object *obj);
         void (*gem_prime_vunmap)(struct drm_gem_object *obj, void *vaddr);
         int (*gem_prime_mmap)(struct drm_gem_object *obj,struct vm_area_struct *vma);
-        void (*vgaarb_irq)(struct drm_device *dev, bool state);
         int (*dumb_create)(struct drm_file *file_priv,struct drm_device *dev,struct drm_mode_create_dumb *args);
         int (*dumb_map_offset)(struct drm_file *file_priv,struct drm_device *dev, uint32_t handle,uint64_t *offset);
         int (*dumb_destroy)(struct drm_file *file_priv,struct drm_device *dev,uint32_t handle);
@@ -74,11 +68,9 @@ Definition
         char *desc;
         char *date;
         u32 driver_features;
-        int dev_priv_size;
         const struct drm_ioctl_desc *ioctls;
         int num_ioctls;
         const struct file_operations *fops;
-        struct list_head legacy_dev_list;
     }
 
 .. _`drm_driver.members`:
@@ -87,34 +79,110 @@ Members
 -------
 
 load
-    *undescribed*
 
-firstopen
-    *undescribed*
+    Backward-compatible driver callback to complete
+    initialization steps after the driver is registered.  For
+    this reason, may suffer from race conditions and its use is
+    deprecated for new drivers.  It is therefore only supported
+    for existing drivers not yet converted to the new scheme.
+    See \ :c:func:`drm_dev_init`\  and \ :c:func:`drm_dev_register`\  for proper and
+    race-free way to set up a \ :c:type:`struct drm_device <drm_device>`\ .
+
+    This is deprecated, do not use!
+
+    Returns:
+
+    Zero on success, non-zero value on failure.
 
 open
-    *undescribed*
+
+    Driver callback when a new \ :c:type:`struct drm_file <drm_file>`\  is opened. Useful for
+    setting up driver-private data structures like buffer allocators,
+    execution contexts or similar things. Such driver-private resources
+    must be released again in \ ``postclose``\ .
+
+    Since the display/modeset side of DRM can only be owned by exactly
+    one \ :c:type:`struct drm_file <drm_file>`\  (see \ :c:type:`drm_file.is_master <drm_file>`\  and \ :c:type:`drm_device.master <drm_device>`\ )
+    there should never be a need to set up any modeset related resources
+    in this callback. Doing so would be a driver design bug.
+
+    Returns:
+
+    0 on success, a negative error code on failure, which will be
+    promoted to userspace as the result of the \ :c:func:`open`\  system call.
 
 preclose
-    *undescribed*
+
+    One of the driver callbacks when a new \ :c:type:`struct drm_file <drm_file>`\  is closed.
+    Useful for tearing down driver-private data structures allocated in
+    \ ``open``\  like buffer allocators, execution contexts or similar things.
+
+    Since the display/modeset side of DRM can only be owned by exactly
+    one \ :c:type:`struct drm_file <drm_file>`\  (see \ :c:type:`drm_file.is_master <drm_file>`\  and \ :c:type:`drm_device.master <drm_device>`\ )
+    there should never be a need to tear down any modeset related
+    resources in this callback. Doing so would be a driver design bug.
+
+    FIXME: It is not really clear why there's both \ ``preclose``\  and
+    \ ``postclose``\ . Without a really good reason, use \ ``postclose``\  only.
 
 postclose
-    *undescribed*
+
+    One of the driver callbacks when a new \ :c:type:`struct drm_file <drm_file>`\  is closed.
+    Useful for tearing down driver-private data structures allocated in
+    \ ``open``\  like buffer allocators, execution contexts or similar things.
+
+    Since the display/modeset side of DRM can only be owned by exactly
+    one \ :c:type:`struct drm_file <drm_file>`\  (see \ :c:type:`drm_file.is_master <drm_file>`\  and \ :c:type:`drm_device.master <drm_device>`\ )
+    there should never be a need to tear down any modeset related
+    resources in this callback. Doing so would be a driver design bug.
+
+    FIXME: It is not really clear why there's both \ ``preclose``\  and
+    \ ``postclose``\ . Without a really good reason, use \ ``postclose``\  only.
 
 lastclose
-    *undescribed*
+
+    Called when the last \ :c:type:`struct drm_file <drm_file>`\  has been closed and there's
+    currently no userspace client for the \ :c:type:`struct drm_device <drm_device>`\ .
+
+    Modern drivers should only use this to force-restore the fbdev
+    framebuffer using \ :c:func:`drm_fb_helper_restore_fbdev_mode_unlocked`\ .
+    Anything else would indicate there's something seriously wrong.
+    Modern drivers can also use this to execute delayed power switching
+    state changes, e.g. in conjunction with the :ref:`vga_switcheroo`
+    infrastructure.
+
+    This is called after \ ``preclose``\  and \ ``postclose``\  have been called.
+
+    NOTE:
+
+    All legacy drivers use this callback to de-initialize the hardware.
+    This is purely because of the shadow-attach model, where the DRM
+    kernel driver does not really own the hardware. Instead ownershipe is
+    handled with the help of userspace through an inheritedly racy dance
+    to set/unset the VT into raw mode.
+
+    Legacy drivers initialize the hardware in the \ ``firstopen``\  callback,
+    which isn't even called for modern drivers.
 
 unload
-    *undescribed*
 
-dma_ioctl
-    *undescribed*
+    Reverse the effects of the driver load callback.  Ideally,
+    the clean up performed by the driver should happen in the
+    reverse order of the initialization.  Similarly to the load
+    hook, this handler is deprecated and its usage should be
+    dropped in favor of an open-coded teardown function at the
+    driver layer.  See \ :c:func:`drm_dev_unregister`\  and \ :c:func:`drm_dev_unref`\ 
+    for the proper way to remove a \ :c:type:`struct drm_device <drm_device>`\ .
 
-dma_quiescent
-    *undescribed*
+    The \ :c:func:`unload`\  hook is called right after unregistering
+    the device.
 
-context_dtor
-    *undescribed*
+release
+
+    Optional callback for destroying device data after the final
+    reference is released, i.e. the device is being destroyed. Drivers
+    using this callback are responsible for calling \ :c:func:`drm_dev_fini`\ 
+    to finalize the device and then freeing the struct themselves.
 
 set_busid
     *undescribed*
@@ -123,15 +191,17 @@ get_vblank_counter
 
     Driver callback for fetching a raw hardware vblank counter for the
     CRTC specified with the pipe argument.  If a device doesn't have a
-    hardware counter, the driver can simply use
-    \ :c:func:`drm_vblank_no_hw_counter`\  function. The DRM core will account for
-    missed vblank events while interrupts where disabled based on system
-    timestamps.
+    hardware counter, the driver can simply leave the hook as NULL.
+    The DRM core will account for missed vblank events while interrupts
+    where disabled based on system timestamps.
 
     Wraparound handling and loss of events due to modesetting is dealt
     with in the DRM core code, as long as drivers call
     \ :c:func:`drm_crtc_vblank_off`\  and \ :c:func:`drm_crtc_vblank_on`\  when disabling or
     enabling a CRTC.
+
+    This is deprecated and should not be used by new drivers.
+    Use \ :c:type:`drm_crtc_funcs.get_vblank_counter <drm_crtc_funcs>`\  instead.
 
     Returns:
 
@@ -141,6 +211,9 @@ enable_vblank
 
     Enable vblank interrupts for the CRTC specified with the pipe
     argument.
+
+    This is deprecated and should not be used by new drivers.
+    Use \ :c:type:`drm_crtc_funcs.enable_vblank <drm_crtc_funcs>`\  instead.
 
     Returns:
 
@@ -152,16 +225,8 @@ disable_vblank
     Disable vblank interrupts for the CRTC specified with the pipe
     argument.
 
-device_is_agp
-
-    Called by \ :c:func:`drm_device_is_agp`\ .  Typically used to determine if a card
-    is really attached to AGP or not.
-
-    Returns:
-
-    One of three values is returned depending on whether or not the
-    card is absolutely not AGP (return of 0), absolutely is AGP
-    (return of 1), or may or may not be AGP (return of 2).
+    This is deprecated and should not be used by new drivers.
+    Use \ :c:type:`drm_crtc_funcs.disable_vblank <drm_crtc_funcs>`\  instead.
 
 get_scanout_position
 
@@ -282,9 +347,6 @@ master_drop
 debugfs_init
     *undescribed*
 
-debugfs_cleanup
-    *undescribed*
-
 gem_free_object
     deconstructor for drm_gem_objects
     This is deprecated and should not be used by new drivers. Use
@@ -292,7 +354,7 @@ gem_free_object
 
 gem_free_object_unlocked
     deconstructor for drm_gem_objects
-    This is for drivers which are not encumbered with dev->struct_mutex
+    This is for drivers which are not encumbered with \ :c:type:`drm_device.struct_mutex <drm_device>`\ 
     legacy locking schemes. Use this hook instead of \ ``gem_free_object``\ .
 
 gem_open_object
@@ -340,9 +402,6 @@ gem_prime_vunmap
     *undescribed*
 
 gem_prime_mmap
-    *undescribed*
-
-vgaarb_irq
     *undescribed*
 
 dumb_create
@@ -413,9 +472,6 @@ date
 driver_features
     *undescribed*
 
-dev_priv_size
-    *undescribed*
-
 ioctls
     *undescribed*
 
@@ -423,9 +479,6 @@ num_ioctls
     *undescribed*
 
 fops
-    *undescribed*
-
-legacy_dev_list
     *undescribed*
 
 .. _`drm_driver.description`:

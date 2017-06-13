@@ -9,4 +9,5 @@ nvkm
 
     core/index
     engine/index
+    falcon/index
     subdev/index

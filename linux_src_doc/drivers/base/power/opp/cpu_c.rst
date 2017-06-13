@@ -40,16 +40,6 @@ WARNING
 It is  important for the callers to ensure refreshing their copy of
 the table if any of the mentioned functions have been invoked in the interim.
 
-.. _`dev_pm_opp_init_cpufreq_table.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Since we just use the regular accessor functions to access the internal data
-structures, we use RCU read lock inside this function. As a result, users of
-this function DONOT need to use explicit locks for invoking.
-
 .. _`dev_pm_opp_free_cpufreq_table`:
 
 dev_pm_opp_free_cpufreq_table
@@ -93,17 +83,6 @@ This removes the OPP tables for CPUs present in the \ ``cpumask``\ .
 This should be used to remove all the OPPs entries associated with
 the cpus in \ ``cpumask``\ .
 
-.. _`dev_pm_opp_cpumask_remove_table.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
-
 .. _`dev_pm_opp_set_sharing_cpus`:
 
 dev_pm_opp_set_sharing_cpus
@@ -129,17 +108,6 @@ This marks OPP table of the \ ``cpu_dev``\  as shared by the CPUs present in
 
 Returns -ENODEV if OPP table isn't already present.
 
-.. _`dev_pm_opp_set_sharing_cpus.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
-
 .. _`dev_pm_opp_get_sharing_cpus`:
 
 dev_pm_opp_get_sharing_cpus
@@ -164,17 +132,6 @@ This updates the \ ``cpumask``\  with CPUs that are sharing OPPs with \ ``cpu_de
 
 Returns -ENODEV if OPP table isn't already present and -EINVAL if the OPP
 table's status is access-unknown.
-
-.. _`dev_pm_opp_get_sharing_cpus.locking`:
-
-Locking
--------
-
-The internal opp_table and opp structures are RCU protected.
-Hence this function internally uses RCU updater strategy with mutex locks
-to keep the integrity of the internal data structures. Callers should ensure
-that this function is \*NOT\* called under RCU protection or in contexts where
-mutex cannot be locked.
 
 .. This file was automatic generated / don't edit.
 

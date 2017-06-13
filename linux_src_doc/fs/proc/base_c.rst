@@ -40,8 +40,8 @@ NOTE
 ----
 
 This routine is just an optimization so it does not guarantee
-that no dcache entries will exist at process exit time it
-just makes it very unlikely that any will persist.
+      that no dcache entries will exist at process exit time it
+      just makes it very unlikely that any will persist.
 
 .. This file was automatic generated / don't edit.
 

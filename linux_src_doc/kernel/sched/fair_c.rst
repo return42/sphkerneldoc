@@ -276,7 +276,7 @@ check_asym_packing
 
 .. c:function:: int check_asym_packing(struct lb_env *env, struct sd_lb_stats *sds)
 
-    Check to see if the group is packed into the sched doman.
+    Check to see if the group is packed into the sched domain.
 
     :param struct lb_env \*env:
         The load balancing environment.

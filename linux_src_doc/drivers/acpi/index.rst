@@ -19,7 +19,7 @@ acpi
     device_pm_c
     device_sysfs_c
     dock_c
-    gsi_c
+    irq_c
     numa_c
     nvs_c
     osl_c

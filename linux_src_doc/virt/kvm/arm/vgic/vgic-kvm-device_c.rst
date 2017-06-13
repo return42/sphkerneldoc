@@ -36,12 +36,12 @@ Check them for sanity (alignment, double assignment). We can't check for
 overlapping regions in case of a virtual GICv3 here, since we don't know
 the number of VCPUs yet, so we defer this check to \ :c:func:`map_resources`\ .
 
-.. _`vgic_attr_regs_access_v2`:
+.. _`vgic_v2_attr_regs_access`:
 
-vgic_attr_regs_access_v2
+vgic_v2_attr_regs_access
 ========================
 
-.. c:function:: int vgic_attr_regs_access_v2(struct kvm_device *dev, struct kvm_device_attr *attr, u32 *reg, bool is_write)
+.. c:function:: int vgic_v2_attr_regs_access(struct kvm_device *dev, struct kvm_device_attr *attr, u32 *reg, bool is_write)
 
     allows user space to access VGIC v2 state
 

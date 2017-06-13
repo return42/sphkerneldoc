@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iommu/iommu.c
 
+.. _`iommu_insert_resv_region`:
+
+iommu_insert_resv_region
+========================
+
+.. c:function:: int iommu_insert_resv_region(struct iommu_resv_region *new, struct list_head *regions)
+
+    Insert a new region in the list of reserved regions.
+
+    :param struct iommu_resv_region \*new:
+        new region to insert
+
+    :param struct list_head \*regions:
+        list of regions
+
+.. _`iommu_insert_resv_region.description`:
+
+Description
+-----------
+
+The new element is sorted by address with respect to the other
+regions of the same type. In case it overlaps with another
+region of the same type, regions are merged. In case it
+overlaps with another region of different type, regions are
+not merged.
+
 .. _`iommu_group_alloc`:
 
 iommu_group_alloc
@@ -373,6 +399,53 @@ whenever an IOMMU fault happens.
 
 The fault handler itself should return 0 on success, and an appropriate
 error code otherwise.
+
+.. _`report_iommu_fault`:
+
+report_iommu_fault
+==================
+
+.. c:function:: int report_iommu_fault(struct iommu_domain *domain, struct device *dev, unsigned long iova, int flags)
+
+    report about an IOMMU fault to the IOMMU framework
+
+    :param struct iommu_domain \*domain:
+        the iommu domain where the fault has happened
+
+    :param struct device \*dev:
+        the device where the fault has happened
+
+    :param unsigned long iova:
+        the faulting address
+
+    :param int flags:
+        mmu fault flags (e.g. IOMMU_FAULT_READ/IOMMU_FAULT_WRITE/...)
+
+.. _`report_iommu_fault.description`:
+
+Description
+-----------
+
+This function should be called by the low-level IOMMU implementations
+whenever IOMMU faults happen, to allow high-level users, that are
+interested in such events, to know about them.
+
+.. _`report_iommu_fault.this-event-may-be-useful-for-several-possible-use-cases`:
+
+This event may be useful for several possible use cases
+-------------------------------------------------------
+
+- mere logging of the event
+- dynamic TLB/PTE loading
+- if restarting of the faulting device is required
+
+Returns 0 on success and an appropriate error code otherwise (if dynamic
+PTE/TLB loading will one day be supported, implementations will be able
+to tell whether it succeeded or not according to this return value).
+
+Specifically, -ENOSYS is returned if a fault handler isn't installed
+(though fault handlers can also return -ENOSYS, in case they want to
+elicit the default behavior of the IOMMU drivers).
 
 .. This file was automatic generated / don't edit.
 

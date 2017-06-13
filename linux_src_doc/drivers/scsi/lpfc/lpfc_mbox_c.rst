@@ -1497,6 +1497,37 @@ default this routine will set up the FCF to forward all unsolicited frames
 the the RQ ID passed in the \ ``phba``\ . This can be overridden by the caller for
 more complicated setups.
 
+.. _`lpfc_reg_fcfi_mrq`:
+
+lpfc_reg_fcfi_mrq
+=================
+
+.. c:function:: void lpfc_reg_fcfi_mrq(struct lpfc_hba *phba, struct lpfcMboxq *mbox, int mode)
+
+    Initialize the REG_FCFI_MRQ mailbox command
+
+    :param struct lpfc_hba \*phba:
+        pointer to the hba structure containing the FCF index and RQ ID.
+
+    :param struct lpfcMboxq \*mbox:
+        pointer to lpfc mbox command to initialize.
+
+    :param int mode:
+        0 to register FCFI, 1 to register MRQs
+
+.. _`lpfc_reg_fcfi_mrq.description`:
+
+Description
+-----------
+
+The REG_FCFI_MRQ mailbox command supports Fibre Channel Forwarders (FCFs).
+The SLI Host uses the command to activate an FCF after it has acquired FCF
+information via a READ_FCF mailbox command. This mailbox command also is used
+to indicate where received unsolicited frames from this FCF will be sent. By
+default this routine will set up the FCF to forward all unsolicited frames
+the the RQ ID passed in the \ ``phba``\ . This can be overridden by the caller for
+more complicated setups.
+
 .. _`lpfc_unreg_fcfi`:
 
 lpfc_unreg_fcfi

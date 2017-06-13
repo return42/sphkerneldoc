@@ -33,6 +33,38 @@ addr
 mask
     mask to write the block data update flag.
 
+.. _`st_sensor_das`:
+
+struct st_sensor_das
+====================
+
+.. c:type:: struct st_sensor_das
+
+    ST sensor device data alignment selection
+
+.. _`st_sensor_das.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct st_sensor_das {
+        u8 addr;
+        u8 mask;
+    }
+
+.. _`st_sensor_das.members`:
+
+Members
+-------
+
+addr
+    address of the register.
+
+mask
+    mask to write the das flag for left alignment.
+
 .. _`st_sensor_data_ready_irq`:
 
 struct st_sensor_data_ready_irq
@@ -195,6 +227,7 @@ Definition
         struct st_sensor_axis enable_axis;
         struct st_sensor_fullscale fs;
         struct st_sensor_bdu bdu;
+        struct st_sensor_das das;
         struct st_sensor_data_ready_irq drdy_irq;
         bool multi_read_bit;
         unsigned int bootime;
@@ -234,6 +267,9 @@ fs
 
 bdu
     Block data update register.
+
+das
+    Data Alignment Selection register.
 
 drdy_irq
     Data ready register of the sensor.

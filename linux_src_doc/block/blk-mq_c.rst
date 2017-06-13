@@ -27,15 +27,12 @@ new \ :c:func:`queue_rq`\  calls occur unless the queue has been stopped first.
 blk_mq_complete_request
 =======================
 
-.. c:function:: void blk_mq_complete_request(struct request *rq, int error)
+.. c:function:: void blk_mq_complete_request(struct request *rq)
 
     end I/O on a request
 
     :param struct request \*rq:
         the request being processed
-
-    :param int error:
-        *undescribed*
 
 .. _`blk_mq_complete_request.description`:
 

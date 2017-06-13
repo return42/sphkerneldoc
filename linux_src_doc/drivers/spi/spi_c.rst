@@ -197,6 +197,7 @@ would naturally declare its SPI devices.
 
 The board info passed can safely be __initdata ... but be careful of
 any embedded pointers (platform_data, etc), they're copied as-is.
+Device properties are deep-copied though.
 
 .. _`spi_register_board_info.return`:
 

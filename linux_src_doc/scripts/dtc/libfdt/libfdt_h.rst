@@ -42,6 +42,43 @@ Description
 After first calling \ :c:func:`fdt_first_subnode`\ , call this function repeatedly to
 get direct subnodes of a parent node.
 
+.. _`fdt_for_each_subnode`:
+
+fdt_for_each_subnode
+====================
+
+.. c:function::  fdt_for_each_subnode( node,  fdt,  parent)
+
+    iterate over all subnodes of a parent
+
+    :param  node:
+        child node (int, lvalue)
+
+    :param  fdt:
+        FDT blob (const void \*)
+
+    :param  parent:
+        parent node (int)
+
+.. _`fdt_for_each_subnode.this-is-actually-a-wrapper-around-a-for-loop-and-would-be-used-like-so`:
+
+This is actually a wrapper around a for loop and would be used like so
+----------------------------------------------------------------------
+
+
+fdt_for_each_subnode(node, fdt, parent) {
+Use node
+...
+}
+
+if ((node < 0) && (node != -FDT_ERR_NOT_FOUND)) {
+Error handling
+}
+
+Note that this is implemented as a macro and \ ``node``\  is used as
+iterator in the loop. The parent variable be constant or even a
+literal.
+
 .. _`fdt_check_header`:
 
 fdt_check_header
@@ -143,6 +180,36 @@ Return
 
 a pointer to the string, on success
 NULL, if stroffset is out of bounds
+
+.. _`fdt_get_max_phandle`:
+
+fdt_get_max_phandle
+===================
+
+.. c:function:: uint32_t fdt_get_max_phandle(const void *fdt)
+
+    retrieves the highest phandle in a tree
+
+    :param const void \*fdt:
+        pointer to the device tree blob
+
+.. _`fdt_get_max_phandle.description`:
+
+Description
+-----------
+
+fdt_get_max_phandle retrieves the highest phandle in the given
+device tree. This will ignore badly formatted phandles, or phandles
+with a value of 0 or -1.
+
+.. _`fdt_get_max_phandle.return`:
+
+Return
+------
+
+the highest phandle on success
+0, if no phandle was found in the device tree
+-1, if an error occurred
 
 .. _`fdt_num_mem_rsv`:
 
@@ -280,7 +347,8 @@ Return
 
 structure block offset of the requested subnode (>=0), on success
 -FDT_ERR_NOTFOUND, if the requested subnode does not exist
--FDT_ERR_BADOFFSET, if parentoffset did not point to an FDT_BEGIN_NODE tag
+-FDT_ERR_BADOFFSET, if parentoffset did not point to an FDT_BEGIN_NODE
+tag
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
@@ -345,7 +413,8 @@ address).
 Return
 ------
 
-structure block offset of the node with the requested path (>=0), on success
+structure block offset of the node with the requested path (>=0), on
+success
 -FDT_ERR_BADPATH, given path does not begin with '/' or is invalid
 -FDT_ERR_NOTFOUND, if the requested node does not exist
 -FDT_ERR_BADMAGIC,
@@ -388,10 +457,12 @@ Return
 ------
 
 pointer to the node's name, on success
-If lenp is non-NULL, \*lenp contains the length of that name (>=0)
+If lenp is non-NULL, \*lenp contains the length of that name
+(>=0)
 NULL, on error
 if lenp is non-NULL \*lenp contains an error code (<0):
--FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE tag
+-FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE
+tag
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE, standard meanings
@@ -470,6 +541,43 @@ structure block offset of the next property (>=0), on success
 -FDT_ERR_BADSTATE,
 -FDT_ERR_BADSTRUCTURE,
 -FDT_ERR_TRUNCATED, standard meanings.
+
+.. _`fdt_for_each_property_offset`:
+
+fdt_for_each_property_offset
+============================
+
+.. c:function::  fdt_for_each_property_offset( property,  fdt,  node)
+
+    iterate over all properties of a node
+
+    :param  property:
+        *undescribed*
+
+    :param  fdt:
+        FDT blob (const void \*)
+
+    :param  node:
+        node offset (int)
+
+.. _`fdt_for_each_property_offset.this-is-actually-a-wrapper-around-a-for-loop-and-would-be-used-like-so`:
+
+This is actually a wrapper around a for loop and would be used like so
+----------------------------------------------------------------------
+
+
+fdt_for_each_property_offset(property, fdt, node) {
+Use property
+...
+}
+
+if ((property < 0) && (property != -FDT_ERR_NOT_FOUND)) {
+Error handling
+}
+
+Note that this is implemented as a macro and property is used as
+iterator in the loop. The node variable can be constant or even a
+literal.
 
 .. _`fdt_get_property_by_offset`:
 
@@ -591,7 +699,8 @@ value (>=0)
 NULL, on error
 if lenp is non-NULL, \*lenp contains an error code (<0):
 -FDT_ERR_NOTFOUND, node does not have named property
--FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE tag
+-FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE
+tag
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
@@ -727,7 +836,8 @@ value (>=0)
 NULL, on error
 if lenp is non-NULL, \*lenp contains an error code (<0):
 -FDT_ERR_NOTFOUND, node does not have named property
--FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE tag
+-FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE
+tag
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
@@ -798,7 +908,7 @@ fdt_get_alias
 
 .. c:function:: const char *fdt_get_alias(const void *fdt, const char *name)
 
-    retreive the path referenced by a given alias
+    retrieve the path referenced by a given alias
 
     :param const void \*fdt:
         pointer to the device tree blob
@@ -926,7 +1036,8 @@ Return
 structure block offset of the node at node offset's ancestor
 of depth supernodedepth (>=0), on success
 -FDT_ERR_BADOFFSET, nodeoffset does not refer to a BEGIN_NODE tag
--FDT_ERR_NOTFOUND, supernodedepth was greater than the depth of nodeoffset
+-FDT_ERR_NOTFOUND, supernodedepth was greater than the depth of
+nodeoffset
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
@@ -1391,7 +1502,8 @@ Return
 
 0 <= n < FDT_MAX_NCELLS, on success
 2, if the node has no #address-cells property
--FDT_ERR_BADNCELLS, if the node has a badly formatted or invalid #address-cells property
+-FDT_ERR_BADNCELLS, if the node has a badly formatted or invalid
+#address-cells property
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
@@ -1427,12 +1539,53 @@ Return
 
 0 <= n < FDT_MAX_NCELLS, on success
 2, if the node has no #address-cells property
--FDT_ERR_BADNCELLS, if the node has a badly formatted or invalid #size-cells property
+-FDT_ERR_BADNCELLS, if the node has a badly formatted or invalid
+#size-cells property
 -FDT_ERR_BADMAGIC,
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
 -FDT_ERR_BADSTRUCTURE,
 -FDT_ERR_TRUNCATED, standard meanings
+
+.. _`fdt_setprop_inplace_namelen_partial`:
+
+fdt_setprop_inplace_namelen_partial
+===================================
+
+.. c:function:: int fdt_setprop_inplace_namelen_partial(void *fdt, int nodeoffset, const char *name, int namelen, uint32_t idx, const void *val, int len)
+
+    change a property's value, but not its size
+
+    :param void \*fdt:
+        pointer to the device tree blob
+
+    :param int nodeoffset:
+        offset of the node whose property to change
+
+    :param const char \*name:
+        name of the property to change
+
+    :param int namelen:
+        number of characters of name to consider
+
+    :param uint32_t idx:
+        index of the property to change in the array
+
+    :param const void \*val:
+        pointer to data to replace the property value with
+
+    :param int len:
+        length of the property value
+
+.. _`fdt_setprop_inplace_namelen_partial.description`:
+
+Description
+-----------
+
+Identical to \ :c:func:`fdt_setprop_inplace`\ , but modifies the given property
+starting from the given index, and using only the first characters
+of the name. It is useful when you want to manipulate only one value of
+an array and you have a string that doesn't end with \0.
 
 .. _`fdt_setprop_inplace`:
 
@@ -2067,6 +2220,53 @@ contain the new property value
 -FDT_ERR_BADLAYOUT,
 -FDT_ERR_TRUNCATED, standard meanings
 
+.. _`fdt_setprop_empty`:
+
+fdt_setprop_empty
+=================
+
+.. c:function::  fdt_setprop_empty( fdt,  nodeoffset,  name)
+
+    set a property to an empty value
+
+    :param  fdt:
+        pointer to the device tree blob
+
+    :param  nodeoffset:
+        offset of the node whose property to change
+
+    :param  name:
+        name of the property to change
+
+.. _`fdt_setprop_empty.description`:
+
+Description
+-----------
+
+fdt_setprop_empty() sets the value of the named property in the
+given node to an empty (zero length) value, or creates a new empty
+property if it does not already exist.
+
+This function may insert or delete data from the blob, and will
+therefore change the offsets of some existing nodes.
+
+.. _`fdt_setprop_empty.return`:
+
+Return
+------
+
+0, on success
+-FDT_ERR_NOSPACE, there is insufficient free space in the blob to
+contain the new property value
+-FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE tag
+-FDT_ERR_BADLAYOUT,
+-FDT_ERR_BADMAGIC,
+-FDT_ERR_BADVERSION,
+-FDT_ERR_BADSTATE,
+-FDT_ERR_BADSTRUCTURE,
+-FDT_ERR_BADLAYOUT,
+-FDT_ERR_TRUNCATED, standard meanings
+
 .. _`fdt_appendprop`:
 
 fdt_appendprop
@@ -2408,9 +2608,11 @@ change the offsets of some existing nodes.
 Return
 ------
 
-structure block offset of the created nodeequested subnode (>=0), on success
+structure block offset of the created nodeequested subnode (>=0), on
+success
 -FDT_ERR_NOTFOUND, if the requested subnode does not exist
--FDT_ERR_BADOFFSET, if parentoffset did not point to an FDT_BEGIN_NODE tag
+-FDT_ERR_BADOFFSET, if parentoffset did not point to an FDT_BEGIN_NODE
+tag
 -FDT_ERR_EXISTS, if the node at parentoffset already has a subnode of
 the given name
 -FDT_ERR_NOSPACE, if there is insufficient free space in the
@@ -2461,6 +2663,54 @@ Return
 -FDT_ERR_BADVERSION,
 -FDT_ERR_BADSTATE,
 -FDT_ERR_BADSTRUCTURE,
+-FDT_ERR_TRUNCATED, standard meanings
+
+.. _`fdt_overlay_apply`:
+
+fdt_overlay_apply
+=================
+
+.. c:function:: int fdt_overlay_apply(void *fdt, void *fdto)
+
+    Applies a DT overlay on a base DT
+
+    :param void \*fdt:
+        pointer to the base device tree blob
+
+    :param void \*fdto:
+        pointer to the device tree overlay blob
+
+.. _`fdt_overlay_apply.description`:
+
+Description
+-----------
+
+fdt_overlay_apply() will apply the given device tree overlay on the
+given base device tree.
+
+Expect the base device tree to be modified, even if the function
+returns an error.
+
+.. _`fdt_overlay_apply.return`:
+
+Return
+------
+
+0, on success
+-FDT_ERR_NOSPACE, there's not enough space in the base device tree
+-FDT_ERR_NOTFOUND, the overlay points to some inexistant nodes or
+properties in the base DT
+-FDT_ERR_BADPHANDLE,
+-FDT_ERR_BADOVERLAY,
+-FDT_ERR_NOPHANDLES,
+-FDT_ERR_INTERNAL,
+-FDT_ERR_BADLAYOUT,
+-FDT_ERR_BADMAGIC,
+-FDT_ERR_BADOFFSET,
+-FDT_ERR_BADPATH,
+-FDT_ERR_BADVERSION,
+-FDT_ERR_BADSTRUCTURE,
+-FDT_ERR_BADSTATE,
 -FDT_ERR_TRUNCATED, standard meanings
 
 .. This file was automatic generated / don't edit.

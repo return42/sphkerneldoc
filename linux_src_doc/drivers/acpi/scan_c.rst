@@ -72,7 +72,7 @@ Return enum dev_dma_attr.
 acpi_dma_configure
 ==================
 
-.. c:function:: void acpi_dma_configure(struct device *dev, enum dev_dma_attr attr)
+.. c:function:: int acpi_dma_configure(struct device *dev, enum dev_dma_attr attr)
 
     Set-up DMA configuration for the device.
 

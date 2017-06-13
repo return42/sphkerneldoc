@@ -18,10 +18,10 @@ bio_reset
 Description
 -----------
 
-After calling \ :c:func:`bio_reset`\ , \ ``bio``\  will be in the same state as a freshly
-allocated bio returned bio \ :c:func:`bio_alloc_bioset`\  - the only fields that are
-preserved are the ones that are initialized by \ :c:func:`bio_alloc_bioset`\ . See
-comment in struct bio.
+  After calling \ :c:func:`bio_reset`\ , \ ``bio``\  will be in the same state as a freshly
+  allocated bio returned bio \ :c:func:`bio_alloc_bioset`\  - the only fields that are
+  preserved are the ones that are initialized by \ :c:func:`bio_alloc_bioset`\ . See
+  comment in struct bio.
 
 .. _`bio_chain`:
 
@@ -54,14 +54,14 @@ The caller must not set bi_private or bi_end_io in \ ``bio``\ .
 bio_alloc_bioset
 ================
 
-.. c:function:: struct bio *bio_alloc_bioset(gfp_t gfp_mask, int nr_iovecs, struct bio_set *bs)
+.. c:function:: struct bio *bio_alloc_bioset(gfp_t gfp_mask, unsigned int nr_iovecs, struct bio_set *bs)
 
     allocate a bio for I/O
 
     :param gfp_t gfp_mask:
-        the GFP\_ mask given to the slab allocator
+        the GFP_ mask given to the slab allocator
 
-    :param int nr_iovecs:
+    :param unsigned int nr_iovecs:
         number of iovecs to pre-allocate
 
     :param struct bio_set \*bs:
@@ -72,37 +72,37 @@ bio_alloc_bioset
 Description
 -----------
 
-If \ ``bs``\  is NULL, uses \ :c:func:`kmalloc`\  to allocate the bio; else the allocation is
-backed by the \ ``bs``\ 's mempool.
+  If \ ``bs``\  is NULL, uses \ :c:func:`kmalloc`\  to allocate the bio; else the allocation is
+  backed by the \ ``bs``\ 's mempool.
 
-When \ ``bs``\  is not NULL, if \ ``__GFP_DIRECT_RECLAIM``\  is set then bio_alloc will
-always be able to allocate a bio. This is due to the mempool guarantees.
-To make this work, callers must never allocate more than 1 bio at a time
-from this pool. Callers that need to allocate more than 1 bio must always
-submit the previously allocated bio for IO before attempting to allocate
-a new one. Failure to do so can cause deadlocks under memory pressure.
+  When \ ``bs``\  is not NULL, if \ ``__GFP_DIRECT_RECLAIM``\  is set then bio_alloc will
+  always be able to allocate a bio. This is due to the mempool guarantees.
+  To make this work, callers must never allocate more than 1 bio at a time
+  from this pool. Callers that need to allocate more than 1 bio must always
+  submit the previously allocated bio for IO before attempting to allocate
+  a new one. Failure to do so can cause deadlocks under memory pressure.
 
-Note that when running under \ :c:func:`generic_make_request`\  (i.e. any block
-driver), bios are not submitted until after you return - see the code in
-\ :c:func:`generic_make_request`\  that converts recursion into iteration, to prevent
-stack overflows.
+  Note that when running under \ :c:func:`generic_make_request`\  (i.e. any block
+  driver), bios are not submitted until after you return - see the code in
+  \ :c:func:`generic_make_request`\  that converts recursion into iteration, to prevent
+  stack overflows.
 
-This would normally mean allocating multiple bios under
-\ :c:func:`generic_make_request`\  would be susceptible to deadlocks, but we have
-deadlock avoidance code that resubmits any blocked bios from a rescuer
-thread.
+  This would normally mean allocating multiple bios under
+  \ :c:func:`generic_make_request`\  would be susceptible to deadlocks, but we have
+  deadlock avoidance code that resubmits any blocked bios from a rescuer
+  thread.
 
-However, we do not guarantee forward progress for allocations from other
-mempools. Doing multiple allocations from the same mempool under
-\ :c:func:`generic_make_request`\  should be avoided - instead, use bio_set's front_pad
-for per bio allocations.
+  However, we do not guarantee forward progress for allocations from other
+  mempools. Doing multiple allocations from the same mempool under
+  \ :c:func:`generic_make_request`\  should be avoided - instead, use bio_set's front_pad
+  for per bio allocations.
 
 .. _`bio_alloc_bioset.return`:
 
 Return
 ------
 
-Pointer to new bio on success, NULL on failure.
+  Pointer to new bio on success, NULL on failure.
 
 .. _`bio_put`:
 
@@ -121,8 +121,8 @@ bio_put
 Description
 -----------
 
-Put a reference to a \ :c:type:`struct bio <bio>`\ , either one you have gotten with
-bio_alloc, bio_get or bio_clone. The last put of a bio will free it.
+  Put a reference to a \ :c:type:`struct bio <bio>`\ , either one you have gotten with
+  bio_alloc, bio_get or bio_clone. The last put of a bio will free it.
 
 .. _`__bio_clone_fast`:
 
@@ -144,11 +144,11 @@ __bio_clone_fast
 Description
 -----------
 
-Clone a \ :c:type:`struct bio <bio>`\ . Caller will own the returned bio, but not
-the actual data it points to. Reference count of returned
-bio will be one.
+     Clone a \ :c:type:`struct bio <bio>`\ . Caller will own the returned bio, but not
+     the actual data it points to. Reference count of returned
+     bio will be one.
 
-Caller must ensure that \ ``bio_src``\  is not freed before \ ``bio``\ .
+     Caller must ensure that \ ``bio_src``\  is not freed before \ ``bio``\ .
 
 .. _`bio_clone_fast`:
 
@@ -173,7 +173,7 @@ bio_clone_fast
 Description
 -----------
 
-Like \__bio_clone_fast, only also allocates the returned bio
+     Like __bio_clone_fast, only also allocates the returned bio
 
 .. _`bio_clone_bioset`:
 
@@ -198,8 +198,8 @@ bio_clone_bioset
 Description
 -----------
 
-Clone bio. Caller will own the returned bio, but not the actual data it
-points to. Reference count of returned bio will be one.
+     Clone bio. Caller will own the returned bio, but not the actual data it
+     points to. Reference count of returned bio will be one.
 
 .. _`bio_add_pc_page`:
 
@@ -230,12 +230,12 @@ bio_add_pc_page
 Description
 -----------
 
-Attempt to add a page to the bio_vec maplist. This can fail for a
-number of reasons, such as the bio being full or target block device
-limitations. The target block device must allow bio's up to PAGE_SIZE,
-so it is always possible to add a single page to an empty bio.
+     Attempt to add a page to the bio_vec maplist. This can fail for a
+     number of reasons, such as the bio being full or target block device
+     limitations. The target block device must allow bio's up to PAGE_SIZE,
+     so it is always possible to add a single page to an empty bio.
 
-This should only be used by REQ_PC bios.
+     This should only be used by REQ_PC bios.
 
 .. _`bio_add_page`:
 
@@ -263,8 +263,8 @@ bio_add_page
 Description
 -----------
 
-Attempt to add a page to the bio_vec maplist. This will only fail
-if either bio->bi_vcnt == bio->bi_max_vecs or it's a cloned bio.
+     Attempt to add a page to the bio_vec maplist. This will only fail
+     if either bio->bi_vcnt == bio->bi_max_vecs or it's a cloned bio.
 
 .. _`bio_iov_iter_get_pages`:
 
@@ -286,7 +286,7 @@ bio_iov_iter_get_pages
 Description
 -----------
 
-Pins as many pages from \*iter and appends them to \ ``bio``\ 's bvec array. The
+Pins as many pages from *iter and appends them to \ ``bio``\ 's bvec array. The
 pages will have to be released using \ :c:func:`put_page`\  when done.
 
 .. _`submit_bio_wait`:
@@ -449,8 +449,8 @@ bio_uncopy_user
 Description
 -----------
 
-Free pages allocated from \ :c:func:`bio_copy_user_iov`\  and write back data
-to user space in case of a read.
+     Free pages allocated from \ :c:func:`bio_copy_user_iov`\  and write back data
+     to user space in case of a read.
 
 .. _`bio_copy_user_iov`:
 
@@ -478,9 +478,9 @@ bio_copy_user_iov
 Description
 -----------
 
-Prepares and returns a bio for indirect user io, bouncing data
-to/from kernel pages as necessary. Must be paired with
-call \ :c:func:`bio_uncopy_user`\  on io completion.
+     Prepares and returns a bio for indirect user io, bouncing data
+     to/from kernel pages as necessary. Must be paired with
+     call \ :c:func:`bio_uncopy_user`\  on io completion.
 
 .. _`bio_map_user_iov`:
 
@@ -505,8 +505,8 @@ bio_map_user_iov
 Description
 -----------
 
-Map the user space address into a bio suitable for io to a block
-device. Returns an error pointer in case of error.
+     Map the user space address into a bio suitable for io to a block
+     device. Returns an error pointer in case of error.
 
 .. _`bio_unmap_user`:
 
@@ -525,10 +525,10 @@ bio_unmap_user
 Description
 -----------
 
-Unmap a bio previously mapped by \ :c:func:`bio_map_user`\ . Must be called with
-a process context.
+     Unmap a bio previously mapped by \ :c:func:`bio_map_user_iov`\ . Must be called from
+     process context.
 
-\ :c:func:`bio_unmap_user`\  may sleep.
+     \ :c:func:`bio_unmap_user`\  may sleep.
 
 .. _`bio_map_kern`:
 
@@ -556,8 +556,8 @@ bio_map_kern
 Description
 -----------
 
-Map the kernel address into a bio suitable for io to a block
-device. Returns an error pointer in case of error.
+     Map the kernel address into a bio suitable for io to a block
+     device. Returns an error pointer in case of error.
 
 .. _`bio_copy_kern`:
 
@@ -588,8 +588,8 @@ bio_copy_kern
 Description
 -----------
 
-copy the kernel address into a bio suitable for io to a block
-device. Returns an error pointer in case of error.
+     copy the kernel address into a bio suitable for io to a block
+     device. Returns an error pointer in case of error.
 
 .. _`bio_endio`:
 
@@ -608,9 +608,14 @@ bio_endio
 Description
 -----------
 
-bio_endio() will end I/O on the whole bio. \ :c:func:`bio_endio`\  is the preferred
-way to end I/O on a bio. No one should call \ :c:func:`bi_end_io`\  directly on a
-bio unless they own it and thus know that it has an end_io function.
+  \ :c:func:`bio_endio`\  will end I/O on the whole bio. \ :c:func:`bio_endio`\  is the preferred
+  way to end I/O on a bio. No one should call \ :c:func:`bi_end_io`\  directly on a
+  bio unless they own it and thus know that it has an end_io function.
+
+  \ :c:func:`bio_endio`\  can be called several times on a bio that has been chained
+  using \ :c:func:`bio_chain`\ .  The ->bi_end_io() function will only be called the
+  last time.  At this point the BLK_TA_COMPLETE tracing event will be
+  generated if BIO_TRACE_COMPLETION is set.
 
 .. _`bio_split`:
 
@@ -683,12 +688,12 @@ bioset_create
 Description
 -----------
 
-Set up a bio_set to be used with \ ``bio_alloc_bioset``\ . Allows the caller
-to ask for a number of bytes to be allocated in front of the bio.
-Front pad allocation is useful for embedding the bio inside
-another structure, to avoid allocating extra data to go with the bio.
-Note that the bio must be embedded at the END of that structure always,
-or things will break badly.
+   Set up a bio_set to be used with \ ``bio_alloc_bioset``\ . Allows the caller
+   to ask for a number of bytes to be allocated in front of the bio.
+   Front pad allocation is useful for embedding the bio inside
+   another structure, to avoid allocating extra data to go with the bio.
+   Note that the bio must be embedded at the END of that structure always,
+   or things will break badly.
 
 .. _`bioset_create_nobvec`:
 
@@ -710,8 +715,8 @@ bioset_create_nobvec
 Description
 -----------
 
-Same functionality as \ :c:func:`bioset_create`\  except that mempool is not
-created for bio_vecs. Saving some memory for \ :c:func:`bio_clone_fast`\  users.
+   Same functionality as \ :c:func:`bioset_create`\  except that mempool is not
+   created for bio_vecs. Saving some memory for \ :c:func:`bio_clone_fast`\  users.
 
 .. _`bio_associate_blkcg`:
 

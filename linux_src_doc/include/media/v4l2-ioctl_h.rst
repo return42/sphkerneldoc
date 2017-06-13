@@ -26,6 +26,7 @@ Definition
         int (*vidioc_enum_fmt_vid_out_mplane)(struct file *file, void *fh,struct v4l2_fmtdesc *f);
         int (*vidioc_enum_fmt_sdr_cap)(struct file *file, void *fh,struct v4l2_fmtdesc *f);
         int (*vidioc_enum_fmt_sdr_out)(struct file *file, void *fh,struct v4l2_fmtdesc *f);
+        int (*vidioc_enum_fmt_meta_cap)(struct file *file, void *fh,struct v4l2_fmtdesc *f);
         int (*vidioc_g_fmt_vid_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_g_fmt_vid_overlay)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_g_fmt_vid_out)(struct file *file, void *fh,struct v4l2_format *f);
@@ -38,6 +39,7 @@ Definition
         int (*vidioc_g_fmt_vid_out_mplane)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_g_fmt_sdr_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_g_fmt_sdr_out)(struct file *file, void *fh,struct v4l2_format *f);
+        int (*vidioc_g_fmt_meta_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_s_fmt_vid_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_s_fmt_vid_overlay)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_s_fmt_vid_out)(struct file *file, void *fh,struct v4l2_format *f);
@@ -50,6 +52,7 @@ Definition
         int (*vidioc_s_fmt_vid_out_mplane)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_s_fmt_sdr_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_s_fmt_sdr_out)(struct file *file, void *fh,struct v4l2_format *f);
+        int (*vidioc_s_fmt_meta_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_try_fmt_vid_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_try_fmt_vid_overlay)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_try_fmt_vid_out)(struct file *file, void *fh,struct v4l2_format *f);
@@ -62,6 +65,7 @@ Definition
         int (*vidioc_try_fmt_vid_out_mplane)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_try_fmt_sdr_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_try_fmt_sdr_out)(struct file *file, void *fh,struct v4l2_format *f);
+        int (*vidioc_try_fmt_meta_cap)(struct file *file, void *fh,struct v4l2_format *f);
         int (*vidioc_reqbufs)(struct file *file, void *fh,struct v4l2_requestbuffers *b);
         int (*vidioc_querybuf)(struct file *file, void *fh,struct v4l2_buffer *b);
         int (*vidioc_qbuf)(struct file *file, void *fh,struct v4l2_buffer *b);
@@ -184,6 +188,11 @@ vidioc_enum_fmt_sdr_out
     :ref:`VIDIOC_ENUM_FMT <vidioc_enum_fmt>` ioctl logic
     for Software Defined Radio output
 
+vidioc_enum_fmt_meta_cap
+    pointer to the function that implements
+    :ref:`VIDIOC_ENUM_FMT <vidioc_enum_fmt>` ioctl logic
+    for metadata capture
+
 vidioc_g_fmt_vid_cap
     pointer to the function that implements
     :ref:`VIDIOC_G_FMT <vidioc_g_fmt>` ioctl logic for video capture
@@ -238,6 +247,10 @@ vidioc_g_fmt_sdr_out
     :ref:`VIDIOC_G_FMT <vidioc_g_fmt>` ioctl logic for Software Defined
     Radio output
 
+vidioc_g_fmt_meta_cap
+    pointer to the function that implements
+    :ref:`VIDIOC_G_FMT <vidioc_g_fmt>` ioctl logic for metadata capture
+
 vidioc_s_fmt_vid_cap
     pointer to the function that implements
     :ref:`VIDIOC_S_FMT <vidioc_g_fmt>` ioctl logic for video capture
@@ -291,6 +304,10 @@ vidioc_s_fmt_sdr_out
     pointer to the function that implements
     :ref:`VIDIOC_S_FMT <vidioc_g_fmt>` ioctl logic for Software Defined
     Radio output
+
+vidioc_s_fmt_meta_cap
+    pointer to the function that implements
+    :ref:`VIDIOC_S_FMT <vidioc_g_fmt>` ioctl logic for metadata capture
 
 vidioc_try_fmt_vid_cap
     pointer to the function that implements
@@ -347,6 +364,10 @@ vidioc_try_fmt_sdr_out
     pointer to the function that implements
     :ref:`VIDIOC_TRY_FMT <vidioc_g_fmt>` ioctl logic for Software Defined
     Radio output
+
+vidioc_try_fmt_meta_cap
+    pointer to the function that implements
+    :ref:`VIDIOC_TRY_FMT <vidioc_g_fmt>` ioctl logic for metadata capture
 
 vidioc_reqbufs
     pointer to the function that implements

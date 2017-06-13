@@ -65,7 +65,7 @@ The same goes for drm_legacy_addbufs_pci.
 mga_driver_unload
 =================
 
-.. c:function:: int mga_driver_unload(struct drm_device *dev)
+.. c:function:: void mga_driver_unload(struct drm_device *dev)
 
     :param struct drm_device \*dev:
         *undescribed*

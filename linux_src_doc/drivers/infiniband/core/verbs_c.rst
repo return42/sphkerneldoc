@@ -250,8 +250,7 @@ The caller must
 ensure there is room in the CQ and SQ for the drain work request and
 completion.
 
-allocate the CQ using \ :c:func:`ib_alloc_cq`\  and the CQ poll context cannot be
-IB_POLL_DIRECT.
+allocate the CQ using \ :c:func:`ib_alloc_cq`\ .
 
 ensure that there are no other contexts that are posting WRs concurrently.
 Otherwise the drain is not guaranteed.
@@ -286,8 +285,7 @@ The caller must
 ensure there is room in the CQ and RQ for the drain work request and
 completion.
 
-allocate the CQ using \ :c:func:`ib_alloc_cq`\  and the CQ poll context cannot be
-IB_POLL_DIRECT.
+allocate the CQ using \ :c:func:`ib_alloc_cq`\ .
 
 ensure that there are no other contexts that are posting WRs concurrently.
 Otherwise the drain is not guaranteed.
@@ -313,8 +311,7 @@ The caller must
 ensure there is room in the CQ(s), SQ, and RQ for drain work requests
 and completions.
 
-allocate the CQs using \ :c:func:`ib_alloc_cq`\  and the CQ poll context cannot be
-IB_POLL_DIRECT.
+allocate the CQs using \ :c:func:`ib_alloc_cq`\ .
 
 ensure that there are no other contexts that are posting WRs concurrently.
 Otherwise the drain is not guaranteed.

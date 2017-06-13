@@ -18,15 +18,15 @@ ich_pata_cable_detect
 Description
 -----------
 
-Read 80c cable indicator from ATA PCI device's PCI config
-register.  This register is normally set by firmware (BIOS).
+     Read 80c cable indicator from ATA PCI device's PCI config
+     register.  This register is normally set by firmware (BIOS).
 
 .. _`ich_pata_cable_detect.locking`:
 
 LOCKING
 -------
 
-None (inherited from caller).
+     None (inherited from caller).
 
 .. _`piix_pata_prereset`:
 
@@ -48,7 +48,7 @@ piix_pata_prereset
 LOCKING
 -------
 
-None (inherited from caller).
+     None (inherited from caller).
 
 .. _`piix_set_piomode`:
 
@@ -70,14 +70,14 @@ piix_set_piomode
 Description
 -----------
 
-Set PIO mode for device, in host controller PCI config space.
+     Set PIO mode for device, in host controller PCI config space.
 
 .. _`piix_set_piomode.locking`:
 
 LOCKING
 -------
 
-None (inherited from caller).
+     None (inherited from caller).
 
 .. _`do_pata_set_dmamode`:
 
@@ -102,14 +102,14 @@ do_pata_set_dmamode
 Description
 -----------
 
-Set UDMA mode for device, in host controller PCI config space.
+     Set UDMA mode for device, in host controller PCI config space.
 
 .. _`do_pata_set_dmamode.locking`:
 
 LOCKING
 -------
 
-None (inherited from caller).
+     None (inherited from caller).
 
 .. _`piix_set_dmamode`:
 
@@ -131,14 +131,14 @@ piix_set_dmamode
 Description
 -----------
 
-Set MW/UDMA mode for device, in host controller PCI config space.
+     Set MW/UDMA mode for device, in host controller PCI config space.
 
 .. _`piix_set_dmamode.locking`:
 
 LOCKING
 -------
 
-None (inherited from caller).
+     None (inherited from caller).
 
 .. _`ich_set_dmamode`:
 
@@ -160,14 +160,14 @@ ich_set_dmamode
 Description
 -----------
 
-Set MW/UDMA mode for device, in host controller PCI config space.
+     Set MW/UDMA mode for device, in host controller PCI config space.
 
 .. _`ich_set_dmamode.locking`:
 
 LOCKING
 -------
 
-None (inherited from caller).
+     None (inherited from caller).
 
 .. _`piix_check_450nx_errata`:
 
@@ -186,8 +186,8 @@ piix_check_450nx_errata
 Description
 -----------
 
-Check for the present of 450NX errata #19 and errata #25. If
-they are found return an error code so we can turn off DMA
+     Check for the present of 450NX errata #19 and errata #25. If
+     they are found return an error code so we can turn off DMA
 
 .. _`piix_init_one`:
 
@@ -209,22 +209,22 @@ piix_init_one
 Description
 -----------
 
-Called from kernel PCI layer.  We probe for combined mode (sigh),
-and then hand over control to libata, for it to do the rest.
+     Called from kernel PCI layer.  We probe for combined mode (sigh),
+     and then hand over control to libata, for it to do the rest.
 
 .. _`piix_init_one.locking`:
 
 LOCKING
 -------
 
-Inherited from PCI layer (may sleep).
+     Inherited from PCI layer (may sleep).
 
 .. _`piix_init_one.return`:
 
 Return
 ------
 
-Zero on success, or -ERRNO value.
+     Zero on success, or -ERRNO value.
 
 .. This file was automatic generated / don't edit.
 

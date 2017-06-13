@@ -21,6 +21,14 @@ Definition
         struct list_head node;
         struct pinctrl_desc *desc;
         struct radix_tree_root pin_desc_tree;
+    #ifdef CONFIG_GENERIC_PINCTRL_GROUPS
+        struct radix_tree_root pin_group_tree;
+        unsigned int num_groups;
+    #endif
+    #ifdef CONFIG_GENERIC_PINMUX_FUNCTIONS
+        struct radix_tree_root pin_function_tree;
+        unsigned int num_functions;
+    #endif
         struct list_head gpio_ranges;
         struct device *dev;
         struct module *owner;
@@ -49,6 +57,18 @@ desc
 pin_desc_tree
     each pin descriptor for this pin controller is stored in
     this radix tree
+
+pin_group_tree
+    optionally each pin group can be stored in this radix tree
+
+num_groups
+    optionally number of groups can be kept here
+
+pin_function_tree
+    optionally each function can be stored in this radix tree
+
+num_functions
+    optionally number of functions can be kept here
 
 gpio_ranges
     a list of GPIO ranges that is handled by this pin controller,
@@ -378,6 +398,46 @@ maps
 
 num_maps
     the number of entries in \ ``maps``\ 
+
+.. _`group_desc`:
+
+struct group_desc
+=================
+
+.. c:type:: struct group_desc
+
+    generic pin group descriptor
+
+.. _`group_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct group_desc {
+        const char *name;
+        int *pins;
+        int num_pins;
+        void *data;
+    }
+
+.. _`group_desc.members`:
+
+Members
+-------
+
+name
+    name of the pin group
+
+pins
+    array of pins that belong to the group
+
+num_pins
+    number of pins in the group
+
+data
+    pin controller driver specific data
 
 .. This file was automatic generated / don't edit.
 

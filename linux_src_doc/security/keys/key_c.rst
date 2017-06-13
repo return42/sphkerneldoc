@@ -6,7 +6,7 @@
 key_alloc
 =========
 
-.. c:function:: struct key *key_alloc(struct key_type *type, const char *desc, kuid_t uid, kgid_t gid, const struct cred *cred, key_perm_t perm, unsigned long flags, int (*restrict_link)(struct key *, const struct key_type *, const union key_payload *))
+.. c:function:: struct key *key_alloc(struct key_type *type, const char *desc, kuid_t uid, kgid_t gid, const struct cred *cred, key_perm_t perm, unsigned long flags, struct key_restriction *restrict_link)
 
     Allocate a key of the specified type.
 
@@ -31,8 +31,8 @@ key_alloc
     :param unsigned long flags:
         Flags specifying quota properties.
 
-    :param int (\*restrict_link)(struct key \*, const struct key_type \*, const union key_payload \*):
-        Optional link restriction method for new keyrings.
+    :param struct key_restriction \*restrict_link:
+        Optional link restriction for new keyrings.
 
 .. _`key_alloc.description`:
 
@@ -42,6 +42,9 @@ Description
 Allocate a key of the specified type with the attributes given.  The key is
 returned in an uninstantiated state and the caller needs to instantiate the
 key before returning.
+
+The restrict_link structure (if not NULL) will be freed when the
+keyring is destroyed, so it must be dynamically allocated.
 
 The user's key count quota is updated to reflect the creation of the key and
 the user's key data quota has the default for the key type reserved.  The

@@ -18,9 +18,9 @@ dget_dlock
 Description
 -----------
 
-Given a dentry or \ ``NULL``\  pointer increment the reference count
-if appropriate and return the dentry. A dentry will not be
-destroyed when it has references.
+     Given a dentry or \ ``NULL``\  pointer increment the reference count
+     if appropriate and return the dentry. A dentry will not be
+     destroyed when it has references.
 
 .. _`d_unhashed`:
 
@@ -39,7 +39,7 @@ d_unhashed
 Description
 -----------
 
-Returns true if the dentry passed is not currently hashed.
+     Returns true if the dentry passed is not currently hashed.
 
 .. _`d_really_is_negative`:
 
@@ -63,7 +63,7 @@ doesn't map to an inode (ie. ->d_inode is NULL).  The dentry could represent
 a true miss, a whiteout that isn't represented by a 0,0 chardev or a
 fallthrough marker in an opaque directory.
 
-Note!  (1) This should be used \*only\* by a filesystem to examine its own
+Note!  (1) This should be used *only* by a filesystem to examine its own
 dentries.  It should not be used to look at some other filesystem's
 dentries.  (2) It should also be used in combination with \ :c:func:`d_inode`\  to get
 the inode.  (3) The dentry may have something attached to ->d_lower and the
@@ -90,7 +90,7 @@ Returns true if the dentry represents a name that maps to an inode
 (ie. ->d_inode is not NULL).  The dentry might still represent a whiteout if
 that is represented on medium as a 0,0 chardev.
 
-Note!  (1) This should be used \*only\* by a filesystem to examine its own
+Note!  (1) This should be used *only* by a filesystem to examine its own
 dentries.  It should not be used to look at some other filesystem's
 dentries.  (2) It should also be used in combination with \ :c:func:`d_inode`\  to get
 the inode.
@@ -204,15 +204,10 @@ d_real
 Description
 -----------
 
-If dentry is on an union/overlay, then return the underlying, real dentry.
+If dentry is on a union/overlay, then return the underlying, real dentry.
 Otherwise return the dentry itself.
 
-.. _`d_real.see-also`:
-
-See also
---------
-
-Documentation/filesystems/vfs.txt
+See also: Documentation/filesystems/vfs.txt
 
 .. _`d_real_inode`:
 
@@ -231,7 +226,7 @@ d_real_inode
 Description
 -----------
 
-If dentry is on an union/overlay, then return the underlying, real inode.
+If dentry is on a union/overlay, then return the underlying, real inode.
 Otherwise return \ :c:func:`d_inode`\ .
 
 .. This file was automatic generated / don't edit.

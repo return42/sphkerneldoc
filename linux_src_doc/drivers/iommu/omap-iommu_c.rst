@@ -1,51 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iommu/omap-iommu.c
 
-.. _`omap_iommu_domain`:
-
-struct omap_iommu_domain
-========================
-
-.. c:type:: struct omap_iommu_domain
-
-    omap iommu domain
-
-.. _`omap_iommu_domain.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_iommu_domain {
-        u32 *pgtable;
-        struct omap_iommu *iommu_dev;
-        struct device *dev;
-        spinlock_t lock;
-        struct iommu_domain domain;
-    }
-
-.. _`omap_iommu_domain.members`:
-
-Members
--------
-
-pgtable
-    the page table
-
-iommu_dev
-    an omap iommu device attached to this domain. only a single
-    iommu device can be attached for now.
-
-dev
-    Device using this domain.
-
-lock
-    domain lock, should be taken when attaching/detaching
-
-domain
-    *undescribed*
-
 .. _`to_omap_domain`:
 
 to_omap_domain
@@ -187,12 +142,12 @@ iopgtable_clear_entry
 omap_iommu_attach
 =================
 
-.. c:function:: struct omap_iommu *omap_iommu_attach(const char *name, u32 *iopgd)
+.. c:function:: int omap_iommu_attach(struct omap_iommu *obj, u32 *iopgd)
 
     attach iommu device to an iommu domain
 
-    :param const char \*name:
-        name of target omap iommu device
+    :param struct omap_iommu \*obj:
+        target omap iommu device
 
     :param u32 \*iopgd:
         page table

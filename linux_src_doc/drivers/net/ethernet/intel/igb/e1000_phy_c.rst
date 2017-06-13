@@ -84,7 +84,7 @@ igb_read_phy_reg_mdic
 Description
 -----------
 
-Reads the MDI control regsiter in the PHY at offset and stores the
+Reads the MDI control register in the PHY at offset and stores the
 information read to data.
 
 .. _`igb_write_phy_reg_mdic`:

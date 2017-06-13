@@ -397,11 +397,11 @@ cl_site_stats_print
 cl_env_get
 ==========
 
-.. c:function:: struct lu_env *cl_env_get(int *refcheck)
+.. c:function:: struct lu_env *cl_env_get(u16 *refcheck)
 
     if there already is an environment associated with the current thread, it is returned, otherwise, new environment is allocated.
 
-    :param int \*refcheck:
+    :param u16 \*refcheck:
         *undescribed*
 
 .. _`cl_env_get.description`:
@@ -423,12 +423,12 @@ used to detect missed \ :c:func:`cl_env_put`\ .
 cl_env_alloc
 ============
 
-.. c:function:: struct lu_env *cl_env_alloc(int *refcheck, __u32 tags)
+.. c:function:: struct lu_env *cl_env_alloc(u16 *refcheck, u32 tags)
 
-    :param int \*refcheck:
+    :param u16 \*refcheck:
         *undescribed*
 
-    :param __u32 tags:
+    :param u32 tags:
         *undescribed*
 
 .. _`cl_env_alloc.description`:
@@ -455,12 +455,12 @@ cl_env_cache_purge
 cl_env_put
 ==========
 
-.. c:function:: void cl_env_put(struct lu_env *env, int *refcheck)
+.. c:function:: void cl_env_put(struct lu_env *env, u16 *refcheck)
 
     :param struct lu_env \*env:
         *undescribed*
 
-    :param int \*refcheck:
+    :param u16 \*refcheck:
         *undescribed*
 
 .. _`cl_env_put.description`:

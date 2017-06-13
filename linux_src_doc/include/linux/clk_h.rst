@@ -29,7 +29,7 @@ Members
 -------
 
 clk
-    struct clk \* to associate the notifier with
+    struct clk * to associate the notifier with
 
 notifier_head
     a blocking_notifier_head for this clk
@@ -75,7 +75,7 @@ Members
 -------
 
 clk
-    struct clk \* being changed
+    struct clk * being changed
 
 old_rate
     previous rate of this clk
@@ -108,12 +108,12 @@ clk_notifier_register
     :param struct notifier_block \*nb:
         notifier block with callback function pointer
 
-.. _`clk_notifier_register.protip`:
+.. _`clk_notifier_register.description`:
 
-ProTip
-------
+Description
+-----------
 
-debugging across notifier chains can be frustrating. Make sure that
+ProTip: debugging across notifier chains can be frustrating. Make sure that
 your notifier callback function prints a nice big warning in case of
 failure.
 
@@ -216,8 +216,8 @@ Description
 -----------
 
 Returns true if the two struct clk pointers both point to the same hardware
-clock node. Put differently, returns true if struct clk \*p and struct clk \*q
-share the same struct clk_core object.
+clock node. Put differently, returns true if \ ``p``\  and \ ``q``\ 
+share the same \ :c:type:`struct clk_core <clk_core>`\  object.
 
 Returns false otherwise. Note that two NULL clks are treated as matching.
 
@@ -402,12 +402,7 @@ a driver and may be shut down.
 
 May be called from atomic contexts.
 
-.. _`clk_disable.implementation-detail`:
-
-Implementation detail
----------------------
-
-if the clock source is shared between
+Implementation detail: if the clock source is shared between
 multiple drivers, \ :c:func:`clk_enable`\  calls must be balanced by the
 same number of \ :c:func:`clk_disable`\  calls for the clock source to be
 disabled.
@@ -497,7 +492,7 @@ This answers the question "if I were to pass \ ``rate``\  to \ :c:func:`clk_set_
 what clock rate would I end up with?" without changing the hardware
 in any way.  In other words:
 
-rate = clk_round_rate(clk, r);
+  rate = clk_round_rate(clk, r);
 
 .. _`clk_round_rate.and`:
 
@@ -505,8 +500,8 @@ and
 ---
 
 
-clk_set_rate(clk, r);
-rate = clk_get_rate(clk);
+  clk_set_rate(clk, r);
+  rate = clk_get_rate(clk);
 
 are equivalent except the former does not modify the clock hardware
 in any way.

@@ -24,6 +24,7 @@ Definition
         PIN_CONFIG_BIAS_PULL_DOWN,
         PIN_CONFIG_BIAS_PULL_PIN_DEFAULT,
         PIN_CONFIG_BIAS_PULL_UP,
+        PIN_CONFIG_BIDIRECTIONAL,
         PIN_CONFIG_DRIVE_OPEN_DRAIN,
         PIN_CONFIG_DRIVE_OPEN_SOURCE,
         PIN_CONFIG_DRIVE_PUSH_PULL,
@@ -36,7 +37,8 @@ Definition
         PIN_CONFIG_OUTPUT,
         PIN_CONFIG_POWER_SOURCE,
         PIN_CONFIG_SLEW_RATE,
-        PIN_CONFIG_END
+        PIN_CONFIG_END,
+        PIN_CONFIG_MAX
     };
 
 .. _`pin_config_param.constants`:
@@ -83,6 +85,10 @@ PIN_CONFIG_BIAS_PULL_UP
     the pin will be pulled up (usually with high
     impedance to VDD). If the argument is != 0 pull-up is enabled,
     if it is 0, pull-up is total, i.e. the pin is connected to VDD.
+
+PIN_CONFIG_BIDIRECTIONAL
+    the pin will be configured to allow simultaneous
+    input and output operations.
 
 PIN_CONFIG_DRIVE_OPEN_DRAIN
     the pin will be driven with open drain (open
@@ -153,6 +159,10 @@ PIN_CONFIG_END
     this is the last enumerator for pin configurations, if
     you need to pass in custom configurations to the pin controller, use
     PIN_CONFIG_END+1 as the base offset.
+
+PIN_CONFIG_MAX
+    this is the maximum configuration value that can be
+    presented using the packed format.
 
 .. This file was automatic generated / don't edit.
 

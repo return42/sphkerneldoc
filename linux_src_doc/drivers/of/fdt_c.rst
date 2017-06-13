@@ -271,6 +271,31 @@ This function is used to scan the flattened device-tree, it is
 used to extract the memory information at boot before we can
 unflatten the tree
 
+.. _`of_scan_flat_dt_subnodes`:
+
+of_scan_flat_dt_subnodes
+========================
+
+.. c:function:: int of_scan_flat_dt_subnodes(unsigned long parent, int (*it)(unsigned long node, const char *uname, void *data), void *data)
+
+    scan sub-nodes of a node call callback on each.
+
+    :param unsigned long parent:
+        *undescribed*
+
+    :param int (\*it)(unsigned long node, const char \*uname, void \*data):
+        callback function
+
+    :param void \*data:
+        context data pointer
+
+.. _`of_scan_flat_dt_subnodes.description`:
+
+Description
+-----------
+
+This function is used to scan sub-nodes of a node.
+
 .. _`of_get_flat_dt_subnode_by_name`:
 
 of_get_flat_dt_subnode_by_name
@@ -365,6 +390,18 @@ of_flat_dt_match
         *undescribed*
 
     :param const char \*const \*compat:
+        *undescribed*
+
+.. _`of_get_flat_dt_phandle`:
+
+of_get_flat_dt_phandle
+======================
+
+.. c:function:: uint32_t of_get_flat_dt_phandle(unsigned long node)
+
+    Given a node in the flat blob, return the phandle
+
+    :param unsigned long node:
         *undescribed*
 
 .. _`of_flat_dt_match_machine`:

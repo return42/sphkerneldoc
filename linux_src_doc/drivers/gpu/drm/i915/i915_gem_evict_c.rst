@@ -49,6 +49,34 @@ pinned. Hence obj->pages_pin_count does not protect against eviction.
 To clarify: This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
 
+.. _`i915_gem_evict_for_node`:
+
+i915_gem_evict_for_node
+=======================
+
+.. c:function:: int i915_gem_evict_for_node(struct i915_address_space *vm, struct drm_mm_node *target, unsigned int flags)
+
+    Evict vmas to make room for binding a new one
+
+    :param struct i915_address_space \*vm:
+        address space to evict from
+
+    :param struct drm_mm_node \*target:
+        range (and color) to evict for
+
+    :param unsigned int flags:
+        additional flags to control the eviction algorithm
+
+.. _`i915_gem_evict_for_node.description`:
+
+Description
+-----------
+
+This function will try to evict vmas that overlap the target node.
+
+To clarify: This is for freeing up virtual address space, not for freeing
+memory in e.g. the shrinker.
+
 .. _`i915_gem_evict_vm`:
 
 i915_gem_evict_vm

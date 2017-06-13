@@ -1,0 +1,97 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: sound/soc/codecs/wm8960.c
+
+.. _`wm8960_configure_sysclk`:
+
+wm8960_configure_sysclk
+=======================
+
+.. c:function:: int wm8960_configure_sysclk(struct wm8960_priv *wm8960, int mclk, int *sysclk_idx, int *dac_idx, int *bclk_idx)
+
+    checks if there is a sysclk frequency available
+
+    :param struct wm8960_priv \*wm8960:
+        *undescribed*
+
+    :param int mclk:
+        MCLK used to derive sysclk
+
+    :param int \*sysclk_idx:
+        sysclk_divs index for found sysclk
+
+    :param int \*dac_idx:
+        dac_divs index for found lrclk
+
+    :param int \*bclk_idx:
+        bclk_divs index for found bclk
+
+.. _`wm8960_configure_sysclk.the-sysclk-must-be-chosen-such-that`:
+
+The sysclk must be chosen such that
+-----------------------------------
+
+- sysclk     = MCLK / sysclk_divs
+- lrclk      = sysclk / dac_divs
+- 10 \* bclk  = sysclk / bclk_divs
+
+If we cannot find an exact match for (sysclk, lrclk, bclk)
+triplet, we relax the bclk such that bclk is chosen as the
+closest available frequency greater than expected bclk.
+
+.. _`wm8960_configure_sysclk.return`:
+
+Return
+------
+
+-1, in case no sysclk frequency available found
+>=0, in case we could derive bclk and lrclk from sysclk using
+(@sysclk_idx, \ ``dac_idx``\ , \ ``bclk_idx``\ ) dividers
+
+.. _`wm8960_configure_pll`:
+
+wm8960_configure_pll
+====================
+
+.. c:function:: int wm8960_configure_pll(struct snd_soc_codec *codec, int freq_in, int *sysclk_idx, int *dac_idx, int *bclk_idx)
+
+    checks if there is a PLL out frequency available
+
+    :param struct snd_soc_codec \*codec:
+        codec structure
+
+    :param int freq_in:
+        input frequency used to derive freq out via PLL
+
+    :param int \*sysclk_idx:
+        sysclk_divs index for found sysclk
+
+    :param int \*dac_idx:
+        dac_divs index for found lrclk
+
+    :param int \*bclk_idx:
+        bclk_divs index for found bclk
+
+.. _`wm8960_configure_pll.the-pll-out-frequency-must-be-chosen-such-that`:
+
+The PLL out frequency must be chosen such that
+----------------------------------------------
+
+- sysclk      = lrclk \* dac_divs
+- freq_out    = sysclk \* sysclk_divs
+- 10 \* sysclk = bclk \* bclk_divs
+
+If we cannot find an exact match for (sysclk, lrclk, bclk)
+triplet, we relax the bclk such that bclk is chosen as the
+closest available frequency greater than expected bclk.
+
+.. _`wm8960_configure_pll.return`:
+
+Return
+------
+
+< 0, in case no PLL frequency out available was found
+>=0, in case we could derive bclk, lrclk, sysclk from PLL out using
+(@sysclk_idx, \ ``dac_idx``\ , \ ``bclk_idx``\ ) dividers
+
+.. This file was automatic generated / don't edit.
+

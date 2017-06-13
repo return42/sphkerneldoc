@@ -16,5 +16,4 @@ sched
     idle_c
     loadavg_c
     sched_h
-    stats_h
     wait_c

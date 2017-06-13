@@ -83,7 +83,7 @@ The flags are
 \ ``SLAB_POISON``\  - Poison the slab with a known test pattern (a5a5a5a5)
 to catch references to uninitialised memory.
 
-\ ``SLAB_RED_ZONE``\  - Insert \`Red' zones around the allocated memory to check
+\ ``SLAB_RED_ZONE``\  - Insert `Red' zones around the allocated memory to check
 for buffer overruns.
 
 \ ``SLAB_HWCACHE_ALIGN``\  - Align the objects in this cache to a hardware
@@ -139,7 +139,7 @@ Description
 Identical to kmem_cache_alloc but it will allocate memory on the given
 node, which can improve the performance for cpu bound structures.
 
-Fallback to other node is possible if \__GFP_THISNODE is not set.
+Fallback to other node is possible if __GFP_THISNODE is not set.
 
 .. _`__do_kmalloc`:
 

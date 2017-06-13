@@ -23,14 +23,14 @@ blkdev_issue_discard
         memory allocation flags (for bio_alloc)
 
     :param unsigned long flags:
-        BLKDEV_IFL\_\* flags to control behaviour
+        BLKDEV_DISCARD_* flags to control behaviour
 
 .. _`blkdev_issue_discard.description`:
 
 Description
 -----------
 
-Issue a discard request for the sectors in question.
+   Issue a discard request for the sectors in question.
 
 .. _`__blkdev_issue_write_same`:
 
@@ -64,7 +64,7 @@ __blkdev_issue_write_same
 Description
 -----------
 
-Generate and issue number of bios(REQ_OP_WRITE_SAME) with same page.
+ Generate and issue number of bios(REQ_OP_WRITE_SAME) with same page.
 
 .. _`blkdev_issue_write_same`:
 
@@ -95,45 +95,14 @@ blkdev_issue_write_same
 Description
 -----------
 
-Issue a write same request for the sectors in question.
-
-.. _`__blkdev_issue_write_zeroes`:
-
-__blkdev_issue_write_zeroes
-===========================
-
-.. c:function:: int __blkdev_issue_write_zeroes(struct block_device *bdev, sector_t sector, sector_t nr_sects, gfp_t gfp_mask, struct bio **biop)
-
-    generate number of bios with WRITE ZEROES
-
-    :param struct block_device \*bdev:
-        blockdev to issue
-
-    :param sector_t sector:
-        start sector
-
-    :param sector_t nr_sects:
-        number of sectors to write
-
-    :param gfp_t gfp_mask:
-        memory allocation flags (for bio_alloc)
-
-    :param struct bio \*\*biop:
-        pointer to anchor bio
-
-.. _`__blkdev_issue_write_zeroes.description`:
-
-Description
------------
-
-Generate and issue number of bios(REQ_OP_WRITE_ZEROES) with zerofiled pages.
+   Issue a write same request for the sectors in question.
 
 .. _`__blkdev_issue_zeroout`:
 
 __blkdev_issue_zeroout
 ======================
 
-.. c:function:: int __blkdev_issue_zeroout(struct block_device *bdev, sector_t sector, sector_t nr_sects, gfp_t gfp_mask, struct bio **biop, bool discard)
+.. c:function:: int __blkdev_issue_zeroout(struct block_device *bdev, sector_t sector, sector_t nr_sects, gfp_t gfp_mask, struct bio **biop, unsigned flags)
 
     generate number of zero filed write bios
 
@@ -152,22 +121,35 @@ __blkdev_issue_zeroout
     :param struct bio \*\*biop:
         pointer to anchor bio
 
-    :param bool discard:
-        discard flag
+    :param unsigned flags:
+        controls detailed behavior
 
 .. _`__blkdev_issue_zeroout.description`:
 
 Description
 -----------
 
-Generate and issue number of bios with zerofiled pages.
+ Zero-fill a block range, either using hardware offload or by explicitly
+ writing zeroes to the device.
+
+ Note that this function may fail with -EOPNOTSUPP if the driver signals
+ zeroing offload support, but the device fails to process the command (for
+ some devices there is no non-destructive way to verify whether this
+ operation is actually supported).  In this case the caller should call
+ retry the call to \ :c:func:`blkdev_issue_zeroout`\  and the fallback path will be used.
+
+ If a device is using logical block provisioning, the underlying space will
+ not be released if \ ``flags``\  contains BLKDEV_ZERO_NOUNMAP.
+
+ If \ ``flags``\  contains BLKDEV_ZERO_NOFALLBACK, the function will return
+ -EOPNOTSUPP if no explicit hardware offload for zeroing is provided.
 
 .. _`blkdev_issue_zeroout`:
 
 blkdev_issue_zeroout
 ====================
 
-.. c:function:: int blkdev_issue_zeroout(struct block_device *bdev, sector_t sector, sector_t nr_sects, gfp_t gfp_mask, bool discard)
+.. c:function:: int blkdev_issue_zeroout(struct block_device *bdev, sector_t sector, sector_t nr_sects, gfp_t gfp_mask, unsigned flags)
 
     zero-fill a block range
 
@@ -183,24 +165,17 @@ blkdev_issue_zeroout
     :param gfp_t gfp_mask:
         memory allocation flags (for bio_alloc)
 
-    :param bool discard:
-        whether to discard the block range
+    :param unsigned flags:
+        controls detailed behavior
 
 .. _`blkdev_issue_zeroout.description`:
 
 Description
 -----------
 
-Zero-fill a block range.  If the discard flag is set and the block
-device guarantees that subsequent READ operations to the block range
-in question will return zeroes, the blocks will be discarded. Should
-the discard request fail, if the discard flag is not set, or if
-discard_zeroes_data is not supported, this function will resort to
-zeroing the blocks manually, thus provisioning (allocating,
-anchoring) them. If the block device supports WRITE ZEROES or WRITE SAME
-command(s), \ :c:func:`blkdev_issue_zeroout`\  will use it to optimize the process of
-clearing the block range. Otherwise the zeroing will be performed
-using regular WRITE calls.
+ Zero-fill a block range, either using hardware offload or by explicitly
+ writing zeroes to the device.  See \ :c:func:`__blkdev_issue_zeroout`\  for the
+ valid values for \ ``flags``\ .
 
 .. This file was automatic generated / don't edit.
 

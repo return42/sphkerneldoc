@@ -70,9 +70,12 @@ Caller is responcible for freeing retunrned value if it is not error.
 cifs_dfs_do_refmount
 ====================
 
-.. c:function:: struct vfsmount *cifs_dfs_do_refmount(struct cifs_sb_info *cifs_sb, const char *fullpath, const struct dfs_info3_param *ref)
+.. c:function:: struct vfsmount *cifs_dfs_do_refmount(struct dentry *mntpt, struct cifs_sb_info *cifs_sb, const char *fullpath, const struct dfs_info3_param *ref)
 
     mounts specified path using provided refferal
+
+    :param struct dentry \*mntpt:
+        *undescribed*
 
     :param struct cifs_sb_info \*cifs_sb:
         parent/root superblock

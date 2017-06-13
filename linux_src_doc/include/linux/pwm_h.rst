@@ -348,7 +348,6 @@ Definition
         struct pwm_device *pwms;
         struct pwm_device * (*of_xlate)(struct pwm_chip *pc,const struct of_phandle_args *args);
         unsigned int of_pwm_n_cells;
-        bool can_sleep;
     }
 
 .. _`pwm_chip.members`:
@@ -379,10 +378,6 @@ of_xlate
 
 of_pwm_n_cells
     number of cells expected in the device tree PWM specifier
-
-can_sleep
-    must be true if the .config(), .enable() or .disable()
-    operations may sleep
 
 .. _`pwm_capture`:
 

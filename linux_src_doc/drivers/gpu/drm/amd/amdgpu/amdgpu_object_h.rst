@@ -62,5 +62,17 @@ Description
 
 Returns mmap offset of the object.
 
+.. _`amdgpu_bo_gpu_accessible`:
+
+amdgpu_bo_gpu_accessible
+========================
+
+.. c:function:: bool amdgpu_bo_gpu_accessible(struct amdgpu_bo *bo)
+
+    return whether the bo is currently in memory that is accessible to the GPU.
+
+    :param struct amdgpu_bo \*bo:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

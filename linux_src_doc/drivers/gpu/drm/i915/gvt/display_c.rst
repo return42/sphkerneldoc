@@ -64,12 +64,15 @@ This function is used to clean vGPU virtual display emulation stuffs
 intel_vgpu_init_display
 =======================
 
-.. c:function:: int intel_vgpu_init_display(struct intel_vgpu *vgpu)
+.. c:function:: int intel_vgpu_init_display(struct intel_vgpu *vgpu, u64 resolution)
 
     initialize vGPU virtual display emulation
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
+
+    :param u64 resolution:
+        *undescribed*
 
 .. _`intel_vgpu_init_display.description`:
 
@@ -84,6 +87,25 @@ Return
 ------
 
 Zero on success, negative error code if failed.
+
+.. _`intel_vgpu_reset_display`:
+
+intel_vgpu_reset_display
+========================
+
+.. c:function:: void intel_vgpu_reset_display(struct intel_vgpu *vgpu)
+
+    reset vGPU virtual display emulation
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_reset_display.description`:
+
+Description
+-----------
+
+This function is used to reset vGPU virtual display emulation stuffs
 
 .. This file was automatic generated / don't edit.
 

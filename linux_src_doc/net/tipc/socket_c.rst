@@ -25,13 +25,13 @@ Definition
         u32 max_pkt;
         u32 portid;
         struct tipc_msg phdr;
-        struct list_head sock_list;
+        struct list_head cong_links;
         struct list_head publications;
         u32 pub_count;
         uint conn_timeout;
         atomic_t dupl_rcvcnt;
         bool probe_unacked;
-        bool link_cong;
+        u16 cong_link_cnt;
         u16 snt_unacked;
         u16 snd_win;
         u16 peer_caps;
@@ -39,6 +39,7 @@ Definition
         u16 rcv_win;
         struct sockaddr_tipc peer;
         struct rhash_head node;
+        struct tipc_mc_method mc_method;
         struct rcu_head rcu;
     }
 
@@ -67,8 +68,9 @@ portid
 
 phdr
     preformatted message header used when sending messages
+    #cong_links: list of congested links
 
-sock_list
+cong_links
     *undescribed*
 
 publications
@@ -86,8 +88,8 @@ dupl_rcvcnt
 probe_unacked
     *undescribed*
 
-link_cong
-    non-zero if owner must sleep because of link congestion
+cong_link_cnt
+    number of congested links
 
 snt_unacked
     *undescribed*
@@ -109,6 +111,9 @@ peer
 
 node
     hash table node
+
+mc_method
+    cookie for use between socket and broadcast layer
 
 rcu
     rcu struct for tipc_sock
@@ -339,7 +344,7 @@ and will not block.
 tipc_sendmcast
 ==============
 
-.. c:function:: int tipc_sendmcast(struct socket *sock, struct tipc_name_seq *seq, struct msghdr *msg, size_t dsz, long timeo)
+.. c:function:: int tipc_sendmcast(struct socket *sock, struct tipc_name_seq *seq, struct msghdr *msg, size_t dlen, long timeout)
 
     send multicast message
 
@@ -352,10 +357,10 @@ tipc_sendmcast
     :param struct msghdr \*msg:
         message to send
 
-    :param size_t dsz:
-        total length of message data
+    :param size_t dlen:
+        length of data to send
 
-    :param long timeo:
+    :param long timeout:
         timeout to wait for wakeup
 
 .. _`tipc_sendmcast.description`:
@@ -439,12 +444,12 @@ and for 'SYN' messages on SOCK_SEQPACKET and SOCK_STREAM connections.
 
 Returns the number of bytes sent on success, or errno otherwise
 
-.. _`tipc_send_stream`:
+.. _`tipc_sendstream`:
 
-tipc_send_stream
-================
+tipc_sendstream
+===============
 
-.. c:function:: int tipc_send_stream(struct socket *sock, struct msghdr *m, size_t dsz)
+.. c:function:: int tipc_sendstream(struct socket *sock, struct msghdr *m, size_t dsz)
 
     send stream-oriented data
 
@@ -457,7 +462,7 @@ tipc_send_stream
     :param size_t dsz:
         total length of data to be transmitted
 
-.. _`tipc_send_stream.description`:
+.. _`tipc_sendstream.description`:
 
 Description
 -----------
@@ -548,7 +553,7 @@ Returns 0 if successful, otherwise errno
 tipc_recvmsg
 ============
 
-.. c:function:: int tipc_recvmsg(struct socket *sock, struct msghdr *m, size_t buf_len, int flags)
+.. c:function:: int tipc_recvmsg(struct socket *sock, struct msghdr *m, size_t buflen, int flags)
 
     receive packet-oriented message
 
@@ -558,8 +563,8 @@ tipc_recvmsg
     :param struct msghdr \*m:
         descriptor for message info
 
-    :param size_t buf_len:
-        total size of user buffer area
+    :param size_t buflen:
+        length of user buffer area
 
     :param int flags:
         receive flags
@@ -574,12 +579,12 @@ If the complete message doesn't fit in user area, truncate it.
 
 Returns size of returned message data, errno otherwise
 
-.. _`tipc_recv_stream`:
+.. _`tipc_recvstream`:
 
-tipc_recv_stream
-================
+tipc_recvstream
+===============
 
-.. c:function:: int tipc_recv_stream(struct socket *sock, struct msghdr *m, size_t buf_len, int flags)
+.. c:function:: int tipc_recvstream(struct socket *sock, struct msghdr *m, size_t buflen, int flags)
 
     receive stream-oriented data
 
@@ -589,13 +594,13 @@ tipc_recv_stream
     :param struct msghdr \*m:
         descriptor for message info
 
-    :param size_t buf_len:
+    :param size_t buflen:
         total size of user buffer area
 
     :param int flags:
         receive flags
 
-.. _`tipc_recv_stream.description`:
+.. _`tipc_recvstream.description`:
 
 Description
 -----------
@@ -849,7 +854,7 @@ Returns 0 on success, errno otherwise
 tipc_accept
 ===========
 
-.. c:function:: int tipc_accept(struct socket *sock, struct socket *new_sock, int flags)
+.. c:function:: int tipc_accept(struct socket *sock, struct socket *new_sock, int flags, bool kern)
 
     wait for connection request
 
@@ -861,6 +866,9 @@ tipc_accept
 
     :param int flags:
         file-related flags associated with socket
+
+    :param bool kern:
+        *undescribed*
 
 .. _`tipc_accept.description`:
 

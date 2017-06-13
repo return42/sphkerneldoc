@@ -8,8 +8,6 @@ PCI_DRIVER_NAME
 
 .. c:function::  PCI_DRIVER_NAME()
 
-    Cadence GEM PCI wrapper.
-
 .. _`pci_driver_name.description`:
 
 Description

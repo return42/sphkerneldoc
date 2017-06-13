@@ -109,6 +109,55 @@ aac_get_container_serial
     :param struct scsi_cmnd \*scsicmd:
         *undescribed*
 
+.. _`aac_update_hba_map`:
+
+aac_update_hba_map
+==================
+
+.. c:function:: void aac_update_hba_map(struct aac_dev *dev, struct aac_ciss_phys_luns_resp *phys_luns, int rescan)
+
+    update current hba map with data from FW
+
+    :param struct aac_dev \*dev:
+        aac_dev structure
+
+    :param struct aac_ciss_phys_luns_resp \*phys_luns:
+        FW information from report phys luns
+
+    :param int rescan:
+        *undescribed*
+
+.. _`aac_update_hba_map.description`:
+
+Description
+-----------
+
+Update our hba map with the information gathered from the FW
+
+.. _`aac_report_phys_luns`:
+
+aac_report_phys_luns
+====================
+
+.. c:function:: int aac_report_phys_luns(struct aac_dev *dev, struct fib *fibptr, int rescan)
+
+    :param struct aac_dev \*dev:
+        aac_dev structure
+
+    :param struct fib \*fibptr:
+        fib pointer
+
+    :param int rescan:
+        *undescribed*
+
+.. _`aac_report_phys_luns.description`:
+
+Description
+-----------
+
+Execute a CISS REPORT PHYS LUNS and process the results into
+the current hba_map.
+
 .. _`aac_scsi_cmd`:
 
 aac_scsi_cmd

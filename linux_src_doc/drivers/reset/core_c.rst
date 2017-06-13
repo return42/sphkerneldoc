@@ -22,7 +22,7 @@ Definition
         struct list_head list;
         unsigned int id;
         unsigned int refcnt;
-        int shared;
+        bool shared;
         atomic_t deassert_count;
         atomic_t triggered_count;
     }
@@ -157,6 +157,9 @@ a no-op.
 Consumers must not use reset_control_(de)assert on shared reset lines when
 reset_control_reset has been used.
 
+If rstc is NULL it is an optional reset and the function will just
+return 0.
+
 .. _`reset_control_assert`:
 
 reset_control_assert
@@ -182,6 +185,10 @@ For shared reset controls a driver cannot expect the hw's registers and
 internal state to be reset, but must be prepared for this to happen.
 Consumers must not use reset_control_reset on shared reset lines when
 reset_control_(de)assert has been used.
+return 0.
+
+If rstc is NULL it is an optional reset and the function will just
+return 0.
 
 .. _`reset_control_deassert`:
 
@@ -203,6 +210,10 @@ Description
 After calling this function, the reset is guaranteed to be deasserted.
 Consumers must not use reset_control_reset on shared reset lines when
 reset_control_(de)assert has been used.
+return 0.
+
+If rstc is NULL it is an optional reset and the function will just
+return 0.
 
 .. _`reset_control_status`:
 
@@ -211,7 +222,7 @@ reset_control_status
 
 .. c:function:: int reset_control_status(struct reset_control *rstc)
 
-    returns a negative errno if not supported, a positive value if the reset line is asserted, or zero if the reset line is not asserted.
+    returns a negative errno if not supported, a positive value if the reset line is asserted, or zero if the reset line is not asserted or if the desc is NULL (optional reset).
 
     :param struct reset_control \*rstc:
         reset controller

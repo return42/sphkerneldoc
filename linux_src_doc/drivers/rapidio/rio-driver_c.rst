@@ -21,9 +21,9 @@ rio_match_device
 Description
 -----------
 
-Used from driver probe and bus matching to check whether a RIO device
-matches a device id structure provided by a RIO driver. Returns the
-matching \ :c:type:`struct rio_device_id <rio_device_id>`\  or \ ``NULL``\  if there is no match.
+ Used from driver probe and bus matching to check whether a RIO device
+ matches a device id structure provided by a RIO driver. Returns the
+ matching \ :c:type:`struct rio_device_id <rio_device_id>`\  or \ ``NULL``\  if there is no match.
 
 .. _`rio_dev_get`:
 
@@ -126,10 +126,10 @@ rio_register_driver
 Description
 -----------
 
-Adds a \ :c:type:`struct rio_driver <rio_driver>`\  to the list of registered drivers.
-Returns a negative value on error, otherwise 0. If no error
-occurred, the driver remains registered even if no device
-was claimed during registration.
+ Adds a \ :c:type:`struct rio_driver <rio_driver>`\  to the list of registered drivers.
+ Returns a negative value on error, otherwise 0. If no error
+ occurred, the driver remains registered even if no device
+ was claimed during registration.
 
 .. _`rio_unregister_driver`:
 
@@ -148,10 +148,10 @@ rio_unregister_driver
 Description
 -----------
 
-Deletes the \ :c:type:`struct rio_driver <rio_driver>`\  from the list of registered RIO
-drivers, gives it a chance to clean up by calling its \ :c:func:`remove`\ 
-function for each device it was responsible for, and marks those
-devices as driverless.
+ Deletes the \ :c:type:`struct rio_driver <rio_driver>`\  from the list of registered RIO
+ drivers, gives it a chance to clean up by calling its \ :c:func:`remove`\ 
+ function for each device it was responsible for, and marks those
+ devices as driverless.
 
 .. _`rio_match_bus`:
 
@@ -173,10 +173,10 @@ rio_match_bus
 Description
 -----------
 
-Used by a driver to check whether a RIO device present in the
-system is in its list of supported devices. Returns 1 if
-there is a matching \ :c:type:`struct rio_device_id <rio_device_id>`\  or 0 if there is
-no match.
+ Used by a driver to check whether a RIO device present in the
+ system is in its list of supported devices. Returns 1 if
+ there is a matching \ :c:type:`struct rio_device_id <rio_device_id>`\  or 0 if there is
+ no match.
 
 .. _`rio_bus_init`:
 
@@ -195,8 +195,8 @@ rio_bus_init
 Description
 -----------
 
-Registers the RIO mport device class and RIO bus type with the Linux
-device model.
+ Registers the RIO mport device class and RIO bus type with the Linux
+ device model.
 
 .. This file was automatic generated / don't edit.
 

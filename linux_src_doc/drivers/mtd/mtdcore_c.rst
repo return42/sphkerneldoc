@@ -331,7 +331,7 @@ mtd_ooblayout_ecc
 Description
 -----------
 
-This functions return ECC section information in the OOB area. I you want
+This function returns ECC section information in the OOB area. If you want
 to get all the ECC bytes information, then you should call
 mtd_ooblayout_ecc(mtd, section++, oobecc) until it returns -ERANGE.
 
@@ -364,7 +364,7 @@ mtd_ooblayout_free
 Description
 -----------
 
-This functions return free bytes position in the OOB area. I you want
+This function returns free bytes position in the OOB area. If you want
 to get all the free bytes information, then you should call
 mtd_ooblayout_free(mtd, section++, oobfree) until it returns -ERANGE.
 
@@ -400,7 +400,7 @@ mtd_ooblayout_find_region
 Description
 -----------
 
-This functions returns the section id and oobregion information of a
+This function returns the section id and oobregion information of a
 specific byte. For example, say you want to know where the 4th ECC byte is
 stored, you'll use:
 

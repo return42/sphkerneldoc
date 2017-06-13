@@ -21,6 +21,33 @@ Description
 IOMMU drivers should normally call this from their domain_alloc
 callback when domain->type == IOMMU_DOMAIN_DMA.
 
+.. _`iommu_get_msi_cookie`:
+
+iommu_get_msi_cookie
+====================
+
+.. c:function:: int iommu_get_msi_cookie(struct iommu_domain *domain, dma_addr_t base)
+
+    Acquire just MSI remapping resources
+
+    :param struct iommu_domain \*domain:
+        IOMMU domain to prepare
+
+    :param dma_addr_t base:
+        Start address of IOVA region for MSI mappings
+
+.. _`iommu_get_msi_cookie.description`:
+
+Description
+-----------
+
+Users who manage their own IOVA allocation and do not want DMA API support,
+but would still like to take advantage of automatic MSI remapping, can use
+this to initialise their own domain appropriately. Users should reserve a
+contiguous IOVA region, starting at \ ``base``\ , large enough to accommodate the
+number of PAGE_SIZE mappings necessary to cover every MSI doorbell address
+used by the devices attached to \ ``domain``\ .
+
 .. _`iommu_put_dma_cookie`:
 
 iommu_put_dma_cookie
@@ -31,7 +58,8 @@ iommu_put_dma_cookie
     Release a domain's DMA mapping resources
 
     :param struct iommu_domain \*domain:
-        IOMMU domain previously prepared by \ :c:func:`iommu_get_dma_cookie`\ 
+        IOMMU domain previously prepared by \ :c:func:`iommu_get_dma_cookie`\  or
+        \ :c:func:`iommu_get_msi_cookie`\ 
 
 .. _`iommu_put_dma_cookie.description`:
 
@@ -39,6 +67,30 @@ Description
 -----------
 
 IOMMU drivers should normally call this from their domain_free callback.
+
+.. _`iommu_dma_get_resv_regions`:
+
+iommu_dma_get_resv_regions
+==========================
+
+.. c:function:: void iommu_dma_get_resv_regions(struct device *dev, struct list_head *list)
+
+    Reserved region driver helper
+
+    :param struct device \*dev:
+        Device from \ :c:func:`iommu_get_resv_regions`\ 
+
+    :param struct list_head \*list:
+        Reserved region list from \ :c:func:`iommu_get_resv_regions`\ 
+
+.. _`iommu_dma_get_resv_regions.description`:
+
+Description
+-----------
+
+IOMMU drivers can use this to implement their .get_resv_regions callback
+for general non-IOMMU-specific reservations. Currently, this covers host
+bridge windows for PCI devices.
 
 .. _`iommu_dma_init_domain`:
 
@@ -71,14 +123,14 @@ avoid rounding surprises. If necessary, we reserve the page at address 0
 to ensure it is an invalid IOVA. It is safe to reinitialise a domain, but
 any change which could make prior IOVAs invalid will fail.
 
-.. _`dma_direction_to_prot`:
+.. _`dma_info_to_prot`:
 
-dma_direction_to_prot
-=====================
+dma_info_to_prot
+================
 
-.. c:function:: int dma_direction_to_prot(enum dma_data_direction dir, bool coherent)
+.. c:function:: int dma_info_to_prot(enum dma_data_direction dir, bool coherent, unsigned long attrs)
 
-    Translate DMA API directions to IOMMU API page flags
+    Translate DMA API directions and attributes to IOMMU API page flags.
 
     :param enum dma_data_direction dir:
         Direction of DMA transfer
@@ -86,7 +138,10 @@ dma_direction_to_prot
     :param bool coherent:
         Is the DMA master cache-coherent?
 
-.. _`dma_direction_to_prot.return`:
+    :param unsigned long attrs:
+        DMA attributes for the mapping
+
+.. _`dma_info_to_prot.return`:
 
 Return
 ------

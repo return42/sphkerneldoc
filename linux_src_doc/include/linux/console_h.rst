@@ -42,6 +42,7 @@ Definition
         void (*con_invert_region)(struct vc_data *, u16 *, int);
         u16 *(*con_screen_pos)(struct vc_data *, int);
         unsigned long (*con_getxy)(struct vc_data *, unsigned long, int *, int *);
+        void (*con_flush_scrollback)(struct vc_data *);
         int (*con_debug_enter)(struct vc_data *);
         int (*con_debug_leave)(struct vc_data *);
     }
@@ -124,6 +125,9 @@ con_screen_pos
     *undescribed*
 
 con_getxy
+    *undescribed*
+
+con_flush_scrollback
     *undescribed*
 
 con_debug_enter

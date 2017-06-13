@@ -603,7 +603,7 @@ Definition
 
     struct fc_fcp_pkt {
         spinlock_t scsi_pkt_lock;
-        atomic_t ref_cnt;
+        refcount_t ref_cnt;
         u32 data_len;
         struct scsi_cmnd *cmd;
         struct list_head list;
@@ -1262,14 +1262,14 @@ fc_set_wwnn
 fc_set_wwpn
 ===========
 
-.. c:function:: void fc_set_wwpn(struct fc_lport *lport, u64 wwnn)
+.. c:function:: void fc_set_wwpn(struct fc_lport *lport, u64 wwpn)
 
     Set the World Wide Port Name of a local port
 
     :param struct fc_lport \*lport:
         The local port whose WWPN is to be set
 
-    :param u64 wwnn:
+    :param u64 wwpn:
         The new WWPN
 
 .. _`fc_lport_state_enter`:

@@ -151,7 +151,7 @@ Description
 
 Unregister and destroy the cdev occupying the region described by
 \ ``major``\ , \ ``baseminor``\  and \ ``count``\ .  This function undoes what
-\__register_chrdev() did.
+\ :c:func:`__register_chrdev`\  did.
 
 .. _`cdev_add`:
 
@@ -180,6 +180,107 @@ Description
 cdev_add() adds the device represented by \ ``p``\  to the system, making it
 live immediately.  A negative error code is returned on failure.
 
+.. _`cdev_set_parent`:
+
+cdev_set_parent
+===============
+
+.. c:function:: void cdev_set_parent(struct cdev *p, struct kobject *kobj)
+
+    set the parent kobject for a char device
+
+    :param struct cdev \*p:
+        the cdev structure
+
+    :param struct kobject \*kobj:
+        the kobject to take a reference to
+
+.. _`cdev_set_parent.description`:
+
+Description
+-----------
+
+cdev_set_parent() sets a parent kobject which will be referenced
+appropriately so the parent is not freed before the cdev. This
+should be called before cdev_add.
+
+.. _`cdev_device_add`:
+
+cdev_device_add
+===============
+
+.. c:function:: int cdev_device_add(struct cdev *cdev, struct device *dev)
+
+    add a char device and it's corresponding struct device, linkink
+
+    :param struct cdev \*cdev:
+        the cdev structure
+
+    :param struct device \*dev:
+        the device structure
+
+.. _`cdev_device_add.description`:
+
+Description
+-----------
+
+cdev_device_add() adds the char device represented by \ ``cdev``\  to the system,
+just as cdev_add does. It then adds \ ``dev``\  to the system using device_add
+The dev_t for the char device will be taken from the struct device which
+needs to be initialized first. This helper function correctly takes a
+reference to the parent device so the parent will not get released until
+all references to the cdev are released.
+
+This helper uses dev->devt for the device number. If it is not set
+it will not add the cdev and it will be equivalent to device_add.
+
+This function should be used whenever the struct cdev and the
+struct device are members of the same structure whose lifetime is
+managed by the struct device.
+
+.. _`cdev_device_add.note`:
+
+NOTE
+----
+
+Callers must assume that userspace was able to open the cdev and
+can call cdev fops callbacks at any time, even if this function fails.
+
+.. _`cdev_device_del`:
+
+cdev_device_del
+===============
+
+.. c:function:: void cdev_device_del(struct cdev *cdev, struct device *dev)
+
+    inverse of cdev_device_add
+
+    :param struct cdev \*cdev:
+        the cdev structure
+
+    :param struct device \*dev:
+        the device structure
+
+.. _`cdev_device_del.description`:
+
+Description
+-----------
+
+cdev_device_del() is a helper function to call cdev_del and device_del.
+It should be used whenever cdev_device_add is used.
+
+If dev->devt is not set it will not remove the cdev and will be equivalent
+to device_del.
+
+.. _`cdev_device_del.note`:
+
+NOTE
+----
+
+This guarantees that associated sysfs callbacks are not running
+or runnable, however any cdevs already open will remain and their fops
+will still be callable even after this function returns.
+
 .. _`cdev_del`:
 
 cdev_del
@@ -199,6 +300,15 @@ Description
 
 cdev_del() removes \ ``p``\  from the system, possibly freeing the structure
 itself.
+
+.. _`cdev_del.note`:
+
+NOTE
+----
+
+This guarantees that cdev device will no longer be able to be
+opened, however any cdevs already open will remain and their fops will
+still be callable even after cdev_del returns.
 
 .. _`cdev_alloc`:
 

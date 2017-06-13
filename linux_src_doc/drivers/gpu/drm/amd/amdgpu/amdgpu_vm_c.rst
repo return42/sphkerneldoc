@@ -1,43 +1,49 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
 
-.. _`amdgpu_vm_num_pdes`:
+.. _`amdgpu_vm_num_entries`:
 
-amdgpu_vm_num_pdes
-==================
+amdgpu_vm_num_entries
+=====================
 
-.. c:function:: unsigned amdgpu_vm_num_pdes(struct amdgpu_device *adev)
+.. c:function:: unsigned amdgpu_vm_num_entries(struct amdgpu_device *adev, unsigned level)
 
-    return the number of page directory entries
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`amdgpu_vm_num_pdes.description`:
-
-Description
------------
-
-Calculate the number of page directory entries.
-
-.. _`amdgpu_vm_directory_size`:
-
-amdgpu_vm_directory_size
-========================
-
-.. c:function:: unsigned amdgpu_vm_directory_size(struct amdgpu_device *adev)
-
-    returns the size of the page directory in bytes
+    return the number of entries in a PD/PT
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-.. _`amdgpu_vm_directory_size.description`:
+    :param unsigned level:
+        *undescribed*
+
+.. _`amdgpu_vm_num_entries.description`:
 
 Description
 -----------
 
-Calculate the size of the page directory in bytes.
+Calculate the number of entries in a page directory or page table.
+
+.. _`amdgpu_vm_bo_size`:
+
+amdgpu_vm_bo_size
+=================
+
+.. c:function:: unsigned amdgpu_vm_bo_size(struct amdgpu_device *adev, unsigned level)
+
+    returns the size of the BOs in bytes
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param unsigned level:
+        *undescribed*
+
+.. _`amdgpu_vm_bo_size.description`:
+
+Description
+-----------
+
+Calculate the size of the BO for a page directory or page table in bytes.
 
 .. _`amdgpu_vm_get_pd_bo`:
 
@@ -64,6 +70,31 @@ Description
 
 Add the page directory to the list of BOs to
 validate for command submission.
+
+.. _`amdgpu_vm_validate_level`:
+
+amdgpu_vm_validate_level
+========================
+
+.. c:function:: int amdgpu_vm_validate_level(struct amdgpu_vm_pt *parent, int (*validate)(void *, struct amdgpu_bo *), void *param)
+
+    validate a single page table level
+
+    :param struct amdgpu_vm_pt \*parent:
+        parent page table level
+
+    :param int (\*validate)(void \*, struct amdgpu_bo \*):
+        callback to do the validation
+
+    :param void \*param:
+        parameter for the validation callback
+
+.. _`amdgpu_vm_validate_level.description`:
+
+Description
+-----------
+
+Validate the page table BOs on command submission if neccessary.
 
 .. _`amdgpu_vm_validate_pt_bos`:
 
@@ -93,6 +124,25 @@ Description
 
 Validate the page table BOs on command submission if neccessary.
 
+.. _`amdgpu_vm_move_level_in_lru`:
+
+amdgpu_vm_move_level_in_lru
+===========================
+
+.. c:function:: void amdgpu_vm_move_level_in_lru(struct amdgpu_vm_pt *parent)
+
+    move one level of PT BOs to the LRU tail
+
+    :param struct amdgpu_vm_pt \*parent:
+        *undescribed*
+
+.. _`amdgpu_vm_move_level_in_lru.description`:
+
+Description
+-----------
+
+Move the PT BOs to the tail of the LRU.
+
 .. _`amdgpu_vm_move_pt_bos_in_lru`:
 
 amdgpu_vm_move_pt_bos_in_lru
@@ -114,6 +164,56 @@ Description
 -----------
 
 Move the PT BOs to the tail of the LRU.
+
+.. _`amdgpu_vm_alloc_pts`:
+
+amdgpu_vm_alloc_pts
+===================
+
+.. c:function:: int amdgpu_vm_alloc_pts(struct amdgpu_device *adev, struct amdgpu_vm *vm, uint64_t saddr, uint64_t size)
+
+    Allocate page tables.
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm \*vm:
+        VM to allocate page tables for
+
+    :param uint64_t saddr:
+        Start address which needs to be allocated
+
+    :param uint64_t size:
+        Size from start address we need.
+
+.. _`amdgpu_vm_alloc_pts.description`:
+
+Description
+-----------
+
+Make sure the page tables are allocated.
+
+.. _`amdgpu_vm_had_gpu_reset`:
+
+amdgpu_vm_had_gpu_reset
+=======================
+
+.. c:function:: bool amdgpu_vm_had_gpu_reset(struct amdgpu_device *adev, struct amdgpu_vm_id *id)
+
+    check if reset occured since last use
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm_id \*id:
+        VMID structure
+
+.. _`amdgpu_vm_had_gpu_reset.description`:
+
+Description
+-----------
+
+Check if GPU reset occured since last use of the VMID.
 
 .. _`amdgpu_vm_grab_id`:
 
@@ -173,15 +273,18 @@ Emit a VM flush when it is necessary.
 amdgpu_vm_reset_id
 ==================
 
-.. c:function:: void amdgpu_vm_reset_id(struct amdgpu_device *adev, unsigned vm_id)
+.. c:function:: void amdgpu_vm_reset_id(struct amdgpu_device *adev, unsigned vmhub, unsigned vmid)
 
     reset VMID to zero
 
     :param struct amdgpu_device \*adev:
         amdgpu device structure
 
-    :param unsigned vm_id:
-        vmid number to use
+    :param unsigned vmhub:
+        *undescribed*
+
+    :param unsigned vmid:
+        *undescribed*
 
 .. _`amdgpu_vm_reset_id.description`:
 
@@ -221,7 +324,7 @@ Object has to be reserved!
 amdgpu_vm_do_set_ptes
 =====================
 
-.. c:function:: void amdgpu_vm_do_set_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+.. c:function:: void amdgpu_vm_do_set_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     helper to call the right asic function
 
@@ -240,7 +343,7 @@ amdgpu_vm_do_set_ptes
     :param uint32_t incr:
         increase next addr by incr bytes
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         hw access flags
 
 .. _`amdgpu_vm_do_set_ptes.description`:
@@ -256,7 +359,7 @@ to setup the page table using the DMA.
 amdgpu_vm_do_copy_ptes
 ======================
 
-.. c:function:: void amdgpu_vm_do_copy_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+.. c:function:: void amdgpu_vm_do_copy_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     copy the PTEs from the GART
 
@@ -275,7 +378,7 @@ amdgpu_vm_do_copy_ptes
     :param uint32_t incr:
         increase next addr by incr bytes
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         hw access flags
 
 .. _`amdgpu_vm_do_copy_ptes.description`:
@@ -308,20 +411,39 @@ Description
 Look up the physical address of the page that the pte resolves
 to and return the pointer for the page table entry.
 
+.. _`amdgpu_vm_get_pt`:
+
+amdgpu_vm_get_pt
+================
+
+.. c:function:: struct amdgpu_bo *amdgpu_vm_get_pt(struct amdgpu_pte_update_params *p, uint64_t addr)
+
+    find the page table for an address
+
+    :param struct amdgpu_pte_update_params \*p:
+        see amdgpu_pte_update_params definition
+
+    :param uint64_t addr:
+        virtual address in question
+
+.. _`amdgpu_vm_get_pt.description`:
+
+Description
+-----------
+
+Find the page table BO for a virtual address, return NULL when none found.
+
 .. _`amdgpu_vm_update_ptes`:
 
 amdgpu_vm_update_ptes
 =====================
 
-.. c:function:: void amdgpu_vm_update_ptes(struct amdgpu_pte_update_params *params, struct amdgpu_vm *vm, uint64_t start, uint64_t end, uint64_t dst, uint32_t flags)
+.. c:function:: void amdgpu_vm_update_ptes(struct amdgpu_pte_update_params *params, uint64_t start, uint64_t end, uint64_t dst, uint64_t flags)
 
     make sure that page tables are valid
 
     :param struct amdgpu_pte_update_params \*params:
         see amdgpu_pte_update_params definition
-
-    :param struct amdgpu_vm \*vm:
-        requested vm
 
     :param uint64_t start:
         start of GPU address range
@@ -332,7 +454,7 @@ amdgpu_vm_update_ptes
     :param uint64_t dst:
         destination address to map to, the next dst inside the function
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         mapping flags
 
 .. _`amdgpu_vm_update_ptes.description`:
@@ -347,7 +469,7 @@ Update the page tables in the range \ ``start``\  - \ ``end``\ .
 amdgpu_vm_bo_update_mapping
 ===========================
 
-.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint32_t flags, uint64_t addr, struct dma_fence **fence)
+.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint64_t flags, uint64_t addr, struct dma_fence **fence)
 
     update a mapping in the vm page table
 
@@ -372,7 +494,7 @@ amdgpu_vm_bo_update_mapping
     :param uint64_t last:
         last mapped entry
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         flags for the entries
 
     :param uint64_t addr:
@@ -394,7 +516,7 @@ Returns 0 for success, -EINVAL for failure.
 amdgpu_vm_bo_split_mapping
 ==========================
 
-.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint32_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint32_t flags, struct drm_mm_node *nodes, struct dma_fence **fence)
+.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint64_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint64_t flags, struct drm_mm_node *nodes, struct dma_fence **fence)
 
     split a mapping into smaller chunks
 
@@ -404,7 +526,7 @@ amdgpu_vm_bo_split_mapping
     :param struct dma_fence \*exclusive:
         fence we need to sync to
 
-    :param uint32_t gtt_flags:
+    :param uint64_t gtt_flags:
         flags as they are used for GTT
 
     :param dma_addr_t \*pages_addr:
@@ -416,7 +538,7 @@ amdgpu_vm_bo_split_mapping
     :param struct amdgpu_bo_va_mapping \*mapping:
         mapped range and flags to use for the update
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         HW flags for the mapping
 
     :param struct drm_mm_node \*nodes:
@@ -460,12 +582,128 @@ Description
 Fill in the page table entries for \ ``bo_va``\ .
 Returns 0 for success, -EINVAL for failure.
 
+.. _`amdgpu_vm_update_prt_state`:
+
+amdgpu_vm_update_prt_state
+==========================
+
+.. c:function:: void amdgpu_vm_update_prt_state(struct amdgpu_device *adev)
+
+    update the global PRT state
+
+    :param struct amdgpu_device \*adev:
+        *undescribed*
+
+.. _`amdgpu_vm_prt_get`:
+
+amdgpu_vm_prt_get
+=================
+
+.. c:function:: void amdgpu_vm_prt_get(struct amdgpu_device *adev)
+
+    add a PRT user
+
+    :param struct amdgpu_device \*adev:
+        *undescribed*
+
+.. _`amdgpu_vm_prt_put`:
+
+amdgpu_vm_prt_put
+=================
+
+.. c:function:: void amdgpu_vm_prt_put(struct amdgpu_device *adev)
+
+    drop a PRT user
+
+    :param struct amdgpu_device \*adev:
+        *undescribed*
+
+.. _`amdgpu_vm_prt_cb`:
+
+amdgpu_vm_prt_cb
+================
+
+.. c:function:: void amdgpu_vm_prt_cb(struct dma_fence *fence, struct dma_fence_cb *_cb)
+
+    callback for updating the PRT status
+
+    :param struct dma_fence \*fence:
+        *undescribed*
+
+    :param struct dma_fence_cb \*_cb:
+        *undescribed*
+
+.. _`amdgpu_vm_add_prt_cb`:
+
+amdgpu_vm_add_prt_cb
+====================
+
+.. c:function:: void amdgpu_vm_add_prt_cb(struct amdgpu_device *adev, struct dma_fence *fence)
+
+    add callback for updating the PRT status
+
+    :param struct amdgpu_device \*adev:
+        *undescribed*
+
+    :param struct dma_fence \*fence:
+        *undescribed*
+
+.. _`amdgpu_vm_free_mapping`:
+
+amdgpu_vm_free_mapping
+======================
+
+.. c:function:: void amdgpu_vm_free_mapping(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, struct dma_fence *fence)
+
+    free a mapping
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm \*vm:
+        requested vm
+
+    :param struct amdgpu_bo_va_mapping \*mapping:
+        mapping to be freed
+
+    :param struct dma_fence \*fence:
+        fence of the unmap operation
+
+.. _`amdgpu_vm_free_mapping.description`:
+
+Description
+-----------
+
+Free a mapping and make sure we decrease the PRT usage count if applicable.
+
+.. _`amdgpu_vm_prt_fini`:
+
+amdgpu_vm_prt_fini
+==================
+
+.. c:function:: void amdgpu_vm_prt_fini(struct amdgpu_device *adev, struct amdgpu_vm *vm)
+
+    finish all prt mappings
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm \*vm:
+        requested vm
+
+.. _`amdgpu_vm_prt_fini.description`:
+
+Description
+-----------
+
+Register a cleanup callback to disable PRT support after VM dies.
+
 .. _`amdgpu_vm_clear_freed`:
 
 amdgpu_vm_clear_freed
 =====================
 
-.. c:function:: int amdgpu_vm_clear_freed(struct amdgpu_device *adev, struct amdgpu_vm *vm)
+.. c:function:: int amdgpu_vm_clear_freed(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct dma_fence **fence)
 
     clear freed BOs in the PT
 
@@ -474,6 +712,10 @@ amdgpu_vm_clear_freed
 
     :param struct amdgpu_vm \*vm:
         requested vm
+
+    :param struct dma_fence \*\*fence:
+        optional resulting fence (unchanged if no work needed to be done
+        or if an error occurred)
 
 .. _`amdgpu_vm_clear_freed.description`:
 
@@ -547,7 +789,7 @@ Object has to be reserved!
 amdgpu_vm_bo_map
 ================
 
-.. c:function:: int amdgpu_vm_bo_map(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, uint64_t saddr, uint64_t offset, uint64_t size, uint32_t flags)
+.. c:function:: int amdgpu_vm_bo_map(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, uint64_t saddr, uint64_t offset, uint64_t size, uint64_t flags)
 
     map bo inside a vm
 
@@ -566,7 +808,7 @@ amdgpu_vm_bo_map
     :param uint64_t size:
         *undescribed*
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         attributes of pages (read/write/valid/etc.)
 
 .. _`amdgpu_vm_bo_map.description`:
@@ -575,6 +817,44 @@ Description
 -----------
 
 Add a mapping of the BO at the specefied addr into the VM.
+Returns 0 for success, error for failure.
+
+Object has to be reserved and unreserved outside!
+
+.. _`amdgpu_vm_bo_replace_map`:
+
+amdgpu_vm_bo_replace_map
+========================
+
+.. c:function:: int amdgpu_vm_bo_replace_map(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, uint64_t saddr, uint64_t offset, uint64_t size, uint64_t flags)
+
+    map bo inside a vm, replacing existing mappings
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_bo_va \*bo_va:
+        bo_va to store the address
+
+    :param uint64_t saddr:
+        where to map the BO
+
+    :param uint64_t offset:
+        requested offset in the BO
+
+    :param uint64_t size:
+        *undescribed*
+
+    :param uint64_t flags:
+        attributes of pages (read/write/valid/etc.)
+
+.. _`amdgpu_vm_bo_replace_map.description`:
+
+Description
+-----------
+
+Add a mapping of the BO at the specefied addr into the VM. Replace existing
+mappings as we do so.
 Returns 0 for success, error for failure.
 
 Object has to be reserved and unreserved outside!
@@ -606,6 +886,35 @@ Remove a mapping of the BO at the specefied addr from the VM.
 Returns 0 for success, error for failure.
 
 Object has to be reserved and unreserved outside!
+
+.. _`amdgpu_vm_bo_clear_mappings`:
+
+amdgpu_vm_bo_clear_mappings
+===========================
+
+.. c:function:: int amdgpu_vm_bo_clear_mappings(struct amdgpu_device *adev, struct amdgpu_vm *vm, uint64_t saddr, uint64_t size)
+
+    remove all mappings in a specific range
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm \*vm:
+        VM structure to use
+
+    :param uint64_t saddr:
+        start of the range
+
+    :param uint64_t size:
+        size of the range
+
+.. _`amdgpu_vm_bo_clear_mappings.description`:
+
+Description
+-----------
+
+Remove all mappings in a range, split them as appropriate.
+Returns 0 for success, error for failure.
 
 .. _`amdgpu_vm_bo_rmv`:
 
@@ -653,6 +962,21 @@ Description
 
 Mark \ ``bo``\  as invalid.
 
+.. _`amdgpu_vm_adjust_size`:
+
+amdgpu_vm_adjust_size
+=====================
+
+.. c:function:: void amdgpu_vm_adjust_size(struct amdgpu_device *adev, uint64_t vm_size)
+
+    adjust vm size and block size
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param uint64_t vm_size:
+        the default vm size if it's set auto
+
 .. _`amdgpu_vm_init`:
 
 amdgpu_vm_init
@@ -674,6 +998,25 @@ Description
 -----------
 
 Init \ ``vm``\  fields.
+
+.. _`amdgpu_vm_free_levels`:
+
+amdgpu_vm_free_levels
+=====================
+
+.. c:function:: void amdgpu_vm_free_levels(struct amdgpu_vm_pt *level)
+
+    free PD/PT levels
+
+    :param struct amdgpu_vm_pt \*level:
+        PD/PT starting level to free
+
+.. _`amdgpu_vm_free_levels.description`:
+
+Description
+-----------
+
+Free the page directory or page table level and all sub levels.
 
 .. _`amdgpu_vm_fini`:
 

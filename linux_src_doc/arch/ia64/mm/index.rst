@@ -9,4 +9,3 @@ mm
 
     contig_c
     discontig_c
-    init_c

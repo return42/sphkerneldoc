@@ -7,6 +7,5 @@ can
 .. toctree::
     :maxdepth: 1
 
-    platform/index
     core_h
     skb_h

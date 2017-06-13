@@ -1,6 +1,45 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/fpga/fpga-mgr.c
 
+.. _`fpga_mgr_buf_load_sg`:
+
+fpga_mgr_buf_load_sg
+====================
+
+.. c:function:: int fpga_mgr_buf_load_sg(struct fpga_manager *mgr, struct fpga_image_info *info, struct sg_table *sgt)
+
+    load fpga from image in buffer from a scatter list
+
+    :param struct fpga_manager \*mgr:
+        fpga manager
+
+    :param struct fpga_image_info \*info:
+        fpga image specific information
+
+    :param struct sg_table \*sgt:
+        scatterlist table
+
+.. _`fpga_mgr_buf_load_sg.description`:
+
+Description
+-----------
+
+Step the low level fpga manager through the device-specific steps of getting
+an FPGA ready to be configured, writing the image to it, then doing whatever
+post-configuration steps necessary.  This code assumes the caller got the
+mgr pointer from \ :c:func:`of_fpga_mgr_get`\  or \ :c:func:`fpga_mgr_get`\  and checked that it is
+not an error code.
+
+This is the preferred entry point for FPGA programming, it does not require
+any contiguous kernel memory.
+
+.. _`fpga_mgr_buf_load_sg.return`:
+
+Return
+------
+
+0 on success, negative error code otherwise.
+
 .. _`fpga_mgr_buf_load`:
 
 fpga_mgr_buf_load
@@ -14,7 +53,7 @@ fpga_mgr_buf_load
         fpga manager
 
     :param struct fpga_image_info \*info:
-        fpga image specific information
+        *undescribed*
 
     :param const char \*buf:
         buffer contain fpga image
@@ -30,8 +69,7 @@ Description
 Step the low level fpga manager through the device-specific steps of getting
 an FPGA ready to be configured, writing the image to it, then doing whatever
 post-configuration steps necessary.  This code assumes the caller got the
-mgr pointer from \ :c:func:`of_fpga_mgr_get`\  or \ :c:func:`fpga_mgr_get`\  and checked that it is
-not an error code.
+mgr pointer from \ :c:func:`of_fpga_mgr_get`\  and checked that it is not an error code.
 
 .. _`fpga_mgr_buf_load.return`:
 

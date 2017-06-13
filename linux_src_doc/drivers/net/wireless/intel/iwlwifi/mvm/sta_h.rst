@@ -180,6 +180,7 @@ Definition
         u32 mac_id_n_color;
         u16 tid_disable_agg;
         u8 max_agg_bufsize;
+        enum iwl_sta_type sta_type;
         bool bt_reduced_txpower;
         bool next_status_eosp;
         spinlock_t lock;
@@ -196,6 +197,7 @@ Definition
         bool disable_tx;
         bool tlc_amsdu;
         bool sleeping;
+        bool associated;
         u8 agg_tids;
         u8 sleep_tx_count;
         u8 avg_energy;
@@ -224,6 +226,9 @@ tid_disable_agg
 
 max_agg_bufsize
     the maximal size of the AGG buffer for this station
+
+sta_type
+    station type
 
 bt_reduced_txpower
     is reduced tx power enabled for this station
@@ -277,6 +282,9 @@ tlc_amsdu
 sleeping
     *undescribed*
 
+associated
+    *undescribed*
+
 agg_tids
     bitmap of tids whose status is operational aggregated (IWL_AGG_ON)
 
@@ -317,6 +325,7 @@ Definition
 
     struct iwl_mvm_int_sta {
         u32 sta_id;
+        enum iwl_sta_type type;
         u32 tfd_queue_msk;
     }
 
@@ -327,6 +336,9 @@ Members
 
 sta_id
     the index of the station in the fw (will be replaced by id_n_color)
+
+type
+    station type
 
 tfd_queue_msk
     the tfd queues used by the station

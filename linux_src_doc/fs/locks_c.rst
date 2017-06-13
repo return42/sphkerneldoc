@@ -130,10 +130,10 @@ __break_lease
 Description
 -----------
 
-break_lease (inlined for speed) has checked there already is at least
-some kind of lock (maybe a lease) on this file.  Leases are broken on
-a call to \ :c:func:`open`\  or \ :c:func:`truncate`\ .  This function can sleep unless you
-specified \ ``O_NONBLOCK``\  to your \ :c:func:`open`\ .
+     break_lease (inlined for speed) has checked there already is at least
+     some kind of lock (maybe a lease) on this file.  Leases are broken on
+     a call to \ :c:func:`open`\  or \ :c:func:`truncate`\ .  This function can sleep unless you
+     specified \ ``O_NONBLOCK``\  to your \ :c:func:`open`\ .
 
 .. _`lease_get_mtime`:
 
@@ -176,29 +176,24 @@ fcntl_getlease
 Description
 -----------
 
-The value returned by this function will be one of
-(if no lease break is pending):
+     The value returned by this function will be one of
+     (if no lease break is pending):
 
-\ ``F_RDLCK``\  to indicate a shared lease is held.
+     \ ``F_RDLCK``\  to indicate a shared lease is held.
 
-\ ``F_WRLCK``\  to indicate an exclusive lease is held.
+     \ ``F_WRLCK``\  to indicate an exclusive lease is held.
 
-\ ``F_UNLCK``\  to indicate no lease is held.
+     \ ``F_UNLCK``\  to indicate no lease is held.
 
-(if a lease break is pending):
+     (if a lease break is pending):
 
-\ ``F_RDLCK``\  to indicate an exclusive lease needs to be
-changed to a shared lease (or removed).
+     \ ``F_RDLCK``\  to indicate an exclusive lease needs to be
+             changed to a shared lease (or removed).
 
-\ ``F_UNLCK``\  to indicate the lease needs to be removed.
+     \ ``F_UNLCK``\  to indicate the lease needs to be removed.
 
-.. _`fcntl_getlease.xxx`:
-
-XXX
----
-
-sfr & willy disagree over whether F_INPROGRESS
-should be returned to userspace.
+     XXX: sfr & willy disagree over whether F_INPROGRESS
+     should be returned to userspace.
 
 .. _`check_conflicting_open`:
 
@@ -253,8 +248,8 @@ generic_setlease
 Description
 -----------
 
-The (input) flp->fl_lmops->lm_break function is required
-by \ :c:func:`break_lease`\ .
+     The (input) flp->fl_lmops->lm_break function is required
+     by \ :c:func:`break_lease`\ .
 
 .. _`vfs_setlease`:
 
@@ -285,7 +280,7 @@ Description
 
 Call this to establish a lease on the file. The "lease" argument is not
 used for F_UNLCK requests and may be NULL. For commands that set or alter
-an existing lease, the (\*lease)->fl_lmops->lm_break operation must be set;
+an existing lease, the (*lease)->fl_lmops->lm_break operation must be set;
 if not, this function will return -ENOLCK (and generate a scary-looking
 stack trace).
 
@@ -315,9 +310,9 @@ fcntl_setlease
 Description
 -----------
 
-Call this fcntl to establish a lease on the file.
-Note that you also need to call \ ``F_SETSIG``\  to
-receive a signal when the lease is broken.
+     Call this fcntl to establish a lease on the file.
+     Note that you also need to call \ ``F_SETSIG``\  to
+     receive a signal when the lease is broken.
 
 .. _`flock_lock_inode_wait`:
 
@@ -383,19 +378,19 @@ sys_flock
 Description
 -----------
 
-Apply a \ ``FL_FLOCK``\  style lock to an open file descriptor.
-The \ ``cmd``\  can be one of
+     Apply a \ ``FL_FLOCK``\  style lock to an open file descriptor.
+     The \ ``cmd``\  can be one of
 
-\ ``LOCK_SH``\  -- a shared lock.
+     \ ``LOCK_SH``\  -- a shared lock.
 
-\ ``LOCK_EX``\  -- an exclusive lock.
+     \ ``LOCK_EX``\  -- an exclusive lock.
 
-\ ``LOCK_UN``\  -- remove an existing lock.
+     \ ``LOCK_UN``\  -- remove an existing lock.
 
-\ ``LOCK_MAND``\  -- a \`mandatory' flock.  This exists to emulate Windows Share Modes.
+     \ ``LOCK_MAND``\  -- a `mandatory' flock.  This exists to emulate Windows Share Modes.
 
-\ ``LOCK_MAND``\  can be combined with \ ``LOCK_READ``\  or \ ``LOCK_WRITE``\  to allow other
-processes read and write access respectively.
+     \ ``LOCK_MAND``\  can be combined with \ ``LOCK_READ``\  or \ ``LOCK_WRITE``\  to allow other
+     processes read and write access respectively.
 
 .. _`vfs_test_lock`:
 
@@ -489,7 +484,7 @@ posix_unblock_lock
 Description
 -----------
 
-lockd needs to block waiting for locks.
+     lockd needs to block waiting for locks.
 
 .. _`vfs_cancel_lock`:
 

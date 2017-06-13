@@ -6,12 +6,9 @@
 dax_pfn_mkwrite
 ===============
 
-.. c:function:: int dax_pfn_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
+.. c:function:: int dax_pfn_mkwrite(struct vm_fault *vmf)
 
     handle first write to DAX page
-
-    :param struct vm_area_struct \*vma:
-        The virtual memory area where the fault occurred
 
     :param struct vm_fault \*vmf:
         The description of the fault
@@ -21,7 +18,7 @@ dax_pfn_mkwrite
 dax_iomap_rw
 ============
 
-.. c:function:: ssize_t dax_iomap_rw(struct kiocb *iocb, struct iov_iter *iter, struct iomap_ops *ops)
+.. c:function:: ssize_t dax_iomap_rw(struct kiocb *iocb, struct iov_iter *iter, const struct iomap_ops *ops)
 
     Perform I/O to a DAX file
 
@@ -31,7 +28,7 @@ dax_iomap_rw
     :param struct iov_iter \*iter:
         The addresses to do I/O from or to
 
-    :param struct iomap_ops \*ops:
+    :param const struct iomap_ops \*ops:
         iomap ops passed from the file system
 
 .. _`dax_iomap_rw.description`:
@@ -48,17 +45,17 @@ and evicting any page cache pages in the region under I/O.
 dax_iomap_fault
 ===============
 
-.. c:function:: int dax_iomap_fault(struct vm_area_struct *vma, struct vm_fault *vmf, struct iomap_ops *ops)
+.. c:function:: int dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, const struct iomap_ops *ops)
 
     handle a page fault on a DAX file
-
-    :param struct vm_area_struct \*vma:
-        The virtual memory area where the fault occurred
 
     :param struct vm_fault \*vmf:
         The description of the fault
 
-    :param struct iomap_ops \*ops:
+    :param enum page_entry_size pe_size:
+        *undescribed*
+
+    :param const struct iomap_ops \*ops:
         iomap ops passed from the file system
 
 .. _`dax_iomap_fault.description`:
@@ -66,9 +63,10 @@ dax_iomap_fault
 Description
 -----------
 
-When a page fault occurs, filesystems may call this helper in their fault
-or mkwrite handler for DAX files. Assumes the caller has done all the
-necessary locking for the page fault to proceed successfully.
+When a page fault occurs, filesystems may call this helper in
+their fault handler for DAX files. \ :c:func:`dax_iomap_fault`\  assumes the caller
+has done all the necessary locking for page fault to proceed
+successfully.
 
 .. This file was automatic generated / don't edit.
 

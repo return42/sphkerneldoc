@@ -106,6 +106,43 @@ at the same time (except where noted).
 
 Returns zero or a negative error (ie. ENOSPC, ENOMEM, EIO).
 
+.. _`virtqueue_add_inbuf_ctx`:
+
+virtqueue_add_inbuf_ctx
+=======================
+
+.. c:function:: int virtqueue_add_inbuf_ctx(struct virtqueue *vq, struct scatterlist *sg, unsigned int num, void *data, void *ctx, gfp_t gfp)
+
+    expose input buffers to other end
+
+    :param struct virtqueue \*vq:
+        the struct virtqueue we're talking about.
+
+    :param struct scatterlist \*sg:
+        scatterlist (must be well-formed and terminated!)
+
+    :param unsigned int num:
+        the number of entries in \ ``sg``\  writable by other side
+
+    :param void \*data:
+        the token identifying the buffer.
+
+    :param void \*ctx:
+        extra context for the token
+
+    :param gfp_t gfp:
+        how to do memory allocations (if necessary).
+
+.. _`virtqueue_add_inbuf_ctx.description`:
+
+Description
+-----------
+
+Caller must ensure we don't call this with other virtqueue operations
+at the same time (except where noted).
+
+Returns zero or a negative error (ie. ENOSPC, ENOMEM, EIO).
+
 .. _`virtqueue_kick_prepare`:
 
 virtqueue_kick_prepare
@@ -176,12 +213,12 @@ operations at the same time (except where noted).
 
 Returns false if kick failed, otherwise true.
 
-.. _`virtqueue_get_buf`:
+.. _`virtqueue_get_buf_ctx`:
 
-virtqueue_get_buf
-=================
+virtqueue_get_buf_ctx
+=====================
 
-.. c:function:: void *virtqueue_get_buf(struct virtqueue *_vq, unsigned int *len)
+.. c:function:: void *virtqueue_get_buf_ctx(struct virtqueue *_vq, unsigned int *len, void **ctx)
 
     get the next used buffer
 
@@ -191,7 +228,10 @@ virtqueue_get_buf
     :param unsigned int \*len:
         the length written into the buffer
 
-.. _`virtqueue_get_buf.description`:
+    :param void \*\*ctx:
+        *undescribed*
+
+.. _`virtqueue_get_buf_ctx.description`:
 
 Description
 -----------

@@ -18,12 +18,12 @@ Definition
 .. code-block:: c
 
     struct ieee80211_bar {
-        unsigned short frame_control;
-        unsigned short duration;
+        __le16 frame_control;
+        __le16 duration;
         unsigned char ra[6];
         unsigned char ta[6];
-        unsigned short control;
-        unsigned short start_seq_num;
+        __le16 control;
+        __le16 start_seq_num;
     }
 
 .. _`ieee80211_bar.members`:
@@ -70,8 +70,8 @@ Definition
     struct ieee80211_ht_addt_info {
         unsigned char control_chan;
         unsigned char ht_param;
-        unsigned short operation_mode;
-        unsigned short stbc_param;
+        __le16 operation_mode;
+        __le16 stbc_param;
         unsigned char basic_set[16];
     }
 

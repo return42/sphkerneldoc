@@ -31,30 +31,6 @@ axon_ram_make_request
     :param struct bio \*bio:
         *undescribed*
 
-.. _`axon_ram_direct_access`:
-
-axon_ram_direct_access
-======================
-
-.. c:function:: long axon_ram_direct_access(struct block_device *device, sector_t sector, void **kaddr, pfn_t *pfn, long size)
-
-    direct_access() method for block device
-
-    :param struct block_device \*device:
-        see block_device_operations method
-
-    :param sector_t sector:
-        *undescribed*
-
-    :param void \*\*kaddr:
-        *undescribed*
-
-    :param pfn_t \*pfn:
-        *undescribed*
-
-    :param long size:
-        *undescribed*
-
 .. _`axon_ram_probe`:
 
 axon_ram_probe

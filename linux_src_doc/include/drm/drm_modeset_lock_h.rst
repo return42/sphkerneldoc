@@ -80,7 +80,7 @@ mutex
     resource locking
 
 head
-    used to hold it's place on state->locked list when
+    used to hold it's place on \ :c:type:`drm_atomi_state.locked <drm_atomi_state>`\  list when
     part of an atomic update
 
 .. _`drm_modeset_lock.description`:

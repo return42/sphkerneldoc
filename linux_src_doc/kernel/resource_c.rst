@@ -410,10 +410,10 @@ Note
 ----
 
 - Additional release conditions, such as overlapping region, can be
-supported after they are confirmed as valid cases.
+  supported after they are confirmed as valid cases.
 - When a busy memory resource gets split into two entries, the code
-assumes that all children remain in the lower address entry for
-simplicity.  Enhance this logic when necessary.
+  assumes that all children remain in the lower address entry for
+  simplicity.  Enhance this logic when necessary.
 
 .. _`devm_request_resource`:
 

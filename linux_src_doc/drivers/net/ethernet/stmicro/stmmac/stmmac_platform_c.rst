@@ -70,6 +70,21 @@ Description
 if required, from device-tree the AXI internal register can be tuned
 by using platform parameters.
 
+.. _`stmmac_mtl_setup`:
+
+stmmac_mtl_setup
+================
+
+.. c:function:: void stmmac_mtl_setup(struct platform_device *pdev, struct plat_stmmacenet_data *plat)
+
+    parse DT parameters for multiple queues configuration
+
+    :param struct platform_device \*pdev:
+        platform device
+
+    :param struct plat_stmmacenet_data \*plat:
+        *undescribed*
+
 .. _`stmmac_dt_phy`:
 
 stmmac_dt_phy

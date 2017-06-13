@@ -31,7 +31,7 @@ node
     list entry element
 
 data
-    data to pass to work->func
+    data to pass to \ :c:type:`drm_flip_work.func <drm_flip_work>`\ 
 
 .. _`drm_flip_work`:
 

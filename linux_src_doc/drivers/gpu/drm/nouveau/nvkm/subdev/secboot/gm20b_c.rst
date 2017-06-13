@@ -1,42 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/nouveau/nvkm/subdev/secboot/gm20b.c
 
-.. _`gm20b_secboot_fixup_bl_desc`:
+.. _`gm20b_secboot_tegra_read_wpr`:
 
-gm20b_secboot_fixup_bl_desc
-===========================
+gm20b_secboot_tegra_read_wpr
+============================
 
-.. c:function:: void gm20b_secboot_fixup_bl_desc(const struct gm200_flcn_bl_desc *desc, void *ret)
-
-    adapt BL descriptor to format used by GM20B FW
-
-    :param const struct gm200_flcn_bl_desc \*desc:
-        *undescribed*
-
-    :param void \*ret:
-        *undescribed*
-
-.. _`gm20b_secboot_fixup_bl_desc.description`:
-
-Description
------------
-
-There is only a slight format difference (DMA addresses being 32-bits and
-256B-aligned) to address.
-
-.. _`gm20b_tegra_read_wpr`:
-
-gm20b_tegra_read_wpr
-====================
-
-.. c:function:: int gm20b_tegra_read_wpr(struct gm200_secboot *gsb)
+.. c:function:: int gm20b_secboot_tegra_read_wpr(struct gm200_secboot *gsb, u32 mc_base)
 
     read the WPR registers on Tegra
 
     :param struct gm200_secboot \*gsb:
         *undescribed*
 
-.. _`gm20b_tegra_read_wpr.description`:
+    :param u32 mc_base:
+        *undescribed*
+
+.. _`gm20b_secboot_tegra_read_wpr.description`:
 
 Description
 -----------

@@ -18,10 +18,10 @@ spi_schedule_dv_device
 Description
 -----------
 
-Identical to \ :c:func:`spi_dv_device`\  above, except that the DV will be
-scheduled to occur in a workqueue later.  All memory allocations
-are atomic, so may be called from any context including those holding
-SCSI locks.
+     Identical to \ :c:func:`spi_dv_device`\  above, except that the DV will be
+     scheduled to occur in a workqueue later.  All memory allocations
+     are atomic, so may be called from any context including those holding
+     SCSI locks.
 
 .. _`spi_display_xfer_agreement`:
 
@@ -64,9 +64,9 @@ spi_populate_tag_msg
 Notes
 -----
 
-designed to create the correct type of tag message for the
-particular request.  Returns the size of the tag message.
-May return 0 if TCQ is disabled for this device.
+     designed to create the correct type of tag message for the
+     particular request.  Returns the size of the tag message.
+     May return 0 if TCQ is disabled for this device.
 
 .. This file was automatic generated / don't edit.
 

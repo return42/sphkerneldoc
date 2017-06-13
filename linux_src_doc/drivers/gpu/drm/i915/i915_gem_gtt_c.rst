@@ -1,141 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem_gtt.c
 
-.. _`gen8_ppgtt_alloc_pagetabs`:
-
-gen8_ppgtt_alloc_pagetabs
-=========================
-
-.. c:function:: int gen8_ppgtt_alloc_pagetabs(struct i915_address_space *vm, struct i915_page_directory *pd, uint64_t start, uint64_t length, unsigned long *new_pts)
-
-    Allocate page tables for VA range.
-
-    :param struct i915_address_space \*vm:
-        Master vm structure.
-
-    :param struct i915_page_directory \*pd:
-        Page directory for this address range.
-
-    :param uint64_t start:
-        Starting virtual address to begin allocations.
-
-    :param uint64_t length:
-        Size of the allocations.
-
-    :param unsigned long \*new_pts:
-        Bitmap set by function with new allocations. Likely used by the
-        caller to free on error.
-
-.. _`gen8_ppgtt_alloc_pagetabs.description`:
-
-Description
------------
-
-Allocate the required number of page tables. Extremely similar to
-\ :c:func:`gen8_ppgtt_alloc_page_directories`\ . The main difference is here we are limited by
-the page directory boundary (instead of the page directory pointer). That
-boundary is 1GB virtual. Therefore, unlike \ :c:func:`gen8_ppgtt_alloc_page_directories`\ , it is
-possible, and likely that the caller will need to use multiple calls of this
-function to achieve the appropriate allocation.
-
-.. _`gen8_ppgtt_alloc_pagetabs.return`:
-
-Return
-------
-
-0 if success; negative error code otherwise.
-
-.. _`gen8_ppgtt_alloc_page_directories`:
-
-gen8_ppgtt_alloc_page_directories
-=================================
-
-.. c:function:: int gen8_ppgtt_alloc_page_directories(struct i915_address_space *vm, struct i915_page_directory_pointer *pdp, uint64_t start, uint64_t length, unsigned long *new_pds)
-
-    Allocate page directories for VA range.
-
-    :param struct i915_address_space \*vm:
-        Master vm structure.
-
-    :param struct i915_page_directory_pointer \*pdp:
-        Page directory pointer for this address range.
-
-    :param uint64_t start:
-        Starting virtual address to begin allocations.
-
-    :param uint64_t length:
-        Size of the allocations.
-
-    :param unsigned long \*new_pds:
-        Bitmap set by function with new allocations. Likely used by the
-        caller to free on error.
-
-.. _`gen8_ppgtt_alloc_page_directories.description`:
-
-Description
------------
-
-Allocate the required number of page directories starting at the pde index of
-\ ``start``\ , and ending at the pde index \ ``start``\  + \ ``length``\ . This function will skip
-over already allocated page directories within the range, and only allocate
-new ones, setting the appropriate pointer within the pdp as well as the
-correct position in the bitmap \ ``new_pds``\ .
-
-The function will only allocate the pages within the range for a give page
-directory pointer. In other words, if \ ``start``\  + \ ``length``\  straddles a virtually
-addressed PDP boundary (512GB for 4k pages), there will be more allocations
-required by the caller, This is not currently possible, and the BUG in the
-code will prevent it.
-
-.. _`gen8_ppgtt_alloc_page_directories.return`:
-
-Return
-------
-
-0 if success; negative error code otherwise.
-
-.. _`gen8_ppgtt_alloc_page_dirpointers`:
-
-gen8_ppgtt_alloc_page_dirpointers
-=================================
-
-.. c:function:: int gen8_ppgtt_alloc_page_dirpointers(struct i915_address_space *vm, struct i915_pml4 *pml4, uint64_t start, uint64_t length, unsigned long *new_pdps)
-
-    Allocate pdps for VA range.
-
-    :param struct i915_address_space \*vm:
-        Master vm structure.
-
-    :param struct i915_pml4 \*pml4:
-        Page map level 4 for this address range.
-
-    :param uint64_t start:
-        Starting virtual address to begin allocations.
-
-    :param uint64_t length:
-        Size of the allocations.
-
-    :param unsigned long \*new_pdps:
-        Bitmap set by function with new allocations. Likely used by the
-        caller to free on error.
-
-.. _`gen8_ppgtt_alloc_page_dirpointers.description`:
-
-Description
------------
-
-Allocate the required number of page directory pointers. Extremely similar to
-\ :c:func:`gen8_ppgtt_alloc_page_directories`\  and \ :c:func:`gen8_ppgtt_alloc_pagetabs`\ .
-The main difference is here we are limited by the pml4 boundary (instead of
-the page directory pointer).
-
-.. _`gen8_ppgtt_alloc_page_dirpointers.return`:
-
-Return
-------
-
-0 if success; negative error code otherwise.
-
 .. _`i915_ggtt_cleanup_hw`:
 
 i915_ggtt_cleanup_hw
@@ -171,6 +36,125 @@ i915_ggtt_init_hw
 
     :param struct drm_i915_private \*dev_priv:
         i915 device
+
+.. _`i915_gem_gtt_reserve`:
+
+i915_gem_gtt_reserve
+====================
+
+.. c:function:: int i915_gem_gtt_reserve(struct i915_address_space *vm, struct drm_mm_node *node, u64 size, u64 offset, unsigned long color, unsigned int flags)
+
+    reserve a node in an address_space (GTT)
+
+    :param struct i915_address_space \*vm:
+        the \ :c:type:`struct i915_address_space <i915_address_space>`\ 
+
+    :param struct drm_mm_node \*node:
+        the \ :c:type:`struct drm_mm_node <drm_mm_node>`\  (typically i915_vma.mode)
+
+    :param u64 size:
+        how much space to allocate inside the GTT,
+        must be #I915_GTT_PAGE_SIZE aligned
+
+    :param u64 offset:
+        where to insert inside the GTT,
+        must be #I915_GTT_MIN_ALIGNMENT aligned, and the node
+        (@offset + \ ``size``\ ) must fit within the address space
+
+    :param unsigned long color:
+        color to apply to node, if this node is not from a VMA,
+        color must be #I915_COLOR_UNEVICTABLE
+
+    :param unsigned int flags:
+        control search and eviction behaviour
+
+.. _`i915_gem_gtt_reserve.description`:
+
+Description
+-----------
+
+i915_gem_gtt_reserve() tries to insert the \ ``node``\  at the exact \ ``offset``\  inside
+the address space (using \ ``size``\  and \ ``color``\ ). If the \ ``node``\  does not fit, it
+tries to evict any overlapping nodes from the GTT, including any
+neighbouring nodes if the colors do not match (to ensure guard pages between
+differing domains). See \ :c:func:`i915_gem_evict_for_node`\  for the gory details
+on the eviction algorithm. #PIN_NONBLOCK may used to prevent waiting on
+evicting active overlapping objects, and any overlapping node that is pinned
+or marked as unevictable will also result in failure.
+
+.. _`i915_gem_gtt_reserve.return`:
+
+Return
+------
+
+0 on success, -ENOSPC if no suitable hole is found, -EINTR if
+asked to wait for eviction and interrupted.
+
+.. _`i915_gem_gtt_insert`:
+
+i915_gem_gtt_insert
+===================
+
+.. c:function:: int i915_gem_gtt_insert(struct i915_address_space *vm, struct drm_mm_node *node, u64 size, u64 alignment, unsigned long color, u64 start, u64 end, unsigned int flags)
+
+    insert a node into an address_space (GTT)
+
+    :param struct i915_address_space \*vm:
+        the \ :c:type:`struct i915_address_space <i915_address_space>`\ 
+
+    :param struct drm_mm_node \*node:
+        the \ :c:type:`struct drm_mm_node <drm_mm_node>`\  (typically i915_vma.node)
+
+    :param u64 size:
+        how much space to allocate inside the GTT,
+        must be #I915_GTT_PAGE_SIZE aligned
+
+    :param u64 alignment:
+        required alignment of starting offset, may be 0 but
+        if specified, this must be a power-of-two and at least
+        #I915_GTT_MIN_ALIGNMENT
+
+    :param unsigned long color:
+        color to apply to node
+
+    :param u64 start:
+        start of any range restriction inside GTT (0 for all),
+        must be #I915_GTT_PAGE_SIZE aligned
+
+    :param u64 end:
+        end of any range restriction inside GTT (U64_MAX for all),
+        must be #I915_GTT_PAGE_SIZE aligned if not U64_MAX
+
+    :param unsigned int flags:
+        control search and eviction behaviour
+
+.. _`i915_gem_gtt_insert.description`:
+
+Description
+-----------
+
+i915_gem_gtt_insert() first searches for an available hole into which
+is can insert the node. The hole address is aligned to \ ``alignment``\  and
+its \ ``size``\  must then fit entirely within the [@start, \ ``end``\ ] bounds. The
+nodes on either side of the hole must match \ ``color``\ , or else a guard page
+will be inserted between the two nodes (or the node evicted). If no
+suitable hole is found, first a victim is randomly selected and tested
+for eviction, otherwise then the LRU list of objects within the GTT
+is scanned to find the first set of replacement nodes to create the hole.
+Those old overlapping nodes are evicted from the GTT (and so must be
+rebound before any future use). Any node that is currently pinned cannot
+be evicted (see \ :c:func:`i915_vma_pin`\ ). Similar if the node's VMA is currently
+active and #PIN_NONBLOCK is specified, that node is also skipped when
+searching for an eviction candidate. See \ :c:func:`i915_gem_evict_something`\  for
+the gory details on the eviction algorithm.
+
+.. _`i915_gem_gtt_insert.return`:
+
+Return
+------
+
+0 on success, -ENOSPC if no suitable hole is found, -EINTR if
+asked to wait for eviction and interrupted.
 
 .. This file was automatic generated / don't edit.
 

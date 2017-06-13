@@ -21,7 +21,7 @@ Definition
         int force_raw;
         struct device dev;
         struct device *claim;
-        int (*rw_bytes)(struct nd_namespace_common *, resource_size_t offset,void *buf, size_t size, int rw);
+        int (*rw_bytes)(struct nd_namespace_common *, resource_size_t offset,void *buf, size_t size, int rw, unsigned long flags);
     }
 
 .. _`nd_namespace_common.members`:
@@ -186,7 +186,7 @@ res
 nvdimm_read_bytes
 =================
 
-.. c:function:: int nvdimm_read_bytes(struct nd_namespace_common *ndns, resource_size_t offset, void *buf, size_t size)
+.. c:function:: int nvdimm_read_bytes(struct nd_namespace_common *ndns, resource_size_t offset, void *buf, size_t size, unsigned long flags)
 
     synchronously read bytes from an nvdimm namespace
 
@@ -202,6 +202,9 @@ nvdimm_read_bytes
     :param size_t size:
         transfer length
 
+    :param unsigned long flags:
+        *undescribed*
+
 .. _`nvdimm_read_bytes.description`:
 
 Description
@@ -214,7 +217,7 @@ Description
 nvdimm_write_bytes
 ==================
 
-.. c:function:: int nvdimm_write_bytes(struct nd_namespace_common *ndns, resource_size_t offset, void *buf, size_t size)
+.. c:function:: int nvdimm_write_bytes(struct nd_namespace_common *ndns, resource_size_t offset, void *buf, size_t size, unsigned long flags)
 
     synchronously write bytes to an nvdimm namespace
 
@@ -229,6 +232,9 @@ nvdimm_write_bytes
 
     :param size_t size:
         transfer length
+
+    :param unsigned long flags:
+        *undescribed*
 
 .. _`nvdimm_write_bytes.description`:
 

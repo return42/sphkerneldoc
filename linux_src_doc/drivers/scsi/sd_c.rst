@@ -1,26 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/sd.c
 
-.. _`sd_setup_discard_cmnd`:
-
-sd_setup_discard_cmnd
-=====================
-
-.. c:function:: int sd_setup_discard_cmnd(struct scsi_cmnd *cmd)
-
-    unmap blocks on thinly provisioned device
-
-    :param struct scsi_cmnd \*cmd:
-        *undescribed*
-
-.. _`sd_setup_discard_cmnd.description`:
-
-Description
------------
-
-Will issue either UNMAP or WRITE SAME(16) depending on preference
-indicated by target device.
-
 .. _`sd_setup_write_same_cmnd`:
 
 sd_setup_write_same_cmnd
@@ -38,8 +18,8 @@ sd_setup_write_same_cmnd
 Description
 -----------
 
-Will issue either WRITE SAME(10) or WRITE SAME(16) depending on
-preference indicated by target device.
+Will set up either WRITE SAME(10) or WRITE SAME(16) depending on
+the preference indicated by the target device.
 
 .. _`sd_open`:
 
@@ -51,10 +31,10 @@ sd_open
     open a scsi disk device
 
     :param struct block_device \*bdev:
-        *undescribed*
+        Block device of the scsi disk to open
 
     :param fmode_t mode:
-        *undescribed*
+        FMODE\_\* mask
 
 .. _`sd_open.description`:
 
@@ -91,10 +71,10 @@ sd_release
     invoked when the (last) close(2) is called on this scsi disk.
 
     :param struct gendisk \*disk:
-        *undescribed*
+        disk to release
 
     :param fmode_t mode:
-        *undescribed*
+        FMODE\_\* mask
 
 .. _`sd_release.description`:
 
@@ -128,10 +108,10 @@ sd_ioctl
     process an ioctl
 
     :param struct block_device \*bdev:
-        *undescribed*
+        target block device
 
     :param fmode_t mode:
-        *undescribed*
+        FMODE\_\* mask
 
     :param unsigned int cmd:
         ioctl command number
@@ -184,6 +164,31 @@ Note
 ----
 
 this function is invoked from the block subsystem.
+
+.. _`sd_eh_reset`:
+
+sd_eh_reset
+===========
+
+.. c:function:: void sd_eh_reset(struct scsi_cmnd *scmd)
+
+    reset error handling callback
+
+    :param struct scsi_cmnd \*scmd:
+        sd-issued command that has failed
+
+.. _`sd_eh_reset.description`:
+
+Description
+-----------
+
+This function is called by the SCSI midlayer before starting
+SCSI EH. When counting medium access failures we have to be
+careful to register it only only once per device and SCSI EH run;
+there might be several timed out commands which will cause the
+'max_medium_access_timeouts' counter to trigger after the first
+SCSI EH run already and set the device to offline.
+So this function resets the internal counter before starting SCSI EH.
 
 .. _`sd_eh_action`:
 
@@ -241,7 +246,7 @@ sd_read_block_limits
     Query disk device for preferred I/O sizes.
 
     :param struct scsi_disk \*sdkp:
-        *undescribed*
+        disk to query
 
 .. _`sd_read_block_characteristics`:
 
@@ -253,7 +258,7 @@ sd_read_block_characteristics
     Query block dev. characteristics
 
     :param struct scsi_disk \*sdkp:
-        *undescribed*
+        disk to query
 
 .. _`sd_read_block_provisioning`:
 
@@ -265,7 +270,7 @@ sd_read_block_provisioning
     Query provisioning VPD page
 
     :param struct scsi_disk \*sdkp:
-        *undescribed*
+        disk to query
 
 .. _`sd_revalidate_disk`:
 
@@ -401,7 +406,7 @@ sd_remove
     called whenever a scsi disk (previously recognized by sd_probe) is detached from the system. It is called (potentially multiple times) during sd module unload.
 
     :param struct device \*dev:
-        *undescribed*
+        pointer to device object
 
 .. _`sd_remove.note`:
 

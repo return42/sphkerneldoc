@@ -2031,6 +2031,39 @@ Return
 
 The value \ ``fn``\  returns.
 
+.. _`work_on_cpu_safe`:
+
+work_on_cpu_safe
+================
+
+.. c:function:: long work_on_cpu_safe(int cpu, long (*fn)(void *), void *arg)
+
+    run a function in thread context on a particular cpu
+
+    :param int cpu:
+        the cpu to run on
+
+    :param long (\*fn)(void \*):
+        the function to run
+
+    :param void \*arg:
+        the function argument
+
+.. _`work_on_cpu_safe.description`:
+
+Description
+-----------
+
+Disables CPU hotplug and calls \ :c:func:`work_on_cpu`\ . The caller must not hold
+any locks which would prevent \ ``fn``\  from completing.
+
+.. _`work_on_cpu_safe.return`:
+
+Return
+------
+
+The value \ ``fn``\  returns.
+
 .. _`freeze_workqueues_begin`:
 
 freeze_workqueues_begin

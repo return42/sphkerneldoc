@@ -6,12 +6,9 @@
 omap_gem_fault
 ==============
 
-.. c:function:: int omap_gem_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
+.. c:function:: int omap_gem_fault(struct vm_fault *vmf)
 
     pagefault handler for GEM objects
-
-    :param struct vm_area_struct \*vma:
-        the VMA of the GEM object
 
     :param struct vm_fault \*vmf:
         fault detail

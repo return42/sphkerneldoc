@@ -54,7 +54,7 @@ disk_part_iter_init
         disk to iterate over
 
     :param unsigned int flags:
-        DISK_PITER\_\* flags
+        DISK_PITER_* flags
 
 .. _`disk_part_iter_init.description`:
 
@@ -170,7 +170,7 @@ register_blkdev
     register a new block device
 
     :param unsigned int major:
-        the requested major device number [1..255]. If \ ``major``\ =0, try to
+        the requested major device number [1..255]. If \ ``major``\  = 0, try to
         allocate any unused major number.
 
     :param const char \*name:
@@ -183,12 +183,13 @@ Description
 
 The \ ``name``\  must be unique within the system.
 
-The return value depends on the \ ``major``\  input parameter.
-- if a major device number was requested in range [1..255] then the
-function returns zero on success, or a negative error code
-- if any unused major number was requested with \ ``major``\ =0 parameter
-then the return value is the allocated major number in range
-[1..255] or a negative error code otherwise
+The return value depends on the \ ``major``\  input parameter:
+
+ - if a major device number was requested in range [1..255] then the
+   function returns zero on success, or a negative error code
+ - if any unused major number was requested with \ ``major``\  = 0 parameter
+   then the return value is the allocated major number in range
+   [1..255] or a negative error code otherwise
 
 .. _`blk_mangle_minor`:
 
@@ -251,7 +252,7 @@ Allocate a dev_t for block device.
 Return
 ------
 
-0 on success, allocated dev_t is returned in \*@devt.  -errno on
+0 on success, allocated dev_t is returned in *@devt.  -errno on
 failure.
 
 .. _`blk_alloc_devt.context`:
@@ -310,12 +311,7 @@ Description
 This function registers the partitioning information in \ ``disk``\ 
 with the kernel.
 
-.. _`device_add_disk.fixme`:
-
-FIXME
------
-
-error handling
+FIXME: error handling
 
 .. _`get_gendisk`:
 

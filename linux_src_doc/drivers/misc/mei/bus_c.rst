@@ -355,6 +355,18 @@ Return
 
 0 on success and < 0 on error
 
+.. _`mei_cldev_unregister_callbacks`:
+
+mei_cldev_unregister_callbacks
+==============================
+
+.. c:function:: void mei_cldev_unregister_callbacks(struct mei_cl_device *cldev)
+
+    internal wrapper for unregistering callbacks.
+
+    :param struct mei_cl_device \*cldev:
+        client device
+
 .. _`mei_cldev_disable`:
 
 mei_cldev_disable
@@ -373,6 +385,37 @@ Return
 ------
 
 0 on success and < 0 on error
+
+.. _`mei_cl_bus_module_get`:
+
+mei_cl_bus_module_get
+=====================
+
+.. c:function:: bool mei_cl_bus_module_get(struct mei_cl *cl)
+
+    acquire module of the underlying hw module.
+
+    :param struct mei_cl \*cl:
+        host client
+
+.. _`mei_cl_bus_module_get.return`:
+
+Return
+------
+
+true on success; false if the module was removed.
+
+.. _`mei_cl_bus_module_put`:
+
+mei_cl_bus_module_put
+=====================
+
+.. c:function:: void mei_cl_bus_module_put(struct mei_cl *cl)
+
+    release the underlying hw module.
+
+    :param struct mei_cl \*cl:
+        host client
 
 .. _`mei_cl_device_find`:
 

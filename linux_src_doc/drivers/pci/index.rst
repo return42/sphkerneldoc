@@ -7,6 +7,8 @@ pci
 .. toctree::
     :maxdepth: 1
 
+    dwc/index
+    endpoint/index
     host/index
     hotplug/index
     pcie/index

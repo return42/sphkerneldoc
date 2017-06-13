@@ -50,6 +50,57 @@ The ccw is the basic structure to build channel programs that perform
 operations with the device or the control unit. Only Format-1 channel
 command words are supported.
 
+.. _`ccw0`:
+
+struct ccw0
+===========
+
+.. c:type:: struct ccw0
+
+    channel command word
+
+.. _`ccw0.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ccw0 {
+        __u8 cmd_code;
+        __u32 cda:24;
+        __u8 flags;
+        __u8 reserved;
+        __u16 count;
+    }
+
+.. _`ccw0.members`:
+
+Members
+-------
+
+cmd_code
+    command code
+
+cda
+    data address
+
+flags
+    flags, like IDA addressing, etc.
+
+reserved
+    will be ignored
+
+count
+    byte count
+
+.. _`ccw0.description`:
+
+Description
+-----------
+
+The format-0 ccw structure.
+
 .. _`erw`:
 
 struct erw
@@ -575,15 +626,15 @@ ccw_dev_id_is_equal
 Return
 ------
 
-%1 if the two structures are equal field-by-field,
-\ ``0``\  if not.
+ \ ``1``\  if the two structures are equal field-by-field,
+ \ ``0``\  if not.
 
 .. _`ccw_dev_id_is_equal.context`:
 
 Context
 -------
 
-any
+ any
 
 .. _`pathmask_to_pos`:
 

@@ -6,11 +6,14 @@
 mdp5_ctl_set_encoder_state
 ==========================
 
-.. c:function:: int mdp5_ctl_set_encoder_state(struct mdp5_ctl *ctl, bool enabled)
+.. c:function:: int mdp5_ctl_set_encoder_state(struct mdp5_ctl *ctl, struct mdp5_pipeline *pipeline, bool enabled)
 
     set the encoder state
 
     :param struct mdp5_ctl \*ctl:
+        *undescribed*
+
+    :param struct mdp5_pipeline \*pipeline:
         *undescribed*
 
     :param bool enabled:
@@ -28,11 +31,14 @@ This encoder state is needed to trigger START signal (data path kickoff).
 mdp5_ctl_commit
 ===============
 
-.. c:function:: u32 mdp5_ctl_commit(struct mdp5_ctl *ctl, u32 flush_mask)
+.. c:function:: u32 mdp5_ctl_commit(struct mdp5_ctl *ctl, struct mdp5_pipeline *pipeline, u32 flush_mask)
 
     Register Flush
 
     :param struct mdp5_ctl \*ctl:
+        *undescribed*
+
+    :param struct mdp5_pipeline \*pipeline:
         *undescribed*
 
     :param u32 flush_mask:

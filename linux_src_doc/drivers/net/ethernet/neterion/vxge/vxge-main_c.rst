@@ -249,7 +249,7 @@ the MTU the device must be stopped.
 vxge_get_stats64
 ================
 
-.. c:function:: struct rtnl_link_stats64 *vxge_get_stats64(struct net_device *dev, struct rtnl_link_stats64 *net_stats)
+.. c:function:: void vxge_get_stats64(struct net_device *dev, struct rtnl_link_stats64 *net_stats)
 
     :param struct net_device \*dev:
         pointer to the device structure

@@ -41,5 +41,29 @@ array is taken and \ :c:func:`dma_fence_put`\  is used on each fence on release.
 If \ ``signal_on_any``\  is true the fence array signals if any fence in the array
 signals, otherwise it signals when all fences in the array signal.
 
+.. _`dma_fence_match_context`:
+
+dma_fence_match_context
+=======================
+
+.. c:function:: bool dma_fence_match_context(struct dma_fence *fence, u64 context)
+
+    Check if all fences are from the given context
+
+    :param struct dma_fence \*fence:
+        [in]    fence or fence array
+
+    :param u64 context:
+        [in]    fence context to check all fences against
+
+.. _`dma_fence_match_context.description`:
+
+Description
+-----------
+
+Checks the provided fence or, for a fence array, all fences in the array
+against the given context. Returns false if any fence is from a different
+context.
+
 .. This file was automatic generated / don't edit.
 

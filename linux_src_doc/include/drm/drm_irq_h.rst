@@ -83,7 +83,7 @@ queue
 disable_timer
     Disable timer for the delayed vblank disablinghysteresis logic. Vblank disabling is controlled through the
     drm_vblank_offdelay module option and the setting of the
-    max_vblank_count value in the \ :c:type:`struct drm_device <drm_device>`\  structure.
+    \ :c:type:`drm_device.max_vblank_count <drm_device>`\  value.
 
 seqlock
     Protect vblank count and time.
@@ -99,7 +99,7 @@ refcount
     \ ``disable_timer``\ .
 
 last
-    Protected by dev->vbl_lock, used for wraparound handling.
+    Protected by \ :c:type:`drm_device.vbl_lock <drm_device>`\ , used for wraparound handling.
 
 inmodeset
     Tracks whether the vblank is disabled due to a modeset.For legacy driver bit 2 additionally tracks whether an additional
@@ -133,8 +133,8 @@ This structure tracks the vblank state for one CRTC.
 
 Note that for historical reasons - the vblank handling code is still shared
 with legacy/non-kms drivers - this is a free-standing structure not directly
-connected to struct \ :c:type:`struct drm_crtc <drm_crtc>`\ . But all public interface functions are taking
-a struct \ :c:type:`struct drm_crtc <drm_crtc>`\  to hide this implementation detail.
+connected to \ :c:type:`struct drm_crtc <drm_crtc>`\ . But all public interface functions are taking
+a \ :c:type:`struct drm_crtc <drm_crtc>`\  to hide this implementation detail.
 
 .. _`drm_crtc_vblank_waitqueue`:
 

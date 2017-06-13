@@ -1,50 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pinctrl/pinctrl-single.c
 
-.. _`pcs_pingroup`:
-
-struct pcs_pingroup
-===================
-
-.. c:type:: struct pcs_pingroup
-
-    pingroups for a function
-
-.. _`pcs_pingroup.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct pcs_pingroup {
-        struct device_node *np;
-        const char *name;
-        int *gpins;
-        int ngpins;
-        struct list_head node;
-    }
-
-.. _`pcs_pingroup.members`:
-
-Members
--------
-
-np
-    pingroup device node pointer
-
-name
-    pingroup name
-
-gpins
-    array of the pins in the group
-
-ngpins
-    number of pins in the group
-
-node
-    list node
-
 .. _`pcs_func_vals`:
 
 struct pcs_func_vals
@@ -377,16 +333,10 @@ Definition
         bool bits_per_mux;
         unsigned bits_per_pin;
         struct pcs_data pins;
-        struct radix_tree_root pgtree;
-        struct radix_tree_root ftree;
-        struct list_head pingroups;
-        struct list_head functions;
         struct list_head gpiofuncs;
         struct list_head irqs;
         struct irq_chip chip;
         struct irq_domain *domain;
-        unsigned ngroups;
-        unsigned nfuncs;
         struct pinctrl_desc desc;
         unsigned (*read)(void __iomem *reg);
         void (*write)(unsigned val, void __iomem *reg);
@@ -454,18 +404,6 @@ bits_per_pin
 pins
     physical pins on the SoC
 
-pgtree
-    pingroup index radix tree
-
-ftree
-    function index radix tree
-
-pingroups
-    list of pingroups
-
-functions
-    list of functions
-
 gpiofuncs
     list of gpio functions
 
@@ -477,12 +415,6 @@ chip
 
 domain
     IRQ domain for this instance
-
-ngroups
-    number of pingroups
-
-nfuncs
-    number of functions
 
 desc
     pin controller descriptor
@@ -562,30 +494,6 @@ pcs_add_function
 
     :param unsigned npgnames:
         number of pingroup names
-
-.. _`pcs_add_pingroup`:
-
-pcs_add_pingroup
-================
-
-.. c:function:: int pcs_add_pingroup(struct pcs_device *pcs, struct device_node *np, const char *name, int *gpins, int ngpins)
-
-    add a pingroup to the pingroup list
-
-    :param struct pcs_device \*pcs:
-        pcs driver instance
-
-    :param struct device_node \*np:
-        device node of the mux entry
-
-    :param const char \*name:
-        name of the pingroup
-
-    :param int \*gpins:
-        array of the pins that belong to the group
-
-    :param int ngpins:
-        number of pins in the group
 
 .. _`pcs_get_pin_by_offset`:
 
@@ -669,30 +577,6 @@ pcs_dt_node_to_map
 
     :param unsigned \*num_maps:
         number of maps
-
-.. _`pcs_free_funcs`:
-
-pcs_free_funcs
-==============
-
-.. c:function:: void pcs_free_funcs(struct pcs_device *pcs)
-
-    free memory used by functions
-
-    :param struct pcs_device \*pcs:
-        pcs driver instance
-
-.. _`pcs_free_pingroups`:
-
-pcs_free_pingroups
-==================
-
-.. c:function:: void pcs_free_pingroups(struct pcs_device *pcs)
-
-    free memory used by pingroups
-
-    :param struct pcs_device \*pcs:
-        pcs driver instance
 
 .. _`pcs_irq_free`:
 

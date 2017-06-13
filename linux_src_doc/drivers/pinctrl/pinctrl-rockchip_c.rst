@@ -166,5 +166,49 @@ groups
 ngroups
     *undescribed*
 
+.. _`rockchip_mux_recalced_data`:
+
+struct rockchip_mux_recalced_data
+=================================
+
+.. c:type:: struct rockchip_mux_recalced_data
+
+    represent a pin iomux data.
+
+.. _`rockchip_mux_recalced_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rockchip_mux_recalced_data {
+        u8 num;
+        u8 pin;
+        u8 reg;
+        u8 bit;
+        u8 mask;
+    }
+
+.. _`rockchip_mux_recalced_data.members`:
+
+Members
+-------
+
+num
+    bank number.
+
+pin
+    pin number.
+
+reg
+    register offset.
+
+bit
+    index at register.
+
+mask
+    mask bit
+
 .. This file was automatic generated / don't edit.
 

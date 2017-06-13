@@ -33,7 +33,7 @@ find_lock_page
 
 .. c:function:: struct page *find_lock_page(struct address_space *mapping, pgoff_t offset)
 
-    locate, pin and lock a pagecache page pagecache_get_page - find and get a page reference
+    locate, pin and lock a pagecache page
 
     :param struct address_space \*mapping:
         the address_space to search

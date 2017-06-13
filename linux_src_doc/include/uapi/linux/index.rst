@@ -7,6 +7,7 @@ linux
 .. toctree::
     :maxdepth: 1
 
+    android/index
     caif/index
     can/index
     dvb/index
@@ -38,6 +39,7 @@ linux
     membarrier_h
     mic_common_h
     net_tstamp_h
+    netlink_h
     nfc_h
     nilfs2_api_h
     nilfs2_ondisk_h
@@ -46,11 +48,13 @@ linux
     openvswitch_h
     perf_event_h
     rfkill_h
+    rpmsg_h
     scif_ioctl_h
     seccomp_h
     stm_h
     swab_h
     sync_file_h
+    tee_h
     uinput_h
     v4l2-mediabus_h
     v4l2-subdev_h

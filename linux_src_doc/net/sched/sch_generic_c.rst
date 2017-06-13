@@ -56,8 +56,8 @@ dev_deactivate_many
 Description
 -----------
 
-This function returns only when all outstanding transmissions
-have completed, unless all devices are in dismantle phase.
+     This function returns only when all outstanding transmissions
+     have completed, unless all devices are in dismantle phase.
 
 .. This file was automatic generated / don't edit.
 

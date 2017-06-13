@@ -1,23 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/neterion/vxge/vxge-ethtool.c
 
-.. _`vxge_ethtool_sset`:
+.. _`vxge_ethtool_set_link_ksettings`:
 
-vxge_ethtool_sset
-=================
+vxge_ethtool_set_link_ksettings
+===============================
 
-.. c:function:: int vxge_ethtool_sset(struct net_device *dev, struct ethtool_cmd *info)
+.. c:function:: int vxge_ethtool_set_link_ksettings(struct net_device *dev, const struct ethtool_link_ksettings *cmd)
 
     Sets different link parameters.
 
     :param struct net_device \*dev:
         device pointer.
 
-    :param struct ethtool_cmd \*info:
+    :param const struct ethtool_link_ksettings \*cmd:
         pointer to the structure with parameters given by ethtool to set
         link information.
 
-.. _`vxge_ethtool_sset.description`:
+.. _`vxge_ethtool_set_link_ksettings.description`:
 
 Description
 -----------
@@ -25,30 +25,30 @@ Description
 The function sets different link parameters provided by the user onto
 the NIC.
 
-.. _`vxge_ethtool_sset.return-value`:
+.. _`vxge_ethtool_set_link_ksettings.return-value`:
 
 Return value
 ------------
 
 0 on success.
 
-.. _`vxge_ethtool_gset`:
+.. _`vxge_ethtool_get_link_ksettings`:
 
-vxge_ethtool_gset
-=================
+vxge_ethtool_get_link_ksettings
+===============================
 
-.. c:function:: int vxge_ethtool_gset(struct net_device *dev, struct ethtool_cmd *info)
+.. c:function:: int vxge_ethtool_get_link_ksettings(struct net_device *dev, struct ethtool_link_ksettings *cmd)
 
     Return link specific information.
 
     :param struct net_device \*dev:
         device pointer.
 
-    :param struct ethtool_cmd \*info:
+    :param struct ethtool_link_ksettings \*cmd:
         pointer to the structure with parameters given by ethtool
         to return link information.
 
-.. _`vxge_ethtool_gset.description`:
+.. _`vxge_ethtool_get_link_ksettings.description`:
 
 Description
 -----------

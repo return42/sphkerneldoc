@@ -399,53 +399,68 @@ Return
 
 mei_cl_cb pointer or NULL;
 
-.. _`__mei_io_list_flush`:
+.. _`__mei_io_list_flush_cl`:
 
-__mei_io_list_flush
-===================
+__mei_io_list_flush_cl
+======================
 
-.. c:function:: void __mei_io_list_flush(struct mei_cl_cb *list, struct mei_cl *cl, bool free)
+.. c:function:: void __mei_io_list_flush_cl(struct list_head *head, const struct mei_cl *cl, bool free)
 
     removes and frees cbs belonging to cl.
 
-    :param struct mei_cl_cb \*list:
+    :param struct list_head \*head:
         an instance of our list structure
 
-    :param struct mei_cl \*cl:
+    :param const struct mei_cl \*cl:
         host client, can be NULL for flushing the whole list
 
     :param bool free:
         whether to free the cbs
 
-.. _`mei_io_list_flush`:
+.. _`mei_io_list_flush_cl`:
 
-mei_io_list_flush
-=================
+mei_io_list_flush_cl
+====================
 
-.. c:function:: void mei_io_list_flush(struct mei_cl_cb *list, struct mei_cl *cl)
+.. c:function:: void mei_io_list_flush_cl(struct list_head *head, const struct mei_cl *cl)
 
     removes list entry belonging to cl.
 
-    :param struct mei_cl_cb \*list:
+    :param struct list_head \*head:
         An instance of our list structure
 
-    :param struct mei_cl \*cl:
+    :param const struct mei_cl \*cl:
         host client
 
-.. _`mei_io_list_free`:
+.. _`mei_io_list_free_cl`:
 
-mei_io_list_free
-================
+mei_io_list_free_cl
+===================
 
-.. c:function:: void mei_io_list_free(struct mei_cl_cb *list, struct mei_cl *cl)
+.. c:function:: void mei_io_list_free_cl(struct list_head *head, const struct mei_cl *cl)
 
     removes cb belonging to cl and free them
 
-    :param struct mei_cl_cb \*list:
+    :param struct list_head \*head:
         An instance of our list structure
 
-    :param struct mei_cl \*cl:
+    :param const struct mei_cl \*cl:
         host client
+
+.. _`mei_io_list_free_fp`:
+
+mei_io_list_free_fp
+===================
+
+.. c:function:: void mei_io_list_free_fp(struct list_head *head, const struct file *fp)
+
+    free cb from a list that matches file pointer
+
+    :param struct list_head \*head:
+        io list
+
+    :param const struct file \*fp:
+        file pointer (matching cb file object), may be NULL
 
 .. _`mei_cl_alloc_cb`:
 
@@ -531,21 +546,6 @@ Return
 ------
 
 cb on success, NULL if cb is not found
-
-.. _`mei_cl_read_cb_flush`:
-
-mei_cl_read_cb_flush
-====================
-
-.. c:function:: void mei_cl_read_cb_flush(const struct mei_cl *cl, const struct file *fp)
-
-    free client's read pending and completed cbs for a specific file
-
-    :param const struct mei_cl \*cl:
-        host client
-
-    :param const struct file \*fp:
-        file pointer (matching cb file object), may be NULL
 
 .. _`mei_cl_flush_queues`:
 
@@ -691,7 +691,7 @@ mei_cl_set_disconnected
 mei_cl_irq_disconnect
 =====================
 
-.. c:function:: int mei_cl_irq_disconnect(struct mei_cl *cl, struct mei_cl_cb *cb, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_cl_irq_disconnect(struct mei_cl *cl, struct mei_cl_cb *cb, struct list_head *cmpl_list)
 
     processes close related operation from interrupt thread context - send disconnect request
 
@@ -701,7 +701,7 @@ mei_cl_irq_disconnect
     :param struct mei_cl_cb \*cb:
         callback block.
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         complete list.
 
 .. _`mei_cl_irq_disconnect.return`:
@@ -802,7 +802,7 @@ Return
 mei_cl_irq_connect
 ==================
 
-.. c:function:: int mei_cl_irq_connect(struct mei_cl *cl, struct mei_cl_cb *cb, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_cl_irq_connect(struct mei_cl *cl, struct mei_cl_cb *cb, struct list_head *cmpl_list)
 
     send connect request in irq_thread context
 
@@ -812,7 +812,7 @@ mei_cl_irq_connect
     :param struct mei_cl_cb \*cb:
         callback block
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         complete list
 
 .. _`mei_cl_irq_connect.return`:
@@ -955,7 +955,7 @@ MEI_FOP_NOTIFY_START/STOP
 mei_cl_irq_notify
 =================
 
-.. c:function:: int mei_cl_irq_notify(struct mei_cl *cl, struct mei_cl_cb *cb, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_cl_irq_notify(struct mei_cl *cl, struct mei_cl_cb *cb, struct list_head *cmpl_list)
 
     send notification request in irq_thread context
 
@@ -965,7 +965,7 @@ mei_cl_irq_notify
     :param struct mei_cl_cb \*cb:
         callback block.
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         complete list.
 
 .. _`mei_cl_irq_notify.return`:
@@ -1088,7 +1088,7 @@ Return
 mei_cl_irq_write
 ================
 
-.. c:function:: int mei_cl_irq_write(struct mei_cl *cl, struct mei_cl_cb *cb, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_cl_irq_write(struct mei_cl *cl, struct mei_cl_cb *cb, struct list_head *cmpl_list)
 
     write a message to device from the interrupt thread context
 
@@ -1098,7 +1098,7 @@ mei_cl_irq_write
     :param struct mei_cl_cb \*cb:
         callback block.
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         complete list.
 
 .. _`mei_cl_irq_write.return`:

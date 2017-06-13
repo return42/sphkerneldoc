@@ -21,6 +21,29 @@ Description
 returns -ERESTARTSYS if interrupted by a fatal signal.
 Otherwise returns 0 once the io_count hits 0.
 
+.. _`nfs_async_iocounter_wait`:
+
+nfs_async_iocounter_wait
+========================
+
+.. c:function:: bool nfs_async_iocounter_wait(struct rpc_task *task, struct nfs_lock_context *l_ctx)
+
+    wait on a rpc_waitqueue for I/O to complete
+
+    :param struct rpc_task \*task:
+        the rpc_task that should wait
+
+    :param struct nfs_lock_context \*l_ctx:
+        nfs_lock_context with io_counter to check
+
+.. _`nfs_async_iocounter_wait.description`:
+
+Description
+-----------
+
+Returns true if there is outstanding I/O to wait on and the
+task has been put to sleep.
+
 .. _`nfs_create_request`:
 
 nfs_create_request
@@ -205,7 +228,7 @@ nfs_pgio_release
 nfs_pageio_init
 ===============
 
-.. c:function:: void nfs_pageio_init(struct nfs_pageio_descriptor *desc, struct inode *inode, const struct nfs_pageio_ops *pg_ops, const struct nfs_pgio_completion_ops *compl_ops, const struct nfs_rw_ops *rw_ops, size_t bsize, int io_flags)
+.. c:function:: void nfs_pageio_init(struct nfs_pageio_descriptor *desc, struct inode *inode, const struct nfs_pageio_ops *pg_ops, const struct nfs_pgio_completion_ops *compl_ops, const struct nfs_rw_ops *rw_ops, size_t bsize, int io_flags, gfp_t gfp_flags)
 
     initialise a page io descriptor
 
@@ -229,6 +252,9 @@ nfs_pageio_init
 
     :param int io_flags:
         extra parameters for the io function
+
+    :param gfp_t gfp_flags:
+        *undescribed*
 
 .. _`nfs_pgio_result`:
 

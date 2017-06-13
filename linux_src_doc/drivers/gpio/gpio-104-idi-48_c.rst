@@ -19,11 +19,10 @@ Definition
 
     struct idi_48_gpio {
         struct gpio_chip chip;
-        spinlock_t lock;
+        raw_spinlock_t lock;
         spinlock_t ack_lock;
         unsigned char irq_mask[6];
         unsigned base;
-        unsigned irq;
         unsigned char cos_enb;
     }
 
@@ -46,9 +45,6 @@ irq_mask
 
 base
     base port address of the GPIO device
-
-irq
-    Interrupt line number
 
 cos_enb
     Change-Of-State IRQ enable boundaries mask

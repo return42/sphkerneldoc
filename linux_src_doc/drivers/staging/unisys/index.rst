@@ -9,5 +9,3 @@ unisys
 
     include/index
     visorbus/index
-    visorhba/index
-    visornic/index

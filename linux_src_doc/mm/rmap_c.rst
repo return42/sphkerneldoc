@@ -42,30 +42,6 @@ an anon_vma.
 
 This must be called with the mmap_sem held for reading.
 
-.. _`page_mapped_in_vma`:
-
-page_mapped_in_vma
-==================
-
-.. c:function:: int page_mapped_in_vma(struct page *page, struct vm_area_struct *vma)
-
-    check whether a page is really mapped in a VMA
-
-    :param struct page \*page:
-        the page to test
-
-    :param struct vm_area_struct \*vma:
-        the VMA to test
-
-.. _`page_mapped_in_vma.description`:
-
-Description
------------
-
-Returns 1 if the page is mapped into the page tables of the VMA, 0
-if the page is not mapped into the page tables of this VMA.  Only
-valid for normal file or anonymous VMAs.
-
 .. _`page_referenced`:
 
 page_referenced
@@ -275,7 +251,7 @@ The caller needs to hold the pte lock.
 try_to_unmap
 ============
 
-.. c:function:: int try_to_unmap(struct page *page, enum ttu_flags flags)
+.. c:function:: bool try_to_unmap(struct page *page, enum ttu_flags flags)
 
     try to remove all page table mappings to a page
 
@@ -293,23 +269,14 @@ Description
 Tries to remove all the page table entries which are mapping this
 page, used in the pageout path.  Caller must hold the page lock.
 
-.. _`try_to_unmap.return-values-are`:
-
-Return values are
------------------
-
-
-SWAP_SUCCESS - we succeeded in removing all mappings
-SWAP_AGAIN   - we missed a mapping, try again later
-SWAP_FAIL    - the page is unswappable
-SWAP_MLOCK   - page is mlocked.
+If unmap is successful, return true. Otherwise, false.
 
 .. _`try_to_munlock`:
 
 try_to_munlock
 ==============
 
-.. c:function:: int try_to_munlock(struct page *page)
+.. c:function:: void try_to_munlock(struct page *page)
 
     try to munlock a page
 
@@ -324,17 +291,6 @@ Description
 Called from munlock code.  Checks all of the VMAs mapping the page
 to make sure nobody else has this page mlocked. The page will be
 returned with PG_mlocked cleared if no other vmas have it mlocked.
-
-.. _`try_to_munlock.return-values-are`:
-
-Return values are
------------------
-
-
-SWAP_AGAIN   - no vma is holding page mlocked, or,
-SWAP_AGAIN   - page mapped in mlocked vma -- couldn't acquire mmap sem
-SWAP_FAIL    - page cannot be located at present
-SWAP_MLOCK   - page is now mlocked.
 
 .. This file was automatic generated / don't edit.
 

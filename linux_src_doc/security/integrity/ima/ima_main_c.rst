@@ -85,7 +85,7 @@ ima_file_check
         pointer to the file to be measured
 
     :param int mask:
-        contains MAY_READ, MAY_WRITE or MAY_EXECUTE
+        contains MAY_READ, MAY_WRITE, MAY_EXEC or MAY_APPEND
 
     :param int opened:
         *undescribed*

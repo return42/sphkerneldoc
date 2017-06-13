@@ -333,6 +333,7 @@ Definition
     struct perf_addr_filters_head {
         struct list_head list;
         raw_spinlock_t lock;
+        unsigned int nr_file_filters;
     }
 
 .. _`perf_addr_filters_head.members`:
@@ -346,6 +347,9 @@ list
 lock
     spinlock that serializes accesses to the \ ``list``\  and event's
     (and its children's) filter generations.
+
+nr_file_filters
+    number of file-based filters
 
 .. _`perf_addr_filters_head.description`:
 
@@ -860,9 +864,9 @@ Definition
         struct hrtimer hrtimer;
         ktime_t hrtimer_interval;
         unsigned int hrtimer_active;
-        struct pmu *unique_pmu;
     #ifdef CONFIG_CGROUP_PERF
         struct perf_cgroup *cgrp;
+        struct list_head cgrp_cpuctx_entry;
     #endif
         struct list_head sched_cb_entry;
         int sched_cb_usage;
@@ -897,10 +901,10 @@ hrtimer_interval
 hrtimer_active
     *undescribed*
 
-unique_pmu
+cgrp
     *undescribed*
 
-cgrp
+cgrp_cpuctx_entry
     *undescribed*
 
 sched_cb_entry

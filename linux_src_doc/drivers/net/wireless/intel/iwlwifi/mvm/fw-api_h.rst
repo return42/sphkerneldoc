@@ -354,6 +354,7 @@ Definition
         __le32 action;
         __le32 macs[MAX_MACS_IN_BINDING];
         __le32 phy;
+        __le32 lmac_id;
     }
 
 .. _`iwl_binding_cmd.members`:
@@ -372,6 +373,9 @@ macs
 
 phy
     PHY id and color which belongs to the binding
+
+lmac_id
+    the lmac id the binding belongs to
 
 .. _`iwl_time_quota_data`:
 
@@ -437,6 +441,15 @@ Members
 
 quotas
     allocations per binding
+
+.. _`iwl_time_quota_cmd.note`:
+
+Note
+----
+
+on non-CDB the fourth one is the auxilary mac and is
+essentially zero.
+On CDB the fourth one is a regular binding.
 
 .. _`iwl_phy_context_cmd`:
 
@@ -629,6 +642,7 @@ Definition
         __le32 external_ver;
         __le32 status;
         __le32 duration;
+        __le32 image_size;
     }
 
 .. _`iwl_mfuart_load_notif.members`:
@@ -647,6 +661,57 @@ status
 
 duration
     MFUART loading time
+
+image_size
+    MFUART image size in bytes
+
+.. _`iwl_mfu_assert_dump_notif`:
+
+struct iwl_mfu_assert_dump_notif
+================================
+
+.. c:type:: struct iwl_mfu_assert_dump_notif
+
+    mfuart dump logs ( MFU_ASSERT_DUMP_NTF = 0xfe )
+
+.. _`iwl_mfu_assert_dump_notif.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mfu_assert_dump_notif {
+        __le32 assert_id;
+        __le32 curr_reset_num;
+        __le16 index_num;
+        __le16 parts_num;
+        __le32 data_size;
+        __le32 data[0];
+    }
+
+.. _`iwl_mfu_assert_dump_notif.members`:
+
+Members
+-------
+
+assert_id
+    mfuart assert id that cause the notif
+
+curr_reset_num
+    number of asserts since uptime
+
+index_num
+    current chunk id
+
+parts_num
+    total number of chunks
+
+data_size
+    number of data bytes sent
+
+data
+    data buffer
 
 .. _`iwl_set_calib_default_cmd`:
 
@@ -1602,6 +1667,46 @@ num_temps
 thresholds
     array with the thresholds to be configured
 
+.. _`iwl_shared_mem_lmac_cfg`:
+
+struct iwl_shared_mem_lmac_cfg
+==============================
+
+.. c:type:: struct iwl_shared_mem_lmac_cfg
+
+    LMAC shared memory configuration
+
+.. _`iwl_shared_mem_lmac_cfg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_shared_mem_lmac_cfg {
+        __le32 txfifo_addr;
+        __le32 txfifo_size[TX_FIFO_MAX_NUM];
+        __le32 rxfifo1_addr;
+        __le32 rxfifo1_size;
+    }
+
+.. _`iwl_shared_mem_lmac_cfg.members`:
+
+Members
+-------
+
+txfifo_addr
+    start addr of TXF0 (excluding the context table 0.5KB)
+
+txfifo_size
+    size of TX FIFOs
+
+rxfifo1_addr
+    RXF1 addr
+
+rxfifo1_size
+    RXF1 size
+
 .. _`iwl_mu_group_mgmt_notif`:
 
 struct iwl_mu_group_mgmt_notif
@@ -1710,6 +1815,98 @@ len
 
 data
     contains the read DWs
+
+.. _`iwl_nvm_access_complete_cmd`:
+
+struct iwl_nvm_access_complete_cmd
+==================================
+
+.. c:type:: struct iwl_nvm_access_complete_cmd
+
+    NVM_ACCESS commands are completed
+
+.. _`iwl_nvm_access_complete_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_nvm_access_complete_cmd {
+        __le32 reserved;
+    }
+
+.. _`iwl_nvm_access_complete_cmd.members`:
+
+Members
+-------
+
+reserved
+    *undescribed*
+
+.. _`iwl_extended_cfg_flags`:
+
+enum iwl_extended_cfg_flags
+===========================
+
+.. c:type:: enum iwl_extended_cfg_flags
+
+    commands driver may send before finishing init flow
+
+.. _`iwl_extended_cfg_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_extended_cfg_flags {
+        IWL_INIT_DEBUG_CFG,
+        IWL_INIT_NVM,
+        IWL_INIT_PHY
+    };
+
+.. _`iwl_extended_cfg_flags.constants`:
+
+Constants
+---------
+
+IWL_INIT_DEBUG_CFG
+    driver is going to send debug config command
+
+IWL_INIT_NVM
+    driver is going to send NVM_ACCESS commands
+
+IWL_INIT_PHY
+    driver is going to send PHY_DB commands
+
+.. _`iwl_init_extended_cfg_cmd`:
+
+struct iwl_init_extended_cfg_cmd
+================================
+
+.. c:type:: struct iwl_init_extended_cfg_cmd
+
+    mark what commands ucode should wait for before finishing init flows
+
+.. _`iwl_init_extended_cfg_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_init_extended_cfg_cmd {
+        __le32 init_flags;
+    }
+
+.. _`iwl_init_extended_cfg_cmd.members`:
+
+Members
+-------
+
+init_flags
+    values from iwl_extended_cfg_flags
 
 .. This file was automatic generated / don't edit.
 

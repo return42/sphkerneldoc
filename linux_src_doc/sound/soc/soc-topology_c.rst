@@ -36,7 +36,7 @@ set_link_hw_format
     Set the HW audio format of the physical DAI link.
 
     :param struct snd_soc_dai_link \*link:
-        *undescribed*
+        &snd_soc_dai_link which should be updated
 
     :param struct snd_soc_tplg_link_config \*cfg:
         physical link configs.
@@ -60,7 +60,7 @@ link_new_ver
     Create a new physical link config from the old version of source.
 
     :param struct soc_tplg \*tplg:
-        *undescribed*
+        topology context
 
     :param struct snd_soc_tplg_link_config \*src:
         old version of phyical link config as a source
@@ -108,7 +108,7 @@ manifest_new_ver
     Create a new version of manifest from the old version of source.
 
     :param struct soc_tplg \*tplg:
-        *undescribed*
+        topology context
 
     :param struct snd_soc_tplg_manifest \*src:
         old version of manifest as a source

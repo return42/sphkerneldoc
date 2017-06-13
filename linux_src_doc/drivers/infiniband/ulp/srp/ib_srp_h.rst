@@ -27,7 +27,7 @@ Definition
         union {unnamed_union};
         struct completion done;
         int status;
-        struct ib_sa_path_rec path;
+        struct sa_path_rec path;
         struct ib_sa_query *path_query;
         int path_query_id;
         struct ib_cm_id *cm_id;
@@ -36,6 +36,7 @@ Definition
         struct srp_request *req_ring;
         int max_ti_iu_len;
         int comp_vector;
+        u64 tsk_mgmt_tag;
         struct completion tsk_mgmt_done;
         u8 tsk_mgmt_status;
         bool connected;
@@ -103,6 +104,9 @@ max_ti_iu_len
 
 comp_vector
     Completion vector used by this RDMA channel.
+
+tsk_mgmt_tag
+    *undescribed*
 
 tsk_mgmt_done
     *undescribed*

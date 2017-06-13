@@ -18,13 +18,13 @@ dev_add_pack
 Description
 -----------
 
-Add a protocol handler to the networking stack. The passed \ :c:type:`struct packet_type <packet_type>`\ 
-is linked into kernel lists and may not be freed until it has been
-removed from the kernel lists.
+     Add a protocol handler to the networking stack. The passed \ :c:type:`struct packet_type <packet_type>`\ 
+     is linked into kernel lists and may not be freed until it has been
+     removed from the kernel lists.
 
-This call does not sleep therefore it can not
-guarantee all CPU's that are in middle of receiving packets
-will see the new packet type (until the next received packet).
+     This call does not sleep therefore it can not
+     guarantee all CPU's that are in middle of receiving packets
+     will see the new packet type (until the next received packet).
 
 .. _`__dev_remove_pack`:
 
@@ -43,14 +43,14 @@ __dev_remove_pack
 Description
 -----------
 
-Remove a protocol handler that was previously added to the kernel
-protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>`\  is removed
-from the kernel lists and can be freed or reused once this function
-returns.
+     Remove a protocol handler that was previously added to the kernel
+     protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>`\  is removed
+     from the kernel lists and can be freed or reused once this function
+     returns.
 
-The packet type might still be in use by receivers
-and must not be freed until after all the CPU's have gone
-through a quiescent state.
+     The packet type might still be in use by receivers
+     and must not be freed until after all the CPU's have gone
+     through a quiescent state.
 
 .. _`dev_remove_pack`:
 
@@ -69,13 +69,13 @@ dev_remove_pack
 Description
 -----------
 
-Remove a protocol handler that was previously added to the kernel
-protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>`\  is removed
-from the kernel lists and can be freed or reused once this function
-returns.
+     Remove a protocol handler that was previously added to the kernel
+     protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>`\  is removed
+     from the kernel lists and can be freed or reused once this function
+     returns.
 
-This call sleeps to guarantee that no CPU is looking at the packet
-type after return.
+     This call sleeps to guarantee that no CPU is looking at the packet
+     type after return.
 
 .. _`dev_add_offload`:
 
@@ -94,13 +94,13 @@ dev_add_offload
 Description
 -----------
 
-Add protocol offload handlers to the networking stack. The passed
-\ :c:type:`struct proto_offload <proto_offload>`\  is linked into kernel lists and may not be freed until
-it has been removed from the kernel lists.
+     Add protocol offload handlers to the networking stack. The passed
+     \ :c:type:`struct proto_offload <proto_offload>`\  is linked into kernel lists and may not be freed until
+     it has been removed from the kernel lists.
 
-This call does not sleep therefore it can not
-guarantee all CPU's that are in middle of receiving packets
-will see the new offload handlers (until the next received packet).
+     This call does not sleep therefore it can not
+     guarantee all CPU's that are in middle of receiving packets
+     will see the new offload handlers (until the next received packet).
 
 .. _`__dev_remove_offload`:
 
@@ -119,14 +119,14 @@ __dev_remove_offload
 Description
 -----------
 
-Remove a protocol offload handler that was previously added to the
-kernel offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`\ 
-is removed from the kernel lists and can be freed or reused once this
-function returns.
+     Remove a protocol offload handler that was previously added to the
+     kernel offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`\ 
+     is removed from the kernel lists and can be freed or reused once this
+     function returns.
 
-The packet type might still be in use by receivers
-and must not be freed until after all the CPU's have gone
-through a quiescent state.
+     The packet type might still be in use by receivers
+     and must not be freed until after all the CPU's have gone
+     through a quiescent state.
 
 .. _`dev_remove_offload`:
 
@@ -145,13 +145,13 @@ dev_remove_offload
 Description
 -----------
 
-Remove a packet offload handler that was previously added to the kernel
-offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`\  is
-removed from the kernel lists and can be freed or reused once this
-function returns.
+     Remove a packet offload handler that was previously added to the kernel
+     offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`\  is
+     removed from the kernel lists and can be freed or reused once this
+     function returns.
 
-This call sleeps to guarantee that no CPU is looking at the packet
-type after return.
+     This call sleeps to guarantee that no CPU is looking at the packet
+     type after return.
 
 .. _`netdev_boot_setup_add`:
 
@@ -173,9 +173,9 @@ netdev_boot_setup_add
 Description
 -----------
 
-Adds new setup entry to the dev_boot_setup list.  The function
-returns 0 on error and 1 on success.  This is a generic routine to
-all netdevices.
+     Adds new setup entry to the dev_boot_setup list.  The function
+     returns 0 on error and 1 on success.  This is a generic routine to
+     all netdevices.
 
 .. _`netdev_boot_setup_check`:
 
@@ -241,8 +241,8 @@ dev_get_iflink
 Description
 -----------
 
-Indicates the ifindex the interface is linked to.
-Physical interfaces have the same 'ifindex' and 'iflink' values.
+     Indicates the ifindex the interface is linked to.
+     Physical interfaces have the same 'ifindex' and 'iflink' values.
 
 .. _`dev_fill_metadata_dst`:
 
@@ -264,9 +264,9 @@ dev_fill_metadata_dst
 Description
 -----------
 
-For better visibility of tunnel traffic OVS needs to retrieve
-egress tunnel information for a packet. Following API allows
-user to get this info.
+     For better visibility of tunnel traffic OVS needs to retrieve
+     egress tunnel information for a packet. Following API allows
+     user to get this info.
 
 .. _`__dev_get_by_name`:
 
@@ -288,11 +288,11 @@ __dev_get_by_name
 Description
 -----------
 
-Find an interface by name. Must be called under RTNL semaphore
-or \ ``dev_base_lock``\ . If the name is found a pointer to the device
-is returned. If the name is not found then \ ``NULL``\  is returned. The
-reference counters are not incremented so the caller must be
-careful with locks.
+     Find an interface by name. Must be called under RTNL semaphore
+     or \ ``dev_base_lock``\ . If the name is found a pointer to the device
+     is returned. If the name is not found then \ ``NULL``\  is returned. The
+     reference counters are not incremented so the caller must be
+     careful with locks.
 
 .. _`dev_get_by_name_rcu`:
 
@@ -340,11 +340,11 @@ dev_get_by_name
 Description
 -----------
 
-Find an interface by name. This can be called from any
-context and does its own locking. The returned handle has
-the usage count incremented and the caller must use \ :c:func:`dev_put`\  to
-release it when it is no longer needed. \ ``NULL``\  is returned if no
-matching device is found.
+     Find an interface by name. This can be called from any
+     context and does its own locking. The returned handle has
+     the usage count incremented and the caller must use \ :c:func:`dev_put`\  to
+     release it when it is no longer needed. \ ``NULL``\  is returned if no
+     matching device is found.
 
 .. _`__dev_get_by_index`:
 
@@ -366,11 +366,11 @@ __dev_get_by_index
 Description
 -----------
 
-Search for an interface by index. Returns \ ``NULL``\  if the device
-is not found or a pointer to the device. The device has not
-had its reference counter increased so the caller must be careful
-about locking. The caller must hold either the RTNL semaphore
-or \ ``dev_base_lock``\ .
+     Search for an interface by index. Returns \ ``NULL``\  if the device
+     is not found or a pointer to the device. The device has not
+     had its reference counter increased so the caller must be careful
+     about locking. The caller must hold either the RTNL semaphore
+     or \ ``dev_base_lock``\ .
 
 .. _`dev_get_by_index_rcu`:
 
@@ -392,10 +392,10 @@ dev_get_by_index_rcu
 Description
 -----------
 
-Search for an interface by index. Returns \ ``NULL``\  if the device
-is not found or a pointer to the device. The device has not
-had its reference counter increased so the caller must be careful
-about locking. The caller must hold RCU lock.
+     Search for an interface by index. Returns \ ``NULL``\  if the device
+     is not found or a pointer to the device. The device has not
+     had its reference counter increased so the caller must be careful
+     about locking. The caller must hold RCU lock.
 
 .. _`dev_get_by_index`:
 
@@ -417,10 +417,10 @@ dev_get_by_index
 Description
 -----------
 
-Search for an interface by index. Returns NULL if the device
-is not found or a pointer to the device. The device returned has
-had a reference added and the pointer is safe until the user calls
-dev_put to indicate they have finished with it.
+     Search for an interface by index. Returns NULL if the device
+     is not found or a pointer to the device. The device returned has
+     had a reference added and the pointer is safe until the user calls
+     dev_put to indicate they have finished with it.
 
 .. _`netdev_get_name`:
 
@@ -445,9 +445,9 @@ netdev_get_name
 Description
 -----------
 
-The use of \ :c:func:`raw_seqcount_begin`\  and \ :c:func:`cond_resched`\  before
-retrying is required as we want to give the writers a chance
-to complete when CONFIG_PREEMPT is not set.
+     The use of \ :c:func:`raw_seqcount_begin`\  and \ :c:func:`cond_resched`\  before
+     retrying is required as we want to give the writers a chance
+     to complete when CONFIG_PREEMPT is not set.
 
 .. _`dev_getbyhwaddr_rcu`:
 
@@ -472,11 +472,11 @@ dev_getbyhwaddr_rcu
 Description
 -----------
 
-Search for an interface by MAC address. Returns NULL if the device
-is not found or a pointer to the device.
-The caller must hold RCU or RTNL.
-The returned device has not had its ref count increased
-and the caller must therefore be careful about locking
+     Search for an interface by MAC address. Returns NULL if the device
+     is not found or a pointer to the device.
+     The caller must hold RCU or RTNL.
+     The returned device has not had its ref count increased
+     and the caller must therefore be careful about locking
 
 .. _`__dev_get_by_flags`:
 
@@ -491,7 +491,7 @@ __dev_get_by_flags
         the applicable net namespace
 
     :param unsigned short if_flags:
-        IFF\_\* values
+        IFF_* values
 
     :param unsigned short mask:
         bitmask of bits in if_flags to check
@@ -501,9 +501,9 @@ __dev_get_by_flags
 Description
 -----------
 
-Search for any interface with the given flags. Returns NULL if a device
-is not found or a pointer to the device. Must be called inside
-\ :c:func:`rtnl_lock`\ , and result refcount is unchanged.
+     Search for any interface with the given flags. Returns NULL if a device
+     is not found or a pointer to the device. Must be called inside
+     \ :c:func:`rtnl_lock`\ , and result refcount is unchanged.
 
 .. _`dev_valid_name`:
 
@@ -522,9 +522,9 @@ dev_valid_name
 Description
 -----------
 
-Network device names need to be valid file names to
-to allow sysfs to work.  We also disallow any kind of
-whitespace.
+     Network device names need to be valid file names to
+     to allow sysfs to work.  We also disallow any kind of
+     whitespace.
 
 .. _`__dev_alloc_name`:
 
@@ -549,13 +549,13 @@ __dev_alloc_name
 Description
 -----------
 
-Passed a format string - eg "lt%d" it will try and find a suitable
-id. It scans list of devices to build up a free map, then chooses
-the first empty slot. The caller must hold the dev_base or rtnl lock
-while allocating the name and adding the device in order to avoid
-duplicates.
-Limited to bits_per_byte \* page size devices (ie 32K on most platforms).
-Returns the number of the unit assigned or a negative errno code.
+     Passed a format string - eg "lt%d" it will try and find a suitable
+     id. It scans list of devices to build up a free map, then chooses
+     the first empty slot. The caller must hold the dev_base or rtnl lock
+     while allocating the name and adding the device in order to avoid
+     duplicates.
+     Limited to bits_per_byte * page size devices (ie 32K on most platforms).
+     Returns the number of the unit assigned or a negative errno code.
 
 .. _`dev_alloc_name`:
 
@@ -577,13 +577,13 @@ dev_alloc_name
 Description
 -----------
 
-Passed a format string - eg "lt%d" it will try and find a suitable
-id. It scans list of devices to build up a free map, then chooses
-the first empty slot. The caller must hold the dev_base or rtnl lock
-while allocating the name and adding the device in order to avoid
-duplicates.
-Limited to bits_per_byte \* page size devices (ie 32K on most platforms).
-Returns the number of the unit assigned or a negative errno code.
+     Passed a format string - eg "lt%d" it will try and find a suitable
+     id. It scans list of devices to build up a free map, then chooses
+     the first empty slot. The caller must hold the dev_base or rtnl lock
+     while allocating the name and adding the device in order to avoid
+     duplicates.
+     Limited to bits_per_byte * page size devices (ie 32K on most platforms).
+     Returns the number of the unit assigned or a negative errno code.
 
 .. _`dev_change_name`:
 
@@ -605,8 +605,8 @@ dev_change_name
 Description
 -----------
 
-Change name of a device, can pass format strings "eth%d".
-for wildcarding.
+     Change name of a device, can pass format strings "eth%d".
+     for wildcarding.
 
 .. _`dev_set_alias`:
 
@@ -631,7 +631,7 @@ dev_set_alias
 Description
 -----------
 
-Set ifalias for a device,
+     Set ifalias for a device,
 
 .. _`netdev_features_change`:
 
@@ -650,7 +650,7 @@ netdev_features_change
 Description
 -----------
 
-Called to indicate a device has changed features.
+     Called to indicate a device has changed features.
 
 .. _`netdev_state_change`:
 
@@ -669,9 +669,9 @@ netdev_state_change
 Description
 -----------
 
-Called to indicate a device has changed state. This function calls
-the notifier chains for netdev_chain and sends a NEWLINK message
-to the routing socket.
+     Called to indicate a device has changed state. This function calls
+     the notifier chains for netdev_chain and sends a NEWLINK message
+     to the routing socket.
 
 .. _`netdev_notify_peers`:
 
@@ -713,13 +713,13 @@ dev_open
 Description
 -----------
 
-Takes a device from down to up state. The device's private open
-function is invoked and then the multicast lists are loaded. Finally
-the device is moved into the up state and a \ ``NETDEV_UP``\  message is
-sent to the netdev notifier chain.
+     Takes a device from down to up state. The device's private open
+     function is invoked and then the multicast lists are loaded. Finally
+     the device is moved into the up state and a \ ``NETDEV_UP``\  message is
+     sent to the netdev notifier chain.
 
-Calling this function on an active interface is a nop. On a failure
-a negative errno code is returned.
+     Calling this function on an active interface is a nop. On a failure
+     a negative errno code is returned.
 
 .. _`dev_close`:
 
@@ -738,10 +738,10 @@ dev_close
 Description
 -----------
 
-This function moves an active device into down state. A
-\ ``NETDEV_GOING_DOWN``\  is sent to the netdev notifier chain. The device
-is then deactivated and finally a \ ``NETDEV_DOWN``\  is sent to the notifier
-chain.
+     This function moves an active device into down state. A
+     \ ``NETDEV_GOING_DOWN``\  is sent to the netdev notifier chain. The device
+     is then deactivated and finally a \ ``NETDEV_DOWN``\  is sent to the notifier
+     chain.
 
 .. _`dev_disable_lro`:
 
@@ -760,9 +760,9 @@ dev_disable_lro
 Description
 -----------
 
-Disable Large Receive Offload (LRO) on a net device.  Must be
-called under RTNL.  This is needed if received packets may be
-forwarded to another interface.
+     Disable Large Receive Offload (LRO) on a net device.  Must be
+     called under RTNL.  This is needed if received packets may be
+     forwarded to another interface.
 
 .. _`register_netdevice_notifier`:
 
@@ -839,8 +839,8 @@ call_netdevice_notifiers_info
 Description
 -----------
 
-Call all network notifier blocks.  Parameters and return value
-are as for \ :c:func:`raw_notifier_call_chain`\ .
+     Call all network notifier blocks.  Parameters and return value
+     are as for \ :c:func:`raw_notifier_call_chain`\ .
 
 .. _`call_netdevice_notifiers`:
 
@@ -862,8 +862,8 @@ call_netdevice_notifiers
 Description
 -----------
 
-Call all network notifier blocks.  Parameters and return value
-are as for \ :c:func:`raw_notifier_call_chain`\ .
+     Call all network notifier blocks.  Parameters and return value
+     are as for \ :c:func:`raw_notifier_call_chain`\ .
 
 .. _`dev_forward_skb`:
 
@@ -885,8 +885,8 @@ dev_forward_skb
 return values
 -------------
 
-NET_RX_SUCCESS  (no congestion)
-NET_RX_DROP     (packet was dropped, but freed)
+     NET_RX_SUCCESS  (no congestion)
+     NET_RX_DROP     (packet was dropped, but freed)
 
 dev_forward_skb can be used for injecting an skb from the
 start_xmit function of one device into the receive queue
@@ -944,10 +944,10 @@ netif_set_real_num_rx_queues
 Description
 -----------
 
-This must be called either with the rtnl_lock held or before
-registration of the net device.  Returns 0 on success, or a
-negative error code.  If called before registration, it always
-succeeds.
+     This must be called either with the rtnl_lock held or before
+     registration of the net device.  Returns 0 on success, or a
+     negative error code.  If called before registration, it always
+     succeeds.
 
 .. _`netif_get_num_default_rss_queues`:
 
@@ -968,28 +968,6 @@ Description
 
 This routine should set an upper limit on the number of RSS queues
 used by default by multiqueue devices.
-
-.. _`netif_wake_subqueue`:
-
-netif_wake_subqueue
-===================
-
-.. c:function:: void netif_wake_subqueue(struct net_device *dev, u16 queue_index)
-
-    allow sending packets on subqueue
-
-    :param struct net_device \*dev:
-        network device
-
-    :param u16 queue_index:
-        sub queue index
-
-.. _`netif_wake_subqueue.description`:
-
-Description
------------
-
-Resume individual transmit queue of a device with multiple transmit queues.
 
 .. _`netif_device_detach`:
 
@@ -1067,12 +1045,12 @@ __skb_gso_segment
 Description
 -----------
 
-This function segments the given skb and returns a list of segments.
+     This function segments the given skb and returns a list of segments.
 
-It may return NULL if the skb requires no segmentation.  This is
-only possible when GSO is used for verifying header integrity.
+     It may return NULL if the skb requires no segmentation.  This is
+     only possible when GSO is used for verifying header integrity.
 
-Segmentation preserves SKB_SGO_CB_OFFSET bytes of previous skb cb.
+     Segmentation preserves SKB_SGO_CB_OFFSET bytes of previous skb cb.
 
 .. _`dev_loopback_xmit`:
 
@@ -1112,26 +1090,26 @@ __dev_queue_xmit
 Description
 -----------
 
-Queue a buffer for transmission to a network device. The caller must
-have set the device and priority and built the buffer before calling
-this function. The function can be called from an interrupt.
+     Queue a buffer for transmission to a network device. The caller must
+     have set the device and priority and built the buffer before calling
+     this function. The function can be called from an interrupt.
 
-A negative errno code is returned on a failure. A success does not
-guarantee the frame will be transmitted as it may be dropped due
-to congestion or traffic shaping.
+     A negative errno code is returned on a failure. A success does not
+     guarantee the frame will be transmitted as it may be dropped due
+     to congestion or traffic shaping.
 
 -----------------------------------------------------------------------------------
-I notice this method can also return errors from the queue disciplines,
-including NET_XMIT_DROP, which is a positive value.  So, errors can also
-be positive.
+     I notice this method can also return errors from the queue disciplines,
+     including NET_XMIT_DROP, which is a positive value.  So, errors can also
+     be positive.
 
-Regardless of the return value, the skb is consumed, so it is currently
-difficult to retry a send to this method.  (You can bump the ref count
-before sending to hold a reference for retry if you are careful.)
+     Regardless of the return value, the skb is consumed, so it is currently
+     difficult to retry a send to this method.  (You can bump the ref count
+     before sending to hold a reference for retry if you are careful.)
 
-When calling this method, interrupts MUST be enabled.  This is because
-the BH enable code must have IRQs enabled so that it will not deadlock.
---BLG
+     When calling this method, interrupts MUST be enabled.  This is because
+     the BH enable code must have IRQs enabled so that it will not deadlock.
+         --BLG
 
 .. _`rps_may_expire_flow`:
 
@@ -1180,18 +1158,18 @@ netif_rx
 Description
 -----------
 
-This function receives a packet from a device driver and queues it for
-the upper (protocol) levels to process.  It always succeeds. The buffer
-may be dropped during processing for congestion control or by the
-protocol layers.
+     This function receives a packet from a device driver and queues it for
+     the upper (protocol) levels to process.  It always succeeds. The buffer
+     may be dropped during processing for congestion control or by the
+     protocol layers.
 
 .. _`netif_rx.return-values`:
 
 return values
 -------------
 
-NET_RX_SUCCESS  (no congestion)
-NET_RX_DROP     (packet was dropped)
+     NET_RX_SUCCESS  (no congestion)
+     NET_RX_DROP     (packet was dropped)
 
 .. _`netdev_is_rx_handler_busy`:
 
@@ -1210,10 +1188,10 @@ netdev_is_rx_handler_busy
 Description
 -----------
 
-Check if a receive handler is already registered for a given device.
-Return true if there one.
+     Check if a receive handler is already registered for a given device.
+     Return true if there one.
 
-The caller must hold the rtnl_mutex.
+     The caller must hold the rtnl_mutex.
 
 .. _`netdev_rx_handler_register`:
 
@@ -1238,13 +1216,13 @@ netdev_rx_handler_register
 Description
 -----------
 
-Register a receive handler for a device. This handler will then be
-called from \__netif_receive_skb. A negative errno code is returned
-on a failure.
+     Register a receive handler for a device. This handler will then be
+     called from __netif_receive_skb. A negative errno code is returned
+     on a failure.
 
-The caller must hold the rtnl_mutex.
+     The caller must hold the rtnl_mutex.
 
-For a general description of rx_handler, see enum rx_handler_result.
+     For a general description of rx_handler, see enum rx_handler_result.
 
 .. _`netdev_rx_handler_unregister`:
 
@@ -1263,9 +1241,9 @@ netdev_rx_handler_unregister
 Description
 -----------
 
-Unregister a receive handler from a device.
+     Unregister a receive handler from a device.
 
-The caller must hold the rtnl_mutex.
+     The caller must hold the rtnl_mutex.
 
 .. _`netif_receive_skb`:
 
@@ -1284,28 +1262,16 @@ netif_receive_skb
 Description
 -----------
 
-netif_receive_skb() is the main receive data processing function.
-It always succeeds. The buffer may be dropped during processing
-for congestion control or by the protocol layers.
+     \ :c:func:`netif_receive_skb`\  is the main receive data processing function.
+     It always succeeds. The buffer may be dropped during processing
+     for congestion control or by the protocol layers.
 
-This function may only be called from softirq context and interrupts
-should be enabled.
+     This function may only be called from softirq context and interrupts
+     should be enabled.
 
-Return values (usually ignored):
-
-.. _`netif_receive_skb.net_rx_success`:
-
-NET_RX_SUCCESS
---------------
-
-no congestion
-
-.. _`netif_receive_skb.net_rx_drop`:
-
-NET_RX_DROP
------------
-
-packet was dropped
+     Return values (usually ignored):
+     NET_RX_SUCCESS: no congestion
+     NET_RX_DROP: packet was dropped
 
 .. _`__napi_schedule`:
 
@@ -1325,7 +1291,29 @@ Description
 -----------
 
 The entry's receive function will be scheduled to run.
-Consider using \__napi_schedule_irqoff() if hard irqs are masked.
+Consider using \ :c:func:`__napi_schedule_irqoff`\  if hard irqs are masked.
+
+.. _`napi_schedule_prep`:
+
+napi_schedule_prep
+==================
+
+.. c:function:: bool napi_schedule_prep(struct napi_struct *n)
+
+    check if napi can be scheduled
+
+    :param struct napi_struct \*n:
+        napi context
+
+.. _`napi_schedule_prep.description`:
+
+Description
+-----------
+
+Test if NAPI routine is already running, and if not mark
+it as running.  This is used as a condition variable
+insure only one NAPI poll instance runs.  We also make
+sure there is no pending NAPI disable.
 
 .. _`__napi_schedule_irqoff`:
 
@@ -1344,7 +1332,7 @@ __napi_schedule_irqoff
 Description
 -----------
 
-Variant of \__napi_schedule() assuming hard irqs are masked
+Variant of \ :c:func:`__napi_schedule`\  assuming hard irqs are masked
 
 .. _`netdev_has_upper_dev`:
 
@@ -1467,7 +1455,7 @@ netdev_upper_get_next_dev_rcu
         device
 
     :param struct list_head \*\*iter:
-        list_head \*\* of the current position
+        list_head ** of the current position
 
 .. _`netdev_upper_get_next_dev_rcu.description`:
 
@@ -1490,7 +1478,7 @@ netdev_lower_get_next_private
         device
 
     :param struct list_head \*\*iter:
-        list_head \*\* of the current position
+        list_head ** of the current position
 
 .. _`netdev_lower_get_next_private.description`:
 
@@ -1515,7 +1503,7 @@ netdev_lower_get_next_private_rcu
         device
 
     :param struct list_head \*\*iter:
-        list_head \*\* of the current position
+        list_head ** of the current position
 
 .. _`netdev_lower_get_next_private_rcu.description`:
 
@@ -1538,7 +1526,7 @@ netdev_lower_get_next
         device
 
     :param struct list_head \*\*iter:
-        list_head \*\* of the current position
+        list_head ** of the current position
 
 .. _`netdev_lower_get_next.description`:
 
@@ -1736,11 +1724,11 @@ dev_set_promiscuity
 Description
 -----------
 
-Add or remove promiscuity from a device. While the count in the device
-remains above zero the interface remains promiscuous. Once it hits zero
-the device reverts back to normal filtering operation. A negative inc
-value is used to drop promiscuity on the device.
-Return 0 if successful or a negative errno code on error.
+     Add or remove promiscuity from a device. While the count in the device
+     remains above zero the interface remains promiscuous. Once it hits zero
+     the device reverts back to normal filtering operation. A negative inc
+     value is used to drop promiscuity on the device.
+     Return 0 if successful or a negative errno code on error.
 
 .. _`dev_set_allmulti`:
 
@@ -1762,12 +1750,12 @@ dev_set_allmulti
 Description
 -----------
 
-Add or remove reception of all multicast frames to a device. While the
-count in the device remains above zero the interface remains listening
-to all interfaces. Once it hits zero the device reverts back to normal
-filtering operation. A negative \ ``inc``\  value is used to drop the counter
-when releasing a resource needing all multicasts.
-Return 0 if successful or a negative errno code on error.
+     Add or remove reception of all multicast frames to a device. While the
+     count in the device remains above zero the interface remains listening
+     to all interfaces. Once it hits zero the device reverts back to normal
+     filtering operation. A negative \ ``inc``\  value is used to drop the counter
+     when releasing a resource needing all multicasts.
+     Return 0 if successful or a negative errno code on error.
 
 .. _`dev_get_flags`:
 
@@ -1786,7 +1774,7 @@ dev_get_flags
 Description
 -----------
 
-Get the combination of flag bits exported through APIs to userspace.
+     Get the combination of flag bits exported through APIs to userspace.
 
 .. _`dev_change_flags`:
 
@@ -1808,8 +1796,8 @@ dev_change_flags
 Description
 -----------
 
-Change settings on device based state flags. The flags are
-in the userspace exported format.
+     Change settings on device based state flags. The flags are
+     in the userspace exported format.
 
 .. _`dev_set_mtu`:
 
@@ -1831,7 +1819,7 @@ dev_set_mtu
 Description
 -----------
 
-Change the maximum transfer size of the network device.
+     Change the maximum transfer size of the network device.
 
 .. _`dev_set_group`:
 
@@ -1868,7 +1856,7 @@ dev_set_mac_address
 Description
 -----------
 
-Change the hardware (MAC) address of the device
+     Change the hardware (MAC) address of the device
 
 .. _`dev_change_carrier`:
 
@@ -1890,7 +1878,7 @@ dev_change_carrier
 Description
 -----------
 
-Change device carrier
+     Change device carrier
 
 .. _`dev_get_phys_port_id`:
 
@@ -1912,7 +1900,7 @@ dev_get_phys_port_id
 Description
 -----------
 
-Get device physical port ID
+     Get device physical port ID
 
 .. _`dev_get_phys_port_name`:
 
@@ -1937,7 +1925,7 @@ dev_get_phys_port_name
 Description
 -----------
 
-Get device physical port name
+     Get device physical port name
 
 .. _`dev_change_proto_down`:
 
@@ -1959,20 +1947,23 @@ dev_change_proto_down
 Description
 -----------
 
-This info can be used by switch drivers to set the phys state of the
-port.
+     This info can be used by switch drivers to set the phys state of the
+     port.
 
 .. _`dev_change_xdp_fd`:
 
 dev_change_xdp_fd
 =================
 
-.. c:function:: int dev_change_xdp_fd(struct net_device *dev, int fd, u32 flags)
+.. c:function:: int dev_change_xdp_fd(struct net_device *dev, struct netlink_ext_ack *extack, int fd, u32 flags)
 
     set or clear a bpf program for a device rx path
 
     :param struct net_device \*dev:
         device
+
+    :param struct netlink_ext_ack \*extack:
+        netlink extended ack
 
     :param int fd:
         new program fd or negative value to clear
@@ -1985,7 +1976,7 @@ dev_change_xdp_fd
 Description
 -----------
 
-Set or clear a bpf program for a device
+     Set or clear a bpf program for a device
 
 .. _`dev_new_index`:
 
@@ -2004,9 +1995,9 @@ dev_new_index
 Description
 -----------
 
-Returns a suitable unique value for a new device interface
-number.  The caller must hold the rtnl semaphore or the
-dev_base_lock to be sure it remains unique.
+     Returns a suitable unique value for a new device interface
+     number.  The caller must hold the rtnl semaphore or the
+     dev_base_lock to be sure it remains unique.
 
 .. _`netdev_update_features`:
 
@@ -2025,9 +2016,9 @@ netdev_update_features
 Description
 -----------
 
-Recalculate dev->features set and send notifications if it
-has changed. Should be called after driver or hardware dependent
-conditions might have changed that influence the features.
+     Recalculate dev->features set and send notifications if it
+     has changed. Should be called after driver or hardware dependent
+     conditions might have changed that influence the features.
 
 .. _`netdev_change_features`:
 
@@ -2046,11 +2037,11 @@ netdev_change_features
 Description
 -----------
 
-Recalculate dev->features set and send notifications even
-if they have not changed. Should be called instead of
-\ :c:func:`netdev_update_features`\  if also dev->vlan_features might
-have changed to allow the changes to be propagated to stacked
-VLAN devices.
+     Recalculate dev->features set and send notifications even
+     if they have not changed. Should be called instead of
+     \ :c:func:`netdev_update_features`\  if also dev->vlan_features might
+     have changed to allow the changes to be propagated to stacked
+     VLAN devices.
 
 .. _`netif_stacked_transfer_operstate`:
 
@@ -2072,9 +2063,9 @@ netif_stacked_transfer_operstate
 Description
 -----------
 
-Transfer operational state from root to device. This is normally
-called when a stacking relationship exists between the root
-device and the device(a leaf device).
+     Transfer operational state from root to device. This is normally
+     called when a stacking relationship exists between the root
+     device and the device(a leaf device).
 
 .. _`register_netdevice`:
 
@@ -2093,21 +2084,21 @@ register_netdevice
 Description
 -----------
 
-Take a completed network device structure and add it to the kernel
-interfaces. A \ ``NETDEV_REGISTER``\  message is sent to the netdev notifier
-chain. 0 is returned on success. A negative errno code is returned
-on a failure to set up the device, or if the name is a duplicate.
+     Take a completed network device structure and add it to the kernel
+     interfaces. A \ ``NETDEV_REGISTER``\  message is sent to the netdev notifier
+     chain. 0 is returned on success. A negative errno code is returned
+     on a failure to set up the device, or if the name is a duplicate.
 
-Callers must hold the rtnl semaphore. You may want
-\ :c:func:`register_netdev`\  instead of this.
+     Callers must hold the rtnl semaphore. You may want
+     \ :c:func:`register_netdev`\  instead of this.
 
 .. _`register_netdevice.bugs`:
 
 BUGS
 ----
 
-The locking appears insufficient to guarantee two parallel registers
-will not get the same name.
+     The locking appears insufficient to guarantee two parallel registers
+     will not get the same name.
 
 .. _`init_dummy_netdev`:
 
@@ -2126,11 +2117,11 @@ init_dummy_netdev
 Description
 -----------
 
-This takes a network device structure and initialize the minimum
-amount of fields so it can be used to schedule NAPI polls without
-registering a full blown interface. This is to be used by drivers
-that need to tie several hardware interfaces to a single NAPI
-poll scheduler due to HW limitations.
+     This takes a network device structure and initialize the minimum
+     amount of fields so it can be used to schedule NAPI polls without
+     registering a full blown interface. This is to be used by drivers
+     that need to tie several hardware interfaces to a single NAPI
+     poll scheduler due to HW limitations.
 
 .. _`register_netdev`:
 
@@ -2149,14 +2140,14 @@ register_netdev
 Description
 -----------
 
-Take a completed network device structure and add it to the kernel
-interfaces. A \ ``NETDEV_REGISTER``\  message is sent to the netdev notifier
-chain. 0 is returned on success. A negative errno code is returned
-on a failure to set up the device, or if the name is a duplicate.
+     Take a completed network device structure and add it to the kernel
+     interfaces. A \ ``NETDEV_REGISTER``\  message is sent to the netdev notifier
+     chain. 0 is returned on success. A negative errno code is returned
+     on a failure to set up the device, or if the name is a duplicate.
 
-This is a wrapper around register_netdevice that takes the rtnl semaphore
-and expands the device name if you passed a format string to
-alloc_netdev.
+     This is a wrapper around register_netdevice that takes the rtnl semaphore
+     and expands the device name if you passed a format string to
+     alloc_netdev.
 
 .. _`netdev_wait_allrefs`:
 
@@ -2203,10 +2194,10 @@ dev_get_stats
 Description
 -----------
 
-Get network statistics from device. Return \ ``storage``\ .
-The device driver may provide its own method by setting
-dev->netdev_ops->get_stats64 or dev->netdev_ops->get_stats;
-otherwise the internal statistics structure is used.
+     Get network statistics from device. Return \ ``storage``\ .
+     The device driver may provide its own method by setting
+     dev->netdev_ops->get_stats64 or dev->netdev_ops->get_stats;
+     otherwise the internal statistics structure is used.
 
 .. _`alloc_netdev_mqs`:
 
@@ -2262,9 +2253,9 @@ Description
 -----------
 
 This function does the last stage of destroying an allocated device
-interface. The reference to the device object is released.
-If this is the last reference then it will be freed.
-Must be called in process context.
+interface. The reference to the device object is released. If this
+is the last reference then it will be freed.Must be called in process
+context.
 
 .. _`synchronize_net`:
 
@@ -2283,8 +2274,8 @@ synchronize_net
 Description
 -----------
 
-Wait for packets currently being received to be done.
-Does not block later packets from starting.
+     Wait for packets currently being received to be done.
+     Does not block later packets from starting.
 
 .. _`unregister_netdevice_queue`:
 
@@ -2306,12 +2297,12 @@ unregister_netdevice_queue
 Description
 -----------
 
-This function shuts down a device interface and removes it
-from the kernel tables.
-If head not NULL, device is queued to be unregistered later.
+     This function shuts down a device interface and removes it
+     from the kernel tables.
+     If head not NULL, device is queued to be unregistered later.
 
-Callers must hold the rtnl semaphore.  You may want
-\ :c:func:`unregister_netdev`\  instead of this.
+     Callers must hold the rtnl semaphore.  You may want
+     \ :c:func:`unregister_netdev`\  instead of this.
 
 .. _`unregister_netdevice_many`:
 
@@ -2331,7 +2322,7 @@ Note
 ----
 
 As most callers use a stack allocated list_head,
-we force a \ :c:func:`list_del`\  to make sure stack wont be corrupted later.
+ we force a \ :c:func:`list_del`\  to make sure stack wont be corrupted later.
 
 .. _`unregister_netdev`:
 
@@ -2350,12 +2341,12 @@ unregister_netdev
 Description
 -----------
 
-This function shuts down a device interface and removes it
-from the kernel tables.
+     This function shuts down a device interface and removes it
+     from the kernel tables.
 
-This is just a wrapper for unregister_netdevice that takes
-the rtnl semaphore.  In general you want to use this and not
-unregister_netdevice.
+     This is just a wrapper for unregister_netdevice that takes
+     the rtnl semaphore.  In general you want to use this and not
+     unregister_netdevice.
 
 .. _`dev_change_net_namespace`:
 
@@ -2381,11 +2372,11 @@ dev_change_net_namespace
 Description
 -----------
 
-This function shuts down a device interface and moves it
-to a new network namespace. On success 0 is returned, on
-a failure a netagive errno code is returned.
+     This function shuts down a device interface and moves it
+     to a new network namespace. On success 0 is returned, on
+     a failure a netagive errno code is returned.
 
-Callers must hold the rtnl semaphore.
+     Callers must hold the rtnl semaphore.
 
 .. _`netdev_increment_features`:
 
@@ -2410,9 +2401,9 @@ netdev_increment_features
 Description
 -----------
 
-Computes a new feature set after adding a device with feature set
-\ ``one``\  to the master device with current feature set \ ``all``\ .  Will not
-enable anything that is off in \ ``mask``\ . Returns the new feature set.
+     Computes a new feature set after adding a device with feature set
+     \ ``one``\  to the master device with current feature set \ ``all``\ .  Will not
+     enable anything that is off in \ ``mask``\ . Returns the new feature set.
 
 .. _`netdev_drivername`:
 
@@ -2431,7 +2422,7 @@ netdev_drivername
 Description
 -----------
 
-Determine network driver for device.
+     Determine network driver for device.
 
 .. This file was automatic generated / don't edit.
 

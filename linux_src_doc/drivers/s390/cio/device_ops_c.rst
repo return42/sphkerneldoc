@@ -29,7 +29,7 @@ are cleared.
 Return
 ------
 
-%0 on success, -%EINVAL on an invalid flag combination.
+  \ ``0``\  on success, -%EINVAL on an invalid flag combination.
 
 .. _`ccw_device_set_options`:
 
@@ -58,7 +58,7 @@ All flags specified in \ ``flags``\  are set, the remainder is left untouched.
 Return
 ------
 
-%0 on success, -%EINVAL if an invalid flag combination would ensue.
+  \ ``0``\  on success, -%EINVAL if an invalid flag combination would ensue.
 
 .. _`ccw_device_clear_options`:
 
@@ -149,16 +149,16 @@ ccw_device_clear() calls csch on \ ``cdev``\ 's subchannel.
 Return
 ------
 
-%0 on success,
--%ENODEV on device not operational,
--%EINVAL on invalid device state.
+ \ ``0``\  on success,
+ -%ENODEV on device not operational,
+ -%EINVAL on invalid device state.
 
 .. _`ccw_device_clear.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_start_key`:
 
@@ -205,17 +205,17 @@ or sense required) or never (no IRQ handler registered).
 Return
 ------
 
-%0, if the operation was successful;
--%EBUSY, if the device is busy, or status pending;
--%EACCES, if no path specified in \ ``lpm``\  is operational;
--%ENODEV, if the device is not operational.
+ \ ``0``\ , if the operation was successful;
+ -%EBUSY, if the device is busy, or status pending;
+ -%EACCES, if no path specified in \ ``lpm``\  is operational;
+ -%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_key.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_start_timeout_key`:
 
@@ -269,17 +269,17 @@ interrupt handler will be called with an irb containing ERR_PTR(-%ETIMEDOUT).
 Return
 ------
 
-%0, if the operation was successful;
--%EBUSY, if the device is busy, or status pending;
--%EACCES, if no path specified in \ ``lpm``\  is operational;
--%ENODEV, if the device is not operational.
+ \ ``0``\ , if the operation was successful;
+ -%EBUSY, if the device is busy, or status pending;
+ -%EACCES, if no path specified in \ ``lpm``\  is operational;
+ -%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_timeout_key.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_start`:
 
@@ -323,17 +323,17 @@ or sense required) or never (no IRQ handler registered).
 Return
 ------
 
-%0, if the operation was successful;
--%EBUSY, if the device is busy, or status pending;
--%EACCES, if no path specified in \ ``lpm``\  is operational;
--%ENODEV, if the device is not operational.
+ \ ``0``\ , if the operation was successful;
+ -%EBUSY, if the device is busy, or status pending;
+ -%EACCES, if no path specified in \ ``lpm``\  is operational;
+ -%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_start_timeout`:
 
@@ -384,17 +384,17 @@ interrupt handler will be called with an irb containing ERR_PTR(-%ETIMEDOUT).
 Return
 ------
 
-%0, if the operation was successful;
--%EBUSY, if the device is busy, or status pending;
--%EACCES, if no path specified in \ ``lpm``\  is operational;
--%ENODEV, if the device is not operational.
+ \ ``0``\ , if the operation was successful;
+ -%EBUSY, if the device is busy, or status pending;
+ -%EACCES, if no path specified in \ ``lpm``\  is operational;
+ -%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_timeout.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_halt`:
 
@@ -425,17 +425,17 @@ ccw_device_halt() calls hsch on \ ``cdev``\ 's subchannel.
 Return
 ------
 
-%0 on success,
--%ENODEV on device not operational,
--%EINVAL on invalid device state,
--%EBUSY on device busy or interrupt pending.
+ \ ``0``\  on success,
+ -%ENODEV on device not operational,
+ -%EINVAL on invalid device state,
+ -%EBUSY on device busy or interrupt pending.
 
 .. _`ccw_device_halt.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_resume`:
 
@@ -461,17 +461,17 @@ ccw_device_resume() calls rsch on \ ``cdev``\ 's subchannel.
 Return
 ------
 
-%0 on success,
--%ENODEV on device not operational,
--%EINVAL on invalid device state,
--%EBUSY on device busy or interrupt pending.
+ \ ``0``\  on success,
+ -%ENODEV on device not operational,
+ -%EINVAL on invalid device state,
+ -%EBUSY on device busy or interrupt pending.
 
 .. _`ccw_device_resume.context`:
 
 Context
 -------
 
-Interrupts disabled, ccw device lock held
+ Interrupts disabled, ccw device lock held
 
 .. _`ccw_device_get_ciw`:
 
@@ -503,9 +503,9 @@ type in the extended sense data.
 Return
 ------
 
-%NULL if no extended sense data has been stored or if no CIW of the
-specified command type could be found,
-else a pointer to the CIW of the specified command type.
+ \ ``NULL``\  if no extended sense data has been stored or if no CIW of the
+ specified command type could be found,
+ else a pointer to the CIW of the specified command type.
 
 .. _`ccw_device_get_path_mask`:
 
@@ -524,8 +524,8 @@ ccw_device_get_path_mask
 Return
 ------
 
-%0 if no subchannel for the device is available,
-else the mask of currently available paths for the ccw device's subchannel.
+ \ ``0``\  if no subchannel for the device is available,
+ else the mask of currently available paths for the ccw device's subchannel.
 
 .. _`ccw_device_get_chp_desc`:
 

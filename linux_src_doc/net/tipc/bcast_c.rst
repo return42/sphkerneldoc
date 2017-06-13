@@ -22,6 +22,10 @@ Definition
         struct sk_buff_head inputq;
         int dests[MAX_BEARERS];
         int primary_bearer;
+        bool bcast_support;
+        bool rcast_support;
+        int rc_ratio;
+        int bc_threshold;
     }
 
 .. _`tipc_bc_base.members`:
@@ -37,6 +41,18 @@ inputq
 
 primary_bearer
     a bearer having links to all broadcast destinations, if any
+
+bcast_support
+    indicates if primary bearer, if any, supports broadcast
+
+rcast_support
+    indicates if all peer nodes support replicast
+
+rc_ratio
+    dest count as percentage of cluster size where send method changes
+
+bc_threshold
+    calculated drom rc_ratio; if dests > threshold use broadcast
 
 .. This file was automatic generated / don't edit.
 

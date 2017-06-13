@@ -1,6 +1,92 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/usb/core/usb.c
 
+.. _`usb_find_common_endpoints`:
+
+usb_find_common_endpoints
+=========================
+
+.. c:function:: int usb_find_common_endpoints(struct usb_host_interface *alt, struct usb_endpoint_descriptor **bulk_in, struct usb_endpoint_descriptor **bulk_out, struct usb_endpoint_descriptor **int_in, struct usb_endpoint_descriptor **int_out)
+
+    - look up common endpoint descriptors
+
+    :param struct usb_host_interface \*alt:
+        alternate setting to search
+
+    :param struct usb_endpoint_descriptor \*\*bulk_in:
+        pointer to descriptor pointer, or NULL
+
+    :param struct usb_endpoint_descriptor \*\*bulk_out:
+        pointer to descriptor pointer, or NULL
+
+    :param struct usb_endpoint_descriptor \*\*int_in:
+        pointer to descriptor pointer, or NULL
+
+    :param struct usb_endpoint_descriptor \*\*int_out:
+        pointer to descriptor pointer, or NULL
+
+.. _`usb_find_common_endpoints.description`:
+
+Description
+-----------
+
+Search the alternate setting's endpoint descriptors for the first bulk-in,
+bulk-out, interrupt-in and interrupt-out endpoints and return them in the
+provided pointers (unless they are NULL).
+
+If a requested endpoint is not found, the corresponding pointer is set to
+NULL.
+
+.. _`usb_find_common_endpoints.return`:
+
+Return
+------
+
+Zero if all requested descriptors were found, or -ENXIO otherwise.
+
+.. _`usb_find_common_endpoints_reverse`:
+
+usb_find_common_endpoints_reverse
+=================================
+
+.. c:function:: int usb_find_common_endpoints_reverse(struct usb_host_interface *alt, struct usb_endpoint_descriptor **bulk_in, struct usb_endpoint_descriptor **bulk_out, struct usb_endpoint_descriptor **int_in, struct usb_endpoint_descriptor **int_out)
+
+    - look up common endpoint descriptors
+
+    :param struct usb_host_interface \*alt:
+        alternate setting to search
+
+    :param struct usb_endpoint_descriptor \*\*bulk_in:
+        pointer to descriptor pointer, or NULL
+
+    :param struct usb_endpoint_descriptor \*\*bulk_out:
+        pointer to descriptor pointer, or NULL
+
+    :param struct usb_endpoint_descriptor \*\*int_in:
+        pointer to descriptor pointer, or NULL
+
+    :param struct usb_endpoint_descriptor \*\*int_out:
+        pointer to descriptor pointer, or NULL
+
+.. _`usb_find_common_endpoints_reverse.description`:
+
+Description
+-----------
+
+Search the alternate setting's endpoint descriptors for the last bulk-in,
+bulk-out, interrupt-in and interrupt-out endpoints and return them in the
+provided pointers (unless they are NULL).
+
+If a requested endpoint is not found, the corresponding pointer is set to
+NULL.
+
+.. _`usb_find_common_endpoints_reverse.return`:
+
+Return
+------
+
+Zero if all requested descriptors were found, or -ENXIO otherwise.
+
 .. _`usb_find_alt_setting`:
 
 usb_find_alt_setting

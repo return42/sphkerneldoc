@@ -1,292 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: security/apparmor/policy.c
 
-.. _`hname_tail`:
-
-hname_tail
-==========
-
-.. c:function:: const char *hname_tail(const char *hname)
-
-    find the last component of an hname
-
-    :param const char \*hname:
-        *undescribed*
-
-.. _`hname_tail.return`:
-
-Return
-------
-
-the tail (base profile name) name component of an hname
-
-.. _`policy_init`:
-
-policy_init
-===========
-
-.. c:function:: bool policy_init(struct aa_policy *policy, const char *prefix, const char *name)
-
-    initialize a policy structure
-
-    :param struct aa_policy \*policy:
-        policy to initialize  (NOT NULL)
-
-    :param const char \*prefix:
-        prefix name if any is required.  (MAYBE NULL)
-
-    :param const char \*name:
-        name of the policy, init will make a copy of it  (NOT NULL)
-
-.. _`policy_init.note`:
-
-Note
-----
-
-this fn creates a copy of strings passed in
-
-.. _`policy_init.return`:
-
-Return
-------
-
-true if policy init successful
-
-.. _`policy_destroy`:
-
-policy_destroy
-==============
-
-.. c:function:: void policy_destroy(struct aa_policy *policy)
-
-    free the elements referenced by \ ``policy``\ 
-
-    :param struct aa_policy \*policy:
-        policy that is to have its elements freed  (NOT NULL)
-
-.. _`__policy_find`:
-
-__policy_find
-=============
-
-.. c:function:: struct aa_policy *__policy_find(struct list_head *head, const char *name)
-
-    find a policy by \ ``name``\  on a policy list
-
-    :param struct list_head \*head:
-        list to search  (NOT NULL)
-
-    :param const char \*name:
-        name to search for  (NOT NULL)
-
-.. _`__policy_find.requires`:
-
-Requires
---------
-
-rcu_read_lock be held
-
-.. _`__policy_find.return`:
-
-Return
-------
-
-unrefcounted policy that match \ ``name``\  or NULL if not found
-
-.. _`__policy_strn_find`:
-
-__policy_strn_find
-==================
-
-.. c:function:: struct aa_policy *__policy_strn_find(struct list_head *head, const char *str, int len)
-
-    find a policy that's name matches \ ``len``\  chars of \ ``str``\ 
-
-    :param struct list_head \*head:
-        list to search  (NOT NULL)
-
-    :param const char \*str:
-        string to search for  (NOT NULL)
-
-    :param int len:
-        length of match required
-
-.. _`__policy_strn_find.requires`:
-
-Requires
---------
-
-rcu_read_lock be held
-
-.. _`__policy_strn_find.return`:
-
-Return
-------
-
-unrefcounted policy that match \ ``str``\  or NULL if not found
-
-if \ ``len``\  == strlen(@strlen) then this is equiv to \__policy_find
-other wise it allows searching for policy by a partial match of name
-
-.. _`aa_ns_visible`:
-
-aa_ns_visible
-=============
-
-.. c:function:: bool aa_ns_visible(struct aa_namespace *curr, struct aa_namespace *view)
-
-    test if \ ``view``\  is visible from \ ``curr``\ 
-
-    :param struct aa_namespace \*curr:
-        namespace to treat as the parent (NOT NULL)
-
-    :param struct aa_namespace \*view:
-        namespace to test if visible from \ ``curr``\  (NOT NULL)
-
-.. _`aa_ns_visible.return`:
-
-Return
-------
-
-true if \ ``view``\  is visible from \ ``curr``\  else false
-
-.. _`aa_ns_name`:
-
-aa_ns_name
-==========
-
-.. c:function:: const char *aa_ns_name(struct aa_namespace *curr, struct aa_namespace *view)
-
-    Find the ns name to display for \ ``view``\  from \ ``curr``\  \ ``curr``\  - current namespace (NOT NULL) \ ``view``\  - namespace attempting to view (NOT NULL)
-
-    :param struct aa_namespace \*curr:
-        *undescribed*
-
-    :param struct aa_namespace \*view:
-        *undescribed*
-
-.. _`aa_ns_name.return`:
-
-Return
-------
-
-name of \ ``view``\  visible from \ ``curr``\ 
-
-.. _`alloc_namespace`:
-
-alloc_namespace
-===============
-
-.. c:function:: struct aa_namespace *alloc_namespace(const char *prefix, const char *name)
-
-    allocate, initialize and return a new namespace
-
-    :param const char \*prefix:
-        parent namespace name (MAYBE NULL)
-
-    :param const char \*name:
-        a preallocated name  (NOT NULL)
-
-.. _`alloc_namespace.return`:
-
-Return
-------
-
-refcounted namespace or NULL on failure.
-
-.. _`free_namespace`:
-
-free_namespace
-==============
-
-.. c:function:: void free_namespace(struct aa_namespace *ns)
-
-    free a profile namespace
-
-    :param struct aa_namespace \*ns:
-        the namespace to free  (MAYBE NULL)
-
-.. _`free_namespace.requires`:
-
-Requires
---------
-
-All references to the namespace must have been put, if the
-namespace was referenced by a profile confining a task,
-
-.. _`__aa_find_namespace`:
-
-__aa_find_namespace
-===================
-
-.. c:function:: struct aa_namespace *__aa_find_namespace(struct list_head *head, const char *name)
-
-    find a namespace on a list by \ ``name``\ 
-
-    :param struct list_head \*head:
-        list to search for namespace on  (NOT NULL)
-
-    :param const char \*name:
-        name of namespace to look for  (NOT NULL)
-
-.. _`__aa_find_namespace.return`:
-
-Return
-------
-
-unrefcounted namespace
-
-.. _`__aa_find_namespace.requires`:
-
-Requires
---------
-
-rcu_read_lock be held
-
-.. _`aa_find_namespace`:
-
-aa_find_namespace
-=================
-
-.. c:function:: struct aa_namespace *aa_find_namespace(struct aa_namespace *root, const char *name)
-
-    look up a profile namespace on the namespace list
-
-    :param struct aa_namespace \*root:
-        namespace to search in  (NOT NULL)
-
-    :param const char \*name:
-        name of namespace to find  (NOT NULL)
-
-.. _`aa_find_namespace.return`:
-
-Return
-------
-
-a refcounted namespace on the list, or NULL if no namespace
-called \ ``name``\  exists.
-
-refcount released by caller
-
-.. _`aa_prepare_namespace`:
-
-aa_prepare_namespace
-====================
-
-.. c:function:: struct aa_namespace *aa_prepare_namespace(const char *name)
-
-    find an existing or create a new namespace of \ ``name``\ 
-
-    :param const char \*name:
-        the namespace to find or add  (MAYBE NULL)
-
-.. _`aa_prepare_namespace.return`:
-
-Return
-------
-
-refcounted namespace or NULL if failed to create one
-
 .. _`__list_add_profile`:
 
 __list_add_profile
@@ -365,93 +79,39 @@ Requires
 
 namespace list lock be held, or list not be shared
 
-.. _`__profile_list_release`:
+.. _`__aa_profile_list_release`:
 
-__profile_list_release
-======================
+__aa_profile_list_release
+=========================
 
-.. c:function:: void __profile_list_release(struct list_head *head)
+.. c:function:: void __aa_profile_list_release(struct list_head *head)
 
     remove all profiles on the list and put refs
 
     :param struct list_head \*head:
         list of profiles  (NOT NULL)
 
-.. _`__profile_list_release.requires`:
+.. _`__aa_profile_list_release.requires`:
 
 Requires
 --------
 
 namespace lock be held
 
-.. _`destroy_namespace`:
+.. _`aa_free_data`:
 
-destroy_namespace
-=================
+aa_free_data
+============
 
-.. c:function:: void destroy_namespace(struct aa_namespace *ns)
+.. c:function:: void aa_free_data(void *ptr, void *arg)
 
-    remove everything contained by \ ``ns``\ 
+    free a data blob
 
-    :param struct aa_namespace \*ns:
-        namespace to have it contents removed  (NOT NULL)
+    :param void \*ptr:
+        data to free
 
-.. _`__remove_namespace`:
-
-__remove_namespace
-==================
-
-.. c:function:: void __remove_namespace(struct aa_namespace *ns)
-
-    remove a namespace and all its children
-
-    :param struct aa_namespace \*ns:
-        namespace to be removed  (NOT NULL)
-
-.. _`__remove_namespace.requires`:
-
-Requires
---------
-
-ns->parent->lock be held and ns removed from parent.
-
-.. _`__ns_list_release`:
-
-__ns_list_release
-=================
-
-.. c:function:: void __ns_list_release(struct list_head *head)
-
-    remove all profile namespaces on the list put refs
-
-    :param struct list_head \*head:
-        list of profile namespaces  (NOT NULL)
-
-.. _`__ns_list_release.requires`:
-
-Requires
---------
-
-namespace lock be held
-
-.. _`aa_alloc_root_ns`:
-
-aa_alloc_root_ns
-================
-
-.. c:function:: int aa_alloc_root_ns( void)
-
-    allocate the root profile namespace
-
-    :param  void:
-        no arguments
-
-.. _`aa_alloc_root_ns.return`:
-
-Return
-------
-
-%0 on success else error
+    :param void \*arg:
+        unused
 
 .. _`aa_free_profile`:
 
@@ -505,12 +165,15 @@ aa_free_profile_kref
 aa_alloc_profile
 ================
 
-.. c:function:: struct aa_profile *aa_alloc_profile(const char *hname)
+.. c:function:: struct aa_profile *aa_alloc_profile(const char *hname, gfp_t gfp)
 
     allocate, initialize and return a new profile
 
     :param const char \*hname:
         name of the profile  (NOT NULL)
+
+    :param gfp_t gfp:
+        allocation type
 
 .. _`aa_alloc_profile.return`:
 
@@ -524,23 +187,31 @@ refcount profile or NULL on failure
 aa_new_null_profile
 ===================
 
-.. c:function:: struct aa_profile *aa_new_null_profile(struct aa_profile *parent, int hat)
+.. c:function:: struct aa_profile *aa_new_null_profile(struct aa_profile *parent, bool hat, const char *base, gfp_t gfp)
 
-    create a new null-X learning profile
+    create or find a null-X learning profile
 
     :param struct aa_profile \*parent:
         profile that caused this profile to be created (NOT NULL)
 
-    :param int hat:
+    :param bool hat:
         true if the null- learning profile is a hat
+
+    :param const char \*base:
+        name to base the null profile off of
+
+    :param gfp_t gfp:
+        type of allocation
 
 .. _`aa_new_null_profile.description`:
 
 Description
 -----------
 
-Create a null- complain mode profile used in learning mode.  The name of
-the profile is unique and follows the format of parent//null-<uniq>.
+Find/Create a null- complain mode profile used in learning mode.  The
+name of the profile is unique and follows the format of parent//null-XXX.
+where XXX is based on the \ ``name``\  or if that fails or is not supplied
+a unique number
 
 null profiles are added to the profile list but the list does not
 hold a count on them so that they are automatically released when
@@ -641,11 +312,11 @@ a refcounted profile or NULL if not found
 __lookup_parent
 ===============
 
-.. c:function:: struct aa_policy *__lookup_parent(struct aa_namespace *ns, const char *hname)
+.. c:function:: struct aa_policy *__lookup_parent(struct aa_ns *ns, const char *hname)
 
     lookup the parent of a profile of name \ ``hname``\ 
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         namespace to lookup profile in  (NOT NULL)
 
     :param const char \*hname:
@@ -674,12 +345,12 @@ Return
 
 unrefcounted policy or NULL if not found
 
-.. _`__lookup_profile`:
+.. _`__lookupn_profile`:
 
-__lookup_profile
-================
+__lookupn_profile
+=================
 
-.. c:function:: struct aa_profile *__lookup_profile(struct aa_policy *base, const char *hname)
+.. c:function:: struct aa_profile *__lookupn_profile(struct aa_policy *base, const char *hname, size_t n)
 
     lookup the profile matching \ ``hname``\ 
 
@@ -689,14 +360,17 @@ __lookup_profile
     :param const char \*hname:
         hierarchical profile name  (NOT NULL)
 
-.. _`__lookup_profile.requires`:
+    :param size_t n:
+        length of \ ``hname``\ 
+
+.. _`__lookupn_profile.requires`:
 
 Requires
 --------
 
 rcu_read_lock be held
 
-.. _`__lookup_profile.return`:
+.. _`__lookupn_profile.return`:
 
 Return
 ------
@@ -705,22 +379,25 @@ unrefcounted profile pointer or NULL if not found
 
 Do a relative name lookup, recursing through profile tree.
 
-.. _`aa_lookup_profile`:
+.. _`aa_lookupn_profile`:
 
-aa_lookup_profile
-=================
+aa_lookupn_profile
+==================
 
-.. c:function:: struct aa_profile *aa_lookup_profile(struct aa_namespace *ns, const char *hname)
+.. c:function:: struct aa_profile *aa_lookupn_profile(struct aa_ns *ns, const char *hname, size_t n)
 
     find a profile by its full or partial name
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         the namespace to start from (NOT NULL)
 
     :param const char \*hname:
         name to do lookup on.  Does not contain namespace prefix (NOT NULL)
 
-.. _`aa_lookup_profile.return`:
+    :param size_t n:
+        size of \ ``hname``\ 
+
+.. _`aa_lookupn_profile.return`:
 
 Return
 ------
@@ -757,15 +434,18 @@ Return
 audit_policy
 ============
 
-.. c:function:: int audit_policy(int op, gfp_t gfp, const char *name, const char *info, int error)
+.. c:function:: int audit_policy(struct aa_profile *profile, const char *op, const char *nsname, const char *name, const char *info, int error)
 
     Do auditing of policy changes
 
-    :param int op:
+    :param struct aa_profile \*profile:
+        profile to check if it can manage policy
+
+    :param const char \*op:
         policy operation being performed
 
-    :param gfp_t gfp:
-        memory allocation flags
+    :param const char \*nsname:
+        name of the ns being manipulated (MAY BE NULL)
 
     :param const char \*name:
         name of profile being manipulated (NOT NULL)
@@ -783,16 +463,44 @@ Return
 
 the error to be returned after audit is done
 
+.. _`policy_view_capable`:
+
+policy_view_capable
+===================
+
+.. c:function:: bool policy_view_capable(struct aa_ns *ns)
+
+    check if viewing policy in at \ ``ns``\  is allowed ns: namespace being viewed by current task (may be NULL)
+
+    :param struct aa_ns \*ns:
+        *undescribed*
+
+.. _`policy_view_capable.return`:
+
+Return
+------
+
+true if viewing policy is allowed
+
+If \ ``ns``\  is NULL then the namespace being viewed is assumed to be the
+tasks current namespace.
+
 .. _`aa_may_manage_policy`:
 
 aa_may_manage_policy
 ====================
 
-.. c:function:: bool aa_may_manage_policy(int op)
+.. c:function:: int aa_may_manage_policy(struct aa_profile *profile, struct aa_ns *ns, const char *op)
 
     can the current task manage policy
 
-    :param int op:
+    :param struct aa_profile \*profile:
+        profile to check if it can manage policy
+
+    :param struct aa_ns \*ns:
+        *undescribed*
+
+    :param const char \*op:
         the policy manipulation operation being done
 
 .. _`aa_may_manage_policy.return`:
@@ -800,14 +508,14 @@ aa_may_manage_policy
 Return
 ------
 
-true if the task is allowed to manipulate policy
+0 if the task is allowed to manipulate policy else error
 
 .. _`__replace_profile`:
 
 __replace_profile
 =================
 
-.. c:function:: void __replace_profile(struct aa_profile *old, struct aa_profile *new, bool share_replacedby)
+.. c:function:: void __replace_profile(struct aa_profile *old, struct aa_profile *new, bool share_proxy)
 
     replace \ ``old``\  with \ ``new``\  on a list
 
@@ -817,8 +525,8 @@ __replace_profile
     :param struct aa_profile \*new:
         profile to replace \ ``old``\  with  (NOT NULL)
 
-    :param bool share_replacedby:
-        transfer \ ``old``\ ->replacedby to \ ``new``\ 
+    :param bool share_proxy:
+        transfer \ ``old``\ ->proxy to \ ``new``\ 
 
 .. _`__replace_profile.description`:
 
@@ -842,11 +550,11 @@ namespace list lock be held, or list not be shared
 __lookup_replace
 ================
 
-.. c:function:: int __lookup_replace(struct aa_namespace *ns, const char *hname, bool noreplace, struct aa_profile **p, const char **info)
+.. c:function:: int __lookup_replace(struct aa_ns *ns, const char *hname, bool noreplace, struct aa_profile **p, const char **info)
 
     lookup replacement information for a profile \ ``ns``\  - namespace the lookup occurs in \ ``hname``\  - name of profile to lookup \ ``noreplace``\  - true if not replacing an existing profile
 
-    :param struct aa_namespace \*ns:
+    :param struct aa_ns \*ns:
         *undescribed*
 
     :param const char \*hname:
@@ -873,18 +581,21 @@ profile to replace (no ref) on success else ptr error
 aa_replace_profiles
 ===================
 
-.. c:function:: ssize_t aa_replace_profiles(void *udata, size_t size, bool noreplace)
+.. c:function:: ssize_t aa_replace_profiles(struct aa_ns *view, struct aa_profile *profile, bool noreplace, struct aa_loaddata *udata)
 
     replace profile(s) on the profile list
 
-    :param void \*udata:
-        serialized data stream  (NOT NULL)
+    :param struct aa_ns \*view:
+        namespace load is viewed from
 
-    :param size_t size:
-        size of the serialized data stream
+    :param struct aa_profile \*profile:
+        *undescribed*
 
     :param bool noreplace:
         true if only doing addition, no replacement allowed
+
+    :param struct aa_loaddata \*udata:
+        serialized data stream  (NOT NULL)
 
 .. _`aa_replace_profiles.description`:
 
@@ -892,7 +603,7 @@ Description
 -----------
 
 unpack and replace a profile on the profile list and uses of that profile
-by any aa_task_cxt.  If the profile does not exist on the profile list
+by any aa_task_ctx.  If the profile does not exist on the profile list
 it is added.
 
 .. _`aa_replace_profiles.return`:
@@ -907,9 +618,15 @@ size of data consumed else error code on failure.
 aa_remove_profiles
 ==================
 
-.. c:function:: ssize_t aa_remove_profiles(char *fqname, size_t size)
+.. c:function:: ssize_t aa_remove_profiles(struct aa_ns *view, struct aa_profile *subj, char *fqname, size_t size)
 
     remove profile(s) from the system
+
+    :param struct aa_ns \*view:
+        namespace the remove is being done from
+
+    :param struct aa_profile \*subj:
+        profile attempting to remove policy
 
     :param char \*fqname:
         name of the profile or namespace to remove  (NOT NULL)

@@ -27,7 +27,6 @@ Definition
         size_t output_off;
         unsigned long nr_pages;
         local_t data_size;
-        local_t lost;
         local64_t head;
         bool snapshot;
         unsigned long stop_pos;
@@ -67,9 +66,6 @@ nr_pages
 
 data_size
     running total of the amount of data in this buffer
-
-lost
-    if data was lost/truncated
 
 head
     logical write offset inside the buffer

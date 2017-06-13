@@ -19,10 +19,9 @@ Definition
 
     struct idio_16_gpio {
         struct gpio_chip chip;
-        spinlock_t lock;
+        raw_spinlock_t lock;
         unsigned long irq_mask;
         unsigned base;
-        unsigned irq;
         unsigned out_state;
     }
 
@@ -42,9 +41,6 @@ irq_mask
 
 base
     base port address of the GPIO device
-
-irq
-    Interrupt line number
 
 out_state
     output bits state

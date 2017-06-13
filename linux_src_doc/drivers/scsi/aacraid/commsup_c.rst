@@ -413,6 +413,27 @@ Description
 This routine handles a driver notify fib from the adapter and
 dispatches it to the appropriate routine for handling.
 
+.. _`aac_handle_sa_aif`:
+
+aac_handle_sa_aif
+=================
+
+.. c:function:: void aac_handle_sa_aif(struct aac_dev *dev, struct fib *fibptr)
+
+    :param struct aac_dev \*dev:
+        Which adapter this fib is from
+
+    :param struct fib \*fibptr:
+        Pointer to fibptr from adapter
+
+.. _`aac_handle_sa_aif.description`:
+
+Description
+-----------
+
+This routine handles a driver notify fib from the adapter and
+dispatches it to the appropriate routine for handling.
+
 .. _`aac_command_thread`:
 
 aac_command_thread

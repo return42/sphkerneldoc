@@ -119,7 +119,6 @@ Definition
         u16 rc_ier;
         u16 rc_rxqcr;
         u16 rc_ccr;
-        u16 eeprom_size;
         struct mii_if_info mii;
         struct ks8851_rxctrl rxctrl;
         struct work_struct tx_work;
@@ -178,9 +177,6 @@ rc_rxqcr
 
 rc_ccr
     Cached copy of KS_CCR.
-
-eeprom_size
-    Companion eeprom size in Bytes, 0 if no eeprom
 
 mii
     The MII state information for the mii calls.
@@ -285,33 +281,6 @@ Description
 -----------
 
 Issue a write to put the value \ ``val``\  into the register specified in \ ``reg``\ .
-
-.. _`ks8851_rx_1msg`:
-
-ks8851_rx_1msg
-==============
-
-.. c:function:: bool ks8851_rx_1msg(struct ks8851_net *ks)
-
-    select whether to use one or two messages for spi read
-
-    :param struct ks8851_net \*ks:
-        The device structure
-
-.. _`ks8851_rx_1msg.description`:
-
-Description
------------
-
-Return whether to generate a single message with a tx and rx buffer
-supplied to \ :c:func:`spi_sync`\ , or alternatively send the tx and rx buffers
-as separate messages.
-
-Depending on the hardware in use, a single message may be more efficient
-on interrupts or work done by the driver.
-
-This currently always returns true until we add some per-device data passed
-from the platform code to specify which mode is better.
 
 .. _`ks8851_rdreg`:
 

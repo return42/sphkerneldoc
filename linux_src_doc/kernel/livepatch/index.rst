@@ -8,3 +8,4 @@ livepatch
     :maxdepth: 1
 
     core_c
+    patch_h

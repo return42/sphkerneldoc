@@ -124,12 +124,12 @@ Return
 intel_mocs_init_l3cc_table
 ==========================
 
-.. c:function:: void intel_mocs_init_l3cc_table(struct drm_device *dev)
+.. c:function:: void intel_mocs_init_l3cc_table(struct drm_i915_private *dev_priv)
 
     program the mocs control table
 
-    :param struct drm_device \*dev:
-        The the device to be programmed.
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`intel_mocs_init_l3cc_table.description`:
 

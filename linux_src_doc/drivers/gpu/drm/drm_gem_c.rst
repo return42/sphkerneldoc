@@ -136,8 +136,8 @@ drm_gem_dumb_destroy
 Description
 -----------
 
-This implements the ->dumb_destroy kms driver callback for drivers which use
-gem to manage their backing storage.
+This implements the \ :c:type:`drm_driver.dumb_destroy <drm_driver>`\  kms driver callback for drivers
+which use gem to manage their backing storage.
 
 .. _`drm_gem_handle_create_tail`:
 
@@ -162,9 +162,9 @@ drm_gem_handle_create_tail
 Description
 -----------
 
-This expects the dev->object_name_lock to be held already and will drop it
-before returning. Used to avoid races in establishing new handles when
-importing an object from either an flink name or a dma-buf.
+This expects the \ :c:type:`drm_device.object_name_lock <drm_device>`\  to be held already and will
+drop it before returning. Used to avoid races in establishing new handles
+when importing an object from either an flink name or a dma-buf.
 
 Handles must be release again through \ :c:func:`drm_gem_handle_delete`\ . This is done
 when userspace closes \ ``file_priv``\  for all attached handles, or through the
@@ -246,8 +246,8 @@ up the object based on the offset and sets up the various memory mapping
 structures.
 
 This routine allocates and attaches a fake offset for \ ``obj``\ , in cases where
-the virtual size differs from the physical size (ie. obj->size).  Otherwise
-just use \ :c:func:`drm_gem_create_mmap_offset`\ .
+the virtual size differs from the physical size (ie. \ :c:type:`drm_gem_object.size <drm_gem_object>`\ ).
+Otherwise just use \ :c:func:`drm_gem_create_mmap_offset`\ .
 
 This function is idempotent and handles an already allocated mmap offset
 transparently. Drivers do not need to check for this case.
@@ -523,55 +523,55 @@ Description
 -----------
 
 Called after the last reference to the object has been lost.
-Must be called holding \ :c:type:`drm_device->struct_mutex <drm_device>`\ .
+Must be called holding \ :c:type:`drm_device.struct_mutex <drm_device>`\ .
 
 Frees the object
 
-.. _`drm_gem_object_unreference_unlocked`:
+.. _`drm_gem_object_put_unlocked`:
 
-drm_gem_object_unreference_unlocked
-===================================
+drm_gem_object_put_unlocked
+===========================
 
-.. c:function:: void drm_gem_object_unreference_unlocked(struct drm_gem_object *obj)
+.. c:function:: void drm_gem_object_put_unlocked(struct drm_gem_object *obj)
 
-    release a GEM BO reference
+    drop a GEM buffer object reference
 
     :param struct drm_gem_object \*obj:
         GEM buffer object
 
-.. _`drm_gem_object_unreference_unlocked.description`:
+.. _`drm_gem_object_put_unlocked.description`:
 
 Description
 -----------
 
 This releases a reference to \ ``obj``\ . Callers must not hold the
-dev->struct_mutex lock when calling this function.
+\ :c:type:`drm_device.struct_mutex <drm_device>`\  lock when calling this function.
 
-See also \ :c:func:`__drm_gem_object_unreference`\ .
+See also \ :c:func:`__drm_gem_object_put`\ .
 
-.. _`drm_gem_object_unreference`:
+.. _`drm_gem_object_put`:
 
-drm_gem_object_unreference
-==========================
+drm_gem_object_put
+==================
 
-.. c:function:: void drm_gem_object_unreference(struct drm_gem_object *obj)
+.. c:function:: void drm_gem_object_put(struct drm_gem_object *obj)
 
-    release a GEM BO reference
+    release a GEM buffer object reference
 
     :param struct drm_gem_object \*obj:
         GEM buffer object
 
-.. _`drm_gem_object_unreference.description`:
+.. _`drm_gem_object_put.description`:
 
 Description
 -----------
 
-This releases a reference to \ ``obj``\ . Callers must hold the dev->struct_mutex
-lock when calling this function, even when the driver doesn't use
-dev->struct_mutex for anything.
+This releases a reference to \ ``obj``\ . Callers must hold the
+\ :c:type:`drm_device.struct_mutex <drm_device>`\  lock when calling this function, even when the
+driver doesn't use \ :c:type:`drm_device.struct_mutex <drm_device>`\  for anything.
 
 For drivers not encumbered with legacy locking use
-\ :c:func:`drm_gem_object_unreference_unlocked`\  instead.
+\ :c:func:`drm_gem_object_put_unlocked`\  instead.
 
 .. _`drm_gem_vm_open`:
 

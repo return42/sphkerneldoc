@@ -115,7 +115,7 @@ fragmented part of the SKB. Returns zero for linear SKB.
 qeth_get_elements_no
 ====================
 
-.. c:function:: int qeth_get_elements_no(struct qeth_card *card, struct sk_buff *skb, int extra_elems)
+.. c:function:: int qeth_get_elements_no(struct qeth_card *card, struct sk_buff *skb, int extra_elems, int data_offset)
 
     find number of SBALEs for skb data, inc. frags.
 
@@ -127,6 +127,9 @@ qeth_get_elements_no
 
     :param int extra_elems:
         extra elems needed, to check against max.
+
+    :param int data_offset:
+        range starts at skb->data + data_offset
 
 .. _`qeth_get_elements_no.description`:
 

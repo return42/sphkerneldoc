@@ -116,6 +116,35 @@ Return
 
 Next address after end of written function.
 
+.. _`kvm_mips_build_tlb_refill_exception`:
+
+kvm_mips_build_tlb_refill_exception
+===================================
+
+.. c:function:: void *kvm_mips_build_tlb_refill_exception(void *addr, void *handler)
+
+    Assemble TLB refill handler.
+
+    :param void \*addr:
+        Address to start writing code.
+
+    :param void \*handler:
+        Address of common handler (within range of \ ``addr``\ ).
+
+.. _`kvm_mips_build_tlb_refill_exception.description`:
+
+Description
+-----------
+
+Assemble TLB refill exception fast path handler for guest execution.
+
+.. _`kvm_mips_build_tlb_refill_exception.return`:
+
+Return
+------
+
+Next address after end of written function.
+
 .. _`kvm_mips_build_exception`:
 
 kvm_mips_build_exception

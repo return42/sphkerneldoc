@@ -207,7 +207,7 @@ The statistics are actually updated from the service task.
 i40e_get_netdev_stats_struct
 ============================
 
-.. c:function:: struct rtnl_link_stats64 *i40e_get_netdev_stats_struct(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+.. c:function:: void i40e_get_netdev_stats_struct(struct net_device *netdev, struct rtnl_link_stats64 *stats)
 
     Get statistics for netdev interface
 
@@ -334,18 +334,6 @@ i40e_update_veb_stats
 
     :param struct i40e_veb \*veb:
         the VEB being updated
-
-.. _`i40e_update_fcoe_stats`:
-
-i40e_update_fcoe_stats
-======================
-
-.. c:function:: void i40e_update_fcoe_stats(struct i40e_vsi *vsi)
-
-    Update FCoE-specific ethernet statistics counters.
-
-    :param struct i40e_vsi \*vsi:
-        the VSI that is capable of doing FCoE
 
 .. _`i40e_update_vsi_stats`:
 
@@ -653,14 +641,14 @@ This function MUST be called from within the context of
 the "safe" variants of any list iterators, e.g. \ :c:func:`list_for_each_entry_safe`\ 
 instead of \ :c:func:`list_for_each_entry`\ .
 
-.. _`i40e_put_mac_in_vlan`:
+.. _`i40e_add_mac_filter`:
 
-i40e_put_mac_in_vlan
-====================
+i40e_add_mac_filter
+===================
 
-.. c:function:: struct i40e_mac_filter *i40e_put_mac_in_vlan(struct i40e_vsi *vsi, const u8 *macaddr)
+.. c:function:: struct i40e_mac_filter *i40e_add_mac_filter(struct i40e_vsi *vsi, const u8 *macaddr)
 
-    Make macvlan filters from macaddrs and vlans
+    Add a MAC filter for all active VLANs
 
     :param struct i40e_vsi \*vsi:
         the VSI to be searched
@@ -668,25 +656,26 @@ i40e_put_mac_in_vlan
     :param const u8 \*macaddr:
         the mac address to be filtered
 
-.. _`i40e_put_mac_in_vlan.description`:
+.. _`i40e_add_mac_filter.description`:
 
 Description
 -----------
 
-Goes through all the macvlan filters and adds a macvlan filter for each
+If we're not in VLAN mode, just add the filter to I40E_VLAN_ANY. Otherwise,
+go through all the macvlan filters and add a macvlan filter for each
 unique vlan that already exists. If a PVID has been assigned, instead only
 add the macaddr to that VLAN.
 
 Returns last filter added on success, else NULL
 
-.. _`i40e_del_mac_all_vlan`:
+.. _`i40e_del_mac_filter`:
 
-i40e_del_mac_all_vlan
-=====================
+i40e_del_mac_filter
+===================
 
-.. c:function:: int i40e_del_mac_all_vlan(struct i40e_vsi *vsi, const u8 *macaddr)
+.. c:function:: int i40e_del_mac_filter(struct i40e_vsi *vsi, const u8 *macaddr)
 
-    Remove a MAC filter from all VLANS
+    Remove a MAC filter from all VLANs
 
     :param struct i40e_vsi \*vsi:
         the VSI to be searched
@@ -694,12 +683,13 @@ i40e_del_mac_all_vlan
     :param const u8 \*macaddr:
         the mac address to be removed
 
-.. _`i40e_del_mac_all_vlan.description`:
+.. _`i40e_del_mac_filter.description`:
 
 Description
 -----------
 
-Removes a given MAC address from a VSI, regardless of VLAN
+Removes a given MAC address from a VSI regardless of what VLAN it has been
+associated with.
 
 Returns 0 for success, or error
 
@@ -811,12 +801,12 @@ i40e_set_rx_mode
     :param struct net_device \*netdev:
         network interface device structure
 
-.. _`i40e_undo_filter_entries`:
+.. _`i40e_undo_del_filter_entries`:
 
-i40e_undo_filter_entries
-========================
+i40e_undo_del_filter_entries
+============================
 
-.. c:function:: void i40e_undo_filter_entries(struct i40e_vsi *vsi, struct hlist_head *from)
+.. c:function:: void i40e_undo_del_filter_entries(struct i40e_vsi *vsi, struct hlist_head *from)
 
     Undo the changes made to MAC filter entries
 
@@ -827,20 +817,63 @@ i40e_undo_filter_entries
         Pointer to list which contains MAC filter entries - changes to
         those entries needs to be undone.
 
-.. _`i40e_undo_filter_entries.description`:
+.. _`i40e_undo_del_filter_entries.description`:
 
 Description
 -----------
 
-MAC filter entries from list were slated to be sent to firmware, either for
-addition or deletion.
+MAC filter entries from this list were slated for deletion.
+
+.. _`i40e_undo_add_filter_entries`:
+
+i40e_undo_add_filter_entries
+============================
+
+.. c:function:: void i40e_undo_add_filter_entries(struct i40e_vsi *vsi, struct hlist_head *from)
+
+    Undo the changes made to MAC filter entries
+
+    :param struct i40e_vsi \*vsi:
+        Pointer to vsi struct
+
+    :param struct hlist_head \*from:
+        Pointer to list which contains MAC filter entries - changes to
+        those entries needs to be undone.
+
+.. _`i40e_undo_add_filter_entries.description`:
+
+Description
+-----------
+
+MAC filter entries from this list were slated for addition.
+
+.. _`i40e_next_filter`:
+
+i40e_next_filter
+================
+
+.. c:function:: struct i40e_new_mac_filter *i40e_next_filter(struct i40e_new_mac_filter *next)
+
+    Get the next non-broadcast filter from a list
+
+    :param struct i40e_new_mac_filter \*next:
+        pointer to filter in list
+
+.. _`i40e_next_filter.description`:
+
+Description
+-----------
+
+Returns the next non-broadcast filter in the list. Required so that we
+ignore broadcast filters within the list, since these are not handled via
+the normal firmware update path.
 
 .. _`i40e_update_filter_state`:
 
 i40e_update_filter_state
 ========================
 
-.. c:function:: int i40e_update_filter_state(int count, struct i40e_aqc_add_macvlan_element_data *add_list, struct i40e_mac_filter *add_head)
+.. c:function:: int i40e_update_filter_state(int count, struct i40e_aqc_add_macvlan_element_data *add_list, struct i40e_new_mac_filter *add_head)
 
     Update filter state based on return data from firmware
 
@@ -850,7 +883,7 @@ i40e_update_filter_state
     :param struct i40e_aqc_add_macvlan_element_data \*add_list:
         return data from fw
 
-    :param struct i40e_mac_filter \*add_head:
+    :param struct i40e_new_mac_filter \*add_head:
         *undescribed*
 
 .. _`i40e_update_filter_state.description`:
@@ -900,7 +933,7 @@ preserve the previous value of \*retval on successful delete.
 i40e_aqc_add_filters
 ====================
 
-.. c:function:: void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_aqc_add_macvlan_element_data *list, struct i40e_mac_filter *add_head, int num_add, bool *promisc_changed)
+.. c:function:: void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_aqc_add_macvlan_element_data *list, struct i40e_new_mac_filter *add_head, int num_add, bool *promisc_changed)
 
     Request firmware to add a set of filters
 
@@ -913,7 +946,7 @@ i40e_aqc_add_filters
     :param struct i40e_aqc_add_macvlan_element_data \*list:
         the list of filters to send to firmware
 
-    :param struct i40e_mac_filter \*add_head:
+    :param struct i40e_new_mac_filter \*add_head:
         Position in the add hlist
 
     :param int num_add:
@@ -936,7 +969,7 @@ filters.
 i40e_aqc_broadcast_filter
 =========================
 
-.. c:function:: void i40e_aqc_broadcast_filter(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_mac_filter *f)
+.. c:function:: i40e_status i40e_aqc_broadcast_filter(struct i40e_vsi *vsi, const char *vsi_name, struct i40e_mac_filter *f)
 
     Set promiscuous broadcast flags
 
@@ -957,6 +990,8 @@ Description
 This function sets or clears the promiscuous broadcast flags for VLAN
 filters in order to properly receive broadcast frames. Assumes that only
 broadcast filters are passed.
+
+Returns status indicating success or failure;
 
 .. _`i40e_sync_vsi_filters`:
 
@@ -1108,15 +1143,15 @@ mac_filter_hash_lock
 i40e_vsi_add_vlan
 =================
 
-.. c:function:: int i40e_vsi_add_vlan(struct i40e_vsi *vsi, s16 vid)
+.. c:function:: int i40e_vsi_add_vlan(struct i40e_vsi *vsi, u16 vid)
 
     Add VSI membership for given VLAN
 
     :param struct i40e_vsi \*vsi:
         the VSI being configured
 
-    :param s16 vid:
-        VLAN id to be added (0 = untagged only , -1 = any)
+    :param u16 vid:
+        VLAN id to be added
 
 .. _`i40e_rm_vlan_all_mac`:
 
@@ -1156,15 +1191,15 @@ mac_filter_hash_lock
 i40e_vsi_kill_vlan
 ==================
 
-.. c:function:: void i40e_vsi_kill_vlan(struct i40e_vsi *vsi, s16 vid)
+.. c:function:: void i40e_vsi_kill_vlan(struct i40e_vsi *vsi, u16 vid)
 
     Remove VSI membership for given VLAN
 
     :param struct i40e_vsi \*vsi:
         the VSI being configured
 
-    :param s16 vid:
-        VLAN id to be removed (0 = untagged only , -1 = any)
+    :param u16 vid:
+        VLAN id to be removed
 
 .. _`i40e_vlan_rx_add_vid`:
 
@@ -1866,6 +1901,33 @@ enabled or disabled state.
 Returns -ETIMEDOUT in case of failing to reach the requested state after
 multiple retries; else will return 0 in case of success.
 
+.. _`i40e_control_tx_q`:
+
+i40e_control_tx_q
+=================
+
+.. c:function:: void i40e_control_tx_q(struct i40e_pf *pf, int pf_q, bool enable)
+
+    Start or stop a particular Tx queue
+
+    :param struct i40e_pf \*pf:
+        the PF structure
+
+    :param int pf_q:
+        the PF queue to configure
+
+    :param bool enable:
+        start or stop the queue
+
+.. _`i40e_control_tx_q.description`:
+
+Description
+-----------
+
+This function enables or disables a single queue. Note that any delay
+required after the operation is expected to be handled by the caller of
+this function.
+
 .. _`i40e_vsi_control_tx`:
 
 i40e_vsi_control_tx
@@ -1909,6 +1971,33 @@ enabled or disabled state.
 Returns -ETIMEDOUT in case of failing to reach the requested state after
 multiple retries; else will return 0 in case of success.
 
+.. _`i40e_control_rx_q`:
+
+i40e_control_rx_q
+=================
+
+.. c:function:: void i40e_control_rx_q(struct i40e_pf *pf, int pf_q, bool enable)
+
+    Start or stop a particular Rx queue
+
+    :param struct i40e_pf \*pf:
+        the PF structure
+
+    :param int pf_q:
+        the PF queue to configure
+
+    :param bool enable:
+        start or stop the queue
+
+.. _`i40e_control_rx_q.description`:
+
+Description
+-----------
+
+This function enables or disables a single queue. Note that any delay
+required after the operation is expected to be handled by the caller of
+this function.
+
 .. _`i40e_vsi_control_rx`:
 
 i40e_vsi_control_rx
@@ -1947,6 +2036,30 @@ i40e_vsi_stop_rings
 
     :param struct i40e_vsi \*vsi:
         the VSI being configured
+
+.. _`i40e_vsi_stop_rings_no_wait`:
+
+i40e_vsi_stop_rings_no_wait
+===========================
+
+.. c:function:: void i40e_vsi_stop_rings_no_wait(struct i40e_vsi *vsi)
+
+    Stop a VSI's rings and do not delay
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being shutdown
+
+.. _`i40e_vsi_stop_rings_no_wait.description`:
+
+Description
+-----------
+
+This function stops all the rings for a VSI but does not delay to verify
+that rings have been disabled. It is expected that the caller is shutting
+down multiple VSIs at once and will delay together for all the VSIs after
+initiating the shutdown. This is particularly useful for shutting down lots
+of VFs together. Otherwise, a large delay can be incurred while configuring
+each VSI in serial.
 
 .. _`i40e_vsi_free_irq`:
 
@@ -2137,7 +2250,7 @@ i40e_vsi_wait_queues_disabled
 Description
 -----------
 
-This function waits for the given VSI's queues to be disabled.
+Wait until all queues on a given VSI have been disabled.
 
 .. _`i40e_pf_wait_queues_disabled`:
 
@@ -2180,10 +2293,9 @@ Description
 -----------
 
 This function checks specified queue for given VSI. Detects hung condition.
-Sets hung bit since it is two step process. Before next run of service task
-if napi_poll runs, it reset 'hung' bit for respective q_vector. If not,
-hung condition remain unchanged and during subsequent run, this function
-issues SW interrupt to recover from hung condition.
+We proactively detect hung TX queues by checking if interrupts are disabled
+but there are pending descriptors.  If it appears hung, attempt to recover
+by triggering a SW interrupt.
 
 .. _`i40e_detect_recover_hung`:
 
@@ -2622,6 +2734,13 @@ Finish initialization of the VSI.
 
 Returns 0 on success, negative value on failure
 
+.. _`i40e_vsi_open.note`:
+
+Note
+----
+
+expects to be called while under \ :c:func:`rtnl_lock`\ 
+
 .. _`i40e_fdir_filter_exit`:
 
 i40e_fdir_filter_exit
@@ -2670,7 +2789,7 @@ Returns 0, this is not allowed to fail
 i40e_do_reset
 =============
 
-.. c:function:: void i40e_do_reset(struct i40e_pf *pf, u32 reset_flags)
+.. c:function:: void i40e_do_reset(struct i40e_pf *pf, u32 reset_flags, bool lock_acquired)
 
     Start a PF or Core Reset sequence
 
@@ -2679,6 +2798,10 @@ i40e_do_reset
 
     :param u32 reset_flags:
         which reset is requested
+
+    :param bool lock_acquired:
+        indicates whether or not the lock has been acquired
+        before this function was called.
 
 .. _`i40e_do_reset.description`:
 
@@ -3067,12 +3190,16 @@ i40e_fdir_teardown
 i40e_prep_for_reset
 ===================
 
-.. c:function:: void i40e_prep_for_reset(struct i40e_pf *pf)
+.. c:function:: void i40e_prep_for_reset(struct i40e_pf *pf, bool lock_acquired)
 
     prep for the core to reset
 
     :param struct i40e_pf \*pf:
         board private structure
+
+    :param bool lock_acquired:
+        indicates whether or not the lock has been acquired
+        before this function was called.
 
 .. _`i40e_prep_for_reset.description`:
 
@@ -3093,12 +3220,43 @@ i40e_send_version
     :param struct i40e_pf \*pf:
         PF struct
 
+.. _`i40e_reset`:
+
+i40e_reset
+==========
+
+.. c:function:: int i40e_reset(struct i40e_pf *pf)
+
+    wait for core reset to finish reset, reset pf if corer not seen
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+.. _`i40e_rebuild`:
+
+i40e_rebuild
+============
+
+.. c:function:: void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
+
+    rebuild using a saved config
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+    :param bool reinit:
+        if the Main VSI needs to re-initialized.
+
+    :param bool lock_acquired:
+        indicates whether or not the lock has been acquired
+        before this function was called.
+
 .. _`i40e_reset_and_rebuild`:
 
 i40e_reset_and_rebuild
 ======================
 
-.. c:function:: void i40e_reset_and_rebuild(struct i40e_pf *pf, bool reinit)
+.. c:function:: void i40e_reset_and_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
 
     reset and rebuild using a saved config
 
@@ -3108,17 +3266,25 @@ i40e_reset_and_rebuild
     :param bool reinit:
         if the Main VSI needs to re-initialized.
 
+    :param bool lock_acquired:
+        indicates whether or not the lock has been acquired
+        before this function was called.
+
 .. _`i40e_handle_reset_warning`:
 
 i40e_handle_reset_warning
 =========================
 
-.. c:function:: void i40e_handle_reset_warning(struct i40e_pf *pf)
+.. c:function:: void i40e_handle_reset_warning(struct i40e_pf *pf, bool lock_acquired)
 
     prep for the PF to reset, reset and rebuild
 
     :param struct i40e_pf \*pf:
         board private structure
+
+    :param bool lock_acquired:
+        indicates whether or not the lock has been acquired
+        before this function was called.
 
 .. _`i40e_handle_reset_warning.description`:
 
@@ -3144,6 +3310,18 @@ Description
 -----------
 
 Called from the MDD irq handler to identify possibly malicious vfs
+
+.. _`i40e_sync_udp_filters`:
+
+i40e_sync_udp_filters
+=====================
+
+.. c:function:: void i40e_sync_udp_filters(struct i40e_pf *pf)
+
+    Trigger a sync event for existing UDP filters
+
+    :param struct i40e_pf \*pf:
+        board private structure
 
 .. _`i40e_sync_udp_filters_subtask`:
 
@@ -3680,6 +3858,13 @@ Description
 returns 0 if rss is not enabled, if enabled returns the final rss queue
 count which may be different from the requested queue count.
 
+.. _`i40e_reconfig_rss_queues.note`:
+
+Note
+----
+
+expects to be called while under \ :c:func:`rtnl_lock`\ 
+
 .. _`i40e_get_npar_bw_setting`:
 
 i40e_get_npar_bw_setting
@@ -3786,19 +3971,26 @@ i40e_set_features
     :param netdev_features_t features:
         the feature set that the stack is suggesting
 
+.. _`i40e_set_features.note`:
+
+Note
+----
+
+expects to be called while under \ :c:func:`rtnl_lock`\ 
+
 .. _`i40e_get_udp_port_idx`:
 
 i40e_get_udp_port_idx
 =====================
 
-.. c:function:: u8 i40e_get_udp_port_idx(struct i40e_pf *pf, __be16 port)
+.. c:function:: u8 i40e_get_udp_port_idx(struct i40e_pf *pf, u16 port)
 
     Lookup a possibly offloaded for Rx UDP port
 
     :param struct i40e_pf \*pf:
         board private structure
 
-    :param __be16 port:
+    :param u16 port:
         The UDP port to look up
 
 .. _`i40e_get_udp_port_idx.description`:
@@ -3894,6 +4086,13 @@ hardware bridge has already been inserted and the request
 is to change the mode then that requires a PF reset to
 allow rebuild of the components with required hardware
 bridge mode enabled.
+
+.. _`i40e_ndo_bridge_setlink.note`:
+
+Note
+----
+
+expects to be called while under \ :c:func:`rtnl_lock`\ 
 
 .. _`i40e_ndo_bridge_getlink`:
 
@@ -4391,10 +4590,10 @@ i40e_get_platform_mac_addr
 Description
 -----------
 
-Look up the MAC address in Open Firmware  on systems that support it,
-and use IDPROM on SPARC if no OF address is found. On return, the
-I40E_FLAG_PF_MAC will be wset in pf->flags if a platform-specific value
-has been selected.
+Look up the MAC address for the device. First we'll try
+eth_platform_get_mac_address, which will check Open Firmware, or arch
+specific fallback. Otherwise, we'll default to the stored value in
+firmware.
 
 .. _`i40e_probe`:
 
@@ -4509,6 +4708,18 @@ Description
 
 Called to allow the driver to bring things back up after PCI error
 and/or reset recovery has finished.
+
+.. _`i40e_enable_mc_magic_wake`:
+
+i40e_enable_mc_magic_wake
+=========================
+
+.. c:function:: void i40e_enable_mc_magic_wake(struct i40e_pf *pf)
+
+    enable multicast magic packet wake up using the mac_address_write admin q function
+
+    :param struct i40e_pf \*pf:
+        pointer to i40e_pf struct
 
 .. _`i40e_shutdown`:
 

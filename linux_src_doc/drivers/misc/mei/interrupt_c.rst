@@ -6,14 +6,14 @@
 mei_irq_compl_handler
 =====================
 
-.. c:function:: void mei_irq_compl_handler(struct mei_device *dev, struct mei_cl_cb *compl_list)
+.. c:function:: void mei_irq_compl_handler(struct mei_device *dev, struct list_head *cmpl_list)
 
     dispatch complete handlers for the completed callbacks
 
     :param struct mei_device \*dev:
         mei device
 
-    :param struct mei_cl_cb \*compl_list:
+    :param struct list_head \*cmpl_list:
         list of completed cbs
 
 .. _`mei_cl_hbm_equal`:
@@ -58,7 +58,7 @@ mei_irq_discard_msg
 mei_cl_irq_read_msg
 ===================
 
-.. c:function:: int mei_cl_irq_read_msg(struct mei_cl *cl, struct mei_msg_hdr *mei_hdr, struct mei_cl_cb *complete_list)
+.. c:function:: int mei_cl_irq_read_msg(struct mei_cl *cl, struct mei_msg_hdr *mei_hdr, struct list_head *cmpl_list)
 
     process client message
 
@@ -68,7 +68,7 @@ mei_cl_irq_read_msg
     :param struct mei_msg_hdr \*mei_hdr:
         header of mei client message
 
-    :param struct mei_cl_cb \*complete_list:
+    :param struct list_head \*cmpl_list:
         completion list
 
 .. _`mei_cl_irq_read_msg.return`:
@@ -83,7 +83,7 @@ always 0
 mei_cl_irq_disconnect_rsp
 =========================
 
-.. c:function:: int mei_cl_irq_disconnect_rsp(struct mei_cl *cl, struct mei_cl_cb *cb, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_cl_irq_disconnect_rsp(struct mei_cl *cl, struct mei_cl_cb *cb, struct list_head *cmpl_list)
 
     send disconnection response message
 
@@ -93,7 +93,7 @@ mei_cl_irq_disconnect_rsp
     :param struct mei_cl_cb \*cb:
         callback block.
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         complete list.
 
 .. _`mei_cl_irq_disconnect_rsp.return`:
@@ -108,7 +108,7 @@ Return
 mei_cl_irq_read
 ===============
 
-.. c:function:: int mei_cl_irq_read(struct mei_cl *cl, struct mei_cl_cb *cb, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_cl_irq_read(struct mei_cl *cl, struct mei_cl_cb *cb, struct list_head *cmpl_list)
 
     processes client read related operation from the interrupt thread context - request for flow control credits
 
@@ -118,7 +118,7 @@ mei_cl_irq_read
     :param struct mei_cl_cb \*cb:
         callback block.
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         complete list.
 
 .. _`mei_cl_irq_read.return`:
@@ -133,14 +133,14 @@ Return
 mei_irq_read_handler
 ====================
 
-.. c:function:: int mei_irq_read_handler(struct mei_device *dev, struct mei_cl_cb *cmpl_list, s32 *slots)
+.. c:function:: int mei_irq_read_handler(struct mei_device *dev, struct list_head *cmpl_list, s32 *slots)
 
     bottom half read routine after ISR to handle the read processing.
 
     :param struct mei_device \*dev:
         the device structure
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         An instance of our list structure
 
     :param s32 \*slots:
@@ -158,14 +158,14 @@ Return
 mei_irq_write_handler
 =====================
 
-.. c:function:: int mei_irq_write_handler(struct mei_device *dev, struct mei_cl_cb *cmpl_list)
+.. c:function:: int mei_irq_write_handler(struct mei_device *dev, struct list_head *cmpl_list)
 
     dispatch write requests after irq received
 
     :param struct mei_device \*dev:
         the device structure
 
-    :param struct mei_cl_cb \*cmpl_list:
+    :param struct list_head \*cmpl_list:
         An instance of our list structure
 
 .. _`mei_irq_write_handler.return`:

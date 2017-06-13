@@ -13,5 +13,6 @@ mtd
     onenand/index
     spi-nor/index
     ubi/index
+    bcm47xxpart_c
     mtdcore_c
     mtdpart_c

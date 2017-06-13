@@ -384,6 +384,55 @@ extcon_unregister_notifier
     :param struct notifier_block \*nb:
         a notifier block to be registered.
 
+.. _`extcon_register_notifier_all`:
+
+extcon_register_notifier_all
+============================
+
+.. c:function:: int extcon_register_notifier_all(struct extcon_dev *edev, struct notifier_block *nb)
+
+    Register a notifier block for all connectors
+
+    :param struct extcon_dev \*edev:
+        the extcon device that has the external connecotr.
+
+    :param struct notifier_block \*nb:
+        a notifier block to be registered.
+
+.. _`extcon_register_notifier_all.description`:
+
+Description
+-----------
+
+This fucntion registers a notifier block in order to receive the state
+change of all supported external connectors from extcon device.
+And The second parameter given to the callback of nb (val) is
+the current state and third parameter is the edev pointer.
+
+Returns 0 if success or error number if fail
+
+.. _`extcon_unregister_notifier_all`:
+
+extcon_unregister_notifier_all
+==============================
+
+.. c:function:: int extcon_unregister_notifier_all(struct extcon_dev *edev, struct notifier_block *nb)
+
+    Unregister a notifier block from extcon.
+
+    :param struct extcon_dev \*edev:
+        the extcon device that has the external connecotr.
+
+    :param struct notifier_block \*nb:
+        a notifier block to be registered.
+
+.. _`extcon_unregister_notifier_all.description`:
+
+Description
+-----------
+
+Returns 0 if success or error number if fail
+
 .. _`extcon_dev_register`:
 
 extcon_dev_register

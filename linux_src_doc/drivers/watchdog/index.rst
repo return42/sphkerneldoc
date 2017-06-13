@@ -22,7 +22,6 @@ watchdog
     s3c2410_wdt_c
     sbsa_gwdt_c
     sp805_wdt_c
-    ts72xx_wdt_c
     watchdog_core_c
     wdat_wdt_c
     wdrtas_c

@@ -1,6 +1,38 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_vma.c
 
+.. _`i915_vma_instance`:
+
+i915_vma_instance
+=================
+
+.. c:function:: struct i915_vma *i915_vma_instance(struct drm_i915_gem_object *obj, struct i915_address_space *vm, const struct i915_ggtt_view *view)
+
+    return the singleton instance of the VMA
+
+    :param struct drm_i915_gem_object \*obj:
+        parent \ :c:type:`struct drm_i915_gem_object <drm_i915_gem_object>`\  to be mapped
+
+    :param struct i915_address_space \*vm:
+        address space in which the mapping is located
+
+    :param const struct i915_ggtt_view \*view:
+        additional mapping requirements
+
+.. _`i915_vma_instance.description`:
+
+Description
+-----------
+
+i915_vma_instance() looks up an existing VMA of the \ ``obj``\  in the \ ``vm``\  with
+the same \ ``view``\  characteristics. If a match is not found, one is created.
+Once created, the VMA is kept until either the object is freed, or the
+address space is closed.
+
+Must be called with struct_mutex held.
+
+Returns the vma, or an error pointer.
+
 .. _`i915_vma_bind`:
 
 i915_vma_bind

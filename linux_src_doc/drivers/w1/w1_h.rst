@@ -202,7 +202,7 @@ set_pullup
 
 search
     Really nice hardware can handles the different types of ROM search
-    w1_master\* is passed to the slave found callback.
+    w1_master* is passed to the slave found callback.
     u8 is search_type, W1_SEARCH or W1_ALARM_SEARCH
 
 .. _`w1_bus_master.note`:

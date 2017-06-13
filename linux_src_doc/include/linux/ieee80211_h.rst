@@ -1623,8 +1623,8 @@ Definition
 
     struct ieee80211_vht_operation {
         u8 chan_width;
+        u8 center_freq_seg0_idx;
         u8 center_freq_seg1_idx;
-        u8 center_freq_seg2_idx;
         __le16 basic_mcs_set;
     }
 
@@ -1636,11 +1636,11 @@ Members
 chan_width
     Operating channel width
 
+center_freq_seg0_idx
+    center freq segment 0 index
+
 center_freq_seg1_idx
     center freq segment 1 index
-
-center_freq_seg2_idx
-    center freq segment 2 index
 
 basic_mcs_set
     VHT Basic MCS rate set
@@ -1652,6 +1652,105 @@ Description
 
 This structure is the "VHT operation element" as
 described in 802.11ac D3.0 8.4.2.161
+
+.. _`ieee80211_mesh_sync_method`:
+
+enum ieee80211_mesh_sync_method
+===============================
+
+.. c:type:: enum ieee80211_mesh_sync_method
+
+    mesh synchronization method identifier
+
+.. _`ieee80211_mesh_sync_method.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_mesh_sync_method {
+        IEEE80211_SYNC_METHOD_NEIGHBOR_OFFSET,
+        IEEE80211_SYNC_METHOD_VENDOR
+    };
+
+.. _`ieee80211_mesh_sync_method.constants`:
+
+Constants
+---------
+
+IEEE80211_SYNC_METHOD_NEIGHBOR_OFFSET
+    the default synchronization method
+
+IEEE80211_SYNC_METHOD_VENDOR
+    a vendor specific synchronization method
+    that will be specified in a vendor specific information element
+
+.. _`ieee80211_mesh_path_protocol`:
+
+enum ieee80211_mesh_path_protocol
+=================================
+
+.. c:type:: enum ieee80211_mesh_path_protocol
+
+    mesh path selection protocol identifier
+
+.. _`ieee80211_mesh_path_protocol.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_mesh_path_protocol {
+        IEEE80211_PATH_PROTOCOL_HWMP,
+        IEEE80211_PATH_PROTOCOL_VENDOR
+    };
+
+.. _`ieee80211_mesh_path_protocol.constants`:
+
+Constants
+---------
+
+IEEE80211_PATH_PROTOCOL_HWMP
+    the default path selection protocol
+
+IEEE80211_PATH_PROTOCOL_VENDOR
+    a vendor specific protocol that will
+    be specified in a vendor specific information element
+
+.. _`ieee80211_mesh_path_metric`:
+
+enum ieee80211_mesh_path_metric
+===============================
+
+.. c:type:: enum ieee80211_mesh_path_metric
+
+    mesh path selection metric identifier
+
+.. _`ieee80211_mesh_path_metric.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_mesh_path_metric {
+        IEEE80211_PATH_METRIC_AIRTIME,
+        IEEE80211_PATH_METRIC_VENDOR
+    };
+
+.. _`ieee80211_mesh_path_metric.constants`:
+
+Constants
+---------
+
+IEEE80211_PATH_METRIC_AIRTIME
+    the default path selection metric
+
+IEEE80211_PATH_METRIC_VENDOR
+    a vendor specific metric that will be
+    specified in a vendor specific information element
 
 .. _`ieee80211_root_mode_identifier`:
 
@@ -1739,6 +1838,77 @@ type
 
 value
     timeout interval value
+
+.. _`ieee80211_idle_options`:
+
+enum ieee80211_idle_options
+===========================
+
+.. c:type:: enum ieee80211_idle_options
+
+    BSS idle options
+
+.. _`ieee80211_idle_options.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_idle_options {
+        WLAN_IDLE_OPTIONS_PROTECTED_KEEP_ALIVE
+    };
+
+.. _`ieee80211_idle_options.constants`:
+
+Constants
+---------
+
+WLAN_IDLE_OPTIONS_PROTECTED_KEEP_ALIVE
+    the station should send an RSN
+    protected frame to the AP to reset the idle timer at the AP for
+    the station.
+
+.. _`ieee80211_bss_max_idle_period_ie`:
+
+struct ieee80211_bss_max_idle_period_ie
+=======================================
+
+.. c:type:: struct ieee80211_bss_max_idle_period_ie
+
+
+.. _`ieee80211_bss_max_idle_period_ie.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_bss_max_idle_period_ie {
+        __le16 max_idle_period;
+        u8 idle_options;
+    }
+
+.. _`ieee80211_bss_max_idle_period_ie.members`:
+
+Members
+-------
+
+max_idle_period
+    indicates the time period during which a station can
+    refrain from transmitting frames to its associated AP without being
+    disassociated. In units of 1000 TUs.
+
+idle_options
+    indicates the options associated with the BSS idle capability
+    as specified in \ :c:type:`enum ieee80211_idle_options <ieee80211_idle_options>`\ .
+
+.. _`ieee80211_bss_max_idle_period_ie.description`:
+
+Description
+-----------
+
+This structure refers to "BSS Max idle period element"
 
 .. _`ieee80211_get_qos_ctl`:
 

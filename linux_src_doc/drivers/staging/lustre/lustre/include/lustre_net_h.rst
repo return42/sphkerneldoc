@@ -290,11 +290,11 @@ Description
 request_out_callback
 ====================
 
-.. c:function:: void request_out_callback(lnet_event_t *ev)
+.. c:function:: void request_out_callback(struct lnet_event *ev)
 
     underlying buffer @{
 
-    :param lnet_event_t \*ev:
+    :param struct lnet_event \*ev:
         *undescribed*
 
 .. _`ptlrpc_unregister_bulk`:

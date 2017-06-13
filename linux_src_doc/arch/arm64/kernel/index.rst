@@ -8,6 +8,7 @@ kernel
     :maxdepth: 1
 
     cpuidle_c
+    crash_dump_c
     hw_breakpoint_c
     machine_kexec_c
     ptrace_c

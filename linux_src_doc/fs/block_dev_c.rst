@@ -129,82 +129,6 @@ Return
 
 negative errno if an error occurs, 0 if submission was successful.
 
-.. _`bdev_direct_access`:
-
-bdev_direct_access
-==================
-
-.. c:function:: long bdev_direct_access(struct block_device *bdev, struct blk_dax_ctl *dax)
-
-    Get the address for directly-accessibly memory
-
-    :param struct block_device \*bdev:
-        The device containing the memory
-
-    :param struct blk_dax_ctl \*dax:
-        control and output parameters for ->direct_access
-
-.. _`bdev_direct_access.description`:
-
-Description
------------
-
-If a block device is made up of directly addressable memory, this function
-will tell the caller the PFN and the address of the memory.  The address
-may be directly dereferenced within the kernel without the need to call
-\ :c:func:`ioremap`\ , \ :c:func:`kmap`\  or similar.  The PFN is suitable for inserting into
-page tables.
-
-.. _`bdev_direct_access.return`:
-
-Return
-------
-
-negative errno if an error occurs, otherwise the number of bytes
-accessible at this address.
-
-.. _`bdev_dax_supported`:
-
-bdev_dax_supported
-==================
-
-.. c:function:: int bdev_dax_supported(struct super_block *sb, int blocksize)
-
-    Check if the device supports dax for filesystem
-
-    :param struct super_block \*sb:
-        The superblock of the device
-
-    :param int blocksize:
-        The block size of the device
-
-.. _`bdev_dax_supported.description`:
-
-Description
------------
-
-This is a library function for filesystems to check if the block device
-can be mounted with dax option.
-
-.. _`bdev_dax_supported.return`:
-
-Return
-------
-
-negative errno if unsupported, 0 if supported.
-
-.. _`bdev_dax_capable`:
-
-bdev_dax_capable
-================
-
-.. c:function:: bool bdev_dax_capable(struct block_device *bdev)
-
-    Return if the raw device is capable for dax
-
-    :param struct block_device \*bdev:
-        The device for raw block device access
-
 .. _`bdgrab`:
 
 bdgrab
@@ -375,8 +299,8 @@ This functions creates the following sysfs symlinks.
 For example, if /dev/dm-0 maps to /dev/sda and disk for dm-0 is
 passed to \ :c:func:`bd_link_disk_holder`\ , then:
 
-/sys/block/dm-0/slaves/sda --> /sys/block/sda
-/sys/block/sda/holders/dm-0 --> /sys/block/dm-0
+  /sys/block/dm-0/slaves/sda --> /sys/block/sda
+  /sys/block/sda/holders/dm-0 --> /sys/block/dm-0
 
 The caller must have claimed \ ``bdev``\  before calling this function and
 ensure that both \ ``bdev``\  and \ ``disk``\  are valid during the creation and
@@ -506,7 +430,7 @@ blkdev_get
         block_device to open
 
     :param fmode_t mode:
-        FMODE\_\* mask
+        FMODE_* mask
 
     :param void \*holder:
         exclusive holder identifier
@@ -550,7 +474,7 @@ blkdev_get_by_path
         path to the block device to open
 
     :param fmode_t mode:
-        FMODE\_\* mask
+        FMODE_* mask
 
     :param void \*holder:
         exclusive holder identifier
@@ -592,7 +516,7 @@ blkdev_get_by_dev
         device number of block device to open
 
     :param fmode_t mode:
-        FMODE\_\* mask
+        FMODE_* mask
 
     :param void \*holder:
         exclusive holder identifier
@@ -607,7 +531,7 @@ Open the blockdevice described by device number \ ``dev``\ .  \ ``mode``\  and
 
 Use it ONLY if you really do not have anything better - i.e. when
 you are behind a truly sucky interface and all you are given is a
-device number.  \_Never\_ to be used for internal purposes.  If you
+device number.  _Never_ to be used for internal purposes.  If you
 ever need it - reconsider your API.
 
 On success, the returned block_device has reference count of one.

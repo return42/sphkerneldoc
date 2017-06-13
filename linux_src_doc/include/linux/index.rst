@@ -33,6 +33,7 @@ linux
     regulator/index
     remoteproc/index
     rtc/index
+    sched/index
     soc/index
     spi/index
     sunrpc/index
@@ -61,7 +62,6 @@ linux
     bitmap_h
     bitops_h
     blk-cgroup_h
-    blkdev_h
     blktrace_api_h
     btree_h
     buffer_head_h
@@ -77,6 +77,7 @@ linux
     clockchips_h
     clocksource_h
     cnt32_to_63_h
+    compat_h
     compiler_h
     completion_h
     console_h
@@ -117,15 +118,16 @@ linux
     etherdevice_h
     ethtool_h
     exportfs_h
-    extcon_h
     fixp-arith_h
+    flex_array_h
     freezer_h
     fs_h
     fscache-cache_h
     fscache_h
-    fscrypto_h
+    fscrypt_supp_h
     fsl_hypervisor_h
     ftrace_h
+    fwnode_h
     gameport_h
     genalloc_h
     genetlink_h
@@ -195,6 +197,8 @@ linux
     llist_h
     log2_h
     lru_cache_h
+    lsm_hooks_h
+    lz4_h
     mailbox_client_h
     mailbox_controller_h
     math64_h
@@ -212,6 +216,7 @@ linux
     module_h
     moduleparam_h
     mpi_h
+    mroute_h
     msi_h
     mutex_h
     namei_h
@@ -219,6 +224,7 @@ linux
     net_h
     netdevice_h
     netfilter_h
+    netlink_h
     nfs_fs_h
     nfs_page_h
     nmi_h
@@ -237,6 +243,8 @@ linux
     page-flags_h
     pagemap_h
     parport_h
+    pci-epc_h
+    pci-epf_h
     pci_h
     pci_hotplug_h
     percpu-refcount_h
@@ -253,7 +261,9 @@ linux
     pnp_h
     posix-clock_h
     powercap_h
+    prime_numbers_h
     property_h
+    pstore_h
     ptp_classify_h
     ptp_clock_kernel_h
     ptrace_h
@@ -269,7 +279,9 @@ linux
     rculist_h
     rculist_nulls_h
     rcupdate_h
+    rcupdate_wait_h
     rcutree_h
+    refcount_h
     regmap_h
     regset_h
     relay_h
@@ -299,11 +311,13 @@ linux
     seq_file_h
     seqlock_h
     seqno-fence_h
+    serdev_h
     serial_core_h
     serial_max3100_h
     serio_h
     sh_dma_h
     shdma-base_h
+    siphash_h
     skbuff_h
     slab_h
     smpboot_h
@@ -320,6 +334,7 @@ linux
     sync_file_h
     sys_soc_h
     sysfs_h
+    tee_drv_h
     textsearch_fsm_h
     textsearch_h
     thermal_h
@@ -348,6 +363,7 @@ linux
     vga_switcheroo_h
     vgaarb_h
     virtio_config_h
+    vme_h
     vringh_h
     w1-gpio_h
     wait_h

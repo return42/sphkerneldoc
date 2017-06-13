@@ -38,14 +38,14 @@ bit
 samsung_sync_wakemask
 =====================
 
-.. c:function:: void samsung_sync_wakemask(void __iomem *reg, struct samsung_wakeup_mask *masks, int nr_masks)
+.. c:function:: void samsung_sync_wakemask(void __iomem *reg, const struct samsung_wakeup_mask *masks, int nr_masks)
 
     sync wakeup mask information for pm
 
     :param void __iomem \*reg:
         The register that is used.
 
-    :param struct samsung_wakeup_mask \*masks:
+    :param const struct samsung_wakeup_mask \*masks:
         The list of masks to use.
 
     :param int nr_masks:

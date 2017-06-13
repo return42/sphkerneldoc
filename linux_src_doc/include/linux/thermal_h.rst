@@ -43,7 +43,7 @@ Definition
         struct thermal_governor *governor;
         void *governor_data;
         struct list_head thermal_instances;
-        struct idr idr;
+        struct ida ida;
         struct mutex lock;
         struct list_head node;
         struct delayed_work poll_queue;
@@ -138,8 +138,8 @@ governor_data
 thermal_instances
     list of \ :c:type:`struct thermal_instance <thermal_instance>`\  of this thermal zone
 
-idr
-    &struct idr to generate unique id for this zone's cooling
+ida
+    &struct ida to generate unique id for this zone's cooling
     devices
 
 lock

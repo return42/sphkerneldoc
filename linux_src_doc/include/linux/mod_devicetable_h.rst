@@ -42,7 +42,7 @@ match_flags
     Bit mask controlling which of the other fields are used to
     match against new devices. Any field except for driver_info may be
     used, although some only make sense in conjunction with other fields.
-    This is usually set by a USB_DEVICE\_\*() macro, which sets all
+    This is usually set by a USB_DEVICE_*() macro, which sets all
     other fields in this structure except for driver_info.
 
 idVendor
@@ -141,7 +141,7 @@ Members
 
 phy_id
     The result of
-    (mdio_read(&MII_PHYSID1) << 16 \| mdio_read(&PHYSID2)) & \ ``phy_id_mask``\ 
+    (mdio_read(&MII_PHYSID1) << 16 | mdio_read(&PHYSID2)) & \ ``phy_id_mask``\ 
     for this PHY type
 
 phy_id_mask

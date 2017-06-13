@@ -15,3 +15,4 @@ drivers
     mite_c
     ni_tio_c
     plx9080_h
+    s626_c

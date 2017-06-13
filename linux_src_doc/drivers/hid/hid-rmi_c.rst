@@ -20,34 +20,18 @@ Definition
     struct rmi_data {
         struct mutex page_mutex;
         int page;
+        struct rmi_transport_dev xport;
         wait_queue_head_t wait;
         u8 *writeReport;
         u8 *readReport;
         int input_report_size;
         int output_report_size;
         unsigned long flags;
-        struct rmi_function f01;
-        struct rmi_function f11;
-        struct rmi_function f30;
-        unsigned int max_fingers;
-        unsigned int max_x;
-        unsigned int max_y;
-        unsigned int x_size_mm;
-        unsigned int y_size_mm;
-        bool read_f11_ctrl_regs;
-        u8 f11_ctrl_regs[RMI_F11_CTRL_REG_COUNT];
-        unsigned int gpio_led_count;
-        unsigned int button_count;
-        unsigned long button_mask;
-        unsigned long button_state_mask;
-        struct input_dev *input;
         struct work_struct reset_work;
         struct hid_device *hdev;
         unsigned long device_flags;
-        unsigned long firmware_id;
-        u8 f01_ctrl0;
-        u8 interrupt_enable_mask;
-        bool restore_interrupt_mask;
+        struct irq_domain *domain;
+        int rmi_irq;
     }
 
 .. _`rmi_data.members`:
@@ -60,6 +44,9 @@ page_mutex
 
 page
     Keeps track of the current virtual page
+
+xport
+    transport device to be registered with the RMI4 core.
 
 wait
     Used for waiting for read data
@@ -79,48 +66,6 @@ output_report_size
 flags
     flags for the current device (started, reading, etc...)
 
-f01
-    *undescribed*
-
-f11
-    placeholder of internal RMI function F11 description
-
-f30
-    placeholder of internal RMI function F30 description
-
-max_fingers
-    maximum finger count reported by the device
-
-max_x
-    maximum x value reported by the device
-
-max_y
-    maximum y value reported by the device
-
-x_size_mm
-    *undescribed*
-
-y_size_mm
-    *undescribed*
-
-read_f11_ctrl_regs
-    *undescribed*
-
-gpio_led_count
-    count of GPIOs + LEDs reported by F30
-
-button_count
-    actual physical buttons count
-
-button_mask
-    button mask used to decode GPIO ATTN reports
-
-button_state_mask
-    pull state of the buttons
-
-input
-    pointer to the kernel input device
-
 reset_work
     worker which will be called in case of a mouse report
 
@@ -128,19 +73,13 @@ hdev
     pointer to the struct hid_device
 
 device_flags
-    *undescribed*
+    flags which describe the device
 
-firmware_id
-    *undescribed*
+domain
+    the IRQ domain allocated for this RMI4 device
 
-f01_ctrl0
-    *undescribed*
-
-interrupt_enable_mask
-    *undescribed*
-
-restore_interrupt_mask
-    *undescribed*
+rmi_irq
+    the irq that will be used to generate events to rmi-core
 
 .. _`rmi_set_page`:
 

@@ -89,7 +89,7 @@ dma_pool_alloc
         dma pool that will produce the block
 
     :param gfp_t mem_flags:
-        GFP\_\* bitmask
+        GFP_* bitmask
 
     :param dma_addr_t \*handle:
         pointer to dma address of block

@@ -22,7 +22,6 @@ Definition
         struct device *dev;
         void __iomem *regs;
         struct clk *clk;
-        int irq;
         struct i2c_msg *msg;
         int state;
         bool last;
@@ -31,7 +30,6 @@ Definition
         int error;
         spinlock_t lock;
         struct completion done;
-        unsigned int frequency;
         u32 tokens[2];
         int num_tokens;
     }
@@ -52,9 +50,6 @@ regs
 
 clk
     Pointer to clock structure
-
-irq
-    IRQ number
 
 msg
     Pointer to the current I2C message
@@ -79,9 +74,6 @@ lock
 
 done
     Completion used to wait for transfer termination
-
-frequency
-    Operating frequency of I2C bus clock
 
 tokens
     Sequence of tokens to be written to the device

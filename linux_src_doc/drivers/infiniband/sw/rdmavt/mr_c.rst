@@ -105,8 +105,8 @@ Return
 ------
 
 the memory region on success, otherwise returns an errno.
-Note that all DMA addresses should be created via the
-struct ib_dma_mapping_ops functions (see dma.c).
+Note that all DMA addresses should be created via the functions in
+struct dma_virt_ops.
 
 .. _`rvt_reg_user_mr`:
 

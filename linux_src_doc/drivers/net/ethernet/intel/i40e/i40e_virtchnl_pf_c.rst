@@ -415,6 +415,47 @@ Description
 Wait for VF PCI transactions to be cleared after reset. Returns -EIO
 if the transactions never clear.
 
+.. _`i40e_trigger_vf_reset`:
+
+i40e_trigger_vf_reset
+=====================
+
+.. c:function:: void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF structure
+
+    :param bool flr:
+        VFLR was issued or not
+
+.. _`i40e_trigger_vf_reset.description`:
+
+Description
+-----------
+
+Trigger hardware to start a reset for a particular VF. Expects the caller
+to wait the proper amount of time to allow hardware to reset the VF before
+it cleans up and restores VF functionality.
+
+.. _`i40e_cleanup_reset_vf`:
+
+i40e_cleanup_reset_vf
+=====================
+
+.. c:function:: void i40e_cleanup_reset_vf(struct i40e_vf *vf)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF structure
+
+.. _`i40e_cleanup_reset_vf.description`:
+
+Description
+-----------
+
+Cleanup a VF after the hardware reset is finished. Expects the caller to
+have verified whether the reset is finished properly, and ensure the
+minimum amount of wait time has passed.
+
 .. _`i40e_reset_vf`:
 
 i40e_reset_vf
@@ -434,6 +475,29 @@ Description
 -----------
 
 reset the VF
+
+.. _`i40e_reset_all_vfs`:
+
+i40e_reset_all_vfs
+==================
+
+.. c:function:: void i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+
+    :param struct i40e_pf \*pf:
+        pointer to the PF structure
+
+    :param bool flr:
+        VFLR was issued or not
+
+.. _`i40e_reset_all_vfs.description`:
+
+Description
+-----------
+
+Reset all allocated VFs in one go. First, tell the hardware to reset each
+VF, then do all the waiting in one chunk, and finally finish restoring each
+VF after the wait. This is useful during PF routines which need to reset
+all VFs, as otherwise it must perform these resets in a serialized fashion.
 
 .. _`i40e_free_vfs`:
 

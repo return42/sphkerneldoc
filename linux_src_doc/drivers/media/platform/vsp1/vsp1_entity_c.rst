@@ -88,5 +88,35 @@ Return the selection rectangle stored in the given configuration for an
 entity's pad. The configuration can be an ACTIVE or TRY configuration. The
 selection target can be COMPOSE or CROP.
 
+.. _`vsp1_entity_remote_pad`:
+
+vsp1_entity_remote_pad
+======================
+
+.. c:function:: struct media_pad *vsp1_entity_remote_pad(struct media_pad *pad)
+
+    Find the pad at the remote end of a link
+
+    :param struct media_pad \*pad:
+        Pad at the local end of the link
+
+.. _`vsp1_entity_remote_pad.description`:
+
+Description
+-----------
+
+Search for a remote pad connected to the given pad by iterating over all
+links originating or terminating at that pad until an enabled link is found.
+
+Our link setup implementation guarantees that the output fan-out will not be
+higher than one for the data pipelines, except for the links to the HGO and
+HGT that can be enabled in addition to a regular data link. When traversing
+outgoing links this function ignores HGO and HGT entities and should thus be
+used in place of the generic \ :c:func:`media_entity_remote_pad`\  function to traverse
+data pipelines.
+
+Return a pointer to the pad at the remote end of the first found enabled
+link, or NULL if no enabled link has been found.
+
 .. This file was automatic generated / don't edit.
 

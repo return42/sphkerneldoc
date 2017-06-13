@@ -7,4 +7,5 @@ mvebu
 .. toctree::
     :maxdepth: 1
 
+    pinctrl-armada-37xx_c
     pinctrl-mvebu_h

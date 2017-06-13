@@ -28,9 +28,12 @@ Requires that the current pipe's DPLL is active.
 intel_tv_detect
 ===============
 
-.. c:function:: enum drm_connector_status intel_tv_detect(struct drm_connector *connector, bool force)
+.. c:function:: int intel_tv_detect(struct drm_connector *connector, struct drm_modeset_acquire_ctx *ctx, bool force)
 
     :param struct drm_connector \*connector:
+        *undescribed*
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
         *undescribed*
 
     :param bool force:

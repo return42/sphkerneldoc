@@ -24,6 +24,7 @@ i40e
     i40e_main_c
     i40e_nvm_c
     i40e_ptp_c
+    i40e_trace_h
     i40e_txrx_c
     i40e_txrx_h
     i40e_virtchnl_pf_c

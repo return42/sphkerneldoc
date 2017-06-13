@@ -93,8 +93,7 @@ Description
 -----------
 
 Internal function to update the constraints list using the PM QoS core
-code and if needed call the per-device and the global notification
-callbacks
+code and if needed call the per-device callbacks.
 
 .. _`dev_pm_qos_constraints_destroy`:
 
@@ -278,46 +277,6 @@ Description
 
 Will remove the notifier from the notification chain that gets called
 upon changes to the target value.
-
-.. _`dev_pm_qos_add_global_notifier`:
-
-dev_pm_qos_add_global_notifier
-==============================
-
-.. c:function:: int dev_pm_qos_add_global_notifier(struct notifier_block *notifier)
-
-    sets notification entry for changes to target value of the PM QoS constraints for any device
-
-    :param struct notifier_block \*notifier:
-        notifier block managed by caller.
-
-.. _`dev_pm_qos_add_global_notifier.description`:
-
-Description
------------
-
-Will register the notifier into a notification chain that gets called
-upon changes to the target value for any device.
-
-.. _`dev_pm_qos_remove_global_notifier`:
-
-dev_pm_qos_remove_global_notifier
-=================================
-
-.. c:function:: int dev_pm_qos_remove_global_notifier(struct notifier_block *notifier)
-
-    deletes notification for changes to target value of PM QoS constraints for any device
-
-    :param struct notifier_block \*notifier:
-        notifier block to be removed.
-
-.. _`dev_pm_qos_remove_global_notifier.description`:
-
-Description
------------
-
-Will remove the notifier from the notification chain that gets called
-upon changes to the target value for any device.
 
 .. _`dev_pm_qos_add_ancestor_request`:
 

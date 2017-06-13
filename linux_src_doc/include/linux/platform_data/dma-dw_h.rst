@@ -69,6 +69,7 @@ Definition
         unsigned int nr_channels;
         bool is_private;
         bool is_memcpy;
+        bool is_idma32;
     #define CHAN_ALLOCATION_ASCENDING 0
     #define CHAN_ALLOCATION_DESCENDING 1
         unsigned char chan_allocation_order;
@@ -95,6 +96,9 @@ is_private
 
 is_memcpy
     The device channels do support memory-to-memory transfers.
+
+is_idma32
+    The type of the DMA controller is iDMA32
 
 chan_allocation_order
     Allocate channels starting from 0 or 7

@@ -1773,6 +1773,39 @@ Description
 Calculates the checksum for some buffer on a specified length.  The
 checksum calculated is returned.
 
+.. _`ixgbe_hic_unlocked`:
+
+ixgbe_hic_unlocked
+==================
+
+.. c:function:: s32 ixgbe_hic_unlocked(struct ixgbe_hw *hw, u32 *buffer, u32 length, u32 timeout)
+
+    Issue command to manageability block unlocked
+
+    :param struct ixgbe_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 \*buffer:
+        command to write and where the return status will be placed
+
+    :param u32 length:
+        length of buffer, must be multiple of 4 bytes
+
+    :param u32 timeout:
+        time in ms to wait for command completion
+
+.. _`ixgbe_hic_unlocked.description`:
+
+Description
+-----------
+
+Communicates with the manageability block. On success return 0
+else returns semaphore error when encountering an error acquiring
+semaphore or IXGBE_ERR_HOST_INTERFACE_COMMAND when command fails.
+
+This function assumes that the IXGBE_GSSR_SW_MNG_SM semaphore is held
+by the caller.
+
 .. _`ixgbe_host_interface_command`:
 
 ixgbe_host_interface_command
@@ -1816,7 +1849,7 @@ else return IXGBE_ERR_HOST_INTERFACE_COMMAND.
 ixgbe_set_fw_drv_ver_generic
 ============================
 
-.. c:function:: s32 ixgbe_set_fw_drv_ver_generic(struct ixgbe_hw *hw, u8 maj, u8 min, u8 build, u8 sub)
+.. c:function:: s32 ixgbe_set_fw_drv_ver_generic(struct ixgbe_hw *hw, u8 maj, u8 min, u8 build, u8 sub, __always_unused u16 len, __always_unused const char *driver_ver)
 
     Sends driver version to firmware
 
@@ -1834,6 +1867,12 @@ ixgbe_set_fw_drv_ver_generic
 
     :param u8 sub:
         driver version sub build number
+
+    :param __always_unused u16 len:
+        length of driver_ver string
+
+    :param __always_unused const char \*driver_ver:
+        driver string
 
 .. _`ixgbe_set_fw_drv_ver_generic.description`:
 

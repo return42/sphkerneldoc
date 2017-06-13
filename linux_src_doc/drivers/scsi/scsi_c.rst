@@ -1,112 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/scsi.c
 
-.. _`scsi_host_free_command`:
-
-scsi_host_free_command
-======================
-
-.. c:function:: void scsi_host_free_command(struct Scsi_Host *shost, struct scsi_cmnd *cmd)
-
-    internal function to release a command
-
-    :param struct Scsi_Host \*shost:
-        host to free the command for
-
-    :param struct scsi_cmnd \*cmd:
-        command to release
-
-.. _`scsi_host_free_command.description`:
-
-Description
------------
-
-the command must previously have been allocated by
-scsi_host_alloc_command.
-
-.. _`scsi_host_alloc_command`:
-
-scsi_host_alloc_command
-=======================
-
-.. c:function:: struct scsi_cmnd *scsi_host_alloc_command(struct Scsi_Host *shost, gfp_t gfp_mask)
-
-    internal function to allocate command
-
-    :param struct Scsi_Host \*shost:
-        SCSI host whose pool to allocate from
-
-    :param gfp_t gfp_mask:
-        mask for the allocation
-
-.. _`scsi_host_alloc_command.description`:
-
-Description
------------
-
-Returns a fully allocated command with sense buffer and protection
-data buffer (where applicable) or NULL on failure
-
-.. _`__scsi_get_command`:
-
-__scsi_get_command
-==================
-
-.. c:function:: struct scsi_cmnd *__scsi_get_command(struct Scsi_Host *shost, gfp_t gfp_mask)
-
-    Allocate a struct scsi_cmnd
-
-    :param struct Scsi_Host \*shost:
-        host to transmit command
-
-    :param gfp_t gfp_mask:
-        allocation mask
-
-.. _`__scsi_get_command.description`:
-
-Description
------------
-
-allocate a struct scsi_cmd from host's slab, recycling from the
-host's free_list if necessary.
-
-.. _`scsi_get_command`:
-
-scsi_get_command
-================
-
-.. c:function:: struct scsi_cmnd *scsi_get_command(struct scsi_device *dev, gfp_t gfp_mask)
-
-    Allocate and setup a scsi command block
-
-    :param struct scsi_device \*dev:
-        parent scsi device
-
-    :param gfp_t gfp_mask:
-        allocator flags
-
-.. _`scsi_get_command.return`:
-
-Return
-------
-
-The allocated scsi command structure.
-
-.. _`__scsi_put_command`:
-
-__scsi_put_command
-==================
-
-.. c:function:: void __scsi_put_command(struct Scsi_Host *shost, struct scsi_cmnd *cmd)
-
-    Free a struct scsi_cmnd
-
-    :param struct Scsi_Host \*shost:
-        dev->host
-
-    :param struct scsi_cmnd \*cmd:
-        Command to free
-
 .. _`scsi_put_command`:
 
 scsi_put_command
@@ -132,46 +26,6 @@ Notes
 -----
 
 The command must not belong to any lists.
-
-.. _`scsi_setup_command_freelist`:
-
-scsi_setup_command_freelist
-===========================
-
-.. c:function:: int scsi_setup_command_freelist(struct Scsi_Host *shost)
-
-    Setup the command freelist for a scsi host.
-
-    :param struct Scsi_Host \*shost:
-        host to allocate the freelist for.
-
-.. _`scsi_setup_command_freelist.description`:
-
-Description
------------
-
-The command freelist protects against system-wide out of memory
-deadlock by preallocating one SCSI command structure for each host, so the
-system can always write to a swap file on a device associated with that host.
-
-.. _`scsi_setup_command_freelist.return`:
-
-Return
-------
-
-Nothing.
-
-.. _`scsi_destroy_command_freelist`:
-
-scsi_destroy_command_freelist
-=============================
-
-.. c:function:: void scsi_destroy_command_freelist(struct Scsi_Host *shost)
-
-    Release the command freelist for a scsi host.
-
-    :param struct Scsi_Host \*shost:
-        host whose freelist is going to be destroyed
 
 .. _`scsi_cmd_get_serial`:
 
@@ -214,8 +68,8 @@ Description
 -----------
 
 Pass command off to upper layer for finishing of I/O
-request, waking processes that are waiting on results,
-etc.
+             request, waking processes that are waiting on results,
+             etc.
 
 .. _`scsi_change_queue_depth`:
 
@@ -261,8 +115,8 @@ Description
 -----------
 
 This function will track successive QUEUE_FULL events on a
-specific SCSI device to determine if and when there is a
-need to adjust the queue depth on the device.
+             specific SCSI device to determine if and when there is a
+             need to adjust the queue depth on the device.
 
 .. _`scsi_track_queue_full.return`:
 
@@ -270,15 +124,10 @@ Return
 ------
 
 0 - No change needed, >0 - Adjust queue depth to this new depth,
--1 - Drop back to untagged operation using host->cmd_per_lun
-as the untagged command depth
+             -1 - Drop back to untagged operation using host->cmd_per_lun
+                     as the untagged command depth
 
-.. _`scsi_track_queue_full.lock-status`:
-
-Lock Status
------------
-
-None held on entry
+Lock Status: None held on entry
 
 .. _`scsi_track_queue_full.notes`:
 
@@ -286,7 +135,7 @@ Notes
 -----
 
 Low level drivers may call this at any time and we will do
-"The Right Thing."  We are interrupt context safe.
+             "The Right Thing."  We are interrupt context safe.
 
 .. _`scsi_vpd_inquiry`:
 
@@ -499,7 +348,7 @@ __starget_for_each_device
 Description
 -----------
 
-This traverses over each device of \ ``starget``\ .  It does \_not\_
+This traverses over each device of \ ``starget``\ .  It does _not_
 take a reference on the scsi_device, so the whole loop must be
 protected by shost->host_lock.
 

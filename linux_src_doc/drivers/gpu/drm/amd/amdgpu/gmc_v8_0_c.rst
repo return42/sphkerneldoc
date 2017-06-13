@@ -22,19 +22,19 @@ Use the firmware interface to load the ucode images into
 the driver (not loaded into hw).
 Returns 0 on success, error on failure.
 
-.. _`gmc_v8_0_mc_load_microcode`:
+.. _`gmc_v8_0_tonga_mc_load_microcode`:
 
-gmc_v8_0_mc_load_microcode
-==========================
+gmc_v8_0_tonga_mc_load_microcode
+================================
 
-.. c:function:: int gmc_v8_0_mc_load_microcode(struct amdgpu_device *adev)
+.. c:function:: int gmc_v8_0_tonga_mc_load_microcode(struct amdgpu_device *adev)
 
-    load MC ucode into the hw
+    load tonga MC ucode into the hw
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-.. _`gmc_v8_0_mc_load_microcode.description`:
+.. _`gmc_v8_0_tonga_mc_load_microcode.description`:
 
 Description
 -----------
@@ -110,7 +110,7 @@ Flush the TLB for the requested page table (CIK).
 gmc_v8_0_gart_set_pte_pde
 =========================
 
-.. c:function:: int gmc_v8_0_gart_set_pte_pde(struct amdgpu_device *adev, void *cpu_pt_addr, uint32_t gpu_page_idx, uint64_t addr, uint32_t flags)
+.. c:function:: int gmc_v8_0_gart_set_pte_pde(struct amdgpu_device *adev, void *cpu_pt_addr, uint32_t gpu_page_idx, uint64_t addr, uint64_t flags)
 
     update the page tables using MMIO
 
@@ -126,7 +126,7 @@ gmc_v8_0_gart_set_pte_pde
     :param uint64_t addr:
         dst addr to write into pte/pde
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         access flags
 
 .. _`gmc_v8_0_gart_set_pte_pde.description`:
@@ -150,6 +150,21 @@ gmc_v8_0_set_fault_enable_default
 
     :param bool value:
         true redirects VM faults to the default page
+
+.. _`gmc_v8_0_set_prt`:
+
+gmc_v8_0_set_prt
+================
+
+.. c:function:: void gmc_v8_0_set_prt(struct amdgpu_device *adev, bool enable)
+
+    set PRT VM fault
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param bool enable:
+        enable/disable VM fault handling for PRT
 
 .. _`gmc_v8_0_gart_enable`:
 

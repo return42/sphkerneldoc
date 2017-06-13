@@ -18,8 +18,7 @@ Definition
 .. code-block:: c
 
     struct drm_printer {
-        void (*printfn)(struct drm_printer *p, struct va_format *vaf);
-        void *arg;
+         void;
     }
 
 .. _`drm_printer.members`:
@@ -27,11 +26,8 @@ Definition
 Members
 -------
 
-printfn
-    actual output fxn
-
-arg
-    output fxn specific data
+void
+    no arguments
 
 .. _`drm_printer.description`:
 
@@ -51,7 +47,7 @@ drm_seq_file_printer
     construct a \ :c:type:`struct drm_printer <drm_printer>`\  that outputs to \ :c:type:`struct seq_file <seq_file>`\ 
 
     :param struct seq_file \*f:
-        the struct \ :c:type:`struct seq_file <seq_file>`\  to output to
+        the \ :c:type:`struct seq_file <seq_file>`\  to output to
 
 .. _`drm_seq_file_printer.return`:
 
@@ -70,9 +66,28 @@ drm_info_printer
     construct a \ :c:type:`struct drm_printer <drm_printer>`\  that outputs to \ :c:func:`dev_printk`\ 
 
     :param struct device \*dev:
-        the struct \ :c:type:`struct device <device>`\  pointer
+        the \ :c:type:`struct device <device>`\  pointer
 
 .. _`drm_info_printer.return`:
+
+Return
+------
+
+The \ :c:type:`struct drm_printer <drm_printer>`\  object
+
+.. _`drm_debug_printer`:
+
+drm_debug_printer
+=================
+
+.. c:function:: struct drm_printer drm_debug_printer(const char *prefix)
+
+    construct a \ :c:type:`struct drm_printer <drm_printer>`\  that outputs to \ :c:func:`pr_debug`\ 
+
+    :param const char \*prefix:
+        debug output prefix
+
+.. _`drm_debug_printer.return`:
 
 Return
 ------

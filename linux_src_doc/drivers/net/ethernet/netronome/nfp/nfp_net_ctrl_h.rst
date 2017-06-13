@@ -85,6 +85,13 @@ NFP_NET_CFG_RX_OFFSET
 
 .. c:function::  NFP_NET_CFG_RX_OFFSET()
 
+.. _`nfp_net_cfg_rss_cap`:
+
+NFP_NET_CFG_RSS_CAP
+===================
+
+.. c:function::  NFP_NET_CFG_RSS_CAP()
+
 .. _`nfp_net_cfg_vxlan_port`:
 
 NFP_NET_CFG_VXLAN_PORT

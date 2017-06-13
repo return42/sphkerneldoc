@@ -36,7 +36,7 @@ in flags for the GPIO.
 of_parse_own_gpio
 =================
 
-.. c:function:: struct gpio_desc *of_parse_own_gpio(struct device_node *np, struct gpio_chip *chip, const char **name, enum gpio_lookup_flags *lflags, enum gpiod_flags *dflags)
+.. c:function:: struct gpio_desc *of_parse_own_gpio(struct device_node *np, struct gpio_chip *chip, unsigned int idx, const char **name, enum gpio_lookup_flags *lflags, enum gpiod_flags *dflags)
 
     Get a GPIO hog descriptor, names and flags for GPIO API
 
@@ -45,6 +45,9 @@ of_parse_own_gpio
 
     :param struct gpio_chip \*chip:
         GPIO chip whose hog is parsed
+
+    :param unsigned int idx:
+        Index of the GPIO to parse
 
     :param const char \*\*name:
         GPIO line name

@@ -18,8 +18,8 @@ cgroup_threadgroup_change_begin
 Description
 -----------
 
-Called from \ :c:func:`threadgroup_change_begin`\  and allows cgroup operations to
-synchronize against threadgroup changes using a percpu_rw_semaphore.
+Allows cgroup operations to synchronize against threadgroup changes
+using a percpu_rw_semaphore.
 
 .. _`cgroup_threadgroup_change_end`:
 
@@ -38,8 +38,7 @@ cgroup_threadgroup_change_end
 Description
 -----------
 
-Called from \ :c:func:`threadgroup_change_end`\ .  Counterpart of
-\ :c:func:`cgroup_threadcgroup_change_begin`\ .
+Counterpart of \ :c:func:`cgroup_threadcgroup_change_begin`\ .
 
 .. This file was automatic generated / don't edit.
 

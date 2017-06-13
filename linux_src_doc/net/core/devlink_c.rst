@@ -162,5 +162,116 @@ devlink_port_split_set
     :param u32 split_group:
         split group - identifies group split port is part of
 
+.. _`devlink_dpipe_headers_register`:
+
+devlink_dpipe_headers_register
+==============================
+
+.. c:function:: int devlink_dpipe_headers_register(struct devlink *devlink, struct devlink_dpipe_headers *dpipe_headers)
+
+    register dpipe headers
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param struct devlink_dpipe_headers \*dpipe_headers:
+        dpipe header array
+
+.. _`devlink_dpipe_headers_register.description`:
+
+Description
+-----------
+
+Register the headers supported by hardware.
+
+.. _`devlink_dpipe_headers_unregister`:
+
+devlink_dpipe_headers_unregister
+================================
+
+.. c:function:: void devlink_dpipe_headers_unregister(struct devlink *devlink)
+
+    unregister dpipe headers
+
+    :param struct devlink \*devlink:
+        devlink
+
+.. _`devlink_dpipe_headers_unregister.description`:
+
+Description
+-----------
+
+Unregister the headers supported by hardware.
+
+.. _`devlink_dpipe_table_counter_enabled`:
+
+devlink_dpipe_table_counter_enabled
+===================================
+
+.. c:function:: bool devlink_dpipe_table_counter_enabled(struct devlink *devlink, const char *table_name)
+
+    check if counter allocation required
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param const char \*table_name:
+        tables name
+
+.. _`devlink_dpipe_table_counter_enabled.description`:
+
+Description
+-----------
+
+Used by driver to check if counter allocation is required.
+After counter allocation is turned on the table entries
+are updated to include counter statistics.
+
+After that point on the driver must respect the counter
+state so that each entry added to the table is added
+with a counter.
+
+.. _`devlink_dpipe_table_register`:
+
+devlink_dpipe_table_register
+============================
+
+.. c:function:: int devlink_dpipe_table_register(struct devlink *devlink, const char *table_name, struct devlink_dpipe_table_ops *table_ops, void *priv, u64 size, bool counter_control_extern)
+
+    register dpipe table
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param const char \*table_name:
+        table name
+
+    :param struct devlink_dpipe_table_ops \*table_ops:
+        table ops
+
+    :param void \*priv:
+        priv
+
+    :param u64 size:
+        size
+
+    :param bool counter_control_extern:
+        external control for counters
+
+.. _`devlink_dpipe_table_unregister`:
+
+devlink_dpipe_table_unregister
+==============================
+
+.. c:function:: void devlink_dpipe_table_unregister(struct devlink *devlink, const char *table_name)
+
+    unregister dpipe table
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param const char \*table_name:
+        table name
+
 .. This file was automatic generated / don't edit.
 

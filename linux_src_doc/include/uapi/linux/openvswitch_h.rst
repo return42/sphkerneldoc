@@ -487,7 +487,8 @@ Definition
         OVS_SAMPLE_ATTR_UNSPEC,
         OVS_SAMPLE_ATTR_PROBABILITY,
         OVS_SAMPLE_ATTR_ACTIONS,
-        __OVS_SAMPLE_ATTR_MAX
+        __OVS_SAMPLE_ATTR_MAX,
+        OVS_SAMPLE_ATTR_ARG
     };
 
 .. _`ovs_sample_attr.constants`:
@@ -509,6 +510,9 @@ OVS_SAMPLE_ATTR_ACTIONS
     Actions are passed as nested attributes.
 
 __OVS_SAMPLE_ATTR_MAX
+    *undescribed*
+
+OVS_SAMPLE_ATTR_ARG
     *undescribed*
 
 .. _`ovs_sample_attr.description`:
@@ -677,6 +681,8 @@ Definition
         OVS_CT_ATTR_LABELS,
         OVS_CT_ATTR_HELPER,
         OVS_CT_ATTR_NAT,
+        OVS_CT_ATTR_FORCE_COMMIT,
+        OVS_CT_ATTR_EVENTMASK,
         __OVS_CT_ATTR_MAX
     };
 
@@ -713,6 +719,25 @@ OVS_CT_ATTR_HELPER
 OVS_CT_ATTR_NAT
     Nested OVS_NAT_ATTR\_\* for performing L3 network address
     translation (NAT) on the packet.
+
+OVS_CT_ATTR_FORCE_COMMIT
+    Like \ ``OVS_CT_ATTR_COMMIT``\ , but instead of doing
+    nothing if the connection is already committed will check that the current
+    packet is in conntrack entry's original direction.  If directionality does
+    not match, will delete the existing conntrack entry and commit a new one.
+
+OVS_CT_ATTR_EVENTMASK
+    Mask of bits indicating which conntrack event types
+    (enum ip_conntrack_events IPCT\_\*) should be reported.  For any bit set to
+    zero, the corresponding event type is not generated.  Default behavior
+    depends on system configuration, but typically all event types are
+    generated, hence listening on NFNLGRP_CONNTRACK_UPDATE events may get a lot
+    of events.  Explicitly passing this attribute allows limiting the updates
+    received to the events of interest.  The bit 1 << IPCT_NEW, 1 <<
+    IPCT_RELATED, and 1 << IPCT_DESTROY must be set to ones for those events to
+    be received on NFNLGRP_CONNTRACK_NEW and NFNLGRP_CONNTRACK_DESTROY groups,
+    respectively.  Remaining bits control the changes for which an event is
+    delivered on the NFNLGRP_CONNTRACK_UPDATE group.
 
 __OVS_CT_ATTR_MAX
     *undescribed*

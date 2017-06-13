@@ -17,3 +17,4 @@ obdclass
     lprocfs_status_c
     lu_object_c
     obd_config_c
+    obdo_c

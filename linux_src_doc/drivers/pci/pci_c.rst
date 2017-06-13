@@ -46,14 +46,14 @@ Returns the address of the requested capability structure within the
 device's PCI configuration space or 0 in case the device does not
 support it.  Possible values for \ ``cap``\ :
 
-\ ``PCI_CAP_ID_PM``\            Power Management
-\ ``PCI_CAP_ID_AGP``\           Accelerated Graphics Port
-\ ``PCI_CAP_ID_VPD``\           Vital Product Data
-\ ``PCI_CAP_ID_SLOTID``\        Slot Identification
-\ ``PCI_CAP_ID_MSI``\           Message Signalled Interrupts
-\ ``PCI_CAP_ID_CHSWP``\         CompactPCI HotSwap
-\ ``PCI_CAP_ID_PCIX``\          PCI-X
-\ ``PCI_CAP_ID_EXP``\           PCI Express
+ \ ``PCI_CAP_ID_PM``\            Power Management
+ \ ``PCI_CAP_ID_AGP``\           Accelerated Graphics Port
+ \ ``PCI_CAP_ID_VPD``\           Vital Product Data
+ \ ``PCI_CAP_ID_SLOTID``\        Slot Identification
+ \ ``PCI_CAP_ID_MSI``\           Message Signalled Interrupts
+ \ ``PCI_CAP_ID_CHSWP``\         CompactPCI HotSwap
+ \ ``PCI_CAP_ID_PCIX``\          PCI-X
+ \ ``PCI_CAP_ID_EXP``\           PCI Express
 
 .. _`pci_bus_find_capability`:
 
@@ -137,10 +137,10 @@ Returns the address of the requested extended capability structure
 within the device's PCI configuration space or 0 if the device does
 not support it.  Possible values for \ ``cap``\ :
 
-\ ``PCI_EXT_CAP_ID_ERR``\          Advanced Error Reporting
-\ ``PCI_EXT_CAP_ID_VC``\           Virtual Channel
-\ ``PCI_EXT_CAP_ID_DSN``\          Device Serial Number
-\ ``PCI_EXT_CAP_ID_PWR``\          Power Budgeting
+ \ ``PCI_EXT_CAP_ID_ERR``\          Advanced Error Reporting
+ \ ``PCI_EXT_CAP_ID_VC``\           Virtual Channel
+ \ ``PCI_EXT_CAP_ID_DSN``\          Device Serial Number
+ \ ``PCI_EXT_CAP_ID_PWR``\          Power Budgeting
 
 .. _`pci_find_next_ht_capability`:
 
@@ -218,8 +218,8 @@ pci_find_parent_resource
 Description
 -----------
 
-For given resource region of given device, return the resource
-region of parent bus the given region is contained in.
+ For given resource region of given device, return the resource
+ region of parent bus the given region is contained in.
 
 .. _`pci_find_resource`:
 
@@ -632,8 +632,8 @@ pci_reenable_device
 Description
 -----------
 
-Note this function is a backend of pci_default_resume and is not supposed
-to be called by normal code, write proper resume handler and use it instead.
+ Note this function is a backend of pci_default_resume and is not supposed
+ to be called by normal code, write proper resume handler and use it instead.
 
 .. _`pci_enable_device_io`:
 
@@ -652,9 +652,9 @@ pci_enable_device_io
 Description
 -----------
 
-Initialize device before it's used by a driver. Ask low-level code
-to enable I/O resources. Wake up the device if it was suspended.
-Beware, this function can fail.
+ Initialize device before it's used by a driver. Ask low-level code
+ to enable I/O resources. Wake up the device if it was suspended.
+ Beware, this function can fail.
 
 .. _`pci_enable_device_mem`:
 
@@ -673,9 +673,9 @@ pci_enable_device_mem
 Description
 -----------
 
-Initialize device before it's used by a driver. Ask low-level code
-to enable Memory resources. Wake up the device if it was suspended.
-Beware, this function can fail.
+ Initialize device before it's used by a driver. Ask low-level code
+ to enable Memory resources. Wake up the device if it was suspended.
+ Beware, this function can fail.
 
 .. _`pci_enable_device`:
 
@@ -694,12 +694,12 @@ pci_enable_device
 Description
 -----------
 
-Initialize device before it's used by a driver. Ask low-level code
-to enable I/O and memory. Wake up the device if it was suspended.
-Beware, this function can fail.
+ Initialize device before it's used by a driver. Ask low-level code
+ to enable I/O and memory. Wake up the device if it was suspended.
+ Beware, this function can fail.
 
-Note we don't actually enable the device many times if we call
-this function repeatedly (we just increment the count).
+ Note we don't actually enable the device many times if we call
+ this function repeatedly (we just increment the count).
 
 .. _`pcim_enable_device`:
 
@@ -1500,9 +1500,9 @@ pci_release_region
 Description
 -----------
 
-Releases the PCI I/O and memory resources previously reserved by a
-successful call to pci_request_region.  Call this function only
-after all use of the PCI regions has ceased.
+     Releases the PCI I/O and memory resources previously reserved by a
+     successful call to pci_request_region.  Call this function only
+     after all use of the PCI regions has ceased.
 
 .. _`__pci_request_region`:
 
@@ -1530,17 +1530,17 @@ __pci_request_region
 Description
 -----------
 
-Mark the PCI region associated with PCI device \ ``pdev``\  BR \ ``bar``\  as
-being reserved by owner \ ``res_name``\ .  Do not access any
-address inside the PCI regions unless this call returns
-successfully.
+     Mark the PCI region associated with PCI device \ ``pdev``\  BR \ ``bar``\  as
+     being reserved by owner \ ``res_name``\ .  Do not access any
+     address inside the PCI regions unless this call returns
+     successfully.
 
-If \ ``exclusive``\  is set, then the region is marked so that userspace
-is explicitly not allowed to map the resource via /dev/mem or
-sysfs MMIO access.
+     If \ ``exclusive``\  is set, then the region is marked so that userspace
+     is explicitly not allowed to map the resource via /dev/mem or
+     sysfs MMIO access.
 
-Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
-message is also printed on failure.
+     Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
+     message is also printed on failure.
 
 .. _`pci_request_region`:
 
@@ -1565,13 +1565,13 @@ pci_request_region
 Description
 -----------
 
-Mark the PCI region associated with PCI device \ ``pdev``\  BAR \ ``bar``\  as
-being reserved by owner \ ``res_name``\ .  Do not access any
-address inside the PCI regions unless this call returns
-successfully.
+     Mark the PCI region associated with PCI device \ ``pdev``\  BAR \ ``bar``\  as
+     being reserved by owner \ ``res_name``\ .  Do not access any
+     address inside the PCI regions unless this call returns
+     successfully.
 
-Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
-message is also printed on failure.
+     Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
+     message is also printed on failure.
 
 .. _`pci_request_region_exclusive`:
 
@@ -1596,17 +1596,17 @@ pci_request_region_exclusive
 Description
 -----------
 
-Mark the PCI region associated with PCI device \ ``pdev``\  BR \ ``bar``\  as
-being reserved by owner \ ``res_name``\ .  Do not access any
-address inside the PCI regions unless this call returns
-successfully.
+     Mark the PCI region associated with PCI device \ ``pdev``\  BR \ ``bar``\  as
+     being reserved by owner \ ``res_name``\ .  Do not access any
+     address inside the PCI regions unless this call returns
+     successfully.
 
-Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
-message is also printed on failure.
+     Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
+     message is also printed on failure.
 
-The key difference that \_exclusive makes it that userspace is
-explicitly not allowed to map the resource via /dev/mem or
-sysfs.
+     The key difference that _exclusive makes it that userspace is
+     explicitly not allowed to map the resource via /dev/mem or
+     sysfs.
 
 .. _`pci_release_selected_regions`:
 
@@ -1666,9 +1666,9 @@ pci_release_regions
 Description
 -----------
 
-Releases all PCI I/O and memory resources previously reserved by a
-successful call to pci_request_regions.  Call this function only
-after all use of the PCI regions has ceased.
+     Releases all PCI I/O and memory resources previously reserved by a
+     successful call to pci_request_regions.  Call this function only
+     after all use of the PCI regions has ceased.
 
 .. _`pci_request_regions`:
 
@@ -1690,13 +1690,13 @@ pci_request_regions
 Description
 -----------
 
-Mark all PCI regions associated with PCI device \ ``pdev``\  as
-being reserved by owner \ ``res_name``\ .  Do not access any
-address inside the PCI regions unless this call returns
-successfully.
+     Mark all PCI regions associated with PCI device \ ``pdev``\  as
+     being reserved by owner \ ``res_name``\ .  Do not access any
+     address inside the PCI regions unless this call returns
+     successfully.
 
-Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
-message is also printed on failure.
+     Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
+     message is also printed on failure.
 
 .. _`pci_request_regions_exclusive`:
 
@@ -1718,16 +1718,16 @@ pci_request_regions_exclusive
 Description
 -----------
 
-Mark all PCI regions associated with PCI device \ ``pdev``\  as
-being reserved by owner \ ``res_name``\ .  Do not access any
-address inside the PCI regions unless this call returns
-successfully.
+     Mark all PCI regions associated with PCI device \ ``pdev``\  as
+     being reserved by owner \ ``res_name``\ .  Do not access any
+     address inside the PCI regions unless this call returns
+     successfully.
 
-\ :c:func:`pci_request_regions_exclusive`\  will mark the region so that
-/dev/mem and the sysfs MMIO access will not be allowed.
+     \ :c:func:`pci_request_regions_exclusive`\  will mark the region so that
+     /dev/mem and the sysfs MMIO access will not be allowed.
 
-Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
-message is also printed on failure.
+     Returns 0 on success, or \ ``EBUSY``\  on error.  A warning
+     message is also printed on failure.
 
 .. _`pci_remap_iospace`:
 
@@ -1749,10 +1749,10 @@ pci_remap_iospace
 Description
 -----------
 
-Remap the memory mapped I/O space described by the \ ``res``\ 
-and the CPU physical address \ ``phys_addr``\  into virtual address space.
-Only architectures that have memory mapped IO functions defined
-(and the PCI_IOBASE value defined) should call this function.
+     Remap the memory mapped I/O space described by the \ ``res``\ 
+     and the CPU physical address \ ``phys_addr``\  into virtual address space.
+     Only architectures that have memory mapped IO functions defined
+     (and the PCI_IOBASE value defined) should call this function.
 
 .. _`pci_unmap_iospace`:
 
@@ -1771,9 +1771,69 @@ pci_unmap_iospace
 Description
 -----------
 
-Unmap the CPU virtual address \ ``res``\  from virtual address space.
-Only architectures that have memory mapped IO functions defined
-(and the PCI_IOBASE value defined) should call this function.
+     Unmap the CPU virtual address \ ``res``\  from virtual address space.
+     Only architectures that have memory mapped IO functions defined
+     (and the PCI_IOBASE value defined) should call this function.
+
+.. _`devm_pci_remap_cfgspace`:
+
+devm_pci_remap_cfgspace
+=======================
+
+.. c:function:: void __iomem *devm_pci_remap_cfgspace(struct device *dev, resource_size_t offset, resource_size_t size)
+
+    Managed \ :c:func:`pci_remap_cfgspace`\ 
+
+    :param struct device \*dev:
+        Generic device to remap IO address for
+
+    :param resource_size_t offset:
+        Resource address to map
+
+    :param resource_size_t size:
+        Size of map
+
+.. _`devm_pci_remap_cfgspace.description`:
+
+Description
+-----------
+
+Managed \ :c:func:`pci_remap_cfgspace`\ .  Map is automatically unmapped on driver
+detach.
+
+.. _`devm_pci_remap_cfg_resource`:
+
+devm_pci_remap_cfg_resource
+===========================
+
+.. c:function:: void __iomem *devm_pci_remap_cfg_resource(struct device *dev, struct resource *res)
+
+    check, request region and ioremap cfg resource
+
+    :param struct device \*dev:
+        generic device to handle the resource for
+
+    :param struct resource \*res:
+        configuration space resource to be handled
+
+.. _`devm_pci_remap_cfg_resource.description`:
+
+Description
+-----------
+
+Checks that a resource is a valid memory region, requests the memory
+region and ioremaps with \ :c:func:`pci_remap_cfgspace`\  API that ensures the
+proper PCI configuration space memory attributes are guaranteed.
+
+All operations are managed and will be undone on driver detach.
+
+Returns a pointer to the remapped memory or an \ :c:func:`ERR_PTR`\  encoded error code
+on failure. Usage example:
+
+     res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+     base = devm_pci_remap_cfg_resource(&pdev->dev, res);
+     if (IS_ERR(base))
+             return PTR_ERR(base);
 
 .. _`pcibios_setup`:
 
@@ -2051,6 +2111,47 @@ Description
 
 Return 0 if transaction is pending 1 otherwise.
 
+.. _`pcie_has_flr`:
+
+pcie_has_flr
+============
+
+.. c:function:: bool pcie_has_flr(struct pci_dev *dev)
+
+    check if a device supports function level resets
+
+    :param struct pci_dev \*dev:
+        device to check
+
+.. _`pcie_has_flr.description`:
+
+Description
+-----------
+
+Returns true if the device advertises support for PCIe function level
+resets.
+
+.. _`pcie_flr`:
+
+pcie_flr
+========
+
+.. c:function:: void pcie_flr(struct pci_dev *dev)
+
+    initiate a PCIe function level reset
+
+    :param struct pci_dev \*dev:
+        device to reset
+
+.. _`pcie_flr.description`:
+
+Description
+-----------
+
+Initiate a function level reset on \ ``dev``\ .  The caller should ensure the
+device supports FLR before calling this function, e.g. by using the
+\ :c:func:`pcie_has_flr`\  helper.
+
 .. _`pci_pm_reset`:
 
 pci_pm_reset
@@ -2238,7 +2339,7 @@ to PCI config space in order to use this function.
 
 This function does not just reset the PCI portion of a device, but
 clears all the state associated with the device.  This function differs
-from \__pci_reset_function in that it saves and restores device state
+from __pci_reset_function in that it saves and restores device state
 over the reset.
 
 Returns 0 if the device function was successfully reset or negative if the
@@ -2401,13 +2502,13 @@ pcix_get_max_mmrbc
     :param struct pci_dev \*dev:
         PCI device to query
 
-.. _`pcix_get_max_mmrbc.returns-mmrbc`:
+.. _`pcix_get_max_mmrbc.description`:
 
-Returns mmrbc
--------------
+Description
+-----------
 
-maximum designed memory read count in bytes
-or appropriate error value.
+Returns mmrbc: maximum designed memory read count in bytes
+   or appropriate error value.
 
 .. _`pcix_get_mmrbc`:
 
@@ -2421,13 +2522,13 @@ pcix_get_mmrbc
     :param struct pci_dev \*dev:
         PCI device to query
 
-.. _`pcix_get_mmrbc.returns-mmrbc`:
+.. _`pcix_get_mmrbc.description`:
 
-Returns mmrbc
--------------
+Description
+-----------
 
-maximum memory read count in bytes
-or appropriate error value.
+Returns mmrbc: maximum memory read count in bytes
+   or appropriate error value.
 
 .. _`pcix_set_mmrbc`:
 
@@ -2471,7 +2572,7 @@ Description
 -----------
 
 Returns maximum memory read request in bytes
-or appropriate error value.
+   or appropriate error value.
 
 .. _`pcie_set_readrq`:
 
@@ -2636,12 +2737,15 @@ It should be called early, preferably as PCI fixup header quirk.
 pci_specified_resource_alignment
 ================================
 
-.. c:function:: resource_size_t pci_specified_resource_alignment(struct pci_dev *dev)
+.. c:function:: resource_size_t pci_specified_resource_alignment(struct pci_dev *dev, bool *resize)
 
     get resource alignment specified by user.
 
     :param struct pci_dev \*dev:
         the PCI device to get
+
+    :param bool \*resize:
+        whether or not to change resources' size when reassigning alignment
 
 .. _`pci_specified_resource_alignment.return`:
 
@@ -2649,7 +2753,7 @@ Return
 ------
 
 Resource alignment if it is specified.
-Zero if it is not specified.
+         Zero if it is not specified.
 
 .. _`pci_ext_cfg_avail`:
 

@@ -55,7 +55,7 @@ will pass through here.
 hfi1_make_grh
 =============
 
-.. c:function:: u32 hfi1_make_grh(struct hfi1_ibport *ibp, struct ib_grh *hdr, struct ib_global_route *grh, u32 hwords, u32 nwords)
+.. c:function:: u32 hfi1_make_grh(struct hfi1_ibport *ibp, struct ib_grh *hdr, const struct ib_global_route *grh, u32 hwords, u32 nwords)
 
     construct a GRH header
 
@@ -65,7 +65,7 @@ hfi1_make_grh
     :param struct ib_grh \*hdr:
         a pointer to the GRH header being constructed
 
-    :param struct ib_global_route \*grh:
+    :param const struct ib_global_route \*grh:
         the global route address to send to
 
     :param u32 hwords:
@@ -107,17 +107,47 @@ copy of the first middle.
 Subsequent middles use the copied entry, editing the
 PSN with 1 or 2 edits.
 
+.. _`schedule_send_yield`:
+
+schedule_send_yield
+===================
+
+.. c:function:: bool schedule_send_yield(struct rvt_qp *qp, struct hfi1_pkt_state *ps)
+
+    test for a yield required for QP send engine
+
+    :param struct rvt_qp \*qp:
+        a pointer to QP
+
+    :param struct hfi1_pkt_state \*ps:
+        a pointer to a structure with commonly lookup values for
+        the the send engine progress
+
+.. _`schedule_send_yield.description`:
+
+Description
+-----------
+
+This routine checks if the time slice for the QP has expired
+for RC QPs, if so an additional work entry is queued. At this
+point, other QPs have an opportunity to be scheduled. It
+returns true if a yield is required, otherwise, false
+is returned.
+
 .. _`hfi1_do_send`:
 
 hfi1_do_send
 ============
 
-.. c:function:: void hfi1_do_send(struct rvt_qp *qp)
+.. c:function:: void hfi1_do_send(struct rvt_qp *qp, bool in_thread)
 
     perform a send on a QP
 
     :param struct rvt_qp \*qp:
         *undescribed*
+
+    :param bool in_thread:
+        true if in a workqueue thread
 
 .. _`hfi1_do_send.description`:
 

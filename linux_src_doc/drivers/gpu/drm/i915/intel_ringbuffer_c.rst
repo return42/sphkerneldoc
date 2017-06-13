@@ -64,14 +64,14 @@ really our business.  That leaves only stall at scoreboard.
 gen6_sema_emit_breadcrumb
 =========================
 
-.. c:function:: void gen6_sema_emit_breadcrumb(struct drm_i915_gem_request *req, u32 *out)
+.. c:function:: void gen6_sema_emit_breadcrumb(struct drm_i915_gem_request *req, u32 *cs)
 
     Update the semaphore mailbox registers
 
     :param struct drm_i915_gem_request \*req:
         *undescribed*
 
-    :param u32 \*out:
+    :param u32 \*cs:
         *undescribed*
 
 .. _`gen6_sema_emit_breadcrumb.description`:

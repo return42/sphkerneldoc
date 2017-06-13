@@ -23,6 +23,27 @@ Return
 
 0 on success, <0 on failure.
 
+.. _`mei_txe_shutdown`:
+
+mei_txe_shutdown
+================
+
+.. c:function:: void mei_txe_shutdown(struct pci_dev *pdev)
+
+    Device Shutdown Routine
+
+    :param struct pci_dev \*pdev:
+        PCI device structure
+
+.. _`mei_txe_shutdown.description`:
+
+Description
+-----------
+
+mei_txe_shutdown is called from the reboot notifier
+it's a simplified version of remove so we go down
+faster.
+
 .. _`mei_txe_remove`:
 
 mei_txe_remove

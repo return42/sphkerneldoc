@@ -92,34 +92,123 @@ vmw_sou_fifo_destroy
     :param struct vmw_screen_object_unit \*sou:
         *undescribed*
 
-.. _`vmw_sou_backing_free`:
+.. _`vmw_sou_crtc_mode_set_nofb`:
 
-vmw_sou_backing_free
-====================
+vmw_sou_crtc_mode_set_nofb
+==========================
 
-.. c:function:: void vmw_sou_backing_free(struct vmw_private *dev_priv, struct vmw_screen_object_unit *sou)
+.. c:function:: void vmw_sou_crtc_mode_set_nofb(struct drm_crtc *crtc)
 
-    :param struct vmw_private \*dev_priv:
-        *undescribed*
+    Create new screen
 
-    :param struct vmw_screen_object_unit \*sou:
-        *undescribed*
+    :param struct drm_crtc \*crtc:
+        CRTC associated with the new screen
 
-.. _`vmw_sou_backing_alloc`:
+.. _`vmw_sou_crtc_mode_set_nofb.description`:
 
-vmw_sou_backing_alloc
-=====================
+Description
+-----------
 
-.. c:function:: int vmw_sou_backing_alloc(struct vmw_private *dev_priv, struct vmw_screen_object_unit *sou, unsigned long size)
+This function creates/destroys a screen.  This function cannot fail, so if
+somehow we run into a failure, just do the best we can to get out.
 
-    :param struct vmw_private \*dev_priv:
-        *undescribed*
+.. _`vmw_sou_crtc_helper_prepare`:
 
-    :param struct vmw_screen_object_unit \*sou:
-        *undescribed*
+vmw_sou_crtc_helper_prepare
+===========================
 
-    :param unsigned long size:
-        *undescribed*
+.. c:function:: void vmw_sou_crtc_helper_prepare(struct drm_crtc *crtc)
+
+    Noop
+
+    :param struct drm_crtc \*crtc:
+        CRTC associated with the new screen
+
+.. _`vmw_sou_crtc_helper_prepare.description`:
+
+Description
+-----------
+
+Prepares the CRTC for a mode set, but we don't need to do anything here.
+
+.. _`vmw_sou_crtc_helper_commit`:
+
+vmw_sou_crtc_helper_commit
+==========================
+
+.. c:function:: void vmw_sou_crtc_helper_commit(struct drm_crtc *crtc)
+
+    Noop
+
+    :param struct drm_crtc \*crtc:
+        CRTC associated with the new screen
+
+.. _`vmw_sou_crtc_helper_commit.description`:
+
+Description
+-----------
+
+This is called after a mode set has been completed.
+
+.. _`vmw_sou_crtc_helper_disable`:
+
+vmw_sou_crtc_helper_disable
+===========================
+
+.. c:function:: void vmw_sou_crtc_helper_disable(struct drm_crtc *crtc)
+
+    Turns off CRTC
+
+    :param struct drm_crtc \*crtc:
+        CRTC to be turned off
+
+.. _`vmw_sou_primary_plane_cleanup_fb`:
+
+vmw_sou_primary_plane_cleanup_fb
+================================
+
+.. c:function:: void vmw_sou_primary_plane_cleanup_fb(struct drm_plane *plane, struct drm_plane_state *old_state)
+
+    Frees sou backing buffer
+
+    :param struct drm_plane \*plane:
+        display plane
+
+    :param struct drm_plane_state \*old_state:
+        Contains the FB to clean up
+
+.. _`vmw_sou_primary_plane_cleanup_fb.description`:
+
+Description
+-----------
+
+Unpins the display surface
+
+Returns 0 on success
+
+.. _`vmw_sou_primary_plane_prepare_fb`:
+
+vmw_sou_primary_plane_prepare_fb
+================================
+
+.. c:function:: int vmw_sou_primary_plane_prepare_fb(struct drm_plane *plane, struct drm_plane_state *new_state)
+
+    allocate backing buffer
+
+    :param struct drm_plane \*plane:
+        display plane
+
+    :param struct drm_plane_state \*new_state:
+        info on the new plane state, including the FB
+
+.. _`vmw_sou_primary_plane_prepare_fb.description`:
+
+Description
+-----------
+
+The SOU backing buffer is our equivalent of the display plane.
+
+Returns 0 on success
 
 .. _`vmw_sou_surface_fifo_commit`:
 

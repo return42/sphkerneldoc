@@ -7,5 +7,4 @@ soc
 .. toctree::
     :maxdepth: 1
 
-    qcom/index
     ti/index

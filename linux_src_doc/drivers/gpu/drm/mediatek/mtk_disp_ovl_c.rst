@@ -20,6 +20,7 @@ Definition
     struct mtk_disp_ovl {
         struct mtk_ddp_comp ddp_comp;
         struct drm_crtc *crtc;
+        const struct mtk_disp_ovl_data *data;
     }
 
 .. _`mtk_disp_ovl.members`:
@@ -31,6 +32,9 @@ ddp_comp
     *undescribed*
 
 crtc
+    *undescribed*
+
+data
     *undescribed*
 
 .. This file was automatic generated / don't edit.

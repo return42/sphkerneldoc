@@ -9,6 +9,7 @@ drivers
 
     acpi/index
     amba/index
+    android/index
     ata/index
     auxdisplay/index
     base/index
@@ -78,6 +79,7 @@ drivers
     parport/index
     pci/index
     pcmcia/index
+    perf/index
     phy/index
     pinctrl/index
     platform/index
@@ -102,6 +104,7 @@ drivers
     staging/index
     target/index
     tc/index
+    tee/index
     thermal/index
     thunderbolt/index
     tty/index
@@ -112,6 +115,7 @@ drivers
     vhost/index
     video/index
     virtio/index
+    vme/index
     w1/index
     watchdog/index
     xen/index

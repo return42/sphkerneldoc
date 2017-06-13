@@ -30,10 +30,10 @@ scsi_dev_info_list_add
 Description
 -----------
 
-Create and add one dev_info entry for \ ``vendor``\ , \ ``model``\ , \ ``strflags``\  or
-\ ``flag``\ . If \ ``compatible``\ , add to the tail of the list, do not space
-pad, and set devinfo->compatible. The scsi_static_device_list entries
-are added with \ ``compatible``\  1 and \ ``clfags``\  NULL.
+     Create and add one dev_info entry for \ ``vendor``\ , \ ``model``\ , \ ``strflags``\  or
+     \ ``flag``\ . If \ ``compatible``\ , add to the tail of the list, do not space
+     pad, and set devinfo->compatible. The scsi_static_device_list entries
+     are added with \ ``compatible``\  1 and \ ``clfags``\  NULL.
 
 .. _`scsi_dev_info_list_add.return`:
 
@@ -74,11 +74,11 @@ scsi_dev_info_list_add_keyed
 Description
 -----------
 
-Create and add one dev_info entry for \ ``vendor``\ , \ ``model``\ ,
-\ ``strflags``\  or \ ``flag``\  in list specified by \ ``key``\ . If \ ``compatible``\ ,
-add to the tail of the list, do not space pad, and set
-devinfo->compatible. The scsi_static_device_list entries are
-added with \ ``compatible``\  1 and \ ``clfags``\  NULL.
+     Create and add one dev_info entry for \ ``vendor``\ , \ ``model``\ ,
+     \ ``strflags``\  or \ ``flag``\  in list specified by \ ``key``\ . If \ ``compatible``\ ,
+     add to the tail of the list, do not space pad, and set
+     devinfo->compatible. The scsi_static_device_list entries are
+     added with \ ``compatible``\  1 and \ ``clfags``\  NULL.
 
 .. _`scsi_dev_info_list_add_keyed.return`:
 
@@ -110,8 +110,8 @@ scsi_dev_info_list_find
 Description
 -----------
 
-Finds the first dev_info entry matching \ ``vendor``\ , \ ``model``\ 
-in list specified by \ ``key``\ .
+     Finds the first dev_info entry matching \ ``vendor``\ , \ ``model``\ 
+     in list specified by \ ``key``\ .
 
 .. _`scsi_dev_info_list_find.return`:
 
@@ -143,8 +143,8 @@ scsi_dev_info_list_del_keyed
 Description
 -----------
 
-Remove and destroy one dev_info entry for \ ``vendor``\ , \ ``model``\ 
-in list specified by \ ``key``\ .
+     Remove and destroy one dev_info entry for \ ``vendor``\ , \ ``model``\ 
+     in list specified by \ ``key``\ .
 
 .. _`scsi_dev_info_list_del_keyed.return`:
 
@@ -170,10 +170,10 @@ scsi_dev_info_list_add_str
 Description
 -----------
 
-Parse dev_list, and add entries to the scsi_dev_info_list.
-dev_list is of the form "vendor:product:flag,vendor:product:flag".
-dev_list is modified via strsep. Can be called for command line
-addition, for proc or mabye a sysfs interface.
+     Parse dev_list, and add entries to the scsi_dev_info_list.
+     dev_list is of the form "vendor:product:flag,vendor:product:flag".
+     dev_list is modified via strsep. Can be called for command line
+     addition, for proc or mabye a sysfs interface.
 
 .. _`scsi_dev_info_list_add_str.return`:
 
@@ -205,10 +205,10 @@ scsi_get_device_flags
 Description
 -----------
 
-Search the global scsi_dev_info_list (specified by list zero)
-for an entry matching \ ``vendor``\  and \ ``model``\ , if found, return the
-matching flags value, else return the host or global default
-settings.  Called during scan time.
+    Search the global scsi_dev_info_list (specified by list zero)
+    for an entry matching \ ``vendor``\  and \ ``model``\ , if found, return the
+    matching flags value, else return the host or global default
+    settings.  Called during scan time.
 
 .. _`scsi_get_device_flags_keyed`:
 
@@ -236,10 +236,10 @@ scsi_get_device_flags_keyed
 Description
 -----------
 
-Search the scsi_dev_info_list specified by \ ``key``\  for an entry
-matching \ ``vendor``\  and \ ``model``\ , if found, return the matching
-flags value, else return the host or global default settings.
-Called during scan time.
+    Search the scsi_dev_info_list specified by \ ``key``\  for an entry
+    matching \ ``vendor``\  and \ ``model``\ , if found, return the matching
+    flags value, else return the host or global default settings.
+    Called during scan time.
 
 .. _`scsi_exit_devinfo`:
 
@@ -314,8 +314,8 @@ scsi_init_devinfo
 Description
 -----------
 
-Add command line entries from scsi_dev_flags, then add
-scsi_static_device_list entries to the scsi device info list.
+     Add command line entries from scsi_dev_flags, then add
+     scsi_static_device_list entries to the scsi device info list.
 
 .. This file was automatic generated / don't edit.
 

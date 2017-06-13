@@ -21,18 +21,18 @@ get_option
 Description
 -----------
 
-Read an int from an option string; if available accept a subsequent
-comma as well.
+     Read an int from an option string; if available accept a subsequent
+     comma as well.
 
 .. _`get_option.return-values`:
 
 Return values
 -------------
 
-0 - no int in string
-1 - int found, no subsequent comma
-2 - int found including a subsequent comma
-3 - hyphen found to denote a range
+     0 - no int in string
+     1 - int found, no subsequent comma
+     2 - int found including a subsequent comma
+     3 - hyphen found to denote a range
 
 .. _`get_options`:
 
@@ -57,15 +57,15 @@ get_options
 Description
 -----------
 
-This function parses a string containing a comma-separated
-list of integers, a hyphen-separated range of \_positive\_ integers,
-or a combination of both.  The parse halts when the array is
-full, or when no more numbers can be retrieved from the
-string.
+     This function parses a string containing a comma-separated
+     list of integers, a hyphen-separated range of _positive_ integers,
+     or a combination of both.  The parse halts when the array is
+     full, or when no more numbers can be retrieved from the
+     string.
 
-Return value is the character in the string which caused
-the parse to end (typically a null terminator, if \ ``str``\  is
-completely parseable).
+     Return value is the character in the string which caused
+     the parse to end (typically a null terminator, if \ ``str``\  is
+     completely parseable).
 
 .. _`memparse`:
 
@@ -87,8 +87,8 @@ memparse
 Description
 -----------
 
-Parses a string into a number.  The number stored at \ ``ptr``\  is
-potentially suffixed with K, M, G, T, P, E.
+     Parses a string into a number.  The number stored at \ ``ptr``\  is
+     potentially suffixed with K, M, G, T, P, E.
 
 .. _`parse_option_str`:
 
@@ -110,10 +110,10 @@ parse_option_str
 Description
 -----------
 
-This function parses a string containing a comma-separated list of
-strings like a=b,c.
+     This function parses a string containing a comma-separated list of
+     strings like a=b,c.
 
-Return true if there's such option in the string, or return false.
+     Return true if there's such option in the string, or return false.
 
 .. This file was automatic generated / don't edit.
 

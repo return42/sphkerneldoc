@@ -53,12 +53,12 @@ For the simple emulated 8bit stuff the less we do the better.
 ata_data_xfer_8bit
 ==================
 
-.. c:function:: unsigned int ata_data_xfer_8bit(struct ata_device *dev, unsigned char *buf, unsigned int buflen, int rw)
+.. c:function:: unsigned int ata_data_xfer_8bit(struct ata_queued_cmd *qc, unsigned char *buf, unsigned int buflen, int rw)
 
     Transfer data by 8bit PIO
 
-    :param struct ata_device \*dev:
-        device to target
+    :param struct ata_queued_cmd \*qc:
+        queued command
 
     :param unsigned char \*buf:
         data buffer

@@ -1,29 +1,61 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_probe_helper.c
 
-.. _`drm_kms_helper_poll_enable_locked`:
+.. _`drm_kms_helper_poll_enable`:
 
-drm_kms_helper_poll_enable_locked
-=================================
+drm_kms_helper_poll_enable
+==========================
 
-.. c:function:: void drm_kms_helper_poll_enable_locked(struct drm_device *dev)
+.. c:function:: void drm_kms_helper_poll_enable(struct drm_device *dev)
 
     re-enable output polling.
 
     :param struct drm_device \*dev:
         drm_device
 
-.. _`drm_kms_helper_poll_enable_locked.description`:
+.. _`drm_kms_helper_poll_enable.description`:
 
 Description
 -----------
 
-This function re-enables the output polling work without
-locking the mode_config mutex.
+This function re-enables the output polling work, after it has been
+temporarily disabled using \ :c:func:`drm_kms_helper_poll_disable`\ , for example over
+suspend/resume.
 
-This is like \ :c:func:`drm_kms_helper_poll_enable`\  however it is to be
-called from a context where the mode_config mutex is locked
-already.
+Drivers can call this helper from their device resume implementation. It is
+an error to call this when the output polling support has not yet been set
+up.
+
+Note that calls to enable and disable polling must be strictly ordered, which
+is automatically the case when they're only call from suspend/resume
+callbacks.
+
+.. _`drm_helper_probe_detect`:
+
+drm_helper_probe_detect
+=======================
+
+.. c:function:: int drm_helper_probe_detect(struct drm_connector *connector, struct drm_modeset_acquire_ctx *ctx, bool force)
+
+    probe connector status
+
+    :param struct drm_connector \*connector:
+        connector to probe
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        acquire_ctx, or NULL to let this function handle locking.
+
+    :param bool force:
+        Whether destructive probe operations should be performed.
+
+.. _`drm_helper_probe_detect.description`:
+
+Description
+-----------
+
+This function calls the detect callbacks of the connector.
+This function returns \ :c:type:`struct drm_connector_status <drm_connector_status>`\ , or
+if \ ``ctx``\  is set, it might also return -EDEADLK.
 
 .. _`drm_helper_probe_single_connector_modes`:
 
@@ -53,9 +85,9 @@ Based on the helper callbacks implemented by \ ``connector``\  in struct
 be added to the connector's probed_modes list, then culled (based on validity
 and the \ ``maxX``\ , \ ``maxY``\  parameters) and put into the normal modes list.
 
-Intended to be used as a generic implementation of the ->fill_modes()
-\ ``connector``\  vfunc for drivers that use the CRTC helpers for output mode
-filtering and detection.
+Intended to be used as a generic implementation of the
+\ :c:type:`drm_connector_funcs.fill_modes() <drm_connector_funcs>`\  vfunc for drivers that use the CRTC helpers
+for output mode filtering and detection.
 
 The basic procedure is as follows
 
@@ -67,7 +99,7 @@ The basic procedure is as follows
 
    - debugfs 'override_edid' (used for testing only)
    - firmware EDID (drm_load_edid_firmware())
-   - connector helper ->get_modes() vfunc
+   - \ :c:type:`drm_connector_helper_funcs.get_modes <drm_connector_helper_funcs>`\  vfunc
    - if the connector status is connector_status_connected, standard
      VESA DMT modes up to 1024x768 are automatically added
      (drm_add_modes_noedid())
@@ -86,10 +118,10 @@ The basic procedure is as follows
    - \ :c:func:`drm_mode_validate_basic`\  performs basic sanity checks
    - \ :c:func:`drm_mode_validate_size`\  filters out modes larger than \ ``maxX``\  and \ ``maxY``\ 
      (if specified)
-   - \ :c:func:`drm_mode_validate_flag`\  checks the modes againt basic connector
-     capabilites (interlace_allowed,doublescan_allowed,stereo_allowed)
-   - the optional connector ->mode_valid() helper can perform driver and/or
-     hardware specific checks
+   - \ :c:func:`drm_mode_validate_flag`\  checks the modes against basic connector
+     capabilities (interlace_allowed,doublescan_allowed,stereo_allowed)
+   - the optional \ :c:type:`drm_connector_helper_funcs.mode_valid <drm_connector_helper_funcs>`\  helper can perform
+     driver and/or hardware specific checks
 
 5. Any mode whose status is not OK is pruned from the connector's modes list,
    accompanied by a debug message indicating the reason for the mode's
@@ -151,31 +183,12 @@ Description
 This function disables the output polling work.
 
 Drivers can call this helper from their device suspend implementation. It is
-not an error to call this even when output polling isn't enabled or arlready
-disabled.
+not an error to call this even when output polling isn't enabled or already
+disabled. Polling is re-enabled by calling \ :c:func:`drm_kms_helper_poll_enable`\ .
 
-.. _`drm_kms_helper_poll_enable`:
-
-drm_kms_helper_poll_enable
-==========================
-
-.. c:function:: void drm_kms_helper_poll_enable(struct drm_device *dev)
-
-    re-enable output polling.
-
-    :param struct drm_device \*dev:
-        drm_device
-
-.. _`drm_kms_helper_poll_enable.description`:
-
-Description
------------
-
-This function re-enables the output polling work.
-
-Drivers can call this helper from their device resume implementation. It is
-an error to call this when the output polling support has not yet been set
-up.
+Note that calls to enable and disable polling must be strictly ordered, which
+is automatically the case when they're only call from suspend/resume
+callbacks.
 
 .. _`drm_kms_helper_poll_init`:
 

@@ -28,7 +28,6 @@ Definition
         u8 default_temp_offset;
         enum soc_type type;
         u32 cal_type;
-        u32 cal_mode;
     }
 
 .. _`exynos_tmu_platform_data.members`:
@@ -72,9 +71,6 @@ type
 
 cal_type
     calibration type for temperature
-
-cal_mode
-    *undescribed*
 
 .. _`exynos_tmu_platform_data.description`:
 

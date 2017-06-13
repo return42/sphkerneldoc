@@ -221,6 +221,7 @@ Definition
         u8 bssid[ETH_ALEN];
         bool associated;
         u8 ap_assoc_sta_count;
+        u16 cab_queue;
         bool uploaded;
         bool ap_ibss_active;
         bool pm_enabled;
@@ -284,6 +285,9 @@ associated
 ap_assoc_sta_count
     count of stations associated to us - valid only
     if VIF type is AP
+
+cab_queue
+    *undescribed*
 
 uploaded
     indicates the MAC context has been added to the device
@@ -527,6 +531,7 @@ Definition
         unsigned long reorder_time[IEEE80211_MAX_AMPDU_BUF];
         struct timer_list reorder_timer;
         bool removed;
+        bool valid;
         spinlock_t lock;
         struct iwl_mvm *mvm;
     }
@@ -569,6 +574,9 @@ reorder_timer
 
 removed
     prevent timer re-arming
+
+valid
+    reordering is valid for this queue
 
 lock
     protect reorder buffer internal state

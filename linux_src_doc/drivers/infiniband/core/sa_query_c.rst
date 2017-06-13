@@ -25,12 +25,33 @@ Try to cancel an SA query.  If the id and query don't match up or
 the query has already completed, nothing is done.  Otherwise the
 query is canceled and will complete with a status of -EINTR.
 
+.. _`opa_pr_query_possible`:
+
+opa_pr_query_possible
+=====================
+
+.. c:function:: int opa_pr_query_possible(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct sa_path_rec *rec)
+
+    Retuns PR_NOT_SUPPORTED if a path record query is not possible, PR_OPA_SUPPORTED if an OPA path record query is possible and PR_IB_SUPPORTED if an IB path record query is possible.
+
+    :param struct ib_sa_client \*client:
+        *undescribed*
+
+    :param struct ib_device \*device:
+        *undescribed*
+
+    :param u8 port_num:
+        *undescribed*
+
+    :param struct sa_path_rec \*rec:
+        *undescribed*
+
 .. _`ib_sa_path_rec_get`:
 
 ib_sa_path_rec_get
 ==================
 
-.. c:function:: int ib_sa_path_rec_get(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_path_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*callback)(int status, struct ib_sa_path_rec *resp, void *context), void *context, struct ib_sa_query **sa_query)
+.. c:function:: int ib_sa_path_rec_get(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct sa_path_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*callback)(int status, struct sa_path_rec *resp, void *context), void *context, struct ib_sa_query **sa_query)
 
     Start a Path get query
 
@@ -43,7 +64,7 @@ ib_sa_path_rec_get
     :param u8 port_num:
         port number to send query on
 
-    :param struct ib_sa_path_rec \*rec:
+    :param struct sa_path_rec \*rec:
         Path Record to send in query
 
     :param ib_sa_comp_mask comp_mask:
@@ -55,7 +76,7 @@ ib_sa_path_rec_get
     :param gfp_t gfp_mask:
         GFP mask to use for internal allocations
 
-    :param void (\*callback)(int status, struct ib_sa_path_rec \*resp, void \*context):
+    :param void (\*callback)(int status, struct sa_path_rec \*resp, void \*context):
         function called when query completes, times out or is
         canceled
 

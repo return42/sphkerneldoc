@@ -288,7 +288,8 @@ Definition
 
     struct nft_set_estimate {
         unsigned int size;
-        enum nft_set_class class;
+        enum nft_set_class lookup;
+        enum nft_set_class space;
     }
 
 .. _`nft_set_estimate.members`:
@@ -299,8 +300,11 @@ Members
 size
     required memory
 
-class
+lookup
     lookup performance class
+
+space
+    memory class
 
 .. _`nft_set_ops`:
 
@@ -324,9 +328,9 @@ Definition
         int (*insert)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem,struct nft_set_ext **ext);
         void (*activate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
         void * (*deactivate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
-        bool (*deactivate_one)(const struct net *net,const struct nft_set *set,void *priv);
-        void (*remove)(const struct nft_set *set,const struct nft_set_elem *elem);
-        void (*walk)(const struct nft_ctx *ctx,const struct nft_set *set,struct nft_set_iter *iter);
+        bool (*flush)(const struct net *net,const struct nft_set *set,void *priv);
+        void (*remove)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
+        void (*walk)(const struct nft_ctx *ctx,struct nft_set *set,struct nft_set_iter *iter);
         unsigned int (*privsize)(const struct nlattr * const nla[]);
         bool (*estimate)(const struct nft_set_desc *desc,u32 features,struct nft_set_estimate *est);
         int (*init)(const struct nft_set *set,const struct nft_set_desc *desc,const struct nlattr * const nla[]);
@@ -357,7 +361,7 @@ activate
 deactivate
     lookup for element and deactivate it in the next generation
 
-deactivate_one
+flush
     deactivate element in the next generation
 
 remove
@@ -1262,7 +1266,7 @@ Definition
         unsigned int maxattr;
         struct module *owner;
         const struct nla_policy *policy;
-        int (*init)(const struct nlattr * const tb[],struct nft_object *obj);
+        int (*init)(const struct nft_ctx *ctx,const struct nlattr *const tb[],struct nft_object *obj);
         void (*destroy)(struct nft_object *obj);
         int (*dump)(struct sk_buff *skb,struct nft_object *obj,bool reset);
     }

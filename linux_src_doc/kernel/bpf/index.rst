@@ -9,3 +9,4 @@ bpf
 
     cgroup_c
     core_c
+    lpm_trie_c

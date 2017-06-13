@@ -445,6 +445,38 @@ pixelformat
 buffersize
     maximum size in bytes required for data
 
+.. _`v4l2_meta_format`:
+
+struct v4l2_meta_format
+=======================
+
+.. c:type:: struct v4l2_meta_format
+
+    metadata format definition
+
+.. _`v4l2_meta_format.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct v4l2_meta_format {
+        __u32 dataformat;
+        __u32 buffersize;
+    }
+
+.. _`v4l2_meta_format.members`:
+
+Members
+-------
+
+dataformat
+    little endian four character code (fourcc)
+
+buffersize
+    maximum size in bytes required for data
+
 .. _`v4l2_format`:
 
 struct v4l2_format

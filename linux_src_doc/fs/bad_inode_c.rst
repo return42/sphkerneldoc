@@ -18,9 +18,9 @@ make_bad_inode
 Description
 -----------
 
-When an inode cannot be read due to a media or remote network
-failure this function makes the inode "bad" and causes I/O operations
-on it to fail from this point on.
+     When an inode cannot be read due to a media or remote network
+     failure this function makes the inode "bad" and causes I/O operations
+     on it to fail from this point on.
 
 .. _`is_bad_inode`:
 
@@ -39,7 +39,7 @@ is_bad_inode
 Description
 -----------
 
-Returns true if the inode in question has been marked as bad.
+     Returns true if the inode in question has been marked as bad.
 
 .. _`iget_failed`:
 

@@ -42,6 +42,25 @@ ci_otg_role
     :param struct ci_hdrc \*ci:
         the controller
 
+.. _`hw_wait_vbus_lower_bsv`:
+
+hw_wait_vbus_lower_bsv
+======================
+
+.. c:function:: int hw_wait_vbus_lower_bsv(struct ci_hdrc *ci)
+
+    than OTGSC_BSV before connecting to host.
+
+    :param struct ci_hdrc \*ci:
+        the controller
+
+.. _`hw_wait_vbus_lower_bsv.description`:
+
+Description
+-----------
+
+This function returns an error code if timeout
+
 .. _`ci_otg_work`:
 
 ci_otg_work

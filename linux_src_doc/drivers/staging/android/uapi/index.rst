@@ -8,4 +8,3 @@ uapi
     :maxdepth: 1
 
     ion_h
-    ion_test_h

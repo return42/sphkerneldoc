@@ -363,6 +363,7 @@ Definition
         struct xilinx_axidma_tx_segment *seg_v;
         struct xilinx_axidma_tx_segment *cyclic_seg_v;
         void (*start_transfer)(struct xilinx_dma_chan *chan);
+        int (*stop_transfer)(struct xilinx_dma_chan *chan);
         u16 tdest;
     }
 
@@ -454,6 +455,9 @@ cyclic_seg_v
 
 start_transfer
     Differentiate b/w DMA IP's transfer
+
+stop_transfer
+    Differentiate b/w DMA IP's quiesce
 
 tdest
     *undescribed*
@@ -879,14 +883,26 @@ Return
 
 '1' if idle, '0' if not.
 
-.. _`xilinx_dma_halt`:
+.. _`xilinx_dma_stop_transfer`:
 
-xilinx_dma_halt
-===============
+xilinx_dma_stop_transfer
+========================
 
-.. c:function:: void xilinx_dma_halt(struct xilinx_dma_chan *chan)
+.. c:function:: int xilinx_dma_stop_transfer(struct xilinx_dma_chan *chan)
 
     Halt DMA channel
+
+    :param struct xilinx_dma_chan \*chan:
+        Driver specific DMA channel
+
+.. _`xilinx_cdma_stop_transfer`:
+
+xilinx_cdma_stop_transfer
+=========================
+
+.. c:function:: int xilinx_cdma_stop_transfer(struct xilinx_dma_chan *chan)
+
+    Wait for the current transfer to complete
 
     :param struct xilinx_dma_chan \*chan:
         Driver specific DMA channel

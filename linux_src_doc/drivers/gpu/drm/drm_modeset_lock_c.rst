@@ -23,7 +23,7 @@ scheme isn't (yet) implemented. Locks must be dropped by calling the
 \ :c:func:`drm_modeset_unlock_all`\  function.
 
 This function is deprecated. It allocates a lock acquisition context and
-stores it in the DRM device's ->mode_config. This facilitate conversion of
+stores it in \ :c:type:`drm_device.mode_config <drm_device>`\ . This facilitate conversion of
 existing code because it removes the need to manually deal with the
 acquisition context, but it is also brittle because the context is global
 and care must be taken not to nest calls. New code should use the
@@ -50,81 +50,11 @@ This function drops all modeset locks taken by a previous call to the
 \ :c:func:`drm_modeset_lock_all`\  function.
 
 This function is deprecated. It uses the lock acquisition context stored
-in the DRM device's ->mode_config. This facilitates conversion of existing
+in \ :c:type:`drm_device.mode_config <drm_device>`\ . This facilitates conversion of existing
 code because it removes the need to manually deal with the acquisition
 context, but it is also brittle because the context is global and care must
 be taken not to nest calls. New code should pass the acquisition context
 directly to the \ :c:func:`drm_modeset_drop_locks`\  function.
-
-.. _`drm_modeset_lock_crtc`:
-
-drm_modeset_lock_crtc
-=====================
-
-.. c:function:: void drm_modeset_lock_crtc(struct drm_crtc *crtc, struct drm_plane *plane)
-
-    lock crtc with hidden acquire ctx for a plane update
-
-    :param struct drm_crtc \*crtc:
-        DRM CRTC
-
-    :param struct drm_plane \*plane:
-        DRM plane to be updated on \ ``crtc``\ 
-
-.. _`drm_modeset_lock_crtc.description`:
-
-Description
------------
-
-This function locks the given crtc and plane (which should be either the
-primary or cursor plane) using a hidden acquire context. This is necessary so
-that drivers internally using the atomic interfaces can grab further locks
-with the lock acquire context.
-
-Note that \ ``plane``\  can be NULL, e.g. when the cursor support hasn't yet been
-converted to universal planes yet.
-
-.. _`drm_modeset_legacy_acquire_ctx`:
-
-drm_modeset_legacy_acquire_ctx
-==============================
-
-.. c:function:: struct drm_modeset_acquire_ctx *drm_modeset_legacy_acquire_ctx(struct drm_crtc *crtc)
-
-    find acquire ctx for legacy ioctls
-
-    :param struct drm_crtc \*crtc:
-        drm crtc
-
-.. _`drm_modeset_legacy_acquire_ctx.description`:
-
-Description
------------
-
-Legacy ioctl operations like cursor updates or page flips only have per-crtc
-locking, and store the acquire ctx in the corresponding crtc. All other
-legacy operations take all locks and use a global acquire context. This
-function grabs the right one.
-
-.. _`drm_modeset_unlock_crtc`:
-
-drm_modeset_unlock_crtc
-=======================
-
-.. c:function:: void drm_modeset_unlock_crtc(struct drm_crtc *crtc)
-
-    drop crtc lock
-
-    :param struct drm_crtc \*crtc:
-        drm crtc
-
-.. _`drm_modeset_unlock_crtc.description`:
-
-Description
------------
-
-This drops the crtc lock acquire with \ :c:func:`drm_modeset_lock_crtc`\  and all other
-locks acquired through the hidden context.
 
 .. _`drm_warn_on_modeset_not_all_locked`:
 
@@ -326,7 +256,7 @@ Description
 This function takes all modeset locks, suitable where a more fine-grained
 scheme isn't (yet) implemented.
 
-Unlike \ :c:func:`drm_modeset_lock_all`\ , it doesn't take the dev->mode_config.mutex
+Unlike \ :c:func:`drm_modeset_lock_all`\ , it doesn't take the \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ 
 since that lock isn't required for modeset state changes. Callers which
 need to grab that lock too need to do so outside of the acquire context
 \ ``ctx``\ .

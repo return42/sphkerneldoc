@@ -66,12 +66,15 @@ Return
 cgs_add_irq_source_t
 ====================
 
-.. c:function:: int cgs_add_irq_source_t(struct cgs_device *cgs_device, unsigned src_id, unsigned num_types, cgs_irq_source_set_func_t set, cgs_irq_handler_func_t handler, void *private_data)
+.. c:function:: int cgs_add_irq_source_t(void *cgs_device, unsigned client_id, unsigned src_id, unsigned num_types, cgs_irq_source_set_func_t set, cgs_irq_handler_func_t handler, void *private_data)
 
     Add an IRQ source
 
-    :param struct cgs_device \*cgs_device:
+    :param void \*cgs_device:
         opaque device handle
+
+    :param unsigned client_id:
+        *undescribed*
 
     :param unsigned src_id:
         interrupt source ID
@@ -108,12 +111,15 @@ Return
 cgs_irq_get_t
 =============
 
-.. c:function:: int cgs_irq_get_t(struct cgs_device *cgs_device, unsigned src_id, unsigned type)
+.. c:function:: int cgs_irq_get_t(void *cgs_device, unsigned client_id, unsigned src_id, unsigned type)
 
     Request enabling an IRQ source and type
 
-    :param struct cgs_device \*cgs_device:
+    :param void \*cgs_device:
         opaque device handle
+
+    :param unsigned client_id:
+        *undescribed*
 
     :param unsigned src_id:
         interrupt source ID
@@ -141,12 +147,15 @@ Return
 cgs_irq_put_t
 =============
 
-.. c:function:: int cgs_irq_put_t(struct cgs_device *cgs_device, unsigned src_id, unsigned type)
+.. c:function:: int cgs_irq_put_t(void *cgs_device, unsigned client_id, unsigned src_id, unsigned type)
 
     Indicate IRQ source is no longer needed
 
-    :param struct cgs_device \*cgs_device:
+    :param void \*cgs_device:
         opaque device handle
+
+    :param unsigned client_id:
+        *undescribed*
 
     :param unsigned src_id:
         interrupt source ID

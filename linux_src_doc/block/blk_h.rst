@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: block/blk.h
 
+.. _`rq_ioc`:
+
+rq_ioc
+======
+
+.. c:function:: struct io_context *rq_ioc(struct bio *bio)
+
+    determine io_context for request allocation
+
+    :param struct bio \*bio:
+        request being allocated is for this bio (can be \ ``NULL``\ )
+
+.. _`rq_ioc.description`:
+
+Description
+-----------
+
+Determine io_context to use for request allocation for \ ``bio``\ .  May return
+\ ``NULL``\  if \ ``current-``\ >io_context doesn't exist.
+
 .. _`create_io_context`:
 
 create_io_context

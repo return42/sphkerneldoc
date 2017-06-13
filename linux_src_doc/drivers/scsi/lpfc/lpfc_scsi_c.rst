@@ -1790,7 +1790,7 @@ This routine sets \ ``sdev``\  hostatdata filed to null.
 lpfc_create_device_data
 =======================
 
-.. c:function:: struct lpfc_device_data*lpfc_create_device_data(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun, bool atomic_create)
+.. c:function:: struct lpfc_device_data*lpfc_create_device_data(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun, uint32_t pri, bool atomic_create)
 
     creates and initializes device data structure for OAS
 
@@ -1805,6 +1805,9 @@ lpfc_create_device_data
 
     :param uint64_t lun:
         Lun on target
+
+    :param uint32_t pri:
+        *undescribed*
 
     :param bool atomic_create:
         Flag to indicate if memory should be allocated using the
@@ -1896,7 +1899,7 @@ Pointer to lpfc_device_data - Success
 lpfc_find_next_oas_lun
 ======================
 
-.. c:function:: bool lpfc_find_next_oas_lun(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t *starting_lun, struct lpfc_name *found_vport_wwpn, struct lpfc_name *found_target_wwpn, uint64_t *found_lun, uint32_t *found_lun_status)
+.. c:function:: bool lpfc_find_next_oas_lun(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t *starting_lun, struct lpfc_name *found_vport_wwpn, struct lpfc_name *found_target_wwpn, uint64_t *found_lun, uint32_t *found_lun_status, uint32_t *found_lun_pri)
 
     searches for the next oas lun
 
@@ -1923,6 +1926,9 @@ lpfc_find_next_oas_lun
 
     :param uint32_t \*found_lun_status:
         Pointer to status of the found lun.
+
+    :param uint32_t \*found_lun_pri:
+        *undescribed*
 
 .. _`lpfc_find_next_oas_lun.description`:
 
@@ -1999,7 +2005,7 @@ true - Success
 lpfc_disable_oas_lun
 ====================
 
-.. c:function:: bool lpfc_disable_oas_lun(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun)
+.. c:function:: bool lpfc_disable_oas_lun(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun, uint8_t pri)
 
     disables a lun for OAS operations
 
@@ -2014,6 +2020,9 @@ lpfc_disable_oas_lun
 
     :param uint64_t lun:
         Lun
+
+    :param uint8_t pri:
+        *undescribed*
 
 .. _`lpfc_disable_oas_lun.description`:
 

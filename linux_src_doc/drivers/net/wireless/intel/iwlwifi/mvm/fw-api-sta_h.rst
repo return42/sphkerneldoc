@@ -298,7 +298,7 @@ STA_MODIFY_TID_DISABLE_TX
     this command modifies \ ``tid_disable_tx``\ 
 
 STA_MODIFY_UAPSD_ACS
-    this command modifies \ ``uapsd_trigger_acs``\ 
+    this command modifies \ ``uapsd_acs``\ 
 
 STA_MODIFY_ADD_BA_TID
     this command modifies \ ``add_immediate_ba_tid``\ 
@@ -541,6 +541,51 @@ attempt and any retries (set by REPLY_TX_LINK_QUALITY_CMD).
 ADD_STA sets up the table entry for one station, either creating a new
 entry, or modifying a pre-existing one.
 
+.. _`iwl_sta_type`:
+
+enum iwl_sta_type
+=================
+
+.. c:type:: enum iwl_sta_type
+
+    FW station types ( REPLY_ADD_STA = 0x18 )
+
+.. _`iwl_sta_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_sta_type {
+        IWL_STA_LINK,
+        IWL_STA_GENERAL_PURPOSE,
+        IWL_STA_MULTICAST,
+        IWL_STA_TDLS_LINK,
+        IWL_STA_AUX_ACTIVITY
+    };
+
+.. _`iwl_sta_type.constants`:
+
+Constants
+---------
+
+IWL_STA_LINK
+    Link station - normal RX and TX traffic.
+
+IWL_STA_GENERAL_PURPOSE
+    General purpose. In AP mode used for beacons
+    and probe responses.
+
+IWL_STA_MULTICAST
+    multicast traffic,
+
+IWL_STA_TDLS_LINK
+    TDLS link station
+
+IWL_STA_AUX_ACTIVITY
+    auxilary station (scan, ROC and so on).
+
 .. _`iwl_mvm_add_sta_cmd`:
 
 struct iwl_mvm_add_sta_cmd
@@ -573,13 +618,14 @@ Definition
         u8 remove_immediate_ba_tid;
         __le16 add_immediate_ba_ssn;
         __le16 sleep_tx_count;
-        __le16 sleep_state_flags;
+        u8 sleep_state_flags;
+        u8 station_type;
         __le16 assoc_id;
         __le16 beamform_flags;
         __le32 tfd_queue_msk;
         __le16 rx_ba_window;
-        u8 scd_queue_bank;
-        u8 uapsd_trigger_acs;
+        u8 sp_length;
+        u8 uapsd_acs;
     }
 
 .. _`iwl_mvm_add_sta_cmd.members`:
@@ -643,6 +689,9 @@ sleep_tx_count
 sleep_state_flags
     Look at \ ``iwl_sta_sleep_flag``\ .
 
+station_type
+    type of this station. See \ :c:type:`enum iwl_sta_type <iwl_sta_type>`\ .
+
 assoc_id
     assoc_id to be sent in VHT PLCP (9-bit), for grp use 0, for AP
     mac-addr.
@@ -651,17 +700,18 @@ beamform_flags
     beam forming controls
 
 tfd_queue_msk
-    tfd queues used by this station
+    tfd queues used by this station.
+    Obselete for new TX API (9 and above).
 
 rx_ba_window
     aggregation window size
 
-scd_queue_bank
-    queue bank in used. Each bank contains 32 queues. 0 means
-    that the queues used by this station are in the first 32.
+sp_length
+    the size of the SP as it appears in the WME IE
 
-uapsd_trigger_acs
-    *undescribed*
+uapsd_acs
+    4 LS bits are trigger enabled ACs, 4 MS bits are the deliver
+    enabled ACs.
 
 .. _`iwl_mvm_add_sta_cmd.description`:
 
@@ -675,34 +725,31 @@ attempt and any retries (set by REPLY_TX_LINK_QUALITY_CMD).
 ADD_STA sets up the table entry for one station, either creating a new
 entry, or modifying a pre-existing one.
 
-.. _`iwl_mvm_add_sta_key_cmd`:
+.. _`iwl_mvm_add_sta_key_common`:
 
-struct iwl_mvm_add_sta_key_cmd
-==============================
+struct iwl_mvm_add_sta_key_common
+=================================
 
-.. c:type:: struct iwl_mvm_add_sta_key_cmd
+.. c:type:: struct iwl_mvm_add_sta_key_common
 
-    add/modify sta key ( REPLY_ADD_STA_KEY = 0x17 )
+    add/modify sta key common part ( REPLY_ADD_STA_KEY = 0x17 )
 
-.. _`iwl_mvm_add_sta_key_cmd.definition`:
+.. _`iwl_mvm_add_sta_key_common.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_mvm_add_sta_key_cmd {
+    struct iwl_mvm_add_sta_key_common {
         u8 sta_id;
         u8 key_offset;
         __le16 key_flags;
         u8 key[32];
         u8 rx_secur_seq_cnt[16];
-        u8 tkip_rx_tsc_byte2;
-        u8 reserved;
-        __le16 tkip_rx_ttak[5];
     }
 
-.. _`iwl_mvm_add_sta_key_cmd.members`:
+.. _`iwl_mvm_add_sta_key_common.members`:
 
 Members
 -------
@@ -722,6 +769,37 @@ key
 rx_secur_seq_cnt
     RX security sequence counter for the key
 
+.. _`iwl_mvm_add_sta_key_cmd_v1`:
+
+struct iwl_mvm_add_sta_key_cmd_v1
+=================================
+
+.. c:type:: struct iwl_mvm_add_sta_key_cmd_v1
+
+    add/modify sta key
+
+.. _`iwl_mvm_add_sta_key_cmd_v1.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_add_sta_key_cmd_v1 {
+        struct iwl_mvm_add_sta_key_common common;
+        u8 tkip_rx_tsc_byte2;
+        u8 reserved;
+        __le16 tkip_rx_ttak[5];
+    }
+
+.. _`iwl_mvm_add_sta_key_cmd_v1.members`:
+
+Members
+-------
+
+common
+    see \ :c:type:`struct iwl_mvm_add_sta_key_common <iwl_mvm_add_sta_key_common>`\ 
+
 tkip_rx_tsc_byte2
     TSC[2] for key mix ph1 detection
 
@@ -730,6 +808,46 @@ reserved
 
 tkip_rx_ttak
     10-byte unicast TKIP TTAK for Rx
+
+.. _`iwl_mvm_add_sta_key_cmd`:
+
+struct iwl_mvm_add_sta_key_cmd
+==============================
+
+.. c:type:: struct iwl_mvm_add_sta_key_cmd
+
+    add/modify sta key
+
+.. _`iwl_mvm_add_sta_key_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_add_sta_key_cmd {
+        struct iwl_mvm_add_sta_key_common common;
+        __le64 rx_mic_key;
+        __le64 tx_mic_key;
+        __le64 transmit_seq_cnt;
+    }
+
+.. _`iwl_mvm_add_sta_key_cmd.members`:
+
+Members
+-------
+
+common
+    see \ :c:type:`struct iwl_mvm_add_sta_key_common <iwl_mvm_add_sta_key_common>`\ 
+
+rx_mic_key
+    TKIP RX unicast or multicast key
+
+tx_mic_key
+    TKIP TX key
+
+transmit_seq_cnt
+    TSC, transmit packet number
 
 .. _`iwl_mvm_add_sta_rsp_status`:
 

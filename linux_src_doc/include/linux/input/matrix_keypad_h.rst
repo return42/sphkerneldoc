@@ -71,6 +71,7 @@ Definition
         bool active_low;
         bool wakeup;
         bool no_autorepeat;
+        bool drive_inactive_cols;
     }
 
 .. _`matrix_keypad_platform_data.members`:
@@ -117,6 +118,10 @@ wakeup
 no_autorepeat
     disable key autorepeat
 
+drive_inactive_cols
+    drive inactive columns during scan, rather than
+    making them inputs.
+
 .. _`matrix_keypad_platform_data.description`:
 
 Description
@@ -124,25 +129,6 @@ Description
 
 This structure represents platform-specific data that use used by
 matrix_keypad driver to perform proper initialization.
-
-.. _`matrix_keypad_parse_of_params`:
-
-matrix_keypad_parse_of_params
-=============================
-
-.. c:function:: int matrix_keypad_parse_of_params(struct device *dev, unsigned int *rows, unsigned int *cols)
-
-    Read parameters from matrix-keypad node
-
-    :param struct device \*dev:
-        Device containing of_node
-
-    :param unsigned int \*rows:
-        Returns number of matrix rows
-
-    :param unsigned int \*cols:
-        Returns number of matrix columns
-        \ ``return``\  0 if OK, <0 on error
 
 .. This file was automatic generated / don't edit.
 

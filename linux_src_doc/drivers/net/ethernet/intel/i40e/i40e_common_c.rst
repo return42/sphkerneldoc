@@ -415,28 +415,6 @@ Description
 Handles hw requirement to indicate intention to enable
 or disable target queue.
 
-.. _`i40e_get_san_mac_addr`:
-
-i40e_get_san_mac_addr
-=====================
-
-.. c:function:: i40e_status i40e_get_san_mac_addr(struct i40e_hw *hw, u8 *mac_addr)
-
-    get SAN MAC address
-
-    :param struct i40e_hw \*hw:
-        pointer to the HW structure
-
-    :param u8 \*mac_addr:
-        pointer to SAN MAC address
-
-.. _`i40e_get_san_mac_addr.description`:
-
-Description
------------
-
-Reads the adapter's SAN MAC address from NVM
-
 .. _`i40e_read_pba_string`:
 
 i40e_read_pba_string
@@ -2849,6 +2827,131 @@ i40e_write_rx_ctl
 
     :param u32 reg_val:
         register value
+
+.. _`i40e_aq_write_ppp`:
+
+i40e_aq_write_ppp
+=================
+
+.. c:function:: enum i40e_status_code i40e_aq_write_ppp(struct i40e_hw *hw, void *buff, u16 buff_size, u32 track_id, u32 *error_offset, u32 *error_info, struct i40e_asq_cmd_details *cmd_details)
+
+    Write pipeline personalization profile (ppp)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param void \*buff:
+        command buffer (size in bytes = buff_size)
+
+    :param u16 buff_size:
+        buffer size in bytes
+
+    :param u32 track_id:
+        package tracking id
+
+    :param u32 \*error_offset:
+        returns error offset
+
+    :param u32 \*error_info:
+        returns error information
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40e_aq_get_ppp_list`:
+
+i40e_aq_get_ppp_list
+====================
+
+.. c:function:: enum i40e_status_code i40e_aq_get_ppp_list(struct i40e_hw *hw, void *buff, u16 buff_size, u8 flags, struct i40e_asq_cmd_details *cmd_details)
+
+    Read pipeline personalization profile (ppp)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param void \*buff:
+        command buffer (size in bytes = buff_size)
+
+    :param u16 buff_size:
+        buffer size in bytes
+
+    :param u8 flags:
+        *undescribed*
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40e_find_segment_in_package`:
+
+i40e_find_segment_in_package
+============================
+
+.. c:function:: struct i40e_generic_seg_header *i40e_find_segment_in_package(u32 segment_type, struct i40e_package_header *pkg_hdr)
+
+    :param u32 segment_type:
+        the segment type to search for (i.e., SEGMENT_TYPE_I40E)
+
+    :param struct i40e_package_header \*pkg_hdr:
+        pointer to the package header to be searched
+
+.. _`i40e_find_segment_in_package.description`:
+
+Description
+-----------
+
+This function searches a package file for a particular segment type. On
+success it returns a pointer to the segment header, otherwise it will
+return NULL.
+
+.. _`i40e_write_profile`:
+
+i40e_write_profile
+==================
+
+.. c:function:: enum i40e_status_code i40e_write_profile(struct i40e_hw *hw, struct i40e_profile_segment *profile, u32 track_id)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param struct i40e_profile_segment \*profile:
+        pointer to the profile segment of the package to be downloaded
+
+    :param u32 track_id:
+        package tracking id
+
+.. _`i40e_write_profile.description`:
+
+Description
+-----------
+
+Handles the download of a complete package.
+
+.. _`i40e_add_pinfo_to_list`:
+
+i40e_add_pinfo_to_list
+======================
+
+.. c:function:: enum i40e_status_code i40e_add_pinfo_to_list(struct i40e_hw *hw, struct i40e_profile_segment *profile, u8 *profile_info_sec, u32 track_id)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param struct i40e_profile_segment \*profile:
+        pointer to the profile segment of the package
+
+    :param u8 \*profile_info_sec:
+        buffer for information section
+
+    :param u32 track_id:
+        package tracking id
+
+.. _`i40e_add_pinfo_to_list.description`:
+
+Description
+-----------
+
+Register a profile to the list of loaded profiles.
 
 .. This file was automatic generated / don't edit.
 

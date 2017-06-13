@@ -20,7 +20,8 @@ apparmor
     match_c
     path_c
     policy_c
+    policy_ns_c
     policy_unpack_c
     procattr_c
     resource_c
-    sid_c
+    secid_c

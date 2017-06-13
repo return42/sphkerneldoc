@@ -79,5 +79,48 @@ Return
 
 Zero on success, negative error code if failed
 
+.. _`intel_vgpu_reset_mmio`:
+
+intel_vgpu_reset_mmio
+=====================
+
+.. c:function:: void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu)
+
+    reset virtual MMIO space
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_init_mmio`:
+
+intel_vgpu_init_mmio
+====================
+
+.. c:function:: int intel_vgpu_init_mmio(struct intel_vgpu *vgpu)
+
+    init MMIO  space
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_init_mmio.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed
+
+.. _`intel_vgpu_clean_mmio`:
+
+intel_vgpu_clean_mmio
+=====================
+
+.. c:function:: void intel_vgpu_clean_mmio(struct intel_vgpu *vgpu)
+
+    clean MMIO space
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
 .. This file was automatic generated / don't edit.
 

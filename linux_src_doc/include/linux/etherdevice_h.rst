@@ -21,12 +21,7 @@ Description
 Return true if address is link local reserved addr (01:80:c2:00:00:0X) per
 IEEE 802.1Q 8.6.3 Frame filtering.
 
-.. _`is_link_local_ether_addr.please-note`:
-
-Please note
------------
-
-addr must be aligned to u16.
+Please note: addr must be aligned to u16.
 
 .. _`is_zero_ether_addr`:
 
@@ -47,12 +42,7 @@ Description
 
 Return true if the address is all zeroes.
 
-.. _`is_zero_ether_addr.please-note`:
-
-Please note
------------
-
-addr must be aligned to u16.
+Please note: addr must be aligned to u16.
 
 .. _`is_multicast_ether_addr`:
 
@@ -112,12 +102,7 @@ Description
 
 Return true if the address is the broadcast address.
 
-.. _`is_broadcast_ether_addr.please-note`:
-
-Please note
------------
-
-addr must be aligned to u16.
+Please note: addr must be aligned to u16.
 
 .. _`is_unicast_ether_addr`:
 
@@ -160,12 +145,7 @@ a multicast address, and is not FF:FF:FF:FF:FF:FF.
 
 Return true if the address is valid.
 
-.. _`is_valid_ether_addr.please-note`:
-
-Please note
------------
-
-addr must be aligned to u16.
+Please note: addr must be aligned to u16.
 
 .. _`eth_proto_is_802_3`:
 
@@ -282,12 +262,12 @@ ether_addr_copy
     :param const u8 \*src:
         Pointer to a six-byte array Ethernet address source
 
-.. _`ether_addr_copy.please-note`:
+.. _`ether_addr_copy.description`:
 
-Please note
+Description
 -----------
 
-dst & src must both be aligned to u16.
+Please note: dst & src must both be aligned to u16.
 
 .. _`eth_hw_addr_inherit`:
 
@@ -334,12 +314,7 @@ Description
 
 Compare two Ethernet addresses, returns true if equal
 
-.. _`ether_addr_equal.please-note`:
-
-Please note
------------
-
-addr1 & addr2 must both be aligned to u16.
+Please note: addr1 & addr2 must both be aligned to u16.
 
 .. _`ether_addr_equal_64bits`:
 
@@ -391,12 +366,7 @@ Description
 
 Compare two Ethernet addresses, returns true if equal
 
-.. _`ether_addr_equal_unaligned.please-note`:
-
-Please note
------------
-
-Use only when any Ethernet address may not be u16 aligned.
+Please note: Use only when any Ethernet address may not be u16 aligned.
 
 .. _`ether_addr_equal_masked`:
 
@@ -424,6 +394,52 @@ Description
 Compare two Ethernet addresses with a mask, returns true if for every bit
 set in the bitmask the equivalent bits in the ethernet addresses are equal.
 Using a mask with all bits set is a slower ether_addr_equal.
+
+.. _`ether_addr_to_u64`:
+
+ether_addr_to_u64
+=================
+
+.. c:function:: u64 ether_addr_to_u64(const u8 *addr)
+
+    Convert an Ethernet address into a u64 value.
+
+    :param const u8 \*addr:
+        Pointer to a six-byte array containing the Ethernet address
+
+.. _`ether_addr_to_u64.description`:
+
+Description
+-----------
+
+Return a u64 value of the address
+
+.. _`u64_to_ether_addr`:
+
+u64_to_ether_addr
+=================
+
+.. c:function:: void u64_to_ether_addr(u64 u, u8 *addr)
+
+    Convert a u64 to an Ethernet address.
+
+    :param u64 u:
+        u64 to convert to an Ethernet MAC address
+
+    :param u8 \*addr:
+        Pointer to a six-byte array to contain the Ethernet address
+
+.. _`eth_addr_dec`:
+
+eth_addr_dec
+============
+
+.. c:function:: void eth_addr_dec(u8 *addr)
+
+    Decrement the given MAC address
+
+    :param u8 \*addr:
+        Pointer to a six-byte array containing Ethernet address to decrement
 
 .. _`is_etherdev_addr`:
 

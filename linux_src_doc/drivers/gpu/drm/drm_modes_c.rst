@@ -432,6 +432,32 @@ Return
 @modes's vrefresh rate in Hz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
 
+.. _`drm_mode_get_hv_timing`:
+
+drm_mode_get_hv_timing
+======================
+
+.. c:function:: void drm_mode_get_hv_timing(const struct drm_display_mode *mode, int *hdisplay, int *vdisplay)
+
+    Fetches hdisplay/vdisplay for given mode
+
+    :param const struct drm_display_mode \*mode:
+        mode to query
+
+    :param int \*hdisplay:
+        hdisplay value to fill in
+
+    :param int \*vdisplay:
+        vdisplay value to fill in
+
+.. _`drm_mode_get_hv_timing.description`:
+
+Description
+-----------
+
+The vdisplay value will be doubled if the specified mode is a stereo mode of
+the appropriate layout.
+
 .. _`drm_mode_set_crtcinfo`:
 
 drm_mode_set_crtcinfo

@@ -44,6 +44,21 @@ Prepares and submits command that has either completed or timed out to
 the SCSI stack. Checks AFU command back into command pool for non-internal
 (cmd->scp populated) commands.
 
+.. _`context_reset`:
+
+context_reset
+=============
+
+.. c:function:: void context_reset(struct afu_cmd *cmd, __be64 __iomem *reset_reg)
+
+    reset command owner context via specified register
+
+    :param struct afu_cmd \*cmd:
+        AFU command that timed out.
+
+    :param __be64 __iomem \*reset_reg:
+        MMIO register to perform reset.
+
 .. _`context_reset_ioarrin`:
 
 context_reset_ioarrin
@@ -52,6 +67,18 @@ context_reset_ioarrin
 .. c:function:: void context_reset_ioarrin(struct afu_cmd *cmd)
 
     reset command owner context via IOARRIN register
+
+    :param struct afu_cmd \*cmd:
+        AFU command that timed out.
+
+.. _`context_reset_sq`:
+
+context_reset_sq
+================
+
+.. c:function:: void context_reset_sq(struct afu_cmd *cmd)
+
+    reset command owner context w/ SQ Context Reset register
 
     :param struct afu_cmd \*cmd:
         AFU command that timed out.
@@ -72,6 +99,28 @@ send_cmd_ioarrin
         AFU command to send.
 
 .. _`send_cmd_ioarrin.return`:
+
+Return
+------
+
+0 on success, SCSI_MLQUEUE_HOST_BUSY on failure
+
+.. _`send_cmd_sq`:
+
+send_cmd_sq
+===========
+
+.. c:function:: int send_cmd_sq(struct afu *afu, struct afu_cmd *cmd)
+
+    sends an AFU command via SQ ring
+
+    :param struct afu \*afu:
+        AFU associated with the host.
+
+    :param struct afu_cmd \*cmd:
+        AFU command to send.
+
+.. _`send_cmd_sq.return`:
 
 Return
 ------
@@ -99,6 +148,38 @@ Return
 ------
 
 0 on success, -1 on timeout/error
+
+.. _`cmd_to_target_hwq`:
+
+cmd_to_target_hwq
+=================
+
+.. c:function:: u32 cmd_to_target_hwq(struct Scsi_Host *host, struct scsi_cmnd *scp, struct afu *afu)
+
+    selects a target hardware queue for a SCSI command
+
+    :param struct Scsi_Host \*host:
+        SCSI host associated with device.
+
+    :param struct scsi_cmnd \*scp:
+        SCSI command to send.
+
+    :param struct afu \*afu:
+        SCSI command to send.
+
+.. _`cmd_to_target_hwq.description`:
+
+Description
+-----------
+
+Hashes a command based upon the hardware queue mode.
+
+.. _`cmd_to_target_hwq.return`:
+
+Return
+------
+
+Trusted index of target hardware queue
 
 .. _`send_tmf`:
 
@@ -209,15 +290,15 @@ Description
 
 Safe to call with AFU in a partially allocated/initialized state.
 
-Waits for any active internal AFU commands to timeout and then unmaps
-the MMIO space.
+Cancels scheduled worker threads, waits for any active internal AFU
+commands to timeout, disables IRQ polling and then unmaps the MMIO space.
 
 .. _`term_intr`:
 
 term_intr
 =========
 
-.. c:function:: void term_intr(struct cxlflash_cfg *cfg, enum undo_level level)
+.. c:function:: void term_intr(struct cxlflash_cfg *cfg, enum undo_level level, u32 index)
 
     disables all AFU interrupts
 
@@ -226,6 +307,9 @@ term_intr
 
     :param enum undo_level level:
         Depth of allocation, where to begin waterfall tear down.
+
+    :param u32 index:
+        Index of the hardware queue.
 
 .. _`term_intr.description`:
 
@@ -239,12 +323,15 @@ Safe to call with AFU/MC in partially allocated/initialized state.
 term_mc
 =======
 
-.. c:function:: void term_mc(struct cxlflash_cfg *cfg)
+.. c:function:: void term_mc(struct cxlflash_cfg *cfg, u32 index)
 
     terminates the master context
 
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
+
+    :param u32 index:
+        Index of the hardware queue.
 
 .. _`term_mc.description`:
 
@@ -314,7 +401,8 @@ cxlflash_remove
 Description
 -----------
 
-Safe to use as a cleanup in partially allocated/initialized state.
+Safe to use as a cleanup in partially allocated/initialized state. Note that
+the reset_waitq is flushed as part of the stop/termination of user contexts.
 
 .. _`alloc_mem`:
 
@@ -426,7 +514,7 @@ The provided MMIO region must be mapped prior to call.
 wait_port_online
 ================
 
-.. c:function:: int wait_port_online(__be64 __iomem *fc_regs, u32 delay_us, u32 nretry)
+.. c:function:: bool wait_port_online(__be64 __iomem *fc_regs, u32 delay_us, u32 nretry)
 
     waits for the specified host FC port come online
 
@@ -454,14 +542,13 @@ Return
 
 TRUE (1) when the specified port is online
 FALSE (0) when the specified port fails to come online after timeout
--EINVAL when \ ``delay_us``\  is less than 1000
 
 .. _`wait_port_offline`:
 
 wait_port_offline
 =================
 
-.. c:function:: int wait_port_offline(__be64 __iomem *fc_regs, u32 delay_us, u32 nretry)
+.. c:function:: bool wait_port_offline(__be64 __iomem *fc_regs, u32 delay_us, u32 nretry)
 
     waits for the specified host FC port go offline
 
@@ -488,7 +575,6 @@ Return
 
 TRUE (1) when the specified port is offline
 FALSE (0) when the specified port fails to go offline after timeout
--EINVAL when \ ``delay_us``\  is less than 1000
 
 .. _`afu_set_wwpn`:
 
@@ -552,25 +638,6 @@ is made to maintain link with the device by switching to host to use
 the alternate port exclusively while the reset takes place.
 failure to come online is overridden.
 
-.. _`find_ainfo`:
-
-find_ainfo
-==========
-
-.. c:function:: const struct asyc_intr_info *find_ainfo(u64 status)
-
-    locates and returns asynchronous interrupt information
-
-    :param u64 status:
-        Status code set by AFU on error.
-
-.. _`find_ainfo.return`:
-
-Return
-------
-
-The located information or NULL when the status code is invalid.
-
 .. _`afu_err_intr_init`:
 
 afu_err_intr_init
@@ -605,6 +672,79 @@ Return
 
 Always return IRQ_HANDLED.
 
+.. _`process_hrrq`:
+
+process_hrrq
+============
+
+.. c:function:: int process_hrrq(struct hwq *hwq, struct list_head *doneq, int budget)
+
+    process the read-response queue
+
+    :param struct hwq \*hwq:
+        *undescribed*
+
+    :param struct list_head \*doneq:
+        Queue of commands harvested from the RRQ.
+
+    :param int budget:
+        Threshold of RRQ entries to process.
+
+.. _`process_hrrq.description`:
+
+Description
+-----------
+
+This routine must be called holding the disabled RRQ spin lock.
+
+.. _`process_hrrq.return`:
+
+Return
+------
+
+The number of entries processed.
+
+.. _`process_cmd_doneq`:
+
+process_cmd_doneq
+=================
+
+.. c:function:: void process_cmd_doneq(struct list_head *doneq)
+
+    process a queue of harvested RRQ commands
+
+    :param struct list_head \*doneq:
+        Queue of completed commands.
+
+.. _`process_cmd_doneq.description`:
+
+Description
+-----------
+
+Note that upon return the queue can no longer be trusted.
+
+.. _`cxlflash_irqpoll`:
+
+cxlflash_irqpoll
+================
+
+.. c:function:: int cxlflash_irqpoll(struct irq_poll *irqpoll, int budget)
+
+    process a queue of harvested RRQ commands
+
+    :param struct irq_poll \*irqpoll:
+        IRQ poll structure associated with queue to poll.
+
+    :param int budget:
+        Threshold of RRQ entries to process per poll.
+
+.. _`cxlflash_irqpoll.return`:
+
+Return
+------
+
+The number of entries processed.
+
 .. _`cxlflash_rrq_irq`:
 
 cxlflash_rrq_irq
@@ -625,7 +765,7 @@ cxlflash_rrq_irq
 Return
 ------
 
-Always return IRQ_HANDLED.
+IRQ_HANDLED or IRQ_NONE when no ready entries found.
 
 .. _`cxlflash_async_err_irq`:
 
@@ -654,12 +794,15 @@ Always return IRQ_HANDLED.
 start_context
 =============
 
-.. c:function:: int start_context(struct cxlflash_cfg *cfg)
+.. c:function:: int start_context(struct cxlflash_cfg *cfg, u32 index)
 
     starts the master context
 
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
+
+    :param u32 index:
+        Index of the hardware queue.
 
 .. _`start_context.return`:
 
@@ -681,7 +824,7 @@ read_vpd
         Internal structure associated with the host.
 
     :param u64 wwpn:
-        Array of size NUM_FC_PORTS to pass back WWPNs
+        Array of size MAX_FC_PORTS to pass back WWPNs
 
 .. _`read_vpd.return`:
 
@@ -739,15 +882,15 @@ start_afu
 init_intr
 =========
 
-.. c:function:: enum undo_level init_intr(struct cxlflash_cfg *cfg, struct cxl_context *ctx)
+.. c:function:: enum undo_level init_intr(struct cxlflash_cfg *cfg, struct hwq *hwq)
 
     setup interrupt handlers for the master context
 
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
 
-    :param struct cxl_context \*ctx:
-        *undescribed*
+    :param struct hwq \*hwq:
+        Hardware queue to initialize.
 
 .. _`init_intr.return`:
 
@@ -761,12 +904,22 @@ Return
 init_mc
 =======
 
-.. c:function:: int init_mc(struct cxlflash_cfg *cfg)
+.. c:function:: int init_mc(struct cxlflash_cfg *cfg, u32 index)
 
     create and register as the master context
 
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
+
+    :param u32 index:
+        *undescribed*
+
+.. _`init_mc.index`:
+
+index
+-----
+
+HWQ Index of the master context.
 
 .. _`init_mc.return`:
 
@@ -774,6 +927,34 @@ Return
 ------
 
 0 on success, -errno on failure
+
+.. _`get_num_afu_ports`:
+
+get_num_afu_ports
+=================
+
+.. c:function:: void get_num_afu_ports(struct cxlflash_cfg *cfg)
+
+    determines and configures the number of AFU ports
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+.. _`get_num_afu_ports.description`:
+
+Description
+-----------
+
+This routine determines the number of AFU ports by converting the global
+port selection mask. The converted value is only valid following an AFU
+reset (explicit or power-on). This routine must be invoked shortly after
+mapping as other routines are dependent on the number of ports during the
+initialization sequence.
+
+To support legacy AFUs that might not have reflected an initial global
+port mask (value read is 0), default to the number of ports originally
+supported by the cxlflash driver (2) before hardware with other port
+offerings was introduced.
 
 .. _`init_afu`:
 
@@ -970,15 +1151,15 @@ The actual queue depth set.
 cxlflash_show_port_status
 =========================
 
-.. c:function:: ssize_t cxlflash_show_port_status(u32 port, struct afu *afu, char *buf)
+.. c:function:: ssize_t cxlflash_show_port_status(u32 port, struct cxlflash_cfg *cfg, char *buf)
 
     queries and presents the current port status
 
     :param u32 port:
         Desired port for status reporting.
 
-    :param struct afu \*afu:
-        AFU owning the specified port.
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
 
     :param char \*buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
@@ -988,7 +1169,7 @@ cxlflash_show_port_status
 Return
 ------
 
-The size of the ASCII string returned in \ ``buf``\ .
+The size of the ASCII string returned in \ ``buf``\  or -EINVAL.
 
 .. _`port0_show`:
 
@@ -1034,6 +1215,56 @@ port1_show
         Buffer of length PAGE_SIZE to report back port status in ASCII.
 
 .. _`port1_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`port2_show`:
+
+port2_show
+==========
+
+.. c:function:: ssize_t port2_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    queries and presents the current status of port 2
+
+    :param struct device \*dev:
+        Generic device associated with the host owning the port.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the port.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back port status in ASCII.
+
+.. _`port2_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`port3_show`:
+
+port3_show
+==========
+
+.. c:function:: ssize_t port3_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    queries and presents the current status of port 3
+
+    :param struct device \*dev:
+        Generic device associated with the host owning the port.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the port.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back port status in ASCII.
+
+.. _`port3_show.return`:
 
 Return
 ------
@@ -1141,15 +1372,15 @@ The size of the ASCII string returned in \ ``buf``\ .
 cxlflash_show_port_lun_table
 ============================
 
-.. c:function:: ssize_t cxlflash_show_port_lun_table(u32 port, struct afu *afu, char *buf)
+.. c:function:: ssize_t cxlflash_show_port_lun_table(u32 port, struct cxlflash_cfg *cfg, char *buf)
 
     queries and presents the port LUN table
 
     :param u32 port:
         Desired port for status reporting.
 
-    :param struct afu \*afu:
-        AFU owning the specified port.
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
 
     :param char \*buf:
         Buffer of length PAGE_SIZE to report back port status in ASCII.
@@ -1159,7 +1390,7 @@ cxlflash_show_port_lun_table
 Return
 ------
 
-The size of the ASCII string returned in \ ``buf``\ .
+The size of the ASCII string returned in \ ``buf``\  or -EINVAL.
 
 .. _`port0_lun_table_show`:
 
@@ -1205,6 +1436,253 @@ port1_lun_table_show
         Buffer of length PAGE_SIZE to report back port status in ASCII.
 
 .. _`port1_lun_table_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`port2_lun_table_show`:
+
+port2_lun_table_show
+====================
+
+.. c:function:: ssize_t port2_lun_table_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    presents the current LUN table of port 2
+
+    :param struct device \*dev:
+        Generic device associated with the host owning the port.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the port.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back port status in ASCII.
+
+.. _`port2_lun_table_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`port3_lun_table_show`:
+
+port3_lun_table_show
+====================
+
+.. c:function:: ssize_t port3_lun_table_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    presents the current LUN table of port 3
+
+    :param struct device \*dev:
+        Generic device associated with the host owning the port.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the port.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back port status in ASCII.
+
+.. _`port3_lun_table_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`irqpoll_weight_show`:
+
+irqpoll_weight_show
+===================
+
+.. c:function:: ssize_t irqpoll_weight_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    presents the current IRQ poll weight for the host
+
+    :param struct device \*dev:
+        Generic device associated with the host.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the IRQ poll weight.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back the current IRQ poll
+        weight in ASCII.
+
+.. _`irqpoll_weight_show.description`:
+
+Description
+-----------
+
+An IRQ poll weight of 0 indicates polling is disabled.
+
+.. _`irqpoll_weight_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`irqpoll_weight_store`:
+
+irqpoll_weight_store
+====================
+
+.. c:function:: ssize_t irqpoll_weight_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+
+    sets the current IRQ poll weight for the host
+
+    :param struct device \*dev:
+        Generic device associated with the host.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the IRQ poll weight.
+
+    :param const char \*buf:
+        Buffer of length PAGE_SIZE containing the desired IRQ poll
+        weight in ASCII.
+
+    :param size_t count:
+        Length of data resizing in \ ``buf``\ .
+
+.. _`irqpoll_weight_store.description`:
+
+Description
+-----------
+
+An IRQ poll weight of 0 indicates polling is disabled.
+
+.. _`irqpoll_weight_store.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`num_hwqs_show`:
+
+num_hwqs_show
+=============
+
+.. c:function:: ssize_t num_hwqs_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    presents the number of hardware queues for the host
+
+    :param struct device \*dev:
+        Generic device associated with the host.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the number of hardware queues.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back the number of hardware
+        queues in ASCII.
+
+.. _`num_hwqs_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`num_hwqs_store`:
+
+num_hwqs_store
+==============
+
+.. c:function:: ssize_t num_hwqs_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+
+    sets the number of hardware queues for the host
+
+    :param struct device \*dev:
+        Generic device associated with the host.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the number of hardware queues.
+
+    :param const char \*buf:
+        Buffer of length PAGE_SIZE containing the number of hardware
+        queues in ASCII.
+
+    :param size_t count:
+        Length of data resizing in \ ``buf``\ .
+
+.. _`num_hwqs_store.description`:
+
+Description
+-----------
+
+n > 0: num_hwqs = n
+n = 0: num_hwqs = \ :c:func:`num_online_cpus`\ 
+n < 0: \ :c:func:`num_online_cpus`\  / abs(n)
+
+.. _`num_hwqs_store.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`hwq_mode_show`:
+
+hwq_mode_show
+=============
+
+.. c:function:: ssize_t hwq_mode_show(struct device *dev, struct device_attribute *attr, char *buf)
+
+    presents the HWQ steering mode for the host
+
+    :param struct device \*dev:
+        Generic device associated with the host.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the HWQ steering mode.
+
+    :param char \*buf:
+        Buffer of length PAGE_SIZE to report back the HWQ steering mode
+        as a character string.
+
+.. _`hwq_mode_show.return`:
+
+Return
+------
+
+The size of the ASCII string returned in \ ``buf``\ .
+
+.. _`hwq_mode_store`:
+
+hwq_mode_store
+==============
+
+.. c:function:: ssize_t hwq_mode_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+
+    sets the HWQ steering mode for the host
+
+    :param struct device \*dev:
+        Generic device associated with the host.
+
+    :param struct device_attribute \*attr:
+        Device attribute representing the HWQ steering mode.
+
+    :param const char \*buf:
+        Buffer of length PAGE_SIZE containing the HWQ steering mode
+        as a character string.
+
+    :param size_t count:
+        Length of data resizing in \ ``buf``\ .
+
+.. _`hwq_mode_store.description`:
+
+Description
+-----------
+
+rr = Round-Robin
+tag = Block MQ Tagging
+cpu = CPU Affinity
+
+.. _`hwq_mode_store.return`:
 
 Return
 ------
@@ -1271,6 +1749,20 @@ cxlflash_probe
 
     :param const struct pci_device_id \*dev_id:
         PCI device id associated with device.
+
+.. _`cxlflash_probe.description`:
+
+Description
+-----------
+
+The device will initially start out in a 'probing' state and
+transition to the 'normal' state at the end of a successful
+probe. Should an EEH event occur during probe, the notification
+thread (error_detected()) will wait until the probe handler
+is nearly complete. At that time, the device will be moved to
+a 'probed' state and the EEH thread woken up to drive the slot
+reset and recovery (device moves to 'normal' state). Meanwhile,
+the probe will be allowed to exit successfully.
 
 .. _`cxlflash_probe.return`:
 

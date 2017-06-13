@@ -7,6 +7,7 @@ asm
 .. toctree::
     :maxdepth: 1
 
+    uv/index
     atomic64_32_h
     atomic64_64_h
     atomic_h
@@ -24,6 +25,5 @@ asm
     qspinlock_h
     string_64_h
     sync_bitops_h
-    uaccess_32_h
     uaccess_h
     x86_init_h

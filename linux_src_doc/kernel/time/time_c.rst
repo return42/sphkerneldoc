@@ -1,26 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/time/time.c
 
-.. _`current_fs_time`:
-
-current_fs_time
-===============
-
-.. c:function:: struct timespec current_fs_time(struct super_block *sb)
-
-    Return FS time
-
-    :param struct super_block \*sb:
-        Superblock.
-
-.. _`current_fs_time.description`:
-
-Description
------------
-
-Return the current time truncated to the time granularity supported by
-the fs.
-
 .. _`timespec_trunc`:
 
 timespec_trunc

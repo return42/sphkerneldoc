@@ -6,7 +6,7 @@
 udp_lib_get_port
 ================
 
-.. c:function:: int udp_lib_get_port(struct sock *sk, unsigned short snum, int (*saddr_comp)(const struct sock *sk1, const struct sock *sk2, bool match_wildcard), unsigned int hash2_nulladdr)
+.. c:function:: int udp_lib_get_port(struct sock *sk, unsigned short snum, unsigned int hash2_nulladdr)
 
     UDP/-Lite port lookup for IPv4 and IPv6
 
@@ -15,9 +15,6 @@ udp_lib_get_port
 
     :param unsigned short snum:
         port number to look up
-
-    :param int (\*saddr_comp)(const struct sock \*sk1, const struct sock \*sk2, bool match_wildcard):
-        AF-dependent comparison of bound local IP addresses
 
     :param unsigned int hash2_nulladdr:
         AF-dependent hash value in secondary hash chains,

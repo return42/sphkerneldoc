@@ -87,7 +87,7 @@ setup_local_APIC
 Description
 -----------
 
-Used to setup local APIC while initializing BSP or bringin up APs.
+Used to setup local APIC while initializing BSP or bringing up APs.
 Always called with preemption disabled.
 
 .. _`init_apic_mappings`:

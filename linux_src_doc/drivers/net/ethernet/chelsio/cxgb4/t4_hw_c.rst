@@ -2962,15 +2962,18 @@ Processes a FW message, such as link state change messages.
 init_link_config
 ================
 
-.. c:function:: void init_link_config(struct link_config *lc, unsigned int caps)
+.. c:function:: void init_link_config(struct link_config *lc, unsigned int pcaps, unsigned int acaps)
 
     initialize a link's SW state
 
     :param struct link_config \*lc:
         structure holding the link state
 
-    :param unsigned int caps:
-        link capabilities
+    :param unsigned int pcaps:
+        *undescribed*
+
+    :param unsigned int acaps:
+        *undescribed*
 
 .. _`init_link_config.description`:
 
@@ -3000,6 +3003,31 @@ Description
 Initialize adapter SW state for the various HW modules, set initial
 values for some adapter tunables, take PHYs out of reset, and
 initialize the MDIO interface.
+
+.. _`t4_shutdown_adapter`:
+
+t4_shutdown_adapter
+===================
+
+.. c:function:: int t4_shutdown_adapter(struct adapter *adapter)
+
+    shut down adapter, host & wire
+
+    :param struct adapter \*adapter:
+        the adapter
+
+.. _`t4_shutdown_adapter.description`:
+
+Description
+-----------
+
+Perform an emergency shutdown of the adapter and stop it from
+continuing any further communication on the ports or DMA to the
+host.  This is typically used when the adapter and/or firmware
+have crashed and we want to prevent any further accidental
+communication with the rest of the world.  This will also force
+the port Link Status to go down -- if register writes work --
+which should help our peers figure out that we're down.
 
 .. _`t4_bar2_sge_qregs`:
 

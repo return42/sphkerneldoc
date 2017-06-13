@@ -39,31 +39,6 @@ Description
 
 Called from \ :c:func:`mark_buffer_dirty`\ .
 
-.. _`trace_block_rq_abort`:
-
-trace_block_rq_abort
-====================
-
-.. c:function:: void trace_block_rq_abort(struct request_queue *q, struct request *rq)
-
-    abort block operation request
-
-    :param struct request_queue \*q:
-        queue containing the block operation request
-
-    :param struct request \*rq:
-        block IO operation request
-
-.. _`trace_block_rq_abort.description`:
-
-Description
------------
-
-Called immediately after pending block IO operation request \ ``rq``\  in
-queue \ ``q``\  is aborted. The fields in the operation request \ ``rq``\ 
-can be examined to determine which device and sectors the pending
-operation would access.
-
 .. _`trace_block_rq_requeue`:
 
 trace_block_rq_requeue
@@ -93,15 +68,15 @@ put back in the queue.
 trace_block_rq_complete
 =======================
 
-.. c:function:: void trace_block_rq_complete(struct request_queue *q, struct request *rq, unsigned int nr_bytes)
+.. c:function:: void trace_block_rq_complete(struct request *rq, int error, unsigned int nr_bytes)
 
     block IO operation completed by device driver
 
-    :param struct request_queue \*q:
-        queue containing the block operation request
-
     :param struct request \*rq:
         block operations request
+
+    :param int error:
+        status code
 
     :param unsigned int nr_bytes:
         number of completed bytes

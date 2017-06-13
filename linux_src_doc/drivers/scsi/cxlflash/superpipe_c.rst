@@ -65,6 +65,9 @@ memory freed. This is accomplished by putting the contexts in error
 state which will notify the user and let them 'drive' the tear down.
 Meanwhile, this routine camps until all user contexts have been removed.
 
+Note that the main loop in this routine will always execute at least once
+to flush the reset_waitq.
+
 .. _`find_error_context`:
 
 find_error_context
@@ -589,12 +592,12 @@ fault handler).
 get_err_page
 ============
 
-.. c:function:: struct page *get_err_page( void)
+.. c:function:: struct page *get_err_page(struct cxlflash_cfg *cfg)
 
     obtains and allocates the error notification page
 
-    :param  void:
-        no arguments
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
 
 .. _`get_err_page.return`:
 
@@ -608,12 +611,9 @@ error notification page on success, NULL on failure
 cxlflash_mmap_fault
 ===================
 
-.. c:function:: int cxlflash_mmap_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
+.. c:function:: int cxlflash_mmap_fault(struct vm_fault *vmf)
 
     mmap fault handler for adapter file descriptor
-
-    :param struct vm_area_struct \*vma:
-        VM area associated with mapping.
 
     :param struct vm_fault \*vmf:
         VM fault associated with current fault.

@@ -111,7 +111,7 @@ Definition
         struct list_head links;
         struct list_head entity_notify;
         struct mutex graph_mutex;
-        struct media_entity_graph pm_count_walk;
+        struct media_graph pm_count_walk;
         void *source_priv;
         int (*enable_source)(struct media_entity *entity,struct media_pipeline *pipe);
         void (*disable_source)(struct media_entity *entity);
@@ -234,6 +234,8 @@ from \ ``disable_source``\ .
    bridge driver finds the media_device during probe.
    Bridge driver sets source_priv with information
    necessary to run \ ``enable_source``\  and \ ``disable_source``\  handlers.
+   Callers should hold graph_mutex to access and call \ ``enable_source``\ 
+   and \ ``disable_source``\  handlers.
 
 .. _`media_entity_enum_init`:
 

@@ -8,6 +8,7 @@ hfi1
     :maxdepth: 1
 
     chip_c
+    common_h
     driver_c
     file_ops_c
     hfi_h
@@ -27,3 +28,4 @@ hfi1
     ud_c
     user_exp_rcv_c
     verbs_c
+    vnic_h

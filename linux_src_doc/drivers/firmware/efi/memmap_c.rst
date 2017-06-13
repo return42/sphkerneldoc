@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/firmware/efi/memmap.c
 
+.. _`efi_memmap_alloc`:
+
+efi_memmap_alloc
+================
+
+.. c:function:: phys_addr_t efi_memmap_alloc(unsigned int num_entries)
+
+    Allocate memory for the EFI memory map
+
+    :param unsigned int num_entries:
+        Number of entries in the allocated map.
+
+.. _`efi_memmap_alloc.description`:
+
+Description
+-----------
+
+Depending on whether \ :c:func:`mm_init`\  has already been invoked or not,
+either memblock or "normal" page allocation is used.
+
+Returns the physical address of the allocated memory map on
+success, zero on failure.
+
 .. _`__efi_memmap_init`:
 
 __efi_memmap_init

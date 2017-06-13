@@ -95,10 +95,10 @@ __bread_gfp
 Description
 -----------
 
-Reads a specified block, and returns buffer head that contains it.
-The page cache can be allocated from non-movable area
-not to prevent page migration if you set gfp to zero.
-It returns NULL if the block was unreadable.
+ Reads a specified block, and returns buffer head that contains it.
+ The page cache can be allocated from non-movable area
+ not to prevent page migration if you set gfp to zero.
+ It returns NULL if the block was unreadable.
 
 .. _`block_invalidatepage`:
 

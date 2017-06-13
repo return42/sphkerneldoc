@@ -8,5 +8,6 @@ ath10k
     :maxdepth: 1
 
     debug_c
+    hw_c
     spectral_h
     wmi_h

@@ -6,18 +6,18 @@
 LNetPut
 =======
 
-.. c:function:: int LNetPut(lnet_nid_t self, lnet_handle_md_t mdh, lnet_ack_req_t ack, lnet_process_id_t target, unsigned int portal, __u64 match_bits, unsigned int offset, __u64 hdr_data)
+.. c:function:: int LNetPut(lnet_nid_t self, struct lnet_handle_md mdh, enum lnet_ack_req ack, struct lnet_process_id target, unsigned int portal, __u64 match_bits, unsigned int offset, __u64 hdr_data)
 
     :param lnet_nid_t self:
         *undescribed*
 
-    :param lnet_handle_md_t mdh:
+    :param struct lnet_handle_md mdh:
         *undescribed*
 
-    :param lnet_ack_req_t ack:
+    :param enum lnet_ack_req ack:
         *undescribed*
 
-    :param lnet_process_id_t target:
+    :param struct lnet_process_id target:
         *undescribed*
 
     :param unsigned int portal:
@@ -76,22 +76,22 @@ and logged to EQ (if it exists).
 \retval -ENOMEM Memory allocation failure.
 \retval -ENOENT Invalid MD object.
 
-\see lnet_event_t::hdr_data and lnet_event_kind_t.
+\see lnet_event::hdr_data and lnet_event_kind.
 
 .. _`lnetget`:
 
 LNetGet
 =======
 
-.. c:function:: int LNetGet(lnet_nid_t self, lnet_handle_md_t mdh, lnet_process_id_t target, unsigned int portal, __u64 match_bits, unsigned int offset)
+.. c:function:: int LNetGet(lnet_nid_t self, struct lnet_handle_md mdh, struct lnet_process_id target, unsigned int portal, __u64 match_bits, unsigned int offset)
 
     :param lnet_nid_t self:
         *undescribed*
 
-    :param lnet_handle_md_t mdh:
+    :param struct lnet_handle_md mdh:
         *undescribed*
 
-    :param lnet_process_id_t target:
+    :param struct lnet_process_id target:
         *undescribed*
 
     :param unsigned int portal:

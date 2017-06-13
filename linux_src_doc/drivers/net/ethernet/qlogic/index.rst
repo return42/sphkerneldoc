@@ -9,5 +9,6 @@ qlogic
 
     netxen/index
     qed/index
+    qede/index
     qlcnic/index
     qlge/index

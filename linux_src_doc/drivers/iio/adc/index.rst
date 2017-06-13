@@ -13,10 +13,14 @@ adc
     ad799x_c
     ad_sigma_delta_c
     at91_adc_c
+    cpcap-adc_c
     max1363_c
+    max9611_c
     palmas_gpadc_c
+    qcom-pm8xxx-xoadc_c
     qcom-spmi-iadc_c
     qcom-spmi-vadc_c
+    qcom-vadc-common_h
     rockchip_saradc_c
     stm32-adc-core_c
     stm32-adc-core_h

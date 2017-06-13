@@ -8,6 +8,7 @@ rcu
     :maxdepth: 1
 
     srcu_c
+    srcutree_c
     sync_c
     tree_c
     tree_exp_h

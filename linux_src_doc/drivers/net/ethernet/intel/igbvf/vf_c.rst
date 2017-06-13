@@ -211,6 +211,24 @@ e1000_read_mac_addr_vf
     :param struct e1000_hw \*hw:
         pointer to the HW structure
 
+.. _`e1000_set_uc_addr_vf`:
+
+e1000_set_uc_addr_vf
+====================
+
+.. c:function:: s32 e1000_set_uc_addr_vf(struct e1000_hw *hw, u32 sub_cmd, u8 *addr)
+
+    Set or clear unicast filters
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 sub_cmd:
+        add or clear filters
+
+    :param u8 \*addr:
+        pointer to the filter MAC address
+
 .. _`e1000_check_for_link_vf`:
 
 e1000_check_for_link_vf

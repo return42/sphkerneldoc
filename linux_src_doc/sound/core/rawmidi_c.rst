@@ -245,7 +245,7 @@ Zero if successful, or a negative error code on failure.
 snd_rawmidi_set_ops
 ===================
 
-.. c:function:: void snd_rawmidi_set_ops(struct snd_rawmidi *rmidi, int stream, struct snd_rawmidi_ops *ops)
+.. c:function:: void snd_rawmidi_set_ops(struct snd_rawmidi *rmidi, int stream, const struct snd_rawmidi_ops *ops)
 
     set the rawmidi operators
 
@@ -255,7 +255,7 @@ snd_rawmidi_set_ops
     :param int stream:
         the stream direction, SNDRV_RAWMIDI_STREAM_XXX
 
-    :param struct snd_rawmidi_ops \*ops:
+    :param const struct snd_rawmidi_ops \*ops:
         the operator table
 
 .. _`snd_rawmidi_set_ops.description`:

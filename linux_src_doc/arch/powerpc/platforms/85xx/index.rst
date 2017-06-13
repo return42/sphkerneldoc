@@ -9,3 +9,4 @@
 
     p1022_ds_c
     p1022_rdk_c
+    t1042rdb_diu_c

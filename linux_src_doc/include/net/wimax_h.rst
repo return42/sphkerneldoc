@@ -88,6 +88,10 @@ op_reset
     reset is complete. In case of having had to resort to bus/cold
     reset implying a device disconnection, the call is allowed to
     return immediately.
+    NOTE: wimax_dev->mutex is NOT locked when this op is being
+    called; however, wimax_dev->mutex_reset IS locked to ensure
+    serialization of calls to \ :c:func:`wimax_reset`\ .
+    See \ :c:func:`wimax_reset`\ 's documentation.
 
 rfkill
     [private] integration into the RF-Kill infrastructure.
@@ -112,16 +116,6 @@ debugfs_dentry
     [private] Used to hook up a debugfs entry. This
     shows up in the debugfs root as wimax\:DEVICENAME.
 
-.. _`wimax_dev.note`:
-
-NOTE
-----
-
-wimax_dev->mutex is NOT locked when this op is being
-called; however, wimax_dev->mutex_reset IS locked to ensure
-serialization of calls to \ :c:func:`wimax_reset`\ .
-See \ :c:func:`wimax_reset`\ 's documentation.
-
 .. _`wimax_dev.description`:
 
 Description
@@ -136,47 +130,47 @@ a free-form device-specific messaging channel.
 Usage
 -----
 
-1. Embed a \ :c:type:`struct wimax_dev <wimax_dev>`\  at \*the beginning\* the network
-device structure so that \ :c:func:`netdev_priv`\  points to it.
+ 1. Embed a \ :c:type:`struct wimax_dev <wimax_dev>`\  at *the beginning* the network
+    device structure so that \ :c:func:`netdev_priv`\  points to it.
 
-2. \ :c:func:`memset`\  it to zero
+ 2. \ :c:func:`memset`\  it to zero
 
-3. Initialize with \ :c:func:`wimax_dev_init`\ . This will leave the WiMAX
-device in the \ ``__WIMAX_ST_NULL``\  state.
+ 3. Initialize with \ :c:func:`wimax_dev_init`\ . This will leave the WiMAX
+    device in the \ ``__WIMAX_ST_NULL``\  state.
 
-4. Fill all the fields marked with [fill]; once called
-\ :c:func:`wimax_dev_add`\ , those fields CANNOT be modified.
+ 4. Fill all the fields marked with [fill]; once called
+    \ :c:func:`wimax_dev_add`\ , those fields CANNOT be modified.
 
-5. Call \ :c:func:`wimax_dev_add`\  \*after\* registering the network
-device. This will leave the WiMAX device in the \ ``WIMAX_ST_DOWN``\ 
-state.
-Protect the driver's net_device->open() against succeeding if
-the wimax device state is lower than \ ``WIMAX_ST_DOWN``\ .
+ 5. Call \ :c:func:`wimax_dev_add`\  *after* registering the network
+    device. This will leave the WiMAX device in the \ ``WIMAX_ST_DOWN``\ 
+    state.
+    Protect the driver's net_device->open() against succeeding if
+    the wimax device state is lower than \ ``WIMAX_ST_DOWN``\ .
 
-6. Select when the device is going to be turned on/initialized;
-for example, it could be initialized on 'ifconfig up' (when the
-netdev op 'open()' is called on the driver).
+ 6. Select when the device is going to be turned on/initialized;
+    for example, it could be initialized on 'ifconfig up' (when the
+    netdev op 'open()' is called on the driver).
 
-When the device is initialized (at \`ifconfig up\` time, or right
-after calling \ :c:func:`wimax_dev_add`\  from \_probe(), make sure the
+When the device is initialized (at `ifconfig up` time, or right
+after calling \ :c:func:`wimax_dev_add`\  from \ :c:func:`_probe`\ , make sure the
 following steps are taken
 
-a. Move the device to \ ``WIMAX_ST_UNINITIALIZED``\ . This is needed so
-some API calls that shouldn't work until the device is ready
-can be blocked.
+ a. Move the device to \ ``WIMAX_ST_UNINITIALIZED``\ . This is needed so
+    some API calls that shouldn't work until the device is ready
+    can be blocked.
 
-b. Initialize the device. Make sure to turn the SW radio switch
-off and move the device to state \ ``WIMAX_ST_RADIO_OFF``\  when
-done. When just initialized, a device should be left in RADIO
-OFF state until user space devices to turn it on.
+ b. Initialize the device. Make sure to turn the SW radio switch
+    off and move the device to state \ ``WIMAX_ST_RADIO_OFF``\  when
+    done. When just initialized, a device should be left in RADIO
+    OFF state until user space devices to turn it on.
 
-c. Query the device for the state of the hardware rfkill switch
-and call \ :c:func:`wimax_rfkill_report_hw`\  and \ :c:func:`wimax_rfkill_report_sw`\ 
-as needed. See below.
+ c. Query the device for the state of the hardware rfkill switch
+    and call \ :c:func:`wimax_rfkill_report_hw`\  and \ :c:func:`wimax_rfkill_report_sw`\ 
+    as needed. See below.
 
 \ :c:func:`wimax_dev_rm`\  undoes before unregistering the network device. Once
 \ :c:func:`wimax_dev_add`\  is called, the driver can get called on the
-wimax_dev->op\_\* function pointers
+wimax_dev->op_* function pointers
 
 .. _`wimax_dev.concurrency`:
 
@@ -186,8 +180,8 @@ CONCURRENCY
 
 The stack provides a mutex for each device that will disallow API
 calls happening concurrently; thus, op calls into the driver
-through the wimax_dev->op\*() function pointers will always be
-serialized and \*never\* concurrent.
+through the wimax_dev->op*() function pointers will always be
+serialized and *never* concurrent.
 
 For locking, take wimax_dev->mutex is taken; (most) operations in
 the API have to check for \ :c:func:`wimax_dev_is_ready`\  to return 0 before

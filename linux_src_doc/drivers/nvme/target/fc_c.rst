@@ -98,7 +98,7 @@ nvmet_fc_rcv_fcp_req
 
     :param struct nvmet_fc_target_port \*target_port:
         pointer to the (registered) target port the FCP CMD IU
-        was receive on.
+        was received on.
 
     :param struct nvmefc_tgt_fcp_req \*fcpreq:
         pointer to a fcpreq request structure to be used to reference
@@ -123,6 +123,42 @@ processing.  As such, upon completion of the routine, the LLDD may
 immediately free/reuse the CMD IU buffer passed in the call.
 
 If this routine returns error, the lldd should abort the exchange.
+
+.. _`nvmet_fc_rcv_fcp_abort`:
+
+nvmet_fc_rcv_fcp_abort
+======================
+
+.. c:function:: void nvmet_fc_rcv_fcp_abort(struct nvmet_fc_target_port *target_port, struct nvmefc_tgt_fcp_req *fcpreq)
+
+    transport entry point called by an LLDD upon the reception of an ABTS for a FCP command
+
+    :param struct nvmet_fc_target_port \*target_port:
+        pointer to the (registered) target port the FCP CMD IU
+        was received on.
+
+    :param struct nvmefc_tgt_fcp_req \*fcpreq:
+        pointer to the fcpreq request structure that corresponds
+        to the exchange that received the ABTS.
+
+.. _`nvmet_fc_rcv_fcp_abort.description`:
+
+Description
+-----------
+
+Notify the transport that an ABTS has been received for a FCP command
+that had been given to the transport via \ :c:func:`nvmet_fc_rcv_fcp_req`\ . The
+LLDD believes the command is still being worked on
+(template_ops->fcp_req_release() has not been called).
+
+The transport will wait for any outstanding work (an op to the LLDD,
+which the lldd should complete with error due to the ABTS; or the
+completion from the nvmet layer of the nvme command), then will
+stop processing and call the \ :c:func:`nvmet_fc_rcv_fcp_req`\  callback to
+return the i/o context to the LLDD.  The LLDD may send the BA_ACC
+to the ABTS either after return from this function (assuming any
+outstanding op work has been terminated) or upon the callback being
+called.
 
 .. This file was automatic generated / don't edit.
 

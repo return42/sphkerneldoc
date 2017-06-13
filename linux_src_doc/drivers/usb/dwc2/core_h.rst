@@ -209,52 +209,49 @@ Definition
 .. code-block:: c
 
     struct dwc2_core_params {
-        int otg_cap;
+        u8 otg_cap;
     #define DWC2_CAP_PARAM_HNP_SRP_CAPABLE 0
     #define DWC2_CAP_PARAM_SRP_ONLY_CAPABLE 1
     #define DWC2_CAP_PARAM_NO_HNP_SRP_CAPABLE 2
-        int otg_ver;
-        int dma_desc_enable;
-        int dma_desc_fs_enable;
-        int speed;
-    #define DWC2_SPEED_PARAM_HIGH 0
-    #define DWC2_SPEED_PARAM_FULL 1
-    #define DWC2_SPEED_PARAM_LOW 2
-        int enable_dynamic_fifo;
-        int en_multiple_tx_fifo;
-        int host_rx_fifo_size;
-        int host_nperio_tx_fifo_size;
-        int host_perio_tx_fifo_size;
-        int max_transfer_size;
-        int max_packet_count;
-        int host_channels;
-        int phy_type;
+        u8 phy_type;
     #define DWC2_PHY_TYPE_PARAM_FS 0
     #define DWC2_PHY_TYPE_PARAM_UTMI 1
     #define DWC2_PHY_TYPE_PARAM_ULPI 2
-        int phy_utmi_width;
-        int phy_ulpi_ddr;
-        int phy_ulpi_ext_vbus;
-    #define DWC2_PHY_ULPI_INTERNAL_VBUS 0
-    #define DWC2_PHY_ULPI_EXTERNAL_VBUS 1
-        int i2c_enable;
-        int ulpi_fs_ls;
-        int host_support_fs_ls_low_power;
-        int host_ls_low_power_phy_clk;
-    #define DWC2_HOST_LS_LOW_POWER_PHY_CLK_PARAM_48MHZ 0
-    #define DWC2_HOST_LS_LOW_POWER_PHY_CLK_PARAM_6MHZ 1
-        int ts_dline;
-        int reload_ctl;
-        int ahbcfg;
-        int uframe_sched;
-        int external_id_pin_ctl;
-        int hibernation;
+        u8 speed;
+    #define DWC2_SPEED_PARAM_HIGH 0
+    #define DWC2_SPEED_PARAM_FULL 1
+    #define DWC2_SPEED_PARAM_LOW 2
+        u8 phy_utmi_width;
+        bool phy_ulpi_ddr;
+        bool phy_ulpi_ext_vbus;
+        bool enable_dynamic_fifo;
+        bool en_multiple_tx_fifo;
+        bool i2c_enable;
+        bool ulpi_fs_ls;
+        bool ts_dline;
+        bool reload_ctl;
+        bool uframe_sched;
+        bool external_id_pin_ctl;
+        bool hibernation;
+        bool activate_stm_fs_transceiver;
+        u16 max_packet_count;
+        u32 max_transfer_size;
+        u32 ahbcfg;
         bool host_dma;
+        bool dma_desc_enable;
+        bool dma_desc_fs_enable;
+        bool host_support_fs_ls_low_power;
+        bool host_ls_low_power_phy_clk;
+        u8 host_channels;
+        u16 host_rx_fifo_size;
+        u16 host_nperio_tx_fifo_size;
+        u16 host_perio_tx_fifo_size;
         bool g_dma;
         bool g_dma_desc;
-        u16 g_rx_fifo_size;
-        u16 g_np_tx_fifo_size;
+        u32 g_rx_fifo_size;
+        u32 g_np_tx_fifo_size;
         u32 g_tx_fifo_size[MAX_EPS_CHANNELS];
+        bool change_speed_quirk;
     }
 
 .. _`dwc2_core_params.members`:
@@ -269,27 +266,13 @@ otg_cap
     2 - No HNP/SRP capable (always available)
     Defaults to best available option (0, 1, then 2)
 
-otg_ver
-    OTG version supported
-    0 - 1.3 (default)
-    1 - 2.0
-
-dma_desc_enable
-    When DMA mode is enabled, specifies whether to use
-    address DMA mode or descriptor DMA mode for accessing
-    the data FIFOs. The driver will automatically detect the
-    value for this if none is specified.
-    0 - Address DMA
-    1 - Descriptor DMA (default, if available)
-
-dma_desc_fs_enable
-    When DMA mode is enabled, specifies whether to use
-    address DMA mode or descriptor DMA mode for accessing
-    the data FIFOs in Full Speed mode only. The driver
-    will automatically detect the value for this if none is
-    specified.
-    0 - Address DMA
-    1 - Descriptor DMA in FS (default, if available)
+phy_type
+    Specifies the type of PHY interface to use. By default,
+    the driver will automatically detect the phy_type.
+    0 - Full Speed Phy
+    1 - UTMI+ Phy
+    2 - ULPI Phy
+    Defaults to best available option (2, 1, then 0)
 
 speed
     Specifies the maximum speed of operation in host and
@@ -299,62 +282,6 @@ speed
     (default when phy_type is UTMI+ or ULPI)
     1 - Full Speed
     (default when phy_type is Full Speed)
-
-enable_dynamic_fifo
-    0 - Use coreConsultant-specified FIFO size parameters
-    1 - Allow dynamic FIFO sizing (default, if available)
-
-en_multiple_tx_fifo
-    Specifies whether dedicated per-endpoint transmit FIFOs
-    are enabled for non-periodic IN endpoints in device
-    mode.
-
-host_rx_fifo_size
-    Number of 4-byte words in the Rx FIFO in host mode when
-    dynamic FIFO sizing is enabled
-    16 to 32768
-    Actual maximum value is autodetected and also
-    the default.
-
-host_nperio_tx_fifo_size
-    Number of 4-byte words in the non-periodic Tx FIFO
-    in host mode when dynamic FIFO sizing is enabled
-    16 to 32768
-    Actual maximum value is autodetected and also
-    the default.
-
-host_perio_tx_fifo_size
-    Number of 4-byte words in the periodic Tx FIFO in
-    host mode when dynamic FIFO sizing is enabled
-    16 to 32768
-    Actual maximum value is autodetected and also
-    the default.
-
-max_transfer_size
-    The maximum transfer size supported, in bytes
-    2047 to 65,535
-    Actual maximum value is autodetected and also
-    the default.
-
-max_packet_count
-    The maximum number of packets in a transfer
-    15 to 511
-    Actual maximum value is autodetected and also
-    the default.
-
-host_channels
-    The number of host channel registers to use
-    1 to 16
-    Actual maximum value is autodetected and also
-    the default.
-
-phy_type
-    Specifies the type of PHY interface to use. By default,
-    the driver will automatically detect the phy_type.
-    0 - Full Speed Phy
-    1 - UTMI+ Phy
-    2 - ULPI Phy
-    Defaults to best available option (2, 1, then 0)
 
 phy_utmi_width
     Specifies the UTMI+ Data Width (in bits). This parameter
@@ -382,6 +309,15 @@ phy_ulpi_ext_vbus
     0 - Internal supply (default)
     1 - External supply
 
+enable_dynamic_fifo
+    0 - Use coreConsultant-specified FIFO size parameters
+    1 - Allow dynamic FIFO sizing (default, if available)
+
+en_multiple_tx_fifo
+    Specifies whether dedicated per-endpoint transmit FIFOs
+    are enabled for non-periodic IN endpoints in device
+    mode.
+
 i2c_enable
     Specifies whether to use the I2Cinterface for a full
     speed PHY. This parameter is only applicable if phy_type
@@ -394,23 +330,6 @@ ulpi_fs_ls
     0 - No (default)
     1 - Yes
 
-host_support_fs_ls_low_power
-    Specifies whether low power mode is supported
-    when attached to a Full Speed or Low Speed device in
-    host mode.
-    0 - Don't support low power mode (default)
-    1 - Support low power mode
-
-host_ls_low_power_phy_clk
-    Specifies the PHY clock rate in low power mode
-    when connected to a Low Speed device in host
-    mode. This parameter is applicable only if
-    host_support_fs_ls_low_power is enabled.
-    0 - 48 MHz
-    (default when phy_type is UTMI+ or ULPI)
-    1 - 6 MHz
-    (default when phy_type is Full Speed)
-
 ts_dline
     Enable Term Select Dline pulsing
     0 - No (default)
@@ -420,18 +339,6 @@ reload_ctl
     Allow dynamic reloading of HFIR register during runtime
     0 - No (default for core < 2.92a)
     1 - Yes (default for core >= 2.92a)
-
-ahbcfg
-    This field allows the default value of the GAHBCFG
-    register to be overridden
-    -1         - GAHBCFG value will be set to 0x06
-    (INCR4, default)
-    all others - GAHBCFG value will be overridden with
-    this value
-    Not all bits can be controlled like this, the
-    bits defined by GAHBCFG_CTRL_MASK are controlled
-    by the driver and are ignored in this
-    configuration value.
 
 uframe_sched
     True to enable the microframe scheduler
@@ -451,12 +358,103 @@ hibernation
     0 - No (default)
     1 - Yes
 
+activate_stm_fs_transceiver
+    Activate internal transceiver using GGPIO
+    register.
+    0 - Deactivate the transceiver (default)
+    1 - Activate the transceiver
+
+max_packet_count
+    The maximum number of packets in a transfer
+    15 to 511
+    Actual maximum value is autodetected and also
+    the default.
+
+max_transfer_size
+    The maximum transfer size supported, in bytes
+    2047 to 65,535
+    Actual maximum value is autodetected and also
+    the default.
+
+ahbcfg
+    This field allows the default value of the GAHBCFG
+    register to be overridden
+    -1         - GAHBCFG value will be set to 0x06
+    (INCR4, default)
+    all others - GAHBCFG value will be overridden with
+    this value
+    Not all bits can be controlled like this, the
+    bits defined by GAHBCFG_CTRL_MASK are controlled
+    by the driver and are ignored in this
+    configuration value.
+
 host_dma
     Specifies whether to use slave or DMA mode for accessing
     the data FIFOs. The driver will automatically detect the
     value for this parameter if none is specified.
     0 - Slave (always available)
     1 - DMA (default, if available)
+
+dma_desc_enable
+    When DMA mode is enabled, specifies whether to use
+    address DMA mode or descriptor DMA mode for accessing
+    the data FIFOs. The driver will automatically detect the
+    value for this if none is specified.
+    0 - Address DMA
+    1 - Descriptor DMA (default, if available)
+
+dma_desc_fs_enable
+    When DMA mode is enabled, specifies whether to use
+    address DMA mode or descriptor DMA mode for accessing
+    the data FIFOs in Full Speed mode only. The driver
+    will automatically detect the value for this if none is
+    specified.
+    0 - Address DMA
+    1 - Descriptor DMA in FS (default, if available)
+
+host_support_fs_ls_low_power
+    Specifies whether low power mode is supported
+    when attached to a Full Speed or Low Speed device in
+    host mode.
+    0 - Don't support low power mode (default)
+    1 - Support low power mode
+
+host_ls_low_power_phy_clk
+    Specifies the PHY clock rate in low power mode
+    when connected to a Low Speed device in host
+    mode. This parameter is applicable only if
+    host_support_fs_ls_low_power is enabled.
+    0 - 48 MHz
+    (default when phy_type is UTMI+ or ULPI)
+    1 - 6 MHz
+    (default when phy_type is Full Speed)
+
+host_channels
+    The number of host channel registers to use
+    1 to 16
+    Actual maximum value is autodetected and also
+    the default.
+
+host_rx_fifo_size
+    Number of 4-byte words in the Rx FIFO in host mode when
+    dynamic FIFO sizing is enabled
+    16 to 32768
+    Actual maximum value is autodetected and also
+    the default.
+
+host_nperio_tx_fifo_size
+    Number of 4-byte words in the non-periodic Tx FIFO
+    in host mode when dynamic FIFO sizing is enabled
+    16 to 32768
+    Actual maximum value is autodetected and also
+    the default.
+
+host_perio_tx_fifo_size
+    Number of 4-byte words in the periodic Tx FIFO in
+    host mode when dynamic FIFO sizing is enabled
+    16 to 32768
+    Actual maximum value is autodetected and also
+    the default.
 
 g_dma
     Enables gadget dma usage (default: autodetect).
@@ -481,6 +479,13 @@ g_tx_fifo_size
     in DWORDS with possible values from from
     16-32768 (default: 256, 256, 256, 256, 768,
     768, 768, 768, 0, 0, 0, 0, 0, 0, 0).
+
+change_speed_quirk
+    Change speed configuration to DWC2_SPEED_PARAM_FULL
+    while full&low speed device connect. And change speed
+    back to DWC2_SPEED_PARAM_HIGH while device is gone.
+    0 - No (default)
+    1 - Yes
 
 .. _`dwc2_core_params.description`:
 
@@ -894,7 +899,7 @@ Definition
         struct phy *phy;
         struct usb_phy *uphy;
         struct dwc2_hsotg_plat *plat;
-        struct regulator_bulk_data supplies[ARRAY_SIZE(dwc2_hsotg_supply_names)];
+        struct regulator_bulk_data supplies[DWC2_NUM_SUPPLIES];
         u32 phyif;
         spinlock_t lock;
         void *priv;
@@ -914,6 +919,7 @@ Definition
         struct debugfs_regset32 *regset;
     #define DWC2_CORE_REV_2_71a 0x4f54271a
     #define DWC2_CORE_REV_2_90a 0x4f54290a
+    #define DWC2_CORE_REV_2_91a 0x4f54291a
     #define DWC2_CORE_REV_2_92a 0x4f54292a
     #define DWC2_CORE_REV_2_94a 0x4f54294a
     #define DWC2_CORE_REV_3_00a 0x4f54300a
@@ -977,8 +983,8 @@ Definition
         u64 hfnum_other_frrem_accum_b;
     #endif
     #endif
-    #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
-        struct usb_gadget_driver *driver;
+    #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || \
+        IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)struct usb_gadget_driver *driver;
         int fifo_mem;
         unsigned int dedicated_fifos:1;
         unsigned char num_of_eps;
@@ -1049,11 +1055,12 @@ phy
     The otg phy transceiver structure for phy control.
 
 uphy
-    The otg phy transceiver structure for old USB phy control.
+    The otg phy transceiver structure for old USB phy
+    control.
 
 plat
-    The platform specific configuration data. This can be removed once
-    all SoCs support usb transceiver.
+    The platform specific configuration data. This can be
+    removed once all SoCs support usb transceiver.
 
 supplies
     Definition of USB power supplies

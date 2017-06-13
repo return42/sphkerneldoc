@@ -106,50 +106,5 @@ aa_put_profile
     :param struct aa_profile \*p:
         profile  (MAYBE NULL)
 
-.. _`aa_get_namespace`:
-
-aa_get_namespace
-================
-
-.. c:function:: struct aa_namespace *aa_get_namespace(struct aa_namespace *ns)
-
-    increment references count on \ ``ns``\ 
-
-    :param struct aa_namespace \*ns:
-        namespace to increment reference count of (MAYBE NULL)
-
-.. _`aa_get_namespace.return`:
-
-Return
-------
-
-pointer to \ ``ns``\ , if \ ``ns``\  is NULL returns NULL
-
-.. _`aa_get_namespace.requires`:
-
-Requires
---------
-
-@ns must be held with valid refcount when called
-
-.. _`aa_put_namespace`:
-
-aa_put_namespace
-================
-
-.. c:function:: void aa_put_namespace(struct aa_namespace *ns)
-
-    decrement refcount on \ ``ns``\ 
-
-    :param struct aa_namespace \*ns:
-        namespace to put reference of
-
-.. _`aa_put_namespace.description`:
-
-Description
------------
-
-Decrement reference count of \ ``ns``\  and if no longer in use free it
-
 .. This file was automatic generated / don't edit.
 

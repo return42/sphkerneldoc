@@ -261,7 +261,7 @@ These structures persist for the lifetime of a usb_device, unlike
 struct usb_interface (which persists only as long as its configuration
 is installed).  The altsetting arrays can be accessed through these
 structures at any time, permitting comparison of configurations and
-providing support for the /proc/bus/usb/devices pseudo-file.
+providing support for the /sys/kernel/debug/usb/devices pseudo-file.
 
 .. _`usb_host_config`:
 

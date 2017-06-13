@@ -34,7 +34,7 @@ drm_fb_helper_debug_enter
 
 .. c:function:: int drm_fb_helper_debug_enter(struct fb_info *info)
 
-    implementation for ->fb_debug_enter
+    implementation for \ :c:type:`fb_ops.fb_debug_enter <fb_ops>`\ 
 
     :param struct fb_info \*info:
         fbdev registered by the helper
@@ -46,7 +46,7 @@ drm_fb_helper_debug_leave
 
 .. c:function:: int drm_fb_helper_debug_leave(struct fb_info *info)
 
-    implementation for ->fb_debug_leave
+    implementation for \ :c:type:`fb_ops.fb_debug_leave <fb_ops>`\ 
 
     :param struct fb_info \*info:
         fbdev registered by the helper
@@ -68,7 +68,7 @@ drm_fb_helper_restore_fbdev_mode_unlocked
 Description
 -----------
 
-This should be called from driver's drm ->lastclose callback
+This should be called from driver's drm \ :c:type:`drm_driver.lastclose <drm_driver>`\  callback
 when implementing an fbcon on top of kms using this helper. This ensures that
 the user isn't greeted with a black screen when e.g. X dies.
 
@@ -86,7 +86,7 @@ drm_fb_helper_blank
 
 .. c:function:: int drm_fb_helper_blank(int blank, struct fb_info *info)
 
-    implementation for ->fb_blank
+    implementation for \ :c:type:`fb_ops.fb_blank <fb_ops>`\ 
 
     :param int blank:
         desired blanking state
@@ -125,18 +125,15 @@ useful to implement race-free initialization of the polling helpers.
 drm_fb_helper_init
 ==================
 
-.. c:function:: int drm_fb_helper_init(struct drm_device *dev, struct drm_fb_helper *fb_helper, int crtc_count, int max_conn_count)
+.. c:function:: int drm_fb_helper_init(struct drm_device *dev, struct drm_fb_helper *fb_helper, int max_conn_count)
 
-    initialize a drm_fb_helper structure
+    initialize a \ :c:type:`struct drm_fb_helper <drm_fb_helper>`\ 
 
     :param struct drm_device \*dev:
         drm device
 
     :param struct drm_fb_helper \*fb_helper:
         driver-allocated fbdev helper structure to initialize
-
-    :param int crtc_count:
-        maximum number of crtcs to support in this fbdev emulation
 
     :param int max_conn_count:
         max connector count
@@ -178,7 +175,9 @@ Description
 -----------
 
 A helper to alloc fb_info and the members cmap and apertures. Called
-by the driver within the fb_probe fb_helper callback function.
+by the driver within the fb_probe fb_helper callback function. Drivers do not
+need to release the allocated fb_info structure themselves, this is
+automatically done when calling \ :c:func:`drm_fb_helper_fini`\ .
 
 .. _`drm_fb_helper_alloc_fbi.return`:
 
@@ -206,27 +205,28 @@ Description
 -----------
 
 A wrapper around unregister_framebuffer, to release the fb_info
-framebuffer device
+framebuffer device. This must be called before releasing all resources for
+\ ``fb_helper``\  by calling \ :c:func:`drm_fb_helper_fini`\ .
 
-.. _`drm_fb_helper_release_fbi`:
+.. _`drm_fb_helper_fini`:
 
-drm_fb_helper_release_fbi
-=========================
+drm_fb_helper_fini
+==================
 
-.. c:function:: void drm_fb_helper_release_fbi(struct drm_fb_helper *fb_helper)
+.. c:function:: void drm_fb_helper_fini(struct drm_fb_helper *fb_helper)
 
-    dealloc fb_info and its members
+    finialize a \ :c:type:`struct drm_fb_helper <drm_fb_helper>`\ 
 
     :param struct drm_fb_helper \*fb_helper:
         driver-allocated fbdev helper
 
-.. _`drm_fb_helper_release_fbi.description`:
+.. _`drm_fb_helper_fini.description`:
 
 Description
 -----------
 
-A helper to free memory taken by fb_info and the members cmap and
-apertures
+This cleans up all remaining resources associated with \ ``fb_helper``\ . Must be
+called after \ :c:func:`drm_fb_helper_unlink_fbi`\  was called.
 
 .. _`drm_fb_helper_unlink_fbi`:
 
@@ -267,7 +267,7 @@ drm_fb_helper_deferred_io
 Description
 -----------
 
-This function is used as the \ :c:type:`struct fb_deferred_io <fb_deferred_io>`\  ->deferred_io
+This function is used as the \ :c:type:`fb_deferred_io.deferred_io <fb_deferred_io>`\ 
 callback function for flushing the fbdev mmap writes.
 
 .. _`drm_fb_helper_sys_read`:
@@ -508,7 +508,7 @@ to become available. The console lock can be pretty contented on resume
 due to all the printk activity.
 
 This function can be called multiple times with the same state since
-\ :c:type:`fb_info->state <fb_info>`\  is checked to see if fbdev is running or not before locking.
+\ :c:type:`fb_info.state <fb_info>`\  is checked to see if fbdev is running or not before locking.
 
 Use \ :c:func:`drm_fb_helper_set_suspend`\  if you need to take the lock yourself.
 
@@ -519,13 +519,39 @@ drm_fb_helper_setcmap
 
 .. c:function:: int drm_fb_helper_setcmap(struct fb_cmap *cmap, struct fb_info *info)
 
-    implementation for ->fb_setcmap
+    implementation for \ :c:type:`fb_ops.fb_setcmap <fb_ops>`\ 
 
     :param struct fb_cmap \*cmap:
         cmap to set
 
     :param struct fb_info \*info:
         fbdev registered by the helper
+
+.. _`drm_fb_helper_ioctl`:
+
+drm_fb_helper_ioctl
+===================
+
+.. c:function:: int drm_fb_helper_ioctl(struct fb_info *info, unsigned int cmd, unsigned long arg)
+
+    legacy ioctl implementation
+
+    :param struct fb_info \*info:
+        fbdev registered by the helper
+
+    :param unsigned int cmd:
+        ioctl command
+
+    :param unsigned long arg:
+        ioctl argument
+
+.. _`drm_fb_helper_ioctl.description`:
+
+Description
+-----------
+
+A helper to implement the standard fbdev ioctl. Only
+FBIO_WAITFORVSYNC is implemented for now.
 
 .. _`drm_fb_helper_check_var`:
 
@@ -534,7 +560,7 @@ drm_fb_helper_check_var
 
 .. c:function:: int drm_fb_helper_check_var(struct fb_var_screeninfo *var, struct fb_info *info)
 
-    implementation for ->fb_check_var
+    implementation for \ :c:type:`fb_ops.fb_check_var <fb_ops>`\ 
 
     :param struct fb_var_screeninfo \*var:
         screeninfo to check
@@ -549,7 +575,7 @@ drm_fb_helper_set_par
 
 .. c:function:: int drm_fb_helper_set_par(struct fb_info *info)
 
-    implementation for ->fb_set_par
+    implementation for \ :c:type:`fb_ops.fb_set_par <fb_ops>`\ 
 
     :param struct fb_info \*info:
         fbdev registered by the helper
@@ -570,7 +596,7 @@ drm_fb_helper_pan_display
 
 .. c:function:: int drm_fb_helper_pan_display(struct fb_var_screeninfo *var, struct fb_info *info)
 
-    implementation for ->fb_pan_display
+    implementation for \ :c:type:`fb_ops.fb_pan_display <fb_ops>`\ 
 
     :param struct fb_var_screeninfo \*var:
         updated screen information
@@ -606,7 +632,7 @@ fbdev emulations. Drivers which support acceleration methods which impose
 additional constraints need to set up their own limits.
 
 Drivers should call this (or their equivalent setup code) from their
-->fb_probe callback.
+\ :c:type:`drm_fb_helper_funcs.fb_probe <drm_fb_helper_funcs>`\  callback.
 
 .. _`drm_fb_helper_fill_var`:
 
@@ -635,11 +661,11 @@ Description
 -----------
 
 Sets up the variable fbdev metainformation from the given fb helper instance
-and the drm framebuffer allocated in fb_helper->fb.
+and the drm framebuffer allocated in \ :c:type:`drm_fb_helper.fb <drm_fb_helper>`\ .
 
 Drivers should call this (or their equivalent setup code) from their
-->fb_probe callback after having allocated the fbdev backing
-storage framebuffer.
+\ :c:type:`drm_fb_helper_funcs.fb_probe <drm_fb_helper_funcs>`\  callback after having allocated the fbdev
+backing storage framebuffer.
 
 .. _`drm_fb_helper_initial_config`:
 
@@ -668,9 +694,9 @@ a new framebuffer object as the backing store.
 Note that this also registers the fbdev and so allows userspace to call into
 the driver through the fbdev interfaces.
 
-This function will call down into the ->fb_probe callback to let
-the driver allocate and initialize the fbdev info structure and the drm
-framebuffer used to back the fbdev. \ :c:func:`drm_fb_helper_fill_var`\  and
+This function will call down into the \ :c:type:`drm_fb_helper_funcs.fb_probe <drm_fb_helper_funcs>`\  callback
+to let the driver allocate and initialize the fbdev info structure and the
+drm framebuffer used to back the fbdev. \ :c:func:`drm_fb_helper_fill_var`\  and
 \ :c:func:`drm_fb_helper_fill_fix`\  are provided as helpers to setup simple default
 values for the fbdev info structure.
 

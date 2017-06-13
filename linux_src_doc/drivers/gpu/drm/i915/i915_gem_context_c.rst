@@ -6,11 +6,11 @@
 i915_gem_create_context
 =======================
 
-.. c:function:: struct i915_gem_context *i915_gem_create_context(struct drm_device *dev, struct drm_i915_file_private *file_priv)
+.. c:function:: struct i915_gem_context *i915_gem_create_context(struct drm_i915_private *dev_priv, struct drm_i915_file_private *file_priv)
 
     context state of the GPU for applications that don't utilize HW contexts, as well as an idle case.
 
-    :param struct drm_device \*dev:
+    :param struct drm_i915_private \*dev_priv:
         *undescribed*
 
     :param struct drm_i915_file_private \*file_priv:

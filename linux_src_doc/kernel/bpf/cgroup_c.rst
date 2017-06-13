@@ -33,7 +33,7 @@ cgroup_bpf_inherit
 __cgroup_bpf_update
 ===================
 
-.. c:function:: void __cgroup_bpf_update(struct cgroup *cgrp, struct cgroup *parent, struct bpf_prog *prog, enum bpf_attach_type type)
+.. c:function:: int __cgroup_bpf_update(struct cgroup *cgrp, struct cgroup *parent, struct bpf_prog *prog, enum bpf_attach_type type, bool new_overridable)
 
     Update the pinned program of a cgroup, and propagate the change to descendants
 
@@ -48,6 +48,9 @@ __cgroup_bpf_update
 
     :param enum bpf_attach_type type:
         Type of pinning operation (ingress/egress)
+
+    :param bool new_overridable:
+        *undescribed*
 
 .. _`__cgroup_bpf_update.description`:
 
@@ -83,7 +86,7 @@ __cgroup_bpf_run_filter_skb
     Run a program for packet filtering
 
     :param struct sock \*sk:
-        The socken sending or receiving traffic
+        The socket sending or receiving traffic
 
     :param struct sk_buff \*skb:
         The skb that is being sent or received

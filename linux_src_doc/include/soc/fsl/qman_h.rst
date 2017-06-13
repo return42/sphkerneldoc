@@ -406,6 +406,21 @@ This function can also be used to seed the allocator with
 FQID ranges that it can subsequently allocate from.
 Returns 0 on success, or a negative error code.
 
+.. _`qman_query_fq_np`:
+
+qman_query_fq_np
+================
+
+.. c:function:: int qman_query_fq_np(struct qman_fq *fq, struct qm_mcr_queryfq_np *np)
+
+    Queries non-programmable FQD fields
+
+    :param struct qman_fq \*fq:
+        the frame queue object to be queried
+
+    :param struct qm_mcr_queryfq_np \*np:
+        storage for the queried FQD fields
+
 .. _`qman_alloc_pool_range`:
 
 qman_alloc_pool_range

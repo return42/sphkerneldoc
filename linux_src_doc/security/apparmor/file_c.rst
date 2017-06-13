@@ -36,7 +36,7 @@ file_audit_cb
 aa_audit_file
 =============
 
-.. c:function:: int aa_audit_file(struct aa_profile *profile, struct file_perms *perms, gfp_t gfp, int op, u32 request, const char *name, const char *target, kuid_t ouid, const char *info, int error)
+.. c:function:: int aa_audit_file(struct aa_profile *profile, struct file_perms *perms, const char *op, u32 request, const char *name, const char *target, kuid_t ouid, const char *info, int error)
 
     handle the auditing of file operations
 
@@ -46,10 +46,7 @@ aa_audit_file
     :param struct file_perms \*perms:
         the permissions computed for the request (NOT NULL)
 
-    :param gfp_t gfp:
-        allocation flags
-
-    :param int op:
+    :param const char \*op:
         operation being mediated
 
     :param u32 request:
@@ -184,11 +181,11 @@ Return
 aa_path_perm
 ============
 
-.. c:function:: int aa_path_perm(int op, struct aa_profile *profile, const struct path *path, int flags, u32 request, struct path_cond *cond)
+.. c:function:: int aa_path_perm(const char *op, struct aa_profile *profile, const struct path *path, int flags, u32 request, struct path_cond *cond)
 
     do permissions check & audit for \ ``path``\ 
 
-    :param int op:
+    :param const char \*op:
         operation being checked
 
     :param struct aa_profile \*profile:
@@ -291,11 +288,11 @@ Return
 aa_file_perm
 ============
 
-.. c:function:: int aa_file_perm(int op, struct aa_profile *profile, struct file *file, u32 request)
+.. c:function:: int aa_file_perm(const char *op, struct aa_profile *profile, struct file *file, u32 request)
 
     do permission revalidation check & audit for \ ``file``\ 
 
-    :param int op:
+    :param const char \*op:
         operation being checked
 
     :param struct aa_profile \*profile:

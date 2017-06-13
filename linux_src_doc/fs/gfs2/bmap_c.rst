@@ -140,6 +140,21 @@ V
 \|                                      \|
 ----------------------------------------
 
+.. _`metaptr1`:
+
+metaptr1
+========
+
+.. c:function:: __be64 *metaptr1(unsigned int height, const struct metapath *mp)
+
+    Return the first possible metadata pointer in a metaath buffer
+
+    :param unsigned int height:
+        The metadata height (0 = dinode)
+
+    :param const struct metapath \*mp:
+        The metapath
+
 .. _`metapointer`:
 
 metapointer
@@ -163,6 +178,24 @@ Description
 Return a pointer to the block number of the next height of the metadata
 tree given a buffer containing the pointer to the current height of the
 metadata tree.
+
+.. _`lookup_mp_height`:
+
+lookup_mp_height
+================
+
+.. c:function:: int lookup_mp_height(struct gfs2_inode *ip, struct metapath *mp, int h)
+
+    helper function for lookup_metapath
+
+    :param struct gfs2_inode \*ip:
+        the inode
+
+    :param struct metapath \*mp:
+        the metapath
+
+    :param int h:
+        the height which needs looking up
 
 .. _`lookup_metapath`:
 
@@ -194,6 +227,38 @@ at which it found the unallocated block. Blocks which are found are
 added to the mp->mp_bh[] list.
 
 .. _`lookup_metapath.return`:
+
+Return
+------
+
+error or height of metadata tree
+
+.. _`fillup_metapath`:
+
+fillup_metapath
+===============
+
+.. c:function:: int fillup_metapath(struct gfs2_inode *ip, struct metapath *mp, int h)
+
+    fill up buffers for the metadata path to a specific height
+
+    :param struct gfs2_inode \*ip:
+        The inode
+
+    :param struct metapath \*mp:
+        The metapath
+
+    :param int h:
+        The height to which it should be mapped
+
+.. _`fillup_metapath.description`:
+
+Description
+-----------
+
+Similar to lookup_metapath, but does lookups for a range of heights
+
+.. _`fillup_metapath.return`:
 
 Return
 ------
@@ -329,88 +394,6 @@ Return
 
 errno
 
-.. _`do_strip`:
-
-do_strip
-========
-
-.. c:function:: int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh, struct buffer_head *bh, __be64 *top, __be64 *bottom, unsigned int height, struct strip_mine *sm)
-
-    Look for a layer a particular layer of the file and strip it off
-
-    :param struct gfs2_inode \*ip:
-        the inode
-
-    :param struct buffer_head \*dibh:
-        the dinode buffer
-
-    :param struct buffer_head \*bh:
-        A buffer of pointers
-
-    :param __be64 \*top:
-        The first pointer in the buffer
-
-    :param __be64 \*bottom:
-        One more than the last pointer
-
-    :param unsigned int height:
-        the height this buffer is at
-
-    :param struct strip_mine \*sm:
-        a pointer to a struct strip_mine
-
-.. _`do_strip.return`:
-
-Return
-------
-
-errno
-
-.. _`recursive_scan`:
-
-recursive_scan
-==============
-
-.. c:function:: int recursive_scan(struct gfs2_inode *ip, struct buffer_head *dibh, struct metapath *mp, unsigned int height, u64 block, int first, struct strip_mine *sm)
-
-    recursively scan through the end of a file
-
-    :param struct gfs2_inode \*ip:
-        the inode
-
-    :param struct buffer_head \*dibh:
-        the dinode buffer
-
-    :param struct metapath \*mp:
-        the path through the metadata to the point to start
-
-    :param unsigned int height:
-        the height the recursion is at
-
-    :param u64 block:
-        the indirect block to look at
-
-    :param int first:
-        1 if this is the first block
-
-    :param struct strip_mine \*sm:
-        data opaque to this function to pass to \ ``bc``\ 
-
-.. _`recursive_scan.description`:
-
-Description
------------
-
-When this is first called \ ``height``\  and \ ``block``\  should be zero and
-\ ``first``\  should be 1.
-
-.. _`recursive_scan.return`:
-
-Return
-------
-
-errno
-
 .. _`gfs2_block_truncate_page`:
 
 gfs2_block_truncate_page
@@ -459,6 +442,107 @@ Description
 With jdata files, we have to journal a revoke for each block which is
 truncated. As a result, we need to split this into separate transactions
 if the number of pages being truncated gets too large.
+
+.. _`sweep_bh_for_rgrps`:
+
+sweep_bh_for_rgrps
+==================
+
+.. c:function:: int sweep_bh_for_rgrps(struct gfs2_inode *ip, struct gfs2_holder *rd_gh, const struct metapath *mp, u32 *btotal, int hgt, bool preserve1)
+
+    find an rgrp in a meta buffer and free blocks therein
+
+    :param struct gfs2_inode \*ip:
+        inode
+
+    :param struct gfs2_holder \*rd_gh:
+        *undescribed*
+
+    :param const struct metapath \*mp:
+        current metapath fully populated with buffers
+
+    :param u32 \*btotal:
+        place to keep count of total blocks freed
+
+    :param int hgt:
+        height we're processing
+
+    :param bool preserve1:
+        *undescribed*
+
+.. _`sweep_bh_for_rgrps.description`:
+
+Description
+-----------
+
+We sweep a metadata buffer (provided by the metapath) for blocks we need to
+free, and free them all. However, we do it one rgrp at a time. If this
+block has references to multiple rgrps, we break it into individual
+transactions. This allows other processes to use the rgrps while we're
+focused on a single one, for better concurrency / performance.
+At every transaction boundary, we rewrite the inode into the journal.
+That way the bitmaps are kept consistent with the inode and we can recover
+if we're interrupted by power-outages.
+
+.. _`sweep_bh_for_rgrps.return`:
+
+Return
+------
+
+0, or return code if an error occurred.
+\*btotal has the total number of blocks freed
+
+.. _`find_nonnull_ptr`:
+
+find_nonnull_ptr
+================
+
+.. c:function:: bool find_nonnull_ptr(struct gfs2_sbd *sdp, struct metapath *mp, unsigned int h)
+
+    find a non-null pointer given a metapath and height assumes the metapath is valid (with buffers) out to height h
+
+    :param struct gfs2_sbd \*sdp:
+        *undescribed*
+
+    :param struct metapath \*mp:
+        starting metapath
+
+    :param unsigned int h:
+        desired height to search
+
+.. _`find_nonnull_ptr.return`:
+
+Return
+------
+
+true if a non-null pointer was found in the metapath buffer
+false if all remaining pointers are NULL in the buffer
+
+.. _`trunc_dealloc`:
+
+trunc_dealloc
+=============
+
+.. c:function:: int trunc_dealloc(struct gfs2_inode *ip, u64 newsize)
+
+    truncate a file down to a desired size
+
+    :param struct gfs2_inode \*ip:
+        inode to truncate
+
+    :param u64 newsize:
+        The desired size of the file
+
+.. _`trunc_dealloc.description`:
+
+Description
+-----------
+
+This function truncates a file to newsize. It works from the
+bottom up, and from the right to the left. In other words, it strips off
+the highest layer (data) before stripping any of the metadata. Doing it
+this way is best in case the operation is interrupted by power failure, etc.
+The dinode is rewritten in every transaction to guarantee integrity.
 
 .. _`do_shrink`:
 

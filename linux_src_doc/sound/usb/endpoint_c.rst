@@ -110,16 +110,12 @@ An endpoint that is already running can not be reconfigured.
 snd_usb_endpoint_start
 ======================
 
-.. c:function:: int snd_usb_endpoint_start(struct snd_usb_endpoint *ep, bool can_sleep)
+.. c:function:: int snd_usb_endpoint_start(struct snd_usb_endpoint *ep)
 
     start an snd_usb_endpoint
 
     :param struct snd_usb_endpoint \*ep:
         the endpoint to start
-
-    :param bool can_sleep:
-        flag indicating whether the operation is executed in
-        non-atomic context
 
 .. _`snd_usb_endpoint_start.description`:
 

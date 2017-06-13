@@ -1,0 +1,27 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/netronome/nfp/nfpcore/nfp_hwinfo.c
+
+.. _`nfp_hwinfo_lookup`:
+
+nfp_hwinfo_lookup
+=================
+
+.. c:function:: const char *nfp_hwinfo_lookup(struct nfp_cpp *cpp, const char *lookup)
+
+    Find a value in the HWInfo table by name
+
+    :param struct nfp_cpp \*cpp:
+        NFP CPP handle
+
+    :param const char \*lookup:
+        HWInfo name to search for
+
+.. _`nfp_hwinfo_lookup.return`:
+
+Return
+------
+
+Value of the HWInfo name, or NULL
+
+.. This file was automatic generated / don't edit.
+

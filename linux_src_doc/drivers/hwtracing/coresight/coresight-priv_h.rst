@@ -22,7 +22,6 @@ Definition
         unsigned int nr_pages;
         unsigned long offset;
         local_t data_size;
-        local_t lost;
         bool snapshot;
         void **data_pages;
     }
@@ -43,9 +42,6 @@ offset
 
 data_size
     how much we collected in this run
-
-lost
-    other than zero if we had a HW buffer wrap around
 
 snapshot
     is this run in snapshot mode

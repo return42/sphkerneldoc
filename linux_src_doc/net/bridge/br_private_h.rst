@@ -19,10 +19,12 @@ Definition
 
     struct net_bridge_vlan {
         struct rhash_head vnode;
+        struct rhash_head tnode;
         u16 vid;
         u16 flags;
         struct br_vlan_stats __percpu *stats;
         union {unnamed_union};
+        struct br_tunnel_info tinfo;
         struct list_head vlist;
         struct rcu_head rcu;
     }
@@ -34,6 +36,9 @@ Members
 
 vnode
     rhashtable member
+
+tnode
+    *undescribed*
 
 vid
     VLAN id
@@ -47,6 +52,9 @@ stats
 {unnamed_union}
     anonymous
 
+
+tinfo
+    *undescribed*
 
 vlist
     sorted list of VLAN entries
@@ -81,6 +89,7 @@ Definition
 
     struct net_bridge_vlan_group {
         struct rhashtable vlan_hash;
+        struct rhashtable tunnel_hash;
         struct list_head vlan_list;
         u16 num_vlans;
         u16 pvid;
@@ -93,6 +102,9 @@ Members
 
 vlan_hash
     VLAN entry rhashtable
+
+tunnel_hash
+    *undescribed*
 
 vlan_list
     sorted VLAN entry list

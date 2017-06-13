@@ -893,25 +893,6 @@ Return
 - NETDEV_TX_OK:   Normal end
 - NETDEV_TX_BUSY: Error end
 
-.. _`pch_gbe_get_stats`:
-
-pch_gbe_get_stats
-=================
-
-.. c:function:: struct net_device_stats *pch_gbe_get_stats(struct net_device *netdev)
-
-    Get System Network Statistics
-
-    :param struct net_device \*netdev:
-        Network interface device structure
-
-.. _`pch_gbe_get_stats.return`:
-
-Return
-------
-
-The current stats
-
 .. _`pch_gbe_set_multi`:
 
 pch_gbe_set_multi

@@ -153,6 +153,8 @@ Definition
         size_t (*get_link_af_size)(const struct net_device *dev,u32 ext_filter_mask);
         int (*validate_link_af)(const struct net_device *dev,const struct nlattr *attr);
         int (*set_link_af)(struct net_device *dev,const struct nlattr *attr);
+        int (*fill_stats_af)(struct sk_buff *skb,const struct net_device *dev);
+        size_t (*get_stats_af_size)(const struct net_device *dev);
     }
 
 .. _`rtnl_af_ops.members`:
@@ -181,6 +183,12 @@ validate_link_af
 set_link_af
     Function to parse a IFLA_AF_SPEC attribute and modify
     net_device accordingly.
+
+fill_stats_af
+    *undescribed*
+
+get_stats_af_size
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -14,7 +14,8 @@ ima_get_action
         pointer to inode to measure
 
     :param int mask:
-        contains the permission mask (MAY_READ, MAY_WRITE, MAY_EXECUTE)
+        contains the permission mask (MAY_READ, MAY_WRITE, MAY_EXEC,
+        MAY_APPEND)
 
     :param enum ima_hooks func:
         caller identifier

@@ -36,10 +36,10 @@ octeon_cf_set_piomode
 octeon_cf_data_xfer8
 ====================
 
-.. c:function:: unsigned int octeon_cf_data_xfer8(struct ata_device *dev, unsigned char *buffer, unsigned int buflen, int rw)
+.. c:function:: unsigned int octeon_cf_data_xfer8(struct ata_queued_cmd *qc, unsigned char *buffer, unsigned int buflen, int rw)
 
-    :param struct ata_device \*dev:
-        Device to access
+    :param struct ata_queued_cmd \*qc:
+        Queued command
 
     :param unsigned char \*buffer:
         Data buffer
@@ -55,10 +55,10 @@ octeon_cf_data_xfer8
 octeon_cf_data_xfer16
 =====================
 
-.. c:function:: unsigned int octeon_cf_data_xfer16(struct ata_device *dev, unsigned char *buffer, unsigned int buflen, int rw)
+.. c:function:: unsigned int octeon_cf_data_xfer16(struct ata_queued_cmd *qc, unsigned char *buffer, unsigned int buflen, int rw)
 
-    :param struct ata_device \*dev:
-        Device to access
+    :param struct ata_queued_cmd \*qc:
+        Queued command
 
     :param unsigned char \*buffer:
         Data buffer

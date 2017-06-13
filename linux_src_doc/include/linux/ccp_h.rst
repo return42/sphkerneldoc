@@ -108,6 +108,7 @@ Definition
         u32 cmac_final;
         struct scatterlist *cmac_key;
         u32 cmac_key_len;
+        u32 aad_len;
     }
 
 .. _`ccp_aes_engine.members`:
@@ -153,6 +154,9 @@ cmac_key
 
 cmac_key_len
     length in bytes of cmac_key
+
+aad_len
+    *undescribed*
 
 .. _`ccp_aes_engine.description`:
 
@@ -318,6 +322,82 @@ Variables required to be set when calling \ :c:func:`ccp_enqueue_cmd`\ :
 
 The ctx variable is used as both input and output. On completion of the
 SHA operation the new hash value overwrites the old hash value.
+
+.. _`ccp_des3_engine`:
+
+struct ccp_des3_engine
+======================
+
+.. c:type:: struct ccp_des3_engine
+
+    CCP SHA operation
+
+.. _`ccp_des3_engine.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ccp_des3_engine {
+        enum ccp_des3_type type;
+        enum ccp_des3_mode mode;
+        enum ccp_des3_action action;
+        struct scatterlist *key;
+        u32 key_len;
+        struct scatterlist *iv;
+        u32 iv_len;
+        struct scatterlist *src;
+        struct scatterlist * *dst;
+        u64 src_len;
+    }
+
+.. _`ccp_des3_engine.members`:
+
+Members
+-------
+
+type
+    Type of 3DES operation
+
+mode
+    cipher mode
+
+action
+    3DES operation (decrypt/encrypt)
+
+key
+    key to be used for this 3DES operation
+
+key_len
+    length of key (in bytes)
+
+iv
+    IV to be used for this AES operation
+
+iv_len
+    length in bytes of iv
+
+src
+    input data to be used for this operation
+
+dst
+    output data produced by this operation
+
+src_len
+    length of input data used for this operation (in bytes)
+
+.. _`ccp_des3_engine.description`:
+
+Description
+-----------
+
+Variables required to be set when calling \ :c:func:`ccp_enqueue_cmd`\ :
+- type, mode, action, key, key_len, src, dst, src_len
+- iv, iv_len for any mode other than ECB
+
+The iv variable is used as both input and output. On completion of the
+3DES operation the new IV overwrites the old IV.
 
 .. _`ccp_rsa_engine`:
 
@@ -753,7 +833,7 @@ work
     work element used for callbacks (ccp driver use only)
 
 ccp
-    CCP device to be run on (ccp driver use only)
+    CCP device to be run on
 
 ret
     operation return code (ccp driver use only)

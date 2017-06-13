@@ -34,8 +34,8 @@ Adds a sysfs entry for the flashnode session attributes
 Return
 ------
 
-pointer to allocated flashnode sess on success
-\ ``NULL``\  on failure
+ pointer to allocated flashnode sess on success
+ \ ``NULL``\  on failure
 
 .. _`iscsi_create_flashnode_conn`:
 
@@ -70,8 +70,8 @@ Adds a sysfs entry for the flashnode connection attributes
 Return
 ------
 
-pointer to allocated flashnode conn on success
-\ ``NULL``\  on failure
+ pointer to allocated flashnode conn on success
+ \ ``NULL``\  on failure
 
 .. _`iscsi_is_flashnode_conn_dev`:
 
@@ -100,8 +100,8 @@ Verifies if the passed device is flashnode conn device
 Return
 ------
 
-1 on success
-0 on failure
+ 1 on success
+ 0 on failure
 
 .. _`iscsi_get_flashnode_by_index`:
 
@@ -130,8 +130,8 @@ Finds the flashnode session object for the passed index
 Return
 ------
 
-pointer to found flashnode session object on success
-\ ``NULL``\  on failure
+ pointer to found flashnode session object on success
+ \ ``NULL``\  on failure
 
 .. _`iscsi_find_flashnode_sess`:
 
@@ -164,8 +164,8 @@ defined in passed function pointer
 Return
 ------
 
-pointer to found flashnode session device object on success
-\ ``NULL``\  on failure
+ pointer to found flashnode session device object on success
+ \ ``NULL``\  on failure
 
 .. _`iscsi_find_flashnode_conn`:
 
@@ -192,8 +192,8 @@ defined in passed function pointer
 Return
 ------
 
-pointer to found flashnode connection device object on success
-\ ``NULL``\  on failure
+ pointer to found flashnode connection device object on success
+ \ ``NULL``\  on failure
 
 .. _`iscsi_destroy_flashnode_sess`:
 

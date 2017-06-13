@@ -18,9 +18,9 @@ fc_get_event_number
 Notes
 -----
 
-We could have inlined this, but it would have required fc_event_seq to
-be exposed. For now, live with the subroutine call.
-Atomic used to avoid lock/unlock...
+  We could have inlined this, but it would have required fc_event_seq to
+  be exposed. For now, live with the subroutine call.
+  Atomic used to avoid lock/unlock...
 
 .. _`fc_host_post_event`:
 
@@ -48,7 +48,7 @@ fc_host_post_event
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_host_post_vendor_event`:
 
@@ -79,21 +79,21 @@ fc_host_post_vendor_event
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
-.. _`fc_timed_out`:
+.. _`fc_eh_timed_out`:
 
-fc_timed_out
-============
+fc_eh_timed_out
+===============
 
-.. c:function:: enum blk_eh_timer_return fc_timed_out(struct scsi_cmnd *scmd)
+.. c:function:: enum blk_eh_timer_return fc_eh_timed_out(struct scsi_cmnd *scmd)
 
     FC Transport I/O timeout intercept handler
 
     :param struct scsi_cmnd \*scmd:
         The SCSI command which timed out
 
-.. _`fc_timed_out.description`:
+.. _`fc_eh_timed_out.description`:
 
 Description
 -----------
@@ -113,12 +113,12 @@ Eventually, either the device will return, or devloss_tmo will fire,
 and when the timeout then fires, it will be handled normally.
 If the rport is not blocked, normal error handling continues.
 
-.. _`fc_timed_out.notes`:
+.. _`fc_eh_timed_out.notes`:
 
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_queue_work`:
 
@@ -140,9 +140,9 @@ fc_queue_work
 Return value
 ------------
 
-1 - work queued for execution
-0 - work is already queued
--EINVAL - work queue doesn't exist
+     1 - work queued for execution
+     0 - work is already queued
+     -EINVAL - work queue doesn't exist
 
 .. _`fc_flush_work`:
 
@@ -179,7 +179,7 @@ fc_queue_devloss_work
 Return value
 ------------
 
-1 on success / 0 already queued / < 0 for error
+     1 on success / 0 already queued / < 0 for error
 
 .. _`fc_flush_devloss`:
 
@@ -213,22 +213,17 @@ Description
 This routine is expected to be called immediately preceding the
 a driver's call to \ :c:func:`scsi_remove_host`\ .
 
-.. _`fc_remove_host.warning`:
-
-WARNING
--------
-
-A driver utilizing the fc_transport, which fails to call
-this routine prior to \ :c:func:`scsi_remove_host`\ , will leave dangling
-objects in /sys/class/fc_remote_ports. Access to any of these
-objects can result in a system crash !!!
+WARNING: A driver utilizing the fc_transport, which fails to call
+  this routine prior to \ :c:func:`scsi_remove_host`\ , will leave dangling
+  objects in /sys/class/fc_remote_ports. Access to any of these
+  objects can result in a system crash !!!
 
 .. _`fc_remove_host.notes`:
 
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_starget_delete`:
 
@@ -293,7 +288,7 @@ class and sysfs creation.
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_remote_port_add`:
 
@@ -352,7 +347,7 @@ Should not be called from interrupt context.
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_remote_port_delete`:
 
@@ -375,16 +370,18 @@ The LLDD calls this routine to notify the transport that a remote
 port is no longer part of the topology. Note: Although a port
 may no longer be part of the topology, it may persist in the remote
 ports displayed by the fc_host. We do this under 2 conditions:
+
 1) If the port was a scsi target, we delay its deletion by "blocking" it.
-This allows the port to temporarily disappear, then reappear without
-disrupting the SCSI device tree attached to it. During the "blocked"
-period the port will still exist.
+   This allows the port to temporarily disappear, then reappear without
+   disrupting the SCSI device tree attached to it. During the "blocked"
+   period the port will still exist.
+
 2) If the port was a scsi target and disappears for longer than we
-expect, we'll delete the port and the tear down the SCSI device tree
-attached to it. However, we want to semi-persist the target id assigned
-to that port if it eventually does exist. The port structure will
-remain (although with minimal information) so that the target id
-bindings remails.
+   expect, we'll delete the port and the tear down the SCSI device tree
+   attached to it. However, we want to semi-persist the target id assigned
+   to that port if it eventually does exist. The port structure will
+   remain (although with minimal information) so that the target id
+   bindings remails.
 
 If the remote port is not an FCP Target, it will be fully torn down
 and deallocated, including the fc_remote_port class device.
@@ -395,22 +392,22 @@ longer exists. From the SCSI midlayer's perspective, the SCSI target
 exists, but all sdevs on it are blocked from further I/O. The following
 is then expected.
 
-If the remote port does not return (signaled by a LLDD call to
-\ :c:func:`fc_remote_port_add`\ ) within the dev_loss_tmo timeout, then the
-scsi target is removed - killing all outstanding i/o and removing the
-scsi devices attached ot it. The port structure will be marked Not
-Present and be partially cleared, leaving only enough information to
-recognize the remote port relative to the scsi target id binding if
-it later appears.  The port will remain as long as there is a valid
-binding (e.g. until the user changes the binding type or unloads the
-scsi host with the binding).
+  If the remote port does not return (signaled by a LLDD call to
+  \ :c:func:`fc_remote_port_add`\ ) within the dev_loss_tmo timeout, then the
+  scsi target is removed - killing all outstanding i/o and removing the
+  scsi devices attached ot it. The port structure will be marked Not
+  Present and be partially cleared, leaving only enough information to
+  recognize the remote port relative to the scsi target id binding if
+  it later appears.  The port will remain as long as there is a valid
+  binding (e.g. until the user changes the binding type or unloads the
+  scsi host with the binding).
 
-If the remote port returns within the dev_loss_tmo value (and matches
-according to the target id binding type), the port structure will be
-reused. If it is no longer a SCSI target, the target will be torn
-down. If it continues to be a SCSI target, then the target will be
-unblocked (allowing i/o to be resumed), and a scan will be activated
-to ensure that all luns are detected.
+  If the remote port returns within the dev_loss_tmo value (and matches
+  according to the target id binding type), the port structure will be
+  reused. If it is no longer a SCSI target, the target will be torn
+  down. If it continues to be a SCSI target, then the target will be
+  unblocked (allowing i/o to be resumed), and a scan will be activated
+  to ensure that all luns are detected.
 
 Called from normal process context only - cannot be called from interrupt.
 
@@ -419,7 +416,7 @@ Called from normal process context only - cannot be called from interrupt.
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_remote_port_rolechg`:
 
@@ -458,7 +455,7 @@ Should not be called from interrupt context.
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_timeout_deleted_rport`:
 
@@ -478,7 +475,7 @@ Description
 -----------
 
 An attempt to delete a remote port blocks, and if it fails
-to return in the allotted time this gets called.
+             to return in the allotted time this gets called.
 
 .. _`fc_timeout_fail_rport_io`:
 
@@ -498,7 +495,7 @@ Notes
 -----
 
 Only requests the failure of the io, not that all are flushed
-prior to returning.
+   prior to returning.
 
 .. _`fc_scsi_scan_rport`:
 
@@ -541,8 +538,8 @@ Return
 ------
 
 0 if the fc_rport left the state FC_PORTSTATE_BLOCKED.
-FAST_IO_FAIL if the fast_io_fail_tmo fired, this should be
-passed back to scsi_eh.
+         FAST_IO_FAIL if the fast_io_fail_tmo fired, this should be
+         passed back to scsi_eh.
 
 .. _`fc_vport_setup`:
 
@@ -582,7 +579,7 @@ to instantiate the vport, the completes w/ class and sysfs creation.
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_vport_create`:
 
@@ -608,7 +605,7 @@ fc_vport_create
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_vport_terminate`:
 
@@ -635,7 +632,7 @@ the vport from the shost and object tree.
 Notes
 -----
 
-This routine assumes no locks are held on entry.
+     This routine assumes no locks are held on entry.
 
 .. _`fc_vport_sched_delete`:
 
@@ -738,7 +735,7 @@ fc_bsg_remove
 Notes
 -----
 
-Before unregistering the queue empty any requests that are blocked
+  Before unregistering the queue empty any requests that are blocked
 
 .. This file was automatic generated / don't edit.
 

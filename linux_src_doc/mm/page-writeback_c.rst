@@ -59,7 +59,7 @@ Description
 -----------
 
 Calculate \ ``dtc``\ ->thresh and ->bg_thresh considering
-vm_dirty_{bytes\|ratio} and dirty_background_{bytes\|ratio}.  The caller
+vm_dirty_{bytes|ratio} and dirty_background_{bytes|ratio}.  The caller
 must ensure that \ ``dtc``\ ->avail is set before calling this function.  The
 dirty limits will be lifted by 1/4 for PF_LESS_THROTTLE (ie. nfsd) and
 real-time tasks.
@@ -251,7 +251,7 @@ write_cache_pages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*@wbc->nr_to_write
+        subtract the number of written pages from *@wbc->nr_to_write
 
     :param writepage_t writepage:
         function called for each page
@@ -292,7 +292,7 @@ generic_writepages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*@wbc->nr_to_write
+        subtract the number of written pages from *@wbc->nr_to_write
 
 .. _`generic_writepages.description`:
 

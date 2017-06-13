@@ -22,9 +22,8 @@ Definition
         unsigned char io_state[6];
         unsigned char out_state[6];
         unsigned char control[2];
-        spinlock_t lock;
+        raw_spinlock_t lock;
         unsigned base;
-        unsigned irq;
         unsigned char irq_mask;
     }
 
@@ -50,9 +49,6 @@ lock
 
 base
     base port address of the GPIO device
-
-irq
-    Interrupt line number
 
 irq_mask
     I/O bits affected by interrupts

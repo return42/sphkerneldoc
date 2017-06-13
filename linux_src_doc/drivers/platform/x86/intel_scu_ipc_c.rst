@@ -305,6 +305,53 @@ Description
 Issue a command to the SCU which involves data transfers. Do the
 data copies under the lock but leave it for the caller to interpret
 
+.. _`intel_scu_ipc_raw_command`:
+
+intel_scu_ipc_raw_command
+=========================
+
+.. c:function:: int intel_scu_ipc_raw_command(int cmd, int sub, u8 *in, int inlen, u32 *out, int outlen, u32 dptr, u32 sptr)
+
+    IPC command with data and pointers
+
+    :param int cmd:
+        IPC command code.
+
+    :param int sub:
+        IPC command sub type.
+
+    :param u8 \*in:
+        input data of this IPC command.
+
+    :param int inlen:
+        input data length in dwords.
+
+    :param u32 \*out:
+        output data of this IPC command.
+
+    :param int outlen:
+        output data length in dwords.
+
+    :param u32 dptr:
+        data writing to DPTR register.
+
+    :param u32 sptr:
+        data writing to SPTR register.
+
+.. _`intel_scu_ipc_raw_command.description`:
+
+Description
+-----------
+
+Send an IPC command to SCU with input/output data and source/dest pointers.
+
+.. _`intel_scu_ipc_raw_command.return`:
+
+Return
+------
+
+an IPC error code or 0 on success.
+
 .. _`intel_scu_ipc_i2c_cntrl`:
 
 intel_scu_ipc_i2c_cntrl

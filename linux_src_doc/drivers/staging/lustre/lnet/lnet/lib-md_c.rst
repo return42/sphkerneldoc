@@ -6,18 +6,18 @@
 LNetMDAttach
 ============
 
-.. c:function:: int LNetMDAttach(lnet_handle_me_t meh, lnet_md_t umd, lnet_unlink_t unlink, lnet_handle_md_t *handle)
+.. c:function:: int LNetMDAttach(struct lnet_handle_me meh, struct lnet_md umd, enum lnet_unlink unlink, struct lnet_handle_md *handle)
 
-    :param lnet_handle_me_t meh:
+    :param struct lnet_handle_me meh:
         *undescribed*
 
-    :param lnet_md_t umd:
+    :param struct lnet_md umd:
         *undescribed*
 
-    :param lnet_unlink_t unlink:
+    :param enum lnet_unlink unlink:
         *undescribed*
 
-    :param lnet_handle_md_t \*handle:
+    :param struct lnet_handle_md \*handle:
         *undescribed*
 
 .. _`lnetmdattach.description`:
@@ -52,17 +52,17 @@ a MD.
 LNetMDBind
 ==========
 
-.. c:function:: int LNetMDBind(lnet_md_t umd, lnet_unlink_t unlink, lnet_handle_md_t *handle)
+.. c:function:: int LNetMDBind(struct lnet_md umd, enum lnet_unlink unlink, struct lnet_handle_md *handle)
 
     a MD that is not associated with a ME. Such MDs are usually used in \ :c:func:`LNetPut`\  and \ :c:func:`LNetGet`\  operations.
 
-    :param lnet_md_t umd:
+    :param struct lnet_md umd:
         *undescribed*
 
-    :param lnet_unlink_t unlink:
+    :param enum lnet_unlink unlink:
         *undescribed*
 
-    :param lnet_handle_md_t \*handle:
+    :param struct lnet_handle_md \*handle:
         *undescribed*
 
 .. _`lnetmdbind.description`:
@@ -87,11 +87,11 @@ it's OK to supply a NULL \a umd.eq_handle by calling
 LNetMDUnlink
 ============
 
-.. c:function:: int LNetMDUnlink(lnet_handle_md_t mdh)
+.. c:function:: int LNetMDUnlink(struct lnet_handle_md mdh)
 
     the internal resources associated with it. As a result, active messages associated with the MD may get aborted.
 
-    :param lnet_handle_md_t mdh:
+    :param struct lnet_handle_md mdh:
         *undescribed*
 
 .. _`lnetmdunlink.description`:

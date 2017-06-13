@@ -6,11 +6,11 @@
 omap2xxx_cm_split_idlest_reg
 ============================
 
-.. c:function:: int omap2xxx_cm_split_idlest_reg(void __iomem *idlest_reg, s16 *prcm_inst, u8 *idlest_reg_id)
+.. c:function:: int omap2xxx_cm_split_idlest_reg(struct clk_omap_reg *idlest_reg, s16 *prcm_inst, u8 *idlest_reg_id)
 
     split CM_IDLEST reg addr into its components
 
-    :param void __iomem \*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         CM_IDLEST\* virtual address
 
     :param s16 \*prcm_inst:

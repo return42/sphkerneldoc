@@ -1,119 +1,201 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_drv.h
 
-.. _`i915_gem_context`:
+.. _`i915_perf_stream_ops`:
 
-struct i915_gem_context
-=======================
+struct i915_perf_stream_ops
+===========================
 
-.. c:type:: struct i915_gem_context
+.. c:type:: struct i915_perf_stream_ops
 
-    as the name implies, represents a context.
+    the OPs to support a specific stream type
 
-.. _`i915_gem_context.definition`:
+.. _`i915_perf_stream_ops.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct i915_gem_context {
-        struct kref ref;
-        struct drm_i915_private *i915;
-        struct drm_i915_file_private *file_priv;
-        struct i915_hw_ppgtt *ppgtt;
-        struct pid *pid;
-        const char *name;
-        struct i915_ctx_hang_stats hang_stats;
-        unsigned long flags;
-    #define CONTEXT_NO_ZEROMAP BIT(0)
-    #define CONTEXT_NO_ERROR_CAPTURE BIT(1)
-        unsigned int hw_id;
-        u32 user_handle;
-        int priority;
-        u32 ggtt_alignment;
-        struct intel_context engine[I915_NUM_ENGINES];
-        u32 ring_size;
-        u32 desc_template;
-        struct atomic_notifier_head status_notifier;
-        bool execlists_force_single_submission;
-        struct list_head link;
-        u8 remap_slice;
-        bool closed:1;
+    struct i915_perf_stream_ops {
+        void (*enable)(struct i915_perf_stream *stream);
+        void (*disable)(struct i915_perf_stream *stream);
+        void (*poll_wait)(struct i915_perf_stream *stream,struct file *file,poll_table *wait);
+        int (*wait_unlocked)(struct i915_perf_stream *stream);
+        int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count,size_t *offset);
+        void (*destroy)(struct i915_perf_stream *stream);
     }
 
-.. _`i915_gem_context.members`:
+.. _`i915_perf_stream_ops.members`:
 
 Members
 -------
 
-ref
-    reference count.
+enable
+    Enables the collection of HW samples, either in response to`I915_PERF_IOCTL_ENABLE` or implicitly called when stream is opened
+    without `I915_PERF_FLAG_DISABLED`.
 
-i915
-    *undescribed*
+disable
+    Disables the collection of HW samples, either in responseto `I915_PERF_IOCTL_DISABLE` or implicitly called before destroying
+    the stream.
 
-file_priv
-    filp associated with this context (NULL for global default
-    context).
+poll_wait
+    Call poll_wait, passing a wait queue that will be wokenonce there is something ready to \ :c:func:`read`\  for the stream
 
-ppgtt
-    virtual memory space used by this context.
+wait_unlocked
+    For handling a blocking read, wait until there issomething to ready to \ :c:func:`read`\  for the stream. E.g. wait on the same
+    wait queue that would be passed to \ :c:func:`poll_wait`\ .
 
-pid
-    *undescribed*
+read
+    Copy buffered metrics as records to userspace**buf**: the userspace, destination buffer
+    **count**: the number of bytes to copy, requested by userspace
+    **offset**: zero at the start of the read, updated as the read
+    proceeds, it represents how many bytes have been copied so far and
+    the buffer offset for copying the next record.
 
-name
-    *undescribed*
+    Copy as many buffered i915 perf samples and records for this stream
+    to userspace as will fit in the given buffer.
 
-hang_stats
-    information about the role of this context in possible GPU
-    hangs.
+    Only write complete records; returning -%ENOSPC if there isn't room
+    for a complete record.
 
-flags
-    context specific flags:
-    CONTEXT_NO_ZEROMAP: do not allow mapping things to page 0.
+    Return any error condition that results in a short read such as
+    -%ENOSPC or -%EFAULT, even though these may be squashed before
+    returning to userspace.
 
-hw_id
-    *undescribed*
+destroy
+    Cleanup any stream specific resources.
+    The stream will always be disabled before this is called.
 
-user_handle
-    userspace tracking identity for this context.
+.. _`i915_perf_stream`:
 
-priority
-    *undescribed*
+struct i915_perf_stream
+=======================
 
-ggtt_alignment
-    *undescribed*
+.. c:type:: struct i915_perf_stream
 
-ring_size
-    *undescribed*
+    state for a single open stream FD
 
-desc_template
-    *undescribed*
+.. _`i915_perf_stream.definition`:
 
-status_notifier
-    *undescribed*
+Definition
+----------
 
-execlists_force_single_submission
-    *undescribed*
+.. code-block:: c
+
+    struct i915_perf_stream {
+        struct drm_i915_private *dev_priv;
+        struct list_head link;
+        u32 sample_flags;
+        int sample_size;
+        struct i915_gem_context *ctx;
+        bool enabled;
+        const struct i915_perf_stream_ops *ops;
+    }
+
+.. _`i915_perf_stream.members`:
+
+Members
+-------
+
+dev_priv
+    i915 drm device
 
 link
-    link in the global list of contexts.
+    Links the stream into ``&drm_i915_private->streams``
 
-remap_slice
-    l3 row remapping information.
+sample_flags
+    Flags representing the `DRM_I915_PERF_PROP_SAMPLE_*`properties given when opening a stream, representing the contents
+    of a single sample as \ :c:func:`read`\  by userspace.
 
-closed
-    *undescribed*
+sample_size
+    Considering the configured contents of a samplecombined with the required header size, this is the total size
+    of a single sample record.
 
-.. _`i915_gem_context.description`:
+ctx
+    %NULL if measuring system-wide across all contexts or aspecific context that is being monitored.
 
-Description
------------
+enabled
+    Whether the stream is currently enabled, consideringwhether the stream was opened in a disabled state and based
+    on `I915_PERF_IOCTL_ENABLE` and `I915_PERF_IOCTL_DISABLE` calls.
 
-Contexts are memory images used by the hardware to store copies of their
-internal state.
+ops
+    The callbacks providing the implementation of this specifictype of configured stream.
+
+.. _`i915_oa_ops`:
+
+struct i915_oa_ops
+==================
+
+.. c:type:: struct i915_oa_ops
+
+    Gen specific implementation of an OA unit stream
+
+.. _`i915_oa_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct i915_oa_ops {
+        void (*init_oa_buffer)(struct drm_i915_private *dev_priv);
+        int (*enable_metric_set)(struct drm_i915_private *dev_priv);
+        void (*disable_metric_set)(struct drm_i915_private *dev_priv);
+        void (*oa_enable)(struct drm_i915_private *dev_priv);
+        void (*oa_disable)(struct drm_i915_private *dev_priv);
+        int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count,size_t *offset);
+        bool (*oa_buffer_is_empty)(struct drm_i915_private *dev_priv);
+    }
+
+.. _`i915_oa_ops.members`:
+
+Members
+-------
+
+init_oa_buffer
+    Resets the head and tail pointers of thecircular buffer for periodic OA reports.
+
+    Called when first opening a stream for OA metrics, but also may be
+    called in response to an OA buffer overflow or other error
+    condition.
+
+    Note it may be necessary to clear the full OA buffer here as part of
+    maintaining the invariable that new reports must be written to
+    zeroed memory for us to be able to reliable detect if an expected
+    report has not yet landed in memory.  (At least on Haswell the OA
+    buffer tail pointer is not synchronized with reports being visible
+    to the CPU)
+
+enable_metric_set
+    Applies any MUX configuration to set up theBoolean and Custom (B/C) counters that are part of the counter
+    reports being sampled. May apply system constraints such as
+    disabling EU clock gating as required.
+
+disable_metric_set
+    Remove system constraints associated with usingthe OA unit.
+
+oa_enable
+    Enable periodic sampling
+
+oa_disable
+    Disable periodic sampling
+
+read
+    Copy data from the circular OA buffer into a given userspacebuffer.
+
+oa_buffer_is_empty
+    Check if OA buffer empty (false positives OK)
+    This is either called via fops or the poll check hrtimer (atomic
+    ctx) without any locks taken.
+
+    It's safe to read OA config state here unlocked, assuming that this
+    is only called while the stream is enabled, while the global OA
+    configuration can't be modified.
+
+    Efficiency is more important than avoiding some false positives
+    here, which will be handled gracefully - likely resulting in an
+    \ ``EAGAIN``\  error for userspace.
 
 .. _`__sg_next`:
 
@@ -132,9 +214,9 @@ __sg_next
 Description
 -----------
 
-If the entry is the last, return NULL; otherwise, step to the next
-element in the array (@sg@+1). If that's a chain pointer, follow it;
-otherwise just return the pointer to the current element.
+  If the entry is the last, return NULL; otherwise, step to the next
+  element in the array (@sg@+1). If that's a chain pointer, follow it;
+  otherwise just return the pointer to the current element.
 
 .. _`for_each_sgt_dma`:
 
@@ -179,13 +261,13 @@ i915_gem_object_pin_map
 
 .. c:function:: void *i915_gem_object_pin_map(struct drm_i915_gem_object *obj, enum i915_map_type type)
 
-    return a contiguous mapping of the entire object \ ``obj``\  - the object to map into kernel address space \ ``type``\  - the type of mapping, used to select pgprot_t
+    return a contiguous mapping of the entire object
 
     :param struct drm_i915_gem_object \*obj:
-        *undescribed*
+        the object to map into kernel address space
 
     :param enum i915_map_type type:
-        *undescribed*
+        the type of mapping, used to select pgprot_t
 
 .. _`i915_gem_object_pin_map.description`:
 
@@ -210,10 +292,10 @@ i915_gem_object_unpin_map
 
 .. c:function:: void i915_gem_object_unpin_map(struct drm_i915_gem_object *obj)
 
-    releases an earlier mapping \ ``obj``\  - the object to unmap
+    releases an earlier mapping
 
     :param struct drm_i915_gem_object \*obj:
-        *undescribed*
+        the object to unmap
 
 .. _`i915_gem_object_unpin_map.description`:
 

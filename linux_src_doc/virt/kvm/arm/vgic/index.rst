@@ -9,6 +9,7 @@ vgic
 
     vgic-init_c
     vgic-irqfd_c
+    vgic-its_c
     vgic-kvm-device_c
     vgic-mmio-v3_c
     vgic-v2_c

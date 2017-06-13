@@ -97,7 +97,7 @@ Definition
 .. code-block:: c
 
     struct kpp_alg {
-        int (*set_secret)(struct crypto_kpp *tfm, void *buffer,unsigned int len);
+        int (*set_secret)(struct crypto_kpp *tfm, const void *buffer,unsigned int len);
         int (*generate_public_key)(struct kpp_request *req);
         int (*compute_shared_secret)(struct kpp_request *req);
         int (*max_size)(struct crypto_kpp *tfm);
@@ -345,14 +345,14 @@ len
 crypto_kpp_set_secret
 =====================
 
-.. c:function:: int crypto_kpp_set_secret(struct crypto_kpp *tfm, void *buffer, unsigned int len)
+.. c:function:: int crypto_kpp_set_secret(struct crypto_kpp *tfm, const void *buffer, unsigned int len)
 
     Invoke kpp operation
 
     :param struct crypto_kpp \*tfm:
         tfm handle
 
-    :param void \*buffer:
+    :param const void \*buffer:
         Buffer holding the packet representation of the private
         key. The structure of the packet key depends on the particular
         KPP implementation. Packing and unpacking helpers are provided

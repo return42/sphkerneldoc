@@ -7,5 +7,5 @@ notify
 .. toctree::
     :maxdepth: 1
 
-    inode_mark_c
+    fsnotify_c
     notification_c

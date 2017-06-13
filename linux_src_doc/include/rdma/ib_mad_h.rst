@@ -55,6 +55,18 @@ ib_set_cpi_capmask2
     :param u32 capmask2:
         The capmask2 to set.
 
+.. _`opa_get_cpi_capmask2`:
+
+opa_get_cpi_capmask2
+====================
+
+.. c:function:: u32 opa_get_cpi_capmask2(struct opa_class_port_info *cpi)
+
+    Returns the capmask2 value from cap_mask2_resp_time in ib_class_port_info.
+
+    :param struct opa_class_port_info \*cpi:
+        A struct opa_class_port_info mad.
+
 .. _`ib_response_mad`:
 
 ib_response_mad
@@ -271,7 +283,7 @@ ib_register_mad_snoop
 ib_unregister_mad_agent
 =======================
 
-.. c:function:: int ib_unregister_mad_agent(struct ib_mad_agent *mad_agent)
+.. c:function:: void ib_unregister_mad_agent(struct ib_mad_agent *mad_agent)
 
     Unregisters a client from using MAD services.
 

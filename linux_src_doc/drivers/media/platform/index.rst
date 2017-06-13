@@ -11,6 +11,7 @@ platform
     davinci/index
     exynos-gsc/index
     exynos4-is/index
+    mtk-jpeg/index
     mtk-mdp/index
     mtk-vcodec/index
     mtk-vpu/index
@@ -22,6 +23,7 @@ platform
     soc_camera/index
     sti/index
     ti-vpe/index
+    vimc/index
     vsp1/index
     xilinx/index
     pxa_camera_c

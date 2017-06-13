@@ -24,6 +24,7 @@ vmwgfx
     vmwgfx_ioctl_c
     vmwgfx_kms_c
     vmwgfx_kms_h
+    vmwgfx_ldu_c
     vmwgfx_mob_c
     vmwgfx_msg_c
     vmwgfx_overlay_c
@@ -31,7 +32,9 @@ vmwgfx
     vmwgfx_resource_priv_h
     vmwgfx_scrn_c
     vmwgfx_shader_c
+    vmwgfx_simple_resource_c
     vmwgfx_so_c
     vmwgfx_so_h
     vmwgfx_stdu_c
     vmwgfx_surface_c
+    vmwgfx_va_c

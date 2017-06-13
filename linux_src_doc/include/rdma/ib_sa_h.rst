@@ -133,7 +133,7 @@ ib_sa_get_mcmember_rec
 ib_init_ah_from_mcmember
 ========================
 
-.. c:function:: int ib_init_ah_from_mcmember(struct ib_device *device, u8 port_num, struct ib_sa_mcmember_rec *rec, struct net_device *ndev, enum ib_gid_type gid_type, struct ib_ah_attr *ah_attr)
+.. c:function:: int ib_init_ah_from_mcmember(struct ib_device *device, u8 port_num, struct ib_sa_mcmember_rec *rec, struct net_device *ndev, enum ib_gid_type gid_type, struct rdma_ah_attr *ah_attr)
 
     Initialize address handle attributes based on an SA multicast member record.
 
@@ -152,7 +152,7 @@ ib_init_ah_from_mcmember
     :param enum ib_gid_type gid_type:
         *undescribed*
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         *undescribed*
 
 .. _`ib_init_ah_from_path`:
@@ -160,7 +160,7 @@ ib_init_ah_from_mcmember
 ib_init_ah_from_path
 ====================
 
-.. c:function:: int ib_init_ah_from_path(struct ib_device *device, u8 port_num, struct ib_sa_path_rec *rec, struct ib_ah_attr *ah_attr)
+.. c:function:: int ib_init_ah_from_path(struct ib_device *device, u8 port_num, struct sa_path_rec *rec, struct rdma_ah_attr *ah_attr)
 
     Initialize address handle attributes based on an SA path record.
 
@@ -170,10 +170,10 @@ ib_init_ah_from_path
     :param u8 port_num:
         *undescribed*
 
-    :param struct ib_sa_path_rec \*rec:
+    :param struct sa_path_rec \*rec:
         *undescribed*
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         *undescribed*
 
 .. _`ib_sa_pack_path`:
@@ -181,11 +181,11 @@ ib_init_ah_from_path
 ib_sa_pack_path
 ===============
 
-.. c:function:: void ib_sa_pack_path(struct ib_sa_path_rec *rec, void *attribute)
+.. c:function:: void ib_sa_pack_path(struct sa_path_rec *rec, void *attribute)
 
     Conert a path record from struct ib_sa_path_rec to IB MAD wire format.
 
-    :param struct ib_sa_path_rec \*rec:
+    :param struct sa_path_rec \*rec:
         *undescribed*
 
     :param void \*attribute:
@@ -196,14 +196,14 @@ ib_sa_pack_path
 ib_sa_unpack_path
 =================
 
-.. c:function:: void ib_sa_unpack_path(void *attribute, struct ib_sa_path_rec *rec)
+.. c:function:: void ib_sa_unpack_path(void *attribute, struct sa_path_rec *rec)
 
     Convert a path record from MAD format to struct ib_sa_path_rec.
 
     :param void \*attribute:
         *undescribed*
 
-    :param struct ib_sa_path_rec \*rec:
+    :param struct sa_path_rec \*rec:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

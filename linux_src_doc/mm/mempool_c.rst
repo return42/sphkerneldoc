@@ -109,7 +109,7 @@ Description
 
 this function only sleeps if the \ :c:func:`alloc_fn`\  function sleeps or
 returns NULL. Note that due to preallocation, this function
-\*never\* fails when called from process contexts. (it might
+*never* fails when called from process contexts. (it might
 fail if called from an IRQ context.)
 
 .. _`mempool_alloc.note`:
@@ -117,7 +117,7 @@ fail if called from an IRQ context.)
 Note
 ----
 
-using \__GFP_ZERO is not supported.
+using __GFP_ZERO is not supported.
 
 .. _`mempool_free`:
 

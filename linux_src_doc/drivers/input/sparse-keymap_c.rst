@@ -65,7 +65,7 @@ sparse_keymap_setup
 
     :param int (\*setup)(struct input_dev \*, struct key_entry \*):
         Function that can be used to adjust keymap entries
-        depending on device's deeds, may be \ ``NULL``\ 
+        depending on device's needs, may be \ ``NULL``\ 
 
 .. _`sparse_keymap_setup.description`:
 
@@ -74,8 +74,8 @@ Description
 
 The function calculates size and allocates copy of the original
 keymap after which sets up input device event bits appropriately.
-Before destroying input device allocated keymap should be freed
-with a call to \ :c:func:`sparse_keymap_free`\ .
+The allocated copy of the keymap is automatically freed when it
+is no longer needed.
 
 .. _`sparse_keymap_free`:
 
@@ -94,18 +94,10 @@ sparse_keymap_free
 Description
 -----------
 
-This function is used to free memory allocated by sparse keymap
+This function used to free memory allocated by sparse keymap
 in an input device that was set up by \ :c:func:`sparse_keymap_setup`\ .
-
-.. _`sparse_keymap_free.note`:
-
-NOTE
-----
-
-It is safe to cal this function while input device is
-still registered (however the drivers should care not to try to
-use freed keymap and thus have to shut off interrupts/polling
-before freeing the keymap).
+Since \ :c:func:`sparse_keymap_setup`\  now uses a managed allocation for the
+keymap copy, use of this function is deprecated.
 
 .. _`sparse_keymap_report_entry`:
 

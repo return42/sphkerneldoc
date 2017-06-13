@@ -52,7 +52,7 @@ by the architecture
 guest_translate_address
 =======================
 
-.. c:function:: int guest_translate_address(struct kvm_vcpu *vcpu, unsigned long gva, ar_t ar, unsigned long *gpa, enum gacc_mode mode)
+.. c:function:: int guest_translate_address(struct kvm_vcpu *vcpu, unsigned long gva, u8 ar, unsigned long *gpa, enum gacc_mode mode)
 
     translate guest logical into guest absolute address
 
@@ -62,7 +62,7 @@ guest_translate_address
     :param unsigned long gva:
         *undescribed*
 
-    :param ar_t ar:
+    :param u8 ar:
         *undescribed*
 
     :param unsigned long \*gpa:
@@ -92,7 +92,7 @@ has to take care of this.
 check_gva_range
 ===============
 
-.. c:function:: int check_gva_range(struct kvm_vcpu *vcpu, unsigned long gva, ar_t ar, unsigned long length, enum gacc_mode mode)
+.. c:function:: int check_gva_range(struct kvm_vcpu *vcpu, unsigned long gva, u8 ar, unsigned long length, enum gacc_mode mode)
 
     test a range of guest virtual addresses for accessibility
 
@@ -102,7 +102,7 @@ check_gva_range
     :param unsigned long gva:
         *undescribed*
 
-    :param ar_t ar:
+    :param u8 ar:
         *undescribed*
 
     :param unsigned long length:

@@ -7,5 +7,5 @@ printk
 .. toctree::
     :maxdepth: 1
 
-    nmi_c
     printk_c
+    printk_safe_c

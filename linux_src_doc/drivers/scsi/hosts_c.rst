@@ -21,8 +21,8 @@ scsi_host_set_state
 Description
 -----------
 
-Returns zero if unsuccessful or an error if the requested
-transition is illegal.
+     Returns zero if unsuccessful or an error if the requested
+     transition is illegal.
 
 .. _`scsi_remove_host`:
 
@@ -68,7 +68,7 @@ function instead.
 Return value
 ------------
 
-0 on success / != 0 for error
+     0 on success / != 0 for error
 
 .. _`scsi_host_alloc`:
 
@@ -90,16 +90,16 @@ scsi_host_alloc
 Note
 ----
 
-Allocate a new Scsi_Host and perform basic initialization.
-The host is not published to the scsi midlayer until scsi_add_host
-is called.
+     Allocate a new Scsi_Host and perform basic initialization.
+     The host is not published to the scsi midlayer until scsi_add_host
+     is called.
 
 .. _`scsi_host_alloc.return-value`:
 
 Return value
 ------------
 
-Pointer to a new Scsi_Host
+     Pointer to a new Scsi_Host
 
 .. _`scsi_host_lookup`:
 
@@ -118,11 +118,11 @@ scsi_host_lookup
 Return value
 ------------
 
-A pointer to located Scsi_Host or NULL.
+     A pointer to located Scsi_Host or NULL.
 
-The caller must do a \ :c:func:`scsi_host_put`\  to drop the reference
-that \ :c:func:`scsi_host_get`\  took. The \ :c:func:`put_device`\  below dropped
-the reference from \ :c:func:`class_find_device`\ .
+     The caller must do a \ :c:func:`scsi_host_put`\  to drop the reference
+     that \ :c:func:`scsi_host_get`\  took. The \ :c:func:`put_device`\  below dropped
+     the reference from \ :c:func:`class_find_device`\ .
 
 .. _`scsi_host_get`:
 
@@ -168,9 +168,9 @@ scsi_queue_work
 Return value
 ------------
 
-1 - work queued for execution
-0 - work is already queued
--EINVAL - work queue doesn't exist
+     1 - work queued for execution
+     0 - work is already queued
+     -EINVAL - work queue doesn't exist
 
 .. _`scsi_flush_work`:
 

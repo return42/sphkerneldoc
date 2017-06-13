@@ -21,6 +21,54 @@ Description
 it checks the driver parameters and set a default in case of
 errors.
 
+.. _`stmmac_disable_all_queues`:
+
+stmmac_disable_all_queues
+=========================
+
+.. c:function:: void stmmac_disable_all_queues(struct stmmac_priv *priv)
+
+    Disable all queues
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_enable_all_queues`:
+
+stmmac_enable_all_queues
+========================
+
+.. c:function:: void stmmac_enable_all_queues(struct stmmac_priv *priv)
+
+    Enable all queues
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_stop_all_queues`:
+
+stmmac_stop_all_queues
+======================
+
+.. c:function:: void stmmac_stop_all_queues(struct stmmac_priv *priv)
+
+    Stop all queues
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_start_all_queues`:
+
+stmmac_start_all_queues
+=======================
+
+.. c:function:: void stmmac_start_all_queues(struct stmmac_priv *priv)
+
+    Start all queues
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
 .. _`stmmac_clk_csr_set`:
 
 stmmac_clk_csr_set
@@ -52,6 +100,21 @@ changed at run-time and it is fixed (as reported in the driver
 documentation). Viceversa the driver will try to set the MDC
 clock dynamically according to the actual clock input.
 
+.. _`stmmac_rx_dirty`:
+
+stmmac_rx_dirty
+===============
+
+.. c:function:: u32 stmmac_rx_dirty(struct stmmac_priv *priv, u32 queue)
+
+    Get RX queue dirty
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 queue:
+        RX queue index
+
 .. _`stmmac_hw_fix_mac_speed`:
 
 stmmac_hw_fix_mac_speed
@@ -69,7 +132,7 @@ stmmac_hw_fix_mac_speed
 Description
 -----------
 
-on some platforms (e.g. ST), some HW system configuraton
+on some platforms (e.g. ST), some HW system configuration
 registers have to be set according to the link speed negotiated.
 
 .. _`stmmac_enable_eee_mode`:
@@ -166,7 +229,7 @@ stmmac_hwtstamp_ioctl
         device pointer.
 
     :param struct ifreq \*ifr:
-        An IOCTL specefic structure, that can contain a pointer to
+        An IOCTL specific structure, that can contain a pointer to
         a proprietary structure used to pass information to the driver.
 
 .. _`stmmac_hwtstamp_ioctl.description`:
@@ -204,6 +267,28 @@ Description
 this is to verify if the HW supports the PTPv1 or PTPv2.
 This is done by looking at the HW cap. register.
 This function also registers the ptp driver.
+
+.. _`stmmac_mac_flow_ctrl`:
+
+stmmac_mac_flow_ctrl
+====================
+
+.. c:function:: void stmmac_mac_flow_ctrl(struct stmmac_priv *priv, u32 duplex)
+
+    Configure flow control in all queues
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 duplex:
+        *undescribed*
+
+.. _`stmmac_mac_flow_ctrl.description`:
+
+Description
+-----------
+
+It is used for configuring the flow control in all queues
 
 .. _`stmmac_adjust_link`:
 
@@ -276,6 +361,52 @@ Return value
 
 0 on success
 
+.. _`stmmac_clear_rx_descriptors`:
+
+stmmac_clear_rx_descriptors
+===========================
+
+.. c:function:: void stmmac_clear_rx_descriptors(struct stmmac_priv *priv, u32 queue)
+
+    clear RX descriptors
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 queue:
+        RX queue index
+
+.. _`stmmac_clear_rx_descriptors.description`:
+
+Description
+-----------
+
+this function is called to clear the RX descriptors
+in case of both basic and extended descriptors are used.
+
+.. _`stmmac_clear_tx_descriptors`:
+
+stmmac_clear_tx_descriptors
+===========================
+
+.. c:function:: void stmmac_clear_tx_descriptors(struct stmmac_priv *priv, u32 queue)
+
+    clear tx descriptors
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 queue:
+        TX queue index.
+
+.. _`stmmac_clear_tx_descriptors.description`:
+
+Description
+-----------
+
+this function is called to clear the TX descriptors
+in case of both basic and extended descriptors are used.
+
 .. _`stmmac_clear_descriptors`:
 
 stmmac_clear_descriptors
@@ -293,7 +424,7 @@ stmmac_clear_descriptors
 Description
 -----------
 
-this function is called to clear the tx and rx descriptors
+this function is called to clear the TX and RX descriptors
 in case of both basic and extended descriptors are used.
 
 .. _`stmmac_init_rx_buffers`:
@@ -301,7 +432,7 @@ in case of both basic and extended descriptors are used.
 stmmac_init_rx_buffers
 ======================
 
-.. c:function:: int stmmac_init_rx_buffers(struct stmmac_priv *priv, struct dma_desc *p, int i, gfp_t flags)
+.. c:function:: int stmmac_init_rx_buffers(struct stmmac_priv *priv, struct dma_desc *p, int i, gfp_t flags, u32 queue)
 
     init the RX descriptor buffer.
 
@@ -315,7 +446,10 @@ stmmac_init_rx_buffers
         descriptor index
 
     :param gfp_t flags:
-        gfp flag.
+        gfp flag
+
+    :param u32 queue:
+        RX queue index
 
 .. _`stmmac_init_rx_buffers.description`:
 
@@ -324,6 +458,87 @@ Description
 
 this function is called to allocate a receive buffer, perform
 the DMA mapping and init the descriptor.
+
+.. _`stmmac_free_rx_buffer`:
+
+stmmac_free_rx_buffer
+=====================
+
+.. c:function:: void stmmac_free_rx_buffer(struct stmmac_priv *priv, u32 queue, int i)
+
+    free RX dma buffers
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+    :param u32 queue:
+        RX queue index
+
+    :param int i:
+        buffer index.
+
+.. _`stmmac_free_tx_buffer`:
+
+stmmac_free_tx_buffer
+=====================
+
+.. c:function:: void stmmac_free_tx_buffer(struct stmmac_priv *priv, u32 queue, int i)
+
+    free RX dma buffers
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+    :param u32 queue:
+        RX queue index
+
+    :param int i:
+        buffer index.
+
+.. _`init_dma_rx_desc_rings`:
+
+init_dma_rx_desc_rings
+======================
+
+.. c:function:: int init_dma_rx_desc_rings(struct net_device *dev, gfp_t flags)
+
+    init the RX descriptor rings
+
+    :param struct net_device \*dev:
+        net device structure
+
+    :param gfp_t flags:
+        gfp flag.
+
+.. _`init_dma_rx_desc_rings.description`:
+
+Description
+-----------
+
+this function initializes the DMA RX descriptors
+and allocates the socket buffers. It supports the chained and ring
+modes.
+
+.. _`init_dma_tx_desc_rings`:
+
+init_dma_tx_desc_rings
+======================
+
+.. c:function:: int init_dma_tx_desc_rings(struct net_device *dev)
+
+    init the TX descriptor rings
+
+    :param struct net_device \*dev:
+        net device structure.
+
+.. _`init_dma_tx_desc_rings.description`:
+
+Description
+-----------
+
+this function initializes the DMA TX descriptors
+and allocates the socket buffers. It supports the chained and ring
+modes.
 
 .. _`init_dma_desc_rings`:
 
@@ -346,8 +561,106 @@ Description
 -----------
 
 this function initializes the DMA RX/TX descriptors
-and allocates the socket buffers. It suppors the chained and ring
+and allocates the socket buffers. It supports the chained and ring
 modes.
+
+.. _`dma_free_rx_skbufs`:
+
+dma_free_rx_skbufs
+==================
+
+.. c:function:: void dma_free_rx_skbufs(struct stmmac_priv *priv, u32 queue)
+
+    free RX dma buffers
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+    :param u32 queue:
+        RX queue index
+
+.. _`dma_free_tx_skbufs`:
+
+dma_free_tx_skbufs
+==================
+
+.. c:function:: void dma_free_tx_skbufs(struct stmmac_priv *priv, u32 queue)
+
+    free TX dma buffers
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+    :param u32 queue:
+        TX queue index
+
+.. _`free_dma_rx_desc_resources`:
+
+free_dma_rx_desc_resources
+==========================
+
+.. c:function:: void free_dma_rx_desc_resources(struct stmmac_priv *priv)
+
+    free RX dma desc resources
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+.. _`free_dma_tx_desc_resources`:
+
+free_dma_tx_desc_resources
+==========================
+
+.. c:function:: void free_dma_tx_desc_resources(struct stmmac_priv *priv)
+
+    free TX dma desc resources
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+.. _`alloc_dma_rx_desc_resources`:
+
+alloc_dma_rx_desc_resources
+===========================
+
+.. c:function:: int alloc_dma_rx_desc_resources(struct stmmac_priv *priv)
+
+    alloc RX resources.
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+.. _`alloc_dma_rx_desc_resources.description`:
+
+Description
+-----------
+
+according to which descriptor can be used (extend or basic)
+this function allocates the resources for TX and RX paths. In case of
+reception, for example, it pre-allocated the RX socket buffer in order to
+allow zero-copy mechanism.
+
+.. _`alloc_dma_tx_desc_resources`:
+
+alloc_dma_tx_desc_resources
+===========================
+
+.. c:function:: int alloc_dma_tx_desc_resources(struct stmmac_priv *priv)
+
+    alloc TX resources.
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+.. _`alloc_dma_tx_desc_resources.description`:
+
+Description
+-----------
+
+according to which descriptor can be used (extend or basic)
+this function allocates the resources for TX and RX paths. In case of
+reception, for example, it pre-allocated the RX socket buffer in order to
+allow zero-copy mechanism.
 
 .. _`alloc_dma_desc_resources`:
 
@@ -370,6 +683,163 @@ according to which descriptor can be used (extend or basic)
 this function allocates the resources for TX and RX paths. In case of
 reception, for example, it pre-allocated the RX socket buffer in order to
 allow zero-copy mechanism.
+
+.. _`free_dma_desc_resources`:
+
+free_dma_desc_resources
+=======================
+
+.. c:function:: void free_dma_desc_resources(struct stmmac_priv *priv)
+
+    free dma desc resources
+
+    :param struct stmmac_priv \*priv:
+        private structure
+
+.. _`stmmac_mac_enable_rx_queues`:
+
+stmmac_mac_enable_rx_queues
+===========================
+
+.. c:function:: void stmmac_mac_enable_rx_queues(struct stmmac_priv *priv)
+
+    Enable MAC rx queues
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_mac_enable_rx_queues.description`:
+
+Description
+-----------
+
+It is used for enabling the rx queues in the MAC
+
+.. _`stmmac_start_rx_dma`:
+
+stmmac_start_rx_dma
+===================
+
+.. c:function:: void stmmac_start_rx_dma(struct stmmac_priv *priv, u32 chan)
+
+    start RX DMA channel
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 chan:
+        RX channel index
+
+.. _`stmmac_start_rx_dma.description`:
+
+Description
+-----------
+
+This starts a RX DMA channel
+
+.. _`stmmac_start_tx_dma`:
+
+stmmac_start_tx_dma
+===================
+
+.. c:function:: void stmmac_start_tx_dma(struct stmmac_priv *priv, u32 chan)
+
+    start TX DMA channel
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 chan:
+        TX channel index
+
+.. _`stmmac_start_tx_dma.description`:
+
+Description
+-----------
+
+This starts a TX DMA channel
+
+.. _`stmmac_stop_rx_dma`:
+
+stmmac_stop_rx_dma
+==================
+
+.. c:function:: void stmmac_stop_rx_dma(struct stmmac_priv *priv, u32 chan)
+
+    stop RX DMA channel
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 chan:
+        RX channel index
+
+.. _`stmmac_stop_rx_dma.description`:
+
+Description
+-----------
+
+This stops a RX DMA channel
+
+.. _`stmmac_stop_tx_dma`:
+
+stmmac_stop_tx_dma
+==================
+
+.. c:function:: void stmmac_stop_tx_dma(struct stmmac_priv *priv, u32 chan)
+
+    stop TX DMA channel
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 chan:
+        TX channel index
+
+.. _`stmmac_stop_tx_dma.description`:
+
+Description
+-----------
+
+This stops a TX DMA channel
+
+.. _`stmmac_start_all_dma`:
+
+stmmac_start_all_dma
+====================
+
+.. c:function:: void stmmac_start_all_dma(struct stmmac_priv *priv)
+
+    start all RX and TX DMA channels
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_start_all_dma.description`:
+
+Description
+-----------
+
+This starts all the RX and TX DMA channels
+
+.. _`stmmac_stop_all_dma`:
+
+stmmac_stop_all_dma
+===================
+
+.. c:function:: void stmmac_stop_all_dma(struct stmmac_priv *priv)
+
+    stop all RX and TX DMA channels
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_stop_all_dma.description`:
+
+Description
+-----------
+
+This stops the RX and TX DMA channels
 
 .. _`stmmac_dma_operation_mode`:
 
@@ -396,12 +866,15 @@ order to program the tx/rx DMA thresholds or Store-And-Forward mode.
 stmmac_tx_clean
 ===============
 
-.. c:function:: void stmmac_tx_clean(struct stmmac_priv *priv)
+.. c:function:: void stmmac_tx_clean(struct stmmac_priv *priv, u32 queue)
 
     to manage the transmission completion
 
     :param struct stmmac_priv \*priv:
         driver private structure
+
+    :param u32 queue:
+        TX queue index
 
 .. _`stmmac_tx_clean.description`:
 
@@ -415,12 +888,15 @@ it reclaims the transmit resources after transmission completes.
 stmmac_tx_err
 =============
 
-.. c:function:: void stmmac_tx_err(struct stmmac_priv *priv)
+.. c:function:: void stmmac_tx_err(struct stmmac_priv *priv, u32 chan)
 
     to manage the tx error
 
     :param struct stmmac_priv \*priv:
         driver private structure
+
+    :param u32 chan:
+        channel index
 
 .. _`stmmac_tx_err.description`:
 
@@ -429,6 +905,36 @@ Description
 
 it cleans the descriptors and restarts the transmission
 in case of transmission errors.
+
+.. _`stmmac_set_dma_operation_mode`:
+
+stmmac_set_dma_operation_mode
+=============================
+
+.. c:function:: void stmmac_set_dma_operation_mode(struct stmmac_priv *priv, u32 txmode, u32 rxmode, u32 chan)
+
+    Set DMA operation mode by channel
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+    :param u32 txmode:
+        TX operating mode
+
+    :param u32 rxmode:
+        RX operating mode
+
+    :param u32 chan:
+        channel index
+
+.. _`stmmac_set_dma_operation_mode.description`:
+
+Description
+-----------
+
+it is used for configuring of the DMA operation mode in
+runtime in order to program the tx/rx DMA thresholds or Store-And-Forward
+mode.
 
 .. _`stmmac_dma_interrupt`:
 
@@ -594,6 +1100,139 @@ i.e. timer rate,
 timer handler and default threshold used for enabling the
 interrupt on completion bit.
 
+.. _`stmmac_set_tx_queue_weight`:
+
+stmmac_set_tx_queue_weight
+==========================
+
+.. c:function:: void stmmac_set_tx_queue_weight(struct stmmac_priv *priv)
+
+    Set TX queue weight
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_set_tx_queue_weight.description`:
+
+Description
+-----------
+
+It is used for setting TX queues weight
+
+.. _`stmmac_configure_cbs`:
+
+stmmac_configure_cbs
+====================
+
+.. c:function:: void stmmac_configure_cbs(struct stmmac_priv *priv)
+
+    Configure CBS in TX queue
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_configure_cbs.description`:
+
+Description
+-----------
+
+It is used for configuring CBS in AVB TX queues
+
+.. _`stmmac_rx_queue_dma_chan_map`:
+
+stmmac_rx_queue_dma_chan_map
+============================
+
+.. c:function:: void stmmac_rx_queue_dma_chan_map(struct stmmac_priv *priv)
+
+    Map RX queue to RX dma channel
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_rx_queue_dma_chan_map.description`:
+
+Description
+-----------
+
+It is used for mapping RX queues to RX dma channels
+
+.. _`stmmac_mac_config_rx_queues_prio`:
+
+stmmac_mac_config_rx_queues_prio
+================================
+
+.. c:function:: void stmmac_mac_config_rx_queues_prio(struct stmmac_priv *priv)
+
+    Configure RX Queue priority
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_mac_config_rx_queues_prio.description`:
+
+Description
+-----------
+
+It is used for configuring the RX Queue Priority
+
+.. _`stmmac_mac_config_tx_queues_prio`:
+
+stmmac_mac_config_tx_queues_prio
+================================
+
+.. c:function:: void stmmac_mac_config_tx_queues_prio(struct stmmac_priv *priv)
+
+    Configure TX Queue priority
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_mac_config_tx_queues_prio.description`:
+
+Description
+-----------
+
+It is used for configuring the TX Queue Priority
+
+.. _`stmmac_mac_config_rx_queues_routing`:
+
+stmmac_mac_config_rx_queues_routing
+===================================
+
+.. c:function:: void stmmac_mac_config_rx_queues_routing(struct stmmac_priv *priv)
+
+    Configure RX Queue Routing
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_mac_config_rx_queues_routing.description`:
+
+Description
+-----------
+
+It is used for configuring the RX queue routing
+
+.. _`stmmac_mtl_configuration`:
+
+stmmac_mtl_configuration
+========================
+
+.. c:function:: void stmmac_mtl_configuration(struct stmmac_priv *priv)
+
+    Configure MTL
+
+    :param struct stmmac_priv \*priv:
+        driver private structure
+
+.. _`stmmac_mtl_configuration.description`:
+
+Description
+-----------
+
+It is used for configurring MTL
+
 .. _`stmmac_hw_setup`:
 
 stmmac_hw_setup
@@ -678,7 +1317,7 @@ This is the stop entry point of the driver.
 stmmac_tso_allocator
 ====================
 
-.. c:function:: void stmmac_tso_allocator(struct stmmac_priv *priv, unsigned int des, int total_len, bool last_segment)
+.. c:function:: void stmmac_tso_allocator(struct stmmac_priv *priv, unsigned int des, int total_len, bool last_segment, u32 queue)
 
     close entry point of the driver
 
@@ -693,6 +1332,9 @@ stmmac_tso_allocator
 
     :param bool last_segment:
         *undescribed*
+
+    :param u32 queue:
+        TX queue index
 
 .. _`stmmac_tso_allocator.description`:
 
@@ -773,12 +1415,15 @@ stmmac_xmit
 stmmac_rx_refill
 ================
 
-.. c:function:: void stmmac_rx_refill(struct stmmac_priv *priv)
+.. c:function:: void stmmac_rx_refill(struct stmmac_priv *priv, u32 queue)
 
     refill used skb preallocated buffers
 
     :param struct stmmac_priv \*priv:
         driver private structure
+
+    :param u32 queue:
+        RX queue index
         Description : this is to reallocate the skb for the reception process
         that is based on zero-copy.
 
@@ -787,7 +1432,7 @@ stmmac_rx_refill
 stmmac_rx
 =========
 
-.. c:function:: int stmmac_rx(struct stmmac_priv *priv, int limit)
+.. c:function:: int stmmac_rx(struct stmmac_priv *priv, int limit, u32 queue)
 
     manage the receive process
 
@@ -795,7 +1440,10 @@ stmmac_rx
         driver private structure
 
     :param int limit:
-        napi bugget.
+        napi bugget
+
+    :param u32 queue:
+        RX queue index.
         Description :  this the function called by the napi poll method.
         It gets all the frames inside the ring.
 
@@ -1051,6 +1699,18 @@ Description
 this is the function to suspend the device and it is called
 by the platform driver to stop the network queue, release the resources,
 program the PMT register (for WoL), clean and release driver resources.
+
+.. _`stmmac_reset_queues_param`:
+
+stmmac_reset_queues_param
+=========================
+
+.. c:function:: void stmmac_reset_queues_param(struct stmmac_priv *priv)
+
+    reset queue parameters
+
+    :param struct stmmac_priv \*priv:
+        *undescribed*
 
 .. _`stmmac_resume`:
 

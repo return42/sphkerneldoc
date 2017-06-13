@@ -834,13 +834,13 @@ Members
 -------
 
 try_fmt
-    pointer to \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\ 
+    &struct v4l2_mbus_framefmt
 
 try_crop
-    pointer to \ :c:type:`struct v4l2_rect <v4l2_rect>`\  to be used for crop
+    &struct v4l2_rect to be used for crop
 
 try_compose
-    pointer to \ :c:type:`struct v4l2_rect <v4l2_rect>`\  to be used for compose
+    &struct v4l2_rect to be used for compose
 
 .. _`v4l2_subdev_pad_config.description`:
 

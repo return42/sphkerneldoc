@@ -143,6 +143,18 @@ mei_hcsr_set
     :param u32 reg:
         new register value
 
+.. _`mei_hcsr_set_hig`:
+
+mei_hcsr_set_hig
+================
+
+.. c:function:: void mei_hcsr_set_hig(struct mei_device *dev)
+
+    set host interrupt (set H_IG)
+
+    :param struct mei_device \*dev:
+        the device structure
+
 .. _`mei_me_d0i3c_read`:
 
 mei_me_d0i3c_read
@@ -364,6 +376,25 @@ mei_me_hw_is_ready
         mei device
 
 .. _`mei_me_hw_is_ready.return`:
+
+Return
+------
+
+bool
+
+.. _`mei_me_hw_is_resetting`:
+
+mei_me_hw_is_resetting
+======================
+
+.. c:function:: bool mei_me_hw_is_resetting(struct mei_device *dev)
+
+    check whether the me(hw) is in reset
+
+    :param struct mei_device \*dev:
+        mei device
+
+.. _`mei_me_hw_is_resetting.return`:
 
 Return
 ------
@@ -917,7 +948,7 @@ mei_me_dev_init
 Return
 ------
 
-The mei_device_device pointer on success, NULL on failure.
+The mei_device pointer on success, NULL on failure.
 
 .. This file was automatic generated / don't edit.
 

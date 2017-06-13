@@ -215,5 +215,28 @@ Return
 
 Zero on success, negative error code if failed.
 
+.. _`intel_gvt_in_force_nonpriv_whitelist`:
+
+intel_gvt_in_force_nonpriv_whitelist
+====================================
+
+.. c:function:: bool intel_gvt_in_force_nonpriv_whitelist(struct intel_gvt *gvt, unsigned int offset)
+
+    if a mmio is in whitelist to be force-nopriv register
+
+    :param struct intel_gvt \*gvt:
+        a GVT device
+
+    :param unsigned int offset:
+        register offset
+
+.. _`intel_gvt_in_force_nonpriv_whitelist.return`:
+
+Return
+------
+
+True if the register is in force-nonpriv whitelist;
+False if outside;
+
 .. This file was automatic generated / don't edit.
 

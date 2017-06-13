@@ -122,26 +122,25 @@ This function hints the VM that \ ``page``\  is a good reclaim candidate,
 for example if its invalidation fails due to the page being dirty
 or under writeback.
 
-.. _`deactivate_page`:
+.. _`mark_page_lazyfree`:
 
-deactivate_page
-===============
+mark_page_lazyfree
+==================
 
-.. c:function:: void deactivate_page(struct page *page)
+.. c:function:: void mark_page_lazyfree(struct page *page)
 
-    deactivate a page
+    make an anon page lazyfree
 
     :param struct page \*page:
         page to deactivate
 
-.. _`deactivate_page.description`:
+.. _`mark_page_lazyfree.description`:
 
 Description
 -----------
 
-deactivate_page() moves \ ``page``\  to the inactive list if \ ``page``\  was on the active
-list and was not an unevictable page.  This is done to accelerate the reclaim
-of \ ``page``\ .
+mark_page_lazyfree() moves \ ``page``\  to the inactive file list.
+This is done to accelerate the reclaim of \ ``page``\ .
 
 .. _`release_pages`:
 

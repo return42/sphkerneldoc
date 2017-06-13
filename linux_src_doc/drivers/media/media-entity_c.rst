@@ -24,42 +24,42 @@ Description
 Enabled only if DEBUG or CONFIG_DYNAMIC_DEBUG. Otherwise, it
 won't produce any code.
 
-.. _`media_entity_graph_walk_init`:
+.. _`media_graph_walk_init`:
 
-media_entity_graph_walk_init
-============================
+media_graph_walk_init
+=====================
 
-.. c:function:: int media_entity_graph_walk_init(struct media_entity_graph *graph, struct media_device *mdev)
+.. c:function:: int media_graph_walk_init(struct media_graph *graph, struct media_device *mdev)
 
     Allocate resources for graph walk
 
-    :param struct media_entity_graph \*graph:
+    :param struct media_graph \*graph:
         Media graph structure that will be used to walk the graph
 
     :param struct media_device \*mdev:
         Media device
 
-.. _`media_entity_graph_walk_init.description`:
+.. _`media_graph_walk_init.description`:
 
 Description
 -----------
 
 Reserve resources for graph walk in media device's current
 state. The memory must be released using
-\ :c:func:`media_entity_graph_walk_free`\ .
+\ :c:func:`media_graph_walk_free`\ .
 
 Returns error on failure, zero on success.
 
-.. _`media_entity_graph_walk_cleanup`:
+.. _`media_graph_walk_cleanup`:
 
-media_entity_graph_walk_cleanup
-===============================
+media_graph_walk_cleanup
+========================
 
-.. c:function:: void media_entity_graph_walk_cleanup(struct media_entity_graph *graph)
+.. c:function:: void media_graph_walk_cleanup(struct media_graph *graph)
 
     Release resources related to graph walking
 
-    :param struct media_entity_graph \*graph:
+    :param struct media_graph \*graph:
         Media graph structure that was used to walk the graph
 
 .. This file was automatic generated / don't edit.

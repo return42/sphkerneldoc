@@ -78,11 +78,11 @@ Set usermodehelper_disabled to \ ``depth``\  and wait for running helpers to exi
 call_usermodehelper_setup
 =========================
 
-.. c:function:: struct subprocess_info *call_usermodehelper_setup(char *path, char **argv, char **envp, gfp_t gfp_mask, int (*init)(struct subprocess_info *info, struct cred *new), void (*cleanup)(struct subprocess_info *info), void *data)
+.. c:function:: struct subprocess_info *call_usermodehelper_setup(const char *path, char **argv, char **envp, gfp_t gfp_mask, int (*init)(struct subprocess_info *info, struct cred *new), void (*cleanup)(struct subprocess_info *info), void *data)
 
     prepare to call a usermode helper
 
-    :param char \*path:
+    :param const char \*path:
         path to usermode executable
 
     :param char \*\*argv:
@@ -153,11 +153,11 @@ asynchronously if wait is not set, and runs as a child of system workqueues.
 call_usermodehelper
 ===================
 
-.. c:function:: int call_usermodehelper(char *path, char **argv, char **envp, int wait)
+.. c:function:: int call_usermodehelper(const char *path, char **argv, char **envp, int wait)
 
     prepare and start a usermode application
 
-    :param char \*path:
+    :param const char \*path:
         path to usermode executable
 
     :param char \*\*argv:

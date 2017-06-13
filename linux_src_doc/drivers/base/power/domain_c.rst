@@ -8,7 +8,7 @@ genpd_queue_power_off_work
 
 .. c:function:: void genpd_queue_power_off_work(struct generic_pm_domain *genpd)
 
-    Queue up the execution of \ :c:func:`genpd_poweroff`\ .
+    Queue up the execution of \ :c:func:`genpd_power_off`\ .
 
     :param struct generic_pm_domain \*genpd:
         PM domain to power off.
@@ -18,15 +18,44 @@ genpd_queue_power_off_work
 Description
 -----------
 
-Queue up the execution of \ :c:func:`genpd_poweroff`\  unless it's already been done
+Queue up the execution of \ :c:func:`genpd_power_off`\  unless it's already been done
 before.
 
-.. _`genpd_poweron`:
+.. _`genpd_power_off`:
 
-genpd_poweron
-=============
+genpd_power_off
+===============
 
-.. c:function:: int genpd_poweron(struct generic_pm_domain *genpd, unsigned int depth)
+.. c:function:: int genpd_power_off(struct generic_pm_domain *genpd, bool one_dev_on, unsigned int depth)
+
+    Remove power from a given PM domain.
+
+    :param struct generic_pm_domain \*genpd:
+        PM domain to power down.
+
+    :param bool one_dev_on:
+        If invoked from genpd's ->runtime_suspend\|resume() callback, the
+        RPM status of the releated device is in an intermediate state, not yet turned
+        into RPM_SUSPENDED. This means \ :c:func:`genpd_power_off`\  must allow one device to not
+        be RPM_SUSPENDED, while it tries to power off the PM domain.
+
+    :param unsigned int depth:
+        *undescribed*
+
+.. _`genpd_power_off.description`:
+
+Description
+-----------
+
+If all of the \ ``genpd``\ 's devices have been suspended and all of its subdomains
+have been powered down, remove power from \ ``genpd``\ .
+
+.. _`genpd_power_on`:
+
+genpd_power_on
+==============
+
+.. c:function:: int genpd_power_on(struct generic_pm_domain *genpd, unsigned int depth)
 
     Restore power to a given PM domain and its masters.
 
@@ -36,36 +65,13 @@ genpd_poweron
     :param unsigned int depth:
         nesting count for lockdep.
 
-.. _`genpd_poweron.description`:
+.. _`genpd_power_on.description`:
 
 Description
 -----------
 
 Restore power to \ ``genpd``\  and all of its masters so that it is possible to
 resume a device belonging to it.
-
-.. _`genpd_poweroff`:
-
-genpd_poweroff
-==============
-
-.. c:function:: int genpd_poweroff(struct generic_pm_domain *genpd, bool is_async)
-
-    Remove power from a given PM domain.
-
-    :param struct generic_pm_domain \*genpd:
-        PM domain to power down.
-
-    :param bool is_async:
-        PM domain is powered down from a scheduled work
-
-.. _`genpd_poweroff.description`:
-
-Description
------------
-
-If all of the \ ``genpd``\ 's devices have been suspended and all of its subdomains
-have been powered down, remove power from \ ``genpd``\ .
 
 .. _`genpd_power_off_work_fn`:
 
@@ -145,12 +151,12 @@ Carry out a runtime resume of a device under the assumption that its
 pm_domain field points to the domain member of an object of type
 struct generic_pm_domain representing a PM domain consisting of I/O devices.
 
-.. _`genpd_poweroff_unused`:
+.. _`genpd_power_off_unused`:
 
-genpd_poweroff_unused
-=====================
+genpd_power_off_unused
+======================
 
-.. c:function:: int genpd_poweroff_unused( void)
+.. c:function:: int genpd_power_off_unused( void)
 
     Power off all PM domains with no devices in use.
 
@@ -169,19 +175,25 @@ pm_genpd_present
     :param const struct generic_pm_domain \*genpd:
         PM domain to check.
 
-.. _`genpd_sync_poweroff`:
+.. _`genpd_sync_power_off`:
 
-genpd_sync_poweroff
-===================
+genpd_sync_power_off
+====================
 
-.. c:function:: void genpd_sync_poweroff(struct generic_pm_domain *genpd)
+.. c:function:: void genpd_sync_power_off(struct generic_pm_domain *genpd, bool use_lock, unsigned int depth)
 
     Synchronously power off a PM domain and its masters.
 
     :param struct generic_pm_domain \*genpd:
         PM domain to power off, if possible.
 
-.. _`genpd_sync_poweroff.description`:
+    :param bool use_lock:
+        use the lock.
+
+    :param unsigned int depth:
+        nesting count for lockdep.
+
+.. _`genpd_sync_power_off.description`:
 
 Description
 -----------
@@ -190,31 +202,35 @@ Check if the given PM domain can be powered off (during system suspend or
 hibernation) and do that if so.  Also, in that case propagate to its masters.
 
 This function is only called in "noirq" and "syscore" stages of system power
-transitions, so it need not acquire locks (all of the "noirq" callbacks are
-executed sequentially, so it is guaranteed that it will never run twice in
-parallel).
+transitions. The "noirq" callbacks may be executed asynchronously, thus in
+these cases the lock must be held.
 
-.. _`genpd_sync_poweron`:
+.. _`genpd_sync_power_on`:
 
-genpd_sync_poweron
-==================
+genpd_sync_power_on
+===================
 
-.. c:function:: void genpd_sync_poweron(struct generic_pm_domain *genpd)
+.. c:function:: void genpd_sync_power_on(struct generic_pm_domain *genpd, bool use_lock, unsigned int depth)
 
     Synchronously power on a PM domain and its masters.
 
     :param struct generic_pm_domain \*genpd:
         PM domain to power on.
 
-.. _`genpd_sync_poweron.description`:
+    :param bool use_lock:
+        use the lock.
+
+    :param unsigned int depth:
+        nesting count for lockdep.
+
+.. _`genpd_sync_power_on.description`:
 
 Description
 -----------
 
 This function is only called in "noirq" and "syscore" stages of system power
-transitions, so it need not acquire locks (all of the "noirq" callbacks are
-executed sequentially, so it is guaranteed that it will never run twice in
-parallel).
+transitions. The "noirq" callbacks may be executed asynchronously, thus in
+these cases the lock must be held.
 
 .. _`resume_needed`:
 

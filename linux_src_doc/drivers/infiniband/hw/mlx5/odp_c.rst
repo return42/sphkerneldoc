@@ -6,12 +6,15 @@
 pagefault_data_segments
 =======================
 
-.. c:function:: int pagefault_data_segments(struct mlx5_ib_qp *qp, struct mlx5_ib_pfault *pfault, void *wqe, void *wqe_end, u32 *bytes_mapped, u32 *total_wqe_bytes, int receive_queue)
+.. c:function:: int pagefault_data_segments(struct mlx5_ib_dev *dev, struct mlx5_pagefault *pfault, struct mlx5_ib_qp *qp, void *wqe, void *wqe_end, u32 *bytes_mapped, u32 *total_wqe_bytes, int receive_queue)
 
-    :param struct mlx5_ib_qp \*qp:
+    :param struct mlx5_ib_dev \*dev:
         *undescribed*
 
-    :param struct mlx5_ib_pfault \*pfault:
+    :param struct mlx5_pagefault \*pfault:
+        *undescribed*
+
+    :param struct mlx5_ib_qp \*qp:
         *undescribed*
 
     :param void \*wqe:

@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_crtc.c
 
+.. _`drm_crtc_from_index`:
+
+drm_crtc_from_index
+===================
+
+.. c:function:: struct drm_crtc *drm_crtc_from_index(struct drm_device *dev, int idx)
+
+    find the registered CRTC at an index
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param int idx:
+        index of registered CRTC to find for
+
+.. _`drm_crtc_from_index.description`:
+
+Description
+-----------
+
+Given a CRTC index, return the registered CRTC from DRM device's
+list of CRTCs with matching index. This is the inverse of \ :c:func:`drm_crtc_index`\ .
+It's useful in the vblank callbacks (like \ :c:type:`drm_driver.enable_vblank <drm_driver>`\  or
+\ :c:type:`drm_driver.disable_vblank <drm_driver>`\ ), since that still deals with indices instead
+of pointers to \ :c:type:`struct drm_crtc <drm_crtc>`\ ."
+
 .. _`drm_crtc_force_disable`:
 
 drm_crtc_force_disable
@@ -12,6 +38,13 @@ drm_crtc_force_disable
 
     :param struct drm_crtc \*crtc:
         CRTC to turn off
+
+.. _`drm_crtc_force_disable.note`:
+
+Note
+----
+
+This should only be used by non-atomic legacy drivers.
 
 .. _`drm_crtc_force_disable.return`:
 
@@ -39,6 +72,14 @@ Description
 
 Drivers may want to call this on unload to ensure that all displays are
 unlit and the GPU is in a consistent, low power state. Takes modeset locks.
+
+.. _`drm_crtc_force_disable_all.note`:
+
+Note
+----
+
+This should only be used by non-atomic legacy drivers. For an atomic
+version look at \ :c:func:`drm_atomic_helper_shutdown`\ .
 
 .. _`drm_crtc_force_disable_all.return`:
 
@@ -157,7 +198,7 @@ drm_mode_set_config_internal
 
 .. c:function:: int drm_mode_set_config_internal(struct drm_mode_set *set)
 
-    helper to call ->set_config
+    helper to call \ :c:type:`drm_mode_config_funcs.set_config <drm_mode_config_funcs>`\ 
 
     :param struct drm_mode_set \*set:
         modeset config to set
@@ -167,8 +208,11 @@ drm_mode_set_config_internal
 Description
 -----------
 
-This is a little helper to wrap internal calls to the ->set_config driver
-interface. The only thing it adds is correct refcounting dance.
+This is a little helper to wrap internal calls to the
+\ :c:type:`drm_mode_config_funcs.set_config <drm_mode_config_funcs>`\  driver interface. The only thing it adds is
+correct refcounting dance.
+
+This should only be used by non-atomic legacy drivers.
 
 .. _`drm_mode_set_config_internal.return`:
 
@@ -176,32 +220,6 @@ Return
 ------
 
 Zero on success, negative errno on failure.
-
-.. _`drm_crtc_get_hv_timing`:
-
-drm_crtc_get_hv_timing
-======================
-
-.. c:function:: void drm_crtc_get_hv_timing(const struct drm_display_mode *mode, int *hdisplay, int *vdisplay)
-
-    Fetches hdisplay/vdisplay for given mode
-
-    :param const struct drm_display_mode \*mode:
-        mode to query
-
-    :param int \*hdisplay:
-        hdisplay value to fill in
-
-    :param int \*vdisplay:
-        vdisplay value to fill in
-
-.. _`drm_crtc_get_hv_timing.description`:
-
-Description
------------
-
-The vdisplay value will be doubled if the specified mode is a stereo mode of
-the appropriate layout.
 
 .. _`drm_crtc_check_viewport`:
 

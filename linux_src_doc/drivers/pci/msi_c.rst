@@ -41,7 +41,7 @@ msi_capability_init
         number of interrupts to allocate
 
     :param const struct irq_affinity \*affd:
-        *undescribed*
+        description of automatic irq affinity assignments (may be \ ``NULL``\ )
 
 .. _`msi_capability_init.description`:
 
@@ -147,38 +147,6 @@ pci_msix_vec_count
         It returns a negative errno if the device is not capable of sending MSI-X
         interrupts.
 
-.. _`pci_enable_msix`:
-
-pci_enable_msix
-===============
-
-.. c:function:: int pci_enable_msix(struct pci_dev *dev, struct msix_entry *entries, int nvec)
-
-    configure device's MSI-X capability structure
-
-    :param struct pci_dev \*dev:
-        pointer to the pci_dev data structure of MSI-X device function
-
-    :param struct msix_entry \*entries:
-        pointer to an array of MSI-X entries (optional)
-
-    :param int nvec:
-        number of MSI-X irqs requested for allocation by device driver
-
-.. _`pci_enable_msix.description`:
-
-Description
------------
-
-Setup the MSI-X capability structure of device function with the number
-of requested irqs upon its software driver call to request for
-MSI-X mode enabled on its hardware device function. A return of zero
-indicates the successful configuration of MSI-X capability structure
-with new allocated MSI-X irqs. A return of < 0 indicates a failure.
-Or a return of > 0 indicates that driver request is exceeding the number
-of irqs or MSI-X vectors available. Driver should use the returned value to
-re-send its request.
-
 .. _`pci_msi_enabled`:
 
 pci_msi_enabled
@@ -198,35 +166,6 @@ Description
 
 Returns true if MSI has not been disabled by the command-line option
 pci=nomsi.
-
-.. _`pci_enable_msi_range`:
-
-pci_enable_msi_range
-====================
-
-.. c:function:: int pci_enable_msi_range(struct pci_dev *dev, int minvec, int maxvec)
-
-    configure device's MSI capability structure
-
-    :param struct pci_dev \*dev:
-        device to configure
-
-    :param int minvec:
-        minimal number of interrupts to configure
-
-    :param int maxvec:
-        maximum number of interrupts to configure
-
-.. _`pci_enable_msi_range.description`:
-
-Description
------------
-
-This function tries to allocate a maximum possible number of interrupts in a
-range between \ ``minvec``\  and \ ``maxvec``\ . It returns a negative errno if an error
-occurs. If it succeeds, it returns the actual number of interrupts allocated
-and updates the \ ``dev``\ 's irq member to the lowest new interrupt number;
-the other interrupt numbers allocated to this device are consecutive.
 
 .. _`pci_enable_msix_range`:
 
@@ -350,6 +289,21 @@ pci_irq_get_affinity
     :param int nr:
         device-relative interrupt vector index (0-based).
 
+.. _`pci_irq_get_node`:
+
+pci_irq_get_node
+================
+
+.. c:function:: int pci_irq_get_node(struct pci_dev *pdev, int vec)
+
+    return the numa node of a particular msi vector
+
+    :param struct pci_dev \*pdev:
+        PCI device to operate on
+
+    :param int vec:
+        device-relative interrupt vector index (0-based).
+
 .. _`pci_msi_domain_write_msg`:
 
 pci_msi_domain_write_msg
@@ -410,9 +364,9 @@ pci_msi_domain_check_cap
 Return
 ------
 
-0 if the functionality is supported
-1 if Multi MSI is requested, but the domain does not support it
--ENOTSUPP otherwise
+ 0 if the functionality is supported
+ 1 if Multi MSI is requested, but the domain does not support it
+ -ENOTSUPP otherwise
 
 .. _`pci_msi_create_irq_domain`:
 
@@ -445,75 +399,6 @@ Return
 ------
 
 A domain pointer or NULL in case of failure.
-
-.. _`pci_msi_domain_alloc_irqs`:
-
-pci_msi_domain_alloc_irqs
-=========================
-
-.. c:function:: int pci_msi_domain_alloc_irqs(struct irq_domain *domain, struct pci_dev *dev, int nvec, int type)
-
-    Allocate interrupts for \ ``dev``\  in \ ``domain``\ 
-
-    :param struct irq_domain \*domain:
-        The interrupt domain to allocate from
-
-    :param struct pci_dev \*dev:
-        The device for which to allocate
-
-    :param int nvec:
-        The number of interrupts to allocate
-
-    :param int type:
-        Unused to allow simpler migration from the arch_XXX interfaces
-
-.. _`pci_msi_domain_alloc_irqs.return`:
-
-Return
-------
-
-A virtual interrupt number or an error code in case of failure
-
-.. _`pci_msi_domain_free_irqs`:
-
-pci_msi_domain_free_irqs
-========================
-
-.. c:function:: void pci_msi_domain_free_irqs(struct irq_domain *domain, struct pci_dev *dev)
-
-    Free interrupts for \ ``dev``\  in \ ``domain``\ 
-
-    :param struct irq_domain \*domain:
-        The interrupt domain
-
-    :param struct pci_dev \*dev:
-        The device for which to free interrupts
-
-.. _`pci_msi_create_default_irq_domain`:
-
-pci_msi_create_default_irq_domain
-=================================
-
-.. c:function:: struct irq_domain *pci_msi_create_default_irq_domain(struct fwnode_handle *fwnode, struct msi_domain_info *info, struct irq_domain *parent)
-
-    Create a default MSI interrupt domain
-
-    :param struct fwnode_handle \*fwnode:
-        Optional fwnode of the interrupt controller
-
-    :param struct msi_domain_info \*info:
-        MSI domain info
-
-    :param struct irq_domain \*parent:
-        Parent irq domain
-
-.. _`pci_msi_create_default_irq_domain.return`:
-
-Return
-------
-
-A domain pointer or NULL in case of failure. If successful
-the default PCI/MSI irqdomain pointer is updated.
 
 .. _`pci_msi_domain_get_msi_rid`:
 

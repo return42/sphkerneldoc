@@ -62,7 +62,7 @@ Requires an MDHA split key.
 cnstr_shdsc_aead_encap
 ======================
 
-.. c:function:: void cnstr_shdsc_aead_encap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off)
+.. c:function:: void cnstr_shdsc_aead_encap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi)
 
     IPSec ESP encapsulation shared descriptor (non-protocol).
 
@@ -80,6 +80,9 @@ cnstr_shdsc_aead_encap
         specified. Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1,
         SHA224, SHA256, SHA384, SHA512} ANDed with OP_ALG_AAI_HMAC_PRECOMP.
 
+    :param unsigned int ivsize:
+        initialization vector size
+
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
 
@@ -91,6 +94,9 @@ cnstr_shdsc_aead_encap
 
     :param const u32 ctx1_iv_off:
         IV offset in CONTEXT1 register
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_aead_encap.note`:
 
@@ -104,7 +110,7 @@ Requires an MDHA split key.
 cnstr_shdsc_aead_decap
 ======================
 
-.. c:function:: void cnstr_shdsc_aead_decap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool geniv, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off)
+.. c:function:: void cnstr_shdsc_aead_decap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool geniv, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi)
 
     IPSec ESP decapsulation shared descriptor (non-protocol).
 
@@ -140,6 +146,9 @@ cnstr_shdsc_aead_decap
     :param const u32 ctx1_iv_off:
         IV offset in CONTEXT1 register
 
+    :param const bool is_qi:
+        true when called from caam/qi
+
 .. _`cnstr_shdsc_aead_decap.note`:
 
 Note
@@ -152,7 +161,7 @@ Requires an MDHA split key.
 cnstr_shdsc_aead_givencap
 =========================
 
-.. c:function:: void cnstr_shdsc_aead_givencap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off)
+.. c:function:: void cnstr_shdsc_aead_givencap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi)
 
     IPSec ESP encapsulation shared descriptor (non-protocol) with HW-generated initialization vector.
 
@@ -184,6 +193,9 @@ cnstr_shdsc_aead_givencap
 
     :param const u32 ctx1_iv_off:
         IV offset in CONTEXT1 register
+
+    :param const bool is_qi:
+        true when called from caam/qi
 
 .. _`cnstr_shdsc_aead_givencap.note`:
 

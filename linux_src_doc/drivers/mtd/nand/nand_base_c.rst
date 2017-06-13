@@ -318,10 +318,12 @@ specify how to write bad block markers to OOB (chip->block_markbad).
 We try operations in the following order
 ----------------------------------------
 
-(1) erase the affected block, to allow OOB marker to be written cleanly
-(2) write bad block marker to OOB area of affected block (unless flag
-NAND_BBT_NO_OOB_BBM is present)
-(3) update the BBT
+
+ (1) erase the affected block, to allow OOB marker to be written cleanly
+ (2) write bad block marker to OOB area of affected block (unless flag
+     NAND_BBT_NO_OOB_BBM is present)
+ (3) update the BBT
+
 Note that we retain the first error encountered in (2) or (3), finish the
 procedures, and dump the error in the end.
 
@@ -726,9 +728,9 @@ __nand_unlock
         length to unlock
 
     :param int invert:
-        when = 0, unlock the range of blocks within the lower and
+        - when = 0, unlock the range of blocks within the lower and
         upper boundary address
-        when = 1, unlock the range of blocks outside the boundaries
+        - when = 1, unlock the range of blocks outside the boundaries
         of the lower and upper boundary address
 
 .. _`__nand_unlock.description`:
@@ -882,21 +884,21 @@ Note
 ----
 
 1/ ECC algorithms are working on pre-defined block sizes which are usually
-different from the NAND page size. When fixing bitflips, ECC engines will
-report the number of errors per chunk, and the NAND core infrastructure
-expect you to return the maximum number of bitflips for the whole page.
-This is why you should always use this function on a single chunk and
-not on the whole page. After checking each chunk you should update your
-max_bitflips value accordingly.
+   different from the NAND page size. When fixing bitflips, ECC engines will
+   report the number of errors per chunk, and the NAND core infrastructure
+   expect you to return the maximum number of bitflips for the whole page.
+   This is why you should always use this function on a single chunk and
+   not on the whole page. After checking each chunk you should update your
+   max_bitflips value accordingly.
 2/ When checking for bitflips in erased pages you should not only check
-the payload data but also their associated ECC data, because a user might
-have programmed almost all bits to 1 but a few. In this case, we
-shouldn't consider the chunk as erased, and checking ECC bytes prevent
-this case.
+   the payload data but also their associated ECC data, because a user might
+   have programmed almost all bits to 1 but a few. In this case, we
+   shouldn't consider the chunk as erased, and checking ECC bytes prevent
+   this case.
 3/ The extraoob argument is optional, and should be used if some of your OOB
-data are protected by the ECC engine.
-It could also be used if you support subpages and want to attach some
-extra OOB data to an ECC chunk.
+   data are protected by the ECC engine.
+   It could also be used if you support subpages and want to attach some
+   extra OOB data to an ECC chunk.
 
 Returns a positive number of bitflips less than or equal to
 bitflips_threshold, or -ERROR_CODE for bitflips in excess of the
@@ -1515,7 +1517,7 @@ nand_write_page
 
 .. c:function:: int nand_write_page(struct mtd_info *mtd, struct nand_chip *chip, uint32_t offset, int data_len, const uint8_t *buf, int oob_required, int page, int cached, int raw)
 
-    [REPLACEABLE] write one page
+    write one page
 
     :param struct mtd_info \*mtd:
         MTD device structure
@@ -1542,7 +1544,7 @@ nand_write_page
         cached programming
 
     :param int raw:
-        use \_raw version of write_page
+        use _raw version of write_page
 
 .. _`nand_fill_oob`:
 
@@ -1813,6 +1815,24 @@ nand_block_markbad
 
     :param loff_t ofs:
         offset relative to mtd start
+
+.. _`nand_max_bad_blocks`:
+
+nand_max_bad_blocks
+===================
+
+.. c:function:: int nand_max_bad_blocks(struct mtd_info *mtd, loff_t ofs, size_t len)
+
+    [MTD Interface] Max number of bad blocks for an mtd
+
+    :param struct mtd_info \*mtd:
+        MTD device structure
+
+    :param loff_t ofs:
+        offset relative to mtd start
+
+    :param size_t len:
+        length of mtd
 
 .. _`nand_onfi_set_features`:
 

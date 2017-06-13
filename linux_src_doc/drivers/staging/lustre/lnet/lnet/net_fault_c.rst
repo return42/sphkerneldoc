@@ -81,9 +81,9 @@ drop_rule_match
 lnet_drop_rule_match
 ====================
 
-.. c:function:: bool lnet_drop_rule_match(lnet_hdr_t *hdr)
+.. c:function:: bool lnet_drop_rule_match(struct lnet_hdr *hdr)
 
-    :param lnet_hdr_t \*hdr:
+    :param struct lnet_hdr \*hdr:
         *undescribed*
 
 .. _`msg_delay_send`:
@@ -125,11 +125,11 @@ delay_rule_match
 lnet_delay_rule_match_locked
 ============================
 
-.. c:function:: bool lnet_delay_rule_match_locked(lnet_hdr_t *hdr, struct lnet_msg *msg)
+.. c:function:: bool lnet_delay_rule_match_locked(struct lnet_hdr *hdr, struct lnet_msg *msg)
 
     will be delayed if there is a match.
 
-    :param lnet_hdr_t \*hdr:
+    :param struct lnet_hdr \*hdr:
         *undescribed*
 
     :param struct lnet_msg \*msg:

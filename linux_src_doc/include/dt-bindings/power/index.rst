@@ -8,3 +8,4 @@ power
     :maxdepth: 1
 
     rk3288-power_h
+    rk3328-power_h

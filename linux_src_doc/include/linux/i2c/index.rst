@@ -10,6 +10,5 @@ i2c
     apds990x_h
     bh1770glc_h
     i2c-hid_h
-    mpr121_touchkey_h
     pcf857x_h
     tps65010_h

@@ -29,9 +29,12 @@ painstakingly trying to initialize them in the right order.
 drm_helper_mode_fill_fb_struct
 ==============================
 
-.. c:function:: void drm_helper_mode_fill_fb_struct(struct drm_framebuffer *fb, const struct drm_mode_fb_cmd2 *mode_cmd)
+.. c:function:: void drm_helper_mode_fill_fb_struct(struct drm_device *dev, struct drm_framebuffer *fb, const struct drm_mode_fb_cmd2 *mode_cmd)
 
     fill out framebuffer metadata
+
+    :param struct drm_device \*dev:
+        DRM device
 
     :param struct drm_framebuffer \*fb:
         drm_framebuffer object to fill out

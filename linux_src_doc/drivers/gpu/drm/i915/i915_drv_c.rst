@@ -197,7 +197,7 @@ i915_reset
     reset chip after a hang
 
     :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+        device private to reset
 
 .. _`i915_reset.description`:
 

@@ -74,31 +74,6 @@ XXX Eventually this functionality will be hidden inside the PRM/CM
 device drivers.  Until then, this should avoid huge blocks of cpu_is\_\*()
 conditionals in this code.
 
-.. _`_fetch_next_ocp_if`:
-
-_fetch_next_ocp_if
-==================
-
-.. c:function:: struct omap_hwmod_ocp_if *_fetch_next_ocp_if(struct list_head **p, int *i)
-
-    return the next OCP interface in a list
-
-    :param struct list_head \*\*p:
-        ptr to a ptr to the list_head inside the ocp_if to return
-
-    :param int \*i:
-        pointer to the index of the element pointed to by \ ``p``\  in the list
-
-.. _`_fetch_next_ocp_if.description`:
-
-Description
------------
-
-Return a pointer to the struct omap_hwmod_ocp_if record
-containing the struct list_head pointed to by \ ``p``\ , and increment
-\ ``p``\  such that a future call to this routine will return the next
-record.
-
 .. _`_update_sysc_cache`:
 
 _update_sysc_cache
@@ -1586,34 +1561,6 @@ unneeded omap_hwmods to be freed on multi-OMAP configurations.  Note
 that the copy process would be relatively complex due to the large number
 of substructures.
 
-.. _`_alloc_links`:
-
-_alloc_links
-============
-
-.. c:function:: int _alloc_links(struct omap_hwmod_link **ml, struct omap_hwmod_link **sl)
-
-    return allocated memory for hwmod links
-
-    :param struct omap_hwmod_link \*\*ml:
-        pointer to a struct omap_hwmod_link \* for the master link
-
-    :param struct omap_hwmod_link \*\*sl:
-        pointer to a struct omap_hwmod_link \* for the slave link
-
-.. _`_alloc_links.description`:
-
-Description
------------
-
-Return pointers to two struct omap_hwmod_link records, via the
-addresses pointed to by \ ``ml``\  and \ ``sl``\ .  Will first attempt to return
-memory allocated as part of a large initial block, but if that has
-been exhausted, will allocate memory itself.  Since ideally this
-second allocation path will never occur, the number of these
-'supplemental' allocations will be logged when debugging is
-enabled.  Returns 0.
-
 .. _`_add_link`:
 
 _add_link
@@ -1631,8 +1578,7 @@ _add_link
 Description
 -----------
 
-Add struct omap_hwmod_link records connecting the master IP block
-specified in \ ``oi``\ ->master to \ ``oi``\ , and connecting the slave IP block
+Add struct omap_hwmod_link records connecting the slave IP block
 specified in \ ``oi``\ ->slave to \ ``oi``\ .  This code is assumed to run before
 preemption or SMP has been enabled, thus avoiding the need for
 locking in this code.  Changes to this assumption will require
@@ -1663,34 +1609,6 @@ success.
 XXX The data should be copied into bootmem, so the original data
 should be marked \__initdata and freed after init.  This would allow
 unneeded omap_hwmods to be freed on multi-OMAP configurations.
-
-.. _`_alloc_linkspace`:
-
-_alloc_linkspace
-================
-
-.. c:function:: int _alloc_linkspace(struct omap_hwmod_ocp_if **ois)
-
-    allocate large block of hwmod links
-
-    :param struct omap_hwmod_ocp_if \*\*ois:
-        pointer to an array of struct omap_hwmod_ocp_if records to count
-
-.. _`_alloc_linkspace.description`:
-
-Description
------------
-
-Allocate a large block of struct omap_hwmod_link records.  This
-improves boot time significantly by avoiding the need to allocate
-individual records one by one.  If the number of records to
-allocate in the block hasn't been manually specified, this function
-will count the number of struct omap_hwmod_ocp_if records in \ ``ois``\ 
-and use that to determine the allocation size.  For SoC families
-that require multiple list registrations, such as OMAP3xxx, this
-estimation process isn't optimal, so manual estimation is advised
-in those cases.  Returns -EEXIST if the allocation has already occurred
-or 0 upon success.
 
 .. _`_omap2xxx_3xxx_wait_target_ready`:
 
@@ -2083,6 +2001,27 @@ the scheduler clock.  Must be called after \ :c:func:`omap2_clk_init`\ .
 Resolves the struct clk names to struct clk pointers for each
 registered omap_hwmod.  Also calls \_setup() on each hwmod.  Returns
 -EINVAL upon error or 0 upon success.
+
+.. _`omap_hwmod_setup_earlycon_flags`:
+
+omap_hwmod_setup_earlycon_flags
+===============================
+
+.. c:function:: void omap_hwmod_setup_earlycon_flags( void)
+
+    set up flags for early console
+
+    :param  void:
+        no arguments
+
+.. _`omap_hwmod_setup_earlycon_flags.description`:
+
+Description
+-----------
+
+Enable DEBUG_OMAPUART_FLAGS for uart hwmod that is being used as
+early concole so that hwmod core doesn't reset and keep it in idle
+that specific uart.
 
 .. _`omap_hwmod_setup_all`:
 

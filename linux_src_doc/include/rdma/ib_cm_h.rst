@@ -296,7 +296,7 @@ ib_send_cm_mra
 ib_send_cm_lap
 ==============
 
-.. c:function:: int ib_send_cm_lap(struct ib_cm_id *cm_id, struct ib_sa_path_rec *alternate_path, const void *private_data, u8 private_data_len)
+.. c:function:: int ib_send_cm_lap(struct ib_cm_id *cm_id, struct sa_path_rec *alternate_path, const void *private_data, u8 private_data_len)
 
     Sends a load alternate path request.
 
@@ -304,7 +304,7 @@ ib_send_cm_lap
         Connection identifier associated with the load alternate path
         message.
 
-    :param struct ib_sa_path_rec \*alternate_path:
+    :param struct sa_path_rec \*alternate_path:
         A path record that identifies the alternate path to
         load.
 

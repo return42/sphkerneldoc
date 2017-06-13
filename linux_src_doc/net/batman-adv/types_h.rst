@@ -2233,7 +2233,6 @@ Definition
     struct batadv_priv {
         atomic_t mesh_state;
         struct net_device *soft_iface;
-        struct net_device_stats stats;
         u64 __percpu *bat_counters;
         atomic_t aggregated_ogms;
         atomic_t bonding;
@@ -2309,9 +2308,6 @@ mesh_state
 
 soft_iface
     net device which holds this struct as private data
-
-stats
-    structure holding the data for the \ :c:func:`ndo_get_stats`\  call
 
 bat_counters
     mesh internal traffic statistic counters (see batadv_counters)
@@ -3124,6 +3120,7 @@ Definition
 
     struct batadv_skb_cb {
         bool decoded;
+        unsigned int num_bcasts;
     }
 
 .. _`batadv_skb_cb.members`:
@@ -3134,6 +3131,9 @@ Members
 decoded
     Marks a skb as decoded, which is checked when searching for coding
     opportunities in network-coding.c
+
+num_bcasts
+    Counter for broadcast packet retransmissions
 
 .. _`batadv_forw_packet`:
 
@@ -3194,7 +3194,7 @@ direct_link_flags
     direct link flags for aggregated OGM packets
 
 num_packets
-    counter for bcast packet retransmission
+    counter for aggregated OGMv1 packets
 
 delayed_work
     work queue callback item for packet sending
@@ -3371,6 +3371,7 @@ Definition
 .. code-block:: c
 
     struct batadv_algo_gw_ops {
+        void (*init_sel_class)(struct batadv_priv *bat_priv);
         ssize_t (*store_sel_class)(struct batadv_priv *bat_priv, char *buff,size_t count);
         ssize_t (*show_sel_class)(struct batadv_priv *bat_priv, char *buff);
         struct batadv_gw_node *(*get_best_gw_node)(struct batadv_priv *bat_priv);
@@ -3385,6 +3386,9 @@ Definition
 
 Members
 -------
+
+init_sel_class
+    initialize GW selection class (optional)
 
 store_sel_class
     parse and stores a new GW selection class (optional)

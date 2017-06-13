@@ -18,7 +18,7 @@ Definition
 
     struct altera_gpio_chip {
         struct of_mm_gpio_chip mmchip;
-        spinlock_t gpio_lock;
+        raw_spinlock_t gpio_lock;
         int interrupt_trigger;
         int mapped_irq;
     }

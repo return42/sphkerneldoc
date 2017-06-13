@@ -1,58 +1,58 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/oki-semi/pch_gbe/pch_gbe_ethtool.c
 
-.. _`pch_gbe_get_settings`:
+.. _`pch_gbe_get_link_ksettings`:
 
-pch_gbe_get_settings
-====================
+pch_gbe_get_link_ksettings
+==========================
 
-.. c:function:: int pch_gbe_get_settings(struct net_device *netdev, struct ethtool_cmd *ecmd)
+.. c:function:: int pch_gbe_get_link_ksettings(struct net_device *netdev, struct ethtool_link_ksettings *ecmd)
 
     Get device-specific settings
 
     :param struct net_device \*netdev:
         Network interface device structure
 
-    :param struct ethtool_cmd \*ecmd:
+    :param struct ethtool_link_ksettings \*ecmd:
         Ethtool command
 
-.. _`pch_gbe_get_settings.return`:
+.. _`pch_gbe_get_link_ksettings.return`:
 
 Return
 ------
 
 0:                      Successful.
 
-.. _`pch_gbe_get_settings.negative-value`:
+.. _`pch_gbe_get_link_ksettings.negative-value`:
 
 Negative value
 --------------
 
 Failed.
 
-.. _`pch_gbe_set_settings`:
+.. _`pch_gbe_set_link_ksettings`:
 
-pch_gbe_set_settings
-====================
+pch_gbe_set_link_ksettings
+==========================
 
-.. c:function:: int pch_gbe_set_settings(struct net_device *netdev, struct ethtool_cmd *ecmd)
+.. c:function:: int pch_gbe_set_link_ksettings(struct net_device *netdev, const struct ethtool_link_ksettings *ecmd)
 
     Set device-specific settings
 
     :param struct net_device \*netdev:
         Network interface device structure
 
-    :param struct ethtool_cmd \*ecmd:
+    :param const struct ethtool_link_ksettings \*ecmd:
         Ethtool command
 
-.. _`pch_gbe_set_settings.return`:
+.. _`pch_gbe_set_link_ksettings.return`:
 
 Return
 ------
 
 0:                      Successful.
 
-.. _`pch_gbe_set_settings.negative-value`:
+.. _`pch_gbe_set_link_ksettings.negative-value`:
 
 Negative value
 --------------

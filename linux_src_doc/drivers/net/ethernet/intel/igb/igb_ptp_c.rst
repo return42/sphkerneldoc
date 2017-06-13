@@ -101,14 +101,14 @@ allow only one such packet into the queue.
 igb_ptp_rx_pktstamp
 ===================
 
-.. c:function:: void igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, unsigned char *va, struct sk_buff *skb)
+.. c:function:: void igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va, struct sk_buff *skb)
 
     retrieve Rx per packet timestamp
 
     :param struct igb_q_vector \*q_vector:
         Pointer to interrupt specific structure
 
-    :param unsigned char \*va:
+    :param void \*va:
         Pointer to address containing Rx buffer
 
     :param struct sk_buff \*skb:

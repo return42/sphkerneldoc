@@ -69,9 +69,9 @@ dmi_check_system
 Description
 -----------
 
-Walk the blacklist table running matching functions until someone
-returns non zero or we hit the end. Callback function is called for
-each successful match. Returns the number of matches.
+     Walk the blacklist table running matching functions until someone
+     returns non zero or we hit the end. Callback function is called for
+     each successful match. Returns the number of matches.
 
 .. _`dmi_first_match`:
 
@@ -95,8 +95,8 @@ dmi_first_match
 Description
 -----------
 
-Walk the blacklist table until the first match is found.  Return the
-pointer to the matching entry or NULL if there's no match.
+     Walk the blacklist table until the first match is found.  Return the
+     pointer to the matching entry or NULL if there's no match.
 
 .. _`dmi_get_system_info`:
 
@@ -115,8 +115,8 @@ dmi_get_system_info
 Description
 -----------
 
-Returns one DMI data value, can be used to perform
-complex DMI data checks.
+     Returns one DMI data value, can be used to perform
+     complex DMI data checks.
 
 .. _`dmi_name_in_serial`:
 
@@ -165,11 +165,11 @@ dmi_find_device
 Description
 -----------
 
-Iterates through the list of known onboard devices. If a device is
-found with a matching \ ``type``\  and \ ``name``\ , a pointer to its device
-structure is returned.  Otherwise, \ ``NULL``\  is returned.
-A new search is initiated by passing \ ``NULL``\  as the \ ``from``\  argument.
-If \ ``from``\  is not \ ``NULL``\ , searches continue from next device.
+     Iterates through the list of known onboard devices. If a device is
+     found with a matching \ ``type``\  and \ ``name``\ , a pointer to its device
+     structure is returned.  Otherwise, \ ``NULL``\  is returned.
+     A new search is initiated by passing \ ``NULL``\  as the \ ``from``\  argument.
+     If \ ``from``\  is not \ ``NULL``\ , searches continue from next device.
 
 .. _`dmi_get_date`:
 
@@ -197,16 +197,16 @@ dmi_get_date
 Description
 -----------
 
-The date field is assumed to be in the form resembling
-[mm[/dd]]/yy[yy] and the result is stored in the out
-parameters any or all of which can be omitted.
+     The date field is assumed to be in the form resembling
+     [mm[/dd]]/yy[yy] and the result is stored in the out
+     parameters any or all of which can be omitted.
 
-If the field doesn't exist, all out parameters are set to zero
-and false is returned.  Otherwise, true is returned with any
-invalid part of date set to zero.
+     If the field doesn't exist, all out parameters are set to zero
+     and false is returned.  Otherwise, true is returned with any
+     invalid part of date set to zero.
 
-On return, year, month and day are guaranteed to be in the
-range of [0,9999], [0,12] and [0,31] respectively.
+     On return, year, month and day are guaranteed to be in the
+     range of [0,9999], [0,12] and [0,31] respectively.
 
 .. _`dmi_walk`:
 
@@ -228,7 +228,7 @@ dmi_walk
 Description
 -----------
 
-Returns -1 when the DMI table can't be reached, 0 on success.
+     Returns -1 when the DMI table can't be reached, 0 on success.
 
 .. _`dmi_match`:
 

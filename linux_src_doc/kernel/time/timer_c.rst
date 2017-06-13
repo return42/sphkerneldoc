@@ -367,7 +367,7 @@ del_timer
 
 .. c:function:: int del_timer(struct timer_list *timer)
 
-    deactive a timer.
+    deactivate a timer.
 
     :param struct timer_list \*timer:
         the timer to be deactivated

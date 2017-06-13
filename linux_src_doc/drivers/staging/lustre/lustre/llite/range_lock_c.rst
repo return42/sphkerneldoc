@@ -37,7 +37,7 @@ The range lock tree is ready to function.
 range_lock_init
 ===============
 
-.. c:function:: void range_lock_init(struct range_lock *lock, __u64 start, __u64 end)
+.. c:function:: int range_lock_init(struct range_lock *lock, __u64 start, __u64 end)
 
     :param struct range_lock \*lock:
         *undescribed*

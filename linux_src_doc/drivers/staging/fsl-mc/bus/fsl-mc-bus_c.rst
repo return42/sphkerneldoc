@@ -161,18 +161,6 @@ fsl_mc_driver_unregister
     :param struct fsl_mc_driver \*mc_driver:
         *undescribed*
 
-.. _`fsl_mc_bus_exists`:
-
-fsl_mc_bus_exists
-=================
-
-.. c:function:: bool fsl_mc_bus_exists( void)
-
-    check if a root dprc exists
-
-    :param  void:
-        no arguments
-
 .. _`fsl_mc_get_root_dprc`:
 
 fsl_mc_get_root_dprc

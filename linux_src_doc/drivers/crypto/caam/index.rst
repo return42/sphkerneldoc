@@ -13,3 +13,4 @@ caam
     desc_constr_h
     jr_c
     key_gen_c
+    qi_h

@@ -22,17 +22,14 @@ ll_prepare_close
 ll_close_inode_openhandle
 =========================
 
-.. c:function:: int ll_close_inode_openhandle(struct obd_export *md_exp, struct obd_client_handle *och, struct inode *inode, enum mds_op_bias bias, void *data)
+.. c:function:: int ll_close_inode_openhandle(struct inode *inode, struct obd_client_handle *och, enum mds_op_bias bias, void *data)
 
     The meaning of "data" depends on the value of "bias".
 
-    :param struct obd_export \*md_exp:
+    :param struct inode \*inode:
         *undescribed*
 
     :param struct obd_client_handle \*och:
-        *undescribed*
-
-    :param struct inode \*inode:
         *undescribed*
 
     :param enum mds_op_bias bias:

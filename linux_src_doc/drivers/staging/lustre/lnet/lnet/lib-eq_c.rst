@@ -6,7 +6,7 @@
 LNetEQAlloc
 ===========
 
-.. c:function:: int LNetEQAlloc(unsigned int count, lnet_eq_handler_t callback, lnet_handle_eq_t *handle)
+.. c:function:: int LNetEQAlloc(unsigned int count, lnet_eq_handler_t callback, struct lnet_handle_eq *handle)
 
     :param unsigned int count:
         *undescribed*
@@ -14,7 +14,7 @@ LNetEQAlloc
     :param lnet_eq_handler_t callback:
         *undescribed*
 
-    :param lnet_handle_eq_t \*handle:
+    :param struct lnet_handle_eq \*handle:
         *undescribed*
 
 .. _`lneteqalloc.description`:
@@ -49,11 +49,11 @@ the newly created EQ.
 LNetEQFree
 ==========
 
-.. c:function:: int LNetEQFree(lnet_handle_eq_t eqh)
+.. c:function:: int LNetEQFree(struct lnet_handle_eq eqh)
 
     otherwise do nothing and it's up to the user to try again.
 
-    :param lnet_handle_eq_t eqh:
+    :param struct lnet_handle_eq eqh:
         *undescribed*
 
 .. _`lneteqfree.description`:
@@ -100,11 +100,11 @@ EQ has been dropped due to limited space in the EQ.
 LNetEQPoll
 ==========
 
-.. c:function:: int LNetEQPoll(lnet_handle_eq_t *eventqs, int neq, int timeout_ms, lnet_event_t *event, int *which)
+.. c:function:: int LNetEQPoll(struct lnet_handle_eq *eventqs, int neq, int timeout_ms, struct lnet_event *event, int *which)
 
     timeout happens.
 
-    :param lnet_handle_eq_t \*eventqs:
+    :param struct lnet_handle_eq \*eventqs:
         *undescribed*
 
     :param int neq:
@@ -113,7 +113,7 @@ LNetEQPoll
     :param int timeout_ms:
         *undescribed*
 
-    :param lnet_event_t \*event:
+    :param struct lnet_event \*event:
         *undescribed*
 
     :param int \*which:

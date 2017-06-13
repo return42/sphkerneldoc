@@ -81,7 +81,7 @@ first_zones_zonelist
 
 .. c:function:: struct zoneref *first_zones_zonelist(struct zonelist *zonelist, enum zone_type highest_zoneidx, nodemask_t *nodes)
 
-    Returns the first zone at or below highest_zoneidx within the allowed nodemask in a zonelist \ ``zonelist``\  - The zonelist to search for a suitable zone \ ``highest_zoneidx``\  - The zone index of the highest zone to return \ ``nodes``\  - An optional nodemask to filter the zonelist with \ ``zone``\  - The first suitable zone found is returned via this parameter
+    Returns the first zone at or below highest_zoneidx within the allowed nodemask in a zonelist \ ``zonelist``\  - The zonelist to search for a suitable zone \ ``highest_zoneidx``\  - The zone index of the highest zone to return \ ``nodes``\  - An optional nodemask to filter the zonelist with \ ``return``\  - Zoneref pointer for the first suitable zone found (see below)
 
     :param struct zonelist \*zonelist:
         *undescribed*
@@ -101,6 +101,10 @@ This function returns the first zone at or below a given zone index that is
 within the allowed nodemask. The zoneref returned is a cursor that can be
 used to iterate the zonelist with next_zones_zonelist by advancing it by
 one before calling.
+
+When no eligible zone is found, zoneref->zone is NULL (zoneref itself is
+never NULL). This may happen either genuinely, or due to concurrent nodemask
+update due to cpuset modification.
 
 .. _`for_each_zone_zonelist_nodemask`:
 

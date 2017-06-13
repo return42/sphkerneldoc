@@ -984,8 +984,7 @@ vid_hdr_shift
     contains \ ``vid_hdr_offset``\  - \ ``vid_hdr_aloffset``\ 
 
 bad_allowed
-    whether the MTD device admits of bad physical eraseblocks or
-    not
+    whether the MTD device admits bad physical eraseblocks or not
 
 nor_flash
     non-zero if working on top of NOR flash

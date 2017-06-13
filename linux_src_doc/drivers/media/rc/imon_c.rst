@@ -289,14 +289,24 @@ imon_parse_press_type
     :param u8 ktype:
         *undescribed*
 
-.. _`imon_incoming_packet`:
+.. _`submit_data`:
 
-imon_incoming_packet
+submit_data
+===========
+
+.. c:function:: void submit_data(struct imon_context *context)
+
+    :param struct imon_context \*context:
+        *undescribed*
+
+.. _`imon_incoming_ir_raw`:
+
+imon_incoming_ir_raw
 ====================
 
-.. c:function:: void imon_incoming_packet(struct imon_context *ictx, struct urb *urb, int intf)
+.. c:function:: void imon_incoming_ir_raw(struct imon_context *context, struct urb *urb, int intf)
 
-    :param struct imon_context \*ictx:
+    :param struct imon_context \*context:
         *undescribed*
 
     :param struct urb \*urb:

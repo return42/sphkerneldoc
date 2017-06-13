@@ -90,5 +90,27 @@ only parse and extract capabilities
 
 Return error code
 
+.. _`wil_fw_verify_file_exists`:
+
+wil_fw_verify_file_exists
+=========================
+
+.. c:function:: bool wil_fw_verify_file_exists(struct wil6210_priv *wil, const char *name)
+
+    checks if firmware file exist
+
+    :param struct wil6210_priv \*wil:
+        driver context
+
+    :param const char \*name:
+        firmware file name
+
+.. _`wil_fw_verify_file_exists.description`:
+
+Description
+-----------
+
+return value - boolean, true for success, false for failure
+
 .. This file was automatic generated / don't edit.
 

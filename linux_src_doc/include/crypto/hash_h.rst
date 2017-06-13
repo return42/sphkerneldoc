@@ -356,6 +356,34 @@ Return
 
 message digest size of cipher
 
+.. _`crypto_ahash_statesize`:
+
+crypto_ahash_statesize
+======================
+
+.. c:function:: unsigned int crypto_ahash_statesize(struct crypto_ahash *tfm)
+
+    obtain size of the ahash state
+
+    :param struct crypto_ahash \*tfm:
+        cipher handle
+
+.. _`crypto_ahash_statesize.description`:
+
+Description
+-----------
+
+Return the size of the ahash state. With the \ :c:func:`crypto_ahash_export`\ 
+function, the caller can export the state into a buffer whose size is
+defined with this function.
+
+.. _`crypto_ahash_statesize.return`:
+
+Return
+------
+
+size of the ahash state
+
 .. _`crypto_ahash_reqtfm`:
 
 crypto_ahash_reqtfm
@@ -396,21 +424,12 @@ crypto_ahash_reqsize
     :param struct crypto_ahash \*tfm:
         cipher handle
 
-.. _`crypto_ahash_reqsize.description`:
-
-Description
------------
-
-Return the size of the ahash state size. With the crypto_ahash_export
-function, the caller can export the state into a buffer whose size is
-defined with this function.
-
 .. _`crypto_ahash_reqsize.return`:
 
 Return
 ------
 
-size of the ahash state
+size of the request data
 
 .. _`crypto_ahash_setkey`:
 
@@ -557,7 +576,7 @@ Description
 
 This function exports the hash state of the ahash_request handle into the
 caller-allocated output buffer out which must have sufficient size (e.g. by
-calling crypto_ahash_reqsize).
+calling \ :c:func:`crypto_ahash_statesize`\ ).
 
 .. _`crypto_ahash_export.return`:
 

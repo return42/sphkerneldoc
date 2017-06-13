@@ -165,7 +165,7 @@ either be \ :c:func:`PageLRU`\  or the caller must have isolated/allocated it.
 mem_cgroup_update_lru_size
 ==========================
 
-.. c:function:: void mem_cgroup_update_lru_size(struct lruvec *lruvec, enum lru_list lru, int nr_pages)
+.. c:function:: void mem_cgroup_update_lru_size(struct lruvec *lruvec, enum lru_list lru, int zid, int nr_pages)
 
     account for adding or removing an lru page
 
@@ -174,6 +174,9 @@ mem_cgroup_update_lru_size
 
     :param enum lru_list lru:
         index of lru list the page is sitting on
+
+    :param int zid:
+        zone id of the accounted pages
 
     :param int nr_pages:
         positive when adding or negative when removing

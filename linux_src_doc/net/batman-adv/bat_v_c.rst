@@ -329,6 +329,18 @@ batadv_v_orig_dump
     :param struct batadv_hard_iface \*if_outgoing:
         Limit dump to entries with this outgoing interface
 
+.. _`batadv_v_init_sel_class`:
+
+batadv_v_init_sel_class
+=======================
+
+.. c:function:: void batadv_v_init_sel_class(struct batadv_priv *bat_priv)
+
+    initialize GW selection class
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
 .. _`batadv_v_gw_throughput_get`:
 
 batadv_v_gw_throughput_get

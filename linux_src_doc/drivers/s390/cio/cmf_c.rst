@@ -299,7 +299,7 @@ enable_cmf
 Description
 -----------
 
-Returns \ ``0``\  for success or a negative error value.
+ Returns \ ``0``\  for success or a negative error value.
 
 .. _`enable_cmf.note`:
 
@@ -307,14 +307,14 @@ Note
 ----
 
 If this is called on a device for which channel measurement is already
-enabled a reset of the measurement data is triggered.
+       enabled a reset of the measurement data is triggered.
 
 .. _`enable_cmf.context`:
 
 Context
 -------
 
-non-atomic
+   non-atomic
 
 .. _`__disable_cmf`:
 
@@ -333,14 +333,14 @@ __disable_cmf
 Description
 -----------
 
-Returns \ ``0``\  for success or a negative error value.
+ Returns \ ``0``\  for success or a negative error value.
 
 .. _`__disable_cmf.context`:
 
 Context
 -------
 
-non-atomic, \ :c:func:`device_lock`\  held.
+   non-atomic, \ :c:func:`device_lock`\  held.
 
 .. _`disable_cmf`:
 
@@ -359,14 +359,14 @@ disable_cmf
 Description
 -----------
 
-Returns \ ``0``\  for success or a negative error value.
+ Returns \ ``0``\  for success or a negative error value.
 
 .. _`disable_cmf.context`:
 
 Context
 -------
 
-non-atomic
+   non-atomic
 
 .. _`cmf_read`:
 
@@ -395,7 +395,7 @@ Returns the value read or \ ``0``\  if the value cannot be read.
 Context
 -------
 
-any
+   any
 
 .. _`cmf_readall`:
 
@@ -424,7 +424,7 @@ Returns \ ``0``\  on success, a negative error value otherwise.
 Context
 -------
 
-any
+   any
 
 .. _`cmf_reactivate`:
 

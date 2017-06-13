@@ -18,6 +18,7 @@ Definition
 .. code-block:: c
 
     struct tipc_subscription {
+        struct kref kref;
         struct tipc_subscriber *subscriber;
         struct net *net;
         struct timer_list timer;
@@ -31,6 +32,9 @@ Definition
 
 Members
 -------
+
+kref
+    *undescribed*
 
 subscriber
     pointer to its subscriber

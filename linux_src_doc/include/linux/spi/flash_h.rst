@@ -36,7 +36,7 @@ parts
     optional array of mtd_partitions for static partitioning
 
 nr_parts
-    number of mtd_partitions for static partitoning
+    number of mtd_partitions for static partitioning
 
 type
     optional flash device type (e.g. m25p80 vs m25p64), for use

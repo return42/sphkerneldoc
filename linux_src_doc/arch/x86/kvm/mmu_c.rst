@@ -95,5 +95,25 @@ Used when we do not need to care about huge page mappings
 e.g. during dirty
 logging we do not have any such mappings.
 
+.. _`kvm_arch_write_log_dirty`:
+
+kvm_arch_write_log_dirty
+========================
+
+.. c:function:: int kvm_arch_write_log_dirty(struct kvm_vcpu *vcpu)
+
+    emulate dirty page logging
+
+    :param struct kvm_vcpu \*vcpu:
+        Guest mode vcpu
+
+.. _`kvm_arch_write_log_dirty.description`:
+
+Description
+-----------
+
+Emulate arch specific page modification logging for the
+nested hypervisor
+
 .. This file was automatic generated / don't edit.
 

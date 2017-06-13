@@ -18,6 +18,8 @@ nand
     nand_bbt_c
     nand_bch_c
     nand_ecc_c
+    nand_hynix_c
+    nand_ids_c
     nand_timings_c
     nandsim_c
     omap2_c

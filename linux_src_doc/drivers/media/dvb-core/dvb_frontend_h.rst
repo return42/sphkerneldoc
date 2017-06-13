@@ -978,7 +978,8 @@ Members
 -------
 
 refcount
-    *undescribed*
+    refcount to keep track of struct dvb_frontend
+    references
 
 ops
     embedded struct dvb_frontend_ops

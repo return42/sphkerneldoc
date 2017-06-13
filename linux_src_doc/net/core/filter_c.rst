@@ -56,7 +56,8 @@ bpf_convert_filter
 Description
 -----------
 
-Remap 'sock_filter' style BPF instruction set to 'sock_filter_ext' style.
+Remap 'sock_filter' style classic BPF (cBPF) instruction set to 'bpf_insn'
+style extended BPF (eBPF).
 
 .. _`bpf_convert_filter.conversion-workflow`:
 
@@ -65,12 +66,12 @@ Conversion workflow
 
 
 1) First pass for calculating the new program length:
-bpf_convert_filter(old_prog, old_len, NULL, \ :c:type:`struct new_len <new_len>`\ )
+  bpf_convert_filter(old_prog, old_len, NULL, \ :c:type:`struct new_len <new_len>`\ )
 
 2) 2nd pass to remap in two passes: 1st pass finds new
-jump offsets, 2nd pass remapping:
-new_prog = kmalloc(sizeof(struct bpf_insn) \* new_len);
-bpf_convert_filter(old_prog, old_len, new_prog, \ :c:type:`struct new_len <new_len>`\ );
+   jump offsets, 2nd pass remapping:
+  new_prog = kmalloc(sizeof(struct bpf_insn) * new_len);
+  bpf_convert_filter(old_prog, old_len, new_prog, \ :c:type:`struct new_len <new_len>`\ );
 
 .. _`bpf_check_classic`:
 
@@ -130,7 +131,7 @@ sk_filter_release
 Description
 -----------
 
-Remove a filter from a socket and release its resources.
+     Remove a filter from a socket and release its resources.
 
 .. _`bpf_prog_create`:
 

@@ -175,6 +175,92 @@ Description
 In contrast to the other drm_get_*_name functions this one here returns a
 const pointer and hence is threadsafe.
 
+.. _`drm_get_connector_force_name`:
+
+drm_get_connector_force_name
+============================
+
+.. c:function:: const char *drm_get_connector_force_name(enum drm_connector_force force)
+
+    return a string for connector force
+
+    :param enum drm_connector_force force:
+        connector force to get name of
+
+.. _`drm_get_connector_force_name.return`:
+
+Return
+------
+
+const pointer to name.
+
+.. _`drm_connector_list_iter_begin`:
+
+drm_connector_list_iter_begin
+=============================
+
+.. c:function:: void drm_connector_list_iter_begin(struct drm_device *dev, struct drm_connector_list_iter *iter)
+
+    initialize a connector_list iterator
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_connector_list_iter \*iter:
+        connector_list iterator
+
+.. _`drm_connector_list_iter_begin.description`:
+
+Description
+-----------
+
+Sets \ ``iter``\  up to walk the \ :c:type:`drm_mode_config.connector_list <drm_mode_config>`\  of \ ``dev``\ . \ ``iter``\ 
+must always be cleaned up again by calling \ :c:func:`drm_connector_list_iter_end`\ .
+Iteration itself happens using \ :c:func:`drm_connector_list_iter_next`\  or
+\ :c:func:`drm_for_each_connector_iter`\ .
+
+.. _`drm_connector_list_iter_next`:
+
+drm_connector_list_iter_next
+============================
+
+.. c:function:: struct drm_connector *drm_connector_list_iter_next(struct drm_connector_list_iter *iter)
+
+    return next connector
+
+    :param struct drm_connector_list_iter \*iter:
+        connectr_list iterator
+
+.. _`drm_connector_list_iter_next.description`:
+
+Description
+-----------
+
+Returns the next connector for \ ``iter``\ , or NULL when the list walk has
+completed.
+
+.. _`drm_connector_list_iter_end`:
+
+drm_connector_list_iter_end
+===========================
+
+.. c:function:: void drm_connector_list_iter_end(struct drm_connector_list_iter *iter)
+
+    tear down a connector_list iterator
+
+    :param struct drm_connector_list_iter \*iter:
+        connector_list iterator
+
+.. _`drm_connector_list_iter_end.description`:
+
+Description
+-----------
+
+Tears down \ ``iter``\  and releases any resources (like \ :c:type:`struct drm_connector <drm_connector>`\  references)
+acquired while walking the list. This must always be called, both when the
+iteration completes fully or when it was aborted without walking the entire
+list.
+
 .. _`drm_get_subpixel_order_name`:
 
 drm_get_subpixel_order_name
@@ -424,6 +510,45 @@ Return
 ------
 
 Zero on success, negative errno on failure.
+
+.. _`drm_mode_connector_set_link_status_property`:
+
+drm_mode_connector_set_link_status_property
+===========================================
+
+.. c:function:: void drm_mode_connector_set_link_status_property(struct drm_connector *connector, uint64_t link_status)
+
+    Set link status property of a connector
+
+    :param struct drm_connector \*connector:
+        drm connector
+
+    :param uint64_t link_status:
+        new value of link status property (0: Good, 1: Bad)
+
+.. _`drm_mode_connector_set_link_status_property.description`:
+
+Description
+-----------
+
+In usual working scenario, this link status property will always be set to
+"GOOD". If something fails during or after a mode set, the kernel driver
+may set this link status property to "BAD". The caller then needs to send a
+hotplug uevent for userspace to re-check the valid modes through
+GET_CONNECTOR_IOCTL and retry modeset.
+
+.. _`drm_mode_connector_set_link_status_property.note`:
+
+Note
+----
+
+Drivers cannot rely on userspace to support this property and
+issue a modeset. As such, they may choose to handle issues (like
+re-training a link) without userspace's intervention.
+
+The reason for adding this property is to handle link training failures, but
+it is not limited to DP or link training. For example, if we implement
+asynchronous setcrtc, this property can be used to report any failures in that.
 
 .. _`drm_mode_put_tile_group`:
 

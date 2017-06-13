@@ -704,10 +704,10 @@ Definition
         u32 atime;
         u32 mtime;
         u64 length;
-        char *name;
-        char *uid;
-        char *gid;
-        char *muid;
+        const char *name;
+        const char *uid;
+        const char *gid;
+        const char *muid;
         char *extension;
         kuid_t n_uid;
         kgid_t n_gid;

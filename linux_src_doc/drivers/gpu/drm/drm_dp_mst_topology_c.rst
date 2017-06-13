@@ -238,7 +238,7 @@ drm_dp_find_vcpi_slots
 drm_dp_mst_allocate_vcpi
 ========================
 
-.. c:function:: bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr, struct drm_dp_mst_port *port, int pbn, int *slots)
+.. c:function:: bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr, struct drm_dp_mst_port *port, int pbn, int slots)
 
     Allocate a virtual channel
 
@@ -251,7 +251,7 @@ drm_dp_mst_allocate_vcpi
     :param int pbn:
         payload bandwidth number to request
 
-    :param int \*slots:
+    :param int slots:
         returned number of slots for this PBN.
 
 .. _`drm_dp_mst_reset_vcpi_slots`:
@@ -359,14 +359,14 @@ helper to dump MST topology to a seq file for debugfs.
 drm_dp_mst_topology_mgr_init
 ============================
 
-.. c:function:: int drm_dp_mst_topology_mgr_init(struct drm_dp_mst_topology_mgr *mgr, struct device *dev, struct drm_dp_aux *aux, int max_dpcd_transaction_bytes, int max_payloads, int conn_base_id)
+.. c:function:: int drm_dp_mst_topology_mgr_init(struct drm_dp_mst_topology_mgr *mgr, struct drm_device *dev, struct drm_dp_aux *aux, int max_dpcd_transaction_bytes, int max_payloads, int conn_base_id)
 
     initialise a topology manager
 
     :param struct drm_dp_mst_topology_mgr \*mgr:
         manager struct to initialise
 
-    :param struct device \*dev:
+    :param struct drm_device \*dev:
         device providing this structure - for i2c addition.
 
     :param struct drm_dp_aux \*aux:

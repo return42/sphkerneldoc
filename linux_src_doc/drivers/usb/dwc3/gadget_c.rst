@@ -216,7 +216,7 @@ Caller should take care of locking.
 dwc3_prepare_one_trb
 ====================
 
-.. c:function:: void dwc3_prepare_one_trb(struct dwc3_ep *dep, struct dwc3_request *req, dma_addr_t dma, unsigned length, unsigned chain, unsigned node)
+.. c:function:: void dwc3_prepare_one_trb(struct dwc3_ep *dep, struct dwc3_request *req, unsigned chain, unsigned node)
 
     setup one TRB from one request
 
@@ -226,17 +226,11 @@ dwc3_prepare_one_trb
     :param struct dwc3_request \*req:
         dwc3_request pointer
 
-    :param dma_addr_t dma:
-        *undescribed*
-
-    :param unsigned length:
-        *undescribed*
-
     :param unsigned chain:
-        *undescribed*
+        should this TRB be chained to the next?
 
     :param unsigned node:
-        *undescribed*
+        only for isochronous endpoints. First TRB needs different type.
 
 .. _`dwc3_ep_prev_trb`:
 

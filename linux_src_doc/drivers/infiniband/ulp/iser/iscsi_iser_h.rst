@@ -494,6 +494,7 @@ Definition
         struct list_head list;
         struct iser_reg_resources rsc;
         struct iser_pi_context *pi_ctx;
+        struct list_head all_list;
     }
 
 .. _`iser_fr_desc.members`:
@@ -509,6 +510,9 @@ rsc
 
 pi_ctx
     protection information context
+
+all_list
+    *undescribed*
 
 .. _`iser_fr_pool`:
 
@@ -530,6 +534,7 @@ Definition
         struct list_head list;
         spinlock_t lock;
         int size;
+        struct list_head all_list;
     }
 
 .. _`iser_fr_pool.members`:
@@ -545,6 +550,9 @@ lock
 
 size
     size of the pool
+
+all_list
+    *undescribed*
 
 .. _`ib_conn`:
 
@@ -647,7 +655,6 @@ Definition
         struct iser_rx_desc *rx_descs;
         u32 num_rx_descs;
         unsigned short scsi_sg_tablesize;
-        unsigned int scsi_max_sectors;
         bool snd_w_inv;
     }
 
@@ -717,9 +724,6 @@ num_rx_descs
 
 scsi_sg_tablesize
     scsi host sg_tablesize
-
-scsi_max_sectors
-    scsi host max sectors
 
 snd_w_inv
     *undescribed*

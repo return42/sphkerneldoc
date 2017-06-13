@@ -375,12 +375,15 @@ wakeup_source_not_registered
 wakeup_source_activate
 ======================
 
-.. c:function:: void wakeup_source_activate(struct wakeup_source *ws)
+.. c:function:: void wakeup_source_activate(struct wakeup_source *ws, bool hard)
 
     Mark given wakeup source as active.
 
     :param struct wakeup_source \*ws:
         Wakeup source to handle.
+
+    :param bool hard:
+        If set, abort suspends in progress and wake up from suspend-to-idle.
 
 .. _`wakeup_source_activate.description`:
 
@@ -396,12 +399,15 @@ processed.
 wakeup_source_report_event
 ==========================
 
-.. c:function:: void wakeup_source_report_event(struct wakeup_source *ws)
+.. c:function:: void wakeup_source_report_event(struct wakeup_source *ws, bool hard)
 
     Report wakeup event using the given source.
 
     :param struct wakeup_source \*ws:
         Wakeup source to report the event for.
+
+    :param bool hard:
+        If set, abort suspends in progress and wake up from suspend-to-idle.
 
 .. _`__pm_stay_awake`:
 
@@ -529,12 +535,12 @@ Call \ :c:func:`wakeup_source_deactivate`\  for the wakeup source whose address 
 in \ ``data``\  if it is currently active and its timer has not been canceled and
 the expiration time of the timer is not in future.
 
-.. _`__pm_wakeup_event`:
+.. _`pm_wakeup_ws_event`:
 
-__pm_wakeup_event
-=================
+pm_wakeup_ws_event
+==================
 
-.. c:function:: void __pm_wakeup_event(struct wakeup_source *ws, unsigned int msec)
+.. c:function:: void pm_wakeup_ws_event(struct wakeup_source *ws, unsigned int msec, bool hard)
 
     Notify the PM core of a wakeup event.
 
@@ -544,7 +550,10 @@ __pm_wakeup_event
     :param unsigned int msec:
         Anticipated event processing time (in milliseconds).
 
-.. _`__pm_wakeup_event.description`:
+    :param bool hard:
+        If set, abort suspends in progress and wake up from suspend-to-idle.
+
+.. _`pm_wakeup_ws_event.description`:
 
 Description
 -----------
@@ -556,12 +565,12 @@ execute \ :c:func:`pm_wakeup_timer_fn`\  in future.
 
 It is safe to call this function from interrupt context.
 
-.. _`pm_wakeup_event`:
+.. _`pm_wakeup_dev_event`:
 
-pm_wakeup_event
-===============
+pm_wakeup_dev_event
+===================
 
-.. c:function:: void pm_wakeup_event(struct device *dev, unsigned int msec)
+.. c:function:: void pm_wakeup_dev_event(struct device *dev, unsigned int msec, bool hard)
 
     Notify the PM core of a wakeup event.
 
@@ -571,12 +580,15 @@ pm_wakeup_event
     :param unsigned int msec:
         Anticipated event processing time (in milliseconds).
 
-.. _`pm_wakeup_event.description`:
+    :param bool hard:
+        If set, abort suspends in progress and wake up from suspend-to-idle.
+
+.. _`pm_wakeup_dev_event.description`:
 
 Description
 -----------
 
-Call \__pm_wakeup_event() for the \ ``dev``\ 's wakeup source object.
+Call \ :c:func:`pm_wakeup_ws_event`\  for the \ ``dev``\ 's wakeup source object.
 
 .. _`pm_wakeup_pending`:
 

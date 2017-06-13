@@ -67,6 +67,29 @@ Return
 The instance of struct drm_format_info that describes the pixel format, or
 NULL if the format is unsupported.
 
+.. _`drm_get_format_info`:
+
+drm_get_format_info
+===================
+
+.. c:function:: const struct drm_format_info *drm_get_format_info(struct drm_device *dev, const struct drm_mode_fb_cmd2 *mode_cmd)
+
+    query information for a given framebuffer configuration
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
+        metadata from the userspace fb creation request
+
+.. _`drm_get_format_info.return`:
+
+Return
+------
+
+The instance of struct drm_format_info that describes the pixel format, or
+NULL if the format is unsupported.
+
 .. _`drm_format_num_planes`:
 
 drm_format_num_planes

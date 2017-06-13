@@ -304,7 +304,7 @@ have claimed.
 batadv_forw_packet_alloc
 ========================
 
-.. c:function:: struct batadv_forw_packet *batadv_forw_packet_alloc(struct batadv_hard_iface *if_incoming, struct batadv_hard_iface *if_outgoing, atomic_t *queue_left, struct batadv_priv *bat_priv)
+.. c:function:: struct batadv_forw_packet *batadv_forw_packet_alloc(struct batadv_hard_iface *if_incoming, struct batadv_hard_iface *if_outgoing, atomic_t *queue_left, struct batadv_priv *bat_priv, struct sk_buff *skb)
 
     allocate a forwarding packet
 
@@ -319,6 +319,9 @@ batadv_forw_packet_alloc
 
     :param struct batadv_priv \*bat_priv:
         The bat_priv for the mesh of this forw_packet
+
+    :param struct sk_buff \*skb:
+        The raw packet this forwarding packet shall contain
 
 .. _`batadv_forw_packet_alloc.description`:
 
@@ -576,6 +579,76 @@ Return
 ------
 
 NETDEV_TX_OK on success and NETDEV_TX_BUSY on errors.
+
+.. _`batadv_forw_packet_bcasts_left`:
+
+batadv_forw_packet_bcasts_left
+==============================
+
+.. c:function:: bool batadv_forw_packet_bcasts_left(struct batadv_forw_packet *forw_packet, struct batadv_hard_iface *hard_iface)
+
+    check if a retransmission is necessary
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the forwarding packet to check
+
+    :param struct batadv_hard_iface \*hard_iface:
+        the interface to check on
+
+.. _`batadv_forw_packet_bcasts_left.description`:
+
+Description
+-----------
+
+Checks whether a given packet has any (re)transmissions left on the provided
+interface.
+
+.. _`batadv_forw_packet_bcasts_left.hard_iface-may-be-null`:
+
+hard_iface may be NULL
+----------------------
+
+In that case the number of transmissions this skb had
+so far is compared with the maximum amount of retransmissions independent of
+any interface instead.
+
+.. _`batadv_forw_packet_bcasts_left.return`:
+
+Return
+------
+
+True if (re)transmissions are left, false otherwise.
+
+.. _`batadv_forw_packet_bcasts_inc`:
+
+batadv_forw_packet_bcasts_inc
+=============================
+
+.. c:function:: void batadv_forw_packet_bcasts_inc(struct batadv_forw_packet *forw_packet)
+
+    increment retransmission counter of a packet
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the packet to increase the counter for
+
+.. _`batadv_forw_packet_is_rebroadcast`:
+
+batadv_forw_packet_is_rebroadcast
+=================================
+
+.. c:function:: bool batadv_forw_packet_is_rebroadcast(struct batadv_forw_packet *forw_packet)
+
+    check packet for previous transmissions
+
+    :param struct batadv_forw_packet \*forw_packet:
+        the packet to check
+
+.. _`batadv_forw_packet_is_rebroadcast.return`:
+
+Return
+------
+
+True if this packet was transmitted before, false otherwise.
 
 .. _`batadv_purge_outstanding_packets`:
 

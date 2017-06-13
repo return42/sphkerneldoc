@@ -1233,7 +1233,7 @@ Called with sg->mm->mmap_sem in read.
 gmap_shadow_notify
 ==================
 
-.. c:function:: void gmap_shadow_notify(struct gmap *sg, unsigned long vmaddr, unsigned long offset, pte_t *pte)
+.. c:function:: void gmap_shadow_notify(struct gmap *sg, unsigned long vmaddr, unsigned long gaddr, pte_t *pte)
 
     handle notifications for shadow gmap
 
@@ -1243,7 +1243,7 @@ gmap_shadow_notify
     :param unsigned long vmaddr:
         *undescribed*
 
-    :param unsigned long offset:
+    :param unsigned long gaddr:
         *undescribed*
 
     :param pte_t \*pte:

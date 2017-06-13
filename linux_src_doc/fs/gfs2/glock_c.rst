@@ -655,6 +655,15 @@ glock_hash_walk
     :param const struct gfs2_sbd \*sdp:
         the filesystem
 
+.. _`glock_hash_walk.description`:
+
+Description
+-----------
+
+Note that the function can be called multiple times on the same
+object.  So the user must ensure that the function can cope with
+that.
+
 .. _`thaw_glock`:
 
 thaw_glock

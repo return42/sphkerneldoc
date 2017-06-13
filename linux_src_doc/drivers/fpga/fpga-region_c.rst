@@ -222,8 +222,9 @@ The checks are
 The overlay must add either firmware-name or external-fpga-config property
 to the FPGA Region.
 
-firmware-name        : program the FPGA
-external-fpga-config : FPGA is already programmed
+firmware-name         : program the FPGA
+external-fpga-config  : FPGA is already programmed
+encrypted-fpga-config : FPGA bitstream is encrypted
 
 The overlay can add other FPGA regions, but child FPGA regions cannot have a
 firmware-name property since those regions don't exist yet.

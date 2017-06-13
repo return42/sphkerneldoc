@@ -6,7 +6,7 @@
 omap2_set_gpio_debounce
 =======================
 
-.. c:function:: void omap2_set_gpio_debounce(struct gpio_bank *bank, unsigned offset, unsigned debounce)
+.. c:function:: int omap2_set_gpio_debounce(struct gpio_bank *bank, unsigned offset, unsigned debounce)
 
     low level gpio debounce time
 
@@ -27,6 +27,13 @@ Description
 OMAP's debounce time is in 31us steps
 <debounce time> = (GPIO_DEBOUNCINGTIME[7:0].DEBOUNCETIME + 1) x 31
 so we need to convert and round up to the closest unit.
+
+.. _`omap2_set_gpio_debounce.return`:
+
+Return
+------
+
+0 on success, negative error otherwise.
 
 .. _`omap_clear_gpio_debounce`:
 

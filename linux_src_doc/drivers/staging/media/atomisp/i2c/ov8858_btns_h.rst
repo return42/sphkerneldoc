@@ -1,0 +1,48 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/media/atomisp/i2c/ov8858_btns.h
+
+.. _`ov8858_reg`:
+
+struct ov8858_reg
+=================
+
+.. c:type:: struct ov8858_reg
+
+    MI sensor register format
+
+.. _`ov8858_reg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ov8858_reg {
+        enum ov8858_tok_type type;
+        u16 sreg;
+        u32 val;
+    }
+
+.. _`ov8858_reg.members`:
+
+Members
+-------
+
+type
+    type of the register
+
+sreg
+    *undescribed*
+
+val
+    8/16/32-bit register value
+
+.. _`ov8858_reg.description`:
+
+Description
+-----------
+
+Define a structure for sensor register initialization values
+
+.. This file was automatic generated / don't edit.
+

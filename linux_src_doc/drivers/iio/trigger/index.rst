@@ -8,3 +8,4 @@ trigger
     :maxdepth: 1
 
     iio-trig-hrtimer_c
+    stm32-timer-trigger_c

@@ -140,30 +140,6 @@ Description
 Returns Mode of the interface. Unknown or unsupported interfaces return
 DISABLED.
 
-.. _`cvmx_helper_link_autoconf`:
-
-cvmx_helper_link_autoconf
-=========================
-
-.. c:function:: cvmx_helper_link_info_t cvmx_helper_link_autoconf(int ipd_port)
-
-    :param int ipd_port:
-        IPD/PKO port to auto configure
-
-.. _`cvmx_helper_link_autoconf.function-basically-does-the-equivalent-of`:
-
-function basically does the equivalent of
------------------------------------------
-
-cvmx_helper_link_set(ipd_port, cvmx_helper_link_get(ipd_port));
-
-.. _`cvmx_helper_link_autoconf.description`:
-
-Description
------------
-
-Returns Link state after configure
-
 .. _`cvmx_helper_link_get`:
 
 cvmx_helper_link_get
@@ -190,7 +166,7 @@ cvmx_helper_link_set
 
 .. c:function:: int cvmx_helper_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
 
-    function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ . It is normally best to use \ :c:func:`cvmx_helper_link_autoconf`\  instead.
+    function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ .
 
     :param int ipd_port:
         IPD/PKO port to configure

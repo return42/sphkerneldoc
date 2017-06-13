@@ -294,6 +294,7 @@ Definition
         struct list_head cmd_wait_list;
         struct se_session *sess;
         u8 sess_name[36];
+        u8 ini_guid[24];
         struct work_struct release_work;
         struct completion *release_done;
     }
@@ -374,6 +375,9 @@ sess
 sess_name
     Session name.
 
+ini_guid
+    Initiator port GUID.
+
 release_work
     Allows scheduling of \ :c:func:`srpt_release_channel`\ .
 
@@ -436,14 +440,17 @@ Definition
         struct srpt_device *sdev;
         struct ib_mad_agent *mad_agent;
         bool enabled;
-        u8 port_guid[64];
+        u8 port_guid[24];
+        u8 port_gid[64];
         u8 port;
         u16 sm_lid;
         u16 lid;
         union ib_gid gid;
         struct work_struct work;
-        struct se_portal_group port_tpg_1;
-        struct se_wwn port_wwn;
+        struct se_portal_group port_guid_tpg;
+        struct se_wwn port_guid_wwn;
+        struct se_portal_group port_gid_tpg;
+        struct se_wwn port_gid_wwn;
         struct srpt_port_attrib port_attrib;
     }
 
@@ -464,6 +471,9 @@ enabled
 port_guid
     ASCII representation of Port GUID
 
+port_gid
+    ASCII representation of Port GID
+
 port
     one-based port number.
 
@@ -478,13 +488,18 @@ gid
 
 work
     work structure for refreshing the aforementioned cached values.
-    \ ``port_tpg_1``\  Target portal group = 1 data.
 
-port_tpg_1
-    *undescribed*
+port_guid_tpg
+    TPG associated with target port GUID.
 
-port_wwn
-    Target core WWN data.
+port_guid_wwn
+    WWN associated with target port GUID.
+
+port_gid_tpg
+    TPG associated with target port GID.
+
+port_gid_wwn
+    WWN associated with target port GID.
 
 port_attrib
     *undescribed*

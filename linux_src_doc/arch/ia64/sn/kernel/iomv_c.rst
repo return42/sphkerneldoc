@@ -39,7 +39,7 @@ __sn_mmiowb
 Description
 -----------
 
-See arch/ia64/include/asm/io.h and Documentation/DocBook/deviceiobook.tmpl
+See arch/ia64/include/asm/io.h and Documentation/driver-api/device-io.rst
 for details.
 
 On SN2, we wait for the PIO_WRITE_STATUS SHub register to clear.

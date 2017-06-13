@@ -18,14 +18,14 @@ synchronize_hardirq
 Description
 -----------
 
-This function waits for any pending hard IRQ handlers for this
-interrupt to complete before returning. If you use this
-function while holding a resource the IRQ handler may need you
-will deadlock. It does not take associated threaded handlers
-into account.
+     This function waits for any pending hard IRQ handlers for this
+     interrupt to complete before returning. If you use this
+     function while holding a resource the IRQ handler may need you
+     will deadlock. It does not take associated threaded handlers
+     into account.
 
-Do not use this for shutdown scenarios where you must be sure
-that all parts (hardirq and threaded handler) have completed.
+     Do not use this for shutdown scenarios where you must be sure
+     that all parts (hardirq and threaded handler) have completed.
 
 .. _`synchronize_hardirq.return`:
 
@@ -34,7 +34,7 @@ Return
 
 false if a threaded handler is active.
 
-This function may be called - with care - from IRQ context.
+     This function may be called - with care - from IRQ context.
 
 .. _`synchronize_irq`:
 
@@ -53,11 +53,11 @@ synchronize_irq
 Description
 -----------
 
-This function waits for any pending IRQ handlers for this interrupt
-to complete before returning. If you use this function while
-holding a resource the IRQ handler may need you will deadlock.
+     This function waits for any pending IRQ handlers for this interrupt
+     to complete before returning. If you use this function while
+     holding a resource the IRQ handler may need you will deadlock.
 
-This function may be called - with care - from IRQ context.
+     This function may be called - with care - from IRQ context.
 
 .. _`irq_can_set_affinity`:
 
@@ -108,10 +108,10 @@ irq_set_thread_affinity
 Description
 -----------
 
-We just set IRQTF_AFFINITY and delegate the affinity setting
-to the interrupt thread itself. We can not call
-\ :c:func:`set_cpus_allowed_ptr`\  here as we hold desc->lock and this
-code can be called from hard interrupt context.
+     We just set IRQTF_AFFINITY and delegate the affinity setting
+     to the interrupt thread itself. We can not call
+     \ :c:func:`set_cpus_allowed_ptr`\  here as we hold desc->lock and this
+     code can be called from hard interrupt context.
 
 .. _`irq_set_affinity_notifier`:
 
@@ -135,9 +135,9 @@ irq_set_affinity_notifier
 Description
 -----------
 
-Must be called in process context.  Notification may only be enabled
-after the IRQ is allocated and must be disabled before the IRQ is
-freed using \ :c:func:`free_irq`\ .
+     Must be called in process context.  Notification may only be enabled
+     after the IRQ is allocated and must be disabled before the IRQ is
+     freed using \ :c:func:`free_irq`\ .
 
 .. _`irq_set_vcpu_affinity`:
 
@@ -159,10 +159,10 @@ irq_set_vcpu_affinity
 Description
 -----------
 
-This function uses the vCPU specific data to set the vCPU
-affinity for an irq. The vCPU specific data is passed from
-outside, such as KVM. One example code path is as below:
-KVM -> IOMMU -> \ :c:func:`irq_set_vcpu_affinity`\ .
+     This function uses the vCPU specific data to set the vCPU
+     affinity for an irq. The vCPU specific data is passed from
+     outside, such as KVM. One example code path is as below:
+     KVM -> IOMMU -> \ :c:func:`irq_set_vcpu_affinity`\ .
 
 .. _`disable_irq_nosync`:
 
@@ -181,12 +181,12 @@ disable_irq_nosync
 Description
 -----------
 
-Disable the selected interrupt line.  Disables and Enables are
-nested.
-Unlike \ :c:func:`disable_irq`\ , this function does not ensure existing
-instances of the IRQ handler have completed before returning.
+     Disable the selected interrupt line.  Disables and Enables are
+     nested.
+     Unlike \ :c:func:`disable_irq`\ , this function does not ensure existing
+     instances of the IRQ handler have completed before returning.
 
-This function may be called from IRQ context.
+     This function may be called from IRQ context.
 
 .. _`disable_irq`:
 
@@ -205,13 +205,13 @@ disable_irq
 Description
 -----------
 
-Disable the selected interrupt line.  Enables and Disables are
-nested.
-This function waits for any pending IRQ handlers for this interrupt
-to complete before returning. If you use this function while
-holding a resource the IRQ handler may need you will deadlock.
+     Disable the selected interrupt line.  Enables and Disables are
+     nested.
+     This function waits for any pending IRQ handlers for this interrupt
+     to complete before returning. If you use this function while
+     holding a resource the IRQ handler may need you will deadlock.
 
-This function may be called - with care - from IRQ context.
+     This function may be called - with care - from IRQ context.
 
 .. _`disable_hardirq`:
 
@@ -230,14 +230,14 @@ disable_hardirq
 Description
 -----------
 
-Disable the selected interrupt line.  Enables and Disables are
-nested.
-This function waits for any pending hard IRQ handlers for this
-interrupt to complete before returning. If you use this function while
-holding a resource the hard IRQ handler may need you will deadlock.
+     Disable the selected interrupt line.  Enables and Disables are
+     nested.
+     This function waits for any pending hard IRQ handlers for this
+     interrupt to complete before returning. If you use this function while
+     holding a resource the hard IRQ handler may need you will deadlock.
 
-When used to optimistically disable an interrupt from atomic context
-the return value must be checked.
+     When used to optimistically disable an interrupt from atomic context
+     the return value must be checked.
 
 .. _`disable_hardirq.return`:
 
@@ -246,7 +246,7 @@ Return
 
 false if a threaded handler is active.
 
-This function may be called - with care - from IRQ context.
+     This function may be called - with care - from IRQ context.
 
 .. _`enable_irq`:
 
@@ -265,12 +265,12 @@ enable_irq
 Description
 -----------
 
-Undoes the effect of one call to \ :c:func:`disable_irq`\ .  If this
-matches the last disable, processing of interrupts on this
-IRQ line is re-enabled.
+     Undoes the effect of one call to \ :c:func:`disable_irq`\ .  If this
+     matches the last disable, processing of interrupts on this
+     IRQ line is re-enabled.
 
-This function may be called from IRQ context only when
-desc->irq_data.chip->bus_lock and desc->chip->bus_sync_unlock are NULL !
+     This function may be called from IRQ context only when
+     desc->irq_data.chip->bus_lock and desc->chip->bus_sync_unlock are NULL !
 
 .. _`irq_set_irq_wake`:
 
@@ -292,12 +292,12 @@ irq_set_irq_wake
 Description
 -----------
 
-Enable/disable power management wakeup mode, which is
-disabled by default.  Enables and disables must match,
-just as they match for non-wakeup mode support.
+     Enable/disable power management wakeup mode, which is
+     disabled by default.  Enables and disables must match,
+     just as they match for non-wakeup mode support.
 
-Wakeup mode lets this IRQ wake the system from sleep
-states like "suspend to RAM".
+     Wakeup mode lets this IRQ wake the system from sleep
+     states like "suspend to RAM".
 
 .. _`irq_wake_thread`:
 
@@ -363,7 +363,7 @@ Used to remove interrupts statically setup by the early boot process.
 free_irq
 ========
 
-.. c:function:: void free_irq(unsigned int irq, void *dev_id)
+.. c:function:: const void *free_irq(unsigned int irq, void *dev_id)
 
     free an interrupt allocated with request_irq
 
@@ -378,14 +378,16 @@ free_irq
 Description
 -----------
 
-Remove an interrupt handler. The handler is removed and if the
-interrupt line is no longer in use by any driver it is disabled.
-On a shared IRQ the caller must ensure the interrupt is disabled
-on the card it drives before calling this function. The function
-does not return until any executing interrupts for this IRQ
-have completed.
+     Remove an interrupt handler. The handler is removed and if the
+     interrupt line is no longer in use by any driver it is disabled.
+     On a shared IRQ the caller must ensure the interrupt is disabled
+     on the card it drives before calling this function. The function
+     does not return until any executing interrupts for this IRQ
+     have completed.
 
-This function must not be called from interrupt context.
+     This function must not be called from interrupt context.
+
+     Returns the devname argument passed to request_irq.
 
 .. _`request_threaded_irq`:
 
@@ -423,28 +425,28 @@ request_threaded_irq
 Description
 -----------
 
-This call allocates interrupt resources and enables the
-interrupt line and IRQ handling. From the point this
-call is made your handler function may be invoked. Since
-your handler function must clear any interrupt the board
-raises, you must take care both to initialise your hardware
-and to set up the interrupt handler in the right order.
+     This call allocates interrupt resources and enables the
+     interrupt line and IRQ handling. From the point this
+     call is made your handler function may be invoked. Since
+     your handler function must clear any interrupt the board
+     raises, you must take care both to initialise your hardware
+     and to set up the interrupt handler in the right order.
 
-If you want to set up a threaded irq handler for your device
-then you need to supply \ ``handler``\  and \ ``thread_fn``\ . \ ``handler``\  is
-still called in hard interrupt context and has to check
-whether the interrupt originates from the device. If yes it
-needs to disable the interrupt on the device and return
-IRQ_WAKE_THREAD which will wake up the handler thread and run
-\ ``thread_fn``\ . This split handler design is necessary to support
-shared interrupts.
+     If you want to set up a threaded irq handler for your device
+     then you need to supply \ ``handler``\  and \ ``thread_fn``\ . \ ``handler``\  is
+     still called in hard interrupt context and has to check
+     whether the interrupt originates from the device. If yes it
+     needs to disable the interrupt on the device and return
+     IRQ_WAKE_THREAD which will wake up the handler thread and run
+     \ ``thread_fn``\ . This split handler design is necessary to support
+     shared interrupts.
 
-Dev_id must be globally unique. Normally the address of the
-device data structure is used as the cookie. Since the handler
-receives this value it makes sense to use it.
+     Dev_id must be globally unique. Normally the address of the
+     device data structure is used as the cookie. Since the handler
+     receives this value it makes sense to use it.
 
-If your interrupt is shared you must pass a non NULL dev_id
-as this is required when freeing the interrupt.
+     If your interrupt is shared you must pass a non NULL dev_id
+     as this is required when freeing the interrupt.
 
 .. _`request_threaded_irq.flags`:
 
@@ -452,8 +454,8 @@ Flags
 -----
 
 
-IRQF_SHARED             Interrupt is shared
-IRQF_TRIGGER\_\*          Specify active edge(s) or level
+     IRQF_SHARED             Interrupt is shared
+     IRQF_TRIGGER_*          Specify active edge(s) or level
 
 .. _`request_any_context_irq`:
 
@@ -485,13 +487,13 @@ request_any_context_irq
 Description
 -----------
 
-This call allocates interrupt resources and enables the
-interrupt line and IRQ handling. It selects either a
-hardirq or threaded handling method depending on the
-context.
+     This call allocates interrupt resources and enables the
+     interrupt line and IRQ handling. It selects either a
+     hardirq or threaded handling method depending on the
+     context.
 
-On failure, it returns a negative value. On success,
-it returns either IRQC_IS_HARDIRQ or IRQC_IS_NESTED.
+     On failure, it returns a negative value. On success,
+     it returns either IRQC_IS_HARDIRQ or IRQC_IS_NESTED.
 
 .. _`irq_percpu_is_enabled`:
 
@@ -555,12 +557,12 @@ free_percpu_irq
 Description
 -----------
 
-Remove a percpu interrupt handler. The handler is removed, but
-the interrupt line is not disabled. This must be done on each
-CPU before calling this function. The function does not return
-until any executing interrupts for this IRQ have completed.
+     Remove a percpu interrupt handler. The handler is removed, but
+     the interrupt line is not disabled. This must be done on each
+     CPU before calling this function. The function does not return
+     until any executing interrupts for this IRQ have completed.
 
-This function must not be called from interrupt context.
+     This function must not be called from interrupt context.
 
 .. _`setup_percpu_irq`:
 
@@ -610,14 +612,14 @@ request_percpu_irq
 Description
 -----------
 
-This call allocates interrupt resources and enables the
-interrupt on the local CPU. If the interrupt is supposed to be
-enabled on other CPUs, it has to be done on each CPU using
-\ :c:func:`enable_percpu_irq`\ .
+     This call allocates interrupt resources and enables the
+     interrupt on the local CPU. If the interrupt is supposed to be
+     enabled on other CPUs, it has to be done on each CPU using
+     \ :c:func:`enable_percpu_irq`\ .
 
-Dev_id must be globally unique. It is a per-cpu variable, and
-the handler gets called with the interrupted CPU's instance of
-that variable.
+     Dev_id must be globally unique. It is a per-cpu variable, and
+     the handler gets called with the interrupted CPU's instance of
+     that variable.
 
 .. _`irq_get_irqchip_state`:
 
@@ -632,7 +634,7 @@ irq_get_irqchip_state
         Interrupt line that is forwarded to a VM
 
     :param enum irqchip_irq_state which:
-        One of IRQCHIP_STATE\_\* the caller wants to know about
+        One of IRQCHIP_STATE_* the caller wants to know about
 
     :param bool \*state:
         a pointer to a boolean where the state is to be storeed
@@ -642,12 +644,12 @@ irq_get_irqchip_state
 Description
 -----------
 
-This call snapshots the internal irqchip state of an
-interrupt, returning into \ ``state``\  the bit corresponding to
-stage \ ``which``\ 
+     This call snapshots the internal irqchip state of an
+     interrupt, returning into \ ``state``\  the bit corresponding to
+     stage \ ``which``\ 
 
-This function should be called with preemption disabled if the
-interrupt controller has per-cpu registers.
+     This function should be called with preemption disabled if the
+     interrupt controller has per-cpu registers.
 
 .. _`irq_set_irqchip_state`:
 
@@ -662,7 +664,7 @@ irq_set_irqchip_state
         Interrupt line that is forwarded to a VM
 
     :param enum irqchip_irq_state which:
-        State to be restored (one of IRQCHIP_STATE\_\*)
+        State to be restored (one of IRQCHIP_STATE_*)
 
     :param bool val:
         Value corresponding to \ ``which``\ 
@@ -672,11 +674,11 @@ irq_set_irqchip_state
 Description
 -----------
 
-This call sets the internal irqchip state of an interrupt,
-depending on the value of \ ``which``\ .
+     This call sets the internal irqchip state of an interrupt,
+     depending on the value of \ ``which``\ .
 
-This function should be called with preemption disabled if the
-interrupt controller has per-cpu registers.
+     This function should be called with preemption disabled if the
+     interrupt controller has per-cpu registers.
 
 .. This file was automatic generated / don't edit.
 

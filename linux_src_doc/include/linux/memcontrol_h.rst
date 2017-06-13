@@ -1,24 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/memcontrol.h
 
-.. _`mem_cgroup_events`:
-
-mem_cgroup_events
-=================
-
-.. c:function:: void mem_cgroup_events(struct mem_cgroup *memcg, enum mem_cgroup_events_index idx, unsigned int nr)
-
-    count memory events against a cgroup
-
-    :param struct mem_cgroup \*memcg:
-        the memory cgroup
-
-    :param enum mem_cgroup_events_index idx:
-        the event index
-
-    :param unsigned int nr:
-        the number of events to account for
-
 .. _`mem_cgroup_lruvec`:
 
 mem_cgroup_lruvec
@@ -63,25 +45,25 @@ Description
 Returns the parent memcg, or NULL if this is the root or the memory
 controller is in legacy no-hierarchy mode.
 
-.. _`mem_cgroup_update_page_stat`:
+.. _`mod_memcg_page_state`:
 
-mem_cgroup_update_page_stat
-===========================
+mod_memcg_page_state
+====================
 
-.. c:function:: void mem_cgroup_update_page_stat(struct page *page, enum mem_cgroup_stat_index idx, int val)
+.. c:function:: void mod_memcg_page_state(struct page *page, enum memcg_stat_item idx, int val)
 
     update page state statistics
 
     :param struct page \*page:
         the page
 
-    :param enum mem_cgroup_stat_index idx:
+    :param enum memcg_stat_item idx:
         page state item to account
 
     :param int val:
         number of pages (positive or negative)
 
-.. _`mem_cgroup_update_page_stat.description`:
+.. _`mod_memcg_page_state.description`:
 
 Description
 -----------
@@ -89,7 +71,7 @@ Description
 The \ ``page``\  must be locked or the caller must use \ :c:func:`lock_page_memcg`\ 
 to prevent double accounting when the page is concurrently being
 
-.. _`mem_cgroup_update_page_stat.moved-to-another-memcg`:
+.. _`mod_memcg_page_state.moved-to-another-memcg`:
 
 moved to another memcg
 ----------------------
@@ -97,22 +79,24 @@ moved to another memcg
 
 lock_page(page) or lock_page_memcg(page)
 if (TestClearPageState(page))
-mem_cgroup_update_page_stat(page, state, -1);
+mod_memcg_page_state(page, state, -1);
 unlock_page(page) or unlock_page_memcg(page)
+
+Kernel pages are an exception to this, since they'll never move.
 
 .. _`memcg_kmem_update_page_stat`:
 
 memcg_kmem_update_page_stat
 ===========================
 
-.. c:function:: void memcg_kmem_update_page_stat(struct page *page, enum mem_cgroup_stat_index idx, int val)
+.. c:function:: void memcg_kmem_update_page_stat(struct page *page, enum memcg_stat_item idx, int val)
 
     update kmem page state statistics
 
     :param struct page \*page:
         the page
 
-    :param enum mem_cgroup_stat_index idx:
+    :param enum memcg_stat_item idx:
         page state item to account
 
     :param int val:

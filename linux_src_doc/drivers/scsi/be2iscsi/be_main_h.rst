@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/be2iscsi/be_main.h
 
+.. _`beiscsi_cmd_per_lun`:
+
+BEISCSI_CMD_PER_LUN
+===================
+
+.. c:function::  BEISCSI_CMD_PER_LUN()
+
+    be invalidated at a time, consider it before changing the value of BEISCSI_CMD_PER_LUN.
+
 .. _`hwi_get_async_pdu_ctx`:
 
 HWI_GET_ASYNC_PDU_CTX

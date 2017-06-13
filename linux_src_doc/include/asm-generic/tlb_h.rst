@@ -46,5 +46,23 @@ __tlb_remove_pmd_tlb_entry
     :param  address:
         *undescribed*
 
+.. _`__tlb_remove_pud_tlb_entry`:
+
+__tlb_remove_pud_tlb_entry
+==========================
+
+.. c:function::  __tlb_remove_pud_tlb_entry( tlb,  pudp,  address)
+
+    remember a pud mapping for later tlb invalidation. This is a nop so far, because only x86 needs it.
+
+    :param  tlb:
+        *undescribed*
+
+    :param  pudp:
+        *undescribed*
+
+    :param  address:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

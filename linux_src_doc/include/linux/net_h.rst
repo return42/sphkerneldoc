@@ -60,7 +60,7 @@ Description
 -----------
 
 When adding some new socket type please
-grep ARCH_HAS_SOCKET_TYPE include/asm-\* /socket.h, at least MIPS
+grep ARCH_HAS_SOCKET_TYPE include/asm-* /socket.h, at least MIPS
 overrides this enum for binary compat reasons.
 
 .. _`socket`:

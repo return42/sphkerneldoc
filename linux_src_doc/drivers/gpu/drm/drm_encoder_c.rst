@@ -35,7 +35,7 @@ Description
 
 Initialises a preallocated encoder. Encoder should be subclassed as part of
 driver encoder objects. At driver unload time \ :c:func:`drm_encoder_cleanup`\  should be
-called from the driver's destroy hook in \ :c:type:`struct drm_encoder_funcs <drm_encoder_funcs>`\ .
+called from the driver's \ :c:type:`drm_encoder_funcs.destroy <drm_encoder_funcs>`\  hook.
 
 .. _`drm_encoder_init.return`:
 

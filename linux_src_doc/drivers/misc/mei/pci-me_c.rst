@@ -45,6 +45,27 @@ Return
 
 0 on success, <0 on failure.
 
+.. _`mei_me_shutdown`:
+
+mei_me_shutdown
+===============
+
+.. c:function:: void mei_me_shutdown(struct pci_dev *pdev)
+
+    Device Removal Routine
+
+    :param struct pci_dev \*pdev:
+        PCI device structure
+
+.. _`mei_me_shutdown.description`:
+
+Description
+-----------
+
+mei_me_shutdown is called from the reboot notifier
+it's a simplified version of remove so we go down
+faster.
+
 .. _`mei_me_remove`:
 
 mei_me_remove
@@ -62,7 +83,7 @@ mei_me_remove
 Description
 -----------
 
-mei_remove is called by the PCI subsystem to alert the driver
+mei_me_remove is called by the PCI subsystem to alert the driver
 that it should release a PCI device.
 
 .. _`mei_me_set_pm_domain`:

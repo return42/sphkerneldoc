@@ -345,6 +345,58 @@ mult_to_ib_rate
     :param int mult:
         multiple to convert.
 
+.. _`rdma_netdev`:
+
+struct rdma_netdev
+==================
+
+.. c:type:: struct rdma_netdev
+
+    rdma netdev For cases where netstack interfacing is required.
+
+.. _`rdma_netdev.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rdma_netdev {
+        void *clnt_priv;
+        struct ib_device *hca;
+        u8 port_num;
+        void (*set_id)(struct net_device *netdev, int id);
+        int (*send)(struct net_device *dev, struct sk_buff *skb,struct ib_ah *address, u32 dqpn);
+        int (*attach_mcast)(struct net_device *dev, struct ib_device *hca,union ib_gid *gid, u16 mlid,int set_qkey, u32 qkey);
+        int (*detach_mcast)(struct net_device *dev, struct ib_device *hca,union ib_gid *gid, u16 mlid);
+    }
+
+.. _`rdma_netdev.members`:
+
+Members
+-------
+
+clnt_priv
+    *undescribed*
+
+hca
+    *undescribed*
+
+port_num
+    *undescribed*
+
+set_id
+    *undescribed*
+
+send
+    *undescribed*
+
+attach_mcast
+    *undescribed*
+
+detach_mcast
+    *undescribed*
+
 .. _`ib_modify_qp_is_ok`:
 
 ib_modify_qp_is_ok
@@ -759,6 +811,29 @@ true if we are running as a RoCE port and must force the
 addition of a Global Route Header built from our Ethernet Address
 Handle into our header list for connectionless packets.
 
+.. _`rdma_cap_opa_ah`:
+
+rdma_cap_opa_ah
+===============
+
+.. c:function:: bool rdma_cap_opa_ah(struct ib_device *device, u8 port_num)
+
+    Check if the port of device supports OPA Address handles
+
+    :param struct ib_device \*device:
+        Device to check
+
+    :param u8 port_num:
+        Port number to check
+
+.. _`rdma_cap_opa_ah.return`:
+
+Return
+------
+
+true if we are running on an OPA device which supports
+the extended OPA addressing.
+
 .. _`rdma_max_mad_size`:
 
 rdma_max_mad_size
@@ -823,22 +898,22 @@ Return
 true if the port uses RoCE GID table mechanism in order to manage
 its GIDs.
 
-.. _`ib_create_ah`:
+.. _`rdma_create_ah`:
 
-ib_create_ah
-============
+rdma_create_ah
+==============
 
-.. c:function:: struct ib_ah *ib_create_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr)
+.. c:function:: struct ib_ah *rdma_create_ah(struct ib_pd *pd, struct rdma_ah_attr *ah_attr)
 
     Creates an address handle for the given address vector.
 
     :param struct ib_pd \*pd:
         The protection domain associated with the address handle.
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         The attributes of the address vector.
 
-.. _`ib_create_ah.description`:
+.. _`rdma_create_ah.description`:
 
 Description
 -----------
@@ -884,7 +959,7 @@ ib_get_rdma_header_version
 ib_init_ah_from_wc
 ==================
 
-.. c:function:: int ib_init_ah_from_wc(struct ib_device *device, u8 port_num, const struct ib_wc *wc, const struct ib_grh *grh, struct ib_ah_attr *ah_attr)
+.. c:function:: int ib_init_ah_from_wc(struct ib_device *device, u8 port_num, const struct ib_wc *wc, const struct ib_grh *grh, struct rdma_ah_attr *ah_attr)
 
     Initializes address handle attributes from a work completion.
 
@@ -901,7 +976,7 @@ ib_init_ah_from_wc
         References the received global route header.  This parameter is
         ignored unless the work completion indicates that the GRH is valid.
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         Returned attributes that can be used when creating an address
         handle for replying to the message.
 
@@ -935,44 +1010,44 @@ Description
 The address handle is used to reference a local or global destination
 in all UD QP post sends.
 
-.. _`ib_modify_ah`:
+.. _`rdma_modify_ah`:
 
-ib_modify_ah
-============
+rdma_modify_ah
+==============
 
-.. c:function:: int ib_modify_ah(struct ib_ah *ah, struct ib_ah_attr *ah_attr)
+.. c:function:: int rdma_modify_ah(struct ib_ah *ah, struct rdma_ah_attr *ah_attr)
 
     Modifies the address vector associated with an address handle.
 
     :param struct ib_ah \*ah:
         The address handle to modify.
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         The new address vector attributes to associate with the
         address handle.
 
-.. _`ib_query_ah`:
+.. _`rdma_query_ah`:
 
-ib_query_ah
-===========
+rdma_query_ah
+=============
 
-.. c:function:: int ib_query_ah(struct ib_ah *ah, struct ib_ah_attr *ah_attr)
+.. c:function:: int rdma_query_ah(struct ib_ah *ah, struct rdma_ah_attr *ah_attr)
 
     Queries the address vector associated with an address handle.
 
     :param struct ib_ah \*ah:
         The address handle to query.
 
-    :param struct ib_ah_attr \*ah_attr:
+    :param struct rdma_ah_attr \*ah_attr:
         The address vector attributes associated with the address
         handle.
 
-.. _`ib_destroy_ah`:
+.. _`rdma_destroy_ah`:
 
-ib_destroy_ah
-=============
+rdma_destroy_ah
+===============
 
-.. c:function:: int ib_destroy_ah(struct ib_ah *ah)
+.. c:function:: int rdma_destroy_ah(struct ib_ah *ah)
 
     Destroys an address handle.
 
@@ -1681,7 +1756,7 @@ ib_dma_sync_single_for_device
 ib_dma_alloc_coherent
 =====================
 
-.. c:function:: void *ib_dma_alloc_coherent(struct ib_device *dev, size_t size, u64 *dma_handle, gfp_t flag)
+.. c:function:: void *ib_dma_alloc_coherent(struct ib_device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flag)
 
     Allocate memory and map it for DMA
 
@@ -1691,7 +1766,7 @@ ib_dma_alloc_coherent
     :param size_t size:
         The size of the region to allocate in bytes
 
-    :param u64 \*dma_handle:
+    :param dma_addr_t \*dma_handle:
         A pointer for returning the DMA address of the region
 
     :param gfp_t flag:
@@ -1702,7 +1777,7 @@ ib_dma_alloc_coherent
 ib_dma_free_coherent
 ====================
 
-.. c:function:: void ib_dma_free_coherent(struct ib_device *dev, size_t size, void *cpu_addr, u64 dma_handle)
+.. c:function:: void ib_dma_free_coherent(struct ib_device *dev, size_t size, void *cpu_addr, dma_addr_t dma_handle)
 
     Free memory allocated by \ :c:func:`ib_dma_alloc_coherent`\ 
 
@@ -1715,7 +1790,7 @@ ib_dma_free_coherent
     :param void \*cpu_addr:
         the address returned by \ :c:func:`ib_dma_alloc_coherent`\ 
 
-    :param u64 dma_handle:
+    :param dma_addr_t dma_handle:
         the DMA address returned by \ :c:func:`ib_dma_alloc_coherent`\ 
 
 .. _`ib_dereg_mr`:

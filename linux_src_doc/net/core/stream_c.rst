@@ -13,12 +13,12 @@ sk_stream_write_space
     :param struct sock \*sk:
         socket
 
-.. _`sk_stream_write_space.fixme`:
+.. _`sk_stream_write_space.description`:
 
-FIXME
------
+Description
+-----------
 
-write proper description
+FIXME: write proper description
 
 .. _`sk_stream_wait_connect`:
 

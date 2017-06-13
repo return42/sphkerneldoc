@@ -29,9 +29,9 @@ the mutex still locked. The mutex must first be initialized
 (or statically defined) before it can be locked. \ :c:func:`memset`\ -ing
 the mutex to 0 is not allowed.
 
-( The CONFIG_DEBUG_MUTEXES .config option turns on debugging
+(The CONFIG_DEBUG_MUTEXES .config option turns on debugging
 checks that will enforce the restrictions and will also do
-deadlock debugging. )
+deadlock debugging)
 
 This function is similar to (but not equivalent to) \ :c:func:`down`\ .
 
@@ -77,7 +77,7 @@ Description
 -----------
 
 Unlock a mutex that has been locked by this task previously with any of the
-ww_mutex_lock\* functions (with or without an acquire context). It is
+ww_mutex_lock* functions (with or without an acquire context). It is
 forbidden to release the locks after releasing the acquire context.
 
 This function must not be used in interrupt context. Unlocking

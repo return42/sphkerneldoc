@@ -685,7 +685,7 @@ perm_addr
     Permanent MAC address.
 
 override_addr
-    Overrided MAC address.
+    Overridden MAC address.
 
 address
     Additional MAC address entries.
@@ -694,7 +694,7 @@ addr_list_size
     Additional MAC address list size.
 
 mac_override
-    Indication of MAC address overrided.
+    Indication of MAC address overridden.
 
 promiscuous
     Counter to keep track of promiscuous mode set.
@@ -2856,7 +2856,7 @@ Description
 -----------
 
 This routine programs the MAC address of the hardware when the address is
-overrided.
+overridden.
 
 .. _`hw_read_addr`:
 
@@ -3543,22 +3543,22 @@ Description
 
 This procedure sets the PHY register value.
 
-.. _`netdev_get_settings`:
+.. _`netdev_get_link_ksettings`:
 
-netdev_get_settings
-===================
+netdev_get_link_ksettings
+=========================
 
-.. c:function:: int netdev_get_settings(struct net_device *dev, struct ethtool_cmd *cmd)
+.. c:function:: int netdev_get_link_ksettings(struct net_device *dev, struct ethtool_link_ksettings *cmd)
 
     get network device settings
 
     :param struct net_device \*dev:
         Network device.
 
-    :param struct ethtool_cmd \*cmd:
+    :param struct ethtool_link_ksettings \*cmd:
         Ethtool command.
 
-.. _`netdev_get_settings.description`:
+.. _`netdev_get_link_ksettings.description`:
 
 Description
 -----------
@@ -3567,22 +3567,22 @@ This function queries the PHY and returns its state in the ethtool command.
 
 Return 0 if successful; otherwise an error code.
 
-.. _`netdev_set_settings`:
+.. _`netdev_set_link_ksettings`:
 
-netdev_set_settings
-===================
+netdev_set_link_ksettings
+=========================
 
-.. c:function:: int netdev_set_settings(struct net_device *dev, struct ethtool_cmd *cmd)
+.. c:function:: int netdev_set_link_ksettings(struct net_device *dev, const struct ethtool_link_ksettings *cmd)
 
     set network device settings
 
     :param struct net_device \*dev:
         Network device.
 
-    :param struct ethtool_cmd \*cmd:
+    :param const struct ethtool_link_ksettings \*cmd:
         Ethtool command.
 
-.. _`netdev_set_settings.description`:
+.. _`netdev_set_link_ksettings.description`:
 
 Description
 -----------

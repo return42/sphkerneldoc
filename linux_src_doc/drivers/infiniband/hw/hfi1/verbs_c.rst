@@ -6,7 +6,7 @@
 hfi1_copy_sge
 =============
 
-.. c:function:: void hfi1_copy_sge(struct rvt_sge_state *ss, void *data, u32 length, int release, int copy_last)
+.. c:function:: void hfi1_copy_sge(struct rvt_sge_state *ss, void *data, u32 length, bool release, bool copy_last)
 
     copy data to SGE memory
 
@@ -19,29 +19,11 @@ hfi1_copy_sge
     :param u32 length:
         the length of the data
 
-    :param int release:
-        *undescribed*
+    :param bool release:
+        boolean to release MR
 
-    :param int copy_last:
+    :param bool copy_last:
         do a separate copy of the last 8 bytes
-
-.. _`hfi1_skip_sge`:
-
-hfi1_skip_sge
-=============
-
-.. c:function:: void hfi1_skip_sge(struct rvt_sge_state *ss, u32 length, int release)
-
-    skip over SGE memory
-
-    :param struct rvt_sge_state \*ss:
-        the SGE state
-
-    :param u32 length:
-        the number of bytes to skip
-
-    :param int release:
-        *undescribed*
 
 .. _`hfi1_ib_rcv`:
 

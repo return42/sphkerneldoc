@@ -20,6 +20,8 @@ Definition
     struct MR_PRIV_DEVICE {
         bool is_tm_capable;
         bool tm_busy;
+        atomic_t r1_ldio_hint;
+        u8 interface_type;
     }
 
 .. _`mr_priv_device.members`:
@@ -32,6 +34,12 @@ is_tm_capable
 
 tm_busy
     TM request is in progress
+
+r1_ldio_hint
+    *undescribed*
+
+interface_type
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

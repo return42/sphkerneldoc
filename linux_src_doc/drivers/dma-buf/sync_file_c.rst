@@ -18,29 +18,10 @@ sync_file_create
 Description
 -----------
 
-Creates a sync_file containg \ ``fence``\ . Once this is called, the sync_file
-takes ownership of \ ``fence``\ . The sync_file can be released with
-fput(sync_file->file). Returns the sync_file or NULL in case of error.
-
-.. _`sync_file_fdget`:
-
-sync_file_fdget
-===============
-
-.. c:function:: struct sync_file *sync_file_fdget(int fd)
-
-    get a sync_file from an fd
-
-    :param int fd:
-        fd referencing a fence
-
-.. _`sync_file_fdget.description`:
-
-Description
------------
-
-Ensures \ ``fd``\  references a valid sync_file, increments the refcount of the
-backing file. Returns the sync_file or NULL in case of error.
+Creates a sync_file containg \ ``fence``\ . This function acquires and additional
+reference of \ ``fence``\  for the newly-created \ :c:type:`struct sync_file <sync_file>`\ , if it succeeds. The
+sync_file can be released with fput(sync_file->file). Returns the
+sync_file or NULL in case of error.
 
 .. _`sync_file_get_fence`:
 

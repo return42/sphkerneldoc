@@ -21,19 +21,19 @@ Note
 don't use this function to init an already used ulist, use
 ulist_reinit instead.
 
-.. _`ulist_fini`:
+.. _`ulist_release`:
 
-ulist_fini
-==========
+ulist_release
+=============
 
-.. c:function:: void ulist_fini(struct ulist *ulist)
+.. c:function:: void ulist_release(struct ulist *ulist)
 
     free up additionally allocated memory for the ulist
 
     :param struct ulist \*ulist:
         the ulist from which to free the additional memory
 
-.. _`ulist_fini.description`:
+.. _`ulist_release.description`:
 
 Description
 -----------
@@ -97,7 +97,7 @@ ulist_free
 Description
 -----------
 
-It is not necessary to call ulist_fini before.
+It is not necessary to call ulist_release before.
 
 .. _`ulist_add`:
 

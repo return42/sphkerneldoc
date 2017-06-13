@@ -6,9 +6,9 @@
 aa_alloc_task_context
 =====================
 
-.. c:function:: struct aa_task_cxt *aa_alloc_task_context(gfp_t flags)
+.. c:function:: struct aa_task_ctx *aa_alloc_task_context(gfp_t flags)
 
-    allocate a new task_cxt
+    allocate a new task_ctx
 
     :param gfp_t flags:
         gfp flags for allocation
@@ -25,26 +25,26 @@ allocated buffer or NULL on failure
 aa_free_task_context
 ====================
 
-.. c:function:: void aa_free_task_context(struct aa_task_cxt *cxt)
+.. c:function:: void aa_free_task_context(struct aa_task_ctx *ctx)
 
-    free a task_cxt
+    free a task_ctx
 
-    :param struct aa_task_cxt \*cxt:
-        task_cxt to free (MAYBE NULL)
+    :param struct aa_task_ctx \*ctx:
+        task_ctx to free (MAYBE NULL)
 
 .. _`aa_dup_task_context`:
 
 aa_dup_task_context
 ===================
 
-.. c:function:: void aa_dup_task_context(struct aa_task_cxt *new, const struct aa_task_cxt *old)
+.. c:function:: void aa_dup_task_context(struct aa_task_ctx *new, const struct aa_task_ctx *old)
 
     duplicate a task context, incrementing reference counts
 
-    :param struct aa_task_cxt \*new:
+    :param struct aa_task_ctx \*new:
         a blank task context      (NOT NULL)
 
-    :param const struct aa_task_cxt \*old:
+    :param const struct aa_task_ctx \*old:
         the task context to copy  (NOT NULL)
 
 .. _`aa_get_task_profile`:

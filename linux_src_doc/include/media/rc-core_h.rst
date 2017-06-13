@@ -19,7 +19,8 @@ Definition
 
     enum rc_driver_type {
         RC_DRIVER_SCANCODE,
-        RC_DRIVER_IR_RAW
+        RC_DRIVER_IR_RAW,
+        RC_DRIVER_IR_RAW_TX
     };
 
 .. _`rc_driver_type.constants`:
@@ -33,6 +34,10 @@ RC_DRIVER_SCANCODE
 RC_DRIVER_IR_RAW
     Driver or hardware generates pulse/space sequences.
     It needs a Infra-Red pulse/space decoder
+
+RC_DRIVER_IR_RAW_TX
+    Device transmitter only,
+    driver requires pulse/space data sequence.
 
 .. _`rc_scancode_filter`:
 
@@ -135,10 +140,11 @@ Definition
         struct input_dev *input_dev;
         enum rc_driver_type driver_type;
         bool idle;
+        bool encode_wakeup;
         u64 allowed_protocols;
         u64 enabled_protocols;
         u64 allowed_wakeup_protocols;
-        u64 enabled_wakeup_protocols;
+        enum rc_type wakeup_protocol;
         struct rc_scancode_filter scancode_filter;
         struct rc_scancode_filter scancode_wakeup_filter;
         u32 scancode_mask;
@@ -158,7 +164,6 @@ Definition
         u32 rx_resolution;
         u32 tx_resolution;
         int (*change_protocol)(struct rc_dev *dev, u64 *rc_type);
-        int (*change_wakeup_protocol)(struct rc_dev *dev, u64 *rc_type);
         int (*open)(struct rc_dev *dev);
         void (*close)(struct rc_dev *dev);
         int (*s_tx_mask)(struct rc_dev *dev, u32 mask);
@@ -228,6 +233,10 @@ driver_type
 idle
     used to keep track of RX state
 
+encode_wakeup
+    wakeup filtering uses IR encode API, therefore the allowed
+    wakeup protocols is the set of all raw encoders
+
 allowed_protocols
     bitmask with the supported RC_BIT_* protocols
 
@@ -237,8 +246,9 @@ enabled_protocols
 allowed_wakeup_protocols
     bitmask with the supported RC_BIT_* wakeup protocols
 
-enabled_wakeup_protocols
-    bitmask with the enabled RC_BIT_* wakeup protocols
+wakeup_protocol
+    the enabled RC_TYPE_* wakeup protocol or
+    RC_TYPE_UNKNOWN if disabled.
 
 scancode_filter
     scancode filter
@@ -301,10 +311,6 @@ tx_resolution
 change_protocol
     allow changing the protocol used on hardware decoders
 
-change_wakeup_protocol
-    allow changing the protocol used for wakeup
-    filtering
-
 open
     callback to allow drivers to enable polling/irq when IR input device
     is opened.
@@ -342,7 +348,9 @@ s_filter
     set the scancode filter
 
 s_wakeup_filter
-    set the wakeup scancode filter
+    set the wakeup scancode filter. If the mask is zero
+    then wakeup should be disabled. wakeup_protocol will be set to
+    a valid protocol if mask is nonzero.
 
 s_timeout
     set hardware timeout in ns
@@ -352,31 +360,28 @@ s_timeout
 rc_allocate_device
 ==================
 
-.. c:function:: struct rc_dev *rc_allocate_device( void)
+.. c:function:: struct rc_dev *rc_allocate_device(enum rc_driver_type)
 
     Allocates a RC device
 
-    :param  void:
-        no arguments
-
-.. _`rc_allocate_device.description`:
-
-Description
------------
-
-returns a pointer to struct rc_dev.
+    :param enum rc_driver_type:
+        specifies the type of the RC output to be allocated
+        returns a pointer to struct rc_dev.
 
 .. _`devm_rc_allocate_device`:
 
 devm_rc_allocate_device
 =======================
 
-.. c:function:: struct rc_dev *devm_rc_allocate_device(struct device *dev)
+.. c:function:: struct rc_dev *devm_rc_allocate_device(struct device *dev, enum rc_driver_type)
 
     Managed RC device allocation
 
     :param struct device \*dev:
         pointer to struct device
+
+    :param enum rc_driver_type:
+        specifies the type of the RC output to be allocated
         returns a pointer to struct rc_dev.
 
 .. _`rc_free_device`:

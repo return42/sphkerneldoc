@@ -6,14 +6,14 @@
 omap3430es2_clk_ssi_find_idlest
 ===============================
 
-.. c:function:: void omap3430es2_clk_ssi_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void omap3430es2_clk_ssi_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     return CM_IDLEST info for SSI
 
     :param struct clk_hw_omap \*clk:
         struct clk \* being enabled
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
 
     :param u8 \*idlest_bit:
@@ -36,14 +36,14 @@ from the CM_{I,F}CLKEN bit.  Pass back the correct info via
 omap3430es2_clk_dss_usbhost_find_idlest
 =======================================
 
-.. c:function:: void omap3430es2_clk_dss_usbhost_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void omap3430es2_clk_dss_usbhost_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     CM_IDLEST info for DSS, USBHOST
 
     :param struct clk_hw_omap \*clk:
         struct clk \* being enabled
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
 
     :param u8 \*idlest_bit:
@@ -69,14 +69,14 @@ position.)  No return value.
 omap3430es2_clk_hsotgusb_find_idlest
 ====================================
 
-.. c:function:: void omap3430es2_clk_hsotgusb_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void omap3430es2_clk_hsotgusb_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     return CM_IDLEST info for HSOTGUSB
 
     :param struct clk_hw_omap \*clk:
         struct clk \* being enabled
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
 
     :param u8 \*idlest_bit:
@@ -99,14 +99,14 @@ shift from the CM_{I,F}CLKEN bit.  Pass back the correct info via
 am35xx_clk_find_idlest
 ======================
 
-.. c:function:: void am35xx_clk_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void am35xx_clk_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     return clock ACK info for AM35XX IPSS
 
     :param struct clk_hw_omap \*clk:
         struct clk \* being enabled
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
 
     :param u8 \*idlest_bit:
@@ -129,14 +129,14 @@ bit. A value of 1 indicates that clock is enabled.
 am35xx_clk_find_companion
 =========================
 
-.. c:function:: void am35xx_clk_find_companion(struct clk_hw_omap *clk, void __iomem **other_reg, u8 *other_bit)
+.. c:function:: void am35xx_clk_find_companion(struct clk_hw_omap *clk, struct clk_omap_reg *other_reg, u8 *other_bit)
 
     find companion clock to \ ``clk``\ 
 
     :param struct clk_hw_omap \*clk:
         struct clk \* to find the companion clock of
 
-    :param void __iomem \*\*other_reg:
+    :param struct clk_omap_reg \*other_reg:
         void \__iomem \*\* to return the companion clock CM\_\*CLKEN va in
 
     :param u8 \*other_bit:
@@ -160,14 +160,14 @@ avoid this issue, and remove the casts.  No return value.
 am35xx_clk_ipss_find_idlest
 ===========================
 
-.. c:function:: void am35xx_clk_ipss_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void am35xx_clk_ipss_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     return CM_IDLEST info for IPSS
 
     :param struct clk_hw_omap \*clk:
         struct clk \* being enabled
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
 
     :param u8 \*idlest_bit:

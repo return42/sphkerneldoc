@@ -181,7 +181,7 @@ There are three possible outcomes
 
 1) Packet is merged: Return true and
 set \*skb to merged packet; 2) Packet is buffered: Return true and set \*skb
-to NULL; 3) Error: Return false and leave skb as is.
+to NULL; 3) Error: Return false and free skb.
 
 .. _`batadv_frag_skb_buffer.return`:
 
@@ -230,7 +230,7 @@ true if the fragment is consumed/forwarded, false otherwise.
 batadv_frag_create
 ==================
 
-.. c:function:: struct sk_buff *batadv_frag_create(struct sk_buff *skb, struct batadv_frag_packet *frag_head, unsigned int mtu)
+.. c:function:: struct sk_buff *batadv_frag_create(struct sk_buff *skb, struct batadv_frag_packet *frag_head, unsigned int fragment_size)
 
     create a fragment from skb
 
@@ -240,7 +240,7 @@ batadv_frag_create
     :param struct batadv_frag_packet \*frag_head:
         header to use in new fragment
 
-    :param unsigned int mtu:
+    :param unsigned int fragment_size:
         size of new fragment
 
 .. _`batadv_frag_create.split-the-passed-skb-into-two-fragments`:

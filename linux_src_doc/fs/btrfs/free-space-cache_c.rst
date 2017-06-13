@@ -6,9 +6,9 @@
 __btrfs_write_out_cache
 =======================
 
-.. c:function:: int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode, struct btrfs_free_space_ctl *ctl, struct btrfs_block_group_cache *block_group, struct btrfs_io_ctl *io_ctl, struct btrfs_trans_handle *trans, struct btrfs_path *path, u64 offset)
+.. c:function:: int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode, struct btrfs_free_space_ctl *ctl, struct btrfs_block_group_cache *block_group, struct btrfs_io_ctl *io_ctl, struct btrfs_trans_handle *trans)
 
-    write out cached info to an inode \ ``root``\  - the root the inode belongs to \ ``ctl``\  - the free space cache we are going to write out \ ``block_group``\  - the block_group for this cache if it belongs to a block_group \ ``trans``\  - the trans handle \ ``path``\  - the path to use \ ``offset``\  - the offset for the key we'll insert
+    write out cached info to an inode \ ``root``\  - the root the inode belongs to \ ``ctl``\  - the free space cache we are going to write out \ ``block_group``\  - the block_group for this cache if it belongs to a block_group \ ``trans``\  - the trans handle
 
     :param struct btrfs_root \*root:
         *undescribed*
@@ -26,12 +26,6 @@ __btrfs_write_out_cache
         *undescribed*
 
     :param struct btrfs_trans_handle \*trans:
-        *undescribed*
-
-    :param struct btrfs_path \*path:
-        *undescribed*
-
-    :param u64 offset:
         *undescribed*
 
 .. _`__btrfs_write_out_cache.description`:

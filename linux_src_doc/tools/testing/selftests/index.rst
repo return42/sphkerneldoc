@@ -9,3 +9,4 @@ selftests
 
     futex/index
     mqueue/index
+    rcutorture/index

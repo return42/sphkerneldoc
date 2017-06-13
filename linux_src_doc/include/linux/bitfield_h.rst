@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/bitfield.h
 
+.. _`field_fit`:
+
+FIELD_FIT
+=========
+
+.. c:function::  FIELD_FIT( _mask,  _val)
+
+    check if value fits in the field
+
+    :param  _mask:
+        shifted mask defining the field's length and position
+
+    :param  _val:
+        value to test against the field
+
+.. _`field_fit.return`:
+
+Return
+------
+
+true if \ ``_val``\  can fit inside \ ``_mask``\ , false if \ ``_val``\  is too big.
+
 .. _`field_prep`:
 
 FIELD_PREP

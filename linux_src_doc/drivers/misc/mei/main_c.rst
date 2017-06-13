@@ -246,6 +246,53 @@ Return
 
 poll mask
 
+.. _`mei_cl_is_write_queued`:
+
+mei_cl_is_write_queued
+======================
+
+.. c:function:: bool mei_cl_is_write_queued(struct mei_cl *cl)
+
+    check if the client has pending writes.
+
+    :param struct mei_cl \*cl:
+        writing host client
+
+.. _`mei_cl_is_write_queued.return`:
+
+Return
+------
+
+true if client is writing, false otherwise.
+
+.. _`mei_fsync`:
+
+mei_fsync
+=========
+
+.. c:function:: int mei_fsync(struct file *fp, loff_t start, loff_t end, int datasync)
+
+    the fsync handler
+
+    :param struct file \*fp:
+        pointer to file structure
+
+    :param loff_t start:
+        unused
+
+    :param loff_t end:
+        unused
+
+    :param int datasync:
+        unused
+
+.. _`mei_fsync.return`:
+
+Return
+------
+
+0 on success, -ENODEV if client is not connected
+
 .. _`mei_fasync`:
 
 mei_fasync

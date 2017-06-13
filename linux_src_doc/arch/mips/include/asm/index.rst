@@ -19,6 +19,7 @@ asm
     clocksource_h
     dsemul_h
     i8259_h
+    kvm_host_h
     local_h
     maar_h
     machine_h

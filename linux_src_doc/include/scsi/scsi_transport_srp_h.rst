@@ -143,8 +143,6 @@ Definition
         int (*reconnect)(struct srp_rport *rport);
         void (*terminate_rport_io)(struct srp_rport *rport);
         void (*rport_delete)(struct srp_rport *rport);
-        int (*tsk_mgmt_response)(struct Scsi_Host *, u64, u64, int);
-        int (*it_nexus_response)(struct Scsi_Host *, u64, int);
     }
 
 .. _`srp_function_template.members`:
@@ -179,12 +177,6 @@ terminate_rport_io
 
 rport_delete
     Callback function that deletes an rport.
-
-tsk_mgmt_response
-    Callback function for sending a task management response.
-
-it_nexus_response
-    Callback function for processing an IT nexus response.
 
 .. _`srp_chkready`:
 

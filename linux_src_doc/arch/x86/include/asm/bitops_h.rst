@@ -21,7 +21,7 @@ set_bit
 Description
 -----------
 
-This function is atomic and may not be reordered.  See \__set_bit()
+This function is atomic and may not be reordered.  See \ :c:func:`__set_bit`\ 
 if you do not require the atomic guarantees.
 
 .. _`set_bit.note`:
@@ -258,13 +258,7 @@ the operation is performed atomically with respect to
 the local CPU, but not other CPUs. Portable code should not
 rely on this behaviour.
 KVM relies on this behaviour on x86 for modifying memory that is also
-
-.. _`__test_and_clear_bit.accessed-from-a-hypervisor-on-the-same-cpu-if-running-in-a-vm`:
-
-accessed from a hypervisor on the same CPU if running in a VM
--------------------------------------------------------------
-
-don't change
+accessed from a hypervisor on the same CPU if running in a VM: don't change
 this without also updating arch/x86/kernel/kvm.c
 
 .. _`test_and_change_bit`:

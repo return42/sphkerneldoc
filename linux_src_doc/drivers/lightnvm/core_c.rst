@@ -1,65 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/lightnvm/core.c
 
-.. _`nvm_submit_ppa_list`:
+.. _`nvm_remove_tgt`:
 
-nvm_submit_ppa_list
-===================
-
-.. c:function:: int nvm_submit_ppa_list(struct nvm_dev *dev, struct ppa_addr *ppa_list, int nr_ppas, int opcode, int flags, void *buf, int len)
-
-    submit user-defined ppa list to device. The user must take to free ppa list if necessary.
-
-    :param struct nvm_dev \*dev:
-        device
-
-    :param struct ppa_addr \*ppa_list:
-        user created ppa_list
-
-    :param int nr_ppas:
-        length of ppa_list
-
-    :param int opcode:
-        device opcode
-
-    :param int flags:
-        device flags
-
-    :param void \*buf:
-        data buffer
-
-    :param int len:
-        data buffer length
-
-.. _`nvm_submit_ppa`:
-
-nvm_submit_ppa
+nvm_remove_tgt
 ==============
 
-.. c:function:: int nvm_submit_ppa(struct nvm_dev *dev, struct ppa_addr *ppa, int nr_ppas, int opcode, int flags, void *buf, int len)
+.. c:function:: int nvm_remove_tgt(struct nvm_dev *dev, struct nvm_ioctl_remove *remove)
 
-    submit PPAs to device. PPAs will automatically be unfolded as single, dual, quad plane PPAs depending on device type.
+    Removes a target from the media manager
 
     :param struct nvm_dev \*dev:
         device
 
-    :param struct ppa_addr \*ppa:
-        user created ppa_list
+    :param struct nvm_ioctl_remove \*remove:
+        ioctl structure with target name to remove.
 
-    :param int nr_ppas:
-        length of ppa_list
+.. _`nvm_remove_tgt.return`:
 
-    :param int opcode:
-        device opcode
+Return
+------
 
-    :param int flags:
-        device flags
-
-    :param void \*buf:
-        data buffer
-
-    :param int len:
-        data buffer length
+0: on success
+1: on not found
+<0: on error
 
 .. This file was automatic generated / don't edit.
 

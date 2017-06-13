@@ -85,7 +85,7 @@ mei_hbm_cl_hdr
 mei_hbm_cl_write
 ================
 
-.. c:function:: int mei_hbm_cl_write(struct mei_device *dev, struct mei_cl *cl, u8 hbm_cmd, u8 *buf, size_t len)
+.. c:function:: int mei_hbm_cl_write(struct mei_device *dev, struct mei_cl *cl, u8 hbm_cmd, void *buf, size_t len)
 
     write simple hbm client message
 
@@ -98,7 +98,7 @@ mei_hbm_cl_write
     :param u8 hbm_cmd:
         host bus message command
 
-    :param u8 \*buf:
+    :param void \*buf:
         message buffer
 
     :param size_t len:

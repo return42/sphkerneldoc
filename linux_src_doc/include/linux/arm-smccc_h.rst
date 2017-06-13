@@ -41,12 +41,44 @@ a2
 a3
     *undescribed*
 
-.. _`arm_smccc_smc`:
+.. _`arm_smccc_quirk`:
 
-arm_smccc_smc
-=============
+struct arm_smccc_quirk
+======================
 
-.. c:function:: void arm_smccc_smc(unsigned long a0, unsigned long a1, unsigned long a2, unsigned long a3, unsigned long a4, unsigned long a5, unsigned long a6, unsigned long a7, struct arm_smccc_res *res)
+.. c:type:: struct arm_smccc_quirk
+
+    Contains quirk information
+
+.. _`arm_smccc_quirk.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct arm_smccc_quirk {
+        int id;
+        union state;
+    }
+
+.. _`arm_smccc_quirk.members`:
+
+Members
+-------
+
+id
+    quirk identification
+
+state
+    quirk specific information
+
+.. _`__arm_smccc_smc`:
+
+__arm_smccc_smc
+===============
+
+.. c:function:: void __arm_smccc_smc(unsigned long a0, unsigned long a1, unsigned long a2, unsigned long a3, unsigned long a4, unsigned long a5, unsigned long a6, unsigned long a7, struct arm_smccc_res *res, struct arm_smccc_quirk *quirk)
 
     make SMC calls
 
@@ -77,7 +109,10 @@ arm_smccc_smc
     :param struct arm_smccc_res \*res:
         result values from registers 0 to 3
 
-.. _`arm_smccc_smc.description`:
+    :param struct arm_smccc_quirk \*quirk:
+        points to an arm_smccc_quirk, or NULL when no quirks are required.
+
+.. _`__arm_smccc_smc.description`:
 
 Description
 -----------
@@ -85,14 +120,15 @@ Description
 This function is used to make SMC calls following SMC Calling Convention.
 The content of the supplied param are copied to registers 0 to 7 prior
 to the SMC instruction. The return values are updated with the content
-from register 0 to 3 on return from the SMC instruction.
+from register 0 to 3 on return from the SMC instruction.  An optional
+quirk structure provides vendor specific behavior.
 
-.. _`arm_smccc_hvc`:
+.. _`__arm_smccc_hvc`:
 
-arm_smccc_hvc
-=============
+__arm_smccc_hvc
+===============
 
-.. c:function:: void arm_smccc_hvc(unsigned long a0, unsigned long a1, unsigned long a2, unsigned long a3, unsigned long a4, unsigned long a5, unsigned long a6, unsigned long a7, struct arm_smccc_res *res)
+.. c:function:: void __arm_smccc_hvc(unsigned long a0, unsigned long a1, unsigned long a2, unsigned long a3, unsigned long a4, unsigned long a5, unsigned long a6, unsigned long a7, struct arm_smccc_res *res, struct arm_smccc_quirk *quirk)
 
     make HVC calls
 
@@ -123,7 +159,10 @@ arm_smccc_hvc
     :param struct arm_smccc_res \*res:
         result values from registers 0 to 3
 
-.. _`arm_smccc_hvc.description`:
+    :param struct arm_smccc_quirk \*quirk:
+        points to an arm_smccc_quirk, or NULL when no quirks are required.
+
+.. _`__arm_smccc_hvc.description`:
 
 Description
 -----------
@@ -131,7 +170,8 @@ Description
 This function is used to make HVC calls following SMC Calling
 Convention.  The content of the supplied param are copied to registers 0
 to 7 prior to the HVC instruction. The return values are updated with
-the content from register 0 to 3 on return from the HVC instruction.
+the content from register 0 to 3 on return from the HVC instruction.  An
+optional quirk structure provides vendor specific behavior.
 
 .. This file was automatic generated / don't edit.
 

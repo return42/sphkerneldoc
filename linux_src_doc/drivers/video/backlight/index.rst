@@ -7,6 +7,7 @@ backlight
 .. toctree::
     :maxdepth: 1
 
+    arcxcnn_bl_c
     backlight_c
     ili922x_c
     lcd_c

@@ -18,19 +18,19 @@ blk_release_queue
 Description
 -----------
 
-blk_release_queue is the pair to \ :c:func:`blk_init_queue`\  or
-\ :c:func:`blk_queue_make_request`\ .  It should be called when a request queue is
-being released; typically when a block device is being de-registered.
-Currently, its primary task it to free all the \ :c:type:`struct request <request>`\ 
-structures that were allocated to the queue and the queue itself.
+    blk_release_queue is the pair to \ :c:func:`blk_init_queue`\  or
+    \ :c:func:`blk_queue_make_request`\ .  It should be called when a request queue is
+    being released; typically when a block device is being de-registered.
+    Currently, its primary task it to free all the \ :c:type:`struct request <request>`\ 
+    structures that were allocated to the queue and the queue itself.
 
 .. _`blk_release_queue.note`:
 
 Note
 ----
 
-The low level driver must have finished any outstanding requests first
-via \ :c:func:`blk_cleanup_queue`\ .
+    The low level driver must have finished any outstanding requests first
+    via \ :c:func:`blk_cleanup_queue`\ .
 
 .. This file was automatic generated / don't edit.
 

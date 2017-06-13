@@ -10,5 +10,6 @@ ulp
     ipoib/index
     iser/index
     isert/index
+    opa_vnic/index
     srp/index
     srpt/index

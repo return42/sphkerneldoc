@@ -8,7 +8,7 @@ struct prev_cputime
 
 .. c:type:: struct prev_cputime
 
-    snaphsot of system and user cputime
+    snapshot of system and user cputime
 
 .. _`prev_cputime.definition`:
 
@@ -19,8 +19,8 @@ Definition
 
     struct prev_cputime {
     #ifndef CONFIG_VIRT_CPU_ACCOUNTING_NATIVE
-        cputime_t utime;
-        cputime_t stime;
+        u64 utime;
+        u64 stime;
         raw_spinlock_t lock;
     #endif
     }
@@ -64,8 +64,8 @@ Definition
 .. code-block:: c
 
     struct task_cputime {
-        cputime_t utime;
-        cputime_t stime;
+        u64 utime;
+        u64 stime;
         unsigned long long sum_exec_runtime;
     }
 
@@ -75,10 +75,10 @@ Members
 -------
 
 utime
-    time spent in user mode, in \ :c:type:`struct cputime_t <cputime_t>`\  units
+    time spent in user mode, in nanoseconds
 
 stime
-    time spent in kernel mode, in \ :c:type:`struct cputime_t <cputime_t>`\  units
+    time spent in kernel mode, in nanoseconds
 
 sum_exec_runtime
     total time spent on the CPU, in nanoseconds
@@ -91,52 +91,6 @@ Description
 This structure groups together three kinds of CPU time that are tracked for
 threads and thread groups.  Most things considering CPU time want to group
 these counts together and treat all three of them in parallel.
-
-.. _`thread_group_cputimer`:
-
-struct thread_group_cputimer
-============================
-
-.. c:type:: struct thread_group_cputimer
-
-    thread group interval timer counts
-
-.. _`thread_group_cputimer.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct thread_group_cputimer {
-        struct task_cputime_atomic cputime_atomic;
-        bool running;
-        bool checking_timer;
-    }
-
-.. _`thread_group_cputimer.members`:
-
-Members
--------
-
-cputime_atomic
-    atomic thread group interval timers.
-
-running
-    true when there are timers running and
-    \ ``cputime_atomic``\  receives updates.
-
-checking_timer
-    true when a thread in the group is in the
-    process of checking for thread group timers.
-
-.. _`thread_group_cputimer.description`:
-
-Description
------------
-
-This structure contains the version of task_cputime, above, that is
-used for thread group CPU timer calculations.
 
 .. _`pid_alive`:
 
@@ -229,74 +183,6 @@ Return
 ------
 
 1 if \ ``p``\  is an idle task. 0 otherwise.
-
-.. _`set_restore_sigmask`:
-
-set_restore_sigmask
-===================
-
-.. c:function:: void set_restore_sigmask( void)
-
-    make sure saved_sigmask processing gets done
-
-    :param  void:
-        no arguments
-
-.. _`set_restore_sigmask.description`:
-
-Description
------------
-
-This sets TIF_RESTORE_SIGMASK and ensures that the arch signal code
-will run before returning to user mode, to process the flag.  For
-all callers, TIF_SIGPENDING is already set or it's no harm to set
-it.  TIF_RESTORE_SIGMASK need not be in the set of bits that the
-arch code will notice on return to user mode, in case those bits
-are scarce.  We set TIF_SIGPENDING here to ensure that the arch
-signal code always gets run when TIF_RESTORE_SIGMASK is set.
-
-.. _`threadgroup_change_begin`:
-
-threadgroup_change_begin
-========================
-
-.. c:function:: void threadgroup_change_begin(struct task_struct *tsk)
-
-    mark the beginning of changes to a threadgroup
-
-    :param struct task_struct \*tsk:
-        task causing the changes
-
-.. _`threadgroup_change_begin.description`:
-
-Description
------------
-
-All operations which modify a threadgroup - a new thread joining the
-group, death of a member thread (the assertion of PF_EXITING) and
-exec(2) dethreading the process and replacing the leader - are wrapped
-by threadgroup_change_{begin|end}().  This is to provide a place which
-subsystems needing threadgroup stability can hook into for
-synchronization.
-
-.. _`threadgroup_change_end`:
-
-threadgroup_change_end
-======================
-
-.. c:function:: void threadgroup_change_end(struct task_struct *tsk)
-
-    mark the end of changes to a threadgroup
-
-    :param struct task_struct \*tsk:
-        task causing the changes
-
-.. _`threadgroup_change_end.description`:
-
-Description
------------
-
-See \ :c:func:`threadgroup_change_begin`\ .
 
 .. This file was automatic generated / don't edit.
 

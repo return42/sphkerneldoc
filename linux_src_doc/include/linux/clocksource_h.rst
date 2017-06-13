@@ -36,6 +36,7 @@ Definition
         unsigned long flags;
         void (*suspend)(struct clocksource *cs);
         void (*resume)(struct clocksource *cs);
+        void (*mark_unstable)(struct clocksource *cs);
     }
 
 .. _`clocksource.members`:
@@ -105,6 +106,10 @@ suspend
 
 resume
     resume function for the clocksource, if necessary
+
+mark_unstable
+    Optional function to inform the clocksource driver that
+    the watchdog marked the clocksource unstable
 
 .. _`clocksource.note`:
 

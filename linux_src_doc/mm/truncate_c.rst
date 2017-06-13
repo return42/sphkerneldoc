@@ -81,7 +81,7 @@ truncate_inode_pages
 
 .. c:function:: void truncate_inode_pages(struct address_space *mapping, loff_t lstart)
 
-    truncate \*all\* the pages from an offset
+    truncate *all* the pages from an offset
 
     :param struct address_space \*mapping:
         mapping to truncate
@@ -102,7 +102,7 @@ Note
 ----
 
 When this function returns, there can be a page in the process of
-deletion (inside \__delete_from_page_cache()) in the specified range.  Thus
+deletion (inside \ :c:func:`__delete_from_page_cache`\ ) in the specified range.  Thus
 mapping->nrpages can be non-zero when this function returns even after
 truncation of the whole mapping.
 
@@ -113,7 +113,7 @@ truncate_inode_pages_final
 
 .. c:function:: void truncate_inode_pages_final(struct address_space *mapping)
 
-    truncate \*all\* pages before inode dies
+    truncate *all* pages before inode dies
 
     :param struct address_space \*mapping:
         mapping to truncate

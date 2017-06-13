@@ -18,11 +18,13 @@ net
     bonding_h
     cfg80211_h
     codel_h
+    devlink_h
     dst_cache_h
     dst_h
     flow_dissector_h
     fq_h
     genetlink_h
+    ieee80211_radiotap_h
     inet_frag_h
     inet_sock_h
     l3mdev_h

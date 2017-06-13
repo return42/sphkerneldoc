@@ -91,6 +91,13 @@ Note
 
 To flush the decoder when reaching EOF, set input bitstream as NULL.
 
+.. _`vdec_if_decode.return`:
+
+Return
+------
+
+0 on success. -EIO on unrecoverable error.
+
 .. _`vdec_if_get_param`:
 
 vdec_if_get_param

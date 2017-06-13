@@ -21,9 +21,9 @@ splice_to_pipe
 Description
 -----------
 
-@spd contains a map of pages and len/offset tuples, along with
-the struct pipe_buf_operations associated with these pages. This
-function will link that data to the pipe.
+   \ ``spd``\  contains a map of pages and len/offset tuples, along with
+   the struct pipe_buf_operations associated with these pages. This
+   function will link that data to the pipe.
 
 .. _`generic_file_splice_read`:
 
@@ -54,8 +54,8 @@ generic_file_splice_read
 Description
 -----------
 
-Will read pages from given file and fill them into a pipe. Can be
-used as long as it has more or less sane ->read_iter().
+   Will read pages from given file and fill them into a pipe. Can be
+   used as long as it has more or less sane ->read_iter().
 
 .. _`splice_from_pipe_feed`:
 
@@ -80,18 +80,18 @@ splice_from_pipe_feed
 Description
 -----------
 
-This function loops over the pipe and calls \ ``actor``\  to do the
-actual moving of a single struct pipe_buffer to the desired
-destination.  It returns when there's no more buffers left in
-the pipe or if the requested number of bytes (@sd->total_len)
-have been copied.  It returns a positive number (one) if the
-pipe needs to be filled with more data, zero if the required
-number of bytes have been copied and -errno on error.
+   This function loops over the pipe and calls \ ``actor``\  to do the
+   actual moving of a single struct pipe_buffer to the desired
+   destination.  It returns when there's no more buffers left in
+   the pipe or if the requested number of bytes (@sd->total_len)
+   have been copied.  It returns a positive number (one) if the
+   pipe needs to be filled with more data, zero if the required
+   number of bytes have been copied and -errno on error.
 
-This, together with splice_from_pipe_{begin,end,next}, may be
-used to implement the functionality of \__splice_from_pipe() when
-locking is required around copying the pipe buffers to the
-destination.
+   This, together with splice_from_pipe_{begin,end,next}, may be
+   used to implement the functionality of \ :c:func:`__splice_from_pipe`\  when
+   locking is required around copying the pipe buffers to the
+   destination.
 
 .. _`splice_from_pipe_next`:
 
@@ -113,9 +113,9 @@ splice_from_pipe_next
 Description
 -----------
 
-This function will wait for some data and return a positive
-value (one) if pipe buffers are available.  It will return zero
-or -errno if no more data needs to be spliced.
+   This function will wait for some data and return a positive
+   value (one) if pipe buffers are available.  It will return zero
+   or -errno if no more data needs to be spliced.
 
 .. _`splice_from_pipe_begin`:
 
@@ -134,9 +134,9 @@ splice_from_pipe_begin
 Description
 -----------
 
-This function should be called before a loop containing
-\ :c:func:`splice_from_pipe_next`\  and \ :c:func:`splice_from_pipe_feed`\  to
-initialize the necessary fields of \ ``sd``\ .
+   This function should be called before a loop containing
+   \ :c:func:`splice_from_pipe_next`\  and \ :c:func:`splice_from_pipe_feed`\  to
+   initialize the necessary fields of \ ``sd``\ .
 
 .. _`splice_from_pipe_end`:
 
@@ -158,9 +158,9 @@ splice_from_pipe_end
 Description
 -----------
 
-This function will wake up pipe writers if necessary.  It should
-be called after a loop containing \ :c:func:`splice_from_pipe_next`\  and
-\ :c:func:`splice_from_pipe_feed`\ .
+   This function will wake up pipe writers if necessary.  It should
+   be called after a loop containing \ :c:func:`splice_from_pipe_next`\  and
+   \ :c:func:`splice_from_pipe_feed`\ .
 
 .. _`__splice_from_pipe`:
 
@@ -185,10 +185,10 @@ __splice_from_pipe
 Description
 -----------
 
-This function does little more than loop over the pipe and call
-\ ``actor``\  to do the actual moving of a single struct pipe_buffer to
-the desired destination. See pipe_to_file, pipe_to_sendpage, or
-pipe_to_user.
+   This function does little more than loop over the pipe and call
+   \ ``actor``\  to do the actual moving of a single struct pipe_buffer to
+   the desired destination. See pipe_to_file, pipe_to_sendpage, or
+   pipe_to_user.
 
 .. _`splice_from_pipe`:
 
@@ -222,8 +222,8 @@ splice_from_pipe
 Description
 -----------
 
-See \__splice_from_pipe. This function locks the pipe inode,
-otherwise it's identical to \__splice_from_pipe().
+   See __splice_from_pipe. This function locks the pipe inode,
+   otherwise it's identical to \ :c:func:`__splice_from_pipe`\ .
 
 .. _`iter_file_splice_write`:
 
@@ -254,9 +254,9 @@ iter_file_splice_write
 Description
 -----------
 
-Will either move or copy pages (determined by \ ``flags``\  options) from
-the given pipe inode to the given file.
-This one is ->write_iter-based.
+   Will either move or copy pages (determined by \ ``flags``\  options) from
+   the given pipe inode to the given file.
+   This one is ->write_iter-based.
 
 .. _`generic_splice_sendpage`:
 
@@ -287,8 +287,8 @@ generic_splice_sendpage
 Description
 -----------
 
-Will send \ ``len``\  bytes from the pipe to a network socket. No data copying
-is involved.
+   Will send \ ``len``\  bytes from the pipe to a network socket. No data copying
+   is involved.
 
 .. _`splice_direct_to_actor`:
 
@@ -313,10 +313,10 @@ splice_direct_to_actor
 Description
 -----------
 
-This is a special case helper to splice directly between two
-points, without requiring an explicit pipe. Internally an allocated
-pipe is cached in the process, and reused during the lifetime of
-that process.
+   This is a special case helper to splice directly between two
+   points, without requiring an explicit pipe. Internally an allocated
+   pipe is cached in the process, and reused during the lifetime of
+   that process.
 
 .. _`do_splice_direct`:
 
@@ -350,10 +350,10 @@ do_splice_direct
 Description
 -----------
 
-For use by \ :c:func:`do_sendfile`\ . splice can easily emulate sendfile, but
-doing it in the application would incur an extra system call
-(splice in + splice out, as compared to just \ :c:func:`sendfile`\ ). So this helper
-can splice directly through a process-private pipe.
+   For use by \ :c:func:`do_sendfile`\ . splice can easily emulate sendfile, but
+   doing it in the application would incur an extra system call
+   (splice in + splice out, as compared to just \ :c:func:`sendfile`\ ). So this helper
+   can splice directly through a process-private pipe.
 
 .. This file was automatic generated / don't edit.
 

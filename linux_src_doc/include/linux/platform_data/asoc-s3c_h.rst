@@ -24,7 +24,7 @@ Definition
         void *dma_capture;
         void *dma_play_sec;
         void *dma_capture_mic;
-        union type;
+        struct samsung_i2s_type type;
     }
 
 .. _`s3c_audio_pdata.members`:

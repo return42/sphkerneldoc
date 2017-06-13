@@ -131,11 +131,11 @@ Return
 of_drm_find_panel
 =================
 
-.. c:function:: struct drm_panel *of_drm_find_panel(struct device_node *np)
+.. c:function:: struct drm_panel *of_drm_find_panel(const struct device_node *np)
 
     look up a panel using a device tree node
 
-    :param struct device_node \*np:
+    :param const struct device_node \*np:
         device tree node of the panel
 
 .. _`of_drm_find_panel.description`:

@@ -51,19 +51,23 @@ lib
     memweight_c
     nlattr_c
     oid_registry_c
+    parman_c
     parser_c
     pci_iomap_c
     percpu-refcount_c
     percpu_ida_c
     plist_c
+    prime_numbers_c
     radix-tree_c
     random32_c
+    refcount_c
     rhashtable_c
     scatterlist_c
     seq_buf_c
     sg_pool_c
     sg_split_c
     sha1_c
+    siphash_c
     sort_c
     stackdepot_c
     string_c

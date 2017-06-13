@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mtd/nand.h
 
+.. _`nand_id`:
+
+struct nand_id
+==============
+
+.. c:type:: struct nand_id
+
+    NAND id structure
+
+.. _`nand_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_id {
+        u8 data[8];
+        int len;
+    }
+
+.. _`nand_id.members`:
+
+Members
+-------
+
+data
+    buffer containing the id bytes. Currently 8 bytes large, but can
+    be extended if required.
+
+len
+    ID length.
+
 .. _`nand_hw_control`:
 
 struct nand_hw_control
@@ -158,7 +191,7 @@ write_page_raw
 read_page
     function to read a page according to the ECC generator
     requirements; returns maximum number of bitflips corrected in
-    any single ECC step, 0 if bitflips uncorrectable, -EIO hw error
+    any single ECC step, -EIO hw error
 
 read_subpage
     function to read parts of the page covered by ECC;
@@ -317,7 +350,7 @@ tCEA_max
     CE# access time
 
 tCEH_min
-    *undescribed*
+    CE# high hold time
 
 tCH_min
     CE# hold time
@@ -494,6 +527,44 @@ nand_get_sdr_timings
     :param const struct nand_data_interface \*conf:
         The data interface
 
+.. _`nand_manufacturer_ops`:
+
+struct nand_manufacturer_ops
+============================
+
+.. c:type:: struct nand_manufacturer_ops
+
+    NAND Manufacturer operations
+
+.. _`nand_manufacturer_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_manufacturer_ops {
+        void (*detect)(struct nand_chip *chip);
+        int (*init)(struct nand_chip *chip);
+        void (*cleanup)(struct nand_chip *chip);
+    }
+
+.. _`nand_manufacturer_ops.members`:
+
+Members
+-------
+
+detect
+    detect the NAND memory organization and capabilities
+
+init
+    initialize all vendor specific fields (like the ->read_retry()
+    implementation) if any.
+
+cleanup
+    the ->init() function may have allocated resources, ->cleanup()
+    is here to let vendor specific code release those resources.
+
 .. _`nand_chip`:
 
 struct nand_chip
@@ -529,7 +600,6 @@ Definition
         int (*erase)(struct mtd_info *mtd, int page);
         int (*scan_bbt)(struct mtd_info *mtd);
         int (*errstat)(struct mtd_info *mtd, struct nand_chip *this, int state,int status, int page);
-        int (*write_page)(struct mtd_info *mtd, struct nand_chip *chip,uint32_t offset, int data_len, const uint8_t *buf,int oob_required, int page, int cached, int raw);
         int (*onfi_set_features)(struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
         int (*onfi_get_features)(struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
         int (*setup_read_retry)(struct mtd_info *mtd, int retry_mode);
@@ -553,22 +623,10 @@ Definition
         int onfi_timing_mode_default;
         int badblockpos;
         int badblockbits;
+        struct nand_id id;
         int onfi_version;
         int jedec_version;
-        union {unnamed_union};
-        struct nand_data_interface *data_interface;
-        int read_retries;
-        flstate_t state;
-        uint8_t *oob_poi;
-        struct nand_hw_control *controller;
-        struct nand_ecc_ctrl ecc;
-        struct nand_buffers *buffers;
-        struct nand_hw_control hwcontrol;
-        uint8_t *bbt;
-        struct nand_bbt_descr *bbt_td;
-        struct nand_bbt_descr *bbt_md;
-        struct nand_bbt_descr *badblock_pattern;
-        void *priv;
+        union manufacturer;
     }
 
 .. _`nand_chip.members`:
@@ -640,9 +698,6 @@ errstat
     [OPTIONAL] hardware specific function to perform
     additional error status checks (determine if errors are
     correctable).
-
-write_page
-    [REPLACEABLE] High-level page write function
 
 onfi_set_features
     [REPLACEABLE] set the features for ONFI nand
@@ -732,6 +787,9 @@ badblockbits
     bad block marker position; i.e., BBM == 11110111b is
     not bad when badblockbits == 7
 
+id
+    [INTERN] holds NAND ID
+
 onfi_version
     [INTERN] holds the chip ONFI version (BCD encoded),
     non 0 if ONFI supported.
@@ -740,53 +798,8 @@ jedec_version
     [INTERN] holds the chip JEDEC version (BCD encoded),
     non 0 if JEDEC supported.
 
-{unnamed_union}
-    anonymous
-
-
-data_interface
-    *undescribed*
-
-read_retries
-    [INTERN] the number of read retry modes supported
-
-state
-    [INTERN] the current state of the NAND device
-
-oob_poi
-    "poison value buffer," used for laying out OOB data
-    before writing
-
-controller
-    [REPLACEABLE] a pointer to a hardware controller
-    structure which is shared among multiple independent
-    devices.
-
-ecc
-    [BOARDSPECIFIC] ECC control structure
-
-buffers
-    buffer structure for read/write
-
-hwcontrol
-    platform-specific hardware control structure
-
-bbt
-    [INTERN] bad block table pointer
-
-bbt_td
-    [REPLACEABLE] bad block table descriptor for flash
-    lookup.
-
-bbt_md
-    [REPLACEABLE] bad block table mirror descriptor
-
-badblock_pattern
-    [REPLACEABLE] bad block scan pattern used for initial
-    bad block scan.
-
-priv
-    [OPTIONAL] pointer to private chip data
+manufacturer
+    [INTERN] Contains manufacturer information
 
 .. _`nand_flash_dev`:
 
@@ -836,28 +849,29 @@ onfi_timing_mode_default
     reset. Should be deduced from timings described
     in the datasheet.
 
-.. _`nand_manufacturers`:
+.. _`nand_manufacturer`:
 
-struct nand_manufacturers
-=========================
+struct nand_manufacturer
+========================
 
-.. c:type:: struct nand_manufacturers
+.. c:type:: struct nand_manufacturer
 
-    NAND Flash Manufacturer ID Structure
+    NAND Flash Manufacturer structure
 
-.. _`nand_manufacturers.definition`:
+.. _`nand_manufacturer.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct nand_manufacturers {
+    struct nand_manufacturer {
         int id;
         char *name;
+        const struct nand_manufacturer_ops *ops;
     }
 
-.. _`nand_manufacturers.members`:
+.. _`nand_manufacturer.members`:
 
 Members
 -------
@@ -867,6 +881,9 @@ id
 
 name
     Manufacturer name
+
+ops
+    manufacturer operations
 
 .. _`platform_nand_chip`:
 

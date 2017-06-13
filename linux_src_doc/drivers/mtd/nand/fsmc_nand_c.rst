@@ -20,8 +20,6 @@ Definition
     struct fsmc_nand_data {
         u32 pid;
         struct nand_chip nand;
-        struct mtd_partition *partitions;
-        unsigned int nr_partitions;
         unsigned int bank;
         struct device *dev;
         enum access_mode mode;
@@ -35,7 +33,6 @@ Definition
         void __iomem *cmd_va;
         void __iomem *addr_va;
         void __iomem *regs_va;
-        void (*select_chip)(uint32_t bank, uint32_t busw);
     }
 
 .. _`fsmc_nand_data.members`:
@@ -48,12 +45,6 @@ pid
 
 nand
     Chip related info for a NAND flash.
-
-partitions
-    Partition info for a NAND Flash.
-
-nr_partitions
-    Total number of partition of a NAND flash.
 
 bank
     Bank number for probed device.
@@ -93,9 +84,6 @@ addr_va
 
 regs_va
     FSMC regs base address.
-
-select_chip
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

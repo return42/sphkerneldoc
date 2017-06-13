@@ -20,6 +20,7 @@ pinctrl
     sirf/index
     spear/index
     tegra/index
+    ti/index
     core_c
     core_h
     devicetree_c
@@ -39,3 +40,4 @@ pinctrl
     pinctrl-u300_c
     pinctrl-zynq_c
     pinmux_c
+    pinmux_h

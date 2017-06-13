@@ -215,7 +215,7 @@ reason.
 ixgbe_alloc_q_vector
 ====================
 
-.. c:function:: int ixgbe_alloc_q_vector(struct ixgbe_adapter *adapter, int v_count, int v_idx, int txr_count, int txr_idx, int rxr_count, int rxr_idx)
+.. c:function:: int ixgbe_alloc_q_vector(struct ixgbe_adapter *adapter, int v_count, int v_idx, int txr_count, int txr_idx, int xdp_count, int xdp_idx, int rxr_count, int rxr_idx)
 
     Allocate memory for a single interrupt vector
 
@@ -233,6 +233,12 @@ ixgbe_alloc_q_vector
 
     :param int txr_idx:
         index of first Tx ring to allocate
+
+    :param int xdp_count:
+        total number of XDP rings to allocate
+
+    :param int xdp_idx:
+        index of first XDP ring to allocate
 
     :param int rxr_count:
         total number of Rx rings to allocate

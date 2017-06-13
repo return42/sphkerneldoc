@@ -14,7 +14,6 @@ kernel
     apm_32_c
     crash_dump_32_c
     crash_dump_64_c
-    e820_c
     early-quirks_c
     hpet_c
     i8259_c

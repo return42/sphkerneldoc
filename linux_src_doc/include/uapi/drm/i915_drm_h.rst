@@ -51,5 +51,38 @@ automatically sets this mode when using a buffer as a scanout target.
 Userspace can manually set this mode to avoid a costly stall and clflush in
 the hotpath of drawing the first frame.
 
+.. _`i915_perf_ioctl_enable`:
+
+I915_PERF_IOCTL_ENABLE
+======================
+
+.. c:function::  I915_PERF_IOCTL_ENABLE()
+
+    via I915_PERF_FLAG_DISABLED or was later disabled via I915_PERF_IOCTL_DISABLE.
+
+.. _`i915_perf_ioctl_enable.description`:
+
+Description
+-----------
+
+It is intended to be cheaper to disable and enable a stream than it may be
+to close and re-open a stream with the same configuration.
+
+It's undefined whether any pending data for the stream will be lost.
+
+.. _`i915_perf_ioctl_disable`:
+
+I915_PERF_IOCTL_DISABLE
+=======================
+
+.. c:function::  I915_PERF_IOCTL_DISABLE()
+
+.. _`i915_perf_ioctl_disable.description`:
+
+Description
+-----------
+
+It is an error to try and read a stream that is disabled.
+
 .. This file was automatic generated / don't edit.
 

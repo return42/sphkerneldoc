@@ -38,7 +38,7 @@ sq_to_td
 Description
 -----------
 
-A service_queue can be embeded in either a throtl_grp or throtl_data.
+A service_queue can be embedded in either a throtl_grp or throtl_data.
 Determine the associated throtl_data accordingly and return it.
 
 .. _`throtl_log`:

@@ -36,15 +36,15 @@ blk_trace_shutdown
 blk_add_trace_rq
 ================
 
-.. c:function:: void blk_add_trace_rq(struct request_queue *q, struct request *rq, unsigned int nr_bytes, u32 what)
+.. c:function:: void blk_add_trace_rq(struct request *rq, int error, unsigned int nr_bytes, u32 what)
 
     Add a trace for a request oriented action
 
-    :param struct request_queue \*q:
-        queue the io is for
-
     :param struct request \*rq:
         the source request
+
+    :param int error:
+        return status to log
 
     :param unsigned int nr_bytes:
         number of completed bytes
@@ -57,7 +57,7 @@ blk_add_trace_rq
 Description
 -----------
 
-Records an action against a request. Will log the bio offset + size.
+    Records an action against a request. Will log the bio offset + size.
 
 .. _`blk_add_trace_bio`:
 
@@ -85,7 +85,7 @@ blk_add_trace_bio
 Description
 -----------
 
-Records an action against a bio. Will log the bio offset + size.
+    Records an action against a bio. Will log the bio offset + size.
 
 .. _`blk_add_trace_bio_remap`:
 
@@ -116,8 +116,8 @@ blk_add_trace_bio_remap
 Description
 -----------
 
-Device mapper or raid target sometimes need to split a bio because
-it spans a stripe (or similar). Add a trace for that action.
+    Device mapper or raid target sometimes need to split a bio because
+    it spans a stripe (or similar). Add a trace for that action.
 
 .. _`blk_add_trace_rq_remap`:
 
@@ -148,8 +148,8 @@ blk_add_trace_rq_remap
 Description
 -----------
 
-Device mapper remaps request to other devices.
-Add a trace for that action.
+    Device mapper remaps request to other devices.
+    Add a trace for that action.
 
 .. _`blk_add_driver_data`:
 
@@ -177,7 +177,7 @@ blk_add_driver_data
 Description
 -----------
 
-Some drivers might want to write driver-specific data per request.
+    Some drivers might want to write driver-specific data per request.
 
 .. This file was automatic generated / don't edit.
 

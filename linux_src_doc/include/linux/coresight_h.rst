@@ -271,7 +271,7 @@ Definition
         void *(*alloc_buffer)(struct coresight_device *csdev, int cpu,void **pages, int nr_pages, bool overwrite);
         void (*free_buffer)(void *config);
         int (*set_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
-        unsigned long (*reset_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config, bool *lost);
+        unsigned long (*reset_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
         void (*update_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
     }
 

@@ -19,6 +19,14 @@ drm_pci_alloc
     :param size_t align:
         alignment of block
 
+.. _`drm_pci_alloc.description`:
+
+Description
+-----------
+
+FIXME: This is a needless abstraction of the Linux dma-api and should be
+removed.
+
 .. _`drm_pci_alloc.return`:
 
 Return
@@ -41,6 +49,14 @@ drm_pci_free
 
     :param drm_dma_handle_t \*dmah:
         handle to memory block
+
+.. _`drm_pci_free.description`:
+
+Description
+-----------
+
+FIXME: This is a needless abstraction of the Linux dma-api and should be
+removed.
 
 .. _`drm_irq_by_busid`:
 
@@ -109,7 +125,7 @@ NOTE
 ----
 
 This function is deprecated, please use \ :c:func:`drm_dev_alloc`\  and
-\ :c:func:`drm_dev_register`\  instead and remove your ->load() callback.
+\ :c:func:`drm_dev_register`\  instead and remove your \ :c:type:`drm_driver.load <drm_driver>`\  callback.
 
 .. _`drm_get_pci_dev.return`:
 

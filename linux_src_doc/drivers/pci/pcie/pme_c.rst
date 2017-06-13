@@ -174,6 +174,18 @@ pcie_pme_resume
     :param struct pcie_device \*srv:
         *undescribed*
 
+.. _`pcie_pme_remove`:
+
+pcie_pme_remove
+===============
+
+.. c:function:: void pcie_pme_remove(struct pcie_device *srv)
+
+    Prepare PCIe PME service device for removal. \ ``srv``\  - PCIe service device to remove.
+
+    :param struct pcie_device \*srv:
+        *undescribed*
+
 .. _`pcie_pme_service_init`:
 
 pcie_pme_service_init

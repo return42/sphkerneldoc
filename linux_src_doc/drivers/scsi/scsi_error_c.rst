@@ -51,27 +51,38 @@ Description
 
 We only need to abort commands after a command timeout
 
+.. _`scsi_eh_reset`:
+
+scsi_eh_reset
+=============
+
+.. c:function:: void scsi_eh_reset(struct scsi_cmnd *scmd)
+
+    call into ->eh_action to reset internal counters
+
+    :param struct scsi_cmnd \*scmd:
+        scmd to run eh on.
+
+.. _`scsi_eh_reset.description`:
+
+Description
+-----------
+
+The scsi driver might be carrying internal state about the
+devices, so we need to call into the driver to reset the
+internal state once the error handler is started.
+
 .. _`scsi_eh_scmd_add`:
 
 scsi_eh_scmd_add
 ================
 
-.. c:function:: int scsi_eh_scmd_add(struct scsi_cmnd *scmd, int eh_flag)
+.. c:function:: void scsi_eh_scmd_add(struct scsi_cmnd *scmd)
 
     add scsi cmd to error handling.
 
     :param struct scsi_cmnd \*scmd:
         scmd to run eh on.
-
-    :param int eh_flag:
-        optional SCSI_EH flag.
-
-.. _`scsi_eh_scmd_add.return-value`:
-
-Return value
-------------
-
-0 on failure.
 
 .. _`scsi_times_out`:
 
@@ -90,10 +101,10 @@ scsi_times_out
 Notes
 -----
 
-We do not need to lock this.  There is the potential for a race
-only in that the normal completion handling might run, but if the
-normal completion function determines that the timer has already
-fired, then it mustn't do anything.
+    We do not need to lock this.  There is the potential for a race
+    only in that the normal completion handling might run, but if the
+    normal completion function determines that the timer has already
+    fired, then it mustn't do anything.
 
 .. _`scsi_block_when_processing_errors`:
 
@@ -112,15 +123,15 @@ scsi_block_when_processing_errors
 Description
 -----------
 
-We block until the host is out of error recovery, and then check to
-see whether the host or the device is offline.
+    We block until the host is out of error recovery, and then check to
+    see whether the host or the device is offline.
 
 .. _`scsi_block_when_processing_errors.return-value`:
 
 Return value
 ------------
 
-0 when dev was taken offline by error recovery. 1 OK to proceed.
+    0 when dev was taken offline by error recovery. 1 OK to proceed.
 
 .. _`scsi_eh_prt_fail_stats`:
 
@@ -169,15 +180,15 @@ scsi_check_sense
 Return value
 ------------
 
-SUCCESS or FAILED or NEEDS_RETRY or ADD_TO_MLQUEUE
+     SUCCESS or FAILED or NEEDS_RETRY or ADD_TO_MLQUEUE
 
 .. _`scsi_check_sense.notes`:
 
 Notes
 -----
 
-When a deferred error is detected the current command has
-not been executed and needs retrying.
+     When a deferred error is detected the current command has
+     not been executed and needs retrying.
 
 .. _`scsi_eh_completed_normally`:
 
@@ -196,10 +207,10 @@ scsi_eh_completed_normally
 Notes
 -----
 
-This is \*only\* called when we are examining the status of commands
-queued during error recovery.  the main difference here is that we
-don't allow for the possibility of retries here, and we are a lot
-more restrictive about what we consider acceptable.
+   This is *only* called when we are examining the status of commands
+   queued during error recovery.  the main difference here is that we
+   don't allow for the possibility of retries here, and we are a lot
+   more restrictive about what we consider acceptable.
 
 .. _`scsi_eh_done`:
 
@@ -254,10 +265,10 @@ scsi_try_target_reset
 Notes
 -----
 
-There is no timeout for this operation.  if this operation is
-unreliable for a given host, then the host itself needs to put a
-timer on it, and set the host back to a consistent state prior to
-returning.
+   There is no timeout for this operation.  if this operation is
+   unreliable for a given host, then the host itself needs to put a
+   timer on it, and set the host back to a consistent state prior to
+   returning.
 
 .. _`scsi_try_bus_device_reset`:
 
@@ -276,10 +287,10 @@ scsi_try_bus_device_reset
 Notes
 -----
 
-There is no timeout for this operation.  if this operation is
-unreliable for a given host, then the host itself needs to put a
-timer on it, and set the host back to a consistent state prior to
-returning.
+   There is no timeout for this operation.  if this operation is
+   unreliable for a given host, then the host itself needs to put a
+   timer on it, and set the host back to a consistent state prior to
+   returning.
 
 .. _`scsi_try_to_abort_cmd`:
 
@@ -301,20 +312,20 @@ scsi_try_to_abort_cmd
 Return value
 ------------
 
-SUCCESS, FAILED, or FAST_IO_FAIL
+     SUCCESS, FAILED, or FAST_IO_FAIL
 
 .. _`scsi_try_to_abort_cmd.notes`:
 
 Notes
 -----
 
-SUCCESS does not necessarily indicate that the command
-has been aborted; it only indicates that the LLDDs
-has cleared all references to that command.
-LLDDs should return FAILED only if an abort was required
-but could not be executed. LLDDs should return FAST_IO_FAIL
-if the device is temporarily unavailable (eg due to a
-link down on FibreChannel)
+   SUCCESS does not necessarily indicate that the command
+   has been aborted; it only indicates that the LLDDs
+   has cleared all references to that command.
+   LLDDs should return FAILED only if an abort was required
+   but could not be executed. LLDDs should return FAST_IO_FAIL
+   if the device is temporarily unavailable (eg due to a
+   link down on FibreChannel)
 
 .. _`scsi_eh_prep_cmnd`:
 
@@ -410,7 +421,7 @@ as part of the error recovery process. See also \ :c:func:`scsi_eh_prep_cmnd`\  
 Return value
 ------------
 
-SUCCESS or FAILED or NEEDS_RETRY
+   SUCCESS or FAILED or NEEDS_RETRY
 
 .. _`scsi_request_sense`:
 
@@ -429,9 +440,9 @@ scsi_request_sense
 Notes
 -----
 
-Some hosts automatically obtain this information, others require
-that we obtain it on our own. This function will \*not\* return until
-the command either times out, or it completes.
+   Some hosts automatically obtain this information, others require
+   that we obtain it on our own. This function will *not* return until
+   the command either times out, or it completes.
 
 .. _`scsi_eh_finish_cmd`:
 
@@ -453,11 +464,11 @@ scsi_eh_finish_cmd
 Notes
 -----
 
-We don't want to use the normal command completion while we are are
-still handling errors - it may cause other commands to be queued,
-and that would disturb what we are doing.  Thus we really want to
-keep a list of pending commands for final completion, and once we
-are ready to leave error handling we handle completion for real.
+   We don't want to use the normal command completion while we are are
+   still handling errors - it may cause other commands to be queued,
+   and that would disturb what we are doing.  Thus we really want to
+   keep a list of pending commands for final completion, and once we
+   are ready to leave error handling we handle completion for real.
 
 .. _`scsi_eh_get_sense`:
 
@@ -479,28 +490,23 @@ scsi_eh_get_sense
 Description
 -----------
 
-See if we need to request sense information.  if so, then get it
-now, so we have a better idea of what to do.
+   See if we need to request sense information.  if so, then get it
+   now, so we have a better idea of what to do.
 
 .. _`scsi_eh_get_sense.notes`:
 
 Notes
 -----
 
-This has the unfortunate side effect that if a shost adapter does
-not automatically request sense information, we end up shutting
-it down before we request it.
+   This has the unfortunate side effect that if a shost adapter does
+   not automatically request sense information, we end up shutting
+   it down before we request it.
 
-All drivers should request sense information internally these days,
-so for now all I have to say is tough noogies if you end up in here.
+   All drivers should request sense information internally these days,
+   so for now all I have to say is tough noogies if you end up in here.
 
-.. _`scsi_eh_get_sense.xxx`:
-
-XXX
----
-
-Long term this code should go away, but that needs an audit of
-all LLDDs first.
+   XXX: Long term this code should go away, but that needs an audit of
+        all LLDDs first.
 
 .. _`scsi_eh_tur`:
 
@@ -519,7 +525,7 @@ scsi_eh_tur
 Return value
 ------------
 
-0 - Device is ready. 1 - Device NOT ready.
+   0 - Device is ready. 1 - Device NOT ready.
 
 .. _`scsi_eh_test_devices`:
 
@@ -547,36 +553,10 @@ scsi_eh_test_devices
 Decription
 ----------
 
-Tests if devices are in a working state.  Commands to devices now in
-a working state are sent to the done_q while commands to devices which
-are still failing to respond are returned to the work_q for more
-processing.
-
-.. _`scsi_eh_abort_cmds`:
-
-scsi_eh_abort_cmds
-==================
-
-.. c:function:: int scsi_eh_abort_cmds(struct list_head *work_q, struct list_head *done_q)
-
-    abort pending commands.
-
-    :param struct list_head \*work_q:
-        &list_head for pending commands.
-
-    :param struct list_head \*done_q:
-        &list_head for processed commands.
-
-.. _`scsi_eh_abort_cmds.decription`:
-
-Decription
-----------
-
-Try and see whether or not it makes sense to try and abort the
-running command.  This only works out to be the case if we have one
-command that has timed out.  If the command simply failed, it makes
-no sense to try and abort the command, since as far as the shost
-adapter is concerned, it isn't running.
+   Tests if devices are in a working state.  Commands to devices now in
+   a working state are sent to the done_q while commands to devices which
+   are still failing to respond are returned to the work_q for more
+   processing.
 
 .. _`scsi_eh_try_stu`:
 
@@ -595,7 +575,7 @@ scsi_eh_try_stu
 Return value
 ------------
 
-0 - Device is ready. 1 - Device NOT ready.
+   0 - Device is ready. 1 - Device NOT ready.
 
 .. _`scsi_eh_bus_device_reset`:
 
@@ -620,10 +600,10 @@ scsi_eh_bus_device_reset
 Notes
 -----
 
-Try a bus device reset.  Still, look to see whether we have multiple
-devices that are jammed or not - if we have multiple devices, it
-makes no sense to try bus_device_reset - we really would need to try
-a bus_reset instead.
+   Try a bus device reset.  Still, look to see whether we have multiple
+   devices that are jammed or not - if we have multiple devices, it
+   makes no sense to try bus_device_reset - we really would need to try
+   a bus_reset instead.
 
 .. _`scsi_eh_target_reset`:
 
@@ -648,7 +628,7 @@ scsi_eh_target_reset
 Notes
 -----
 
-Try a target reset.
+   Try a target reset.
 
 .. _`scsi_eh_bus_reset`:
 
@@ -730,14 +710,14 @@ scsi_decide_disposition
 Notes
 -----
 
-This is \*only\* called when we are examining the status after sending
-out the actual data command.  any commands that are queued for error
-recovery (e.g. test_unit_ready) do \*not\* come through here.
+   This is *only* called when we are examining the status after sending
+   out the actual data command.  any commands that are queued for error
+   recovery (e.g. test_unit_ready) do *not* come through here.
 
-When this routine returns failed, it means the error handler thread
-is woken.  In cases where the error code indicates an error that
-doesn't require the error handler read (i.e. we don't need to
-abort/reset), this function should return SUCCESS.
+   When this routine returns failed, it means the error handler thread
+   is woken.  In cases where the error code indicates an error that
+   doesn't require the error handler read (i.e. we don't need to
+   abort/reset), this function should return SUCCESS.
 
 .. _`scsi_eh_lock_door`:
 
@@ -756,15 +736,15 @@ scsi_eh_lock_door
 Locking
 -------
 
-We must be called from process context.
+     We must be called from process context.
 
 .. _`scsi_eh_lock_door.notes`:
 
 Notes
 -----
 
-We queue up an asynchronous "ALLOW MEDIUM REMOVAL" request on the
-head of the devices request queue, and continue.
+     We queue up an asynchronous "ALLOW MEDIUM REMOVAL" request on the
+     head of the devices request queue, and continue.
 
 .. _`scsi_restart_operations`:
 
@@ -783,8 +763,8 @@ scsi_restart_operations
 Notes
 -----
 
-When we entered the error handler, we blocked all further i/o to
-this device.  we need to 'reverse' this process.
+   When we entered the error handler, we blocked all further i/o to
+   this device.  we need to 'reverse' this process.
 
 .. _`scsi_eh_ready_devs`:
 
@@ -833,23 +813,23 @@ scsi_unjam_host
 Notes
 -----
 
-When we come in here, we \*know\* that all commands on the bus have
-either completed, failed or timed out.  we also know that no further
-commands are being sent to the host, so things are relatively quiet
-and we have freedom to fiddle with things as we wish.
+   When we come in here, we *know* that all commands on the bus have
+   either completed, failed or timed out.  we also know that no further
+   commands are being sent to the host, so things are relatively quiet
+   and we have freedom to fiddle with things as we wish.
 
-This is only the \*default\* implementation.  it is possible for
-individual drivers to supply their own version of this function, and
-if the maintainer wishes to do this, it is strongly suggested that
-this function be taken as a template and modified.  this function
-was designed to correctly handle problems for about 95% of the
-different cases out there, and it should always provide at least a
-reasonable amount of error recovery.
+   This is only the *default* implementation.  it is possible for
+   individual drivers to supply their own version of this function, and
+   if the maintainer wishes to do this, it is strongly suggested that
+   this function be taken as a template and modified.  this function
+   was designed to correctly handle problems for about 95% of the
+   different cases out there, and it should always provide at least a
+   reasonable amount of error recovery.
 
-Any command marked 'failed' or 'timeout' must eventually have
-\ :c:func:`scsi_finish_cmd`\  called for it.  we do all of the retry stuff
-here, so when we restart the host after we return it should have an
-empty queue.
+   Any command marked 'failed' or 'timeout' must eventually have
+   \ :c:func:`scsi_finish_cmd`\  called for it.  we do all of the retry stuff
+   here, so when we restart the host after we return it should have an
+   empty queue.
 
 .. _`scsi_error_handler`:
 
@@ -868,8 +848,8 @@ scsi_error_handler
 Notes
 -----
 
-This is the main error handling loop.  This is run as a kernel thread
-for every SCSI host and handles all error handling activity.
+   This is the main error handling loop.  This is run as a kernel thread
+   for every SCSI host and handles all error handling activity.
 
 .. _`scsi_ioctl_reset`:
 
@@ -891,7 +871,7 @@ scsi_ioctl_reset
 scsi_get_sense_info_fld
 =======================
 
-.. c:function:: int scsi_get_sense_info_fld(const u8 *sense_buffer, int sb_len, u64 *info_out)
+.. c:function:: bool scsi_get_sense_info_fld(const u8 *sense_buffer, int sb_len, u64 *info_out)
 
     get information field from sense data (either fixed or descriptor format)
 
@@ -910,7 +890,7 @@ scsi_get_sense_info_fld
 Return value
 ------------
 
-1 if information field found, 0 if not found.
+     true if information field found, false if not found.
 
 .. This file was automatic generated / don't edit.
 

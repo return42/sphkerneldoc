@@ -80,12 +80,14 @@ lu_object_free
     :param struct lu_object \*o:
         *undescribed*
 
-.. _`lu_site_purge`:
+.. _`lu_site_purge_objects`:
 
-lu_site_purge
-=============
+lu_site_purge_objects
+=====================
 
-.. c:function:: int lu_site_purge(const struct lu_env *env, struct lu_site *s, int nr)
+.. c:function:: int lu_site_purge_objects(const struct lu_env *env, struct lu_site *s, int nr, bool canblock)
+
+    if canblock is false, then don't block awaiting for another instance of \ :c:func:`lu_site_purge`\  to complete
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -94,6 +96,9 @@ lu_site_purge
         *undescribed*
 
     :param int nr:
+        *undescribed*
+
+    :param bool canblock:
         *undescribed*
 
 .. _`lu_cdebug_printer`:

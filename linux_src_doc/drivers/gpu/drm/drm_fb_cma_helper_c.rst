@@ -8,7 +8,7 @@ drm_fb_cma_create_with_funcs
 
 .. c:function:: struct drm_framebuffer *drm_fb_cma_create_with_funcs(struct drm_device *dev, struct drm_file *file_priv, const struct drm_mode_fb_cmd2 *mode_cmd, const struct drm_framebuffer_funcs *funcs)
 
-    helper function for the \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`\  ->fb_create callback function
+    helper function for the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback
 
     :param struct drm_device \*dev:
         DRM device
@@ -28,8 +28,8 @@ Description
 -----------
 
 This can be used to set \ :c:type:`struct drm_framebuffer_funcs <drm_framebuffer_funcs>`\  for drivers that need the
-\ :c:func:`dirty`\  callback. Use \ :c:func:`drm_fb_cma_create`\  if you don't need to change
-\ :c:type:`struct drm_framebuffer_funcs <drm_framebuffer_funcs>`\ .
+\ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  callback. Use \ :c:func:`drm_fb_cma_create`\  if you don't
+need to change \ :c:type:`struct drm_framebuffer_funcs <drm_framebuffer_funcs>`\ .
 
 .. _`drm_fb_cma_create`:
 
@@ -38,7 +38,7 @@ drm_fb_cma_create
 
 .. c:function:: struct drm_framebuffer *drm_fb_cma_create(struct drm_device *dev, struct drm_file *file_priv, const struct drm_mode_fb_cmd2 *mode_cmd)
 
-    &drm_mode_config_funcs ->fb_create callback function
+    &drm_mode_config_funcs.fb_create callback function
 
     :param struct drm_device \*dev:
         DRM device
@@ -56,7 +56,7 @@ Description
 
 If your hardware has special alignment or pitch requirements these should be
 checked before calling this function. Use \ :c:func:`drm_fb_cma_create_with_funcs`\  if
-you need to set \ :c:type:`struct drm_framebuffer_funcs <drm_framebuffer_funcs>`\  ->dirty.
+you need to set \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\ .
 
 .. _`drm_fb_cma_get_gem_obj`:
 
@@ -102,7 +102,7 @@ drm_fb_cma_prepare_fb
 Description
 -----------
 
-This should be put into prepare_fb hook of struct \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  .
+This should be set as the \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\ .prepare_fb hook.
 
 This function checks if the plane FB has an dma-buf attached, extracts
 the exclusive fence and attaches it to plane state for the atomic helper
@@ -130,7 +130,7 @@ drm_fb_cma_debugfs_show
 drm_fbdev_cma_init_with_funcs
 =============================
 
-.. c:function:: struct drm_fbdev_cma *drm_fbdev_cma_init_with_funcs(struct drm_device *dev, unsigned int preferred_bpp, unsigned int num_crtc, unsigned int max_conn_count, const struct drm_fb_helper_funcs *funcs)
+.. c:function:: struct drm_fbdev_cma *drm_fbdev_cma_init_with_funcs(struct drm_device *dev, unsigned int preferred_bpp, unsigned int max_conn_count, const struct drm_framebuffer_funcs *funcs)
 
     Allocate and initializes a drm_fbdev_cma struct
 
@@ -140,14 +140,11 @@ drm_fbdev_cma_init_with_funcs
     :param unsigned int preferred_bpp:
         Preferred bits per pixel for the device
 
-    :param unsigned int num_crtc:
-        Number of CRTCs
-
     :param unsigned int max_conn_count:
         Maximum number of connectors
 
-    :param const struct drm_fb_helper_funcs \*funcs:
-        fb helper functions, in particular \ :c:func:`fb_probe`\ 
+    :param const struct drm_framebuffer_funcs \*funcs:
+        fb helper functions, in particular a custom \ :c:func:`dirty`\  callback
 
 .. _`drm_fbdev_cma_init_with_funcs.description`:
 
@@ -161,7 +158,7 @@ Returns a newly allocated drm_fbdev_cma struct or a ERR_PTR.
 drm_fbdev_cma_init
 ==================
 
-.. c:function:: struct drm_fbdev_cma *drm_fbdev_cma_init(struct drm_device *dev, unsigned int preferred_bpp, unsigned int num_crtc, unsigned int max_conn_count)
+.. c:function:: struct drm_fbdev_cma *drm_fbdev_cma_init(struct drm_device *dev, unsigned int preferred_bpp, unsigned int max_conn_count)
 
     Allocate and initializes a drm_fbdev_cma struct
 
@@ -170,9 +167,6 @@ drm_fbdev_cma_init
 
     :param unsigned int preferred_bpp:
         Preferred bits per pixel for the device
-
-    :param unsigned int num_crtc:
-        Number of CRTCs
 
     :param unsigned int max_conn_count:
         Maximum number of connectors
@@ -213,7 +207,7 @@ drm_fbdev_cma_restore_mode
 Description
 -----------
 
-This function is usually called from the DRM drivers lastclose callback.
+This function is usually called from the \ :c:type:`drm_driver.lastclose <drm_driver>`\  callback.
 
 .. _`drm_fbdev_cma_hotplug_event`:
 
@@ -232,7 +226,7 @@ drm_fbdev_cma_hotplug_event
 Description
 -----------
 
-This function is usually called from the DRM drivers output_poll_changed
+This function is usually called from the \ :c:type:`drm_mode_config.output_poll_changed <drm_mode_config>`\ 
 callback.
 
 .. _`drm_fbdev_cma_set_suspend`:
@@ -251,6 +245,29 @@ drm_fbdev_cma_set_suspend
         desired state, zero to resume, non-zero to suspend
 
 .. _`drm_fbdev_cma_set_suspend.description`:
+
+Description
+-----------
+
+Calls drm_fb_helper_set_suspend, which is a wrapper around
+fb_set_suspend implemented by fbdev core.
+
+.. _`drm_fbdev_cma_set_suspend_unlocked`:
+
+drm_fbdev_cma_set_suspend_unlocked
+==================================
+
+.. c:function:: void drm_fbdev_cma_set_suspend_unlocked(struct drm_fbdev_cma *fbdev_cma, int state)
+
+    wrapper around drm_fb_helper_set_suspend_unlocked
+
+    :param struct drm_fbdev_cma \*fbdev_cma:
+        The drm_fbdev_cma struct, may be NULL
+
+    :param int state:
+        desired state, zero to resume, non-zero to suspend
+
+.. _`drm_fbdev_cma_set_suspend_unlocked.description`:
 
 Description
 -----------

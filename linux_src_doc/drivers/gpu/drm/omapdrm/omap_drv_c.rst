@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/omapdrm/omap_drv.c
 
-.. _`dev_load`:
-
-dev_load
-========
-
-.. c:function:: int dev_load(struct drm_device *dev, unsigned long flags)
-
-    setup chip and create an initial config
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned long flags:
-        startup flags
-
-.. _`dev_load.the-driver-load-routine-has-to-do-several-things`:
-
-The driver load routine has to do several things
-------------------------------------------------
-
-- initialize the memory manager
-- allocate initial config memory
-- setup the DRM framebuffer with the allocated memory
-
 .. _`dev_lastclose`:
 
 dev_lastclose

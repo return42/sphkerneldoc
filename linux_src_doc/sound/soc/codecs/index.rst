@@ -11,6 +11,8 @@ codecs
     cs4270_c
     da7210_c
     max98090_c
+    nau8540_c
+    nau8824_c
     nau8825_c
     rl6231_c
     rt5514-spi_c
@@ -35,6 +37,7 @@ codecs
     ts3a227e_c
     wm8350_c
     wm8903_c
+    wm8960_c
     wm8962_c
     wm8994_c
     wm8996_c

@@ -8,7 +8,7 @@ SIG_DESC_BIT
 
 .. c:function::  SIG_DESC_BIT( reg,  idx,  val)
 
-    hand macro for describing a configuration enabled by the state of one bit. The disable value is derived.
+    hand macro for describing an SCU descriptor enabled by the state of one bit. The disable value is derived.
 
     :param  reg:
         The signal's associated register, offset from base
@@ -26,13 +26,13 @@ SIG_DESC_SET
 
 .. c:function::  SIG_DESC_SET( reg,  idx)
 
-    hand macro describing a configuration enabled with a set bit.
+    hand macro expanding to an SCU descriptor enabled by a set bit.
 
     :param  reg:
-        The configuration's associated register, offset from base
+        The register, offset from base
 
     :param  idx:
-        The configuration's bit index in the register
+        The bit index in the register
 
 .. _`sig_expr_decl`:
 

@@ -27,7 +27,7 @@ devm_request_threaded_irq
         Interrupt type flags
 
     :param const char \*devname:
-        An ascii name for the claiming device
+        An ascii name for the claiming device, dev_name(dev) if NULL
 
     :param void \*dev_id:
         A cookie passed back to the handler function
@@ -67,7 +67,7 @@ devm_request_any_context_irq
         Interrupt type flags
 
     :param const char \*devname:
-        An ascii name for the claiming device
+        An ascii name for the claiming device, dev_name(dev) if NULL
 
     :param void \*dev_id:
         A cookie passed back to the handler function
@@ -112,6 +112,52 @@ Except for the extra \ ``dev``\  argument, this function takes the
 same arguments and performs the same function as \ :c:func:`free_irq`\ .
 This function instead of \ :c:func:`free_irq`\  should be used to manually
 free IRQs allocated with \ :c:func:`devm_request_irq`\ .
+
+.. _`__devm_irq_alloc_descs`:
+
+__devm_irq_alloc_descs
+======================
+
+.. c:function:: int __devm_irq_alloc_descs(struct device *dev, int irq, unsigned int from, unsigned int cnt, int node, struct module *owner, const struct cpumask *affinity)
+
+    Allocate and initialize a range of irq descriptors for a managed device
+
+    :param struct device \*dev:
+        Device to allocate the descriptors for
+
+    :param int irq:
+        Allocate for specific irq number if irq >= 0
+
+    :param unsigned int from:
+        Start the search from this irq number
+
+    :param unsigned int cnt:
+        Number of consecutive irqs to allocate
+
+    :param int node:
+        Preferred node on which the irq descriptor should be allocated
+
+    :param struct module \*owner:
+        Owning module (can be NULL)
+
+    :param const struct cpumask \*affinity:
+        Optional pointer to an affinity mask array of size \ ``cnt``\ 
+        which hints where the irq descriptors should be allocated
+        and which default affinities to use
+
+.. _`__devm_irq_alloc_descs.description`:
+
+Description
+-----------
+
+Returns the first irq number or error code.
+
+.. _`__devm_irq_alloc_descs.note`:
+
+Note
+----
+
+Use the provided wrappers (devm_irq_alloc_desc\*) for simplicity.
 
 .. This file was automatic generated / don't edit.
 

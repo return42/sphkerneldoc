@@ -1,42 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/gpio/driver.h
 
-.. _`single_ended_mode`:
-
-enum single_ended_mode
-======================
-
-.. c:type:: enum single_ended_mode
-
-    mode for single ended operation
-
-.. _`single_ended_mode.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum single_ended_mode {
-        LINE_MODE_PUSH_PULL,
-        LINE_MODE_OPEN_DRAIN,
-        LINE_MODE_OPEN_SOURCE
-    };
-
-.. _`single_ended_mode.constants`:
-
-Constants
----------
-
-LINE_MODE_PUSH_PULL
-    normal mode for a GPIO line, drive actively high/low
-
-LINE_MODE_OPEN_DRAIN
-    set line to be open drain
-
-LINE_MODE_OPEN_SOURCE
-    set line to be open source
-
 .. _`gpio_chip`:
 
 struct gpio_chip
@@ -66,8 +30,7 @@ Definition
         int (*get)(struct gpio_chip *chip,unsigned offset);
         void (*set)(struct gpio_chip *chip,unsigned offset, int value);
         void (*set_multiple)(struct gpio_chip *chip,unsigned long *mask,unsigned long *bits);
-        int (*set_debounce)(struct gpio_chip *chip,unsigned offset,unsigned debounce);
-        int (*set_single_ended)(struct gpio_chip *chip,unsigned offset,enum single_ended_mode mode);
+        int (*set_config)(struct gpio_chip *chip,unsigned offset,unsigned long config);
         int (*to_irq)(struct gpio_chip *chip,unsigned offset);
         void (*dbg_show)(struct seq_file *s,struct gpio_chip *chip);
         int base;
@@ -93,7 +56,7 @@ Definition
         unsigned int irq_base;
         irq_flow_handler_t irq_handler;
         unsigned int irq_default_type;
-        int irq_chained_parent;
+        unsigned int irq_chained_parent;
         bool irq_nested;
         bool irq_need_valid_mask;
         unsigned long *irq_valid_mask;
@@ -151,19 +114,9 @@ set
 set_multiple
     assigns output values for multiple signals defined by "mask"
 
-set_debounce
-    optional hook for setting debounce time for specified gpio in
-    interrupt triggered gpio chips
-
-set_single_ended
-    optional hook for setting a line as open drain, open
-    source, or non-single ended (restore from open drain/source to normal
-    push-pull mode) this should be implemented if the hardware supports
-    open drain or open source settings. The GPIOlib will otherwise try
-    to emulate open drain/source by not actively driving lines high/low
-    if a consumer request this. The driver may return -ENOTSUPP if e.g.
-    it supports just open drain but not open source and is called
-    with LINE_MODE_OPEN_SOURCE as mode argument.
+set_config
+    optional hook for all kinds of settings. Uses the same
+    packed config format as generic pinconf.
 
 to_irq
     optional hook supporting non-static \ :c:func:`gpio_to_irq`\  mappings;

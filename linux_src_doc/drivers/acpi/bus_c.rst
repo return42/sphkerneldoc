@@ -88,6 +88,36 @@ If \ ``dev``\  has an ACPI companion which has ACPI_DT_NAMESPACE_HID in its list
 identifiers and a \_DSD object with the "compatible" property, use that
 property to match against the given list of identifiers.
 
+.. _`acpi_set_modalias`:
+
+acpi_set_modalias
+=================
+
+.. c:function:: void acpi_set_modalias(struct acpi_device *adev, const char *default_id, char *modalias, size_t len)
+
+    Set modalias using "compatible" property or supplied ID
+
+    :param struct acpi_device \*adev:
+        ACPI device object to match
+
+    :param const char \*default_id:
+        ID string to use as default if no compatible string found
+
+    :param char \*modalias:
+        Pointer to buffer that modalias value will be copied into
+
+    :param size_t len:
+        Length of modalias buffer
+
+.. _`acpi_set_modalias.description`:
+
+Description
+-----------
+
+This is a counterpart of \ :c:func:`of_modalias_node`\  for struct acpi_device objects.
+If there is a compatible string for \ ``adev``\ , it will be copied to \ ``modalias``\ 
+with the vendor prefix stripped; otherwise, \ ``default_id``\  will be used.
+
 .. _`acpi_match_device`:
 
 acpi_match_device

@@ -325,11 +325,11 @@ Definition
         struct iwl_trans_pcie *trans_pcie;
         bool need_update;
         bool frozen;
-        u8 active;
         bool ampdu;
-        bool block;
+        int block;
         unsigned long wd_timeout;
         struct sk_buff_head overflow_q;
+        struct iwl_dma_ptr bc_tbl;
         int write_ptr;
         int read_ptr;
         dma_addr_t dma_addr;
@@ -376,9 +376,6 @@ need_update
 frozen
     tx stuck queue timer is frozen
 
-active
-    stores if queue is active
-
 ampdu
     true if this queue is an ampdu queue for an specific RA/TID
 
@@ -390,6 +387,9 @@ wd_timeout
 
 overflow_q
     *undescribed*
+
+bc_tbl
+    byte count table of the queue (relevant only for gen2 transport)
 
 write_ptr
     1-st empty entry (index) host_w
@@ -481,6 +481,81 @@ IWL_SHARED_IRQ_NON_RX
 IWL_SHARED_IRQ_FIRST_RSS
     interrupt vector serves first RSS queue.
 
+.. _`iwl_dram_data`:
+
+struct iwl_dram_data
+====================
+
+.. c:type:: struct iwl_dram_data
+
+
+.. _`iwl_dram_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_dram_data {
+        dma_addr_t physical;
+        void *block;
+        int size;
+    }
+
+.. _`iwl_dram_data.members`:
+
+Members
+-------
+
+physical
+    page phy pointer
+
+block
+    pointer to the allocated block/page
+
+size
+    size of the block/page
+
+.. _`iwl_self_init_dram`:
+
+struct iwl_self_init_dram
+=========================
+
+.. c:type:: struct iwl_self_init_dram
+
+    dram data used by self init process
+
+.. _`iwl_self_init_dram.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_self_init_dram {
+        struct iwl_dram_data *fw;
+        int fw_cnt;
+        struct iwl_dram_data *paging;
+        int paging_cnt;
+    }
+
+.. _`iwl_self_init_dram.members`:
+
+Members
+-------
+
+fw
+    lmac and umac dram data
+
+fw_cnt
+    total number of items in array
+
+paging
+    paging dram data
+
+paging_cnt
+    total number of items in array
+
 .. _`iwl_trans_pcie`:
 
 struct iwl_trans_pcie
@@ -502,6 +577,9 @@ Definition
         struct iwl_rx_mem_buffer rx_pool[RX_POOL_SIZE];
         struct iwl_rx_mem_buffer  *global_table[RX_POOL_SIZE];
         struct iwl_rb_allocator rba;
+        struct iwl_context_info *ctxt_info;
+        dma_addr_t ctxt_info_dma_addr;
+        struct iwl_self_init_dram init_dram;
         struct iwl_trans *trans;
         struct net_device napi_dev;
         struct __percpu iwl_tso_hdr_page *tso_hdr_page;
@@ -517,9 +595,10 @@ Definition
         u32 scd_base_addr;
         struct iwl_dma_ptr scd_bc_tbls;
         struct iwl_dma_ptr kw;
-        struct iwl_txq *txq;
-        unsigned long queue_used[BITS_TO_LONGS(IWL_MAX_HW_QUEUES)];
-        unsigned long queue_stopped[BITS_TO_LONGS(IWL_MAX_HW_QUEUES)];
+        struct iwl_txq *txq_memory;
+        struct iwl_txq  *txq[IWL_MAX_TVQM_QUEUES];
+        unsigned long queue_used[BITS_TO_LONGS(IWL_MAX_TVQM_QUEUES)];
+        unsigned long queue_stopped[BITS_TO_LONGS(IWL_MAX_TVQM_QUEUES)];
         struct pci_dev *pci_dev;
         void __iomem *hw_base;
         bool ucode_write_complete;
@@ -575,6 +654,18 @@ global_table
 rba
     allocator for RX replenishing
 
+ctxt_info
+    context information for FW self init
+
+ctxt_info_dma_addr
+    dma addr of context information
+
+init_dram
+    DRAM data of firmware image (including paging).
+    Context information addresses will be taken from here.
+    This is driver's local copy for keeping track of size and
+    count for allocating and freeing the memory.
+
 trans
     pointer to the generic transport area
 
@@ -620,7 +711,7 @@ scd_bc_tbls
 kw
     keep warm address
 
-txq
+txq_memory
     *undescribed*
 
 pci_dev

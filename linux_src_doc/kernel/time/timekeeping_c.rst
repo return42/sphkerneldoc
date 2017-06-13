@@ -540,18 +540,6 @@ Description
 
 Adds or subtracts an offset value from the current time.
 
-.. _`timekeeping_get_tai_offset`:
-
-timekeeping_get_tai_offset
-==========================
-
-.. c:function:: s32 timekeeping_get_tai_offset( void)
-
-    Returns current TAI offset from UTC
-
-    :param  void:
-        no arguments
-
 .. _`__timekeeping_set_tai_offset`:
 
 __timekeeping_set_tai_offset
@@ -559,22 +547,10 @@ __timekeeping_set_tai_offset
 
 .. c:function:: void __timekeeping_set_tai_offset(struct timekeeper *tk, s32 tai_offset)
 
-    Lock free worker function
+    Sets the TAI offset from UTC and monotonic
 
     :param struct timekeeper \*tk:
         *undescribed*
-
-    :param s32 tai_offset:
-        *undescribed*
-
-.. _`timekeeping_set_tai_offset`:
-
-timekeeping_set_tai_offset
-==========================
-
-.. c:function:: void timekeeping_set_tai_offset(s32 tai_offset)
-
-    Sets the current TAI offset from UTC
 
     :param s32 tai_offset:
         *undescribed*

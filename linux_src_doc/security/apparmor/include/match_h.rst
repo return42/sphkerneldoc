@@ -23,6 +23,32 @@ byte order.
 The dfa begins with a table set header, and is followed by the actual
 tables.
 
+.. _`aa_get_dfa`:
+
+aa_get_dfa
+==========
+
+.. c:function:: struct aa_dfa *aa_get_dfa(struct aa_dfa *dfa)
+
+    increment refcount on dfa \ ``p``\ 
+
+    :param struct aa_dfa \*dfa:
+        dfa  (MAYBE NULL)
+
+.. _`aa_get_dfa.return`:
+
+Return
+------
+
+pointer to \ ``dfa``\  if \ ``dfa``\  is NULL will return NULL
+
+.. _`aa_get_dfa.requires`:
+
+Requires
+--------
+
+@dfa must be held with valid refcount when called
+
 .. _`aa_put_dfa`:
 
 aa_put_dfa

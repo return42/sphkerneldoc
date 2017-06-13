@@ -1,81 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/fsl-mc/include/dprc.h
 
-.. _`dprc_get_icid_from_pool`:
-
-DPRC_GET_ICID_FROM_POOL
-=======================
-
-.. c:function::  DPRC_GET_ICID_FROM_POOL()
-
-    container, in case the ICID is not selected by the user and should be allocated by the DPRC from the pool of ICIDs.
-
-.. _`dprc_get_portal_id_from_pool`:
-
-DPRC_GET_PORTAL_ID_FROM_POOL
-============================
-
-.. c:function::  DPRC_GET_PORTAL_ID_FROM_POOL()
-
-    container, in case the portal ID is not specifically selected by the user and should be allocated by the DPRC from the pool of portal ids.
-
-.. _`dprc_cfg_opt_spawn_allowed`:
-
-DPRC_CFG_OPT_SPAWN_ALLOWED
-==========================
-
-.. c:function::  DPRC_CFG_OPT_SPAWN_ALLOWED()
-
-.. _`dprc_cfg_opt_spawn_allowed.description`:
-
-Description
------------
-
-These options may be selected at container creation by the container creator
-and can be retrieved using \ :c:func:`dprc_get_attributes`\ 
-
-.. _`dprc_cfg`:
-
-struct dprc_cfg
-===============
-
-.. c:type:: struct dprc_cfg
-
-    Container configuration options
-
-.. _`dprc_cfg.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct dprc_cfg {
-        u16 icid;
-        int portal_id;
-        u64 options;
-        char label[16];
-    }
-
-.. _`dprc_cfg.members`:
-
-Members
--------
-
-icid
-    Container's ICID; if set to 'DPRC_GET_ICID_FROM_POOL', a free
-    ICID value is allocated by the DPRC
-
-portal_id
-    Portal ID; if set to 'DPRC_GET_PORTAL_ID_FROM_POOL', a free
-    portal ID is allocated by the DPRC
-
-options
-    Combination of 'DPRC_CFG_OPT_<X>' options
-
-label
-    Object's label
-
 .. _`dprc_irq_cfg`:
 
 struct dprc_irq_cfg
@@ -151,60 +76,6 @@ portal_id
 
 options
     Container's options as set at container's creation
-
-.. _`dprc_res_req`:
-
-struct dprc_res_req
-===================
-
-.. c:type:: struct dprc_res_req
-
-    Resource request descriptor, to be used in assignment or un-assignment of resources and objects.
-
-.. _`dprc_res_req.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct dprc_res_req {
-        char type[16];
-        u32 num;
-        u32 options;
-        int id_base_align;
-    }
-
-.. _`dprc_res_req.members`:
-
-Members
--------
-
-type
-    Resource/object type: Represent as a NULL terminated string.
-    This string may received by using \ :c:func:`dprc_get_pool`\  to get resource
-    type and \ :c:func:`dprc_get_obj`\  to get object type;
-
-num
-    Number of resources
-
-options
-    Request options: combination of DPRC_RES_REQ_OPT\_ options
-
-id_base_align
-    In case of explicit assignment (DPRC_RES_REQ_OPT_EXPLICIT
-    is set at option), this field represents the required base ID
-    for resource allocation; In case of aligned assignment
-    (DPRC_RES_REQ_OPT_ALIGNED is set at option), this field
-    indicates the required alignment for the resource ID(s) -
-    use 0 if there is no alignment or explicit ID requirements
-
-.. _`dprc_res_req.note`:
-
-Note
-----
-
-it is not possible to assign/un-assign DPRC objects
 
 .. _`dprc_obj_flag_no_mem_shareability`:
 
@@ -315,45 +186,6 @@ DPRC_ITER_STATUS_MORE
 DPRC_ITER_STATUS_LAST
     Indicates last iteration
 
-.. _`dprc_res_ids_range_desc`:
-
-struct dprc_res_ids_range_desc
-==============================
-
-.. c:type:: struct dprc_res_ids_range_desc
-
-    Resource ID range descriptor
-
-.. _`dprc_res_ids_range_desc.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct dprc_res_ids_range_desc {
-        int base_id;
-        int last_id;
-        enum dprc_iter_status iter_status;
-    }
-
-.. _`dprc_res_ids_range_desc.members`:
-
-Members
--------
-
-base_id
-    Base resource ID of this range
-
-last_id
-    Last resource ID of this range
-
-iter_status
-    Iteration status - should be set to DPRC_ITER_STATUS_FIRST at
-    first iteration; while the returned marker is DPRC_ITER_STATUS_MORE,
-    additional iterations are needed, until the returned marker is
-    DPRC_ITER_STATUS_LAST
-
 .. _`dprc_region_type`:
 
 enum dprc_region_type
@@ -428,75 +260,6 @@ flags
 
 type
     Portal region type
-
-.. _`dprc_endpoint`:
-
-struct dprc_endpoint
-====================
-
-.. c:type:: struct dprc_endpoint
-
-    Endpoint description for link connect/disconnect operations
-
-.. _`dprc_endpoint.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct dprc_endpoint {
-        char type[16];
-        int id;
-        int if_id;
-    }
-
-.. _`dprc_endpoint.members`:
-
-Members
--------
-
-type
-    Endpoint object type: NULL terminated string
-
-id
-    Endpoint object ID
-
-if_id
-    Interface ID; should be set for endpoints with multiple
-    interfaces ("dpsw", "dpdmux"); for others, always set to 0
-
-.. _`dprc_connection_cfg`:
-
-struct dprc_connection_cfg
-==========================
-
-.. c:type:: struct dprc_connection_cfg
-
-    Connection configuration. Used for virtual connections only
-
-.. _`dprc_connection_cfg.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct dprc_connection_cfg {
-        u32 committed_rate;
-        u32 max_rate;
-    }
-
-.. _`dprc_connection_cfg.members`:
-
-Members
--------
-
-committed_rate
-    Committed rate (Mbits/s)
-
-max_rate
-    Maximum rate (Mbits/s)
 
 .. This file was automatic generated / don't edit.
 

@@ -125,10 +125,10 @@ gpioint
     if \ ``true``\  this GPIO is of type GpioInt otherwise type is GpioIo
 
 polarity
-    *undescribed*
+    interrupt polarity as provided by ACPI
 
 triggering
-    *undescribed*
+    triggering type as provided by ACPI
 
 .. This file was automatic generated / don't edit.
 

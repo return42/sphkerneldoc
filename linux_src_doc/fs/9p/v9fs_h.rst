@@ -82,7 +82,6 @@ Definition
         kuid_t uid;
         struct p9_client *clnt;
         struct list_head slist;
-        struct backing_dev_info bdi;
         struct rw_semaphore rename_sem;
     }
 
@@ -135,9 +134,6 @@ clnt
 
 slist
     reference to list of registered 9p sessions
-
-bdi
-    *undescribed*
 
 rename_sem
     *undescribed*

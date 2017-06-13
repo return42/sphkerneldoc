@@ -6,11 +6,11 @@
 lnet_parse_rc_info
 ==================
 
-.. c:function:: void lnet_parse_rc_info(lnet_rc_data_t *rcd)
+.. c:function:: void lnet_parse_rc_info(struct lnet_rc_data *rcd)
 
     checker pinginfo, record number of down NIs for remote networks on that router.
 
-    :param lnet_rc_data_t \*rcd:
+    :param struct lnet_rc_data \*rcd:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

@@ -30,5 +30,31 @@ Return
 
 On success, a pointer to the device node, \ ``NULL``\  on failure.
 
+.. _`usb_of_get_companion_dev`:
+
+usb_of_get_companion_dev
+========================
+
+.. c:function:: struct device *usb_of_get_companion_dev(struct device *dev)
+
+    Find the companion device
+
+    :param struct device \*dev:
+        the device pointer to find a companion
+
+.. _`usb_of_get_companion_dev.description`:
+
+Description
+-----------
+
+Find the companion device from platform bus.
+
+.. _`usb_of_get_companion_dev.return`:
+
+Return
+------
+
+On success, a pointer to the companion device, \ ``NULL``\  on failure.
+
 .. This file was automatic generated / don't edit.
 

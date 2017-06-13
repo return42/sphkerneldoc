@@ -19,6 +19,7 @@ Definition
 
     enum ath10k_fw_crash_dump_type {
         ATH10K_FW_CRASH_DUMP_REGISTERS,
+        ATH10K_FW_CRASH_DUMP_CE_DATA,
         ATH10K_FW_CRASH_DUMP_MAX
     };
 
@@ -28,6 +29,9 @@ Constants
 ---------
 
 ATH10K_FW_CRASH_DUMP_REGISTERS
+    *undescribed*
+
+ATH10K_FW_CRASH_DUMP_CE_DATA
     *undescribed*
 
 ATH10K_FW_CRASH_DUMP_MAX

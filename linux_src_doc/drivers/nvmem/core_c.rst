@@ -50,7 +50,7 @@ of_nvmem_device_get
     Get nvmem device from a given id
 
     :param struct device_node \*np:
-        *undescribed*
+        Device tree node that uses the nvmem device.
 
     :param const char \*id:
         nvmem name from nvmem-names property.
@@ -73,10 +73,10 @@ nvmem_device_get
     Get nvmem device from a given id
 
     :param struct device \*dev:
-        Device that uses the nvmem device
+        Device that uses the nvmem device.
 
     :param const char \*dev_name:
-        *undescribed*
+        name of the requested nvmem device.
 
 .. _`nvmem_device_get.return`:
 
@@ -96,7 +96,7 @@ devm_nvmem_device_put
     put alredy got nvmem device
 
     :param struct device \*dev:
-        *undescribed*
+        Device that uses the nvmem device.
 
     :param struct nvmem_device \*nvmem:
         pointer to nvmem device allocated by \ :c:func:`devm_nvmem_cell_get`\ ,
@@ -124,10 +124,10 @@ devm_nvmem_device_get
     Get nvmem cell of device form a given id
 
     :param struct device \*dev:
-        Device tree node that uses the nvmem cell
+        Device that requests the nvmem device.
 
     :param const char \*id:
-        nvmem name in nvmems property.
+        name id for the requested nvmem device.
 
 .. _`devm_nvmem_device_get.return`:
 
@@ -148,10 +148,12 @@ of_nvmem_cell_get
     Get a nvmem cell from given device node and cell id
 
     :param struct device_node \*np:
-        *undescribed*
+        Device tree node that uses the nvmem cell.
 
     :param const char \*name:
-        *undescribed*
+        nvmem cell name from nvmem-cell-names property, or NULL
+        for the cell at index 0 (the lone cell with no accompanying
+        nvmem-cell-names property).
 
 .. _`of_nvmem_cell_get.return`:
 
@@ -172,10 +174,10 @@ nvmem_cell_get
     Get nvmem cell of device form a given cell name
 
     :param struct device \*dev:
-        Device tree node that uses the nvmem cell
+        Device that requests the nvmem cell.
 
     :param const char \*cell_id:
-        *undescribed*
+        nvmem cell name to get.
 
 .. _`nvmem_cell_get.return`:
 
@@ -196,10 +198,10 @@ devm_nvmem_cell_get
     Get nvmem cell of device form a given id
 
     :param struct device \*dev:
-        Device tree node that uses the nvmem cell
+        Device that requests the nvmem cell.
 
     :param const char \*id:
-        nvmem id in nvmem-names property.
+        nvmem cell name id to get.
 
 .. _`devm_nvmem_cell_get.return`:
 
@@ -220,10 +222,10 @@ devm_nvmem_cell_put
     Release previously allocated nvmem cell from devm_nvmem_cell_get.
 
     :param struct device \*dev:
-        *undescribed*
+        Device that requests the nvmem cell.
 
     :param struct nvmem_cell \*cell:
-        Previously allocated nvmem cell by \ :c:func:`devm_nvmem_cell_get`\ 
+        Previously allocated nvmem cell by \ :c:func:`devm_nvmem_cell_get`\ .
 
 .. _`nvmem_cell_put`:
 
@@ -235,7 +237,7 @@ nvmem_cell_put
     Release previously allocated nvmem cell.
 
     :param struct nvmem_cell \*cell:
-        Previously allocated nvmem cell by \ :c:func:`nvmem_cell_get`\ 
+        Previously allocated nvmem cell by \ :c:func:`nvmem_cell_get`\ .
 
 .. _`nvmem_cell_read`:
 
@@ -250,15 +252,16 @@ nvmem_cell_read
         nvmem cell to be read.
 
     :param size_t \*len:
-        pointer to length of cell which will be populated on successful read.
+        pointer to length of cell which will be populated on successful read;
+        can be NULL.
 
 .. _`nvmem_cell_read.return`:
 
 Return
 ------
 
-ERR_PTR() on error or a valid pointer to a char \* buffer on success.
-The buffer should be freed by the consumer with a \ :c:func:`kfree`\ .
+ERR_PTR() on error or a valid pointer to a buffer on success. The
+buffer should be freed by the consumer with a \ :c:func:`kfree`\ .
 
 .. _`nvmem_cell_write`:
 
@@ -324,7 +327,7 @@ nvmem_device_cell_write
         nvmem device to be written to.
 
     :param struct nvmem_cell_info \*info:
-        nvmem cell info to be written
+        nvmem cell info to be written.
 
     :param void \*buf:
         buffer to be written to cell.

@@ -6,11 +6,11 @@
 may_commit_transaction
 ======================
 
-.. c:function:: int may_commit_transaction(struct btrfs_root *root, struct btrfs_space_info *space_info, u64 bytes, int force)
+.. c:function:: int may_commit_transaction(struct btrfs_fs_info *fs_info, struct btrfs_space_info *space_info, u64 bytes, int force)
 
     possibly commit the transaction if its ok to \ ``root``\  - the root we're allocating for \ ``bytes``\  - the number of bytes we want to reserve \ ``force``\  - force the commit
 
-    :param struct btrfs_root \*root:
+    :param struct btrfs_fs_info \*fs_info:
         *undescribed*
 
     :param struct btrfs_space_info \*space_info:
@@ -102,11 +102,11 @@ space already.
 drop_outstanding_extent
 =======================
 
-.. c:function:: unsigned drop_outstanding_extent(struct inode *inode, u64 num_bytes)
+.. c:function:: unsigned drop_outstanding_extent(struct btrfs_inode *inode, u64 num_bytes)
 
     drop an outstanding extent
 
-    :param struct inode \*inode:
+    :param struct btrfs_inode \*inode:
         the inode we're dropping the extent for
 
     :param u64 num_bytes:
@@ -127,11 +127,11 @@ BTRFS_I(inode)->lock held.
 calc_csum_metadata_size
 =======================
 
-.. c:function:: u64 calc_csum_metadata_size(struct inode *inode, u64 num_bytes, int reserve)
+.. c:function:: u64 calc_csum_metadata_size(struct btrfs_inode *inode, u64 num_bytes, int reserve)
 
     return the amount of metadata space that must be reserved/freed for the given bytes.
 
-    :param struct inode \*inode:
+    :param struct btrfs_inode \*inode:
         the inode we're manipulating
 
     :param u64 num_bytes:
@@ -161,11 +161,11 @@ This must be called with BTRFS_I(inode)->lock held.
 btrfs_delalloc_release_metadata
 ===============================
 
-.. c:function:: void btrfs_delalloc_release_metadata(struct inode *inode, u64 num_bytes)
+.. c:function:: void btrfs_delalloc_release_metadata(struct btrfs_inode *inode, u64 num_bytes)
 
     release a metadata reservation for an inode
 
-    :param struct inode \*inode:
+    :param struct btrfs_inode \*inode:
         the inode to release the reservation for
 
     :param u64 num_bytes:

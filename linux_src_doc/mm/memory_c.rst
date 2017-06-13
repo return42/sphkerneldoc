@@ -29,7 +29,7 @@ Description
 
 Unmap all pages in the vma list.
 
-Only addresses between \`start' and \`end' will be unmapped.
+Only addresses between `start' and `end' will be unmapped.
 
 The VMA list must be sorted in ascending virtual address order.
 
@@ -43,7 +43,7 @@ drops the lock and schedules.
 zap_page_range
 ==============
 
-.. c:function:: void zap_page_range(struct vm_area_struct *vma, unsigned long start, unsigned long size, struct zap_details *details)
+.. c:function:: void zap_page_range(struct vm_area_struct *vma, unsigned long start, unsigned long size)
 
     remove user pages in a given range
 
@@ -55,9 +55,6 @@ zap_page_range
 
     :param unsigned long size:
         number of bytes to zap
-
-    :param struct zap_details \*details:
-        details of shared cache invalidation
 
 .. _`zap_page_range.description`:
 
@@ -149,7 +146,7 @@ Description
 This allows drivers to insert individual pages they've allocated
 into a user vma.
 
-The page has to be a nice clean \_individual\_ kernel allocation.
+The page has to be a nice clean _individual_ kernel allocation.
 If you allocate a compound page, you need to have marked it as
 such (__GFP_COMP), or manually just split the page up yourself
 (see \ :c:func:`split_page`\ ).
@@ -399,7 +396,7 @@ Description
 This function handles all that is needed to finish a page fault once the
 page to fault in is prepared. It handles locking of PTEs, inserts PTE for
 given page, adds reverse page mapping, handles memcg charges and LRU
-addition. The function returns 0 on success, VM_FAULT\_ code in case of
+addition. The function returns 0 on success, VM_FAULT_ code in case of
 error.
 
 The function expects the page to be locked and on success it consumes a

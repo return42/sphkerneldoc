@@ -250,5 +250,49 @@ of the given device (and, recurrently, their children) that have been
 created from their respective device tree nodes (and only those,
 leaving others - eg. manually created - unharmed).
 
+.. _`devm_of_platform_populate`:
+
+devm_of_platform_populate
+=========================
+
+.. c:function:: int devm_of_platform_populate(struct device *dev)
+
+    Populate platform_devices from device tree data
+
+    :param struct device \*dev:
+        device that requested to populate from device tree data
+
+.. _`devm_of_platform_populate.description`:
+
+Description
+-----------
+
+Similar to \ :c:func:`of_platform_populate`\ , but will automatically call
+\ :c:func:`of_platform_depopulate`\  when the device is unbound from the bus.
+
+Returns 0 on success, < 0 on failure.
+
+.. _`devm_of_platform_depopulate`:
+
+devm_of_platform_depopulate
+===========================
+
+.. c:function:: void devm_of_platform_depopulate(struct device *dev)
+
+    Remove devices populated from device tree
+
+    :param struct device \*dev:
+        device that requested to depopulate from device tree data
+
+.. _`devm_of_platform_depopulate.description`:
+
+Description
+-----------
+
+Complementary to \ :c:func:`devm_of_platform_populate`\ , this function removes children
+of the given device (and, recurrently, their children) that have been
+created from their respective device tree nodes (and only those,
+leaving others - eg. manually created - unharmed).
+
 .. This file was automatic generated / don't edit.
 

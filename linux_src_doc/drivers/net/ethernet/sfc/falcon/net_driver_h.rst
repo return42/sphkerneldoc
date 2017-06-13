@@ -863,8 +863,8 @@ Definition
         void (*remove)(struct ef4_nic *efx);
         int (*reconfigure)(struct ef4_nic *efx);
         bool (*poll)(struct ef4_nic *efx);
-        void (*get_settings)(struct ef4_nic *efx,struct ethtool_cmd *ecmd);
-        int (*set_settings)(struct ef4_nic *efx,struct ethtool_cmd *ecmd);
+        void (*get_link_ksettings)(struct ef4_nic *efx,struct ethtool_link_ksettings *cmd);
+        int (*set_link_ksettings)(struct ef4_nic *efx,const struct ethtool_link_ksettings *cmd);
         void (*set_npage_adv)(struct ef4_nic *efx, u32);
         int (*test_alive)(struct ef4_nic *efx);
         const char *(*test_name)(struct ef4_nic *efx, unsigned int index);
@@ -898,10 +898,10 @@ poll
     Update \ ``link_state``\  and report whether it changed.
     Serialised by the mac_lock.
 
-get_settings
+get_link_ksettings
     Get ethtool settings. Serialised by the mac_lock.
 
-set_settings
+set_link_ksettings
     Set ethtool settings. Serialised by the mac_lock.
 
 set_npage_adv

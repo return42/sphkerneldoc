@@ -44,6 +44,7 @@ Definition
     #define FILL_TRANSFER_BYTE_32 11
     #define FILL_TRANSFER_NUM 16
         u32 fill_pattern;
+        unsigned long long elapsed_time;
     }
 
 .. _`spi_test.members`:
@@ -59,11 +60,10 @@ msg
 
 transfers
     array of \ ``spi_transfers``\  that are part of the
-    resulting spi_message. The first transfer with len == 0
-    signifies the end of the list
+    resulting spi_message.
 
 transfer_count
-    normally computed number of transfers with len > 0
+    number of transfers
 
 run_test
     run a specific spi_test - this allows to override
@@ -81,8 +81,7 @@ expected_return
     test also for error conditions
 
 iterate_len
-    list of length to iterate on (in addition to the
-    explicitly set \ ``spi_transfer``\ .len)
+    list of length to iterate on
 
 iterate_tx_align
     change the alignment of \ ``spi_transfer``\ .tx_buf
@@ -105,6 +104,9 @@ fill_option
 fill_pattern
     fill pattern to apply to the tx_buf
     (used in some of the \ ``fill_options``\ )
+
+elapsed_time
+    elapsed time in nanoseconds
 
 .. This file was automatic generated / don't edit.
 

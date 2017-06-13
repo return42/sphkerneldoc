@@ -352,7 +352,7 @@ p_base.
 ttm_ref_object_add
 ==================
 
-.. c:function:: int ttm_ref_object_add(struct ttm_object_file *tfile, struct ttm_base_object *base, enum ttm_ref_type ref_type, bool *existed)
+.. c:function:: int ttm_ref_object_add(struct ttm_object_file *tfile, struct ttm_base_object *base, enum ttm_ref_type ref_type, bool *existed, bool require_existed)
 
     :param struct ttm_object_file \*tfile:
         A struct ttm_object_file representing the application owning the
@@ -367,6 +367,10 @@ ttm_ref_object_add
     :param bool \*existed:
         Upon completion, indicates that an identical reference object
         already existed, and the refcount was upped on that object instead.
+
+    :param bool require_existed:
+        Fail with -EPERM if an identical ref object didn't
+        already exist.
 
 .. _`ttm_ref_object_add.description`:
 

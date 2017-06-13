@@ -120,7 +120,7 @@ Zero if update appears valid, error code on failure
 drm_primary_helper_update
 =========================
 
-.. c:function:: int drm_primary_helper_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
+.. c:function:: int drm_primary_helper_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h, struct drm_modeset_acquire_ctx *ctx)
 
     Helper for primary plane update
 
@@ -156,6 +156,9 @@ drm_primary_helper_update
 
     :param uint32_t src_h:
         height of source rectangle in \ ``fb``\ 
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        lock acquire context, not used here
 
 .. _`drm_primary_helper_update.description`:
 
@@ -193,12 +196,15 @@ Zero on success, error code on failure
 drm_primary_helper_disable
 ==========================
 
-.. c:function:: int drm_primary_helper_disable(struct drm_plane *plane)
+.. c:function:: int drm_primary_helper_disable(struct drm_plane *plane, struct drm_modeset_acquire_ctx *ctx)
 
     Helper for primary plane disable
 
     :param struct drm_plane \*plane:
         plane to disable
+
+    :param struct drm_modeset_acquire_ctx \*ctx:
+        *undescribed*
 
 .. _`drm_primary_helper_disable.description`:
 
@@ -209,7 +215,8 @@ Provides a default plane disable handler for primary planes.  This is handler
 is called in response to a userspace SetPlane operation on the plane with a
 NULL framebuffer parameter.  It unconditionally fails the disable call with
 -EINVAL the only way to disable the primary plane without driver support is
-to disable the entier CRTC. Which does not match the plane ->disable hook.
+to disable the entire CRTC. Which does not match the plane
+\ :c:type:`drm_plane_funcs.disable_plane <drm_plane_funcs>`\  hook.
 
 Note that some hardware may be able to disable the primary plane without
 disabling the whole CRTC.  Drivers for such hardware should provide their

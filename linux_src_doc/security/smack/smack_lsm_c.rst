@@ -457,6 +457,26 @@ Description
 
 Returns 0 if it gets a blob, -ENOMEM otherwise
 
+.. _`smack_inode_free_rcu`:
+
+smack_inode_free_rcu
+====================
+
+.. c:function:: void smack_inode_free_rcu(struct rcu_head *head)
+
+    Free inode_smack blob from cache
+
+    :param struct rcu_head \*head:
+        the rcu_head for getting inode_smack pointer
+
+.. _`smack_inode_free_rcu.description`:
+
+Description
+-----------
+
+Call back function called from \ :c:func:`call_rcu`\  to free
+the i_security blob pointer in inode
+
 .. _`smack_inode_free_security`:
 
 smack_inode_free_security
@@ -464,7 +484,7 @@ smack_inode_free_security
 
 .. c:function:: void smack_inode_free_security(struct inode *inode)
 
-    free an inode blob
+    free an inode blob using \ :c:func:`call_rcu`\ 
 
     :param struct inode \*inode:
         the inode with a blob
@@ -474,7 +494,7 @@ smack_inode_free_security
 Description
 -----------
 
-Clears the blob pointer in inode
+Clears the blob pointer in inode using RCU
 
 .. _`smack_inode_init_security`:
 
@@ -1464,25 +1484,6 @@ Return 0 if write access is permitted
 
 The secid behavior is an artifact of an SELinux hack
 in the USB code. Someday it may go away.
-
-.. _`smack_task_wait`:
-
-smack_task_wait
-===============
-
-.. c:function:: int smack_task_wait(struct task_struct *p)
-
-    Smack access check for waiting
-
-    :param struct task_struct \*p:
-        task to wait for
-
-.. _`smack_task_wait.description`:
-
-Description
------------
-
-Returns 0
 
 .. _`smack_task_to_inode`:
 
@@ -2475,14 +2476,11 @@ Returns the length of the smack label or an error code
 smack_setprocattr
 =================
 
-.. c:function:: int smack_setprocattr(struct task_struct *p, char *name, void *value, size_t size)
+.. c:function:: int smack_setprocattr(const char *name, void *value, size_t size)
 
     Smack process attribute setting
 
-    :param struct task_struct \*p:
-        the object task
-
-    :param char \*name:
+    :param const char \*name:
         the name of the attribute in /proc/.../attr
 
     :param void \*value:

@@ -84,9 +84,10 @@ disable
     This callback should disable the bridge. It is called right before
     the preceding element in the display pipe is disabled. If the
     preceding element is a bridge this means it's called before that
-    bridge's ->disable() function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>`\  it's called right before the encoder's ->disable(),
-    ->prepare() or ->dpms() hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\ .
+    bridge's \ ``disable``\  vfunc. If the preceding element is a \ :c:type:`struct drm_encoder <drm_encoder>`\ 
+    it's called right before the \ :c:type:`drm_encoder_helper_funcs.disable <drm_encoder_helper_funcs>`\ ,
+    \ :c:type:`drm_encoder_helper_funcs.prepare <drm_encoder_helper_funcs>`\  or \ :c:type:`drm_encoder_helper_funcs.dpms <drm_encoder_helper_funcs>`\ 
+    hook.
 
     The bridge can assume that the display pipe (i.e. clocks and timing
     signals) feeding it is still running when this callback is called.
@@ -95,12 +96,13 @@ disable
 
 post_disable
 
-    This callback should disable the bridge. It is called right after
-    the preceding element in the display pipe is disabled. If the
-    preceding element is a bridge this means it's called after that
-    bridge's ->post_disable() function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>`\  it's called right after the encoder's ->disable(),
-    ->prepare() or ->dpms() hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\ .
+    This callback should disable the bridge. It is called right after the
+    preceding element in the display pipe is disabled. If the preceding
+    element is a bridge this means it's called after that bridge's
+    \ ``post_disable``\  function. If the preceding element is a \ :c:type:`struct drm_encoder <drm_encoder>`\ 
+    it's called right after the encoder's
+    \ :c:type:`drm_encoder_helper_funcs.disable <drm_encoder_helper_funcs>`\ , \ :c:type:`drm_encoder_helper_funcs.prepare <drm_encoder_helper_funcs>`\ 
+    or \ :c:type:`drm_encoder_helper_funcs.dpms <drm_encoder_helper_funcs>`\  hook.
 
     The bridge must assume that the display pipe (i.e. clocks and timing
     singals) feeding it is no longer running when this callback is
@@ -111,18 +113,21 @@ post_disable
 mode_set
 
     This callback should set the given mode on the bridge. It is called
-    after the ->mode_set() callback for the preceding element in the
-    display pipeline has been called already. The display pipe (i.e.
-    clocks and timing signals) is off when this function is called.
+    after the \ ``mode_set``\  callback for the preceding element in the display
+    pipeline has been called already. If the bridge is the first element
+    then this would be \ :c:type:`drm_encoder_helper_funcs.mode_set <drm_encoder_helper_funcs>`\ . The display
+    pipe (i.e.  clocks and timing signals) is off when this function is
+    called.
 
 pre_enable
 
     This callback should enable the bridge. It is called right before
     the preceding element in the display pipe is enabled. If the
     preceding element is a bridge this means it's called before that
-    bridge's ->pre_enable() function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>`\  it's called right before the encoder's ->enable(),
-    ->commit() or ->dpms() hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\ .
+    bridge's \ ``pre_enable``\  function. If the preceding element is a
+    \ :c:type:`struct drm_encoder <drm_encoder>`\  it's called right before the encoder's
+    \ :c:type:`drm_encoder_helper_funcs.enable <drm_encoder_helper_funcs>`\ , \ :c:type:`drm_encoder_helper_funcs.commit <drm_encoder_helper_funcs>`\  or
+    \ :c:type:`drm_encoder_helper_funcs.dpms <drm_encoder_helper_funcs>`\  hook.
 
     The display pipe (i.e. clocks and timing signals) feeding this bridge
     will not yet be running when this callback is called. The bridge must
@@ -136,9 +141,10 @@ enable
     This callback should enable the bridge. It is called right after
     the preceding element in the display pipe is enabled. If the
     preceding element is a bridge this means it's called after that
-    bridge's ->enable() function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>`\  it's called right after the encoder's ->enable(),
-    ->commit() or ->dpms() hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\ .
+    bridge's \ ``enable``\  function. If the preceding element is a
+    \ :c:type:`struct drm_encoder <drm_encoder>`\  it's called right after the encoder's
+    \ :c:type:`drm_encoder_helper_funcs.enable <drm_encoder_helper_funcs>`\ , \ :c:type:`drm_encoder_helper_funcs.commit <drm_encoder_helper_funcs>`\  or
+    \ :c:type:`drm_encoder_helper_funcs.dpms <drm_encoder_helper_funcs>`\  hook.
 
     The bridge can assume that the display pipe (i.e. clocks and timing
     signals) feeding it is running when this callback is called. This

@@ -61,6 +61,7 @@ Definition
         bool queued_in_vb2;
         bool queued_in_v4l2;
         bool lastframe;
+        bool error;
         struct vdec_fb frame_buffer;
     }
 
@@ -91,6 +92,9 @@ queued_in_v4l2
 
 lastframe
     Intput buffer is last buffer - EOS
+
+error
+    An unrecoverable error occurs on this buffer.
 
 frame_buffer
     Decode status, and buffer information of Capture buffer

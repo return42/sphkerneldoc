@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40e/i40e_client.c
 
-.. _`i40e_client_type_to_vsi_type`:
-
-i40e_client_type_to_vsi_type
-============================
-
-.. c:function:: enum i40e_vsi_type i40e_client_type_to_vsi_type(enum i40e_client_type type)
-
-    convert client type to vsi type
-
-    :param enum i40e_client_type type:
-        *undescribed*
-
-.. _`i40e_client_type_to_vsi_type.description`:
-
-Description
------------
-
-returns the related vsi type value
-
 .. _`i40e_client_get_params`:
 
 i40e_client_get_params
@@ -82,31 +63,14 @@ Description
 
 If there is a client to this VSI, call the client
 
-.. _`i40e_notify_client_of_netdev_open`:
-
-i40e_notify_client_of_netdev_open
-=================================
-
-.. c:function:: void i40e_notify_client_of_netdev_open(struct i40e_vsi *vsi)
-
-    call the client open callback
-
-    :param struct i40e_vsi \*vsi:
-        the VSI with netdev opened
-
-.. _`i40e_notify_client_of_netdev_open.description`:
-
-Description
------------
-
-If there is a client to this netdev, call the client with open
-
 .. _`i40e_client_release_qvlist`:
 
 i40e_client_release_qvlist
 ==========================
 
 .. c:function:: void i40e_client_release_qvlist(struct i40e_info *ldev)
+
+    release MSI-X vector mapping for client
 
     :param struct i40e_info \*ldev:
         pointer to L2 context.
@@ -182,7 +146,7 @@ If there is a client attached to this PF, call its VF notification routine
 i40e_vf_client_capable
 ======================
 
-.. c:function:: int i40e_vf_client_capable(struct i40e_pf *pf, u32 vf_id, enum i40e_client_type type)
+.. c:function:: int i40e_vf_client_capable(struct i40e_pf *pf, u32 vf_id)
 
     ask the client if it likes the specified VF
 
@@ -191,9 +155,6 @@ i40e_vf_client_capable
 
     :param u32 vf_id:
         the VF in question
-
-    :param enum i40e_client_type type:
-        *undescribed*
 
 .. _`i40e_vf_client_capable.description`:
 
@@ -208,47 +169,24 @@ its vf_capable routine
 i40e_client_add_instance
 ========================
 
-.. c:function:: struct i40e_client_instance *i40e_client_add_instance(struct i40e_pf *pf, struct i40e_client *client, bool *existing)
+.. c:function:: void i40e_client_add_instance(struct i40e_pf *pf)
 
     add a client instance struct to the instance list
 
     :param struct i40e_pf \*pf:
         pointer to the board struct
 
-    :param struct i40e_client \*client:
-        pointer to a client struct in the client list.
-
-    :param bool \*existing:
-        if there was already an existing instance
-
-.. _`i40e_client_add_instance.description`:
-
-Description
------------
-
-Returns cdev ptr on success or if already exists, NULL on failure
-
 .. _`i40e_client_del_instance`:
 
 i40e_client_del_instance
 ========================
 
-.. c:function:: int i40e_client_del_instance(struct i40e_pf *pf, struct i40e_client *client)
+.. c:function:: void i40e_client_del_instance(struct i40e_pf *pf)
 
     removes a client instance from the list
 
     :param struct i40e_pf \*pf:
         pointer to the board struct
-
-    :param struct i40e_client \*client:
-        *undescribed*
-
-.. _`i40e_client_del_instance.description`:
-
-Description
------------
-
-Returns 0 on success or non-0 on error
 
 .. _`i40e_client_subtask`:
 
@@ -305,38 +243,24 @@ Returns 0 on success or non-0 on error
 i40e_client_release
 ===================
 
-.. c:function:: int i40e_client_release(struct i40e_client *client)
+.. c:function:: void i40e_client_release(struct i40e_client *client)
 
     release client specific resources
 
     :param struct i40e_client \*client:
         pointer to the registered client
 
-.. _`i40e_client_release.description`:
-
-Description
------------
-
-Return 0 on success or < 0 on error
-
 .. _`i40e_client_prepare`:
 
 i40e_client_prepare
 ===================
 
-.. c:function:: int i40e_client_prepare(struct i40e_client *client)
+.. c:function:: void i40e_client_prepare(struct i40e_client *client)
 
     prepare client specific resources
 
     :param struct i40e_client \*client:
         pointer to the registered client
-
-.. _`i40e_client_prepare.description`:
-
-Description
------------
-
-Return 0 on success or < 0 on error
 
 .. _`i40e_client_virtchnl_send`:
 

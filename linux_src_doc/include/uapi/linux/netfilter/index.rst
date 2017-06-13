@@ -8,3 +8,4 @@ netfilter
     :maxdepth: 1
 
     nf_tables_h
+    nfnetlink_h

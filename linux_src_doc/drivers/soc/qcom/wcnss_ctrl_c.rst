@@ -19,7 +19,7 @@ Definition
 
     struct wcnss_ctrl {
         struct device *dev;
-        struct qcom_smd_channel *channel;
+        struct rpmsg_endpoint *channel;
         struct completion ack;
         struct completion cbc;
         int ack_status;
@@ -206,18 +206,24 @@ status
 wcnss_ctrl_smd_callback
 =======================
 
-.. c:function:: int wcnss_ctrl_smd_callback(struct qcom_smd_channel *channel, const void *data, size_t count)
+.. c:function:: int wcnss_ctrl_smd_callback(struct rpmsg_device *rpdev, void *data, int count, void *priv, u32 addr)
 
     handler from SMD responses
 
-    :param struct qcom_smd_channel \*channel:
-        smd channel handle
+    :param struct rpmsg_device \*rpdev:
+        *undescribed*
 
-    :param const void \*data:
+    :param void \*data:
         pointer to the incoming data packet
 
-    :param size_t count:
+    :param int count:
         size of the incoming data packet
+
+    :param void \*priv:
+        *undescribed*
+
+    :param u32 addr:
+        *undescribed*
 
 .. _`wcnss_ctrl_smd_callback.description`:
 
@@ -265,7 +271,7 @@ Returns 0 on success. Negative errno on failure.
 qcom_wcnss_open_channel
 =======================
 
-.. c:function:: struct qcom_smd_channel *qcom_wcnss_open_channel(void *wcnss, const char *name, qcom_smd_cb_t cb)
+.. c:function:: struct rpmsg_endpoint *qcom_wcnss_open_channel(void *wcnss, const char *name, rpmsg_rx_cb_t cb, void *priv)
 
     open additional SMD channel to WCNSS
 
@@ -275,8 +281,11 @@ qcom_wcnss_open_channel
     :param const char \*name:
         SMD channel name
 
-    :param qcom_smd_cb_t cb:
+    :param rpmsg_rx_cb_t cb:
         callback to handle incoming data on the channel
+
+    :param void \*priv:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

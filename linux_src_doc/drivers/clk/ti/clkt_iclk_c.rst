@@ -6,14 +6,14 @@
 omap2430_clk_i2chs_find_idlest
 ==============================
 
-.. c:function:: void omap2430_clk_i2chs_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void omap2430_clk_i2chs_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     return CM_IDLEST info for 2430 I2CHS
 
     :param struct clk_hw_omap \*clk:
         struct clk \* being enabled
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to store CM_IDLEST reg address into
 
     :param u8 \*idlest_bit:

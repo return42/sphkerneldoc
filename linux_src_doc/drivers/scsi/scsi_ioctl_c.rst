@@ -22,7 +22,7 @@ Description
 -----------
 
 Return an identifying string at \ ``buffer``\ , if \ ``buffer``\  is non-NULL, filling
-to the length stored at \* (int \*) \ ``buffer``\ .
+to the length stored at * (int *) \ ``buffer``\ .
 
 .. _`scsi_ioctl`:
 

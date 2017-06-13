@@ -66,19 +66,19 @@ round the given value down to the nearest power of two
 - the result is undefined when n == 0
 - this can be used to initialise global variables from constant data
 
-.. _`order_base_2`:
+.. _`__order_base_2`:
 
-order_base_2
-============
+__order_base_2
+==============
 
-.. c:function::  order_base_2( n)
+.. c:function:: __attribute_const__ int __order_base_2(unsigned long n)
 
     calculate the (rounded up) base 2 order of the argument
 
-    :param  n:
+    :param unsigned long n:
         parameter
 
-.. _`order_base_2.the-first-few-values-calculated-by-this-routine`:
+.. _`__order_base_2.the-first-few-values-calculated-by-this-routine`:
 
 The first few values calculated by this routine
 -----------------------------------------------

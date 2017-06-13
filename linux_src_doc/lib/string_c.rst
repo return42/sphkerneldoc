@@ -86,7 +86,7 @@ strlcpy
 Description
 -----------
 
-Compatible with \*BSD: the result is always a valid
+Compatible with ``*BSD``: the result is always a valid
 NUL-terminated string that fits in the buffer (unless,
 of course, the buffer size is zero). It does not pad
 out the result like \ :c:func:`strncpy`\  does.
@@ -482,6 +482,32 @@ Return
 
 index of a \ ``string``\  in the \ ``array``\  if matches, or \ ``-EINVAL``\  otherwise.
 
+.. _`__sysfs_match_string`:
+
+__sysfs_match_string
+====================
+
+.. c:function:: int __sysfs_match_string(const char * const *array, size_t n, const char *str)
+
+    matches given string in an array
+
+    :param const char \* const \*array:
+        array of strings
+
+    :param size_t n:
+        number of strings in the array or -1 for NULL terminated arrays
+
+    :param const char \*str:
+        string to match with
+
+.. _`__sysfs_match_string.description`:
+
+Description
+-----------
+
+Returns index of \ ``str``\  in the \ ``array``\  or -EINVAL, just like \ :c:func:`match_string`\ .
+Uses sysfs_streq instead of strcmp for matching.
+
 .. _`memset`:
 
 memset
@@ -528,7 +554,7 @@ Note
 ----
 
 usually using \ :c:func:`memset`\  is just fine (!), but in cases
-where clearing out \_local\_ data at the end of a scope is
+where clearing out _local_ data at the end of a scope is
 necessary, \ :c:func:`memzero_explicit`\  should be used instead in
 order to prevent the compiler from optimising away zeroing.
 

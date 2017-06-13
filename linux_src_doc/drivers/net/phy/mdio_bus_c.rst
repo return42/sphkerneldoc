@@ -122,6 +122,28 @@ Because the association of a device_node and mii_bus is made via
 \ :c:func:`of_mdiobus_register`\ , the mii_bus cannot be found before it is
 registered with \ :c:func:`of_mdiobus_register`\ .
 
+.. _`mdiobus_create_device`:
+
+mdiobus_create_device
+=====================
+
+.. c:function:: int mdiobus_create_device(struct mii_bus *bus, struct mdio_board_info *bi)
+
+    create a full MDIO device given a mdio_board_info structure
+
+    :param struct mii_bus \*bus:
+        MDIO bus to create the devices on
+
+    :param struct mdio_board_info \*bi:
+        mdio_board_info structure describing the devices
+
+.. _`mdiobus_create_device.description`:
+
+Description
+-----------
+
+Returns 0 on success or < 0 on error.
+
 .. _`__mdiobus_register`:
 
 __mdiobus_register
@@ -143,11 +165,11 @@ Description
 -----------
 
 Called by a bus driver to bring up all the PHYs
-on a given bus, and attach them to the bus. Drivers should use
-\ :c:func:`mdiobus_register`\  rather than \__mdiobus_register() unless they
-need to pass a specific owner module. MDIO devices which are not
-PHYs will not be brought up by this function. They are expected to
-to be explicitly listed in DT and instantiated by \ :c:func:`of_mdiobus_register`\ .
+  on a given bus, and attach them to the bus. Drivers should use
+  \ :c:func:`mdiobus_register`\  rather than \ :c:func:`__mdiobus_register`\  unless they
+  need to pass a specific owner module. MDIO devices which are not
+  PHYs will not be brought up by this function. They are expected to
+  to be explicitly listed in DT and instantiated by \ :c:func:`of_mdiobus_register`\ .
 
 Returns 0 on success or < 0 on error.
 
@@ -350,9 +372,9 @@ Description
 -----------
 
 Given a MDIO device, and a MDIO driver, return 1 if
-the driver supports the device.  Otherwise, return 0. This may
-require calling the devices own match function, since different classes
-of MDIO devices have different match criteria.
+  the driver supports the device.  Otherwise, return 0. This may
+  require calling the devices own match function, since different classes
+  of MDIO devices have different match criteria.
 
 .. This file was automatic generated / don't edit.
 

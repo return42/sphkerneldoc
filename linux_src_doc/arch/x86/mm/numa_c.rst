@@ -73,7 +73,7 @@ numa_cleanup_meminfo
 Description
 -----------
 
-Sanitize \ ``mi``\  by merging and removing unncessary memblks.  Also check for
+Sanitize \ ``mi``\  by merging and removing unnecessary memblks.  Also check for
 conflicts and clear unused memblks.
 
 .. _`numa_cleanup_meminfo.return`:

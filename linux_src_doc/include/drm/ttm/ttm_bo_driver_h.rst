@@ -154,7 +154,7 @@ Definition
         bool io_reserve_fastpath;
         spinlock_t move_lock;
         struct list_head io_reserve_lru;
-        struct list_head lru;
+        struct list_head lru[TTM_MAX_BO_PRIORITY];
         struct dma_fence *move;
     }
 
@@ -253,14 +253,12 @@ Definition
         void (*evict_flags)(struct ttm_buffer_object *bo,struct ttm_placement *placement);
         int (*move)(struct ttm_buffer_object *bo, bool evict,bool interruptible, bool no_wait_gpu,struct ttm_mem_reg *new_mem);
         int (*verify_access)(struct ttm_buffer_object *bo,struct file *filp);
-        void (*move_notify)(struct ttm_buffer_object *bo,struct ttm_mem_reg *new_mem);
+        void (*move_notify)(struct ttm_buffer_object *bo,bool evict,struct ttm_mem_reg *new_mem);
         int (*fault_reserve_notify)(struct ttm_buffer_object *bo);
         void (*swap_notify)(struct ttm_buffer_object *bo);
         int (*io_mem_reserve)(struct ttm_bo_device *bdev,struct ttm_mem_reg *mem);
         void (*io_mem_free)(struct ttm_bo_device *bdev,struct ttm_mem_reg *mem);
-        void (*lru_removal)(struct ttm_buffer_object *bo);
-        struct list_head *(*lru_tail)(struct ttm_buffer_object *bo);
-        struct list_head *(*swap_lru_tail)(struct ttm_buffer_object *bo);
+        unsigned long (*io_mem_pfn)(struct ttm_buffer_object *bo,unsigned long page_offset);
     }
 
 .. _`ttm_bo_driver.members`:
@@ -314,13 +312,7 @@ io_mem_reserve
 io_mem_free
     *undescribed*
 
-lru_removal
-    *undescribed*
-
-lru_tail
-    *undescribed*
-
-swap_lru_tail
+io_mem_pfn
     *undescribed*
 
 .. _`ttm_bo_global_ref`:
@@ -379,7 +371,7 @@ Definition
         struct mutex device_list_mutex;
         spinlock_t lru_lock;
         struct list_head device_list;
-        struct list_head swap_lru;
+        struct list_head swap_lru[TTM_MAX_BO_PRIORITY];
         atomic_t bo_count;
     }
 

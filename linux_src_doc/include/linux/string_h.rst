@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/string.h
 
+.. _`sysfs_match_string`:
+
+sysfs_match_string
+==================
+
+.. c:function::  sysfs_match_string( _a,  _s)
+
+    matches given string in an array
+
+    :param  _a:
+        array of strings
+
+    :param  _s:
+        string to match with
+
+.. _`sysfs_match_string.description`:
+
+Description
+-----------
+
+Helper for \__sysfs_match_string(). Calculates the size of \ ``a``\  automatically.
+
 .. _`strstarts`:
 
 strstarts

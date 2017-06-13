@@ -11,7 +11,6 @@ arch
     arc/index
     arm/index
     arm64/index
-    avr32/index
     blackfin/index
     c6x/index
     cris/index

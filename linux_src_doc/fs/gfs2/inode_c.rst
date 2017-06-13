@@ -694,18 +694,21 @@ errno
 gfs2_getattr
 ============
 
-.. c:function:: int gfs2_getattr(struct vfsmount *mnt, struct dentry *dentry, struct kstat *stat)
+.. c:function:: int gfs2_getattr(const struct path *path, struct kstat *stat, u32 request_mask, unsigned int flags)
 
     Read out an inode's attributes
 
-    :param struct vfsmount \*mnt:
-        The vfsmount the inode is being accessed from
-
-    :param struct dentry \*dentry:
-        The dentry to stat
+    :param const struct path \*path:
+        Object to query
 
     :param struct kstat \*stat:
         The inode's stats
+
+    :param u32 request_mask:
+        Mask of STATX_xxx flags indicating the caller's interests
+
+    :param unsigned int flags:
+        AT_STATX_xxx setting
 
 .. _`gfs2_getattr.description`:
 

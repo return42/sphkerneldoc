@@ -73,37 +73,5 @@ base
 out_state
     output bits state
 
-.. _`stx104_dev`:
-
-struct stx104_dev
-=================
-
-.. c:type:: struct stx104_dev
-
-    STX104 device private data structure
-
-.. _`stx104_dev.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct stx104_dev {
-        struct iio_dev *indio_dev;
-        struct gpio_chip *chip;
-    }
-
-.. _`stx104_dev.members`:
-
-Members
--------
-
-indio_dev
-    IIO device
-
-chip
-    instance of the gpio_chip
-
 .. This file was automatic generated / don't edit.
 

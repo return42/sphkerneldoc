@@ -121,7 +121,7 @@ Description
 -----------
 
 Unpack a dfa that has been serialized.  To find information on the dfa
-format look in Documentation/security/apparmor.txt
+format look in Documentation/admin-guide/LSM/apparmor.rst
 Assumes the dfa \ ``blob``\  stream has been aligned on a 8 byte boundary
 
 .. _`aa_dfa_unpack.return`:

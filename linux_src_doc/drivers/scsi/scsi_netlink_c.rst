@@ -19,7 +19,7 @@ Description
 -----------
 
 Extracts message from a receive buffer.
-Validates message header and calls appropriate transport message handler
+   Validates message header and calls appropriate transport message handler
 
 .. _`scsi_netlink_init`:
 

@@ -137,6 +137,28 @@ Return
 
 mapped MSI RID on success, input requester ID otherwise
 
+.. _`iort_pmsi_get_dev_id`:
+
+iort_pmsi_get_dev_id
+====================
+
+.. c:function:: int iort_pmsi_get_dev_id(struct device *dev, u32 *dev_id)
+
+    Get the device id for a device
+
+    :param struct device \*dev:
+        The device for which the mapping is to be done.
+
+    :param u32 \*dev_id:
+        The device ID found.
+
+.. _`iort_pmsi_get_dev_id.return`:
+
+Return
+------
+
+0 for successful find a dev id, -ENODEV on error
+
 .. _`iort_dev_find_its_id`:
 
 iort_dev_find_its_id
@@ -150,7 +172,7 @@ iort_dev_find_its_id
         The device.
 
     :param u32 req_id:
-        *undescribed*
+        Device's requester ID
 
     :param unsigned int idx:
         Index of the ITS identifier list.
@@ -181,6 +203,25 @@ iort_get_device_domain
         Requester ID for the device.
 
 .. _`iort_get_device_domain.return`:
+
+Return
+------
+
+the MSI domain for this device, NULL otherwise
+
+.. _`iort_get_platform_device_domain`:
+
+iort_get_platform_device_domain
+===============================
+
+.. c:function:: struct irq_domain *iort_get_platform_device_domain(struct device *dev)
+
+    Find MSI domain related to a platform device
+
+    :param struct device \*dev:
+        the dev pointer associated with the platform device
+
+.. _`iort_get_platform_device_domain.return`:
 
 Return
 ------

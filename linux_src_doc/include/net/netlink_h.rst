@@ -92,6 +92,7 @@ Definition
         struct nlmsghdr *nlh;
         struct net *nl_net;
         u32 portid;
+        bool skip_notify;
     }
 
 .. _`nl_info.members`:
@@ -107,6 +108,9 @@ nl_net
 
 portid
     Netlink PORTID of requesting application
+
+skip_notify
+    *undescribed*
 
 .. _`nlmsg_msg_size`:
 
@@ -241,7 +245,7 @@ decrements remaining by the size of the current message.
 nlmsg_parse
 ===========
 
-.. c:function:: int nlmsg_parse(const struct nlmsghdr *nlh, int hdrlen, struct nlattr  *tb[], int maxtype, const struct nla_policy *policy)
+.. c:function:: int nlmsg_parse(const struct nlmsghdr *nlh, int hdrlen, struct nlattr  *tb[], int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     parse attributes of a netlink message
 
@@ -259,6 +263,9 @@ nlmsg_parse
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`nlmsg_parse.description`:
 
@@ -297,7 +304,7 @@ Returns the first attribute which matches the specified type.
 nlmsg_validate
 ==============
 
-.. c:function:: int nlmsg_validate(const struct nlmsghdr *nlh, int hdrlen, int maxtype, const struct nla_policy *policy)
+.. c:function:: int nlmsg_validate(const struct nlmsghdr *nlh, int hdrlen, int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     validate a netlink message including attributes
 
@@ -312,6 +319,9 @@ nlmsg_validate
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`nlmsg_report`:
 
@@ -773,7 +783,7 @@ Returns the first attribute which matches the specified type.
 nla_parse_nested
 ================
 
-.. c:function:: int nla_parse_nested(struct nlattr  *tb[], int maxtype, const struct nlattr *nla, const struct nla_policy *policy)
+.. c:function:: int nla_parse_nested(struct nlattr  *tb[], int maxtype, const struct nlattr *nla, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     parse nested attributes
 
@@ -788,6 +798,9 @@ nla_parse_nested
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`nla_parse_nested.description`:
 
@@ -1520,7 +1533,7 @@ attributes. Returns -EMSGSIZE
 nla_validate_nested
 ===================
 
-.. c:function:: int nla_validate_nested(const struct nlattr *start, int maxtype, const struct nla_policy *policy)
+.. c:function:: int nla_validate_nested(const struct nlattr *start, int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     Validate a stream of nested attributes
 
@@ -1532,6 +1545,9 @@ nla_validate_nested
 
     :param const struct nla_policy \*policy:
         validation policy
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`nla_validate_nested.description`:
 

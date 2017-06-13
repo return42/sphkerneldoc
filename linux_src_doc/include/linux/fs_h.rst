@@ -145,8 +145,8 @@ ordering of freeze protection and other filesystem locks. Generally,
 freeze protection should be the outermost lock. In particular, we have:
 
 sb_start_write
--> i_mutex                 (write path, truncate, directory ops, ...)
--> s_umount                (freeze_super, thaw_super)
+  -> i_mutex                 (write path, truncate, directory ops, ...)
+  -> s_umount                (freeze_super, thaw_super)
 
 .. _`sb_start_pagefault`:
 
@@ -183,7 +183,7 @@ handling code implies lock dependency
 
 
 mmap_sem
--> sb_start_pagefault
+  -> sb_start_pagefault
 
 .. _`inode_inc_iversion`:
 

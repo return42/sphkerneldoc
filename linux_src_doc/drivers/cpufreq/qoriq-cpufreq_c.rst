@@ -53,8 +53,7 @@ Definition
 .. code-block:: c
 
     struct soc_data {
-        u32 freq_mask[4];
-        u32 flag;
+        u32 flags;
     }
 
 .. _`soc_data.members`:
@@ -62,11 +61,8 @@ Definition
 Members
 -------
 
-freq_mask
-    mask the disallowed frequencies
-
-flag
-    unique flags
+flags
+    SOC_xxx
 
 .. This file was automatic generated / don't edit.
 

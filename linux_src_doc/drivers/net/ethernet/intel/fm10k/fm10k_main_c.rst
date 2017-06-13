@@ -83,12 +83,15 @@ Synchronizes page for reuse by the interface
 fm10k_add_rx_frag
 =================
 
-.. c:function:: bool fm10k_add_rx_frag(struct fm10k_rx_buffer *rx_buffer, union fm10k_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: bool fm10k_add_rx_frag(struct fm10k_rx_buffer *rx_buffer, unsigned int size, union fm10k_rx_desc *rx_desc, struct sk_buff *skb)
 
     Add contents of Rx buffer to sk_buff
 
     :param struct fm10k_rx_buffer \*rx_buffer:
         buffer containing page to add
+
+    :param unsigned int size:
+        packet size from rx_desc
 
     :param union fm10k_rx_desc \*rx_desc:
         descriptor containing length of buffer written by hardware

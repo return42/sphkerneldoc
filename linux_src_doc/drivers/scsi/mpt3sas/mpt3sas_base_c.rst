@@ -850,7 +850,7 @@ Freeing respective reply_queue from the list.
 _base_request_irq
 =================
 
-.. c:function:: int _base_request_irq(struct MPT3SAS_ADAPTER *ioc, u8 index, u32 vector)
+.. c:function:: int _base_request_irq(struct MPT3SAS_ADAPTER *ioc, u8 index)
 
     request irq
 
@@ -859,9 +859,6 @@ _base_request_irq
 
     :param u8 index:
         msix index into vector table
-
-    :param u32 vector:
-        irq vector
 
 .. _`_base_request_irq.description`:
 

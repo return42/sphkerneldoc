@@ -399,7 +399,7 @@ and returns 0
 tipc_nametbl_mc_translate
 =========================
 
-.. c:function:: int tipc_nametbl_mc_translate(struct net *net, u32 type, u32 lower, u32 upper, u32 limit, struct tipc_plist *dports)
+.. c:function:: int tipc_nametbl_mc_translate(struct net *net, u32 type, u32 lower, u32 upper, u32 limit, struct list_head *dports)
 
     find multicast destinations
 
@@ -418,7 +418,7 @@ tipc_nametbl_mc_translate
     :param u32 limit:
         *undescribed*
 
-    :param struct tipc_plist \*dports:
+    :param struct list_head \*dports:
         *undescribed*
 
 .. _`tipc_nametbl_mc_translate.description`:

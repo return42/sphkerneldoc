@@ -63,15 +63,15 @@ Return
 try_to_wake_up_local
 ====================
 
-.. c:function:: void try_to_wake_up_local(struct task_struct *p, struct pin_cookie cookie)
+.. c:function:: void try_to_wake_up_local(struct task_struct *p, struct rq_flags *rf)
 
     try to wake up a local task with rq lock held
 
     :param struct task_struct \*p:
         the thread to be awakened
 
-    :param struct pin_cookie cookie:
-        context's cookie for pinning
+    :param struct rq_flags \*rf:
+        *undescribed*
 
 .. _`try_to_wake_up_local.description`:
 
@@ -322,7 +322,7 @@ idle_cpu
 
 .. c:function:: int idle_cpu(int cpu)
 
-    is a given cpu idle currently?
+    is a given CPU idle currently?
 
     :param int cpu:
         the processor in question.
@@ -341,7 +341,7 @@ idle_task
 
 .. c:function:: struct task_struct *idle_task(int cpu)
 
-    return the idle task for a given cpu.
+    return the idle task for a given CPU.
 
     :param int cpu:
         the processor in question.
@@ -351,7 +351,7 @@ idle_task
 Return
 ------
 
-The idle task for the cpu \ ``cpu``\ .
+The idle task for the CPU \ ``cpu``\ .
 
 .. _`find_process_by_pid`:
 
@@ -570,7 +570,7 @@ sys_sched_setaffinity
 
 .. c:function:: long sys_sched_setaffinity(pid_t pid, unsigned int len, unsigned long __user *user_mask_ptr)
 
-    set the cpu affinity of a process
+    set the CPU affinity of a process
 
     :param pid_t pid:
         pid of the process
@@ -579,7 +579,7 @@ sys_sched_setaffinity
         length in bytes of the bitmask pointed to by user_mask_ptr
 
     :param unsigned long __user \*user_mask_ptr:
-        user-space pointer to the new cpu mask
+        user-space pointer to the new CPU mask
 
 .. _`sys_sched_setaffinity.return`:
 
@@ -595,7 +595,7 @@ sys_sched_getaffinity
 
 .. c:function:: long sys_sched_getaffinity(pid_t pid, unsigned int len, unsigned long __user *user_mask_ptr)
 
-    get the cpu affinity of a process
+    get the CPU affinity of a process
 
     :param pid_t pid:
         pid of the process
@@ -604,7 +604,7 @@ sys_sched_getaffinity
         length in bytes of the bitmask pointed to by user_mask_ptr
 
     :param unsigned long __user \*user_mask_ptr:
-        user-space pointer to hold the current cpu mask
+        user-space pointer to hold the current CPU mask
 
 .. _`sys_sched_getaffinity.return`:
 
@@ -799,7 +799,7 @@ init_idle
         task in question
 
     :param int cpu:
-        cpu the idle task belongs to
+        CPU the idle task belongs to
 
 .. _`init_idle.note`:
 
@@ -816,7 +816,7 @@ curr_task
 
 .. c:function:: struct task_struct *curr_task(int cpu)
 
-    return the current task for a given cpu.
+    return the current task for a given CPU.
 
     :param int cpu:
         the processor in question.
@@ -842,7 +842,7 @@ ia64_set_curr_task
 
 .. c:function:: void ia64_set_curr_task(int cpu, struct task_struct *p)
 
-    set the current task for a given cpu.
+    set the current task for a given CPU.
 
     :param int cpu:
         the processor in question.
@@ -857,7 +857,7 @@ Description
 
 This function must only be used when non-maskable interrupts
 are serviced on a separate stack. It allows the architecture to switch the
-notion of the current task on a cpu in a non-blocking manner. This function
+notion of the current task on a CPU in a non-blocking manner. This function
 must be called with all CPU's synchronized, and interrupts disabled, the
 and caller must save the original value of the current task (see
 \ :c:func:`curr_task`\  above) and restore that value before reenabling interrupts and

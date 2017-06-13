@@ -1,6 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/trace/trace_output.c
 
+.. _`trace_print_hex_seq`:
+
+trace_print_hex_seq
+===================
+
+.. c:function:: const char *trace_print_hex_seq(struct trace_seq *p, const unsigned char *buf, int buf_len, bool concatenate)
+
+    print buffer as hex sequence
+
+    :param struct trace_seq \*p:
+        trace seq struct to write to
+
+    :param const unsigned char \*buf:
+        The buffer to print
+
+    :param int buf_len:
+        Length of \ ``buf``\  in bytes
+
+    :param bool concatenate:
+        Print \ ``buf``\  as single hex string or with spacing
+
+.. _`trace_print_hex_seq.description`:
+
+Description
+-----------
+
+Prints the passed buffer as a hex sequence either as a whole,
+single hex string if \ ``concatenate``\  is true or with spacing after
+each byte in case \ ``concatenate``\  is false.
+
 .. _`trace_print_lat_fmt`:
 
 trace_print_lat_fmt

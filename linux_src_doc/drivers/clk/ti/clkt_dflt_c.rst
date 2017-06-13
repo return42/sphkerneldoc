@@ -6,14 +6,14 @@
 _wait_idlest_generic
 ====================
 
-.. c:function:: int _wait_idlest_generic(struct clk_hw_omap *clk, void __iomem *reg, u32 mask, u8 idlest, const char *name)
+.. c:function:: int _wait_idlest_generic(struct clk_hw_omap *clk, struct clk_omap_reg *reg, u32 mask, u8 idlest, const char *name)
 
     wait for a module to leave the idle state
 
     :param struct clk_hw_omap \*clk:
         module clock to wait for (needed for register offsets)
 
-    :param void __iomem \*reg:
+    :param struct clk_omap_reg \*reg:
         virtual address of module IDLEST register
 
     :param u32 mask:
@@ -64,14 +64,14 @@ module-dependent code.  No return value.
 omap2_clk_dflt_find_companion
 =============================
 
-.. c:function:: void omap2_clk_dflt_find_companion(struct clk_hw_omap *clk, void __iomem **other_reg, u8 *other_bit)
+.. c:function:: void omap2_clk_dflt_find_companion(struct clk_hw_omap *clk, struct clk_omap_reg *other_reg, u8 *other_bit)
 
     find companion clock to \ ``clk``\ 
 
     :param struct clk_hw_omap \*clk:
         struct clk \* to find the companion clock of
 
-    :param void __iomem \*\*other_reg:
+    :param struct clk_omap_reg \*other_reg:
         void \__iomem \*\* to return the companion clock CM\_\*CLKEN va in
 
     :param u8 \*other_bit:
@@ -102,14 +102,14 @@ avoid this issue, and remove the casts.  No return value.
 omap2_clk_dflt_find_idlest
 ==========================
 
-.. c:function:: void omap2_clk_dflt_find_idlest(struct clk_hw_omap *clk, void __iomem **idlest_reg, u8 *idlest_bit, u8 *idlest_val)
+.. c:function:: void omap2_clk_dflt_find_idlest(struct clk_hw_omap *clk, struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val)
 
     find CM_IDLEST reg va, bit shift for \ ``clk``\ 
 
     :param struct clk_hw_omap \*clk:
         struct clk \* to find IDLEST info for
 
-    :param void __iomem \*\*idlest_reg:
+    :param struct clk_omap_reg \*idlest_reg:
         void \__iomem \*\* to return the CM_IDLEST va in
 
     :param u8 \*idlest_bit:

@@ -565,6 +565,106 @@ enable_ack_reduction
     enable or disable close range ack TX power
     reduction.
 
+.. _`iwl_geo_per_chain_offset_operation`:
+
+enum iwl_geo_per_chain_offset_operation
+=======================================
+
+.. c:type:: enum iwl_geo_per_chain_offset_operation
+
+    type of operation
+
+.. _`iwl_geo_per_chain_offset_operation.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_geo_per_chain_offset_operation {
+        IWL_PER_CHAIN_OFFSET_SET_TABLES,
+        IWL_PER_CHAIN_OFFSET_GET_CURRENT_TABLE
+    };
+
+.. _`iwl_geo_per_chain_offset_operation.constants`:
+
+Constants
+---------
+
+IWL_PER_CHAIN_OFFSET_SET_TABLES
+    send the tables from the host to the FW.
+
+IWL_PER_CHAIN_OFFSET_GET_CURRENT_TABLE
+    retrieve the last configured table.
+
+.. _`iwl_per_chain_offset`:
+
+struct iwl_per_chain_offset
+===========================
+
+.. c:type:: struct iwl_per_chain_offset
+
+    embedded struct for GEO_TX_POWER_LIMIT.
+
+.. _`iwl_per_chain_offset.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_per_chain_offset {
+        __le16 max_tx_power;
+        u8 chain_a;
+        u8 chain_b;
+    }
+
+.. _`iwl_per_chain_offset.members`:
+
+Members
+-------
+
+max_tx_power
+    maximum allowed tx power.
+
+chain_a
+    tx power offset for chain a.
+
+chain_b
+    tx power offset for chain b.
+
+.. _`iwl_geo_tx_power_profiles_cmd`:
+
+struct iwl_geo_tx_power_profiles_cmd
+====================================
+
+.. c:type:: struct iwl_geo_tx_power_profiles_cmd
+
+    struct for GEO_TX_POWER_LIMIT cmd.
+
+.. _`iwl_geo_tx_power_profiles_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_geo_tx_power_profiles_cmd {
+        __le32 ops;
+        struct iwl_per_chain_offset_group table[IWL_NUM_GEO_PROFILES];
+    }
+
+.. _`iwl_geo_tx_power_profiles_cmd.members`:
+
+Members
+-------
+
+ops
+    operations, value from \ :c:type:`enum iwl_geo_per_chain_offset_operation <iwl_geo_per_chain_offset_operation>`\ 
+
+table
+    offset profile per band.
+
 .. _`iwl_beacon_filter_cmd`:
 
 struct iwl_beacon_filter_cmd

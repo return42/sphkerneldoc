@@ -266,14 +266,14 @@ Pointer to duplicated EDID or NULL on allocation failure.
 edid_vendor
 ===========
 
-.. c:function:: bool edid_vendor(struct edid *edid, char *vendor)
+.. c:function:: bool edid_vendor(struct edid *edid, const char *vendor)
 
     match a string against EDID's obfuscated vendor field
 
     :param struct edid \*edid:
         EDID to match
 
-    :param char \*vendor:
+    :param const char \*vendor:
         vendor string
 
 .. _`edid_vendor.description`:
@@ -699,6 +699,33 @@ Return
 
 True if the RGB quantization range is selectable, false otherwise.
 
+.. _`drm_default_rgb_quant_range`:
+
+drm_default_rgb_quant_range
+===========================
+
+.. c:function:: enum hdmi_quantization_range drm_default_rgb_quant_range(const struct drm_display_mode *mode)
+
+    default RGB quantization range
+
+    :param const struct drm_display_mode \*mode:
+        display mode
+
+.. _`drm_default_rgb_quant_range.description`:
+
+Description
+-----------
+
+Determine the default RGB quantization range for the mode,
+as specified in CEA-861.
+
+.. _`drm_default_rgb_quant_range.return`:
+
+Return
+------
+
+The default RGB quantization range for the mode
+
 .. _`drm_add_edid_modes`:
 
 drm_add_edid_modes
@@ -810,6 +837,27 @@ Return
 ------
 
 0 on success or a negative error code on failure.
+
+.. _`drm_hdmi_avi_infoframe_quant_range`:
+
+drm_hdmi_avi_infoframe_quant_range
+==================================
+
+.. c:function:: void drm_hdmi_avi_infoframe_quant_range(struct hdmi_avi_infoframe *frame, const struct drm_display_mode *mode, enum hdmi_quantization_range rgb_quant_range, bool rgb_quant_range_selectable)
+
+    fill the HDMI AVI infoframe quantization range information
+
+    :param struct hdmi_avi_infoframe \*frame:
+        HDMI AVI infoframe
+
+    :param const struct drm_display_mode \*mode:
+        DRM display mode
+
+    :param enum hdmi_quantization_range rgb_quant_range:
+        RGB quantization range (Q)
+
+    :param bool rgb_quant_range_selectable:
+        Sink support selectable RGB quantization range (QS)
 
 .. _`drm_hdmi_vendor_infoframe_from_display_mode`:
 

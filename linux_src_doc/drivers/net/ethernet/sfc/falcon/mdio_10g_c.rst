@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/sfc/falcon/mdio_10g.c
 
-.. _`ef4_mdio_set_settings`:
+.. _`ef4_mdio_set_link_ksettings`:
 
-ef4_mdio_set_settings
-=====================
+ef4_mdio_set_link_ksettings
+===========================
 
-.. c:function:: int ef4_mdio_set_settings(struct ef4_nic *efx, struct ethtool_cmd *ecmd)
+.. c:function:: int ef4_mdio_set_link_ksettings(struct ef4_nic *efx, const struct ethtool_link_ksettings *cmd)
 
     Set (some of) the PHY settings over MDIO.
 
     :param struct ef4_nic \*efx:
         Efx NIC
 
-    :param struct ethtool_cmd \*ecmd:
+    :param const struct ethtool_link_ksettings \*cmd:
         New settings
 
 .. _`ef4_mdio_an_reconfigure`:

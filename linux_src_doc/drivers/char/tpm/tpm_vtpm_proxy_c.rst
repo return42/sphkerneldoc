@@ -11,21 +11,21 @@ vtpm_proxy_fops_read
     Read TPM commands on 'server side'
 
     :param struct file \*filp:
-        *undescribed*
+        file pointer
 
     :param char __user \*buf:
-        *undescribed*
+        read buffer
 
     :param size_t count:
-        *undescribed*
+        number of bytes to read
 
     :param loff_t \*off:
-        *undescribed*
+        offset
 
-.. _`vtpm_proxy_fops_read.return-value`:
+.. _`vtpm_proxy_fops_read.return`:
 
-Return value
-------------
+Return
+------
 
      Number of bytes read or negative error code
 
@@ -39,21 +39,21 @@ vtpm_proxy_fops_write
     Write TPM responses on 'server side'
 
     :param struct file \*filp:
-        *undescribed*
+        file pointer
 
     :param const char __user \*buf:
-        *undescribed*
+        write buffer
 
     :param size_t count:
-        *undescribed*
+        number of bytes to write
 
     :param loff_t \*off:
-        *undescribed*
+        offset
 
-.. _`vtpm_proxy_fops_write.return-value`:
+.. _`vtpm_proxy_fops_write.return`:
 
-Return value
-------------
+Return
+------
 
      Number of bytes read or negative error value
 
@@ -64,7 +64,7 @@ vtpm_proxy_fops_undo_open
 
 .. c:function:: void vtpm_proxy_fops_undo_open(struct proxy_dev *proxy_dev)
 
-    counter-part to vtpm_fops_open
+    counter-part to vtpm_fops_open Call to undo vtpm_proxy_fops_open
 
     :param struct proxy_dev \*proxy_dev:
         *undescribed*
@@ -74,7 +74,7 @@ vtpm_proxy_fops_undo_open
 Description
 -----------
 
-Call to undo vtpm_proxy_fops_open
+@proxy_dev: tpm proxy device
 
 .. _`vtpmx_ioc_new_dev`:
 

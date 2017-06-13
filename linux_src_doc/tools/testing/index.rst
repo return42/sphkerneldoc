@@ -7,5 +7,4 @@ testing
 .. toctree::
     :maxdepth: 1
 
-    radix-tree/index
     selftests/index

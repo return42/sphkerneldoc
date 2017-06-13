@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem_request.h
 
+.. _`i915_gem_request_global_seqno`:
+
+i915_gem_request_global_seqno
+=============================
+
+.. c:function:: u32 i915_gem_request_global_seqno(const struct drm_i915_gem_request *request)
+
+    report the current global seqno \ ``request``\  - the request
+
+    :param const struct drm_i915_gem_request \*request:
+        *undescribed*
+
+.. _`i915_gem_request_global_seqno.description`:
+
+Description
+-----------
+
+A request is assigned a global seqno only when it is on the hardware
+execution queue. The global seqno can be used to maintain a list of
+requests on the same engine in retirement order, for example for
+constructing a priority queue for waiting. Prior to its execution, or
+if it is subsequently removed in the event of preemption, its global
+seqno is zero. As both insertion and removal from the execution queue
+may operate in IRQ context, it is not guarded by the usual struct_mutex
+BKL. Instead those relying on the global seqno must be prepared for its
+value to change between reads. Only when the request is complete can
+the global seqno be stable (due to the memory barriers on submitting
+the commands to the hardware to write the breadcrumb, if the HWS shows
+that it has passed the global seqno and the global seqno is unchanged
+after the read, it is indeed complete).
+
 .. _`i915_seqno_passed`:
 
 i915_seqno_passed
@@ -62,6 +93,33 @@ Description
 i915_gem_active_set() watches the given \ ``request``\  for completion. Whilst
 that \ ``request``\  is busy, the \ ``active``\  reports busy. When that \ ``request``\  is
 retired, the \ ``active``\  tracker is updated to report idle.
+
+.. _`i915_gem_active_set_retire_fn`:
+
+i915_gem_active_set_retire_fn
+=============================
+
+.. c:function:: void i915_gem_active_set_retire_fn(struct i915_gem_active *active, i915_gem_retire_fn fn, struct mutex *mutex)
+
+    updates the retirement callback \ ``active``\  - the active tracker \ ``fn``\  - the routine called when the request is retired \ ``mutex``\  - struct_mutex used to guard retirements
+
+    :param struct i915_gem_active \*active:
+        *undescribed*
+
+    :param i915_gem_retire_fn fn:
+        *undescribed*
+
+    :param struct mutex \*mutex:
+        *undescribed*
+
+.. _`i915_gem_active_set_retire_fn.description`:
+
+Description
+-----------
+
+i915_gem_active_set_retire_fn() updates the function pointer that
+is called when the final request associated with the \ ``active``\  tracker
+is retired.
 
 .. _`i915_gem_active_raw`:
 

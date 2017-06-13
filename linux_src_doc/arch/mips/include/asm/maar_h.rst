@@ -53,7 +53,7 @@ write_maar_pair
 
     :param unsigned attrs:
         The accessibility attributes to program, eg. MIPS_MAAR_S. The
-        MIPS_MAAR_V attribute will automatically be set.
+        MIPS_MAAR_VL attribute will automatically be set.
 
 .. _`write_maar_pair.description`:
 
@@ -121,7 +121,7 @@ upper
 
 attrs
     The accessibility attributes to program, eg. MIPS_MAAR_S. The
-    MIPS_MAAR_V attribute will automatically be set.
+    MIPS_MAAR_VL attribute will automatically be set.
 
 .. _`maar_config.description`:
 

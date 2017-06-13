@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/qp.h
 
-.. _`hfi1_compute_aeth`:
-
-hfi1_compute_aeth
-=================
-
-.. c:function:: __be32 hfi1_compute_aeth(struct rvt_qp *qp)
-
-    compute the AETH (syndrome + MSN)
-
-    :param struct rvt_qp \*qp:
-        the queue pair to compute the AETH for
-
-.. _`hfi1_compute_aeth.description`:
-
-Description
------------
-
-Returns the AETH.
-
 .. _`hfi1_create_qp`:
 
 hfi1_create_qp
@@ -46,28 +27,6 @@ Description
 Returns the queue pair on success, otherwise returns an errno.
 
 Called by the \ :c:func:`ib_create_qp`\  core verbs function.
-
-.. _`hfi1_get_credit`:
-
-hfi1_get_credit
-===============
-
-.. c:function:: void hfi1_get_credit(struct rvt_qp *qp, u32 aeth)
-
-    flush the send work queue of a QP
-
-    :param struct rvt_qp \*qp:
-        the qp who's send work queue to flush
-
-    :param u32 aeth:
-        the Acknowledge Extended Transport Header
-
-.. _`hfi1_get_credit.description`:
-
-Description
------------
-
-The QP s_lock should be held.
 
 .. _`hfi1_qp_wakeup`:
 
@@ -122,18 +81,6 @@ qp_iter_print
 
     :param struct qp_iter \*iter:
         the iterator for the qp hash list
-
-.. _`qp_comm_est`:
-
-qp_comm_est
-===========
-
-.. c:function:: void qp_comm_est(struct rvt_qp *qp)
-
-    handle trap with QP established
-
-    :param struct rvt_qp \*qp:
-        the QP
 
 .. This file was automatic generated / don't edit.
 

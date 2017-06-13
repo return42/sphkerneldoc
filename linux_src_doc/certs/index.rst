@@ -7,4 +7,5 @@ certs
 .. toctree::
     :maxdepth: 1
 
+    blacklist_c
     system_keyring_c

@@ -301,6 +301,102 @@ slock
 pm_save
     saved register values during suspend
 
+.. _`samsung_retention_ctrl`:
+
+struct samsung_retention_ctrl
+=============================
+
+.. c:type:: struct samsung_retention_ctrl
+
+    runtime pin-bank retention control data.
+
+.. _`samsung_retention_ctrl.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct samsung_retention_ctrl {
+        const u32 *regs;
+        int nr_regs;
+        u32 value;
+        atomic_t *refcnt;
+        void *priv;
+        void (*enable)(struct samsung_pinctrl_drv_data *);
+        void (*disable)(struct samsung_pinctrl_drv_data *);
+    }
+
+.. _`samsung_retention_ctrl.members`:
+
+Members
+-------
+
+regs
+    array of PMU registers to control pad retention.
+
+nr_regs
+    number of registers in \ ``regs``\  array.
+
+value
+    value to store to registers to turn off retention.
+
+refcnt
+    atomic counter if retention control affects more than one bank.
+
+priv
+    retention control code private data
+
+enable
+    platform specific callback to enter retention mode.
+
+disable
+    platform specific callback to exit retention mode.
+
+.. _`samsung_retention_data`:
+
+struct samsung_retention_data
+=============================
+
+.. c:type:: struct samsung_retention_data
+
+    represent a pin-bank retention control data.
+
+.. _`samsung_retention_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct samsung_retention_data {
+        const u32 *regs;
+        int nr_regs;
+        u32 value;
+        atomic_t *refcnt;
+        struct samsung_retention_ctrl *(*init)(struct samsung_pinctrl_drv_data *,const struct samsung_retention_data *);
+    }
+
+.. _`samsung_retention_data.members`:
+
+Members
+-------
+
+regs
+    array of PMU registers to control pad retention.
+
+nr_regs
+    number of registers in \ ``regs``\  array.
+
+value
+    value to store to registers to turn off retention.
+
+refcnt
+    atomic counter if retention control affects more than one bank.
+
+init
+    platform specific callback to initialize retention control.
+
 .. _`samsung_pin_ctrl`:
 
 struct samsung_pin_ctrl
@@ -321,6 +417,7 @@ Definition
         const struct samsung_pin_bank_data *pin_banks;
         u32 nr_banks;
         int nr_ext_resources;
+        const struct samsung_retention_data *retention_data;
         int (*eint_gpio_init)(struct samsung_pinctrl_drv_data *);
         int (*eint_wkup_init)(struct samsung_pinctrl_drv_data *);
         void (*suspend)(struct samsung_pinctrl_drv_data *);
@@ -340,6 +437,9 @@ nr_banks
 
 nr_ext_resources
     number of the extra base address for pin banks.
+
+retention_data
+    configuration data for retention control.
 
 eint_gpio_init
     platform specific callback to setup the external gpio
@@ -385,6 +485,7 @@ Definition
         u32 nr_banks;
         unsigned int pin_base;
         unsigned int nr_pins;
+        struct samsung_retention_ctrl *retention_ctrl;
         void (*suspend)(struct samsung_pinctrl_drv_data *);
         void (*resume)(struct samsung_pinctrl_drv_data *);
     }
@@ -432,6 +533,9 @@ pin_base
 
 nr_pins
     number of pins supported by the controller.
+
+retention_ctrl
+    retention control runtime data.
 
 suspend
     *undescribed*

@@ -13,6 +13,54 @@ xprt_setup_rdma
     :param struct xprt_create \*args:
         rpc transport arguments
 
+.. _`xprt_rdma_close`:
+
+xprt_rdma_close
+===============
+
+.. c:function:: void xprt_rdma_close(struct rpc_xprt *xprt)
+
+    Close down RDMA connection
+
+    :param struct rpc_xprt \*xprt:
+        generic transport to be closed
+
+.. _`xprt_rdma_close.description`:
+
+Description
+-----------
+
+Called during transport shutdown reconnect, or device
+removal. Caller holds the transport's write lock.
+
+.. _`xprt_rdma_timer`:
+
+xprt_rdma_timer
+===============
+
+.. c:function:: void xprt_rdma_timer(struct rpc_xprt *xprt, struct rpc_task *task)
+
+    invoked when an RPC times out
+
+    :param struct rpc_xprt \*xprt:
+        controlling RPC transport
+
+    :param struct rpc_task \*task:
+        RPC task that timed out
+
+.. _`xprt_rdma_timer.description`:
+
+Description
+-----------
+
+Invoked when the transport is still connected, but an RPC
+retransmit timeout occurs.
+
+Since RDMA connections don't have a keep-alive, forcibly
+disconnect and retry to connect. This drives full
+detection of the network path, and retransmissions of
+all pending RPCs.
+
 .. _`xprt_rdma_allocate`:
 
 xprt_rdma_allocate
@@ -83,6 +131,13 @@ xprt_rdma_send_request
 
     :param struct rpc_task \*task:
         RPC task with an RPC message in rq_snd_buf
+
+.. _`xprt_rdma_send_request.description`:
+
+Description
+-----------
+
+Caller holds the transport's write lock.
 
 .. _`xprt_rdma_send_request.return-values`:
 

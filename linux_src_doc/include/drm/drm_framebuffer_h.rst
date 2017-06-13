@@ -32,15 +32,15 @@ destroy
 
     Clean up framebuffer resources, specifically also unreference the
     backing storage. The core guarantees to call this function for every
-    framebuffer successfully created by ->fb_create() in
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`\ . Drivers must also call
+    framebuffer successfully created by calling
+    \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\ . Drivers must also call
     \ :c:func:`drm_framebuffer_cleanup`\  to release DRM core resources for this
     framebuffer.
 
 create_handle
 
     Create a buffer handle in the driver-specific buffer manager (either
-    GEM or TTM) valid for the passed-in struct \ :c:type:`struct drm_file <drm_file>`\ . This is used by
+    GEM or TTM) valid for the passed-in \ :c:type:`struct drm_file <drm_file>`\ . This is used by
     the core to implement the GETFB IOCTL, which returns (for
     sufficiently priviledged user) also a native buffer handle. This can
     be used for seamless transitions between modesetting clients by
@@ -91,16 +91,14 @@ Definition
         struct drm_device *dev;
         struct list_head head;
         struct drm_mode_object base;
+        const struct drm_format_info *format;
         const struct drm_framebuffer_funcs *funcs;
         unsigned int pitches[4];
         unsigned int offsets[4];
         uint64_t modifier;
         unsigned int width;
         unsigned int height;
-        unsigned int depth;
-        int bits_per_pixel;
         int flags;
-        uint32_t pixel_format;
         int hot_x;
         int hot_y;
         struct list_head filp_head;
@@ -115,10 +113,13 @@ dev
     DRM device this framebuffer belongs to
 
 head
-    Place on the dev->mode_config.fb_list, access protected bydev->mode_config.fb_lock.
+    Place on the \ :c:type:`drm_mode_config.fb_list <drm_mode_config>`\ , access protected by&drm_mode_config.fb_lock.
 
 base
     base modeset object structure, contains the reference count.
+
+format
+    framebuffer format information
 
 funcs
     framebuffer vfunc table
@@ -140,7 +141,7 @@ offsets
 
     This should not be used to specifiy x/y pixel offsets into the buffer
     data (even for linear buffers). Specifying an x/y pixel offset is
-    instead done through the source rectangle in struct \ :c:type:`struct drm_plane_state <drm_plane_state>`\ .
+    instead done through the source rectangle in \ :c:type:`struct drm_plane_state <drm_plane_state>`\ .
 
 modifier
     Data layout modifier. This is used to describetiling, or also special layouts (like compression) of auxiliary
@@ -153,20 +154,8 @@ width
 height
     Logical height of the visible area of the framebuffer, inpixels.
 
-depth
-    Depth in bits per pixel for RGB formats. 0 for everythingelse. Legacy information derived from \ ``pixel_format``\ , it's suggested to use
-    the DRM FOURCC codes and helper functions directly instead.
-
-bits_per_pixel
-    Storage used bits per pixel for RGB formats. 0 foreverything else. Legacy information derived from \ ``pixel_format``\ , it's
-    suggested to use the DRM FOURCC codes and helper functions directly
-    instead.
-
 flags
     Framebuffer flags like DRM_MODE_FB_INTERLACED orDRM_MODE_FB_MODIFIERS.
-
-pixel_format
-    DRM FOURCC code describing the pixel format.
 
 hot_x
     X coordinate of the cursor hotspot. Used by the legacy cursorIOCTL when the driver supports cursor through a DRM_PLANE_TYPE_CURSOR
@@ -177,7 +166,7 @@ hot_y
     universal plane.
 
 filp_head
-    Placed on struct \ :c:type:`struct drm_file <drm_file>`\  fbs list_head, protected byfbs_lock in the same structure.
+    Placed on \ :c:type:`drm_file.fbs <drm_file>`\ , protected by \ :c:type:`drm_file.fbs_lock <drm_file>`\ .
 
 .. _`drm_framebuffer.description`:
 
@@ -190,10 +179,49 @@ scanout does not actually complete until the next vblank.  So some
 cleanup (like releasing the reference(s) on the backing GEM bo(s))
 should be deferred.  In cases like this, the driver would like to
 hold a ref to the fb even though it has already been removed from
-userspace perspective. See \ :c:func:`drm_framebuffer_reference`\  and
-\ :c:func:`drm_framebuffer_unreference`\ .
+userspace perspective. See \ :c:func:`drm_framebuffer_get`\  and
+\ :c:func:`drm_framebuffer_put`\ .
 
 The refcount is stored inside the mode object \ ``base``\ .
+
+.. _`drm_framebuffer_get`:
+
+drm_framebuffer_get
+===================
+
+.. c:function:: void drm_framebuffer_get(struct drm_framebuffer *fb)
+
+    acquire a framebuffer reference
+
+    :param struct drm_framebuffer \*fb:
+        DRM framebuffer
+
+.. _`drm_framebuffer_get.description`:
+
+Description
+-----------
+
+This function increments the framebuffer's reference count.
+
+.. _`drm_framebuffer_put`:
+
+drm_framebuffer_put
+===================
+
+.. c:function:: void drm_framebuffer_put(struct drm_framebuffer *fb)
+
+    release a framebuffer reference
+
+    :param struct drm_framebuffer \*fb:
+        DRM framebuffer
+
+.. _`drm_framebuffer_put.description`:
+
+Description
+-----------
+
+This function decrements the framebuffer's reference count and frees the
+framebuffer if the reference count drops to zero.
 
 .. _`drm_framebuffer_reference`:
 
@@ -202,17 +230,18 @@ drm_framebuffer_reference
 
 .. c:function:: void drm_framebuffer_reference(struct drm_framebuffer *fb)
 
-    incr the fb refcnt
+    acquire a framebuffer reference
 
     :param struct drm_framebuffer \*fb:
-        framebuffer
+        DRM framebuffer
 
 .. _`drm_framebuffer_reference.description`:
 
 Description
 -----------
 
-This functions increments the fb's refcount.
+This is a compatibility alias for \ :c:func:`drm_framebuffer_get`\  and should not be
+used by new code.
 
 .. _`drm_framebuffer_unreference`:
 
@@ -221,17 +250,18 @@ drm_framebuffer_unreference
 
 .. c:function:: void drm_framebuffer_unreference(struct drm_framebuffer *fb)
 
-    unref a framebuffer
+    release a framebuffer reference
 
     :param struct drm_framebuffer \*fb:
-        framebuffer to unref
+        DRM framebuffer
 
 .. _`drm_framebuffer_unreference.description`:
 
 Description
 -----------
 
-This functions decrements the fb's refcount and frees it if it drops to zero.
+This is a compatibility alias for \ :c:func:`drm_framebuffer_put`\  and should not be
+used by new code.
 
 .. _`drm_framebuffer_read_refcount`:
 

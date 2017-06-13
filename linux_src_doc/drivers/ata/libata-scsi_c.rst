@@ -27,24 +27,24 @@ ata_std_bios_param
 Description
 -----------
 
-Generic bios head/sector/cylinder calculator
-used by sd. Most BIOSes nowadays expect a XXX/255/16  (CHS)
-mapping. Some situations may arise where the disk is not
-bootable if this is not used.
+     Generic bios head/sector/cylinder calculator
+     used by sd. Most BIOSes nowadays expect a XXX/255/16  (CHS)
+     mapping. Some situations may arise where the disk is not
+     bootable if this is not used.
 
 .. _`ata_std_bios_param.locking`:
 
 LOCKING
 -------
 
-Defined by the SCSI layer.  We don't really care.
+     Defined by the SCSI layer.  We don't really care.
 
 .. _`ata_std_bios_param.return`:
 
 Return
 ------
 
-Zero.
+     Zero.
 
 .. _`ata_scsi_unlock_native_capacity`:
 
@@ -63,15 +63,15 @@ ata_scsi_unlock_native_capacity
 Description
 -----------
 
-This function is called if a partition on \ ``sdev``\  extends beyond
-the end of the device.  It requests EH to unlock HPA.
+     This function is called if a partition on \ ``sdev``\  extends beyond
+     the end of the device.  It requests EH to unlock HPA.
 
 .. _`ata_scsi_unlock_native_capacity.locking`:
 
 LOCKING
 -------
 
-Defined by the SCSI layer.  Might sleep.
+     Defined by the SCSI layer.  Might sleep.
 
 .. _`ata_get_identity`:
 
@@ -96,14 +96,14 @@ ata_get_identity
 LOCKING
 -------
 
-Defined by the SCSI layer.  We don't really care.
+     Defined by the SCSI layer.  We don't really care.
 
 .. _`ata_get_identity.return`:
 
 Return
 ------
 
-Zero on success, negative errno on error.
+     Zero on success, negative errno on error.
 
 .. _`ata_cmd_ioctl`:
 
@@ -125,14 +125,14 @@ ata_cmd_ioctl
 LOCKING
 -------
 
-Defined by the SCSI layer.  We don't really care.
+     Defined by the SCSI layer.  We don't really care.
 
 .. _`ata_cmd_ioctl.return`:
 
 Return
 ------
 
-Zero on success, negative errno on error.
+     Zero on success, negative errno on error.
 
 .. _`ata_task_ioctl`:
 
@@ -154,14 +154,14 @@ ata_task_ioctl
 LOCKING
 -------
 
-Defined by the SCSI layer.  We don't really care.
+     Defined by the SCSI layer.  We don't really care.
 
 .. _`ata_task_ioctl.return`:
 
 Return
 ------
 
-Zero on success, negative errno on error.
+     Zero on success, negative errno on error.
 
 .. _`ata_scsi_qc_new`:
 
@@ -183,27 +183,27 @@ ata_scsi_qc_new
 Description
 -----------
 
-Obtain a reference to an unused ata_queued_cmd structure,
-which is the basic libata structure representing a single
-ATA command sent to the hardware.
+     Obtain a reference to an unused ata_queued_cmd structure,
+     which is the basic libata structure representing a single
+     ATA command sent to the hardware.
 
-If a command was available, fill in the SCSI-specific
-portions of the structure with information on the
-current command.
+     If a command was available, fill in the SCSI-specific
+     portions of the structure with information on the
+     current command.
 
 .. _`ata_scsi_qc_new.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_qc_new.return`:
 
 Return
 ------
 
-Command allocated, or \ ``NULL``\  if none available.
+     Command allocated, or \ ``NULL``\  if none available.
 
 .. _`ata_dump_status`:
 
@@ -225,16 +225,16 @@ ata_dump_status
 Description
 -----------
 
-Decode and dump the ATA error/status registers for the user so
-that they have some idea what really happened at the non
-make-believe layer.
+     Decode and dump the ATA error/status registers for the user so
+     that they have some idea what really happened at the non
+     make-believe layer.
 
 .. _`ata_dump_status.locking`:
 
 LOCKING
 -------
 
-inherited from caller
+     inherited from caller
 
 .. _`ata_to_sense_error`:
 
@@ -271,16 +271,16 @@ ata_to_sense_error
 Description
 -----------
 
-Converts an ATA error into a SCSI error.  Fill out pointers to
-SK, ASC, and ASCQ bytes for later use in fixed or descriptor
-format sense blocks.
+     Converts an ATA error into a SCSI error.  Fill out pointers to
+     SK, ASC, and ASCQ bytes for later use in fixed or descriptor
+     format sense blocks.
 
 .. _`ata_to_sense_error.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_gen_ata_sense`:
 
@@ -299,15 +299,15 @@ ata_gen_ata_sense
 Description
 -----------
 
-Generate sense block for a failed ATA command \ ``qc``\ .  Descriptor
-format is used to accommodate LBA48 block address.
+     Generate sense block for a failed ATA command \ ``qc``\ .  Descriptor
+     format is used to accommodate LBA48 block address.
 
 .. _`ata_gen_ata_sense.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`atapi_drain_needed`:
 
@@ -326,24 +326,24 @@ atapi_drain_needed
 Description
 -----------
 
-ATAPI commands which transfer variable length data to host
-might overflow due to application error or hardware bug.  This
-function checks whether overflow should be drained and ignored
-for \ ``request``\ .
+     ATAPI commands which transfer variable length data to host
+     might overflow due to application error or hardware bug.  This
+     function checks whether overflow should be drained and ignored
+     for \ ``request``\ .
 
 .. _`atapi_drain_needed.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`atapi_drain_needed.return`:
 
 Return
 ------
 
-1 if ; otherwise, 0.
+     1 if ; otherwise, 0.
 
 .. _`ata_scsi_slave_config`:
 
@@ -362,16 +362,16 @@ ata_scsi_slave_config
 Description
 -----------
 
-This is called before we actually start reading
-and writing to the device, to configure certain
-SCSI mid-layer behaviors.
+     This is called before we actually start reading
+     and writing to the device, to configure certain
+     SCSI mid-layer behaviors.
 
 .. _`ata_scsi_slave_config.locking`:
 
 LOCKING
 -------
 
-Defined by SCSI layer.  We don't really care.
+     Defined by SCSI layer.  We don't really care.
 
 .. _`ata_scsi_slave_destroy`:
 
@@ -390,19 +390,19 @@ ata_scsi_slave_destroy
 Description
 -----------
 
-@sdev is about to be destroyed for hot/warm unplugging.  If
-this unplugging was initiated by libata as indicated by NULL
-dev->sdev, this function doesn't have to do anything.
-Otherwise, SCSI layer initiated warm-unplug is in progress.
-Clear dev->sdev, schedule the device for ATA detach and invoke
-EH.
+     \ ``sdev``\  is about to be destroyed for hot/warm unplugging.  If
+     this unplugging was initiated by libata as indicated by NULL
+     dev->sdev, this function doesn't have to do anything.
+     Otherwise, SCSI layer initiated warm-unplug is in progress.
+     Clear dev->sdev, schedule the device for ATA detach and invoke
+     EH.
 
 .. _`ata_scsi_slave_destroy.locking`:
 
 LOCKING
 -------
 
-Defined by SCSI layer.  We don't really care.
+     Defined by SCSI layer.  We don't really care.
 
 .. _`__ata_change_queue_depth`:
 
@@ -427,8 +427,8 @@ __ata_change_queue_depth
 Description
 -----------
 
-libsas and libata have different approaches for associating a sdev to
-its ata_port.
+     libsas and libata have different approaches for associating a sdev to
+     its ata_port.
 
 .. _`ata_scsi_change_queue_depth`:
 
@@ -450,23 +450,23 @@ ata_scsi_change_queue_depth
 Description
 -----------
 
-This is libata standard hostt->change_queue_depth callback.
-SCSI will call into this callback when user tries to set queue
-depth via sysfs.
+     This is libata standard hostt->change_queue_depth callback.
+     SCSI will call into this callback when user tries to set queue
+     depth via sysfs.
 
 .. _`ata_scsi_change_queue_depth.locking`:
 
 LOCKING
 -------
 
-SCSI layer (we don't care)
+     SCSI layer (we don't care)
 
 .. _`ata_scsi_change_queue_depth.return`:
 
 Return
 ------
 
-Newly configured queue depth.
+     Newly configured queue depth.
 
 .. _`ata_scsi_start_stop_xlat`:
 
@@ -485,24 +485,24 @@ ata_scsi_start_stop_xlat
 Description
 -----------
 
-Sets up an ATA taskfile to issue STANDBY (to stop) or READ VERIFY
-(to start). Perhaps these commands should be preceded by
-CHECK POWER MODE to see what power mode the device is already in.
-[See SAT revision 5 at www.t10.org]
+     Sets up an ATA taskfile to issue STANDBY (to stop) or READ VERIFY
+     (to start). Perhaps these commands should be preceded by
+     CHECK POWER MODE to see what power mode the device is already in.
+     [See SAT revision 5 at www.t10.org]
 
 .. _`ata_scsi_start_stop_xlat.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_start_stop_xlat.return`:
 
 Return
 ------
 
-Zero on success, non-zero on error.
+     Zero on success, non-zero on error.
 
 .. _`ata_scsi_flush_xlat`:
 
@@ -521,22 +521,22 @@ ata_scsi_flush_xlat
 Description
 -----------
 
-Sets up an ATA taskfile to issue FLUSH CACHE or
-FLUSH CACHE EXT.
+     Sets up an ATA taskfile to issue FLUSH CACHE or
+     FLUSH CACHE EXT.
 
 .. _`ata_scsi_flush_xlat.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_flush_xlat.return`:
 
 Return
 ------
 
-Zero on success, non-zero on error.
+     Zero on success, non-zero on error.
 
 .. _`scsi_6_lba_len`:
 
@@ -561,7 +561,7 @@ scsi_6_lba_len
 Description
 -----------
 
-Calculate LBA and transfer length for 6-byte commands.
+     Calculate LBA and transfer length for 6-byte commands.
 
 .. _`scsi_10_lba_len`:
 
@@ -586,7 +586,7 @@ scsi_10_lba_len
 Description
 -----------
 
-Calculate LBA and transfer length for 10-byte commands.
+     Calculate LBA and transfer length for 10-byte commands.
 
 .. _`scsi_16_lba_len`:
 
@@ -611,7 +611,7 @@ scsi_16_lba_len
 Description
 -----------
 
-Calculate LBA and transfer length for 16-byte commands.
+     Calculate LBA and transfer length for 16-byte commands.
 
 .. _`ata_scsi_verify_xlat`:
 
@@ -630,21 +630,21 @@ ata_scsi_verify_xlat
 Description
 -----------
 
-Converts SCSI VERIFY command to an ATA READ VERIFY command.
+     Converts SCSI VERIFY command to an ATA READ VERIFY command.
 
 .. _`ata_scsi_verify_xlat.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_verify_xlat.return`:
 
 Return
 ------
 
-Zero on success, non-zero on error.
+     Zero on success, non-zero on error.
 
 .. _`ata_scsi_rw_xlat`:
 
@@ -663,27 +663,27 @@ ata_scsi_rw_xlat
 Description
 -----------
 
-Converts any of six SCSI read/write commands into the
-ATA counterpart, including starting sector (LBA),
-sector count, and taking into account the device's LBA48
-support.
+     Converts any of six SCSI read/write commands into the
+     ATA counterpart, including starting sector (LBA),
+     sector count, and taking into account the device's LBA48
+     support.
 
-Commands \ ``READ_6``\ , \ ``READ_10``\ , \ ``READ_16``\ , \ ``WRITE_6``\ , \ ``WRITE_10``\ , and
-\ ``WRITE_16``\  are currently supported.
+     Commands \ ``READ_6``\ , \ ``READ_10``\ , \ ``READ_16``\ , \ ``WRITE_6``\ , \ ``WRITE_10``\ , and
+     \ ``WRITE_16``\  are currently supported.
 
 .. _`ata_scsi_rw_xlat.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_rw_xlat.return`:
 
 Return
 ------
 
-Zero on success, non-zero on error.
+     Zero on success, non-zero on error.
 
 .. _`ata_scsi_translate`:
 
@@ -708,33 +708,33 @@ ata_scsi_translate
 Description
 -----------
 
-Our ->queuecommand() function has decided that the SCSI
-command issued can be directly translated into an ATA
-command, rather than handled internally.
+     Our ->queuecommand() function has decided that the SCSI
+     command issued can be directly translated into an ATA
+     command, rather than handled internally.
 
-This function sets up an ata_queued_cmd structure for the
-SCSI command, and sends that ata_queued_cmd to the hardware.
+     This function sets up an ata_queued_cmd structure for the
+     SCSI command, and sends that ata_queued_cmd to the hardware.
 
-The xlat_func argument (actor) returns 0 if ready to execute
-ATA command, else 1 to finish translation. If 1 is returned
-then cmd->result (and possibly cmd->sense_buffer) are assumed
-to be set reflecting an error condition or clean (early)
-termination.
+     The xlat_func argument (actor) returns 0 if ready to execute
+     ATA command, else 1 to finish translation. If 1 is returned
+     then cmd->result (and possibly cmd->sense_buffer) are assumed
+     to be set reflecting an error condition or clean (early)
+     termination.
 
 .. _`ata_scsi_translate.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_translate.return`:
 
 Return
 ------
 
-0 on success, SCSI_ML_QUEUE_DEVICE_BUSY if the command
-needs to be deferred.
+     0 on success, SCSI_ML_QUEUE_DEVICE_BUSY if the command
+     needs to be deferred.
 
 .. _`ata_scsi_rbuf_get`:
 
@@ -759,21 +759,21 @@ ata_scsi_rbuf_get
 Description
 -----------
 
-Prepare buffer for simulated SCSI commands.
+     Prepare buffer for simulated SCSI commands.
 
 .. _`ata_scsi_rbuf_get.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(ata_scsi_rbuf_lock) on success
+     spin_lock_irqsave(ata_scsi_rbuf_lock) on success
 
 .. _`ata_scsi_rbuf_get.return`:
 
 Return
 ------
 
-Pointer to response buffer.
+     Pointer to response buffer.
 
 .. _`ata_scsi_rbuf_put`:
 
@@ -798,15 +798,15 @@ ata_scsi_rbuf_put
 Description
 -----------
 
-Returns rbuf buffer.  The result is copied to \ ``cmd``\ 's buffer if
-\ ``copy_back``\  is true.
+     Returns rbuf buffer.  The result is copied to \ ``cmd``\ 's buffer if
+     \ ``copy_back``\  is true.
 
 .. _`ata_scsi_rbuf_put.locking`:
 
 LOCKING
 -------
 
-Unlocks ata_scsi_rbuf_lock.
+     Unlocks ata_scsi_rbuf_lock.
 
 .. _`ata_scsi_rbuf_fill`:
 
@@ -828,19 +828,19 @@ ata_scsi_rbuf_fill
 Description
 -----------
 
-Takes care of the hard work of simulating a SCSI command...
-Mapping the response buffer, calling the command's handler,
-and handling the handler's return value.  This return value
-indicates whether the handler wishes the SCSI command to be
-completed successfully (0), or not (in which case cmd->result
-and sense buffer are assumed to be set).
+     Takes care of the hard work of simulating a SCSI command...
+     Mapping the response buffer, calling the command's handler,
+     and handling the handler's return value.  This return value
+     indicates whether the handler wishes the SCSI command to be
+     completed successfully (0), or not (in which case cmd->result
+     and sense buffer are assumed to be set).
 
 .. _`ata_scsi_rbuf_fill.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsiop_inq_std`:
 
@@ -862,15 +862,15 @@ ata_scsiop_inq_std
 Description
 -----------
 
-Returns standard device identification data associated
-with non-VPD INQUIRY command output.
+     Returns standard device identification data associated
+     with non-VPD INQUIRY command output.
 
 .. _`ata_scsiop_inq_std.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsiop_inq_00`:
 
@@ -892,14 +892,14 @@ ata_scsiop_inq_00
 Description
 -----------
 
-Returns list of inquiry VPD pages available.
+     Returns list of inquiry VPD pages available.
 
 .. _`ata_scsiop_inq_00.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsiop_inq_80`:
 
@@ -921,14 +921,14 @@ ata_scsiop_inq_80
 Description
 -----------
 
-Returns ATA device serial number.
+     Returns ATA device serial number.
 
 .. _`ata_scsiop_inq_80.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsiop_inq_83`:
 
@@ -950,16 +950,16 @@ ata_scsiop_inq_83
 Yields two logical unit device identification designators
 ---------------------------------------------------------
 
-- vendor specific ASCII containing the ATA serial number
-- SAT defined "t10 vendor id based" containing ASCII vendor
-name ("ATA     "), model and serial numbers.
+      - vendor specific ASCII containing the ATA serial number
+      - SAT defined "t10 vendor id based" containing ASCII vendor
+        name ("ATA     "), model and serial numbers.
 
 .. _`ata_scsiop_inq_83.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsiop_inq_89`:
 
@@ -981,44 +981,14 @@ ata_scsiop_inq_89
 Description
 -----------
 
-Yields SAT-specified ATA VPD page.
+     Yields SAT-specified ATA VPD page.
 
 .. _`ata_scsiop_inq_89.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
-
-.. _`ata_scsiop_noop`:
-
-ata_scsiop_noop
-===============
-
-.. c:function:: unsigned int ata_scsiop_noop(struct ata_scsi_args *args, u8 *rbuf)
-
-    Command handler that simply returns success.
-
-    :param struct ata_scsi_args \*args:
-        device IDENTIFY data / SCSI command of interest.
-
-    :param u8 \*rbuf:
-        Response buffer, to which simulated SCSI cmd output is sent.
-
-.. _`ata_scsiop_noop.description`:
-
-Description
------------
-
-No operation.  Simply returns success to caller, to indicate
-that the caller should successfully complete this SCSI command.
-
-.. _`ata_scsiop_noop.locking`:
-
-LOCKING
--------
-
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`modecpy`:
 
@@ -1046,15 +1016,15 @@ modecpy
 Description
 -----------
 
-Generate a generic MODE SENSE page for either current or changeable
-parameters.
+     Generate a generic MODE SENSE page for either current or changeable
+     parameters.
 
 .. _`modecpy.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_msense_caching`:
 
@@ -1079,16 +1049,16 @@ ata_msense_caching
 Description
 -----------
 
-Generate a caching info page, which conditionally indicates
-write caching to the SCSI layer, depending on device
-capabilities.
+     Generate a caching info page, which conditionally indicates
+     write caching to the SCSI layer, depending on device
+     capabilities.
 
 .. _`ata_msense_caching.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_msense_control`:
 
@@ -1113,14 +1083,14 @@ ata_msense_control
 Description
 -----------
 
-Generate a generic MODE SENSE control mode page.
+     Generate a generic MODE SENSE control mode page.
 
 .. _`ata_msense_control.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_msense_rw_recovery`:
 
@@ -1142,14 +1112,14 @@ ata_msense_rw_recovery
 Description
 -----------
 
-Generate a generic MODE SENSE r/w error recovery page.
+     Generate a generic MODE SENSE r/w error recovery page.
 
 .. _`ata_msense_rw_recovery.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_scsiop_mode_sense`:
 
@@ -1171,16 +1141,16 @@ ata_scsiop_mode_sense
 Description
 -----------
 
-Simulate MODE SENSE commands. Assume this is invoked for direct
-access devices (e.g. disks) only. There should be no block
-descriptor for other device types.
+     Simulate MODE SENSE commands. Assume this is invoked for direct
+     access devices (e.g. disks) only. There should be no block
+     descriptor for other device types.
 
 .. _`ata_scsiop_mode_sense.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsiop_read_cap`:
 
@@ -1202,14 +1172,14 @@ ata_scsiop_read_cap
 Description
 -----------
 
-Simulate READ CAPACITY commands.
+     Simulate READ CAPACITY commands.
 
 .. _`ata_scsiop_read_cap.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_scsiop_report_luns`:
 
@@ -1231,14 +1201,14 @@ ata_scsiop_report_luns
 Description
 -----------
 
-Simulate REPORT LUNS command.
+     Simulate REPORT LUNS command.
 
 .. _`ata_scsiop_report_luns.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`atapi_xlat`:
 
@@ -1257,14 +1227,14 @@ atapi_xlat
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`atapi_xlat.return`:
 
 Return
 ------
 
-Zero on success, non-zero on failure.
+     Zero on success, non-zero on failure.
 
 .. _`ata_scsi_find_dev`:
 
@@ -1286,24 +1256,24 @@ ata_scsi_find_dev
 Description
 -----------
 
-Given various information provided in struct scsi_cmnd,
-map that onto an ATA bus, and using that mapping
-determine which ata_device is associated with the
-SCSI command to be sent.
+     Given various information provided in struct scsi_cmnd,
+     map that onto an ATA bus, and using that mapping
+     determine which ata_device is associated with the
+     SCSI command to be sent.
 
 .. _`ata_scsi_find_dev.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_find_dev.return`:
 
 Return
 ------
 
-Associated ATA device, or \ ``NULL``\  if not found.
+     Associated ATA device, or \ ``NULL``\  if not found.
 
 .. _`ata_scsi_pass_thru`:
 
@@ -1322,14 +1292,14 @@ ata_scsi_pass_thru
 Description
 -----------
 
-Handles either 12 or 16-byte versions of the CDB.
+     Handles either 12 or 16-byte versions of the CDB.
 
 .. _`ata_scsi_pass_thru.return`:
 
 Return
 ------
 
-Zero on success, non-zero on failure.
+     Zero on success, non-zero on failure.
 
 .. _`ata_format_dsm_trim_descr`:
 
@@ -1365,11 +1335,11 @@ descriptor.
 Upto 64 entries of the format
 -----------------------------
 
-63:48 Range Length
-47:0  LBA
+  63:48 Range Length
+  47:0  LBA
 
-Range Length of 0 is ignored.
-LBA's should be sorted order and not overlap.
+ Range Length of 0 is ignored.
+ LBA's should be sorted order and not overlap.
 
 .. _`ata_format_dsm_trim_descr.note`:
 
@@ -1379,46 +1349,6 @@ NOTE
 this is the same format as ADD LBA(S) TO NV CACHE PINNED SET
 
 .. _`ata_format_dsm_trim_descr.return`:
-
-Return
-------
-
-Number of bytes copied into sglist.
-
-.. _`ata_format_sct_write_same`:
-
-ata_format_sct_write_same
-=========================
-
-.. c:function:: size_t ata_format_sct_write_same(struct scsi_cmnd *cmd, u64 lba, u64 num)
-
-    SATL Write Same to ATA SCT Write Same
-
-    :param struct scsi_cmnd \*cmd:
-        SCSI command being translated
-
-    :param u64 lba:
-        Starting sector
-
-    :param u64 num:
-        Number of sectors to be zero'd.
-
-.. _`ata_format_sct_write_same.description`:
-
-Description
------------
-
-Rewrite the WRITE SAME payload to be an SCT Write Same formatted
-descriptor.
-
-.. _`ata_format_sct_write_same.note`:
-
-NOTE
-----
-
-Writes a pattern (0's) in the foreground.
-
-.. _`ata_format_sct_write_same.return`:
 
 Return
 ------
@@ -1444,9 +1374,15 @@ Description
 
 Translate a SCSI WRITE SAME command to be either a DSM TRIM command or
 an SCT Write Same command.
+
+.. _`ata_scsi_write_same_xlat.based-on-write-same-has-the-unmap-flag`:
+
 Based on WRITE SAME has the UNMAP flag
-When set translate to DSM TRIM
-When clear translate to SCT Write Same
+--------------------------------------
+
+
+  - When set translate to DSM TRIM
+  - When clear translate to SCT Write Same
 
 .. _`ata_scsiop_maint_in`:
 
@@ -1468,14 +1404,14 @@ ata_scsiop_maint_in
 Description
 -----------
 
-Yields a subset to satisfy \ :c:func:`scsi_report_opcode`\ 
+     Yields a subset to satisfy \ :c:func:`scsi_report_opcode`\ 
 
 .. _`ata_scsiop_maint_in.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_report_zones_complete`:
 
@@ -1494,9 +1430,9 @@ ata_scsi_report_zones_complete
 Description
 -----------
 
-Convert T-13 little-endian field representation into
-T-10 big-endian field representation.
-What a mess.
+     Convert T-13 little-endian field representation into
+     T-10 big-endian field representation.
+     What a mess.
 
 .. _`ata_mselect_caching`:
 
@@ -1524,14 +1460,14 @@ ata_mselect_caching
 Description
 -----------
 
-Prepare a taskfile to modify caching information for the device.
+     Prepare a taskfile to modify caching information for the device.
 
 .. _`ata_mselect_caching.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_mselect_control`:
 
@@ -1559,14 +1495,14 @@ ata_mselect_control
 Description
 -----------
 
-Prepare a taskfile to modify caching information for the device.
+     Prepare a taskfile to modify caching information for the device.
 
 .. _`ata_mselect_control.locking`:
 
 LOCKING
 -------
 
-None.
+     None.
 
 .. _`ata_scsi_mode_select_xlat`:
 
@@ -1585,16 +1521,16 @@ ata_scsi_mode_select_xlat
 Description
 -----------
 
-Converts a MODE SELECT command to an ATA SET FEATURES taskfile.
-Assume this is invoked for direct access devices (e.g. disks) only.
-There should be no block descriptor for other device types.
+     Converts a MODE SELECT command to an ATA SET FEATURES taskfile.
+     Assume this is invoked for direct access devices (e.g. disks) only.
+     There should be no block descriptor for other device types.
 
 .. _`ata_scsi_mode_select_xlat.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_get_xlat_func`:
 
@@ -1616,15 +1552,15 @@ ata_get_xlat_func
 Description
 -----------
 
-Look up the SCSI command given, and determine whether the
-SCSI command is to be translated or simulated.
+     Look up the SCSI command given, and determine whether the
+     SCSI command is to be translated or simulated.
 
 .. _`ata_get_xlat_func.return`:
 
 Return
 ------
 
-Pointer to translation function if possible, \ ``NULL``\  if not.
+     Pointer to translation function if possible, \ ``NULL``\  if not.
 
 .. _`ata_scsi_dump_cdb`:
 
@@ -1646,7 +1582,7 @@ ata_scsi_dump_cdb
 Description
 -----------
 
-Prints the contents of a SCSI command via \ :c:func:`printk`\ .
+     Prints the contents of a SCSI command via \ :c:func:`printk`\ .
 
 .. _`ata_scsi_queuecmd`:
 
@@ -1668,27 +1604,27 @@ ata_scsi_queuecmd
 Description
 -----------
 
-In some cases, this function translates SCSI commands into
-ATA taskfiles, and queues the taskfiles to be sent to
-hardware.  In other cases, this function simulates a
-SCSI device by evaluating and responding to certain
-SCSI commands.  This creates the overall effect of
-ATA and ATAPI devices appearing as SCSI devices.
+     In some cases, this function translates SCSI commands into
+     ATA taskfiles, and queues the taskfiles to be sent to
+     hardware.  In other cases, this function simulates a
+     SCSI device by evaluating and responding to certain
+     SCSI commands.  This creates the overall effect of
+     ATA and ATAPI devices appearing as SCSI devices.
 
 .. _`ata_scsi_queuecmd.locking`:
 
 LOCKING
 -------
 
-ATA host lock
+     ATA host lock
 
 .. _`ata_scsi_queuecmd.return`:
 
 Return
 ------
 
-Return value from \__ata_scsi_queuecmd() if \ ``cmd``\  can be queued,
-0 otherwise.
+     Return value from \ :c:func:`__ata_scsi_queuecmd`\  if \ ``cmd``\  can be queued,
+     0 otherwise.
 
 .. _`ata_scsi_simulate`:
 
@@ -1710,15 +1646,15 @@ ata_scsi_simulate
 Description
 -----------
 
-Interprets and directly executes a select list of SCSI commands
-that can be handled internally.
+     Interprets and directly executes a select list of SCSI commands
+     that can be handled internally.
 
 .. _`ata_scsi_simulate.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_offline_dev`:
 
@@ -1737,24 +1673,24 @@ ata_scsi_offline_dev
 Description
 -----------
 
-This function is called from \ :c:func:`ata_eh_hotplug`\  and responsible
-for taking the SCSI device attached to \ ``dev``\  offline.  This
-function is called with host lock which protects dev->sdev
-against clearing.
+     This function is called from \ :c:func:`ata_eh_hotplug`\  and responsible
+     for taking the SCSI device attached to \ ``dev``\  offline.  This
+     function is called with host lock which protects dev->sdev
+     against clearing.
 
 .. _`ata_scsi_offline_dev.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_offline_dev.return`:
 
 Return
 ------
 
-1 if attached SCSI device exists, 0 otherwise.
+     1 if attached SCSI device exists, 0 otherwise.
 
 .. _`ata_scsi_remove_dev`:
 
@@ -1773,15 +1709,15 @@ ata_scsi_remove_dev
 Description
 -----------
 
-This function is called from \ :c:func:`ata_eh_scsi_hotplug`\  and
-responsible for removing the SCSI device attached to \ ``dev``\ .
+     This function is called from \ :c:func:`ata_eh_scsi_hotplug`\  and
+     responsible for removing the SCSI device attached to \ ``dev``\ .
 
 .. _`ata_scsi_remove_dev.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_scsi_media_change_notify`:
 
@@ -1800,15 +1736,15 @@ ata_scsi_media_change_notify
 Description
 -----------
 
-Tell the block layer to send a media change notification
-event.
+     Tell the block layer to send a media change notification
+     event.
 
 .. _`ata_scsi_media_change_notify.locking`:
 
 LOCKING
 -------
 
-spin_lock_irqsave(host lock)
+     spin_lock_irqsave(host lock)
 
 .. _`ata_scsi_hotplug`:
 
@@ -1827,17 +1763,17 @@ ata_scsi_hotplug
 Description
 -----------
 
-Perform SCSI part of hotplug.  It's executed from a separate
-workqueue after EH completes.  This is necessary because SCSI
-hot plugging requires working EH and hot unplugging is
-synchronized with hot plugging with a mutex.
+     Perform SCSI part of hotplug.  It's executed from a separate
+     workqueue after EH completes.  This is necessary because SCSI
+     hot plugging requires working EH and hot unplugging is
+     synchronized with hot plugging with a mutex.
 
 .. _`ata_scsi_hotplug.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_scsi_user_scan`:
 
@@ -1865,22 +1801,22 @@ ata_scsi_user_scan
 Description
 -----------
 
-This function is called when user explicitly requests bus
-scan.  Set probe pending flag and invoke EH.
+     This function is called when user explicitly requests bus
+     scan.  Set probe pending flag and invoke EH.
 
 .. _`ata_scsi_user_scan.locking`:
 
 LOCKING
 -------
 
-SCSI layer (we don't care)
+     SCSI layer (we don't care)
 
 .. _`ata_scsi_user_scan.return`:
 
 Return
 ------
 
-Zero.
+     Zero.
 
 .. _`ata_scsi_dev_rescan`:
 
@@ -1899,15 +1835,15 @@ ata_scsi_dev_rescan
 Description
 -----------
 
-After ATA pass thru (SAT) commands are executed successfully,
-libata need to propagate the changes to SCSI layer.
+     After ATA pass thru (SAT) commands are executed successfully,
+     libata need to propagate the changes to SCSI layer.
 
 .. _`ata_scsi_dev_rescan.locking`:
 
 LOCKING
 -------
 
-Kernel thread context (may sleep).
+     Kernel thread context (may sleep).
 
 .. _`ata_sas_port_alloc`:
 
@@ -1932,14 +1868,14 @@ ata_sas_port_alloc
 LOCKING
 -------
 
-PCI/etc. bus probe sem.
+     PCI/etc. bus probe sem.
 
 .. _`ata_sas_port_alloc.return`:
 
 Return
 ------
 
-ata_port pointer on success / NULL on failure.
+     ata_port pointer on success / NULL on failure.
 
 .. _`ata_sas_port_start`:
 
@@ -1958,17 +1894,17 @@ ata_sas_port_start
 Description
 -----------
 
-Called just after data structures for each port are
-initialized.
+     Called just after data structures for each port are
+     initialized.
 
-May be used as the \ :c:func:`port_start`\  entry in ata_port_operations.
+     May be used as the \ :c:func:`port_start`\  entry in ata_port_operations.
 
 .. _`ata_sas_port_start.locking`:
 
 LOCKING
 -------
 
-Inherited from caller.
+     Inherited from caller.
 
 .. _`ata_sas_port_stop`:
 
@@ -1987,14 +1923,14 @@ ata_sas_port_stop
 Description
 -----------
 
-May be used as the \ :c:func:`port_stop`\  entry in ata_port_operations.
+     May be used as the \ :c:func:`port_stop`\  entry in ata_port_operations.
 
 .. _`ata_sas_port_stop.locking`:
 
 LOCKING
 -------
 
-Inherited from caller.
+     Inherited from caller.
 
 .. _`ata_sas_async_probe`:
 
@@ -2033,14 +1969,14 @@ ata_sas_port_init
 LOCKING
 -------
 
-PCI/etc. bus probe sem.
+     PCI/etc. bus probe sem.
 
 .. _`ata_sas_port_init.return`:
 
 Return
 ------
 
-Zero on success, non-zero on error.
+     Zero on success, non-zero on error.
 
 .. _`ata_sas_port_destroy`:
 
@@ -2074,7 +2010,7 @@ ata_sas_slave_configure
 Return
 ------
 
-Zero.
+     Zero.
 
 .. _`ata_sas_queuecmd`:
 
@@ -2096,8 +2032,8 @@ ata_sas_queuecmd
 Return
 ------
 
-Return value from \__ata_scsi_queuecmd() if \ ``cmd``\  can be queued,
-0 otherwise.
+     Return value from \ :c:func:`__ata_scsi_queuecmd`\  if \ ``cmd``\  can be queued,
+     0 otherwise.
 
 .. This file was automatic generated / don't edit.
 

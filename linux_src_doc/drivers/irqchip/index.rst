@@ -9,6 +9,7 @@ irqchip
 
     exynos-combiner_c
     irq-crossbar_c
+    irq-ftintc010_c
     irq-imgpdc_c
     irq-mbigen_c
     irq-metag-ext_c

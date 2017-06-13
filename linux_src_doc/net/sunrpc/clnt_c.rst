@@ -296,12 +296,7 @@ otherwise, a negative errno is returned.
 This works even if the underlying transport is not currently connected,
 or if the upper layer never previously provided a source address.
 
-.. _`rpc_localaddr.the-result-of-this-function-call-is-transient`:
-
-The result of this function call is transient
----------------------------------------------
-
-multiple calls in
+The result of this function call is transient: multiple calls in
 succession may give different results, depending on how local
 networking configuration changes over time.
 
@@ -359,18 +354,6 @@ rpc_max_bc_payload
 .. c:function:: size_t rpc_max_bc_payload(struct rpc_clnt *clnt)
 
     Get maximum backchannel payload size, in bytes
-
-    :param struct rpc_clnt \*clnt:
-        RPC client to query
-
-.. _`rpc_get_timeout`:
-
-rpc_get_timeout
-===============
-
-.. c:function:: unsigned long rpc_get_timeout(struct rpc_clnt *clnt)
-
-    Get timeout for transport in units of HZ
 
     :param struct rpc_clnt \*clnt:
         RPC client to query
@@ -434,10 +417,10 @@ Description
 -----------
 
 This is an rpc_clnt_add_xprt \ :c:func:`setup`\  function which returns 1 so:
-1) caller of the test function must dereference the rpc_xprt_switch
-and the rpc_xprt.
-2) test function must call rpc_xprt_switch_add_xprt, usually in
-the rpc_call_done routine.
+  1) caller of the test function must dereference the rpc_xprt_switch
+  and the rpc_xprt.
+  2) test function must call rpc_xprt_switch_add_xprt, usually in
+  the rpc_call_done routine.
 
 Upon success (return of 1), the test function adds the new
 transport to the rpc_clnt xprt switch

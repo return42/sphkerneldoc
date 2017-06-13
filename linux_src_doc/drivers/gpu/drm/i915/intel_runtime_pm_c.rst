@@ -233,7 +233,10 @@ Description
 -----------
 
 This function initializes the hardware power domain state and enables all
-power domains using \ :c:func:`intel_display_set_init_power`\ .
+power wells belonging to the INIT power domain. Power wells in other
+domains (and not in the INIT domain) are referenced or disabled during the
+modeset state HW readout. After that the reference count of each power well
+must match its HW enabled state, see \ :c:func:`intel_power_domains_verify_state`\ .
 
 .. _`intel_power_domains_suspend`:
 
@@ -254,6 +257,29 @@ Description
 
 This function prepares the hardware power domain state before entering
 system suspend. It must be paired with \ :c:func:`intel_power_domains_init_hw`\ .
+
+.. _`intel_power_domains_verify_state`:
+
+intel_power_domains_verify_state
+================================
+
+.. c:function:: void intel_power_domains_verify_state(struct drm_i915_private *dev_priv)
+
+    verify the HW/SW state for all power wells
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+.. _`intel_power_domains_verify_state.description`:
+
+Description
+-----------
+
+Verify if the reference count of each power well matches its HW enabled
+state and the total refcount of the domains it belongs to. This must be
+called after modeset HW state sanitization, which is responsible for
+acquiring reference counts for any power wells in use and disabling the
+ones left on by BIOS but not required by any active output.
 
 .. _`intel_runtime_pm_get`:
 

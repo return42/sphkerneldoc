@@ -138,21 +138,21 @@ hns_rcb_common_init_hw
 hns_rcb_get_cfg
 ===============
 
-.. c:function:: void hns_rcb_get_cfg(struct rcb_common_cb *rcb_common)
+.. c:function:: int hns_rcb_get_cfg(struct rcb_common_cb *rcb_common)
 
     get rcb config \ ``rcb_common``\ : rcb common device
 
     :param struct rcb_common_cb \*rcb_common:
         *undescribed*
 
-.. _`hns_rcb_get_coalesced_frames`:
+.. _`hns_rcb_get_rx_coalesced_frames`:
 
-hns_rcb_get_coalesced_frames
-============================
+hns_rcb_get_rx_coalesced_frames
+===============================
 
-.. c:function:: u32 hns_rcb_get_coalesced_frames(struct rcb_common_cb *rcb_common, u32 port_idx)
+.. c:function:: u32 hns_rcb_get_rx_coalesced_frames(struct rcb_common_cb *rcb_common, u32 port_idx)
 
-    get rcb port coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm
+    get rcb port rx coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm
 
     :param struct rcb_common_cb \*rcb_common:
         *undescribed*
@@ -160,7 +160,29 @@ hns_rcb_get_coalesced_frames
     :param u32 port_idx:
         *undescribed*
 
-.. _`hns_rcb_get_coalesced_frames.description`:
+.. _`hns_rcb_get_rx_coalesced_frames.description`:
+
+Description
+-----------
+
+Returns: coalesced_frames
+
+.. _`hns_rcb_get_tx_coalesced_frames`:
+
+hns_rcb_get_tx_coalesced_frames
+===============================
+
+.. c:function:: u32 hns_rcb_get_tx_coalesced_frames(struct rcb_common_cb *rcb_common, u32 port_idx)
+
+    get rcb port tx coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm
+
+    :param struct rcb_common_cb \*rcb_common:
+        *undescribed*
+
+    :param u32 port_idx:
+        *undescribed*
+
+.. _`hns_rcb_get_tx_coalesced_frames.description`:
 
 Description
 -----------
@@ -214,12 +236,12 @@ Return
 
 Zero for success, or an error code in case of failure
 
-.. _`hns_rcb_set_coalesced_frames`:
+.. _`hns_rcb_set_tx_coalesced_frames`:
 
-hns_rcb_set_coalesced_frames
-============================
+hns_rcb_set_tx_coalesced_frames
+===============================
 
-.. c:function:: int hns_rcb_set_coalesced_frames(struct rcb_common_cb *rcb_common, u32 port_idx, u32 coalesced_frames)
+.. c:function:: int hns_rcb_set_tx_coalesced_frames(struct rcb_common_cb *rcb_common, u32 port_idx, u32 coalesced_frames)
 
     set rcb coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm \ ``coalesced_frames``\ :tx/rx BD num for coalesced frames
 
@@ -232,7 +254,32 @@ hns_rcb_set_coalesced_frames
     :param u32 coalesced_frames:
         *undescribed*
 
-.. _`hns_rcb_set_coalesced_frames.return`:
+.. _`hns_rcb_set_tx_coalesced_frames.return`:
+
+Return
+------
+
+Zero for success, or an error code in case of failure
+
+.. _`hns_rcb_set_rx_coalesced_frames`:
+
+hns_rcb_set_rx_coalesced_frames
+===============================
+
+.. c:function:: int hns_rcb_set_rx_coalesced_frames(struct rcb_common_cb *rcb_common, u32 port_idx, u32 coalesced_frames)
+
+    set rcb rx coalesced frames \ ``rcb_common``\ : rcb_common device \ ``port_idx``\ :port id in comm \ ``coalesced_frames``\ :tx/rx BD num for coalesced frames
+
+    :param struct rcb_common_cb \*rcb_common:
+        *undescribed*
+
+    :param u32 port_idx:
+        *undescribed*
+
+    :param u32 coalesced_frames:
+        *undescribed*
+
+.. _`hns_rcb_set_rx_coalesced_frames.return`:
 
 Return
 ------

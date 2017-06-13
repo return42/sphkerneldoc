@@ -37,6 +37,18 @@ dwc3_gadget_link_string
     :param enum dwc3_link_state link_state:
         link state code
 
+.. _`dwc3_trb_type_string`:
+
+dwc3_trb_type_string
+====================
+
+.. c:function:: const char *dwc3_trb_type_string(unsigned int type)
+
+    returns TRB type as a string
+
+    :param unsigned int type:
+        the type of the TRB
+
 .. _`dwc3_gadget_event_string`:
 
 dwc3_gadget_event_string

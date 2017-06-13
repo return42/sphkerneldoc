@@ -35,6 +35,7 @@ mm
     page-writeback_c
     page_alloc_c
     page_counter_c
+    page_vma_mapped_c
     pagewalk_c
     percpu-vm_c
     percpu_c

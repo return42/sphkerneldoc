@@ -1,56 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/rtl8188eu/include/wifi.h
 
-.. _`rtw_ieee80211_bar`:
-
-struct rtw_ieee80211_bar
-========================
-
-.. c:type:: struct rtw_ieee80211_bar
-
-    HT Block Ack Request
-
-.. _`rtw_ieee80211_bar.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rtw_ieee80211_bar {
-        unsigned short frame_control;
-        unsigned short duration;
-        unsigned char ra[6];
-        unsigned char ta[6];
-        unsigned short control;
-        unsigned short start_seq_num;
-    }
-
-.. _`rtw_ieee80211_bar.members`:
-
-Members
--------
-
-frame_control
-    *undescribed*
-
-duration
-    *undescribed*
-
-control
-    *undescribed*
-
-start_seq_num
-    *undescribed*
-
-.. _`rtw_ieee80211_bar.description`:
-
-Description
------------
-
-This structure refers to "HT BlockAckReq" as
-described in 802.11n draft section 7.2.1.7.1
-
 .. _`ieee80211_ht_addt_info`:
 
 struct ieee80211_ht_addt_info

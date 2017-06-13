@@ -260,7 +260,7 @@ Return
 nvmf_register_transport
 =======================
 
-.. c:function:: void nvmf_register_transport(struct nvmf_transport_ops *ops)
+.. c:function:: int nvmf_register_transport(struct nvmf_transport_ops *ops)
 
     NVMe Fabrics Library registration function.
 

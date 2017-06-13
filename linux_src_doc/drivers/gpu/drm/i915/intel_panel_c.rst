@@ -6,12 +6,12 @@
 intel_find_panel_downclock
 ==========================
 
-.. c:function:: struct drm_display_mode *intel_find_panel_downclock(struct drm_device *dev, struct drm_display_mode *fixed_mode, struct drm_connector *connector)
+.. c:function:: struct drm_display_mode *intel_find_panel_downclock(struct drm_i915_private *dev_priv, struct drm_display_mode *fixed_mode, struct drm_connector *connector)
 
     find the reduced downclock for LVDS in EDID
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
 
     :param struct drm_display_mode \*fixed_mode:
         panel native mode

@@ -105,7 +105,6 @@ Definition
         struct brcmf_pub *drvr;
         struct brcmf_cfg80211_vif *vif;
         struct net_device *ndev;
-        struct net_device_stats stats;
         struct work_struct multicast_work;
         struct work_struct ndoffload_work;
         struct brcmf_fws_mac_descriptor *fws_desc;
@@ -133,9 +132,6 @@ vif
 
 ndev
     associated network device.
-
-stats
-    interface specific network statistics.
 
 multicast_work
     worker object for multicast provisioning.

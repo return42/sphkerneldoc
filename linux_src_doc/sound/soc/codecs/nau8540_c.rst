@@ -1,0 +1,65 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: sound/soc/codecs/nau8540.c
+
+.. _`nau8540_set_tdm_slot`:
+
+nau8540_set_tdm_slot
+====================
+
+.. c:function:: int nau8540_set_tdm_slot(struct snd_soc_dai *dai, unsigned int tx_mask, unsigned int rx_mask, int slots, int slot_width)
+
+    configure DAI TX TDM.
+
+    :param struct snd_soc_dai \*dai:
+        DAI
+
+    :param unsigned int tx_mask:
+        bitmask representing active TX slots. Ex.
+        0xf for normal 4 channel TDM.
+        0xf0 for shifted 4 channel TDM
+
+    :param unsigned int rx_mask:
+        no used.
+
+    :param int slots:
+        Number of slots in use.
+
+    :param int slot_width:
+        Width in bits for each slot.
+
+.. _`nau8540_set_tdm_slot.description`:
+
+Description
+-----------
+
+Configures a DAI for TDM operation. Only support 4 slots TDM.
+
+.. _`nau8540_calc_fll_param`:
+
+nau8540_calc_fll_param
+======================
+
+.. c:function:: int nau8540_calc_fll_param(unsigned int fll_in, unsigned int fs, struct nau8540_fll *fll_param)
+
+    Calculate FLL parameters.
+
+    :param unsigned int fll_in:
+        external clock provided to codec.
+
+    :param unsigned int fs:
+        sampling rate.
+
+    :param struct nau8540_fll \*fll_param:
+        Pointer to structure of FLL parameters.
+
+.. _`nau8540_calc_fll_param.description`:
+
+Description
+-----------
+
+Calculate FLL parameters to configure codec.
+
+Returns 0 for success or negative error code.
+
+.. This file was automatic generated / don't edit.
+

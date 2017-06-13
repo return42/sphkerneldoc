@@ -1,6 +1,33 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/debugfs/inode.c
 
+.. _`debugfs_lookup`:
+
+debugfs_lookup
+==============
+
+.. c:function:: struct dentry *debugfs_lookup(const char *name, struct dentry *parent)
+
+    look up an existing debugfs file
+
+    :param const char \*name:
+        a pointer to a string containing the name of the file to look up.
+
+    :param struct dentry \*parent:
+        a pointer to the parent dentry of the file.
+
+.. _`debugfs_lookup.description`:
+
+Description
+-----------
+
+This function will return a pointer to a dentry if it succeeds.  If the file
+doesn't exist or an error occurs, \ ``NULL``\  will be returned.  The returned
+dentry must be passed to \ :c:func:`dput`\  when it is no longer needed.
+
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
+returned.
+
 .. _`debugfs_create_file`:
 
 debugfs_create_file
@@ -184,7 +211,7 @@ returned.
 debugfs_create_automount
 ========================
 
-.. c:function:: struct dentry *debugfs_create_automount(const char *name, struct dentry *parent, struct vfsmount *(*f)(void *), void *data)
+.. c:function:: struct dentry *debugfs_create_automount(const char *name, struct dentry *parent, debugfs_automount_t f, void *data)
 
     create automount point in the debugfs filesystem
 
@@ -196,7 +223,7 @@ debugfs_create_automount
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the debugfs filesystem.
 
-    :param struct vfsmount \*(\*f)(void \*):
+    :param debugfs_automount_t f:
         function to be called when pathname resolution steps on that one.
 
     :param void \*data:

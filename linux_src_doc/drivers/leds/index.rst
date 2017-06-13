@@ -16,4 +16,5 @@ leds
     leds-lm3530_c
     leds-lp3944_c
     leds-lp8860_c
+    leds-mt6323_c
     leds-syscon_c

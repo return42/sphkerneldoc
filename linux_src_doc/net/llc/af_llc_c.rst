@@ -337,7 +337,7 @@ Returns 0 upon success, negative otherwise.
 llc_ui_accept
 =============
 
-.. c:function:: int llc_ui_accept(struct socket *sock, struct socket *newsock, int flags)
+.. c:function:: int llc_ui_accept(struct socket *sock, struct socket *newsock, int flags, bool kern)
 
     accept a new incoming connection.
 
@@ -349,6 +349,9 @@ llc_ui_accept
 
     :param int flags:
         User specified operational flags.
+
+    :param bool kern:
+        If the socket is kernel internal
 
 .. _`llc_ui_accept.description`:
 

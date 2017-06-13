@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_mode_object.c
 
-.. _`drm_mode_object_get`:
+.. _`drm_mode_object_add`:
 
-drm_mode_object_get
+drm_mode_object_add
 ===================
 
-.. c:function:: int drm_mode_object_get(struct drm_device *dev, struct drm_mode_object *obj, uint32_t obj_type)
+.. c:function:: int drm_mode_object_add(struct drm_device *dev, struct drm_mode_object *obj, uint32_t obj_type)
 
     allocate a new modeset identifier
 
@@ -19,17 +19,15 @@ drm_mode_object_get
     :param uint32_t obj_type:
         object type
 
-.. _`drm_mode_object_get.description`:
+.. _`drm_mode_object_add.description`:
 
 Description
 -----------
 
 Create a unique identifier based on \ ``ptr``\  in \ ``dev``\ 's identifier space.  Used
-for tracking modes, CRTCs and connectors. Note that despite the _get postfix
-modeset identifiers are _not_ reference counted. Hence don't use this for
-reference counted modeset objects like framebuffers.
+for tracking modes, CRTCs and connectors.
 
-.. _`drm_mode_object_get.return`:
+.. _`drm_mode_object_add.return`:
 
 Return
 ------
@@ -87,49 +85,49 @@ Description
 
 This function is used to look up a modeset object. It will acquire a
 reference for reference counted objects. This reference must be dropped again
-by callind \ :c:func:`drm_mode_object_unreference`\ .
+by callind \ :c:func:`drm_mode_object_put`\ .
 
-.. _`drm_mode_object_unreference`:
+.. _`drm_mode_object_put`:
 
-drm_mode_object_unreference
-===========================
+drm_mode_object_put
+===================
 
-.. c:function:: void drm_mode_object_unreference(struct drm_mode_object *obj)
+.. c:function:: void drm_mode_object_put(struct drm_mode_object *obj)
 
-    decr the object refcnt
+    release a mode object reference
 
     :param struct drm_mode_object \*obj:
-        mode_object
+        DRM mode object
 
-.. _`drm_mode_object_unreference.description`:
+.. _`drm_mode_object_put.description`:
 
 Description
 -----------
 
 This function decrements the object's refcount if it is a refcounted modeset
 object. It is a no-op on any other object. This is used to drop references
-acquired with \ :c:func:`drm_mode_object_reference`\ .
+acquired with \ :c:func:`drm_mode_object_get`\ .
 
-.. _`drm_mode_object_reference`:
+.. _`drm_mode_object_get`:
 
-drm_mode_object_reference
-=========================
+drm_mode_object_get
+===================
 
-.. c:function:: void drm_mode_object_reference(struct drm_mode_object *obj)
+.. c:function:: void drm_mode_object_get(struct drm_mode_object *obj)
 
-    incr the object refcnt
+    acquire a mode object reference
 
     :param struct drm_mode_object \*obj:
-        mode_object
+        DRM mode object
 
-.. _`drm_mode_object_reference.description`:
+.. _`drm_mode_object_get.description`:
 
 Description
 -----------
 
 This function increments the object's refcount if it is a refcounted modeset
 object. It is a no-op on any other object. References should be dropped again
-by calling \ :c:func:`drm_mode_object_unreference`\ .
+by calling \ :c:func:`drm_mode_object_put`\ .
 
 .. _`drm_object_attach_property`:
 

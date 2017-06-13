@@ -308,7 +308,7 @@ The process will be put into sleep if it's already run out of grant.
 try_to_add_extent_for_io
 ========================
 
-.. c:function:: int try_to_add_extent_for_io(struct client_obd *cli, struct osc_extent *ext, struct list_head *rpclist, unsigned int *pc, unsigned int *max_pages)
+.. c:function:: int try_to_add_extent_for_io(struct client_obd *cli, struct osc_extent *ext, struct extent_rpc_data *data)
 
     - # of pages must not be over max_pages_per_rpc - extent must be compatible with previous ones
 
@@ -318,13 +318,7 @@ try_to_add_extent_for_io
     :param struct osc_extent \*ext:
         *undescribed*
 
-    :param struct list_head \*rpclist:
-        *undescribed*
-
-    :param unsigned int \*pc:
-        *undescribed*
-
-    :param unsigned int \*max_pages:
+    :param struct extent_rpc_data \*data:
         *undescribed*
 
 .. _`get_write_extents`:
@@ -428,18 +422,18 @@ osc_cancel_async_page
 osc_cache_truncate_start
 ========================
 
-.. c:function:: int osc_cache_truncate_start(const struct lu_env *env, struct osc_io *oio, struct osc_object *obj, __u64 size)
+.. c:function:: int osc_cache_truncate_start(const struct lu_env *env, struct osc_object *obj, u64 size, struct osc_extent **extp)
 
     :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct osc_io \*oio:
         *undescribed*
 
     :param struct osc_object \*obj:
         *undescribed*
 
-    :param __u64 size:
+    :param u64 size:
+        *undescribed*
+
+    :param struct osc_extent \*\*extp:
         *undescribed*
 
 .. _`osc_cache_truncate_end`:
@@ -447,17 +441,14 @@ osc_cache_truncate_start
 osc_cache_truncate_end
 ======================
 
-.. c:function:: void osc_cache_truncate_end(const struct lu_env *env, struct osc_io *oio, struct osc_object *obj)
+.. c:function:: void osc_cache_truncate_end(const struct lu_env *env, struct osc_extent *ext)
 
     >oi_trunc back to cache.
 
     :param const struct lu_env \*env:
         *undescribed*
 
-    :param struct osc_io \*oio:
-        *undescribed*
-
-    :param struct osc_object \*obj:
+    :param struct osc_extent \*ext:
         *undescribed*
 
 .. _`osc_cache_wait_range`:

@@ -68,10 +68,10 @@ get_phy_c45_ids
 Description
 -----------
 
-If the PHY devices-in-package appears to be valid, it and the
-corresponding identifiers are stored in \ ``c45_ids``\ , zero is stored
-in \ ``phy_id``\ .  Otherwise 0xffffffff is stored in \ ``phy_id``\ .  Returns
-zero on success.
+  If the PHY devices-in-package appears to be valid, it and the
+  corresponding identifiers are stored in \ ``c45_ids``\ , zero is stored
+  in \ ``phy_id``\ .  Otherwise 0xffffffff is stored in \ ``phy_id``\ .  Returns
+  zero on success.
 
 .. _`get_phy_id`:
 
@@ -103,11 +103,11 @@ Description
 -----------
 
 In the case of a 802.3-c22 PHY, reads the ID registers
-of the PHY at \ ``addr``\  on the \ ``bus``\ , stores it in \ ``phy_id``\  and returns
-zero on success.
+  of the PHY at \ ``addr``\  on the \ ``bus``\ , stores it in \ ``phy_id``\  and returns
+  zero on success.
 
-In the case of a 802.3-c45 PHY, \ :c:func:`get_phy_c45_ids`\  is invoked, and
-its return value is in turn returned.
+  In the case of a 802.3-c45 PHY, \ :c:func:`get_phy_c45_ids`\  is invoked, and
+  its return value is in turn returned.
 
 .. _`get_phy_device`:
 
@@ -133,7 +133,7 @@ Description
 -----------
 
 Reads the ID registers of the PHY at \ ``addr``\  on the
-\ ``bus``\ , then allocates and returns the phy_device to represent it.
+  \ ``bus``\ , then allocates and returns the phy_device to represent it.
 
 .. _`phy_device_register`:
 
@@ -201,11 +201,11 @@ Description
 -----------
 
 Tells the PHY infrastructure to handle the
-gory details on monitoring link status (whether through
-polling or an interrupt), and to call back to the
-connected device driver when the link status changes.
-If you want to monitor your own link state, don't call
-this function.
+  gory details on monitoring link status (whether through
+  polling or an interrupt), and to call back to the
+  connected device driver when the link status changes.
+  If you want to monitor your own link state, don't call
+  this function.
 
 .. _`phy_connect_direct`:
 
@@ -255,12 +255,12 @@ Description
 -----------
 
 Convenience function for connecting ethernet
-devices to PHY devices.  The default behavior is for
-the PHY infrastructure to handle everything, and only notify
-the connected driver when the link status changes.  If you
-don't want, or can't use the provided functionality, you may
-choose to call only the subset of functions which provide
-the desired functionality.
+  devices to PHY devices.  The default behavior is for
+  the PHY infrastructure to handle everything, and only notify
+  the connected driver when the link status changes.  If you
+  don't want, or can't use the provided functionality, you may
+  choose to call only the subset of functions which provide
+  the desired functionality.
 
 .. _`phy_disconnect`:
 
@@ -292,18 +292,18 @@ Description
 -----------
 
 According to IEEE 802.3, Section 2, Subsection 22.2.4.1.1, as
-published in 2008, a PHY reset may take up to 0.5 seconds.  The MII BMCR
-register must be polled until the BMCR_RESET bit clears.
+  published in 2008, a PHY reset may take up to 0.5 seconds.  The MII BMCR
+  register must be polled until the BMCR_RESET bit clears.
 
-Furthermore, any attempts to write to PHY registers may have no effect
-or even generate MDIO bus errors until this is complete.
+  Furthermore, any attempts to write to PHY registers may have no effect
+  or even generate MDIO bus errors until this is complete.
 
-Some PHYs (such as the Marvell 88E1111) don't entirely conform to the
-standard and do not fully reset after the BMCR_RESET bit is set, and may
-even \*REQUIRE\* a soft-reset to properly restart autonegotiation.  In an
-effort to support such broken PHYs, this function is separate from the
-standard \ :c:func:`phy_init_hw`\  which will zero all the other bits in the BMCR
-and reapply all driver-specific and board-specific fixups.
+  Some PHYs (such as the Marvell 88E1111) don't entirely conform to the
+  standard and do not fully reset after the BMCR_RESET bit is set, and may
+  even *REQUIRE* a soft-reset to properly restart autonegotiation.  In an
+  effort to support such broken PHYs, this function is separate from the
+  standard \ :c:func:`phy_init_hw`\  which will zero all the other bits in the BMCR
+  and reapply all driver-specific and board-specific fixups.
 
 .. _`phy_attach_direct`:
 
@@ -332,12 +332,12 @@ Description
 -----------
 
 Called by drivers to attach to a particular PHY
-device. The phy_device is found, and properly hooked up
-to the phy_driver.  If no driver is attached, then a
-generic driver is used.  The phy_device is given a ptr to
-the attaching device, and given a callback for link status
-change.  The phy_device is returned to the attaching driver.
-This function takes a reference on the phy device.
+    device. The phy_device is found, and properly hooked up
+    to the phy_driver.  If no driver is attached, then a
+    generic driver is used.  The phy_device is given a ptr to
+    the attaching device, and given a callback for link status
+    change.  The phy_device is returned to the attaching driver.
+    This function takes a reference on the phy device.
 
 .. _`phy_attach`:
 
@@ -363,7 +363,7 @@ Description
 -----------
 
 Same as \ :c:func:`phy_attach_direct`\  except that a PHY bus_id
-string is passed instead of a pointer to a struct phy_device.
+    string is passed instead of a pointer to a struct phy_device.
 
 .. _`phy_detach`:
 
@@ -403,9 +403,9 @@ Description
 -----------
 
 Writes MII_ADVERTISE with the appropriate values,
-after sanitizing the values to make sure we only advertise
-what is supported.  Returns < 0 on error, 0 if the PHY's advertisement
-hasn't changed, and > 0 if it has changed.
+  after sanitizing the values to make sure we only advertise
+  what is supported.  Returns < 0 on error, 0 if the PHY's advertisement
+  hasn't changed, and > 0 if it has changed.
 
 .. _`genphy_config_eee_advert`:
 
@@ -425,8 +425,8 @@ Description
 -----------
 
 Writes MDIO_AN_EEE_ADV after disabling unsupported energy
-efficent ethernet modes. Returns 0 if the PHY's advertisement hasn't
-changed, and 1 if it has changed.
+  efficent ethernet modes. Returns 0 if the PHY's advertisement hasn't
+  changed, and 1 if it has changed.
 
 .. _`genphy_setup_forced`:
 
@@ -446,8 +446,8 @@ Description
 -----------
 
 Configures MII_BMCR to force speed/duplex
-to the values in phydev. Assumes that the values are valid.
-Please see \ :c:func:`phy_sanitize_settings`\ .
+  to the values in phydev. Assumes that the values are valid.
+  Please see \ :c:func:`phy_sanitize_settings`\ .
 
 .. _`genphy_restart_aneg`:
 
@@ -479,8 +479,8 @@ Description
 -----------
 
 If auto-negotiation is enabled, we configure the
-advertising, and then restart auto-negotiation.  If it is not
-enabled, then we write the BMCR.
+  advertising, and then restart auto-negotiation.  If it is not
+  enabled, then we write the BMCR.
 
 .. _`genphy_aneg_done`:
 
@@ -500,8 +500,8 @@ Description
 -----------
 
 Reads the status register and returns 0 either if
-auto-negotiation is incomplete, or if there was an error.
-Returns BMSR_ANEGCOMPLETE if auto-negotiation is done.
+  auto-negotiation is incomplete, or if there was an error.
+  Returns BMSR_ANEGCOMPLETE if auto-negotiation is done.
 
 .. _`genphy_update_link`:
 
@@ -521,8 +521,8 @@ Description
 -----------
 
 Update the value in phydev->link to reflect the
-current link value.  In order to do this, we need to read
-the status register twice, keeping the second value.
+  current link value.  In order to do this, we need to read
+  the status register twice, keeping the second value.
 
 .. _`genphy_read_status`:
 
@@ -542,9 +542,9 @@ Description
 -----------
 
 Check the link, then figure out the current state
-by comparing what we advertise with what the link partner
-advertises.  Start by checking the gigabit possibilities,
-then move on to 10/100.
+  by comparing what we advertise with what the link partner
+  advertises.  Start by checking the gigabit possibilities,
+  then move on to 10/100.
 
 .. _`genphy_soft_reset`:
 
@@ -591,8 +591,8 @@ Description
 -----------
 
 Take care of setting up the phy_device structure,
-set the state to READY (the driver's init function should
-set it to STARTING if needed).
+  set the state to READY (the driver's init function should
+  set it to STARTING if needed).
 
 .. _`phy_driver_register`:
 

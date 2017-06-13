@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct vb2_vmarea_handler {
-        atomic_t *refcount;
+        refcount_t *refcount;
         void (*put)(void *arg);
         void *arg;
     }

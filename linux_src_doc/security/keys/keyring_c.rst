@@ -6,7 +6,7 @@
 restrict_link_reject
 ====================
 
-.. c:function:: int restrict_link_reject(struct key *keyring, const struct key_type *type, const union key_payload *payload)
+.. c:function:: int restrict_link_reject(struct key *keyring, const struct key_type *type, const union key_payload *payload, struct key *restriction_key)
 
     Give -EPERM to restrict link
 
@@ -19,6 +19,9 @@ restrict_link_reject
     :param const union key_payload \*payload:
         The payload of the key intended to be added.
 
+    :param struct key \*restriction_key:
+        *undescribed*
+
 .. _`restrict_link_reject.description`:
 
 Description
@@ -28,8 +31,8 @@ Reject the addition of any links to a keyring.  It can be overridden by
 passing KEY_ALLOC_BYPASS_RESTRICTION to \ :c:func:`key_instantiate_and_link`\  when
 adding a key to a keyring.
 
-This is meant to be passed as the restrict_link parameter to
-\ :c:func:`keyring_alloc`\ .
+This is meant to be stored in a key_restriction structure which is passed
+in the restrict_link parameter to \ :c:func:`keyring_alloc`\ .
 
 .. _`keyring_search_aux`:
 
@@ -103,6 +106,24 @@ Description
 
 As \ :c:func:`keyring_search_aux`\  above, but using the current task's credentials and
 type's default matching function and preferred search method.
+
+.. _`keyring_restrict`:
+
+keyring_restrict
+================
+
+.. c:function:: int keyring_restrict(key_ref_t keyring_ref, const char *type, const char *restriction)
+
+    Look up and apply a restriction to a keyring
+
+    :param key_ref_t keyring_ref:
+        *undescribed*
+
+    :param const char \*type:
+        *undescribed*
+
+    :param const char \*restriction:
+        The restriction options to apply to the keyring
 
 .. _`key_link`:
 

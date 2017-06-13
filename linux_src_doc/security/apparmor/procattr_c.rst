@@ -40,11 +40,11 @@ Creates a string containing the namespace_name://profile_name for
 split_token_from_name
 =====================
 
-.. c:function:: char *split_token_from_name(int op, char *args, u64 *token)
+.. c:function:: char *split_token_from_name(const char *op, char *args, u64 *token)
 
     separate a string of form  <token>^<name>
 
-    :param int op:
+    :param const char \*op:
         operation being checked
 
     :param char \*args:
@@ -84,31 +84,6 @@ Return
 ------
 
 %0 or error code if change_hat fails
-
-.. _`aa_setprocattr_changeprofile`:
-
-aa_setprocattr_changeprofile
-============================
-
-.. c:function:: int aa_setprocattr_changeprofile(char *fqname, bool onexec, int test)
-
-    handle procattr interface to changeprofile
-
-    :param char \*fqname:
-        args received from writting to /proc/<pid>/attr/current (NOT NULL)
-
-    :param bool onexec:
-        true if change_profile should be delayed until exec
-
-    :param int test:
-        true if this is a test of change_profile permissions
-
-.. _`aa_setprocattr_changeprofile.return`:
-
-Return
-------
-
-%0 or error code if change_profile fails
 
 .. This file was automatic generated / don't edit.
 

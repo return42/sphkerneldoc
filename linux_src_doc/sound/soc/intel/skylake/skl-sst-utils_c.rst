@@ -6,15 +6,18 @@
 skl_get_pvt_id
 ==============
 
-.. c:function:: int skl_get_pvt_id(struct skl_sst *ctx, struct skl_module_cfg *mconfig)
+.. c:function:: int skl_get_pvt_id(struct skl_sst *ctx, uuid_le *uuid_mod, int instance_id)
 
     generate a private id for use as module id
 
     :param struct skl_sst \*ctx:
         driver context
 
-    :param struct skl_module_cfg \*mconfig:
-        module configuration data
+    :param uuid_le \*uuid_mod:
+        *undescribed*
+
+    :param int instance_id:
+        *undescribed*
 
 .. _`skl_get_pvt_id.description`:
 
@@ -29,15 +32,18 @@ module instance is unique
 skl_put_pvt_id
 ==============
 
-.. c:function:: int skl_put_pvt_id(struct skl_sst *ctx, struct skl_module_cfg *mconfig)
+.. c:function:: int skl_put_pvt_id(struct skl_sst *ctx, uuid_le *uuid_mod, int *pvt_id)
 
     free up the private id allocated
 
     :param struct skl_sst \*ctx:
         driver context
 
-    :param struct skl_module_cfg \*mconfig:
-        module configuration data
+    :param uuid_le \*uuid_mod:
+        *undescribed*
+
+    :param int \*pvt_id:
+        *undescribed*
 
 .. _`skl_put_pvt_id.description`:
 

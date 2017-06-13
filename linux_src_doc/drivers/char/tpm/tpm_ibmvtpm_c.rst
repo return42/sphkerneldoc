@@ -19,10 +19,10 @@ ibmvtpm_send_crq
     :param u64 w2:
         second word
 
-.. _`ibmvtpm_send_crq.return-value`:
+.. _`ibmvtpm_send_crq.return`:
 
-Return value
-------------
+Return
+------
 
 0 -Sucess
 Non-zero - Failure
@@ -43,19 +43,12 @@ tpm_ibmvtpm_recv
         buffer to read
 
     :param size_t count:
-        *undescribed*
+        size of buffer
 
-.. _`tpm_ibmvtpm_recv.count`:
+.. _`tpm_ibmvtpm_recv.return`:
 
-count
------
-
-size of buffer
-
-.. _`tpm_ibmvtpm_recv.return-value`:
-
-Return value
-------------
+Return
+------
 
 Number of bytes read
 
@@ -75,21 +68,14 @@ tpm_ibmvtpm_send
         buffer contains data to send
 
     :param size_t count:
-        *undescribed*
+        size of buffer
 
-.. _`tpm_ibmvtpm_send.count`:
+.. _`tpm_ibmvtpm_send.return`:
 
-count
------
+Return
+------
 
-size of buffer
-
-.. _`tpm_ibmvtpm_send.return-value`:
-
-Return value
-------------
-
-Number of bytes sent
+Number of bytes sent or < 0 on error.
 
 .. _`ibmvtpm_crq_get_rtce_size`:
 
@@ -103,13 +89,13 @@ ibmvtpm_crq_get_rtce_size
     :param struct ibmvtpm_dev \*ibmvtpm:
         vtpm device struct
 
-.. _`ibmvtpm_crq_get_rtce_size.return-value`:
+.. _`ibmvtpm_crq_get_rtce_size.return`:
 
-Return value
-------------
+Return
+------
 
-0 - Success
-Non-zero - Failure
+0 on success.
+Non-zero on failure.
 
 .. _`ibmvtpm_crq_get_version`:
 
@@ -123,13 +109,13 @@ ibmvtpm_crq_get_version
     :param struct ibmvtpm_dev \*ibmvtpm:
         vtpm device struct
 
-.. _`ibmvtpm_crq_get_version.return-value`:
+.. _`ibmvtpm_crq_get_version.return`:
 
-Return value
-------------
+Return
+------
 
-0 - Success
-Non-zero - Failure
+0 on success.
+Non-zero on failure.
 
 .. _`ibmvtpm_crq_send_init_complete`:
 
@@ -143,13 +129,13 @@ ibmvtpm_crq_send_init_complete
     :param struct ibmvtpm_dev \*ibmvtpm:
         vtpm device struct
 
-.. _`ibmvtpm_crq_send_init_complete.return-value`:
+.. _`ibmvtpm_crq_send_init_complete.return`:
 
-Return value
-------------
+Return
+------
 
-0 - Success
-Non-zero - Failure
+0 on success.
+Non-zero on failure.
 
 .. _`ibmvtpm_crq_send_init`:
 
@@ -163,13 +149,13 @@ ibmvtpm_crq_send_init
     :param struct ibmvtpm_dev \*ibmvtpm:
         vtpm device struct
 
-.. _`ibmvtpm_crq_send_init.return-value`:
+.. _`ibmvtpm_crq_send_init.return`:
 
-Return value
-------------
+Return
+------
 
-0 - Success
-Non-zero - Failure
+0 on success.
+Non-zero on failure.
 
 .. _`tpm_ibmvtpm_remove`:
 
@@ -183,12 +169,12 @@ tpm_ibmvtpm_remove
     :param struct vio_dev \*vdev:
         vio device struct
 
-.. _`tpm_ibmvtpm_remove.return-value`:
+.. _`tpm_ibmvtpm_remove.return`:
 
-Return value
-------------
+Return
+------
 
-0
+Always 0.
 
 .. _`tpm_ibmvtpm_get_desired_dma`:
 
@@ -202,12 +188,12 @@ tpm_ibmvtpm_get_desired_dma
     :param struct vio_dev \*vdev:
         vio device struct
 
-.. _`tpm_ibmvtpm_get_desired_dma.return-value`:
+.. _`tpm_ibmvtpm_get_desired_dma.return`:
 
-Return value
-------------
+Return
+------
 
-Number of bytes the driver needs to DMA map
+Number of bytes the driver needs to DMA map.
 
 .. _`tpm_ibmvtpm_suspend`:
 
@@ -221,12 +207,12 @@ tpm_ibmvtpm_suspend
     :param struct device \*dev:
         device struct
 
-.. _`tpm_ibmvtpm_suspend.return-value`:
+.. _`tpm_ibmvtpm_suspend.return`:
 
-Return value
-------------
+Return
+------
 
-0
+Always 0.
 
 .. _`ibmvtpm_reset_crq`:
 
@@ -240,13 +226,13 @@ ibmvtpm_reset_crq
     :param struct ibmvtpm_dev \*ibmvtpm:
         ibm vtpm struct
 
-.. _`ibmvtpm_reset_crq.return-value`:
+.. _`ibmvtpm_reset_crq.return`:
 
-Return value
-------------
+Return
+------
 
-0 - Success
-Non-zero - Failure
+0 on success.
+Non-zero on failure.
 
 .. _`tpm_ibmvtpm_resume`:
 
@@ -260,12 +246,12 @@ tpm_ibmvtpm_resume
     :param struct device \*dev:
         device struct
 
-.. _`tpm_ibmvtpm_resume.return-value`:
+.. _`tpm_ibmvtpm_resume.return`:
 
-Return value
-------------
+Return
+------
 
-0
+Always 0.
 
 .. _`ibmvtpm_crq_get_next`:
 
@@ -274,17 +260,17 @@ ibmvtpm_crq_get_next
 
 .. c:function:: struct ibmvtpm_crq *ibmvtpm_crq_get_next(struct ibmvtpm_dev *ibmvtpm)
 
-    Get next responded crq \ ``ibmvtpm``\      vtpm device struct
+    Get next responded crq
 
     :param struct ibmvtpm_dev \*ibmvtpm:
-        *undescribed*
+        vtpm device struct
 
-.. _`ibmvtpm_crq_get_next.return-value`:
+.. _`ibmvtpm_crq_get_next.return`:
 
-Return value
-------------
+Return
+------
 
-vtpm crq pointer
+vtpm crq pointer or NULL.
 
 .. _`ibmvtpm_crq_process`:
 
@@ -293,20 +279,13 @@ ibmvtpm_crq_process
 
 .. c:function:: void ibmvtpm_crq_process(struct ibmvtpm_crq *crq, struct ibmvtpm_dev *ibmvtpm)
 
-    Process responded crq \ ``crq``\          crq to be processed \ ``ibmvtpm``\      vtpm device struct
+    Process responded crq
 
     :param struct ibmvtpm_crq \*crq:
-        *undescribed*
+        crq to be processed
 
     :param struct ibmvtpm_dev \*ibmvtpm:
-        *undescribed*
-
-.. _`ibmvtpm_crq_process.return-value`:
-
-Return value
-------------
-
-Nothing
+        vtpm device struct
 
 .. _`ibmvtpm_interrupt`:
 
@@ -345,13 +324,13 @@ tpm_ibmvtpm_probe
     :param const struct vio_device_id \*id:
         vio device id struct
 
-.. _`tpm_ibmvtpm_probe.return-value`:
+.. _`tpm_ibmvtpm_probe.return`:
 
-Return value
-------------
+Return
+------
 
-0 - Success
-Non-zero - Failure
+0 on success.
+Non-zero on failure.
 
 .. _`ibmvtpm_module_init`:
 
@@ -360,18 +339,19 @@ ibmvtpm_module_init
 
 .. c:function:: int ibmvtpm_module_init( void)
 
-    Initialize ibm vtpm module
+    Initialize ibm vtpm module.
 
     :param  void:
         no arguments
 
-.. _`ibmvtpm_module_init.return-value`:
+.. _`ibmvtpm_module_init.return`:
 
-Return value
-------------
+Return
+------
 
-0 -Success
-Non-zero - Failure
+
+0 on success.
+Non-zero on failure.
 
 .. _`ibmvtpm_module_exit`:
 
@@ -380,17 +360,10 @@ ibmvtpm_module_exit
 
 .. c:function:: void __exit ibmvtpm_module_exit( void)
 
-    Teardown ibm vtpm module
+    Tear down ibm vtpm module.
 
     :param  void:
         no arguments
-
-.. _`ibmvtpm_module_exit.return-value`:
-
-Return value
-------------
-
-Nothing
 
 .. This file was automatic generated / don't edit.
 

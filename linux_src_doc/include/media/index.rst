@@ -10,7 +10,7 @@ media
     davinci/index
     drv-intf/index
     i2c/index
-    cec-edid_h
+    cec-notifier_h
     cec_h
     lirc_dev_h
     media-device_h
@@ -41,3 +41,4 @@ media
     videobuf2-core_h
     videobuf2-memops_h
     videobuf2-v4l2_h
+    vsp1_h

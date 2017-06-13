@@ -21,10 +21,6 @@ Description
 Called when the system enters a state where affected tick devices
 might stop. Note: TICK_BROADCAST_FORCE cannot be undone.
 
-Called with interrupts disabled, so clockevents_lock is not
-required here because the local clock event device cannot go away
-under us.
-
 .. _`tick_broadcast_setup_oneshot`:
 
 tick_broadcast_setup_oneshot

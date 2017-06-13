@@ -19,6 +19,7 @@ Definition
 
     struct dev_pm_opp {
         struct list_head node;
+        struct kref kref;
         bool available;
         bool dynamic;
         bool turbo;
@@ -27,7 +28,6 @@ Definition
         struct dev_pm_opp_supply *supplies;
         unsigned long clock_latency_ns;
         struct opp_table *opp_table;
-        struct rcu_head rcu_head;
         struct device_node *np;
     #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
@@ -43,11 +43,11 @@ node
     opp table node. The nodes are maintained throughout the lifetime
     of boot. It is expected only an optimal set of OPPs are
     added to the library by the SoC framework.
-    RCU usage: opp table is traversed with RCU locks. node
-    modification is possible realtime, hence the modifications
-    are protected by the opp_table_lock for integrity.
     IMPORTANT: the opp nodes should be maintained in increasing
     order.
+
+kref
+    for reference count of the OPP.
 
 available
     true/false - marks if this OPP as available or not
@@ -73,9 +73,6 @@ clock_latency_ns
 
 opp_table
     points back to the opp_table struct this opp belongs to
-
-rcu_head
-    RCU callback head used for deferred freeing
 
 np
     OPP's device node.
@@ -109,7 +106,6 @@ Definition
     struct opp_device {
         struct list_head node;
         const struct device *dev;
-        struct rcu_head rcu_head;
     #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
     #endif
@@ -125,9 +121,6 @@ node
 
 dev
     device to which the struct object belongs
-
-rcu_head
-    RCU callback head used for deferred freeing
 
 dentry
     debugfs dentry pointer (per device)
@@ -158,10 +151,11 @@ Definition
 
     struct opp_table {
         struct list_head node;
-        struct srcu_notifier_head srcu_head;
-        struct rcu_head rcu_head;
+        struct blocking_notifier_head head;
         struct list_head dev_list;
         struct list_head opp_list;
+        struct kref kref;
+        struct mutex lock;
         struct device_node *np;
         unsigned long clock_latency_ns_max;
         unsigned int voltage_tolerance_v1;
@@ -190,20 +184,21 @@ node
     table node - contains the devices with OPPs that
     have been registered. Nodes once added are not modified in this
     table.
-    RCU usage: nodes are not modified in the table of opp_table,
-    however addition is possible and is secured by opp_table_lock
 
-srcu_head
+head
     notifier head to notify the OPP availability changes.
-
-rcu_head
-    RCU callback head used for deferred freeing
 
 dev_list
     list of devices that share these OPPs
 
 opp_list
     table of opps
+
+kref
+    for reference count of the table.
+
+lock
+    mutex protecting the opp_list.
 
 np
     struct device_node pointer for opp's DT node.
@@ -258,10 +253,6 @@ Description
 This is an internal data structure maintaining the link to opps attached to
 a device. This structure is not meant to be shared to users as it is
 meant for book keeping and private to OPP library.
-
-Because the opp structures can be used from both rcu and srcu readers, we
-need to wait for the grace period of both of them before freeing any
-resources. And so we have used \ :c:func:`kfree_rcu`\  from within \ :c:func:`call_srcu`\  handlers.
 
 .. This file was automatic generated / don't edit.
 

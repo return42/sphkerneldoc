@@ -58,18 +58,6 @@ Return
 
 me client protocol version
 
-.. _`mei_io_list_init`:
-
-mei_io_list_init
-================
-
-.. c:function:: void mei_io_list_init(struct mei_cl_cb *list)
-
-    Sets up a queue list.
-
-    :param struct mei_cl_cb \*list:
-        An instance cl callback structure
-
 .. _`mei_cl_is_connected`:
 
 mei_cl_is_connected

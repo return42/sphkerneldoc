@@ -6,12 +6,15 @@
 audit_iface
 ===========
 
-.. c:function:: int audit_iface(struct aa_profile *new, const char *name, const char *info, struct aa_ext *e, int error)
+.. c:function:: int audit_iface(struct aa_profile *new, const char *ns_name, const char *name, const char *info, struct aa_ext *e, int error)
 
     do audit message for policy unpacking/load/replace/remove
 
     :param struct aa_profile \*new:
         profile if it has been allocated (MAYBE NULL)
+
+    :param const char \*ns_name:
+        name of the ns the profile is to be loaded to (MAY BE NULL)
 
     :param const char \*name:
         name of the profile being manipulated (MAYBE NULL)
@@ -160,12 +163,15 @@ Return
 unpack_profile
 ==============
 
-.. c:function:: struct aa_profile *unpack_profile(struct aa_ext *e)
+.. c:function:: struct aa_profile *unpack_profile(struct aa_ext *e, char **ns_name)
 
     unpack a serialized profile
 
     :param struct aa_ext \*e:
         serialized data extent information (NOT NULL)
+
+    :param char \*\*ns_name:
+        *undescribed*
 
 .. _`unpack_profile.note`:
 
@@ -223,15 +229,12 @@ Return
 aa_unpack
 =========
 
-.. c:function:: int aa_unpack(void *udata, size_t size, struct list_head *lh, const char **ns)
+.. c:function:: int aa_unpack(struct aa_loaddata *udata, struct list_head *lh, const char **ns)
 
     unpack packed binary profile(s) data loaded from user space
 
-    :param void \*udata:
+    :param struct aa_loaddata \*udata:
         user data copied to kmem  (NOT NULL)
-
-    :param size_t size:
-        the size of the user data
 
     :param struct list_head \*lh:
         list to place unpacked profiles in a aa_repl_ws

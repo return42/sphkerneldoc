@@ -80,6 +80,26 @@ and comprises of the remaining bytes in the ELD memory buffer after
 
 The returned value is guaranteed to be a multiple of 4.
 
+.. _`drm_eld_get_spk_alloc`:
+
+drm_eld_get_spk_alloc
+=====================
+
+.. c:function:: u8 drm_eld_get_spk_alloc(const uint8_t *eld)
+
+    Get speaker allocation
+
+    :param const uint8_t \*eld:
+        pointer to an ELD memory structure
+
+.. _`drm_eld_get_spk_alloc.description`:
+
+Description
+-----------
+
+The returned value is the speakers mask. User has to use \ ``DRM_ELD_SPEAKER``\ 
+field definitions to identify speakers.
+
 .. _`drm_eld_get_conn_type`:
 
 drm_eld_get_conn_type

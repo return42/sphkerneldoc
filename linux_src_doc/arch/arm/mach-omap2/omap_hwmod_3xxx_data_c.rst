@@ -6,7 +6,7 @@
 omap3xxx_hwmod_is_hs_ip_block_usable
 ====================================
 
-.. c:function:: int omap3xxx_hwmod_is_hs_ip_block_usable(struct device_node *bus, const char *dev_name)
+.. c:function:: bool omap3xxx_hwmod_is_hs_ip_block_usable(struct device_node *bus, const char *dev_name)
 
     is a security IP block accessible?
 

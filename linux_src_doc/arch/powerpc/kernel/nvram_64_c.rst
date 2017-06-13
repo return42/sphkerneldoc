@@ -6,34 +6,12 @@
 nvram_pstore_write
 ==================
 
-.. c:function:: int nvram_pstore_write(enum pstore_type_id type, enum kmsg_dump_reason reason, u64 *id, unsigned int part, int count, bool compressed, size_t size, struct pstore_info *psi)
+.. c:function:: int nvram_pstore_write(struct pstore_record *record)
 
     pstore write callback for nvram
 
-    :param enum pstore_type_id type:
-        Type of message logged
-
-    :param enum kmsg_dump_reason reason:
-        reason behind dump (oops/panic)
-
-    :param u64 \*id:
-        identifier to indicate the write performed
-
-    :param unsigned int part:
-        pstore writes data to registered buffer in parts,
-        part number will indicate the same.
-
-    :param int count:
-        Indicates oops count
-
-    :param bool compressed:
-        Flag to indicate the log is compressed
-
-    :param size_t size:
-        number of bytes written to the registered buffer
-
-    :param struct pstore_info \*psi:
-        registered pstore_info structure
+    :param struct pstore_record \*record:
+        pstore record to write, with \ ``id``\  to be set
 
 .. _`nvram_pstore_write.description`:
 

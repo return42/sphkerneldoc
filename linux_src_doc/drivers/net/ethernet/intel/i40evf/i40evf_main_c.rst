@@ -1008,6 +1008,26 @@ i40evf_adminq_task
     :param struct work_struct \*work:
         pointer to work_struct containing our data
 
+.. _`i40evf_client_task`:
+
+i40evf_client_task
+==================
+
+.. c:function:: void i40evf_client_task(struct work_struct *work)
+
+    worker thread to perform client work
+
+    :param struct work_struct \*work:
+        pointer to work_struct containing our data
+
+.. _`i40evf_client_task.description`:
+
+Description
+-----------
+
+This task handles client interactions. Because client calls can be
+reentrant, we can't handle them in the watchdog.
+
 .. _`i40evf_free_all_tx_resources`:
 
 i40evf_free_all_tx_resources
@@ -1140,26 +1160,6 @@ The close entry point is called when an interface is de-activated
 by the OS.  The hardware is still under the drivers control, but
 needs to be disabled. All IRQs except vector 0 (reserved for admin queue)
 are freed, along with all transmit and receive resources.
-
-.. _`i40evf_get_stats`:
-
-i40evf_get_stats
-================
-
-.. c:function:: struct net_device_stats *i40evf_get_stats(struct net_device *netdev)
-
-    Get System Network Statistics
-
-    :param struct net_device \*netdev:
-        network interface device structure
-
-.. _`i40evf_get_stats.description`:
-
-Description
------------
-
-Returns the address of the device statistics structure.
-The statistics are actually updated from the timer callback.
 
 .. _`i40evf_change_mtu`:
 

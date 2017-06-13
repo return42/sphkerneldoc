@@ -54,6 +54,116 @@ Description
 This enum is used to track the connector status. There are no separate
 #defines for the uapi!
 
+.. _`drm_scrambling`:
+
+struct drm_scrambling
+=====================
+
+.. c:type:: struct drm_scrambling
+
+    sink's scrambling support.
+
+.. _`drm_scrambling.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_scrambling {
+        bool supported;
+        bool low_rates;
+    }
+
+.. _`drm_scrambling.members`:
+
+Members
+-------
+
+supported
+    scrambling supported for rates > 340 Mhz.
+
+low_rates
+    scrambling supported for rates <= 340 Mhz.
+
+.. _`drm_hdmi_info`:
+
+struct drm_hdmi_info
+====================
+
+.. c:type:: struct drm_hdmi_info
+
+    runtime information about the connected HDMI sink
+
+.. _`drm_hdmi_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_hdmi_info {
+        struct drm_scdc scdc;
+    }
+
+.. _`drm_hdmi_info.members`:
+
+Members
+-------
+
+scdc
+    sink's scdc support and capabilities
+
+.. _`drm_hdmi_info.description`:
+
+Description
+-----------
+
+Describes if a given display supports advanced HDMI 2.0 features.
+This information is available in CEA-861-F extension blocks (like HF-VSDB).
+
+.. _`drm_link_status`:
+
+enum drm_link_status
+====================
+
+.. c:type:: enum drm_link_status
+
+    connector's link_status property value
+
+.. _`drm_link_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_link_status {
+        DRM_LINK_STATUS_GOOD,
+        DRM_LINK_STATUS_BAD
+    };
+
+.. _`drm_link_status.constants`:
+
+Constants
+---------
+
+DRM_LINK_STATUS_GOOD
+    DP Link is Good as a result of successful
+    link training
+
+DRM_LINK_STATUS_BAD
+    DP Link is BAD as a result of link training
+    failure
+
+.. _`drm_link_status.description`:
+
+Description
+-----------
+
+This enum is used as the connector's link status property value.
+It is set to the values defined in uapi.
+
 .. _`drm_display_info`:
 
 struct drm_display_info
@@ -87,11 +197,14 @@ Definition
     #define DRM_BUS_FLAG_DE_HIGH (1<<1)
     #define DRM_BUS_FLAG_PIXDATA_POSEDGE (1<<2)
     #define DRM_BUS_FLAG_PIXDATA_NEGEDGE (1<<3)
+    #define DRM_BUS_FLAG_DATA_MSB_TO_LSB (1<<4)
+    #define DRM_BUS_FLAG_DATA_LSB_TO_MSB (1<<5)
         u32 bus_flags;
         int max_tmds_clock;
         bool dvi_dual;
         u8 edid_hdmi_dc_modes;
         u8 cea_rev;
+        struct drm_hdmi_info hdmi;
     }
 
 .. _`drm_display_info.members`:
@@ -109,7 +222,7 @@ height_mm
     Physical height in mm.
 
 pixel_clock
-    Maximum pixel clock supported by the sink, in units of100Hz. This mismatches the clok in \ :c:type:`struct drm_display_mode <drm_display_mode>`\  (which is in
+    Maximum pixel clock supported by the sink, in units of100Hz. This mismatches the clock in \ :c:type:`struct drm_display_mode <drm_display_mode>`\  (which is in
     kHZ), because that's what the EDID uses as base unit.
 
 bpc
@@ -145,6 +258,9 @@ edid_hdmi_dc_modes
 cea_rev
     CEA revision of the HDMI sink.
 
+hdmi
+    advance features of a HDMI sink.
+
 .. _`drm_display_info.description`:
 
 Description
@@ -152,7 +268,7 @@ Description
 
 Describes a given display (e.g. CRT or flat panel) and its limitations. For
 fixed display sinks like built-in panels there's not much difference between
-this and struct \ :c:type:`struct drm_connector <drm_connector>`\ . But for sinks with a real cable this
+this and \ :c:type:`struct drm_connector <drm_connector>`\ . But for sinks with a real cable this
 structure is meant to describe all the things at the other end of the cable.
 
 For sinks which provide an EDID this can be filled out by calling
@@ -238,6 +354,7 @@ Definition
         struct drm_connector *connector;
         struct drm_crtc *crtc;
         struct drm_encoder *best_encoder;
+        enum drm_link_status link_status;
         struct drm_atomic_state *state;
         struct drm_tv_connector_state tv;
     }
@@ -257,6 +374,9 @@ crtc
 
 best_encoder
     can be used by helpers and drivers to select the encoder
+
+link_status
+    Connector link_status to keep track of whether link isGOOD or BAD to notify userspace if retraining is necessary.
 
 state
     backpointer to global drm_atomic_state
@@ -342,6 +462,11 @@ detect
     the helper library vtable purely for historical reasons. The only DRM
     core entry point to probe connector state is \ ``fill_modes``\ .
 
+    Note that the helper library will already hold
+    \ :c:type:`drm_mode_config.connection_mutex <drm_mode_config>`\ . Drivers which need to grab additional
+    locks to avoid races with concurrent modeset changes need to use
+    \ :c:type:`drm_connector_helper_funcs.detect_ctx <drm_connector_helper_funcs>`\  instead.
+
     RETURNS:
 
     drm_connector_status indicating the connector's status.
@@ -363,15 +488,15 @@ fill_modes
 
     Entry point for output detection and basic mode validation. The
     driver should reprobe the output if needed (e.g. when hotplug
-    handling is unreliable), add all detected modes to connector->modes
+    handling is unreliable), add all detected modes to \ :c:type:`drm_connector.modes <drm_connector>`\ 
     and filter out any the device can't support in any configuration. It
     also needs to filter out any modes wider or higher than the
     parameters max_width and max_height indicate.
 
     The drivers must also prune any modes no longer valid from
-    connector->modes. Furthermore it must update connector->status and
-    connector->edid.  If no EDID has been received for this output
-    connector->edid must be NULL.
+    \ :c:type:`drm_connector.modes <drm_connector>`\ . Furthermore it must update
+    \ :c:type:`drm_connector.status <drm_connector>`\  and \ :c:type:`drm_connector.edid <drm_connector>`\ .  If no EDID has been
+    received for this output connector->edid must be NULL.
 
     Drivers using the probe helpers should use
     \ :c:func:`drm_helper_probe_single_connector_modes`\  or
@@ -380,7 +505,7 @@ fill_modes
 
     RETURNS:
 
-    The number of modes detected and filled into connector->modes.
+    The number of modes detected and filled into \ :c:type:`drm_connector.modes <drm_connector>`\ .
 
 set_property
 
@@ -406,6 +531,8 @@ late_register
     core drm connector interfaces. Everything added from this callback
     should be unregistered in the early_unregister callback.
 
+    This is called while holding \ :c:type:`drm_connector.mutex <drm_connector>`\ .
+
     Returns:
 
     0 on success, or a negative error code on failure.
@@ -417,6 +544,8 @@ early_unregister
     \ :c:func:`late_register`\ . It is called from \ :c:func:`drm_connector_unregister`\ ,
     early in the driver unload sequence to disable userspace access
     before data structures are torndown.
+
+    This is called while holding \ :c:type:`drm_connector.mutex <drm_connector>`\ .
 
 destroy
 
@@ -430,17 +559,17 @@ atomic_duplicate_state
     Duplicate the current atomic state for this connector and return it.
     The core and helpers guarantee that any atomic state duplicated with
     this hook and still owned by the caller (i.e. not transferred to the
-    driver by calling ->atomic_commit() from struct
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`\ ) will be cleaned up by calling the
-    \ ``atomic_destroy_state``\  hook in this structure.
+    driver by calling \ :c:type:`drm_mode_config_funcs.atomic_commit <drm_mode_config_funcs>`\ ) will be
+    cleaned up by calling the \ ``atomic_destroy_state``\  hook in this
+    structure.
 
-    Atomic drivers which don't subclass struct \ :c:type:`struct drm_connector_state <drm_connector_state>`\  should use
+    Atomic drivers which don't subclass \ :c:type:`struct drm_connector_state <drm_connector_state>`\  should use
     \ :c:func:`drm_atomic_helper_connector_duplicate_state`\ . Drivers that subclass the
     state structure to extend it with driver-private state should use
     \ :c:func:`__drm_atomic_helper_connector_duplicate_state`\  to make sure shared state is
     duplicated in a consistent fashion across drivers.
 
-    It is an error to call this hook before connector->state has been
+    It is an error to call this hook before \ :c:type:`drm_connector.state <drm_connector>`\  has been
     initialized correctly.
 
     NOTE:
@@ -518,7 +647,7 @@ atomic_get_property
 
 atomic_print_state
 
-    If driver subclasses struct \ :c:type:`struct drm_connector_state <drm_connector_state>`\ , it should implement
+    If driver subclasses \ :c:type:`struct drm_connector_state <drm_connector_state>`\ , it should implement
     this optional hook for printing additional driver specific state.
 
     Do not call this directly, use \ :c:func:`drm_atomic_connector_print_state`\ 
@@ -556,6 +685,7 @@ Definition
         struct list_head head;
         struct drm_mode_object base;
         char *name;
+        struct mutex mutex;
         unsigned index;
         int connector_type;
         int connector_type_id;
@@ -628,6 +758,10 @@ base
 name
     human readable name, can be overwritten by the driver
 
+mutex
+    Lock for general connector state, but currently only protects@registered. Most of the connector state is still protected by
+    \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ .
+
 index
     Compacted connector index, which matches the position insidethe mode_config.list for drivers not supporting hot-add/removing. Can
     be used as an array index. It is invariant over the lifetime of the
@@ -649,22 +783,28 @@ stereo_allowed
     can this connector handle stereo modes?
 
 registered
-    is this connector exposed (registered) with userspace?
+    Is this connector exposed (registered) with userspace?Protected by \ ``mutex``\ .
 
 modes
-    modes available on this connector (from \ :c:func:`fill_modes`\  + user)
+    Modes available on this connector (from \ :c:func:`fill_modes`\  + user).
+    Protected by \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ .
 
 status
-    one of the drm_connector_status enums (connected, not, or unknown)
+    One of the drm_connector_status enums (connected, not, or unknown).
+    Protected by \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ .
 
 probed_modes
-    list of modes derived directly from the display
+    These are modes added by probing with DDC or the BIOS, before
+    filtering is applied. Used by the probe helpers. Protected by
+    \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ .
 
 display_info
     Display information is filled from EDID informationwhen a display is detected. For non hot-pluggable displays such as
     flat panels in embedded systems, the driver should initialize the
-    display_info.width_mm and display_info.height_mm fields with the
-    physical size of the display.
+    \ :c:type:`drm_display_info.width_mm <drm_display_info>`\  and \ :c:type:`drm_display_info.height_mm <drm_display_info>`\  fields
+    with the physical size of the display.
+
+    Protected by \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ .
 
 funcs
     connector control functions
@@ -752,7 +892,18 @@ debugfs_entry
     debugfs directory for this connector
 
 state
-    current atomic state for this connector
+
+    Current atomic state for this connector.
+
+    This is protected by \ ``drm_mode_config``\ .connection_mutex. Note that
+    nonblocking atomic commits access the current connector state without
+    taking locks. Either by going through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ 
+    pointers, see \ :c:func:`for_each_connector_in_state`\ ,
+    \ :c:func:`for_each_oldnew_connector_in_state`\ ,
+    \ :c:func:`for_each_old_connector_in_state`\  and
+    \ :c:func:`for_each_new_connector_in_state`\ . Or through careful ordering of
+    atomic commit operations as implemented in the atomic helpers, see
+    \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
 
 has_tile
     is this connector connected to a tiled monitor
@@ -814,6 +965,45 @@ Description
 This function looks up the connector object specified by id
 add takes a reference to it.
 
+.. _`drm_connector_get`:
+
+drm_connector_get
+=================
+
+.. c:function:: void drm_connector_get(struct drm_connector *connector)
+
+    acquire a connector reference
+
+    :param struct drm_connector \*connector:
+        DRM connector
+
+.. _`drm_connector_get.description`:
+
+Description
+-----------
+
+This function increments the connector's refcount.
+
+.. _`drm_connector_put`:
+
+drm_connector_put
+=================
+
+.. c:function:: void drm_connector_put(struct drm_connector *connector)
+
+    release a connector reference
+
+    :param struct drm_connector \*connector:
+        DRM connector
+
+.. _`drm_connector_put.description`:
+
+Description
+-----------
+
+This function decrements the connector's reference count and frees the
+object if the reference count drops to zero.
+
 .. _`drm_connector_reference`:
 
 drm_connector_reference
@@ -821,17 +1011,18 @@ drm_connector_reference
 
 .. c:function:: void drm_connector_reference(struct drm_connector *connector)
 
-    incr the connector refcnt
+    acquire a connector reference
 
     :param struct drm_connector \*connector:
-        connector
+        DRM connector
 
 .. _`drm_connector_reference.description`:
 
 Description
 -----------
 
-This function increments the connector's refcount.
+This is a compatibility alias for \ :c:func:`drm_connector_get`\  and should not be
+used by new code.
 
 .. _`drm_connector_unreference`:
 
@@ -840,17 +1031,18 @@ drm_connector_unreference
 
 .. c:function:: void drm_connector_unreference(struct drm_connector *connector)
 
-    unref a connector
+    release a connector reference
 
     :param struct drm_connector \*connector:
-        connector to unref
+        DRM connector
 
 .. _`drm_connector_unreference.description`:
 
 Description
 -----------
 
-This function decrements the connector's refcount and frees it if it drops to zero.
+This is a compatibility alias for \ :c:func:`drm_connector_put`\  and should not be
+used by new code.
 
 .. _`drm_tile_group`:
 
@@ -921,6 +1113,78 @@ Description
 -----------
 
 Iterate over all connectors of \ ``dev``\ .
+
+.. _`drm_for_each_connector.warning`:
+
+WARNING
+-------
+
+
+This iterator is not safe against hotadd/removal of connectors and is
+deprecated. Use \ :c:func:`drm_for_each_connector_iter`\  instead.
+
+.. _`drm_connector_list_iter`:
+
+struct drm_connector_list_iter
+==============================
+
+.. c:type:: struct drm_connector_list_iter
+
+    connector_list iterator
+
+.. _`drm_connector_list_iter.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_connector_list_iter {
+         void;
+    }
+
+.. _`drm_connector_list_iter.members`:
+
+Members
+-------
+
+void
+    no arguments
+
+.. _`drm_connector_list_iter.description`:
+
+Description
+-----------
+
+This iterator tracks state needed to be able to walk the connector_list
+within struct drm_mode_config. Only use together with
+\ :c:func:`drm_connector_list_iter_begin`\ , \ :c:func:`drm_connector_list_iter_end`\  and
+\ :c:func:`drm_connector_list_iter_next`\  respectively the convenience macro
+\ :c:func:`drm_for_each_connector_iter`\ .
+
+.. _`drm_for_each_connector_iter`:
+
+drm_for_each_connector_iter
+===========================
+
+.. c:function::  drm_for_each_connector_iter( connector,  iter)
+
+    connector_list iterator macro
+
+    :param  connector:
+        &struct drm_connector pointer used as cursor
+
+    :param  iter:
+        &struct drm_connector_list_iter
+
+.. _`drm_for_each_connector_iter.description`:
+
+Description
+-----------
+
+Note that \ ``connector``\  is only valid within the list body, if you want to use
+\ ``connector``\  after calling \ :c:func:`drm_connector_list_iter_end`\  then you need to grab
+your own reference first using \ :c:func:`drm_connector_begin`\ .
 
 .. This file was automatic generated / don't edit.
 

@@ -171,18 +171,12 @@ mount, path_connected allows those cases to be detected.
 unlazy_walk
 ===========
 
-.. c:function:: int unlazy_walk(struct nameidata *nd, struct dentry *dentry, unsigned seq)
+.. c:function:: int unlazy_walk(struct nameidata *nd)
 
     try to switch to ref-walk mode.
 
     :param struct nameidata \*nd:
         nameidata pathwalk data
-
-    :param struct dentry \*dentry:
-        child of nd->path.dentry or NULL
-
-    :param unsigned seq:
-        seq number to check dentry against
 
 .. _`unlazy_walk.return`:
 
@@ -191,10 +185,41 @@ Return
 
 0 on success, -ECHILD on failure
 
-unlazy_walk attempts to legitimize the current nd->path, nd->root and dentry
-for ref-walk mode.  \ ``dentry``\  must be a path found by a do_lookup call on
-\ ``nd``\  or NULL.  Must be called from rcu-walk context.
+unlazy_walk attempts to legitimize the current nd->path and nd->root
+for ref-walk mode.
+Must be called from rcu-walk context.
 Nothing should touch nameidata between \ :c:func:`unlazy_walk`\  failure and
+\ :c:func:`terminate_walk`\ .
+
+.. _`unlazy_child`:
+
+unlazy_child
+============
+
+.. c:function:: int unlazy_child(struct nameidata *nd, struct dentry *dentry, unsigned seq)
+
+    try to switch to ref-walk mode.
+
+    :param struct nameidata \*nd:
+        nameidata pathwalk data
+
+    :param struct dentry \*dentry:
+        child of nd->path.dentry
+
+    :param unsigned seq:
+        seq number to check dentry against
+
+.. _`unlazy_child.return`:
+
+Return
+------
+
+0 on success, -ECHILD on failure
+
+unlazy_child attempts to legitimize the current nd->path, nd->root and dentry
+for ref-walk mode.  \ ``dentry``\  must be a path found by a do_lookup call on
+\ ``nd``\ .  Must be called from rcu-walk context.
+Nothing should touch nameidata between \ :c:func:`unlazy_child`\  failure and
 \ :c:func:`terminate_walk`\ .
 
 .. _`complete_walk`:
@@ -265,10 +290,10 @@ safe_hardlink_source
 Return false if at least one of the following conditions
 --------------------------------------------------------
 
-- inode is not a regular file
-- inode is setuid
-- inode is setgid and group-exec
-- access failure for read and write
+   - inode is not a regular file
+   - inode is setuid
+   - inode is setgid and group-exec
+   - access failure for read and write
 
 Otherwise returns true.
 
@@ -289,10 +314,10 @@ may_linkat
 Block hardlink when all of
 --------------------------
 
-- sysctl_protected_hardlinks enabled
-- fsuid does not match inode
-- hardlink source is unsafe (see \ :c:func:`safe_hardlink_source`\  above)
-- not CAP_FOWNER in a namespace with the inode owner uid mapped
+ - sysctl_protected_hardlinks enabled
+ - fsuid does not match inode
+ - hardlink source is unsafe (see \ :c:func:`safe_hardlink_source`\  above)
+ - not CAP_FOWNER in a namespace with the inode owner uid mapped
 
 Returns 0 if successful, -ve on error.
 
@@ -409,13 +434,13 @@ Return
 ------
 
 -error: if there was an error during lookup. This includes -ENOENT if the
-lookup found a negative dentry.
+        lookup found a negative dentry.
 
 0:      if we successfully resolved nd->last and found it to not to be a
-symlink that needs to be followed.
+        symlink that needs to be followed.
 
 1:      if we successfully resolved nd->last and found it to be a symlink
-that needs to be followed.
+        that needs to be followed.
 
 .. _`path_mountpoint`:
 
@@ -602,29 +627,30 @@ doesn't even start to describe it. Somebody in UCB had a heck of a trip...
 Problems
 --------
 
-a) we can get into loop creation.
-b) race potential - two innocent renames can create a loop together.
-That's where 4.4 screws up. Current fix: serialization on
-sb->s_vfs_rename_mutex. We might be more accurate, but that's another
-story.
-c) we have to lock \_four\_ objects - parents and victim (if it exists),
-and source (if it is not a directory).
-And that - after we got ->i_mutex on parents (until then we don't know
-whether the target exists).  Solution: try to be smart with locking
-order for inodes.  We rely on the fact that tree topology may change
-only under ->s_vfs_rename_mutex \_and\_ that parent of the object we
-move will be locked.  Thus we can rank directories by the tree
-(ancestors first) and rank all non-directories after them.
-That works since everybody except rename does "lock parent, lookup,
-lock child" and rename is under ->s_vfs_rename_mutex.
-HOWEVER, it relies on the assumption that any object with ->lookup()
-has no more than 1 dentry.  If "hybrid" objects will ever appear,
-we'd better make sure that there's no link(2) for them.
-d) conversion from fhandle to dentry may come in the wrong moment - when
-we are removing the target. Solution: we will have to grab ->i_mutex
-in the fhandle_to_dentry code. [FIXME - current nfsfh.c relies on
-->i_mutex on parents, which works but leads to some truly excessive
-locking].
+
+     a) we can get into loop creation.
+     b) race potential - two innocent renames can create a loop together.
+        That's where 4.4 screws up. Current fix: serialization on
+        sb->s_vfs_rename_mutex. We might be more accurate, but that's another
+        story.
+     c) we have to lock _four_ objects - parents and victim (if it exists),
+        and source (if it is not a directory).
+        And that - after we got ->i_mutex on parents (until then we don't know
+        whether the target exists).  Solution: try to be smart with locking
+        order for inodes.  We rely on the fact that tree topology may change
+        only under ->s_vfs_rename_mutex _and_ that parent of the object we
+        move will be locked.  Thus we can rank directories by the tree
+        (ancestors first) and rank all non-directories after them.
+        That works since everybody except rename does "lock parent, lookup,
+        lock child" and rename is under ->s_vfs_rename_mutex.
+        HOWEVER, it relies on the assumption that any object with ->lookup()
+        has no more than 1 dentry.  If "hybrid" objects will ever appear,
+        we'd better make sure that there's no link(2) for them.
+     d) conversion from fhandle to dentry may come in the wrong moment - when
+        we are removing the target. Solution: we will have to grab ->i_mutex
+        in the fhandle_to_dentry code. [FIXME - current nfsfh.c relies on
+        ->i_mutex on parents, which works but leads to some truly excessive
+        locking].
 
 .. _`vfs_readlink`:
 

@@ -240,8 +240,8 @@ firmware description and stores them to \ ``val``\  if found.
 Return
 ------
 
-number of values if \ ``val``\  was \ ``NULL``\ ,
-\ ``0``\  if the property was found (success),
+number of values read on success if \ ``val``\  is non-NULL,
+number of values available on success if \ ``val``\  is NULL,
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  or \ ``-EILSEQ``\  if the property is not an array of strings,
@@ -524,11 +524,11 @@ them to \ ``val``\  if found.
 Return
 ------
 
-number of values if \ ``val``\  was \ ``NULL``\ ,
-\ ``0``\  if the property was found (success),
+number of values read on success if \ ``val``\  is non-NULL,
+number of values available on success if \ ``val``\  is NULL,
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
-\ ``-EPROTO``\  if the property is not an array of strings,
+\ ``-EPROTO``\  or \ ``-EILSEQ``\  if the property is not an array of strings,
 \ ``-EOVERFLOW``\  if the size of the property is not as expected,
 \ ``-ENXIO``\  if no suitable firmware interface is present.
 
@@ -606,6 +606,46 @@ Return
 \ ``-EPROTO``\  if the property is not an array of strings,
 \ ``-ENXIO``\  if no suitable firmware interface is present.
 
+.. _`property_entries_dup`:
+
+property_entries_dup
+====================
+
+.. c:function:: struct property_entry *property_entries_dup(const struct property_entry *properties)
+
+    duplicate array of properties
+
+    :param const struct property_entry \*properties:
+        array of properties to copy
+
+.. _`property_entries_dup.description`:
+
+Description
+-----------
+
+This function creates a deep copy of the given NULL-terminated array
+of property entries.
+
+.. _`property_entries_free`:
+
+property_entries_free
+=====================
+
+.. c:function:: void property_entries_free(const struct property_entry *properties)
+
+    free previously allocated array of properties
+
+    :param const struct property_entry \*properties:
+        array of properties to destroy
+
+.. _`property_entries_free.description`:
+
+Description
+-----------
+
+This function frees given NULL-terminated array of property entries,
+along with their data.
+
 .. _`pset_free_set`:
 
 pset_free_set
@@ -680,14 +720,14 @@ to the properties will also be released.
 device_add_properties
 =====================
 
-.. c:function:: int device_add_properties(struct device *dev, struct property_entry *properties)
+.. c:function:: int device_add_properties(struct device *dev, const struct property_entry *properties)
 
     Add a collection of properties to a device object.
 
     :param struct device \*dev:
         Device to add properties to.
 
-    :param struct property_entry \*properties:
+    :param const struct property_entry \*properties:
         Collection of properties to add.
 
 .. _`device_add_properties.description`:
@@ -698,6 +738,65 @@ Description
 Associate a collection of device properties represented by \ ``properties``\  with
 \ ``dev``\  as its secondary firmware node. The function takes a copy of
 \ ``properties``\ .
+
+.. _`fwnode_get_next_parent`:
+
+fwnode_get_next_parent
+======================
+
+.. c:function:: struct fwnode_handle *fwnode_get_next_parent(struct fwnode_handle *fwnode)
+
+    Iterate to the node's parent
+
+    :param struct fwnode_handle \*fwnode:
+        Firmware whose parent is retrieved
+
+.. _`fwnode_get_next_parent.description`:
+
+Description
+-----------
+
+This is like \ :c:func:`fwnode_get_parent`\  except that it drops the refcount
+on the passed node, making it suitable for iterating through a
+node's parents.
+
+Returns a node pointer with refcount incremented, use
+\ :c:func:`fwnode_handle_node`\  on it when done.
+
+.. _`fwnode_get_parent`:
+
+fwnode_get_parent
+=================
+
+.. c:function:: struct fwnode_handle *fwnode_get_parent(struct fwnode_handle *fwnode)
+
+    Return parent firwmare node
+
+    :param struct fwnode_handle \*fwnode:
+        Firmware whose parent is retrieved
+
+.. _`fwnode_get_parent.description`:
+
+Description
+-----------
+
+Return parent firmware node of the given node if possible or \ ``NULL``\  if no
+parent was available.
+
+.. _`fwnode_get_next_child_node`:
+
+fwnode_get_next_child_node
+==========================
+
+.. c:function:: struct fwnode_handle *fwnode_get_next_child_node(struct fwnode_handle *fwnode, struct fwnode_handle *child)
+
+    Return the next child node handle for a node
+
+    :param struct fwnode_handle \*fwnode:
+        Firmware node to find the next child node for.
+
+    :param struct fwnode_handle \*child:
+        Handle to one of the node's child nodes or a \ ``NULL``\  handle.
 
 .. _`device_get_next_child_node`:
 
@@ -714,6 +813,21 @@ device_get_next_child_node
     :param struct fwnode_handle \*child:
         Handle to one of the device's child nodes or a null handle.
 
+.. _`fwnode_get_named_child_node`:
+
+fwnode_get_named_child_node
+===========================
+
+.. c:function:: struct fwnode_handle *fwnode_get_named_child_node(struct fwnode_handle *fwnode, const char *childname)
+
+    Return first matching named child node handle
+
+    :param struct fwnode_handle \*fwnode:
+        Firmware node to find the named child node for.
+
+    :param const char \*childname:
+        String to match child node name against.
+
 .. _`device_get_named_child_node`:
 
 device_get_named_child_node
@@ -728,6 +842,18 @@ device_get_named_child_node
 
     :param const char \*childname:
         String to match child node name against.
+
+.. _`fwnode_handle_get`:
+
+fwnode_handle_get
+=================
+
+.. c:function:: void fwnode_handle_get(struct fwnode_handle *fwnode)
+
+    Obtain a reference to a device node
+
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the device node to obtain the reference to.
 
 .. _`fwnode_handle_put`:
 
@@ -822,6 +948,110 @@ example, the DTS could define 'mac-address' and 'local-mac-address', with
 zero MAC addresses.  Some older U-Boots only initialized 'local-mac-address'.
 In this case, the real MAC is in 'local-mac-address', and 'mac-address'
 exists but is all zeros.
+
+.. _`fwnode_graph_get_next_endpoint`:
+
+fwnode_graph_get_next_endpoint
+==============================
+
+.. c:function:: struct fwnode_handle *fwnode_graph_get_next_endpoint(struct fwnode_handle *fwnode, struct fwnode_handle *prev)
+
+    Get next endpoint firmware node
+
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the parent firmware node
+
+    :param struct fwnode_handle \*prev:
+        Previous endpoint node or \ ``NULL``\  to get the first
+
+.. _`fwnode_graph_get_next_endpoint.description`:
+
+Description
+-----------
+
+Returns an endpoint firmware node pointer or \ ``NULL``\  if no more endpoints
+are available.
+
+.. _`fwnode_graph_get_remote_port_parent`:
+
+fwnode_graph_get_remote_port_parent
+===================================
+
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_port_parent(struct fwnode_handle *fwnode)
+
+    Return fwnode of a remote device
+
+    :param struct fwnode_handle \*fwnode:
+        Endpoint firmware node pointing to the remote endpoint
+
+.. _`fwnode_graph_get_remote_port_parent.description`:
+
+Description
+-----------
+
+Extracts firmware node of a remote device the \ ``fwnode``\  points to.
+
+.. _`fwnode_graph_get_remote_port`:
+
+fwnode_graph_get_remote_port
+============================
+
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_port(struct fwnode_handle *fwnode)
+
+    Return fwnode of a remote port
+
+    :param struct fwnode_handle \*fwnode:
+        Endpoint firmware node pointing to the remote endpoint
+
+.. _`fwnode_graph_get_remote_port.description`:
+
+Description
+-----------
+
+Extracts firmware node of a remote port the \ ``fwnode``\  points to.
+
+.. _`fwnode_graph_get_remote_endpoint`:
+
+fwnode_graph_get_remote_endpoint
+================================
+
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_endpoint(struct fwnode_handle *fwnode)
+
+    Return fwnode of a remote endpoint
+
+    :param struct fwnode_handle \*fwnode:
+        Endpoint firmware node pointing to the remote endpoint
+
+.. _`fwnode_graph_get_remote_endpoint.description`:
+
+Description
+-----------
+
+Extracts firmware node of a remote endpoint the \ ``fwnode``\  points to.
+
+.. _`fwnode_graph_parse_endpoint`:
+
+fwnode_graph_parse_endpoint
+===========================
+
+.. c:function:: int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode, struct fwnode_endpoint *endpoint)
+
+    parse common endpoint node properties
+
+    :param struct fwnode_handle \*fwnode:
+        pointer to endpoint fwnode_handle
+
+    :param struct fwnode_endpoint \*endpoint:
+        pointer to the fwnode endpoint data structure
+
+.. _`fwnode_graph_parse_endpoint.description`:
+
+Description
+-----------
+
+Parse \ ``fwnode``\  representing a graph endpoint node and store the
+information in \ ``endpoint``\ . The caller must hold a reference to
+\ ``fwnode``\ .
 
 .. This file was automatic generated / don't edit.
 

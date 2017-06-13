@@ -276,9 +276,9 @@ get_vm_area
 Description
 -----------
 
-Search an area of \ ``size``\  in the kernel virtual mapping area,
-and reserved it for out purposes.  Returns the area descriptor
-on success or \ ``NULL``\  on failure.
+     Search an area of \ ``size``\  in the kernel virtual mapping area,
+     and reserved it for out purposes.  Returns the area descriptor
+     on success or \ ``NULL``\  on failure.
 
 .. _`find_vm_area`:
 
@@ -297,9 +297,9 @@ find_vm_area
 Description
 -----------
 
-Search for the kernel VM area starting at \ ``addr``\ , and return it.
-It is up to the caller to do all required locking to keep the returned
-pointer valid.
+     Search for the kernel VM area starting at \ ``addr``\ , and return it.
+     It is up to the caller to do all required locking to keep the returned
+     pointer valid.
 
 .. _`remove_vm_area`:
 
@@ -318,9 +318,9 @@ remove_vm_area
 Description
 -----------
 
-Search for the kernel VM area starting at \ ``addr``\ , and remove it.
-This function returns the found VM area, but using it is NOT safe
-on SMP machines, except for its size or flags.
+     Search for the kernel VM area starting at \ ``addr``\ , and remove it.
+     This function returns the found VM area, but using it is NOT safe
+     on SMP machines, except for its size or flags.
 
 .. _`vfree_atomic`:
 
@@ -339,8 +339,8 @@ vfree_atomic
 Description
 -----------
 
-This one is just like \ :c:func:`vfree`\  but can be called in any atomic context
-except NMIs.
+     This one is just like \ :c:func:`vfree`\  but can be called in any atomic context
+     except NMIs.
 
 .. _`vfree`:
 
@@ -359,20 +359,20 @@ vfree
 Description
 -----------
 
-Free the virtually continuous memory area starting at \ ``addr``\ , as
-obtained from \ :c:func:`vmalloc`\ , \ :c:func:`vmalloc_32`\  or \__vmalloc(). If \ ``addr``\  is
-NULL, no operation is performed.
+     Free the virtually continuous memory area starting at \ ``addr``\ , as
+     obtained from \ :c:func:`vmalloc`\ , \ :c:func:`vmalloc_32`\  or \ :c:func:`__vmalloc`\ . If \ ``addr``\  is
+     NULL, no operation is performed.
 
-Must not be called in NMI context (strictly speaking, only if we don't
-have CONFIG_ARCH_HAVE_NMI_SAFE_CMPXCHG, but making the calling
-conventions for \ :c:func:`vfree`\  arch-depenedent would be a really bad idea)
+     Must not be called in NMI context (strictly speaking, only if we don't
+     have CONFIG_ARCH_HAVE_NMI_SAFE_CMPXCHG, but making the calling
+     conventions for \ :c:func:`vfree`\  arch-depenedent would be a really bad idea)
 
 .. _`vfree.note`:
 
 NOTE
 ----
 
-assumes that the object at \*addr has a size >= sizeof(llist_node)
+assumes that the object at \ ``addr``\  has a size >= sizeof(llist_node)
 
 .. _`vunmap`:
 
@@ -391,10 +391,10 @@ vunmap
 Description
 -----------
 
-Free the virtually contiguous memory area starting at \ ``addr``\ ,
-which was created from the page array passed to \ :c:func:`vmap`\ .
+     Free the virtually contiguous memory area starting at \ ``addr``\ ,
+     which was created from the page array passed to \ :c:func:`vmap`\ .
 
-Must not be called in interrupt context.
+     Must not be called in interrupt context.
 
 .. _`vmap`:
 
@@ -422,8 +422,8 @@ vmap
 Description
 -----------
 
-Maps \ ``count``\  pages from \ ``pages``\  into contiguous kernel virtual
-space.
+     Maps \ ``count``\  pages from \ ``pages``\  into contiguous kernel virtual
+     space.
 
 .. _`__vmalloc_node_range`:
 
@@ -466,9 +466,9 @@ __vmalloc_node_range
 Description
 -----------
 
-Allocate enough pages to cover \ ``size``\  from the page level
-allocator with \ ``gfp_mask``\  flags.  Map them into contiguous
-kernel virtual space, using a pagetable protection of \ ``prot``\ .
+     Allocate enough pages to cover \ ``size``\  from the page level
+     allocator with \ ``gfp_mask``\  flags.  Map them into contiguous
+     kernel virtual space, using a pagetable protection of \ ``prot``\ .
 
 .. _`__vmalloc_node`:
 
@@ -502,9 +502,15 @@ __vmalloc_node
 Description
 -----------
 
-Allocate enough pages to cover \ ``size``\  from the page level
-allocator with \ ``gfp_mask``\  flags.  Map them into contiguous
-kernel virtual space, using a pagetable protection of \ ``prot``\ .
+     Allocate enough pages to cover \ ``size``\  from the page level
+     allocator with \ ``gfp_mask``\  flags.  Map them into contiguous
+     kernel virtual space, using a pagetable protection of \ ``prot``\ .
+
+     Reclaim modifiers in \ ``gfp_mask``\  - __GFP_NORETRY, __GFP_REPEAT
+     and __GFP_NOFAIL are not supported
+
+     Any use of gfp flags outside of GFP_KERNEL should be consulted
+     with mm people.
 
 .. _`vmalloc`:
 
@@ -525,8 +531,8 @@ vmalloc
 Description
 -----------
 
-For tight control over page level allocator and protection flags
-use \__vmalloc() instead.
+     For tight control over page level allocator and protection flags
+     use \ :c:func:`__vmalloc`\  instead.
 
 .. _`vzalloc`:
 
@@ -548,8 +554,8 @@ vzalloc
 Description
 -----------
 
-For tight control over page level allocator and protection flags
-use \__vmalloc() instead.
+     For tight control over page level allocator and protection flags
+     use \ :c:func:`__vmalloc`\  instead.
 
 .. _`vmalloc_user`:
 
@@ -591,11 +597,11 @@ vmalloc_node
 Description
 -----------
 
-Allocate enough pages to cover \ ``size``\  from the page level
-allocator and map them into contiguous kernel virtual space.
+     Allocate enough pages to cover \ ``size``\  from the page level
+     allocator and map them into contiguous kernel virtual space.
 
-For tight control over page level allocator and protection flags
-use \__vmalloc() instead.
+     For tight control over page level allocator and protection flags
+     use \ :c:func:`__vmalloc`\  instead.
 
 .. _`vzalloc_node`:
 
@@ -622,7 +628,7 @@ allocator and map them into contiguous kernel virtual space.
 The memory allocated is set to zero.
 
 For tight control over page level allocator and protection flags
-use \__vmalloc_node() instead.
+use \ :c:func:`__vmalloc_node`\  instead.
 
 .. _`vmalloc_exec`:
 
@@ -641,12 +647,12 @@ vmalloc_exec
 Description
 -----------
 
-Kernel-internal function to allocate enough pages to cover \ ``size``\ 
-the page level allocator and map them into contiguous and
-executable kernel virtual space.
+     Kernel-internal function to allocate enough pages to cover \ ``size``\ 
+     the page level allocator and map them into contiguous and
+     executable kernel virtual space.
 
-For tight control over page level allocator and protection flags
-use \__vmalloc() instead.
+     For tight control over page level allocator and protection flags
+     use \ :c:func:`__vmalloc`\  instead.
 
 .. _`vmalloc_32`:
 
@@ -665,8 +671,8 @@ vmalloc_32
 Description
 -----------
 
-Allocate enough 32bit PA addressable pages to cover \ ``size``\  from the
-page level allocator and map them into contiguous kernel virtual space.
+     Allocate enough 32bit PA addressable pages to cover \ ``size``\  from the
+     page level allocator and map them into contiguous kernel virtual space.
 
 .. _`vmalloc_32_user`:
 
@@ -711,18 +717,18 @@ vread
 Description
 -----------
 
-Returns # of bytes which addr and buf should be increased.
-(same number to \ ``count``\ ). Returns 0 if [addr...addr+count) doesn't
-includes any intersect with alive vmalloc area.
+     Returns # of bytes which addr and buf should be increased.
+     (same number to \ ``count``\ ). Returns 0 if [addr...addr+count) doesn't
+     includes any intersect with alive vmalloc area.
 
-This function checks that addr is a valid vmalloc'ed area, and
-copy data from that area to a given buffer. If the given memory range
-of [addr...addr+count) includes some valid address, data is copied to
-proper area of \ ``buf``\ . If there are memory holes, they'll be zero-filled.
-IOREMAP area is treated as memory hole and no copy is done.
+     This function checks that addr is a valid vmalloc'ed area, and
+     copy data from that area to a given buffer. If the given memory range
+     of [addr...addr+count) includes some valid address, data is copied to
+     proper area of \ ``buf``\ . If there are memory holes, they'll be zero-filled.
+     IOREMAP area is treated as memory hole and no copy is done.
 
-If [addr...addr+count) doesn't includes any intersects with alive
-vm_struct area, returns 0. \ ``buf``\  should be kernel's buffer.
+     If [addr...addr+count) doesn't includes any intersects with alive
+     vm_struct area, returns 0. \ ``buf``\  should be kernel's buffer.
 
 .. _`vread.note`:
 
@@ -730,9 +736,9 @@ Note
 ----
 
 In usual ops, \ :c:func:`vread`\  is never necessary because the caller
-should know \ :c:func:`vmalloc`\  area is valid and can use \ :c:func:`memcpy`\ .
-This is for routines which have to access vmalloc area without
-any informaion, as /dev/kmem.
+     should know \ :c:func:`vmalloc`\  area is valid and can use \ :c:func:`memcpy`\ .
+     This is for routines which have to access vmalloc area without
+     any informaion, as /dev/kmem.
 
 .. _`vwrite`:
 
@@ -757,19 +763,19 @@ vwrite
 Description
 -----------
 
-Returns # of bytes which addr and buf should be incresed.
-(same number to \ ``count``\ ).
-If [addr...addr+count) doesn't includes any intersect with valid
-vmalloc area, returns 0.
+     Returns # of bytes which addr and buf should be incresed.
+     (same number to \ ``count``\ ).
+     If [addr...addr+count) doesn't includes any intersect with valid
+     vmalloc area, returns 0.
 
-This function checks that addr is a valid vmalloc'ed area, and
-copy data from a buffer to the given addr. If specified range of
-[addr...addr+count) includes some valid address, data is copied from
-proper area of \ ``buf``\ . If there are memory holes, no copy to hole.
-IOREMAP area is treated as memory hole and no copy is done.
+     This function checks that addr is a valid vmalloc'ed area, and
+     copy data from a buffer to the given addr. If specified range of
+     [addr...addr+count) includes some valid address, data is copied from
+     proper area of \ ``buf``\ . If there are memory holes, no copy to hole.
+     IOREMAP area is treated as memory hole and no copy is done.
 
-If [addr...addr+count) doesn't includes any intersects with alive
-vm_struct area, returns 0. \ ``buf``\  should be kernel's buffer.
+     If [addr...addr+count) doesn't includes any intersects with alive
+     vm_struct area, returns 0. \ ``buf``\  should be kernel's buffer.
 
 .. _`vwrite.note`:
 
@@ -777,9 +783,9 @@ Note
 ----
 
 In usual ops, \ :c:func:`vwrite`\  is never necessary because the caller
-should know \ :c:func:`vmalloc`\  area is valid and can use \ :c:func:`memcpy`\ .
-This is for routines which have to access vmalloc area without
-any informaion, as /dev/kmem.
+     should know \ :c:func:`vmalloc`\  area is valid and can use \ :c:func:`memcpy`\ .
+     This is for routines which have to access vmalloc area without
+     any informaion, as /dev/kmem.
 
 .. _`remap_vmalloc_range_partial`:
 
@@ -809,12 +815,12 @@ Return
 
 0 for success, -Exxx on failure
 
-This function checks that \ ``kaddr``\  is a valid vmalloc'ed area,
-and that it is big enough to cover the range starting at
-\ ``uaddr``\  in \ ``vma``\ . Will return failure if that criteria isn't
-met.
+     This function checks that \ ``kaddr``\  is a valid vmalloc'ed area,
+     and that it is big enough to cover the range starting at
+     \ ``uaddr``\  in \ ``vma``\ . Will return failure if that criteria isn't
+     met.
 
-Similar to \ :c:func:`remap_pfn_range`\  (see mm/memory.c)
+     Similar to \ :c:func:`remap_pfn_range`\  (see mm/memory.c)
 
 .. _`remap_vmalloc_range`:
 
@@ -841,11 +847,11 @@ Return
 
 0 for success, -Exxx on failure
 
-This function checks that addr is a valid vmalloc'ed area, and
-that it is big enough to cover the vma. Will return failure if
-that criteria isn't met.
+     This function checks that addr is a valid vmalloc'ed area, and
+     that it is big enough to cover the vma. Will return failure if
+     that criteria isn't met.
 
-Similar to \ :c:func:`remap_pfn_range`\  (see mm/memory.c)
+     Similar to \ :c:func:`remap_pfn_range`\  (see mm/memory.c)
 
 .. _`alloc_vm_area`:
 
@@ -869,12 +875,12 @@ Return
 
 NULL on failure, vm_struct on success
 
-This function reserves a range of kernel address space, and
-allocates pagetables to map that range.  No actual mappings
-are created.
+     This function reserves a range of kernel address space, and
+     allocates pagetables to map that range.  No actual mappings
+     are created.
 
-If \ ``ptes``\  is non-NULL, pointers to the PTEs (in init_mm)
-allocated for the VM area are returned.
+     If \ ``ptes``\  is non-NULL, pointers to the PTEs (in init_mm)
+     allocated for the VM area are returned.
 
 .. _`pvm_find_next_prev`:
 
@@ -900,10 +906,10 @@ Return
 ------
 
 %true if either or both of next and prev are found,
-\ ``false``\  if no vmap_area exists
+         \ ``false``\  if no vmap_area exists
 
 Find vmap_areas end addresses of which enclose \ ``end``\ .  ie. if not
-NULL, \*pnext->va_end > \ ``end``\  and \*pprev->va_end <= \ ``end``\ .
+NULL, *pnext->va_end > \ ``end``\  and *pprev->va_end <= \ ``end``\ .
 
 .. _`pvm_determine_end`:
 
@@ -930,12 +936,12 @@ Return
 
 determined end address
 
-Find the highest aligned address between \*@pnext and \*@pprev below
-VMALLOC_END.  \*@pnext and \*@pprev are adjusted so that the aligned
+Find the highest aligned address between *@pnext and *@pprev below
+VMALLOC_END.  *@pnext and *@pprev are adjusted so that the aligned
 down address is between the end addresses of the two vmap_areas.
 
 Please note that the address returned by this function may fall
-inside \*@pnext vmap_area.  The caller is responsible for checking
+inside *@pnext vmap_area.  The caller is responsible for checking
 that.
 
 .. _`pcpu_get_vm_areas`:
@@ -965,7 +971,7 @@ Return
 ------
 
 kmalloc'd vm_struct pointer array pointing to allocated
-vm_structs on success, \ ``NULL``\  on failure
+         vm_structs on success, \ ``NULL``\  on failure
 
 Percpu allocator wants to use congruent vm areas so that it can
 maintain the offsets among percpu areas.  This function allocates

@@ -6,7 +6,7 @@
 uvd_v6_0_ring_get_rptr
 ======================
 
-.. c:function:: uint32_t uvd_v6_0_ring_get_rptr(struct amdgpu_ring *ring)
+.. c:function:: uint64_t uvd_v6_0_ring_get_rptr(struct amdgpu_ring *ring)
 
     get read pointer
 
@@ -25,7 +25,7 @@ Returns the current hardware read pointer
 uvd_v6_0_ring_get_wptr
 ======================
 
-.. c:function:: uint32_t uvd_v6_0_ring_get_wptr(struct amdgpu_ring *ring)
+.. c:function:: uint64_t uvd_v6_0_ring_get_wptr(struct amdgpu_ring *ring)
 
     get write pointer
 

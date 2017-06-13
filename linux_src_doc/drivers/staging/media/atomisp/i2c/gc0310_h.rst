@@ -1,0 +1,48 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/media/atomisp/i2c/gc0310.h
+
+.. _`gc0310_reg`:
+
+struct gc0310_reg
+=================
+
+.. c:type:: struct gc0310_reg
+
+    MI sensor  register format
+
+.. _`gc0310_reg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gc0310_reg {
+        enum gc0310_tok_type type;
+        u8 reg;
+        u8 val;
+    }
+
+.. _`gc0310_reg.members`:
+
+Members
+-------
+
+type
+    type of the register
+
+reg
+    16-bit offset to register
+
+val
+    8/16/32-bit register value
+
+.. _`gc0310_reg.description`:
+
+Description
+-----------
+
+Define a structure for sensor register initialization values
+
+.. This file was automatic generated / don't edit.
+

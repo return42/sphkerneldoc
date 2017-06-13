@@ -367,12 +367,35 @@ fm10k_tx_timeout
     :param struct net_device \*netdev:
         network interface device structure
 
+.. _`fm10k_host_mbx_ready`:
+
+fm10k_host_mbx_ready
+====================
+
+.. c:function:: bool fm10k_host_mbx_ready(struct fm10k_intfc *interface)
+
+    Check PF interface's mailbox readiness
+
+    :param struct fm10k_intfc \*interface:
+        board private structure
+
+.. _`fm10k_host_mbx_ready.description`:
+
+Description
+-----------
+
+This function checks if the PF interface's mailbox is ready before queueing
+mailbox messages for transmission. This will prevent filling the TX mailbox
+queue when the receiver is not ready. VF interfaces are exempt from this
+check since it will block all PF-VF mailbox messages from being sent from
+the VF to the PF at initialization.
+
 .. _`fm10k_get_stats64`:
 
 fm10k_get_stats64
 =================
 
-.. c:function:: struct rtnl_link_stats64 *fm10k_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+.. c:function:: void fm10k_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
 
     Get System Network Statistics
 
@@ -387,8 +410,8 @@ fm10k_get_stats64
 Description
 -----------
 
-Returns 64bit statistics, for use in the ndo_get_stats64 callback. This
-function replaces fm10k_get_stats for kernels which support it.
+Obtain 64bit statistics in a way that is safe for both 32bit and 64bit
+architectures.
 
 .. This file was automatic generated / don't edit.
 

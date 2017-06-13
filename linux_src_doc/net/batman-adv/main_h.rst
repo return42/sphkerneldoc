@@ -10,6 +10,25 @@ BATADV_TP_MAX_NUM
 
     maximum number of simultaneously active tp sessions
 
+.. _`batadv_print_vid`:
+
+batadv_print_vid
+================
+
+.. c:function:: int batadv_print_vid(unsigned short vid)
+
+    return printable version of vid information
+
+    :param unsigned short vid:
+        the VLAN identifier
+
+.. _`batadv_print_vid.return`:
+
+Return
+------
+
+-1 when no VLAN is used, VLAN id otherwise
+
 .. _`batadv_compare_eth`:
 
 batadv_compare_eth

@@ -33,7 +33,7 @@ Members
 -------
 
 config_offset
-    *undescribed*
+    offset to the configuration register
 
 channels
     the number of channels available in this variant
@@ -127,10 +127,10 @@ id
     physical index to this channel
 
 base
-    *undescribed*
+    memory base address for this physical channel
 
 reg_config
-    *undescribed*
+    configuration address for this physical channel
 
 lock
     a lock to use when altering an instance of this struct
@@ -240,6 +240,49 @@ done
 cyclic
     indicate cyclic transfers
 
+.. _`pl08x_dma_chan_state`:
+
+enum pl08x_dma_chan_state
+=========================
+
+.. c:type:: enum pl08x_dma_chan_state
+
+    holds the PL08x specific virtual channel states
+
+.. _`pl08x_dma_chan_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum pl08x_dma_chan_state {
+        PL08X_CHAN_IDLE,
+        PL08X_CHAN_RUNNING,
+        PL08X_CHAN_PAUSED,
+        PL08X_CHAN_WAITING
+    };
+
+.. _`pl08x_dma_chan_state.constants`:
+
+Constants
+---------
+
+PL08X_CHAN_IDLE
+    the channel is idle
+
+PL08X_CHAN_RUNNING
+    the channel has allocated a physical transport
+    channel and is running a transfer on it
+
+PL08X_CHAN_PAUSED
+    the channel has allocated a physical transport
+    channel, but the transfer is currently paused
+
+PL08X_CHAN_WAITING
+    the channel is waiting for a physical transport
+    channel to become available (only pertains to memcpy channels)
+
 .. _`pl08x_dma_chan`:
 
 struct pl08x_dma_chan
@@ -288,7 +331,7 @@ cd
     channel platform data
 
 cfg
-    *undescribed*
+    slave configuration
 
 at
     active transaction on this channel
@@ -375,7 +418,7 @@ mem_buses
     set to indicate memory transfers on AHB2.
 
 lli_words
-    *undescribed*
+    how many words are used in each LLI item for this variant
 
 .. This file was automatic generated / don't edit.
 

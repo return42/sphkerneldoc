@@ -32,15 +32,12 @@ scheduled.
 intel_fb_obj_flush
 ==================
 
-.. c:function:: void intel_fb_obj_flush(struct drm_i915_gem_object *obj, bool retire, enum fb_op_origin origin)
+.. c:function:: void intel_fb_obj_flush(struct drm_i915_gem_object *obj, enum fb_op_origin origin)
 
     flush frontbuffer object
 
     :param struct drm_i915_gem_object \*obj:
         GEM object to flush
-
-    :param bool retire:
-        set when retiring asynchronous rendering
 
     :param enum fb_op_origin origin:
         which operation caused the flush
@@ -51,8 +48,7 @@ Description
 -----------
 
 This function gets called every time rendering on the given object has
-completed and frontbuffer caching can be started again. If \ ``retire``\  is true
-then any delayed flushes will be unblocked.
+completed and frontbuffer caching can be started again.
 
 .. This file was automatic generated / don't edit.
 

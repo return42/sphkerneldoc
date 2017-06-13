@@ -135,6 +135,39 @@ Since the CSRs for auto-negotiation using next pages are not fully
 standardised, this function does not attempt to decode them.  The
 caller must pass them in.
 
+.. _`mdio45_ethtool_ksettings_get_npage`:
+
+mdio45_ethtool_ksettings_get_npage
+==================================
+
+.. c:function:: void mdio45_ethtool_ksettings_get_npage(const struct mdio_if_info *mdio, struct ethtool_link_ksettings *cmd, u32 npage_adv, u32 npage_lpa)
+
+    get settings for ETHTOOL_GLINKSETTINGS
+
+    :param const struct mdio_if_info \*mdio:
+        MDIO interface
+
+    :param struct ethtool_link_ksettings \*cmd:
+        Ethtool request structure
+
+    :param u32 npage_adv:
+        Modes currently advertised on next pages
+
+    :param u32 npage_lpa:
+        Modes advertised by link partner on next pages
+
+.. _`mdio45_ethtool_ksettings_get_npage.description`:
+
+Description
+-----------
+
+The \ ``cmd``\  parameter is expected to have been cleared before calling
+\ :c:func:`mdio45_ethtool_ksettings_get_npage`\ .
+
+Since the CSRs for auto-negotiation using next pages are not fully
+standardised, this function does not attempt to decode them.  The
+caller must pass them in.
+
 .. _`mdio_mii_ioctl`:
 
 mdio_mii_ioctl

@@ -65,7 +65,10 @@ Definition
         const char *name;
         struct i2c_adapter ddc;
         struct device *dev;
+        struct drm_crtc *crtc;
         struct mutex hw_mutex;
+        struct work_struct crc_work;
+        u8 crc_count;
         ssize_t (*transfer)(struct drm_dp_aux *aux,struct drm_dp_aux_msg *msg);
         unsigned i2c_nack_count;
         unsigned i2c_defer_count;
@@ -85,8 +88,17 @@ ddc
 dev
     pointer to struct device that is the parent for this AUX channel
 
+crtc
+    backpointer to the crtc that is currently using this AUX channel
+
 hw_mutex
     internal mutex used for locking transfers
+
+crc_work
+    worker that captures CRCs for each frame
+
+crc_count
+    counter of captured frame CRCs
 
 transfer
     transfers a message representing a single AUX transaction

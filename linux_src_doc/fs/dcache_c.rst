@@ -21,13 +21,13 @@ Description
 d_drop() unhashes the entry from the parent dentry hashes, so that it won't
 be found through a VFS lookup any more. Note that this is different from
 deleting the dentry - d_delete will try to mark the dentry negative if
-possible, giving a successful \_negative\_ lookup, while d_drop will
+possible, giving a successful _negative_ lookup, while d_drop will
 just make the cache lookup fail.
 
 \ :c:func:`d_drop`\  is used mainly for stuff that wants to invalidate a dentry for some
 reason (NFS timeouts or autofs deletes).
 
-\__d_drop requires dentry->d_lock.
+__d_drop requires dentry->d_lock.
 
 .. _`__d_find_alias`:
 
@@ -494,13 +494,13 @@ Return
 
 dentry, or NULL
 
-\__d_lookup_rcu is the dcache lookup function for rcu-walk name
+__d_lookup_rcu is the dcache lookup function for rcu-walk name
 resolution (store-free path walking) design described in
 Documentation/filesystems/path-lookup.txt.
 
 This is not to be used outside core vfs.
 
-\__d_lookup_rcu must only be used in rcu-walk mode, ie. with vfsmount lock
+__d_lookup_rcu must only be used in rcu-walk mode, ie. with vfsmount lock
 held, and rcu_read_lock held. The returned dentry must not be stored into
 without taking d_lock and checking d_seq sequence count against \ ``seq``\ 
 returned here.
@@ -508,12 +508,12 @@ returned here.
 A refcount may be taken on the found dentry with the d_rcu_to_refcount
 function.
 
-Alternatively, \__d_lookup_rcu may be called again to look up the child of
+Alternatively, __d_lookup_rcu may be called again to look up the child of
 the returned dentry, so long as its parent's seqlock is checked after the
 child is looked up. Thus, an interlocking stepping of sequence lock checks
 is formed, giving integrity down the path walk.
 
-NOTE! The caller \*has\* to check the resulting dentry against the sequence
+NOTE! The caller *has* to check the resulting dentry against the sequence
 number we've returned before using any of the resulting dentry state!
 
 .. _`d_lookup`:
@@ -565,14 +565,14 @@ Return
 
 dentry, or NULL
 
-\__d_lookup is like d_lookup, however it may (rarely) return a
+__d_lookup is like d_lookup, however it may (rarely) return a
 false-negative result due to unrelated rename activity.
 
-\__d_lookup is slightly faster by avoiding rename_lock read seqlock,
+__d_lookup is slightly faster by avoiding rename_lock read seqlock,
 however it must be used carefully, eg. with a following d_lookup in
 the case of failure.
 
-\__d_lookup callers must be commented.
+__d_lookup callers must be commented.
 
 .. _`d_hash_and_lookup`:
 
@@ -761,13 +761,7 @@ place of the given dentry and return it, else simply d_add the inode
 to the dentry and return NULL.
 
 If a non-IS_ROOT directory is found, the filesystem is corrupt, and
-
-.. _`d_splice_alias.we-should-error-out`:
-
-we should error out
--------------------
-
-directories can't have multiple aliases.
+we should error out: directories can't have multiple aliases.
 
 This is needed in the lookup routine of any filesystem that is exportable
 (via knfsd) so that we can build dcache paths to directories effectively.

@@ -100,6 +100,7 @@ Definition
         void __iomem * *pio_write_base;
         unsigned int pio_write_vi_base;
         unsigned int piobuf_handle[EF10_TX_PIOBUF_COUNT];
+        u16 piobuf_size;
         bool must_restore_piobufs;
         u32 rx_rss_context;
         bool rx_rss_context_exclusive;
@@ -123,6 +124,9 @@ Definition
         u8 vport_mac[ETH_ALEN];
         struct list_head vlan_list;
         struct mutex vlan_lock;
+        struct efx_udp_tunnel udp_tunnels[16];
+        bool udp_tunnels_dirty;
+        struct mutex udp_tunnels_lock;
     }
 
 .. _`efx_ef10_nic_data.members`:
@@ -162,6 +166,9 @@ pio_write_vi_base
 
 piobuf_handle
     Handle of each PIO buffer allocated
+
+piobuf_size
+    size of a single PIO buffer
 
 must_restore_piobufs
     Flag: PIO buffers have yet to be restored after MC
@@ -226,6 +233,16 @@ vlan_list
 
 vlan_lock
     Lock to serialize access to vlan_list.
+
+udp_tunnels
+    UDP tunnel port numbers and types.
+
+udp_tunnels_dirty
+    flag indicating a reboot occurred while pushing
+    \ ``udp_tunnels``\  to hardware and thus the push must be re-done.
+
+udp_tunnels_lock
+    Serialises writes to \ ``udp_tunnels``\  and \ ``udp_tunnels_dirty``\ .
 
 .. This file was automatic generated / don't edit.
 

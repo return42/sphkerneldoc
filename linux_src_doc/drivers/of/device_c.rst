@@ -29,7 +29,7 @@ system is in its list of supported devices.
 of_dma_configure
 ================
 
-.. c:function:: void of_dma_configure(struct device *dev, struct device_node *np)
+.. c:function:: int of_dma_configure(struct device *dev, struct device_node *np)
 
     Setup DMA configuration
 
@@ -50,6 +50,44 @@ accordingly.
 If platform code needs to use its own special DMA configuration, it
 can use a platform bus notifier and handle BUS_NOTIFY_ADD_DEVICE events
 to fix up DMA configuration.
+
+.. _`of_dma_deconfigure`:
+
+of_dma_deconfigure
+==================
+
+.. c:function:: void of_dma_deconfigure(struct device *dev)
+
+    Clean up DMA configuration
+
+    :param struct device \*dev:
+        Device for which to clean up DMA configuration
+
+.. _`of_dma_deconfigure.description`:
+
+Description
+-----------
+
+Clean up all configuration performed by \ :c:func:`of_dma_configure_ops`\  and free all
+resources that have been allocated.
+
+.. _`of_device_modalias`:
+
+of_device_modalias
+==================
+
+.. c:function:: ssize_t of_device_modalias(struct device *dev, char *str, ssize_t len)
+
+    Fill buffer with newline terminated modalias string
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param char \*str:
+        *undescribed*
+
+    :param ssize_t len:
+        *undescribed*
 
 .. _`of_device_uevent`:
 

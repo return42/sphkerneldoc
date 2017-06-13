@@ -217,7 +217,7 @@ The maximum Tx packet size can not be more than Ethernet header
 xemaclite_recv_data
 ===================
 
-.. c:function:: u16 xemaclite_recv_data(struct net_local *drvdata, u8 *data)
+.. c:function:: u16 xemaclite_recv_data(struct net_local *drvdata, u8 *data, int maxlen)
 
     Receive a frame
 
@@ -226,6 +226,9 @@ xemaclite_recv_data
 
     :param u8 \*data:
         Address where the data is to be received
+
+    :param int maxlen:
+        *undescribed*
 
 .. _`xemaclite_recv_data.description`:
 
@@ -596,26 +599,6 @@ Return
 ------
 
 0, always.
-
-.. _`xemaclite_remove_ndev`:
-
-xemaclite_remove_ndev
-=====================
-
-.. c:function:: void xemaclite_remove_ndev(struct net_device *ndev)
-
-    Free the network device
-
-    :param struct net_device \*ndev:
-        Pointer to the network device to be freed
-
-.. _`xemaclite_remove_ndev.description`:
-
-Description
------------
-
-This function un maps the IO region of the Emaclite device and frees the net
-device.
 
 .. _`get_bool`:
 

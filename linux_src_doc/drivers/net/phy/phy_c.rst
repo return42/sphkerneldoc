@@ -78,14 +78,14 @@ Return the auto-negotiation status from this \ ``phydev``\
 Returns > 0 on success or < 0 on error. 0 means that auto-negotiation
 is still pending.
 
-.. _`phy_find_setting`:
+.. _`phy_lookup_setting`:
 
-phy_find_setting
-================
+phy_lookup_setting
+==================
 
-.. c:function:: unsigned int phy_find_setting(int speed, int duplex)
+.. c:function:: const struct phy_setting *phy_lookup_setting(int speed, int duplex, u32 features, bool exact)
 
-    find a PHY settings array entry that matches speed & duplex
+    lookup a PHY setting
 
     :param int speed:
         speed to match
@@ -93,40 +93,56 @@ phy_find_setting
     :param int duplex:
         duplex to match
 
-.. _`phy_find_setting.description`:
+    :param u32 features:
+        *undescribed*
+
+    :param bool exact:
+        an exact match is required
+
+.. _`phy_lookup_setting.description`:
 
 Description
 -----------
 
-Searches the settings array for the setting which
-matches the desired speed and duplex, and returns the index
-of that setting.  Returns the index of the last setting if
-none of the others match.
+Search the settings array for a setting that matches the speed and
+duplex, and which is supported.
+
+If \ ``exact``\  is unset, either an exact match or \ ``NULL``\  for no match will
+be returned.
+
+If \ ``exact``\  is set, an exact match, the fastest supported setting at
+or below the specified speed, the slowest supported setting, or if
+they all fail, \ ``NULL``\  will be returned.
 
 .. _`phy_find_valid`:
 
 phy_find_valid
 ==============
 
-.. c:function:: unsigned int phy_find_valid(unsigned int idx, u32 features)
+.. c:function:: const struct phy_setting *phy_find_valid(int speed, int duplex, u32 supported)
 
-    find a PHY setting that matches the requested features mask
+    find a PHY setting that matches the requested parameters
 
-    :param unsigned int idx:
-        The first index in settings[] to search
+    :param int speed:
+        desired speed
 
-    :param u32 features:
-        A mask of the valid settings
+    :param int duplex:
+        desired duplex
+
+    :param u32 supported:
+        mask of supported link modes
 
 .. _`phy_find_valid.description`:
 
 Description
 -----------
 
-Returns the index of the first valid setting less
-than or equal to the one pointed to by idx, as determined by
-the mask in features.  Returns the index of the last setting
-if nothing else matches.
+Locate a supported phy setting that is, in priority order:
+- an exact match for the specified speed and duplex mode
+- a match for the specified speed, or slower speed
+- the slowest supported speed
+Returns the matched phy_setting entry, or \ ``NULL``\  if no supported phy
+settings were found.
 
 .. _`phy_supported_speeds`:
 
@@ -198,8 +214,8 @@ Description
 -----------
 
 Make sure the PHY is set to supported speeds and
-duplexes.  Drop down by one in this order:  1000/FULL,
-1000/HALF, 100/FULL, 100/HALF, 10/FULL, 10/HALF.
+  duplexes.  Drop down by one in this order:  1000/FULL,
+  1000/HALF, 100/FULL, 100/HALF, 10/FULL, 10/HALF.
 
 .. _`phy_ethtool_sset`:
 
@@ -221,11 +237,12 @@ phy_ethtool_sset
 A few notes about parameter checking
 ------------------------------------
 
+
 - We don't set port or transceiver, so we don't care what they
-were set to.
+  were set to.
 - \ :c:func:`phy_start_aneg`\  will make sure forced settings are sane, and
-choose the next best ones from the ones selected, so we don't
-care if ethtool tries to give us bad values.
+  choose the next best ones from the ones selected, so we don't
+  care if ethtool tries to give us bad values.
 
 .. _`phy_mii_ioctl`:
 
@@ -254,6 +271,31 @@ Note that this function is currently incompatible with the
 PHYCONTROL layer.  It changes registers without regard to
 current state.  Use at own risk.
 
+.. _`phy_start_aneg_priv`:
+
+phy_start_aneg_priv
+===================
+
+.. c:function:: int phy_start_aneg_priv(struct phy_device *phydev, bool sync)
+
+    start auto-negotiation for this PHY device
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param bool sync:
+        indicate whether we should wait for the workqueue cancelation
+
+.. _`phy_start_aneg_priv.description`:
+
+Description
+-----------
+
+Sanitizes the settings (if we're not autonegotiating
+  them), and then calls the driver's config_aneg function.
+  If the PHYCONTROL Layer is operating, we change the state to
+  reflect the beginning of Auto-negotiation or forcing.
+
 .. _`phy_start_aneg`:
 
 phy_start_aneg
@@ -272,9 +314,9 @@ Description
 -----------
 
 Sanitizes the settings (if we're not autonegotiating
-them), and then calls the driver's config_aneg function.
-If the PHYCONTROL Layer is operating, we change the state to
-reflect the beginning of Auto-negotiation or forcing.
+  them), and then calls the driver's config_aneg function.
+  If the PHYCONTROL Layer is operating, we change the state to
+  reflect the beginning of Auto-negotiation or forcing.
 
 .. _`phy_start_machine`:
 
@@ -294,22 +336,25 @@ Description
 -----------
 
 The PHY infrastructure can run a state machine
-which tracks whether the PHY is starting up, negotiating,
-etc.  This function starts the timer which tracks the state
-of the PHY.  If you want to maintain your own state machine,
-do not call this function.
+  which tracks whether the PHY is starting up, negotiating,
+  etc.  This function starts the timer which tracks the state
+  of the PHY.  If you want to maintain your own state machine,
+  do not call this function.
 
 .. _`phy_trigger_machine`:
 
 phy_trigger_machine
 ===================
 
-.. c:function:: void phy_trigger_machine(struct phy_device *phydev)
+.. c:function:: void phy_trigger_machine(struct phy_device *phydev, bool sync)
 
     trigger the state machine to run
 
     :param struct phy_device \*phydev:
         the phy_device struct
+
+    :param bool sync:
+        indicate whether we should wait for the workqueue cancelation
 
 .. _`phy_trigger_machine.description`:
 
@@ -317,7 +362,7 @@ Description
 -----------
 
 There has been a change in state which requires that the
-state machine runs.
+  state machine runs.
 
 .. _`phy_stop_machine`:
 
@@ -337,8 +382,8 @@ Description
 -----------
 
 Stops the state machine timer, sets the state to UP
-(unless it wasn't up yet). This function must be called BEFORE
-phy_detach.
+  (unless it wasn't up yet). This function must be called BEFORE
+  phy_detach.
 
 .. _`phy_error`:
 
@@ -427,10 +472,10 @@ Description
 -----------
 
 Request the interrupt for the given PHY.
-If this fails, then we set irq to PHY_POLL.
-Otherwise, we enable the interrupts in the PHY.
-This should only be called with a valid IRQ number.
-Returns 0 on success or < 0 on error.
+  If this fails, then we set irq to PHY_POLL.
+  Otherwise, we enable the interrupts in the PHY.
+  This should only be called with a valid IRQ number.
+  Returns 0 on success or < 0 on error.
 
 .. _`phy_stop_interrupts`:
 
@@ -498,10 +543,10 @@ Description
 -----------
 
 Indicates the attached device's readiness to
-handle PHY-related work.  Used during startup to start the
-PHY, and after a call to \ :c:func:`phy_stop`\  to resume operation.
-Also used to indicate the MDIO bus has cleared an error
-condition.
+  handle PHY-related work.  Used during startup to start the
+  PHY, and after a call to \ :c:func:`phy_stop`\  to resume operation.
+  Also used to indicate the MDIO bus has cleared an error
+  condition.
 
 .. _`phy_state_machine`:
 
@@ -536,83 +581,8 @@ Description
 -----------
 
 The MAC layer is able indicate there has been a change
-in the PHY link status. Set the new link status, and trigger the
-state machine, work a work queue.
-
-.. _`phy_read_mmd_indirect`:
-
-phy_read_mmd_indirect
-=====================
-
-.. c:function:: int phy_read_mmd_indirect(struct phy_device *phydev, int prtad, int devad)
-
-    reads data from the MMD registers
-
-    :param struct phy_device \*phydev:
-        The PHY device bus
-
-    :param int prtad:
-        MMD Address
-
-    :param int devad:
-        MMD DEVAD
-
-.. _`phy_read_mmd_indirect.description`:
-
-Description
------------
-
-it reads data from the MMD registers (clause 22 to access to
-clause 45) of the specified phy address.
-
-.. _`phy_read_mmd_indirect.to-read-these-register-we-have`:
-
-To read these register we have
-------------------------------
-
-1) Write reg 13 // DEVAD
-2) Write reg 14 // MMD Address
-3) Write reg 13 // MMD Data Command for MMD DEVAD
-3) Read  reg 14 // Read MMD data
-
-.. _`phy_write_mmd_indirect`:
-
-phy_write_mmd_indirect
-======================
-
-.. c:function:: void phy_write_mmd_indirect(struct phy_device *phydev, int prtad, int devad, u32 data)
-
-    writes data to the MMD registers
-
-    :param struct phy_device \*phydev:
-        The PHY device
-
-    :param int prtad:
-        MMD Address
-
-    :param int devad:
-        MMD DEVAD
-
-    :param u32 data:
-        data to write in the MMD register
-
-.. _`phy_write_mmd_indirect.description`:
-
-Description
------------
-
-Write data from the MMD registers of the specified
-phy address.
-
-.. _`phy_write_mmd_indirect.to-write-these-register-we-have`:
-
-To write these register we have
--------------------------------
-
-1) Write reg 13 // DEVAD
-2) Write reg 14 // MMD Address
-3) Write reg 13 // MMD Data Command for MMD DEVAD
-3) Write reg 14 // Write MMD data
+  in the PHY link status. Set the new link status, and trigger the
+  state machine, work a work queue.
 
 .. _`phy_init_eee`:
 

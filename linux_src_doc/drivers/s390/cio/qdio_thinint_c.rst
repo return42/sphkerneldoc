@@ -11,7 +11,7 @@ tiqdio_thinint_handler
     thin interrupt handler for qdio
 
     :param struct airq_struct \*airq:
-        *undescribed*
+        pointer to adapter interrupt descriptor
 
 .. This file was automatic generated / don't edit.
 

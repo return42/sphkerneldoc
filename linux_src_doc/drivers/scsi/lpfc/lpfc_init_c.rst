@@ -682,7 +682,7 @@ Description
 -----------
 
 This routine is invoked from the worker thread to handle a HBA host
-attention link event.
+attention link event. SLI3 only.
 
 .. _`lpfc_parse_vpd`:
 
@@ -792,7 +792,7 @@ Description
 
 This routine posts initial receive IOCB buffers to the ELS ring. The
 current number of initial IOCB buffers specified by LPFC_BUF_RING0 is
-set to 64 IOCBs.
+set to 64 IOCBs. SLI3 only.
 
 Return codes
 0 - success (currently always success)
@@ -1156,19 +1156,115 @@ This routine is to free all the SCSI buffers and IOCBs from the driver
 list back to kernel. It is called from lpfc_pci_remove_one to free
 the internal resources before the device is removed from the system.
 
-.. _`lpfc_sli4_xri_sgl_update`:
+.. _`lpfc_nvme_free`:
 
-lpfc_sli4_xri_sgl_update
+lpfc_nvme_free
+==============
+
+.. c:function:: void lpfc_nvme_free(struct lpfc_hba *phba)
+
+    Free all the NVME buffers and IOCBs from driver lists
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_nvme_free.description`:
+
+Description
+-----------
+
+This routine is to free all the NVME buffers and IOCBs from the driver
+list back to kernel. It is called from lpfc_pci_remove_one to free
+the internal resources before the device is removed from the system.
+
+.. _`lpfc_sli4_els_sgl_update`:
+
+lpfc_sli4_els_sgl_update
 ========================
 
-.. c:function:: int lpfc_sli4_xri_sgl_update(struct lpfc_hba *phba)
+.. c:function:: int lpfc_sli4_els_sgl_update(struct lpfc_hba *phba)
+
+    update ELS xri-sgl sizing and mapping
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_sli4_els_sgl_update.description`:
+
+Description
+-----------
+
+This routine first calculates the sizes of the current els and allocated
+scsi sgl lists, and then goes through all sgls to updates the physical
+XRIs assigned due to port function reset. During port initialization, the
+current els and allocated scsi sgl lists are 0s.
+
+Return codes
+0 - successful (for now, it always returns 0)
+
+.. _`lpfc_sli4_nvmet_sgl_update`:
+
+lpfc_sli4_nvmet_sgl_update
+==========================
+
+.. c:function:: int lpfc_sli4_nvmet_sgl_update(struct lpfc_hba *phba)
 
     update xri-sgl sizing and mapping
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
 
-.. _`lpfc_sli4_xri_sgl_update.description`:
+.. _`lpfc_sli4_nvmet_sgl_update.description`:
+
+Description
+-----------
+
+This routine first calculates the sizes of the current els and allocated
+scsi sgl lists, and then goes through all sgls to updates the physical
+XRIs assigned due to port function reset. During port initialization, the
+current els and allocated scsi sgl lists are 0s.
+
+Return codes
+0 - successful (for now, it always returns 0)
+
+.. _`lpfc_sli4_scsi_sgl_update`:
+
+lpfc_sli4_scsi_sgl_update
+=========================
+
+.. c:function:: int lpfc_sli4_scsi_sgl_update(struct lpfc_hba *phba)
+
+    update xri-sgl sizing and mapping
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_sli4_scsi_sgl_update.description`:
+
+Description
+-----------
+
+This routine first calculates the sizes of the current els and allocated
+scsi sgl lists, and then goes through all sgls to updates the physical
+XRIs assigned due to port function reset. During port initialization, the
+current els and allocated scsi sgl lists are 0s.
+
+Return codes
+0 - successful (for now, it always returns 0)
+
+.. _`lpfc_sli4_nvme_sgl_update`:
+
+lpfc_sli4_nvme_sgl_update
+=========================
+
+.. c:function:: int lpfc_sli4_nvme_sgl_update(struct lpfc_hba *phba)
+
+    update xri-sgl sizing and mapping
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_sli4_nvme_sgl_update.description`:
 
 Description
 -----------
@@ -1928,6 +2024,30 @@ enable the number of virtual functions to the physical function. As
 not all devices support SR-IOV, the return code from the \ :c:func:`pci_enable_sriov`\ 
 API call does not considered as an error condition for most of the device.
 
+.. _`lpfc_setup_driver_resource_phase1`:
+
+lpfc_setup_driver_resource_phase1
+=================================
+
+.. c:function:: int lpfc_setup_driver_resource_phase1(struct lpfc_hba *phba)
+
+    Phase1 etup driver internal resources.
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_setup_driver_resource_phase1.description`:
+
+Description
+-----------
+
+This routine is invoked to set up the driver internal resources before the
+device specific resource setup to support the HBA device it attached to.
+
+Return codes
+0 - successful
+other values - error
+
 .. _`lpfc_sli_driver_resource_setup`:
 
 lpfc_sli_driver_resource_setup
@@ -1935,7 +2055,7 @@ lpfc_sli_driver_resource_setup
 
 .. c:function:: int lpfc_sli_driver_resource_setup(struct lpfc_hba *phba)
 
-    Setup driver internal resources for SLI3 dev.
+    Setup driver internal resources for SLI3 dev
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
@@ -2045,30 +2165,6 @@ Return
 ------
 
 0 - success, -ENODEV - failure.
-
-.. _`lpfc_setup_driver_resource_phase1`:
-
-lpfc_setup_driver_resource_phase1
-=================================
-
-.. c:function:: int lpfc_setup_driver_resource_phase1(struct lpfc_hba *phba)
-
-    Phase1 etup driver internal resources.
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-.. _`lpfc_setup_driver_resource_phase1.description`:
-
-Description
------------
-
-This routine is invoked to set up the driver internal resources before the
-device specific resource setup to support the HBA device it attached to.
-
-Return codes
-0 - successful
-other values - error
 
 .. _`lpfc_setup_driver_resource_phase2`:
 
@@ -2201,6 +2297,25 @@ Description
 -----------
 
 This routine is invoked to free the driver's els sgl list and memory.
+
+.. _`lpfc_free_nvmet_sgl_list`:
+
+lpfc_free_nvmet_sgl_list
+========================
+
+.. c:function:: void lpfc_free_nvmet_sgl_list(struct lpfc_hba *phba)
+
+    Free nvmet sgl list.
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_free_nvmet_sgl_list.description`:
+
+Description
+-----------
+
+This routine is invoked to free the driver's nvmet sgl list and memory.
 
 .. _`lpfc_init_active_sgl_array`:
 
@@ -2719,7 +2834,7 @@ lpfc_sli4_queue_verify
 
 .. c:function:: int lpfc_sli4_queue_verify(struct lpfc_hba *phba)
 
-    Verify and update EQ and CQ counts
+    Verify and update EQ counts
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
@@ -2729,8 +2844,8 @@ lpfc_sli4_queue_verify
 Description
 -----------
 
-This routine is invoked to check the user settable queue counts for EQs and
-CQs. after this routine is called the counts will be set to valid values that
+This routine is invoked to check the user settable queue counts for EQs.
+After this routine is called the counts will be set to valid values that
 adhere to the constraints of the system's interrupt vectors and the port's
 queue resources.
 
@@ -3106,40 +3221,11 @@ Description
 -----------
 
 This routine is invoked to enable the MSI-X interrupt vectors to device
-with SLI-3 interface specs. The kernel function \ :c:func:`pci_enable_msix_exact`\ 
-is called to enable the MSI-X vectors. Note that \ :c:func:`pci_enable_msix_exact`\ ,
-once invoked, enables either all or nothing, depending on the current
-availability of PCI vector resources. The device driver is responsible
-for calling the individual \ :c:func:`request_irq`\  to register each MSI-X vector
-with a interrupt handler, which is done in this function. Note that
-later when device is unloading, the driver should always call \ :c:func:`free_irq`\ 
-on all MSI-X vectors it has done \ :c:func:`request_irq`\  on before calling
-\ :c:func:`pci_disable_msix`\ . Failure to do so results in a \ :c:func:`BUG_ON`\  and a device
-will be left with MSI-X enabled and leaks its vectors.
+with SLI-3 interface specs.
 
 Return codes
 0 - successful
 other values - error
-
-.. _`lpfc_sli_disable_msix`:
-
-lpfc_sli_disable_msix
-=====================
-
-.. c:function:: void lpfc_sli_disable_msix(struct lpfc_hba *phba)
-
-    Disable MSI-X interrupt mode on SLI-3 device.
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-.. _`lpfc_sli_disable_msix.description`:
-
-Description
------------
-
-This routine is invoked to release the MSI-X vectors and then disable the
-MSI-X interrupt mode to device with SLI-3 interface spec.
 
 .. _`lpfc_sli_enable_msi`:
 
@@ -3167,29 +3253,6 @@ is done in this function.
 Return codes
 0 - successful
 other values - error
-
-.. _`lpfc_sli_disable_msi`:
-
-lpfc_sli_disable_msi
-====================
-
-.. c:function:: void lpfc_sli_disable_msi(struct lpfc_hba *phba)
-
-    Disable MSI interrupt mode to SLI-3 device.
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-.. _`lpfc_sli_disable_msi.description`:
-
-Description
------------
-
-This routine is invoked to disable the MSI interrupt mode to device with
-SLI-3 interface spec. The driver calls \ :c:func:`free_irq`\  on MSI vector it has
-done \ :c:func:`request_irq`\  on before calling \ :c:func:`pci_disable_msi`\ . Failure to do so
-results in a \ :c:func:`BUG_ON`\  and a device will be left with MSI enabled and leaks
-its vector.
 
 .. _`lpfc_sli_enable_intr`:
 
@@ -3245,52 +3308,33 @@ driver's interrupt handler(s) from interrupt vector(s) to device with
 SLI-3 interface spec. Depending on the interrupt mode, the driver will
 release the interrupt vector(s) for the message signaled interrupt.
 
-.. _`lpfc_find_next_cpu`:
+.. _`lpfc_cpu_affinity_check`:
 
-lpfc_find_next_cpu
-==================
+lpfc_cpu_affinity_check
+=======================
 
-.. c:function:: int lpfc_find_next_cpu(struct lpfc_hba *phba, uint32_t phys_id)
+.. c:function:: void lpfc_cpu_affinity_check(struct lpfc_hba *phba, int vectors)
 
-    Find next available CPU that matches the phys_id
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-    :param uint32_t phys_id:
-        *undescribed*
-
-.. _`lpfc_find_next_cpu.description`:
-
-Description
------------
-
-Find next available CPU to use for IRQ to CPU affinity.
-
-.. _`lpfc_sli4_set_affinity`:
-
-lpfc_sli4_set_affinity
-======================
-
-.. c:function:: int lpfc_sli4_set_affinity(struct lpfc_hba *phba, int vectors)
-
-    Set affinity for HBA IRQ vectors
+    Check vector CPU affinity mappings
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
 
     :param int vectors:
-        number of HBA vectors
+        number of msix vectors allocated.
 
-.. _`lpfc_sli4_set_affinity.description`:
+.. _`lpfc_cpu_affinity_check.description`:
 
 Description
 -----------
 
-Affinitize MSIX IRQ vectors to CPUs. Try to equally spread vector
-affinization across multple physical CPUs (numa nodes).
-In addition, this routine will assign an IO channel for each CPU
-to use when issuing I/Os.
+The routine will figure out the CPU affinity assignment for every
+MSI-X vector allocated for the HBA.  The hba_eq_hdl will be updated
+with a pointer to the CPU mask that defines ALL the CPUs this vector
+can be associated with. If the vector can be unquely associated with
+a single CPU, that CPU will be recorded in hba_eq_hdl[index].cpu.
+In addition, the CPU to IO channel mapping will be calculated
+and the phba->sli4_hba.cpu_map array will reflect this.
 
 .. _`lpfc_sli4_enable_msix`:
 
@@ -3310,38 +3354,11 @@ Description
 -----------
 
 This routine is invoked to enable the MSI-X interrupt vectors to device
-with SLI-4 interface spec. The kernel function \ :c:func:`pci_enable_msix_range`\ 
-is called to enable the MSI-X vectors. The device driver is responsible
-for calling the individual \ :c:func:`request_irq`\  to register each MSI-X vector
-with a interrupt handler, which is done in this function. Note that
-later when device is unloading, the driver should always call \ :c:func:`free_irq`\ 
-on all MSI-X vectors it has done \ :c:func:`request_irq`\  on before calling
-\ :c:func:`pci_disable_msix`\ . Failure to do so results in a \ :c:func:`BUG_ON`\  and a device
-will be left with MSI-X enabled and leaks its vectors.
+with SLI-4 interface spec.
 
 Return codes
 0 - successful
 other values - error
-
-.. _`lpfc_sli4_disable_msix`:
-
-lpfc_sli4_disable_msix
-======================
-
-.. c:function:: void lpfc_sli4_disable_msix(struct lpfc_hba *phba)
-
-    Disable MSI-X interrupt mode to SLI-4 device
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-.. _`lpfc_sli4_disable_msix.description`:
-
-Description
------------
-
-This routine is invoked to release the MSI-X vectors and then disable the
-MSI-X interrupt mode to device with SLI-4 interface spec.
 
 .. _`lpfc_sli4_enable_msi`:
 
@@ -3369,29 +3386,6 @@ which is done in this function.
 Return codes
 0 - successful
 other values - error
-
-.. _`lpfc_sli4_disable_msi`:
-
-lpfc_sli4_disable_msi
-=====================
-
-.. c:function:: void lpfc_sli4_disable_msi(struct lpfc_hba *phba)
-
-    Disable MSI interrupt mode to SLI-4 device
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-.. _`lpfc_sli4_disable_msi.description`:
-
-Description
------------
-
-This routine is invoked to disable the MSI interrupt mode to device with
-SLI-4 interface spec. The driver calls \ :c:func:`free_irq`\  on MSI vector it has
-done \ :c:func:`request_irq`\  on before calling \ :c:func:`pci_disable_msi`\ . Failure to do so
-results in a \ :c:func:`BUG_ON`\  and a device will be left with MSI enabled and leaks
-its vector.
 
 .. _`lpfc_sli4_enable_intr`:
 
@@ -3837,6 +3831,25 @@ Description
 -----------
 
 returns the number of ELS/CT IOCBs to reserve
+
+.. _`lpfc_sli4_get_iocb_cnt`:
+
+lpfc_sli4_get_iocb_cnt
+======================
+
+.. c:function:: int lpfc_sli4_get_iocb_cnt(struct lpfc_hba *phba)
+
+    Calculate the # of total IOCBs to reserve
+
+    :param struct lpfc_hba \*phba:
+        pointer to lpfc hba data structure.
+
+.. _`lpfc_sli4_get_iocb_cnt.description`:
+
+Description
+-----------
+
+returns the number of ELS/CT + NVMET IOCBs to reserve
 
 .. _`lpfc_write_firmware`:
 

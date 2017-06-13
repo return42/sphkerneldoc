@@ -8,13 +8,17 @@ staging
     :maxdepth: 1
 
     android/index
+    ccree/index
     clocking-wizard/index
     comedi/index
+    dgnc/index
     fbtft/index
+    fsl-dpaa2/index
     fsl-mc/index
     fwserial/index
     greybus/index
     iio/index
+    ks7010/index
     lustre/index
     media/index
     most/index
@@ -26,6 +30,7 @@ staging
     rtl8192e/index
     rtl8192u/index
     rtl8712/index
+    rtl8723bs/index
     rts5208/index
     skein/index
     unisys/index

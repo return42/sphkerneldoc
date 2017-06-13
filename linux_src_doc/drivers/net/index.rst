@@ -10,6 +10,7 @@ net
     bonding/index
     can/index
     ethernet/index
+    ieee802154/index
     phy/index
     ppp/index
     wan/index

@@ -220,5 +220,31 @@ Description
 ib_get_cached_lmc() fetches the specified lmc table entry stored in
 the local software cache.
 
+.. _`ib_get_cached_port_state`:
+
+ib_get_cached_port_state
+========================
+
+.. c:function:: int ib_get_cached_port_state(struct ib_device *device, u8 port_num, enum ib_port_state *port_active)
+
+    Returns a cached port state table entry
+
+    :param struct ib_device \*device:
+        The device to query.
+
+    :param u8 port_num:
+        The port number of the device to query.
+
+    :param enum ib_port_state \*port_active:
+        *undescribed*
+
+.. _`ib_get_cached_port_state.description`:
+
+Description
+-----------
+
+ib_get_cached_port_state() fetches the specified port_state table entry stored in
+the local software cache.
+
 .. This file was automatic generated / don't edit.
 

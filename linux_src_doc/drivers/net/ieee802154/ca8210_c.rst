@@ -1,0 +1,1669 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ieee802154/ca8210.c
+
+.. _`cas_control`:
+
+struct cas_control
+==================
+
+.. c:type:: struct cas_control
+
+    spi transfer structure
+
+.. _`cas_control.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cas_control {
+        struct spi_message msg;
+        struct spi_transfer transfer;
+        u8 tx_buf[CA8210_SPI_BUF_SIZE];
+        u8 tx_in_buf[CA8210_SPI_BUF_SIZE];
+        struct ca8210_priv *priv;
+    }
+
+.. _`cas_control.members`:
+
+Members
+-------
+
+msg
+    spi_message for each exchange
+
+transfer
+    spi_transfer for each exchange
+
+tx_buf
+    source array for transmission
+
+tx_in_buf
+    array storing bytes received during transmission
+
+priv
+    pointer to private data
+
+.. _`cas_control.description`:
+
+Description
+-----------
+
+This structure stores all the necessary data passed around during a single
+spi exchange.
+
+.. _`ca8210_test`:
+
+struct ca8210_test
+==================
+
+.. c:type:: struct ca8210_test
+
+    ca8210 test interface structure
+
+.. _`ca8210_test.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ca8210_test {
+        struct dentry *ca8210_dfs_spi_int;
+        struct kfifo up_fifo;
+        wait_queue_head_t readq;
+    }
+
+.. _`ca8210_test.members`:
+
+Members
+-------
+
+ca8210_dfs_spi_int
+    pointer to the entry in the debug fs for this device
+
+up_fifo
+    fifo for upstream messages
+
+readq
+    *undescribed*
+
+.. _`ca8210_test.description`:
+
+Description
+-----------
+
+This structure stores all the data pertaining to the debug interface
+
+.. _`ca8210_priv`:
+
+struct ca8210_priv
+==================
+
+.. c:type:: struct ca8210_priv
+
+    ca8210 private data structure
+
+.. _`ca8210_priv.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ca8210_priv {
+        struct spi_device *spi;
+        struct ieee802154_hw *hw;
+        bool hw_registered;
+        spinlock_t lock;
+        struct workqueue_struct *mlme_workqueue;
+        struct workqueue_struct *irq_workqueue;
+        struct sk_buff *tx_skb;
+        u8 nextmsduhandle;
+        struct clk *clk;
+        int last_dsn;
+        struct ca8210_test test;
+        bool async_tx_pending;
+        u8 *sync_command_response;
+        struct completion ca8210_is_awake;
+        int sync_down;
+        int sync_up;
+        struct completion spi_transfer_complete;
+        struct completion sync_exchange_complete;
+        bool promiscuous;
+        int retries;
+    }
+
+.. _`ca8210_priv.members`:
+
+Members
+-------
+
+spi
+    pointer to the ca8210 spi device object
+
+hw
+    pointer to the ca8210 ieee802154_hw object
+
+hw_registered
+    true if hw has been registered with ieee802154
+
+lock
+    spinlock protecting the private data area
+
+mlme_workqueue
+    workqueue for triggering MLME Reset
+
+irq_workqueue
+    workqueue for irq processing
+
+tx_skb
+    current socket buffer to transmit
+
+nextmsduhandle
+    msdu handle to pass to the 15.4 MAC layer for the
+    next transmission
+
+clk
+    external clock provided by the ca8210
+
+last_dsn
+    sequence number of last data packet received, for
+    resend detection
+
+test
+    test interface data section for this instance
+
+async_tx_pending
+    true if an asynchronous transmission was started and
+    is not complete
+
+sync_command_response
+    pointer to buffer to fill with sync response
+
+ca8210_is_awake
+    nonzero if ca8210 is initialised, ready for comms
+
+sync_down
+    counts number of downstream synchronous commands
+
+sync_up
+    counts number of upstream synchronous commands
+    \ ``spi_transfer_complete``\    completion object for a single spi_transfer
+    \ ``sync_exchange_complete``\   completion object for a complete synchronous API
+    exchange
+    \ ``promiscuous``\              whether the ca8210 is in promiscuous mode or not
+
+spi_transfer_complete
+    *undescribed*
+
+sync_exchange_complete
+    *undescribed*
+
+promiscuous
+    *undescribed*
+
+retries
+    records how many times the current pending spi
+    transfer has been retried
+
+.. _`work_priv_container`:
+
+struct work_priv_container
+==========================
+
+.. c:type:: struct work_priv_container
+
+    link between a work object and the relevant device's private data
+
+.. _`work_priv_container.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct work_priv_container {
+        struct work_struct work;
+        struct ca8210_priv *priv;
+    }
+
+.. _`work_priv_container.members`:
+
+Members
+-------
+
+work
+    work object being executed
+
+priv
+    device's private data section
+
+.. _`ca8210_platform_data`:
+
+struct ca8210_platform_data
+===========================
+
+.. c:type:: struct ca8210_platform_data
+
+    ca8210 platform data structure
+
+.. _`ca8210_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ca8210_platform_data {
+        bool extclockenable;
+        unsigned int extclockfreq;
+        unsigned int extclockgpio;
+        int gpio_reset;
+        int gpio_irq;
+        int irq_id;
+    }
+
+.. _`ca8210_platform_data.members`:
+
+Members
+-------
+
+extclockenable
+    true if the external clock is to be enabled
+
+extclockfreq
+    frequency of the external clock
+
+extclockgpio
+    ca8210 output gpio of the external clock
+
+gpio_reset
+    gpio number of ca8210 reset line
+
+gpio_irq
+    gpio number of ca8210 interrupt line
+
+irq_id
+    identifier for the ca8210 irq
+
+.. _`fulladdr`:
+
+struct fulladdr
+===============
+
+.. c:type:: struct fulladdr
+
+    full MAC addressing information structure
+
+.. _`fulladdr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fulladdr {
+        u8 mode;
+        u8 pan_id[2];
+        u8 address[8];
+    }
+
+.. _`fulladdr.members`:
+
+Members
+-------
+
+mode
+    address mode (none, short, extended)
+
+pan_id
+    16-bit LE pan id
+
+address
+    LE address, variable length as specified by mode
+
+.. _`macaddr`:
+
+union macaddr
+=============
+
+.. c:type:: struct macaddr
+
+    generic MAC address container
+
+.. _`macaddr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    union macaddr {
+        u16 short_address;
+        u8 ieee_address[8];
+    }
+
+.. _`macaddr.members`:
+
+Members
+-------
+
+short_address
+    *undescribed*
+
+ieee_address
+    64-bit extended address as LE byte array
+
+.. _`secspec`:
+
+struct secspec
+==============
+
+.. c:type:: struct secspec
+
+    security specification for SAP commands
+
+.. _`secspec.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct secspec {
+        u8 security_level;
+        u8 key_id_mode;
+        u8 key_source[8];
+        u8 key_index;
+    }
+
+.. _`secspec.members`:
+
+Members
+-------
+
+security_level
+    0-7, controls level of authentication & encryption
+
+key_id_mode
+    0-3, specifies how to obtain key
+
+key_source
+    extended key retrieval data
+
+key_index
+    single-byte key identifier
+
+.. _`link_to_linux_err`:
+
+link_to_linux_err
+=================
+
+.. c:function:: int link_to_linux_err(int link_status)
+
+    Translates an 802.15.4 return code into the closest linux error
+
+    :param int link_status:
+        802.15.4 status code
+
+.. _`link_to_linux_err.return`:
+
+Return
+------
+
+0 or Linux error code
+
+.. _`ca8210_test_int_driver_write`:
+
+ca8210_test_int_driver_write
+============================
+
+.. c:function:: int ca8210_test_int_driver_write(const u8 *buf, size_t len, void *spi)
+
+    Writes a message to the test interface to be read by the userspace
+
+    :param const u8 \*buf:
+        Buffer containing upstream message
+
+    :param size_t len:
+        length of message to write
+
+    :param void \*spi:
+        SPI device of message originator
+
+.. _`ca8210_test_int_driver_write.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_reset_send`:
+
+ca8210_reset_send
+=================
+
+.. c:function:: void ca8210_reset_send(struct spi_device *spi, unsigned int ms)
+
+    Hard resets the ca8210 for a given time
+
+    :param struct spi_device \*spi:
+        Pointer to target ca8210 spi device
+
+    :param unsigned int ms:
+        Milliseconds to hold the reset line low for
+
+.. _`ca8210_mlme_reset_worker`:
+
+ca8210_mlme_reset_worker
+========================
+
+.. c:function:: void ca8210_mlme_reset_worker(struct work_struct *work)
+
+    Resets the MLME, Called when the MAC OVERFLOW condition happens.
+
+    :param struct work_struct \*work:
+        Pointer to work being executed
+
+.. _`ca8210_rx_done`:
+
+ca8210_rx_done
+==============
+
+.. c:function:: void ca8210_rx_done(struct cas_control *cas_ctl)
+
+    Calls various message dispatches responding to a received command
+
+    :param struct cas_control \*cas_ctl:
+        *undescribed*
+
+.. _`ca8210_rx_done.description`:
+
+Description
+-----------
+
+Presents a received SAP command from the ca8210 to the Cascoda EVBME, test
+interface and network driver.
+
+.. _`ca8210_spi_transfer_complete`:
+
+ca8210_spi_transfer_complete
+============================
+
+.. c:function:: void ca8210_spi_transfer_complete(void *context)
+
+    Called when a single spi transfer has completed
+
+    :param void \*context:
+        Pointer to the cas_control object for the finished transfer
+
+.. _`ca8210_spi_transfer`:
+
+ca8210_spi_transfer
+===================
+
+.. c:function:: int ca8210_spi_transfer(struct spi_device *spi, const u8 *buf, size_t len)
+
+    Initiate duplex spi transfer with ca8210
+
+    :param struct spi_device \*spi:
+        Pointer to spi device for transfer
+
+    :param const u8 \*buf:
+        Octet array to send
+
+    :param size_t len:
+        length of the buffer being sent
+
+.. _`ca8210_spi_transfer.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_spi_exchange`:
+
+ca8210_spi_exchange
+===================
+
+.. c:function:: int ca8210_spi_exchange(const u8 *buf, size_t len, u8 *response, void *device_ref)
+
+    Exchange API/SAP commands with the radio
+
+    :param const u8 \*buf:
+        Octet array of command being sent downstream
+
+    :param size_t len:
+        length of buf
+
+    :param u8 \*response:
+        buffer for storing synchronous response
+
+    :param void \*device_ref:
+        spi_device pointer for ca8210
+
+.. _`ca8210_spi_exchange.description`:
+
+Description
+-----------
+
+Effectively calls ca8210_spi_transfer to write buf[] to the spi, then for
+synchronous commands waits for the corresponding response to be read from
+the spi before returning. The response is written to the response parameter.
+
+.. _`ca8210_spi_exchange.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_interrupt_handler`:
+
+ca8210_interrupt_handler
+========================
+
+.. c:function:: irqreturn_t ca8210_interrupt_handler(int irq, void *dev_id)
+
+    Called when an irq is received from the ca8210
+
+    :param int irq:
+        Id of the irq being handled
+
+    :param void \*dev_id:
+        Pointer passed by the system, pointing to the ca8210's private data
+
+.. _`ca8210_interrupt_handler.description`:
+
+Description
+-----------
+
+This function is called when the irq line from the ca8210 is asserted,
+signifying that the ca8210 has a message to send upstream to us. Starts the
+asynchronous spi read.
+
+.. _`ca8210_interrupt_handler.return`:
+
+Return
+------
+
+irq return code
+
+.. _`tdme_setsfr_request_sync`:
+
+tdme_setsfr_request_sync
+========================
+
+.. c:function:: u8 tdme_setsfr_request_sync(u8 sfr_page, u8 sfr_address, u8 sfr_value, void *device_ref)
+
+    TDME_SETSFR_request/confirm according to API
+
+    :param u8 sfr_page:
+        SFR Page
+
+    :param u8 sfr_address:
+        SFR Address
+
+    :param u8 sfr_value:
+        SFR Value
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`tdme_setsfr_request_sync.return`:
+
+Return
+------
+
+802.15.4 status code of TDME-SETSFR.confirm
+
+.. _`tdme_chipinit`:
+
+tdme_chipinit
+=============
+
+.. c:function:: u8 tdme_chipinit(void *device_ref)
+
+    TDME Chip Register Default Initialisation Macro
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`tdme_chipinit.return`:
+
+Return
+------
+
+802.15.4 status code of API calls
+
+.. _`tdme_channelinit`:
+
+tdme_channelinit
+================
+
+.. c:function:: u8 tdme_channelinit(u8 channel, void *device_ref)
+
+    TDME Channel Register Default Initialisation Macro (Tx)
+
+    :param u8 channel:
+        802.15.4 channel to initialise chip for
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`tdme_channelinit.return`:
+
+Return
+------
+
+802.15.4 status code of API calls
+
+.. _`tdme_checkpibattribute`:
+
+tdme_checkpibattribute
+======================
+
+.. c:function:: u8 tdme_checkpibattribute(u8 pib_attribute, u8 pib_attribute_length, const void *pib_attribute_value)
+
+    Checks Attribute Values that are not checked in MAC
+
+    :param u8 pib_attribute:
+        Attribute Number
+
+    :param u8 pib_attribute_length:
+        Attribute length
+
+    :param const void \*pib_attribute_value:
+        Pointer to Attribute Value
+
+.. _`tdme_checkpibattribute.return`:
+
+Return
+------
+
+802.15.4 status code of checks
+
+.. _`tdme_settxpower`:
+
+tdme_settxpower
+===============
+
+.. c:function:: u8 tdme_settxpower(u8 txp, void *device_ref)
+
+    Sets the tx power for MLME_SET phyTransmitPower
+
+    :param u8 txp:
+        Transmit Power
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`tdme_settxpower.description`:
+
+Description
+-----------
+
+Normalised to 802.15.4 Definition (6-bit, signed):
+Bit 7-6: not used
+Bit 5-0: tx power (-32 - +31 dB)
+
+.. _`tdme_settxpower.return`:
+
+Return
+------
+
+802.15.4 status code of api calls
+
+.. _`mcps_data_request`:
+
+mcps_data_request
+=================
+
+.. c:function:: u8 mcps_data_request(u8 src_addr_mode, u8 dst_address_mode, u16 dst_pan_id, union macaddr *dst_addr, u8 msdu_length, u8 *msdu, u8 msdu_handle, u8 tx_options, struct secspec *security, void *device_ref)
+
+    mcps_data_request (Send Data) according to API Spec
+
+    :param u8 src_addr_mode:
+        Source Addressing Mode
+
+    :param u8 dst_address_mode:
+        Destination Addressing Mode
+
+    :param u16 dst_pan_id:
+        Destination PAN ID
+
+    :param union macaddr \*dst_addr:
+        Pointer to Destination Address
+
+    :param u8 msdu_length:
+        length of Data
+
+    :param u8 \*msdu:
+        Pointer to Data
+
+    :param u8 msdu_handle:
+        Handle of Data
+
+    :param u8 tx_options:
+        Tx Options Bit Field
+
+    :param struct secspec \*security:
+        Pointer to Security Structure or NULL
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`mcps_data_request.return`:
+
+Return
+------
+
+802.15.4 status code of action
+
+.. _`mlme_reset_request_sync`:
+
+mlme_reset_request_sync
+=======================
+
+.. c:function:: u8 mlme_reset_request_sync(u8 set_default_pib, void *device_ref)
+
+    MLME_RESET_request/confirm according to API Spec
+
+    :param u8 set_default_pib:
+        Set defaults in PIB
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`mlme_reset_request_sync.return`:
+
+Return
+------
+
+802.15.4 status code of MLME-RESET.confirm
+
+.. _`mlme_set_request_sync`:
+
+mlme_set_request_sync
+=====================
+
+.. c:function:: u8 mlme_set_request_sync(u8 pib_attribute, u8 pib_attribute_index, u8 pib_attribute_length, const void *pib_attribute_value, void *device_ref)
+
+    MLME_SET_request/confirm according to API Spec
+
+    :param u8 pib_attribute:
+        Attribute Number
+
+    :param u8 pib_attribute_index:
+        Index within Attribute if an Array
+
+    :param u8 pib_attribute_length:
+        Attribute length
+
+    :param const void \*pib_attribute_value:
+        Pointer to Attribute Value
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`mlme_set_request_sync.return`:
+
+Return
+------
+
+802.15.4 status code of MLME-SET.confirm
+
+.. _`hwme_set_request_sync`:
+
+hwme_set_request_sync
+=====================
+
+.. c:function:: u8 hwme_set_request_sync(u8 hw_attribute, u8 hw_attribute_length, u8 *hw_attribute_value, void *device_ref)
+
+    HWME_SET_request/confirm according to API Spec
+
+    :param u8 hw_attribute:
+        Attribute Number
+
+    :param u8 hw_attribute_length:
+        Attribute length
+
+    :param u8 \*hw_attribute_value:
+        Pointer to Attribute Value
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`hwme_set_request_sync.return`:
+
+Return
+------
+
+802.15.4 status code of HWME-SET.confirm
+
+.. _`hwme_get_request_sync`:
+
+hwme_get_request_sync
+=====================
+
+.. c:function:: u8 hwme_get_request_sync(u8 hw_attribute, u8 *hw_attribute_length, u8 *hw_attribute_value, void *device_ref)
+
+    HWME_GET_request/confirm according to API Spec
+
+    :param u8 hw_attribute:
+        Attribute Number
+
+    :param u8 \*hw_attribute_length:
+        Attribute length
+
+    :param u8 \*hw_attribute_value:
+        Pointer to Attribute Value
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`hwme_get_request_sync.return`:
+
+Return
+------
+
+802.15.4 status code of HWME-GET.confirm
+
+.. _`ca8210_async_xmit_complete`:
+
+ca8210_async_xmit_complete
+==========================
+
+.. c:function:: int ca8210_async_xmit_complete(struct ieee802154_hw *hw, u8 msduhandle, u8 status)
+
+    Called to announce that an asynchronous transmission has finished
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of ca8210 that has finished exchange
+
+    :param u8 msduhandle:
+        Identifier of transmission that has completed
+
+    :param u8 status:
+        Returned 802.15.4 status code of the transmission
+
+.. _`ca8210_async_xmit_complete.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_skb_rx`:
+
+ca8210_skb_rx
+=============
+
+.. c:function:: int ca8210_skb_rx(struct ieee802154_hw *hw, size_t len, u8 *data_ind)
+
+    Contructs a properly framed socket buffer from a received MCPS_DATA_indication
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw that MCPS_DATA_indication was received by
+
+    :param size_t len:
+        length of MCPS_DATA_indication
+
+    :param u8 \*data_ind:
+        Octet array of MCPS_DATA_indication
+
+.. _`ca8210_skb_rx.description`:
+
+Description
+-----------
+
+Called by the spi driver whenever a SAP command is received, this function
+will ascertain whether the command is of interest to the network driver and
+take necessary action.
+
+.. _`ca8210_skb_rx.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_net_rx`:
+
+ca8210_net_rx
+=============
+
+.. c:function:: int ca8210_net_rx(struct ieee802154_hw *hw, u8 *command, size_t len)
+
+    Acts upon received SAP commands relevant to the network driver
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw that command was received by
+
+    :param u8 \*command:
+        Octet array of received command
+
+    :param size_t len:
+        length of the received command
+
+.. _`ca8210_net_rx.description`:
+
+Description
+-----------
+
+Called by the spi driver whenever a SAP command is received, this function
+will ascertain whether the command is of interest to the network driver and
+take necessary action.
+
+.. _`ca8210_net_rx.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_skb_tx`:
+
+ca8210_skb_tx
+=============
+
+.. c:function:: int ca8210_skb_tx(struct sk_buff *skb, u8 msduhandle, struct ca8210_priv *priv)
+
+    Transmits a given socket buffer using the ca8210
+
+    :param struct sk_buff \*skb:
+        Socket buffer to transmit
+
+    :param u8 msduhandle:
+        Data identifier to pass to the 802.15.4 MAC
+
+    :param struct ca8210_priv \*priv:
+        Pointer to private data section of target ca8210
+
+.. _`ca8210_skb_tx.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_start`:
+
+ca8210_start
+============
+
+.. c:function:: int ca8210_start(struct ieee802154_hw *hw)
+
+    Starts the network driver
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of ca8210 being started
+
+.. _`ca8210_start.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_stop`:
+
+ca8210_stop
+===========
+
+.. c:function:: void ca8210_stop(struct ieee802154_hw *hw)
+
+    Stops the network driver
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of ca8210 being stopped
+
+.. _`ca8210_stop.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_xmit_async`:
+
+ca8210_xmit_async
+=================
+
+.. c:function:: int ca8210_xmit_async(struct ieee802154_hw *hw, struct sk_buff *skb)
+
+    Asynchronously transmits a given socket buffer using the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of ca8210 to transmit from
+
+    :param struct sk_buff \*skb:
+        Socket buffer to transmit
+
+.. _`ca8210_xmit_async.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_get_ed`:
+
+ca8210_get_ed
+=============
+
+.. c:function:: int ca8210_get_ed(struct ieee802154_hw *hw, u8 *level)
+
+    Returns the measured energy on the current channel at this instant in time
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param u8 \*level:
+        Measured Energy Detect level
+
+.. _`ca8210_get_ed.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_channel`:
+
+ca8210_set_channel
+==================
+
+.. c:function:: int ca8210_set_channel(struct ieee802154_hw *hw, u8 page, u8 channel)
+
+    Sets the current operating 802.15.4 channel of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param u8 page:
+        Channel page to set
+
+    :param u8 channel:
+        Channel number to set
+
+.. _`ca8210_set_channel.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_hw_addr_filt`:
+
+ca8210_set_hw_addr_filt
+=======================
+
+.. c:function:: int ca8210_set_hw_addr_filt(struct ieee802154_hw *hw, struct ieee802154_hw_addr_filt *filt, unsigned long changed)
+
+    Sets the address filtering parameters of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param struct ieee802154_hw_addr_filt \*filt:
+        Filtering parameters
+
+    :param unsigned long changed:
+        Bitmap representing which parameters to change
+
+.. _`ca8210_set_hw_addr_filt.description`:
+
+Description
+-----------
+
+Effectively just sets the actual addressing information identifying this node
+as all filtering is performed by the ca8210 as detailed in the IEEE 802.15.4
+2006 specification.
+
+.. _`ca8210_set_hw_addr_filt.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_tx_power`:
+
+ca8210_set_tx_power
+===================
+
+.. c:function:: int ca8210_set_tx_power(struct ieee802154_hw *hw, s32 mbm)
+
+    Sets the transmit power of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param s32 mbm:
+        Transmit power in mBm (dBm\*100)
+
+.. _`ca8210_set_tx_power.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_cca_mode`:
+
+ca8210_set_cca_mode
+===================
+
+.. c:function:: int ca8210_set_cca_mode(struct ieee802154_hw *hw, const struct wpan_phy_cca *cca)
+
+    Sets the clear channel assessment mode of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param const struct wpan_phy_cca \*cca:
+        CCA mode to set
+
+.. _`ca8210_set_cca_mode.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_cca_ed_level`:
+
+ca8210_set_cca_ed_level
+=======================
+
+.. c:function:: int ca8210_set_cca_ed_level(struct ieee802154_hw *hw, s32 level)
+
+    Sets the CCA ED level of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param s32 level:
+        ED level to set (in mbm)
+
+.. _`ca8210_set_cca_ed_level.description`:
+
+Description
+-----------
+
+Sets the minimum threshold of measured energy above which the ca8210 will
+back off and retry a transmission.
+
+.. _`ca8210_set_cca_ed_level.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_csma_params`:
+
+ca8210_set_csma_params
+======================
+
+.. c:function:: int ca8210_set_csma_params(struct ieee802154_hw *hw, u8 min_be, u8 max_be, u8 retries)
+
+    Sets the CSMA parameters of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param u8 min_be:
+        Minimum backoff exponent when backing off a transmission
+
+    :param u8 max_be:
+        Maximum backoff exponent when backing off a transmission
+
+    :param u8 retries:
+        Number of times to retry after backing off
+
+.. _`ca8210_set_csma_params.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_set_frame_retries`:
+
+ca8210_set_frame_retries
+========================
+
+.. c:function:: int ca8210_set_frame_retries(struct ieee802154_hw *hw, s8 retries)
+
+    Sets the maximum frame retries of the ca8210
+
+    :param struct ieee802154_hw \*hw:
+        ieee802154_hw of target ca8210
+
+    :param s8 retries:
+        Number of retries
+
+.. _`ca8210_set_frame_retries.description`:
+
+Description
+-----------
+
+Sets the number of times to retry a transmission if no acknowledgment was
+was received from the other end when one was requested.
+
+.. _`ca8210_set_frame_retries.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_test_int_open`:
+
+ca8210_test_int_open
+====================
+
+.. c:function:: int ca8210_test_int_open(struct inode *inodp, struct file *filp)
+
+    Opens the test interface to the userspace
+
+    :param struct inode \*inodp:
+        inode representation of file interface
+
+    :param struct file \*filp:
+        file interface
+
+.. _`ca8210_test_int_open.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_test_check_upstream`:
+
+ca8210_test_check_upstream
+==========================
+
+.. c:function:: int ca8210_test_check_upstream(u8 *buf, void *device_ref)
+
+    Checks a command received from the upstream testing interface for required action
+
+    :param u8 \*buf:
+        Buffer containing command to check
+
+    :param void \*device_ref:
+        Nondescript pointer to target device
+
+.. _`ca8210_test_check_upstream.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_test_int_user_write`:
+
+ca8210_test_int_user_write
+==========================
+
+.. c:function:: ssize_t ca8210_test_int_user_write(struct file *filp, const char __user *in_buf, size_t len, loff_t *off)
+
+    Called by a process in userspace to send a message to the ca8210 drivers
+
+    :param struct file \*filp:
+        file interface
+
+    :param const char __user \*in_buf:
+        Buffer containing message to write
+
+    :param size_t len:
+        length of message
+
+    :param loff_t \*off:
+        file offset
+
+.. _`ca8210_test_int_user_write.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_test_int_user_read`:
+
+ca8210_test_int_user_read
+=========================
+
+.. c:function:: ssize_t ca8210_test_int_user_read(struct file *filp, char __user *buf, size_t len, loff_t *offp)
+
+    Called by a process in userspace to read a message from the ca8210 drivers
+
+    :param struct file \*filp:
+        file interface
+
+    :param char __user \*buf:
+        Buffer to write message to
+
+    :param size_t len:
+        length of message to read (ignored)
+
+    :param loff_t \*offp:
+        file offset
+
+.. _`ca8210_test_int_user_read.description`:
+
+Description
+-----------
+
+If the O_NONBLOCK flag was set when opening the file then this function will
+not block, i.e. it will return if the fifo is empty. Otherwise the function
+will block, i.e. wait until new data arrives.
+
+.. _`ca8210_test_int_user_read.return`:
+
+Return
+------
+
+number of bytes read
+
+.. _`ca8210_test_int_ioctl`:
+
+ca8210_test_int_ioctl
+=====================
+
+.. c:function:: long ca8210_test_int_ioctl(struct file *filp, unsigned int ioctl_num, unsigned long ioctl_param)
+
+    Called by a process in userspace to enact an arbitrary action
+
+    :param struct file \*filp:
+        file interface
+
+    :param unsigned int ioctl_num:
+        which action to enact
+
+    :param unsigned long ioctl_param:
+        arbitrary parameter for the action
+
+.. _`ca8210_test_int_ioctl.return`:
+
+Return
+------
+
+status
+
+.. _`ca8210_test_int_poll`:
+
+ca8210_test_int_poll
+====================
+
+.. c:function:: unsigned int ca8210_test_int_poll(struct file *filp, struct poll_table_struct *ptable)
+
+    Called by a process in userspace to determine which actions are currently possible for the file
+
+    :param struct file \*filp:
+        file interface
+
+    :param struct poll_table_struct \*ptable:
+        poll table
+
+.. _`ca8210_test_int_poll.return`:
+
+Return
+------
+
+set of poll return flags
+
+.. _`ca8210_get_platform_data`:
+
+ca8210_get_platform_data
+========================
+
+.. c:function:: int ca8210_get_platform_data(struct spi_device *spi_device, struct ca8210_platform_data *pdata)
+
+    Populate a ca8210_platform_data object
+
+    :param struct spi_device \*spi_device:
+        Pointer to ca8210 spi device object to get data for
+
+    :param struct ca8210_platform_data \*pdata:
+        Pointer to ca8210_platform_data object to populate
+
+.. _`ca8210_get_platform_data.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_config_extern_clk`:
+
+ca8210_config_extern_clk
+========================
+
+.. c:function:: int ca8210_config_extern_clk(struct ca8210_platform_data *pdata, struct spi_device *spi, bool on)
+
+    Configure the external clock provided by the ca8210
+
+    :param struct ca8210_platform_data \*pdata:
+        Pointer to ca8210_platform_data containing clock parameters
+
+    :param struct spi_device \*spi:
+        Pointer to target ca8210 spi device
+
+    :param bool on:
+        True to turn the clock on, false to turn off
+
+.. _`ca8210_config_extern_clk.description`:
+
+Description
+-----------
+
+The external clock is configured with a frequency and output pin taken from
+the platform data.
+
+.. _`ca8210_config_extern_clk.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_register_ext_clock`:
+
+ca8210_register_ext_clock
+=========================
+
+.. c:function:: int ca8210_register_ext_clock(struct spi_device *spi)
+
+    Register ca8210's external clock with kernel
+
+    :param struct spi_device \*spi:
+        Pointer to target ca8210 spi device
+
+.. _`ca8210_register_ext_clock.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_unregister_ext_clock`:
+
+ca8210_unregister_ext_clock
+===========================
+
+.. c:function:: void ca8210_unregister_ext_clock(struct spi_device *spi)
+
+    Unregister ca8210's external clock with kernel
+
+    :param struct spi_device \*spi:
+        Pointer to target ca8210 spi device
+
+.. _`ca8210_reset_init`:
+
+ca8210_reset_init
+=================
+
+.. c:function:: int ca8210_reset_init(struct spi_device *spi)
+
+    Initialise the reset input to the ca8210
+
+    :param struct spi_device \*spi:
+        Pointer to target ca8210 spi device
+
+.. _`ca8210_reset_init.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_interrupt_init`:
+
+ca8210_interrupt_init
+=====================
+
+.. c:function:: int ca8210_interrupt_init(struct spi_device *spi)
+
+    Initialise the irq output from the ca8210
+
+    :param struct spi_device \*spi:
+        Pointer to target ca8210 spi device
+
+.. _`ca8210_interrupt_init.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_dev_com_init`:
+
+ca8210_dev_com_init
+===================
+
+.. c:function:: int ca8210_dev_com_init(struct ca8210_priv *priv)
+
+    Initialise the spi communication component
+
+    :param struct ca8210_priv \*priv:
+        Pointer to private data structure
+
+.. _`ca8210_dev_com_init.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_dev_com_clear`:
+
+ca8210_dev_com_clear
+====================
+
+.. c:function:: void ca8210_dev_com_clear(struct ca8210_priv *priv)
+
+    Deinitialise the spi communication component
+
+    :param struct ca8210_priv \*priv:
+        Pointer to private data structure
+
+.. _`ca8210_hw_setup`:
+
+ca8210_hw_setup
+===============
+
+.. c:function:: void ca8210_hw_setup(struct ieee802154_hw *ca8210_hw)
+
+    Populate the ieee802154_hw phy attributes with the ca8210's defaults
+
+    :param struct ieee802154_hw \*ca8210_hw:
+        Pointer to ieee802154_hw to populate
+
+.. _`ca8210_test_interface_init`:
+
+ca8210_test_interface_init
+==========================
+
+.. c:function:: int ca8210_test_interface_init(struct ca8210_priv *priv)
+
+    Initialise the test file interface
+
+    :param struct ca8210_priv \*priv:
+        Pointer to private data structure
+
+.. _`ca8210_test_interface_init.description`:
+
+Description
+-----------
+
+Provided as an alternative to the standard linux network interface, the test
+interface exposes a file in the filesystem (ca8210_test) that allows
+802.15.4 SAP Commands and Cascoda EVBME commands to be sent directly to
+the stack.
+
+.. _`ca8210_test_interface_init.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_test_interface_clear`:
+
+ca8210_test_interface_clear
+===========================
+
+.. c:function:: void ca8210_test_interface_clear(struct ca8210_priv *priv)
+
+    Deinitialise the test file interface
+
+    :param struct ca8210_priv \*priv:
+        Pointer to private data structure
+
+.. _`ca8210_remove`:
+
+ca8210_remove
+=============
+
+.. c:function:: int ca8210_remove(struct spi_device *spi_device)
+
+    Shut down a ca8210 upon being disconnected
+
+    :param struct spi_device \*spi_device:
+        *undescribed*
+
+.. _`ca8210_remove.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. _`ca8210_probe`:
+
+ca8210_probe
+============
+
+.. c:function:: int ca8210_probe(struct spi_device *spi_device)
+
+    Set up a connected ca8210 upon being detected by the system
+
+    :param struct spi_device \*spi_device:
+        *undescribed*
+
+.. _`ca8210_probe.return`:
+
+Return
+------
+
+0 or linux error code
+
+.. This file was automatic generated / don't edit.
+

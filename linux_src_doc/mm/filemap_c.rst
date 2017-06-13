@@ -182,7 +182,7 @@ Description
 
 Write out and wait upon file offsets lstart->lend, inclusive.
 
-Note that \`lend' is inclusive (describes the last byte to be written) so
+Note that \ ``lend``\  is inclusive (describes the last byte to be written) so
 that this function can be used to write to the very end-of-file (end = -1).
 
 .. _`replace_page_cache_page`:
@@ -285,13 +285,16 @@ unlock_page
 Description
 -----------
 
-Unlocks the page and wakes up sleepers in \___wait_on_page_locked().
+Unlocks the page and wakes up sleepers in \ :c:func:`___wait_on_page_locked`\ .
 Also wakes sleepers in \ :c:func:`wait_on_page_writeback`\  because the wakeup
 mechanism between PageLocked pages and PageWriteback pages is shared.
 But that's OK - sleepers in \ :c:func:`wait_on_page_writeback`\  just go back to sleep.
 
-The mb is necessary to enforce ordering between the clear_bit and the read
-of the waitqueue (to avoid SMP races with a parallel \ :c:func:`wait_on_page_locked`\ ).
+Note that this depends on PG_waiters being the sign bit in the byte
+that contains PG_locked - thus the \ :c:func:`BUILD_BUG_ON`\ . That allows us to
+clear the PG_locked bit and test PG_waiters at the same time fairly
+portably (architectures that do LL/SC can test any bit, while x86 can
+test the sign bit).
 
 .. _`end_page_writeback`:
 
@@ -315,7 +318,7 @@ __lock_page
     get a lock on the page, assuming we need to sleep to get it
 
     :param struct page \*__page:
-        *undescribed*
+        the page to lock
 
 .. _`page_cache_next_hole`:
 
@@ -478,7 +481,7 @@ pagecache_get_page
         the page index
 
     :param int fgp_flags:
-        PCG flags
+        *undescribed*
 
     :param gfp_t gfp_mask:
         gfp mask to use for the page cache data page allocation
@@ -492,29 +495,12 @@ Looks up the page cache slot at \ ``mapping``\  & \ ``offset``\ .
 
 PCG flags modify how the page is returned.
 
-.. _`pagecache_get_page.fgp_accessed`:
-
-FGP_ACCESSED
-------------
-
-the page will be marked accessed
-
-.. _`pagecache_get_page.fgp_lock`:
-
-FGP_LOCK
---------
-
-Page is return locked
-
-.. _`pagecache_get_page.fgp_creat`:
-
-FGP_CREAT
----------
-
-If page is not present then a new page is allocated using
-\ ``gfp_mask``\  and added to the page cache and the VM's LRU
-list. The page is returned locked and with an increased
-refcount. Otherwise, \ ``NULL``\  is returned.
+- FGP_ACCESSED: the page will be marked accessed
+- FGP_LOCK: Page is return locked
+- FGP_CREAT: If page is not present then a new page is allocated using
+  \ ``gfp_mask``\  and added to the page cache and the VM's LRU
+  list. The page is returned locked and with an increased
+  refcount. Otherwise, NULL is returned.
 
 If FGP_LOCK or FGP_CREAT are specified then the function may sleep even
 if the GFP flags specified for FGP_CREAT are atomic.
@@ -784,12 +770,9 @@ and schedules an I/O to read in its contents from disk.
 filemap_fault
 =============
 
-.. c:function:: int filemap_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
+.. c:function:: int filemap_fault(struct vm_fault *vmf)
 
     read in file data for page fault handling
-
-    :param struct vm_area_struct \*vma:
-        vma in which the fault was taken
 
     :param struct vm_fault \*vmf:
         struct vm_fault containing details of the fault
@@ -811,7 +794,7 @@ vma->vm_mm->mmap_sem must be held on entry.
 If our return value has VM_FAULT_RETRY set, it's because
 \ :c:func:`lock_page_or_retry`\  returned 0.
 The mmap_sem has usually been released in this case.
-See \__lock_page_or_retry() for the exception.
+See \ :c:func:`__lock_page_or_retry`\  for the exception.
 
 If our return value does not have VM_FAULT_RETRY set, the mmap_sem
 has not been released.
@@ -905,7 +888,7 @@ do direct IO or a standard buffered write.
 It expects i_mutex to be grabbed unless we work on a block device or similar
 object which does not need locking at all.
 
-This function does \*not\* take care of syncing data in case of O_SYNC write.
+This function does *not* take care of syncing data in case of O_SYNC write.
 A caller has to handle it. This is mainly due to the fact that we want to
 avoid syncing under i_mutex.
 
@@ -929,7 +912,7 @@ generic_file_write_iter
 Description
 -----------
 
-This is a wrapper around \__generic_file_write_iter() to be used by most
+This is a wrapper around \ :c:func:`__generic_file_write_iter`\  to be used by most
 filesystems. It takes care of syncing the file in case of O_SYNC file
 and acquires i_mutex as needed.
 
@@ -954,14 +937,14 @@ Description
 -----------
 
 The address_space is to try to release any data against the page
-(presumably at page->private).  If the release was successful, return \`1'.
+(presumably at page->private).  If the release was successful, return '1'.
 Otherwise return zero.
 
 This may also be called if PG_fscache is set on a page, indicating that the
 page is known to the local caching routines.
 
 The \ ``gfp_mask``\  argument specifies whether I/O may be performed to release
-this page (__GFP_IO), and whether the call may block (__GFP_RECLAIM & \__GFP_FS).
+this page (__GFP_IO), and whether the call may block (__GFP_RECLAIM & __GFP_FS).
 
 .. This file was automatic generated / don't edit.
 

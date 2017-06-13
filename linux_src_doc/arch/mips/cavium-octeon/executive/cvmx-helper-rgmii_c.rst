@@ -98,7 +98,7 @@ __cvmx_helper_rgmii_link_set
 
 .. c:function:: int __cvmx_helper_rgmii_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
 
-    function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ . It is normally best to use \ :c:func:`cvmx_helper_link_autoconf`\  instead.
+    function does not influence auto negotiation at the PHY level. The passed link state must always match the link state returned by \ :c:func:`cvmx_helper_link_get`\ .
 
     :param int ipd_port:
         IPD/PKO port to configure

@@ -6,11 +6,11 @@
 dwc2_debugfs_init
 =================
 
-.. c:function:: int dwc2_debugfs_init(struct dwc2_hsotg *)
+.. c:function:: int dwc2_debugfs_init(struct dwc2_hsotg *hsotg)
 
     Designware USB2 DRD controller debug header
 
-    :param struct dwc2_hsotg \*:
+    :param struct dwc2_hsotg \*hsotg:
         *undescribed*
 
 .. _`dwc2_debugfs_init.description`:

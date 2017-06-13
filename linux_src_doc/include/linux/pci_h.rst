@@ -404,5 +404,26 @@ Description
 
 Returns true if ARI forwarding is enabled.
 
+.. _`pci_is_thunderbolt_attached`:
+
+pci_is_thunderbolt_attached
+===========================
+
+.. c:function:: bool pci_is_thunderbolt_attached(struct pci_dev *pdev)
+
+    whether device is on a Thunderbolt daisy chain
+
+    :param struct pci_dev \*pdev:
+        PCI device to check
+
+.. _`pci_is_thunderbolt_attached.description`:
+
+Description
+-----------
+
+Walk upwards from \ ``pdev``\  and check for each encountered bridge if it's part
+of a Thunderbolt controller.  Reaching the host bridge means \ ``pdev``\  is not
+Thunderbolt-attached.  (But rather soldered to the mainboard usually.)
+
 .. This file was automatic generated / don't edit.
 

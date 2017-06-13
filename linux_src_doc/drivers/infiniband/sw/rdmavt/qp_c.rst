@@ -538,5 +538,86 @@ Return
 
 0 on success else errno
 
+.. _`rvt_comm_est`:
+
+rvt_comm_est
+============
+
+.. c:function:: void rvt_comm_est(struct rvt_qp *qp)
+
+    handle trap with QP established
+
+    :param struct rvt_qp \*qp:
+        the QP
+
+.. _`rvt_add_rnr_timer`:
+
+rvt_add_rnr_timer
+=================
+
+.. c:function:: void rvt_add_rnr_timer(struct rvt_qp *qp, u32 aeth)
+
+    add/start an rnr timer \ ``qp``\  - the QP \ ``aeth``\  - aeth of RNR timeout, simulated aeth for loopback add an rnr timer on the QP
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param u32 aeth:
+        *undescribed*
+
+.. _`rvt_stop_rc_timers`:
+
+rvt_stop_rc_timers
+==================
+
+.. c:function:: void rvt_stop_rc_timers(struct rvt_qp *qp)
+
+    stop all timers \ ``qp``\  - the QP stop any pending timers
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+.. _`rvt_stop_rnr_timer`:
+
+rvt_stop_rnr_timer
+==================
+
+.. c:function:: int rvt_stop_rnr_timer(struct rvt_qp *qp)
+
+    stop an rnr timer \ ``qp``\  - the QP
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+.. _`rvt_stop_rnr_timer.description`:
+
+Description
+-----------
+
+stop an rnr timer and return if the timer
+had been pending.
+
+.. _`rvt_del_timers_sync`:
+
+rvt_del_timers_sync
+===================
+
+.. c:function:: void rvt_del_timers_sync(struct rvt_qp *qp)
+
+    wait for any timeout routines to exit \ ``qp``\  - the QP
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+.. _`rvt_rc_timeout`:
+
+rvt_rc_timeout
+==============
+
+.. c:function:: void rvt_rc_timeout(unsigned long arg)
+
+    :param unsigned long arg:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

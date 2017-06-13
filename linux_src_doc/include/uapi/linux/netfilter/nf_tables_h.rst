@@ -537,6 +537,7 @@ Definition
         NFTA_RULE_POSITION,
         NFTA_RULE_USERDATA,
         NFTA_RULE_PAD,
+        NFTA_RULE_ID,
         __NFTA_RULE_MAX
     };
 
@@ -571,6 +572,9 @@ NFTA_RULE_USERDATA
 
 NFTA_RULE_PAD
     *undescribed*
+
+NFTA_RULE_ID
+    uniquely identifies a rule in a transaction (NLA_U32)
 
 __NFTA_RULE_MAX
     *undescribed*
@@ -639,7 +643,7 @@ NFTA_RULE_COMPAT_UNSPEC
     *undescribed*
 
 NFTA_RULE_COMPAT_PROTO
-    numerice value of handled protocol (NLA_U32)
+    numeric value of handled protocol (NLA_U32)
 
 NFTA_RULE_COMPAT_FLAGS
     bitmask of enum nft_rule_compat_flags (NLA_U32)
@@ -1328,7 +1332,7 @@ NFT_BYTEORDER_NTOH
     network to host operator
 
 NFT_BYTEORDER_HTON
-    host to network opertaor
+    host to network operator
 
 .. _`nft_byteorder_attributes`:
 
@@ -1806,6 +1810,42 @@ NFTA_PAYLOAD_CSUM_FLAGS
 __NFTA_PAYLOAD_MAX
     *undescribed*
 
+.. _`nft_exthdr_op`:
+
+enum nft_exthdr_op
+==================
+
+.. c:type:: enum nft_exthdr_op
+
+    nf_tables match options
+
+.. _`nft_exthdr_op.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_exthdr_op {
+        NFT_EXTHDR_OP_IPV6,
+        NFT_EXTHDR_OP_TCPOPT,
+        __NFT_EXTHDR_OP_MAX
+    };
+
+.. _`nft_exthdr_op.constants`:
+
+Constants
+---------
+
+NFT_EXTHDR_OP_IPV6
+    match against ipv6 extension headers
+
+NFT_EXTHDR_OP_TCPOPT
+    *undescribed*
+
+__NFT_EXTHDR_OP_MAX
+    *undescribed*
+
 .. _`nft_exthdr_attributes`:
 
 enum nft_exthdr_attributes
@@ -1813,7 +1853,7 @@ enum nft_exthdr_attributes
 
 .. c:type:: enum nft_exthdr_attributes
 
-    nf_tables IPv6 extension header expression netlink attributes
+    nf_tables extension header expression netlink attributes
 
 .. _`nft_exthdr_attributes.definition`:
 
@@ -1828,6 +1868,8 @@ Definition
         NFTA_EXTHDR_TYPE,
         NFTA_EXTHDR_OFFSET,
         NFTA_EXTHDR_LEN,
+        NFTA_EXTHDR_FLAGS,
+        NFTA_EXTHDR_OP,
         __NFTA_EXTHDR_MAX
     };
 
@@ -1850,6 +1892,12 @@ NFTA_EXTHDR_OFFSET
 
 NFTA_EXTHDR_LEN
     extension header length (NLA_U32)
+
+NFTA_EXTHDR_FLAGS
+    extension header flags (NLA_U32)
+
+NFTA_EXTHDR_OP
+    option match type (NLA_U8)
 
 __NFTA_EXTHDR_MAX
     *undescribed*
@@ -2014,6 +2062,38 @@ NFT_RT_NEXTHOP4
 NFT_RT_NEXTHOP6
     routing nexthop for IPv6
 
+.. _`nft_hash_types`:
+
+enum nft_hash_types
+===================
+
+.. c:type:: enum nft_hash_types
+
+    nf_tables hash expression types
+
+.. _`nft_hash_types.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_hash_types {
+        NFT_HASH_JENKINS,
+        NFT_HASH_SYM
+    };
+
+.. _`nft_hash_types.constants`:
+
+Constants
+---------
+
+NFT_HASH_JENKINS
+    Jenkins Hash
+
+NFT_HASH_SYM
+    Symmetric Hash
+
 .. _`nft_hash_attributes`:
 
 enum nft_hash_attributes
@@ -2038,6 +2118,7 @@ Definition
         NFTA_HASH_MODULUS,
         NFTA_HASH_SEED,
         NFTA_HASH_OFFSET,
+        NFTA_HASH_TYPE,
         __NFTA_HASH_MAX
     };
 
@@ -2066,6 +2147,9 @@ NFTA_HASH_SEED
 
 NFTA_HASH_OFFSET
     add this offset value to hash result (NLA_U32)
+
+NFTA_HASH_TYPE
+    hash operation (NLA_U32: nft_hash_types)
 
 __NFTA_HASH_MAX
     *undescribed*
@@ -2186,7 +2270,10 @@ Definition
         NFT_CT_PROTO_DST,
         NFT_CT_LABELS,
         NFT_CT_PKTS,
-        NFT_CT_BYTES
+        NFT_CT_BYTES,
+        NFT_CT_AVGPKT,
+        NFT_CT_ZONE,
+        NFT_CT_EVENTMASK
     };
 
 .. _`nft_ct_keys.constants`:
@@ -2234,13 +2321,22 @@ NFT_CT_PROTO_DST
     conntrack layer 4 protocol destination
 
 NFT_CT_LABELS
-    *undescribed*
+    conntrack labels
 
 NFT_CT_PKTS
-    *undescribed*
+    conntrack packets
 
 NFT_CT_BYTES
-    *undescribed*
+    conntrack bytes
+
+NFT_CT_AVGPKT
+    conntrack average bytes per packet
+
+NFT_CT_ZONE
+    conntrack zone
+
+NFT_CT_EVENTMASK
+    ctnetlink events to be generated for this conntrack
 
 .. _`nft_ct_attributes`:
 

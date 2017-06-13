@@ -53,6 +53,51 @@ returns a (newly allocated) struct containing all the
 relevant values for driver use. The struct must be freed
 later with \ :c:func:`iwl_free_nvm_data`\ .
 
+.. _`iwl_set_hw_address_from_csr`:
+
+iwl_set_hw_address_from_csr
+===========================
+
+.. c:function:: void iwl_set_hw_address_from_csr(struct iwl_trans *trans, struct iwl_nvm_data *data)
+
+    sets HW address for 9000 devices and on
+
+    :param struct iwl_trans \*trans:
+        *undescribed*
+
+    :param struct iwl_nvm_data \*data:
+        *undescribed*
+
+.. _`iwl_init_sbands`:
+
+iwl_init_sbands
+===============
+
+.. c:function:: void iwl_init_sbands(struct device *dev, const struct iwl_cfg *cfg, struct iwl_nvm_data *data, const __le16 *nvm_ch_flags, u8 tx_chains, u8 rx_chains, bool lar_supported)
+
+    parse and set all channel profiles
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param const struct iwl_cfg \*cfg:
+        *undescribed*
+
+    :param struct iwl_nvm_data \*data:
+        *undescribed*
+
+    :param const __le16 \*nvm_ch_flags:
+        *undescribed*
+
+    :param u8 tx_chains:
+        *undescribed*
+
+    :param u8 rx_chains:
+        *undescribed*
+
+    :param bool lar_supported:
+        *undescribed*
+
 .. _`iwl_parse_nvm_mcc_info`:
 
 iwl_parse_nvm_mcc_info

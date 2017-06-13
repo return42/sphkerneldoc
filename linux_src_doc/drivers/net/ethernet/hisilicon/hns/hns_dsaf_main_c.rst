@@ -590,21 +590,6 @@ hns_dsaf_set_mac_uc_entry
     :param struct dsaf_drv_mac_single_dest_entry \*mac_entry:
         uc-mac entry
 
-.. _`hns_dsaf_set_mac_mc_entry`:
-
-hns_dsaf_set_mac_mc_entry
-=========================
-
-.. c:function:: int hns_dsaf_set_mac_mc_entry(struct dsaf_device *dsaf_dev, struct dsaf_drv_mac_multi_dest_entry *mac_entry)
-
-    set mac mc-entry
-
-    :param struct dsaf_device \*dsaf_dev:
-        dsa fabric device struct pointer
-
-    :param struct dsaf_drv_mac_multi_dest_entry \*mac_entry:
-        mc-mac entry
-
 .. _`hns_dsaf_add_mac_mc_port`:
 
 hns_dsaf_add_mac_mc_port
@@ -654,54 +639,6 @@ hns_dsaf_del_mac_mc_port
         dsa fabric device struct pointer
 
     :param struct dsaf_drv_mac_single_dest_entry \*mac_entry:
-        mac entry
-
-.. _`hns_dsaf_get_mac_uc_entry`:
-
-hns_dsaf_get_mac_uc_entry
-=========================
-
-.. c:function:: int hns_dsaf_get_mac_uc_entry(struct dsaf_device *dsaf_dev, struct dsaf_drv_mac_single_dest_entry *mac_entry)
-
-    get mac uc entry
-
-    :param struct dsaf_device \*dsaf_dev:
-        dsa fabric device struct pointer
-
-    :param struct dsaf_drv_mac_single_dest_entry \*mac_entry:
-        mac entry
-
-.. _`hns_dsaf_get_mac_mc_entry`:
-
-hns_dsaf_get_mac_mc_entry
-=========================
-
-.. c:function:: int hns_dsaf_get_mac_mc_entry(struct dsaf_device *dsaf_dev, struct dsaf_drv_mac_multi_dest_entry *mac_entry)
-
-    get mac mc entry
-
-    :param struct dsaf_device \*dsaf_dev:
-        dsa fabric device struct pointer
-
-    :param struct dsaf_drv_mac_multi_dest_entry \*mac_entry:
-        mac entry
-
-.. _`hns_dsaf_get_mac_entry_by_index`:
-
-hns_dsaf_get_mac_entry_by_index
-===============================
-
-.. c:function:: int hns_dsaf_get_mac_entry_by_index(struct dsaf_device *dsaf_dev, u16 entry_index, struct dsaf_drv_mac_multi_dest_entry *mac_entry)
-
-    get mac entry by tab index
-
-    :param struct dsaf_device \*dsaf_dev:
-        dsa fabric device struct pointer
-
-    :param u16 entry_index:
-        tab entry index
-
-    :param struct dsaf_drv_mac_multi_dest_entry \*mac_entry:
         mac entry
 
 .. _`hns_dsaf_free_dev`:

@@ -16,6 +16,7 @@ rdma
     ib_verbs_h
     iw_cm_h
     iw_portmap_h
+    opa_addr_h
     rdma_cm_h
     rdma_cm_ib_h
     rdma_netlink_h

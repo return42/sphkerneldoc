@@ -102,6 +102,7 @@ Definition
         unsigned pin_base;
         unsigned gpp_size;
         size_t npins;
+        unsigned features;
         void __iomem *regs;
         void __iomem *pad_regs;
         size_t ngpps;
@@ -140,6 +141,9 @@ gpp_size
 
 npins
     Number of pins in this community
+
+features
+    Additional features supported by the hardware
 
 regs
     Community specific common registers (reserved for core driver)

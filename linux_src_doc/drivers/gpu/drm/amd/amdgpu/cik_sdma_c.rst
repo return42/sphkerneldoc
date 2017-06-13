@@ -27,7 +27,7 @@ Returns 0 on success, error on failure.
 cik_sdma_ring_get_rptr
 ======================
 
-.. c:function:: uint32_t cik_sdma_ring_get_rptr(struct amdgpu_ring *ring)
+.. c:function:: uint64_t cik_sdma_ring_get_rptr(struct amdgpu_ring *ring)
 
     get the current read pointer
 
@@ -46,7 +46,7 @@ Get the current rptr from the hardware (CIK+).
 cik_sdma_ring_get_wptr
 ======================
 
-.. c:function:: uint32_t cik_sdma_ring_get_wptr(struct amdgpu_ring *ring)
+.. c:function:: uint64_t cik_sdma_ring_get_wptr(struct amdgpu_ring *ring)
 
     get the current write pointer
 
@@ -404,7 +404,7 @@ Update PTEs by writing them manually using sDMA (CIK).
 cik_sdma_vm_set_pte_pde
 =======================
 
-.. c:function:: void cik_sdma_vm_set_pte_pde(struct amdgpu_ib *ib, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+.. c:function:: void cik_sdma_vm_set_pte_pde(struct amdgpu_ib *ib, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
     update the page tables using sDMA
 
@@ -423,7 +423,7 @@ cik_sdma_vm_set_pte_pde
     :param uint32_t incr:
         increase next addr by incr bytes
 
-    :param uint32_t flags:
+    :param uint64_t flags:
         access flags
 
 .. _`cik_sdma_vm_set_pte_pde.description`:
