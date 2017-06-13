@@ -28,15 +28,15 @@ Definition
         void (*pipe_open)(struct trace_iterator *iter);
         void (*close)(struct trace_iterator *iter);
         void (*pipe_close)(struct trace_iterator *iter);
-        ssize_t (*read)(struct trace_iterator *iter,struct file *filp, char __user *ubuf,size_t cnt, loff_t *ppos);
-        ssize_t (*splice_read)(struct trace_iterator *iter,struct file *filp,loff_t *ppos,struct pipe_inode_info *pipe,size_t len,unsigned int flags);
+        ssize_t (*read)(struct trace_iterator *iter,struct file *filp, char __user *ubuf, size_t cnt, loff_t *ppos);
+        ssize_t (*splice_read)(struct trace_iterator *iter,struct file *filp,loff_t *ppos,struct pipe_inode_info *pipe,size_t len, unsigned int flags);
     #ifdef CONFIG_FTRACE_STARTUP_TEST
-        int (*selftest)(struct tracer *trace,struct trace_array *tr);
+        int (*selftest)(struct tracer *trace, struct trace_array *tr);
     #endif
         void (*print_header)(struct seq_file *m);
         enum print_line_t (*print_line)(struct trace_iterator *iter);
-        int (*set_flag)(struct trace_array *tr,u32 old_flags, u32 bit, int set);
-        int (*flag_changed)(struct trace_array *tr,u32 mask, int set);
+        int (*set_flag)(struct trace_array *tr, u32 old_flags, u32 bit, int set);
+        int (*flag_changed)(struct trace_array *tr, u32 mask, int set);
         struct tracer *next;
         struct tracer_flags *flags;
         int enabled;
@@ -220,10 +220,10 @@ Definition
 .. code-block:: c
 
     struct event_trigger_ops {
-        void (*func)(struct event_trigger_data *data,void *rec);
-        int (*init)(struct event_trigger_ops *ops,struct event_trigger_data *data);
-        void (*free)(struct event_trigger_ops *ops,struct event_trigger_data *data);
-        int (*print)(struct seq_file *m,struct event_trigger_ops *ops,struct event_trigger_data *data);
+        void (*func)(struct event_trigger_data *data, void *rec);
+        int (*init)(struct event_trigger_ops *ops, struct event_trigger_data *data);
+        void (*free)(struct event_trigger_ops *ops, struct event_trigger_data *data);
+        int (*print)(struct seq_file *m,struct event_trigger_ops *ops, struct event_trigger_data *data);
     }
 
 .. _`event_trigger_ops.members`:
@@ -295,11 +295,11 @@ Definition
         char *name;
         enum event_trigger_type trigger_type;
         int flags;
-        int (*func)(struct event_command *cmd_ops,struct trace_event_file *file,char *glob, char *cmd, char *params);
-        int (*reg)(char *glob,struct event_trigger_ops *ops,struct event_trigger_data *data,struct trace_event_file *file);
-        void (*unreg)(char *glob,struct event_trigger_ops *ops,struct event_trigger_data *data,struct trace_event_file *file);
+        int (*func)(struct event_command *cmd_ops,struct trace_event_file *file, char *glob, char *cmd, char *params);
+        int (*reg)(char *glob,struct event_trigger_ops *ops,struct event_trigger_data *data, struct trace_event_file *file);
+        void (*unreg)(char *glob,struct event_trigger_ops *ops,struct event_trigger_data *data, struct trace_event_file *file);
         void (*unreg_all)(struct trace_event_file *file);
-        int (*set_filter)(char *filter_str,struct event_trigger_data *data,struct trace_event_file *file);
+        int (*set_filter)(char *filter_str,struct event_trigger_data *data, struct trace_event_file *file);
         struct event_trigger_ops *(*get_trigger_ops)(char *cmd, char *param);
     }
 

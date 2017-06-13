@@ -67,12 +67,12 @@ Definition
 
     struct regulator_ops {
         int (*list_voltage)(struct regulator_dev *, unsigned selector);
-        int (*set_voltage)(struct regulator_dev *, int min_uV, int max_uV,unsigned *selector);
+        int (*set_voltage)(struct regulator_dev *, int min_uV, int max_uV, unsigned *selector);
         int (*map_voltage)(struct regulator_dev *, int min_uV, int max_uV);
         int (*set_voltage_sel)(struct regulator_dev *, unsigned selector);
         int (*get_voltage)(struct regulator_dev *);
         int (*get_voltage_sel)(struct regulator_dev *);
-        int (*set_current_limit)(struct regulator_dev *,int min_uA, int max_uA);
+        int (*set_current_limit)(struct regulator_dev *, int min_uA, int max_uA);
         int (*get_current_limit)(struct regulator_dev *);
         int (*set_input_current_limit)(struct regulator_dev *, int lim_uA);
         int (*set_over_current_protection)(struct regulator_dev *);
@@ -85,11 +85,11 @@ Definition
         int (*get_error_flags)(struct regulator_dev *, unsigned int *flags);
         int (*enable_time)(struct regulator_dev *);
         int (*set_ramp_delay)(struct regulator_dev *, int ramp_delay);
-        int (*set_voltage_time)(struct regulator_dev *, int old_uV,int new_uV);
-        int (*set_voltage_time_sel)(struct regulator_dev *,unsigned int old_selector,unsigned int new_selector);
+        int (*set_voltage_time)(struct regulator_dev *, int old_uV, int new_uV);
+        int (*set_voltage_time_sel)(struct regulator_dev *,unsigned int old_selector, unsigned int new_selector);
         int (*set_soft_start)(struct regulator_dev *);
         int (*get_status)(struct regulator_dev *);
-        unsigned int (*get_optimum_mode)(struct regulator_dev *, int input_uV,int output_uV, int load_uA);
+        unsigned int (*get_optimum_mode)(struct regulator_dev *, int input_uV, int output_uV, int load_uA);
         int (*set_load)(struct regulator_dev *, int load_uA);
         int (*set_bypass)(struct regulator_dev *dev, bool enable);
         int (*get_bypass)(struct regulator_dev *dev, bool *enable);
@@ -254,7 +254,7 @@ Definition
         const char *supply_name;
         const char *of_match;
         const char *regulators_node;
-        int (*of_parse_cb)(struct device_node *,const struct regulator_desc *,struct regulator_config *);
+        int (*of_parse_cb)(struct device_node *,const struct regulator_desc *, struct regulator_config *);
         int id;
         unsigned int continuous_voltage_range:1;
         unsigned n_voltages;

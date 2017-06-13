@@ -20,12 +20,12 @@ Definition
     struct si476x_radio_ops {
         int (*tune_freq)(struct si476x_core *, struct si476x_tune_freq_args *);
         int (*seek_start)(struct si476x_core *, bool, bool);
-        int (*rsq_status)(struct si476x_core *, struct si476x_rsq_status_args *,struct si476x_rsq_status_report *);
-        int (*rds_blckcnt)(struct si476x_core *, bool,struct si476x_rds_blockcount_report *);
-        int (*phase_diversity)(struct si476x_core *,enum si476x_phase_diversity_mode);
+        int (*rsq_status)(struct si476x_core *, struct si476x_rsq_status_args *, struct si476x_rsq_status_report *);
+        int (*rds_blckcnt)(struct si476x_core *, bool, struct si476x_rds_blockcount_report *);
+        int (*phase_diversity)(struct si476x_core *, enum si476x_phase_diversity_mode);
         int (*phase_div_status)(struct si476x_core *);
-        int (*acf_status)(struct si476x_core *,struct si476x_acf_status_report *);
-        int (*agc_status)(struct si476x_core *,struct si476x_agc_status_report *);
+        int (*acf_status)(struct si476x_core *, struct si476x_acf_status_report *);
+        int (*agc_status)(struct si476x_core *, struct si476x_agc_status_report *);
     }
 
 .. _`si476x_radio_ops.members`:

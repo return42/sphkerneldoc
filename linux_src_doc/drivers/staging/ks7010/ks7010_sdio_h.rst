@@ -59,7 +59,7 @@ Definition
     struct tx_device_buffer {
         unsigned char *sendp;
         unsigned int size;
-        void (*complete_handler)(struct ks_wlan_private *priv,struct sk_buff *skb);
+        void (*complete_handler)(struct ks_wlan_private *priv, struct sk_buff *skb);
         struct sk_buff *skb;
     }
 

@@ -22,17 +22,17 @@ Definition
         struct gpio_device *gpiodev;
         struct device *parent;
         struct module *owner;
-        int (*request)(struct gpio_chip *chip,unsigned offset);
-        void (*free)(struct gpio_chip *chip,unsigned offset);
-        int (*get_direction)(struct gpio_chip *chip,unsigned offset);
-        int (*direction_input)(struct gpio_chip *chip,unsigned offset);
-        int (*direction_output)(struct gpio_chip *chip,unsigned offset, int value);
-        int (*get)(struct gpio_chip *chip,unsigned offset);
-        void (*set)(struct gpio_chip *chip,unsigned offset, int value);
-        void (*set_multiple)(struct gpio_chip *chip,unsigned long *mask,unsigned long *bits);
-        int (*set_config)(struct gpio_chip *chip,unsigned offset,unsigned long config);
-        int (*to_irq)(struct gpio_chip *chip,unsigned offset);
-        void (*dbg_show)(struct seq_file *s,struct gpio_chip *chip);
+        int (*request)(struct gpio_chip *chip, unsigned offset);
+        void (*free)(struct gpio_chip *chip, unsigned offset);
+        int (*get_direction)(struct gpio_chip *chip, unsigned offset);
+        int (*direction_input)(struct gpio_chip *chip, unsigned offset);
+        int (*direction_output)(struct gpio_chip *chip, unsigned offset, int value);
+        int (*get)(struct gpio_chip *chip, unsigned offset);
+        void (*set)(struct gpio_chip *chip, unsigned offset, int value);
+        void (*set_multiple)(struct gpio_chip *chip,unsigned long *mask, unsigned long *bits);
+        int (*set_config)(struct gpio_chip *chip,unsigned offset, unsigned long config);
+        int (*to_irq)(struct gpio_chip *chip, unsigned offset);
+        void (*dbg_show)(struct seq_file *s, struct gpio_chip *chip);
         int base;
         u16 ngpio;
         const char *const *names;
@@ -65,7 +65,7 @@ Definition
     #if defined(CONFIG_OF_GPIO)
         struct device_node *of_node;
         int of_gpio_n_cells;
-        int (*of_xlate)(struct gpio_chip *gc,const struct of_phandle_args *gpiospec, u32 *flags);
+        int (*of_xlate)(struct gpio_chip *gc, const struct of_phandle_args *gpiospec, u32 *flags);
     #endif
     }
 

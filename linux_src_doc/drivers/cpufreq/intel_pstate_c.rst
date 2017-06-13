@@ -499,7 +499,7 @@ Definition
         int (*get_scaling)(void);
         u64 (*get_val)(struct cpudata*, int pstate);
         void (*get_vid)(struct cpudata *);
-        void (*update_util)(struct update_util_data *data, u64 time,unsigned int flags);
+        void (*update_util)(struct update_util_data *data, u64 time, unsigned int flags);
     }
 
 .. _`pstate_funcs.members`:

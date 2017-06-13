@@ -137,7 +137,7 @@ Definition
         int (*read_byte)(struct stmpe *stmpe, u8 reg);
         int (*write_byte)(struct stmpe *stmpe, u8 reg, u8 val);
         int (*read_block)(struct stmpe *stmpe, u8 reg, u8 len, u8 *values);
-        int (*write_block)(struct stmpe *stmpe, u8 reg, u8 len,const u8 *values);
+        int (*write_block)(struct stmpe *stmpe, u8 reg, u8 len, const u8 *values);
         void (*init)(struct stmpe *stmpe);
     }
 

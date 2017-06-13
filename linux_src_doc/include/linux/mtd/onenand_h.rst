@@ -66,8 +66,8 @@ Definition
         int (*wait)(struct mtd_info *mtd, int state);
         int (*bbt_wait)(struct mtd_info *mtd, int state);
         void (*unlock_all)(struct mtd_info *mtd);
-        int (*read_bufferram)(struct mtd_info *mtd, int area,unsigned char *buffer, int offset, size_t count);
-        int (*write_bufferram)(struct mtd_info *mtd, int area,const unsigned char *buffer, int offset, size_t count);
+        int (*read_bufferram)(struct mtd_info *mtd, int area, unsigned char *buffer, int offset, size_t count);
+        int (*write_bufferram)(struct mtd_info *mtd, int area, const unsigned char *buffer, int offset, size_t count);
         unsigned short (*read_word)(void __iomem *addr);
         void (*write_word)(unsigned short value, void __iomem *addr);
         void (*mmcontrol)(struct mtd_info *mtd, int sync_read);

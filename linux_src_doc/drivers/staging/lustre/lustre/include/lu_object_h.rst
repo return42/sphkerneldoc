@@ -6,7 +6,7 @@
 lu_printer_t
 ============
 
-.. c:function:: int lu_printer_t(const struct lu_env *env, void *cookie, const char *format, ...)__printf(3# 4)
+.. c:function:: int lu_printer_t(const struct lu_env *env, void *cookie, const char *format, ...) __printf(3# 4)
 
     :loo_object_print() method.
 
@@ -19,7 +19,7 @@ lu_printer_t
     :param const char \*format:
         *undescribed*
 
-    :param ...)__printf(3# 4:
+    :param ...) __printf(3# 4:
         *undescribed*
 
 .. _`lu_printer_t.description`:

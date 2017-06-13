@@ -103,8 +103,8 @@ Definition
 
     struct gb_camera_ops {
         ssize_t (*capabilities)(void *priv, char *buf, size_t len);
-        int (*configure_streams)(void *priv, unsigned int *nstreams,unsigned int *flags, struct gb_camera_stream *streams,struct gb_camera_csi_params *csi_params);
-        int (*capture)(void *priv, u32 request_id,unsigned int streams, unsigned int num_frames,size_t settings_size, const void *settings);
+        int (*configure_streams)(void *priv, unsigned int *nstreams,unsigned int *flags, struct gb_camera_stream *streams, struct gb_camera_csi_params *csi_params);
+        int (*capture)(void *priv, u32 request_id,unsigned int streams, unsigned int num_frames, size_t settings_size, const void *settings);
         int (*flush)(void *priv, u32 *request_id);
     }
 

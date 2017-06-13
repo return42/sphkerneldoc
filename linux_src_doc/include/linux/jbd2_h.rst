@@ -162,7 +162,7 @@ Definition
         u64 j_average_commit_time;
         u32 j_min_batch_time;
         u32 j_max_batch_time;
-        void (*j_commit_callback)(journal_t *,transaction_t *);
+        void (*j_commit_callback)(journal_t *, transaction_t *);
         spinlock_t j_history_lock;
         struct proc_dir_entry *j_proc_entry;
         struct transaction_stats_s j_stats;

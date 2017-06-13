@@ -222,7 +222,7 @@ Definition
 .. code-block:: c
 
     struct iio_dma_buffer_ops {
-        int (*submit)(struct iio_dma_buffer_queue *queue,struct iio_dma_buffer_block *block);
+        int (*submit)(struct iio_dma_buffer_queue *queue, struct iio_dma_buffer_block *block);
         void (*abort)(struct iio_dma_buffer_queue *queue);
     }
 

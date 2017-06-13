@@ -18,12 +18,12 @@ Definition
 .. code-block:: c
 
     struct drm_simple_display_pipe_funcs {
-        void (*enable)(struct drm_simple_display_pipe *pipe,struct drm_crtc_state *crtc_state);
+        void (*enable)(struct drm_simple_display_pipe *pipe, struct drm_crtc_state *crtc_state);
         void (*disable)(struct drm_simple_display_pipe *pipe);
-        int (*check)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state,struct drm_crtc_state *crtc_state);
-        void (*update)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *old_plane_state);
-        int (*prepare_fb)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state);
-        void (*cleanup_fb)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state);
+        int (*check)(struct drm_simple_display_pipe *pipe,struct drm_plane_state *plane_state, struct drm_crtc_state *crtc_state);
+        void (*update)(struct drm_simple_display_pipe *pipe, struct drm_plane_state *old_plane_state);
+        int (*prepare_fb)(struct drm_simple_display_pipe *pipe, struct drm_plane_state *plane_state);
+        void (*cleanup_fb)(struct drm_simple_display_pipe *pipe, struct drm_plane_state *plane_state);
     }
 
 .. _`drm_simple_display_pipe_funcs.members`:

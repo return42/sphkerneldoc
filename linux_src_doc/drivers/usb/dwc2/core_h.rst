@@ -984,7 +984,7 @@ Definition
     #endif
     #endif
     #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || \
-        IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)struct usb_gadget_driver *driver;
+        IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE) struct usb_gadget_driver *driver;
         int fifo_mem;
         unsigned int dedicated_fifos:1;
         unsigned char num_of_eps;

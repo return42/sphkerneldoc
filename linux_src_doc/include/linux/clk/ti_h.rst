@@ -236,8 +236,8 @@ Definition
 .. code-block:: c
 
     struct clk_hw_omap_ops {
-        void (*find_idlest)(struct clk_hw_omap *oclk,struct clk_omap_reg *idlest_reg,u8 *idlest_bit, u8 *idlest_val);
-        void (*find_companion)(struct clk_hw_omap *oclk,struct clk_omap_reg *other_reg,u8 *other_bit);
+        void (*find_idlest)(struct clk_hw_omap *oclk,struct clk_omap_reg *idlest_reg, u8 *idlest_bit, u8 *idlest_val);
+        void (*find_companion)(struct clk_hw_omap *oclk,struct clk_omap_reg *other_reg, u8 *other_bit);
         void (*allow_idle)(struct clk_hw_omap *oclk);
         void (*deny_idle)(struct clk_hw_omap *oclk);
     }
@@ -352,10 +352,10 @@ Definition
         u32 (*clk_readl)(const struct clk_omap_reg *reg);
         void (*clk_writel)(u32 val, const struct clk_omap_reg *reg);
         int (*clkdm_clk_enable)(struct clockdomain *clkdm, struct clk *clk);
-        int (*clkdm_clk_disable)(struct clockdomain *clkdm,struct clk *clk);
+        int (*clkdm_clk_disable)(struct clockdomain *clkdm, struct clk *clk);
         struct clockdomain * (*clkdm_lookup)(const char *name);
-        int (*cm_wait_module_ready)(u8 part, s16 prcm_mod, u16 idlest_reg,u8 idlest_shift);
-        int (*cm_split_idlest_reg)(struct clk_omap_reg *idlest_reg,s16 *prcm_inst, u8 *idlest_reg_id);
+        int (*cm_wait_module_ready)(u8 part, s16 prcm_mod, u16 idlest_reg, u8 idlest_shift);
+        int (*cm_split_idlest_reg)(struct clk_omap_reg *idlest_reg, s16 *prcm_inst, u8 *idlest_reg_id);
     }
 
 .. _`ti_clk_ll_ops.members`:

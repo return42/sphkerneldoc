@@ -19,7 +19,7 @@ Definition
 
     struct iommu_gather_ops {
         void (*tlb_flush_all)(void *cookie);
-        void (*tlb_add_flush)(unsigned long iova, size_t size, size_t granule,bool leaf, void *cookie);
+        void (*tlb_add_flush)(unsigned long iova, size_t size, size_t granule, bool leaf, void *cookie);
         void (*tlb_sync)(void *cookie);
     }
 
@@ -124,9 +124,9 @@ Definition
 .. code-block:: c
 
     struct io_pgtable_ops {
-        int (*map)(struct io_pgtable_ops *ops, unsigned long iova,phys_addr_t paddr, size_t size, int prot);
-        int (*unmap)(struct io_pgtable_ops *ops, unsigned long iova,size_t size);
-        phys_addr_t (*iova_to_phys)(struct io_pgtable_ops *ops,unsigned long iova);
+        int (*map)(struct io_pgtable_ops *ops, unsigned long iova, phys_addr_t paddr, size_t size, int prot);
+        int (*unmap)(struct io_pgtable_ops *ops, unsigned long iova, size_t size);
+        phys_addr_t (*iova_to_phys)(struct io_pgtable_ops *ops, unsigned long iova);
     }
 
 .. _`io_pgtable_ops.members`:

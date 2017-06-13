@@ -59,8 +59,8 @@ Definition
     struct tps6507x_dev {
         struct device *dev;
         struct i2c_client *i2c_client;
-        int (*read_dev)(struct tps6507x_dev *tps6507x, char reg, int size,void *dest);
-        int (*write_dev)(struct tps6507x_dev *tps6507x, char reg, int size,void *src);
+        int (*read_dev)(struct tps6507x_dev *tps6507x, char reg, int size, void *dest);
+        int (*write_dev)(struct tps6507x_dev *tps6507x, char reg, int size, void *src);
         struct tps6507x_pmic *pmic;
     }
 

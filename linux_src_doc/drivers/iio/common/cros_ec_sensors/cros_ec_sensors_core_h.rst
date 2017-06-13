@@ -27,7 +27,7 @@ Definition
         enum motionsensor_location loc;
         s16 calib;
         u8 samples;
-        int (*read_ec_sensors_data)(struct iio_dev *indio_dev,unsigned long scan_mask, s16 *data);
+        int (*read_ec_sensors_data)(struct iio_dev *indio_dev, unsigned long scan_mask, s16 *data);
         int curr_sampl_freq;
     }
 

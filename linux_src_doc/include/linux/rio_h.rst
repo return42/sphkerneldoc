@@ -67,11 +67,11 @@ Definition
 
     struct rio_switch_ops {
         struct module *owner;
-        int (*add_entry)(struct rio_mport *mport, u16 destid, u8 hopcount,u16 table, u16 route_destid, u8 route_port);
-        int (*get_entry)(struct rio_mport *mport, u16 destid, u8 hopcount,u16 table, u16 route_destid, u8 *route_port);
-        int (*clr_table)(struct rio_mport *mport, u16 destid, u8 hopcount,u16 table);
-        int (*set_domain)(struct rio_mport *mport, u16 destid, u8 hopcount,u8 sw_domain);
-        int (*get_domain)(struct rio_mport *mport, u16 destid, u8 hopcount,u8 *sw_domain);
+        int (*add_entry)(struct rio_mport *mport, u16 destid, u8 hopcount, u16 table, u16 route_destid, u8 route_port);
+        int (*get_entry)(struct rio_mport *mport, u16 destid, u8 hopcount, u16 table, u16 route_destid, u8 *route_port);
+        int (*clr_table)(struct rio_mport *mport, u16 destid, u8 hopcount, u16 table);
+        int (*set_domain)(struct rio_mport *mport, u16 destid, u8 hopcount, u8 sw_domain);
+        int (*get_domain)(struct rio_mport *mport, u16 destid, u8 hopcount, u8 *sw_domain);
         int (*em_init)(struct rio_dev *dev);
         int (*em_handle)(struct rio_dev *dev, u8 swport);
     }
@@ -572,23 +572,23 @@ Definition
 .. code-block:: c
 
     struct rio_ops {
-        int (*lcread)(struct rio_mport *mport, int index, u32 offset, int len,u32 *data);
-        int (*lcwrite)(struct rio_mport *mport, int index, u32 offset, int len,u32 data);
-        int (*cread)(struct rio_mport *mport, int index, u16 destid,u8 hopcount, u32 offset, int len, u32 *data);
-        int (*cwrite)(struct rio_mport *mport, int index, u16 destid,u8 hopcount, u32 offset, int len, u32 data);
+        int (*lcread)(struct rio_mport *mport, int index, u32 offset, int len, u32 *data);
+        int (*lcwrite)(struct rio_mport *mport, int index, u32 offset, int len, u32 data);
+        int (*cread)(struct rio_mport *mport, int index, u16 destid, u8 hopcount, u32 offset, int len, u32 *data);
+        int (*cwrite)(struct rio_mport *mport, int index, u16 destid, u8 hopcount, u32 offset, int len, u32 data);
         int (*dsend)(struct rio_mport *mport, int index, u16 destid, u16 data);
         int (*pwenable)(struct rio_mport *mport, int enable);
-        int (*open_outb_mbox)(struct rio_mport *mport, void *dev_id,int mbox, int entries);
+        int (*open_outb_mbox)(struct rio_mport *mport, void *dev_id, int mbox, int entries);
         void (*close_outb_mbox)(struct rio_mport *mport, int mbox);
-        int (*open_inb_mbox)(struct rio_mport *mport, void *dev_id,int mbox, int entries);
+        int (*open_inb_mbox)(struct rio_mport *mport, void *dev_id, int mbox, int entries);
         void (*close_inb_mbox)(struct rio_mport *mport, int mbox);
-        int (*add_outb_message)(struct rio_mport *mport, struct rio_dev *rdev,int mbox, void *buffer, size_t len);
+        int (*add_outb_message)(struct rio_mport *mport, struct rio_dev *rdev, int mbox, void *buffer, size_t len);
         int (*add_inb_buffer)(struct rio_mport *mport, int mbox, void *buf);
         void *(*get_inb_message)(struct rio_mport *mport, int mbox);
-        int (*map_inb)(struct rio_mport *mport, dma_addr_t lstart,u64 rstart, u64 size, u32 flags);
+        int (*map_inb)(struct rio_mport *mport, dma_addr_t lstart, u64 rstart, u64 size, u32 flags);
         void (*unmap_inb)(struct rio_mport *mport, dma_addr_t lstart);
-        int (*query_mport)(struct rio_mport *mport,struct rio_mport_attr *attr);
-        int (*map_outb)(struct rio_mport *mport, u16 destid, u64 rstart,u32 size, u32 flags, dma_addr_t *laddr);
+        int (*query_mport)(struct rio_mport *mport, struct rio_mport_attr *attr);
+        int (*map_outb)(struct rio_mport *mport, u16 destid, u64 rstart, u32 size, u32 flags, dma_addr_t *laddr);
         void (*unmap_outb)(struct rio_mport *mport, u16 destid, u64 rstart);
     }
 

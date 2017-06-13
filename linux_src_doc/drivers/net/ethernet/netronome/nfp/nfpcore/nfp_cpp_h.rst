@@ -268,21 +268,21 @@ Definition
         void (*free)(struct nfp_cpp *cpp);
         void (*read_serial)(struct device *dev, u8 *serial);
         u16 (*get_interface)(struct device *dev);
-        int (*area_init)(struct nfp_cpp_area *area,u32 dest, unsigned long long address,unsigned long size);
+        int (*area_init)(struct nfp_cpp_area *area,u32 dest, unsigned long long address, unsigned long size);
         void (*area_cleanup)(struct nfp_cpp_area *area);
         int (*area_acquire)(struct nfp_cpp_area *area);
         void (*area_release)(struct nfp_cpp_area *area);
         struct resource *(*area_resource)(struct nfp_cpp_area *area);
         phys_addr_t (*area_phys)(struct nfp_cpp_area *area);
         void __iomem *(*area_iomem)(struct nfp_cpp_area *area);
-        int (*area_read)(struct nfp_cpp_area *area, void *kernel_vaddr,unsigned long offset, unsigned int length);
-        int (*area_write)(struct nfp_cpp_area *area, const void *kernel_vaddr,unsigned long offset, unsigned int length);
+        int (*area_read)(struct nfp_cpp_area *area, void *kernel_vaddr, unsigned long offset, unsigned int length);
+        int (*area_write)(struct nfp_cpp_area *area, const void *kernel_vaddr, unsigned long offset, unsigned int length);
         size_t explicit_priv_size;
         int (*explicit_acquire)(struct nfp_cpp_explicit *expl);
         void (*explicit_release)(struct nfp_cpp_explicit *expl);
-        int (*explicit_put)(struct nfp_cpp_explicit *expl,const void *buff, size_t len);
-        int (*explicit_get)(struct nfp_cpp_explicit *expl,void *buff, size_t len);
-        int (*explicit_do)(struct nfp_cpp_explicit *expl,const struct nfp_cpp_explicit_command *cmd,u64 address);
+        int (*explicit_put)(struct nfp_cpp_explicit *expl, const void *buff, size_t len);
+        int (*explicit_get)(struct nfp_cpp_explicit *expl, void *buff, size_t len);
+        int (*explicit_do)(struct nfp_cpp_explicit *expl,const struct nfp_cpp_explicit_command *cmd, u64 address);
     }
 
 .. _`nfp_cpp_operations.members`:

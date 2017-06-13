@@ -69,7 +69,7 @@ Definition
         struct mutex hw_mutex;
         struct work_struct crc_work;
         u8 crc_count;
-        ssize_t (*transfer)(struct drm_dp_aux *aux,struct drm_dp_aux_msg *msg);
+        ssize_t (*transfer)(struct drm_dp_aux *aux, struct drm_dp_aux_msg *msg);
         unsigned i2c_nack_count;
         unsigned i2c_defer_count;
     }

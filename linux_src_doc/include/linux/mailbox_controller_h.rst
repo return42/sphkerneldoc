@@ -90,7 +90,7 @@ Definition
         bool txdone_irq;
         bool txdone_poll;
         unsigned txpoll_period;
-        struct mbox_chan *(*of_xlate)(struct mbox_controller *mbox,const struct of_phandle_args *sp);
+        struct mbox_chan *(*of_xlate)(struct mbox_controller *mbox, const struct of_phandle_args *sp);
         struct hrtimer poll_hrt;
         struct list_head node;
     }

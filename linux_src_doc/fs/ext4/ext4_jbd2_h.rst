@@ -19,7 +19,7 @@ Definition
 
     struct ext4_journal_cb_entry {
         struct list_head jce_list;
-        void (*jce_func)(struct super_block *sb,struct ext4_journal_cb_entry *jce, int error);
+        void (*jce_func)(struct super_block *sb, struct ext4_journal_cb_entry *jce, int error);
     }
 
 .. _`ext4_journal_cb_entry.members`:

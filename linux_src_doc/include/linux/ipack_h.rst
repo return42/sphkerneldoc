@@ -171,7 +171,7 @@ Definition
 .. code-block:: c
 
     struct ipack_bus_ops {
-        int (*request_irq)(struct ipack_device *dev,irqreturn_t (*handler);
+        int (*request_irq)(struct ipack_device *dev, irqreturn_t (*handler);
         int (*free_irq)(struct ipack_device *dev);
         int (*get_clockrate)(struct ipack_device *dev);
         int (*set_clockrate)(struct ipack_device *dev, int mherz);

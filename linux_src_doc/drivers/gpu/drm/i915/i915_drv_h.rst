@@ -20,9 +20,9 @@ Definition
     struct i915_perf_stream_ops {
         void (*enable)(struct i915_perf_stream *stream);
         void (*disable)(struct i915_perf_stream *stream);
-        void (*poll_wait)(struct i915_perf_stream *stream,struct file *file,poll_table *wait);
+        void (*poll_wait)(struct i915_perf_stream *stream,struct file *file, poll_table *wait);
         int (*wait_unlocked)(struct i915_perf_stream *stream);
-        int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count,size_t *offset);
+        int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count, size_t *offset);
         void (*destroy)(struct i915_perf_stream *stream);
     }
 
@@ -144,7 +144,7 @@ Definition
         void (*disable_metric_set)(struct drm_i915_private *dev_priv);
         void (*oa_enable)(struct drm_i915_private *dev_priv);
         void (*oa_disable)(struct drm_i915_private *dev_priv);
-        int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count,size_t *offset);
+        int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count, size_t *offset);
         bool (*oa_buffer_is_empty)(struct drm_i915_private *dev_priv);
     }
 

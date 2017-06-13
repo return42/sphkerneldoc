@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct drm_mode_config_funcs {
-        struct drm_framebuffer *(*fb_create)(struct drm_device *dev,struct drm_file *file_priv,const struct drm_mode_fb_cmd2 *mode_cmd);
+        struct drm_framebuffer *(*fb_create)(struct drm_device *dev,struct drm_file *file_priv, const struct drm_mode_fb_cmd2 *mode_cmd);
         const struct drm_format_info *(*get_format_info)(const struct drm_mode_fb_cmd2 *mode_cmd);
         void (*output_poll_changed)(struct drm_device *dev);
-        int (*atomic_check)(struct drm_device *dev,struct drm_atomic_state *state);
-        int (*atomic_commit)(struct drm_device *dev,struct drm_atomic_state *state,bool nonblock);
+        int (*atomic_check)(struct drm_device *dev, struct drm_atomic_state *state);
+        int (*atomic_commit)(struct drm_device *dev,struct drm_atomic_state *state, bool nonblock);
         struct drm_atomic_state *(*atomic_state_alloc)(struct drm_device *dev);
         void (*atomic_state_clear)(struct drm_atomic_state *state);
         void (*atomic_state_free)(struct drm_atomic_state *state);

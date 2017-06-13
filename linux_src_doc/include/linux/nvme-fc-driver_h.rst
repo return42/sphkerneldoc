@@ -395,13 +395,13 @@ Definition
     struct nvme_fc_port_template {
         void (*localport_delete)(struct nvme_fc_local_port *);
         void (*remoteport_delete)(struct nvme_fc_remote_port *);
-        int (*create_queue)(struct nvme_fc_local_port *,unsigned int qidx, u16 qsize,void **handle);
-        void (*delete_queue)(struct nvme_fc_local_port *,unsigned int qidx, void *handle);
+        int (*create_queue)(struct nvme_fc_local_port *,unsigned int qidx, u16 qsize, void **handle);
+        void (*delete_queue)(struct nvme_fc_local_port *, unsigned int qidx, void *handle);
         void (*poll_queue)(struct nvme_fc_local_port *, void *handle);
-        int (*ls_req)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *,struct nvmefc_ls_req *);
-        int (*fcp_io)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *,void *hw_queue_handle,struct nvmefc_fcp_req *);
-        void (*ls_abort)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *,struct nvmefc_ls_req *);
-        void (*fcp_abort)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *,void *hw_queue_handle,struct nvmefc_fcp_req *);
+        int (*ls_req)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *, struct nvmefc_ls_req *);
+        int (*fcp_io)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *,void *hw_queue_handle, struct nvmefc_fcp_req *);
+        void (*ls_abort)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *, struct nvmefc_ls_req *);
+        void (*fcp_abort)(struct nvme_fc_local_port *,struct nvme_fc_remote_port *,void *hw_queue_handle, struct nvmefc_fcp_req *);
         u32 max_hw_queues;
         u16 max_sgl_segments;
         u16 max_dif_sgl_segments;
@@ -911,10 +911,10 @@ Definition
 
     struct nvmet_fc_target_template {
         void (*targetport_delete)(struct nvmet_fc_target_port *tgtport);
-        int (*xmt_ls_rsp)(struct nvmet_fc_target_port *tgtport,struct nvmefc_tgt_ls_req *tls_req);
-        int (*fcp_op)(struct nvmet_fc_target_port *tgtport,struct nvmefc_tgt_fcp_req *fcpreq);
-        void (*fcp_abort)(struct nvmet_fc_target_port *tgtport,struct nvmefc_tgt_fcp_req *fcpreq);
-        void (*fcp_req_release)(struct nvmet_fc_target_port *tgtport,struct nvmefc_tgt_fcp_req *fcpreq);
+        int (*xmt_ls_rsp)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_ls_req *tls_req);
+        int (*fcp_op)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
+        void (*fcp_abort)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
+        void (*fcp_req_release)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
         u32 max_hw_queues;
         u16 max_sgl_segments;
         u16 max_dif_sgl_segments;

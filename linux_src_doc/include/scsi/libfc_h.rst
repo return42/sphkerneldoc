@@ -254,7 +254,7 @@ Definition
 .. code-block:: c
 
     struct fc_rport_operations {
-        void (*event_callback)(struct fc_lport *, struct fc_rport_priv *,enum fc_rport_event);
+        void (*event_callback)(struct fc_lport *, struct fc_rport_priv *, enum fc_rport_event);
     }
 
 .. _`fc_rport_operations.members`:
@@ -354,7 +354,7 @@ Definition
         struct rcu_head rcu;
         u16 sp_features;
         u8 spp_type;
-        void (*lld_event_callback)(struct fc_lport *,struct fc_rport_priv *,enum fc_rport_event);
+        void (*lld_event_callback)(struct fc_lport *,struct fc_rport_priv *, enum fc_rport_event);
     }
 
 .. _`fc_rport_priv.members`:
@@ -933,7 +933,7 @@ Definition
         struct mutex disc_mutex;
         struct fc_gpn_ft_resp partial_buf;
         struct delayed_work disc_work;
-        void (*disc_callback)(struct fc_lport *,enum fc_disc_event);
+        void (*disc_callback)(struct fc_lport *, enum fc_disc_event);
     }
 
 .. _`fc_disc.members`:
@@ -1207,7 +1207,7 @@ Definition
 .. code-block:: c
 
     struct fc4_prov {
-        int (*prli)(struct fc_rport_priv *, u32 spp_len,const struct fc_els_spp *spp_in,struct fc_els_spp *spp_out);
+        int (*prli)(struct fc_rport_priv *, u32 spp_len,const struct fc_els_spp *spp_in, struct fc_els_spp *spp_out);
         void (*prlo)(struct fc_rport_priv *);
         void (*recv)(struct fc_lport *, struct fc_frame *);
         struct module *module;

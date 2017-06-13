@@ -369,9 +369,9 @@ Definition
         struct ib_device *hca;
         u8 port_num;
         void (*set_id)(struct net_device *netdev, int id);
-        int (*send)(struct net_device *dev, struct sk_buff *skb,struct ib_ah *address, u32 dqpn);
-        int (*attach_mcast)(struct net_device *dev, struct ib_device *hca,union ib_gid *gid, u16 mlid,int set_qkey, u32 qkey);
-        int (*detach_mcast)(struct net_device *dev, struct ib_device *hca,union ib_gid *gid, u16 mlid);
+        int (*send)(struct net_device *dev, struct sk_buff *skb, struct ib_ah *address, u32 dqpn);
+        int (*attach_mcast)(struct net_device *dev, struct ib_device *hca,union ib_gid *gid, u16 mlid, int set_qkey, u32 qkey);
+        int (*detach_mcast)(struct net_device *dev, struct ib_device *hca, union ib_gid *gid, u16 mlid);
     }
 
 .. _`rdma_netdev.members`:

@@ -150,7 +150,7 @@ Definition
         u8 (*triplet)(void *, u8);
         u8 (*reset_bus)(void *);
         u8 (*set_pullup)(void *, int);
-        void (*search)(void *, struct w1_master *,u8, w1_slave_found_callback);
+        void (*search)(void *, struct w1_master *, u8, w1_slave_found_callback);
     }
 
 .. _`w1_bus_master.members`:

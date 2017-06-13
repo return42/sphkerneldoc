@@ -201,8 +201,8 @@ Definition
 
     struct mtd_pairing_scheme {
         int ngroups;
-        int (*get_info)(struct mtd_info *mtd, int wunit,struct mtd_pairing_info *info);
-        int (*get_wunit)(struct mtd_info *mtd,const struct mtd_pairing_info *info);
+        int (*get_info)(struct mtd_info *mtd, int wunit, struct mtd_pairing_info *info);
+        int (*get_wunit)(struct mtd_info *mtd, const struct mtd_pairing_info *info);
     }
 
 .. _`mtd_pairing_scheme.members`:

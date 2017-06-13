@@ -97,7 +97,7 @@ Definition
 .. code-block:: c
 
     struct kpp_alg {
-        int (*set_secret)(struct crypto_kpp *tfm, const void *buffer,unsigned int len);
+        int (*set_secret)(struct crypto_kpp *tfm, const void *buffer, unsigned int len);
         int (*generate_public_key)(struct kpp_request *req);
         int (*compute_shared_secret)(struct kpp_request *req);
         int (*max_size)(struct crypto_kpp *tfm);

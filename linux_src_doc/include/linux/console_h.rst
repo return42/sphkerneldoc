@@ -26,15 +26,15 @@ Definition
         void (*con_putc)(struct vc_data *, int, int, int);
         void (*con_putcs)(struct vc_data *, const unsigned short *, int, int, int);
         void (*con_cursor)(struct vc_data *, int);
-        bool (*con_scroll)(struct vc_data *, unsigned int top,unsigned int bottom, enum con_scroll dir,unsigned int lines);
+        bool (*con_scroll)(struct vc_data *, unsigned int top,unsigned int bottom, enum con_scroll dir, unsigned int lines);
         int (*con_switch)(struct vc_data *);
         int (*con_blank)(struct vc_data *, int, int);
         int (*con_font_set)(struct vc_data *, struct console_font *, unsigned);
         int (*con_font_get)(struct vc_data *, struct console_font *);
         int (*con_font_default)(struct vc_data *, struct console_font *, char *);
         int (*con_font_copy)(struct vc_data *, int);
-        int (*con_resize)(struct vc_data *, unsigned int, unsigned int,unsigned int);
-        void (*con_set_palette)(struct vc_data *,const unsigned char *table);
+        int (*con_resize)(struct vc_data *, unsigned int, unsigned int, unsigned int);
+        void (*con_set_palette)(struct vc_data *, const unsigned char *table);
         void (*con_scrolldelta)(struct vc_data *, int lines);
         int (*con_set_origin)(struct vc_data *);
         void (*con_save_screen)(struct vc_data *);

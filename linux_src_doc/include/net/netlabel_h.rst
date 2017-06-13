@@ -70,13 +70,13 @@ Definition
     #define NETLBL_SECATTR_NONE 0x00000000
     #define NETLBL_SECATTR_DOMAIN 0x00000001
     #define NETLBL_SECATTR_DOMAIN_CPY (NETLBL_SECATTR_DOMAIN | \
-        NETLBL_SECATTR_FREE_DOMAIN)#define NETLBL_SECATTR_CACHE 0x00000002;
+        NETLBL_SECATTR_FREE_DOMAIN) #define NETLBL_SECATTR_CACHE 0x00000002;
     #define NETLBL_SECATTR_MLS_LVL 0x00000004
     #define NETLBL_SECATTR_MLS_CAT 0x00000008
     #define NETLBL_SECATTR_SECID 0x00000010
     #define NETLBL_SECATTR_FREE_DOMAIN 0x01000000
     #define NETLBL_SECATTR_CACHEABLE (NETLBL_SECATTR_MLS_LVL | \
-        NETLBL_SECATTR_MLS_CAT | \NETLBL_SECATTR_SECID)u32 type;
+        NETLBL_SECATTR_MLS_CAT | \NETLBL_SECATTR_SECID) u32 type;
         char *domain;
         struct netlbl_lsm_cache *cache;
         struct attr;
@@ -146,23 +146,23 @@ Definition
 .. code-block:: c
 
     struct netlbl_calipso_ops {
-        int (*doi_add)(struct calipso_doi *doi_def,struct netlbl_audit *audit_info);
+        int (*doi_add)(struct calipso_doi *doi_def, struct netlbl_audit *audit_info);
         void (*doi_free)(struct calipso_doi *doi_def);
         int (*doi_remove)(u32 doi, struct netlbl_audit *audit_info);
         struct calipso_doi *(*doi_getdef)(u32 doi);
         void (*doi_putdef)(struct calipso_doi *doi_def);
         int (*doi_walk)(u32 *skip_cnt,int (*callback);
-        int (*sock_getattr)(struct sock *sk,struct netlbl_lsm_secattr *secattr);
-        int (*sock_setattr)(struct sock *sk,const struct calipso_doi *doi_def,const struct netlbl_lsm_secattr *secattr);
+        int (*sock_getattr)(struct sock *sk, struct netlbl_lsm_secattr *secattr);
+        int (*sock_setattr)(struct sock *sk,const struct calipso_doi *doi_def, const struct netlbl_lsm_secattr *secattr);
         void (*sock_delattr)(struct sock *sk);
-        int (*req_setattr)(struct request_sock *req,const struct calipso_doi *doi_def,const struct netlbl_lsm_secattr *secattr);
+        int (*req_setattr)(struct request_sock *req,const struct calipso_doi *doi_def, const struct netlbl_lsm_secattr *secattr);
         void (*req_delattr)(struct request_sock *req);
-        int (*opt_getattr)(const unsigned char *calipso,struct netlbl_lsm_secattr *secattr);
+        int (*opt_getattr)(const unsigned char *calipso, struct netlbl_lsm_secattr *secattr);
         unsigned char *(*skbuff_optptr)(const struct sk_buff *skb);
-        int (*skbuff_setattr)(struct sk_buff *skb,const struct calipso_doi *doi_def,const struct netlbl_lsm_secattr *secattr);
+        int (*skbuff_setattr)(struct sk_buff *skb,const struct calipso_doi *doi_def, const struct netlbl_lsm_secattr *secattr);
         int (*skbuff_delattr)(struct sk_buff *skb);
         void (*cache_invalidate)(void);
-        int (*cache_add)(const unsigned char *calipso_ptr,const struct netlbl_lsm_secattr *secattr);
+        int (*cache_add)(const unsigned char *calipso_ptr, const struct netlbl_lsm_secattr *secattr);
     }
 
 .. _`netlbl_calipso_ops.members`:

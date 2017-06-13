@@ -71,8 +71,8 @@ Definition
         umode_t mode;
         struct kernfs_ops *kf_ops;
         unsigned long flags;
-        int (*seq_show)(struct kernfs_open_file *of,struct seq_file *sf, void *v);
-        ssize_t (*write)(struct kernfs_open_file *of,char *buf, size_t nbytes, loff_t off);
+        int (*seq_show)(struct kernfs_open_file *of, struct seq_file *sf, void *v);
+        ssize_t (*write)(struct kernfs_open_file *of, char *buf, size_t nbytes, loff_t off);
     }
 
 .. _`rftype.members`:
@@ -293,7 +293,7 @@ Definition
         int cache_level;
         u32 default_ctrl;
         unsigned int msr_base;
-        void (*msr_update)(struct rdt_domain *d, struct msr_param *m,struct rdt_resource *r);
+        void (*msr_update)(struct rdt_domain *d, struct msr_param *m, struct rdt_resource *r);
         int data_width;
         struct list_head domains;
         struct rdt_cache cache;
@@ -301,7 +301,7 @@ Definition
         struct rftype *info_files;
         int nr_info_files;
         const char *format_str;
-        int (*parse_ctrlval)(char *buf, struct rdt_resource *r,struct rdt_domain *d);
+        int (*parse_ctrlval)(char *buf, struct rdt_resource *r, struct rdt_domain *d);
     }
 
 .. _`rdt_resource.members`:

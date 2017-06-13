@@ -138,7 +138,7 @@ Definition
 .. code-block:: c
 
     struct drm_mm {
-        void (*color_adjust)(const struct drm_mm_node *node,unsigned long color,u64 *start, u64 *end);
+        void (*color_adjust)(const struct drm_mm_node *node,unsigned long color, u64 *start, u64 *end);
     }
 
 .. _`drm_mm.members`:

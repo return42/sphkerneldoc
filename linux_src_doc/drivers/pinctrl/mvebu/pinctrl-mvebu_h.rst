@@ -51,10 +51,10 @@ Definition
         u8 pid;
         u8 npins;
         unsigned *pins;
-        int (*mpp_get)(struct mvebu_mpp_ctrl_data *data, unsigned pid,unsigned long *config);
-        int (*mpp_set)(struct mvebu_mpp_ctrl_data *data, unsigned pid,unsigned long config);
+        int (*mpp_get)(struct mvebu_mpp_ctrl_data *data, unsigned pid, unsigned long *config);
+        int (*mpp_set)(struct mvebu_mpp_ctrl_data *data, unsigned pid, unsigned long config);
         int (*mpp_gpio_req)(struct mvebu_mpp_ctrl_data *data, unsigned pid);
-        int (*mpp_gpio_dir)(struct mvebu_mpp_ctrl_data *data, unsigned pid,bool input);
+        int (*mpp_gpio_dir)(struct mvebu_mpp_ctrl_data *data, unsigned pid, bool input);
     }
 
 .. _`mvebu_mpp_ctrl.members`:

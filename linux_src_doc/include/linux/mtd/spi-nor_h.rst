@@ -35,8 +35,8 @@ Definition
         void (*unprepare)(struct spi_nor *nor, enum spi_nor_ops ops);
         int (*read_reg)(struct spi_nor *nor, u8 opcode, u8 *buf, int len);
         int (*write_reg)(struct spi_nor *nor, u8 opcode, u8 *buf, int len);
-        ssize_t (*read)(struct spi_nor *nor, loff_t from,size_t len, u_char *read_buf);
-        ssize_t (*write)(struct spi_nor *nor, loff_t to,size_t len, const u_char *write_buf);
+        ssize_t (*read)(struct spi_nor *nor, loff_t from, size_t len, u_char *read_buf);
+        ssize_t (*write)(struct spi_nor *nor, loff_t to, size_t len, const u_char *write_buf);
         int (*erase)(struct spi_nor *nor, loff_t offs);
         int (*flash_lock)(struct spi_nor *nor, loff_t ofs, uint64_t len);
         int (*flash_unlock)(struct spi_nor *nor, loff_t ofs, uint64_t len);

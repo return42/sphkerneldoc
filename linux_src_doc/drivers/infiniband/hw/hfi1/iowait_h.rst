@@ -20,7 +20,7 @@ Definition
     struct iowait {
         struct list_head list;
         struct list_head tx_head;
-        int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx,unsigned seq);
+        int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx, unsigned seq);
         void (*wakeup)(struct iowait *wait, int reason);
         void (*sdma_drained)(struct iowait *wait);
         seqlock_t *lock;

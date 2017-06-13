@@ -19,7 +19,7 @@ Definition
 
     struct acr_r352_ls_func {
         int (*load)(const struct nvkm_secboot *, struct ls_ucode_img *);
-        void (*generate_bl_desc)(const struct nvkm_acr *,const struct ls_ucode_img *, u64, void *);
+        void (*generate_bl_desc)(const struct nvkm_acr *, const struct ls_ucode_img *, u64, void *);
         u32 bl_desc_size;
         int (*post_run)(const struct nvkm_acr *, const struct nvkm_secboot *);
         u32 lhdr_flags;
@@ -63,13 +63,13 @@ Definition
 .. code-block:: c
 
     struct acr_r352_func {
-        void (*generate_hs_bl_desc)(const struct hsf_load_header *, void *,u64);
+        void (*generate_hs_bl_desc)(const struct hsf_load_header *, void *, u64);
         void (*fixup_hs_desc)(struct acr_r352 *, struct nvkm_secboot *, void *);
         u32 hs_bl_desc_size;
         bool shadow_blob;
-        struct ls_ucode_img *(*ls_ucode_img_load)(const struct acr_r352 *,const struct nvkm_secboot *,enum nvkm_secboot_falcon);
+        struct ls_ucode_img *(*ls_ucode_img_load)(const struct acr_r352 *,const struct nvkm_secboot *, enum nvkm_secboot_falcon);
         int (*ls_fill_headers)(struct acr_r352 *, struct list_head *);
-        int (*ls_write_wpr)(struct acr_r352 *, struct list_head *,struct nvkm_gpuobj *, u64);
+        int (*ls_write_wpr)(struct acr_r352 *, struct list_head *, struct nvkm_gpuobj *, u64);
         const struct acr_r352_ls_func  *ls_func;
     }
 

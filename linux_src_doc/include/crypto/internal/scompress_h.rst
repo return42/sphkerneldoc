@@ -20,8 +20,8 @@ Definition
     struct scomp_alg {
         void *(*alloc_ctx)(struct crypto_scomp *tfm);
         void (*free_ctx)(struct crypto_scomp *tfm, void *ctx);
-        int (*compress)(struct crypto_scomp *tfm, const u8 *src,unsigned int slen, u8 *dst, unsigned int *dlen,void *ctx);
-        int (*decompress)(struct crypto_scomp *tfm, const u8 *src,unsigned int slen, u8 *dst, unsigned int *dlen,void *ctx);
+        int (*compress)(struct crypto_scomp *tfm, const u8 *src,unsigned int slen, u8 *dst, unsigned int *dlen, void *ctx);
+        int (*decompress)(struct crypto_scomp *tfm, const u8 *src,unsigned int slen, u8 *dst, unsigned int *dlen, void *ctx);
         struct crypto_alg base;
     }
 

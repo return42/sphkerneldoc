@@ -71,14 +71,14 @@ Definition
 .. code-block:: c
 
     struct msi_domain_ops {
-        irq_hw_number_t (*get_hwirq)(struct msi_domain_info *info,msi_alloc_info_t *arg);
-        int (*msi_init)(struct irq_domain *domain,struct msi_domain_info *info,unsigned int virq, irq_hw_number_t hwirq,msi_alloc_info_t *arg);
-        void (*msi_free)(struct irq_domain *domain,struct msi_domain_info *info,unsigned int virq);
-        int (*msi_check)(struct irq_domain *domain,struct msi_domain_info *info,struct device *dev);
-        int (*msi_prepare)(struct irq_domain *domain,struct device *dev, int nvec,msi_alloc_info_t *arg);
+        irq_hw_number_t (*get_hwirq)(struct msi_domain_info *info, msi_alloc_info_t *arg);
+        int (*msi_init)(struct irq_domain *domain,struct msi_domain_info *info,unsigned int virq, irq_hw_number_t hwirq, msi_alloc_info_t *arg);
+        void (*msi_free)(struct irq_domain *domain,struct msi_domain_info *info, unsigned int virq);
+        int (*msi_check)(struct irq_domain *domain,struct msi_domain_info *info, struct device *dev);
+        int (*msi_prepare)(struct irq_domain *domain,struct device *dev, int nvec, msi_alloc_info_t *arg);
         void (*msi_finish)(msi_alloc_info_t *arg, int retval);
-        void (*set_desc)(msi_alloc_info_t *arg,struct msi_desc *desc);
-        int (*handle_error)(struct irq_domain *domain,struct msi_desc *desc, int error);
+        void (*set_desc)(msi_alloc_info_t *arg, struct msi_desc *desc);
+        int (*handle_error)(struct irq_domain *domain, struct msi_desc *desc, int error);
     }
 
 .. _`msi_domain_ops.members`:

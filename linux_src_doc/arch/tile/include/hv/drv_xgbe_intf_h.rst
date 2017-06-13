@@ -1,16 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/tile/include/hv/drv_xgbe_intf.h
 
-.. _`size`:
+.. _`netio_ipp_address_t`:
 
-typedef size
-============
+typedef netio_ipp_address_t
+===========================
 
-.. c:type:: typedef size
+.. c:type:: typedef netio_ipp_address_t
 
     @ingroup types
 
-.. _`size.description`:
+.. _`netio_ipp_address_t.description`:
 
 Description
 -----------
@@ -18,12 +18,12 @@ Description
 This allows the supervisor to specify a number of areas of memory to
 store packet buffers.
 
-.. _`word`:
+.. _`__netio_getset_offset_t`:
 
-typedef word
-============
+typedef \__netio_getset_offset_t
+================================
 
-.. c:type:: typedef word
+.. c:type:: typedef __netio_getset_offset_t
 
 
 .. _`netio_fastio_index_t`:

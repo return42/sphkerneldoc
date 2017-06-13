@@ -62,17 +62,17 @@ Definition
 .. code-block:: c
 
     struct irq_domain_ops {
-        int (*match)(struct irq_domain *d, struct device_node *node,enum irq_domain_bus_token bus_token);
-        int (*select)(struct irq_domain *d, struct irq_fwspec *fwspec,enum irq_domain_bus_token bus_token);
+        int (*match)(struct irq_domain *d, struct device_node *node, enum irq_domain_bus_token bus_token);
+        int (*select)(struct irq_domain *d, struct irq_fwspec *fwspec, enum irq_domain_bus_token bus_token);
         int (*map)(struct irq_domain *d, unsigned int virq, irq_hw_number_t hw);
         void (*unmap)(struct irq_domain *d, unsigned int virq);
-        int (*xlate)(struct irq_domain *d, struct device_node *node,const u32 *intspec, unsigned int intsize,unsigned long *out_hwirq, unsigned int *out_type);
+        int (*xlate)(struct irq_domain *d, struct device_node *node,const u32 *intspec, unsigned int intsize, unsigned long *out_hwirq, unsigned int *out_type);
     #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
-        int (*alloc)(struct irq_domain *d, unsigned int virq,unsigned int nr_irqs, void *arg);
-        void (*free)(struct irq_domain *d, unsigned int virq,unsigned int nr_irqs);
+        int (*alloc)(struct irq_domain *d, unsigned int virq, unsigned int nr_irqs, void *arg);
+        void (*free)(struct irq_domain *d, unsigned int virq, unsigned int nr_irqs);
         void (*activate)(struct irq_domain *d, struct irq_data *irq_data);
         void (*deactivate)(struct irq_domain *d, struct irq_data *irq_data);
-        int (*translate)(struct irq_domain *d, struct irq_fwspec *fwspec,unsigned long *out_hwirq, unsigned int *out_type);
+        int (*translate)(struct irq_domain *d, struct irq_fwspec *fwspec, unsigned long *out_hwirq, unsigned int *out_type);
     #endif
     }
 

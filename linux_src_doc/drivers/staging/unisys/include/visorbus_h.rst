@@ -24,8 +24,8 @@ Definition
         int (*probe)(struct visor_device *dev);
         void (*remove)(struct visor_device *dev);
         void (*channel_interrupt)(struct visor_device *dev);
-        int (*pause)(struct visor_device *dev,visorbus_state_complete_func complete_func);
-        int (*resume)(struct visor_device *dev,visorbus_state_complete_func complete_func);
+        int (*pause)(struct visor_device *dev, visorbus_state_complete_func complete_func);
+        int (*resume)(struct visor_device *dev, visorbus_state_complete_func complete_func);
         struct device_driver driver;
     }
 

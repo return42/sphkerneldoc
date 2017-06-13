@@ -28,7 +28,7 @@ Definition
         int (*request)(struct p9_client *, struct p9_req_t *req);
         int (*cancel)(struct p9_client *, struct p9_req_t *req);
         int (*cancelled)(struct p9_client *, struct p9_req_t *req);
-        int (*zc_request)(struct p9_client *, struct p9_req_t *,struct iov_iter *, struct iov_iter *, int , int, int);
+        int (*zc_request)(struct p9_client *, struct p9_req_t *, struct iov_iter *, struct iov_iter *, int , int, int);
     }
 
 .. _`p9_trans_module.members`:

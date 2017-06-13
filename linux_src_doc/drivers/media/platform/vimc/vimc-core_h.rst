@@ -65,7 +65,7 @@ Definition
         struct media_entity *ent;
         struct media_pad *pads;
         void (*destroy)(struct vimc_ent_device *);
-        void (*process_frame)(struct vimc_ent_device *ved,struct media_pad *sink, const void *frame);
+        void (*process_frame)(struct vimc_ent_device *ved, struct media_pad *sink, const void *frame);
     }
 
 .. _`vimc_ent_device.members`:

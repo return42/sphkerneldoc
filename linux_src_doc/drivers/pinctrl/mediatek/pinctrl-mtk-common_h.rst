@@ -192,9 +192,9 @@ Definition
         unsigned int n_grp_cls;
         const struct mtk_pin_drv_grp *pin_drv_grp;
         unsigned int n_pin_drv_grps;
-        int (*spec_pull_set)(struct regmap *reg, unsigned int pin,unsigned char align, bool isup, unsigned int arg);
-        int (*spec_ies_smt_set)(struct regmap *reg, unsigned int pin,unsigned char align, int value, enum pin_config_param arg);
-        void (*spec_pinmux_set)(struct regmap *reg, unsigned int pin,unsigned int mode);
+        int (*spec_pull_set)(struct regmap *reg, unsigned int pin, unsigned char align, bool isup, unsigned int arg);
+        int (*spec_ies_smt_set)(struct regmap *reg, unsigned int pin, unsigned char align, int value, enum pin_config_param arg);
+        void (*spec_pinmux_set)(struct regmap *reg, unsigned int pin, unsigned int mode);
         void (*spec_dir_set)(unsigned int *reg_addr, unsigned int pin);
         unsigned int dir_offset;
         unsigned int ies_offset;

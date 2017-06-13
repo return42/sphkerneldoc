@@ -197,23 +197,23 @@ Definition
 
     struct drm_crtc_funcs {
         void (*reset)(struct drm_crtc *crtc);
-        int (*cursor_set)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height);
-        int (*cursor_set2)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height,int32_t hot_x, int32_t hot_y);
+        int (*cursor_set)(struct drm_crtc *crtc, struct drm_file *file_priv, uint32_t handle, uint32_t width, uint32_t height);
+        int (*cursor_set2)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height, int32_t hot_x, int32_t hot_y);
         int (*cursor_move)(struct drm_crtc *crtc, int x, int y);
-        int (*gamma_set)(struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t size,struct drm_modeset_acquire_ctx *ctx);
+        int (*gamma_set)(struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t size, struct drm_modeset_acquire_ctx *ctx);
         void (*destroy)(struct drm_crtc *crtc);
-        int (*set_config)(struct drm_mode_set *set,struct drm_modeset_acquire_ctx *ctx);
-        int (*page_flip)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags,struct drm_modeset_acquire_ctx *ctx);
-        int (*page_flip_target)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags, uint32_t target,struct drm_modeset_acquire_ctx *ctx);
-        int (*set_property)(struct drm_crtc *crtc,struct drm_property *property, uint64_t val);
+        int (*set_config)(struct drm_mode_set *set, struct drm_modeset_acquire_ctx *ctx);
+        int (*page_flip)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags, struct drm_modeset_acquire_ctx *ctx);
+        int (*page_flip_target)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags, uint32_t target, struct drm_modeset_acquire_ctx *ctx);
+        int (*set_property)(struct drm_crtc *crtc, struct drm_property *property, uint64_t val);
         struct drm_crtc_state *(*atomic_duplicate_state)(struct drm_crtc *crtc);
-        void (*atomic_destroy_state)(struct drm_crtc *crtc,struct drm_crtc_state *state);
-        int (*atomic_set_property)(struct drm_crtc *crtc,struct drm_crtc_state *state,struct drm_property *property,uint64_t val);
-        int (*atomic_get_property)(struct drm_crtc *crtc,const struct drm_crtc_state *state,struct drm_property *property,uint64_t *val);
+        void (*atomic_destroy_state)(struct drm_crtc *crtc, struct drm_crtc_state *state);
+        int (*atomic_set_property)(struct drm_crtc *crtc,struct drm_crtc_state *state,struct drm_property *property, uint64_t val);
+        int (*atomic_get_property)(struct drm_crtc *crtc,const struct drm_crtc_state *state,struct drm_property *property, uint64_t *val);
         int (*late_register)(struct drm_crtc *crtc);
         void (*early_unregister)(struct drm_crtc *crtc);
-        int (*set_crc_source)(struct drm_crtc *crtc, const char *source,size_t *values_cnt);
-        void (*atomic_print_state)(struct drm_printer *p,const struct drm_crtc_state *state);
+        int (*set_crc_source)(struct drm_crtc *crtc, const char *source, size_t *values_cnt);
+        void (*atomic_print_state)(struct drm_printer *p, const struct drm_crtc_state *state);
         u32 (*get_vblank_counter)(struct drm_crtc *crtc);
         int (*enable_vblank)(struct drm_crtc *crtc);
         void (*disable_vblank)(struct drm_crtc *crtc);

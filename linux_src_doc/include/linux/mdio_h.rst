@@ -22,8 +22,8 @@ Definition
         u32 mmds;
         unsigned mode_support;
         struct net_device *dev;
-        int (*mdio_read)(struct net_device *dev, int prtad, int devad,u16 addr);
-        int (*mdio_write)(struct net_device *dev, int prtad, int devad,u16 addr, u16 val);
+        int (*mdio_read)(struct net_device *dev, int prtad, int devad, u16 addr);
+        int (*mdio_write)(struct net_device *dev, int prtad, int devad, u16 addr, u16 val);
     }
 
 .. _`mdio_if_info.members`:

@@ -20,17 +20,17 @@ Definition
     struct qed_iscsi_ops {
         const struct qed_common_ops *common;
         const struct qed_ll2_ops *ll2;
-        int (*fill_dev_info)(struct qed_dev *cdev,struct qed_dev_iscsi_info *info);
-        void (*register_ops)(struct qed_dev *cdev,struct qed_iscsi_cb_ops *ops, void *cookie);
-        int (*start)(struct qed_dev *cdev,struct qed_iscsi_tid *tasks,void *event_context, iscsi_event_cb_t async_event_cb);
+        int (*fill_dev_info)(struct qed_dev *cdev, struct qed_dev_iscsi_info *info);
+        void (*register_ops)(struct qed_dev *cdev, struct qed_iscsi_cb_ops *ops, void *cookie);
+        int (*start)(struct qed_dev *cdev,struct qed_iscsi_tid *tasks, void *event_context, iscsi_event_cb_t async_event_cb);
         int (*stop)(struct qed_dev *cdev);
-        int (*acquire_conn)(struct qed_dev *cdev,u32 *handle,u32 *fw_cid, void __iomem **p_doorbell);
+        int (*acquire_conn)(struct qed_dev *cdev,u32 *handle, u32 *fw_cid, void __iomem **p_doorbell);
         int (*release_conn)(struct qed_dev *cdev, u32 handle);
-        int (*offload_conn)(struct qed_dev *cdev,u32 handle,struct qed_iscsi_params_offload *conn_info);
-        int (*update_conn)(struct qed_dev *cdev,u32 handle,struct qed_iscsi_params_update *conn_info);
+        int (*offload_conn)(struct qed_dev *cdev,u32 handle, struct qed_iscsi_params_offload *conn_info);
+        int (*update_conn)(struct qed_dev *cdev,u32 handle, struct qed_iscsi_params_update *conn_info);
         int (*destroy_conn)(struct qed_dev *cdev, u32 handle, u8 abrt_conn);
         int (*clear_sq)(struct qed_dev *cdev, u32 handle);
-        int (*get_stats)(struct qed_dev *cdev,struct qed_iscsi_stats *stats);
+        int (*get_stats)(struct qed_dev *cdev, struct qed_iscsi_stats *stats);
     }
 
 .. _`qed_iscsi_ops.members`:

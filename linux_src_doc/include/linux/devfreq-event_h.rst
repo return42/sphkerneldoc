@@ -116,7 +116,7 @@ Definition
         int (*disable)(struct devfreq_event_dev *edev);
         int (*reset)(struct devfreq_event_dev *edev);
         int (*set_event)(struct devfreq_event_dev *edev);
-        int (*get_event)(struct devfreq_event_dev *edev,struct devfreq_event_data *edata);
+        int (*get_event)(struct devfreq_event_dev *edev, struct devfreq_event_data *edata);
     }
 
 .. _`devfreq_event_ops.members`:

@@ -3274,12 +3274,12 @@ Definition
 
     struct batadv_algo_neigh_ops {
         void (*hardif_init)(struct batadv_hardif_neigh_node *neigh);
-        int (*cmp)(struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2,struct batadv_hard_iface *if_outgoing2);
-        bool (*is_similar_or_better)(struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2,struct batadv_hard_iface *if_outgoing2);
+        int (*cmp)(struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2, struct batadv_hard_iface *if_outgoing2);
+        bool (*is_similar_or_better)(struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2, struct batadv_hard_iface *if_outgoing2);
     #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         void (*print)(struct batadv_priv *priv, struct seq_file *seq);
     #endif
-        void (*dump)(struct sk_buff *msg, struct netlink_callback *cb,struct batadv_priv *priv,struct batadv_hard_iface *hard_iface);
+        void (*dump)(struct sk_buff *msg, struct netlink_callback *cb,struct batadv_priv *priv, struct batadv_hard_iface *hard_iface);
     }
 
 .. _`batadv_algo_neigh_ops.members`:
@@ -3324,11 +3324,11 @@ Definition
     struct batadv_algo_orig_ops {
         void (*free)(struct batadv_orig_node *orig_node);
         int (*add_if)(struct batadv_orig_node *orig_node, int max_if_num);
-        int (*del_if)(struct batadv_orig_node *orig_node, int max_if_num,int del_if_num);
+        int (*del_if)(struct batadv_orig_node *orig_node, int max_if_num, int del_if_num);
     #ifdef CONFIG_BATMAN_ADV_DEBUGFS
-        void (*print)(struct batadv_priv *priv, struct seq_file *seq,struct batadv_hard_iface *hard_iface);
+        void (*print)(struct batadv_priv *priv, struct seq_file *seq, struct batadv_hard_iface *hard_iface);
     #endif
-        void (*dump)(struct sk_buff *msg, struct netlink_callback *cb,struct batadv_priv *priv,struct batadv_hard_iface *hard_iface);
+        void (*dump)(struct sk_buff *msg, struct netlink_callback *cb,struct batadv_priv *priv, struct batadv_hard_iface *hard_iface);
     }
 
 .. _`batadv_algo_orig_ops.members`:
@@ -3372,14 +3372,14 @@ Definition
 
     struct batadv_algo_gw_ops {
         void (*init_sel_class)(struct batadv_priv *bat_priv);
-        ssize_t (*store_sel_class)(struct batadv_priv *bat_priv, char *buff,size_t count);
+        ssize_t (*store_sel_class)(struct batadv_priv *bat_priv, char *buff, size_t count);
         ssize_t (*show_sel_class)(struct batadv_priv *bat_priv, char *buff);
         struct batadv_gw_node *(*get_best_gw_node)(struct batadv_priv *bat_priv);
-        bool (*is_eligible)(struct batadv_priv *bat_priv,struct batadv_orig_node *curr_gw_orig,struct batadv_orig_node *orig_node);
+        bool (*is_eligible)(struct batadv_priv *bat_priv,struct batadv_orig_node *curr_gw_orig, struct batadv_orig_node *orig_node);
     #ifdef CONFIG_BATMAN_ADV_DEBUGFS
         void (*print)(struct batadv_priv *bat_priv, struct seq_file *seq);
     #endif
-        void (*dump)(struct sk_buff *msg, struct netlink_callback *cb,struct batadv_priv *priv);
+        void (*dump)(struct sk_buff *msg, struct netlink_callback *cb, struct batadv_priv *priv);
     }
 
 .. _`batadv_algo_gw_ops.members`:
@@ -3631,8 +3631,8 @@ Definition
 
     struct batadv_tvlv_handler {
         struct hlist_node list;
-        void (*ogm_handler)(struct batadv_priv *bat_priv,struct batadv_orig_node *orig,u8 flags, void *tvlv_value, u16 tvlv_value_len);
-        int (*unicast_handler)(struct batadv_priv *bat_priv,u8 *src, u8 *dst,void *tvlv_value, u16 tvlv_value_len);
+        void (*ogm_handler)(struct batadv_priv *bat_priv,struct batadv_orig_node *orig, u8 flags, void *tvlv_value, u16 tvlv_value_len);
+        int (*unicast_handler)(struct batadv_priv *bat_priv,u8 *src, u8 *dst, void *tvlv_value, u16 tvlv_value_len);
         u8 type;
         u8 version;
         u8 flags;

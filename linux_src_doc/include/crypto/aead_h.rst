@@ -70,7 +70,7 @@ Definition
 .. code-block:: c
 
     struct aead_alg {
-        int (*setkey)(struct crypto_aead *tfm, const u8 *key,unsigned int keylen);
+        int (*setkey)(struct crypto_aead *tfm, const u8 *key, unsigned int keylen);
         int (*setauthsize)(struct crypto_aead *tfm, unsigned int authsize);
         int (*encrypt)(struct aead_request *req);
         int (*decrypt)(struct aead_request *req);

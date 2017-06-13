@@ -19,8 +19,8 @@ Definition
 
     struct drm_framebuffer_funcs {
         void (*destroy)(struct drm_framebuffer *framebuffer);
-        int (*create_handle)(struct drm_framebuffer *fb,struct drm_file *file_priv,unsigned int *handle);
-        int (*dirty)(struct drm_framebuffer *framebuffer,struct drm_file *file_priv, unsigned flags,unsigned color, struct drm_clip_rect *clips,unsigned num_clips);
+        int (*create_handle)(struct drm_framebuffer *fb,struct drm_file *file_priv, unsigned int *handle);
+        int (*dirty)(struct drm_framebuffer *framebuffer,struct drm_file *file_priv, unsigned flags,unsigned color, struct drm_clip_rect *clips, unsigned num_clips);
     }
 
 .. _`drm_framebuffer_funcs.members`:

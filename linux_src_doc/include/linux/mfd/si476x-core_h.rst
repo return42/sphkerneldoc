@@ -87,7 +87,7 @@ Definition
         struct delayed_work status_monitor;
     #define SI476X_WORK_TO_CORE(w) container_of(to_delayed_work(w), \
         struct si476x_core;
-        struct \status_monitorint revision;
+        struct \status_monitor int revision;
         int rds_fifo_depth;
     }
 
@@ -178,7 +178,7 @@ status_monitor
 si476x_core
     *undescribed*
 
-\status_monitorint revision
+\status_monitor int revision
     *undescribed*
 
 rds_fifo_depth

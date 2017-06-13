@@ -591,8 +591,8 @@ Definition
 
     struct most_dci_attribute {
         struct attribute attr;
-        ssize_t (*show)(struct most_dci_obj *d,struct most_dci_attribute *attr,char *buf);
-        ssize_t (*store)(struct most_dci_obj *d,struct most_dci_attribute *attr,const char *buf,size_t count);
+        ssize_t (*show)(struct most_dci_obj *d,struct most_dci_attribute *attr, char *buf);
+        ssize_t (*store)(struct most_dci_obj *d,struct most_dci_attribute *attr,const char *buf, size_t count);
     }
 
 .. _`most_dci_attribute.members`:

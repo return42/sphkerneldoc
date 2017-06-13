@@ -56,7 +56,7 @@ Definition
         int (*power)(struct ste_modem_device *mdev, bool on);
         int (*kick)(struct ste_modem_device *mdev, int notify_id);
         int (*kick_subscribe)(struct ste_modem_device *mdev, int notify_id);
-        int (*setup)(struct ste_modem_device *mdev,struct ste_modem_dev_cb *cfg);
+        int (*setup)(struct ste_modem_device *mdev, struct ste_modem_dev_cb *cfg);
     }
 
 .. _`ste_modem_dev_ops.members`:

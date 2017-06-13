@@ -31,10 +31,10 @@ Definition
     #define CACHE_WRITE_THROUGH BIT(0)
     #define CACHE_WRITE_BACK BIT(1)
     #define CACHE_WRITE_POLICY_MASK \
-        (CACHE_WRITE_THROUGH | CACHE_WRITE_BACK)#define CACHE_READ_ALLOCATE BIT2;
+        (CACHE_WRITE_THROUGH | CACHE_WRITE_BACK) #define CACHE_READ_ALLOCATE BIT2;
     #define CACHE_WRITE_ALLOCATE BIT(3)
     #define CACHE_ALLOCATE_POLICY_MASK \
-        (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE)#define CACHE_ID BIT4;
+        (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE) #define CACHE_ID BIT4;
         struct device_node *of_node;
         bool disable_sysfs;
         void *priv;

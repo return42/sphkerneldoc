@@ -109,9 +109,9 @@ Definition
         struct list_head waiting;
         struct list_head done;
         struct list_head list;
-        int (*bound)(struct v4l2_async_notifier *notifier,struct v4l2_subdev *subdev,struct v4l2_async_subdev *asd);
+        int (*bound)(struct v4l2_async_notifier *notifier,struct v4l2_subdev *subdev, struct v4l2_async_subdev *asd);
         int (*complete)(struct v4l2_async_notifier *notifier);
-        void (*unbind)(struct v4l2_async_notifier *notifier,struct v4l2_subdev *subdev,struct v4l2_async_subdev *asd);
+        void (*unbind)(struct v4l2_async_notifier *notifier,struct v4l2_subdev *subdev, struct v4l2_async_subdev *asd);
     }
 
 .. _`v4l2_async_notifier.members`:

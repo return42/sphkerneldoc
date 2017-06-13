@@ -1566,9 +1566,9 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_ring_attr {
-        enum vxge_hw_status (*callback)(struct __vxge_hw_ring *ringh,void *rxdh,u8 t_code,void *userdata);
-        enum vxge_hw_status (*rxd_init)(void *rxdh,void *userdata);
-        void (*rxd_term)(void *rxdh,enum vxge_hw_rxd_state state,void *userdata);
+        enum vxge_hw_status (*callback)(struct __vxge_hw_ring *ringh,void *rxdh,u8 t_code, void *userdata);
+        enum vxge_hw_status (*rxd_init)(void *rxdh, void *userdata);
+        void (*rxd_term)(void *rxdh,enum vxge_hw_rxd_state state, void *userdata);
         void *userdata;
         u32 per_rxd_space;
     }

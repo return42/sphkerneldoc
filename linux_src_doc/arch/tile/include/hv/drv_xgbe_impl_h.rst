@@ -1,20 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/tile/include/hv/drv_xgbe_impl.h
 
-.. _`__va_1`:
+.. _`netio_queue_impl_t`:
 
-typedef \__va_1
-===============
+typedef netio_queue_impl_t
+==========================
 
-.. c:type:: typedef __va_1
+.. c:type:: typedef netio_queue_impl_t
 
 
-.. _`__fd`:
+.. _`netio_queue_user_impl_t`:
 
-typedef \__fd
-=============
+typedef netio_queue_user_impl_t
+===============================
 
-.. c:type:: typedef __fd
+.. c:type:: typedef netio_queue_user_impl_t
 
 
 .. This file was automatic generated / don't edit.

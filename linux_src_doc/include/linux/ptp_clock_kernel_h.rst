@@ -31,10 +31,10 @@ Definition
         int (*adjfreq)(struct ptp_clock_info *ptp, s32 delta);
         int (*adjtime)(struct ptp_clock_info *ptp, s64 delta);
         int (*gettime64)(struct ptp_clock_info *ptp, struct timespec64 *ts);
-        int (*getcrosststamp)(struct ptp_clock_info *ptp,struct system_device_crosststamp *cts);
+        int (*getcrosststamp)(struct ptp_clock_info *ptp, struct system_device_crosststamp *cts);
         int (*settime64)(struct ptp_clock_info *p, const struct timespec64 *ts);
-        int (*enable)(struct ptp_clock_info *ptp,struct ptp_clock_request *request, int on);
-        int (*verify)(struct ptp_clock_info *ptp, unsigned int pin,enum ptp_pin_function func, unsigned int chan);
+        int (*enable)(struct ptp_clock_info *ptp, struct ptp_clock_request *request, int on);
+        int (*verify)(struct ptp_clock_info *ptp, unsigned int pin, enum ptp_pin_function func, unsigned int chan);
     }
 
 .. _`ptp_clock_info.members`:

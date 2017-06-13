@@ -162,7 +162,7 @@ Definition
         int (*init)(void);
         int (*switchto)(enum vga_switcheroo_client_id id);
         int (*switch_ddc)(enum vga_switcheroo_client_id id);
-        int (*power_state)(enum vga_switcheroo_client_id id,enum vga_switcheroo_state state);
+        int (*power_state)(enum vga_switcheroo_client_id id, enum vga_switcheroo_state state);
         enum vga_switcheroo_client_id (*get_client_id)(struct pci_dev *pdev);
     }
 

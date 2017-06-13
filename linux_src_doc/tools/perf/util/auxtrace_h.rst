@@ -183,9 +183,9 @@ Definition
 .. code-block:: c
 
     struct auxtrace {
-        int (*process_event)(struct perf_session *session,union perf_event *event,struct perf_sample *sample,struct perf_tool *tool);
-        int (*process_auxtrace_event)(struct perf_session *session,union perf_event *event,struct perf_tool *tool);
-        int (*flush_events)(struct perf_session *session,struct perf_tool *tool);
+        int (*process_event)(struct perf_session *session,union perf_event *event,struct perf_sample *sample, struct perf_tool *tool);
+        int (*process_auxtrace_event)(struct perf_session *session,union perf_event *event, struct perf_tool *tool);
+        int (*flush_events)(struct perf_session *session, struct perf_tool *tool);
         void (*free_events)(struct perf_session *session);
         void (*free)(struct perf_session *session);
     }
@@ -586,14 +586,14 @@ Definition
 .. code-block:: c
 
     struct auxtrace_record {
-        int (*recording_options)(struct auxtrace_record *itr,struct perf_evlist *evlist,struct record_opts *opts);
-        size_t (*info_priv_size)(struct auxtrace_record *itr,struct perf_evlist *evlist);
-        int (*info_fill)(struct auxtrace_record *itr,struct perf_session *session,struct auxtrace_info_event *auxtrace_info,size_t priv_size);
+        int (*recording_options)(struct auxtrace_record *itr,struct perf_evlist *evlist, struct record_opts *opts);
+        size_t (*info_priv_size)(struct auxtrace_record *itr, struct perf_evlist *evlist);
+        int (*info_fill)(struct auxtrace_record *itr,struct perf_session *session,struct auxtrace_info_event *auxtrace_info, size_t priv_size);
         void (*free)(struct auxtrace_record *itr);
         int (*snapshot_start)(struct auxtrace_record *itr);
         int (*snapshot_finish)(struct auxtrace_record *itr);
-        int (*find_snapshot)(struct auxtrace_record *itr, int idx,struct auxtrace_mmap *mm, unsigned char *data,u64 *head, u64 *old);
-        int (*parse_snapshot_options)(struct auxtrace_record *itr,struct record_opts *opts,const char *str);
+        int (*find_snapshot)(struct auxtrace_record *itr, int idx,struct auxtrace_mmap *mm, unsigned char *data, u64 *head, u64 *old);
+        int (*parse_snapshot_options)(struct auxtrace_record *itr,struct record_opts *opts, const char *str);
         u64 (*reference)(struct auxtrace_record *itr);
         int (*read_finish)(struct auxtrace_record *itr, int idx);
         unsigned int alignment;

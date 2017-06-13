@@ -20,10 +20,10 @@ Definition
     struct drm_bridge_funcs {
         int (*attach)(struct drm_bridge *bridge);
         void (*detach)(struct drm_bridge *bridge);
-        bool (*mode_fixup)(struct drm_bridge *bridge,const struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
+        bool (*mode_fixup)(struct drm_bridge *bridge,const struct drm_display_mode *mode, struct drm_display_mode *adjusted_mode);
         void (*disable)(struct drm_bridge *bridge);
         void (*post_disable)(struct drm_bridge *bridge);
-        void (*mode_set)(struct drm_bridge *bridge,struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
+        void (*mode_set)(struct drm_bridge *bridge,struct drm_display_mode *mode, struct drm_display_mode *adjusted_mode);
         void (*pre_enable)(struct drm_bridge *bridge);
         void (*enable)(struct drm_bridge *bridge);
     }

@@ -185,8 +185,8 @@ Definition
         struct platform_device *pdev;
         int (*suspend)(struct hid_sensor_hub_device *hsdev, void *priv);
         int (*resume)(struct hid_sensor_hub_device *hsdev, void *priv);
-        int (*capture_sample)(struct hid_sensor_hub_device *hsdev,u32 usage_id, size_t raw_len, char *raw_data,void *priv);
-        int (*send_event)(struct hid_sensor_hub_device *hsdev, u32 usage_id,void *priv);
+        int (*capture_sample)(struct hid_sensor_hub_device *hsdev,u32 usage_id, size_t raw_len, char *raw_data, void *priv);
+        int (*send_event)(struct hid_sensor_hub_device *hsdev, u32 usage_id, void *priv);
     }
 
 .. _`hid_sensor_hub_callbacks.members`:

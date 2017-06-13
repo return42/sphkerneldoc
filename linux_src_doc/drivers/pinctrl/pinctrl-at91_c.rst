@@ -160,7 +160,7 @@ Definition
         bool (*get_schmitt_trig)(void __iomem *pio, unsigned pin);
         void (*disable_schmitt_trig)(void __iomem *pio, unsigned mask);
         unsigned (*get_drivestrength)(void __iomem *pio, unsigned pin);
-        void (*set_drivestrength)(void __iomem *pio, unsigned pin,u32 strength);
+        void (*set_drivestrength)(void __iomem *pio, unsigned pin, u32 strength);
         int (*irq_type)(struct irq_data *d, unsigned type);
     }
 

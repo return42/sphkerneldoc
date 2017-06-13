@@ -31,7 +31,7 @@ Definition
         struct qce_dma_data dma;
         int burst_size;
         unsigned int pipe_pair_id;
-        int (*async_req_enqueue)(struct qce_device *qce,struct crypto_async_request *req);
+        int (*async_req_enqueue)(struct qce_device *qce, struct crypto_async_request *req);
         void (*async_req_done)(struct qce_device *qce, int ret);
     }
 

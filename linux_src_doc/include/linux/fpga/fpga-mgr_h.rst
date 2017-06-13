@@ -137,10 +137,10 @@ Definition
     struct fpga_manager_ops {
         size_t initial_header_size;
         enum fpga_mgr_states (*state)(struct fpga_manager *mgr);
-        int (*write_init)(struct fpga_manager *mgr,struct fpga_image_info *info,const char *buf, size_t count);
+        int (*write_init)(struct fpga_manager *mgr,struct fpga_image_info *info, const char *buf, size_t count);
         int (*write)(struct fpga_manager *mgr, const char *buf, size_t count);
         int (*write_sg)(struct fpga_manager *mgr, struct sg_table *sgt);
-        int (*write_complete)(struct fpga_manager *mgr,struct fpga_image_info *info);
+        int (*write_complete)(struct fpga_manager *mgr, struct fpga_image_info *info);
         void (*fpga_remove)(struct fpga_manager *mgr);
     }
 

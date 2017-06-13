@@ -24,7 +24,7 @@ Definition
         int (*post_streamoff)(struct smiapp_sensor *sensor);
         unsigned long (*pll_flags)(struct smiapp_sensor *sensor);
         int (*init)(struct smiapp_sensor *sensor);
-        int (*reg_access)(struct smiapp_sensor *sensor, bool write, u32 *reg,u32 *val);
+        int (*reg_access)(struct smiapp_sensor *sensor, bool write, u32 *reg, u32 *val);
         unsigned long flags;
     }
 

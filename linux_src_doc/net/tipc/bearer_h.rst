@@ -54,13 +54,13 @@ Definition
 .. code-block:: c
 
     struct tipc_media {
-        int (*send_msg)(struct net *net, struct sk_buff *buf,struct tipc_bearer *b,struct tipc_media_addr *dest);
-        int (*enable_media)(struct net *net, struct tipc_bearer *b,struct nlattr *attr[]);
+        int (*send_msg)(struct net *net, struct sk_buff *buf,struct tipc_bearer *b, struct tipc_media_addr *dest);
+        int (*enable_media)(struct net *net, struct tipc_bearer *b, struct nlattr *attr[]);
         void (*disable_media)(struct tipc_bearer *b);
-        int (*addr2str)(struct tipc_media_addr *addr,char *strbuf,int bufsz);
+        int (*addr2str)(struct tipc_media_addr *addr,char *strbuf, int bufsz);
         int (*addr2msg)(char *msg, struct tipc_media_addr *addr);
-        int (*msg2addr)(struct tipc_bearer *b,struct tipc_media_addr *addr,char *msg);
-        int (*raw2addr)(struct tipc_bearer *b,struct tipc_media_addr *addr,char *raw);
+        int (*msg2addr)(struct tipc_bearer *b,struct tipc_media_addr *addr, char *msg);
+        int (*raw2addr)(struct tipc_bearer *b,struct tipc_media_addr *addr, char *raw);
         u32 priority;
         u32 tolerance;
         u32 window;

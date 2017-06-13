@@ -169,7 +169,7 @@ Definition
         unsigned int mode;
         unsigned int time_format;
         void (*ns_to_nic_time)(s64 ns, u32 *nic_major, u32 *nic_minor);
-        ktime_t (*nic_to_kernel_time)(u32 nic_major, u32 nic_minor,s32 correction);
+        ktime_t (*nic_to_kernel_time)(u32 nic_major, u32 nic_minor, s32 correction);
         unsigned int min_synchronisation_ns;
         struct ts_corrections;
         efx_qword_t evt_frags;
@@ -193,7 +193,7 @@ Definition
         unsigned int undersize_sync_windows;
         unsigned int oversize_sync_windows;
         unsigned int rx_no_timestamp;
-        struct efx_ptp_timesettimeset;
+        struct efx_ptp_timeset timeset;
     }
 
 .. _`efx_ptp_data.members`:
@@ -347,8 +347,8 @@ oversize_sync_windows
 rx_no_timestamp
     Number of packets received without a timestamp.
 
-efx_ptp_timesettimeset
-    *undescribed*
+timeset
+    Last set of synchronisation statistics.
 
 .. This file was automatic generated / don't edit.
 

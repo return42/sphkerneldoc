@@ -107,8 +107,8 @@ Definition
         int (*switch_channel)(struct b43_wldev *dev, unsigned int new_channel);
         unsigned int (*get_default_chan)(struct b43_wldev *dev);
         void (*set_rx_antenna)(struct b43_wldev *dev, int antenna);
-        int (*interf_mitigation)(struct b43_wldev *dev,enum b43_interference_mitigation new_mode);
-        enum b43_txpwr_result (*recalc_txpower)(struct b43_wldev *dev,bool ignore_tssi);
+        int (*interf_mitigation)(struct b43_wldev *dev, enum b43_interference_mitigation new_mode);
+        enum b43_txpwr_result (*recalc_txpower)(struct b43_wldev *dev, bool ignore_tssi);
         void (*adjust_txpower)(struct b43_wldev *dev);
         void (*pwork_15sec)(struct b43_wldev *dev);
         void (*pwork_60sec)(struct b43_wldev *dev);

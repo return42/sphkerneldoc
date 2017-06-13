@@ -18,15 +18,15 @@ Definition
 .. code-block:: c
 
     struct export_operations {
-        int (*encode_fh)(struct inode *inode, __u32 *fh, int *max_len,struct inode *parent);
-        struct dentry * (*fh_to_dentry)(struct super_block *sb, struct fid *fid,int fh_len, int fh_type);
-        struct dentry * (*fh_to_parent)(struct super_block *sb, struct fid *fid,int fh_len, int fh_type);
-        int (*get_name)(struct dentry *parent, char *name,struct dentry *child);
+        int (*encode_fh)(struct inode *inode, __u32 *fh, int *max_len, struct inode *parent);
+        struct dentry * (*fh_to_dentry)(struct super_block *sb, struct fid *fid, int fh_len, int fh_type);
+        struct dentry * (*fh_to_parent)(struct super_block *sb, struct fid *fid, int fh_len, int fh_type);
+        int (*get_name)(struct dentry *parent, char *name, struct dentry *child);
         struct dentry * (*get_parent)(struct dentry *child);
         int (*commit_metadata)(struct inode *inode);
         int (*get_uuid)(struct super_block *sb, u8 *buf, u32 *len, u64 *offset);
-        int (*map_blocks)(struct inode *inode, loff_t offset,u64 len, struct iomap *iomap,bool write, u32 *device_generation);
-        int (*commit_blocks)(struct inode *inode, struct iomap *iomaps,int nr_iomaps, struct iattr *iattr);
+        int (*map_blocks)(struct inode *inode, loff_t offset,u64 len, struct iomap *iomap, bool write, u32 *device_generation);
+        int (*commit_blocks)(struct inode *inode, struct iomap *iomaps, int nr_iomaps, struct iattr *iattr);
     }
 
 .. _`export_operations.members`:

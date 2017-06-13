@@ -295,11 +295,11 @@ Definition
         unsigned int locktime_u;
         unsigned char locktime_bits;
         unsigned int need_pll:1;
-        int (*get_iotiming)(struct s3c_cpufreq_config *cfg,struct s3c_iotimings *timings);
-        void (*set_iotiming)(struct s3c_cpufreq_config *cfg,struct s3c_iotimings *timings);
-        int (*calc_iotiming)(struct s3c_cpufreq_config *cfg,struct s3c_iotimings *timings);
-        int (*calc_freqtable)(struct s3c_cpufreq_config *cfg,struct cpufreq_frequency_table *t,size_t table_size);
-        void (*debug_io_show)(struct seq_file *seq,struct s3c_cpufreq_config *cfg,union s3c_iobank *iob);
+        int (*get_iotiming)(struct s3c_cpufreq_config *cfg, struct s3c_iotimings *timings);
+        void (*set_iotiming)(struct s3c_cpufreq_config *cfg, struct s3c_iotimings *timings);
+        int (*calc_iotiming)(struct s3c_cpufreq_config *cfg, struct s3c_iotimings *timings);
+        int (*calc_freqtable)(struct s3c_cpufreq_config *cfg,struct cpufreq_frequency_table *t, size_t table_size);
+        void (*debug_io_show)(struct seq_file *seq,struct s3c_cpufreq_config *cfg, union s3c_iobank *iob);
         void (*set_refresh)(struct s3c_cpufreq_config *cfg);
         void (*set_fvco)(struct s3c_cpufreq_config *cfg);
         void (*set_divs)(struct s3c_cpufreq_config *cfg);

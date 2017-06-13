@@ -26,9 +26,9 @@ Definition
         int (*remove)(struct mdev_device *mdev);
         int (*open)(struct mdev_device *mdev);
         void (*release)(struct mdev_device *mdev);
-        ssize_t (*read)(struct mdev_device *mdev, char __user *buf,size_t count, loff_t *ppos);
-        ssize_t (*write)(struct mdev_device *mdev, const char __user *buf,size_t count, loff_t *ppos);
-        long (*ioctl)(struct mdev_device *mdev, unsigned int cmd,unsigned long arg);
+        ssize_t (*read)(struct mdev_device *mdev, char __user *buf, size_t count, loff_t *ppos);
+        ssize_t (*write)(struct mdev_device *mdev, const char __user *buf, size_t count, loff_t *ppos);
+        long (*ioctl)(struct mdev_device *mdev, unsigned int cmd, unsigned long arg);
         int (*mmap)(struct mdev_device *mdev, struct vm_area_struct *vma);
     }
 

@@ -374,7 +374,7 @@ Definition
         int nr_regs;
         u32 value;
         atomic_t *refcnt;
-        struct samsung_retention_ctrl *(*init)(struct samsung_pinctrl_drv_data *,const struct samsung_retention_data *);
+        struct samsung_retention_ctrl *(*init)(struct samsung_pinctrl_drv_data *, const struct samsung_retention_data *);
     }
 
 .. _`samsung_retention_data.members`:

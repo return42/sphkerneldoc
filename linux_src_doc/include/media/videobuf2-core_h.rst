@@ -63,14 +63,14 @@ Definition
 .. code-block:: c
 
     struct vb2_mem_ops {
-        void *(*alloc)(struct device *dev, unsigned long attrs,unsigned long size,enum dma_data_direction dma_dir,gfp_t gfp_flags);
+        void *(*alloc)(struct device *dev, unsigned long attrs,unsigned long size,enum dma_data_direction dma_dir, gfp_t gfp_flags);
         void (*put)(void *buf_priv);
         struct dma_buf *(*get_dmabuf)(void *buf_priv, unsigned long flags);
-        void *(*get_userptr)(struct device *dev, unsigned long vaddr,unsigned long size,enum dma_data_direction dma_dir);
+        void *(*get_userptr)(struct device *dev, unsigned long vaddr,unsigned long size, enum dma_data_direction dma_dir);
         void (*put_userptr)(void *buf_priv);
         void (*prepare)(void *buf_priv);
         void (*finish)(void *buf_priv);
-        void *(*attach_dmabuf)(struct device *dev,struct dma_buf *dbuf,unsigned long size,enum dma_data_direction dma_dir);
+        void *(*attach_dmabuf)(struct device *dev,struct dma_buf *dbuf,unsigned long size, enum dma_data_direction dma_dir);
         void (*detach_dmabuf)(void *buf_priv);
         int (*map_dmabuf)(void *buf_priv);
         void (*unmap_dmabuf)(void *buf_priv);
@@ -420,7 +420,7 @@ Definition
 .. code-block:: c
 
     struct vb2_ops {
-        int (*queue_setup)(struct vb2_queue *q,unsigned int *num_buffers, unsigned int *num_planes,unsigned int sizes[], struct device *alloc_devs[]);
+        int (*queue_setup)(struct vb2_queue *q,unsigned int *num_buffers, unsigned int *num_planes, unsigned int sizes[], struct device *alloc_devs[]);
         void (*wait_prepare)(struct vb2_queue *q);
         void (*wait_finish)(struct vb2_queue *q);
         int (*buf_init)(struct vb2_buffer *vb);
@@ -557,7 +557,7 @@ Definition
     struct vb2_buf_ops {
         int (*verify_planes_array)(struct vb2_buffer *vb, const void *pb);
         void (*fill_user_buffer)(struct vb2_buffer *vb, void *pb);
-        int (*fill_vb2_buffer)(struct vb2_buffer *vb, const void *pb,struct vb2_plane *planes);
+        int (*fill_vb2_buffer)(struct vb2_buffer *vb, const void *pb, struct vb2_plane *planes);
         void (*copy_timestamp)(struct vb2_buffer *vb, const void *pb);
     }
 

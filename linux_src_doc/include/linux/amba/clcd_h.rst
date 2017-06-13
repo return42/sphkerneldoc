@@ -21,8 +21,8 @@ Definition
         bool clock_timregs;
         bool packed_24_bit_pixels;
         bool st_bitmux_control;
-        int (*init_board)(struct amba_device *adev,struct clcd_board *board);
-        int (*init_panel)(struct clcd_fb *fb,struct device_node *panel);
+        int (*init_board)(struct amba_device *adev, struct clcd_board *board);
+        int (*init_panel)(struct clcd_fb *fb, struct device_node *panel);
     }
 
 .. _`clcd_vendor_data.members`:

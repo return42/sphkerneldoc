@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct rng_alg {
-        int (*generate)(struct crypto_rng *tfm,const u8 *src, unsigned int slen,u8 *dst, unsigned int dlen);
+        int (*generate)(struct crypto_rng *tfm,const u8 *src, unsigned int slen, u8 *dst, unsigned int dlen);
         int (*seed)(struct crypto_rng *tfm, const u8 *seed, unsigned int slen);
-        void (*set_ent)(struct crypto_rng *tfm, const u8 *data,unsigned int len);
+        void (*set_ent)(struct crypto_rng *tfm, const u8 *data, unsigned int len);
         unsigned int seedsize;
         struct crypto_alg base;
     }

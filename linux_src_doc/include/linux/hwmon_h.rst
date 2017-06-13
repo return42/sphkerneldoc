@@ -18,10 +18,10 @@ Definition
 .. code-block:: c
 
     struct hwmon_ops {
-        umode_t (*is_visible)(const void *drvdata, enum hwmon_sensor_types type,u32 attr, int channel);
-        int (*read)(struct device *dev, enum hwmon_sensor_types type,u32 attr, int channel, long *val);
-        int (*read_string)(struct device *dev, enum hwmon_sensor_types type,u32 attr, int channel, const char **str);
-        int (*write)(struct device *dev, enum hwmon_sensor_types type,u32 attr, int channel, long val);
+        umode_t (*is_visible)(const void *drvdata, enum hwmon_sensor_types type, u32 attr, int channel);
+        int (*read)(struct device *dev, enum hwmon_sensor_types type, u32 attr, int channel, long *val);
+        int (*read_string)(struct device *dev, enum hwmon_sensor_types type, u32 attr, int channel, const char **str);
+        int (*write)(struct device *dev, enum hwmon_sensor_types type, u32 attr, int channel, long val);
     }
 
 .. _`hwmon_ops.members`:

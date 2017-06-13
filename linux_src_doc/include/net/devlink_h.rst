@@ -390,7 +390,7 @@ Definition
     struct devlink_dpipe_table_ops {
         int (*actions_dump)(void *priv, struct sk_buff *skb);
         int (*matches_dump)(void *priv, struct sk_buff *skb);
-        int (*entries_dump)(void *priv, bool counters_enabled,struct devlink_dpipe_dump_ctx *dump_ctx);
+        int (*entries_dump)(void *priv, bool counters_enabled, struct devlink_dpipe_dump_ctx *dump_ctx);
         int (*counters_set_update)(void *priv, bool enable);
     }
 

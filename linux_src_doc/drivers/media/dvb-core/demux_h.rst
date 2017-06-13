@@ -63,7 +63,7 @@ Definition
         int is_filtering;
         struct dmx_demux *parent;
         void *priv;
-        int (*set)(struct dmx_ts_feed *feed,u16 pid,int type,enum dmx_ts_pes pes_type,ktime_t timeout);
+        int (*set)(struct dmx_ts_feed *feed,u16 pid,int type,enum dmx_ts_pes pes_type, ktime_t timeout);
         int (*start_filtering)(struct dmx_ts_feed *feed);
         int (*stop_filtering)(struct dmx_ts_feed *feed);
     }
@@ -179,9 +179,9 @@ Definition
         struct dmx_demux *parent;
         void *priv;
         int check_crc;
-        int (*set)(struct dmx_section_feed *feed,u16 pid,int check_crc);
-        int (*allocate_filter)(struct dmx_section_feed *feed,struct dmx_section_filter **filter);
-        int (*release_filter)(struct dmx_section_feed *feed,struct dmx_section_filter *filter);
+        int (*set)(struct dmx_section_feed *feed,u16 pid, int check_crc);
+        int (*allocate_filter)(struct dmx_section_feed *feed, struct dmx_section_filter **filter);
+        int (*release_filter)(struct dmx_section_feed *feed, struct dmx_section_filter *filter);
         int (*start_filtering)(struct dmx_section_feed *feed);
         int (*stop_filtering)(struct dmx_section_feed *feed);
     }
@@ -523,15 +523,15 @@ Definition
         void *priv;
         int (*open)(struct dmx_demux *demux);
         int (*close)(struct dmx_demux *demux);
-        int (*write)(struct dmx_demux *demux, const char __user *buf,size_t count);
-        int (*allocate_ts_feed)(struct dmx_demux *demux,struct dmx_ts_feed **feed,dmx_ts_cb callback);
-        int (*release_ts_feed)(struct dmx_demux *demux,struct dmx_ts_feed *feed);
-        int (*allocate_section_feed)(struct dmx_demux *demux,struct dmx_section_feed **feed,dmx_section_cb callback);
-        int (*release_section_feed)(struct dmx_demux *demux,struct dmx_section_feed *feed);
-        int (*add_frontend)(struct dmx_demux *demux,struct dmx_frontend *frontend);
-        int (*remove_frontend)(struct dmx_demux *demux,struct dmx_frontend *frontend);
+        int (*write)(struct dmx_demux *demux, const char __user *buf, size_t count);
+        int (*allocate_ts_feed)(struct dmx_demux *demux,struct dmx_ts_feed **feed, dmx_ts_cb callback);
+        int (*release_ts_feed)(struct dmx_demux *demux, struct dmx_ts_feed *feed);
+        int (*allocate_section_feed)(struct dmx_demux *demux,struct dmx_section_feed **feed, dmx_section_cb callback);
+        int (*release_section_feed)(struct dmx_demux *demux, struct dmx_section_feed *feed);
+        int (*add_frontend)(struct dmx_demux *demux, struct dmx_frontend *frontend);
+        int (*remove_frontend)(struct dmx_demux *demux, struct dmx_frontend *frontend);
         struct list_head *(*get_frontends)(struct dmx_demux *demux);
-        int (*connect_frontend)(struct dmx_demux *demux,struct dmx_frontend *frontend);
+        int (*connect_frontend)(struct dmx_demux *demux, struct dmx_frontend *frontend);
         int (*disconnect_frontend)(struct dmx_demux *demux);
         int (*get_pes_pids)(struct dmx_demux *demux, u16 *pids);
     }

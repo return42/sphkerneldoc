@@ -22,12 +22,12 @@ Definition
         struct module *owner;
         atomic_t refcount;
         struct list_head list;
-        void *(*create)(const char *name,gfp_t gfp,const struct zpool_ops *ops,struct zpool *zpool);
+        void *(*create)(const char *name,gfp_t gfp,const struct zpool_ops *ops, struct zpool *zpool);
         void (*destroy)(void *pool);
-        int (*malloc)(void *pool, size_t size, gfp_t gfp,unsigned long *handle);
+        int (*malloc)(void *pool, size_t size, gfp_t gfp, unsigned long *handle);
         void (*free)(void *pool, unsigned long handle);
-        int (*shrink)(void *pool, unsigned int pages,unsigned int *reclaimed);
-        void *(*map)(void *pool, unsigned long handle,enum zpool_mapmode mm);
+        int (*shrink)(void *pool, unsigned int pages, unsigned int *reclaimed);
+        void *(*map)(void *pool, unsigned long handle, enum zpool_mapmode mm);
         void (*unmap)(void *pool, unsigned long handle);
         u64 (*total_size)(void *pool);
     }

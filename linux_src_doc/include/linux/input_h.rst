@@ -72,8 +72,8 @@ Definition
         unsigned int keycodemax;
         unsigned int keycodesize;
         void *keycode;
-        int (*setkeycode)(struct input_dev *dev,const struct input_keymap_entry *ke,unsigned int *old_keycode);
-        int (*getkeycode)(struct input_dev *dev,struct input_keymap_entry *ke);
+        int (*setkeycode)(struct input_dev *dev,const struct input_keymap_entry *ke, unsigned int *old_keycode);
+        int (*getkeycode)(struct input_dev *dev, struct input_keymap_entry *ke);
         struct ff_device *ff;
         unsigned int repeat_key;
         struct timer_list timer;
@@ -297,7 +297,7 @@ Definition
     struct input_handler {
         void *private;
         void (*event)(struct input_handle *handle, unsigned int type, unsigned int code, int value);
-        void (*events)(struct input_handle *handle,const struct input_value *vals, unsigned int count);
+        void (*events)(struct input_handle *handle, const struct input_value *vals, unsigned int count);
         bool (*filter)(struct input_handle *handle, unsigned int type, unsigned int code, int value);
         bool (*match)(struct input_handler *handler, struct input_dev *dev);
         int (*connect)(struct input_handler *handler, struct input_dev *dev, const struct input_device_id *id);
@@ -482,7 +482,7 @@ Definition
 .. code-block:: c
 
     struct ff_device {
-        int (*upload)(struct input_dev *dev, struct ff_effect *effect,struct ff_effect *old);
+        int (*upload)(struct input_dev *dev, struct ff_effect *effect, struct ff_effect *old);
         int (*erase)(struct input_dev *dev, int effect_id);
         int (*playback)(struct input_dev *dev, int effect_id, int value);
         void (*set_gain)(struct input_dev *dev, u16 gain);

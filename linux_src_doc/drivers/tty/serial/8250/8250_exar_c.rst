@@ -21,7 +21,7 @@ Definition
         unsigned int num_ports;
         unsigned int reg_shift;
         bool has_slave;
-        int (*setup)(struct exar8250 *, struct pci_dev *,struct uart_8250_port *, int);
+        int (*setup)(struct exar8250 *, struct pci_dev *, struct uart_8250_port *, int);
         void (*exit)(struct pci_dev *pcidev);
     }
 

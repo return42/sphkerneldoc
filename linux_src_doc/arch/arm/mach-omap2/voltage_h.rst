@@ -74,7 +74,7 @@ Definition
         void (*write)(u32 val, u8 offset);
         u32 (*rmw)(u32 mask, u32 bits, u8 offset);
         union sys_clk;
-        int (*scale)(struct voltagedomain *voltdm,unsigned long target_volt);
+        int (*scale)(struct voltagedomain *voltdm, unsigned long target_volt);
         u32 nominal_volt;
         struct omap_volt_data *volt_data;
     }

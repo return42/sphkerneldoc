@@ -19,15 +19,15 @@ Definition
 
     struct qed_fcoe_ops {
         const struct qed_common_ops *common;
-        int (*fill_dev_info)(struct qed_dev *cdev,struct qed_dev_fcoe_info *info);
-        void (*register_ops)(struct qed_dev *cdev,struct qed_fcoe_cb_ops *ops, void *cookie);
+        int (*fill_dev_info)(struct qed_dev *cdev, struct qed_dev_fcoe_info *info);
+        void (*register_ops)(struct qed_dev *cdev, struct qed_fcoe_cb_ops *ops, void *cookie);
         const struct qed_ll2_ops *ll2;
         int (*start)(struct qed_dev *cdev, struct qed_fcoe_tid *tasks);
         int (*stop)(struct qed_dev *cdev);
-        int (*acquire_conn)(struct qed_dev *cdev,u32 *handle,u32 *fw_cid, void __iomem **p_doorbell);
+        int (*acquire_conn)(struct qed_dev *cdev,u32 *handle, u32 *fw_cid, void __iomem **p_doorbell);
         int (*release_conn)(struct qed_dev *cdev, u32 handle);
-        int (*offload_conn)(struct qed_dev *cdev,u32 handle,struct qed_fcoe_params_offload *conn_info);
-        int (*destroy_conn)(struct qed_dev *cdev,u32 handle, dma_addr_t terminate_params);
+        int (*offload_conn)(struct qed_dev *cdev,u32 handle, struct qed_fcoe_params_offload *conn_info);
+        int (*destroy_conn)(struct qed_dev *cdev, u32 handle, dma_addr_t terminate_params);
         int (*get_stats)(struct qed_dev *cdev, struct qed_fcoe_stats *stats);
     }
 

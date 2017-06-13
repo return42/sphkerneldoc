@@ -64,7 +64,7 @@ Definition
 .. code-block:: c
 
     struct media_device_ops {
-        int (*link_notify)(struct media_link *link, u32 flags,unsigned int notification);
+        int (*link_notify)(struct media_link *link, u32 flags, unsigned int notification);
     }
 
 .. _`media_device_ops.members`:
@@ -113,7 +113,7 @@ Definition
         struct mutex graph_mutex;
         struct media_graph pm_count_walk;
         void *source_priv;
-        int (*enable_source)(struct media_entity *entity,struct media_pipeline *pipe);
+        int (*enable_source)(struct media_entity *entity, struct media_pipeline *pipe);
         void (*disable_source)(struct media_entity *entity);
         const struct media_device_ops *ops;
     }

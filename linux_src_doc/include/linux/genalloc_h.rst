@@ -6,9 +6,9 @@
 long
 ====
 
-.. c:function:: unsigned long(*genpool_algo_t)(unsigned long *map#unsigned long size#unsigned long start#unsigned int nr#void *data# struct gen_pool *pool)
+.. c:function:: unsigned long(*genpool_algo_t)(unsigned long *map#unsigned long size#unsigned long start#unsigned int nr# void *data# struct gen_pool *pool)
 
-    :param \*genpool_algo_t)(unsigned long \*map#unsigned long size#unsigned long start#unsigned int nr#void \*data# struct gen_pool \*pool:
+    :param \*genpool_algo_t)(unsigned long \*map#unsigned long size#unsigned long start#unsigned int nr# void \*data# struct gen_pool \*pool:
         *undescribed*
 
 .. _`gen_pool_add`:

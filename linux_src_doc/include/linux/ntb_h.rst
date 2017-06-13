@@ -231,11 +231,11 @@ Definition
 
     struct ntb_dev_ops {
         int (*mw_count)(struct ntb_dev *ntb);
-        int (*mw_get_range)(struct ntb_dev *ntb, int idx,phys_addr_t *base, resource_size_t *size,resource_size_t *align, resource_size_t *align_size);
-        int (*mw_set_trans)(struct ntb_dev *ntb, int idx,dma_addr_t addr, resource_size_t size);
+        int (*mw_get_range)(struct ntb_dev *ntb, int idx,phys_addr_t *base, resource_size_t *size, resource_size_t *align, resource_size_t *align_size);
+        int (*mw_set_trans)(struct ntb_dev *ntb, int idx, dma_addr_t addr, resource_size_t size);
         int (*mw_clear_trans)(struct ntb_dev *ntb, int idx);
-        int (*link_is_up)(struct ntb_dev *ntb,enum ntb_speed *speed, enum ntb_width *width);
-        int (*link_enable)(struct ntb_dev *ntb,enum ntb_speed max_speed, enum ntb_width max_width);
+        int (*link_is_up)(struct ntb_dev *ntb, enum ntb_speed *speed, enum ntb_width *width);
+        int (*link_enable)(struct ntb_dev *ntb, enum ntb_speed max_speed, enum ntb_width max_width);
         int (*link_disable)(struct ntb_dev *ntb);
         int (*db_is_unsafe)(struct ntb_dev *ntb);
         u64 (*db_valid_mask)(struct ntb_dev *ntb);
@@ -247,7 +247,7 @@ Definition
         u64 (*db_read_mask)(struct ntb_dev *ntb);
         int (*db_set_mask)(struct ntb_dev *ntb, u64 db_bits);
         int (*db_clear_mask)(struct ntb_dev *ntb, u64 db_bits);
-        int (*peer_db_addr)(struct ntb_dev *ntb,phys_addr_t *db_addr, resource_size_t *db_size);
+        int (*peer_db_addr)(struct ntb_dev *ntb, phys_addr_t *db_addr, resource_size_t *db_size);
         u64 (*peer_db_read)(struct ntb_dev *ntb);
         int (*peer_db_set)(struct ntb_dev *ntb, u64 db_bits);
         int (*peer_db_clear)(struct ntb_dev *ntb, u64 db_bits);
@@ -258,7 +258,7 @@ Definition
         int (*spad_count)(struct ntb_dev *ntb);
         u32 (*spad_read)(struct ntb_dev *ntb, int idx);
         int (*spad_write)(struct ntb_dev *ntb, int idx, u32 val);
-        int (*peer_spad_addr)(struct ntb_dev *ntb, int idx,phys_addr_t *spad_addr);
+        int (*peer_spad_addr)(struct ntb_dev *ntb, int idx, phys_addr_t *spad_addr);
         u32 (*peer_spad_read)(struct ntb_dev *ntb, int idx);
         int (*peer_spad_write)(struct ntb_dev *ntb, int idx, u32 val);
     }

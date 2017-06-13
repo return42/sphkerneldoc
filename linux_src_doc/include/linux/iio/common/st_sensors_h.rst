@@ -181,9 +181,9 @@ Definition
 .. code-block:: c
 
     struct st_sensor_transfer_function {
-        int (*read_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, u8 *res_byte);
-        int (*write_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, u8 data);
-        int (*read_multiple_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, int len, u8 *data,bool multiread_bit);
+        int (*read_byte)(struct st_sensor_transfer_buffer *tb, struct device *dev, u8 reg_addr, u8 *res_byte);
+        int (*write_byte)(struct st_sensor_transfer_buffer *tb, struct device *dev, u8 reg_addr, u8 data);
+        int (*read_multiple_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, int len, u8 *data, bool multiread_bit);
     }
 
 .. _`st_sensor_transfer_function.members`:

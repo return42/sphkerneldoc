@@ -268,11 +268,11 @@ Definition
     struct coresight_ops_sink {
         int (*enable)(struct coresight_device *csdev, u32 mode);
         void (*disable)(struct coresight_device *csdev);
-        void *(*alloc_buffer)(struct coresight_device *csdev, int cpu,void **pages, int nr_pages, bool overwrite);
+        void *(*alloc_buffer)(struct coresight_device *csdev, int cpu, void **pages, int nr_pages, bool overwrite);
         void (*free_buffer)(void *config);
-        int (*set_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
-        unsigned long (*reset_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
-        void (*update_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
+        int (*set_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
+        unsigned long (*reset_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
+        void (*update_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle, void *sink_config);
     }
 
 .. _`coresight_ops_sink.members`:
@@ -352,8 +352,8 @@ Definition
     struct coresight_ops_source {
         int (*cpu_id)(struct coresight_device *csdev);
         int (*trace_id)(struct coresight_device *csdev);
-        int (*enable)(struct coresight_device *csdev,struct perf_event *event, u32 mode);
-        void (*disable)(struct coresight_device *csdev,struct perf_event *event);
+        int (*enable)(struct coresight_device *csdev, struct perf_event *event, u32 mode);
+        void (*disable)(struct coresight_device *csdev, struct perf_event *event);
     }
 
 .. _`coresight_ops_source.members`:

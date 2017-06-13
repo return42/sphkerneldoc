@@ -102,7 +102,7 @@ Definition
 .. code-block:: c
 
     struct skcipher_alg {
-        int (*setkey)(struct crypto_skcipher *tfm, const u8 *key,unsigned int keylen);
+        int (*setkey)(struct crypto_skcipher *tfm, const u8 *key, unsigned int keylen);
         int (*encrypt)(struct skcipher_request *req);
         int (*decrypt)(struct skcipher_request *req);
         int (*init)(struct crypto_skcipher *tfm);

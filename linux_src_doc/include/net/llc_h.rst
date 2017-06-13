@@ -22,7 +22,7 @@ Definition
         unsigned char p_bit;
         unsigned char f_bit;
         atomic_t refcnt;
-        int (*rcv_func)(struct sk_buff *skb,struct net_device *dev,struct packet_type *pt,struct net_device *orig_dev);
+        int (*rcv_func)(struct sk_buff *skb,struct net_device *dev,struct packet_type *pt, struct net_device *orig_dev);
         struct llc_addr laddr;
         struct list_head node;
         spinlock_t sk_lock;

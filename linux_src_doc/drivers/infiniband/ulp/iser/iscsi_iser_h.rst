@@ -305,12 +305,12 @@ Definition
 .. code-block:: c
 
     struct iser_reg_ops {
-        int (*alloc_reg_res)(struct ib_conn *ib_conn,unsigned cmds_max,unsigned int size);
+        int (*alloc_reg_res)(struct ib_conn *ib_conn,unsigned cmds_max, unsigned int size);
         void (*free_reg_res)(struct ib_conn *ib_conn);
-        int (*reg_mem)(struct iscsi_iser_task *iser_task,struct iser_data_buf *mem,struct iser_reg_resources *rsc,struct iser_mem_reg *reg);
-        void (*unreg_mem)(struct iscsi_iser_task *iser_task,enum iser_data_dir cmd_dir);
+        int (*reg_mem)(struct iscsi_iser_task *iser_task,struct iser_data_buf *mem,struct iser_reg_resources *rsc, struct iser_mem_reg *reg);
+        void (*unreg_mem)(struct iscsi_iser_task *iser_task, enum iser_data_dir cmd_dir);
         struct iser_fr_desc * (*reg_desc_get)(struct ib_conn *ib_conn);
-        void (*reg_desc_put)(struct ib_conn *ib_conn,struct iser_fr_desc *desc);
+        void (*reg_desc_put)(struct ib_conn *ib_conn, struct iser_fr_desc *desc);
     }
 
 .. _`iser_reg_ops.members`:

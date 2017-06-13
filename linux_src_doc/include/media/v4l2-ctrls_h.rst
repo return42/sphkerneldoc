@@ -113,10 +113,10 @@ Definition
 .. code-block:: c
 
     struct v4l2_ctrl_type_ops {
-        bool (*equal)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr1,union v4l2_ctrl_ptr ptr2);
-        void (*init)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr);
+        bool (*equal)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr1, union v4l2_ctrl_ptr ptr2);
+        void (*init)(const struct v4l2_ctrl *ctrl, u32 idx, union v4l2_ctrl_ptr ptr);
         void (*log)(const struct v4l2_ctrl *ctrl);
-        int (*validate)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr);
+        int (*validate)(const struct v4l2_ctrl *ctrl, u32 idx, union v4l2_ctrl_ptr ptr);
     }
 
 .. _`v4l2_ctrl_type_ops.members`:

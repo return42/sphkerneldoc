@@ -24,7 +24,7 @@ Definition
         void (*codec_wake_override)(struct device *, bool enable);
         int (*get_cdclk_freq)(struct device *);
         int (*sync_audio_rate)(struct device *, int port, int pipe, int rate);
-        int (*get_eld)(struct device *, int port, int pipe, bool *enabled,unsigned char *buf, int max_bytes);
+        int (*get_eld)(struct device *, int port, int pipe, bool *enabled, unsigned char *buf, int max_bytes);
     }
 
 .. _`i915_audio_component_ops.members`:

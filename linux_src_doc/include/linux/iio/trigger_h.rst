@@ -21,7 +21,7 @@ Definition
         struct module *owner;
         int (*set_trigger_state)(struct iio_trigger *trig, bool state);
         int (*try_reenable)(struct iio_trigger *trig);
-        int (*validate_device)(struct iio_trigger *trig,struct iio_dev *indio_dev);
+        int (*validate_device)(struct iio_trigger *trig, struct iio_dev *indio_dev);
     }
 
 .. _`iio_trigger_ops.members`:

@@ -145,10 +145,10 @@ Definition
 .. code-block:: c
 
     struct intel_shared_dpll_funcs {
-        void (*prepare)(struct drm_i915_private *dev_priv,struct intel_shared_dpll *pll);
-        void (*enable)(struct drm_i915_private *dev_priv,struct intel_shared_dpll *pll);
-        void (*disable)(struct drm_i915_private *dev_priv,struct intel_shared_dpll *pll);
-        bool (*get_hw_state)(struct drm_i915_private *dev_priv,struct intel_shared_dpll *pll,struct intel_dpll_hw_state *hw_state);
+        void (*prepare)(struct drm_i915_private *dev_priv, struct intel_shared_dpll *pll);
+        void (*enable)(struct drm_i915_private *dev_priv, struct intel_shared_dpll *pll);
+        void (*disable)(struct drm_i915_private *dev_priv, struct intel_shared_dpll *pll);
+        bool (*get_hw_state)(struct drm_i915_private *dev_priv,struct intel_shared_dpll *pll, struct intel_dpll_hw_state *hw_state);
     }
 
 .. _`intel_shared_dpll_funcs.members`:

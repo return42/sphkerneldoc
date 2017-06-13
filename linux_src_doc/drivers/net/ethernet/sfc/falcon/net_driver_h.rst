@@ -866,14 +866,14 @@ Definition
         void (*remove)(struct ef4_nic *efx);
         int (*reconfigure)(struct ef4_nic *efx);
         bool (*poll)(struct ef4_nic *efx);
-        void (*get_link_ksettings)(struct ef4_nic *efx,struct ethtool_link_ksettings *cmd);
-        int (*set_link_ksettings)(struct ef4_nic *efx,const struct ethtool_link_ksettings *cmd);
+        void (*get_link_ksettings)(struct ef4_nic *efx, struct ethtool_link_ksettings *cmd);
+        int (*set_link_ksettings)(struct ef4_nic *efx, const struct ethtool_link_ksettings *cmd);
         void (*set_npage_adv)(struct ef4_nic *efx, u32);
         int (*test_alive)(struct ef4_nic *efx);
         const char *(*test_name)(struct ef4_nic *efx, unsigned int index);
         int (*run_tests)(struct ef4_nic *efx, int *results, unsigned flags);
-        int (*get_module_eeprom)(struct ef4_nic *efx,struct ethtool_eeprom *ee,u8 *data);
-        int (*get_module_info)(struct ef4_nic *efx,struct ethtool_modinfo *modinfo);
+        int (*get_module_eeprom)(struct ef4_nic *efx,struct ethtool_eeprom *ee, u8 *data);
+        int (*get_module_info)(struct ef4_nic *efx, struct ethtool_modinfo *modinfo);
     }
 
 .. _`ef4_phy_operations.members`:
@@ -1050,7 +1050,7 @@ Definition
         unsigned long reset_pending;
         struct ef4_channel  *channel;
         struct ef4_msi_context msi_context;
-        const struct ef4_channel_type  *extra_channel_type;
+        const struct ef4_channel_type *extra_channel_type;
         unsigned rxq_entries;
         unsigned txq_entries;
         unsigned int txq_stop_thresh;
@@ -1531,7 +1531,7 @@ Definition
         void (*prepare_flr)(struct ef4_nic *efx);
         void (*finish_flr)(struct ef4_nic *efx);
         size_t (*describe_stats)(struct ef4_nic *efx, u8 *names);
-        size_t (*update_stats)(struct ef4_nic *efx, u64 *full_stats,struct rtnl_link_stats64 *core_stats);
+        size_t (*update_stats)(struct ef4_nic *efx, u64 *full_stats, struct rtnl_link_stats64 *core_stats);
         void (*start_stats)(struct ef4_nic *efx);
         void (*pull_stats)(struct ef4_nic *efx);
         void (*stop_stats)(struct ef4_nic *efx);
@@ -1555,8 +1555,8 @@ Definition
         void (*tx_init)(struct ef4_tx_queue *tx_queue);
         void (*tx_remove)(struct ef4_tx_queue *tx_queue);
         void (*tx_write)(struct ef4_tx_queue *tx_queue);
-        unsigned int (*tx_limit_len)(struct ef4_tx_queue *tx_queue,dma_addr_t dma_addr, unsigned int len);
-        int (*rx_push_rss_config)(struct ef4_nic *efx, bool user,const u32 *rx_indir_table);
+        unsigned int (*tx_limit_len)(struct ef4_tx_queue *tx_queue, dma_addr_t dma_addr, unsigned int len);
+        int (*rx_push_rss_config)(struct ef4_nic *efx, bool user, const u32 *rx_indir_table);
         int (*rx_probe)(struct ef4_rx_queue *rx_queue);
         void (*rx_init)(struct ef4_rx_queue *rx_queue);
         void (*rx_remove)(struct ef4_rx_queue *rx_queue);
@@ -1573,23 +1573,23 @@ Definition
         void (*filter_table_restore)(struct ef4_nic *efx);
         void (*filter_table_remove)(struct ef4_nic *efx);
         void (*filter_update_rx_scatter)(struct ef4_nic *efx);
-        s32 (*filter_insert)(struct ef4_nic *efx,struct ef4_filter_spec *spec, bool replace);
-        int (*filter_remove_safe)(struct ef4_nic *efx,enum ef4_filter_priority priority,u32 filter_id);
-        int (*filter_get_safe)(struct ef4_nic *efx,enum ef4_filter_priority priority,u32 filter_id, struct ef4_filter_spec *);
-        int (*filter_clear_rx)(struct ef4_nic *efx,enum ef4_filter_priority priority);
-        u32 (*filter_count_rx_used)(struct ef4_nic *efx,enum ef4_filter_priority priority);
+        s32 (*filter_insert)(struct ef4_nic *efx, struct ef4_filter_spec *spec, bool replace);
+        int (*filter_remove_safe)(struct ef4_nic *efx,enum ef4_filter_priority priority, u32 filter_id);
+        int (*filter_get_safe)(struct ef4_nic *efx,enum ef4_filter_priority priority, u32 filter_id, struct ef4_filter_spec *);
+        int (*filter_clear_rx)(struct ef4_nic *efx, enum ef4_filter_priority priority);
+        u32 (*filter_count_rx_used)(struct ef4_nic *efx, enum ef4_filter_priority priority);
         u32 (*filter_get_rx_id_limit)(struct ef4_nic *efx);
-        s32 (*filter_get_rx_ids)(struct ef4_nic *efx,enum ef4_filter_priority priority,u32 *buf, u32 size);
+        s32 (*filter_get_rx_ids)(struct ef4_nic *efx,enum ef4_filter_priority priority, u32 *buf, u32 size);
     #ifdef CONFIG_RFS_ACCEL
-        s32 (*filter_rfs_insert)(struct ef4_nic *efx,struct ef4_filter_spec *spec);
-        bool (*filter_rfs_expire_one)(struct ef4_nic *efx, u32 flow_id,unsigned int index);
+        s32 (*filter_rfs_insert)(struct ef4_nic *efx, struct ef4_filter_spec *spec);
+        bool (*filter_rfs_expire_one)(struct ef4_nic *efx, u32 flow_id, unsigned int index);
     #endif
     #ifdef CONFIG_SFC_FALCON_MTD
         int (*mtd_probe)(struct ef4_nic *efx);
         void (*mtd_rename)(struct ef4_mtd_partition *part);
-        int (*mtd_read)(struct mtd_info *mtd, loff_t start, size_t len,size_t *retlen, u8 *buffer);
+        int (*mtd_read)(struct mtd_info *mtd, loff_t start, size_t len, size_t *retlen, u8 *buffer);
         int (*mtd_erase)(struct mtd_info *mtd, loff_t start, size_t len);
-        int (*mtd_write)(struct mtd_info *mtd, loff_t start, size_t len,size_t *retlen, const u8 *buffer);
+        int (*mtd_write)(struct mtd_info *mtd, loff_t start, size_t len, size_t *retlen, const u8 *buffer);
         int (*mtd_sync)(struct mtd_info *mtd);
     #endif
         int (*get_mac_address)(struct ef4_nic *efx, unsigned char *perm_addr);

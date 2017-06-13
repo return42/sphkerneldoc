@@ -153,11 +153,11 @@ Definition
         const char * (*get_timeline_name)(struct dma_fence *fence);
         bool (*enable_signaling)(struct dma_fence *fence);
         bool (*signaled)(struct dma_fence *fence);
-        signed long (*wait)(struct dma_fence *fence,bool intr, signed long timeout);
+        signed long (*wait)(struct dma_fence *fence, bool intr, signed long timeout);
         void (*release)(struct dma_fence *fence);
         int (*fill_driver_data)(struct dma_fence *fence, void *data, int size);
         void (*fence_value_str)(struct dma_fence *fence, char *str, int size);
-        void (*timeline_value_str)(struct dma_fence *fence,char *str, int size);
+        void (*timeline_value_str)(struct dma_fence *fence, char *str, int size);
     }
 
 .. _`dma_fence_ops.members`:

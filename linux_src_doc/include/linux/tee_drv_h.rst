@@ -54,15 +54,15 @@ Definition
 .. code-block:: c
 
     struct tee_driver_ops {
-        void (*get_version)(struct tee_device *teedev,struct tee_ioctl_version_data *vers);
+        void (*get_version)(struct tee_device *teedev, struct tee_ioctl_version_data *vers);
         int (*open)(struct tee_context *ctx);
         void (*release)(struct tee_context *ctx);
-        int (*open_session)(struct tee_context *ctx,struct tee_ioctl_open_session_arg *arg,struct tee_param *param);
+        int (*open_session)(struct tee_context *ctx,struct tee_ioctl_open_session_arg *arg, struct tee_param *param);
         int (*close_session)(struct tee_context *ctx, u32 session);
-        int (*invoke_func)(struct tee_context *ctx,struct tee_ioctl_invoke_arg *arg,struct tee_param *param);
+        int (*invoke_func)(struct tee_context *ctx,struct tee_ioctl_invoke_arg *arg, struct tee_param *param);
         int (*cancel_req)(struct tee_context *ctx, u32 cancel_id, u32 session);
-        int (*supp_recv)(struct tee_context *ctx, u32 *func, u32 *num_params,struct tee_param *param);
-        int (*supp_send)(struct tee_context *ctx, u32 ret, u32 num_params,struct tee_param *param);
+        int (*supp_recv)(struct tee_context *ctx, u32 *func, u32 *num_params, struct tee_param *param);
+        int (*supp_send)(struct tee_context *ctx, u32 ret, u32 num_params, struct tee_param *param);
     }
 
 .. _`tee_driver_ops.members`:

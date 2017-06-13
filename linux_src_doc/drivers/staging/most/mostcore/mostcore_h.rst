@@ -170,8 +170,8 @@ Definition
 
     struct most_aim {
         const char *name;
-        int (*probe_channel)(struct most_interface *iface, int channel_idx,struct most_channel_config *cfg,struct kobject *parent, char *name);
-        int (*disconnect_channel)(struct most_interface *iface,int channel_idx);
+        int (*probe_channel)(struct most_interface *iface, int channel_idx,struct most_channel_config *cfg, struct kobject *parent, char *name);
+        int (*disconnect_channel)(struct most_interface *iface, int channel_idx);
         int (*rx_completion)(struct mbo *mbo);
         int (*tx_completion)(struct most_interface *iface, int channel_idx);
         void *context;

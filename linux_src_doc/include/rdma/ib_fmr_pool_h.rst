@@ -23,7 +23,7 @@ Definition
         enum ib_access_flags access;
         int pool_size;
         int dirty_watermark;
-        void (*flush_function)(struct ib_fmr_pool *pool,void *arg);
+        void (*flush_function)(struct ib_fmr_pool *pool, void *arg);
         void *flush_arg;
         unsigned cache:1;
     }

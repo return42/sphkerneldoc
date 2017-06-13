@@ -228,11 +228,11 @@ Definition
 .. code-block:: c
 
     struct ion_heap_ops {
-        int (*allocate)(struct ion_heap *heap,struct ion_buffer *buffer, unsigned long len,unsigned long flags);
+        int (*allocate)(struct ion_heap *heap,struct ion_buffer *buffer, unsigned long len, unsigned long flags);
         void (*free)(struct ion_buffer *buffer);
         void * (*map_kernel)(struct ion_heap *heap, struct ion_buffer *buffer);
         void (*unmap_kernel)(struct ion_heap *heap, struct ion_buffer *buffer);
-        int (*map_user)(struct ion_heap *mapper, struct ion_buffer *buffer,struct vm_area_struct *vma);
+        int (*map_user)(struct ion_heap *mapper, struct ion_buffer *buffer, struct vm_area_struct *vma);
         int (*shrink)(struct ion_heap *heap, gfp_t gfp_mask, int nr_to_scan);
     }
 

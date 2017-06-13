@@ -168,16 +168,16 @@ Definition
         struct device_driver driver;
         int (*probe)(struct intel_th_device *thdev);
         void (*remove)(struct intel_th_device *thdev);
-        int (*assign)(struct intel_th_device *thdev,struct intel_th_device *othdev);
-        void (*unassign)(struct intel_th_device *thdev,struct intel_th_device *othdev);
-        void (*enable)(struct intel_th_device *thdev,struct intel_th_output *output);
-        void (*disable)(struct intel_th_device *thdev,struct intel_th_output *output);
+        int (*assign)(struct intel_th_device *thdev, struct intel_th_device *othdev);
+        void (*unassign)(struct intel_th_device *thdev, struct intel_th_device *othdev);
+        void (*enable)(struct intel_th_device *thdev, struct intel_th_output *output);
+        void (*disable)(struct intel_th_device *thdev, struct intel_th_output *output);
         void (*irq)(struct intel_th_device *thdev);
         int (*activate)(struct intel_th_device *thdev);
         void (*deactivate)(struct intel_th_device *thdev);
         const struct file_operations *fops;
         struct attribute_group *attr_group;
-        int (*set_output)(struct intel_th_device *thdev,unsigned int master);
+        int (*set_output)(struct intel_th_device *thdev, unsigned int master);
     }
 
 .. _`intel_th_driver.members`:

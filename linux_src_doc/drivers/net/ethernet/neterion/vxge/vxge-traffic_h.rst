@@ -1463,10 +1463,10 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_xmac_stats {
-        struct vxge_hw_xmac_aggr_statsaggr_stats;
-        struct vxge_hw_xmac_port_statsport_stats;
-        struct vxge_hw_xmac_vpath_tx_statsvpath_tx_stats;
-        struct vxge_hw_xmac_vpath_rx_statsvpath_rx_stats;
+        struct vxge_hw_xmac_aggr_stats aggr_stats;
+        struct vxge_hw_xmac_port_stats port_stats;
+        struct vxge_hw_xmac_vpath_tx_stats vpath_tx_stats;
+        struct vxge_hw_xmac_vpath_rx_stats vpath_rx_stats;
     }
 
 .. _`vxge_hw_xmac_stats.members`:
@@ -1474,17 +1474,17 @@ Definition
 Members
 -------
 
-vxge_hw_xmac_aggr_statsaggr_stats
-    *undescribed*
+aggr_stats
+    Statistics on aggregate port(port 0, port 1)
 
-vxge_hw_xmac_port_statsport_stats
-    *undescribed*
+port_stats
+    Staticstics on ports(wire 0, wire 1, lag)
 
-vxge_hw_xmac_vpath_tx_statsvpath_tx_stats
-    *undescribed*
+vpath_tx_stats
+    Per vpath XMAC TX stats
 
-vxge_hw_xmac_vpath_rx_statsvpath_rx_stats
-    *undescribed*
+vpath_rx_stats
+    Per vpath XMAC RX stats
 
 .. _`vxge_hw_xmac_stats.description`:
 
@@ -1844,8 +1844,8 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_device_stats_hw_info {
-        struct vxge_hw_vpath_stats_hw_infovpath_info;
-        struct vxge_hw_vpath_stats_hw_infovpath_info_sav;
+        struct vxge_hw_vpath_stats_hw_info  *vpath_info;
+        struct vxge_hw_vpath_stats_hw_info vpath_info_sav;
     }
 
 .. _`vxge_hw_device_stats_hw_info.members`:
@@ -1853,11 +1853,11 @@ Definition
 Members
 -------
 
-vxge_hw_vpath_stats_hw_infovpath_info
-    *undescribed*
+vpath_info
+    VPath statistics
 
-vxge_hw_vpath_stats_hw_infovpath_info_sav
-    *undescribed*
+vpath_info_sav
+    Vpath statistics saved
 
 .. _`vxge_hw_device_stats_hw_info.description`:
 
@@ -2202,7 +2202,7 @@ Definition
         u32 traffic_intr_cnt;
         u32 total_intr_cnt;
         u32 soft_reset_cnt;
-        struct vxge_hw_vpath_stats_sw_infovpath_info;
+        struct vxge_hw_vpath_stats_sw_info vpath_info;
     }
 
 .. _`vxge_hw_device_stats_sw_info.members`:
@@ -2226,8 +2226,9 @@ total_intr_cnt
 soft_reset_cnt
     Number of times soft reset is done on this device.
 
-vxge_hw_vpath_stats_sw_infovpath_info
-    *undescribed*
+vpath_info
+    please see struct vxge_hw_vpath_stats_sw_info{}
+    HW per-device statistics.
 
 .. _`vxge_hw_device_stats_sw_err`:
 

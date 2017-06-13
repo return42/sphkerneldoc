@@ -45,14 +45,14 @@ Definition
         void (*writel)(void __iomem *addr, unsigned offset, u32 data);
         void (*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
         void (*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
-        struct dma_controller *(*dma_init)(struct musb *musb, void __iomem *base);
+        struct dma_controller * (*dma_init)(struct musb *musb, void __iomem *base);
         void (*dma_exit)(struct dma_controller *c);
         int (*set_mode)(struct musb *musb, u8 mode);
         void (*try_idle)(struct musb *musb, unsigned long timeout);
         int (*recover)(struct musb *musb);
         int (*vbus_status)(struct musb *musb);
         void (*set_vbus)(struct musb *musb, int on);
-        int (*adjust_channel_params)(struct dma_channel *channel,u16 packet_sz, u8 *mode,dma_addr_t *dma_addr, u32 *len);
+        int (*adjust_channel_params)(struct dma_channel *channel,u16 packet_sz, u8 *mode, dma_addr_t *dma_addr, u32 *len);
         void (*pre_root_reset_end)(struct musb *musb);
         void (*post_root_reset_end)(struct musb *musb);
         int (*phy_callback)(enum musb_vbus_id_status status);

@@ -19,9 +19,9 @@ Definition
 
     struct l3mdev_ops {
         u32 (*l3mdev_fib_table)(const struct net_device *dev);
-        struct sk_buff * (*l3mdev_l3_rcv)(struct net_device *dev,struct sk_buff *skb, u16 proto);
-        struct sk_buff * (*l3mdev_l3_out)(struct net_device *dev,struct sock *sk, struct sk_buff *skb,u16 proto);
-        struct dst_entry * (*l3mdev_link_scope_lookup)(const struct net_device *dev,struct flowi6 *fl6);
+        struct sk_buff * (*l3mdev_l3_rcv)(struct net_device *dev, struct sk_buff *skb, u16 proto);
+        struct sk_buff * (*l3mdev_l3_out)(struct net_device *dev,struct sock *sk, struct sk_buff *skb, u16 proto);
+        struct dst_entry * (*l3mdev_link_scope_lookup)(const struct net_device *dev, struct flowi6 *fl6);
     }
 
 .. _`l3mdev_ops.members`:

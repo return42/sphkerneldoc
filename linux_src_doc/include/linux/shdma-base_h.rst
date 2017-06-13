@@ -22,7 +22,7 @@ Definition
         void (*halt_channel)(struct shdma_chan *);
         bool (*channel_busy)(struct shdma_chan *);
         dma_addr_t (*slave_addr)(struct shdma_chan *);
-        int (*desc_setup)(struct shdma_chan *, struct shdma_desc *,dma_addr_t, dma_addr_t, size_t *);
+        int (*desc_setup)(struct shdma_chan *, struct shdma_desc *, dma_addr_t, dma_addr_t, size_t *);
         int (*set_slave)(struct shdma_chan *, int, dma_addr_t, bool);
         void (*setup_xfer)(struct shdma_chan *, int);
         void (*start_xfer)(struct shdma_chan *, struct shdma_desc *);

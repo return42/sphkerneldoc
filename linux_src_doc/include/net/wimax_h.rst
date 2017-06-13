@@ -23,8 +23,8 @@ Definition
         struct mutex mutex;
         struct mutex mutex_reset;
         enum wimax_st state;
-        int (*op_msg_from_user)(struct wimax_dev *wimax_dev,const char *,const void *, size_t,const struct genl_info *info);
-        int (*op_rfkill_sw_toggle)(struct wimax_dev *wimax_dev,enum wimax_rf_state);
+        int (*op_msg_from_user)(struct wimax_dev *wimax_dev,const char *,const void *, size_t, const struct genl_info *info);
+        int (*op_rfkill_sw_toggle)(struct wimax_dev *wimax_dev, enum wimax_rf_state);
         int (*op_reset)(struct wimax_dev *wimax_dev);
         struct rfkill *rfkill;
         unsigned int rf_hw;

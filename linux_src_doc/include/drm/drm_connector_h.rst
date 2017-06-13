@@ -403,18 +403,18 @@ Definition
     struct drm_connector_funcs {
         int (*dpms)(struct drm_connector *connector, int mode);
         void (*reset)(struct drm_connector *connector);
-        enum drm_connector_status (*detect)(struct drm_connector *connector,bool force);
+        enum drm_connector_status (*detect)(struct drm_connector *connector, bool force);
         void (*force)(struct drm_connector *connector);
         int (*fill_modes)(struct drm_connector *connector, uint32_t max_width, uint32_t max_height);
-        int (*set_property)(struct drm_connector *connector, struct drm_property *property,uint64_t val);
+        int (*set_property)(struct drm_connector *connector, struct drm_property *property, uint64_t val);
         int (*late_register)(struct drm_connector *connector);
         void (*early_unregister)(struct drm_connector *connector);
         void (*destroy)(struct drm_connector *connector);
         struct drm_connector_state *(*atomic_duplicate_state)(struct drm_connector *connector);
-        void (*atomic_destroy_state)(struct drm_connector *connector,struct drm_connector_state *state);
-        int (*atomic_set_property)(struct drm_connector *connector,struct drm_connector_state *state,struct drm_property *property,uint64_t val);
-        int (*atomic_get_property)(struct drm_connector *connector,const struct drm_connector_state *state,struct drm_property *property,uint64_t *val);
-        void (*atomic_print_state)(struct drm_printer *p,const struct drm_connector_state *state);
+        void (*atomic_destroy_state)(struct drm_connector *connector, struct drm_connector_state *state);
+        int (*atomic_set_property)(struct drm_connector *connector,struct drm_connector_state *state,struct drm_property *property, uint64_t val);
+        int (*atomic_get_property)(struct drm_connector *connector,const struct drm_connector_state *state,struct drm_property *property, uint64_t *val);
+        void (*atomic_print_state)(struct drm_printer *p, const struct drm_connector_state *state);
     }
 
 .. _`drm_connector_funcs.members`:

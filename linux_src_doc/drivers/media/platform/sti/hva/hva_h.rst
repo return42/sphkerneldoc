@@ -739,7 +739,7 @@ Definition
         u32 max_height;
         int (*open)(struct hva_ctx *ctx);
         int (*close)(struct hva_ctx *ctx);
-        int (*encode)(struct hva_ctx *ctx, struct hva_frame *frame,struct hva_stream *stream);
+        int (*encode)(struct hva_ctx *ctx, struct hva_frame *frame, struct hva_stream *stream);
     }
 
 .. _`hva_enc.members`:

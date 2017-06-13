@@ -304,10 +304,10 @@ Definition
         u16 mdiv_default;
         u32 (*round_p_to_pdiv)(u32 p, u32 *pdiv);
         void (*set_gain)(struct tegra_clk_pll_freq_table *cfg);
-        int (*calc_rate)(struct clk_hw *hw,struct tegra_clk_pll_freq_table *cfg,unsigned long rate, unsigned long parent_rate);
-        unsigned long (*adjust_vco)(struct tegra_clk_pll_params *pll_params,unsigned long parent_rate);
+        int (*calc_rate)(struct clk_hw *hw,struct tegra_clk_pll_freq_table *cfg, unsigned long rate, unsigned long parent_rate);
+        unsigned long (*adjust_vco)(struct tegra_clk_pll_params *pll_params, unsigned long parent_rate);
         void (*set_defaults)(struct tegra_clk_pll *pll);
-        int (*dyn_ramp)(struct tegra_clk_pll *pll,struct tegra_clk_pll_freq_table *cfg);
+        int (*dyn_ramp)(struct tegra_clk_pll *pll, struct tegra_clk_pll_freq_table *cfg);
     }
 
 .. _`tegra_clk_pll_params.members`:

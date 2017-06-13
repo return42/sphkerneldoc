@@ -467,7 +467,7 @@ Definition
         DPNI_OFF_RX_L4_CSUM,
         DPNI_OFF_TX_L3_CSUM,
         DPNI_OFF_TX_L4_CSUM,
-        };int dpni_set_offload(struct fsl_mc_io *mc_io,
+         } ;int dpni_set_offload(struct fsl_mc_io *mc_io,
         u32,
         u16,
         enum,
@@ -502,7 +502,7 @@ DPNI_OFF_TX_L3_CSUM
 DPNI_OFF_TX_L4_CSUM
     *undescribed*
 
-};int dpni_set_offload(struct fsl_mc_io \*mc_io
+} ;int dpni_set_offload(struct fsl_mc_io \*mc_io
     *undescribed*
 
 u32

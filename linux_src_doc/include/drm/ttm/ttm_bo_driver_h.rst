@@ -244,21 +244,21 @@ Definition
 .. code-block:: c
 
     struct ttm_bo_driver {
-        struct ttm_tt *(*ttm_tt_create)(struct ttm_bo_device *bdev,unsigned long size,uint32_t page_flags,struct page *dummy_read_page);
+        struct ttm_tt *(*ttm_tt_create)(struct ttm_bo_device *bdev,unsigned long size,uint32_t page_flags, struct page *dummy_read_page);
         int (*ttm_tt_populate)(struct ttm_tt *ttm);
         void (*ttm_tt_unpopulate)(struct ttm_tt *ttm);
         int (*invalidate_caches)(struct ttm_bo_device *bdev, uint32_t flags);
-        int (*init_mem_type)(struct ttm_bo_device *bdev, uint32_t type,struct ttm_mem_type_manager *man);
-        bool (*eviction_valuable)(struct ttm_buffer_object *bo,const struct ttm_place *place);
-        void (*evict_flags)(struct ttm_buffer_object *bo,struct ttm_placement *placement);
-        int (*move)(struct ttm_buffer_object *bo, bool evict,bool interruptible, bool no_wait_gpu,struct ttm_mem_reg *new_mem);
-        int (*verify_access)(struct ttm_buffer_object *bo,struct file *filp);
-        void (*move_notify)(struct ttm_buffer_object *bo,bool evict,struct ttm_mem_reg *new_mem);
+        int (*init_mem_type)(struct ttm_bo_device *bdev, uint32_t type, struct ttm_mem_type_manager *man);
+        bool (*eviction_valuable)(struct ttm_buffer_object *bo, const struct ttm_place *place);
+        void (*evict_flags)(struct ttm_buffer_object *bo, struct ttm_placement *placement);
+        int (*move)(struct ttm_buffer_object *bo, bool evict,bool interruptible, bool no_wait_gpu, struct ttm_mem_reg *new_mem);
+        int (*verify_access)(struct ttm_buffer_object *bo, struct file *filp);
+        void (*move_notify)(struct ttm_buffer_object *bo,bool evict, struct ttm_mem_reg *new_mem);
         int (*fault_reserve_notify)(struct ttm_buffer_object *bo);
         void (*swap_notify)(struct ttm_buffer_object *bo);
-        int (*io_mem_reserve)(struct ttm_bo_device *bdev,struct ttm_mem_reg *mem);
-        void (*io_mem_free)(struct ttm_bo_device *bdev,struct ttm_mem_reg *mem);
-        unsigned long (*io_mem_pfn)(struct ttm_buffer_object *bo,unsigned long page_offset);
+        int (*io_mem_reserve)(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem);
+        void (*io_mem_free)(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem);
+        unsigned long (*io_mem_pfn)(struct ttm_buffer_object *bo, unsigned long page_offset);
     }
 
 .. _`ttm_bo_driver.members`:

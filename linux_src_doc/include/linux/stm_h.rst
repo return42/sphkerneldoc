@@ -109,11 +109,11 @@ Definition
         unsigned int sw_nchannels;
         unsigned int sw_mmiosz;
         unsigned int hw_override;
-        ssize_t (*packet)(struct stm_data *, unsigned int,unsigned int, unsigned int,unsigned int, unsigned int,const unsigned char *);
-        phys_addr_t (*mmio_addr)(struct stm_data *, unsigned int,unsigned int, unsigned int);
-        int (*link)(struct stm_data *, unsigned int,unsigned int);
-        void (*unlink)(struct stm_data *, unsigned int,unsigned int);
-        long (*set_options)(struct stm_data *, unsigned int,unsigned int, unsigned int,unsigned long);
+        ssize_t (*packet)(struct stm_data *, unsigned int,unsigned int, unsigned int,unsigned int, unsigned int, const unsigned char *);
+        phys_addr_t (*mmio_addr)(struct stm_data *, unsigned int, unsigned int, unsigned int);
+        int (*link)(struct stm_data *, unsigned int, unsigned int);
+        void (*unlink)(struct stm_data *, unsigned int, unsigned int);
+        long (*set_options)(struct stm_data *, unsigned int,unsigned int, unsigned int, unsigned long);
     }
 
 .. _`stm_data.members`:

@@ -32,7 +32,7 @@ Definition
         unsigned int clock_src;
         unsigned int gate_src;
         bool busy;
-        int (*insn_config)(struct comedi_device *dev,struct comedi_subdevice *s,struct comedi_insn *insn, unsigned int *data);
+        int (*insn_config)(struct comedi_device *dev,struct comedi_subdevice *s, struct comedi_insn *insn, unsigned int *data);
     }
 
 .. _`comedi_8254.members`:

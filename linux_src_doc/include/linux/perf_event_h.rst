@@ -139,10 +139,10 @@ Definition
         int (*commit_txn)(struct pmu *pmu);
         void (*cancel_txn)(struct pmu *pmu);
         int (*event_idx)(struct perf_event *event);
-        void (*sched_task)(struct perf_event_context *ctx,bool sched_in);
+        void (*sched_task)(struct perf_event_context *ctx, bool sched_in);
         size_t task_ctx_size;
         u64 (*count)(struct perf_event *event);
-        void *(*setup_aux)(int cpu, void **pages,int nr_pages, bool overwrite);
+        void *(*setup_aux)(int cpu, void **pages, int nr_pages, bool overwrite);
         void (*free_aux)(void *aux);
         int (*addr_filters_validate)(struct list_head *filters);
         void (*addr_filters_sync)(struct perf_event *event);

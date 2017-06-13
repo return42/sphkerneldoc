@@ -75,7 +75,7 @@ Definition
 
     struct pri_detector {
         void (*exit)(struct pri_detector *de);
-        struct pri_sequence *(*add_pulse)(struct pri_detector *de, struct pulse_event *e);
+        struct pri_sequence * (*add_pulse)(struct pri_detector *de, struct pulse_event *e);
         void (*reset)(struct pri_detector *de, u64 ts);
     }
 

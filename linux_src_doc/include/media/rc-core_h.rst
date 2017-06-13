@@ -174,9 +174,9 @@ Definition
         void (*s_idle)(struct rc_dev *dev, bool enable);
         int (*s_learning_mode)(struct rc_dev *dev, int enable);
         int (*s_carrier_report)(struct rc_dev *dev, int enable);
-        int (*s_filter)(struct rc_dev *dev,struct rc_scancode_filter *filter);
-        int (*s_wakeup_filter)(struct rc_dev *dev,struct rc_scancode_filter *filter);
-        int (*s_timeout)(struct rc_dev *dev,unsigned int timeout);
+        int (*s_filter)(struct rc_dev *dev, struct rc_scancode_filter *filter);
+        int (*s_wakeup_filter)(struct rc_dev *dev, struct rc_scancode_filter *filter);
+        int (*s_timeout)(struct rc_dev *dev, unsigned int timeout);
     }
 
 .. _`rc_dev.members`:

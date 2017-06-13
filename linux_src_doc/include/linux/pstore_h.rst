@@ -105,7 +105,7 @@ Definition
         int (*close)(struct pstore_info *psi);
         ssize_t (*read)(struct pstore_record *record);
         int (*write)(struct pstore_record *record);
-        int (*write_user)(struct pstore_record *record,const char __user *buf);
+        int (*write_user)(struct pstore_record *record, const char __user *buf);
         int (*erase)(struct pstore_record *record);
     }
 

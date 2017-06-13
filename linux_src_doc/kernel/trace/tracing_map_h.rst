@@ -19,7 +19,7 @@ Definition
 
     struct tracing_map_ops {
         int (*elt_alloc)(struct tracing_map_elt *elt);
-        void (*elt_copy)(struct tracing_map_elt *to,struct tracing_map_elt *from);
+        void (*elt_copy)(struct tracing_map_elt *to, struct tracing_map_elt *from);
         void (*elt_free)(struct tracing_map_elt *elt);
         void (*elt_clear)(struct tracing_map_elt *elt);
         void (*elt_init)(struct tracing_map_elt *elt);

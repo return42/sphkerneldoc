@@ -61,9 +61,9 @@ Definition
         bool may_evict;
         int (*create)(struct vmw_resource *res);
         int (*destroy)(struct vmw_resource *res);
-        int (*bind)(struct vmw_resource *res,struct ttm_validate_buffer *val_buf);
-        int (*unbind)(struct vmw_resource *res,bool readback,struct ttm_validate_buffer *val_buf);
-        void (*commit_notify)(struct vmw_resource *res,enum vmw_cmdbuf_res_state state);
+        int (*bind)(struct vmw_resource *res, struct ttm_validate_buffer *val_buf);
+        int (*unbind)(struct vmw_resource *res,bool readback, struct ttm_validate_buffer *val_buf);
+        void (*commit_notify)(struct vmw_resource *res, enum vmw_cmdbuf_res_state state);
     }
 
 .. _`vmw_res_func.members`:

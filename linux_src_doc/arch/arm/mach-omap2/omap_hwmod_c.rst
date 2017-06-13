@@ -21,9 +21,9 @@ Definition
         void (*enable_module)(struct omap_hwmod *oh);
         int (*disable_module)(struct omap_hwmod *oh);
         int (*wait_target_ready)(struct omap_hwmod *oh);
-        int (*assert_hardreset)(struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
-        int (*deassert_hardreset)(struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
-        int (*is_hardreset_asserted)(struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
+        int (*assert_hardreset)(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri);
+        int (*deassert_hardreset)(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri);
+        int (*is_hardreset_asserted)(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri);
         int (*init_clkdm)(struct omap_hwmod *oh);
         void (*update_context_lost)(struct omap_hwmod *oh);
         int (*get_context_lost)(struct omap_hwmod *oh);

@@ -51,7 +51,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_flash_ops {
-        int (*external_strobe_set)(struct v4l2_flash *v4l2_flash,bool enable);
+        int (*external_strobe_set)(struct v4l2_flash *v4l2_flash, bool enable);
         enum led_brightness (*intensity_to_led_brightness)(struct v4l2_flash *v4l2_flash, s32 intensity);
         s32 (*led_brightness_to_intensity)(struct v4l2_flash *v4l2_flash, enum led_brightness);
     }

@@ -369,8 +369,8 @@ Definition
         struct img_ir_timings rtimings;
         unsigned int repeat;
         struct img_ir_control control;
-        int (*scancode)(int len, u64 raw, u64 enabled_protocols,struct img_ir_scancode_req *request);
-        int (*filter)(const struct rc_scancode_filter *in,struct img_ir_filter *out, u64 protocols);
+        int (*scancode)(int len, u64 raw, u64 enabled_protocols, struct img_ir_scancode_req *request);
+        int (*filter)(const struct rc_scancode_filter *in, struct img_ir_filter *out, u64 protocols);
     }
 
 .. _`img_ir_decoder.members`:

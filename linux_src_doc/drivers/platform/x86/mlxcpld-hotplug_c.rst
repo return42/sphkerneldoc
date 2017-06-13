@@ -59,7 +59,7 @@ Definition
         struct mlxcpld_hotplug_platform_data *plat;
         struct device *hwmon;
         struct attribute  *mlxcpld_hotplug_attr;
-        struct sensor_device_attribute_2mlxcpld_hotplug_dev_attr;
+        struct sensor_device_attribute_2 mlxcpld_hotplug_dev_attr;
         struct attribute_group group;
         const struct attribute_group  *groups;
         struct delayed_work dwork;
@@ -90,8 +90,8 @@ hwmon
 mlxcpld_hotplug_attr
     sysfs attributes array;
 
-sensor_device_attribute_2mlxcpld_hotplug_dev_attr
-    *undescribed*
+mlxcpld_hotplug_dev_attr
+    sysfs sensor device attribute array;
 
 group
     sysfs attribute group;

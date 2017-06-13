@@ -160,7 +160,7 @@ Definition
     struct gmap_notifier {
         struct list_head list;
         struct rcu_head rcu;
-        void (*notifier_call)(struct gmap *gmap, unsigned long start,unsigned long end);
+        void (*notifier_call)(struct gmap *gmap, unsigned long start, unsigned long end);
     }
 
 .. _`gmap_notifier.members`:

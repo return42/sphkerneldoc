@@ -79,7 +79,7 @@ Definition
 .. code-block:: c
 
     struct tee_shm_pool_mgr_ops {
-        int (*alloc)(struct tee_shm_pool_mgr *poolmgr, struct tee_shm *shm,size_t size);
+        int (*alloc)(struct tee_shm_pool_mgr *poolmgr, struct tee_shm *shm, size_t size);
         void (*free)(struct tee_shm_pool_mgr *poolmgr, struct tee_shm *shm);
     }
 

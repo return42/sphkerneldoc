@@ -94,13 +94,13 @@ Definition
         int (*idle_device)(const struct ti_sci_handle *handle, u32 id);
         int (*put_device)(const struct ti_sci_handle *handle, u32 id);
         int (*is_valid)(const struct ti_sci_handle *handle, u32 id);
-        int (*get_context_loss_count)(const struct ti_sci_handle *handle,u32 id, u32 *count);
-        int (*is_idle)(const struct ti_sci_handle *handle, u32 id,bool *requested_state);
-        int (*is_stop)(const struct ti_sci_handle *handle, u32 id,bool *req_state, bool *current_state);
-        int (*is_on)(const struct ti_sci_handle *handle, u32 id,bool *req_state, bool *current_state);
-        int (*is_transitioning)(const struct ti_sci_handle *handle, u32 id,bool *current_state);
-        int (*set_device_resets)(const struct ti_sci_handle *handle, u32 id,u32 reset_state);
-        int (*get_device_resets)(const struct ti_sci_handle *handle, u32 id,u32 *reset_state);
+        int (*get_context_loss_count)(const struct ti_sci_handle *handle, u32 id, u32 *count);
+        int (*is_idle)(const struct ti_sci_handle *handle, u32 id, bool *requested_state);
+        int (*is_stop)(const struct ti_sci_handle *handle, u32 id, bool *req_state, bool *current_state);
+        int (*is_on)(const struct ti_sci_handle *handle, u32 id, bool *req_state, bool *current_state);
+        int (*is_transitioning)(const struct ti_sci_handle *handle, u32 id, bool *current_state);
+        int (*set_device_resets)(const struct ti_sci_handle *handle, u32 id, u32 reset_state);
+        int (*get_device_resets)(const struct ti_sci_handle *handle, u32 id, u32 *reset_state);
     }
 
 .. _`ti_sci_dev_ops.members`:
@@ -212,18 +212,18 @@ Definition
 .. code-block:: c
 
     struct ti_sci_clk_ops {
-        int (*get_clock)(const struct ti_sci_handle *handle, u32 did, u8 cid,bool needs_ssc, bool can_change_freq,bool enable_input_term);
+        int (*get_clock)(const struct ti_sci_handle *handle, u32 did, u8 cid,bool needs_ssc, bool can_change_freq, bool enable_input_term);
         int (*idle_clock)(const struct ti_sci_handle *handle, u32 did, u8 cid);
         int (*put_clock)(const struct ti_sci_handle *handle, u32 did, u8 cid);
-        int (*is_auto)(const struct ti_sci_handle *handle, u32 did, u8 cid,bool *req_state);
-        int (*is_on)(const struct ti_sci_handle *handle, u32 did, u8 cid,bool *req_state, bool *current_state);
-        int (*is_off)(const struct ti_sci_handle *handle, u32 did, u8 cid,bool *req_state, bool *current_state);
-        int (*set_parent)(const struct ti_sci_handle *handle, u32 did, u8 cid,u8 parent_id);
-        int (*get_parent)(const struct ti_sci_handle *handle, u32 did, u8 cid,u8 *parent_id);
-        int (*get_num_parents)(const struct ti_sci_handle *handle, u32 did,u8 cid, u8 *num_parents);
-        int (*get_best_match_freq)(const struct ti_sci_handle *handle, u32 did,u8 cid, u64 min_freq, u64 target_freq,u64 max_freq, u64 *match_freq);
-        int (*set_freq)(const struct ti_sci_handle *handle, u32 did, u8 cid,u64 min_freq, u64 target_freq, u64 max_freq);
-        int (*get_freq)(const struct ti_sci_handle *handle, u32 did, u8 cid,u64 *current_freq);
+        int (*is_auto)(const struct ti_sci_handle *handle, u32 did, u8 cid, bool *req_state);
+        int (*is_on)(const struct ti_sci_handle *handle, u32 did, u8 cid, bool *req_state, bool *current_state);
+        int (*is_off)(const struct ti_sci_handle *handle, u32 did, u8 cid, bool *req_state, bool *current_state);
+        int (*set_parent)(const struct ti_sci_handle *handle, u32 did, u8 cid, u8 parent_id);
+        int (*get_parent)(const struct ti_sci_handle *handle, u32 did, u8 cid, u8 *parent_id);
+        int (*get_num_parents)(const struct ti_sci_handle *handle, u32 did, u8 cid, u8 *num_parents);
+        int (*get_best_match_freq)(const struct ti_sci_handle *handle, u32 did,u8 cid, u64 min_freq, u64 target_freq, u64 max_freq, u64 *match_freq);
+        int (*set_freq)(const struct ti_sci_handle *handle, u32 did, u8 cid, u64 min_freq, u64 target_freq, u64 max_freq);
+        int (*get_freq)(const struct ti_sci_handle *handle, u32 did, u8 cid, u64 *current_freq);
     }
 
 .. _`ti_sci_clk_ops.members`:

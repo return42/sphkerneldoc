@@ -323,17 +323,17 @@ Definition
 .. code-block:: c
 
     struct nft_set_ops {
-        bool (*lookup)(const struct net *net,const struct nft_set *set,const u32 *key,const struct nft_set_ext **ext);
+        bool (*lookup)(const struct net *net,const struct nft_set *set,const u32 *key, const struct nft_set_ext **ext);
         bool (*update)(struct nft_set *set,const u32 *key,void *(*new);
-        int (*insert)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem,struct nft_set_ext **ext);
-        void (*activate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
-        void * (*deactivate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
-        bool (*flush)(const struct net *net,const struct nft_set *set,void *priv);
-        void (*remove)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
-        void (*walk)(const struct nft_ctx *ctx,struct nft_set *set,struct nft_set_iter *iter);
+        int (*insert)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem, struct nft_set_ext **ext);
+        void (*activate)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
+        void * (*deactivate)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
+        bool (*flush)(const struct net *net,const struct nft_set *set, void *priv);
+        void (*remove)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
+        void (*walk)(const struct nft_ctx *ctx,struct nft_set *set, struct nft_set_iter *iter);
         unsigned int (*privsize)(const struct nlattr * const nla[]);
-        bool (*estimate)(const struct nft_set_desc *desc,u32 features,struct nft_set_estimate *est);
-        int (*init)(const struct nft_set *set,const struct nft_set_desc *desc,const struct nlattr * const nla[]);
+        bool (*estimate)(const struct nft_set_desc *desc,u32 features, struct nft_set_estimate *est);
+        int (*init)(const struct nft_set *set,const struct nft_set_desc *desc, const struct nlattr * const nla[]);
         void (*destroy)(const struct nft_set *set);
         struct list_head list;
         struct module *owner;
@@ -787,7 +787,7 @@ Definition
 .. code-block:: c
 
     struct nft_expr_type {
-        const struct nft_expr_ops *(*select_ops)(const struct nft_ctx *,const struct nlattr * const tb[]);
+        const struct nft_expr_ops *(*select_ops)(const struct nft_ctx *, const struct nlattr * const tb[]);
         const struct nft_expr_ops *ops;
         struct list_head list;
         const char *name;
@@ -1154,7 +1154,7 @@ Definition
         struct list_head tables;
         u32 flags;
         unsigned int nops;
-        void (*hook_ops_init)(struct nf_hook_ops *,unsigned int);
+        void (*hook_ops_init)(struct nf_hook_ops *, unsigned int);
         nf_hookfn  *hooks;
     }
 
@@ -1259,16 +1259,16 @@ Definition
 .. code-block:: c
 
     struct nft_object_type {
-        void (*eval)(struct nft_object *obj,struct nft_regs *regs,const struct nft_pktinfo *pkt);
+        void (*eval)(struct nft_object *obj,struct nft_regs *regs, const struct nft_pktinfo *pkt);
         struct list_head list;
         u32 type;
         unsigned int size;
         unsigned int maxattr;
         struct module *owner;
         const struct nla_policy *policy;
-        int (*init)(const struct nft_ctx *ctx,const struct nlattr *const tb[],struct nft_object *obj);
+        int (*init)(const struct nft_ctx *ctx,const struct nlattr *const tb[], struct nft_object *obj);
         void (*destroy)(struct nft_object *obj);
-        int (*dump)(struct sk_buff *skb,struct nft_object *obj,bool reset);
+        int (*dump)(struct sk_buff *skb,struct nft_object *obj, bool reset);
     }
 
 .. _`nft_object_type.members`:

@@ -938,14 +938,14 @@ Definition
         void (*remove)(struct efx_nic *efx);
         int (*reconfigure)(struct efx_nic *efx);
         bool (*poll)(struct efx_nic *efx);
-        void (*get_link_ksettings)(struct efx_nic *efx,struct ethtool_link_ksettings *cmd);
-        int (*set_link_ksettings)(struct efx_nic *efx,const struct ethtool_link_ksettings *cmd);
+        void (*get_link_ksettings)(struct efx_nic *efx, struct ethtool_link_ksettings *cmd);
+        int (*set_link_ksettings)(struct efx_nic *efx, const struct ethtool_link_ksettings *cmd);
         void (*set_npage_adv)(struct efx_nic *efx, u32);
         int (*test_alive)(struct efx_nic *efx);
         const char *(*test_name)(struct efx_nic *efx, unsigned int index);
         int (*run_tests)(struct efx_nic *efx, int *results, unsigned flags);
-        int (*get_module_eeprom)(struct efx_nic *efx,struct ethtool_eeprom *ee,u8 *data);
-        int (*get_module_info)(struct efx_nic *efx,struct ethtool_modinfo *modinfo);
+        int (*get_module_eeprom)(struct efx_nic *efx,struct ethtool_eeprom *ee, u8 *data);
+        int (*get_module_info)(struct efx_nic *efx, struct ethtool_modinfo *modinfo);
     }
 
 .. _`efx_phy_operations.members`:
@@ -1122,7 +1122,7 @@ Definition
         unsigned long reset_pending;
         struct efx_channel  *channel;
         struct efx_msi_context msi_context;
-        const struct efx_channel_type  *extra_channel_type;
+        const struct efx_channel_type *extra_channel_type;
         unsigned rxq_entries;
         unsigned txq_entries;
         unsigned int txq_stop_thresh;
@@ -1638,7 +1638,7 @@ Definition
         void (*prepare_flr)(struct efx_nic *efx);
         void (*finish_flr)(struct efx_nic *efx);
         size_t (*describe_stats)(struct efx_nic *efx, u8 *names);
-        size_t (*update_stats)(struct efx_nic *efx, u64 *full_stats,struct rtnl_link_stats64 *core_stats);
+        size_t (*update_stats)(struct efx_nic *efx, u64 *full_stats, struct rtnl_link_stats64 *core_stats);
         void (*start_stats)(struct efx_nic *efx);
         void (*pull_stats)(struct efx_nic *efx);
         void (*stop_stats)(struct efx_nic *efx);
@@ -1653,9 +1653,9 @@ Definition
         void (*resume_wol)(struct efx_nic *efx);
         int (*test_chip)(struct efx_nic *efx, struct efx_self_tests *tests);
         int (*test_nvram)(struct efx_nic *efx);
-        void (*mcdi_request)(struct efx_nic *efx,const efx_dword_t *hdr, size_t hdr_len,const efx_dword_t *sdu, size_t sdu_len);
+        void (*mcdi_request)(struct efx_nic *efx,const efx_dword_t *hdr, size_t hdr_len, const efx_dword_t *sdu, size_t sdu_len);
         bool (*mcdi_poll_response)(struct efx_nic *efx);
-        void (*mcdi_read_response)(struct efx_nic *efx, efx_dword_t *pdu,size_t pdu_offset, size_t pdu_len);
+        void (*mcdi_read_response)(struct efx_nic *efx, efx_dword_t *pdu, size_t pdu_offset, size_t pdu_len);
         int (*mcdi_poll_reboot)(struct efx_nic *efx);
         void (*mcdi_reboot_detected)(struct efx_nic *efx);
         void (*irq_enable_master)(struct efx_nic *efx);
@@ -1667,8 +1667,8 @@ Definition
         void (*tx_init)(struct efx_tx_queue *tx_queue);
         void (*tx_remove)(struct efx_tx_queue *tx_queue);
         void (*tx_write)(struct efx_tx_queue *tx_queue);
-        unsigned int (*tx_limit_len)(struct efx_tx_queue *tx_queue,dma_addr_t dma_addr, unsigned int len);
-        int (*rx_push_rss_config)(struct efx_nic *efx, bool user,const u32 *rx_indir_table, const u8 *key);
+        unsigned int (*tx_limit_len)(struct efx_tx_queue *tx_queue, dma_addr_t dma_addr, unsigned int len);
+        int (*rx_push_rss_config)(struct efx_nic *efx, bool user, const u32 *rx_indir_table, const u8 *key);
         int (*rx_pull_rss_config)(struct efx_nic *efx);
         int (*rx_probe)(struct efx_rx_queue *rx_queue);
         void (*rx_init)(struct efx_rx_queue *rx_queue);
@@ -1686,42 +1686,42 @@ Definition
         void (*filter_table_restore)(struct efx_nic *efx);
         void (*filter_table_remove)(struct efx_nic *efx);
         void (*filter_update_rx_scatter)(struct efx_nic *efx);
-        s32 (*filter_insert)(struct efx_nic *efx,struct efx_filter_spec *spec, bool replace);
-        int (*filter_remove_safe)(struct efx_nic *efx,enum efx_filter_priority priority,u32 filter_id);
-        int (*filter_get_safe)(struct efx_nic *efx,enum efx_filter_priority priority,u32 filter_id, struct efx_filter_spec *);
-        int (*filter_clear_rx)(struct efx_nic *efx,enum efx_filter_priority priority);
-        u32 (*filter_count_rx_used)(struct efx_nic *efx,enum efx_filter_priority priority);
+        s32 (*filter_insert)(struct efx_nic *efx, struct efx_filter_spec *spec, bool replace);
+        int (*filter_remove_safe)(struct efx_nic *efx,enum efx_filter_priority priority, u32 filter_id);
+        int (*filter_get_safe)(struct efx_nic *efx,enum efx_filter_priority priority, u32 filter_id, struct efx_filter_spec *);
+        int (*filter_clear_rx)(struct efx_nic *efx, enum efx_filter_priority priority);
+        u32 (*filter_count_rx_used)(struct efx_nic *efx, enum efx_filter_priority priority);
         u32 (*filter_get_rx_id_limit)(struct efx_nic *efx);
-        s32 (*filter_get_rx_ids)(struct efx_nic *efx,enum efx_filter_priority priority,u32 *buf, u32 size);
+        s32 (*filter_get_rx_ids)(struct efx_nic *efx,enum efx_filter_priority priority, u32 *buf, u32 size);
     #ifdef CONFIG_RFS_ACCEL
-        s32 (*filter_rfs_insert)(struct efx_nic *efx,struct efx_filter_spec *spec);
-        bool (*filter_rfs_expire_one)(struct efx_nic *efx, u32 flow_id,unsigned int index);
+        s32 (*filter_rfs_insert)(struct efx_nic *efx, struct efx_filter_spec *spec);
+        bool (*filter_rfs_expire_one)(struct efx_nic *efx, u32 flow_id, unsigned int index);
     #endif
     #ifdef CONFIG_SFC_MTD
         int (*mtd_probe)(struct efx_nic *efx);
         void (*mtd_rename)(struct efx_mtd_partition *part);
-        int (*mtd_read)(struct mtd_info *mtd, loff_t start, size_t len,size_t *retlen, u8 *buffer);
+        int (*mtd_read)(struct mtd_info *mtd, loff_t start, size_t len, size_t *retlen, u8 *buffer);
         int (*mtd_erase)(struct mtd_info *mtd, loff_t start, size_t len);
-        int (*mtd_write)(struct mtd_info *mtd, loff_t start, size_t len,size_t *retlen, const u8 *buffer);
+        int (*mtd_write)(struct mtd_info *mtd, loff_t start, size_t len, size_t *retlen, const u8 *buffer);
         int (*mtd_sync)(struct mtd_info *mtd);
     #endif
         void (*ptp_write_host_time)(struct efx_nic *efx, u32 host_time);
         int (*ptp_set_ts_sync_events)(struct efx_nic *efx, bool en, bool temp);
-        int (*ptp_set_ts_config)(struct efx_nic *efx,struct hwtstamp_config *init);
+        int (*ptp_set_ts_config)(struct efx_nic *efx, struct hwtstamp_config *init);
         int (*sriov_configure)(struct efx_nic *efx, int num_vfs);
         int (*vlan_rx_add_vid)(struct efx_nic *efx, __be16 proto, u16 vid);
         int (*vlan_rx_kill_vid)(struct efx_nic *efx, __be16 proto, u16 vid);
-        int (*get_phys_port_id)(struct efx_nic *efx,struct netdev_phys_item_id *ppid);
+        int (*get_phys_port_id)(struct efx_nic *efx, struct netdev_phys_item_id *ppid);
         int (*sriov_init)(struct efx_nic *efx);
         void (*sriov_fini)(struct efx_nic *efx);
         bool (*sriov_wanted)(struct efx_nic *efx);
         void (*sriov_reset)(struct efx_nic *efx);
         void (*sriov_flr)(struct efx_nic *efx, unsigned vf_i);
         int (*sriov_set_vf_mac)(struct efx_nic *efx, int vf_i, u8 *mac);
-        int (*sriov_set_vf_vlan)(struct efx_nic *efx, int vf_i, u16 vlan,u8 qos);
-        int (*sriov_set_vf_spoofchk)(struct efx_nic *efx, int vf_i,bool spoofchk);
-        int (*sriov_get_vf_config)(struct efx_nic *efx, int vf_i,struct ifla_vf_info *ivi);
-        int (*sriov_set_vf_link_state)(struct efx_nic *efx, int vf_i,int link_state);
+        int (*sriov_set_vf_vlan)(struct efx_nic *efx, int vf_i, u16 vlan, u8 qos);
+        int (*sriov_set_vf_spoofchk)(struct efx_nic *efx, int vf_i, bool spoofchk);
+        int (*sriov_get_vf_config)(struct efx_nic *efx, int vf_i, struct ifla_vf_info *ivi);
+        int (*sriov_set_vf_link_state)(struct efx_nic *efx, int vf_i, int link_state);
         int (*vswitching_probe)(struct efx_nic *efx);
         int (*vswitching_restore)(struct efx_nic *efx);
         void (*vswitching_remove)(struct efx_nic *efx);

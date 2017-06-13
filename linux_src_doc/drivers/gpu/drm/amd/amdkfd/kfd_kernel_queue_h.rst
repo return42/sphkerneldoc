@@ -17,9 +17,9 @@ Definition
 .. code-block:: c
 
     struct kernel_queue_ops {
-        bool (*initialize)(struct kernel_queue *kq, struct kfd_dev *dev,enum kfd_queue_type type, unsigned int queue_size);
+        bool (*initialize)(struct kernel_queue *kq, struct kfd_dev *dev, enum kfd_queue_type type, unsigned int queue_size);
         void (*uninitialize)(struct kernel_queue *kq);
-        int (*acquire_packet_buffer)(struct kernel_queue *kq,size_t packet_size_in_dwords,unsigned int **buffer_ptr);
+        int (*acquire_packet_buffer)(struct kernel_queue *kq,size_t packet_size_in_dwords, unsigned int **buffer_ptr);
         void (*submit_packet)(struct kernel_queue *kq);
         void (*rollback_packet)(struct kernel_queue *kq);
     }
