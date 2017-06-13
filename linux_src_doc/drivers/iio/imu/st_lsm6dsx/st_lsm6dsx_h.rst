@@ -96,7 +96,7 @@ Definition
         struct iio_dev  *iio_devs;
         const struct st_lsm6dsx_settings *settings;
         const struct st_lsm6dsx_transfer_function *tf;
-    #if definedCONFIG_SPI_MASTER
+    #if defined(CONFIG_SPI_MASTER)
         struct st_lsm6dsx_transfer_buffer tb;
     #endif
     }

@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct w1_reg_num {
-    #if defined__LITTLE_ENDIAN_BITFIELD
+    #if defined(__LITTLE_ENDIAN_BITFIELD)
         __u64 family:8:48:8;
         __u64 id:8:48;
         __u64 crc:8;
-    #elif defined__BIG_ENDIAN_BITFIELD
+    #elif defined(__BIG_ENDIAN_BITFIELD)
         __u64 crc:8;
         __u64 id:8:48;
         __u64 family:8:48:8;

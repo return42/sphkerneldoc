@@ -26,14 +26,14 @@ Definition
     #endif
         __be32 flow_label;
         __u32 frag_size;
-    #if defined__BIG_ENDIAN_BITFIELD
+    #if defined(__BIG_ENDIAN_BITFIELD)
         __s16 hop_limit:9;
         __u16 __unused_1:7;
     #else
         __u16 __unused_1:7;
         __s16 hop_limit:9;
     #endif
-    #if defined__BIG_ENDIAN_BITFIELD
+    #if defined(__BIG_ENDIAN_BITFIELD)
         __s16 mcast_hops:9;
         __u16 __unused_2:1:6;
         __u16 mc_loop:1;

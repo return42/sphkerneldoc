@@ -926,7 +926,7 @@ Definition
     #define DWC2_CORE_REV_3_10a 0x4f54310a
     #define DWC2_FS_IOT_REV_1_00a 0x5531100a
     #define DWC2_HS_IOT_REV_1_00a 0x5532100a
-    #if IS_ENABLEDCONFIG_USB_DWC2_HOST || IS_ENABLEDCONFIG_USB_DWC2_DUAL_ROLE
+    #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
         union dwc2_hcd_internal_flags flags;
         struct list_head non_periodic_sched_inactive;
         struct list_head non_periodic_sched_active;
@@ -983,7 +983,7 @@ Definition
         u64 hfnum_other_frrem_accum_b;
     #endif
     #endif
-    #if IS_ENABLEDCONFIG_USB_DWC2_PERIPHERAL || \
+    #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || \
         IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)struct usb_gadget_driver *driver;
         int fifo_mem;
         unsigned int dedicated_fifos:1;

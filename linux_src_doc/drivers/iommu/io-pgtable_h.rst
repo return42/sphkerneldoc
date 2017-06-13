@@ -64,10 +64,10 @@ Definition
 .. code-block:: c
 
     struct io_pgtable_cfg {
-    #define IO_PGTABLE_QUIRK_ARM_NS BIT0
-    #define IO_PGTABLE_QUIRK_NO_PERMS BIT1
-    #define IO_PGTABLE_QUIRK_TLBI_ON_MAP BIT2
-    #define IO_PGTABLE_QUIRK_ARM_MTK_4GB BIT3
+    #define IO_PGTABLE_QUIRK_ARM_NS BIT(0)
+    #define IO_PGTABLE_QUIRK_NO_PERMS BIT(1)
+    #define IO_PGTABLE_QUIRK_TLBI_ON_MAP BIT(2)
+    #define IO_PGTABLE_QUIRK_ARM_MTK_4GB BIT(3)
         unsigned long quirks;
         unsigned long pgsize_bitmap;
         unsigned int ias;

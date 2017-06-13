@@ -670,7 +670,7 @@ Definition
         const struct attribute_group  *groups;
         int groupcounter;
         unsigned long flags;
-    #if definedCONFIG_DEBUG_FS
+    #if defined(CONFIG_DEBUG_FS)
         struct dentry *debugfs_dentry;
         unsigned cached_reg_addr;
     #endif

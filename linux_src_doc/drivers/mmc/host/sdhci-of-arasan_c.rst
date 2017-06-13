@@ -107,7 +107,7 @@ Definition
         struct regmap *soc_ctl_base;
         const struct sdhci_arasan_soc_ctl_map *soc_ctl_map;
         unsigned int quirks;
-    #define SDHCI_ARASAN_QUIRK_FORCE_CDTEST BIT0
+    #define SDHCI_ARASAN_QUIRK_FORCE_CDTEST BIT(0)
     }
 
 .. _`sdhci_arasan_data.members`:

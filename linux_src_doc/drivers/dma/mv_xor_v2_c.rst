@@ -33,9 +33,9 @@ Definition
     #define DESC_OP_MODE_XOR 6
     #define DESC_OP_MODE_RAID6 7
     #define DESC_OP_MODE_RAID6_REC 8
-    #define DESC_Q_BUFFER_ENABLE BIT16
-    #define DESC_P_BUFFER_ENABLE BIT17
-    #define DESC_IOD BIT27
+    #define DESC_Q_BUFFER_ENABLE BIT(16)
+    #define DESC_P_BUFFER_ENABLE BIT(17)
+    #define DESC_IOD BIT(27)
         u32 buff_size;
         u32 fill_pattern_src_addr;
         u32 data_buff_addr;

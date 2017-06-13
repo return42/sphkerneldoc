@@ -122,8 +122,8 @@ Definition
         const char *subname;
         u8 variant;
         u8 flags;
-    #define MVEBU_SETTING_GPO 1 << 0
-    #define MVEBU_SETTING_GPI 1 << 1
+    #define MVEBU_SETTING_GPO (1 << 0)
+    #define MVEBU_SETTING_GPI (1 << 1)
     }
 
 .. _`mvebu_mpp_ctrl_setting.members`:

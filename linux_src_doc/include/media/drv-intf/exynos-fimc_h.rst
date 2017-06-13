@@ -68,15 +68,15 @@ Definition
         u8 depth;
         u16 mdataplanes;
         u16 flags;
-    #define FMT_FLAGS_CAM 1 << 0
-    #define FMT_FLAGS_M2M_IN 1 << 1
-    #define FMT_FLAGS_M2M_OUT 1 << 2
-    #define FMT_FLAGS_M2M 1 << 1 | 1 << 2
-    #define FMT_HAS_ALPHA 1 << 3
-    #define FMT_FLAGS_COMPRESSED 1 << 4
-    #define FMT_FLAGS_WRITEBACK 1 << 5
-    #define FMT_FLAGS_RAW_BAYER 1 << 6
-    #define FMT_FLAGS_YUV 1 << 7
+    #define FMT_FLAGS_CAM (1 << 0)
+    #define FMT_FLAGS_M2M_IN (1 << 1)
+    #define FMT_FLAGS_M2M_OUT (1 << 2)
+    #define FMT_FLAGS_M2M (1 << 1 | 1 << 2)
+    #define FMT_HAS_ALPHA (1 << 3)
+    #define FMT_FLAGS_COMPRESSED (1 << 4)
+    #define FMT_FLAGS_WRITEBACK (1 << 5)
+    #define FMT_FLAGS_RAW_BAYER (1 << 6)
+    #define FMT_FLAGS_YUV (1 << 7)
     }
 
 .. _`fimc_fmt.members`:

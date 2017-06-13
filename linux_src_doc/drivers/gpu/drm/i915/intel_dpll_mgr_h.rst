@@ -202,7 +202,7 @@ Definition
         const char *name;
         enum intel_dpll_id id;
         struct intel_shared_dpll_funcs funcs;
-    #define INTEL_DPLL_ALWAYS_ON 1 << 0
+    #define INTEL_DPLL_ALWAYS_ON (1 << 0)
         uint32_t flags;
     }
 

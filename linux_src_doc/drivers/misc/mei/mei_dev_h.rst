@@ -555,7 +555,7 @@ Definition
         struct work_struct bus_rescan_work;
         struct list_head device_list;
         struct mutex cl_bus_lock;
-    #if IS_ENABLEDCONFIG_DEBUG_FS
+    #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
     #endif
         const struct mei_hw_ops *ops;

@@ -338,10 +338,10 @@ Definition
         struct list_head ptype_all;
         struct list_head ptype_specific;
         struct {unnamed_struct};
-    #if IS_ENABLEDCONFIG_GARP
+    #if IS_ENABLED(CONFIG_GARP)
         struct garp_port __rcu *garp_port;
     #endif
-    #if IS_ENABLEDCONFIG_MRP
+    #if IS_ENABLED(CONFIG_MRP)
         struct mrp_port __rcu *mrp_port;
     #endif
         struct device dev;
@@ -358,10 +358,10 @@ Definition
         u8 num_tc;
         struct netdev_tc_txq tc_to_txq;
         u8 prio_tc_map;
-    #if IS_ENABLEDCONFIG_FCOE
+    #if IS_ENABLED(CONFIG_FCOE)
         unsigned int fcoe_ddp_xid;
     #endif
-    #if IS_ENABLEDCONFIG_CGROUP_NET_PRIO
+    #if IS_ENABLED(CONFIG_CGROUP_NET_PRIO)
         struct netprio_map __rcu *priomap;
     #endif
         struct phy_device *phydev;

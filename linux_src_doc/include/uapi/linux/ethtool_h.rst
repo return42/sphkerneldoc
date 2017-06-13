@@ -1890,8 +1890,8 @@ Definition
         __u64 data;
         __u64 data_mask;
         __s32 action;
-    #define ETHTOOL_RXNTUPLE_ACTION_DROP -1
-    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR -2
+    #define ETHTOOL_RXNTUPLE_ACTION_DROP (-1)
+    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR (-2)
     }
 
 .. _`ethtool_rx_ntuple_flow_spec.members`:

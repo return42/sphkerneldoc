@@ -19,7 +19,7 @@ Definition
 
     struct v4l2_device {
         struct device *dev;
-    #if definedCONFIG_MEDIA_CONTROLLER
+    #if defined(CONFIG_MEDIA_CONTROLLER)
         struct media_device *mdev;
     #endif
         struct list_head subdevs;

@@ -318,9 +318,9 @@ Definition
         struct device_node *np;
         struct pinctrl_dev *pctl;
         unsigned flags;
-    #define PCS_QUIRK_SHARED_IRQ 1 << 2
-    #define PCS_FEAT_IRQ 1 << 1
-    #define PCS_FEAT_PINCONF 1 << 0
+    #define PCS_QUIRK_SHARED_IRQ (1 << 2)
+    #define PCS_FEAT_IRQ (1 << 1)
+    #define PCS_FEAT_PINCONF (1 << 0)
         struct property *missing_nr_pinctrl_cells;
         struct pcs_soc_data socdata;
         raw_spinlock_t lock;

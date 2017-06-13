@@ -1100,7 +1100,7 @@ Definition
         enum dmaengine_alignment xor_align;
         enum dmaengine_alignment pq_align;
         enum dmaengine_alignment fill_align;
-    #define DMA_HAS_PQ_CONTINUE 1 << 15
+    #define DMA_HAS_PQ_CONTINUE (1 << 15)
         int dev_id;
         struct device *dev;
         u32 src_addr_widths;

@@ -187,18 +187,18 @@ Definition
         unsigned int pixel_clock;
         unsigned int bpc;
         enum subpixel_order subpixel_order;
-    #define DRM_COLOR_FORMAT_RGB444 1<<0
-    #define DRM_COLOR_FORMAT_YCRCB444 1<<1
-    #define DRM_COLOR_FORMAT_YCRCB422 1<<2
+    #define DRM_COLOR_FORMAT_RGB444 (1<<0)
+    #define DRM_COLOR_FORMAT_YCRCB444 (1<<1)
+    #define DRM_COLOR_FORMAT_YCRCB422 (1<<2)
         u32 color_formats;
         const u32 *bus_formats;
         unsigned int num_bus_formats;
-    #define DRM_BUS_FLAG_DE_LOW 1<<0
-    #define DRM_BUS_FLAG_DE_HIGH 1<<1
-    #define DRM_BUS_FLAG_PIXDATA_POSEDGE 1<<2
-    #define DRM_BUS_FLAG_PIXDATA_NEGEDGE 1<<3
-    #define DRM_BUS_FLAG_DATA_MSB_TO_LSB 1<<4
-    #define DRM_BUS_FLAG_DATA_LSB_TO_MSB 1<<5
+    #define DRM_BUS_FLAG_DE_LOW (1<<0)
+    #define DRM_BUS_FLAG_DE_HIGH (1<<1)
+    #define DRM_BUS_FLAG_PIXDATA_POSEDGE (1<<2)
+    #define DRM_BUS_FLAG_PIXDATA_NEGEDGE (1<<3)
+    #define DRM_BUS_FLAG_DATA_MSB_TO_LSB (1<<4)
+    #define DRM_BUS_FLAG_DATA_LSB_TO_MSB (1<<5)
         u32 bus_flags;
         int max_tmds_clock;
         bool dvi_dual;
@@ -702,9 +702,9 @@ Definition
         struct drm_object_properties properties;
         struct drm_property_blob *path_blob_ptr;
         struct drm_property_blob *tile_blob_ptr;
-    #define DRM_CONNECTOR_POLL_HPD 1 << 0
-    #define DRM_CONNECTOR_POLL_CONNECT 1 << 1
-    #define DRM_CONNECTOR_POLL_DISCONNECT 1 << 2
+    #define DRM_CONNECTOR_POLL_HPD (1 << 0)
+    #define DRM_CONNECTOR_POLL_CONNECT (1 << 1)
+    #define DRM_CONNECTOR_POLL_DISCONNECT (1 << 2)
         uint8_t polled;
         int dpms;
         const struct drm_connector_helper_funcs *helper_private;

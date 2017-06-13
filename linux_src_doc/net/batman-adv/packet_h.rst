@@ -858,11 +858,11 @@ Definition
         u8 packet_type;
         u8 version;
         u8 ttl;
-    #if defined__BIG_ENDIAN_BITFIELD
+    #if defined(__BIG_ENDIAN_BITFIELD)
         u8 no:4;
         u8 priority:3;
         u8 reserved:1;
-    #elif defined__LITTLE_ENDIAN_BITFIELD
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
         u8 reserved:1;
         u8 priority:3;
         u8 no:4;

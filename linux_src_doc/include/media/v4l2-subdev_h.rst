@@ -1104,7 +1104,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev {
-    #if definedCONFIG_MEDIA_CONTROLLER
+    #if defined(CONFIG_MEDIA_CONTROLLER)
         struct media_entity entity;
     #endif
         struct list_head list;
@@ -1232,7 +1232,7 @@ Definition
 
     struct v4l2_subdev_fh {
         struct v4l2_fh vfh;
-    #if definedCONFIG_VIDEO_V4L2_SUBDEV_API
+    #if defined(CONFIG_VIDEO_V4L2_SUBDEV_API)
         struct v4l2_subdev_pad_config *pad;
     #endif
     }

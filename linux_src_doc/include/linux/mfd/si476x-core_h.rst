@@ -85,7 +85,7 @@ Definition
         enum si476x_phase_diversity_mode diversity_mode;
         atomic_t is_alive;
         struct delayed_work status_monitor;
-    #define SI476X_WORK_TO_COREw container_ofto_delayed_workw, \
+    #define SI476X_WORK_TO_CORE(w) container_of(to_delayed_work(w), \
         struct si476x_core;
         struct \status_monitorint revision;
         int rds_fifo_depth;

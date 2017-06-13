@@ -37,7 +37,7 @@ Definition
         u16 ngpio;
         const char *const *names;
         bool can_sleep;
-    #if IS_ENABLEDCONFIG_GPIO_GENERIC
+    #if IS_ENABLED(CONFIG_GPIO_GENERIC)
         unsigned long (*read_reg)(void __iomem *reg);
         void (*write_reg)(void __iomem *reg, unsigned long data);
         unsigned long (*pin2mask)(struct gpio_chip *gc, unsigned int pin);
@@ -62,7 +62,7 @@ Definition
         unsigned long *irq_valid_mask;
         struct lock_class_key *lock_key;
     #endif
-    #if definedCONFIG_OF_GPIO
+    #if defined(CONFIG_OF_GPIO)
         struct device_node *of_node;
         int of_gpio_n_cells;
         int (*of_xlate)(struct gpio_chip *gc,const struct of_phandle_args *gpiospec, u32 *flags);

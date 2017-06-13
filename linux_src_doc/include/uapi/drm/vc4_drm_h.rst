@@ -43,7 +43,7 @@ Definition
         __u32 clear_z;
         __u8 clear_s;
         __u32 pad:24;
-    #define VC4_SUBMIT_CL_USE_CLEAR_COLOR 1 << 0
+    #define VC4_SUBMIT_CL_USE_CLEAR_COLOR (1 << 0)
         __u32 flags;
         __u64 seqno;
     }

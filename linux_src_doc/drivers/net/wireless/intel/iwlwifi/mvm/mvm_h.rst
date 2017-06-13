@@ -236,7 +236,7 @@ Definition
         bool seqno_valid;
         u16 seqno;
     #endif
-    #if IS_ENABLEDCONFIG_IPV6
+    #if IS_ENABLED(CONFIG_IPV6)
         struct in6_addr target_ipv6_addrs;
         unsigned long tentative_addrs;
         int num_target_ipv6_addrs;

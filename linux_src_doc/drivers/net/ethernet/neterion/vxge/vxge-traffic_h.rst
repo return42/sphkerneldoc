@@ -126,7 +126,7 @@ Definition
         u32 btimer_val;
     #define VXGE_HW_MIN_TIM_BTIMER_VAL 0
     #define VXGE_HW_MAX_TIM_BTIMER_VAL 67108864
-    #define VXGE_HW_USE_FLASH_DEFAULT ~0
+    #define VXGE_HW_USE_FLASH_DEFAULT (~0)
         u32 timer_ac_en;
     #define VXGE_HW_TIM_TIMER_AC_ENABLE 1
     #define VXGE_HW_TIM_TIMER_AC_DISABLE 0

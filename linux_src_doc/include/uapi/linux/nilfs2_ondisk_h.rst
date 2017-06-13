@@ -30,7 +30,7 @@ Definition
         __le16 i_links_count;
         __le32 i_flags;
         __le64 i_bmap;
-    #define i_device_code i_bmap
+    #define i_device_code i_bmap[0]
         __le64 i_xattr;
         __le32 i_generation;
         __le32 i_pad;

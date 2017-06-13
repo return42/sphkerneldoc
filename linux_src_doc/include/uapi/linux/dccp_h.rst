@@ -21,21 +21,21 @@ Definition
         __be16 dccph_sport;
         __be16 dccph_dport;
         __u8 dccph_doff;
-    #if defined__LITTLE_ENDIAN_BITFIELD
+    #if defined(__LITTLE_ENDIAN_BITFIELD)
         __u8 dccph_cscov:4:4;
         __u8 dccph_ccval:4;
-    #elif defined__BIG_ENDIAN_BITFIELD
+    #elif defined(__BIG_ENDIAN_BITFIELD)
         __u8 dccph_ccval:4;
         __u8 dccph_cscov:4:4;
     #else
     #error "Adjust your <asm/byteorder.h> defines"
     #endif
         __sum16 dccph_checksum;
-    #if defined__LITTLE_ENDIAN_BITFIELD
+    #if defined(__LITTLE_ENDIAN_BITFIELD)
         __u8 dccph_x:3:4:1;
         __u8 dccph_type:3:4;
         __u8 dccph_reserved:3;
-    #elif defined__BIG_ENDIAN_BITFIELD
+    #elif defined(__BIG_ENDIAN_BITFIELD)
         __u8 dccph_reserved:3;
         __u8 dccph_type:3:4;
         __u8 dccph_x:3:4:1;

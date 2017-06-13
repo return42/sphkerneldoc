@@ -21,12 +21,12 @@ Definition
         u16 type;
         u8 host;
         u8 seq;
-    #define TI_SCI_MSG_FLAGval 1 << val
+    #define TI_SCI_MSG_FLAG(val) (1 << (val))
     #define TI_SCI_FLAG_REQ_GENERIC_NORESPONSE 0x0
-    #define TI_SCI_FLAG_REQ_ACK_ON_RECEIVED TI_SCI_MSG_FLAG0
-    #define TI_SCI_FLAG_REQ_ACK_ON_PROCESSED TI_SCI_MSG_FLAG1
+    #define TI_SCI_FLAG_REQ_ACK_ON_RECEIVED TI_SCI_MSG_FLAG(0)
+    #define TI_SCI_FLAG_REQ_ACK_ON_PROCESSED TI_SCI_MSG_FLAG(1)
     #define TI_SCI_FLAG_RESP_GENERIC_NACK 0x0
-    #define TI_SCI_FLAG_RESP_GENERIC_ACK TI_SCI_MSG_FLAG1
+    #define TI_SCI_FLAG_RESP_GENERIC_ACK TI_SCI_MSG_FLAG(1)
         u32 flags;
     }
 
@@ -155,9 +155,9 @@ Definition
 .. code-block:: c
 
     struct ti_sci_msg_req_set_device_state {
-    #define MSG_FLAG_DEVICE_WAKE_ENABLED TI_SCI_MSG_FLAG8
-    #define MSG_FLAG_DEVICE_RESET_ISO TI_SCI_MSG_FLAG9
-    #define MSG_FLAG_DEVICE_EXCLUSIVE TI_SCI_MSG_FLAG10
+    #define MSG_FLAG_DEVICE_WAKE_ENABLED TI_SCI_MSG_FLAG(8)
+    #define MSG_FLAG_DEVICE_RESET_ISO TI_SCI_MSG_FLAG(9)
+    #define MSG_FLAG_DEVICE_EXCLUSIVE TI_SCI_MSG_FLAG(10)
         struct ti_sci_msg_hdr hdr;
         u32 id;
         u32 reserved;
@@ -364,9 +364,9 @@ Definition
 .. code-block:: c
 
     struct ti_sci_msg_req_set_clock_state {
-    #define MSG_FLAG_CLOCK_ALLOW_SSC TI_SCI_MSG_FLAG8
-    #define MSG_FLAG_CLOCK_ALLOW_FREQ_CHANGE TI_SCI_MSG_FLAG9
-    #define MSG_FLAG_CLOCK_INPUT_TERM TI_SCI_MSG_FLAG10
+    #define MSG_FLAG_CLOCK_ALLOW_SSC TI_SCI_MSG_FLAG(8)
+    #define MSG_FLAG_CLOCK_ALLOW_FREQ_CHANGE TI_SCI_MSG_FLAG(9)
+    #define MSG_FLAG_CLOCK_INPUT_TERM TI_SCI_MSG_FLAG(10)
         struct ti_sci_msg_hdr hdr;
         u32 dev_id;
         u8 clk_id;

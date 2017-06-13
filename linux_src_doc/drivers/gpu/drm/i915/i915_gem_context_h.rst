@@ -26,7 +26,7 @@ Definition
         struct list_head link;
         struct kref ref;
         unsigned long flags;
-    #define CONTEXT_NO_ZEROMAP BIT0
+    #define CONTEXT_NO_ZEROMAP BIT(0)
     #define CONTEXT_NO_ERROR_CAPTURE 1
     #define CONTEXT_CLOSED 2
     #define CONTEXT_BANNABLE 3

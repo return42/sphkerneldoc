@@ -19,7 +19,7 @@ Definition
     struct ia_css_stream {
         struct ia_css_stream_config config;
         struct ia_css_stream_info info;
-    #if !definedHAS_NO_INPUT_SYSTEM && !definedUSE_INPUT_SYSTEM_VERSION_2401
+    #if !defined(HAS_NO_INPUT_SYSTEM) && !defined(USE_INPUT_SYSTEM_VERSION_2401)
         rx_cfg_t csi_rx_config;
     #endif
         bool reconfigure_css_rx;

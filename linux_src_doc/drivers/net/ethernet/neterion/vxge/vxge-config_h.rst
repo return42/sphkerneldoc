@@ -922,25 +922,25 @@ Definition
 
     struct vxge_hw_fifo_txd {
         u64 control_0;
-    #define VXGE_HW_FIFO_TXD_LIST_OWN_ADAPTER vxge_mBIT7
-    #define VXGE_HW_FIFO_TXD_T_CODE_GETctrl0 vxge_bVALnctrl0# 12# 4
-    #define VXGE_HW_FIFO_TXD_T_CODEval vxge_vBITval# 12# 4
+    #define VXGE_HW_FIFO_TXD_LIST_OWN_ADAPTER vxge_mBIT(7)
+    #define VXGE_HW_FIFO_TXD_T_CODE_GET(ctrl0) vxge_bVALn(ctrl0# 12# 4)
+    #define VXGE_HW_FIFO_TXD_T_CODE(val) vxge_vBIT(val# 12# 4)
     #define VXGE_HW_FIFO_TXD_T_CODE_UNUSED VXGE_HW_FIFO_T_CODE_UNUSED
-    #define VXGE_HW_FIFO_TXD_GATHER_CODEval vxge_vBITval# 22# 2
+    #define VXGE_HW_FIFO_TXD_GATHER_CODE(val) vxge_vBIT(val# 22# 2)
     #define VXGE_HW_FIFO_TXD_GATHER_CODE_FIRST VXGE_HW_FIFO_GATHER_CODE_FIRST
     #define VXGE_HW_FIFO_TXD_GATHER_CODE_LAST VXGE_HW_FIFO_GATHER_CODE_LAST
-    #define VXGE_HW_FIFO_TXD_LSO_EN vxge_mBIT30
-    #define VXGE_HW_FIFO_TXD_LSO_MSSval vxge_vBITval# 34# 14
-    #define VXGE_HW_FIFO_TXD_BUFFER_SIZEval vxge_vBITval# 48# 16
+    #define VXGE_HW_FIFO_TXD_LSO_EN vxge_mBIT(30)
+    #define VXGE_HW_FIFO_TXD_LSO_MSS(val) vxge_vBIT(val# 34# 14)
+    #define VXGE_HW_FIFO_TXD_BUFFER_SIZE(val) vxge_vBIT(val# 48# 16)
         u64 control_1;
-    #define VXGE_HW_FIFO_TXD_TX_CKO_IPV4_EN vxge_mBIT5
-    #define VXGE_HW_FIFO_TXD_TX_CKO_TCP_EN vxge_mBIT6
-    #define VXGE_HW_FIFO_TXD_TX_CKO_UDP_EN vxge_mBIT7
-    #define VXGE_HW_FIFO_TXD_VLAN_ENABLE vxge_mBIT15
-    #define VXGE_HW_FIFO_TXD_VLAN_TAGval vxge_vBITval# 16# 16
-    #define VXGE_HW_FIFO_TXD_INT_NUMBERval vxge_vBITval# 34# 6
-    #define VXGE_HW_FIFO_TXD_INT_TYPE_PER_LIST vxge_mBIT46
-    #define VXGE_HW_FIFO_TXD_INT_TYPE_UTILZ vxge_mBIT47
+    #define VXGE_HW_FIFO_TXD_TX_CKO_IPV4_EN vxge_mBIT(5)
+    #define VXGE_HW_FIFO_TXD_TX_CKO_TCP_EN vxge_mBIT(6)
+    #define VXGE_HW_FIFO_TXD_TX_CKO_UDP_EN vxge_mBIT(7)
+    #define VXGE_HW_FIFO_TXD_VLAN_ENABLE vxge_mBIT(15)
+    #define VXGE_HW_FIFO_TXD_VLAN_TAG(val) vxge_vBIT(val# 16# 16)
+    #define VXGE_HW_FIFO_TXD_INT_NUMBER(val) vxge_vBIT(val# 34# 6)
+    #define VXGE_HW_FIFO_TXD_INT_TYPE_PER_LIST vxge_mBIT(46)
+    #define VXGE_HW_FIFO_TXD_INT_TYPE_UTILZ vxge_mBIT(47)
         u64 buffer_pointer;
         u64 host_control;
     }
@@ -1106,30 +1106,30 @@ Definition
     struct vxge_hw_ring_rxd_1 {
         u64 host_control;
         u64 control_0;
-    #define VXGE_HW_RING_RXD_RTH_BUCKET_GETctrl0 vxge_bVALnctrl0# 0# 7
-    #define VXGE_HW_RING_RXD_LIST_OWN_ADAPTER vxge_mBIT7
-    #define VXGE_HW_RING_RXD_FAST_PATH_ELIGIBLE_GETctrl0 vxge_bVALnctrl0# 8# 1
-    #define VXGE_HW_RING_RXD_L3_CKSUM_CORRECT_GETctrl0 vxge_bVALnctrl0# 9# 1
-    #define VXGE_HW_RING_RXD_L4_CKSUM_CORRECT_GETctrl0 vxge_bVALnctrl0# 10# 1
-    #define VXGE_HW_RING_RXD_T_CODE_GETctrl0 vxge_bVALnctrl0# 12# 4
-    #define VXGE_HW_RING_RXD_T_CODEval vxge_vBITval# 12# 4
+    #define VXGE_HW_RING_RXD_RTH_BUCKET_GET(ctrl0) vxge_bVALn(ctrl0# 0# 7)
+    #define VXGE_HW_RING_RXD_LIST_OWN_ADAPTER vxge_mBIT(7)
+    #define VXGE_HW_RING_RXD_FAST_PATH_ELIGIBLE_GET(ctrl0) vxge_bVALn(ctrl0# 8# 1)
+    #define VXGE_HW_RING_RXD_L3_CKSUM_CORRECT_GET(ctrl0) vxge_bVALn(ctrl0# 9# 1)
+    #define VXGE_HW_RING_RXD_L4_CKSUM_CORRECT_GET(ctrl0) vxge_bVALn(ctrl0# 10# 1)
+    #define VXGE_HW_RING_RXD_T_CODE_GET(ctrl0) vxge_bVALn(ctrl0# 12# 4)
+    #define VXGE_HW_RING_RXD_T_CODE(val) vxge_vBIT(val# 12# 4)
     #define VXGE_HW_RING_RXD_T_CODE_UNUSED VXGE_HW_RING_T_CODE_UNUSED
-    #define VXGE_HW_RING_RXD_SYN_GETctrl0 vxge_bVALnctrl0# 16# 1
-    #define VXGE_HW_RING_RXD_IS_ICMP_GETctrl0 vxge_bVALnctrl0# 17# 1
-    #define VXGE_HW_RING_RXD_RTH_SPDM_HIT_GETctrl0 vxge_bVALnctrl0# 18# 1
-    #define VXGE_HW_RING_RXD_RTH_IT_HIT_GETctrl0 vxge_bVALnctrl0# 19# 1
-    #define VXGE_HW_RING_RXD_RTH_HASH_TYPE_GETctrl0 vxge_bVALnctrl0# 20# 4
-    #define VXGE_HW_RING_RXD_IS_VLAN_GETctrl0 vxge_bVALnctrl0# 24# 1
-    #define VXGE_HW_RING_RXD_ETHER_ENCAP_GETctrl0 vxge_bVALnctrl0# 25# 2
-    #define VXGE_HW_RING_RXD_FRAME_PROTO_GETctrl0 vxge_bVALnctrl0# 27# 5
-    #define VXGE_HW_RING_RXD_L3_CKSUM_GETctrl0 vxge_bVALnctrl0# 32# 16
-    #define VXGE_HW_RING_RXD_L4_CKSUM_GETctrl0 vxge_bVALnctrl0# 48# 16
+    #define VXGE_HW_RING_RXD_SYN_GET(ctrl0) vxge_bVALn(ctrl0# 16# 1)
+    #define VXGE_HW_RING_RXD_IS_ICMP_GET(ctrl0) vxge_bVALn(ctrl0# 17# 1)
+    #define VXGE_HW_RING_RXD_RTH_SPDM_HIT_GET(ctrl0) vxge_bVALn(ctrl0# 18# 1)
+    #define VXGE_HW_RING_RXD_RTH_IT_HIT_GET(ctrl0) vxge_bVALn(ctrl0# 19# 1)
+    #define VXGE_HW_RING_RXD_RTH_HASH_TYPE_GET(ctrl0) vxge_bVALn(ctrl0# 20# 4)
+    #define VXGE_HW_RING_RXD_IS_VLAN_GET(ctrl0) vxge_bVALn(ctrl0# 24# 1)
+    #define VXGE_HW_RING_RXD_ETHER_ENCAP_GET(ctrl0) vxge_bVALn(ctrl0# 25# 2)
+    #define VXGE_HW_RING_RXD_FRAME_PROTO_GET(ctrl0) vxge_bVALn(ctrl0# 27# 5)
+    #define VXGE_HW_RING_RXD_L3_CKSUM_GET(ctrl0) vxge_bVALn(ctrl0# 32# 16)
+    #define VXGE_HW_RING_RXD_L4_CKSUM_GET(ctrl0) vxge_bVALn(ctrl0# 48# 16)
         u64 control_1;
-    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_GETctrl1 vxge_bVALnctrl1# 2# 14
-    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZEval vxge_vBITval# 2# 14
-    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_MASK vxge_vBIT0x3FFF# 2# 14
-    #define VXGE_HW_RING_RXD_1_RTH_HASH_VAL_GETctrl1 vxge_bVALnctrl1# 16# 32
-    #define VXGE_HW_RING_RXD_VLAN_TAG_GETctrl1 vxge_bVALnctrl1# 48# 16
+    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_GET(ctrl1) vxge_bVALn(ctrl1# 2# 14)
+    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE(val) vxge_vBIT(val# 2# 14)
+    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_MASK vxge_vBIT(0x3FFF# 2# 14)
+    #define VXGE_HW_RING_RXD_1_RTH_HASH_VAL_GET(ctrl1) vxge_bVALn(ctrl1# 16# 32)
+    #define VXGE_HW_RING_RXD_VLAN_TAG_GET(ctrl1) vxge_bVALn(ctrl1# 48# 16)
         u64 buffer0_ptr;
     }
 
