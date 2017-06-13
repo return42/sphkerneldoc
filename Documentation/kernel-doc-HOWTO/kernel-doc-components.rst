@@ -39,7 +39,3 @@ Documentation/\*/conf.py
   This includes python extensions related to the Linux documentation processes,
   see installation instructions at :ref:`LinuxDoc project <linuxdoc:linuxdoc>`.
 
-Documentation/books_migrated
-  Content the of automatic migrated DocBook-XML to reST documents
-  (:ref:`dbxml2rst_migration`).
-

@@ -16,8 +16,8 @@ from glob import glob
 import sphinx
 from sphinx.util.osutil import make_filename
 
-# compiling books/driver-api.html needs to extend the recursion limit:
-sys.setrecursionlimit(1500)
+# compiling src.html needs to extend the recursion limit:
+sys.setrecursionlimit(3000)
 
 # Get Sphinx version
 major, minor, patch = sphinx.version_info[:3]
@@ -334,7 +334,7 @@ htmlhelp_basename = 'Kernel-Doc'
 
 # Additional stuff for the LaTeX preamble.
 
-latex_preamble = r"""
+_latex_preamble = r"""
 
 """
 
@@ -349,7 +349,7 @@ if os.environ.get("DOCCLASS", None):
 
 latex_elements.update({
 
-    'preamble' : latex_preamble
+    'preamble' : _latex_preamble
     # Set these values via make environment PAPER and FONTSIZE (see Makefile)
     #, 'papersize'  : 'a4paper'  # The paper size ('letter' or 'a4').
     #, 'pointsize'  : '12pt'     # The font size ('10pt', '11pt' or '12pt').

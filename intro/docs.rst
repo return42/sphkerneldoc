@@ -1,23 +1,9 @@
 .. -*- coding: utf-8; mode: rst -*-
-.. include:: article_refs.txt
+.. include:: refs.txt
 
 ================================================================================
                           Linux Kernel's documentation
 ================================================================================
-
-HTML rendered *kernel-doc* comments
-===================================
-
-The *kernel-doc* comments from Kernel's source code are parsed and converted to
-reST with the kernel-doc parser from the :ref:`LinuxDoc project
-<linuxdoc:linuxdoc>` (see :ref:`kernel-doc <linuxdoc:kernel-doc>`). Be aware,
-that this is in a experimental state, see :ref:`xref_linux_src_doc`.
-
-* HTML: `Linux kernel source <linux_src_doc/index.html>`_
-* reST: `reST linux_src_doc`_
-
-Linux Kernel's documentation (reST)
-===================================
 
 User-oriented documentation
 ---------------------------
@@ -68,9 +54,6 @@ The following 2 or 3 documents are a part of this POC / take it as a *prospect*
 
 * `template book <books/template-book/index.html>`_
   (`pdf <books/template-book/pdf>`__, `man <books/template-book/man>`__)
-
-* There is also a :ref:`reST-nano-HOWTO` with additional informations about
-  :ref:`xref_rest_and_sphinx`.
 
 Kernel API documentation
 ------------------------

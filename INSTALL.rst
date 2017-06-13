@@ -2,35 +2,36 @@
 INSTALL
 =======
 
-Requirements:
+If you try to compile this POC by your own, please consider that you need a copy
+of the Jon's docs-next and in the ``Makefile`` set ``srctree`` to the copy. The
+default is:
 
-* Kernel-Doc Sphinx extensions: https://github.com/return42/linuxdoc ::
+.. code-block:: make
 
-    pip install --user git+http://github.com/return42/linuxdoc.git
+   srctree=/share/linux-docs-next
+   export srctree
 
-* DocBook to reST conversion: https://github.com/return42/dbxml2rst
+If you want to build simple HTML representations with the 'books*.html' Makefile
+targets, all (python) requirements will be installed automatically.
 
-   See installation instructions at dbxml2rst
+Python requirements:
 
-To generate documentation, Sphinx (``sphinx-build``) and the Read the Docs
-Sphinx theme (``sphinx_rtd_theme``) must be installed.
-
-Debian/Ubuntu::
-
-  apt-get install python3-sphinx python3-sphinx-rtd-theme
-
-Fedora::
-
-  yum install python3-sphinx-rtd-theme python3-sphinx-rtd-theme
-
-If you don't have *admin* privileges, use pip3 (or even pip) for a local user
-installation::
-
-  $ pip3 install --user Sphinx sphinx_rtd_theme
+* Sphinx-doc: http://www.sphinx-doc.org/en/stable/
+* Kernel-Doc Sphinx extensions: https://github.com/return42/linuxdoc
+* Sphinx theme for *Read the Docs*: https://github.com/rtfd/sphinx_rtd_theme/
 
 Until here, you have installed the minimum requirements to build HTML output
 which might be good enough for most use cases. If you want more from your
 sphinx-build, you have to install the following (optional) prerequisites.
+
+The kernel documentation has special figure and image directives, which supports
+**DOT** formated files. To render those DOT markups into nice images, a Graphviz
+Installation is required::
+
+  apt-get install graphviz
+
+* DOT: http://graphviz.org/pdf/dotguide.pdf
+* Graphviz: http://www.graphviz.org/content/dot-language
 
 For PDF output and *Math support* (nicely rendered mathematical notations) a
 LaTeX tool-chain is required.

@@ -8,23 +8,11 @@
 ================================================================================
 
 The aim of this POC is, to demonstrate how a *straight forward* documentation
-build might look like. It uses the libraries:
+build might look like. Its mainly based on the library:
 
 * :ref:`LinuxDoc project <linuxdoc:linuxdoc>`
-* :ref:`DocBook-XML to reST project <dbxml2rst:dbxml2rst>` (see
-  :ref:`dbxml2rst_migration`).
 
-It assembles:
-
-* Sphinx (reST) content from kernel's sources (``Documentation/``)
-* DocBook content from kernel's sources (docs-next) converted to reST
-* The *kernel-doc* comments from Kernel's source code
-
-All the reST content together is compiled to HTML with the `sphinx-doc`_
-project and a `sphinx_rtd_theme`_ is applied. Sources are taken from:
-
-* *this* POC: https://github.com/return42/sphkerneldoc and
-* the origin Kernel's sources are taken from Jon's docs-next::
+The origin Kernel's sources are taken from Jon's docs-next::
 
     git://git.lwn.net/linux.git docs-next
 
@@ -37,12 +25,6 @@ default is:
    srctree=/share/linux-docs-next
    export srctree
 
-There are also some more requirements, use the ``help`` target for more
-informations.
-
-.. code-block:: sh
-
-   make help
 
 .. _xref_linux_src_doc:
 
@@ -95,5 +77,6 @@ Further reading
    :maxdepth: 1
    :glob:
 
+   about_sphinx
    why_rest
    LICENSE

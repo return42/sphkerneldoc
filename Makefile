@@ -66,7 +66,8 @@ BOOKS_PDF   = $(patsubst %,%.pdf, $(filter-out books/kernel-doc-HOWTO, $(BOOKS))
 
 # kernel's sphinx-books
 KERNEL_FOLDER=$(srctree)/Documentation
-KERNEL_BOOKS=$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py))
+# FIXME: media not yet work
+KERNEL_BOOKS=$(filter-out media,$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py)))
 KERNEL_BOOKS_HTML  = $(patsubst %,books/%.html, $(KERNEL_BOOKS))
 KERNEL_BOOKS_CLEAN = $(patsubst %,books/%.clean, $(KERNEL_BOOKS))
 KERNEL_BOOKS_MAN   = $(patsubst %,books/%.man, $(KERNEL_BOOKS))

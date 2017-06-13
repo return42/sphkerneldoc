@@ -15,6 +15,7 @@
 
 .. _`pocoo`: http://www.pocoo.org/
 .. _`sphinx-doc`: http://www.sphinx-doc.org/
+.. _`Sphinx markup constructs`: http://www.sphinx-doc.org/en/stable/markup/index.html
 .. _`sphinx-doc FAQ`: http://www.sphinx-doc.org/en/stable/faq.html
 .. _`sphinx domains`: http://www.sphinx-doc.org/en/stable/domains.html
 .. _`sphinx cross references`: http://www.sphinx-doc.org/en/stable/markup/inline.html#cross-referencing-arbitrary-locations
