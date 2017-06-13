@@ -212,7 +212,7 @@ Definition
         u16 peer_count;
         u16 reserved2;
         struct vfdi_endpoint local;
-        struct vfdi_endpoint peers[256];
+        struct vfdi_endpoint peers;
         u32 timer_quantum_ns;
     }
 

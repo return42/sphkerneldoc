@@ -49,7 +49,7 @@ octeon_wdt_write_hex
 octeon_wdt_nmi_stage3
 =====================
 
-.. c:function:: void octeon_wdt_nmi_stage3(u64 reg[32])
+.. c:function:: void octeon_wdt_nmi_stage3(u64 reg)
 
     1) The first NMI handler enables CVMSEG and transfers from the bootbus region into normal memory. It is careful to not destroy any registers. 2) The second stage handler uses CVMSEG to save the registers and create a stack for C code. It then calls the third level handler with one argument, a pointer to the register values. 3) The third, and final, level handler is the following C function that prints out some useful infomration.
 

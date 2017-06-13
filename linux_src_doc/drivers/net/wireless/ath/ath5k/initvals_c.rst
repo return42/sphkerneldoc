@@ -55,7 +55,7 @@ Definition
 
     struct ath5k_ini_mode {
         u16 mode_register;
-        u32 mode_value[3];
+        u32 mode_value;
     }
 
 .. _`ath5k_ini_mode.members`:

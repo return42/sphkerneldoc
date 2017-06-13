@@ -60,7 +60,7 @@ Definition
     struct tvp514x_decoder {
         struct v4l2_subdev sd;
         struct v4l2_ctrl_handler hdl;
-        struct tvp514x_reg tvp514x_regs[ARRAY_SIZE(tvp514x_reg_list_default)];
+        struct tvp514x_reg tvp514x_regs;
         const struct tvp514x_platform_data *pdata;
         int ver;
         int streaming;
@@ -201,7 +201,7 @@ Returns zero if successful, or non-zero otherwise.
 tvp514x_write_regs
 ==================
 
-.. c:function:: int tvp514x_write_regs(struct v4l2_subdev *sd, const struct tvp514x_reg reglist[])
+.. c:function:: int tvp514x_write_regs(struct v4l2_subdev *sd, const struct tvp514x_reg reglist)
 
     Initializes a list of TVP5146/47 registers
 

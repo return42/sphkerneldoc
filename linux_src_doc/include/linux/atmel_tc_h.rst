@@ -50,8 +50,8 @@ Definition
         void __iomem *regs;
         int id;
         const struct atmel_tcb_config *tcb_config;
-        int irq[3];
-        struct clk  *clk[3];
+        int irq;
+        struct clk  *clk;
         struct clk *slow_clk;
         struct list_head node;
         bool allocated;

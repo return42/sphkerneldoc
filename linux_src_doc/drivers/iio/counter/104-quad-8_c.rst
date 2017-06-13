@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct quad8_iio {
-        unsigned int preset[QUAD8_NUM_COUNTERS];
-        unsigned int count_mode[QUAD8_NUM_COUNTERS];
-        unsigned int quadrature_mode[QUAD8_NUM_COUNTERS];
-        unsigned int quadrature_scale[QUAD8_NUM_COUNTERS];
-        unsigned int ab_enable[QUAD8_NUM_COUNTERS];
-        unsigned int preset_enable[QUAD8_NUM_COUNTERS];
-        unsigned int synchronous_mode[QUAD8_NUM_COUNTERS];
-        unsigned int index_polarity[QUAD8_NUM_COUNTERS];
+        unsigned int preset;
+        unsigned int count_mode;
+        unsigned int quadrature_mode;
+        unsigned int quadrature_scale;
+        unsigned int ab_enable;
+        unsigned int preset_enable;
+        unsigned int synchronous_mode;
+        unsigned int index_polarity;
         unsigned int base;
     }
 

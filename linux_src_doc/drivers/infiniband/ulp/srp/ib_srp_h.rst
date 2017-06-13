@@ -152,7 +152,7 @@ Definition
         struct srp_host *srp_host;
         struct Scsi_Host *scsi_host;
         struct srp_rport *rport;
-        char target_name[32];
+        char target_name;
         unsigned int scsi_id;
         unsigned int sg_tablesize;
         int mr_pool_size;
@@ -231,6 +231,9 @@ scsi_host
     *undescribed*
 
 rport
+    *undescribed*
+
+target_name
     *undescribed*
 
 scsi_id
@@ -335,7 +338,7 @@ Definition
         int max_page_list_len;
         spinlock_t lock;
         struct list_head free_list;
-        struct srp_fr_desc desc[0];
+        struct srp_fr_desc desc;
     }
 
 .. _`srp_fr_pool.members`:

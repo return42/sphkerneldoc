@@ -220,7 +220,7 @@ Definition
         struct attribute **zone_dev_attrs;
         int zone_attr_count;
         struct attribute_group dev_zone_attr_group;
-        const struct attribute_group  *dev_attr_groups[2];
+        const struct attribute_group  *dev_attr_groups;
         bool allocated;
         struct powercap_zone_constraint *constraints;
     }

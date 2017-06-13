@@ -27,7 +27,7 @@ Definition
         struct usb_gadget gadget;
         spinlock_t lock;
         struct timer_list vbus_timer;
-        struct isp1760_ep ep[15];
+        struct isp1760_ep ep;
         enum isp1760_ctrl_state ep0_state;
         u8 ep0_dir;
         u16 ep0_length;
@@ -63,6 +63,9 @@ lock
     *undescribed*
 
 vbus_timer
+    *undescribed*
+
+ep
     *undescribed*
 
 ep0_state

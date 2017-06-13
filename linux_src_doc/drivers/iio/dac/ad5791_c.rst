@@ -55,7 +55,7 @@ Definition
         unsigned ctrl;
         unsigned pwr_down_mode;
         bool pwr_down;
-        union data[3] ____cacheline_aligned;
+        union data;
     }
 
 .. _`ad5791_state.members`:
@@ -89,6 +89,9 @@ pwr_down_mode
     *undescribed*
 
 pwr_down
+    *undescribed*
+
+data
     *undescribed*
 
 .. This file was automatic generated / don't edit.

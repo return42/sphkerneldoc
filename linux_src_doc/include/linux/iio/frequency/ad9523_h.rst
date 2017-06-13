@@ -27,7 +27,7 @@ Definition
         enum outp_drv_mode driver_mode;
         unsigned char divider_phase;
         unsigned short channel_divider;
-        char extended_name[16];
+        char extended_name;
     }
 
 .. _`ad9523_channel_spec.members`:
@@ -112,7 +112,7 @@ Definition
         bool rzero_bypass_en;
         int num_channels;
         struct ad9523_channel_spec *channels;
-        char name[SPI_NAME_SIZE];
+        char name;
     }
 
 .. _`ad9523_platform_data.members`:

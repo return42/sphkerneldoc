@@ -6,7 +6,7 @@
 drm_clflush_pages
 =================
 
-.. c:function:: void drm_clflush_pages(struct page  *pages[], unsigned long num_pages)
+.. c:function:: void drm_clflush_pages(struct page  *pages, unsigned long num_pages)
 
     Flush dcache lines of a set of pages.
 

@@ -207,7 +207,7 @@ Definition
         unsigned long tx_bit_map;
         unsigned long num_rx_queues;
         unsigned long rx_bit_map;
-        struct gfar_irqinfo  *irqinfo[GFAR_NUM_IRQS];
+        struct gfar_irqinfo  *irqinfo;
     }
 
 .. _`gfar_priv_grp.members`:

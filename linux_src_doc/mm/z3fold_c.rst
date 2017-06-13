@@ -19,7 +19,7 @@ Definition
 
     struct z3fold_pool {
         spinlock_t lock;
-        struct list_head unbuddied[NCHUNKS];
+        struct list_head unbuddied;
         struct list_head lru;
         atomic64_t pages_nr;
         const struct z3fold_ops *ops;

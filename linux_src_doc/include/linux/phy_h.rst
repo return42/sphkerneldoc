@@ -59,7 +59,7 @@ Definition
 
     struct phy_c45_device_ids {
         u32 devices_in_package;
-        u32 device_ids[8];
+        u32 device_ids;
     }
 
 .. _`phy_c45_device_ids.members`:

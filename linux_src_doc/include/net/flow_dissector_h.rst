@@ -204,8 +204,8 @@ Definition
 .. code-block:: c
 
     struct flow_dissector_key_eth_addrs {
-        unsigned char dst[ETH_ALEN];
-        unsigned char src[ETH_ALEN];
+        unsigned char dst;
+        unsigned char src;
     }
 
 .. _`flow_dissector_key_eth_addrs.members`:

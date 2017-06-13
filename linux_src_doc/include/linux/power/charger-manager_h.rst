@@ -106,7 +106,7 @@ Definition
         struct device_attribute attr_name;
         struct device_attribute attr_state;
         struct device_attribute attr_externally_control;
-        struct attribute  *attrs[4];
+        struct attribute  *attrs;
         struct charger_manager *cm;
     }
 
@@ -306,7 +306,7 @@ Definition
         unsigned long fullbatt_vchk_jiffies_at;
         struct delayed_work fullbatt_vchk_work;
         int emergency_stop;
-        char psy_name_buf[PSY_NAME_MAX + 1];
+        char psy_name_buf;
         struct power_supply_desc charger_psy_desc;
         struct power_supply *charger_psy;
         u64 charging_start_time;

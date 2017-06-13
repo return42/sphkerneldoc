@@ -129,7 +129,7 @@ Definition
         wait_queue_head_t j_wait_updates;
         wait_queue_head_t j_wait_reserved;
         struct mutex j_checkpoint_mutex;
-        struct buffer_head  *j_chkpt_bhs[JBD2_NR_BATCH];
+        struct buffer_head  *j_chkpt_bhs;
         unsigned long j_head;
         unsigned long j_tail;
         unsigned long j_free;
@@ -138,7 +138,7 @@ Definition
         struct block_device *j_dev;
         int j_blocksize;
         unsigned long long j_blk_offset;
-        char j_devname[BDEVNAME_SIZE+24];
+        char j_devname;
         struct block_device *j_fs_dev;
         unsigned int j_maxlen;
         atomic_t j_reserved_credits;
@@ -148,14 +148,14 @@ Definition
         tid_t j_transaction_sequence;
         tid_t j_commit_sequence;
         tid_t j_commit_request;
-        __u8 j_uuid[16];
+        __u8 j_uuid;
         struct task_struct *j_task;
         int j_max_transaction_buffers;
         unsigned long j_commit_interval;
         struct timer_list j_commit_timer;
         spinlock_t j_revoke_lock;
         struct jbd2_revoke_table_s *j_revoke;
-        struct jbd2_revoke_table_s  *j_revoke_table[2];
+        struct jbd2_revoke_table_s  *j_revoke_table;
         struct buffer_head **j_wbuf;
         int j_wbufsize;
         pid_t j_last_sync_writer;
@@ -234,6 +234,9 @@ j_wait_reserved
 j_checkpoint_mutex
     Mutex for locking against concurrent checkpoints
 
+j_chkpt_bhs
+    *undescribed*
+
 j_head
     Journal head - identifies the first unused block in the journal
 
@@ -259,6 +262,9 @@ j_blocksize
 j_blk_offset
     starting block offset for into the device where we store the
     journal
+
+j_devname
+    *undescribed*
 
 j_fs_dev
     Device which holds the client fs.  For internal journal this will

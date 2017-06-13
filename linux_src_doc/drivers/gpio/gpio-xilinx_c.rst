@@ -19,10 +19,10 @@ Definition
 
     struct xgpio_instance {
         struct of_mm_gpio_chip mmchip;
-        unsigned int gpio_width[2];
-        u32 gpio_state[2];
-        u32 gpio_dir[2];
-        spinlock_t gpio_lock[2];
+        unsigned int gpio_width;
+        u32 gpio_state;
+        u32 gpio_dir;
+        spinlock_t gpio_lock;
     }
 
 .. _`xgpio_instance.members`:

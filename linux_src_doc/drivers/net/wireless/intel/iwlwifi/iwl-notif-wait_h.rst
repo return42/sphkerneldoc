@@ -21,7 +21,7 @@ Definition
         struct list_head list;
         bool (*fn)(struct iwl_notif_wait_data *notif_data,struct iwl_rx_packet *pkt, void *data);
         void *fn_data;
-        u16 cmds[MAX_NOTIF_CMDS];
+        u16 cmds;
         u8 n_cmds;
         bool triggered;
         bool aborted;

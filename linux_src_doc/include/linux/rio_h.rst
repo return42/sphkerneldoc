@@ -23,7 +23,7 @@ Definition
         u32 port_ok;
         struct rio_switch_ops *ops;
         spinlock_t lock;
-        struct rio_dev  *nextdev[0];
+        struct rio_dev  *nextdev;
     }
 
 .. _`rio_switch.members`:
@@ -152,13 +152,13 @@ Definition
         u64 dma_mask;
         struct rio_driver *driver;
         struct device dev;
-        struct resource riores[RIO_MAX_DEV_RESOURCES];
+        struct resource riores;
         int (*pwcback)(struct rio_dev *rdev, union rio_pw_msg *msg, int step);
         u16 destid;
         u8 hopcount;
         struct rio_dev *prev;
         atomic_t state;
-        struct rio_switch rswitch[0];
+        struct rio_switch rswitch;
     }
 
 .. _`rio_dev.members`:
@@ -349,9 +349,9 @@ Definition
         struct rio_net *net;
         struct mutex lock;
         struct resource iores;
-        struct resource riores[RIO_MAX_MPORT_RESOURCES];
-        struct rio_msg inb_msg[RIO_MAX_MBOX];
-        struct rio_msg outb_msg[RIO_MAX_MBOX];
+        struct resource riores;
+        struct rio_msg inb_msg;
+        struct rio_msg outb_msg;
         int host_deviceid;
         struct rio_ops *ops;
         unsigned char id;
@@ -359,7 +359,7 @@ Definition
         unsigned int sys_size;
         u32 phys_efptr;
         u32 phys_rmap;
-        unsigned char name[RIO_MAX_MPORT_NAME];
+        unsigned char name;
         struct device dev;
         void *priv;
     #ifdef CONFIG_RAPIDIO_DMA_ENGINE

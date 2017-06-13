@@ -104,7 +104,7 @@ Definition
 
     struct iwl_fw_cscheme_list {
         u8 size;
-        struct iwl_fw_cipher_scheme cs[];
+        struct iwl_fw_cipher_scheme cs;
     }
 
 .. _`iwl_fw_cscheme_list.members`:
@@ -247,8 +247,8 @@ Definition
 
     struct iwl_fw {
         u32 ucode_ver;
-        char fw_version[ETHTOOL_FWVERS_LEN];
-        struct fw_img img[IWL_UCODE_TYPE_MAX];
+        char fw_version;
+        struct fw_img img;
         struct iwl_ucode_capabilities ucode_capa;
         bool enhance_sensitivity_table;
         u32 init_evtlog_ptr;
@@ -257,21 +257,21 @@ Definition
         u32 inst_evtlog_ptr;
         u32 inst_evtlog_size;
         u32 inst_errlog_ptr;
-        struct iwl_tlv_calib_ctrl default_calib[IWL_UCODE_TYPE_MAX];
+        struct iwl_tlv_calib_ctrl default_calib;
         u32 phy_config;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         enum iwl_fw_type type;
-        struct iwl_fw_cipher_scheme cs[IWL_UCODE_MAX_CS];
-        u8 human_readable[FW_VER_HUMAN_READABLE_SZ];
+        struct iwl_fw_cipher_scheme cs;
+        u8 human_readable;
         u32 sdio_adma_addr;
         struct iwl_fw_dbg_dest_tlv *dbg_dest_tlv;
-        struct iwl_fw_dbg_conf_tlv  *dbg_conf_tlv[FW_DBG_CONF_MAX];
-        size_t dbg_conf_tlv_len[FW_DBG_CONF_MAX];
-        struct iwl_fw_dbg_trigger_tlv  *dbg_trigger_tlv[FW_DBG_TRIGGER_MAX];
+        struct iwl_fw_dbg_conf_tlv  *dbg_conf_tlv;
+        size_t dbg_conf_tlv_len;
+        struct iwl_fw_dbg_trigger_tlv  *dbg_trigger_tlv;
         struct iwl_fw_dbg_mem_seg_tlv *dbg_mem_tlv;
         size_t n_dbg_mem_tlv;
-        size_t dbg_trigger_tlv_len[FW_DBG_TRIGGER_MAX];
+        size_t dbg_trigger_tlv_len;
         u8 dbg_dest_reg_num;
         struct iwl_gscan_capabilities gscan_capa;
     }
@@ -314,6 +314,9 @@ inst_evtlog_size
 inst_errlog_ptr
     error log offfset for runtime ucode.
 
+default_calib
+    *undescribed*
+
 phy_config
     *undescribed*
 
@@ -325,6 +328,9 @@ valid_rx_ant
 
 type
     firmware type (&enum iwl_fw_type)
+
+cs
+    *undescribed*
 
 human_readable
     human readable version

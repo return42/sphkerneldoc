@@ -42,7 +42,7 @@ checksum
 do_validate_mem
 ===============
 
-.. c:function:: int do_validate_mem(struct pcmcia_socket *s, unsigned long base, unsigned long size, int validate (struct pcmcia_socket *s# struct resource *res# unsigned int *value))
+.. c:function:: int do_validate_mem(struct pcmcia_socket *s, unsigned long base, unsigned long size, int validate (struct pcmcia_socket *s# struct resource *res# unsigned int *value)
 
     low level validate a memory region for PCMCIA use
 
@@ -55,7 +55,7 @@ do_validate_mem
     :param unsigned long size:
         size of resource to check
 
-    :param int validate (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value):
+    :param int validate (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value:
         *undescribed*
 
 .. _`do_validate_mem.description`:
@@ -74,7 +74,7 @@ the check fails, and -EINVAL is returned. Else, 0 is returned.
 do_mem_probe
 ============
 
-.. c:function:: int do_mem_probe(struct pcmcia_socket *s, u_long base, u_long num, int fallback (struct pcmcia_socket *s# struct resource *res# unsigned int *value), int fallback (struct pcmcia_socket *s# struct resource *res# unsigned int *value))
+.. c:function:: int do_mem_probe(struct pcmcia_socket *s, u_long base, u_long num, int fallback (struct pcmcia_socket *s# struct resource *res# unsigned int *value, int fallback (struct pcmcia_socket *s# struct resource *res# unsigned int *value)
 
     validate a memory region for PCMCIA use
 
@@ -87,10 +87,10 @@ do_mem_probe
     :param u_long num:
         size of resource to check
 
-    :param int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value):
+    :param int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value:
         *undescribed*
 
-    :param int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value):
+    :param int fallback (struct pcmcia_socket \*s# struct resource \*res# unsigned int \*value:
         *undescribed*
 
 .. _`do_mem_probe.description`:

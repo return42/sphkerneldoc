@@ -6,7 +6,7 @@
 mmc35240_raw_to_mgauss
 ======================
 
-.. c:function:: int mmc35240_raw_to_mgauss(struct mmc35240_data *data, int index, __le16 buf[], int *val)
+.. c:function:: int mmc35240_raw_to_mgauss(struct mmc35240_data *data, int index, __le16 buf, int *val)
 
     convert raw readings to milli gauss. Also apply
 

@@ -20,8 +20,8 @@ Definition
     struct dvb_usb_device_description {
         const char *name;
     #define DVB_USB_ID_MAX_NUM 15
-        struct usb_device_id  *cold_ids[DVB_USB_ID_MAX_NUM];
-        struct usb_device_id  *warm_ids[DVB_USB_ID_MAX_NUM];
+        struct usb_device_id  *cold_ids;
+        struct usb_device_id  *warm_ids;
     }
 
 .. _`dvb_usb_device_description.members`:
@@ -337,10 +337,10 @@ Definition
         struct mutex i2c_mutex;
         struct i2c_adapter i2c_adap;
         int num_adapters_initialized;
-        struct dvb_usb_adapter adapter[MAX_NO_OF_ADAPTER_PER_DEVICE];
+        struct dvb_usb_adapter adapter;
         struct rc_dev *rc_dev;
         struct input_dev *input_dev;
-        char rc_phys[64];
+        char rc_phys;
         struct delayed_work rc_query_work;
         u32 last_event;
         int last_state;
@@ -387,11 +387,17 @@ i2c_adap
 num_adapters_initialized
     *undescribed*
 
+adapter
+    *undescribed*
+
 rc_dev
     rc device for the remote control (rc-core mode)
 
 input_dev
     input device for the remote control (legacy mode)
+
+rc_phys
+    *undescribed*
 
 rc_query_work
     struct work_struct frequent rc queries

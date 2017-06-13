@@ -126,7 +126,7 @@ Definition
         __le32 rxon_flags;
         __le32 rxon_filter_flags;
         __le32 switch_time;
-        __le32 reserved[2][IWL_PWR_NUM_HT_OFDM_ENTRIES + IWL_PWR_CCK_ENTRIES];
+        __le32 reserved;
     }
 
 .. _`iwl5000_channel_switch_cmd.members`:
@@ -178,7 +178,7 @@ Definition
         __le32 rxon_flags;
         __le32 rxon_filter_flags;
         __le32 switch_time;
-        __le32 reserved[3][IWL_PWR_NUM_HT_OFDM_ENTRIES + IWL_PWR_CCK_ENTRIES];
+        __le32 reserved;
     }
 
 .. _`iwl6000_channel_switch_cmd.members`:
@@ -280,7 +280,7 @@ Definition
 .. code-block:: c
 
     struct sta_id_modify {
-        u8 addr[ETH_ALEN];
+        u8 addr;
         __le16 reserved1;
         u8 sta_id;
         u8 modify_mask;
@@ -338,7 +338,7 @@ Definition
         u8 mimo_delimiter;
         u8 single_stream_ant_msk;
         u8 dual_stream_ant_msk;
-        u8 start_rate_index[LINK_QUAL_AC_NUM];
+        u8 start_rate_index;
     }
 
 .. _`iwl_link_qual_general_params.members`:
@@ -356,6 +356,9 @@ single_stream_ant_msk
     *undescribed*
 
 dual_stream_ant_msk
+    *undescribed*
+
+start_rate_index
     *undescribed*
 
 .. _`iwl_link_qual_general_params.description`:
@@ -504,7 +507,7 @@ Definition
     struct iwl_ssid_ie {
         u8 id;
         u8 len;
-        u8 ssid[32];
+        u8 ssid;
     }
 
 .. _`iwl_ssid_ie.members`:
@@ -516,6 +519,9 @@ id
     *undescribed*
 
 len
+    *undescribed*
+
+ssid
     *undescribed*
 
 .. _`iwl_ssid_ie.description`:
@@ -766,7 +772,7 @@ Definition
 
     struct iwl_sensitivity_cmd {
         __le16 control;
-        __le16 table[HD_TABLE_SIZE];
+        __le16 table;
     }
 
 .. _`iwl_sensitivity_cmd.members`:
@@ -842,7 +848,7 @@ Definition
         __le16 flags;
         u8 reserved;
         u8 num_slots;
-        struct iwl_wipan_slot slots[10];
+        struct iwl_wipan_slot slots;
     }
 
 .. _`iwl_wipan_params_cmd.members`:
@@ -858,6 +864,9 @@ reserved
 
 num_slots
     1 - 10
+
+slots
+    *undescribed*
 
 .. _`iwl_wipan_params_cmd.bit0`:
 

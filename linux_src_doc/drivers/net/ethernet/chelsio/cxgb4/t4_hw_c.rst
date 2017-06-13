@@ -1423,7 +1423,7 @@ Reads the HW path MTU table.
 t4_read_cong_tbl
 ================
 
-.. c:function:: void t4_read_cong_tbl(struct adapter *adap, u16 incr[NMTUS][NCCTRL_WIN])
+.. c:function:: void t4_read_cong_tbl(struct adapter *adap, u16 incr)
 
     reads the congestion control table
 
@@ -1611,7 +1611,7 @@ Returns the current settings of one of the HW tracing filters.
 t4_pmtx_get_stats
 =================
 
-.. c:function:: void t4_pmtx_get_stats(struct adapter *adap, u32 cnt[], u64 cycles[])
+.. c:function:: void t4_pmtx_get_stats(struct adapter *adap, u32 cnt, u64 cycles)
 
     returns the HW stats from PMTX
 
@@ -1636,7 +1636,7 @@ Returns performance statistics from PMTX.
 t4_pmrx_get_stats
 =================
 
-.. c:function:: void t4_pmrx_get_stats(struct adapter *adap, u32 cnt[], u64 cycles[])
+.. c:function:: void t4_pmrx_get_stats(struct adapter *adap, u32 cnt, u64 cycles)
 
     returns the HW stats from PMRX
 
@@ -3170,7 +3170,7 @@ within TP_VLAN_PRI_MAL (filter mode).  E.g. F_VLAN.
 t4_init_portinfo
 ================
 
-.. c:function:: int t4_init_portinfo(struct port_info *pi, int mbox, int port, int pf, int vf, u8 mac[])
+.. c:function:: int t4_init_portinfo(struct port_info *pi, int mbox, int port, int pf, int vf, u8 mac)
 
     allocate a virtual interface amd initialize port_info
 

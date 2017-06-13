@@ -19,7 +19,7 @@ Definition
 
     struct iio_event_interface {
         wait_queue_head_t wait;
-        DECLARE_KFIFO(det_events# struct iio_event_data# 16);
+        DECLARE_KFIFO(det_events# struct iio_event_data# 16;
         struct list_head dev_attr_list;
         unsigned long flags;
         struct attribute_group group;
@@ -34,7 +34,7 @@ Members
 wait
     wait queue to allow blocking reads of events
 
-16)
+16
     *undescribed*
 
 dev_attr_list

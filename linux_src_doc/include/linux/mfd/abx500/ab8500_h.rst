@@ -29,8 +29,8 @@ Definition
         int (*write)(struct ab8500 *ab8500, u16 addr, u8 data);
         int (*write_masked)(struct ab8500 *ab8500, u16 addr, u8 mask, u8 data);
         int (*read)(struct ab8500 *ab8500, u16 addr);
-        unsigned long tx_buf[4];
-        unsigned long rx_buf[4];
+        unsigned long tx_buf;
+        unsigned long rx_buf;
         u8 *mask;
         u8 *oldmask;
         int mask_size;

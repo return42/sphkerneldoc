@@ -99,8 +99,8 @@ Definition
 .. code-block:: c
 
     struct brcmfmac_pd_cc_entry {
-        char iso3166[BRCMFMAC_COUNTRY_BUF_SZ];
-        char cc[BRCMFMAC_COUNTRY_BUF_SZ];
+        char iso3166;
+        char cc;
         s32 rev;
     }
 
@@ -136,7 +136,7 @@ Definition
 
     struct brcmfmac_pd_cc {
         int table_size;
-        struct brcmfmac_pd_cc_entry table[0];
+        struct brcmfmac_pd_cc_entry table;
     }
 
 .. _`brcmfmac_pd_cc.members`:
@@ -226,7 +226,7 @@ Definition
         void (*power_off)(void);
         char *fw_alternative_path;
         int device_count;
-        struct brcmfmac_pd_device devices[0];
+        struct brcmfmac_pd_device devices;
     }
 
 .. _`brcmfmac_platform_data.members`:
@@ -254,6 +254,9 @@ fw_alternative_path
     *undescribed*
 
 device_count
+    *undescribed*
+
+devices
     *undescribed*
 
 .. This file was automatic generated / don't edit.

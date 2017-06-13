@@ -133,7 +133,7 @@ Definition
         u32 queue_time;
         u32 dev_busy_time;
         u32 dev_act_time;
-        u8 sense[32];
+        u8 sense;
     }
 
 .. _`tsa_iostat.members`:
@@ -177,8 +177,8 @@ Definition
 
     struct tsa_ddpc {
         u32 rc:8;
-        u8 rcq[16];
-        u8 sense[32];
+        u8 rcq;
+        u8 sense;
     }
 
 .. _`tsa_ddpc.members`:
@@ -217,9 +217,9 @@ Definition
         u32 cu_state:8;
         u32 dev_state:8;
         u32 op_state:8;
-        u8 sd_info[12];
+        u8 sd_info;
         u32 dl_id;
-        u8 dd_data[28];
+        u8 dd_data;
     }
 
 .. _`tsa_intrg.members`:
@@ -326,7 +326,7 @@ Definition
         u32 flags:8;
         u64 time;
         u64 prog_id;
-        u8 prog_data[0];
+        u8 prog_data;
     }
 
 .. _`dcw_intrg_data.members`:
@@ -391,7 +391,7 @@ Definition
         u32 flags:8;
         u32 cd_count:8;
         u32 count;
-        u8 cd[0];
+        u8 cd;
     }
 
 .. _`dcw.members`:
@@ -501,7 +501,7 @@ Definition
 
     struct tccb {
         struct tccb_tcah tcah;
-        u8 tca[0];
+        u8 tca;
     }
 
 .. _`tccb.members`:

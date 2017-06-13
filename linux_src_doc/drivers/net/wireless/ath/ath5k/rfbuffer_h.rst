@@ -20,7 +20,7 @@ Definition
     struct ath5k_ini_rfbuffer {
         u8 rfb_bank;
         u16 rfb_ctrl_register;
-        u32 rfb_mode_data[3];
+        u32 rfb_mode_data;
     }
 
 .. _`ath5k_ini_rfbuffer.members`:

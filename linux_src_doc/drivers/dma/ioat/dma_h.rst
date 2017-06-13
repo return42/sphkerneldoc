@@ -22,12 +22,12 @@ Definition
         void __iomem *reg_base;
         struct dma_pool *completion_pool;
     #define MAX_SED_POOLS 5
-        struct dma_pool  *sed_hw_pool[MAX_SED_POOLS];
+        struct dma_pool  *sed_hw_pool;
         struct dma_device dma_dev;
         u8 version;
     #define IOAT_MAX_CHANS 4
-        struct msix_entry msix_entries[IOAT_MAX_CHANS];
-        struct ioatdma_chan  *idx[IOAT_MAX_CHANS];
+        struct msix_entry msix_entries;
+        struct ioatdma_chan  *idx;
         struct dca_provider *dca;
         enum ioat_irq_mode irq_mode;
         u32 cap;

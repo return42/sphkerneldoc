@@ -19,8 +19,8 @@ Definition
 
     struct dmatest_params {
         unsigned int buf_size;
-        char channel[20];
-        char device[32];
+        char channel;
+        char device;
         unsigned int threads_per_chan;
         unsigned int max_channels;
         unsigned int iterations;

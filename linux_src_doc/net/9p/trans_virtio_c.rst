@@ -26,7 +26,7 @@ Definition
         int ring_bufs_avail;
         wait_queue_head_t *vc_wq;
         unsigned long p9_max_pages;
-        struct scatterlist sg[VIRTQUEUE_NUM];
+        struct scatterlist sg;
         int tag_len;
         char *tag;
         struct list_head chan_list;

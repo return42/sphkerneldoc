@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct user_gp_regs {
-        unsigned long dx[8][2];
-        unsigned long ax[4][2];
+        unsigned long dx;
+        unsigned long ax;
         unsigned long pc;
         unsigned long status;
         unsigned long rpt;
@@ -132,7 +132,7 @@ Definition
 .. code-block:: c
 
     struct user_rp_state {
-        unsigned long long entries[6];
+        unsigned long long entries;
         unsigned long mask;
     }
 

@@ -54,7 +54,7 @@ Definition
         struct snd_tea575x tea;
     #endif
     #ifdef CONFIG_PM_SLEEP
-        u16 saved_regs[0x20];
+        u16 saved_regs;
     #endif
     }
 
@@ -160,6 +160,9 @@ v4l2_dev
     *undescribed*
 
 tea
+    *undescribed*
+
+saved_regs
     *undescribed*
 
 .. This file was automatic generated / don't edit.

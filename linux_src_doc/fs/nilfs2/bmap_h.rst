@@ -218,7 +218,7 @@ Definition
 .. code-block:: c
 
     struct nilfs_bmap_store {
-        __le64 data[NILFS_BMAP_SIZE / sizeof(__le64)];
+        __le64 data;
         __u64 last_allocated_key;
         __u64 last_allocated_ptr;
         int state;

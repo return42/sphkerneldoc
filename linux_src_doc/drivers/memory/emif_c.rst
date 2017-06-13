@@ -26,7 +26,7 @@ Definition
         void __iomem *base;
         struct device *dev;
         const struct lpddr2_addressing *addressing;
-        struct emif_regs  *regs_cache[EMIF_MAX_NUM_FREQUENCIES];
+        struct emif_regs  *regs_cache;
         struct emif_regs *curr_regs;
         struct emif_platform_data *plat_data;
         struct dentry *debugfs_root;

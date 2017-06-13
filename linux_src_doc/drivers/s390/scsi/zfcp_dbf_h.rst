@@ -142,7 +142,7 @@ Definition
 
     struct zfcp_dbf_rec {
         u8 id;
-        char tag[ZFCP_DBF_TAG_LEN];
+        char tag;
         u64 lun;
         u64 wwpn;
         u32 d_id;
@@ -245,9 +245,9 @@ Definition
     struct zfcp_dbf_hba_res {
         u64 req_issued;
         u32 prot_status;
-        u8 prot_status_qual[FSF_PROT_STATUS_QUAL_SIZE];
+        u8 prot_status_qual;
         u32 fsf_status;
-        u8 fsf_status_qual[FSF_STATUS_QUALIFIER_SIZE];
+        u8 fsf_status_qual;
         u32 port_handle;
         u32 lun_handle;
     }
@@ -380,7 +380,7 @@ Definition
 
     struct zfcp_dbf_hba {
         u8 id;
-        char tag[ZFCP_DBF_TAG_LEN];
+        char tag;
         u64 fsf_req_id;
         u32 fsf_req_status;
         u32 fsf_cmd;
@@ -464,7 +464,7 @@ Definition
 
     struct zfcp_dbf_scsi {
         u8 id;
-        char tag[ZFCP_DBF_TAG_LEN];
+        char tag;
         u32 scsi_id;
         u32 scsi_lun;
         u32 scsi_result;
@@ -472,7 +472,7 @@ Definition
         u8 scsi_allowed;
         u8 fcp_rsp_info;
     #define ZFCP_DBF_SCSI_OPCODE 16
-        u8 scsi_opcode[ZFCP_DBF_SCSI_OPCODE];
+        u8 scsi_opcode;
         u64 fsf_req_id;
         u64 host_scribble;
         u16 pl_len;
@@ -541,10 +541,10 @@ Definition
 
     struct zfcp_dbf_pay {
         u8 counter;
-        char area[ZFCP_DBF_TAG_LEN];
+        char area;
         u64 fsf_req_id;
     #define ZFCP_DBF_PAY_MAX_REC 0x100
-        char data[ZFCP_DBF_PAY_MAX_REC];
+        char data;
     }
 
 .. _`zfcp_dbf_pay.members`:

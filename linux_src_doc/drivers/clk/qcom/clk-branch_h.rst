@@ -23,11 +23,11 @@ Definition
         u8 hwcg_bit;
         u8 halt_bit;
         u8 halt_check;
-    #define BRANCH_VOTED BIT(7)
+    #define BRANCH_VOTED BIT7
     #define BRANCH_HALT 0
-    #define BRANCH_HALT_VOTED (BRANCH_HALT | BRANCH_VOTED)
+    #define BRANCH_HALT_VOTED BRANCH_HALT | BRANCH_VOTED
     #define BRANCH_HALT_ENABLE 1
-    #define BRANCH_HALT_ENABLE_VOTED (BRANCH_HALT_ENABLE | BRANCH_VOTED)
+    #define BRANCH_HALT_ENABLE_VOTED BRANCH_HALT_ENABLE | BRANCH_VOTED
     #define BRANCH_HALT_DELAY 2
         struct clk_regmap clkr;
     }

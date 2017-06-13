@@ -277,8 +277,8 @@ Definition
         unsigned int cra_alignmask;
         int cra_priority;
         atomic_t cra_refcnt;
-        char cra_name[CRYPTO_MAX_ALG_NAME];
-        char cra_driver_name[CRYPTO_MAX_ALG_NAME];
+        char cra_name;
+        char cra_driver_name;
         const struct crypto_type *cra_type;
         union cra_u;
         int (*cra_init)(struct crypto_tfm *tfm);

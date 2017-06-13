@@ -5404,7 +5404,7 @@ Definition
 .. code-block:: c
 
     struct nl80211_txrate_vht {
-        __u16 mcs[NL80211_VHT_NSS_MAX];
+        __u16 mcs;
     }
 
 .. _`nl80211_txrate_vht.members`:
@@ -6007,7 +6007,7 @@ Definition
     struct nl80211_wowlan_tcp_data_token {
         __u32 offset;
         __u32 len;
-        __u8 token_stream[];
+        __u8 token_stream;
     }
 
 .. _`nl80211_wowlan_tcp_data_token.members`:

@@ -69,8 +69,8 @@ Definition
         u32 streamformat;
         u32 width;
         u32 height;
-        u8 profile[32];
-        u8 level[32];
+        u8 profile;
+        u8 level;
     }
 
 .. _`hva_streaminfo.members`:
@@ -420,7 +420,7 @@ Definition
         struct hva_controls ctrls;
         u8 id;
         bool aborting;
-        char name[100];
+        char name;
         struct work_struct run_work;
         struct mutex lock;
         u32 flags;
@@ -587,7 +587,7 @@ Definition
         struct device *dev;
         struct mutex lock;
         struct v4l2_m2m_dev *m2m_dev;
-        struct hva_ctx  *instances[HVA_MAX_INSTANCES];
+        struct hva_ctx  *instances;
         unsigned int nb_of_instances;
         unsigned int instance_id;
         void __iomem *regs;
@@ -600,11 +600,11 @@ Definition
         struct mutex protect_mutex;
         struct completion interrupt;
         unsigned long int ip_version;
-        const struct hva_enc  *encoders[HVA_MAX_ENCODERS];
+        const struct hva_enc  *encoders;
         u32 nb_of_encoders;
-        u32 pixelformats[HVA_MAX_FORMATS];
+        u32 pixelformats;
         u32 nb_of_pixelformats;
-        u32 streamformats[HVA_MAX_FORMATS];
+        u32 streamformats;
         u32 nb_of_streamformats;
         u32 sfl_reg;
         u32 sts_reg;

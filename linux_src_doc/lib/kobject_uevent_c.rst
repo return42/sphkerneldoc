@@ -31,7 +31,7 @@ Returns 0 if the action string was recognized.
 kobject_uevent_env
 ==================
 
-.. c:function:: int kobject_uevent_env(struct kobject *kobj, enum kobject_action action, char  *envp_ext[])
+.. c:function:: int kobject_uevent_env(struct kobject *kobj, enum kobject_action action, char  *envp_ext)
 
     send an uevent with environmental data
 

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct nand_id {
-        u8 data[8];
+        u8 data;
         int len;
     }
 

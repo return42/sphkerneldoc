@@ -27,8 +27,8 @@ Definition
         struct list_head node;
         spinlock_t sk_lock;
         int sk_count;
-        struct hlist_nulls_head sk_laddr_hash[LLC_SK_LADDR_HASH_ENTRIES];
-        struct hlist_head sk_dev_hash[LLC_SK_DEV_HASH_ENTRIES];
+        struct hlist_nulls_head sk_laddr_hash;
+        struct hlist_head sk_dev_hash;
     }
 
 .. _`llc_sap.members`:
@@ -61,6 +61,12 @@ sk_lock
     *undescribed*
 
 sk_count
+    *undescribed*
+
+sk_laddr_hash
+    *undescribed*
+
+sk_dev_hash
     *undescribed*
 
 .. _`llc_sap.description`:

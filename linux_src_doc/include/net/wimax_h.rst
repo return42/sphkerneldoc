@@ -29,7 +29,7 @@ Definition
         struct rfkill *rfkill;
         unsigned int rf_hw;
         unsigned int rf_sw;
-        char name[32];
+        char name;
         struct dentry *debugfs_dentry;
     }
 

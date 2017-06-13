@@ -19,7 +19,7 @@ Definition
 
     struct bcom_bd {
         u32 status;
-        u32 data[0];
+        u32 data;
     }
 
 .. _`bcom_bd.members`:

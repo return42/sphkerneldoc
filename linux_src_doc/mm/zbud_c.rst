@@ -19,7 +19,7 @@ Definition
 
     struct zbud_pool {
         spinlock_t lock;
-        struct list_head unbuddied[NCHUNKS];
+        struct list_head unbuddied;
         struct list_head buddied;
         struct list_head lru;
         u64 pages_nr;

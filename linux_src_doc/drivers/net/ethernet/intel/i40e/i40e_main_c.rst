@@ -4035,7 +4035,7 @@ i40e_udp_tunnel_del
 i40e_ndo_fdb_add
 ================
 
-.. c:function:: int i40e_ndo_fdb_add(struct ndmsg *ndm, struct nlattr  *tb[], struct net_device *dev, const unsigned char *addr, u16 vid, u16 flags)
+.. c:function:: int i40e_ndo_fdb_add(struct ndmsg *ndm, struct nlattr  *tb, struct net_device *dev, const unsigned char *addr, u16 vid, u16 flags)
 
     add an entry to the hardware database
 

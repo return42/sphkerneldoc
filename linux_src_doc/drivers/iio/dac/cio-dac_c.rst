@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct cio_dac_iio {
-        int chan_out_states[CIO_DAC_NUM_CHAN];
+        int chan_out_states;
         unsigned int base;
     }
 

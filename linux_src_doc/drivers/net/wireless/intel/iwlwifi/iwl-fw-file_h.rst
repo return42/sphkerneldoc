@@ -427,7 +427,7 @@ Definition
 
     struct iwl_fw_dbg_reg_op {
         u8 op;
-        u8 reserved[3];
+        u8 reserved;
         __le32 addr;
         __le32 val;
     }
@@ -439,6 +439,9 @@ Members
 
 op
     %enum iwl_fw_dbg_reg_operator
+
+reserved
+    *undescribed*
 
 addr
     offset of the register
@@ -593,7 +596,7 @@ Definition
         __le32 wrap_count;
         u8 base_shift;
         u8 end_shift;
-        struct iwl_fw_dbg_reg_op reg_ops[0];
+        struct iwl_fw_dbg_reg_op reg_ops;
     }
 
 .. _`iwl_fw_dbg_dest_tlv.members`:
@@ -755,8 +758,8 @@ Definition
         u8 start_conf_id;
         __le16 occurrences;
         __le16 trig_dis_ms;
-        __le16 reserved[3];
-        u8 data[0];
+        __le16 reserved;
+        u8 data;
     }
 
 .. _`iwl_fw_dbg_trigger_tlv.members`:
@@ -794,6 +797,12 @@ trig_dis_ms
     the time, in milliseconds, after an occurrence of this
     trigger in which another occurrence should be ignored.
 
+reserved
+    *undescribed*
+
+data
+    *undescribed*
+
 .. _`iwl_fw_dbg_trigger_missed_bcon`:
 
 struct iwl_fw_dbg_trigger_missed_bcon
@@ -813,10 +822,10 @@ Definition
     struct iwl_fw_dbg_trigger_missed_bcon {
         __le32 stop_consec_missed_bcon;
         __le32 stop_consec_missed_bcon_since_rx;
-        __le32 reserved2[2];
+        __le32 reserved2;
         __le32 start_consec_missed_bcon;
         __le32 start_consec_missed_bcon_since_rx;
-        __le32 reserved1[2];
+        __le32 reserved1;
     }
 
 .. _`iwl_fw_dbg_trigger_missed_bcon.members`:
@@ -859,13 +868,16 @@ Definition
 .. code-block:: c
 
     struct iwl_fw_dbg_trigger_cmd {
-        struct cmd __packed cmds[16];
+        struct cmd __packed cmds;
     }
 
 .. _`iwl_fw_dbg_trigger_cmd.members`:
 
 Members
 -------
+
+cmds
+    *undescribed*
 
 .. _`iwl_fw_dbg_trigger_cmd.cmds`:
 
@@ -1015,7 +1027,7 @@ Definition
         __le32 p2p_device;
         __le32 ibss;
         __le32 tdls;
-        __le32 reserved[4];
+        __le32 reserved;
     }
 
 .. _`iwl_fw_dbg_trigger_txq_timer.members`:
@@ -1047,6 +1059,9 @@ ibss
 tdls
     timeout for the queues of a TDLS station in ms
 
+reserved
+    *undescribed*
+
 .. _`iwl_fw_dbg_trigger_time_event`:
 
 struct iwl_fw_dbg_trigger_time_event
@@ -1064,13 +1079,16 @@ Definition
 .. code-block:: c
 
     struct iwl_fw_dbg_trigger_time_event {
-        struct __packed time_events[16];
+        struct __packed time_events;
     }
 
 .. _`iwl_fw_dbg_trigger_time_event.members`:
 
 Members
 -------
+
+time_events
+    *undescribed*
 
 .. _`iwl_fw_dbg_trigger_time_event.time_events`:
 
@@ -1209,8 +1227,8 @@ Definition
     struct iwl_fw_dbg_trigger_tdls {
         u8 action_bitmap;
         u8 peer_mode;
-        u8 peer[ETH_ALEN];
-        u8 reserved[4];
+        u8 peer;
+        u8 reserved;
     }
 
 .. _`iwl_fw_dbg_trigger_tdls.members`:
@@ -1226,6 +1244,9 @@ peer_mode
 
 peer
     the TDLS peer to trigger the collection on
+
+reserved
+    *undescribed*
 
 .. _`iwl_fw_dbg_trigger_tx_status`:
 
@@ -1244,8 +1265,8 @@ Definition
 .. code-block:: c
 
     struct iwl_fw_dbg_trigger_tx_status {
-        struct tx_status __packed statuses[16];
-        __le32 reserved[2];
+        struct tx_status __packed statuses;
+        __le32 reserved;
     }
 
 .. _`iwl_fw_dbg_trigger_tx_status.members`:
@@ -1255,6 +1276,9 @@ Members
 
 statuses
     the list of statuses to trigger the collection on
+
+reserved
+    *undescribed*
 
 .. _`iwl_fw_dbg_conf_tlv`:
 

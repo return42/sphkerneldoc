@@ -21,7 +21,7 @@ Definition
         struct device *dev;
         struct mutex lock;
         struct regulator *usb3v1;
-        struct twl4030_madc_request requests[TWL4030_MADC_NUM_METHODS];
+        struct twl4030_madc_request requests;
         bool use_second_irq;
         u8 imr;
         u8 isr;

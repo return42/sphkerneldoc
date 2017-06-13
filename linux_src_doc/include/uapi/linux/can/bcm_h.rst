@@ -25,7 +25,7 @@ Definition
         struct bcm_timeval ival2;
         canid_t can_id;
         __u32 nframes;
-        struct can_frame frames[0];
+        struct can_frame frames;
     }
 
 .. _`bcm_msg_head.members`:

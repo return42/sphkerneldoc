@@ -371,7 +371,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_mbus_frame_desc {
-        struct v4l2_mbus_frame_desc_entry entry[V4L2_FRAME_DESC_ENTRY_MAX];
+        struct v4l2_mbus_frame_desc_entry entry;
         unsigned short num_entries;
     }
 
@@ -1104,7 +1104,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev {
-    #if defined(CONFIG_MEDIA_CONTROLLER)
+    #if definedCONFIG_MEDIA_CONTROLLER
         struct media_entity entity;
     #endif
         struct list_head list;
@@ -1115,7 +1115,7 @@ Definition
         const struct v4l2_subdev_ops *ops;
         const struct v4l2_subdev_internal_ops *internal_ops;
         struct v4l2_ctrl_handler *ctrl_handler;
-        char name[V4L2_SUBDEV_NAME_SIZE];
+        char name;
         u32 grp_id;
         void *dev_priv;
         void *host_priv;
@@ -1232,7 +1232,7 @@ Definition
 
     struct v4l2_subdev_fh {
         struct v4l2_fh vfh;
-    #if defined(CONFIG_VIDEO_V4L2_SUBDEV_API)
+    #if definedCONFIG_VIDEO_V4L2_SUBDEV_API
         struct v4l2_subdev_pad_config *pad;
     #endif
     }

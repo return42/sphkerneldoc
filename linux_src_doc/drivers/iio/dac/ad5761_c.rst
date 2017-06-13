@@ -56,7 +56,7 @@ Definition
         bool use_intref;
         int vref;
         enum ad5761_voltage_range range;
-        union data[3] ____cacheline_aligned;
+        union data;
     }
 
 .. _`ad5761_state.members`:

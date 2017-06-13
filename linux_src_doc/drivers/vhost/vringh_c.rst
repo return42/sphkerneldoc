@@ -187,7 +187,7 @@ to this function.
 vringh_complete_multi_user
 ==========================
 
-.. c:function:: int vringh_complete_multi_user(struct vringh *vrh, const struct vring_used_elem used[], unsigned num_used)
+.. c:function:: int vringh_complete_multi_user(struct vringh *vrh, const struct vring_used_elem used, unsigned num_used)
 
     we've finished with many descriptors.
 

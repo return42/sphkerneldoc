@@ -20,7 +20,7 @@ Definition
     struct tipc_bc_base {
         struct tipc_link *link;
         struct sk_buff_head inputq;
-        int dests[MAX_BEARERS];
+        int dests;
         int primary_bearer;
         bool bcast_support;
         bool rcast_support;
@@ -38,6 +38,9 @@ link
 
 inputq
     data input queue; will only carry SOCK_WAKEUP messages
+
+dests
+    *undescribed*
 
 primary_bearer
     a bearer having links to all broadcast destinations, if any

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct st_lsm6dsx_sensor {
-        char name[32];
+        char name;
         enum st_lsm6dsx_sensor_id id;
         struct st_lsm6dsx_hw *hw;
         u32 gain;
@@ -93,10 +93,10 @@ Definition
         enum st_lsm6dsx_fifo_mode fifo_mode;
         u8 enable_mask;
         u8 sip;
-        struct iio_dev  *iio_devs[ST_LSM6DSX_ID_MAX];
+        struct iio_dev  *iio_devs;
         const struct st_lsm6dsx_settings *settings;
         const struct st_lsm6dsx_transfer_function *tf;
-    #if defined(CONFIG_SPI_MASTER)
+    #if definedCONFIG_SPI_MASTER
         struct st_lsm6dsx_transfer_buffer tb;
     #endif
     }

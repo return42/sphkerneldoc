@@ -25,7 +25,7 @@ Definition
         unsigned int type;
         unsigned int spec_major;
         unsigned int spec_minor;
-        char version[KEMPLD_VERSION_LEN];
+        char version;
     }
 
 .. _`kempld_info.members`:

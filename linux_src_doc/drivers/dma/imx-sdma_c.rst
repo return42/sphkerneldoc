@@ -20,7 +20,7 @@ Definition
     struct sdma_channel_control {
         u32 current_bd_ptr;
         u32 base_bd_ptr;
-        u32 unused[2];
+        u32 unused;
     }
 
 .. _`sdma_channel_control.members`:
@@ -32,6 +32,9 @@ current_bd_ptr
     *undescribed*
 
 base_bd_ptr
+    *undescribed*
+
+unused
     *undescribed*
 
 .. _`sdma_channel_control.description`:
@@ -130,7 +133,7 @@ Definition
 
     struct sdma_context_data {
         struct sdma_state_registers channel_state;
-        u32 gReg[8];
+        u32 gReg;
         u32 mda;
         u32 msa;
         u32 ms;
@@ -268,7 +271,7 @@ Definition
         unsigned long flags;
         dma_addr_t per_address;
         dma_addr_t per_address2;
-        unsigned long event_mask[2];
+        unsigned long event_mask;
         unsigned long watermark_level;
         u32 shp_addr;
         u32 per_addr;
@@ -342,6 +345,9 @@ per_address
     *undescribed*
 
 per_address2
+    *undescribed*
+
+event_mask
     *undescribed*
 
 watermark_level

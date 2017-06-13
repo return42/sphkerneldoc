@@ -196,7 +196,7 @@ Definition
 .. code-block:: c
 
     union zip_inst_s {
-        u64 u_reg64[16];
+        u64 u_reg64;
         struct s;
     }
 
@@ -204,6 +204,9 @@ Definition
 
 Members
 -------
+
+u_reg64
+    *undescribed*
 
 s
     *undescribed*
@@ -266,7 +269,7 @@ Definition
 .. code-block:: c
 
     union zip_zptr_s {
-        u64 u_reg64[2];
+        u64 u_reg64;
         struct s;
     }
 
@@ -274,6 +277,9 @@ Definition
 
 Members
 -------
+
+u_reg64
+    *undescribed*
 
 s
     *undescribed*
@@ -302,7 +308,7 @@ Definition
 .. code-block:: c
 
     union zip_zres_s {
-        u64 u_reg64[3];
+        u64 u_reg64;
         struct s;
     }
 
@@ -310,6 +316,9 @@ Definition
 
 Members
 -------
+
+u_reg64
+    *undescribed*
 
 s
     *undescribed*

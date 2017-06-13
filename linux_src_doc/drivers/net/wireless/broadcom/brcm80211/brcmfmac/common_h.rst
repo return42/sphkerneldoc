@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_mp_global_t {
-        char firmware_path[BRCMF_FW_ALTPATH_LEN];
+        char firmware_path;
     }
 
 .. _`brcmf_mp_global_t.members`:

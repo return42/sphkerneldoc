@@ -157,7 +157,7 @@ Definition
 
     struct ubi_rename_entry {
         int new_name_len;
-        char new_name[UBI_VOL_NAME_MAX + 1];
+        char new_name;
         int remove;
         struct ubi_volume_desc *desc;
         struct list_head list;
@@ -210,8 +210,8 @@ Definition
 .. code-block:: c
 
     struct ubi_fastmap_layout {
-        struct ubi_wl_entry  *e[UBI_FM_MAX_BLOCKS];
-        int to_be_tortured[UBI_FM_MAX_BLOCKS];
+        struct ubi_wl_entry  *e;
+        int to_be_tortured;
         int used_blocks;
         int max_pool_size;
         int max_wl_pool_size;
@@ -254,7 +254,7 @@ Definition
 .. code-block:: c
 
     struct ubi_fm_pool {
-        int pebs[UBI_FM_MAX_POOL_SIZE];
+        int pebs;
         int used;
         int size;
         int max_size;
@@ -363,7 +363,7 @@ Definition
         int alignment;
         int data_pad;
         int name_len;
-        char name[UBI_VOL_NAME_MAX + 1];
+        char name;
         int upd_ebs;
         int ch_lnum;
         long long upd_bytes;
@@ -554,7 +554,7 @@ Definition
         unsigned int power_cut_counter;
         unsigned int power_cut_min;
         unsigned int power_cut_max;
-        char dfs_dir_name[UBI_DFS_DIR_LEN + 1];
+        char dfs_dir_name;
         struct dentry *dfs_dir;
         struct dentry *dfs_chk_gen;
         struct dentry *dfs_chk_io;
@@ -655,9 +655,9 @@ Definition
         struct cdev cdev;
         struct device dev;
         int ubi_num;
-        char ubi_name[sizeof(UBI_NAME_STR)+5];
+        char ubi_name;
         int vol_count;
-        struct ubi_volume  *volumes[UBI_MAX_VOLUMES+UBI_INT_VOL_COUNT];
+        struct ubi_volume  *volumes;
         spinlock_t volumes_lock;
         int ref_count;
         int image_seq;
@@ -693,7 +693,7 @@ Definition
         struct rb_root free;
         int free_count;
         struct rb_root scrub;
-        struct list_head pq[UBI_PROT_QUEUE_LEN];
+        struct list_head pq;
         int pq_head;
         spinlock_t wl_lock;
         struct mutex move_mutex;
@@ -707,7 +707,7 @@ Definition
         int works_count;
         struct task_struct *bgt_thread;
         int thread_enabled;
-        char bgt_name[sizeof(UBI_BGT_NAME_PATTERN)+2];
+        char bgt_name;
         long long flash_size;
         int peb_count;
         int peb_size;

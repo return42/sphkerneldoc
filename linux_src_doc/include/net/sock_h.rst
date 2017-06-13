@@ -92,7 +92,7 @@ Definition
         struct sk_buff_head sk_receive_queue;
         struct {unnamed_struct};
     #ifdef CONFIG_XFRM
-        struct xfrm_policy __rcu  *sk_policy[2];
+        struct xfrm_policy __rcu  *sk_policy;
     #endif
         struct dst_entry *sk_rx_dst;
         struct dst_entry __rcu *sk_dst_cache;
@@ -119,7 +119,7 @@ Definition
         unsigned int sk_gso_max_size;
         gfp_t sk_allocation;
         __u32 sk_txhash;
-        unsigned int __sk_flags_offset[0];
+        unsigned int __sk_flags_offset;
     #ifdef __BIG_ENDIAN_BITFIELD
     #define SK_FL_PROTO_SHIFT 16
     #define SK_FL_PROTO_MASK 0x00ff0000
@@ -276,6 +276,9 @@ sk_allocation
 
 sk_txhash
     computed flow hash for use on transmit
+
+__sk_flags_offset
+    *undescribed*
 
 sk_padding
     unused element for alignment

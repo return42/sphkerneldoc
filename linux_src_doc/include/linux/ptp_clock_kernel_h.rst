@@ -19,7 +19,7 @@ Definition
 
     struct ptp_clock_info {
         struct module *owner;
-        char name[16];
+        char name;
         s32 max_adj;
         int n_alarm;
         int n_ext_ts;

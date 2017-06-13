@@ -495,7 +495,7 @@ Definition
         unsigned int __user *data;
         unsigned int subdev;
         unsigned int chanspec;
-        unsigned int unused[3];
+        unsigned int unused;
     }
 
 .. _`comedi_insn.members`:
@@ -741,7 +741,7 @@ Definition
         unsigned int __user *maxdata_list;
         unsigned int __user *flaglist;
         unsigned int __user *rangelist;
-        unsigned int unused[4];
+        unsigned int unused;
     }
 
 .. _`comedi_chaninfo.members`:
@@ -912,7 +912,7 @@ Definition
         unsigned int range_type;
         unsigned int settling_time_0;
         unsigned int insn_bits_support;
-        unsigned int unused[8];
+        unsigned int unused;
     }
 
 .. _`comedi_subdinfo.members`:
@@ -1056,11 +1056,11 @@ Definition
     struct comedi_devinfo {
         unsigned int version_code;
         unsigned int n_subdevs;
-        char driver_name[COMEDI_NAMELEN];
-        char board_name[COMEDI_NAMELEN];
+        char driver_name;
+        char board_name;
         int read_subdevice;
         int write_subdevice;
-        int unused[30];
+        int unused;
     }
 
 .. _`comedi_devinfo.members`:
@@ -1114,8 +1114,8 @@ Definition
 .. code-block:: c
 
     struct comedi_devconfig {
-        char board_name[COMEDI_NAMELEN];
-        int options[COMEDI_NDEVCONFOPTS];
+        char board_name;
+        int options;
     }
 
 .. _`comedi_devconfig.members`:
@@ -1163,7 +1163,7 @@ Definition
         unsigned int flags;
         unsigned int maximum_size;
         unsigned int size;
-        unsigned int unused[4];
+        unsigned int unused;
     }
 
 .. _`comedi_bufconfig.members`:
@@ -1228,7 +1228,7 @@ Definition
         unsigned int buf_write_count;
         unsigned int buf_read_count;
         unsigned int bytes_written;
-        unsigned int unused[4];
+        unsigned int unused;
     }
 
 .. _`comedi_bufinfo.members`:

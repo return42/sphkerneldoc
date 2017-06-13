@@ -218,7 +218,7 @@ Definition
         u16 id;
         u16 color;
         u8 ap_sta_id;
-        u8 bssid[ETH_ALEN];
+        u8 bssid;
         bool associated;
         u8 ap_assoc_sta_count;
         u16 cab_queue;
@@ -236,9 +236,9 @@ Definition
         bool seqno_valid;
         u16 seqno;
     #endif
-    #if IS_ENABLED(CONFIG_IPV6)
-        struct in6_addr target_ipv6_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_MAX];
-        unsigned long tentative_addrs[BITS_TO_LONGS(IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_MAX)];
+    #if IS_ENABLEDCONFIG_IPV6
+        struct in6_addr target_ipv6_addrs;
+        unsigned long tentative_addrs;
         int num_target_ipv6_addrs;
     #endif
     #ifdef CONFIG_IWLWIFI_DEBUGFS
@@ -249,8 +249,8 @@ Definition
         struct iwl_mac_power_cmd mac_pwr_cmd;
         int dbgfs_quota_min;
     #endif
-        enum ieee80211_smps_mode smps_requests[NUM_IWL_MVM_SMPS_REQ];
-        u8 uapsd_misbehaving_bssid[ETH_ALEN];
+        enum ieee80211_smps_mode smps_requests;
+        u8 uapsd_misbehaving_bssid;
         bool csa_countdown;
         bool csa_failed;
         u16 csa_target_freq;
@@ -331,6 +331,12 @@ seqno_valid
 seqno
     *undescribed*
 
+target_ipv6_addrs
+    *undescribed*
+
+tentative_addrs
+    *undescribed*
+
 num_target_ipv6_addrs
     *undescribed*
 
@@ -355,6 +361,9 @@ dbgfs_quota_min
 smps_requests
     the SMPS requests of different parts of the driver,
     combined on update to yield the overall request to mac80211.
+
+uapsd_misbehaving_bssid
+    *undescribed*
 
 csa_countdown
     *undescribed*
@@ -484,8 +493,8 @@ Definition
 .. code-block:: c
 
     struct iwl_mvm_thermal_device {
-        s16 temp_trips[IWL_MAX_DTS_TRIPS];
-        u8 fw_trips_index[IWL_MAX_DTS_TRIPS];
+        s16 temp_trips;
+        u8 fw_trips_index;
         struct thermal_zone_device *tzone;
     }
 
@@ -527,8 +536,8 @@ Definition
         int queue;
         u16 last_amsdu;
         u8 last_sub_index;
-        struct sk_buff_head entries[IEEE80211_MAX_AMPDU_BUF];
-        unsigned long reorder_time[IEEE80211_MAX_AMPDU_BUF];
+        struct sk_buff_head entries;
+        unsigned long reorder_time;
         struct timer_list reorder_timer;
         bool removed;
         bool valid;
@@ -609,7 +618,7 @@ Definition
         unsigned long last_rx;
         struct timer_list session_timer;
         struct iwl_mvm *mvm;
-        struct iwl_mvm_reorder_buffer reorder_buf[];
+        struct iwl_mvm_reorder_buffer reorder_buf;
     }
 
 .. _`iwl_mvm_baid_data.members`:

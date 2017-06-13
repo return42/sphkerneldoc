@@ -20,7 +20,7 @@ Definition
     struct gcov_fn_info {
         unsigned int ident;
         unsigned int checksum;
-        unsigned int n_ctrs[0];
+        unsigned int n_ctrs;
     }
 
 .. _`gcov_fn_info.members`:
@@ -113,7 +113,7 @@ Definition
         unsigned int n_functions;
         const struct gcov_fn_info *functions;
         unsigned int ctr_mask;
-        struct gcov_ctr_info counts[0];
+        struct gcov_ctr_info counts;
     }
 
 .. _`gcov_info.members`:
@@ -391,7 +391,7 @@ Definition
         unsigned int type;
         unsigned int count;
         int num_types;
-        struct type_info type_info[0];
+        struct type_info type_info;
     }
 
 .. _`gcov_iterator.members`:

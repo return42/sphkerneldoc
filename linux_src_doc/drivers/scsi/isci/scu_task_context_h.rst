@@ -559,7 +559,7 @@ Definition
         struct scu_sgl_element_pair sgl_pair_cd;
         struct scu_sgl_element_pair sgl_snapshot_ac;
         u32 active_sgl_element_pair;
-        u32 reserved_C4_CC[3];
+        u32 reserved_C4_CC;
         u32 interm_crc_val:16;
         u32 init_crc_seed:16;
         u32 app_tag_verify:16;
@@ -782,6 +782,9 @@ sgl_snapshot_ac
     *undescribed*
 
 active_sgl_element_pair
+    *undescribed*
+
+reserved_C4_CC
     *undescribed*
 
 interm_crc_val

@@ -6,7 +6,7 @@
 ext4_block_to_path
 ==================
 
-.. c:function:: int ext4_block_to_path(struct inode *inode, ext4_lblk_t i_block, ext4_lblk_t offsets[4], int *boundary)
+.. c:function:: int ext4_block_to_path(struct inode *inode, ext4_lblk_t i_block, ext4_lblk_t offsets, int *boundary)
 
     parse the block number into array of offsets
 
@@ -50,7 +50,7 @@ inode->i_sb).
 ext4_get_branch
 ===============
 
-.. c:function:: Indirect *ext4_get_branch(struct inode *inode, int depth, ext4_lblk_t *offsets, Indirect chain[4], int *err)
+.. c:function:: Indirect *ext4_get_branch(struct inode *inode, int depth, ext4_lblk_t *offsets, Indirect chain, int *err)
 
     read the chain of indirect blocks leading to data
 
@@ -274,7 +274,7 @@ chain to new block and return 0.
 ext4_find_shared
 ================
 
-.. c:function:: Indirect *ext4_find_shared(struct inode *inode, int depth, ext4_lblk_t offsets[4], Indirect chain[4], __le32 *top)
+.. c:function:: Indirect *ext4_find_shared(struct inode *inode, int depth, ext4_lblk_t offsets, Indirect chain, __le32 *top)
 
     find the indirect blocks for partial truncation.
 

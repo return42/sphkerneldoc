@@ -28,7 +28,7 @@ registered already.
 ti_dt_clocks_register
 =====================
 
-.. c:function:: void ti_dt_clocks_register(struct ti_dt_clk oclks[])
+.. c:function:: void ti_dt_clocks_register(struct ti_dt_clk oclks)
 
     register DT alias clocks during boot
 

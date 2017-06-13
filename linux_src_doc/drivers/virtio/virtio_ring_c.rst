@@ -6,7 +6,7 @@
 virtqueue_add_sgs
 =================
 
-.. c:function:: int virtqueue_add_sgs(struct virtqueue *_vq, struct scatterlist  *sgs[], unsigned int out_sgs, unsigned int in_sgs, void *data, gfp_t gfp)
+.. c:function:: int virtqueue_add_sgs(struct virtqueue *_vq, struct scatterlist  *sgs, unsigned int out_sgs, unsigned int in_sgs, void *data, gfp_t gfp)
 
     expose buffers to other end
 

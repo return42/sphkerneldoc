@@ -6,7 +6,7 @@
 ata_std_bios_param
 ==================
 
-.. c:function:: int ata_std_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int geom[])
+.. c:function:: int ata_std_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int geom)
 
     generic bios head/sector/cylinder calculator used by sd.
 

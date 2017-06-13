@@ -22,7 +22,7 @@ Definition
         unsigned char ht_param;
         unsigned short operation_mode;
         unsigned short stbc_param;
-        unsigned char basic_set[16];
+        unsigned char basic_set;
     }
 
 .. _`ieee80211_ht_addt_info.members`:
@@ -40,6 +40,9 @@ operation_mode
     *undescribed*
 
 stbc_param
+    *undescribed*
+
+basic_set
     *undescribed*
 
 .. _`ieee80211_ht_addt_info.description`:

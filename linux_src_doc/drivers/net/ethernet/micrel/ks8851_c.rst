@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ks8851_rxctrl {
-        u16 mchash[4];
+        u16 mchash;
         u16 rxcr1;
         u16 rxcr2;
     }
@@ -65,8 +65,8 @@ Definition
 .. code-block:: c
 
     union ks8851_tx_hdr {
-        u8 txb[6];
-        __le16 txw[3];
+        u8 txb;
+        __le16 txw;
     }
 
 .. _`ks8851_tx_hdr.members`:
@@ -111,8 +111,8 @@ Definition
         struct mutex lock;
         spinlock_t statelock;
         u32 msg_enable ____cacheline_aligned;
-        u8 rxd[8];
-        u8 txd[8];
+        u8 rxd;
+        u8 txd;
         u32 msg_enable ____cacheline_aligned;
         u16 tx_space;
         u8 fid;
@@ -127,7 +127,7 @@ Definition
         struct spi_message spi_msg1;
         struct spi_message spi_msg2;
         struct spi_transfer spi_xfer1;
-        struct spi_transfer spi_xfer2[2];
+        struct spi_transfer spi_xfer2;
         struct eeprom_93cx6 eeprom;
         struct regulator *vdd_reg;
         struct regulator *vdd_io;
@@ -200,6 +200,9 @@ spi_msg2
     pre-setup SPI transfer with two messages, \ ``spi_xfer2``\ .
 
 spi_xfer1
+    *undescribed*
+
+spi_xfer2
     *undescribed*
 
 eeprom

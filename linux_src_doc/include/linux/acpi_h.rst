@@ -42,7 +42,7 @@ Definition
 .. code-block:: c
 
     struct acpi_probe_entry {
-        __u8 id[ACPI_TABLE_ID_LEN];
+        __u8 id;
         __u8 type;
         acpi_probe_entry_validate_subtbl subtable_valid;
         union {unnamed_union};

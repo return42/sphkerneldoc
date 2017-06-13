@@ -1006,7 +1006,7 @@ within a particular SCSI target device within a particular SCSI instance.
 srpt_parse_i_port_id
 ====================
 
-.. c:function:: int srpt_parse_i_port_id(u8 i_port_id[16], const char *name)
+.. c:function:: int srpt_parse_i_port_id(u8 i_port_id, const char *name)
 
     Parse an initiator port ID.
 

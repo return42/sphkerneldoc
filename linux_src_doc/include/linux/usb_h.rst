@@ -233,7 +233,7 @@ Definition
     struct usb_interface_cache {
         unsigned num_altsetting;
         struct kref ref;
-        struct usb_host_interface altsetting[0];
+        struct usb_host_interface altsetting;
     }
 
 .. _`usb_interface_cache.members`:
@@ -282,9 +282,9 @@ Definition
     struct usb_host_config {
         struct usb_config_descriptor desc;
         char *string;
-        struct usb_interface_assoc_descriptor  *intf_assoc[USB_MAXIADS];
-        struct usb_interface  *interface[USB_MAXINTERFACES];
-        struct usb_interface_cache  *intf_cache[USB_MAXINTERFACES];
+        struct usb_interface_assoc_descriptor  *intf_assoc;
+        struct usb_interface  *interface;
+        struct usb_interface_cache  *intf_cache;
         unsigned char *extra;
         int extralen;
     }
@@ -367,13 +367,13 @@ Definition
 
     struct usb_device {
         int devnum;
-        char devpath[16];
+        char devpath;
         u32 route;
         enum usb_device_state state;
         enum usb_device_speed speed;
         struct usb_tt *tt;
         int ttport;
-        unsigned int toggle[2];
+        unsigned int toggle;
         struct usb_device *parent;
         struct usb_bus *bus;
         struct usb_host_endpoint ep0;
@@ -382,8 +382,8 @@ Definition
         struct usb_host_bos *bos;
         struct usb_host_config *config;
         struct usb_host_config *actconfig;
-        struct usb_host_endpoint  *ep_in[16];
-        struct usb_host_endpoint  *ep_out[16];
+        struct usb_host_endpoint  *ep_in;
+        struct usb_host_endpoint  *ep_out;
         char **rawdescriptors;
         unsigned short bus_mA;
         u8 portnum;
@@ -1301,7 +1301,7 @@ Definition
         int error_count;
         void *context;
         usb_complete_t complete;
-        struct usb_iso_packet_descriptor iso_frame_desc[0];
+        struct usb_iso_packet_descriptor iso_frame_desc;
     }
 
 .. _`urb.members`:

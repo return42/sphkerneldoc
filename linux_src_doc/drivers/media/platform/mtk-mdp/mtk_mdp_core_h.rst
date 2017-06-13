@@ -61,8 +61,8 @@ Definition
         u32 pixelformat;
         u16 num_planes;
         u16 num_comp;
-        u8 depth[VIDEO_MAX_PLANES];
-        u8 row_depth[VIDEO_MAX_PLANES];
+        u8 depth;
+        u8 row_depth;
         u32 flags;
         struct mtk_mdp_pix_align *align;
     }
@@ -110,7 +110,7 @@ Definition
 .. code-block:: c
 
     struct mtk_mdp_addr {
-        dma_addr_t addr[MTK_MDP_MAX_NUM_PLANE];
+        dma_addr_t addr;
     }
 
 .. _`mtk_mdp_addr.members`:
@@ -141,8 +141,8 @@ Definition
         u32 width;
         u32 height;
         struct v4l2_rect crop;
-        unsigned long payload[VIDEO_MAX_PLANES];
-        unsigned int pitch[VIDEO_MAX_PLANES];
+        unsigned long payload;
+        unsigned int pitch;
         struct mtk_mdp_addr addr;
         const struct mtk_mdp_fmt *fmt;
         u8 alpha;
@@ -251,7 +251,7 @@ Definition
         struct platform_device *pdev;
         struct mtk_mdp_variant *variant;
         u16 id;
-        struct mtk_mdp_comp  *comp[MTK_MDP_COMP_ID_MAX];
+        struct mtk_mdp_comp  *comp;
         struct v4l2_m2m_dev *m2m_dev;
         struct list_head ctx_list;
         struct video_device *vdev;

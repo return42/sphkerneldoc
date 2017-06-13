@@ -134,7 +134,7 @@ Definition
         u8 tx_rate_idx;
         u8 tx_rate_flags;
         void *desc;
-        __le32 iv[2];
+        __le32 iv;
         dma_addr_t skb_dma;
         struct ieee80211_sta *sta;
     }
@@ -280,7 +280,7 @@ Definition
         enum rate_info_bw bw;
         u8 cipher;
         u8 cipher_status;
-        __le32 iv[2];
+        __le32 iv;
         __le32 icv;
     }
 
@@ -832,7 +832,7 @@ Definition
         unsigned short limit;
         unsigned short threshold;
         unsigned short length;
-        unsigned short index[Q_INDEX_MAX];
+        unsigned short index;
         unsigned short txop;
         unsigned short aifs;
         unsigned short cw_min;

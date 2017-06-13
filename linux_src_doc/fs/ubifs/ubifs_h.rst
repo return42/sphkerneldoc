@@ -595,7 +595,7 @@ Definition
         int iip;
         int level;
         int num;
-        struct ubifs_lprops lprops[UBIFS_LPT_FANOUT];
+        struct ubifs_lprops lprops;
     }
 
 .. _`ubifs_pnode.members`:
@@ -684,7 +684,7 @@ Definition
         int iip;
         int level;
         int num;
-        struct ubifs_nbranch nbranch[UBIFS_LPT_FANOUT];
+        struct ubifs_nbranch nbranch;
     }
 
 .. _`ubifs_nnode.members`:
@@ -1026,7 +1026,7 @@ Definition
         int lnum;
         int offs;
         int len;
-        struct ubifs_zbranch zbranch[];
+        struct ubifs_zbranch zbranch;
     }
 
 .. _`ubifs_znode.members`:
@@ -1096,7 +1096,7 @@ Definition
 
     struct bu_info {
         union ubifs_key key;
-        struct ubifs_zbranch zbranch[UBIFS_MAX_BULK_READ];
+        struct ubifs_zbranch zbranch;
         void *buf;
         int buf_len;
         int gc_seq;
@@ -1562,7 +1562,7 @@ Definition
         spinlock_t cnt_lock;
         int fmt_version;
         int ro_compat_version;
-        unsigned char uuid[16];
+        unsigned char uuid;
         int lhead_lnum;
         int lhead_offs;
         int ltail_lnum;
@@ -1660,7 +1660,7 @@ Definition
         int dead_wm;
         int dark_wm;
         int block_cnt;
-        struct ubifs_node_range ranges[UBIFS_NODE_TYPES_CNT];
+        struct ubifs_node_range ranges;
         struct ubi_volume_desc *ubi;
         struct ubi_device_info di;
         struct ubi_volume_info vi;
@@ -1679,7 +1679,7 @@ Definition
         int ohead_offs;
         int no_orphs;
         struct task_struct *bgt;
-        char bgt_name[sizeof(BGT_NAME_PATTERN) + 9];
+        char bgt_name;
         int need_bgt;
         int need_wbuf_sync;
         int gc_lnum;
@@ -1719,7 +1719,7 @@ Definition
         void *lpt_buf;
         struct ubifs_nnode *nroot;
         struct ubifs_cnode *lpt_cnext;
-        struct ubifs_lpt_heap lpt_heap[LPROPS_HEAP_CNT];
+        struct ubifs_lpt_heap lpt_heap;
         struct ubifs_lpt_heap dirty_idx;
         struct list_head uncat_list;
         struct list_head empty_list;

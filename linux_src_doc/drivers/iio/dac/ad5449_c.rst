@@ -56,10 +56,10 @@ Definition
     struct ad5449 {
         struct spi_device *spi;
         const struct ad5449_chip_info *chip_info;
-        struct regulator_bulk_data vref_reg[AD5449_MAX_VREFS];
+        struct regulator_bulk_data vref_reg;
         bool has_sdo;
-        uint16_t dac_cache[AD5449_MAX_CHANNELS];
-        __be16 data[2] ____cacheline_aligned;
+        uint16_t dac_cache;
+        __be16 data;
     }
 
 .. _`ad5449.members`:

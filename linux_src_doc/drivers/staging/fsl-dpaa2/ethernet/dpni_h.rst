@@ -108,7 +108,7 @@ Definition
 
     struct dpni_pools_cfg {
         u8 num_dpbp;
-        struct pools[DPNI_MAX_DPBP];
+        struct pools;
     }
 
 .. _`dpni_pools_cfg.members`:

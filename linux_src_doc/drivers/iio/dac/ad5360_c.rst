@@ -60,9 +60,9 @@ Definition
     struct ad5360_state {
         struct spi_device *spi;
         const struct ad5360_chip_info *chip_info;
-        struct regulator_bulk_data vref_reg[3];
+        struct regulator_bulk_data vref_reg;
         unsigned int ctrl;
-        union data[2] ____cacheline_aligned;
+        union data;
     }
 
 .. _`ad5360_state.members`:

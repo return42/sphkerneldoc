@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct lirc_driver {
-        char name[40];
+        char name;
         int minor;
         __u32 code_length;
         unsigned int buffer_size;

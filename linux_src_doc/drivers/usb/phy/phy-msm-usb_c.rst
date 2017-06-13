@@ -131,7 +131,7 @@ Definition
         struct regulator *vddcx;
         struct reset_control *phy_rst;
         struct reset_control *link_rst;
-        int vdd_levels[3];
+        int vdd_levels;
         bool manual_pullup;
         struct msm_usb_cable vbus;
         struct msm_usb_cable id;
@@ -208,6 +208,9 @@ phy_rst
     *undescribed*
 
 link_rst
+    *undescribed*
+
+vdd_levels
     *undescribed*
 
 manual_pullup

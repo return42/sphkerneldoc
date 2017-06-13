@@ -278,7 +278,7 @@ Definition
         spinlock_t print_lock;
         int card_idx;
         u64 flags;
-        struct genwqe_ffdc ffdc[GENWQE_DBG_UNITS];
+        struct genwqe_ffdc ffdc;
         struct task_struct *card_thread;
         wait_queue_head_t queue_waitq;
         struct ddcb_queue queue;
@@ -296,14 +296,14 @@ Definition
         void __iomem *mmio;
         unsigned long mmio_len;
         int num_vfs;
-        u32 vf_jobtimeout_msec[GENWQE_MAX_VFS];
+        u32 vf_jobtimeout_msec;
         int is_privileged;
         u64 slu_unitcfg;
         u64 app_unitcfg;
         u64 softreset;
         u64 err_inject;
         u64 last_gfir;
-        char app_name[5];
+        char app_name;
         spinlock_t file_lock;
         struct list_head file_list;
         int ddcb_software_timeout;
@@ -382,6 +382,9 @@ mmio_len
 num_vfs
     *undescribed*
 
+vf_jobtimeout_msec
+    *undescribed*
+
 is_privileged
     *undescribed*
 
@@ -398,6 +401,9 @@ err_inject
     *undescribed*
 
 last_gfir
+    *undescribed*
+
+app_name
     *undescribed*
 
 file_lock
@@ -565,8 +571,8 @@ Definition
         enum genwqe_requ_state req_state;
         int num;
         struct ddcb_queue *queue;
-        struct dma_mapping dma_mappings[DDCB_FIXUPS];
-        struct genwqe_sgl sgls[DDCB_FIXUPS];
+        struct dma_mapping dma_mappings;
+        struct genwqe_sgl sgls;
         struct genwqe_ddcb_cmd cmd;
         struct genwqe_debug_data debug_data;
     }
@@ -583,6 +589,12 @@ num
     *undescribed*
 
 queue
+    *undescribed*
+
+dma_mappings
+    *undescribed*
+
+sgls
     *undescribed*
 
 cmd

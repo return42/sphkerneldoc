@@ -38,50 +38,50 @@ Definition
         u16 ee_cck_ofdm_gain_delta;
         u16 ee_cck_ofdm_power_delta;
         u16 ee_scaled_cck_delta;
-        u16 ee_i_cal[AR5K_EEPROM_N_MODES];
-        u16 ee_q_cal[AR5K_EEPROM_N_MODES];
-        u16 ee_fixed_bias[AR5K_EEPROM_N_MODES];
-        u16 ee_turbo_max_power[AR5K_EEPROM_N_MODES];
-        u16 ee_xr_power[AR5K_EEPROM_N_MODES];
-        u16 ee_switch_settling[AR5K_EEPROM_N_MODES];
-        u16 ee_atn_tx_rx[AR5K_EEPROM_N_MODES];
-        u16 ee_ant_control[AR5K_EEPROM_N_MODES][AR5K_EEPROM_N_PCDAC];
-        u16 ee_ob[AR5K_EEPROM_N_MODES][AR5K_EEPROM_N_OBDB];
-        u16 ee_db[AR5K_EEPROM_N_MODES][AR5K_EEPROM_N_OBDB];
-        u16 ee_tx_end2xlna_enable[AR5K_EEPROM_N_MODES];
-        u16 ee_tx_end2xpa_disable[AR5K_EEPROM_N_MODES];
-        u16 ee_tx_frm2xpa_enable[AR5K_EEPROM_N_MODES];
-        u16 ee_thr_62[AR5K_EEPROM_N_MODES];
-        u16 ee_xlna_gain[AR5K_EEPROM_N_MODES];
-        u16 ee_xpd[AR5K_EEPROM_N_MODES];
-        u16 ee_x_gain[AR5K_EEPROM_N_MODES];
-        u16 ee_i_gain[AR5K_EEPROM_N_MODES];
-        u16 ee_margin_tx_rx[AR5K_EEPROM_N_MODES];
-        u16 ee_switch_settling_turbo[AR5K_EEPROM_N_MODES];
-        u16 ee_margin_tx_rx_turbo[AR5K_EEPROM_N_MODES];
-        u16 ee_atn_tx_rx_turbo[AR5K_EEPROM_N_MODES];
-        u16 ee_false_detect[AR5K_EEPROM_N_MODES];
-        u8 ee_pd_gains[AR5K_EEPROM_N_MODES];
-        u8 ee_pdc_to_idx[AR5K_EEPROM_N_MODES][AR5K_EEPROM_N_PD_GAINS];
-        u8 ee_n_piers[AR5K_EEPROM_N_MODES];
-        struct ath5k_chan_pcal_info ee_pwr_cal_a[AR5K_EEPROM_N_5GHZ_CHAN];
-        struct ath5k_chan_pcal_info ee_pwr_cal_b[AR5K_EEPROM_N_2GHZ_CHAN_MAX];
-        struct ath5k_chan_pcal_info ee_pwr_cal_g[AR5K_EEPROM_N_2GHZ_CHAN_MAX];
-        u8 ee_rate_target_pwr_num[AR5K_EEPROM_N_MODES];
-        struct ath5k_rate_pcal_info ee_rate_tpwr_a[AR5K_EEPROM_N_5GHZ_CHAN];
-        struct ath5k_rate_pcal_info ee_rate_tpwr_b[AR5K_EEPROM_N_2GHZ_CHAN_MAX];
-        struct ath5k_rate_pcal_info ee_rate_tpwr_g[AR5K_EEPROM_N_2GHZ_CHAN_MAX];
+        u16 ee_i_cal;
+        u16 ee_q_cal;
+        u16 ee_fixed_bias;
+        u16 ee_turbo_max_power;
+        u16 ee_xr_power;
+        u16 ee_switch_settling;
+        u16 ee_atn_tx_rx;
+        u16 ee_ant_control;
+        u16 ee_ob;
+        u16 ee_db;
+        u16 ee_tx_end2xlna_enable;
+        u16 ee_tx_end2xpa_disable;
+        u16 ee_tx_frm2xpa_enable;
+        u16 ee_thr_62;
+        u16 ee_xlna_gain;
+        u16 ee_xpd;
+        u16 ee_x_gain;
+        u16 ee_i_gain;
+        u16 ee_margin_tx_rx;
+        u16 ee_switch_settling_turbo;
+        u16 ee_margin_tx_rx_turbo;
+        u16 ee_atn_tx_rx_turbo;
+        u16 ee_false_detect;
+        u8 ee_pd_gains;
+        u8 ee_pdc_to_idx;
+        u8 ee_n_piers;
+        struct ath5k_chan_pcal_info ee_pwr_cal_a;
+        struct ath5k_chan_pcal_info ee_pwr_cal_b;
+        struct ath5k_chan_pcal_info ee_pwr_cal_g;
+        u8 ee_rate_target_pwr_num;
+        struct ath5k_rate_pcal_info ee_rate_tpwr_a;
+        struct ath5k_rate_pcal_info ee_rate_tpwr_b;
+        struct ath5k_rate_pcal_info ee_rate_tpwr_g;
         u8 ee_ctls;
-        u8 ee_ctl[AR5K_EEPROM_MAX_CTLS];
-        struct ath5k_edge_power ee_ctl_pwr[AR5K_EEPROM_N_EDGES * AR5K_EEPROM_MAX_CTLS];
-        s16 ee_noise_floor_thr[AR5K_EEPROM_N_MODES];
-        s8 ee_adc_desired_size[AR5K_EEPROM_N_MODES];
-        s8 ee_pga_desired_size[AR5K_EEPROM_N_MODES];
-        s8 ee_adc_desired_size_turbo[AR5K_EEPROM_N_MODES];
-        s8 ee_pga_desired_size_turbo[AR5K_EEPROM_N_MODES];
+        u8 ee_ctl;
+        struct ath5k_edge_power ee_ctl_pwr;
+        s16 ee_noise_floor_thr;
+        s8 ee_adc_desired_size;
+        s8 ee_pga_desired_size;
+        s8 ee_adc_desired_size_turbo;
+        s8 ee_pga_desired_size_turbo;
         s8 ee_pd_gain_overlap;
-        u16 ee_spur_chans[AR5K_EEPROM_N_SPUR_CHANS][AR5K_EEPROM_N_FREQ_BANDS];
-        u32 ee_antenna[AR5K_EEPROM_N_MODES][AR5K_ANT_MAX];
+        u16 ee_spur_chans;
+        u32 ee_antenna;
     }
 
 .. _`ath5k_eeprom_info.members`:
@@ -161,6 +161,12 @@ ee_q_cal
 ee_fixed_bias
     use ee_ob and ee_db settings or use automatic control
 
+ee_turbo_max_power
+    *undescribed*
+
+ee_xr_power
+    *undescribed*
+
 ee_switch_settling
     RX/TX Switch settling time
 
@@ -209,10 +215,55 @@ ee_i_gain
 ee_margin_tx_rx
     Margin in dB when final attenuation stage should be used
 
+ee_switch_settling_turbo
+    *undescribed*
+
+ee_margin_tx_rx_turbo
+    *undescribed*
+
+ee_atn_tx_rx_turbo
+    *undescribed*
+
 ee_false_detect
     Backoff in Sensitivity (dB) on channels with spur signals
 
+ee_pd_gains
+    *undescribed*
+
+ee_pdc_to_idx
+    *undescribed*
+
+ee_n_piers
+    *undescribed*
+
+ee_pwr_cal_a
+    *undescribed*
+
+ee_pwr_cal_b
+    *undescribed*
+
+ee_pwr_cal_g
+    *undescribed*
+
+ee_rate_target_pwr_num
+    *undescribed*
+
+ee_rate_tpwr_a
+    *undescribed*
+
+ee_rate_tpwr_b
+    *undescribed*
+
+ee_rate_tpwr_g
+    *undescribed*
+
 ee_ctls
+    *undescribed*
+
+ee_ctl
+    *undescribed*
+
+ee_ctl_pwr
     *undescribed*
 
 ee_noise_floor_thr
@@ -224,8 +275,20 @@ ee_adc_desired_size
 ee_pga_desired_size
     Desired output of PGA (for BB gain) in 0.5 dB steps
 
+ee_adc_desired_size_turbo
+    *undescribed*
+
+ee_pga_desired_size_turbo
+    *undescribed*
+
 ee_pd_gain_overlap
     PD ADC curves need to overlap in 0.5dB steps (ee_map>=2)
+
+ee_spur_chans
+    *undescribed*
+
+ee_antenna
+    *undescribed*
 
 .. _`ath5k_eeprom_info.a-mode`:
 

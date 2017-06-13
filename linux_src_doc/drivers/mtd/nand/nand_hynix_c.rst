@@ -20,7 +20,7 @@ Definition
     struct hynix_read_retry {
         int nregs;
         const u8 *regs;
-        u8 values[0];
+        u8 values;
     }
 
 .. _`hynix_read_retry.members`:

@@ -7,6 +7,7 @@ lpfc
 .. toctree::
     :maxdepth: 1
 
+    lpfc_attr_c
     lpfc_bsg_c
     lpfc_ct_c
     lpfc_debugfs_c

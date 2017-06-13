@@ -231,7 +231,7 @@ Definition
 .. code-block:: c
 
     struct mei_cl_device_id {
-        char name[MEI_CL_NAME_SIZE];
+        char name;
         uuid_le uuid;
         __u8 version;
         kernel_ulong_t driver_info;
@@ -327,7 +327,7 @@ Definition
 
     struct fsl_mc_device_id {
         __u16 vendor;
-        const char obj_type[16];
+        const char obj_type;
     }
 
 .. _`fsl_mc_device_id.members`:

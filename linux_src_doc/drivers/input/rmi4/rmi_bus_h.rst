@@ -24,7 +24,7 @@ Definition
         struct list_head node;
         unsigned int num_of_irqs;
         unsigned int irq_pos;
-        unsigned long irq_mask[];
+        unsigned long irq_mask;
     }
 
 .. _`rmi_function.members`:

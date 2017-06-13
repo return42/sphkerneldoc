@@ -22,12 +22,12 @@ Definition
         void *priv;
         u32 model;
         u16 interface;
-        u8 serial[NFP_SERIAL_LEN];
+        u8 serial;
         const struct nfp_cpp_operations *op;
         struct list_head resource_list;
         rwlock_t resource_lock;
         wait_queue_head_t waitq;
-        u32 imb_cat_table[16];
+        u32 imb_cat_table;
         struct mutex area_cache_mutex;
         struct list_head area_cache_list;
         void *hwinfo;

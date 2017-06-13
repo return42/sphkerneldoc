@@ -20,8 +20,8 @@ Definition
     struct ieee80211_bar {
         __le16 frame_control;
         __le16 duration;
-        unsigned char ra[6];
-        unsigned char ta[6];
+        unsigned char ra;
+        unsigned char ta;
         __le16 control;
         __le16 start_seq_num;
     }
@@ -35,6 +35,12 @@ frame_control
     *undescribed*
 
 duration
+    *undescribed*
+
+ra
+    *undescribed*
+
+ta
     *undescribed*
 
 control
@@ -72,7 +78,7 @@ Definition
         unsigned char ht_param;
         __le16 operation_mode;
         __le16 stbc_param;
-        unsigned char basic_set[16];
+        unsigned char basic_set;
     }
 
 .. _`ieee80211_ht_addt_info.members`:
@@ -90,6 +96,9 @@ operation_mode
     *undescribed*
 
 stbc_param
+    *undescribed*
+
+basic_set
     *undescribed*
 
 .. _`ieee80211_ht_addt_info.description`:

@@ -21,7 +21,7 @@ Definition
         u8 chip_id;
         const struct iio_chan_spec *channels;
         int num_channels;
-        const int mma_scales[3][2];
+        const int mma_scales;
         u8 ev_cfg;
         u8 ev_cfg_ele;
         u8 ev_cfg_chan_shift;

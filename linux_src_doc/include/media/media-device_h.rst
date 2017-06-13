@@ -95,10 +95,10 @@ Definition
     struct media_device {
         struct device *dev;
         struct media_devnode *devnode;
-        char model[32];
-        char driver_name[32];
-        char serial[40];
-        char bus_info[32];
+        char model;
+        char driver_name;
+        char serial;
+        char bus_info;
         u32 hw_revision;
         u32 driver_version;
         u64 topology_version;

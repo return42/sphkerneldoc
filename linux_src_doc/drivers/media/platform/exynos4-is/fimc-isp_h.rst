@@ -65,7 +65,7 @@ Definition
         unsigned int buf_mask;
         unsigned int frame_count;
         int streaming;
-        struct isp_video_buf  *buffers[FIMC_ISP_MAX_BUFS];
+        struct isp_video_buf  *buffers;
         const struct fimc_fmt *format;
         struct v4l2_pix_format_mplane pixfmt;
     }
@@ -108,6 +108,9 @@ frame_count
 streaming
     *undescribed*
 
+buffers
+    *undescribed*
+
 format
     current pixel format
 
@@ -133,7 +136,7 @@ Definition
     struct fimc_isp {
         struct platform_device *pdev;
         struct v4l2_subdev subdev;
-        struct media_pad subdev_pads[FIMC_ISP_SD_PADS_NUM];
+        struct media_pad subdev_pads;
         struct v4l2_mbus_framefmt src_fmt;
         struct v4l2_mbus_framefmt sink_fmt;
         struct v4l2_ctrl *test_pattern;

@@ -19,10 +19,10 @@ Definition
 
     struct v4l2_of_bus_mipi_csi2 {
         unsigned int flags;
-        unsigned char data_lanes[4];
+        unsigned char data_lanes;
         unsigned char clock_lane;
         unsigned short num_data_lanes;
-        bool lane_polarities[5];
+        bool lane_polarities;
     }
 
 .. _`v4l2_of_bus_mipi_csi2.members`:

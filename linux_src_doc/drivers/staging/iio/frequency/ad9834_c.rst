@@ -25,11 +25,11 @@ Definition
         unsigned short devid;
         struct spi_transfer xfer;
         struct spi_message msg;
-        struct spi_transfer freq_xfer[2];
+        struct spi_transfer freq_xfer;
         struct spi_message freq_msg;
         struct mutex lock;
         __be16 data ____cacheline_aligned;
-        __be16 freq_data[2];
+        __be16 freq_data;
     }
 
 .. _`ad9834_state.members`:

@@ -19,7 +19,7 @@ Definition
 
     struct hmcdrv_cache_entry {
         enum hmcdrv_ftp_cmdid id;
-        char fname[HMCDRV_FTP_FIDENT_MAX];
+        char fname;
         size_t fsize;
         loff_t ofs;
         unsigned long timeout;

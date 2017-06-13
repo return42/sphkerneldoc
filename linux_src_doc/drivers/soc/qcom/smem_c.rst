@@ -20,7 +20,7 @@ Definition
     struct smem_proc_comm {
         __le32 command;
         __le32 status;
-        __le32 params[2];
+        __le32 params;
     }
 
 .. _`smem_proc_comm.members`:
@@ -95,13 +95,13 @@ Definition
 .. code-block:: c
 
     struct smem_header {
-        struct smem_proc_comm proc_comm[4];
-        __le32 version[32];
+        struct smem_proc_comm proc_comm;
+        __le32 version;
         __le32 initialized;
         __le32 free_offset;
         __le32 available;
         __le32 reserved;
-        struct smem_global_entry toc[SMEM_ITEM_COUNT];
+        struct smem_global_entry toc;
     }
 
 .. _`smem_header.members`:
@@ -126,6 +126,9 @@ available
 
 reserved
     reserved field, must be 0
+
+toc
+    *undescribed*
 
 .. _`smem_header.toc`:
 
@@ -156,7 +159,7 @@ Definition
         __le32 flags;
         __le16 host0;
         __le16 host1;
-        __le32 reserved[8];
+        __le32 reserved;
     }
 
 .. _`smem_ptable_entry.members`:
@@ -199,11 +202,11 @@ Definition
 .. code-block:: c
 
     struct smem_ptable {
-        u8 magic[4];
+        u8 magic;
         __le32 version;
         __le32 num_entries;
-        __le32 reserved[5];
-        struct smem_ptable_entry entry[];
+        __le32 reserved;
+        struct smem_ptable_entry entry;
     }
 
 .. _`smem_ptable.members`:
@@ -243,13 +246,13 @@ Definition
 .. code-block:: c
 
     struct smem_partition_header {
-        u8 magic[4];
+        u8 magic;
         __le16 host0;
         __le16 host1;
         __le32 size;
         __le32 offset_free_uncached;
         __le32 offset_free_cached;
-        __le32 reserved[3];
+        __le32 reserved;
     }
 
 .. _`smem_partition_header.members`:
@@ -383,9 +386,9 @@ Definition
     struct qcom_smem {
         struct device *dev;
         struct hwspinlock *hwlock;
-        struct smem_partition_header  *partitions[SMEM_HOST_COUNT];
+        struct smem_partition_header  *partitions;
         unsigned num_regions;
-        struct smem_region regions[0];
+        struct smem_region regions;
     }
 
 .. _`qcom_smem.members`:

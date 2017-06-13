@@ -193,7 +193,7 @@ Definition
         const char *name;
         unsigned int first;
         unsigned int last;
-        struct meson_reg_desc regs[NUM_REG];
+        struct meson_reg_desc regs;
     }
 
 .. _`meson_bank.members`:

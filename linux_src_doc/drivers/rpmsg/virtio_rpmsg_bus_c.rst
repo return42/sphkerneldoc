@@ -114,7 +114,7 @@ Definition
         u32 reserved;
         u16 len;
         u16 flags;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`rpmsg_hdr.members`:
@@ -164,7 +164,7 @@ Definition
 .. code-block:: c
 
     struct rpmsg_ns_msg {
-        char name[RPMSG_NAME_SIZE];
+        char name;
         u32 addr;
         u32 flags;
     }

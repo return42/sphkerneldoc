@@ -19,7 +19,7 @@ Definition
 
     struct ad5686_chip_info {
         u16 int_vref_mv;
-        struct iio_chan_spec channel[AD5686_DAC_CHANNELS];
+        struct iio_chan_spec channel;
     }
 
 .. _`ad5686_chip_info.members`:
@@ -56,7 +56,7 @@ Definition
         unsigned short vref_mv;
         unsigned pwr_down_mask;
         unsigned pwr_down_mode;
-        union data[3] ____cacheline_aligned;
+        union data;
     }
 
 .. _`ad5686_state.members`:

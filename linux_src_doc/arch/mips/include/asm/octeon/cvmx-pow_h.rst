@@ -464,7 +464,7 @@ cvmx_pow_set_group_mask
 cvmx_pow_set_priority
 =====================
 
-.. c:function:: void cvmx_pow_set_priority(uint64_t core_num, const uint8_t priority[])
+.. c:function:: void cvmx_pow_set_priority(uint64_t core_num, const uint8_t priority)
 
     an associated priority value.
 

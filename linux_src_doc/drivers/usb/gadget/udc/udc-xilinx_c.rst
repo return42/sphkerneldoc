@@ -60,7 +60,7 @@ Definition
         const struct usb_endpoint_descriptor *desc;
         u32 rambase;
         u32 offset;
-        char name[4];
+        char name;
         u16 epnumber;
         u16 maxpacket;
         u16 buffer0count;
@@ -143,7 +143,7 @@ Definition
 
     struct xusb_udc {
         struct usb_gadget gadget;
-        struct xusb_ep ep[8];
+        struct xusb_ep ep;
         struct usb_gadget_driver *driver;
         struct usb_ctrlrequest setup;
         struct xusb_req *req;

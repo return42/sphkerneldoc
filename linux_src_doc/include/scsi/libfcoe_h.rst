@@ -109,8 +109,8 @@ Definition
         u8 spma;
         u8 probe_tries;
         u8 priority;
-        u8 dest_addr[ETH_ALEN];
-        u8 ctl_src_addr[ETH_ALEN];
+        u8 dest_addr;
+        u8 ctl_src_addr;
         void (*send)(struct fcoe_ctlr *, struct sk_buff *);
         void (*update_mac)(struct fc_lport *, u8 *addr);
         u8 * (*get_src_addr)(struct fc_lport *);
@@ -272,8 +272,8 @@ Definition
         u64 fabric_name;
         u32 fc_map;
         u16 vfid;
-        u8 fcf_mac[ETH_ALEN];
-        u8 fcoe_mac[ETH_ALEN];
+        u8 fcf_mac;
+        u8 fcoe_mac;
         u8 pri;
         u8 flogi_sent;
         u16 flags;
@@ -367,8 +367,8 @@ Definition
         u16 fcoe_len;
         u16 flags;
         u8 login_count;
-        u8 enode_mac[ETH_ALEN];
-        u8 vn_mac[ETH_ALEN];
+        u8 enode_mac;
+        u8 vn_mac;
     }
 
 .. _`fcoe_rport.members`:
@@ -476,7 +476,7 @@ Definition
         u32 min_queue_depth;
         struct timer_list timer;
         struct work_struct destroy_work;
-        u8 data_src_addr[ETH_ALEN];
+        u8 data_src_addr;
         struct net_device * (*get_netdev)(const struct fc_lport *lport);
     }
 
@@ -510,6 +510,9 @@ timer
 destroy_work
     Handle for work context
     (to prevent RTNL deadlocks)
+
+data_src_addr
+    *undescribed*
 
 get_netdev
     *undescribed*

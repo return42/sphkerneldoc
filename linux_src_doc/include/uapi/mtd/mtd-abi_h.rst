@@ -24,7 +24,7 @@ Definition
         __u64 usr_data;
         __u64 usr_oob;
         __u8 mode;
-        __u8 padding[7];
+        __u8 padding;
     }
 
 .. _`mtd_write_req.members`:

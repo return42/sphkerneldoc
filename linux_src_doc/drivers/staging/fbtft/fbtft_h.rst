@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct fbtft_gpio {
-        char name[FBTFT_GPIO_NAME_SIZE];
+        char name;
         unsigned int gpio;
     }
 

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct efx_ptp_match {
-        u32 words[DIV_ROUND_UP(PTP_V1_UUID_LENGTH# 4)];
+        u32 words;
         unsigned long expiry;
         enum ptp_packet_state state;
     }
@@ -157,7 +157,7 @@ Definition
         struct list_head evt_list;
         struct list_head evt_free_list;
         spinlock_t evt_lock;
-        struct efx_ptp_event_rx rx_evts[MAX_RECEIVE_EVENTS];
+        struct efx_ptp_event_rx rx_evts;
         struct workqueue_struct *workwq;
         struct work_struct work;
         bool reset_required;
@@ -172,7 +172,7 @@ Definition
         ktime_t (*nic_to_kernel_time)(u32 nic_major, u32 nic_minor,s32 correction);
         unsigned int min_synchronisation_ns;
         struct ts_corrections;
-        efx_qword_t evt_frags[MAX_EVENT_FRAGS];
+        efx_qword_t evt_frags;
         int evt_frag_idx;
         int evt_code;
         struct efx_buffer start;
@@ -183,7 +183,7 @@ Definition
         struct work_struct pps_work;
         struct workqueue_struct *pps_workwq;
         bool nic_ts_enabled;
-        _MCDI_DECLARE_BUF(txbuf# MC_CMD_PTP_IN_TRANSMIT_LENMAX);
+        _MCDI_DECLARE_BUF(txbuf# MC_CMD_PTP_IN_TRANSMIT_LENMAX;
         unsigned int good_syncs;
         unsigned int fast_syncs;
         unsigned int bad_syncs;
@@ -193,7 +193,7 @@ Definition
         unsigned int undersize_sync_windows;
         unsigned int oversize_sync_windows;
         unsigned int rx_no_timestamp;
-        struct efx_ptp_timesettimeset[MC_CMD_PTP_OUT_SYNCHRONIZE_TIMESET_MAXNUM];
+        struct efx_ptp_timesettimeset;
     }
 
 .. _`efx_ptp_data.members`:
@@ -317,7 +317,7 @@ pps_workwq
 nic_ts_enabled
     Flag indicating if NIC generated TS events are handled
 
-MC_CMD_PTP_IN_TRANSMIT_LENMAX)
+MC_CMD_PTP_IN_TRANSMIT_LENMAX
     *undescribed*
 
 good_syncs
@@ -346,6 +346,9 @@ oversize_sync_windows
 
 rx_no_timestamp
     Number of packets received without a timestamp.
+
+efx_ptp_timesettimeset
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

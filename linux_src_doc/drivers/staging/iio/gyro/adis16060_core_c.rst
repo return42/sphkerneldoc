@@ -21,7 +21,7 @@ Definition
         struct spi_device *us_w;
         struct spi_device *us_r;
         struct mutex buf_lock;
-        u8 buf[3] ____cacheline_aligned;
+        u8 buf;
     }
 
 .. _`adis16060_state.members`:

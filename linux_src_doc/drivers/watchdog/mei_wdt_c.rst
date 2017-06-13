@@ -74,7 +74,7 @@ Definition
         struct work_struct unregister;
         struct mutex reg_lock;
         u16 timeout;
-    #if IS_ENABLED(CONFIG_DEBUG_FS)
+    #if IS_ENABLEDCONFIG_DEBUG_FS
         struct dentry *dbgfs_dir;
     #endif
     }
@@ -129,7 +129,7 @@ Definition
     struct mei_wdt_start_request {
         struct mei_mc_hdr hdr;
         u16 timeout;
-        u8 reserved[17];
+        u8 reserved;
     }
 
 .. _`mei_wdt_start_request.members`:

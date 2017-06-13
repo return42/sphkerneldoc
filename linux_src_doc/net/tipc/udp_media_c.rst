@@ -113,7 +113,7 @@ tipc_parse_udp_addr
 tipc_udp_enable
 ===============
 
-.. c:function:: int tipc_udp_enable(struct net *net, struct tipc_bearer *b, struct nlattr  *attrs[])
+.. c:function:: int tipc_udp_enable(struct net *net, struct tipc_bearer *b, struct nlattr  *attrs)
 
     callback to create a new udp bearer instance
 

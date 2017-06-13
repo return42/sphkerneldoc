@@ -245,7 +245,7 @@ decrements remaining by the size of the current message.
 nlmsg_parse
 ===========
 
-.. c:function:: int nlmsg_parse(const struct nlmsghdr *nlh, int hdrlen, struct nlattr  *tb[], int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
+.. c:function:: int nlmsg_parse(const struct nlmsghdr *nlh, int hdrlen, struct nlattr  *tb, int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     parse attributes of a netlink message
 
@@ -783,7 +783,7 @@ Returns the first attribute which matches the specified type.
 nla_parse_nested
 ================
 
-.. c:function:: int nla_parse_nested(struct nlattr  *tb[], int maxtype, const struct nlattr *nla, const struct nla_policy *policy, struct netlink_ext_ack *extack)
+.. c:function:: int nla_parse_nested(struct nlattr  *tb, int maxtype, const struct nlattr *nla, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     parse nested attributes
 

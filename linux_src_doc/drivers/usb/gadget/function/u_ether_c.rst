@@ -6,7 +6,7 @@
 gether_setup_name
 =================
 
-.. c:function:: struct eth_dev *gether_setup_name(struct usb_gadget *g, const char *dev_addr, const char *host_addr, u8 ethaddr[ETH_ALEN], unsigned qmult, const char *netname)
+.. c:function:: struct eth_dev *gether_setup_name(struct usb_gadget *g, const char *dev_addr, const char *host_addr, u8 ethaddr, unsigned qmult, const char *netname)
 
     initialize one ethernet-over-usb link
 

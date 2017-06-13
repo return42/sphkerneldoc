@@ -36,8 +36,8 @@ Definition
         int slots_allocated;
         struct tasklet_struct irq_tasklet;
         int op_in_desc;
-        char dummy_src[MV_XOR_MIN_BYTE_COUNT];
-        char dummy_dst[MV_XOR_MIN_BYTE_COUNT];
+        char dummy_src;
+        char dummy_dst;
         dma_addr_t dummy_src_addr;
         dma_addr_t dummy_dst_addr;
         u32 saved_config_reg;
@@ -103,6 +103,12 @@ irq_tasklet
 
 op_in_desc
     new mode of driver, each op is writen to descriptor.
+
+dummy_src
+    *undescribed*
+
+dummy_dst
+    *undescribed*
 
 dummy_src_addr
     *undescribed*

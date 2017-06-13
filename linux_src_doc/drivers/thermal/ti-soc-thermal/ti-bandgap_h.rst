@@ -484,7 +484,7 @@ Definition
         int (*report_temperature)(struct ti_bandgap *bgp, int id);
         int (*expose_sensor)(struct ti_bandgap *bgp, int id, char *domain);
         int (*remove_sensor)(struct ti_bandgap *bgp, int id);
-        struct ti_temp_sensor sensors[];
+        struct ti_temp_sensor sensors;
     }
 
 .. _`ti_bandgap_data.members`:

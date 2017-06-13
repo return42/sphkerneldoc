@@ -20,17 +20,17 @@ Definition
     struct opa_vesw_info {
         __be16 fabric_id;
         __be16 vesw_id;
-        u8 rsvd0[6];
+        u8 rsvd0;
         __be16 def_port_mask;
-        u8 rsvd1[2];
+        u8 rsvd1;
         __be16 pkey;
-        u8 rsvd2[4];
+        u8 rsvd2;
         __be32 u_mcast_dlid;
-        __be32 u_ucast_dlid[OPA_VESW_MAX_NUM_DEF_PORT];
-        u8 rsvd3[44];
-        __be16 eth_mtu[OPA_VNIC_MAX_NUM_PCP];
+        __be32 u_ucast_dlid;
+        u8 rsvd3;
+        __be16 eth_mtu;
         __be16 eth_mtu_non_vlan;
-        u8 rsvd4[2];
+        u8 rsvd4;
     }
 
 .. _`opa_vesw_info.members`:
@@ -44,11 +44,20 @@ fabric_id
 vesw_id
     12-bit virtual ethernet switch id
 
+rsvd0
+    *undescribed*
+
 def_port_mask
     bitmask of default ports
 
+rsvd1
+    *undescribed*
+
 pkey
     partition key
+
+rsvd2
+    *undescribed*
 
 u_mcast_dlid
     unknown multicast dlid
@@ -56,11 +65,17 @@ u_mcast_dlid
 u_ucast_dlid
     array of unknown unicast dlids
 
+rsvd3
+    *undescribed*
+
 eth_mtu
     MTUs for each vlan PCP
 
 eth_mtu_non_vlan
     MTU for non vlan packets
+
+rsvd4
+    *undescribed*
 
 .. _`opa_per_veswport_info`:
 
@@ -81,27 +96,27 @@ Definition
     struct opa_per_veswport_info {
         __be32 port_num;
         u8 eth_link_status;
-        u8 rsvd0[3];
-        u8 base_mac_addr[ETH_ALEN];
+        u8 rsvd0;
+        u8 base_mac_addr;
         u8 config_state;
         u8 oper_state;
         __be16 max_mac_tbl_ent;
         __be16 max_smac_ent;
         __be32 mac_tbl_digest;
-        u8 rsvd1[4];
+        u8 rsvd1;
         __be32 encap_slid;
-        u8 pcp_to_sc_uc[OPA_VNIC_MAX_NUM_PCP];
-        u8 pcp_to_vl_uc[OPA_VNIC_MAX_NUM_PCP];
-        u8 pcp_to_sc_mc[OPA_VNIC_MAX_NUM_PCP];
-        u8 pcp_to_vl_mc[OPA_VNIC_MAX_NUM_PCP];
+        u8 pcp_to_sc_uc;
+        u8 pcp_to_vl_uc;
+        u8 pcp_to_sc_mc;
+        u8 pcp_to_vl_mc;
         u8 non_vlan_sc_uc;
         u8 non_vlan_vl_uc;
         u8 non_vlan_sc_mc;
         u8 non_vlan_vl_mc;
-        u8 rsvd2[48];
+        u8 rsvd2;
         __be16 uc_macs_gen_count;
         __be16 mc_macs_gen_count;
-        u8 rsvd3[8];
+        u8 rsvd3;
     }
 
 .. _`opa_per_veswport_info.members`:
@@ -114,6 +129,9 @@ port_num
 
 eth_link_status
     current ethernet link state
+
+rsvd0
+    *undescribed*
 
 base_mac_addr
     base mac address
@@ -132,6 +150,9 @@ max_smac_ent
 
 mac_tbl_digest
     mac table digest
+
+rsvd1
+    *undescribed*
 
 encap_slid
     base slid for the port
@@ -160,11 +181,17 @@ non_vlan_sc_mc
 non_vlan_vl_mc
     vl for non-vlan multicast ethernet packets
 
+rsvd2
+    *undescribed*
+
 uc_macs_gen_count
     generation count for unicast macs list
 
 mc_macs_gen_count
     generation count for multicast macs list
+
+rsvd3
+    *undescribed*
 
 .. _`opa_veswport_info`:
 
@@ -223,8 +250,8 @@ Definition
 .. code-block:: c
 
     struct opa_veswport_mactable_entry {
-        u8 mac_addr[ETH_ALEN];
-        u8 mac_addr_mask[ETH_ALEN];
+        u8 mac_addr;
+        u8 mac_addr_mask;
         __be32 dlid_sd;
     }
 
@@ -273,7 +300,7 @@ Definition
         __be16 offset;
         __be16 num_entries;
         __be32 mac_tbl_digest;
-        struct opa_veswport_mactable_entry tbl_entries[0];
+        struct opa_veswport_mactable_entry tbl_entries;
     }
 
 .. _`opa_veswport_mactable.members`:
@@ -359,7 +386,7 @@ Definition
         __be64 rx_512_1023;
         __be64 rx_1024_1518;
         __be64 rx_1519_max;
-        __be64 reserved[16];
+        __be64 reserved;
     }
 
 .. _`opa_veswport_summary_counters.members`:
@@ -460,6 +487,9 @@ rx_1024_1518
 rx_1519_max
     received packet length >= 1519 bytes
 
+reserved
+    *undescribed*
+
 .. _`opa_veswport_summary_counters.description`:
 
 Description
@@ -508,7 +538,7 @@ Definition
         __be64 rx_drop_state;
         __be64 rx_logic;
         __be64 rsvd8;
-        __be64 rsvd9[16];
+        __be64 rsvd9;
     }
 
 .. _`opa_veswport_error_counters.members`:
@@ -586,6 +616,9 @@ rx_logic
     other receive errors
 
 rsvd8
+    *undescribed*
+
+rsvd9
     *undescribed*
 
 .. _`opa_veswport_error_counters.description`:
@@ -673,7 +706,7 @@ Definition
 .. code-block:: c
 
     struct opa_vnic_iface_mac_entry {
-        u8 mac_addr[ETH_ALEN];
+        u8 mac_addr;
     }
 
 .. _`opa_vnic_iface_mac_entry.members`:
@@ -705,7 +738,7 @@ Definition
         __be16 num_macs_in_msg;
         __be16 tot_macs_in_lst;
         __be16 gen_count;
-        struct opa_vnic_iface_mac_entry entry[0];
+        struct opa_vnic_iface_mac_entry entry;
     }
 
 .. _`opa_veswport_iface_macs.members`:
@@ -756,8 +789,8 @@ Definition
         struct ib_mad_hdr mad_hdr;
         struct ib_rmpp_hdr rmpp_hdr;
         u8 reserved;
-        u8 oui[3];
-        u8 data[OPA_VNIC_EMA_DATA];
+        u8 oui;
+        u8 data;
     }
 
 .. _`opa_vnic_vema_mad.members`:
@@ -805,8 +838,8 @@ Definition
         __be16 toggle_count;
         __be32 issuer_lid;
         __be32 reserved;
-        u8 issuer_gid[16];
-        u8 raw_data[64];
+        u8 issuer_gid;
+        u8 raw_data;
     }
 
 .. _`opa_vnic_notice_attr.members`:
@@ -864,7 +897,7 @@ Definition
         struct ib_mad_hdr mad_hdr;
         struct ib_rmpp_hdr rmpp_hdr;
         u8 reserved;
-        u8 oui[3];
+        u8 oui;
         struct opa_vnic_notice_attr notice;
     }
 

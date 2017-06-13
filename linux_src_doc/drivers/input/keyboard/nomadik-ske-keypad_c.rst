@@ -22,7 +22,7 @@ Definition
         void __iomem *reg_base;
         struct input_dev *input;
         const struct ske_keypad_platform_data *board;
-        unsigned short keymap[SKE_KPD_NUM_ROWS * SKE_KPD_NUM_COLS];
+        unsigned short keymap;
         struct clk *clk;
         struct clk *pclk;
         spinlock_t ske_keypad_lock;

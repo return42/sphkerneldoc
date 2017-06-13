@@ -179,7 +179,7 @@ Definition
         struct drm_fb_helper_connector **connector_info;
         const struct drm_fb_helper_funcs *funcs;
         struct fb_info *fbdev;
-        u32 pseudo_palette[17];
+        u32 pseudo_palette;
         struct drm_clip_rect dirty_clip;
         spinlock_t dirty_lock;
         struct work_struct dirty_work;

@@ -18,6 +18,7 @@ net
     wireless/index
     xen-netback/index
     macsec_c
+    macvlan_c
     mdio_c
     mii_c
     netconsole_c

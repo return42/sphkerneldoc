@@ -27,7 +27,7 @@ Definition
         bool mcu_dump_mode;
         bool time_syncing;
         int64_t timestamp;
-        int check_status[SSP_SENSOR_MAX];
+        int check_status;
         unsigned int com_fail_cnt;
         unsigned int reset_cnt;
         unsigned int timeout_cnt;
@@ -36,9 +36,9 @@ Definition
         char last_resume_state;
         char last_ap_state;
         unsigned int sensor_enable;
-        u32 delay_buf[SSP_SENSOR_MAX];
-        s32 batch_latency_buf[SSP_SENSOR_MAX];
-        s8 batch_opt_buf[SSP_SENSOR_MAX];
+        u32 delay_buf;
+        s32 batch_latency_buf;
+        s8 batch_opt_buf;
         int accel_position;
         int mag_position;
         int fw_dl_state;
@@ -48,9 +48,9 @@ Definition
         int ap_mcu_gpio;
         int mcu_ap_gpio;
         struct list_head pending_list;
-        struct iio_dev  *sensor_devs[SSP_SENSOR_MAX];
+        struct iio_dev  *sensor_devs;
         atomic_t enable_refcount;
-        __le16 header_buffer[SSP_HEADER_BUFFER_SIZE / sizeof(__le16)]____cacheline_aligned;
+        __le16 header_buffer;
     }
 
 .. _`ssp_data.members`:

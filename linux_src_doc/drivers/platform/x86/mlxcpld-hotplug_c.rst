@@ -58,10 +58,10 @@ Definition
         struct platform_device *pdev;
         struct mlxcpld_hotplug_platform_data *plat;
         struct device *hwmon;
-        struct attribute  *mlxcpld_hotplug_attr[MLXCPLD_HOTPLUG_ATTRS_NUM + 1];
-        struct sensor_device_attribute_2mlxcpld_hotplug_dev_attr[MLXCPLD_HOTPLUG_ATTRS_NUM];
+        struct attribute  *mlxcpld_hotplug_attr;
+        struct sensor_device_attribute_2mlxcpld_hotplug_dev_attr;
         struct attribute_group group;
-        const struct attribute_group  *groups[2];
+        const struct attribute_group  *groups;
         struct delayed_work dwork;
         spinlock_t lock;
         u8 aggr_cache;
@@ -89,6 +89,9 @@ hwmon
 
 mlxcpld_hotplug_attr
     sysfs attributes array;
+
+sensor_device_attribute_2mlxcpld_hotplug_dev_attr
+    *undescribed*
 
 group
     sysfs attribute group;

@@ -21,7 +21,7 @@ Definition
         struct reciprocal_value rn_ids;
         struct rcu_head rcu;
         u32 n_ids;
-        u32 ids[];
+        u32 ids;
     }
 
 .. _`vport_portids.members`:

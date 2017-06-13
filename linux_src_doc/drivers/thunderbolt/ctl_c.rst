@@ -22,8 +22,8 @@ Definition
         struct tb_ring *tx;
         struct tb_ring *rx;
         struct dma_pool *frame_pool;
-        struct ctl_pkg  *rx_packets[TB_CTL_RX_PKG_COUNT];
-        DECLARE_KFIFO(response_fifo# struct ctl_pkg*# 16);
+        struct ctl_pkg  *rx_packets;
+        DECLARE_KFIFO(response_fifo# struct ctl_pkg*# 16;
         struct completion response_ready;
         hotplug_cb callback;
         void *callback_data;
@@ -46,7 +46,10 @@ rx
 frame_pool
     *undescribed*
 
-16)
+rx_packets
+    *undescribed*
+
+16
     *undescribed*
 
 response_ready

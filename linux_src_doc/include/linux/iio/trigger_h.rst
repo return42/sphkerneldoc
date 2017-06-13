@@ -77,8 +77,8 @@ Definition
         atomic_t use_count;
         struct irq_chip subirq_chip;
         int subirq_base;
-        struct iio_subirq subirqs[CONFIG_IIO_CONSUMERS_PER_TRIGGER];
-        unsigned long pool[BITS_TO_LONGS(CONFIG_IIO_CONSUMERS_PER_TRIGGER)];
+        struct iio_subirq subirqs;
+        unsigned long pool;
         struct mutex pool_lock;
         bool attached_own_device;
     }

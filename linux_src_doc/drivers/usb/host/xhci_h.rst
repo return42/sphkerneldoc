@@ -81,15 +81,15 @@ Definition
         __le32 reserved2;
         __le32 dev_notification;
         __le64 cmd_ring;
-        __le32 reserved3[4];
+        __le32 reserved3;
         __le64 dcbaa_ptr;
         __le32 config_reg;
-        __le32 reserved4[241];
+        __le32 reserved4;
         __le32 port_status_base;
         __le32 port_power_base;
         __le32 port_link_base;
         __le32 reserved5;
-        __le32 reserved6[NUM_PORT_REGS*254];
+        __le32 reserved6;
     }
 
 .. _`xhci_op_regs.members`:
@@ -121,11 +121,17 @@ dev_notification
 cmd_ring
     CRP - 64-bit Command Ring Pointer
 
+reserved3
+    *undescribed*
+
 dcbaa_ptr
     DCBAAP - 64-bit Device Context Base Address Array Pointer
 
 config_reg
     CONFIG - Configure Register
+
+reserved4
+    *undescribed*
 
 port_status_base
     PORTSCn - base address for Port Status and Control
@@ -144,6 +150,9 @@ port_link_base
     devices.
 
 reserved5
+    *undescribed*
+
+reserved6
     *undescribed*
 
 .. _`xhci_intr_reg`:
@@ -225,8 +234,8 @@ Definition
 
     struct xhci_run_regs {
         __le32 microframe_index;
-        __le32 rsvd[7];
-        struct xhci_intr_reg ir_set[128];
+        __le32 rsvd;
+        struct xhci_intr_reg ir_set;
     }
 
 .. _`xhci_run_regs.members`:
@@ -236,6 +245,12 @@ Members
 
 microframe_index
     MFINDEX - current microframe number
+
+rsvd
+    *undescribed*
+
+ir_set
+    *undescribed*
 
 .. _`xhci_run_regs.description`:
 
@@ -262,13 +277,16 @@ Definition
 .. code-block:: c
 
     struct xhci_doorbell_array {
-        __le32 doorbell[256];
+        __le32 doorbell;
     }
 
 .. _`xhci_doorbell_array.members`:
 
 Members
 -------
+
+doorbell
+    *undescribed*
 
 .. _`xhci_doorbell_array.description`:
 
@@ -387,7 +405,7 @@ Definition
         __le32 dev_info2;
         __le32 tt_info;
         __le32 dev_state;
-        __le32 reserved[4];
+        __le32 reserved;
     }
 
 .. _`xhci_slot_ctx.members`:
@@ -406,6 +424,9 @@ tt_info
 
 dev_state
     slot state and device address
+
+reserved
+    *undescribed*
 
 .. _`xhci_slot_ctx.description`:
 
@@ -436,7 +457,7 @@ Definition
         __le32 ep_info2;
         __le64 deq;
         __le32 tx_info;
-        __le32 reserved[3];
+        __le32 reserved;
     }
 
 .. _`xhci_ep_ctx.members`:
@@ -461,6 +482,9 @@ deq
 tx_info
     Average TRB lengths for the endpoint ring and
     max payload within an Endpoint Service Interval Time (ESIT).
+
+reserved
+    *undescribed*
 
 .. _`xhci_ep_ctx.description`:
 
@@ -490,7 +514,7 @@ Definition
     struct xhci_input_control_ctx {
         __le32 drop_flags;
         __le32 add_flags;
-        __le32 rsvd2[6];
+        __le32 rsvd2;
     }
 
 .. _`xhci_input_control_ctx.members`:
@@ -502,6 +526,9 @@ drop_flags
     *undescribed*
 
 add_flags
+    *undescribed*
+
+rsvd2
     *undescribed*
 
 .. _`xhci_device_context_array`:
@@ -521,7 +548,7 @@ Definition
 .. code-block:: c
 
     struct xhci_device_context_array {
-        __le64 dev_context_ptrs[MAX_HC_SLOTS];
+        __le64 dev_context_ptrs;
         dma_addr_t dma;
     }
 
@@ -529,6 +556,9 @@ Definition
 
 Members
 -------
+
+dev_context_ptrs
+    *undescribed*
 
 dma
     *undescribed*

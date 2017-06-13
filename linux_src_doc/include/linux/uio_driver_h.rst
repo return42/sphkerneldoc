@@ -121,8 +121,8 @@ Definition
         struct uio_device *uio_dev;
         const char *name;
         const char *version;
-        struct uio_mem mem[MAX_UIO_MAPS];
-        struct uio_port port[MAX_UIO_PORT_REGIONS];
+        struct uio_mem mem;
+        struct uio_port port;
         long irq;
         unsigned long irq_flags;
         void *priv;

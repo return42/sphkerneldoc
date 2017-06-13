@@ -20,7 +20,7 @@ Definition
     struct drm_crtc_crc_entry {
         bool has_frame_counter;
         uint32_t frame;
-        uint32_t crcs[DRM_MAX_CRC_NR];
+        uint32_t crcs;
     }
 
 .. _`drm_crtc_crc_entry.members`:
@@ -33,6 +33,9 @@ has_frame_counter
 
 frame
     number of the frame this CRC is about, if \ ``has_frame_counter``\  is true
+
+crcs
+    *undescribed*
 
 .. _`drm_crtc_crc`:
 

@@ -11,4 +11,5 @@ vxge
     vxge-config_h
     vxge-ethtool_c
     vxge-main_c
+    vxge-traffic_c
     vxge-traffic_h

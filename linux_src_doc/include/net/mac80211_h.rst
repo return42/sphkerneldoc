@@ -197,7 +197,7 @@ Definition
         u8 rx_chains_static;
         u8 rx_chains_dynamic;
         bool radar_enabled;
-        u8 drv_priv[0];
+        u8 drv_priv;
     }
 
 .. _`ieee80211_chanctx_conf.members`:
@@ -763,8 +763,8 @@ Definition
 .. code-block:: c
 
     struct ieee80211_mu_group_data {
-        u8 membership[WLAN_MEMBERSHIP_LEN];
-        u8 position[WLAN_USER_POSITION_LEN];
+        u8 membership;
+        u8 position;
     }
 
 .. _`ieee80211_mu_group_data.members`:
@@ -819,7 +819,7 @@ Definition
         u8 sync_dtim_count;
         u32 basic_rates;
         struct ieee80211_rate *beacon_rate;
-        int mcast_rate[NUM_NL80211_BANDS];
+        int mcast_rate;
         u16 ht_operation_mode;
         s32 cqm_rssi_thold;
         u32 cqm_rssi_hyst;
@@ -827,12 +827,12 @@ Definition
         s32 cqm_rssi_high;
         struct cfg80211_chan_def chandef;
         struct ieee80211_mu_group_data mu_group;
-        __be32 arp_addr_list[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
+        __be32 arp_addr_list;
         int arp_addr_cnt;
         bool qos;
         bool idle;
         bool ps;
-        u8 ssid[IEEE80211_MAX_SSID_LEN];
+        u8 ssid;
         size_t ssid_len;
         bool hidden_ssid;
         int txpower;
@@ -1550,8 +1550,8 @@ Definition
 .. code-block:: c
 
     struct ieee80211_scan_ies {
-        const u8  *ies[NUM_NL80211_BANDS];
-        size_t len[NUM_NL80211_BANDS];
+        const u8  *ies;
+        size_t len;
         const u8 *common_ies;
         size_t common_ie_len;
     }
@@ -1866,7 +1866,7 @@ Definition
         u8 antenna;
         s8 signal;
         u8 chains;
-        s8 chain_signal[IEEE80211_MAX_CHAINS];
+        s8 chain_signal;
         u8 ampdu_delimiter_crc;
     }
 
@@ -1968,11 +1968,11 @@ Definition
     struct ieee80211_vendor_radiotap {
         u32 present;
         u8 align;
-        u8 oui[3];
+        u8 oui;
         u8 subns;
         u8 pad;
         u16 len;
-        u8 data[];
+        u8 data;
     }
 
 .. _`ieee80211_vendor_radiotap.members`:
@@ -2390,12 +2390,12 @@ Definition
     struct ieee80211_vif {
         enum nl80211_iftype type;
         struct ieee80211_bss_conf bss_conf;
-        u8 addr[ETH_ALEN];
+        u8 addr;
         bool p2p;
         bool csa_active;
         bool mu_mimo_owner;
         u8 cab_queue;
-        u8 hw_queue[IEEE80211_NUM_ACS];
+        u8 hw_queue;
         struct ieee80211_txq *txq;
         struct ieee80211_chanctx_conf __rcu *chanctx_conf;
         u32 driver_flags;
@@ -2403,7 +2403,7 @@ Definition
         struct dentry *debugfs_dir;
     #endif
         unsigned int probe_req_reg;
-        u8 drv_priv[0];
+        u8 drv_priv;
     }
 
 .. _`ieee80211_vif.members`:
@@ -2636,7 +2636,7 @@ Definition
         u8 flags;
         s8 keyidx;
         u8 keylen;
-        u8 key[0];
+        u8 key;
     }
 
 .. _`ieee80211_key_conf.members`:
@@ -2941,7 +2941,7 @@ Definition
 
     struct ieee80211_sta_rates {
         struct rcu_head rcu_head;
-        struct rate[IEEE80211_TX_RATE_TABLE_SIZE];
+        struct rate;
     }
 
 .. _`ieee80211_sta_rates.members`:
@@ -2973,8 +2973,8 @@ Definition
 .. code-block:: c
 
     struct ieee80211_sta {
-        u32 supp_rates[NUM_NL80211_BANDS];
-        u8 addr[ETH_ALEN];
+        u32 supp_rates;
+        u8 addr;
         u16 aid;
         struct ieee80211_sta_ht_cap ht_cap;
         struct ieee80211_sta_vht_cap vht_cap;
@@ -2993,8 +2993,8 @@ Definition
         u16 max_amsdu_len;
         bool support_p2p_ps;
         u16 max_rc_amsdu_len;
-        struct ieee80211_txq  *txq[IEEE80211_NUM_TIDS];
-        u8 drv_priv[0];
+        struct ieee80211_txq  *txq;
+        u8 drv_priv;
     }
 
 .. _`ieee80211_sta.members`:
@@ -3193,7 +3193,7 @@ Definition
         struct ieee80211_sta *sta;
         u8 tid;
         u8 ac;
-        u8 drv_priv[0];
+        u8 drv_priv;
     }
 
 .. _`ieee80211_txq.members`:
@@ -3521,7 +3521,7 @@ Definition
         struct wiphy *wiphy;
         const char *rate_control_algorithm;
         void *priv;
-        unsigned long flags[BITS_TO_LONGS(NUM_IEEE80211_HW_FLAGS)];
+        unsigned long flags;
         unsigned int extra_tx_headroom;
         unsigned int extra_beacon_tailroom;
         int vif_data_size;
@@ -4350,7 +4350,7 @@ Definition
         void (*unassign_vif_chanctx)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_chanctx_conf *ctx);
         int (*switch_vif_chanctx)(struct ieee80211_hw *hw,struct ieee80211_vif_chanctx_switch *vifs,int n_vifs,enum ieee80211_chanctx_switch_mode mode);
         void (*reconfig_complete)(struct ieee80211_hw *hw,enum ieee80211_reconfig_type reconfig_type);
-    #if IS_ENABLED(CONFIG_IPV6)
+    #if IS_ENABLEDCONFIG_IPV6
         void (*ipv6_addr_change)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct inet6_dev *idev);
     #endif
         void (*channel_switch_beacon)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct cfg80211_chan_def *chandef);
@@ -5935,7 +5935,7 @@ Definition
     struct ieee80211_mutable_offsets {
         u16 tim_offset;
         u16 tim_length;
-        u16 csa_counter_offs[IEEE80211_MAX_CSA_COUNTERS_NUM];
+        u16 csa_counter_offs;
     }
 
 .. _`ieee80211_mutable_offsets.members`:
@@ -8300,8 +8300,8 @@ Definition
         u32 next_tsf;
         bool has_next_tsf;
         u8 absent;
-        u8 count[IEEE80211_P2P_NOA_DESC_MAX];
-        struct desc[IEEE80211_P2P_NOA_DESC_MAX];
+        u8 count;
+        struct desc;
     }
 
 .. _`ieee80211_noa_data.members`:

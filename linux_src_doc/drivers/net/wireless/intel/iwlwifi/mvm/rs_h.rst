@@ -65,8 +65,8 @@ Definition
         struct rs_rate rate;
         enum rs_column column;
         const u16 *expected_tpt;
-        struct iwl_rate_scale_data win[IWL_RATE_COUNT];
-        struct iwl_rate_scale_data tpc_win[TPC_MAX_REDUCTION + 1];
+        struct iwl_rate_scale_data win;
+        struct iwl_rate_scale_data tpc_win;
     }
 
 .. _`iwl_scale_tbl_info.members`:
@@ -81,6 +81,12 @@ column
     *undescribed*
 
 expected_tpt
+    *undescribed*
+
+win
+    *undescribed*
+
+tpc_win
     *undescribed*
 
 .. _`iwl_scale_tbl_info.description`:
@@ -138,7 +144,7 @@ Definition
         int optimal_nentries;
         u8 missed_rate_counter;
         struct iwl_lq_cmd lq;
-        struct iwl_scale_tbl_info lq_info[LQ_SIZE];
+        struct iwl_scale_tbl_info lq_info;
         u8 tx_agg_tid_en;
         u32 last_rate_n_flags;
         u8 is_agg;
@@ -239,6 +245,9 @@ missed_rate_counter
     *undescribed*
 
 lq
+    *undescribed*
+
+lq_info
     *undescribed*
 
 tx_agg_tid_en

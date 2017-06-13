@@ -546,7 +546,7 @@ Definition
         struct usb_request *req;
         struct usb_request *os_desc_req;
         struct usb_configuration *config;
-        u8 qw_sign[OS_STRING_QW_SIGN_LEN];
+        u8 qw_sign;
         u8 b_vendor_code;
         struct usb_configuration *os_desc_config;
         unsigned int use_os_string:1;

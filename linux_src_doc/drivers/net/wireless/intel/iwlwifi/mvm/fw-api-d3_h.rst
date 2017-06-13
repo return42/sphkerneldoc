@@ -132,7 +132,7 @@ Definition
         __le32 enabled;
         __be32 remote_ipv4_addr;
         __be32 host_ipv4_addr;
-        u8 arp_mac_addr[ETH_ALEN];
+        u8 arp_mac_addr;
         __le16 reserved;
     }
 
@@ -174,10 +174,10 @@ Definition
 
     struct iwl_proto_offload_cmd_v1 {
         struct iwl_proto_offload_cmd_common common;
-        u8 remote_ipv6_addr[16];
-        u8 solicited_node_ipv6_addr[16];
-        u8 target_ipv6_addr[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V1][16];
-        u8 ndp_mac_addr[ETH_ALEN];
+        u8 remote_ipv6_addr;
+        u8 solicited_node_ipv6_addr;
+        u8 target_ipv6_addr;
+        u8 ndp_mac_addr;
         __le16 reserved2;
     }
 
@@ -223,12 +223,12 @@ Definition
 
     struct iwl_proto_offload_cmd_v2 {
         struct iwl_proto_offload_cmd_common common;
-        u8 remote_ipv6_addr[16];
-        u8 solicited_node_ipv6_addr[16];
-        u8 target_ipv6_addr[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V2][16];
-        u8 ndp_mac_addr[ETH_ALEN];
+        u8 remote_ipv6_addr;
+        u8 solicited_node_ipv6_addr;
+        u8 target_ipv6_addr;
+        u8 ndp_mac_addr;
         u8 numValidIPv6Addresses;
-        u8 reserved2[3];
+        u8 reserved2;
     }
 
 .. _`iwl_proto_offload_cmd_v2.members`:
@@ -255,6 +255,9 @@ ndp_mac_addr
 numValidIPv6Addresses
     *undescribed*
 
+reserved2
+    *undescribed*
+
 .. _`iwl_proto_offload_cmd_v3_small`:
 
 struct iwl_proto_offload_cmd_v3_small
@@ -274,8 +277,8 @@ Definition
     struct iwl_proto_offload_cmd_v3_small {
         struct iwl_proto_offload_cmd_common common;
         __le32 num_valid_ipv6_addrs;
-        struct iwl_targ_addr targ_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V3S];
-        struct iwl_ns_config ns_config[IWL_PROTO_OFFLOAD_NUM_NS_CONFIG_V3S];
+        struct iwl_targ_addr targ_addrs;
+        struct iwl_ns_config ns_config;
     }
 
 .. _`iwl_proto_offload_cmd_v3_small.members`:
@@ -287,6 +290,9 @@ common
     common/IPv4 configuration
 
 num_valid_ipv6_addrs
+    *undescribed*
+
+targ_addrs
     *undescribed*
 
 ns_config
@@ -311,8 +317,8 @@ Definition
     struct iwl_proto_offload_cmd_v3_large {
         struct iwl_proto_offload_cmd_common common;
         __le32 num_valid_ipv6_addrs;
-        struct iwl_targ_addr targ_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V3L];
-        struct iwl_ns_config ns_config[IWL_PROTO_OFFLOAD_NUM_NS_CONFIG_V3L];
+        struct iwl_targ_addr targ_addrs;
+        struct iwl_ns_config ns_config;
     }
 
 .. _`iwl_proto_offload_cmd_v3_large.members`:
@@ -324,6 +330,9 @@ common
     common/IPv4 configuration
 
 num_valid_ipv6_addrs
+    *undescribed*
+
+targ_addrs
     *undescribed*
 
 ns_config

@@ -206,7 +206,7 @@ Definition
         void (*ctrlcmd)(struct cflayer *layr, enum caif_ctrlcmd ctrl,int phyid);
         int (*modemcmd)(struct cflayer *layr, enum caif_modemcmd ctrl);
         unsigned int id;
-        char name[CAIF_LAYER_NAME_SZ];
+        char name;
     }
 
 .. _`cflayer.members`:

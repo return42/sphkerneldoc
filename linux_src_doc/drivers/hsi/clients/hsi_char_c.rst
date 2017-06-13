@@ -87,7 +87,7 @@ Definition
         unsigned long flags;
         unsigned int usecnt;
         struct hsi_client *cl;
-        struct hsc_channel channels[HSC_DEVS];
+        struct hsc_channel channels;
     }
 
 .. _`hsc_client_data.members`:

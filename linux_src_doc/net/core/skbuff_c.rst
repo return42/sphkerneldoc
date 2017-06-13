@@ -6,7 +6,7 @@
 skb_panic
 =========
 
-.. c:function:: void skb_panic(struct sk_buff *skb, unsigned int sz, void *addr, const char msg[])
+.. c:function:: void skb_panic(struct sk_buff *skb, unsigned int sz, void *addr, const char msg)
 
     private function for out-of-line support
 

@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct os_area_header {
-        u8 magic_num[16];
+        u8 magic_num;
         u32 hdr_version;
         u32 db_area_offset;
         u32 ldr_area_offset;
         u32 _reserved_1;
         u32 ldr_format;
         u32 ldr_size;
-        u32 _reserved_2[6];
+        u32 _reserved_2;
     }
 
 .. _`os_area_header.members`:
@@ -53,6 +53,9 @@ ldr_format
 
 ldr_size
     Size of bootloader image in bytes.
+
+_reserved_2
+    *undescribed*
 
 .. _`os_area_header.description`:
 
@@ -82,20 +85,20 @@ Definition
 
     struct os_area_params {
         u32 boot_flag;
-        u32 _reserved_1[3];
+        u32 _reserved_1;
         u32 num_params;
-        u32 _reserved_2[3];
+        u32 _reserved_2;
         s64 rtc_diff;
         u8 av_multi_out;
         u8 ctrl_button;
-        u8 _reserved_3[6];
-        u8 static_ip_addr[4];
-        u8 network_mask[4];
-        u8 default_gateway[4];
-        u8 _reserved_4[4];
-        u8 dns_primary[4];
-        u8 dns_secondary[4];
-        u8 _reserved_5[8];
+        u8 _reserved_3;
+        u8 static_ip_addr;
+        u8 network_mask;
+        u8 default_gateway;
+        u8 _reserved_4;
+        u8 dns_primary;
+        u8 dns_secondary;
+        u8 _reserved_5;
     }
 
 .. _`os_area_params.members`:
@@ -106,8 +109,14 @@ Members
 boot_flag
     User preference of operating system, PARAM_BOOT_FLAG flag.
 
+_reserved_1
+    *undescribed*
+
 num_params
     Number of params in this (params) segment.
+
+_reserved_2
+    *undescribed*
 
 rtc_diff
     Difference in seconds between 1970 and the ps3 rtc value.
@@ -119,6 +128,9 @@ ctrl_button
     User preference of controller button config, PARAM_CTRL_BUTTON
     flag.
 
+_reserved_3
+    *undescribed*
+
 static_ip_addr
     User preference of static IP address.
 
@@ -128,11 +140,17 @@ network_mask
 default_gateway
     User preference of static default gateway.
 
+_reserved_4
+    *undescribed*
+
 dns_primary
     User preference of static primary dns server.
 
 dns_secondary
     User preference of static secondary dns server.
+
+_reserved_5
+    *undescribed*
 
 .. _`os_area_params.description`:
 
@@ -161,7 +179,7 @@ Definition
 .. code-block:: c
 
     struct os_area_db {
-        u8 magic_num[4];
+        u8 magic_num;
         u16 version;
         u16 _reserved_1;
         u16 index_64;
@@ -171,7 +189,7 @@ Definition
         u16 index_16;
         u16 count_16;
         u32 _reserved_2;
-        u8 _db_data[1000];
+        u8 _db_data;
     }
 
 .. _`os_area_db.members`:
@@ -207,6 +225,9 @@ count_16
     number of usable 16 bit index entries
 
 _reserved_2
+    *undescribed*
+
+_db_data
     *undescribed*
 
 .. _`os_area_db.description`:

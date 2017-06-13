@@ -22,7 +22,7 @@ Definition
         u32 is_address_frame:1;
         u32 connection_rate:4;
         u32 reserved:23;
-        u32 data[SCU_UNSOLICITED_FRAME_HEADER_DATA_DWORDS];
+        u32 data;
     }
 
 .. _`scu_unsolicited_frame_header.members`:
@@ -43,6 +43,9 @@ connection_rate
     *undescribed*
 
 reserved
+    *undescribed*
+
+data
     *undescribed*
 
 .. _`scu_unsolicited_frame_header.description`:
@@ -199,7 +202,7 @@ Definition
 .. code-block:: c
 
     struct sci_uf_buffer_array {
-        struct sci_unsolicited_frame array[SCU_MAX_UNSOLICITED_FRAMES];
+        struct sci_unsolicited_frame array;
         dma_addr_t physical_address;
     }
 
@@ -207,6 +210,9 @@ Definition
 
 Members
 -------
+
+array
+    *undescribed*
 
 physical_address
     *undescribed*

@@ -53,7 +53,7 @@ Definition
         __le32 status;
         __le32 options;
         __le64 page_list_ptr;
-        __u8 setup[8];
+        __u8 setup;
     }
 
 .. _`whc_qtd.members`:
@@ -68,6 +68,9 @@ options
     *undescribed*
 
 page_list_ptr
+    *undescribed*
+
+setup
     *undescribed*
 
 .. _`whc_qtd.description`:
@@ -216,7 +219,7 @@ Definition
         __le16 status;
         __le16 err_count;
         __le32 cur_window;
-        __le32 scratch[3];
+        __le32 scratch;
         union overlay;
     }
 
@@ -244,6 +247,9 @@ err_count
     *undescribed*
 
 cur_window
+    *undescribed*
+
+scratch
     *undescribed*
 
 overlay
@@ -428,9 +434,9 @@ Definition
 .. code-block:: c
 
     struct di_buf_entry {
-        __le32 availability_info[8];
+        __le32 availability_info;
         __le32 addr_sec_info;
-        __le32 reserved[7];
+        __le32 reserved;
     }
 
 .. _`di_buf_entry.members`:
@@ -438,7 +444,13 @@ Definition
 Members
 -------
 
+availability_info
+    *undescribed*
+
 addr_sec_info
+    *undescribed*
+
+reserved
     *undescribed*
 
 .. _`di_buf_entry.description`:
@@ -470,7 +482,7 @@ Definition
         __u8 src_addr;
         __u8 status;
         __le32 tkid;
-        __u8 dn_data[56];
+        __u8 dn_data;
     }
 
 .. _`dn_buf_entry.members`:
@@ -491,6 +503,9 @@ status
     *undescribed*
 
 tkid
+    *undescribed*
+
+dn_data
     *undescribed*
 
 .. _`dn_buf_entry.description`:

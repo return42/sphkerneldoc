@@ -289,7 +289,7 @@ Definition
 .. code-block:: c
 
     struct kgdb_arch {
-        unsigned char gdb_bpt_instr[BREAK_INSTR_SIZE];
+        unsigned char gdb_bpt_instr;
         unsigned long flags;
         int (*set_breakpoint)(unsigned long, char *);
         int (*remove_breakpoint)(unsigned long, char *);

@@ -220,7 +220,7 @@ Definition
     struct zfcp_fc_gspn_rsp {
         struct fc_ct_hdr ct_hdr;
         struct fc_gspn_resp gspn;
-        char name[FC_SYMBOLIC_NAME_SIZE];
+        char name;
     }
 
 .. _`zfcp_fc_gspn_rsp.members`:
@@ -256,7 +256,7 @@ Definition
     struct zfcp_fc_rspn_req {
         struct fc_ct_hdr ct_hdr;
         struct fc_ns_rspn rspn;
-        char name[FC_SYMBOLIC_NAME_SIZE];
+        char name;
     }
 
 .. _`zfcp_fc_rspn_req.members`:

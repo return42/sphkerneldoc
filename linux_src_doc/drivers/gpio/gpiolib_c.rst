@@ -98,7 +98,7 @@ Definition
     struct linehandle_state {
         struct gpio_device *gdev;
         const char *label;
-        struct gpio_desc  *descs[GPIOHANDLES_MAX];
+        struct gpio_desc  *descs;
         u32 numdescs;
     }
 
@@ -142,7 +142,7 @@ Definition
         u32 eflags;
         int irq;
         wait_queue_head_t wait;
-        DECLARE_KFIFO(events# struct gpioevent_data# 16);
+        DECLARE_KFIFO(events# struct gpioevent_data# 16;
         struct mutex read_lock;
     }
 
@@ -169,7 +169,7 @@ irq
 wait
     wait queue that handles blocking reads of events
 
-16)
+16
     *undescribed*
 
 read_lock

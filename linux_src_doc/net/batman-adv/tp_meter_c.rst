@@ -60,7 +60,7 @@ BATADV_TP_PLEN
 batadv_tp_session_cookie
 ========================
 
-.. c:function:: u32 batadv_tp_session_cookie(const u8 session[2], u8 icmp_uid)
+.. c:function:: u32 batadv_tp_session_cookie(const u8 session, u8 icmp_uid)
 
     generate session cookie based on session ids
 

@@ -133,7 +133,7 @@ Definition
 
     struct iwl_op_mode {
         const struct iwl_op_mode_ops *ops;
-        char op_mode_specific[0];
+        char op_mode_specific;
     }
 
 .. _`iwl_op_mode.members`:
@@ -143,6 +143,9 @@ Members
 
 ops
     pointer to its own ops
+
+op_mode_specific
+    *undescribed*
 
 .. _`iwl_op_mode.description`:
 

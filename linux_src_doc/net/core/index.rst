@@ -19,6 +19,7 @@ core
     net_namespace_c
     netevent_c
     netprio_cgroup_c
+    rtnetlink_c
     skbuff_c
     sock_c
     sock_reuseport_c

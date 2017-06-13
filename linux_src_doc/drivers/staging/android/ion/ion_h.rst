@@ -94,7 +94,7 @@ Definition
         struct list_head vmas;
         struct list_head attachments;
         int handle_count;
-        char task_comm[TASK_COMM_LEN];
+        char task_comm;
         pid_t pid;
     }
 

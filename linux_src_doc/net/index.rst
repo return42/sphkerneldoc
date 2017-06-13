@@ -40,6 +40,7 @@ net
     sched/index
     smc/index
     sunrpc/index
+    switchdev/index
     tipc/index
     wimax/index
     wireless/index

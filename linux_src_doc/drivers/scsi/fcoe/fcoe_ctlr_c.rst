@@ -699,7 +699,7 @@ Return non-zero if the frame should not be delivered to libfc.
 fcoe_wwn_from_mac
 =================
 
-.. c:function:: u64 fcoe_wwn_from_mac(unsigned char mac[MAX_ADDR_LEN], unsigned int scheme, unsigned int port)
+.. c:function:: u64 fcoe_wwn_from_mac(unsigned char mac, unsigned int scheme, unsigned int port)
 
     Converts a 48-bit IEEE MAC address to a 64-bit FC WWN
 

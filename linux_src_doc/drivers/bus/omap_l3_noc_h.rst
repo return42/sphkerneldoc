@@ -136,7 +136,7 @@ Definition
 
     struct omap_l3 {
         struct device *dev;
-        void __iomem  *l3_base[MAX_L3_MODULES];
+        void __iomem  *l3_base;
         struct l3_flagmux_data **l3_flagmux;
         int num_modules;
         struct l3_masters_data *l3_masters;

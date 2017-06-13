@@ -72,7 +72,7 @@ be retried), are propagated to the caller.
 drm_dp_dpcd_read_link_status
 ============================
 
-.. c:function:: int drm_dp_dpcd_read_link_status(struct drm_dp_aux *aux, u8 status[DP_LINK_STATUS_SIZE])
+.. c:function:: int drm_dp_dpcd_read_link_status(struct drm_dp_aux *aux, u8 status)
 
     read DPCD link status (bytes 0x202-0x207)
 
@@ -187,7 +187,7 @@ Returns 0 on success or a negative error code on failure.
 drm_dp_downstream_max_clock
 ===========================
 
-.. c:function:: int drm_dp_downstream_max_clock(const u8 dpcd[DP_RECEIVER_CAP_SIZE], const u8 port_cap[4])
+.. c:function:: int drm_dp_downstream_max_clock(const u8 dpcd, const u8 port_cap)
 
     extract branch device max pixel rate for legacy VGA converter or max TMDS clock rate for others
 
@@ -209,7 +209,7 @@ Returns max clock in kHz on success or 0 if max clock not defined
 drm_dp_downstream_max_bpc
 =========================
 
-.. c:function:: int drm_dp_downstream_max_bpc(const u8 dpcd[DP_RECEIVER_CAP_SIZE], const u8 port_cap[4])
+.. c:function:: int drm_dp_downstream_max_bpc(const u8 dpcd, const u8 port_cap)
 
     extract branch device max bits per component
 
@@ -231,7 +231,7 @@ Returns max bpc on success or 0 if max bpc not defined
 drm_dp_downstream_id
 ====================
 
-.. c:function:: int drm_dp_downstream_id(struct drm_dp_aux *aux, char id[6])
+.. c:function:: int drm_dp_downstream_id(struct drm_dp_aux *aux, char id)
 
     identify branch device
 
@@ -253,7 +253,7 @@ Returns branch device id on success or NULL on failure
 drm_dp_downstream_debug
 =======================
 
-.. c:function:: void drm_dp_downstream_debug(struct seq_file *m, const u8 dpcd[DP_RECEIVER_CAP_SIZE], const u8 port_cap[4], struct drm_dp_aux *aux)
+.. c:function:: void drm_dp_downstream_debug(struct seq_file *m, const u8 dpcd, const u8 port_cap, struct drm_dp_aux *aux)
 
     debug DP branch devices
 
@@ -329,7 +329,7 @@ drm_dp_aux_unregister
 drm_dp_psr_setup_time
 =====================
 
-.. c:function:: int drm_dp_psr_setup_time(const u8 psr_cap[EDP_PSR_RECEIVER_CAP_SIZE])
+.. c:function:: int drm_dp_psr_setup_time(const u8 psr_cap)
 
     PSR setup in time usec
 

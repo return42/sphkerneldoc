@@ -92,7 +92,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_bus_msgbuf {
-        struct brcmf_commonring  *commonrings[BRCMF_NROF_COMMON_MSGRINGS];
+        struct brcmf_commonring  *commonrings;
         struct brcmf_commonring **flowrings;
         u32 rx_dataoffset;
         u32 max_rxbufpost;

@@ -21,7 +21,7 @@ Definition
         u32 format;
         u8 depth;
         u8 num_planes;
-        u8 cpp[3];
+        u8 cpp;
         u8 hsub;
         u8 vsub;
     }
@@ -68,7 +68,7 @@ Definition
 .. code-block:: c
 
     struct drm_format_name_buf {
-        char str[32];
+        char str;
     }
 
 .. _`drm_format_name_buf.members`:

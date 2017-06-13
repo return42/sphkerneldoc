@@ -26,8 +26,8 @@ Definition
         struct uwb_mac_addr mac_addr;
         struct uwb_dev_addr dev_addr;
         int beacon_slot;
-        unsigned long streams[BITS_TO_LONGS(UWB_NUM_STREAMS)];
-        unsigned long last_availability_bm[BITS_TO_LONGS(UWB_NUM_MAS)];
+        unsigned long streams;
+        unsigned long last_availability_bm;
     }
 
 .. _`uwb_dev.members`:
@@ -66,6 +66,9 @@ streams
     this device.  For an RC, this is the streams allocated for
     reservations targeted at DevAddrs.
 
+last_availability_bm
+    *undescribed*
+
 .. _`uwb_dev.description`:
 
 Description
@@ -91,8 +94,8 @@ Definition
 .. code-block:: c
 
     struct uwb_mas_bm {
-        unsigned long bm[BITS_TO_LONGS(UWB_NUM_MAS)];
-        unsigned long unsafe_bm[BITS_TO_LONGS(UWB_NUM_MAS)];
+        unsigned long bm;
+        unsigned long unsafe_bm;
         int safe;
         int unsafe;
     }
@@ -104,6 +107,9 @@ Members
 
 bm
     a bitmap of length #UWB_NUM_MAS
+
+unsafe_bm
+    *undescribed*
 
 safe
     *undescribed*
@@ -299,9 +305,9 @@ Definition
 .. code-block:: c
 
     struct uwb_drp_avail {
-        unsigned long global[BITS_TO_LONGS(UWB_NUM_MAS)];
-        unsigned long local[BITS_TO_LONGS(UWB_NUM_MAS)];
-        unsigned long pending[BITS_TO_LONGS(UWB_NUM_MAS)];
+        unsigned long global;
+        unsigned long local;
+        unsigned long pending;
         struct uwb_ie_drp_avail ie;
         bool ie_valid;
     }

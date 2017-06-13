@@ -66,8 +66,8 @@ Definition
         u32 quirks;
         u16 ngpio;
         int max_bank;
-        int bank_min[ZYNQMP_GPIO_MAX_BANK];
-        int bank_max[ZYNQMP_GPIO_MAX_BANK];
+        int bank_min;
+        int bank_max;
     }
 
 .. _`zynq_platform_data.members`:

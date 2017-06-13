@@ -22,7 +22,7 @@ Definition
         struct mutex lock;
         struct regmap *regmap;
         const struct hmc5843_chip_info *variant;
-        __be16 buffer[8];
+        __be16 buffer;
     }
 
 .. _`hmc5843_data.members`:

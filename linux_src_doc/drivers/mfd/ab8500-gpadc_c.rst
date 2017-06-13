@@ -66,7 +66,7 @@ Definition
         struct regulator *regu;
         int irq_sw;
         int irq_hw;
-        struct adc_cal_data cal_data[NBR_CAL_INPUTS];
+        struct adc_cal_data cal_data;
     }
 
 .. _`ab8500_gpadc.members`:
@@ -101,6 +101,9 @@ irq_hw
     interrupt number that is used by gpadc for Hw
     conversion
     \ ``cal_data``\                     array of ADC calibration data structs
+
+cal_data
+    *undescribed*
 
 .. _`ab8500_gpadc_get`:
 

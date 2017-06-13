@@ -816,7 +816,7 @@ A success or failure value from CXL services.
 read_vpd
 ========
 
-.. c:function:: int read_vpd(struct cxlflash_cfg *cfg, u64 wwpn[])
+.. c:function:: int read_vpd(struct cxlflash_cfg *cfg, u64 wwpn)
 
     obtains the WWPNs from VPD
 

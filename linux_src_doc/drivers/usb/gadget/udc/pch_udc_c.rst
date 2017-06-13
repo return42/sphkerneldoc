@@ -247,7 +247,7 @@ Definition
         struct usb_gadget gadget;
         struct usb_gadget_driver *driver;
         struct pci_dev *pdev;
-        struct pch_udc_ep ep[PCH_UDC_EP_NUM];
+        struct pch_udc_ep ep;
         spinlock_t lock;
         struct dma_pool *data_requests;
         struct dma_pool *stp_requests;

@@ -65,7 +65,7 @@ Definition
         struct i2c_client *client;
         struct regmap *regmap;
         int chip_id;
-        struct mfd_cell cells[SI476X_MFD_CELLS];
+        struct mfd_cell cells;
         struct mutex cmd_lock;
         atomic_t users;
         wait_queue_head_t rds_read_queue;
@@ -79,15 +79,15 @@ Definition
         atomic_t stc;
         struct si476x_power_up_args power_up_parameters;
         enum si476x_power_state power_state;
-        struct regulator_bulk_data supplies[4];
+        struct regulator_bulk_data supplies;
         int gpio_reset;
         struct si476x_pinmux pinmux;
         enum si476x_phase_diversity_mode diversity_mode;
         atomic_t is_alive;
         struct delayed_work status_monitor;
-    #define SI476X_WORK_TO_CORE(w) container_of(to_delayed_work(w), \
+    #define SI476X_WORK_TO_COREw container_ofto_delayed_workw, \
         struct si476x_core;
-        struct \status_monitor)int revision;
+        struct \status_monitorint revision;
         int rds_fifo_depth;
     }
 
@@ -156,6 +156,9 @@ power_up_parameters
 power_state
     *undescribed*
 
+supplies
+    *undescribed*
+
 gpio_reset
     GPIO pin connectet to the RSTB pin of the chip.
 
@@ -175,7 +178,7 @@ status_monitor
 si476x_core
     *undescribed*
 
-\status_monitor)int revision
+\status_monitorint revision
     *undescribed*
 
 rds_fifo_depth
@@ -383,8 +386,8 @@ Definition
         u8 pty;
         u16 pi;
         u8 rdsfifoused;
-        u8 ble[4];
-        struct v4l2_rds_data rds[4];
+        u8 ble;
+        struct v4l2_rds_data rds;
     }
 
 .. _`si476x_rds_status_report.members`:
@@ -430,6 +433,12 @@ pi
 rdsfifoused
     Number of blocks remaining in the RDS FIFO (0 if
     empty).
+
+ble
+    *undescribed*
+
+rds
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

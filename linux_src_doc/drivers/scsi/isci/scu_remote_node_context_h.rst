@@ -18,13 +18,16 @@ Definition
 .. code-block:: c
 
     struct stp_remote_node_context {
-        u32 data[8];
+        u32 data;
     }
 
 .. _`stp_remote_node_context.members`:
 
 Members
 -------
+
+data
+    *undescribed*
 
 .. _`stp_remote_node_context.description`:
 

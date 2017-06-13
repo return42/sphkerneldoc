@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_prio_state {
-        atomic_t prios[4];
+        atomic_t prios;
     }
 
 .. _`v4l2_prio_state.members`:
@@ -262,7 +262,7 @@ Definition
 .. code-block:: c
 
     struct video_device {
-    #if defined(CONFIG_MEDIA_CONTROLLER)
+    #if definedCONFIG_MEDIA_CONTROLLER
         struct media_entity entity;
         struct media_intf_devnode *intf_devnode;
         struct media_pipeline pipe;
@@ -276,7 +276,7 @@ Definition
         struct v4l2_ctrl_handler *ctrl_handler;
         struct vb2_queue *queue;
         struct v4l2_prio_state *prio;
-        char name[32];
+        char name;
         int vfl_type;
         int vfl_dir;
         int minor;
@@ -289,8 +289,8 @@ Definition
         v4l2_std_id tvnorms;
         void (*release)(struct video_device *vdev);
         const struct v4l2_ioctl_ops *ioctl_ops;
-        unsigned long valid_ioctls[BITS_TO_LONGS(BASE_VIDIOC_PRIVATE)];
-        unsigned long disable_locking[BITS_TO_LONGS(BASE_VIDIOC_PRIVATE)];
+        unsigned long valid_ioctls;
+        unsigned long disable_locking;
         struct mutex *lock;
     }
 

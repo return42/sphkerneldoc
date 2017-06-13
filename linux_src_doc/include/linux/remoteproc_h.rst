@@ -20,8 +20,8 @@ Definition
     struct resource_table {
         u32 ver;
         u32 num;
-        u32 reserved[2];
-        u32 offset[0];
+        u32 reserved;
+        u32 offset;
     }
 
 .. _`resource_table.members`:
@@ -84,7 +84,7 @@ Definition
 
     struct fw_rsc_hdr {
         u32 type;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`fw_rsc_hdr.members`:
@@ -189,7 +189,7 @@ Definition
         u32 len;
         u32 flags;
         u32 reserved;
-        u8 name[32];
+        u8 name;
     }
 
 .. _`fw_rsc_carveout.members`:
@@ -276,7 +276,7 @@ Definition
         u32 len;
         u32 flags;
         u32 reserved;
-        u8 name[32];
+        u8 name;
     }
 
 .. _`fw_rsc_devmem.members`:
@@ -352,7 +352,7 @@ Definition
         u32 da;
         u32 len;
         u32 reserved;
-        u8 name[32];
+        u8 name;
     }
 
 .. _`fw_rsc_trace.members`:
@@ -469,8 +469,8 @@ Definition
         u32 config_len;
         u8 status;
         u8 num_of_vrings;
-        u8 reserved[2];
-        struct fw_rsc_vdev_vring vring[0];
+        u8 reserved;
+        struct fw_rsc_vdev_vring vring;
     }
 
 .. _`fw_rsc_vdev.members`:
@@ -512,6 +512,9 @@ num_of_vrings
 reserved
     reserved (must be zero)
     \ ``vring``\  is an array of \ ``num_of_vrings``\  entries of 'struct fw_rsc_vdev_vring'.
+
+vring
+    *undescribed*
 
 .. _`fw_rsc_vdev.this-resource-is-a-virtio-device-header`:
 
@@ -996,7 +999,7 @@ Definition
         struct list_head node;
         struct rproc *rproc;
         struct virtio_device vdev;
-        struct rproc_vring vring[RVDEV_NUM_VRINGS];
+        struct rproc_vring vring;
         u32 rsc_offset;
     }
 

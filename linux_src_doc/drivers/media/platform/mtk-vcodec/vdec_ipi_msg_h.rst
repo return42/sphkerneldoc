@@ -188,7 +188,7 @@ Definition
     struct vdec_ap_ipi_dec_start {
         uint32_t msg_id;
         uint32_t vpu_inst_addr;
-        uint32_t data[3];
+        uint32_t data;
         uint32_t reserved;
     }
 

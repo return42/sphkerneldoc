@@ -196,7 +196,7 @@ Definition
         u32 ret;
         u32 ret_origin;
         u32 num_params;
-        struct optee_msg_param params[0];
+        struct optee_msg_param params;
     }
 
 .. _`optee_msg_arg.members`:

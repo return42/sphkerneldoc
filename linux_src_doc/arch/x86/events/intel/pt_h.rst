@@ -32,7 +32,7 @@ Definition
         unsigned long stop_pos;
         unsigned long intr_pos;
         void **data_pages;
-        struct topa_entry  *topa_index[0];
+        struct topa_entry  *topa_index;
     }
 
 .. _`pt_buffer.members`:
@@ -138,7 +138,7 @@ Definition
 .. code-block:: c
 
     struct pt_filters {
-        struct pt_filter filter[PT_FILTERS_NUM];
+        struct pt_filter filter;
         unsigned int nr_filters;
     }
 

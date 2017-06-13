@@ -27,7 +27,7 @@ Definition
         struct list_head walkers;
         struct rcu_head rcu;
         struct bucket_table __rcu *future_tbl;
-        struct rhash_head __rcu  *buckets[] ____cacheline_aligned_in_smp;
+        struct rhash_head __rcu  *buckets;
     }
 
 .. _`bucket_table.members`:

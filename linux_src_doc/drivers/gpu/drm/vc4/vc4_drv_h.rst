@@ -19,7 +19,7 @@ Definition
 
     struct vc4_texture_sample_info {
         bool is_direct;
-        uint32_t p_offset[4];
+        uint32_t p_offset;
     }
 
 .. _`vc4_texture_sample_info.members`:
@@ -28,6 +28,9 @@ Members
 -------
 
 is_direct
+    *undescribed*
+
+p_offset
     *undescribed*
 
 .. _`vc4_texture_sample_info.description`:

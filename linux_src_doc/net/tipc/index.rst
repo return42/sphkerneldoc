@@ -9,6 +9,7 @@ tipc
 
     addr_c
     bcast_c
+    bearer_c
     bearer_h
     discover_c
     link_c

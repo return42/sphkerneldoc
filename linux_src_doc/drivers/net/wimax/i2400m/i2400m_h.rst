@@ -106,7 +106,7 @@ Definition
         unsigned rx_size_max;
         struct i2400m_roq *rx_roq;
         struct kref rx_roq_refcount;
-        u8 src_mac_addr[ETH_HLEN];
+        u8 src_mac_addr;
         struct list_head rx_reports;
         struct work_struct rx_report_ws;
         struct mutex msg_mutex;

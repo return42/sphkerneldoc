@@ -62,8 +62,8 @@ Definition
 .. code-block:: c
 
     struct max8997_led_platform_data {
-        enum max8997_led_mode mode[2];
-        u8 brightness[2];
+        enum max8997_led_mode mode;
+        u8 brightness;
     }
 
 .. _`max8997_led_platform_data.members`:

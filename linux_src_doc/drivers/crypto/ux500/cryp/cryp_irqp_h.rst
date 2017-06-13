@@ -40,11 +40,11 @@ Definition
         u32 init_vect_0_r;
         u32 init_vect_1_l;
         u32 init_vect_1_r;
-        u32 cryp_unused1[(0x80 - 0x58) / sizeof(u32)];
+        u32 cryp_unused1;
         u32 itcr;
         u32 itip;
         u32 itop;
-        u32 cryp_unused2[(0xFE0 - 0x8C) / sizeof(u32)];
+        u32 cryp_unused2;
         u32 periphId0;
         u32 periphId1;
         u32 periphId2;
@@ -126,6 +126,9 @@ init_vect_1_l
 init_vect_1_r
     *undescribed*
 
+cryp_unused1
+    *undescribed*
+
 itcr
     *undescribed*
 
@@ -133,6 +136,9 @@ itip
     *undescribed*
 
 itop
+    *undescribed*
+
+cryp_unused2
     *undescribed*
 
 periphId0

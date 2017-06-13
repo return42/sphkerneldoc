@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct w1_reg_num {
-    #if defined(__LITTLE_ENDIAN_BITFIELD)
+    #if defined__LITTLE_ENDIAN_BITFIELD
         __u64 family:8:48:8;
         __u64 id:8:48;
         __u64 crc:8;
-    #elif defined(__BIG_ENDIAN_BITFIELD)
+    #elif defined__BIG_ENDIAN_BITFIELD
         __u64 crc:8;
         __u64 id:8:48;
         __u64 family:8:48:8;
@@ -72,7 +72,7 @@ Definition
 
     struct w1_slave {
         struct module *owner;
-        unsigned char name[W1_MAXNAMELEN];
+        unsigned char name;
         struct list_head w1_slave_entry;
         struct w1_reg_num reg_num;
         atomic_t refcnt;
@@ -267,7 +267,7 @@ Definition
     struct w1_master {
         struct list_head w1_master_entry;
         struct module *owner;
-        unsigned char name[W1_MAXNAMELEN];
+        unsigned char name;
         struct mutex list_mutex;
         struct list_head slist;
         struct list_head async_list;

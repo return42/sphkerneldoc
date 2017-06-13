@@ -15,6 +15,7 @@ v4l2-core
     v4l2-of_c
     videobuf-core_c
     videobuf-dma-contig_c
+    videobuf2-core_c
     videobuf2-dma-contig_c
     videobuf2-memops_c
     videobuf2-v4l2_c

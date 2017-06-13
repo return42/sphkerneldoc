@@ -122,7 +122,7 @@ Return the string name of the selected port.
 t4_os_set_hw_addr
 =================
 
-.. c:function:: void t4_os_set_hw_addr(struct adapter *adapter, int pidx, u8 hw_addr[])
+.. c:function:: void t4_os_set_hw_addr(struct adapter *adapter, int pidx, u8 hw_addr)
 
     store a port's MAC address in SW
 

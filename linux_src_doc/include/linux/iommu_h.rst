@@ -223,7 +223,7 @@ Definition
         struct fwnode_handle *iommu_fwnode;
         void *iommu_priv;
         unsigned int num_ids;
-        u32 ids[1];
+        u32 ids;
     }
 
 .. _`iommu_fwspec.members`:

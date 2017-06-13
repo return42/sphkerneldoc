@@ -804,7 +804,7 @@ megasas_reset_target
 megasas_bios_param
 ==================
 
-.. c:function:: int megasas_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int geom[])
+.. c:function:: int megasas_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int geom)
 
     Returns disk geometry for a disk
 

@@ -137,7 +137,7 @@ Definition
 
     struct nvec_msg {
         struct list_head node;
-        unsigned char data[NVEC_MSG_SIZE];
+        unsigned char data;
         unsigned short size;
         unsigned short pos;
         atomic_t used;
@@ -204,7 +204,7 @@ Definition
         struct work_struct rx_work;
         struct work_struct tx_work;
         struct workqueue_struct *wq;
-        struct nvec_msg msg_pool[NVEC_POOL_SIZE];
+        struct nvec_msg msg_pool;
         struct nvec_msg *rx;
         struct nvec_msg *tx;
         struct nvec_msg tx_scratch;

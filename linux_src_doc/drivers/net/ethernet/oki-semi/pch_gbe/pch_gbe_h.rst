@@ -78,7 +78,7 @@ Definition
 .. code-block:: c
 
     struct pch_gbe_mac_info {
-        u8 addr[6];
+        u8 addr;
         u8 fc;
         u8 fc_autoneg;
         u8 tx_fc_enable;

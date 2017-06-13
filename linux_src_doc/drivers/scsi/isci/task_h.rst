@@ -64,7 +64,7 @@ Definition
         struct completion *complete;
         enum sas_protocol proto;
         union resp;
-        unsigned char lun[8];
+        unsigned char lun;
         u16 io_tag;
         enum isci_tmf_function_codes tmf_code;
         int status;
@@ -82,6 +82,9 @@ proto
     *undescribed*
 
 resp
+    *undescribed*
+
+lun
     *undescribed*
 
 io_tag

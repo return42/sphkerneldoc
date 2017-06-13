@@ -24,8 +24,8 @@ Definition
         struct block_device *ns_bdev;
         struct rw_semaphore ns_sem;
         struct mutex ns_snapshot_mount_mutex;
-        struct buffer_head  *ns_sbh[2];
-        struct nilfs_super_block  *ns_sbp[2];
+        struct buffer_head  *ns_sbh;
+        struct nilfs_super_block  *ns_sbp;
         time_t ns_sbwtime;
         unsigned int ns_sbwcount;
         unsigned int ns_sbsize;

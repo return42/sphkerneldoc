@@ -129,7 +129,7 @@ Returns 0 for success, or an error code.
 ev_byte_channel_send
 ====================
 
-.. c:function:: unsigned int ev_byte_channel_send(unsigned int handle, unsigned int *count, const char buffer[EV_BYTE_CHANNEL_MAX_BYTES])
+.. c:function:: unsigned int ev_byte_channel_send(unsigned int handle, unsigned int *count, const char buffer)
 
     send characters to a byte stream
 
@@ -157,7 +157,7 @@ Returns 0 for success, or an error code.
 ev_byte_channel_receive
 =======================
 
-.. c:function:: unsigned int ev_byte_channel_receive(unsigned int handle, unsigned int *count, char buffer[EV_BYTE_CHANNEL_MAX_BYTES])
+.. c:function:: unsigned int ev_byte_channel_receive(unsigned int handle, unsigned int *count, char buffer)
 
     fetch characters from a byte channel
 

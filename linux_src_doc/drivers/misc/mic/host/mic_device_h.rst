@@ -76,7 +76,7 @@ Definition
         void *dp;
         dma_addr_t dp_dma_addr;
         struct mbus_device *dma_mbdev;
-        struct dma_chan  *dma_ch[MIC_MAX_DMA_CHAN];
+        struct dma_chan  *dma_ch;
         int num_dma_ch;
         struct scif_hw_dev *scdev;
         struct vop_device *vpdev;
@@ -143,6 +143,9 @@ dma_mbdev
     MIC BUS DMA device.
     \ ``dma_ch``\  - Array of DMA channels
     \ ``num_dma_ch``\  - Number of DMA channels available
+
+dma_ch
+    *undescribed*
 
 num_dma_ch
     *undescribed*

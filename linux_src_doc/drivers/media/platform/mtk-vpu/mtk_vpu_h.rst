@@ -235,14 +235,14 @@ otherwise it is VPU's platform device
 vpu_wdt_reg_handler
 ===================
 
-.. c:function:: int vpu_wdt_reg_handler(struct platform_device *pdev, void vpu_wdt_reset_func(void *), void *priv, enum rst_id id)
+.. c:function:: int vpu_wdt_reg_handler(struct platform_device *pdev, void vpu_wdt_reset_func(void *, void *priv, enum rst_id id)
 
     register a VPU watchdog handler
 
     :param struct platform_device \*pdev:
         VPU platform device
 
-    :param void vpu_wdt_reset_func(void \*):
+    :param void vpu_wdt_reset_func(void \*:
         *undescribed*
 
     :param void \*priv:

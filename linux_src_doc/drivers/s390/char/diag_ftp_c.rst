@@ -26,7 +26,7 @@ Definition
         u64 fsize;
         u64 failaddr;
         u64 spare;
-        u8 fident[HMCDRV_FTP_FIDENT_MAX];
+        u8 fident;
     }
 
 .. _`diag_ftp_ldfpl.members`:

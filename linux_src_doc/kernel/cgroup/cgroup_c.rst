@@ -350,7 +350,7 @@ css_task_iter adjustments but the caller is responsible for managing
 compare_css_sets
 ================
 
-.. c:function:: bool compare_css_sets(struct css_set *cset, struct css_set *old_cset, struct cgroup *new_cgrp, struct cgroup_subsys_state  *template[])
+.. c:function:: bool compare_css_sets(struct css_set *cset, struct css_set *old_cset, struct cgroup *new_cgrp, struct cgroup_subsys_state  *template)
 
     helper function for \ :c:func:`find_existing_css_set`\ .
 
@@ -379,7 +379,7 @@ which "new_cgrp" belongs to, for which it should match "new_cgrp".
 find_existing_css_set
 =====================
 
-.. c:function:: struct css_set *find_existing_css_set(struct css_set *old_cset, struct cgroup *cgrp, struct cgroup_subsys_state  *template[])
+.. c:function:: struct css_set *find_existing_css_set(struct css_set *old_cset, struct cgroup *cgrp, struct cgroup_subsys_state  *template)
 
     init css array and find the matching css_set
 
@@ -1084,7 +1084,7 @@ Finalize control mask update.  See \ :c:func:`cgroup_apply_control`\  for more i
 cgroup_addrm_files
 ==================
 
-.. c:function:: int cgroup_addrm_files(struct cgroup_subsys_state *css, struct cgroup *cgrp, struct cftype cfts[], bool is_add)
+.. c:function:: int cgroup_addrm_files(struct cgroup_subsys_state *css, struct cgroup *cgrp, struct cftype cfts, bool is_add)
 
     add or remove files to a cgroup directory
 

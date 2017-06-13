@@ -20,7 +20,7 @@ Definition
     struct can_skb_priv {
         int ifindex;
         int skbcnt;
-        struct can_frame cf[0];
+        struct can_frame cf;
     }
 
 .. _`can_skb_priv.members`:

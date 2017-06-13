@@ -93,7 +93,7 @@ cvmx_pko_shutdown
 cvmx_pko_config_port
 ====================
 
-.. c:function:: cvmx_pko_status_t cvmx_pko_config_port(uint64_t port, uint64_t base_queue, uint64_t num_queues, const uint64_t priority[])
+.. c:function:: cvmx_pko_status_t cvmx_pko_config_port(uint64_t port, uint64_t base_queue, uint64_t num_queues, const uint64_t priority)
 
     :param uint64_t port:
         Port to configure.

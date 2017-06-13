@@ -78,7 +78,7 @@ Definition
     struct bfq_sched_data {
         struct bfq_entity *in_service_entity;
         struct bfq_entity *next_in_service;
-        struct bfq_service_tree service_tree[BFQ_IOPRIO_CLASSES];
+        struct bfq_service_tree service_tree;
         unsigned long bfq_class_idle_last_service;
     }
 
@@ -91,6 +91,9 @@ in_service_entity
     *undescribed*
 
 next_in_service
+    *undescribed*
+
+service_tree
     *undescribed*
 
 bfq_class_idle_last_service
@@ -336,7 +339,7 @@ Definition
         struct rb_root *pos_root;
         struct rb_root sort_list;
         struct request *next_rq;
-        int queued[2];
+        int queued;
         int allocated;
         int meta_pending;
         struct list_head fifo;
@@ -399,6 +402,9 @@ sort_list
     *undescribed*
 
 next_rq
+    *undescribed*
+
+queued
     *undescribed*
 
 allocated
@@ -504,7 +510,7 @@ Definition
 
     struct bfq_io_cq {
         struct io_cq icq;
-        struct bfq_queue  *bfqq[2];
+        struct bfq_queue  *bfqq;
         int ioprio;
     #ifdef CONFIG_BFQ_GROUP_IOSCHED
         uint64_t blkcg_serial_nr;
@@ -526,6 +532,9 @@ Members
 -------
 
 icq
+    *undescribed*
+
+bfqq
     *undescribed*
 
 ioprio
@@ -608,7 +617,7 @@ Definition
         int bfq_max_budget;
         struct list_head active_list;
         struct list_head idle_list;
-        u64 bfq_fifo_expire[2];
+        u64 bfq_fifo_expire;
         unsigned int bfq_back_penalty;
         unsigned int bfq_back_max;
         u32 bfq_slice_idle;
@@ -733,6 +742,9 @@ active_list
 idle_list
     *undescribed*
 
+bfq_fifo_expire
+    *undescribed*
+
 bfq_back_penalty
     *undescribed*
 
@@ -842,7 +854,7 @@ Definition
         struct bfq_entity entity;
         struct bfq_sched_data sched_data;
         void *bfqd;
-        struct bfq_queue  *async_bfqq[2][IOPRIO_BE_NR];
+        struct bfq_queue  *async_bfqq;
         struct bfq_queue *async_idle_bfqq;
         struct bfq_entity *my_entity;
         int active_entities;

@@ -20,11 +20,11 @@ Definition
     struct rt_dot11d_info {
         bool bEnabled;
         u16 CountryIeLen;
-        u8 CountryIeBuf[MAX_IE_LEN];
-        u8 CountryIeSrcAddr[6];
+        u8 CountryIeBuf;
+        u8 CountryIeSrcAddr;
         u8 CountryIeWatchdog;
-        u8 channel_map[MAX_CHANNEL_NUMBER + 1];
-        u8 MaxTxPwrDbmList[MAX_CHANNEL_NUMBER + 1];
+        u8 channel_map;
+        u8 MaxTxPwrDbmList;
         enum dot11d_state State;
     }
 
@@ -39,6 +39,12 @@ bEnabled
 CountryIeLen
     *undescribed*
 
+CountryIeBuf
+    *undescribed*
+
+CountryIeSrcAddr
+    *undescribed*
+
 CountryIeWatchdog
     *undescribed*
 
@@ -48,6 +54,9 @@ channel_map
     1 - valid (active scan),
     2 - valid (passive scan)
     \ ``CountryIeSrcAddr``\  - Source AP of the country IE
+
+MaxTxPwrDbmList
+    *undescribed*
 
 State
     *undescribed*

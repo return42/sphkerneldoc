@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct genl_multicast_group {
-        char name[GENL_NAMSIZ];
+        char name;
     }
 
 .. _`genl_multicast_group.members`:
@@ -48,7 +48,7 @@ Definition
     struct genl_family {
         int id;
         unsigned int hdrsize;
-        char name[GENL_NAMSIZ];
+        char name;
         unsigned int version;
         unsigned int maxattr;
         bool netnsok;
@@ -158,7 +158,7 @@ Definition
         void *userhdr;
         struct nlattr **attrs;
         possible_net_t _net;
-        void *user_ptr[2];
+        void *user_ptr;
         struct netlink_ext_ack *extack;
     }
 
@@ -277,7 +277,7 @@ Returns pointer to netlink header.
 genlmsg_parse
 =============
 
-.. c:function:: int genlmsg_parse(const struct nlmsghdr *nlh, const struct genl_family *family, struct nlattr  *tb[], int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
+.. c:function:: int genlmsg_parse(const struct nlmsghdr *nlh, const struct genl_family *family, struct nlattr  *tb, int maxtype, const struct nla_policy *policy, struct netlink_ext_ack *extack)
 
     parse attributes of a genetlink message
 

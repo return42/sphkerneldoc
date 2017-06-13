@@ -19,7 +19,7 @@ Definition
 
     struct smc_pnetentry {
         struct list_head list;
-        char pnet_name[SMC_MAX_PNET_ID_LEN + 1];
+        char pnet_name;
         struct net_device *ndev;
         struct smc_ib_device *smcibdev;
         u8 ib_port;

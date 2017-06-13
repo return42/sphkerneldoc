@@ -277,8 +277,8 @@ Definition
         bool init_msg_received;
         struct completion init_done;
         struct mutex seq_lock;
-        struct nvkm_msgqueue_seq seq[NVKM_MSGQUEUE_NUM_SEQUENCES];
-        unsigned long seq_tbl[BITS_TO_LONGS(NVKM_MSGQUEUE_NUM_SEQUENCES)];
+        struct nvkm_msgqueue_seq seq;
+        unsigned long seq_tbl;
     }
 
 .. _`nvkm_msgqueue.members`:

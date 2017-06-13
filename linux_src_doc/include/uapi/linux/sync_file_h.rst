@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct sync_merge_data {
-        char name[32];
+        char name;
         __s32 fd2;
         __s32 fence;
         __u32 flags;
@@ -62,8 +62,8 @@ Definition
 .. code-block:: c
 
     struct sync_fence_info {
-        char obj_name[32];
-        char driver_name[32];
+        char obj_name;
+        char driver_name;
         __s32 status;
         __u32 flags;
         __u64 timestamp_ns;
@@ -106,7 +106,7 @@ Definition
 .. code-block:: c
 
     struct sync_file_info {
-        char name[32];
+        char name;
         __s32 status;
         __u32 flags;
         __u32 num_fences;

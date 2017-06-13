@@ -54,9 +54,9 @@ Definition
 .. code-block:: c
 
     struct brcmf_cfg80211_profile {
-        u8 bssid[ETH_ALEN];
+        u8 bssid;
         struct brcmf_cfg80211_security sec;
-        struct brcmf_wsec_key key[BRCMF_MAX_DEFAULT_KEYS];
+        struct brcmf_wsec_key key;
     }
 
 .. _`brcmf_cfg80211_profile.members`:
@@ -134,10 +134,10 @@ Definition
 .. code-block:: c
 
     struct vif_saved_ie {
-        u8 probe_req_ie[IE_MAX_LEN];
-        u8 probe_res_ie[IE_MAX_LEN];
-        u8 beacon_ie[IE_MAX_LEN];
-        u8 assoc_req_ie[IE_MAX_LEN];
+        u8 probe_req_ie;
+        u8 probe_res_ie;
+        u8 beacon_ie;
+        u8 assoc_req_ie;
         u32 probe_req_ie_len;
         u32 probe_res_ie_len;
         u32 beacon_ie_len;
@@ -157,6 +157,9 @@ probe_res_ie
 
 beacon_ie
     IE info for beacon frame.
+
+assoc_req_ie
+    *undescribed*
 
 probe_req_ie_len
     IE info length for probe request.
@@ -489,7 +492,7 @@ Definition
     struct brcmf_tlv {
         u8 id;
         u8 len;
-        u8 data[1];
+        u8 data;
     }
 
 .. _`brcmf_tlv.members`:

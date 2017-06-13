@@ -18,13 +18,13 @@ Definition
 .. code-block:: c
 
     struct v4l2_capability {
-        __u8 driver[16];
-        __u8 card[32];
-        __u8 bus_info[32];
+        __u8 driver;
+        __u8 card;
+        __u8 bus_info;
         __u32 version;
         __u32 capabilities;
         __u32 device_caps;
-        __u32 reserved[3];
+        __u32 reserved;
     }
 
 .. _`v4l2_capability.members`:
@@ -74,7 +74,7 @@ Definition
         __u32 length;
         union m;
         __u32 data_offset;
-        __u32 reserved[11];
+        __u32 reserved;
     }
 
 .. _`v4l2_plane.members`:
@@ -94,6 +94,9 @@ m
 data_offset
     offset in the plane to the start of data; usually 0,
     unless there is a header in front of the data
+
+reserved
+    *undescribed*
 
 .. _`v4l2_plane.description`:
 
@@ -216,7 +219,7 @@ Definition
         __u32 plane;
         __u32 flags;
         __s32 fd;
-        __u32 reserved[11];
+        __u32 reserved;
     }
 
 .. _`v4l2_exportbuffer.members`:
@@ -240,6 +243,9 @@ flags
 
 fd
     file descriptor associated with DMABUF (set by driver)
+
+reserved
+    *undescribed*
 
 .. _`v4l2_exportbuffer.description`:
 
@@ -274,7 +280,7 @@ Definition
         __u32 target;
         __u32 flags;
         struct v4l2_rect r;
-        __u32 reserved[9];
+        __u32 reserved;
     }
 
 .. _`v4l2_selection.members`:
@@ -326,7 +332,7 @@ Definition
     struct v4l2_plane_pix_format {
         __u32 sizeimage;
         __u32 bytesperline;
-        __u16 reserved[6];
+        __u16 reserved;
     }
 
 .. _`v4l2_plane_pix_format.members`:
@@ -341,6 +347,9 @@ sizeimage
 bytesperline
     distance in bytes between the leftmost pixels in two
     adjacent lines
+
+reserved
+    *undescribed*
 
 .. _`v4l2_pix_format_mplane`:
 
@@ -364,13 +373,13 @@ Definition
         __u32 pixelformat;
         __u32 field;
         __u32 colorspace;
-        struct v4l2_plane_pix_format plane_fmt[VIDEO_MAX_PLANES];
+        struct v4l2_plane_pix_format plane_fmt;
         __u8 num_planes;
         __u8 flags;
         union {unnamed_union};
         __u8 quantization;
         __u8 xfer_func;
-        __u8 reserved[7];
+        __u8 reserved;
     }
 
 .. _`v4l2_pix_format_mplane.members`:
@@ -412,6 +421,9 @@ quantization
 xfer_func
     enum v4l2_xfer_func, colorspace transfer function
 
+reserved
+    *undescribed*
+
 .. _`v4l2_sdr_format`:
 
 struct v4l2_sdr_format
@@ -431,7 +443,7 @@ Definition
     struct v4l2_sdr_format {
         __u32 pixelformat;
         __u32 buffersize;
-        __u8 reserved[24];
+        __u8 reserved;
     }
 
 .. _`v4l2_sdr_format.members`:
@@ -444,6 +456,9 @@ pixelformat
 
 buffersize
     maximum size in bytes required for data
+
+reserved
+    *undescribed*
 
 .. _`v4l2_meta_format`:
 
@@ -567,7 +582,7 @@ Definition
         __u32 count;
         __u32 memory;
         struct v4l2_format format;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_create_buffers.members`:

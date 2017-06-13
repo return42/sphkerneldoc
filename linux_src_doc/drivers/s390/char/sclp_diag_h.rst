@@ -30,7 +30,7 @@ Definition
         u64 failaddr;
         u64 bufaddr;
         u64 asce;
-        u8 fident[256];
+        u8 fident;
     }
 
 .. _`sclp_diag_ftp.members`:

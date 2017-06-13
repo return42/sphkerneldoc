@@ -266,7 +266,7 @@ stm32f4_i2c_xfer_msg
 stm32f4_i2c_xfer
 ================
 
-.. c:function:: int stm32f4_i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg msgs[], int num)
+.. c:function:: int stm32f4_i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg msgs, int num)
 
     Transfer combined I2C message
 

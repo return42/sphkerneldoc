@@ -22,7 +22,7 @@ Definition
         u8 dir;
         u8 num;
         u8 type;
-        char name[16];
+        char name;
         struct qh;
         int wedge;
         struct ci_hdrc *ci;
@@ -132,7 +132,7 @@ Definition
         void __iomem *cap;
         void __iomem *op;
         size_t size;
-        void __iomem  *regmap[OP_LAST + 1];
+        void __iomem  *regmap;
     }
 
 .. _`hw_bank.members`:
@@ -182,13 +182,13 @@ Definition
         spinlock_t lock;
         struct hw_bank hw_bank;
         int irq;
-        struct ci_role_driver  *roles[CI_ROLE_END];
+        struct ci_role_driver  *roles;
         enum ci_role role;
         bool is_otg;
         struct usb_otg otg;
         struct otg_fsm fsm;
         struct hrtimer otg_fsm_hrtimer;
-        ktime_t hr_timeouts[NUM_OTG_FSM_TIMERS];
+        ktime_t hr_timeouts;
         unsigned enabled_otg_timer_bits;
         enum otg_fsm_timer next_otg_timer;
         struct work_struct work;
@@ -199,7 +199,7 @@ Definition
         struct usb_gadget_driver *driver;
         enum usb_device_state resume_state;
         unsigned hw_ep_max;
-        struct ci_hw_ep ci_hw_ep[ENDPT_MAX];
+        struct ci_hw_ep ci_hw_ep;
         u32 ep0_dir;
         struct ci_hw_ep *ep0out;
         struct ci_hw_ep * *ep0in;

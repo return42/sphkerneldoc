@@ -20,7 +20,7 @@ Definition
     struct drm_property_enum {
         uint64_t value;
         struct list_head head;
-        char name[DRM_PROP_NAME_LEN];
+        char name;
     }
 
 .. _`drm_property_enum.members`:
@@ -65,7 +65,7 @@ Definition
         struct list_head head;
         struct drm_mode_object base;
         uint32_t flags;
-        char name[DRM_PROP_NAME_LEN];
+        char name;
         uint32_t num_values;
         uint64_t *values;
         struct drm_device *dev;
@@ -225,7 +225,7 @@ Definition
         struct list_head head_global;
         struct list_head head_file;
         size_t length;
-        unsigned char data[];
+        unsigned char data;
     }
 
 .. _`drm_property_blob.members`:

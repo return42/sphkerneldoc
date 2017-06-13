@@ -67,7 +67,7 @@ Definition
     struct msa_extcontext {
         struct extcontext ext;
     #define MSA_EXTCONTEXT_MAGIC 0x784d5341
-        unsigned long long wr[32];
+        unsigned long long wr;
         unsigned int csr;
     }
 
@@ -116,7 +116,7 @@ Definition
         stack_t uc_stack;
         struct sigcontext uc_mcontext;
         sigset_t uc_sigmask;
-        unsigned long long uc_extcontext[0];
+        unsigned long long uc_extcontext;
     }
 
 .. _`ucontext.members`:

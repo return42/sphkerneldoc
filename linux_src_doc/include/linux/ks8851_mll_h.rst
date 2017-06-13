@@ -18,13 +18,16 @@ Definition
 .. code-block:: c
 
     struct ks8851_mll_platform_data {
-        u8 mac_addr[ETH_ALEN];
+        u8 mac_addr;
     }
 
 .. _`ks8851_mll_platform_data.members`:
 
 Members
 -------
+
+mac_addr
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

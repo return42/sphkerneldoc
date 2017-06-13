@@ -24,7 +24,7 @@ Definition
         __u32 timeout;
         __u32 sequence;
         __u32 flags;
-        __u8 msg[CEC_MAX_MSG_SIZE];
+        __u8 msg;
         __u8 reply;
         __u8 rx_status;
         __u8 tx_status;
@@ -220,8 +220,8 @@ Definition
 .. code-block:: c
 
     struct cec_caps {
-        char driver[32];
-        char name[32];
+        char driver;
+        char name;
         __u32 available_log_addrs;
         __u32 capabilities;
         __u32 version;
@@ -264,17 +264,17 @@ Definition
 .. code-block:: c
 
     struct cec_log_addrs {
-        __u8 log_addr[CEC_MAX_LOG_ADDRS];
+        __u8 log_addr;
         __u16 log_addr_mask;
         __u8 cec_version;
         __u8 num_log_addrs;
         __u32 vendor_id;
         __u32 flags;
-        char osd_name[15];
-        __u8 primary_device_type[CEC_MAX_LOG_ADDRS];
-        __u8 log_addr_type[CEC_MAX_LOG_ADDRS];
-        __u8 all_device_types[CEC_MAX_LOG_ADDRS];
-        __u8 features[CEC_MAX_LOG_ADDRS][12];
+        char osd_name;
+        __u8 primary_device_type;
+        __u8 log_addr_type;
+        __u8 all_device_types;
+        __u8 features;
     }
 
 .. _`cec_log_addrs.members`:

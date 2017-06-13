@@ -270,7 +270,7 @@ otherwise returns 1
 iwpm_validate_nlmsg_attr
 ========================
 
-.. c:function:: int iwpm_validate_nlmsg_attr(struct nlattr  *nltb[], int nla_count)
+.. c:function:: int iwpm_validate_nlmsg_attr(struct nlattr  *nltb, int nla_count)
 
     Check for NULL netlink attributes
 
@@ -318,7 +318,7 @@ is insufficient to store the message header and payload
 iwpm_parse_nlmsg
 ================
 
-.. c:function:: int iwpm_parse_nlmsg(struct netlink_callback *cb, int policy_max, const struct nla_policy *nlmsg_policy, struct nlattr  *nltb[], const char *msg_type)
+.. c:function:: int iwpm_parse_nlmsg(struct netlink_callback *cb, int policy_max, const struct nla_policy *nlmsg_policy, struct nlattr  *nltb, const char *msg_type)
 
     Validate and parse the received netlink message
 

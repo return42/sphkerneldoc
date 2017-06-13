@@ -24,7 +24,7 @@ Definition
         unsigned int lpos;
         unsigned int count;
         unsigned int flags;
-    #define DWC3_EVENT_PENDING BIT(0)
+    #define DWC3_EVENT_PENDING BIT0
         dma_addr_t dma;
         struct dwc3 *dwc;
     }
@@ -86,15 +86,15 @@ Definition
         struct dwc3 *dwc;
         u32 saved_state;
         unsigned flags;
-    #define DWC3_EP_ENABLED BIT(0)
-    #define DWC3_EP_STALL BIT(1)
-    #define DWC3_EP_WEDGE BIT(2)
-    #define DWC3_EP_BUSY BIT(4)
-    #define DWC3_EP_PENDING_REQUEST BIT(5)
-    #define DWC3_EP_MISSED_ISOC BIT(6)
-    #define DWC3_EP_END_TRANSFER_PENDING BIT(7)
-    #define DWC3_EP_TRANSFER_STARTED BIT(8)
-    #define DWC3_EP0_DIR_IN BIT(31)
+    #define DWC3_EP_ENABLED BIT0
+    #define DWC3_EP_STALL BIT1
+    #define DWC3_EP_WEDGE BIT2
+    #define DWC3_EP_BUSY BIT4
+    #define DWC3_EP_PENDING_REQUEST BIT5
+    #define DWC3_EP_MISSED_ISOC BIT6
+    #define DWC3_EP_END_TRANSFER_PENDING BIT7
+    #define DWC3_EP_TRANSFER_STARTED BIT8
+    #define DWC3_EP0_DIR_IN BIT31
         u8 trb_enqueue;
         u8 trb_dequeue;
         u8 number;
@@ -103,7 +103,7 @@ Definition
         u32 allocated_requests;
         u32 queued_requests;
         u32 interval;
-        char name[20];
+        char name;
         unsigned direction:1;
         unsigned stream_capable:1;
     }
@@ -330,9 +330,9 @@ Definition
         struct device *dev;
         struct device *sysdev;
         struct platform_device *xhci;
-        struct resource xhci_resources[DWC3_XHCI_RESOURCES_NUM];
+        struct resource xhci_resources;
         struct dwc3_event_buffer *ev_buf;
-        struct dwc3_ep  *eps[DWC3_ENDPOINTS_NUM];
+        struct dwc3_ep  *eps;
         struct usb_gadget gadget;
         struct usb_gadget_driver *gadget_driver;
         struct usb_phy *usb2_phy;
@@ -377,8 +377,8 @@ Definition
     #define DWC3_REVISION_300A 0x5533300a
     #define DWC3_REVISION_310A 0x5533310a
     #define DWC3_REVISION_IS_DWC31 0x80000000
-    #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_DWC31)
-    #define DWC3_USB31_REVISION_120A (0x3132302a | DWC3_REVISION_IS_DWC31)
+    #define DWC3_USB31_REVISION_110A 0x3131302a | DWC3_REVISION_IS_DWC31
+    #define DWC3_USB31_REVISION_120A 0x3132302a | DWC3_REVISION_IS_DWC31
         enum dwc3_ep0_next ep0_next_event;
         enum dwc3_ep0_state ep0state;
         enum dwc3_link_state link_state;
@@ -477,7 +477,13 @@ sysdev
 xhci
     pointer to our xHCI child
 
+xhci_resources
+    *undescribed*
+
 ev_buf
+    *undescribed*
+
+eps
     *undescribed*
 
 gadget
@@ -726,20 +732,20 @@ Definition
         u32 endpoint_event:4;
         u32 reserved11_10:2;
         u32 status:4;
-    #define DEPEVT_STATUS_TRANSFER_ACTIVE BIT(3)
-    #define DEPEVT_STATUS_BUSERR BIT(0)
-    #define DEPEVT_STATUS_SHORT BIT(1)
-    #define DEPEVT_STATUS_IOC BIT(2)
-    #define DEPEVT_STATUS_LST BIT(3)
+    #define DEPEVT_STATUS_TRANSFER_ACTIVE BIT3
+    #define DEPEVT_STATUS_BUSERR BIT0
+    #define DEPEVT_STATUS_SHORT BIT1
+    #define DEPEVT_STATUS_IOC BIT2
+    #define DEPEVT_STATUS_LST BIT3
     #define DEPEVT_STREAMEVT_FOUND 1
     #define DEPEVT_STREAMEVT_NOTFOUND 2
     #define DEPEVT_STATUS_CONTROL_DATA 1
     #define DEPEVT_STATUS_CONTROL_STATUS 2
-    #define DEPEVT_STATUS_CONTROL_PHASE(n) ((n) & 3)
+    #define DEPEVT_STATUS_CONTROL_PHASEn n & 3
     #define DEPEVT_TRANSFER_NO_RESOURCE 1
     #define DEPEVT_TRANSFER_BUS_EXPIRY 2
         u32 parameters:16;
-    #define DEPEVT_PARAMETER_CMD(n) (((n) & (0xf << 8)) >> 8)
+    #define DEPEVT_PARAMETER_CMDn n & 0xf << 8 >> 8
     }
 
 .. _`dwc3_event_depevt.members`:

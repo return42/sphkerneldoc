@@ -122,8 +122,8 @@ Definition
 .. code-block:: c
 
     struct samsung_pin_bank_type {
-        u8 fld_width[PINCFG_TYPE_NUM];
-        u8 reg_offset[PINCFG_TYPE_NUM];
+        u8 fld_width;
+        u8 reg_offset;
     }
 
 .. _`samsung_pin_bank_type.members`:
@@ -233,7 +233,7 @@ Definition
         struct pinctrl_gpio_range grange;
         struct exynos_irq_chip *irq_chip;
         spinlock_t slock;
-        u32 pm_save[PINCFG_TYPE_NUM + 1];
+        u32 pm_save;
     }
 
 .. _`samsung_pin_bank.members`:

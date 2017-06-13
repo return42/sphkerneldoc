@@ -110,12 +110,12 @@ Definition
         struct brcmf_fws_mac_descriptor *fws_desc;
         int ifidx;
         s32 bsscfgidx;
-        u8 mac_addr[ETH_ALEN];
+        u8 mac_addr;
         u8 netif_stop;
         spinlock_t netif_stop_lock;
         atomic_t pend_8021x_cnt;
         wait_queue_head_t pend_8021x_wait;
-        struct in6_addr ipv6_addr_tbl[NDOL_MAX_ENTRIES];
+        struct in6_addr ipv6_addr_tbl;
         u8 ipv6addr_idx;
     }
 
@@ -162,6 +162,9 @@ pend_8021x_cnt
 
 pend_8021x_wait
     used for signalling change in count.
+
+ipv6_addr_tbl
+    *undescribed*
 
 ipv6addr_idx
     *undescribed*

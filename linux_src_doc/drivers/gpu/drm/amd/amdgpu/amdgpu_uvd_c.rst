@@ -26,7 +26,7 @@ nobody is violating an 256MB boundary.
 amdgpu_uvd_cs_msg_decode
 ========================
 
-.. c:function:: int amdgpu_uvd_cs_msg_decode(struct amdgpu_device *adev, uint32_t *msg, unsigned buf_sizes[])
+.. c:function:: int amdgpu_uvd_cs_msg_decode(struct amdgpu_device *adev, uint32_t *msg, unsigned buf_sizes)
 
     handle UVD decode message
 

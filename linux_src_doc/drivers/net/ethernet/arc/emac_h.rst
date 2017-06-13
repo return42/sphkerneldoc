@@ -51,8 +51,8 @@ Definition
 
     struct buffer_state {
         struct sk_buff *skb;
-         DEFINE_DMA_UNMAP_ADDR(addr);
-         DEFINE_DMA_UNMAP_LEN(len);
+         DEFINE_DMA_UNMAP_ADDRaddr;
+         DEFINE_DMA_UNMAP_LENlen;
     }
 
 .. _`buffer_state.members`:
@@ -63,10 +63,10 @@ Members
 skb
     *undescribed*
 
-DEFINE_DMA_UNMAP_ADDR(addr)
+DEFINE_DMA_UNMAP_ADDRaddr
     *undescribed*
 
-DEFINE_DMA_UNMAP_LEN(len)
+DEFINE_DMA_UNMAP_LENlen
     *undescribed*
 
 .. _`arc_emac_priv`:
@@ -99,8 +99,8 @@ Definition
         struct arc_emac_bd *txbd;
         dma_addr_t rxbd_dma;
         dma_addr_t txbd_dma;
-        struct buffer_state rx_buff[RX_BD_NUM];
-        struct buffer_state tx_buff[TX_BD_NUM];
+        struct buffer_state rx_buff;
+        struct buffer_state tx_buff;
         unsigned int txbd_curr;
         unsigned int txbd_dirty;
         unsigned int last_rx_bd;

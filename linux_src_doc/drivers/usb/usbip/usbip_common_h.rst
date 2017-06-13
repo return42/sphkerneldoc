@@ -69,7 +69,7 @@ Definition
         __s32 start_frame;
         __s32 number_of_packets;
         __s32 interval;
-        unsigned char setup[8];
+        unsigned char setup;
     }
 
 .. _`usbip_header_cmd_submit.members`:

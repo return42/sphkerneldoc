@@ -24,7 +24,7 @@ Definition
         struct iwl_trans *trans;
         struct device *dev;
         int fw_index;
-        char firmware_name[64];
+        char firmware_name;
         struct completion request_firmware_complete;
     #ifdef CONFIG_IWLWIFI_DEBUGFS
         struct dentry *dbgfs_drv;

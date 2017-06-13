@@ -27,7 +27,7 @@ Definition
         __le32 beacon_time_stamp;
         __le16 phy_flags;
         __le16 channel;
-        __le32 non_cfg_phy[IWL_RX_INFO_PHY_CNT];
+        __le32 non_cfg_phy;
         __le32 rate_n_flags;
         __le32 byte_count;
         u8 mac_active_msk;
@@ -66,6 +66,9 @@ phy_flags
 
 channel
     channel number
+
+non_cfg_phy
+    *undescribed*
 
 rate_n_flags
     RATE_MCS\_\*
@@ -354,9 +357,9 @@ Definition
     struct iwl_rss_config_cmd {
         __le32 flags;
         u8 hash_mask;
-        u8 reserved[3];
-        __le32 secret_key[IWL_RSS_HASH_KEY_CNT];
-        u8 indirection_table[IWL_RSS_INDIRECTION_TABLE_SIZE];
+        u8 reserved;
+        __le32 secret_key;
+        u8 indirection_table;
     }
 
 .. _`iwl_rss_config_cmd.members`:
@@ -369,6 +372,9 @@ flags
 
 hash_mask
     Type of RSS to use. Values are from \ ``iwl_rss_hash_func_en``\ 
+
+reserved
+    *undescribed*
 
 secret_key
     320 bit input of random key configuration from driver
@@ -396,7 +402,7 @@ Definition
         __le32 flags;
         __le32 rxq_mask;
         __le32 count;
-        u8 payload[];
+        u8 payload;
     }
 
 .. _`iwl_rxq_sync_cmd.members`:
@@ -434,7 +440,7 @@ Definition
 
     struct iwl_rxq_sync_notification {
         __le32 count;
-        u8 payload[];
+        u8 payload;
     }
 
 .. _`iwl_rxq_sync_notification.members`:
@@ -468,7 +474,7 @@ Definition
         u16 type;
         u16 sync;
         u32 cookie;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_mvm_internal_rxq_notif.members`:

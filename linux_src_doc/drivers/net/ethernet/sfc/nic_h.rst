@@ -20,7 +20,7 @@ Definition
     struct siena_nic_data {
         struct efx_nic *efx;
         int wol_filter_id;
-        u64 stats[SIENA_STAT_COUNT];
+        u64 stats;
     #ifdef CONFIG_SFC_SRIOV
         struct siena_vf *vf;
         struct efx_channel *vfdi_channel;
@@ -99,12 +99,12 @@ Definition
         void __iomem *wc_membase;
         void __iomem * *pio_write_base;
         unsigned int pio_write_vi_base;
-        unsigned int piobuf_handle[EF10_TX_PIOBUF_COUNT];
+        unsigned int piobuf_handle;
         u16 piobuf_size;
         bool must_restore_piobufs;
         u32 rx_rss_context;
         bool rx_rss_context_exclusive;
-        u64 stats[EF10_STAT_COUNT];
+        u64 stats;
         bool workaround_35388;
         bool workaround_26807;
         bool workaround_61265;
@@ -116,15 +116,15 @@ Definition
         unsigned int vport_id;
         bool must_probe_vswitching;
         unsigned int pf_index;
-        u8 port_id[ETH_ALEN];
+        u8 port_id;
     #ifdef CONFIG_SFC_SRIOV
         unsigned int vf_index;
         struct ef10_vf *vf;
     #endif
-        u8 vport_mac[ETH_ALEN];
+        u8 vport_mac;
         struct list_head vlan_list;
         struct mutex vlan_lock;
-        struct efx_udp_tunnel udp_tunnels[16];
+        struct efx_udp_tunnel udp_tunnels;
         bool udp_tunnels_dirty;
         struct mutex udp_tunnels_lock;
     }
@@ -218,6 +218,9 @@ must_probe_vswitching
 
 pf_index
     The number for this PF, or the parent PF if this is a VF
+
+port_id
+    *undescribed*
 
 vf_index
     *undescribed*

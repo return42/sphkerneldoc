@@ -374,17 +374,17 @@ Definition
 
     struct sta_ampdu_mlme {
         struct mutex mtx;
-        struct tid_ampdu_rx __rcu  *tid_rx[IEEE80211_NUM_TIDS];
-        u8 tid_rx_token[IEEE80211_NUM_TIDS];
-        unsigned long tid_rx_timer_expired[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
-        unsigned long tid_rx_stop_requested[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
-        unsigned long agg_session_valid[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
-        unsigned long unexpected_agg[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
+        struct tid_ampdu_rx __rcu  *tid_rx;
+        u8 tid_rx_token;
+        unsigned long tid_rx_timer_expired;
+        unsigned long tid_rx_stop_requested;
+        unsigned long agg_session_valid;
+        unsigned long unexpected_agg;
         struct work_struct work;
-        struct tid_ampdu_tx __rcu  *tid_tx[IEEE80211_NUM_TIDS];
-        struct tid_ampdu_tx  *tid_start_tx[IEEE80211_NUM_TIDS];
-        unsigned long last_addba_req_time[IEEE80211_NUM_TIDS];
-        u8 addba_req_num[IEEE80211_NUM_TIDS];
+        struct tid_ampdu_tx __rcu  *tid_tx;
+        struct tid_ampdu_tx  *tid_start_tx;
+        unsigned long last_addba_req_time;
+        u8 addba_req_num;
         u8 dialog_token_allocator;
     }
 
@@ -460,7 +460,7 @@ Definition
         u8 da_offs;
         u8 pn_offs;
         u8 band;
-        u8 hdr[30 + 2 + IEEE80211_FAST_XMIT_MAX_IV +sizeof(rfc1042_header)];
+        u8 hdr;
         struct rcu_head rcu_head;
     }
 
@@ -521,8 +521,8 @@ Definition
     struct ieee80211_fast_rx {
         struct net_device *dev;
         enum nl80211_iftype vif_type;
-        u8 vif_addr[ETH_ALEN];
-        u8 rfc1042_hdr[6];
+        u8 vif_addr;
+        u8 rfc1042_hdr;
         __be16 control_port_protocol;
         __le16 expected_ds_bits;
         u8 icv_len;
@@ -693,11 +693,11 @@ Definition
         struct list_head free_list;
         struct rcu_head rcu_head;
         struct rhlist_head hash_node;
-        u8 addr[ETH_ALEN];
+        u8 addr;
         struct ieee80211_local *local;
         struct ieee80211_sub_if_data *sdata;
-        struct ieee80211_key __rcu  *gtk[NUM_DEFAULT_KEYS + NUM_DEFAULT_MGMT_KEYS];
-        struct ieee80211_key __rcu  *ptk[NUM_DEFAULT_KEYS];
+        struct ieee80211_key __rcu  *gtk;
+        struct ieee80211_key __rcu  *ptk;
         u8 ptk_idx;
         struct rate_control_ref *rate_ctrl;
         void *rate_ctrl_priv;
@@ -717,16 +717,16 @@ Definition
         enum ieee80211_sta_state sta_state;
         unsigned long _flags;
         spinlock_t ps_lock;
-        struct sk_buff_head ps_tx_buf[IEEE80211_NUM_ACS];
-        struct sk_buff_head tx_filtered[IEEE80211_NUM_ACS];
+        struct sk_buff_head ps_tx_buf;
+        struct sk_buff_head tx_filtered;
         unsigned long driver_buffered_tids;
         unsigned long txq_buffered_tids;
         long last_connected;
         struct ieee80211_sta_rx_stats rx_stats;
         struct tx_stats;
-        u16 tid_seq[IEEE80211_QOS_CTL_TID_MASK + 1];
+        u16 tid_seq;
         struct sta_ampdu_mlme ampdu_mlme;
-        u8 timer_to_tid[IEEE80211_NUM_TIDS];
+        u8 timer_to_tid;
     #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *debugfs_dir;
     #endif

@@ -565,11 +565,11 @@ Definition
         int index;
         int idle_hardware_channels;
         union cvmx_usbcx_hprt usbcx_hprt;
-        struct cvmx_usb_pipe  *pipe_for_channel[MAX_CHANNELS];
+        struct cvmx_usb_pipe  *pipe_for_channel;
         int indent;
         struct cvmx_usb_port_status port_status;
         struct list_head idle_pipes;
-        struct list_head active_pipes[4];
+        struct list_head active_pipes;
         u64 frame_number;
         struct cvmx_usb_transaction *active_split;
         struct cvmx_usb_tx_fifo periodic;
@@ -596,6 +596,9 @@ idle_hardware_channels
 usbcx_hprt
     *undescribed*
 
+pipe_for_channel
+    *undescribed*
+
 indent
     *undescribed*
 
@@ -603,6 +606,9 @@ port_status
     *undescribed*
 
 idle_pipes
+    *undescribed*
+
+active_pipes
     *undescribed*
 
 frame_number
@@ -727,7 +733,7 @@ Definition
 
     struct octeon_temp_buffer {
         void *orig_buffer;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`octeon_temp_buffer.members`:

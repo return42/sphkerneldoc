@@ -147,7 +147,7 @@ Definition
         dma_addr_t rb_stts_dma;
         spinlock_t lock;
         struct napi_struct napi;
-        struct iwl_rx_mem_buffer  *queue[RX_QUEUE_SIZE];
+        struct iwl_rx_mem_buffer  *queue;
     }
 
 .. _`iwl_rxq.members`:
@@ -574,8 +574,8 @@ Definition
 
     struct iwl_trans_pcie {
         struct iwl_rxq *rxq;
-        struct iwl_rx_mem_buffer rx_pool[RX_POOL_SIZE];
-        struct iwl_rx_mem_buffer  *global_table[RX_POOL_SIZE];
+        struct iwl_rx_mem_buffer rx_pool;
+        struct iwl_rx_mem_buffer  *global_table;
         struct iwl_rb_allocator rba;
         struct iwl_context_info *ctxt_info;
         dma_addr_t ctxt_info_dma_addr;
@@ -596,9 +596,9 @@ Definition
         struct iwl_dma_ptr scd_bc_tbls;
         struct iwl_dma_ptr kw;
         struct iwl_txq *txq_memory;
-        struct iwl_txq  *txq[IWL_MAX_TVQM_QUEUES];
-        unsigned long queue_used[BITS_TO_LONGS(IWL_MAX_TVQM_QUEUES)];
-        unsigned long queue_stopped[BITS_TO_LONGS(IWL_MAX_TVQM_QUEUES)];
+        struct iwl_txq  *txq;
+        unsigned long queue_used;
+        unsigned long queue_stopped;
         struct pci_dev *pci_dev;
         void __iomem *hw_base;
         bool ucode_write_complete;
@@ -611,7 +611,7 @@ Definition
         u8 cmd_fifo;
         unsigned int cmd_q_wdg_timeout;
         u8 n_no_reclaim_cmds;
-        u8 no_reclaim_cmds[MAX_NO_RECLAIM_CMDS];
+        u8 no_reclaim_cmds;
         u8 max_tbs;
         u16 tfd_size;
         enum iwl_amsdu_size rx_buf_size;
@@ -625,7 +625,7 @@ Definition
         dma_addr_t fw_mon_phys;
         struct page *fw_mon_page;
         u32 fw_mon_size;
-        struct msix_entry msix_entries[IWL_MAX_RX_HW_QUEUES];
+        struct msix_entry msix_entries;
         bool msix_enabled;
         u8 shared_vec_mask;
         u32 alloc_vecs;
@@ -634,7 +634,7 @@ Definition
         u32 hw_init_mask;
         u32 fh_mask;
         u32 hw_mask;
-        cpumask_t affinity_mask[IWL_MAX_RX_HW_QUEUES];
+        cpumask_t affinity_mask;
     }
 
 .. _`iwl_trans_pcie.members`:
@@ -714,6 +714,15 @@ kw
 txq_memory
     *undescribed*
 
+txq
+    *undescribed*
+
+queue_used
+    *undescribed*
+
+queue_stopped
+    *undescribed*
+
 pci_dev
     basic pci-network driver stuff
 
@@ -749,6 +758,9 @@ cmd_q_wdg_timeout
     *undescribed*
 
 n_no_reclaim_cmds
+    *undescribed*
+
+no_reclaim_cmds
     *undescribed*
 
 max_tbs
@@ -818,6 +830,9 @@ fh_mask
 
 hw_mask
     current unmasked hw causes
+
+affinity_mask
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

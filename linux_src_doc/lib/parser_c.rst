@@ -6,7 +6,7 @@
 match_one
 =========
 
-.. c:function:: int match_one(char *s, const char *p, substring_t args[])
+.. c:function:: int match_one(char *s, const char *p, substring_t args)
 
     - Determines if a string matches a simple pattern
 
@@ -34,7 +34,7 @@ the location(s) of the arguments will be returned in the \ ``args``\  array.
 match_token
 ===========
 
-.. c:function:: int match_token(char *s, const match_table_t table, substring_t args[])
+.. c:function:: int match_token(char *s, const match_table_t table, substring_t args)
 
     - Find a token (and optional args) in a string
 

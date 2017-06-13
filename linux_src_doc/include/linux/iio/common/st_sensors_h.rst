@@ -144,8 +144,8 @@ Definition
 
     struct st_sensor_transfer_buffer {
         struct mutex buf_lock;
-        u8 rx_buf[ST_SENSORS_RX_MAX_LENGTH];
-        u8 tx_buf[ST_SENSORS_TX_MAX_LENGTH] ____cacheline_aligned;
+        u8 rx_buf;
+        u8 tx_buf;
     }
 
 .. _`st_sensor_transfer_buffer.members`:
@@ -219,7 +219,7 @@ Definition
     struct st_sensor_settings {
         u8 wai;
         u8 wai_addr;
-        char sensors_supported[ST_SENSORS_MAX_4WAI][ST_SENSORS_MAX_NAME];
+        char sensors_supported;
         struct iio_chan_spec *ch;
         int num_ch;
         struct st_sensor_odr odr;

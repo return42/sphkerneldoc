@@ -288,7 +288,7 @@ Definition
         u32 ssc_ctrl_en_mask;
         u32 aux_reg;
         u32 dyn_ramp_reg;
-        u32 ext_misc_reg[MAX_PLL_MISC_REG_COUNT];
+        u32 ext_misc_reg;
         u32 pmc_divnm_reg;
         u32 pmc_divp_reg;
         u32 flags;

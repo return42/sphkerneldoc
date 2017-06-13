@@ -255,8 +255,8 @@ Definition
         unsigned int coded_width;
         unsigned int coded_height;
         enum v4l2_field field;
-        unsigned int bytesperline[MTK_VCODEC_MAX_PLANES];
-        unsigned int sizeimage[MTK_VCODEC_MAX_PLANES];
+        unsigned int bytesperline;
+        unsigned int sizeimage;
         struct mtk_video_fmt *fmt;
     }
 
@@ -278,6 +278,12 @@ coded_height
     *undescribed*
 
 field
+    *undescribed*
+
+bytesperline
+    *undescribed*
+
+sizeimage
     *undescribed*
 
 fmt
@@ -532,7 +538,7 @@ Definition
         struct list_head list;
         struct v4l2_fh fh;
         struct v4l2_m2m_ctx *m2m_ctx;
-        struct mtk_q_data q_data[2];
+        struct mtk_q_data q_data;
         int id;
         enum mtk_instance_state state;
         enum mtk_encode_param param_change;
@@ -684,7 +690,7 @@ Definition
         struct list_head ctx_list;
         spinlock_t irqlock;
         struct mtk_vcodec_ctx *curr_ctx;
-        void __iomem  *reg_base[NUM_MAX_VCODEC_REG_BASE];
+        void __iomem  *reg_base;
         unsigned long id_counter;
         struct workqueue_struct *decode_workqueue;
         struct workqueue_struct *encode_workqueue;

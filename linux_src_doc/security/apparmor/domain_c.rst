@@ -329,7 +329,7 @@ new name or NULL on error
 aa_change_hat
 =============
 
-.. c:function:: int aa_change_hat(const char  *hats[], int count, u64 token, bool permtest)
+.. c:function:: int aa_change_hat(const char  *hats, int count, u64 token, bool permtest)
 
     change hat to/from subprofile
 

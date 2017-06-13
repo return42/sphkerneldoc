@@ -20,7 +20,7 @@ Definition
         u8 cmd;
         u8 flags;
         __le16 sequence;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`il_cmd_header.members`:
@@ -35,6 +35,9 @@ flags
     *undescribed*
 
 sequence
+    *undescribed*
+
+data
     *undescribed*
 
 .. _`il_cmd_header.description`:
@@ -297,13 +300,16 @@ Definition
 .. code-block:: c
 
     struct il4965_tx_power_db {
-        struct tx_power_dual_stream power_tbl[POWER_TBL_NUM_ENTRIES];
+        struct tx_power_dual_stream power_tbl;
     }
 
 .. _`il4965_tx_power_db.members`:
 
 Members
 -------
+
+power_tbl
+    *undescribed*
 
 .. _`il4965_tx_power_db.description`:
 
@@ -384,7 +390,7 @@ Definition
 .. code-block:: c
 
     struct sta_id_modify {
-        u8 addr[ETH_ALEN];
+        u8 addr;
         __le16 reserved1;
         u8 sta_id;
         u8 modify_mask;
@@ -500,7 +506,7 @@ Definition
         u8 mimo_delimiter;
         u8 single_stream_ant_msk;
         u8 dual_stream_ant_msk;
-        u8 start_rate_idx[LINK_QUAL_AC_NUM];
+        u8 start_rate_idx;
     }
 
 .. _`il_link_qual_general_params.members`:
@@ -518,6 +524,9 @@ single_stream_ant_msk
     *undescribed*
 
 dual_stream_ant_msk
+    *undescribed*
+
+start_rate_idx
     *undescribed*
 
 .. _`il_link_qual_general_params.description`:
@@ -662,7 +671,7 @@ Definition
     struct il_ssid_ie {
         u8 id;
         u8 len;
-        u8 ssid[32];
+        u8 ssid;
     }
 
 .. _`il_ssid_ie.members`:
@@ -674,6 +683,9 @@ id
     *undescribed*
 
 len
+    *undescribed*
+
+ssid
     *undescribed*
 
 .. _`il_ssid_ie.description`:
@@ -924,7 +936,7 @@ Definition
 
     struct il_sensitivity_cmd {
         __le16 control;
-        __le16 table[HD_TBL_SIZE];
+        __le16 table;
     }
 
 .. _`il_sensitivity_cmd.members`:

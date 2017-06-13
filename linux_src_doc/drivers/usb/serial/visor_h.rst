@@ -21,7 +21,7 @@ Definition
         __u8 num_ports;
         __u8 endpoint_numbers_different;
         __le16 reserved1;
-        struct connections[2];
+        struct connections;
     }
 
 .. _`palm_ext_connection_info.members`:
@@ -40,6 +40,9 @@ endpoint_numbers_different
     and out.
 
 reserved1
+    *undescribed*
+
+connections
     *undescribed*
 
 .. _`palm_ext_connection_info.description`:

@@ -79,7 +79,7 @@ Definition
         u32 vsize_stride;
         u32 control;
         u32 status;
-        u32 app[XILINX_DMA_NUM_APP_WORDS];
+        u32 app;
     }
 
 .. _`xilinx_axidma_desc_hw.members`:
@@ -482,7 +482,7 @@ Definition
         void __iomem *regs;
         struct device *dev;
         struct dma_device common;
-        struct xilinx_dma_chan  *chan[XILINX_DMA_MAX_CHANS_PER_DEVICE];
+        struct xilinx_dma_chan  *chan;
         bool has_sg;
         bool mcdma;
         u32 flush_on_fsync;

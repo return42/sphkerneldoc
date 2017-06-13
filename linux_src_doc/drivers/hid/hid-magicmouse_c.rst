@@ -23,8 +23,8 @@ Definition
         int ntouches;
         int scroll_accel;
         unsigned long scroll_jiffies;
-        struct touches[16];
-        int tracking_ids[16];
+        struct touches;
+        int tracking_ids;
     }
 
 .. _`magicmouse_sc.members`:

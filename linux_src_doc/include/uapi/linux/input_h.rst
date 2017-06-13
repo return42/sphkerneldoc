@@ -86,12 +86,12 @@ Definition
 .. code-block:: c
 
     struct input_keymap_entry {
-    #define INPUT_KEYMAP_BY_INDEX (1 << 0)
+    #define INPUT_KEYMAP_BY_INDEX 1 << 0
         __u8 flags;
         __u8 len;
         __u16 index;
         __u32 keycode;
-        __u8 scancode[32];
+        __u8 scancode;
     }
 
 .. _`input_keymap_entry.members`:

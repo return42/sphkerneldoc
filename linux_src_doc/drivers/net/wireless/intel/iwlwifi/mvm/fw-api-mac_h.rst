@@ -602,9 +602,9 @@ Definition
         __le32 action;
         __le32 mac_type;
         __le32 tsf_id;
-        u8 node_addr[6];
+        u8 node_addr;
         __le16 reserved_for_node_addr;
-        u8 bssid_addr[6];
+        u8 bssid_addr;
         __le16 reserved_for_bssid_addr;
         __le32 cck_rates;
         __le32 ofdm_rates;
@@ -613,7 +613,7 @@ Definition
         __le32 short_slot;
         __le32 filter_flags;
         __le32 qos_flags;
-        struct iwl_ac_qos ac[AC_NUM+1];
+        struct iwl_ac_qos ac;
         union {unnamed_union};
     }
 

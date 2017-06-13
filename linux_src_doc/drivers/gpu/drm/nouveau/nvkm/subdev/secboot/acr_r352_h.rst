@@ -70,7 +70,7 @@ Definition
         struct ls_ucode_img *(*ls_ucode_img_load)(const struct acr_r352 *,const struct nvkm_secboot *,enum nvkm_secboot_falcon);
         int (*ls_fill_headers)(struct acr_r352 *, struct list_head *);
         int (*ls_write_wpr)(struct acr_r352 *, struct list_head *,struct nvkm_gpuobj *, u64);
-        const struct acr_r352_ls_func  *ls_func[NVKM_SECBOOT_FALCON_END];
+        const struct acr_r352_ls_func  *ls_func;
     }
 
 .. _`acr_r352_func.members`:
@@ -100,6 +100,9 @@ ls_fill_headers
 ls_write_wpr
     *undescribed*
 
+ls_func
+    *undescribed*
+
 .. _`acr_r352`:
 
 struct acr_r352
@@ -120,7 +123,7 @@ Definition
         struct nvkm_acr base;
         const struct acr_r352_func *func;
         struct nvkm_gpuobj *load_blob;
-        struct falcon_state[NVKM_SECBOOT_FALCON_END];
+        struct falcon_state;
     }
 
 .. _`acr_r352.members`:
@@ -135,6 +138,9 @@ func
     *undescribed*
 
 load_blob
+    *undescribed*
+
+falcon_state
     *undescribed*
 
 .. This file was automatic generated / don't edit.

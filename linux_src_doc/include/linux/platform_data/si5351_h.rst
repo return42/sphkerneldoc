@@ -272,8 +272,8 @@ Definition
 .. code-block:: c
 
     struct si5351_platform_data {
-        enum si5351_pll_src pll_src[2];
-        struct si5351_clkout_config clkout[8];
+        enum si5351_pll_src pll_src;
+        struct si5351_clkout_config clkout;
     }
 
 .. _`si5351_platform_data.members`:

@@ -21,7 +21,7 @@ Definition
         struct rb_node rb_node_in;
         struct rb_node rb_node;
         union {unnamed_union};
-        struct callchain_root callchain[0];
+        struct callchain_root callchain;
     }
 
 .. _`hist_entry.members`:
@@ -38,6 +38,9 @@ rb_node
 {unnamed_union}
     anonymous
 
+
+callchain
+    *undescribed*
 
 .. _`hist_entry.description`:
 

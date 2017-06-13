@@ -126,7 +126,7 @@ Definition
         u32 btimer_val;
     #define VXGE_HW_MIN_TIM_BTIMER_VAL 0
     #define VXGE_HW_MAX_TIM_BTIMER_VAL 67108864
-    #define VXGE_HW_USE_FLASH_DEFAULT (~0)
+    #define VXGE_HW_USE_FLASH_DEFAULT ~0
         u32 timer_ac_en;
     #define VXGE_HW_TIM_TIMER_AC_ENABLE 1
     #define VXGE_HW_TIM_TIMER_AC_DISABLE 0
@@ -1463,16 +1463,28 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_xmac_stats {
-        struct vxge_hw_xmac_aggr_statsaggr_stats[VXGE_HW_MAC_MAX_MAC_PORT_ID];
-        struct vxge_hw_xmac_port_statsport_stats[VXGE_HW_MAC_MAX_MAC_PORT_ID+1];
-        struct vxge_hw_xmac_vpath_tx_statsvpath_tx_stats[VXGE_HW_MAX_VIRTUAL_PATHS];
-        struct vxge_hw_xmac_vpath_rx_statsvpath_rx_stats[VXGE_HW_MAX_VIRTUAL_PATHS];
+        struct vxge_hw_xmac_aggr_statsaggr_stats;
+        struct vxge_hw_xmac_port_statsport_stats;
+        struct vxge_hw_xmac_vpath_tx_statsvpath_tx_stats;
+        struct vxge_hw_xmac_vpath_rx_statsvpath_rx_stats;
     }
 
 .. _`vxge_hw_xmac_stats.members`:
 
 Members
 -------
+
+vxge_hw_xmac_aggr_statsaggr_stats
+    *undescribed*
+
+vxge_hw_xmac_port_statsport_stats
+    *undescribed*
+
+vxge_hw_xmac_vpath_tx_statsvpath_tx_stats
+    *undescribed*
+
+vxge_hw_xmac_vpath_rx_statsvpath_rx_stats
+    *undescribed*
 
 .. _`vxge_hw_xmac_stats.description`:
 
@@ -1526,11 +1538,11 @@ Definition
         u32 prog_event_vnum3;
         u32 prog_event_vnum2;
         u16 rx_multi_cast_frame_discard;
-        u8 unused10[6];
+        u8 unused10;
         u32 rx_frm_transferred;
         u32 unused11;
         u16 rxd_returned;
-        u8 unused12[6];
+        u8 unused12;
         u16 rx_mpa_len_fail_frms;
         u16 rx_mpa_mrk_fail_frms;
         u16 rx_mpa_crc_fail_frms;
@@ -1641,6 +1653,9 @@ prog_event_vnum2
 rx_multi_cast_frame_discard
     TBD
 
+unused10
+    *undescribed*
+
 rx_frm_transferred
     TBD
 
@@ -1649,6 +1664,9 @@ unused11
 
 rxd_returned
     TBD
+
+unused12
+    *undescribed*
 
 rx_mpa_len_fail_frms
     Count of received frames
@@ -1705,9 +1723,9 @@ Definition
     struct vxge_hw_device_stats_mrpcim_info {
         u32 pic_ini_rd_drop;
         u32 pic_ini_wr_drop;
-        struct pci_depl_d_vplane[17];
-        struct vxge_hw_xmac_port_stats xgmac_port[3];
-        struct vxge_hw_xmac_aggr_stats xgmac_aggr[2];
+        struct pci_depl_d_vplane;
+        struct vxge_hw_xmac_port_stats xgmac_port;
+        struct vxge_hw_xmac_aggr_stats xgmac_aggr;
         u64 xgmac_global_prog_event_gnum0;
         u64 xgmac_global_prog_event_gnum1;
         u64 unused7;
@@ -1737,6 +1755,15 @@ pic_ini_rd_drop
     *undescribed*
 
 pic_ini_wr_drop
+    *undescribed*
+
+pci_depl_d_vplane
+    *undescribed*
+
+xgmac_port
+    *undescribed*
+
+xgmac_aggr
     *undescribed*
 
 xgmac_global_prog_event_gnum0
@@ -1817,14 +1844,20 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_device_stats_hw_info {
-        struct vxge_hw_vpath_stats_hw_info*vpath_info[VXGE_HW_MAX_VIRTUAL_PATHS];
-        struct vxge_hw_vpath_stats_hw_infovpath_info_sav[VXGE_HW_MAX_VIRTUAL_PATHS];
+        struct vxge_hw_vpath_stats_hw_infovpath_info;
+        struct vxge_hw_vpath_stats_hw_infovpath_info_sav;
     }
 
 .. _`vxge_hw_device_stats_hw_info.members`:
 
 Members
 -------
+
+vxge_hw_vpath_stats_hw_infovpath_info
+    *undescribed*
+
+vxge_hw_vpath_stats_hw_infovpath_info_sav
+    *undescribed*
 
 .. _`vxge_hw_device_stats_hw_info.description`:
 
@@ -1912,7 +1945,7 @@ Definition
         struct vxge_hw_vpath_stats_sw_common_info common_stats;
         u32 total_posts;
         u32 total_buffers;
-        u32 txd_t_code_err_cnt[VXGE_HW_DTR_MAX_T_CODE];
+        u32 txd_t_code_err_cnt;
     }
 
 .. _`vxge_hw_vpath_stats_sw_fifo_info.members`:
@@ -1969,7 +2002,7 @@ Definition
 
     struct vxge_hw_vpath_stats_sw_ring_info {
         struct vxge_hw_vpath_stats_sw_common_info common_stats;
-        u32 rxd_t_code_err_cnt[VXGE_HW_DTR_MAX_T_CODE];
+        u32 rxd_t_code_err_cnt;
     }
 
 .. _`vxge_hw_vpath_stats_sw_ring_info.members`:
@@ -2169,7 +2202,7 @@ Definition
         u32 traffic_intr_cnt;
         u32 total_intr_cnt;
         u32 soft_reset_cnt;
-        struct vxge_hw_vpath_stats_sw_infovpath_info[VXGE_HW_MAX_VIRTUAL_PATHS];
+        struct vxge_hw_vpath_stats_sw_infovpath_info;
     }
 
 .. _`vxge_hw_device_stats_sw_info.members`:
@@ -2192,6 +2225,9 @@ total_intr_cnt
 
 soft_reset_cnt
     Number of times soft reset is done on this device.
+
+vxge_hw_vpath_stats_sw_infovpath_info
+    *undescribed*
 
 .. _`vxge_hw_device_stats_sw_err`:
 

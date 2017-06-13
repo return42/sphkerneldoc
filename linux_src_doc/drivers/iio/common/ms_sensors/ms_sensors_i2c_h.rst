@@ -56,7 +56,7 @@ Definition
     struct ms_tp_dev {
         struct i2c_client *client;
         struct mutex lock;
-        u16 prom[MS_SENSORS_TP_PROM_WORDS_NB + 1];
+        u16 prom;
         u8 res_index;
     }
 

@@ -568,7 +568,7 @@ will not be freed.
 dev_pm_opp_set_regulators
 =========================
 
-.. c:function:: struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names[], unsigned int count)
+.. c:function:: struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names, unsigned int count)
 
     Set regulator names for the device
 

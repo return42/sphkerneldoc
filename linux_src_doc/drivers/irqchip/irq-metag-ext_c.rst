@@ -20,9 +20,9 @@ Definition
     struct meta_intc_priv {
         unsigned int nr_banks;
         struct irq_domain *domain;
-        unsigned long unmasked[4];
+        unsigned long unmasked;
     #ifdef CONFIG_METAG_SUSPEND_MEM
-        unsigned long levels_altered[4];
+        unsigned long levels_altered;
     #endif
     }
 
@@ -537,10 +537,10 @@ Definition
 .. code-block:: c
 
     struct meta_intc_context {
-        u32 levels[4];
-        u32 masks[4];
-        u8 vectors[4*32];
-        u8 txvecint[4][4];
+        u32 levels;
+        u32 masks;
+        u8 vectors;
+        u8 txvecint;
     }
 
 .. _`meta_intc_context.members`:

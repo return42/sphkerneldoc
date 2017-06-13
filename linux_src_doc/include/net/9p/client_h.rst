@@ -202,9 +202,9 @@ Definition
         struct p9_idpool *fidpool;
         struct list_head fidlist;
         struct p9_idpool *tagpool;
-        struct p9_req_t  *reqs[P9_ROW_MAXTAG];
+        struct p9_req_t  *reqs;
         int max_tag;
-        char name[__NEW_UTS_LEN + 1];
+        char name;
     }
 
 .. _`p9_client.members`:
@@ -243,7 +243,13 @@ fidlist
 tagpool
     *undescribed*
 
+reqs
+    *undescribed*
+
 max_tag
+    *undescribed*
+
+name
     *undescribed*
 
 .. _`p9_client.description`:
@@ -356,7 +362,7 @@ Definition
         struct p9_qid qid;
         u64 d_off;
         unsigned char d_type;
-        char d_name[256];
+        char d_name;
     }
 
 .. _`p9_dirent.members`:

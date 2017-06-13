@@ -28,13 +28,13 @@ Definition
         unsigned int size;
         cpumask_t shared_cpu_map;
         unsigned int attributes;
-    #define CACHE_WRITE_THROUGH BIT(0)
-    #define CACHE_WRITE_BACK BIT(1)
+    #define CACHE_WRITE_THROUGH BIT0
+    #define CACHE_WRITE_BACK BIT1
     #define CACHE_WRITE_POLICY_MASK \
-        (CACHE_WRITE_THROUGH | CACHE_WRITE_BACK)#define CACHE_READ_ALLOCATE BIT(2);
-    #define CACHE_WRITE_ALLOCATE BIT(3)
+        (CACHE_WRITE_THROUGH | CACHE_WRITE_BACK)#define CACHE_READ_ALLOCATE BIT2;
+    #define CACHE_WRITE_ALLOCATE BIT3
     #define CACHE_ALLOCATE_POLICY_MASK \
-        (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE)#define CACHE_ID BIT(4);
+        (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE)#define CACHE_ID BIT4;
         struct device_node *of_node;
         bool disable_sysfs;
         void *priv;
@@ -80,10 +80,10 @@ shared_cpu_map
 attributes
     bitfield representing various cache attributes
 
-BIT(2)
+BIT2
     *undescribed*
 
-BIT(4)
+BIT4
     *undescribed*
 
 of_node

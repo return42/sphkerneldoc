@@ -6,7 +6,7 @@
 derive_key_aes
 ==============
 
-.. c:function:: int derive_key_aes(u8 deriving_key[FS_AES_128_ECB_KEY_SIZE], u8 source_key[FS_AES_256_XTS_KEY_SIZE], u8 derived_key[FS_AES_256_XTS_KEY_SIZE])
+.. c:function:: int derive_key_aes(u8 deriving_key, u8 source_key, u8 derived_key)
 
     Derive a key using AES-128-ECB
 

@@ -21,7 +21,7 @@ Definition
         struct device *dev;
         struct spi_device *spi;
         struct regmap *regmap;
-        struct regmap_field  *fields[F_MAX_FIELDS];
+        struct regmap_field  *fields;
         struct regulator *regulator;
         struct iio_trigger *trig;
         int irq;

@@ -23,8 +23,8 @@ Definition
         unsigned int irq_base;
         int ono;
         bool buck_voltage_lock;
-        int buck1_voltage[4];
-        int buck2_voltage[2];
+        int buck1_voltage;
+        int buck2_voltage;
         int buck1_set1;
         int buck1_set2;
         int buck1_default_idx;

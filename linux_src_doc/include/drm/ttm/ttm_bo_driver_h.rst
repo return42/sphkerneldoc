@@ -154,7 +154,7 @@ Definition
         bool io_reserve_fastpath;
         spinlock_t move_lock;
         struct list_head io_reserve_lru;
-        struct list_head lru[TTM_MAX_BO_PRIORITY];
+        struct list_head lru;
         struct dma_fence *move;
     }
 
@@ -371,7 +371,7 @@ Definition
         struct mutex device_list_mutex;
         spinlock_t lru_lock;
         struct list_head device_list;
-        struct list_head swap_lru[TTM_MAX_BO_PRIORITY];
+        struct list_head swap_lru;
         atomic_t bo_count;
     }
 
@@ -429,7 +429,7 @@ Definition
         struct list_head device_list;
         struct ttm_bo_global *glob;
         struct ttm_bo_driver *driver;
-        struct ttm_mem_type_manager man[TTM_NUM_MEM_TYPES];
+        struct ttm_mem_type_manager man;
         struct drm_vma_offset_manager vma_manager;
         struct list_head ddestroy;
         struct address_space *dev_mapping;

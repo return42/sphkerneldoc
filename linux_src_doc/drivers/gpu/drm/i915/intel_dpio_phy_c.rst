@@ -22,7 +22,7 @@ Definition
         enum dpio_phy rcomp_phy;
         int reset_delay;
         u32 pwron_mask;
-        struct channel[2];
+        struct channel;
     }
 
 .. _`bxt_ddi_phy_info.members`:

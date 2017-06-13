@@ -20,7 +20,7 @@ Definition
     struct ath_dyn_rxbuf {
         u16 h_rb;
         u16 t_rb;
-        u32 tstamp[ATH_DYN_BUF];
+        u32 tstamp;
     }
 
 .. _`ath_dyn_rxbuf.members`:
@@ -56,8 +56,8 @@ Definition
     struct ath_dyn_txbuf {
         u16 h_rb;
         u16 t_rb;
-        struct haddr_pair addr[ATH_DYN_BUF];
-        struct ts_info ts[ATH_DYN_BUF];
+        struct haddr_pair addr;
+        struct ts_info ts;
     }
 
 .. _`ath_dyn_txbuf.members`:

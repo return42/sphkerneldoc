@@ -208,12 +208,12 @@ Definition
         u32 rss_context;
         __be16 outer_vid;
         __be16 inner_vid;
-        u8 loc_mac[ETH_ALEN];
-        u8 rem_mac[ETH_ALEN];
+        u8 loc_mac;
+        u8 rem_mac;
         __be16 ether_type;
         u8 ip_proto;
-        __be32 loc_host[4];
-        __be32 rem_host[4];
+        __be32 loc_host;
+        __be32 rem_host;
         __be16 loc_port;
         __be16 rem_port;
     }

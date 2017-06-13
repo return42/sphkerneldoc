@@ -22,8 +22,8 @@ Definition
         void __iomem *base;
         struct clk *clk_in1;
         struct clk *axi_clk;
-        struct clk  *clks_internal[wzrd_clk_int_max];
-        struct clk  *clkout[WZRD_NUM_OUTPUTS];
+        struct clk  *clks_internal;
+        struct clk  *clkout;
         unsigned int speed_grade;
         bool suspended;
     }

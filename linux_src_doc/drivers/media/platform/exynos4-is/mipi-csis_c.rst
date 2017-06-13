@@ -19,14 +19,14 @@ Definition
 
     struct csis_state {
         struct mutex lock;
-        struct media_pad pads[CSIS_PADS_NUM];
+        struct media_pad pads;
         struct v4l2_subdev sd;
         u8 index;
         struct platform_device *pdev;
         struct phy *phy;
         void __iomem *regs;
-        struct regulator_bulk_data supplies[CSIS_NUM_SUPPLIES];
-        struct clk  *clock[NUM_CSIS_CLOCKS];
+        struct regulator_bulk_data supplies;
+        struct clk  *clock;
         int irq;
         u32 interrupt_mask;
         u32 flags;
@@ -39,7 +39,7 @@ Definition
         struct v4l2_mbus_framefmt format;
         spinlock_t slock;
         struct csis_pktbuf pkt_buf;
-        struct s5pcsis_event events[S5PCSIS_NUM_EVENTS];
+        struct s5pcsis_event events;
     }
 
 .. _`csis_state.members`:

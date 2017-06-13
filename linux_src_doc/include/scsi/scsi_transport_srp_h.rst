@@ -60,7 +60,7 @@ Definition
 
     struct srp_rport {
         struct device dev;
-        u8 port_id[16];
+        u8 port_id;
         u8 roles;
         void *lld_data;
         struct mutex mutex;

@@ -6,7 +6,7 @@
 t4_set_hw_addr
 ==============
 
-.. c:function:: void t4_set_hw_addr(struct adapter *adapter, int port_idx, u8 hw_addr[])
+.. c:function:: void t4_set_hw_addr(struct adapter *adapter, int port_idx, u8 hw_addr)
 
     store a port's MAC address in SW
 

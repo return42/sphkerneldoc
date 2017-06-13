@@ -29,8 +29,8 @@ Definition
         __le16 i_mode;
         __le16 i_links_count;
         __le32 i_flags;
-        __le64 i_bmap[NILFS_INODE_BMAP_SIZE];
-    #define i_device_code i_bmap[0]
+        __le64 i_bmap;
+    #define i_device_code i_bmap
         __le64 i_xattr;
         __le32 i_generation;
         __le32 i_pad;
@@ -189,14 +189,14 @@ Definition
         __le16 s_dat_entry_size;
         __le16 s_checkpoint_size;
         __le16 s_segment_usage_size;
-        __u8 s_uuid[16];
-        char s_volume_name[80];
+        __u8 s_uuid;
+        char s_volume_name;
         __le32 s_c_interval;
         __le32 s_c_block_max;
         __le64 s_feature_compat;
         __le64 s_feature_compat_ro;
         __le64 s_feature_incompat;
-        __u32 s_reserved[186];
+        __u32 s_reserved;
     }
 
 .. _`nilfs_super_block.members`:
@@ -306,6 +306,12 @@ s_checkpoint_size
 s_segment_usage_size
     *undescribed*
 
+s_uuid
+    *undescribed*
+
+s_volume_name
+    *undescribed*
+
 s_c_interval
     *undescribed*
 
@@ -319,6 +325,9 @@ s_feature_compat_ro
     *undescribed*
 
 s_feature_incompat
+    *undescribed*
+
+s_reserved
     *undescribed*
 
 .. _`nilfs_finfo`:
@@ -412,7 +421,7 @@ Definition
     struct nilfs_binfo_dat {
         __le64 bi_blkoff;
         __u8 bi_level;
-        __u8 bi_pad[7];
+        __u8 bi_pad;
     }
 
 .. _`nilfs_binfo_dat.members`:
@@ -595,7 +604,7 @@ Definition
 
     struct nilfs_direct_node {
         __u8 dn_flags;
-        __u8 pad[7];
+        __u8 pad;
     }
 
 .. _`nilfs_direct_node.members`:
@@ -605,6 +614,9 @@ Members
 
 dn_flags
     flags
+
+pad
+    *undescribed*
 
 .. _`nilfs_palloc_group_desc`:
 

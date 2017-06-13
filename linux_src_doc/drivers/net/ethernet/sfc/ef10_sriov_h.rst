@@ -22,7 +22,7 @@ Definition
         struct pci_dev *pci_dev;
         unsigned int vport_id;
         unsigned int vport_assigned;
-        u8 mac[ETH_ALEN];
+        u8 mac;
         u16 vlan;
     #define EFX_EF10_NO_VLAN 0
     }

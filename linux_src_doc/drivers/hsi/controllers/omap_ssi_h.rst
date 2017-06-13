@@ -68,8 +68,8 @@ Definition
         spinlock_t wk_lock;
         spinlock_t lock;
         unsigned int channels;
-        struct list_head txqueue[SSI_MAX_CHANNELS];
-        struct list_head rxqueue[SSI_MAX_CHANNELS];
+        struct list_head txqueue;
+        struct list_head rxqueue;
         struct list_head brkqueue;
         struct list_head errqueue;
         struct delayed_work errqueue_work;
@@ -231,7 +231,7 @@ Definition
         struct clk *fck;
         unsigned int gdd_irq;
         struct tasklet_struct gdd_tasklet;
-        struct gdd_trn gdd_trn[SSI_MAX_GDD_LCH];
+        struct gdd_trn gdd_trn;
         spinlock_t lock;
         struct notifier_block fck_nb;
         unsigned long fck_rate;

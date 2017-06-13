@@ -29,9 +29,9 @@ Definition
         unsigned int next_div;
         unsigned int next_div1;
         unsigned int next_div2;
-        unsigned int clock_src[3];
-        unsigned int gate_src[3];
-        bool busy[3];
+        unsigned int clock_src;
+        unsigned int gate_src;
+        bool busy;
         int (*insn_config)(struct comedi_device *dev,struct comedi_subdevice *s,struct comedi_insn *insn, unsigned int *data);
     }
 
@@ -75,6 +75,12 @@ next_div2
     next divisor to use for second cascaded counter
     \ ``clock_src``\ ;          current clock source for each counter (driver specific)
     \ ``gate_src``\ ;           current gate source  for each counter (driver specific)
+
+clock_src
+    *undescribed*
+
+gate_src
+    *undescribed*
 
 busy
     flags used to indicate that a counter is "busy"

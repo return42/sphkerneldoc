@@ -79,7 +79,7 @@ Definition
         struct device dev;
         int id;
         int num_resources;
-        struct resource res[0];
+        struct resource res;
     }
 
 .. _`dev_dax.members`:
@@ -100,6 +100,9 @@ id
     *undescribed*
 
 num_resources
+    *undescribed*
+
+res
     *undescribed*
 
 .. This file was automatic generated / don't edit.

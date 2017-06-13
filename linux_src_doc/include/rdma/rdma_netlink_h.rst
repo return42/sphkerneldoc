@@ -6,7 +6,7 @@
 ibnl_add_client
 ===============
 
-.. c:function:: int ibnl_add_client(int index, int nops, const struct ibnl_client_cbs cb_table[])
+.. c:function:: int ibnl_add_client(int index, int nops, const struct ibnl_client_cbs cb_table)
 
     :param int index:
         Index of the added client

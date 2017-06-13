@@ -80,8 +80,8 @@ Definition
     struct vdec_vp8_vsi {
         struct vdec_vp8_dec_info dec;
         struct vdec_pic_info pic;
-        uint32_t dec_table[VP8_DEC_TABLE_SZ];
-        uint32_t segment_buf[VP8_HW_SEGMENT_DATA_SZ][VP8_HW_SEGMENT_UINT];
+        uint32_t dec_table;
+        uint32_t segment_buf;
         uint32_t load_data;
     }
 
@@ -215,7 +215,7 @@ Definition
 
     struct vdec_vp8_inst {
         struct vdec_fb *cur_fb;
-        struct vdec_fb_node dec_fb[VP8_MAX_FRM_BUF_NODE_NUM];
+        struct vdec_fb_node dec_fb;
         struct list_head available_fb_node_list;
         struct list_head fb_use_list;
         struct list_head fb_free_list;

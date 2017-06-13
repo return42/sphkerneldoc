@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct mic_intr_info {
-        u16 intr_start_idx[MIC_NUM_INTR_TYPES];
-        u16 intr_len[MIC_NUM_INTR_TYPES];
+        u16 intr_start_idx;
+        u16 intr_len;
     }
 
 .. _`mic_intr_info.members`:

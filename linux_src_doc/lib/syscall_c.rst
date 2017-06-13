@@ -6,7 +6,7 @@
 task_current_syscall
 ====================
 
-.. c:function:: int task_current_syscall(struct task_struct *target, long *callno, unsigned long args[6], unsigned int maxargs, unsigned long *sp, unsigned long *pc)
+.. c:function:: int task_current_syscall(struct task_struct *target, long *callno, unsigned long args, unsigned int maxargs, unsigned long *sp, unsigned long *pc)
 
     Discover what a blocked task is doing.
 

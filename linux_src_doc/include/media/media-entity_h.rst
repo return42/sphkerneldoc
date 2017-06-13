@@ -138,7 +138,7 @@ Definition
 .. code-block:: c
 
     struct media_graph {
-        struct stack[MEDIA_ENTITY_ENUM_MAX_DEPTH];
+        struct stack;
         struct media_entity_enum ent_enum;
         int top;
     }

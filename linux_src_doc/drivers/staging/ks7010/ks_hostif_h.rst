@@ -158,7 +158,7 @@ Definition
     #define AUTH_TYPE_SHARED_KEY 1
         struct channel_list_t channel_list;
         u16 scan_type;
-        u8 bssid[ETH_ALEN];
+        u8 bssid;
     }
 
 .. _`hostif_infrastructure_set2_request_t.members`:
@@ -197,6 +197,9 @@ channel_list
     *undescribed*
 
 scan_type
+    *undescribed*
+
+bssid
     *undescribed*
 
 .. _`hostif_adhoc_set_request_t`:
@@ -282,7 +285,7 @@ Definition
         u16 capability;
         u16 scan_type;
         struct channel_list_t channel_list;
-        u8 bssid[ETH_ALEN];
+        u8 bssid;
     }
 
 .. _`hostif_adhoc_set2_request_t.members`:
@@ -318,6 +321,9 @@ scan_type
     *undescribed*
 
 channel_list
+    *undescribed*
+
+bssid
     *undescribed*
 
 .. This file was automatic generated / don't edit.

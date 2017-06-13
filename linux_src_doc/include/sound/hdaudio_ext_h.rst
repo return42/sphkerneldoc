@@ -20,7 +20,7 @@ Definition
     struct hdac_ext_device {
         struct hdac_device hdac;
         struct hdac_ext_bus *ebus;
-        struct hda_dai_map nid_list[HDA_MAX_NIDS];
+        struct hda_dai_map nid_list;
         unsigned int map_cur_idx;
         struct hdac_ext_codec_ops ops;
         struct snd_card *card;
@@ -41,6 +41,9 @@ hdac
     \ ``pvt_data``\  - private data, for asoc contains asoc codec object
 
 ebus
+    *undescribed*
+
+nid_list
     *undescribed*
 
 map_cur_idx

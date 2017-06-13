@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct hdm_channel {
-        char name[sizeof "caNNN"];
+        char name;
         bool is_initialized;
         struct dim_channel ch;
         struct list_head pending_list;
@@ -31,6 +31,9 @@ Definition
 
 Members
 -------
+
+name
+    *undescribed*
 
 is_initialized
     identifier to know whether the channel is initialized
@@ -67,16 +70,16 @@ Definition
 .. code-block:: c
 
     struct dim2_hdm {
-        struct hdm_channel hch[DMA_CHANNELS];
-        struct most_channel_capability capabilities[DMA_CHANNELS];
+        struct hdm_channel hch;
+        struct most_channel_capability capabilities;
         struct most_interface most_iface;
-        char name[16 + sizeof "dim2-"];
+        char name;
         void __iomem *io_base;
         int clk_speed;
         struct task_struct *netinfo_task;
         wait_queue_head_t netinfo_waitq;
         int deliver_netinfo;
-        unsigned char mac_addrs[6];
+        unsigned char mac_addrs;
         unsigned char link_state;
         int atx_idx;
         struct medialb_bus bus;
@@ -95,6 +98,9 @@ capabilities
 
 most_iface
     most interface structure
+
+name
+    *undescribed*
 
 io_base
     I/O register base address

@@ -55,7 +55,7 @@ Definition
 
     struct ports_bmp {
         u64 status;
-        u64 unused[3];
+        u64 unused;
     }
 
 .. _`ports_bmp.members`:
@@ -64,6 +64,9 @@ Members
 -------
 
 status
+    *undescribed*
+
+unused
     *undescribed*
 
 .. _`ports_bmp.description`:
@@ -188,7 +191,7 @@ Definition
         const unsigned char *head;
         const unsigned char *tail;
         unsigned long dbg_number;
-        unsigned char data[];
+        unsigned char data;
     }
 
 .. _`list_buffer.members`:
@@ -206,6 +209,9 @@ tail
     *undescribed*
 
 dbg_number
+    *undescribed*
+
+data
     *undescribed*
 
 .. _`ps3_vuart_write`:

@@ -20,7 +20,7 @@ Definition
     struct p9_rdir {
         int head;
         int tail;
-        uint8_t buf[];
+        uint8_t buf;
     }
 
 .. _`p9_rdir.members`:

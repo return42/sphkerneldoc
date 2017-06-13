@@ -20,7 +20,7 @@ Definition
     struct iwl_ssid_ie {
         u8 id;
         u8 len;
-        u8 ssid[IEEE80211_MAX_SSID_LEN];
+        u8 ssid;
     }
 
 .. _`iwl_ssid_ie.members`:
@@ -32,6 +32,9 @@ id
     *undescribed*
 
 len
+    *undescribed*
+
+ssid
     *undescribed*
 
 .. _`iwl_ssid_ie.description`:
@@ -111,7 +114,7 @@ Definition
         u8 last_channel;
         __le32 tsf_low;
         __le32 tsf_high;
-        struct iwl_scan_results_notif results[];
+        struct iwl_scan_results_notif results;
     }
 
 .. _`iwl_lmac_scan_complete_notif.members`:
@@ -202,10 +205,10 @@ Definition
         __le32 out_of_channel_time;
         __le32 suspend_time;
         struct iwl_scan_dwell dwell;
-        u8 mac_addr[ETH_ALEN];
+        u8 mac_addr;
         u8 bcast_sta_id;
         u8 channel_flags;
-        u8 channel_array[];
+        u8 channel_array;
     }
 
 .. _`iwl_scan_config_v1.members`:
@@ -338,11 +341,11 @@ Definition
 .. code-block:: c
 
     struct iwl_scan_req_umac_tail {
-        struct iwl_scan_umac_schedule schedule[IWL_MAX_SCHED_SCAN_PLANS];
+        struct iwl_scan_umac_schedule schedule;
         __le16 delay;
         __le16 reserved;
         struct iwl_scan_probe_req preq;
-        struct iwl_ssid_ie direct_scan[PROBE_OPTION_MAX];
+        struct iwl_ssid_ie direct_scan;
     }
 
 .. _`iwl_scan_req_umac_tail.members`:
@@ -532,12 +535,12 @@ Definition
 .. code-block:: c
 
     struct iwl_scan_offload_profile_match {
-        u8 bssid[ETH_ALEN];
+        u8 bssid;
         __le16 reserved;
         u8 channel;
         u8 energy;
         u8 matching_feature;
-        u8 matching_channels[SCAN_OFFLOAD_MATCHING_CHANNELS_LEN];
+        u8 matching_channels;
     }
 
 .. _`iwl_scan_offload_profile_match.members`:
@@ -589,7 +592,7 @@ Definition
         u8 resume_while_scanning;
         u8 self_recovery;
         __le16 reserved;
-        struct iwl_scan_offload_profile_match matches[IWL_SCAN_MAX_PROFILES];
+        struct iwl_scan_offload_profile_match matches;
     }
 
 .. _`iwl_scan_offload_profiles_query.members`:
@@ -648,7 +651,7 @@ Definition
         u8 bt_status;
         u8 last_channel;
         __le64 start_tsf;
-        struct iwl_scan_results_notif results[];
+        struct iwl_scan_results_notif results;
     }
 
 .. _`iwl_umac_scan_iter_complete_notif.members`:

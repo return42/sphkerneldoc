@@ -141,7 +141,7 @@ Definition
         enum dpkg_extract_type type;
         union extract;
         u8 num_of_byte_masks;
-        struct dpkg_mask masks[DPKG_NUM_OF_MASKS];
+        struct dpkg_mask masks;
     }
 
 .. _`dpkg_extract.members`:
@@ -183,7 +183,7 @@ Definition
 
     struct dpkg_profile_cfg {
         u8 num_extracts;
-        struct dpkg_extract extracts[DPKG_MAX_NUM_OF_EXTRACTS];
+        struct dpkg_extract extracts;
     }
 
 .. _`dpkg_profile_cfg.members`:

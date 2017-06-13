@@ -101,7 +101,7 @@ Return 1 if all extents in range has expected type, and zero otherwise.
 mext_page_double_lock
 =====================
 
-.. c:function:: int mext_page_double_lock(struct inode *inode1, struct inode *inode2, pgoff_t index1, pgoff_t index2, struct page  *page[2])
+.. c:function:: int mext_page_double_lock(struct inode *inode1, struct inode *inode2, pgoff_t index1, pgoff_t index2, struct page  *page)
 
     Grab and lock pages on both \ ``inode1``\  and \ ``inode2``\ 
 

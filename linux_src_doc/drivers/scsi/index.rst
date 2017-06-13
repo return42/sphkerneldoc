@@ -50,6 +50,7 @@ scsi
     iscsi_tcp_c
     libiscsi_c
     libiscsi_tcp_c
+    megaraid_c
     mvumi_c
     pmcraid_c
     scsi_c

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct s3c64xx_spi_port_config {
-        int fifo_lvl_mask[MAX_SPI_PORTS];
+        int fifo_lvl_mask;
         int rx_lvl_offset;
         int tx_st_done;
         int quirks;

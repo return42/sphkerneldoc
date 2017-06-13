@@ -73,7 +73,7 @@ Definition
 
     union mips_vdso_data {
         struct {unnamed_struct};
-        u8 page[PAGE_SIZE];
+        u8 page;
     }
 
 .. _`mips_vdso_data.members`:
@@ -84,6 +84,9 @@ Members
 {unnamed_struct}
     anonymous
 
+
+page
+    *undescribed*
 
 .. _`mips_vdso_data.description`:
 

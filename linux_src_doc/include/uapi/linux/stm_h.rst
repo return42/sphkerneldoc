@@ -24,7 +24,7 @@ Definition
         __u16 width;
         __u16 __reserved_0;
         __u32 __reserved_1;
-        char id[0];
+        char id;
     }
 
 .. _`stp_policy_id.members`:

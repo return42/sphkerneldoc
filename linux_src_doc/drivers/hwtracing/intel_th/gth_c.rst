@@ -22,7 +22,7 @@ Definition
         struct intel_th_output *output;
         unsigned int index;
         unsigned int port_type;
-        unsigned long master[BITS_TO_LONGS(TH_CONFIGURABLE_MASTERS + 1)];
+        unsigned long master;
     }
 
 .. _`gth_output.members`:
@@ -66,8 +66,8 @@ Definition
         void __iomem *base;
         struct attribute_group output_group;
         struct attribute_group master_group;
-        struct gth_output output[TH_POSSIBLE_OUTPUTS];
-        signed char master[TH_CONFIGURABLE_MASTERS + 1];
+        struct gth_output output;
+        signed char master;
         spinlock_t gth_lock;
     }
 

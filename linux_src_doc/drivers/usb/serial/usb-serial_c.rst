@@ -80,7 +80,7 @@ Called asynchronously after the last tty kref is dropped.
 usb_serial_register_drivers
 ===========================
 
-.. c:function:: int usb_serial_register_drivers(struct usb_serial_driver *const serial_drivers[], const char *name, const struct usb_device_id *id_table)
+.. c:function:: int usb_serial_register_drivers(struct usb_serial_driver *const serial_drivers, const char *name, const struct usb_device_id *id_table)
 
     register drivers for a usb-serial module
 
@@ -106,7 +106,7 @@ creates a struct usb_driver with the name \ ``name``\  and id_table of \ ``id_ta
 usb_serial_deregister_drivers
 =============================
 
-.. c:function:: void usb_serial_deregister_drivers(struct usb_serial_driver *const serial_drivers[])
+.. c:function:: void usb_serial_deregister_drivers(struct usb_serial_driver *const serial_drivers)
 
     deregister drivers for a usb-serial module
 

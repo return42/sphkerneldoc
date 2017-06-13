@@ -160,7 +160,7 @@ Definition
         void *active_req;
         unsigned msg_count;
         unsigned msg_free;
-        void  *msg_data[MBOX_TX_QUEUE_LEN];
+        void  *msg_data;
         spinlock_t lock;
         void *con_priv;
     }

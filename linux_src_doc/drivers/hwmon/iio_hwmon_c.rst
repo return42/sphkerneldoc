@@ -22,7 +22,7 @@ Definition
         int num_channels;
         struct device *hwmon_dev;
         struct attribute_group attr_group;
-        const struct attribute_group  *groups[2];
+        const struct attribute_group  *groups;
         struct attribute **attrs;
     }
 
@@ -42,6 +42,9 @@ hwmon_dev
 
 attr_group
     the group of attributes
+
+groups
+    *undescribed*
 
 attrs
     null terminated array of attribute pointers.

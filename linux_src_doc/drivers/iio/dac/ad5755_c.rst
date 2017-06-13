@@ -57,9 +57,9 @@ Definition
         struct spi_device *spi;
         const struct ad5755_chip_info *chip_info;
         unsigned int pwr_down;
-        unsigned int ctrl[AD5755_NUM_CHANNELS];
-        struct iio_chan_spec channels[AD5755_NUM_CHANNELS];
-        union data[2] ____cacheline_aligned;
+        unsigned int ctrl;
+        struct iio_chan_spec channels;
+        union data;
     }
 
 .. _`ad5755_state.members`:

@@ -179,7 +179,7 @@ Definition
     struct falcon_nic_data {
         struct pci_dev *pci_dev2;
         struct falcon_board board;
-        u64 stats[FALCON_STAT_COUNT];
+        u64 stats;
         unsigned int stats_disable_count;
         bool stats_pending;
         struct timer_list stats_timer;

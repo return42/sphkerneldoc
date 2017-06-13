@@ -19,8 +19,8 @@ Definition
 
     struct s3c24xx_eint_data {
         struct samsung_pinctrl_drv_data *drvdata;
-        struct irq_domain  *domains[NUM_EINT];
-        int parents[NUM_EINT_IRQ];
+        struct irq_domain  *domains;
+        int parents;
     }
 
 .. _`s3c24xx_eint_data.members`:

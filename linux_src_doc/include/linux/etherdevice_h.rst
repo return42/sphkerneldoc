@@ -321,7 +321,7 @@ Please note: addr1 & addr2 must both be aligned to u16.
 ether_addr_equal_64bits
 =======================
 
-.. c:function:: bool ether_addr_equal_64bits(const u8 addr1[6+2], const u8 addr2[6+2])
+.. c:function:: bool ether_addr_equal_64bits(const u8 addr1, const u8 addr2)
 
     Compare two Ethernet addresses
 
@@ -446,7 +446,7 @@ eth_addr_dec
 is_etherdev_addr
 ================
 
-.. c:function:: bool is_etherdev_addr(const struct net_device *dev, const u8 addr[6 + 2])
+.. c:function:: bool is_etherdev_addr(const struct net_device *dev, const u8 addr)
 
     Tell if given Ethernet address belongs to the device.
 

@@ -117,9 +117,9 @@ Definition
 .. code-block:: c
 
     struct dmx_section_filter {
-        u8 filter_value[DMX_MAX_FILTER_SIZE];
-        u8 filter_mask[DMX_MAX_FILTER_SIZE];
-        u8 filter_mode[DMX_MAX_FILTER_SIZE];
+        u8 filter_value;
+        u8 filter_mask;
+        u8 filter_mode;
         struct dmx_section_feed *parent;
         void *priv;
     }

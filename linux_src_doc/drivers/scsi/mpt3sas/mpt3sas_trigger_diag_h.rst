@@ -58,7 +58,7 @@ Definition
 
     struct SL_WH_EVENT_TRIGGERS_T {
         uint32_t ValidEntries;
-        struct SL_WH_EVENT_TRIGGER_T EventTriggerEntry[NUM_VALID_ENTRIES];
+        struct SL_WH_EVENT_TRIGGER_T EventTriggerEntry;
     }
 
 .. _`sl_wh_event_triggers_t.members`:
@@ -148,7 +148,7 @@ Definition
 
     struct SL_WH_SCSI_TRIGGERS_T {
         uint32_t ValidEntries;
-        struct SL_WH_SCSI_TRIGGER_T SCSITriggerEntry[NUM_VALID_ENTRIES];
+        struct SL_WH_SCSI_TRIGGER_T SCSITriggerEntry;
     }
 
 .. _`sl_wh_scsi_triggers_t.members`:
@@ -233,7 +233,7 @@ Definition
 
     struct SL_WH_MPI_TRIGGERS_T {
         uint32_t ValidEntries;
-        struct SL_WH_MPI_TRIGGER_T MPITriggerEntry[NUM_VALID_ENTRIES];
+        struct SL_WH_MPI_TRIGGER_T MPITriggerEntry;
     }
 
 .. _`sl_wh_mpi_triggers_t.members`:

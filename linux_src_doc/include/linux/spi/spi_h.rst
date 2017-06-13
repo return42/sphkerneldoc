@@ -30,7 +30,7 @@ Definition
         unsigned long long bytes_rx;
         unsigned long long bytes_tx;
     #define SPI_STATISTICS_HISTO_SIZE 17
-        unsigned long transfer_bytes_histo[SPI_STATISTICS_HISTO_SIZE];
+        unsigned long transfer_bytes_histo;
         unsigned long transfers_split_maxsize;
     }
 
@@ -105,10 +105,10 @@ Definition
         u16 mode;
     #define SPI_CPHA 0x01
     #define SPI_CPOL 0x02
-    #define SPI_MODE_0 (0|0)
-    #define SPI_MODE_1 (0|SPI_CPHA)
-    #define SPI_MODE_2 (SPI_CPOL|0)
-    #define SPI_MODE_3 (SPI_CPOL|SPI_CPHA)
+    #define SPI_MODE_0 0|0
+    #define SPI_MODE_1 0|SPI_CPHA
+    #define SPI_MODE_2 SPI_CPOL|0
+    #define SPI_MODE_3 SPI_CPOL|SPI_CPHA
     #define SPI_CS_HIGH 0x04
     #define SPI_LSB_FIRST 0x08
     #define SPI_3WIRE 0x10
@@ -122,7 +122,7 @@ Definition
         int irq;
         void *controller_state;
         void *controller_data;
-        char modalias[SPI_NAME_SIZE];
+        char modalias;
         int cs_gpio;
         struct spi_statistics statistics;
     }
@@ -328,18 +328,18 @@ Definition
         u16 dma_alignment;
         u16 mode_bits;
         u32 bits_per_word_mask;
-    #define SPI_BPW_MASK(bits) BIT((bits) - 1)
-    #define SPI_BIT_MASK(bits) (((bits) == 32) ? ~0U : (BIT(bits) - 1))
-    #define SPI_BPW_RANGE_MASK(min# max) (SPI_BIT_MASK(max) - SPI_BIT_MASK(min - 1))
+    #define SPI_BPW_MASKbits BITbits - 1
+    #define SPI_BIT_MASKbits bits == 32 ? ~0U : BITbits - 1
+    #define SPI_BPW_RANGE_MASKmin# max SPI_BIT_MASKmax - SPI_BIT_MASKmin - 1
         u32 min_speed_hz;
         u32 max_speed_hz;
         u16 flags;
-    #define SPI_MASTER_HALF_DUPLEX BIT(0)
-    #define SPI_MASTER_NO_RX BIT(1)
-    #define SPI_MASTER_NO_TX BIT(2)
-    #define SPI_MASTER_MUST_RX BIT(3)
-    #define SPI_MASTER_MUST_TX BIT(4)
-    #define SPI_MASTER_GPIO_SS BIT(5)
+    #define SPI_MASTER_HALF_DUPLEX BIT0
+    #define SPI_MASTER_NO_RX BIT1
+    #define SPI_MASTER_NO_TX BIT2
+    #define SPI_MASTER_MUST_RX BIT3
+    #define SPI_MASTER_MUST_TX BIT4
+    #define SPI_MASTER_GPIO_SS BIT5
         size_t (*max_transfer_size)(struct spi_device *spi);
         size_t (*max_message_size)(struct spi_device *spi);
         struct mutex io_mutex;
@@ -631,7 +631,7 @@ Definition
     struct spi_res {
         struct list_head entry;
         spi_res_release_t release;
-        unsigned long long data[];
+        unsigned long long data;
     }
 
 .. _`spi_res.members`:
@@ -941,7 +941,7 @@ Definition
         struct list_head replaced_transfers;
         struct list_head *replaced_after;
         size_t inserted;
-        struct spi_transfer inserted_transfers[];
+        struct spi_transfer inserted_transfers;
     }
 
 .. _`spi_replaced_transfers.members`:
@@ -1307,7 +1307,7 @@ Definition
 .. code-block:: c
 
     struct spi_board_info {
-        char modalias[SPI_NAME_SIZE];
+        char modalias;
         const void *platform_data;
         const struct property_entry *properties;
         void *controller_data;

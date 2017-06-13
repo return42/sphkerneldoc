@@ -412,7 +412,7 @@ Definition
 
     struct efx_rx_page_state {
         dma_addr_t dma_addr;
-        unsigned int __pad[0] ____cacheline_aligned;
+        unsigned int __pad;
     }
 
 .. _`efx_rx_page_state.members`:
@@ -422,6 +422,9 @@ Members
 
 dma_addr
     The dma address of this page.
+
+__pad
+    *undescribed*
 
 .. _`efx_rx_page_state.description`:
 
@@ -629,7 +632,7 @@ Definition
         unsigned int rx_pkt_n_frags;
         unsigned int rx_pkt_index;
         struct efx_rx_queue rx_queue;
-        struct efx_tx_queue tx_queue[EFX_TXQ_TYPES];
+        struct efx_tx_queue tx_queue;
         enum efx_sync_events_state sync_events_state;
         u32 sync_timestamp_major;
         u32 sync_timestamp_minor;
@@ -792,7 +795,7 @@ Definition
     struct efx_msi_context {
         struct efx_nic *efx;
         unsigned int index;
-        char name[IFNAMSIZ + 6];
+        char name;
     }
 
 .. _`efx_msi_context.members`:
@@ -1094,7 +1097,7 @@ Definition
 .. code-block:: c
 
     struct efx_nic {
-        char name[IFNAMSIZ];
+        char name;
         struct list_head node;
         struct efx_nic *primary;
         struct list_head secondary_list;
@@ -1104,7 +1107,7 @@ Definition
         int legacy_irq;
         bool eeh_disabled_legacy_irq;
         struct workqueue_struct *workqueue;
-        char workqueue_name[16];
+        char workqueue_name;
         struct work_struct reset_work;
         resource_size_t membase_phys;
         void __iomem *membase;
@@ -1117,9 +1120,9 @@ Definition
         u32 msg_enable;
         enum nic_state state;
         unsigned long reset_pending;
-        struct efx_channel  *channel[EFX_MAX_CHANNELS];
-        struct efx_msi_context msi_context[EFX_MAX_CHANNELS];
-        const struct efx_channel_type  *extra_channel_type[EFX_MAX_EXTRA_CHANNELS];
+        struct efx_channel  *channel;
+        struct efx_msi_context msi_context;
+        const struct efx_channel_type  *extra_channel_type;
         unsigned rxq_entries;
         unsigned txq_entries;
         unsigned int txq_stop_thresh;
@@ -1146,8 +1149,8 @@ Definition
         int rx_packet_hash_offset;
         int rx_packet_len_offset;
         int rx_packet_ts_offset;
-        u8 rx_hash_key[40];
-        u32 rx_indir_table[128];
+        u8 rx_hash_key;
+        u32 rx_indir_table;
         bool rx_scatter;
         bool rss_active;
         bool rx_hash_udp_4tuple;
@@ -1300,6 +1303,9 @@ channel
 
 msi_context
     Context for each MSI
+
+extra_channel_type
+    *undescribed*
 
 rxq_entries
     Size of receive queues requested by user.

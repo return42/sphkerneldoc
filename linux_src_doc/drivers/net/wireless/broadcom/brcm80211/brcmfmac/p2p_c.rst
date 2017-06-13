@@ -91,7 +91,7 @@ Definition
 
     struct brcmf_p2p_scan_le {
         u8 type;
-        u8 reserved[3];
+        u8 reserved;
         union {unnamed_union};
     }
 
@@ -129,11 +129,11 @@ Definition
     struct brcmf_p2p_pub_act_frame {
         u8 category;
         u8 action;
-        u8 oui[3];
+        u8 oui;
         u8 oui_type;
         u8 subtype;
         u8 dialog_token;
-        u8 elts[1];
+        u8 elts;
     }
 
 .. _`brcmf_p2p_pub_act_frame.members`:
@@ -180,11 +180,11 @@ Definition
 
     struct brcmf_p2p_action_frame {
         u8 category;
-        u8 oui[3];
+        u8 oui;
         u8 type;
         u8 subtype;
         u8 dialog_token;
-        u8 elts[1];
+        u8 elts;
     }
 
 .. _`brcmf_p2p_action_frame.members`:
@@ -194,6 +194,9 @@ Members
 
 category
     P2P_AF_CATEGORY
+
+oui
+    *undescribed*
 
 type
     OUI Type - P2P_VER
@@ -227,7 +230,7 @@ Definition
         u8 category;
         u8 action;
         u8 dialog_token;
-        u8 query_data[1];
+        u8 query_data;
     }
 
 .. _`brcmf_p2psd_gas_pub_act_frame.members`:
@@ -505,7 +508,7 @@ Initializes the discovery device and configure the virtual interface.
 brcmf_p2p_escan
 ===============
 
-.. c:function:: s32 brcmf_p2p_escan(struct brcmf_p2p_info *p2p, u32 num_chans, u16 chanspecs[], s32 search_state, enum p2p_bss_type bss_type)
+.. c:function:: s32 brcmf_p2p_escan(struct brcmf_p2p_info *p2p, u32 num_chans, u16 chanspecs, s32 search_state, enum p2p_bss_type bss_type)
 
     initiate a P2P scan.
 

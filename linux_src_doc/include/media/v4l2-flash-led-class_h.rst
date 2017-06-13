@@ -90,7 +90,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_flash_config {
-        char dev_name[32];
+        char dev_name;
         struct led_flash_setting torch_intensity;
         struct led_flash_setting indicator_intensity;
         u32 flash_faults;

@@ -12,3 +12,4 @@ dtc
     fdtput_c
     srcpos_c
     srcpos_h
+    util_h

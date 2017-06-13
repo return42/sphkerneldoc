@@ -91,8 +91,8 @@ Definition
 
     struct mtk_jpeg_fmt {
         u32 fourcc;
-        int h_sample[VIDEO_MAX_PLANES];
-        int v_sample[VIDEO_MAX_PLANES];
+        int h_sample;
+        int v_sample;
         int colplanes;
         int h_align;
         int v_align;

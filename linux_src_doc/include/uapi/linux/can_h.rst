@@ -23,7 +23,7 @@ Definition
         __u8 __pad;
         __u8 __res0;
         __u8 __res1;
-        __u8 data[CAN_MAX_DLEN] __attribute__((aligned(8)));
+        __u8 data;
     }
 
 .. _`can_frame.members`:
@@ -73,7 +73,7 @@ Definition
         __u8 flags;
         __u8 __res0;
         __u8 __res1;
-        __u8 data[CANFD_MAX_DLEN] __attribute__((aligned(8)));
+        __u8 data;
     }
 
 .. _`canfd_frame.members`:

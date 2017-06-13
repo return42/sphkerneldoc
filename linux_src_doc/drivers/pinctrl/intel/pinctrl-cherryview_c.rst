@@ -248,7 +248,7 @@ Definition
         struct pinctrl_dev *pctldev;
         struct gpio_chip chip;
         void __iomem *regs;
-        unsigned intr_lines[16];
+        unsigned intr_lines;
         const struct chv_community *community;
         u32 saved_intmask;
         struct chv_pin_context *saved_pin_context;

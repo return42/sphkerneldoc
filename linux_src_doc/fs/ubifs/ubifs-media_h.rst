@@ -24,7 +24,7 @@ Definition
         __le32 len;
         __u8 node_type;
         __u8 group_type;
-        __u8 padding[2];
+        __u8 padding;
     }
 
 .. _`ubifs_ch.members`:
@@ -120,7 +120,7 @@ Definition
 
     struct ubifs_ino_node {
         struct ubifs_ch ch;
-        __u8 key[UBIFS_MAX_KEY_LEN];
+        __u8 key;
         __le64 creat_sqnum;
         __le64 size;
         __le64 atime_sec;
@@ -137,11 +137,11 @@ Definition
         __le32 data_len;
         __le32 xattr_cnt;
         __le32 xattr_size;
-        __u8 padding1[4];
+        __u8 padding1;
         __le32 xattr_names;
         __le16 compr_type;
-        __u8 padding2[26];
-        __u8 data[];
+        __u8 padding2;
+        __u8 data;
     }
 
 .. _`ubifs_ino_node.members`:
@@ -250,13 +250,13 @@ Definition
 
     struct ubifs_dent_node {
         struct ubifs_ch ch;
-        __u8 key[UBIFS_MAX_KEY_LEN];
+        __u8 key;
         __le64 inum;
         __u8 padding1;
         __u8 type;
         __le16 nlen;
         __le32 cookie;
-        __u8 name[];
+        __u8 name;
     }
 
 .. _`ubifs_dent_node.members`:
@@ -315,11 +315,11 @@ Definition
 
     struct ubifs_data_node {
         struct ubifs_ch ch;
-        __u8 key[UBIFS_MAX_KEY_LEN];
+        __u8 key;
         __le32 size;
         __le16 compr_type;
         __le16 compr_size;
-        __u8 data[];
+        __u8 data;
     }
 
 .. _`ubifs_data_node.members`:
@@ -364,7 +364,7 @@ Definition
     struct ubifs_trun_node {
         struct ubifs_ch ch;
         __le32 inum;
-        __u8 padding[12];
+        __u8 padding;
         __le64 old_size;
         __le64 new_size;
     }
@@ -448,7 +448,7 @@ Definition
 
     struct ubifs_sb_node {
         struct ubifs_ch ch;
-        __u8 padding[2];
+        __u8 padding;
         __u8 key_hash;
         __u8 key_fmt;
         __le32 flags;
@@ -465,14 +465,14 @@ Definition
         __le32 lsave_cnt;
         __le32 fmt_version;
         __le16 default_compr;
-        __u8 padding1[2];
+        __u8 padding1;
         __le32 rp_uid;
         __le32 rp_gid;
         __le64 rp_size;
         __le32 time_gran;
-        __u8 uuid[16];
+        __u8 uuid;
         __le32 ro_compat_version;
-        __u8 padding2[3968];
+        __u8 padding2;
     }
 
 .. _`ubifs_sb_node.members`:
@@ -604,7 +604,7 @@ Definition
         __le32 empty_lebs;
         __le32 idx_lebs;
         __le32 leb_cnt;
-        __u8 padding[344];
+        __u8 padding;
     }
 
 .. _`ubifs_mst_node.members`:
@@ -724,7 +724,7 @@ Definition
         __le32 lnum;
         __le32 offs;
         __le32 jhead;
-        __u8 padding[28];
+        __u8 padding;
     }
 
 .. _`ubifs_ref_node.members`:
@@ -767,7 +767,7 @@ Definition
         __le32 lnum;
         __le32 offs;
         __le32 len;
-        __u8 key[];
+        __u8 key;
     }
 
 .. _`ubifs_branch.members`:
@@ -807,7 +807,7 @@ Definition
         struct ubifs_ch ch;
         __le16 child_cnt;
         __le16 level;
-        __u8 branches[];
+        __u8 branches;
     }
 
 .. _`ubifs_idx_node.members`:
@@ -878,7 +878,7 @@ Definition
     struct ubifs_orph_node {
         struct ubifs_ch ch;
         __le64 cmt_no;
-        __le64 inos[];
+        __le64 inos;
     }
 
 .. _`ubifs_orph_node.members`:

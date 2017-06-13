@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct spi_test {
-        char description[64];
+        char description;
         struct spi_message msg;
-        struct spi_transfer transfers[SPI_TEST_MAX_TRANSFERS];
+        struct spi_transfer transfers;
         unsigned int transfer_count;
         int (*run_test)(struct spi_device *spi, struct spi_test *test,void *tx, void *rx);
         int (*execute_msg)(struct spi_device *spi, struct spi_test *test,void *tx, void *rx);
         int expected_return;
-        int iterate_len[SPI_TEST_MAX_ITERATE];
+        int iterate_len;
         int iterate_tx_align;
         int iterate_rx_align;
         u32 iterate_transfer_mask;

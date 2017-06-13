@@ -26,7 +26,7 @@ Definition
         struct platform_device *pdev;
         wait_queue_head_t cmd_complete;
         u32 num_flashes;
-        struct spear_snor_flash  *flash[MAX_NUM_FLASH_CHIP];
+        struct spear_snor_flash  *flash;
     }
 
 .. _`spear_smi.members`:

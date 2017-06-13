@@ -561,7 +561,7 @@ Rebind context binding points that have been scrubbed because of eviction.
 vmw_view_bindings_add
 =====================
 
-.. c:function:: int vmw_view_bindings_add(struct vmw_sw_context *sw_context, enum vmw_view_type view_type, enum vmw_ctx_binding_type binding_type, uint32 shader_slot, uint32 view_ids[], u32 num_views, u32 first_slot)
+.. c:function:: int vmw_view_bindings_add(struct vmw_sw_context *sw_context, enum vmw_view_type view_type, enum vmw_ctx_binding_type binding_type, uint32 shader_slot, uint32 view_ids, u32 num_views, u32 first_slot)
 
     Add an array of view bindings to a context binding state tracker.
 

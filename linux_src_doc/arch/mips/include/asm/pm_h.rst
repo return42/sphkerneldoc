@@ -19,7 +19,7 @@ Definition
 
     struct mips_static_suspend_state {
     #ifdef CONFIG_EVA
-        unsigned long segctl[3];
+        unsigned long segctl;
     #endif
         unsigned long sp;
     }

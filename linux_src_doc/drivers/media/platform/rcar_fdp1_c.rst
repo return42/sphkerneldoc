@@ -19,7 +19,7 @@ Definition
 
     struct fdp1_fmt {
         u32 fourcc;
-        u8 bpp[3];
+        u8 bpp;
         u8 num_planes;
         u8 hsub;
         u8 vsub;

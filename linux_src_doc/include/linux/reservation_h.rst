@@ -21,7 +21,7 @@ Definition
         struct rcu_head rcu;
         u32 shared_count;
         u32 shared_max;
-        struct dma_fence __rcu  *shared[];
+        struct dma_fence __rcu  *shared;
     }
 
 .. _`reservation_object_list.members`:

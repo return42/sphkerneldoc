@@ -19,7 +19,7 @@ Definition
 
     struct tk_fast {
         seqcount_t seq;
-        struct tk_read_base base[2];
+        struct tk_read_base base;
     }
 
 .. _`tk_fast.members`:

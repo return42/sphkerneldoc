@@ -24,7 +24,7 @@ Definition
         struct clk *ref_clk;
         struct clk *iface_clk;
         struct reset_control *phy_reset;
-        struct regulator_bulk_data vregs[QUSB2_NUM_VREGS];
+        struct regulator_bulk_data vregs;
         struct regmap *tcsr;
         struct nvmem_cell *cell;
         const struct qusb2_phy_cfg *cfg;

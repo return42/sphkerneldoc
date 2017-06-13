@@ -25,7 +25,7 @@ Definition
         u32 dynamic_smps_exit;
         u32 tx_protection_entry;
         u32 tx_protection_exit;
-        struct iwl_tt_tx_backoff tx_backoff[TT_TX_BACKOFF_SIZE];
+        struct iwl_tt_tx_backoff tx_backoff;
         u8 support_ct_kill:1;
         u8 support_dynamic_smps:1:1;
         u8 support_tx_protection:1:1:1;

@@ -73,8 +73,8 @@ Definition
         u32 model;
         u32 revision;
         u32 serial_number;
-        char rev_str[5];
-        u8 MAC_address[ETH_ALEN];
+        char rev_str;
+        u8 MAC_address;
     }
 
 .. _`tveeprom.members`:

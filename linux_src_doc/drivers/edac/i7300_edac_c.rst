@@ -6,7 +6,7 @@
 get_err_from_table
 ==================
 
-.. c:function:: const char *get_err_from_table(const char  *table[], int size, int pos)
+.. c:function:: const char *get_err_from_table(const char  *table, int size, int pos)
 
     Gets the error message from a table
 
@@ -153,7 +153,7 @@ i7300_init_csrows
 decode_mir
 ==========
 
-.. c:function:: void decode_mir(int mir_no, u16 mir[MAX_MIR])
+.. c:function:: void decode_mir(int mir_no, u16 mir)
 
     Decodes Memory Interleave Register (MIR) info
 

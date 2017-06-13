@@ -23,7 +23,7 @@ Definition
         u32 io_width;
         u32 cs1_used;
         u32 cal_resistors_per_cs;
-        char manufacturer[10];
+        char manufacturer;
     }
 
 .. _`ddr_device_info.members`:

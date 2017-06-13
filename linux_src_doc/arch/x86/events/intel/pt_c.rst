@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct topa {
-        struct topa_entry table[TENTS_PER_PAGE];
+        struct topa_entry table;
         struct list_head list;
         u64 phys;
         u64 offset;

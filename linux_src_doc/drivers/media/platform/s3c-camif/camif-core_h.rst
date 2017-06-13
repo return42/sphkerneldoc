@@ -142,7 +142,7 @@ Definition
 .. code-block:: c
 
     struct s3c_camif_variant {
-        struct vp_pix_limits vp_pix_limits[2];
+        struct vp_pix_limits vp_pix_limits;
         struct camif_pix_limits pix_limits;
         u8 ip_revision;
         u8 has_img_effect;
@@ -316,18 +316,18 @@ Definition
         struct v4l2_subdev subdev;
         struct v4l2_mbus_framefmt mbus_fmt;
         struct v4l2_rect camif_crop;
-        struct media_pad pads[CAMIF_SD_PADS_NUM];
+        struct media_pad pads;
         int stream_count;
         struct cam_sensor;
         u8 test_pattern;
         u8 colorfx;
         u8 colorfx_cb;
         u8 colorfx_cr;
-        struct camif_vp vp[CAMIF_VP_NUM];
+        struct camif_vp vp;
         const struct s3c_camif_variant *variant;
         struct device *dev;
         struct s3c_camif_plat_data pdata;
-        struct clk  *clock[CLK_MAX_NUM];
+        struct clk  *clock;
         struct mutex lock;
         spinlock_t slock;
         void __iomem *io_base;

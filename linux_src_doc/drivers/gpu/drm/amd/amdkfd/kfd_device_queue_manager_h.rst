@@ -99,7 +99,7 @@ Definition
     struct device_queue_manager {
         struct device_queue_manager_ops ops;
         struct device_queue_manager_asic_ops ops_asic_specific;
-        struct mqd_manager  *mqds[KFD_MQD_TYPE_MAX];
+        struct mqd_manager  *mqds;
         struct packet_manager packets;
         struct kfd_dev *dev;
         struct mutex lock;
@@ -129,6 +129,9 @@ ops
     *undescribed*
 
 ops_asic_specific
+    *undescribed*
+
+mqds
     *undescribed*
 
 packets

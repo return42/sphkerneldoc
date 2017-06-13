@@ -20,12 +20,12 @@ Definition
     struct ubi_ec_hdr {
         __be32 magic;
         __u8 version;
-        __u8 padding1[3];
+        __u8 padding1;
         __be64 ec;
         __be32 vid_hdr_offset;
         __be32 data_offset;
         __be32 image_seq;
-        __u8 padding2[32];
+        __u8 padding2;
         __be32 hdr_crc;
     }
 
@@ -112,14 +112,14 @@ Definition
         __u8 compat;
         __be32 vol_id;
         __be32 lnum;
-        __u8 padding1[4];
+        __u8 padding1;
         __be32 data_size;
         __be32 used_ebs;
         __be32 data_pad;
         __be32 data_crc;
-        __u8 padding2[4];
+        __u8 padding2;
         __be64 sqnum;
-        __u8 padding3[12];
+        __u8 padding3;
         __be32 hdr_crc;
     }
 
@@ -305,9 +305,9 @@ Definition
         __u8 vol_type;
         __u8 upd_marker;
         __be16 name_len;
-        __u8 name[UBI_VOL_NAME_MAX+1];
+        __u8 name;
         __u8 flags;
-        __u8 padding[23];
+        __u8 padding;
         __be32 crc;
     }
 
@@ -395,13 +395,13 @@ Definition
     struct ubi_fm_sb {
         __be32 magic;
         __u8 version;
-        __u8 padding1[3];
+        __u8 padding1;
         __be32 data_crc;
         __be32 used_blocks;
-        __be32 block_loc[UBI_FM_MAX_BLOCKS];
-        __be32 block_ec[UBI_FM_MAX_BLOCKS];
+        __be32 block_loc;
+        __be32 block_ec;
         __be64 sqnum;
-        __u8 padding2[32];
+        __u8 padding2;
     }
 
 .. _`ubi_fm_sb.members`:
@@ -414,6 +414,9 @@ magic
 
 version
     format version of this fastmap
+
+padding1
+    *undescribed*
 
 data_crc
     CRC over the fastmap data
@@ -429,6 +432,9 @@ block_ec
 
 sqnum
     highest sequence number value at the time while taking the fastmap
+
+padding2
+    *undescribed*
 
 .. _`ubi_fm_hdr`:
 
@@ -454,7 +460,7 @@ Definition
         __be32 bad_peb_count;
         __be32 erase_peb_count;
         __be32 vol_count;
-        __u8 padding[4];
+        __u8 padding;
     }
 
 .. _`ubi_fm_hdr.members`:
@@ -483,6 +489,9 @@ erase_peb_count
 vol_count
     number of UBI volumes known by this fastmap
 
+padding
+    *undescribed*
+
 .. _`ubi_fm_scan_pool`:
 
 struct ubi_fm_scan_pool
@@ -503,8 +512,8 @@ Definition
         __be32 magic;
         __be16 size;
         __be16 max_size;
-        __be32 pebs[UBI_FM_MAX_POOL_SIZE];
-        __be32 padding[4];
+        __be32 pebs;
+        __be32 padding;
     }
 
 .. _`ubi_fm_scan_pool.members`:
@@ -523,6 +532,9 @@ max_size
 
 pebs
     an array containing the location of all PEBs in this pool
+
+padding
+    *undescribed*
 
 .. _`ubi_fm_ec`:
 
@@ -576,11 +588,11 @@ Definition
         __be32 magic;
         __be32 vol_id;
         __u8 vol_type;
-        __u8 padding1[3];
+        __u8 padding1;
         __be32 data_pad;
         __be32 used_ebs;
         __be32 last_eb_bytes;
-        __u8 padding2[8];
+        __u8 padding2;
     }
 
 .. _`ubi_fm_volhdr.members`:
@@ -597,6 +609,9 @@ vol_id
 vol_type
     type of the fastmapped volume
 
+padding1
+    *undescribed*
+
 data_pad
     data_pad value of the fastmapped volume
 
@@ -605,6 +620,9 @@ used_ebs
 
 last_eb_bytes
     number of bytes used in the last LEB
+
+padding2
+    *undescribed*
 
 .. _`ubi_fm_eba`:
 
@@ -625,7 +643,7 @@ Definition
     struct ubi_fm_eba {
         __be32 magic;
         __be32 reserved_pebs;
-        __be32 pnum[0];
+        __be32 pnum;
     }
 
 .. _`ubi_fm_eba.members`:

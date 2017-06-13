@@ -6,7 +6,7 @@
 crc8_populate_lsb
 =================
 
-.. c:function:: void crc8_populate_lsb(u8 table[CRC8_TABLE_SIZE], u8 polynomial)
+.. c:function:: void crc8_populate_lsb(u8 table, u8 polynomial)
 
     fill crc table for given polynomial in regular bit order.
 
@@ -36,7 +36,7 @@ For lsb first direction x^7 maps to the lsb. So the polynomial is as below.
 crc8_populate_msb
 =================
 
-.. c:function:: void crc8_populate_msb(u8 table[CRC8_TABLE_SIZE], u8 polynomial)
+.. c:function:: void crc8_populate_msb(u8 table, u8 polynomial)
 
     fill crc table for given polynomial in reverse bit order.
 
@@ -66,7 +66,7 @@ For msb first direction x^7 maps to the msb. So the polynomial is as below.
 crc8
 ====
 
-.. c:function:: u8 crc8(const u8 table[CRC8_TABLE_SIZE], u8 *pdata, size_t nbytes, u8 crc)
+.. c:function:: u8 crc8(const u8 table, u8 *pdata, size_t nbytes, u8 crc)
 
     calculate a crc8 over the given input data.
 

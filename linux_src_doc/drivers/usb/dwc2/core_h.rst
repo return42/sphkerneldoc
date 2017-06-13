@@ -45,7 +45,7 @@ Definition
         u8 desc_count;
         unsigned char isoc_chain_num;
         unsigned int next_desc;
-        char name[10];
+        char name;
     }
 
 .. _`dwc2_hsotg_ep.members`:
@@ -250,7 +250,7 @@ Definition
         bool g_dma_desc;
         u32 g_rx_fifo_size;
         u32 g_np_tx_fifo_size;
-        u32 g_tx_fifo_size[MAX_EPS_CHANNELS];
+        u32 g_tx_fifo_size;
         bool change_speed_quirk;
     }
 
@@ -701,7 +701,7 @@ Definition
         u32 hptxfsiz;
         u32 pcgcctl;
         u32 gdfifocfg;
-        u32 dtxfsiz[MAX_EPS_CHANNELS];
+        u32 dtxfsiz;
         u32 gpwrdn;
         bool valid;
     }
@@ -772,12 +772,12 @@ Definition
         u32 daintmsk;
         u32 diepmsk;
         u32 doepmsk;
-        u32 diepctl[MAX_EPS_CHANNELS];
-        u32 dieptsiz[MAX_EPS_CHANNELS];
-        u32 diepdma[MAX_EPS_CHANNELS];
-        u32 doepctl[MAX_EPS_CHANNELS];
-        u32 doeptsiz[MAX_EPS_CHANNELS];
-        u32 doepdma[MAX_EPS_CHANNELS];
+        u32 diepctl;
+        u32 dieptsiz;
+        u32 diepdma;
+        u32 doepctl;
+        u32 doeptsiz;
+        u32 doepdma;
         bool valid;
     }
 
@@ -841,7 +841,7 @@ Definition
     struct dwc2_hregs_backup {
         u32 hcfg;
         u32 haintmsk;
-        u32 hcintmsk[MAX_EPS_CHANNELS];
+        u32 hcintmsk;
         u32 hprt0;
         u32 hfir;
         bool valid;
@@ -899,7 +899,7 @@ Definition
         struct phy *phy;
         struct usb_phy *uphy;
         struct dwc2_hsotg_plat *plat;
-        struct regulator_bulk_data supplies[DWC2_NUM_SUPPLIES];
+        struct regulator_bulk_data supplies;
         u32 phyif;
         spinlock_t lock;
         void *priv;
@@ -926,7 +926,7 @@ Definition
     #define DWC2_CORE_REV_3_10a 0x4f54310a
     #define DWC2_FS_IOT_REV_1_00a 0x5531100a
     #define DWC2_HS_IOT_REV_1_00a 0x5532100a
-    #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+    #if IS_ENABLEDCONFIG_USB_DWC2_HOST || IS_ENABLEDCONFIG_USB_DWC2_DUAL_ROLE
         union dwc2_hcd_internal_flags flags;
         struct list_head non_periodic_sched_inactive;
         struct list_head non_periodic_sched_active;
@@ -937,7 +937,7 @@ Definition
         struct list_head periodic_sched_queued;
         struct list_head split_order;
         u16 periodic_usecs;
-        unsigned long hs_periodic_bitmap[DIV_ROUND_UP(DWC2_HS_SCHEDULE_US# BITS_PER_LONG)];
+        unsigned long hs_periodic_bitmap;
         u16 frame_number;
         u16 periodic_qh_count;
         bool bus_suspended;
@@ -954,7 +954,7 @@ Definition
         int periodic_channels;
         int non_periodic_channels;
         int available_host_channels;
-        struct dwc2_host_chan  *hc_ptr_array[MAX_EPS_CHANNELS];
+        struct dwc2_host_chan  *hc_ptr_array;
         u8 *status_buf;
         dma_addr_t status_buf_dma;
     #define DWC2_HCD_STATUS_BUF_SIZE 64
@@ -983,7 +983,7 @@ Definition
         u64 hfnum_other_frrem_accum_b;
     #endif
     #endif
-    #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || \
+    #if IS_ENABLEDCONFIG_USB_DWC2_PERIPHERAL || \
         IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)struct usb_gadget_driver *driver;
         int fifo_mem;
         unsigned int dedicated_fifos:1;
@@ -995,8 +995,8 @@ Definition
         void *ctrl_buff;
         enum dwc2_ep0_state ep0_state;
         u8 test_mode;
-        dma_addr_t setup_desc_dma[2];
-        struct dwc2_dma_desc  *setup_desc[2];
+        dma_addr_t setup_desc_dma;
+        struct dwc2_dma_desc  *setup_desc;
         dma_addr_t ctrl_in_desc_dma;
         struct dwc2_dma_desc *ctrl_in_desc;
         dma_addr_t ctrl_out_desc_dma;
@@ -1004,8 +1004,8 @@ Definition
         struct usb_gadget gadget;
         unsigned int enabled:1;
         unsigned int connected:1;
-        struct dwc2_hsotg_ep  *eps_in[MAX_EPS_CHANNELS];
-        struct dwc2_hsotg_ep  *eps_out[MAX_EPS_CHANNELS];
+        struct dwc2_hsotg_ep  *eps_in;
+        struct dwc2_hsotg_ep  *eps_out;
     #endif
     }
 
@@ -1374,6 +1374,12 @@ enabled
     *undescribed*
 
 connected
+    *undescribed*
+
+eps_in
+    *undescribed*
+
+eps_out
     *undescribed*
 
 .. This file was automatic generated / don't edit.

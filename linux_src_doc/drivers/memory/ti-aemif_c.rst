@@ -91,7 +91,7 @@ Definition
         unsigned long clk_rate;
         u8 num_cs;
         int cs_offset;
-        struct aemif_cs_data cs_data[NUM_CS];
+        struct aemif_cs_data cs_data;
     }
 
 .. _`aemif_device.members`:

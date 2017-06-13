@@ -143,7 +143,7 @@ Definition
 
     struct nft_userdata {
         u8 len;
-        unsigned char data[0];
+        unsigned char data;
     }
 
 .. _`nft_userdata.members`:
@@ -413,7 +413,7 @@ Definition
     struct nft_set {
         struct list_head list;
         struct list_head bindings;
-        char name[NFT_SET_MAXNAMELEN];
+        char name;
         u32 ktype;
         u32 dtype;
         u32 objtype;
@@ -430,7 +430,7 @@ Definition
         u16 genmask:14:2;
         u8 klen;
         u8 dlen;
-        unsigned char data[]__attribute__((aligned(__alignof__(u64))));
+        unsigned char data;
     }
 
 .. _`nft_set.members`:
@@ -652,7 +652,7 @@ Definition
 
     struct nft_set_ext_tmpl {
         u16 len;
-        u8 offset[NFT_SET_EXT_NUM];
+        u8 offset;
     }
 
 .. _`nft_set_ext_tmpl.members`:
@@ -684,8 +684,8 @@ Definition
 
     struct nft_set_ext {
         u8 genmask;
-        u8 offset[NFT_SET_EXT_NUM];
-        char data[0];
+        u8 offset;
+        char data;
     }
 
 .. _`nft_set_ext.members`:
@@ -756,7 +756,7 @@ Definition
 
     struct nft_set_gc_batch {
         struct nft_set_gc_batch_head head;
-        void  *elems[NFT_SET_GC_BATCH_SIZE];
+        void  *elems;
     }
 
 .. _`nft_set_gc_batch.members`:
@@ -848,7 +848,7 @@ Definition
 
     struct nft_expr {
         const struct nft_expr_ops *ops;
-        unsigned char data[];
+        unsigned char data;
     }
 
 .. _`nft_expr.members`:
@@ -884,7 +884,7 @@ Definition
         u64 genmask:42:2;
         u64 dlen:42:2:12;
         u64 udata:42:2:12:1;
-        unsigned char data[];
+        unsigned char data;
     }
 
 .. _`nft_rule.members`:
@@ -935,7 +935,7 @@ Definition
         u16 level;
         u8 flags:6;
         u8 genmask:6:2;
-        char name[NFT_CHAIN_MAXNAMELEN];
+        char name;
     }
 
 .. _`nft_chain.members`:
@@ -992,7 +992,7 @@ Definition
         int family;
         struct module *owner;
         unsigned int hook_mask;
-        nf_hookfn  *hooks[NF_MAX_HOOKS];
+        nf_hookfn  *hooks;
     }
 
 .. _`nf_chain_type.members`:
@@ -1035,13 +1035,13 @@ Definition
 .. code-block:: c
 
     struct nft_base_chain {
-        struct nf_hook_ops ops[NFT_HOOK_OPS_MAX];
+        struct nf_hook_ops ops;
         const struct nf_chain_type *type;
         u8 policy;
         u8 flags;
         struct nft_stats __percpu *stats;
         struct nft_chain chain;
-        char dev_name[IFNAMSIZ];
+        char dev_name;
     }
 
 .. _`nft_base_chain.members`:
@@ -1095,7 +1095,7 @@ Definition
         u32 use;
         u16 flags:14;
         u16 genmask:14:2;
-        char name[NFT_TABLE_MAXNAMELEN];
+        char name;
     }
 
 .. _`nft_table.members`:
@@ -1155,7 +1155,7 @@ Definition
         u32 flags;
         unsigned int nops;
         void (*hook_ops_init)(struct nf_hook_ops *,unsigned int);
-        nf_hookfn  *hooks[NF_MAX_HOOKS];
+        nf_hookfn  *hooks;
     }
 
 .. _`nft_af_info.members`:
@@ -1208,12 +1208,12 @@ Definition
 
     struct nft_object {
         struct list_head list;
-        char name[NFT_OBJ_MAXNAMELEN];
+        char name;
         struct nft_table *table;
         u32 genmask:2;
         u32 use:2:30;
         const struct nft_object_type *type ____cacheline_aligned;
-        unsigned char data[]__attribute__((aligned(__alignof__(u64))));
+        unsigned char data;
     }
 
 .. _`nft_object.members`:
@@ -1382,7 +1382,7 @@ Definition
         struct list_head list;
         int msg_type;
         struct nft_ctx ctx;
-        char data[0];
+        char data;
     }
 
 .. _`nft_trans.members`:

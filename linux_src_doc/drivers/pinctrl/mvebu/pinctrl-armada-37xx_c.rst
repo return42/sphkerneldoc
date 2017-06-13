@@ -22,10 +22,10 @@ Definition
         unsigned int start_pin;
         unsigned int npins;
         u32 reg_mask;
-        u32 val[NB_FUNCS];
+        u32 val;
         unsigned int extra_pin;
         unsigned int extra_npins;
-        const char  *funcs[NB_FUNCS];
+        const char  *funcs;
         unsigned int *pins;
     }
 
@@ -45,6 +45,9 @@ npins
 
 reg_mask
     Bit mask matching the group in the selection register
+
+val
+    *undescribed*
 
 extra_pin
     *undescribed*

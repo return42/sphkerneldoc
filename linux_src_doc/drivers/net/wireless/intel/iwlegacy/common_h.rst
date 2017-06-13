@@ -60,8 +60,8 @@ Definition
     struct il_rx_queue {
         __le32 *bd;
         dma_addr_t bd_dma;
-        struct il_rx_buf pool[RX_QUEUE_SIZE + RX_FREE_BUFFERS];
-        struct il_rx_buf  *queue[RX_QUEUE_SIZE];
+        struct il_rx_buf pool;
+        struct il_rx_buf  *queue;
         u32 read;
         u32 write;
         u32 free_count;
@@ -84,6 +84,12 @@ bd
 
 bd_dma
     bus address of buffer of receive buffer descriptors (rbd)
+
+pool
+    *undescribed*
+
+queue
+    *undescribed*
 
 read
     Shared idx to newest available Rx buffer
@@ -362,7 +368,7 @@ Definition
         u16 eeprom_calib_ver;
         const struct il_mod_params *mod_params;
         struct il_base_params *base_params;
-        u8 scan_rx_antennas[NUM_NL80211_BANDS];
+        u8 scan_rx_antennas;
         enum il_led_mode led_mode;
         int eeprom_size;
         int num_of_queues;
@@ -377,7 +383,7 @@ Definition
         const bool ucode_tracing;
         const bool sensitivity_calib_by_driver;
         const bool chain_noise_calib_by_driver;
-        const u32 regulatory_bands[7];
+        const u32 regulatory_bands;
     }
 
 .. _`il_cfg.members`:
@@ -420,6 +426,9 @@ mod_params
 base_params
     *undescribed*
 
+scan_rx_antennas
+    *undescribed*
+
 led_mode
     0=blinking, 1=On(RF On)/Off(RF Off)
 
@@ -460,6 +469,9 @@ sensitivity_calib_by_driver
     *undescribed*
 
 chain_noise_calib_by_driver
+    *undescribed*
+
+regulatory_bands
     *undescribed*
 
 .. _`il_cfg.description`:
@@ -695,9 +707,9 @@ Definition
 .. code-block:: c
 
     struct il_tfd {
-        u8 __reserved1[3];
+        u8 __reserved1;
         u8 num_tbs;
-        struct il_tfd_tb tbs[IL_NUM_OF_TBS];
+        struct il_tfd_tb tbs;
         __le32 __pad;
     }
 
@@ -706,7 +718,13 @@ Definition
 Members
 -------
 
+__reserved1
+    *undescribed*
+
 num_tbs
+    *undescribed*
+
+tbs
     *undescribed*
 
 __pad
@@ -816,7 +834,7 @@ Definition
         u8 max_search;
         s32 *expected_tpt;
         u32 current_rate;
-        struct il_rate_scale_data win[RATE_COUNT];
+        struct il_rate_scale_data win;
     }
 
 .. _`il_scale_tbl_info.members`:
@@ -849,6 +867,9 @@ expected_tpt
     *undescribed*
 
 current_rate
+    *undescribed*
+
+win
     *undescribed*
 
 .. _`il_scale_tbl_info.description`:
@@ -899,8 +920,8 @@ Definition
         s8 max_rate_idx;
         u8 missed_rate_counter;
         struct il_link_quality_cmd lq;
-        struct il_scale_tbl_info lq_info[LQ_SIZE];
-        struct il_traffic_load load[TID_MAX_LOAD_COUNT];
+        struct il_scale_tbl_info lq_info;
+        struct il_traffic_load load;
         u8 tx_agg_tid_en;
     #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *rs_sta_dbgfs_scale_table_file;
@@ -987,6 +1008,12 @@ missed_rate_counter
     *undescribed*
 
 lq
+    *undescribed*
+
+lq_info
+    *undescribed*
+
+load
     *undescribed*
 
 tx_agg_tid_en

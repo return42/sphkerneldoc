@@ -285,10 +285,10 @@ Definition
         struct fc_lport *local_port;
         enum fc_rport_state rp_state;
         u16 flags;
-    #define FC_RP_FLAGS_REC_SUPPORTED (1 << 0)
-    #define FC_RP_FLAGS_RETRY (1 << 1)
-    #define FC_RP_STARTED (1 << 2)
-    #define FC_RP_FLAGS_CONF_REQ (1 << 3)
+    #define FC_RP_FLAGS_REC_SUPPORTED 1 << 0
+    #define FC_RP_FLAGS_RETRY 1 << 1
+    #define FC_RP_STARTED 1 << 2
+    #define FC_RP_FLAGS_CONF_REQ 1 << 3
         unsigned int e_d_tov;
         unsigned int r_a_tov;
     }
@@ -1040,7 +1040,7 @@ Definition
         struct mutex lp_mutex;
         struct list_head list;
         struct delayed_work retry_work;
-        void  *prov[FC_FC4_PROV_SIZE];
+        void  *prov;
         struct list_head lport_list;
     }
 

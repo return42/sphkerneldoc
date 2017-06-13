@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct macsec_key {
-        u8 id[MACSEC_KEYID_LEN];
+        u8 id;
         struct crypto_aead *tfm;
     }
 
@@ -109,7 +109,7 @@ Definition
         struct macsec_rx_sc __rcu *next;
         sci_t sci;
         bool active;
-        struct macsec_rx_sa __rcu  *sa[MACSEC_NUM_AN];
+        struct macsec_rx_sa __rcu  *sa;
         struct pcpu_rx_sc_stats __percpu *stats;
         atomic_t refcnt;
         struct rcu_head rcu_head;
@@ -216,7 +216,7 @@ Definition
         bool send_sci;
         bool end_station;
         bool scb;
-        struct macsec_tx_sa __rcu  *sa[MACSEC_NUM_AN];
+        struct macsec_tx_sa __rcu  *sa;
         struct pcpu_tx_sc_stats __percpu *stats;
     }
 

@@ -62,7 +62,7 @@ Definition
         void *priv;
         struct clk *biu_clk;
         struct clk *ciu_clk;
-        struct dw_mci_slot  *slot[MAX_MCI_SLOTS];
+        struct dw_mci_slot  *slot;
         int fifo_depth;
         int data_shift;
         u8 part_buf_start;

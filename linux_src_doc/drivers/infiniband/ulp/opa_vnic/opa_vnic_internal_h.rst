@@ -20,17 +20,17 @@ Definition
     struct __opa_vesw_info {
         u16 fabric_id;
         u16 vesw_id;
-        u8 rsvd0[6];
+        u8 rsvd0;
         u16 def_port_mask;
-        u8 rsvd1[2];
+        u8 rsvd1;
         u16 pkey;
-        u8 rsvd2[4];
+        u8 rsvd2;
         u32 u_mcast_dlid;
-        u32 u_ucast_dlid[OPA_VESW_MAX_NUM_DEF_PORT];
-        u8 rsvd3[44];
-        u16 eth_mtu[OPA_VNIC_MAX_NUM_PCP];
+        u32 u_ucast_dlid;
+        u8 rsvd3;
+        u16 eth_mtu;
         u16 eth_mtu_non_vlan;
-        u8 rsvd4[2];
+        u8 rsvd4;
     }
 
 .. _`__opa_vesw_info.members`:
@@ -44,16 +44,37 @@ fabric_id
 vesw_id
     *undescribed*
 
+rsvd0
+    *undescribed*
+
 def_port_mask
+    *undescribed*
+
+rsvd1
     *undescribed*
 
 pkey
     *undescribed*
 
+rsvd2
+    *undescribed*
+
 u_mcast_dlid
     *undescribed*
 
+u_ucast_dlid
+    *undescribed*
+
+rsvd3
+    *undescribed*
+
+eth_mtu
+    *undescribed*
+
 eth_mtu_non_vlan
+    *undescribed*
+
+rsvd4
     *undescribed*
 
 .. _`__opa_vesw_info.description`:
@@ -82,27 +103,27 @@ Definition
     struct __opa_per_veswport_info {
         u32 port_num;
         u8 eth_link_status;
-        u8 rsvd0[3];
-        u8 base_mac_addr[ETH_ALEN];
+        u8 rsvd0;
+        u8 base_mac_addr;
         u8 config_state;
         u8 oper_state;
         u16 max_mac_tbl_ent;
         u16 max_smac_ent;
         u32 mac_tbl_digest;
-        u8 rsvd1[4];
+        u8 rsvd1;
         u32 encap_slid;
-        u8 pcp_to_sc_uc[OPA_VNIC_MAX_NUM_PCP];
-        u8 pcp_to_vl_uc[OPA_VNIC_MAX_NUM_PCP];
-        u8 pcp_to_sc_mc[OPA_VNIC_MAX_NUM_PCP];
-        u8 pcp_to_vl_mc[OPA_VNIC_MAX_NUM_PCP];
+        u8 pcp_to_sc_uc;
+        u8 pcp_to_vl_uc;
+        u8 pcp_to_sc_mc;
+        u8 pcp_to_vl_mc;
         u8 non_vlan_sc_uc;
         u8 non_vlan_vl_uc;
         u8 non_vlan_sc_mc;
         u8 non_vlan_vl_mc;
-        u8 rsvd2[48];
+        u8 rsvd2;
         u16 uc_macs_gen_count;
         u16 mc_macs_gen_count;
-        u8 rsvd3[8];
+        u8 rsvd3;
     }
 
 .. _`__opa_per_veswport_info.members`:
@@ -114,6 +135,12 @@ port_num
     *undescribed*
 
 eth_link_status
+    *undescribed*
+
+rsvd0
+    *undescribed*
+
+base_mac_addr
     *undescribed*
 
 config_state
@@ -131,7 +158,22 @@ max_smac_ent
 mac_tbl_digest
     *undescribed*
 
+rsvd1
+    *undescribed*
+
 encap_slid
+    *undescribed*
+
+pcp_to_sc_uc
+    *undescribed*
+
+pcp_to_vl_uc
+    *undescribed*
+
+pcp_to_sc_mc
+    *undescribed*
+
+pcp_to_vl_mc
     *undescribed*
 
 non_vlan_sc_uc
@@ -146,10 +188,16 @@ non_vlan_sc_mc
 non_vlan_vl_mc
     *undescribed*
 
+rsvd2
+    *undescribed*
+
 uc_macs_gen_count
     *undescribed*
 
 mc_macs_gen_count
+    *undescribed*
+
+rsvd3
     *undescribed*
 
 .. _`__opa_per_veswport_info.description`:
@@ -318,13 +366,13 @@ Definition
         u8 vport_num;
         struct mutex lock;
         struct __opa_veswport_info info;
-        u8 vema_mac_addr[ETH_ALEN];
+        u8 vema_mac_addr;
         u32 umac_hash;
         u32 mmac_hash;
         struct hlist_head __rcu *mactbl;
         struct mutex mactbl_lock;
         struct mutex stats_lock;
-        u8 flow_tbl[OPA_VNIC_FLOW_TBL_SIZE];
+        u8 flow_tbl;
         unsigned long trap_timeout;
         u8 trap_count;
     }

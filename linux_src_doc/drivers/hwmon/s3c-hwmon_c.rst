@@ -21,7 +21,7 @@ Definition
         struct mutex lock;
         struct s3c_adc_client *client;
         struct device *hwmon_dev;
-        struct s3c_hwmon_attr attrs[8];
+        struct s3c_hwmon_attr attrs;
     }
 
 .. _`s3c_hwmon.members`:
@@ -37,6 +37,9 @@ client
 
 hwmon_dev
     The hwmon device we created.
+
+attrs
+    *undescribed*
 
 .. _`s3c_hwmon_read_ch`:
 

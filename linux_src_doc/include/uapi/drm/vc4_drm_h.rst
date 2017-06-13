@@ -39,11 +39,11 @@ Definition
         struct drm_vc4_submit_rcl_surface zs_write;
         struct drm_vc4_submit_rcl_surface msaa_color_write;
         struct drm_vc4_submit_rcl_surface msaa_zs_write;
-        __u32 clear_color[2];
+        __u32 clear_color;
         __u32 clear_z;
         __u8 clear_s;
         __u32 pad:24;
-    #define VC4_SUBMIT_CL_USE_CLEAR_COLOR (1 << 0)
+    #define VC4_SUBMIT_CL_USE_CLEAR_COLOR 1 << 0
         __u32 flags;
         __u64 seqno;
     }
@@ -114,6 +114,9 @@ msaa_color_write
     *undescribed*
 
 msaa_zs_write
+    *undescribed*
+
+clear_color
     *undescribed*
 
 clear_z
@@ -420,7 +423,7 @@ Definition
         __u32 fdbgr;
         __u32 fdbgs;
         __u32 errstat;
-        __u32 pad[16];
+        __u32 pad;
     }
 
 .. _`drm_vc4_get_hang_state.members`:
@@ -495,6 +498,9 @@ fdbgs
     *undescribed*
 
 errstat
+    *undescribed*
+
+pad
     *undescribed*
 
 .. This file was automatic generated / don't edit.

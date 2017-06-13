@@ -22,7 +22,7 @@ Definition
         u32 tx_ssthresh;
         u32 tx_pipe;
         u32 tx_packets_acked;
-        struct ccid2_seq  *tx_seqbuf[CCID2_SEQBUF_MAX];
+        struct ccid2_seq  *tx_seqbuf;
         int tx_seqbufc;
         struct ccid2_seq *tx_seqh;
         struct ccid2_seq *tx_seqt;
@@ -60,6 +60,9 @@ tx_pipe
 
 tx_packets_acked
     Ack counter for deriving cwnd growth (RFC 3465)
+
+tx_seqbuf
+    *undescribed*
 
 tx_seqbufc
     *undescribed*

@@ -637,7 +637,7 @@ Definition
         unsigned int fence_context;
         spinlock_t fence_lock;
         unsigned long fence_seqno;
-        char timeline_name[32];
+        char timeline_name;
     }
 
 .. _`drm_crtc.members`:

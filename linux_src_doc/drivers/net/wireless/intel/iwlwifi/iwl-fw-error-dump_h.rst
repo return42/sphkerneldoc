@@ -115,7 +115,7 @@ Definition
     struct iwl_fw_error_dump_data {
         __le32 type;
         __le32 len;
-        __u8 data[];
+        __u8 data;
     }
 
 .. _`iwl_fw_error_dump_data.members`:
@@ -151,7 +151,7 @@ Definition
     struct iwl_fw_error_dump_file {
         __le32 barker;
         __le32 file_len;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_file.members`:
@@ -187,7 +187,7 @@ Definition
     struct iwl_fw_error_dump_txcmd {
         __le32 cmdlen;
         __le32 caplen;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_txcmd.members`:
@@ -227,7 +227,7 @@ Definition
         __le32 rd_ptr;
         __le32 fence_ptr;
         __le32 fence_mode;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_fifo.members`:
@@ -276,9 +276,9 @@ Definition
     struct iwl_fw_error_dump_info {
         __le32 device_family;
         __le32 hw_step;
-        u8 fw_human_readable[FW_VER_HUMAN_READABLE_SZ];
-        u8 dev_human_readable[64];
-        u8 bus_human_readable[8];
+        u8 fw_human_readable;
+        u8 dev_human_readable;
+        u8 bus_human_readable;
     }
 
 .. _`iwl_fw_error_dump_info.members`:
@@ -321,8 +321,8 @@ Definition
         __le32 fw_mon_wr_ptr;
         __le32 fw_mon_base_ptr;
         __le32 fw_mon_cycle_cnt;
-        __le32 reserved[3];
-        u8 data[];
+        __le32 reserved;
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_fw_mon.members`:
@@ -363,7 +363,7 @@ Definition
 
     struct iwl_fw_error_dump_prph {
         __le32 prph_start;
-        __le32 data[];
+        __le32 data;
     }
 
 .. _`iwl_fw_error_dump_prph.members`:
@@ -396,7 +396,7 @@ Definition
     struct iwl_fw_error_dump_mem {
         __le32 type;
         __le32 offset;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_mem.members`:
@@ -433,7 +433,7 @@ Definition
         __le32 index;
         __le32 rxq;
         __le32 reserved;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_rb.members`:
@@ -472,7 +472,7 @@ Definition
     struct iwl_fw_error_dump_paging {
         __le32 index;
         __le32 reserved;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_paging.members`:
@@ -623,7 +623,7 @@ Definition
 
     struct iwl_fw_error_dump_trigger_desc {
         __le32 type;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_fw_error_dump_trigger_desc.members`:

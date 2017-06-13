@@ -188,7 +188,7 @@ Definition
         u8 all_chan_mask;
         struct dma_pool *dma_desc_pool;
         struct dma_pool *memset_pool;
-        struct at_dma_chan chan[0];
+        struct at_dma_chan chan;
     }
 
 .. _`at_dma.members`:

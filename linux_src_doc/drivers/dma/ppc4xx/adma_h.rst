@@ -187,7 +187,7 @@ Definition
         u8 slots_per_op;
         u8 descs_per_op;
         unsigned long flags;
-        unsigned long reverse_flags[8];
+        unsigned long reverse_flags;
     #define PPC440SPE_DESC_INT 0
     #define PPC440SPE_ZERO_P 1
     #define PPC440SPE_ZERO_Q 2

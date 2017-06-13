@@ -61,7 +61,7 @@ Definition
 .. code-block:: c
 
     struct dvb_tuner_info {
-        char name[128];
+        char name;
         u32 frequency_min;
         u32 frequency_max;
         u32 frequency_step;
@@ -494,7 +494,7 @@ Definition
 
     struct dvb_frontend_ops {
         struct dvb_frontend_info info;
-        u8 delsys[MAX_DELSYS];
+        u8 delsys;
         void (*detach)(struct dvb_frontend *fe);
         void (*release)(struct dvb_frontend* fe);
         void (*release_sec)(struct dvb_frontend* fe);
@@ -726,7 +726,7 @@ Definition
         u32 isdbt_sb_segment_idx;
         u32 isdbt_sb_segment_count;
         u8 isdbt_layer_enabled;
-        struct layer[3];
+        struct layer;
         u32 stream_id;
         u8 atscmh_fic_ver;
         u8 atscmh_parade_id;

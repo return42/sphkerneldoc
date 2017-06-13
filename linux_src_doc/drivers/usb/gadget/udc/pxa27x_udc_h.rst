@@ -220,8 +220,8 @@ Definition
         struct usb_phy *transceiver;
         enum ep0_state ep0state;
         struct udc_stats stats;
-        struct udc_usb_ep udc_usb_ep[NR_USB_ENDPOINTS];
-        struct pxa_ep pxa_ep[NR_PXA_ENDPOINTS];
+        struct udc_usb_ep udc_usb_ep;
+        struct pxa_ep pxa_ep;
         unsigned enabled:1;
         unsigned pullup_on:1;
         unsigned pullup_resume:1;

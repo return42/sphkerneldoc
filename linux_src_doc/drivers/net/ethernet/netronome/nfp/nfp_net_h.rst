@@ -276,7 +276,7 @@ Definition
         u64 tx_busy;
         u32 irq_vector;
         irq_handler_t handler;
-        char name[IFNAMSIZ + 8];
+        char name;
         cpumask_t affinity_mask;
     }
 
@@ -508,8 +508,8 @@ Definition
         u32 max_mtu;
         u8 rss_hfunc;
         u32 rss_cfg;
-        u8 rss_key[NFP_NET_CFG_RSS_KEY_SZ];
-        u8 rss_itbl[NFP_NET_CFG_RSS_ITBL_SZ];
+        u8 rss_key;
+        u8 rss_itbl;
         struct nfp_stat_pair rx_filter;
         struct nfp_stat_pair rx_filter_prev;
         unsigned long rx_filter_change;
@@ -520,14 +520,14 @@ Definition
         int stride_tx;
         int stride_rx;
         unsigned int max_r_vecs;
-        struct nfp_net_r_vector r_vecs[NFP_NET_MAX_R_VECS];
-        struct msix_entry irq_entries[NFP_NET_MAX_IRQS];
+        struct nfp_net_r_vector r_vecs;
+        struct msix_entry irq_entries;
         irq_handler_t lsc_handler;
-        char lsc_name[IFNAMSIZ + 8];
+        char lsc_name;
         irq_handler_t exn_handler;
-        char exn_name[IFNAMSIZ + 8];
+        char exn_name;
         irq_handler_t shared_handler;
-        char shared_name[IFNAMSIZ + 8];
+        char shared_name;
         u32 me_freq_mhz;
         bool link_up;
         bool link_changed;
@@ -541,8 +541,8 @@ Definition
         u32 rx_coalesce_max_frames;
         u32 tx_coalesce_usecs;
         u32 tx_coalesce_max_frames;
-        __be16 vxlan_ports[NFP_NET_N_VXLAN_PORTS];
-        u8 vxlan_usecnt[NFP_NET_N_VXLAN_PORTS];
+        __be16 vxlan_ports;
+        u8 vxlan_usecnt;
         u8 __iomem *qcp_cfg;
         u8 __iomem *tx_bar;
         u8 __iomem *rx_bar;

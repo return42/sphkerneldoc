@@ -138,7 +138,7 @@ batadv_sysfs_del_vlan
 batadv_store_mesh_iface_finish
 ==============================
 
-.. c:function:: int batadv_store_mesh_iface_finish(struct net_device *net_dev, char ifname[IFNAMSIZ])
+.. c:function:: int batadv_store_mesh_iface_finish(struct net_device *net_dev, char ifname)
 
     store new hardif mesh_iface state
 

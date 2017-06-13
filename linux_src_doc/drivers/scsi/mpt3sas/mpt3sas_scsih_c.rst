@@ -63,7 +63,7 @@ Definition
         u8 ignore;
         u16 event;
         struct kref refcount;
-        char event_data[0];
+        char event_data;
     }
 
 .. _`fw_event_work.members`:
@@ -130,10 +130,10 @@ Definition
         enum dma_data_direction dir;
         u32 data_length;
         dma_addr_t data_dma;
-        u8 sense[SCSI_SENSE_BUFFERSIZE];
+        u8 sense;
         u32 lun;
         u8 cdb_length;
-        u8 cdb[32];
+        u8 cdb;
         u8 timeout;
         u8 VF_ID;
         u8 VP_ID;
@@ -1243,7 +1243,7 @@ the device is ignored.
 scsih_bios_param
 ================
 
-.. c:function:: int scsih_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int params[])
+.. c:function:: int scsih_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int params)
 
     fetch head, sector, cylinder info for a disk
 

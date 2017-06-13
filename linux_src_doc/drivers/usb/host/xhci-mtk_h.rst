@@ -27,7 +27,7 @@ Definition
 .. code-block:: c
 
     struct mu3h_sch_bw_info {
-        u32 bus_bw[XHCI_MTK_MAX_ESIT];
+        u32 bus_bw;
         struct list_head bw_ep_list;
     }
 
@@ -148,14 +148,14 @@ Definition
         __le32 ip_pw_ctr3;
         __le32 ip_pw_sts1;
         __le32 ip_pw_sts2;
-        __le32 reserved0[3];
+        __le32 reserved0;
         __le32 ip_xhci_cap;
-        __le32 reserved1[2];
-        __le64 u3_ctrl_p[MU3C_U3_PORT_MAX];
-        __le64 u2_ctrl_p[MU3C_U2_PORT_MAX];
+        __le32 reserved1;
+        __le64 u3_ctrl_p;
+        __le64 u2_ctrl_p;
         __le32 reserved2;
         __le32 u2_phy_pll;
-        __le32 reserved3[33];
+        __le32 reserved3;
     }
 
 .. _`mu3c_ippc_regs.members`:
@@ -181,8 +181,14 @@ ip_pw_sts1
 ip_pw_sts2
     *undescribed*
 
+reserved0
+    *undescribed*
+
 ip_xhci_cap
     ip xHCI capability register
+
+reserved1
+    *undescribed*
 
 u3_ctrl_p
     ip usb3 port x control register, only low 4bytes are used
@@ -195,6 +201,9 @@ reserved2
 
 u2_phy_pll
     usb2 phy pll control register
+
+reserved3
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

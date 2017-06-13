@@ -30,8 +30,8 @@ Definition
         int (*write_reg_32)(struct device *, u16, u32);
         int irq;
         struct mutex buf_lock;
-        u8 tx[ADE7854_MAX_TX] ____cacheline_aligned;
-        u8 rx[ADE7854_MAX_RX];
+        u8 tx;
+        u8 rx;
     }
 
 .. _`ade7854_state.members`:

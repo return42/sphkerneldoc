@@ -82,8 +82,8 @@ Definition
 
     struct drm_object_properties {
         int count;
-        struct drm_property  *properties[DRM_OBJECT_MAX_PROPERTY];
-        uint64_t values[DRM_OBJECT_MAX_PROPERTY];
+        struct drm_property  *properties;
+        uint64_t values;
     }
 
 .. _`drm_object_properties.members`:

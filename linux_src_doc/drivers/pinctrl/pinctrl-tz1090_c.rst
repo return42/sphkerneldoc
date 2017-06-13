@@ -54,7 +54,7 @@ Definition
 .. code-block:: c
 
     struct tz1090_muxdesc {
-        int funcs[5];
+        int funcs;
         u16 reg;
         u8 bit;
         u8 width;
@@ -340,8 +340,8 @@ Definition
         struct pinctrl_dev *pctl;
         void __iomem *regs;
         spinlock_t lock;
-        u32 pin_en[3];
-        u32 gpio_en[3];
+        u32 pin_en;
+        u32 gpio_en;
     }
 
 .. _`tz1090_pmx.members`:

@@ -22,7 +22,7 @@ Definition
         unsigned long lifespan;
         const char * const *names;
         int num_counters;
-        u64 value[];
+        u64 value;
     }
 
 .. _`rdma_hw_stats.members`:
@@ -40,6 +40,9 @@ names
     *undescribed*
 
 num_counters
+    *undescribed*
+
+value
     *undescribed*
 
 .. _`rdma_alloc_hw_stats_struct`:

@@ -174,7 +174,7 @@ need to.  That happens here.
 ll_rw_block
 ===========
 
-.. c:function:: void ll_rw_block(int op, int op_flags, int nr, struct buffer_head  *bhs[])
+.. c:function:: void ll_rw_block(int op, int op_flags, int nr, struct buffer_head  *bhs)
 
     low-level access to block devices (DEPRECATED)
 

@@ -162,11 +162,11 @@ Definition
 .. code-block:: c
 
     struct sst_fw_header {
-        unsigned char signature[FW_SIGNATURE_SIZE];
+        unsigned char signature;
         u32 file_size;
         u32 modules;
         u32 file_format;
-        u32 reserved[4];
+        u32 reserved;
     }
 
 .. _`sst_fw_header.members`:
@@ -206,7 +206,7 @@ Definition
 .. code-block:: c
 
     struct fw_module_header {
-        unsigned char signature[FW_SIGNATURE_SIZE];
+        unsigned char signature;
         u32 mod_size;
         u32 blocks;
         u32 type;
@@ -316,7 +316,7 @@ Definition
         wait_queue_head_t wait_queue;
         struct workqueue_struct *post_msg_wq;
         unsigned int tstamp;
-        struct stream_info streams[MAX_NUM_STREAMS+1];
+        struct stream_info streams;
         spinlock_t ipc_spin_lock;
         spinlock_t block_lock;
         spinlock_t rx_msg_lock;
@@ -339,7 +339,7 @@ Definition
         struct list_head memcpy_list;
         struct sst_ipc_reg ipc_reg;
         struct sst_mem_mgr lib_mem_mgr;
-        char firmware_name[FW_NAME_SIZE];
+        char firmware_name;
         struct snd_sst_fw_version fw_version;
         struct sst_fw_save *fw_save;
     }
@@ -496,6 +496,9 @@ ipc_reg
     *undescribed*
 
 lib_mem_mgr
+    *undescribed*
+
+firmware_name
     *undescribed*
 
 fw_version

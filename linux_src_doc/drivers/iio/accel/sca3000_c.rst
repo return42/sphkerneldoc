@@ -23,8 +23,8 @@ Definition
         s64 last_timestamp;
         int mo_det_use_count;
         struct mutex lock;
-        u8 rx[384] ____cacheline_aligned;
-        u8 tx[6] ____cacheline_aligned;
+        u8 rx;
+        u8 tx;
     }
 
 .. _`sca3000_state.members`:
@@ -81,8 +81,8 @@ Definition
         int option_mode_2;
         int option_mode_2_freq;
         int option_mode_2_3db_freq;
-        int mot_det_mult_xz[6];
-        int mot_det_mult_y[7];
+        int mot_det_mult_xz;
+        int mot_det_mult_y;
     }
 
 .. _`sca3000_chip_info.members`:
@@ -122,6 +122,12 @@ option_mode_2_freq
 option_mode_2_3db_freq
     3db cutoff frequency of the low pass filter for
     the second option mode.
+
+mot_det_mult_xz
+    *undescribed*
+
+mot_det_mult_y
+    *undescribed*
 
 .. _`sca3000_chip_info.description`:
 

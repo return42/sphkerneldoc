@@ -911,7 +911,7 @@ Return
 dpni_set_primary_mac_addr
 =========================
 
-.. c:function:: int dpni_set_primary_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const u8 mac_addr[6])
+.. c:function:: int dpni_set_primary_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const u8 mac_addr)
 
     Set the primary MAC address
 
@@ -939,7 +939,7 @@ Return
 dpni_get_primary_mac_addr
 =========================
 
-.. c:function:: int dpni_get_primary_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 mac_addr[6])
+.. c:function:: int dpni_get_primary_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 mac_addr)
 
     Get the primary MAC address
 
@@ -967,7 +967,7 @@ Return
 dpni_get_port_mac_addr
 ======================
 
-.. c:function:: int dpni_get_port_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 mac_addr[6])
+.. c:function:: int dpni_get_port_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 mac_addr)
 
     Retrieve MAC address associated to the physical port the DPNI is attached to
 
@@ -1002,7 +1002,7 @@ Return
 dpni_add_mac_addr
 =================
 
-.. c:function:: int dpni_add_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const u8 mac_addr[6])
+.. c:function:: int dpni_add_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const u8 mac_addr)
 
     Add MAC address filter
 
@@ -1030,7 +1030,7 @@ Return
 dpni_remove_mac_addr
 ====================
 
-.. c:function:: int dpni_remove_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const u8 mac_addr[6])
+.. c:function:: int dpni_remove_mac_addr(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const u8 mac_addr)
 
     Remove MAC address filter
 

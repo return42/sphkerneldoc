@@ -112,7 +112,7 @@ Definition
         __le32 flags;
         __le32 static_long;
         __le32 static_short;
-        __le32 ltr_cfg_values[LTR_VALID_STATES_NUM];
+        __le32 ltr_cfg_values;
         __le32 ltr_short_idle_timeout;
     }
 
@@ -128,6 +128,9 @@ static_long
     *undescribed*
 
 static_short
+    *undescribed*
+
+ltr_cfg_values
     *undescribed*
 
 ltr_short_idle_timeout
@@ -216,7 +219,7 @@ Definition
         u8 debug_flags;
         __le32 rx_data_timeout;
         __le32 tx_data_timeout;
-        __le32 sleep_interval[IWL_POWER_VEC_SIZE];
+        __le32 sleep_interval;
         __le32 skip_dtim_periods;
         __le32 lprx_rssi_threshold;
     }
@@ -502,7 +505,7 @@ Definition
         __le16 dev_24;
         __le16 dev_52_low;
         __le16 dev_52_high;
-        __le16 per_chain_restriction[IWL_NUM_CHAIN_LIMITS][IWL_NUM_SUB_BANDS];
+        __le16 per_chain_restriction;
     }
 
 .. _`iwl_dev_tx_power_cmd_v3.members`:
@@ -550,7 +553,7 @@ Definition
     struct iwl_dev_tx_power_cmd {
         struct iwl_dev_tx_power_cmd_v3 v3;
         u8 enable_ack_reduction;
-        u8 reserved[3];
+        u8 reserved;
     }
 
 .. _`iwl_dev_tx_power_cmd.members`:
@@ -564,6 +567,9 @@ v3
 enable_ack_reduction
     enable or disable close range ack TX power
     reduction.
+
+reserved
+    *undescribed*
 
 .. _`iwl_geo_per_chain_offset_operation`:
 
@@ -651,7 +657,7 @@ Definition
 
     struct iwl_geo_tx_power_profiles_cmd {
         __le32 ops;
-        struct iwl_per_chain_offset_group table[IWL_NUM_GEO_PROFILES];
+        struct iwl_per_chain_offset_group table;
     }
 
 .. _`iwl_geo_tx_power_profiles_cmd.members`:

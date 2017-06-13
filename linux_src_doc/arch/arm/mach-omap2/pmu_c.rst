@@ -6,7 +6,7 @@
 omap2_init_pmu
 ==============
 
-.. c:function:: int omap2_init_pmu(unsigned oh_num, char  *oh_names[])
+.. c:function:: int omap2_init_pmu(unsigned oh_num, char  *oh_names)
 
     creates and registers PMU platform device
 

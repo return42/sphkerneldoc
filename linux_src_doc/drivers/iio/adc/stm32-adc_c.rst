@@ -53,7 +53,7 @@ Definition
         struct stm32_adc_common *common;
         u32 offset;
         struct completion completion;
-        u16 buffer[STM32_ADC_MAX_SQ];
+        u16 buffer;
         struct clk *clk;
         int irq;
         spinlock_t lock;

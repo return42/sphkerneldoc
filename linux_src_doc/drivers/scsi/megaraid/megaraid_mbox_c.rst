@@ -631,7 +631,7 @@ host.
 mbox_post_sync_cmd
 ==================
 
-.. c:function:: int mbox_post_sync_cmd(adapter_t *adapter, uint8_t raw_mbox[])
+.. c:function:: int mbox_post_sync_cmd(adapter_t *adapter, uint8_t raw_mbox)
 
     blocking command to the mailbox based controllers
 
@@ -654,7 +654,7 @@ controllers.
 mbox_post_sync_cmd_fast
 =======================
 
-.. c:function:: int mbox_post_sync_cmd_fast(adapter_t *adapter, uint8_t raw_mbox[])
+.. c:function:: int mbox_post_sync_cmd_fast(adapter_t *adapter, uint8_t raw_mbox)
 
     blocking command to the mailbox based controllers
 

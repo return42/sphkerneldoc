@@ -71,7 +71,7 @@ Definition
 
     struct mipi_dsi_packet {
         size_t size;
-        u8 header[4];
+        u8 header;
         size_t payload_length;
         const u8 *payload;
     }
@@ -200,7 +200,7 @@ Definition
 .. code-block:: c
 
     struct mipi_dsi_device_info {
-        char type[DSI_DEV_NAME_SIZE];
+        char type;
         u32 channel;
         struct device_node *node;
     }
@@ -246,7 +246,7 @@ Definition
     struct mipi_dsi_device {
         struct mipi_dsi_host *host;
         struct device dev;
-        char name[DSI_DEV_NAME_SIZE];
+        char name;
         unsigned int channel;
         unsigned int lanes;
         enum mipi_dsi_pixel_format format;

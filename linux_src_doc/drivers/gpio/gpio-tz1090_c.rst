@@ -22,7 +22,7 @@ Definition
         struct irq_domain *domain;
         void __iomem *reg;
         int irq;
-        char label[16];
+        char label;
     }
 
 .. _`tz1090_gpio_bank.members`:

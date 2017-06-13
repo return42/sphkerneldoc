@@ -284,7 +284,7 @@ Definition
     struct esw0 {
         struct sublog sublog;
         struct erw erw;
-        __u32 faddr[2];
+        __u32 faddr;
         __u32 saddr;
     }
 
@@ -326,7 +326,7 @@ Definition
         __u8 lpum;
         __u16 zero16;
         struct erw erw;
-        __u32 zeros[3];
+        __u32 zeros;
     }
 
 .. _`esw1.members`:
@@ -370,7 +370,7 @@ Definition
         __u8 lpum;
         __u16 dcti;
         struct erw erw;
-        __u32 zeros[3];
+        __u32 zeros;
     }
 
 .. _`esw2.members`:
@@ -414,7 +414,7 @@ Definition
         __u8 lpum;
         __u16 res;
         struct erw erw;
-        __u32 zeros[3];
+        __u32 zeros;
     }
 
 .. _`esw3.members`:
@@ -488,7 +488,7 @@ Definition
     struct irb {
         union scsw scsw;
         union esw;
-        __u8 ecw[32];
+        __u8 ecw;
     }
 
 .. _`irb.members`:

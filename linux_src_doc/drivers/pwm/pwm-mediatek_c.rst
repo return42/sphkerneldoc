@@ -20,7 +20,7 @@ Definition
     struct mtk_pwm_chip {
         struct pwm_chip chip;
         void __iomem *regs;
-        struct clk  *clks[MTK_CLK_MAX];
+        struct clk  *clks;
     }
 
 .. _`mtk_pwm_chip.members`:

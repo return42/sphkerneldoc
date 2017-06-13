@@ -320,7 +320,7 @@ st_i2c_xfer_msg
 st_i2c_xfer
 ===========
 
-.. c:function:: int st_i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg msgs[], int num)
+.. c:function:: int st_i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg msgs, int num)
 
     Transfer a single I2C message
 

@@ -19,9 +19,9 @@ Definition
 
     struct gpiomm_gpio {
         struct gpio_chip chip;
-        unsigned char io_state[6];
-        unsigned char out_state[6];
-        unsigned char control[2];
+        unsigned char io_state;
+        unsigned char out_state;
+        unsigned char control;
         spinlock_t lock;
         unsigned int base;
     }

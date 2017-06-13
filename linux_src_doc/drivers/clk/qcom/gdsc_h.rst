@@ -27,15 +27,15 @@ Definition
         unsigned int *cxcs;
         unsigned int cxc_count;
         const u8 pwrsts;
-    #define PWRSTS_OFF BIT(0)
-    #define PWRSTS_RET BIT(1)
-    #define PWRSTS_ON BIT(2)
-    #define PWRSTS_OFF_ON (PWRSTS_OFF | PWRSTS_ON)
-    #define PWRSTS_RET_ON (PWRSTS_RET | PWRSTS_ON)
+    #define PWRSTS_OFF BIT0
+    #define PWRSTS_RET BIT1
+    #define PWRSTS_ON BIT2
+    #define PWRSTS_OFF_ON PWRSTS_OFF | PWRSTS_ON
+    #define PWRSTS_RET_ON PWRSTS_RET | PWRSTS_ON
         const u8 flags;
-    #define VOTABLE BIT(0)
-    #define CLAMP_IO BIT(1)
-    #define HW_CTRL BIT(2)
+    #define VOTABLE BIT0
+    #define CLAMP_IO BIT1
+    #define HW_CTRL BIT2
         struct reset_controller_dev *rcdev;
         unsigned int *resets;
         unsigned int reset_count;

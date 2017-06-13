@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct mtd_dev_param {
-        char name[MTD_PARAM_LEN_MAX];
+        char name;
         int ubi_num;
         int vid_hdr_offs;
         int max_beb_per1024;

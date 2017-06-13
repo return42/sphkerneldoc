@@ -20,7 +20,7 @@ Definition
     struct bdisp_filter_h_spec {
         const u16 min;
         const u16 max;
-        const u8 coef[BDISP_HF_NB];
+        const u8 coef;
     }
 
 .. _`bdisp_filter_h_spec.members`:
@@ -33,6 +33,9 @@ min
 
 max
     max scale factor for this filter (6.10 fixed point)
+
+coef
+    *undescribed*
 
 .. _`bdisp_filter_h_spec.coef`:
 
@@ -60,7 +63,7 @@ Definition
     struct bdisp_filter_v_spec {
         const u16 min;
         const u16 max;
-        const u8 coef[BDISP_VF_NB];
+        const u8 coef;
     }
 
 .. _`bdisp_filter_v_spec.members`:
@@ -73,6 +76,9 @@ min
 
 max
     max scale factor for this filter (6.10 fixed point)
+
+coef
+    *undescribed*
 
 .. _`bdisp_filter_v_spec.coef`:
 

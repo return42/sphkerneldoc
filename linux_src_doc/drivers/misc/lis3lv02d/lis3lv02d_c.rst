@@ -6,7 +6,7 @@
 lis3lv02d_get_axis
 ==================
 
-.. c:function:: int lis3lv02d_get_axis(s8 axis, int hw_values[3])
+.. c:function:: int lis3lv02d_get_axis(s8 axis, int hw_values)
 
     For the given axis, give the value converted
 

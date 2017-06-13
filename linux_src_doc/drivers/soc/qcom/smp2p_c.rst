@@ -26,7 +26,7 @@ Definition
         u16 total_entries;
         u16 valid_entries;
         u32 flags;
-        struct entries[SMP2P_MAX_ENTRY];
+        struct entries;
     }
 
 .. _`smp2p_smem_item.members`:
@@ -84,9 +84,9 @@ Definition
         u32 *value;
         u32 last_value;
         struct irq_domain *domain;
-        unsigned long irq_enabled[BITS_TO_LONGS(32)];
-        unsigned long irq_rising[BITS_TO_LONGS(32)];
-        unsigned long irq_falling[BITS_TO_LONGS(32)];
+        unsigned long irq_enabled;
+        unsigned long irq_rising;
+        unsigned long irq_falling;
         struct qcom_smem_state *state;
         spinlock_t lock;
     }
@@ -149,7 +149,7 @@ Definition
         struct device *dev;
         struct smp2p_smem_item *in;
         struct smp2p_smem_item *out;
-        unsigned smem_items[SMP2P_OUTBOUND + 1];
+        unsigned smem_items;
         unsigned valid_entries;
         unsigned local_pid;
         unsigned remote_pid;

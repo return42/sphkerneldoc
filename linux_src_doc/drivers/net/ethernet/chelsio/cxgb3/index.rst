@@ -10,3 +10,4 @@ cxgb3
     cxgb3_main_c
     cxgb3_offload_c
     sge_c
+    t3_hw_c

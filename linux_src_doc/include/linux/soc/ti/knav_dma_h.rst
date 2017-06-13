@@ -62,7 +62,7 @@ Definition
         unsigned int sop_offset;
         unsigned int dst_q;
         enum knav_dma_rx_thresholds thresh;
-        unsigned int fdq[KNAV_DMA_FDQ_PER_CHAN];
+        unsigned int fdq;
         unsigned int sz_thresh0;
         unsigned int sz_thresh1;
         unsigned int sz_thresh2;
@@ -166,9 +166,9 @@ Definition
         __le32 next_desc;
         __le32 orig_len;
         __le32 orig_buff;
-        __le32 epib[KNAV_DMA_NUM_EPIB_WORDS];
-        __le32 psdata[KNAV_DMA_NUM_PS_WORDS];
-        u32 sw_data[KNAV_DMA_NUM_SW_DATA_WORDS];
+        __le32 epib;
+        __le32 psdata;
+        u32 sw_data;
     }
 
 .. _`knav_dma_desc.members`:

@@ -87,7 +87,7 @@ Definition
         u32 data_dma_base;
         u32 data_size;
         u32 num_apps;
-        u32 apps[0];
+        u32 apps;
     }
 
 .. _`hsf_load_header.members`:
@@ -108,6 +108,9 @@ data_size
     *undescribed*
 
 num_apps
+    *undescribed*
+
+apps
     *undescribed*
 
 .. This file was automatic generated / don't edit.

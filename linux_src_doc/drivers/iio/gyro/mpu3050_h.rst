@@ -119,11 +119,11 @@ Definition
         struct regmap *map;
         struct mutex lock;
         int irq;
-        struct regulator_bulk_data regs[2];
+        struct regulator_bulk_data regs;
         enum mpu3050_fullscale fullscale;
         enum mpu3050_lpf lpf;
         u8 divisor;
-        s16 calibration[3];
+        s16 calibration;
         struct iio_trigger *trig;
         bool hw_irq_trigger;
         bool irq_actl;

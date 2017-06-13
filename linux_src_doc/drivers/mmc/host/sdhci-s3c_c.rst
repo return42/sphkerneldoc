@@ -26,8 +26,8 @@ Definition
         int ext_cd_irq;
         int ext_cd_gpio;
         struct clk *clk_io;
-        struct clk  *clk_bus[MAX_BUS_CLK];
-        unsigned long clk_rates[MAX_BUS_CLK];
+        struct clk  *clk_bus;
+        unsigned long clk_rates;
         bool no_divider;
     }
 
@@ -62,6 +62,9 @@ clk_io
 
 clk_bus
     The clocks that are available for the SD/MMC bus clock.
+
+clk_rates
+    *undescribed*
 
 no_divider
     *undescribed*

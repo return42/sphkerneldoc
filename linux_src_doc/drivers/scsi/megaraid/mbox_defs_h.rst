@@ -272,7 +272,7 @@ Definition
         uint8_t geometry:4;
         uint8_t unused:4;
         uint8_t boot_drv;
-        uint8_t rsvd[12];
+        uint8_t rsvd;
         uint16_t cksum;
     }
 
@@ -291,6 +291,9 @@ unused
 boot_drv
     logical drive set as boot drive, 0..7 - for 8LD cards,
     0..39 - for 40LD cards
+
+rsvd
+    *undescribed*
 
 cksum
     0-(sum of first 13 bytes of this structure)

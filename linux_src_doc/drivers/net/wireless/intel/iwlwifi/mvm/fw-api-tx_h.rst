@@ -343,7 +343,7 @@ Definition
         u8 sec_ctl;
         u8 initial_rate_index;
         u8 reserved2;
-        u8 key[16];
+        u8 key;
         __le32 reserved3;
         __le32 life_time;
         __le32 dram_lsb_ptr;
@@ -353,8 +353,8 @@ Definition
         u8 tid_tspec;
         __le16 pm_frame_timeout;
         __le16 reserved4;
-        u8 payload[0];
-        struct ieee80211_hdr hdr[0];
+        u8 payload;
+        struct ieee80211_hdr hdr;
     }
 
 .. _`iwl_tx_cmd.members`:
@@ -422,6 +422,12 @@ pm_frame_timeout
 reserved4
     *undescribed*
 
+payload
+    *undescribed*
+
+hdr
+    *undescribed*
+
 .. _`iwl_tx_cmd.description`:
 
 Description
@@ -468,7 +474,7 @@ Definition
         __le32 flags;
         struct iwl_dram_sec_info dram_info;
         __le32 rate_n_flags;
-        struct ieee80211_hdr hdr[0];
+        struct ieee80211_hdr hdr;
     }
 
 .. _`iwl_tx_cmd_gen2.members`:
@@ -491,6 +497,9 @@ dram_info
 rate_n_flags
     rate for \*all\* Tx attempts, if TX_CMD_FLG_STA_RATE_MSK is
     cleared. Combination of RATE_MCS\_\*
+
+hdr
+    *undescribed*
 
 .. _`agg_tx_status`:
 
@@ -548,9 +557,9 @@ Definition
         __le32 initial_rate;
         __le16 wireless_media_time;
         u8 pa_status;
-        u8 pa_integ_res_a[3];
-        u8 pa_integ_res_b[3];
-        u8 pa_integ_res_c[3];
+        u8 pa_integ_res_a;
+        u8 pa_integ_res_b;
+        u8 pa_integ_res_c;
         __le16 measurement_req_id;
         u8 reduced_tpc;
         u8 reserved;
@@ -834,8 +843,8 @@ Definition
         __le32 tx_rate;
         __le16 tfd_cnt;
         __le16 ra_tid_cnt;
-        struct iwl_mvm_compressed_ba_tfd tfd[1];
-        struct iwl_mvm_compressed_ba_ratid ra_tid[0];
+        struct iwl_mvm_compressed_ba_tfd tfd;
+        struct iwl_mvm_compressed_ba_ratid ra_tid;
     }
 
 .. _`iwl_mvm_compressed_ba_notif.members`:
@@ -887,6 +896,9 @@ tfd_cnt
 ra_tid_cnt
     number of RATID-Q elements
 
+tfd
+    *undescribed*
+
 ra_tid
     array of RA-TID queue status updates. For debug purposes only. See
     \ :c:type:`struct iwl_mvm_compressed_ba_ratid <iwl_mvm_compressed_ba_ratid>`\  for more details.
@@ -912,7 +924,7 @@ Definition
         __le32 template_id;
         __le32 tim_idx;
         __le32 tim_size;
-        struct ieee80211_hdr frame[0];
+        struct ieee80211_hdr frame;
     }
 
 .. _`iwl_mac_beacon_cmd_v6.members`:
@@ -958,7 +970,7 @@ Definition
         __le32 tim_size;
         __le32 ecsa_offset;
         __le32 csa_offset;
-        struct ieee80211_hdr frame[0];
+        struct ieee80211_hdr frame;
     }
 
 .. _`iwl_mac_beacon_cmd_data.members`:

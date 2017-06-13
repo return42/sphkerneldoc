@@ -20,7 +20,7 @@ Definition
     struct ipaq_micro_txdev {
         u8 len;
         u8 index;
-        u8 buf[TX_BUF_SIZE];
+        u8 buf;
     }
 
 .. _`ipaq_micro_txdev.members`:
@@ -59,7 +59,7 @@ Definition
         u8 id;
         unsigned int len;
         unsigned int index;
-        u8 buf[RX_BUF_SIZE];
+        u8 buf;
     }
 
 .. _`ipaq_micro_rxdev.members`:
@@ -104,9 +104,9 @@ Definition
     struct ipaq_micro_msg {
         u8 id;
         u8 tx_len;
-        u8 tx_data[TX_BUF_SIZE];
+        u8 tx_data;
         u8 rx_len;
-        u8 rx_data[RX_BUF_SIZE];
+        u8 rx_data;
         struct completion ack;
         struct list_head node;
     }
@@ -157,7 +157,7 @@ Definition
         struct device *dev;
         void __iomem *base;
         void __iomem *sdlc;
-        char version[5];
+        char version;
         struct ipaq_micro_txdev tx;
         struct ipaq_micro_rxdev rx;
         spinlock_t lock;

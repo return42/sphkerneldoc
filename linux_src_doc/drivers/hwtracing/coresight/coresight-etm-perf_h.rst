@@ -54,7 +54,7 @@ Definition
 .. code-block:: c
 
     struct etm_filters {
-        struct etm_filter etm_filter[ETM_ADDR_CMP_MAX];
+        struct etm_filter etm_filter;
         unsigned int nr_filters;
         bool ssstatus;
     }

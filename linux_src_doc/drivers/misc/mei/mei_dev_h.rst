@@ -533,7 +533,7 @@ Definition
     #ifdef CONFIG_PM
         struct dev_pm_domain pg_domain;
     #endif
-        unsigned char rd_msg_buf[MEI_RD_MSG_BUF_SIZE];
+        unsigned char rd_msg_buf;
         u32 rd_msg_hdr;
         u8 hbuf_depth;
         bool hbuf_is_ready;
@@ -547,19 +547,19 @@ Definition
         unsigned int hbm_f_os_supported:1;
         struct rw_semaphore me_clients_rwsem;
         struct list_head me_clients;
-        unsigned long me_clients_map[BITS_TO_LONGS(MEI_CLIENTS_MAX)];
-        unsigned long host_clients_map[BITS_TO_LONGS(MEI_CLIENTS_MAX)];
+        unsigned long me_clients_map;
+        unsigned long host_clients_map;
         bool allow_fixed_address;
         bool override_fixed_address;
         struct work_struct reset_work;
         struct work_struct bus_rescan_work;
         struct list_head device_list;
         struct mutex cl_bus_lock;
-    #if IS_ENABLED(CONFIG_DEBUG_FS)
+    #if IS_ENABLEDCONFIG_DEBUG_FS
         struct dentry *dbgfs_dir;
     #endif
         const struct mei_hw_ops *ops;
-        char hw[0];
+        char hw;
     }
 
 .. _`mei_device.members`:

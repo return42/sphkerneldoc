@@ -10,3 +10,4 @@ mm
     cache-l2x0_c
     cache-uniphier_c
     dma-mapping_c
+    init_c

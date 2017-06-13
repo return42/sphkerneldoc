@@ -26,7 +26,7 @@ Definition
         struct list_head link;
         struct kref ref;
         unsigned long flags;
-    #define CONTEXT_NO_ZEROMAP BIT(0)
+    #define CONTEXT_NO_ZEROMAP BIT0
     #define CONTEXT_NO_ERROR_CAPTURE 1
     #define CONTEXT_CLOSED 2
     #define CONTEXT_BANNABLE 3
@@ -36,7 +36,7 @@ Definition
         u32 user_handle;
         int priority;
         u32 ggtt_offset_bias;
-        struct intel_context engine[I915_NUM_ENGINES];
+        struct intel_context engine;
         u32 ring_size;
         u32 desc_template;
         unsigned int guilty_count;
@@ -116,6 +116,9 @@ priority
     The \ :c:type:`drm_i915_private.kernel_context <drm_i915_private>`\  is assigned the lowest priority.
 
 ggtt_offset_bias
+    *undescribed*
+
+engine
     *undescribed*
 
 ring_size

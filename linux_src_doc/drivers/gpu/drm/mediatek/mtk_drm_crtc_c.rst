@@ -22,7 +22,7 @@ Definition
         bool enabled;
         bool pending_needs_vblank;
         struct drm_pending_vblank_event *event;
-        struct drm_plane planes[OVL_LAYER_NR];
+        struct drm_plane planes;
         bool pending_planes;
         void __iomem *config_regs;
         struct mtk_disp_mutex *mutex;

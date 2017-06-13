@@ -84,7 +84,7 @@ Definition
 
     struct cryp_ctx {
         struct cryp_config config;
-        u8 key[CRYP_MAX_KEY_SIZE];
+        u8 key;
         u32 keylen;
         u8 *iv;
         const u8 *indata;

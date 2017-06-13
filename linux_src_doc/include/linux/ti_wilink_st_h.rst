@@ -149,8 +149,8 @@ Definition
     #define ST_TX_SENDING 1
     #define ST_TX_WAKEUP 2
         unsigned long tx_state;
-        struct st_proto_s  *list[ST_MAX_CHANNELS];
-        bool is_registered[ST_MAX_CHANNELS];
+        struct st_proto_s  *list;
+        bool is_registered;
         unsigned long rx_state;
         unsigned long rx_count;
         struct sk_buff *rx_skb;
@@ -191,6 +191,9 @@ tx_state
 list
     the list of protocols registered, only MAX can exist, one protocol
     can register only once.
+
+is_registered
+    *undescribed*
 
 rx_state
     states to be maintained inside st's tty receive
@@ -241,14 +244,14 @@ work_write_wakeup
 st_int_write
 ============
 
-.. c:function:: int st_int_write(struct st_data_s*, const unsigned char*,  int)
+.. c:function:: int st_int_write(struct st_data_s, const unsigned char,  int)
 
     point this to tty->driver->write or tty->ops->write depending upon the kernel version
 
-    :param struct st_data_s\*:
+    :param struct st_data_s:
         *undescribed*
 
-    :param const unsigned char\*:
+    :param const unsigned char:
         *undescribed*
 
     :param  int:
@@ -327,7 +330,7 @@ Definition
         struct platform_device *kim_pdev;
         struct completion kim_rcvd;
         struct completion ldisc_installed;
-        char resp_buffer[30];
+        char resp_buffer;
         const struct firmware *fw_entry;
         unsigned nshutdown;
         unsigned long rx_state;
@@ -336,7 +339,7 @@ Definition
         struct st_data_s *core_data;
         struct chip_version version;
         unsigned char ldisc_install;
-        unsigned char dev_name[UART_DEV_NAME_LEN + 1];
+        unsigned char dev_name;
         unsigned flow_cntrl;
         unsigned baud_rate;
     }
@@ -393,6 +396,9 @@ version
 ldisc_install
     *undescribed*
 
+dev_name
+    *undescribed*
+
 flow_cntrl
     *undescribed*
 
@@ -430,8 +436,8 @@ Definition
     struct bts_header {
         u32 magic;
         u32 version;
-        u8 future[24];
-        u8 actions[0];
+        u8 future;
+        u8 actions;
     }
 
 .. _`bts_header.members`:
@@ -443,6 +449,12 @@ magic
     *undescribed*
 
 version
+    *undescribed*
+
+future
+    *undescribed*
+
+actions
     *undescribed*
 
 .. _`bts_action`:
@@ -464,7 +476,7 @@ Definition
     struct bts_action {
         u16 type;
         u16 size;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`bts_action.members`:
@@ -476,6 +488,9 @@ type
     *undescribed*
 
 size
+    *undescribed*
+
+data
     *undescribed*
 
 .. _`hci_command`:
@@ -560,7 +575,7 @@ Definition
 
     struct ti_st_plat_data {
         u32 nshutdown_gpio;
-        unsigned char dev_name[UART_DEV_NAME_LEN];
+        unsigned char dev_name;
         u32 flow_cntrl;
         u32 baud_rate;
         int (*suspend)(struct platform_device *, pm_message_t);

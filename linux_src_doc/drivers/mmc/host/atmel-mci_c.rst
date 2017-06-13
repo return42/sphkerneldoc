@@ -51,7 +51,7 @@ Definition
         unsigned long mapbase;
         struct clk *mck;
         struct platform_device *pdev;
-        struct atmel_mci_slot  *slot[ATMCI_MAX_NR_SLOTS];
+        struct atmel_mci_slot  *slot;
         struct atmel_mci_caps caps;
         u32 (*prepare_data)(struct atmel_mci *host, struct mmc_data *data);
         void (*submit_data)(struct atmel_mci *host, struct mmc_data *data);

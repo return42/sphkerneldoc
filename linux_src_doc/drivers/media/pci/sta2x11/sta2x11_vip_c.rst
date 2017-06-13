@@ -22,7 +22,7 @@ Definition
         struct video_device video_dev;
         struct pci_dev *pdev;
         struct i2c_adapter *adapter;
-        unsigned int register_save_area[IRQ_COUNT + SAVE_COUNT + AUX_COUNT];
+        unsigned int register_save_area;
         struct v4l2_subdev *decoder;
         struct v4l2_ctrl_handler ctrl_hdl;
         struct v4l2_pix_format format;

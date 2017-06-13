@@ -23,6 +23,7 @@ lib
     crc-ccitt_c
     crc-itu-t_c
     crc16_c
+    crc32_c
     crc7_c
     debugobjects_c
     devres_c
@@ -31,6 +32,7 @@ lib
     dma-debug_c
     earlycpio_c
     flex_array_c
+    gen_crc32table_c
     genalloc_c
     glob_c
     hexdump_c

@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct gpiochip_info {
-        char name[32];
-        char label[32];
+        char name;
+        char label;
         __u32 lines;
     }
 
@@ -57,8 +57,8 @@ Definition
     struct gpioline_info {
         __u32 line_offset;
         __u32 flags;
-        char name[32];
-        char consumer[32];
+        char name;
+        char consumer;
     }
 
 .. _`gpioline_info.members`:
@@ -100,10 +100,10 @@ Definition
 .. code-block:: c
 
     struct gpiohandle_request {
-        __u32 lineoffsets[GPIOHANDLES_MAX];
+        __u32 lineoffsets;
         __u32 flags;
-        __u8 default_values[GPIOHANDLES_MAX];
-        char consumer_label[32];
+        __u8 default_values;
+        char consumer_label;
         __u32 lines;
         int fd;
     }
@@ -161,7 +161,7 @@ Definition
 .. code-block:: c
 
     struct gpiohandle_data {
-        __u8 values[GPIOHANDLES_MAX];
+        __u8 values;
     }
 
 .. _`gpiohandle_data.members`:
@@ -194,7 +194,7 @@ Definition
         __u32 lineoffset;
         __u32 handleflags;
         __u32 eventflags;
-        char consumer_label[32];
+        char consumer_label;
         int fd;
     }
 

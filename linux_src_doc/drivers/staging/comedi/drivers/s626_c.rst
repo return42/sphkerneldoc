@@ -28,7 +28,7 @@ Definition
         struct s626_buffer_dma ana_buf;
         u32 *dac_wbuf;
         u16 dacpol;
-        u8 trim_setpoint[12];
+        u8 trim_setpoint;
         u32 i2c_adrs;
     }
 

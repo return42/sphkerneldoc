@@ -131,7 +131,7 @@ Definition
         uint32_t rsvd0;
         uint32_t firmware_version;
         uint32_t bios_version;
-        uint8_t driver_version[MPT2_IOCTL_VERSION_LENGTH];
+        uint8_t driver_version;
         uint8_t rsvd1;
         uint8_t scsi_id;
         uint16_t rsvd2;
@@ -173,6 +173,9 @@ firmware_version
 bios_version
     *undescribed*
 
+driver_version
+    *undescribed*
+
 rsvd1
     *undescribed*
 
@@ -205,7 +208,7 @@ Definition
         struct mpt3_ioctl_header hdr;
         uint16_t event_entries;
         uint16_t rsvd;
-        uint32_t event_types[MPI2_EVENT_NOTIFY_EVENTMASK_WORDS];
+        uint32_t event_types;
     }
 
 .. _`mpt3_ioctl_eventquery.members`:
@@ -220,6 +223,9 @@ event_entries
     *undescribed*
 
 rsvd
+    *undescribed*
+
+event_types
     *undescribed*
 
 .. _`mpt3_ioctl_eventenable`:
@@ -240,7 +246,7 @@ Definition
 
     struct mpt3_ioctl_eventenable {
         struct mpt3_ioctl_header hdr;
-        uint32_t event_types[4];
+        uint32_t event_types;
     }
 
 .. _`mpt3_ioctl_eventenable.members`:
@@ -249,6 +255,9 @@ Members
 -------
 
 hdr
+    *undescribed*
+
+event_types
     *undescribed*
 
 .. _`mpt3_ioctl_events`:
@@ -270,7 +279,7 @@ Definition
     struct MPT3_IOCTL_EVENTS {
         uint32_t event;
         uint32_t context;
-        uint8_t data[MPT3_EVENT_DATA_SIZE];
+        uint8_t data;
     }
 
 .. _`mpt3_ioctl_events.members`:
@@ -282,6 +291,9 @@ event
     *undescribed*
 
 context
+    *undescribed*
+
+data
     *undescribed*
 
 .. _`mpt3_ioctl_eventreport`:
@@ -302,7 +314,7 @@ Definition
 
     struct mpt3_ioctl_eventreport {
         struct mpt3_ioctl_header hdr;
-        struct MPT3_IOCTL_EVENTS event_data[1];
+        struct MPT3_IOCTL_EVENTS event_data;
     }
 
 .. _`mpt3_ioctl_eventreport.members`:
@@ -311,6 +323,9 @@ Members
 -------
 
 hdr
+    *undescribed*
+
+event_data
     *undescribed*
 
 .. _`mpt3_ioctl_command`:
@@ -341,7 +356,7 @@ Definition
         uint32_t data_out_size;
         uint32_t max_sense_bytes;
         uint32_t data_sge_offset;
-        uint8_t mf[1];
+        uint8_t mf;
     }
 
 .. _`mpt3_ioctl_command.members`:
@@ -380,6 +395,9 @@ max_sense_bytes
     *undescribed*
 
 data_sge_offset
+    *undescribed*
+
+mf
     *undescribed*
 
 .. _`mpt3_ioctl_btdh_mapping`:
@@ -459,7 +477,7 @@ Definition
         uint8_t buffer_type;
         uint16_t application_flags;
         uint32_t diagnostic_flags;
-        uint32_t product_specific[MPT3_PRODUCT_SPECIFIC_DWORDS];
+        uint32_t product_specific;
         uint32_t requested_buffer_size;
         uint32_t unique_id;
     }
@@ -482,6 +500,9 @@ application_flags
     *undescribed*
 
 diagnostic_flags
+    *undescribed*
+
+product_specific
     *undescribed*
 
 requested_buffer_size
@@ -560,7 +581,7 @@ Definition
         uint8_t buffer_type;
         uint16_t application_flags;
         uint32_t diagnostic_flags;
-        uint32_t product_specific[MPT3_PRODUCT_SPECIFIC_DWORDS];
+        uint32_t product_specific;
         uint32_t total_buffer_size;
         uint32_t driver_added_buffer_size;
         uint32_t unique_id;
@@ -584,6 +605,9 @@ application_flags
     *undescribed*
 
 diagnostic_flags
+    *undescribed*
+
+product_specific
     *undescribed*
 
 total_buffer_size
@@ -669,7 +693,7 @@ Definition
         uint32_t starting_offset;
         uint32_t bytes_to_read;
         uint32_t unique_id;
-        uint32_t diagnostic_data[1];
+        uint32_t diagnostic_data;
     }
 
 .. _`mpt3_diag_read_buffer.members`:
@@ -696,6 +720,9 @@ bytes_to_read
     *undescribed*
 
 unique_id
+    *undescribed*
+
+diagnostic_data
     *undescribed*
 
 .. This file was automatic generated / don't edit.

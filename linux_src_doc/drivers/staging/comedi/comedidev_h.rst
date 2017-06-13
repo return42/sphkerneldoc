@@ -880,7 +880,7 @@ Definition
 
     struct comedi_lrange {
         int length;
-        struct comedi_krange range[];
+        struct comedi_krange range;
     }
 
 .. _`comedi_lrange.members`:

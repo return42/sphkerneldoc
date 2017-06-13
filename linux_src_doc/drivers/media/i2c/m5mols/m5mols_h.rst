@@ -278,7 +278,7 @@ Definition
         struct v4l2_ctrl *jpeg_quality;
         int (*set_power)(struct device *dev, int on);
         struct mutex lock;
-        struct v4l2_mbus_framefmt ffmt[M5MOLS_RESTYPE_MAX];
+        struct v4l2_mbus_framefmt ffmt;
         int res_type;
         struct m5mols_version ver;
         struct m5mols_capture cap;

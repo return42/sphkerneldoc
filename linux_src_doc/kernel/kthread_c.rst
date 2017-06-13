@@ -117,7 +117,7 @@ that \ ``task``\  itself is safe to dereference.
 kthread_create_on_node
 ======================
 
-.. c:function:: struct task_struct *kthread_create_on_node(int (*threadfn)(void *data), void *data, int node, const char namefmt[],  ...)
+.. c:function:: struct task_struct *kthread_create_on_node(int (*threadfn)(void *data), void *data, int node, const char namefmt,  ...)
 
     create a kthread.
 
@@ -318,7 +318,7 @@ see also \ :c:func:`kthread_queue_work`\ .
 kthread_create_worker
 =====================
 
-.. c:function:: struct kthread_worker *kthread_create_worker(unsigned int flags, const char namefmt[],  ...)
+.. c:function:: struct kthread_worker *kthread_create_worker(unsigned int flags, const char namefmt,  ...)
 
     create a kthread worker
 
@@ -345,7 +345,7 @@ when the worker was SIGKILLed.
 kthread_create_worker_on_cpu
 ============================
 
-.. c:function:: struct kthread_worker *kthread_create_worker_on_cpu(int cpu, unsigned int flags, const char namefmt[],  ...)
+.. c:function:: struct kthread_worker *kthread_create_worker_on_cpu(int cpu, unsigned int flags, const char namefmt,  ...)
 
     create a kthread worker and bind it it to a given CPU and the associated NUMA node.
 

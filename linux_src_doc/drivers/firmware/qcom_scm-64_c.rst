@@ -18,7 +18,7 @@ Definition
 
     struct qcom_scm_desc {
         u32 arginfo;
-        u64 args[MAX_QCOM_SCM_ARGS];
+        u64 args;
     }
 
 .. _`qcom_scm_desc.members`:

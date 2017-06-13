@@ -74,7 +74,7 @@ Definition
         u32 sizeimage;
         enum v4l2_colorspace colorspace;
         struct v4l2_rect crop;
-        dma_addr_t paddr[4];
+        dma_addr_t paddr;
     }
 
 .. _`bdisp_frame.members`:
@@ -176,8 +176,8 @@ Definition
         unsigned int hflip:1;
         unsigned int vflip:1;
         struct bdisp_dev *bdisp_dev;
-        struct bdisp_node  *node[MAX_NB_NODE];
-        dma_addr_t node_paddr[MAX_NB_NODE];
+        struct bdisp_node  *node;
+        dma_addr_t node_paddr;
         struct v4l2_fh fh;
         struct v4l2_ctrl_handler ctrl_handler;
         struct bdisp_ctrls bdisp_ctrls;
@@ -283,7 +283,7 @@ Definition
 
     struct bdisp_dbg {
         struct dentry *debugfs_entry;
-        struct bdisp_node  *copy_node[MAX_NB_NODE];
+        struct bdisp_node  *copy_node;
         struct bdisp_request copy_request;
         ktime_t hw_start;
         s64 last_duration;

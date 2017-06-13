@@ -58,7 +58,7 @@ Definition
     struct dwc3_pci {
         struct platform_device *dwc3;
         struct pci_dev *pci;
-        u8 uuid[16];
+        u8 uuid;
         unsigned int has_dsm_for_pm:1;
     }
 

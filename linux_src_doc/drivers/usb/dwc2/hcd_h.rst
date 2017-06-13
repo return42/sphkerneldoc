@@ -221,7 +221,7 @@ Definition
     struct dwc2_tt {
         int refcount;
         struct usb_tt *usb_tt;
-        unsigned long periodic_bitmaps[];
+        unsigned long periodic_bitmaps;
     }
 
 .. _`dwc2_tt.members`:
@@ -313,7 +313,7 @@ Definition
         u16 next_active_frame;
         u16 start_active_frame;
         s16 num_hs_transfers;
-        struct dwc2_hs_transfer_time hs_transfers[DWC2_HS_SCHEDULE_UFRAMES];
+        struct dwc2_hs_transfer_time hs_transfers;
         u32 ls_start_schedule_slice;
         u16 ntd;
         struct list_head qtd_list;

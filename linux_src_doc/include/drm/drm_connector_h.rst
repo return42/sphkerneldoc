@@ -181,24 +181,24 @@ Definition
 .. code-block:: c
 
     struct drm_display_info {
-        char name[DRM_DISPLAY_INFO_LEN];
+        char name;
         unsigned int width_mm;
         unsigned int height_mm;
         unsigned int pixel_clock;
         unsigned int bpc;
         enum subpixel_order subpixel_order;
-    #define DRM_COLOR_FORMAT_RGB444 (1<<0)
-    #define DRM_COLOR_FORMAT_YCRCB444 (1<<1)
-    #define DRM_COLOR_FORMAT_YCRCB422 (1<<2)
+    #define DRM_COLOR_FORMAT_RGB444 1<<0
+    #define DRM_COLOR_FORMAT_YCRCB444 1<<1
+    #define DRM_COLOR_FORMAT_YCRCB422 1<<2
         u32 color_formats;
         const u32 *bus_formats;
         unsigned int num_bus_formats;
-    #define DRM_BUS_FLAG_DE_LOW (1<<0)
-    #define DRM_BUS_FLAG_DE_HIGH (1<<1)
-    #define DRM_BUS_FLAG_PIXDATA_POSEDGE (1<<2)
-    #define DRM_BUS_FLAG_PIXDATA_NEGEDGE (1<<3)
-    #define DRM_BUS_FLAG_DATA_MSB_TO_LSB (1<<4)
-    #define DRM_BUS_FLAG_DATA_LSB_TO_MSB (1<<5)
+    #define DRM_BUS_FLAG_DE_LOW 1<<0
+    #define DRM_BUS_FLAG_DE_HIGH 1<<1
+    #define DRM_BUS_FLAG_PIXDATA_POSEDGE 1<<2
+    #define DRM_BUS_FLAG_PIXDATA_NEGEDGE 1<<3
+    #define DRM_BUS_FLAG_DATA_MSB_TO_LSB 1<<4
+    #define DRM_BUS_FLAG_DATA_LSB_TO_MSB 1<<5
         u32 bus_flags;
         int max_tmds_clock;
         bool dvi_dual;
@@ -702,9 +702,9 @@ Definition
         struct drm_object_properties properties;
         struct drm_property_blob *path_blob_ptr;
         struct drm_property_blob *tile_blob_ptr;
-    #define DRM_CONNECTOR_POLL_HPD (1 << 0)
-    #define DRM_CONNECTOR_POLL_CONNECT (1 << 1)
-    #define DRM_CONNECTOR_POLL_DISCONNECT (1 << 2)
+    #define DRM_CONNECTOR_POLL_HPD 1 << 0
+    #define DRM_CONNECTOR_POLL_CONNECT 1 << 1
+    #define DRM_CONNECTOR_POLL_DISCONNECT 1 << 2
         uint8_t polled;
         int dpms;
         const struct drm_connector_helper_funcs *helper_private;
@@ -712,13 +712,13 @@ Definition
         enum drm_connector_force force;
         bool override_edid;
     #define DRM_CONNECTOR_MAX_ENCODER 3
-        uint32_t encoder_ids[DRM_CONNECTOR_MAX_ENCODER];
+        uint32_t encoder_ids;
         struct drm_encoder *encoder;
     #define MAX_ELD_BYTES 128
-        uint8_t eld[MAX_ELD_BYTES];
-        bool latency_present[2];
-        int video_latency[2];
-        int audio_latency[2];
+        uint8_t eld;
+        bool latency_present;
+        int video_latency;
+        int audio_latency;
         int null_edid_counter;
         unsigned bad_edid_counter;
         bool edid_corrupt;
@@ -1064,7 +1064,7 @@ Definition
         struct kref refcount;
         struct drm_device *dev;
         int id;
-        u8 group_data[8];
+        u8 group_data;
     }
 
 .. _`drm_tile_group.members`:

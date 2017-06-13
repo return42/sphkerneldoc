@@ -99,7 +99,7 @@ Definition
         unsigned int header_pulse;
         unsigned int header_space;
         unsigned int bit_pulse;
-        unsigned int bit_space[2];
+        unsigned int bit_space;
         unsigned int trailer_pulse;
         unsigned int trailer_space;
         unsigned int msb_first:1;
@@ -150,7 +150,7 @@ Definition
     struct ir_raw_timings_pl {
         unsigned int header_pulse;
         unsigned int bit_space;
-        unsigned int bit_pulse[2];
+        unsigned int bit_pulse;
         unsigned int trailer_space;
         unsigned int msb_first:1;
     }

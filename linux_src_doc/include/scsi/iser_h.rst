@@ -19,7 +19,7 @@ Definition
 
     struct iser_cm_hdr {
         u8 flags;
-        u8 rsvd[3];
+        u8 rsvd;
     }
 
 .. _`iser_cm_hdr.members`:
@@ -51,7 +51,7 @@ Definition
 
     struct iser_ctrl {
         u8 flags;
-        u8 rsvd[3];
+        u8 rsvd;
         __be32 write_stag;
         __be64 write_va;
         __be32 read_stag;

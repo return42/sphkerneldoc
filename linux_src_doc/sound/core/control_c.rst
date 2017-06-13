@@ -514,7 +514,7 @@ boolean control with stereo two channels.
 snd_ctl_enum_info
 =================
 
-.. c:function:: int snd_ctl_enum_info(struct snd_ctl_elem_info *info, unsigned int channels, unsigned int items, const char *const names[])
+.. c:function:: int snd_ctl_enum_info(struct snd_ctl_elem_info *info, unsigned int channels, unsigned int items, const char *const names)
 
     fills the info structure for an enumerated control
 

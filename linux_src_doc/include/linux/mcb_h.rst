@@ -24,7 +24,7 @@ Definition
         u8 revision;
         char model;
         u8 minor;
-        char name[CHAMELEON_FILENAME_LEN + 1];
+        char name;
         int (*get_irq)(struct mcb_device *dev);
     }
 
@@ -49,6 +49,9 @@ model
     the FPGA's model number
 
 minor
+    *undescribed*
+
+name
     *undescribed*
 
 get_irq

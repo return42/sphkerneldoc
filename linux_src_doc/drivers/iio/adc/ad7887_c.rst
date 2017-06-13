@@ -19,7 +19,7 @@ Definition
 
     struct ad7887_chip_info {
         u16 int_vref_mv;
-        struct iio_chan_spec channel[3];
+        struct iio_chan_spec channel;
     }
 
 .. _`ad7887_chip_info.members`:

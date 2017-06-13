@@ -103,7 +103,7 @@ Definition
 .. code-block:: c
 
     struct dprc_obj_desc {
-        char type[16];
+        char type;
         int id;
         u16 vendor;
         u16 ver_major;
@@ -111,7 +111,7 @@ Definition
         u8 irq_count;
         u8 region_count;
         u32 state;
-        char label[16];
+        char label;
         u16 flags;
     }
 

@@ -28,9 +28,9 @@ Definition
         uint32_t timing1;
         uint32_t timing2;
         struct dma_chan *dmach;
-        uint32_t pio_data[2];
+        uint32_t pio_data;
         uint32_t addr_data;
-        struct scatterlist sg_io[2];
+        struct scatterlist sg_io;
         bool dma_read;
     }
 
@@ -69,7 +69,13 @@ timing2
 dmach
     *undescribed*
 
+pio_data
+    *undescribed*
+
 addr_data
+    *undescribed*
+
+sg_io
     *undescribed*
 
 dma_read

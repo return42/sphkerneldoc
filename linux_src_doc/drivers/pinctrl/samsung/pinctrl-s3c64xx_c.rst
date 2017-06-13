@@ -19,8 +19,8 @@ Definition
 
     struct s3c64xx_eint0_data {
         struct samsung_pinctrl_drv_data *drvdata;
-        struct irq_domain  *domains[NUM_EINT0];
-        u8 pins[NUM_EINT0];
+        struct irq_domain  *domains;
+        u8 pins;
     }
 
 .. _`s3c64xx_eint0_data.members`:
@@ -55,7 +55,7 @@ Definition
 
     struct s3c64xx_eint0_domain_data {
         struct samsung_pin_bank *bank;
-        u8 eints[];
+        u8 eints;
     }
 
 .. _`s3c64xx_eint0_domain_data.members`:
@@ -87,7 +87,7 @@ Definition
 
     struct s3c64xx_eint_gpio_data {
         struct samsung_pinctrl_drv_data *drvdata;
-        struct irq_domain  *domains[];
+        struct irq_domain  *domains;
     }
 
 .. _`s3c64xx_eint_gpio_data.members`:

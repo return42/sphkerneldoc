@@ -55,10 +55,10 @@ Definition
 
     struct st_slim_rproc {
         struct rproc *rproc;
-        struct st_slim_mem mem[ST_SLIM_MEM_MAX];
+        struct st_slim_mem mem;
         void __iomem *slimcore;
         void __iomem *peri;
-        struct clk  *clks[ST_SLIM_MAX_CLK];
+        struct clk  *clks;
     }
 
 .. _`st_slim_rproc.members`:

@@ -65,13 +65,13 @@ Definition
 .. code-block:: c
 
     struct fimc_md {
-        struct fimc_csis_info csis[CSIS_MAX_ENTITIES];
-        struct fimc_sensor_info sensor[FIMC_MAX_SENSORS];
+        struct fimc_csis_info csis;
+        struct fimc_sensor_info sensor;
         int num_sensors;
-        struct fimc_camclk_info camclk[FIMC_MAX_CAMCLKS];
-        struct clk  *wbclk[FIMC_MAX_WBCLKS];
-        struct fimc_lite  *fimc_lite[FIMC_LITE_MAX_DEVS];
-        struct fimc_dev  *fimc[FIMC_MAX_DEVS];
+        struct fimc_camclk_info camclk;
+        struct clk  *wbclk;
+        struct fimc_lite  *fimc_lite;
+        struct fimc_dev  *fimc;
         struct fimc_is *fimc_is;
         bool use_isp;
         struct device *pmf;
@@ -80,7 +80,7 @@ Definition
         struct platform_device *pdev;
         struct fimc_pinctrl clk_provider;
         struct v4l2_async_notifier subdev_notifier;
-        struct v4l2_async_subdev  *async_subdevs[FIMC_MAX_SENSORS];
+        struct v4l2_async_subdev  *async_subdevs;
         bool user_subdev_api;
         spinlock_t slock;
         struct list_head pipelines;
@@ -103,6 +103,12 @@ num_sensors
 
 camclk
     external sensor clock information
+
+wbclk
+    *undescribed*
+
+fimc_lite
+    *undescribed*
 
 fimc
     array of registered fimc devices
@@ -129,6 +135,9 @@ clk_provider
     *undescribed*
 
 subdev_notifier
+    *undescribed*
+
+async_subdevs
     *undescribed*
 
 user_subdev_api

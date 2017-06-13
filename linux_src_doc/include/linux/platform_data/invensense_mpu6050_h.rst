@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct inv_mpu6050_platform_data {
-        __s8 orientation[9];
+        __s8 orientation;
     }
 
 .. _`inv_mpu6050_platform_data.members`:

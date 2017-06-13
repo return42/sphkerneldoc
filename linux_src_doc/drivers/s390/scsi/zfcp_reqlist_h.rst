@@ -19,7 +19,7 @@ Definition
 
     struct zfcp_reqlist {
         spinlock_t lock;
-        struct list_head buckets[ZFCP_REQ_LIST_BUCKETS];
+        struct list_head buckets;
     }
 
 .. _`zfcp_reqlist.members`:
@@ -29,6 +29,9 @@ Members
 
 lock
     Spinlock for protecting the hash list
+
+buckets
+    *undescribed*
 
 .. _`zfcp_reqlist_alloc`:
 

@@ -54,7 +54,7 @@ Definition
         unsigned long pgoff;
         unsigned int nr_blocks;
         struct msc *msc;
-        struct msc_block block[0];
+        struct msc_block block;
     }
 
 .. _`msc_window.members`:

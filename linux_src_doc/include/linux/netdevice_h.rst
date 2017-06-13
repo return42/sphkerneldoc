@@ -322,7 +322,7 @@ Definition
 .. code-block:: c
 
     struct net_device {
-        char name[IFNAMSIZ];
+        char name;
         struct hlist_node name_hlist;
         char *ifalias;
         unsigned long mem_end;
@@ -338,14 +338,14 @@ Definition
         struct list_head ptype_all;
         struct list_head ptype_specific;
         struct {unnamed_struct};
-    #if IS_ENABLED(CONFIG_GARP)
+    #if IS_ENABLEDCONFIG_GARP
         struct garp_port __rcu *garp_port;
     #endif
-    #if IS_ENABLED(CONFIG_MRP)
+    #if IS_ENABLEDCONFIG_MRP
         struct mrp_port __rcu *mrp_port;
     #endif
         struct device dev;
-        const struct attribute_group  *sysfs_groups[4];
+        const struct attribute_group  *sysfs_groups;
         const struct attribute_group *sysfs_rx_queue_group;
         const struct rtnl_link_ops *rtnl_link_ops;
     #define GSO_MAX_SIZE 65536
@@ -356,12 +356,12 @@ Definition
         const struct dcbnl_rtnl_ops *dcbnl_ops;
     #endif
         u8 num_tc;
-        struct netdev_tc_txq tc_to_txq[TC_MAX_QUEUE];
-        u8 prio_tc_map[TC_BITMASK + 1];
-    #if IS_ENABLED(CONFIG_FCOE)
+        struct netdev_tc_txq tc_to_txq;
+        u8 prio_tc_map;
+    #if IS_ENABLEDCONFIG_FCOE
         unsigned int fcoe_ddp_xid;
     #endif
-    #if IS_ENABLED(CONFIG_CGROUP_NET_PRIO)
+    #if IS_ENABLEDCONFIG_CGROUP_NET_PRIO
         struct netprio_map __rcu *priomap;
     #endif
         struct phy_device *phydev;

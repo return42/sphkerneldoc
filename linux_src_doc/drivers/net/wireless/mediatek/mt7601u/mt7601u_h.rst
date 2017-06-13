@@ -22,7 +22,7 @@ Definition
         struct device *dev;
         unsigned long state;
         struct mutex mutex;
-        unsigned long wcid_mask[N_WCIDS / BITS_PER_LONG];
+        unsigned long wcid_mask;
         struct cfg80211_chan_def chandef;
         struct ieee80211_supported_band *sband_2g;
         struct mt7601u_mcu mcu;
@@ -31,11 +31,11 @@ Definition
         struct workqueue_struct *stat_wq;
         struct delayed_work stat_work;
         struct mt76_wcid *mon_wcid;
-        struct mt76_wcid __rcu  *wcid[N_WCIDS];
+        struct mt76_wcid __rcu  *wcid;
         spinlock_t lock;
         spinlock_t mac_lock;
         const u16 *beacon_offsets;
-        u8 macaddr[ETH_ALEN];
+        u8 macaddr;
         struct mt7601u_eeprom_params *ee;
         struct mutex vendor_req_mutex;
         void *vend_buf;
@@ -43,8 +43,8 @@ Definition
         struct mutex hw_atomic_mutex;
         u32 rxfilter;
         u32 debugfs_reg;
-        u8 out_eps[8];
-        u8 in_eps[8];
+        u8 out_eps;
+        u8 in_eps;
         u16 out_max_packet;
         u16 in_max_packet;
         spinlock_t tx_lock;
@@ -56,7 +56,7 @@ Definition
         struct tasklet_struct rx_tasklet;
         struct mt7601u_rx_queue rx_q;
         spinlock_t con_mon_lock;
-        u8 ap_bssid[ETH_ALEN];
+        u8 ap_bssid;
         s8 bcn_freq_off;
         u8 bcn_phy_mode;
         int avg_rssi;
@@ -74,7 +74,7 @@ Definition
         bool pll_lock_protect;
         u8 bw;
         bool chan_ext_below;
-        u32 rf_pa_mode[2];
+        u32 rf_pa_mode;
         struct mac_stats stats;
     }
 
@@ -94,6 +94,9 @@ state
 
 mutex
     ensures exclusive access from mac80211 callbacks.
+
+wcid_mask
+    *undescribed*
 
 chandef
     *undescribed*
@@ -119,6 +122,9 @@ stat_work
 mon_wcid
     *undescribed*
 
+wcid
+    *undescribed*
+
 lock
     protects \ ``wcid``\ ->tx_rate.
 
@@ -126,6 +132,9 @@ mac_lock
     locks out mac80211's tx status and rx paths.
 
 beacon_offsets
+    *undescribed*
+
+macaddr
     *undescribed*
 
 ee
@@ -149,6 +158,12 @@ rxfilter
     *undescribed*
 
 debugfs_reg
+    *undescribed*
+
+out_eps
+    *undescribed*
+
+in_eps
     *undescribed*
 
 out_max_packet
@@ -184,6 +199,9 @@ rx_q
 
 con_mon_lock
     protects \ ``ap_bssid``\ , \ ``bcn``\ \_\*, \ ``avg_rssi``\ .
+
+ap_bssid
+    *undescribed*
 
 bcn_freq_off
     *undescribed*
@@ -234,6 +252,9 @@ bw
     *undescribed*
 
 chan_ext_below
+    *undescribed*
+
+rf_pa_mode
     *undescribed*
 
 stats

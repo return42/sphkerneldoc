@@ -22,8 +22,8 @@ Definition
         struct i2c_adapter adap;
         struct cros_ec_device *ec;
         u16 remote_bus;
-        u8 request_buf[256];
-        u8 response_buf[256];
+        u8 request_buf;
+        u8 response_buf;
     }
 
 .. _`ec_i2c_device.members`:
@@ -54,7 +54,7 @@ response_buf
 ec_i2c_count_message
 ====================
 
-.. c:function:: int ec_i2c_count_message(const struct i2c_msg i2c_msgs[], int num)
+.. c:function:: int ec_i2c_count_message(const struct i2c_msg i2c_msgs, int num)
 
     Count bytes needed for ec_i2c_construct_message
 
@@ -76,7 +76,7 @@ Returns the number of bytes the messages will take up.
 ec_i2c_construct_message
 ========================
 
-.. c:function:: int ec_i2c_construct_message(u8 *buf, const struct i2c_msg i2c_msgs[], int num, u16 bus_num)
+.. c:function:: int ec_i2c_construct_message(u8 *buf, const struct i2c_msg i2c_msgs, int num, u16 bus_num)
 
     construct a message to go to the EC
 
@@ -107,7 +107,7 @@ Returns 0 or a negative error number.
 ec_i2c_count_response
 =====================
 
-.. c:function:: int ec_i2c_count_response(struct i2c_msg i2c_msgs[], int num)
+.. c:function:: int ec_i2c_count_response(struct i2c_msg i2c_msgs, int num)
 
     Count bytes needed for ec_i2c_parse_response
 
@@ -129,7 +129,7 @@ Returns the number of response bytes expeced.
 ec_i2c_parse_response
 =====================
 
-.. c:function:: int ec_i2c_parse_response(const u8 *buf, struct i2c_msg i2c_msgs[], int *num)
+.. c:function:: int ec_i2c_parse_response(const u8 *buf, struct i2c_msg i2c_msgs, int *num)
 
     Parse a response from the EC
 

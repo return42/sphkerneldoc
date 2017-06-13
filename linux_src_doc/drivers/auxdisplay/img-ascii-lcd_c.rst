@@ -63,7 +63,7 @@ Definition
         unsigned int scroll_pos;
         unsigned int scroll_rate;
         struct timer_list timer;
-        char curr[];
+        char curr;
     }
 
 .. _`img_ascii_lcd_ctx.members`:

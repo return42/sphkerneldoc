@@ -27,7 +27,7 @@ or user address is converted into  physical address
 vpif_buffer_queue_setup
 =======================
 
-.. c:function:: int vpif_buffer_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers, unsigned int *nplanes, unsigned int sizes[], struct device  *alloc_devs[])
+.. c:function:: int vpif_buffer_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers, unsigned int *nplanes, unsigned int sizes, struct device  *alloc_devs)
 
     Callback function for buffer setup.
 

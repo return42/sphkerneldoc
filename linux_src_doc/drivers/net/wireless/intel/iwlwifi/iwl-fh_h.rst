@@ -529,7 +529,7 @@ Definition
 
     struct iwl_tfh_tfd {
         __le16 num_tbs;
-        struct iwl_tfh_tb tbs[IWL_TFH_NUM_TBS];
+        struct iwl_tfh_tb tbs;
         __le32 __pad;
     }
 
@@ -539,6 +539,9 @@ Members
 -------
 
 num_tbs
+    *undescribed*
+
+tbs
     *undescribed*
 
 __pad
@@ -561,13 +564,16 @@ Definition
 .. code-block:: c
 
     struct iwlagn_scd_bc_tbl {
-        __le16 tfd_offset[TFD_QUEUE_BC_SIZE];
+        __le16 tfd_offset;
     }
 
 .. _`iwlagn_scd_bc_tbl.members`:
 
 Members
 -------
+
+tfd_offset
+    *undescribed*
 
 .. _`iwlagn_scd_bc_tbl.for-devices-up-to-a000`:
 

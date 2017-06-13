@@ -24,7 +24,7 @@ Definition
         uint32_t dtc;
         uint32_t sd;
         uint32_t drt;
-        uint32_t reserved[2];
+        uint32_t reserved;
     }
 
 .. _`jz4780_dma_hwdesc.members`:
@@ -51,6 +51,9 @@ sd
 
 drt
     request type
+
+reserved
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

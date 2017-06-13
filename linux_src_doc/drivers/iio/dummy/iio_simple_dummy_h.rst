@@ -20,7 +20,7 @@ Definition
     struct iio_dummy_state {
         int dac_val;
         int single_ended_adc_val;
-        int differential_adc_val[2];
+        int differential_adc_val;
         int accel_val;
         int accel_calibbias;
         int activity_running;

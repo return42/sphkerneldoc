@@ -27,7 +27,7 @@ Definition
         struct list_head dev_node;
         struct list_head dom_node;
         struct list_head ctx_list;
-        unsigned long context_map[BITS_TO_LONGS(IOMMU_MAX_CBS)];
+        unsigned long context_map;
         struct iommu_device iommu;
     }
 
@@ -61,6 +61,9 @@ dom_node
     *undescribed*
 
 ctx_list
+    *undescribed*
+
+context_map
     *undescribed*
 
 iommu
@@ -141,7 +144,7 @@ Definition
     struct msm_iommu_ctx_dev {
         struct device_node *of_node;
         int num;
-        int mids[MAX_NUM_MIDS];
+        int mids;
         int num_mids;
         struct list_head list;
     }
@@ -155,6 +158,9 @@ of_node
     *undescribed*
 
 num
+    *undescribed*
+
+mids
     *undescribed*
 
 num_mids

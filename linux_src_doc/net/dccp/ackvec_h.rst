@@ -18,12 +18,12 @@ Definition
 .. code-block:: c
 
     struct dccp_ackvec {
-        u8 av_buf[DCCPAV_MAX_ACKVEC_LEN];
+        u8 av_buf;
         u16 av_buf_head;
         u16 av_buf_tail;
         u64 av_buf_ackno:48;
         u64 av_tail_ackno:48;
-        bool av_buf_nonce[DCCPAV_NUM_ACKVECS];
+        bool av_buf_nonce;
         u8 av_overflow:1;
         struct list_head av_records;
     }

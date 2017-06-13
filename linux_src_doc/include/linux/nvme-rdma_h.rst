@@ -22,7 +22,7 @@ Definition
         __le16 qid;
         __le16 hrqsize;
         __le16 hsqsize;
-        u8 rsvd[24];
+        u8 rsvd;
     }
 
 .. _`nvme_rdma_cm_req.members`:
@@ -41,6 +41,9 @@ hrqsize
 
 hsqsize
     host send queue size to be created
+
+rsvd
+    *undescribed*
 
 .. _`nvme_rdma_cm_rep`:
 
@@ -61,7 +64,7 @@ Definition
     struct nvme_rdma_cm_rep {
         __le16 recfmt;
         __le16 crqsize;
-        u8 rsvd[28];
+        u8 rsvd;
     }
 
 .. _`nvme_rdma_cm_rep.members`:
@@ -74,6 +77,9 @@ recfmt
 
 crqsize
     controller receive queue size
+
+rsvd
+    *undescribed*
 
 .. _`nvme_rdma_cm_rej`:
 

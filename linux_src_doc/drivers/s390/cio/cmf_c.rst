@@ -164,7 +164,7 @@ Definition
         u32 device_disconnect_time;
         u32 control_unit_queuing_time;
         u32 device_active_only_time;
-        u32 reserved[2];
+        u32 reserved;
     }
 
 .. _`cmb.members`:
@@ -234,7 +234,7 @@ Definition
         u32 device_active_only_time;
         u32 device_busy_time;
         u32 initial_command_response_time;
-        u32 reserved[7];
+        u32 reserved;
     }
 
 .. _`cmbe.members`:

@@ -163,7 +163,7 @@ Definition
 .. code-block:: c
 
     struct s3c_iotimings {
-        union s3c_iobank bank[MAX_BANKS];
+        union s3c_iobank bank;
     }
 
 .. _`s3c_iotimings.members`:

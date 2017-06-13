@@ -204,7 +204,7 @@ Definition
         s64 default_value;
         u32 elems;
         u32 elem_size;
-        u32 dims[V4L2_CTRL_MAX_DIMS];
+        u32 dims;
         u32 nr_of_dims;
         union cur;
         union v4l2_ctrl_ptr p_new;
@@ -479,7 +479,7 @@ Definition
         s64 max;
         u64 step;
         s64 def;
-        u32 dims[V4L2_CTRL_MAX_DIMS];
+        u32 dims;
         u32 elem_size;
         u32 flags;
         u64 menu_skip_mask;

@@ -27,7 +27,7 @@ Returns 0 on successful write.
 nvram_remove_partition
 ======================
 
-.. c:function:: int nvram_remove_partition(const char *name, int sig, const char  *exceptions[])
+.. c:function:: int nvram_remove_partition(const char *name, int sig, const char  *exceptions)
 
     Remove one or more partitions in nvram
 

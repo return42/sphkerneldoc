@@ -25,12 +25,12 @@ Definition
         u8 mimo_delim;
         u8 single_stream_ant_msk;
         u8 dual_stream_ant_msk;
-        u8 initial_rate_index[AC_NUM];
+        u8 initial_rate_index;
         __le16 agg_time_limit;
         u8 agg_disable_start_th;
         u8 agg_frame_cnt_limit;
         __le32 reserved2;
-        __le32 rs_table[LQ_MAX_RETRY_NUM];
+        __le32 rs_table;
         __le32 ss_params;
     }
 

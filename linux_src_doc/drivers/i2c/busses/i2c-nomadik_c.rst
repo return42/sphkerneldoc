@@ -311,7 +311,7 @@ nmk_i2c_xfer_one
 nmk_i2c_xfer
 ============
 
-.. c:function:: int nmk_i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg msgs[], int num_msgs)
+.. c:function:: int nmk_i2c_xfer(struct i2c_adapter *i2c_adap, struct i2c_msg msgs, int num_msgs)
 
     I2C transfer function used by kernel framework
 

@@ -27,9 +27,9 @@ Definition
         unsigned short ctrl_src;
         struct spi_transfer xfer;
         struct spi_message msg;
-        struct spi_transfer freq_xfer[4];
+        struct spi_transfer freq_xfer;
         struct spi_message freq_msg;
-        struct spi_transfer phase_xfer[2];
+        struct spi_transfer phase_xfer;
         struct spi_message phase_msg;
         struct mutex lock;
         union {unnamed_union};

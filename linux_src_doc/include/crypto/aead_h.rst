@@ -24,7 +24,7 @@ Definition
         u8 *iv;
         struct scatterlist *src;
         struct scatterlist *dst;
-        void  *__ctx[];
+        void  *__ctx;
     }
 
 .. _`aead_request.members`:

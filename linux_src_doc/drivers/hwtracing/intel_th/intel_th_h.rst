@@ -79,7 +79,7 @@ Definition
         int id;
         bool host_mode;
         struct intel_th_output output;
-        char name[];
+        char name;
     }
 
 .. _`intel_th_device.members`:
@@ -251,7 +251,7 @@ Definition
 
     struct intel_th {
         struct device *dev;
-        struct intel_th_device  *thdev[TH_SUBDEVICE_MAX];
+        struct intel_th_device  *thdev;
         struct intel_th_device *hub;
         int id;
         int major;

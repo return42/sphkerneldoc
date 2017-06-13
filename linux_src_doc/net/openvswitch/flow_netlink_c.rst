@@ -32,7 +32,7 @@ ovs_nla_get_match
 ovs_nla_get_flow_metadata
 =========================
 
-.. c:function:: int ovs_nla_get_flow_metadata(struct net *net, const struct nlattr  *a[OVS_KEY_ATTR_MAX + 1], u64 attrs, struct sw_flow_key *key, bool log)
+.. c:function:: int ovs_nla_get_flow_metadata(struct net *net, const struct nlattr  *a, u64 attrs, struct sw_flow_key *key, bool log)
 
     parses Netlink attributes into a flow key.
 

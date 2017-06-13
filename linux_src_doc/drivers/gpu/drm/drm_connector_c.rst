@@ -332,7 +332,7 @@ Called by a driver the first time a DVI-I connector is made.
 drm_mode_create_tv_properties
 =============================
 
-.. c:function:: int drm_mode_create_tv_properties(struct drm_device *dev, unsigned int num_modes, const char * const modes[])
+.. c:function:: int drm_mode_create_tv_properties(struct drm_device *dev, unsigned int num_modes, const char * const modes)
 
     create TV specific connector properties
 
@@ -577,7 +577,7 @@ drop reference to tile group and free if 0.
 drm_mode_get_tile_group
 =======================
 
-.. c:function:: struct drm_tile_group *drm_mode_get_tile_group(struct drm_device *dev, char topology[8])
+.. c:function:: struct drm_tile_group *drm_mode_get_tile_group(struct drm_device *dev, char topology)
 
     get a reference to an existing tile group
 
@@ -606,7 +606,7 @@ tile group or NULL if not found.
 drm_mode_create_tile_group
 ==========================
 
-.. c:function:: struct drm_tile_group *drm_mode_create_tile_group(struct drm_device *dev, char topology[8])
+.. c:function:: struct drm_tile_group *drm_mode_create_tile_group(struct drm_device *dev, char topology)
 
     create a tile group from a displayid description
 

@@ -78,8 +78,8 @@ Definition
         unsigned char chan_priority;
         unsigned int block_size;
         unsigned char nr_masters;
-        unsigned char data_width[DW_DMA_MAX_NR_MASTERS];
-        unsigned char multi_block[DW_DMA_MAX_NR_CHANNELS];
+        unsigned char data_width;
+        unsigned char multi_block;
     }
 
 .. _`dw_dma_platform_data.members`:

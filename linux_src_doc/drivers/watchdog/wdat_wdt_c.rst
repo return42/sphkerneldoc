@@ -59,7 +59,7 @@ Definition
         unsigned int period;
         bool stopped_in_sleep;
         bool stopped;
-        struct list_head  *instructions[MAX_WDAT_ACTIONS];
+        struct list_head  *instructions;
     }
 
 .. _`wdat_wdt.members`:
@@ -81,6 +81,9 @@ stopped_in_sleep
 
 stopped
     Was the watchdog stopped by the driver in suspend
+
+instructions
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

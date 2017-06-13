@@ -191,11 +191,11 @@ Definition
         int tx_ring_used;
         int tx_ring_next_slot;
         dma_addr_t tx_ring_dma;
-        struct ks8695_skbuff tx_buffers[MAX_TX_DESC];
+        struct ks8695_skbuff tx_buffers;
         spinlock_t txq_lock;
         struct rx_ring_desc *rx_ring;
         dma_addr_t rx_ring_dma;
-        struct ks8695_skbuff rx_buffers[MAX_RX_DESC];
+        struct ks8695_skbuff rx_buffers;
         int next_rx_desc_read;
         spinlock_t rx_lock;
         int msg_enable;

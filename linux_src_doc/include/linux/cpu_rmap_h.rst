@@ -22,7 +22,7 @@ Definition
         u16 size;
         u16 used;
         void **obj;
-        struct near[0];
+        struct near;
     }
 
 .. _`cpu_rmap.members`:

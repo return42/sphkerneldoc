@@ -93,8 +93,8 @@ Definition
         struct drm_mode_object base;
         const struct drm_format_info *format;
         const struct drm_framebuffer_funcs *funcs;
-        unsigned int pitches[4];
-        unsigned int offsets[4];
+        unsigned int pitches;
+        unsigned int offsets;
         uint64_t modifier;
         unsigned int width;
         unsigned int height;

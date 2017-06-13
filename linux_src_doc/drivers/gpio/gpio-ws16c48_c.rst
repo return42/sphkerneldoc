@@ -19,8 +19,8 @@ Definition
 
     struct ws16c48_gpio {
         struct gpio_chip chip;
-        unsigned char io_state[6];
-        unsigned char out_state[6];
+        unsigned char io_state;
+        unsigned char out_state;
         raw_spinlock_t lock;
         unsigned long irq_mask;
         unsigned long flow_mask;

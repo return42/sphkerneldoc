@@ -216,14 +216,14 @@ Definition
 .. code-block:: c
 
     struct iwl_host_cmd {
-        const void  *data[IWL_MAX_CMD_TBS_PER_TFD];
+        const void  *data;
         struct iwl_rx_packet *resp_pkt;
         unsigned long _rx_page_addr;
         u32 _rx_page_order;
         u32 flags;
         u32 id;
-        u16 len[IWL_MAX_CMD_TBS_PER_TFD];
-        u8 dataflags[IWL_MAX_CMD_TBS_PER_TFD];
+        u16 len;
+        u8 dataflags;
     }
 
 .. _`iwl_host_cmd.members`:
@@ -860,7 +860,7 @@ Definition
         u32 hw_rev;
         u32 hw_rf_id;
         u32 hw_id;
-        char hw_id_str[52];
+        char hw_id_str;
         u8 rx_mpdu_cmd;
         u8 rx_mpdu_cmd_hdr_size;
         bool pm_support;
@@ -870,14 +870,14 @@ Definition
         bool wide_cmd_header;
         u8 num_rx_queues;
         struct kmem_cache *dev_cmd_pool;
-        char dev_cmd_pool_name[50];
+        char dev_cmd_pool_name;
         struct dentry *dbgfs_dir;
     #ifdef CONFIG_LOCKDEP
         struct lockdep_map sync_cmd_lockdep_map;
     #endif
         u64 dflt_pwr_limit;
         const struct iwl_fw_dbg_dest_tlv *dbg_dest_tlv;
-        const struct iwl_fw_dbg_conf_tlv  *dbg_conf_tlv[FW_DBG_CONF_MAX];
+        const struct iwl_fw_dbg_conf_tlv  *dbg_conf_tlv;
         struct iwl_fw_dbg_trigger_tlv * const *dbg_trigger_tlv;
         u8 dbg_dest_reg_num;
         u32 paging_req_addr;
@@ -886,7 +886,7 @@ Definition
         enum iwl_plat_pm_mode system_pm_mode;
         enum iwl_plat_pm_mode runtime_pm_mode;
         bool suspending;
-        char trans_specific[0];
+        char trans_specific;
     }
 
 .. _`iwl_trans.members`:
@@ -965,6 +965,9 @@ dev_cmd_pool
     pool for Tx cmd allocation - for internal use only.
     The user should use iwl_trans_{alloc,free}_tx_cmd.
 
+dev_cmd_pool_name
+    *undescribed*
+
 dbgfs_dir
     *undescribed*
 
@@ -1009,6 +1012,9 @@ runtime_pm_mode
     supposed to change during runtime.
 
 suspending
+    *undescribed*
+
+trans_specific
     *undescribed*
 
 .. _`iwl_trans.description`:

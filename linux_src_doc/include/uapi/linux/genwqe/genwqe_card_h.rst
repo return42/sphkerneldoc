@@ -69,7 +69,7 @@ Definition
         __u64 cmplt_ts;
         __u64 disp_ts;
         __u64 ddata_addr;
-        __u8 asv[DDCB_ASV_LENGTH];
+        __u8 asv;
         union {unnamed_union};
     }
 
@@ -121,6 +121,9 @@ disp_ts
     *undescribed*
 
 ddata_addr
+    *undescribed*
+
+asv
     *undescribed*
 
 {unnamed_union}

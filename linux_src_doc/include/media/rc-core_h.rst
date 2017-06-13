@@ -127,7 +127,7 @@ Definition
         struct device dev;
         atomic_t initialized;
         bool managed_alloc;
-        const struct attribute_group  *sysfs_groups[5];
+        const struct attribute_group  *sysfs_groups;
         const char *input_name;
         const char *input_phys;
         struct input_id input_id;

@@ -102,7 +102,7 @@ Definition
 
     struct c67x00_device {
         struct c67x00_hpi hpi;
-        struct c67x00_sie sie[C67X00_SIES];
+        struct c67x00_sie sie;
         struct platform_device *pdev;
         struct c67x00_platform_data *pdata;
     }

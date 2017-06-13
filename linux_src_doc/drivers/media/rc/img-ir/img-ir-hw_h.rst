@@ -464,7 +464,7 @@ Definition
 .. code-block:: c
 
     struct img_ir_priv_hw {
-        unsigned int ct_quirks[4];
+        unsigned int ct_quirks;
         struct rc_dev *rdev;
         struct notifier_block clk_nb;
         struct timer_list end_timer;
@@ -474,7 +474,7 @@ Definition
         unsigned long clk_hz;
         struct img_ir_reg_timings reg_timings;
         unsigned int flags;
-        struct img_ir_filter filters[RC_FILTER_MAX];
+        struct img_ir_filter filters;
         enum img_ir_mode mode;
         bool stopping;
         u32 suspend_irqen;

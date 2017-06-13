@@ -19,7 +19,7 @@ Definition
 
     struct devfreq_governor {
         struct list_head node;
-        const char name[DEVFREQ_NAME_LEN];
+        const char name;
         const unsigned int immutable;
         int (*get_target_freq)(struct devfreq *this, unsigned long *freq);
         int (*event_handler)(struct devfreq *devfreq,unsigned int event, void *data);

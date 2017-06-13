@@ -1075,7 +1075,7 @@ softirq to process the queue.
 deliver_partial_bundle
 ======================
 
-.. c:function:: void deliver_partial_bundle(struct t3cdev *tdev, struct sge_rspq *q, struct sk_buff  *skbs[], int n)
+.. c:function:: void deliver_partial_bundle(struct t3cdev *tdev, struct sge_rspq *q, struct sk_buff  *skbs, int n)
 
     deliver a (partial) bundle of Rx offload pkts
 
@@ -1129,7 +1129,7 @@ on the packets in each.
 rx_offload
 ==========
 
-.. c:function:: int rx_offload(struct t3cdev *tdev, struct sge_rspq *rq, struct sk_buff *skb, struct sk_buff  *rx_gather[], unsigned int gather_idx)
+.. c:function:: int rx_offload(struct t3cdev *tdev, struct sge_rspq *rq, struct sk_buff *skb, struct sk_buff  *rx_gather, unsigned int gather_idx)
 
     process a received offload packet
 

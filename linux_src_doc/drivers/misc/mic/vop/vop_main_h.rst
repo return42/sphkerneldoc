@@ -90,7 +90,7 @@ Definition
         unsigned long tx_len_unaligned;
         unsigned long tx_dst_unaligned;
         unsigned long rx_dst_unaligned;
-        struct vop_vringh vvr[MIC_MAX_VRINGS];
+        struct vop_vringh vvr;
         struct work_struct virtio_bh_work;
         struct mic_device_desc *dd;
         struct mic_device_ctrl *dc;
@@ -139,6 +139,9 @@ tx_dst_unaligned
     *undescribed*
 
 rx_dst_unaligned
+    *undescribed*
+
+vvr
     *undescribed*
 
 virtio_bh_work

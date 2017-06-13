@@ -34,7 +34,7 @@ Definition
         __u8 eth_tp_mdix;
         __u8 eth_tp_mdix_ctrl;
         __u32 lp_advertising;
-        __u32 reserved[2];
+        __u32 reserved;
     }
 
 .. _`ethtool_cmd.members`:
@@ -112,6 +112,9 @@ lp_advertising
     through autonegotiation; 0 if unknown or not applicable.
     Read-only.
 
+reserved
+    *undescribed*
+
 .. _`ethtool_cmd.description`:
 
 Description
@@ -164,12 +167,12 @@ Definition
 
     struct ethtool_drvinfo {
         __u32 cmd;
-        char driver[32];
-        char version[32];
-        char fw_version[ETHTOOL_FWVERS_LEN];
-        char bus_info[ETHTOOL_BUSINFO_LEN];
-        char erom_version[ETHTOOL_EROMVERS_LEN];
-        char reserved2[12];
+        char driver;
+        char version;
+        char fw_version;
+        char bus_info;
+        char erom_version;
+        char reserved2;
         __u32 n_priv_flags;
         __u32 n_stats;
         __u32 testinfo_len;
@@ -203,6 +206,9 @@ bus_info
 
 erom_version
     Expansion ROM version string; may be an empty string
+
+reserved2
+    *undescribed*
 
 n_priv_flags
     Number of flags valid for \ ``ETHTOOL_GPFLAGS``\  and
@@ -257,7 +263,7 @@ Definition
         __u32 cmd;
         __u32 supported;
         __u32 wolopts;
-        __u8 sopass[SOPASS_MAX];
+        __u8 sopass;
     }
 
 .. _`ethtool_wolinfo.members`:
@@ -299,7 +305,7 @@ Definition
         __u32 cmd;
         __u32 version;
         __u32 len;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`ethtool_regs.members`:
@@ -353,7 +359,7 @@ Definition
         __u32 magic;
         __u32 offset;
         __u32 len;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`ethtool_eeprom.members`:
@@ -416,7 +422,7 @@ Definition
         __u32 eee_enabled;
         __u32 tx_lpi_enabled;
         __u32 tx_lpi_timer;
-        __u32 reserved[2];
+        __u32 reserved;
     }
 
 .. _`ethtool_eee.members`:
@@ -454,6 +460,9 @@ tx_lpi_timer
     its tx lpi (after reaching 'idle' state). Effective only when eee
     was negotiated and tx_lpi_enabled was set.
 
+reserved
+    *undescribed*
+
 .. _`ethtool_modinfo`:
 
 struct ethtool_modinfo
@@ -474,7 +483,7 @@ Definition
         __u32 cmd;
         __u32 type;
         __u32 eeprom_len;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`ethtool_modinfo.members`:
@@ -490,6 +499,9 @@ type
 
 eeprom_len
     Length of the eeprom
+
+reserved
+    *undescribed*
 
 .. _`ethtool_modinfo.description`:
 
@@ -956,7 +968,7 @@ Definition
         __u32 cmd;
         __u32 string_set;
         __u32 len;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`ethtool_gstrings.members`:
@@ -1006,7 +1018,7 @@ Definition
         __u32 cmd;
         __u32 reserved;
         __u64 sset_mask;
-        __u32 data[0];
+        __u32 data;
     }
 
 .. _`ethtool_sset_info.members`:
@@ -1108,7 +1120,7 @@ Definition
         __u32 flags;
         __u32 reserved;
         __u32 len;
-        __u64 data[0];
+        __u64 data;
     }
 
 .. _`ethtool_test.members`:
@@ -1162,7 +1174,7 @@ Definition
     struct ethtool_stats {
         __u32 cmd;
         __u32 n_stats;
-        __u64 data[0];
+        __u64 data;
     }
 
 .. _`ethtool_stats.members`:
@@ -1208,7 +1220,7 @@ Definition
     struct ethtool_perm_addr {
         __u32 cmd;
         __u32 size;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`ethtool_perm_addr.members`:
@@ -1398,8 +1410,8 @@ Definition
 .. code-block:: c
 
     struct ethtool_tcpip6_spec {
-        __be32 ip6src[4];
-        __be32 ip6dst[4];
+        __be32 ip6src;
+        __be32 ip6dst;
         __be16 psrc;
         __be16 pdst;
         __u8 tclass;
@@ -1449,8 +1461,8 @@ Definition
 .. code-block:: c
 
     struct ethtool_ah_espip6_spec {
-        __be32 ip6src[4];
-        __be32 ip6dst[4];
+        __be32 ip6src;
+        __be32 ip6dst;
         __be32 spi;
         __u8 tclass;
     }
@@ -1496,8 +1508,8 @@ Definition
 .. code-block:: c
 
     struct ethtool_usrip6_spec {
-        __be32 ip6src[4];
-        __be32 ip6dst[4];
+        __be32 ip6src;
+        __be32 ip6dst;
         __be32 l4_4_bytes;
         __u8 tclass;
         __u8 l4_proto;
@@ -1540,17 +1552,20 @@ Definition
 .. code-block:: c
 
     struct ethtool_flow_ext {
-        __u8 padding[2];
-        unsigned char h_dest[ETH_ALEN];
+        __u8 padding;
+        unsigned char h_dest;
         __be16 vlan_etype;
         __be16 vlan_tci;
-        __be32 data[2];
+        __be32 data;
     }
 
 .. _`ethtool_flow_ext.members`:
 
 Members
 -------
+
+padding
+    *undescribed*
 
 h_dest
     destination MAC address
@@ -1653,7 +1668,7 @@ Definition
         __u64 data;
         struct ethtool_rx_flow_spec fs;
         __u32 rule_cnt;
-        __u32 rule_locs[0];
+        __u32 rule_locs;
     }
 
 .. _`ethtool_rxnfc.members`:
@@ -1746,7 +1761,7 @@ Definition
     struct ethtool_rxfh_indir {
         __u32 cmd;
         __u32 size;
-        __u32 ring_index[0];
+        __u32 ring_index;
     }
 
 .. _`ethtool_rxfh_indir.members`:
@@ -1797,9 +1812,9 @@ Definition
         __u32 indir_size;
         __u32 key_size;
         __u8 hfunc;
-        __u8 rsvd8[3];
+        __u8 rsvd8;
         __u32 rsvd32;
-        __u32 rss_config[0];
+        __u32 rss_config;
     }
 
 .. _`ethtool_rxfh.members`:
@@ -1827,6 +1842,9 @@ key_size
 hfunc
     Defines the current RSS hash function used by HW (or to be set to).
     Valid values are one of the \ ``ETH_RSS_HASH``\ \_\*.
+
+rsvd8
+    *undescribed*
 
 rsvd32
     *undescribed*
@@ -1872,8 +1890,8 @@ Definition
         __u64 data;
         __u64 data_mask;
         __s32 action;
-    #define ETHTOOL_RXNTUPLE_ACTION_DROP (-1)
-    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR (-2)
+    #define ETHTOOL_RXNTUPLE_ACTION_DROP -1
+    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR -2
     }
 
 .. _`ethtool_rx_ntuple_flow_spec.members`:
@@ -1968,7 +1986,7 @@ Definition
         __u32 version;
         __u32 flag;
         __u32 len;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`ethtool_dump.members`:
@@ -2056,7 +2074,7 @@ Definition
     struct ethtool_gfeatures {
         __u32 cmd;
         __u32 size;
-        struct ethtool_get_features_block features[0];
+        struct ethtool_get_features_block features;
     }
 
 .. _`ethtool_gfeatures.members`:
@@ -2126,7 +2144,7 @@ Definition
     struct ethtool_sfeatures {
         __u32 cmd;
         __u32 size;
-        struct ethtool_set_features_block features[0];
+        struct ethtool_set_features_block features;
     }
 
 .. _`ethtool_sfeatures.members`:
@@ -2164,9 +2182,9 @@ Definition
         __u32 so_timestamping;
         __s32 phc_index;
         __u32 tx_types;
-        __u32 tx_reserved[3];
+        __u32 tx_reserved;
         __u32 rx_filters;
-        __u32 rx_reserved[3];
+        __u32 rx_reserved;
     }
 
 .. _`ethtool_ts_info.members`:
@@ -2186,8 +2204,14 @@ phc_index
 tx_types
     bit mask of the supported hwtstamp_tx_types enumeration values
 
+tx_reserved
+    *undescribed*
+
 rx_filters
     bit mask of the supported hwtstamp_rx_filters enumeration values
+
+rx_reserved
+    *undescribed*
 
 .. _`ethtool_ts_info.description`:
 
@@ -2223,8 +2247,8 @@ Definition
     struct ethtool_per_queue_op {
         __u32 cmd;
         __u32 sub_command;
-        __u32 queue_mask[__KERNEL_DIV_ROUND_UP(MAX_NUM_QUEUE# 32)];
-        char data[];
+        __u32 queue_mask;
+        char data;
     }
 
 .. _`ethtool_per_queue_op.members`:
@@ -2271,8 +2295,8 @@ Definition
         __u8 eth_tp_mdix;
         __u8 eth_tp_mdix_ctrl;
         __s8 link_mode_masks_nwords;
-        __u32 reserved[8];
-        __u32 link_mode_masks[0];
+        __u32 reserved;
+        __u32 link_mode_masks;
     }
 
 .. _`ethtool_link_settings.members`:
@@ -2322,6 +2346,12 @@ link_mode_masks_nwords
     supported, advertising, lp_advertising link mode bitmaps. For
     \ ``ETHTOOL_GLINKSETTINGS``\ : on entry, number of words passed by user
     (>= 0); on return, if handshake in progress, negative if
+
+reserved
+    *undescribed*
+
+link_mode_masks
+    *undescribed*
 
 .. _`ethtool_link_settings.description`:
 

@@ -19,7 +19,7 @@ Definition
 
     struct nfp_eth_table {
         unsigned int count;
-        struct nfp_eth_table_port ports[0];
+        struct nfp_eth_table_port ports;
     }
 
 .. _`nfp_eth_table.members`:
@@ -50,7 +50,7 @@ Definition
 .. code-block:: c
 
     struct nfp_nsp_identify {
-        char version[40];
+        char version;
         u8 flags;
         u8 br_primary;
         u8 br_secondary;

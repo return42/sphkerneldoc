@@ -98,12 +98,12 @@ Definition
         struct iscsi_hdr iscsi_header;
         enum iser_desc_type type;
         u64 dma_addr;
-        struct ib_sge tx_sg[2];
+        struct ib_sge tx_sg;
         int num_sge;
         struct ib_cqe cqe;
         bool mapped;
         u8 wr_idx;
-        union iser_wr wrs[ISER_MAX_WRS];
+        union iser_wr wrs;
         struct iser_mem_reg data_reg;
         struct iser_mem_reg prot_reg;
         struct ib_sig_attrs sig_attrs;
@@ -174,11 +174,11 @@ Definition
     struct iser_rx_desc {
         struct iser_ctrl iser_header;
         struct iscsi_hdr iscsi_header;
-        char data[ISER_RECV_DATA_SEG_LEN];
+        char data;
         u64 dma_addr;
         struct ib_sge rx_sg;
         struct ib_cqe cqe;
-        char pad[ISER_RX_PAD_SIZE];
+        char pad;
     }
 
 .. _`iser_rx_desc.members`:
@@ -575,7 +575,7 @@ Definition
         struct ib_qp *qp;
         int post_recv_buf_count;
         u8 sig_count;
-        struct ib_recv_wr rx_wr[ISER_MIN_POSTED_RX];
+        struct ib_recv_wr rx_wr;
         struct iser_device *device;
         struct iser_comp *comp;
         struct iser_fr_pool fr_pool;
@@ -643,7 +643,7 @@ Definition
         unsigned qp_max_recv_dtos_mask;
         unsigned min_posted_rx;
         u16 max_cmds;
-        char name[ISER_OBJECT_NAME_SIZE];
+        char name;
         struct work_struct release_work;
         struct mutex state_mutex;
         struct completion stop_completion;
@@ -750,10 +750,10 @@ Definition
         enum iser_task_status status;
         struct scsi_cmnd *sc;
         int command_sent;
-        int dir[ISER_DIRS_NUM];
-        struct iser_mem_reg rdma_reg[ISER_DIRS_NUM];
-        struct iser_data_buf data[ISER_DIRS_NUM];
-        struct iser_data_buf prot[ISER_DIRS_NUM];
+        int dir;
+        struct iser_mem_reg rdma_reg;
+        struct iser_data_buf data;
+        struct iser_data_buf prot;
     }
 
 .. _`iscsi_iser_task.members`:

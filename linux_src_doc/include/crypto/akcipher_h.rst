@@ -23,7 +23,7 @@ Definition
         struct scatterlist *dst;
         unsigned int src_len;
         unsigned int dst_len;
-        void  *__ctx[];
+        void  *__ctx;
     }
 
 .. _`akcipher_request.members`:

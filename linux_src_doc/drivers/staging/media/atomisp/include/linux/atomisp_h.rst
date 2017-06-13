@@ -21,7 +21,7 @@ Definition
         int num_captures;
         unsigned int skip_frames;
         int offset;
-        __u32 reserved[5];
+        __u32 reserved;
     }
 
 .. _`atomisp_cont_capture_conf.members`:
@@ -37,6 +37,9 @@ skip_frames
 
 offset
     offset in ring buffer to start capture
+
+reserved
+    *undescribed*
 
 .. _`atomisp_cont_capture_conf.description`:
 

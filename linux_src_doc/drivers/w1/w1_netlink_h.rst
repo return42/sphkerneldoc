@@ -105,7 +105,7 @@ Definition
         __u8 status;
         __u16 len;
         union id;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`w1_netlink_msg.members`:
@@ -224,7 +224,7 @@ Definition
         __u8 cmd;
         __u8 res;
         __u16 len;
-        __u8 data[0];
+        __u8 data;
     }
 
 .. _`w1_netlink_cmd.members`:

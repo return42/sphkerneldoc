@@ -57,8 +57,8 @@ Definition
 .. code-block:: c
 
     struct iwl_bt_coex_corun_lut_update_cmd {
-        __le32 corun_lut20[BT_COEX_CORUN_LUT_SIZE];
-        __le32 corun_lut40[BT_COEX_CORUN_LUT_SIZE];
+        __le32 corun_lut20;
+        __le32 corun_lut40;
     }
 
 .. _`iwl_bt_coex_corun_lut_update_cmd.members`:
@@ -171,14 +171,14 @@ Definition
 .. code-block:: c
 
     struct iwl_bt_coex_profile_notif {
-        __le32 mbox_msg[4];
+        __le32 mbox_msg;
         __le32 msg_idx;
         __le32 bt_ci_compliance;
         __le32 primary_ch_lut;
         __le32 secondary_ch_lut;
         __le32 bt_activity_grading;
         u8 ttc_rrc_status;
-        u8 reserved[3];
+        u8 reserved;
     }
 
 .. _`iwl_bt_coex_profile_notif.members`:
@@ -206,6 +206,9 @@ bt_activity_grading
 
 ttc_rrc_status
     is TTC or RRC enabled - one bit per PHY
+
+reserved
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -91,7 +91,7 @@ handle_bounds_compressed_page
 ntfs_decompress
 ===============
 
-.. c:function:: int ntfs_decompress(struct page  *dest_pages[], int *dest_index, int *dest_ofs, const int dest_max_index, const int dest_max_ofs, const int xpage, char *xpage_done, u8 *const cb_start, const u32 cb_size, const loff_t i_size, const s64 initialized_size)
+.. c:function:: int ntfs_decompress(struct page  *dest_pages, int *dest_index, int *dest_ofs, const int dest_max_index, const int dest_max_ofs, const int xpage, char *xpage_done, u8 *const cb_start, const u32 cb_size, const loff_t i_size, const s64 initialized_size)
 
     decompress a compression block into an array of pages
 

@@ -152,9 +152,9 @@ Definition
     struct ep11_cprb {
         uint16_t cprb_len;
         unsigned char cprb_ver_id;
-        unsigned char pad_000[2];
+        unsigned char pad_000;
         unsigned char flags;
-        unsigned char func_id[2];
+        unsigned char func_id;
         uint32_t source_id;
         uint32_t target_id;
         uint32_t ret_code;

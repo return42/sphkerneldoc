@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct rds_transport {
-        char t_name[TRANSNAMSIZ];
+        char t_name;
         struct list_head t_item;
         struct module *t_owner;
         unsigned int t_prefer_loopback:1;
@@ -52,6 +52,9 @@ Definition
 
 Members
 -------
+
+t_name
+    *undescribed*
 
 t_item
     *undescribed*

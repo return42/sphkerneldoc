@@ -263,8 +263,8 @@ Definition
         struct usb_gadget_driver *driver;
         void __iomem *usbd_regs;
         void __iomem *iudma_regs;
-        struct bcm63xx_ep bep[BCM63XX_NUM_EP];
-        struct iudma_ch iudma[BCM63XX_NUM_IUDMA];
+        struct bcm63xx_ep bep;
+        struct iudma_ch iudma;
         int cfg;
         int iface;
         int alt_iface;

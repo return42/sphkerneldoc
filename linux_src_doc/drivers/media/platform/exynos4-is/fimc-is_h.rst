@@ -25,12 +25,12 @@ Definition
         struct fimc_is_memory memory;
         struct firmware *f_w;
         struct fimc_isp isp;
-        struct fimc_is_sensor sensor[FIMC_IS_SENSORS_NUM];
+        struct fimc_is_sensor sensor;
         struct fimc_is_setfile setfile;
         struct v4l2_ctrl_handler ctrl_handler;
         struct mutex lock;
         spinlock_t slock;
-        struct clk  *clocks[ISS_CLKS_MAX];
+        struct clk  *clocks;
         void __iomem *regs;
         void __iomem *pmu_regs;
         int irq;
@@ -41,7 +41,7 @@ Definition
         struct i2h_cmd i2h_cmd;
         struct h2i_cmd h2i_cmd;
         struct is_fd_result_header fd_header;
-        struct chain_config config[IS_SC_MAX];
+        struct chain_config config;
         unsigned config_index;
         struct is_region *is_p_region;
         dma_addr_t is_dma_p_region;
@@ -74,6 +74,9 @@ f_w
     *undescribed*
 
 isp
+    *undescribed*
+
+sensor
     *undescribed*
 
 setfile
@@ -119,6 +122,9 @@ h2i_cmd
     *undescribed*
 
 fd_header
+    *undescribed*
+
+config
     *undescribed*
 
 config_index

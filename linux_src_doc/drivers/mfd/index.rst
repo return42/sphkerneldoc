@@ -20,6 +20,7 @@ mfd
     mfd-core_c
     omap-usb-host_c
     omap-usb-tll_c
+    si476x-cmd_c
     si476x-i2c_c
     stmpe_c
     stmpe_h

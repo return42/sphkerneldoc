@@ -117,7 +117,7 @@ Definition
         uint32_t vpu_inst_addr;
         uint32_t param_id;
         uint32_t data_item;
-        uint32_t data[8];
+        uint32_t data;
     }
 
 .. _`venc_ap_ipi_msg_set_param.members`:
@@ -161,7 +161,7 @@ Definition
         uint32_t msg_id;
         uint32_t vpu_inst_addr;
         uint32_t bs_mode;
-        uint32_t input_addr[3];
+        uint32_t input_addr;
         uint32_t bs_addr;
         uint32_t bs_size;
     }
@@ -361,7 +361,7 @@ Definition
         uint64_t venc_inst;
         uint32_t param_id;
         uint32_t data_item;
-        uint32_t data[6];
+        uint32_t data;
     }
 
 .. _`venc_vpu_ipi_msg_set_param.members`:

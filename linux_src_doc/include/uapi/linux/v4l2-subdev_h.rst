@@ -53,7 +53,7 @@ Definition
         __u32 which;
         __u32 pad;
         struct v4l2_mbus_framefmt format;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_format.members`:
@@ -69,6 +69,9 @@ pad
 
 format
     media bus format (format code and frame size)
+
+reserved
+    *undescribed*
 
 .. _`v4l2_subdev_crop`:
 
@@ -90,7 +93,7 @@ Definition
         __u32 which;
         __u32 pad;
         struct v4l2_rect rect;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_crop.members`:
@@ -106,6 +109,9 @@ pad
 
 rect
     pad crop rectangle boundaries
+
+reserved
+    *undescribed*
 
 .. _`v4l2_subdev_mbus_code_enum`:
 
@@ -128,7 +134,7 @@ Definition
         __u32 index;
         __u32 code;
         __u32 which;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_mbus_code_enum.members`:
@@ -147,6 +153,9 @@ code
 
 which
     format type (from enum v4l2_subdev_format_whence)
+
+reserved
+    *undescribed*
 
 .. _`v4l2_subdev_frame_size_enum`:
 
@@ -173,7 +182,7 @@ Definition
         __u32 min_height;
         __u32 max_height;
         __u32 which;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_frame_size_enum.members`:
@@ -205,6 +214,9 @@ max_height
 which
     format type (from enum v4l2_subdev_format_whence)
 
+reserved
+    *undescribed*
+
 .. _`v4l2_subdev_frame_interval`:
 
 struct v4l2_subdev_frame_interval
@@ -224,7 +236,7 @@ Definition
     struct v4l2_subdev_frame_interval {
         __u32 pad;
         struct v4l2_fract interval;
-        __u32 reserved[9];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_frame_interval.members`:
@@ -237,6 +249,9 @@ pad
 
 interval
     frame interval in seconds
+
+reserved
+    *undescribed*
 
 .. _`v4l2_subdev_frame_interval_enum`:
 
@@ -262,7 +277,7 @@ Definition
         __u32 height;
         struct v4l2_fract interval;
         __u32 which;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_frame_interval_enum.members`:
@@ -291,6 +306,9 @@ interval
 which
     format type (from enum v4l2_subdev_format_whence)
 
+reserved
+    *undescribed*
+
 .. _`v4l2_subdev_selection`:
 
 struct v4l2_subdev_selection
@@ -313,7 +331,7 @@ Definition
         __u32 target;
         __u32 flags;
         struct v4l2_rect r;
-        __u32 reserved[8];
+        __u32 reserved;
     }
 
 .. _`v4l2_subdev_selection.members`:

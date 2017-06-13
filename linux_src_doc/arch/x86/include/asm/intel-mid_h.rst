@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct mid_sd_board_info {
-        char name[SFI_NAME_LEN];
+        char name;
         int bus_num;
         unsigned short addr;
         u32 max_clk;

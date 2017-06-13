@@ -26,7 +26,7 @@ Definition
         __u16 ycbcr_enc;
         __u16 quantization;
         __u16 xfer_func;
-        __u16 reserved[11];
+        __u16 reserved;
     }
 
 .. _`v4l2_mbus_framefmt.members`:
@@ -57,6 +57,9 @@ quantization
 
 xfer_func
     transfer function of the data (from enum v4l2_xfer_func)
+
+reserved
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

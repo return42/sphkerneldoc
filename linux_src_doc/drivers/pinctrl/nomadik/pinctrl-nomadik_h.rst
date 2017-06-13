@@ -135,7 +135,7 @@ Definition
 
     struct prcm_gpiocr_altcx_pin_desc {
         unsigned short pin;
-        struct prcm_gpiocr_altcx altcx[PRCM_IDX_GPIOCR_ALTC_MAX];
+        struct prcm_gpiocr_altcx altcx;
     }
 
 .. _`prcm_gpiocr_altcx_pin_desc.members`:

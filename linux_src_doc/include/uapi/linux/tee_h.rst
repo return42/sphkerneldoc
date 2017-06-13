@@ -243,15 +243,15 @@ Definition
 .. code-block:: c
 
     struct tee_ioctl_open_session_arg {
-        __u8 uuid[TEE_IOCTL_UUID_LEN];
-        __u8 clnt_uuid[TEE_IOCTL_UUID_LEN];
+        __u8 uuid;
+        __u8 clnt_uuid;
         __u32 clnt_login;
         __u32 cancel_id;
         __u32 session;
         __u32 ret;
         __u32 ret_origin;
         __u32 num_params;
-        struct tee_ioctl_param params[];
+        struct tee_ioctl_param params;
     }
 
 .. _`tee_ioctl_open_session_arg.members`:
@@ -283,6 +283,9 @@ ret_origin
     *undescribed*
 
 num_params
+    *undescribed*
+
+params
     *undescribed*
 
 .. _`tee_ioc_open_session`:
@@ -326,7 +329,7 @@ Definition
         __u32 ret;
         __u32 ret_origin;
         __u32 num_params;
-        struct tee_ioctl_param params[];
+        struct tee_ioctl_param params;
     }
 
 .. _`tee_ioctl_invoke_arg.members`:
@@ -352,6 +355,9 @@ ret_origin
     *undescribed*
 
 num_params
+    *undescribed*
+
+params
     *undescribed*
 
 .. _`tee_ioc_invoke`:
@@ -468,7 +474,7 @@ Definition
     struct tee_iocl_supp_recv_arg {
         __u32 func;
         __u32 num_params;
-        struct tee_ioctl_param params[];
+        struct tee_ioctl_param params;
     }
 
 .. _`tee_iocl_supp_recv_arg.members`:
@@ -481,6 +487,9 @@ func
     \ ``num_params``\   [in/out] number of parameters following this struct
 
 num_params
+    *undescribed*
+
+params
     *undescribed*
 
 .. _`tee_iocl_supp_recv_arg.description`:
@@ -528,7 +537,7 @@ Definition
     struct tee_iocl_supp_send_arg {
         __u32 ret;
         __u32 num_params;
-        struct tee_ioctl_param params[];
+        struct tee_ioctl_param params;
     }
 
 .. _`tee_iocl_supp_send_arg.members`:
@@ -541,6 +550,9 @@ ret
     \ ``num_params``\   [in] number of parameters following this struct
 
 num_params
+    *undescribed*
+
+params
     *undescribed*
 
 .. _`tee_ioc_suppl_send`:

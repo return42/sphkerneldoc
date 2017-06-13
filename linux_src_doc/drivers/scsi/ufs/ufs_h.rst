@@ -55,7 +55,7 @@ Definition
 
     struct utp_upiu_cmd {
         __be32 exp_data_transfer_len;
-        u8 cdb[MAX_CDB_SIZE];
+        u8 cdb;
     }
 
 .. _`utp_upiu_cmd.members`:
@@ -93,7 +93,7 @@ Definition
         __be16 reserved_osf;
         __be16 length;
         __be32 value;
-        __be32 reserved[2];
+        __be32 reserved;
     }
 
 .. _`utp_upiu_query.members`:
@@ -176,9 +176,9 @@ Definition
 
     struct utp_cmd_rsp {
         __be32 residual_transfer_count;
-        __be32 reserved[4];
+        __be32 reserved;
         __be16 sense_data_len;
-        u8 sense_data[RESPONSE_UPIU_SENSE_DATA_LENGTH];
+        u8 sense_data;
     }
 
 .. _`utp_cmd_rsp.members`:
@@ -252,7 +252,7 @@ Definition
         __be32 input_param1;
         __be32 input_param2;
         __be32 input_param3;
-        __be32 reserved[2];
+        __be32 reserved;
     }
 
 .. _`utp_upiu_task_req.members`:
@@ -295,7 +295,7 @@ Definition
         struct utp_upiu_header header;
         __be32 output_param1;
         __be32 output_param2;
-        __be32 reserved[3];
+        __be32 reserved;
     }
 
 .. _`utp_upiu_task_rsp.members`:

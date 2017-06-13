@@ -63,7 +63,7 @@ Definition
         struct mutex space_mutex;
         struct work_struct work;
         struct vmw_private *dev_priv;
-        struct vmw_cmdbuf_context ctx[SVGA_CB_CONTEXT_MAX];
+        struct vmw_cmdbuf_context ctx;
         struct list_head error;
         struct drm_mm mm;
         struct ttm_buffer_object *cmd_space;
@@ -266,7 +266,7 @@ Definition
 
     struct vmw_cmdbuf_dheader {
         SVGACBHeader cb_header;
-        u8 cmd[VMW_CMDBUF_INLINE_SIZE];
+        u8 cmd;
     }
 
 .. _`vmw_cmdbuf_dheader.members`:

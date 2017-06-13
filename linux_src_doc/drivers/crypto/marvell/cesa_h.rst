@@ -82,8 +82,8 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_blkcipher_op_ctx {
-        u32 key[8];
-        u32 iv[4];
+        u32 key;
+        u32 iv;
     }
 
 .. _`mv_cesa_blkcipher_op_ctx.members`:
@@ -121,8 +121,8 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_hash_op_ctx {
-        u32 iv[16];
-        u32 hash[8];
+        u32 iv;
+        u32 hash;
     }
 
 .. _`mv_cesa_hash_op_ctx.members`:
@@ -132,6 +132,9 @@ Members
 
 iv
     cipher IV
+
+hash
+    *undescribed*
 
 .. _`mv_cesa_hash_op_ctx.description`:
 
@@ -763,7 +766,7 @@ Definition
 
     struct mv_cesa_hmac_ctx {
         struct mv_cesa_ctx base;
-        u32 iv[16];
+        u32 iv;
     }
 
 .. _`mv_cesa_hmac_ctx.members`:
@@ -1048,13 +1051,13 @@ Definition
         struct mv_cesa_req base;
         union req;
         struct mv_cesa_op_ctx op_tmpl;
-        u8 cache[CESA_MAX_HASH_BLOCK_SIZE];
+        u8 cache;
         unsigned int cache_ptr;
         u64 len;
         int src_nents;
         bool last_req;
         bool algo_le;
-        u32 state[8];
+        u32 state;
     }
 
 .. _`mv_cesa_ahash_req.members`:

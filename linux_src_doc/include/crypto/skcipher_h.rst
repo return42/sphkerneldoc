@@ -23,7 +23,7 @@ Definition
         struct scatterlist *src;
         struct scatterlist *dst;
         struct crypto_async_request base;
-        void  *__ctx[];
+        void  *__ctx;
     }
 
 .. _`skcipher_request.members`:

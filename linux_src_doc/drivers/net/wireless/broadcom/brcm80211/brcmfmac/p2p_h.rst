@@ -177,7 +177,7 @@ Definition
         bool is_listen;
         u16 my_listen_chan;
         u16 peer_listen_chan;
-        u8 tx_dst_addr[ETH_ALEN];
+        u8 tx_dst_addr;
     }
 
 .. _`afx_hdl.members`:
@@ -228,9 +228,9 @@ Definition
     struct brcmf_p2p_info {
         struct brcmf_cfg80211_info *cfg;
         unsigned long status;
-        u8 dev_addr[ETH_ALEN];
-        u8 int_addr[ETH_ALEN];
-        struct p2p_bss bss_idx[P2PAPI_BSSCFG_MAX];
+        u8 dev_addr;
+        u8 int_addr;
+        struct p2p_bss bss_idx;
         struct timer_list listen_timer;
         u8 listen_channel;
         struct ieee80211_channel remain_on_channel;

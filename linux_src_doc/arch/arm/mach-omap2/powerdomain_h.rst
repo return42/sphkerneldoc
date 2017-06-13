@@ -25,28 +25,28 @@ Definition
         const u8 pwrsts_logic_ret;
         const u8 flags;
         const u8 banks;
-        const u8 pwrsts_mem_ret[PWRDM_MAX_MEM_BANKS];
-        const u8 pwrsts_mem_on[PWRDM_MAX_MEM_BANKS];
+        const u8 pwrsts_mem_ret;
+        const u8 pwrsts_mem_on;
         const u8 prcm_partition;
-        struct clockdomain  *pwrdm_clkdms[PWRDM_MAX_CLKDMS];
+        struct clockdomain  *pwrdm_clkdms;
         struct list_head node;
         struct list_head voltdm_node;
         int state;
-        unsigned state_counter[PWRDM_MAX_PWRSTS];
+        unsigned state_counter;
         unsigned ret_logic_off_counter;
-        unsigned ret_mem_off_counter[PWRDM_MAX_MEM_BANKS];
+        unsigned ret_mem_off_counter;
         spinlock_t _lock;
         unsigned long _lock_flags;
         const u8 pwrstctrl_offs;
         const u8 pwrstst_offs;
         const u32 logicretstate_mask;
-        const u32 mem_on_mask[PWRDM_MAX_MEM_BANKS];
-        const u32 mem_ret_mask[PWRDM_MAX_MEM_BANKS];
-        const u32 mem_pwrst_mask[PWRDM_MAX_MEM_BANKS];
-        const u32 mem_retst_mask[PWRDM_MAX_MEM_BANKS];
+        const u32 mem_on_mask;
+        const u32 mem_ret_mask;
+        const u32 mem_pwrst_mask;
+        const u32 mem_retst_mask;
     #ifdef CONFIG_PM_DEBUG
         s64 timer;
-        s64 state_timer[PWRDM_MAX_PWRSTS];
+        s64 state_timer;
     #endif
     }
 
@@ -97,7 +97,13 @@ voltdm_node
 state
     *undescribed*
 
+state_counter
+    *undescribed*
+
 ret_logic_off_counter
+    *undescribed*
+
+ret_mem_off_counter
     *undescribed*
 
 _lock
@@ -130,6 +136,9 @@ mem_retst_mask
     in \ ``pwrstctrl_offs``\ 
 
 timer
+    *undescribed*
+
+state_timer
     *undescribed*
 
 .. _`powerdomain.description`:

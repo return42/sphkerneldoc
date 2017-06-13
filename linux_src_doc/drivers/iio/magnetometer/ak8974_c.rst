@@ -21,7 +21,7 @@ Definition
         struct i2c_client *i2c;
         struct iio_mount_matrix orientation;
         struct regmap *map;
-        struct regulator_bulk_data regs[2];
+        struct regulator_bulk_data regs;
         const char *name;
         u8 variant;
         struct mutex lock;

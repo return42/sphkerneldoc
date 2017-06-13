@@ -491,7 +491,7 @@ struct hvc_iucv_private->lock
 hvc_iucv_filter_connreq
 =======================
 
-.. c:function:: int hvc_iucv_filter_connreq(u8 ipvmid[8])
+.. c:function:: int hvc_iucv_filter_connreq(u8 ipvmid)
 
     Filter connection request based on z/VM user ID
 

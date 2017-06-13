@@ -22,7 +22,7 @@ Definition
         u32 image_size;
         u32 tools_version;
         u32 app_version;
-        char date[64];
+        char date;
         u32 bootloader_start_offset;
         u32 bootloader_size;
         u32 bootloader_imem_offset;
@@ -37,7 +37,7 @@ Definition
         u32 app_resident_data_offset;
         u32 app_resident_data_size;
         u32 nb_overlays;
-        struct load_ovl[64];
+        struct load_ovl;
         u32 compressed;
     }
 
@@ -56,6 +56,9 @@ tools_version
     *undescribed*
 
 app_version
+    *undescribed*
+
+date
     *undescribed*
 
 bootloader_start_offset
@@ -98,6 +101,9 @@ app_resident_data_size
     size of data
 
 nb_overlays
+    *undescribed*
+
+load_ovl
     *undescribed*
 
 compressed

@@ -24,3 +24,4 @@ ixgbe
     ixgbe_sriov_c
     ixgbe_sysfs_c
     ixgbe_x540_c
+    ixgbe_x550_c

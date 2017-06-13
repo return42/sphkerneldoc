@@ -441,7 +441,7 @@ Definition
 
     struct sdma_map_elem {
         u32 mask;
-        struct sdma_engine  *sde[0];
+        struct sdma_engine  *sde;
     }
 
 .. _`sdma_map_elem.members`:
@@ -450,6 +450,9 @@ Members
 -------
 
 mask
+    *undescribed*
+
+sde
     *undescribed*
 
 .. _`sdma_map_elem.description`:
@@ -478,18 +481,21 @@ Definition
 .. code-block:: c
 
     struct sdma_vl_map {
-        s8 engine_to_vl[TXE_NUM_SDMA_ENGINES];
+        s8 engine_to_vl;
         struct rcu_head list;
         u32 mask;
         u8 actual_vls;
         u8 vls;
-        struct sdma_map_elem  *map[0];
+        struct sdma_map_elem  *map;
     }
 
 .. _`sdma_vl_map.members`:
 
 Members
 -------
+
+engine_to_vl
+    *undescribed*
 
 list
     *undescribed*
@@ -501,6 +507,9 @@ actual_vls
     *undescribed*
 
 vls
+    *undescribed*
+
+map
     *undescribed*
 
 .. _`sdma_vl_map.description`:

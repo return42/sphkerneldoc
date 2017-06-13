@@ -19,7 +19,7 @@ Definition
 
     struct cpuidle_coupled {
         cpumask_t coupled_cpus;
-        int requested_state[NR_CPUS];
+        int requested_state;
         atomic_t ready_waiting_counts;
         atomic_t abort_barrier;
         int online_count;

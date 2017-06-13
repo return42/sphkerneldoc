@@ -148,9 +148,9 @@ Definition
         u32 completion_queue_get;
         u32 completion_queue_control;
         u32 reserved_4C;
-        u32 reserved_5x[4];
-        u32 reserved_6x[4];
-        u32 reserved_7x[4];
+        u32 reserved_5x;
+        u32 reserved_6x;
+        u32 reserved_7x;
         u32 remote_node_context_lower;
         u32 remote_node_context_upper;
         u32 reserved_88;
@@ -163,15 +163,15 @@ Definition
         u32 mmr_data_window;
         u32 clock_gating_control;
         u32 clock_gating_performance;
-        u32 reserved_Bx[4];
-        u32 reserved_Cx[4];
-        u32 reserved_Dx[4];
-        u32 reserved_Ex[4];
-        u32 reserved_Fx[4];
-        u32 reserved_1xx[64];
-        u32 reserved_2xx[64];
-        u32 reserved_3xx[64];
-        u32 task_context_assignment[256];
+        u32 reserved_Bx;
+        u32 reserved_Cx;
+        u32 reserved_Dx;
+        u32 reserved_Ex;
+        u32 reserved_Fx;
+        u32 reserved_1xx;
+        u32 reserved_2xx;
+        u32 reserved_3xx;
+        u32 task_context_assignment;
     }
 
 .. _`smu_registers.members`:
@@ -239,6 +239,15 @@ completion_queue_control
 reserved_4C
     *undescribed*
 
+reserved_5x
+    *undescribed*
+
+reserved_6x
+    *undescribed*
+
+reserved_7x
+    *undescribed*
+
 remote_node_context_lower
     *undescribed*
 
@@ -275,6 +284,33 @@ clock_gating_control
 clock_gating_performance
     *undescribed*
 
+reserved_Bx
+    *undescribed*
+
+reserved_Cx
+    *undescribed*
+
+reserved_Dx
+    *undescribed*
+
+reserved_Ex
+    *undescribed*
+
+reserved_Fx
+    *undescribed*
+
+reserved_1xx
+    *undescribed*
+
+reserved_2xx
+    *undescribed*
+
+reserved_3xx
+    *undescribed*
+
+task_context_assignment
+    *undescribed*
+
 .. _`smu_registers.description`:
 
 Description
@@ -307,9 +343,9 @@ Definition
         u32 unsolicited_frame_put_pointer;
         u32 unsolicited_frame_get_pointer;
         u32 pdma_configuration;
-        u32 reserved_0020_007C[0x18];
+        u32 reserved_0020_007C;
         u32 cdma_configuration;
-        u32 reserved_0084_0400[0xDF];
+        u32 reserved_0084_0400;
     }
 
 .. _`scu_sdma_registers.members`:
@@ -341,7 +377,13 @@ unsolicited_frame_get_pointer
 pdma_configuration
     *undescribed*
 
+reserved_0020_007C
+    *undescribed*
+
 cdma_configuration
+    *undescribed*
+
+reserved_0084_0400
     *undescribed*
 
 .. _`scu_sdma_registers.description`:
@@ -378,7 +420,7 @@ Definition
         u32 rxtl_single_step_control_status_1;
         u32 rxtl_single_step_control_status_2;
         u32 tlfe_awt_retry_delay_debug_control;
-        u32 reserved_0028_007F[0x16];
+        u32 reserved_0028_007F;
     }
 
 .. _`scu_transport_layer_registers.members`:
@@ -414,6 +456,9 @@ rxtl_single_step_control_status_2
     *undescribed*
 
 tlfe_awt_retry_delay_debug_control
+    *undescribed*
+
+reserved_0028_007F
     *undescribed*
 
 .. _`scu_transport_layer_registers.description`:
@@ -508,10 +553,10 @@ Definition
         u32 sas_pm_nak_primitive_register;
         u32 sas_primitive_timeout;
         u32 reserved_10c;
-        u32 pla_product_control[4];
+        u32 pla_product_control;
         u32 pla_product_sum;
         u32 pla_control;
-        u32 reserved_0128_037f[0x96];
+        u32 reserved_0128_037f;
     }
 
 .. _`scu_link_layer_registers.members`:
@@ -723,10 +768,16 @@ sas_primitive_timeout
 reserved_10c
     *undescribed*
 
+pla_product_control
+    *undescribed*
+
 pla_product_sum
     *undescribed*
 
 pla_control
+    *undescribed*
+
+reserved_0128_037f
     *undescribed*
 
 .. _`scu_link_layer_registers.description`:
@@ -761,8 +812,8 @@ Definition
         u32 serial_input_upper;
         u32 vendor_specific_code;
         u32 reserved_001c;
-        u32 output_data_select[8];
-        u32 reserved_1444_14ff[0x30];
+        u32 output_data_select;
+        u32 reserved_1444_14ff;
     }
 
 .. _`scu_sgpio_registers.members`:
@@ -792,6 +843,12 @@ vendor_specific_code
     *undescribed*
 
 reserved_001c
+    *undescribed*
+
+output_data_select
+    *undescribed*
+
+reserved_1444_14ff
     *undescribed*
 
 .. _`scu_sgpio_registers.description`:
@@ -861,11 +918,11 @@ Definition
         u32 real_time_clock;
         u32 real_time_clock_control;
         u32 reserved_0C;
-        struct scu_port_task_scheduler_registers port[4];
-        u32 protocol_engine[4];
+        struct scu_port_task_scheduler_registers port;
+        u32 protocol_engine;
         u32 tc_scanning_interval_control;
         u32 rnc_scanning_interval_control;
-        u32 reserved_1048_107f[0x0E];
+        u32 reserved_1048_107f;
     }
 
 .. _`scu_port_task_scheduler_group_registers.members`:
@@ -885,10 +942,19 @@ real_time_clock_control
 reserved_0C
     *undescribed*
 
+port
+    *undescribed*
+
+protocol_engine
+    *undescribed*
+
 tc_scanning_interval_control
     *undescribed*
 
 rnc_scanning_interval_control
+    *undescribed*
+
+reserved_1048_107f
     *undescribed*
 
 .. _`scu_port_task_scheduler_group_registers.description`:
@@ -954,12 +1020,12 @@ Definition
 .. code-block:: c
 
     struct scu_peg_registers {
-        struct transport_link_layer_pair pe[4];
+        struct transport_link_layer_pair pe;
         struct scu_port_task_scheduler_group_registers ptsg;
         struct scu_protocol_engine_group_registers peg;
         struct scu_sgpio_registers sgpio;
-        u32 reserved_01500_1BFF[0x1C0];
-        struct scu_viit_entry viit[64];
+        u32 reserved_01500_1BFF;
+        struct scu_viit_entry viit;
         struct scu_zone_partition_table zpt0;
         struct scu_zone_partition_table zpt1;
     }
@@ -969,6 +1035,9 @@ Definition
 Members
 -------
 
+pe
+    *undescribed*
+
 ptsg
     *undescribed*
 
@@ -976,6 +1045,12 @@ peg
     *undescribed*
 
 sgpio
+    *undescribed*
+
+reserved_01500_1BFF
+    *undescribed*
+
+viit
     *undescribed*
 
 zpt0
@@ -1012,14 +1087,14 @@ Definition
         struct scu_sdma_registers sdma;
         struct scu_completion_ram cram;
         struct scu_frame_buffer_ram fbram;
-        u32 reserved_6800_69FF[0x80];
+        u32 reserved_6800_69FF;
         struct noa_protocol_engine_partition noa_pe;
         struct noa_hub_partition noa_hub;
         struct noa_host_interface_partition noa_if;
-        u32 reserved_6d00_7fff[0x4c0];
+        u32 reserved_6d00_7fff;
         struct scu_peg_registers peg1;
         struct scu_afe_registers afe;
-        u32 reserved_f000_211fff[0x80c00];
+        u32 reserved_f000_211fff;
         struct scu_scratch_ram scratch_ram;
     }
 
@@ -1040,6 +1115,9 @@ cram
 fbram
     *undescribed*
 
+reserved_6800_69FF
+    *undescribed*
+
 noa_pe
     *undescribed*
 
@@ -1049,10 +1127,16 @@ noa_hub
 noa_if
     *undescribed*
 
+reserved_6d00_7fff
+    *undescribed*
+
 peg1
     *undescribed*
 
 afe
+    *undescribed*
+
+reserved_f000_211fff
     *undescribed*
 
 scratch_ram

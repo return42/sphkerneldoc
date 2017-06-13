@@ -18,13 +18,16 @@ Definition
 .. code-block:: c
 
     struct scm_timestamping {
-        struct timespec ts[3];
+        struct timespec ts;
     }
 
 .. _`scm_timestamping.members`:
 
 Members
 -------
+
+ts
+    *undescribed*
 
 .. _`scm_timestamping.description`:
 

@@ -107,7 +107,7 @@ Definition
 .. code-block:: c
 
     struct isp_csiphy_lanes_cfg {
-        struct isp_csiphy_lane data[ISP_CSIPHY2_NUM_DATA_LANES];
+        struct isp_csiphy_lane data;
         struct isp_csiphy_lane clk;
     }
 

@@ -159,7 +159,7 @@ Definition
 .. code-block:: c
 
     struct vpu_wdt {
-        struct vpu_wdt_handler handler[VPU_RST_MAX];
+        struct vpu_wdt_handler handler;
         struct work_struct ws;
         struct workqueue_struct *wq;
     }
@@ -196,7 +196,7 @@ Definition
 
     struct vpu_run {
         u32 signaled;
-        char fw_ver[VPU_FW_VER_LEN];
+        char fw_ver;
         unsigned int dec_capability;
         unsigned int enc_capability;
         wait_queue_head_t wq;
@@ -279,7 +279,7 @@ Definition
     struct share_obj {
         s32 id;
         u32 len;
-        unsigned char share_buf[SHARE_BUF_SIZE];
+        unsigned char share_buf;
     }
 
 .. _`share_obj.members`:
@@ -313,11 +313,11 @@ Definition
 .. code-block:: c
 
     struct mtk_vpu {
-        struct vpu_mem extmem[2];
+        struct vpu_mem extmem;
         struct vpu_regs reg;
         struct vpu_run run;
         struct vpu_wdt wdt;
-        struct vpu_ipi_desc ipi_desc[IPI_MAX];
+        struct vpu_ipi_desc ipi_desc;
         struct share_obj *recv_buf;
         struct share_obj *send_buf;
         struct device *dev;
@@ -327,7 +327,7 @@ Definition
         struct mutex vpu_mutex;
         u32 wdt_refcnt;
         wait_queue_head_t ack_wq;
-        bool ipi_id_ack[IPI_MAX];
+        bool ipi_id_ack;
     }
 
 .. _`mtk_vpu.members`:

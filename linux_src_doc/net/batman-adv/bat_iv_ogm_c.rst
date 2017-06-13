@@ -47,7 +47,7 @@ BATADV_PROTECTED
 batadv_ring_buffer_set
 ======================
 
-.. c:function:: void batadv_ring_buffer_set(u8 lq_recv[], u8 *lq_index, u8 value)
+.. c:function:: void batadv_ring_buffer_set(u8 lq_recv, u8 *lq_index, u8 value)
 
     update the ring buffer with the given value
 
@@ -65,7 +65,7 @@ batadv_ring_buffer_set
 batadv_ring_buffer_avg
 ======================
 
-.. c:function:: u8 batadv_ring_buffer_avg(const u8 lq_recv[])
+.. c:function:: u8 batadv_ring_buffer_avg(const u8 lq_recv)
 
     compute the average of all non-zero values stored in the given ring buffer
 

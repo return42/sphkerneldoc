@@ -155,7 +155,7 @@ Returns zero on success, else negative errno.
 gether_get_host_addr_u8
 =======================
 
-.. c:function:: void gether_get_host_addr_u8(struct net_device *net, u8 host_mac[ETH_ALEN])
+.. c:function:: void gether_get_host_addr_u8(struct net_device *net, u8 host_mac)
 
     get an ethernet-over-usb link host address
 

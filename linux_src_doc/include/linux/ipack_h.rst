@@ -21,7 +21,7 @@ Definition
         struct ipack_bus_device *bus;
         struct device dev;
         void (*release)(struct ipack_device *dev);
-        struct ipack_region region[IPACK_SPACE_COUNT];
+        struct ipack_region region;
         u8 *id;
         size_t id_avail;
         u32 id_vendor;
@@ -47,6 +47,9 @@ dev
     device in kernel representation.
 
 release
+    *undescribed*
+
+region
     *undescribed*
 
 id

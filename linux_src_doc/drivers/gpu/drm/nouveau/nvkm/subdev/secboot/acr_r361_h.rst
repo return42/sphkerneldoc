@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct acr_r361_flcn_bl_desc {
-        u32 reserved[4];
-        u32 signature[4];
+        u32 reserved;
+        u32 signature;
         u32 ctx_dma;
         struct flcn_u64 code_dma_base;
         u32 non_sec_code_off;
@@ -35,6 +35,9 @@ Definition
 
 Members
 -------
+
+reserved
+    *undescribed*
 
 signature
     16B signature for secure code. 0s if no secure code

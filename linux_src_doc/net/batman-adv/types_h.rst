@@ -596,7 +596,7 @@ Definition
 .. code-block:: c
 
     struct batadv_orig_node {
-        u8 orig[ETH_ALEN];
+        u8 orig;
         struct hlist_head ifinfo_list;
         struct batadv_orig_ifinfo *last_bonding_candidate;
     #ifdef CONFIG_BATMAN_ADV_DAT
@@ -618,7 +618,7 @@ Definition
         s16 tt_buff_len;
         spinlock_t tt_buff_lock;
         spinlock_t tt_lock;
-        unsigned long bcast_bits[BITS_TO_LONGS(BATADV_TQ_LOCAL_WINDOW_SIZE)];
+        unsigned long bcast_bits;
         u32 last_bcast_seqno;
         struct hlist_head neigh_list;
         spinlock_t neigh_list_lock;
@@ -633,7 +633,7 @@ Definition
         spinlock_t in_coding_list_lock;
         spinlock_t out_coding_list_lock;
     #endif
-        struct batadv_frag_table_entry fragments[BATADV_FRAG_BUFFER_COUNT];
+        struct batadv_frag_table_entry fragments;
         struct hlist_head vlan_list;
         spinlock_t vlan_list_lock;
         struct batadv_orig_bat_iv bat_iv;
@@ -908,8 +908,8 @@ Definition
 
     struct batadv_hardif_neigh_node {
         struct hlist_node list;
-        u8 addr[ETH_ALEN];
-        u8 orig[ETH_ALEN];
+        u8 addr;
+        u8 orig;
         struct batadv_hard_iface *if_incoming;
         unsigned long last_seen;
     #ifdef CONFIG_BATMAN_ADV_BATMAN_V
@@ -967,7 +967,7 @@ Definition
     struct batadv_neigh_node {
         struct hlist_node list;
         struct batadv_orig_node *orig_node;
-        u8 addr[ETH_ALEN];
+        u8 addr;
         struct hlist_head ifinfo_list;
         spinlock_t ifinfo_lock;
         struct batadv_hard_iface *if_incoming;
@@ -1029,10 +1029,10 @@ Definition
 .. code-block:: c
 
     struct batadv_neigh_ifinfo_bat_iv {
-        u8 tq_recv[BATADV_TQ_GLOBAL_WINDOW_SIZE];
+        u8 tq_recv;
         u8 tq_index;
         u8 tq_avg;
-        unsigned long real_bits[BITS_TO_LONGS(BATADV_TQ_LOCAL_WINDOW_SIZE)];
+        unsigned long real_bits;
         u8 real_packet_count;
     }
 
@@ -1160,7 +1160,7 @@ Definition
 .. code-block:: c
 
     struct batadv_bcast_duplist_entry {
-        u8 orig[ETH_ALEN];
+        u8 orig;
         __be32 crc;
         unsigned long entrytime;
     }
@@ -1471,10 +1471,10 @@ Definition
         atomic_t num_requests;
         struct batadv_hashtable *claim_hash;
         struct batadv_hashtable *backbone_hash;
-        u8 loopdetect_addr[ETH_ALEN];
+        u8 loopdetect_addr;
         unsigned long loopdetect_lasttime;
         atomic_t loopdetect_next;
-        struct batadv_bcast_duplist_entry bcast_duplist[BATADV_DUPLIST_SIZE];
+        struct batadv_bcast_duplist_entry bcast_duplist;
         int bcast_duplist_curr;
         spinlock_t bcast_duplist_lock;
         struct batadv_bla_claim_dst claim_dest;
@@ -1537,7 +1537,7 @@ Definition
 .. code-block:: c
 
     struct batadv_priv_debug_log {
-        char log_buff[BATADV_LOG_BUF_LEN];
+        char log_buff;
         unsigned long log_start;
         unsigned long log_end;
         spinlock_t lock;
@@ -1978,13 +1978,13 @@ Definition
         struct timer_list timer;
         struct batadv_priv *bat_priv;
         unsigned long start_time;
-        u8 other_end[ETH_ALEN];
+        u8 other_end;
         enum batadv_tp_meter_role role;
         atomic_t sending;
         enum batadv_tp_meter_reason reason;
         struct delayed_work finish_work;
         u32 test_length;
-        u8 session[2];
+        u8 session;
         u8 icmp_uid;
         u16 dec_cwnd;
         u32 cwnd;
@@ -2512,7 +2512,7 @@ Definition
     struct batadv_socket_packet {
         struct list_head list;
         size_t icmp_len;
-        u8 icmp_packet[BATADV_ICMP_MAX_PACKET_SIZE];
+        u8 icmp_packet;
     }
 
 .. _`batadv_socket_packet.members`:
@@ -2546,7 +2546,7 @@ Definition
 .. code-block:: c
 
     struct batadv_bla_backbone_gw {
-        u8 orig[ETH_ALEN];
+        u8 orig;
         unsigned short vid;
         struct hlist_node hash_entry;
         struct batadv_priv *bat_priv;
@@ -2621,7 +2621,7 @@ Definition
 .. code-block:: c
 
     struct batadv_bla_claim {
-        u8 addr[ETH_ALEN];
+        u8 addr;
         unsigned short vid;
         struct batadv_bla_backbone_gw *backbone_gw;
         spinlock_t backbone_lock;
@@ -2677,7 +2677,7 @@ Definition
 .. code-block:: c
 
     struct batadv_tt_common_entry {
-        u8 addr[ETH_ALEN];
+        u8 addr;
         unsigned short vid;
         struct hlist_node hash_entry;
         u16 flags;
@@ -2886,7 +2886,7 @@ Definition
 .. code-block:: c
 
     struct batadv_tt_req_node {
-        u8 addr[ETH_ALEN];
+        u8 addr;
         unsigned long issued_at;
         struct kref refcount;
         struct hlist_node list;
@@ -2926,7 +2926,7 @@ Definition
 .. code-block:: c
 
     struct batadv_tt_roam_node {
-        u8 addr[ETH_ALEN];
+        u8 addr;
         atomic_t counter;
         unsigned long first_time;
         struct list_head list;
@@ -2968,7 +2968,7 @@ Definition
 
     struct batadv_nc_node {
         struct list_head list;
-        u8 addr[ETH_ALEN];
+        u8 addr;
         struct kref refcount;
         struct rcu_head rcu;
         struct batadv_orig_node *orig_node;
@@ -3020,8 +3020,8 @@ Definition
         struct kref refcount;
         struct list_head packet_list;
         spinlock_t packet_list_lock;
-        u8 next_hop[ETH_ALEN];
-        u8 prev_hop[ETH_ALEN];
+        u8 next_hop;
+        u8 prev_hop;
         unsigned long last_valid;
     }
 
@@ -3476,7 +3476,7 @@ Definition
 
     struct batadv_dat_entry {
         __be32 ip;
-        u8 mac_addr[ETH_ALEN];
+        u8 mac_addr;
         unsigned short vid;
         unsigned long last_update;
         struct hlist_node hash_entry;
@@ -3528,7 +3528,7 @@ Definition
 
     struct batadv_hw_addr {
         struct hlist_node list;
-        unsigned char addr[ETH_ALEN];
+        unsigned char addr;
     }
 
 .. _`batadv_hw_addr.members`:
@@ -3724,7 +3724,7 @@ Definition
 
     struct batadv_store_mesh_work {
         struct net_device *net_dev;
-        char soft_iface_name[IFNAMSIZ];
+        char soft_iface_name;
         struct work_struct work;
     }
 

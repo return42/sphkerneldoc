@@ -22,7 +22,7 @@ Definition
         unsigned int ctrl;
         enum ad5421_current_range current_range;
         unsigned int fault_mask;
-        union data[2] ____cacheline_aligned;
+        union data;
     }
 
 .. _`ad5421_state.members`:

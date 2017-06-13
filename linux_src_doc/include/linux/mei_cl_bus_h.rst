@@ -23,7 +23,7 @@ Definition
         struct device dev;
         struct mei_me_client *me_cl;
         struct mei_cl *cl;
-        char name[MEI_CL_NAME_SIZE];
+        char name;
         struct work_struct rx_work;
         mei_cldev_cb_t rx_cb;
         struct work_struct notif_work;

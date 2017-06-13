@@ -61,12 +61,12 @@ Definition
         struct most_channel_config *conf;
         struct most_dci_obj *dci;
         u8 *ep_address;
-        char description[MAX_STRING_LEN];
-        char suffix[MAX_NUM_ENDPOINTS][MAX_SUFFIX_LEN];
-        spinlock_t channel_lock[MAX_NUM_ENDPOINTS];
-        bool padding_active[MAX_NUM_ENDPOINTS];
-        bool is_channel_healthy[MAX_NUM_ENDPOINTS];
-        struct clear_hold_work clear_work[MAX_NUM_ENDPOINTS];
+        char description;
+        char suffix;
+        spinlock_t channel_lock;
+        bool padding_active;
+        bool is_channel_healthy;
+        struct clear_hold_work clear_work;
         struct usb_anchor *busy_urbs;
         struct mutex io_mutex;
         struct timer_list link_stat_timer;
@@ -113,6 +113,9 @@ padding_active
 
 is_channel_healthy
     health status table of each channel
+
+clear_work
+    *undescribed*
 
 busy_urbs
     list of anchored items

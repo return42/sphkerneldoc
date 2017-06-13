@@ -23,8 +23,8 @@ Definition
         const char *ccid_name;
         struct kmem_cache *ccid_hc_rx_slab;
         struct kmem_cache * *ccid_hc_tx_slab;
-        char ccid_hc_rx_slab_name[CCID_SLAB_NAME_LENGTH];
-        char ccid_hc_tx_slab_name[CCID_SLAB_NAME_LENGTH];
+        char ccid_hc_rx_slab_name;
+        char ccid_hc_tx_slab_name;
         __u32 ccid_hc_rx_obj_size;
         __u32 ccid_hc_tx_obj_size;
         int (*ccid_hc_rx_init)(struct ccid *ccid, struct sock *sk);
@@ -62,6 +62,12 @@ ccid_hc_rx_slab
     *undescribed*
 
 ccid_hc_tx_slab
+    *undescribed*
+
+ccid_hc_rx_slab_name
+    *undescribed*
+
+ccid_hc_tx_slab_name
     *undescribed*
 
 ccid_hc_rx_obj_size

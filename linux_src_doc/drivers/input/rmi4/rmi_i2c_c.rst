@@ -24,7 +24,7 @@ Definition
         int page;
         u8 *tx_buf;
         size_t tx_buf_size;
-        struct regulator_bulk_data supplies[2];
+        struct regulator_bulk_data supplies;
         u32 startup_delay;
     }
 
@@ -50,6 +50,9 @@ tx_buf
 
 tx_buf_size
     Size of the buffer
+
+supplies
+    *undescribed*
 
 startup_delay
     *undescribed*

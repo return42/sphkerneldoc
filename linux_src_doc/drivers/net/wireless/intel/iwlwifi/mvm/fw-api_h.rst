@@ -51,7 +51,7 @@ Definition
         __le16 type;
         __le16 offset;
         __le16 length;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_nvm_access_cmd.members`:
@@ -98,7 +98,7 @@ Definition
         __le16 length;
         __le16 type;
         __le16 status;
-        u8 data[];
+        u8 data;
     }
 
 .. _`iwl_nvm_access_resp.members`:
@@ -352,7 +352,7 @@ Definition
     struct iwl_binding_cmd {
         __le32 id_and_color;
         __le32 action;
-        __le32 macs[MAX_MACS_IN_BINDING];
+        __le32 macs;
         __le32 phy;
         __le32 lmac_id;
     }
@@ -431,7 +431,7 @@ Definition
 .. code-block:: c
 
     struct iwl_time_quota_cmd {
-        struct iwl_time_quota_data quotas[MAX_BINDINGS];
+        struct iwl_time_quota_data quotas;
     }
 
 .. _`iwl_time_quota_cmd.members`:
@@ -687,7 +687,7 @@ Definition
         __le16 index_num;
         __le16 parts_num;
         __le32 data_size;
-        __le32 data[0];
+        __le32 data;
     }
 
 .. _`iwl_mfu_assert_dump_notif.members`:
@@ -732,7 +732,7 @@ Definition
     struct iwl_set_calib_default_cmd {
         __le16 calib_index;
         __le16 length;
-        u8 data[0];
+        u8 data;
     }
 
 .. _`iwl_set_calib_default_cmd.members`:
@@ -770,9 +770,9 @@ Definition
         u8 port_id;
         u8 count;
         u8 pass_all;
-        u8 bssid[6];
-        u8 reserved[2];
-        u8 addr_list[0];
+        u8 bssid;
+        u8 reserved;
+        u8 addr_list;
     }
 
 .. _`iwl_mcast_filter_cmd.members`:
@@ -797,6 +797,9 @@ pass_all
 
 bssid
     current association BSSID.
+
+reserved
+    *undescribed*
 
 addr_list
     Place holder for array of MAC addresses.
@@ -933,7 +936,7 @@ Definition
         u8 frame_type;
         u8 num_attrs;
         u8 reserved1;
-        struct iwl_fw_bcast_filter_attr attrs[MAX_BCAST_FILTER_ATTRS];
+        struct iwl_fw_bcast_filter_attr attrs;
     }
 
 .. _`iwl_fw_bcast_filter.members`:
@@ -974,10 +977,10 @@ Definition
 .. code-block:: c
 
     struct iwl_ba_window_status_notif {
-        __le64 bitmap[BA_WINDOW_STREAMS_MAX];
-        __le16 ra_tid[BA_WINDOW_STREAMS_MAX];
-        __le32 start_seq_num[BA_WINDOW_STREAMS_MAX];
-        __le16 mpdu_rx_count[BA_WINDOW_STREAMS_MAX];
+        __le64 bitmap;
+        __le16 ra_tid;
+        __le32 start_seq_num;
+        __le16 mpdu_rx_count;
     }
 
 .. _`iwl_ba_window_status_notif.members`:
@@ -1054,8 +1057,8 @@ Definition
         u8 max_bcast_filters;
         u8 max_macs;
         u8 reserved1;
-        struct iwl_fw_bcast_filter filters[MAX_BCAST_FILTERS];
-        struct iwl_fw_bcast_mac macs[NUM_MAC_INDEX_DRIVER];
+        struct iwl_fw_bcast_filter filters;
+        struct iwl_fw_bcast_mac macs;
     }
 
 .. _`iwl_bcast_filter_cmd.members`:
@@ -1102,7 +1105,7 @@ Definition
         u8 markerId;
         __le16 reserved;
         __le64 timestamp;
-        __le32 metadata[0];
+        __le32 metadata;
     }
 
 .. _`iwl_mvm_marker.members`:
@@ -1282,7 +1285,7 @@ Definition
         u8 source_id;
         u8 reserved;
         __le32 key;
-        __le32 reserved2[5];
+        __le32 reserved2;
     }
 
 .. _`iwl_mcc_update_cmd.members`:
@@ -1653,7 +1656,7 @@ Definition
 
     struct temp_report_ths_cmd {
         __le32 num_temps;
-        __le16 thresholds[IWL_MAX_DTS_TRIPS];
+        __le16 thresholds;
     }
 
 .. _`temp_report_ths_cmd.members`:
@@ -1685,7 +1688,7 @@ Definition
 
     struct iwl_shared_mem_lmac_cfg {
         __le32 txfifo_addr;
-        __le32 txfifo_size[TX_FIFO_MAX_NUM];
+        __le32 txfifo_size;
         __le32 rxfifo1_addr;
         __le32 rxfifo1_size;
     }
@@ -1724,8 +1727,8 @@ Definition
 .. code-block:: c
 
     struct iwl_mu_group_mgmt_notif {
-        __le32 membership_status[2];
-        __le32 user_position[4];
+        __le32 membership_status;
+        __le32 user_position;
     }
 
 .. _`iwl_mu_group_mgmt_notif.members`:
@@ -1760,7 +1763,7 @@ Definition
         __le32 op;
         __le32 addr;
         __le32 len;
-        __le32 data[];
+        __le32 data;
     }
 
 .. _`iwl_dbg_mem_access_cmd.members`:
@@ -1799,7 +1802,7 @@ Definition
     struct iwl_dbg_mem_access_rsp {
         __le32 status;
         __le32 len;
-        __le32 data[];
+        __le32 data;
     }
 
 .. _`iwl_dbg_mem_access_rsp.members`:

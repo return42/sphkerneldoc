@@ -6,7 +6,7 @@
 ext2_block_to_path
 ==================
 
-.. c:function:: int ext2_block_to_path(struct inode *inode, long i_block, int offsets[4], int *boundary)
+.. c:function:: int ext2_block_to_path(struct inode *inode, long i_block, int offsets, int *boundary)
 
     parse the block number into array of offsets
 
@@ -44,7 +44,7 @@ inode->i_sb).
 ext2_get_branch
 ===============
 
-.. c:function:: Indirect *ext2_get_branch(struct inode *inode, int depth, int *offsets, Indirect chain[4], int *err)
+.. c:function:: Indirect *ext2_get_branch(struct inode *inode, int depth, int *offsets, Indirect chain, int *err)
 
     read the chain of indirect blocks leading to data
 
@@ -187,7 +187,7 @@ direct and indirect blocks.
 ext2_alloc_blocks
 =================
 
-.. c:function:: int ext2_alloc_blocks(struct inode *inode, ext2_fsblk_t goal, int indirect_blks, int blks, ext2_fsblk_t new_blocks[4], int *err)
+.. c:function:: int ext2_alloc_blocks(struct inode *inode, ext2_fsblk_t goal, int indirect_blks, int blks, ext2_fsblk_t new_blocks, int *err)
 
     multiple allocate blocks needed for a branch
 
@@ -299,7 +299,7 @@ chain to new block and return 0.
 ext2_find_shared
 ================
 
-.. c:function:: Indirect *ext2_find_shared(struct inode *inode, int depth, int offsets[4], Indirect chain[4], __le32 *top)
+.. c:function:: Indirect *ext2_find_shared(struct inode *inode, int depth, int offsets, Indirect chain, __le32 *top)
 
     find the indirect blocks for partial truncation.
 

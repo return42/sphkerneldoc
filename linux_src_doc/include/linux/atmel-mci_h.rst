@@ -78,7 +78,7 @@ Definition
     struct mci_platform_data {
         void *dma_slave;
         dma_filter_fn dma_filter;
-        struct mci_slot_pdata slot[ATMCI_MAX_NR_SLOTS];
+        struct mci_slot_pdata slot;
     }
 
 .. _`mci_platform_data.members`:

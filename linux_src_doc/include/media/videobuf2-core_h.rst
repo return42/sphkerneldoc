@@ -372,7 +372,7 @@ Definition
         unsigned int type;
         unsigned int memory;
         unsigned int num_planes;
-        struct vb2_plane planes[VB2_MAX_PLANES];
+        struct vb2_plane planes;
         u64 timestamp;
     }
 
@@ -795,7 +795,7 @@ from vidioc_reqbufs handler in driver.
 vb2_core_create_bufs
 ====================
 
-.. c:function:: int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory, unsigned int *count, unsigned int requested_planes, const unsigned int requested_sizes[])
+.. c:function:: int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory, unsigned int *count, unsigned int requested_planes, const unsigned int requested_sizes)
 
     Allocate buffers and any required auxiliary structs
 

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct input_mt_slot {
-        int abs[ABS_MT_LAST - ABS_MT_FIRST + 1];
+        int abs;
         unsigned int frame;
         unsigned int key;
     }
@@ -60,7 +60,7 @@ Definition
         unsigned int flags;
         unsigned int frame;
         int *red;
-        struct input_mt_slot slots[];
+        struct input_mt_slot slots;
     }
 
 .. _`input_mt.members`:

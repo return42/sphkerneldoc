@@ -111,7 +111,7 @@ Definition
         unsigned long clk_rate;
         int num_flashes;
         struct spear_smi_flash_info *board_flash_info;
-        struct device_node  *np[MAX_NUM_FLASH_CHIP];
+        struct device_node  *np;
     }
 
 .. _`spear_smi_plat_data.members`:
@@ -126,6 +126,9 @@ num_flashes
     *undescribed*
 
 board_flash_info
+    *undescribed*
+
+np
     *undescribed*
 
 .. _`spear_smi_plat_data.clk_rate`:

@@ -97,7 +97,7 @@ Definition
 .. code-block:: c
 
     struct tx_device {
-        struct tx_device_buffer tx_dev_buff[TX_DEVICE_BUFF_SIZE];
+        struct tx_device_buffer tx_dev_buff;
         unsigned int qhead;
         unsigned int qtail;
         spinlock_t tx_dev_lock;
@@ -107,6 +107,9 @@ Definition
 
 Members
 -------
+
+tx_dev_buff
+    *undescribed*
 
 qhead
     Head of tx queue.
@@ -134,7 +137,7 @@ Definition
 .. code-block:: c
 
     struct rx_device_buffer {
-        unsigned char data[RX_DATA_SIZE];
+        unsigned char data;
         unsigned int size;
     }
 
@@ -166,7 +169,7 @@ Definition
 .. code-block:: c
 
     struct rx_device {
-        struct rx_device_buffer rx_dev_buff[RX_DEVICE_BUFF_SIZE];
+        struct rx_device_buffer rx_dev_buff;
         unsigned int qhead;
         unsigned int qtail;
         spinlock_t rx_dev_lock;
@@ -176,6 +179,9 @@ Definition
 
 Members
 -------
+
+rx_dev_buff
+    *undescribed*
 
 qhead
     Head of rx queue.

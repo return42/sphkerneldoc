@@ -64,13 +64,13 @@ Definition
         struct list_head req_list;
         struct list_head unsent_req_list;
         struct p9_req_t *req;
-        char tmp_buf[7];
+        char tmp_buf;
         struct p9_fcall rc;
         int wpos;
         int wsize;
         char *wbuf;
         struct list_head poll_pending_link;
-        struct p9_poll_wait poll_wait[MAXPOLLWADDR];
+        struct p9_poll_wait poll_wait;
         poll_table pt;
         struct work_struct rq;
         struct work_struct wq;
