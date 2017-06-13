@@ -16,6 +16,9 @@ from glob import glob
 import sphinx
 from sphinx.util.osutil import make_filename
 
+# compiling books/driver-api.html needs to extend the recursion limit:
+sys.setrecursionlimit(1500)
+
 # Get Sphinx version
 major, minor, patch = sphinx.version_info[:3]
 
