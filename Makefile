@@ -1,5 +1,9 @@
 # -*- coding: utf-8; mode: make -*-
 
+include utils/makefile.include
+include utils/makefile.python
+include utils/makefile.sphinx
+
 # sphinx-build setup
 SPHINXOPTS =
 # The paper size ('letter' or 'a4').
@@ -8,24 +12,16 @@ PAPER     := a4
 FONTSIZE  := 11
 # The LaTeX docclass
 # this HACK disables the *docclass* setting in the latex_documents (see conf.py)
-DOCCLASS  :=
+export DOCCLASS  := darmarITArticle
 
 srctree=/share/linux-docs-next
 export srctree
 
 # External programs used
 
-SPHINXBUILD    := sphinx-build
-DBTOOLS_SCRIPT := linux-db2rst
-AUTODOC_SCRIPT := kernel-autodoc
-DB2RST_ARGS    := --nochunk
+SPHINXBUILD    := $(PY_ENV_BIN)/sphinx-build
+AUTODOC_SCRIPT := $(PY_ENV_BIN)/kernel-autodoc
 
-# We need some generic definitions (do not try to remake the file).
-Kbuild.include: ;
-include Kbuild.include
-
-# This makefile is used to convert the kernel documentation to reStructuredText
-# and build all books (aka DocBooks) with sphinx.
 
 PHONY =
 
@@ -67,18 +63,10 @@ BOOKS_PDF   = $(patsubst %,%.pdf, $(filter-out books/kernel-doc-HOWTO, $(BOOKS))
 	      $(patsubst %,%.pdf, $(BOOKS_MIGRATED))\
 	      $(patsubst %,books/%.pdf, $(KERNEL_BOOKS))
 
-# for the period of transition from books_migrated
-BOOKS_MIGRATED_FOLDER=$(BOOKS_FOLDER)/books_migrated
-BOOKS_MIGRATED=$(patsubst $(BOOKS_MIGRATED_FOLDER)/%/conf.py,books/%,$(wildcard $(BOOKS_MIGRATED_FOLDER)/*/conf.py))
-BOOKS_MIGRATED_HTML  = $(patsubst %,%.html, $(BOOKS_MIGRATED))
-BOOKS_MIGRATED_CLEAN = $(patsubst %,%.clean, $(BOOKS_MIGRATED))
-BOOKS_MIGRATED_MAN   = $(patsubst %,%.man, $(BOOKS_MIGRATED))
-BOOKS_MIGRATED_LATEX = $(patsubst %,%.latex, $(BOOKS_MIGRATED))
 
 # kernel's sphinx-books
 KERNEL_FOLDER=$(srctree)/Documentation
-# FIXME: media not yet work
-KERNEL_BOOKS=$(filter-out media,$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py)))
+KERNEL_BOOKS=$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py))
 KERNEL_BOOKS_HTML  = $(patsubst %,books/%.html, $(KERNEL_BOOKS))
 KERNEL_BOOKS_CLEAN = $(patsubst %,books/%.clean, $(KERNEL_BOOKS))
 KERNEL_BOOKS_MAN   = $(patsubst %,books/%.man, $(KERNEL_BOOKS))
@@ -90,32 +78,9 @@ ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
 FMT = fmt
 endif
 
-DOCBOOKS := $(wildcard $(srctree)/Documentation/DocBook/*.tmpl)
-DOCBOOKS := $(DOCBOOKS:$(srctree)/Documentation/DocBook/%=%)
-
 # ------------------------------------------------------------------------------
 # requirements
 # ------------------------------------------------------------------------------
-
-PHONY += msg-sphinx-builder sphinx-builder
-
-msg-sphinx-builder:
-	$(Q)echo "\n\
-The base documentation build system requires sphinx-doc:\n\n\
-  Make sure you have an updated Sphinx installed, grab it from\n\
-  http://sphinx-doc.org or install it from the python package\n\
-  manager (pip). On debian based OS these requirements are\n\
-  installed by::\n\n\
-    sudo apt-get install pip3\n\
-    pip3 install --user -U Sphinx sphinx_rtd_theme"
-
-ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
-sphinx-builder: msg-sphinx-builder
-	$(error The '$(SPHINXBUILD)' command was not found)
-else
-sphinx-builder:
-	@:
-endif
 
 PHONY += msg-texlive texlive
 
@@ -148,7 +113,7 @@ The TeX and PDF output and the *math* extension require TexLive:\n\n\
 
 PHONY += help help-rqmts
 
-help-rqmts: msg-sphinx-builder msg-TeXLive
+help-rqmts: msg-TeXLive
 
 help:
 	$(Q)echo "Please use 'make <target>' where <target> is one of ..."
@@ -156,15 +121,14 @@ help:
 	$(Q)echo "all-HTML : build all HTML targets:"
 	$(Q)echo
 	$(Q)echo "  intro.html    : build HTML intro page (root index.html)"
-	$(Q)echo "  books.html    : build HTML books from the reST files (see dbxml2rst)"
 	$(Q)echo "  src.html      : build HTML of source-code reST files (see src2rst)"
 	$(Q)echo
 	$(Q)echo "help-rqmts : info about build requirements"
 	$(Q)echo
 	$(Q)echo "books/{name}.html : build only the HTML of document {name}"
-	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(KERNEL_BOOKS_HTML)" | $(FMT)
 	$(Q)echo
-	$(Q)echo "books.pdf : builds all PDF targets (with the buggy rstpdf):"
+	$(Q)echo "books.pdf : builds all PDF targets:"
 	$(Q)echo
 	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
 	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) " | $(FMT)
@@ -172,7 +136,7 @@ help:
 	$(Q)echo "books.man : builds all man page targets:"
 	$(Q)echo
 	$(Q)echo "  books/{name}.man : build only the man page of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN) $(KERNEL_BOOKS_MAN)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_MAN) $(KERNEL_BOOKS_MAN)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "The HTML & PDF output formats are placed into folder:"
 	$(Q)echo ""
@@ -181,9 +145,6 @@ help:
 	$(Q)echo "all-reST : builds all reST targets:"
 	$(Q)echo
 	$(Q)echo "  src2rst     : generate reST documentation from source code"
-	$(Q)echo "  dbxml2rst   : convert kernel's DocBook-XML books to reST"
-	$(Q)echo "  {fname}.rst : converts only {fname}.tmpl to reST, valid"
-	$(Q)echo "    values for {fname} are: \n\n    $(DB2RST)" | $(FMT)
 	$(Q)echo
 	$(Q)echo ".. hint:"
 	$(Q)echo
@@ -209,18 +170,18 @@ ALLSPHINXOPTS = $(SPHINXOPTS)\
 
 # update reST in reposetory
 PHONY += all-reST
-all-reST: dbxml2rst src2rst
+all-reST: src2rst
 
 # update github-pages
 PHONY += all-HTML books.html books.pdf books.man books.clean
-all-HTML:    sphinx-builder books.html src.html
-books.html:  sphinx-builder $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML) intro.html
-books.man:   sphinx-builder $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN) $(KERNEL_BOOKS_MAN)
-books.pdf:   $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
-books.clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN) intro.clean
+all-HTML:    sphinx-doc books.html src.html
+books.html:  sphinx-doc $(BOOKS_HTML) $(KERNEL_BOOKS_HTML) intro.html
+books.man:   sphinx-doc $(BOOKS_MAN)  $(KERNEL_BOOKS_MAN)
+books.pdf:   $(BOOKS_PDF) $(KERNEL_BOOKS_PDF)
+books.clean: $(BOOKS_CLEAN) $(KERNEL_BOOKS_CLEAN) intro.clean
 
 PHONY += clean
-clean: intro.clean books.clean
+clean: intro.clean books.clean pyclean
 
 $(DIST_BOOKS):
 	mkdir -p $(DIST_BOOKS)
@@ -274,54 +235,28 @@ quiet_cmd_sphinx_clean = CLEAN   $@
 # e.g.: make books/template-book.[html|man|latex|pdf|clean]
 #
 PHONY += $(BOOKS_HTML)
-$(BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
+$(BOOKS_HTML): sphinx-doc | $(DIST_BOOKS)
 	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_FOLDER))
 
 PHONY += $(BOOKS_MAN)
-$(BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
+$(BOOKS_MAN): sphinx-doc | $(DIST_BOOKS)
 	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),man,$(BOOKS_FOLDER))
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
 PHONY += $(BOOKS_LATEX)
-$(BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
+$(BOOKS_LATEX): sphinx-doc texlive | $(DIST_BOOKS)
 	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(BOOKS_FOLDER))
 
 # latex to PDF is for all books the same
-PHONY += $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
-$(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF): %.pdf : %.latex
+PHONY += $(BOOKS_PDF) $(KERNEL_BOOKS_PDF)
+$(BOOKS_PDF) $(KERNEL_BOOKS_PDF): %.pdf : %.latex
 	$(Q) DIST_BOOKS=$(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf/ \
 		$(MAKE) -C $(CACHE_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex all-pdf dist-pdf
 
-
-
-#$(Q) mkdir -p $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf
-#	$(Q) cp $(CACHE_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex/*.pdf $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf/
-#	$(Q) echo "  PDF    $@ --> file://$(abspath $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf/)"
-
 # clean is for all books the same
-PHONY += $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN)
-$(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN):
+PHONY += $(BOOKS_CLEAN) $(KERNEL_BOOKS_CLEAN)
+$(BOOKS_CLEAN) $(KERNEL_BOOKS_CLEAN):
 	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
-
-
-# migrated DocBook-XML to reST content
-# ------------------------------------
-#
-# e.g: make books/debugobjects.[html|man|latex|pdf|clean]
-#
-
-PHONY += $(BOOKS_MIGRATED_HTML)
-$(BOOKS_MIGRATED_HTML): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_MIGRATED_FOLDER))
-
-PHONY += $(BOOKS_MIGRATED_MAN)
-$(BOOKS_MIGRATED_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),man,$(BOOKS_MIGRATED_FOLDER))
-	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
-
-PHONY += $(BOOKS_MIGRATED_LATEX)
-$(BOOKS_MIGRATED_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
-	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(BOOKS_MIGRATED_FOLDER))
 
 
 # kernel's sphinx-books
@@ -331,16 +266,16 @@ $(BOOKS_MIGRATED_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
 #
 
 PHONY += $(KERNEL_BOOKS_HTML)
-$(KERNEL_BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
+$(KERNEL_BOOKS_HTML): sphinx-doc | $(DIST_BOOKS)
 	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(KERNEL_FOLDER))
 
 PHONY += $(KERNEL_BOOKS_MAN)
-$(KERNEL_BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
+$(KERNEL_BOOKS_MAN): sphinx-doc | $(DIST_BOOKS)
 	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),man,$(KERNEL_FOLDER))
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
 PHONY += $(KERNEL_BOOKS_LATEX)
-$(KERNEL_BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
+$(KERNEL_BOOKS_LATEX): sphinx-doc texlive | $(DIST_BOOKS)
 	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(KERNEL_FOLDER))
 
 # ------------------------------------------------------------------------------
@@ -370,30 +305,12 @@ quiet_cmd_intro = SPHINX  $@ --> file://$(abspath $(DIST))/index.html
 	$(abspath $(DIST))
 
 PHONY += intro.html intro.clean
-intro.html: sphinx-builder | $(DIST_BOOKS)
+intro.html: sphinx-doc | $(DIST_BOOKS)
 	$(call cmd,intro,html,../,,$(BOOKS_FOLDER))
 
 intro.clean:
 	$(call cmd,intro_clean)
 
-# DocBook-XML (tmpl) --> reST
-# ---------------------------
-
-DB2RST := $(patsubst %.tmpl,%.rst,$(DOCBOOKS))
-dbxml2rst: dbxml2rst.clean $(DB2RST) dbxml2rst.post
-
-dbxml2rst.clean:
-	rm -f $(BOOKS_MIGRATED_FOLDER)/*/*.rst
-
-dbxml2rst.post:
-	$(Q)echo
-	$(Q)echo "CHECK IF SOME OF THE $(BOOKS_MIGRATED_FOLDER)/*/conf.py ARE OBSOLETE!"
-	$(Q)echo "IF SO, DROP THOSE FOLDERS."
-	$(Q)echo
-
-.PHONY:	$(DB2RST)
-$(DB2RST):
-	$(DBTOOLS_SCRIPT) --out=$(BOOKS_MIGRATED_FOLDER) db2rst $(DB2RST_ARGS) $(srctree) $(patsubst %.rst,%.tmpl,${@})
 
 
 # ------------------------------------------------------------------------------
@@ -404,11 +321,11 @@ $(DB2RST):
 # ------------
 
 PHONY += src-reST-Files
-src-reST-Files:
-	./kernel-docgrep $(KERNEL_FOLDER) > $(CACHE)/src-reST-Files.txt
+src-reST-Files: $(PY_ENV)
+	$(PY_ENV_BIN)/$(PYTHON) ./kernel-docgrep $(KERNEL_FOLDER) > $(CACHE)/src-reST-Files.txt
 
 PHONY += src2rst
-src2rst: src-reST-Files
+src2rst: $(PY_ENV) src-reST-Files
 	rm -rf $(AUTODOC_FOLDER)
 	$(AUTODOC_SCRIPT)  --markup kernel-doc --rst-files $(CACHE)/src-reST-Files.txt $(srctree) $(AUTODOC_FOLDER)
 
@@ -416,7 +333,7 @@ src2rst: src-reST-Files
 # -------------
 
 PHONY += src.html
-src.html: sphinx-builder
+src.html: sphinx-doc
 	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b html\
 		-c .\
 		-d $(CACHE)/doctrees/linux_src_doc \

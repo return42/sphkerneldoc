@@ -14,13 +14,10 @@ from os.path import join as pathjoin
 from os.path import abspath, dirname, splitext, basename, exists
 from glob import glob
 import sphinx
+from sphinx.util.osutil import make_filename
 
 # Get Sphinx version
-major, minor, patch = map(int, sphinx.__version__.split("."))
-
-# the build of the linux_src_doc needs increation of the recursion limit (a
-# limit of 2000 fails unregular)
-sys.setrecursionlimit(5000)
+major, minor, patch = sphinx.version_info[:3]
 
 BASE_FOLDER = []
 for folder in dirname(__file__).split(os.sep):
@@ -34,7 +31,7 @@ BASE_FOLDER = os.sep.join(BASE_FOLDER)
 # ------------------------------------------------------------------------------
 
 project   = 'The Linux Kernel'
-copyright = '2016, The kernel development community'
+copyright = '2017, The kernel development community'
 author    = 'The kernel development community'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -129,12 +126,14 @@ intersphinx_mapping['linux'] = ('https://return42.github.io/sphkerneldoc/linux_s
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
 extensions = [
     "linuxdoc.rstFlatTable"    # flat-table reST directive
     , "linuxdoc.rstKernelDoc"  # kernel-doc reST directive
     , "linuxdoc.manKernelDoc"  # kernel-doc-man sphinx builder
     , "linuxdoc.kernel_include"  # kernel_include directive
     , "linuxdoc.cdomain"
+    , "linuxdoc.kfigure"
     # , "xelatex"
     , 'sphinx.ext.extlinks'
     , 'sphinx.ext.todo'
@@ -183,7 +182,7 @@ keep_warnings = False
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-primary_domain = 'C'
+primary_domain = 'c'
 highlight_language = 'guess'
 
 # ------------------------------------------------------------------------------
@@ -510,4 +509,11 @@ epub_exclude_files = ['search.html']
 # Since loadConfig overwrites settings from the global namespace, it has to be
 # the last statement in the conf.py file
 # ------------------------------------------------------------------------------
+
 loadConfig(globals())
+
+if not 'latex_documents' in globals():
+    latex_documents = [
+        (master_doc, make_filename(project) + '.tex',project, '', os.environ.get("DOCCLASS", "report"))
+    ]
+

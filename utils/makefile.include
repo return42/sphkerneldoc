@@ -1,3 +1,22 @@
+# -*- coding: utf-8; mode: makefile-gmake -*-
+
+make-help:
+	@echo  '  make V=0|1 [targets] 0 => quiet build (default), 1 => verbose build'
+	@echo  '  make V=2   [targets] 2 => give reason for rebuild of target'
+
+quiet_cmd_common_clean = CLEAN     $@
+      cmd_common_clean = \
+	rm -rf tests/build ;\
+	find . -name '*.orig' -exec rm -f {} +     ;\
+	find . -name '*.rej' -exec rm -f {} +      ;\
+	find . -name '*~' -exec rm -f {} +         ;\
+	find . -name '*.bak' -exec rm -f {} +      ;\
+
+FMT = cat
+ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
+FMT = fmt
+endif
+
 # stolen from linux/Makefile
 #
 
@@ -16,14 +35,15 @@ else
   Q = @
 endif
 
-
 # stolen from linux/scripts/Kbuild.include
 #
 
 # Convenient variables
 comma   := ,
 quote   := "
+#" this comment is only for emacs highlighting
 squote  := '
+#' this comment is only for emacs highlighting
 empty   :=
 space   := $(empty) $(empty)
 space_escape := _-_SPACE_-_

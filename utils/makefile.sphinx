@@ -1,0 +1,61 @@
+# -*- coding: utf-8; mode: makefile-gmake -*-
+
+# You can set these variables from the command line.
+SPHINXOPTS  ?=
+SPHINXBUILD ?= $(PY_ENV_BIN)/sphinx-build
+DOCS_BUILD  ?= build/docs
+GH_PAGES    ?= gh-pages
+DOCS_DIST   ?= dist/docs
+
+docs-help:
+	@echo  'makefile.docs:'
+	@echo  '  docs-clean	- clean intermediate doc objects'
+	@echo  '  $(GH_PAGES)	- create & upload github pages'
+
+# ------------------------------------------------------------------------------
+# requirements
+# ------------------------------------------------------------------------------
+
+sphinx-doc: $(PY_ENV)
+	@$(PY_ENV_BIN)/pip install $(PIP_VERBOSE) Sphinx
+
+# ------------------------------------------------------------------------------
+# commands
+# ------------------------------------------------------------------------------
+
+# $2 sphinx builder e.g. "html"
+# $3 path where configuration file (conf.py) is located
+# $4 sourcedir
+# $5 dest subfolder e.g. "man" for man pages at $(DOCS_DIST)/man
+
+quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DOCS_DIST)/$5)
+      cmd_sphinx = $(SPHINXBUILD) $(SPHINXOPTS)\
+	-b $2 -c $3 -d $(DOCS_BUILD)/.doctrees $4 $(DOCS_DIST)/$5
+
+quiet_cmd_sphinx_clean = CLEAN     $@
+      cmd_sphinx_clean = rm -rf $(DOCS_BUILD) $(DOCS_DIST) $(GH_PAGES)/* $(GH_PAGES)/.buildinfo
+
+# ------------------------------------------------------------------------------
+# targets
+# ------------------------------------------------------------------------------
+
+PHONY += docs-clean
+docs-clean:
+	$(call cmd,sphinx_clean)
+
+PHONY += $(GH_PAGES)
+$(GH_PAGES):
+	$(MAKE) docs
+	[ -d "gh-pages/.git" ] || git clone $(GIT_URL) gh-pages
+	-cd $(GH_PAGES); git checkout --orphan gh-pages || exit 0
+	rm -rf $(GH_PAGES)/* $(GH_PAGES)/.gitignore
+	touch $(GH_PAGES)/.nojekyll ;\
+	cp -r $(DOCS_DIST)/* $(GH_PAGES)/
+	-cd $(GH_PAGES); git push origin :gh-pages
+	cd $(GH_PAGES);\
+		git add --all . ;\
+		git commit -m "gh-pages: updated" ;\
+		git push origin gh-pages
+
+.PHONY: $(PHONY)
+

@@ -28,6 +28,16 @@ trying to get it to work optimally on a given system.
 * `The Linux kernel user's and administrator's guide <books/admin-guide/index.html>`_
   (`pdf <books/admin-guide/pdf>`__, `man <books/admin-guide/man>`__)
 
+Application-developer documentation
+-----------------------------------
+
+The user-space API manual gathers together documents describing aspects of
+the kernel interface as seen by application developers.
+
+* `The Linux kernel user-space API guide <books/userspace-api/index.html>`_
+  (`pdf <books/userspace-api/pdf>`__, `man <books/userspace-api/man>`__)
+
+
 Introduction to kernel development
 ----------------------------------
 
@@ -43,9 +53,15 @@ merged much easier.
 * `Development tools for the kernel <books/dev-tools/index.html>`_
   (`pdf <books/dev-tools/pdf>`__, `man <books/dev-tools/man>`__)
 
+* `How to write kernel documentation <books/doc-guide/index.html>`_
+  (`pdf <books/doc-guide/pdf>`__, `man <books/doc-guide/man>`__)
+
+* `Kernel Hacking Guides <books/kernel-hacking/index.html>`_
+  (`pdf <books/kernel-hacking/pdf>`__, `man <books/kernel-hacking/man>`__)
+
 The following 2 or 3 documents are a part of this POC / take it as a *prospect*
 ;-) ... it is not, of "what" the kernel community has unified (`ref
-<https://www.kernel.org/doc/html/latest/kernel-documentation.html>`__)!
+<books/doc-guide/index.html>`__)!
 
 * `kernel-doc HOWTO <books/kernel-doc-HOWTO/index.html>`_
   (`pdf <books/kernel-doc-HOWTO/pdf>`__, `man <books/kernel-doc-HOWTO/man>`__)
@@ -68,89 +84,63 @@ needed).
 * `The Linux driver implementer's API guide <books/driver-api/index.html>`_
   (`pdf <books/driver-api/pdf>`__, `man <books/driver-api/man>`__)
 
+* `Core API Documentation <books/core-api/index.html>`_
+  (`pdf <books/core-api/pdf>`__, `man <books/core-api/man>`__)
+
 * FIXME: not yet `Linux Media Infrastructure API (linux-tv) <books/media/index.html>`_
   (`pdf <books/media/pdf>`__, `man <books/media/man>`__)
+
+* `Linux Networking Documentation <books/networking/index.html>`_
+  (`pdf <books/networking/pdf>`__, `man <books/networking/man>`__)
+
+* `The Linux Input Documentation <books/input/index.html>`_
+  (`pdf <books/input/pdf>`__, `man <books/input/man>`__)
 
 * `Linux GPU Driver Developer's Guide <books/gpu/index.html>`_
   (`pdf <books/gpu/pdf>`__, `man <books/gpu/man>`__)
 
-* `The 802.11 subsystems <books/80211/index.html>`_
-  (`pdf <books/80211/pdf>`__, `man <books/80211/man>`__)
+* `Security Documentation <books/security/index.html>`_
+  (`pdf <books/security/pdf>`__, `man <books/security/man>`__)
 
-.. _xref_migrated_docbook:
+* `Linux Sound Subsystem Documentation <books/sound/index.html>`_
+  (`pdf <books/sound/pdf>`__, `man <books/sound/man>`__)
 
-Linux Kernel's documentation (DocBook)
-======================================
-
-This section list DocBooks (`ref <https://www.kernel.org/doc/htmldocs>`__)
-content, which was has been automatic converted by this POC to the reST markup
-(and compiled to HTML). If you want to see the reST markup jump to the
-`sources <https://github.com/return42/sphkerneldoc/tree/master/Documentation/books_migrated>`__.
-The DocBook/reST conversion is done with the reST with the :ref:`DocBook-XML to
-reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
+* `Linux Kernel Crypto API <books/crypto/index.html>`_
+  (`pdf <books/crypto/pdf>`__, `man <books/crypto/man>`__)
 
 * `Linux Filesystems API <books/filesystems/index.html>`_
   (`pdf <books/filesystems/pdf>`__, `man <books/filesystems/man>`__)
 
-* `USB Gadget API for Linux <books/gadget/index.html>`_
-  (`pdf <books/gadget/pdf>`__, `man <books/gadget/man>`__)
 
-* `Linux generic IRQ handling <books/genericirq/index.html>`_
-  (`pdf <books/genericirq/pdf>`__, `man <books/genericirq/man>`__)
+Architecture-specific documentation
+-----------------------------------
 
-* `The Linux Kernel API <books/kernel-api/index.html>`_
-  (`pdf <books/kernel-api/pdf>`__, `man <books/kernel-api/man>`__)
-
-* `Unreliable Guide To Hacking The Linux Kernel <books/kernel-hacking/index.html>`_
-  (`pdf <books/kernel-hacking/pdf>`__, `man <books/kernel-hacking/man>`__)
-
-* `Unreliable Guide To Locking <books/kernel-locking/index.html>`_
-  (`pdf <books/kernel-locking/pdf>`__, `man <books/kernel-locking/man>`__)
-
-* `Using kgdb, kdb and the kernel debugger internals <books/kgdb/index.html>`_
-  (`pdf <books/kgdb/pdf>`__, `man <books/kgdb/man>`__)
-
-* `libATA Developer's Guide <books/libata/index.html>`_
-  (`pdf <books/libata/pdf>`__, `man <books/libata/man>`__)
-
-* `Reed-Solomon Library Programming Interface <books/librs/index.html>`_
-  (`pdf <books/librs/pdf>`__, `man <books/librs/man>`__)
-
-* `LSM kernel patch <books/lsm/index.html>`_
-  (`pdf <books/lsm/pdf>`__, `man <books/lsm/man>`__)
-
-* `MTD NAND Driver Programming Interface <books/mtdnand/index.html>`_
-  (`pdf <books/mtdnand/pdf>`__, `man <books/mtdnand/man>`__)
-
-* `Linux Networking and Network Devices APIs <books/networking/index.html>`_
-  (`pdf <books/networking/pdf>`__, `man <books/networking/man>`__)
-
-* `RapidIO Subsystem Guide <books/rapidio/index.html>`_
-  (`pdf <books/rapidio/pdf>`__, `man <books/rapidio/man>`__)
-
-* `Writing s390 channel device drivers <books/s390-drivers/index.html>`_
-  (`pdf <books/s390-drivers/pdf>`__, `man <books/s390-drivers/man>`__)
-
-* `SCSI Interfaces Guide <books/scsi/index.html>`_
-  (`pdf <books/scsi/pdf>`__, `man <books/scsi/man>`__)
+These books provide programming details about architecture-specific
+implementation.
 
 * `SuperH Interfaces Guide <books/sh/index.html>`_
-  (`pdf <books/sh/pdf>`__, `man <books/sh/man>`__)
+   (`pdf <books/sh/pdf>`__, `man <books/sh/man>`__)
 
-* `The Linux-USB Host Side API <books/usb/index.html>`_
-  (`pdf <books/usb/pdf>`__, `man <books/usb/man>`__)
 
-* `W1: Dallas' 1-wire bus <books/w1/index.html>`_
-  (`pdf <books/w1/pdf>`__, `man <books/w1/man>`__)
+FIXME:
 
-* `Writing an ALSA Driver <books/writing-an-alsa-driver/index.html>`_
-  (`pdf <books/writing-an-alsa-driver/pdf>`__, `man <books/writing-an-alsa-driver/man>`__)
+Korean translations
+-------------------
 
-* `Writing an MUSB Glue Layer <books/writing_musb_glue_layer/index.html>`_
-  (`pdf <books/writing_musb_glue_layer/pdf>`__, `man <books/writing_musb_glue_layer/man>`__)
+* `Korean translations <books/translations/ko_KR/index.html>`_
+   (`pdf <books/translations/ko_KR/pdf>`__, `man <books/translations/ko_KR/man>`__)
 
-* `Writing USB Device Drivers <books/writing_usb_driver/index.html>`_
-  (`pdf <books/writing_usb_driver/pdf>`__, `man <books/writing_usb_driver/man>`__)
 
-* `Z8530 Programming Guide <books/z8530book/index.html>`_
-  (`pdf <books/z8530book/pdf>`__, `man <books/z8530book/man>`__)
+Chinese translations
+--------------------
+
+* `Chinese translations <books/translations/zh_CN/index.html>`_
+   (`pdf <books/translations/zh_CN/pdf>`__, `man <books/translations/zh_CN/man>`__)
+
+
+Japanese translations
+---------------------
+
+* `Japanese translations <books/translations/ja_JP/index.html>`_
+   (`pdf <books/translations/ja_JP/pdf>`__, `man <books/translations/ja_JP/man>`__)
+
