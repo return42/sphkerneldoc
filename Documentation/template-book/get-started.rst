@@ -8,8 +8,7 @@ Get started with reST books
 ***************************
 
 This chapter describes, how to create a reST_ *book* (aka sphinx-project) based
-on the ``Documentation/template-book``. To create only a *loose reST article*
-take a look at :ref:`sphkerneldoc:reST-nano-HOWTO`.
+on the ``Documentation/template-book``.
 
 To get started, copy the template-book folder and the config file.
 
