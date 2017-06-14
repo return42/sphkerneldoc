@@ -46,26 +46,33 @@ PDF & Math support
 ==================
 
 For PDF output and *Math support* (nicely rendered mathematical notations) a
-LaTeX tool-chain is required.
+LaTeX tool-chain is required. To convert SVG to PDF a ImageMagick installation
+is also needed.
 
 Debian/Ubuntu::
 
   apt-get install \
       texlive-base texlive-xetex texlive-latex-recommended \
-      texlive-extra-utils dvipng ttf-dejavu
+      texlive-extra-utils dvipng ttf-dejavu \
+      imagemagick
 
 Fedora::
 
   yum install \
-      texlive-amsmath.noarch texlive-mathtools.noarch
-      texlive-anyfontsize.noarch texlive-xelatex
-      texlive-xetex texlive-xecolor.noarch
-      texlive-titlesec.noarch texlive-framed texlive-threeparttable
-      texlive-wrapfig texlive-upquote texlive-capt-of eqparbox
+      texlive-amsmath.noarch texlive-mathtools.noarch \
+      texlive-anyfontsize.noarch texlive-xelatex \
+      texlive-xetex texlive-xecolor.noarch \
+      texlive-titlesec.noarch texlive-framed texlive-threeparttable \
+      texlive-wrapfig texlive-upquote texlive-capt-of eqparbox \
+      ImageMagick
 
 Further reading:
 
 * `RTD theme <https://pypi.python.org/pypi/sphinx_rtd_theme>`_
 * `TeX Live <https://www.tug.org/texlive>`_
 * `Math support in Sphinx <http://www.sphinx-doc.org/ext/math.html>`_
-* `dvisvgm (A fast DVI to SVG converter) <http://dvisvgm.bplaced.net/Downloads>`_
+* `ImageMagick <https://www.imagemagick.org>`_
+
+Not yet used, but good to know:
+
+* `dvisvgm (A fast DVI to SVG converter) <http://dvisvgm.bplaced.net>`_
