@@ -8,21 +8,21 @@ ALLPS  = $(addsuffix .ps,$(ALLDOCS))
 # Prefix for archive names
 ARCHIVEPREFIX =
 # Additional LaTeX options
-LATEXOPTS =
+# FIXME: batchmode is needed since PDF build is fragile
+#LATEXOPTS := -file-line-error -interaction=errorstopmode
+LATEXOPTS := -file-line-error -interaction=batchmode
 # format: pdf or dvi
 FMT = pdf
 
-LATEX = latex
-PDFLATEX = {{ latex_engine }}
-MAKEINDEX = makeindex
+LATEX_ENV = max_print_line=240
 
-{% if latex_engine == 'platex' %}
-all: all-pdf-ja
-all-pdf: all-pdf-ja
-{% else %}
+LATEX = latex
+PDFLATEX  = $(LATEX_ENV) xelatex
+MAKEINDEX = $(LATEX_ENV) makeindex
+
+
 all: $(ALLPDF)
 all-pdf: $(ALLPDF)
-{% endif -%}
 all-dvi: $(ALLDVI)
 all-ps: $(ALLPS)
 
@@ -67,13 +67,19 @@ xz: tar
 	$(LATEX) $(LATEXOPTS) '$<'
 	$(LATEX) $(LATEXOPTS) '$<'
 
+# FIXME: ignore build errors since PDF build is fragile
 %.pdf: %.tex
-	$(PDFLATEX) $(LATEXOPTS) '$<'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
+	- $(PDFLATEX) $(LATEXOPTS) '$<'
+	- $(PDFLATEX) $(LATEXOPTS) '$<'
+	- $(PDFLATEX) $(LATEXOPTS) '$<'
 	-$(MAKEINDEX) -s python.ist '$(basename $<).idx'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
+	- $(PDFLATEX) $(LATEXOPTS) '$<'
+	- $(PDFLATEX) $(LATEXOPTS) '$<'
+
+dist-pdf:
+	@echo "  PDF    $@ --> file://$(abspath $(DIST_BOOKS))"
+	@mkdir -p $(DIST_BOOKS)
+	@cp $(ALLPDF) $(DIST_BOOKS)
 
 %.ps: %.dvi
 	dvips '$<'
@@ -83,4 +89,3 @@ clean:
 
 .PHONY: all all-pdf all-dvi all-ps clean zip tar gz bz2 xz
 .PHONY: all-pdf-ja
-
