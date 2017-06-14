@@ -12,7 +12,8 @@ PAPER     := a4
 FONTSIZE  := 11
 # The LaTeX docclass
 # this HACK disables the *docclass* setting in the latex_documents (see conf.py)
-export DOCCLASS  := darmarITArticle
+#export DOCCLASS  := darmarITArticle
+export DOCCLASS  := manual
 
 srctree=/share/linux-docs-next
 export srctree
@@ -95,7 +96,7 @@ endif
 
 msg-TeXLive:
 	$(Q)echo "\n\
-The TeX and PDF output and the *math* extension require TexLive:\n\n\
+The TeX/PDF output and the *math* extension require TexLive:\n\n\
   Make sure you have a updated TeXLive with XeTeX engine installed, grab it\n\
   it from https://www.tug.org/texlive or install it from your package manager.\n\n\
   Sphinx-doc produce (Xe)LaTeX files which might use additional TeX-packages\n\
@@ -166,7 +167,6 @@ help:
 # ------------------------------------------------------------------------------
 
 ALLSPHINXOPTS = $(SPHINXOPTS)\
-	-D latex_paper_size=$(PAPER) -D latex_font_size=$(FONTSIZE)\
 	-D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
 
 # update reST in reposetory
@@ -213,7 +213,7 @@ quiet_cmd_sphinx = $(shell echo "$2" | tr '[:lower:]' '[:upper:]')  $@ --> file:
 #    e.g. "$(BOOKS_MIGRATED_FOLDER)" for the migrated books
 
 quiet_cmd_latex = LATEX   $@ --> file://$(abspath $(CACHE_BOOKS)/$2/latex)
-      cmd_latex = SPHINX_CONF=$(abspath $3/$2/conf.py) \
+      cmd_latex = SPHINX_CONF=$(abspath $3/$2/conf.py) PAPER=$(PAPER) FONTSIZE=$(FONTSIZE) \
 	$(SPHINXBUILD) \
 	$(ALLSPHINXOPTS) \
 	-b latex \

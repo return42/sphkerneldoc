@@ -341,22 +341,15 @@ _latex_preamble = r"""
 # see HEADER in https://github.com/sphinx-doc/sphinx/blob/master/sphinx/writers/latex.py#L34
 latex_elements = dict()
 
-if os.environ.get("DOCCLASS", None):
-    # this HACK disables the *docclass* setting in the latex_documents
-    latex_elements.update({
-        'wrapperclass' : os.environ.get("DOCCLASS")
-    })
-
 latex_elements.update({
 
     'preamble' : _latex_preamble
     # Set these values via make environment PAPER and FONTSIZE (see Makefile)
-    #, 'papersize'  : 'a4paper'  # The paper size ('letter' or 'a4').
-    #, 'pointsize'  : '12pt'     # The font size ('10pt', '11pt' or '12pt').
+    , 'papersize'  : os.environ.get('PAPER', 'a4paper')  # The paper size ('letter' or 'a4').
+    , 'pointsize'  : os.environ.get('FONTSIZE', '12pt')  # The font size ('10pt', '11pt' or '12pt').
 
     , 'extraclassoptions'    : ''
     , 'passoptionstopackages': ''
-
 
     # some packages are obsolete other changed with xelatex
     , 'inputenc'   : r''
@@ -382,7 +375,6 @@ latex_elements.update({
     , 'shorthandoff'   : r''
     , 'maketitle'      : r'\maketitle'
     , 'tableofcontents': r'\tableofcontents'
-    , 'footer'         : r''
     , 'printindex'     : r'\printindex'
     , 'transition'     : '\n\n\\bigskip\\hrule{}\\bigskip\n\n'
     , 'figure_align'   : r'htbp'
@@ -516,7 +508,14 @@ epub_exclude_files = ['search.html']
 loadConfig(globals())
 
 if not 'latex_documents' in globals():
+    # (startdocname, targetname, title, author, documentclass, toctree_only)
     latex_documents = [
-        (master_doc, make_filename(project) + '.tex',project, '', os.environ.get("DOCCLASS", "report"))
+        (master_doc, make_filename(project) + '.tex', project, '', os.environ.get("DOCCLASS", "report"), False)
     ]
-
+else:
+    mem = latex_documents
+    latex_documents = []
+    for entry in mem:
+        entry = list(entry)
+        entry[4] = os.environ.get("DOCCLASS", "report")
+        latex_documents.append(tuple(entry))
