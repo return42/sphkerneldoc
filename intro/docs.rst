@@ -105,25 +105,23 @@ implementation.
    (`pdf <books/sh/pdf>`__, `man <books/sh/man>`__)
 
 
-FIXME:
-
 Korean translations
 -------------------
 
-* `Korean translations <books/translations/ko_KR/index.html>`_
+* FIXME: not yet `Korean translations <books/translations/ko_KR/index.html>`_
    (`pdf <books/translations/ko_KR/pdf>`__, `man <books/translations/ko_KR/man>`__)
 
 
 Chinese translations
 --------------------
 
-* `Chinese translations <books/translations/zh_CN/index.html>`_
+* FIXME: not yet `Chinese translations <books/translations/zh_CN/index.html>`_
    (`pdf <books/translations/zh_CN/pdf>`__, `man <books/translations/zh_CN/man>`__)
 
 
 Japanese translations
 ---------------------
 
-* `Japanese translations <books/translations/ja_JP/index.html>`_
+* FIXME: not yet `Japanese translations <books/translations/ja_JP/index.html>`_
    (`pdf <books/translations/ja_JP/pdf>`__, `man <books/translations/ja_JP/man>`__)
 
