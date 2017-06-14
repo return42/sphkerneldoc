@@ -345,6 +345,11 @@ PHONY += src.clean
 src.clean:
 	rm -rf $(CACHE)/doctrees/linux_src_doc $(DIST)/linux_src_doc
 
+# release on https://h2626237.stratoserver.net/kernel/
+#www: clean all-reST all-HTML books.man books.pdf
+www:
+	rsync -a $(DIST)/ /var/www/kernel
+
 # Declare the contents of the .PHONY variable as phony.  We keep that
 # information in a variable se we can use it in if_changed and friends.
 
