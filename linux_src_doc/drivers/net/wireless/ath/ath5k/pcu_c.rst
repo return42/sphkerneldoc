@@ -1,6 +1,58 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/pcu.c
 
+.. _`protocol-control-unit--pcu--functions`:
+
+Protocol Control Unit (PCU) functions
+=====================================
+
+Protocol control unit is responsible to maintain various protocol
+properties before a frame is send and after a frame is received to/from
+baseband. To be more specific, PCU handles:
+
+- Buffering of RX and TX frames (after QCU/DCUs)
+
+- Encrypting and decrypting (using the built-in engine)
+
+- Generating ACKs, RTS/CTS frames
+
+- Maintaining TSF
+
+- FCS
+
+- Updating beacon data (with TSF etc)
+
+- Generating virtual CCA
+
+- RX/Multicast filtering
+
+- BSSID filtering
+
+- Various statistics
+
+-Different operating modes: AP, STA, IBSS
+
+Note: Most of these functions can be tweaked/bypassed so you can do
+them on sw above for debugging or research. For more infos check out PCU
+registers on reg.h.
+
+.. _`ack-rates`:
+
+ACK rates
+=========
+
+AR5212+ can use higher rates for ack transmission
+based on current tx rate instead of the base rate.
+It does this to better utilize channel usage.
+There is a mapping between G rates (that cover both
+CCK and OFDM) and ack rates that we use when setting
+rate -> duration table. This mapping is hw-based so
+don't change anything.
+
+To enable this functionality we must set
+ah->ah_ack_bitrate_high to true else base rate is
+used (1Mb for CCK, 6Mb for OFDM).
+
 .. _`ath5k_hw_get_frame_duration`:
 
 ath5k_hw_get_frame_duration

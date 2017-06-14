@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/crypto/dh.h
 
+.. _`dh-helper-functions`:
+
+DH Helper Functions
+===================
+
+To use DH with the KPP cipher API, the following data structure and
+functions should be used.
+
+To use DH with KPP, the following functions should be used to operate on
+a DH private key. The packet private key that can be set with
+the KPP API function call of crypto_kpp_set_secret.
+
 .. _`dh`:
 
 struct dh

@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_pm.c
 
+.. _`rc6`:
+
+RC6
+===
+
+RC6 is a special power stage which allows the GPU to enter an very
+low-voltage mode when idle, using down to 0V while at this stage.  This
+stage is entered automatically when the GPU is idle when RC6 support is
+enabled, and as soon as new workload arises GPU wakes up automatically as well.
+
+There are different RC6 modes available in Intel GPU, which differentiate
+among each other with the latency required to enter and leave RC6 and
+voltage consumed by the GPU in different states.
+
+The combination of the following flags define which states GPU is allowed
+to enter, while RC6 is the normal RC6 state, RC6p is the deep RC6, and
+RC6pp is deepest RC6. Their support by hardware varies according to the
+GPU, BIOS, chipset and platform. RC6 is usually the safest one and the one
+which brings the most power savings; deeper states save more power, but
+require higher latency to switch to and wake up.
+
 .. _`intel_calculate_wm`:
 
 intel_calculate_wm

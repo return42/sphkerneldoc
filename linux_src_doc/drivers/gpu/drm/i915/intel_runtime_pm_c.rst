@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_runtime_pm.c
 
+.. _`runtime-pm`:
+
+runtime pm
+==========
+
+The i915 driver supports dynamic enabling and disabling of entire hardware
+blocks at runtime. This is especially important on the display side where
+software is supposed to control many power gates manually on recent hardware,
+since on the GT side a lot of the power management is done by the hardware.
+But even there some manual control at the device level is required.
+
+Since i915 supports a diverse set of platforms with a unified codebase and
+hardware engineers just love to shuffle functionality around between power
+domains there's a sizeable amount of indirection required. This file provides
+generic functions to the driver for grabbing and releasing references for
+abstract power domains. It then maps those to the actual power wells
+present for a given platform.
+
 .. _`__intel_display_power_is_enabled`:
 
 __intel_display_power_is_enabled

@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/phy.c
 
+.. _`phy-related-functions`:
+
+PHY related functions
+=====================
+
+Here we handle the low-level functions related to baseband
+and analog frontend (RF) parts. This is by far the most complex
+part of the hw code so make sure you know what you are doing.
+
+Here is a list of what this is all about:
+
+- Channel setting/switching
+
+- Automatic Gain Control (AGC) calibration
+
+- Noise Floor calibration
+
+- I/Q imbalance calibration (QAM correction)
+
+- Calibration due to thermal changes (gain_F)
+
+- Spur noise mitigation
+
+- RF/PHY initialization for the various operating modes and bwmodes
+
+- Antenna control
+
+- TX power control per channel/rate/packet type
+
+Also have in mind we never got documentation for most of these
+functions, what we have comes mostly from Atheros's code, reverse
+engineering and patent docs/presentations etc.
+
 .. _`ath5k_hw_radio_revision`:
 
 ath5k_hw_radio_revision
@@ -150,6 +183,30 @@ ath5k_hw_wait_for_synth
 
     :param struct ieee80211_channel \*channel:
         The \ :c:type:`struct ieee80211_channel <ieee80211_channel>`\ 
+
+.. _`rf-gain-optimization`:
+
+RF Gain optimization
+====================
+
+This code is used to optimize RF gain on different environments
+(temperature mostly) based on feedback from a power detector.
+
+It's only used on RF5111 and RF5112, later RF chips seem to have
+auto adjustment on hw -notice they have a much smaller BANK 7 and
+no gain optimization ladder-.
+
+For more infos check out this patent doc
+"http://www.freepatentsonline.com/7400691.html"
+
+This paper describes power drops as seen on the receiver due to
+probe packets
+"http://www.cnri.dit.ie/publications/ICT08%20-%20Practical%20Issues
+\ ``20of``\ %20Power%20Control.pdf"
+
+And this is the MadWiFi bug entry related to the above
+"http://madwifi-project.org/ticket/1659"
+with various measurements and diagrams
 
 .. _`ath5k_hw_rfgain_opt_init`:
 
@@ -490,6 +547,36 @@ Description
 This is the main function called to set a channel on the
 radio chip based on the radio chip version.
 
+.. _`phy-calibration-routines`:
+
+PHY Calibration routines
+========================
+
+Noise floor calibration: When we tell the hardware to
+perform a noise floor calibration by setting the
+AR5K_PHY_AGCCTL_NF bit on AR5K_PHY_AGCCTL, it will periodically
+sample-and-hold the minimum noise level seen at the antennas.
+This value is then stored in a ring buffer of recently measured
+noise floor values so we have a moving window of the last few
+samples. The median of the values in the history is then loaded
+into the hardware for its own use for RSSI and CCA measurements.
+This type of calibration doesn't interfere with traffic.
+
+AGC calibration: When we tell the hardware to perform
+an AGC (Automatic Gain Control) calibration by setting the
+AR5K_PHY_AGCCTL_CAL, hw disconnects the antennas and does
+a calibration on the DC offsets of ADCs. During this period
+rx/tx gets disabled so we have to deal with it on the driver
+part.
+
+I/Q calibration: When we tell the hardware to perform
+an I/Q calibration, it tries to correct I/Q imbalance and
+fix QAM constellation by sampling data from rxed frames.
+It doesn't interfere with traffic.
+
+For more infos on AGC and I/Q calibration check out patent doc
+#03/094463.
+
 .. _`ath5k_hw_read_measured_noise_floor`:
 
 ath5k_hw_read_measured_noise_floor
@@ -644,6 +731,57 @@ This function gets called during PHY initialization to
 configure the spur filter for the given channel. Spur is noise
 generated due to "reflection" effects, for more information on this
 method check out patent US7643810
+
+.. _`antenna-control`:
+
+Antenna control
+===============
+
+Hw supports up to 14 antennas ! I haven't found any card that implements
+that. The maximum number of antennas I've seen is up to 4 (2 for 2GHz and 2
+for 5GHz). Antenna 1 (MAIN) should be omnidirectional, 2 (AUX)
+omnidirectional or sectorial and antennas 3-14 sectorial (or directional).
+
+We can have a single antenna for RX and multiple antennas for TX.
+RX antenna is our "default" antenna (usually antenna 1) set on
+DEFAULT_ANTENNA register and TX antenna is set on each TX control descriptor
+(0 for automatic selection, 1 - 14 antenna number).
+
+We can let hw do all the work doing fast antenna diversity for both
+tx and rx or we can do things manually. Here are the options we have
+(all are bits of STA_ID1 register):
+
+AR5K_STA_ID1_DEFAULT_ANTENNA -> When 0 is set as the TX antenna on TX
+control descriptor, use the default antenna to transmit or else use the last
+antenna on which we received an ACK.
+
+AR5K_STA_ID1_DESC_ANTENNA -> Update default antenna after each TX frame to
+the antenna on which we got the ACK for that frame.
+
+AR5K_STA_ID1_RTS_DEF_ANTENNA -> Use default antenna for RTS or else use the
+one on the TX descriptor.
+
+AR5K_STA_ID1_SELFGEN_DEF_ANT -> Use default antenna for self generated frames
+(ACKs etc), or else use current antenna (the one we just used for TX).
+
+Using the above we support the following scenarios:
+
+AR5K_ANTMODE_DEFAULT -> Hw handles antenna diversity etc automatically
+
+AR5K_ANTMODE_FIXED_A -> Only antenna A (MAIN) is present
+
+AR5K_ANTMODE_FIXED_B -> Only antenna B (AUX) is present
+
+AR5K_ANTMODE_SINGLE_AP -> Sta locked on a single ap
+
+AR5K_ANTMODE_SECTOR_AP -> AP with tx antenna set on tx desc
+
+AR5K_ANTMODE_SECTOR_STA -> STA with tx antenna set on tx desc
+
+AR5K_ANTMODE_DEBUG Debug mode -A -> Rx, B-> Tx-
+
+Also note that when setting antenna to F on tx descriptor card inverts
+current tx antenna.
 
 .. _`ath5k_hw_set_def_antenna`:
 
@@ -900,6 +1038,35 @@ Get the max edge power for this channel if
 we have such data from EEPROM's Conformance Test
 Limits (CTL), and limit max power if needed.
 
+.. _`power-to-pcdac-table-functions`:
+
+Power to PCDAC table functions
+==============================
+
+For RF5111 we have an XPD -eXternal Power Detector- curve
+for each calibrated channel. Each curve has 0,5dB Power steps
+on x axis and PCDAC steps (offsets) on y axis and looks like an
+exponential function. To recreate the curve we read 11 points
+from eeprom (eeprom.c) and interpolate here.
+
+For RF5112 we have 4 XPD -eXternal Power Detector- curves
+for each calibrated channel on 0, -6, -12 and -18dBm but we only
+use the higher (3) and the lower (0) curves. Each curve again has 0.5dB
+power steps on x axis and PCDAC steps on y axis and looks like a
+linear function. To recreate the curve and pass the power values
+on hw, we get 4 points for xpd 0 (lower gain -> max power)
+and 3 points for xpd 3 (higher gain -> lower power) from eeprom (eeprom.c)
+and interpolate here.
+
+For a given channel we get the calibrated points (piers) for it or
+-if we don't have calibration data for this specific channel- from the
+available surrounding channels we have calibration data for, after we do a
+linear interpolation between them. Then since we have our calibrated points
+for this channel, we do again a linear interpolation between them to get the
+whole curve.
+
+We finally write the Y values of the curve(s) (the PCDAC values) on hw
+
 .. _`ath5k_fill_pwr_to_pcdac_table`:
 
 ath5k_fill_pwr_to_pcdac_table
@@ -972,6 +1139,25 @@ ath5k_write_pcdac_table
 
     :param struct ath5k_hw \*ah:
         The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+
+.. _`power-to-pdadc-table-functions`:
+
+Power to PDADC table functions
+==============================
+
+For RF2413 and later we have a Power to PDADC table (Power Detector)
+instead of a PCDAC (Power Control) and 4 pd gain curves for each
+calibrated channel. Each curve has power on x axis in 0.5 db steps and
+PDADC steps on y axis and looks like an exponential function like the
+RF5111 curve.
+
+To recreate the curves we read the points from eeprom (eeprom.c)
+and interpolate here. Note that in most cases only 2 (higher and lower)
+curves are used (like RF5112) but vendors have the opportunity to include
+all 4 curves on eeprom. The final curve (higher power) has an extra
+point for better accuracy like RF5112.
+
+The process is similar to what we do above for RF5111/5112
 
 .. _`ath5k_combine_pwr_to_pdadc_curves`:
 
@@ -1068,6 +1254,29 @@ ath5k_write_channel_powertable
 
     :param u8 type:
         One of enum ath5k_powertable_type (eeprom.h)
+
+.. _`per-rate-tx-power-setting`:
+
+Per-rate tx power setting
+=========================
+
+This is the code that sets the desired tx power limit (below
+maximum) on hw for each rate (we also have TPC that sets
+power per packet type). We do that by providing an index on the
+PCDAC/PDADC table we set up above, for each rate.
+
+For now we only limit txpower based on maximum tx power
+supported by hw (what's inside rate_info) + conformance test
+limits. We need to limit this even more, based on regulatory domain
+etc to be safe. Normally this is done from above so we don't care
+here, all we care is that the tx power we set will be O.K.
+for the hw (e.g. won't create noise on PA etc).
+
+Rate power table contains indices to PCDAC/PDADC table (0.5dB steps -
+x values) and is indexed as follows:
+rates[0] - rates[7] -> OFDM rates
+rates[8] - rates[14] -> CCK rates
+rates[15] -> XR rates (they all have the same power)
 
 .. _`ath5k_setup_rate_powertable`:
 

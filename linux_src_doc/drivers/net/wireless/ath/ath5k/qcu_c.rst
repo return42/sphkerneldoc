@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/qcu.c
 
+.. _`queue-control-unit--qcu--dcf-control-unit--dcu--functions`:
+
+Queue Control Unit (QCU)/DCF Control Unit (DCU) functions
+=========================================================
+
+Here we setup parameters for the 12 available TX queues. Note that
+on the various registers we can usually only map the first 10 of them so
+basically we have 10 queues to play with. Each queue has a matching
+QCU that controls when the queue will get triggered and multiple QCUs
+can be mapped to a single DCU that controls the various DFS parameters
+for the various queues. In our setup we have a 1:1 mapping between QCUs
+and DCUs allowing us to have different DFS settings for each queue.
+
+When a frame goes into a TX queue, QCU decides when it'll trigger a
+transmission based on various criteria (such as how many data we have inside
+it's buffer or -if it's a beacon queue- if it's time to fire up the queue
+based on TSF etc), DCU adds backoff, IFSes etc and then a scheduler
+(arbitrator) decides the priority of each QCU based on it's configuration
+(e.g. beacons are always transmitted when they leave DCU bypassing all other
+frames from other queues waiting to be transmitted). After a frame leaves
+the DCU it goes to PCU for further processing and then to PHY for
+the actual transmission.
+
 .. _`ath5k_hw_num_tx_pending`:
 
 ath5k_hw_num_tx_pending

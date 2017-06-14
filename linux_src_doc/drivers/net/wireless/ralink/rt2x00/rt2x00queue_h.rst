@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ralink/rt2x00/rt2x00queue.h
 
+.. _`entry-frame-size`:
+
+Entry frame size
+================
+
+Ralink PCI devices demand the Frame size to be a multiple of 128 bytes,
+for USB devices this restriction does not apply, but the value of
+2432 makes sense since it is big enough to contain the maximum fragment
+size according to the ieee802.11 specs.
+The aggregation size depends on support from the driver, but should
+be something around 3840 bytes.
+
 .. _`data_queue_qid`:
 
 enum data_queue_qid

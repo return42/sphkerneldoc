@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_sysfs.c
 
+.. _`overview`:
+
+overview
+========
+
+DRM provides very little additional support to drivers for sysfs
+interactions, beyond just all the standard stuff. Drivers who want to expose
+additional sysfs properties and property groups can attach them at either
+\ :c:type:`drm_device.dev <drm_device>`\  or \ :c:type:`drm_connector.kdev <drm_connector>`\ .
+
+Registration is automatically handled when calling \ :c:func:`drm_dev_register`\ , or
+\ :c:func:`drm_connector_register`\  in case of hot-plugged connectors. Unregistration is
+also automatically handled by \ :c:func:`drm_dev_unregister`\  and
+\ :c:func:`drm_connector_unregister`\ .
+
 .. _`drm_sysfs_init`:
 
 drm_sysfs_init

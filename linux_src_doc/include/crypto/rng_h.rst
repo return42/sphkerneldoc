@@ -61,6 +61,14 @@ seedsize
 base
     Common crypto API algorithm data structure.
 
+.. _`random-number-generator-api`:
+
+Random number generator API
+===========================
+
+The random number generator API is used with the ciphers of type
+CRYPTO_ALG_TYPE_RNG (listed as type "rng" in /proc/crypto)
+
 .. _`crypto_alloc_rng`:
 
 crypto_alloc_rng

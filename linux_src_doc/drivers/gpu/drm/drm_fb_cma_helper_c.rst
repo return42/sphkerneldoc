@@ -1,6 +1,49 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_fb_cma_helper.c
 
+.. _`framebuffer-cma-helper-functions`:
+
+framebuffer cma helper functions
+================================
+
+Provides helper functions for creating a cma (contiguous memory allocator)
+backed framebuffer.
+
+\ :c:func:`drm_fb_cma_create`\  is used in the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\ 
+callback function to create a cma backed framebuffer.
+
+An fbdev framebuffer backed by cma is also available by calling
+\ :c:func:`drm_fbdev_cma_init`\ . \ :c:func:`drm_fbdev_cma_fini`\  tears it down.
+If the \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  callback is set, fb_deferred_io will be
+set up automatically. \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  is called by
+\ :c:func:`drm_fb_helper_deferred_io`\  in process context (&struct delayed_work).
+
+Example fbdev deferred io code::
+
+    static int driver_fb_dirty(struct drm_framebuffer *fb,
+                               struct drm_file *file_priv,
+                               unsigned flags, unsigned color,
+                               struct drm_clip_rect *clips,
+                               unsigned num_clips)
+    {
+        struct drm_gem_cma_object *cma = drm_fb_cma_get_gem_obj(fb, 0);
+        ... push changes ...
+        return 0;
+    }
+
+    static struct drm_framebuffer_funcs driver_fb_funcs = {
+        .destroy       = drm_fb_cma_destroy,
+        .create_handle = drm_fb_cma_create_handle,
+        .dirty         = driver_fb_dirty,
+    };
+
+Initialize::
+
+    fbdev = drm_fbdev_cma_init_with_funcs(dev, 16,
+                                          dev->mode_config.num_crtc,
+                                          dev->mode_config.num_connector,
+                                          \ :c:type:`struct driver_fb_funcs <driver_fb_funcs>`\ );
+
 .. _`drm_fb_cma_create_with_funcs`:
 
 drm_fb_cma_create_with_funcs

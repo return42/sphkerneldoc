@@ -1,6 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/desc.c
 
+.. _`hardware-descriptor-functions`:
+
+Hardware descriptor functions
+=============================
+
+Here we handle the processing of the low-level hw descriptors
+that hw reads and writes via DMA for each TX and RX attempt (that means
+we can also have descriptors for failed TX/RX tries). We have two kind of
+descriptors for RX and TX, control descriptors tell the hw how to send or
+receive a packet where to read/write it from/to etc and status descriptors
+that contain information about how the packet was sent or received (errors
+included).
+
+Descriptor format is not exactly the same for each MAC chip version so we
+have function pointers on \ :c:type:`struct ath5k_hw <ath5k_hw>`\  we initialize at runtime based on
+the chip used.
+
 .. _`ath5k_hw_setup_2word_tx_desc`:
 
 ath5k_hw_setup_2word_tx_desc

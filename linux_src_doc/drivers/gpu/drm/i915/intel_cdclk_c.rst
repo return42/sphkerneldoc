@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_cdclk.c
 
+.. _`cdclk---rawclk`:
+
+CDCLK / RAWCLK
+==============
+
+The display engine uses several different clocks to do its work. There
+are two main clocks involved that aren't directly related to the actual
+pixel clock or any symbol/bit clock of the actual output port. These
+are the core display clock (CDCLK) and RAWCLK.
+
+CDCLK clocks most of the display pipe logic, and thus its frequency
+must be high enough to support the rate at which pixels are flowing
+through the pipes. Downscaling must also be accounted as that increases
+the effective pixel rate.
+
+On several platforms the CDCLK frequency can be changed dynamically
+to minimize power consumption for a given display configuration.
+Typically changes to the CDCLK frequency require all the display pipes
+to be shut down while the frequency is being changed.
+
+On SKL+ the DMC will toggle the CDCLK off/on during DC5/6 entry/exit.
+DMC will not change the active CDCLK frequency however, so that part
+will still be performed by the driver directly.
+
+RAWCLK is a fixed frequency clock, often used by various auxiliary
+blocks such as AUX CH or backlight PWM. Hence the only thing we
+really need to know about RAWCLK is its frequency so that various
+dividers can be programmed correctly.
+
 .. _`skl_init_cdclk`:
 
 skl_init_cdclk

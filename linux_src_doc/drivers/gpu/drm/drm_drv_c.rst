@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_drv.c
 
+.. _`driver-instance-overview`:
+
+driver instance overview
+========================
+
+A device instance for a drm driver is represented by \ :c:type:`struct drm_device <drm_device>`\ . This
+is allocated with \ :c:func:`drm_dev_alloc`\ , usually from bus-specific ->probe()
+callbacks implemented by the driver. The driver then needs to initialize all
+the various subsystems for the drm device like memory management, vblank
+handling, modesetting support and intial output configuration plus obviously
+initialize all the corresponding hardware bits. An important part of this is
+also calling \ :c:func:`drm_dev_set_unique`\  to set the userspace-visible unique name of
+this device instance. Finally when everything is up and running and ready for
+userspace the device instance can be published using \ :c:func:`drm_dev_register`\ .
+
+There is also deprecated support for initalizing device instances using
+bus-specific helpers and the \ :c:type:`drm_driver.load <drm_driver>`\  callback. But due to
+backwards-compatibility needs the device instance have to be published too
+early, which requires unpretty global locking to make safe and is therefore
+only support for existing drivers not yet converted to the new scheme.
+
+When cleaning up a device instance everything needs to be done in reverse:
+First unpublish the device instance with \ :c:func:`drm_dev_unregister`\ . Then clean up
+any other resources allocated at device initialization and drop the driver's
+reference to \ :c:type:`struct drm_device <drm_device>`\  using \ :c:func:`drm_dev_unref`\ .
+
+Note that the lifetime rules for \ :c:type:`struct drm_device <drm_device>`\  instance has still a lot of
+historical baggage. Hence use the reference counting provided by
+\ :c:func:`drm_dev_ref`\  and \ :c:func:`drm_dev_unref`\  only carefully.
+
+It is recommended that drivers embed \ :c:type:`struct drm_device <drm_device>`\  into their own device
+structure, which is supported through \ :c:func:`drm_dev_init`\ .
+
 .. _`drm_put_dev`:
 
 drm_put_dev

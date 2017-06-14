@@ -1,6 +1,33 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ralink/rt2x00/rt2x00dump.h
 
+.. _`introduction`:
+
+Introduction
+============
+
+This header is intended to be exported to userspace,
+to make the structures and enumerations available to userspace
+applications. This means that all data types should be exportable.
+
+When rt2x00 is compiled with debugfs support enabled,
+it is possible to capture all data coming in and out of the device
+by reading the frame dump file. This file can have only a single reader.
+The following frames will be reported:
+- All incoming frames (rx)
+- All outgoing frames (tx, including beacon and atim)
+- All completed frames (txdone including atim)
+
+The data is send to the file using the following format:
+
+[rt2x00dump header][hardware descriptor][ieee802.11 frame]
+
+rt2x00dump header: The description of the dumped frame, as well as
+additional information useful for debugging. See \ :c:type:`struct rt2x00dump_hdr <rt2x00dump_hdr>`\ .
+hardware descriptor: Descriptor that was used to receive or transmit
+the frame.
+ieee802.11 frame: The actual frame that was received or transmitted.
+
 .. _`rt2x00_dump_type`:
 
 enum rt2x00_dump_type

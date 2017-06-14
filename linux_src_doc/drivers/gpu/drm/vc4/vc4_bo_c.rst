@@ -1,6 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/vc4/vc4_bo.c
 
+.. _`vc4-gem-bo-management-support`:
+
+VC4 GEM BO management support
+=============================
+
+The VC4 GPU architecture (both scanout and rendering) has direct
+access to system memory with no MMU in between.  To support it, we
+use the GEM CMA helper functions to allocate contiguous ranges of
+physical memory for our BOs.
+
+Since the CMA allocator is very slow, we keep a cache of recently
+freed BOs around so that the kernel's allocation of objects for 3D
+rendering can return quickly.
+
 .. _`vc4_create_object`:
 
 vc4_create_object

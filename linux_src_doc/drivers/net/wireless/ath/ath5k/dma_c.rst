@@ -1,6 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/dma.c
 
+.. _`dma-and-interrupt-masking-functions`:
+
+DMA and interrupt masking functions
+===================================
+
+Here we setup descriptor pointers (rxdp/txdp) start/stop dma engine and
+handle queue setup for 5210 chipset (rest are handled on qcu.c).
+Also we setup interrupt mask register (IMR) and read the various interrupt
+status registers (ISR).
+
 .. _`ath5k_hw_start_rx_dma`:
 
 ath5k_hw_start_rx_dma

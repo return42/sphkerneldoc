@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_dp_mst_topology.c
 
+.. _`dp-mst-helper`:
+
+dp mst helper
+=============
+
+These functions contain parts of the DisplayPort 1.2a MultiStream Transport
+protocol. The helpers contain a topology manager and bandwidth manager.
+The helpers encapsulate the sending and received of sideband msgs.
+
 .. _`drm_dp_update_payload_part1`:
 
 drm_dp_update_payload_part1

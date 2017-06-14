@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_crtc.c
 
+.. _`overview`:
+
+overview
+========
+
+A CRTC represents the overall display pipeline. It receives pixel data from
+\ :c:type:`struct drm_plane <drm_plane>`\  and blends them together. The \ :c:type:`struct drm_display_mode <drm_display_mode>`\  is also attached
+to the CRTC, specifying display timings. On the output side the data is fed
+to one or more \ :c:type:`struct drm_encoder <drm_encoder>`\ , which are then each connected to one
+\ :c:type:`struct drm_connector <drm_connector>`\ .
+
+To create a CRTC, a KMS drivers allocates and zeroes an instances of
+\ :c:type:`struct drm_crtc <drm_crtc>`\  (possibly as part of a larger structure) and registers it
+with a call to \ :c:func:`drm_crtc_init_with_planes`\ .
+
+The CRTC is also the entry point for legacy modeset operations, see
+\ :c:type:`drm_crtc_funcs.set_config <drm_crtc_funcs>`\ , legacy plane operations, see
+\ :c:type:`drm_crtc_funcs.page_flip <drm_crtc_funcs>`\  and \ :c:type:`drm_crtc_funcs.cursor_set2 <drm_crtc_funcs>`\ , and other legacy
+operations like \ :c:type:`drm_crtc_funcs.gamma_set <drm_crtc_funcs>`\ . For atomic drivers all these
+features are controlled through \ :c:type:`struct drm_property <drm_property>`\  and
+\ :c:type:`drm_mode_config_funcs.atomic_check <drm_mode_config_funcs>`\  and \ :c:type:`drm_mode_config_funcs.atomic_check <drm_mode_config_funcs>`\ .
+
 .. _`drm_crtc_from_index`:
 
 drm_crtc_from_index

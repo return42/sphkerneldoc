@@ -1,6 +1,38 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/ani.c
 
+.. _`basic-ani-operation`:
+
+Basic ANI Operation
+===================
+
+Adaptive Noise Immunity (ANI) controls five noise immunity parameters
+depending on the amount of interference in the environment, increasing
+or reducing sensitivity as necessary.
+
+The parameters are:
+
+- "noise immunity"
+
+- "spur immunity"
+
+- "firstep level"
+
+- "OFDM weak signal detection"
+
+- "CCK weak signal detection"
+
+Basically we look at the amount of ODFM and CCK timing errors we get and then
+raise or lower immunity accordingly by setting one or more of these
+parameters.
+
+Newer chipsets have PHY error counters in hardware which will generate a MIB
+interrupt when they overflow. Older hardware has too enable PHY error frames
+by setting a RX flag and then count every single PHY error. When a specified
+threshold of errors has been reached we will raise immunity.
+Also we regularly check the amount of errors and lower or raise immunity as
+necessary.
+
 .. _`ath5k_ani_set_noise_immunity_level`:
 
 ath5k_ani_set_noise_immunity_level

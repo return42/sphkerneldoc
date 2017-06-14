@@ -1,6 +1,168 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/uapi/linux/nl80211.h
 
+.. _`station-handling`:
+
+Station handling
+================
+
+Stations are added per interface, but a special case exists with VLAN
+interfaces. When a station is bound to an AP interface, it may be moved
+into a VLAN identified by a VLAN interface index (%NL80211_ATTR_STA_VLAN).
+The station is still assumed to belong to the AP interface it was added
+to.
+
+Station handling varies per interface type and depending on the driver's
+capabilities.
+
+For drivers supporting TDLS with external setup (WIPHY_FLAG_SUPPORTS_TDLS
+and WIPHY_FLAG_TDLS_EXTERNAL_SETUP), the station lifetime is as follows:
+- a setup station entry is added, not yet authorized, without any rate
+or capability information, this just exists to avoid race conditions
+- when the TDLS setup is done, a single NL80211_CMD_SET_STATION is valid
+to add rate and capability information to the station and at the same
+time mark it authorized.
+- \ ``NL80211_TDLS_ENABLE_LINK``\  is then used
+- after this, the only valid operation is to remove it by tearing down
+the TDLS link (%NL80211_TDLS_DISABLE_LINK)
+
+TODO: need more info for other interface types
+
+.. _`frame-transmission-registration-support`:
+
+Frame transmission/registration support
+=======================================
+
+Frame transmission and registration support exists to allow userspace
+management entities such as wpa_supplicant react to management frames
+that are not being handled by the kernel. This includes, for example,
+certain classes of action frames that cannot be handled in the kernel
+for various reasons.
+
+Frame registration is done on a per-interface basis and registrations
+cannot be removed other than by closing the socket. It is possible to
+specify a registration filter to register, for example, only for a
+certain type of action frame. In particular with action frames, those
+that userspace registers for will not be returned as unhandled by the
+driver, so that the registered application has to take responsibility
+for doing that.
+
+The type of frame that can be registered for is also dependent on the
+driver and interface type. The frame types are advertised in wiphy
+attributes so applications know what to expect.
+
+NOTE: When an interface changes type while registrations are active,
+these registrations are ignored until the interface type is
+changed again. This means that changing the interface type can
+lead to a situation that couldn't otherwise be produced, but
+any such registrations will be dormant in the sense that they
+will not be serviced, i.e. they will not receive any frames.
+
+Frame transmission allows userspace to send for example the required
+responses to action frames. It is subject to some sanity checking,
+but many frames can be transmitted. When a frame was transmitted, its
+status is indicated to the sending socket.
+
+For more technical details, see the corresponding command descriptions
+below.
+
+.. _`virtual-interface---concurrency-capabilities`:
+
+Virtual interface / concurrency capabilities
+============================================
+
+Some devices are able to operate with virtual MACs, they can have
+more than one virtual interface. The capability handling for this
+is a bit complex though, as there may be a number of restrictions
+on the types of concurrency that are supported.
+
+To start with, each device supports the interface types listed in
+the \ ``NL80211_ATTR_SUPPORTED_IFTYPES``\  attribute, but by listing the
+types there no concurrency is implied.
+
+Once concurrency is desired, more attributes must be observed:
+To start with, since some interface types are purely managed in
+software, like the AP-VLAN type in mac80211 for example, there's
+an additional list of these, they can be added at any time and
+are only restricted by some semantic restrictions (e.g. AP-VLAN
+cannot be added without a corresponding AP interface). This list
+is exported in the \ ``NL80211_ATTR_SOFTWARE_IFTYPES``\  attribute.
+
+Further, the list of supported combinations is exported. This is
+in the \ ``NL80211_ATTR_INTERFACE_COMBINATIONS``\  attribute. Basically,
+it exports a list of "groups", and at any point in time the
+interfaces that are currently active must fall into any one of
+the advertised groups. Within each group, there are restrictions
+on the number of interfaces of different types that are supported
+and also the number of different channels, along with potentially
+some other restrictions. See \ :c:type:`enum nl80211_if_combination_attrs <nl80211_if_combination_attrs>`\ .
+
+All together, these attributes define the concurrency of virtual
+interfaces that a given device supports.
+
+.. _`packet-coalesce-support`:
+
+packet coalesce support
+=======================
+
+In most cases, host that receives IPv4 and IPv6 multicast/broadcast
+packets does not do anything with these packets. Therefore the
+reception of these unwanted packets causes unnecessary processing
+and power consumption.
+
+Packet coalesce feature helps to reduce number of received interrupts
+to host by buffering these packets in firmware/hardware for some
+predefined time. Received interrupt will be generated when one of the
+following events occur.
+a) Expiration of hardware timer whose expiration time is set to maximum
+coalescing delay of matching coalesce rule.
+b) Coalescing buffer in hardware reaches it's limit.
+c) Packet doesn't match any of the configured coalesce rules.
+
+User needs to configure following parameters for creating a coalesce
+rule.
+a) Maximum coalescing delay
+b) List of packet patterns which needs to be matched
+c) Condition for coalescence. pattern 'match' or 'no match'
+Multiple such rules can be created.
+
+.. _`fils-shared-key-authentication-offload`:
+
+FILS shared key authentication offload
+======================================
+
+FILS shared key authentication offload can be advertized by drivers by
+setting \ ``NL80211_EXT_FEATURE_FILS_SK_OFFLOAD``\  flag. The drivers that support
+FILS shared key authentication offload should be able to construct the
+authentication and association frames for FILS shared key authentication and
+eventually do a key derivation as per IEEE 802.11ai. The below additional
+parameters should be given to driver in \ ``NL80211_CMD_CONNECT``\ .
+\ ``NL80211_ATTR_FILS_ERP_USERNAME``\  - used to construct keyname_nai
+\ ``NL80211_ATTR_FILS_ERP_REALM``\  - used to construct keyname_nai
+\ ``NL80211_ATTR_FILS_ERP_NEXT_SEQ_NUM``\  - used to construct erp message
+\ ``NL80211_ATTR_FILS_ERP_RRK``\  - used to generate the rIK and rMSK
+rIK should be used to generate an authentication tag on the ERP message and
+rMSK should be used to derive a PMKSA.
+rIK, rMSK should be generated and keyname_nai, sequence number should be used
+as specified in IETF RFC 6696.
+
+When FILS shared key authentication is completed, driver needs to provide the
+below additional parameters to userspace.
+\ ``NL80211_ATTR_FILS_KEK``\  - used for key renewal
+\ ``NL80211_ATTR_FILS_ERP_NEXT_SEQ_NUM``\  - used in further EAP-RP exchanges
+\ ``NL80211_ATTR_PMKID``\  - used to identify the PMKSA used/generated
+\ ``Nl80211_ATTR_PMK``\  - used to update PMKSA cache in userspace
+The PMKSA can be maintained in userspace persistently so that it can be used
+later after reboots or wifi turn off/on also.
+
+\ ``NL80211_ATTR_FILS_CACHE_ID``\  is the cache identifier advertized by a FILS
+capable AP supporting PMK caching. It specifies the scope within which the
+PMKSAs are cached in an ESS. \ ``NL80211_CMD_SET_PMKSA``\  and
+\ ``NL80211_CMD_DEL_PMKSA``\  are enhanced to allow support for PMKSA caching based
+on FILS cache identifier. Additionally \ ``NL80211_ATTR_PMK``\  is used with
+\ ``NL80211_SET_PMKSA``\  to specify the PMK corresponding to a PMKSA for driver to
+use in a FILS shared key connection with PMKSA caching.
+
 .. _`nl80211_commands`:
 
 enum nl80211_commands
@@ -5942,6 +6104,30 @@ to the kernel when configuring.
 
 These nested attributes are used to configure the wakeup triggers and
 to report the wakeup reason(s).
+
+.. _`tcp-connection-wakeup`:
+
+TCP connection wakeup
+=====================
+
+Some devices can establish a TCP connection in order to be woken up by a
+packet coming in from outside their network segment, or behind NAT. If
+configured, the device will establish a TCP connection to the given
+service, and periodically send data to that service. The first data
+packet is usually transmitted after SYN/ACK, also ACKing the SYN/ACK.
+The data packets can optionally include a (little endian) sequence
+number (in the TCP payload!) that is generated by the device, and, also
+optionally, a token from a list of tokens. This serves as a keep-alive
+with the service, and for NATed connections, etc.
+
+During this keep-alive period, the server doesn't send any data to the
+client. When receiving data, it is compared against the wakeup pattern
+(and mask) and if it matches, the host is woken up. Similarly, if the
+connection breaks or cannot be established to start with, the host is
+also woken up.
+
+Developer's note: ARP offload is required for this, otherwise TCP
+response packets might not go through correctly.
 
 .. _`nl80211_wowlan_tcp_data_seq`:
 

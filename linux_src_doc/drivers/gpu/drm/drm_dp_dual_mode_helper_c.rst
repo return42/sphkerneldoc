@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_dp_dual_mode_helper.c
 
+.. _`dp-dual-mode-helpers`:
+
+dp dual mode helpers
+====================
+
+Helper functions to deal with DP dual mode (aka. DP++) adaptors.
+
+Type 1:
+Adaptor registers (if any) and the sink DDC bus may be accessed via I2C.
+
+Type 2:
+Adaptor registers and sink DDC bus can be accessed either via I2C or
+I2C-over-AUX. Source devices may choose to implement either of these
+access methods.
+
 .. _`drm_dp_dual_mode_read`:
 
 drm_dp_dual_mode_read

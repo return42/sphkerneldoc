@@ -1,6 +1,99 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/sdma.h
 
+.. _`sdma-exported-routines`:
+
+sdma exported routines
+======================
+
+These sdma routines fit into three categories:
+- The SDMA API for building and submitting packets
+to the ring
+
+- Initialization and tear down routines to buildup
+and tear down SDMA
+
+- ISR entrances to handle interrupts, state changes
+and errors
+
+.. _`sdma-psm-verbs-api`:
+
+sdma PSM/verbs API
+==================
+
+The sdma API is designed to be used by both PSM
+and verbs to supply packets to the SDMA ring.
+
+The usage of the API is as follows:
+
+Embed a struct iowait in the QP or
+PQ.  The iowait should be initialized with a
+call to \ :c:func:`iowait_init`\ .
+
+The user of the API should create an allocation method
+for their version of the txreq. slabs, pre-allocated lists,
+and dma pools can be used.  Once the user's overload of
+the sdma_txreq has been allocated, the sdma_txreq member
+must be initialized with \ :c:func:`sdma_txinit`\  or \ :c:func:`sdma_txinit_ahg`\ .
+
+The txreq must be declared with the sdma_txreq first.
+
+The tx request, once initialized,  is manipulated with calls to
+\ :c:func:`sdma_txadd_daddr`\ , \ :c:func:`sdma_txadd_page`\ , or \ :c:func:`sdma_txadd_kvaddr`\ 
+for each disjoint memory location.  It is the user's responsibility
+to understand the packet boundaries and page boundaries to do the
+appropriate number of sdma_txadd\_\* calls..  The user
+must be prepared to deal with failures from these routines due to
+either memory allocation or dma_mapping failures.
+
+The mapping specifics for each memory location are recorded
+in the tx. Memory locations added with \ :c:func:`sdma_txadd_page`\ 
+and \ :c:func:`sdma_txadd_kvaddr`\  are automatically mapped when added
+to the tx and nmapped as part of the progress processing in the
+SDMA interrupt handling.
+
+\ :c:func:`sdma_txadd_daddr`\  is used to add an dma_addr_t memory to the
+tx.   An example of a use case would be a pre-allocated
+set of headers allocated via \ :c:func:`dma_pool_alloc`\  or
+\ :c:func:`dma_alloc_coherent`\ .  For these memory locations, it
+is the responsibility of the user to handle that unmapping.
+(This would usually be at an unload or job termination.)
+
+The routine \ :c:func:`sdma_send_txreq`\  is used to submit
+a tx to the ring after the appropriate number of
+sdma_txadd\_\* have been done.
+
+If it is desired to send a burst of sdma_txreqs, \ :c:func:`sdma_send_txlist`\ 
+can be used to submit a list of packets.
+
+The user is free to use the link overhead in the struct sdma_txreq as
+long as the tx isn't in flight.
+
+The extreme degenerate case of the number of descriptors
+exceeding the ring size is automatically handled as
+memory locations are added.  An overflow of the descriptor
+array that is part of the sdma_txreq is also automatically
+handled.
+
+.. _`infrastructure-calls`:
+
+Infrastructure calls
+====================
+
+sdma_init() is used to initialize data structures and
+CSRs for the desired number of SDMA engines.
+
+\ :c:func:`sdma_start`\  is used to kick the SDMA engines initialized
+with \ :c:func:`sdma_init`\ .   Interrupts must be enabled at this
+point since aspects of the state machine are interrupt
+driven.
+
+\ :c:func:`sdma_engine_error`\  and \ :c:func:`sdma_engine_interrupt`\  are
+entrances for interrupts.
+
+\ :c:func:`sdma_map_init`\  is for the management of the mapping
+table when the number of vls is changed.
+
 .. _`sdma_engine`:
 
 struct sdma_engine

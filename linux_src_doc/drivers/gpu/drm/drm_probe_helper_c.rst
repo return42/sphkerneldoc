@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_probe_helper.c
 
+.. _`output-probing-helper-overview`:
+
+output probing helper overview
+==============================
+
+This library provides some helper code for output probing. It provides an
+implementation of the core \ :c:type:`drm_connector_funcs.fill_modes <drm_connector_funcs>`\  interface with
+\ :c:func:`drm_helper_probe_single_connector_modes`\ .
+
+It also provides support for polling connectors with a work item and for
+generic hotplug interrupt handling where the driver doesn't or cannot keep
+track of a per-connector hpd interrupt.
+
+This helper library can be used independently of the modeset helper library.
+Drivers can also overwrite different parts e.g. use their own hotplug
+handling code to avoid probing unrelated outputs.
+
+The probe helpers share the function table structures with other display
+helper libraries. See \ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`\  for the details.
+
 .. _`drm_kms_helper_poll_enable`:
 
 drm_kms_helper_poll_enable

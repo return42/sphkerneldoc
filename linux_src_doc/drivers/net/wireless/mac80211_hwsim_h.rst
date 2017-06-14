@@ -45,6 +45,28 @@ Description
 These flags are used to give the wmediumd extra information in order to
 modify its behavior for each frame
 
+.. _`frame-transmission-registration-support`:
+
+Frame transmission/registration support
+=======================================
+
+Frame transmission and registration support exists to allow userspace
+entities such as wmediumd to receive and process all broadcasted
+frames from a mac80211_hwsim radio device.
+
+This allow user space applications to decide if the frame should be
+dropped or not and implement a wireless medium simulator at user space.
+
+Registration is done by sending a register message to the driver and
+will be automatically unregistered if the user application doesn't
+responds to sent frames.
+Once registered the user application has to take responsibility of
+broadcasting the frames to all listening mac80211_hwsim radio
+interfaces.
+
+For more technical details, see the corresponding command descriptions
+below.
+
 .. _`hwsim_tx_rate`:
 
 struct hwsim_tx_rate

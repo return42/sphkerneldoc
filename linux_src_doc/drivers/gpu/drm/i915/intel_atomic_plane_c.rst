@@ -1,6 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_atomic_plane.c
 
+.. _`atomic-plane-helpers`:
+
+atomic plane helpers
+====================
+
+The functions here are used by the atomic plane helper functions to
+implement legacy plane updates (i.e., drm_plane->update_plane() and
+drm_plane->disable_plane()).  This allows plane updates to use the
+atomic state infrastructure and perform plane updates as separate
+prepare/check/commit/cleanup steps.
+
 .. _`intel_create_plane_state`:
 
 intel_create_plane_state

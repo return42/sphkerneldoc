@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_atomic_helper.c
 
+.. _`overview`:
+
+overview
+========
+
+This helper library provides implementations of check and commit functions on
+top of the CRTC modeset helper callbacks and the plane helper callbacks. It
+also provides convenience implementations for the atomic state handling
+callbacks for drivers which don't need to subclass the drm core structures to
+add their own additional internal state.
+
+This library also provides default implementations for the check callback in
+\ :c:func:`drm_atomic_helper_check`\  and for the commit callback with
+\ :c:func:`drm_atomic_helper_commit`\ . But the individual stages and callbacks are
+exposed to allow drivers to mix and match and e.g. use the plane helpers only
+together with a driver private modeset implementation.
+
+This library also provides implementations for all the legacy driver
+interfaces on top of the atomic interface. See \ :c:func:`drm_atomic_helper_set_config`\ ,
+\ :c:func:`drm_atomic_helper_disable_plane`\ , \ :c:func:`drm_atomic_helper_disable_plane`\  and the
+various functions to implement set_property callbacks. New drivers must not
+implement these functions themselves but must use the provided helpers.
+
+The atomic helper uses the same function table structures as all other
+modesetting helpers. See the documentation for \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`\ ,
+struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\  and \ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`\ . It
+also shares the \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  function table with the plane
+helpers.
+
 .. _`drm_atomic_helper_check_modeset`:
 
 drm_atomic_helper_check_modeset
@@ -364,6 +393,48 @@ Return
 ------
 
 Zero for success or -errno.
+
+.. _`implementing-nonblocking-commit`:
+
+implementing nonblocking commit
+===============================
+
+Nonblocking atomic commits have to be implemented in the following sequence:
+
+1. Run \ :c:func:`drm_atomic_helper_prepare_planes`\  first. This is the only function
+which commit needs to call which can fail, so we want to run it first and
+synchronously.
+
+2. Synchronize with any outstanding nonblocking commit worker threads which
+might be affected the new state update. This can be done by either cancelling
+or flushing the work items, depending upon whether the driver can deal with
+cancelled updates. Note that it is important to ensure that the framebuffer
+cleanup is still done when cancelling.
+
+Asynchronous workers need to have sufficient parallelism to be able to run
+different atomic commits on different CRTCs in parallel. The simplest way to
+achive this is by running them on the \ :c:type:`struct system_unbound_wq <system_unbound_wq>`\  work queue. Note
+that drivers are not required to split up atomic commits and run an
+individual commit in parallel - userspace is supposed to do that if it cares.
+But it might be beneficial to do that for modesets, since those necessarily
+must be done as one global operation, and enabling or disabling a CRTC can
+take a long time. But even that is not required.
+
+3. The software state is updated synchronously with
+\ :c:func:`drm_atomic_helper_swap_state`\ . Doing this under the protection of all modeset
+locks means concurrent callers never see inconsistent state. And doing this
+while it's guaranteed that no relevant nonblocking worker runs means that
+nonblocking workers do not need grab any locks. Actually they must not grab
+locks, for otherwise the work flushing will deadlock.
+
+4. Schedule a work item to do all subsequent steps, using the split-out
+commit helpers: a) pre-plane commit b) plane commit c) post-plane commit and
+then cleaning up the framebuffers after the old framebuffer is no longer
+being displayed.
+
+The above scheme is implemented in the atomic helper libraries in
+\ :c:func:`drm_atomic_helper_commit`\  using a bunch of helper functions. See
+\ :c:func:`drm_atomic_helper_setup_commit`\  for a starting point.
 
 .. _`drm_atomic_helper_setup_commit`:
 
@@ -1288,6 +1359,28 @@ Description
 This is a \ :c:type:`drm_connector_helper_funcs.best_encoder <drm_connector_helper_funcs>`\  callback helper for
 connectors that support exactly 1 encoder, statically determined at driver
 init time.
+
+.. _`atomic-state-reset-and-initialization`:
+
+atomic state reset and initialization
+=====================================
+
+Both the drm core and the atomic helpers assume that there is always the full
+and correct atomic software state for all connectors, CRTCs and planes
+available. Which is a bit a problem on driver load and also after system
+suspend. One way to solve this is to have a hardware state read-out
+infrastructure which reconstructs the full software state (e.g. the i915
+driver).
+
+The simpler solution is to just reset the software state to everything off,
+which is easiest to do by calling \ :c:func:`drm_mode_config_reset`\ . To facilitate this
+the atomic helpers provide default reset implementations for all hooks.
+
+On the upside the precise state tracking of atomic simplifies system suspend
+and resume a lot. For drivers using \ :c:func:`drm_mode_config_reset`\  a complete recipe
+is implemented in \ :c:func:`drm_atomic_helper_suspend`\  and \ :c:func:`drm_atomic_helper_resume`\ .
+For other drivers the building blocks are split out, see the documentation
+for these functions.
 
 .. _`drm_atomic_helper_crtc_reset`:
 

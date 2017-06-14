@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/reset.c
 
+.. _`reset-function-and-helpers`:
+
+Reset function and helpers
+==========================
+
+Here we implement the main reset routine, used to bring the card
+to a working state and ready to receive. We also handle routines
+that don't fit on other places such as clock, sleep and power control
+
 .. _`ath5k_hw_register_timeout`:
 
 ath5k_hw_register_timeout

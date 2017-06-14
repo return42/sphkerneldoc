@@ -55,6 +55,14 @@ Description
 
 Helper function to write bandgap registers. It uses the io remapped area.
 
+.. _`macro-to-update-bits.`:
+
+macro to update bits.
+=====================
+
+RMW_BITS() - used to read, modify and update bandgap bitfields.
+The value passed will be shifted.
+
 .. _`ti_bandgap_power`:
 
 ti_bandgap_power

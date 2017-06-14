@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/fsl-mc/include/dpaa2-io.h
 
+.. _`dpio-service`:
+
+DPIO Service
+============
+
+The DPIO service provides APIs for users to interact with the datapath
+by enqueueing and dequeing frame descriptors.
+
+The following set of APIs can be used to enqueue and dequeue frames
+as well as producing notification callbacks when data is available
+for dequeue.
+
 .. _`dpaa2_io_desc`:
 
 struct dpaa2_io_desc

@@ -1,6 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/drm_rect.h
 
+.. _`rect-utils`:
+
+rect utils
+==========
+
+Utility functions to help manage rectangular areas for
+clipping, scaling, etc. calculations.
+
 .. _`drm_rect`:
 
 struct drm_rect

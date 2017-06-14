@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_audio.c
 
+.. _`high-definition-audio-over-hdmi-and-display-port`:
+
+High Definition Audio over HDMI and Display Port
+================================================
+
+The graphics and audio drivers together support High Definition Audio over
+HDMI and Display Port. The audio programming sequences are divided into audio
+codec and controller enable and disable sequences. The graphics driver
+handles the audio codec sequences, while the audio driver handles the audio
+controller sequences.
+
+The disable sequences must be performed before disabling the transcoder or
+port. The enable sequences may only be performed after enabling the
+transcoder and port, and after completed link training. Therefore the audio
+enable/disable sequences are part of the modeset sequence.
+
+The codec and controller sequences could be done either parallel or serial,
+but generally the ELDV/PD change in the codec sequence indicates to the audio
+driver that the controller sequence should start. Indeed, most of the
+co-operation between the graphics and audio drivers is handled via audio
+related registers. (The notable exception is the power management, not
+covered here.)
+
+The struct \ :c:type:`struct i915_audio_component <i915_audio_component>`\  is used to interact between the graphics
+and audio drivers. The struct \ :c:type:`struct i915_audio_component_ops <i915_audio_component_ops>`\  \ ``ops``\  in it is
+defined in graphics driver and called in audio driver. The
+struct \ :c:type:`struct i915_audio_component_audio_ops <i915_audio_component_audio_ops>`\  \ ``audio_ops``\  is called from i915 driver.
+
 .. _`intel_audio_codec_enable`:
 
 intel_audio_codec_enable

@@ -148,5 +148,15 @@ SYNC_IOC_MERGE
 
     old API to get weird errors when trying to handling sync_files. The API change happened during the de-stage of the Sync Framework when there was no upstream users available.
 
+.. _`sync_ioc_file_info---get-detailed-information-on-a-sync_file`:
+
+SYNC_IOC_FILE_INFO - get detailed information on a sync_file
+============================================================
+
+Takes a struct sync_file_info. If num_fences is 0, the field is updated
+with the actual number of fences. If num_fences is > 0, the system will
+use the pointer provided on sync_fence_info to return up to num_fences of
+struct sync_fence_info, with detailed fence information.
+
 .. This file was automatic generated / don't edit.
 

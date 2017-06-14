@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_dp_helper.c
 
+.. _`dp-helpers`:
+
+dp helpers
+==========
+
+These functions contain some common logic and helpers at various abstraction
+levels to deal with Display Port sink devices and related things like DP aux
+channel transfers, EDID reading over DP aux channels, decoding certain DPCD
+blocks, ...
+
+.. _`dp-helpers`:
+
+dp helpers
+==========
+
+The DisplayPort AUX channel is an abstraction to allow generic, driver-
+independent access to AUX functionality. Drivers can take advantage of
+this by filling in the fields of the drm_dp_aux structure.
+
+Transactions are described using a hardware-independent drm_dp_aux_msg
+structure, which is passed into a driver's .transfer() implementation.
+Both native and I2C-over-AUX transactions are supported.
+
 .. _`drm_dp_dpcd_read`:
 
 drm_dp_dpcd_read

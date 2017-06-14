@@ -1,6 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/st/clkgen-fsyn.c
 
+.. _`a-frequency-synthesizer-that-multiples-its-input-clock-by-a-fixed-factor`:
+
+A Frequency Synthesizer that multiples its input clock by a fixed factor
+========================================================================
+
+Traits of this clock:
+prepare - clk_(un)prepare only ensures parent is (un)prepared
+enable - clk_enable and clk_disable are functional & control the Fsyn
+rate - inherits rate from parent. set_rate/round_rate/recalc_rate
+parent - fixed parent.  No clk_set_parent support
+
 .. _`st_clk_quadfs_pll`:
 
 struct st_clk_quadfs_pll
@@ -44,6 +55,17 @@ data
 
 ndiv
     regmap field for the ndiv control.
+
+.. _`a-digital-frequency-synthesizer`:
+
+A digital frequency synthesizer
+===============================
+
+Traits of this clock:
+prepare - clk_(un)prepare only ensures parent is (un)prepared
+enable - clk_enable and clk_disable are functional
+rate - set rate is functional
+parent - fixed parent.  No clk_set_parent support
 
 .. _`st_clk_quadfs_fsynth`:
 

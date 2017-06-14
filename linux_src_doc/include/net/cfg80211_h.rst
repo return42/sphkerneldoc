@@ -1,6 +1,44 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/net/cfg80211.h
 
+.. _`introduction`:
+
+Introduction
+============
+
+cfg80211 is the configuration API for 802.11 devices in Linux. It bridges
+userspace and drivers, and offers some utility functionality associated
+with 802.11. cfg80211 must, directly or indirectly via mac80211, be used
+by all modern wireless drivers in Linux, so that they offer a consistent
+API through nl80211. For backward compatibility, cfg80211 also offers
+wireless extensions to userspace, but hides them from drivers completely.
+
+Additionally, cfg80211 contains code to help enforce regulatory spectrum
+use restrictions.
+
+.. _`device-registration`:
+
+Device registration
+===================
+
+In order for a driver to use cfg80211, it must register the hardware device
+with cfg80211. This happens through a number of hardware capability structs
+described below.
+
+The fundamental structure for each device is the 'wiphy', of which each
+instance describes a physical wireless device connected to the system. Each
+such wiphy can have zero, one, or many virtual interfaces associated with
+it, which need to be identified as such by pointing the network interface's
+\ ``ieee80211_ptr``\  pointer to a \ :c:type:`struct wireless_dev <wireless_dev>`\  which further describes
+the wireless part of the interface, normally this struct is embedded in the
+network interface's private data area. Drivers can optionally allow creating
+or destroying virtual interfaces on the fly, but without at least one or the
+ability to create some the wireless device isn't useful.
+
+Each wiphy structure contains device capability information, and also has
+a pointer to the various operations the driver offers. The definitions and
+structures here describe these capabilities in detail.
+
 .. _`ieee80211_channel_flags`:
 
 enum ieee80211_channel_flags
@@ -574,6 +612,22 @@ without affecting other devices.
 As this function access device node it has to be called after set_wiphy_dev.
 It also modifies channels so they have to be set first.
 If using this helper, call it before \ :c:func:`wiphy_register`\ .
+
+.. _`actions-and-configuration`:
+
+Actions and configuration
+=========================
+
+Each wireless device and each virtual interface offer a set of configuration
+operations and other actions that are invoked by userspace. Each of these
+actions is described in the operations structure, and the parameters these
+operations use are described separately.
+
+Additionally, some operations are asynchronous and expect to get status
+information via some functions that drivers need to call.
+
+Scanning and BSS list handling with its associated functionality is described
+in a separate chapter.
 
 .. _`vif_params`:
 
@@ -2943,6 +2997,30 @@ cwmax
 
 aifs
     Arbitration interframe space [0..255]
+
+.. _`scanning-and-bss-list-handling`:
+
+Scanning and BSS list handling
+==============================
+
+The scanning process itself is fairly simple, but cfg80211 offers quite
+a bit of helper functionality. To start a scan, the scan operation will
+be invoked with a scan definition. This scan definition contains the
+channels to scan, and the SSIDs to send probe requests for (including the
+wildcard, if desired). A passive scan is indicated by having no SSIDs to
+probe. Additionally, a scan request may contain extra information elements
+that should be added to the probe request. The IEs are guaranteed to be
+well-formed, and will not exceed the maximum length the driver advertised
+in the wiphy structure.
+
+When scanning finds a BSS, cfg80211 needs to be notified of that, because
+it is responsible for maintaining the BSS list; the driver should not
+maintain a list itself. For this notification, various functions exist.
+
+Since drivers do not maintain a BSS list, there are also a number of
+functions to search for a BSS and obtain information about it from the
+BSS structure cfg80211 maintains. The BSS list is also made available
+to userspace.
 
 .. _`cfg80211_ssid`:
 
@@ -7333,6 +7411,13 @@ Return
 
 The wiphy priv of \ ``wdev``\ .
 
+.. _`utility-functions`:
+
+Utility functions
+=================
+
+cfg80211 offers a number of utility functions that can be useful.
+
 .. _`ieee80211_channel_to_frequency`:
 
 ieee80211_channel_to_frequency
@@ -7610,6 +7695,15 @@ Return
 
 The length of the extension header, which is always at
 least 6 bytes and at most 18 if address 5 and 6 are present.
+
+.. _`data-path-helpers`:
+
+Data path helpers
+=================
+
+In addition to generic utilities, cfg80211 also offers
+functions that help implement the data path for devices
+that do not do the 802.11/802.3 conversion on the device.
 
 .. _`ieee80211_data_to_8023_exthdr`:
 
@@ -7919,6 +8013,13 @@ Note
 
 There are no checks on the element length other than having to fit into
 the given data.
+
+.. _`regulatory-enforcement-infrastructure`:
+
+Regulatory enforcement infrastructure
+=====================================
+
+TODO
 
 .. _`regulatory_hint`:
 
@@ -8723,6 +8824,21 @@ This function notifies cfg80211 that the mesh peer candidate has been
 detected, most likely via a beacon or, less likely, via a probe response.
 cfg80211 then sends a notification to userspace.
 
+.. _`rfkill-integration`:
+
+RFkill integration
+==================
+
+RFkill integration in cfg80211 is almost invisible to drivers,
+as cfg80211 automatically registers an rfkill instance for each
+wireless device it knows about. Soft kill is also translated
+into disconnecting and turning all interfaces off, drivers are
+expected to turn off the device when all interfaces are down.
+
+However, devices may have a hard RFkill line, in which case they
+also need to interact with the rfkill subsystem, via cfg80211.
+They can do this with a few helper functions documented here.
+
 .. _`wiphy_rfkill_set_hw_state`:
 
 wiphy_rfkill_set_hw_state
@@ -8761,6 +8877,27 @@ wiphy_rfkill_stop_polling
 
     :param struct wiphy \*wiphy:
         the wiphy
+
+.. _`vendor-commands`:
+
+Vendor commands
+===============
+
+Occasionally, there are special protocol or firmware features that
+can't be implemented very openly. For this and similar cases, the
+vendor command functionality allows implementing the features with
+(typically closed-source) userspace and firmware, using nl80211 as
+the configuration mechanism.
+
+A driver supporting vendor commands must register them as an array
+in struct wiphy, with handlers for each one, each command has an
+OUI and sub command ID to identify it.
+
+Note that this feature should not be (ab)used to implement protocol
+features that could openly be shared across drivers. In particular,
+it must never be required to use vendor commands to implement any
+"normal" functionality that higher-level userspace like connection
+managers etc. need.
 
 .. _`cfg80211_vendor_cmd_alloc_reply_skb`:
 
@@ -8904,6 +9041,18 @@ Description
 
 This function sends the given \ ``skb``\ , which must have been allocated
 by \ :c:func:`cfg80211_vendor_event_alloc`\ , as an event. It always consumes it.
+
+.. _`test-mode`:
+
+Test mode
+=========
+
+Test mode is a set of utility functions to allow drivers to
+interact with driver-specific tools to aid, for instance,
+factory programming.
+
+This chapter describes how drivers interact with it, for more
+information see the nl80211 book's chapter on it.
 
 .. _`cfg80211_testmode_alloc_reply_skb`:
 

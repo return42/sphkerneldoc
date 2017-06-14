@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/btree.h
 
+.. _`b-tree-basics`:
+
+B+Tree basics
+=============
+
+A B+Tree is a data structure for looking up arbitrary (currently allowing
+unsigned long, u32, u64 and 2 \* u64) keys into pointers. The data structure
+is described at http://en.wikipedia.org/wiki/B-tree, we currently do not
+use binary search to find the key on lookups.
+
+Each B+Tree consists of a head, that contains bookkeeping information and
+a variable number (starting with zero) nodes. Each node contains the keys
+and pointers to sub-nodes, or, for leaf nodes, the keys and values for the
+tree entries.
+
+Each node in this implementation has the following layout:
+[key1, key2, ..., keyN] [val1, val2, ..., valN]
+
+Each key here is an array of unsigned longs, geo->no_longs in total. The
+number of keys and values (N) is geo->no_pairs.
+
 .. _`btree_head`:
 
 struct btree_head

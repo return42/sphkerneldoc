@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath9k/ar9002_phy.c
 
+.. _`programming-atheros-802.11n-analog-front-end-radios`:
+
+Programming Atheros 802.11n analog front end radios
+===================================================
+
+AR5416 MAC based PCI devices and AR518 MAC based PCI-Express
+devices have either an external AR2133 analog front end radio for single
+band 2.4 GHz communication or an AR5133 analog front end radio for dual
+band 2.4 GHz / 5 GHz communication.
+
+All devices after the AR5416 and AR5418 family starting with the AR9280
+have their analog front radios, MAC/BB and host PCIe/USB interface embedded
+into a single-chip and require less programming.
+
+The following single-chips exist with a respective embedded radio:
+
+AR9280 - 11n dual-band 2x2 MIMO for PCIe
+AR9281 - 11n single-band 1x2 MIMO for PCIe
+AR9285 - 11n single-band 1x1 for PCIe
+AR9287 - 11n single-band 2x2 MIMO for PCIe
+
+AR9220 - 11n dual-band 2x2 MIMO for PCI
+AR9223 - 11n single-band 2x2 MIMO for PCI
+
+AR9287 - 11n single-band 1x1 MIMO for USB
+
 .. _`ar9002_hw_set_channel`:
 
 ar9002_hw_set_channel

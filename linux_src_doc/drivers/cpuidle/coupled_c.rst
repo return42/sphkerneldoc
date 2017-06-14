@@ -1,6 +1,74 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/cpuidle/coupled.c
 
+.. _`coupled-cpuidle-states`:
+
+Coupled cpuidle states
+======================
+
+On some ARM SMP SoCs (OMAP4460, Tegra 2, and probably more), the
+cpus cannot be independently powered down, either due to
+sequencing restrictions (on Tegra 2, cpu 0 must be the last to
+power down), or due to HW bugs (on OMAP4460, a cpu powering up
+will corrupt the gic state unless the other cpu runs a work
+around).  Each cpu has a power state that it can enter without
+coordinating with the other cpu (usually Wait For Interrupt, or
+WFI), and one or more "coupled" power states that affect blocks
+shared between the cpus (L2 cache, interrupt controller, and
+sometimes the whole SoC).  Entering a coupled power state must
+be tightly controlled on both cpus.
+
+This file implements a solution, where each cpu will wait in the
+WFI state until all cpus are ready to enter a coupled state, at
+which point the coupled state function will be called on all
+cpus at approximately the same time.
+
+Once all cpus are ready to enter idle, they are woken by an smp
+cross call.  At this point, there is a chance that one of the
+cpus will find work to do, and choose not to enter idle.  A
+final pass is needed to guarantee that all cpus will call the
+power state enter function at the same time.  During this pass,
+each cpu will increment the ready counter, and continue once the
+ready counter matches the number of online coupled cpus.  If any
+cpu exits idle, the other cpus will decrement their counter and
+retry.
+
+requested_state stores the deepest coupled idle state each cpu
+is ready for.  It is assumed that the states are indexed from
+shallowest (highest power, lowest exit latency) to deepest
+(lowest power, highest exit latency).  The requested_state
+variable is not locked.  It is only written from the cpu that
+it stores (or by the on/offlining cpu if that cpu is offline),
+and only read after all the cpus are ready for the coupled idle
+state are are no longer updating it.
+
+Three atomic counters are used.  alive_count tracks the number
+of cpus in the coupled set that are currently or soon will be
+online.  waiting_count tracks the number of cpus that are in
+the waiting loop, in the ready loop, or in the coupled idle state.
+ready_count tracks the number of cpus that are in the ready loop
+or in the coupled idle state.
+
+To use coupled cpuidle states, a cpuidle driver must:
+
+Set struct cpuidle_device.coupled_cpus to the mask of all
+coupled cpus, usually the same as cpu_possible_mask if all cpus
+are part of the same cluster.  The coupled_cpus mask must be
+set in the struct cpuidle_device for each cpu.
+
+Set struct cpuidle_device.safe_state to a state that is not a
+coupled state.  This is usually WFI.
+
+Set CPUIDLE_FLAG_COUPLED in struct cpuidle_state.flags for each
+state that affects multiple cpus.
+
+Provide a struct cpuidle_state.enter function for each state
+that affects multiple cpus.  This function is guaranteed to be
+called on all cpus at approximately the same time.  The driver
+should ensure that the cpus all abort together if any cpu tries
+to abort once the function is called.  The function should return
+with interrupts still disabled.
+
 .. _`cpuidle_coupled`:
 
 struct cpuidle_coupled

@@ -1,6 +1,41 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_vma_manager.c
 
+.. _`vma-offset-manager`:
+
+vma offset manager
+==================
+
+The vma-manager is responsible to map arbitrary driver-dependent memory
+regions into the linear user address-space. It provides offsets to the
+caller which can then be used on the address_space of the drm-device. It
+takes care to not overlap regions, size them appropriately and to not
+confuse mm-core by inconsistent fake vm_pgoff fields.
+Drivers shouldn't use this for object placement in VMEM. This manager should
+only be used to manage mappings into linear user-space VMs.
+
+We use drm_mm as backend to manage object allocations. But it is highly
+optimized for alloc/free calls, not lookups. Hence, we use an rb-tree to
+speed up offset lookups.
+
+You must not use multiple offset managers on a single address_space.
+Otherwise, mm-core will be unable to tear down memory mappings as the VM will
+no longer be linear.
+
+This offset manager works on page-based addresses. That is, every argument
+and return code (with the exception of \ :c:func:`drm_vma_node_offset_addr`\ ) is given
+in number of pages, not number of bytes. That means, object sizes and offsets
+must always be page-aligned (as usual).
+If you want to get a valid byte-based user-space address for a given offset,
+please see \ :c:func:`drm_vma_node_offset_addr`\ .
+
+Additionally to offset management, the vma offset manager also handles access
+management. For every open-file context that is allowed to access a given
+node, you must call \ :c:func:`drm_vma_node_allow`\ . Otherwise, an \ :c:func:`mmap`\  call on this
+open-file with the offset of the node will fail with -EACCES. To revoke
+access again, use \ :c:func:`drm_vma_node_revoke`\ . However, the caller is responsible
+for destroying already existing mappings, if required.
+
 .. _`drm_vma_offset_manager_init`:
 
 drm_vma_offset_manager_init

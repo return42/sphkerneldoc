@@ -159,6 +159,14 @@ reqsize
 base
     Common crypto API algorithm data structure
 
+.. _`asynchronous-compression-api`:
+
+Asynchronous Compression API
+============================
+
+The Asynchronous Compression API is used with the algorithms of type
+CRYPTO_ALG_TYPE_ACOMPRESS (listed as type "acomp" in /proc/crypto)
+
 .. _`crypto_alloc_acomp`:
 
 crypto_alloc_acomp

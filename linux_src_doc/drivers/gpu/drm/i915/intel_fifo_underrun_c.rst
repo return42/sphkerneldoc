@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_fifo_underrun.c
 
+.. _`fifo-underrun-handling`:
+
+fifo underrun handling
+======================
+
+The i915 driver checks for display fifo underruns using the interrupt signals
+provided by the hardware. This is enabled by default and fairly useful to
+debug display issues, especially watermark settings.
+
+If an underrun is detected this is logged into dmesg. To avoid flooding logs
+and occupying the cpu underrun interrupts are disabled after the first
+occurrence until the next modeset on a given pipe.
+
+Note that underrun detection on gmch platforms is a bit more ugly since there
+is no interrupt (despite that the signalling bit is in the PIPESTAT pipe
+interrupt register). Also on some other platforms underrun interrupts are
+shared, which means that if we detect an underrun we need to disable underrun
+reporting on all pipes.
+
+The code also supports underrun detection on the PCH transcoder.
+
 .. _`intel_set_cpu_fifo_underrun_reporting`:
 
 intel_set_cpu_fifo_underrun_reporting

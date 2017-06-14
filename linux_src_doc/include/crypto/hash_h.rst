@@ -1,6 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/crypto/hash.h
 
+.. _`message-digest-algorithm-definitions`:
+
+Message Digest Algorithm Definitions
+====================================
+
+These data structures define modular message digest algorithm
+implementations, managed via \ :c:func:`crypto_register_ahash`\ ,
+\ :c:func:`crypto_register_shash`\ , \ :c:func:`crypto_unregister_ahash`\  and
+\ :c:func:`crypto_unregister_shash`\ .
+
 .. _`hash_alg_common`:
 
 struct hash_alg_common
@@ -226,6 +236,17 @@ statesize
 
 base
     internally used
+
+.. _`asynchronous-message-digest-api`:
+
+Asynchronous Message Digest API
+===============================
+
+The asynchronous message digest API is used with the ciphers of type
+CRYPTO_ALG_TYPE_AHASH (listed as type "ahash" in /proc/crypto)
+
+The asynchronous cipher operation discussion provided for the
+CRYPTO_ALG_TYPE_ABLKCIPHER API applies here as well.
 
 .. _`crypto_alloc_ahash`:
 
@@ -676,6 +697,18 @@ Return
 0 if the message digest update was successful; < 0 if an error
         occurred
 
+.. _`asynchronous-hash-request-handle`:
+
+Asynchronous Hash Request Handle
+================================
+
+The \ :c:type:`struct ahash_request <ahash_request>`\  data structure contains all pointers to data
+required for the asynchronous cipher operation. This includes the cipher
+handle (which can be used by multiple \ :c:type:`struct ahash_request <ahash_request>`\  instances), pointer
+to plaintext and the message digest output buffer, asynchronous callback
+function, etc. It acts as a handle to the ahash_request_* API calls in a
+similar way as ahash handle to the crypto_ahash_* API calls.
+
 .. _`ahash_request_set_tfm`:
 
 ahash_request_set_tfm
@@ -818,6 +851,20 @@ Description
 By using this call, the caller references the source scatter/gather list.
 The source scatter/gather list points to the data the message digest is to
 be calculated for.
+
+.. _`synchronous-message-digest-api`:
+
+Synchronous Message Digest API
+==============================
+
+The synchronous message digest API is used with the ciphers of type
+CRYPTO_ALG_TYPE_SHASH (listed as type "shash" in /proc/crypto)
+
+The message digest API is able to maintain state information for the
+caller.
+
+The synchronous message digest API can store user-related context in in its
+shash_desc request data structure.
 
 .. _`crypto_alloc_shash`:
 

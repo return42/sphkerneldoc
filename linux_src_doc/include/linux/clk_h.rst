@@ -1,6 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/clk.h
 
+.. _`clk-notifier-callback-types`:
+
+clk notifier callback types
+===========================
+
+PRE_RATE_CHANGE - called immediately before the clk rate is changed,
+    to indicate that the rate change will proceed.  Drivers must
+    immediately terminate any operations that will be affected by the
+    rate change.  Callbacks may either return NOTIFY_DONE, NOTIFY_OK,
+    NOTIFY_STOP or NOTIFY_BAD.
+
+ABORT_RATE_CHANGE: called if the rate change failed for some reason
+    after PRE_RATE_CHANGE.  In this case, all registered notifiers on
+    the clk will be called with ABORT_RATE_CHANGE. Callbacks must
+    always return NOTIFY_DONE or NOTIFY_OK.
+
+POST_RATE_CHANGE - called after the clk rate change has successfully
+    completed.  Callbacks must always return NOTIFY_DONE or NOTIFY_OK.
+
 .. _`clk_notifier`:
 
 struct clk_notifier

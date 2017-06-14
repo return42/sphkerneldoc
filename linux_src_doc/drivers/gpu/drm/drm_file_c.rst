@@ -1,6 +1,56 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_file.c
 
+.. _`file-operations`:
+
+file operations
+===============
+
+Drivers must define the file operations structure that forms the DRM
+userspace API entry point, even though most of those operations are
+implemented in the DRM core. The resulting \ :c:type:`struct file_operations <file_operations>`\  must be
+stored in the \ :c:type:`drm_driver.fops <drm_driver>`\  field. The mandatory functions are \ :c:func:`drm_open`\ ,
+\ :c:func:`drm_read`\ , \ :c:func:`drm_ioctl`\  and \ :c:func:`drm_compat_ioctl`\  if CONFIG_COMPAT is enabled
+Note that drm_compat_ioctl will be NULL if CONFIG_COMPAT=n, so there's no
+need to sprinkle #ifdef into the code. Drivers which implement private ioctls
+that require 32/64 bit compatibility support must provide their own
+\ :c:type:`file_operations.compat_ioctl <file_operations>`\  handler that processes private ioctls and calls
+\ :c:func:`drm_compat_ioctl`\  for core ioctls.
+
+In addition \ :c:func:`drm_read`\  and \ :c:func:`drm_poll`\  provide support for DRM events. DRM
+events are a generic and extensible means to send asynchronous events to
+userspace through the file descriptor. They are used to send vblank event and
+page flip completions by the KMS API. But drivers can also use it for their
+own needs, e.g. to signal completion of rendering.
+
+For the driver-side event interface see \ :c:func:`drm_event_reserve_init`\  and
+\ :c:func:`drm_send_event`\  as the main starting points.
+
+The memory mapping implementation will vary depending on how the driver
+manages memory. Legacy drivers will use the deprecated \ :c:func:`drm_legacy_mmap`\ 
+function, modern drivers should use one of the provided memory-manager
+specific implementations. For GEM-based drivers this is \ :c:func:`drm_gem_mmap`\ , and
+for drivers which use the CMA GEM helpers it's \ :c:func:`drm_gem_cma_mmap`\ .
+
+No other file operations are supported by the DRM userspace API. Overall the
+following is an example #file_operations structure::
+
+    static const example_drm_fops = {
+            .owner = THIS_MODULE,
+            .open = drm_open,
+            .release = drm_release,
+            .unlocked_ioctl = drm_ioctl,
+            .compat_ioctl = drm_compat_ioctl, // NULL if CONFIG_COMPAT=n
+            .poll = drm_poll,
+            .read = drm_read,
+            .llseek = no_llseek,
+            .mmap = drm_gem_mmap,
+    };
+
+For plain GEM based drivers there is the \ :c:func:`DEFINE_DRM_GEM_FOPS`\  macro, and for
+CMA based drivers there is the \ :c:func:`DEFINE_DRM_GEM_CMA_FOPS`\  macro to make this
+simpler.
+
 .. _`drm_open`:
 
 drm_open

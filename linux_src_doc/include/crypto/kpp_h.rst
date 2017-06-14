@@ -148,6 +148,14 @@ reqsize
 base
     Common crypto API algorithm data structure
 
+.. _`generic-key-agreement-protocol-primitives-api`:
+
+Generic Key-agreement Protocol Primitives API
+=============================================
+
+The KPP API is used with the algorithm type
+CRYPTO_ALG_TYPE_KPP (listed as type "kpp" in /proc/crypto)
+
 .. _`crypto_alloc_kpp`:
 
 crypto_alloc_kpp

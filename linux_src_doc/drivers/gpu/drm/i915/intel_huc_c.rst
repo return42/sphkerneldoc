@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_huc.c
 
+.. _`huc-firmware`:
+
+HuC Firmware
+============
+
+Motivation:
+GEN9 introduces a new dedicated firmware for usage in media HEVC (High
+Efficiency Video Coding) operations. Userspace can use the firmware
+capabilities by adding HuC specific commands to batch buffers.
+
+Implementation:
+The same firmware loader is used as the GuC. However, the actual
+loading to HW is deferred until GEM initialization is done.
+
+Note that HuC firmware loading must be done before GuC loading.
+
 .. _`huc_ucode_xfer`:
 
 huc_ucode_xfer

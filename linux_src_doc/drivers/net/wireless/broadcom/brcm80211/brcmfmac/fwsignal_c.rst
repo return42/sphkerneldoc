@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.c
 
+.. _`firmware-signalling`:
+
+Firmware Signalling
+===================
+
+Firmware can send signals to host and vice versa, which are passed in the
+data packets using TLV based header. This signalling layer is on top of the
+BDC bus protocol layer.
+
 .. _`brcmf_fws_skb_state`:
 
 enum brcmf_fws_skb_state

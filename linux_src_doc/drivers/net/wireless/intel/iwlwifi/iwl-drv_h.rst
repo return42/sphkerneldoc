@@ -1,6 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/intel/iwlwifi/iwl-drv.h
 
+.. _`driver-system-flows---drv-component`:
+
+Driver system flows - drv component
+===================================
+
+This component implements the system flows such as bus enumeration, bus
+removal. Bus dependent parts of system flows (such as iwl_pci_probe) are in
+bus specific files (transport files). This is the code that is common among
+different buses.
+
+This component is also in charge of managing the several implementations of
+the wifi flows: it will allow to have several fw API implementation. These
+different implementations will differ in the way they implement mac80211's
+handlers too.
+The init flow wrt to the drv component looks like this:
+1) The bus specific component is called from module_init
+2) The bus specific component registers the bus driver
+3) The bus driver calls the probe function
+4) The bus specific component configures the bus
+5) The bus specific component calls to the drv bus agnostic part
+(iwl_drv_start)
+6) iwl_drv_start fetches the fw ASYNC, iwl_req_fw_callback
+7) iwl_req_fw_callback parses the fw file
+8) iwl_req_fw_callback starts the wifi implementation to matches the fw
+
 .. _`iwl_drv_start`:
 
 iwl_drv_start

@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_bios.c
 
+.. _`video-bios-table--vbt-`:
+
+Video BIOS Table (VBT)
+======================
+
+The Video BIOS Table, or VBT, provides platform and board specific
+configuration information to the driver that is not discoverable or available
+through other means. The configuration is mostly related to display
+hardware. The VBT is available via the ACPI OpRegion or, on older systems, in
+the PCI ROM.
+
+The VBT consists of a VBT Header (defined as \ :c:type:`struct vbt_header <vbt_header>`\ ), a BDB
+Header (&struct bdb_header), and a number of BIOS Data Blocks (BDB) that
+contain the actual configuration information. The VBT Header, and thus the
+VBT, begins with "$VBT" signature. The VBT Header contains the offset of the
+BDB Header. The data blocks are concatenated after the BDB Header. The data
+blocks have a 1-byte Block ID, 2-byte Block Size, and Block Size bytes of
+data. (Block 53, the MIPI Sequence Block is an exception.)
+
+The driver parses the VBT during load. The relevant information is stored in
+driver private data for ease of use, and the actual VBT is not read after
+that.
+
 .. _`intel_bios_is_valid_vbt`:
 
 intel_bios_is_valid_vbt

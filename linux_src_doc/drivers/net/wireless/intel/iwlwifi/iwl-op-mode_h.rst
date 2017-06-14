@@ -1,6 +1,33 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/intel/iwlwifi/iwl-op-mode.h
 
+.. _`operational-mode---what-is-it--`:
+
+Operational mode - what is it ?
+===============================
+
+The operational mode (a.k.a. op_mode) is the layer that implements
+mac80211's handlers. It knows two APIs: mac80211's and the fw's. It uses
+the transport API to access the HW. The op_mode doesn't need to know how the
+underlying HW works, since the transport layer takes care of that.
+
+There can be several op_mode: i.e. different fw APIs will require two
+different op_modes. This is why the op_mode is virtualized.
+
+.. _`life-cycle-of-the-operational-mode`:
+
+Life cycle of the Operational mode
+==================================
+
+The operational mode has a very simple life cycle.
+
+1) The driver layer (iwl-drv.c) chooses the op_mode based on the
+capabilities advertised by the fw file (in TLV format).
+2) The driver layer starts the op_mode (ops->start)
+3) The op_mode registers mac80211
+4) The op_mode is governed by mac80211
+5) The driver layer stops the op_mode
+
 .. _`iwl_op_mode_ops`:
 
 struct iwl_op_mode_ops

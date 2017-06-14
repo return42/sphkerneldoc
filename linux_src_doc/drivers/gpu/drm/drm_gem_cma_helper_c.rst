@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_gem_cma_helper.c
 
+.. _`cma-helpers`:
+
+cma helpers
+===========
+
+The Contiguous Memory Allocator reserves a pool of memory at early boot
+that is used to service requests for large blocks of contiguous memory.
+
+The DRM GEM/CMA helpers use this allocator as a means to provide buffer
+objects that are physically contiguous in memory. This is useful for
+display drivers that are unable to map scattered buffers via an IOMMU.
+
 .. _`__drm_gem_cma_create`:
 
 __drm_gem_cma_create

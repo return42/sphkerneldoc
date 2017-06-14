@@ -1,6 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_mipi_dsi.c
 
+.. _`dsi-helpers`:
+
+dsi helpers
+===========
+
+These functions contain some common logic and helpers to deal with MIPI DSI
+peripherals.
+
+Helpers are provided for a number of standard MIPI DSI command as well as a
+subset of the MIPI DCS command set.
+
 .. _`of_find_mipi_dsi_device_by_node`:
 
 of_find_mipi_dsi_device_by_node

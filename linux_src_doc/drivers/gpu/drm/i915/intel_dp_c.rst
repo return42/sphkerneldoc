@@ -140,6 +140,44 @@ if no other planes are dirty.
 
 Dirty frontbuffers relevant to DRRS are tracked in busy_frontbuffer_bits.
 
+.. _`display-refresh-rate-switching--drrs-`:
+
+Display Refresh Rate Switching (DRRS)
+=====================================
+
+Display Refresh Rate Switching (DRRS) is a power conservation feature
+which enables swtching between low and high refresh rates,
+dynamically, based on the usage scenario. This feature is applicable
+for internal panels.
+
+Indication that the panel supports DRRS is given by the panel EDID, which
+would list multiple refresh rates for one resolution.
+
+DRRS is of 2 types - static and seamless.
+Static DRRS involves changing refresh rate (RR) by doing a full modeset
+(may appear as a blink on screen) and is used in dock-undock scenario.
+Seamless DRRS involves changing RR without any visual effect to the user
+and can be used during normal system usage. This is done by programming
+certain registers.
+
+Support for static/seamless DRRS may be indicated in the VBT based on
+inputs from the panel spec.
+
+DRRS saves power by switching to low RR based on usage scenarios.
+
+The implementation is based on frontbuffer tracking implementation.  When
+there is a disturbance on the screen triggered by user activity or a periodic
+system activity, DRRS is disabled (RR is changed to high RR).  When there is
+no movement on screen, after a timeout of 1 second, a switch to low RR is
+made.
+
+For integration with frontbuffer tracking code, \ :c:func:`intel_edp_drrs_invalidate`\ 
+and \ :c:func:`intel_edp_drrs_flush`\  are called.
+
+DRRS can be further extended to support other internal panels and also
+the scenario of video playback wherein RR is set based on the rate
+requested by userspace.
+
 .. _`intel_dp_drrs_init`:
 
 intel_dp_drrs_init

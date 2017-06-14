@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_simple_kms_helper.c
 
+.. _`overview`:
+
+overview
+========
+
+This helper library provides helpers for drivers for simple display
+hardware.
+
+\ :c:func:`drm_simple_display_pipe_init`\  initializes a simple display pipeline
+which has only one full-screen scanout buffer feeding one output. The
+pipeline is represented by \ :c:type:`struct drm_simple_display_pipe <drm_simple_display_pipe>`\  and binds
+together \ :c:type:`struct drm_plane <drm_plane>`\ , \ :c:type:`struct drm_crtc <drm_crtc>`\  and \ :c:type:`struct drm_encoder <drm_encoder>`\  structures into one fixed
+entity. Some flexibility for code reuse is provided through a separately
+allocated \ :c:type:`struct drm_connector <drm_connector>`\  object and supporting optional \ :c:type:`struct drm_bridge <drm_bridge>`\ 
+encoder drivers.
+
 .. _`drm_simple_display_pipe_attach_bridge`:
 
 drm_simple_display_pipe_attach_bridge

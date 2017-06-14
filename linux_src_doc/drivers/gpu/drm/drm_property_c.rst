@@ -1,6 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_property.c
 
+.. _`overview`:
+
+overview
+========
+
+Properties as represented by \ :c:type:`struct drm_property <drm_property>`\  are used to extend the modeset
+interface exposed to userspace. For the atomic modeset IOCTL properties are
+even the only way to transport metadata about the desired new modeset
+configuration from userspace to the kernel. Properties have a well-defined
+value range, which is enforced by the drm core. See the documentation of the
+flags member of \ :c:type:`struct drm_property <drm_property>`\  for an overview of the different
+property types and ranges.
+
+Properties don't store the current value directly, but need to be
+instatiated by attaching them to a \ :c:type:`struct drm_mode_object <drm_mode_object>`\  with
+\ :c:func:`drm_object_attach_property`\ .
+
+Property values are only 64bit. To support bigger piles of data (like gamma
+tables, color correction matrices or large structures) a property can instead
+point at a \ :c:type:`struct drm_property_blob <drm_property_blob>`\  with that additional data.
+
+Properties are defined by their symbolic name, userspace must keep a
+per-object mapping from those names to the property ID used in the atomic
+IOCTL and in the get/set property IOCTL.
+
 .. _`drm_property_create`:
 
 drm_property_create

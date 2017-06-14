@@ -1,6 +1,43 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_frontbuffer.c
 
+.. _`frontbuffer-tracking`:
+
+frontbuffer tracking
+====================
+
+Many features require us to track changes to the currently active
+frontbuffer, especially rendering targeted at the frontbuffer.
+
+To be able to do so GEM tracks frontbuffers using a bitmask for all possible
+frontbuffer slots through \ :c:func:`i915_gem_track_fb`\ . The function in this file are
+then called when the contents of the frontbuffer are invalidated, when
+frontbuffer rendering has stopped again to flush out all the changes and when
+the frontbuffer is exchanged with a flip. Subsystems interested in
+frontbuffer changes (e.g. PSR, FBC, DRRS) should directly put their callbacks
+into the relevant places and filter for the frontbuffer slots that they are
+interested int.
+
+On a high level there are two types of powersaving features. The first one
+work like a special cache (FBC and PSR) and are interested when they should
+stop caching and when to restart caching. This is done by placing callbacks
+into the invalidate and the flush functions: At invalidate the caching must
+be stopped and at flush time it can be restarted. And maybe they need to know
+when the frontbuffer changes (e.g. when the hw doesn't initiate an invalidate
+and flush on its own) which can be achieved with placing callbacks into the
+flip functions.
+
+The other type of display power saving feature only cares about busyness
+(e.g. DRRS). In that case all three (invalidate, flush and flip) indicate
+busyness. There is no direct way to detect idleness. Instead an idle timer
+work delayed work should be started from the flush and flip functions and
+cancelled as soon as busyness is detected.
+
+Note that there's also an older frontbuffer activity tracking scheme which
+just tracks general activity. This is done by the various mark_busy and
+mark_idle functions. For display power management features using these
+functions is deprecated and should be avoided.
+
 .. _`intel_frontbuffer_flush`:
 
 intel_frontbuffer_flush

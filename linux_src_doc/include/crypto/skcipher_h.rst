@@ -201,6 +201,37 @@ Description
 
 All fields except \ ``ivsize``\  are mandatory and must be filled.
 
+.. _`symmetric-key-cipher-api`:
+
+Symmetric Key Cipher API
+========================
+
+Symmetric key cipher API is used with the ciphers of type
+CRYPTO_ALG_TYPE_SKCIPHER (listed as type "skcipher" in /proc/crypto).
+
+Asynchronous cipher operations imply that the function invocation for a
+cipher request returns immediately before the completion of the operation.
+The cipher request is scheduled as a separate kernel thread and therefore
+load-balanced on the different CPUs via the process scheduler. To allow
+the kernel crypto API to inform the caller about the completion of a cipher
+request, the caller must provide a callback function. That function is
+invoked with the cipher handle when the request completes.
+
+To support the asynchronous operation, additional information than just the
+cipher handle must be supplied to the kernel crypto API. That additional
+information is given by filling in the skcipher_request data structure.
+
+For the symmetric key cipher API, the state is maintained with the tfm
+cipher handle. A single tfm can be used across multiple calls and in
+parallel. For asynchronous block cipher calls, context data supplied and
+only used by the caller can be referenced the request data structure in
+addition to the IV used for the cipher request. The maintenance of such
+state information would be important for a crypto driver implementer to
+have, because when calling the callback function upon completion of the
+cipher operation, that callback function may need some information about
+which operation just finished if it invoked multiple in parallel. This
+state information is unused by the kernel crypto API.
+
 .. _`crypto_alloc_skcipher`:
 
 crypto_alloc_skcipher
@@ -538,6 +569,18 @@ Return
 ------
 
 0 if the cipher operation was successful; < 0 if an error occurred
+
+.. _`symmetric-key-cipher-request-handle`:
+
+Symmetric Key Cipher Request Handle
+===================================
+
+The skcipher_request data structure contains all pointers to data
+required for the symmetric key cipher operation. This includes the cipher
+handle (which can be used by multiple skcipher_request instances), pointer
+to plaintext and ciphertext, asynchronous callback function, etc. It acts
+as a handle to the skcipher_request_* API calls in a similar way as
+skcipher handle to the crypto_skcipher_* API calls.
 
 .. _`crypto_skcipher_reqsize`:
 

@@ -1,6 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/drm_print.h
 
+.. _`print`:
+
+print
+=====
+
+A simple wrapper for \ :c:func:`dev_printk`\ , \ :c:func:`seq_printf`\ , etc.  Allows same
+debug code to be used for both debugfs and printk logging.
+
+For example::
+
+    void log_some_info(struct drm_printer *p)
+    {
+            drm_printf(p, "foo=%d\n", foo);
+            drm_printf(p, "bar=%d\n", bar);
+    }
+
+    #ifdef CONFIG_DEBUG_FS
+    void debugfs_show(struct seq_file *f)
+    {
+            struct drm_printer p = drm_seq_file_printer(f);
+            log_some_info(&p);
+    }
+    #endif
+
+    void some_other_function(...)
+    {
+            struct drm_printer p = drm_info_printer(drm->dev);
+            log_some_info(&p);
+    }
+
 .. _`drm_printer`:
 
 struct drm_printer

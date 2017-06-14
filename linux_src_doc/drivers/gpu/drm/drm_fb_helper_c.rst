@@ -1,6 +1,55 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_fb_helper.c
 
+.. _`fbdev-helpers`:
+
+fbdev helpers
+=============
+
+The fb helper functions are useful to provide an fbdev on top of a drm kernel
+mode setting driver. They can be used mostly independently from the crtc
+helper functions used by many drivers to implement the kernel mode setting
+interfaces.
+
+Initialization is done as a four-step process with \ :c:func:`drm_fb_helper_prepare`\ ,
+\ :c:func:`drm_fb_helper_init`\ , \ :c:func:`drm_fb_helper_single_add_all_connectors`\  and
+\ :c:func:`drm_fb_helper_initial_config`\ . Drivers with fancier requirements than the
+default behaviour can override the third step with their own code.
+Teardown is done with \ :c:func:`drm_fb_helper_fini`\  after the fbdev device is
+unregisters using \ :c:func:`drm_fb_helper_unregister_fbi`\ .
+
+At runtime drivers should restore the fbdev console by calling
+\ :c:func:`drm_fb_helper_restore_fbdev_mode_unlocked`\  from their \ :c:type:`drm_driver.lastclose <drm_driver>`\ 
+callback.  They should also notify the fb helper code from updates to the
+output configuration by calling \ :c:func:`drm_fb_helper_hotplug_event`\ . For easier
+integration with the output polling code in drm_crtc_helper.c the modeset
+code provides a \ :c:type:`drm_mode_config_funcs.output_poll_changed <drm_mode_config_funcs>`\  callback.
+
+All other functions exported by the fb helper library can be used to
+implement the fbdev driver interface by the driver.
+
+It is possible, though perhaps somewhat tricky, to implement race-free
+hotplug detection using the fbdev helpers. The \ :c:func:`drm_fb_helper_prepare`\ 
+helper must be called first to initialize the minimum required to make
+hotplug detection work. Drivers also need to make sure to properly set up
+the \ :c:type:`drm_mode_config.funcs <drm_mode_config>`\  member. After calling \ :c:func:`drm_kms_helper_poll_init`\ 
+it is safe to enable interrupts and start processing hotplug events. At the
+same time, drivers should initialize all modeset objects such as CRTCs,
+encoders and connectors. To finish up the fbdev helper initialization, the
+\ :c:func:`drm_fb_helper_init`\  function is called. To probe for all attached displays
+and set up an initial configuration using the detected hardware, drivers
+should call \ :c:func:`drm_fb_helper_single_add_all_connectors`\  followed by
+\ :c:func:`drm_fb_helper_initial_config`\ .
+
+If \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  is set, the
+drm_fb_helper_{cfb,sys}_{write,fillrect,copyarea,imageblit} functions will
+accumulate changes and schedule \ :c:type:`drm_fb_helper.dirty_work <drm_fb_helper>`\  to run right
+away. This worker then calls the \ :c:func:`dirty`\  function ensuring that it will
+always run in process context since the fb_*() function could be running in
+atomic context. If \ :c:func:`drm_fb_helper_deferred_io`\  is used as the deferred_io
+callback it will also schedule dirty_work with the damage collected from the
+mmap page writes.
+
 .. _`drm_fb_helper_single_add_all_connectors`:
 
 drm_fb_helper_single_add_all_connectors

@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/wireless/reg.c
 
+.. _`wireless-regulatory-infrastructure`:
+
+Wireless regulatory infrastructure
+==================================
+
+The usual implementation is for a driver to read a device EEPROM to
+determine which regulatory domain it should be operating under, then
+looking up the allowable channels in a driver-local table and finally
+registering those channels in the wiphy structure.
+
+Another set of compliance enforcement is for drivers to use their
+own compliance limits which can be stored on the EEPROM. The host
+driver or firmware may ensure these are used.
+
+In addition to all this we provide an extra layer of regulatory
+conformance. For drivers which do not have any regulatory
+information CRDA provides the complete regulatory solution.
+For others it provides a community effort on further restrictions
+to enhance compliance.
+
+Note: When number of rules --> infinity we will not be able to
+index on alpha2 any more, instead we'll probably have to
+rely on some SHA1 checksum of the regdomain for example.
+
 .. _`reg_request_treatment`:
 
 enum reg_request_treatment

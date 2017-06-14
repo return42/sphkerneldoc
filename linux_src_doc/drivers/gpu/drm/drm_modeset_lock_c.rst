@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_modeset_lock.c
 
+.. _`kms-locking`:
+
+kms locking
+===========
+
+As KMS moves toward more fine grained locking, and atomic ioctl where
+userspace can indirectly control locking order, it becomes necessary
+to use \ :c:type:`struct ww_mutex <ww_mutex>`\  and acquire-contexts to avoid deadlocks.  But because
+the locking is more distributed around the driver code, we want a bit
+of extra utility/tracking out of our acquire-ctx.  This is provided
+by \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\  and \ :c:type:`struct drm_modeset_acquire_ctx <drm_modeset_acquire_ctx>`\ .
+
+For basic principles of \ :c:type:`struct ww_mutex <ww_mutex>`\ , see: Documentation/locking/ww-mutex-design.txt
+
+The basic usage pattern is to::
+
+    drm_modeset_acquire_init(&ctx)
+    retry:
+    foreach (lock in random_ordered_set_of_locks) {
+        ret = drm_modeset_lock(lock, \ :c:type:`struct ctx <ctx>`\ )
+        if (ret == -EDEADLK) {
+            drm_modeset_backoff(&ctx);
+            goto retry;
+        }
+    }
+    ... do stuff ...
+    drm_modeset_drop_locks(&ctx);
+    drm_modeset_acquire_fini(&ctx);
+
+On top of of these per-object locks using \ :c:type:`struct ww_mutex <ww_mutex>`\  there's also an overall
+\ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ , for protecting everything else. Mostly this means
+probe state of connectors, and preventing hotplug add/removal of connectors.
+
+Finally there's a bunch of dedicated locks to protect drm core internal
+lists and lookup data structures.
+
 .. _`drm_modeset_lock_all`:
 
 drm_modeset_lock_all

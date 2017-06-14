@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_lpe_audio.c
 
+.. _`lpe-audio-integration-for-hdmi-or-dp-playback`:
+
+LPE Audio integration for HDMI or DP playback
+=============================================
+
+Motivation:
+Atom platforms (e.g. valleyview and cherryTrail) integrates a DMA-based
+interface as an alternative to the traditional HDaudio path. While this
+mode is unrelated to the LPE aka SST audio engine, the documentation refers
+to this mode as LPE so we keep this notation for the sake of consistency.
+
+The interface is handled by a separate standalone driver maintained in the
+ALSA subsystem for simplicity. To minimize the interaction between the two
+subsystems, a bridge is setup between the hdmi-lpe-audio and i915:
+1. Create a platform device to share MMIO/IRQ resources
+2. Make the platform device child of i915 device for runtime PM.
+3. Create IRQ chip to forward the LPE audio irqs.
+the hdmi-lpe-audio driver probes the lpe audio device and creates a new
+sound card
+
+Threats:
+Due to the restriction in Linux platform device model, user need manually
+uninstall the hdmi-lpe-audio driver before uninstalling i915 module,
+otherwise we might run into use-after-free issues after i915 removes the
+platform device: even though hdmi-lpe-audio driver is released, the modules
+is still in "installed" status.
+
+Implementation:
+The MMIO/REG platform resources are created according to the registers
+specification.
+When forwarding LPE audio irqs, the flow control handler selection depends
+on the platform, for example on valleyview handle_simple_irq is enough.
+
 .. _`intel_lpe_audio_irq_handler`:
 
 intel_lpe_audio_irq_handler

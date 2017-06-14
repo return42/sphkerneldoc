@@ -1,6 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_csr.c
 
+.. _`csr-support-for-dmc`:
+
+csr support for dmc
+===================
+
+Display Context Save and Restore (CSR) firmware support added from gen9
+onwards to drive newly added DMC (Display microcontroller) in display
+engine to save and restore the state of display engine when it enter into
+low-power state and comes back to normal.
+
 .. _`intel_csr_load_program`:
 
 intel_csr_load_program

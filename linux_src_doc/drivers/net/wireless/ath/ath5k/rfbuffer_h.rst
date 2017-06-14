@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/rfbuffer.h
 
+.. _`rf-buffer-registers`:
+
+RF Buffer registers
+===================
+
+There are some special registers on the RF chip
+that control various operation settings related mostly to
+the analog parts (channel, gain adjustment etc).
+
+We don't write on those registers directly but
+we send a data packet on the chip, using a special register,
+that holds all the settings we need. After we've sent the
+data packet, we write on another special register to notify hw
+to apply the settings. This is done so that control registers
+can be dynamically programmed during operation and the settings
+are applied faster on the hw.
+
+We call each data packet an "RF Bank" and all the data we write
+(all RF Banks) "RF Buffer". This file holds initial RF Buffer
+data for the different RF chips, and various info to match RF
+Buffer offsets with specific RF registers so that we can access
+them. We tweak these settings on rfregs_init function.
+
+Also check out reg.h and U.S. Patent 6677779 B1 (about buffer
+registers and control registers):
+
+http://www.google.com/patents?id=qNURAAAAEBAJ
+
 .. _`ath5k_ini_rfbuffer`:
 
 struct ath5k_ini_rfbuffer

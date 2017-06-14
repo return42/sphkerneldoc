@@ -93,6 +93,76 @@ AR5K_RF2317
 AR5K_RF2425
     RF2425/2417 (Swan/Nalla)
 
+.. _`atheros-xr`:
+
+Atheros XR
+==========
+
+Some of this information is based on Documentation from:
+
+http://madwifi-project.org/wiki/ChipsetFeatures/SuperAG
+
+Atheros' eXtended Range - range enhancing extension is a modulation scheme
+that is supposed to double the link distance between an Atheros XR-enabled
+client device with an Atheros XR-enabled access point. This is achieved
+by increasing the receiver sensitivity up to, -105dBm, which is about 20dB
+above what the 802.11 specifications demand. In addition, new (proprietary)
+data rates are introduced: 3, 2, 1, 0.5 and 0.25 MBit/s.
+
+Please note that can you either use XR or TURBO but you cannot use both,
+they are exclusive.
+
+Also note that we do not plan to support XR mode at least for now. You can
+get a mode similar to XR by using 5MHz bwmode.
+
+.. _`atheros-superag`:
+
+Atheros SuperAG
+===============
+
+In addition to XR we have another modulation scheme called TURBO mode
+that is supposed to provide a throughput transmission speed up to 40Mbit/s
+-60Mbit/s at a 108Mbit/s signaling rate achieved through the bonding of two
+54Mbit/s 802.11g channels. To use this feature both ends must support it.
+There is also a distinction between "static" and "dynamic" turbo modes:
+
+- Static: is the dumb version: devices set to this mode stick to it until
+the mode is turned off.
+
+- Dynamic: is the intelligent version, the network decides itself if it
+is ok to use turbo. As soon as traffic is detected on adjacent channels
+(which would get used in turbo mode), or when a non-turbo station joins
+the network, turbo mode won't be used until the situation changes again.
+Dynamic mode is achieved by Atheros' Adaptive Radio (AR) feature which
+monitors the used radio band in order to decide whether turbo mode may
+be used or not.
+
+This article claims Super G sticks to bonding of channels 5 and 6 for
+USA:
+
+http://www.pcworld.com/article/id,113428-page,1/article.html
+
+The channel bonding seems to be driver specific though.
+
+In addition to TURBO modes we also have the following features for even
+greater speed-up:
+
+- Bursting: allows multiple frames to be sent at once, rather than pausing
+after each frame. Bursting is a standards-compliant feature that can be
+used with any Access Point.
+
+- Fast frames: increases the amount of information that can be sent per
+frame, also resulting in a reduction of transmission overhead. It is a
+proprietary feature that needs to be supported by the Access Point.
+
+- Compression: data frames are compressed in real time using a Lempel Ziv
+algorithm. This is done transparently. Once this feature is enabled,
+compression and decompression takes place inside the chipset, without
+putting additional load on the host CPU.
+
+As with XR we also don't plan to support SuperAG features for now. You can
+get a mode similar to TURBO by using 40MHz bwmode.
+
 .. _`ath5k_driver_mode`:
 
 enum ath5k_driver_mode
@@ -921,6 +991,52 @@ Note
 
 Some platforms can't handle more than 4Bytes
 be careful on embedded boards.
+
+.. _`rate-codes`:
+
+Rate codes
+==========
+
+Seems the ar5xxx hardware supports up to 32 rates, indexed by 1-32.
+
+The rate code is used to get the RX rate or set the TX rate on the
+hardware descriptors. It is also used for internal modulation control
+and settings.
+
+This is the hardware rate map we are aware of (html unfriendly):
+
+Rate code    Rate (Kbps)
+---------    -----------
+0x01          3000 (XR)
+0x02          1000 (XR)
+0x03           250 (XR)
+0x04 - 05    -Reserved-
+0x06          2000 (XR)
+0x07           500 (XR)
+0x08         48000 (OFDM)
+0x09         24000 (OFDM)
+0x0A         12000 (OFDM)
+0x0B          6000 (OFDM)
+0x0C         54000 (OFDM)
+0x0D         36000 (OFDM)
+0x0E         18000 (OFDM)
+0x0F          9000 (OFDM)
+0x10 - 17    -Reserved-
+0x18         11000L (CCK)
+0x19          5500L (CCK)
+0x1A          2000L (CCK)
+0x1B          1000L (CCK)
+0x1C         11000S (CCK)
+0x1D          5500S (CCK)
+0x1E          2000S (CCK)
+0x1F         -Reserved-
+
+"S" indicates CCK rates with short preamble and "L" with long preamble.
+
+AR5211 has different rate codes for CCK (802.11B) rates. It only uses the
+lowest 4 bits, so they are the same as above with a 0xF mask.
+(0xB, 0xA, 0x9 and 0x8 for 1M, 2M, 5.5M and 11M).
+We handle this in \ :c:func:`ath5k_setup_bands`\ .
 
 .. _`ath5k_int`:
 

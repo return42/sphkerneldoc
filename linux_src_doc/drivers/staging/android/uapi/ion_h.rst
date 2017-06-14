@@ -60,6 +60,14 @@ ION_FLAG_CACHED
 
     the lower 16 bits are used by core ion, the upper 16 bits are reserved for use by the heaps themselves.
 
+.. _`ion-userspace-api`:
+
+Ion Userspace API
+=================
+
+create a client by opening /dev/ion
+most operations handled via following ioctls
+
 .. _`ion_allocation_data`:
 
 struct ion_allocation_data
@@ -202,6 +210,40 @@ reserved1
 
 reserved2
     *undescribed*
+
+.. _`ion_ioc_alloc---allocate-memory`:
+
+ION_IOC_ALLOC - allocate memory
+===============================
+
+Takes an ion_allocation_data struct and returns it with the handle field
+populated with the opaque handle for the allocation.
+
+.. _`ion_ioc_free---free-memory`:
+
+ION_IOC_FREE - free memory
+==========================
+
+Takes an ion_handle_data struct and frees the handle.
+
+.. _`ion_ioc_share---creates-a-file-descriptor-to-use-to-share-an-allocation`:
+
+ION_IOC_SHARE - creates a file descriptor to use to share an allocation
+=======================================================================
+
+Takes an ion_fd_data struct with the handle field populated with a valid
+opaque handle.  Returns the struct with the fd field set to a file
+descriptor open in the current address space.  This file descriptor
+can then be passed to another process.  The corresponding opaque handle can
+be retrieved via ION_IOC_IMPORT.
+
+.. _`ion_ioc_heap_query---information-about-available-heaps`:
+
+ION_IOC_HEAP_QUERY - information about available heaps
+======================================================
+
+Takes an ion_heap_query structure and populates information about
+available Ion heaps.
 
 .. This file was automatic generated / don't edit.
 

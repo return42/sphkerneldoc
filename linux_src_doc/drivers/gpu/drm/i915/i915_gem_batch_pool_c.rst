@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem_batch_pool.c
 
+.. _`batch-pool`:
+
+batch pool
+==========
+
+In order to submit batch buffers as 'secure', the software command parser
+must ensure that a batch buffer cannot be modified after parsing. It does
+this by copying the user provided batch buffer contents to a kernel owned
+buffer from which the hardware will actually execute, and by carefully
+managing the address space bindings for such buffers.
+
+The batch pool framework provides a mechanism for the driver to manage a
+set of scratch buffers to use for this purpose. The framework can be
+extended to support other uses cases should they arise.
+
 .. _`i915_gem_batch_pool_init`:
 
 i915_gem_batch_pool_init

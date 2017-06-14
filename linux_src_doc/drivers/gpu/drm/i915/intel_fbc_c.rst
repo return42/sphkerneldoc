@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_fbc.c
 
+.. _`frame-buffer-compression--fbc-`:
+
+Frame Buffer Compression (FBC)
+==============================
+
+FBC tries to save memory bandwidth (and so power consumption) by
+compressing the amount of memory used by the display. It is total
+transparent to user space and completely handled in the kernel.
+
+The benefits of FBC are mostly visible with solid backgrounds and
+variation-less patterns. It comes from keeping the memory footprint small
+and having fewer memory pages opened and accessed for refreshing the display.
+
+i915 is responsible to reserve stolen memory for FBC and configure its
+offset on proper registers. The hardware takes care of all
+compress/decompress. However there are many known cases where we have to
+forcibly disable it to allow proper screen updates.
+
 .. _`intel_fbc_is_active`:
 
 intel_fbc_is_active

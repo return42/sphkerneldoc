@@ -1,6 +1,52 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/intel/iwlwifi/iwl-trans.h
 
+.. _`transport-layer---what-is-it--`:
+
+Transport layer - what is it ?
+==============================
+
+The transport layer is the layer that deals with the HW directly. It provides
+an abstraction of the underlying HW to the upper layer. The transport layer
+doesn't provide any policy, algorithm or anything of this kind, but only
+mechanisms to make the HW do something. It is not completely stateless but
+close to it.
+We will have an implementation for each different supported bus.
+
+.. _`life-cycle-of-the-transport-layer`:
+
+Life cycle of the transport layer
+=================================
+
+The transport layer has a very precise life cycle.
+
+1) A helper function is called during the module initialization and
+registers the bus driver's ops with the transport's alloc function.
+2) Bus's probe calls to the transport layer's allocation functions.
+Of course this function is bus specific.
+3) This allocation functions will spawn the upper layer which will
+register mac80211.
+
+4) At some point (i.e. mac80211's start call), the op_mode will call
+the following sequence:
+start_hw
+start_fw
+
+5) Then when finished (or reset):
+stop_device
+
+6) Eventually, the free function will be called.
+
+.. _`host-command-section`:
+
+Host command section
+====================
+
+A host command is a command issued by the upper layer to the fw. There are
+several versions of fw that have several APIs. The transport layer is
+completely agnostic to these differences.
+The transport does provide helper functionality (i.e. SYNC / ASYNC mode),
+
 .. _`iwl_cmd_header`:
 
 struct iwl_cmd_header
@@ -780,6 +826,42 @@ IWL_TRANS_NO_FW
 
 IWL_TRANS_FW_ALIVE
     a fw has sent an alive response
+
+.. _`platform-power-management`:
+
+Platform power management
+=========================
+
+There are two types of platform power management: system-wide
+(WoWLAN) and runtime.
+
+In system-wide power management the entire platform goes into a low
+power state (e.g. idle or suspend to RAM) at the same time and the
+device is configured as a wakeup source for the entire platform.
+This is usually triggered by userspace activity (e.g. the user
+presses the suspend button or a power management daemon decides to
+put the platform in low power mode).  The device's behavior in this
+mode is dictated by the wake-on-WLAN configuration.
+
+In runtime power management, only the devices which are themselves
+idle enter a low power state.  This is done at runtime, which means
+that the entire system is still running normally.  This mode is
+usually triggered automatically by the device driver and requires
+the ability to enter and exit the low power modes in a very short
+time, so there is not much impact in usability.
+
+The terms used for the device's behavior are as follows:
+
+- D0: the device is fully powered and the host is awake;
+- D3: the device is in low power mode and only reacts to
+specific events (e.g. magic-packet received or scan
+results found);
+- D0I3: the device is in low power mode and reacts to any
+activity (e.g. RX);
+
+These terms reflect the power modes in the firmware and are not to
+be confused with the physical device power state.  The NIC can be
+in D0I3 mode even if, for instance, the PCI device is in D3 state.
 
 .. _`iwl_plat_pm_mode`:
 

@@ -1,6 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_connector.c
 
+.. _`overview`:
+
+overview
+========
+
+In DRM connectors are the general abstraction for display sinks, and include
+als fixed panels or anything else that can display pixels in some form. As
+opposed to all other KMS objects representing hardware (like CRTC, encoder or
+plane abstractions) connectors can be hotplugged and unplugged at runtime.
+Hence they are reference-counted using \ :c:func:`drm_connector_get`\  and
+\ :c:func:`drm_connector_put`\ .
+
+KMS driver must create, initialize, register and attach at a \ :c:type:`struct drm_connector <drm_connector>`\  for each such sink. The instance is created as other KMS
+objects and initialized by setting the following fields. The connector is
+initialized with a call to \ :c:func:`drm_connector_init`\  with a pointer to the
+\ :c:type:`struct drm_connector_funcs <drm_connector_funcs>`\  and a connector type, and then exposed to
+userspace with a call to \ :c:func:`drm_connector_register`\ .
+
+Connectors must be attached to an encoder to be used. For devices that map
+connectors to encoders 1:1, the connector should be attached at
+initialization time with a call to \ :c:func:`drm_mode_connector_attach_encoder`\ . The
+driver must also set the \ :c:type:`drm_connector.encoder <drm_connector>`\  field to point to the
+attached encoder.
+
+For connectors which are not fixed (like built-in panels) the driver needs to
+support hotplug notifications. The simplest way to do that is by using the
+probe helpers, see \ :c:func:`drm_kms_helper_poll_init`\  for connectors which don't have
+hardware support for hotplug interrupts. Connectors with hardware hotplug
+support can instead use e.g. \ :c:func:`drm_helper_hpd_irq_event`\ .
+
 .. _`drm_connector_get_cmdline_mode`:
 
 drm_connector_get_cmdline_mode
@@ -308,6 +338,56 @@ Store the supported bus formats in display info structure.
 See MEDIA_BUS_FMT_* definitions in include/uapi/linux/media-bus-format.h for
 a full list of available formats.
 
+.. _`standard-connector-properties`:
+
+standard connector properties
+=============================
+
+DRM connectors have a few standardized properties:
+
+EDID:
+     Blob property which contains the current EDID read from the sink. This
+     is useful to parse sink identification information like vendor, model
+     and serial. Drivers should update this property by calling
+     \ :c:func:`drm_mode_connector_update_edid_property`\ , usually after having parsed
+     the EDID using \ :c:func:`drm_add_edid_modes`\ . Userspace cannot change this
+     property.
+DPMS:
+     Legacy property for setting the power state of the connector. For atomic
+     drivers this is only provided for backwards compatibility with existing
+     drivers, it remaps to controlling the "ACTIVE" property on the CRTC the
+     connector is linked to. Drivers should never set this property directly,
+     it is handled by the DRM core by calling the \ :c:type:`drm_connector_funcs.dpms <drm_connector_funcs>`\ 
+     callback. Atomic drivers should implement this hook using
+     \ :c:func:`drm_atomic_helper_connector_dpms`\ . This is the only property standard
+     connector property that userspace can change.
+PATH:
+     Connector path property to identify how this sink is physically
+     connected. Used by DP MST. This should be set by calling
+     \ :c:func:`drm_mode_connector_set_path_property`\ , in the case of DP MST with the
+     path property the MST manager created. Userspace cannot change this
+     property.
+TILE:
+     Connector tile group property to indicate how a set of DRM connector
+     compose together into one logical screen. This is used by both high-res
+     external screens (often only using a single cable, but exposing multiple
+     DP MST sinks), or high-res integrated panels (like dual-link DSI) which
+     are not gen-locked. Note that for tiled panels which are genlocked, like
+     dual-link LVDS or dual-link DSI, the driver should try to not expose the
+     tiling and virtualize both \ :c:type:`struct drm_crtc <drm_crtc>`\  and \ :c:type:`struct drm_plane <drm_plane>`\  if needed. Drivers
+     should update this value using \ :c:func:`drm_mode_connector_set_tile_property`\ .
+     Userspace cannot change this property.
+link-status:
+     Connector link-status property to indicate the status of link. The default
+     value of link-status is "GOOD". If something fails during or after modeset,
+     the kernel driver may set this to "BAD" and issue a hotplug uevent. Drivers
+     should update this value using \ :c:func:`drm_mode_connector_set_link_status_property`\ .
+
+Connectors also have one standardized atomic property:
+
+CRTC_ID:
+     Mode object ID of the \ :c:type:`struct drm_crtc <drm_crtc>`\  this connector should be connected to.
+
 .. _`drm_mode_create_dvi_i_properties`:
 
 drm_mode_create_dvi_i_properties
@@ -549,6 +629,19 @@ re-training a link) without userspace's intervention.
 The reason for adding this property is to handle link training failures, but
 it is not limited to DP or link training. For example, if we implement
 asynchronous setcrtc, this property can be used to report any failures in that.
+
+.. _`tile-group`:
+
+Tile group
+==========
+
+Tile groups are used to represent tiled monitors with a unique integer
+identifier. Tiled monitors using DisplayID v1.3 have a unique 8-byte handle,
+we store this in a tile group, so we have a common identifier for all tiles
+in a monitor group. The property is called "TILE". Drivers can manage tile
+groups using \ :c:func:`drm_mode_create_tile_group`\ , \ :c:func:`drm_mode_put_tile_group`\  and
+\ :c:func:`drm_mode_get_tile_group`\ . But this is only needed for internal panels where
+the tile group information is exposed through a non-standard way.
 
 .. _`drm_mode_put_tile_group`:
 

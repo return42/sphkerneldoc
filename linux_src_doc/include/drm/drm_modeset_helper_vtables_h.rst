@@ -1,6 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/drm_modeset_helper_vtables.h
 
+.. _`overview`:
+
+overview
+========
+
+The DRM mode setting helper functions are common code for drivers to use if
+they wish.  Drivers are not forced to use this code in their
+implementations but it would be useful if the code they do use at least
+provides a consistent interface and operation to userspace. Therefore it is
+highly recommended to use the provided helpers as much as possible.
+
+Because there is only one pointer per modeset object to hold a vfunc table
+for helper libraries they are by necessity shared among the different
+helpers.
+
+To make this clear all the helper vtables are pulled together in this location here.
+
 .. _`drm_crtc_helper_funcs`:
 
 struct drm_crtc_helper_funcs

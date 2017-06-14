@@ -1,6 +1,38 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_crtc_helper.c
 
+.. _`overview`:
+
+overview
+========
+
+The CRTC modeset helper library provides a default set_config implementation
+in \ :c:func:`drm_crtc_helper_set_config`\ . Plus a few other convenience functions using
+the same callbacks which drivers can use to e.g. restore the modeset
+configuration on resume with \ :c:func:`drm_helper_resume_force_mode`\ .
+
+Note that this helper library doesn't track the current power state of CRTCs
+and encoders. It can call callbacks like \ :c:type:`drm_encoder_helper_funcs.dpms <drm_encoder_helper_funcs>`\  even
+though the hardware is already in the desired state. This deficiency has been
+fixed in the atomic helpers.
+
+The driver callbacks are mostly compatible with the atomic modeset helpers,
+except for the handling of the primary plane: Atomic helpers require that the
+primary plane is implemented as a real standalone plane and not directly tied
+to the CRTC state. For easier transition this library provides functions to
+implement the old semantics required by the CRTC helpers using the new plane
+and atomic helper callbacks.
+
+Drivers are strongly urged to convert to the atomic helpers (by way of first
+converting to the plane helpers). New drivers must not use these functions
+but need to implement the atomic interface instead, potentially using the
+atomic helpers for that.
+
+These legacy modeset helpers use the same function table structures as
+all other modesetting helpers. See the documentation for struct
+\ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`\ , \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\  and struct
+\ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`\ .
+
 .. _`drm_helper_encoder_in_use`:
 
 drm_helper_encoder_in_use

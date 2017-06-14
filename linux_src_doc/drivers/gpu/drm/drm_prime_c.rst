@@ -50,6 +50,29 @@ must use this in their dma_buf ops structure as the release callback.
 \ :c:func:`drm_gem_dmabuf_release`\  should be used in conjunction with
 \ :c:func:`drm_gem_dmabuf_export`\ .
 
+.. _`prime-helpers`:
+
+PRIME Helpers
+=============
+
+Drivers can implement \ ``gem_prime_export``\  and \ ``gem_prime_import``\  in terms of
+simpler APIs by using the helper functions \ ``drm_gem_prime_export``\  and
+\ ``drm_gem_prime_import``\ .  These functions implement dma-buf support in terms of
+six lower-level driver callbacks:
+
+Export callbacks:
+
+ * \ ``gem_prime_pin``\  (optional): prepare a GEM object for exporting
+ * \ ``gem_prime_get_sg_table``\ : provide a scatter/gather table of pinned pages
+ * \ ``gem_prime_vmap``\ : vmap a buffer exported by your driver
+ * \ ``gem_prime_vunmap``\ : vunmap a buffer exported by your driver
+ * \ ``gem_prime_mmap``\  (optional): mmap a buffer exported by your driver
+
+Import callback:
+
+ * \ ``gem_prime_import_sg_table``\  (import): produce a GEM object from another
+   driver's scatter/gather table
+
 .. _`drm_gem_prime_export`:
 
 drm_gem_prime_export

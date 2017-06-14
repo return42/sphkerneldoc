@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_panel.c
 
+.. _`drm-panel`:
+
+drm panel
+=========
+
+The DRM panel helpers allow drivers to register panel objects with a
+central registry and provide functions to retrieve those panels in display
+drivers.
+
 .. _`drm_panel_init`:
 
 drm_panel_init

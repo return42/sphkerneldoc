@@ -175,6 +175,14 @@ reqsize
 base
     Common crypto API algorithm data structure
 
+.. _`generic-public-key-api`:
+
+Generic Public Key API
+======================
+
+The Public Key API is used with the algorithms of type
+CRYPTO_ALG_TYPE_AKCIPHER (listed as type "akcipher" in /proc/crypto)
+
 .. _`crypto_alloc_akcipher`:
 
 crypto_alloc_akcipher

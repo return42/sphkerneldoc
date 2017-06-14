@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_plane_helper.c
 
+.. _`overview`:
+
+overview
+========
+
+This helper library has two parts. The first part has support to implement
+primary plane support on top of the normal CRTC configuration interface.
+Since the legacy \ :c:type:`drm_mode_config_funcs.set_config <drm_mode_config_funcs>`\  interface ties the primary
+plane together with the CRTC state this does not allow userspace to disable
+the primary plane itself.  To avoid too much duplicated code use
+\ :c:func:`drm_plane_helper_check_update`\  which can be used to enforce the same
+restrictions as primary planes had thus. The default primary plane only
+expose XRBG8888 and ARGB8888 as valid pixel formats for the attached
+framebuffer.
+
+Drivers are highly recommended to implement proper support for primary
+planes, and newly merged drivers must not rely upon these transitional
+helpers.
+
+The second part also implements transitional helpers which allow drivers to
+gradually switch to the atomic helper infrastructure for plane updates. Once
+that switch is complete drivers shouldn't use these any longer, instead using
+the proper legacy implementations for update and disable plane hooks provided
+by the atomic helpers.
+
+Again drivers are strongly urged to switch to the new interfaces.
+
+The plane helpers share the function table structures with other helpers,
+specifically also the atomic helpers. See \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  for
+the details.
+
 .. _`drm_plane_helper_check_state`:
 
 drm_plane_helper_check_state

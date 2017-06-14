@@ -1,6 +1,78 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_blend.c
 
+.. _`overview`:
+
+overview
+========
+
+The basic plane composition model supported by standard plane properties only
+has a source rectangle (in logical pixels within the \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ ), with
+sub-pixel accuracy, which is scaled up to a pixel-aligned destination
+rectangle in the visible area of a \ :c:type:`struct drm_crtc <drm_crtc>`\ . The visible area of a CRTC is
+defined by the horizontal and vertical visible pixels (stored in \ ``hdisplay``\ 
+and \ ``vdisplay``\ ) of the requested mode (stored in \ :c:type:`drm_crtc_state.mode <drm_crtc_state>`\ ). These
+two rectangles are both stored in the \ :c:type:`struct drm_plane_state <drm_plane_state>`\ .
+
+For the atomic ioctl the following standard (atomic) properties on the plane object
+encode the basic plane composition model:
+
+SRC_X:
+     X coordinate offset for the source rectangle within the
+     \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ , in 16.16 fixed point. Must be positive.
+SRC_Y:
+     Y coordinate offset for the source rectangle within the
+     \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ , in 16.16 fixed point. Must be positive.
+SRC_W:
+     Width for the source rectangle within the \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ , in 16.16
+     fixed point. SRC_X plus SRC_W must be within the width of the source
+     framebuffer. Must be positive.
+SRC_H:
+     Height for the source rectangle within the \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ , in 16.16
+     fixed point. SRC_Y plus SRC_H must be within the height of the source
+     framebuffer. Must be positive.
+CRTC_X:
+     X coordinate offset for the destination rectangle. Can be negative.
+CRTC_Y:
+     Y coordinate offset for the destination rectangle. Can be negative.
+CRTC_W:
+     Width for the destination rectangle. CRTC_X plus CRTC_W can extend past
+     the currently visible horizontal area of the \ :c:type:`struct drm_crtc <drm_crtc>`\ .
+CRTC_H:
+     Height for the destination rectangle. CRTC_Y plus CRTC_H can extend past
+     the currently visible vertical area of the \ :c:type:`struct drm_crtc <drm_crtc>`\ .
+FB_ID:
+     Mode object ID of the \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  this plane should scan out.
+CRTC_ID:
+     Mode object ID of the \ :c:type:`struct drm_crtc <drm_crtc>`\  this plane should be connected to.
+
+Note that the source rectangle must fully lie within the bounds of the
+\ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ . The destination rectangle can lie outside of the visible
+area of the current mode of the CRTC. It must be apprpriately clipped by the
+driver, which can be done by calling \ :c:func:`drm_plane_helper_check_update`\ . Drivers
+are also allowed to round the subpixel sampling positions appropriately, but
+only to the next full pixel. No pixel outside of the source rectangle may
+ever be sampled, which is important when applying more sophisticated
+filtering than just a bilinear one when scaling. The filtering mode when
+scaling is unspecified.
+
+On top of this basic transformation additional properties can be exposed by
+the driver:
+
+- Rotation is set up with \ :c:func:`drm_plane_create_rotation_property`\ . It adds a
+  rotation and reflection step between the source and destination rectangles.
+  Without this property the rectangle is only scaled, but not rotated or
+  reflected.
+
+- Z position is set up with \ :c:func:`drm_plane_create_zpos_immutable_property`\  and
+  \ :c:func:`drm_plane_create_zpos_property`\ . It controls the visibility of overlapping
+  planes. Without this property the primary plane is always below the cursor
+  plane, and ordering between all other planes is undefined.
+
+Note that all the property extensions described here apply either to the
+plane or the CRTC (e.g. for the background color, which currently is not
+exposed and assumed to be black).
+
 .. _`drm_plane_create_rotation_property`:
 
 drm_plane_create_rotation_property

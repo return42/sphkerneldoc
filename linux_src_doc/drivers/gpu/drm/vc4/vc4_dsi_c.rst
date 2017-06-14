@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/vc4/vc4_dsi.c
 
+.. _`vc4-dsi0-dsi1-module`:
+
+VC4 DSI0/DSI1 module
+====================
+
+BCM2835 contains two DSI modules, DSI0 and DSI1.  DSI0 is a
+single-lane DSI controller, while DSI1 is a more modern 4-lane DSI
+controller.
+
+Most Raspberry Pi boards expose DSI1 as their "DISPLAY" connector,
+while the compute module brings both DSI0 and DSI1 out.
+
+This driver has been tested for DSI1 video-mode display only
+currently, with most of the information necessary for DSI0
+hopefully present.
+
 .. _`vc4_dsi_init_phy_clocks`:
 
 vc4_dsi_init_phy_clocks

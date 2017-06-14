@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_irq.c
 
+.. _`interrupt-handling`:
+
+interrupt handling
+==================
+
+These functions provide the basic support for enabling and disabling the
+interrupt handling support. There's a lot more functionality in i915_irq.c
+and related files, but that will be described in separate chapters.
+
 .. _`i915_hotplug_interrupt_update`:
 
 i915_hotplug_interrupt_update

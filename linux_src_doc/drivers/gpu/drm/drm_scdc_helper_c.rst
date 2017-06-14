@@ -1,6 +1,16 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_scdc_helper.c
 
+.. _`scdc-helpers`:
+
+scdc helpers
+============
+
+Status and Control Data Channel (SCDC) is a mechanism introduced by the
+HDMI 2.0 specification. It is a point-to-point protocol that allows the
+HDMI source and HDMI sink to exchange data. The same I2C interface that
+is used to access EDID serves as the transport mechanism for SCDC.
+
 .. _`drm_scdc_read`:
 
 drm_scdc_read

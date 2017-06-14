@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/dma-buf/reservation.c
 
+.. _`reservation-object-overview`:
+
+Reservation Object Overview
+===========================
+
+The reservation object provides a mechanism to manage shared and
+exclusive fences associated with a buffer.  A reservation object
+can have attached one exclusive fence (normally associated with
+write operations) or N shared fences (read operations).  The RCU
+mechanism is used to protect read access to fences from locked
+write-side updates.
+
 .. _`reservation_object_reserve_shared`:
 
 reservation_object_reserve_shared

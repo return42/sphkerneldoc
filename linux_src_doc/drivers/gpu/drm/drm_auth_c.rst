@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_auth.c
 
+.. _`master-and-authentication`:
+
+master and authentication
+=========================
+
+&struct drm_master is used to track groups of clients with open
+primary/legacy device nodes. For every \ :c:type:`struct drm_file <drm_file>`\  which has had at
+least once successfully became the device master (either through the
+SET_MASTER IOCTL, or implicitly through opening the primary device node when
+no one else is the current master that time) there exists one \ :c:type:`struct drm_master <drm_master>`\ .
+This is noted in \ :c:type:`drm_file.is_master <drm_file>`\ . All other clients have just a pointer
+to the \ :c:type:`struct drm_master <drm_master>`\  they are associated with.
+
+In addition only one \ :c:type:`struct drm_master <drm_master>`\  can be the current master for a \ :c:type:`struct drm_device <drm_device>`\ .
+It can be switched through the DROP_MASTER and SET_MASTER IOCTL, or
+implicitly through closing/openeing the primary device node. See also
+\ :c:func:`drm_is_current_master`\ .
+
+Clients can authenticate against the current master (if it matches their own)
+using the GETMAGIC and AUTHMAGIC IOCTLs. Together with exchanging masters,
+this allows controlled access to the device for an entire group of mutually
+trusted clients.
+
 .. _`drm_is_current_master`:
 
 drm_is_current_master

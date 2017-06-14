@@ -1,6 +1,54 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_hotplug.c
 
+.. _`hotplug`:
+
+Hotplug
+=======
+
+Simply put, hotplug occurs when a display is connected to or disconnected
+from the system. However, there may be adapters and docking stations and
+Display Port short pulses and MST devices involved, complicating matters.
+
+Hotplug in i915 is handled in many different levels of abstraction.
+
+The platform dependent interrupt handling code in i915_irq.c enables,
+disables, and does preliminary handling of the interrupts. The interrupt
+handlers gather the hotplug detect (HPD) information from relevant registers
+into a platform independent mask of hotplug pins that have fired.
+
+The platform independent interrupt handler \ :c:func:`intel_hpd_irq_handler`\  in
+intel_hotplug.c does hotplug irq storm detection and mitigation, and passes
+further processing to appropriate bottom halves (Display Port specific and
+regular hotplug).
+
+The Display Port work function \ :c:func:`i915_digport_work_func`\  calls into
+\ :c:func:`intel_dp_hpd_pulse`\  via hooks, which handles DP short pulses and DP MST long
+pulses, with failures and non-MST long pulses triggering regular hotplug
+processing on the connector.
+
+The regular hotplug work function \ :c:func:`i915_hotplug_work_func`\  calls connector
+detect hooks, and, if connector status changes, triggers sending of hotplug
+uevent to userspace via \ :c:func:`drm_kms_helper_hotplug_event`\ .
+
+Finally, the userspace is responsible for triggering a modeset upon receiving
+the hotplug uevent, disabling or enabling the crtc as needed.
+
+The hotplug interrupt storm detection and mitigation code keeps track of the
+number of interrupts per hotplug pin per a period of time, and if the number
+of interrupts exceeds a certain threshold, the interrupt is disabled for a
+while before being re-enabled. The intention is to mitigate issues raising
+from broken hardware triggering massive amounts of interrupts and grinding
+the system to a halt.
+
+Current implementation expects that hotplug interrupt storm will not be
+seen when display port sink is connected, hence on platforms whose DP
+callback is handled by i915_digport_work_func reenabling of hpd is not
+performed (it was never expected to be disabled in the first place ;) )
+this is specific to DP sinks handled by this routine and any other display
+such as HDMI or DVI enabled on the same port will have proper logic since
+it will use i915_hotplug_work_func where this logic is handled.
+
 .. _`intel_hpd_irq_storm_detect`:
 
 intel_hpd_irq_storm_detect

@@ -45,6 +45,25 @@ Description
 The next call to \ :c:func:`idr_alloc_cyclic`\  will return \ ``val``\  if it is free
 (otherwise the search will start from this position).
 
+.. _`idr-sync`:
+
+idr sync
+========
+
+idr synchronization (stolen from radix-tree.h)
+
+\ :c:func:`idr_find`\  is able to be called locklessly, using RCU. The caller must
+ensure calls to this function are made within \ :c:func:`rcu_read_lock`\  regions.
+Other readers (lock-free or otherwise) and modifications may be running
+concurrently.
+
+It is still required that the caller manage the synchronization and
+lifetimes of the items. So if RCU lock-free lookups are used, typically
+this would mean that the items have their own locks, or are amenable to
+lock-free access; and that the items are freed by RCU (or only freed after
+having been deleted from the idr tree *and* a \ :c:func:`synchronize_rcu`\  grace
+period).
+
 .. _`idr_preload_end`:
 
 idr_preload_end

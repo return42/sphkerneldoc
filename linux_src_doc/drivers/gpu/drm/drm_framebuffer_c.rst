@@ -1,6 +1,41 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_framebuffer.c
 
+.. _`overview`:
+
+overview
+========
+
+Frame buffers are abstract memory objects that provide a source of pixels to
+scanout to a CRTC. Applications explicitly request the creation of frame
+buffers through the DRM_IOCTL_MODE_ADDFB(2) ioctls and receive an opaque
+handle that can be passed to the KMS CRTC control, plane configuration and
+page flip functions.
+
+Frame buffers rely on the underlying memory manager for allocating backing
+storage. When creating a frame buffer applications pass a memory handle
+(or a list of memory handles for multi-planar formats) through the
+\ :c:type:`struct drm_mode_fb_cmd2 <drm_mode_fb_cmd2>`\  argument. For drivers using GEM as their userspace
+buffer management interface this would be a GEM handle.  Drivers are however
+free to use their own backing storage object handles, e.g. vmwgfx directly
+exposes special TTM handles to userspace and so expects TTM handles in the
+create ioctl and not GEM handles.
+
+Framebuffers are tracked with \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ . They are published
+using \ :c:func:`drm_framebuffer_init`\  - after calling that function userspace can use
+and access the framebuffer object. The helper function
+\ :c:func:`drm_helper_mode_fill_fb_struct`\  can be used to pre-fill the required
+metadata fields.
+
+The lifetime of a drm framebuffer is controlled with a reference count,
+drivers can grab additional references with \ :c:func:`drm_framebuffer_get`\  and drop
+them again with \ :c:func:`drm_framebuffer_put`\ . For driver-private framebuffers for
+which the last reference is never dropped (e.g. for the fbdev framebuffer
+when the struct \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  is embedded into the fbdev helper
+struct) drivers can manually clean up a framebuffer at module unload time
+with \ :c:func:`drm_framebuffer_unregister_private`\ . But doing this is not
+recommended, and it's better to have a normal free-standing \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
+
 .. _`drm_mode_addfb`:
 
 drm_mode_addfb

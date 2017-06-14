@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/crypto/ecdh.h
 
+.. _`ecdh-helper-functions`:
+
+ECDH Helper Functions
+=====================
+
+To use ECDH with the KPP cipher API, the following data structure and
+functions should be used.
+
+The ECC curves known to the ECDH implementation are specified in this
+header file.
+
+To use ECDH with KPP, the following functions should be used to operate on
+an ECDH private key. The packet private key that can be set with
+the KPP API function call of crypto_kpp_set_secret.
+
 .. _`ecdh`:
 
 struct ecdh

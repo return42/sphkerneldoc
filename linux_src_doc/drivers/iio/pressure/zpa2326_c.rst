@@ -1,6 +1,51 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iio/pressure/zpa2326.c
 
+.. _`zpa2326-theory-of-operations`:
+
+ZPA2326 theory of operations
+============================
+
+This driver supports \ ``INDIO_DIRECT_MODE``\  and \ ``INDIO_BUFFER_TRIGGERED``\  IIO
+modes.
+A internal hardware trigger is also implemented to dispatch registered IIO
+trigger consumers upon "sample ready" interrupts.
+
+ZPA2326 hardware supports 2 sampling mode: one shot and continuous.
+
+A complete one shot sampling cycle gets device out of low power mode,
+performs pressure and temperature measurements, then automatically switches
+back to low power mode. It is meant for on demand sampling with optimal power
+saving at the cost of lower sampling rate and higher software overhead.
+This is a natural candidate for IIO read_raw hook implementation
+(%INDIO_DIRECT_MODE). It is also used for triggered buffering support to
+ensure explicit synchronization with external trigger events
+(%INDIO_BUFFER_TRIGGERED).
+
+The continuous mode works according to a periodic hardware measurement
+process continuously pushing samples into an internal hardware FIFO (for
+pressure samples only). Measurement cycle completion may be signaled by a
+"sample ready" interrupt.
+Typical software sequence of operations :
+- get device out of low power mode,
+- setup hardware sampling period,
+- at end of period, upon data ready interrupt: pop pressure samples out of
+hardware FIFO and fetch temperature sample
+- when no longer needed, stop sampling process by putting device into
+low power mode.
+This mode is used to implement \ ``INDIO_BUFFER_TRIGGERED``\  mode if device tree
+declares a valid interrupt line. In this case, the internal hardware trigger
+drives acquisition.
+
+Note that hardware sampling frequency is taken into account only when
+internal hardware trigger is attached as the highest sampling rate seems to
+be the most energy efficient.
+
+TODO:
+preset pressure threshold crossing / IIO events ;
+differential pressure sampling ;
+hardware samples averaging.
+
 .. _`zpa2326_frequency`:
 
 struct zpa2326_frequency

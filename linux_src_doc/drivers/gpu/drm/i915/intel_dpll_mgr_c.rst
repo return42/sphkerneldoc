@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_dpll_mgr.c
 
+.. _`display-plls`:
+
+Display PLLs
+============
+
+Display PLLs used for driving outputs vary by platform. While some have
+per-pipe or per-encoder dedicated PLLs, others allow the use of any PLL
+from a pool. In the latter scenario, it is possible that multiple pipes
+share a PLL if their configurations match.
+
+This file provides an abstraction over display PLLs. The function
+\ :c:func:`intel_shared_dpll_init`\  initializes the PLLs for the given platform.  The
+users of a PLL are tracked and that tracking is integrated with the atomic
+modest interface. During an atomic operation, a PLL can be requested for a
+given CRTC and encoder configuration by calling \ :c:func:`intel_get_shared_dpll`\  and
+a previously used PLL can be released with \ :c:func:`intel_release_shared_dpll`\ .
+Changes to the users are first staged in the atomic state, and then made
+effective by calling \ :c:func:`intel_shared_dpll_swap_state`\  during the atomic
+commit phase.
+
 .. _`intel_get_shared_dpll_by_id`:
 
 intel_get_shared_dpll_by_id

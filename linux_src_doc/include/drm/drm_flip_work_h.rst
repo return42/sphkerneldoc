@@ -1,6 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/drm_flip_work.h
 
+.. _`flip-utils`:
+
+flip utils
+==========
+
+Util to queue up work to run from work-queue context after flip/vblank.
+Typically this can be used to defer unref of framebuffer's, cursor
+bo's, etc until after vblank.  The APIs are all thread-safe.
+Moreover, drm_flip_work_queue_task and drm_flip_work_queue can be called
+in atomic context.
+
 .. _`drm_flip_task`:
 
 struct drm_flip_task

@@ -51,5 +51,16 @@ pde_get_multiple
     :param u32 tolerance:
         *undescribed*
 
+.. _`singleton-pulse-and-sequence-pools`:
+
+Singleton Pulse and Sequence Pools
+==================================
+
+Instances of pri_sequence and pulse_elem are kept in singleton pools to
+reduce the number of dynamic allocations. They are shared between all
+instances and grow up to the peak number of simultaneously used objects.
+
+Memory is freed after all references to the pools are released.
+
 .. This file was automatic generated / don't edit.
 

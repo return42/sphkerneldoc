@@ -1,6 +1,71 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/sfc/vfdi.h
 
+.. _`virtual-function-driver-interface`:
+
+Virtual Function Driver Interface
+=================================
+
+This file contains software structures used to form a two way
+communication channel between the VF driver and the PF driver,
+named Virtual Function Driver Interface (VFDI).
+
+For the purposes of VFDI, a page is a memory region with size and
+alignment of 4K.  All addresses are DMA addresses to be used within
+the domain of the relevant VF.
+
+The only hardware-defined channels for a VF driver to communicate
+with the PF driver are the event mailboxes (%FR_CZ_USR_EV
+registers).  Writing to these registers generates an event with
+EV_CODE = EV_CODE_USR_EV, USER_QID set to the index of the mailbox
+and USER_EV_REG_VALUE set to the value written.  The PF driver may
+direct or disable delivery of these events by setting
+\ ``FR_CZ_USR_EV_CFG``\ .
+
+The PF driver can send arbitrary events to arbitrary event queues.
+However, for consistency, VFDI events from the PF are defined to
+follow the same form and be sent to the first event queue assigned
+to the VF while that queue is enabled by the VF driver.
+
+The general form of the variable bits of VFDI events is:
+
+0             16                       24   31
+\| DATA        \| TYPE                   \| SEQ   \|
+
+SEQ is a sequence number which should be incremented by 1 (modulo
+256) for each event.  The sequence numbers used in each direction
+are independent.
+
+The VF submits requests of type \ :c:type:`struct vfdi_req <vfdi_req>`\  by sending the
+address of the request (ADDR) in a series of 4 events:
+
+0             16                       24   31
+\| ADDR[0:15]  \| VFDI_EV_TYPE_REQ_WORD0 \| SEQ   \|
+\| ADDR[16:31] \| VFDI_EV_TYPE_REQ_WORD1 \| SEQ+1 \|
+\| ADDR[32:47] \| VFDI_EV_TYPE_REQ_WORD2 \| SEQ+2 \|
+\| ADDR[48:63] \| VFDI_EV_TYPE_REQ_WORD3 \| SEQ+3 \|
+
+The address must be page-aligned.  After receiving such a valid
+series of events, the PF driver will attempt to read the request
+and write a response to the same address.  In case of an invalid
+sequence of events or a DMA error, there will be no response.
+
+The VF driver may request that the PF driver writes status
+information into its domain asynchronously.  After writing the
+status, the PF driver will send an event of the form:
+
+0             16                       24   31
+\| reserved    \| VFDI_EV_TYPE_STATUS    \| SEQ   \|
+
+In case the VF must be reset for any reason, the PF driver will
+send an event of the form:
+
+0             16                       24   31
+\| reserved    \| VFDI_EV_TYPE_RESET     \| SEQ   \|
+
+It is then the responsibility of the VF driver to request
+reinitialisation of its queues.
+
 .. _`vfdi_op`:
 
 enum vfdi_op

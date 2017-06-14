@@ -1,6 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_modeset_helper.c
 
+.. _`aux-kms-helpers`:
+
+aux kms helpers
+===============
+
+This helper library contains various one-off functions which don't really fit
+anywhere else in the DRM modeset helper library.
+
 .. _`drm_helper_move_panel_connectors_to_head`:
 
 drm_helper_move_panel_connectors_to_head

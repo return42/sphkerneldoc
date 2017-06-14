@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_atomic.c
 
+.. _`atomic-modeset-support`:
+
+atomic modeset support
+======================
+
+The functions here implement the state management and hardware programming
+dispatch required by the atomic modeset infrastructure.
+See intel_atomic_plane.c for the plane-specific atomic functionality.
+
 .. _`intel_connector_atomic_get_property`:
 
 intel_connector_atomic_get_property

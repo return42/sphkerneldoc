@@ -1,6 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/tinydrm/mipi-dbi.c
 
+.. _`overview`:
+
+overview
+========
+
+This library provides helpers for MIPI Display Bus Interface (DBI)
+compatible display controllers.
+
+Many controllers for tiny lcd displays are MIPI compliant and can use this
+library. If a controller uses registers 0x2A and 0x2B to set the area to
+update and uses register 0x2C to write to frame memory, it is most likely
+MIPI compliant.
+
+Only MIPI Type 1 displays are supported since a full frame memory is needed.
+
+There are 3 MIPI DBI implementation types:
+
+A. Motorola 6800 type parallel bus
+
+B. Intel 8080 type parallel bus
+
+C. SPI type with 3 options:
+
+   1. 9-bit with the Data/Command signal as the ninth bit
+   2. Same as above except it's sent as 16 bits
+   3. 8-bit with the Data/Command signal as a separate D/CX pin
+
+Currently mipi_dbi only supports Type C options 1 and 3 with
+\ :c:func:`mipi_dbi_spi_init`\ .
+
 .. _`mipi_dbi_command_read`:
 
 mipi_dbi_command_read

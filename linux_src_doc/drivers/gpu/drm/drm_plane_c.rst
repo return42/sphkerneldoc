@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_plane.c
 
+.. _`overview`:
+
+overview
+========
+
+A plane represents an image source that can be blended with or overlayed on
+top of a CRTC during the scanout process. Planes take their input data from a
+\ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  object. The plane itself specifies the cropping and scaling
+of that image, and where it is placed on the visible are of a display
+pipeline, represented by \ :c:type:`struct drm_crtc <drm_crtc>`\ . A plane can also have additional
+properties that specify how the pixels are positioned and blended, like
+rotation or Z-position. All these properties are stored in \ :c:type:`struct drm_plane_state <drm_plane_state>`\ .
+
+To create a plane, a KMS drivers allocates and zeroes an instances of
+\ :c:type:`struct drm_plane <drm_plane>`\  (possibly as part of a larger structure) and registers it
+with a call to \ :c:func:`drm_universal_plane_init`\ .
+
+Cursor and overlay planes are optional. All drivers should provide one
+primary plane per CRTC to avoid surprising userspace too much. See enum
+drm_plane_type for a more in-depth discussion of these special uapi-relevant
+plane types. Special planes are associated with their CRTC by calling
+\ :c:func:`drm_crtc_init_with_planes`\ .
+
+The type of a plane is exposed in the immutable "type" enumeration property,
+which has one of the following values: "Overlay", "Primary", "Cursor".
+
 .. _`drm_universal_plane_init`:
 
 drm_universal_plane_init

@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/crypto.h
 
+.. _`block-cipher-context-data-structures`:
+
+Block Cipher Context Data Structures
+====================================
+
+These data structures define the operating context for each block cipher
+type.
+
+.. _`block-cipher-algorithm-definitions`:
+
+Block Cipher Algorithm Definitions
+==================================
+
+These data structures define modular crypto algorithm implementations,
+managed via \ :c:func:`crypto_register_alg`\  and \ :c:func:`crypto_unregister_alg`\ .
+
 .. _`ablkcipher_alg`:
 
 struct ablkcipher_alg
@@ -401,6 +417,37 @@ The struct crypto_alg describes a generic Crypto API algorithm and is common
 for all of the transformations. Any variable not documented here shall not
 be used by a cipher implementation as it is internal to the Crypto API.
 
+.. _`asynchronous-block-cipher-api`:
+
+Asynchronous Block Cipher API
+=============================
+
+Asynchronous block cipher API is used with the ciphers of type
+CRYPTO_ALG_TYPE_ABLKCIPHER (listed as type "ablkcipher" in /proc/crypto).
+
+Asynchronous cipher operations imply that the function invocation for a
+cipher request returns immediately before the completion of the operation.
+The cipher request is scheduled as a separate kernel thread and therefore
+load-balanced on the different CPUs via the process scheduler. To allow
+the kernel crypto API to inform the caller about the completion of a cipher
+request, the caller must provide a callback function. That function is
+invoked with the cipher handle when the request completes.
+
+To support the asynchronous operation, additional information than just the
+cipher handle must be supplied to the kernel crypto API. That additional
+information is given by filling in the ablkcipher_request data structure.
+
+For the asynchronous block cipher API, the state is maintained with the tfm
+cipher handle. A single tfm can be used across multiple calls and in
+parallel. For asynchronous block cipher calls, context data supplied and
+only used by the caller can be referenced the request data structure in
+addition to the IV used for the cipher request. The maintenance of such
+state information would be important for a crypto driver implementer to
+have, because when calling the callback function upon completion of the
+cipher operation, that callback function may need some information about
+which operation just finished if it invoked multiple in parallel. This
+state information is unused by the kernel crypto API.
+
 .. _`crypto_free_ablkcipher`:
 
 crypto_free_ablkcipher
@@ -618,6 +665,18 @@ Return
 
 0 if the cipher operation was successful; < 0 if an error occurred
 
+.. _`asynchronous-cipher-request-handle`:
+
+Asynchronous Cipher Request Handle
+==================================
+
+The ablkcipher_request data structure contains all pointers to data
+required for the asynchronous cipher operation. This includes the cipher
+handle (which can be used by multiple ablkcipher_request instances), pointer
+to plaintext and ciphertext, asynchronous callback function, etc. It acts
+as a handle to the ablkcipher_request_* API calls in a similar way as
+ablkcipher handle to the crypto_ablkcipher_* API calls.
+
 .. _`crypto_ablkcipher_reqsize`:
 
 crypto_ablkcipher_reqsize
@@ -783,6 +842,37 @@ scatter / gather lists.
 For encryption, the source is treated as the plaintext and the
 destination is the ciphertext. For a decryption operation, the use is
 reversed - the source is the ciphertext and the destination is the plaintext.
+
+.. _`synchronous-block-cipher-api`:
+
+Synchronous Block Cipher API
+============================
+
+The synchronous block cipher API is used with the ciphers of type
+CRYPTO_ALG_TYPE_BLKCIPHER (listed as type "blkcipher" in /proc/crypto)
+
+Synchronous calls, have a context in the tfm. But since a single tfm can be
+used in multiple calls and in parallel, this info should not be changeable
+(unless a lock is used). This applies, for example, to the symmetric key.
+However, the IV is changeable, so there is an iv field in blkcipher_tfm
+structure for synchronous blkcipher api. So, its the only state info that can
+be kept for synchronous calls without using a big lock across a tfm.
+
+The block cipher API allows the use of a complete cipher, i.e. a cipher
+consisting of a template (a block chaining mode) and a single block cipher
+primitive (e.g. AES).
+
+The plaintext data buffer and the ciphertext data buffer are pointed to
+by using scatter/gather lists. The cipher operation is performed
+on all segments of the provided scatter/gather lists.
+
+The kernel crypto API supports a cipher operation "in-place" which means that
+the caller may provide the same scatter/gather list for the plaintext and
+cipher text. After the completion of the cipher operation, the plaintext
+data is replaced with the ciphertext data in case of an encryption and vice
+versa for a decryption. The caller must ensure that the scatter/gather lists
+for the output data point to sufficiently large buffers, i.e. multiples of
+the block size of the cipher.
 
 .. _`crypto_alloc_blkcipher`:
 
@@ -1188,6 +1278,24 @@ Description
 The caller can obtain the IV set for the block cipher referenced by the
 cipher handle and store it into the user-provided buffer. If the buffer
 has an insufficient space, the IV is truncated to fit the buffer.
+
+.. _`single-block-cipher-api`:
+
+Single Block Cipher API
+=======================
+
+The single block cipher API is used with the ciphers of type
+CRYPTO_ALG_TYPE_CIPHER (listed as type "cipher" in /proc/crypto).
+
+Using the single block cipher API calls, operations with the basic cipher
+primitive can be implemented. These cipher primitives exclude any block
+chaining operations including IV handling.
+
+The purpose of this single block cipher API is to support the implementation
+of templates or other concepts that only need to perform the cipher operation
+on one block at a time. Templates invoke the underlying cipher primitive
+block-wise and process either the input or the output data of these cipher
+operations.
 
 .. _`crypto_alloc_cipher`:
 

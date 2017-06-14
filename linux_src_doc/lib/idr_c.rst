@@ -169,6 +169,32 @@ Return
 0 on success.  \ ``-ENOENT``\  indicates that \ ``id``\  was not found.
 \ ``-EINVAL``\  indicates that \ ``id``\  or \ ``ptr``\  were not valid.
 
+.. _`ida-description`:
+
+IDA description
+===============
+
+The IDA is an ID allocator which does not provide the ability to
+associate an ID with a pointer.  As such, it only needs to store one
+bit per ID, and so is more space efficient than an IDR.  To use an IDA,
+define it using \ :c:func:`DEFINE_IDA`\  (or embed a \ :c:type:`struct ida <ida>`\  in a data structure,
+then initialise it using \ :c:func:`ida_init`\ ).  To allocate a new ID, call
+\ :c:func:`ida_simple_get`\ .  To free an ID, call \ :c:func:`ida_simple_remove`\ .
+
+If you have more complex locking requirements, use a loop around
+\ :c:func:`ida_pre_get`\  and \ :c:func:`ida_get_new`\  to allocate a new ID.  Then use
+\ :c:func:`ida_remove`\  to free an ID.  You must make sure that \ :c:func:`ida_get_new`\  and
+\ :c:func:`ida_remove`\  cannot be called at the same time as each other for the
+same IDA.
+
+You can also use \ :c:func:`ida_get_new_above`\  if you need an ID to be allocated
+above a particular number.  \ :c:func:`ida_destroy`\  can be used to dispose of an
+IDA without needing to free the individual IDs in it.  You can use
+\ :c:func:`ida_is_empty`\  to find out whether the IDA has any IDs currently allocated.
+
+IDs are currently limited to the range [0-INT_MAX].  If this is an awkward
+limitation, it should be quite straightforward to raise the maximum.
+
 .. _`ida_get_new_above`:
 
 ida_get_new_above

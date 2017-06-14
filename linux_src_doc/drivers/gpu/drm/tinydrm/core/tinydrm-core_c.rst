@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/tinydrm/core/tinydrm-core.c
 
+.. _`overview`:
+
+overview
+========
+
+This library provides driver helpers for very simple display hardware.
+
+It is based on \ :c:type:`struct drm_simple_display_pipe <drm_simple_display_pipe>`\  coupled with a \ :c:type:`struct drm_connector <drm_connector>`\  which
+has only one fixed \ :c:type:`struct drm_display_mode <drm_display_mode>`\ . The framebuffers are backed by the
+cma helper and have support for framebuffer flushing (dirty).
+fbdev support is also included.
+
+.. _`core`:
+
+core
+====
+
+The driver allocates \ :c:type:`struct tinydrm_device <tinydrm_device>`\ , initializes it using
+\ :c:func:`devm_tinydrm_init`\ , sets up the pipeline using \ :c:func:`tinydrm_display_pipe_init`\ 
+and registers the DRM device using \ :c:func:`devm_tinydrm_register`\ .
+
 .. _`tinydrm_lastclose`:
 
 tinydrm_lastclose

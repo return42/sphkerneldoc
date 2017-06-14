@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_bridge.c
 
+.. _`overview`:
+
+overview
+========
+
+&struct drm_bridge represents a device that hangs on to an encoder. These are
+handy when a regular \ :c:type:`struct drm_encoder <drm_encoder>`\  entity isn't enough to represent the entire
+encoder chain.
+
+A bridge is always attached to a single \ :c:type:`struct drm_encoder <drm_encoder>`\  at a time, but can be
+either connected to it directly, or through an intermediate bridge::
+
+    encoder ---> bridge B ---> bridge A
+
+Here, the output of the encoder feeds to bridge B, and that furthers feeds to
+bridge A.
+
+The driver using the bridge is responsible to make the associations between
+the encoder and bridges. Once these links are made, the bridges will
+participate along with encoder functions to perform mode_set/enable/disable
+through the ops provided in \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\ .
+
+drm_bridge, like drm_panel, aren't drm_mode_object entities like planes,
+CRTCs, encoders or connectors and hence are not visible to userspace. They
+just provide additional hooks to get the desired output at the end of the
+encoder chain.
+
+Bridges can also be chained up using the \ :c:type:`drm_bridge.next <drm_bridge>`\  pointer.
+
+Both legacy CRTC helpers and the new atomic modeset helpers support bridges.
+
 .. _`drm_bridge_add`:
 
 drm_bridge_add
@@ -69,6 +100,18 @@ Return
 ------
 
 Zero on success, error code on failure
+
+.. _`bridge-callbacks`:
+
+bridge callbacks
+================
+
+The \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  ops are populated by the bridge driver. The DRM
+internals (atomic and CRTC helpers) use the helpers defined in drm_bridge.c
+These helpers call a specific \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges
+during encoder configuration.
+
+For detailed specification of the bridge callbacks see \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\ .
 
 .. _`drm_bridge_mode_fixup`:
 

@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_guc_loader.c
 
+.. _`guc-specific-firmware-loader`:
+
+GuC-specific firmware loader
+============================
+
+intel_guc:
+Top level structure of guc. It handles firmware loading and manages client
+pool and doorbells. intel_guc owns a i915_guc_client to replace the legacy
+ExecList submission.
+
+Firmware versioning:
+The firmware build process will generate a version header file with major and
+minor version defined. The versions are built into CSS header of firmware.
+i915 kernel driver set the minimal firmware version required per platform.
+The firmware installation package will install (symbolic link) proper version
+of firmware.
+
+GuC address space:
+GuC does not allow any gfx GGTT address that falls into range [0, WOPCM_TOP),
+which is reserved for Boot ROM, SRAM and WOPCM. Currently this top address is
+512K. In order to exclude 0-512K address space from GGTT, all gfx objects
+used by GuC is pinned with PIN_OFFSET_BIAS along with size of WOPCM.
+
 .. _`intel_guc_init_hw`:
 
 intel_guc_init_hw

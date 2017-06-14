@@ -1,6 +1,66 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_cmd_parser.c
 
+.. _`batch-buffer-command-parser`:
+
+batch buffer command parser
+===========================
+
+Motivation:
+Certain OpenGL features (e.g. transform feedback, performance monitoring)
+require userspace code to submit batches containing commands such as
+MI_LOAD_REGISTER_IMM to access various registers. Unfortunately, some
+generations of the hardware will noop these commands in "unsecure" batches
+(which includes all userspace batches submitted via i915) even though the
+commands may be safe and represent the intended programming model of the
+device.
+
+The software command parser is similar in operation to the command parsing
+done in hardware for unsecure batches. However, the software parser allows
+some operations that would be noop'd by hardware, if the parser determines
+the operation is safe, and submits the batch as "secure" to prevent hardware
+parsing.
+
+Threats:
+At a high level, the hardware (and software) checks attempt to prevent
+granting userspace undue privileges. There are three categories of privilege.
+
+First, commands which are explicitly defined as privileged or which should
+only be used by the kernel driver. The parser generally rejects such
+commands, though it may allow some from the drm master process.
+
+Second, commands which access registers. To support correct/enhanced
+userspace functionality, particularly certain OpenGL extensions, the parser
+provides a whitelist of registers which userspace may safely access (for both
+normal and drm master processes).
+
+Third, commands which access privileged memory (i.e. GGTT, HWS page, etc).
+The parser always rejects such commands.
+
+The majority of the problematic commands fall in the MI_* range, with only a
+few specific commands on each engine (e.g. PIPE_CONTROL and MI_FLUSH_DW).
+
+Implementation:
+Each engine maintains tables of commands and registers which the parser
+uses in scanning batch buffers submitted to that engine.
+
+Since the set of commands that the parser must check for is significantly
+smaller than the number of commands supported, the parser tables contain only
+those commands required by the parser. This generally works because command
+opcode ranges have standard command length encodings. So for commands that
+the parser does not need to check, it can easily skip them. This is
+implemented via a per-engine length decoding vfunc.
+
+Unfortunately, there are a number of commands that do not follow the standard
+length encoding for their opcode range, primarily amongst the MI_* commands.
+To handle this, the parser provides a way to define explicit "skip" entries
+in the per-engine command tables.
+
+Other command table entries map fairly directly to high level categories
+mentioned above: rejected, master-only, register whitelist. The parser
+implements a number of checks, including the privileged memory checks, via a
+general bitmasking mechanism.
+
 .. _`intel_engine_init_cmd_parser`:
 
 intel_engine_init_cmd_parser

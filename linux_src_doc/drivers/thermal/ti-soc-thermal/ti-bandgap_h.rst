@@ -1,6 +1,49 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/thermal/ti-soc-thermal/ti-bandgap.h
 
+.. _`bandgap-driver-data-structure`:
+
+bandgap driver data structure
+=============================
+
+==================================
+
++----------+----------------+
+\| struct temp_sensor_regval \|
++---------------------------+
+\* (Array of)
+\|
+\|
++-------------------+   +-----------------+
+\| struct ti_bandgap \|-->\| struct device \* \|
++----------+--------+   +-----------------+
+\|
+\|
+V
++------------------------+
+\| struct ti_bandgap_data \|
++------------------------+
+\|
+\|
+\* (Array of)
++------------+------------------------------------------------------+
+\| +----------+------------+   +-------------------------+           \|
+\| \| struct ti_temp_sensor \|-->\| struct temp_sensor_data \|           \|
+\| +-----------------------+   +------------+------------+           \|
+\|            \|                                                      \|
+\|            +                                                      \|
+\|            V                                                      \|
+\| +----------+-------------------+                                  \|
+\| \| struct temp_sensor_registers \|                                  \|
+\| +------------------------------+                                  \|
+\|                                                                   \|
++-------------------------------------------------------------------+
+
+Above is a simple diagram describing how the data structure below
+are organized. For each bandgap device there should be a ti_bandgap_data
+containing the device instance configuration, as well as, an array of
+sensors, representing every sensor instance present in this bandgap.
+
 .. _`temp_sensor_registers`:
 
 struct temp_sensor_registers
@@ -456,6 +499,53 @@ It should provide configuration details on this sensor, such as how to
 access the registers affecting this sensor, shadow register buffer, how to
 assess the gradient from hotspot, how to cooldown the domain when sensor
 reports too hot temperature.
+
+.. _`ti-bandgap-feature-types`:
+
+ti bandgap feature types
+========================
+
+TI_BANDGAP_FEATURE_TSHUT - used when the thermal shutdown signal output
+of a bandgap device instance is routed to the processor. This means
+the system must react and perform the shutdown by itself (handle an
+IRQ, for instance).
+
+TI_BANDGAP_FEATURE_TSHUT_CONFIG - used when the bandgap device has control
+over the thermal shutdown configuration. This means that the thermal
+shutdown thresholds are programmable, for instance.
+
+TI_BANDGAP_FEATURE_TALERT - used when the bandgap device instance outputs
+a signal representing violation of programmable alert thresholds.
+
+TI_BANDGAP_FEATURE_MODE_CONFIG - used when it is possible to choose which
+mode, continuous or one shot, the bandgap device instance will operate.
+
+TI_BANDGAP_FEATURE_COUNTER - used when the bandgap device instance allows
+programming the update interval of its internal state machine.
+
+TI_BANDGAP_FEATURE_POWER_SWITCH - used when the bandgap device allows
+itself to be switched on/off.
+
+TI_BANDGAP_FEATURE_CLK_CTRL - used when the clocks feeding the bandgap
+device are gateable or not.
+
+TI_BANDGAP_FEATURE_FREEZE_BIT - used when the bandgap device features
+a history buffer that its update can be freezed/unfreezed.
+
+TI_BANDGAP_FEATURE_COUNTER_DELAY - used when the bandgap device features
+a delay programming based on distinct values.
+
+TI_BANDGAP_FEATURE_HISTORY_BUFFER - used when the bandgap device features
+a history buffer of temperatures.
+
+TI_BANDGAP_FEATURE_ERRATA_814 - used to workaorund when the bandgap device
+has Errata 814
+TI_BANDGAP_FEATURE_ERRATA_813 - used to workaorund when the bandgap device
+has Errata 813
+TI_BANDGAP_FEATURE_UNRELIABLE - used when the sensor readings are too
+inaccurate.
+TI_BANDGAP_HAS(b, f) - macro to check if a bandgap device is capable of a
+specific feature (above) or not. Return non-zero, if yes.
 
 .. _`ti_bandgap_data`:
 

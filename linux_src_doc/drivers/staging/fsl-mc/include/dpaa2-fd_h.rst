@@ -1,6 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/fsl-mc/include/dpaa2-fd.h
 
+.. _`dpaa2-fd---frame-descriptor-apis-for-dpaa2`:
+
+DPAA2 FD - Frame Descriptor APIs for DPAA2
+==========================================
+
+Frame Descriptors (FDs) are used to describe frame data in the DPAA2.
+Frames can be enqueued and dequeued to Frame Queues (FQs) which are consumed
+by the various DPAA accelerators (WRIOP, SEC, PME, DCE)
+
+There are three types of frames: single, scatter gather, and frame lists.
+
+The set of APIs in this file must be used to create, manipulate and
+query Frame Descriptors.
+
 .. _`dpaa2_fd`:
 
 struct dpaa2_fd

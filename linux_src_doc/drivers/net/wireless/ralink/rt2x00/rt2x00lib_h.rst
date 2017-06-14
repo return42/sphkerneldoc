@@ -1,6 +1,13 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ralink/rt2x00/rt2x00lib.h
 
+.. _`queue-handlers`:
+
+Queue handlers
+==============
+
+
+
 .. _`rt2x00queue_alloc_rxskb`:
 
 rt2x00queue_alloc_rxskb

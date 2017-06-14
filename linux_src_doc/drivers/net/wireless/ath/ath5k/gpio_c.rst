@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/ath/ath5k/gpio.c
 
+.. _`gpio-led-functions`:
+
+GPIO/LED functions
+==================
+
+Here we control the 6 bidirectional GPIO pins provided by the hw.
+We can set a GPIO pin to be an input or an output pin on GPIO control
+register and then read or set its status from GPIO data input/output
+registers.
+
+We also control the two LED pins provided by the hw, LED_0 is our
+"power" LED and LED_1 is our "network activity" LED but many scenarios
+are available from hw. Vendors might also provide LEDs connected to the
+GPIO pins, we handle them through the LED subsystem on led.c
+
 .. _`ath5k_hw_set_ledstate`:
 
 ath5k_hw_set_ledstate

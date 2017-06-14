@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/clk-gpio.c
 
+.. _`basic-gpio-gated-clock-which-can-be-enabled-and-disabled`:
+
+basic gpio gated clock which can be enabled and disabled
+========================================================
+
+with gpio output
+Traits of this clock:
+prepare - clk_(un)prepare only ensures parent is (un)prepared
+enable - clk_enable and clk_disable are functional & control gpio
+rate - inherits rate from parent.  No clk_set_rate support
+parent - fixed parent.  No clk_set_parent support
+
+.. _`basic-clock-multiplexer-which-can-be-controlled-with-a-gpio-output`:
+
+basic clock multiplexer which can be controlled with a gpio output
+==================================================================
+
+Traits of this clock:
+prepare - clk_prepare only ensures that parents are prepared
+rate - rate is only affected by parent switching.  No clk_set_rate support
+parent - parent is adjustable through clk_set_parent
+
 .. _`clk_hw_register_gpio_gate`:
 
 clk_hw_register_gpio_gate

@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/vc4/vc4_kms.c
 
+.. _`vc4-kms`:
+
+VC4 KMS
+=======
+
+This is the general code for implementing KMS mode setting that
+doesn't clearly associate with any of the other objects (plane,
+crtc, HDMI encoder).
+
 .. _`vc4_atomic_commit`:
 
 vc4_atomic_commit

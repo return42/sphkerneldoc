@@ -1,6 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/mpt.h
 
+.. _`hypervisor-service-apis-for-gvt-g-core-logic`:
+
+Hypervisor Service APIs for GVT-g Core Logic
+============================================
+
+This is the glue layer between specific hypervisor MPT modules and GVT-g core
+logic. Each kind of hypervisor MPT module provides a collection of function
+callbacks and will be attached to GVT host when the driver is loading.
+GVT-g core logic will call these APIs to request specific services from
+hypervisor.
+
 .. _`intel_gvt_hypervisor_host_init`:
 
 intel_gvt_hypervisor_host_init
