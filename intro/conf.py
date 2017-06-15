@@ -25,10 +25,12 @@ project   = u'kernel-doc HOWTO'
 copyright = u'2016, Linux documentation authors'
 author    = u'Linux contributors'
 
-intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/', None)
-intersphinx_mapping['template-book'] = ('https://return42.github.io/sphkerneldoc/books/template-book/', None)
 intersphinx_mapping['linuxdoc'] =  ('https://return42.github.io/linuxdoc', None)
 intersphinx_mapping['dbxml2rst'] =  ('https://return42.github.io/dbxml2rst', None)
+
+intersphinx_mapping['linux'] = ('https://h2626237.stratoserver.net/kernel/linux_src_doc/', None)
+intersphinx_mapping['kernel-doc'] = ('https://h2626237.stratoserver.net/kernel/books/kernel-doc-HOWTO', None)
+intersphinx_mapping['template-book'] = ('https://h2626237.stratoserver.net/kernel/books/template-book/', None)
 
 # ------------------------------------------------------------------------------
 # Options for HTML output

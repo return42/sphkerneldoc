@@ -28,7 +28,15 @@ project   = u'Template Book'
 copyright = u'2016, The kernel development community'
 author    = u'The kernel development community'
 
-intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/', None)
+# Intersphinx
+# -----------
+#
+# usage:  lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
+
+# since https://h2626237.stratoserver.net/ is self-signed, disable tls verify
+tls_verify = False
+
+intersphinx_mapping['kernel-doc'] = ('https://h2626237.stratoserver.net/kernel/books/kernel-doc-HOWTO', None)
 intersphinx_mapping['sphkerneldoc'] = ('https://h2626237.stratoserver.net/kernel/', None)
 
 # ------------------------------------------------------------------------------

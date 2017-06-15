@@ -123,8 +123,15 @@ extlinks = {
 #
 # usage:  lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
 
+# since https://h2626237.stratoserver.net/ is self-signed, disable tls verify
+tls_verify = False
+
 intersphinx_mapping = {}
-intersphinx_mapping['linux'] = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
+#intersphinx_mapping['linuxdoc'] =  ('https://return42.github.io/linuxdoc', None)
+#intersphinx_mapping['dbxml2rst'] =  ('https://return42.github.io/dbxml2rst', None)
+intersphinx_mapping['linux'] = ('https://h2626237.stratoserver.net/kernel/linux_src_doc/', None)
+#intersphinx_mapping['kernel-doc'] = ('https://h2626237.stratoserver.net/kernel/books/kernel-doc-HOWTO', None)
+#intersphinx_mapping['template-book'] = ('https://h2626237.stratoserver.net/kernel/books/template-book/', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom

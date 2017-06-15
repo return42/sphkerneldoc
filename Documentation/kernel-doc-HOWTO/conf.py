@@ -32,6 +32,6 @@ author    = u'Linux contributors'
 # Output file base name for HTML help builder.
 htmlhelp_basename = main_name
 
-intersphinx_mapping['template-book'] = ('https://return42.github.io/sphkerneldoc/books/template-book/', None)
+intersphinx_mapping['template-book'] = ('https://h2626237.stratoserver.net/kernel/books/template-book/', None)
 intersphinx_mapping['linuxdoc'] =  ('https://return42.github.io/linuxdoc', None)
 intersphinx_mapping['dbxml2rst'] =  ('https://return42.github.io/dbxml2rst', None)
