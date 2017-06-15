@@ -21,7 +21,7 @@
 # General configuration
 # ------------------------------------------------------------------------------
 
-project   = u'kernel-doc HOWTO'
+project   = u'POC'
 copyright = u'2016, Linux documentation authors'
 author    = u'Linux contributors'
 

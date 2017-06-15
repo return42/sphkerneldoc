@@ -1,9 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. include:: refs.txt
 
+.. _linux-doc-intro-site:
+
 ================================================================================
                           Linux Kernel's documentation
 ================================================================================
+
+.. hint::
+
+   See :ref:`[ref] <concept-thematic-areas>` about the concept behind this
+   intro page. About man page see :ref:`[ref] <concept-man-pages>`.
+
 
 User-oriented documentation
 ---------------------------
@@ -45,12 +53,8 @@ merged much easier.
 * `Kernel Hacking Guides <books/kernel-hacking/index.html>`_
   (`pdf <books/kernel-hacking/pdf>`__, `man <books/kernel-hacking/man>`__)
 
-The following 2 or 3 documents are a part of this POC / take it as a *prospect*
-;-) ... it is not, of "what" the kernel community has unified (`ref
-<books/doc-guide/index.html>`__)!
-
-* `kernel-doc HOWTO <books/kernel-doc-HOWTO/index.html>`_
-  (`pdf <books/kernel-doc-HOWTO/pdf>`__, `man <books/kernel-doc-HOWTO/man>`__)
+The following is a part of this POC it is not, of "what" the kernel community
+has unified / take it as a *prospect* ;-)
 
 * `template book <books/template-book/index.html>`_
   (`pdf <books/template-book/pdf>`__, `man <books/template-book/man>`__)

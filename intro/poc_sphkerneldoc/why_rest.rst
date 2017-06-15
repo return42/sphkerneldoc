@@ -31,8 +31,8 @@ Reasons to migrate to reST + Sphinx-Doc
 * `sphinx-doc`_ is widely used and the tools are well maintained. `sphinx-doc`_
   is less academical and has down-to-earth answers where DocBook and it's
   toolchains often fails. E.g. sphinx has *built-in* search-page, automatic
-  indices, a code highlighter a solution for :ref:`cross_references` and much
-  more.
+  indices, a code highlighter a solution for :ref:`concept-cross-references` and
+  much more.
 
 * ASCII markup is already in the source-code comments. reST markup extends the
   existing markup ability while existing toolchains can be further used. The

@@ -130,6 +130,7 @@ intersphinx_mapping = {}
 #intersphinx_mapping['linuxdoc'] =  ('https://return42.github.io/linuxdoc', None)
 #intersphinx_mapping['dbxml2rst'] =  ('https://return42.github.io/dbxml2rst', None)
 intersphinx_mapping['linux'] = ('https://h2626237.stratoserver.net/kernel/linux_src_doc/', None)
+intersphinx_mapping['process'] = ('https://h2626237.stratoserver.net/kernel/books/process', None)
 #intersphinx_mapping['kernel-doc'] = ('https://h2626237.stratoserver.net/kernel/books/kernel-doc-HOWTO', None)
 #intersphinx_mapping['template-book'] = ('https://h2626237.stratoserver.net/kernel/books/template-book/', None)
 

@@ -15,7 +15,7 @@ FONTSIZE  := 11
 #export DOCCLASS  := darmarITArticle
 export DOCCLASS  := manual
 
-srctree=/share/linux-docs-next
+srctree ?= /share/linux-docs-next
 export srctree
 
 # External programs used
