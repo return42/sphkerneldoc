@@ -12,8 +12,11 @@ Concepts of this project
 man pages
 =========
 
-TODO ...
+The :ref:`LinuxDoc project <linuxdoc:linuxdoc>` serves a Sphinx man page builder
+and the kernel-doc parser of this project has a ``:man-sect:`` option. See:
 
+* :ref:`linuxdoc:man-pages`
+* :ref:`kernel-doc :man-sect: option <linuxdoc:kernel-doc-man-pages>`
 
 .. _concept-thematic-areas:
 
