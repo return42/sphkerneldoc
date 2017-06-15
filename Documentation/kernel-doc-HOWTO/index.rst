@@ -12,20 +12,14 @@ also. The building process of the output formats is now based on sphinx-doc_.  A
 new kernel-doc parser extracts the kernel-doc comments from the source files and
 produced reST markup which could be embedded in your documentation.
 
-  The reference implementation of this kernel-doc-HOWTO is available from the
-  :ref:`LinuxDoc project <linuxdoc:linuxdoc>`. The kernel-doc parser supports
-  two parsing modes, one for downward compatibility
-  (:ref:`vintage-kernel-doc-mode`) and one for the upcoming reST markup
-  (:ref:`reST-kernel-doc-mode`).
-
-The examples in this kernel-doc-HOWTO using the kernel-doc comments from the
-example file :ref:`all-in-a-tumble-src`. This file is rendered in the chapter
-:ref:`all-in-a-tumble`.
-
 .. hint::
 
    This kernel-doc-HOWTO is my concept paper and not (yet) a full part of the
-   Linux Kernel source tree.
+   Linux Kernel source tree.  The reference implementation of this
+   kernel-doc-HOWTO is available from the :ref:`LinuxDoc project
+   <linuxdoc:linuxdoc>`.  The examples in this kernel-doc-HOWTO are using the
+   kernel-doc comments from :ref:`kernel-doc-examples`.
+
 
 
 Documentation

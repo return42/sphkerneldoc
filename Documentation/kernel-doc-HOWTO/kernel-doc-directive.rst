@@ -27,6 +27,7 @@ inserted direct under the chapter "My Media Book". The "DOC:" sections, the func
 and the type descriptions will be inserted in the order they appear in the source file.
 Mostly you want to select more fine grained, read on to see how.
 
+
 kernel-doc options
 ==================
 
@@ -88,7 +89,6 @@ these options make sense:
     used as a prefix for automatic generated IDs (reference anchors).
 
 ``man-sect <sect-no>``
-
   Section number of the manual pages (see man man-pages). The man-pages are build
   by the ``kernel-doc-man`` builder.
 
@@ -110,6 +110,9 @@ these options make sense:
     helpful to see how the kernel-doc parser transforms the kernel-doc markup to
     reST markup.
 
+
+.. _kernel-doc-doc-section:
+
 documentation blocks
 ====================
 
@@ -130,6 +133,8 @@ With the module name "example" the title refers by:
 
 Rendered example: :ref:`example.theory-of-operation`
 
+.. _kernel-doc-functions:
+
 functions
 =========
 
@@ -149,6 +154,11 @@ The following example inserts the documentation of struct 'user_function'.
 * Rendered example by ID with module prefix: :ref:`example.user_function`
 * Function reference: :c:func:`user_function`
 
+
+.. _kernel-doc-structs:
+.. _kernel-doc-unions:
+.. _kernel-doc-enums:
+.. _kernel-doc-typedefs:
 
 structs, unions, enums and typedefs
 ===================================
@@ -171,6 +181,8 @@ The following example inserts the documentation of struct 'my_long_struct'.
 * Type reference: :c:type:`my_long_struct` or the alternativ notation
   with title :c:type:`struct my_long_struct <my_long_struct>`
 
+.. _kernel-doc-export:
+
 exported
 ========
 
@@ -180,6 +192,8 @@ exported
      :export: net/mac80211/*.c
      :module: mac80211
 
+
+.. _kernel-doc-snippets:
 
 Snippets
 ========
@@ -199,6 +213,49 @@ code-snippet below is:
     :snippets:  hello-world
     :language:  c
     :linenos:
+
+
+.. _kernel-doc-man-pages:
+
+man pages
+=========
+
+To get man pages from kernel-doc comments, add the ``:man-sect:`` option to your
+kernel-doc directives. E.g. to get man-pages of media's remote control (file
+``media/kapi/rc-core.rst``) add ``:man-sect: 9`` to all the kernel-doc includes.
+
+.. code-block:: rst
+
+  Remote Controller devices
+  =========================
+
+  Remote Controller core
+  ----------------------
+
+  .. kernel-doc:: include/media/rc-core.h
+     :man-sect: 9
+
+  .. kernel-doc:: include/media/rc-map.h
+     :man-sect: 9
+
+  LIRC
+  ----
+
+  .. kernel-doc:: include/media/lirc_dev.h
+     :man-sect: 9
+
+If you don't want to edit all your kernel-doc directives to get man page from,
+set a global man-sect in your ``conf.py`` (see ``kernel_doc_mansect`` below).
+
+If not already exists, add a man-page target to your Makefile which calls
+sphinx-builder with the kernel-doc-man builder. E.g. in the kernel sources at
+``Documentation/Makefile`` you need something like this::
+
+  mandocs:
+          @$(foreach var,$(SPHINXDIRS),$(call loop_cmd,sphinx,kernel-doc-man,$(var),man,$(var)))
+
+
+.. _kernel-doc-config:
 
 kernel-doc config
 =================

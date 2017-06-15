@@ -62,7 +62,7 @@ and parses comments from ``all-in-a-tumble.c``.
 
     .. kernel-doc::  ./all-in-a-tumble.c
         :export:  ./all-in-a-tumble.h
-        :module: example
+        :module: test-example
         :man-sect: 2
 
 .. admonition:: exported symbols
@@ -70,7 +70,7 @@ and parses comments from ``all-in-a-tumble.c``.
 
     .. kernel-doc::  ./all-in-a-tumble.c
         :export:  ./all-in-a-tumble.h
-        :module: example
+        :module: test-example
         :man-sect: 2
 
 
@@ -85,14 +85,14 @@ exported* definitions are used in the reST output:
 
     .. kernel-doc::  ./all-in-a-tumble.c
         :internal:  ./all-in-a-tumble.h
-        :module: example
+        :module: additional-tests
 
 .. admonition:: internal symbols
     :class: rst-example
 
     .. kernel-doc::  ./all-in-a-tumble.c
         :internal:  ./all-in-a-tumble.h
-        :module: example
+        :module: additional-tests
 
 
 Missing exports

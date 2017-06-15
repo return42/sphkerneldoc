@@ -3,12 +3,20 @@
 
 .. _all-in-a-tumble-src:
 
-===============================
-source of ``all-in-a-tumble.h``
-===============================
+==================================
+source of ``all-in-a-tumble.[ch]``
+==================================
+
+Below you find the *source code* of the example file ``all-in-a-tumble.c``.
+
+.. literalinclude:: ./all-in-a-tumble.c
+   :language: c
+   :linenos:
+
 
 Below you find the *source code* of the example file ``all-in-a-tumble.h``.
 
 .. literalinclude:: ./all-in-a-tumble.h
-   :linenos:
    :language: c
+   :linenos:
+
