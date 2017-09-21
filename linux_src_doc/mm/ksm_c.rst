@@ -106,6 +106,8 @@ Definition
 
     struct stable_node {
         union {unnamed_union};
+        struct hlist_head hlist;
+        union {unnamed_union};
     #define STABLE_NODE_CHAIN -1024
         int rmap_hlist_len;
     #ifdef CONFIG_NUMA
@@ -117,6 +119,13 @@ Definition
 
 Members
 -------
+
+{unnamed_union}
+    anonymous
+
+
+hlist
+    hlist head of rmap_items using this ksm page
 
 {unnamed_union}
     anonymous
@@ -147,6 +156,10 @@ Definition
     struct rmap_item {
         struct rmap_item *rmap_list;
         union {unnamed_union};
+        struct mm_struct *mm;
+        unsigned long address;
+        unsigned int oldchecksum;
+        union {unnamed_union};
     }
 
 .. _`rmap_item.members`:
@@ -156,6 +169,19 @@ Members
 
 rmap_list
     next rmap_item in mm_slot's singly-linked rmap_list
+
+{unnamed_union}
+    anonymous
+
+
+mm
+    the memory structure this rmap_item is pointing into
+
+address
+    the virtual address this rmap_item tracks (+ flags in low bits)
+
+oldchecksum
+    previous checksum of the page at that virtual address
 
 {unnamed_union}
     anonymous

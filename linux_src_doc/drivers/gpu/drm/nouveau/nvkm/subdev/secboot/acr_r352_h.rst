@@ -123,7 +123,15 @@ Definition
         struct nvkm_acr base;
         const struct acr_r352_func *func;
         struct nvkm_gpuobj *load_blob;
-        struct falcon_state;
+        struct {unnamed_struct};
+        struct nvkm_gpuobj *unload_blob;
+        struct {unnamed_struct};
+        void *hsbl_blob;
+        void *hsbl_unload_blob;
+        struct nvkm_gpuobj *ls_blob;
+        bool firmware_ok;
+        u32 lazy_bootstrap;
+        enum falcon_state;
     }
 
 .. _`acr_r352.members`:
@@ -138,6 +146,32 @@ func
     *undescribed*
 
 load_blob
+    *undescribed*
+
+{unnamed_struct}
+    anonymous
+
+
+unload_blob
+    *undescribed*
+
+{unnamed_struct}
+    anonymous
+
+
+hsbl_blob
+    *undescribed*
+
+hsbl_unload_blob
+    *undescribed*
+
+ls_blob
+    *undescribed*
+
+firmware_ok
+    *undescribed*
+
+lazy_bootstrap
     *undescribed*
 
 falcon_state

@@ -19,6 +19,28 @@ Definition
 
     struct sock_common {
         union {unnamed_union};
+        union {unnamed_union};
+        union {unnamed_union};
+        unsigned short skc_family;
+        volatile unsigned char skc_state;
+        unsigned char skc_reuse:4;
+        unsigned char skc_reuseport:1;
+        unsigned char skc_ipv6only:1;
+        unsigned char skc_net_refcnt:1;
+        int skc_bound_dev_if;
+        union {unnamed_union};
+        struct proto *skc_prot;
+        possible_net_t skc_net;
+    #if IS_ENABLED(CONFIG_IPV6)
+        struct in6_addr skc_v6_daddr;
+        struct in6_addr skc_v6_rcv_saddr;
+    #endif
+        atomic64_t skc_cookie;
+        union {unnamed_union};
+        union {unnamed_union};
+        int skc_tx_queue_mapping;
+        union {unnamed_union};
+        refcount_t skc_refcnt;
     }
 
 .. _`sock_common.members`:
@@ -29,6 +51,72 @@ Members
 {unnamed_union}
     anonymous
 
+
+{unnamed_union}
+    anonymous
+
+
+{unnamed_union}
+    anonymous
+
+
+skc_family
+    network address family
+
+skc_state
+    Connection state
+
+skc_reuse
+    %SO_REUSEADDR setting
+
+skc_reuseport
+    %SO_REUSEPORT setting
+
+skc_ipv6only
+    *undescribed*
+
+skc_net_refcnt
+    *undescribed*
+
+skc_bound_dev_if
+    bound device index if != 0
+
+{unnamed_union}
+    anonymous
+
+
+skc_prot
+    protocol handlers inside a network family
+
+skc_net
+    reference to the network namespace of this socket
+
+skc_v6_daddr
+    *undescribed*
+
+skc_v6_rcv_saddr
+    *undescribed*
+
+skc_cookie
+    *undescribed*
+
+{unnamed_union}
+    anonymous
+
+
+{unnamed_union}
+    anonymous
+
+
+skc_tx_queue_mapping
+    tx queue number for this connection
+
+{unnamed_union}
+    anonymous
+
+
+skc_refcnt
+    reference count
 
 .. _`sock_common.description`:
 
@@ -90,7 +178,16 @@ Definition
         int sk_rcvlowat;
         struct sk_buff_head sk_error_queue;
         struct sk_buff_head sk_receive_queue;
-        struct {unnamed_struct};
+        struct sk_backlog;
+    #define sk_rmem_alloc sk_backlog.rmem_alloc
+        int sk_forward_alloc;
+    #ifdef CONFIG_NET_RX_BUSY_POLL
+        unsigned int sk_ll_usec;
+        unsigned int sk_napi_id;
+    #endif
+        int sk_rcvbuf;
+        struct sk_filter __rcu *sk_filter;
+        union {unnamed_union};
     #ifdef CONFIG_XFRM
         struct xfrm_policy __rcu  *sk_policy;
     #endif
@@ -197,7 +294,25 @@ sk_error_queue
 sk_receive_queue
     incoming packets
 
-{unnamed_struct}
+sk_backlog
+    always used with the per-socket spinlock held
+
+sk_forward_alloc
+    space allocated forward
+
+sk_ll_usec
+    usecs to busypoll when there is no data
+
+sk_napi_id
+    id of the last napi context to receive data for sk
+
+sk_rcvbuf
+    size of receive buffer in bytes
+
+sk_filter
+    socket filtering instructions
+
+{unnamed_union}
     anonymous
 
 

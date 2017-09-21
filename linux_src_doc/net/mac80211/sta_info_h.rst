@@ -737,6 +737,9 @@ Definition
         unsigned long txq_buffered_tids;
         long last_connected;
         struct ieee80211_sta_rx_stats rx_stats;
+        struct rx_stats_avg;
+        __le16 last_seq_ctrl;
+        struct status_stats;
         struct tx_stats;
         u16 tid_seq;
         struct sta_ampdu_mlme ampdu_mlme;
@@ -861,6 +864,16 @@ last_connected
 
 rx_stats
     RX statistics
+
+rx_stats_avg
+    *undescribed*
+
+last_seq_ctrl
+    last received seq/frag number from this STA (per TID
+    plus one for non-QoS frames)
+
+status_stats
+    TX status statistics
 
 tx_stats
     TX statistics

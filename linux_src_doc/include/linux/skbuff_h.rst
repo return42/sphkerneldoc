@@ -103,6 +103,98 @@ Definition
 
     struct sk_buff {
         union {unnamed_union};
+        struct rb_node rbnode;
+         };
+        struct sock *sk;
+        union {unnamed_union};
+        char cb;
+        unsigned long _skb_refdst;
+        void (*destructor)(struct sk_buff *skb);
+    #ifdef CONFIG_XFRM
+        struct sec_path *sp;
+    #endif
+    #if defined(CONFIG_NF_CONNTRACK) || defined(CONFIG_NF_CONNTRACK_MODULE)
+        unsigned long _nfct;
+    #endif
+    #if IS_ENABLED(CONFIG_BRIDGE_NETFILTER)
+        struct nf_bridge_info *nf_bridge;
+    #endif
+        unsigned int len;
+        unsigned int data_len;
+        __u16 mac_len;
+        __u16 hdr_len;
+        __u16 queue_mapping;
+    #ifdef __BIG_ENDIAN_BITFIELD
+    #define CLONED_MASK (1 << 7)
+    #else
+    #define CLONED_MASK 1
+    #endif
+    #define CLONED_OFFSET() offsetof(struct sk_buff# __cloned_offset)
+        __u8 __cloned_offset;
+        __u8 cloned:1;
+        __u8 nohdr:1:1;
+        __u8 fclone:1:1:2;
+        __u8 peeked:1:1:2:1;
+        __u8 head_frag:1:1:2:1:1;
+        __u8 xmit_more:1:1:2:1:1:1;
+        __u8 __unused:1:1:2:1:1:1:1;
+    #ifdef __BIG_ENDIAN_BITFIELD
+    #define PKT_TYPE_MAX (7 << 5)
+    #else
+    #define PKT_TYPE_MAX 7
+    #endif
+    #define PKT_TYPE_OFFSET() offsetof(struct sk_buff# __pkt_type_offset)
+        __u8 __pkt_type_offset;
+        __u8 pkt_type:3;
+        __u8 pfmemalloc:1;
+        __u8 ignore_df:1;
+        __u8 nf_trace:1;
+        __u8 ip_summed:2;
+        __u8 ooo_okay:1;
+        __u8 l4_hash:1;
+        __u8 sw_hash:1;
+        __u8 wifi_acked_valid:1;
+        __u8 wifi_acked:1;
+        __u8 no_fcs:1;
+        __u8 encapsulation:1;
+        __u8 encap_hdr_csum:1;
+        __u8 csum_valid:1;
+        __u8 csum_complete_sw:1;
+        __u8 csum_level:2;
+        __u8 csum_not_inet:1;
+        __u8 dst_pending_confirm:1;
+    #ifdef CONFIG_IPV6_NDISC_NODETYPE
+        __u8 ndisc_nodetype:2;
+    #endif
+        __u8 ipvs_property:1;
+        __u8 inner_protocol_type:1;
+        __u8 remcsum_offload:1;
+    #ifdef CONFIG_NET_SWITCHDEV
+        __u8 offload_fwd_mark:1;
+    #endif
+    #ifdef CONFIG_NET_CLS_ACT
+        __u8 tc_skip_classify:1;
+        __u8 tc_at_ingress:1;
+        __u8 tc_redirected:1;
+        __u8 tc_from_ingress:1;
+    #endif
+    #ifdef CONFIG_NET_SCHED
+        __u16 tc_index;
+    #endif
+        union {unnamed_union};
+        __u32 priority;
+        int skb_iif;
+        __u32 hash;
+        __be16 vlan_proto;
+        __u16 vlan_tci;
+    #if defined(CONFIG_NET_RX_BUSY_POLL) || defined(CONFIG_XPS)
+        union {unnamed_union};
+    #endif
+    #ifdef CONFIG_NETWORK_SECMARK
+        __u32 secmark;
+    #endif
+        union {unnamed_union};
+        union {unnamed_union};
         __u16 inner_transport_header;
         __u16 inner_network_header;
         __u16 inner_mac_header;
@@ -122,6 +214,199 @@ Definition
 
 Members
 -------
+
+{unnamed_union}
+    anonymous
+
+
+rbnode
+    RB tree node, alternative to next/prev for netem/tcp
+
+}
+    *undescribed*
+
+sk
+    Socket we are owned by
+
+{unnamed_union}
+    anonymous
+
+
+cb
+    Control buffer. Free for use by every layer. Put private vars here
+
+_skb_refdst
+    destination entry (with norefcount bit)
+
+destructor
+    Destruct function
+
+sp
+    the security path, used for xfrm
+
+_nfct
+    Associated connection, if any (with nfctinfo bits)
+
+nf_bridge
+    Saved data about a bridged frame - see br_netfilter.c
+
+len
+    Length of actual data
+
+data_len
+    Data length
+
+mac_len
+    Length of link layer header
+
+hdr_len
+    writable header length of cloned skb
+
+queue_mapping
+    Queue mapping for multiqueue devices
+
+__cloned_offset
+    *undescribed*
+
+cloned
+    Head may be cloned (check refcnt to be sure)
+
+nohdr
+    Payload reference only, must not modify header
+
+fclone
+    skbuff clone status
+
+peeked
+    this packet has been seen already, so stats have been
+    done for it, don't do them again
+
+head_frag
+    *undescribed*
+
+xmit_more
+    More SKBs are pending for this queue
+
+__unused
+    *undescribed*
+
+__pkt_type_offset
+    *undescribed*
+
+pkt_type
+    Packet class
+
+pfmemalloc
+    *undescribed*
+
+ignore_df
+    allow local fragmentation
+
+nf_trace
+    netfilter packet trace flag
+
+ip_summed
+    Driver fed us an IP checksum
+
+ooo_okay
+    allow the mapping of a socket to a queue to be changed
+
+l4_hash
+    indicate hash is a canonical 4-tuple hash over transport
+    ports.
+
+sw_hash
+    indicates hash was computed in software stack
+
+wifi_acked_valid
+    wifi_acked was set
+
+wifi_acked
+    whether frame was acked on wifi or not
+
+no_fcs
+    Request NIC to treat last 4 bytes as Ethernet FCS
+
+encapsulation
+    *undescribed*
+
+encap_hdr_csum
+    *undescribed*
+
+csum_valid
+    *undescribed*
+
+csum_complete_sw
+    *undescribed*
+
+csum_level
+    *undescribed*
+
+csum_not_inet
+    use CRC32c to resolve CHECKSUM_PARTIAL
+
+dst_pending_confirm
+    need to confirm neighbour
+
+ndisc_nodetype
+    router type (from link layer)
+
+ipvs_property
+    skbuff is owned by ipvs
+
+inner_protocol_type
+    *undescribed*
+
+remcsum_offload
+    *undescribed*
+
+offload_fwd_mark
+    *undescribed*
+
+tc_skip_classify
+    do not classify packet. set by IFB device
+
+tc_at_ingress
+    used within tc_classify to distinguish in/egress
+
+tc_redirected
+    packet was redirected by a tc action
+
+tc_from_ingress
+    if tc_redirected, tc_at_ingress at time of redirect
+
+tc_index
+    Traffic control index
+
+{unnamed_union}
+    anonymous
+
+
+priority
+    Packet queueing priority
+
+skb_iif
+    ifindex of device we arrived on
+
+hash
+    the packet hash
+
+vlan_proto
+    vlan encapsulation protocol
+
+vlan_tci
+    vlan tag control information
+
+{unnamed_union}
+    anonymous
+
+
+secmark
+    security marking
+
+{unnamed_union}
+    anonymous
+
 
 {unnamed_union}
     anonymous

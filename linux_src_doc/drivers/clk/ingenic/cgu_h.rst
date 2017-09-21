@@ -290,7 +290,11 @@ Definition
 
     struct ingenic_cgu_clk_info {
         const char *name;
-         enum;
+        enum type;
+        int parents;
+        union {unnamed_union};
+        struct ingenic_cgu_custom_info custom;
+         };
     }
 
 .. _`ingenic_cgu_clk_info.members`:
@@ -301,7 +305,22 @@ Members
 name
     name of the clock
 
-enum
+type
+    a bitmask formed from CGU_CLK\_\* values
+
+parents
+    an array of the indices of potential parents of this clock
+    within the clock_info array of the CGU, or -1 in entries
+    which correspond to no valid parent
+
+{unnamed_union}
+    anonymous
+
+
+custom
+    information valid if type includes CGU_CLK_CUSTOM
+
+}
     *undescribed*
 
 .. _`ingenic_cgu`:

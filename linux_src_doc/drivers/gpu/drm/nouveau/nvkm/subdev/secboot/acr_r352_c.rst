@@ -130,13 +130,46 @@ Definition
 .. code-block:: c
 
     struct hsflcn_acr_desc {
-        union vpr_desc;
+        union ucode_reserved_space;
+        u32 wpr_region_id;
+        u32 wpr_offset;
+        u32 mmu_mem_range;
+    #define FLCN_ACR_MAX_REGIONS 2
+        struct region_props;
+        } regions;
+        u32 ucode_blob_size;
+        u64 ucode_blob_base;
+        struct vpr_desc;
     }
 
 .. _`hsflcn_acr_desc.members`:
 
 Members
 -------
+
+ucode_reserved_space
+    *undescribed*
+
+wpr_region_id
+    region ID holding the WPR header and its details
+
+wpr_offset
+    offset from the WPR region holding the wpr header
+
+mmu_mem_range
+    *undescribed*
+
+region_props
+    *undescribed*
+
+regions
+    region descriptors
+
+ucode_blob_size
+    *undescribed*
+
+ucode_blob_base
+    *undescribed*
 
 vpr_desc
     *undescribed*

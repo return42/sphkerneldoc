@@ -1723,6 +1723,26 @@ Definition
     struct vxge_hw_device_stats_mrpcim_info {
         u32 pic_ini_rd_drop;
         u32 pic_ini_wr_drop;
+        struct pic_wrcrdtarb_ph_crdt_depleted_vplane;
+        struct pic_wrcrdtarb_pd_crdt_depleted_vplane;
+        struct pic_rdcrdtarb_nph_crdt_depleted_vplane;
+        u32 pic_ini_rd_vpin_drop;
+        u32 pic_ini_wr_vpin_drop;
+        u32 pic_genstats_count0;
+        u32 pic_genstats_count1;
+        u32 pic_genstats_count2;
+        u32 pic_genstats_count3;
+        u32 pic_genstats_count4;
+        u32 unused4;
+        u32 pic_genstats_count5;
+        u32 unused5;
+        u32 pci_rstdrop_cpl;
+        u32 pci_rstdrop_msg;
+        u32 pci_rstdrop_client1;
+        u32 pci_rstdrop_client0;
+        u32 pci_rstdrop_client2;
+        u32 unused6;
+        struct pci_depl_h_vplane;
         struct pci_depl_d_vplane;
         struct vxge_hw_xmac_port_stats xgmac_port;
         struct vxge_hw_xmac_aggr_stats xgmac_aggr;
@@ -1755,6 +1775,66 @@ pic_ini_rd_drop
     *undescribed*
 
 pic_ini_wr_drop
+    *undescribed*
+
+pic_wrcrdtarb_ph_crdt_depleted_vplane
+    *undescribed*
+
+pic_wrcrdtarb_pd_crdt_depleted_vplane
+    *undescribed*
+
+pic_rdcrdtarb_nph_crdt_depleted_vplane
+    *undescribed*
+
+pic_ini_rd_vpin_drop
+    *undescribed*
+
+pic_ini_wr_vpin_drop
+    *undescribed*
+
+pic_genstats_count0
+    *undescribed*
+
+pic_genstats_count1
+    *undescribed*
+
+pic_genstats_count2
+    *undescribed*
+
+pic_genstats_count3
+    *undescribed*
+
+pic_genstats_count4
+    *undescribed*
+
+unused4
+    *undescribed*
+
+pic_genstats_count5
+    *undescribed*
+
+unused5
+    *undescribed*
+
+pci_rstdrop_cpl
+    *undescribed*
+
+pci_rstdrop_msg
+    *undescribed*
+
+pci_rstdrop_client1
+    *undescribed*
+
+pci_rstdrop_client0
+    *undescribed*
+
+pci_rstdrop_client2
+    *undescribed*
+
+unused6
+    *undescribed*
+
+pci_depl_h_vplane
     *undescribed*
 
 pci_depl_d_vplane

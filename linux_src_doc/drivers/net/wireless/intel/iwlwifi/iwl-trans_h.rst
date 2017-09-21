@@ -115,6 +115,7 @@ Definition
 
     struct iwl_device_cmd {
         union {unnamed_union};
+        struct {unnamed_struct};
     }
 
 .. _`iwl_device_cmd.members`:
@@ -123,6 +124,10 @@ Members
 -------
 
 {unnamed_union}
+    anonymous
+
+
+{unnamed_struct}
     anonymous
 
 

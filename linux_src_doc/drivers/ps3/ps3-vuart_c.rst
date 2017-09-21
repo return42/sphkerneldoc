@@ -19,6 +19,7 @@ Definition
 
     struct ps3_vuart_port_priv {
         u64 interrupt_mask;
+        struct tx_list;
         struct rx_list;
         struct ps3_vuart_stats stats;
     }
@@ -29,6 +30,9 @@ Members
 -------
 
 interrupt_mask
+    *undescribed*
+
+tx_list
     *undescribed*
 
 rx_list

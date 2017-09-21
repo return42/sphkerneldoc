@@ -193,7 +193,8 @@ Definition
 .. code-block:: c
 
     struct flexi_crypto_context {
-        union {unnamed_union};
+        union w0;
+         };
         struct crypto_keys crypto;
         struct auth_keys auth;
     }
@@ -203,9 +204,11 @@ Definition
 Members
 -------
 
-{unnamed_union}
-    anonymous
+w0
+    *undescribed*
 
+}
+    *undescribed*
 
 crypto
     Crypto keys

@@ -927,7 +927,8 @@ Definition
     #define DWC2_FS_IOT_REV_1_00a 0x5531100a
     #define DWC2_HS_IOT_REV_1_00a 0x5532100a
     #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
-        union dwc2_hcd_internal_flags flags;
+        union dwc2_hcd_internal_flags b;
+        } flags;
         struct list_head non_periodic_sched_inactive;
         struct list_head non_periodic_sched_active;
         struct list_head *non_periodic_qh_ptr;
@@ -1117,6 +1118,9 @@ debug_root
     Root directrory for debugfs.
 
 regset
+    *undescribed*
+
+b
     *undescribed*
 
 flags

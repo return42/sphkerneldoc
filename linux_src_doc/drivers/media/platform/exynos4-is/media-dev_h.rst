@@ -78,7 +78,8 @@ Definition
         struct media_device media_dev;
         struct v4l2_device v4l2_dev;
         struct platform_device *pdev;
-        struct fimc_pinctrl clk_provider;
+        struct fimc_pinctrl pinctl;
+        struct cam_clk_provider clk_provider;
         struct v4l2_async_notifier subdev_notifier;
         struct v4l2_async_subdev  *async_subdevs;
         bool user_subdev_api;
@@ -130,6 +131,9 @@ v4l2_dev
 
 pdev
     platform device this media device is hooked up into
+
+pinctl
+    *undescribed*
 
 clk_provider
     *undescribed*

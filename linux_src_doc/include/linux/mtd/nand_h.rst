@@ -697,7 +697,24 @@ Definition
         struct nand_id id;
         int onfi_version;
         int jedec_version;
-        union manufacturer;
+        union {unnamed_union};
+        u16 max_bb_per_die;
+        u32 blocks_per_die;
+        struct nand_data_interface *data_interface;
+        int read_retries;
+        flstate_t state;
+        uint8_t *oob_poi;
+        struct nand_hw_control *controller;
+        struct nand_ecc_ctrl ecc;
+        struct nand_buffers *buffers;
+        unsigned long buf_align;
+        struct nand_hw_control hwcontrol;
+        uint8_t *bbt;
+        struct nand_bbt_descr *bbt_td;
+        struct nand_bbt_descr *bbt_md;
+        struct nand_bbt_descr *badblock_pattern;
+        void *priv;
+        struct manufacturer;
     }
 
 .. _`nand_chip.members`:
@@ -867,6 +884,64 @@ jedec_version
     [INTERN] holds the chip JEDEC version (BCD encoded),
     non 0 if JEDEC supported.
 
+{unnamed_union}
+    anonymous
+
+
+max_bb_per_die
+    [INTERN] the max number of bad blocks each die of a
+    this nand device will encounter their life times.
+
+blocks_per_die
+    [INTERN] The number of PEBs in a die
+
+data_interface
+    [INTERN] NAND interface timing information
+
+read_retries
+    [INTERN] the number of read retry modes supported
+
+state
+    [INTERN] the current state of the NAND device
+
+oob_poi
+    "poison value buffer," used for laying out OOB data
+    before writing
+
+controller
+    [REPLACEABLE] a pointer to a hardware controller
+    structure which is shared among multiple independent
+    devices.
+
+ecc
+    [BOARDSPECIFIC] ECC control structure
+
+buffers
+    buffer structure for read/write
+
+buf_align
+    minimum buffer alignment required by a platform
+
+hwcontrol
+    platform-specific hardware control structure
+
+bbt
+    [INTERN] bad block table pointer
+
+bbt_td
+    [REPLACEABLE] bad block table descriptor for flash
+    lookup.
+
+bbt_md
+    [REPLACEABLE] bad block table mirror descriptor
+
+badblock_pattern
+    [REPLACEABLE] bad block scan pattern used for initial
+    bad block scan.
+
+priv
+    [OPTIONAL] pointer to private chip data
+
 manufacturer
     [INTERN] Contains manufacturer information
 
@@ -888,7 +963,16 @@ Definition
 
     struct nand_flash_dev {
         char *name;
-        union ecc;
+        union {unnamed_union};
+        uint8_t id;
+         };
+        unsigned int pagesize;
+        unsigned int chipsize;
+        unsigned int erasesize;
+        unsigned int options;
+        uint16_t id_len;
+        uint16_t oobsize;
+        struct ecc;
         int onfi_timing_mode_default;
     }
 
@@ -899,6 +983,36 @@ Members
 
 name
     a human-readable name of the NAND chip
+
+{unnamed_union}
+    anonymous
+
+
+id
+    full device ID array
+
+}
+    *undescribed*
+
+pagesize
+    size of the NAND page in bytes; if 0, then the real page size (as
+    well as the eraseblock size) is determined from the extended NAND
+    chip ID array)
+
+chipsize
+    total chip size in MiB
+
+erasesize
+    eraseblock size in bytes (determined from the extended ID if 0)
+
+options
+    stores various chip bit options
+
+id_len
+    The valid length of the \ ``id``\ .
+
+oobsize
+    OOB size
 
 ecc
     ECC correctability and step information from the datasheet.

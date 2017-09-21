@@ -17,6 +17,9 @@ Definition
 .. code-block:: c
 
     struct sil164_encoder_params {
+        enum input_edge;
+        enum input_width;
+        enum input_dual;
         enum pll_filter;
         int input_skew;
         int duallink_skew;
@@ -26,6 +29,15 @@ Definition
 
 Members
 -------
+
+input_edge
+    *undescribed*
+
+input_width
+    *undescribed*
+
+input_dual
+    *undescribed*
 
 pll_filter
     *undescribed*

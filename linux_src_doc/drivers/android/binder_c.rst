@@ -61,6 +61,16 @@ Definition
         spinlock_t lock;
         struct binder_work work;
         union {unnamed_union};
+        struct binder_proc *proc;
+        struct hlist_head refs;
+        int internal_strong_refs;
+        int local_weak_refs;
+        int local_strong_refs;
+        int tmp_refs;
+        binder_uintptr_t ptr;
+        binder_uintptr_t cookie;
+        struct {unnamed_struct};
+        struct {unnamed_struct};
         bool has_async_transaction;
         struct list_head async_todo;
     }
@@ -82,6 +92,54 @@ work
     (protected by \ ``proc``\ ->inner_lock)
 
 {unnamed_union}
+    anonymous
+
+
+proc
+    binder_proc that owns this node
+    (invariant after initialized)
+
+refs
+    list of references on this node
+    (protected by \ ``lock``\ )
+
+internal_strong_refs
+    used to take strong references when
+    initiating a transaction
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
+local_weak_refs
+    weak user refs from local process
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
+local_strong_refs
+    strong user refs from local process
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
+tmp_refs
+    temporary kernel refs
+    (protected by \ ``proc``\ ->inner_lock while \ ``proc``\ 
+    is valid, and by binder_dead_nodes_lock
+    if \ ``proc``\  is NULL. During inc/dec and node release
+    it is also protected by \ ``lock``\  to provide safety
+    as the node dies and \ ``proc``\  becomes NULL)
+
+ptr
+    userspace pointer for node
+    (invariant, no lock needed)
+
+cookie
+    userspace cookie for node
+    (invariant, no lock needed)
+
+{unnamed_struct}
+    anonymous
+
+
+{unnamed_struct}
     anonymous
 
 

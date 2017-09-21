@@ -206,7 +206,12 @@ Definition
         u32 elem_size;
         u32 dims;
         u32 nr_of_dims;
-        union cur;
+        union {unnamed_union};
+        union {unnamed_union};
+        unsigned long flags;
+        void *priv;
+        s32 val;
+        struct cur;
         union v4l2_ctrl_ptr p_new;
         union v4l2_ctrl_ptr p_cur;
     }
@@ -319,6 +324,27 @@ dims
 
 nr_of_dims
     The number of dimensions in \ ``dims``\ .
+
+{unnamed_union}
+    anonymous
+
+
+{unnamed_union}
+    anonymous
+
+
+flags
+    The control's flags.
+
+priv
+    The control's private pointer. For use by the driver. It is
+    untouched by the control framework. Note that this pointer is
+    not freed when the control is deleted. Should this be needed
+    then a new internal bitfield can be added to tell the framework
+    to free this pointer.
+
+val
+    The control's new s32 value.
 
 cur
     The control's current value.

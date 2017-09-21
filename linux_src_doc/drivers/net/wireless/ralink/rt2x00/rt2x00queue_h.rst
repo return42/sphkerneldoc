@@ -567,7 +567,9 @@ Definition
         unsigned long flags;
         u16 length;
         u16 header_length;
-        union u;
+        union plcp;
+        struct ht;
+        } u;
         enum rate_modulation rate_mode;
         short retry_limit;
         enum cipher cipher;
@@ -589,6 +591,12 @@ length
 
 header_length
     Length of 802.11 header.
+
+plcp
+    *undescribed*
+
+ht
+    *undescribed*
 
 u
     *undescribed*

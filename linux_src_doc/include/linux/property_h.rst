@@ -22,7 +22,9 @@ Definition
         size_t length;
         bool is_array;
         bool is_string;
-        union {unnamed_union};
+        union pointer;
+        union value;
+         };
     }
 
 .. _`property_entry.members`:
@@ -42,9 +44,14 @@ is_array
 is_string
     True when property is a string.
 
-{unnamed_union}
-    anonymous
+pointer
+    Pointer to the property (an array of items of the given type).
 
+value
+    Value of the property (when it is a single item of the given type).
+
+}
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

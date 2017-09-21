@@ -20,6 +20,8 @@ Definition
         int scan_ms;
         int polarity;
         union {unnamed_union};
+        int pins;
+         };
     }
 
 .. _`gpio_mouse_platform_data.members`:
@@ -36,6 +38,12 @@ polarity
 {unnamed_union}
     anonymous
 
+
+pins
+    *undescribed*
+
+}
+    *undescribed*
 
 .. _`gpio_mouse_platform_data.description`:
 

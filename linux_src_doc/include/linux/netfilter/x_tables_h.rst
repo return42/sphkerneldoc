@@ -19,6 +19,7 @@ Definition
 
     struct xt_action_param {
         union {unnamed_union};
+        union {unnamed_union};
         const struct nf_hook_state *state;
         int fragoff;
         unsigned int thoff;
@@ -29,6 +30,10 @@ Definition
 
 Members
 -------
+
+{unnamed_union}
+    anonymous
+
 
 {unnamed_union}
     anonymous

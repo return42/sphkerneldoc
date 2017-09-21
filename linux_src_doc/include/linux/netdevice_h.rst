@@ -337,7 +337,143 @@ Definition
         struct list_head close_list;
         struct list_head ptype_all;
         struct list_head ptype_specific;
-        struct {unnamed_struct};
+        struct adj_list;
+        netdev_features_t features;
+        netdev_features_t hw_features;
+        netdev_features_t wanted_features;
+        netdev_features_t vlan_features;
+        netdev_features_t hw_enc_features;
+        netdev_features_t mpls_features;
+        netdev_features_t gso_partial_features;
+        int ifindex;
+        int group;
+        struct net_device_stats stats;
+        atomic_long_t rx_dropped;
+        atomic_long_t tx_dropped;
+        atomic_long_t rx_nohandler;
+    #ifdef CONFIG_WIRELESS_EXT
+        const struct iw_handler_def *wireless_handlers;
+        struct iw_public_data *wireless_data;
+    #endif
+        const struct net_device_ops *netdev_ops;
+        const struct ethtool_ops *ethtool_ops;
+    #ifdef CONFIG_NET_SWITCHDEV
+        const struct switchdev_ops *switchdev_ops;
+    #endif
+    #ifdef CONFIG_NET_L3_MASTER_DEV
+        const struct l3mdev_ops *l3mdev_ops;
+    #endif
+    #if IS_ENABLED(CONFIG_IPV6)
+        const struct ndisc_ops *ndisc_ops;
+    #endif
+    #ifdef CONFIG_XFRM
+        const struct xfrmdev_ops *xfrmdev_ops;
+    #endif
+        const struct header_ops *header_ops;
+        unsigned int flags;
+        unsigned int priv_flags;
+        unsigned short gflags;
+        unsigned short padded;
+        unsigned char operstate;
+        unsigned char link_mode;
+        unsigned char if_port;
+        unsigned char dma;
+        unsigned int mtu;
+        unsigned int min_mtu;
+        unsigned int max_mtu;
+        unsigned short type;
+        unsigned short hard_header_len;
+        unsigned char min_header_len;
+        unsigned short needed_headroom;
+        unsigned short needed_tailroom;
+        unsigned char perm_addr;
+        unsigned char addr_assign_type;
+        unsigned char addr_len;
+        unsigned short neigh_priv_len;
+        unsigned short dev_id;
+        unsigned short dev_port;
+        spinlock_t addr_list_lock;
+        unsigned char name_assign_type;
+        bool uc_promisc;
+        struct netdev_hw_addr_list uc;
+        struct netdev_hw_addr_list mc;
+        struct netdev_hw_addr_list dev_addrs;
+    #ifdef CONFIG_SYSFS
+        struct kset *queues_kset;
+    #endif
+        unsigned int promiscuity;
+        unsigned int allmulti;
+    #if IS_ENABLED(CONFIG_VLAN_8021Q)
+        struct vlan_info __rcu *vlan_info;
+    #endif
+    #if IS_ENABLED(CONFIG_NET_DSA)
+        struct dsa_switch_tree *dsa_ptr;
+    #endif
+    #if IS_ENABLED(CONFIG_TIPC)
+        struct tipc_bearer __rcu *tipc_ptr;
+    #endif
+        void *atalk_ptr;
+        struct in_device __rcu *ip_ptr;
+        struct dn_dev __rcu *dn_ptr;
+        struct inet6_dev __rcu *ip6_ptr;
+        void *ax25_ptr;
+        struct wireless_dev *ieee80211_ptr;
+        struct wpan_dev *ieee802154_ptr;
+    #if IS_ENABLED(CONFIG_MPLS_ROUTING)
+        struct mpls_dev __rcu *mpls_ptr;
+    #endif
+        unsigned char *dev_addr;
+    #ifdef CONFIG_SYSFS
+        struct netdev_rx_queue *_rx;
+        unsigned int num_rx_queues;
+        unsigned int real_num_rx_queues;
+    #endif
+        struct bpf_prog __rcu *xdp_prog;
+        unsigned long gro_flush_timeout;
+        rx_handler_func_t __rcu *rx_handler;
+        void __rcu *rx_handler_data;
+    #ifdef CONFIG_NET_CLS_ACT
+        struct tcf_proto __rcu *ingress_cl_list;
+    #endif
+        struct netdev_queue __rcu *ingress_queue;
+    #ifdef CONFIG_NETFILTER_INGRESS
+        struct nf_hook_entries __rcu *nf_hooks_ingress;
+    #endif
+        unsigned char broadcast;
+    #ifdef CONFIG_RFS_ACCEL
+        struct cpu_rmap *rx_cpu_rmap;
+    #endif
+        struct hlist_node index_hlist;
+        struct netdev_queue *_tx ____cacheline_aligned_in_smp;
+        unsigned int num_tx_queues;
+        unsigned int real_num_tx_queues;
+        struct Qdisc *qdisc;
+    #ifdef CONFIG_NET_SCHED
+        unsigned long qdisc_hash;
+    #endif
+        unsigned int tx_queue_len;
+        spinlock_t tx_global_lock;
+        int watchdog_timeo;
+    #ifdef CONFIG_XPS
+        struct xps_dev_maps __rcu *xps_maps;
+    #endif
+    #ifdef CONFIG_NET_CLS_ACT
+        struct tcf_proto __rcu *egress_cl_list;
+    #endif
+        struct timer_list watchdog_timer;
+        int __percpu *pcpu_refcnt;
+        struct list_head todo_list;
+        struct list_head link_watch_list;
+        enum reg_state:8;
+        bool dismantle;
+        enum rtnl_link_state:16;
+        bool needs_free_netdev;
+        void (*priv_destructor)(struct net_device *dev);
+    #ifdef CONFIG_NETPOLL
+        struct netpoll_info __rcu *npinfo;
+    #endif
+        possible_net_t nd_net;
+        union {unnamed_union};
     #if IS_ENABLED(CONFIG_GARP)
         struct garp_port __rcu *garp_port;
     #endif
@@ -423,7 +559,337 @@ ptype_all
 ptype_specific
     Device-specific, protocol-specific packet handlers
 
-{unnamed_struct}
+adj_list
+    Directly linked devices, like slaves for bonding
+
+features
+    Currently active device features
+
+hw_features
+    User-changeable features
+
+wanted_features
+    User-requested features
+
+vlan_features
+    Mask of features inheritable by VLAN devices
+
+hw_enc_features
+    Mask of features inherited by encapsulating devices
+    This field indicates what encapsulation
+    offloads the hardware is capable of doing,
+    and drivers will need to set them appropriately.
+
+mpls_features
+    Mask of features inheritable by MPLS
+
+gso_partial_features
+    *undescribed*
+
+ifindex
+    interface index
+
+group
+    The group the device belongs to
+
+stats
+    Statistics struct, which was left as a legacy, use
+    rtnl_link_stats64 instead
+
+rx_dropped
+    Dropped packets by core network,
+    do not use this in drivers
+
+tx_dropped
+    Dropped packets by core network,
+    do not use this in drivers
+
+rx_nohandler
+    nohandler dropped packets by core network on
+    inactive devices, do not use this in drivers
+
+wireless_handlers
+    List of functions to handle Wireless Extensions,
+    instead of ioctl,
+    see <net/iw_handler.h> for details.
+
+wireless_data
+    Instance data managed by the core of wireless extensions
+
+netdev_ops
+    Includes several pointers to callbacks,
+    if one wants to override the ndo_*() functions
+
+ethtool_ops
+    Management operations
+
+switchdev_ops
+    *undescribed*
+
+l3mdev_ops
+    *undescribed*
+
+ndisc_ops
+    Includes callbacks for different IPv6 neighbour
+    discovery handling. Necessary for e.g. 6LoWPAN.
+
+xfrmdev_ops
+    *undescribed*
+
+header_ops
+    Includes callbacks for creating,parsing,caching,etc
+    of Layer 2 headers.
+
+flags
+    Interface flags (a la BSD)
+
+priv_flags
+    Like 'flags' but invisible to userspace,
+    see if.h for the definitions
+
+gflags
+    Global flags ( kept as legacy )
+
+padded
+    How much padding added by \ :c:func:`alloc_netdev`\ 
+
+operstate
+    RFC2863 operstate
+
+link_mode
+    Mapping policy to operstate
+
+if_port
+    Selectable AUI, TP, ...
+
+dma
+    DMA channel
+
+mtu
+    Interface MTU value
+
+min_mtu
+    Interface Minimum MTU value
+
+max_mtu
+    Interface Maximum MTU value
+
+type
+    Interface hardware type
+
+hard_header_len
+    Maximum hardware header length.
+
+min_header_len
+    Minimum hardware header length
+
+needed_headroom
+    Extra headroom the hardware may need, but not in all
+    cases can this be guaranteed
+
+needed_tailroom
+    Extra tailroom the hardware may need, but not in all
+    cases can this be guaranteed. Some cases also use
+    LL_MAX_HEADER instead to allocate the skb
+
+perm_addr
+    Permanent hw address
+
+addr_assign_type
+    Hw address assignment type
+
+addr_len
+    Hardware address length
+
+neigh_priv_len
+    Used in \ :c:func:`neigh_alloc`\ 
+
+dev_id
+    Used to differentiate devices that share
+    the same link layer address
+
+dev_port
+    Used to differentiate devices that share
+    the same function
+
+addr_list_lock
+    XXX: need comments on this one
+
+name_assign_type
+    *undescribed*
+
+uc_promisc
+    Counter that indicates promiscuous mode
+    has been enabled due to the need to listen to
+    additional unicast addresses in a device that
+    does not implement \ :c:func:`ndo_set_rx_mode`\ 
+
+uc
+    unicast mac addresses
+
+mc
+    multicast mac addresses
+
+dev_addrs
+    list of device hw addresses
+
+queues_kset
+    Group of all Kobjects in the Tx and RX queues
+
+promiscuity
+    Number of times the NIC is told to work in
+    promiscuous mode; if it becomes 0 the NIC will
+    exit promiscuous mode
+
+allmulti
+    Counter, enables or disables allmulticast mode
+
+vlan_info
+    VLAN info
+
+dsa_ptr
+    dsa specific data
+
+tipc_ptr
+    TIPC specific data
+
+atalk_ptr
+    AppleTalk link
+
+ip_ptr
+    IPv4 specific data
+
+dn_ptr
+    DECnet specific data
+
+ip6_ptr
+    IPv6 specific data
+
+ax25_ptr
+    AX.25 specific data
+
+ieee80211_ptr
+    IEEE 802.11 specific data, assign before registering
+
+ieee802154_ptr
+    *undescribed*
+
+mpls_ptr
+    *undescribed*
+
+dev_addr
+    Hw address (before bcast,
+    because most packets are unicast)
+
+_rx
+    Array of RX queues
+
+num_rx_queues
+    Number of RX queues
+    allocated at \ :c:func:`register_netdev`\  time
+
+real_num_rx_queues
+    Number of RX queues currently active in device
+
+xdp_prog
+    *undescribed*
+
+gro_flush_timeout
+    *undescribed*
+
+rx_handler
+    handler for received packets
+
+rx_handler_data
+    XXX: need comments on this one
+
+ingress_cl_list
+    *undescribed*
+
+ingress_queue
+    XXX: need comments on this one
+
+nf_hooks_ingress
+    *undescribed*
+
+broadcast
+    hw bcast address
+
+rx_cpu_rmap
+    CPU reverse-mapping for RX completion interrupts,
+    indexed by RX queue number. Assigned by driver.
+    This must only be set if the ndo_rx_flow_steer
+    operation is defined
+
+index_hlist
+    Device index hash chain
+
+____cacheline_aligned_in_smp
+    *undescribed*
+
+num_tx_queues
+    Number of TX queues allocated at \ :c:func:`alloc_netdev_mq`\  time
+
+real_num_tx_queues
+    Number of TX queues currently active in device
+
+qdisc
+    Root qdisc from userspace point of view
+
+qdisc_hash
+    *undescribed*
+
+tx_queue_len
+    Max frames per queue allowed
+
+tx_global_lock
+    XXX: need comments on this one
+
+watchdog_timeo
+    Represents the timeout that is used by
+    the watchdog (see \ :c:func:`dev_watchdog`\ )
+
+xps_maps
+    XXX: need comments on this one
+
+egress_cl_list
+    *undescribed*
+
+watchdog_timer
+    List of timers
+
+pcpu_refcnt
+    Number of references to this device
+
+todo_list
+    Delayed register/unregister
+
+link_watch_list
+    XXX: need comments on this one
+
+reg_state
+    Register/unregister state machine
+
+dismantle
+    Device is going to be freed
+
+rtnl_link_state
+    This enum represents the phases of creating
+    a new link
+
+needs_free_netdev
+    Should unregister perform free_netdev?
+
+priv_destructor
+    Called from unregister
+
+npinfo
+    XXX: need comments on this one
+
+nd_net
+    Network namespace this network device is inside
+
+{unnamed_union}
     anonymous
 
 

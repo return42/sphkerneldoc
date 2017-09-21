@@ -1506,7 +1506,8 @@ Definition
     struct dtv_property {
         __u32 cmd;
         __u32 reserved;
-        union u;
+        union buffer;
+        } u;
         int result;
     }
 
@@ -1520,6 +1521,9 @@ cmd
 
 reserved
     Not used.
+
+buffer
+    *undescribed*
 
 u
     Union with the values for the command.

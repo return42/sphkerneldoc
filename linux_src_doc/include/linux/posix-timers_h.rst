@@ -31,7 +31,13 @@ Definition
         int it_sigev_notify;
         ktime_t it_interval;
         struct signal_struct *it_signal;
-        union it;
+        union {unnamed_union};
+        struct sigqueue *sigq;
+        union real;
+        struct cpu_timer_list cpu;
+        struct alarm;
+        struct rcu_head rcu;
+        } it;
     }
 
 .. _`k_itimer.members`:
@@ -78,6 +84,25 @@ it_interval
 
 it_signal
     Pointer to the creators signal struct
+
+{unnamed_union}
+    anonymous
+
+
+sigq
+    Pointer to preallocated sigqueue
+
+real
+    *undescribed*
+
+cpu
+    *undescribed*
+
+alarm
+    *undescribed*
+
+rcu
+    *undescribed*
 
 it
     Union representing the various posix timer type

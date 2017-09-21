@@ -963,6 +963,8 @@ Definition
 .. code-block:: c
 
     struct lpt_scan_node {
+        union {unnamed_union};
+        int in_tree;
         union ptr;
     }
 
@@ -970,6 +972,13 @@ Definition
 
 Members
 -------
+
+{unnamed_union}
+    anonymous
+
+
+in_tree
+    is the node in the tree in memory
 
 ptr
     *undescribed*

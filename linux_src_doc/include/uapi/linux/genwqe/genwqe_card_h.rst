@@ -71,6 +71,8 @@ Definition
         __u64 ddata_addr;
         __u8 asv;
         union {unnamed_union};
+        __u8 __asiv;
+         };
     }
 
 .. _`genwqe_ddcb_cmd.members`:
@@ -129,6 +131,12 @@ asv
 {unnamed_union}
     anonymous
 
+
+__asiv
+    *undescribed*
+
+}
+    *undescribed*
 
 .. _`genwqe_ddcb_cmd.description`:
 

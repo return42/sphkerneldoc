@@ -838,6 +838,8 @@ Definition
 .. code-block:: c
 
     struct dpni_queue {
+        struct destination;
+        u64 user_context;
         struct flc;
     }
 
@@ -845,6 +847,13 @@ Definition
 
 Members
 -------
+
+destination
+    *undescribed*
+
+user_context
+    User data, presented to the user along with any frames from
+    this queue. Not relevant for Tx queues.
 
 flc
     *undescribed*

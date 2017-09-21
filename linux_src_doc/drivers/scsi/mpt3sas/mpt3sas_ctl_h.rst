@@ -89,7 +89,9 @@ Definition
 .. code-block:: c
 
     struct mpt3_ioctl_pci_info {
-        union u;
+        union bits;
+        uint32_t word;
+        } u;
         uint32_t segment_id;
     }
 
@@ -97,6 +99,12 @@ Definition
 
 Members
 -------
+
+bits
+    *undescribed*
+
+word
+    *undescribed*
 
 u
     *undescribed*

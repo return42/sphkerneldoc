@@ -44,7 +44,9 @@ Definition
     #endif
         int ucast_oif;
         int mcast_oif;
-        union rxopt;
+        union bits;
+        __u16 all;
+        } rxopt;
         __u16 recverr:1;
         __u16 sndflow:1:1;
         __u16 repflow:1:1:1;
@@ -124,6 +126,12 @@ ucast_oif
     *undescribed*
 
 mcast_oif
+    *undescribed*
+
+bits
+    *undescribed*
+
+all
     *undescribed*
 
 rxopt

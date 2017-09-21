@@ -237,7 +237,12 @@ Definition
 
     struct sockaddr_caif {
         __kernel_sa_family_t family;
-        union u;
+        union at;
+        struct util;
+        union dgm;
+        struct rfm;
+        struct dbg;
+        } u;
     }
 
 .. _`sockaddr_caif.members`:
@@ -247,6 +252,21 @@ Members
 
 family
     Address family number, must be AF_CAIF.
+
+at
+    *undescribed*
+
+util
+    *undescribed*
+
+dgm
+    *undescribed*
+
+rfm
+    *undescribed*
+
+dbg
+    *undescribed*
 
 u
     Union of address data 'switched' by family.

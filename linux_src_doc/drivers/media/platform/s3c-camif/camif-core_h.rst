@@ -318,7 +318,11 @@ Definition
         struct v4l2_rect camif_crop;
         struct media_pad pads;
         int stream_count;
-        struct cam_sensor;
+        struct cam_sensor sensor;
+        struct media_pipeline *m_pipeline;
+        struct v4l2_ctrl_handler ctrl_handler;
+        struct v4l2_ctrl *ctrl_test_pattern;
+        struct {unnamed_struct};
         u8 test_pattern;
         u8 colorfx;
         u8 colorfx_cb;
@@ -359,8 +363,21 @@ pads
 stream_count
     the camera interface streaming reference counter
 
-cam_sensor
+sensor
+    image sensor data structure
+
+m_pipeline
+    video entity pipeline description
+
+ctrl_handler
+    v4l2 control handler (owned by \ ``subdev``\ )
+
+ctrl_test_pattern
     *undescribed*
+
+{unnamed_struct}
+    anonymous
+
 
 test_pattern
     test pattern controls

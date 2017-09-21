@@ -17,6 +17,14 @@ Definition
 .. code-block:: c
 
     struct ch7006_encoder_params {
+        enum input_format;
+        enum clock_mode;
+        enum clock_edge;
+        int xcm;
+        int pcm;
+        enum sync_direction;
+        enum sync_encoding;
+        enum pout_level;
         enum active_detect;
     }
 
@@ -24,6 +32,30 @@ Definition
 
 Members
 -------
+
+input_format
+    *undescribed*
+
+clock_mode
+    *undescribed*
+
+clock_edge
+    *undescribed*
+
+xcm
+    *undescribed*
+
+pcm
+    *undescribed*
+
+sync_direction
+    *undescribed*
+
+sync_encoding
+    *undescribed*
+
+pout_level
+    *undescribed*
 
 active_detect
     *undescribed*

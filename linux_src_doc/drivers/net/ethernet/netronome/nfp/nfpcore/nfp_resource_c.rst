@@ -18,13 +18,17 @@ Definition
 .. code-block:: c
 
     struct nfp_resource_entry {
-        struct nfp_resource_entry_mutex region;
+        struct nfp_resource_entry_mutex mutex;
+        struct nfp_resource_entry_region region;
     }
 
 .. _`nfp_resource_entry.members`:
 
 Members
 -------
+
+mutex
+    *undescribed*
 
 region
     Memory region descriptor

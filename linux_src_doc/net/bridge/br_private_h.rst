@@ -24,6 +24,7 @@ Definition
         u16 flags;
         struct br_vlan_stats __percpu *stats;
         union {unnamed_union};
+        union {unnamed_union};
         struct br_tunnel_info tinfo;
         struct list_head vlist;
         struct rcu_head rcu;
@@ -48,6 +49,10 @@ flags
 
 stats
     per-cpu VLAN statistics
+
+{unnamed_union}
+    anonymous
+
 
 {unnamed_union}
     anonymous

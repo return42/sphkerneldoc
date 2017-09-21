@@ -385,6 +385,11 @@ Definition
 .. code-block:: c
 
     struct srp_map_state {
+        union fmr;
+        struct fr;
+        struct gen;
+         };
+        struct srp_direct_buf *desc;
         union {unnamed_union};
         dma_addr_t base_dma_addr;
         u32 dma_len;
@@ -398,6 +403,22 @@ Definition
 
 Members
 -------
+
+fmr
+    *undescribed*
+
+fr
+    *undescribed*
+
+gen
+    *undescribed*
+
+}
+    *undescribed*
+
+desc
+    Pointer to the element of the SRP buffer descriptor array
+    that is being filled in.
 
 {unnamed_union}
     anonymous

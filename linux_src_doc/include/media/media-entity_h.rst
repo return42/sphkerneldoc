@@ -211,6 +211,7 @@ Definition
         struct media_gobj graph_obj;
         struct list_head list;
         union {unnamed_union};
+        union {unnamed_union};
         struct media_link *reverse;
         unsigned long flags;
         bool is_backlink;
@@ -227,6 +228,10 @@ graph_obj
 list
     Linked list associated with an entity or an interface that
     owns the link.
+
+{unnamed_union}
+    anonymous
+
 
 {unnamed_union}
     anonymous
@@ -420,7 +425,8 @@ Definition
         int stream_count;
         int use_count;
         struct media_pipeline *pipe;
-        union info;
+        union dev;
+        } info;
     }
 
 .. _`media_entity.members`:
@@ -477,6 +483,9 @@ use_count
 
 pipe
     Pipeline this entity belongs to.
+
+dev
+    *undescribed*
 
 info
     Union with devnode information.  Kept just for backward

@@ -268,6 +268,7 @@ Definition
         atomic_t irq_done;
         struct v4l2_ctrl_handler handle;
         struct {unnamed_struct};
+        struct {unnamed_struct};
         struct v4l2_ctrl *auto_wb;
         struct v4l2_ctrl *lock_3a;
         struct v4l2_ctrl *colorfx;
@@ -311,6 +312,10 @@ irq_done
 
 handle
     control handler
+
+{unnamed_struct}
+    anonymous
+
 
 {unnamed_struct}
     anonymous

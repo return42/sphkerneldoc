@@ -162,6 +162,16 @@ Definition
         bool low_latency_vcmd;
         bool ps_disabled;
         struct iwl_mvm_vif_bf_data bf_data;
+        struct beacon_stats;
+        u32 ap_beacon_time;
+        enum iwl_tsf_id tsf_id;
+        struct ieee80211_tx_queue_params queue_params;
+        struct iwl_mvm_time_event_data time_event_data;
+        struct iwl_mvm_time_event_data hs_time_event_data;
+        struct iwl_mvm_int_sta bcast_sta;
+        struct iwl_mvm_int_sta mcast_sta;
+        struct iwl_mvm_phy_ctxt *phy_ctxt;
+    #ifdef CONFIG_PM
         struct rekey_data;
         int tx_key_idx;
         bool seqno_valid;
@@ -248,6 +258,35 @@ ps_disabled
     indicates that this interface requires PS to be disabled
 
 bf_data
+    *undescribed*
+
+beacon_stats
+    beacon statistics, containing the # of received beacons,
+    # of received beacons accumulated over FW restart, and the current
+    average signal of beacons retrieved from the firmware
+
+ap_beacon_time
+    *undescribed*
+
+tsf_id
+    *undescribed*
+
+queue_params
+    QoS params for this MAC
+
+time_event_data
+    *undescribed*
+
+hs_time_event_data
+    *undescribed*
+
+bcast_sta
+    station used for broadcast packets. Used by the following
+
+mcast_sta
+    *undescribed*
+
+phy_ctxt
     *undescribed*
 
 rekey_data
