@@ -11,7 +11,7 @@ pat = re.compile(r"^\s*\.\.\s+kernel-doc::\s*([^\s]+)\s*$")
 out = set()
 for arg in sys.argv:
     for rstFile in FSPath(arg).reMatchFind(r".*\.rst"):
-        if rstFile.BASENAME == "kernel-documentation.rst":
+        if rstFile.BASENAME == "kernel-doc.rst":
             continue
         #print(rstFile)
         with rstFile.openTextFile() as f:
