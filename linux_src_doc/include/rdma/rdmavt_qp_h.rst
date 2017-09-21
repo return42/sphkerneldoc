@@ -182,5 +182,61 @@ Description
 
 The QP s_lock should be held.
 
+.. _`rvt_timeout_to_jiffies`:
+
+rvt_timeout_to_jiffies
+======================
+
+.. c:function:: unsigned long rvt_timeout_to_jiffies(u8 timeout)
+
+    Convert a ULP timeout input into jiffies \ ``timeout``\  - timeout input(0 - 31).
+
+    :param u8 timeout:
+        *undescribed*
+
+.. _`rvt_timeout_to_jiffies.description`:
+
+Description
+-----------
+
+Return a timeout value in jiffies.
+
+.. _`rvt_qp_iter`:
+
+struct rvt_qp_iter
+==================
+
+.. c:type:: struct rvt_qp_iter
+
+    the iterator for QPs \ ``qp``\  - the current QP
+
+.. _`rvt_qp_iter.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rvt_qp_iter {
+        struct rvt_qp *qp;
+    }
+
+.. _`rvt_qp_iter.members`:
+
+Members
+-------
+
+qp
+    *undescribed*
+
+.. _`rvt_qp_iter.description`:
+
+Description
+-----------
+
+This structure defines the current iterator
+state for sequenced access to all QPs relative
+to an rvt_dev_info.
+
 .. This file was automatic generated / don't edit.
 

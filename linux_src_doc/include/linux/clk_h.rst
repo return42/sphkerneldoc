@@ -112,6 +112,47 @@ change, and new_rate is what the rate will be in the future.  For a
 post-notifier, old_rate and new_rate are both set to the clk's
 current rate (this was done to optimize the implementation).
 
+.. _`clk_bulk_data`:
+
+struct clk_bulk_data
+====================
+
+.. c:type:: struct clk_bulk_data
+
+    Data used for bulk clk operations.
+
+.. _`clk_bulk_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct clk_bulk_data {
+        const char *id;
+        struct clk *clk;
+    }
+
+.. _`clk_bulk_data.members`:
+
+Members
+-------
+
+id
+    clock consumer ID
+
+clk
+    struct clk * to store the associated clock
+
+.. _`clk_bulk_data.description`:
+
+Description
+-----------
+
+The CLK APIs provide a series of \ :c:func:`clk_bulk_`\  API calls as
+a convenience to consumers which require multiple clks.  This
+structure is used to manage data for these calls.
+
 .. _`clk_notifier_register`:
 
 clk_notifier_register
@@ -313,6 +354,72 @@ Drivers must assume that the clock source is not enabled.
 
 clk_get should not be called from within interrupt context.
 
+.. _`clk_bulk_get`:
+
+clk_bulk_get
+============
+
+.. c:function:: int clk_bulk_get(struct device *dev, int num_clks, struct clk_bulk_data *clks)
+
+    lookup and obtain a number of references to clock producer.
+
+    :param struct device \*dev:
+        device for clock "consumer"
+
+    :param int num_clks:
+        the number of clk_bulk_data
+
+    :param struct clk_bulk_data \*clks:
+        the clk_bulk_data table of consumer
+
+.. _`clk_bulk_get.description`:
+
+Description
+-----------
+
+This helper function allows drivers to get several clk consumers in one
+operation. If any of the clk cannot be acquired then any clks
+that were obtained will be freed before returning to the caller.
+
+Returns 0 if all clocks specified in clk_bulk_data table are obtained
+successfully, or valid \ :c:func:`IS_ERR`\  condition containing errno.
+The implementation uses \ ``dev``\  and \ ``clk_bulk_data``\ .id to determine the
+clock consumer, and thereby the clock producer.
+The clock returned is stored in each \ ``clk_bulk_data``\ .clk field.
+
+Drivers must assume that the clock source is not enabled.
+
+clk_bulk_get should not be called from within interrupt context.
+
+.. _`devm_clk_bulk_get`:
+
+devm_clk_bulk_get
+=================
+
+.. c:function:: int devm_clk_bulk_get(struct device *dev, int num_clks, struct clk_bulk_data *clks)
+
+    managed get multiple clk consumers
+
+    :param struct device \*dev:
+        device for clock "consumer"
+
+    :param int num_clks:
+        the number of clk_bulk_data
+
+    :param struct clk_bulk_data \*clks:
+        the clk_bulk_data table of consumer
+
+.. _`devm_clk_bulk_get.description`:
+
+Description
+-----------
+
+Return 0 on success, an errno on failure.
+
+This helper function allows drivers to get several clk
+consumers in one operation with management, the clks will
+automatically be freed when the device is unbound.
+
 .. _`devm_clk_get`:
 
 devm_clk_get
@@ -399,6 +506,30 @@ May be called from atomic contexts.
 
 Returns success (0) or negative errno.
 
+.. _`clk_bulk_enable`:
+
+clk_bulk_enable
+===============
+
+.. c:function:: int clk_bulk_enable(int num_clks, const struct clk_bulk_data *clks)
+
+    inform the system when the set of clks should be running.
+
+    :param int num_clks:
+        the number of clk_bulk_data
+
+    :param const struct clk_bulk_data \*clks:
+        the clk_bulk_data table of consumer
+
+.. _`clk_bulk_enable.description`:
+
+Description
+-----------
+
+May be called from atomic contexts.
+
+Returns success (0) or negative errno.
+
 .. _`clk_disable`:
 
 clk_disable
@@ -424,6 +555,36 @@ May be called from atomic contexts.
 Implementation detail: if the clock source is shared between
 multiple drivers, \ :c:func:`clk_enable`\  calls must be balanced by the
 same number of \ :c:func:`clk_disable`\  calls for the clock source to be
+disabled.
+
+.. _`clk_bulk_disable`:
+
+clk_bulk_disable
+================
+
+.. c:function:: void clk_bulk_disable(int num_clks, const struct clk_bulk_data *clks)
+
+    inform the system when the set of clks is no longer required.
+
+    :param int num_clks:
+        the number of clk_bulk_data
+
+    :param const struct clk_bulk_data \*clks:
+        the clk_bulk_data table of consumer
+
+.. _`clk_bulk_disable.description`:
+
+Description
+-----------
+
+Inform the system that a set of clks is no longer required by
+a driver and may be shut down.
+
+May be called from atomic contexts.
+
+Implementation detail: if the set of clks is shared between
+multiple drivers, \ :c:func:`clk_bulk_enable`\  calls must be balanced by the
+same number of \ :c:func:`clk_bulk_disable`\  calls for the clock source to be
 disabled.
 
 .. _`clk_get_rate`:
@@ -460,6 +621,32 @@ clock source are balanced by clk_disable calls prior to calling
 this function.
 
 clk_put should not be called from within interrupt context.
+
+.. _`clk_bulk_put`:
+
+clk_bulk_put
+============
+
+.. c:function:: void clk_bulk_put(int num_clks, struct clk_bulk_data *clks)
+
+    "free" the clock source
+
+    :param int num_clks:
+        the number of clk_bulk_data
+
+    :param struct clk_bulk_data \*clks:
+        the clk_bulk_data table of consumer
+
+.. _`clk_bulk_put.note`:
+
+Note
+----
+
+drivers must ensure that all clk_bulk_enable calls made on this
+clock source are balanced by clk_bulk_disable calls prior to calling
+this function.
+
+clk_bulk_put should not be called from within interrupt context.
 
 .. _`devm_clk_put`:
 

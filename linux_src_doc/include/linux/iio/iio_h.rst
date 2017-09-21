@@ -728,10 +728,9 @@ scan_index_timestamp
 
 trig
     [INTERN] current device trigger (buffer modes)
-    \ ``trig_readonly``\        [INTERN] mark the current trigger immutable
 
 trig_readonly
-    *undescribed*
+    [INTERN] mark the current trigger immutable
 
 pollfunc
     [DRIVER] function run on trigger being received

@@ -24,9 +24,9 @@ Definition
         void (*setup)(struct net_device *dev);
         int maxtype;
         const struct nla_policy *policy;
-        int (*validate)(struct nlattr *tb[], struct nlattr *data[]);
-        int (*newlink)(struct net *src_net,struct net_device *dev,struct nlattr *tb[], struct nlattr *data[]);
-        int (*changelink)(struct net_device *dev,struct nlattr *tb[], struct nlattr *data[]);
+        int (*validate)(struct nlattr *tb[],struct nlattr *data[], struct netlink_ext_ack *extack);
+        int (*newlink)(struct net *src_net,struct net_device *dev,struct nlattr *tb[],struct nlattr *data[], struct netlink_ext_ack *extack);
+        int (*changelink)(struct net_device *dev,struct nlattr *tb[],struct nlattr *data[], struct netlink_ext_ack *extack);
         void (*dellink)(struct net_device *dev, struct list_head *head);
         size_t (*get_size)(const struct net_device *dev);
         int (*fill_info)(struct sk_buff *skb, const struct net_device *dev);
@@ -36,8 +36,8 @@ Definition
         unsigned int (*get_num_rx_queues)(void);
         int slave_maxtype;
         const struct nla_policy *slave_policy;
-        int (*slave_validate)(struct nlattr *tb[], struct nlattr *data[]);
-        int (*slave_changelink)(struct net_device *dev,struct net_device *slave_dev,struct nlattr *tb[], struct nlattr *data[]);
+        int (*slave_validate)(struct nlattr *tb[],struct nlattr *data[], struct netlink_ext_ack *extack);
+        int (*slave_changelink)(struct net_device *dev,struct net_device *slave_dev,struct nlattr *tb[],struct nlattr *data[], struct netlink_ext_ack *extack);
         size_t (*get_slave_size)(const struct net_device *dev, const struct net_device *slave_dev);
         int (*fill_slave_info)(struct sk_buff *skb,const struct net_device *dev, const struct net_device *slave_dev);
         struct net *(*get_link_net)(const struct net_device *dev);

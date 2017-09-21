@@ -13,10 +13,12 @@ hwicap_command_desync
     :param struct hwicap_drvdata \*drvdata:
         a pointer to the drvdata.
 
-.. _`hwicap_command_desync.description`:
+.. _`hwicap_command_desync.return`:
 
-Description
------------
+Return
+------
+
+'0' on success and failure value on error
 
 This command desynchronizes the ICAP After this command, a
 bitstream containing a NULL packet, followed by a SYNCH packet is
@@ -37,15 +39,23 @@ hwicap_get_configuration_register
     :param u32 reg:
         a constant which represents the configuration
         register value to be returned.
-        Examples:  XHI_IDCODE, XHI_FLR.
 
     :param u32 \*reg_data:
         returns the value of the register.
 
-.. _`hwicap_get_configuration_register.description`:
+.. _`hwicap_get_configuration_register.examples`:
 
-Description
------------
+Examples
+--------
+
+XHI_IDCODE, XHI_FLR.
+
+.. _`hwicap_get_configuration_register.return`:
+
+Return
+------
+
+'0' on success and failure value on error
 
 Sends a query packet to the ICAP and then receives the response.
 The icap is left in Synched state.

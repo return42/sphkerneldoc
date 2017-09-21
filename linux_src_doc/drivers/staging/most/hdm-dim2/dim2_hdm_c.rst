@@ -83,6 +83,7 @@ Definition
         unsigned char link_state;
         int atx_idx;
         struct medialb_bus bus;
+        void (*on_netinfo)(struct most_interface *, unsigned char, unsigned char *);
     }
 
 .. _`dim2_hdm.members`:
@@ -127,6 +128,9 @@ atx_idx
     index of async tx channel
 
 bus
+    *undescribed*
+
+on_netinfo
     *undescribed*
 
 .. _`dimcb_io_read`:
@@ -393,7 +397,7 @@ pending_list. Return 0 on success, negative on failure.
 request_netinfo
 ===============
 
-.. c:function:: void request_netinfo(struct most_interface *most_iface, int ch_idx)
+.. c:function:: void request_netinfo(struct most_interface *most_iface, int ch_idx, void (*on_netinfo)(struct most_interface *, unsigned char, unsigned char *))
 
     triggers retrieving of network info
 
@@ -401,6 +405,9 @@ request_netinfo
         *undescribed*
 
     :param int ch_idx:
+        *undescribed*
+
+    :param void (\*on_netinfo)(struct most_interface \*, unsigned char, unsigned char \*):
         *undescribed*
 
 .. _`request_netinfo.description`:

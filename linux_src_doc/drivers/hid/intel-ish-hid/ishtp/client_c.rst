@@ -438,7 +438,7 @@ Description
 -----------
 
 Receive and dispatch ISHTP client messages. This function executes in ISR
-context
+or work queue context
 
 .. _`recv_ishtp_cl_msg_dma`:
 
@@ -464,7 +464,7 @@ Description
 -----------
 
 Receive and dispatch ISHTP client messages using DMA. This function executes
-in ISR context
+in ISR or work queue context
 
 .. This file was automatic generated / don't edit.
 

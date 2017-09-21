@@ -337,7 +337,7 @@ amdgpu_wb_init
 Description
 -----------
 
-Disables Writeback and frees the Writeback memory (all asics).
+Initializes writeback and allocates writeback memory (all asics).
 Used at driver startup.
 Returns 0 on success or an -error on failure.
 
@@ -357,29 +357,6 @@ amdgpu_wb_get
         wb index
 
 .. _`amdgpu_wb_get.description`:
-
-Description
------------
-
-Allocate a wb slot for use by the driver (all asics).
-Returns 0 on success or -EINVAL on failure.
-
-.. _`amdgpu_wb_get_64bit`:
-
-amdgpu_wb_get_64bit
-===================
-
-.. c:function:: int amdgpu_wb_get_64bit(struct amdgpu_device *adev, u32 *wb)
-
-    Allocate a wb entry
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param u32 \*wb:
-        wb index
-
-.. _`amdgpu_wb_get_64bit.description`:
 
 Description
 -----------
@@ -409,28 +386,6 @@ Description
 
 Free a wb slot allocated for use by the driver (all asics)
 
-.. _`amdgpu_wb_free_64bit`:
-
-amdgpu_wb_free_64bit
-====================
-
-.. c:function:: void amdgpu_wb_free_64bit(struct amdgpu_device *adev, u32 wb)
-
-    Free a wb entry
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param u32 wb:
-        wb index
-
-.. _`amdgpu_wb_free_64bit.description`:
-
-Description
------------
-
-Free a wb slot allocated for use by the driver (all asics)
-
 .. _`amdgpu_vram_location`:
 
 amdgpu_vram_location
@@ -454,7 +409,7 @@ amdgpu_vram_location
 Description
 -----------
 
-Function will place try to place VRAM at base address provided
+Function will try to place VRAM at base address provided
 as parameter (which is so far either PCI aperture address or
 for IGP TOM base address).
 
@@ -481,7 +436,7 @@ note afected by bogus hw of Novell bug 204882 + along with lots of ubuntu
 ones)
 
 IGP TOM addr should be the same as the aperture addr, we don't
-explicitly check for that thought.
+explicitly check for that though.
 
 .. _`amdgpu_vram_location.fixme`:
 
@@ -490,12 +445,12 @@ FIXME
 
 when reducing VRAM size align new size on power of 2.
 
-.. _`amdgpu_gtt_location`:
+.. _`amdgpu_gart_location`:
 
-amdgpu_gtt_location
-===================
+amdgpu_gart_location
+====================
 
-.. c:function:: void amdgpu_gtt_location(struct amdgpu_device *adev, struct amdgpu_mc *mc)
+.. c:function:: void amdgpu_gart_location(struct amdgpu_device *adev, struct amdgpu_mc *mc)
 
     try to find GTT location
 
@@ -505,7 +460,7 @@ amdgpu_gtt_location
     :param struct amdgpu_mc \*mc:
         memory controller structure holding memory informations
 
-.. _`amdgpu_gtt_location.description`:
+.. _`amdgpu_gart_location.description`:
 
 Description
 -----------
@@ -515,7 +470,7 @@ Function will place try to place GTT before or after VRAM.
 If GTT size is bigger than space left then we ajust GTT size.
 Thus function will never fails.
 
-.. _`amdgpu_gtt_location.fixme`:
+.. _`amdgpu_gart_location.fixme`:
 
 FIXME
 -----
@@ -842,26 +797,6 @@ Description
 Enable/disable vga decode (all asics).
 Returns VGA resource flags.
 
-.. _`amdgpu_check_pot_argument`:
-
-amdgpu_check_pot_argument
-=========================
-
-.. c:function:: bool amdgpu_check_pot_argument(int arg)
-
-    check that argument is a power of two
-
-    :param int arg:
-        value to check
-
-.. _`amdgpu_check_pot_argument.description`:
-
-Description
------------
-
-Validates that a certain argument is a power of two (all asics).
-Returns true if argument is valid.
-
 .. _`amdgpu_check_arguments`:
 
 amdgpu_check_arguments
@@ -1083,16 +1018,15 @@ Called at driver resume.
 amdgpu_sriov_gpu_reset
 ======================
 
-.. c:function:: int amdgpu_sriov_gpu_reset(struct amdgpu_device *adev, bool voluntary)
+.. c:function:: int amdgpu_sriov_gpu_reset(struct amdgpu_device *adev, struct amdgpu_job *job)
 
     reset the asic
 
     :param struct amdgpu_device \*adev:
         amdgpu device pointer
 
-    :param bool voluntary:
-        if this reset is requested by guest.
-        (true means by guest and false means by HYPERVISOR )
+    :param struct amdgpu_job \*job:
+        which job trigger hang
 
 .. _`amdgpu_sriov_gpu_reset.description`:
 

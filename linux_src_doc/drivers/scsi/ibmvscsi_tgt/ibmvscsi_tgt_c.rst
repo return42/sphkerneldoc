@@ -426,6 +426,39 @@ Description
 
 Must be called with interrupt lock held.
 
+.. _`ibmvscsis_ready_for_suspend`:
+
+ibmvscsis_ready_for_suspend
+===========================
+
+.. c:function:: long ibmvscsis_ready_for_suspend(struct scsi_info *vscsi, bool idle)
+
+    Helper function to call VIOCTL
+
+    :param struct scsi_info \*vscsi:
+        Pointer to our adapter structure
+
+    :param bool idle:
+        Indicates whether we were called from adapter_idle.  This
+        is important to know if we need to do a disconnect, since if
+        we're called from adapter_idle, we're still processing the
+        current disconnect, so we can't just call post_disconnect.
+
+.. _`ibmvscsis_ready_for_suspend.description`:
+
+Description
+-----------
+
+This function is called when the adapter is idle when phyp has sent
+us a Prepare for Suspend Transport Event.
+
+.. _`ibmvscsis_ready_for_suspend.execution-environment`:
+
+EXECUTION ENVIRONMENT
+---------------------
+
+Process or interrupt environment called with interrupt lock held
+
 .. _`ibmvscsis_trans_event`:
 
 ibmvscsis_trans_event

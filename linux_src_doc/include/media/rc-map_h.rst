@@ -1,120 +1,120 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/rc-map.h
 
-.. _`rc_type`:
+.. _`rc_proto`:
 
-enum rc_type
-============
+enum rc_proto
+=============
 
-.. c:type:: enum rc_type
+.. c:type:: enum rc_proto
 
-    type of the Remote Controller protocol
+    the Remote Controller protocol
 
-.. _`rc_type.definition`:
+.. _`rc_proto.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    enum rc_type {
-        RC_TYPE_UNKNOWN,
-        RC_TYPE_OTHER,
-        RC_TYPE_RC5,
-        RC_TYPE_RC5X_20,
-        RC_TYPE_RC5_SZ,
-        RC_TYPE_JVC,
-        RC_TYPE_SONY12,
-        RC_TYPE_SONY15,
-        RC_TYPE_SONY20,
-        RC_TYPE_NEC,
-        RC_TYPE_NECX,
-        RC_TYPE_NEC32,
-        RC_TYPE_SANYO,
-        RC_TYPE_MCIR2_KBD,
-        RC_TYPE_MCIR2_MSE,
-        RC_TYPE_RC6_0,
-        RC_TYPE_RC6_6A_20,
-        RC_TYPE_RC6_6A_24,
-        RC_TYPE_RC6_6A_32,
-        RC_TYPE_RC6_MCE,
-        RC_TYPE_SHARP,
-        RC_TYPE_XMP,
-        RC_TYPE_CEC
+    enum rc_proto {
+        RC_PROTO_UNKNOWN,
+        RC_PROTO_OTHER,
+        RC_PROTO_RC5,
+        RC_PROTO_RC5X_20,
+        RC_PROTO_RC5_SZ,
+        RC_PROTO_JVC,
+        RC_PROTO_SONY12,
+        RC_PROTO_SONY15,
+        RC_PROTO_SONY20,
+        RC_PROTO_NEC,
+        RC_PROTO_NECX,
+        RC_PROTO_NEC32,
+        RC_PROTO_SANYO,
+        RC_PROTO_MCIR2_KBD,
+        RC_PROTO_MCIR2_MSE,
+        RC_PROTO_RC6_0,
+        RC_PROTO_RC6_6A_20,
+        RC_PROTO_RC6_6A_24,
+        RC_PROTO_RC6_6A_32,
+        RC_PROTO_RC6_MCE,
+        RC_PROTO_SHARP,
+        RC_PROTO_XMP,
+        RC_PROTO_CEC
     };
 
-.. _`rc_type.constants`:
+.. _`rc_proto.constants`:
 
 Constants
 ---------
 
-RC_TYPE_UNKNOWN
+RC_PROTO_UNKNOWN
     Protocol not known
 
-RC_TYPE_OTHER
+RC_PROTO_OTHER
     Protocol known but proprietary
 
-RC_TYPE_RC5
+RC_PROTO_RC5
     Philips RC5 protocol
 
-RC_TYPE_RC5X_20
+RC_PROTO_RC5X_20
     Philips RC5x 20 bit protocol
 
-RC_TYPE_RC5_SZ
+RC_PROTO_RC5_SZ
     StreamZap variant of RC5
 
-RC_TYPE_JVC
+RC_PROTO_JVC
     JVC protocol
 
-RC_TYPE_SONY12
+RC_PROTO_SONY12
     Sony 12 bit protocol
 
-RC_TYPE_SONY15
+RC_PROTO_SONY15
     Sony 15 bit protocol
 
-RC_TYPE_SONY20
+RC_PROTO_SONY20
     Sony 20 bit protocol
 
-RC_TYPE_NEC
+RC_PROTO_NEC
     NEC protocol
 
-RC_TYPE_NECX
+RC_PROTO_NECX
     Extended NEC protocol
 
-RC_TYPE_NEC32
+RC_PROTO_NEC32
     NEC 32 bit protocol
 
-RC_TYPE_SANYO
+RC_PROTO_SANYO
     Sanyo protocol
 
-RC_TYPE_MCIR2_KBD
+RC_PROTO_MCIR2_KBD
     RC6-ish MCE keyboard
 
-RC_TYPE_MCIR2_MSE
+RC_PROTO_MCIR2_MSE
     RC6-ish MCE mouse
 
-RC_TYPE_RC6_0
+RC_PROTO_RC6_0
     Philips RC6-0-16 protocol
 
-RC_TYPE_RC6_6A_20
+RC_PROTO_RC6_6A_20
     Philips RC6-6A-20 protocol
 
-RC_TYPE_RC6_6A_24
+RC_PROTO_RC6_6A_24
     Philips RC6-6A-24 protocol
 
-RC_TYPE_RC6_6A_32
+RC_PROTO_RC6_6A_32
     Philips RC6-6A-32 protocol
 
-RC_TYPE_RC6_MCE
+RC_PROTO_RC6_MCE
     MCE (Philips RC6-6A-32 subtype) protocol
 
-RC_TYPE_SHARP
+RC_PROTO_SHARP
     Sharp protocol
 
-RC_TYPE_XMP
+RC_PROTO_XMP
     XMP protocol
 
-RC_TYPE_CEC
+RC_PROTO_CEC
     CEC protocol
 
 .. _`rc_map_table`:
@@ -170,7 +170,7 @@ Definition
         unsigned int size;
         unsigned int len;
         unsigned int alloc;
-        enum rc_type rc_type;
+        enum rc_proto rc_proto;
         const char *name;
         spinlock_t lock;
     }
@@ -192,9 +192,9 @@ len
 alloc
     size of \*scan, in bytes
 
-rc_type
+rc_proto
     type of the remote controller protocol, as defined at
-    enum \ :c:type:`struct rc_type <rc_type>`\ 
+    enum \ :c:type:`struct rc_proto <rc_proto>`\ 
 
 name
     name of the key map table

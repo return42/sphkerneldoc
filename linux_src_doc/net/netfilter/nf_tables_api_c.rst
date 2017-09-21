@@ -85,6 +85,31 @@ Description
 
 Unregisters the expr typefor use with nf_tables.
 
+.. _`nft_data_hold`:
+
+nft_data_hold
+=============
+
+.. c:function:: void nft_data_hold(const struct nft_data *data, enum nft_data_types type)
+
+    hold a nft_data item
+
+    :param const struct nft_data \*data:
+        struct nft_data to release
+
+    :param enum nft_data_types type:
+        type of data
+
+.. _`nft_data_hold.description`:
+
+Description
+-----------
+
+Hold a nft_data item. NFT_DATA_VALUE types can be silently discarded,
+NFT_DATA_VERDICT bumps the reference to chains in case of NFT_JUMP and
+NFT_GOTO verdicts. This function must be called on active data objects
+from the second phase of the commit protocol.
+
 .. _`nft_register_obj`:
 
 nft_register_obj
@@ -292,12 +317,12 @@ The type and length of data are returned in the data description.
 The caller can indicate that it only wants to accept data of type
 NFT_DATA_VALUE by passing NULL for the ctx argument.
 
-.. _`nft_data_uninit`:
+.. _`nft_data_release`:
 
-nft_data_uninit
-===============
+nft_data_release
+================
 
-.. c:function:: void nft_data_uninit(const struct nft_data *data, enum nft_data_types type)
+.. c:function:: void nft_data_release(const struct nft_data *data, enum nft_data_types type)
 
     release a nft_data item
 
@@ -307,7 +332,7 @@ nft_data_uninit
     :param enum nft_data_types type:
         type of data
 
-.. _`nft_data_uninit.description`:
+.. _`nft_data_release.description`:
 
 Description
 -----------

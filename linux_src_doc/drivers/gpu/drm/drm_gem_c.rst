@@ -113,6 +113,42 @@ Removes the GEM handle from the \ ``filp``\  lookup table which has been added w
 \ :c:func:`drm_gem_handle_create`\ . If this is the last handle also cleans up linked
 resources like GEM names.
 
+.. _`drm_gem_dumb_map_offset`:
+
+drm_gem_dumb_map_offset
+=======================
+
+.. c:function:: int drm_gem_dumb_map_offset(struct drm_file *file, struct drm_device *dev, u32 handle, u64 *offset)
+
+    return the fake mmap offset for a gem object
+
+    :param struct drm_file \*file:
+        drm file-private structure containing the gem object
+
+    :param struct drm_device \*dev:
+        corresponding drm_device
+
+    :param u32 handle:
+        gem object handle
+
+    :param u64 \*offset:
+        return location for the fake mmap offset
+
+.. _`drm_gem_dumb_map_offset.description`:
+
+Description
+-----------
+
+This implements the \ :c:type:`drm_driver.dumb_map_offset <drm_driver>`\  kms driver callback for
+drivers which use gem to manage their backing storage.
+
+.. _`drm_gem_dumb_map_offset.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
 .. _`drm_gem_dumb_destroy`:
 
 drm_gem_dumb_destroy

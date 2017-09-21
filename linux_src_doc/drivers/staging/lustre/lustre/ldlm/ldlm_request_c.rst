@@ -36,6 +36,35 @@ ASTs and the LVB is returned to the caller, and lock holder(s) may CANCEL
 their lock(s) if they are idle. If the resource is not locked, the server
 may grant the lock.
 
+.. _`ldlm_request_bufsize`:
+
+ldlm_request_bufsize
+====================
+
+.. c:function:: int ldlm_request_bufsize(int count, int type)
+
+    :param int count:
+        number of ldlm handles
+
+    :param int type:
+        ldlm opcode
+
+.. _`ldlm_request_bufsize.description`:
+
+Description
+-----------
+
+If opcode=LDLM_ENQUEUE, 1 slot is already occupied,
+LDLM_LOCKREQ_HANDLE -1 slots are available.
+Otherwise, LDLM_LOCKREQ_HANDLE slots are available.
+
+.. _`ldlm_request_bufsize.return`:
+
+Return
+------
+
+size of the request buffer
+
 .. _`ldlm_cp_timeout`:
 
 ldlm_cp_timeout

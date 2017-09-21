@@ -10,3 +10,4 @@ phy
     phy-qcom-ufs_h
     phy-sun4i-usb_h
     phy_h
+    ulpi_phy_h

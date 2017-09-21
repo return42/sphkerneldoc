@@ -641,9 +641,9 @@ i40iw_del_multiple_qhash
 i40iw_netdev_vlan_ipv6
 ======================
 
-.. c:function:: struct net_device *i40iw_netdev_vlan_ipv6(u32 *addr, u16 *vlan_id, u8 *mac)
+.. c:function:: struct net_device *i40iw_netdev_vlan_ipv6(u32 *addr, u16 *vlan_id)
 
-    Gets the netdev and mac
+    Gets the netdev and vlan
 
     :param u32 \*addr:
         local IPv6 address
@@ -651,16 +651,13 @@ i40iw_netdev_vlan_ipv6
     :param u16 \*vlan_id:
         vlan id for the given IPv6 address
 
-    :param u8 \*mac:
-        mac address for the given IPv6 address
-
 .. _`i40iw_netdev_vlan_ipv6.description`:
 
 Description
 -----------
 
 Returns the net_device of the IPv6 address and also sets the
-vlan id and mac for that address.
+vlan id for that address.
 
 .. _`i40iw_get_vlan_ipv4`:
 

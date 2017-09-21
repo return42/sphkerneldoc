@@ -361,7 +361,7 @@ Return
 rsi_hal_key_config
 ==================
 
-.. c:function:: int rsi_hal_key_config(struct ieee80211_hw *hw, struct ieee80211_vif *vif, struct ieee80211_key_conf *key)
+.. c:function:: int rsi_hal_key_config(struct ieee80211_hw *hw, struct ieee80211_vif *vif, struct ieee80211_key_conf *key, struct ieee80211_sta *sta)
 
     This function loads the keys into the firmware.
 
@@ -374,12 +374,15 @@ rsi_hal_key_config
     :param struct ieee80211_key_conf \*key:
         Pointer to the ieee80211_key_conf structure.
 
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
 .. _`rsi_hal_key_config.return`:
 
 Return
 ------
 
-status: 0 on success, -1 on failure.
+status: 0 on success, negative error codes on failure.
 
 .. _`rsi_mac80211_set_key`:
 
@@ -575,7 +578,7 @@ rsi_mac80211_sta_add
 Return
 ------
 
-0 on success, -1 on failure.
+0 on success, negative error codes on failure.
 
 .. _`rsi_mac80211_sta_remove`:
 
@@ -600,7 +603,7 @@ rsi_mac80211_sta_remove
 Return
 ------
 
-0 on success, -1 on failure.
+0 on success, negative error codes on failure.
 
 .. _`rsi_mac80211_set_antenna`:
 
@@ -650,7 +653,7 @@ rsi_mac80211_get_antenna
 Return
 ------
 
-0 on success, -1 on failure.
+0 on success, negative error codes on failure.
 
 .. _`rsi_mac80211_attach`:
 
@@ -669,7 +672,7 @@ rsi_mac80211_attach
 Return
 ------
 
-0 on success, -1 on failure.
+0 on success, negative error codes on failure.
 
 .. This file was automatic generated / don't edit.
 

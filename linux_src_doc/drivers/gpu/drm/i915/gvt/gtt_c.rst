@@ -535,15 +535,12 @@ to reset all the GGTT entries.
 intel_vgpu_reset_gtt
 ====================
 
-.. c:function:: void intel_vgpu_reset_gtt(struct intel_vgpu *vgpu, bool dmlr)
+.. c:function:: void intel_vgpu_reset_gtt(struct intel_vgpu *vgpu)
 
     reset the all GTT related status
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
-
-    :param bool dmlr:
-        true for vGPU Device Model Level Reset, false for GT Reset
 
 .. _`intel_vgpu_reset_gtt.description`:
 

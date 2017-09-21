@@ -20,7 +20,7 @@ kthread_create
         printf-style format string for the thread name
 
     :param  arg...:
-        variable arguments
+        arguments for \ ``namefmt``\ .
 
 .. _`kthread_create.description`:
 

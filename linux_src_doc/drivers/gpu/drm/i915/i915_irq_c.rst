@@ -178,19 +178,19 @@ Doesn't actually do anything except notify userspace. As a consequence of
 this event, userspace should try to remap the bad rows since statistically
 it is likely the same row is more likely to go bad again.
 
-.. _`i915_reset_and_wakeup`:
+.. _`i915_reset_device`:
 
-i915_reset_and_wakeup
-=====================
+i915_reset_device
+=================
 
-.. c:function:: void i915_reset_and_wakeup(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_reset_device(struct drm_i915_private *dev_priv)
 
     do process context error handling work
 
     :param struct drm_i915_private \*dev_priv:
         i915 device private
 
-.. _`i915_reset_and_wakeup.description`:
+.. _`i915_reset_device.description`:
 
 Description
 -----------
@@ -249,6 +249,25 @@ Description
 
 This function initializes all the irq support including work items, timers
 and all the vtables. It does not setup the interrupt itself though.
+
+.. _`intel_irq_fini`:
+
+intel_irq_fini
+==============
+
+.. c:function:: void intel_irq_fini(struct drm_i915_private *i915)
+
+    deinitializes IRQ support
+
+    :param struct drm_i915_private \*i915:
+        i915 device instance
+
+.. _`intel_irq_fini.description`:
+
+Description
+-----------
+
+This function deinitializes all the IRQ support.
 
 .. _`intel_irq_install`:
 

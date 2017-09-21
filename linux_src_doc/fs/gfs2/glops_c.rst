@@ -45,7 +45,7 @@ Description
 
 Called when demoting or unlocking an EX glock.  We must flush
 to disk all dirty buffers/pages relating to this glock, and must not
-not return to caller to demote/unlock the glock until I/O is complete.
+return to caller to demote/unlock the glock until I/O is complete.
 
 .. _`rgrp_go_inval`:
 
@@ -124,31 +124,6 @@ Return
 ------
 
 1 if it's ok
-
-.. _`gfs2_set_nlink`:
-
-gfs2_set_nlink
-==============
-
-.. c:function:: void gfs2_set_nlink(struct inode *inode, u32 nlink)
-
-    Set the inode's link count based on on-disk info
-
-    :param struct inode \*inode:
-        The inode in question
-
-    :param u32 nlink:
-        The link count
-
-.. _`gfs2_set_nlink.description`:
-
-Description
------------
-
-If the link count has hit zero, it must never be raised, whatever the
-on-disk inode might say. When new struct inodes are created the link
-count is set to 1, so that we can safely use this test even when reading
-in on disk information for the first time.
 
 .. _`gfs2_inode_refresh`:
 

@@ -97,7 +97,7 @@ Definition
 
     struct visor_device {
         struct visorchannel *visorchannel;
-        uuid_le channel_type_guid;
+        guid_t channel_type_guid;
         struct device device;
         struct list_head list_all;
         struct timer_list timer;
@@ -109,11 +109,11 @@ Definition
         u32 chipset_bus_no;
         u32 chipset_dev_no;
         struct visorchipset_state state;
-        uuid_le inst;
+        guid_t inst;
         u8 *name;
         struct controlvm_message_header *pending_msg_hdr;
         void *vbus_hdr_info;
-        uuid_le partition_uuid;
+        guid_t partition_guid;
         struct dentry *debugfs_dir;
         struct dentry *debugfs_client_bus_info;
     }
@@ -149,8 +149,8 @@ being_removed
     the bus. Private bus driver use only.
 
 visordriver_callback_lock
-    Used by the bus driver to lock when handling
-    channel events.
+    Used by the bus driver to lock when adding and
+    removing devices.
 
 pausing
     Indicates that a change towards a paused state.
@@ -184,7 +184,7 @@ vbus_hdr_info
     A pointer to header info. Private use by bus
     driver.
 
-partition_uuid
+partition_guid
     Indicates client partion id. This should be the
     same across all visor_devices in the current
     guest. Private use by bus driver only.

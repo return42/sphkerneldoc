@@ -68,6 +68,7 @@ Definition
     #define IO_PGTABLE_QUIRK_NO_PERMS BIT(1)
     #define IO_PGTABLE_QUIRK_TLBI_ON_MAP BIT(2)
     #define IO_PGTABLE_QUIRK_ARM_MTK_4GB BIT(3)
+    #define IO_PGTABLE_QUIRK_NO_DMA BIT(4)
         unsigned long quirks;
         unsigned long pgsize_bitmap;
         unsigned int ias;
@@ -203,7 +204,6 @@ Definition
     struct io_pgtable {
         enum io_pgtable_fmt fmt;
         void *cookie;
-        bool tlb_sync_pending;
         struct io_pgtable_cfg cfg;
         struct io_pgtable_ops ops;
     }
@@ -219,9 +219,6 @@ fmt
 cookie
     An opaque token provided by the IOMMU driver and passed back to
     any callback routines.
-
-tlb_sync_pending
-    Private flag for optimising out redundant syncs.
 
 cfg
     A copy of the page table configuration.

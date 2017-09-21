@@ -409,19 +409,28 @@ vmw_execbuf_ioctl
     :param size_t size:
         *undescribed*
 
-.. _`vmw_irq_handler`:
+.. _`vmw_wait_seqno`:
 
-vmw_irq_handler
-===============
+vmw_wait_seqno
+==============
 
-.. c:function:: irqreturn_t vmw_irq_handler(int irq, void *arg)
+.. c:function:: int vmw_wait_seqno(struct vmw_private *dev_priv, bool lazy, uint32_t seqno, bool interruptible, unsigned long timeout)
 
     vmwgfx_irq.c
 
-    :param int irq:
+    :param struct vmw_private \*dev_priv:
         *undescribed*
 
-    :param void \*arg:
+    :param bool lazy:
+        *undescribed*
+
+    :param uint32_t seqno:
+        *undescribed*
+
+    :param bool interruptible:
+        *undescribed*
+
+    :param unsigned long timeout:
         *undescribed*
 
 .. _`vmw_marker_queue_init`:

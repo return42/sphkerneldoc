@@ -537,5 +537,27 @@ base object, and prop_holds_id set to the path property name, will perform
 a completely atomic update. The access to path_blob_ptr is protected by the
 caller holding a lock on the connector.
 
+.. _`drm_property_replace_blob`:
+
+drm_property_replace_blob
+=========================
+
+.. c:function:: bool drm_property_replace_blob(struct drm_property_blob **blob, struct drm_property_blob *new_blob)
+
+    replace a blob property
+
+    :param struct drm_property_blob \*\*blob:
+        a pointer to the member blob to be replaced
+
+    :param struct drm_property_blob \*new_blob:
+        the new blob to replace with
+
+.. _`drm_property_replace_blob.return`:
+
+Return
+------
+
+true if the blob was in fact replaced.
+
 .. This file was automatic generated / don't edit.
 

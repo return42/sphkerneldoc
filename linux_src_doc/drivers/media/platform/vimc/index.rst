@@ -7,5 +7,4 @@ vimc
 .. toctree::
     :maxdepth: 1
 
-    vimc-core_c
-    vimc-core_h
+    vimc-common_h

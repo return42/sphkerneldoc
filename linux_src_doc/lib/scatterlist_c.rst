@@ -593,5 +593,33 @@ Description
 
 Returns the number of copied bytes.
 
+.. _`sg_zero_buffer`:
+
+sg_zero_buffer
+==============
+
+.. c:function:: size_t sg_zero_buffer(struct scatterlist *sgl, unsigned int nents, size_t buflen, off_t skip)
+
+    Zero-out a part of a SG list
+
+    :param struct scatterlist \*sgl:
+        The SG list
+
+    :param unsigned int nents:
+        Number of SG entries
+
+    :param size_t buflen:
+        The number of bytes to zero out
+
+    :param off_t skip:
+        Number of bytes to skip before zeroing
+
+.. _`sg_zero_buffer.description`:
+
+Description
+-----------
+
+Returns the number of bytes zeroed.
+
 .. This file was automatic generated / don't edit.
 

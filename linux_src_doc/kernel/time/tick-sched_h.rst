@@ -22,6 +22,7 @@ Definition
         unsigned long check_clocks;
         enum tick_nohz_mode nohz_mode;
         ktime_t last_tick;
+        ktime_t next_tick;
         int inidle;
         int tick_stopped;
         unsigned long idle_jiffies;
@@ -61,6 +62,9 @@ last_tick
     timer is modified for nohz sleeps. This is necessary
     to resume the tick timer operation in the timeline
     when the CPU returns from nohz sleep.
+
+next_tick
+    Next tick to be fired when in dynticks mode.
 
 inidle
     *undescribed*

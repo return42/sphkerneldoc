@@ -57,7 +57,7 @@ get_ioc4_port
 port_init
 =========
 
-.. c:function:: int inline port_init(struct ioc4_port *port)
+.. c:function:: int port_init(struct ioc4_port *port)
 
     Initialize the sio and ioc4 hardware for a given port called per port from attach...
 
@@ -123,7 +123,7 @@ ioc4_intr
 ioc4_attach_local
 =================
 
-.. c:function:: int inline ioc4_attach_local(struct ioc4_driver_data *idd)
+.. c:function:: int ioc4_attach_local(struct ioc4_driver_data *idd)
 
     Device initialization. Called at \*\_attach() time for each IOC4 with serial ports in the system.
 

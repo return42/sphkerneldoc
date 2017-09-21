@@ -6,7 +6,7 @@
 iwl_parse_nvm_data
 ==================
 
-.. c:function:: struct iwl_nvm_data *iwl_parse_nvm_data(struct iwl_trans *trans, const struct iwl_cfg *cfg, const __le16 *nvm_hw, const __le16 *nvm_sw, const __le16 *nvm_calib, const __le16 *regulatory, const __le16 *mac_override, const __le16 *phy_sku, u8 tx_chains, u8 rx_chains, bool lar_fw_supported)
+.. c:function:: struct iwl_nvm_data *iwl_parse_nvm_data(struct iwl_trans *trans, const struct iwl_cfg *cfg, const __be16 *nvm_hw, const __le16 *nvm_sw, const __le16 *nvm_calib, const __le16 *regulatory, const __le16 *mac_override, const __le16 *phy_sku, u8 tx_chains, u8 rx_chains, bool lar_fw_supported)
 
     parse NVM data and return values
 
@@ -16,7 +16,7 @@ iwl_parse_nvm_data
     :param const struct iwl_cfg \*cfg:
         *undescribed*
 
-    :param const __le16 \*nvm_hw:
+    :param const __be16 \*nvm_hw:
         *undescribed*
 
     :param const __le16 \*nvm_sw:
@@ -73,7 +73,7 @@ iwl_set_hw_address_from_csr
 iwl_init_sbands
 ===============
 
-.. c:function:: void iwl_init_sbands(struct device *dev, const struct iwl_cfg *cfg, struct iwl_nvm_data *data, const __le16 *nvm_ch_flags, u8 tx_chains, u8 rx_chains, bool lar_supported)
+.. c:function:: void iwl_init_sbands(struct device *dev, const struct iwl_cfg *cfg, struct iwl_nvm_data *data, const __le16 *nvm_ch_flags, u8 tx_chains, u8 rx_chains, bool lar_supported, bool no_wide_in_5ghz)
 
     parse and set all channel profiles
 
@@ -96,6 +96,9 @@ iwl_init_sbands
         *undescribed*
 
     :param bool lar_supported:
+        *undescribed*
+
+    :param bool no_wide_in_5ghz:
         *undescribed*
 
 .. _`iwl_parse_nvm_mcc_info`:

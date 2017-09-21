@@ -312,6 +312,34 @@ reference on it - IOW, RCU protected access is good enough for this
 function.  Returns \ ``true``\  if a reference count was successfully obtained;
 \ ``false``\  otherwise.
 
+.. _`css_is_dying`:
+
+css_is_dying
+============
+
+.. c:function:: bool css_is_dying(struct cgroup_subsys_state *css)
+
+    test whether the specified css is dying
+
+    :param struct cgroup_subsys_state \*css:
+        target css
+
+.. _`css_is_dying.description`:
+
+Description
+-----------
+
+Test whether \ ``css``\  is in the process of offlining or already offline.  In
+most cases, ->css_online() and ->css_offline() callbacks should be
+enough; however, the actual offline operations are RCU delayed and this
+test returns \ ``true``\  also when \ ``css``\  is scheduled to be offlined.
+
+This is useful, for example, when the use case requires synchronous
+behavior with respect to cgroup removal.  cgroup removal schedules css
+offlining but the css can seem alive while the operation is being
+delayed.  If the delay affects user visible semantics, this test can be
+used to resolve the situation.
+
 .. _`css_put`:
 
 css_put

@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: security/apparmor/include/policy.h
 
+.. _`aa_get_newest_profile`:
+
+aa_get_newest_profile
+=====================
+
+.. c:function:: struct aa_profile *aa_get_newest_profile(struct aa_profile *p)
+
+    simple wrapper fn to wrap the label version
+
+    :param struct aa_profile \*p:
+        profile (NOT NULL)
+
+.. _`aa_get_newest_profile.description`:
+
+Description
+-----------
+
+Returns refcount to newest version of the profile (maybe \ ``p``\ )
+
+.. _`aa_get_newest_profile.requires`:
+
+Requires
+--------
+
+@p must be held with a valid refcount
+
 .. _`aa_get_profile`:
 
 aa_get_profile
@@ -72,27 +98,6 @@ Return
 
 pointer to a refcounted profile.
 else NULL if no profile
-
-.. _`aa_get_newest_profile`:
-
-aa_get_newest_profile
-=====================
-
-.. c:function:: struct aa_profile *aa_get_newest_profile(struct aa_profile *p)
-
-    find the newest version of \ ``profile``\ 
-
-    :param struct aa_profile \*p:
-        *undescribed*
-
-.. _`aa_get_newest_profile.return`:
-
-Return
-------
-
-refcounted newest version of \ ``profile``\  taking into account
-replacement, renames and removals
-return \ ``profile``\ .
 
 .. _`aa_put_profile`:
 

@@ -38,9 +38,12 @@ them. FAIL and ERROR messages are always displayed.
 print_result
 ============
 
-.. c:function:: void print_result(int ret)
+.. c:function:: void print_result(const char *test_name, int ret)
 
     Print standard PASS \| ERROR \| FAIL results
+
+    :param const char \*test_name:
+        *undescribed*
 
     :param int ret:
         the return value to be considered: 0 \| RET_ERROR \| RET_FAIL

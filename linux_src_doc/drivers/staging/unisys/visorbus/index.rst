@@ -7,5 +7,4 @@ visorbus
 .. toctree::
     :maxdepth: 1
 
-    visorbus_main_c
     visorchannel_c

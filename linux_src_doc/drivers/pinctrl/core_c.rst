@@ -386,7 +386,8 @@ pinctrl_generic_free_groups
 Description
 -----------
 
-Note that the caller must take care of locking.
+Note that the caller must take care of locking. The pinctrl groups
+are allocated with \ :c:func:`devm_kzalloc`\  so no need to free them here.
 
 .. _`pinctrl_get_group_selector`:
 
@@ -603,11 +604,11 @@ code will ensure that the resource is freed.
 pinctrl_register_mappings
 =========================
 
-.. c:function:: int pinctrl_register_mappings(struct pinctrl_map const *maps, unsigned num_maps)
+.. c:function:: int pinctrl_register_mappings(const struct pinctrl_map *maps, unsigned num_maps)
 
     register a set of pin controller mappings
 
-    :param struct pinctrl_map const \*maps:
+    :param const struct pinctrl_map \*maps:
         the pincontrol mappings table to register. This should probably be
         marked with \__initdata so it can be discarded after boot. This
         function will perform a shallow copy for the mapping entries.

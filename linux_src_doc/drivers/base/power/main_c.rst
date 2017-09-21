@@ -269,8 +269,8 @@ dpm_resume_noirq
 Description
 -----------
 
-Call the "noirq" resume handlers for all devices in dpm_noirq_list and
-enable device drivers to receive interrupts.
+Invoke the "noirq" resume callbacks for all devices in dpm_noirq_list and
+allow device drivers' interrupt handlers to be called.
 
 .. _`device_resume_early`:
 
@@ -477,8 +477,8 @@ dpm_suspend_noirq
 Description
 -----------
 
-Prevent device drivers from receiving interrupts and call the "noirq" suspend
-handlers for all non-sysdev devices.
+Prevent device drivers' interrupt handlers from being called and invoke
+"noirq" suspend callbacks for all non-sysdev devices.
 
 .. _`__device_suspend_late`:
 
@@ -534,7 +534,7 @@ dpm_suspend_end
 legacy_suspend
 ==============
 
-.. c:function:: int legacy_suspend(struct device *dev, pm_message_t state, int (*cb)(struct device *dev, pm_message_t state), char *info)
+.. c:function:: int legacy_suspend(struct device *dev, pm_message_t state, int (*cb)(struct device *dev, pm_message_t state), const char *info)
 
     Execute a legacy (bus or class) suspend callback for device.
 
@@ -547,7 +547,7 @@ legacy_suspend
     :param int (\*cb)(struct device \*dev, pm_message_t state):
         Suspend callback to execute.
 
-    :param char \*info:
+    :param const char \*info:
         string description of caller.
 
 .. _`__device_suspend`:

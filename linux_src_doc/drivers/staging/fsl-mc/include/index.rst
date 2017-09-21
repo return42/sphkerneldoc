@@ -12,8 +12,4 @@ include
     dpaa2-io_h
     dpbp_h
     dpcon_h
-    dpmng_h
-    dprc_h
-    mc-bus_h
-    mc-sys_h
     mc_h

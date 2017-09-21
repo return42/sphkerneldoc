@@ -95,6 +95,97 @@ It is the same as tty_register_device_attr except the provided \ ``port``\  is
 linked to a concrete tty specified by \ ``index``\ . Use this or tty_port_install
 (or both). Call tty_port_link_device as a last resort.
 
+.. _`tty_port_register_device_attr_serdev`:
+
+tty_port_register_device_attr_serdev
+====================================
+
+.. c:function:: struct device *tty_port_register_device_attr_serdev(struct tty_port *port, struct tty_driver *driver, unsigned index, struct device *device, void *drvdata, const struct attribute_group **attr_grp)
+
+    register tty or serdev device
+
+    :param struct tty_port \*port:
+        tty_port of the device
+
+    :param struct tty_driver \*driver:
+        tty_driver for this device
+
+    :param unsigned index:
+        index of the tty
+
+    :param struct device \*device:
+        parent if exists, otherwise NULL
+
+    :param void \*drvdata:
+        driver data for the device
+
+    :param const struct attribute_group \*\*attr_grp:
+        attribute group for the device
+
+.. _`tty_port_register_device_attr_serdev.description`:
+
+Description
+-----------
+
+Register a serdev or tty device depending on if the parent device has any
+defined serdev clients or not.
+
+.. _`tty_port_register_device_serdev`:
+
+tty_port_register_device_serdev
+===============================
+
+.. c:function:: struct device *tty_port_register_device_serdev(struct tty_port *port, struct tty_driver *driver, unsigned index, struct device *device)
+
+    register tty or serdev device
+
+    :param struct tty_port \*port:
+        tty_port of the device
+
+    :param struct tty_driver \*driver:
+        tty_driver for this device
+
+    :param unsigned index:
+        index of the tty
+
+    :param struct device \*device:
+        parent if exists, otherwise NULL
+
+.. _`tty_port_register_device_serdev.description`:
+
+Description
+-----------
+
+Register a serdev or tty device depending on if the parent device has any
+defined serdev clients or not.
+
+.. _`tty_port_unregister_device`:
+
+tty_port_unregister_device
+==========================
+
+.. c:function:: void tty_port_unregister_device(struct tty_port *port, struct tty_driver *driver, unsigned index)
+
+    deregister a tty or serdev device
+
+    :param struct tty_port \*port:
+        tty_port of the device
+
+    :param struct tty_driver \*driver:
+        tty_driver for this device
+
+    :param unsigned index:
+        index of the tty
+
+.. _`tty_port_unregister_device.description`:
+
+Description
+-----------
+
+If a tty or serdev device is registered with a call to
+\ :c:func:`tty_port_register_device_serdev`\  then this function must be called when
+the device is gone.
+
 .. _`tty_port_destroy`:
 
 tty_port_destroy

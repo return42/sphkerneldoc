@@ -20,20 +20,35 @@ Definition
     struct nfp_pf {
         struct pci_dev *pdev;
         struct nfp_cpp *cpp;
-        struct nfp_cpp_area *ctrl_area;
-        struct nfp_cpp_area *tx_area;
-        struct nfp_cpp_area *rx_area;
+        struct nfp_app *app;
+        struct nfp_cpp_area *data_vnic_bar;
+        struct nfp_cpp_area *ctrl_vnic_bar;
+        struct nfp_cpp_area *qc_area;
+        struct nfp_cpp_area *mac_stats_bar;
+        u8 __iomem *mac_stats_mem;
+        struct nfp_cpp_area *vf_cfg_bar;
+        u8 __iomem *vf_cfg_mem;
+        struct nfp_cpp_area *vfcfg_tbl2_area;
+        u8 __iomem *vfcfg_tbl2;
         struct msix_entry *irq_entries;
         unsigned int limit_vfs;
         unsigned int num_vfs;
         bool fw_loaded;
+        struct nfp_net *ctrl_vnic;
+        const struct nfp_mip *mip;
+        struct nfp_rtsym_table *rtbl;
+        struct nfp_hwinfo *hwinfo;
         struct nfp_eth_table *eth_tbl;
+        struct nfp_nsp_identify *nspi;
+        struct device *hwmon_dev;
         struct dentry *ddir;
-        unsigned int num_ports;
-        unsigned int num_netdevs;
+        unsigned int max_data_vnics;
+        unsigned int num_vnics;
+        struct list_head vnics;
         struct list_head ports;
+        struct workqueue_struct *wq;
         struct work_struct port_refresh_work;
-        struct mutex port_lock;
+        struct mutex lock;
     }
 
 .. _`nfp_pf.members`:
@@ -47,17 +62,38 @@ pdev
 cpp
     Pointer to the CPP handle
 
-ctrl_area
-    Pointer to the CPP area for the control BAR
+app
+    Pointer to the APP handle
 
-tx_area
-    Pointer to the CPP area for the TX queues
+data_vnic_bar
+    Pointer to the CPP area for the data vNICs' BARs
 
-rx_area
-    Pointer to the CPP area for the FL/RX queues
+ctrl_vnic_bar
+    Pointer to the CPP area for the ctrl vNIC's BAR
+
+qc_area
+    Pointer to the CPP area for the queues
+
+mac_stats_bar
+    Pointer to the CPP area for the MAC stats
+
+mac_stats_mem
+    Pointer to mapped MAC stats area
+
+vf_cfg_bar
+    Pointer to the CPP area for the VF configuration BAR
+
+vf_cfg_mem
+    Pointer to mapped VF configuration area
+
+vfcfg_tbl2_area
+    Pointer to the CPP area for the VF config table
+
+vfcfg_tbl2
+    Pointer to mapped VF config table
 
 irq_entries
-    Array of MSI-X entries for all ports
+    Array of MSI-X entries for all vNICs
 
 limit_vfs
     Number of VFs supported by firmware (~0 for PCI limit)
@@ -68,26 +104,50 @@ num_vfs
 fw_loaded
     Is the firmware loaded?
 
+ctrl_vnic
+    Pointer to the control vNIC if available
+
+mip
+    MIP handle
+
+rtbl
+    RTsym table
+
+hwinfo
+    HWInfo table
+
 eth_tbl
     NSP ETH table
+
+nspi
+    NSP identification info
+
+hwmon_dev
+    pointer to hwmon device
 
 ddir
     Per-device debugfs directory
 
-num_ports
-    Number of adapter ports app firmware supports
+max_data_vnics
+    Number of data vNICs app firmware supports
 
-num_netdevs
-    Number of netdevs spawned
+num_vnics
+    Number of vNICs spawned
+
+vnics
+    Linked list of vNIC structures (struct nfp_net)
 
 ports
-    Linked list of port structures (struct nfp_net)
+    Linked list of port structures (struct nfp_port)
+
+wq
+    Workqueue for running works which need to grab \ ``lock``\ 
 
 port_refresh_work
     Work entry for taking netdevs out
 
-port_lock
-    Protects \ ``ports``\ , \ ``num_ports``\ , \ ``num_netdevs``\ 
+lock
+    Protects all fields which may change after probe
 
 .. This file was automatic generated / don't edit.
 

@@ -82,23 +82,19 @@ memory in e.g. the shrinker.
 i915_gem_evict_vm
 =================
 
-.. c:function:: int i915_gem_evict_vm(struct i915_address_space *vm, bool do_idle)
+.. c:function:: int i915_gem_evict_vm(struct i915_address_space *vm)
 
     Evict all idle vmas from a vm
 
     :param struct i915_address_space \*vm:
         Address space to cleanse
 
-    :param bool do_idle:
-        Boolean directing whether to idle first.
-
 .. _`i915_gem_evict_vm.description`:
 
 Description
 -----------
 
-This function evicts all idles vmas from a vm. If all unpinned vmas should be
-evicted the \ ``do_idle``\  needs to be set to true.
+This function evicts all vmas from a vm.
 
 This is used by the execbuf code as a last-ditch effort to defragment the
 address space.

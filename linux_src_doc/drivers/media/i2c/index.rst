@@ -7,6 +7,7 @@ i2c
 .. toctree::
     :maxdepth: 1
 
+    adv748x/index
     m5mols/index
     smiapp/index
     lm3560_c

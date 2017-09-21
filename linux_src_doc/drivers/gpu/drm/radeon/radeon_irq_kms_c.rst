@@ -374,5 +374,44 @@ Description
 
 Disables the hotplug detect interrupt for a specific hpd pin (all asics).
 
+.. _`radeon_irq_kms_set_irq_n_enabled`:
+
+radeon_irq_kms_set_irq_n_enabled
+================================
+
+.. c:function:: void radeon_irq_kms_set_irq_n_enabled(struct radeon_device *rdev, u32 reg, u32 mask, bool enable, const char *name, unsigned n)
+
+    helper for updating interrupt enable registers
+
+    :param struct radeon_device \*rdev:
+        radeon device pointer
+
+    :param u32 reg:
+        the register to write to enable/disable interrupts
+
+    :param u32 mask:
+        the mask that enables the interrupts
+
+    :param bool enable:
+        whether to enable or disable the interrupt register
+
+    :param const char \*name:
+        the name of the interrupt register to print to the kernel log
+
+    :param unsigned n:
+        *undescribed*
+
+.. _`radeon_irq_kms_set_irq_n_enabled.description`:
+
+Description
+-----------
+
+Helper for updating the enable state of interrupt registers. Checks whether
+or not the interrupt matches the enable state we want. If it doesn't, then
+we update it and print a debugging message to the kernel log indicating the
+new state of the interrupt register.
+
+Used for updating sequences of interrupts registers like HPD1, HPD2, etc.
+
 .. This file was automatic generated / don't edit.
 

@@ -30,8 +30,6 @@ Definition
         u32 imb_cat_table;
         struct mutex area_cache_mutex;
         struct list_head area_cache_list;
-        void *hwinfo;
-        void *rtsym;
     }
 
 .. _`nfp_cpp.members`:
@@ -74,19 +72,6 @@ area_cache_mutex
 
 area_cache_list
     cached areas for cpp/xpb read/write speed up
-
-hwinfo
-    HWInfo database fetched from the device
-
-rtsym
-    firmware run time symbols
-
-.. _`nfp_cpp.description`:
-
-Description
------------
-
-Following fields can be used only in \ :c:func:`probe`\  or with rtnl held:
 
 .. _`nfp_cpp_free`:
 
@@ -159,26 +144,6 @@ Return
 ------
 
 Length of NFP serial number
-
-.. _`nfp_nffw_cache_flush`:
-
-nfp_nffw_cache_flush
-====================
-
-.. c:function:: void nfp_nffw_cache_flush(struct nfp_cpp *cpp)
-
-    Flush cached firmware information
-
-    :param struct nfp_cpp \*cpp:
-        NFP CPP handle
-
-.. _`nfp_nffw_cache_flush.description`:
-
-Description
------------
-
-Flush cached firmware information.  This function should be called
-every time firmware is loaded on unloaded.
 
 .. _`nfp_cpp_area_alloc_with_name`:
 
@@ -263,6 +228,54 @@ NOTE
 @address and \ ``size``\  must be 32-bit aligned values.
 
 .. _`nfp_cpp_area_alloc.return`:
+
+Return
+------
+
+NFP CPP Area handle, or NULL
+
+.. _`nfp_cpp_area_alloc_acquire`:
+
+nfp_cpp_area_alloc_acquire
+==========================
+
+.. c:function:: struct nfp_cpp_area *nfp_cpp_area_alloc_acquire(struct nfp_cpp *cpp, const char *name, u32 dest, unsigned long long address, unsigned long size)
+
+    allocate a new CPP area and lock it down
+
+    :param struct nfp_cpp \*cpp:
+        CPP handle
+
+    :param const char \*name:
+        Name of region
+
+    :param u32 dest:
+        CPP id
+
+    :param unsigned long long address:
+        Start address on CPP target
+
+    :param unsigned long size:
+        Size of area
+
+.. _`nfp_cpp_area_alloc_acquire.description`:
+
+Description
+-----------
+
+Allocate and initialize a CPP area structure, and lock it down so
+that it can be accessed directly.
+
+.. _`nfp_cpp_area_alloc_acquire.note`:
+
+NOTE
+----
+
+@address and \ ``size``\  must be 32-bit aligned values.
+
+The area must also be 'released' when the structure is freed.
+
+.. _`nfp_cpp_area_alloc_acquire.return`:
 
 Return
 ------
@@ -474,39 +487,6 @@ Return
 ------
 
 length of io, or -ERRNO
-
-.. _`nfp_cpp_area_check_range`:
-
-nfp_cpp_area_check_range
-========================
-
-.. c:function:: int nfp_cpp_area_check_range(struct nfp_cpp_area *area, unsigned long long offset, unsigned long length)
-
-    check if address range fits in CPP area
-
-    :param struct nfp_cpp_area \*area:
-        CPP area handle
-
-    :param unsigned long long offset:
-        offset into CPP target
-
-    :param unsigned long length:
-        size of address range in bytes
-
-.. _`nfp_cpp_area_check_range.description`:
-
-Description
------------
-
-Check if address range fits within CPP area.  Return 0 if area
-fits or -EFAULT on error.
-
-.. _`nfp_cpp_area_check_range.return`:
-
-Return
-------
-
-0, or -ERRNO
 
 .. _`nfp_cpp_area_name`:
 

@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/dax.c
 
-.. _`dax_pfn_mkwrite`:
-
-dax_pfn_mkwrite
-===============
-
-.. c:function:: int dax_pfn_mkwrite(struct vm_fault *vmf)
-
-    handle first write to DAX page
-
-    :param struct vm_fault \*vmf:
-        The description of the fault
-
 .. _`dax_iomap_rw`:
 
 dax_iomap_rw

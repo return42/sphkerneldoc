@@ -22,11 +22,13 @@ i915
     i915_gem_fence_reg_c
     i915_gem_gtt_c
     i915_gem_internal_c
+    i915_gem_object_c
     i915_gem_object_h
     i915_gem_request_c
     i915_gem_request_h
     i915_gem_shrinker_c
     i915_gem_tiling_c
+    i915_gem_timeline_c
     i915_gem_userptr_c
     i915_gpu_error_c
     i915_guc_submission_c
@@ -35,6 +37,8 @@ i915
     i915_memcpy_c
     i915_mm_c
     i915_perf_c
+    i915_reg_h
+    i915_syncmap_c
     i915_trace_h
     i915_vgpu_c
     i915_vma_c
@@ -58,6 +62,8 @@ i915
     intel_fifo_underrun_c
     intel_frontbuffer_c
     intel_frontbuffer_h
+    intel_guc_ct_c
+    intel_guc_ct_h
     intel_guc_fwif_h
     intel_guc_loader_c
     intel_guc_log_c

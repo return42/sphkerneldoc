@@ -37,7 +37,7 @@ kvm_mmu_clear_dirty_pt_masked
 
 .. c:function:: void kvm_mmu_clear_dirty_pt_masked(struct kvm *kvm, struct kvm_memory_slot *slot, gfn_t gfn_offset, unsigned long mask)
 
-    clear MMU D-bit for PT level pages
+    clear MMU D-bit for PT level pages, or write protect the page if the D-bit isn't supported.
 
     :param struct kvm \*kvm:
         kvm instance

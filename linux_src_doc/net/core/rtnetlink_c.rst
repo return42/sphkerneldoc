@@ -6,7 +6,7 @@
 __rtnl_register
 ===============
 
-.. c:function:: int __rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, rtnl_calcit_func calcit)
+.. c:function:: int __rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, unsigned int flags)
 
     Register a rtnetlink message type
 
@@ -22,8 +22,8 @@ __rtnl_register
     :param rtnl_dumpit_func dumpit:
         Function pointer called for each dump request (NLM_F_DUMP) message
 
-    :param rtnl_calcit_func calcit:
-        Function pointer to calc size of dump message
+    :param unsigned int flags:
+        rtnl_link_flags to modifiy behaviour of doit/dumpit functions
 
 .. _`__rtnl_register.description`:
 
@@ -45,7 +45,7 @@ Returns 0 on success or a negative error code.
 rtnl_register
 =============
 
-.. c:function:: void rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, rtnl_calcit_func calcit)
+.. c:function:: void rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, unsigned int flags)
 
     Register a rtnetlink message type
 
@@ -61,7 +61,7 @@ rtnl_register
     :param rtnl_dumpit_func dumpit:
         *undescribed*
 
-    :param rtnl_calcit_func calcit:
+    :param unsigned int flags:
         *undescribed*
 
 .. _`rtnl_register.description`:

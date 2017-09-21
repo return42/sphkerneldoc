@@ -263,6 +263,37 @@ free that list.
 The number of resources in the output list is returned on success, an error
 code reflecting the error condition is returned otherwise.
 
+.. _`acpi_dev_get_dma_resources`:
+
+acpi_dev_get_dma_resources
+==========================
+
+.. c:function:: int acpi_dev_get_dma_resources(struct acpi_device *adev, struct list_head *list)
+
+    Get current DMA resources of a device.
+
+    :param struct acpi_device \*adev:
+        ACPI device node to get the resources for.
+
+    :param struct list_head \*list:
+        Head of the resultant list of resources (must be empty).
+
+.. _`acpi_dev_get_dma_resources.description`:
+
+Description
+-----------
+
+Evaluate the \_DMA method for the given device node and process its
+output.
+
+The resultant struct resource objects are put on the list pointed to
+by \ ``list``\ , that must be empty initially, as members of struct
+resource_entry objects.  Callers of this routine should use
+\ ``acpi_dev_free_resource_list``\ () to free that list.
+
+The number of resources in the output list is returned on success,
+an error code reflecting the error condition is returned otherwise.
+
 .. _`acpi_dev_filter_resource_type`:
 
 acpi_dev_filter_resource_type

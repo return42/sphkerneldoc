@@ -26,11 +26,13 @@ clk
     versatile/index
     zynq/index
     clk-axm5516_c
+    clk-bulk_c
     clk-conf_c
     clk-divider_c
     clk-fixed-factor_c
     clk-fixed-rate_c
     clk-gate_c
+    clk-gemini_c
     clk-gpio_c
     clk-nomadik_c
     clk-si5351_h

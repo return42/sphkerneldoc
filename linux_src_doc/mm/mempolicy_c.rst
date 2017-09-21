@@ -72,10 +72,6 @@ Allocate a page from the kernel page pool.  When not in
 interrupt context and apply the current process NUMA policy.
 Returns NULL when no page can be allocated.
 
-Don't call \ :c:func:`cpuset_update_task_memory_state`\  unless
-1) it's ok to take cpuset_sem (can WAIT), and
-2) allocating for current task (not interrupt).
-
 .. _`mpol_misplaced`:
 
 mpol_misplaced

@@ -1,32 +1,92 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/chip.c
 
-.. _`wait_logical_linkstate`:
+.. _`hfi1_addr_from_offset`:
 
-wait_logical_linkstate
-======================
+hfi1_addr_from_offset
+=====================
 
-.. c:function:: int wait_logical_linkstate(struct hfi1_pportdata *ppd, u32 state, int msecs)
+.. c:function:: void __iomem *hfi1_addr_from_offset(const struct hfi1_devdata *dd, u32 offset)
 
-    wait for an IB link state change to occur
+    return addr for readq/writeq \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0
 
-    :param struct hfi1_pportdata \*ppd:
-        port device
+    :param const struct hfi1_devdata \*dd:
+        *undescribed*
 
-    :param u32 state:
-        the state to wait for
+    :param u32 offset:
+        *undescribed*
 
-    :param int msecs:
-        the number of milliseconds to wait
-
-.. _`wait_logical_linkstate.description`:
+.. _`hfi1_addr_from_offset.description`:
 
 Description
 -----------
 
-Wait up to msecs milliseconds for IB link state change to occur.
-For now, take the easy polling route.
-Returns 0 if state reached, otherwise -ETIMEDOUT.
+This routine selects the appropriate base address
+based on the indicated offset.
+
+.. _`read_csr`:
+
+read_csr
+========
+
+.. c:function:: u64 read_csr(const struct hfi1_devdata *dd, u32 offset)
+
+    read CSR at the indicated offset \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0
+
+    :param const struct hfi1_devdata \*dd:
+        *undescribed*
+
+    :param u32 offset:
+        *undescribed*
+
+.. _`read_csr.return`:
+
+Return
+------
+
+the value read or all FF's if there
+is no mapping
+
+.. _`write_csr`:
+
+write_csr
+=========
+
+.. c:function:: void write_csr(const struct hfi1_devdata *dd, u32 offset, u64 value)
+
+    write CSR at the indicated offset \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0 \ ``value``\  - value to write
+
+    :param const struct hfi1_devdata \*dd:
+        *undescribed*
+
+    :param u32 offset:
+        *undescribed*
+
+    :param u64 value:
+        *undescribed*
+
+.. _`get_csr_addr`:
+
+get_csr_addr
+============
+
+.. c:function:: void __iomem *get_csr_addr(const struct hfi1_devdata *dd, u32 offset)
+
+    return te iomem address for offset \ ``dd``\  - the dd device \ ``offset``\  - the offset of the CSR within bar0
+
+    :param const struct hfi1_devdata \*dd:
+        *undescribed*
+
+    :param u32 offset:
+        *undescribed*
+
+.. _`get_csr_addr.return`:
+
+Return
+------
+
+The iomem address to use in subsequent
+writeq/readq operations.
 
 .. _`init_qpmap_table`:
 

@@ -1,6 +1,43 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/codecs/nau8824.c
 
+.. _`nau8824_set_tdm_slot`:
+
+nau8824_set_tdm_slot
+====================
+
+.. c:function:: int nau8824_set_tdm_slot(struct snd_soc_dai *dai, unsigned int tx_mask, unsigned int rx_mask, int slots, int slot_width)
+
+    configure DAI TDM.
+
+    :param struct snd_soc_dai \*dai:
+        DAI
+
+    :param unsigned int tx_mask:
+        Bitmask representing active TX slots. Ex.
+        0xf for normal 4 channel TDM.
+        0xf0 for shifted 4 channel TDM
+
+    :param unsigned int rx_mask:
+        Bitmask [0:1] representing active DACR RX slots.
+        Bitmask [2:3] representing active DACL RX slots.
+        00=CH0,01=CH1,10=CH2,11=CH3. Ex.
+        0xf for DACL/R selecting TDM CH3.
+        0xf0 for DACL/R selecting shifted TDM CH3.
+
+    :param int slots:
+        Number of slots in use.
+
+    :param int slot_width:
+        Width in bits for each slot.
+
+.. _`nau8824_set_tdm_slot.description`:
+
+Description
+-----------
+
+Configures a DAI for TDM operation. Only support 4 slots TDM.
+
 .. _`nau8824_calc_fll_param`:
 
 nau8824_calc_fll_param

@@ -280,8 +280,8 @@ Description
 
 Call this to establish a lease on the file. The "lease" argument is not
 used for F_UNLCK requests and may be NULL. For commands that set or alter
-an existing lease, the (*lease)->fl_lmops->lm_break operation must be set;
-if not, this function will return -ENOLCK (and generate a scary-looking
+an existing lease, the ``(*lease)->fl_lmops->lm_break`` operation must be
+set; if not, this function will return -ENOLCK (and generate a scary-looking
 stack trace).
 
 The "priv" pointer is passed directly to the lm_setup function as-is. It
@@ -379,15 +379,13 @@ Description
 -----------
 
      Apply a \ ``FL_FLOCK``\  style lock to an open file descriptor.
-     The \ ``cmd``\  can be one of
+     The \ ``cmd``\  can be one of:
 
-     \ ``LOCK_SH``\  -- a shared lock.
-
-     \ ``LOCK_EX``\  -- an exclusive lock.
-
-     \ ``LOCK_UN``\  -- remove an existing lock.
-
-     \ ``LOCK_MAND``\  -- a `mandatory' flock.  This exists to emulate Windows Share Modes.
+     - \ ``LOCK_SH``\  -- a shared lock.
+     - \ ``LOCK_EX``\  -- an exclusive lock.
+     - \ ``LOCK_UN``\  -- remove an existing lock.
+     - \ ``LOCK_MAND``\  -- a 'mandatory' flock.
+       This exists to emulate Windows Share Modes.
 
      \ ``LOCK_MAND``\  can be combined with \ ``LOCK_READ``\  or \ ``LOCK_WRITE``\  to allow other
      processes read and write access respectively.
@@ -414,6 +412,28 @@ Description
 
 Returns -ERRNO on failure.  Indicates presence of conflicting lock by
 setting conf->fl_type to something other than F_UNLCK.
+
+.. _`locks_translate_pid`:
+
+locks_translate_pid
+===================
+
+.. c:function:: pid_t locks_translate_pid(struct file_lock *fl, struct pid_namespace *ns)
+
+    translate a file_lock's fl_pid number into a namespace
+
+    :param struct file_lock \*fl:
+        The file_lock who's fl_pid should be translated
+
+    :param struct pid_namespace \*ns:
+        The namespace into which the pid should be translated
+
+.. _`locks_translate_pid.description`:
+
+Description
+-----------
+
+Used to tranlate a fl_pid into a namespace virtual pid number
 
 .. _`vfs_lock_file`:
 

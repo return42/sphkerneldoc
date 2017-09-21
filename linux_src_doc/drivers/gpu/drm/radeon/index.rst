@@ -35,7 +35,6 @@ radeon
     radeon_h
     radeon_i2c_c
     radeon_ib_c
-    radeon_ioc32_c
     radeon_irq_kms_c
     radeon_kms_c
     radeon_mn_c

@@ -28,6 +28,7 @@ Definition
         unsigned no_interrupt:1;
         unsigned zero:1;
         unsigned short_not_ok:1;
+        unsigned dma_mapped:1;
         void (*complete)(struct usb_ep *ep, struct usb_request *req);
         void *context;
         struct list_head list;
@@ -76,6 +77,9 @@ zero
 short_not_ok
     When reading data, makes short packets be
     treated as errors (queue stops advancing till cleanup).
+
+dma_mapped
+    Indicates if request has been mapped to DMA (internal)
 
 complete
     Function called when request completes, so this request and
@@ -333,6 +337,7 @@ Definition
         unsigned is_selfpowered:1;
         unsigned deactivated:1;
         unsigned connected:1;
+        unsigned lpm_capable:1;
     }
 
 .. _`usb_gadget.members`:
@@ -443,6 +448,10 @@ deactivated
 
 connected
     True if gadget is connected.
+
+lpm_capable
+    If the gadget max_speed is FULL or HIGH, this flag
+    indicates that it supports LPM as per the LPM ECN & errata.
 
 .. _`usb_gadget.description`:
 

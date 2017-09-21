@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pcmcia/ds.c
 
-.. _`pcmcia_store_new_id`:
+.. _`new_id_store`:
 
-pcmcia_store_new_id
-===================
+new_id_store
+============
 
-.. c:function:: ssize_t pcmcia_store_new_id(struct device_driver *driver, const char *buf, size_t count)
+.. c:function:: ssize_t new_id_store(struct device_driver *driver, const char *buf, size_t count)
 
     add a new PCMCIA device ID to this driver and re-probe devices
 
@@ -19,7 +19,7 @@ pcmcia_store_new_id
     :param size_t count:
         input size
 
-.. _`pcmcia_store_new_id.description`:
+.. _`new_id_store.description`:
 
 Description
 -----------

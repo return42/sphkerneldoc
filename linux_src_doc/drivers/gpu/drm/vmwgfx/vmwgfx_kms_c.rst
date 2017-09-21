@@ -20,56 +20,6 @@ Description
 
 Clears all legacy hotspots.
 
-.. _`vmw_du_cursor_plane_update`:
-
-vmw_du_cursor_plane_update
-==========================
-
-.. c:function:: int vmw_du_cursor_plane_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
-
-    Update cursor image and location
-
-    :param struct drm_plane \*plane:
-        plane object to update
-
-    :param struct drm_crtc \*crtc:
-        owning CRTC of \ ``plane``\ 
-
-    :param struct drm_framebuffer \*fb:
-        framebuffer to flip onto plane
-
-    :param int crtc_x:
-        x offset of plane on crtc
-
-    :param int crtc_y:
-        y offset of plane on crtc
-
-    :param unsigned int crtc_w:
-        width of plane rectangle on crtc
-
-    :param unsigned int crtc_h:
-        height of plane rectangle on crtc
-
-    :param uint32_t src_x:
-        Not used
-
-    :param uint32_t src_y:
-        Not used
-
-    :param uint32_t src_w:
-        Not used
-
-    :param uint32_t src_h:
-        Not used
-
-.. _`vmw_du_cursor_plane_update.return`:
-
-Return
-------
-
-
-Zero on success, error code on failure
-
 .. _`vmw_du_plane_unpin_surf`:
 
 vmw_du_plane_unpin_surf
@@ -556,6 +506,38 @@ us to assign a value to mode->crtc_clock so that
 
 RETURNS
 Zero for success or -errno
+
+.. _`vmw_kms_atomic_commit`:
+
+vmw_kms_atomic_commit
+=====================
+
+.. c:function:: int vmw_kms_atomic_commit(struct drm_device *dev, struct drm_atomic_state *state, bool nonblock)
+
+    Perform an atomic state commit
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_atomic_state \*state:
+        the driver state object
+
+    :param bool nonblock:
+        Whether nonblocking behaviour is requested
+
+.. _`vmw_kms_atomic_commit.description`:
+
+Description
+-----------
+
+This is a simple wrapper around \ :c:func:`drm_atomic_helper_commit`\  for
+us to clear the nonblocking value.
+
+Nonblocking commits currently cause synchronization issues
+for vmwgfx.
+
+RETURNS
+Zero for success or negative error code on failure.
 
 .. _`vmw_get_vblank_counter`:
 

@@ -23,6 +23,170 @@ Return
 
 length of mangled name
 
+.. _`__aafs_setup_d_inode`:
+
+__aafs_setup_d_inode
+====================
+
+.. c:function:: int __aafs_setup_d_inode(struct inode *dir, struct dentry *dentry, umode_t mode, void *data, char *link, const struct file_operations *fops, const struct inode_operations *iops)
+
+    basic inode setup for apparmorfs
+
+    :param struct inode \*dir:
+        parent directory for the dentry
+
+    :param struct dentry \*dentry:
+        dentry we are seting the inode up for
+
+    :param umode_t mode:
+        permissions the file should have
+
+    :param void \*data:
+        data to store on inode.i_private, available in \ :c:func:`open`\ 
+
+    :param char \*link:
+        if symlink, symlink target string
+
+    :param const struct file_operations \*fops:
+        struct file_operations that should be used
+
+    :param const struct inode_operations \*iops:
+        struct of inode_operations that should be used
+
+.. _`aafs_create`:
+
+aafs_create
+===========
+
+.. c:function:: struct dentry *aafs_create(const char *name, umode_t mode, struct dentry *parent, void *data, void *link, const struct file_operations *fops, const struct inode_operations *iops)
+
+    create a dentry in the apparmorfs filesystem
+
+    :param const char \*name:
+        name of dentry to create
+
+    :param umode_t mode:
+        permissions the file should have
+
+    :param struct dentry \*parent:
+        parent directory for this dentry
+
+    :param void \*data:
+        data to store on inode.i_private, available in \ :c:func:`open`\ 
+
+    :param void \*link:
+        if symlink, symlink target string
+
+    :param const struct file_operations \*fops:
+        struct file_operations that should be used for
+
+    :param const struct inode_operations \*iops:
+        struct of inode_operations that should be used
+
+.. _`aafs_create.description`:
+
+Description
+-----------
+
+This is the basic "create a xxx" function for apparmorfs.
+
+Returns a pointer to a dentry if it succeeds, that must be free with
+\ :c:func:`aafs_remove`\ . Will return ERR_PTR on failure.
+
+.. _`aafs_create_file`:
+
+aafs_create_file
+================
+
+.. c:function:: struct dentry *aafs_create_file(const char *name, umode_t mode, struct dentry *parent, void *data, const struct file_operations *fops)
+
+    create a file in the apparmorfs filesystem
+
+    :param const char \*name:
+        name of dentry to create
+
+    :param umode_t mode:
+        permissions the file should have
+
+    :param struct dentry \*parent:
+        parent directory for this dentry
+
+    :param void \*data:
+        data to store on inode.i_private, available in \ :c:func:`open`\ 
+
+    :param const struct file_operations \*fops:
+        struct file_operations that should be used for
+
+.. _`aafs_create_file.description`:
+
+Description
+-----------
+
+see aafs_create
+
+.. _`aafs_create_dir`:
+
+aafs_create_dir
+===============
+
+.. c:function:: struct dentry *aafs_create_dir(const char *name, struct dentry *parent)
+
+    create a directory in the apparmorfs filesystem
+
+    :param const char \*name:
+        name of dentry to create
+
+    :param struct dentry \*parent:
+        parent directory for this dentry
+
+.. _`aafs_create_dir.description`:
+
+Description
+-----------
+
+see aafs_create
+
+.. _`aafs_create_symlink`:
+
+aafs_create_symlink
+===================
+
+.. c:function:: struct dentry *aafs_create_symlink(const char *name, struct dentry *parent, const char *target, const struct inode_operations *iops)
+
+    create a symlink in the apparmorfs filesystem
+
+    :param const char \*name:
+        name of dentry to create
+
+    :param struct dentry \*parent:
+        parent directory for this dentry
+
+    :param const char \*target:
+        if symlink, symlink target string
+
+    :param const struct inode_operations \*iops:
+        struct of inode_operations that should be used
+
+.. _`aafs_create_symlink.description`:
+
+Description
+-----------
+
+If \ ``target``\  parameter is \ ``NULL``\ , then the \ ``iops``\  parameter needs to be
+setup to handle .readlink and .get_link inode_operations.
+
+.. _`aafs_remove`:
+
+aafs_remove
+===========
+
+.. c:function:: void aafs_remove(struct dentry *dentry)
+
+    removes a file or directory from the apparmorfs filesystem
+
+    :param struct dentry \*dentry:
+        dentry of the file/directory/symlink to removed.
+
 .. _`aa_simple_write_to_buffer`:
 
 aa_simple_write_to_buffer
@@ -88,6 +252,52 @@ retrieve. <LABEL> and <KEY> must not be NUL-terminated.
 Don't expect the contents of buf to be preserved on failure.
 
 .. _`query_data.return`:
+
+Return
+------
+
+number of characters written to buf or -errno on failure
+
+.. _`query_label`:
+
+query_label
+===========
+
+.. c:function:: ssize_t query_label(char *buf, size_t buf_len, char *query, size_t query_len, bool view_only)
+
+    queries a label and writes permissions to buf
+
+    :param char \*buf:
+        the resulting permissions string is stored here (NOT NULL)
+
+    :param size_t buf_len:
+        size of buf
+
+    :param char \*query:
+        binary query string to match against the dfa
+
+    :param size_t query_len:
+        size of query
+
+    :param bool view_only:
+        only compute for querier's view
+
+.. _`query_label.description`:
+
+Description
+-----------
+
+The buffers pointed to by buf and query may overlap. The query buffer is
+parsed before buf is written to.
+
+The query should look like "LABEL_NAME\0DFA_STRING" where LABEL_NAME is
+the name of the label, in the current namespace, that is to be queried and
+DFA_STRING is a binary string to match against the label(s)'s DFA.
+
+LABEL_NAME must be NUL terminated. DFA_STRING may contain NUL characters
+but must \*not\* be NUL terminated.
+
+.. _`query_label.return`:
 
 Return
 ------
@@ -362,73 +572,73 @@ Return
 
 error on failure
 
-.. _`aafs_create_file`:
+.. _`entry_create_file`:
 
-aafs_create_file
-================
+entry_create_file
+=================
 
-.. c:function:: int aafs_create_file(struct aa_fs_entry *fs_file, struct dentry *parent)
+.. c:function:: int entry_create_file(struct aa_sfs_entry *fs_file, struct dentry *parent)
 
     create a file entry in the apparmor securityfs
 
-    :param struct aa_fs_entry \*fs_file:
-        aa_fs_entry to build an entry for (NOT NULL)
+    :param struct aa_sfs_entry \*fs_file:
+        aa_sfs_entry to build an entry for (NOT NULL)
 
     :param struct dentry \*parent:
         the parent dentry in the securityfs
 
-.. _`aafs_create_file.description`:
+.. _`entry_create_file.description`:
 
 Description
 -----------
 
-Use aafs_remove_file to remove entries created with this fn.
+Use entry_remove_file to remove entries created with this fn.
 
-.. _`aafs_create_dir`:
+.. _`entry_create_dir`:
 
-aafs_create_dir
-===============
+entry_create_dir
+================
 
-.. c:function:: int aafs_create_dir(struct aa_fs_entry *fs_dir, struct dentry *parent)
+.. c:function:: int entry_create_dir(struct aa_sfs_entry *fs_dir, struct dentry *parent)
 
     recursively create a directory entry in the securityfs
 
-    :param struct aa_fs_entry \*fs_dir:
-        aa_fs_entry (and all child entries) to build (NOT NULL)
+    :param struct aa_sfs_entry \*fs_dir:
+        aa_sfs_entry (and all child entries) to build (NOT NULL)
 
     :param struct dentry \*parent:
         the parent dentry in the securityfs
 
-.. _`aafs_create_dir.description`:
+.. _`entry_create_dir.description`:
 
 Description
 -----------
 
-Use aafs_remove_dir to remove entries created with this fn.
+Use entry_remove_dir to remove entries created with this fn.
 
-.. _`aafs_remove_file`:
+.. _`entry_remove_file`:
 
-aafs_remove_file
-================
+entry_remove_file
+=================
 
-.. c:function:: void aafs_remove_file(struct aa_fs_entry *fs_file)
+.. c:function:: void entry_remove_file(struct aa_sfs_entry *fs_file)
 
     drop a single file entry in the apparmor securityfs
 
-    :param struct aa_fs_entry \*fs_file:
-        aa_fs_entry to detach from the securityfs (NOT NULL)
+    :param struct aa_sfs_entry \*fs_file:
+        aa_sfs_entry to detach from the securityfs (NOT NULL)
 
-.. _`aafs_remove_dir`:
+.. _`entry_remove_dir`:
 
-aafs_remove_dir
-===============
+entry_remove_dir
+================
 
-.. c:function:: void aafs_remove_dir(struct aa_fs_entry *fs_dir)
+.. c:function:: void entry_remove_dir(struct aa_sfs_entry *fs_dir)
 
     recursively drop a directory entry from the securityfs
 
-    :param struct aa_fs_entry \*fs_dir:
-        aa_fs_entry (and all child entries) to detach (NOT NULL)
+    :param struct aa_sfs_entry \*fs_dir:
+        aa_sfs_entry (and all child entries) to detach (NOT NULL)
 
 .. _`aa_destroy_aafs`:
 

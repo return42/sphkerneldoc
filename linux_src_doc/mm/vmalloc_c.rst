@@ -506,7 +506,7 @@ Description
      allocator with \ ``gfp_mask``\  flags.  Map them into contiguous
      kernel virtual space, using a pagetable protection of \ ``prot``\ .
 
-     Reclaim modifiers in \ ``gfp_mask``\  - __GFP_NORETRY, __GFP_REPEAT
+     Reclaim modifiers in \ ``gfp_mask``\  - __GFP_NORETRY, __GFP_RETRY_MAYFAIL
      and __GFP_NOFAIL are not supported
 
      Any use of gfp flags outside of GFP_KERNEL should be consulted
@@ -985,7 +985,7 @@ does everything top-down and scans areas from the end looking for
 matching slot.  While scanning, if any of the areas overlaps with
 existing vmap_area, the base address is pulled down to fit the
 area.  Scanning is repeated till all the areas fit and then all
-necessary data structres are inserted and the result is returned.
+necessary data structures are inserted and the result is returned.
 
 .. _`pcpu_free_vm_areas`:
 

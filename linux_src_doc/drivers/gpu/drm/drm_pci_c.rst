@@ -134,14 +134,14 @@ Return
 
 0 on success or a negative error code on failure.
 
-.. _`drm_pci_init`:
+.. _`drm_legacy_pci_init`:
 
-drm_pci_init
-============
+drm_legacy_pci_init
+===================
 
-.. c:function:: int drm_pci_init(struct drm_driver *driver, struct pci_driver *pdriver)
+.. c:function:: int drm_legacy_pci_init(struct drm_driver *driver, struct pci_driver *pdriver)
 
-    Register matching PCI devices with the DRM subsystem
+    shadow-attach a legacy DRM PCI driver
 
     :param struct drm_driver \*driver:
         DRM device driver
@@ -149,38 +149,28 @@ drm_pci_init
     :param struct pci_driver \*pdriver:
         PCI device driver
 
-.. _`drm_pci_init.description`:
+.. _`drm_legacy_pci_init.description`:
 
 Description
 -----------
 
-Initializes a drm_device structures, registering the stubs and initializing
-the AGP device.
+This is only used by legacy dri1 drivers and deprecated.
 
-.. _`drm_pci_init.note`:
-
-NOTE
-----
-
-This function is deprecated. Modern modesetting drm drivers should use
-\ :c:func:`pci_register_driver`\  directly, this function only provides shadow-binding
-support for old legacy drivers on top of that core pci function.
-
-.. _`drm_pci_init.return`:
+.. _`drm_legacy_pci_init.return`:
 
 Return
 ------
 
 0 on success or a negative error code on failure.
 
-.. _`drm_pci_exit`:
+.. _`drm_legacy_pci_exit`:
 
-drm_pci_exit
-============
+drm_legacy_pci_exit
+===================
 
-.. c:function:: void drm_pci_exit(struct drm_driver *driver, struct pci_driver *pdriver)
+.. c:function:: void drm_legacy_pci_exit(struct drm_driver *driver, struct pci_driver *pdriver)
 
-    Unregister matching PCI devices from the DRM subsystem
+    unregister shadow-attach legacy DRM driver
 
     :param struct drm_driver \*driver:
         DRM device driver
@@ -188,22 +178,13 @@ drm_pci_exit
     :param struct pci_driver \*pdriver:
         PCI device driver
 
-.. _`drm_pci_exit.description`:
+.. _`drm_legacy_pci_exit.description`:
 
 Description
 -----------
 
-Unregisters one or more devices matched by a PCI driver from the DRM
-subsystem.
-
-.. _`drm_pci_exit.note`:
-
-NOTE
-----
-
-This function is deprecated. Modern modesetting drm drivers should use
-\ :c:func:`pci_unregister_driver`\  directly, this function only provides shadow-binding
-support for old legacy drivers on top of that core pci function.
+Unregister a DRM driver shadow-attached through \ :c:func:`drm_legacy_pci_init`\ . This
+is deprecated and only used by dri1 drivers.
 
 .. This file was automatic generated / don't edit.
 

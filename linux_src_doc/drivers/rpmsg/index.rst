@@ -7,6 +7,7 @@ rpmsg
 .. toctree::
     :maxdepth: 1
 
+    qcom_glink_rpm_c
     qcom_smd_c
     rpmsg_char_c
     rpmsg_core_c

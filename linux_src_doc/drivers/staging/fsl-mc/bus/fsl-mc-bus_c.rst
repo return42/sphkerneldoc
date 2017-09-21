@@ -87,6 +87,43 @@ end_mc_offset
 start_phys_addr
     system physical address corresponding to start_mc_addr
 
+.. _`mc_version`:
+
+struct mc_version
+=================
+
+.. c:type:: struct mc_version
+
+
+.. _`mc_version.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mc_version {
+        u32 major;
+        u32 minor;
+        u32 revision;
+    }
+
+.. _`mc_version.members`:
+
+Members
+-------
+
+major
+    Major version number: incremented on API compatibility changes
+
+minor
+    Minor version number: incremented on API additions (that are
+    backward compatible); reset when major version is incremented
+
+revision
+    Internal revision number: incremented on implementation changes
+    and/or bug fixes that have no impact on API
+
 .. _`fsl_mc_bus_match`:
 
 fsl_mc_bus_match
@@ -161,6 +198,31 @@ fsl_mc_driver_unregister
     :param struct fsl_mc_driver \*mc_driver:
         *undescribed*
 
+.. _`mc_get_version`:
+
+mc_get_version
+==============
+
+.. c:function:: int mc_get_version(struct fsl_mc_io *mc_io, u32 cmd_flags, struct mc_version *mc_ver_info)
+
+    Retrieves the Management Complex firmware version information
+
+    :param struct fsl_mc_io \*mc_io:
+        Pointer to opaque I/O object
+
+    :param u32 cmd_flags:
+        Command flags; one or more of 'MC_CMD_FLAG_'
+
+    :param struct mc_version \*mc_ver_info:
+        Returned version information structure
+
+.. _`mc_get_version.return`:
+
+Return
+------
+
+'0' on Success; Error code otherwise.
+
 .. _`fsl_mc_get_root_dprc`:
 
 fsl_mc_get_root_dprc
@@ -193,11 +255,11 @@ fsl_mc_is_root_dprc
 fsl_mc_device_add
 =================
 
-.. c:function:: int fsl_mc_device_add(struct dprc_obj_desc *obj_desc, struct fsl_mc_io *mc_io, struct device *parent_dev, struct fsl_mc_device **new_mc_dev)
+.. c:function:: int fsl_mc_device_add(struct fsl_mc_obj_desc *obj_desc, struct fsl_mc_io *mc_io, struct device *parent_dev, struct fsl_mc_device **new_mc_dev)
 
     mc device to be visible in Linux
 
-    :param struct dprc_obj_desc \*obj_desc:
+    :param struct fsl_mc_obj_desc \*obj_desc:
         *undescribed*
 
     :param struct fsl_mc_io \*mc_io:

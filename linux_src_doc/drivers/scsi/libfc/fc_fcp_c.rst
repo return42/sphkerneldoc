@@ -289,7 +289,7 @@ fc_fcp_can_queue_ramp_up
 fc_fcp_can_queue_ramp_down
 ==========================
 
-.. c:function:: void fc_fcp_can_queue_ramp_down(struct fc_lport *lport)
+.. c:function:: bool fc_fcp_can_queue_ramp_down(struct fc_lport *lport)
 
     reduces can_queue
 

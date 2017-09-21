@@ -125,6 +125,32 @@ Return the CMA GEM object for given framebuffer.
 
 This function will usually be called from the CRTC callback functions.
 
+.. _`drm_fb_cma_get_gem_addr`:
+
+drm_fb_cma_get_gem_addr
+=======================
+
+.. c:function:: dma_addr_t drm_fb_cma_get_gem_addr(struct drm_framebuffer *fb, struct drm_plane_state *state, unsigned int plane)
+
+    Get physical address for framebuffer
+
+    :param struct drm_framebuffer \*fb:
+        The framebuffer
+
+    :param struct drm_plane_state \*state:
+        Which state of drm plane
+
+    :param unsigned int plane:
+        Which plane
+        Return the CMA GEM address for given framebuffer.
+
+.. _`drm_fb_cma_get_gem_addr.description`:
+
+Description
+-----------
+
+This function will usually be called from the PLANE callback functions.
+
 .. _`drm_fb_cma_prepare_fb`:
 
 drm_fb_cma_prepare_fb
@@ -277,14 +303,14 @@ callback.
 drm_fbdev_cma_set_suspend
 =========================
 
-.. c:function:: void drm_fbdev_cma_set_suspend(struct drm_fbdev_cma *fbdev_cma, int state)
+.. c:function:: void drm_fbdev_cma_set_suspend(struct drm_fbdev_cma *fbdev_cma, bool state)
 
     wrapper around drm_fb_helper_set_suspend
 
     :param struct drm_fbdev_cma \*fbdev_cma:
         The drm_fbdev_cma struct, may be NULL
 
-    :param int state:
+    :param bool state:
         desired state, zero to resume, non-zero to suspend
 
 .. _`drm_fbdev_cma_set_suspend.description`:
@@ -300,14 +326,14 @@ fb_set_suspend implemented by fbdev core.
 drm_fbdev_cma_set_suspend_unlocked
 ==================================
 
-.. c:function:: void drm_fbdev_cma_set_suspend_unlocked(struct drm_fbdev_cma *fbdev_cma, int state)
+.. c:function:: void drm_fbdev_cma_set_suspend_unlocked(struct drm_fbdev_cma *fbdev_cma, bool state)
 
     wrapper around drm_fb_helper_set_suspend_unlocked
 
     :param struct drm_fbdev_cma \*fbdev_cma:
         The drm_fbdev_cma struct, may be NULL
 
-    :param int state:
+    :param bool state:
         desired state, zero to resume, non-zero to suspend
 
 .. _`drm_fbdev_cma_set_suspend_unlocked.description`:

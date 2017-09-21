@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/stm/stm32_sai.h
 
+.. _`stm32_sai_conf`:
+
+struct stm32_sai_conf
+=====================
+
+.. c:type:: struct stm32_sai_conf
+
+    SAI configuration
+
+.. _`stm32_sai_conf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct stm32_sai_conf {
+        int version;
+    }
+
+.. _`stm32_sai_conf.members`:
+
+Members
+-------
+
+version
+    SAI version
+
 .. _`stm32_sai_data`:
 
 struct stm32_sai_data
@@ -21,7 +49,7 @@ Definition
         struct platform_device *pdev;
         struct clk *clk_x8k;
         struct clk *clk_x11k;
-        int version;
+        struct stm32_sai_conf *conf;
         int irq;
     }
 
@@ -39,8 +67,8 @@ clk_x8k
 clk_x11k
     SAI parent clock for sampling frequencies multiple of 11kHz
 
-version
-    SOC version
+conf
+    *undescribed*
 
 irq
     SAI interrupt line

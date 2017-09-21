@@ -169,5 +169,21 @@ NFP_NET_CFG_TXR_STATS_BASE
 
     0x1800) options, 64bit per entry
 
+.. _`nfp_net_cfg_mbox_cmd`:
+
+NFP_NET_CFG_MBOX_CMD
+====================
+
+.. c:function::  NFP_NET_CFG_MBOX_CMD()
+
+    0x19ff) 4B used for update command and 4B return code followed by a max of 504B of variable length value
+
+.. _`nfp_net_cfg_vlan_filter`:
+
+NFP_NET_CFG_VLAN_FILTER
+=======================
+
+.. c:function::  NFP_NET_CFG_VLAN_FILTER()
+
 .. This file was automatic generated / don't edit.
 

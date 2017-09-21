@@ -31,6 +31,21 @@ marshal_det_to_rele
     :param struct dk_cxlflash_release \*release:
         *undescribed*
 
+.. _`marshal_udir_to_rele`:
+
+marshal_udir_to_rele
+====================
+
+.. c:function:: void marshal_udir_to_rele(struct dk_cxlflash_udirect *udirect, struct dk_cxlflash_release *release)
+
+    translate udirect to release structure
+
+    :param struct dk_cxlflash_udirect \*udirect:
+        Source structure from which to translate/copy.
+
+    :param struct dk_cxlflash_release \*release:
+        Destination structure for the translate/copy.
+
 .. _`cxlflash_free_errpage`:
 
 cxlflash_free_errpage

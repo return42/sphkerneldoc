@@ -79,7 +79,7 @@ lmm_to_fw_caps
     translate ethtool Link Mode Mask to Firmware capabilities
 
     :param const unsigned long \*link_mode_mask:
-        ethtool Link Mode Mask
+        *undescribed*
 
 .. _`lmm_to_fw_caps.description`:
 

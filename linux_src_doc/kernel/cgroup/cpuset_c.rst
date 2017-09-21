@@ -338,12 +338,12 @@ Description
 If we're in interrupt, yes, we can always allocate.  If \ ``node``\  is set in
 current's mems_allowed, yes.  If it's not a \__GFP_HARDWALL request and this
 node is set in the nearest hardwalled cpuset ancestor to current's cpuset,
-yes.  If current has access to memory reserves due to TIF_MEMDIE, yes.
+yes.  If current has access to memory reserves as an oom victim, yes.
 Otherwise, no.
 
 GFP_USER allocations are marked with the \__GFP_HARDWALL bit,
 and do not allow allocations outside the current tasks cpuset
-unless the task has been OOM killed as is marked TIF_MEMDIE.
+unless the task has been OOM killed.
 GFP_KERNEL allocations are not so marked, so can escape to the
 nearest enclosing hardwalled ancestor cpuset.
 
@@ -371,7 +371,7 @@ affect that
 
 in_interrupt - any node ok (current task context irrelevant)
 GFP_ATOMIC   - any node ok
-TIF_MEMDIE   - any node ok
+tsk_is_oom_victim   - any node ok
 GFP_KERNEL   - any node in enclosing hardwalled cpuset ok
 GFP_USER     - only nodes in current tasks mems allowed ok.
 

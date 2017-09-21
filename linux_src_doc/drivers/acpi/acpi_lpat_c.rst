@@ -22,7 +22,7 @@ acpi_lpat_raw_to_temp
 Description
 -----------
 
-A positive converted temperarure value will be returned on success,
+A positive converted temperature value will be returned on success,
 a negative errno will be returned in error cases.
 
 .. _`acpi_lpat_temp_to_raw`:
@@ -35,7 +35,7 @@ acpi_lpat_temp_to_raw
     Return raw value from temperature through LPAT conversion table
 
     :param struct acpi_lpat_conversion_table \*lpat_table:
-        *undescribed*
+        the temperature_raw mapping table
 
     :param int temp:
         the temperature, used as a key to get the raw value from the
@@ -46,7 +46,7 @@ acpi_lpat_temp_to_raw
 Description
 -----------
 
-A positive converted temperature value will be returned on success,
+The raw value will be returned on success,
 a negative errno will be returned in error cases.
 
 .. _`acpi_lpat_get_conversion_table`:

@@ -25,6 +25,9 @@ Definition
         void *handler_data;
         struct msi_desc *msi_desc;
         cpumask_var_t affinity;
+    #ifdef CONFIG_GENERIC_IRQ_EFFECTIVE_AFF_MASK
+        cpumask_var_t effective_affinity;
+    #endif
     #ifdef CONFIG_GENERIC_IRQ_IPI
         unsigned int ipi_offset;
     #endif
@@ -52,6 +55,11 @@ affinity
     IRQ affinity on SMP. If this is an IPI
     related irq, then this is the mask of the
     CPUs to which an IPI can be sent.
+
+effective_affinity
+    The effective IRQ affinity on SMP as some irq
+    chips do not allow multi CPU destinations.
+    A subset of \ ``affinity``\ .
 
 ipi_offset
     Offset of first IPI target cpu in \ ``affinity``\ . Optional.
@@ -209,7 +217,12 @@ irq_eoi
     end of interrupt
 
 irq_set_affinity
-    set the CPU affinity on SMP machines
+    Set the CPU affinity on SMP machines. If the force
+    argument is true, it tells the driver to
+    unconditionally apply the affinity setting. Sanity
+    checks against the supplied affinity mask are not
+    required. This is used for CPU hotplug where the
+    target CPU is not yet set in the cpu_online_mask.
 
 irq_retrigger
     resend an IRQ to the CPU

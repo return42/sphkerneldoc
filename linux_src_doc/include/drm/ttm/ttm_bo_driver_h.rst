@@ -259,6 +259,7 @@ Definition
         int (*io_mem_reserve)(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem);
         void (*io_mem_free)(struct ttm_bo_device *bdev, struct ttm_mem_reg *mem);
         unsigned long (*io_mem_pfn)(struct ttm_buffer_object *bo, unsigned long page_offset);
+        int (*access_memory)(struct ttm_buffer_object *bo, unsigned long offset, void *buf, int len, int write);
     }
 
 .. _`ttm_bo_driver.members`:
@@ -313,6 +314,9 @@ io_mem_free
     *undescribed*
 
 io_mem_pfn
+    *undescribed*
+
+access_memory
     *undescribed*
 
 .. _`ttm_bo_global_ref`:

@@ -19,7 +19,7 @@ Description
 -----------
 
 This function initializes PAT MSR and PAT table with an OS-defined value
-to enable additional cache attributes, WC and WT.
+to enable additional cache attributes, WC, WT and WP.
 
 This function must be called on all CPUs using the specific sequence of
 operations defined in Intel SDM. \ :c:func:`mtrr_rendezvous_handler`\  provides this

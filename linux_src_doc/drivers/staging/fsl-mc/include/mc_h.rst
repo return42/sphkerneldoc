@@ -208,6 +208,79 @@ dev_irq_index
 resource
     MC generic resource associated with the interrupt
 
+.. _`fsl_mc_obj_flag_no_mem_shareability`:
+
+FSL_MC_OBJ_FLAG_NO_MEM_SHAREABILITY
+===================================
+
+.. c:function::  FSL_MC_OBJ_FLAG_NO_MEM_SHAREABILITY()
+
+    Object flag indicating no memory shareability. the object generates memory accesses that are non coherent with other masters; user is responsible for proper memory handling through IOMMU configuration.
+
+.. _`fsl_mc_obj_desc`:
+
+struct fsl_mc_obj_desc
+======================
+
+.. c:type:: struct fsl_mc_obj_desc
+
+    Object descriptor
+
+.. _`fsl_mc_obj_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fsl_mc_obj_desc {
+        char type;
+        int id;
+        u16 vendor;
+        u16 ver_major;
+        u16 ver_minor;
+        u8 irq_count;
+        u8 region_count;
+        u32 state;
+        char label;
+        u16 flags;
+    }
+
+.. _`fsl_mc_obj_desc.members`:
+
+Members
+-------
+
+type
+    Type of object: NULL terminated string
+
+id
+    ID of logical object resource
+
+vendor
+    Object vendor identifier
+
+ver_major
+    Major version number
+
+ver_minor
+    Minor version number
+
+irq_count
+    Number of interrupts supported by the object
+
+region_count
+    Number of mappable regions supported by the object
+
+state
+    Object state: combination of FSL_MC_OBJ_STATE\_ states
+
+label
+    Object label: NULL terminated string
+
+flags
+    Object's flags
+
 .. _`fsl_mc_is_dprc`:
 
 FSL_MC_IS_DPRC
@@ -238,7 +311,7 @@ Definition
         u16 icid;
         u16 mc_handle;
         struct fsl_mc_io *mc_io;
-        struct dprc_obj_desc obj_desc;
+        struct fsl_mc_obj_desc obj_desc;
         struct resource *regions;
         struct fsl_mc_device_irq **irqs;
         struct fsl_mc_resource *resource;
@@ -308,6 +381,75 @@ are known as "allocatable" objects. For them, the corresponding
 fsl_mc_device's 'resource' points to the associated resource object.
 For MC objects that are not allocatable (e.g., DP_OBJ_DPRC, DP_OBJ_DPNI),
 'resource' is NULL.
+
+.. _`fsl_mc_io_atomic_context_portal`:
+
+FSL_MC_IO_ATOMIC_CONTEXT_PORTAL
+===============================
+
+.. c:function::  FSL_MC_IO_ATOMIC_CONTEXT_PORTAL()
+
+.. _`fsl_mc_io`:
+
+struct fsl_mc_io
+================
+
+.. c:type:: struct fsl_mc_io
+
+    MC I/O object to be passed-in to \ :c:func:`mc_send_command`\ 
+
+.. _`fsl_mc_io.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fsl_mc_io {
+        struct device *dev;
+        u16 flags;
+        u16 portal_size;
+        phys_addr_t portal_phys_addr;
+        void __iomem *portal_virt_addr;
+        struct fsl_mc_device *dpmcp_dev;
+        union {unnamed_union};
+    }
+
+.. _`fsl_mc_io.members`:
+
+Members
+-------
+
+dev
+    device associated with this Mc I/O object
+
+flags
+    flags for \ :c:func:`mc_send_command`\ 
+
+portal_size
+    MC command portal size in bytes
+
+portal_phys_addr
+    MC command portal physical address
+
+portal_virt_addr
+    MC command portal virtual address
+
+dpmcp_dev
+    pointer to the DPMCP device associated with the MC portal.
+
+{unnamed_union}
+    anonymous
+
+
+.. _`fsl_mc_io.description`:
+
+Description
+-----------
+
+Fields are only meaningful if the FSL_MC_IO_ATOMIC_CONTEXT_PORTAL flag is not
+
+Fields are only meaningful if the FSL_MC_IO_ATOMIC_CONTEXT_PORTAL flag is
 
 .. This file was automatic generated / don't edit.
 

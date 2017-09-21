@@ -9,3 +9,4 @@ ccp
 
     ccp-crypto-main_c
     ccp-dev_c
+    sp-dev_c

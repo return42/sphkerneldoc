@@ -111,6 +111,7 @@ Definition
 .. code-block:: c
 
     struct acpi_gpio_info {
+        enum gpiod_flags flags;
         bool gpioint;
         int polarity;
         int triggering;
@@ -120,6 +121,9 @@ Definition
 
 Members
 -------
+
+flags
+    GPIO initialization flags
 
 gpioint
     if \ ``true``\  this GPIO is of type GpioInt otherwise type is GpioIo

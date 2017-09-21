@@ -35,7 +35,7 @@ Members
 -------
 
 buf
-    _THE\_ buffer
+    _THE_ buffer
 
 cache
     The buffer cache used in the threaded interrupt
@@ -217,7 +217,67 @@ size
     DW8-B
 
 ctrl
-    *undescribed*
+    DWC-F
+
+.. _`dwc3_hwparams`:
+
+struct dwc3_hwparams
+====================
+
+.. c:type:: struct dwc3_hwparams
+
+    copy of HWPARAMS registers
+
+.. _`dwc3_hwparams.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dwc3_hwparams {
+        u32 hwparams0;
+        u32 hwparams1;
+        u32 hwparams2;
+        u32 hwparams3;
+        u32 hwparams4;
+        u32 hwparams5;
+        u32 hwparams6;
+        u32 hwparams7;
+        u32 hwparams8;
+    }
+
+.. _`dwc3_hwparams.members`:
+
+Members
+-------
+
+hwparams0
+    GHWPARAMS0
+
+hwparams1
+    GHWPARAMS1
+
+hwparams2
+    GHWPARAMS2
+
+hwparams3
+    GHWPARAMS3
+
+hwparams4
+    GHWPARAMS4
+
+hwparams5
+    GHWPARAMS5
+
+hwparams6
+    GHWPARAMS6
+
+hwparams7
+    GHWPARAMS7
+
+hwparams8
+    GHWPARAMS8
 
 .. _`dwc3_request`:
 
@@ -294,10 +354,10 @@ mapped
     true when request has been dma-mapped
 
 started
-    *undescribed*
+    request is started
 
 zero
-    *undescribed*
+    wants a ZLP
 
 .. _`dwc3`:
 
@@ -306,7 +366,7 @@ struct dwc3
 
 .. c:type:: struct dwc3
 
-    representation of our controller \ ``drd_work``\  - workqueue used for role swapping
+    representation of our controller
 
 .. _`dwc3.definition`:
 
@@ -425,6 +485,7 @@ Definition
         unsigned dis_rxdet_inp3_quirk:1;
         unsigned dis_u2_freeclk_exists_quirk:1;
         unsigned dis_del_phy_power_chg_quirk:1;
+        unsigned dis_tx_ipgap_linecheck_quirk:1;
         unsigned tx_de_emphasis_quirk:1;
         unsigned tx_de_emphasis:2;
         u16 imod_interval;
@@ -436,25 +497,25 @@ Members
 -------
 
 drd_work
-    *undescribed*
+    workqueue used for role swapping
 
 ep0_trb
-    dma address of ep0_trb
+    trb which is used for the ctrl_req
 
 bounce
-    *undescribed*
+    address of bounce buffer
 
 scratchbuf
-    *undescribed*
+    address of scratch buffer
 
 setup_buf
     used while precessing STD USB requests
 
 ep0_trb_addr
-    *undescribed*
+    dma address of \ ``ep0_trb``\ 
 
 bounce_addr
-    *undescribed*
+    dma address of \ ``bounce``\ 
 
 scratch_addr
     dma address of scratchbuf
@@ -472,19 +533,19 @@ dev
     pointer to our struct device
 
 sysdev
-    *undescribed*
+    pointer to the DMA-capable device
 
 xhci
     pointer to our xHCI child
 
 xhci_resources
-    *undescribed*
+    struct resources for our \ ``xhci``\  child
 
 ev_buf
-    *undescribed*
+    struct dwc3_event_buffer pointer
 
 eps
-    *undescribed*
+    endpoint array
 
 gadget
     device side representation of the peripheral controller
@@ -685,7 +746,7 @@ dis_enblslpm_quirk
     disabling the suspend signal to the PHY.
 
 dis_rxdet_inp3_quirk
-    *undescribed*
+    set if we disable Rx.Detect in P3
 
 dis_u2_freeclk_exists_quirk
     set if we clear u2_freeclk_exists
@@ -695,6 +756,10 @@ dis_u2_freeclk_exists_quirk
 dis_del_phy_power_chg_quirk
     set if we disable delay phy power
     change quirk.
+
+dis_tx_ipgap_linecheck_quirk
+    set if we disable u2mac linestate
+    check during HS transmit.
 
 tx_de_emphasis_quirk
     set if we enable Tx de-emphasis quirk

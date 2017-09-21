@@ -23,7 +23,7 @@ Description
 
   Sometimes queueing needs to be postponed for a little while, to allow
   resources to come back. This function will make sure that queueing is
-  restarted around the specified time. Queue lock must be held.
+  restarted around the specified time.
 
 .. _`blk_start_queue_async`:
 
@@ -65,7 +65,7 @@ Description
 
   \ :c:func:`blk_start_queue`\  will clear the stop flag on the queue, and call
   the request_fn for the queue if it was in a stopped state when
-  entered. Also see \ :c:func:`blk_stop_queue`\ . Queue lock must be held.
+  entered. Also see \ :c:func:`blk_stop_queue`\ .
 
 .. _`blk_stop_queue`:
 
@@ -91,7 +91,7 @@ Description
   or if it simply chooses not to queue more I/O at one point, it can
   call this function to prevent the request_fn from being called until
   the driver has signalled it's ready to go again. This happens by calling
-  \ :c:func:`blk_start_queue`\  to restart queue operations. Queue lock must be held.
+  \ :c:func:`blk_start_queue`\  to restart queue operations.
 
 .. _`blk_sync_queue`:
 
@@ -162,8 +162,7 @@ __blk_run_queue
 Description
 -----------
 
-   See \ ``blk_run_queue``\ . This variant must be called with the queue lock
-   held and interrupts disabled.
+   See \ ``blk_run_queue``\ .
 
 .. _`blk_run_queue_async`:
 
@@ -183,7 +182,16 @@ Description
 -----------
 
    Tells kblockd to perform the equivalent of \ ``blk_run_queue``\  on behalf
-   of us. The caller must hold the queue lock.
+   of us.
+
+.. _`blk_run_queue_async.note`:
+
+Note
+----
+
+   Since it is not allowed to run q->delay_work after \ :c:func:`blk_cleanup_queue`\ 
+   has canceled q->delay_work, callers must hold the queue lock to avoid
+   race conditions between \ :c:func:`blk_cleanup_queue`\  and \ :c:func:`blk_run_queue_async`\ .
 
 .. _`blk_run_queue`:
 
@@ -270,6 +278,14 @@ Description
 -----------
 
 Leave bypass mode and restore the normal queueing behavior.
+
+.. _`blk_queue_bypass_end.note`:
+
+Note
+----
+
+although \ :c:func:`blk_queue_bypass_start`\  is only called for blk-sq queues,
+this function is called for both blk-sq and blk-mq queues.
 
 .. _`blk_cleanup_queue`:
 
@@ -436,9 +452,12 @@ Description
 part_round_stats
 ================
 
-.. c:function:: void part_round_stats(int cpu, struct hd_struct *part)
+.. c:function:: void part_round_stats(struct request_queue *q, int cpu, struct hd_struct *part)
 
     Round off the performance stats on a struct disk_stats.
+
+    :param struct request_queue \*q:
+        target block queue
 
     :param int cpu:
         cpu number for stats access
@@ -596,7 +615,7 @@ Description
 blk_insert_cloned_request
 =========================
 
-.. c:function:: int blk_insert_cloned_request(struct request_queue *q, struct request *rq)
+.. c:function:: blk_status_t blk_insert_cloned_request(struct request_queue *q, struct request *rq)
 
     Helper for stacking drivers to submit a request
 
@@ -635,13 +654,6 @@ Return
 
     The number of bytes to fail.
 
-.. _`blk_rq_err_bytes.context`:
-
-Context
--------
-
-    queue_lock must be held.
-
 .. _`blk_peek_request`:
 
 blk_peek_request
@@ -671,13 +683,6 @@ Return
     Pointer to the request at the top of \ ``q``\  if available.  Null
     otherwise.
 
-.. _`blk_peek_request.context`:
-
-Context
--------
-
-    queue_lock must be held.
-
 .. _`blk_start_request`:
 
 blk_start_request
@@ -697,16 +702,6 @@ Description
 
     Dequeue \ ``req``\  and start timeout timer on it.  This hands off the
     request to the driver.
-
-    Block internal functions which don't want to start timer should
-    call \ :c:func:`blk_dequeue_request`\ .
-
-.. _`blk_start_request.context`:
-
-Context
--------
-
-    queue_lock must be held.
 
 .. _`blk_fetch_request`:
 
@@ -736,27 +731,20 @@ Return
     Pointer to the request at the top of \ ``q``\  if available.  Null
     otherwise.
 
-.. _`blk_fetch_request.context`:
-
-Context
--------
-
-    queue_lock must be held.
-
 .. _`blk_update_request`:
 
 blk_update_request
 ==================
 
-.. c:function:: bool blk_update_request(struct request *req, int error, unsigned int nr_bytes)
+.. c:function:: bool blk_update_request(struct request *req, blk_status_t error, unsigned int nr_bytes)
 
     Special helper function for request stacking drivers
 
     :param struct request \*req:
         the request being processed
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
     :param unsigned int nr_bytes:
         number of bytes to complete \ ``req``\ 
@@ -813,15 +801,15 @@ lock is held when calling this.
 blk_end_bidi_request
 ====================
 
-.. c:function:: bool blk_end_bidi_request(struct request *rq, int error, unsigned int nr_bytes, unsigned int bidi_bytes)
+.. c:function:: bool blk_end_bidi_request(struct request *rq, blk_status_t error, unsigned int nr_bytes, unsigned int bidi_bytes)
 
     Complete a bidi request
 
     :param struct request \*rq:
         the request to complete
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
     :param unsigned int nr_bytes:
         number of bytes to complete \ ``rq``\ 
@@ -852,15 +840,15 @@ Return
 __blk_end_bidi_request
 ======================
 
-.. c:function:: bool __blk_end_bidi_request(struct request *rq, int error, unsigned int nr_bytes, unsigned int bidi_bytes)
+.. c:function:: bool __blk_end_bidi_request(struct request *rq, blk_status_t error, unsigned int nr_bytes, unsigned int bidi_bytes)
 
     Complete a bidi request with queue lock held
 
     :param struct request \*rq:
         the request to complete
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
     :param unsigned int nr_bytes:
         number of bytes to complete \ ``rq``\ 
@@ -889,15 +877,15 @@ Return
 blk_end_request
 ===============
 
-.. c:function:: bool blk_end_request(struct request *rq, int error, unsigned int nr_bytes)
+.. c:function:: bool blk_end_request(struct request *rq, blk_status_t error, unsigned int nr_bytes)
 
     Helper function for drivers to complete the request.
 
     :param struct request \*rq:
         the request being processed
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
     :param unsigned int nr_bytes:
         number of bytes to complete
@@ -923,15 +911,15 @@ Return
 blk_end_request_all
 ===================
 
-.. c:function:: void blk_end_request_all(struct request *rq, int error)
+.. c:function:: void blk_end_request_all(struct request *rq, blk_status_t error)
 
     Helper function for drives to finish the request.
 
     :param struct request \*rq:
         the request to finish
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
 .. _`blk_end_request_all.description`:
 
@@ -945,15 +933,15 @@ Description
 __blk_end_request
 =================
 
-.. c:function:: bool __blk_end_request(struct request *rq, int error, unsigned int nr_bytes)
+.. c:function:: bool __blk_end_request(struct request *rq, blk_status_t error, unsigned int nr_bytes)
 
     Helper function for drivers to complete the request.
 
     :param struct request \*rq:
         the request being processed
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
     :param unsigned int nr_bytes:
         number of bytes to complete
@@ -978,15 +966,15 @@ Return
 __blk_end_request_all
 =====================
 
-.. c:function:: void __blk_end_request_all(struct request *rq, int error)
+.. c:function:: void __blk_end_request_all(struct request *rq, blk_status_t error)
 
     Helper function for drives to finish the request.
 
     :param struct request \*rq:
         the request to finish
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
 .. _`__blk_end_request_all.description`:
 
@@ -1000,15 +988,15 @@ Description
 __blk_end_request_cur
 =====================
 
-.. c:function:: bool __blk_end_request_cur(struct request *rq, int error)
+.. c:function:: bool __blk_end_request_cur(struct request *rq, blk_status_t error)
 
     Helper function to finish the current request chunk.
 
     :param struct request \*rq:
         the request to finish the current chunk for
 
-    :param int error:
-        %0 for success, < \ ``0``\  for error
+    :param blk_status_t error:
+        block status code
 
 .. _`__blk_end_request_cur.description`:
 

@@ -28,11 +28,11 @@ This function returns -EINVAL if the pulse violates the state machine
 ir_nec_scancode_to_raw
 ======================
 
-.. c:function:: u32 ir_nec_scancode_to_raw(enum rc_type protocol, u32 scancode)
+.. c:function:: u32 ir_nec_scancode_to_raw(enum rc_proto protocol, u32 scancode)
 
     encode an NEC scancode ready for modulation.
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         specific protocol to use
 
     :param u32 scancode:
@@ -43,11 +43,11 @@ ir_nec_scancode_to_raw
 ir_nec_encode
 =============
 
-.. c:function:: int ir_nec_encode(enum rc_type protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
+.. c:function:: int ir_nec_encode(enum rc_proto protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
 
     Encode a scancode as a stream of raw events
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         protocol to encode
 
     :param u32 scancode:

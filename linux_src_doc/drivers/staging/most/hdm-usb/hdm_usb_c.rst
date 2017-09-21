@@ -71,6 +71,7 @@ Definition
         struct mutex io_mutex;
         struct timer_list link_stat_timer;
         struct work_struct poll_work_obj;
+        void (*on_netinfo)(struct most_interface *, unsigned char, unsigned char *);
     }
 
 .. _`most_dev.members`:
@@ -128,6 +129,9 @@ link_stat_timer
 
 poll_work_obj
     work for polling link status
+
+on_netinfo
+    *undescribed*
 
 .. _`drci_rd_reg`:
 
@@ -497,7 +501,7 @@ receiving data.
 hdm_request_netinfo
 ===================
 
-.. c:function:: void hdm_request_netinfo(struct most_interface *iface, int channel)
+.. c:function:: void hdm_request_netinfo(struct most_interface *iface, int channel, void (*on_netinfo)(struct most_interface *, unsigned char, unsigned char *))
 
     request network information
 
@@ -506,6 +510,9 @@ hdm_request_netinfo
 
     :param int channel:
         channel ID
+
+    :param void (\*on_netinfo)(struct most_interface \*, unsigned char, unsigned char \*):
+        *undescribed*
 
 .. _`hdm_request_netinfo.description`:
 

@@ -125,34 +125,5 @@ Description
 This function releases anything requested by
 \ :c:func:`vmbus_mmio_allocate`\ .
 
-.. _`vmbus_cpu_number_to_vp_number`:
-
-vmbus_cpu_number_to_vp_number
-=============================
-
-.. c:function:: int vmbus_cpu_number_to_vp_number(int cpu_number)
-
-    Map CPU to VP.
-
-    :param int cpu_number:
-        CPU number in Linux terms
-
-.. _`vmbus_cpu_number_to_vp_number.description`:
-
-Description
------------
-
-This function returns the mapping between the Linux processor
-number and the hypervisor's virtual processor number, useful
-in making hypercalls and such that talk about specific
-processors.
-
-.. _`vmbus_cpu_number_to_vp_number.return`:
-
-Return
-------
-
-Virtual processor number in Hyper-V terms
-
 .. This file was automatic generated / don't edit.
 

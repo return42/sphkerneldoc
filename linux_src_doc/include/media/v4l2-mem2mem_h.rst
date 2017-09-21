@@ -697,6 +697,72 @@ v4l2_m2m_next_dst_buf
     :param struct v4l2_m2m_ctx \*m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
 
+.. _`v4l2_m2m_for_each_dst_buf`:
+
+v4l2_m2m_for_each_dst_buf
+=========================
+
+.. c:function::  v4l2_m2m_for_each_dst_buf( m2m_ctx,  b)
+
+    iterate over a list of destination ready buffers
+
+    :param  m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+    :param  b:
+        current buffer of type struct v4l2_m2m_buffer
+
+.. _`v4l2_m2m_for_each_src_buf`:
+
+v4l2_m2m_for_each_src_buf
+=========================
+
+.. c:function::  v4l2_m2m_for_each_src_buf( m2m_ctx,  b)
+
+    iterate over a list of source ready buffers
+
+    :param  m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+    :param  b:
+        current buffer of type struct v4l2_m2m_buffer
+
+.. _`v4l2_m2m_for_each_dst_buf_safe`:
+
+v4l2_m2m_for_each_dst_buf_safe
+==============================
+
+.. c:function::  v4l2_m2m_for_each_dst_buf_safe( m2m_ctx,  b,  n)
+
+    iterate over a list of destination ready buffers safely
+
+    :param  m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+    :param  b:
+        current buffer of type struct v4l2_m2m_buffer
+
+    :param  n:
+        used as temporary storage
+
+.. _`v4l2_m2m_for_each_src_buf_safe`:
+
+v4l2_m2m_for_each_src_buf_safe
+==============================
+
+.. c:function::  v4l2_m2m_for_each_src_buf_safe( m2m_ctx,  b,  n)
+
+    iterate over a list of source ready buffers safely
+
+    :param  m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+    :param  b:
+        current buffer of type struct v4l2_m2m_buffer
+
+    :param  n:
+        used as temporary storage
+
 .. _`v4l2_m2m_get_src_vq`:
 
 v4l2_m2m_get_src_vq
@@ -756,6 +822,51 @@ v4l2_m2m_dst_buf_remove
 
     :param struct v4l2_m2m_ctx \*m2m_ctx:
         m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+.. _`v4l2_m2m_buf_remove_by_buf`:
+
+v4l2_m2m_buf_remove_by_buf
+==========================
+
+.. c:function:: void v4l2_m2m_buf_remove_by_buf(struct v4l2_m2m_queue_ctx *q_ctx, struct vb2_v4l2_buffer *vbuf)
+
+    take off exact buffer from the list of ready buffers
+
+    :param struct v4l2_m2m_queue_ctx \*q_ctx:
+        pointer to struct \ ``v4l2_m2m_queue_ctx``\ 
+
+    :param struct vb2_v4l2_buffer \*vbuf:
+        the buffer to be removed
+
+.. _`v4l2_m2m_src_buf_remove_by_buf`:
+
+v4l2_m2m_src_buf_remove_by_buf
+==============================
+
+.. c:function:: void v4l2_m2m_src_buf_remove_by_buf(struct v4l2_m2m_ctx *m2m_ctx, struct vb2_v4l2_buffer *vbuf)
+
+    take off exact source buffer from the list of ready buffers
+
+    :param struct v4l2_m2m_ctx \*m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+    :param struct vb2_v4l2_buffer \*vbuf:
+        the buffer to be removed
+
+.. _`v4l2_m2m_dst_buf_remove_by_buf`:
+
+v4l2_m2m_dst_buf_remove_by_buf
+==============================
+
+.. c:function:: void v4l2_m2m_dst_buf_remove_by_buf(struct v4l2_m2m_ctx *m2m_ctx, struct vb2_v4l2_buffer *vbuf)
+
+    take off exact destination buffer from the list of ready buffers
+
+    :param struct v4l2_m2m_ctx \*m2m_ctx:
+        m2m context assigned to the instance given by struct \ :c:type:`struct v4l2_m2m_ctx <v4l2_m2m_ctx>`\ 
+
+    :param struct vb2_v4l2_buffer \*vbuf:
+        the buffer to be removed
 
 .. This file was automatic generated / don't edit.
 

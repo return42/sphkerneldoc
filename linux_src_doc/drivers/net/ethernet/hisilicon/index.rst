@@ -8,4 +8,5 @@ hisilicon
     :maxdepth: 1
 
     hns/index
+    hns3/index
     hns_mdio_c

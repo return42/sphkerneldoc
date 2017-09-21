@@ -26,7 +26,7 @@ Description
 
 Note that if your address is a PIO address, the conversion will fail if
 the physical address can't be internally converted to an IO token with
-\ :c:func:`pci_address_to_pio`\ , that is because it's either called to early or it
+\ :c:func:`pci_address_to_pio`\ , that is because it's either called too early or it
 can't be matched to any host bridge IO space
 
 .. _`of_iomap`:

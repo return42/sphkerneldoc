@@ -1269,6 +1269,31 @@ Description
 
 Returns \ ``0``\  on success or negative error code on failure.
 
+.. _`ubifs_tnc_remove_dh`:
+
+ubifs_tnc_remove_dh
+===================
+
+.. c:function:: int ubifs_tnc_remove_dh(struct ubifs_info *c, const union ubifs_key *key, uint32_t cookie)
+
+    remove an index entry for a "double hashed" node.
+
+    :param struct ubifs_info \*c:
+        UBIFS file-system description object
+
+    :param const union ubifs_key \*key:
+        key of node
+
+    :param uint32_t cookie:
+        node cookie for collision resolution
+
+.. _`ubifs_tnc_remove_dh.description`:
+
+Description
+-----------
+
+Returns \ ``0``\  on success or negative error code on failure.
+
 .. _`key_in_range`:
 
 key_in_range

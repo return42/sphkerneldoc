@@ -367,12 +367,12 @@ i40evf_write_rx_ctl
 i40e_aq_send_msg_to_pf
 ======================
 
-.. c:function:: i40e_status i40e_aq_send_msg_to_pf(struct i40e_hw *hw, enum i40e_virtchnl_ops v_opcode, i40e_status v_retval, u8 *msg, u16 msglen, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: i40e_status i40e_aq_send_msg_to_pf(struct i40e_hw *hw, enum virtchnl_ops v_opcode, i40e_status v_retval, u8 *msg, u16 msglen, struct i40e_asq_cmd_details *cmd_details)
 
     :param struct i40e_hw \*hw:
         pointer to the hardware structure
 
-    :param enum i40e_virtchnl_ops v_opcode:
+    :param enum virtchnl_ops v_opcode:
         opcodes for VF-PF communication
 
     :param i40e_status v_retval:
@@ -401,12 +401,12 @@ completion before returning.
 i40e_vf_parse_hw_config
 =======================
 
-.. c:function:: void i40e_vf_parse_hw_config(struct i40e_hw *hw, struct i40e_virtchnl_vf_resource *msg)
+.. c:function:: void i40e_vf_parse_hw_config(struct i40e_hw *hw, struct virtchnl_vf_resource *msg)
 
     :param struct i40e_hw \*hw:
         pointer to the hardware structure
 
-    :param struct i40e_virtchnl_vf_resource \*msg:
+    :param struct virtchnl_vf_resource \*msg:
         pointer to the virtual channel VF resource structure
 
 .. _`i40e_vf_parse_hw_config.description`:

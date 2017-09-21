@@ -37,6 +37,7 @@ mm
     page_counter_c
     page_vma_mapped_c
     pagewalk_c
+    percpu-internal_h
     percpu-vm_c
     percpu_c
     process_vm_access_c

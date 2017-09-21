@@ -6252,6 +6252,33 @@ Call this function in a driver with per-packet rate selection support
 to combine the rate info in the packet tx info with the most recent
 rate selection table for the station entry.
 
+.. _`ieee80211_sta_set_expected_throughput`:
+
+ieee80211_sta_set_expected_throughput
+=====================================
+
+.. c:function:: void ieee80211_sta_set_expected_throughput(struct ieee80211_sta *pubsta, u32 thr)
+
+    set the expected tpt for a station
+
+    :param struct ieee80211_sta \*pubsta:
+        the station to set throughput for.
+
+    :param u32 thr:
+        the current expected throughput in kbps.
+
+.. _`ieee80211_sta_set_expected_throughput.description`:
+
+Description
+-----------
+
+Call this function to notify mac80211 about a change in expected throughput
+to a station. A driver for a device that does rate control in firmware can
+call this function when the expected throughput estimate towards a station
+changes. The information is used to tune the CoDel AQM applied to traffic
+going towards that station (which can otherwise be too aggressive and cause
+slow stations to starve).
+
 .. _`ieee80211_tx_status`:
 
 ieee80211_tx_status
@@ -8538,6 +8565,34 @@ reordering.
 
 Destroy structures responsible for reordering so device drivers may call here
 when they complete DelBa negotiation.
+
+.. _`ieee80211_rx_ba_timer_expired`:
+
+ieee80211_rx_ba_timer_expired
+=============================
+
+.. c:function:: void ieee80211_rx_ba_timer_expired(struct ieee80211_vif *vif, const u8 *addr, unsigned int tid)
+
+    stop a Rx BA session due to timeout
+
+    :param struct ieee80211_vif \*vif:
+        &struct ieee80211_vif pointer from the add_interface callback
+
+    :param const u8 \*addr:
+        station mac address
+
+    :param unsigned int tid:
+        the rx tid
+
+.. _`ieee80211_rx_ba_timer_expired.description`:
+
+Description
+-----------
+
+Some device drivers do not offload AddBa/DelBa negotiation, but handle rx
+buffer reording internally, and therefore also handle the session timer.
+
+Trigger the timeout flow, which sends a DelBa.
 
 .. _`ieee80211_tx_rate_control`:
 

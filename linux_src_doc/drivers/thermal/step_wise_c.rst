@@ -8,7 +8,7 @@ step_wise_throttle
 
 .. c:function:: int step_wise_throttle(struct thermal_zone_device *tz, int trip)
 
-    throttles devices associated with the given zone \ ``tz``\  - thermal_zone_device \ ``trip``\  - the trip point \ ``trip_type``\  - type of the trip point
+    throttles devices associated with the given zone \ ``tz``\  - thermal_zone_device \ ``trip``\  - trip point index
 
     :param struct thermal_zone_device \*tz:
         *undescribed*

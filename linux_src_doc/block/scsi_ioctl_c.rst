@@ -45,5 +45,19 @@ If the SCSI command succeeds then 0 is returned.
 Positive numbers returned are the compacted SCSI error codes (4
 bytes in one int) where the lowest byte is the SCSI status.
 
+.. _`scsi_req_init`:
+
+scsi_req_init
+=============
+
+.. c:function:: void scsi_req_init(struct scsi_request *req)
+
+    initialize certain fields of a scsi_request structure
+
+    :param struct scsi_request \*req:
+        Pointer to a scsi_request structure.
+        Initializes .__cmd[], .cmd, .cmd_len and .sense_len but no other members
+        of struct scsi_request.
+
 .. This file was automatic generated / don't edit.
 

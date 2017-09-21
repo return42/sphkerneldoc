@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mmc/core/queue.c
 
+.. _`mmc_init_request`:
+
+mmc_init_request
+================
+
+.. c:function:: int mmc_init_request(struct request_queue *q, struct request *req, gfp_t gfp)
+
+    initialize the MMC-specific per-request data
+
+    :param struct request_queue \*q:
+        the request queue
+
+    :param struct request \*req:
+        the request
+
+    :param gfp_t gfp:
+        memory allocation policy
+
 .. _`mmc_init_queue`:
 
 mmc_init_queue

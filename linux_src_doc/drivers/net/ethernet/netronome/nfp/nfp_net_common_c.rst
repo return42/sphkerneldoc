@@ -71,6 +71,35 @@ Return
 
 Negative errno on error, 0 on success
 
+.. _`nfp_net_reconfig_mbox`:
+
+nfp_net_reconfig_mbox
+=====================
+
+.. c:function:: int nfp_net_reconfig_mbox(struct nfp_net *nn, u32 mbox_cmd)
+
+    Reconfigure the firmware via the mailbox
+
+    :param struct nfp_net \*nn:
+        NFP Net device to reconfigure
+
+    :param u32 mbox_cmd:
+        The value for the mailbox command
+
+.. _`nfp_net_reconfig_mbox.description`:
+
+Description
+-----------
+
+Helper function for mailbox updates
+
+.. _`nfp_net_reconfig_mbox.return`:
+
+Return
+------
+
+Negative errno on error, 0 on success
+
 .. _`nfp_net_irq_unmask`:
 
 nfp_net_irq_unmask
@@ -282,18 +311,6 @@ nfp_net_rx_ring_init
 
     :param unsigned int idx:
         Ring index
-
-.. _`nfp_net_vecs_init`:
-
-nfp_net_vecs_init
-=================
-
-.. c:function:: void nfp_net_vecs_init(struct net_device *netdev)
-
-    Assign IRQs and setup rvecs.
-
-    :param struct net_device \*netdev:
-        netdev structure
 
 .. _`nfp_net_aux_irq_request`:
 
@@ -663,7 +680,7 @@ nfp_net_rx_csum_has_errors
 nfp_net_rx_csum
 ===============
 
-.. c:function:: void nfp_net_rx_csum(struct nfp_net_dp *dp, struct nfp_net_r_vector *r_vec, struct nfp_net_rx_desc *rxd, struct sk_buff *skb)
+.. c:function:: void nfp_net_rx_csum(struct nfp_net_dp *dp, struct nfp_net_r_vector *r_vec, struct nfp_net_rx_desc *rxd, struct nfp_meta_parsed *meta, struct sk_buff *skb)
 
     set SKB checksum field based on RX descriptor flags
 
@@ -675,6 +692,9 @@ nfp_net_rx_csum
 
     :param struct nfp_net_rx_desc \*rxd:
         Pointer to RX descriptor
+
+    :param struct nfp_meta_parsed \*meta:
+        Parsed metadata prepend
 
     :param struct sk_buff \*skb:
         Pointer to SKB
@@ -731,6 +751,18 @@ Return
 ------
 
 number of packets polled.
+
+.. _`nfp_net_vecs_init`:
+
+nfp_net_vecs_init
+=================
+
+.. c:function:: void nfp_net_vecs_init(struct nfp_net *nn)
+
+    Assign IRQs and setup rvecs.
+
+    :param struct nfp_net \*nn:
+        NFP Network structure
 
 .. _`nfp_net_tx_ring_free`:
 
@@ -841,12 +873,15 @@ nfp_net_coalesce_write_cfg
 nfp_net_write_mac_addr
 ======================
 
-.. c:function:: void nfp_net_write_mac_addr(struct nfp_net *nn)
+.. c:function:: void nfp_net_write_mac_addr(struct nfp_net *nn, const u8 *addr)
 
     Write mac address to the device control BAR
 
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
+
+    :param const u8 \*addr:
+        MAC address to write
 
 .. _`nfp_net_write_mac_addr.description`:
 
@@ -881,18 +916,6 @@ nfp_net_set_config_and_enable
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
 
-.. _`nfp_net_open_stack`:
-
-nfp_net_open_stack
-==================
-
-.. c:function:: void nfp_net_open_stack(struct nfp_net *nn)
-
-    Start the device from stack's perspective
-
-    :param struct nfp_net \*nn:
-        NFP Net device to reconfigure
-
 .. _`nfp_net_close_stack`:
 
 nfp_net_close_stack
@@ -900,7 +923,7 @@ nfp_net_close_stack
 
 .. c:function:: void nfp_net_close_stack(struct nfp_net *nn)
 
-    Quiescent the stack (part of close)
+    Quiesce the stack (part of close)
 
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
@@ -928,6 +951,18 @@ nfp_net_netdev_close
 
     :param struct net_device \*netdev:
         netdev structure
+
+.. _`nfp_net_open_stack`:
+
+nfp_net_open_stack
+==================
+
+.. c:function:: void nfp_net_open_stack(struct nfp_net *nn)
+
+    Start the device from stack's perspective
+
+    :param struct nfp_net \*nn:
+        NFP Net device to reconfigure
 
 .. _`nfp_net_set_vxlan_port`:
 
@@ -983,17 +1018,20 @@ nfp_net_info
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
 
-.. _`nfp_net_netdev_alloc`:
+.. _`nfp_net_alloc`:
 
-nfp_net_netdev_alloc
-====================
+nfp_net_alloc
+=============
 
-.. c:function:: struct nfp_net *nfp_net_netdev_alloc(struct pci_dev *pdev, unsigned int max_tx_rings, unsigned int max_rx_rings)
+.. c:function:: struct nfp_net *nfp_net_alloc(struct pci_dev *pdev, bool needs_netdev, unsigned int max_tx_rings, unsigned int max_rx_rings)
 
     Allocate netdev and related structure
 
     :param struct pci_dev \*pdev:
         PCI device
+
+    :param bool needs_netdev:
+        Whether to allocate a netdev for this vNIC
 
     :param unsigned int max_tx_rings:
         Maximum number of TX rings supported by device
@@ -1001,29 +1039,30 @@ nfp_net_netdev_alloc
     :param unsigned int max_rx_rings:
         Maximum number of RX rings supported by device
 
-.. _`nfp_net_netdev_alloc.description`:
+.. _`nfp_net_alloc.description`:
 
 Description
 -----------
 
 This function allocates a netdev device and fills in the initial
-part of the \ ``struct``\  nfp_net structure.
+part of the \ ``struct``\  nfp_net structure.  In case of control device
+nfp_net structure is allocated without the netdev.
 
-.. _`nfp_net_netdev_alloc.return`:
+.. _`nfp_net_alloc.return`:
 
 Return
 ------
 
 NFP Net device structure, or ERR_PTR on error.
 
-.. _`nfp_net_netdev_free`:
+.. _`nfp_net_free`:
 
-nfp_net_netdev_free
-===================
+nfp_net_free
+============
 
-.. c:function:: void nfp_net_netdev_free(struct nfp_net *nn)
+.. c:function:: void nfp_net_free(struct nfp_net *nn)
 
-    Undo what \ ``nfp_net_netdev_alloc``\ () did
+    Undo what \ ``nfp_net_alloc``\ () did
 
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
@@ -1071,36 +1110,36 @@ nfp_net_irqmod_init
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
 
-.. _`nfp_net_netdev_init`:
+.. _`nfp_net_init`:
 
-nfp_net_netdev_init
-===================
+nfp_net_init
+============
 
-.. c:function:: int nfp_net_netdev_init(struct net_device *netdev)
+.. c:function:: int nfp_net_init(struct nfp_net *nn)
 
-    Initialise/finalise the netdev structure
+    Initialise/finalise the nfp_net structure
 
-    :param struct net_device \*netdev:
-        netdev structure
+    :param struct nfp_net \*nn:
+        NFP Net device structure
 
-.. _`nfp_net_netdev_init.return`:
+.. _`nfp_net_init.return`:
 
 Return
 ------
 
 0 on success or negative errno on error.
 
-.. _`nfp_net_netdev_clean`:
+.. _`nfp_net_clean`:
 
-nfp_net_netdev_clean
-====================
+nfp_net_clean
+=============
 
-.. c:function:: void nfp_net_netdev_clean(struct net_device *netdev)
+.. c:function:: void nfp_net_clean(struct nfp_net *nn)
 
-    Undo what \ :c:func:`nfp_net_netdev_init`\  did.
+    Undo what \ :c:func:`nfp_net_init`\  did.
 
-    :param struct net_device \*netdev:
-        netdev structure
+    :param struct nfp_net \*nn:
+        NFP Net device structure
 
 .. This file was automatic generated / don't edit.
 

@@ -205,5 +205,79 @@ Description
 Every time the inode is modified, the i_version field will be incremented.
 The filesystem has to be mounted with i_version flag
 
+.. _`filemap_set_wb_err`:
+
+filemap_set_wb_err
+==================
+
+.. c:function:: void filemap_set_wb_err(struct address_space *mapping, int err)
+
+    set a writeback error on an address_space
+
+    :param struct address_space \*mapping:
+        mapping in which to set writeback error
+
+    :param int err:
+        error to be set in mapping
+
+.. _`filemap_set_wb_err.description`:
+
+Description
+-----------
+
+When writeback fails in some way, we must record that error so that
+userspace can be informed when fsync and the like are called.  We endeavor
+to report errors on any file that was open at the time of the error.  Some
+internal callers also need to know when writeback errors have occurred.
+
+When a writeback error occurs, most filesystems will want to call
+filemap_set_wb_err to record the error in the mapping so that it will be
+automatically reported whenever fsync is called on the file.
+
+.. _`filemap_check_wb_err`:
+
+filemap_check_wb_err
+====================
+
+.. c:function:: int filemap_check_wb_err(struct address_space *mapping, errseq_t since)
+
+    has an error occurred since the mark was sampled?
+
+    :param struct address_space \*mapping:
+        mapping to check for writeback errors
+
+    :param errseq_t since:
+        previously-sampled errseq_t
+
+.. _`filemap_check_wb_err.description`:
+
+Description
+-----------
+
+Grab the errseq_t value from the mapping, and see if it has changed "since"
+the given value was sampled.
+
+If it has then report the latest error set, otherwise return 0.
+
+.. _`filemap_sample_wb_err`:
+
+filemap_sample_wb_err
+=====================
+
+.. c:function:: errseq_t filemap_sample_wb_err(struct address_space *mapping)
+
+    sample the current errseq_t to test for later errors
+
+    :param struct address_space \*mapping:
+        mapping to be sampled
+
+.. _`filemap_sample_wb_err.description`:
+
+Description
+-----------
+
+Writeback errors are always reported relative to a particular sample point
+in the past. This function provides those sample points.
+
 .. This file was automatic generated / don't edit.
 

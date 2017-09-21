@@ -1,45 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/rdma_netlink.h
 
-.. _`ibnl_add_client`:
+.. _`rdma_nl_register`:
 
-ibnl_add_client
-===============
+rdma_nl_register
+================
 
-.. c:function:: int ibnl_add_client(int index, int nops, const struct ibnl_client_cbs cb_table)
+.. c:function:: void rdma_nl_register(unsigned int index, const struct rdma_nl_cbs cb_table)
 
-    :param int index:
+    :param unsigned int index:
         Index of the added client
 
-    :param int nops:
-        Number of supported ops by the added client.
-
-    :param const struct ibnl_client_cbs cb_table:
+    :param const struct rdma_nl_cbs cb_table:
         A table for op->callback
 
-.. _`ibnl_add_client.description`:
+.. _`rdma_nl_unregister`:
 
-Description
------------
-
-Returns 0 on success or a negative error code.
-
-.. _`ibnl_remove_client`:
-
-ibnl_remove_client
+rdma_nl_unregister
 ==================
 
-.. c:function:: int ibnl_remove_client(int index)
+.. c:function:: void rdma_nl_unregister(unsigned int index)
 
-    :param int index:
+    :param unsigned int index:
         Index of the removed IB client.
-
-.. _`ibnl_remove_client.description`:
-
-Description
------------
-
-Returns 0 on success or a negative error code.
 
 .. _`ibnl_put_msg`:
 
@@ -93,35 +76,43 @@ ibnl_put_attr
         The attribute type.
         Returns the 0 and a negative error code on failure.
 
-.. _`ibnl_unicast`:
+.. _`rdma_nl_unicast`:
 
-ibnl_unicast
-============
+rdma_nl_unicast
+===============
 
-.. c:function:: int ibnl_unicast(struct sk_buff *skb, struct nlmsghdr *nlh, __u32 pid)
+.. c:function:: int rdma_nl_unicast(struct sk_buff *skb, u32 pid)
 
     :param struct sk_buff \*skb:
         The netlink skb
 
-    :param struct nlmsghdr \*nlh:
-        Header of the netlink message to send
+    :param u32 pid:
+        Userspace netlink process ID
+        Returns 0 on success or a negative error code.
+
+.. _`rdma_nl_unicast_wait`:
+
+rdma_nl_unicast_wait
+====================
+
+.. c:function:: int rdma_nl_unicast_wait(struct sk_buff *skb, __u32 pid)
+
+    :param struct sk_buff \*skb:
+        The netlink skb
 
     :param __u32 pid:
         Userspace netlink process ID
         Returns 0 on success or a negative error code.
 
-.. _`ibnl_multicast`:
+.. _`rdma_nl_multicast`:
 
-ibnl_multicast
-==============
+rdma_nl_multicast
+=================
 
-.. c:function:: int ibnl_multicast(struct sk_buff *skb, struct nlmsghdr *nlh, unsigned int group, gfp_t flags)
+.. c:function:: int rdma_nl_multicast(struct sk_buff *skb, unsigned int group, gfp_t flags)
 
     :param struct sk_buff \*skb:
         The netlink skb
-
-    :param struct nlmsghdr \*nlh:
-        Header of the netlink message to send
 
     :param unsigned int group:
         Netlink group ID
@@ -130,12 +121,12 @@ ibnl_multicast
         allocation flags
         Returns 0 on success or a negative error code.
 
-.. _`ibnl_chk_listeners`:
+.. _`rdma_nl_chk_listeners`:
 
-ibnl_chk_listeners
-==================
+rdma_nl_chk_listeners
+=====================
 
-.. c:function:: int ibnl_chk_listeners(unsigned int group)
+.. c:function:: int rdma_nl_chk_listeners(unsigned int group)
 
     :param unsigned int group:
         the netlink group ID

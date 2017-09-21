@@ -159,12 +159,98 @@ Description
 
 This is data entry for lower layers.
 
-.. _`store_new_id`:
+.. _`hid_hw_start`:
 
-store_new_id
+hid_hw_start
 ============
 
-.. c:function:: ssize_t store_new_id(struct device_driver *drv, const char *buf, size_t count)
+.. c:function:: int hid_hw_start(struct hid_device *hdev, unsigned int connect_mask)
+
+    start underlying HW
+
+    :param struct hid_device \*hdev:
+        hid device
+
+    :param unsigned int connect_mask:
+        which outputs to connect, see HID_CONNECT\_\*
+
+.. _`hid_hw_start.description`:
+
+Description
+-----------
+
+Call this in probe function \*after\* hid_parse. This will setup HW
+buffers and start the device (if not defeirred to device open).
+hid_hw_stop must be called if this was successful.
+
+.. _`hid_hw_stop`:
+
+hid_hw_stop
+===========
+
+.. c:function:: void hid_hw_stop(struct hid_device *hdev)
+
+    stop underlying HW
+
+    :param struct hid_device \*hdev:
+        hid device
+
+.. _`hid_hw_stop.description`:
+
+Description
+-----------
+
+This is usually called from remove function or from probe when something
+failed and hid_hw_start was called already.
+
+.. _`hid_hw_open`:
+
+hid_hw_open
+===========
+
+.. c:function:: int hid_hw_open(struct hid_device *hdev)
+
+    signal underlying HW to start delivering events
+
+    :param struct hid_device \*hdev:
+        hid device
+
+.. _`hid_hw_open.description`:
+
+Description
+-----------
+
+Tell underlying HW to start delivering events from the device.
+This function should be called sometime after successful call
+to \ :c:func:`hid_hiw_start`\ .
+
+.. _`hid_hw_close`:
+
+hid_hw_close
+============
+
+.. c:function:: void hid_hw_close(struct hid_device *hdev)
+
+    signal underlaying HW to stop delivering events
+
+    :param struct hid_device \*hdev:
+        hid device
+
+.. _`hid_hw_close.description`:
+
+Description
+-----------
+
+This function indicates that we are not interested in the events
+from this device anymore. Delivery of events may or may not stop,
+depending on the number of users still outstanding.
+
+.. _`new_id_store`:
+
+new_id_store
+============
+
+.. c:function:: ssize_t new_id_store(struct device_driver *drv, const char *buf, size_t count)
 
     add a new HID device ID to this driver and re-probe devices
 
@@ -177,7 +263,7 @@ store_new_id
     :param size_t count:
         input size
 
-.. _`store_new_id.description`:
+.. _`new_id_store.description`:
 
 Description
 -----------

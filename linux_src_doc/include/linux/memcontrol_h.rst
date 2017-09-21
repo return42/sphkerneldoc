@@ -45,25 +45,25 @@ Description
 Returns the parent memcg, or NULL if this is the root or the memory
 controller is in legacy no-hierarchy mode.
 
-.. _`mod_memcg_page_state`:
+.. _`__mod_memcg_page_state`:
 
-mod_memcg_page_state
-====================
+__mod_memcg_page_state
+======================
 
-.. c:function:: void mod_memcg_page_state(struct page *page, enum memcg_stat_item idx, int val)
+.. c:function:: void __mod_memcg_page_state(struct page *page, int idx, int val)
 
     update page state statistics
 
     :param struct page \*page:
         the page
 
-    :param enum memcg_stat_item idx:
+    :param int idx:
         page state item to account
 
     :param int val:
         number of pages (positive or negative)
 
-.. _`mod_memcg_page_state.description`:
+.. _`__mod_memcg_page_state.description`:
 
 Description
 -----------
@@ -71,7 +71,7 @@ Description
 The \ ``page``\  must be locked or the caller must use \ :c:func:`lock_page_memcg`\ 
 to prevent double accounting when the page is concurrently being
 
-.. _`mod_memcg_page_state.moved-to-another-memcg`:
+.. _`__mod_memcg_page_state.moved-to-another-memcg`:
 
 moved to another memcg
 ----------------------
@@ -83,24 +83,6 @@ mod_memcg_page_state(page, state, -1);
 unlock_page(page) or unlock_page_memcg(page)
 
 Kernel pages are an exception to this, since they'll never move.
-
-.. _`memcg_kmem_update_page_stat`:
-
-memcg_kmem_update_page_stat
-===========================
-
-.. c:function:: void memcg_kmem_update_page_stat(struct page *page, enum memcg_stat_item idx, int val)
-
-    update kmem page state statistics
-
-    :param struct page \*page:
-        the page
-
-    :param enum memcg_stat_item idx:
-        page state item to account
-
-    :param int val:
-        number of pages (positive or negative)
 
 .. This file was automatic generated / don't edit.
 

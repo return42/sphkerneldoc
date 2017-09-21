@@ -37,6 +37,7 @@ Definition
         void (*suspend)(struct clocksource *cs);
         void (*resume)(struct clocksource *cs);
         void (*mark_unstable)(struct clocksource *cs);
+        void (*tick_stable)(struct clocksource *cs);
     }
 
 .. _`clocksource.members`:
@@ -110,6 +111,9 @@ resume
 mark_unstable
     Optional function to inform the clocksource driver that
     the watchdog marked the clocksource unstable
+
+tick_stable
+    *undescribed*
 
 .. _`clocksource.note`:
 

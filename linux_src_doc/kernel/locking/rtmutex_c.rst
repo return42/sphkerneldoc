@@ -162,7 +162,7 @@ this function is called.
 __rt_mutex_init
 ===============
 
-.. c:function:: void __rt_mutex_init(struct rt_mutex *lock, const char *name)
+.. c:function:: void __rt_mutex_init(struct rt_mutex *lock, const char *name, struct lock_class_key *key)
 
     initialize the rt lock
 
@@ -170,6 +170,9 @@ __rt_mutex_init
         the rt lock to be initialized
 
     :param const char \*name:
+        *undescribed*
+
+    :param struct lock_class_key \*key:
         *undescribed*
 
 .. _`__rt_mutex_init.description`:

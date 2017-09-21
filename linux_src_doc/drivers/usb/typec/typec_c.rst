@@ -92,14 +92,14 @@ delivery command has become available.
 typec_partner_register_altmode
 ==============================
 
-.. c:function:: struct typec_altmode *typec_partner_register_altmode(struct typec_partner *partner, struct typec_altmode_desc *desc)
+.. c:function:: struct typec_altmode *typec_partner_register_altmode(struct typec_partner *partner, const struct typec_altmode_desc *desc)
 
     Register USB Type-C Partner Alternate Mode
 
     :param struct typec_partner \*partner:
         USB Type-C Partner that supports the alternate mode
 
-    :param struct typec_altmode_desc \*desc:
+    :param const struct typec_altmode_desc \*desc:
         Description of the alternate mode
 
 .. _`typec_partner_register_altmode.description`:
@@ -162,14 +162,14 @@ Unregister device created with \ :c:func:`typec_register_partner`\ .
 typec_plug_register_altmode
 ===========================
 
-.. c:function:: struct typec_altmode *typec_plug_register_altmode(struct typec_plug *plug, struct typec_altmode_desc *desc)
+.. c:function:: struct typec_altmode *typec_plug_register_altmode(struct typec_plug *plug, const struct typec_altmode_desc *desc)
 
     Register USB Type-C Cable Plug Alternate Mode
 
     :param struct typec_plug \*plug:
         USB Type-C Cable Plug that supports the alternate mode
 
-    :param struct typec_altmode_desc \*desc:
+    :param const struct typec_altmode_desc \*desc:
         Description of the alternate mode
 
 .. _`typec_plug_register_altmode.description`:
@@ -390,14 +390,14 @@ negotiated with methods defined in USB Power Delivery specification.
 typec_port_register_altmode
 ===========================
 
-.. c:function:: struct typec_altmode *typec_port_register_altmode(struct typec_port *port, struct typec_altmode_desc *desc)
+.. c:function:: struct typec_altmode *typec_port_register_altmode(struct typec_port *port, const struct typec_altmode_desc *desc)
 
     Register USB Type-C Port Alternate Mode
 
     :param struct typec_port \*port:
         USB Type-C Port that supports the alternate mode
 
-    :param struct typec_altmode_desc \*desc:
+    :param const struct typec_altmode_desc \*desc:
         Description of the alternate mode
 
 .. _`typec_port_register_altmode.description`:

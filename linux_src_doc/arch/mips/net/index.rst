@@ -8,3 +8,4 @@ net
     :maxdepth: 1
 
     bpf_jit_c
+    ebpf_jit_c

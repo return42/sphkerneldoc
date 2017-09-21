@@ -15,6 +15,7 @@ apparmor
     domain_c
     file_c
     ipc_c
+    label_c
     lib_c
     lsm_c
     match_c

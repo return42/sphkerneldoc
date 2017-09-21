@@ -23,6 +23,7 @@ Definition
         struct completion cmd_complete;
         struct clk *clk;
         struct reset_control *rst;
+        struct i2c_client *slave;
         u32 (*get_clk_rate_khz)(struct dw_i2c_dev *dev);
         struct dw_pci_controller *controller;
         int cmd_err;
@@ -42,6 +43,7 @@ Definition
         struct i2c_adapter adapter;
         u32 functionality;
         u32 master_cfg;
+        u32 slave_cfg;
         unsigned int tx_fifo_depth;
         unsigned int rx_fifo_depth;
         int rx_outstanding;
@@ -61,6 +63,10 @@ Definition
         int (*acquire_lock)(struct dw_i2c_dev *dev);
         void (*release_lock)(struct dw_i2c_dev *dev);
         bool pm_disabled;
+        void (*disable)(struct dw_i2c_dev *dev);
+        void (*disable_int)(struct dw_i2c_dev *dev);
+        int (*init)(struct dw_i2c_dev *dev);
+        int mode;
     }
 
 .. _`dw_i2c_dev.members`:
@@ -83,6 +89,9 @@ clk
 rst
     *undescribed*
 
+slave
+    represent an I2C slave device
+
 get_clk_rate_khz
     *undescribed*
 
@@ -93,7 +102,7 @@ cmd_err
     run time hadware error code
 
 msgs
-    points to an array of messages currently being transfered
+    points to an array of messages currently being transferred
 
 msgs_num
     the number of elements in msgs
@@ -141,6 +150,9 @@ functionality
 
 master_cfg
     *undescribed*
+
+slave_cfg
+    configuration for the slave device
 
 tx_fifo_depth
     depth of the hardware tx fifo
@@ -198,6 +210,18 @@ release_lock
 
 pm_disabled
     true if power-management should be disabled for this i2c-bus
+
+disable
+    function to disable the controller
+
+disable_int
+    function to disable all interrupts
+
+init
+    function to initialize the I2C hardware
+
+mode
+    operation mode - DW_IC_MASTER or DW_IC_SLAVE
 
 .. _`dw_i2c_dev.description`:
 

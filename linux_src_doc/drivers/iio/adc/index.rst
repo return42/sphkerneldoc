@@ -26,5 +26,6 @@ adc
     stm32-adc-core_h
     stm32-adc_c
     stx104_c
+    ti-adc084s021_c
     twl4030-madc_c
     twl6030-gpadc_c

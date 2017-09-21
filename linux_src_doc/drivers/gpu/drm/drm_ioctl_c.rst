@@ -187,7 +187,7 @@ Then you need to define your IOCTL number, using one of \ :c:func:`DRM_IO`\ , \ 
 
 DRM driver private IOCTL must be in the range from DRM_COMMAND_BASE to
 DRM_COMMAND_END. Finally you need an array of \ :c:type:`struct drm_ioctl_desc <drm_ioctl_desc>`\  to wire
-up the handlers and set the access rights:
+up the handlers and set the access rights::
 
     static const struct drm_ioctl_desc my_driver_ioctls[] = {
         DRM_IOCTL_DEF_DRV(MY_DRIVER_OPERATION, my_driver_operation,
@@ -196,6 +196,9 @@ up the handlers and set the access rights:
 
 And then assign this to the \ :c:type:`drm_driver.ioctls <drm_driver>`\  field in your driver
 structure.
+
+See the separate chapter on :ref:`file operations<drm_driver_fops>` for how
+the driver-specific IOCTLs are wired up.
 
 .. _`drm_ioctl`:
 

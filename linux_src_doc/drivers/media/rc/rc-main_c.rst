@@ -6,7 +6,7 @@
 ir_create_table
 ===============
 
-.. c:function:: int ir_create_table(struct rc_map *rc_map, const char *name, u64 rc_type, size_t size)
+.. c:function:: int ir_create_table(struct rc_map *rc_map, const char *name, u64 rc_proto, size_t size)
 
     initializes a scancode table
 
@@ -16,7 +16,7 @@ ir_create_table
     :param const char \*name:
         name to assign to the table
 
-    :param u64 rc_type:
+    :param u64 rc_proto:
         ir type to assign to the new table
 
     :param size_t size:
@@ -338,14 +338,14 @@ received.
 ir_do_keydown
 =============
 
-.. c:function:: void ir_do_keydown(struct rc_dev *dev, enum rc_type protocol, u32 scancode, u32 keycode, u8 toggle)
+.. c:function:: void ir_do_keydown(struct rc_dev *dev, enum rc_proto protocol, u32 scancode, u32 keycode, u8 toggle)
 
     internal function to process a keypress
 
     :param struct rc_dev \*dev:
         the struct rc_dev descriptor of the device
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         the protocol of the keypress
 
     :param u32 scancode:
@@ -370,14 +370,14 @@ called with keylock held.
 rc_keydown
 ==========
 
-.. c:function:: void rc_keydown(struct rc_dev *dev, enum rc_type protocol, u32 scancode, u8 toggle)
+.. c:function:: void rc_keydown(struct rc_dev *dev, enum rc_proto protocol, u32 scancode, u8 toggle)
 
     generates input event for a key press
 
     :param struct rc_dev \*dev:
         the struct rc_dev descriptor of the device
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         the protocol for the keypress
 
     :param u32 scancode:
@@ -400,14 +400,14 @@ remote control.
 rc_keydown_notimeout
 ====================
 
-.. c:function:: void rc_keydown_notimeout(struct rc_dev *dev, enum rc_type protocol, u32 scancode, u8 toggle)
+.. c:function:: void rc_keydown_notimeout(struct rc_dev *dev, enum rc_proto protocol, u32 scancode, u8 toggle)
 
     generates input event for a key press without an automatic keyup event at a later time
 
     :param struct rc_dev \*dev:
         the struct rc_dev descriptor of the device
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         the protocol for the keypress
 
     :param u32 scancode:
@@ -504,8 +504,8 @@ it is trigged by reading /sys/class/rc/rc?/protocols.
 It returns the protocol names of supported protocols.
 Enabled protocols are printed in brackets.
 
-dev->lock is taken to guard against races between device
-registration, store_protocols and show_protocols.
+dev->lock is taken to guard against races between
+store_protocols and show_protocols.
 
 .. _`parse_protocol_change`:
 
@@ -564,8 +564,8 @@ It is trigged by writing to /sys/class/rc/rc?/[wakeup_]protocols.
 See \ :c:func:`parse_protocol_change`\  for the valid commands.
 Returns \ ``len``\  on success or a negative error code.
 
-dev->lock is taken to guard against races between device
-registration, store_protocols and show_protocols.
+dev->lock is taken to guard against races between
+store_protocols and show_protocols.
 
 .. _`show_filter`:
 
@@ -598,7 +598,7 @@ type in hexadecimal into \ ``buf``\  and returns the size of the buffer.
 Bits of the filter value corresponding to set bits in the filter mask are
 compared against input scancodes and non-matching scancodes are discarded.
 
-dev->lock is taken to guard against races between device registration,
+dev->lock is taken to guard against races between
 store_filter and show_filter.
 
 .. _`store_filter`:
@@ -636,7 +636,7 @@ returns \ ``len``\ .
 Bits of the filter value corresponding to set bits in the filter mask are
 compared against input scancodes and non-matching scancodes are discarded.
 
-dev->lock is taken to guard against races between device registration,
+dev->lock is taken to guard against races between
 store_filter and show_filter.
 
 .. _`show_wakeup_protocols`:
@@ -667,8 +667,8 @@ it is trigged by reading /sys/class/rc/rc?/wakeup_protocols.
 It returns the protocol names of supported protocols.
 The enabled protocols are printed in brackets.
 
-dev->lock is taken to guard against races between device
-registration, store_protocols and show_protocols.
+dev->lock is taken to guard against races between
+store_wakeup_protocols and show_wakeup_protocols.
 
 .. _`store_wakeup_protocols`:
 
@@ -700,8 +700,8 @@ This routine is for changing the IR protocol type.
 It is trigged by writing to /sys/class/rc/rc?/wakeup_protocols.
 Returns \ ``len``\  on success or a negative error code.
 
-dev->lock is taken to guard against races between device
-registration, store_protocols and show_protocols.
+dev->lock is taken to guard against races between
+store_wakeup_protocols and show_wakeup_protocols.
 
 .. This file was automatic generated / don't edit.
 

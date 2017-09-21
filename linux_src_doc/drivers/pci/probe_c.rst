@@ -87,6 +87,26 @@ accesses, or the device is behind a reverse Express bridge.  So we try
 reading the dword at 0x100 which must either be 0 or a valid extended
 capability header.
 
+.. _`pci_intx_mask_broken`:
+
+pci_intx_mask_broken
+====================
+
+.. c:function:: int pci_intx_mask_broken(struct pci_dev *dev)
+
+    test PCI_COMMAND_INTX_DISABLE writability
+
+    :param struct pci_dev \*dev:
+        PCI device
+
+.. _`pci_intx_mask_broken.description`:
+
+Description
+-----------
+
+Test whether PCI_COMMAND_INTX_DISABLE is writable for \ ``dev``\ .  Check this
+at enumeration-time to avoid modifying PCI_COMMAND at run-time.
+
 .. _`pci_setup_device`:
 
 pci_setup_device
@@ -109,6 +129,25 @@ vendor,class,memory and IO-space addresses,IRQ lines etc.
 Called at initialisation of the PCI subsystem and by CardBus services.
 Returns 0 on success and negative if unknown type of device (not normal,
 bridge or CardBus).
+
+.. _`pcie_relaxed_ordering_enabled`:
+
+pcie_relaxed_ordering_enabled
+=============================
+
+.. c:function:: bool pcie_relaxed_ordering_enabled(struct pci_dev *dev)
+
+    Probe for PCIe relaxed ordering enable
+
+    :param struct pci_dev \*dev:
+        PCI device to query
+
+.. _`pcie_relaxed_ordering_enabled.description`:
+
+Description
+-----------
+
+Returns true if the device has enabled relaxed ordering attribute.
 
 .. _`pci_release_dev`:
 

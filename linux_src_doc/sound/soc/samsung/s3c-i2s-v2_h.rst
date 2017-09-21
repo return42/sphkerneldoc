@@ -99,6 +99,21 @@ s3c_i2sv2_probe
     :param unsigned long base:
         The base address for the registers.
 
+.. _`s3c_i2sv2_cleanup`:
+
+s3c_i2sv2_cleanup
+=================
+
+.. c:function:: void s3c_i2sv2_cleanup(struct snd_soc_dai *dai, struct s3c_i2sv2_info *i2s)
+
+    cleanup resources allocated in s3c_i2sv2_probe
+
+    :param struct snd_soc_dai \*dai:
+        The ASoC DAI structure supplied to the original probe.
+
+    :param struct s3c_i2sv2_info \*i2s:
+        Our local i2s structure to fill in.
+
 .. _`s3c_i2sv2_register_component`:
 
 s3c_i2sv2_register_component

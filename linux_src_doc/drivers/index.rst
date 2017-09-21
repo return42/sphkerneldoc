@@ -34,6 +34,7 @@ drivers
     extcon/index
     firewire/index
     firmware/index
+    fmc/index
     fpga/index
     gpio/index
     gpu/index
@@ -67,6 +68,7 @@ drivers
     misc/index
     mmc/index
     mtd/index
+    mux/index
     net/index
     nfc/index
     ntb/index

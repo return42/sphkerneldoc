@@ -20,6 +20,7 @@ Definition
     struct stm32_adc_common {
         void __iomem *base;
         phys_addr_t phys_base;
+        unsigned long rate;
         int vref_mv;
     }
 
@@ -33,6 +34,9 @@ base
 
 phys_base
     control registers base physical addr
+
+rate
+    clock rate used for analog circuitry
 
 vref_mv
     vref voltage (mv)

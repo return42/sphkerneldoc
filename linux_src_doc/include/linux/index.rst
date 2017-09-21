@@ -8,6 +8,7 @@ linux
     :maxdepth: 1
 
     amba/index
+    avf/index
     can/index
     ceph/index
     clk/index
@@ -17,13 +18,13 @@ linux
     fsl/index
     gpio/index
     hsi/index
-    i2c/index
     iio/index
     input/index
     irqchip/index
     mfd/index
     mmc/index
     mtd/index
+    mux/index
     netfilter/index
     phy/index
     pinctrl/index
@@ -65,7 +66,7 @@ linux
     blktrace_api_h
     btree_h
     buffer_head_h
-    bug_h
+    build_bug_h
     cacheinfo_h
     cb710_h
     ccp_h
@@ -139,6 +140,7 @@ linux
     hid-sensor-hub_h
     hid_h
     highmem_h
+    host1x_h
     hrtimer_h
     hw_random_h
     hwmon_h
@@ -257,9 +259,9 @@ linux
     pm_h
     pm_opp_h
     pm_wakeup_h
-    pmem_h
     pnp_h
     posix-clock_h
+    posix-timers_h
     powercap_h
     prime_numbers_h
     property_h
@@ -297,7 +299,6 @@ linux
     rmi_h
     rpmsg_h
     rslib_h
-    rtc_h
     rtmutex_h
     rtnetlink_h
     sbitmap_h
@@ -331,6 +332,7 @@ linux
     string_h
     sunxi-rsb_h
     suspend_h
+    swait_h
     sync_file_h
     sys_soc_h
     sysfs_h
@@ -366,6 +368,8 @@ linux
     vme_h
     vringh_h
     w1-gpio_h
+    w1_h
+    wait_bit_h
     wait_h
     workqueue_h
     writeback_h

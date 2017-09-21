@@ -155,6 +155,28 @@ strlcpy the destination buffer is always padded out.
 
 Returns the length of the source buffer.
 
+.. _`nla_strdup`:
+
+nla_strdup
+==========
+
+.. c:function:: char *nla_strdup(const struct nlattr *nla, gfp_t flags)
+
+    Copy string attribute payload into a newly allocated buffer
+
+    :param const struct nlattr \*nla:
+        attribute to copy the string from
+
+    :param gfp_t flags:
+        the type of memory to allocate (see kmalloc).
+
+.. _`nla_strdup.description`:
+
+Description
+-----------
+
+Returns a pointer to the allocated buffer or NULL on error.
+
 .. _`nla_memcpy`:
 
 nla_memcpy

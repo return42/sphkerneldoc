@@ -35,6 +35,7 @@ Definition
         int (*settime64)(struct ptp_clock_info *p, const struct timespec64 *ts);
         int (*enable)(struct ptp_clock_info *ptp, struct ptp_clock_request *request, int on);
         int (*verify)(struct ptp_clock_info *ptp, unsigned int pin, enum ptp_pin_function func, unsigned int chan);
+        long (*do_aux_work)(struct ptp_clock_info *ptp);
     }
 
 .. _`ptp_clock_info.members`:
@@ -121,6 +122,9 @@ verify
     parameter pin: index of the pin in question.
     parameter func: the desired function to use.
     parameter chan: the function channel index to use.
+
+do_aux_work
+    *undescribed*
 
 .. _`ptp_clock_info.description`:
 
@@ -260,6 +264,22 @@ Return
 
 Pin index in the range of zero to ptp_clock_caps.n_pins - 1,
 or -1 if the auxiliary function cannot be found.
+
+.. _`ptp_schedule_worker`:
+
+ptp_schedule_worker
+===================
+
+.. c:function:: int ptp_schedule_worker(struct ptp_clock *ptp, unsigned long delay)
+
+    schedule ptp auxiliary work
+
+    :param struct ptp_clock \*ptp:
+        The clock obtained from \ :c:func:`ptp_clock_register`\ .
+
+    :param unsigned long delay:
+        number of jiffies to wait before queuing
+        See \ :c:func:`kthread_queue_delayed_work`\  for more info.
 
 .. This file was automatic generated / don't edit.
 

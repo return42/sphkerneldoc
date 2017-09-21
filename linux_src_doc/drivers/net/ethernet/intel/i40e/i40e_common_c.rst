@@ -1915,7 +1915,7 @@ i40e_aq_add_udp_tunnel
         pointer to the hw struct
 
     :param u16 udp_port:
-        the UDP port to add
+        the UDP port to add in Host byte order
 
     :param u8 protocol_index:
         protocol index type
@@ -1925,6 +1925,15 @@ i40e_aq_add_udp_tunnel
 
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
+
+.. _`i40e_aq_add_udp_tunnel.note`:
+
+Note
+----
+
+Firmware expects the udp_port value to be in Little Endian format,
+and this function will call cpu_to_le16 to convert from Host byte order to
+Little Endian order.
 
 .. _`i40e_aq_del_udp_tunnel`:
 

@@ -31,3 +31,4 @@ asm
     ptrace_h
     switch_to_h
     vdso_h
+    yamon-dt_h

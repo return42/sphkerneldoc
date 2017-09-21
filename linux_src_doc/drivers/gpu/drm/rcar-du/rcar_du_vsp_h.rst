@@ -20,6 +20,7 @@ Definition
     struct rcar_du_vsp_plane_state {
         struct drm_plane_state state;
         const struct rcar_du_format_info *format;
+        struct sg_table sg_tables;
         unsigned int alpha;
         unsigned int zpos;
     }
@@ -34,6 +35,9 @@ state
 
 format
     information about the pixel format used by the plane
+
+sg_tables
+    scatter-gather tables for the frame buffer memory
 
 alpha
     value of the plane alpha property

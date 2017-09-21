@@ -400,7 +400,7 @@ original ptbl is freed using RCU callback.
 LOCKING
 -------
 
-Matching bd_mutx locked.
+Matching bd_mutex locked or the caller is the only user of \ ``disk``\ .
 
 .. _`disk_expand_part_tbl`:
 
@@ -430,7 +430,8 @@ uses RCU to allow unlocked dereferencing for stats and other stuff.
 LOCKING
 -------
 
-Matching bd_mutex locked, might sleep.
+Matching bd_mutex locked or the caller is the only user of \ ``disk``\ .
+Might sleep.
 
 .. _`disk_expand_part_tbl.return`:
 

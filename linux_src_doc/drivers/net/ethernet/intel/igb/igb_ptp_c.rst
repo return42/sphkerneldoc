@@ -75,6 +75,18 @@ dropped an Rx packet that was timestamped when the ring is full. The
 particular error is rare but leaves the device in a state unable to timestamp
 any future packets.
 
+.. _`igb_ptp_tx_hang`:
+
+igb_ptp_tx_hang
+===============
+
+.. c:function:: void igb_ptp_tx_hang(struct igb_adapter *adapter)
+
+    detect error case where Tx timestamp never finishes
+
+    :param struct igb_adapter \*adapter:
+        private network adapter structure
+
 .. _`igb_ptp_tx_hwtstamp`:
 
 igb_ptp_tx_hwtstamp

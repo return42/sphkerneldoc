@@ -28,7 +28,7 @@ irq location updated with irq value [>0 on success, 0 on failure]
 Return
 ------
 
-linux IRQ number on success (>0)
+0 on success
 -EINVAL on failure
 
 .. _`acpi_register_gsi`:

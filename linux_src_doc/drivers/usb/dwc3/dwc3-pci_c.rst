@@ -58,7 +58,7 @@ Definition
     struct dwc3_pci {
         struct platform_device *dwc3;
         struct pci_dev *pci;
-        u8 uuid;
+        guid_t guid;
         unsigned int has_dsm_for_pm:1;
     }
 
@@ -73,8 +73,8 @@ dwc3
 pci
     our link to PCI bus
 
-uuid
-    _DSM UUID
+guid
+    _DSM GUID
 
 has_dsm_for_pm
     true for devices which need to run \_DSM on runtime PM

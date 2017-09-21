@@ -347,7 +347,7 @@ gfs2_drop_inode
 Description
 -----------
 
-If we've received a callback on an iopen lock then its because a
+If we've received a callback on an iopen lock then it's because a
 remote node tried to deallocate the inode but failed due to this node
 still having the inode open. Here we mark the link count zero
 since we know that it must have reached zero if the GLF_DEMOTE flag
@@ -378,6 +378,24 @@ Return
 ------
 
 0 on success or error code
+
+.. _`gfs2_glock_put_eventually`:
+
+gfs2_glock_put_eventually
+=========================
+
+.. c:function:: void gfs2_glock_put_eventually(struct gfs2_glock *gl)
+
+    :param struct gfs2_glock \*gl:
+        The glock to put
+
+.. _`gfs2_glock_put_eventually.description`:
+
+Description
+-----------
+
+When under memory pressure, trigger a deferred glock put to make sure we
+won't call into DLM and deadlock.  Otherwise, put the glock directly.
 
 .. _`gfs2_evict_inode`:
 

@@ -7,5 +7,6 @@ typec
 .. toctree::
     :maxdepth: 1
 
+    ucsi/index
     typec_c
     typec_wcove_c

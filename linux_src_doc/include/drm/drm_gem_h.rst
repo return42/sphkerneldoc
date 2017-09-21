@@ -27,8 +27,6 @@ Definition
         int name;
         uint32_t read_domains;
         uint32_t write_domain;
-        uint32_t pending_read_domains;
-        uint32_t pending_write_domain;
         struct dma_buf *dma_buf;
         struct dma_buf_attachment *import_attach;
     }
@@ -95,16 +93,6 @@ read_domains
 
 write_domain
     Corresponding unique write memory domain.
-
-pending_read_domains
-
-    While validating an exec operation, the
-    new read/write domain values are computed here.
-    They will be transferred to the above values
-    at the point that any cache flushing occurs
-
-pending_write_domain
-    Write domain similar to \ ``pending_read_domains``\ .
 
 dma_buf
 

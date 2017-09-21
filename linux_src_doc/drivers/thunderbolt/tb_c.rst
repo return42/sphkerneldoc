@@ -1,6 +1,41 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/thunderbolt/tb.c
 
+.. _`tb_cm`:
+
+struct tb_cm
+============
+
+.. c:type:: struct tb_cm
+
+    Simple Thunderbolt connection manager
+
+.. _`tb_cm.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tb_cm {
+        struct list_head tunnel_list;
+        bool hotplug_active;
+    }
+
+.. _`tb_cm.members`:
+
+Members
+-------
+
+tunnel_list
+    List of active tunnels
+
+hotplug_active
+    tb_handle_hotplug will stop progressing plug
+    events and exit if this is not set (it needs to
+    acquire the lock one more time). Used to drain wq
+    after cfg has been paused.
+
 .. _`tb_scan_switch`:
 
 tb_scan_switch
@@ -112,81 +147,33 @@ Description
 
 Executes on tb->wq.
 
-.. _`tb_schedule_hotplug_handler`:
+.. _`tb_handle_event`:
 
-tb_schedule_hotplug_handler
-===========================
+tb_handle_event
+===============
 
-.. c:function:: void tb_schedule_hotplug_handler(void *data, u64 route, u8 port, bool unplug)
+.. c:function:: void tb_handle_event(struct tb *tb, enum tb_cfg_pkg_type type, const void *buf, size_t size)
 
     callback function for the control channel
 
-    :param void \*data:
+    :param struct tb \*tb:
         *undescribed*
 
-    :param u64 route:
+    :param enum tb_cfg_pkg_type type:
         *undescribed*
 
-    :param u8 port:
+    :param const void \*buf:
         *undescribed*
 
-    :param bool unplug:
+    :param size_t size:
         *undescribed*
 
-.. _`tb_schedule_hotplug_handler.description`:
+.. _`tb_handle_event.description`:
 
 Description
 -----------
 
 Delegates to tb_handle_hotplug.
-
-.. _`thunderbolt_shutdown_and_free`:
-
-thunderbolt_shutdown_and_free
-=============================
-
-.. c:function:: void thunderbolt_shutdown_and_free(struct tb *tb)
-
-    shutdown everything
-
-    :param struct tb \*tb:
-        *undescribed*
-
-.. _`thunderbolt_shutdown_and_free.description`:
-
-Description
------------
-
-Free all switches and the config channel.
-
-Used in the error path of thunderbolt_alloc_and_start.
-
-.. _`thunderbolt_alloc_and_start`:
-
-thunderbolt_alloc_and_start
-===========================
-
-.. c:function:: struct tb *thunderbolt_alloc_and_start(struct tb_nhi *nhi)
-
-    setup the thunderbolt bus
-
-    :param struct tb_nhi \*nhi:
-        *undescribed*
-
-.. _`thunderbolt_alloc_and_start.description`:
-
-Description
------------
-
-Allocates a tb_cfg control channel, initializes the root switch, enables
-plug events and activates pci devices.
-
-.. _`thunderbolt_alloc_and_start.return`:
-
-Return
-------
-
-Returns NULL on error.
 
 .. This file was automatic generated / don't edit.
 

@@ -108,15 +108,5 @@ Description
 \ ``signaller``\  - ring which has, or will signal
 \ ``seqno``\  - seqno which the waiter will block on
 
-.. _`intel_init_bsd2_ring_buffer`:
-
-intel_init_bsd2_ring_buffer
-===========================
-
-.. c:function:: int intel_init_bsd2_ring_buffer(struct intel_engine_cs *engine)
-
-    :param struct intel_engine_cs \*engine:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

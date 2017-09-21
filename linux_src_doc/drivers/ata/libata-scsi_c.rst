@@ -1292,7 +1292,7 @@ ata_scsi_pass_thru
 Description
 -----------
 
-     Handles either 12 or 16-byte versions of the CDB.
+     Handles either 12, 16, or 32-byte versions of the CDB.
 
 .. _`ata_scsi_pass_thru.return`:
 
@@ -1531,6 +1531,33 @@ LOCKING
 -------
 
      spin_lock_irqsave(host lock)
+
+.. _`ata_scsi_var_len_cdb_xlat`:
+
+ata_scsi_var_len_cdb_xlat
+=========================
+
+.. c:function:: unsigned int ata_scsi_var_len_cdb_xlat(struct ata_queued_cmd *qc)
+
+    SATL variable length CDB to Handler
+
+    :param struct ata_queued_cmd \*qc:
+        Command to be translated
+
+.. _`ata_scsi_var_len_cdb_xlat.description`:
+
+Description
+-----------
+
+     Translate a SCSI variable length CDB to specified commands.
+     It checks a service action value in CDB to call corresponding handler.
+
+.. _`ata_scsi_var_len_cdb_xlat.return`:
+
+Return
+------
+
+     Zero on success, non-zero on failure
 
 .. _`ata_get_xlat_func`:
 

@@ -180,15 +180,15 @@ Evaluate device's \_LCK method if present to lock/unlock device
 acpi_evaluate_dsm
 =================
 
-.. c:function:: union acpi_object *acpi_evaluate_dsm(acpi_handle handle, const u8 *uuid, u64 rev, u64 func, union acpi_object *argv4)
+.. c:function:: union acpi_object *acpi_evaluate_dsm(acpi_handle handle, const guid_t *guid, u64 rev, u64 func, union acpi_object *argv4)
 
     evaluate device's \_DSM method
 
     :param acpi_handle handle:
         ACPI device handle
 
-    :param const u8 \*uuid:
-        UUID of requested functions, should be 16 bytes
+    :param const guid_t \*guid:
+        GUID of requested functions, should be 16 bytes
 
     :param u64 rev:
         revision number of requested function
@@ -204,7 +204,7 @@ acpi_evaluate_dsm
 Description
 -----------
 
-Evaluate device's \_DSM method with specified UUID, revision id and
+Evaluate device's \_DSM method with specified GUID, revision id and
 function number. Caller needs to free the returned object.
 
 Though ACPI defines the fourth parameter for \_DSM should be a package,
@@ -215,15 +215,15 @@ some old BIOSes do expect a buffer or an integer etc.
 acpi_check_dsm
 ==============
 
-.. c:function:: bool acpi_check_dsm(acpi_handle handle, const u8 *uuid, u64 rev, u64 funcs)
+.. c:function:: bool acpi_check_dsm(acpi_handle handle, const guid_t *guid, u64 rev, u64 funcs)
 
     check if \_DSM method supports requested functions.
 
     :param acpi_handle handle:
         ACPI device handle
 
-    :param const u8 \*uuid:
-        UUID of requested functions, should be 16 bytes at least
+    :param const guid_t \*guid:
+        GUID of requested functions, should be 16 bytes at least
 
     :param u64 rev:
         revision number of requested functions
@@ -302,6 +302,26 @@ which happens in the \ :c:func:`subsys_initcall`\  subsection. Hence, do not
 call from a \ :c:func:`subsys_initcall`\  or earlier (use \ :c:func:`acpi_get_devices`\ 
 instead). Calling from \ :c:func:`module_init`\  is fine (which is synonymous
 with \ :c:func:`device_initcall`\ ).
+
+.. _`acpi_match_platform_list`:
+
+acpi_match_platform_list
+========================
+
+.. c:function:: int acpi_match_platform_list(const struct acpi_platform_list *plat)
+
+    Check if the system matches with a given list
+
+    :param const struct acpi_platform_list \*plat:
+        pointer to acpi_platform_list table terminated by a NULL entry
+
+.. _`acpi_match_platform_list.description`:
+
+Description
+-----------
+
+Return the matched index if the system is found in the platform list.
+Otherwise, return a negative error code.
 
 .. This file was automatic generated / don't edit.
 

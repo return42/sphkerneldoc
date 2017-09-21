@@ -21,6 +21,7 @@ vc4
     vc4_plane_c
     vc4_qpu_defines_h
     vc4_render_cl_c
+    vc4_v3d_c
     vc4_validate_c
     vc4_validate_shaders_c
     vc4_vec_c

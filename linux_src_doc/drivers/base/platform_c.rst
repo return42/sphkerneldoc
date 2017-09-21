@@ -236,14 +236,14 @@ will be freed when the platform device is released.
 platform_device_add_properties
 ==============================
 
-.. c:function:: int platform_device_add_properties(struct platform_device *pdev, struct property_entry *properties)
+.. c:function:: int platform_device_add_properties(struct platform_device *pdev, const struct property_entry *properties)
 
     add built-in properties to a platform device
 
     :param struct platform_device \*pdev:
         platform device to add properties to
 
-    :param struct property_entry \*properties:
+    :param const struct property_entry \*properties:
         null terminated array of properties to add
 
 .. _`platform_device_add_properties.description`:

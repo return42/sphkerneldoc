@@ -9,6 +9,7 @@ acpi
 
     arm64/index
     pmic/index
+    x86/index
     acpi_apd_c
     acpi_lpat_c
     acpi_lpss_c

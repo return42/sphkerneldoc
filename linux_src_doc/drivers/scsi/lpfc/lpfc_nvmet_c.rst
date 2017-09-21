@@ -28,25 +28,22 @@ The function is called from SLI ring event handler with no
 lock held. This function is the completion handler for NVME LS commands
 The function frees memory resources used for the NVME commands.
 
-.. _`lpfc_nvmet_rq_post`:
+.. _`lpfc_nvmet_ctxbuf_post`:
 
-lpfc_nvmet_rq_post
-==================
+lpfc_nvmet_ctxbuf_post
+======================
 
-.. c:function:: void lpfc_nvmet_rq_post(struct lpfc_hba *phba, struct lpfc_nvmet_rcv_ctx *ctxp, struct lpfc_dmabuf *mp)
+.. c:function:: void lpfc_nvmet_ctxbuf_post(struct lpfc_hba *phba, struct lpfc_nvmet_ctxbuf *ctx_buf)
 
     Repost a NVMET RQ DMA buffer and clean up context
 
     :param struct lpfc_hba \*phba:
         HBA buffer is associated with
 
-    :param struct lpfc_nvmet_rcv_ctx \*ctxp:
-        context to clean up
+    :param struct lpfc_nvmet_ctxbuf \*ctx_buf:
+        *undescribed*
 
-    :param struct lpfc_dmabuf \*mp:
-        Buffer to free
-
-.. _`lpfc_nvmet_rq_post.description`:
+.. _`lpfc_nvmet_ctxbuf_post.description`:
 
 Description
 -----------
@@ -54,14 +51,14 @@ Description
 Frees the given DMA buffer in the appropriate way given by
 reposting it to its associated RQ so it can be reused.
 
-.. _`lpfc_nvmet_rq_post.notes`:
+.. _`lpfc_nvmet_ctxbuf_post.notes`:
 
 Notes
 -----
 
 Takes phba->hbalock.  Can be called with or without other locks held.
 
-.. _`lpfc_nvmet_rq_post.return`:
+.. _`lpfc_nvmet_ctxbuf_post.return`:
 
 Return
 ------
@@ -153,15 +150,15 @@ of the discovery state machine.
 lpfc_nvmet_unsol_fcp_buffer
 ===========================
 
-.. c:function:: void lpfc_nvmet_unsol_fcp_buffer(struct lpfc_hba *phba, struct lpfc_sli_ring *pring, struct rqb_dmabuf *nvmebuf, uint64_t isr_timestamp)
+.. c:function:: void lpfc_nvmet_unsol_fcp_buffer(struct lpfc_hba *phba, uint32_t idx, struct rqb_dmabuf *nvmebuf, uint64_t isr_timestamp)
 
     Process an unsolicited event data buffer
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
 
-    :param struct lpfc_sli_ring \*pring:
-        pointer to a SLI ring.
+    :param uint32_t idx:
+        relative index of MRQ vector
 
     :param struct rqb_dmabuf \*nvmebuf:
         pointer to lpfc nvme command HBQ data structure.
@@ -215,15 +212,15 @@ SLI RQ on which the unsolicited event was received.
 lpfc_nvmet_unsol_fcp_event
 ==========================
 
-.. c:function:: void lpfc_nvmet_unsol_fcp_event(struct lpfc_hba *phba, struct lpfc_sli_ring *pring, struct rqb_dmabuf *nvmebuf, uint64_t isr_timestamp)
+.. c:function:: void lpfc_nvmet_unsol_fcp_event(struct lpfc_hba *phba, uint32_t idx, struct rqb_dmabuf *nvmebuf, uint64_t isr_timestamp)
 
     Process an unsolicited event from an nvme nport
 
     :param struct lpfc_hba \*phba:
         pointer to lpfc hba data structure.
 
-    :param struct lpfc_sli_ring \*pring:
-        pointer to a SLI ring.
+    :param uint32_t idx:
+        relative index of MRQ vector
 
     :param struct rqb_dmabuf \*nvmebuf:
         pointer to received nvme data structure.

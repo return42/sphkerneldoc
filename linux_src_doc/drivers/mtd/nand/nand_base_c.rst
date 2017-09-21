@@ -619,12 +619,15 @@ Wait for command done. This applies to erase and program only.
 nand_reset_data_interface
 =========================
 
-.. c:function:: int nand_reset_data_interface(struct nand_chip *chip)
+.. c:function:: int nand_reset_data_interface(struct nand_chip *chip, int chipnr)
 
     Reset data interface and timings
 
     :param struct nand_chip \*chip:
         The NAND chip
+
+    :param int chipnr:
+        Internal die id
 
 .. _`nand_reset_data_interface.description`:
 
@@ -640,12 +643,15 @@ Returns 0 for success or negative error code otherwise.
 nand_setup_data_interface
 =========================
 
-.. c:function:: int nand_setup_data_interface(struct nand_chip *chip)
+.. c:function:: int nand_setup_data_interface(struct nand_chip *chip, int chipnr)
 
     Setup the best data interface and timings
 
     :param struct nand_chip \*chip:
         The NAND chip
+
+    :param int chipnr:
+        Internal die id
 
 .. _`nand_setup_data_interface.description`:
 
@@ -1515,7 +1521,7 @@ need a special oob layout and handling.
 nand_write_page
 ===============
 
-.. c:function:: int nand_write_page(struct mtd_info *mtd, struct nand_chip *chip, uint32_t offset, int data_len, const uint8_t *buf, int oob_required, int page, int cached, int raw)
+.. c:function:: int nand_write_page(struct mtd_info *mtd, struct nand_chip *chip, uint32_t offset, int data_len, const uint8_t *buf, int oob_required, int page, int raw)
 
     write one page
 
@@ -1539,9 +1545,6 @@ nand_write_page
 
     :param int page:
         page number to write
-
-    :param int cached:
-        cached programming
 
     :param int raw:
         use _raw version of write_page
@@ -1876,6 +1879,35 @@ nand_onfi_get_features
     :param uint8_t \*subfeature_param:
         the subfeature parameters, a four bytes array.
 
+.. _`nand_onfi_get_set_features_notsupp`:
+
+nand_onfi_get_set_features_notsupp
+==================================
+
+.. c:function:: int nand_onfi_get_set_features_notsupp(struct mtd_info *mtd, struct nand_chip *chip, int addr, u8 *subfeature_param)
+
+    set/get features stub returning -ENOTSUPP
+
+    :param struct mtd_info \*mtd:
+        MTD device structure
+
+    :param struct nand_chip \*chip:
+        nand chip info structure
+
+    :param int addr:
+        feature address.
+
+    :param u8 \*subfeature_param:
+        the subfeature parameters, a four bytes array.
+
+.. _`nand_onfi_get_set_features_notsupp.description`:
+
+Description
+-----------
+
+Should be used by NAND controller drivers that do not support the SET/GET
+FEATURES operations.
+
 .. _`nand_suspend`:
 
 nand_suspend
@@ -1937,6 +1969,86 @@ Description
 
 This is the first phase of the normal \ :c:func:`nand_scan`\  function. It reads the
 flash ID and sets up MTD fields accordingly.
+
+.. _`nand_check_ecc_caps`:
+
+nand_check_ecc_caps
+===================
+
+.. c:function:: int nand_check_ecc_caps(struct nand_chip *chip, const struct nand_ecc_caps *caps, int oobavail)
+
+    check the sanity of preset ECC settings
+
+    :param struct nand_chip \*chip:
+        nand chip info structure
+
+    :param const struct nand_ecc_caps \*caps:
+        ECC caps info structure
+
+    :param int oobavail:
+        OOB size that the ECC engine can use
+
+.. _`nand_check_ecc_caps.description`:
+
+Description
+-----------
+
+When ECC step size and strength are already set, check if they are supported
+by the controller and the calculated ECC bytes fit within the chip's OOB.
+On success, the calculated ECC bytes is set.
+
+.. _`nand_match_ecc_req`:
+
+nand_match_ecc_req
+==================
+
+.. c:function:: int nand_match_ecc_req(struct nand_chip *chip, const struct nand_ecc_caps *caps, int oobavail)
+
+    meet the chip's requirement with least ECC bytes
+
+    :param struct nand_chip \*chip:
+        nand chip info structure
+
+    :param const struct nand_ecc_caps \*caps:
+        ECC engine caps info structure
+
+    :param int oobavail:
+        OOB size that the ECC engine can use
+
+.. _`nand_match_ecc_req.description`:
+
+Description
+-----------
+
+If a chip's ECC requirement is provided, try to meet it with the least
+number of ECC bytes (i.e. with the largest number of OOB-free bytes).
+On success, the chosen ECC settings are set.
+
+.. _`nand_maximize_ecc`:
+
+nand_maximize_ecc
+=================
+
+.. c:function:: int nand_maximize_ecc(struct nand_chip *chip, const struct nand_ecc_caps *caps, int oobavail)
+
+    choose the max ECC strength available
+
+    :param struct nand_chip \*chip:
+        nand chip info structure
+
+    :param const struct nand_ecc_caps \*caps:
+        ECC engine caps info structure
+
+    :param int oobavail:
+        OOB size that the ECC engine can use
+
+.. _`nand_maximize_ecc.description`:
+
+Description
+-----------
+
+Choose the max ECC strength that is supported on the controller, and can fit
+within the chip's OOB.  On success, the chosen ECC settings are set.
 
 .. _`nand_scan_tail`:
 

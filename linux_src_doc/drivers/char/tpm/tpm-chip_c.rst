@@ -84,6 +84,42 @@ Description
 
 This is used as the release function for the character device.
 
+.. _`tpm_class_shutdown`:
+
+tpm_class_shutdown
+==================
+
+.. c:function:: int tpm_class_shutdown(struct device *dev)
+
+    prepare the TPM device for loss of power.
+
+    :param struct device \*dev:
+        device to which the chip is associated.
+
+.. _`tpm_class_shutdown.description`:
+
+Description
+-----------
+
+Issues a TPM2_Shutdown command prior to loss of power, as required by the
+TPM 2.0 spec.
+Then, calls bus- and device- specific shutdown code.
+
+.. _`tpm_class_shutdown.xxx`:
+
+XXX
+---
+
+This codepath relies on the fact that sysfs is not enabled for
+
+.. _`tpm_class_shutdown.tpm2`:
+
+TPM2
+----
+
+sysfs uses an implicit lock on chip->ops, so this could race if TPM2
+has sysfs support enabled before TPM sysfs's implicit locking is fixed.
+
 .. _`tpm_chip_alloc`:
 
 tpm_chip_alloc

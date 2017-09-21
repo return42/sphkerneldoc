@@ -75,26 +75,6 @@ Select which SE, SH combinations to address. Certain
 registers are instanced per SE or SH.  0xffffffff means
 broadcast to all SEs or SHs (CIK).
 
-.. _`gfx_v7_0_create_bitmask`:
-
-gfx_v7_0_create_bitmask
-=======================
-
-.. c:function:: u32 gfx_v7_0_create_bitmask(u32 bit_width)
-
-    create a bitmask
-
-    :param u32 bit_width:
-        length of the mask
-
-.. _`gfx_v7_0_create_bitmask.description`:
-
-Description
------------
-
-create a variable length bit mask (CIK).
-Returns the bitmask.
-
 .. _`gfx_v7_0_get_rb_active_bitmap`:
 
 gfx_v7_0_get_rb_active_bitmap

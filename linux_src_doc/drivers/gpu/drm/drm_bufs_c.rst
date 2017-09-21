@@ -173,12 +173,12 @@ build options, it dispatches the call either to \ :c:func:`addbufs_agp`\ ,
 \ :c:func:`addbufs_sg`\  or \ :c:func:`addbufs_pci`\  for AGP, scatter-gather or consistent
 PCI memory respectively.
 
-.. _`drm_legacy_infobufs`:
+.. _`__drm_legacy_infobufs`:
 
-drm_legacy_infobufs
-===================
+__drm_legacy_infobufs
+=====================
 
-.. c:function:: int drm_legacy_infobufs(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int __drm_legacy_infobufs(struct drm_device *dev, void *data, int *p, int (*f)(void *, int, struct drm_buf_entry *))
 
     :param struct drm_device \*dev:
         *undescribed*
@@ -186,10 +186,13 @@ drm_legacy_infobufs
     :param void \*data:
         *undescribed*
 
-    :param struct drm_file \*file_priv:
+    :param int \*p:
         *undescribed*
 
-.. _`drm_legacy_infobufs.description`:
+    :param int (\*f)(void \*, int, struct drm_buf_entry \*):
+        *undescribed*
+
+.. _`__drm_legacy_infobufs.description`:
 
 Description
 -----------
@@ -270,12 +273,12 @@ Description
 Calls \ :c:func:`free_buffer`\  for each used buffer.
 This function is primarily used for debugging.
 
-.. _`drm_legacy_mapbufs`:
+.. _`__drm_legacy_mapbufs`:
 
-drm_legacy_mapbufs
-==================
+__drm_legacy_mapbufs
+====================
 
-.. c:function:: int drm_legacy_mapbufs(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int __drm_legacy_mapbufs(struct drm_device *dev, void *data, int *p, void __user **v, int (*f)(void *, int, unsigned long, struct drm_buf *), struct drm_file *file_priv)
 
     virtual space (ioctl).
 
@@ -285,10 +288,19 @@ drm_legacy_mapbufs
     :param void \*data:
         *undescribed*
 
+    :param int \*p:
+        *undescribed*
+
+    :param void __user \*\*v:
+        *undescribed*
+
+    :param int (\*f)(void \*, int, unsigned long, struct drm_buf \*):
+        *undescribed*
+
     :param struct drm_file \*file_priv:
         *undescribed*
 
-.. _`drm_legacy_mapbufs.description`:
+.. _`__drm_legacy_mapbufs.description`:
 
 Description
 -----------

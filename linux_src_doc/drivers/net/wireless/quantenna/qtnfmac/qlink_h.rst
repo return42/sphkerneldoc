@@ -1,0 +1,2255 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/quantenna/qtnfmac/qlink.h
+
+.. _`qlink_msg_type`:
+
+enum qlink_msg_type
+===================
+
+.. c:type:: enum qlink_msg_type
+
+    QLINK message types
+
+.. _`qlink_msg_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_msg_type {
+        QLINK_MSG_TYPE_CMD,
+        QLINK_MSG_TYPE_CMDRSP,
+        QLINK_MSG_TYPE_EVENT
+    };
+
+.. _`qlink_msg_type.constants`:
+
+Constants
+---------
+
+QLINK_MSG_TYPE_CMD
+    Message is carrying data of a command sent from
+    driver to wireless hardware.
+
+QLINK_MSG_TYPE_CMDRSP
+    Message is carrying data of a response to a command.
+    Sent from wireless HW to driver in reply to previously issued command.
+
+QLINK_MSG_TYPE_EVENT
+    Data for an event originated in wireless hardware and
+    sent asynchronously to driver.
+
+.. _`qlink_msg_type.description`:
+
+Description
+-----------
+
+Used to distinguish between message types of QLINK protocol.
+
+.. _`qlink_msg_header`:
+
+struct qlink_msg_header
+=======================
+
+.. c:type:: struct qlink_msg_header
+
+    common QLINK protocol message header
+
+.. _`qlink_msg_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_msg_header {
+        __le16 type;
+        __le16 len;
+    }
+
+.. _`qlink_msg_header.members`:
+
+Members
+-------
+
+type
+    Message type, one of \ :c:type:`enum qlink_msg_type <qlink_msg_type>`\ .
+
+len
+    Total length of message including all headers.
+
+.. _`qlink_msg_header.description`:
+
+Description
+-----------
+
+Portion of QLINK protocol header common for all message types.
+
+.. _`qlink_intf_info`:
+
+struct qlink_intf_info
+======================
+
+.. c:type:: struct qlink_intf_info
+
+    information on virtual interface.
+
+.. _`qlink_intf_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_intf_info {
+        __le16 if_type;
+        __le16 vlanid;
+        u8 mac_addr;
+        u8 rsvd;
+    }
+
+.. _`qlink_intf_info.members`:
+
+Members
+-------
+
+if_type
+    Mode of interface operation, one of \ :c:type:`enum qlink_iface_type <qlink_iface_type>`\ 
+
+vlanid
+    VLAN ID for AP_VLAN interface type
+
+mac_addr
+    MAC address of virtual interface.
+
+rsvd
+    *undescribed*
+
+.. _`qlink_intf_info.description`:
+
+Description
+-----------
+
+Data describing a single virtual interface.
+
+.. _`qlink_cmd_type`:
+
+enum qlink_cmd_type
+===================
+
+.. c:type:: enum qlink_cmd_type
+
+    list of supported commands
+
+.. _`qlink_cmd_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_cmd_type {
+        QLINK_CMD_FW_INIT,
+        QLINK_CMD_FW_DEINIT,
+        QLINK_CMD_REGISTER_MGMT,
+        QLINK_CMD_SEND_MGMT_FRAME,
+        QLINK_CMD_MGMT_SET_APPIE,
+        QLINK_CMD_PHY_PARAMS_GET,
+        QLINK_CMD_PHY_PARAMS_SET,
+        QLINK_CMD_GET_HW_INFO,
+        QLINK_CMD_MAC_INFO,
+        QLINK_CMD_ADD_INTF,
+        QLINK_CMD_DEL_INTF,
+        QLINK_CMD_CHANGE_INTF,
+        QLINK_CMD_UPDOWN_INTF,
+        QLINK_CMD_REG_NOTIFY,
+        QLINK_CMD_CHANS_INFO_GET,
+        QLINK_CMD_CHAN_SWITCH,
+        QLINK_CMD_CONFIG_AP,
+        QLINK_CMD_START_AP,
+        QLINK_CMD_STOP_AP,
+        QLINK_CMD_GET_STA_INFO,
+        QLINK_CMD_ADD_KEY,
+        QLINK_CMD_DEL_KEY,
+        QLINK_CMD_SET_DEFAULT_KEY,
+        QLINK_CMD_SET_DEFAULT_MGMT_KEY,
+        QLINK_CMD_CHANGE_STA,
+        QLINK_CMD_DEL_STA,
+        QLINK_CMD_SCAN,
+        QLINK_CMD_CHAN_STATS,
+        QLINK_CMD_CONNECT,
+        QLINK_CMD_DISCONNECT
+    };
+
+.. _`qlink_cmd_type.constants`:
+
+Constants
+---------
+
+QLINK_CMD_FW_INIT
+    *undescribed*
+
+QLINK_CMD_FW_DEINIT
+    *undescribed*
+
+QLINK_CMD_REGISTER_MGMT
+    *undescribed*
+
+QLINK_CMD_SEND_MGMT_FRAME
+    *undescribed*
+
+QLINK_CMD_MGMT_SET_APPIE
+    *undescribed*
+
+QLINK_CMD_PHY_PARAMS_GET
+    *undescribed*
+
+QLINK_CMD_PHY_PARAMS_SET
+    *undescribed*
+
+QLINK_CMD_GET_HW_INFO
+    *undescribed*
+
+QLINK_CMD_MAC_INFO
+    *undescribed*
+
+QLINK_CMD_ADD_INTF
+    *undescribed*
+
+QLINK_CMD_DEL_INTF
+    *undescribed*
+
+QLINK_CMD_CHANGE_INTF
+    *undescribed*
+
+QLINK_CMD_UPDOWN_INTF
+    *undescribed*
+
+QLINK_CMD_REG_NOTIFY
+    notify device about regulatory domain change. This
+    command is supported only if device reports QLINK_HW_SUPPORTS_REG_UPDATE
+    capability.
+
+QLINK_CMD_CHANS_INFO_GET
+    for the specified MAC and specified band, get
+    number of operational channels and information on each of the channel.
+    This command is generic to a specified MAC, interface index must be set
+    to QLINK_VIFID_RSVD in command header.
+
+QLINK_CMD_CHAN_SWITCH
+    *undescribed*
+
+QLINK_CMD_CONFIG_AP
+    *undescribed*
+
+QLINK_CMD_START_AP
+    *undescribed*
+
+QLINK_CMD_STOP_AP
+    *undescribed*
+
+QLINK_CMD_GET_STA_INFO
+    *undescribed*
+
+QLINK_CMD_ADD_KEY
+    *undescribed*
+
+QLINK_CMD_DEL_KEY
+    *undescribed*
+
+QLINK_CMD_SET_DEFAULT_KEY
+    *undescribed*
+
+QLINK_CMD_SET_DEFAULT_MGMT_KEY
+    *undescribed*
+
+QLINK_CMD_CHANGE_STA
+    *undescribed*
+
+QLINK_CMD_DEL_STA
+    *undescribed*
+
+QLINK_CMD_SCAN
+    *undescribed*
+
+QLINK_CMD_CHAN_STATS
+    *undescribed*
+
+QLINK_CMD_CONNECT
+    *undescribed*
+
+QLINK_CMD_DISCONNECT
+    *undescribed*
+
+.. _`qlink_cmd_type.description`:
+
+Description
+-----------
+
+Commands are QLINK messages of type \ ``QLINK_MSG_TYPE_CMD``\ , sent by driver to
+wireless network device for processing. Device is expected to send back a
+reply message of type \ :c:type:`struct QLINK_MSG_TYPE_CMDRSP <QLINK_MSG_TYPE_CMDRSP>`\ , containing at least command
+execution status (one of \ :c:type:`enum qlink_cmd_result <qlink_cmd_result>`\ ) at least. Reply message
+may also contain data payload specific to the command type.
+
+.. _`qlink_cmd`:
+
+struct qlink_cmd
+================
+
+.. c:type:: struct qlink_cmd
+
+    QLINK command message header
+
+.. _`qlink_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd {
+        struct qlink_msg_header mhdr;
+        __le16 cmd_id;
+        __le16 seq_num;
+        u8 rsvd;
+        u8 macid;
+        u8 vifid;
+    }
+
+.. _`qlink_cmd.members`:
+
+Members
+-------
+
+mhdr
+    Common QLINK message header.
+
+cmd_id
+    command id, one of \ :c:type:`enum qlink_cmd_type <qlink_cmd_type>`\ .
+
+seq_num
+    sequence number of command message, used for matching with
+    response message.
+
+rsvd
+    *undescribed*
+
+macid
+    index of physical radio device the command is destined to or
+    QLINK_MACID_RSVD if not applicable.
+
+vifid
+    index of virtual wireless interface on specified \ ``macid``\  the command
+    is destined to or QLINK_VIFID_RSVD if not applicable.
+
+.. _`qlink_cmd.description`:
+
+Description
+-----------
+
+Header used for QLINK messages of QLINK_MSG_TYPE_CMD type.
+
+.. _`qlink_cmd_manage_intf`:
+
+struct qlink_cmd_manage_intf
+============================
+
+.. c:type:: struct qlink_cmd_manage_intf
+
+    interface management command
+
+.. _`qlink_cmd_manage_intf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_manage_intf {
+        struct qlink_cmd chdr;
+        struct qlink_intf_info intf_info;
+    }
+
+.. _`qlink_cmd_manage_intf.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+intf_info
+    interface description.
+
+.. _`qlink_cmd_manage_intf.description`:
+
+Description
+-----------
+
+Data for interface management commands QLINK_CMD_ADD_INTF, QLINK_CMD_DEL_INTF
+and QLINK_CMD_CHANGE_INTF.
+
+.. _`qlink_cmd_mgmt_frame_register`:
+
+struct qlink_cmd_mgmt_frame_register
+====================================
+
+.. c:type:: struct qlink_cmd_mgmt_frame_register
+
+    data for QLINK_CMD_REGISTER_MGMT
+
+.. _`qlink_cmd_mgmt_frame_register.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_mgmt_frame_register {
+        struct qlink_cmd chdr;
+        __le16 frame_type;
+        u8 do_register;
+    }
+
+.. _`qlink_cmd_mgmt_frame_register.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+frame_type
+    MGMT frame type the registration request describes, one of
+    \ :c:type:`enum qlink_mgmt_frame_type <qlink_mgmt_frame_type>`\ .
+
+do_register
+    0 - unregister, otherwise register for reception of specified
+    MGMT frame type.
+
+.. _`qlink_cmd_mgmt_frame_tx`:
+
+struct qlink_cmd_mgmt_frame_tx
+==============================
+
+.. c:type:: struct qlink_cmd_mgmt_frame_tx
+
+    data for QLINK_CMD_SEND_MGMT_FRAME command
+
+.. _`qlink_cmd_mgmt_frame_tx.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_mgmt_frame_tx {
+        struct qlink_cmd chdr;
+        __le32 cookie;
+        __le16 freq;
+        __le16 flags;
+        u8 frame_data;
+    }
+
+.. _`qlink_cmd_mgmt_frame_tx.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+cookie
+    opaque request identifier.
+
+freq
+    Frequency to use for frame transmission.
+
+flags
+    Transmission flags, one of \ :c:type:`enum qlink_mgmt_frame_tx_flags <qlink_mgmt_frame_tx_flags>`\ .
+
+frame_data
+    frame to transmit.
+
+.. _`qlink_cmd_mgmt_append_ie`:
+
+struct qlink_cmd_mgmt_append_ie
+===============================
+
+.. c:type:: struct qlink_cmd_mgmt_append_ie
+
+    data for QLINK_CMD_MGMT_SET_APPIE command
+
+.. _`qlink_cmd_mgmt_append_ie.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_mgmt_append_ie {
+        struct qlink_cmd chdr;
+        u8 type;
+        u8 flags;
+        u8 ie_data;
+    }
+
+.. _`qlink_cmd_mgmt_append_ie.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+type
+    type of MGMT frame to appent requested IEs to, one of
+    \ :c:type:`enum qlink_mgmt_frame_type <qlink_mgmt_frame_type>`\ .
+
+flags
+    for future use.
+
+ie_data
+    IEs data to append.
+
+.. _`qlink_cmd_get_sta_info`:
+
+struct qlink_cmd_get_sta_info
+=============================
+
+.. c:type:: struct qlink_cmd_get_sta_info
+
+    data for QLINK_CMD_GET_STA_INFO command
+
+.. _`qlink_cmd_get_sta_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_get_sta_info {
+        struct qlink_cmd chdr;
+        u8 sta_addr;
+    }
+
+.. _`qlink_cmd_get_sta_info.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+sta_addr
+    MAC address of the STA statistics is requested for.
+
+.. _`qlink_cmd_add_key`:
+
+struct qlink_cmd_add_key
+========================
+
+.. c:type:: struct qlink_cmd_add_key
+
+    data for QLINK_CMD_ADD_KEY command.
+
+.. _`qlink_cmd_add_key.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_add_key {
+        struct qlink_cmd chdr;
+        u8 key_index;
+        u8 pairwise;
+        u8 addr;
+        __le32 cipher;
+        __le16 vlanid;
+        u8 key_data;
+    }
+
+.. _`qlink_cmd_add_key.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+key_index
+    index of the key being installed.
+
+pairwise
+    whether to use pairwise key.
+
+addr
+    MAC address of a STA key is being installed to.
+
+cipher
+    cipher suite.
+
+vlanid
+    VLAN ID for AP_VLAN interface type
+
+key_data
+    key data itself.
+
+.. _`qlink_cmd_del_key`:
+
+struct qlink_cmd_del_key
+========================
+
+.. c:type:: struct qlink_cmd_del_key
+
+    data for QLINK_CMD_DEL_KEY command
+
+.. _`qlink_cmd_del_key.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_del_key {
+        struct qlink_cmd chdr;
+        u8 key_index;
+        u8 pairwise;
+        u8 addr;
+    }
+
+.. _`qlink_cmd_del_key.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+key_index
+    index of the key being removed.
+
+pairwise
+    whether to use pairwise key.
+
+addr
+    MAC address of a STA for which a key is removed.
+
+.. _`qlink_cmd_set_def_key`:
+
+struct qlink_cmd_set_def_key
+============================
+
+.. c:type:: struct qlink_cmd_set_def_key
+
+    data for QLINK_CMD_SET_DEFAULT_KEY command
+
+.. _`qlink_cmd_set_def_key.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_set_def_key {
+        struct qlink_cmd chdr;
+        u8 key_index;
+        u8 unicast;
+        u8 multicast;
+    }
+
+.. _`qlink_cmd_set_def_key.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+key_index
+    index of the key to be set as default one.
+
+unicast
+    key is unicast.
+
+multicast
+    key is multicast.
+
+.. _`qlink_cmd_set_def_mgmt_key`:
+
+struct qlink_cmd_set_def_mgmt_key
+=================================
+
+.. c:type:: struct qlink_cmd_set_def_mgmt_key
+
+    data for QLINK_CMD_SET_DEFAULT_MGMT_KEY
+
+.. _`qlink_cmd_set_def_mgmt_key.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_set_def_mgmt_key {
+        struct qlink_cmd chdr;
+        u8 key_index;
+    }
+
+.. _`qlink_cmd_set_def_mgmt_key.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+key_index
+    index of the key to be set as default MGMT key.
+
+.. _`qlink_cmd_change_sta`:
+
+struct qlink_cmd_change_sta
+===========================
+
+.. c:type:: struct qlink_cmd_change_sta
+
+    data for QLINK_CMD_CHANGE_STA command
+
+.. _`qlink_cmd_change_sta.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_change_sta {
+        struct qlink_cmd chdr;
+        __le32 sta_flags_mask;
+        __le32 sta_flags_set;
+        __le16 if_type;
+        __le16 vlanid;
+        u8 sta_addr;
+    }
+
+.. _`qlink_cmd_change_sta.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+sta_flags_mask
+    STA flags mask, bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ 
+
+sta_flags_set
+    STA flags values, bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ 
+
+if_type
+    Mode of interface operation, one of \ :c:type:`enum qlink_iface_type <qlink_iface_type>`\ 
+
+vlanid
+    VLAN ID to assign to specific STA
+
+sta_addr
+    address of the STA for which parameters are set.
+
+.. _`qlink_cmd_del_sta`:
+
+struct qlink_cmd_del_sta
+========================
+
+.. c:type:: struct qlink_cmd_del_sta
+
+    data for QLINK_CMD_DEL_STA command.
+
+.. _`qlink_cmd_del_sta.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_del_sta {
+        struct qlink_cmd chdr;
+        __le16 reason_code;
+        u8 subtype;
+        u8 sta_addr;
+    }
+
+.. _`qlink_cmd_del_sta.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+reason_code
+    *undescribed*
+
+subtype
+    *undescribed*
+
+sta_addr
+    *undescribed*
+
+.. _`qlink_cmd_del_sta.description`:
+
+Description
+-----------
+
+See \ :c:type:`struct station_del_parameters <station_del_parameters>`\ 
+
+.. _`qlink_cmd_connect`:
+
+struct qlink_cmd_connect
+========================
+
+.. c:type:: struct qlink_cmd_connect
+
+    data for QLINK_CMD_CONNECT command
+
+.. _`qlink_cmd_connect.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_connect {
+        struct qlink_cmd chdr;
+        __le32 flags;
+        __le16 channel;
+        __le16 bg_scan_period;
+        u8 bssid;
+        u8 payload;
+    }
+
+.. _`qlink_cmd_connect.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+flags
+    for future use.
+
+channel
+    *undescribed*
+
+bg_scan_period
+    period of background scan.
+
+bssid
+    BSSID of the BSS to connect to.
+
+payload
+    variable portion of connection request.
+
+.. _`qlink_cmd_disconnect`:
+
+struct qlink_cmd_disconnect
+===========================
+
+.. c:type:: struct qlink_cmd_disconnect
+
+    data for QLINK_CMD_DISCONNECT command
+
+.. _`qlink_cmd_disconnect.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_disconnect {
+        struct qlink_cmd chdr;
+        __le16 reason;
+    }
+
+.. _`qlink_cmd_disconnect.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+reason
+    code of the reason of disconnect, see \ :c:type:`enum ieee80211_reasoncode <ieee80211_reasoncode>`\ .
+
+.. _`qlink_cmd_updown`:
+
+struct qlink_cmd_updown
+=======================
+
+.. c:type:: struct qlink_cmd_updown
+
+    data for QLINK_CMD_UPDOWN_INTF command
+
+.. _`qlink_cmd_updown.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_updown {
+        struct qlink_cmd chdr;
+        u8 if_up;
+    }
+
+.. _`qlink_cmd_updown.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+if_up
+    bring specified interface DOWN (if_up==0) or UP (otherwise).
+    Interface is specified in common command header \ ``chdr``\ .
+
+.. _`qlink_band`:
+
+enum qlink_band
+===============
+
+.. c:type:: enum qlink_band
+
+    a list of frequency bands
+
+.. _`qlink_band.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_band {
+        QLINK_BAND_2GHZ,
+        QLINK_BAND_5GHZ,
+        QLINK_BAND_60GHZ
+    };
+
+.. _`qlink_band.constants`:
+
+Constants
+---------
+
+QLINK_BAND_2GHZ
+    2.4GHz band
+
+QLINK_BAND_5GHZ
+    5GHz band
+
+QLINK_BAND_60GHZ
+    60GHz band
+
+.. _`qlink_cmd_chans_info_get`:
+
+struct qlink_cmd_chans_info_get
+===============================
+
+.. c:type:: struct qlink_cmd_chans_info_get
+
+    data for QLINK_CMD_CHANS_INFO_GET command
+
+.. _`qlink_cmd_chans_info_get.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_chans_info_get {
+        struct qlink_cmd chdr;
+        u8 band;
+    }
+
+.. _`qlink_cmd_chans_info_get.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+band
+    a PHY band for which channels info is needed, one of \ ``enum``\  qlink_band
+
+.. _`qlink_cmd_get_chan_stats`:
+
+struct qlink_cmd_get_chan_stats
+===============================
+
+.. c:type:: struct qlink_cmd_get_chan_stats
+
+    data for QLINK_CMD_CHAN_STATS command
+
+.. _`qlink_cmd_get_chan_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_get_chan_stats {
+        struct qlink_cmd chdr;
+        __le16 channel;
+    }
+
+.. _`qlink_cmd_get_chan_stats.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+channel
+    channel number according to 802.11 17.3.8.3.2 and Annex J
+
+.. _`qlink_reg_initiator`:
+
+enum qlink_reg_initiator
+========================
+
+.. c:type:: enum qlink_reg_initiator
+
+    Indicates the initiator of a reg domain request
+
+.. _`qlink_reg_initiator.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_reg_initiator {
+        QLINK_REGDOM_SET_BY_CORE,
+        QLINK_REGDOM_SET_BY_USER,
+        QLINK_REGDOM_SET_BY_DRIVER,
+        QLINK_REGDOM_SET_BY_COUNTRY_IE
+    };
+
+.. _`qlink_reg_initiator.constants`:
+
+Constants
+---------
+
+QLINK_REGDOM_SET_BY_CORE
+    *undescribed*
+
+QLINK_REGDOM_SET_BY_USER
+    *undescribed*
+
+QLINK_REGDOM_SET_BY_DRIVER
+    *undescribed*
+
+QLINK_REGDOM_SET_BY_COUNTRY_IE
+    *undescribed*
+
+.. _`qlink_reg_initiator.description`:
+
+Description
+-----------
+
+See \ :c:type:`enum nl80211_reg_initiator <nl80211_reg_initiator>`\  for more info.
+
+.. _`qlink_user_reg_hint_type`:
+
+enum qlink_user_reg_hint_type
+=============================
+
+.. c:type:: enum qlink_user_reg_hint_type
+
+    type of user regulatory hint
+
+.. _`qlink_user_reg_hint_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_user_reg_hint_type {
+        QLINK_USER_REG_HINT_USER,
+        QLINK_USER_REG_HINT_CELL_BASE,
+        QLINK_USER_REG_HINT_INDOOR
+    };
+
+.. _`qlink_user_reg_hint_type.constants`:
+
+Constants
+---------
+
+QLINK_USER_REG_HINT_USER
+    *undescribed*
+
+QLINK_USER_REG_HINT_CELL_BASE
+    *undescribed*
+
+QLINK_USER_REG_HINT_INDOOR
+    *undescribed*
+
+.. _`qlink_user_reg_hint_type.description`:
+
+Description
+-----------
+
+See \ :c:type:`enum nl80211_user_reg_hint_type <nl80211_user_reg_hint_type>`\  for more info.
+
+.. _`qlink_cmd_reg_notify`:
+
+struct qlink_cmd_reg_notify
+===========================
+
+.. c:type:: struct qlink_cmd_reg_notify
+
+    data for QLINK_CMD_REG_NOTIFY command
+
+.. _`qlink_cmd_reg_notify.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_reg_notify {
+        struct qlink_cmd chdr;
+        u8 alpha2;
+        u8 initiator;
+        u8 user_reg_hint_type;
+    }
+
+.. _`qlink_cmd_reg_notify.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+alpha2
+    the ISO / IEC 3166 alpha2 country code.
+
+initiator
+    which entity sent the request, one of \ :c:type:`enum qlink_reg_initiator <qlink_reg_initiator>`\ .
+
+user_reg_hint_type
+    type of hint for QLINK_REGDOM_SET_BY_USER request, one
+    of \ :c:type:`enum qlink_user_reg_hint_type <qlink_user_reg_hint_type>`\ .
+
+.. _`qlink_cmd_chan_switch`:
+
+struct qlink_cmd_chan_switch
+============================
+
+.. c:type:: struct qlink_cmd_chan_switch
+
+    data for QLINK_CMD_CHAN_SWITCH command
+
+.. _`qlink_cmd_chan_switch.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_chan_switch {
+        struct qlink_cmd chdr;
+        __le16 channel;
+        u8 radar_required;
+        u8 block_tx;
+        u8 beacon_count;
+    }
+
+.. _`qlink_cmd_chan_switch.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+channel
+    channel number according to 802.11 17.3.8.3.2 and Annex J
+
+radar_required
+    whether radar detection is required on the new channel
+
+block_tx
+    whether transmissions should be blocked while changing
+
+beacon_count
+    number of beacons until switch
+
+.. _`qlink_resp`:
+
+struct qlink_resp
+=================
+
+.. c:type:: struct qlink_resp
+
+    QLINK command response message header
+
+.. _`qlink_resp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp {
+        struct qlink_msg_header mhdr;
+        __le16 cmd_id;
+        __le16 seq_num;
+        __le16 result;
+        u8 macid;
+        u8 vifid;
+    }
+
+.. _`qlink_resp.members`:
+
+Members
+-------
+
+mhdr
+    see \ :c:type:`struct qlink_msg_header <qlink_msg_header>`\ .
+
+cmd_id
+    command ID the response corresponds to, one of \ :c:type:`enum qlink_cmd_type <qlink_cmd_type>`\ .
+
+seq_num
+    sequence number of command message, used for matching with
+    response message.
+
+result
+    result of the command execution, one of \ :c:type:`enum qlink_cmd_result <qlink_cmd_result>`\ .
+
+macid
+    index of physical radio device the response is sent from or
+    QLINK_MACID_RSVD if not applicable.
+
+vifid
+    index of virtual wireless interface on specified \ ``macid``\  the response
+    is sent from or QLINK_VIFID_RSVD if not applicable.
+
+.. _`qlink_resp.description`:
+
+Description
+-----------
+
+Header used for QLINK messages of QLINK_MSG_TYPE_CMDRSP type.
+
+.. _`qlink_resp_get_mac_info`:
+
+struct qlink_resp_get_mac_info
+==============================
+
+.. c:type:: struct qlink_resp_get_mac_info
+
+    response for QLINK_CMD_MAC_INFO command
+
+.. _`qlink_resp_get_mac_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_get_mac_info {
+        struct qlink_resp rhdr;
+        u8 dev_mac;
+        u8 num_tx_chain;
+        u8 num_rx_chain;
+        struct ieee80211_vht_cap vht_cap;
+        struct ieee80211_ht_cap ht_cap;
+        u8 bands_cap;
+        u8 phymode_cap;
+        __le16 max_ap_assoc_sta;
+        __le16 radar_detect_widths;
+        u8 var_info;
+    }
+
+.. _`qlink_resp_get_mac_info.members`:
+
+Members
+-------
+
+rhdr
+    *undescribed*
+
+dev_mac
+    MAC address of physical WMAC device (used for first BSS on
+    specified WMAC).
+
+num_tx_chain
+    Number of transmit chains used by WMAC.
+
+num_rx_chain
+    Number of receive chains used by WMAC.
+
+vht_cap
+    VHT capabilities.
+
+ht_cap
+    HT capabilities.
+
+bands_cap
+    wireless bands WMAC can operate in, bitmap of \ :c:type:`enum qlink_band <qlink_band>`\ .
+
+phymode_cap
+    PHY modes WMAC can operate in, bitmap of \ :c:type:`enum qlink_phy_mode <qlink_phy_mode>`\ .
+
+max_ap_assoc_sta
+    Maximum number of associations supported by WMAC.
+
+radar_detect_widths
+    bitmask of channels BW for which WMAC can detect radar.
+
+var_info
+    variable-length WMAC info data.
+
+.. _`qlink_resp_get_mac_info.description`:
+
+Description
+-----------
+
+Data describing specific physical device providing wireless MAC
+functionality.
+
+.. _`qlink_dfs_regions`:
+
+enum qlink_dfs_regions
+======================
+
+.. c:type:: enum qlink_dfs_regions
+
+    regulatory DFS regions
+
+.. _`qlink_dfs_regions.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_dfs_regions {
+        QLINK_DFS_UNSET,
+        QLINK_DFS_FCC,
+        QLINK_DFS_ETSI,
+        QLINK_DFS_JP
+    };
+
+.. _`qlink_dfs_regions.constants`:
+
+Constants
+---------
+
+QLINK_DFS_UNSET
+    *undescribed*
+
+QLINK_DFS_FCC
+    *undescribed*
+
+QLINK_DFS_ETSI
+    *undescribed*
+
+QLINK_DFS_JP
+    *undescribed*
+
+.. _`qlink_dfs_regions.description`:
+
+Description
+-----------
+
+Corresponds to \ :c:type:`enum nl80211_dfs_regions <nl80211_dfs_regions>`\ .
+
+.. _`qlink_resp_get_hw_info`:
+
+struct qlink_resp_get_hw_info
+=============================
+
+.. c:type:: struct qlink_resp_get_hw_info
+
+    response for QLINK_CMD_GET_HW_INFO command
+
+.. _`qlink_resp_get_hw_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_get_hw_info {
+        struct qlink_resp rhdr;
+        __le32 fw_ver;
+        __le32 hw_capab;
+        __le16 ql_proto_ver;
+        u8 num_mac;
+        u8 mac_bitmap;
+        u8 total_tx_chain;
+        u8 total_rx_chain;
+        u8 alpha2;
+        u8 n_reg_rules;
+        u8 dfs_region;
+        u8 info;
+    }
+
+.. _`qlink_resp_get_hw_info.members`:
+
+Members
+-------
+
+rhdr
+    *undescribed*
+
+fw_ver
+    wireless hardware firmware version.
+
+hw_capab
+    Bitmap of capabilities supported by firmware.
+
+ql_proto_ver
+    Version of QLINK protocol used by firmware.
+
+num_mac
+    Number of separate physical radio devices provided by hardware.
+
+mac_bitmap
+    Bitmap of MAC IDs that are active and can be used in firmware.
+
+total_tx_chain
+    *undescribed*
+
+total_rx_chain
+    *undescribed*
+
+alpha2
+    country code ID firmware is configured to.
+
+n_reg_rules
+    number of regulatory rules TLVs in variable portion of the
+    message.
+
+dfs_region
+    regulatory DFS region, one of \ ``enum``\  qlink_dfs_region.
+
+info
+    variable-length HW info, can contain QTN_TLV_ID_REG_RULE.
+
+.. _`qlink_resp_get_hw_info.description`:
+
+Description
+-----------
+
+Description of wireless hardware capabilities and features.
+
+.. _`qlink_resp_manage_intf`:
+
+struct qlink_resp_manage_intf
+=============================
+
+.. c:type:: struct qlink_resp_manage_intf
+
+    response for interface management commands
+
+.. _`qlink_resp_manage_intf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_manage_intf {
+        struct qlink_resp rhdr;
+        struct qlink_intf_info intf_info;
+    }
+
+.. _`qlink_resp_manage_intf.members`:
+
+Members
+-------
+
+rhdr
+    Common Command Response message header.
+
+intf_info
+    interface description.
+
+.. _`qlink_resp_manage_intf.description`:
+
+Description
+-----------
+
+Response data for QLINK_CMD_ADD_INTF and QLINK_CMD_CHANGE_INTF commands.
+
+.. _`qlink_resp_get_sta_info`:
+
+struct qlink_resp_get_sta_info
+==============================
+
+.. c:type:: struct qlink_resp_get_sta_info
+
+    response for QLINK_CMD_GET_STA_INFO command
+
+.. _`qlink_resp_get_sta_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_get_sta_info {
+        struct qlink_resp rhdr;
+        u8 sta_addr;
+        u8 info;
+    }
+
+.. _`qlink_resp_get_sta_info.members`:
+
+Members
+-------
+
+rhdr
+    *undescribed*
+
+sta_addr
+    MAC address of STA the response carries statistic for.
+
+info
+    statistics for specified STA.
+
+.. _`qlink_resp_get_sta_info.description`:
+
+Description
+-----------
+
+Response data containing statistics for specified STA.
+
+.. _`qlink_resp_get_chan_info`:
+
+struct qlink_resp_get_chan_info
+===============================
+
+.. c:type:: struct qlink_resp_get_chan_info
+
+    response for QLINK_CMD_CHANS_INFO_GET cmd
+
+.. _`qlink_resp_get_chan_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_get_chan_info {
+        struct qlink_resp rhdr;
+        u8 band;
+        u8 num_chans;
+        u8 rsvd;
+        u8 info;
+    }
+
+.. _`qlink_resp_get_chan_info.members`:
+
+Members
+-------
+
+rhdr
+    *undescribed*
+
+band
+    frequency band to which channels belong to, one of \ ``enum``\  qlink_band.
+
+num_chans
+    total number of channels info data contained in reply data.
+
+rsvd
+    *undescribed*
+
+info
+    variable-length channels info.
+
+.. _`qlink_resp_phy_params`:
+
+struct qlink_resp_phy_params
+============================
+
+.. c:type:: struct qlink_resp_phy_params
+
+    response for QLINK_CMD_PHY_PARAMS_GET command
+
+.. _`qlink_resp_phy_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_phy_params {
+        struct qlink_resp rhdr;
+        u8 info;
+    }
+
+.. _`qlink_resp_phy_params.members`:
+
+Members
+-------
+
+rhdr
+    *undescribed*
+
+info
+    variable-length array of PHY params.
+
+.. _`qlink_resp_get_chan_stats`:
+
+struct qlink_resp_get_chan_stats
+================================
+
+.. c:type:: struct qlink_resp_get_chan_stats
+
+    response for QLINK_CMD_CHAN_STATS cmd
+
+.. _`qlink_resp_get_chan_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_resp_get_chan_stats {
+        struct qlink_cmd rhdr;
+        u8 info;
+    }
+
+.. _`qlink_resp_get_chan_stats.members`:
+
+Members
+-------
+
+rhdr
+    *undescribed*
+
+info
+    variable-length channel info.
+
+.. _`qlink_event`:
+
+struct qlink_event
+==================
+
+.. c:type:: struct qlink_event
+
+    QLINK event message header
+
+.. _`qlink_event.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event {
+        struct qlink_msg_header mhdr;
+        __le16 event_id;
+        u8 macid;
+        u8 vifid;
+    }
+
+.. _`qlink_event.members`:
+
+Members
+-------
+
+mhdr
+    Common QLINK message header.
+
+event_id
+    Specifies specific event ID, one of \ :c:type:`enum qlink_event_type <qlink_event_type>`\ .
+
+macid
+    index of physical radio device the event was generated on or
+    QLINK_MACID_RSVD if not applicable.
+
+vifid
+    index of virtual wireless interface on specified \ ``macid``\  the event
+    was generated on or QLINK_VIFID_RSVD if not applicable.
+
+.. _`qlink_event.description`:
+
+Description
+-----------
+
+Header used for QLINK messages of QLINK_MSG_TYPE_EVENT type.
+
+.. _`qlink_event_sta_assoc`:
+
+struct qlink_event_sta_assoc
+============================
+
+.. c:type:: struct qlink_event_sta_assoc
+
+    data for QLINK_EVENT_STA_ASSOCIATED event
+
+.. _`qlink_event_sta_assoc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_sta_assoc {
+        struct qlink_event ehdr;
+        u8 sta_addr;
+        __le16 frame_control;
+        u8 ies;
+    }
+
+.. _`qlink_event_sta_assoc.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+sta_addr
+    Address of a STA for which new association event was generated
+
+frame_control
+    control bits from 802.11 ASSOC_REQUEST header.
+
+ies
+    *undescribed*
+
+.. _`qlink_event_sta_deauth`:
+
+struct qlink_event_sta_deauth
+=============================
+
+.. c:type:: struct qlink_event_sta_deauth
+
+    data for QLINK_EVENT_STA_DEAUTH event
+
+.. _`qlink_event_sta_deauth.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_sta_deauth {
+        struct qlink_event ehdr;
+        u8 sta_addr;
+        __le16 reason;
+    }
+
+.. _`qlink_event_sta_deauth.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+sta_addr
+    Address of a deauthenticated STA.
+
+reason
+    reason for deauthentication.
+
+.. _`qlink_event_bss_join`:
+
+struct qlink_event_bss_join
+===========================
+
+.. c:type:: struct qlink_event_bss_join
+
+    data for QLINK_EVENT_BSS_JOIN event
+
+.. _`qlink_event_bss_join.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_bss_join {
+        struct qlink_event ehdr;
+        u8 bssid;
+        __le16 status;
+    }
+
+.. _`qlink_event_bss_join.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+bssid
+    BSSID of a BSS which interface tried to joined.
+
+status
+    status of joining attempt, see \ :c:type:`enum ieee80211_statuscode <ieee80211_statuscode>`\ .
+
+.. _`qlink_event_bss_leave`:
+
+struct qlink_event_bss_leave
+============================
+
+.. c:type:: struct qlink_event_bss_leave
+
+    data for QLINK_EVENT_BSS_LEAVE event
+
+.. _`qlink_event_bss_leave.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_bss_leave {
+        struct qlink_event ehdr;
+        __le16 reason;
+    }
+
+.. _`qlink_event_bss_leave.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+reason
+    reason of disconnecting from BSS.
+
+.. _`qlink_event_freq_change`:
+
+struct qlink_event_freq_change
+==============================
+
+.. c:type:: struct qlink_event_freq_change
+
+    data for QLINK_EVENT_FREQ_CHANGE event
+
+.. _`qlink_event_freq_change.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_freq_change {
+        struct qlink_event ehdr;
+        __le32 freq;
+    }
+
+.. _`qlink_event_freq_change.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+freq
+    new operating frequency in MHz
+
+.. _`qlink_event_rxmgmt`:
+
+struct qlink_event_rxmgmt
+=========================
+
+.. c:type:: struct qlink_event_rxmgmt
+
+    data for QLINK_EVENT_MGMT_RECEIVED event
+
+.. _`qlink_event_rxmgmt.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_rxmgmt {
+        struct qlink_event ehdr;
+        __le32 freq;
+        __le32 sig_dbm;
+        __le32 flags;
+        u8 frame_data;
+    }
+
+.. _`qlink_event_rxmgmt.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+freq
+    Frequency on which the frame was received in MHz.
+
+sig_dbm
+    signal strength in dBm.
+
+flags
+    bitmap of \ :c:type:`enum qlink_rxmgmt_flags <qlink_rxmgmt_flags>`\ .
+
+frame_data
+    data of Rx'd frame itself.
+
+.. _`qlink_event_scan_result`:
+
+struct qlink_event_scan_result
+==============================
+
+.. c:type:: struct qlink_event_scan_result
+
+    data for QLINK_EVENT_SCAN_RESULTS event
+
+.. _`qlink_event_scan_result.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_scan_result {
+        struct qlink_event ehdr;
+        __le64 tsf;
+        __le16 freq;
+        __le16 capab;
+        __le16 bintval;
+        s8 signal;
+        u8 frame_type;
+        u8 bssid;
+        u8 ssid_len;
+        u8 ssid;
+        u8 payload;
+    }
+
+.. _`qlink_event_scan_result.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+tsf
+    TSF timestamp indicating when scan results were generated.
+
+freq
+    Center frequency of the channel where BSS for which the scan result
+    event was generated was discovered.
+
+capab
+    capabilities field.
+
+bintval
+    beacon interval announced by discovered BSS.
+
+signal
+    signal strength.
+
+frame_type
+    frame type used to get scan result, see \ :c:type:`enum qlink_frame_type <qlink_frame_type>`\ .
+
+bssid
+    BSSID announced by discovered BSS.
+
+ssid_len
+    length of SSID announced by BSS.
+
+ssid
+    SSID announced by discovered BSS.
+
+payload
+    IEs that are announced by discovered BSS in its MGMt frames.
+
+.. _`qlink_scan_complete_flags`:
+
+enum qlink_scan_complete_flags
+==============================
+
+.. c:type:: enum qlink_scan_complete_flags
+
+    indicates result of scan request.
+
+.. _`qlink_scan_complete_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_scan_complete_flags {
+        QLINK_SCAN_NONE,
+        QLINK_SCAN_ABORTED
+    };
+
+.. _`qlink_scan_complete_flags.constants`:
+
+Constants
+---------
+
+QLINK_SCAN_NONE
+    Scan request was processed.
+
+QLINK_SCAN_ABORTED
+    Scan was aborted.
+
+.. _`qlink_event_scan_complete`:
+
+struct qlink_event_scan_complete
+================================
+
+.. c:type:: struct qlink_event_scan_complete
+
+    data for QLINK_EVENT_SCAN_COMPLETE event
+
+.. _`qlink_event_scan_complete.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_event_scan_complete {
+        struct qlink_event ehdr;
+        __le32 flags;
+    }
+
+.. _`qlink_event_scan_complete.members`:
+
+Members
+-------
+
+ehdr
+    *undescribed*
+
+flags
+    flags indicating the status of pending scan request,
+    see \ :c:type:`enum qlink_scan_complete_flags <qlink_scan_complete_flags>`\ .
+
+.. _`qlink_sta_info_rate`:
+
+struct qlink_sta_info_rate
+==========================
+
+.. c:type:: struct qlink_sta_info_rate
+
+    STA rate statistics
+
+.. _`qlink_sta_info_rate.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_sta_info_rate {
+        __le16 rate;
+        u8 flags;
+        u8 mcs;
+        u8 nss;
+        u8 bw;
+    }
+
+.. _`qlink_sta_info_rate.members`:
+
+Members
+-------
+
+rate
+    data rate in Mbps.
+
+flags
+    bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ .
+
+mcs
+    802.11-defined MCS index.
+
+nss
+    *undescribed*
+
+bw
+    bandwidth, one of \ :c:type:`enum qlink_sta_info_rate_bw <qlink_sta_info_rate_bw>`\ .
+
+.. _`qlink_sta_info_rate.nss`:
+
+nss
+---
+
+Number of Spatial Streams.
+
+.. _`qlink_reg_rule_flags`:
+
+enum qlink_reg_rule_flags
+=========================
+
+.. c:type:: enum qlink_reg_rule_flags
+
+    regulatory rule flags
+
+.. _`qlink_reg_rule_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_reg_rule_flags {
+        QLINK_RRF_NO_OFDM,
+        QLINK_RRF_NO_CCK,
+        QLINK_RRF_NO_INDOOR,
+        QLINK_RRF_NO_OUTDOOR,
+        QLINK_RRF_DFS,
+        QLINK_RRF_PTP_ONLY,
+        QLINK_RRF_PTMP_ONLY,
+        QLINK_RRF_NO_IR,
+        QLINK_RRF_AUTO_BW,
+        QLINK_RRF_IR_CONCURRENT,
+        QLINK_RRF_NO_HT40MINUS,
+        QLINK_RRF_NO_HT40PLUS,
+        QLINK_RRF_NO_80MHZ,
+        QLINK_RRF_NO_160MHZ
+    };
+
+.. _`qlink_reg_rule_flags.constants`:
+
+Constants
+---------
+
+QLINK_RRF_NO_OFDM
+    *undescribed*
+
+QLINK_RRF_NO_CCK
+    *undescribed*
+
+QLINK_RRF_NO_INDOOR
+    *undescribed*
+
+QLINK_RRF_NO_OUTDOOR
+    *undescribed*
+
+QLINK_RRF_DFS
+    *undescribed*
+
+QLINK_RRF_PTP_ONLY
+    *undescribed*
+
+QLINK_RRF_PTMP_ONLY
+    *undescribed*
+
+QLINK_RRF_NO_IR
+    *undescribed*
+
+QLINK_RRF_AUTO_BW
+    *undescribed*
+
+QLINK_RRF_IR_CONCURRENT
+    *undescribed*
+
+QLINK_RRF_NO_HT40MINUS
+    *undescribed*
+
+QLINK_RRF_NO_HT40PLUS
+    *undescribed*
+
+QLINK_RRF_NO_80MHZ
+    *undescribed*
+
+QLINK_RRF_NO_160MHZ
+    *undescribed*
+
+.. _`qlink_reg_rule_flags.description`:
+
+Description
+-----------
+
+See description of \ :c:type:`enum nl80211_reg_rule_flags <nl80211_reg_rule_flags>`\ 
+
+.. _`qlink_tlv_reg_rule`:
+
+struct qlink_tlv_reg_rule
+=========================
+
+.. c:type:: struct qlink_tlv_reg_rule
+
+    data for QTN_TLV_ID_REG_RULE TLV
+
+.. _`qlink_tlv_reg_rule.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_tlv_reg_rule {
+        struct qlink_tlv_hdr hdr;
+        __le32 start_freq_khz;
+        __le32 end_freq_khz;
+        __le32 max_bandwidth_khz;
+        __le32 max_antenna_gain;
+        __le32 max_eirp;
+        __le32 flags;
+        __le32 dfs_cac_ms;
+    }
+
+.. _`qlink_tlv_reg_rule.members`:
+
+Members
+-------
+
+hdr
+    *undescribed*
+
+start_freq_khz
+    start frequency of the range the rule is attributed to.
+
+end_freq_khz
+    end frequency of the range the rule is attributed to.
+
+max_bandwidth_khz
+    max bandwidth that channels in specified range can be
+    configured to.
+
+max_antenna_gain
+    max antenna gain that can be used in the specified
+    frequency range, dBi.
+
+max_eirp
+    maximum EIRP.
+
+flags
+    regulatory rule flags in \ :c:type:`enum qlink_reg_rule_flags <qlink_reg_rule_flags>`\ .
+
+dfs_cac_ms
+    DFS CAC period.
+
+.. _`qlink_tlv_reg_rule.description`:
+
+Description
+-----------
+
+Regulatory rule description.
+
+.. This file was automatic generated / don't edit.
+

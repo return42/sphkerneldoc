@@ -91,7 +91,7 @@ Description
 dvb_ca_en50221_read_tuple
 =========================
 
-.. c:function:: int dvb_ca_en50221_read_tuple(struct dvb_ca_private *ca, int slot, int *address, int *tupleType, int *tupleLength, u8 *tuple)
+.. c:function:: int dvb_ca_en50221_read_tuple(struct dvb_ca_private *ca, int slot, int *address, int *tuple_type, int *tuple_length, u8 *tuple)
 
     Read a tuple from attribute memory.
 
@@ -104,11 +104,11 @@ dvb_ca_en50221_read_tuple
     :param int \*address:
         Address to read from. Updated.
 
-    :param int \*tupleType:
-        Tuple id byte. Updated.
+    :param int \*tuple_type:
+        *undescribed*
 
-    :param int \*tupleLength:
-        Tuple length. Updated.
+    :param int \*tuple_length:
+        *undescribed*
 
     :param u8 \*tuple:
         Dest buffer for tuple (must be 256 bytes). Updated.
@@ -269,6 +269,8 @@ dvb_ca_en50221_frda_irq
 
 .. c:function:: void dvb_ca_en50221_frda_irq(struct dvb_ca_en50221 *pubca, int slot)
 
+    An FR or DA IRQ has occurred.
+
     :param struct dvb_ca_en50221 \*pubca:
         *undescribed*
 
@@ -295,12 +297,40 @@ dvb_ca_en50221_thread_update_delay
     :param struct dvb_ca_private \*ca:
         CA instance.
 
+.. _`dvb_ca_en50221_poll_cam_gone`:
+
+dvb_ca_en50221_poll_cam_gone
+============================
+
+.. c:function:: int dvb_ca_en50221_poll_cam_gone(struct dvb_ca_private *ca, int slot)
+
+    :param struct dvb_ca_private \*ca:
+        CA instance.
+
+    :param int slot:
+        Slot to process.
+
+.. _`dvb_ca_en50221_thread_state_machine`:
+
+dvb_ca_en50221_thread_state_machine
+===================================
+
+.. c:function:: void dvb_ca_en50221_thread_state_machine(struct dvb_ca_private *ca, int slot)
+
+    :param struct dvb_ca_private \*ca:
+        CA instance.
+
+    :param int slot:
+        Slot to process.
+
 .. _`dvb_ca_en50221_thread`:
 
 dvb_ca_en50221_thread
 =====================
 
 .. c:function:: int dvb_ca_en50221_thread(void *data)
+
+    transfers.
 
     :param void \*data:
         *undescribed*

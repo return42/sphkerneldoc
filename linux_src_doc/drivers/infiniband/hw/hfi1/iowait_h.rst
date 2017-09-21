@@ -20,7 +20,7 @@ Definition
     struct iowait {
         struct list_head list;
         struct list_head tx_head;
-        int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx, unsigned seq);
+        int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx,uint seq,bool pkts_sent );
         void (*wakeup)(struct iowait *wait, int reason);
         void (*sdma_drained)(struct iowait *wait);
         seqlock_t *lock;
@@ -32,6 +32,7 @@ Definition
         u32 count;
         u32 tx_limit;
         u32 tx_count;
+        u8 starved_cnt;
     }
 
 .. _`iowait.members`:
@@ -81,6 +82,9 @@ tx_limit
 tx_count
     number of tx entry's in tx_head'ed list
 
+starved_cnt
+    *undescribed*
+
 .. _`iowait.description`:
 
 Description
@@ -112,7 +116,7 @@ code that unwaits QPs does not.
 iowait_init
 ===========
 
-.. c:function:: void iowait_init(struct iowait *wait, u32 tx_limit, void (*func)(struct work_struct *work), int (*sleep)( struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, unsigned seq), void (*wakeup)(struct iowait *wait, int reason), void (*sdma_drained)(struct iowait *wait))
+.. c:function:: void iowait_init(struct iowait *wait, u32 tx_limit, void (*func)(struct work_struct *work), int (*sleep)( struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, uint seq, bool pkts_sent), void (*wakeup)(struct iowait *wait, int reason), void (*sdma_drained)(struct iowait *wait))
 
     initialize wait structure
 
@@ -125,7 +129,7 @@ iowait_init
     :param void (\*func)(struct work_struct \*work):
         restart function for workqueue
 
-    :param int (\*sleep)( struct sdma_engine \*sde, struct iowait \*wait, struct sdma_txreq \*tx, unsigned seq):
+    :param int (\*sleep)( struct sdma_engine \*sde, struct iowait \*wait, struct sdma_txreq \*tx, uint seq, bool pkts_sent):
         sleep function for no space
 
     :param void (\*wakeup)(struct iowait \*wait, int reason):
@@ -324,6 +328,88 @@ Description
 -----------
 
 @wait wait struture
+
+.. _`iowait_queue`:
+
+iowait_queue
+============
+
+.. c:function:: void iowait_queue(bool pkts_sent, struct iowait *w, struct list_head *wait_head)
+
+    Put the iowait on a wait queue
+
+    :param bool pkts_sent:
+        have some packets been sent before queuing?
+
+    :param struct iowait \*w:
+        the iowait struct
+
+    :param struct list_head \*wait_head:
+        the wait queue
+
+.. _`iowait_queue.description`:
+
+Description
+-----------
+
+This function is called to insert an iowait struct into a
+wait queue after a resource (eg, sdma decriptor or pio
+buffer) is run out.
+
+.. _`iowait_starve_clear`:
+
+iowait_starve_clear
+===================
+
+.. c:function:: void iowait_starve_clear(bool pkts_sent, struct iowait *w)
+
+    clear the wait queue's starve count
+
+    :param bool pkts_sent:
+        have some packets been sent?
+
+    :param struct iowait \*w:
+        the iowait struct
+
+.. _`iowait_starve_clear.description`:
+
+Description
+-----------
+
+This function is called to clear the starve count. If no
+packets have been sent, the starve count will not be cleared.
+
+.. _`iowait_starve_find_max`:
+
+iowait_starve_find_max
+======================
+
+.. c:function:: void iowait_starve_find_max(struct iowait *w, u8 *max, uint idx, uint *max_idx)
+
+    Find the maximum of the starve count
+
+    :param struct iowait \*w:
+        the iowait struct
+
+    :param u8 \*max:
+        a variable containing the max starve count
+
+    :param uint idx:
+        the index of the current iowait in an array
+
+    :param uint \*max_idx:
+        a variable containing the array index for the
+        iowait entry that has the max starve count
+
+.. _`iowait_starve_find_max.description`:
+
+Description
+-----------
+
+This function is called to compare the starve count of a
+given iowait with the given max starve count. The max starve
+count and the index will be updated if the iowait's start
+count is larger.
 
 .. This file was automatic generated / don't edit.
 

@@ -115,7 +115,7 @@ Definition
         struct tasklet_struct dma_err_tasklet;
         int tx_irq;
         int rx_irq;
-        u32 phy_type;
+        phy_interface_t phy_mode;
         u32 options;
         u32 last_link;
         u32 features;
@@ -166,7 +166,7 @@ tx_irq
 rx_irq
     Axidma RX IRQ number
 
-phy_type
+phy_mode
     Phy type to identify between MII/GMII/RGMII/SGMII/1000 Base-X
 
 options

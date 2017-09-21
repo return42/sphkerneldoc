@@ -21,7 +21,7 @@ Definition
         V4L2_ASYNC_MATCH_CUSTOM,
         V4L2_ASYNC_MATCH_DEVNAME,
         V4L2_ASYNC_MATCH_I2C,
-        V4L2_ASYNC_MATCH_OF
+        V4L2_ASYNC_MATCH_FWNODE
     };
 
 .. _`v4l2_async_match_type.constants`:
@@ -38,8 +38,8 @@ V4L2_ASYNC_MATCH_DEVNAME
 V4L2_ASYNC_MATCH_I2C
     Match will check for I2C adapter ID and address
 
-V4L2_ASYNC_MATCH_OF
-    Match will use OF node
+V4L2_ASYNC_MATCH_FWNODE
+    Match will use firmware node
 
 .. _`v4l2_async_match_type.description`:
 

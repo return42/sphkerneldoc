@@ -153,6 +153,44 @@ Return
 
 true on success, false on failure
 
+.. _`drm_bridge_mode_valid`:
+
+drm_bridge_mode_valid
+=====================
+
+.. c:function:: enum drm_mode_status drm_bridge_mode_valid(struct drm_bridge *bridge, const struct drm_display_mode *mode)
+
+    validate the mode against all bridges in the encoder chain.
+
+    :param struct drm_bridge \*bridge:
+        bridge control structure
+
+    :param const struct drm_display_mode \*mode:
+        desired mode to be validated
+
+.. _`drm_bridge_mode_valid.description`:
+
+Description
+-----------
+
+Calls \ :c:type:`drm_bridge_funcs.mode_valid <drm_bridge_funcs>`\  for all the bridges in the encoder
+chain, starting from the first bridge to the last. If at least one bridge
+does not accept the mode the function returns the error code.
+
+.. _`drm_bridge_mode_valid.note`:
+
+Note
+----
+
+the bridge passed should be the one closest to the encoder.
+
+.. _`drm_bridge_mode_valid.return`:
+
+Return
+------
+
+MODE_OK on success, drm_mode_status Enum error code on failure
+
 .. _`drm_bridge_disable`:
 
 drm_bridge_disable

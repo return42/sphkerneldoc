@@ -35,6 +35,7 @@ net
     netlabel_h
     netlink_h
     nl802154_h
+    nsh_h
     pkt_cls_h
     regulatory_h
     rtnetlink_h

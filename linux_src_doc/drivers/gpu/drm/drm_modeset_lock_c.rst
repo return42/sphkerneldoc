@@ -30,7 +30,11 @@ The basic usage pattern is to::
     drm_modeset_drop_locks(&ctx);
     drm_modeset_acquire_fini(&ctx);
 
-On top of of these per-object locks using \ :c:type:`struct ww_mutex <ww_mutex>`\  there's also an overall
+If all that is needed is a single modeset lock, then the \ :c:type:`struct drm_modeset_acquire_ctx <drm_modeset_acquire_ctx>`\  is not needed and the locking can be simplified
+by passing a NULL instead of ctx in the \ :c:func:`drm_modeset_lock`\ 
+call and, when done, by calling \ :c:func:`drm_modeset_unlock`\ .
+
+On top of these per-object locks using \ :c:type:`struct ww_mutex <ww_mutex>`\  there's also an overall
 \ :c:type:`drm_mode_config.mutex <drm_mode_config>`\ , for protecting everything else. Mostly this means
 probe state of connectors, and preventing hotplug add/removal of connectors.
 
@@ -229,11 +233,14 @@ drm_modeset_lock
 Description
 -----------
 
-If ctx is not NULL, then its ww acquire context is used and the
+If \ ``ctx``\  is not NULL, then its ww acquire context is used and the
 lock will be tracked by the context and can be released by calling
 \ :c:func:`drm_modeset_drop_locks`\ .  If -EDEADLK is returned, this means a
 deadlock scenario has been detected and it is an error to attempt
 to take any more locks without first calling \ :c:func:`drm_modeset_backoff`\ .
+
+If \ ``ctx``\  is NULL then the function call behaves like a normal,
+non-nesting \ :c:func:`mutex_lock`\  call.
 
 .. _`drm_modeset_lock_interruptible`:
 

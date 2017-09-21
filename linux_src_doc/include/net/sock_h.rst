@@ -99,13 +99,14 @@ Definition
         atomic_t sk_omem_alloc;
         int sk_sndbuf;
         int sk_wmem_queued;
-        atomic_t sk_wmem_alloc;
+        refcount_t sk_wmem_alloc;
         unsigned long sk_tsq_flags;
         struct sk_buff *sk_send_head;
         struct sk_buff_head sk_write_queue;
         __s32 sk_peek_off;
         int sk_write_pending;
         __u32 sk_dst_pending_confirm;
+        u32 sk_pacing_status;
         long sk_sndtimeo;
         struct timer_list sk_timer;
         __u32 sk_priority;
@@ -155,6 +156,7 @@ Definition
         u16 sk_tsflags;
         u8 sk_shutdown;
         u32 sk_tskey;
+        atomic_t sk_zckey;
         struct socket *sk_socket;
         void *sk_user_data;
     #ifdef CONFIG_SECURITY
@@ -221,7 +223,7 @@ sk_wmem_alloc
     transmit queue bytes committed
 
 sk_tsq_flags
-    *undescribed*
+    TCP Small Queues flags
 
 sk_send_head
     front of stuff to transmit
@@ -237,6 +239,9 @@ sk_write_pending
 
 sk_dst_pending_confirm
     need to confirm neighbour
+
+sk_pacing_status
+    Pacing status (requested, handled by sch_fq)
 
 sk_sndtimeo
     %SO_SNDTIMEO setting
@@ -278,7 +283,7 @@ sk_txhash
     computed flow hash for use on transmit
 
 __sk_flags_offset
-    *undescribed*
+    empty field used to determine location of bitfield
 
 sk_padding
     unused element for alignment
@@ -328,7 +333,7 @@ sk_max_ack_backlog
     listen backlog set in \ :c:func:`listen`\ 
 
 sk_uid
-    *undescribed*
+    user id of owner
 
 sk_peer_pid
     &struct pid for this socket's peer
@@ -350,6 +355,9 @@ sk_shutdown
 
 sk_tskey
     counter to disambiguate concurrent tstamp requests
+
+sk_zckey
+    counter to order MSG_ZEROCOPY notifications
 
 sk_socket
     Identd and reporting IO signals

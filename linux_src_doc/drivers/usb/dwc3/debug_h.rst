@@ -54,21 +54,54 @@ dwc3_trb_type_string
 dwc3_gadget_event_string
 ========================
 
-.. c:function:: const char *dwc3_gadget_event_string(const struct dwc3_event_devt *event)
+.. c:function:: const char *dwc3_gadget_event_string(char *str, const struct dwc3_event_devt *event)
 
     returns event name
 
+    :param char \*str:
+        *undescribed*
+
     :param const struct dwc3_event_devt \*event:
         the event code
+
+.. _`dwc3_decode_ctrl`:
+
+dwc3_decode_ctrl
+================
+
+.. c:function:: const char *dwc3_decode_ctrl(char *str, __u8 bRequestType, __u8 bRequest, __u16 wValue, __u16 wIndex, __u16 wLength)
+
+    returns a string represetion of ctrl request
+
+    :param char \*str:
+        *undescribed*
+
+    :param __u8 bRequestType:
+        *undescribed*
+
+    :param __u8 bRequest:
+        *undescribed*
+
+    :param __u16 wValue:
+        *undescribed*
+
+    :param __u16 wIndex:
+        *undescribed*
+
+    :param __u16 wLength:
+        *undescribed*
 
 .. _`dwc3_ep_event_string`:
 
 dwc3_ep_event_string
 ====================
 
-.. c:function:: const char *dwc3_ep_event_string(const struct dwc3_event_depevt *event, u32 ep0state)
+.. c:function:: const char *dwc3_ep_event_string(char *str, const struct dwc3_event_depevt *event, u32 ep0state)
 
     returns event name
+
+    :param char \*str:
+        *undescribed*
 
     :param const struct dwc3_event_depevt \*event:
         then event code

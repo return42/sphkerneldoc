@@ -184,11 +184,14 @@ Returns 0 on success.
 qla2x00_rff_id
 ==============
 
-.. c:function:: int qla2x00_rff_id(scsi_qla_host_t *vha)
+.. c:function:: int qla2x00_rff_id(scsi_qla_host_t *vha, u8 type)
 
     SNS Register FC-4 Features (RFF_ID) supported by the HBA.
 
     :param scsi_qla_host_t \*vha:
+        *undescribed*
+
+    :param u8 type:
         *undescribed*
 
 .. _`qla2x00_rff_id.description`:

@@ -11,7 +11,7 @@ xprtrdma
     frwr_ops_c
     rpc_rdma_c
     svc_rdma_backchannel_c
-    svc_rdma_marshal_c
+    svc_rdma_recvfrom_c
     svc_rdma_rw_c
     svc_rdma_sendto_c
     svc_rdma_transport_c

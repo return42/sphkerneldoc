@@ -477,6 +477,7 @@ Definition
         u64 host_scribble;
         u16 pl_len;
         struct fcp_resp_with_ext fcp_rsp;
+        u32 scsi_lun_64_hi;
     }
 
 .. _`zfcp_dbf_scsi.members`:
@@ -494,7 +495,7 @@ scsi_id
     scsi device id
 
 scsi_lun
-    scsi device logical unit number
+    scsi device logical unit number, low part of 64 bit, old 32 bit
 
 scsi_result
     scsi result
@@ -506,7 +507,7 @@ scsi_allowed
     allowed retries
 
 fcp_rsp_info
-    FCP response info
+    FCP response info code
 
 scsi_opcode
     scsi opcode
@@ -518,10 +519,13 @@ host_scribble
     LLD specific data attached to SCSI request
 
 pl_len
-    length of paload stored as zfcp_dbf_pay
+    length of payload stored as zfcp_dbf_pay
 
 fcp_rsp
-    *undescribed*
+    response for FCP request
+
+scsi_lun_64_hi
+    scsi device logical unit number, high part of 64 bit
 
 .. _`zfcp_dbf_pay`:
 
@@ -729,7 +733,7 @@ zfcp_dbf_scsi_abort
 zfcp_dbf_scsi_devreset
 ======================
 
-.. c:function:: void zfcp_dbf_scsi_devreset(char *tag, struct scsi_cmnd *scmnd, u8 flag)
+.. c:function:: void zfcp_dbf_scsi_devreset(char *tag, struct scsi_cmnd *scmnd, u8 flag, struct zfcp_fsf_req *fsf_req)
 
     trace event for Logical Unit or Target Reset
 
@@ -741,6 +745,9 @@ zfcp_dbf_scsi_devreset
 
     :param u8 flag:
         indicates type of reset (Target Reset, Logical Unit Reset)
+
+    :param struct zfcp_fsf_req \*fsf_req:
+        *undescribed*
 
 .. _`zfcp_dbf_scsi_nullcmnd`:
 

@@ -14,7 +14,7 @@ gpio_request_one
         the GPIO number
 
     :param unsigned long flags:
-        GPIO configuration as specified by GPIOF\_\*
+        GPIO configuration as specified by GPIOF_*
 
     :param const char \*label:
         a literal description string of this GPIO

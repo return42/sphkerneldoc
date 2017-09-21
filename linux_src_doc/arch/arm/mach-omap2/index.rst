@@ -24,7 +24,6 @@ mach-omap2
     control_c
     cpuidle34xx_c
     cpuidle44xx_c
-    devices_c
     hdq1w_c
     i2c_c
     msdi_c
@@ -45,12 +44,8 @@ mach-omap2
     omap_phy_internal_c
     omap_twl_c
     opp2xxx_h
-    opp3xxx_data_c
-    opp4xxx_data_c
-    opp_c
     pm44xx_c
     pm_c
-    pmu_c
     powerdomain_c
     powerdomain_h
     prcm-common_h

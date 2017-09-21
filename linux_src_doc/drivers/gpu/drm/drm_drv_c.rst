@@ -66,6 +66,28 @@ instead to make sure that the device isn't userspace accessible any more
 while teardown is in progress, ensuring that userspace can't access an
 inconsistent state.
 
+.. _`drm_dev_unplug`:
+
+drm_dev_unplug
+==============
+
+.. c:function:: void drm_dev_unplug(struct drm_device *dev)
+
+    unplug a DRM device
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_dev_unplug.description`:
+
+Description
+-----------
+
+This unplugs a hotpluggable DRM device, which makes it inaccessible to
+userspace operations. Entry-points can use \ :c:func:`drm_dev_is_unplugged`\ . This
+essentially unregisters the device like \ :c:func:`drm_dev_unregister`\ , but can be
+called while there are still open users of \ ``dev``\ .
+
 .. _`drm_dev_init`:
 
 drm_dev_init
@@ -292,6 +314,9 @@ Description
 Unregister the DRM device from the system. This does the reverse of
 \ :c:func:`drm_dev_register`\  but does not deallocate the device. The caller must call
 \ :c:func:`drm_dev_unref`\  to drop their final reference.
+
+A special form of unregistering for hotpluggable devices is \ :c:func:`drm_dev_unplug`\ ,
+which can be called while there are still open users of \ ``dev``\ .
 
 This should be called first in the device teardown code to make sure
 userspace can't access the device instance any more.

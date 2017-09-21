@@ -32,7 +32,7 @@ which has one of the following values: "Overlay", "Primary", "Cursor".
 drm_universal_plane_init
 ========================
 
-.. c:function:: int drm_universal_plane_init(struct drm_device *dev, struct drm_plane *plane, uint32_t possible_crtcs, const struct drm_plane_funcs *funcs, const uint32_t *formats, unsigned int format_count, enum drm_plane_type type, const char *name,  ...)
+.. c:function:: int drm_universal_plane_init(struct drm_device *dev, struct drm_plane *plane, uint32_t possible_crtcs, const struct drm_plane_funcs *funcs, const uint32_t *formats, unsigned int format_count, const uint64_t *format_modifiers, enum drm_plane_type type, const char *name,  ...)
 
     Initialize a new universal plane object
 
@@ -53,6 +53,10 @@ drm_universal_plane_init
 
     :param unsigned int format_count:
         number of elements in \ ``formats``\ 
+
+    :param const uint64_t \*format_modifiers:
+        array of struct drm_format modifiers terminated by
+        DRM_FORMAT_MOD_INVALID
 
     :param enum drm_plane_type type:
         type of plane (overlay, primary, cursor)

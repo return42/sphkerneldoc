@@ -147,6 +147,33 @@ Locking
 
 the caller must hold the tty_mutex
 
+.. _`ptm_open_peer`:
+
+ptm_open_peer
+=============
+
+.. c:function:: int ptm_open_peer(struct file *master, struct tty_struct *tty, int flags)
+
+    open the peer of a pty
+
+    :param struct file \*master:
+        the open struct file of the ptmx device node
+
+    :param struct tty_struct \*tty:
+        the master of the pty being opened
+
+    :param int flags:
+        the flags for open
+
+.. _`ptm_open_peer.description`:
+
+Description
+-----------
+
+Provide a race free way for userspace to open the slave end of a pty
+(where they have the master fd and cannot access or trust the mount
+namespace /dev/pts was mounted inside).
+
 .. _`ptm_unix98_lookup`:
 
 ptm_unix98_lookup

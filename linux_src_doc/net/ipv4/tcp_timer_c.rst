@@ -71,7 +71,7 @@ tcp_orphan_retries
 retransmits_timed_out
 =====================
 
-.. c:function:: bool retransmits_timed_out(struct sock *sk, unsigned int boundary, unsigned int timeout, bool syn_set)
+.. c:function:: bool retransmits_timed_out(struct sock *sk, unsigned int boundary, unsigned int timeout)
 
     returns true if this connection has timed out
 
@@ -86,9 +86,6 @@ retransmits_timed_out
         If set to 0 the default timeout is calculated and used.
         Using TCP_RTO_MIN and the number of unsuccessful retransmits.
 
-    :param bool syn_set:
-        true if the SYN Bit was set.
-
 .. _`retransmits_timed_out.description`:
 
 Description
@@ -97,8 +94,7 @@ Description
 The default "timeout" value this function can calculate and use
 is equivalent to the timeout of a TCP Connection
 after "boundary" unsuccessful, exponentially backed-off
-retransmissions with an initial RTO of TCP_RTO_MIN or TCP_TIMEOUT_INIT if
-syn_set flag is set.
+retransmissions with an initial RTO of TCP_RTO_MIN.
 
 .. _`tcp_delack_timer`:
 

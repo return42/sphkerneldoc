@@ -20,6 +20,8 @@ Definition
     struct vsp1_du_lif_config {
         unsigned int width;
         unsigned int height;
+        void (*callback)(void *, bool);
+        void *callback_data;
     }
 
 .. _`vsp1_du_lif_config.members`:
@@ -32,6 +34,14 @@ width
 
 height
     output frame height
+
+callback
+    frame completion callback function (optional). When a callback
+    is provided, the VSP driver guarantees that it will be called once
+    and only once for each \ :c:func:`vsp1_du_atomic_flush`\  call.
+
+callback_data
+    data to be passed to the frame completion callback
 
 .. This file was automatic generated / don't edit.
 

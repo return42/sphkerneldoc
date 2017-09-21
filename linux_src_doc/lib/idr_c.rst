@@ -1,46 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/idr.c
 
-.. _`idr_alloc`:
-
-idr_alloc
-=========
-
-.. c:function:: int idr_alloc(struct idr *idr, void *ptr, int start, int end, gfp_t gfp)
-
-    allocate an id
-
-    :param struct idr \*idr:
-        idr handle
-
-    :param void \*ptr:
-        pointer to be associated with the new id
-
-    :param int start:
-        the minimum id (inclusive)
-
-    :param int end:
-        the maximum id (exclusive)
-
-    :param gfp_t gfp:
-        memory allocation flags
-
-.. _`idr_alloc.description`:
-
-Description
------------
-
-Allocates an unused ID in the range [start, end).  Returns -ENOSPC
-if there are no unused IDs in that range.
-
-Note that \ ``end``\  is treated as max when <= 0.  This is to always allow
-using \ ``start``\  + N as \ ``end``\  as long as N is inside integer range.
-
-Simultaneous modifications to the \ ``idr``\  are not allowed and should be
-prevented by the user, usually with a lock.  \ :c:func:`idr_alloc`\  may be called
-concurrently with read-only accesses to the \ ``idr``\ , such as \ :c:func:`idr_find`\  and
-\ :c:func:`idr_for_each_entry`\ .
-
 .. _`idr_alloc_cyclic`:
 
 idr_alloc_cyclic

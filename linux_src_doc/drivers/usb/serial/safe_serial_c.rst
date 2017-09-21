@@ -6,7 +6,7 @@
 fcs_compute10
 =============
 
-.. c:function:: __u16 __inline__ fcs_compute10(unsigned char *sp, int len, __u16 fcs)
+.. c:function:: __u16 fcs_compute10(unsigned char *sp, int len, __u16 fcs)
 
     memcpy and calculate 10 bit CRC across buffer
 

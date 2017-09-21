@@ -6,12 +6,12 @@
 i40evf_send_pf_msg
 ==================
 
-.. c:function:: int i40evf_send_pf_msg(struct i40evf_adapter *adapter, enum i40e_virtchnl_ops op, u8 *msg, u16 len)
+.. c:function:: int i40evf_send_pf_msg(struct i40evf_adapter *adapter, enum virtchnl_ops op, u8 *msg, u16 len)
 
     :param struct i40evf_adapter \*adapter:
         adapter structure
 
-    :param enum i40e_virtchnl_ops op:
+    :param enum virtchnl_ops op:
         virtual channel opcode
 
     :param u8 \*msg:
@@ -347,6 +347,40 @@ Description
 
 Request the PF to set our RSS lookup table
 
+.. _`i40evf_enable_vlan_stripping`:
+
+i40evf_enable_vlan_stripping
+============================
+
+.. c:function:: void i40evf_enable_vlan_stripping(struct i40evf_adapter *adapter)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_enable_vlan_stripping.description`:
+
+Description
+-----------
+
+Request VLAN header stripping to be enabled
+
+.. _`i40evf_disable_vlan_stripping`:
+
+i40evf_disable_vlan_stripping
+=============================
+
+.. c:function:: void i40evf_disable_vlan_stripping(struct i40evf_adapter *adapter)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_disable_vlan_stripping.description`:
+
+Description
+-----------
+
+Request VLAN header stripping to be disabled
+
 .. _`i40evf_print_link_message`:
 
 i40evf_print_link_message
@@ -388,12 +422,12 @@ Request that the PF reset this VF. No response is expected.
 i40evf_virtchnl_completion
 ==========================
 
-.. c:function:: void i40evf_virtchnl_completion(struct i40evf_adapter *adapter, enum i40e_virtchnl_ops v_opcode, i40e_status v_retval, u8 *msg, u16 msglen)
+.. c:function:: void i40evf_virtchnl_completion(struct i40evf_adapter *adapter, enum virtchnl_ops v_opcode, i40e_status v_retval, u8 *msg, u16 msglen)
 
     :param struct i40evf_adapter \*adapter:
         adapter structure
 
-    :param enum i40e_virtchnl_ops v_opcode:
+    :param enum virtchnl_ops v_opcode:
         opcode sent by PF
 
     :param i40e_status v_retval:

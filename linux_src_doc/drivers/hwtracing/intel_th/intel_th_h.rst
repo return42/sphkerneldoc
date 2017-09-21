@@ -55,6 +55,34 @@ port this output device corresponds to. Filled in at output device's
 probe time by switch::assign(). Passed from output device driver to
 switch related code to enable/disable its port.
 
+.. _`intel_th_drvdata`:
+
+struct intel_th_drvdata
+=======================
+
+.. c:type:: struct intel_th_drvdata
+
+    describes hardware capabilities and quirks
+
+.. _`intel_th_drvdata.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct intel_th_drvdata {
+        unsigned int tscu_enable:1;
+    }
+
+.. _`intel_th_drvdata.members`:
+
+Members
+-------
+
+tscu_enable
+    device needs SW to enable time stamping unit
+
 .. _`intel_th_device`:
 
 struct intel_th_device
@@ -73,6 +101,7 @@ Definition
 
     struct intel_th_device {
         struct device dev;
+        struct intel_th_drvdata *drvdata;
         struct resource *resource;
         unsigned int num_resources;
         unsigned int type;
@@ -89,6 +118,9 @@ Members
 
 dev
     device
+
+drvdata
+    hardware capabilities/quirks
 
 resource
     array of resources available to this device
@@ -253,6 +285,13 @@ Definition
         struct device *dev;
         struct intel_th_device  *thdev;
         struct intel_th_device *hub;
+        struct intel_th_drvdata *drvdata;
+        struct resource *resource;
+        int (*activate)(struct intel_th *);
+        void (*deactivate)(struct intel_th *);
+        unsigned int num_thdevs;
+        unsigned int num_resources;
+        int irq;
         int id;
         int major;
     #ifdef CONFIG_MODULES
@@ -276,6 +315,27 @@ thdev
 
 hub
     "switch" subdevice (GTH)
+
+drvdata
+    *undescribed*
+
+resource
+    resources of the entire controller
+
+activate
+    *undescribed*
+
+deactivate
+    *undescribed*
+
+num_thdevs
+    number of devices in the \ ``thdev``\  array
+
+num_resources
+    number or resources in the \ ``resource``\  array
+
+irq
+    irq number
 
 id
     this Intel TH controller's device ID in the system

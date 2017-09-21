@@ -33,6 +33,42 @@ name
 extsel
     trigger selection
 
+.. _`stm32_adc_calib`:
+
+struct stm32_adc_calib
+======================
+
+.. c:type:: struct stm32_adc_calib
+
+    optional adc calibration data
+
+.. _`stm32_adc_calib.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct stm32_adc_calib {
+        u32 calfact_s;
+        u32 calfact_d;
+        u32 lincalfact;
+    }
+
+.. _`stm32_adc_calib.members`:
+
+Members
+-------
+
+calfact_s
+    Calibration offset for single ended channels
+
+calfact_d
+    Calibration offset in differential
+
+lincalfact
+    Linearity calibration factor
+
 .. _`stm32_adc`:
 
 struct stm32_adc
@@ -52,6 +88,7 @@ Definition
     struct stm32_adc {
         struct stm32_adc_common *common;
         u32 offset;
+        const struct stm32_adc_cfg *cfg;
         struct completion completion;
         u16 buffer;
         struct clk *clk;
@@ -65,6 +102,9 @@ Definition
         u8 *rx_buf;
         dma_addr_t rx_dma_buf;
         unsigned int rx_buf_sz;
+        u32 pcsel;
+        u32 smpr_val;
+        struct stm32_adc_calib cal;
     }
 
 .. _`stm32_adc.members`:
@@ -77,6 +117,9 @@ common
 
 offset
     ADC instance register offset in ADC block
+
+cfg
+    compatible configuration data
 
 completion
     end of single conversion completion
@@ -116,6 +159,16 @@ rx_dma_buf
 
 rx_buf_sz
     dma rx buffer size
+    \ ``pcsel``\                bitmask to preselect channels on some devices
+
+pcsel
+    *undescribed*
+
+smpr_val
+    sampling time settings (e.g. smpr1 / smpr2)
+
+cal
+    optional calibration data on some devices
 
 .. _`stm32_adc_chan_spec`:
 
@@ -152,6 +205,46 @@ channel
 
 name
     channel name (single ended)
+
+.. _`stm32_adc_info`:
+
+struct stm32_adc_info
+=====================
+
+.. c:type:: struct stm32_adc_info
+
+    stm32 ADC, per instance config data
+
+.. _`stm32_adc_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct stm32_adc_info {
+        const struct stm32_adc_chan_spec *channels;
+        int max_channels;
+        const unsigned int *resolutions;
+        const unsigned int num_res;
+    }
+
+.. _`stm32_adc_info.members`:
+
+Members
+-------
+
+channels
+    Reference to stm32 channels spec
+
+max_channels
+    Number of channels
+
+resolutions
+    available resolutions
+
+num_res
+    number of available resolutions
 
 .. _`stm32_adc_readl`:
 
@@ -198,12 +291,12 @@ stm32_adc_conv_irq_disable
     :param struct stm32_adc \*adc:
         stm32 adc instance
 
-.. _`stm32_adc_start_conv`:
+.. _`stm32f4_adc_start_conv`:
 
-stm32_adc_start_conv
-====================
+stm32f4_adc_start_conv
+======================
 
-.. c:function:: void stm32_adc_start_conv(struct stm32_adc *adc, bool dma)
+.. c:function:: void stm32f4_adc_start_conv(struct stm32_adc *adc, bool dma)
 
     Start conversions for regular channels.
 
@@ -213,7 +306,7 @@ stm32_adc_start_conv
     :param bool dma:
         use dma to transfer conversion result
 
-.. _`stm32_adc_start_conv.description`:
+.. _`stm32f4_adc_start_conv.description`:
 
 Description
 -----------
@@ -222,6 +315,91 @@ Start conversions for regular channels.
 Also take care of normal or DMA mode. Circular DMA may be used for regular
 conversions, in IIO buffer modes. Otherwise, use ADC interrupt with direct
 DR read instead (e.g. read_raw, or triggered buffer mode without DMA).
+
+.. _`stm32h7_adc_read_selfcalib`:
+
+stm32h7_adc_read_selfcalib
+==========================
+
+.. c:function:: int stm32h7_adc_read_selfcalib(struct stm32_adc *adc)
+
+    read calibration shadow regs, save result
+
+    :param struct stm32_adc \*adc:
+        stm32 adc instance
+
+.. _`stm32h7_adc_restore_selfcalib`:
+
+stm32h7_adc_restore_selfcalib
+=============================
+
+.. c:function:: int stm32h7_adc_restore_selfcalib(struct stm32_adc *adc)
+
+    Restore saved self-calibration result
+
+    :param struct stm32_adc \*adc:
+        stm32 adc instance
+
+.. _`stm32h7_adc_restore_selfcalib.note`:
+
+Note
+----
+
+ADC must be enabled, with no on-going conversions.
+
+.. _`stm32h7_adc_calib_timeout_us`:
+
+STM32H7_ADC_CALIB_TIMEOUT_US
+============================
+
+.. c:function::  STM32H7_ADC_CALIB_TIMEOUT_US()
+
+.. _`stm32h7_adc_calib_timeout_us.worst-cases`:
+
+worst cases
+-----------
+
+- low clock frequency
+- maximum prescalers
+
+.. _`stm32h7_adc_calib_timeout_us.calibration-requires`:
+
+Calibration requires
+--------------------
+
+- 131,072 ADC clock cycle for the linear calibration
+- 20 ADC clock cycle for the offset calibration
+
+Set to 100ms for now
+
+.. _`stm32h7_adc_selfcalib`:
+
+stm32h7_adc_selfcalib
+=====================
+
+.. c:function:: int stm32h7_adc_selfcalib(struct stm32_adc *adc)
+
+    Procedure to calibrate ADC (from power down)
+
+    :param struct stm32_adc \*adc:
+        stm32 adc instance
+        Exit from power down, calibrate ADC, then return to power down.
+
+.. _`stm32h7_adc_prepare`:
+
+stm32h7_adc_prepare
+===================
+
+.. c:function:: int stm32h7_adc_prepare(struct stm32_adc *adc)
+
+    Leave power down mode to enable ADC.
+
+    :param struct stm32_adc \*adc:
+        stm32 adc instance
+        Leave power down mode.
+        Enable ADC.
+        Restore calibration data.
+        Pre-select channels that may be used in PCSEL (required by input MUX / IO).
 
 .. _`stm32_adc_conf_scan_seq`:
 
@@ -244,6 +422,7 @@ Description
 -----------
 
 Conversion sequence :
+Apply sampling time settings for all channels.
 Configure ADC scan sequence based on selected channels in scan_mask.
 Add channels to SQR registers, from scan_mask LSB to MSB, then
 program sequence len.
@@ -253,9 +432,12 @@ program sequence len.
 stm32_adc_get_trig_extsel
 =========================
 
-.. c:function:: int stm32_adc_get_trig_extsel(struct iio_trigger *trig)
+.. c:function:: int stm32_adc_get_trig_extsel(struct iio_dev *indio_dev, struct iio_trigger *trig)
 
     Get external trigger selection
+
+    :param struct iio_dev \*indio_dev:
+        *undescribed*
 
     :param struct iio_trigger \*trig:
         trigger
@@ -314,6 +496,7 @@ stm32_adc_single_conv
 The function performs a single conversion on a given channel
 ------------------------------------------------------------
 
+- Apply sampling time settings
 - Program sequencer with one channel (e.g. in SQ1 with len = 1)
 - Use SW trigger
 - Start conversion, then wait for interrupt completion.

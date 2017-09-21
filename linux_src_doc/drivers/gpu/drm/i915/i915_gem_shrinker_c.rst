@@ -6,7 +6,7 @@
 i915_gem_shrink
 ===============
 
-.. c:function:: unsigned long i915_gem_shrink(struct drm_i915_private *dev_priv, unsigned long target, unsigned flags)
+.. c:function:: unsigned long i915_gem_shrink(struct drm_i915_private *dev_priv, unsigned long target, unsigned long *nr_scanned, unsigned flags)
 
     Shrink buffer object caches
 
@@ -15,6 +15,9 @@ i915_gem_shrink
 
     :param unsigned long target:
         amount of memory to make available, in pages
+
+    :param unsigned long \*nr_scanned:
+        optional output for number of pages scanned (incremental)
 
     :param unsigned flags:
         control flags for selecting cache types

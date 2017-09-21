@@ -117,6 +117,58 @@ and modeset state change.
 For an implementation of how to use this look at
 \ :c:func:`drm_atomic_helper_setup_commit`\  from the atomic helper library.
 
+.. _`drm_private_state_funcs`:
+
+struct drm_private_state_funcs
+==============================
+
+.. c:type:: struct drm_private_state_funcs
+
+    atomic state functions for private objects
+
+.. _`drm_private_state_funcs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_private_state_funcs {
+        struct drm_private_state *(*atomic_duplicate_state)(struct drm_private_obj *obj);
+        void (*atomic_destroy_state)(struct drm_private_obj *obj, struct drm_private_state *state);
+    }
+
+.. _`drm_private_state_funcs.members`:
+
+Members
+-------
+
+atomic_duplicate_state
+
+    Duplicate the current state of the private object and return it. It
+    is an error to call this before obj->state has been initialized.
+
+    RETURNS:
+
+    Duplicated atomic state or NULL when obj->state is not
+    initialized or allocation failed.
+
+atomic_destroy_state
+
+    Frees the private object state created with \ ``atomic_duplicate_state``\ .
+
+.. _`drm_private_state_funcs.description`:
+
+Description
+-----------
+
+These hooks are used by atomic helpers to create, swap and destroy states of
+private objects. The structure itself is used as a vtable to identify the
+associated private object type. Each private object type that needs to be
+added to the atomic states is expected to have an implementation of these
+hooks and pass a pointer to it's drm_private_state_funcs struct to
+\ :c:func:`drm_atomic_get_private_obj_state`\ .
+
 .. _`drm_atomic_state`:
 
 struct drm_atomic_state
@@ -138,10 +190,13 @@ Definition
         struct drm_device *dev;
         bool allow_modeset:1;
         bool legacy_cursor_update:1;
+        bool async_update:1;
         struct __drm_planes_state *planes;
         struct __drm_crtcs_state *crtcs;
         int num_connector;
         struct __drm_connnectors_state *connectors;
+        int num_private_objs;
+        struct __drm_private_objs_state *private_objs;
         struct drm_modeset_acquire_ctx *acquire_ctx;
         struct work_struct commit_work;
     }
@@ -163,6 +218,9 @@ allow_modeset
 legacy_cursor_update
     hint to enforce legacy cursor IOCTL semantics
 
+async_update
+    hint for asynchronous plane update
+
 planes
     pointer to array of structures with per-plane data
 
@@ -174,6 +232,12 @@ num_connector
 
 connectors
     pointer to array of structures with per-connector data
+
+num_private_objs
+    size of the \ ``private_objs``\  array
+
+private_objs
+    pointer to array of private object pointers
 
 acquire_ctx
     acquire context for this atomic modeset state update
@@ -929,6 +993,99 @@ This iterates over all planes in an atomic update, tracking only the new
 state. This is useful in enable functions, where we need the new state the
 hardware should be in when the atomic commit operation has completed.
 
+.. _`for_each_oldnew_private_obj_in_state`:
+
+for_each_oldnew_private_obj_in_state
+====================================
+
+.. c:function::  for_each_oldnew_private_obj_in_state( __state,  obj,  old_obj_state,  new_obj_state,  __i)
+
+    iterate over all private objects in an atomic update
+
+    :param  __state:
+        &struct drm_atomic_state pointer
+
+    :param  obj:
+        &struct drm_private_obj iteration cursor
+
+    :param  old_obj_state:
+        &struct drm_private_state iteration cursor for the old state
+
+    :param  new_obj_state:
+        &struct drm_private_state iteration cursor for the new state
+
+    :param  __i:
+        int iteration cursor, for macro-internal use
+
+.. _`for_each_oldnew_private_obj_in_state.description`:
+
+Description
+-----------
+
+This iterates over all private objects in an atomic update, tracking both
+old and new state. This is useful in places where the state delta needs
+to be considered, for example in atomic check functions.
+
+.. _`for_each_old_private_obj_in_state`:
+
+for_each_old_private_obj_in_state
+=================================
+
+.. c:function::  for_each_old_private_obj_in_state( __state,  obj,  old_obj_state,  __i)
+
+    iterate over all private objects in an atomic update
+
+    :param  __state:
+        &struct drm_atomic_state pointer
+
+    :param  obj:
+        &struct drm_private_obj iteration cursor
+
+    :param  old_obj_state:
+        &struct drm_private_state iteration cursor for the old state
+
+    :param  __i:
+        int iteration cursor, for macro-internal use
+
+.. _`for_each_old_private_obj_in_state.description`:
+
+Description
+-----------
+
+This iterates over all private objects in an atomic update, tracking only
+the old state. This is useful in disable functions, where we need the old
+state the hardware is still in.
+
+.. _`for_each_new_private_obj_in_state`:
+
+for_each_new_private_obj_in_state
+=================================
+
+.. c:function::  for_each_new_private_obj_in_state( __state,  obj,  new_obj_state,  __i)
+
+    iterate over all private objects in an atomic update
+
+    :param  __state:
+        &struct drm_atomic_state pointer
+
+    :param  obj:
+        &struct drm_private_obj iteration cursor
+
+    :param  new_obj_state:
+        &struct drm_private_state iteration cursor for the new state
+
+    :param  __i:
+        int iteration cursor, for macro-internal use
+
+.. _`for_each_new_private_obj_in_state.description`:
+
+Description
+-----------
+
+This iterates over all private objects in an atomic update, tracking only
+the new state. This is useful in enable functions, where we need the new state the
+hardware should be in when the atomic commit operation has completed.
+
 .. _`drm_atomic_crtc_needs_modeset`:
 
 drm_atomic_crtc_needs_modeset
@@ -953,7 +1110,7 @@ To give drivers flexibility \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ 
 whether the state CRTC changed enough to need a full modeset cycle
 ------------------------------------------------------------------
 
-planes_changed, mode_changed and active_changed. This helper simply
+mode_changed, active_changed and connectors_changed. This helper simply
 combines these three to compute the overall need for a modeset for \ ``state``\ .
 
 The atomic helper code sets these booleans, but drivers can and should

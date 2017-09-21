@@ -54,13 +54,10 @@ efi_pstore_scan_sysfs_exit
 efi_pstore_sysfs_entry_iter
 ===========================
 
-.. c:function:: int efi_pstore_sysfs_entry_iter(struct pstore_record *record, struct efivar_entry **pos)
+.. c:function:: int efi_pstore_sysfs_entry_iter(struct pstore_record *record)
 
     :param struct pstore_record \*record:
         pstore record to pass to callback
-
-    :param struct efivar_entry \*\*pos:
-        entry to begin iterating from
 
 .. _`efi_pstore_sysfs_entry_iter.description`:
 
@@ -69,11 +66,6 @@ Description
 
 You MUST call \ :c:func:`efivar_enter_iter_begin`\  before this function, and
 \ :c:func:`efivar_entry_iter_end`\  afterwards.
-
-It is possible to begin iteration from an arbitrary entry within
-the list by passing \ ``pos``\ . \ ``pos``\  is updated on return to point to
-the next entry of the last one passed to \ :c:func:`efi_pstore_read_func`\ .
-To begin iterating from the beginning of the list \ ``pos``\  must be \ ``NULL``\ .
 
 .. _`efi_pstore_read`:
 

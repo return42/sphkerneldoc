@@ -26,7 +26,6 @@ Definition
         bool wm_aligned;
         struct scatterlist *sg;
         struct sg_mapping_iter sg_miter;
-        struct dw_mci_slot *cur_slot;
         struct mmc_request *mrq;
         struct mmc_command *cmd;
         struct mmc_data *data;
@@ -53,7 +52,6 @@ Definition
         struct list_head queue;
         u32 bus_hz;
         u32 current_speed;
-        u32 num_slots;
         u32 fifoth_val;
         u16 verid;
         struct device *dev;
@@ -62,7 +60,7 @@ Definition
         void *priv;
         struct clk *biu_clk;
         struct clk *ciu_clk;
-        struct dw_mci_slot  *slot;
+        struct dw_mci_slot *slot;
         int fifo_depth;
         int data_shift;
         u8 part_buf_start;
@@ -75,6 +73,7 @@ Definition
         int irq;
         int sdio_id0;
         struct timer_list cmd11_timer;
+        struct timer_list cto_timer;
         struct timer_list dto_timer;
     }
 
@@ -107,9 +106,6 @@ sg
 
 sg_miter
     PIO mapping scatterlist iterator.
-
-cur_slot
-    The slot which is currently using the controller.
 
 mrq
     The request currently being processed on \ ``cur_slot``\ ,
@@ -198,9 +194,6 @@ bus_hz
 current_speed
     Configured rate of the controller.
 
-num_slots
-    Number of slots available.
-
 fifoth_val
     The value of FIFOTH register.
 
@@ -265,6 +258,9 @@ sdio_id0
 cmd11_timer
     Timer for SD3.0 voltage switch over scheme.
 
+cto_timer
+    Timer for broken command transfer over scheme.
+
 dto_timer
     Timer for broken data transfer over scheme.
 
@@ -277,7 +273,6 @@ Locking
 =======
 
 \ ``lock``\  is a softirq-safe spinlock protecting \ ``queue``\  as well as
-\ ``cur_slot``\ , \ ``mrq``\  and \ ``state``\ . These must always be updated
 at the same time while holding \ ``lock``\ .
 
 \ ``irq_lock``\  is an irq-safe spinlock protecting the INTMASK register

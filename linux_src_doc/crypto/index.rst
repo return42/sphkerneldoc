@@ -10,6 +10,7 @@ crypto
     asymmetric_keys/index
     async_tx/index
     aes_generic_c
+    af_alg_c
     crypto_engine_c
     ecc_h
     jitterentropy_c

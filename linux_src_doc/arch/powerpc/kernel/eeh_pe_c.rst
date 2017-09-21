@@ -160,42 +160,23 @@ Description
 The function is used to traverse the devices of the specified
 PE and its child PEs.
 
-.. _`__eeh_pe_get`:
-
-__eeh_pe_get
-============
-
-.. c:function:: void *__eeh_pe_get(void *data, void *flag)
-
-    Check the PE address
-
-    :param void \*data:
-        EEH PE
-
-    :param void \*flag:
-        EEH device
-
-.. _`__eeh_pe_get.description`:
-
-Description
------------
-
-For one particular PE, it can be identified by PE address
-or tranditional BDF address. BDF address is composed of
-Bus/Device/Function number. The extra data referred by flag
-indicates which type of address should be used.
-
 .. _`eeh_pe_get`:
 
 eeh_pe_get
 ==========
 
-.. c:function:: struct eeh_pe *eeh_pe_get(struct eeh_dev *edev)
+.. c:function:: struct eeh_pe *eeh_pe_get(struct pci_controller *phb, int pe_no, int config_addr)
 
     Search PE based on the given address
 
-    :param struct eeh_dev \*edev:
-        EEH device
+    :param struct pci_controller \*phb:
+        PCI controller
+
+    :param int pe_no:
+        PE number
+
+    :param int config_addr:
+        Config address
 
 .. _`eeh_pe_get.description`:
 

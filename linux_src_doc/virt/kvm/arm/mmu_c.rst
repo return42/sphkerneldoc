@@ -236,9 +236,6 @@ Walks the level-1 page table pointed to by kvm->arch.pgd and frees all
 underlying level-2 and level-3 tables before freeing the actual level-1 table
 and setting the struct pointer to NULL.
 
-Note we don't need locking here as this is only called when the VM is
-destroyed, which can only be done once.
-
 .. _`kvm_phys_addr_ioremap`:
 
 kvm_phys_addr_ioremap

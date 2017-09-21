@@ -189,6 +189,7 @@ Definition
 .. code-block:: c
 
     struct ccp_xts_aes_engine {
+        enum ccp_aes_type type;
         enum ccp_aes_action action;
         enum ccp_xts_aes_unit_size unit_size;
         struct scatterlist *key;
@@ -205,6 +206,9 @@ Definition
 
 Members
 -------
+
+type
+    *undescribed*
 
 action
     AES operation (decrypt/encrypt)

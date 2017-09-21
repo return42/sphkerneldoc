@@ -103,6 +103,43 @@ Description
 
 This is a counter-part of \ :c:func:`snd_pcm_stream_lock_irqsave`\ .
 
+.. _`snd_pcm_hw_params_choose`:
+
+snd_pcm_hw_params_choose
+========================
+
+.. c:function:: int snd_pcm_hw_params_choose(struct snd_pcm_substream *pcm, struct snd_pcm_hw_params *params)
+
+    choose a configuration defined by \ ``params``\ 
+
+    :param struct snd_pcm_substream \*pcm:
+        PCM instance
+
+    :param struct snd_pcm_hw_params \*params:
+        the hw_params instance
+
+.. _`snd_pcm_hw_params_choose.description`:
+
+Description
+-----------
+
+Choose one configuration from configuration space defined by \ ``params``\ .
+
+.. _`snd_pcm_hw_params_choose.the-configuration-chosen-is-that-obtained-fixing-in-this-order`:
+
+The configuration chosen is that obtained fixing in this order
+--------------------------------------------------------------
+
+first access, first format, first subformat, min channels,
+min rate, min period time, max buffer size, min tick time
+
+.. _`snd_pcm_hw_params_choose.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 .. _`snd_pcm_start`:
 
 snd_pcm_start
@@ -121,6 +158,7 @@ Return
 ------
 
 Zero if successful, or a negative error code.
+The stream lock must be acquired before calling this function.
 
 .. _`snd_pcm_stop`:
 
@@ -279,6 +317,33 @@ Return
 ------
 
 Zero if successful, or a negative error code.
+
+.. _`snd_pcm_kernel_ioctl`:
+
+snd_pcm_kernel_ioctl
+====================
+
+.. c:function:: int snd_pcm_kernel_ioctl(struct snd_pcm_substream *substream, unsigned int cmd, void *arg)
+
+    Execute PCM ioctl in the kernel-space
+
+    :param struct snd_pcm_substream \*substream:
+        PCM substream
+
+    :param unsigned int cmd:
+        IOCTL cmd
+
+    :param void \*arg:
+        IOCTL argument
+
+.. _`snd_pcm_kernel_ioctl.description`:
+
+Description
+-----------
+
+The function is provided primarily for OSS layer and USB gadget drivers,
+and it allows only the limited set of ioctls (hw_params, sw_params,
+prepare, start, drain, drop, forward).
 
 .. _`snd_pcm_lib_default_mmap`:
 

@@ -81,6 +81,29 @@ Description
 
 Add a fence to the exclusive slot.  The obj->lock must be held.
 
+.. _`reservation_object_copy_fences`:
+
+reservation_object_copy_fences
+==============================
+
+.. c:function:: int reservation_object_copy_fences(struct reservation_object *dst, struct reservation_object *src)
+
+    Copy all fences from src to dst.
+
+    :param struct reservation_object \*dst:
+        the destination reservation object
+
+    :param struct reservation_object \*src:
+        the source reservation object
+
+.. _`reservation_object_copy_fences.description`:
+
+Description
+-----------
+
+Copy all fences from src to dst. Both src->lock as well as dst-lock must be
+held.
+
 .. _`reservation_object_get_fences_rcu`:
 
 reservation_object_get_fences_rcu

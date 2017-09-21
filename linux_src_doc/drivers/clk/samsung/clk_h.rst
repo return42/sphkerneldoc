@@ -19,8 +19,8 @@ Definition
 
     struct samsung_clk_provider {
         void __iomem *reg_base;
-        struct clk_onecell_data clk_data;
         spinlock_t lock;
+        struct clk_hw_onecell_data clk_data;
     }
 
 .. _`samsung_clk_provider.members`:
@@ -31,11 +31,11 @@ Members
 reg_base
     virtual address for the register base.
 
-clk_data
-    holds clock related data like clk\* and number of clocks.
-
 lock
     maintains exclusion between callbacks for a given clock-provider.
+
+clk_data
+    holds clock related data like clk_hw\* and number of clocks.
 
 .. _`samsung_clock_alias`:
 

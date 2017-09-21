@@ -236,7 +236,7 @@ with a counter.
 devlink_dpipe_table_register
 ============================
 
-.. c:function:: int devlink_dpipe_table_register(struct devlink *devlink, const char *table_name, struct devlink_dpipe_table_ops *table_ops, void *priv, u64 size, bool counter_control_extern)
+.. c:function:: int devlink_dpipe_table_register(struct devlink *devlink, const char *table_name, struct devlink_dpipe_table_ops *table_ops, void *priv, bool counter_control_extern)
 
     register dpipe table
 
@@ -251,9 +251,6 @@ devlink_dpipe_table_register
 
     :param void \*priv:
         priv
-
-    :param u64 size:
-        size
 
     :param bool counter_control_extern:
         external control for counters

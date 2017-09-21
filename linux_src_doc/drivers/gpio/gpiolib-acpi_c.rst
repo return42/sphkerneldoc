@@ -11,7 +11,7 @@ acpi_gpiochip_pin_to_gpio_offset
     translates ACPI GPIO to Linux GPIO
 
     :param struct gpio_device \*gdev:
-        *undescribed*
+        GPIO device
 
     :param int pin:
         ACPI GPIO pin number from GpioIo/GpioInt resource
@@ -198,12 +198,15 @@ If the device has one or more GpioInt resources, this function can be
 used to translate from the GPIO offset in the resource to the Linux IRQ
 number.
 
+The function is idempotent, though each time it runs it will configure GPIO
+pin direction according to the flags in GpioInt resource.
+
 .. _`acpi_dev_gpio_irq_get.return`:
 
 Return
 ------
 
-Linux IRQ number (>%0) on success, negative errno on failure.
+Linux IRQ number (> \ ``0``\ ) on success, negative errno on failure.
 
 .. _`acpi_gpio_count`:
 

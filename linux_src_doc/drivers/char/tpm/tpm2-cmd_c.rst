@@ -279,29 +279,6 @@ Return
 
 Same as with tpm_transmit_cmd.
 
-.. _`tpm2_startup`:
-
-tpm2_startup
-============
-
-.. c:function:: int tpm2_startup(struct tpm_chip *chip, u16 startup_type)
-
-    send startup command to the TPM chip
-
-    :param struct tpm_chip \*chip:
-        TPM chip to use.
-
-    :param u16 startup_type:
-        startup type. The value is either
-        TPM_SU_CLEAR or TPM_SU_STATE.
-
-.. _`tpm2_startup.return`:
-
-Return
-------
-
-Same as with tpm_transmit_cmd.
-
 .. _`tpm2_shutdown`:
 
 tpm2_shutdown

@@ -144,6 +144,30 @@ Return
 
 %0 else error code if error or permission denied
 
+.. _`apparmor_bprm_committing_creds`:
+
+apparmor_bprm_committing_creds
+==============================
+
+.. c:function:: void apparmor_bprm_committing_creds(struct linux_binprm *bprm)
+
+    do task cleanup on committing new creds
+
+    :param struct linux_binprm \*bprm:
+        binprm for the exec  (NOT NULL)
+
+.. _`apparmor_bprm_committed_creds`:
+
+apparmor_bprm_committed_creds
+=============================
+
+.. c:function:: void apparmor_bprm_committed_creds(struct linux_binprm *bprm)
+
+    do cleanup after new creds committed
+
+    :param struct linux_binprm \*bprm:
+        binprm for the exec  (NOT NULL)
+
 .. _`set_init_ctx`:
 
 set_init_ctx

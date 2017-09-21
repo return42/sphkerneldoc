@@ -194,6 +194,7 @@ Definition
         const struct msm_pingroup *groups;
         unsigned ngroups;
         unsigned ngpios;
+        bool pull_no_keeper;
     }
 
 .. _`msm_pinctrl_soc_data.members`:
@@ -221,6 +222,9 @@ ngroups
 
 ngpios
     *undescribed*
+
+pull_no_keeper
+    The SoC does not support keeper bias.
 
 .. This file was automatic generated / don't edit.
 

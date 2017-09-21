@@ -64,9 +64,9 @@ Returns 0 on success or a negative mlx4_core errno code.
 mlx4_ALLOCATE_VPP_get
 =====================
 
-.. c:function:: int mlx4_ALLOCATE_VPP_get(struct mlx4_dev *dev, u8 port, u16 *availible_vpp, u8 *vpp_p_up)
+.. c:function:: int mlx4_ALLOCATE_VPP_get(struct mlx4_dev *dev, u8 port, u16 *available_vpp, u8 *vpp_p_up)
 
-    Query port VPP availible resources and allocation. Before distribution of VPPs to priorities, only availible_vpp is returned. After initialization it returns the distribution of VPPs among priorities.
+    Query port VPP available resources and allocation. Before distribution of VPPs to priorities, only available_vpp is returned. After initialization it returns the distribution of VPPs among priorities.
 
     :param struct mlx4_dev \*dev:
         mlx4_dev.
@@ -74,8 +74,8 @@ mlx4_ALLOCATE_VPP_get
     :param u8 port:
         Physical port number.
 
-    :param u16 \*availible_vpp:
-        Pointer to variable where number of availible VPPs is stored
+    :param u16 \*available_vpp:
+        Pointer to variable where number of available VPPs is stored
 
     :param u8 \*vpp_p_up:
         Distribution of VPPs to priorities is stored in this array
@@ -94,7 +94,7 @@ mlx4_ALLOCATE_VPP_set
 
 .. c:function:: int mlx4_ALLOCATE_VPP_set(struct mlx4_dev *dev, u8 port, u8 *vpp_p_up)
 
-    Distribution of VPPs among differnt priorities. The total number of VPPs assigned to all for a port must not exceed the value reported by availible_vpp in mlx4_ALLOCATE_VPP_get. VPP allocation is allowed only after the port type has been set, and while no QPs are open for this port.
+    Distribution of VPPs among differnt priorities. The total number of VPPs assigned to all for a port must not exceed the value reported by available_vpp in mlx4_ALLOCATE_VPP_get. VPP allocation is allowed only after the port type has been set, and while no QPs are open for this port.
 
     :param struct mlx4_dev \*dev:
         mlx4_dev.

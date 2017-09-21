@@ -146,11 +146,15 @@ Definition
         const struct irq_domain_ops *ops;
         void *host_data;
         unsigned int flags;
+        unsigned int mapcount;
         struct fwnode_handle *fwnode;
         enum irq_domain_bus_token bus_token;
         struct irq_domain_chip_generic *gc;
     #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
         struct irq_domain *parent;
+    #endif
+    #ifdef CONFIG_GENERIC_IRQ_DEBUGFS
+        struct dentry *debugfs_file;
     #endif
         irq_hw_number_t hwirq_max;
         unsigned int revmap_direct_max_irq;
@@ -180,6 +184,9 @@ host_data
 flags
     host per irq_domain flags
 
+mapcount
+    The number of mapped interrupts
+
 fwnode
     *undescribed*
 
@@ -193,6 +200,9 @@ gc
 
 parent
     Pointer to parent irq_domain to support hierarchy irq_domains
+
+debugfs_file
+    dentry for the domain debugfs file
 
 hwirq_max
     *undescribed*

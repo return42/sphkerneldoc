@@ -100,7 +100,7 @@ Definition
         int (*set_secret)(struct crypto_kpp *tfm, const void *buffer, unsigned int len);
         int (*generate_public_key)(struct kpp_request *req);
         int (*compute_shared_secret)(struct kpp_request *req);
-        int (*max_size)(struct crypto_kpp *tfm);
+        unsigned int (*max_size)(struct crypto_kpp *tfm);
         int (*init)(struct crypto_kpp *tfm);
         void (*exit)(struct crypto_kpp *tfm);
         unsigned int reqsize;
@@ -115,7 +115,7 @@ Members
 set_secret
     Function invokes the protocol specific function to
     store the secret private key along with parameters.
-    The implementation knows how to decode thie buffer
+    The implementation knows how to decode the buffer
 
 generate_public_key
     Function generate the public key to be sent to the
@@ -180,7 +180,7 @@ Description
 -----------
 
 Allocate a handle for kpp algorithm. The returned struct crypto_kpp
-is requeried for any following API invocation
+is required for any following API invocation
 
 .. _`crypto_alloc_kpp.return`:
 
@@ -446,7 +446,7 @@ zero on success; error code in case of error
 crypto_kpp_maxsize
 ==================
 
-.. c:function:: int crypto_kpp_maxsize(struct crypto_kpp *tfm)
+.. c:function:: unsigned int crypto_kpp_maxsize(struct crypto_kpp *tfm)
 
     Get len for output buffer
 
@@ -458,14 +458,10 @@ crypto_kpp_maxsize
 Description
 -----------
 
-Function returns the output buffer size required
-
-.. _`crypto_kpp_maxsize.return`:
-
-Return
-------
-
-minimum len for output buffer or error code if key hasn't been set
+Function returns the output buffer size required for a given key.
+Function assumes that the key is already set in the transformation. If this
+function is called without a setkey or with a failed setkey, you will end up
+in a NULL dereference.
 
 .. This file was automatic generated / don't edit.
 

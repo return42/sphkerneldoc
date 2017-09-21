@@ -244,12 +244,12 @@ queue the given record and attempt to resend.
 auditd_reset
 ============
 
-.. c:function:: void auditd_reset( void)
+.. c:function:: void auditd_reset(const struct auditd_connection *ac)
 
     Disconnect the auditd connection
 
-    :param  void:
-        no arguments
+    :param const struct auditd_connection \*ac:
+        auditd connection state
 
 .. _`auditd_reset.description`:
 
@@ -257,7 +257,10 @@ Description
 -----------
 
 Break the auditd/kauditd connection and move all the queued records into the
-hold queue in case auditd reconnects.
+hold queue in case auditd reconnects.  It is important to note that the \ ``ac``\ 
+pointer should never be dereferenced inside this function as it may be NULL
+or invalid, you can only compare the memory address!  If \ ``ac``\  is NULL then
+the connection will always be reset.
 
 .. _`auditd_send_unicast_skb`:
 

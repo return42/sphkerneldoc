@@ -54,15 +54,6 @@ cgroup_task_count
     :param const struct cgroup \*cgrp:
         the cgroup in question
 
-.. _`cgroup_task_count.description`:
-
-Description
------------
-
-Return the number of tasks in the cgroup.  The returned number can be
-higher than the actual number of tasks due to css_set references from
-namespace roots and temporary usages.
-
 .. _`cgroupstats_build`:
 
 cgroupstats_build

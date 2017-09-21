@@ -22,7 +22,6 @@ Definition
         int min_signal;
         int max_signal;
         u32 muxval;
-        u32 cctl_memcpy;
         dma_addr_t addr;
         bool single;
         u8 periph_buses;
@@ -53,10 +52,6 @@ max_signal
 muxval
     a number usually used to poke into some mux regiser to
     mux in the signal to this channel
-
-cctl_memcpy
-    options for the channel control register for memcpy
-    \*\*\* not used for slave channels \*\*\*
 
 addr
     source/target address in physical memory for this DMA channel,
@@ -91,7 +86,10 @@ Definition
     struct pl08x_platform_data {
         struct pl08x_channel_data *slave_channels;
         unsigned int num_slave_channels;
-        struct pl08x_channel_data memcpy_channel;
+        enum pl08x_burst_size memcpy_burst_size;
+        enum pl08x_bus_width memcpy_bus_width;
+        bool memcpy_prot_buff;
+        bool memcpy_prot_cache;
         int (*get_xfer_signal)(const struct pl08x_channel_data *);
         void (*put_xfer_signal)(const struct pl08x_channel_data *, int);
         u8 lli_buses;
@@ -112,10 +110,19 @@ slave_channels
     requested, just enumerate all possible channels.
 
 num_slave_channels
-    *undescribed*
+    number of elements in the slave channel array
 
-memcpy_channel
-    *undescribed*
+memcpy_burst_size
+    the appropriate burst size for memcpy operations
+
+memcpy_bus_width
+    memory bus width
+
+memcpy_prot_buff
+    whether memcpy DMA is bufferable
+
+memcpy_prot_cache
+    whether memcpy DMA is cacheable
 
 get_xfer_signal
     request a physical signal to be used for a DMA transfer

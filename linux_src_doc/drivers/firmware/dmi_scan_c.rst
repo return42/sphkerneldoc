@@ -228,7 +228,8 @@ dmi_walk
 Description
 -----------
 
-     Returns -1 when the DMI table can't be reached, 0 on success.
+     Returns 0 on success, -ENXIO if DMI is not selected or not present,
+     or a different negative error code if DMI walking fails.
 
 .. _`dmi_match`:
 

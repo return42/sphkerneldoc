@@ -151,16 +151,7 @@ station to which they were sent. We do that when we disassociate and before
 we remove the STA of the AP. The flush can be done synchronously against the
 fw.
 Drain means that the fw will drop all the frames sent to a specific station.
-This is useful when a client (if we are IBSS / GO or AP) disassociates. In
-that case, we need to drain all the frames for that client from the AC queues
-that are shared with the other clients. Only then, we can remove the STA in
-the fw. In order to do so, we track the non-AMPDU packets for each station.
-If mac80211 removes a STA and if it still has non-AMPDU packets pending in
-the queues, we mark this station as \ ``EBUSY``\  in \ ``fw_id_to_mac_id``\ , and drop all
-the frames for this STA (%iwl_mvm_rm_sta). When the last frame is dropped
-(we know about it with its Tx response), we remove the station in fw and set
-it as \ ``NULL``\  in \ ``fw_id_to_mac_id``\ : this is the purpose of
-\ ``iwl_mvm_sta_drained_wk``\ .
+This is useful when a client (if we are IBSS / GO or AP) disassociates.
 
 .. _`station-table---fw-restart`:
 
@@ -287,12 +278,16 @@ Definition
         u16 seq_number;
         u16 next_reclaimed;
         u32 rate_n_flags;
+        u8 lq_color;
         bool amsdu_in_ampdu_allowed;
         enum iwl_mvm_agg_state state;
         u16 txq_id;
         u16 ssn;
         u16 tx_time;
         bool is_tid_active;
+        unsigned long tpt_meas_start;
+        u32 tx_count_last;
+        u32 tx_count;
     }
 
 .. _`iwl_mvm_tid_data.members`:
@@ -313,6 +308,9 @@ next_reclaimed
 rate_n_flags
     Rate at which Tx was attempted. Holds the data between the
     Tx response (TX_CMD), and the block ack notification (COMPRESSED_BA).
+
+lq_color
+    the color of the LQ command as it appears in tx response.
 
 amsdu_in_ampdu_allowed
     true if A-MSDU in A-MPDU is allowed.
@@ -336,6 +334,16 @@ is_tid_active
     has this TID sent traffic in the last
     \ ``IWL_MVM_DQA_QUEUE_TIMEOUT``\  time period. If \ ``txq_id``\  is invalid, this
     field should be ignored.
+
+tpt_meas_start
+    time of the throughput measurements start, is reset every HZ
+
+tx_count_last
+    number of frames transmitted during the last second
+
+tx_count
+    counts the number of frames transmitted since the last reset of
+    tpt_meas_start
 
 .. _`iwl_mvm_rxq_dup_data`:
 
@@ -388,7 +396,6 @@ Definition
     struct iwl_mvm_sta {
         u32 sta_id;
         u32 tfd_queue_msk;
-        u8 hw_queue;
         u32 mac_id_n_color;
         u16 tid_disable_agg;
         u8 max_agg_bufsize;
@@ -425,9 +432,6 @@ sta_id
 
 tfd_queue_msk
     the tfd queues used by the station
-
-hw_queue
-    per-AC mapping of the TFD queues used by station
 
 mac_id_n_color
     the MAC context this station is linked to

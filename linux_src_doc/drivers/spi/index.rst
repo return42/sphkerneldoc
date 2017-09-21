@@ -18,6 +18,7 @@ spi
     spi-pl022_c
     spi-s3c24xx_c
     spi-s3c64xx_c
+    spi-stm32_c
     spi-test_h
     spi-topcliff-pch_c
     spi-zynqmp-gqspi_c

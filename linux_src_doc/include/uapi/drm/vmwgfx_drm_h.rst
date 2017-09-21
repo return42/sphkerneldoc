@@ -268,7 +268,7 @@ Definition
         __u32 mask;
         __u32 seqno;
         __u32 passed_seqno;
-        __u32 pad64;
+        __s32 fd;
         __s32 error;
     }
 
@@ -295,8 +295,8 @@ passed_seqno
     so far. This can be used to mark user-space fence objects as signaled, and
     to determine whether a fence seqno might be stale.
 
-pad64
-    *undescribed*
+fd
+    FD associated with the fence, -1 if not exported
 
 error
     This member should've been set to -EFAULT on submission.

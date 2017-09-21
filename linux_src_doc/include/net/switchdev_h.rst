@@ -22,7 +22,6 @@ Definition
         int (*switchdev_port_attr_set)(struct net_device *dev,const struct switchdev_attr *attr, struct switchdev_trans *trans);
         int (*switchdev_port_obj_add)(struct net_device *dev,const struct switchdev_obj *obj, struct switchdev_trans *trans);
         int (*switchdev_port_obj_del)(struct net_device *dev, const struct switchdev_obj *obj);
-        int (*switchdev_port_obj_dump)(struct net_device *dev,struct switchdev_obj *obj, switchdev_obj_dump_cb_t *cb);
     }
 
 .. _`switchdev_ops.members`:
@@ -41,9 +40,6 @@ switchdev_port_obj_add
 
 switchdev_port_obj_del
     Delete an object from port (see switchdev_obj\_\*).
-
-switchdev_port_obj_dump
-    Dump port objects (see switchdev_obj\_\*).
 
 .. This file was automatic generated / don't edit.
 

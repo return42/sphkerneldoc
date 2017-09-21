@@ -22,5 +22,6 @@ of
     of_reserved_mem_c
     overlay_c
     platform_c
+    property_c
     resolver_c
     unittest_c

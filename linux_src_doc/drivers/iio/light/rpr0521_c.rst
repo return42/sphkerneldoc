@@ -24,11 +24,8 @@ rpr0521_set_power_state
 Description
 -----------
 
-We rely on rpr0521_runtime_resume to enable our \ ``device_mask``\  devices, but
-if (for example) PXS was enabled (pxs_dev_en = true) by a previous call to
-rpr0521_runtime_resume and we want to enable ALS we MUST set ALS enable
-bit of RPR0521_REG_MODE_CTRL here because rpr0521_runtime_resume will not
-be called twice.
+Calls for this function must be balanced so that each ON should have matching
+OFF. Otherwise pm usage_count gets out of sync.
 
 .. This file was automatic generated / don't edit.
 

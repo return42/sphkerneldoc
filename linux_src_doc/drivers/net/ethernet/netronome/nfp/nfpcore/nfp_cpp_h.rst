@@ -245,6 +245,25 @@ Return
 
 NFP Interface ID's channel
 
+.. _`nfp_cppcore_pcie_unit`:
+
+nfp_cppcore_pcie_unit
+=====================
+
+.. c:function:: u8 nfp_cppcore_pcie_unit(struct nfp_cpp *cpp)
+
+    Get PCI Unit of a CPP handle
+
+    :param struct nfp_cpp \*cpp:
+        CPP handle
+
+.. _`nfp_cppcore_pcie_unit.return`:
+
+Return
+------
+
+PCI unit for the NFP CPP handle
+
 .. _`nfp_cpp_operations`:
 
 struct nfp_cpp_operations

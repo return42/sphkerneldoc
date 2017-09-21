@@ -7,5 +7,5 @@ light
 .. toctree::
     :maxdepth: 1
 
-    tsl2x7x_core_c
+    tsl2x7x_c
     tsl2x7x_h

@@ -1,6 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c
 
+.. _`amdgpu_gart_set_defaults`:
+
+amdgpu_gart_set_defaults
+========================
+
+.. c:function:: void amdgpu_gart_set_defaults(struct amdgpu_device *adev)
+
+    set the default gart_size
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`amdgpu_gart_set_defaults.description`:
+
+Description
+-----------
+
+Set the default gart_size based on parameters and available VRAM.
+
 .. _`amdgpu_gart_table_ram_alloc`:
 
 amdgpu_gart_table_ram_alloc
@@ -134,7 +153,7 @@ be in video memory.
 amdgpu_gart_unbind
 ==================
 
-.. c:function:: void amdgpu_gart_unbind(struct amdgpu_device *adev, uint64_t offset, int pages)
+.. c:function:: int amdgpu_gart_unbind(struct amdgpu_device *adev, uint64_t offset, int pages)
 
     unbind pages from the gart page table
 
@@ -154,6 +173,42 @@ Description
 
 Unbinds the requested pages from the gart page table and
 replaces them with the dummy page (all asics).
+Returns 0 for success, -EINVAL for failure.
+
+.. _`amdgpu_gart_map`:
+
+amdgpu_gart_map
+===============
+
+.. c:function:: int amdgpu_gart_map(struct amdgpu_device *adev, uint64_t offset, int pages, dma_addr_t *dma_addr, uint64_t flags, void *dst)
+
+    map dma_addresses into GART entries
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param uint64_t offset:
+        offset into the GPU's gart aperture
+
+    :param int pages:
+        number of pages to bind
+
+    :param dma_addr_t \*dma_addr:
+        DMA addresses of pages
+
+    :param uint64_t flags:
+        *undescribed*
+
+    :param void \*dst:
+        *undescribed*
+
+.. _`amdgpu_gart_map.description`:
+
+Description
+-----------
+
+Map the dma_addresses into GART entries (all asics).
+Returns 0 for success, -EINVAL for failure.
 
 .. _`amdgpu_gart_bind`:
 

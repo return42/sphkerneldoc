@@ -133,6 +133,33 @@ drivers to ensure correct lifetime management of the underlying GEM object.
 The actual exporting from GEM object to a dma-buf is done through the
 gem_prime_export driver callback.
 
+.. _`drm_gem_prime_import_dev`:
+
+drm_gem_prime_import_dev
+========================
+
+.. c:function:: struct drm_gem_object *drm_gem_prime_import_dev(struct drm_device *dev, struct dma_buf *dma_buf, struct device *attach_dev)
+
+    core implementation of the import callback
+
+    :param struct drm_device \*dev:
+        drm_device to import into
+
+    :param struct dma_buf \*dma_buf:
+        dma-buf object to import
+
+    :param struct device \*attach_dev:
+        struct device to dma_buf attach
+
+.. _`drm_gem_prime_import_dev.description`:
+
+Description
+-----------
+
+This is the core of drm_gem_prime_import. It's designed to be called by
+drivers who want to use a different device structure than dev->dev for
+attaching via dma_buf.
+
 .. _`drm_gem_prime_import`:
 
 drm_gem_prime_import

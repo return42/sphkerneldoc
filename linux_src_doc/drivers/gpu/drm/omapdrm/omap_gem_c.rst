@@ -82,17 +82,55 @@ Description
 Do the necessary setup to allow the mapping of the frame buffer
 into user memory. We don't have to do much here at the moment.
 
-.. _`is_cached_coherent`:
+.. _`omap_gem_pin`:
 
-is_cached_coherent
-==================
+omap_gem_pin
+============
 
-.. c:function:: bool is_cached_coherent(struct drm_gem_object *obj)
+.. c:function:: int omap_gem_pin(struct drm_gem_object *obj, dma_addr_t *dma_addr)
 
-    page faulting to keep track of dirty pages
+    Pin a GEM object in memory
 
     :param struct drm_gem_object \*obj:
-        *undescribed*
+        the GEM object
+
+    :param dma_addr_t \*dma_addr:
+        the DMA address
+
+.. _`omap_gem_pin.description`:
+
+Description
+-----------
+
+Pin the given GEM object in memory and fill the dma_addr pointer with the
+object's DMA address. If the buffer is not physically contiguous it will be
+remapped through the TILER to provide a contiguous view.
+
+Pins are reference-counted, calling this function multiple times is allowed
+as long the corresponding \ :c:func:`omap_gem_unpin`\  calls are balanced.
+
+Return 0 on success or a negative error code otherwise.
+
+.. _`omap_gem_unpin`:
+
+omap_gem_unpin
+==============
+
+.. c:function:: void omap_gem_unpin(struct drm_gem_object *obj)
+
+    Unpin a GEM object from memory
+
+    :param struct drm_gem_object \*obj:
+        the GEM object
+
+.. _`omap_gem_unpin.description`:
+
+Description
+-----------
+
+Unpin the given GEM object previously pinned with \ :c:func:`omap_gem_pin`\ . Pins are
+reference-counted, the actualy unpin will only be performed when the number
+of calls to this function matches the number of calls to \ :c:func:`omap_gem_pin`\ .
 
 .. This file was automatic generated / don't edit.
 

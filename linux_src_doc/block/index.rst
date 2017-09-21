@@ -25,6 +25,7 @@ block
     blk-map_c
     blk-merge_c
     blk-mq-pci_c
+    blk-mq-rdma_c
     blk-mq-sched_c
     blk-mq-tag_c
     blk-mq-virtio_c

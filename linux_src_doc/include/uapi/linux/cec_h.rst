@@ -358,7 +358,7 @@ struct cec_event_lost_msgs
 
 .. c:type:: struct cec_event_lost_msgs
 
-    tells you how many messages were lost due.
+    tells you how many messages were lost.
 
 .. _`cec_event_lost_msgs.definition`:
 

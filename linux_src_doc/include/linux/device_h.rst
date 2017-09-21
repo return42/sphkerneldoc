@@ -21,7 +21,6 @@ Definition
         const char *name;
         const char *dev_name;
         struct device *dev_root;
-        struct device_attribute *dev_attrs;
         const struct attribute_group **bus_groups;
         const struct attribute_group **dev_groups;
         const struct attribute_group **drv_groups;
@@ -54,9 +53,6 @@ dev_name
 
 dev_root
     Default device to use as the parent.
-
-dev_attrs
-    Default attributes of the devices on the bus.
 
 bus_groups
     Default attributes of the bus.
@@ -368,7 +364,6 @@ Definition
     struct class {
         const char *name;
         struct module *owner;
-        struct class_attribute *class_attrs;
         const struct attribute_group **class_groups;
         const struct attribute_group **dev_groups;
         struct kobject *dev_kobj;
@@ -378,6 +373,7 @@ Definition
         void (*dev_release)(struct device *dev);
         int (*suspend)(struct device *dev, pm_message_t state);
         int (*resume)(struct device *dev);
+        int (*shutdown_pre)(struct device *dev);
         const struct kobj_ns_type_operations *ns_type;
         const void *(*namespace)(struct device *dev);
         const struct dev_pm_ops *pm;
@@ -394,9 +390,6 @@ name
 
 owner
     The module owner.
-
-class_attrs
-    Default attributes of this class.
 
 class_groups
     Default attributes of this class.
@@ -427,6 +420,9 @@ suspend
 
 resume
     Used to bring the device from the sleep mode.
+
+shutdown_pre
+    Called at shut-down time before driver shutdown.
 
 ns_type
     Callbacks so sysfs can detemine namespaces.
@@ -731,6 +727,7 @@ Definition
         struct iommu_fwspec *iommu_fwspec;
         bool offline_disabled:1;
         bool offline:1;
+        bool of_node_reused:1;
     }
 
 .. _`device.members`:
@@ -798,7 +795,7 @@ msi_domain
 
 pins
     For device pin management.
-    See Documentation/pinctrl.txt for details.
+    See Documentation/driver-api/pinctl.rst for details.
 
 msi_list
     Hosts MSI descriptors
@@ -807,7 +804,7 @@ numa_node
     NUMA node this device is close to.
 
 dma_ops
-    *undescribed*
+    DMA mapping operations for this device.
 
 dma_mask
     Dma mask (if dma'ble device).
@@ -879,6 +876,10 @@ offline_disabled
 
 offline
     Set after successful invocation of bus type's .offline().
+
+of_node_reused
+    Set if the device-tree node is shared with an ancestor
+    device.
 
 .. _`device.description`:
 

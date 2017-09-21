@@ -7,7 +7,6 @@ include
 .. toctree::
     :maxdepth: 1
 
-    lustre/index
     cl_object_h
     lu_object_h
     lustre_dlm_flags_h

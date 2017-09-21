@@ -63,6 +63,24 @@ This structure represents a cec-related device node.
 The \ ``parent``\  is a physical device. It must be set by core or device drivers
 before registering the node.
 
+.. _`cec_queue_pin_cec_event`:
+
+cec_queue_pin_cec_event
+=======================
+
+.. c:function:: void cec_queue_pin_cec_event(struct cec_adapter *adap, bool is_high, ktime_t ts)
+
+    queue a CEC pin event with a given timestamp.
+
+    :param struct cec_adapter \*adap:
+        pointer to the cec adapter
+
+    :param bool is_high:
+        when true the CEC pin is high, otherwise it is low
+
+    :param ktime_t ts:
+        the timestamp for this event
+
 .. _`cec_get_edid_phys_addr`:
 
 cec_get_edid_phys_addr
@@ -200,6 +218,26 @@ Return
 ------
 
 0 if the PA is valid, -EINVAL if not.
+
+.. _`cec_phys_addr_invalidate`:
+
+cec_phys_addr_invalidate
+========================
+
+.. c:function:: void cec_phys_addr_invalidate(struct cec_adapter *adap)
+
+    set the physical address to INVALID
+
+    :param struct cec_adapter \*adap:
+        the CEC adapter
+
+.. _`cec_phys_addr_invalidate.description`:
+
+Description
+-----------
+
+This is a simple helper function to invalidate the physical
+address.
 
 .. This file was automatic generated / don't edit.
 

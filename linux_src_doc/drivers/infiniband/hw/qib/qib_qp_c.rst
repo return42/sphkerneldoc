@@ -40,5 +40,20 @@ setup.
 
 Returns 1 to force direct progress, 0 otherwise, -EINVAL on failure
 
+.. _`qib_qp_iter_print`:
+
+qib_qp_iter_print
+=================
+
+.. c:function:: void qib_qp_iter_print(struct seq_file *s, struct rvt_qp_iter *iter)
+
+    print information to seq_file \ ``s``\  - the seq_file \ ``iter``\  - the iterator
+
+    :param struct seq_file \*s:
+        *undescribed*
+
+    :param struct rvt_qp_iter \*iter:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

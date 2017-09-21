@@ -167,7 +167,35 @@ i40e_read_nvm_word_aq
 Description
 -----------
 
-Reads one 16 bit word from the Shadow RAM using the GLNVM_SRCTL register.
+Reads one 16 bit word from the Shadow RAM using the AdminQ
+
+.. _`__i40e_read_nvm_word`:
+
+__i40e_read_nvm_word
+====================
+
+.. c:function:: i40e_status __i40e_read_nvm_word(struct i40e_hw *hw, u16 offset, u16 *data)
+
+    Reads nvm word, assumes called does the locking
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+
+    :param u16 \*data:
+        word read from the Shadow RAM
+
+.. _`__i40e_read_nvm_word.description`:
+
+Description
+-----------
+
+Reads one 16 bit word from the Shadow RAM.
+
+Do not use this function except in cases where the nvm lock is already
+taken via \ :c:func:`i40e_acquire_nvm`\ .
 
 .. _`i40e_read_nvm_word`:
 
@@ -176,7 +204,7 @@ i40e_read_nvm_word
 
 .. c:function:: i40e_status i40e_read_nvm_word(struct i40e_hw *hw, u16 offset, u16 *data)
 
-    Reads Shadow RAM
+    Reads nvm word and acquire lock if necessary
 
     :param struct i40e_hw \*hw:
         pointer to the HW structure
@@ -192,7 +220,7 @@ i40e_read_nvm_word
 Description
 -----------
 
-Reads one 16 bit word from the Shadow RAM using the GLNVM_SRCTL register.
+Reads one 16 bit word from the Shadow RAM.
 
 .. _`i40e_read_nvm_buffer_srctl`:
 
@@ -254,14 +282,14 @@ Reads 16 bit words (data buffer) from the SR using the \ :c:func:`i40e_read_nvm_
 method. The buffer read is preceded by the NVM ownership take
 and followed by the release.
 
-.. _`i40e_read_nvm_buffer`:
+.. _`__i40e_read_nvm_buffer`:
 
-i40e_read_nvm_buffer
-====================
+__i40e_read_nvm_buffer
+======================
 
-.. c:function:: i40e_status i40e_read_nvm_buffer(struct i40e_hw *hw, u16 offset, u16 *words, u16 *data)
+.. c:function:: i40e_status __i40e_read_nvm_buffer(struct i40e_hw *hw, u16 offset, u16 *words, u16 *data)
 
-    Reads Shadow RAM buffer
+    Reads nvm buffer, caller must acquire lock
 
     :param struct i40e_hw \*hw:
         pointer to the HW structure
@@ -275,14 +303,13 @@ i40e_read_nvm_buffer
     :param u16 \*data:
         words read from the Shadow RAM
 
-.. _`i40e_read_nvm_buffer.description`:
+.. _`__i40e_read_nvm_buffer.description`:
 
 Description
 -----------
 
 Reads 16 bit words (data buffer) from the SR using the \ :c:func:`i40e_read_nvm_srrd`\ 
-method. The buffer read is preceded by the NVM ownership take
-and followed by the release.
+method.
 
 .. _`i40e_write_nvm_aq`:
 

@@ -82,6 +82,42 @@ band
     band to which selection preference applies.
     This is used if \ ``type``\  is BAND or RSSI_DELTA.
 
+.. _`brcmf_wsec_pmk_le`:
+
+struct brcmf_wsec_pmk_le
+========================
+
+.. c:type:: struct brcmf_wsec_pmk_le
+
+    firmware pmk material.
+
+.. _`brcmf_wsec_pmk_le.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_wsec_pmk_le {
+        __le16 key_len;
+        __le16 flags;
+        u8 key;
+    }
+
+.. _`brcmf_wsec_pmk_le.members`:
+
+Members
+-------
+
+key_len
+    number of octets in key material.
+
+flags
+    key handling qualifiers.
+
+key
+    PMK key material.
+
 .. _`brcmf_fil_wowl_pattern_le`:
 
 struct brcmf_fil_wowl_pattern_le
@@ -676,6 +712,38 @@ flags
 mac
     MAC address.
 
+.. _`brcmf_pno_bssid_le`:
+
+struct brcmf_pno_bssid_le
+=========================
+
+.. c:type:: struct brcmf_pno_bssid_le
+
+    bssid configuration for PNO scan.
+
+.. _`brcmf_pno_bssid_le.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_pno_bssid_le {
+        u8 bssid;
+        __le16 flags;
+    }
+
+.. _`brcmf_pno_bssid_le.members`:
+
+Members
+-------
+
+bssid
+    BSS network identifier.
+
+flags
+    flags for this BSSID.
+
 .. _`brcmf_pktcnt_le`:
 
 struct brcmf_pktcnt_le
@@ -755,6 +823,153 @@ kek
 
 replay_counter
     replay counter.
+
+.. _`brcmf_gscan_bucket_config`:
+
+struct brcmf_gscan_bucket_config
+================================
+
+.. c:type:: struct brcmf_gscan_bucket_config
+
+    configuration data for channel bucket.
+
+.. _`brcmf_gscan_bucket_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_gscan_bucket_config {
+        u8 bucket_end_index;
+        u8 bucket_freq_multiple;
+        u8 flag;
+        u8 reserved;
+        __le16 repeat;
+        __le16 max_freq_multiple;
+    }
+
+.. _`brcmf_gscan_bucket_config.members`:
+
+Members
+-------
+
+bucket_end_index
+    last channel index in \ ``channel_list``\  in
+    \ ``struct``\  brcmf_pno_config_le.
+
+bucket_freq_multiple
+    scan interval expressed in N \* \ ``scan_freq``\ .
+
+flag
+    channel bucket report flags.
+
+reserved
+    for future use.
+
+repeat
+    number of scan at interval for exponential scan.
+
+max_freq_multiple
+    maximum scan interval for exponential scan.
+
+.. _`brcmf_gscan_cfg_flags`:
+
+enum brcmf_gscan_cfg_flags
+==========================
+
+.. c:type:: enum brcmf_gscan_cfg_flags
+
+    bit values for gscan flags.
+
+.. _`brcmf_gscan_cfg_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum brcmf_gscan_cfg_flags {
+        BRCMF_GSCAN_CFG_FLAGS_ALL_RESULTS,
+        BRCMF_GSCAN_CFG_ALL_BUCKETS_IN_1ST_SCAN,
+        BRCMF_GSCAN_CFG_FLAGS_CHANGE_ONLY
+    };
+
+.. _`brcmf_gscan_cfg_flags.constants`:
+
+Constants
+---------
+
+BRCMF_GSCAN_CFG_FLAGS_ALL_RESULTS
+    send probe responses/beacons to host.
+
+BRCMF_GSCAN_CFG_ALL_BUCKETS_IN_1ST_SCAN
+    all buckets will be included in
+    first scan cycle.
+
+BRCMF_GSCAN_CFG_FLAGS_CHANGE_ONLY
+    indicated only flags member is changed.
+
+.. _`brcmf_gscan_config`:
+
+struct brcmf_gscan_config
+=========================
+
+.. c:type:: struct brcmf_gscan_config
+
+    configuration data for gscan.
+
+.. _`brcmf_gscan_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_gscan_config {
+        __le16 version;
+        u8 flags;
+        u8 buffer_threshold;
+        u8 swc_nbssid_threshold;
+        u8 swc_rssi_window_size;
+        u8 count_of_channel_buckets;
+        u8 retry_threshold;
+        __le16 lost_ap_window;
+        struct brcmf_gscan_bucket_config bucket;
+    }
+
+.. _`brcmf_gscan_config.members`:
+
+Members
+-------
+
+version
+    version of the api to match firmware.
+
+flags
+    flags according \ ``enum``\  brcmf_gscan_cfg_flags.
+
+buffer_threshold
+    percentage threshold of buffer to generate an event.
+
+swc_nbssid_threshold
+    number of BSSIDs with significant change that
+    will generate an event.
+
+swc_rssi_window_size
+    size of rssi cache buffer (max=8).
+
+count_of_channel_buckets
+    number of array members in \ ``bucket``\ .
+
+retry_threshold
+    !unknown!
+
+lost_ap_window
+    !unknown!
+
+bucket
+    array of channel buckets.
 
 .. This file was automatic generated / don't edit.
 

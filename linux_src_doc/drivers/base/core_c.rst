@@ -300,6 +300,104 @@ This is called once the reference count for the object
 reaches 0. We forward the call to the device's release
 method, which should handle actually freeing the structure.
 
+.. _`devm_device_add_group`:
+
+devm_device_add_group
+=====================
+
+.. c:function:: int devm_device_add_group(struct device *dev, const struct attribute_group *grp)
+
+    given a device, create a managed attribute group
+
+    :param struct device \*dev:
+        The device to create the group for
+
+    :param const struct attribute_group \*grp:
+        The attribute group to create
+
+.. _`devm_device_add_group.description`:
+
+Description
+-----------
+
+This function creates a group for the first time.  It will explicitly
+warn and error if any of the attribute files being created already exist.
+
+Returns 0 on success or error code on failure.
+
+.. _`devm_device_remove_group`:
+
+devm_device_remove_group
+========================
+
+.. c:function:: void devm_device_remove_group(struct device *dev, const struct attribute_group *grp)
+
+    remove a managed group from a device
+
+    :param struct device \*dev:
+        device to remove the group from
+
+    :param const struct attribute_group \*grp:
+        group to remove
+
+.. _`devm_device_remove_group.description`:
+
+Description
+-----------
+
+This function removes a group of attributes from a device. The attributes
+previously have to have been created for this group, otherwise it will fail.
+
+.. _`devm_device_add_groups`:
+
+devm_device_add_groups
+======================
+
+.. c:function:: int devm_device_add_groups(struct device *dev, const struct attribute_group **groups)
+
+    create a bunch of managed attribute groups
+
+    :param struct device \*dev:
+        The device to create the group for
+
+    :param const struct attribute_group \*\*groups:
+        The attribute groups to create, NULL terminated
+
+.. _`devm_device_add_groups.description`:
+
+Description
+-----------
+
+This function creates a bunch of managed attribute groups.  If an error
+occurs when creating a group, all previously created groups will be
+removed, unwinding everything back to the original state when this
+function was called.  It will explicitly warn and error if any of the
+attribute files being created already exist.
+
+Returns 0 on success or error code from sysfs_create_group on failure.
+
+.. _`devm_device_remove_groups`:
+
+devm_device_remove_groups
+=========================
+
+.. c:function:: void devm_device_remove_groups(struct device *dev, const struct attribute_group **groups)
+
+    remove a list of managed groups
+
+    :param struct device \*dev:
+        The device for the groups to be removed from
+
+    :param const struct attribute_group \*\*groups:
+        NULL terminated list of groups to be removed
+
+.. _`devm_device_remove_groups.description`:
+
+Description
+-----------
+
+If groups is not NULL, remove the specified groups from the device.
+
 .. _`devices_kset_move_before`:
 
 devices_kset_move_before
@@ -1235,6 +1333,29 @@ Description
 If a primary firmware node of the device is present, set its secondary
 pointer to \ ``fwnode``\ .  Otherwise, set the device's firmware node pointer to
 \ ``fwnode``\ .
+
+.. _`device_set_of_node_from_dev`:
+
+device_set_of_node_from_dev
+===========================
+
+.. c:function:: void device_set_of_node_from_dev(struct device *dev, const struct device *dev2)
+
+    reuse device-tree node of another device
+
+    :param struct device \*dev:
+        device whose device-tree node is being set
+
+    :param const struct device \*dev2:
+        device whose device-tree node is being reused
+
+.. _`device_set_of_node_from_dev.description`:
+
+Description
+-----------
+
+Takes another reference to the new device-tree node after first dropping
+any reference held to the old node.
 
 .. This file was automatic generated / don't edit.
 

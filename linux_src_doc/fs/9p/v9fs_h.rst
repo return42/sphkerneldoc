@@ -21,7 +21,8 @@ Definition
         CACHE_NONE,
         CACHE_MMAP,
         CACHE_LOOSE,
-        CACHE_FSCACHE
+        CACHE_FSCACHE,
+        nr__p9_cache_modes
     };
 
 .. _`p9_cache_modes.constants`:
@@ -39,6 +40,9 @@ CACHE_LOOSE
     cache data, dentries, and directory contents w/no consistency
 
 CACHE_FSCACHE
+    *undescribed*
+
+nr__p9_cache_modes
     *undescribed*
 
 .. _`p9_cache_modes.description`:

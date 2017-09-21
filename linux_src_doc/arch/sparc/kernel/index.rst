@@ -9,3 +9,4 @@ kernel
 
     ptrace_64_c
     smp_64_c
+    vio_c

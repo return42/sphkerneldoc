@@ -72,6 +72,34 @@ Return
 A negative number for system errors (errno).
 A positive number for a TPM error.
 
+.. _`tpm_startup`:
+
+tpm_startup
+===========
+
+.. c:function:: int tpm_startup(struct tpm_chip *chip)
+
+    turn on the TPM
+
+    :param struct tpm_chip \*chip:
+        TPM chip to use
+
+.. _`tpm_startup.description`:
+
+Description
+-----------
+
+Normally the firmware should start the TPM. This function is provided as a
+workaround if this does not happen. A legal case for this could be for
+example when a TPM emulator is used.
+
+.. _`tpm_startup.return`:
+
+Return
+------
+
+same as \ :c:func:`tpm_transmit_cmd`\ 
+
 .. _`tpm_continue_selftest`:
 
 tpm_continue_selftest

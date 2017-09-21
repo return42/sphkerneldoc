@@ -1118,6 +1118,51 @@ Return
 
      0 on success, -errno otherwise.
 
+.. _`ata_read_log_page`:
+
+ata_read_log_page
+=================
+
+.. c:function:: unsigned int ata_read_log_page(struct ata_device *dev, u8 log, u8 page, void *buf, unsigned int sectors)
+
+    read a specific log page
+
+    :param struct ata_device \*dev:
+        target device
+
+    :param u8 log:
+        log to read
+
+    :param u8 page:
+        page to read
+
+    :param void \*buf:
+        buffer to store read page
+
+    :param unsigned int sectors:
+        number of sectors to read
+
+.. _`ata_read_log_page.description`:
+
+Description
+-----------
+
+     Read log page using READ_LOG_EXT command.
+
+.. _`ata_read_log_page.locking`:
+
+LOCKING
+-------
+
+     Kernel thread context (may sleep).
+
+.. _`ata_read_log_page.return`:
+
+Return
+------
+
+     0 on success, AC_ERR_* mask otherwise.
+
 .. _`ata_dev_configure`:
 
 ata_dev_configure

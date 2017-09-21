@@ -237,14 +237,14 @@ these cases the lock must be held.
 resume_needed
 =============
 
-.. c:function:: bool resume_needed(struct device *dev, struct generic_pm_domain *genpd)
+.. c:function:: bool resume_needed(struct device *dev, const struct generic_pm_domain *genpd)
 
     Check whether to resume a device before system suspend.
 
     :param struct device \*dev:
         Device to check.
 
-    :param struct generic_pm_domain \*genpd:
+    :param const struct generic_pm_domain \*genpd:
         PM domain the device belongs to.
 
 .. _`resume_needed.description`:
@@ -284,6 +284,29 @@ Start a power transition of a device (during a system-wide power transition)
 under the assumption that its pm_domain field points to the domain member of
 an object of type struct generic_pm_domain representing a PM domain
 consisting of I/O devices.
+
+.. _`genpd_finish_suspend`:
+
+genpd_finish_suspend
+====================
+
+.. c:function:: int genpd_finish_suspend(struct device *dev, bool poweroff)
+
+    Completion of suspend or hibernation of device in an I/O pm domain.
+
+    :param struct device \*dev:
+        Device to suspend.
+
+    :param bool poweroff:
+        Specifies if this is a poweroff_noirq or suspend_noirq callback.
+
+.. _`genpd_finish_suspend.description`:
+
+Description
+-----------
+
+Stop the device and remove power from the domain if all devices in it have
+been stopped.
 
 .. _`pm_genpd_suspend_noirq`:
 
@@ -365,6 +388,26 @@ Description
 
 Start the device, unless power has been removed from the domain already
 before the system transition.
+
+.. _`pm_genpd_poweroff_noirq`:
+
+pm_genpd_poweroff_noirq
+=======================
+
+.. c:function:: int pm_genpd_poweroff_noirq(struct device *dev)
+
+    Completion of hibernation of device in an I/O PM domain.
+
+    :param struct device \*dev:
+        Device to poweroff.
+
+.. _`pm_genpd_poweroff_noirq.description`:
+
+Description
+-----------
+
+Stop the device and remove power from the domain if all devices in it have
+been stopped.
 
 .. _`pm_genpd_restore_noirq`:
 

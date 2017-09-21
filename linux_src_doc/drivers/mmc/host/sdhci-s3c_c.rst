@@ -198,28 +198,5 @@ bus clock's values the standard formula gives values out of allowed range.
 The clock still can be set to lower values, if clock source other then
 system bus is selected.
 
-.. _`sdhci_s3c_set_bus_width`:
-
-sdhci_s3c_set_bus_width
-=======================
-
-.. c:function:: void sdhci_s3c_set_bus_width(struct sdhci_host *host, int width)
-
-    support 8bit buswidth
-
-    :param struct sdhci_host \*host:
-        The SDHCI host being queried
-
-    :param int width:
-        MMC_BUS_WIDTH\_ macro for the bus width being requested
-
-.. _`sdhci_s3c_set_bus_width.description`:
-
-Description
------------
-
-We have 8-bit width support but is not a v3 controller.
-So we add \ :c:func:`platform_bus_width`\  and support 8bit width.
-
 .. This file was automatic generated / don't edit.
 

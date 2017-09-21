@@ -1,6 +1,40 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: security/apparmor/include/file.h
 
+.. _`aa_alloc_file_ctx`:
+
+aa_alloc_file_ctx
+=================
+
+.. c:function:: struct aa_file_ctx *aa_alloc_file_ctx(struct aa_label *label, gfp_t gfp)
+
+    allocate file_ctx
+
+    :param struct aa_label \*label:
+        initial label of task creating the file
+
+    :param gfp_t gfp:
+        gfp flags for allocation
+
+.. _`aa_alloc_file_ctx.return`:
+
+Return
+------
+
+file_ctx or NULL on failure
+
+.. _`aa_free_file_ctx`:
+
+aa_free_file_ctx
+================
+
+.. c:function:: void aa_free_file_ctx(struct aa_file_ctx *ctx)
+
+    free a file_ctx
+
+    :param struct aa_file_ctx \*ctx:
+        file_ctx to free  (MAYBE_NULL)
+
 .. _`aa_file_rules`:
 
 struct aa_file_rules

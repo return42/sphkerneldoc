@@ -22,6 +22,7 @@ vmwgfx
     vmwgfx_fence_c
     vmwgfx_fifo_c
     vmwgfx_ioctl_c
+    vmwgfx_irq_c
     vmwgfx_kms_c
     vmwgfx_kms_h
     vmwgfx_ldu_c

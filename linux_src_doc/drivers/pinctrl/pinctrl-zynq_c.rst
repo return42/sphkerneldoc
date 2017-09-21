@@ -45,7 +45,7 @@ groups
     Pingroups
 
 ngroups
-    *undescribed*
+    Number of \ ``groups``\ 
 
 funcs
     Pinmux functions

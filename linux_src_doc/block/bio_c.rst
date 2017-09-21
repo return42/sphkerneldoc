@@ -122,7 +122,7 @@ Description
 -----------
 
   Put a reference to a \ :c:type:`struct bio <bio>`\ , either one you have gotten with
-  bio_alloc, bio_get or bio_clone. The last put of a bio will free it.
+  bio_alloc, bio_get or bio_clone_*. The last put of a bio will free it.
 
 .. _`__bio_clone_fast`:
 
@@ -308,6 +308,10 @@ Description
 
 Simple wrapper around \ :c:func:`submit_bio`\ . Returns 0 on success, or the error from
 \ :c:func:`bio_endio`\  on failure.
+
+WARNING: Unlike to how \ :c:func:`submit_bio`\  is usually used, this function does not
+result in bio reference to be consumed. The caller must drop the reference
+on his own.
 
 .. _`bio_advance`:
 
@@ -673,7 +677,7 @@ bio_trim
 bioset_create
 =============
 
-.. c:function:: struct bio_set *bioset_create(unsigned int pool_size, unsigned int front_pad)
+.. c:function:: struct bio_set *bioset_create(unsigned int pool_size, unsigned int front_pad, int flags)
 
     Create a bio_set
 
@@ -682,6 +686,10 @@ bioset_create
 
     :param unsigned int front_pad:
         Number of bytes to allocate in front of the returned bio
+
+    :param int flags:
+        Flags to modify behavior, currently \ ``BIOSET_NEED_BVECS``\ 
+        and \ ``BIOSET_NEED_RESCUER``\ 
 
 .. _`bioset_create.description`:
 
@@ -694,29 +702,10 @@ Description
    another structure, to avoid allocating extra data to go with the bio.
    Note that the bio must be embedded at the END of that structure always,
    or things will break badly.
-
-.. _`bioset_create_nobvec`:
-
-bioset_create_nobvec
-====================
-
-.. c:function:: struct bio_set *bioset_create_nobvec(unsigned int pool_size, unsigned int front_pad)
-
-    Create a bio_set without bio_vec mempool
-
-    :param unsigned int pool_size:
-        Number of bio to cache in the mempool
-
-    :param unsigned int front_pad:
-        Number of bytes to allocate in front of the returned bio
-
-.. _`bioset_create_nobvec.description`:
-
-Description
------------
-
-   Same functionality as \ :c:func:`bioset_create`\  except that mempool is not
-   created for bio_vecs. Saving some memory for \ :c:func:`bio_clone_fast`\  users.
+   If \ ``BIOSET_NEED_BVECS``\  is set in \ ``flags``\ , a separate pool will be allocated
+   for allocating iovecs.  This pool is not needed e.g. for \ :c:func:`bio_clone_fast`\ .
+   If \ ``BIOSET_NEED_RESCUER``\  is set, a workqueue is created which can be used to
+   dispatch queued requests when the mempool runs out of space.
 
 .. _`bio_associate_blkcg`:
 

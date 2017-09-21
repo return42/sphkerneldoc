@@ -21,7 +21,7 @@ Definition
         void (*init_dev)(ide_drive_t *);
         void (*set_pio_mode)(struct hwif_s *, ide_drive_t *);
         void (*set_dma_mode)(struct hwif_s *, ide_drive_t *);
-        int (*reset_poll)(ide_drive_t *);
+        blk_status_t (*reset_poll)(ide_drive_t *);
         void (*pre_reset)(ide_drive_t *);
         void (*resetproc)(ide_drive_t *);
         void (*maskproc)(ide_drive_t *, int);

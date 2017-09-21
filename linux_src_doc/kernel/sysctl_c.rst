@@ -1,6 +1,83 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/sysctl.c
 
+.. _`sysctl_writes_mode`:
+
+enum sysctl_writes_mode
+=======================
+
+.. c:type:: enum sysctl_writes_mode
+
+    supported sysctl write modes
+
+.. _`sysctl_writes_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum sysctl_writes_mode {
+        SYSCTL_WRITES_LEGACY,
+        SYSCTL_WRITES_WARN,
+        SYSCTL_WRITES_STRICT
+    };
+
+.. _`sysctl_writes_mode.constants`:
+
+Constants
+---------
+
+SYSCTL_WRITES_LEGACY
+    each write syscall must fully contain the sysctl value
+    to be written, and multiple writes on the same sysctl file descriptor
+    will rewrite the sysctl value, regardless of file position. No warning
+    is issued when the initial position is not 0.
+
+SYSCTL_WRITES_WARN
+    same as above but warn when the initial file position is
+    not 0.
+
+SYSCTL_WRITES_STRICT
+    writes to numeric sysctl entries must always be at
+    file position 0 and the value must be fully contained in the buffer
+    sent to the write syscall. If dealing with strings respect the file
+    position, but restrict this to the max length of the buffer, anything
+    passed the max lenght will be ignored. Multiple writes will append
+    to the buffer.
+
+.. _`sysctl_writes_mode.description`:
+
+Description
+-----------
+
+These write modes control how current file position affects the behavior of
+updating sysctl values through the proc interface on each write.
+
+.. _`proc_first_pos_non_zero_ignore`:
+
+proc_first_pos_non_zero_ignore
+==============================
+
+.. c:function:: bool proc_first_pos_non_zero_ignore(loff_t *ppos, struct ctl_table *table)
+
+    check if firs position is allowed
+
+    :param loff_t \*ppos:
+        file position
+
+    :param struct ctl_table \*table:
+        the sysctl table
+
+.. _`proc_first_pos_non_zero_ignore.description`:
+
+Description
+-----------
+
+Returns true if the first position is non-zero and the sysctl_writes_strict
+mode indicates this is not allowed for numeric input types. String proc
+hadlers can ignore the return value.
+
 .. _`proc_dostring`:
 
 proc_dostring
@@ -210,6 +287,46 @@ values from/to the user buffer, treated as an ASCII string.
 
 This routine will ensure the values are within the range specified by
 table->extra1 (min) and table->extra2 (max).
+
+Returns 0 on success.
+
+.. _`proc_douintvec_minmax`:
+
+proc_douintvec_minmax
+=====================
+
+.. c:function:: int proc_douintvec_minmax(struct ctl_table *table, int write, void __user *buffer, size_t *lenp, loff_t *ppos)
+
+    read a vector of unsigned ints with min/max values
+
+    :param struct ctl_table \*table:
+        the sysctl table
+
+    :param int write:
+        %TRUE if this is a write to the sysctl file
+
+    :param void __user \*buffer:
+        the user buffer
+
+    :param size_t \*lenp:
+        the size of the user buffer
+
+    :param loff_t \*ppos:
+        file position
+
+.. _`proc_douintvec_minmax.description`:
+
+Description
+-----------
+
+Reads/writes up to table->maxlen/sizeof(unsigned int) unsigned integer
+values from/to the user buffer, treated as an ASCII string. Negative
+strings are not allowed.
+
+This routine will ensure the values are within the range specified by
+table->extra1 (min) and table->extra2 (max). There is a final sanity
+check for UINT_MAX to avoid having to support wrap around uses from
+userspace.
 
 Returns 0 on success.
 

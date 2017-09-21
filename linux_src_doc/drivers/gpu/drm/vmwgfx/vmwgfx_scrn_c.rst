@@ -131,36 +131,42 @@ Description
 
 Prepares the CRTC for a mode set, but we don't need to do anything here.
 
-.. _`vmw_sou_crtc_helper_commit`:
+.. _`vmw_sou_crtc_atomic_enable`:
 
-vmw_sou_crtc_helper_commit
+vmw_sou_crtc_atomic_enable
 ==========================
 
-.. c:function:: void vmw_sou_crtc_helper_commit(struct drm_crtc *crtc)
+.. c:function:: void vmw_sou_crtc_atomic_enable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
 
     Noop
 
     :param struct drm_crtc \*crtc:
         CRTC associated with the new screen
 
-.. _`vmw_sou_crtc_helper_commit.description`:
+    :param struct drm_crtc_state \*old_state:
+        *undescribed*
+
+.. _`vmw_sou_crtc_atomic_enable.description`:
 
 Description
 -----------
 
 This is called after a mode set has been completed.
 
-.. _`vmw_sou_crtc_helper_disable`:
+.. _`vmw_sou_crtc_atomic_disable`:
 
-vmw_sou_crtc_helper_disable
+vmw_sou_crtc_atomic_disable
 ===========================
 
-.. c:function:: void vmw_sou_crtc_helper_disable(struct drm_crtc *crtc)
+.. c:function:: void vmw_sou_crtc_atomic_disable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
 
     Turns off CRTC
 
     :param struct drm_crtc \*crtc:
         CRTC to be turned off
+
+    :param struct drm_crtc_state \*old_state:
+        *undescribed*
 
 .. _`vmw_sou_primary_plane_cleanup_fb`:
 

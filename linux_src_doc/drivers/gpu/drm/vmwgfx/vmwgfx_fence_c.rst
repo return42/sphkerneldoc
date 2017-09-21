@@ -153,6 +153,29 @@ invalid, or has a higher seqno than that of the current fence object.
 
 returns true if the device goal seqno was updated. False otherwise.
 
+.. _`vmw_wait_dma_fence`:
+
+vmw_wait_dma_fence
+==================
+
+.. c:function:: int vmw_wait_dma_fence(struct vmw_fence_manager *fman, struct dma_fence *fence)
+
+    Wait for a dma fence
+
+    :param struct vmw_fence_manager \*fman:
+        pointer to a fence manager
+
+    :param struct dma_fence \*fence:
+        DMA fence to wait on
+
+.. _`vmw_wait_dma_fence.description`:
+
+Description
+-----------
+
+This function handles the case when the fence is actually a fence
+array.  If that's the case, it'll wait on each of the child fence
+
 .. _`vmw_fence_fifo_down`:
 
 vmw_fence_fifo_down
@@ -208,8 +231,7 @@ Description
 
 This function is called when the seqno of the fence where \ ``action``\  is
 attached has passed. It queues the event on the submitter's event list.
-This function is always called from atomic context, and may be called
-from irq context.
+This function is always called from atomic context.
 
 .. _`vmw_event_fence_action_cleanup`:
 

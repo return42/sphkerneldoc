@@ -293,7 +293,7 @@ completed, \ ``false``\  otherwise.
 lock_page_memcg
 ===============
 
-.. c:function:: void lock_page_memcg(struct page *page)
+.. c:function:: struct mem_cgroup *lock_page_memcg(struct page *page)
 
     lock a page->mem_cgroup binding
 
@@ -306,7 +306,30 @@ Description
 -----------
 
 This function protects unlocked LRU pages from being moved to
-another cgroup and stabilizes their page->mem_cgroup binding.
+another cgroup.
+
+It ensures lifetime of the returned memcg. Caller is responsible
+for the lifetime of the page; \__unlock_page_memcg() is available
+when \ ``page``\  might get freed inside the locked section.
+
+.. _`__unlock_page_memcg`:
+
+__unlock_page_memcg
+===================
+
+.. c:function:: void __unlock_page_memcg(struct mem_cgroup *memcg)
+
+    unlock and unpin a memcg
+
+    :param struct mem_cgroup \*memcg:
+        the memcg
+
+.. _`__unlock_page_memcg.description`:
+
+Description
+-----------
+
+Unlock and unpin a memcg returned by \ :c:func:`lock_page_memcg`\ .
 
 .. _`unlock_page_memcg`:
 
@@ -648,7 +671,7 @@ mem_cgroup_low
     check if memory consumption is below the normal range
 
     :param struct mem_cgroup \*root:
-        the highest ancestor to consider
+        the top ancestor of the sub-tree being checked
 
     :param struct mem_cgroup \*memcg:
         the memory cgroup to check
@@ -659,7 +682,32 @@ Description
 -----------
 
 Returns \ ``true``\  if memory consumption of \ ``memcg``\ , and that of all
-configurable ancestors up to \ ``root``\ , is below the normal range.
+ancestors up to (but not including) \ ``root``\ , is below the normal range.
+
+\ ``root``\  is exclusive; it is never low when looked at directly and isn't
+checked when traversing the hierarchy.
+
+Excluding \ ``root``\  enables using memory.low to prioritize memory usage
+between cgroups within a subtree of the hierarchy that is limited by
+memory.high or memory.max.
+
+For example, given cgroup A with children B and C:
+
+A
+/ \
+B   C
+
+and
+
+1. A/memory.current > A/memory.high
+2. A/B/memory.current < A/B/memory.low
+3. A/C/memory.current >= A/C/memory.low
+
+As 'A' is high, i.e. triggers reclaim from 'A', and 'B' is low, we
+should reclaim from 'C' until 'A' is no longer high or until we can
+no longer reclaim from 'C'.  If 'A', i.e. \ ``root``\ , isn't excluded by
+mem_cgroup_low when reclaming from 'A', then 'B' won't be considered
+low and we will reclaim indiscriminately from both 'B' and 'C'.
 
 .. _`mem_cgroup_try_charge`:
 
@@ -886,24 +934,44 @@ Description
 
 Transfer the memsw charge of \ ``page``\  to \ ``entry``\ .
 
+.. _`mem_cgroup_try_charge_swap`:
+
+mem_cgroup_try_charge_swap
+==========================
+
+.. c:function:: int mem_cgroup_try_charge_swap(struct page *page, swp_entry_t entry)
+
+    try charging swap space for a page
+
+    :param struct page \*page:
+        page being added to swap
+
+    :param swp_entry_t entry:
+        swap entry to charge
+
+.. _`mem_cgroup_try_charge_swap.description`:
+
+Description
+-----------
+
+Try to charge \ ``page``\ 's memcg for the swap space at \ ``entry``\ .
+
+Returns 0 on success, -ENOMEM on failure.
+
 .. _`mem_cgroup_uncharge_swap`:
 
 mem_cgroup_uncharge_swap
 ========================
 
-.. c:function:: void mem_cgroup_uncharge_swap(swp_entry_t entry)
+.. c:function:: void mem_cgroup_uncharge_swap(swp_entry_t entry, unsigned int nr_pages)
 
-    uncharge a swap entry
+    uncharge swap space
 
     :param swp_entry_t entry:
         swap entry to uncharge
 
-.. _`mem_cgroup_uncharge_swap.description`:
-
-Description
------------
-
-Drop the swap charge associated with \ ``entry``\ .
+    :param unsigned int nr_pages:
+        the amount of swap space to uncharge
 
 .. This file was automatic generated / don't edit.
 

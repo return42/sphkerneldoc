@@ -415,8 +415,8 @@ Definition
 
     struct samsung_pin_ctrl {
         const struct samsung_pin_bank_data *pin_banks;
-        u32 nr_banks;
-        int nr_ext_resources;
+        unsigned int nr_banks;
+        unsigned int nr_ext_resources;
         const struct samsung_retention_data *retention_data;
         int (*eint_gpio_init)(struct samsung_pinctrl_drv_data *);
         int (*eint_wkup_init)(struct samsung_pinctrl_drv_data *);
@@ -473,6 +473,7 @@ Definition
 
     struct samsung_pinctrl_drv_data {
         struct list_head node;
+        void __iomem *virt_base;
         struct device *dev;
         int irq;
         struct pinctrl_desc pctl;
@@ -482,7 +483,7 @@ Definition
         const struct samsung_pmx_func *pmx_functions;
         unsigned int nr_functions;
         struct samsung_pin_bank *pin_banks;
-        u32 nr_banks;
+        unsigned int nr_banks;
         unsigned int pin_base;
         unsigned int nr_pins;
         struct samsung_retention_ctrl *retention_ctrl;
@@ -497,6 +498,12 @@ Members
 
 node
     global list node
+
+virt_base
+    register base address of the controller; this will be equal
+    to each bank samsung_pin_bank->pctl_base and used on legacy
+    platforms (like S3C24XX or S3C64XX) which has to access the base
+    through samsung_pinctrl_drv_data, not samsung_pin_bank).
 
 dev
     device instance representing the controller.

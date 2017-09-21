@@ -21,6 +21,7 @@ ethernet
     ezchip/index
     freescale/index
     hisilicon/index
+    huawei/index
     ibm/index
     intel/index
     mellanox/index

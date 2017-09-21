@@ -422,6 +422,28 @@ Description
      had a reference added and the pointer is safe until the user calls
      dev_put to indicate they have finished with it.
 
+.. _`dev_get_by_napi_id`:
+
+dev_get_by_napi_id
+==================
+
+.. c:function:: struct net_device *dev_get_by_napi_id(unsigned int napi_id)
+
+    find a device by napi_id
+
+    :param unsigned int napi_id:
+        ID of the NAPI struct
+
+.. _`dev_get_by_napi_id.description`:
+
+Description
+-----------
+
+     Search for an interface by NAPI ID. Returns \ ``NULL``\  if the device
+     is not found or a pointer to the device. The device has not had
+     its reference counter increased so the caller must be careful
+     about locking. The caller must hold RCU lock.
+
 .. _`netdev_get_name`:
 
 netdev_get_name
@@ -726,7 +748,7 @@ Description
 dev_close
 =========
 
-.. c:function:: int dev_close(struct net_device *dev)
+.. c:function:: void dev_close(struct net_device *dev)
 
     shutdown an interface.
 

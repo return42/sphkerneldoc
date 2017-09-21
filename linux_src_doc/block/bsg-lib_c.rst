@@ -1,14 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: block/bsg-lib.c
 
-.. _`bsg_destroy_job`:
+.. _`bsg_teardown_job`:
 
-bsg_destroy_job
-===============
+bsg_teardown_job
+================
 
-.. c:function:: void bsg_destroy_job(struct kref *kref)
+.. c:function:: void bsg_teardown_job(struct kref *kref)
 
-    routine to teardown/delete a bsg job
+    routine to teardown a bsg job
 
     :param struct kref \*kref:
         *undescribed*
@@ -50,12 +50,12 @@ bsg_softirq_done
     :param struct request \*rq:
         BSG request that holds the job to be destroyed
 
-.. _`bsg_create_job`:
+.. _`bsg_prepare_job`:
 
-bsg_create_job
-==============
+bsg_prepare_job
+===============
 
-.. c:function:: int bsg_create_job(struct device *dev, struct request *req)
+.. c:function:: int bsg_prepare_job(struct device *dev, struct request *req)
 
     create the bsg_job structure for the bsg request
 
@@ -92,14 +92,14 @@ Drivers/subsys should pass this to the queue init function.
 bsg_setup_queue
 ===============
 
-.. c:function:: struct request_queue *bsg_setup_queue(struct device *dev, char *name, bsg_job_fn *job_fn, int dd_job_size)
+.. c:function:: struct request_queue *bsg_setup_queue(struct device *dev, const char *name, bsg_job_fn *job_fn, int dd_job_size, void (*release)(struct device *))
 
     Create and add the bsg hooks so we can receive requests
 
     :param struct device \*dev:
         device to attach bsg device to
 
-    :param char \*name:
+    :param const char \*name:
         device to give bsg device
 
     :param bsg_job_fn \*job_fn:
@@ -107,6 +107,9 @@ bsg_setup_queue
 
     :param int dd_job_size:
         size of LLD data needed for each job
+
+    :param void (\*release)(struct device \*):
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

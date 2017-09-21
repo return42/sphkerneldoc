@@ -284,25 +284,5 @@ Description
 Atomically adds \ ``a``\  to \ ``v``\ , so long as \ ``v``\  was not already \ ``u``\ .
 Returns the old value of \ ``v``\ .
 
-.. _`atomic_inc_short`:
-
-atomic_inc_short
-================
-
-.. c:function:: short int atomic_inc_short(short int *v)
-
-    increment of a short integer
-
-    :param short int \*v:
-        pointer to type int
-
-.. _`atomic_inc_short.description`:
-
-Description
------------
-
-Atomically adds 1 to \ ``v``\ 
-Returns the new value of \ ``u``\ 
-
 .. This file was automatic generated / don't edit.
 

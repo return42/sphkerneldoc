@@ -23,6 +23,8 @@ Definition
         bool instructions;
         bool branches;
         bool transactions;
+        bool ptwrites;
+        bool pwr_events;
         bool errors;
         bool dont_decode;
         bool log;
@@ -36,6 +38,7 @@ Definition
         unsigned long long period;
         enum itrace_period_type period_type;
         unsigned long initial_skip;
+        unsigned long *cpu_bitmap;
     }
 
 .. _`itrace_synth_opts.members`:
@@ -58,6 +61,12 @@ branches
 
 transactions
     whether to synthesize events for transactions
+
+ptwrites
+    whether to synthesize events for ptwrites
+
+pwr_events
+    whether to synthesize power events
 
 errors
     whether to synthesize decoder error events
@@ -97,6 +106,9 @@ period_type
 
 initial_skip
     skip N events at the beginning.
+
+cpu_bitmap
+    CPUs for which to synthesize events, or NULL for all
 
 .. _`auxtrace_index_entry`:
 

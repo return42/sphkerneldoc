@@ -181,6 +181,18 @@ phy_is_internal
     :param struct phy_device \*phydev:
         the phy_device struct
 
+.. _`phy_interface_mode_is_rgmii`:
+
+phy_interface_mode_is_rgmii
+===========================
+
+.. c:function:: bool phy_interface_mode_is_rgmii(phy_interface_t mode)
+
+    Convenience function for testing if a PHY interface mode is RGMII (all variants)
+
+    :param phy_interface_t mode:
+        the phy_interface_t enum
+
 .. _`phy_interface_is_rgmii`:
 
 phy_interface_is_rgmii

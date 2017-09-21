@@ -20,38 +20,22 @@ Description
 
 For LDU, just enable the svga
 
-.. _`vmw_ldu_crtc_helper_prepare`:
+.. _`vmw_ldu_crtc_atomic_enable`:
 
-vmw_ldu_crtc_helper_prepare
-===========================
-
-.. c:function:: void vmw_ldu_crtc_helper_prepare(struct drm_crtc *crtc)
-
-    Noop
-
-    :param struct drm_crtc \*crtc:
-        CRTC associated with the new screen
-
-.. _`vmw_ldu_crtc_helper_prepare.description`:
-
-Description
------------
-
-Prepares the CRTC for a mode set, but we don't need to do anything here.
-
-.. _`vmw_ldu_crtc_helper_commit`:
-
-vmw_ldu_crtc_helper_commit
+vmw_ldu_crtc_atomic_enable
 ==========================
 
-.. c:function:: void vmw_ldu_crtc_helper_commit(struct drm_crtc *crtc)
+.. c:function:: void vmw_ldu_crtc_atomic_enable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
 
     Noop
 
     :param struct drm_crtc \*crtc:
         CRTC associated with the new screen
 
-.. _`vmw_ldu_crtc_helper_commit.description`:
+    :param struct drm_crtc_state \*old_state:
+        *undescribed*
+
+.. _`vmw_ldu_crtc_atomic_enable.description`:
 
 Description
 -----------
@@ -61,17 +45,20 @@ usually a good place to call vmw_ldu_add_active/vmw_ldu_del_active
 but since for LDU the display plane is closely tied to the
 CRTC, it makes more sense to do those at plane update time.
 
-.. _`vmw_ldu_crtc_helper_disable`:
+.. _`vmw_ldu_crtc_atomic_disable`:
 
-vmw_ldu_crtc_helper_disable
+vmw_ldu_crtc_atomic_disable
 ===========================
 
-.. c:function:: void vmw_ldu_crtc_helper_disable(struct drm_crtc *crtc)
+.. c:function:: void vmw_ldu_crtc_atomic_disable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
 
     Turns off CRTC
 
     :param struct drm_crtc \*crtc:
         CRTC to be turned off
+
+    :param struct drm_crtc_state \*old_state:
+        *undescribed*
 
 .. _`vmw_ldu_primary_plane_cleanup_fb`:
 

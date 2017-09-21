@@ -14,7 +14,10 @@ mfd
     abx500_h
     altera-a10sr_h
     axp20x_h
+    bd9571mwv_h
     cros_ec_h
+    cros_ec_lpc_mec_h
+    cros_ec_lpc_reg_h
     db8500-prcmu_h
     dbx500-prcmu_h
     dln2_h
@@ -22,6 +25,7 @@ mfd
     ipaq-micro_h
     kempld_h
     lp873x_h
+    lp87565_h
     max8997_h
     max8998-private_h
     max8998_h
@@ -30,11 +34,13 @@ mfd
     si476x-core_h
     si476x-platform_h
     si476x-reports_h
+    stm32-lptimer_h
     stmpe_h
     stw481x_h
     tc3589x_h
     ti-lmu_h
     tps6105x_h
+    tps65010_h
     tps6507x_h
     tps65086_h
     tps65217_h

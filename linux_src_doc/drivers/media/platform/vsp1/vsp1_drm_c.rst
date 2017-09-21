@@ -6,12 +6,15 @@
 vsp1_du_setup_lif
 =================
 
-.. c:function:: int vsp1_du_setup_lif(struct device *dev, const struct vsp1_du_lif_config *cfg)
+.. c:function:: int vsp1_du_setup_lif(struct device *dev, unsigned int pipe_index, const struct vsp1_du_lif_config *cfg)
 
     Setup the output part of the VSP pipeline
 
     :param struct device \*dev:
         the VSP device
+
+    :param unsigned int pipe_index:
+        the DRM pipeline index
 
     :param const struct vsp1_du_lif_config \*cfg:
         the LIF configuration
@@ -22,14 +25,17 @@ Description
 -----------
 
 Configure the output part of VSP DRM pipeline for the given frame \ ``cfg``\ .width
-and \ ``cfg``\ .height. This sets up formats on the BRU source pad, the WPF0 sink
-and source pads, and the LIF sink pad.
+and \ ``cfg``\ .height. This sets up formats on the blend unit (BRU or BRS) source
+pad, the WPF sink and source pads, and the LIF sink pad.
 
-As the media bus code on the BRU source pad is conditioned by the
-configuration of the BRU sink 0 pad, we also set up the formats on all BRU
+The \ ``pipe_index``\  argument selects which DRM pipeline to setup. The number of
+available pipelines depend on the VSP instance.
+
+As the media bus code on the blend unit source pad is conditioned by the
+configuration of its sink 0 pad, we also set up the formats on all blend unit
 sinks, even if the configuration will be overwritten later by
-\ :c:func:`vsp1_du_setup_rpf`\ . This ensures that the BRU configuration is set to a well
-defined state.
+\ :c:func:`vsp1_du_setup_rpf`\ . This ensures that the blend unit configuration is set to
+a well defined state.
 
 Return 0 on success or a negative error code on failure.
 
@@ -38,24 +44,30 @@ Return 0 on success or a negative error code on failure.
 vsp1_du_atomic_begin
 ====================
 
-.. c:function:: void vsp1_du_atomic_begin(struct device *dev)
+.. c:function:: void vsp1_du_atomic_begin(struct device *dev, unsigned int pipe_index)
 
     Prepare for an atomic update
 
     :param struct device \*dev:
         the VSP device
 
+    :param unsigned int pipe_index:
+        the DRM pipeline index
+
 .. _`vsp1_du_atomic_update`:
 
 vsp1_du_atomic_update
 =====================
 
-.. c:function:: int vsp1_du_atomic_update(struct device *dev, unsigned int rpf_index, const struct vsp1_du_atomic_config *cfg)
+.. c:function:: int vsp1_du_atomic_update(struct device *dev, unsigned int pipe_index, unsigned int rpf_index, const struct vsp1_du_atomic_config *cfg)
 
     Setup one RPF input of the VSP pipeline
 
     :param struct device \*dev:
         the VSP device
+
+    :param unsigned int pipe_index:
+        the DRM pipeline index
 
     :param unsigned int rpf_index:
         index of the RPF to setup (0-based)
@@ -96,12 +108,15 @@ Return 0 on success or a negative error code on failure.
 vsp1_du_atomic_flush
 ====================
 
-.. c:function:: void vsp1_du_atomic_flush(struct device *dev)
+.. c:function:: void vsp1_du_atomic_flush(struct device *dev, unsigned int pipe_index)
 
     Commit an atomic update
 
     :param struct device \*dev:
         the VSP device
+
+    :param unsigned int pipe_index:
+        the DRM pipeline index
 
 .. This file was automatic generated / don't edit.
 

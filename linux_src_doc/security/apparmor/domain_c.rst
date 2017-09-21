@@ -18,12 +18,15 @@ aa_free_domain_entries
 may_change_ptraced_domain
 =========================
 
-.. c:function:: int may_change_ptraced_domain(struct aa_profile *to_profile)
+.. c:function:: int may_change_ptraced_domain(struct aa_label *to_label, const char **info)
 
     check if can change profile on ptraced task
 
-    :param struct aa_profile \*to_profile:
+    :param struct aa_label \*to_label:
         profile to change to  (NOT NULL)
+
+    :param const char \*\*info:
+        message if there is an error
 
 .. _`may_change_ptraced_domain.description`:
 
@@ -40,23 +43,142 @@ Return
 
 %0 or error if change not allowed
 
+.. _`label_compound_match`:
+
+label_compound_match
+====================
+
+.. c:function:: int label_compound_match(struct aa_profile *profile, struct aa_label *label, bool stack, unsigned int state, bool subns, u32 request, struct aa_perms *perms)
+
+    find perms for full compound label
+
+    :param struct aa_profile \*profile:
+        profile to find perms for
+
+    :param struct aa_label \*label:
+        label to check access permissions for
+
+    :param bool stack:
+        whether this is a stacking request
+
+    :param unsigned int state:
+        *undescribed*
+
+    :param bool subns:
+        whether to do permission checks on components in a subns
+
+    :param u32 request:
+        permissions to request
+
+    :param struct aa_perms \*perms:
+        perms struct to set
+
+.. _`label_compound_match.return`:
+
+Return
+------
+
+0 on success else ERROR
+
+For the label A//&B//&C this does the perm match for A//&B//&C
+\ ``perms``\  should be preinitialized with allperms OR a previous permission
+check to be stacked.
+
+.. _`label_components_match`:
+
+label_components_match
+======================
+
+.. c:function:: int label_components_match(struct aa_profile *profile, struct aa_label *label, bool stack, unsigned int start, bool subns, u32 request, struct aa_perms *perms)
+
+    find perms for all subcomponents of a label
+
+    :param struct aa_profile \*profile:
+        profile to find perms for
+
+    :param struct aa_label \*label:
+        label to check access permissions for
+
+    :param bool stack:
+        whether this is a stacking request
+
+    :param unsigned int start:
+        state to start match in
+
+    :param bool subns:
+        whether to do permission checks on components in a subns
+
+    :param u32 request:
+        permissions to request
+
+    :param struct aa_perms \*perms:
+        an initialized perms struct to add accumulation to
+
+.. _`label_components_match.return`:
+
+Return
+------
+
+0 on success else ERROR
+
+For the label A//&B//&C this does the perm match for each of A and B and C
+\ ``perms``\  should be preinitialized with allperms OR a previous permission
+check to be stacked.
+
+.. _`label_match`:
+
+label_match
+===========
+
+.. c:function:: int label_match(struct aa_profile *profile, struct aa_label *label, bool stack, unsigned int state, bool subns, u32 request, struct aa_perms *perms)
+
+    do a multi-component label match
+
+    :param struct aa_profile \*profile:
+        profile to match against (NOT NULL)
+
+    :param struct aa_label \*label:
+        label to match (NOT NULL)
+
+    :param bool stack:
+        whether this is a stacking request
+
+    :param unsigned int state:
+        state to start in
+
+    :param bool subns:
+        whether to match subns components
+
+    :param u32 request:
+        permission request
+
+    :param struct aa_perms \*perms:
+        Returns computed perms (NOT NULL)
+
+.. _`label_match.return`:
+
+Return
+------
+
+the state the match finished in, may be the none matching state
+
 .. _`change_profile_perms`:
 
 change_profile_perms
 ====================
 
-.. c:function:: struct file_perms change_profile_perms(struct aa_profile *profile, struct aa_ns *ns, const char *name, u32 request, unsigned int start)
+.. c:function:: int change_profile_perms(struct aa_profile *profile, struct aa_label *target, bool stack, u32 request, unsigned int start, struct aa_perms *perms)
 
     find permissions for change_profile
 
     :param struct aa_profile \*profile:
         the current profile  (NOT NULL)
 
-    :param struct aa_ns \*ns:
-        the namespace being switched to  (NOT NULL)
+    :param struct aa_label \*target:
+        label to transition to (NOT NULL)
 
-    :param const char \*name:
-        the name of the profile to change to  (NOT NULL)
+    :param bool stack:
+        whether this is a stacking request
 
     :param u32 request:
         requested perms
@@ -64,12 +186,18 @@ change_profile_perms
     :param unsigned int start:
         state to start matching in
 
+    :param struct aa_perms \*perms:
+        *undescribed*
+
 .. _`change_profile_perms.return`:
 
 Return
 ------
 
 permission set
+
+currently only matches full label A//&B//&C or individual components A, B, C
+not arbitrary combinations. Eg. A//&B, C
 
 .. _`__attach_match`:
 
@@ -115,7 +243,7 @@ profile or NULL if no match found
 find_attach
 ===========
 
-.. c:function:: struct aa_profile *find_attach(struct aa_ns *ns, struct list_head *list, const char *name)
+.. c:function:: struct aa_label *find_attach(struct aa_ns *ns, struct list_head *list, const char *name)
 
     do attachment search for unconfined processes
 
@@ -133,65 +261,14 @@ find_attach
 Return
 ------
 
-profile or NULL if no match found
-
-.. _`separate_fqname`:
-
-separate_fqname
-===============
-
-.. c:function:: const char *separate_fqname(const char *fqname, const char **ns_name)
-
-    separate the namespace and profile names
-
-    :param const char \*fqname:
-        the fqname name to split  (NOT NULL)
-
-    :param const char \*\*ns_name:
-        the namespace name if it exists  (NOT NULL)
-
-.. _`separate_fqname.description`:
-
-Description
------------
-
-This is the xtable equivalent routine of aa_split_fqname.  It finds the
-split in an xtable fqname which contains an embedded \0 instead of a :
-if a namespace is specified.  This is done so the xtable is constant and
-isn't re-split on every lookup.
-
-Either the profile or namespace name may be optional but if the namespace
-is specified the profile name termination must be present.  This results
-
-.. _`separate_fqname.in-the-following-possible-encodings`:
-
-in the following possible encodings
------------------------------------
-
-profile_name\0
-:ns_name\0profile_name\0
-:ns_name\0\0
-
-.. _`separate_fqname.note`:
-
-NOTE
-----
-
-the xtable fqname is pre-validated at load time in unpack_trans_table
-
-.. _`separate_fqname.return`:
-
-Return
-------
-
-profile name if it is specified else NULL
+label or NULL if no match found
 
 .. _`x_table_lookup`:
 
 x_table_lookup
 ==============
 
-.. c:function:: struct aa_profile *x_table_lookup(struct aa_profile *profile, u32 xindex)
+.. c:function:: struct aa_label *x_table_lookup(struct aa_profile *profile, u32 xindex, const char **name)
 
     lookup an x transition name via transition table
 
@@ -201,21 +278,24 @@ x_table_lookup
     :param u32 xindex:
         index into x transition table
 
+    :param const char \*\*name:
+        returns: name tested to find label (NOT NULL)
+
 .. _`x_table_lookup.return`:
 
 Return
 ------
 
-refcounted profile, or NULL on failure (MAYBE NULL)
+refcounted label, or NULL on failure (MAYBE NULL)
 
-.. _`x_to_profile`:
+.. _`x_to_label`:
 
-x_to_profile
-============
+x_to_label
+==========
 
-.. c:function:: struct aa_profile *x_to_profile(struct aa_profile *profile, const char *name, u32 xindex)
+.. c:function:: struct aa_label *x_to_label(struct aa_profile *profile, const char *name, u32 xindex, const char **lookupname, const char **info)
 
-    get target profile for a given xindex
+    get target label for a given xindex
 
     :param struct aa_profile \*profile:
         current profile  (NOT NULL)
@@ -226,19 +306,25 @@ x_to_profile
     :param u32 xindex:
         index into x transition table
 
-.. _`x_to_profile.description`:
+    :param const char \*\*lookupname:
+        returns: name used in lookup if one was specified (NOT NULL)
+
+    :param const char \*\*info:
+        *undescribed*
+
+.. _`x_to_label.description`:
 
 Description
 -----------
 
-find profile for a transition index
+find label for a transition index
 
-.. _`x_to_profile.return`:
+.. _`x_to_label.return`:
 
 Return
 ------
 
-refcounted profile or NULL if not found available
+refcounted label or NULL if not found available
 
 .. _`apparmor_bprm_set_creds`:
 
@@ -259,77 +345,19 @@ Return
 
 %0 or error on failure
 
-.. _`apparmor_bprm_secureexec`:
+.. _`apparmor_bprm_set_creds.todo`:
 
-apparmor_bprm_secureexec
-========================
+TODO
+----
 
-.. c:function:: int apparmor_bprm_secureexec(struct linux_binprm *bprm)
-
-    determine if secureexec is needed
-
-    :param struct linux_binprm \*bprm:
-        binprm for exec  (NOT NULL)
-
-.. _`apparmor_bprm_secureexec.return`:
-
-Return
-------
-
-%1 if secureexec is needed else \ ``0``\ 
-
-.. _`apparmor_bprm_committing_creds`:
-
-apparmor_bprm_committing_creds
-==============================
-
-.. c:function:: void apparmor_bprm_committing_creds(struct linux_binprm *bprm)
-
-    do task cleanup on committing new creds
-
-    :param struct linux_binprm \*bprm:
-        binprm for the exec  (NOT NULL)
-
-.. _`apparmor_bprm_committed_creds`:
-
-apparmor_bprm_committed_creds
-=============================
-
-.. c:function:: void apparmor_bprm_committed_creds(struct linux_binprm *bprm)
-
-    do cleanup after new creds committed
-
-    :param struct linux_binprm \*bprm:
-        binprm for the exec  (NOT NULL)
-
-.. _`new_compound_name`:
-
-new_compound_name
-=================
-
-.. c:function:: char *new_compound_name(const char *n1, const char *n2)
-
-    create an hname with \ ``n2``\  appended to \ ``n1``\ 
-
-    :param const char \*n1:
-        base of hname  (NOT NULL)
-
-    :param const char \*n2:
-        name to append (NOT NULL)
-
-.. _`new_compound_name.return`:
-
-Return
-------
-
-new name or NULL on error
+once the other paths are done see if we can't refactor into a fn
 
 .. _`aa_change_hat`:
 
 aa_change_hat
 =============
 
-.. c:function:: int aa_change_hat(const char  *hats, int count, u64 token, bool permtest)
+.. c:function:: int aa_change_hat(const char  *hats, int count, u64 token, int flags)
 
     change hat to/from subprofile
 
@@ -342,41 +370,38 @@ aa_change_hat
     :param u64 token:
         magic value to validate the hat change
 
-    :param bool permtest:
-        true if this is just a permission test
+    :param int flags:
+        flags affecting behavior of the change
 
 .. _`aa_change_hat.description`:
 
 Description
 -----------
 
+Returns \ ``0``\  on success, error otherwise.
+
 Change to the first profile specified in \ ``hats``\  that exists, and store
 the \ ``hat_magic``\  in the current task context.  If the count == 0 and the
 \ ``token``\  matches that stored in the current task context, return to the
 top level profile.
 
-Returns \ ``0``\  on success, error otherwise.
+change_hat only applies to profiles in the current ns, and each profile
+in the ns must make the same transition otherwise change_hat will fail.
 
 .. _`aa_change_profile`:
 
 aa_change_profile
 =================
 
-.. c:function:: int aa_change_profile(const char *fqname, bool onexec, bool permtest, bool stack)
+.. c:function:: int aa_change_profile(const char *fqname, int flags)
 
     perform a one-way profile transition
 
     :param const char \*fqname:
         name of profile may include namespace (NOT NULL)
 
-    :param bool onexec:
-        whether this transition is to take place immediately or at exec
-
-    :param bool permtest:
-        true if this is just a permission test
-
-    :param bool stack:
-        *undescribed*
+    :param int flags:
+        flags affecting change behavior
 
 .. _`aa_change_profile.description`:
 

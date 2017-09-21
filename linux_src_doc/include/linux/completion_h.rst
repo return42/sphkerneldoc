@@ -42,19 +42,19 @@ Description
 This macro declares and initializes a completion structure on the kernel
 stack.
 
-.. _`init_completion`:
+.. _`__init_completion`:
 
-init_completion
-===============
+__init_completion
+=================
 
-.. c:function:: void init_completion(struct completion *x)
+.. c:function:: void __init_completion(struct completion *x)
 
     Initialize a dynamically allocated completion
 
     :param struct completion \*x:
         pointer to completion structure that is to be initialized
 
-.. _`init_completion.description`:
+.. _`__init_completion.description`:
 
 Description
 -----------

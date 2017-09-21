@@ -54,6 +54,7 @@ Definition
         MODE_ONE_SIZE,
         MODE_NO_REDUCED,
         MODE_NO_STEREO,
+        MODE_NO_420,
         MODE_STALE,
         MODE_BAD,
         MODE_ERROR
@@ -171,6 +172,9 @@ MODE_NO_REDUCED
 
 MODE_NO_STEREO
     stereo modes not supported
+
+MODE_NO_420
+    ycbcr 420 modes not supported
 
 MODE_STALE
     mode has become stale
@@ -488,6 +492,29 @@ at the refresh rate userspace can observe through vblank timestamps. Then
 there's the hardware timings, which are corrected for interlacing,
 double-clocking and similar things. They are provided as a convenience, and
 can be appropriately computed using \ :c:func:`drm_mode_set_crtcinfo`\ .
+
+For printing you can use \ ``DRM_MODE_FMT``\  and \ :c:func:`DRM_MODE_ARG`\ .
+
+.. _`drm_mode_fmt`:
+
+DRM_MODE_FMT
+============
+
+.. c:function::  DRM_MODE_FMT()
+
+    printf string for \ :c:type:`struct drm_display_mode <drm_display_mode>`\ 
+
+.. _`drm_mode_arg`:
+
+DRM_MODE_ARG
+============
+
+.. c:function::  DRM_MODE_ARG( m)
+
+    printf arguments for \ :c:type:`struct drm_display_mode <drm_display_mode>`\ 
+
+    :param  m:
+        display mode
 
 .. _`drm_mode_is_stereo`:
 

@@ -201,10 +201,8 @@ sdma_init
 Description
 -----------
 
-sdma_init initializes the specified number of engines.
-
-The code initializes each sde, its csrs.  Interrupts
-are not required to be enabled.
+Initializes each sde and its csrs.
+Interrupts are not required to be enabled.
 
 .. _`sdma_init.return`:
 
@@ -350,7 +348,7 @@ This routine dumps the sde to the indicated seq file.
 sdma_send_txreq
 ===============
 
-.. c:function:: int sdma_send_txreq(struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx)
+.. c:function:: int sdma_send_txreq(struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, bool pkts_sent)
 
     submit a tx req to ring
 
@@ -362,6 +360,9 @@ sdma_send_txreq
 
     :param struct sdma_txreq \*tx:
         sdma_txreq to submit
+
+    :param bool pkts_sent:
+        has any packet been sent yet?
 
 .. _`sdma_send_txreq.description`:
 

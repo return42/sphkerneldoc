@@ -371,6 +371,7 @@ Definition
         uint32_t prefer_shadow;
         bool async_page_flip;
         bool allow_fb_modifiers;
+        struct drm_property *modifiers_property;
         uint32_t cursor_width;
         uint32_t cursor_height;
         const struct drm_mode_config_helper_funcs *helper_private;
@@ -682,6 +683,9 @@ async_page_flip
 allow_fb_modifiers
 
     Whether the driver supports fb modifiers in the ADDFB2.1 ioctl call.
+
+modifiers_property
+    *undescribed*
 
 cursor_width
     hint to userspace for max cursor width

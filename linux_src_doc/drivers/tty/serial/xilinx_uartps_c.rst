@@ -47,7 +47,7 @@ clk_rate_change_nb
     Notifier block for clock changes
 
 quirks
-    *undescribed*
+    Flags for RXBS support.
 
 .. _`cdns_uart_handle_rx`:
 

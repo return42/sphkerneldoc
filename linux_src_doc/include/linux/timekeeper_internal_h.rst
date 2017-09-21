@@ -19,7 +19,6 @@ Definition
 
     struct tk_read_base {
         struct clocksource *clock;
-        u64 (*read)(struct clocksource *cs);
         u64 mask;
         u64 cycle_last;
         u32 mult;
@@ -35,9 +34,6 @@ Members
 
 clock
     Current clocksource used for timekeeping.
-
-read
-    Read function of \ ``clock``\ 
 
 mask
     Bitmask for two's complement subtraction of non 64bit clocks
@@ -97,11 +93,11 @@ Definition
         unsigned int clock_was_set_seq;
         u8 cs_was_changed_seq;
         ktime_t next_leap_ktime;
-        struct timespec64 raw_time;
+        u64 raw_sec;
         u64 cycle_interval;
         u64 xtime_interval;
         s64 xtime_remainder;
-        u32 raw_interval;
+        u64 raw_interval;
         u64 ntp_tick;
         s64 ntp_error;
         u32 ntp_error_shift;
@@ -154,8 +150,8 @@ cs_was_changed_seq
 next_leap_ktime
     CLOCK_MONOTONIC time value of a pending leap-second
 
-raw_time
-    Monotonic raw base time in timespec64 format
+raw_sec
+    CLOCK_MONOTONIC_RAW  time in seconds
 
 cycle_interval
     Number of clock cycles in one NTP interval
@@ -169,7 +165,7 @@ xtime_remainder
     \ ``cycle_interval``\ 
 
 raw_interval
-    Raw nano seconds accumulated per NTP interval.
+    Shifted raw nano seconds accumulated per NTP interval.
 
 ntp_tick
     *undescribed*

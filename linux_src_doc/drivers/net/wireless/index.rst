@@ -13,6 +13,7 @@ wireless
     intersil/index
     marvell/index
     mediatek/index
+    quantenna/index
     ralink/index
     realtek/index
     rsi/index

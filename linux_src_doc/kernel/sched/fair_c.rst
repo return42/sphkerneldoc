@@ -29,15 +29,14 @@ In order to avoid having to look at the other cfs_rq's, we use a
 differential update where we store the last value we propagated. This in
 turn allows skipping updates if the differential is 'small'.
 
-Updating tg's load_avg is necessary before \ :c:func:`update_cfs_share`\  (which is
-done) and \ :c:func:`effective_load`\  (which is not done because it is too costly).
+Updating tg's load_avg is necessary before \ :c:func:`update_cfs_share`\ .
 
 .. _`update_cfs_rq_load_avg`:
 
 update_cfs_rq_load_avg
 ======================
 
-.. c:function:: int update_cfs_rq_load_avg(u64 now, struct cfs_rq *cfs_rq, bool update_freq)
+.. c:function:: int update_cfs_rq_load_avg(u64 now, struct cfs_rq *cfs_rq)
 
     update the cfs_rq's load/util averages
 
@@ -46,9 +45,6 @@ update_cfs_rq_load_avg
 
     :param struct cfs_rq \*cfs_rq:
         cfs_rq to update
-
-    :param bool update_freq:
-        should we call \ :c:func:`cfs_rq_util_change`\  or will the call do so
 
 .. _`update_cfs_rq_load_avg.description`:
 

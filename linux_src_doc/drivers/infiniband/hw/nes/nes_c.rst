@@ -118,35 +118,6 @@ nes_remove
     :param struct pci_dev \*pcidev:
         *undescribed*
 
-.. _`nes_show_wqm_quanta`:
-
-nes_show_wqm_quanta
-===================
-
-.. c:function:: ssize_t nes_show_wqm_quanta(struct device_driver *ddp, char *buf)
-
-    :param struct device_driver \*ddp:
-        *undescribed*
-
-    :param char \*buf:
-        *undescribed*
-
-.. _`nes_store_wqm_quanta`:
-
-nes_store_wqm_quanta
-====================
-
-.. c:function:: ssize_t nes_store_wqm_quanta(struct device_driver *ddp, const char *buf, size_t count)
-
-    :param struct device_driver \*ddp:
-        *undescribed*
-
-    :param const char \*buf:
-        *undescribed*
-
-    :param size_t count:
-        *undescribed*
-
 .. _`nes_init_module`:
 
 nes_init_module

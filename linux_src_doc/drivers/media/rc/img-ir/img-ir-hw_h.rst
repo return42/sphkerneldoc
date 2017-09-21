@@ -324,7 +324,7 @@ Definition
 .. code-block:: c
 
     struct img_ir_scancode_req {
-        enum rc_type protocol;
+        enum rc_proto protocol;
         u32 scancode;
         u8 toggle;
     }
@@ -336,7 +336,7 @@ Members
 
 protocol
     Protocol code of received message (defaults to
-    RC_TYPE_UNKNOWN).
+    RC_PROTO_UNKNOWN).
 
 scancode
     Scan code of received message (must be written by

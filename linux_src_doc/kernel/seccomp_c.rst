@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct seccomp_filter {
-        atomic_t usage;
+        refcount_t usage;
         struct seccomp_filter *prev;
         struct bpf_prog *prog;
     }

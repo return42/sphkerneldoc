@@ -219,6 +219,39 @@ defined or that are dynamically allocated on the heap.  Also as with
 \ :c:func:`init_rcu_head_on_stack`\ , this function has no effect for
 !CONFIG_DEBUG_OBJECTS_RCU_HEAD kernel builds.
 
+.. _`call_rcu_tasks`:
+
+call_rcu_tasks
+==============
+
+.. c:function:: void call_rcu_tasks(struct rcu_head *rhp, rcu_callback_t func)
+
+    Queue an RCU for invocation task-based grace period
+
+    :param struct rcu_head \*rhp:
+        structure to be used for queueing the RCU updates.
+
+    :param rcu_callback_t func:
+        actual callback function to be invoked after the grace period
+
+.. _`call_rcu_tasks.description`:
+
+Description
+-----------
+
+The callback function will be invoked some time after a full grace
+period elapses, in other words after all currently executing RCU
+read-side critical sections have completed. \ :c:func:`call_rcu_tasks`\  assumes
+that the read-side critical sections end at a voluntary context
+switch (not a preemption!), entry into idle, or transition to usermode
+execution.  As such, there are no read-side primitives analogous to
+\ :c:func:`rcu_read_lock`\  and \ :c:func:`rcu_read_unlock`\  because this primitive is intended
+to determine that all tasks have passed through a safe state, not so
+much for data-strcuture synchronization.
+
+See the description of \ :c:func:`call_rcu`\  for more detailed information on
+memory ordering guarantees.
+
 .. _`synchronize_rcu_tasks`:
 
 synchronize_rcu_tasks

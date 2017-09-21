@@ -23,6 +23,8 @@ Definition
         int (*write_attribute_mem)(struct dvb_ca_en50221 *ca, int slot, int address, u8 value);
         int (*read_cam_control)(struct dvb_ca_en50221 *ca, int slot, u8 address);
         int (*write_cam_control)(struct dvb_ca_en50221 *ca, int slot, u8 address, u8 value);
+        int (*read_data)(struct dvb_ca_en50221 *ca, int slot, u8 *ebuf, int ecount);
+        int (*write_data)(struct dvb_ca_en50221 *ca, int slot, u8 *ebuf, int ecount);
         int (*slot_reset)(struct dvb_ca_en50221 *ca, int slot);
         int (*slot_shutdown)(struct dvb_ca_en50221 *ca, int slot);
         int (*slot_ts_enable)(struct dvb_ca_en50221 *ca, int slot);
@@ -50,6 +52,12 @@ read_cam_control
 
 write_cam_control
     function for reading the control interface on the CAM
+
+read_data
+    function for reading data (block mode)
+
+write_data
+    function for writing data (block mode)
 
 slot_reset
     function to reset the CAM slot

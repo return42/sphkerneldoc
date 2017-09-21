@@ -221,12 +221,12 @@ expected to be called only while under the ptp_rx_lock.
 i40e_ptp_rx_hang
 ================
 
-.. c:function:: void i40e_ptp_rx_hang(struct i40e_vsi *vsi)
+.. c:function:: void i40e_ptp_rx_hang(struct i40e_pf *pf)
 
     Detect error case when Rx timestamp registers are hung
 
-    :param struct i40e_vsi \*vsi:
-        The VSI with the rings relevant to 1588
+    :param struct i40e_pf \*pf:
+        The PF private data structure
 
 .. _`i40e_ptp_rx_hang.description`:
 
@@ -237,6 +237,28 @@ This watchdog task is scheduled to detect error case where hardware has
 dropped an Rx packet that was timestamped when the ring is full. The
 particular error is rare but leaves the device in a state unable to timestamp
 any future packets.
+
+.. _`i40e_ptp_tx_hang`:
+
+i40e_ptp_tx_hang
+================
+
+.. c:function:: void i40e_ptp_tx_hang(struct i40e_pf *pf)
+
+    Detect error case when Tx timestamp register is hung
+
+    :param struct i40e_pf \*pf:
+        The PF private data structure
+
+.. _`i40e_ptp_tx_hang.description`:
+
+Description
+-----------
+
+This watchdog task is run periodically to make sure that we clear the Tx
+timestamp logic if we don't obtain a timestamp in a reasonable amount of
+time. It is unexpected in the normal case but if it occurs it results in
+permanently prevent timestamps of future packets
 
 .. _`i40e_ptp_tx_hwtstamp`:
 

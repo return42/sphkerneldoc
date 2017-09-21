@@ -86,7 +86,7 @@ not be the case and this function should be used then.
 acpi_add_pm_notifier
 ====================
 
-.. c:function:: acpi_status acpi_add_pm_notifier(struct acpi_device *adev, struct device *dev, void (*work_func)(struct work_struct *work))
+.. c:function:: acpi_status acpi_add_pm_notifier(struct acpi_device *adev, struct device *dev, void (*func)(struct acpi_device_wakeup_context *context))
 
     Register PM notify handler for given ACPI device.
 
@@ -96,7 +96,7 @@ acpi_add_pm_notifier
     :param struct device \*dev:
         Device to generate a wakeup event for while handling the notification.
 
-    :param void (\*work_func)(struct work_struct \*work):
+    :param void (\*func)(struct acpi_device_wakeup_context \*context):
         Work function to execute when handling the notification.
 
 .. _`acpi_add_pm_notifier.note`:
@@ -197,72 +197,91 @@ The caller must ensure that \ ``dev``\  is valid before using this function.
 acpi_pm_notify_work_func
 ========================
 
-.. c:function:: void acpi_pm_notify_work_func(struct work_struct *work)
+.. c:function:: void acpi_pm_notify_work_func(struct acpi_device_wakeup_context *context)
 
     ACPI devices wakeup notification work function.
 
-    :param struct work_struct \*work:
-        Work item to handle.
+    :param struct acpi_device_wakeup_context \*context:
+        Device wakeup context.
 
-.. _`acpi_device_wakeup`:
+.. _`acpi_device_wakeup_enable`:
 
-acpi_device_wakeup
-==================
+acpi_device_wakeup_enable
+=========================
 
-.. c:function:: int acpi_device_wakeup(struct acpi_device *adev, u32 target_state, bool enable)
+.. c:function:: int acpi_device_wakeup_enable(struct acpi_device *adev, u32 target_state)
 
-    Enable/disable wakeup functionality for device.
+    Enable wakeup functionality for device.
 
     :param struct acpi_device \*adev:
-        ACPI device to enable/disable wakeup functionality for.
+        ACPI device to enable wakeup functionality for.
 
     :param u32 target_state:
         State the system is transitioning into.
 
-    :param bool enable:
-        Whether to enable or disable the wakeup functionality.
-
-.. _`acpi_device_wakeup.description`:
+.. _`acpi_device_wakeup_enable.description`:
 
 Description
 -----------
 
-Enable/disable the GPE associated with \ ``adev``\  so that it can generate
-wakeup signals for the device in response to external (remote) events and
-enable/disable device wakeup power.
+Enable the GPE associated with \ ``adev``\  so that it can generate wakeup signals
+for the device in response to external (remote) events and enable wakeup
+power for it.
 
 Callers must ensure that \ ``adev``\  is a valid ACPI device node before executing
 this function.
 
-.. _`acpi_pm_device_run_wake`:
+.. _`acpi_device_wakeup_disable`:
 
-acpi_pm_device_run_wake
-=======================
+acpi_device_wakeup_disable
+==========================
 
-.. c:function:: int acpi_pm_device_run_wake(struct device *phys_dev, bool enable)
+.. c:function:: void acpi_device_wakeup_disable(struct acpi_device *adev)
+
+    Disable wakeup functionality for device.
+
+    :param struct acpi_device \*adev:
+        ACPI device to disable wakeup functionality for.
+
+.. _`acpi_device_wakeup_disable.description`:
+
+Description
+-----------
+
+Disable the GPE associated with \ ``adev``\  and disable wakeup power for it.
+
+Callers must ensure that \ ``adev``\  is a valid ACPI device node before executing
+this function.
+
+.. _`acpi_pm_set_device_wakeup`:
+
+acpi_pm_set_device_wakeup
+=========================
+
+.. c:function:: int acpi_pm_set_device_wakeup(struct device *dev, bool enable)
 
     Enable/disable remote wakeup for given device.
 
-    :param struct device \*phys_dev:
-        *undescribed*
+    :param struct device \*dev:
+        Device to enable/disable to generate wakeup events.
 
     :param bool enable:
         Whether to enable or disable the wakeup functionality.
 
-.. _`acpi_pm_device_sleep_wake`:
+.. _`acpi_pm_set_bridge_wakeup`:
 
-acpi_pm_device_sleep_wake
+acpi_pm_set_bridge_wakeup
 =========================
 
-.. c:function:: int acpi_pm_device_sleep_wake(struct device *dev, bool enable)
+.. c:function:: int acpi_pm_set_bridge_wakeup(struct device *dev, bool enable)
 
-    Enable or disable device to wake up the system.
+    Enable/disable remote wakeup for given bridge.
 
     :param struct device \*dev:
-        Device to enable/desible to wake up the system from sleep states.
+        Bridge device to enable/disable to generate wakeup events.
 
     :param bool enable:
-        Whether to enable or disable \ ``dev``\  to wake up the system.
+        Whether to enable or disable the wakeup functionality.
 
 .. _`acpi_dev_pm_low_power`:
 

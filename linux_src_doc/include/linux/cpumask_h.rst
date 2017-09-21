@@ -147,6 +147,33 @@ Description
 
 After the loop, cpu is >= nr_cpu_ids.
 
+.. _`for_each_cpu_wrap`:
+
+for_each_cpu_wrap
+=================
+
+.. c:function::  for_each_cpu_wrap( cpu,  mask,  start)
+
+    iterate over every cpu in a mask, starting at a specified location
+
+    :param  cpu:
+        the (optionally unsigned) integer iterator
+
+    :param  mask:
+        the cpumask poiter
+
+    :param  start:
+        the start location
+
+.. _`for_each_cpu_wrap.description`:
+
+Description
+-----------
+
+The implementation does not assume any bit in \ ``mask``\  is set (including \ ``start``\ ).
+
+After the loop, cpu is >= nr_cpu_ids.
+
 .. _`for_each_cpu_and`:
 
 for_each_cpu_and

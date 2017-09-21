@@ -137,11 +137,11 @@ crypto_dh_decode_key
         Buffer holding a packet key that should be decoded
 
     :param unsigned int len:
-        Lenth of the packet private key buffer
+        Length of the packet private key buffer
 
     :param struct dh \*params:
         Buffer allocated by the caller that is filled with the
-        unpacket DH private key.
+        unpacked DH private key.
 
 .. _`crypto_dh_decode_key.description`:
 

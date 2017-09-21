@@ -20,6 +20,7 @@ Definition
     struct inv_mpu6050_reg_map {
         u8 sample_rate_div;
         u8 lpf;
+        u8 accel_lpf;
         u8 user_ctrl;
         u8 fifo_en;
         u8 gyro_config;
@@ -47,6 +48,9 @@ sample_rate_div
 
 lpf
     Configures internal low pass filter.
+
+accel_lpf
+    Configures accelerometer low pass filter.
 
 user_ctrl
     Enables/resets the FIFO.
@@ -114,7 +118,6 @@ Definition
         unsigned int fsr:2;
         unsigned int lpf:3;
         unsigned int accl_fs:2;
-        unsigned int enable:1;
         unsigned int accl_fifo_enable:1;
         unsigned int gyro_fifo_enable:1;
         u16 fifo_rate;
@@ -133,9 +136,6 @@ lpf
 
 accl_fs
     accel full scale range.
-
-enable
-    master enable state.
 
 accl_fifo_enable
     enable accel data output

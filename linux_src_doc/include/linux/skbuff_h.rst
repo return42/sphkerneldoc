@@ -1,6 +1,47 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/skbuff.h
 
+.. _`skb_frag_foreach_page`:
+
+skb_frag_foreach_page
+=====================
+
+.. c:function::  skb_frag_foreach_page( f,  f_off,  f_len,  p,  p_off,  p_len,  copied)
+
+    loop over pages in a fragment
+
+    :param  f:
+        skb frag to operate on
+
+    :param  f_off:
+        offset from start of f->page.p
+
+    :param  f_len:
+        length from f_off to loop over
+
+    :param  p:
+        (temp var) current page
+
+    :param  p_off:
+        (temp var) offset from start of current page,
+        non-zero only on first page.
+
+    :param  p_len:
+        (temp var) length in current page,
+        < PAGE_SIZE only on first and last page.
+
+    :param  copied:
+        (temp var) length so far, excluding current p_len.
+
+.. _`skb_frag_foreach_page.description`:
+
+Description
+-----------
+
+     A fragment can hold a compound page, in which case per-page
+     operations, notably kmap_atomic, must be called for each
+     regular page.
+
 .. _`skb_shared_hwtstamps`:
 
 struct skb_shared_hwtstamps
@@ -44,62 +85,6 @@ the same device.
 This structure is attached to packets as part of the
 \ :c:type:`struct skb_shared_info <skb_shared_info>`\ . Use \ :c:func:`skb_hwtstamps`\  to get a pointer.
 
-.. _`skb_mstamp`:
-
-struct skb_mstamp
-=================
-
-.. c:type:: struct skb_mstamp
-
-    multi resolution time stamps
-
-.. _`skb_mstamp.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct skb_mstamp {
-        union {unnamed_union};
-    }
-
-.. _`skb_mstamp.members`:
-
-Members
--------
-
-{unnamed_union}
-    anonymous
-
-
-.. _`skb_mstamp_get`:
-
-skb_mstamp_get
-==============
-
-.. c:function:: void skb_mstamp_get(struct skb_mstamp *cl)
-
-    get current timestamp
-
-    :param struct skb_mstamp \*cl:
-        place to store timestamps
-
-.. _`skb_mstamp_us_delta`:
-
-skb_mstamp_us_delta
-===================
-
-.. c:function:: u32 skb_mstamp_us_delta(const struct skb_mstamp *t1, const struct skb_mstamp *t0)
-
-    compute the difference in usec between two skb_mstamp
-
-    :param const struct skb_mstamp \*t1:
-        pointer to newest sample
-
-    :param const struct skb_mstamp \*t0:
-        pointer to oldest sample
-
 .. _`sk_buff`:
 
 struct sk_buff
@@ -130,7 +115,7 @@ Definition
         unsigned char *head;
         unsigned char * *data;
         unsigned int truesize;
-        atomic_t users;
+        refcount_t users;
     }
 
 .. _`sk_buff.members`:
@@ -283,6 +268,32 @@ Description
 Returns true if skb is a fast clone, and its clone is not freed.
 Some drivers call \ :c:func:`skb_orphan`\  in their \ :c:func:`ndo_start_xmit`\ ,
 so we also check that this didnt happen.
+
+.. _`skb_pad`:
+
+skb_pad
+=======
+
+.. c:function:: int skb_pad(struct sk_buff *skb, int pad)
+
+    zero pad the tail of an skb
+
+    :param struct sk_buff \*skb:
+        buffer to pad
+
+    :param int pad:
+        space to pad
+
+.. _`skb_pad.description`:
+
+Description
+-----------
+
+     Ensure that a buffer is followed by a padding area that is zero
+     filled. Used by network drivers which may DMA or transfer data
+     beyond the buffer end onto the wire.
+
+     May return error in out of memory cases. The skb is freed on error.
 
 .. _`skb_queue_empty`:
 
@@ -1562,6 +1573,34 @@ Description
      is untouched. Otherwise it is extended. Returns zero on
      success. The skb is freed on error.
 
+.. _`__skb_put_padto`:
+
+__skb_put_padto
+===============
+
+.. c:function:: int __skb_put_padto(struct sk_buff *skb, unsigned int len, bool free_on_error)
+
+    increase size and pad an skbuff up to a minimal size
+
+    :param struct sk_buff \*skb:
+        buffer to pad
+
+    :param unsigned int len:
+        minimal length
+
+    :param bool free_on_error:
+        free buffer on error
+
+.. _`__skb_put_padto.description`:
+
+Description
+-----------
+
+     Pads up a buffer to ensure the trailing bytes exist and are
+     blanked. If the buffer already contains sufficient data it
+     is untouched. Otherwise it is extended. Returns zero on
+     success. The skb is freed on error if \ ``free_on_error``\  is true.
+
 .. _`skb_put_padto`:
 
 skb_put_padto
@@ -1705,7 +1744,7 @@ Description
 skb_push_rcsum
 ==============
 
-.. c:function:: unsigned char *skb_push_rcsum(struct sk_buff *skb, unsigned int len)
+.. c:function:: void *skb_push_rcsum(struct sk_buff *skb, unsigned int len)
 
     push skb and update receive checksum
 

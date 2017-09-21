@@ -11,7 +11,7 @@ snd_soc_find_dai
     Find a registered DAI
 
     :param const struct snd_soc_dai_link_component \*dlc:
-        name of the DAI and optional component info to match
+        name of the DAI or the DAI driver and optional component info to match
 
 .. _`snd_soc_find_dai.description`:
 
@@ -420,6 +420,37 @@ Description
 
 Configures the CODEC master (MCLK) or system (SYSCLK) clocking.
 
+.. _`snd_soc_component_set_sysclk`:
+
+snd_soc_component_set_sysclk
+============================
+
+.. c:function:: int snd_soc_component_set_sysclk(struct snd_soc_component *component, int clk_id, int source, unsigned int freq, int dir)
+
+    configure COMPONENT system or master clock.
+
+    :param struct snd_soc_component \*component:
+        COMPONENT
+
+    :param int clk_id:
+        DAI specific clock ID
+
+    :param int source:
+        Source for the clock
+
+    :param unsigned int freq:
+        new clock frequency in Hz
+
+    :param int dir:
+        new clock direction - input/output.
+
+.. _`snd_soc_component_set_sysclk.description`:
+
+Description
+-----------
+
+Configures the CODEC master (MCLK) or system (SYSCLK) clocking.
+
 .. _`snd_soc_dai_set_clkdiv`:
 
 snd_soc_dai_set_clkdiv
@@ -801,14 +832,14 @@ removes the regmap instance from the component.
 This function should only be used if \ :c:func:`snd_soc_component_init_regmap`\  was used
 to initialize the regmap instance.
 
-.. _`snd_soc_unregister_component`:
+.. _`__snd_soc_unregister_component`:
 
-snd_soc_unregister_component
-============================
+__snd_soc_unregister_component
+==============================
 
-.. c:function:: void snd_soc_unregister_component(struct device *dev)
+.. c:function:: int __snd_soc_unregister_component(struct device *dev)
 
-    Unregister a component from the ASoC core
+    Unregister all related component from the ASoC core
 
     :param struct device \*dev:
         The device to unregister

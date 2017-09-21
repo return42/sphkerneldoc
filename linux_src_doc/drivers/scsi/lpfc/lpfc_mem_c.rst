@@ -121,7 +121,7 @@ Description
 -----------
 
 Allocates a DMA-mapped buffer from the lpfc_mbuf_pool PCI pool.
-Allocates from generic pci_pool_alloc function first and if that fails and
+Allocates from generic dma_pool_alloc function first and if that fails and
 mem_flags has MEM_PRI set (the only defined flag), returns an mbuf from the
 HBA's pool.
 
@@ -246,7 +246,7 @@ Description
 -----------
 
 Allocates a DMA-mapped buffer from the lpfc_sg_dma_buf_pool
-PCI pool.  Allocates from generic pci_pool_alloc function.
+PCI pool.  Allocates from generic dma_pool_alloc function.
 
 .. _`lpfc_nvmet_buf_alloc.return`:
 

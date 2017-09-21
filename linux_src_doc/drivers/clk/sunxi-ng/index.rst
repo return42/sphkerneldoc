@@ -8,3 +8,4 @@ sunxi-ng
     :maxdepth: 1
 
     ccu_div_h
+    ccu_mmc_timing_c

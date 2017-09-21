@@ -82,7 +82,6 @@ Definition
         DMA_MEMSET,
         DMA_MEMSET_SG,
         DMA_INTERRUPT,
-        DMA_SG,
         DMA_PRIVATE,
         DMA_ASYNC_TX,
         DMA_SLAVE,
@@ -118,9 +117,6 @@ DMA_MEMSET_SG
     *undescribed*
 
 DMA_INTERRUPT
-    *undescribed*
-
-DMA_SG
     *undescribed*
 
 DMA_PRIVATE
@@ -284,7 +280,8 @@ Definition
         DMA_PREP_PQ_DISABLE_Q,
         DMA_PREP_CONTINUE,
         DMA_PREP_FENCE,
-        DMA_CTRL_REUSE
+        DMA_CTRL_REUSE,
+        DMA_PREP_CMD
     };
 
 .. _`dma_ctrl_flags.constants`:
@@ -313,6 +310,11 @@ DMA_PREP_FENCE
 DMA_CTRL_REUSE
     client can reuse the descriptor and submit again till
     cleared or freed
+
+DMA_PREP_CMD
+    tell the driver that the data passed to DMA API is command
+    data and the descriptor should be in different format from normal
+    data descriptors.
 
 .. _`sum_check_bits`:
 
@@ -1119,7 +1121,6 @@ Definition
         struct dma_async_tx_descriptor *(*device_prep_dma_memset)(struct dma_chan *chan, dma_addr_t dest, int value, size_t len, unsigned long flags);
         struct dma_async_tx_descriptor *(*device_prep_dma_memset_sg)(struct dma_chan *chan, struct scatterlist *sg, unsigned int nents, int value, unsigned long flags);
         struct dma_async_tx_descriptor *(*device_prep_dma_interrupt)( struct dma_chan *chan, unsigned long flags);
-        struct dma_async_tx_descriptor *(*device_prep_dma_sg)(struct dma_chan *chan,struct scatterlist *dst_sg, unsigned int dst_nents,struct scatterlist *src_sg, unsigned int src_nents, unsigned long flags);
         struct dma_async_tx_descriptor *(*device_prep_slave_sg)(struct dma_chan *chan, struct scatterlist *sgl,unsigned int sg_len, enum dma_transfer_direction direction, unsigned long flags, void *context);
         struct dma_async_tx_descriptor *(*device_prep_dma_cyclic)(struct dma_chan *chan, dma_addr_t buf_addr, size_t buf_len,size_t period_len, enum dma_transfer_direction direction, unsigned long flags);
         struct dma_async_tx_descriptor *(*device_prep_interleaved_dma)(struct dma_chan *chan, struct dma_interleaved_template *xt, unsigned long flags);
@@ -1232,9 +1233,6 @@ device_prep_dma_memset_sg
 
 device_prep_dma_interrupt
     prepares an end of chain interrupt operation
-
-device_prep_dma_sg
-    *undescribed*
 
 device_prep_slave_sg
     prepares a slave dma operation

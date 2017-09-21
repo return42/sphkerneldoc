@@ -210,7 +210,7 @@ hash_for_each_possible_rcu
 
 .. c:function::  hash_for_each_possible_rcu( name,  obj,  member,  key)
 
-    iterate over all possible objects hashing to the same bucket in an rcu enabled hashtable in a rcu enabled hashtable
+    iterate over all possible objects hashing to the same bucket in an rcu enabled hashtable
 
     :param  name:
         hashtable to iterate

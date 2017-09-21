@@ -69,6 +69,25 @@ Description
 
 See \ :c:func:`qeth_send_control_data`\  for explanation of the arguments.
 
+.. _`qeth_prep_flush_pack_buffer`:
+
+qeth_prep_flush_pack_buffer
+===========================
+
+.. c:function:: int qeth_prep_flush_pack_buffer(struct qeth_qdio_out_q *queue)
+
+    Prepares flushing of a packing buffer.
+
+    :param struct qeth_qdio_out_q \*queue:
+        queue to check for packing buffer
+
+.. _`qeth_prep_flush_pack_buffer.description`:
+
+Description
+-----------
+
+Returns number of buffers that were prepared for flush.
+
 .. _`qeth_get_priority_queue`:
 
 qeth_get_priority_queue
@@ -146,6 +165,84 @@ Note
 ----
 
 extra_elems is not included in the returned result.
+
+.. _`qeth_push_hdr`:
+
+qeth_push_hdr
+=============
+
+.. c:function:: int qeth_push_hdr(struct sk_buff *skb, struct qeth_hdr **hdr, unsigned int len)
+
+    push a qeth_hdr onto an skb.
+
+    :param struct sk_buff \*skb:
+        skb that the qeth_hdr should be pushed onto.
+
+    :param struct qeth_hdr \*\*hdr:
+        double pointer to a qeth_hdr. When returning with >= 0,
+        it contains a valid pointer to a qeth_hdr.
+
+    :param unsigned int len:
+        length of the hdr that needs to be pushed on.
+
+.. _`qeth_push_hdr.description`:
+
+Description
+-----------
+
+Returns the pushed length. If the header can't be pushed on
+(eg. because it would cross a page boundary), it is allocated from
+the cache instead and 0 is returned.
+Error to create the hdr is indicated by returning with < 0.
+
+.. _`qeth_fill_buffer`:
+
+qeth_fill_buffer
+================
+
+.. c:function:: int qeth_fill_buffer(struct qeth_qdio_out_q *queue, struct qeth_qdio_out_buffer *buf, struct sk_buff *skb, struct qeth_hdr *hdr, unsigned int offset, unsigned int hd_len)
+
+    map skb into an output buffer
+
+    :param struct qeth_qdio_out_q \*queue:
+        QDIO queue to submit the buffer on
+
+    :param struct qeth_qdio_out_buffer \*buf:
+        buffer to transport the skb
+
+    :param struct sk_buff \*skb:
+        skb to map into the buffer
+
+    :param struct qeth_hdr \*hdr:
+        qeth_hdr for this skb. Either at skb->data, or allocated
+        from qeth_core_header_cache.
+
+    :param unsigned int offset:
+        when mapping the skb, start at skb->data + offset
+
+    :param unsigned int hd_len:
+        if > 0, build a dedicated header element of this size
+
+.. _`qeth_vm_request_mac`:
+
+qeth_vm_request_mac
+===================
+
+.. c:function:: int qeth_vm_request_mac(struct qeth_card *card)
+
+    Request a hypervisor-managed MAC address
+
+    :param struct qeth_card \*card:
+        pointer to a qeth_card
+
+.. _`qeth_vm_request_mac.description`:
+
+Description
+-----------
+
+Returns
+0, if a MAC address has been set for the card's netdevice
+a return code, for various error conditions
 
 .. This file was automatic generated / don't edit.
 

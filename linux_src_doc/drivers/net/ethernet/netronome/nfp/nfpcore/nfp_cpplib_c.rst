@@ -113,5 +113,50 @@ Return
 
 length of the io, or -ERRNO
 
+.. _`nfp_cpp_map_area`:
+
+nfp_cpp_map_area
+================
+
+.. c:function:: u8 __iomem *nfp_cpp_map_area(struct nfp_cpp *cpp, const char *name, int domain, int target, u64 addr, unsigned long size, struct nfp_cpp_area **area)
+
+    Helper function to map an area
+
+    :param struct nfp_cpp \*cpp:
+        NFP CPP handler
+
+    :param const char \*name:
+        Name for the area
+
+    :param int domain:
+        CPP domain
+
+    :param int target:
+        CPP target
+
+    :param u64 addr:
+        CPP address
+
+    :param unsigned long size:
+        Size of the area
+
+    :param struct nfp_cpp_area \*\*area:
+        Area handle (output)
+
+.. _`nfp_cpp_map_area.description`:
+
+Description
+-----------
+
+Map an area of IOMEM access.  To undo the effect of this function call
+\ ``nfp_cpp_area_release_free``\ (\*area).
+
+.. _`nfp_cpp_map_area.return`:
+
+Return
+------
+
+Pointer to memory mapped area or ERR_PTR
+
 .. This file was automatic generated / don't edit.
 

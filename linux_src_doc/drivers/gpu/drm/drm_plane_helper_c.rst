@@ -235,7 +235,7 @@ drm_primary_helper_disable
         plane to disable
 
     :param struct drm_modeset_acquire_ctx \*ctx:
-        *undescribed*
+        lock acquire context, not used here
 
 .. _`drm_primary_helper_disable.description`:
 

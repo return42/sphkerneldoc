@@ -21,57 +21,55 @@ Description
 Autoprobe for the IRQ line used by the card by triggering an IRQ
 and then looking to see what interrupt actually turned up.
 
-.. _`generic_ncr5380_pread`:
+.. _`generic_ncr5380_precv`:
 
-generic_NCR5380_pread
+generic_NCR5380_precv
 =====================
 
-.. c:function:: int generic_NCR5380_pread(struct NCR5380_hostdata *hostdata, unsigned char *dst, int len)
+.. c:function:: int generic_NCR5380_precv(struct NCR5380_hostdata *hostdata, unsigned char *dst, int len)
 
-    pseudo DMA read
+    pseudo DMA receive
 
     :param struct NCR5380_hostdata \*hostdata:
         scsi host private data
 
     :param unsigned char \*dst:
-        buffer to read into
+        buffer to write into
 
     :param int len:
-        buffer length
+        transfer size
 
-.. _`generic_ncr5380_pread.description`:
+.. _`generic_ncr5380_precv.description`:
 
 Description
 -----------
 
-Perform a pseudo DMA mode read from an NCR53C400 or equivalent
-controller
+Perform a pseudo DMA mode receive from a 53C400 or equivalent device.
 
-.. _`generic_ncr5380_pwrite`:
+.. _`generic_ncr5380_psend`:
 
-generic_NCR5380_pwrite
-======================
+generic_NCR5380_psend
+=====================
 
-.. c:function:: int generic_NCR5380_pwrite(struct NCR5380_hostdata *hostdata, unsigned char *src, int len)
+.. c:function:: int generic_NCR5380_psend(struct NCR5380_hostdata *hostdata, unsigned char *src, int len)
 
-    pseudo DMA write
+    pseudo DMA send
 
     :param struct NCR5380_hostdata \*hostdata:
         scsi host private data
 
     :param unsigned char \*src:
-        *undescribed*
+        buffer to read from
 
     :param int len:
-        buffer length
+        transfer size
 
-.. _`generic_ncr5380_pwrite.description`:
+.. _`generic_ncr5380_psend.description`:
 
 Description
 -----------
 
-Perform a pseudo DMA mode read from an NCR53C400 or equivalent
-controller
+Perform a pseudo DMA mode send to a 53C400 or equivalent device.
 
 .. This file was automatic generated / don't edit.
 

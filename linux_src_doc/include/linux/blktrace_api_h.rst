@@ -1,17 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/blktrace_api.h
 
-.. _`blk_add_trace_msg`:
+.. _`blk_add_cgroup_trace_msg`:
 
-blk_add_trace_msg
-=================
+blk_add_cgroup_trace_msg
+========================
 
-.. c:function::  blk_add_trace_msg( q,  fmt,  ...)
+.. c:function::  blk_add_cgroup_trace_msg( q,  cg,  fmt,  ...)
 
     Add a (simple) message to the blktrace stream
 
     :param  q:
         queue the io is for
+
+    :param  cg:
+        *undescribed*
 
     :param  fmt:
         format to print message in
@@ -20,14 +23,14 @@ blk_add_trace_msg
     :param ... :
         variable arguments
 
-.. _`blk_add_trace_msg.description`:
+.. _`blk_add_cgroup_trace_msg.description`:
 
 Description
 -----------
 
 Records a (simple) message onto the blktrace stream.
 
-.. _`blk_add_trace_msg.note`:
+.. _`blk_add_cgroup_trace_msg.note`:
 
 NOTE
 ----

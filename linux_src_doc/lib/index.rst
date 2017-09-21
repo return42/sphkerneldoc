@@ -24,6 +24,7 @@ lib
     crc-itu-t_c
     crc16_c
     crc32_c
+    crc4_c
     crc7_c
     debugobjects_c
     devres_c
@@ -31,6 +32,7 @@ lib
     div64_c
     dma-debug_c
     earlycpio_c
+    errseq_c
     flex_array_c
     gen_crc32table_c
     genalloc_c
@@ -57,6 +59,7 @@ lib
     parser_c
     pci_iomap_c
     percpu-refcount_c
+    percpu_counter_c
     percpu_ida_c
     plist_c
     prime_numbers_c
@@ -77,6 +80,7 @@ lib
     strncpy_from_user_c
     strnlen_user_c
     syscall_c
+    test_kmod_c
     textsearch_c
     timerqueue_c
     uuid_c

@@ -169,6 +169,25 @@ Description
 
 Returns the current buffer position, in frames.
 
+.. _`amdtp_stream_pcm_ack`:
+
+amdtp_stream_pcm_ack
+====================
+
+.. c:function:: int amdtp_stream_pcm_ack(struct amdtp_stream *s)
+
+    acknowledge queued PCM frames
+
+    :param struct amdtp_stream \*s:
+        the AMDTP stream that transfers the PCM frames
+
+.. _`amdtp_stream_pcm_ack.description`:
+
+Description
+-----------
+
+Returns zero always.
+
 .. _`amdtp_stream_update`:
 
 amdtp_stream_update

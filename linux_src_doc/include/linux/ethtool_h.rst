@@ -99,6 +99,25 @@ ethtool_link_ksettings_add_link_mode
         one of the ETHTOOL_LINK_MODE\_\*\_BIT
         (not atomic, no bound checking)
 
+.. _`ethtool_link_ksettings_del_link_mode`:
+
+ethtool_link_ksettings_del_link_mode
+====================================
+
+.. c:function::  ethtool_link_ksettings_del_link_mode( ptr,  name,  mode)
+
+    clear bit in link_ksettings link mode mask
+
+    :param  ptr:
+        pointer to struct ethtool_link_ksettings
+
+    :param  name:
+        one of supported/advertising/lp_advertising
+
+    :param  mode:
+        one of the ETHTOOL_LINK_MODE\_\*\_BIT
+        (not atomic, no bound checking)
+
 .. _`ethtool_link_ksettings_test_link_mode`:
 
 ethtool_link_ksettings_test_link_mode
@@ -195,6 +214,8 @@ Definition
         int (*set_per_queue_coalesce)(struct net_device *, u32, struct ethtool_coalesce *);
         int (*get_link_ksettings)(struct net_device *, struct ethtool_link_ksettings *);
         int (*set_link_ksettings)(struct net_device *, const struct ethtool_link_ksettings *);
+        int (*get_fecparam)(struct net_device *, struct ethtool_fecparam *);
+        int (*set_fecparam)(struct net_device *, struct ethtool_fecparam *);
     }
 
 .. _`ethtool_ops.members`:
@@ -437,6 +458,12 @@ set_link_ksettings
     fields should be ignored (use \ ``__ETHTOOL_LINK_MODE_MASK_NBITS``\ 
     instead of the latter), any change to them will be overwritten
     by kernel. Returns a negative error code or zero.
+
+get_fecparam
+    *undescribed*
+
+set_fecparam
+    *undescribed*
 
 .. _`ethtool_ops.description`:
 

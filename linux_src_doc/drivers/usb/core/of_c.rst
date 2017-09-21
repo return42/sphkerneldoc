@@ -28,7 +28,8 @@ Find the node from device tree according to its port number.
 Return
 ------
 
-On success, a pointer to the device node, \ ``NULL``\  on failure.
+A pointer to the node with incremented refcount if found, or
+\ ``NULL``\  otherwise.
 
 .. _`usb_of_get_companion_dev`:
 
@@ -48,6 +49,9 @@ Description
 -----------
 
 Find the companion device from platform bus.
+
+Takes a reference to the returned struct device which needs to be dropped
+after use.
 
 .. _`usb_of_get_companion_dev.return`:
 

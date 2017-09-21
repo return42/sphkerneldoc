@@ -229,6 +229,7 @@ Definition
         struct st_sensor_bdu bdu;
         struct st_sensor_das das;
         struct st_sensor_data_ready_irq drdy_irq;
+        struct st_sensor_sim sim;
         bool multi_read_bit;
         unsigned int bootime;
     }
@@ -273,6 +274,9 @@ das
 
 drdy_irq
     Data ready register of the sensor.
+
+sim
+    SPI serial interface mode register of the sensor.
 
 multi_read_bit
     Use or not particular bit for [I2C/SPI] multi-read.

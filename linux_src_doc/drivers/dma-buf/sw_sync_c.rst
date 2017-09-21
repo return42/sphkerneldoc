@@ -49,15 +49,12 @@ has signaled or has an error condition.
 sync_pt_create
 ==============
 
-.. c:function:: struct sync_pt *sync_pt_create(struct sync_timeline *obj, int size, unsigned int value)
+.. c:function:: struct sync_pt *sync_pt_create(struct sync_timeline *obj, unsigned int value)
 
     creates a sync pt
 
     :param struct sync_timeline \*obj:
         *undescribed*
-
-    :param int size:
-        size to allocate for this pt
 
     :param unsigned int value:
         *undescribed*

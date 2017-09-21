@@ -6,9 +6,12 @@
 test__parse_no_sample_id_all
 ============================
 
-.. c:function:: int test__parse_no_sample_id_all(int subtest __maybe_unused)
+.. c:function:: int test__parse_no_sample_id_all(int subtest __maybe_unused, int subtest __maybe_unused)
 
     test parsing with no sample_id_all bit set.
+
+    :param int subtest __maybe_unused:
+        *undescribed*
 
     :param int subtest __maybe_unused:
         *undescribed*

@@ -19,7 +19,7 @@ Description
 -----------
 
 The caller must ensure that preemption is disabled.
-The clock and sched_clock_base get changed via stop_machine.
+The clock and tod_clock_base get changed via stop_machine.
 Therefore preemption must be disabled when calling this
 function, otherwise the returned value is not guaranteed to
 be monotonic.
@@ -60,6 +60,50 @@ we end up with
 
 ns = ((2^9 \* th + tl) \* 125 ) >> 9;
 -> ns = (th \* 125) + ((tl \* 125) >> 9);
+
+.. _`tod_after`:
+
+tod_after
+=========
+
+.. c:function:: int tod_after(unsigned long long a, unsigned long long b)
+
+    compare two 64 bit TOD values
+
+    :param unsigned long long a:
+        first 64 bit TOD timestamp
+
+    :param unsigned long long b:
+        second 64 bit TOD timestamp
+
+.. _`tod_after.return`:
+
+Return
+------
+
+true if a is later than b
+
+.. _`tod_after_eq`:
+
+tod_after_eq
+============
+
+.. c:function:: int tod_after_eq(unsigned long long a, unsigned long long b)
+
+    compare two 64 bit TOD values
+
+    :param unsigned long long a:
+        first 64 bit TOD timestamp
+
+    :param unsigned long long b:
+        second 64 bit TOD timestamp
+
+.. _`tod_after_eq.return`:
+
+Return
+------
+
+true if a is later than b
 
 .. This file was automatic generated / don't edit.
 

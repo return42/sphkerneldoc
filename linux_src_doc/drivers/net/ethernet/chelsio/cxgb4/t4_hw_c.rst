@@ -613,6 +613,123 @@ number (if present) through the \ ``vers``\  return value pointer.  We return
 this in the Firmware Version Format since it's convenient.  Return
 0 on success, -ENOENT if no Expansion ROM is present.
 
+.. _`t4_get_vpd_version`:
+
+t4_get_vpd_version
+==================
+
+.. c:function:: int t4_get_vpd_version(struct adapter *adapter, u32 *vers)
+
+    return the VPD version
+
+    :param struct adapter \*adapter:
+        the adapter
+
+    :param u32 \*vers:
+        where to place the version
+
+.. _`t4_get_vpd_version.description`:
+
+Description
+-----------
+
+Reads the VPD via the Firmware interface (thus this can only be called
+once we're ready to issue Firmware commands).  The format of the
+VPD version is adapter specific.  Returns 0 on success, an error on
+failure.
+
+Note that early versions of the Firmware didn't include the ability
+to retrieve the VPD version, so we zero-out the return-value parameter
+in that case to avoid leaving it with garbage in it.
+
+Also note that the Firmware will return its cached copy of the VPD
+Revision ID, not the actual Revision ID as written in the Serial
+EEPROM.  This is only an issue if a new VPD has been written and the
+Firmware/Chip haven't yet gone through a RESET sequence.  So it's best
+to defer calling this routine till after a FW_RESET_CMD has been issued
+if the Host Driver will be performing a full adapter initialization.
+
+.. _`t4_get_scfg_version`:
+
+t4_get_scfg_version
+===================
+
+.. c:function:: int t4_get_scfg_version(struct adapter *adapter, u32 *vers)
+
+    return the Serial Configuration version
+
+    :param struct adapter \*adapter:
+        the adapter
+
+    :param u32 \*vers:
+        where to place the version
+
+.. _`t4_get_scfg_version.description`:
+
+Description
+-----------
+
+Reads the Serial Configuration Version via the Firmware interface
+(thus this can only be called once we're ready to issue Firmware
+commands).  The format of the Serial Configuration version is
+adapter specific.  Returns 0 on success, an error on failure.
+
+Note that early versions of the Firmware didn't include the ability
+to retrieve the Serial Configuration version, so we zero-out the
+return-value parameter in that case to avoid leaving it with
+garbage in it.
+
+Also note that the Firmware will return its cached copy of the Serial
+Initialization Revision ID, not the actual Revision ID as written in
+the Serial EEPROM.  This is only an issue if a new VPD has been written
+and the Firmware/Chip haven't yet gone through a RESET sequence.  So
+it's best to defer calling this routine till after a FW_RESET_CMD has
+been issued if the Host Driver will be performing a full adapter
+initialization.
+
+.. _`t4_get_version_info`:
+
+t4_get_version_info
+===================
+
+.. c:function:: int t4_get_version_info(struct adapter *adapter)
+
+    extract various chip/firmware version information
+
+    :param struct adapter \*adapter:
+        the adapter
+
+.. _`t4_get_version_info.description`:
+
+Description
+-----------
+
+Reads various chip/firmware version numbers and stores them into the
+adapter Adapter Parameters structure.  If any of the efforts fails
+the first failure will be returned, but all of the version numbers
+will be read.
+
+.. _`t4_dump_version_info`:
+
+t4_dump_version_info
+====================
+
+.. c:function:: void t4_dump_version_info(struct adapter *adapter)
+
+    dump all of the adapter configuration IDs
+
+    :param struct adapter \*adapter:
+        the adapter
+
+.. _`t4_dump_version_info.description`:
+
+Description
+-----------
+
+Dumps all of the various bits of adapter configuration version/revision
+IDs information.  This is typically called at some point after
+\ :c:func:`t4_get_version_info`\  has been called.
+
 .. _`t4_check_fw_version`:
 
 t4_check_fw_version
@@ -797,26 +914,66 @@ t4_fwcache
     :param enum fw_params_param_dev_fwcache op:
         the operation (flush or flush and invalidate)
 
+.. _`fwcaps16_to_caps32`:
+
+fwcaps16_to_caps32
+==================
+
+.. c:function:: fw_port_cap32_t fwcaps16_to_caps32(fw_port_cap16_t caps16)
+
+    convert 16-bit Port Capabilities to 32-bits
+
+    :param fw_port_cap16_t caps16:
+        a 16-bit Port Capabilities value
+
+.. _`fwcaps16_to_caps32.description`:
+
+Description
+-----------
+
+Returns the equivalent 32-bit Port Capabilities value.
+
+.. _`fwcaps32_to_caps16`:
+
+fwcaps32_to_caps16
+==================
+
+.. c:function:: fw_port_cap16_t fwcaps32_to_caps16(fw_port_cap32_t caps32)
+
+    convert 32-bit Port Capabilities to 16-bits
+
+    :param fw_port_cap32_t caps32:
+        a 32-bit Port Capabilities value
+
+.. _`fwcaps32_to_caps16.description`:
+
+Description
+-----------
+
+Returns the equivalent 16-bit Port Capabilities value.  Note that
+not all 32-bit Port Capabilities can be represented in the 16-bit
+Port Capabilities and some fields/values may not make it.
+
 .. _`t4_link_l1cfg`:
 
 t4_link_l1cfg
 =============
 
-.. c:function:: int t4_link_l1cfg(struct adapter *adap, unsigned int mbox, unsigned int port, struct link_config *lc)
+.. c:function:: int t4_link_l1cfg(struct adapter *adapter, unsigned int mbox, unsigned int port, struct link_config *lc)
 
     apply link configuration to MAC/PHY
 
-    :param struct adapter \*adap:
-        *undescribed*
+    :param struct adapter \*adapter:
+        the adapter
 
     :param unsigned int mbox:
-        *undescribed*
+        the Firmware Mailbox to use
 
     :param unsigned int port:
-        *undescribed*
+        the Port ID
 
     :param struct link_config \*lc:
-        the requested link configuration
+        the Port's Link Configuration
 
 .. _`t4_link_l1cfg.description`:
 
@@ -1656,19 +1813,43 @@ Description
 
 Returns performance statistics from PMRX.
 
+.. _`compute_mps_bg_map`:
+
+compute_mps_bg_map
+==================
+
+.. c:function:: unsigned int compute_mps_bg_map(struct adapter *adapter, int pidx)
+
+    compute the MPS Buffer Group Map for a Port
+
+    :param struct adapter \*adapter:
+        *undescribed*
+
+    :param int pidx:
+        the port index
+
+.. _`compute_mps_bg_map.description`:
+
+Description
+-----------
+
+Computes and returns a bitmap indicating which MPS buffer groups are
+associated with the given Port.  Bit i is set if buffer group i is
+used by the Port.
+
 .. _`t4_get_mps_bg_map`:
 
 t4_get_mps_bg_map
 =================
 
-.. c:function:: unsigned int t4_get_mps_bg_map(struct adapter *adap, int idx)
+.. c:function:: unsigned int t4_get_mps_bg_map(struct adapter *adapter, int pidx)
 
     return the buffer groups associated with a port
 
-    :param struct adapter \*adap:
+    :param struct adapter \*adapter:
         the adapter
 
-    :param int idx:
+    :param int pidx:
         the port index
 
 .. _`t4_get_mps_bg_map.description`:
@@ -1677,8 +1858,32 @@ Description
 -----------
 
 Returns a bitmap indicating which MPS buffer groups are associated
-with the given port.  Bit i is set if buffer group i is used by the
-port.
+with the given Port.  Bit i is set if buffer group i is used by the
+Port.
+
+.. _`t4_get_tp_ch_map`:
+
+t4_get_tp_ch_map
+================
+
+.. c:function:: unsigned int t4_get_tp_ch_map(struct adapter *adap, int pidx)
+
+    return TP ingress channels associated with a port
+
+    :param struct adapter \*adap:
+        *undescribed*
+
+    :param int pidx:
+        the port index
+
+.. _`t4_get_tp_ch_map.description`:
+
+Description
+-----------
+
+Returns a bitmap indicating which TP Ingress Channels are associated
+with a given Port.  Bit i is set if TP Ingress Channel i is used by
+the Port.
 
 .. _`t4_get_port_type_description`:
 
@@ -2165,7 +2370,7 @@ performs initialization that generally doesn't depend on user input.
 t4_query_params_rw
 ==================
 
-.. c:function:: int t4_query_params_rw(struct adapter *adap, unsigned int mbox, unsigned int pf, unsigned int vf, unsigned int nparams, const u32 *params, u32 *val, int rw)
+.. c:function:: int t4_query_params_rw(struct adapter *adap, unsigned int mbox, unsigned int pf, unsigned int vf, unsigned int nparams, const u32 *params, u32 *val, int rw, bool sleep_ok)
 
     query FW or device parameters
 
@@ -2192,6 +2397,9 @@ t4_query_params_rw
 
     :param int rw:
         Write and read flag
+
+    :param bool sleep_ok:
+        if true, we may sleep awaiting mbox cmd completion
 
 .. _`t4_query_params_rw.description`:
 
@@ -2913,6 +3121,57 @@ Description
 
 Returns a string representation of the Link Down Reason Code.
 
+.. _`fwcap_to_speed`:
+
+fwcap_to_speed
+==============
+
+.. c:function:: unsigned int fwcap_to_speed(fw_port_cap32_t caps)
+
+    :param fw_port_cap32_t caps:
+        *undescribed*
+
+.. _`fwcap_to_fwspeed`:
+
+fwcap_to_fwspeed
+================
+
+.. c:function:: fw_port_cap32_t fwcap_to_fwspeed(fw_port_cap32_t acaps)
+
+    return highest speed in Port Capabilities
+
+    :param fw_port_cap32_t acaps:
+        advertised Port Capabilities
+
+.. _`fwcap_to_fwspeed.description`:
+
+Description
+-----------
+
+Get the highest speed for the port from the advertised Port
+Capabilities.  It will be either the highest speed from the list of
+speeds or whatever user has set using ethtool.
+
+.. _`lstatus_to_fwcap`:
+
+lstatus_to_fwcap
+================
+
+.. c:function:: fw_port_cap32_t lstatus_to_fwcap(u32 lstatus)
+
+    translate old lstatus to 32-bit Port Capabilities
+
+    :param u32 lstatus:
+        old FW_PORT_ACTION_GET_PORT_INFO lstatus value
+
+.. _`lstatus_to_fwcap.description`:
+
+Description
+-----------
+
+Translates old FW_PORT_ACTION_GET_PORT_INFO lstatus field into new
+32-bit Port Capabilities value.
+
 .. _`t4_handle_get_port_info`:
 
 t4_handle_get_port_info
@@ -2934,6 +3193,57 @@ Description
 -----------
 
 Processes a GET_PORT_INFO FW reply message.
+
+.. _`t4_update_port_info`:
+
+t4_update_port_info
+===================
+
+.. c:function:: int t4_update_port_info(struct port_info *pi)
+
+    retrieve and update port information if changed
+
+    :param struct port_info \*pi:
+        the port_info
+
+.. _`t4_update_port_info.description`:
+
+Description
+-----------
+
+We issue a Get Port Information Command to the Firmware and, if
+successful, we check to see if anything is different from what we
+last recorded and update things accordingly.
+
+.. _`t4_get_link_params`:
+
+t4_get_link_params
+==================
+
+.. c:function:: int t4_get_link_params(struct port_info *pi, unsigned int *link_okp, unsigned int *speedp, unsigned int *mtup)
+
+    retrieve basic link parameters for given port
+
+    :param struct port_info \*pi:
+        the port
+
+    :param unsigned int \*link_okp:
+        value return pointer for link up/down
+
+    :param unsigned int \*speedp:
+        value return pointer for speed (Mb/s)
+
+    :param unsigned int \*mtup:
+        value return pointer for mtu
+
+.. _`t4_get_link_params.retrieves-basic-link-parameters-for-a-port`:
+
+Retrieves basic link parameters for a port
+------------------------------------------
+
+link up/down, speed (Mb/s),
+and MTU for a specified port.  A negative error is returned on
+failure; 0 on success.
 
 .. _`t4_handle_fw_rpl`:
 
@@ -2962,18 +3272,18 @@ Processes a FW message, such as link state change messages.
 init_link_config
 ================
 
-.. c:function:: void init_link_config(struct link_config *lc, unsigned int pcaps, unsigned int acaps)
+.. c:function:: void init_link_config(struct link_config *lc, fw_port_cap32_t pcaps, fw_port_cap32_t acaps)
 
     initialize a link's SW state
 
     :param struct link_config \*lc:
-        structure holding the link state
+        pointer to structure holding the link state
 
-    :param unsigned int pcaps:
-        *undescribed*
+    :param fw_port_cap32_t pcaps:
+        link Port Capabilities
 
-    :param unsigned int acaps:
-        *undescribed*
+    :param fw_port_cap32_t acaps:
+        link current Advertised Port Capabilities
 
 .. _`init_link_config.description`:
 
@@ -3172,7 +3482,7 @@ t4_init_portinfo
 
 .. c:function:: int t4_init_portinfo(struct port_info *pi, int mbox, int port, int pf, int vf, u8 mac)
 
-    allocate a virtual interface amd initialize port_info
+    allocate a virtual interface and initialize port_info
 
     :param struct port_info \*pi:
         the port_info
@@ -3443,6 +3753,31 @@ t4_idma_monitor
 
     :param int ticks:
         number of ticks since the last IDMA Monitor call
+
+.. _`t4_load_cfg`:
+
+t4_load_cfg
+===========
+
+.. c:function:: int t4_load_cfg(struct adapter *adap, const u8 *cfg_data, unsigned int size)
+
+    download config file
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param const u8 \*cfg_data:
+        the cfg text file to write
+
+    :param unsigned int size:
+        text file size
+
+.. _`t4_load_cfg.description`:
+
+Description
+-----------
+
+Write the supplied config text file to the card's serial flash.
 
 .. _`t4_set_vf_mac_acl`:
 

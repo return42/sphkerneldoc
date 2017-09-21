@@ -48,6 +48,13 @@ This will wake up all threads waiting on this particular completion event.
 It may be assumed that this function implies a write memory barrier before
 changing the task state if and only if any tasks are woken up.
 
+Since \ :c:func:`complete_all`\  sets the completion of \ ``x``\  permanently to done
+to allow multiple waiters to finish, a call to \ :c:func:`reinit_completion`\ 
+must be used on \ ``x``\  if \ ``x``\  is to be used again. The code must make
+sure that all waiters have woken and finished before reinitializing
+\ ``x``\ . Also note that the function \ :c:func:`completion_done`\  can not be used
+to know if there are still waiters after \ :c:func:`complete_all`\  has been called.
+
 .. _`wait_for_completion`:
 
 wait_for_completion
@@ -318,6 +325,8 @@ Return
 
 0 if there are waiters (wait_for_completion() in progress)
 1 if there are no waiters.
+
+Note, this will always return true if \ :c:func:`complete_all`\  was called on \ ``X``\ .
 
 .. This file was automatic generated / don't edit.
 

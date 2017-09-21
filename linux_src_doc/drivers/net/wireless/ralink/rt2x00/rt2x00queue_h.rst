@@ -1192,7 +1192,7 @@ rt2x00queue_dma_timeout
 _rt2x00_desc_read
 =================
 
-.. c:function:: void _rt2x00_desc_read(__le32 *desc, const u8 word, __le32 *value)
+.. c:function:: __le32 _rt2x00_desc_read(__le32 *desc, const u8 word)
 
     Read a word from the hardware descriptor.
 
@@ -1202,15 +1202,12 @@ _rt2x00_desc_read
     :param const u8 word:
         Word index from where the descriptor should be read.
 
-    :param __le32 \*value:
-        Address where the descriptor value should be written into.
-
 .. _`rt2x00_desc_read`:
 
 rt2x00_desc_read
 ================
 
-.. c:function:: void rt2x00_desc_read(__le32 *desc, const u8 word, u32 *value)
+.. c:function:: u32 rt2x00_desc_read(__le32 *desc, const u8 word)
 
     Read a word from the hardware descriptor, this function will take care of the byte ordering.
 
@@ -1219,9 +1216,6 @@ rt2x00_desc_read
 
     :param const u8 word:
         Word index from where the descriptor should be read.
-
-    :param u32 \*value:
-        Address where the descriptor value should be written into.
 
 .. _`_rt2x00_desc_write`:
 

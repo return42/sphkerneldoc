@@ -821,7 +821,7 @@ and \ ``vpref``\ .
 drm_hdmi_avi_infoframe_from_display_mode
 ========================================
 
-.. c:function:: int drm_hdmi_avi_infoframe_from_display_mode(struct hdmi_avi_infoframe *frame, const struct drm_display_mode *mode)
+.. c:function:: int drm_hdmi_avi_infoframe_from_display_mode(struct hdmi_avi_infoframe *frame, const struct drm_display_mode *mode, bool is_hdmi2_sink)
 
     fill an HDMI AVI infoframe with data from a DRM display mode
 
@@ -830,6 +830,9 @@ drm_hdmi_avi_infoframe_from_display_mode
 
     :param const struct drm_display_mode \*mode:
         DRM display mode
+
+    :param bool is_hdmi2_sink:
+        Sink is HDMI 2.0 compliant
 
 .. _`drm_hdmi_avi_infoframe_from_display_mode.return`:
 

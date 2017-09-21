@@ -24,6 +24,7 @@ Definition
         bool dualmaster;
         bool nomadik;
         bool pl080s;
+        bool ftdmac020;
         u32 max_transfer_size;
     }
 
@@ -45,13 +46,16 @@ dualmaster
     whether this version supports dual AHB masters or not.
 
 nomadik
-    whether the channels have Nomadik security extension bits
-    that need to be checked for permission before use and some registers are
-    missing
+    whether this variant is a ST Microelectronics Nomadik, where the
+    channels have Nomadik security extension bits that need to be checked
+    for permission before use and some registers are missing
 
 pl080s
-    whether this version is a PL080S, which has separate register and
-    LLI word for transfer size.
+    whether this variant is a Samsung PL080S, which has separate
+    register and LLI word for transfer size.
+
+ftdmac020
+    whether this variant is a Faraday Technology FTDMAC020
 
 max_transfer_size
     the maximum single element transfer size for this
@@ -113,9 +117,16 @@ Definition
         unsigned int id;
         void __iomem *base;
         void __iomem *reg_config;
+        void __iomem *reg_control;
+        void __iomem *reg_src;
+        void __iomem *reg_dst;
+        void __iomem *reg_lli;
+        void __iomem *reg_busy;
         spinlock_t lock;
         struct pl08x_dma_chan *serving;
         bool locked;
+        bool ftdmac020;
+        bool pl080s;
     }
 
 .. _`pl08x_phy_chan.members`:
@@ -132,6 +143,22 @@ base
 reg_config
     configuration address for this physical channel
 
+reg_control
+    control address for this physical channel
+
+reg_src
+    transfer source address register
+
+reg_dst
+    transfer destination address register
+
+reg_lli
+    transfer LLI address register
+
+reg_busy
+    if the variant has a special per-channel busy register,
+    this contains a pointer to it
+
 lock
     a lock to use when altering an instance of this struct
 
@@ -142,6 +169,12 @@ serving
 locked
     channel unavailable for the system, e.g. dedicated to secure
     world
+
+ftdmac020
+    channel is on a FTDMAC020
+
+pl080s
+    channel is on a PL08s
 
 .. _`pl08x_sg`:
 
@@ -370,6 +403,7 @@ Definition
     struct pl08x_driver_data {
         struct dma_device slave;
         struct dma_device memcpy;
+        bool has_slave;
         void __iomem *base;
         struct amba_device *adev;
         const struct vendor_data *vd;
@@ -387,10 +421,13 @@ Members
 -------
 
 slave
-    slave engine for this instance
+    optional slave engine for this instance
 
 memcpy
     memcpy engine for this instance
+
+has_slave
+    the PL08x has a slave engine (routed signals)
 
 base
     virtual memory base (remapped) for the PL08x

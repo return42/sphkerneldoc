@@ -100,7 +100,6 @@ Definition
         u8 sbal_last;
         u8 sbal_limit;
         u8 sbale_curr;
-        u8 sbal_response;
         u16 qdio_outb_usage;
     }
 
@@ -126,9 +125,6 @@ sbal_limit
 
 sbale_curr
     current sbale at creation of this request
-
-sbal_response
-    sbal used in interrupt
 
 qdio_outb_usage
     usage of outbound queue
@@ -327,18 +323,6 @@ zfcp_qdio_set_data_div
 
     :param u32 count:
         The data division count
-
-.. _`zfcp_qdio_sbale_count`:
-
-zfcp_qdio_sbale_count
-=====================
-
-.. c:function:: unsigned int zfcp_qdio_sbale_count(struct scatterlist *sg)
-
-    count sbale used
-
-    :param struct scatterlist \*sg:
-        pointer to struct scatterlist
 
 .. _`zfcp_qdio_real_bytes`:
 

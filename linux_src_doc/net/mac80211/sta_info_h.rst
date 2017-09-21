@@ -378,6 +378,7 @@ Definition
         u8 tid_rx_token;
         unsigned long tid_rx_timer_expired;
         unsigned long tid_rx_stop_requested;
+        unsigned long tid_rx_manage_offl;
         unsigned long agg_session_valid;
         unsigned long unexpected_agg;
         struct work_struct work;
@@ -411,6 +412,10 @@ tid_rx_timer_expired
 tid_rx_stop_requested
     bitmap indicating which BA sessions per TID the
     driver requested to close until the work for it runs
+
+tid_rx_manage_offl
+    bitmap indicating which BA sessions were requested
+    to be treated as started/stopped due to offloading
 
 agg_session_valid
     bitmap indicating which TID has a rx BA session open on
@@ -672,6 +677,15 @@ nonpeer_pm
 fail_avg
     moving percentage of failed MSDUs
 
+.. _`sta_slow_threshold`:
+
+STA_SLOW_THRESHOLD
+==================
+
+.. c:function::  STA_SLOW_THRESHOLD()
+
+    station CoDel parameters will be scaled to be more lenient (to prevent starvation of slow stations). This value will be scaled by the number of active stations when it is being applied.
+
 .. _`sta_info`:
 
 struct sta_info
@@ -733,6 +747,7 @@ Definition
         enum ieee80211_sta_rx_bandwidth cur_max_bandwidth;
         enum ieee80211_smps_mode known_smps_mode;
         const struct ieee80211_cipher_scheme *cipher_scheme;
+        struct codel_params cparams;
         u8 reserved_tid;
         struct cfg80211_chan_def tdls_chandef;
         struct ieee80211_sta sta;
@@ -872,6 +887,9 @@ known_smps_mode
 
 cipher_scheme
     optional cipher scheme for this station
+
+cparams
+    CoDel parameters for this station.
 
 reserved_tid
     reserved TID (if any, otherwise IEEE80211_TID_UNRESERVED)

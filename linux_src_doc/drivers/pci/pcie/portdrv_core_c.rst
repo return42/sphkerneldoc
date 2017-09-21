@@ -21,14 +21,14 @@ Description
 Invoked automatically when device is being removed in response to
 device_unregister(dev).  Release all resources being claimed.
 
-.. _`pcie_port_enable_msix`:
+.. _`pcie_port_enable_irq_vec`:
 
-pcie_port_enable_msix
-=====================
+pcie_port_enable_irq_vec
+========================
 
-.. c:function:: int pcie_port_enable_msix(struct pci_dev *dev, int *irqs, int mask)
+.. c:function:: int pcie_port_enable_irq_vec(struct pci_dev *dev, int *irqs, int mask)
 
-    try to set up MSI-X as interrupt mode for given port
+    try to set up MSI-X or MSI as interrupt mode for given port
 
     :param struct pci_dev \*dev:
         PCI Express port to handle
@@ -39,7 +39,7 @@ pcie_port_enable_msix
     :param int mask:
         Bitmask of port capabilities returned by \ :c:func:`get_port_device_capability`\ 
 
-.. _`pcie_port_enable_msix.return-value`:
+.. _`pcie_port_enable_irq_vec.return-value`:
 
 Return value
 ------------

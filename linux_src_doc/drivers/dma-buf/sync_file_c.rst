@@ -43,6 +43,41 @@ Description
 Ensures \ ``fd``\  references a valid sync_file and returns a fence that
 represents all fence in the sync_file. On error NULL is returned.
 
+.. _`sync_file_get_name`:
+
+sync_file_get_name
+==================
+
+.. c:function:: char *sync_file_get_name(struct sync_file *sync_file, char *buf, int len)
+
+    get the name of the sync_file
+
+    :param struct sync_file \*sync_file:
+        sync_file to get the fence from
+
+    :param char \*buf:
+        destination buffer to copy sync_file name into
+
+    :param int len:
+        available size of destination buffer.
+
+.. _`sync_file_get_name.description`:
+
+Description
+-----------
+
+Each sync_file may have a name assigned either by the user (when merging
+sync_files together) or created from the fence it contains. In the latter
+case construction of the name is deferred until use, and so requires
+\ :c:func:`sync_file_get_name`\ .
+
+.. _`sync_file_get_name.return`:
+
+Return
+------
+
+a string representing the name.
+
 .. _`sync_file_merge`:
 
 sync_file_merge

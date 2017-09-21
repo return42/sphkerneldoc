@@ -101,14 +101,14 @@ abort. This avoids races between \ :c:func:`efi_capsule_update`\  and
 efi_capsule_update
 ==================
 
-.. c:function:: int efi_capsule_update(efi_capsule_header_t *capsule, struct page **pages)
+.. c:function:: int efi_capsule_update(efi_capsule_header_t *capsule, phys_addr_t *pages)
 
     send a capsule to the firmware
 
     :param efi_capsule_header_t \*capsule:
         capsule to send to firmware
 
-    :param struct page \*\*pages:
+    :param phys_addr_t \*pages:
         an array of capsule data pages
 
 .. _`efi_capsule_update.description`:

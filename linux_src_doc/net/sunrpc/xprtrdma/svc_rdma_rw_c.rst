@@ -35,6 +35,21 @@ Description
 
 Pages under I/O are freed by a subsequent Send completion.
 
+.. _`svc_rdma_wc_read_done`:
+
+svc_rdma_wc_read_done
+=====================
+
+.. c:function:: void svc_rdma_wc_read_done(struct ib_cq *cq, struct ib_wc *wc)
+
+    Handle completion of an RDMA Read ctx
+
+    :param struct ib_cq \*cq:
+        controlling Completion Queue
+
+    :param struct ib_wc \*wc:
+        Work Completion
+
 .. _`svc_rdma_send_write_chunk`:
 
 svc_rdma_send_write_chunk
@@ -60,6 +75,7 @@ Description
 
 Returns a non-negative number of bytes the chunk consumed, or
 \ ``-E2BIG``\  if the payload was larger than the Write chunk,
+\ ``-EINVAL``\  if client provided too many segments,
 \ ``-ENOMEM``\  if rdma_rw context pool was exhausted,
 \ ``-ENOTCONN``\  if posting failed (connection is lost),
 \ ``-EIO``\  if rdma_rw initialization failed (DMA mapping, etc).
@@ -92,9 +108,49 @@ Description
 
 Returns a non-negative number of bytes the chunk consumed, or
 \ ``-E2BIG``\  if the payload was larger than the Reply chunk,
+\ ``-EINVAL``\  if client provided too many segments,
 \ ``-ENOMEM``\  if rdma_rw context pool was exhausted,
 \ ``-ENOTCONN``\  if posting failed (connection is lost),
 \ ``-EIO``\  if rdma_rw initialization failed (DMA mapping, etc).
+
+.. _`svc_rdma_recv_read_chunk`:
+
+svc_rdma_recv_read_chunk
+========================
+
+.. c:function:: int svc_rdma_recv_read_chunk(struct svcxprt_rdma *rdma, struct svc_rqst *rqstp, struct svc_rdma_op_ctxt *head, __be32 *p)
+
+    Pull a Read chunk from the client
+
+    :param struct svcxprt_rdma \*rdma:
+        controlling RDMA transport
+
+    :param struct svc_rqst \*rqstp:
+        set of pages to use as Read sink buffers
+
+    :param struct svc_rdma_op_ctxt \*head:
+        pages under I/O collect here
+
+    :param __be32 \*p:
+        pointer to start of Read chunk
+
+.. _`svc_rdma_recv_read_chunk.return`:
+
+Return
+------
+
+%0 if all needed RDMA Reads were posted successfully,
+\ ``-EINVAL``\  if client provided too many segments,
+\ ``-ENOMEM``\  if rdma_rw context pool was exhausted,
+\ ``-ENOTCONN``\  if posting failed (connection is lost),
+\ ``-EIO``\  if rdma_rw initialization failed (DMA mapping, etc).
+
+.. _`svc_rdma_recv_read_chunk.assumptions`:
+
+Assumptions
+-----------
+
+- All Read segments in \ ``p``\  have the same Position value.
 
 .. This file was automatic generated / don't edit.
 

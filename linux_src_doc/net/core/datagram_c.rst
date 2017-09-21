@@ -14,7 +14,7 @@ __skb_try_recv_datagram
         socket
 
     :param unsigned int flags:
-        MSG_ flags
+        MSG\_ flags
 
     :param void (\*destructor)(struct sock \*sk, struct sk_buff \*skb):
         invoked under the receive lock on successful dequeue
@@ -78,7 +78,7 @@ skb_kill_datagram
         datagram skbuff
 
     :param unsigned int flags:
-        MSG_ flags
+        MSG\_ flags
 
 .. _`skb_kill_datagram.description`:
 
@@ -239,7 +239,7 @@ Description
 Note
 ----
 
-when you _don't_ use this routine for this protocol,
+when you *don't* use this routine for this protocol,
      and you use a different write policy from \ :c:func:`sock_writeable`\ 
      then please supply your own write_space callback.
 

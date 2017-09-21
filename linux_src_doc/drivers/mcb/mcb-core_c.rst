@@ -201,6 +201,21 @@ Description
 
 Add devices in the bus' internal device list to the system.
 
+.. _`mcb_get_resource`:
+
+mcb_get_resource
+================
+
+.. c:function:: struct resource *mcb_get_resource(struct mcb_device *dev, unsigned int type)
+
+    get a resource for a mcb device
+
+    :param struct mcb_device \*dev:
+        the mcb device
+
+    :param unsigned int type:
+        the type of resource
+
 .. _`mcb_request_mem`:
 
 mcb_request_mem

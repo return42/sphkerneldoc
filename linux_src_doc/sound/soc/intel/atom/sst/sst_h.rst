@@ -307,7 +307,6 @@ Definition
         unsigned int ddr_end;
         unsigned int ddr_base;
         unsigned int mailbox_recv_offset;
-        struct sst_shim_regs64 *shim_regs64;
         struct list_head block_list;
         struct list_head ipc_dispatch_list;
         struct sst_platform_info *pdata;
@@ -400,9 +399,6 @@ ddr_base
 
 mailbox_recv_offset
     *undescribed*
-
-shim_regs64
-    Struct to save shim registers
 
 block_list
     *undescribed*

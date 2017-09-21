@@ -182,7 +182,7 @@ Definition
         struct list_head list;
         const struct iommu_ops *ops;
         struct fwnode_handle *fwnode;
-        struct device dev;
+        struct device *dev;
     }
 
 .. _`iommu_device.members`:

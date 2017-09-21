@@ -150,6 +150,8 @@ Definition
         struct drm_minor *minor;
         struct idr object_idr;
         spinlock_t table_lock;
+        struct idr syncobj_idr;
+        spinlock_t syncobj_table_lock;
         struct file *filp;
         void *driver_priv;
         struct list_head fbs;
@@ -226,6 +228,12 @@ object_idr
 
 table_lock
     Protects \ ``object_idr``\ .
+
+syncobj_idr
+    Mapping of sync object handles to object pointers.
+
+syncobj_table_lock
+    Protects \ ``syncobj_idr``\ .
 
 filp
     Pointer to the core file structure.

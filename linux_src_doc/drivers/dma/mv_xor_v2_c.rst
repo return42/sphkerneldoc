@@ -103,6 +103,7 @@ Definition
         struct mv_xor_v2_sw_desc *sw_desq;
         int desc_size;
         unsigned int npendings;
+        unsigned int hw_queue_idx;
     }
 
 .. _`mv_xor_v2_device.members`:
@@ -149,6 +150,9 @@ desc_size
 npendings
     number of pending descriptors (for which tx_submit has
     been called, but not yet issue_pending)
+
+hw_queue_idx
+    *undescribed*
 
 .. _`mv_xor_v2_sw_desc`:
 

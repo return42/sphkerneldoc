@@ -408,5 +408,33 @@ Description
 
 Returns 0 on success or a negative error code on failure.
 
+.. _`drm_dp_read_desc`:
+
+drm_dp_read_desc
+================
+
+.. c:function:: int drm_dp_read_desc(struct drm_dp_aux *aux, struct drm_dp_desc *desc, bool is_branch)
+
+    read sink/branch descriptor from DPCD
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+    :param struct drm_dp_desc \*desc:
+        Device decriptor to fill from DPCD
+
+    :param bool is_branch:
+        true for branch devices, false for sink devices
+
+.. _`drm_dp_read_desc.description`:
+
+Description
+-----------
+
+Read DPCD 0x400 (sink) or 0x500 (branch) into \ ``desc``\ . Also debug log the
+identification.
+
+Returns 0 on success or a negative error code on failure.
+
 .. This file was automatic generated / don't edit.
 

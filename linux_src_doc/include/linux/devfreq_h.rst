@@ -237,27 +237,6 @@ devfreq_governor, the governor should protect its access with the
 struct mutex lock in struct devfreq. A governor may use this mutex
 to protect its own private data in void \*data as well.
 
-.. _`devfreq_update_stats`:
-
-devfreq_update_stats
-====================
-
-.. c:function:: int devfreq_update_stats(struct devfreq *df)
-
-    update the last_status pointer in struct devfreq
-
-    :param struct devfreq \*df:
-        the devfreq instance whose status needs updating
-
-.. _`devfreq_update_stats.description`:
-
-Description
------------
-
-Governors are recommended to use this function along with last_status,
-which allows other entities to reuse the last_status without affecting
-the values fetched later by governors.
-
 .. _`devfreq_simple_ondemand_data`:
 
 struct devfreq_simple_ondemand_data

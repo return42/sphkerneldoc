@@ -177,13 +177,6 @@ Description
    this function before \ :c:func:`end_that_request_last`\ , as that will put the
    request back on the free list thus corrupting the internal tag list.
 
-.. _`blk_queue_end_tag.notes`:
-
-Notes
------
-
-  queue lock must be held.
-
 .. _`blk_queue_start_tag`:
 
 blk_queue_start_tag
@@ -213,13 +206,6 @@ Description
    the request queue, so it's the drivers responsibility to readd
    it if it should need to be restarted for some reason.
 
-.. _`blk_queue_start_tag.notes`:
-
-Notes
------
-
-  queue lock must be held.
-
 .. _`blk_queue_invalidate_tags`:
 
 blk_queue_invalidate_tags
@@ -240,13 +226,6 @@ Description
   Hardware conditions may dictate a need to stop all pending requests.
   In this case, we will safely clear the block side of the tag queue and
   readd all requests to the request queue in the right order.
-
-.. _`blk_queue_invalidate_tags.notes`:
-
-Notes
------
-
-  queue lock must be held.
 
 .. This file was automatic generated / don't edit.
 

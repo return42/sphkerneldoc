@@ -72,6 +72,78 @@ wq
     progress used instead of the per chip wait queue
     when a hw controller is available.
 
+.. _`nand_ecc_step_info`:
+
+struct nand_ecc_step_info
+=========================
+
+.. c:type:: struct nand_ecc_step_info
+
+    ECC step information of ECC engine
+
+.. _`nand_ecc_step_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_ecc_step_info {
+        int stepsize;
+        const int *strengths;
+        int nstrengths;
+    }
+
+.. _`nand_ecc_step_info.members`:
+
+Members
+-------
+
+stepsize
+    data bytes per ECC step
+
+strengths
+    array of supported strengths
+
+nstrengths
+    number of supported strengths
+
+.. _`nand_ecc_caps`:
+
+struct nand_ecc_caps
+====================
+
+.. c:type:: struct nand_ecc_caps
+
+    capability of ECC engine
+
+.. _`nand_ecc_caps.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_ecc_caps {
+        const struct nand_ecc_step_info *stepinfos;
+        int nstepinfos;
+        int (*calc_ecc_bytes)(int step_size, int strength);
+    }
+
+.. _`nand_ecc_caps.members`:
+
+Members
+-------
+
+stepinfos
+    array of ECC step information
+
+nstepinfos
+    number of ECC step information
+
+calc_ecc_bytes
+    driver's hook to calculate ECC bytes per step
+
 .. _`nand_ecc_ctrl`:
 
 struct nand_ecc_ctrl
@@ -277,10 +349,10 @@ Definition
 .. code-block:: c
 
     struct nand_sdr_timings {
-        u32 tBERS_max;
+        u64 tBERS_max;
         u32 tCCS_min;
-        u32 tPROG_max;
-        u32 tR_max;
+        u64 tPROG_max;
+        u64 tR_max;
         u32 tALH_min;
         u32 tADL_min;
         u32 tALS_min;
@@ -599,11 +671,10 @@ Definition
         int(*waitfunc)(struct mtd_info *mtd, struct nand_chip *this);
         int (*erase)(struct mtd_info *mtd, int page);
         int (*scan_bbt)(struct mtd_info *mtd);
-        int (*errstat)(struct mtd_info *mtd, struct nand_chip *this, int state, int status, int page);
         int (*onfi_set_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
         int (*onfi_get_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
         int (*setup_read_retry)(struct mtd_info *mtd, int retry_mode);
-        int (*setup_data_interface)(struct mtd_info *mtd,const struct nand_data_interface *conf, bool check_only);
+        int (*setup_data_interface)(struct mtd_info *mtd, int chipnr, const struct nand_data_interface *conf);
         int chip_delay;
         unsigned int options;
         unsigned int bbt_options;
@@ -694,11 +765,6 @@ erase
 scan_bbt
     [REPLACEABLE] function to scan bad block table
 
-errstat
-    [OPTIONAL] hardware specific function to perform
-    additional error status checks (determine if errors are
-    correctable).
-
 onfi_set_features
     [REPLACEABLE] set the features for ONFI nand
 
@@ -710,7 +776,10 @@ setup_read_retry
     setting the read-retry mode. Mostly needed for MLC NAND.
 
 setup_data_interface
-    [OPTIONAL] setup the data interface and timing
+    [OPTIONAL] setup the data interface and timing. If
+    chipnr is set to \ ``NAND_DATA_IFACE_CHECK_ONLY``\  this
+    means the configuration should not be applied but
+    only checked.
 
 chip_delay
     [BOARDSPECIFIC] chip dependent delay for transferring

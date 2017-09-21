@@ -175,7 +175,7 @@ Description
 -----------
 
 This function encodes the \ ``ncycles``\  value as described in the datasheet
-(section "SMC Pulse Register"), and then stores the result in the
+(section "SMC Cycle Register"), and then stores the result in the
 \ ``conf``\ ->setup field at \ ``shift``\  position.
 
 Returns -EINVAL if \ ``shift``\  is invalid, -ERANGE if \ ``ncycles``\  does not fit in
@@ -213,16 +213,19 @@ Only valid on at91sam9/avr32 SoCs.
 atmel_hsmc_cs_conf_apply
 ========================
 
-.. c:function:: void atmel_hsmc_cs_conf_apply(struct regmap *regmap, int cs, const struct atmel_smc_cs_conf *conf)
+.. c:function:: void atmel_hsmc_cs_conf_apply(struct regmap *regmap, const struct atmel_hsmc_reg_layout *layout, int cs, const struct atmel_smc_cs_conf *conf)
 
     apply an SMC CS conf
 
     :param struct regmap \*regmap:
         the HSMC regmap
 
+    :param const struct atmel_hsmc_reg_layout \*layout:
+        the layout of registers
+        \ ``conf``\  the SMC CS conf to apply
+
     :param int cs:
         the CS id
-        \ ``conf``\  the SMC CS conf to apply
 
     :param const struct atmel_smc_cs_conf \*conf:
         *undescribed*
@@ -266,12 +269,15 @@ Only valid on at91sam9/avr32 SoCs.
 atmel_hsmc_cs_conf_get
 ======================
 
-.. c:function:: void atmel_hsmc_cs_conf_get(struct regmap *regmap, int cs, struct atmel_smc_cs_conf *conf)
+.. c:function:: void atmel_hsmc_cs_conf_get(struct regmap *regmap, const struct atmel_hsmc_reg_layout *layout, int cs, struct atmel_smc_cs_conf *conf)
 
     retrieve the current SMC CS conf
 
     :param struct regmap \*regmap:
         the HSMC regmap
+
+    :param const struct atmel_hsmc_reg_layout \*layout:
+        the layout of registers
 
     :param int cs:
         the CS id
@@ -286,6 +292,28 @@ Description
 
 Retrieve the SMC CS configuration.
 Only valid on post-sama5 SoCs.
+
+.. _`atmel_hsmc_get_reg_layout`:
+
+atmel_hsmc_get_reg_layout
+=========================
+
+.. c:function:: const struct atmel_hsmc_reg_layout *atmel_hsmc_get_reg_layout(struct device_node *np)
+
+    retrieve the layout of HSMC registers
+
+    :param struct device_node \*np:
+        the HSMC regmap
+
+.. _`atmel_hsmc_get_reg_layout.description`:
+
+Description
+-----------
+
+Retrieve the layout of HSMC registers.
+
+Returns NULL in case of SMC, a struct atmel_hsmc_reg_layout pointer
+in HSMC case, otherwise ERR_PTR(-EINVAL).
 
 .. This file was automatic generated / don't edit.
 

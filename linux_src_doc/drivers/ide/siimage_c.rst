@@ -180,7 +180,7 @@ SATA status interrupts, if so we clean them up and continue.
 sil_sata_reset_poll
 ===================
 
-.. c:function:: int sil_sata_reset_poll(ide_drive_t *drive)
+.. c:function:: blk_status_t sil_sata_reset_poll(ide_drive_t *drive)
 
     wait for SATA reset
 

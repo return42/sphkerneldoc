@@ -62,7 +62,7 @@ bitset
 Description
 -----------
 
-We use this hashed waitqueue, instead of a normal wait_queue_t, so
+We use this hashed waitqueue, instead of a normal wait_queue_entry_t, so
 we can wake only the relevant ones (hashed queues may be shared).
 
 A futex_q has a woken state, just like tasks have TASK_RUNNING.

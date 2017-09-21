@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/pagemap.h
 
+.. _`mapping_set_error`:
+
+mapping_set_error
+=================
+
+.. c:function:: void mapping_set_error(struct address_space *mapping, int error)
+
+    record a writeback error in the address_space \ ``mapping``\  - the mapping in which an error should be set \ ``error``\  - the error to set in the mapping
+
+    :param struct address_space \*mapping:
+        *undescribed*
+
+    :param int error:
+        *undescribed*
+
+.. _`mapping_set_error.description`:
+
+Description
+-----------
+
+When writeback fails in some way, we must record that error so that
+userspace can be informed when fsync and the like are called.  We endeavor
+to report errors on any file that was open at the time of the error.  Some
+internal callers also need to know when writeback errors have occurred.
+
+When a writeback error occurs, most filesystems will want to call
+mapping_set_error to record the error in the mapping so that it can be
+reported when the application calls fsync(2).
+
 .. _`find_get_page`:
 
 find_get_page

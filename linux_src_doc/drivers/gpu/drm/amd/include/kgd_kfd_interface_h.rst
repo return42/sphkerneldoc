@@ -26,10 +26,10 @@ Definition
         int (*set_pasid_vmid_mapping)(struct kgd_dev *kgd, unsigned int pasid, unsigned int vmid);
         int (*init_pipeline)(struct kgd_dev *kgd, uint32_t pipe_id, uint32_t hpd_size, uint64_t hpd_gpu_addr);
         int (*init_interrupts)(struct kgd_dev *kgd, uint32_t pipe_id);
-        int (*hqd_load)(struct kgd_dev *kgd, void *mqd, uint32_t pipe_id, uint32_t queue_id, uint32_t __user *wptr);
+        int (*hqd_load)(struct kgd_dev *kgd, void *mqd, uint32_t pipe_id,uint32_t queue_id, uint32_t __user *wptr,uint32_t wptr_shift, uint32_t wptr_mask, struct mm_struct *mm);
         int (*hqd_sdma_load)(struct kgd_dev *kgd, void *mqd);
         bool (*hqd_is_occupied)(struct kgd_dev *kgd, uint64_t queue_address, uint32_t pipe_id, uint32_t queue_id);
-        int (*hqd_destroy)(struct kgd_dev *kgd, uint32_t reset_type,unsigned int timeout, uint32_t pipe_id, uint32_t queue_id);
+        int (*hqd_destroy)(struct kgd_dev *kgd, void *mqd, uint32_t reset_type,unsigned int timeout, uint32_t pipe_id, uint32_t queue_id);
         bool (*hqd_sdma_is_occupied)(struct kgd_dev *kgd, void *mqd);
         int (*hqd_sdma_destroy)(struct kgd_dev *kgd, void *mqd, unsigned int timeout);
         int (*address_watch_disable)(struct kgd_dev *kgd);
@@ -40,6 +40,8 @@ Definition
         uint16_t (*get_atc_vmid_pasid_mapping_pasid)(struct kgd_dev *kgd, uint8_t vmid);
         void (*write_vmid_invalidate_request)(struct kgd_dev *kgd, uint8_t vmid);
         uint16_t (*get_fw_version)(struct kgd_dev *kgd, enum kgd_engine_type type);
+        void (*set_scratch_backing_va)(struct kgd_dev *kgd, uint64_t va, uint32_t vmid);
+        int (*get_tile_config)(struct kgd_dev *kgd, struct tile_config *config);
     }
 
 .. _`kfd2kgd_calls.members`:
@@ -123,6 +125,13 @@ write_vmid_invalidate_request
 
 get_fw_version
     Returns FW versions from the header
+
+set_scratch_backing_va
+    Sets VA for scratch backing memory of a VMID.
+    Only used for no cp scheduling mode
+
+get_tile_config
+    Returns GPU-specific tiling mode information
 
 .. _`kfd2kgd_calls.description`:
 

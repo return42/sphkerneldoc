@@ -18,9 +18,10 @@ Dumb objects partly alleviate the problem by providing a standard API to
 create dumb buffers suitable for scanout, which can then be used to create
 KMS frame buffers.
 
-To support dumb objects drivers must implement the \ :c:type:`drm_driver.dumb_create <drm_driver>`\ ,
-\ :c:type:`drm_driver.dumb_destroy <drm_driver>`\  and \ :c:type:`drm_driver.dumb_map_offset <drm_driver>`\  operations. See
-there for further details.
+To support dumb objects drivers must implement the \ :c:type:`drm_driver.dumb_create <drm_driver>`\ 
+operation. \ :c:type:`drm_driver.dumb_destroy <drm_driver>`\  defaults to \ :c:func:`drm_gem_dumb_destroy`\  if
+not set and \ :c:type:`drm_driver.dumb_map_offset <drm_driver>`\  defaults to
+\ :c:func:`drm_gem_dumb_map_offset`\ . See the callbacks for further details.
 
 Note that dumb objects may not be used for gpu acceleration, as has been
 attempted on some ARM embedded platforms. Such drivers really must have

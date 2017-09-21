@@ -192,12 +192,15 @@ up any GEM state.
 i915_reset
 ==========
 
-.. c:function:: void i915_reset(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_reset(struct drm_i915_private *i915, unsigned int flags)
 
     reset chip after a hang
 
-    :param struct drm_i915_private \*dev_priv:
-        device private to reset
+    :param struct drm_i915_private \*i915:
+        #drm_i915_private to reset
+
+    :param unsigned int flags:
+        Instructions
 
 .. _`i915_reset.description`:
 
@@ -220,6 +223,38 @@ Procedure is fairly simple
 - re-init ring buffer
 - re-init interrupt state
 - re-init display
+
+.. _`i915_reset_engine`:
+
+i915_reset_engine
+=================
+
+.. c:function:: int i915_reset_engine(struct intel_engine_cs *engine, unsigned int flags)
+
+    reset GPU engine to recover from a hang
+
+    :param struct intel_engine_cs \*engine:
+        engine to reset
+
+    :param unsigned int flags:
+        options
+
+.. _`i915_reset_engine.description`:
+
+Description
+-----------
+
+Reset a specific GPU engine. Useful if a hang is detected.
+Returns zero on successful reset or otherwise an error code.
+
+.. _`i915_reset_engine.procedure-is`:
+
+Procedure is
+------------
+
+- identifies the request that caused the hang and it is dropped
+- reset engine (which will force the engine to idle)
+- re-init/configure engine
 
 .. This file was automatic generated / don't edit.
 

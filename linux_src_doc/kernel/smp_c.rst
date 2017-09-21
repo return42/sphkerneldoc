@@ -52,14 +52,14 @@ Must be called with interrupts disabled.
 smp_call_function_single_async
 ==============================
 
-.. c:function:: int smp_call_function_single_async(int cpu, struct call_single_data *csd)
+.. c:function:: int smp_call_function_single_async(int cpu, call_single_data_t *csd)
 
     Run an asynchronous function on a specific CPU.
 
     :param int cpu:
         The CPU to run on.
 
-    :param struct call_single_data \*csd:
+    :param call_single_data_t \*csd:
         Pre-allocated and setup data structure
 
 .. _`smp_call_function_single_async.description`:

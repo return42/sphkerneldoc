@@ -44,6 +44,9 @@ Definition
         __u8 clear_s;
         __u32 pad:24;
     #define VC4_SUBMIT_CL_USE_CLEAR_COLOR (1 << 0)
+    #define VC4_SUBMIT_CL_FIXED_RCL_ORDER (1 << 1)
+    #define VC4_SUBMIT_CL_RCL_ORDER_INCREASING_X (1 << 2)
+    #define VC4_SUBMIT_CL_RCL_ORDER_INCREASING_Y (1 << 3)
         __u32 flags;
         __u64 seqno;
     }
@@ -501,6 +504,42 @@ errstat
     *undescribed*
 
 pad
+    *undescribed*
+
+.. _`drm_vc4_label_bo`:
+
+struct drm_vc4_label_bo
+=======================
+
+.. c:type:: struct drm_vc4_label_bo
+
+    Attach a name to a BO for debug purposes.
+
+.. _`drm_vc4_label_bo.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_vc4_label_bo {
+        __u32 handle;
+        __u32 len;
+        __u64 name;
+    }
+
+.. _`drm_vc4_label_bo.members`:
+
+Members
+-------
+
+handle
+    *undescribed*
+
+len
+    *undescribed*
+
+name
     *undescribed*
 
 .. This file was automatic generated / don't edit.

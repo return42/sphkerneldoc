@@ -8,8 +8,10 @@ long
 
 .. c:function:: unsigned long(*genpool_algo_t)(unsigned long *map#unsigned long size#unsigned long start#unsigned int nr# void *data# struct gen_pool *pool)
 
+    Allocation callback function type definition
+
     :param \*genpool_algo_t)(unsigned long \*map#unsigned long size#unsigned long start#unsigned int nr# void \*data# struct gen_pool \*pool:
-        *undescribed*
+        the pool being allocated from
 
 .. _`gen_pool_add`:
 

@@ -124,21 +124,6 @@ Description
 
 Call perf_event_disable to stop counting the perf event
 
-.. _`kvm_pmu_overflow_set`:
-
-kvm_pmu_overflow_set
-====================
-
-.. c:function:: void kvm_pmu_overflow_set(struct kvm_vcpu *vcpu, u64 val)
-
-    set PMU overflow interrupt
-
-    :param struct kvm_vcpu \*vcpu:
-        The vcpu pointer
-
-    :param u64 val:
-        the value guest writes to PMOVSSET register
-
 .. _`kvm_pmu_flush_hwstate`:
 
 kvm_pmu_flush_hwstate

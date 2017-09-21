@@ -1,30 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/media/platform/vsp1/vsp1_video.c
 
-.. _`vsp1_video_partition`:
+.. _`vsp1_video_calculate_partition`:
 
-vsp1_video_partition
-====================
+vsp1_video_calculate_partition
+==============================
 
-.. c:function:: struct v4l2_rect vsp1_video_partition(struct vsp1_pipeline *pipe, unsigned int div_size, unsigned int index)
+.. c:function:: void vsp1_video_calculate_partition(struct vsp1_pipeline *pipe, struct vsp1_partition *partition, unsigned int div_size, unsigned int index)
 
     Calculate the active partition output window
 
     :param struct vsp1_pipeline \*pipe:
-        *undescribed*
+        the pipeline
+
+    :param struct vsp1_partition \*partition:
+        partition that will hold the calculated values
 
     :param unsigned int div_size:
         pre-determined maximum partition division size
 
     :param unsigned int index:
         partition index
-
-.. _`vsp1_video_partition.description`:
-
-Description
------------
-
-Returns a v4l2_rect describing the partition window.
 
 .. This file was automatic generated / don't edit.
 

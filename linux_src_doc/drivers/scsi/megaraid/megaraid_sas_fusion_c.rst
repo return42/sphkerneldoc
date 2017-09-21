@@ -233,6 +233,26 @@ Issue Jbod map to the firmware. If it is pended command,
 issue command and return. If it is first instance of jbod map
 issue and receive command.
 
+.. _`megasas_allocate_raid_maps`:
+
+megasas_allocate_raid_maps
+==========================
+
+.. c:function:: int megasas_allocate_raid_maps(struct megasas_instance *instance)
+
+    Allocate memory for RAID maps
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+.. _`megasas_allocate_raid_maps.return`:
+
+Return
+------
+
+if success: return 0
+failed:  return -ENOMEM
+
 .. _`megasas_init_adapter_fusion`:
 
 megasas_init_adapter_fusion

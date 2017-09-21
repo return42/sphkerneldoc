@@ -31,6 +31,35 @@ llist_entry
     :param  member:
         the name of the llist_node within the struct.
 
+.. _`member_address_is_nonnull`:
+
+member_address_is_nonnull
+=========================
+
+.. c:function::  member_address_is_nonnull( ptr,  member)
+
+    check whether the member address is not NULL
+
+    :param  ptr:
+        the object pointer (struct type \* that contains the llist_node)
+
+    :param  member:
+        the name of the llist_node within the struct.
+
+.. _`member_address_is_nonnull.description`:
+
+Description
+-----------
+
+This macro is conceptually the same as
+\ :c:type:`ptr->member <ptr>`\  != NULL
+but it works around the fact that compilers can decide that taking a member
+address is never a NULL pointer.
+
+Real objects that start at a high address and have a member at NULL are
+unlikely to exist, but such pointers may be returned e.g. by the
+\ :c:func:`container_of`\  macro.
+
 .. _`llist_for_each`:
 
 llist_for_each
@@ -47,6 +76,38 @@ llist_for_each
         the first entry of deleted list entries
 
 .. _`llist_for_each.description`:
+
+Description
+-----------
+
+In general, some entries of the lock-less list can be traversed
+safely only after being deleted from list, so start with an entry
+instead of list head.
+
+If being used on entries deleted from lock-less list directly, the
+traverse order is from the newest to the oldest added entry.  If
+you want to traverse from the oldest to the newest, you must
+reverse the order by yourself before traversing.
+
+.. _`llist_for_each_safe`:
+
+llist_for_each_safe
+===================
+
+.. c:function::  llist_for_each_safe( pos,  n,  node)
+
+    iterate over some deleted entries of a lock-less list safe against removal of list entry
+
+    :param  pos:
+        the \ :c:type:`struct llist_node <llist_node>`\  to use as a loop cursor
+
+    :param  n:
+        another \ :c:type:`struct llist_node <llist_node>`\  to use as temporary storage
+
+    :param  node:
+        the first entry of deleted list entries
+
+.. _`llist_for_each_safe.description`:
 
 Description
 -----------

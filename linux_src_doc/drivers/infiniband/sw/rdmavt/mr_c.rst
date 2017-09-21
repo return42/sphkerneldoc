@@ -142,6 +142,114 @@ Return
 
 the memory region on success, otherwise returns an errno.
 
+.. _`rvt_dereg_clean_qp_cb`:
+
+rvt_dereg_clean_qp_cb
+=====================
+
+.. c:function:: void rvt_dereg_clean_qp_cb(struct rvt_qp *qp, u64 v)
+
+    callback from iterator \ ``qp``\  - the qp \ ``v``\  - the mregion (as u64)
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param u64 v:
+        *undescribed*
+
+.. _`rvt_dereg_clean_qp_cb.description`:
+
+Description
+-----------
+
+This routine fields the callback for all QPs and
+for QPs in the same PD as the MR will call the
+\ :c:func:`rvt_qp_mr_clean`\  to potentially cleanup references.
+
+.. _`rvt_dereg_clean_qps`:
+
+rvt_dereg_clean_qps
+===================
+
+.. c:function:: void rvt_dereg_clean_qps(struct rvt_mregion *mr)
+
+    find QPs for reference cleanup \ ``mr``\  - the MR that is being deregistered
+
+    :param struct rvt_mregion \*mr:
+        *undescribed*
+
+.. _`rvt_dereg_clean_qps.description`:
+
+Description
+-----------
+
+This routine iterates RC QPs looking for references
+to the lkey noted in mr.
+
+.. _`rvt_check_refs`:
+
+rvt_check_refs
+==============
+
+.. c:function:: int rvt_check_refs(struct rvt_mregion *mr, const char *t)
+
+    check references \ ``mr``\  - the megion \ ``t``\  - the caller identification
+
+    :param struct rvt_mregion \*mr:
+        *undescribed*
+
+    :param const char \*t:
+        *undescribed*
+
+.. _`rvt_check_refs.description`:
+
+Description
+-----------
+
+This routine checks MRs holding a reference during
+when being de-registered.
+
+If the count is non-zero, the code calls a clean routine then
+waits for the timeout for the count to zero.
+
+.. _`rvt_mr_has_lkey`:
+
+rvt_mr_has_lkey
+===============
+
+.. c:function:: bool rvt_mr_has_lkey(struct rvt_mregion *mr, u32 lkey)
+
+    is MR \ ``mr``\  - the mregion \ ``lkey``\  - the lkey
+
+    :param struct rvt_mregion \*mr:
+        *undescribed*
+
+    :param u32 lkey:
+        *undescribed*
+
+.. _`rvt_ss_has_lkey`:
+
+rvt_ss_has_lkey
+===============
+
+.. c:function:: bool rvt_ss_has_lkey(struct rvt_sge_state *ss, u32 lkey)
+
+    is mr in sge tests \ ``ss``\  - the sge state \ ``lkey``\ 
+
+    :param struct rvt_sge_state \*ss:
+        *undescribed*
+
+    :param u32 lkey:
+        *undescribed*
+
+.. _`rvt_ss_has_lkey.description`:
+
+Description
+-----------
+
+This code tests for an MR in the indicated
+sge state.
+
 .. _`rvt_dereg_mr`:
 
 rvt_dereg_mr
@@ -388,12 +496,41 @@ Return
 
 0 on success.
 
+.. _`rvt_sge_adjacent`:
+
+rvt_sge_adjacent
+================
+
+.. c:function:: bool rvt_sge_adjacent(struct rvt_sge *last_sge, struct ib_sge *sge)
+
+    is isge compressible
+
+    :param struct rvt_sge \*last_sge:
+        last outgoing SGE written
+
+    :param struct ib_sge \*sge:
+        SGE to check
+
+.. _`rvt_sge_adjacent.description`:
+
+Description
+-----------
+
+If adjacent will update last_sge to add length.
+
+.. _`rvt_sge_adjacent.return`:
+
+Return
+------
+
+true if isge is adjacent to last sge
+
 .. _`rvt_lkey_ok`:
 
 rvt_lkey_ok
 ===========
 
-.. c:function:: int rvt_lkey_ok(struct rvt_lkey_table *rkt, struct rvt_pd *pd, struct rvt_sge *isge, struct ib_sge *sge, int acc)
+.. c:function:: int rvt_lkey_ok(struct rvt_lkey_table *rkt, struct rvt_pd *pd, struct rvt_sge *isge, struct rvt_sge *last_sge, struct ib_sge *sge, int acc)
 
     check IB SGE for validity and initialize
 
@@ -405,6 +542,9 @@ rvt_lkey_ok
 
     :param struct rvt_sge \*isge:
         outgoing internal SGE
+
+    :param struct rvt_sge \*last_sge:
+        last outgoing SGE written
 
     :param struct ib_sge \*sge:
         SGE to check
@@ -420,14 +560,14 @@ Description
 Check the IB SGE for validity and initialize our internal version
 of it.
 
+Increments the reference count when a new sge is stored.
+
 .. _`rvt_lkey_ok.return`:
 
 Return
 ------
 
-1 if valid and successful, otherwise returns 0.
-
-increments the reference count upon success
+0 if compressed, 1 if added , otherwise returns -errno.
 
 .. _`rvt_rkey_ok`:
 

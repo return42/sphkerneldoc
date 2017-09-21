@@ -10,35 +10,115 @@ The functions here implement the state management and hardware programming
 dispatch required by the atomic modeset infrastructure.
 See intel_atomic_plane.c for the plane-specific atomic functionality.
 
-.. _`intel_connector_atomic_get_property`:
+.. _`intel_digital_connector_atomic_get_property`:
 
-intel_connector_atomic_get_property
-===================================
+intel_digital_connector_atomic_get_property
+===========================================
 
-.. c:function:: int intel_connector_atomic_get_property(struct drm_connector *connector, const struct drm_connector_state *state, struct drm_property *property, uint64_t *val)
+.. c:function:: int intel_digital_connector_atomic_get_property(struct drm_connector *connector, const struct drm_connector_state *state, struct drm_property *property, uint64_t *val)
 
-    fetch connector property value
+    hook for connector->atomic_get_property.
 
     :param struct drm_connector \*connector:
-        connector to fetch property for
+        Connector to get the property for.
 
     :param const struct drm_connector_state \*state:
-        state containing the property value
+        Connector state to retrieve the property from.
 
     :param struct drm_property \*property:
-        property to look up
+        Property to retrieve.
 
     :param uint64_t \*val:
-        pointer to write property value into
+        Return value for the property.
 
-.. _`intel_connector_atomic_get_property.description`:
+.. _`intel_digital_connector_atomic_get_property.description`:
 
 Description
 -----------
 
-The DRM core does not store shadow copies of properties for
-atomic-capable drivers.  This entrypoint is used to fetch
-the current value of a driver-specific connector property.
+Returns the atomic property value for a digital connector.
+
+.. _`intel_digital_connector_atomic_set_property`:
+
+intel_digital_connector_atomic_set_property
+===========================================
+
+.. c:function:: int intel_digital_connector_atomic_set_property(struct drm_connector *connector, struct drm_connector_state *state, struct drm_property *property, uint64_t val)
+
+    hook for connector->atomic_set_property.
+
+    :param struct drm_connector \*connector:
+        Connector to set the property for.
+
+    :param struct drm_connector_state \*state:
+        Connector state to set the property on.
+
+    :param struct drm_property \*property:
+        Property to set.
+
+    :param uint64_t val:
+        New value for the property.
+
+.. _`intel_digital_connector_atomic_set_property.description`:
+
+Description
+-----------
+
+Sets the atomic property value for a digital connector.
+
+.. _`intel_digital_connector_duplicate_state`:
+
+intel_digital_connector_duplicate_state
+=======================================
+
+.. c:function:: struct drm_connector_state *intel_digital_connector_duplicate_state(struct drm_connector *connector)
+
+    duplicate connector state
+
+    :param struct drm_connector \*connector:
+        digital connector
+
+.. _`intel_digital_connector_duplicate_state.description`:
+
+Description
+-----------
+
+Allocates and returns a copy of the connector state (both common and
+digital connector specific) for the specified connector.
+
+.. _`intel_digital_connector_duplicate_state.return`:
+
+Return
+------
+
+The newly allocated connector state, or NULL on failure.
+
+.. _`intel_crtc_duplicate_state`:
+
+intel_crtc_duplicate_state
+==========================
+
+.. c:function:: struct drm_crtc_state *intel_crtc_duplicate_state(struct drm_crtc *crtc)
+
+    duplicate crtc state
+
+    :param struct drm_crtc \*crtc:
+        drm crtc
+
+.. _`intel_crtc_duplicate_state.description`:
+
+Description
+-----------
+
+Allocates and returns a copy of the crtc state (both common and
+Intel-specific) for the specified crtc.
+
+.. _`intel_crtc_duplicate_state.return`:
+
+Return
+------
+
+The newly allocated crtc state, or NULL on failure.
 
 .. _`intel_crtc_destroy_state`:
 

@@ -1,0 +1,64 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: include/linux/mfd/tps65010.h
+
+.. _`tps65010_board`:
+
+struct tps65010_board
+=====================
+
+.. c:type:: struct tps65010_board
+
+    packages GPIO and LED lines
+
+.. _`tps65010_board.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tps65010_board {
+        int base;
+        unsigned outmask;
+        int (*setup)(struct i2c_client *client, void *context);
+        int (*teardown)(struct i2c_client *client, void *context);
+        void *context;
+    }
+
+.. _`tps65010_board.members`:
+
+Members
+-------
+
+base
+    the GPIO number to assign to GPIO-1
+
+outmask
+    bit (N-1) is set to allow GPIO-N to be used as an
+    (open drain) output
+
+setup
+    optional callback issued once the GPIOs are valid
+
+teardown
+    optional callback issued before the GPIOs are invalidated
+
+context
+    optional parameter passed to \ :c:func:`setup`\  and \ :c:func:`teardown`\ 
+
+.. _`tps65010_board.description`:
+
+Description
+-----------
+
+Board data may be used to package the GPIO (and LED) lines for use
+in by the generic GPIO and LED frameworks.  The first four GPIOs
+starting at gpio_base are GPIO1..GPIO4.  The next two are LED1/nPG
+and LED2 (with hardware blinking capability, not currently exposed).
+
+The \ ``setup``\  callback may be used with the kind of board-specific glue
+which hands the (now-valid) GPIOs to other drivers, or which puts
+devices in their initial states using these GPIOs.
+
+.. This file was automatic generated / don't edit.
+

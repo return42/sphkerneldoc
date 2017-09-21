@@ -259,65 +259,6 @@ Description
 ipc_ids.rwsem (as a writer) and the spinlock for this ID are held
 before this function is called, and remain locked on the exit.
 
-.. _`ipc_alloc`:
-
-ipc_alloc
-=========
-
-.. c:function:: void *ipc_alloc(int size)
-
-    allocate ipc space
-
-    :param int size:
-        size desired
-
-.. _`ipc_alloc.description`:
-
-Description
------------
-
-Allocate memory from the appropriate pools and return a pointer to it.
-NULL is returned if the allocation fails
-
-.. _`ipc_free`:
-
-ipc_free
-========
-
-.. c:function:: void ipc_free(void *ptr)
-
-    free ipc space
-
-    :param void \*ptr:
-        pointer returned by ipc_alloc
-
-.. _`ipc_free.description`:
-
-Description
------------
-
-Free a block created with \ :c:func:`ipc_alloc`\ .
-
-.. _`ipc_rcu_alloc`:
-
-ipc_rcu_alloc
-=============
-
-.. c:function:: void *ipc_rcu_alloc(int size)
-
-    allocate ipc and rcu space
-
-    :param int size:
-        size desired
-
-.. _`ipc_rcu_alloc.description`:
-
-Description
------------
-
-Allocate memory for the rcu header structure +  the object.
-Returns the pointer to the object or NULL upon failure.
-
 .. _`ipcperms`:
 
 ipcperms

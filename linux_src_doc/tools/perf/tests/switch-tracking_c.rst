@@ -6,9 +6,12 @@
 test__switch_tracking
 =====================
 
-.. c:function:: int test__switch_tracking(int subtest __maybe_unused)
+.. c:function:: int test__switch_tracking(int subtest __maybe_unused, int subtest __maybe_unused)
 
     test using sched_switch and tracking events.
+
+    :param int subtest __maybe_unused:
+        *undescribed*
 
     :param int subtest __maybe_unused:
         *undescribed*

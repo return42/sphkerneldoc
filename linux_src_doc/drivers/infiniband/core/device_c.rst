@@ -42,6 +42,27 @@ Description
 
 Free a structure allocated with \ :c:func:`ib_alloc_device`\ .
 
+.. _`__dev_new_index`:
+
+__dev_new_index
+===============
+
+.. c:function:: u32 __dev_new_index( void)
+
+    allocate an device index
+
+    :param  void:
+        no arguments
+
+.. _`__dev_new_index.description`:
+
+Description
+-----------
+
+Returns a suitable unique value for a new device interface
+number.  It assumes that there are less than 2^32-1 ib devices
+will be present in the system.
+
 .. _`ib_register_device`:
 
 ib_register_device
@@ -187,7 +208,7 @@ ib_set_client_data() sets client context that can be retrieved with
 ib_register_event_handler
 =========================
 
-.. c:function:: int ib_register_event_handler(struct ib_event_handler *event_handler)
+.. c:function:: void ib_register_event_handler(struct ib_event_handler *event_handler)
 
     Register an IB event handler
 
@@ -209,7 +230,7 @@ callback may occur in interrupt context.
 ib_unregister_event_handler
 ===========================
 
-.. c:function:: int ib_unregister_event_handler(struct ib_event_handler *event_handler)
+.. c:function:: void ib_unregister_event_handler(struct ib_event_handler *event_handler)
 
     Unregister an event handler
 
@@ -365,6 +386,31 @@ Description
 Enumerates all RoCE devices' physical ports which are related
 to netdevices and calls \ :c:func:`callback`\  on each device for which
 \ :c:func:`filter`\  function returns non zero.
+
+.. _`ib_enum_all_devs`:
+
+ib_enum_all_devs
+================
+
+.. c:function:: int ib_enum_all_devs(nldev_callback nldev_cb, struct sk_buff *skb, struct netlink_callback *cb)
+
+    enumerate all ib_devices
+
+    :param nldev_callback nldev_cb:
+        *undescribed*
+
+    :param struct sk_buff \*skb:
+        *undescribed*
+
+    :param struct netlink_callback \*cb:
+        Callback to call for each found ib_device
+
+.. _`ib_enum_all_devs.description`:
+
+Description
+-----------
+
+Enumerates all ib_devices and calls \ :c:func:`callback`\  on each device.
 
 .. _`ib_query_pkey`:
 

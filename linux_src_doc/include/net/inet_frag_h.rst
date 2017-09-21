@@ -21,7 +21,7 @@ Definition
         spinlock_t lock;
         struct timer_list timer;
         struct hlist_node list;
-        atomic_t refcnt;
+        refcount_t refcnt;
         struct sk_buff *fragments;
         struct sk_buff *fragments_tail;
         ktime_t stamp;

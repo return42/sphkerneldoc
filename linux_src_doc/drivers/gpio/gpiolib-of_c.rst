@@ -86,7 +86,7 @@ Description
 
 This is only used by of_gpiochip_add to request/set GPIO initial
 configuration.
-It retures error if it fails otherwise 0 on success.
+It returns error if it fails otherwise 0 on success.
 
 .. _`of_gpio_simple_xlate`:
 
@@ -95,13 +95,13 @@ of_gpio_simple_xlate
 
 .. c:function:: int of_gpio_simple_xlate(struct gpio_chip *gc, const struct of_phandle_args *gpiospec, u32 *flags)
 
-    translate gpio_spec to the GPIO number and flags
+    translate gpiospec to the GPIO number and flags
 
     :param struct gpio_chip \*gc:
         pointer to the gpio_chip structure
 
     :param const struct of_phandle_args \*gpiospec:
-        *undescribed*
+        GPIO specifier as found in the device tree
 
     :param u32 \*flags:
         a flags pointer to fill in
@@ -112,7 +112,7 @@ Description
 -----------
 
 This is simple translation function, suitable for the most 1:1 mapped
-gpio chips. This function performs only one sanity check: whether gpio
+GPIO chips. This function performs only one sanity check: whether GPIO
 is less than ngpios (that is specified in the gpio_chip).
 
 .. _`of_mm_gpiochip_add_data`:
@@ -140,12 +140,12 @@ To use this function you should allocate and fill mm_gc with
 
 
 1) In the gpio_chip structure:
-- all the callbacks
-- of_gpio_n_cells
-- of_xlate callback (optional)
+   - all the callbacks
+   - of_gpio_n_cells
+   - of_xlate callback (optional)
 
 3) In the of_mm_gpio_chip structure:
-- save_regs callback (optional)
+   - save_regs callback (optional)
 
 If succeeded, this function will map bank's memory and will
 do all necessary work for you. Then you'll able to use .regs

@@ -184,7 +184,7 @@ lu_object_find
 lu_object_find_try
 ==================
 
-.. c:function:: struct lu_object *lu_object_find_try(const struct lu_env *env, struct lu_device *dev, const struct lu_fid *f, const struct lu_object_conf *conf, wait_queue_t *waiter)
+.. c:function:: struct lu_object *lu_object_find_try(const struct lu_env *env, struct lu_device *dev, const struct lu_fid *f, const struct lu_object_conf *conf, wait_queue_entry_t *waiter)
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -198,7 +198,7 @@ lu_object_find_try
     :param const struct lu_object_conf \*conf:
         *undescribed*
 
-    :param wait_queue_t \*waiter:
+    :param wait_queue_entry_t \*waiter:
         *undescribed*
 
 .. _`lu_object_find_at`:

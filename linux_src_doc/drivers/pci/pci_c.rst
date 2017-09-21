@@ -968,6 +968,18 @@ pci_pme_capable
     :param pci_power_t state:
         PCI state from which device will issue PME#.
 
+.. _`pci_pme_restore`:
+
+pci_pme_restore
+===============
+
+.. c:function:: void pci_pme_restore(struct pci_dev *dev)
+
+    Restore PME configuration after config space restore.
+
+    :param struct pci_dev \*dev:
+        PCI device to update.
+
 .. _`pci_pme_active`:
 
 pci_pme_active
@@ -991,12 +1003,12 @@ Description
 The caller must verify that the device is capable of generating PME# before
 calling this function with \ ``enable``\  equal to 'true'.
 
-.. _`__pci_enable_wake`:
+.. _`pci_enable_wake`:
 
-__pci_enable_wake
-=================
+pci_enable_wake
+===============
 
-.. c:function:: int __pci_enable_wake(struct pci_dev *dev, pci_power_t state, bool runtime, bool enable)
+.. c:function:: int pci_enable_wake(struct pci_dev *dev, pci_power_t state, bool enable)
 
     enable PCI device as wakeup event source
 
@@ -1006,13 +1018,10 @@ __pci_enable_wake
     :param pci_power_t state:
         PCI state from which device will issue wakeup events
 
-    :param bool runtime:
-        True if the events are to be generated at run time
-
     :param bool enable:
         True to enable event generation; false to disable
 
-.. _`__pci_enable_wake.description`:
+.. _`pci_enable_wake.description`:
 
 Description
 -----------
@@ -1024,7 +1033,7 @@ called automatically by this routine.
 Devices with legacy power management (no standard PCI PM capabilities)
 always require such platform hooks.
 
-.. _`__pci_enable_wake.return-value`:
+.. _`pci_enable_wake.return-value`:
 
 RETURN VALUE
 ------------
@@ -1068,12 +1077,15 @@ enable wake-up power for it.
 pci_target_state
 ================
 
-.. c:function:: pci_power_t pci_target_state(struct pci_dev *dev)
+.. c:function:: pci_power_t pci_target_state(struct pci_dev *dev, bool wakeup)
 
     find an appropriate low power state for a given PCI dev
 
     :param struct pci_dev \*dev:
         PCI device
+
+    :param bool wakeup:
+        Whether or not wakeup functionality will be enabled for the device.
 
 .. _`pci_target_state.description`:
 
@@ -2030,26 +2042,6 @@ Description
 
 Enables/disables PCI INTx for device dev
 
-.. _`pci_intx_mask_supported`:
-
-pci_intx_mask_supported
-=======================
-
-.. c:function:: bool pci_intx_mask_supported(struct pci_dev *dev)
-
-    probe for INTx masking support
-
-    :param struct pci_dev \*dev:
-        the PCI device to operate on
-
-.. _`pci_intx_mask_supported.description`:
-
-Description
------------
-
-Check if the device dev support INTx masking via the config space
-command word.
-
 .. _`pci_check_and_mask_intx`:
 
 pci_check_and_mask_intx
@@ -2068,7 +2060,7 @@ Description
 -----------
 
 Check if the device dev has its INTx line asserted, mask it and
-return true in that case. False is returned if not interrupt was
+return true in that case. False is returned if no interrupt was
 pending.
 
 .. _`pci_check_and_unmask_intx`:
@@ -2207,30 +2199,6 @@ Description
 Use the bridge control register to assert reset on the secondary bus.
 Devices on the secondary bus are left in power-on state.
 
-.. _`pci_reset_notify`:
-
-pci_reset_notify
-================
-
-.. c:function:: void pci_reset_notify(struct pci_dev *dev, bool prepare)
-
-    notify device driver of reset
-
-    :param struct pci_dev \*dev:
-        device to be notified of reset
-
-    :param bool prepare:
-        'true' if device is about to be reset; 'false' if reset attempt
-        completed
-
-.. _`pci_reset_notify.description`:
-
-Description
------------
-
-Must be called prior to device access being disabled and after device
-access is restored.
-
 .. _`__pci_reset_function`:
 
 __pci_reset_function
@@ -2341,6 +2309,36 @@ This function does not just reset the PCI portion of a device, but
 clears all the state associated with the device.  This function differs
 from __pci_reset_function in that it saves and restores device state
 over the reset.
+
+Returns 0 if the device function was successfully reset or negative if the
+device doesn't support resetting a single function.
+
+.. _`pci_reset_function_locked`:
+
+pci_reset_function_locked
+=========================
+
+.. c:function:: int pci_reset_function_locked(struct pci_dev *dev)
+
+    quiesce and reset a PCI device function
+
+    :param struct pci_dev \*dev:
+        PCI device to reset
+
+.. _`pci_reset_function_locked.description`:
+
+Description
+-----------
+
+Some devices allow an individual function to be reset without affecting
+other functions in the same device.  The PCI device must be responsive
+to PCI config space in order to use this function.
+
+This function does not just reset the PCI portion of a device, but
+clears all the state associated with the device.  This function differs
+from \ :c:func:`__pci_reset_function`\  in that it saves and restores device state
+over the reset.  It also differs from \ :c:func:`pci_reset_function`\  in that it
+requires the PCI device lock to be held.
 
 Returns 0 if the device function was successfully reset or negative if the
 device doesn't support resetting a single function.

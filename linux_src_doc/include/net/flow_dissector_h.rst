@@ -219,5 +219,63 @@ dst
 src
     source Ethernet address
 
+.. _`flow_dissector_key_tcp`:
+
+struct flow_dissector_key_tcp
+=============================
+
+.. c:type:: struct flow_dissector_key_tcp
+
+
+.. _`flow_dissector_key_tcp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct flow_dissector_key_tcp {
+        __be16 flags;
+    }
+
+.. _`flow_dissector_key_tcp.members`:
+
+Members
+-------
+
+flags
+    flags
+
+.. _`flow_dissector_key_ip`:
+
+struct flow_dissector_key_ip
+============================
+
+.. c:type:: struct flow_dissector_key_ip
+
+
+.. _`flow_dissector_key_ip.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct flow_dissector_key_ip {
+        __u8 tos;
+        __u8 ttl;
+    }
+
+.. _`flow_dissector_key_ip.members`:
+
+Members
+-------
+
+tos
+    tos
+
+ttl
+    ttl
+
 .. This file was automatic generated / don't edit.
 

@@ -13,6 +13,7 @@ powerpc
     kvm/index
     mm/index
     oprofile/index
+    perf/index
     platforms/index
     sysdev/index
     xmon/index

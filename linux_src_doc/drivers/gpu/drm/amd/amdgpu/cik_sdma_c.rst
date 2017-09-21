@@ -194,6 +194,28 @@ Description
 
 Stop the compute async dma queues (CIK).
 
+.. _`cik_ctx_switch_enable`:
+
+cik_ctx_switch_enable
+=====================
+
+.. c:function:: void cik_ctx_switch_enable(struct amdgpu_device *adev, bool enable)
+
+    stop the async dma engines context switch
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param bool enable:
+        enable/disable the DMA MEs context switch.
+
+.. _`cik_ctx_switch_enable.description`:
+
+Description
+-----------
+
+Halt or unhalt the async dma engines context switch (VI).
+
 .. _`cik_sdma_enable`:
 
 cik_sdma_enable

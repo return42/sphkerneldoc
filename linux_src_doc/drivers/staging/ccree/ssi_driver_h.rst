@@ -21,13 +21,10 @@ Definition
         struct resource *res_mem;
         struct resource *res_irq;
         void __iomem *cc_base;
-    #ifdef DX_BASE_ENV_REGS
-        void __iomem *env_base;
-    #endif
         unsigned int irq;
-        uint32_t irq_mask;
-        uint32_t fw_ver;
-        uint32_t monitor_null_cycles;
+        u32 irq_mask;
+        u32 fw_ver;
+        u32 monitor_null_cycles;
         struct platform_device *plat_dev;
         ssi_sram_addr_t mlli_sram_addr;
         struct completion icache_setup_completion;
@@ -39,10 +36,9 @@ Definition
         void *fips_handle;
         void *ivgen_handle;
         void *sram_mgr_handle;
-    #ifdef ENABLE_CYCLE_COUNT
-        cycles_t isr_exit_cycles;
-    #endif
-        uint32_t inflight_counter;
+        u32 inflight_counter;
+        struct clk *clk;
+        bool coherent;
     }
 
 .. _`ssi_drvdata.members`:
@@ -58,9 +54,6 @@ res_irq
 
 cc_base
     virt address of the CC registers
-
-env_base
-    *undescribed*
 
 irq
     device IRQ number
@@ -107,10 +100,13 @@ ivgen_handle
 sram_mgr_handle
     *undescribed*
 
-isr_exit_cycles
+inflight_counter
     *undescribed*
 
-inflight_counter
+clk
+    *undescribed*
+
+coherent
     *undescribed*
 
 .. This file was automatic generated / don't edit.

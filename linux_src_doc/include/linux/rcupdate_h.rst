@@ -1,156 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/rcupdate.h
 
-.. _`call_rcu`:
-
-call_rcu
-========
-
-.. c:function:: void call_rcu(struct rcu_head *head, rcu_callback_t func)
-
-    Queue an RCU callback for invocation after a grace period.
-
-    :param struct rcu_head \*head:
-        structure to be used for queueing the RCU updates.
-
-    :param rcu_callback_t func:
-        actual callback function to be invoked after the grace period
-
-.. _`call_rcu.description`:
-
-Description
------------
-
-The callback function will be invoked some time after a full grace
-period elapses, in other words after all pre-existing RCU read-side
-critical sections have completed.  However, the callback function
-might well execute concurrently with RCU read-side critical sections
-that started after \ :c:func:`call_rcu`\  was invoked.  RCU read-side critical
-sections are delimited by \ :c:func:`rcu_read_lock`\  and \ :c:func:`rcu_read_unlock`\ ,
-and may be nested.
-
-Note that all CPUs must agree that the grace period extended beyond
-all pre-existing RCU read-side critical section.  On systems with more
-than one CPU, this means that when "func()" is invoked, each CPU is
-guaranteed to have executed a full memory barrier since the end of its
-last RCU read-side critical section whose beginning preceded the call
-to \ :c:func:`call_rcu`\ .  It also means that each CPU executing an RCU read-side
-critical section that continues beyond the start of "func()" must have
-executed a memory barrier after the \ :c:func:`call_rcu`\  but before the beginning
-of that RCU read-side critical section.  Note that these guarantees
-include CPUs that are offline, idle, or executing in user mode, as
-well as CPUs that are executing in the kernel.
-
-Furthermore, if CPU A invoked \ :c:func:`call_rcu`\  and CPU B invoked the
-resulting RCU callback function "func()", then both CPU A and CPU B are
-guaranteed to execute a full memory barrier during the time interval
-between the call to \ :c:func:`call_rcu`\  and the invocation of "func()" -- even
-if CPU A and CPU B are the same CPU (but again only if the system has
-more than one CPU).
-
-.. _`call_rcu_bh`:
-
-call_rcu_bh
-===========
-
-.. c:function:: void call_rcu_bh(struct rcu_head *head, rcu_callback_t func)
-
-    Queue an RCU for invocation after a quicker grace period.
-
-    :param struct rcu_head \*head:
-        structure to be used for queueing the RCU updates.
-
-    :param rcu_callback_t func:
-        actual callback function to be invoked after the grace period
-
-.. _`call_rcu_bh.description`:
-
-Description
------------
-
-The callback function will be invoked some time after a full grace
-period elapses, in other words after all currently executing RCU
-read-side critical sections have completed. \ :c:func:`call_rcu_bh`\  assumes
-that the read-side critical sections end on completion of a softirq
-handler. This means that read-side critical sections in process
-context must not be interrupted by softirqs. This interface is to be
-used when most of the read-side critical sections are in softirq context.
-RCU read-side critical sections are delimited by :
-- \ :c:func:`rcu_read_lock`\  and  \ :c:func:`rcu_read_unlock`\ , if in interrupt context.
-OR
-- \ :c:func:`rcu_read_lock_bh`\  and \ :c:func:`rcu_read_unlock_bh`\ , if in process context.
-These may be nested.
-
-See the description of \ :c:func:`call_rcu`\  for more detailed information on
-memory ordering guarantees.
-
-.. _`call_rcu_sched`:
-
-call_rcu_sched
-==============
-
-.. c:function:: void call_rcu_sched(struct rcu_head *head, rcu_callback_t func)
-
-    Queue an RCU for invocation after sched grace period.
-
-    :param struct rcu_head \*head:
-        structure to be used for queueing the RCU updates.
-
-    :param rcu_callback_t func:
-        actual callback function to be invoked after the grace period
-
-.. _`call_rcu_sched.description`:
-
-Description
------------
-
-The callback function will be invoked some time after a full grace
-period elapses, in other words after all currently executing RCU
-read-side critical sections have completed. \ :c:func:`call_rcu_sched`\  assumes
-that the read-side critical sections end on enabling of preemption
-or on voluntary preemption.
-RCU read-side critical sections are delimited by :
-- \ :c:func:`rcu_read_lock_sched`\  and  \ :c:func:`rcu_read_unlock_sched`\ ,
-OR
-anything that disables preemption.
-These may be nested.
-
-See the description of \ :c:func:`call_rcu`\  for more detailed information on
-memory ordering guarantees.
-
-.. _`call_rcu_tasks`:
-
-call_rcu_tasks
-==============
-
-.. c:function:: void call_rcu_tasks(struct rcu_head *head, rcu_callback_t func)
-
-    Queue an RCU for invocation task-based grace period
-
-    :param struct rcu_head \*head:
-        structure to be used for queueing the RCU updates.
-
-    :param rcu_callback_t func:
-        actual callback function to be invoked after the grace period
-
-.. _`call_rcu_tasks.description`:
-
-Description
------------
-
-The callback function will be invoked some time after a full grace
-period elapses, in other words after all currently executing RCU
-read-side critical sections have completed. \ :c:func:`call_rcu_tasks`\  assumes
-that the read-side critical sections end at a voluntary context
-switch (not a preemption!), entry into idle, or transition to usermode
-execution.  As such, there are no read-side primitives analogous to
-\ :c:func:`rcu_read_lock`\  and \ :c:func:`rcu_read_unlock`\  because this primitive is intended
-to determine that all tasks have passed through a safe state, not so
-much for data-strcuture synchronization.
-
-See the description of \ :c:func:`call_rcu`\  for more detailed information on
-memory ordering guarantees.
-
 .. _`rcu_nonidle`:
 
 RCU_NONIDLE
@@ -174,12 +24,7 @@ the \ :c:func:`rcu_idle_exit`\  -- RCU will happily ignore any such read-side
 critical sections.  However, things like powertop need tracepoints
 in the inner idle loop.
 
-.. _`rcu_nonidle.this-macro-provides-the-way-out`:
-
-This macro provides the way out
--------------------------------
-
-RCU_NONIDLE(do_something_with_RCU())
+This macro provides the way out:  RCU_NONIDLE(do_something_with_RCU())
 will tell RCU that it needs to pay attention, invoke its argument
 (in this example, calling the \ :c:func:`do_something_with_RCU`\  function),
 and then tell RCU to go back to ignoring this CPU.  It is permissible
@@ -208,28 +53,6 @@ Description
 This macro resembles \ :c:func:`cond_resched`\ , except that it is defined to
 report potential quiescent states to RCU-tasks even if the \ :c:func:`cond_resched`\ 
 machinery were to be shut off, as some advocate for PREEMPT kernels.
-
-.. _`rcu_read_lock_sched_held`:
-
-rcu_read_lock_sched_held
-========================
-
-.. c:function:: int rcu_read_lock_sched_held( void)
-
-    might we be in RCU-sched read-side critical section?
-
-    :param  void:
-        no arguments
-
-.. _`rcu_read_lock_sched_held.description`:
-
-Description
------------
-
-If CONFIG_DEBUG_LOCK_ALLOC is selected, returns nonzero iff in an
-RCU-sched read-side critical section.  In absence of
-CONFIG_DEBUG_LOCK_ALLOC, this assumes we are in an RCU-sched read-side
-critical section unless it can prove otherwise.
 
 .. _`rcu_lockdep_warn`:
 
@@ -304,6 +127,33 @@ macros, this execute-arguments-only-once property is important, so
 please be careful when making changes to \ :c:func:`rcu_assign_pointer`\  and the
 other macros that it invokes.
 
+.. _`rcu_swap_protected`:
+
+rcu_swap_protected
+==================
+
+.. c:function::  rcu_swap_protected( rcu_ptr,  ptr,  c)
+
+    swap an RCU and a regular pointer
+
+    :param  rcu_ptr:
+        RCU pointer
+
+    :param  ptr:
+        regular pointer
+
+    :param  c:
+        the conditions under which the dereference will take place
+
+.. _`rcu_swap_protected.description`:
+
+Description
+-----------
+
+Perform swap(@rcu_ptr, \ ``ptr``\ ) where \ ``rcu_ptr``\  is an RCU-annotated pointer and
+\ ``c``\  is the argument that is passed to the \ :c:func:`rcu_dereference_protected`\  call
+used to read that pointer.
+
 .. _`rcu_access_pointer`:
 
 rcu_access_pointer
@@ -369,7 +219,7 @@ For example
 -----------
 
 
-bar = rcu_dereference_check(foo->bar, lockdep_is_held(&foo->lock));
+     bar = rcu_dereference_check(foo->bar, lockdep_is_held(&foo->lock));
 
 could be used to indicate to lockdep that foo->bar may only be dereferenced
 if either \ :c:func:`rcu_read_lock`\  is held, or that the lock required to replace
@@ -384,14 +234,14 @@ target struct
 -------------
 
 
-bar = rcu_dereference_check(foo->bar, lockdep_is_held(&foo->lock) \|\|
-atomic_read(&foo->usage) == 0);
+     bar = rcu_dereference_check(foo->bar, lockdep_is_held(&foo->lock) ||
+                                           atomic_read(&foo->usage) == 0);
 
 Inserts memory barriers on architectures that require them
 (currently only the Alpha), prevents the compiler from refetching
 (and from merging fetches), and, more importantly, documents exactly
 which pointers are protected by RCU and checks that the pointer is
-annotated as \__rcu.
+annotated as __rcu.
 
 .. _`rcu_dereference_bh_check`:
 
@@ -548,16 +398,16 @@ is handed off from RCU to some other synchronization mechanism, for
 example, reference counting or locking.  In C11, it would map to
 \ :c:func:`kill_dependency`\ .  It could be used as follows:
 
-\ :c:func:`rcu_read_lock`\ ;
-p = rcu_dereference(gp);
-long_lived = is_long_lived(p);
-if (long_lived) {
-if (!atomic_inc_not_zero(p->refcnt))
-long_lived = false;
-else
-p = rcu_pointer_handoff(p);
-}
-\ :c:func:`rcu_read_unlock`\ ;
+     \ :c:func:`rcu_read_lock`\ ;
+     p = rcu_dereference(gp);
+     long_lived = is_long_lived(p);
+     if (long_lived) {
+             if (!atomic_inc_not_zero(p->refcnt))
+                     long_lived = false;
+             else
+                     p = rcu_pointer_handoff(p);
+     }
+     \ :c:func:`rcu_read_unlock`\ ;
 
 .. _`rcu_read_lock`:
 
@@ -586,13 +436,7 @@ until after the all the other CPUs exit their critical sections.
 
 Note, however, that RCU callbacks are permitted to run concurrently
 with new RCU read-side critical sections.  One way that this can happen
-
-.. _`rcu_read_lock.is-via-the-following-sequence-of-events`:
-
-is via the following sequence of events
----------------------------------------
-
-(1) CPU 0 enters an RCU
+is via the following sequence of events: (1) CPU 0 enters an RCU
 read-side critical section, (2) CPU 1 invokes \ :c:func:`call_rcu`\  to register
 an RCU callback, (3) CPU 0 exits the RCU read-side critical section,
 (4) CPU 2 enters a RCU read-side critical section, (5) the RCU
@@ -607,13 +451,7 @@ will be deferred until the outermost RCU read-side critical section
 completes.
 
 You can avoid reading and understanding the next paragraph by
-
-.. _`rcu_read_lock.following-this-rule`:
-
-following this rule
--------------------
-
-don't put anything in an \ :c:func:`rcu_read_lock`\  RCU
+following this rule: don't put anything in an \ :c:func:`rcu_read_lock`\  RCU
 read-side critical section that would block in a !PREEMPT kernel.
 But if you want the full story, read on!
 
@@ -764,15 +602,15 @@ special cases are
 
 1.   This use of \ :c:func:`RCU_INIT_POINTER`\  is NULLing out the pointer -or-
 2.   The caller has taken whatever steps are required to prevent
-RCU readers from concurrently accessing this pointer -or-
+     RCU readers from concurrently accessing this pointer -or-
 3.   The referenced data structure has already been exposed to
-readers either at compile time or via \ :c:func:`rcu_assign_pointer`\  -and-
-a.      You have not made -any- reader-visible changes to
-this structure since then -or-
-b.      It is OK for readers accessing this structure from its
-new location to see the old state of the structure.  (For
-example, the changes were to statistical counters or to
-other state where exact synchronization is not required.)
+     readers either at compile time or via \ :c:func:`rcu_assign_pointer`\  -and-
+     a.      You have not made -any- reader-visible changes to
+             this structure since then -or-
+     b.      It is OK for readers accessing this structure from its
+             new location to see the old state of the structure.  (For
+             example, the changes were to statistical counters or to
+             other state where exact synchronization is not required.)
 
 Failure to follow these rules governing use of \ :c:func:`RCU_INIT_POINTER`\  will
 result in impossible-to-diagnose memory corruption.  As in the structures
@@ -843,7 +681,7 @@ encodes the offset of the rcu_head structure within the base structure.
 Because the functions are not allowed in the low-order 4096 bytes of
 kernel virtual memory, offsets up to 4095 bytes can be accommodated.
 If the offset is larger than 4095 bytes, a compile-time error will
-be generated in \__kfree_rcu().  If this error is triggered, you can
+be generated in \ :c:func:`__kfree_rcu`\ .  If this error is triggered, you can
 either fall back to use of \ :c:func:`call_rcu`\  or rearrange the structure to
 position the rcu_head structure into the first 4096 bytes.
 

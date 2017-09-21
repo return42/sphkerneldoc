@@ -53,7 +53,7 @@ Definition
         struct cdev cdev;
         const char *host;
         void *private;
-        bool alive;
+        unsigned long flags;
         const struct dax_operations *ops;
     }
 
@@ -77,8 +77,8 @@ host
 private
     dax driver private data
 
-alive
-    !alive + rcu grace period == no new operations / mappings
+flags
+    state and boolean properties
 
 ops
     *undescribed*

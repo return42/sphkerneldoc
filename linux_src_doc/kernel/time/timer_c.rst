@@ -394,7 +394,7 @@ try_to_del_timer_sync
     Try to deactivate a timer
 
     :param struct timer_list \*timer:
-        timer do del
+        timer to delete
 
 .. _`try_to_del_timer_sync.description`:
 

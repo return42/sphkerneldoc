@@ -57,10 +57,14 @@ Definition
     #ifdef CONFIG_PROC_FS
         struct proc_dir_entry *dir;
     #endif
+    #ifdef CONFIG_GENERIC_IRQ_DEBUGFS
+        struct dentry *debugfs_file;
+    #endif
     #ifdef CONFIG_SPARSE_IRQ
         struct rcu_head rcu;
         struct kobject kobj;
     #endif
+        struct mutex request_mutex;
         int parent_irq;
         struct module *owner;
         const char *name;
@@ -160,11 +164,17 @@ force_resume_depth
 dir
     /proc/irq/ procfs entry
 
+debugfs_file
+    dentry for the debugfs file
+
 rcu
     rcu head for delayed free
 
 kobj
     kobject used to represent this struct in sysfs
+
+request_mutex
+    mutex to protect request/free before locking desc->lock
 
 parent_irq
     *undescribed*

@@ -258,8 +258,7 @@ state for all encoders and CRTCs in the output mesh and calls the
 provided by the driver.
 
 This function is deprecated.  New drivers must implement atomic modeset
-support, for which this function is unsuitable. Instead drivers should use
-\ :c:func:`drm_atomic_helper_connector_dpms`\ .
+support, where DPMS is handled in the DRM core.
 
 .. _`drm_helper_connector_dpms.return`:
 

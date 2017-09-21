@@ -205,15 +205,15 @@ write_ptr
 
 doorbell_ptr
     This field aim is to notify the H/W of new packet written to
-    the queue ring buffer. This field should be similar to write_ptr and the user
-    should update this field after he updated the write_ptr.
+    the queue ring buffer. This field should be similar to write_ptr and the
+    user should update this field after he updated the write_ptr.
 
 doorbell_off
     The doorbell offset in the doorbell pci-bar.
 
 is_interop
-    Defines if this is a interop queue. Interop queue means that the
-    queue can access both graphics and compute resources.
+    Defines if this is a interop queue. Interop queue means that
+    the queue can access both graphics and compute resources.
 
 is_active
     Defines if the queue is active or not.
@@ -305,7 +305,8 @@ mec
     that the queue should be execute on.
 
 pipe
-    Used only in no cp scheduling mode and identifies the queue's pipe id.
+    Used only in no cp scheduling mode and identifies the queue's pipe
+    id.
 
 queue
     Used only in no cp scheduliong mode and identifies the queue's slot.

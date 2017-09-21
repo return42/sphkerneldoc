@@ -101,6 +101,18 @@ Description
 
 Only clears the enabled-bit, regardless of its former value
 
+.. _`pci_restore_pri_state`:
+
+pci_restore_pri_state
+=====================
+
+.. c:function:: void pci_restore_pri_state(struct pci_dev *pdev)
+
+    Restore PRI
+
+    :param struct pci_dev \*pdev:
+        PCI device structure
+
 .. _`pci_reset_pri`:
 
 pci_reset_pri
@@ -153,6 +165,18 @@ pci_disable_pasid
 .. c:function:: void pci_disable_pasid(struct pci_dev *pdev)
 
     Disable the PASID capability
+
+    :param struct pci_dev \*pdev:
+        PCI device structure
+
+.. _`pci_restore_pasid_state`:
+
+pci_restore_pasid_state
+=======================
+
+.. c:function:: void pci_restore_pasid_state(struct pci_dev *pdev)
+
+    Restore PASID capabilities
 
     :param struct pci_dev \*pdev:
         PCI device structure

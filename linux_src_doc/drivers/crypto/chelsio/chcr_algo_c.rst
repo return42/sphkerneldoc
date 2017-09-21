@@ -6,18 +6,12 @@
 create_cipher_wr
 ================
 
-.. c:function:: struct sk_buff *create_cipher_wr(struct ablkcipher_request *req, unsigned short qid, unsigned short op_type)
+.. c:function:: struct sk_buff *create_cipher_wr(struct cipher_wr_param *wrparam)
 
     form the WR for cipher operations
 
-    :param struct ablkcipher_request \*req:
-        cipher req.
-
-    :param unsigned short qid:
-        ingress qid where response of this WR should be received.
-
-    :param unsigned short op_type:
-        encryption or decryption
+    :param struct cipher_wr_param \*wrparam:
+        *undescribed*
 
 .. _`create_hash_wr`:
 

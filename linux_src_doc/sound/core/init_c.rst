@@ -338,12 +338,5 @@ Return
 
 Zero if successful, or a negative error code.
 
-.. _`snd_power_wait.note`:
-
-Note
-----
-
-the power lock must be active before call.
-
 .. This file was automatic generated / don't edit.
 

@@ -692,6 +692,36 @@ Return
 
 The mode status
 
+.. _`drm_mode_validate_ycbcr420`:
+
+drm_mode_validate_ycbcr420
+==========================
+
+.. c:function:: enum drm_mode_status drm_mode_validate_ycbcr420(const struct drm_display_mode *mode, struct drm_connector *connector)
+
+    add 'ycbcr420-only' modes only when allowed
+
+    :param const struct drm_display_mode \*mode:
+        mode to check
+
+    :param struct drm_connector \*connector:
+        drm connector under action
+
+.. _`drm_mode_validate_ycbcr420.description`:
+
+Description
+-----------
+
+This function is a helper which can be used to filter out any YCBCR420
+only mode, when the source doesn't support it.
+
+.. _`drm_mode_validate_ycbcr420.return`:
+
+Return
+------
+
+The mode status
+
 .. _`drm_mode_prune_invalid`:
 
 drm_mode_prune_invalid
@@ -913,6 +943,75 @@ Return
 ------
 
 Zero on success, negative errno on failure.
+
+.. _`drm_mode_is_420_only`:
+
+drm_mode_is_420_only
+====================
+
+.. c:function:: bool drm_mode_is_420_only(const struct drm_display_info *display, const struct drm_display_mode *mode)
+
+    if a given videomode can be only supported in YCBCR420 output format
+
+    :param const struct drm_display_info \*display:
+        display under action
+
+    :param const struct drm_display_mode \*mode:
+        video mode to be tested.
+
+.. _`drm_mode_is_420_only.return`:
+
+Return
+------
+
+true if the mode can be supported in YCBCR420 format
+false if not.
+
+.. _`drm_mode_is_420_also`:
+
+drm_mode_is_420_also
+====================
+
+.. c:function:: bool drm_mode_is_420_also(const struct drm_display_info *display, const struct drm_display_mode *mode)
+
+    if a given videomode can be supported in YCBCR420 output format also (along with RGB/YCBCR444/422)
+
+    :param const struct drm_display_info \*display:
+        display under action.
+
+    :param const struct drm_display_mode \*mode:
+        video mode to be tested.
+
+.. _`drm_mode_is_420_also.return`:
+
+Return
+------
+
+true if the mode can be support YCBCR420 format
+false if not.
+
+.. _`drm_mode_is_420`:
+
+drm_mode_is_420
+===============
+
+.. c:function:: bool drm_mode_is_420(const struct drm_display_info *display, const struct drm_display_mode *mode)
+
+    if a given videomode can be supported in YCBCR420 output format
+
+    :param const struct drm_display_info \*display:
+        display under action.
+
+    :param const struct drm_display_mode \*mode:
+        video mode to be tested.
+
+.. _`drm_mode_is_420.return`:
+
+Return
+------
+
+true if the mode can be supported in YCBCR420 format
+false if not.
 
 .. This file was automatic generated / don't edit.
 

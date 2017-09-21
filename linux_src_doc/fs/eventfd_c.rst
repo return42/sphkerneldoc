@@ -74,14 +74,14 @@ with \ :c:func:`eventfd_ctx_get`\  or \ :c:func:`eventfd_ctx_fdget`\ .
 eventfd_ctx_remove_wait_queue
 =============================
 
-.. c:function:: int eventfd_ctx_remove_wait_queue(struct eventfd_ctx *ctx, wait_queue_t *wait, __u64 *cnt)
+.. c:function:: int eventfd_ctx_remove_wait_queue(struct eventfd_ctx *ctx, wait_queue_entry_t *wait, __u64 *cnt)
 
     Read the current counter and removes wait queue.
 
     :param struct eventfd_ctx \*ctx:
         [in] Pointer to eventfd context.
 
-    :param wait_queue_t \*wait:
+    :param wait_queue_entry_t \*wait:
         [in] Wait queue to be removed.
 
     :param __u64 \*cnt:

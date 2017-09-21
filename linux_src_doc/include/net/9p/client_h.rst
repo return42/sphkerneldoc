@@ -199,6 +199,7 @@ Definition
         struct p9_trans_module *trans_mod;
         enum p9_trans_status status;
         void *trans;
+        union trans_opts;
         struct p9_idpool *fidpool;
         struct list_head fidlist;
         struct p9_idpool *tagpool;
@@ -229,6 +230,9 @@ status
 
 trans
     tranport instance state and API
+
+trans_opts
+    *undescribed*
 
 fidpool
     fid handle accounting for session

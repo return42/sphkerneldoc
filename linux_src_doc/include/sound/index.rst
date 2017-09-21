@@ -9,8 +9,6 @@ sound
 
     aess_h
     ak4641_h
-    atmel-abdac_h
-    atmel-ac97c_h
     compress_driver_h
     control_h
     core_h

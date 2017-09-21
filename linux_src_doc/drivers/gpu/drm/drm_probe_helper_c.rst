@@ -141,7 +141,11 @@ The basic procedure is as follows
    - \ :c:func:`drm_mode_validate_flag`\  checks the modes against basic connector
      capabilities (interlace_allowed,doublescan_allowed,stereo_allowed)
    - the optional \ :c:type:`drm_connector_helper_funcs.mode_valid <drm_connector_helper_funcs>`\  helper can perform
-     driver and/or hardware specific checks
+     driver and/or sink specific checks
+   - the optional \ :c:type:`drm_crtc_helper_funcs.mode_valid <drm_crtc_helper_funcs>`\ ,
+     \ :c:type:`drm_bridge_funcs.mode_valid <drm_bridge_funcs>`\  and \ :c:type:`drm_encoder_helper_funcs.mode_valid <drm_encoder_helper_funcs>`\ 
+     helpers can perform driver and/or source specific checks which are also
+     enforced by the modeset/atomic helpers
 
 5. Any mode whose status is not OK is pruned from the connector's modes list,
    accompanied by a debug message indicating the reason for the mode's

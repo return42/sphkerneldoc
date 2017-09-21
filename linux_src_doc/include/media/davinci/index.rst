@@ -8,4 +8,3 @@ davinci
     :maxdepth: 1
 
     vpbe_osd_h
-    vpfe_capture_h

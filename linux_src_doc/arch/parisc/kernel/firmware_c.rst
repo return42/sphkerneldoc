@@ -992,5 +992,86 @@ pdc_pat_io_pci_cfg_write
     :param u32 val:
         *undescribed*
 
+.. _`pdc_pat_mem_pdt_info`:
+
+pdc_pat_mem_pdt_info
+====================
+
+.. c:function:: int pdc_pat_mem_pdt_info(struct pdc_pat_mem_retinfo *rinfo)
+
+    Retrieve information about page deallocation table
+
+    :param struct pdc_pat_mem_retinfo \*rinfo:
+        memory pdt information
+
+.. _`pdc_pat_mem_pdt_cell_info`:
+
+pdc_pat_mem_pdt_cell_info
+=========================
+
+.. c:function:: int pdc_pat_mem_pdt_cell_info(struct pdc_pat_mem_cell_pdt_retinfo *rinfo, unsigned long cell)
+
+    Retrieve information about page deallocation table of a cell
+
+    :param struct pdc_pat_mem_cell_pdt_retinfo \*rinfo:
+        memory pdt information
+
+    :param unsigned long cell:
+        cell number
+
+.. _`pdc_pat_mem_read_cell_pdt`:
+
+pdc_pat_mem_read_cell_pdt
+=========================
+
+.. c:function:: int pdc_pat_mem_read_cell_pdt(struct pdc_pat_mem_read_pd_retinfo *pret, unsigned long *pdt_entries_ptr, unsigned long max_entries)
+
+    Read PDT entries from (old) PAT firmware
+
+    :param struct pdc_pat_mem_read_pd_retinfo \*pret:
+        array of PDT entries
+
+    :param unsigned long \*pdt_entries_ptr:
+        ptr to hold number of PDT entries
+
+    :param unsigned long max_entries:
+        maximum number of entries to be read
+
+.. _`pdc_pat_mem_read_pd_pdt`:
+
+pdc_pat_mem_read_pd_pdt
+=======================
+
+.. c:function:: int pdc_pat_mem_read_pd_pdt(struct pdc_pat_mem_read_pd_retinfo *pret, unsigned long *pdt_entries_ptr, unsigned long count, unsigned long offset)
+
+    Read PDT entries from (newer) PAT firmware
+
+    :param struct pdc_pat_mem_read_pd_retinfo \*pret:
+        array of PDT entries
+
+    :param unsigned long \*pdt_entries_ptr:
+        ptr to hold number of PDT entries
+
+    :param unsigned long count:
+        number of bytes to read
+
+    :param unsigned long offset:
+        offset to start (in bytes)
+
+.. _`pdc_pat_mem_get_dimm_phys_location`:
+
+pdc_pat_mem_get_dimm_phys_location
+==================================
+
+.. c:function:: int pdc_pat_mem_get_dimm_phys_location(struct pdc_pat_mem_phys_mem_location *pret, unsigned long phys_addr)
+
+    Get physical DIMM slot via PAT firmware
+
+    :param struct pdc_pat_mem_phys_mem_location \*pret:
+        ptr to hold returned information
+
+    :param unsigned long phys_addr:
+        physical address to examine
+
 .. This file was automatic generated / don't edit.
 

@@ -1,22 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/asm-generic/futex.h
 
-.. _`futex_atomic_op_inuser`:
+.. _`arch_futex_atomic_op_inuser`:
 
-futex_atomic_op_inuser
-======================
+arch_futex_atomic_op_inuser
+===========================
 
-.. c:function:: int futex_atomic_op_inuser(int encoded_op, u32 __user *uaddr)
+.. c:function:: int arch_futex_atomic_op_inuser(int op, u32 oparg, int *oval, u32 __user *uaddr)
 
     Atomic arithmetic operation with constant argument and comparison of the previous futex value with another constant.
 
-    :param int encoded_op:
-        encoded operation to execute
+    :param int op:
+        *undescribed*
+
+    :param u32 oparg:
+        *undescribed*
+
+    :param int \*oval:
+        *undescribed*
 
     :param u32 __user \*uaddr:
         pointer to user space address
 
-.. _`futex_atomic_op_inuser.return`:
+.. _`arch_futex_atomic_op_inuser.return`:
 
 Return
 ------

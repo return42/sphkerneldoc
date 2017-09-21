@@ -57,12 +57,12 @@ Return
 
 0 on success, -errno on failure.
 
-.. _`store_new_id`:
+.. _`new_id_store`:
 
-store_new_id
+new_id_store
 ============
 
-.. c:function:: ssize_t store_new_id(struct device_driver *driver, const char *buf, size_t count)
+.. c:function:: ssize_t new_id_store(struct device_driver *driver, const char *buf, size_t count)
 
     sysfs frontend to \ :c:func:`pci_add_dynid`\ 
 
@@ -75,19 +75,19 @@ store_new_id
     :param size_t count:
         input size
 
-.. _`store_new_id.description`:
+.. _`new_id_store.description`:
 
 Description
 -----------
 
 Allow PCI IDs to be added to an existing driver via sysfs.
 
-.. _`store_remove_id`:
+.. _`remove_id_store`:
 
-store_remove_id
+remove_id_store
 ===============
 
-.. c:function:: ssize_t store_remove_id(struct device_driver *driver, const char *buf, size_t count)
+.. c:function:: ssize_t remove_id_store(struct device_driver *driver, const char *buf, size_t count)
 
     remove a PCI device ID from this driver
 
@@ -100,7 +100,7 @@ store_remove_id
     :param size_t count:
         input size
 
-.. _`store_remove_id.description`:
+.. _`remove_id_store.description`:
 
 Description
 -----------

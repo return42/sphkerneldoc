@@ -34,7 +34,6 @@ Definition
         int (*vm_enough_memory)(struct mm_struct *mm, long pages);
         int (*bprm_set_creds)(struct linux_binprm *bprm);
         int (*bprm_check_security)(struct linux_binprm *bprm);
-        int (*bprm_secureexec)(struct linux_binprm *bprm);
         void (*bprm_committing_creds)(struct linux_binprm *bprm);
         void (*bprm_committed_creds)(struct linux_binprm *bprm);
         int (*sb_alloc_security)(struct super_block *sb);
@@ -48,7 +47,7 @@ Definition
         int (*sb_umount)(struct vfsmount *mnt, int flags);
         int (*sb_pivotroot)(const struct path *old_path, const struct path *new_path);
         int (*sb_set_mnt_opts)(struct super_block *sb,struct security_mnt_opts *opts,unsigned long kern_flags, unsigned long *set_kern_flags);
-        int (*sb_clone_mnt_opts)(const struct super_block *oldsb, struct super_block *newsb);
+        int (*sb_clone_mnt_opts)(const struct super_block *oldsb,struct super_block *newsb,unsigned long kern_flags, unsigned long *set_kern_flags);
         int (*sb_parse_opts_str)(char *options, struct security_mnt_opts *opts);
         int (*dentry_init_security)(struct dentry *dentry, int mode,const struct qstr *name, void **ctx, u32 *ctxlen);
         int (*dentry_create_files_as)(struct dentry *dentry, int mode,struct qstr *name,const struct cred *old, struct cred *new);
@@ -205,6 +204,12 @@ Definition
         int (*tun_dev_attach)(struct sock *sk, void *security);
         int (*tun_dev_open)(void *security);
     #endif
+    #ifdef CONFIG_SECURITY_INFINIBAND
+        int (*ib_pkey_access)(void *sec, u64 subnet_prefix, u16 pkey);
+        int (*ib_endport_manage_subnet)(void *sec, const char *dev_name, u8 port_num);
+        int (*ib_alloc_security)(void **sec);
+        void (*ib_free_security)(void *sec);
+    #endif
     #ifdef CONFIG_SECURITY_NETWORK_XFRM
         int (*xfrm_policy_alloc_security)(struct xfrm_sec_ctx **ctxp,struct xfrm_user_sec_ctx *sec_ctx, gfp_t gfp);
         int (*xfrm_policy_clone_security)(struct xfrm_sec_ctx *old_ctx, struct xfrm_sec_ctx **new_ctx);
@@ -345,7 +350,11 @@ bprm_set_creds
     interpreters.  The hook can tell whether it has already been called by
     checking to see if \ ``bprm``\ ->security is non-NULL.  If so, then the hook
     may decide either to retain the security information saved earlier or
-    to replace it.
+    to replace it.  The hook must set \ ``bprm``\ ->secureexec to 1 if a "secure
+    exec" has happened as a result of this hook call.  The flag is used to
+    indicate the need for a sanitized execution environment, and is also
+    passed in the ELF auxiliary table on the initial stack to indicate
+    whether libc should enable secure mode.
     \ ``bprm``\  contains the linux_binprm structure.
     Return 0 if the hook is successful and permission is granted.
 
@@ -358,13 +367,6 @@ bprm_check_security
     pass set_creds is called first.
     \ ``bprm``\  contains the linux_binprm structure.
     Return 0 if the hook is successful and permission is granted.
-
-bprm_secureexec
-    Return a boolean value (0 or 1) indicating whether a "secure exec"
-    is required.  The flag is passed in the auxiliary table
-    on the initial stack to the ELF interpreter to indicate whether libc
-    should enable secure mode.
-    \ ``bprm``\  contains the linux_binprm structure.
 
 bprm_committing_creds
     Prepare to install the new security attributes of a process being
@@ -1523,6 +1525,27 @@ tun_dev_open
     associated with the TUN device's security structure.
     \ ``security``\  pointer to the TUN devices's security structure.
 
+ib_pkey_access
+    Check permission to access a pkey when modifing a QP.
+    \ ``subnet_prefix``\  the subnet prefix of the port being used.
+    \ ``pkey``\  the pkey to be accessed.
+    \ ``sec``\  pointer to a security structure.
+
+ib_endport_manage_subnet
+    Check permissions to send and receive SMPs on a end port.
+    \ ``dev_name``\  the IB device name (i.e. mlx4_0).
+    \ ``port_num``\  the port number.
+    \ ``sec``\  pointer to a security structure.
+
+ib_alloc_security
+    Allocate a security structure for Infiniband objects.
+    \ ``sec``\  pointer to a security structure pointer.
+    Returns 0 on success, non-zero on failure
+
+ib_free_security
+    Deallocate an Infiniband security structure.
+    \ ``sec``\  contains the security structure to be freed.
+
 xfrm_policy_alloc_security
     @ctxp is a pointer to the xfrm_sec_ctx being added to Security Policy
     Database used by the XFRM system.
@@ -1696,6 +1719,8 @@ using only the socket layer hooks, since we need to know the actual target
 socket, which is not looked up until we are inside the af_unix code.
 
 Security hooks for socket operations.
+
+Security hooks for Infiniband
 
 Security hooks for XFRM operations.
 

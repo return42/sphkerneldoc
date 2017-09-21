@@ -9,6 +9,7 @@ leds
 
     trigger/index
     led-class_c
+    leds-as3645a_c
     leds-bcm6328_c
     leds-bcm6358_c
     leds-gpio-register_c

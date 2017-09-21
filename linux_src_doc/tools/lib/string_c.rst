@@ -36,9 +36,9 @@ strtobool
 Description
 -----------
 
-This routine returns 0 iff the first character is one of 'Yy1Nn0'.
-Otherwise it will return -EINVAL.  Value pointed to by res is
-updated upon finding a match.
+This routine returns 0 iff the first character is one of 'Yy1Nn0', or
+[oO][NnFf] for "on" and "off". Otherwise it will return -EINVAL.  Value
+pointed to by res is updated upon finding a match.
 
 .. _`strlcpy`:
 

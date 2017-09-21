@@ -26,6 +26,31 @@ Description
 
 Configures and enables jack detection function.
 
+.. _`snd_soc_component_set_jack`:
+
+snd_soc_component_set_jack
+==========================
+
+.. c:function:: int snd_soc_component_set_jack(struct snd_soc_component *component, struct snd_soc_jack *jack, void *data)
+
+    configure component jack.
+
+    :param struct snd_soc_component \*component:
+        COMPONENTs
+
+    :param struct snd_soc_jack \*jack:
+        structure to use for the jack
+
+    :param void \*data:
+        can be used if codec driver need extra data for configuring jack
+
+.. _`snd_soc_component_set_jack.description`:
+
+Description
+-----------
+
+Configures and enables jack detection function.
+
 .. _`snd_soc_card_jack_new`:
 
 snd_soc_card_jack_new

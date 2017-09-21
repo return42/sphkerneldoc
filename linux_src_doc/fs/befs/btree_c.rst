@@ -27,10 +27,13 @@ Description
 Calls befs_read_datastream to read in the btree superblock and
 makes sure it is in cpu byteorder, byteswapping if necessary.
 
-On success, returns BEFS_OK and \*@sup contains the btree superblock,
-in cpu byte order.
+.. _`befs_bt_read_super.return`:
 
-On failure, BEFS_ERR is returned.
+Return
+------
+
+BEFS_OK on success and if \*@sup contains the btree superblock in cpu
+byte order. Otherwise return BEFS_ERR on error.
 
 .. _`befs_bt_read_node`:
 

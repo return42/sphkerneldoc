@@ -57,6 +57,7 @@ Definition
         u8 bssid;
         struct brcmf_cfg80211_security sec;
         struct brcmf_wsec_key key;
+        enum brcmf_profile_fwsup use_fwsup;
     }
 
 .. _`brcmf_cfg80211_profile.members`:
@@ -72,6 +73,9 @@ sec
 
 key
     key information
+
+use_fwsup
+    *undescribed*
 
 .. _`brcmf_vif_status`:
 
@@ -94,7 +98,9 @@ Definition
         BRCMF_VIF_STATUS_CONNECTING,
         BRCMF_VIF_STATUS_CONNECTED,
         BRCMF_VIF_STATUS_DISCONNECTING,
-        BRCMF_VIF_STATUS_AP_CREATED
+        BRCMF_VIF_STATUS_AP_CREATED,
+        BRCMF_VIF_STATUS_EAP_SUCCESS,
+        BRCMF_VIF_STATUS_ASSOC_SUCCESS
     };
 
 .. _`brcmf_vif_status.constants`:
@@ -109,13 +115,19 @@ BRCMF_VIF_STATUS_CONNECTING
     connect/join in progress.
 
 BRCMF_VIF_STATUS_CONNECTED
-    connected/joined succesfully.
+    connected/joined successfully.
 
 BRCMF_VIF_STATUS_DISCONNECTING
     disconnect/disable in progress.
 
 BRCMF_VIF_STATUS_AP_CREATED
     AP operation started.
+
+BRCMF_VIF_STATUS_EAP_SUCCESS
+    *undescribed*
+
+BRCMF_VIF_STATUS_ASSOC_SUCCESS
+    successful SET_SSID received.
 
 .. _`vif_saved_ie`:
 
@@ -356,7 +368,7 @@ Definition
         struct brcmf_pub *pub;
         u32 channel;
         bool active_scan;
-        bool internal_escan;
+        u32 int_escan_map;
         bool ibss_starter;
         bool pwr_save;
         bool dongle_up;
@@ -373,6 +385,7 @@ Definition
         struct brcmu_d11inf d11inf;
         struct brcmf_assoclist_le assoclist;
         struct brcmf_cfg80211_wowl wowl;
+        struct brcmf_pno_info *pno;
     }
 
 .. _`brcmf_cfg80211_info.members`:
@@ -422,8 +435,8 @@ channel
 active_scan
     current scan mode.
 
-internal_escan
-    indicates internally initiated e-scan is running.
+int_escan_map
+    bucket map for which internal e-scan is done.
 
 ibss_starter
     indicates this sta is ibss starter.
@@ -472,6 +485,9 @@ assoclist
 
 wowl
     wowl related information.
+
+pno
+    information of pno module.
 
 .. _`brcmf_tlv`:
 

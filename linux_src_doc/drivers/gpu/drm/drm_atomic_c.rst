@@ -169,14 +169,14 @@ entire atomic sequence must be restarted. All other errors are fatal.
 drm_atomic_set_mode_for_crtc
 ============================
 
-.. c:function:: int drm_atomic_set_mode_for_crtc(struct drm_crtc_state *state, struct drm_display_mode *mode)
+.. c:function:: int drm_atomic_set_mode_for_crtc(struct drm_crtc_state *state, const struct drm_display_mode *mode)
 
     set mode for CRTC
 
     :param struct drm_crtc_state \*state:
         the CRTC whose incoming state to update
 
-    :param struct drm_display_mode \*mode:
+    :param const struct drm_display_mode \*mode:
         kernel-internal mode to use for the CRTC, or NULL to disable
 
 .. _`drm_atomic_set_mode_for_crtc.description`:
@@ -225,31 +225,6 @@ Return
 ------
 
 Zero on success, error code on failure. Cannot return -EDEADLK.
-
-.. _`drm_atomic_replace_property_blob`:
-
-drm_atomic_replace_property_blob
-================================
-
-.. c:function:: void drm_atomic_replace_property_blob(struct drm_property_blob **blob, struct drm_property_blob *new_blob, bool *replaced)
-
-    replace a blob property
-
-    :param struct drm_property_blob \*\*blob:
-        a pointer to the member blob to be replaced
-
-    :param struct drm_property_blob \*new_blob:
-        the new blob to replace with
-
-    :param bool \*replaced:
-        whether the blob has been replaced
-
-.. _`drm_atomic_replace_property_blob.return`:
-
-Return
-------
-
-Zero on success, error code on failure
 
 .. _`drm_atomic_crtc_set_property`:
 
@@ -494,6 +469,84 @@ Return
 ------
 
 Zero on success, error code on failure
+
+.. _`drm_atomic_private_obj_init`:
+
+drm_atomic_private_obj_init
+===========================
+
+.. c:function:: void drm_atomic_private_obj_init(struct drm_private_obj *obj, struct drm_private_state *state, const struct drm_private_state_funcs *funcs)
+
+    initialize private object
+
+    :param struct drm_private_obj \*obj:
+        private object
+
+    :param struct drm_private_state \*state:
+        initial private object state
+
+    :param const struct drm_private_state_funcs \*funcs:
+        pointer to the struct of function pointers that identify the object
+        type
+
+.. _`drm_atomic_private_obj_init.description`:
+
+Description
+-----------
+
+Initialize the private object, which can be embedded into any
+driver private object that needs its own atomic state.
+
+.. _`drm_atomic_private_obj_fini`:
+
+drm_atomic_private_obj_fini
+===========================
+
+.. c:function:: void drm_atomic_private_obj_fini(struct drm_private_obj *obj)
+
+    finalize private object
+
+    :param struct drm_private_obj \*obj:
+        private object
+
+.. _`drm_atomic_private_obj_fini.description`:
+
+Description
+-----------
+
+Finalize the private object.
+
+.. _`drm_atomic_get_private_obj_state`:
+
+drm_atomic_get_private_obj_state
+================================
+
+.. c:function:: struct drm_private_state *drm_atomic_get_private_obj_state(struct drm_atomic_state *state, struct drm_private_obj *obj)
+
+    get private object state
+
+    :param struct drm_atomic_state \*state:
+        global atomic state
+
+    :param struct drm_private_obj \*obj:
+        private object to get the state for
+
+.. _`drm_atomic_get_private_obj_state.description`:
+
+Description
+-----------
+
+This function returns the private object state for the given private object,
+allocating the state if needed. It does not grab any locks as the caller is
+expected to care of any required locking.
+
+.. _`drm_atomic_get_private_obj_state.return`:
+
+Return
+------
+
+
+Either the allocated state or the error code encoded into a pointer.
 
 .. _`drm_atomic_get_connector_state`:
 
@@ -801,27 +854,6 @@ Return
 0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
 then the w/w mutex code has detected a deadlock and the entire atomic
 sequence must be restarted. All other errors are fatal.
-
-.. _`drm_atomic_legacy_backoff`:
-
-drm_atomic_legacy_backoff
-=========================
-
-.. c:function:: void drm_atomic_legacy_backoff(struct drm_atomic_state *state)
-
-    locking backoff for legacy ioctls
-
-    :param struct drm_atomic_state \*state:
-        atomic state
-
-.. _`drm_atomic_legacy_backoff.description`:
-
-Description
------------
-
-This function should be used by legacy entry points which don't understand
--EDEADLK semantics. For simplicity this one will grab all modeset locks after
-the slowpath completed.
 
 .. _`drm_atomic_check_only`:
 

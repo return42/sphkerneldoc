@@ -51,6 +51,31 @@ It is an error to call this function while any resources in the pd still
 exist.  The caller is responsible to synchronously destroy them and
 guarantee no new allocations will happen.
 
+.. _`ib_modify_qp_with_udata`:
+
+ib_modify_qp_with_udata
+=======================
+
+.. c:function:: int ib_modify_qp_with_udata(struct ib_qp *qp, struct ib_qp_attr *attr, int attr_mask, struct ib_udata *udata)
+
+    Modifies the attributes for the specified QP.
+
+    :param struct ib_qp \*qp:
+        The QP to modify.
+
+    :param struct ib_qp_attr \*attr:
+        On input, specifies the QP attributes to modify.  On output,
+        the current values of selected QP attributes are returned.
+
+    :param int attr_mask:
+        A bit-mask used to specify which attributes of the QP
+        are being modified.
+
+    :param struct ib_udata \*udata:
+        pointer to user's input output buffer information
+        are being modified.
+        It returns 0 on success and returns appropriate error code on error.
+
 .. _`ib_alloc_mr`:
 
 ib_alloc_mr

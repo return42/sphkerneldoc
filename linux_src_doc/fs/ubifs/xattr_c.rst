@@ -69,5 +69,31 @@ This helper function changes the value of extended attribute \ ``inode``\  with 
 data from \ ``value``\ . Returns zero in case of success and a negative error code
 in case of failure.
 
+.. _`ubifs_evict_xattr_inode`:
+
+ubifs_evict_xattr_inode
+=======================
+
+.. c:function:: void ubifs_evict_xattr_inode(struct ubifs_info *c, ino_t xattr_inum)
+
+    Evict an xattr inode.
+
+    :param struct ubifs_info \*c:
+        UBIFS file-system description object
+
+    :param ino_t xattr_inum:
+        xattr inode number
+
+.. _`ubifs_evict_xattr_inode.description`:
+
+Description
+-----------
+
+When an inode that hosts xattrs is being removed we have to make sure
+that cached inodes of the xattrs also get removed from the inode cache
+otherwise we'd waste memory. This function looks up an inode from the
+inode cache and clears the link counter such that \ :c:func:`iput`\  will evict
+the inode.
+
 .. This file was automatic generated / don't edit.
 

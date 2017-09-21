@@ -43,44 +43,5 @@ hfi1_qp_wakeup
     :param u32 flag:
         flag the qp on which the qp is stalled
 
-.. _`qp_iter_init`:
-
-qp_iter_init
-============
-
-.. c:function:: struct qp_iter *qp_iter_init(struct hfi1_ibdev *dev)
-
-    initialize the iterator for the qp hash list
-
-    :param struct hfi1_ibdev \*dev:
-        the hfi1_ibdev
-
-.. _`qp_iter_next`:
-
-qp_iter_next
-============
-
-.. c:function:: int qp_iter_next(struct qp_iter *iter)
-
-    Find the next qp in the hash list
-
-    :param struct qp_iter \*iter:
-        the iterator for the qp hash list
-
-.. _`qp_iter_print`:
-
-qp_iter_print
-=============
-
-.. c:function:: void qp_iter_print(struct seq_file *s, struct qp_iter *iter)
-
-    print the qp information to seq_file
-
-    :param struct seq_file \*s:
-        the seq_file to emit the qp information on
-
-    :param struct qp_iter \*iter:
-        the iterator for the qp hash list
-
 .. This file was automatic generated / don't edit.
 

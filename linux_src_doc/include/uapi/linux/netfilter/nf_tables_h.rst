@@ -1870,6 +1870,7 @@ Definition
         NFTA_EXTHDR_LEN,
         NFTA_EXTHDR_FLAGS,
         NFTA_EXTHDR_OP,
+        NFTA_EXTHDR_SREG,
         __NFTA_EXTHDR_MAX
     };
 
@@ -1897,7 +1898,10 @@ NFTA_EXTHDR_FLAGS
     extension header flags (NLA_U32)
 
 NFTA_EXTHDR_OP
-    option match type (NLA_U8)
+    option match type (NLA_U32)
+
+NFTA_EXTHDR_SREG
+    option match type (NLA_U32)
 
 __NFTA_EXTHDR_MAX
     *undescribed*
@@ -2045,7 +2049,8 @@ Definition
     enum nft_rt_keys {
         NFT_RT_CLASSID,
         NFT_RT_NEXTHOP4,
-        NFT_RT_NEXTHOP6
+        NFT_RT_NEXTHOP6,
+        NFT_RT_TCPMSS
     };
 
 .. _`nft_rt_keys.constants`:
@@ -2061,6 +2066,9 @@ NFT_RT_NEXTHOP4
 
 NFT_RT_NEXTHOP6
     routing nexthop for IPv6
+
+NFT_RT_TCPMSS
+    fetch current path tcp mss
 
 .. _`nft_hash_types`:
 
@@ -3092,6 +3100,8 @@ Definition
     enum nft_gen_attributes {
         NFTA_GEN_UNSPEC,
         NFTA_GEN_ID,
+        NFTA_GEN_PROC_PID,
+        NFTA_GEN_PROC_NAME,
         __NFTA_GEN_MAX
     };
 
@@ -3105,6 +3115,12 @@ NFTA_GEN_UNSPEC
 
 NFTA_GEN_ID
     Ruleset generation ID (NLA_U32)
+
+NFTA_GEN_PROC_PID
+    *undescribed*
+
+NFTA_GEN_PROC_NAME
+    *undescribed*
 
 __NFTA_GEN_MAX
     *undescribed*

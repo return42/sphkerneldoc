@@ -646,9 +646,10 @@ Governors calling this function must guarantee that it will never be invoked
 twice in parallel for the same policy and that it will never be called in
 parallel with either ->target() or ->target_index() for the same policy.
 
-If CPUFREQ_ENTRY_INVALID is returned by the driver's ->fast_switch()
-callback to indicate an error condition, the hardware configuration must be
-preserved.
+Returns the actual frequency set for the CPU.
+
+If 0 is returned by the driver's ->fast_switch() callback to indicate an
+error condition, the hardware configuration must be preserved.
 
 .. _`cpufreq_get_policy`:
 

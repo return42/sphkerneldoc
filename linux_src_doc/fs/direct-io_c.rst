@@ -37,15 +37,12 @@ dio_complete.
 dio_end_io
 ==========
 
-.. c:function:: void dio_end_io(struct bio *bio, int error)
+.. c:function:: void dio_end_io(struct bio *bio)
 
     handle the end io action for the given bio
 
     :param struct bio \*bio:
         The direct io bio thats being completed
-
-    :param int error:
-        Error if there was one
 
 .. _`dio_end_io.description`:
 

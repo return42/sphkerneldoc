@@ -257,6 +257,16 @@ css_set_populated
     :param struct css_set \*cset:
         target css_set
 
+.. _`css_set_populated.description`:
+
+Description
+-----------
+
+css_set_populated() should be the same as !!cset->nr_tasks at steady
+state. However, \ :c:func:`css_set_populated`\  can be called while a task is being
+added to or removed from the linked list before the nr_tasks is
+properly updated. Hence, we can't just look at ->nr_tasks here.
+
 .. _`cgroup_update_populated`:
 
 cgroup_update_populated
@@ -264,7 +274,7 @@ cgroup_update_populated
 
 .. c:function:: void cgroup_update_populated(struct cgroup *cgrp, bool populated)
 
-    updated populated count of a cgroup
+    update the populated count of a cgroup
 
     :param struct cgroup \*cgrp:
         the target cgroup
@@ -278,15 +288,16 @@ Description
 -----------
 
 One of the css_sets associated with \ ``cgrp``\  is either getting its first
-task or losing the last.  Update \ ``cgrp``\ ->populated_cnt accordingly.  The
-count is propagated towards root so that a given cgroup's populated_cnt
-is zero iff the cgroup and all its descendants don't contain any tasks.
+task or losing the last.  Update \ ``cgrp``\ ->nr_populated\_\* accordingly.  The
+count is propagated towards root so that a given cgroup's
+nr_populated_children is zero iff none of its descendants contain any
+tasks.
 
-\ ``cgrp``\ 's interface file "cgroup.populated" is zero if
-\ ``cgrp``\ ->populated_cnt is zero and 1 otherwise.  When \ ``cgrp``\ ->populated_cnt
-changes from or to zero, userland is notified that the content of the
-interface file has changed.  This can be used to detect when \ ``cgrp``\  and
-its descendants become populated or empty.
+\ ``cgrp``\ 's interface file "cgroup.populated" is zero if both
+\ ``cgrp``\ ->nr_populated_csets and \ ``cgrp``\ ->nr_populated_children are zero and
+1 otherwise.  When the sum changes from or to zero, userland is notified
+that the content of the interface file has changed.  This can be used to
+detect when \ ``cgrp``\  and its descendants become populated or empty.
 
 .. _`css_set_update_populated`:
 
@@ -309,7 +320,7 @@ Description
 -----------
 
 @cset is either getting the first task or losing the last.  Update the
-->populated_cnt of all associated cgroups accordingly.
+populated counters of all associated cgroups accordingly.
 
 .. _`css_set_move_task`:
 
@@ -341,7 +352,7 @@ Move \ ``task``\  from \ ``from_cset``\  to \ ``to_cset``\ .  If \ ``task``\  di
 css_set, \ ``from_cset``\  can be NULL.  If \ ``task``\  is being disassociated
 instead of moved, \ ``to_cset``\  can be NULL.
 
-This function automatically handles populated_cnt updates and
+This function automatically handles populated counter updates and
 css_task_iter adjustments but the caller is responsible for managing
 \ ``from_cset``\  and \ ``to_cset``\ 's reference counts.
 
@@ -710,26 +721,27 @@ This function fails iff one of the ->can_attach callbacks fails and
 guarantees that either all or none of the tasks in \ ``mgctx``\  are migrated.
 \ ``mgctx``\  is consumed regardless of success.
 
-.. _`cgroup_may_migrate_to`:
+.. _`cgroup_migrate_vet_dst`:
 
-cgroup_may_migrate_to
-=====================
+cgroup_migrate_vet_dst
+======================
 
-.. c:function:: bool cgroup_may_migrate_to(struct cgroup *dst_cgrp)
+.. c:function:: int cgroup_migrate_vet_dst(struct cgroup *dst_cgrp)
 
     verify whether a cgroup can be migration destination
 
     :param struct cgroup \*dst_cgrp:
         destination cgroup to test
 
-.. _`cgroup_may_migrate_to.description`:
+.. _`cgroup_migrate_vet_dst.description`:
 
 Description
 -----------
 
-On the default hierarchy, except for the root, subtree_control must be
-zero for migration destination cgroups with tasks so that child cgroups
-don't compete against tasks.
+On the default hierarchy, except for the mixable, (possible) thread root
+and threaded cgroups, subtree_control must be zero for migration
+destination cgroups with tasks so that child cgroups don't compete
+against tasks.
 
 .. _`cgroup_migrate_finish`:
 
@@ -1079,6 +1091,28 @@ Description
 
 Finalize control mask update.  See \ :c:func:`cgroup_apply_control`\  for more info.
 
+.. _`cgroup_enable_threaded`:
+
+cgroup_enable_threaded
+======================
+
+.. c:function:: int cgroup_enable_threaded(struct cgroup *cgrp)
+
+    make \ ``cgrp``\  threaded
+
+    :param struct cgroup \*cgrp:
+        the target cgroup
+
+.. _`cgroup_enable_threaded.description`:
+
+Description
+-----------
+
+Called when "threaded" is written to the cgroup.type interface file and
+tries to make \ ``cgrp``\  threaded and join the parent's resource domain.
+This function is never called on the root cgroup as cgroup.type doesn't
+exist on it.
+
 .. _`cgroup_addrm_files`:
 
 cgroup_addrm_files
@@ -1402,12 +1436,15 @@ Advance \ ``it``\  to the next css_set to walk.
 css_task_iter_start
 ===================
 
-.. c:function:: void css_task_iter_start(struct cgroup_subsys_state *css, struct css_task_iter *it)
+.. c:function:: void css_task_iter_start(struct cgroup_subsys_state *css, unsigned int flags, struct css_task_iter *it)
 
     initiate task iteration
 
     :param struct cgroup_subsys_state \*css:
         the css to walk tasks of
+
+    :param unsigned int flags:
+        CSS_TASK_ITER\_\* flags
 
     :param struct css_task_iter \*it:
         the task iterator to use

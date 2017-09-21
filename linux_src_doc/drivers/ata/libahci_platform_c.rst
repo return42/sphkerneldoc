@@ -280,6 +280,27 @@ Return
 
 0 on success otherwise a negative error code
 
+.. _`ahci_platform_shutdown`:
+
+ahci_platform_shutdown
+======================
+
+.. c:function:: void ahci_platform_shutdown(struct platform_device *pdev)
+
+    Disable interrupts and stop DMA for host ports
+
+    :param struct platform_device \*pdev:
+        *undescribed*
+
+.. _`ahci_platform_shutdown.description`:
+
+Description
+-----------
+
+This function is called during system shutdown and performs the minimal
+deconfiguration required to ensure that an ahci_platform host cannot
+corrupt or otherwise interfere with a new kernel being started with kexec.
+
 .. _`ahci_platform_suspend_host`:
 
 ahci_platform_suspend_host

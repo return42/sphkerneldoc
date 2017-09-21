@@ -6,31 +6,31 @@
 nfp_rtsym_count
 ===============
 
-.. c:function:: int nfp_rtsym_count(struct nfp_cpp *cpp)
+.. c:function:: int nfp_rtsym_count(struct nfp_rtsym_table *rtbl)
 
     Get the number of RTSYM descriptors
 
-    :param struct nfp_cpp \*cpp:
-        NFP CPP handle
+    :param struct nfp_rtsym_table \*rtbl:
+        NFP RTsym table
 
 .. _`nfp_rtsym_count.return`:
 
 Return
 ------
 
-Number of RTSYM descriptors, or -ERRNO
+Number of RTSYM descriptors
 
 .. _`nfp_rtsym_get`:
 
 nfp_rtsym_get
 =============
 
-.. c:function:: const struct nfp_rtsym *nfp_rtsym_get(struct nfp_cpp *cpp, int idx)
+.. c:function:: const struct nfp_rtsym *nfp_rtsym_get(struct nfp_rtsym_table *rtbl, int idx)
 
     Get the Nth RTSYM descriptor
 
-    :param struct nfp_cpp \*cpp:
-        NFP CPP handle
+    :param struct nfp_rtsym_table \*rtbl:
+        NFP RTsym table
 
     :param int idx:
         Index (0-based) of the RTSYM descriptor
@@ -47,12 +47,12 @@ const pointer to a struct nfp_rtsym descriptor, or NULL
 nfp_rtsym_lookup
 ================
 
-.. c:function:: const struct nfp_rtsym *nfp_rtsym_lookup(struct nfp_cpp *cpp, const char *name)
+.. c:function:: const struct nfp_rtsym *nfp_rtsym_lookup(struct nfp_rtsym_table *rtbl, const char *name)
 
     Return the RTSYM descriptor for a symbol name
 
-    :param struct nfp_cpp \*cpp:
-        NFP CPP handle
+    :param struct nfp_rtsym_table \*rtbl:
+        NFP RTsym table
 
     :param const char \*name:
         Symbol name
@@ -69,12 +69,12 @@ const pointer to a struct nfp_rtsym descriptor, or NULL
 nfp_rtsym_read_le
 =================
 
-.. c:function:: u64 nfp_rtsym_read_le(struct nfp_cpp *cpp, const char *name, int *error)
+.. c:function:: u64 nfp_rtsym_read_le(struct nfp_rtsym_table *rtbl, const char *name, int *error)
 
     Read a simple unsigned scalar value from symbol
 
-    :param struct nfp_cpp \*cpp:
-        NFP CPP handle
+    :param struct nfp_rtsym_table \*rtbl:
+        NFP RTsym table
 
     :param const char \*name:
         Symbol name

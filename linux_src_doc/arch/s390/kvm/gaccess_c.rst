@@ -6,7 +6,7 @@
 guest_translate
 ===============
 
-.. c:function:: unsigned long guest_translate(struct kvm_vcpu *vcpu, unsigned long gva, unsigned long *gpa, const union asce asce, enum gacc_mode mode)
+.. c:function:: unsigned long guest_translate(struct kvm_vcpu *vcpu, unsigned long gva, unsigned long *gpa, const union asce asce, enum gacc_mode mode, enum prot_type *prot)
 
     translate a guest virtual into a guest absolute address
 
@@ -24,6 +24,9 @@ guest_translate
 
     :param enum gacc_mode mode:
         indicates the access mode to be used
+
+    :param enum prot_type \*prot:
+        returns the type for protection exceptions
 
 .. _`guest_translate.description`:
 

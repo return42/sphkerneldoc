@@ -19,18 +19,6 @@ nvmf_get_address
     :param int size:
         buffer size
 
-.. _`nvmf_get_subsysnqn`:
-
-nvmf_get_subsysnqn
-==================
-
-.. c:function:: const char *nvmf_get_subsysnqn(struct nvme_ctrl *ctrl)
-
-    Get subsystem NQN
-
-    :param struct nvme_ctrl \*ctrl:
-        Host NVMe controller instance which we got the NQN
-
 .. _`nvmf_reg_read32`:
 
 nvmf_reg_read32

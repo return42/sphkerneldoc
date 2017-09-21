@@ -14,9 +14,12 @@ gvt
     firmware_c
     gtt_c
     gvt_c
+    gvt_h
     handlers_c
     interrupt_c
     mmio_c
     mpt_h
     opregion_c
+    render_c
+    scheduler_c
     vgpu_c

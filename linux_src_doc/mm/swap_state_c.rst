@@ -6,15 +6,12 @@
 add_to_swap
 ===========
 
-.. c:function:: int add_to_swap(struct page *page, struct list_head *list)
+.. c:function:: int add_to_swap(struct page *page)
 
     allocate swap space for a page
 
     :param struct page \*page:
         page we want to move to swap
-
-    :param struct list_head \*list:
-        *undescribed*
 
 .. _`add_to_swap.description`:
 

@@ -22,11 +22,13 @@ platform_data
     adau17x1_h
     adau1977_h
     ads7828_h
+    apds990x_h
     asoc-s3c24xx_simtec_h
     asoc-s3c_h
     at24_h
     at91_adc_h
     ata-samsung_cf_h
+    bh1770glc_h
     brcmfmac_h
     bt-nokia-h4p_h
     crypto-atmel_h
@@ -44,6 +46,7 @@ platform_data
     gpio-htc-egpio_h
     gpio-ts5500_h
     hwmon-s3c_h
+    i2c-hid_h
     i2c-imx_h
     i2c-mux-reg_h
     i2c-s3c2410_h
@@ -64,6 +67,7 @@ platform_data
     mmc-sdhci-s3c_h
     mtd-nand-s3c2410_h
     omap-wd-timer_h
+    pcf857x_h
     pinctrl-adi2_h
     pixcir_i2c_ts_h
     s3c-hsotg_h

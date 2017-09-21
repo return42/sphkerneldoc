@@ -17,7 +17,8 @@ memremap
         size of remap
 
     :param unsigned long flags:
-        any of MEMREMAP_WB, MEMREMAP_WT and MEMREMAP_WC
+        any of MEMREMAP_WB, MEMREMAP_WT, MEMREMAP_WC,
+        MEMREMAP_ENC, MEMREMAP_DEC
 
 .. _`memremap.description`:
 

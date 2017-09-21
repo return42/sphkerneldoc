@@ -36,7 +36,7 @@ X86_SUBARCH_PC
     PC mechanisms (PCI, ACPI) and doesn't need a special boot flow.
 
 X86_SUBARCH_LGUEST
-    Used for x86 hypervisor demo, lguest
+    Used for x86 hypervisor demo, lguest, deprecated
 
 X86_SUBARCH_XEN
     Used for Xen guest types which follow the PV boot path,

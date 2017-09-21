@@ -90,12 +90,7 @@ Definition
         int kmap_cnt;
         void *vaddr;
         struct sg_table *sg_table;
-        struct page **pages;
-        struct list_head vmas;
         struct list_head attachments;
-        int handle_count;
-        char task_comm;
-        pid_t pid;
     }
 
 .. _`ion_buffer.members`:
@@ -138,26 +133,8 @@ vaddr
 sg_table
     the sg table for the buffer if dmap_cnt is not zero
 
-pages
-    flat array of pages in the buffer -- used by fault
-    handler and only valid for buffers that are faulted in
-
-vmas
-    list of vma's mapping this buffer
-
 attachments
     *undescribed*
-
-handle_count
-    count of handles referencing this buffer
-
-task_comm
-    taskcomm of last client to reference this buffer in a
-    handle, used for debugging
-
-pid
-    pid of last client to reference this buffer in a
-    handle, used for debugging
 
 .. _`ion_device`:
 

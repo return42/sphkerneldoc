@@ -8,4 +8,3 @@ linux
     :maxdepth: 1
 
     libcfs/index
-    lnet/index

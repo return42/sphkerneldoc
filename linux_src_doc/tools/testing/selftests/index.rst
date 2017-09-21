@@ -10,3 +10,4 @@ selftests
     futex/index
     mqueue/index
     rcutorture/index
+    kselftest_harness_h

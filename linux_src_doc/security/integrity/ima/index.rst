@@ -12,3 +12,4 @@ ima
     ima_crypto_c
     ima_main_c
     ima_policy_c
+    ima_template_lib_c

@@ -16,7 +16,6 @@ char
     bfin-otp_c
     mbcs_c
     misc_c
-    mmtimer_c
     random_c
     tile-srom_c
     uv_mmtimer_c

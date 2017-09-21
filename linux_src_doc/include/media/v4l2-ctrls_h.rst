@@ -564,25 +564,25 @@ v4l2_ctrl_fill
         ID of the control
 
     :param const char \*\*name:
-        name of the control
+        pointer to be filled with a string with the name of the control
 
     :param enum v4l2_ctrl_type \*type:
-        type of the control
+        pointer for storing the type of the control
 
     :param s64 \*min:
-        minimum value for the control
+        pointer for storing the minimum value for the control
 
     :param s64 \*max:
-        maximum value for the control
+        pointer for storing the maximum value for the control
 
     :param u64 \*step:
-        control step
+        pointer for storing the control step
 
     :param s64 \*def:
-        default value for the control
+        pointer for storing the default value for the control
 
     :param u32 \*flags:
-        flags to be used on the control
+        pointer for storing the flags to be used on the control
 
 .. _`v4l2_ctrl_fill.description`:
 
@@ -591,7 +591,7 @@ Description
 
 This works for all standard V4L2 controls.
 For non-standard controls it will only fill in the given arguments
-and \ ``name``\  will be \ ``NULL``\ .
+and \ ``name``\  content will be set to \ ``NULL``\ .
 
 This function will overwrite the contents of \ ``name``\ , \ ``type``\  and \ ``flags``\ .
 The contents of \ ``min``\ , \ ``max``\ , \ ``step``\  and \ ``def``\  may be modified depending on
@@ -722,6 +722,27 @@ v4l2_ctrl_unlock
 
     :param struct v4l2_ctrl \*ctrl:
         The control to unlock.
+
+.. _`__v4l2_ctrl_handler_setup`:
+
+__v4l2_ctrl_handler_setup
+=========================
+
+.. c:function:: int __v4l2_ctrl_handler_setup(struct v4l2_ctrl_handler *hdl)
+
+    Call the s_ctrl op for all controls belonging to the handler to initialize the hardware to the current control values. The caller is responsible for acquiring the control handler mutex on behalf of \ :c:func:`__v4l2_ctrl_handler_setup`\ .
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        The control handler.
+
+.. _`__v4l2_ctrl_handler_setup.description`:
+
+Description
+-----------
+
+Button controls will be skipped, as are read-only controls.
+
+If \ ``hdl``\  == NULL, then this just returns 0.
 
 .. _`v4l2_ctrl_handler_setup`:
 

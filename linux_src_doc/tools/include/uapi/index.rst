@@ -7,4 +7,5 @@ uapi
 .. toctree::
     :maxdepth: 1
 
+    drm/index
     linux/index

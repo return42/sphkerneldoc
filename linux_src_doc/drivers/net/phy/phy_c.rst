@@ -57,6 +57,26 @@ Description
 
 Returns 0 on success or < 0 on error.
 
+.. _`phy_restart_aneg`:
+
+phy_restart_aneg
+================
+
+.. c:function:: int phy_restart_aneg(struct phy_device *phydev)
+
+    restart auto-negotiation
+
+    :param struct phy_device \*phydev:
+        target phy_device struct
+
+.. _`phy_restart_aneg.description`:
+
+Description
+-----------
+
+Restart the autonegotiation on \ ``phydev``\ .  Returns >= 0 on success or
+negative errno on error.
+
 .. _`phy_aneg_done`:
 
 phy_aneg_done
@@ -77,42 +97,6 @@ Description
 Return the auto-negotiation status from this \ ``phydev``\ 
 Returns > 0 on success or < 0 on error. 0 means that auto-negotiation
 is still pending.
-
-.. _`phy_lookup_setting`:
-
-phy_lookup_setting
-==================
-
-.. c:function:: const struct phy_setting *phy_lookup_setting(int speed, int duplex, u32 features, bool exact)
-
-    lookup a PHY setting
-
-    :param int speed:
-        speed to match
-
-    :param int duplex:
-        duplex to match
-
-    :param u32 features:
-        *undescribed*
-
-    :param bool exact:
-        an exact match is required
-
-.. _`phy_lookup_setting.description`:
-
-Description
------------
-
-Search the settings array for a setting that matches the speed and
-duplex, and which is supported.
-
-If \ ``exact``\  is unset, either an exact match or \ ``NULL``\  for no match will
-be returned.
-
-If \ ``exact``\  is set, an exact match, the fastest supported setting at
-or below the specified speed, the slowest supported setting, or if
-they all fail, \ ``NULL``\  will be returned.
 
 .. _`phy_find_valid`:
 
@@ -337,8 +321,8 @@ Description
 
 The PHY infrastructure can run a state machine
   which tracks whether the PHY is starting up, negotiating,
-  etc.  This function starts the timer which tracks the state
-  of the PHY.  If you want to maintain your own state machine,
+  etc.  This function starts the delayed workqueue which tracks
+  the state of the PHY. If you want to maintain your own state machine,
   do not call this function.
 
 .. _`phy_trigger_machine`:
@@ -381,9 +365,9 @@ phy_stop_machine
 Description
 -----------
 
-Stops the state machine timer, sets the state to UP
-  (unless it wasn't up yet). This function must be called BEFORE
-  phy_detach.
+Stops the state machine delayed workqueue, sets the
+  state to UP (unless it wasn't up yet). This function must be
+  called BEFORE phy_detach.
 
 .. _`phy_error`:
 

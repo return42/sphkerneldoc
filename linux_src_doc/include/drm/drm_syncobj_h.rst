@@ -1,0 +1,135 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: include/drm/drm_syncobj.h
+
+.. _`drm_syncobj`:
+
+struct drm_syncobj
+==================
+
+.. c:type:: struct drm_syncobj
+
+    sync object.
+
+.. _`drm_syncobj.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_syncobj {
+        struct kref refcount;
+        struct dma_fence *fence;
+        struct list_head cb_list;
+        spinlock_t lock;
+        struct file *file;
+    }
+
+.. _`drm_syncobj.members`:
+
+Members
+-------
+
+refcount
+
+    Reference count of this object.
+
+fence
+    NULL or a pointer to the fence bound to this object.
+
+    This field should not be used directly.  Use drm_syncobj_fence_get
+    and drm_syncobj_replace_fence instead.
+
+cb_list
+    List of callbacks to call when the fence gets replaced
+
+lock
+    locks cb_list and write-locks fence.
+
+file
+    a file backing for this syncobj.
+
+.. _`drm_syncobj.description`:
+
+Description
+-----------
+
+This structure defines a generic sync object which wraps a dma fence.
+
+.. _`drm_syncobj_cb`:
+
+struct drm_syncobj_cb
+=====================
+
+.. c:type:: struct drm_syncobj_cb
+
+    callback for drm_syncobj_add_callback
+
+.. _`drm_syncobj_cb.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_syncobj_cb {
+        struct list_head node;
+        drm_syncobj_func_t func;
+    }
+
+.. _`drm_syncobj_cb.members`:
+
+Members
+-------
+
+node
+    used by drm_syncob_add_callback to append this struct to
+    syncobj::cb_list
+
+func
+    drm_syncobj_func_t to call
+
+.. _`drm_syncobj_cb.description`:
+
+Description
+-----------
+
+This struct will be initialized by drm_syncobj_add_callback, additional
+data can be passed along by embedding drm_syncobj_cb in another struct.
+The callback will get called the next time drm_syncobj_replace_fence is
+called.
+
+.. _`drm_syncobj_get`:
+
+drm_syncobj_get
+===============
+
+.. c:function:: void drm_syncobj_get(struct drm_syncobj *obj)
+
+    acquire a syncobj reference
+
+    :param struct drm_syncobj \*obj:
+        sync object
+
+.. _`drm_syncobj_get.description`:
+
+Description
+-----------
+
+This acquires additional reference to \ ``obj``\ . It is illegal to call this
+without already holding a reference. No locks required.
+
+.. _`drm_syncobj_put`:
+
+drm_syncobj_put
+===============
+
+.. c:function:: void drm_syncobj_put(struct drm_syncobj *obj)
+
+    release a reference to a sync object.
+
+    :param struct drm_syncobj \*obj:
+        sync object.
+
+.. This file was automatic generated / don't edit.
+

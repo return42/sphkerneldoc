@@ -17,10 +17,10 @@ Definition
 .. code-block:: c
 
     struct iwl_mod_params {
-        int sw_crypto;
+        int swcrypto;
         unsigned int disable_11n;
         int amsdu_size;
-        bool restart_fw;
+        bool fw_restart;
         bool bt_coex_active;
         int led_mode;
         bool power_save;
@@ -28,11 +28,11 @@ Definition
     #ifdef CONFIG_IWLWIFI_DEBUG
         u32 debug_level;
     #endif
-        int ant_coupling;
+        int antenna_coupling;
         char *nvm_file;
         u32 uapsd_disable;
         bool d0i3_disable;
-        unsigned int d0i3_entry_delay;
+        unsigned int d0i3_timeout;
         bool lar_disable;
         bool fw_monitor;
         bool disable_11ac;
@@ -43,7 +43,7 @@ Definition
 Members
 -------
 
-sw_crypto
+swcrypto
     using hardware encryption, default = 0
 
 disable_11n
@@ -53,7 +53,7 @@ disable_11n
 amsdu_size
     See \ :c:type:`enum iwl_amsdu_size <iwl_amsdu_size>`\ .
 
-restart_fw
+fw_restart
     restart firmware, default = 1
 
 bt_coex_active
@@ -71,20 +71,20 @@ power_level
 debug_level
     levels are IWL_DL\_\*
 
-ant_coupling
+antenna_coupling
     antenna coupling in dB, default = 0
 
 nvm_file
     specifies a external NVM file
 
 uapsd_disable
-    disable U-APSD, see \ ``enum``\  iwl_uapsd_disable, default =
+    disable U-APSD, see \ :c:type:`enum iwl_uapsd_disable <iwl_uapsd_disable>`\ , default =
     IWL_DISABLE_UAPSD_BSS \| IWL_DISABLE_UAPSD_P2P_CLIENT
 
 d0i3_disable
     disable d0i3, default = 1,
 
-d0i3_entry_delay
+d0i3_timeout
     time to wait after no refs are taken before
     entering D0i3 (in msecs)
 

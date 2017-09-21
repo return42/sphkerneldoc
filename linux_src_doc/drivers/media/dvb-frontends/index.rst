@@ -9,6 +9,7 @@ dvb-frontends
 
     drx39xyj/index
     a8293_h
+    af9013_h
     ascot2e_h
     cxd2820r_h
     dib8000_c

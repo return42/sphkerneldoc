@@ -381,7 +381,7 @@ ports displayed by the fc_host. We do this under 2 conditions:
    attached to it. However, we want to semi-persist the target id assigned
    to that port if it eventually does exist. The port structure will
    remain (although with minimal information) so that the target id
-   bindings remails.
+   bindings also remain.
 
 If the remote port is not an FCP Target, it will be fully torn down
 and deallocated, including the fc_remote_port class device.
@@ -395,7 +395,7 @@ is then expected.
   If the remote port does not return (signaled by a LLDD call to
   \ :c:func:`fc_remote_port_add`\ ) within the dev_loss_tmo timeout, then the
   scsi target is removed - killing all outstanding i/o and removing the
-  scsi devices attached ot it. The port structure will be marked Not
+  scsi devices attached to it. The port structure will be marked Not
   Present and be partially cleared, leaving only enough information to
   recognize the remote port relative to the scsi target id binding if
   it later appears.  The port will remain as long as there is a valid
@@ -509,6 +509,38 @@ fc_scsi_scan_rport
     :param struct work_struct \*work:
         remote port to be scanned.
 
+.. _`fc_block_rport`:
+
+fc_block_rport
+==============
+
+.. c:function:: int fc_block_rport(struct fc_rport *rport)
+
+    Block SCSI eh thread for blocked fc_rport.
+
+    :param struct fc_rport \*rport:
+        Remote port that scsi_eh is trying to recover.
+
+.. _`fc_block_rport.description`:
+
+Description
+-----------
+
+This routine can be called from a FC LLD scsi_eh callback. It
+blocks the scsi_eh thread until the fc_rport leaves the
+FC_PORTSTATE_BLOCKED, or the fast_io_fail_tmo fires. This is
+necessary to avoid the scsi_eh failing recovery actions for blocked
+rports which would lead to offlined SCSI devices.
+
+.. _`fc_block_rport.return`:
+
+Return
+------
+
+0 if the fc_rport left the state FC_PORTSTATE_BLOCKED.
+         FAST_IO_FAIL if the fast_io_fail_tmo fired, this should be
+         passed back to scsi_eh.
+
 .. _`fc_block_scsi_eh`:
 
 fc_block_scsi_eh
@@ -572,7 +604,7 @@ Description
 -----------
 
 Allocates and creates the vport structure, calls the parent host
-to instantiate the vport, the completes w/ class and sysfs creation.
+to instantiate the vport, this completes w/ class and sysfs creation.
 
 .. _`fc_vport_setup.notes`:
 

@@ -252,6 +252,7 @@ Definition
 .. code-block:: c
 
     struct drm_dp_mst_topology_mgr {
+        struct drm_private_obj base;
         struct drm_device *dev;
         const struct drm_dp_mst_topology_cbs *cbs;
         int max_dpcd_transaction_bytes;
@@ -266,6 +267,8 @@ Definition
         u8 dpcd;
         u8 sink_count;
         int pbn_div;
+        struct drm_dp_mst_topology_state *state;
+        const struct drm_private_state_funcs *funcs;
         struct mutex qlock;
         struct list_head tx_msg_downq;
         struct mutex payload_lock;
@@ -285,6 +288,9 @@ Definition
 
 Members
 -------
+
+base
+    Base private object for atomic
 
 dev
     device pointer for adding i2c devices etc.
@@ -329,6 +335,12 @@ sink_count
 
 pbn_div
     PBN to slots divisor.
+
+state
+    State information for topology manager
+
+funcs
+    Atomic helper callbacks
 
 qlock
     protects \ ``tx_msg_downq``\ , the \ :c:type:`drm_dp_mst_branch.txslost <drm_dp_mst_branch>`\  and&drm_dp_sideband_msg_tx.state once they are queued

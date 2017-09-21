@@ -6,7 +6,7 @@
 srp_tmo_valid
 =============
 
-.. c:function:: int srp_tmo_valid(int reconnect_delay, int fast_io_fail_tmo, int dev_loss_tmo)
+.. c:function:: int srp_tmo_valid(int reconnect_delay, int fast_io_fail_tmo, long dev_loss_tmo)
 
     check timeout combination validity
 
@@ -16,7 +16,7 @@ srp_tmo_valid
     :param int fast_io_fail_tmo:
         Fast I/O fail timeout in seconds.
 
-    :param int dev_loss_tmo:
+    :param long dev_loss_tmo:
         Device loss timeout in seconds.
 
 .. _`srp_tmo_valid.description`:

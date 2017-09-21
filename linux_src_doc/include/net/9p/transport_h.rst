@@ -29,6 +29,7 @@ Definition
         int (*cancel)(struct p9_client *, struct p9_req_t *req);
         int (*cancelled)(struct p9_client *, struct p9_req_t *req);
         int (*zc_request)(struct p9_client *, struct p9_req_t *, struct iov_iter *, struct iov_iter *, int , int, int);
+        int (*show_options)(struct seq_file *, struct p9_client *);
     }
 
 .. _`p9_trans_module.members`:
@@ -68,6 +69,9 @@ cancelled
     not receive a reply
 
 zc_request
+    *undescribed*
+
+show_options
     *undescribed*
 
 .. _`p9_trans_module.description`:

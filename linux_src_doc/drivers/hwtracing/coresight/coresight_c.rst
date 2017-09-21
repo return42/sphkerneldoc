@@ -33,6 +33,27 @@ csdev
 link
     hook to the list.
 
+.. _`coresight_disable_source`:
+
+coresight_disable_source
+========================
+
+.. c:function:: bool coresight_disable_source(struct coresight_device *csdev)
+
+    Drop the reference count by 1 and disable the device if there are no users left.
+
+    :param struct coresight_device \*csdev:
+        *undescribed*
+
+.. _`coresight_disable_source.description`:
+
+Description
+-----------
+
+@csdev - The coresight device to disable
+
+Returns true if the device has been disabled.
+
 .. _`coresight_get_enabled_sink`:
 
 coresight_get_enabled_sink

@@ -21,6 +21,7 @@ Definition
         int force_raw;
         struct device dev;
         struct device *claim;
+        enum nvdimm_claim_class claim_class;
         int (*rw_bytes)(struct nd_namespace_common *, resource_size_t offset, void *buf, size_t size, int rw, unsigned long flags);
     }
 
@@ -37,6 +38,9 @@ dev
 
 claim
     when set a another personality has taken ownership of the namespace
+
+claim_class
+    restrict claim type to a given class
 
 rw_bytes
     access the raw namespace capacity with byte-aligned transfers
@@ -103,6 +107,7 @@ Definition
 
     struct nd_namespace_pmem {
         struct nd_namespace_io nsio;
+        unsigned long lbasize;
         char *alt_name;
         u8 *uuid;
         int id;
@@ -115,6 +120,9 @@ Members
 
 nsio
     device and system physical address range to drive
+
+lbasize
+    logical sector size for the namespace in block-device-mode
 
 alt_name
     namespace name supplied in the dimm label

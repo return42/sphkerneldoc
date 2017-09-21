@@ -58,38 +58,6 @@ phy_type
 setup_gpio
     *undescribed*
 
-.. _`msm_usb_cable`:
-
-struct msm_usb_cable
-====================
-
-.. c:type:: struct msm_usb_cable
-
-    structure for exteternal connector cable state tracking
-
-.. _`msm_usb_cable.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct msm_usb_cable {
-        struct notifier_block nb;
-        struct extcon_dev *extcon;
-    }
-
-.. _`msm_usb_cable.members`:
-
-Members
--------
-
-nb
-    hold event notification callback
-
-extcon
-    *undescribed*
-
 .. _`msm_otg`:
 
 struct msm_otg
@@ -129,12 +97,11 @@ Definition
         struct regulator *v3p3;
         struct regulator *v1p8;
         struct regulator *vddcx;
+        struct regulator_bulk_data supplies;
         struct reset_control *phy_rst;
         struct reset_control *link_rst;
         int vdd_levels;
         bool manual_pullup;
-        struct msm_usb_cable vbus;
-        struct msm_usb_cable id;
         struct gpio_desc *switch_gpio;
         struct notifier_block reboot;
     }
@@ -204,6 +171,9 @@ v1p8
 vddcx
     *undescribed*
 
+supplies
+    *undescribed*
+
 phy_rst
     *undescribed*
 
@@ -217,12 +187,6 @@ manual_pullup
     true if VBUS is not routed to USB controller/phy
     and controller driver therefore enables pull-up explicitly before
     starting controller using usbcmd run/stop bit.
-
-vbus
-    VBUS signal state trakining, using extcon framework
-
-id
-    ID signal state trakining, using extcon framework
 
 switch_gpio
     Descriptor for GPIO used to control external Dual

@@ -25,12 +25,16 @@ Definition
         bool have_buffer;
         bool output_enabled;
         bool input_enabled;
+        bool analog_pass;
+        bool lv_mv_type;
         unsigned int num_sources;
         unsigned int power_source;
         unsigned int buffer_type;
         unsigned int pullup;
         unsigned int strength;
         unsigned int function;
+        unsigned int atest;
+        unsigned int dtest_buffer;
     }
 
 .. _`pmic_gpio_pad.members`:
@@ -60,6 +64,12 @@ output_enabled
 input_enabled
     Set to true if GPIO input buffer logic is enabled.
 
+analog_pass
+    Set to true if GPIO is in analog-pass-through mode.
+
+lv_mv_type
+    Set to true if GPIO subtype is GPIO_LV(0x10) or GPIO_MV(0x11).
+
 num_sources
     Number of power-sources supported by this GPIO.
 
@@ -77,6 +87,12 @@ strength
 
 function
     See pmic_gpio_functions[]
+
+atest
+    the ATEST selection for GPIO analog-pass-through mode
+
+dtest_buffer
+    the DTEST buffer selection for digital input mode.
 
 .. This file was automatic generated / don't edit.
 

@@ -17,20 +17,10 @@ Description
 
 Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
 
-.. _`dwc3_default_autosuspend_delay.authors`:
+Authors: Felipe Balbi <balbi@ti.com>,
+         Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-Authors
--------
-
-Felipe Balbi <balbi@ti.com>,
-Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-
-.. _`dwc3_default_autosuspend_delay.this-program-is-free-software`:
-
-This program is free software
------------------------------
-
-you can redistribute it and/or modify
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2  of
 the License as published by the Free Software Foundation.
 

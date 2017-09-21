@@ -375,15 +375,12 @@ wakeup_source_not_registered
 wakeup_source_activate
 ======================
 
-.. c:function:: void wakeup_source_activate(struct wakeup_source *ws, bool hard)
+.. c:function:: void wakeup_source_activate(struct wakeup_source *ws)
 
     Mark given wakeup source as active.
 
     :param struct wakeup_source \*ws:
         Wakeup source to handle.
-
-    :param bool hard:
-        If set, abort suspends in progress and wake up from suspend-to-idle.
 
 .. _`wakeup_source_activate.description`:
 

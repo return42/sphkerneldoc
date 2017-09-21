@@ -32,7 +32,7 @@ Description
 -----------
 
 This function is called from the kernel allocators when a new object
-(memory block) is allocated (kmem_cache_alloc, kmalloc, vmalloc etc.).
+(memory block) is allocated (kmem_cache_alloc, kmalloc etc.).
 
 .. _`kmemleak_alloc_percpu`:
 
@@ -59,6 +59,32 @@ Description
 
 This function is called from the kernel percpu allocator when a new object
 (memory block) is allocated (alloc_percpu).
+
+.. _`kmemleak_vmalloc`:
+
+kmemleak_vmalloc
+================
+
+.. c:function:: void __ref kmemleak_vmalloc(const struct vm_struct *area, size_t size, gfp_t gfp)
+
+    register a newly vmalloc'ed object
+
+    :param const struct vm_struct \*area:
+        pointer to vm_struct
+
+    :param size_t size:
+        size of the object
+
+    :param gfp_t gfp:
+        __vmalloc() flags used for kmemleak internal memory allocations
+
+.. _`kmemleak_vmalloc.description`:
+
+Description
+-----------
+
+This function is called from the \ :c:func:`vmalloc`\  kernel allocator when a new
+object (memory block) is allocated.
 
 .. _`kmemleak_free`:
 

@@ -26,7 +26,7 @@ Definition
         bool en_ck32k_xtal;
         bool en_dev_slp;
         bool pm_off;
-        struct tps65910_sleep_keepon_data *slp_keepon;
+        struct tps65910_sleep_keepon_data slp_keepon;
         bool en_gpio_sleep;
         unsigned long regulator_ext_sleep_control;
         struct regulator_init_data  *tps65910_pmic_init_data;

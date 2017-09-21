@@ -77,6 +77,13 @@ kstrndup
     :param gfp_t gfp:
         the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
 
+.. _`kstrndup.note`:
+
+Note
+----
+
+Use \ :c:func:`kmemdup_nul`\  instead if the size is known exactly.
+
 .. _`kmemdup`:
 
 kmemdup
@@ -94,6 +101,24 @@ kmemdup
 
     :param gfp_t gfp:
         GFP mask to use
+
+.. _`kmemdup_nul`:
+
+kmemdup_nul
+===========
+
+.. c:function:: char *kmemdup_nul(const char *s, size_t len, gfp_t gfp)
+
+    Create a NUL-terminated string from unterminated data
+
+    :param const char \*s:
+        The data to stringify
+
+    :param size_t len:
+        The size of the data
+
+    :param gfp_t gfp:
+        the GFP mask used in the \ :c:func:`kmalloc`\  call when allocating memory
 
 .. _`memdup_user`:
 
@@ -208,9 +233,9 @@ Description
 Uses kmalloc to get the memory but if the allocation fails then falls back
 to the vmalloc allocator. Use kvfree for freeing the memory.
 
-Reclaim modifiers - __GFP_NORETRY and __GFP_NOFAIL are not supported. __GFP_REPEAT
-is supported only for large (>32kB) allocations, and it should be used only if
-kmalloc is preferable to the vmalloc fallback, due to visible performance drawbacks.
+Reclaim modifiers - __GFP_NORETRY and __GFP_NOFAIL are not supported.
+__GFP_RETRY_MAYFAIL is supported, and it should be used only if kmalloc is
+preferable to the vmalloc fallback, due to visible performance drawbacks.
 
 Any use of gfp flags outside of GFP_KERNEL should be consulted with mm people.
 

@@ -795,12 +795,9 @@ pages is less than that, allocate them all.
 swsusp_alloc
 ============
 
-.. c:function:: int swsusp_alloc(struct memory_bitmap *orig_bm, struct memory_bitmap *copy_bm, unsigned int nr_pages, unsigned int nr_highmem)
+.. c:function:: int swsusp_alloc(struct memory_bitmap *copy_bm, unsigned int nr_pages, unsigned int nr_highmem)
 
     Allocate memory for hibernation image.
-
-    :param struct memory_bitmap \*orig_bm:
-        *undescribed*
 
     :param struct memory_bitmap \*copy_bm:
         *undescribed*

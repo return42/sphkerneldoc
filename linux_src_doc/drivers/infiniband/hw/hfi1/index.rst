@@ -8,8 +8,8 @@ hfi1
     :maxdepth: 1
 
     chip_c
-    common_h
     driver_c
+    exp_rcv_c
     file_ops_c
     hfi_h
     init_c

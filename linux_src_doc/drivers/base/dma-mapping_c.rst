@@ -65,14 +65,14 @@ Description
 
 Managed \ :c:func:`dma_free_coherent`\ .
 
-.. _`dmam_alloc_noncoherent`:
+.. _`dmam_alloc_attrs`:
 
-dmam_alloc_noncoherent
-======================
+dmam_alloc_attrs
+================
 
-.. c:function:: void *dmam_alloc_noncoherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t gfp)
+.. c:function:: void *dmam_alloc_attrs(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
 
-    Managed \ :c:func:`dma_alloc_noncoherent`\ 
+    Managed \ :c:func:`dma_alloc_attrs`\ 
 
     :param struct device \*dev:
         Device to allocate non_coherent memory for
@@ -86,48 +86,23 @@ dmam_alloc_noncoherent
     :param gfp_t gfp:
         Allocation flags
 
-.. _`dmam_alloc_noncoherent.description`:
+    :param unsigned long attrs:
+        Flags in the DMA_ATTR_* namespace.
+
+.. _`dmam_alloc_attrs.description`:
 
 Description
 -----------
 
-Managed \ :c:func:`dma_alloc_noncoherent`\ .  Memory allocated using this
-function will be automatically released on driver detach.
+Managed \ :c:func:`dma_alloc_attrs`\ .  Memory allocated using this function will be
+automatically released on driver detach.
 
-.. _`dmam_alloc_noncoherent.return`:
+.. _`dmam_alloc_attrs.return`:
 
 Return
 ------
 
 Pointer to allocated memory on success, NULL on failure.
-
-.. _`dmam_free_noncoherent`:
-
-dmam_free_noncoherent
-=====================
-
-.. c:function:: void dmam_free_noncoherent(struct device *dev, size_t size, void *vaddr, dma_addr_t dma_handle)
-
-    Managed \ :c:func:`dma_free_noncoherent`\ 
-
-    :param struct device \*dev:
-        Device to free noncoherent memory for
-
-    :param size_t size:
-        Size of allocation
-
-    :param void \*vaddr:
-        Virtual address of the memory to free
-
-    :param dma_addr_t dma_handle:
-        DMA handle of the memory to free
-
-.. _`dmam_free_noncoherent.description`:
-
-Description
------------
-
-Managed \ :c:func:`dma_free_noncoherent`\ .
 
 .. _`dmam_declare_coherent_memory`:
 

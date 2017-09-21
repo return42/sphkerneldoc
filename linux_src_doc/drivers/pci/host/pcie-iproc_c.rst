@@ -21,11 +21,14 @@ iproc_pcie_apb_err_disable
 iproc_pcie_map_cfg_bus
 ======================
 
-.. c:function:: void __iomem *iproc_pcie_map_cfg_bus(struct pci_bus *bus, unsigned int devfn, int where)
+.. c:function:: void __iomem *iproc_pcie_map_cfg_bus(struct iproc_pcie *pcie, int busno, unsigned int devfn, int where)
 
     by 'pci_lock' in drivers/pci/access.c
 
-    :param struct pci_bus \*bus:
+    :param struct iproc_pcie \*pcie:
+        *undescribed*
+
+    :param int busno:
         *undescribed*
 
     :param unsigned int devfn:

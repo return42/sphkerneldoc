@@ -264,6 +264,26 @@ Description
      Functions identically to kfree_skb, but kfree_skb assumes that the frame
      is being dropped after a failure and notes that
 
+.. _`consume_stateless_skb`:
+
+consume_stateless_skb
+=====================
+
+.. c:function:: void consume_stateless_skb(struct sk_buff *skb)
+
+    free an skbuff, assuming it is stateless
+
+    :param struct sk_buff \*skb:
+        buffer to free
+
+.. _`consume_stateless_skb.description`:
+
+Description
+-----------
+
+     Works like \ :c:func:`consume_skb`\ , but this variant assumes that all the head
+     states have been already dropped.
+
 .. _`skb_morph`:
 
 skb_morph
@@ -484,12 +504,12 @@ Description
      You must pass \ ``GFP_ATOMIC``\  as the allocation priority if this function
      is called from an interrupt.
 
-.. _`skb_pad`:
+.. _`__skb_pad`:
 
-skb_pad
-=======
+__skb_pad
+=========
 
-.. c:function:: int skb_pad(struct sk_buff *skb, int pad)
+.. c:function:: int __skb_pad(struct sk_buff *skb, int pad, bool free_on_error)
 
     zero pad the tail of an skb
 
@@ -499,7 +519,10 @@ skb_pad
     :param int pad:
         space to pad
 
-.. _`skb_pad.description`:
+    :param bool free_on_error:
+        free buffer on error
+
+.. _`__skb_pad.description`:
 
 Description
 -----------
@@ -508,14 +531,15 @@ Description
      filled. Used by network drivers which may DMA or transfer data
      beyond the buffer end onto the wire.
 
-     May return error in out of memory cases. The skb is freed on error.
+     May return error in out of memory cases. The skb is freed on error
+     if \ ``free_on_error``\  is true.
 
 .. _`pskb_put`:
 
 pskb_put
 ========
 
-.. c:function:: unsigned char *pskb_put(struct sk_buff *skb, struct sk_buff *tail, int len)
+.. c:function:: void *pskb_put(struct sk_buff *skb, struct sk_buff *tail, int len)
 
     add data to the tail of a potentially fragmented buffer
 
@@ -544,7 +568,7 @@ Description
 skb_put
 =======
 
-.. c:function:: unsigned char *skb_put(struct sk_buff *skb, unsigned int len)
+.. c:function:: void *skb_put(struct sk_buff *skb, unsigned int len)
 
     add data to a buffer
 
@@ -568,7 +592,7 @@ Description
 skb_push
 ========
 
-.. c:function:: unsigned char *skb_push(struct sk_buff *skb, unsigned int len)
+.. c:function:: void *skb_push(struct sk_buff *skb, unsigned int len)
 
     add data to the start of a buffer
 
@@ -592,7 +616,7 @@ Description
 skb_pull
 ========
 
-.. c:function:: unsigned char *skb_pull(struct sk_buff *skb, unsigned int len)
+.. c:function:: void *skb_pull(struct sk_buff *skb, unsigned int len)
 
     remove data from the start of a buffer
 
@@ -641,7 +665,7 @@ Description
 __pskb_pull_tail
 ================
 
-.. c:function:: unsigned char *__pskb_pull_tail(struct sk_buff *skb, int delta)
+.. c:function:: void *__pskb_pull_tail(struct sk_buff *skb, int delta)
 
     advance tail of skb header
 
@@ -1203,7 +1227,7 @@ of the skb if any page alloc fails user this procedure returns  -ENOMEM
 skb_pull_rcsum
 ==============
 
-.. c:function:: unsigned char *skb_pull_rcsum(struct sk_buff *skb, unsigned int len)
+.. c:function:: void *skb_pull_rcsum(struct sk_buff *skb, unsigned int len)
 
     pull skb and update receive checksum
 
@@ -1248,12 +1272,12 @@ Description
      a pointer to the first in a list of new skbs for the segments.
      In case of error it returns ERR_PTR(err).
 
-.. _`__skb_to_sgvec`:
+.. _`skb_to_sgvec`:
 
-__skb_to_sgvec
-==============
+skb_to_sgvec
+============
 
-.. c:function:: int __skb_to_sgvec(struct sk_buff *skb, struct scatterlist *sg, int offset, int len)
+.. c:function:: int skb_to_sgvec(struct sk_buff *skb, struct scatterlist *sg, int offset, int len)
 
     Fill a scatter-gather list from a socket buffer
 
@@ -1269,13 +1293,15 @@ __skb_to_sgvec
     :param int len:
         Length of buffer space to be mapped
 
-.. _`__skb_to_sgvec.description`:
+.. _`skb_to_sgvec.description`:
 
 Description
 -----------
 
      Fill the specified scatter-gather list with mappings/pointers into a
-     region of the buffer space attached to a socket buffer.
+     region of the buffer space attached to a socket buffer. Returns either
+     the number of scatterlist items used, or -EMSGSIZE if the contents
+     could not fit.
 
 .. _`skb_cow_data`:
 

@@ -14,6 +14,7 @@ kernel
     kprobes_c
     mips-cpc_c
     mips-r2-to-r6-emul_c
+    module_c
     pm_c
     ptrace_c
     uprobes_c

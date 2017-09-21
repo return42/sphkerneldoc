@@ -8,7 +8,7 @@ frwr_wc_fastreg
 
 .. c:function:: void frwr_wc_fastreg(struct ib_cq *cq, struct ib_wc *wc)
 
-    Invoked by RDMA provider for each polled FastReg WC
+    Invoked by RDMA provider for a flushed FastReg WC
 
     :param struct ib_cq \*cq:
         completion queue (ignored)
@@ -23,7 +23,7 @@ frwr_wc_localinv
 
 .. c:function:: void frwr_wc_localinv(struct ib_cq *cq, struct ib_wc *wc)
 
-    Invoked by RDMA provider for each polled LocalInv WC
+    Invoked by RDMA provider for a flushed LocalInv WC
 
     :param struct ib_cq \*cq:
         completion queue (ignored)
@@ -38,7 +38,7 @@ frwr_wc_localinv_wake
 
 .. c:function:: void frwr_wc_localinv_wake(struct ib_cq *cq, struct ib_wc *wc)
 
-    Invoked by RDMA provider for each polled LocalInv WC
+    Invoked by RDMA provider for a signaled LocalInv WC
 
     :param struct ib_cq \*cq:
         completion queue (ignored)

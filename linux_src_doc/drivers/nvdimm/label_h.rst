@@ -19,7 +19,8 @@ Definition
 
     struct nd_namespace_index {
         u8 sig;
-        __le32 flags;
+        u8 flags;
+        u8 labelsize;
         __le32 seq;
         __le64 myoff;
         __le64 mysize;
@@ -42,6 +43,9 @@ sig
 
 flags
     placeholder
+
+labelsize
+    *undescribed*
 
 seq
     sequence number for this index
@@ -109,7 +113,12 @@ Definition
         __le64 dpa;
         __le64 rawsize;
         __le32 slot;
-        __le32 unused;
+        u8 align;
+        u8 reserved;
+        guid_t type_guid;
+        guid_t abstraction_guid;
+        u8 reserved2;
+        __le64 checksum;
     }
 
 .. _`nd_namespace_label.members`:
@@ -147,8 +156,23 @@ rawsize
 slot
     slot of this label in label area
 
-unused
-    must be zero
+align
+    *undescribed*
+
+reserved
+    *undescribed*
+
+type_guid
+    *undescribed*
+
+abstraction_guid
+    *undescribed*
+
+reserved2
+    *undescribed*
+
+checksum
+    *undescribed*
 
 .. _`nd_label_id`:
 

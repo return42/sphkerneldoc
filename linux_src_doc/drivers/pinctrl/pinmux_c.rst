@@ -238,7 +238,9 @@ pinmux_generic_free_functions
 Description
 -----------
 
-Note that the caller must take care of locking.
+Note that the caller must take care of locking. The pinctrl
+functions are allocated with \ :c:func:`devm_kzalloc`\  so no need to free
+them here.
 
 .. This file was automatic generated / don't edit.
 

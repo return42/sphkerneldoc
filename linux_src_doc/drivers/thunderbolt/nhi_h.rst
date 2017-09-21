@@ -23,6 +23,8 @@ Definition
         void __iomem *iobase;
         struct tb_ring **tx_rings;
         struct tb_ring **rx_rings;
+        struct ida msix_ida;
+        bool going_away;
         struct work_struct interrupt_work;
         u32 hop_count;
     }
@@ -33,25 +35,34 @@ Members
 -------
 
 lock
-    *undescribed*
+    Must be held during ring creation/destruction. Is acquired by
+    interrupt_work when dispatching interrupts to individual rings.
 
 pdev
-    *undescribed*
+    Pointer to the PCI device
 
 iobase
-    *undescribed*
+    MMIO space of the NHI
 
 tx_rings
-    *undescribed*
+    All Tx rings available on this host controller
 
 rx_rings
-    *undescribed*
+    All Rx rings available on this host controller
+
+msix_ida
+    Used to allocate MSI-X vectors for rings
+
+going_away
+    The host controller device is about to disappear so when
+    this flag is set, avoid touching the hardware anymore.
 
 interrupt_work
-    *undescribed*
+    Work scheduled to handle ring interrupt when no
+    MSI-X is used.
 
 hop_count
-    *undescribed*
+    Number of rings (end point hops) supported by NHI.
 
 .. _`tb_ring`:
 
@@ -83,6 +94,9 @@ Definition
         struct work_struct work;
         bool is_tx:1;
         bool running:1;
+        int irq;
+        u8 vector;
+        unsigned int flags;
     }
 
 .. _`tb_ring.members`:
@@ -91,43 +105,53 @@ Members
 -------
 
 lock
-    *undescribed*
+    Lock serializing actions to this ring. Must be acquired after
+    nhi->lock.
 
 nhi
-    *undescribed*
+    Pointer to the native host controller interface
 
 size
-    *undescribed*
+    Size of the ring
 
 hop
-    *undescribed*
+    Hop (DMA channel) associated with this ring
 
 head
-    *undescribed*
+    Head of the ring (write next descriptor here)
 
 tail
-    *undescribed*
+    Tail of the ring (complete next descriptor here)
 
 descriptors
-    *undescribed*
+    Allocated descriptors for this ring
 
 descriptors_dma
     *undescribed*
 
 queue
-    *undescribed*
+    Queue holding frames to be transferred over this ring
 
 in_flight
-    *undescribed*
+    Queue holding frames that are currently in flight
 
 work
-    *undescribed*
+    Interrupt work structure
 
 is_tx
-    *undescribed*
+    Is the ring Tx or Rx
 
 running
-    *undescribed*
+    Is the ring running
+
+irq
+    MSI-X irq number if the ring uses MSI-X. \ ``0``\  otherwise.
+
+vector
+    MSI-X vector number the ring uses (only set if \ ``irq``\  is > 0)
+
+flags
+    Ring specific flags
 
 .. _`ring_frame`:
 

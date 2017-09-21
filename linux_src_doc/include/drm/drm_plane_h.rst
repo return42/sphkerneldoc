@@ -151,6 +151,7 @@ Definition
         int (*late_register)(struct drm_plane *plane);
         void (*early_unregister)(struct drm_plane *plane);
         void (*atomic_print_state)(struct drm_printer *p, const struct drm_plane_state *state);
+        bool (*format_mod_supported)(struct drm_plane *plane, uint32_t format, uint64_t modifier);
     }
 
 .. _`drm_plane_funcs.members`:
@@ -217,11 +218,9 @@ set_property
     This is the legacy entry point to update a property attached to the
     plane.
 
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_plane_set_property`\  to implement this hook.
-
     This callback is optional if the driver does not support any legacy
-    driver-private properties.
+    driver-private properties. For atomic drivers it is not used because
+    property handling is done entirely in the DRM core.
 
     RETURNS:
 
@@ -346,6 +345,18 @@ atomic_print_state
     Do not call this directly, use \ :c:func:`drm_atomic_plane_print_state`\ 
     instead.
 
+format_mod_supported
+
+    This optional hook is used for the DRM to determine if the given
+    format/modifier combination is valid for the plane. This allows the
+    DRM to generate the correct format bitmask (which formats apply to
+    which modifier).
+
+    Returns:
+
+    True if the given modifier is valid for that format on the plane.
+    False otherwise.
+
 .. _`drm_plane_type`:
 
 enum drm_plane_type
@@ -437,6 +448,8 @@ Definition
         uint32_t *format_types;
         unsigned int format_count;
         bool format_default;
+        uint64_t *modifiers;
+        unsigned int modifier_count;
         struct drm_crtc *crtc;
         struct drm_framebuffer *fb;
         struct drm_framebuffer *old_fb;
@@ -486,6 +499,12 @@ format_count
 
 format_default
     driver hasn't supplied supported formats for the plane
+
+modifiers
+    *undescribed*
+
+modifier_count
+    *undescribed*
 
 crtc
     currently bound CRTC

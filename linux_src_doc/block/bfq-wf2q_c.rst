@@ -502,7 +502,7 @@ Called for a 'true' activation, i.e., if entity is not active and
 one of its children receives a new request.
 
 Basically, this function updates the timestamps of entity and
-inserts entity into its active tree, ater possible extracting it
+inserts entity into its active tree, ater possibly extracting it
 from its idle tree.
 
 .. _`__bfq_requeue_entity`:
@@ -574,9 +574,9 @@ __bfq_deactivate_entity
 Description
 -----------
 
-Deactivates an entity, independently from its previous state.  Must
+Deactivates an entity, independently of its previous state.  Must
 be invoked only if entity is on a service tree. Extracts the entity
-from that tree, and if necessary and allowed, puts it on the idle
+from that tree, and if necessary and allowed, puts it into the idle
 tree.
 
 .. _`bfq_deactivate_entity`:
@@ -592,7 +592,7 @@ bfq_deactivate_entity
         the entity to deactivate.
 
     :param bool ins_into_idle_tree:
-        true if the entity can be put on the idle tree
+        true if the entity can be put into the idle tree
 
     :param bool expiration:
         *undescribed*
@@ -638,7 +638,7 @@ Description
 
 This function searches the first schedulable entity, starting from the
 root of the tree and going on the left every time on this side there is
-a subtree with at least one eligible (start >= vtime) entity. The path on
+a subtree with at least one eligible (start <= vtime) entity. The path on
 the right is followed only if a) the left subtree contains no eligible
 entities and b) no eligible entity has been found yet.
 

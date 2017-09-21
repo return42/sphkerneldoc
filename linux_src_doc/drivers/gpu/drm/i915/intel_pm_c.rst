@@ -22,16 +22,181 @@ GPU, BIOS, chipset and platform. RC6 is usually the safest one and the one
 which brings the most power savings; deeper states save more power, but
 require higher latency to switch to and wake up.
 
+.. _`intel_set_memory_cxsr`:
+
+intel_set_memory_cxsr
+=====================
+
+.. c:function:: bool intel_set_memory_cxsr(struct drm_i915_private *dev_priv, bool enable)
+
+    Configure CxSR state
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+    :param bool enable:
+        Allow vs. disallow CxSR
+
+.. _`intel_set_memory_cxsr.description`:
+
+Description
+-----------
+
+Allow or disallow the system to enter a special CxSR
+(C-state self refresh) state. What typically happens in CxSR mode
+is that several display FIFOs may get combined into a single larger
+FIFO for a particular plane (so called max FIFO mode) to allow the
+system to defer memory fetches longer, and the memory will enter
+self refresh.
+
+Note that enabling CxSR does not guarantee that the system enter
+this special mode, nor does it guarantee that the system stays
+in that mode once entered. So this just allows/disallows the system
+to autonomously utilize the CxSR mode. Other factors such as core
+C-states will affect when/if the system actually enters/exits the
+CxSR mode.
+
+Note that on VLV/CHV this actually only controls the max FIFO mode,
+and the system is free to enter/exit memory self refresh at any time
+even when the use of CxSR has been disallowed.
+
+While the system is actually in the CxSR/max FIFO mode, some plane
+control registers will not get latched on vblank. Thus in order to
+guarantee the system will respond to changes in the plane registers
+we must always disallow CxSR prior to making changes to those registers.
+Unfortunately the system will re-evaluate the CxSR conditions at
+frame start which happens after vblank start (which is when the plane
+registers would get latched), so we can't proceed with the plane update
+during the same frame where we disallowed CxSR.
+
+Certain platforms also have a deeper HPLL SR mode. Fortunately the
+HPLL SR mode depends on CxSR itself, so we don't have to hand hold
+the hardware w.r.t. HPLL SR when writing to plane registers.
+Disallowing just CxSR is sufficient.
+
+.. _`intel_wm_method1`:
+
+intel_wm_method1
+================
+
+.. c:function:: unsigned int intel_wm_method1(unsigned int pixel_rate, unsigned int cpp, unsigned int latency)
+
+    Method 1 / "small buffer" watermark formula
+
+    :param unsigned int pixel_rate:
+        Pipe pixel rate in kHz
+
+    :param unsigned int cpp:
+        Plane bytes per pixel
+
+    :param unsigned int latency:
+        Memory wakeup latency in 0.1us units
+
+.. _`intel_wm_method1.description`:
+
+Description
+-----------
+
+Compute the watermark using the method 1 or "small buffer"
+formula. The caller may additonally add extra cachelines
+to account for TLB misses and clock crossings.
+
+This method is concerned with the short term drain rate
+of the FIFO, ie. it does not account for blanking periods
+which would effectively reduce the average drain rate across
+a longer period. The name "small" refers to the fact the
+FIFO is relatively small compared to the amount of data
+fetched.
+
+The FIFO level vs. time graph might look something like:
+
+\|\   \|\
+\| \  \| \
+\__---__---_\_ (- plane active, _ blanking)
+-> time
+
+.. _`intel_wm_method1.or-perhaps-like-this`:
+
+or perhaps like this
+--------------------
+
+
+\|\\|\  \|\\|\
+\__----__----_\_ (- plane active, _ blanking)
+-> time
+
+.. _`intel_wm_method1.return`:
+
+Return
+------
+
+The watermark in bytes
+
+.. _`intel_wm_method2`:
+
+intel_wm_method2
+================
+
+.. c:function:: unsigned int intel_wm_method2(unsigned int pixel_rate, unsigned int htotal, unsigned int width, unsigned int cpp, unsigned int latency)
+
+    Method 2 / "large buffer" watermark formula
+
+    :param unsigned int pixel_rate:
+        Pipe pixel rate in kHz
+
+    :param unsigned int htotal:
+        Pipe horizontal total
+
+    :param unsigned int width:
+        Plane width in pixels
+
+    :param unsigned int cpp:
+        Plane bytes per pixel
+
+    :param unsigned int latency:
+        Memory wakeup latency in 0.1us units
+
+.. _`intel_wm_method2.description`:
+
+Description
+-----------
+
+Compute the watermark using the method 2 or "large buffer"
+formula. The caller may additonally add extra cachelines
+to account for TLB misses and clock crossings.
+
+This method is concerned with the long term drain rate
+of the FIFO, ie. it does account for blanking periods
+which effectively reduce the average drain rate across
+a longer period. The name "large" refers to the fact the
+FIFO is relatively large compared to the amount of data
+fetched.
+
+The FIFO level vs. time graph might look something like:
+
+\|\__\_       \|\__\_
+\|    \__\_   \|    \__\_
+\|        \  \|        \
+_\_ --__--__--__--__--__--_\_ (- plane active, _ blanking)
+-> time
+
+.. _`intel_wm_method2.return`:
+
+Return
+------
+
+The watermark in bytes
+
 .. _`intel_calculate_wm`:
 
 intel_calculate_wm
 ==================
 
-.. c:function:: unsigned long intel_calculate_wm(unsigned long clock_in_khz, const struct intel_watermark_params *wm, int fifo_size, int cpp, unsigned long latency_ns)
+.. c:function:: unsigned int intel_calculate_wm(int pixel_rate, const struct intel_watermark_params *wm, int fifo_size, int cpp, unsigned int latency_ns)
 
     calculate watermark level
 
-    :param unsigned long clock_in_khz:
+    :param int pixel_rate:
         pixel clock
 
     :param const struct intel_watermark_params \*wm:
@@ -43,7 +208,7 @@ intel_calculate_wm
     :param int cpp:
         bytes per pixel
 
-    :param unsigned long latency_ns:
+    :param unsigned int latency_ns:
         memory latency for the platform
 
 .. _`intel_calculate_wm.description`:

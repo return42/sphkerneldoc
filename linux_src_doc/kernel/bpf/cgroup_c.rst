@@ -136,5 +136,38 @@ filtering. No further check is performed to assert that.
 This function will return \ ``-EPERM``\  if any if an attached program was found
 and if it returned != 1 during execution. In all other cases, 0 is returned.
 
+.. _`__cgroup_bpf_run_filter_sock_ops`:
+
+__cgroup_bpf_run_filter_sock_ops
+================================
+
+.. c:function:: int __cgroup_bpf_run_filter_sock_ops(struct sock *sk, struct bpf_sock_ops_kern *sock_ops, enum bpf_attach_type type)
+
+    Run a program on a sock
+
+    :param struct sock \*sk:
+        socket to get cgroup from
+
+    :param struct bpf_sock_ops_kern \*sock_ops:
+        bpf_sock_ops_kern struct to pass to program. Contains
+        sk with connection information (IP addresses, etc.) May not contain
+        cgroup info if it is a req sock.
+
+    :param enum bpf_attach_type type:
+        The type of program to be exectuted
+
+.. _`__cgroup_bpf_run_filter_sock_ops.description`:
+
+Description
+-----------
+
+socket passed is expected to be of type INET or INET6.
+
+The program type passed in via \ ``type``\  must be suitable for sock_ops
+filtering. No further check is performed to assert that.
+
+This function will return \ ``-EPERM``\  if any if an attached program was found
+and if it returned != 1 during execution. In all other cases, 0 is returned.
+
 .. This file was automatic generated / don't edit.
 

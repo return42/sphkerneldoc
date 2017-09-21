@@ -101,14 +101,14 @@ pcie_pme_irq
     :param void \*context:
         Interrupt context pointer.
 
-.. _`pcie_pme_set_native`:
+.. _`pcie_pme_can_wakeup`:
 
-pcie_pme_set_native
+pcie_pme_can_wakeup
 ===================
 
-.. c:function:: int pcie_pme_set_native(struct pci_dev *dev, void *ign)
+.. c:function:: int pcie_pme_can_wakeup(struct pci_dev *dev, void *ign)
 
-    Set the PME interrupt flag for given device.
+    Set the wakeup capability flag.
 
     :param struct pci_dev \*dev:
         PCI device to handle.
@@ -123,7 +123,7 @@ pcie_pme_mark_devices
 
 .. c:function:: void pcie_pme_mark_devices(struct pci_dev *port)
 
-    Set the PME interrupt flag for devices below a port.
+    Set the wakeup flag for devices below a port.
 
     :param struct pci_dev \*port:
         PCIe root port or event collector to handle.
@@ -135,8 +135,7 @@ Description
 
 For each device below given root port, including the port itself (or for each
 root complex integrated endpoint if \ ``port``\  is a root complex event collector)
-set the flag indicating that it can signal run-time wake-up events via PCIe
-PME interrupts.
+set the flag indicating that it can signal run-time wake-up events.
 
 .. _`pcie_pme_probe`:
 

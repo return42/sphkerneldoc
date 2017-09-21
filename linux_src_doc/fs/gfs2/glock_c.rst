@@ -1,6 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/gfs2/glock.c
 
+.. _`wake_up_glock`:
+
+wake_up_glock
+=============
+
+.. c:function:: void wake_up_glock(struct gfs2_glock *gl)
+
+    Wake up waiters on a glock
+
+    :param struct gfs2_glock \*gl:
+        the glock
+
 .. _`gfs2_glock_hold`:
 
 gfs2_glock_hold

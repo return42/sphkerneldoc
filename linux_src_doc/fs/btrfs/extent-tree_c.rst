@@ -36,11 +36,11 @@ will return -ENOSPC.
 __reserve_metadata_bytes
 ========================
 
-.. c:function:: int __reserve_metadata_bytes(struct btrfs_root *root, struct btrfs_space_info *space_info, u64 orig_bytes, enum btrfs_reserve_flush_enum flush)
+.. c:function:: int __reserve_metadata_bytes(struct btrfs_fs_info *fs_info, struct btrfs_space_info *space_info, u64 orig_bytes, enum btrfs_reserve_flush_enum flush, bool system_chunk)
 
     try to reserve bytes from the block_rsv's space \ ``root``\  - the root we're allocating for \ ``space_info``\  - the space info we want to allocate from \ ``orig_bytes``\  - the number of bytes we want \ ``flush``\  - whether or not we can flush to make our reservation
 
-    :param struct btrfs_root \*root:
+    :param struct btrfs_fs_info \*fs_info:
         *undescribed*
 
     :param struct btrfs_space_info \*space_info:
@@ -50,6 +50,9 @@ __reserve_metadata_bytes
         *undescribed*
 
     :param enum btrfs_reserve_flush_enum flush:
+        *undescribed*
+
+    :param bool system_chunk:
         *undescribed*
 
 .. _`__reserve_metadata_bytes.description`:
@@ -185,12 +188,16 @@ reservations.
 btrfs_delalloc_reserve_space
 ============================
 
-.. c:function:: int btrfs_delalloc_reserve_space(struct inode *inode, u64 start, u64 len)
+.. c:function:: int btrfs_delalloc_reserve_space(struct inode *inode, struct extent_changeset **reserved, u64 start, u64 len)
 
     reserve data and metadata space for delalloc
 
     :param struct inode \*inode:
         inode we're writing to
+
+    :param struct extent_changeset \*\*reserved:
+        mandatory parameter, record actually reserved qgroup ranges of
+        current reservation.
 
     :param u64 start:
         start range we are writing to
@@ -224,12 +231,15 @@ Return <0 for error(-ENOSPC or -EQUOT)
 btrfs_delalloc_release_space
 ============================
 
-.. c:function:: void btrfs_delalloc_release_space(struct inode *inode, u64 start, u64 len)
+.. c:function:: void btrfs_delalloc_release_space(struct inode *inode, struct extent_changeset *reserved, u64 start, u64 len)
 
     release data and metadata space for delalloc
 
     :param struct inode \*inode:
         inode we're releasing space for
+
+    :param struct extent_changeset \*reserved:
+        *undescribed*
 
     :param u64 start:
         start position of the space already reserved

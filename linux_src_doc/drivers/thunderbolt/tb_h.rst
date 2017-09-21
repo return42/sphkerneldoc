@@ -1,6 +1,104 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/thunderbolt/tb.h
 
+.. _`tb_switch_nvm`:
+
+struct tb_switch_nvm
+====================
+
+.. c:type:: struct tb_switch_nvm
+
+    Structure holding switch NVM information
+
+.. _`tb_switch_nvm.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tb_switch_nvm {
+        u8 major;
+        u8 minor;
+        int id;
+        struct nvmem_device *active;
+        struct nvmem_device *non_active;
+        void *buf;
+        size_t buf_data_size;
+        bool authenticating;
+    }
+
+.. _`tb_switch_nvm.members`:
+
+Members
+-------
+
+major
+    Major version number of the active NVM portion
+
+minor
+    Minor version number of the active NVM portion
+
+id
+    Identifier used with both NVM portions
+
+active
+    Active portion NVMem device
+
+non_active
+    Non-active portion NVMem device
+
+buf
+    Buffer where the NVM image is stored before it is written to
+    the actual NVM flash device
+
+buf_data_size
+    Number of bytes actually consumed by the new NVM
+    image
+
+authenticating
+    The switch is authenticating the new NVM
+
+.. _`tb_security_level`:
+
+enum tb_security_level
+======================
+
+.. c:type:: enum tb_security_level
+
+    Thunderbolt security level
+
+.. _`tb_security_level.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum tb_security_level {
+        TB_SECURITY_NONE,
+        TB_SECURITY_USER,
+        TB_SECURITY_SECURE,
+        TB_SECURITY_DPONLY
+    };
+
+.. _`tb_security_level.constants`:
+
+Constants
+---------
+
+TB_SECURITY_NONE
+    No security, legacy mode
+
+TB_SECURITY_USER
+    User approval required at minimum
+
+TB_SECURITY_SECURE
+    One time saved key required at minimum
+
+TB_SECURITY_DPONLY
+    Only tunnel Display port (and USB)
+
 .. _`tb_switch`:
 
 struct tb_switch
@@ -18,13 +116,32 @@ Definition
 .. code-block:: c
 
     struct tb_switch {
+        struct device dev;
         struct tb_regs_switch_header config;
         struct tb_port *ports;
+        struct tb_dma_port *dma_port;
         struct tb *tb;
         u64 uid;
+        uuid_t *uuid;
+        u16 vendor;
+        u16 device;
+        const char *vendor_name;
+        const char *device_name;
+        unsigned int generation;
         int cap_plug_events;
         bool is_unplugged;
         u8 *drom;
+        struct tb_switch_nvm *nvm;
+        bool no_nvm_upgrade;
+        bool safe_mode;
+        unsigned int authorized;
+        struct work_struct work;
+        enum tb_security_level security_level;
+        u8 *key;
+        u8 connection_id;
+        u8 connection_key;
+        u8 link;
+        u8 depth;
     }
 
 .. _`tb_switch.members`:
@@ -32,26 +149,96 @@ Definition
 Members
 -------
 
+dev
+    Device for the switch
+
 config
-    *undescribed*
+    Switch configuration
 
 ports
-    *undescribed*
+    Ports in this switch
+
+dma_port
+    If the switch has port supporting DMA configuration based
+    mailbox this will hold the pointer to that (%NULL
+    otherwise). If set it also means the switch has
+    upgradeable NVM.
 
 tb
-    *undescribed*
+    Pointer to the domain the switch belongs to
 
 uid
-    *undescribed*
+    Unique ID of the switch
+
+uuid
+    UUID of the switch (or \ ``NULL``\  if not supported)
+
+vendor
+    Vendor ID of the switch
+
+device
+    Device ID of the switch
+
+vendor_name
+    Name of the vendor (or \ ``NULL``\  if not known)
+
+device_name
+    Name of the device (or \ ``NULL``\  if not known)
+
+generation
+    Switch Thunderbolt generation
 
 cap_plug_events
-    *undescribed*
+    Offset to the plug events capability (%0 if not found)
 
 is_unplugged
-    *undescribed*
+    The switch is going away
 
 drom
-    *undescribed*
+    DROM of the switch (%NULL if not found)
+
+nvm
+    Pointer to the NVM if the switch has one (%NULL otherwise)
+
+no_nvm_upgrade
+    Prevent NVM upgrade of this switch
+
+safe_mode
+    The switch is in safe-mode
+
+authorized
+    Whether the switch is authorized by user or policy
+
+work
+    Work used to automatically authorize a switch
+
+security_level
+    Switch supported security level
+
+key
+    Contains the key used to challenge the device or \ ``NULL``\  if not
+    supported. Size of the key is \ ``TB_SWITCH_KEY_SIZE``\ .
+
+connection_id
+    Connection ID used with ICM messaging
+
+connection_key
+    Connection key used with ICM messaging
+
+link
+    Root switch link this switch is connected (ICM only)
+
+depth
+    Depth in the chain this switch is connected (ICM only)
+
+.. _`tb_switch.description`:
+
+Description
+-----------
+
+When the switch is being added or removed to the domain (other
+switches) you need to have domain lock held. For switch authorization
+internal switch_lock is enough.
 
 .. _`tb_port`:
 
@@ -290,6 +477,79 @@ Description
 A path consists of a number of hops (see tb_path_hop). To establish a PCIe
 tunnel two paths have to be created between the two PCIe ports.
 
+.. _`tb_cm_ops`:
+
+struct tb_cm_ops
+================
+
+.. c:type:: struct tb_cm_ops
+
+    Connection manager specific operations vector
+
+.. _`tb_cm_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tb_cm_ops {
+        int (*driver_ready)(struct tb *tb);
+        int (*start)(struct tb *tb);
+        void (*stop)(struct tb *tb);
+        int (*suspend_noirq)(struct tb *tb);
+        int (*resume_noirq)(struct tb *tb);
+        int (*suspend)(struct tb *tb);
+        void (*complete)(struct tb *tb);
+        void (*handle_event)(struct tb *tb, enum tb_cfg_pkg_type, const void *buf, size_t size);
+        int (*approve_switch)(struct tb *tb, struct tb_switch *sw);
+        int (*add_switch_key)(struct tb *tb, struct tb_switch *sw);
+        int (*challenge_switch_key)(struct tb *tb, struct tb_switch *sw, const u8 *challenge, u8 *response);
+        int (*disconnect_pcie_paths)(struct tb *tb);
+    }
+
+.. _`tb_cm_ops.members`:
+
+Members
+-------
+
+driver_ready
+    Called right after control channel is started. Used by
+    ICM to send driver ready message to the firmware.
+
+start
+    Starts the domain
+
+stop
+    Stops the domain
+
+suspend_noirq
+    Connection manager specific suspend_noirq
+
+resume_noirq
+    Connection manager specific resume_noirq
+
+suspend
+    Connection manager specific suspend
+
+complete
+    Connection manager specific complete
+
+handle_event
+    Handle thunderbolt event
+
+approve_switch
+    Approve switch
+
+add_switch_key
+    Add key to switch
+
+challenge_switch_key
+    Challenge switch using key
+
+disconnect_pcie_paths
+    Disconnects PCIe paths before NVM update
+
 .. _`tb`:
 
 struct tb
@@ -307,13 +567,16 @@ Definition
 .. code-block:: c
 
     struct tb {
+        struct device dev;
         struct mutex lock;
         struct tb_nhi *nhi;
         struct tb_ctl *ctl;
         struct workqueue_struct *wq;
         struct tb_switch *root_switch;
-        struct list_head tunnel_list;
-        bool hotplug_active;
+        const struct tb_cm_ops *cm_ops;
+        int index;
+        enum tb_security_level security_level;
+        unsigned long privdata;
     }
 
 .. _`tb.members`:
@@ -321,26 +584,36 @@ Definition
 Members
 -------
 
+dev
+    Domain device
+
 lock
-    *undescribed*
+    Big lock. Must be held when accessing any struct
+    tb_switch / struct tb_port.
 
 nhi
-    *undescribed*
+    Pointer to the NHI structure
 
 ctl
-    *undescribed*
+    Control channel for this domain
 
 wq
-    *undescribed*
+    Ordered workqueue for all domain specific work
 
 root_switch
-    *undescribed*
+    Root switch of this domain
 
-tunnel_list
-    *undescribed*
+cm_ops
+    Connection manager specific operations vector
 
-hotplug_active
-    *undescribed*
+index
+    Linux assigned domain number
+
+security_level
+    Current security level
+
+privdata
+    Private connection manager specific data
 
 .. _`tb_upstream_port`:
 

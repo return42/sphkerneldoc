@@ -407,37 +407,6 @@ Description
 
 Returns 0 if it gets a blob, -EPERM if exec forbidden and -ENOMEM otherwise
 
-.. _`smack_bprm_committing_creds`:
-
-smack_bprm_committing_creds
-===========================
-
-.. c:function:: void smack_bprm_committing_creds(struct linux_binprm *bprm)
-
-    Prepare to install the new credentials from bprm.
-
-    :param struct linux_binprm \*bprm:
-        binprm for exec
-
-.. _`smack_bprm_secureexec`:
-
-smack_bprm_secureexec
-=====================
-
-.. c:function:: int smack_bprm_secureexec(struct linux_binprm *bprm)
-
-    Return the decision to use secureexec.
-
-    :param struct linux_binprm \*bprm:
-        binprm for exec
-
-.. _`smack_bprm_secureexec.description`:
-
-Description
------------
-
-Returns 0 on success.
-
 .. _`smack_inode_alloc_security`:
 
 smack_inode_alloc_security

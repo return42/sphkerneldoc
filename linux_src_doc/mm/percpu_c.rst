@@ -1,6 +1,91 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/percpu.c
 
+.. _`pcpu_addr_in_chunk`:
+
+pcpu_addr_in_chunk
+==================
+
+.. c:function:: bool pcpu_addr_in_chunk(struct pcpu_chunk *chunk, void *addr)
+
+    check if the address is served from this chunk
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param void \*addr:
+        percpu address
+
+.. _`pcpu_addr_in_chunk.return`:
+
+Return
+------
+
+True if the address is served from this chunk.
+
+.. _`pcpu_next_md_free_region`:
+
+pcpu_next_md_free_region
+========================
+
+.. c:function:: void pcpu_next_md_free_region(struct pcpu_chunk *chunk, int *bit_off, int *bits)
+
+    finds the next hint free area
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int \*bit_off:
+        chunk offset
+
+    :param int \*bits:
+        size of free area
+
+.. _`pcpu_next_md_free_region.description`:
+
+Description
+-----------
+
+Helper function for pcpu_for_each_md_free_region.  It checks
+block->contig_hint and performs aggregation across blocks to find the
+next hint.  It modifies bit_off and bits in-place to be consumed in the
+loop.
+
+.. _`pcpu_next_fit_region`:
+
+pcpu_next_fit_region
+====================
+
+.. c:function:: void pcpu_next_fit_region(struct pcpu_chunk *chunk, int alloc_bits, int align, int *bit_off, int *bits)
+
+    finds fit areas for a given allocation request
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int alloc_bits:
+        size of allocation
+
+    :param int align:
+        alignment of area (max PAGE_SIZE)
+
+    :param int \*bit_off:
+        chunk offset
+
+    :param int \*bits:
+        size of free area
+
+.. _`pcpu_next_fit_region.description`:
+
+Description
+-----------
+
+Finds the next free region that is viable for use with a given size and
+alignment.  This only returns if there is a valid area to be used for this
+allocation.  block->first_free is returned if the allocation request fits
+within the block to see if the request can be fulfilled prior to the contig
+hint.
+
 .. _`pcpu_mem_zalloc`:
 
 pcpu_mem_zalloc
@@ -55,30 +140,6 @@ Description
 
 Free \ ``ptr``\ .  \ ``ptr``\  should have been allocated using \ :c:func:`pcpu_mem_zalloc`\ .
 
-.. _`pcpu_count_occupied_pages`:
-
-pcpu_count_occupied_pages
-=========================
-
-.. c:function:: int pcpu_count_occupied_pages(struct pcpu_chunk *chunk, int i)
-
-    count the number of pages an area occupies
-
-    :param struct pcpu_chunk \*chunk:
-        chunk of interest
-
-    :param int i:
-        index of the area in question
-
-.. _`pcpu_count_occupied_pages.description`:
-
-Description
------------
-
-Count the number of pages chunk's \ ``i``\ 'th area occupies.  When the area's
-start and/or end address isn't aligned to page boundary, the straddled
-page is included in the count iff the rest of the page is free.
-
 .. _`pcpu_chunk_relocate`:
 
 pcpu_chunk_relocate
@@ -111,215 +172,386 @@ Context
 
 pcpu_lock.
 
-.. _`pcpu_need_to_extend`:
+.. _`pcpu_cnt_pop_pages`:
 
-pcpu_need_to_extend
+pcpu_cnt_pop_pages
+==================
+
+.. c:function:: int pcpu_cnt_pop_pages(struct pcpu_chunk *chunk, int bit_off, int bits)
+
+    counts populated backing pages in range
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int bit_off:
+        start offset
+
+    :param int bits:
+        size of area to check
+
+.. _`pcpu_cnt_pop_pages.description`:
+
+Description
+-----------
+
+Calculates the number of populated pages in the region
+[page_start, page_end).  This keeps track of how many empty populated
+pages are available and decide if async work should be scheduled.
+
+.. _`pcpu_cnt_pop_pages.return`:
+
+Return
+------
+
+The nr of populated pages.
+
+.. _`pcpu_chunk_update`:
+
+pcpu_chunk_update
+=================
+
+.. c:function:: void pcpu_chunk_update(struct pcpu_chunk *chunk, int bit_off, int bits)
+
+    updates the chunk metadata given a free area
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int bit_off:
+        chunk offset
+
+    :param int bits:
+        size of free area
+
+.. _`pcpu_chunk_update.description`:
+
+Description
+-----------
+
+This updates the chunk's contig hint and starting offset given a free area.
+Choose the best starting offset if the contig hint is equal.
+
+.. _`pcpu_chunk_refresh_hint`:
+
+pcpu_chunk_refresh_hint
+=======================
+
+.. c:function:: void pcpu_chunk_refresh_hint(struct pcpu_chunk *chunk)
+
+    updates metadata about a chunk
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+.. _`pcpu_chunk_refresh_hint.description`:
+
+Description
+-----------
+
+Iterates over the metadata blocks to find the largest contig area.
+It also counts the populated pages and uses the delta to update the
+global count.
+
+.. _`pcpu_chunk_refresh_hint.updates`:
+
+Updates
+-------
+
+chunk->contig_bits
+chunk->contig_bits_start
+nr_empty_pop_pages (chunk and global)
+
+.. _`pcpu_block_update`:
+
+pcpu_block_update
+=================
+
+.. c:function:: void pcpu_block_update(struct pcpu_block_md *block, int start, int end)
+
+    updates a block given a free area
+
+    :param struct pcpu_block_md \*block:
+        block of interest
+
+    :param int start:
+        start offset in block
+
+    :param int end:
+        end offset in block
+
+.. _`pcpu_block_update.description`:
+
+Description
+-----------
+
+Updates a block given a known free area.  The region [start, end) is
+expected to be the entirety of the free area within a block.  Chooses
+the best starting offset if the contig hints are equal.
+
+.. _`pcpu_block_refresh_hint`:
+
+pcpu_block_refresh_hint
+=======================
+
+.. c:function:: void pcpu_block_refresh_hint(struct pcpu_chunk *chunk, int index)
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int index:
+        index of the metadata block
+
+.. _`pcpu_block_refresh_hint.description`:
+
+Description
+-----------
+
+Scans over the block beginning at first_free and updates the block
+metadata accordingly.
+
+.. _`pcpu_block_update_hint_alloc`:
+
+pcpu_block_update_hint_alloc
+============================
+
+.. c:function:: void pcpu_block_update_hint_alloc(struct pcpu_chunk *chunk, int bit_off, int bits)
+
+    update hint on allocation path
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int bit_off:
+        chunk offset
+
+    :param int bits:
+        size of request
+
+.. _`pcpu_block_update_hint_alloc.description`:
+
+Description
+-----------
+
+Updates metadata for the allocation path.  The metadata only has to be
+refreshed by a full scan iff the chunk's contig hint is broken.  Block level
+scans are required if the block's contig hint is broken.
+
+.. _`pcpu_block_update_hint_free`:
+
+pcpu_block_update_hint_free
+===========================
+
+.. c:function:: void pcpu_block_update_hint_free(struct pcpu_chunk *chunk, int bit_off, int bits)
+
+    updates the block hints on the free path
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int bit_off:
+        chunk offset
+
+    :param int bits:
+        size of request
+
+.. _`pcpu_block_update_hint_free.description`:
+
+Description
+-----------
+
+Updates metadata for the allocation path.  This avoids a blind block
+refresh by making use of the block contig hints.  If this fails, it scans
+forward and backward to determine the extent of the free area.  This is
+capped at the boundary of blocks.
+
+A chunk update is triggered if a page becomes free, a block becomes free,
+or the free spans across blocks.  This tradeoff is to minimize iterating
+over the block metadata to update chunk->contig_bits.  chunk->contig_bits
+may be off by up to a page, but it will never be more than the available
+space.  If the contig hint is contained in one block, it will be accurate.
+
+.. _`pcpu_is_populated`:
+
+pcpu_is_populated
+=================
+
+.. c:function:: bool pcpu_is_populated(struct pcpu_chunk *chunk, int bit_off, int bits, int *next_off)
+
+    determines if the region is populated
+
+    :param struct pcpu_chunk \*chunk:
+        chunk of interest
+
+    :param int bit_off:
+        chunk offset
+
+    :param int bits:
+        size of area
+
+    :param int \*next_off:
+        return value for the next offset to start searching
+
+.. _`pcpu_is_populated.description`:
+
+Description
+-----------
+
+For atomic allocations, check if the backing pages are populated.
+
+.. _`pcpu_is_populated.return`:
+
+Return
+------
+
+Bool if the backing pages are populated.
+next_index is to skip over unpopulated blocks in pcpu_find_block_fit.
+
+.. _`pcpu_find_block_fit`:
+
+pcpu_find_block_fit
 ===================
 
-.. c:function:: int pcpu_need_to_extend(struct pcpu_chunk *chunk, bool is_atomic)
+.. c:function:: int pcpu_find_block_fit(struct pcpu_chunk *chunk, int alloc_bits, size_t align, bool pop_only)
 
-    determine whether chunk area map needs to be extended
-
-    :param struct pcpu_chunk \*chunk:
-        chunk of interest
-
-    :param bool is_atomic:
-        the allocation context
-
-.. _`pcpu_need_to_extend.description`:
-
-Description
------------
-
-Determine whether area map of \ ``chunk``\  needs to be extended.  If
-\ ``is_atomic``\ , only the amount necessary for a new allocation is
-considered; however, async extension is scheduled if the left amount is
-low.  If !@is_atomic, it aims for more empty space.  Combined, this
-ensures that the map is likely to have enough available space to
-accomodate atomic allocations which can't extend maps directly.
-
-.. _`pcpu_need_to_extend.context`:
-
-Context
--------
-
-pcpu_lock.
-
-.. _`pcpu_need_to_extend.return`:
-
-Return
-------
-
-New target map allocation length if extension is necessary, 0
-otherwise.
-
-.. _`pcpu_extend_area_map`:
-
-pcpu_extend_area_map
-====================
-
-.. c:function:: int pcpu_extend_area_map(struct pcpu_chunk *chunk, int new_alloc)
-
-    extend area map of a chunk
+    finds the block index to start searching
 
     :param struct pcpu_chunk \*chunk:
         chunk of interest
 
-    :param int new_alloc:
-        new target allocation length of the area map
+    :param int alloc_bits:
+        size of request in allocation units
 
-.. _`pcpu_extend_area_map.description`:
-
-Description
------------
-
-Extend area map of \ ``chunk``\  to have \ ``new_alloc``\  entries.
-
-.. _`pcpu_extend_area_map.context`:
-
-Context
--------
-
-Does GFP_KERNEL allocation.  Grabs and releases pcpu_lock.
-
-.. _`pcpu_extend_area_map.return`:
-
-Return
-------
-
-0 on success, -errno on failure.
-
-.. _`pcpu_fit_in_area`:
-
-pcpu_fit_in_area
-================
-
-.. c:function:: int pcpu_fit_in_area(struct pcpu_chunk *chunk, int off, int this_size, int size, int align, bool pop_only)
-
-    try to fit the requested allocation in a candidate area
-
-    :param struct pcpu_chunk \*chunk:
-        chunk the candidate area belongs to
-
-    :param int off:
-        the offset to the start of the candidate area
-
-    :param int this_size:
-        the size of the candidate area
-
-    :param int size:
-        the size of the target allocation
-
-    :param int align:
-        the alignment of the target allocation
+    :param size_t align:
+        alignment of area (max PAGE_SIZE bytes)
 
     :param bool pop_only:
-        only allocate from already populated region
+        use populated regions only
 
-.. _`pcpu_fit_in_area.description`:
+.. _`pcpu_find_block_fit.description`:
 
 Description
 -----------
 
-We're trying to allocate \ ``size``\  bytes aligned at \ ``align``\ .  \ ``chunk``\ 's area
-at \ ``off``\  sized \ ``this_size``\  is a candidate.  This function determines
-whether the target allocation fits in the candidate area and returns the
-number of bytes to pad after \ ``off``\ .  If the target area doesn't fit, -1
-is returned.
+Given a chunk and an allocation spec, find the offset to begin searching
+for a free region.  This iterates over the bitmap metadata blocks to
+find an offset that will be guaranteed to fit the requirements.  It is
+not quite first fit as if the allocation does not fit in the contig hint
+of a block or chunk, it is skipped.  This errs on the side of caution
+to prevent excess iteration.  Poor alignment can cause the allocator to
+skip over blocks and chunks that have valid free areas.
 
-If \ ``pop_only``\  is \ ``true``\ , this function only considers the already
-populated part of the candidate area.
+.. _`pcpu_find_block_fit.return`:
+
+Return
+------
+
+The offset in the bitmap to begin searching.
+-1 if no offset is found.
 
 .. _`pcpu_alloc_area`:
 
 pcpu_alloc_area
 ===============
 
-.. c:function:: int pcpu_alloc_area(struct pcpu_chunk *chunk, int size, int align, bool pop_only, int *occ_pages_p)
+.. c:function:: int pcpu_alloc_area(struct pcpu_chunk *chunk, int alloc_bits, size_t align, int start)
 
-    allocate area from a pcpu_chunk
+    allocates an area from a pcpu_chunk
 
     :param struct pcpu_chunk \*chunk:
         chunk of interest
 
-    :param int size:
-        wanted size in bytes
+    :param int alloc_bits:
+        size of request in allocation units
 
-    :param int align:
-        wanted align
+    :param size_t align:
+        alignment of area (max PAGE_SIZE)
 
-    :param bool pop_only:
-        allocate only from the populated area
-
-    :param int \*occ_pages_p:
-        out param for the number of pages the area occupies
+    :param int start:
+        bit_off to start searching
 
 .. _`pcpu_alloc_area.description`:
 
 Description
 -----------
 
-Try to allocate \ ``size``\  bytes area aligned at \ ``align``\  from \ ``chunk``\ .
-Note that this function only allocates the offset.  It doesn't
-populate or map the area.
-
-\ ``chunk``\ ->map must have at least two free slots.
-
-.. _`pcpu_alloc_area.context`:
-
-Context
--------
-
-pcpu_lock.
+This function takes in a \ ``start``\  offset to begin searching to fit an
+allocation of \ ``alloc_bits``\  with alignment \ ``align``\ .  It needs to scan
+the allocation map because if it fits within the block's contig hint,
+\ ``start``\  will be block->first_free. This is an attempt to fill the
+allocation prior to breaking the contig hint.  The allocation and
+boundary maps are updated accordingly if it confirms a valid
+free area.
 
 .. _`pcpu_alloc_area.return`:
 
 Return
 ------
 
-Allocated offset in \ ``chunk``\  on success, -1 if no matching area is
-found.
+Allocated addr offset in \ ``chunk``\  on success.
+-1 if no matching area is found.
 
 .. _`pcpu_free_area`:
 
 pcpu_free_area
 ==============
 
-.. c:function:: void pcpu_free_area(struct pcpu_chunk *chunk, int freeme, int *occ_pages_p)
+.. c:function:: void pcpu_free_area(struct pcpu_chunk *chunk, int off)
 
-    free area to a pcpu_chunk
+    frees the corresponding offset
 
     :param struct pcpu_chunk \*chunk:
         chunk of interest
 
-    :param int freeme:
-        offset of area to free
-
-    :param int \*occ_pages_p:
-        out param for the number of pages the area occupies
+    :param int off:
+        addr offset into chunk
 
 .. _`pcpu_free_area.description`:
 
 Description
 -----------
 
-Free area starting from \ ``freeme``\  to \ ``chunk``\ .  Note that this function
-only modifies the allocation map.  It doesn't depopulate or unmap
-the area.
+This function determines the size of an allocation to free using
+the boundary bitmap and clears the allocation map.
 
-.. _`pcpu_free_area.context`:
+.. _`pcpu_alloc_first_chunk`:
 
-Context
--------
+pcpu_alloc_first_chunk
+======================
 
-pcpu_lock.
+.. c:function:: struct pcpu_chunk *pcpu_alloc_first_chunk(unsigned long tmp_addr, int map_size)
+
+    creates chunks that serve the first chunk
+
+    :param unsigned long tmp_addr:
+        the start of the region served
+
+    :param int map_size:
+        size of the region served
+
+.. _`pcpu_alloc_first_chunk.description`:
+
+Description
+-----------
+
+This is responsible for creating the chunks that serve the first chunk.  The
+base_addr is page aligned down of \ ``tmp_addr``\  while the region end is page
+aligned up.  Offsets are kept track of to determine the region served. All
+this is done to appease the bitmap allocator in avoiding partial blocks.
+
+.. _`pcpu_alloc_first_chunk.return`:
+
+Return
+------
+
+Chunk serving the region at \ ``tmp_addr``\  of \ ``map_size``\ .
 
 .. _`pcpu_chunk_populated`:
 
 pcpu_chunk_populated
 ====================
 
-.. c:function:: void pcpu_chunk_populated(struct pcpu_chunk *chunk, int page_start, int page_end)
+.. c:function:: void pcpu_chunk_populated(struct pcpu_chunk *chunk, int page_start, int page_end, bool for_alloc)
 
     post-population bookkeeping
 
@@ -332,6 +564,9 @@ pcpu_chunk_populated
     :param int page_end:
         the end page
 
+    :param bool for_alloc:
+        if this is to populate for allocation
+
 .. _`pcpu_chunk_populated.description`:
 
 Description
@@ -340,6 +575,9 @@ Description
 Pages in [@page_start,@page_end) have been populated to \ ``chunk``\ .  Update
 the bookkeeping information accordingly.  Must be called after each
 successful population.
+
+If this is \ ``for_alloc``\ , do not increment pcpu_nr_empty_pop_pages because it
+is to serve an allocation in that area.
 
 .. _`pcpu_chunk_depopulated`:
 
@@ -379,6 +617,14 @@ pcpu_chunk_addr_search
 
     :param void \*addr:
         address for which the chunk needs to be determined.
+
+.. _`pcpu_chunk_addr_search.description`:
+
+Description
+-----------
+
+This is an internal function that handles all but static allocations.
+Static percpu address values should never be passed into the allocator.
 
 .. _`pcpu_chunk_addr_search.return`:
 
@@ -767,12 +1013,13 @@ all units is assumed.
 The caller should have mapped the first chunk at \ ``base_addr``\  and
 copied static data to each unit.
 
-If the first chunk ends up with both reserved and dynamic areas, it
-is served by two chunks - one to serve the core static and reserved
-areas and the other for the dynamic area.  They share the same vm
-and page map but uses different area allocation map to stay away
-from each other.  The latter chunk is circulated in the chunk slots
-and available for dynamic allocation like any other chunks.
+The first chunk will always contain a static and a dynamic region.
+However, the static region is not managed by any chunk.  If the first
+chunk also contains a reserved region, it is served by two chunks -
+one for the reserved region and one for the dynamic region.  They
+share the same vm, but use offset regions in the area allocation map.
+The chunk serving the dynamic region is circulated in the chunk slots
+and available for dynamic allocation like any other chunk.
 
 .. _`pcpu_setup_first_chunk.return`:
 

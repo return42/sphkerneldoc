@@ -6,7 +6,7 @@
 qib_msi_setup
 =============
 
-.. c:function:: int qib_msi_setup(struct qib_devdata *dd, int pos)
+.. c:function:: void qib_msi_setup(struct qib_devdata *dd, int pos)
 
     chip reset (the kernel PCI infrastructure doesn't yet handle that correctly.
 

@@ -68,52 +68,6 @@ Description
 
 Get the timer errata flags that are specific to the OMAP device being used.
 
-.. _`omap_timer_init`:
-
-omap_timer_init
-===============
-
-.. c:function:: int omap_timer_init(struct omap_hwmod *oh, void *unused)
-
-    build and register timer device with an associated timer hwmod
-
-    :param struct omap_hwmod \*oh:
-        timer hwmod pointer to be used to build timer device
-
-    :param void \*unused:
-        *undescribed*
-
-.. _`omap_timer_init.description`:
-
-Description
------------
-
-Called by omap_hwmod_for_each_by_class to register each of the timer
-devices present in the system. The number of timer devices is known
-by parsing through the hwmod database for a given class name. At the
-end of function call memory is allocated for timer device and it is
-registered to the framework ready to be proved by the driver.
-
-.. _`omap2_dm_timer_init`:
-
-omap2_dm_timer_init
-===================
-
-.. c:function:: int omap2_dm_timer_init( void)
-
-    top level regular device initialization
-
-    :param  void:
-        no arguments
-
-.. _`omap2_dm_timer_init.description`:
-
-Description
------------
-
-Uses dedicated hwmod api to parse through hwmod database for
-given class name and then build and register the timer device.
-
 .. _`omap2_override_clocksource`:
 
 omap2_override_clocksource

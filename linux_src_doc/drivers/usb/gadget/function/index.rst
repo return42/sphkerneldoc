@@ -12,4 +12,4 @@ function
     u_ether_c
     u_ether_h
     u_serial_c
-    u_uac1_c
+    u_uac1_legacy_c

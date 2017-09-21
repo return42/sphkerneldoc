@@ -87,7 +87,7 @@ struct spi_device
 
 .. c:type:: struct spi_device
 
-    Master side proxy for an SPI slave device
+    Controller side proxy for an SPI slave device
 
 .. _`spi_device.definition`:
 
@@ -98,7 +98,8 @@ Definition
 
     struct spi_device {
         struct device dev;
-        struct spi_master *master;
+        struct spi_controller *controller;
+        struct spi_controller *master;
         u32 max_speed_hz;
         u8 chip_select;
         u8 bits_per_word;
@@ -135,8 +136,11 @@ Members
 dev
     Driver model representation of the device.
 
-master
+controller
     SPI controller used with the device.
+
+master
+    Copy of controller, for backwards compatibility.
 
 max_speed_hz
     Maximum clock rate to be used with this chip
@@ -144,7 +148,7 @@ max_speed_hz
     The spi_transfer.speed_hz can override this for each transfer.
 
 chip_select
-    Chipselect, distinguishing chips handled by \ ``master``\ .
+    Chipselect, distinguishing chips handled by \ ``controller``\ .
 
 bits_per_word
     Data transfers involve one or more words; word sizes
@@ -304,23 +308,23 @@ Helper macro for SPI drivers which do not do anything special in module
 init/exit. This eliminates a lot of boilerplate. Each module may only
 use this macro once, and calling it replaces \ :c:func:`module_init`\  and \ :c:func:`module_exit`\ 
 
-.. _`spi_master`:
+.. _`spi_controller`:
 
-struct spi_master
-=================
+struct spi_controller
+=====================
 
-.. c:type:: struct spi_master
+.. c:type:: struct spi_controller
 
-    interface to SPI master controller
+    interface to SPI master or slave controller
 
-.. _`spi_master.definition`:
+.. _`spi_controller.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct spi_master {
+    struct spi_controller {
         struct device dev;
         struct list_head list;
         s16 bus_num;
@@ -334,12 +338,13 @@ Definition
         u32 min_speed_hz;
         u32 max_speed_hz;
         u16 flags;
-    #define SPI_MASTER_HALF_DUPLEX BIT(0)
-    #define SPI_MASTER_NO_RX BIT(1)
-    #define SPI_MASTER_NO_TX BIT(2)
-    #define SPI_MASTER_MUST_RX BIT(3)
-    #define SPI_MASTER_MUST_TX BIT(4)
+    #define SPI_CONTROLLER_HALF_DUPLEX BIT(0)
+    #define SPI_CONTROLLER_NO_RX BIT(1)
+    #define SPI_CONTROLLER_NO_TX BIT(2)
+    #define SPI_CONTROLLER_MUST_RX BIT(3)
+    #define SPI_CONTROLLER_MUST_TX BIT(4)
     #define SPI_MASTER_GPIO_SS BIT(5)
+        bool slave;
         size_t (*max_transfer_size)(struct spi_device *spi);
         size_t (*max_message_size)(struct spi_device *spi);
         struct mutex io_mutex;
@@ -349,7 +354,7 @@ Definition
         int (*setup)(struct spi_device *spi);
         int (*transfer)(struct spi_device *spi, struct spi_message *mesg);
         void (*cleanup)(struct spi_device *spi);
-        bool (*can_dma)(struct spi_master *master,struct spi_device *spi, struct spi_transfer *xfer);
+        bool (*can_dma)(struct spi_controller *ctlr,struct spi_device *spi, struct spi_transfer *xfer);
         bool queued;
         struct kthread_worker kworker;
         struct task_struct *kworker_task;
@@ -366,27 +371,28 @@ Definition
         bool cur_msg_mapped;
         struct completion xfer_completion;
         size_t max_dma_len;
-        int (*prepare_transfer_hardware)(struct spi_master *master);
-        int (*transfer_one_message)(struct spi_master *master, struct spi_message *mesg);
-        int (*unprepare_transfer_hardware)(struct spi_master *master);
-        int (*prepare_message)(struct spi_master *master, struct spi_message *message);
-        int (*unprepare_message)(struct spi_master *master, struct spi_message *message);
+        int (*prepare_transfer_hardware)(struct spi_controller *ctlr);
+        int (*transfer_one_message)(struct spi_controller *ctlr, struct spi_message *mesg);
+        int (*unprepare_transfer_hardware)(struct spi_controller *ctlr);
+        int (*prepare_message)(struct spi_controller *ctlr, struct spi_message *message);
+        int (*unprepare_message)(struct spi_controller *ctlr, struct spi_message *message);
+        int (*slave_abort)(struct spi_controller *ctlr);
         int (*spi_flash_read)(struct spi_device *spi, struct spi_flash_read_message *msg);
         bool (*spi_flash_can_dma)(struct spi_device *spi, struct spi_flash_read_message *msg);
         bool (*flash_read_supported)(struct spi_device *spi);
         void (*set_cs)(struct spi_device *spi, bool enable);
-        int (*transfer_one)(struct spi_master *master, struct spi_device *spi, struct spi_transfer *transfer);
-        void (*handle_err)(struct spi_master *master, struct spi_message *message);
+        int (*transfer_one)(struct spi_controller *ctlr, struct spi_device *spi, struct spi_transfer *transfer);
+        void (*handle_err)(struct spi_controller *ctlr, struct spi_message *message);
         int *cs_gpios;
         struct spi_statistics statistics;
         struct dma_chan *dma_tx;
         struct dma_chan *dma_rx;
         void *dummy_rx;
         void *dummy_tx;
-        int (*fw_translate_cs)(struct spi_master *master, unsigned cs);
+        int (*fw_translate_cs)(struct spi_controller *ctlr, unsigned cs);
     }
 
-.. _`spi_master.members`:
+.. _`spi_controller.members`:
 
 Members
 -------
@@ -395,7 +401,7 @@ dev
     device interface to this driver
 
 list
-    link with the global spi_master list
+    link with the global spi_controller list
 
 bus_num
     board-specific (and often SOC-specific) identifier for a
@@ -428,6 +434,9 @@ max_speed_hz
 
 flags
     other constraints relevant to this driver
+
+slave
+    indicates that this is an SPI slave controller
 
 max_transfer_size
     function that returns the max transfer size for
@@ -463,10 +472,10 @@ cleanup
     frees controller-specific state
 
 can_dma
-    determine whether this master supports DMA
+    determine whether this controller supports DMA
 
 queued
-    whether this master is providing an internal message queue
+    whether this controller is providing an internal message queue
 
 kworker
     thread struct for message pump
@@ -541,6 +550,9 @@ prepare_message
 unprepare_message
     undo any work done by \ :c:func:`prepare_message`\ .
 
+slave_abort
+    abort the ongoing transfer request on an SPI slave controller
+
 spi_flash_read
     to support spi-controller hardwares that provide
     accelerated interface to read from flash devices.
@@ -577,7 +589,7 @@ cs_gpios
     are not GPIOs (driven by the SPI controller itself).
 
 statistics
-    statistics for the spi_master
+    statistics for the spi_controller
 
 dma_tx
     DMA transmit channel
@@ -596,12 +608,12 @@ fw_translate_cs
     what Linux expects, this optional hook can be used to translate
     between the two.
 
-.. _`spi_master.description`:
+.. _`spi_controller.description`:
 
 Description
 -----------
 
-Each SPI master controller can communicate with one or more \ ``spi_device``\ 
+Each SPI controller can communicate with one or more \ ``spi_device``\ 
 children.  These make a small bus, sharing MOSI, MISO and SCK signals
 but not chip select signals.  Each device may be configured to use a
 different clock rate, since those shared signals are ignored unless
@@ -1345,7 +1357,7 @@ max_speed_hz
     from the chip datasheet and board-specific signal quality issues.
 
 bus_num
-    Identifies which spi_master parents the spi_device; unused
+    Identifies which spi_controller parents the spi_device; unused
     by \ :c:func:`spi_new_device`\ , and otherwise depends on board wiring.
 
 chip_select

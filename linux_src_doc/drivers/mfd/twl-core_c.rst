@@ -46,7 +46,7 @@ twl_i2c_write
 Description
 -----------
 
-Returns the result of operation - 0 is success
+Returns 0 on success or else a negative error code.
 
 .. _`twl_i2c_read`:
 
@@ -74,7 +74,7 @@ twl_i2c_read
 Description
 -----------
 
-Returns result of operation - num_bytes is success else failure.
+Returns 0 on success or else a negative error code.
 
 .. _`twl_set_regcache_bypass`:
 

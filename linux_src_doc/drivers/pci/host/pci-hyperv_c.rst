@@ -52,6 +52,58 @@ reserved
 cpu_mask
     All the target virtual processors.
 
+.. _`hv_msi_desc2`:
+
+struct hv_msi_desc2
+===================
+
+.. c:type:: struct hv_msi_desc2
+
+    1.2 version of hv_msi_desc
+
+.. _`hv_msi_desc2.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hv_msi_desc2 {
+        u8 vector;
+        u8 delivery_mode;
+        u16 vector_count;
+        u16 processor_count;
+        u16 processor_array;
+    }
+
+.. _`hv_msi_desc2.members`:
+
+Members
+-------
+
+vector
+    IDT entry
+
+delivery_mode
+    As defined in Intel's Programmer's
+    Reference Manual, Volume 3, Chapter 8.
+
+vector_count
+    Number of contiguous entries in the
+    Interrupt Descriptor Table that are
+    occupied by this Message-Signaled
+    Interrupt. For "MSI", as first defined
+    in PCI 2.2, this can be between 1 and
+    32. For "MSI-X," as first defined in PCI
+    3.0, this must be 1, as each MSI-X table
+    entry would have its own descriptor.
+
+processor_count
+    number of bits enabled in array.
+
+processor_array
+    All the target virtual processors.
+
 .. _`tran_int_desc`:
 
 struct tran_int_desc

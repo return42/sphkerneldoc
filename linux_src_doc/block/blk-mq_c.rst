@@ -8,7 +8,7 @@ blk_mq_quiesce_queue
 
 .. c:function:: void blk_mq_quiesce_queue(struct request_queue *q)
 
-    wait until all ongoing queue_rq calls have finished
+    wait until all ongoing dispatches have finished
 
     :param struct request_queue \*q:
         request queue.
@@ -19,8 +19,9 @@ Note
 ----
 
 this function does not prevent that the struct request \ :c:func:`end_io`\ 
-callback function is invoked. Additionally, it is not prevented that
-new \ :c:func:`queue_rq`\  calls occur unless the queue has been stopped first.
+callback function is invoked. Once this function is returned, we make
+sure no dispatch can happen until the queue is unquiesced via
+\ :c:func:`blk_mq_unquiesce_queue`\ .
 
 .. _`blk_mq_complete_request`:
 

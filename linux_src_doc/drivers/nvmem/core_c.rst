@@ -288,6 +288,31 @@ Return
 
 length of bytes written or negative on failure.
 
+.. _`nvmem_cell_read_u32`:
+
+nvmem_cell_read_u32
+===================
+
+.. c:function:: int nvmem_cell_read_u32(struct device *dev, const char *cell_id, u32 *val)
+
+    Read a cell value as an u32
+
+    :param struct device \*dev:
+        Device that requests the nvmem cell.
+
+    :param const char \*cell_id:
+        Name of nvmem cell to read.
+
+    :param u32 \*val:
+        pointer to output value.
+
+.. _`nvmem_cell_read_u32.return`:
+
+Return
+------
+
+0 on success or negative errno.
+
 .. _`nvmem_device_cell_read`:
 
 nvmem_device_cell_read

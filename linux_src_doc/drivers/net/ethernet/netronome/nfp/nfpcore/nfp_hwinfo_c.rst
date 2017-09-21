@@ -6,12 +6,12 @@
 nfp_hwinfo_lookup
 =================
 
-.. c:function:: const char *nfp_hwinfo_lookup(struct nfp_cpp *cpp, const char *lookup)
+.. c:function:: const char *nfp_hwinfo_lookup(struct nfp_hwinfo *hwinfo, const char *lookup)
 
     Find a value in the HWInfo table by name
 
-    :param struct nfp_cpp \*cpp:
-        NFP CPP handle
+    :param struct nfp_hwinfo \*hwinfo:
+        NFP HWinfo table
 
     :param const char \*lookup:
         HWInfo name to search for

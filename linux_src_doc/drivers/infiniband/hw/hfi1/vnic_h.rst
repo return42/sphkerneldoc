@@ -25,6 +25,7 @@ Definition
         struct sdma_txreq stx;
         unsigned int state;
         u8 q_idx;
+        bool pkts_sent;
     }
 
 .. _`hfi1_vnic_sdma.members`:
@@ -51,6 +52,9 @@ state
     *undescribed*
 
 q_idx
+    *undescribed*
+
+pkts_sent
     *undescribed*
 
 .. _`hfi1_vnic_rx_queue`:

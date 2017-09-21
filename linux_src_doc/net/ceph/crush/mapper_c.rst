@@ -27,7 +27,7 @@ crush_find_rule
 crush_choose_firstn
 ===================
 
-.. c:function:: int crush_choose_firstn(const struct crush_map *map, struct crush_work *work, const struct crush_bucket *bucket, const __u32 *weight, int weight_max, int x, int numrep, int type, int *out, int outpos, int out_size, unsigned int tries, unsigned int recurse_tries, unsigned int local_retries, unsigned int local_fallback_retries, int recurse_to_leaf, unsigned int vary_r, unsigned int stable, int *out2, int parent_r)
+.. c:function:: int crush_choose_firstn(const struct crush_map *map, struct crush_work *work, const struct crush_bucket *bucket, const __u32 *weight, int weight_max, int x, int numrep, int type, int *out, int outpos, int out_size, unsigned int tries, unsigned int recurse_tries, unsigned int local_retries, unsigned int local_fallback_retries, int recurse_to_leaf, unsigned int vary_r, unsigned int stable, int *out2, int parent_r, const struct crush_choose_arg *choose_args)
 
     choose numrep distinct items of given type
 
@@ -91,12 +91,15 @@ crush_choose_firstn
     :param int parent_r:
         r value passed from the parent
 
+    :param const struct crush_choose_arg \*choose_args:
+        *undescribed*
+
 .. _`crush_choose_indep`:
 
 crush_choose_indep
 ==================
 
-.. c:function:: void crush_choose_indep(const struct crush_map *map, struct crush_work *work, const struct crush_bucket *bucket, const __u32 *weight, int weight_max, int x, int left, int numrep, int type, int *out, int outpos, unsigned int tries, unsigned int recurse_tries, int recurse_to_leaf, int *out2, int parent_r)
+.. c:function:: void crush_choose_indep(const struct crush_map *map, struct crush_work *work, const struct crush_bucket *bucket, const __u32 *weight, int weight_max, int x, int left, int numrep, int type, int *out, int outpos, unsigned int tries, unsigned int recurse_tries, int recurse_to_leaf, int *out2, int parent_r, const struct crush_choose_arg *choose_args)
 
     alternative breadth-first positionally stable mapping
 
@@ -148,12 +151,15 @@ crush_choose_indep
     :param int parent_r:
         *undescribed*
 
+    :param const struct crush_choose_arg \*choose_args:
+        *undescribed*
+
 .. _`crush_do_rule`:
 
 crush_do_rule
 =============
 
-.. c:function:: int crush_do_rule(const struct crush_map *map, int ruleno, int x, int *result, int result_max, const __u32 *weight, int weight_max, void *cwin)
+.. c:function:: int crush_do_rule(const struct crush_map *map, int ruleno, int x, int *result, int result_max, const __u32 *weight, int weight_max, void *cwin, const struct crush_choose_arg *choose_args)
 
     calculate a mapping with the given input and rule
 
@@ -180,6 +186,9 @@ crush_do_rule
 
     :param void \*cwin:
         pointer to at least \ :c:func:`crush_work_size`\  bytes of memory
+
+    :param const struct crush_choose_arg \*choose_args:
+        weights and ids for each known bucket
 
 .. This file was automatic generated / don't edit.
 

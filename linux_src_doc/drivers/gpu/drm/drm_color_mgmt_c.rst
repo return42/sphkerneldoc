@@ -20,7 +20,8 @@ properties on the \ :c:type:`struct drm_crtc <drm_crtc>`\  object. They are set 
 
      Setting this to NULL (blob property value set to 0) means a
      linear/pass-thru gamma table should be used. This is generally the
-     driver boot-up state too.
+     driver boot-up state too. Drivers can access this blob through
+     \ :c:type:`drm_crtc_state.degamma_lut <drm_crtc_state>`\ .
 
 “DEGAMMA_LUT_SIZE”:
      Unsinged range property to give the size of the lookup table to be set
@@ -37,7 +38,8 @@ properties on the \ :c:type:`struct drm_crtc <drm_crtc>`\  object. They are set 
 
      Setting this to NULL (blob property value set to 0) means a
      unit/pass-thru matrix should be used. This is generally the driver
-     boot-up state too.
+     boot-up state too. Drivers can access the blob for the color conversion
+     matrix through \ :c:type:`drm_crtc_state.ctm <drm_crtc_state>`\ .
 
 “GAMMA_LUT”:
      Blob property to set the gamma lookup table (LUT) mapping pixel data
@@ -49,7 +51,8 @@ properties on the \ :c:type:`struct drm_crtc <drm_crtc>`\  object. They are set 
 
      Setting this to NULL (blob property value set to 0) means a
      linear/pass-thru gamma table should be used. This is generally the
-     driver boot-up state too.
+     driver boot-up state too. Drivers can access this blob through
+     \ :c:type:`drm_crtc_state.gamma_lut <drm_crtc_state>`\ .
 
 “GAMMA_LUT_SIZE”:
      Unsigned range property to give the size of the lookup table to be set
@@ -120,6 +123,9 @@ the userspace of the lut sizes. Each of the properties are
 optional. The gamma and degamma properties are only attached if
 their size is not 0 and ctm_property is only attached if has_ctm is
 true.
+
+Drivers should use \ :c:func:`drm_atomic_helper_legacy_gamma_set`\  to implement the
+legacy \ :c:type:`drm_crtc_funcs.gamma_set <drm_crtc_funcs>`\  callback.
 
 .. _`drm_mode_crtc_set_gamma_size`:
 

@@ -31,53 +31,6 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-.. _`rsi_copy_to_card`:
-
-rsi_copy_to_card
-================
-
-.. c:function:: int rsi_copy_to_card(struct rsi_common *common, const u8 *fw, u32 len, u32 num_blocks)
-
-    This function includes the actual funtionality of copying the TA firmware to the card.Basically this function includes opening the TA file,reading the TA file and writing their values in blocks of data.
-
-    :param struct rsi_common \*common:
-        Pointer to the driver private structure.
-
-    :param const u8 \*fw:
-        Pointer to the firmware value to be written.
-
-    :param u32 len:
-        length of firmware file.
-
-    :param u32 num_blocks:
-        Number of blocks to be written to the card.
-
-.. _`rsi_copy_to_card.return`:
-
-Return
-------
-
-0 on success and -1 on failure.
-
-.. _`rsi_load_ta_instructions`:
-
-rsi_load_ta_instructions
-========================
-
-.. c:function:: int rsi_load_ta_instructions(struct rsi_common *common)
-
-    This function includes the actual funtionality of loading the TA firmware.This function also includes opening the TA file,reading the TA file and writing their value in blocks of data.
-
-    :param struct rsi_common \*common:
-        Pointer to the driver private structure.
-
-.. _`rsi_load_ta_instructions.return`:
-
-Return
-------
-
-status: 0 on success, -1 on failure.
-
 .. _`rsi_process_pkt`:
 
 rsi_process_pkt
@@ -134,47 +87,6 @@ Return
 ------
 
 None.
-
-.. _`rsi_sdio_device_init`:
-
-rsi_sdio_device_init
-====================
-
-.. c:function:: int rsi_sdio_device_init(struct rsi_common *common)
-
-    This Function Initializes The HAL.
-
-    :param struct rsi_common \*common:
-        Pointer to the driver private structure.
-
-.. _`rsi_sdio_device_init.return`:
-
-Return
-------
-
-0 on success, -1 on failure.
-
-.. _`rsi_sdio_read_buffer_status_register`:
-
-rsi_sdio_read_buffer_status_register
-====================================
-
-.. c:function:: int rsi_sdio_read_buffer_status_register(struct rsi_hw *adapter, u8 q_num)
-
-    This function is used to the read buffer status register and set relevant fields in rsi_91x_sdiodev struct.
-
-    :param struct rsi_hw \*adapter:
-        Pointer to the driver hw structure.
-
-    :param u8 q_num:
-        The Q number whose status is to be found.
-
-.. _`rsi_sdio_read_buffer_status_register.return`:
-
-Return
-------
-
-status: -1 on failure or else queue full/stop is indicated.
 
 .. _`rsi_sdio_determine_event_timeout`:
 

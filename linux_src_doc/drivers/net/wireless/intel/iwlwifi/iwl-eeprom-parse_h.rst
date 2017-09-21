@@ -32,17 +32,5 @@ returns a (newly allocated) struct containing all the
 relevant values for driver use. The struct must be freed
 later with \ :c:func:`iwl_free_nvm_data`\ .
 
-.. _`iwl_free_nvm_data`:
-
-iwl_free_nvm_data
-=================
-
-.. c:function:: void iwl_free_nvm_data(struct iwl_nvm_data *data)
-
-    free NVM data
-
-    :param struct iwl_nvm_data \*data:
-        the data to free
-
 .. This file was automatic generated / don't edit.
 

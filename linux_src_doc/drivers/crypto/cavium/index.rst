@@ -8,4 +8,5 @@ cavium
     :maxdepth: 1
 
     cpt/index
+    nitrox/index
     zip/index

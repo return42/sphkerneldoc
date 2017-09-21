@@ -338,33 +338,6 @@ atc_prep_slave_sg
     :param void \*context:
         transaction context (ignored)
 
-.. _`atc_prep_dma_sg`:
-
-atc_prep_dma_sg
-===============
-
-.. c:function:: struct dma_async_tx_descriptor *atc_prep_dma_sg(struct dma_chan *chan, struct scatterlist *dst_sg, unsigned int dst_nents, struct scatterlist *src_sg, unsigned int src_nents, unsigned long flags)
-
-    prepare memory to memory scather-gather operation
-
-    :param struct dma_chan \*chan:
-        the channel to prepare operation on
-
-    :param struct scatterlist \*dst_sg:
-        destination scatterlist
-
-    :param unsigned int dst_nents:
-        number of destination scatterlist entries
-
-    :param struct scatterlist \*src_sg:
-        source scatterlist
-
-    :param unsigned int src_nents:
-        number of source scatterlist entries
-
-    :param unsigned long flags:
-        tx descriptor status flags
-
 .. _`atc_dma_cyclic_check_values`:
 
 atc_dma_cyclic_check_values

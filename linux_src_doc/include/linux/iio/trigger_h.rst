@@ -205,18 +205,10 @@ iio_trigger_set_immutable
     set an immutable trigger on destination
 
     :param struct iio_dev \*indio_dev:
-        *undescribed*
+        IIO device structure containing the device
 
     :param struct iio_trigger \*trig:
-        *undescribed*
-
-.. _`iio_trigger_set_immutable.description`:
-
-Description
------------
-
-@indio_dev - IIO device structure containing the device
-\ ``trig``\  - trigger to assign to device
+        trigger to assign to device
 
 .. _`iio_trigger_poll`:
 

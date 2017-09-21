@@ -85,24 +85,47 @@ encoder_mask
     bitmask of (1 << drm_encoder_index(encoder)) of attached encoders
 
 adjusted_mode
-    for use by helpers and drivers to compute adjusted mode timings
+
+    Internal display timings which can be used by the driver to handle
+    differences between the mode requested by userspace in \ ``mode``\  and what
+    is actually programmed into the hardware. It is purely driver
+    implementation defined what exactly this adjusted mode means. Usually
+    it is used to store the hardware display timings used between the
+    CRTC and encoder blocks.
 
 mode
-    current mode timings
+
+    Display timings requested by userspace. The driver should try to
+    match the refresh rate as close as possible (but note that it's
+    undefined what exactly is close enough, e.g. some of the HDMI modes
+    only differ in less than 1% of the refresh rate). The active width
+    and height as observed by userspace for positioning planes must match
+    exactly.
+
+    For external connectors where the sink isn't fixed (like with a
+    built-in panel), this mode here should match the physical mode on the
+    wire to the last details (i.e. including sync polarities and
+    everything).
 
 mode_blob
     &drm_property_blob for \ ``mode``\ 
 
 degamma_lut
-    Lookup table for converting framebuffer pixel data
-    before apply the conversion matrix
+
+    Lookup table for converting framebuffer pixel data before apply the
+    color conversion matrix \ ``ctm``\ . See \ :c:func:`drm_crtc_enable_color_mgmt`\ . The
+    blob (if not NULL) is an array of \ :c:type:`struct drm_color_lut <drm_color_lut>`\ .
 
 ctm
-    Transformation matrix
+
+    Color transformation matrix. See \ :c:func:`drm_crtc_enable_color_mgmt`\ . The
+    blob (if not NULL) is a \ :c:type:`struct drm_color_ctm <drm_color_ctm>`\ .
 
 gamma_lut
-    Lookup table for converting pixel data after the
-    conversion matrix
+
+    Lookup table for converting pixel data after the color conversion
+    matrix \ ``ctm``\ .  See \ :c:func:`drm_crtc_enable_color_mgmt`\ . The blob (if not
+    NULL) is an array of \ :c:type:`struct drm_color_lut <drm_color_lut>`\ .
 
 target_vblank
 
@@ -124,7 +147,9 @@ event
        atomic commit. In that case the event can be send out any time
        after the hardware has stopped scanning out the current
        framebuffers. It should contain the timestamp and counter for the
-       last vblank before the display pipeline was shut off.
+       last vblank before the display pipeline was shut off. The simplest
+       way to achieve that is calling \ :c:func:`drm_crtc_send_vblank_event`\ 
+       somewhen after \ :c:func:`drm_crtc_vblank_off`\  has been called.
 
      - For a CRTC which is enabled at the end of the commit (even when it
        undergoes an full modeset) the vblank timestamp and counter must
@@ -292,13 +317,11 @@ gamma_set
 
     This callback is optional.
 
-    NOTE:
-
-    Drivers that support gamma tables and also fbdev emulation through
-    the provided helper library need to take care to fill out the gamma
-    hooks for both. Currently there's a bit an unfortunate duplication
-    going on, which should eventually be unified to just one set of
-    hooks.
+    Atomic drivers who want to support gamma tables should implement the
+    atomic color management support, enabled by calling
+    \ :c:func:`drm_crtc_enable_color_mgmt`\ , which then supports the legacy gamma
+    interface through the \ :c:func:`drm_atomic_helper_legacy_gamma_set`\ 
+    compatibility implementation.
 
 destroy
 
@@ -388,11 +411,9 @@ set_property
     This is the legacy entry point to update a property attached to the
     CRTC.
 
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_crtc_set_property`\  to implement this hook.
-
     This callback is optional if the driver does not support any legacy
-    driver-private properties.
+    driver-private properties. For atomic drivers it is not used because
+    property handling is done entirely in the DRM core.
 
     RETURNS:
 
@@ -555,6 +576,9 @@ get_vblank_counter
     with in the DRM core code, as long as drivers call
     \ :c:func:`drm_crtc_vblank_off`\  and \ :c:func:`drm_crtc_vblank_on`\  when disabling or
     enabling a CRTC.
+
+    See also \ :c:type:`drm_device.vblank_disable_immediate <drm_device>`\  and
+    \ :c:type:`drm_device.max_vblank_count <drm_device>`\ .
 
     Returns:
 

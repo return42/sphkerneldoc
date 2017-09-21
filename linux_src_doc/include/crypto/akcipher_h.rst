@@ -105,7 +105,7 @@ Definition
         int (*decrypt)(struct akcipher_request *req);
         int (*set_pub_key)(struct crypto_akcipher *tfm, const void *key, unsigned int keylen);
         int (*set_priv_key)(struct crypto_akcipher *tfm, const void *key, unsigned int keylen);
-        int (*max_size)(struct crypto_akcipher *tfm);
+        unsigned int (*max_size)(struct crypto_akcipher *tfm);
         int (*init)(struct crypto_akcipher *tfm);
         void (*exit)(struct crypto_akcipher *tfm);
         unsigned int reqsize;
@@ -330,7 +330,7 @@ Sets parameters required by crypto operation
 crypto_akcipher_maxsize
 =======================
 
-.. c:function:: int crypto_akcipher_maxsize(struct crypto_akcipher *tfm)
+.. c:function:: unsigned int crypto_akcipher_maxsize(struct crypto_akcipher *tfm)
 
     Get len for output buffer
 
@@ -342,14 +342,10 @@ crypto_akcipher_maxsize
 Description
 -----------
 
-Function returns the dest buffer size required for a given key
-
-.. _`crypto_akcipher_maxsize.return`:
-
-Return
-------
-
-minimum len for output buffer or error code in key hasn't been set
+Function returns the dest buffer size required for a given key.
+Function assumes that the key is already set in the transformation. If this
+function is called without a setkey or with a failed setkey, you will end up
+in a NULL dereference.
 
 .. _`crypto_akcipher_encrypt`:
 

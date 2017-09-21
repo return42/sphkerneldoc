@@ -7,6 +7,5 @@ mm
 .. toctree::
     :maxdepth: 1
 
-    icswx_c
     pgtable_64_c
     tlb_hash64_c

@@ -339,7 +339,6 @@ Definition
     struct mtk_cryp {
         void __iomem *base;
         struct device *dev;
-        struct clk *clk_ethif;
         struct clk *clk_cryp;
         int irq;
         struct mtk_ring  *ring;
@@ -360,9 +359,6 @@ base
 
 dev
     pointer to device
-
-clk_ethif
-    pointer to ethif clock
 
 clk_cryp
     pointer to crypto clock

@@ -24,12 +24,12 @@ Description
 
 Must be called under \ :c:func:`local_irq_disable`\ .
 
-.. _`intel_idle_freeze`:
+.. _`intel_idle_s2idle`:
 
-intel_idle_freeze
+intel_idle_s2idle
 =================
 
-.. c:function:: void intel_idle_freeze(struct cpuidle_device *dev, struct cpuidle_driver *drv, int index)
+.. c:function:: void intel_idle_s2idle(struct cpuidle_device *dev, struct cpuidle_driver *drv, int index)
 
     simplified "enter" callback routine for suspend-to-idle
 

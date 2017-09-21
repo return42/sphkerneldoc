@@ -124,6 +124,7 @@ Definition
     struct vsp1_dl_manager {
         unsigned int index;
         enum vsp1_dl_mode mode;
+        bool singleshot;
         struct vsp1_device *vsp1;
         spinlock_t lock;
         struct list_head free;
@@ -144,6 +145,9 @@ index
 
 mode
     display list operation mode (header or headerless)
+
+singleshot
+    execute the display list in single-shot mode
 
 vsp1
     the VSP1 device
@@ -380,6 +384,28 @@ put back with \__vsp1_dl_list_put().
 
 Chained display lists are only usable in header mode. Attempts to add a
 display list to a chain in header-less mode will return an error.
+
+.. _`vsp1_dlm_irq_frame_end`:
+
+vsp1_dlm_irq_frame_end
+======================
+
+.. c:function:: bool vsp1_dlm_irq_frame_end(struct vsp1_dl_manager *dlm)
+
+    Display list handler for the frame end interrupt
+
+    :param struct vsp1_dl_manager \*dlm:
+        the display list manager
+
+.. _`vsp1_dlm_irq_frame_end.description`:
+
+Description
+-----------
+
+Return true if the previous display list has completed at frame end, or false
+if it has been delayed by one frame because the display list commit raced
+with the frame end interrupt. The function always returns true in header mode
+as display list processing is then not continuous and races never occur.
 
 .. This file was automatic generated / don't edit.
 

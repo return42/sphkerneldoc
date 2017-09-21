@@ -14,10 +14,10 @@ acpi_parse_trt
         ACPI handle of the device contains \_TRT
 
     :param int \*trt_count:
-        *undescribed*
+        the number of valid entries resulted from parsing \_TRT
 
     :param struct trt \*\*trtp:
-        *undescribed*
+        pointer to pointer of array of \_TRT entries in parsing result
 
     :param bool create_dev:
         whether to create platform devices for target and source

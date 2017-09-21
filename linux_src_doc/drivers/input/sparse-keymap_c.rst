@@ -77,28 +77,6 @@ keymap after which sets up input device event bits appropriately.
 The allocated copy of the keymap is automatically freed when it
 is no longer needed.
 
-.. _`sparse_keymap_free`:
-
-sparse_keymap_free
-==================
-
-.. c:function:: void sparse_keymap_free(struct input_dev *dev)
-
-    free memory allocated for sparse keymap
-
-    :param struct input_dev \*dev:
-        Input device using sparse keymap
-
-.. _`sparse_keymap_free.description`:
-
-Description
------------
-
-This function used to free memory allocated by sparse keymap
-in an input device that was set up by \ :c:func:`sparse_keymap_setup`\ .
-Since \ :c:func:`sparse_keymap_setup`\  now uses a managed allocation for the
-keymap copy, use of this function is deprecated.
-
 .. _`sparse_keymap_report_entry`:
 
 sparse_keymap_report_entry

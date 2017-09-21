@@ -1,26 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/asm-generic/qspinlock.h
 
-.. _`queued_spin_unlock_wait`:
-
-queued_spin_unlock_wait
-=======================
-
-.. c:function:: void queued_spin_unlock_wait(struct qspinlock *lock)
-
-    wait until the \_current\_ lock holder releases the lock
-
-    :param struct qspinlock \*lock:
-        Pointer to queued spinlock structure
-
-.. _`queued_spin_unlock_wait.description`:
-
-Description
------------
-
-There is a very slight possibility of live-lock if the lockers keep coming
-and the waiter is just unfortunate enough to not see any unlock state.
-
 .. _`queued_spin_is_locked`:
 
 queued_spin_is_locked

@@ -1,6 +1,50 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/arm/mach-omap2/omap_hwmod.c
 
+.. _`clkctrl_provider`:
+
+struct clkctrl_provider
+=======================
+
+.. c:type:: struct clkctrl_provider
+
+    clkctrl provider mapping data
+
+.. _`clkctrl_provider.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct clkctrl_provider {
+        u32 addr;
+        u16 offset;
+        struct clockdomain *clkdm;
+        struct device_node *node;
+        struct list_head link;
+    }
+
+.. _`clkctrl_provider.members`:
+
+Members
+-------
+
+addr
+    base address for the provider
+
+offset
+    base offset for the provider
+
+clkdm
+    base clockdomain for provider
+
+node
+    device node associated with the provider
+
+link
+    list link
+
 .. _`omap_hwmod_soc_ops`:
 
 struct omap_hwmod_soc_ops
@@ -28,6 +72,7 @@ Definition
         void (*update_context_lost)(struct omap_hwmod *oh);
         int (*get_context_lost)(struct omap_hwmod *oh);
         int (*disable_direct_prcm)(struct omap_hwmod *oh);
+        u32 (*xlate_clkctrl)(struct omap_hwmod *oh, struct clkctrl_provider *provider);
     }
 
 .. _`omap_hwmod_soc_ops.members`:
@@ -63,6 +108,9 @@ get_context_lost
     *undescribed*
 
 disable_direct_prcm
+    *undescribed*
+
+xlate_clkctrl
     *undescribed*
 
 .. _`omap_hwmod_soc_ops.description`:
@@ -916,15 +964,15 @@ Return -EINVAL if the clkdm_name lookup failed.
 _init_clocks
 ============
 
-.. c:function:: int _init_clocks(struct omap_hwmod *oh, void *data)
+.. c:function:: int _init_clocks(struct omap_hwmod *oh, struct device_node *np)
 
     clk_get() all clocks associated with this hwmod. Retrieve as well the clockdomain.
 
     :param struct omap_hwmod \*oh:
         struct omap_hwmod \*
 
-    :param void \*data:
-        not used; pass NULL
+    :param struct device_node \*np:
+        device_node mapped to this hwmod
 
 .. _`_init_clocks.description`:
 

@@ -19,6 +19,7 @@ Definition
 
     struct mmc_slot {
         int cd_irq;
+        bool cd_wake_enabled;
         void *handler_priv;
     }
 
@@ -29,6 +30,9 @@ Members
 
 cd_irq
     MMC/SD-card slot hotplug detection IRQ or -EINVAL
+
+cd_wake_enabled
+    *undescribed*
 
 handler_priv
     MMC/SD-card slot context

@@ -31,9 +31,11 @@ staging
     rtl8192u/index
     rtl8712/index
     rtl8723bs/index
+    rtlwifi/index
     rts5208/index
     skein/index
     unisys/index
+    vboxvideo/index
     vc04_services/index
     vt6655/index
     wlan-ng/index

@@ -172,6 +172,7 @@ Definition
         bool user_allow;
         bool gb_disable;
         bool gb_enable;
+        const char *cmd_name;
     }
 
 .. _`vmw_cmd_entry.members`:
@@ -190,6 +191,9 @@ gb_disable
 
 gb_enable
     Whether enabled iff guest-backed objects are available.
+
+cmd_name
+    *undescribed*
 
 .. _`vmw_ptr_diff`:
 
@@ -1273,7 +1277,7 @@ vmw_cmd_dx_set_index_buffer
 
 .. c:function:: int vmw_cmd_dx_set_index_buffer(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGA3dCmdHeader *header)
 
-    Validate an SVGA_3D_CMD_DX_IA_SET_VERTEX_BUFFERS command.
+    Validate an SVGA_3D_CMD_DX_IA_SET_INDEX_BUFFER command.
 
     :param struct vmw_private \*dev_priv:
         Pointer to a device private struct.
@@ -1543,7 +1547,7 @@ a userspace handle if \ ``p_handle``\  is not NULL, otherwise not.
 vmw_execbuf_copy_fence_user
 ===========================
 
-.. c:function:: void vmw_execbuf_copy_fence_user(struct vmw_private *dev_priv, struct vmw_fpriv *vmw_fp, int ret, struct drm_vmw_fence_rep __user *user_fence_rep, struct vmw_fence_obj *fence, uint32_t fence_handle)
+.. c:function:: void vmw_execbuf_copy_fence_user(struct vmw_private *dev_priv, struct vmw_fpriv *vmw_fp, int ret, struct drm_vmw_fence_rep __user *user_fence_rep, struct vmw_fence_obj *fence, uint32_t fence_handle, int32_t out_fence_fd, struct sync_file *sync_file)
 
     copy fence object information to user-space.
 
@@ -1565,6 +1569,12 @@ vmw_execbuf_copy_fence_user
 
     :param uint32_t fence_handle:
         User-space fence handle.
+
+    :param int32_t out_fence_fd:
+        exported file descriptor for the fence.  -1 if not used
+
+    :param struct sync_file \*sync_file:
+        Only used to clean up in case of an error in this function.
 
 .. _`vmw_execbuf_copy_fence_user.description`:
 

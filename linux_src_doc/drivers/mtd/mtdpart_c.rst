@@ -1,6 +1,90 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/mtdpart.c
 
+.. _`mtd_part`:
+
+struct mtd_part
+===============
+
+.. c:type:: struct mtd_part
+
+    our partition node structure
+
+.. _`mtd_part.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mtd_part {
+        struct mtd_info mtd;
+        struct mtd_info *parent;
+        uint64_t offset;
+        struct list_head list;
+    }
+
+.. _`mtd_part.members`:
+
+Members
+-------
+
+mtd
+    struct holding partition details
+
+parent
+    parent mtd - flash device or another partition
+
+offset
+    partition offset relative to the \*flash device\*
+
+list
+    *undescribed*
+
+.. _`mtd_parse_part`:
+
+mtd_parse_part
+==============
+
+.. c:function:: int mtd_parse_part(struct mtd_part *slave, const char *const *types)
+
+    parse MTD partition looking for subpartitions
+
+    :param struct mtd_part \*slave:
+        part that is supposed to be a container and should be parsed
+
+    :param const char \*const \*types:
+        NULL-terminated array with names of partition parsers to try
+
+.. _`mtd_parse_part.description`:
+
+Description
+-----------
+
+Some partitions are kind of containers with extra subpartitions (volumes).
+There can be various formats of such containers. This function tries to use
+specified parsers to analyze given partition and registers found
+subpartitions on success.
+
+.. _`__mtd_del_partition`:
+
+__mtd_del_partition
+===================
+
+.. c:function:: int __mtd_del_partition(struct mtd_part *priv)
+
+    delete MTD partition
+
+    :param struct mtd_part \*priv:
+        internal MTD struct for partition to be deleted
+
+.. _`__mtd_del_partition.description`:
+
+Description
+-----------
+
+This function must be called with the partitions mutex locked.
+
 .. _`parse_mtd_partitions`:
 
 parse_mtd_partitions

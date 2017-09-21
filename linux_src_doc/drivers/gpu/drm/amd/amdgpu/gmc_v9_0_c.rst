@@ -75,46 +75,6 @@ Look up the amount of vram, vram width, and decide how to place
 vram and gart within the GPU's physical address space.
 Returns 0 for success.
 
-.. _`gmc_v9_0_vm_init`:
-
-gmc_v9_0_vm_init
-================
-
-.. c:function:: int gmc_v9_0_vm_init(struct amdgpu_device *adev)
-
-    vm init callback
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v9_0_vm_init.description`:
-
-Description
------------
-
-Inits vega10 specific vm parameters (number of VMs, base of vram for
-VMIDs 1-15) (vega10).
-Returns 0 for success.
-
-.. _`gmc_v9_0_vm_fini`:
-
-gmc_v9_0_vm_fini
-================
-
-.. c:function:: void gmc_v9_0_vm_fini(struct amdgpu_device *adev)
-
-    vm fini callback
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v9_0_vm_fini.description`:
-
-Description
------------
-
-Tear down any asic specific VM setup.
-
 .. _`gmc_v9_0_gart_fini`:
 
 gmc_v9_0_gart_fini

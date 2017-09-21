@@ -24,6 +24,7 @@ Definition
         unsigned int vs_pol:1;
         unsigned int fld_pol:1;
         unsigned int data_pol:1;
+        unsigned int bt656:1;
     }
 
 .. _`isp_parallel_cfg.members`:
@@ -57,6 +58,9 @@ fld_pol
 data_pol
     Data polarity
     0 - Normal, 1 - One's complement
+
+bt656
+    Data contain BT.656 embedded synchronization
 
 .. _`isp_csiphy_lane`:
 
@@ -144,6 +148,7 @@ Definition
         unsigned int ccp2_mode:1;
         unsigned int phy_layer:1;
         unsigned int vpclk_div:2;
+        unsigned int vp_clk_pol:1;
         struct isp_csiphy_lanes_cfg lanecfg;
     }
 
@@ -172,6 +177,9 @@ phy_layer
 vpclk_div
     Video port output clock control
 
+vp_clk_pol
+    *undescribed*
+
 lanecfg
     *undescribed*
 
@@ -194,6 +202,7 @@ Definition
     struct isp_csi2_cfg {
         unsigned crc:1;
         struct isp_csiphy_lanes_cfg lanecfg;
+        u8 num_data_lanes;
     }
 
 .. _`isp_csi2_cfg.members`:
@@ -205,7 +214,10 @@ crc
     Enable the cyclic redundancy check
 
 lanecfg
-    *undescribed*
+    CSI-2 lane configuration
+
+num_data_lanes
+    The number of data lanes in use
 
 .. This file was automatic generated / don't edit.
 

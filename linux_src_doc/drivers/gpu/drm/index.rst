@@ -18,11 +18,13 @@ drm
     msm/index
     nouveau/index
     omapdrm/index
+    pl111/index
     r128/index
     radeon/index
     rcar-du/index
     rockchip/index
     sti/index
+    sun4i/index
     tegra/index
     tinydrm/index
     ttm/index
@@ -61,6 +63,7 @@ drm
     drm_framebuffer_c
     drm_gem_c
     drm_gem_cma_helper_c
+    drm_gem_framebuffer_helper_c
     drm_global_c
     drm_info_c
     drm_ioc32_c
@@ -86,6 +89,8 @@ drm
     drm_rect_c
     drm_scdc_helper_c
     drm_simple_kms_helper_c
+    drm_syncobj_c
     drm_sysfs_c
+    drm_vblank_c
     drm_vm_c
     drm_vma_manager_c

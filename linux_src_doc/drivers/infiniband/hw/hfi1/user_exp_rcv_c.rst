@@ -1,45 +1,92 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/user_exp_rcv.c
 
+.. _`unpin_rcv_pages`:
+
+unpin_rcv_pages
+===============
+
+.. c:function:: void unpin_rcv_pages(struct hfi1_filedata *fd, struct tid_user_buf *tidbuf, struct tid_rb_node *node, unsigned int idx, unsigned int npages, bool mapped)
+
+    :param struct hfi1_filedata \*fd:
+        *undescribed*
+
+    :param struct tid_user_buf \*tidbuf:
+        *undescribed*
+
+    :param struct tid_rb_node \*node:
+        *undescribed*
+
+    :param unsigned int idx:
+        *undescribed*
+
+    :param unsigned int npages:
+        *undescribed*
+
+    :param bool mapped:
+        *undescribed*
+
+.. _`unpin_rcv_pages.description`:
+
+Description
+-----------
+
+@mapped - true if the pages have been DMA mapped. false otherwise.
+\ ``idx``\  - Index of the first page to unpin.
+\ ``npages``\  - No of pages to unpin.
+
+If the pages have been DMA mapped (indicated by mapped parameter), their
+info will be passed via a struct tid_rb_node. If they haven't been mapped,
+their info will be passed via a struct tid_user_buf.
+
+.. _`pin_rcv_pages`:
+
+pin_rcv_pages
+=============
+
+.. c:function:: int pin_rcv_pages(struct hfi1_filedata *fd, struct tid_user_buf *tidbuf)
+
+    :param struct hfi1_filedata \*fd:
+        *undescribed*
+
+    :param struct tid_user_buf \*tidbuf:
+        *undescribed*
+
 .. _`program_rcvarray`:
 
 program_rcvarray
 ================
 
-.. c:function:: int program_rcvarray(struct hfi1_filedata *fd, unsigned long vaddr, struct tid_group *grp, struct tid_pageset *sets, unsigned start, u16 count, struct page **pages, u32 *tidlist, unsigned *tididx, unsigned *pmapped)
+.. c:function:: int program_rcvarray(struct hfi1_filedata *fd, struct tid_user_buf *tbuf, struct tid_group *grp, unsigned int start, u16 count, u32 *tidlist, unsigned int *tididx, unsigned int *pmapped)
 
     program an RcvArray group with receive buffers
 
     :param struct hfi1_filedata \*fd:
         filedata pointer
 
-    :param unsigned long vaddr:
-        starting user virtual address
+    :param struct tid_user_buf \*tbuf:
+        pointer to struct tid_user_buf that has the user buffer starting
+        virtual address, buffer length, page pointers, pagesets (array of
+        struct tid_pageset holding information on physically contiguous
+        chunks from the user buffer), and other fields.
 
     :param struct tid_group \*grp:
         RcvArray group
 
-    :param struct tid_pageset \*sets:
-        array of struct tid_pageset holding information on physically
-        contiguous chunks from the user buffer
-
-    :param unsigned start:
+    :param unsigned int start:
         starting index into sets array
 
     :param u16 count:
         number of struct tid_pageset's to program
 
-    :param struct page \*\*pages:
-        an array of struct page \* for the user buffer
-
     :param u32 \*tidlist:
         the array of u32 elements when the information about the
         programmed RcvArray entries is to be encoded.
 
-    :param unsigned \*tididx:
+    :param unsigned int \*tididx:
         starting offset into tidlist
 
-    :param unsigned \*pmapped:
+    :param unsigned int \*pmapped:
         (output parameter) number of pages programmed into the RcvArray
         entries.
 

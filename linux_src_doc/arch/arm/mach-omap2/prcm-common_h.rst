@@ -200,6 +200,7 @@ Definition
     struct omap_prcm_init_data {
         int index;
         void __iomem *mem;
+        u32 phys;
         s16 offset;
         u16 flags;
         s32 device_inst_offset;
@@ -217,6 +218,9 @@ index
 
 mem
     IO mem pointer for this module
+
+phys
+    IO mem physical base address for this module
 
 offset
     module base address offset from the IO base

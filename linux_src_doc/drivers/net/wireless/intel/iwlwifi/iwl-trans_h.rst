@@ -37,116 +37,6 @@ stop_device
 
 6) Eventually, the free function will be called.
 
-.. _`host-command-section`:
-
-Host command section
-====================
-
-A host command is a command issued by the upper layer to the fw. There are
-several versions of fw that have several APIs. The transport layer is
-completely agnostic to these differences.
-The transport does provide helper functionality (i.e. SYNC / ASYNC mode),
-
-.. _`iwl_cmd_header`:
-
-struct iwl_cmd_header
-=====================
-
-.. c:type:: struct iwl_cmd_header
-
-
-.. _`iwl_cmd_header.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_cmd_header {
-        u8 cmd;
-        u8 group_id;
-        __le16 sequence;
-    }
-
-.. _`iwl_cmd_header.members`:
-
-Members
--------
-
-cmd
-    *undescribed*
-
-group_id
-    *undescribed*
-
-sequence
-    *undescribed*
-
-.. _`iwl_cmd_header.description`:
-
-Description
------------
-
-This header format appears in the beginning of each command sent from the
-driver, and each response/notification received from uCode.
-
-.. _`iwl_cmd_header_wide`:
-
-struct iwl_cmd_header_wide
-==========================
-
-.. c:type:: struct iwl_cmd_header_wide
-
-
-.. _`iwl_cmd_header_wide.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_cmd_header_wide {
-        u8 cmd;
-        u8 group_id;
-        __le16 sequence;
-        __le16 length;
-        u8 reserved;
-        u8 version;
-    }
-
-.. _`iwl_cmd_header_wide.members`:
-
-Members
--------
-
-cmd
-    *undescribed*
-
-group_id
-    *undescribed*
-
-sequence
-    *undescribed*
-
-length
-    *undescribed*
-
-reserved
-    *undescribed*
-
-version
-    *undescribed*
-
-.. _`iwl_cmd_header_wide.description`:
-
-Description
------------
-
-This header format appears in the beginning of each command sent from the
-driver, and each response/notification received from uCode.
-this is the wide version that contains more information about the command
-like length, version and command type
-
 .. _`cmd_mode`:
 
 enum CMD_MODE
@@ -244,6 +134,47 @@ Description
 For allocation of the command and tx queues, this establishes the overall
 size of the largest command we send to uCode, except for commands that
 aren't fully copied and use other TFD space.
+
+.. _`iwl_hcmd_dataflag`:
+
+enum iwl_hcmd_dataflag
+======================
+
+.. c:type:: enum iwl_hcmd_dataflag
+
+    flag for each one of the chunks of the command
+
+.. _`iwl_hcmd_dataflag.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_hcmd_dataflag {
+        IWL_HCMD_DFL_NOCOPY,
+        IWL_HCMD_DFL_DUP
+    };
+
+.. _`iwl_hcmd_dataflag.constants`:
+
+Constants
+---------
+
+IWL_HCMD_DFL_NOCOPY
+    By default, the command is copied to the host command's
+    ring. The transport layer doesn't map the command's buffer to DMA, but
+    rather copies it to a previously allocated DMA buffer. This flag tells
+    the transport layer not to copy the command, but to map the existing
+    buffer (that is passed in) instead. This saves the memcpy and allows
+    commands that are bigger than the fixed buffer to be submitted.
+    Note that a TFD entry after a NOCOPY one cannot be a normal copied one.
+
+IWL_HCMD_DFL_DUP
+    Only valid without NOCOPY, duplicate the memory for this
+    chunk internally and free it again after the command completes. This
+    can (currently) be used only once per command.
+    Note that a TFD entry after a DUP one cannot be a normal copied one.
 
 .. _`iwl_host_cmd`:
 
@@ -355,7 +286,8 @@ Definition
         STATUS_DEVICE_ENABLED,
         STATUS_TPOWER_PMI,
         STATUS_INT_ENABLED,
-        STATUS_RFKILL,
+        STATUS_RFKILL_HW,
+        STATUS_RFKILL_OPMODE,
         STATUS_FW_ERROR,
         STATUS_TRANS_GOING_IDLE,
         STATUS_TRANS_IDLE,
@@ -379,8 +311,11 @@ STATUS_TPOWER_PMI
 STATUS_INT_ENABLED
     interrupts are enabled
 
-STATUS_RFKILL
-    the HW RFkill switch is in KILL position
+STATUS_RFKILL_HW
+    the actual HW state of the RF-kill switch
+
+STATUS_RFKILL_OPMODE
+    RF-kill state reported to opmode
 
 STATUS_FW_ERROR
     the fw is in error state
@@ -484,95 +419,6 @@ cb_data_offs
     offset inside skb->cb to store transport data at, must have
     space for at least two pointers
 
-.. _`iwl_tx_queue_cfg_cmd`:
-
-struct iwl_tx_queue_cfg_cmd
-===========================
-
-.. c:type:: struct iwl_tx_queue_cfg_cmd
-
-    txq hw scheduler config command
-
-.. _`iwl_tx_queue_cfg_cmd.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_tx_queue_cfg_cmd {
-        u8 sta_id;
-        u8 tid;
-        __le16 flags;
-        __le32 cb_size;
-        __le64 byte_cnt_addr;
-        __le64 tfdq_addr;
-    }
-
-.. _`iwl_tx_queue_cfg_cmd.members`:
-
-Members
--------
-
-sta_id
-    station id
-
-tid
-    tid of the queue
-
-flags
-    Bit 0 - on enable, off - disable, Bit 1 - short TFD format
-
-cb_size
-    size of TFD cyclic buffer. Value is exponent - 3.
-    Minimum value 0 (8 TFDs), maximum value 5 (256 TFDs)
-
-byte_cnt_addr
-    address of byte count table
-
-tfdq_addr
-    address of TFD circular buffer
-
-.. _`iwl_tx_queue_cfg_rsp`:
-
-struct iwl_tx_queue_cfg_rsp
-===========================
-
-.. c:type:: struct iwl_tx_queue_cfg_rsp
-
-    response to txq hw scheduler config
-
-.. _`iwl_tx_queue_cfg_rsp.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_tx_queue_cfg_rsp {
-        __le16 queue_number;
-        __le16 flags;
-        __le16 write_pointer;
-        __le16 reserved;
-    }
-
-.. _`iwl_tx_queue_cfg_rsp.members`:
-
-Members
--------
-
-queue_number
-    queue number assigned to this RA -TID
-
-flags
-    set on failure
-
-write_pointer
-    initial value for write pointer
-
-reserved
-    *undescribed*
-
 .. _`iwl_trans_ops`:
 
 struct iwl_trans_ops
@@ -601,12 +447,13 @@ Definition
         int (*send_cmd)(struct iwl_trans *trans, struct iwl_host_cmd *cmd);
         int (*tx)(struct iwl_trans *trans, struct sk_buff *skb, struct iwl_device_cmd *dev_cmd, int queue);
         void (*reclaim)(struct iwl_trans *trans, int queue, int ssn, struct sk_buff_head *skbs);
-        void (*txq_enable)(struct iwl_trans *trans, int queue, u16 ssn,const struct iwl_trans_txq_scd_cfg *cfg, unsigned int queue_wdg_timeout);
+        bool (*txq_enable)(struct iwl_trans *trans, int queue, u16 ssn,const struct iwl_trans_txq_scd_cfg *cfg, unsigned int queue_wdg_timeout);
         void (*txq_disable)(struct iwl_trans *trans, int queue, bool configure_scd);
         int (*txq_alloc)(struct iwl_trans *trans,struct iwl_tx_queue_cfg_cmd *cmd,int cmd_id, unsigned int queue_wdg_timeout);
         void (*txq_free)(struct iwl_trans *trans, int queue);
         void (*txq_set_shared_mode)(struct iwl_trans *trans, u32 txq_id, bool shared);
         int (*wait_tx_queues_empty)(struct iwl_trans *trans, u32 txq_bm);
+        int (*wait_txq_empty)(struct iwl_trans *trans, int queue);
         void (*freeze_txq_timer)(struct iwl_trans *trans, unsigned long txqs, bool freeze);
         void (*block_txq_ptrs)(struct iwl_trans *trans, bool block);
         void (*write8)(struct iwl_trans *trans, u32 ofs, u8 val);
@@ -696,7 +543,9 @@ txq_enable
     iwl_trans_ac_txq_enable wrapper. fw_alive must have been called before
     this one. The op_mode must not configure the HCMD queue. The scheduler
     configuration may be \ ``NULL``\ , in which case the hardware will not be
-    configured. May sleep.
+    configured. If true is returned, the operation mode needs to increment
+    the sequence number of the packets routed to this queue because of a
+    hardware scheduler bug. May sleep.
 
 txq_disable
     de-configure a Tx queue to send AMPDUs
@@ -712,7 +561,10 @@ txq_set_shared_mode
     change Tx queue shared/unshared marking
 
 wait_tx_queues_empty
-    *undescribed*
+    wait until tx queues are empty. May sleep.
+
+wait_txq_empty
+    wait until specific tx queue is empty. May sleep.
 
 freeze_txq_timer
     prevents the timer of the queue from firing until the

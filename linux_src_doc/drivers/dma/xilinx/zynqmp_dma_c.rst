@@ -631,40 +631,6 @@ Return
 
 Async transaction descriptor on success and NULL on failure
 
-.. _`zynqmp_dma_prep_sg`:
-
-zynqmp_dma_prep_sg
-==================
-
-.. c:function:: struct dma_async_tx_descriptor *zynqmp_dma_prep_sg(struct dma_chan *dchan, struct scatterlist *dst_sg, unsigned int dst_sg_len, struct scatterlist *src_sg, unsigned int src_sg_len, unsigned long flags)
-
-    prepare descriptors for a memory sg transaction
-
-    :param struct dma_chan \*dchan:
-        DMA channel
-
-    :param struct scatterlist \*dst_sg:
-        Destination scatter list
-
-    :param unsigned int dst_sg_len:
-        Number of entries in destination scatter list
-
-    :param struct scatterlist \*src_sg:
-        Source scatter list
-
-    :param unsigned int src_sg_len:
-        Number of entries in source scatter list
-
-    :param unsigned long flags:
-        transfer ack flags
-
-.. _`zynqmp_dma_prep_sg.return`:
-
-Return
-------
-
-Async transaction descriptor on success and NULL on failure
-
 .. _`zynqmp_dma_chan_remove`:
 
 zynqmp_dma_chan_remove

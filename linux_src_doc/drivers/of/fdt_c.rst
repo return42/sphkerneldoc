@@ -467,7 +467,7 @@ early_init_dt_scan_memory
 
 .. c:function:: int early_init_dt_scan_memory(unsigned long node, const char *uname, int depth, void *data)
 
-    Look for an parse memory nodes
+    Look for and parse memory nodes
 
     :param unsigned long node:
         *undescribed*

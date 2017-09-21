@@ -44,7 +44,6 @@ kernel
     kprobes_c
     kthread_c
     latencytop_c
-    membarrier_c
     memremap_c
     module_c
     notifier_c

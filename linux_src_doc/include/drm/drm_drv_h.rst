@@ -20,17 +20,15 @@ Definition
     struct drm_driver {
         int (*load)(struct drm_device *, unsigned long flags);
         int (*open)(struct drm_device *, struct drm_file *);
-        void (*preclose)(struct drm_device *, struct drm_file *file_priv);
         void (*postclose)(struct drm_device *, struct drm_file *);
         void (*lastclose)(struct drm_device *);
         void (*unload)(struct drm_device *);
         void (*release)(struct drm_device *);
-        int (*set_busid)(struct drm_device *dev, struct drm_master *master);
         u32 (*get_vblank_counter)(struct drm_device *dev, unsigned int pipe);
         int (*enable_vblank)(struct drm_device *dev, unsigned int pipe);
         void (*disable_vblank)(struct drm_device *dev, unsigned int pipe);
-        int (*get_scanout_position)(struct drm_device *dev, unsigned int pipe,unsigned int flags, int *vpos, int *hpos,ktime_t *stime, ktime_t *etime, const struct drm_display_mode *mode);
-        int (*get_vblank_timestamp)(struct drm_device *dev, unsigned int pipe,int *max_error,struct timeval *vblank_time, unsigned flags);
+        bool (*get_scanout_position)(struct drm_device *dev, unsigned int pipe,bool in_vblank_irq, int *vpos, int *hpos,ktime_t *stime, ktime_t *etime, const struct drm_display_mode *mode);
+        bool (*get_vblank_timestamp)(struct drm_device *dev, unsigned int pipe,int *max_error,struct timeval *vblank_time, bool in_vblank_irq);
         irqreturn_t(*irq_handler)(int irq, void *arg);
         void (*irq_preinstall)(struct drm_device *dev);
         int (*irq_postinstall)(struct drm_device *dev);
@@ -111,20 +109,6 @@ open
     0 on success, a negative error code on failure, which will be
     promoted to userspace as the result of the \ :c:func:`open`\  system call.
 
-preclose
-
-    One of the driver callbacks when a new \ :c:type:`struct drm_file <drm_file>`\  is closed.
-    Useful for tearing down driver-private data structures allocated in
-    \ ``open``\  like buffer allocators, execution contexts or similar things.
-
-    Since the display/modeset side of DRM can only be owned by exactly
-    one \ :c:type:`struct drm_file <drm_file>`\  (see \ :c:type:`drm_file.is_master <drm_file>`\  and \ :c:type:`drm_device.master <drm_device>`\ )
-    there should never be a need to tear down any modeset related
-    resources in this callback. Doing so would be a driver design bug.
-
-    FIXME: It is not really clear why there's both \ ``preclose``\  and
-    \ ``postclose``\ . Without a really good reason, use \ ``postclose``\  only.
-
 postclose
 
     One of the driver callbacks when a new \ :c:type:`struct drm_file <drm_file>`\  is closed.
@@ -135,9 +119,6 @@ postclose
     one \ :c:type:`struct drm_file <drm_file>`\  (see \ :c:type:`drm_file.is_master <drm_file>`\  and \ :c:type:`drm_device.master <drm_device>`\ )
     there should never be a need to tear down any modeset related
     resources in this callback. Doing so would be a driver design bug.
-
-    FIXME: It is not really clear why there's both \ ``preclose``\  and
-    \ ``postclose``\ . Without a really good reason, use \ ``postclose``\  only.
 
 lastclose
 
@@ -151,7 +132,7 @@ lastclose
     state changes, e.g. in conjunction with the :ref:`vga_switcheroo`
     infrastructure.
 
-    This is called after \ ``preclose``\  and \ ``postclose``\  have been called.
+    This is called after \ ``postclose``\  hook has been called.
 
     NOTE:
 
@@ -183,9 +164,6 @@ release
     reference is released, i.e. the device is being destroyed. Drivers
     using this callback are responsible for calling \ :c:func:`drm_dev_fini`\ 
     to finalize the device and then freeing the struct themselves.
-
-set_busid
-    *undescribed*
 
 get_vblank_counter
 
@@ -244,8 +222,10 @@ get_scanout_position
         DRM device.
     pipe:
         Id of the crtc to query.
-    flags:
-        Flags from the caller (DRM_CALLED_FROM_VBLIRQ or 0).
+    in_vblank_irq:
+        True when called from \ :c:func:`drm_crtc_handle_vblank`\ .  Some drivers
+        need to apply some workarounds for gpu-specific vblank irq quirks
+        if flag is set.
     vpos:
         Target location for current vertical scanout position.
     hpos:
@@ -266,16 +246,14 @@ get_scanout_position
 
     Returns:
 
-    Flags, or'ed together as follows:
+    True on success, false if a reliable scanout position counter could
+    not be read out.
 
-    DRM_SCANOUTPOS_VALID:
-        Query successful.
-    DRM_SCANOUTPOS_INVBL:
-        Inside vblank.
-    DRM_SCANOUTPOS_ACCURATE: Returned position is accurate. A lack of
-        this flag means that returned position may be offset by a
-        constant but unknown small number of scanlines wrt. real scanout
-        position.
+    FIXME:
+
+    Since this is a helper to implement \ ``get_vblank_timestamp``\ , we should
+    move it to \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`\ , like all the other
+    helper-internal hooks.
 
 get_vblank_timestamp
 
@@ -304,29 +282,44 @@ get_vblank_timestamp
         Returns true upper bound on error for timestamp.
     vblank_time:
         Target location for returned vblank timestamp.
-    flags:
-        0 = Defaults, no special treatment needed.
-        DRM_CALLED_FROM_VBLIRQ = Function is called from vblank
-        irq handler. Some drivers need to apply some workarounds
-        for gpu-specific vblank irq quirks if flag is set.
+    in_vblank_irq:
+        True when called from \ :c:func:`drm_crtc_handle_vblank`\ .  Some drivers
+        need to apply some workarounds for gpu-specific vblank irq quirks
+        if flag is set.
 
     Returns:
 
-    Zero if timestamping isn't supported in current display mode or a
-    negative number on failure. A positive status code on success,
-    which describes how the vblank_time timestamp was computed.
+    True on success, false on failure, which means the core should
+    fallback to a simple timestamp taken in \ :c:func:`drm_crtc_handle_vblank`\ .
+
+    FIXME:
+
+    We should move this hook to \ :c:type:`struct drm_crtc_funcs <drm_crtc_funcs>`\  like all the other
+    vblank hooks.
 
 irq_handler
-    *undescribed*
+
+    Interrupt handler called when using \ :c:func:`drm_irq_install`\ . Not used by
+    drivers which implement their own interrupt handling.
 
 irq_preinstall
-    *undescribed*
+
+    Optional callback used by \ :c:func:`drm_irq_install`\  which is called before
+    the interrupt handler is registered. This should be used to clear out
+    any pending interrupts (from e.g. firmware based drives) and reset
+    the interrupt handling registers.
 
 irq_postinstall
-    *undescribed*
+
+    Optional callback used by \ :c:func:`drm_irq_install`\  which is called after
+    the interrupt handler is registered. This should be used to enable
+    interrupt generation in the hardware.
 
 irq_uninstall
-    *undescribed*
+
+    Optional callback used by \ :c:func:`drm_irq_uninstall`\  which is called before
+    the interrupt handler is unregistered. This should be used to disable
+    interrupt generation in the hardware.
 
 master_create
 
@@ -345,7 +338,8 @@ master_drop
     Called whenever the minor master is dropped. Only used by vmwgfx.
 
 debugfs_init
-    *undescribed*
+
+    Allows drivers to create driver-specific debugfs files.
 
 gem_free_object
     deconstructor for drm_gem_objects
@@ -358,10 +352,12 @@ gem_free_object_unlocked
     legacy locking schemes. Use this hook instead of \ ``gem_free_object``\ .
 
 gem_open_object
-    *undescribed*
+
+    Driver hook called upon gem handle creation
 
 gem_close_object
-    *undescribed*
+
+    Driver hook called upon gem handle release
 
 gem_create_object
     constructor for gem objects
@@ -369,16 +365,20 @@ gem_create_object
     helpers.
 
 prime_handle_to_fd
-    *undescribed*
+
+    export handle -> fd (see \ :c:func:`drm_gem_prime_handle_to_fd`\  helper)
 
 prime_fd_to_handle
-    *undescribed*
+
+    import fd -> handle (see \ :c:func:`drm_gem_prime_fd_to_handle`\  helper)
 
 gem_prime_export
-    *undescribed*
+
+    export GEM -> dmabuf
 
 gem_prime_import
-    *undescribed*
+
+    import dmabuf -> GEM
 
 gem_prime_pin
     *undescribed*
@@ -449,37 +449,43 @@ dumb_destroy
     Zero on success, negative errno on failure.
 
 gem_vm_ops
-    *undescribed*
+    Driver private ops for this object
 
 major
-    *undescribed*
+    driver major number
 
 minor
-    *undescribed*
+    driver minor number
 
 patchlevel
-    *undescribed*
+    driver patch level
 
 name
-    *undescribed*
+    driver name
 
 desc
-    *undescribed*
+    driver description
 
 date
-    *undescribed*
+    driver date
 
 driver_features
-    *undescribed*
+    driver features
 
 ioctls
-    *undescribed*
+
+    Array of driver-private IOCTL description entries. See the chapter on
+    :ref:`IOCTL support in the userland interfaces
+    chapter<drm_driver_ioctl>` for the full details.
 
 num_ioctls
-    *undescribed*
+    Number of entries in \ ``ioctls``\ .
 
 fops
-    *undescribed*
+
+    File operations for the DRM device node. See the discussion in
+    :ref:`file operations<drm_driver_fops>` for in-depth coverage and
+    some examples.
 
 .. _`drm_driver.description`:
 
@@ -491,6 +497,28 @@ one drm_device for each card present in this family. It contains lots of
 vfunc entries, and a pile of those probably should be moved to more
 appropriate places like \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`\  or into a new operations
 structure for GEM drivers.
+
+.. _`drm_dev_is_unplugged`:
+
+drm_dev_is_unplugged
+====================
+
+.. c:function:: int drm_dev_is_unplugged(struct drm_device *dev)
+
+    is a DRM device unplugged
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_dev_is_unplugged.description`:
+
+Description
+-----------
+
+This function can be called to check whether a hotpluggable is unplugged.
+Unplugging itself is singalled through \ :c:func:`drm_dev_unplug`\ . If a device is
+unplugged, these two functions guarantee that any store before calling
+\ :c:func:`drm_dev_unplug`\  is visible to callers of this function after it completes
 
 .. This file was automatic generated / don't edit.
 

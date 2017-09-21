@@ -303,7 +303,7 @@ kmalloc for correct handling inside the kernel USB layer.
 rt2x00usb_register_read
 =======================
 
-.. c:function:: void rt2x00usb_register_read(struct rt2x00_dev *rt2x00dev, const unsigned int offset, u32 *value)
+.. c:function:: u32 rt2x00usb_register_read(struct rt2x00_dev *rt2x00dev, const unsigned int offset)
 
     Read 32bit register word
 
@@ -312,9 +312,6 @@ rt2x00usb_register_read
 
     :param const unsigned int offset:
         Register offset
-
-    :param u32 \*value:
-        Pointer to where register contents should be stored
 
 .. _`rt2x00usb_register_read.description`:
 
@@ -329,7 +326,7 @@ through \ :c:func:`rt2x00usb_vendor_request_buff`\ .
 rt2x00usb_register_read_lock
 ============================
 
-.. c:function:: void rt2x00usb_register_read_lock(struct rt2x00_dev *rt2x00dev, const unsigned int offset, u32 *value)
+.. c:function:: u32 rt2x00usb_register_read_lock(struct rt2x00_dev *rt2x00dev, const unsigned int offset)
 
     Read 32bit register word
 
@@ -338,9 +335,6 @@ rt2x00usb_register_read_lock
 
     :param const unsigned int offset:
         Register offset
-
-    :param u32 \*value:
-        Pointer to where register contents should be stored
 
 .. _`rt2x00usb_register_read_lock.description`:
 

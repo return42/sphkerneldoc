@@ -6,11 +6,11 @@
 acpi_data_get_property
 ======================
 
-.. c:function:: int acpi_data_get_property(struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
+.. c:function:: int acpi_data_get_property(const struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
 
     return an ACPI property with given name
 
-    :param struct acpi_device_data \*data:
+    :param const struct acpi_device_data \*data:
         ACPI device deta object to get the property from
 
     :param const char \*name:
@@ -48,11 +48,11 @@ Return
 acpi_dev_get_property
 =====================
 
-.. c:function:: int acpi_dev_get_property(struct acpi_device *adev, const char *name, acpi_object_type type, const union acpi_object **obj)
+.. c:function:: int acpi_dev_get_property(const struct acpi_device *adev, const char *name, acpi_object_type type, const union acpi_object **obj)
 
     return an ACPI property with given name.
 
-    :param struct acpi_device \*adev:
+    :param const struct acpi_device \*adev:
         ACPI device to get the property from.
 
     :param const char \*name:
@@ -69,11 +69,11 @@ acpi_dev_get_property
 acpi_node_prop_get
 ==================
 
-.. c:function:: int acpi_node_prop_get(struct fwnode_handle *fwnode, const char *propname, void **valptr)
+.. c:function:: int acpi_node_prop_get(const struct fwnode_handle *fwnode, const char *propname, void **valptr)
 
     return an ACPI property with given name.
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property from.
 
     :param const char \*propname:
@@ -87,11 +87,11 @@ acpi_node_prop_get
 acpi_data_get_property_array
 ============================
 
-.. c:function:: int acpi_data_get_property_array(struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
+.. c:function:: int acpi_data_get_property_array(const struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
 
     return an ACPI array property with given name
 
-    :param struct acpi_device_data \*data:
+    :param const struct acpi_device_data \*data:
         *undescribed*
 
     :param const char \*name:
@@ -130,11 +130,11 @@ doesn't match \ ``type``\ .
 __acpi_node_get_property_reference
 ==================================
 
-.. c:function:: int __acpi_node_get_property_reference(struct fwnode_handle *fwnode, const char *propname, size_t index, size_t num_args, struct acpi_reference_args *args)
+.. c:function:: int __acpi_node_get_property_reference(const struct fwnode_handle *fwnode, const char *propname, size_t index, size_t num_args, struct acpi_reference_args *args)
 
     returns handle to the referenced object
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property from
 
     :param const char \*propname:
@@ -197,11 +197,11 @@ Return
 acpi_node_prop_read
 ===================
 
-.. c:function:: int acpi_node_prop_read(struct fwnode_handle *fwnode, const char *propname, enum dev_prop_type proptype, void *val, size_t nval)
+.. c:function:: int acpi_node_prop_read(const struct fwnode_handle *fwnode, const char *propname, enum dev_prop_type proptype, void *val, size_t nval)
 
     retrieve the value of an ACPI property with given name.
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property from.
 
     :param const char \*propname:
@@ -230,11 +230,11 @@ location pointed to by \ ``val``\ .
 acpi_get_next_subnode
 =====================
 
-.. c:function:: struct fwnode_handle *acpi_get_next_subnode(struct fwnode_handle *fwnode, struct fwnode_handle *child)
+.. c:function:: struct fwnode_handle *acpi_get_next_subnode(const struct fwnode_handle *fwnode, struct fwnode_handle *child)
 
     Return the next child node handle for a fwnode
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to find the next child node for.
 
     :param struct fwnode_handle \*child:
@@ -245,11 +245,11 @@ acpi_get_next_subnode
 acpi_node_get_parent
 ====================
 
-.. c:function:: struct fwnode_handle *acpi_node_get_parent(struct fwnode_handle *fwnode)
+.. c:function:: struct fwnode_handle *acpi_node_get_parent(const struct fwnode_handle *fwnode)
 
     Return parent fwnode of this fwnode
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node whose parent to get
 
 .. _`acpi_node_get_parent.description`:
@@ -265,11 +265,11 @@ not available.
 acpi_graph_get_next_endpoint
 ============================
 
-.. c:function:: struct fwnode_handle *acpi_graph_get_next_endpoint(struct fwnode_handle *fwnode, struct fwnode_handle *prev)
+.. c:function:: struct fwnode_handle *acpi_graph_get_next_endpoint(const struct fwnode_handle *fwnode, struct fwnode_handle *prev)
 
     Get next endpoint ACPI firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Pointer to the parent firmware node
 
     :param struct fwnode_handle \*prev:
@@ -289,11 +289,11 @@ of success the next endpoint is returned.
 acpi_graph_get_child_prop_value
 ===============================
 
-.. c:function:: struct fwnode_handle *acpi_graph_get_child_prop_value(struct fwnode_handle *fwnode, const char *prop_name, unsigned int val)
+.. c:function:: struct fwnode_handle *acpi_graph_get_child_prop_value(const struct fwnode_handle *fwnode, const char *prop_name, unsigned int val)
 
     Return a child with a given property value
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         device fwnode
 
     :param const char \*prop_name:
@@ -315,12 +315,12 @@ the child node on success, NULL otherwise.
 acpi_graph_get_remote_endpoint
 ==============================
 
-.. c:function:: int acpi_graph_get_remote_endpoint(struct fwnode_handle *fwnode, struct fwnode_handle **parent, struct fwnode_handle **port, struct fwnode_handle **endpoint)
+.. c:function:: int acpi_graph_get_remote_endpoint(const struct fwnode_handle *__fwnode, struct fwnode_handle **parent, struct fwnode_handle **port, struct fwnode_handle **endpoint)
 
     Parses and returns remote end of an endpoint
 
-    :param struct fwnode_handle \*fwnode:
-        Endpoint firmware node pointing to a remote device
+    :param const struct fwnode_handle \*__fwnode:
+        *undescribed*
 
     :param struct fwnode_handle \*\*parent:
         Firmware node of remote port parent is filled here if not \ ``NULL``\ 

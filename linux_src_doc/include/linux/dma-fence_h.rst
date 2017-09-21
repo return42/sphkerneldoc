@@ -78,6 +78,7 @@ atomic ops (bit_*), so taking the spinlock will not be needed most
 of the time.
 
 DMA_FENCE_FLAG_SIGNALED_BIT - fence is already signaled
+DMA_FENCE_FLAG_TIMESTAMP_BIT - timestamp recorded for fence signaling
 DMA_FENCE_FLAG_ENABLE_SIGNAL_BIT - enable_signaling might have been called
 DMA_FENCE_FLAG_USER_BITS - start of the unused bits, can be used by the
 implementer of the fence for its own purposes. Can be used in different
@@ -384,6 +385,29 @@ It's recommended for seqno fences to call dma_fence_signal when the
 operation is complete, it makes it possible to prevent issues from
 wraparound between time of issue and time of use by checking the return
 value of this function before calling hardware-specific wait instructions.
+
+.. _`__dma_fence_is_later`:
+
+__dma_fence_is_later
+====================
+
+.. c:function:: bool __dma_fence_is_later(u32 f1, u32 f2)
+
+    return if f1 is chronologically later than f2
+
+    :param u32 f1:
+        [in]    the first fence's seqno
+
+    :param u32 f2:
+        [in]    the second fence's seqno from the same context
+
+.. _`__dma_fence_is_later.description`:
+
+Description
+-----------
+
+Returns true if f1 is chronologically later than f2. Both fences must be
+from the same context, since a seqno is not common across contexts.
 
 .. _`dma_fence_is_later`:
 

@@ -1,75 +1,40 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: security/apparmor/ipc.c
 
-.. _`aa_audit_ptrace`:
+.. _`audit_ptrace_mask`:
 
-aa_audit_ptrace
-===============
+audit_ptrace_mask
+=================
 
-.. c:function:: int aa_audit_ptrace(struct aa_profile *profile, struct aa_profile *target, int error)
+.. c:function:: void audit_ptrace_mask(struct audit_buffer *ab, u32 mask)
 
-    do auditing for ptrace
+    convert mask to permission string
 
-    :param struct aa_profile \*profile:
-        profile being enforced  (NOT NULL)
+    :param struct audit_buffer \*ab:
+        *undescribed*
 
-    :param struct aa_profile \*target:
-        profile being traced (NOT NULL)
-
-    :param int error:
-        error condition
-
-.. _`aa_audit_ptrace.return`:
-
-Return
-------
-
-%0 or error code
+    :param u32 mask:
+        permission mask to convert
 
 .. _`aa_may_ptrace`:
 
 aa_may_ptrace
 =============
 
-.. c:function:: int aa_may_ptrace(struct aa_profile *tracer, struct aa_profile *tracee, unsigned int mode)
+.. c:function:: int aa_may_ptrace(struct aa_label *tracer, struct aa_label *tracee, u32 request)
 
     test if tracer task can trace the tracee
 
-    :param struct aa_profile \*tracer:
-        profile of the task doing the tracing  (NOT NULL)
+    :param struct aa_label \*tracer:
+        label of the task doing the tracing  (NOT NULL)
 
-    :param struct aa_profile \*tracee:
-        task to be traced
+    :param struct aa_label \*tracee:
+        task label to be traced
 
-    :param unsigned int mode:
-        whether PTRACE_MODE_READ \|\| PTRACE_MODE_ATTACH
+    :param u32 request:
+        permission request
 
 .. _`aa_may_ptrace.return`:
-
-Return
-------
-
-%0 else error code if permission denied or error
-
-.. _`aa_ptrace`:
-
-aa_ptrace
-=========
-
-.. c:function:: int aa_ptrace(struct task_struct *tracer, struct task_struct *tracee, unsigned int mode)
-
-    do ptrace permission check and auditing
-
-    :param struct task_struct \*tracer:
-        task doing the tracing (NOT NULL)
-
-    :param struct task_struct \*tracee:
-        task being traced (NOT NULL)
-
-    :param unsigned int mode:
-        ptrace mode either PTRACE_MODE_READ \|\| PTRACE_MODE_ATTACH
-
-.. _`aa_ptrace.return`:
 
 Return
 ------

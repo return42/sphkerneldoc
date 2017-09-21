@@ -411,7 +411,7 @@ Return
 dprc_get_obj
 ============
 
-.. c:function:: int dprc_get_obj(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int obj_index, struct dprc_obj_desc *obj_desc)
+.. c:function:: int dprc_get_obj(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int obj_index, struct fsl_mc_obj_desc *obj_desc)
 
     Get general information on an object
 
@@ -427,7 +427,7 @@ dprc_get_obj
     :param int obj_index:
         Index of the object to be queried (< obj_count)
 
-    :param struct dprc_obj_desc \*obj_desc:
+    :param struct fsl_mc_obj_desc \*obj_desc:
         Returns the requested object descriptor
 
 .. _`dprc_get_obj.description`:

@@ -46,7 +46,7 @@ gfs2_unpin
 gfs2_end_log_write_bh
 =====================
 
-.. c:function:: void gfs2_end_log_write_bh(struct gfs2_sbd *sdp, struct bio_vec *bvec, int error)
+.. c:function:: void gfs2_end_log_write_bh(struct gfs2_sbd *sdp, struct bio_vec *bvec, blk_status_t error)
 
     end log write of pagecache data with buffers
 
@@ -56,7 +56,7 @@ gfs2_end_log_write_bh
     :param struct bio_vec \*bvec:
         The bio_vec
 
-    :param int error:
+    :param blk_status_t error:
         The i/o status
 
 .. _`gfs2_end_log_write_bh.description`:

@@ -15,5 +15,7 @@ sched
     fair_c
     idle_c
     loadavg_c
+    membarrier_c
     sched_h
+    wait_bit_c
     wait_c

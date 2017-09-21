@@ -57,7 +57,7 @@ RATE_MCS_ANT_POS
 
 .. c:function::  RATE_MCS_ANT_POS()
 
-    4965 has 2 transmitters 5100 has 1 transmitter B 5150 has 1 transmitter A 5300 has 3 transmitters 5350 has 3 transmitters bit14:16
+    bit14:16
 
 .. _`tx_power_dual_stream`:
 

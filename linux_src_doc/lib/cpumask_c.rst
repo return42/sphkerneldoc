@@ -49,6 +49,42 @@ Description
 Often used to find any cpu but \ :c:func:`smp_processor_id`\  in a mask.
 Returns >= nr_cpu_ids if no cpus set.
 
+.. _`cpumask_next_wrap`:
+
+cpumask_next_wrap
+=================
+
+.. c:function:: int cpumask_next_wrap(int n, const struct cpumask *mask, int start, bool wrap)
+
+    helper to implement for_each_cpu_wrap
+
+    :param int n:
+        the cpu prior to the place to search
+
+    :param const struct cpumask \*mask:
+        the cpumask pointer
+
+    :param int start:
+        the start point of the iteration
+
+    :param bool wrap:
+        assume \ ``n``\  crossing \ ``start``\  terminates the iteration
+
+.. _`cpumask_next_wrap.description`:
+
+Description
+-----------
+
+Returns >= nr_cpu_ids on completion
+
+.. _`cpumask_next_wrap.note`:
+
+Note
+----
+
+the \ ``wrap``\  argument is required for the start condition when
+we cannot assume \ ``start``\  is set in \ ``mask``\ .
+
 .. _`alloc_cpumask_var_node`:
 
 alloc_cpumask_var_node

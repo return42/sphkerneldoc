@@ -8,3 +8,4 @@ include
     :maxdepth: 1
 
     linux/index
+    uapi/index

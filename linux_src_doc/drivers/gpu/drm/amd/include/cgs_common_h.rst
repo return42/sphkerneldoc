@@ -72,6 +72,7 @@ Definition
         CGS_IND_REG__UVD_CTX,
         CGS_IND_REG__DIDT,
         CGS_IND_REG_GC_CAC,
+        CGS_IND_REG_SE_CAC,
         CGS_IND_REG__AUDIO_ENDPT
     };
 
@@ -96,6 +97,9 @@ CGS_IND_REG__DIDT
     *undescribed*
 
 CGS_IND_REG_GC_CAC
+    *undescribed*
+
+CGS_IND_REG_SE_CAC
     *undescribed*
 
 CGS_IND_REG__AUDIO_ENDPT

@@ -31,7 +31,7 @@ Returns 0 for success, negative on error.
 mii_ethtool_get_link_ksettings
 ==============================
 
-.. c:function:: int mii_ethtool_get_link_ksettings(struct mii_if_info *mii, struct ethtool_link_ksettings *cmd)
+.. c:function:: void mii_ethtool_get_link_ksettings(struct mii_if_info *mii, struct ethtool_link_ksettings *cmd)
 
     get settings that are specified in \ ``cmd``\ 
 
@@ -48,8 +48,6 @@ Description
 
 The \ ``cmd``\  parameter is expected to have been cleared before calling
 \ :c:func:`mii_ethtool_get_link_ksettings`\ .
-
-Returns 0 for success, negative on error.
 
 .. _`mii_ethtool_sset`:
 

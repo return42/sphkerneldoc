@@ -1,6 +1,141 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/usb/phy/phy.c
 
+.. _`usb_phy_notify_charger_work`:
+
+usb_phy_notify_charger_work
+===========================
+
+.. c:function:: void usb_phy_notify_charger_work(struct work_struct *work)
+
+    notify the USB charger state \ ``work``\  - the charger work to notify the USB charger state
+
+    :param struct work_struct \*work:
+        *undescribed*
+
+.. _`usb_phy_notify_charger_work.description`:
+
+Description
+-----------
+
+This work can be issued when USB charger state has been changed or
+USB charger current has been changed, then we can notify the current
+what can be drawn to power user and the charger state to userspace.
+
+If we get the charger type from extcon subsystem, we can notify the
+charger state to power user automatically by \ :c:func:`usb_phy_get_charger_type`\ 
+issuing from extcon subsystem.
+
+If we get the charger type from ->charger_detect() instead of extcon
+subsystem, the usb phy driver should issue \ :c:func:`usb_phy_set_charger_state`\ 
+to set charger state when the charger state has been changed.
+
+.. _`usb_phy_get_charger_type`:
+
+usb_phy_get_charger_type
+========================
+
+.. c:function:: int usb_phy_get_charger_type(struct notifier_block *nb, unsigned long state, void *data)
+
+    get charger type from extcon subsystem \ ``nb``\  -the notifier block to determine charger type \ ``state``\  - the cable state \ ``data``\  - private data
+
+    :param struct notifier_block \*nb:
+        *undescribed*
+
+    :param unsigned long state:
+        *undescribed*
+
+    :param void \*data:
+        *undescribed*
+
+.. _`usb_phy_get_charger_type.description`:
+
+Description
+-----------
+
+Determin the charger type from extcon subsystem which also means the
+charger state has been chaned, then we should notify this event.
+
+.. _`usb_phy_set_charger_current`:
+
+usb_phy_set_charger_current
+===========================
+
+.. c:function:: void usb_phy_set_charger_current(struct usb_phy *usb_phy, unsigned int mA)
+
+    set the USB charger current \ ``usb_phy``\  - the USB phy to be used \ ``mA``\  - the current need to be set
+
+    :param struct usb_phy \*usb_phy:
+        *undescribed*
+
+    :param unsigned int mA:
+        *undescribed*
+
+.. _`usb_phy_set_charger_current.description`:
+
+Description
+-----------
+
+Usually we only change the charger default current when USB finished the
+enumeration as one SDP charger. As one SDP charger, \ :c:func:`usb_phy_set_power`\ 
+will issue this function to change charger current when after setting USB
+configuration, or suspend/resume USB. For other type charger, we should
+use the default charger current and we do not suggest to issue this function
+to change the charger current.
+
+When USB charger current has been changed, we need to notify the power users.
+
+.. _`usb_phy_get_charger_current`:
+
+usb_phy_get_charger_current
+===========================
+
+.. c:function:: void usb_phy_get_charger_current(struct usb_phy *usb_phy, unsigned int *min, unsigned int *max)
+
+    get the USB charger current \ ``usb_phy``\  - the USB phy to be used \ ``min``\  - the minimum current \ ``max``\  - the maximum current
+
+    :param struct usb_phy \*usb_phy:
+        *undescribed*
+
+    :param unsigned int \*min:
+        *undescribed*
+
+    :param unsigned int \*max:
+        *undescribed*
+
+.. _`usb_phy_get_charger_current.description`:
+
+Description
+-----------
+
+Usually we will notify the maximum current to power user, but for some
+special case, power user also need the minimum current value. Then the
+power user can issue this function to get the suitable current.
+
+.. _`usb_phy_set_charger_state`:
+
+usb_phy_set_charger_state
+=========================
+
+.. c:function:: void usb_phy_set_charger_state(struct usb_phy *usb_phy, enum usb_charger_state state)
+
+    set the USB charger state \ ``usb_phy``\  - the USB phy to be used \ ``state``\  - the new state need to be set for charger
+
+    :param struct usb_phy \*usb_phy:
+        *undescribed*
+
+    :param enum usb_charger_state state:
+        *undescribed*
+
+.. _`usb_phy_set_charger_state.description`:
+
+Description
+-----------
+
+The usb phy driver can issue this function when the usb phy driver
+detected the charger state has been changed, in this case the charger
+type should be get from ->charger_detect().
+
 .. _`devm_usb_get_phy`:
 
 devm_usb_get_phy

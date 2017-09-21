@@ -6,11 +6,11 @@
 waitqueue_active
 ================
 
-.. c:function:: int waitqueue_active(wait_queue_head_t *q)
+.. c:function:: int waitqueue_active(struct wait_queue_head *wq_head)
 
     - locklessly test for waiters on the queue
 
-    :param wait_queue_head_t \*q:
+    :param struct wait_queue_head \*wq_head:
         the waitqueue to test for waiters
 
 .. _`waitqueue_active.description`:
@@ -28,19 +28,19 @@ NOTE
 this function is lockless and requires care, incorrect usage _will_
 lead to sporadic and non-obvious failure.
 
-Use either while holding wait_queue_head_t::lock or when used for wakeups
+Use either while holding wait_queue_head::lock or when used for wakeups
 with an extra \ :c:func:`smp_mb`\  like:
 
      CPU0 - waker                    CPU1 - waiter
 
                                      for (;;) {
-     \ ``cond``\  = true;                     prepare_to_wait(&wq, \ :c:type:`struct wait <wait>`\ , state);
+     \ ``cond``\  = true;                     prepare_to_wait(&wq_head, \ :c:type:`struct wait <wait>`\ , state);
      \ :c:func:`smp_mb`\ ;                         // \ :c:func:`smp_mb`\  from \ :c:func:`set_current_state`\ 
-     if (waitqueue_active(wq))         if (@cond)
-       wake_up(wq);                      break;
+     if (waitqueue_active(wq_head))         if (@cond)
+       wake_up(wq_head);                      break;
                                        \ :c:func:`schedule`\ ;
                                      }
-                                     finish_wait(&wq, \ :c:type:`struct wait <wait>`\ );
+                                     finish_wait(&wq_head, \ :c:type:`struct wait <wait>`\ );
 
 Because without the explicit \ :c:func:`smp_mb`\  it's possible for the
 \ :c:func:`waitqueue_active`\  load to get hoisted over the \ ``cond``\  store such that we'll
@@ -54,11 +54,11 @@ which (when the lock is uncontended) are of roughly equal cost.
 wq_has_sleeper
 ==============
 
-.. c:function:: bool wq_has_sleeper(wait_queue_head_t *wq)
+.. c:function:: bool wq_has_sleeper(struct wait_queue_head *wq_head)
 
     check if there are any waiting processes
 
-    :param wait_queue_head_t \*wq:
+    :param struct wait_queue_head \*wq_head:
         wait queue head
 
 .. _`wq_has_sleeper.description`:
@@ -66,7 +66,7 @@ wq_has_sleeper
 Description
 -----------
 
-Returns true if wq has waiting processes
+Returns true if wq_head has waiting processes
 
 Please refer to the comment for waitqueue_active.
 
@@ -75,11 +75,11 @@ Please refer to the comment for waitqueue_active.
 wait_event
 ==========
 
-.. c:function::  wait_event( wq,  condition)
+.. c:function::  wait_event( wq_head,  condition)
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -92,7 +92,7 @@ Description
 
 The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
-the waitqueue \ ``wq``\  is woken up.
+the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -102,11 +102,11 @@ change the result of the wait condition.
 wait_event_freezable
 ====================
 
-.. c:function::  wait_event_freezable( wq,  condition)
+.. c:function::  wait_event_freezable( wq_head,  condition)
 
     sleep (or freeze) until a condition gets true
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -119,7 +119,7 @@ Description
 
 The process is put to sleep (TASK_INTERRUPTIBLE -- so as not to contribute
 to system load) until the \ ``condition``\  evaluates to true. The
-\ ``condition``\  is checked each time the waitqueue \ ``wq``\  is woken up.
+\ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -129,11 +129,11 @@ change the result of the wait condition.
 wait_event_timeout
 ==================
 
-.. c:function::  wait_event_timeout( wq,  condition,  timeout)
+.. c:function::  wait_event_timeout( wq_head,  condition,  timeout)
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -149,7 +149,7 @@ Description
 
 The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
-the waitqueue \ ``wq``\  is woken up.
+the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -169,11 +169,11 @@ to \ ``true``\  before the \ ``timeout``\  elapsed.
 wait_event_cmd
 ==============
 
-.. c:function::  wait_event_cmd( wq,  condition,  cmd1,  cmd2)
+.. c:function::  wait_event_cmd( wq_head,  condition,  cmd1,  cmd2)
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -192,7 +192,7 @@ Description
 
 The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
-the waitqueue \ ``wq``\  is woken up.
+the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -202,11 +202,11 @@ change the result of the wait condition.
 wait_event_interruptible
 ========================
 
-.. c:function::  wait_event_interruptible( wq,  condition)
+.. c:function::  wait_event_interruptible( wq_head,  condition)
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -219,7 +219,7 @@ Description
 
 The process is put to sleep (TASK_INTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true or a signal is received.
-The \ ``condition``\  is checked each time the waitqueue \ ``wq``\  is woken up.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -232,11 +232,11 @@ signal and 0 if \ ``condition``\  evaluated to true.
 wait_event_interruptible_timeout
 ================================
 
-.. c:function::  wait_event_interruptible_timeout( wq,  condition,  timeout)
+.. c:function::  wait_event_interruptible_timeout( wq_head,  condition,  timeout)
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -252,7 +252,7 @@ Description
 
 The process is put to sleep (TASK_INTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true or a signal is received.
-The \ ``condition``\  is checked each time the waitqueue \ ``wq``\  is woken up.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -273,11 +273,11 @@ interrupted by a signal.
 wait_event_hrtimeout
 ====================
 
-.. c:function::  wait_event_hrtimeout( wq,  condition,  timeout)
+.. c:function::  wait_event_hrtimeout( wq_head,  condition,  timeout)
 
     sleep until a condition gets true or a timeout elapses
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -293,7 +293,7 @@ Description
 
 The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true or a signal is received.
-The \ ``condition``\  is checked each time the waitqueue \ ``wq``\  is woken up.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -499,11 +499,11 @@ signal and 0 if \ ``condition``\  evaluated to true.
 wait_event_killable
 ===================
 
-.. c:function::  wait_event_killable( wq,  condition)
+.. c:function::  wait_event_killable( wq_head,  condition)
 
     sleep until a condition gets true
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -516,7 +516,7 @@ Description
 
 The process is put to sleep (TASK_KILLABLE) until the
 \ ``condition``\  evaluates to true or a signal is received.
-The \ ``condition``\  is checked each time the waitqueue \ ``wq``\  is woken up.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -524,16 +524,59 @@ change the result of the wait condition.
 The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if \ ``condition``\  evaluated to true.
 
+.. _`wait_event_killable_timeout`:
+
+wait_event_killable_timeout
+===========================
+
+.. c:function::  wait_event_killable_timeout( wq_head,  condition,  timeout)
+
+    sleep until a condition gets true or a timeout elapses
+
+    :param  wq_head:
+        the waitqueue to wait on
+
+    :param  condition:
+        a C expression for the event to wait for
+
+    :param  timeout:
+        timeout, in jiffies
+
+.. _`wait_event_killable_timeout.description`:
+
+Description
+-----------
+
+The process is put to sleep (TASK_KILLABLE) until the
+\ ``condition``\  evaluates to true or a kill signal is received.
+The \ ``condition``\  is checked each time the waitqueue \ ``wq_head``\  is woken up.
+
+\ :c:func:`wake_up`\  has to be called after changing any variable that could
+change the result of the wait condition.
+
+.. _`wait_event_killable_timeout.return`:
+
+Return
+------
+
+0 if the \ ``condition``\  evaluated to \ ``false``\  after the \ ``timeout``\  elapsed,
+1 if the \ ``condition``\  evaluated to \ ``true``\  after the \ ``timeout``\  elapsed,
+the remaining jiffies (at least 1) if the \ ``condition``\  evaluated
+to \ ``true``\  before the \ ``timeout``\  elapsed, or -%ERESTARTSYS if it was
+interrupted by a kill signal.
+
+Only kill signals interrupt this process.
+
 .. _`wait_event_lock_irq_cmd`:
 
 wait_event_lock_irq_cmd
 =======================
 
-.. c:function::  wait_event_lock_irq_cmd( wq,  condition,  lock,  cmd)
+.. c:function::  wait_event_lock_irq_cmd( wq_head,  condition,  lock,  cmd)
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -554,7 +597,7 @@ Description
 
 The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
-the waitqueue \ ``wq``\  is woken up.
+the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -568,11 +611,11 @@ afterwards.
 wait_event_lock_irq
 ===================
 
-.. c:function::  wait_event_lock_irq( wq,  condition,  lock)
+.. c:function::  wait_event_lock_irq( wq_head,  condition,  lock)
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -589,7 +632,7 @@ Description
 
 The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true. The \ ``condition``\  is checked each time
-the waitqueue \ ``wq``\  is woken up.
+the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -602,11 +645,11 @@ dropped before going to sleep and is reacquired afterwards.
 wait_event_interruptible_lock_irq_cmd
 =====================================
 
-.. c:function::  wait_event_interruptible_lock_irq_cmd( wq,  condition,  lock,  cmd)
+.. c:function::  wait_event_interruptible_lock_irq_cmd( wq_head,  condition,  lock,  cmd)
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -627,7 +670,7 @@ Description
 
 The process is put to sleep (TASK_INTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true or a signal is received. The \ ``condition``\  is
-checked each time the waitqueue \ ``wq``\  is woken up.
+checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -644,11 +687,11 @@ and 0 if \ ``condition``\  evaluated to true.
 wait_event_interruptible_lock_irq
 =================================
 
-.. c:function::  wait_event_interruptible_lock_irq( wq,  condition,  lock)
+.. c:function::  wait_event_interruptible_lock_irq( wq_head,  condition,  lock)
 
     sleep until a condition gets true. The condition is checked under the lock. This is expected to be called with the lock taken.
 
-    :param  wq:
+    :param  wq_head:
         the waitqueue to wait on
 
     :param  condition:
@@ -665,7 +708,7 @@ Description
 
 The process is put to sleep (TASK_INTERRUPTIBLE) until the
 \ ``condition``\  evaluates to true or signal is received. The \ ``condition``\  is
-checked each time the waitqueue \ ``wq``\  is woken up.
+checked each time the waitqueue \ ``wq_head``\  is woken up.
 
 \ :c:func:`wake_up`\  has to be called after changing any variable that could
 change the result of the wait condition.
@@ -675,270 +718,6 @@ dropped before going to sleep and is reacquired afterwards.
 
 The macro will return -ERESTARTSYS if it was interrupted by a signal
 and 0 if \ ``condition``\  evaluated to true.
-
-.. _`wait_on_bit`:
-
-wait_on_bit
-===========
-
-.. c:function:: int wait_on_bit(unsigned long *word, int bit, unsigned mode)
-
-    wait for a bit to be cleared
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_bit.description`:
-
-Description
------------
-
-There is a standard hashed waitqueue table for generic use. This
-is the part of the hashtable's accessor API that waits on a bit.
-For instance, if one were to have waiters on a bitflag, one would
-call \ :c:func:`wait_on_bit`\  in threads waiting for the bit to clear.
-One uses \ :c:func:`wait_on_bit`\  where one is waiting for the bit to clear,
-but has no intention of setting it.
-Returned value will be zero if the bit was cleared, or non-zero
-if the process received a signal and the mode permitted wakeup
-on that signal.
-
-.. _`wait_on_bit_io`:
-
-wait_on_bit_io
-==============
-
-.. c:function:: int wait_on_bit_io(unsigned long *word, int bit, unsigned mode)
-
-    wait for a bit to be cleared
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_bit_io.description`:
-
-Description
------------
-
-Use the standard hashed waitqueue table to wait for a bit
-to be cleared.  This is similar to \ :c:func:`wait_on_bit`\ , but calls
-\ :c:func:`io_schedule`\  instead of \ :c:func:`schedule`\  for the actual waiting.
-
-Returned value will be zero if the bit was cleared, or non-zero
-if the process received a signal and the mode permitted wakeup
-on that signal.
-
-.. _`wait_on_bit_timeout`:
-
-wait_on_bit_timeout
-===================
-
-.. c:function:: int wait_on_bit_timeout(unsigned long *word, int bit, unsigned mode, unsigned long timeout)
-
-    wait for a bit to be cleared or a timeout elapses
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param unsigned mode:
-        the task state to sleep in
-
-    :param unsigned long timeout:
-        timeout, in jiffies
-
-.. _`wait_on_bit_timeout.description`:
-
-Description
------------
-
-Use the standard hashed waitqueue table to wait for a bit
-to be cleared. This is similar to \ :c:func:`wait_on_bit`\ , except also takes a
-timeout parameter.
-
-Returned value will be zero if the bit was cleared before the
-\ ``timeout``\  elapsed, or non-zero if the \ ``timeout``\  elapsed or process
-received a signal and the mode permitted wakeup on that signal.
-
-.. _`wait_on_bit_action`:
-
-wait_on_bit_action
-==================
-
-.. c:function:: int wait_on_bit_action(unsigned long *word, int bit, wait_bit_action_f *action, unsigned mode)
-
-    wait for a bit to be cleared
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param wait_bit_action_f \*action:
-        the function used to sleep, which may take special actions
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_bit_action.description`:
-
-Description
------------
-
-Use the standard hashed waitqueue table to wait for a bit
-to be cleared, and allow the waiting action to be specified.
-This is like \ :c:func:`wait_on_bit`\  but allows fine control of how the waiting
-is done.
-
-Returned value will be zero if the bit was cleared, or non-zero
-if the process received a signal and the mode permitted wakeup
-on that signal.
-
-.. _`wait_on_bit_lock`:
-
-wait_on_bit_lock
-================
-
-.. c:function:: int wait_on_bit_lock(unsigned long *word, int bit, unsigned mode)
-
-    wait for a bit to be cleared, when wanting to set it
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_bit_lock.description`:
-
-Description
------------
-
-There is a standard hashed waitqueue table for generic use. This
-is the part of the hashtable's accessor API that waits on a bit
-when one intends to set it, for instance, trying to lock bitflags.
-For instance, if one were to have waiters trying to set bitflag
-and waiting for it to clear before setting it, one would call
-\ :c:func:`wait_on_bit`\  in threads waiting to be able to set the bit.
-One uses \ :c:func:`wait_on_bit_lock`\  where one is waiting for the bit to
-clear with the intention of setting it, and when done, clearing it.
-
-Returns zero if the bit was (eventually) found to be clear and was
-set.  Returns non-zero if a signal was delivered to the process and
-the \ ``mode``\  allows that signal to wake the process.
-
-.. _`wait_on_bit_lock_io`:
-
-wait_on_bit_lock_io
-===================
-
-.. c:function:: int wait_on_bit_lock_io(unsigned long *word, int bit, unsigned mode)
-
-    wait for a bit to be cleared, when wanting to set it
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_bit_lock_io.description`:
-
-Description
------------
-
-Use the standard hashed waitqueue table to wait for a bit
-to be cleared and then to atomically set it.  This is similar
-to \ :c:func:`wait_on_bit`\ , but calls \ :c:func:`io_schedule`\  instead of \ :c:func:`schedule`\ 
-for the actual waiting.
-
-Returns zero if the bit was (eventually) found to be clear and was
-set.  Returns non-zero if a signal was delivered to the process and
-the \ ``mode``\  allows that signal to wake the process.
-
-.. _`wait_on_bit_lock_action`:
-
-wait_on_bit_lock_action
-=======================
-
-.. c:function:: int wait_on_bit_lock_action(unsigned long *word, int bit, wait_bit_action_f *action, unsigned mode)
-
-    wait for a bit to be cleared, when wanting to set it
-
-    :param unsigned long \*word:
-        the word being waited on, a kernel virtual address
-
-    :param int bit:
-        the bit of the word being waited on
-
-    :param wait_bit_action_f \*action:
-        the function used to sleep, which may take special actions
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_bit_lock_action.description`:
-
-Description
------------
-
-Use the standard hashed waitqueue table to wait for a bit
-to be cleared and then to set it, and allow the waiting action
-to be specified.
-This is like \ :c:func:`wait_on_bit`\  but allows fine control of how the waiting
-is done.
-
-Returns zero if the bit was (eventually) found to be clear and was
-set.  Returns non-zero if a signal was delivered to the process and
-the \ ``mode``\  allows that signal to wake the process.
-
-.. _`wait_on_atomic_t`:
-
-wait_on_atomic_t
-================
-
-.. c:function:: int wait_on_atomic_t(atomic_t *val, int (*action)(atomic_t *), unsigned mode)
-
-    Wait for an atomic_t to become 0
-
-    :param atomic_t \*val:
-        The atomic value being waited on, a kernel virtual address
-
-    :param int (\*action)(atomic_t \*):
-        the function used to sleep, which may take special actions
-
-    :param unsigned mode:
-        the task state to sleep in
-
-.. _`wait_on_atomic_t.description`:
-
-Description
------------
-
-Wait for an atomic_t to become 0.  We abuse the bit-wait waitqueue table for
-the purpose of getting a waitqueue, but we set the key to a bit number
-outside of the target 'word'.
 
 .. This file was automatic generated / don't edit.
 

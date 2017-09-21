@@ -90,7 +90,9 @@ disable bits).
 Return
 ------
 
-0 or -ERRNO.
+0 - configuration successful;
+1 - no changes were needed;
+-ERRNO - configuration failed.
 
 .. _`nfp_eth_set_configured`:
 
@@ -122,7 +124,9 @@ Set the ifup/ifdown state on the PHY.
 Return
 ------
 
-0 or -ERRNO.
+0 - configuration successful;
+1 - no changes were needed;
+-ERRNO - configuration failed.
 
 .. _`__nfp_eth_set_aneg`:
 

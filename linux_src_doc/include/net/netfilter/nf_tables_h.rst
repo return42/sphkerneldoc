@@ -306,6 +306,46 @@ lookup
 space
     memory class
 
+.. _`nft_set_type`:
+
+struct nft_set_type
+===================
+
+.. c:type:: struct nft_set_type
+
+    nf_tables set type
+
+.. _`nft_set_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nft_set_type {
+        const struct nft_set_ops *(*select_ops)(const struct nft_ctx *,const struct nft_set_desc *desc, u32 flags);
+        const struct nft_set_ops *ops;
+        struct list_head list;
+        struct module *owner;
+    }
+
+.. _`nft_set_type.members`:
+
+Members
+-------
+
+select_ops
+    function to select nft_set_ops
+
+ops
+    default ops, used when no select_ops functions is present
+
+list
+    used internally
+
+owner
+    module reference
+
 .. _`nft_set_ops`:
 
 struct nft_set_ops
@@ -331,14 +371,13 @@ Definition
         bool (*flush)(const struct net *net,const struct nft_set *set, void *priv);
         void (*remove)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
         void (*walk)(const struct nft_ctx *ctx,struct nft_set *set, struct nft_set_iter *iter);
-        unsigned int (*privsize)(const struct nlattr * const nla[]);
+        unsigned int (*privsize)(const struct nlattr * const nla[], const struct nft_set_desc *desc);
         bool (*estimate)(const struct nft_set_desc *desc,u32 features, struct nft_set_estimate *est);
         int (*init)(const struct nft_set *set,const struct nft_set_desc *desc, const struct nlattr * const nla[]);
         void (*destroy)(const struct nft_set *set);
-        struct list_head list;
-        struct module *owner;
         unsigned int elemsize;
         u32 features;
+        const struct nft_set_type *type;
     }
 
 .. _`nft_set_ops.members`:
@@ -382,17 +421,14 @@ init
 destroy
     destroy private data of set instance
 
-list
-    nf_tables_set_ops list node
-
-owner
-    module reference
-
 elemsize
     element private size
 
 features
     features supported by the implementation
+
+type
+    *undescribed*
 
 .. _`nft_set`:
 
@@ -413,7 +449,7 @@ Definition
     struct nft_set {
         struct list_head list;
         struct list_head bindings;
-        char name;
+        char *name;
         u32 ktype;
         u32 dtype;
         u32 objtype;
@@ -935,7 +971,7 @@ Definition
         u16 level;
         u8 flags:6;
         u8 genmask:6:2;
-        char name;
+        char *name;
     }
 
 .. _`nft_chain.members`:
@@ -1095,7 +1131,7 @@ Definition
         u32 use;
         u16 flags:14;
         u16 genmask:14:2;
-        char name;
+        char *name;
     }
 
 .. _`nft_table.members`:
@@ -1208,11 +1244,11 @@ Definition
 
     struct nft_object {
         struct list_head list;
-        char name;
+        char *name;
         struct nft_table *table;
         u32 genmask:2;
         u32 use:2:30;
-        const struct nft_object_type *type ____cacheline_aligned;
+        const struct nft_object_ops *ops ____cacheline_aligned;
         unsigned char data;
     }
 
@@ -1240,7 +1276,7 @@ ____cacheline_aligned
     *undescribed*
 
 data
-    object data, layout depends on type
+    pointer to object data
 
 .. _`nft_object_type`:
 
@@ -1259,16 +1295,13 @@ Definition
 .. code-block:: c
 
     struct nft_object_type {
-        void (*eval)(struct nft_object *obj,struct nft_regs *regs, const struct nft_pktinfo *pkt);
+        const struct nft_object_ops *(*select_ops)(const struct nft_ctx *, const struct nlattr * const tb[]);
+        const struct nft_object_ops *ops;
         struct list_head list;
         u32 type;
-        unsigned int size;
         unsigned int maxattr;
         struct module *owner;
         const struct nla_policy *policy;
-        int (*init)(const struct nft_ctx *ctx,const struct nlattr *const tb[], struct nft_object *obj);
-        void (*destroy)(struct nft_object *obj);
-        int (*dump)(struct sk_buff *skb,struct nft_object *obj, bool reset);
     }
 
 .. _`nft_object_type.members`:
@@ -1276,17 +1309,17 @@ Definition
 Members
 -------
 
-eval
-    stateful object evaluation function
+select_ops
+    function to select nft_object_ops
+
+ops
+    default ops, used when no select_ops functions is present
 
 list
     list node in list of object types
 
 type
     stateful object numeric type
-
-size
-    stateful object size
 
 maxattr
     maximum netlink attribute
@@ -1297,6 +1330,42 @@ owner
 policy
     netlink attribute policy
 
+.. _`nft_object_ops`:
+
+struct nft_object_ops
+=====================
+
+.. c:type:: struct nft_object_ops
+
+    stateful object operations
+
+.. _`nft_object_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nft_object_ops {
+        void (*eval)(struct nft_object *obj,struct nft_regs *regs, const struct nft_pktinfo *pkt);
+        unsigned int size;
+        int (*init)(const struct nft_ctx *ctx,const struct nlattr *const tb[], struct nft_object *obj);
+        void (*destroy)(struct nft_object *obj);
+        int (*dump)(struct sk_buff *skb,struct nft_object *obj, bool reset);
+        const struct nft_object_type *type;
+    }
+
+.. _`nft_object_ops.members`:
+
+Members
+-------
+
+eval
+    stateful object evaluation function
+
+size
+    stateful object size
+
 init
     initialize object from netlink attributes
 
@@ -1305,6 +1374,9 @@ destroy
 
 dump
     netlink dump stateful object
+
+type
+    *undescribed*
 
 .. _`nft_traceinfo`:
 

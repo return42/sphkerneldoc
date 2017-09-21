@@ -8,3 +8,4 @@ kernel
     :maxdepth: 1
 
     physmem_c
+    trap_c

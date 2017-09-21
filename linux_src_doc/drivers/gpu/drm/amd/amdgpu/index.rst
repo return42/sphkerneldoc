@@ -18,6 +18,7 @@ amdgpu
     amdgpu_gart_c
     amdgpu_gem_c
     amdgpu_gfx_c
+    amdgpu_gfx_h
     amdgpu_gtt_mgr_c
     amdgpu_ib_c
     amdgpu_ih_c
@@ -27,6 +28,7 @@ amdgpu
     amdgpu_object_c
     amdgpu_object_h
     amdgpu_pll_c
+    amdgpu_queue_mgr_c
     amdgpu_ring_c
     amdgpu_sa_c
     amdgpu_sync_c
@@ -68,5 +70,6 @@ amdgpu
     vce_v2_0_c
     vce_v3_0_c
     vce_v4_0_c
+    vcn_v1_0_c
     vega10_ih_c
     vi_c

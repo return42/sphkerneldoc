@@ -107,12 +107,12 @@ wait_for_csb
     :param struct coprocessor_status_block \*csb:
         *undescribed*
 
-.. _`nx842_powernv_function`:
+.. _`nx842_exec_icswx`:
 
-nx842_powernv_function
-======================
+nx842_exec_icswx
+================
 
-.. c:function:: int nx842_powernv_function(const unsigned char *in, unsigned int inlen, unsigned char *out, unsigned int *outlenp, void *workmem, int fc)
+.. c:function:: int nx842_exec_icswx(const unsigned char *in, unsigned int inlen, unsigned char *out, unsigned int *outlenp, void *workmem, int fc)
 
     compress/decompress data using the 842 algorithm
 
@@ -135,7 +135,7 @@ nx842_powernv_function
     :param int fc:
         function code, see CCW Function Codes in nx-842.h
 
-.. _`nx842_powernv_function.description`:
+.. _`nx842_exec_icswx.description`:
 
 Description
 -----------
@@ -150,12 +150,70 @@ error will be specified by the return code from this function.
 
 The \ ``workmem``\  buffer should only be used by one function call at a time.
 
-.. _`nx842_powernv_function.return`:
+.. _`nx842_exec_icswx.return`:
 
 Return
 ------
 
 0          Success, output of length \ ``outlenp``\  stored in the buffer at \ ``out``\ 
+-ENODEV    Hardware unavailable
+-ENOSPC    Output buffer is to small
+-EMSGSIZE  Input buffer too large
+-EINVAL    buffer constraints do not fix nx842_constraints
+-EPROTO    hardware error during operation
+-ETIMEDOUT hardware did not complete operation in reasonable time
+-EINTR     operation was aborted
+
+.. _`nx842_exec_vas`:
+
+nx842_exec_vas
+==============
+
+.. c:function:: int nx842_exec_vas(const unsigned char *in, unsigned int inlen, unsigned char *out, unsigned int *outlenp, void *workmem, int fc)
+
+    compress/decompress data using the 842 algorithm
+
+    :param const unsigned char \*in:
+        input buffer pointer
+
+    :param unsigned int inlen:
+        input buffer size
+
+    :param unsigned char \*out:
+        output buffer pointer
+
+    :param unsigned int \*outlenp:
+        output buffer size pointer
+
+    :param void \*workmem:
+        working memory buffer pointer, size determined by
+        nx842_powernv_driver.workmem_size
+
+    :param int fc:
+        function code, see CCW Function Codes in nx-842.h
+
+.. _`nx842_exec_vas.description`:
+
+Description
+-----------
+
+(De)compression provided by the NX842 coprocessor on IBM PowerNV systems.
+This compresses or decompresses the provided input buffer into the provided
+output buffer.
+
+Upon return from this function \ ``outlen``\  contains the length of the
+output data.  If there is an error then \ ``outlen``\  will be 0 and an
+error will be specified by the return code from this function.
+
+The \ ``workmem``\  buffer should only be used by one function call at a time.
+
+.. _`nx842_exec_vas.return`:
+
+Return
+------
+
+0          Success, output of length \ ``outlenp``\  stored in the buffer
+at \ ``out``\ 
 -ENODEV    Hardware unavailable
 -ENOSPC    Output buffer is to small
 -EMSGSIZE  Input buffer too large
@@ -206,7 +264,7 @@ error will be specified by the return code from this function.
 Return
 ------
 
-see \ ``nx842_powernv_function``\ ()
+see \ ``nx842_powernv_exec``\ ()
 
 .. _`nx842_powernv_decompress`:
 
@@ -250,7 +308,7 @@ error will be specified by the return code from this function.
 Return
 ------
 
-see \ ``nx842_powernv_function``\ ()
+see \ ``nx842_powernv_exec``\ ()
 
 .. This file was automatic generated / don't edit.
 

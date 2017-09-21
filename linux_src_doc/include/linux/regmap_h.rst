@@ -696,6 +696,29 @@ Description
 The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to
 a struct regmap.
 
+.. _`regmap_init_w1`:
+
+regmap_init_w1
+==============
+
+.. c:function::  regmap_init_w1( w1_dev,  config)
+
+    Initialise register map
+
+    :param  w1_dev:
+        Device that will be interacted with
+
+    :param  config:
+        Configuration for register map
+
+.. _`regmap_init_w1.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to
+a struct regmap.
+
 .. _`regmap_init_mmio_clk`:
 
 regmap_init_mmio_clk
@@ -901,6 +924,30 @@ The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
 to a struct regmap.  The regmap will be automatically freed by the
 device management code.
 
+.. _`devm_regmap_init_w1`:
+
+devm_regmap_init_w1
+===================
+
+.. c:function::  devm_regmap_init_w1( w1_dev,  config)
+
+    Initialise managed register map
+
+    :param  w1_dev:
+        Device that will be interacted with
+
+    :param  config:
+        Configuration for register map
+
+.. _`devm_regmap_init_w1.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
+to a struct regmap.  The regmap will be automatically freed by the
+device management code.
+
 .. _`devm_regmap_init_mmio_clk`:
 
 devm_regmap_init_mmio_clk
@@ -1095,6 +1142,7 @@ Definition
         unsigned int wake_base;
         unsigned int type_base;
         unsigned int irq_reg_stride;
+        bool mask_writeonly:1;
         bool init_ack_masked:1;
         bool mask_invert:1;
         bool use_ack:1;
@@ -1142,6 +1190,9 @@ type_base
 
 irq_reg_stride
     Stride to use for chips where registers are not contiguous.
+
+mask_writeonly
+    Base mask register is write only.
 
 init_ack_masked
     Ack all masked interrupts once during initalization.

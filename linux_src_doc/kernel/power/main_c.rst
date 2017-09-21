@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/power/main.c
 
+.. _`__pm_pr_dbg`:
+
+__pm_pr_dbg
+===========
+
+.. c:function:: void __pm_pr_dbg(bool defer, const char *fmt,  ...)
+
+    Print a suspend debug message to the kernel log.
+
+    :param bool defer:
+        Whether or not to use \ :c:func:`printk_deferred`\  to print the message.
+
+    :param const char \*fmt:
+        Message format.
+
+    :param ... :
+        variable arguments
+
+.. _`__pm_pr_dbg.description`:
+
+Description
+-----------
+
+The message will be emitted if enabled through the pm_debug_messages
+sysfs attribute.
+
 .. _`state_show`:
 
 state_show

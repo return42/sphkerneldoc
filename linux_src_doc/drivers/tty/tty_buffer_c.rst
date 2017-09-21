@@ -246,6 +246,32 @@ Queue a series of bytes to the tty buffering. For each character
 the flags array indicates the status of the character. Returns the
 number added.
 
+.. _`__tty_insert_flip_char`:
+
+__tty_insert_flip_char
+======================
+
+.. c:function:: int __tty_insert_flip_char(struct tty_port *port, unsigned char ch, char flag)
+
+    Add one character to the tty buffer
+
+    :param struct tty_port \*port:
+        tty port
+
+    :param unsigned char ch:
+        character
+
+    :param char flag:
+        flag byte
+
+.. _`__tty_insert_flip_char.description`:
+
+Description
+-----------
+
+Queue a single byte to the tty buffering, with an optional flag.
+This is the slow path of tty_insert_flip_char.
+
 .. _`tty_schedule_flip`:
 
 tty_schedule_flip

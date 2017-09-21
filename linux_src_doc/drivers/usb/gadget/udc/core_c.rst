@@ -787,6 +787,30 @@ The details are implementation specific, but it can go as
 far as powering off UDC completely and disable its data
 line pullups.
 
+.. _`usb_gadget_udc_set_speed`:
+
+usb_gadget_udc_set_speed
+========================
+
+.. c:function:: void usb_gadget_udc_set_speed(struct usb_udc *udc, enum usb_device_speed speed)
+
+    tells usb device controller speed supported by current driver
+
+    :param struct usb_udc \*udc:
+        The device we want to set maximum speed
+
+    :param enum usb_device_speed speed:
+        The maximum speed to allowed to run
+
+.. _`usb_gadget_udc_set_speed.description`:
+
+Description
+-----------
+
+This call is issued by the UDC Class driver before calling
+\ :c:func:`usb_gadget_udc_start`\  in order to make sure that we don't try to
+connect on speeds the gadget driver doesn't support.
+
 .. _`usb_udc_release`:
 
 usb_udc_release
@@ -832,6 +856,7 @@ Description
 -----------
 
 Returns zero on success, negative errno otherwise.
+Calls the gadget release function in the latter case.
 
 .. _`usb_get_gadget_udc_name`:
 

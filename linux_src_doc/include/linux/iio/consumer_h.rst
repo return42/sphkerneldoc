@@ -570,5 +570,82 @@ a scale factor of 1 the function will return the result in the normal IIO
 unit for the channel type. E.g. millivolt for voltage channels, if you want
 nanovolts instead pass 1000000 as the scale factor.
 
+.. _`iio_get_channel_ext_info_count`:
+
+iio_get_channel_ext_info_count
+==============================
+
+.. c:function:: unsigned int iio_get_channel_ext_info_count(struct iio_channel *chan)
+
+    get number of ext_info attributes connected to the channel.
+
+    :param struct iio_channel \*chan:
+        The channel being queried
+
+.. _`iio_get_channel_ext_info_count.description`:
+
+Description
+-----------
+
+Returns the number of ext_info attributes
+
+.. _`iio_read_channel_ext_info`:
+
+iio_read_channel_ext_info
+=========================
+
+.. c:function:: ssize_t iio_read_channel_ext_info(struct iio_channel *chan, const char *attr, char *buf)
+
+    read ext_info attribute from a given channel
+
+    :param struct iio_channel \*chan:
+        The channel being queried.
+
+    :param const char \*attr:
+        The ext_info attribute to read.
+
+    :param char \*buf:
+        Where to store the attribute value. Assumed to hold
+        at least PAGE_SIZE bytes.
+
+.. _`iio_read_channel_ext_info.description`:
+
+Description
+-----------
+
+Returns the number of bytes written to buf (perhaps w/o zero termination;
+it need not even be a string), or an error code.
+
+.. _`iio_write_channel_ext_info`:
+
+iio_write_channel_ext_info
+==========================
+
+.. c:function:: ssize_t iio_write_channel_ext_info(struct iio_channel *chan, const char *attr, const char *buf, size_t len)
+
+    write ext_info attribute from a given channel
+
+    :param struct iio_channel \*chan:
+        The channel being queried.
+
+    :param const char \*attr:
+        The ext_info attribute to read.
+
+    :param const char \*buf:
+        The new attribute value. Strings needs to be zero-
+        terminated, but the terminator should not be included
+        in the below len.
+
+    :param size_t len:
+        The size of the new attribute value.
+
+.. _`iio_write_channel_ext_info.description`:
+
+Description
+-----------
+
+Returns the number of accepted bytes, which should be the same as len.
+An error code can also be returned.
+
 .. This file was automatic generated / don't edit.
 

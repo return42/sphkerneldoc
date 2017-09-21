@@ -11,6 +11,7 @@ media
     drv-intf/index
     i2c/index
     cec-notifier_h
+    cec-pin_h
     cec_h
     lirc_dev_h
     media-device_h
@@ -31,11 +32,11 @@ media
     v4l2-event_h
     v4l2-fh_h
     v4l2-flash-led-class_h
+    v4l2-fwnode_h
     v4l2-ioctl_h
     v4l2-mc_h
     v4l2-mediabus_h
     v4l2-mem2mem_h
-    v4l2-of_h
     v4l2-rect_h
     v4l2-subdev_h
     videobuf2-core_h

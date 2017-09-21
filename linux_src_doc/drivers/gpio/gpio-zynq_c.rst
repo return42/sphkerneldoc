@@ -23,6 +23,7 @@ Definition
         struct clk *clk;
         int irq;
         const struct zynq_platform_data *p_data;
+        struct gpio_regs context;
     }
 
 .. _`zynq_gpio.members`:
@@ -44,6 +45,9 @@ irq
 
 p_data
     pointer to platform data
+
+context
+    context registers
 
 .. _`zynq_platform_data`:
 
@@ -79,7 +83,7 @@ label
     string to store in gpio->label
 
 quirks
-    *undescribed*
+    Flags is used to identify the platform
 
 ngpio
     max number of gpio pins
@@ -92,6 +96,44 @@ bank_min
 
 bank_max
     this array represents bank's max pin
+
+.. _`zynq_gpio_is_zynq`:
+
+zynq_gpio_is_zynq
+=================
+
+.. c:function:: int zynq_gpio_is_zynq(struct zynq_gpio *gpio)
+
+    test if HW is zynq or zynqmp
+
+    :param struct zynq_gpio \*gpio:
+        Pointer to driver data struct
+
+.. _`zynq_gpio_is_zynq.return`:
+
+Return
+------
+
+0 if zynqmp, 1 if zynq.
+
+.. _`gpio_data_ro_bug`:
+
+gpio_data_ro_bug
+================
+
+.. c:function:: int gpio_data_ro_bug(struct zynq_gpio *gpio)
+
+    test if HW bug exists or not
+
+    :param struct zynq_gpio \*gpio:
+        Pointer to driver data struct
+
+.. _`gpio_data_ro_bug.return`:
+
+Return
+------
+
+0 if bug doesnot exist, 1 if bug exists.
 
 .. _`zynq_gpio_get_bank_pin`:
 
@@ -114,7 +156,7 @@ zynq_gpio_get_bank_pin
         for the given gpio pin
 
     :param struct zynq_gpio \*gpio:
-        *undescribed*
+        gpio device data structure
 
 .. _`zynq_gpio_get_bank_pin.description`:
 

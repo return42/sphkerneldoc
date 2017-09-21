@@ -8,3 +8,4 @@ bridge
     :maxdepth: 1
 
     adv7511/index
+    panel_c

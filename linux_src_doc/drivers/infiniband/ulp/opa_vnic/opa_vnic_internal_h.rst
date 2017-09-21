@@ -371,7 +371,7 @@ Definition
         u32 mmac_hash;
         struct hlist_head __rcu *mactbl;
         struct mutex mactbl_lock;
-        struct mutex stats_lock;
+        spinlock_t stats_lock;
         u8 flow_tbl;
         unsigned long trap_timeout;
         u8 trap_count;

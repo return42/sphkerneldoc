@@ -38,5 +38,59 @@ Description
 This lets the CMA helpers allocate object structs for us, and keep
 our BO stats correct.
 
+.. _`vc4_set_tiling_ioctl`:
+
+vc4_set_tiling_ioctl
+====================
+
+.. c:function:: int vc4_set_tiling_ioctl(struct drm_device *dev, void *data, struct drm_file *file_priv)
+
+    Sets the tiling modifier for a BO.
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param void \*data:
+        ioctl argument
+
+    :param struct drm_file \*file_priv:
+        DRM file for this fd
+
+.. _`vc4_set_tiling_ioctl.description`:
+
+Description
+-----------
+
+The tiling state of the BO decides the default modifier of an fb if
+no specific modifier was set by userspace, and the return value of
+\ :c:func:`vc4_get_tiling_ioctl`\  (so that userspace can treat a BO it
+received from dmabuf as the same tiling format as the producer
+used).
+
+.. _`vc4_get_tiling_ioctl`:
+
+vc4_get_tiling_ioctl
+====================
+
+.. c:function:: int vc4_get_tiling_ioctl(struct drm_device *dev, void *data, struct drm_file *file_priv)
+
+    Gets the tiling modifier for a BO.
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param void \*data:
+        ioctl argument
+
+    :param struct drm_file \*file_priv:
+        DRM file for this fd
+
+.. _`vc4_get_tiling_ioctl.description`:
+
+Description
+-----------
+
+Returns the tiling modifier for a BO as set by \ :c:func:`vc4_set_tiling_ioctl`\ .
+
 .. This file was automatic generated / don't edit.
 

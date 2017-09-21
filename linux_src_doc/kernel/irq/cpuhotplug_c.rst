@@ -30,5 +30,17 @@ Note
 we must iterate over all IRQs, whether they have an attached
 action structure or not, as we need to get chained interrupts too.
 
+.. _`irq_affinity_online_cpu`:
+
+irq_affinity_online_cpu
+=======================
+
+.. c:function:: int irq_affinity_online_cpu(unsigned int cpu)
+
+    Restore affinity for managed interrupts
+
+    :param unsigned int cpu:
+        Upcoming CPU for which interrupts should be restored
+
 .. This file was automatic generated / don't edit.
 

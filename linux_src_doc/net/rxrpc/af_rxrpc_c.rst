@@ -6,7 +6,7 @@
 rxrpc_kernel_begin_call
 =======================
 
-.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, gfp_t gfp, rxrpc_notify_rx_t notify_rx)
+.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, s64 tx_total_len, gfp_t gfp, rxrpc_notify_rx_t notify_rx)
 
     Allow a kernel service to begin a call
 
@@ -21,6 +21,9 @@ rxrpc_kernel_begin_call
 
     :param unsigned long user_call_ID:
         The ID to use
+
+    :param s64 tx_total_len:
+        Total length of data to transmit during the call (or -1)
 
     :param gfp_t gfp:
         The allocation constraints
@@ -62,6 +65,68 @@ Description
 
 Allow a kernel service to end a call it was using.  The call must be
 complete before this is called (the call should be aborted if necessary).
+
+.. _`rxrpc_kernel_check_call`:
+
+rxrpc_kernel_check_call
+=======================
+
+.. c:function:: int rxrpc_kernel_check_call(struct socket *sock, struct rxrpc_call *call, enum rxrpc_call_completion *_compl, u32 *_abort_code)
+
+    Check a call's state
+
+    :param struct socket \*sock:
+        The socket the call is on
+
+    :param struct rxrpc_call \*call:
+        The call to check
+
+    :param enum rxrpc_call_completion \*_compl:
+        Where to store the completion state
+
+    :param u32 \*_abort_code:
+        Where to store any abort code
+
+.. _`rxrpc_kernel_check_call.description`:
+
+Description
+-----------
+
+Allow a kernel service to query the state of a call and find out the manner
+of its termination if it has completed.  Returns -EINPROGRESS if the call is
+still going, 0 if the call finished successfully, -ECONNABORTED if the call
+was aborted and an appropriate error if the call failed in some other way.
+
+.. _`rxrpc_kernel_retry_call`:
+
+rxrpc_kernel_retry_call
+=======================
+
+.. c:function:: int rxrpc_kernel_retry_call(struct socket *sock, struct rxrpc_call *call, struct sockaddr_rxrpc *srx, struct key *key)
+
+    Allow a kernel service to retry a call
+
+    :param struct socket \*sock:
+        The socket the call is on
+
+    :param struct rxrpc_call \*call:
+        The call to retry
+
+    :param struct sockaddr_rxrpc \*srx:
+        The address of the peer to contact
+
+    :param struct key \*key:
+        The security context to use (defaults to socket setting)
+
+.. _`rxrpc_kernel_retry_call.description`:
+
+Description
+-----------
+
+Allow a kernel service to try resending a client call that failed due to a
+network error to a new address.  The Tx queue is maintained intact, thereby
+relieving the need to re-encrypt any request data that has already been
+buffered.
 
 .. _`rxrpc_kernel_new_call_notification`:
 

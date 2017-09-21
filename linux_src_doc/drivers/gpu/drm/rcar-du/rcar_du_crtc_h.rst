@@ -23,12 +23,17 @@ Definition
         struct clk *extclock;
         unsigned int mmio_offset;
         unsigned int index;
-        bool started;
+        bool initialized;
+        bool vblank_enable;
         struct drm_pending_vblank_event *event;
         wait_queue_head_t flip_wait;
+        spinlock_t vblank_lock;
+        wait_queue_head_t vblank_wait;
+        unsigned int vblank_count;
         unsigned int outputs;
         struct rcar_du_group *group;
         struct rcar_du_vsp *vsp;
+        unsigned int vsp_pipe;
     }
 
 .. _`rcar_du_crtc.members`:
@@ -51,14 +56,26 @@ mmio_offset
 index
     CRTC software and hardware index
 
-started
-    whether the CRTC has been started and is running
+initialized
+    whether the CRTC has been initialized and clocks enabled
+
+vblank_enable
+    whether vblank events are enabled on this CRTC
 
 event
     event to post when the pending page flip completes
 
 flip_wait
     wait queue used to signal page flip completion
+
+vblank_lock
+    protects vblank_wait and vblank_count
+
+vblank_wait
+    wait queue used to signal vertical blanking
+
+vblank_count
+    number of vertical blanking interrupts to wait for
 
 outputs
     bitmask of the outputs (enum rcar_du_output) driven by this CRTC
@@ -67,7 +84,10 @@ group
     CRTC group this CRTC belongs to
 
 vsp
-    *undescribed*
+    VSP feeding video to this CRTC
+
+vsp_pipe
+    index of the VSP pipeline feeding video to this CRTC
 
 .. This file was automatic generated / don't edit.
 

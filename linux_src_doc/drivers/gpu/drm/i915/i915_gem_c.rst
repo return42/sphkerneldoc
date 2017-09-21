@@ -204,6 +204,9 @@ A history of the GTT mmap interface
     into userspace. (This view is aligned and sized appropriately for
     fenced access.)
 
+2 - Recognise WC as a separate cache domain so that we can flush the
+    delayed writes via GTT before performing direct access via WC.
+
 .. _`i915_gem_mmap_gtt_version.restrictions`:
 
 Restrictions
@@ -355,7 +358,7 @@ the timeout parameter.
  -ERESTARTSYS: signal interrupted the wait
  -ENONENT: object doesn't exist
 Also possible, but rare:
- -EAGAIN: GPU wedged
+ -EAGAIN: incomplete, restart syscall
  -ENOMEM: damn
  -ENODEV: Internal IRQ fail
  -E?: The add request failed
@@ -366,6 +369,27 @@ nanoseconds on an object becoming unbusy. Since the wait itself does so
 without holding struct_mutex the object may become re-busied before this
 function completes. A similar but shorter * race condition exists in the busy
 ioctl
+
+.. _`i915_gem_object_set_to_wc_domain`:
+
+i915_gem_object_set_to_wc_domain
+================================
+
+.. c:function:: int i915_gem_object_set_to_wc_domain(struct drm_i915_gem_object *obj, bool write)
+
+    :param struct drm_i915_gem_object \*obj:
+        object to act on
+
+    :param bool write:
+        ask for write access or read only
+
+.. _`i915_gem_object_set_to_wc_domain.description`:
+
+Description
+-----------
+
+This function returns when the move is complete, including waiting on
+flushes to occur.
 
 .. _`i915_gem_object_set_to_gtt_domain`:
 

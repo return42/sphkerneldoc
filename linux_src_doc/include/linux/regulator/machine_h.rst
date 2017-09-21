@@ -85,6 +85,8 @@ Definition
         unsigned int initial_mode;
         unsigned int ramp_delay;
         unsigned int settling_time;
+        unsigned int settling_time_up;
+        unsigned int settling_time_down;
         unsigned int enable_time;
         unsigned int active_discharge;
         unsigned always_on:1;
@@ -157,6 +159,14 @@ ramp_delay
 settling_time
     Time to settle down after voltage change when voltage
     change is non-linear (unit: microseconds).
+
+settling_time_up
+    Time to settle down after voltage increase when voltage
+    change is non-linear (unit: microseconds).
+
+settling_time_down
+    Time to settle down after voltage decrease when
+    voltage change is non-linear (unit: microseconds).
 
 enable_time
     Turn-on time of the rails (unit: microseconds)

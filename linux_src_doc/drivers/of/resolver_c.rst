@@ -1,21 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/of/resolver.c
 
-.. _`find_node_by_full_name`:
-
-find_node_by_full_name
-======================
-
-.. c:function:: struct device_node *find_node_by_full_name(struct device_node *node, const char *full_name)
-
-    the child node links.
-
-    :param struct device_node \*node:
-        *undescribed*
-
-    :param const char \*full_name:
-        *undescribed*
-
 .. _`of_resolve_phandles`:
 
 of_resolve_phandles

@@ -59,6 +59,7 @@ Description
 -----------
 
 Set a new CEC physical address.
+Does nothing if \ ``n``\  == NULL.
 
 .. _`cec_notifier_set_phys_addr_from_edid`:
 
@@ -81,6 +82,7 @@ Description
 -----------
 
 Parses the EDID to obtain the new CEC physical address and set it.
+Does nothing if \ ``n``\  == NULL.
 
 .. _`cec_notifier_register`:
 
@@ -111,6 +113,41 @@ cec_notifier_unregister
 
     :param struct cec_notifier \*n:
         the CEC notifier
+
+.. _`cec_register_cec_notifier`:
+
+cec_register_cec_notifier
+=========================
+
+.. c:function:: void cec_register_cec_notifier(struct cec_adapter *adap, struct cec_notifier *notifier)
+
+    register the notifier with the cec adapter.
+
+    :param struct cec_adapter \*adap:
+        the CEC adapter
+
+    :param struct cec_notifier \*notifier:
+        the CEC notifier
+
+.. _`cec_notifier_phys_addr_invalidate`:
+
+cec_notifier_phys_addr_invalidate
+=================================
+
+.. c:function:: void cec_notifier_phys_addr_invalidate(struct cec_notifier *n)
+
+    set the physical address to INVALID
+
+    :param struct cec_notifier \*n:
+        the CEC notifier
+
+.. _`cec_notifier_phys_addr_invalidate.description`:
+
+Description
+-----------
+
+This is a simple helper function to invalidate the physical
+address. Does nothing if \ ``n``\  == NULL.
 
 .. This file was automatic generated / don't edit.
 

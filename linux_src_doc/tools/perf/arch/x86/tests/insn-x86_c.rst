@@ -6,9 +6,12 @@
 test__insn_x86
 ==============
 
-.. c:function:: int test__insn_x86(int subtest __maybe_unused)
+.. c:function:: int test__insn_x86(int subtest __maybe_unused, int subtest __maybe_unused)
 
     test x86 instruction decoder - new instructions.
+
+    :param int subtest __maybe_unused:
+        *undescribed*
 
     :param int subtest __maybe_unused:
         *undescribed*

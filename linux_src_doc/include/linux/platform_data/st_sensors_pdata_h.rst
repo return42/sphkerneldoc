@@ -20,6 +20,7 @@ Definition
     struct st_sensors_platform_data {
         u8 drdy_int_pin;
         bool open_drain;
+        bool spi_3wire;
     }
 
 .. _`st_sensors_platform_data.members`:
@@ -34,6 +35,9 @@ drdy_int_pin
 
 open_drain
     set the interrupt line to be open drain if possible.
+
+spi_3wire
+    enable spi-3wire mode.
 
 .. This file was automatic generated / don't edit.
 

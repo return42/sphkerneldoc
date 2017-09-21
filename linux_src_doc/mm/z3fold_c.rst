@@ -18,13 +18,19 @@ Definition
 .. code-block:: c
 
     struct z3fold_pool {
+        const char *name;
         spinlock_t lock;
-        struct list_head unbuddied;
+        spinlock_t stale_lock;
+        struct list_head *unbuddied;
         struct list_head lru;
+        struct list_head stale;
         atomic64_t pages_nr;
         const struct z3fold_ops *ops;
         struct zpool *zpool;
         const struct zpool_ops *zpool_ops;
+        struct workqueue_struct *compact_wq;
+        struct workqueue_struct *release_wq;
+        struct work_struct work;
     }
 
 .. _`z3fold_pool.members`:
@@ -32,18 +38,26 @@ Definition
 Members
 -------
 
+name
+    pool name
+
 lock
-    protects all pool fields and first\|last_chunk fields of any
-    z3fold page in the pool
+    protects pool unbuddied/lru lists
+
+stale_lock
+    protects pool stale page list
 
 unbuddied
-    array of lists tracking z3fold pages that contain 2- buddies;
-    the lists each z3fold page is added to depends on the size of
-    its free region.
+    per-cpu array of lists tracking z3fold pages that contain 2-
+    buddies; the list each z3fold page is added to depends on
+    the size of its free region.
 
 lru
     list tracking the z3fold pages in LRU order by most recently
     added buddy.
+
+stale
+    list of pages marked for freeing
 
 pages_nr
     number of z3fold pages in the pool.
@@ -58,6 +72,15 @@ zpool
 zpool_ops
     *undescribed*
 
+compact_wq
+    workqueue for page layout background optimization
+
+release_wq
+    workqueue for safe page release
+
+work
+    work_struct for safe page release
+
 .. _`z3fold_pool.description`:
 
 Description
@@ -71,9 +94,12 @@ pertaining to a particular z3fold pool.
 z3fold_create_pool
 ==================
 
-.. c:function:: struct z3fold_pool *z3fold_create_pool(gfp_t gfp, const struct z3fold_ops *ops)
+.. c:function:: struct z3fold_pool *z3fold_create_pool(const char *name, gfp_t gfp, const struct z3fold_ops *ops)
 
     create a new z3fold pool
+
+    :param const char \*name:
+        pool name
 
     :param gfp_t gfp:
         gfp flags when allocating the z3fold pool structure

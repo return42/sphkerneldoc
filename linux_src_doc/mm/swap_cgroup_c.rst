@@ -32,15 +32,18 @@ Returns old id at success, 0 at failure.
 swap_cgroup_record
 ==================
 
-.. c:function:: unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id)
+.. c:function:: unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id, unsigned int nr_ents)
 
-    record mem_cgroup for this swp_entry.
+    record mem_cgroup for a set of swap entries
 
     :param swp_entry_t ent:
-        swap entry to be recorded into
+        the first swap entry to be recorded into
 
     :param unsigned short id:
         mem_cgroup to be recorded
+
+    :param unsigned int nr_ents:
+        number of swap entries to be recorded
 
 .. _`swap_cgroup_record.description`:
 

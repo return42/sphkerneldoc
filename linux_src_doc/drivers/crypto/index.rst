@@ -20,6 +20,7 @@ crypto
     qce/index
     ux500/index
     vmx/index
+    atmel-ecc_c
     bfin_crc_c
     mv_cesa_c
     s5p-sss_c

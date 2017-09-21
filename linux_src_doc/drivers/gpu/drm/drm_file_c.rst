@@ -33,7 +33,7 @@ specific implementations. For GEM-based drivers this is \ :c:func:`drm_gem_mmap`
 for drivers which use the CMA GEM helpers it's \ :c:func:`drm_gem_cma_mmap`\ .
 
 No other file operations are supported by the DRM userspace API. Overall the
-following is an example #file_operations structure::
+following is an example \ :c:type:`struct file_operations <file_operations>`\  structure::
 
     static const example_drm_fops = {
             .owner = THIS_MODULE,
@@ -50,6 +50,11 @@ following is an example #file_operations structure::
 For plain GEM based drivers there is the \ :c:func:`DEFINE_DRM_GEM_FOPS`\  macro, and for
 CMA based drivers there is the \ :c:func:`DEFINE_DRM_GEM_CMA_FOPS`\  macro to make this
 simpler.
+
+The driver's \ :c:type:`struct file_operations <file_operations>`\  must be stored in \ :c:type:`drm_driver.fops <drm_driver>`\ .
+
+For driver-private IOCTL handling see the more detailed discussion in
+:ref:`IOCTL support in the userland interfaces chapter<drm_driver_ioctl>`.
 
 .. _`drm_open`:
 
@@ -105,9 +110,8 @@ Description
 
 This function must be used by drivers as their \ :c:type:`file_operations.release <file_operations>`\ 
 method. It frees any resources associated with the open file, and calls the
-\ :c:type:`drm_driver.preclose <drm_driver>`\  and \ :c:type:`drm_driver.lastclose <drm_driver>`\  driver callbacks. If this is
-the last open file for the DRM device also proceeds to call the
-\ :c:type:`drm_driver.lastclose <drm_driver>`\  driver callback.
+\ :c:type:`drm_driver.postclose <drm_driver>`\  driver callback. If this is the last open file for the
+DRM device also proceeds to call the \ :c:type:`drm_driver.lastclose <drm_driver>`\  driver callback.
 
 .. _`drm_release.return`:
 

@@ -204,38 +204,5 @@ Description
 
 Disable the interrupt on the requested crtc (all asics).
 
-.. _`amdgpu_get_vblank_timestamp_kms`:
-
-amdgpu_get_vblank_timestamp_kms
-===============================
-
-.. c:function:: int amdgpu_get_vblank_timestamp_kms(struct drm_device *dev, unsigned int pipe, int *max_error, struct timeval *vblank_time, unsigned flags)
-
-    get vblank timestamp
-
-    :param struct drm_device \*dev:
-        drm dev pointer
-
-    :param unsigned int pipe:
-        *undescribed*
-
-    :param int \*max_error:
-        max error
-
-    :param struct timeval \*vblank_time:
-        time value
-
-    :param unsigned flags:
-        flags passed to the driver
-
-.. _`amdgpu_get_vblank_timestamp_kms.description`:
-
-Description
------------
-
-Gets the timestamp on the requested crtc based on the
-scanout position.  (all asics).
-Returns postive status flags on success, negative error on failure.
-
 .. This file was automatic generated / don't edit.
 

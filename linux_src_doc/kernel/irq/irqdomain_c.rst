@@ -1,25 +1,44 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/irq/irqdomain.c
 
-.. _`irq_domain_alloc_fwnode`:
+.. _`__irq_domain_alloc_fwnode`:
 
-irq_domain_alloc_fwnode
-=======================
+__irq_domain_alloc_fwnode
+=========================
 
-.. c:function:: struct fwnode_handle *irq_domain_alloc_fwnode(void *data)
+.. c:function:: struct fwnode_handle *__irq_domain_alloc_fwnode(unsigned int type, int id, const char *name, void *data)
 
     Allocate a fwnode_handle suitable for identifying an irq domain
 
-    :param void \*data:
-        optional user-provided data
+    :param unsigned int type:
+        Type of irqchip_fwnode. See linux/irqdomain.h
 
-.. _`irq_domain_alloc_fwnode.description`:
+    :param int id:
+        Optional user provided id if name != NULL
+
+    :param const char \*name:
+        Optional user provided domain name
+
+    :param void \*data:
+        Optional user-provided data
+
+.. _`__irq_domain_alloc_fwnode.description`:
 
 Description
 -----------
 
-Allocate a struct device_node, and return a poiner to the embedded
+Allocate a struct irqchip_fwid, and return a poiner to the embedded
 fwnode_handle (or NULL on failure).
+
+.. _`__irq_domain_alloc_fwnode.note`:
+
+Note
+----
+
+The types IRQCHIP_FWNODE_NAMED and IRQCHIP_FWNODE_NAMED_ID are
+solely to transport name information to irqdomain creation code. The
+node is not stored. For other types the pointer is kept in the irq
+domain struct.
 
 .. _`irq_domain_free_fwnode`:
 
@@ -663,6 +682,57 @@ descriptor and required hardware resources. The second step,
 \ :c:func:`irq_domain_activate_irq`\ , is to program hardwares with preallocated
 resources. In this way, it's easier to rollback when failing to
 allocate resources.
+
+.. _`irq_domain_push_irq`:
+
+irq_domain_push_irq
+===================
+
+.. c:function:: int irq_domain_push_irq(struct irq_domain *domain, int virq, void *arg)
+
+    Push a domain in to the top of a hierarchy.
+
+    :param struct irq_domain \*domain:
+        Domain to push.
+
+    :param int virq:
+        Irq to push the domain in to.
+
+    :param void \*arg:
+        Passed to the irq_domain_ops \ :c:func:`alloc`\  function.
+
+.. _`irq_domain_push_irq.description`:
+
+Description
+-----------
+
+For an already existing irqdomain hierarchy, as might be obtained
+via a call to \ :c:func:`pci_enable_msix`\ , add an additional domain to the
+head of the processing chain.  Must be called before \ :c:func:`request_irq`\ 
+has been called.
+
+.. _`irq_domain_pop_irq`:
+
+irq_domain_pop_irq
+==================
+
+.. c:function:: int irq_domain_pop_irq(struct irq_domain *domain, int virq)
+
+    Remove a domain from the top of a hierarchy.
+
+    :param struct irq_domain \*domain:
+        Domain to remove.
+
+    :param int virq:
+        Irq to remove the domain from.
+
+.. _`irq_domain_pop_irq.description`:
+
+Description
+-----------
+
+Undo the effects of a call to \ :c:func:`irq_domain_push_irq`\ .  Must be
+called either before \ :c:func:`request_irq`\  or after \ :c:func:`free_irq`\ .
 
 .. _`irq_domain_free_irqs`:
 

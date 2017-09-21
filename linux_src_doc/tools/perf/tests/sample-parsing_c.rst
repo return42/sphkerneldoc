@@ -6,9 +6,12 @@
 test__sample_parsing
 ====================
 
-.. c:function:: int test__sample_parsing(int subtest __maybe_unused)
+.. c:function:: int test__sample_parsing(int subtest __maybe_unused, int subtest __maybe_unused)
 
     test sample parsing.
+
+    :param int subtest __maybe_unused:
+        *undescribed*
 
     :param int subtest __maybe_unused:
         *undescribed*

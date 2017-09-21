@@ -1,6 +1,62 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iio/adc/twl4030-madc.c
 
+.. _`twl4030_madc_request`:
+
+struct twl4030_madc_request
+===========================
+
+.. c:type:: struct twl4030_madc_request
+
+    madc request packet for channel conversion
+
+.. _`twl4030_madc_request.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct twl4030_madc_request {
+        unsigned long channels;
+        bool do_avg;
+        u16 method;
+        u16 type;
+        bool active;
+        bool result_pending;
+        bool raw;
+        int rbuf;
+    }
+
+.. _`twl4030_madc_request.members`:
+
+Members
+-------
+
+channels
+    16 bit bitmap for individual channels
+
+do_avg
+    sample the input channel for 4 consecutive cycles
+
+method
+    RT, SW1, SW2
+
+type
+    Polling or interrupt based method
+
+active
+    Flag if request is active
+
+result_pending
+    Flag from irq handler, that result is ready
+
+raw
+    Return raw value, do not convert it
+
+rbuf
+    Result buffer
+
 .. _`twl4030_madc_data`:
 
 struct twl4030_madc_data

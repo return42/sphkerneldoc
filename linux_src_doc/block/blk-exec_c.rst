@@ -6,14 +6,14 @@
 blk_end_sync_rq
 ===============
 
-.. c:function:: void blk_end_sync_rq(struct request *rq, int error)
+.. c:function:: void blk_end_sync_rq(struct request *rq, blk_status_t error)
 
     executes a completion event on a request
 
     :param struct request \*rq:
         request to complete
 
-    :param int error:
+    :param blk_status_t error:
         end I/O status of the request
 
 .. _`blk_execute_rq_nowait`:

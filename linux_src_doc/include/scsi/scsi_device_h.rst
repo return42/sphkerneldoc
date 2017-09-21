@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/scsi/scsi_device.h
 
+.. _`scsi_vpd`:
+
+struct scsi_vpd
+===============
+
+.. c:type:: struct scsi_vpd
+
+    SCSI Vital Product Data
+
+.. _`scsi_vpd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct scsi_vpd {
+        struct rcu_head rcu;
+        int len;
+        unsigned char data;
+    }
+
+.. _`scsi_vpd.members`:
+
+Members
+-------
+
+rcu
+    For \ :c:func:`kfree_rcu`\ .
+
+len
+    Length in bytes of \ ``data``\ .
+
+data
+    VPD data as defined in various T10 SCSI standard documents.
+
 .. _`shost_for_each_device`:
 
 shost_for_each_device

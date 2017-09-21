@@ -11,7 +11,9 @@ phy
     mdio-boardinfo_c
     mdio_bus_c
     mdio_device_c
+    phy-c45_c
     phy-core_c
     phy_c
     phy_device_c
+    rockchip_c
     swphy_c

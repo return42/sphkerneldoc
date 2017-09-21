@@ -157,7 +157,7 @@ Extended sense data.
 qla2x00_error_entry
 ===================
 
-.. c:function:: void qla2x00_error_entry(scsi_qla_host_t *vha, struct rsp_que *rsp, sts_entry_t *pkt)
+.. c:function:: int qla2x00_error_entry(scsi_qla_host_t *vha, struct rsp_que *rsp, sts_entry_t *pkt)
 
     Process an error entry.
 
@@ -169,6 +169,7 @@ qla2x00_error_entry
 
     :param sts_entry_t \*pkt:
         Entry pointer
+        return : 1=allow further error analysis. 0=no additional error analysis.
 
 .. _`qla24xx_mbx_completion`:
 

@@ -24,6 +24,8 @@ Definition
         s32 right;
         s32 top;
         s32 bottom;
+        s32 fb_left;
+        s32 fb_top;
         u32 pitch;
         union {unnamed_union};
     }
@@ -50,6 +52,12 @@ top
 
 bottom
     Bottom side of bounding box.
+
+fb_left
+    Left side of the framebuffer/content bounding box
+
+fb_top
+    Top of the framebuffer/content bounding box
 
 pitch
     *undescribed*
@@ -390,7 +398,7 @@ vmw_stdu_dmabuf_cpu_clip
 Description
 -----------
 
-This function calculates the bounding box for all the incoming clips
+This function calculates the bounding box for all the incoming clips.
 
 .. _`vmw_stdu_dmabuf_cpu_commit`:
 
@@ -746,32 +754,6 @@ Return
 ------
 
 0 on success, error code otherwise
-
-.. _`vmw_kms_stdu_close_display`:
-
-vmw_kms_stdu_close_display
-==========================
-
-.. c:function:: int vmw_kms_stdu_close_display(struct vmw_private *dev_priv)
-
-    Cleans up after vmw_kms_stdu_init_display
-
-    :param struct vmw_private \*dev_priv:
-        VMW DRM device
-
-.. _`vmw_kms_stdu_close_display.description`:
-
-Description
------------
-
-Frees up any resources allocated by vmw_kms_stdu_init_display
-
-.. _`vmw_kms_stdu_close_display.return`:
-
-Return
-------
-
-0 on success
 
 .. This file was automatic generated / don't edit.
 

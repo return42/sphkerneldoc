@@ -9,3 +9,4 @@ qedi
 
     qedi_h
     qedi_iscsi_h
+    qedi_main_c

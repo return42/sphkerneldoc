@@ -1183,6 +1183,28 @@ Description
 
 Returns 0 on success, negative on failure
 
+.. _`i40evf_set_features`:
+
+i40evf_set_features
+===================
+
+.. c:function:: int i40evf_set_features(struct net_device *netdev, netdev_features_t features)
+
+    set the netdev feature flags
+
+    :param struct net_device \*netdev:
+        ptr to the netdev being adjusted
+
+    :param netdev_features_t features:
+        the feature set that the stack is suggesting
+
+.. _`i40evf_set_features.note`:
+
+Note
+----
+
+expects to be called while under \ :c:func:`rtnl_lock`\ 
+
 .. _`i40evf_features_check`:
 
 i40evf_features_check

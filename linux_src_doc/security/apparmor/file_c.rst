@@ -36,14 +36,14 @@ file_audit_cb
 aa_audit_file
 =============
 
-.. c:function:: int aa_audit_file(struct aa_profile *profile, struct file_perms *perms, const char *op, u32 request, const char *name, const char *target, kuid_t ouid, const char *info, int error)
+.. c:function:: int aa_audit_file(struct aa_profile *profile, struct aa_perms *perms, const char *op, u32 request, const char *name, const char *target, struct aa_label *tlabel, kuid_t ouid, const char *info, int error)
 
     handle the auditing of file operations
 
     :param struct aa_profile \*profile:
         the profile being enforced  (NOT NULL)
 
-    :param struct file_perms \*perms:
+    :param struct aa_perms \*perms:
         the permissions computed for the request (NOT NULL)
 
     :param const char \*op:
@@ -57,6 +57,9 @@ aa_audit_file
 
     :param const char \*target:
         name of target (MAYBE NULL)
+
+    :param struct aa_label \*tlabel:
+        target label (MAY BE NULL)
 
     :param kuid_t ouid:
         object uid
@@ -73,89 +76,6 @@ Return
 ------
 
 %0 or error on failure
-
-.. _`map_old_perms`:
-
-map_old_perms
-=============
-
-.. c:function:: u32 map_old_perms(u32 old)
-
-    map old file perms layout to the new layout
-
-    :param u32 old:
-        permission set in old mapping
-
-.. _`map_old_perms.return`:
-
-Return
-------
-
-new permission mapping
-
-.. _`compute_perms`:
-
-compute_perms
-=============
-
-.. c:function:: struct file_perms compute_perms(struct aa_dfa *dfa, unsigned int state, struct path_cond *cond)
-
-    convert dfa compressed perms to internal perms
-
-    :param struct aa_dfa \*dfa:
-        dfa to compute perms for   (NOT NULL)
-
-    :param unsigned int state:
-        state in dfa
-
-    :param struct path_cond \*cond:
-        conditions to consider  (NOT NULL)
-
-.. _`compute_perms.todo`:
-
-TODO
-----
-
-convert from dfa + state to permission entry, do computation conversion
-at load time.
-
-.. _`compute_perms.return`:
-
-Return
-------
-
-computed permission set
-
-.. _`aa_str_perms`:
-
-aa_str_perms
-============
-
-.. c:function:: unsigned int aa_str_perms(struct aa_dfa *dfa, unsigned int start, const char *name, struct path_cond *cond, struct file_perms *perms)
-
-    find permission that match \ ``name``\ 
-
-    :param struct aa_dfa \*dfa:
-        to match against  (MAYBE NULL)
-
-    :param unsigned int start:
-        *undescribed*
-
-    :param const char \*name:
-        string to match against dfa  (NOT NULL)
-
-    :param struct path_cond \*cond:
-        conditions to consider for permission set computation  (NOT NULL)
-
-    :param struct file_perms \*perms:
-        Returns - the permissions found when matching \ ``name``\ 
-
-.. _`aa_str_perms.return`:
-
-Return
-------
-
-the final state in \ ``dfa``\  when beginning \ ``start``\  and walking \ ``name``\ 
 
 .. _`is_deleted`:
 
@@ -176,19 +96,102 @@ Return
 
 %1 if deleted else \ ``0``\ 
 
+.. _`map_old_perms`:
+
+map_old_perms
+=============
+
+.. c:function:: u32 map_old_perms(u32 old)
+
+    map old file perms layout to the new layout
+
+    :param u32 old:
+        permission set in old mapping
+
+.. _`map_old_perms.return`:
+
+Return
+------
+
+new permission mapping
+
+.. _`aa_compute_fperms`:
+
+aa_compute_fperms
+=================
+
+.. c:function:: struct aa_perms aa_compute_fperms(struct aa_dfa *dfa, unsigned int state, struct path_cond *cond)
+
+    convert dfa compressed perms to internal perms
+
+    :param struct aa_dfa \*dfa:
+        dfa to compute perms for   (NOT NULL)
+
+    :param unsigned int state:
+        state in dfa
+
+    :param struct path_cond \*cond:
+        conditions to consider  (NOT NULL)
+
+.. _`aa_compute_fperms.todo`:
+
+TODO
+----
+
+convert from dfa + state to permission entry, do computation conversion
+at load time.
+
+.. _`aa_compute_fperms.return`:
+
+Return
+------
+
+computed permission set
+
+.. _`aa_str_perms`:
+
+aa_str_perms
+============
+
+.. c:function:: unsigned int aa_str_perms(struct aa_dfa *dfa, unsigned int start, const char *name, struct path_cond *cond, struct aa_perms *perms)
+
+    find permission that match \ ``name``\ 
+
+    :param struct aa_dfa \*dfa:
+        to match against  (MAYBE NULL)
+
+    :param unsigned int start:
+        *undescribed*
+
+    :param const char \*name:
+        string to match against dfa  (NOT NULL)
+
+    :param struct path_cond \*cond:
+        conditions to consider for permission set computation  (NOT NULL)
+
+    :param struct aa_perms \*perms:
+        Returns - the permissions found when matching \ ``name``\ 
+
+.. _`aa_str_perms.return`:
+
+Return
+------
+
+the final state in \ ``dfa``\  when beginning \ ``start``\  and walking \ ``name``\ 
+
 .. _`aa_path_perm`:
 
 aa_path_perm
 ============
 
-.. c:function:: int aa_path_perm(const char *op, struct aa_profile *profile, const struct path *path, int flags, u32 request, struct path_cond *cond)
+.. c:function:: int aa_path_perm(const char *op, struct aa_label *label, const struct path *path, int flags, u32 request, struct path_cond *cond)
 
     do permissions check & audit for \ ``path``\ 
 
     :param const char \*op:
         operation being checked
 
-    :param struct aa_profile \*profile:
+    :param struct aa_label \*label:
         profile being enforced  (NOT NULL)
 
     :param const struct path \*path:
@@ -246,12 +249,12 @@ Return
 aa_path_link
 ============
 
-.. c:function:: int aa_path_link(struct aa_profile *profile, struct dentry *old_dentry, const struct path *new_dir, struct dentry *new_dentry)
+.. c:function:: int aa_path_link(struct aa_label *label, struct dentry *old_dentry, const struct path *new_dir, struct dentry *new_dentry)
 
     Handle hard link permission check
 
-    :param struct aa_profile \*profile:
-        the profile being enforced  (NOT NULL)
+    :param struct aa_label \*label:
+        the label being enforced  (NOT NULL)
 
     :param struct dentry \*old_dentry:
         the target dentry  (NOT NULL)
@@ -288,15 +291,15 @@ Return
 aa_file_perm
 ============
 
-.. c:function:: int aa_file_perm(const char *op, struct aa_profile *profile, struct file *file, u32 request)
+.. c:function:: int aa_file_perm(const char *op, struct aa_label *label, struct file *file, u32 request)
 
     do permission revalidation check & audit for \ ``file``\ 
 
     :param const char \*op:
         operation being checked
 
-    :param struct aa_profile \*profile:
-        profile being enforced   (NOT NULL)
+    :param struct aa_label \*label:
+        label being enforced   (NOT NULL)
 
     :param struct file \*file:
         file to revalidate access permissions on  (NOT NULL)

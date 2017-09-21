@@ -76,7 +76,7 @@ validate for command submission.
 amdgpu_vm_validate_level
 ========================
 
-.. c:function:: int amdgpu_vm_validate_level(struct amdgpu_vm_pt *parent, int (*validate)(void *, struct amdgpu_bo *), void *param)
+.. c:function:: int amdgpu_vm_validate_level(struct amdgpu_vm_pt *parent, int (*validate)(void *, struct amdgpu_bo *), void *param, bool use_cpu_for_update, struct ttm_bo_global *glob)
 
     validate a single page table level
 
@@ -88,6 +88,12 @@ amdgpu_vm_validate_level
 
     :param void \*param:
         parameter for the validation callback
+
+    :param bool use_cpu_for_update:
+        *undescribed*
+
+    :param struct ttm_bo_global \*glob:
+        *undescribed*
 
 .. _`amdgpu_vm_validate_level.description`:
 
@@ -124,46 +130,39 @@ Description
 
 Validate the page table BOs on command submission if neccessary.
 
-.. _`amdgpu_vm_move_level_in_lru`:
+.. _`amdgpu_vm_alloc_levels`:
 
-amdgpu_vm_move_level_in_lru
-===========================
+amdgpu_vm_alloc_levels
+======================
 
-.. c:function:: void amdgpu_vm_move_level_in_lru(struct amdgpu_vm_pt *parent)
+.. c:function:: int amdgpu_vm_alloc_levels(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_vm_pt *parent, uint64_t saddr, uint64_t eaddr, unsigned level)
 
-    move one level of PT BOs to the LRU tail
+    allocate the PD/PT levels
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_vm \*vm:
+        requested vm
 
     :param struct amdgpu_vm_pt \*parent:
         *undescribed*
 
-.. _`amdgpu_vm_move_level_in_lru.description`:
+    :param uint64_t saddr:
+        start of the address range
+
+    :param uint64_t eaddr:
+        end of the address range
+
+    :param unsigned level:
+        *undescribed*
+
+.. _`amdgpu_vm_alloc_levels.description`:
 
 Description
 -----------
 
-Move the PT BOs to the tail of the LRU.
-
-.. _`amdgpu_vm_move_pt_bos_in_lru`:
-
-amdgpu_vm_move_pt_bos_in_lru
-============================
-
-.. c:function:: void amdgpu_vm_move_pt_bos_in_lru(struct amdgpu_device *adev, struct amdgpu_vm *vm)
-
-    move the PT BOs to the LRU tail
-
-    :param struct amdgpu_device \*adev:
-        amdgpu device instance
-
-    :param struct amdgpu_vm \*vm:
-        vm providing the BOs
-
-.. _`amdgpu_vm_move_pt_bos_in_lru.description`:
-
-Description
------------
-
-Move the PT BOs to the tail of the LRU.
+Make sure the page directories and page tables are allocated
 
 .. _`amdgpu_vm_alloc_pts`:
 
@@ -246,12 +245,24 @@ Description
 
 Allocate an id for the vm, adding fences to the sync obj as necessary.
 
+.. _`amdgpu_vm_check_compute_bug`:
+
+amdgpu_vm_check_compute_bug
+===========================
+
+.. c:function:: void amdgpu_vm_check_compute_bug(struct amdgpu_device *adev)
+
+    check whether asic has compute vm bug
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
 .. _`amdgpu_vm_flush`:
 
 amdgpu_vm_flush
 ===============
 
-.. c:function:: int amdgpu_vm_flush(struct amdgpu_ring *ring, struct amdgpu_job *job)
+.. c:function:: int amdgpu_vm_flush(struct amdgpu_ring *ring, struct amdgpu_job *job, bool need_pipe_sync)
 
     hardware flush the vm
 
@@ -259,6 +270,9 @@ amdgpu_vm_flush
         ring to use for flush
 
     :param struct amdgpu_job \*job:
+        *undescribed*
+
+    :param bool need_pipe_sync:
         *undescribed*
 
 .. _`amdgpu_vm_flush.description`:
@@ -292,6 +306,25 @@ Description
 -----------
 
 Reset saved GDW, GWS and OA to force switch on next flush.
+
+.. _`amdgpu_vm_reset_all_ids`:
+
+amdgpu_vm_reset_all_ids
+=======================
+
+.. c:function:: void amdgpu_vm_reset_all_ids(struct amdgpu_device *adev)
+
+    reset VMID to zero
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device structure
+
+.. _`amdgpu_vm_reset_all_ids.description`:
+
+Description
+-----------
+
+Reset VMID to force flush on next use
 
 .. _`amdgpu_vm_bo_find`:
 
@@ -411,14 +444,48 @@ Description
 Look up the physical address of the page that the pte resolves
 to and return the pointer for the page table entry.
 
-.. _`amdgpu_vm_get_pt`:
+.. _`amdgpu_vm_cpu_set_ptes`:
 
-amdgpu_vm_get_pt
-================
+amdgpu_vm_cpu_set_ptes
+======================
 
-.. c:function:: struct amdgpu_bo *amdgpu_vm_get_pt(struct amdgpu_pte_update_params *p, uint64_t addr)
+.. c:function:: void amdgpu_vm_cpu_set_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint64_t flags)
 
-    find the page table for an address
+    helper to update page tables via CPU
+
+    :param struct amdgpu_pte_update_params \*params:
+        see amdgpu_pte_update_params definition
+
+    :param uint64_t pe:
+        kmap addr of the page entry
+
+    :param uint64_t addr:
+        dst addr to write into pe
+
+    :param unsigned count:
+        number of page entries to update
+
+    :param uint32_t incr:
+        increase next addr by incr bytes
+
+    :param uint64_t flags:
+        hw access flags
+
+.. _`amdgpu_vm_cpu_set_ptes.description`:
+
+Description
+-----------
+
+Write count number of PT/PD entries directly.
+
+.. _`amdgpu_vm_get_entry`:
+
+amdgpu_vm_get_entry
+===================
+
+.. c:function:: void amdgpu_vm_get_entry(struct amdgpu_pte_update_params *p, uint64_t addr, struct amdgpu_vm_pt **entry, struct amdgpu_vm_pt **parent)
+
+    find the entry for an address
 
     :param struct amdgpu_pte_update_params \*p:
         see amdgpu_pte_update_params definition
@@ -426,19 +493,59 @@ amdgpu_vm_get_pt
     :param uint64_t addr:
         virtual address in question
 
-.. _`amdgpu_vm_get_pt.description`:
+    :param struct amdgpu_vm_pt \*\*entry:
+        resulting entry or NULL
+
+    :param struct amdgpu_vm_pt \*\*parent:
+        parent entry
+
+.. _`amdgpu_vm_get_entry.description`:
 
 Description
 -----------
 
-Find the page table BO for a virtual address, return NULL when none found.
+Find the vm_pt entry and it's parent for the given address.
+
+.. _`amdgpu_vm_handle_huge_pages`:
+
+amdgpu_vm_handle_huge_pages
+===========================
+
+.. c:function:: void amdgpu_vm_handle_huge_pages(struct amdgpu_pte_update_params *p, struct amdgpu_vm_pt *entry, struct amdgpu_vm_pt *parent, unsigned nptes, uint64_t dst, uint64_t flags)
+
+    handle updating the PD with huge pages
+
+    :param struct amdgpu_pte_update_params \*p:
+        see amdgpu_pte_update_params definition
+
+    :param struct amdgpu_vm_pt \*entry:
+        vm_pt entry to check
+
+    :param struct amdgpu_vm_pt \*parent:
+        parent entry
+
+    :param unsigned nptes:
+        number of PTEs updated with this operation
+
+    :param uint64_t dst:
+        destination address where the PTEs should point to
+
+    :param uint64_t flags:
+        access flags fro the PTEs
+
+.. _`amdgpu_vm_handle_huge_pages.description`:
+
+Description
+-----------
+
+Check if we can update the PD with a huge page.
 
 .. _`amdgpu_vm_update_ptes`:
 
 amdgpu_vm_update_ptes
 =====================
 
-.. c:function:: void amdgpu_vm_update_ptes(struct amdgpu_pte_update_params *params, uint64_t start, uint64_t end, uint64_t dst, uint64_t flags)
+.. c:function:: int amdgpu_vm_update_ptes(struct amdgpu_pte_update_params *params, uint64_t start, uint64_t end, uint64_t dst, uint64_t flags)
 
     make sure that page tables are valid
 
@@ -463,6 +570,7 @@ Description
 -----------
 
 Update the page tables in the range \ ``start``\  - \ ``end``\ .
+Returns 0 for success, -EINVAL for failure.
 
 .. _`amdgpu_vm_bo_update_mapping`:
 
@@ -727,14 +835,14 @@ Returns 0 for success.
 
 PTs have to be reserved and mutex must be locked!
 
-.. _`amdgpu_vm_clear_invalids`:
+.. _`amdgpu_vm_clear_moved`:
 
-amdgpu_vm_clear_invalids
-========================
+amdgpu_vm_clear_moved
+=====================
 
-.. c:function:: int amdgpu_vm_clear_invalids(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_sync *sync)
+.. c:function:: int amdgpu_vm_clear_moved(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_sync *sync)
 
-    clear invalidated BOs in the PT
+    clear moved BOs in the PT
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
@@ -745,12 +853,12 @@ amdgpu_vm_clear_invalids
     :param struct amdgpu_sync \*sync:
         *undescribed*
 
-.. _`amdgpu_vm_clear_invalids.description`:
+.. _`amdgpu_vm_clear_moved.description`:
 
 Description
 -----------
 
-Make sure all invalidated BOs are cleared in the PT.
+Make sure all moved BOs are cleared in the PT.
 Returns 0 for success.
 
 PTs have to be reserved and mutex must be locked!
@@ -962,14 +1070,29 @@ Description
 
 Mark \ ``bo``\  as invalid.
 
+.. _`amdgpu_vm_set_fragment_size`:
+
+amdgpu_vm_set_fragment_size
+===========================
+
+.. c:function:: void amdgpu_vm_set_fragment_size(struct amdgpu_device *adev, uint32_t fragment_size_default)
+
+    adjust fragment size in PTE
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param uint32_t fragment_size_default:
+        the default fragment size if it's set auto
+
 .. _`amdgpu_vm_adjust_size`:
 
 amdgpu_vm_adjust_size
 =====================
 
-.. c:function:: void amdgpu_vm_adjust_size(struct amdgpu_device *adev, uint64_t vm_size)
+.. c:function:: void amdgpu_vm_adjust_size(struct amdgpu_device *adev, uint64_t vm_size, uint32_t fragment_size_default)
 
-    adjust vm size and block size
+    adjust vm size, block size and fragment size
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
@@ -977,12 +1100,15 @@ amdgpu_vm_adjust_size
     :param uint64_t vm_size:
         the default vm size if it's set auto
 
+    :param uint32_t fragment_size_default:
+        *undescribed*
+
 .. _`amdgpu_vm_init`:
 
 amdgpu_vm_init
 ==============
 
-.. c:function:: int amdgpu_vm_init(struct amdgpu_device *adev, struct amdgpu_vm *vm)
+.. c:function:: int amdgpu_vm_init(struct amdgpu_device *adev, struct amdgpu_vm *vm, int vm_context)
 
     initialize a vm instance
 
@@ -991,6 +1117,9 @@ amdgpu_vm_init
 
     :param struct amdgpu_vm \*vm:
         requested vm
+
+    :param int vm_context:
+        Indicates if it GFX or Compute context
 
 .. _`amdgpu_vm_init.description`:
 

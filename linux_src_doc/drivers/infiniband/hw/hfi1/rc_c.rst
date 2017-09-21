@@ -60,7 +60,7 @@ Return 1 if constructed; otherwise, return 0.
 hfi1_send_rc_ack
 ================
 
-.. c:function:: void hfi1_send_rc_ack(struct hfi1_ctxtdata *rcd, struct rvt_qp *qp, int is_fecn)
+.. c:function:: void hfi1_send_rc_ack(struct hfi1_ctxtdata *rcd, struct rvt_qp *qp, bool is_fecn)
 
     Construct an ACK packet and send it
 
@@ -70,7 +70,7 @@ hfi1_send_rc_ack
     :param struct rvt_qp \*qp:
         a pointer to the QP
 
-    :param int is_fecn:
+    :param bool is_fecn:
         *undescribed*
 
 .. _`hfi1_send_rc_ack.description`:
@@ -148,39 +148,12 @@ Returns 1 if OK, 0 if current operation should be aborted (NAK).
 rc_rcv_resp
 ===========
 
-.. c:function:: void rc_rcv_resp(struct hfi1_ibport *ibp, struct ib_other_headers *ohdr, void *data, u32 tlen, struct rvt_qp *qp, u32 opcode, u32 psn, u32 hdrsize, u32 pmtu, struct hfi1_ctxtdata *rcd)
+.. c:function:: void rc_rcv_resp(struct hfi1_packet *packet)
 
     process an incoming RC response packet
 
-    :param struct hfi1_ibport \*ibp:
-        the port this packet came in on
-
-    :param struct ib_other_headers \*ohdr:
-        the other headers for this packet
-
-    :param void \*data:
-        the packet data
-
-    :param u32 tlen:
-        the packet length
-
-    :param struct rvt_qp \*qp:
-        the QP for this packet
-
-    :param u32 opcode:
-        the opcode for this packet
-
-    :param u32 psn:
-        the packet sequence number for this packet
-
-    :param u32 hdrsize:
-        the header length
-
-    :param u32 pmtu:
-        the path MTU
-
-    :param struct hfi1_ctxtdata \*rcd:
-        *undescribed*
+    :param struct hfi1_packet \*packet:
+        data packet information
 
 .. _`rc_rcv_resp.description`:
 
@@ -242,7 +215,7 @@ hfi1_rc_rcv
     process an incoming RC packet
 
     :param struct hfi1_packet \*packet:
-        *undescribed*
+        data packet information
 
 .. _`hfi1_rc_rcv.description`:
 

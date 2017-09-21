@@ -242,6 +242,60 @@ drm_dp_find_vcpi_slots
     :param int pbn:
         payload bandwidth to convert into slots.
 
+.. _`drm_dp_atomic_find_vcpi_slots`:
+
+drm_dp_atomic_find_vcpi_slots
+=============================
+
+.. c:function:: int drm_dp_atomic_find_vcpi_slots(struct drm_atomic_state *state, struct drm_dp_mst_topology_mgr *mgr, struct drm_dp_mst_port *port, int pbn)
+
+    Find and add vcpi slots to the state
+
+    :param struct drm_atomic_state \*state:
+        global atomic state
+
+    :param struct drm_dp_mst_topology_mgr \*mgr:
+        MST topology manager for the port
+
+    :param struct drm_dp_mst_port \*port:
+        port to find vcpi slots for
+
+    :param int pbn:
+        bandwidth required for the mode in PBN
+
+.. _`drm_dp_atomic_find_vcpi_slots.return`:
+
+Return
+------
+
+Total slots in the atomic state assigned for this port or error
+
+.. _`drm_dp_atomic_release_vcpi_slots`:
+
+drm_dp_atomic_release_vcpi_slots
+================================
+
+.. c:function:: int drm_dp_atomic_release_vcpi_slots(struct drm_atomic_state *state, struct drm_dp_mst_topology_mgr *mgr, int slots)
+
+    Release allocated vcpi slots
+
+    :param struct drm_atomic_state \*state:
+        global atomic state
+
+    :param struct drm_dp_mst_topology_mgr \*mgr:
+        MST topology manager for the port
+
+    :param int slots:
+        number of vcpi slots to release
+
+.. _`drm_dp_atomic_release_vcpi_slots.return`:
+
+Return
+------
+
+0 if \ ``slots``\  were added back to \ :c:type:`drm_dp_mst_topology_state->avail_slots <drm_dp_mst_topology_state>`\  or
+negative error code
+
 .. _`drm_dp_mst_allocate_vcpi`:
 
 drm_dp_mst_allocate_vcpi
@@ -362,6 +416,39 @@ Description
 -----------
 
 helper to dump MST topology to a seq file for debugfs.
+
+.. _`drm_atomic_get_mst_topology_state`:
+
+drm_atomic_get_mst_topology_state
+=================================
+
+.. c:function:: struct drm_dp_mst_topology_state *drm_atomic_get_mst_topology_state(struct drm_atomic_state *state, struct drm_dp_mst_topology_mgr *mgr)
+
+    get MST topology state
+
+    :param struct drm_atomic_state \*state:
+        global atomic state
+
+    :param struct drm_dp_mst_topology_mgr \*mgr:
+        MST topology manager, also the private object in this case
+
+.. _`drm_atomic_get_mst_topology_state.description`:
+
+Description
+-----------
+
+This function wraps \ :c:func:`drm_atomic_get_priv_obj_state`\  passing in the MST atomic
+state vtable so that the private object state returned is that of a MST
+topology object. Also, \ :c:func:`drm_atomic_get_private_obj_state`\  expects the caller
+to care of the locking, so warn if don't hold the connection_mutex.
+
+.. _`drm_atomic_get_mst_topology_state.return`:
+
+Return
+------
+
+
+The MST topology state or error pointer.
 
 .. _`drm_dp_mst_topology_mgr_init`:
 

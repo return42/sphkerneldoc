@@ -164,6 +164,33 @@ i40iw_put_cqp_request
     :param struct i40iw_cqp_request \*cqp_request:
         to be put back in cqp list
 
+.. _`i40iw_free_pending_cqp_request`:
+
+i40iw_free_pending_cqp_request
+==============================
+
+.. c:function:: void i40iw_free_pending_cqp_request(struct i40iw_cqp *cqp, struct i40iw_cqp_request *cqp_request)
+
+    free pending cqp request objs
+
+    :param struct i40iw_cqp \*cqp:
+        cqp ptr
+
+    :param struct i40iw_cqp_request \*cqp_request:
+        to be put back in cqp list
+
+.. _`i40iw_cleanup_pending_cqp_op`:
+
+i40iw_cleanup_pending_cqp_op
+============================
+
+.. c:function:: void i40iw_cleanup_pending_cqp_op(struct i40iw_device *iwdev)
+
+    clean-up cqp with no completions
+
+    :param struct i40iw_device \*iwdev:
+        iwarp device
+
 .. _`i40iw_free_qp`:
 
 i40iw_free_qp
@@ -448,21 +475,6 @@ i40iw_qp_suspend_resume
 
     :param bool suspend:
         flag if suspend or resume
-
-.. _`i40iw_qp_mss_modify`:
-
-i40iw_qp_mss_modify
-===================
-
-.. c:function:: void i40iw_qp_mss_modify(struct i40iw_sc_dev *dev, struct i40iw_sc_qp *qp)
-
-    modify mss for qp
-
-    :param struct i40iw_sc_dev \*dev:
-        hardware control device structure
-
-    :param struct i40iw_sc_qp \*qp:
-        hardware control qp
 
 .. _`i40iw_term_modify_qp`:
 

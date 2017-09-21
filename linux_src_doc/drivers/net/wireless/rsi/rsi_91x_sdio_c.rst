@@ -302,7 +302,7 @@ None.
 rsi_sdio_read_register_multiple
 ===============================
 
-.. c:function:: int rsi_sdio_read_register_multiple(struct rsi_hw *adapter, u32 addr, u32 count, u8 *data)
+.. c:function:: int rsi_sdio_read_register_multiple(struct rsi_hw *adapter, u32 addr, u8 *data, u16 count)
 
     This function read multiple bytes of information from the SD card.
 
@@ -312,11 +312,11 @@ rsi_sdio_read_register_multiple
     :param u32 addr:
         Address of the register.
 
-    :param u32 count:
-        Number of multiple bytes to be read.
-
     :param u8 \*data:
         Pointer to the read data.
+
+    :param u16 count:
+        Number of multiple bytes to be read.
 
 .. _`rsi_sdio_read_register_multiple.return`:
 
@@ -330,7 +330,7 @@ Return
 rsi_sdio_write_register_multiple
 ================================
 
-.. c:function:: int rsi_sdio_write_register_multiple(struct rsi_hw *adapter, u32 addr, u8 *data, u32 count)
+.. c:function:: int rsi_sdio_write_register_multiple(struct rsi_hw *adapter, u32 addr, u8 *data, u16 count)
 
     This function writes multiple bytes of information to the SD card.
 
@@ -343,7 +343,7 @@ rsi_sdio_write_register_multiple
     :param u8 \*data:
         Pointer to the data that has to be written.
 
-    :param u32 count:
+    :param u16 count:
         Number of multiple bytes to be written.
 
 .. _`rsi_sdio_write_register_multiple.return`:

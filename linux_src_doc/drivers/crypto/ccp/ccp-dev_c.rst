@@ -137,12 +137,12 @@ ccp_cmd_queue_thread
 ccp_alloc_struct
 ================
 
-.. c:function:: struct ccp_device *ccp_alloc_struct(struct device *dev)
+.. c:function:: struct ccp_device *ccp_alloc_struct(struct sp_device *sp)
 
     allocate and initialize the ccp_device struct
 
-    :param struct device \*dev:
-        device struct of the CCP
+    :param struct sp_device \*sp:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

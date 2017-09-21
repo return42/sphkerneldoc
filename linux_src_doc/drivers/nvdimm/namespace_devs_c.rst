@@ -143,12 +143,15 @@ namespace_update_uuid
 create_namespace_pmem
 =====================
 
-.. c:function:: struct device *create_namespace_pmem(struct nd_region *nd_region, struct nd_namespace_label *nd_label)
+.. c:function:: struct device *create_namespace_pmem(struct nd_region *nd_region, struct nd_namespace_index *nsindex, struct nd_namespace_label *nd_label)
 
     validate interleave set labelling, retrieve label0
 
     :param struct nd_region \*nd_region:
         region with mappings to validate
+
+    :param struct nd_namespace_index \*nsindex:
+        *undescribed*
 
     :param struct nd_namespace_label \*nd_label:
         target pmem namespace label to evaluate

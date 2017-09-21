@@ -7,6 +7,5 @@ intel
 .. toctree::
     :maxdepth: 1
 
-    cqm_c
     pt_c
     pt_h

@@ -85,6 +85,44 @@ Description
 This schedules qp progress and caller should hold
 the s_lock.
 
+.. _`qp_iter_print`:
+
+qp_iter_print
+=============
+
+.. c:function:: void qp_iter_print(struct seq_file *s, struct rvt_qp_iter *iter)
+
+    print the qp information to seq_file
+
+    :param struct seq_file \*s:
+        the seq_file to emit the qp information on
+
+    :param struct rvt_qp_iter \*iter:
+        the iterator for the qp hash list
+
+.. _`hfi1_qp_iter_cb`:
+
+hfi1_qp_iter_cb
+===============
+
+.. c:function:: void hfi1_qp_iter_cb(struct rvt_qp *qp, u64 v)
+
+    callback for iterator \ ``qp``\  - the qp \ ``v``\  - the sl in low bits of v
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param u64 v:
+        *undescribed*
+
+.. _`hfi1_qp_iter_cb.description`:
+
+Description
+-----------
+
+This is called from the iterator callback to work
+on an individual qp.
+
 .. _`hfi1_error_port_qps`:
 
 hfi1_error_port_qps

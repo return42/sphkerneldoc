@@ -24,7 +24,9 @@ Definition
         struct pid *pid;
         const char *name;
         struct list_head link;
+        struct llist_node free_link;
         struct kref ref;
+        struct rcu_head rcu;
         unsigned long flags;
     #define CONTEXT_NO_ZEROMAP BIT(0)
     #define CONTEXT_NO_ERROR_CAPTURE 1
@@ -39,12 +41,14 @@ Definition
         struct intel_context engine;
         u32 ring_size;
         u32 desc_template;
-        unsigned int guilty_count;
-        unsigned int active_count;
+        atomic_t guilty_count;
+        atomic_t active_count;
     #define CONTEXT_SCORE_GUILTY 10
     #define CONTEXT_SCORE_BAN_THRESHOLD 40
-        int ban_score;
+        atomic_t ban_score;
         u8 remap_slice;
+        struct radix_tree_root handles_vma;
+        struct list_head handles_list;
     }
 
 .. _`i915_gem_context.members`:
@@ -82,6 +86,9 @@ name
 link
     *undescribed*
 
+free_link
+    *undescribed*
+
 ref
     reference count
     A reference to a context is held by both the client who created it
@@ -89,6 +96,9 @@ ref
     (to ensure the hardware has access to the state until it has
     finished all pending writes). See \ :c:func:`i915_gem_context_get`\  and
     \ :c:func:`i915_gem_context_put`\  for access.
+
+rcu
+    rcu_head for deferred freeing.
 
 flags
     small set of booleans
@@ -137,6 +147,12 @@ ban_score
     *undescribed*
 
 remap_slice
+    *undescribed*
+
+handles_vma
+    *undescribed*
+
+handles_list
     *undescribed*
 
 .. _`i915_gem_context.description`:

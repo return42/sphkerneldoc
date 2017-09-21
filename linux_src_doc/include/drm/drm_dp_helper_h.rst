@@ -195,5 +195,98 @@ Description
 Returns the number of bytes transferred (1) on success, or a negative
 error code on failure.
 
+.. _`drm_dp_desc`:
+
+struct drm_dp_desc
+==================
+
+.. c:type:: struct drm_dp_desc
+
+    DP branch/sink device descriptor
+
+.. _`drm_dp_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_dp_desc {
+        struct drm_dp_dpcd_ident ident;
+        u32 quirks;
+    }
+
+.. _`drm_dp_desc.members`:
+
+Members
+-------
+
+ident
+    DP device identification from DPCD 0x400 (sink) or 0x500 (branch).
+
+quirks
+    Quirks; use \ :c:func:`drm_dp_has_quirk`\  to query for the quirks.
+
+.. _`drm_dp_quirk`:
+
+enum drm_dp_quirk
+=================
+
+.. c:type:: enum drm_dp_quirk
+
+    Display Port sink/branch device specific quirks
+
+.. _`drm_dp_quirk.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_dp_quirk {
+        DP_DPCD_QUIRK_LIMITED_M_N
+    };
+
+.. _`drm_dp_quirk.constants`:
+
+Constants
+---------
+
+DP_DPCD_QUIRK_LIMITED_M_N
+
+    The device requires main link attributes Mvid and Nvid to be limited
+    to 16 bits.
+
+.. _`drm_dp_quirk.description`:
+
+Description
+-----------
+
+Display Port sink and branch devices in the wild have a variety of bugs, try
+to collect them here. The quirks are shared, but it's up to the drivers to
+implement workarounds for them.
+
+.. _`drm_dp_has_quirk`:
+
+drm_dp_has_quirk
+================
+
+.. c:function:: bool drm_dp_has_quirk(const struct drm_dp_desc *desc, enum drm_dp_quirk quirk)
+
+    does the DP device have a specific quirk
+
+    :param const struct drm_dp_desc \*desc:
+        Device decriptor filled by \ :c:func:`drm_dp_read_desc`\ 
+
+    :param enum drm_dp_quirk quirk:
+        Quirk to query for
+
+.. _`drm_dp_has_quirk.description`:
+
+Description
+-----------
+
+Return true if DP device identified by \ ``desc``\  has \ ``quirk``\ .
+
 .. This file was automatic generated / don't edit.
 

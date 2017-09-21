@@ -9,3 +9,4 @@ keystone
 
     gate_c
     pll_c
+    sci-clk_c

@@ -156,15 +156,12 @@ The function is called when destroying aeq/ceq
 i40iw_destroy_aeq
 =================
 
-.. c:function:: void i40iw_destroy_aeq(struct i40iw_device *iwdev, bool reset)
+.. c:function:: void i40iw_destroy_aeq(struct i40iw_device *iwdev)
 
     destroy aeq
 
     :param struct i40iw_device \*iwdev:
         iwarp device
-
-    :param bool reset:
-        true if called before reset
 
 .. _`i40iw_destroy_aeq.description`:
 
@@ -180,7 +177,7 @@ The function is called during driver unload
 i40iw_destroy_ceq
 =================
 
-.. c:function:: void i40iw_destroy_ceq(struct i40iw_device *iwdev, struct i40iw_ceq *iwceq, bool reset)
+.. c:function:: void i40iw_destroy_ceq(struct i40iw_device *iwdev, struct i40iw_ceq *iwceq)
 
     destroy ceq
 
@@ -189,9 +186,6 @@ i40iw_destroy_ceq
 
     :param struct i40iw_ceq \*iwceq:
         ceq to be destroyed
-
-    :param bool reset:
-        true if called before reset
 
 .. _`i40iw_destroy_ceq.description`:
 
@@ -206,15 +200,12 @@ free the resources associated with the ceq
 i40iw_dele_ceqs
 ===============
 
-.. c:function:: void i40iw_dele_ceqs(struct i40iw_device *iwdev, bool reset)
+.. c:function:: void i40iw_dele_ceqs(struct i40iw_device *iwdev)
 
     destroy all ceq's
 
     :param struct i40iw_device \*iwdev:
         iwarp device
-
-    :param bool reset:
-        true if called before reset
 
 .. _`i40iw_dele_ceqs.description`:
 
@@ -229,15 +220,12 @@ disable the ceq interrupt and destroy the ceq
 i40iw_destroy_ccq
 =================
 
-.. c:function:: void i40iw_destroy_ccq(struct i40iw_device *iwdev, bool reset)
+.. c:function:: void i40iw_destroy_ccq(struct i40iw_device *iwdev)
 
     destroy control cq
 
     :param struct i40iw_device \*iwdev:
         iwarp device
-
-    :param bool reset:
-        true if called before reset
 
 .. _`i40iw_destroy_ccq.description`:
 
@@ -827,15 +815,12 @@ Return 0 if successful, otherwise return error
 i40iw_deinit_device
 ===================
 
-.. c:function:: void i40iw_deinit_device(struct i40iw_device *iwdev, bool reset)
+.. c:function:: void i40iw_deinit_device(struct i40iw_device *iwdev)
 
     clean up the device resources
 
     :param struct i40iw_device \*iwdev:
         iwarp device
-
-    :param bool reset:
-        true if called before reset
 
 .. _`i40iw_deinit_device.description`:
 

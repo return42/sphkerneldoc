@@ -430,6 +430,38 @@ finished_fr_nam
 __unused
     *undescribed*
 
+.. _`iwl_tfd_tb_hi_n_len`:
+
+enum iwl_tfd_tb_hi_n_len
+========================
+
+.. c:type:: enum iwl_tfd_tb_hi_n_len
+
+    TB hi_n_len bits
+
+.. _`iwl_tfd_tb_hi_n_len.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_tfd_tb_hi_n_len {
+        TB_HI_N_LEN_ADDR_HI_MSK,
+        TB_HI_N_LEN_LEN_MSK
+    };
+
+.. _`iwl_tfd_tb_hi_n_len.constants`:
+
+Constants
+---------
+
+TB_HI_N_LEN_ADDR_HI_MSK
+    high 4 bits (to make it 36) of DMA address
+
+TB_HI_N_LEN_LEN_MSK
+    length of the TB
+
 .. _`iwl_tfd_tb`:
 
 struct iwl_tfd_tb
@@ -460,8 +492,7 @@ lo
     every even is unaligned on 16 bit boundary
 
 hi_n_len
-    32] portion of dma
-    4-15 length of the tx buffer
+    &enum iwl_tfd_tb_hi_n_len
 
 .. _`iwl_tfd_tb.description`:
 

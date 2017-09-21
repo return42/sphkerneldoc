@@ -69,7 +69,7 @@ hfi1_make_grh
         the global route address to send to
 
     :param u32 hwords:
-        the number of 32 bit words of header being sent
+        size of header after grh being sent in dwords
 
     :param u32 nwords:
         the number of 32 bit words of data being sent

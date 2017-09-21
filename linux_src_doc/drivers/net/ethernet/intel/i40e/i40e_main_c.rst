@@ -202,6 +202,21 @@ Description
 Returns the address of the device statistics structure.
 The statistics are actually updated from the service task.
 
+.. _`i40e_get_netdev_stats_struct_tx`:
+
+i40e_get_netdev_stats_struct_tx
+===============================
+
+.. c:function:: void i40e_get_netdev_stats_struct_tx(struct i40e_ring *ring, struct rtnl_link_stats64 *stats)
+
+    populate stats from a Tx ring
+
+    :param struct i40e_ring \*ring:
+        Tx ring to get statistics from
+
+    :param struct rtnl_link_stats64 \*stats:
+        statistics entry to be updated
+
 .. _`i40e_get_netdev_stats_struct`:
 
 i40e_get_netdev_stats_struct
@@ -1026,6 +1041,18 @@ i40e_sync_filters_subtask
     :param struct i40e_pf \*pf:
         board private structure
 
+.. _`i40e_max_xdp_frame_size`:
+
+i40e_max_xdp_frame_size
+=======================
+
+.. c:function:: int i40e_max_xdp_frame_size(struct i40e_vsi *vsi)
+
+    returns the maximum allowed frame size for XDP
+
+    :param struct i40e_vsi \*vsi:
+        the vsi
+
 .. _`i40e_change_mtu`:
 
 i40e_change_mtu
@@ -1250,30 +1277,6 @@ Description
 -----------
 
 net_device_ops implementation for removing vlan ids
-
-.. _`i40e_macaddr_init`:
-
-i40e_macaddr_init
-=================
-
-.. c:function:: int i40e_macaddr_init(struct i40e_vsi *vsi, u8 *macaddr)
-
-    explicitly write the mac address filters
-
-    :param struct i40e_vsi \*vsi:
-        pointer to the vsi
-
-    :param u8 \*macaddr:
-        the MAC address
-
-.. _`i40e_macaddr_init.description`:
-
-Description
------------
-
-This is needed when the macaddr has been obtained by other
-means than the default, e.g., from Open Firmware or IDPROM.
-Returns 0 on success, negative on failure
 
 .. _`i40e_restore_vlan`:
 
@@ -1927,6 +1930,30 @@ Description
 This function enables or disables a single queue. Note that any delay
 required after the operation is expected to be handled by the caller of
 this function.
+
+.. _`i40e_control_wait_tx_q`:
+
+i40e_control_wait_tx_q
+======================
+
+.. c:function:: int i40e_control_wait_tx_q(int seid, struct i40e_pf *pf, int pf_q, bool is_xdp, bool enable)
+
+    Start/stop Tx queue and wait for completion
+
+    :param int seid:
+        VSI SEID
+
+    :param struct i40e_pf \*pf:
+        the PF structure
+
+    :param int pf_q:
+        the PF queue to configure
+
+    :param bool is_xdp:
+        true if the queue is used for XDP
+
+    :param bool enable:
+        start or stop the queue
 
 .. _`i40e_vsi_control_tx`:
 
@@ -3220,6 +3247,18 @@ i40e_send_version
     :param struct i40e_pf \*pf:
         PF struct
 
+.. _`i40e_get_oem_version`:
+
+i40e_get_oem_version
+====================
+
+.. c:function:: void i40e_get_oem_version(struct i40e_hw *hw)
+
+    get OEM specific version information
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
 .. _`i40e_reset`:
 
 i40e_reset
@@ -3865,36 +3904,36 @@ Note
 
 expects to be called while under \ :c:func:`rtnl_lock`\ 
 
-.. _`i40e_get_npar_bw_setting`:
+.. _`i40e_get_partition_bw_setting`:
 
-i40e_get_npar_bw_setting
-========================
+i40e_get_partition_bw_setting
+=============================
 
-.. c:function:: i40e_status i40e_get_npar_bw_setting(struct i40e_pf *pf)
+.. c:function:: i40e_status i40e_get_partition_bw_setting(struct i40e_pf *pf)
 
     Retrieve BW settings for this PF partition
 
     :param struct i40e_pf \*pf:
         board private structure
 
-.. _`i40e_set_npar_bw_setting`:
+.. _`i40e_set_partition_bw_setting`:
 
-i40e_set_npar_bw_setting
-========================
+i40e_set_partition_bw_setting
+=============================
 
-.. c:function:: i40e_status i40e_set_npar_bw_setting(struct i40e_pf *pf)
+.. c:function:: i40e_status i40e_set_partition_bw_setting(struct i40e_pf *pf)
 
     Set BW settings for this PF partition
 
     :param struct i40e_pf \*pf:
         board private structure
 
-.. _`i40e_commit_npar_bw_setting`:
+.. _`i40e_commit_partition_bw_setting`:
 
-i40e_commit_npar_bw_setting
-===========================
+i40e_commit_partition_bw_setting
+================================
 
-.. c:function:: i40e_status i40e_commit_npar_bw_setting(struct i40e_pf *pf)
+.. c:function:: i40e_status i40e_commit_partition_bw_setting(struct i40e_pf *pf)
 
     Commit BW settings for this PF partition
 
@@ -4146,6 +4185,36 @@ i40e_features_check
 
     :param netdev_features_t features:
         Offload features that the stack believes apply
+
+.. _`i40e_xdp_setup`:
+
+i40e_xdp_setup
+==============
+
+.. c:function:: int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog)
+
+    add/remove an XDP program
+
+    :param struct i40e_vsi \*vsi:
+        VSI to changed
+
+    :param struct bpf_prog \*prog:
+        XDP program
+
+.. _`i40e_xdp`:
+
+i40e_xdp
+========
+
+.. c:function:: int i40e_xdp(struct net_device *dev, struct netdev_xdp *xdp)
+
+    implements ndo_xdp for i40e
+
+    :param struct net_device \*dev:
+        netdevice
+
+    :param struct netdev_xdp \*xdp:
+        XDP command
 
 .. _`i40e_config_netdev`:
 

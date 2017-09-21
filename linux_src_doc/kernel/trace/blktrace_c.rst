@@ -36,7 +36,7 @@ blk_trace_shutdown
 blk_add_trace_rq
 ================
 
-.. c:function:: void blk_add_trace_rq(struct request *rq, int error, unsigned int nr_bytes, u32 what)
+.. c:function:: void blk_add_trace_rq(struct request *rq, int error, unsigned int nr_bytes, u32 what, union kernfs_node_id *cgid)
 
     Add a trace for a request oriented action
 
@@ -52,6 +52,9 @@ blk_add_trace_rq
     :param u32 what:
         the action
 
+    :param union kernfs_node_id \*cgid:
+        the cgroup info
+
 .. _`blk_add_trace_rq.description`:
 
 Description
@@ -64,7 +67,7 @@ Description
 blk_add_trace_bio
 =================
 
-.. c:function:: void blk_add_trace_bio(struct request_queue *q, struct bio *bio, u32 what, int error)
+.. c:function:: void blk_add_trace_bio(struct request_queue *q, struct bio *bio, u32 what, int error, union kernfs_node_id *cgid)
 
     Add a trace for a bio oriented action
 
@@ -79,6 +82,9 @@ blk_add_trace_bio
 
     :param int error:
         error, if any
+
+    :param union kernfs_node_id \*cgid:
+        *undescribed*
 
 .. _`blk_add_trace_bio.description`:
 

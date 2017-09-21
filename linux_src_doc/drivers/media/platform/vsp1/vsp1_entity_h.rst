@@ -57,6 +57,7 @@ Definition
         void (*destroy)(struct vsp1_entity *);
         void (*configure)(struct vsp1_entity *, struct vsp1_pipeline *, struct vsp1_dl_list *, enum vsp1_entity_params);
         unsigned int (*max_width)(struct vsp1_entity *, struct vsp1_pipeline *);
+        void (*partition)(struct vsp1_entity *, struct vsp1_pipeline *,struct vsp1_partition *, unsigned int, struct vsp1_partition_window *);
     }
 
 .. _`vsp1_entity_operations.members`:
@@ -74,6 +75,10 @@ configure
 max_width
     Return the max supported width of data that the entity can
     process in a single operation.
+
+partition
+    Process the partition construction based on this entity's
+    configuration.
 
 .. This file was automatic generated / don't edit.
 

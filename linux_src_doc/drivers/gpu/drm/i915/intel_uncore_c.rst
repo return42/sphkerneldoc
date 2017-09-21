@@ -131,12 +131,12 @@ asking full domain reset versus reset for all available individual engines.
 
 Returns 0 on success, nonzero on error.
 
-.. _`intel_wait_for_register_fw`:
+.. _`__intel_wait_for_register_fw`:
 
-intel_wait_for_register_fw
-==========================
+__intel_wait_for_register_fw
+============================
 
-.. c:function:: int intel_wait_for_register_fw(struct drm_i915_private *dev_priv, i915_reg_t reg, const u32 mask, const u32 value, const unsigned long timeout_ms)
+.. c:function:: int __intel_wait_for_register_fw(struct drm_i915_private *dev_priv, i915_reg_t reg, u32 mask, u32 value, unsigned int fast_timeout_us, unsigned int slow_timeout_ms, u32 *out_value)
 
     wait until register matches expected state
 
@@ -146,16 +146,22 @@ intel_wait_for_register_fw
     :param i915_reg_t reg:
         the register to read
 
-    :param const u32 mask:
+    :param u32 mask:
         mask to apply to register value
 
-    :param const u32 value:
+    :param u32 value:
         :
 
-    :param const unsigned long timeout_ms:
-        timeout in millisecond
+    :param unsigned int fast_timeout_us:
+        fast timeout in microsecond for atomic/tight wait
 
-.. _`intel_wait_for_register_fw.description`:
+    :param unsigned int slow_timeout_ms:
+        slow timeout in millisecond
+
+    :param u32 \*out_value:
+        optional placeholder to hold registry value
+
+.. _`__intel_wait_for_register_fw.description`:
 
 Description
 -----------
@@ -164,7 +170,9 @@ This routine waits until the target register \ ``reg``\  contains the expected
 
     (I915_READ_FW(reg) & mask) == value
 
-Otherwise, the wait will timeout after \ ``timeout_ms``\  milliseconds.
+Otherwise, the wait will timeout after \ ``slow_timeout_ms``\  milliseconds.
+For atomic context \ ``slow_timeout_ms``\  must be zero and \ ``fast_timeout_us``\ 
+must be not larger than 20,0000 microseconds.
 
 Note that this routine assumes the caller holds forcewake asserted, it is
 not suitable for very long waits. See \ :c:func:`intel_wait_for_register`\  if you
@@ -178,7 +186,7 @@ Returns 0 if the register matches the desired condition, or -ETIMEOUT.
 intel_wait_for_register
 =======================
 
-.. c:function:: int intel_wait_for_register(struct drm_i915_private *dev_priv, i915_reg_t reg, const u32 mask, const u32 value, const unsigned long timeout_ms)
+.. c:function:: int intel_wait_for_register(struct drm_i915_private *dev_priv, i915_reg_t reg, u32 mask, u32 value, unsigned int timeout_ms)
 
     wait until register matches expected state
 
@@ -188,13 +196,13 @@ intel_wait_for_register
     :param i915_reg_t reg:
         the register to read
 
-    :param const u32 mask:
+    :param u32 mask:
         mask to apply to register value
 
-    :param const u32 value:
+    :param u32 value:
         :
 
-    :param const unsigned long timeout_ms:
+    :param unsigned int timeout_ms:
         timeout in millisecond
 
 .. _`intel_wait_for_register.description`:

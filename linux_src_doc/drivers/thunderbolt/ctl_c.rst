@@ -23,9 +23,10 @@ Definition
         struct tb_ring *rx;
         struct dma_pool *frame_pool;
         struct ctl_pkg  *rx_packets;
-        DECLARE_KFIFO(response_fifo# struct ctl_pkg*# 16;
-        struct completion response_ready;
-        hotplug_cb callback;
+        struct mutex request_queue_lock;
+        struct list_head request_queue;
+        bool running;
+        event_cb callback;
         void *callback_data;
     }
 
@@ -49,10 +50,13 @@ frame_pool
 rx_packets
     *undescribed*
 
-16
+request_queue_lock
     *undescribed*
 
-response_ready
+request_queue
+    *undescribed*
+
+running
     *undescribed*
 
 callback
@@ -61,19 +65,71 @@ callback
 callback_data
     *undescribed*
 
+.. _`tb_cfg_request_alloc`:
+
+tb_cfg_request_alloc
+====================
+
+.. c:function:: struct tb_cfg_request *tb_cfg_request_alloc( void)
+
+    Allocates a new config request
+
+    :param  void:
+        no arguments
+
+.. _`tb_cfg_request_alloc.description`:
+
+Description
+-----------
+
+This is refcounted object so when you are done with this, call
+\ :c:func:`tb_cfg_request_put`\  to it.
+
+.. _`tb_cfg_request_get`:
+
+tb_cfg_request_get
+==================
+
+.. c:function:: void tb_cfg_request_get(struct tb_cfg_request *req)
+
+    Increase refcount of a request
+
+    :param struct tb_cfg_request \*req:
+        Request whose refcount is increased
+
+.. _`tb_cfg_request_put`:
+
+tb_cfg_request_put
+==================
+
+.. c:function:: void tb_cfg_request_put(struct tb_cfg_request *req)
+
+    Decrease refcount and possibly release the request
+
+    :param struct tb_cfg_request \*req:
+        Request whose refcount is decreased
+
+.. _`tb_cfg_request_put.description`:
+
+Description
+-----------
+
+Call this function when you are done with the request. When refcount
+goes to \ ``0``\  the object is released.
+
 .. _`tb_ctl_tx`:
 
 tb_ctl_tx
 =========
 
-.. c:function:: int tb_ctl_tx(struct tb_ctl *ctl, void *data, size_t len, enum tb_cfg_pkg_type type)
+.. c:function:: int tb_ctl_tx(struct tb_ctl *ctl, const void *data, size_t len, enum tb_cfg_pkg_type type)
 
     transmit a packet on the control channel
 
     :param struct tb_ctl \*ctl:
         *undescribed*
 
-    :param void \*data:
+    :param const void \*data:
         *undescribed*
 
     :param size_t len:
@@ -96,61 +152,120 @@ Return
 
 Returns 0 on success or an error code on failure.
 
-.. _`tb_ctl_handle_plug_event`:
+.. _`tb_ctl_handle_event`:
 
-tb_ctl_handle_plug_event
-========================
+tb_ctl_handle_event
+===================
 
-.. c:function:: void tb_ctl_handle_plug_event(struct tb_ctl *ctl, struct ctl_pkg *response)
+.. c:function:: void tb_ctl_handle_event(struct tb_ctl *ctl, enum tb_cfg_pkg_type type, struct ctl_pkg *pkg, size_t size)
 
     acknowledge a plug event, invoke ctl->callback
 
     :param struct tb_ctl \*ctl:
         *undescribed*
 
-    :param struct ctl_pkg \*response:
-        *undescribed*
-
-.. _`tb_ctl_rx`:
-
-tb_ctl_rx
-=========
-
-.. c:function:: struct tb_cfg_result tb_ctl_rx(struct tb_ctl *ctl, void *buffer, size_t length, int timeout_msec, u64 route, enum tb_cfg_pkg_type type)
-
-    receive a packet from the control channel
-
-    :param struct tb_ctl \*ctl:
-        *undescribed*
-
-    :param void \*buffer:
-        *undescribed*
-
-    :param size_t length:
-        *undescribed*
-
-    :param int timeout_msec:
-        *undescribed*
-
-    :param u64 route:
-        *undescribed*
-
     :param enum tb_cfg_pkg_type type:
         *undescribed*
+
+    :param struct ctl_pkg \*pkg:
+        *undescribed*
+
+    :param size_t size:
+        *undescribed*
+
+.. _`tb_cfg_request`:
+
+tb_cfg_request
+==============
+
+.. c:function:: int tb_cfg_request(struct tb_ctl *ctl, struct tb_cfg_request *req, void (*callback)(void *), void *callback_data)
+
+    Start control request not waiting for it to complete
+
+    :param struct tb_ctl \*ctl:
+        Control channel to use
+
+    :param struct tb_cfg_request \*req:
+        Request to start
+
+    :param void (\*callback)(void \*):
+        Callback called when the request is completed
+
+    :param void \*callback_data:
+        Data to be passed to \ ``callback``\ 
+
+.. _`tb_cfg_request.description`:
+
+Description
+-----------
+
+This queues \ ``req``\  on the given control channel without waiting for it
+to complete. When the request completes \ ``callback``\  is called.
+
+.. _`tb_cfg_request_cancel`:
+
+tb_cfg_request_cancel
+=====================
+
+.. c:function:: void tb_cfg_request_cancel(struct tb_cfg_request *req, int err)
+
+    Cancel a control request
+
+    :param struct tb_cfg_request \*req:
+        Request to cancel
+
+    :param int err:
+        Error to assign to the request
+
+.. _`tb_cfg_request_cancel.description`:
+
+Description
+-----------
+
+This function can be used to cancel ongoing request. It will wait
+until the request is not active anymore.
+
+.. _`tb_cfg_request_sync`:
+
+tb_cfg_request_sync
+===================
+
+.. c:function:: struct tb_cfg_result tb_cfg_request_sync(struct tb_ctl *ctl, struct tb_cfg_request *req, int timeout_msec)
+
+    Start control request and wait until it completes
+
+    :param struct tb_ctl \*ctl:
+        Control channel to use
+
+    :param struct tb_cfg_request \*req:
+        Request to start
+
+    :param int timeout_msec:
+        Timeout how long to wait \ ``req``\  to complete
+
+.. _`tb_cfg_request_sync.description`:
+
+Description
+-----------
+
+Starts a control request and waits until it completes. If timeout
+triggers the request is canceled before function returns. Note the
+caller needs to make sure only one message for given switch is active
+at a time.
 
 .. _`tb_ctl_alloc`:
 
 tb_ctl_alloc
 ============
 
-.. c:function:: struct tb_ctl *tb_ctl_alloc(struct tb_nhi *nhi, hotplug_cb cb, void *cb_data)
+.. c:function:: struct tb_ctl *tb_ctl_alloc(struct tb_nhi *nhi, event_cb cb, void *cb_data)
 
     allocate a control channel
 
     :param struct tb_nhi \*nhi:
         *undescribed*
 
-    :param hotplug_cb cb:
+    :param event_cb cb:
         *undescribed*
 
     :param void \*cb_data:
@@ -325,14 +440,14 @@ Offset and length are in dwords.
 tb_cfg_write_raw
 ================
 
-.. c:function:: struct tb_cfg_result tb_cfg_write_raw(struct tb_ctl *ctl, void *buffer, u64 route, u32 port, enum tb_cfg_space space, u32 offset, u32 length, int timeout_msec)
+.. c:function:: struct tb_cfg_result tb_cfg_write_raw(struct tb_ctl *ctl, const void *buffer, u64 route, u32 port, enum tb_cfg_space space, u32 offset, u32 length, int timeout_msec)
 
     write from buffer into config space
 
     :param struct tb_ctl \*ctl:
         *undescribed*
 
-    :param void \*buffer:
+    :param const void \*buffer:
         *undescribed*
 
     :param u64 route:

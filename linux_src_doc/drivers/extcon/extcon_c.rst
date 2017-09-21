@@ -8,7 +8,7 @@ struct extcon_cable
 
 .. c:type:: struct extcon_cable
 
-    An internal data for each cable of extcon device.
+    An internal data for an external connector.
 
 .. _`extcon_cable.definition`:
 
@@ -40,13 +40,13 @@ Members
 -------
 
 edev
-    The extcon device
+    the extcon device
 
 cable_index
-    Index of this cable in the edev
+    the index of this cable in the edev
 
 attr_g
-    Attribute group for the cable
+    the attribute group for the cable
 
 attr_name
     "name" sysfs entry
@@ -55,7 +55,7 @@ attr_state
     "state" sysfs entry
 
 attrs
-    Array pointing to attr_name and attr_state for attr_g
+    the array pointing to attr_name and attr_state for attr_g
 
 usb_propval
     *undescribed*
@@ -81,29 +81,6 @@ jack_bits
 disp_bits
     *undescribed*
 
-.. _`check_mutually_exclusive`:
-
-check_mutually_exclusive
-========================
-
-.. c:function:: int check_mutually_exclusive(struct extcon_dev *edev, u32 new_state)
-
-    Check if new_state violates mutually_exclusive condition.
-
-    :param struct extcon_dev \*edev:
-        the extcon device
-
-    :param u32 new_state:
-        new cable attach status for \ ``edev``\ 
-
-.. _`check_mutually_exclusive.description`:
-
-Description
------------
-
-Returns 0 if nothing violates. Returns the index + 1 for the first
-violated condition.
-
 .. _`extcon_sync`:
 
 extcon_sync
@@ -111,10 +88,10 @@ extcon_sync
 
 .. c:function:: int extcon_sync(struct extcon_dev *edev, unsigned int id)
 
-    Synchronize the states for both the attached/detached
+    Synchronize the state for an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
         *undescribed*
@@ -124,8 +101,10 @@ extcon_sync
 Description
 -----------
 
-This function send a notification to synchronize the all states of a
-specific external connector
+Note that this function send a notification in order to synchronize
+the state and property of an external connector.
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_get_state`:
 
@@ -134,68 +113,79 @@ extcon_get_state
 
 .. c:function:: int extcon_get_state(struct extcon_dev *edev, const unsigned int id)
 
-    Get the state of a external connector.
+    Get the state of an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param const unsigned int id:
-        the unique id of each external connector in extcon enumeration.
+        the unique id indicating an external connector
+
+.. _`extcon_get_state.description`:
+
+Description
+-----------
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_set_state`:
 
 extcon_set_state
 ================
 
-.. c:function:: int extcon_set_state(struct extcon_dev *edev, unsigned int id, bool cable_state)
+.. c:function:: int extcon_set_state(struct extcon_dev *edev, unsigned int id, bool state)
 
-    Set the state of a external connector. without a notification.
+    Set the state of an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector
-        in extcon enumeration.
+        the unique id indicating an external connector
 
-    :param bool cable_state:
-        *undescribed*
+    :param bool state:
+        the new state of an external connector.
+        the default semantics is true: attached / false: detached.
 
 .. _`extcon_set_state.description`:
 
 Description
 -----------
 
-This function only set the state of a external connector without
-a notification. To synchronize the data of a external connector,
-use \ :c:func:`extcon_set_state_sync`\  and \ :c:func:`extcon_sync`\ .
+Note that this function set the state of an external connector without
+a notification. To synchronize the state of an external connector,
+have to use \ :c:func:`extcon_set_state_sync`\  and \ :c:func:`extcon_sync`\ .
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_set_state_sync`:
 
 extcon_set_state_sync
 =====================
 
-.. c:function:: int extcon_set_state_sync(struct extcon_dev *edev, unsigned int id, bool cable_state)
+.. c:function:: int extcon_set_state_sync(struct extcon_dev *edev, unsigned int id, bool state)
 
-    Set the state of a external connector with a notification.
+    Set the state of an external connector with sync.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector
-        in extcon enumeration.
+        the unique id indicating an external connector
 
-    :param bool cable_state:
-        *undescribed*
+    :param bool state:
+        the new state of external connector.
+        the default semantics is true: attached / false: detached.
 
 .. _`extcon_set_state_sync.description`:
 
 Description
 -----------
 
-This function set the state of external connector and synchronize the data
-by usning a notification.
+Note that this function set the state of external connector
+and synchronize the state by sending a notification.
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_get_property`:
 
@@ -204,32 +194,31 @@ extcon_get_property
 
 .. c:function:: int extcon_get_property(struct extcon_dev *edev, unsigned int id, unsigned int prop, union extcon_property_value *prop_val)
 
-    Get the property value of a specific cable.
+    Get the property value of an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector
-        in extcon enumeration.
+        the unique id indicating an external connector
 
     :param unsigned int prop:
-        the property id among enum extcon_property.
+        the property id indicating an extcon property
 
     :param union extcon_property_value \*prop_val:
-        the pointer which store the value of property.
+        the pointer which store the value of extcon property
 
 .. _`extcon_get_property.description`:
 
 Description
 -----------
 
-When getting the property value of external connector, the external connector
-should be attached. If detached state, function just return 0 without
-property value. Also, the each property should be included in the list of
-supported properties according to the type of external connectors.
+Note that when getting the property value of external connector,
+the external connector should be attached. If detached state, function
+return 0 without property value. Also, the each property should be
+included in the list of supported properties according to extcon type.
 
-Returns 0 if success or error number if fail
+Returns 0 if success or error number if fail.
 
 .. _`extcon_set_property`:
 
@@ -238,30 +227,29 @@ extcon_set_property
 
 .. c:function:: int extcon_set_property(struct extcon_dev *edev, unsigned int id, unsigned int prop, union extcon_property_value prop_val)
 
-    Set the property value of a specific cable.
+    Set the property value of an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector
-        in extcon enumeration.
+        the unique id indicating an external connector
 
     :param unsigned int prop:
-        the property id among enum extcon_property.
+        the property id indicating an extcon property
 
     :param union extcon_property_value prop_val:
-        the pointer including the new value of property.
+        the pointer including the new value of extcon property
 
 .. _`extcon_set_property.description`:
 
 Description
 -----------
 
-The each property should be included in the list of supported properties
-according to the type of external connectors.
+Note that each property should be included in the list of supported
+properties according to the extcon type.
 
-Returns 0 if success or error number if fail
+Returns 0 if success or error number if fail.
 
 .. _`extcon_set_property_sync`:
 
@@ -270,7 +258,7 @@ extcon_set_property_sync
 
 .. c:function:: int extcon_set_property_sync(struct extcon_dev *edev, unsigned int id, unsigned int prop, union extcon_property_value prop_val)
 
-    Set the property value of a specific cable
+    Set property of an external connector with sync.
 
     :param struct extcon_dev \*edev:
         *undescribed*
@@ -282,18 +270,18 @@ extcon_set_property_sync
         *undescribed*
 
     :param union extcon_property_value prop_val:
-        the pointer including the new value of property.
+        the pointer including the new value of extcon property
 
 .. _`extcon_set_property_sync.description`:
 
 Description
 -----------
 
-When setting the property value of external connector, the external connector
-should be attached. The each property should be included in the list of
-supported properties according to the type of external connectors.
+Note that when setting the property value of external connector,
+the external connector should be attached. The each property should
+be included in the list of supported properties according to extcon type.
 
-Returns 0 if success or error number if fail
+Returns 0 if success or error number if fail.
 
 .. _`extcon_get_property_capability`:
 
@@ -302,17 +290,16 @@ extcon_get_property_capability
 
 .. c:function:: int extcon_get_property_capability(struct extcon_dev *edev, unsigned int id, unsigned int prop)
 
-    Get the capability of property of an external connector.
+    Get the capability of the property for an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector
-        in extcon enumeration.
+        the unique id indicating an external connector
 
     :param unsigned int prop:
-        the property id among enum extcon_property.
+        the property id indicating an extcon property
 
 .. _`extcon_get_property_capability.description`:
 
@@ -328,28 +315,27 @@ extcon_set_property_capability
 
 .. c:function:: int extcon_set_property_capability(struct extcon_dev *edev, unsigned int id, unsigned int prop)
 
-    Set the capability of a property of an external connector.
+    Set the capability of the property for an external connector.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the cable.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector
-        in extcon enumeration.
+        the unique id indicating an external connector
 
     :param unsigned int prop:
-        the property id among enum extcon_property.
+        the property id indicating an extcon property
 
 .. _`extcon_set_property_capability.description`:
 
 Description
 -----------
 
-This function set the capability of a property for an external connector
-to mark the bit in capability bitmap which mean the available state of
-a property.
+Note that this function set the capability of the property
+for an external connector in order to mark the bit in capability
+bitmap which mean the available state of the property.
 
-Returns 0 if success or error number if fail
+Returns 0 if success or error number if fail.
 
 .. _`extcon_get_extcon_dev`:
 
@@ -358,10 +344,17 @@ extcon_get_extcon_dev
 
 .. c:function:: struct extcon_dev *extcon_get_extcon_dev(const char *extcon_name)
 
-    Get the extcon device instance from the name
+    Get the extcon device instance from the name.
 
     :param const char \*extcon_name:
-        The extcon name provided with \ :c:func:`extcon_dev_register`\ 
+        the extcon name provided with \ :c:func:`extcon_dev_register`\ 
+
+.. _`extcon_get_extcon_dev.description`:
+
+Description
+-----------
+
+Return the pointer of extcon device if success or ERR_PTR(err) if fail.
 
 .. _`extcon_register_notifier`:
 
@@ -370,16 +363,16 @@ extcon_register_notifier
 
 .. c:function:: int extcon_register_notifier(struct extcon_dev *edev, unsigned int id, struct notifier_block *nb)
 
-    Register a notifiee to get notified by any attach status changes from the extcon.
+    Register a notifier block to get notified by any state changes from the extcon.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector in extcon enumeration.
+        the unique id indicating an external connector
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. _`extcon_register_notifier.description`:
 
@@ -387,8 +380,10 @@ Description
 -----------
 
 Note that the second parameter given to the callback of nb (val) is
-"old_state", not the current state. The current state can be retrieved
-by looking at the third pameter (edev pointer)'s state value.
+the current state of an external connector and the third pameter
+is the pointer of extcon device.
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_unregister_notifier`:
 
@@ -397,16 +392,23 @@ extcon_unregister_notifier
 
 .. c:function:: int extcon_unregister_notifier(struct extcon_dev *edev, unsigned int id, struct notifier_block *nb)
 
-    Unregister a notifiee from the extcon device.
+    Unregister a notifier block from the extcon.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector in extcon enumeration.
+        the unique id indicating an external connector
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
+
+.. _`extcon_unregister_notifier.description`:
+
+Description
+-----------
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_register_notifier_all`:
 
@@ -415,25 +417,25 @@ extcon_register_notifier_all
 
 .. c:function:: int extcon_register_notifier_all(struct extcon_dev *edev, struct notifier_block *nb)
 
-    Register a notifier block for all connectors
+    Register a notifier block for all connectors.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. _`extcon_register_notifier_all.description`:
 
 Description
 -----------
 
-This fucntion registers a notifier block in order to receive the state
-change of all supported external connectors from extcon device.
-And The second parameter given to the callback of nb (val) is
-the current state and third parameter is the edev pointer.
+Note that this function registers a notifier block in order to receive
+the state change of all supported external connectors from extcon device.
+And the second parameter given to the callback of nb (val) is
+the current state and the third pameter is the pointer of extcon device.
 
-Returns 0 if success or error number if fail
+Returns 0 if success or error number if fail.
 
 .. _`extcon_unregister_notifier_all`:
 
@@ -445,17 +447,17 @@ extcon_unregister_notifier_all
     Unregister a notifier block from extcon.
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. _`extcon_unregister_notifier_all.description`:
 
 Description
 -----------
 
-Returns 0 if success or error number if fail
+Returns 0 if success or error number if fail.
 
 .. _`extcon_dev_register`:
 
@@ -464,10 +466,10 @@ extcon_dev_register
 
 .. c:function:: int extcon_dev_register(struct extcon_dev *edev)
 
-    Register a new extcon device
+    Register an new extcon device
 
     :param struct extcon_dev \*edev:
-        the new extcon device (should be allocated before calling)
+        the extcon device to be registered
 
 .. _`extcon_dev_register.description`:
 
@@ -475,9 +477,14 @@ Description
 -----------
 
 Among the members of edev struct, please set the "user initializing data"
-in any case and set the "optional callbacks" if required. However, please
 do not set the values of "internal data", which are initialized by
 this function.
+
+Note that before calling this funciton, have to allocate the memory
+of an extcon device by using the \ :c:func:`extcon_dev_allocate`\ . And the extcon
+dev should include the supported_cable information.
+
+Returns 0 if success or error number if fail.
 
 .. _`extcon_dev_unregister`:
 
@@ -489,7 +496,7 @@ extcon_dev_unregister
     Unregister the extcon device.
 
     :param struct extcon_dev \*edev:
-        the extcon device instance to be unregistered.
+        the extcon device to be unregistered.
 
 .. _`extcon_dev_unregister.description`:
 

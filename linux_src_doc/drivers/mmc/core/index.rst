@@ -15,6 +15,7 @@ core
     mmc_ops_c
     mmc_test_c
     queue_c
+    queue_h
     sd_ops_c
     sdio_bus_c
     sdio_io_c

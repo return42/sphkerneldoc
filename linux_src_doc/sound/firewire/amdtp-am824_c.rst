@@ -67,30 +67,6 @@ amdtp_am824_set_midi_position
     :param unsigned int position:
         the index of data channel in an data block
 
-.. _`amdtp_am824_set_pcm_format`:
-
-amdtp_am824_set_pcm_format
-==========================
-
-.. c:function:: void amdtp_am824_set_pcm_format(struct amdtp_stream *s, snd_pcm_format_t format)
-
-    set the PCM format
-
-    :param struct amdtp_stream \*s:
-        the AMDTP stream to configure
-
-    :param snd_pcm_format_t format:
-        the format of the ALSA PCM device
-
-.. _`amdtp_am824_set_pcm_format.description`:
-
-Description
------------
-
-The sample format must be set after the other parameters (rate/PCM channels/
-MIDI) and before the stream is started, and must not be changed while the
-stream is running.
-
 .. _`amdtp_am824_add_pcm_hw_constraints`:
 
 amdtp_am824_add_pcm_hw_constraints

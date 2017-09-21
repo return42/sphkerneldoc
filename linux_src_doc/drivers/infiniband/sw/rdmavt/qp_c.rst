@@ -91,7 +91,7 @@ Check for qp leaks and free resources.
 alloc_qpn
 =========
 
-.. c:function:: int alloc_qpn(struct rvt_dev_info *rdi, struct rvt_qpn_table *qpt, enum ib_qp_type type, u8 port_num, gfp_t gfp)
+.. c:function:: int alloc_qpn(struct rvt_dev_info *rdi, struct rvt_qpn_table *qpt, enum ib_qp_type type, u8 port_num)
 
     Allocate the next available qpn or zero/one for QP type IB_QPT_SMI/IB_QPT_GSI \ ``rdi``\ : rvt device info structure \ ``qpt``\ : queue pair number table pointer \ ``port_num``\ : IB port number, 1 based, comes from core
 
@@ -105,9 +105,6 @@ alloc_qpn
         *undescribed*
 
     :param u8 port_num:
-        *undescribed*
-
-    :param gfp_t gfp:
         *undescribed*
 
 .. _`alloc_qpn.return`:
@@ -131,6 +128,58 @@ rvt_clear_mr_refs
 
     :param int clr_sends:
         If shoudl clear send side or not
+
+.. _`rvt_swqe_has_lkey`:
+
+rvt_swqe_has_lkey
+=================
+
+.. c:function:: bool rvt_swqe_has_lkey(struct rvt_swqe *wqe, u32 lkey)
+
+    return true if lkey is used by swqe \ ``wqe``\  - the send wqe \ ``lkey``\  - the lkey
+
+    :param struct rvt_swqe \*wqe:
+        *undescribed*
+
+    :param u32 lkey:
+        *undescribed*
+
+.. _`rvt_swqe_has_lkey.description`:
+
+Description
+-----------
+
+Test the swqe for using lkey
+
+.. _`rvt_qp_sends_has_lkey`:
+
+rvt_qp_sends_has_lkey
+=====================
+
+.. c:function:: bool rvt_qp_sends_has_lkey(struct rvt_qp *qp, u32 lkey)
+
+    return true is qp sends use lkey \ ``qp``\  - the rvt_qp \ ``lkey``\  - the lkey
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param u32 lkey:
+        *undescribed*
+
+.. _`rvt_qp_acks_has_lkey`:
+
+rvt_qp_acks_has_lkey
+====================
+
+.. c:function:: bool rvt_qp_acks_has_lkey(struct rvt_qp *qp, u32 lkey)
+
+    return true if acks have lkey \ ``qp``\  - the qp \ ``lkey``\  - the lkey
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param u32 lkey:
+        *undescribed*
 
 .. _`rvt_remove_qp`:
 
@@ -618,6 +667,110 @@ rvt_rc_timeout
 
     :param unsigned long arg:
         *undescribed*
+
+.. _`rvt_qp_iter_init`:
+
+rvt_qp_iter_init
+================
+
+.. c:function:: struct rvt_qp_iter *rvt_qp_iter_init(struct rvt_dev_info *rdi, u64 v, void (*cb)(struct rvt_qp *qp, u64 v))
+
+    initial for QP iteration \ ``rdi``\  - rvt devinfo \ ``v``\  - u64 value
+
+    :param struct rvt_dev_info \*rdi:
+        *undescribed*
+
+    :param u64 v:
+        *undescribed*
+
+    :param void (\*cb)(struct rvt_qp \*qp, u64 v):
+        *undescribed*
+
+.. _`rvt_qp_iter_init.description`:
+
+Description
+-----------
+
+This returns an iterator suitable for iterating QPs
+in the system.
+
+The \ ``cb``\  is a user defined callback and \ ``v``\  is a 64
+bit value passed to and relevant for processing in the
+\ ``cb``\ .  An example use case would be to alter QP processing
+based on criteria not part of the rvt_qp.
+
+Use cases that require memory allocation to succeed
+must preallocate appropriately.
+
+.. _`rvt_qp_iter_init.return`:
+
+Return
+------
+
+a pointer to an rvt_qp_iter or NULL
+
+.. _`rvt_qp_iter_next`:
+
+rvt_qp_iter_next
+================
+
+.. c:function:: int rvt_qp_iter_next(struct rvt_qp_iter *iter)
+
+    return the next QP in iter \ ``iter``\  - the iterator
+
+    :param struct rvt_qp_iter \*iter:
+        *undescribed*
+
+.. _`rvt_qp_iter_next.description`:
+
+Description
+-----------
+
+Fine grained QP iterator suitable for use
+with debugfs seq_file mechanisms.
+
+Updates iter->qp with the current QP when the return
+value is 0.
+
+.. _`rvt_qp_iter_next.return`:
+
+Return
+------
+
+0 - iter->qp is valid 1 - no more QPs
+
+.. _`rvt_qp_iter`:
+
+rvt_qp_iter
+===========
+
+.. c:function:: void rvt_qp_iter(struct rvt_dev_info *rdi, u64 v, void (*cb)(struct rvt_qp *qp, u64 v))
+
+    iterate all QPs \ ``rdi``\  - rvt devinfo \ ``v``\  - a 64 bit value \ ``cb``\  - a callback
+
+    :param struct rvt_dev_info \*rdi:
+        *undescribed*
+
+    :param u64 v:
+        *undescribed*
+
+    :param void (\*cb)(struct rvt_qp \*qp, u64 v):
+        *undescribed*
+
+.. _`rvt_qp_iter.description`:
+
+Description
+-----------
+
+This provides a way for iterating all QPs.
+
+The \ ``cb``\  is a user defined callback and \ ``v``\  is a 64
+bit value passed to and relevant for processing in the
+cb.  An example use case would be to alter QP processing
+based on criteria not part of the rvt_qp.
+
+The code has an internal iterator to simplify
+non seq_file use cases.
 
 .. This file was automatic generated / don't edit.
 

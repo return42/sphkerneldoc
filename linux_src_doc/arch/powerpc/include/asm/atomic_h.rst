@@ -78,7 +78,7 @@ Returns the old value of \ ``v``\ .
 atomic64_inc_not_zero
 =====================
 
-.. c:function:: long atomic64_inc_not_zero(atomic64_t *v)
+.. c:function:: int atomic64_inc_not_zero(atomic64_t *v)
 
     increment unless the number is zero
 

@@ -16,5 +16,4 @@ edac
     i7300_edac_c
     octeon_edac-pc_c
     ppc4xx_edac_c
-    sb_edac_c
     synopsys_edac_c

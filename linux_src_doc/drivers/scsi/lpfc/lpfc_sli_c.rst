@@ -6,7 +6,7 @@
 lpfc_sli4_wq_put
 ================
 
-.. c:function:: uint32_t lpfc_sli4_wq_put(struct lpfc_queue *q, union lpfc_wqe *wqe)
+.. c:function:: int lpfc_sli4_wq_put(struct lpfc_queue *q, union lpfc_wqe *wqe)
 
     Put a Work Queue Entry on an Work Queue
 
@@ -4973,7 +4973,7 @@ true if work posted to worker thread, otherwise false.
 lpfc_sli4_sp_handle_eqe
 =======================
 
-.. c:function:: void lpfc_sli4_sp_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, struct lpfc_queue *speq)
+.. c:function:: int lpfc_sli4_sp_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, struct lpfc_queue *speq)
 
     Process a slow-path event queue entry
 
@@ -5113,7 +5113,7 @@ event queue for FCP command response completion.
 lpfc_sli4_hba_handle_eqe
 ========================
 
-.. c:function:: void lpfc_sli4_hba_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, uint32_t qidx)
+.. c:function:: int lpfc_sli4_hba_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, uint32_t qidx)
 
     Process a fast-path event queue entry
 
@@ -5351,7 +5351,7 @@ memory address can be NULL.
 lpfc_modify_hba_eq_delay
 ========================
 
-.. c:function:: int lpfc_modify_hba_eq_delay(struct lpfc_hba *phba, uint32_t startq)
+.. c:function:: int lpfc_modify_hba_eq_delay(struct lpfc_hba *phba, uint32_t startq, uint32_t numq, uint32_t imax)
 
     Modify Delay Multiplier on FCP EQs
 
@@ -5360,6 +5360,12 @@ lpfc_modify_hba_eq_delay
 
     :param uint32_t startq:
         The starting FCP EQ to modify
+
+    :param uint32_t numq:
+        *undescribed*
+
+    :param uint32_t imax:
+        *undescribed*
 
 .. _`lpfc_modify_hba_eq_delay.description`:
 
@@ -5618,33 +5624,6 @@ command to finish before continuing.
 On success this function will return a zero. If unable to allocate enough
 memory this function will return -ENOMEM. If the queue create mailbox command
 fails this function will return -ENXIO.
-
-.. _`lpfc_rq_adjust_repost`:
-
-lpfc_rq_adjust_repost
-=====================
-
-.. c:function:: void lpfc_rq_adjust_repost(struct lpfc_hba *phba, struct lpfc_queue *rq, int qno)
-
-    Adjust entry_repost for an RQ
-
-    :param struct lpfc_hba \*phba:
-        HBA structure that indicates port to create a queue on.
-
-    :param struct lpfc_queue \*rq:
-        The queue structure to use for the receive queue.
-
-    :param int qno:
-        The associated HBQ number
-
-.. _`lpfc_rq_adjust_repost.description`:
-
-Description
------------
-
-
-For SLI4 we need to adjust the RQ repost value based on
-the number of buffers that are initially posted to the RQ.
 
 .. _`lpfc_rq_create`:
 

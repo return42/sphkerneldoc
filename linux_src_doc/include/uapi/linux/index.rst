@@ -61,5 +61,4 @@ linux
     vfio_h
     videodev2_h
     vtpm_proxy_h
-    wil6210_uapi_h
     wimax_h

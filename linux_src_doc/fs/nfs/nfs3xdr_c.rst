@@ -6,7 +6,7 @@
 nfs3_decode_dirent
 ==================
 
-.. c:function:: int nfs3_decode_dirent(struct xdr_stream *xdr, struct nfs_entry *entry, int plus)
+.. c:function:: int nfs3_decode_dirent(struct xdr_stream *xdr, struct nfs_entry *entry, bool plus)
 
     Decode a single NFSv3 directory entry stored in the local page cache
 
@@ -16,7 +16,7 @@ nfs3_decode_dirent
     :param struct nfs_entry \*entry:
         buffer to fill in with entry data
 
-    :param int plus:
+    :param bool plus:
         boolean indicating whether this should be a readdirplus entry
 
 .. _`nfs3_decode_dirent.description`:

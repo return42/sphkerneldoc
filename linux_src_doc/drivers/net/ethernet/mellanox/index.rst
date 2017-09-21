@@ -8,4 +8,5 @@ mellanox
     :maxdepth: 1
 
     mlx4/index
+    mlx5/index
     mlxsw/index

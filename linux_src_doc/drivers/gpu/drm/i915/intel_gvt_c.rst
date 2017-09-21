@@ -17,6 +17,25 @@ e.g KVM/VFIO/mdev, Xen, etc. to provide resource access trapping capability
 and be virtualized within GVT-g device module. More architectural design
 doc is available on https://01.org/group/2230/documentation-list.
 
+.. _`intel_gvt_sanitize_options`:
+
+intel_gvt_sanitize_options
+==========================
+
+.. c:function:: void intel_gvt_sanitize_options(struct drm_i915_private *dev_priv)
+
+    sanitize GVT related options
+
+    :param struct drm_i915_private \*dev_priv:
+        drm i915 private data
+
+.. _`intel_gvt_sanitize_options.description`:
+
+Description
+-----------
+
+This function is called at the i915 options sanitize stage.
+
 .. _`intel_gvt_init`:
 
 intel_gvt_init

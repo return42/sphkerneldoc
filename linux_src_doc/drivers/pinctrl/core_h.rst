@@ -381,7 +381,7 @@ Definition
 
     struct pinctrl_maps {
         struct list_head node;
-        struct pinctrl_map const *maps;
+        const struct pinctrl_map *maps;
         unsigned num_maps;
     }
 

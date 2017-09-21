@@ -27,24 +27,24 @@ On failure to obtain the \_OSC Control Field return \ ``false``\ .
 pci_acpi_wake_bus
 =================
 
-.. c:function:: void pci_acpi_wake_bus(struct work_struct *work)
+.. c:function:: void pci_acpi_wake_bus(struct acpi_device_wakeup_context *context)
 
     Root bus wakeup notification fork function.
 
-    :param struct work_struct \*work:
-        Work item to handle.
+    :param struct acpi_device_wakeup_context \*context:
+        Device wakeup context.
 
 .. _`pci_acpi_wake_dev`:
 
 pci_acpi_wake_dev
 =================
 
-.. c:function:: void pci_acpi_wake_dev(struct work_struct *work)
+.. c:function:: void pci_acpi_wake_dev(struct acpi_device_wakeup_context *context)
 
     PCI device wakeup notification work function.
 
-    :param struct work_struct \*work:
-        Work item to handle.
+    :param struct acpi_device_wakeup_context \*context:
+        Device wakeup context.
 
 .. _`pci_acpi_add_bus_pm_notifier`:
 

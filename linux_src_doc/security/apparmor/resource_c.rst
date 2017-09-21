@@ -6,7 +6,7 @@
 audit_resource
 ==============
 
-.. c:function:: int audit_resource(struct aa_profile *profile, unsigned int resource, unsigned long value, int error)
+.. c:function:: int audit_resource(struct aa_profile *profile, unsigned int resource, unsigned long value, struct aa_label *peer, const char *info, int error)
 
     audit setting resource limit
 
@@ -18,6 +18,12 @@ audit_resource
 
     :param unsigned long value:
         value being set
+
+    :param struct aa_label \*peer:
+        *undescribed*
+
+    :param const char \*info:
+        *undescribed*
 
     :param int error:
         error value
@@ -56,11 +62,11 @@ resource # to the internal representation for the architecture.
 aa_task_setrlimit
 =================
 
-.. c:function:: int aa_task_setrlimit(struct aa_profile *profile, struct task_struct *task, unsigned int resource, struct rlimit *new_rlim)
+.. c:function:: int aa_task_setrlimit(struct aa_label *label, struct task_struct *task, unsigned int resource, struct rlimit *new_rlim)
 
-    test permission to set an rlimit \ ``profile``\  - profile confining the task  (NOT NULL) \ ``task``\  - task the resource is being set on \ ``resource``\  - the resource being set \ ``new_rlim``\  - the new resource limit  (NOT NULL)
+    test permission to set an rlimit \ ``label``\  - label confining the task  (NOT NULL) \ ``task``\  - task the resource is being set on \ ``resource``\  - the resource being set \ ``new_rlim``\  - the new resource limit  (NOT NULL)
 
-    :param struct aa_profile \*profile:
+    :param struct aa_label \*label:
         *undescribed*
 
     :param struct task_struct \*task:
@@ -91,15 +97,15 @@ Return
 __aa_transition_rlimits
 =======================
 
-.. c:function:: void __aa_transition_rlimits(struct aa_profile *old, struct aa_profile *new)
+.. c:function:: void __aa_transition_rlimits(struct aa_label *old_l, struct aa_label *new_l)
 
     apply new profile rlimits
 
-    :param struct aa_profile \*old:
-        old profile on task  (NOT NULL)
+    :param struct aa_label \*old_l:
+        old label on task  (NOT NULL)
 
-    :param struct aa_profile \*new:
-        new profile with rlimits to apply  (NOT NULL)
+    :param struct aa_label \*new_l:
+        new label with rlimits to apply  (NOT NULL)
 
 .. This file was automatic generated / don't edit.
 

@@ -8,8 +8,18 @@ gpio_to_desc
 
 .. c:function:: struct gpio_desc *gpio_to_desc(unsigned gpio)
 
+    Convert a GPIO number to its descriptor
+
     :param unsigned gpio:
-        *undescribed*
+        global GPIO number
+
+.. _`gpio_to_desc.return`:
+
+Return
+------
+
+The GPIO descriptor associated with the given GPIO, or \ ``NULL``\  if no GPIO
+with the given number exists in the system.
 
 .. _`gpiochip_get_desc`:
 
@@ -18,11 +28,21 @@ gpiochip_get_desc
 
 .. c:function:: struct gpio_desc *gpiochip_get_desc(struct gpio_chip *chip, u16 hwnum)
 
+    get the GPIO descriptor corresponding to the given hardware number for this chip
+
     :param struct gpio_chip \*chip:
-        *undescribed*
+        GPIO chip
 
     :param u16 hwnum:
-        *undescribed*
+        hardware number of the GPIO for this chip
+
+.. _`gpiochip_get_desc.return`:
+
+Return
+------
+
+A pointer to the GPIO descriptor or \ ``ERR_PTR``\ (-EINVAL) if no GPIO exists
+in the given chip for the specified hardware number.
 
 .. _`desc_to_gpio`:
 
@@ -31,10 +51,25 @@ desc_to_gpio
 
 .. c:function:: int desc_to_gpio(const struct gpio_desc *desc)
 
-    This should disappear in the future but is needed since we still use GPIO numbers for error messages and sysfs nodes
+    convert a GPIO descriptor to the integer namespace
 
     :param const struct gpio_desc \*desc:
-        *undescribed*
+        GPIO descriptor
+
+.. _`desc_to_gpio.description`:
+
+Description
+-----------
+
+This should disappear in the future but is needed since we still
+use GPIO numbers for error messages and sysfs nodes.
+
+.. _`desc_to_gpio.return`:
+
+Return
+------
+
+The global GPIO number for the GPIO specified by its descriptor.
 
 .. _`gpiod_to_chip`:
 
@@ -68,16 +103,6 @@ Description
 Return GPIOF_DIR_IN or GPIOF_DIR_OUT, or an error code in case of error.
 
 This function may sleep if \ :c:func:`gpiod_cansleep`\  is true.
-
-.. _`gpio_name_to_desc`:
-
-gpio_name_to_desc
-=================
-
-.. c:function:: struct gpio_desc *gpio_name_to_desc(const char * const name)
-
-    :param const char \* const name:
-        *undescribed*
 
 .. _`linehandle_state`:
 
@@ -176,24 +201,6 @@ read_lock
     mutex lock to protect reads from colliding with adding
     new events to the FIFO
 
-.. _`gpio_ioctl`:
-
-gpio_ioctl
-==========
-
-.. c:function:: long gpio_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
-
-    ioctl handler for the GPIO chardev
-
-    :param struct file \*filp:
-        *undescribed*
-
-    :param unsigned int cmd:
-        *undescribed*
-
-    :param unsigned long arg:
-        *undescribed*
-
 .. _`gpio_chrdev_open`:
 
 gpio_chrdev_open
@@ -239,7 +246,7 @@ gpiochip_add_data
         the chip to register, with chip->base initialized
 
     :param void \*data:
-        *undescribed*
+        driver-private data associated with this chip
 
 .. _`gpiochip_add_data.context`:
 
@@ -253,10 +260,6 @@ potentially before irqs will work
 Description
 -----------
 
-Returns a negative errno if the chip can't be registered, such as
-because the chip->base is invalid or already associated with a
-different chip.  Otherwise it returns zero as a success code.
-
 When \ :c:func:`gpiochip_add_data`\  is called very early during boot, so that GPIOs
 can be freely used, the chip->parent device must be registered before
 the gpio framework's \ :c:func:`arch_initcall`\ .  Otherwise sysfs initialization
@@ -268,6 +271,15 @@ ie after \ :c:func:`core_initcall`\ .
 If chip->base is negative, this requests dynamic assignment of
 a range of valid GPIOs.
 
+.. _`gpiochip_add_data.return`:
+
+Return
+------
+
+A negative errno if the chip can't be registered, such as because the
+chip->base is invalid or already associated with a different chip.
+Otherwise it returns zero as a success code.
+
 .. _`gpiochip_get_data`:
 
 gpiochip_get_data
@@ -278,7 +290,14 @@ gpiochip_get_data
     get per-subdriver data for the chip
 
     :param struct gpio_chip \*chip:
-        *undescribed*
+        GPIO chip
+
+.. _`gpiochip_get_data.return`:
+
+Return
+------
+
+The per-subdriver data for the chip.
 
 .. _`gpiochip_remove`:
 
@@ -315,7 +334,7 @@ devm_gpiochip_add_data
         the chip to register, with chip->base initialized
 
     :param void \*data:
-        *undescribed*
+        driver-private data associated with this chip
 
 .. _`devm_gpiochip_add_data.context`:
 
@@ -329,11 +348,16 @@ potentially before irqs will work
 Description
 -----------
 
-Returns a negative errno if the chip can't be registered, such as
-because the chip->base is invalid or already associated with a
-different chip.  Otherwise it returns zero as a success code.
-
 The gpio chip automatically be released when the device is unbound.
+
+.. _`devm_gpiochip_add_data.return`:
+
+Return
+------
+
+A negative errno if the chip can't be registered, such as because the
+chip->base is invalid or already associated with a different chip.
+Otherwise it returns zero as a success code.
 
 .. _`devm_gpiochip_remove`:
 
@@ -370,7 +394,7 @@ gpiochip_find
         data to pass to match function
 
     :param int (\*match)(struct gpio_chip \*chip, void \*data):
-        *undescribed*
+        Callback function to check gpio_chip
 
 .. _`gpiochip_find.description`:
 
@@ -630,7 +654,7 @@ gpiochip_add_pin_range
         the gpiochip to add the range for
 
     :param const char \*pinctl_name:
-        *undescribed*
+        the \ :c:func:`dev_name`\  of the pin controller to map to
 
     :param unsigned int gpio_offset:
         the start offset in the current gpio_chip number space
@@ -641,6 +665,13 @@ gpiochip_add_pin_range
     :param unsigned int npins:
         the number of pins from the offset of each pin space (GPIO and
         pin controller) to accumulate in this range
+
+.. _`gpiochip_add_pin_range.return`:
+
+Return
+------
+
+0 on success, or a negative error-code on failure.
 
 .. _`gpiochip_remove_pin_ranges`:
 
@@ -692,10 +723,10 @@ gpiochip_request_own_desc
     Allow GPIO chip to request its own descriptor
 
     :param struct gpio_chip \*chip:
-        *undescribed*
+        GPIO chip
 
     :param u16 hwnum:
-        *undescribed*
+        hardware number of the GPIO for which to request the descriptor
 
     :param const char \*label:
         label for the GPIO
@@ -710,6 +741,14 @@ descriptors via gpiolib API. Difference to \ :c:func:`gpiod_request`\  is that t
 function will not increase reference count of the GPIO chip module. This
 allows the GPIO chip module to be unloaded as needed (we assume that the
 GPIO chip driver handles freeing the GPIOs it has requested).
+
+.. _`gpiochip_request_own_desc.return`:
+
+Return
+------
+
+A pointer to the GPIO descriptor, or an \ :c:func:`ERR_PTR`\ -encoded negative error
+code on failure.
 
 .. _`gpiochip_free_own_desc`:
 
@@ -813,21 +852,21 @@ gpiod_set_debounce
 
 .. c:function:: int gpiod_set_debounce(struct gpio_desc *desc, unsigned debounce)
 
-    sets \ ``debounce``\  time for a \ ``gpio``\ 
+    sets \ ``debounce``\  time for a GPIO
 
     :param struct gpio_desc \*desc:
-        *undescribed*
+        descriptor of the GPIO for which to set debounce time
 
     :param unsigned debounce:
-        debounce time is microseconds
+        debounce time in microseconds
 
-.. _`gpiod_set_debounce.description`:
+.. _`gpiod_set_debounce.return`:
 
-Description
------------
+Return
+------
 
-returns -ENOTSUPP if the controller does not support setting
-debounce.
+0 on success, \ ``-ENOTSUPP``\  if the controller doesn't support setting the
+debounce time.
 
 .. _`gpiod_is_active_low`:
 
@@ -1204,6 +1243,21 @@ without regard for their ACTIVE_LOW status.
 
 This function is to be called from contexts that can sleep.
 
+.. _`gpiod_add_lookup_tables`:
+
+gpiod_add_lookup_tables
+=======================
+
+.. c:function:: void gpiod_add_lookup_tables(struct gpiod_lookup_table **tables, size_t n)
+
+    register GPIO device consumers
+
+    :param struct gpiod_lookup_table \*\*tables:
+        list of tables of consumers to register
+
+    :param size_t n:
+        number of tables in the list
+
 .. _`gpiod_set_array_value_cansleep`:
 
 gpiod_set_array_value_cansleep
@@ -1411,7 +1465,7 @@ fwnode_get_named_gpiod
         GPIO initialization flags
 
     :param const char \*label:
-        *undescribed*
+        label to attach to the requested GPIO
 
 .. _`fwnode_get_named_gpiod.description`:
 
@@ -1424,6 +1478,11 @@ from firmware.
 Function properly finds the corresponding GPIO using whatever is the
 underlying firmware interface and then makes sure that the GPIO
 descriptor is requested before it is returned to the caller.
+
+.. _`fwnode_get_named_gpiod.return`:
+
+Return
+------
 
 On successful request the GPIO pin is configured in accordance with
 provided \ ``dflags``\ .

@@ -192,39 +192,155 @@ Return
 
 Returns 0 on success or an error code on failure.
 
-.. _`tb_switch_free`:
-
-tb_switch_free
-==============
-
-.. c:function:: void tb_switch_free(struct tb_switch *sw)
-
-    free a tb_switch and all downstream switches
-
-    :param struct tb_switch \*sw:
-        *undescribed*
-
 .. _`tb_switch_alloc`:
 
 tb_switch_alloc
 ===============
 
-.. c:function:: struct tb_switch *tb_switch_alloc(struct tb *tb, u64 route)
+.. c:function:: struct tb_switch *tb_switch_alloc(struct tb *tb, struct device *parent, u64 route)
 
-    allocate and initialize a switch
+    allocate a switch
 
     :param struct tb \*tb:
-        *undescribed*
+        Pointer to the owning domain
+
+    :param struct device \*parent:
+        Parent device for this switch
 
     :param u64 route:
-        *undescribed*
+        Route string for this switch
+
+.. _`tb_switch_alloc.description`:
+
+Description
+-----------
+
+Allocates and initializes a switch. Will not upload configuration to
+the switch. For that you need to call \ :c:func:`tb_switch_configure`\ 
+separately. The returned switch should be released by calling
+\ :c:func:`tb_switch_put`\ .
 
 .. _`tb_switch_alloc.return`:
 
 Return
 ------
 
-Returns a NULL on failure.
+Pointer to the allocated switch or \ ``NULL``\  in case of failure
+
+.. _`tb_switch_alloc_safe_mode`:
+
+tb_switch_alloc_safe_mode
+=========================
+
+.. c:function:: struct tb_switch *tb_switch_alloc_safe_mode(struct tb *tb, struct device *parent, u64 route)
+
+    allocate a switch that is in safe mode
+
+    :param struct tb \*tb:
+        Pointer to the owning domain
+
+    :param struct device \*parent:
+        Parent device for this switch
+
+    :param u64 route:
+        Route string for this switch
+
+.. _`tb_switch_alloc_safe_mode.description`:
+
+Description
+-----------
+
+This creates a switch in safe mode. This means the switch pretty much
+lacks all capabilities except DMA configuration port before it is
+flashed with a valid NVM firmware.
+
+The returned switch must be released by calling \ :c:func:`tb_switch_put`\ .
+
+.. _`tb_switch_alloc_safe_mode.return`:
+
+Return
+------
+
+Pointer to the allocated switch or \ ``NULL``\  in case of failure
+
+.. _`tb_switch_configure`:
+
+tb_switch_configure
+===================
+
+.. c:function:: int tb_switch_configure(struct tb_switch *sw)
+
+    Uploads configuration to the switch
+
+    :param struct tb_switch \*sw:
+        Switch to configure
+
+.. _`tb_switch_configure.description`:
+
+Description
+-----------
+
+Call this function before the switch is added to the system. It will
+upload configuration to the switch and makes it available for the
+connection manager to use.
+
+.. _`tb_switch_configure.return`:
+
+Return
+------
+
+%0 in case of success and negative errno in case of failure
+
+.. _`tb_switch_add`:
+
+tb_switch_add
+=============
+
+.. c:function:: int tb_switch_add(struct tb_switch *sw)
+
+    Add a switch to the domain
+
+    :param struct tb_switch \*sw:
+        Switch to add
+
+.. _`tb_switch_add.description`:
+
+Description
+-----------
+
+This is the last step in adding switch to the domain. It will read
+identification information from DROM and initializes ports so that
+they can be used to connect other switches. The switch will be
+exposed to the userspace when this function successfully returns. To
+remove and release the switch, call \ :c:func:`tb_switch_remove`\ .
+
+.. _`tb_switch_add.return`:
+
+Return
+------
+
+%0 in case of success and negative errno in case of failure
+
+.. _`tb_switch_remove`:
+
+tb_switch_remove
+================
+
+.. c:function:: void tb_switch_remove(struct tb_switch *sw)
+
+    Remove and release a switch
+
+    :param struct tb_switch \*sw:
+        Switch to remove
+
+.. _`tb_switch_remove.description`:
+
+Description
+-----------
+
+This will remove the switch from the domain and release it after last
+reference count drops to zero. If there are switches connected below
+this switch, they will be removed as well.
 
 .. _`tb_sw_set_unplugged`:
 
@@ -237,6 +353,55 @@ tb_sw_set_unplugged
 
     :param struct tb_switch \*sw:
         *undescribed*
+
+.. _`tb_switch_find_by_link_depth`:
+
+tb_switch_find_by_link_depth
+============================
+
+.. c:function:: struct tb_switch *tb_switch_find_by_link_depth(struct tb *tb, u8 link, u8 depth)
+
+    Find switch by link and depth
+
+    :param struct tb \*tb:
+        Domain the switch belongs
+
+    :param u8 link:
+        Link number the switch is connected
+
+    :param u8 depth:
+        Depth of the switch in link
+
+.. _`tb_switch_find_by_link_depth.description`:
+
+Description
+-----------
+
+Returned switch has reference count increased so the caller needs to
+call \ :c:func:`tb_switch_put`\  when done with the switch.
+
+.. _`tb_switch_find_by_uuid`:
+
+tb_switch_find_by_uuid
+======================
+
+.. c:function:: struct tb_switch *tb_switch_find_by_uuid(struct tb *tb, const uuid_t *uuid)
+
+    Find switch by UUID
+
+    :param struct tb \*tb:
+        Domain the switch belongs
+
+    :param const uuid_t \*uuid:
+        UUID to look for
+
+.. _`tb_switch_find_by_uuid.description`:
+
+Description
+-----------
+
+Returned switch has reference count increased so the caller needs to
+call \ :c:func:`tb_switch_put`\  when done with the switch.
 
 .. This file was automatic generated / don't edit.
 

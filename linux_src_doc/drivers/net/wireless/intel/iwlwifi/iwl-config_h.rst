@@ -92,12 +92,12 @@ Definition
     struct iwl_cfg {
         const char *name;
         const char *fw_name_pre;
-        const char *fw_name_pre_next_step;
+        const char *fw_name_pre_b_or_c_step;
+        const char *fw_name_pre_rf_next_step;
         const struct iwl_base_params *base_params;
         const struct iwl_ht_params *ht_params;
         const struct iwl_eeprom_params *eeprom_params;
         const struct iwl_pwr_tx_backoff *pwr_tx_backoffs;
-        const char *default_nvm_file_B_step;
         const char *default_nvm_file_C_step;
         const struct iwl_tt_params *thermal_params;
         enum iwl_device_family device_family;
@@ -129,6 +129,8 @@ Definition
         u16 use_tfh:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
         u16 gen2:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
         u16 cdb:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 ext_nvm:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 dbgc_supported:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         u8 non_shared_ant;
@@ -154,9 +156,13 @@ fw_name_pre
     (.ucode) will be added to filename before loading from disk. The
     filename is constructed as fw_name_pre<api>.ucode.
 
-fw_name_pre_next_step
-    same as \ ``fw_name_pre``\ , only for next step
+fw_name_pre_b_or_c_step
+    same as \ ``fw_name_pre``\ , only for b or c steps
     (if supported)
+
+fw_name_pre_rf_next_step
+    same as \ ``fw_name_pre_b_or_c_step``\ , only for rf
+    next step. Supported only in integrated solutions.
 
 base_params
     pointer to basic parameters
@@ -169,9 +175,6 @@ eeprom_params
 
 pwr_tx_backoffs
     translation table between power limits and backoffs
-
-default_nvm_file_B_step
-    *undescribed*
 
 default_nvm_file_C_step
     *undescribed*
@@ -266,6 +269,12 @@ gen2
 
 cdb
     CDB support
+
+ext_nvm
+    extended NVM format
+
+dbgc_supported
+    *undescribed*
 
 valid_tx_ant
     valid transmit antenna

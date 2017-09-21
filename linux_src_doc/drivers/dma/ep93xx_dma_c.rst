@@ -179,6 +179,7 @@ Definition
         struct dma_device dma_dev;
         bool m2m;
         int (*hw_setup)(struct ep93xx_dma_chan *);
+        void (*hw_synchronize)(struct ep93xx_dma_chan *);
         void (*hw_shutdown)(struct ep93xx_dma_chan *);
         void (*hw_submit)(struct ep93xx_dma_chan *);
         int (*hw_interrupt)(struct ep93xx_dma_chan *);
@@ -202,6 +203,9 @@ m2m
 
 hw_setup
     method which sets the channel up for operation
+
+hw_synchronize
+    *undescribed*
 
 hw_shutdown
     shuts the channel down and flushes whatever is left
@@ -466,6 +470,30 @@ terminates only when client calls \ :c:func:`dmaengine_terminate_all`\  for this
 channel.
 
 Returns a valid DMA descriptor or \ ``NULL``\  in case of failure.
+
+.. _`ep93xx_dma_synchronize`:
+
+ep93xx_dma_synchronize
+======================
+
+.. c:function:: void ep93xx_dma_synchronize(struct dma_chan *chan)
+
+    Synchronizes the termination of transfers to the current context.
+
+    :param struct dma_chan \*chan:
+        channel
+
+.. _`ep93xx_dma_synchronize.description`:
+
+Description
+-----------
+
+Synchronizes the DMA channel termination to the current context. When this
+function returns it is guaranteed that all transfers for previously issued
+descriptors have stopped and and it is safe to free the memory associated
+with them. Furthermore it is guaranteed that all complete callback functions
+for a previously submitted descriptor have finished running and it is safe to
+free resources accessed from within the complete callbacks.
 
 .. _`ep93xx_dma_terminate_all`:
 

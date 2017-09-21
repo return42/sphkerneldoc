@@ -118,11 +118,38 @@ Description
 Pass a FC-NVME FCP CMD IU received from the FC link to the nvmet-fc
 layer for processing.
 
-The nvmet-fc layer will copy cmd payload to an internal structure for
-processing.  As such, upon completion of the routine, the LLDD may
-immediately free/reuse the CMD IU buffer passed in the call.
+The nvmet_fc layer allocates a local job structure (struct
+nvmet_fc_fcp_iod) from the queue for the io and copies the
+CMD IU buffer to the job structure. As such, on a successful
+completion (returns 0), the LLDD may immediately free/reuse
+the CMD IU buffer passed in the call.
 
-If this routine returns error, the lldd should abort the exchange.
+However, in some circumstances, due to the packetized nature of FC
+and the api of the FC LLDD which may issue a hw command to send the
+response, but the LLDD may not get the hw completion for that command
+and upcall the nvmet_fc layer before a new command may be
+asynchronously received - its possible for a command to be received
+before the LLDD and nvmet_fc have recycled the job structure. It gives
+the appearance of more commands received than fits in the sq.
+To alleviate this scenario, a temporary queue is maintained in the
+transport for pending LLDD requests waiting for a queue job structure.
+In these "overrun" cases, a temporary queue element is allocated
+the LLDD request and CMD iu buffer information remembered, and the
+routine returns a -EOVERFLOW status. Subsequently, when a queue job
+structure is freed, it is immediately reallocated for anything on the
+pending request list. The LLDDs \ :c:func:`defer_rcv`\  callback is called,
+informing the LLDD that it may reuse the CMD IU buffer, and the io
+is then started normally with the transport.
+
+The LLDD, when receiving an -EOVERFLOW completion status, is to treat
+the completion as successful but must not reuse the CMD IU buffer
+until the LLDD's \ :c:func:`defer_rcv`\  callback has been called for the
+corresponding struct nvmefc_tgt_fcp_req pointer.
+
+If there is any other condition in which an error occurs, the
+transport will return a non-zero status indicating the error.
+In all cases other than -EOVERFLOW, the transport has not accepted the
+request and the LLDD should abort the exchange.
 
 .. _`nvmet_fc_rcv_fcp_abort`:
 

@@ -32,7 +32,7 @@ SSP driver for the HP Jornada 710/720/728
 jornada_ssp_reverse
 ===================
 
-.. c:function:: u8 inline jornada_ssp_reverse(u8 byte)
+.. c:function:: u8 jornada_ssp_reverse(u8 byte)
 
     reverses input byte
 

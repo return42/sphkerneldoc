@@ -40,48 +40,99 @@ cmd_complete
 Description
 -----------
 
-Prepares and submits command that has either completed or timed out to
-the SCSI stack. Checks AFU command back into command pool for non-internal
-(cmd->scp populated) commands.
+For SCSI commands this routine prepares and submits commands that have
+either completed or timed out to the SCSI stack. For internal commands
+(TMF or AFU), this routine simply notifies the originator that the
+command has completed.
+
+.. _`flush_pending_cmds`:
+
+flush_pending_cmds
+==================
+
+.. c:function:: void flush_pending_cmds(struct hwq *hwq)
+
+    flush all pending commands on this hardware queue
+
+    :param struct hwq \*hwq:
+        Hardware queue to flush.
+
+.. _`flush_pending_cmds.description`:
+
+Description
+-----------
+
+The hardware send queue lock associated with this hardware queue must be
+held when calling this routine.
 
 .. _`context_reset`:
 
 context_reset
 =============
 
-.. c:function:: void context_reset(struct afu_cmd *cmd, __be64 __iomem *reset_reg)
+.. c:function:: int context_reset(struct hwq *hwq, __be64 __iomem *reset_reg)
 
-    reset command owner context via specified register
+    reset context via specified register
 
-    :param struct afu_cmd \*cmd:
-        AFU command that timed out.
+    :param struct hwq \*hwq:
+        Hardware queue owning the context to be reset.
 
     :param __be64 __iomem \*reset_reg:
         MMIO register to perform reset.
+
+.. _`context_reset.description`:
+
+Description
+-----------
+
+When the reset is successful, the SISLite specification guarantees that
+the AFU has aborted all currently pending I/O. Accordingly, these commands
+must be flushed.
+
+.. _`context_reset.return`:
+
+Return
+------
+
+0 on success, -errno on failure
 
 .. _`context_reset_ioarrin`:
 
 context_reset_ioarrin
 =====================
 
-.. c:function:: void context_reset_ioarrin(struct afu_cmd *cmd)
+.. c:function:: int context_reset_ioarrin(struct hwq *hwq)
 
-    reset command owner context via IOARRIN register
+    reset context via IOARRIN register
 
-    :param struct afu_cmd \*cmd:
-        AFU command that timed out.
+    :param struct hwq \*hwq:
+        Hardware queue owning the context to be reset.
+
+.. _`context_reset_ioarrin.return`:
+
+Return
+------
+
+0 on success, -errno on failure
 
 .. _`context_reset_sq`:
 
 context_reset_sq
 ================
 
-.. c:function:: void context_reset_sq(struct afu_cmd *cmd)
+.. c:function:: int context_reset_sq(struct hwq *hwq)
 
-    reset command owner context w/ SQ Context Reset register
+    reset context via SQ_CONTEXT_RESET register
 
-    :param struct afu_cmd \*cmd:
-        AFU command that timed out.
+    :param struct hwq \*hwq:
+        Hardware queue owning the context to be reset.
+
+.. _`context_reset_sq.return`:
+
+Return
+------
+
+0 on success, -errno on failure
 
 .. _`send_cmd_ioarrin`:
 
@@ -147,7 +198,7 @@ wait_resp
 Return
 ------
 
-0 on success, -1 on timeout/error
+0 on success, -errno on failure
 
 .. _`cmd_to_target_hwq`:
 
@@ -186,15 +237,15 @@ Trusted index of target hardware queue
 send_tmf
 ========
 
-.. c:function:: int send_tmf(struct afu *afu, struct scsi_cmnd *scp, u64 tmfcmd)
+.. c:function:: int send_tmf(struct cxlflash_cfg *cfg, struct scsi_device *sdev, u64 tmfcmd)
 
     sends a Task Management Function (TMF)
 
-    :param struct afu \*afu:
-        AFU to checkout from.
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
 
-    :param struct scsi_cmnd \*scp:
-        SCSI command from stack.
+    :param struct scsi_device \*sdev:
+        SCSI device destined for TMF.
 
     :param u64 tmfcmd:
         TMF command to send.
@@ -204,7 +255,7 @@ send_tmf
 Return
 ------
 
-0 on success, SCSI_MLQUEUE_HOST_BUSY on failure
+0 on success, SCSI_MLQUEUE_HOST_BUSY or -errno on failure
 
 .. _`cxlflash_driver_info`:
 
@@ -267,6 +318,18 @@ free_mem
 .. c:function:: void free_mem(struct cxlflash_cfg *cfg)
 
     free memory associated with the AFU
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+.. _`cxlflash_reset_sync`:
+
+cxlflash_reset_sync
+===================
+
+.. c:function:: void cxlflash_reset_sync(struct cxlflash_cfg *cfg)
+
+    synchronizing point for asynchronous resets
 
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
@@ -383,6 +446,49 @@ This function will notify the AFU that the adapter is being shutdown
 and will wait for shutdown processing to complete if wait is true.
 This notification should flush pending I/Os to the device and halt
 further I/Os until the next AFU reset is issued and device restarted.
+
+.. _`cxlflash_get_minor`:
+
+cxlflash_get_minor
+==================
+
+.. c:function:: int cxlflash_get_minor( void)
+
+    gets the first available minor number
+
+    :param  void:
+        no arguments
+
+.. _`cxlflash_get_minor.return`:
+
+Return
+------
+
+Unique minor number that can be used to create the character device.
+
+.. _`cxlflash_put_minor`:
+
+cxlflash_put_minor
+==================
+
+.. c:function:: void cxlflash_put_minor(int minor)
+
+    releases the minor number
+
+    :param int minor:
+        Minor number that is no longer needed.
+
+.. _`cxlflash_release_chrdev`:
+
+cxlflash_release_chrdev
+=======================
+
+.. c:function:: void cxlflash_release_chrdev(struct cxlflash_cfg *cfg)
+
+    release the character device for the host
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
 
 .. _`cxlflash_remove`:
 
@@ -983,51 +1089,6 @@ Return
 
 0 on success, -errno on failure
 
-.. _`cxlflash_afu_sync`:
-
-cxlflash_afu_sync
-=================
-
-.. c:function:: int cxlflash_afu_sync(struct afu *afu, ctx_hndl_t ctx_hndl_u, res_hndl_t res_hndl_u, u8 mode)
-
-    builds and sends an AFU sync command
-
-    :param struct afu \*afu:
-        AFU associated with the host.
-
-    :param ctx_hndl_t ctx_hndl_u:
-        Identifies context requesting sync.
-
-    :param res_hndl_t res_hndl_u:
-        Identifies resource requesting sync.
-
-    :param u8 mode:
-        Type of sync to issue (lightweight, heavyweight, global).
-
-.. _`cxlflash_afu_sync.description`:
-
-Description
------------
-
-The AFU can only take 1 sync command at a time. This routine enforces this
-limitation by using a mutex to provide exclusive access to the AFU during
-the sync. This design point requires calling threads to not be on interrupt
-context due to the possibility of sleeping during concurrent sync operations.
-
-AFU sync operations are only necessary and allowed when the device is
-operating normally. When not operating normally, sync requests can occur as
-part of cleaning up resources associated with an adapter prior to removal.
-In this scenario, these requests are simply ignored (safe due to the AFU
-going away).
-
-.. _`cxlflash_afu_sync.return`:
-
-Return
-------
-
-0 on success
--1 on failure
-
 .. _`afu_reset`:
 
 afu_reset
@@ -1066,6 +1127,135 @@ Description
 
 Obtain write access to read/write semaphore that wraps ioctl
 handling to 'drain' ioctls currently executing.
+
+.. _`cxlflash_async_reset_host`:
+
+cxlflash_async_reset_host
+=========================
+
+.. c:function:: void cxlflash_async_reset_host(void *data, async_cookie_t cookie)
+
+    asynchronous host reset handler
+
+    :param void \*data:
+        Private data provided while scheduling reset.
+
+    :param async_cookie_t cookie:
+        Cookie that can be used for checkpointing.
+
+.. _`cxlflash_schedule_async_reset`:
+
+cxlflash_schedule_async_reset
+=============================
+
+.. c:function:: void cxlflash_schedule_async_reset(struct cxlflash_cfg *cfg)
+
+    schedule an asynchronous host reset
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+.. _`send_afu_cmd`:
+
+send_afu_cmd
+============
+
+.. c:function:: int send_afu_cmd(struct afu *afu, struct sisl_ioarcb *rcb)
+
+    builds and sends an internal AFU command
+
+    :param struct afu \*afu:
+        AFU associated with the host.
+
+    :param struct sisl_ioarcb \*rcb:
+        Pre-populated IOARCB describing command to send.
+
+.. _`send_afu_cmd.description`:
+
+Description
+-----------
+
+The AFU can only take one internal AFU command at a time. This limitation is
+enforced by using a mutex to provide exclusive access to the AFU during the
+operation. This design point requires calling threads to not be on interrupt
+context due to the possibility of sleeping during concurrent AFU operations.
+
+The command status is optionally passed back to the caller when the caller
+populates the IOASA field of the IOARCB with a pointer to an IOASA structure.
+
+.. _`send_afu_cmd.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`cxlflash_afu_sync`:
+
+cxlflash_afu_sync
+=================
+
+.. c:function:: int cxlflash_afu_sync(struct afu *afu, ctx_hndl_t ctx, res_hndl_t res, u8 mode)
+
+    builds and sends an AFU sync command
+
+    :param struct afu \*afu:
+        AFU associated with the host.
+
+    :param ctx_hndl_t ctx:
+        Identifies context requesting sync.
+
+    :param res_hndl_t res:
+        Identifies resource requesting sync.
+
+    :param u8 mode:
+        Type of sync to issue (lightweight, heavyweight, global).
+
+.. _`cxlflash_afu_sync.description`:
+
+Description
+-----------
+
+AFU sync operations are only necessary and allowed when the device is
+operating normally. When not operating normally, sync requests can occur as
+part of cleaning up resources associated with an adapter prior to removal.
+In this scenario, these requests are simply ignored (safe due to the AFU
+going away).
+
+.. _`cxlflash_afu_sync.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`cxlflash_eh_abort_handler`:
+
+cxlflash_eh_abort_handler
+=========================
+
+.. c:function:: int cxlflash_eh_abort_handler(struct scsi_cmnd *scp)
+
+    abort a SCSI command
+
+    :param struct scsi_cmnd \*scp:
+        SCSI command to abort.
+
+.. _`cxlflash_eh_abort_handler.description`:
+
+Description
+-----------
+
+CXL Flash devices do not support a single command abort. Reset the context
+as per SISLite specification. Flush any pending commands in the hardware
+queue before the reset.
+
+.. _`cxlflash_eh_abort_handler.return`:
+
+Return
+------
+
+SUCCESS/FAILED as defined in scsi/scsi.h
 
 .. _`cxlflash_eh_device_reset_handler`:
 
@@ -1735,6 +1925,163 @@ Handles the following events
 blocking up to a few seconds
 - Rescan the host
 
+.. _`cxlflash_chr_open`:
+
+cxlflash_chr_open
+=================
+
+.. c:function:: int cxlflash_chr_open(struct inode *inode, struct file *file)
+
+    character device open handler
+
+    :param struct inode \*inode:
+        Device inode associated with this character device.
+
+    :param struct file \*file:
+        File pointer for this device.
+
+.. _`cxlflash_chr_open.description`:
+
+Description
+-----------
+
+Only users with admin privileges are allowed to open the character device.
+
+.. _`cxlflash_chr_open.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`decode_hioctl`:
+
+decode_hioctl
+=============
+
+.. c:function:: char *decode_hioctl(int cmd)
+
+    translates encoded host ioctl to easily identifiable string
+
+    :param int cmd:
+        The host ioctl command to decode.
+
+.. _`decode_hioctl.return`:
+
+Return
+------
+
+A string identifying the decoded host ioctl.
+
+.. _`cxlflash_lun_provision`:
+
+cxlflash_lun_provision
+======================
+
+.. c:function:: int cxlflash_lun_provision(struct cxlflash_cfg *cfg, struct ht_cxlflash_lun_provision *lunprov)
+
+    host LUN provisioning handler
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+    :param struct ht_cxlflash_lun_provision \*lunprov:
+        *undescribed*
+
+.. _`cxlflash_lun_provision.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`cxlflash_afu_debug`:
+
+cxlflash_afu_debug
+==================
+
+.. c:function:: int cxlflash_afu_debug(struct cxlflash_cfg *cfg, struct ht_cxlflash_afu_debug *afu_dbg)
+
+    host AFU debug handler
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+    :param struct ht_cxlflash_afu_debug \*afu_dbg:
+        *undescribed*
+
+.. _`cxlflash_afu_debug.description`:
+
+Description
+-----------
+
+For debug requests requiring a data buffer, always provide an aligned
+(cache line) buffer to the AFU to appease any alignment requirements.
+
+.. _`cxlflash_afu_debug.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`cxlflash_chr_ioctl`:
+
+cxlflash_chr_ioctl
+==================
+
+.. c:function:: long cxlflash_chr_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+
+    character device IOCTL handler
+
+    :param struct file \*file:
+        File pointer for this device.
+
+    :param unsigned int cmd:
+        IOCTL command.
+
+    :param unsigned long arg:
+        Userspace ioctl data structure.
+
+.. _`cxlflash_chr_ioctl.description`:
+
+Description
+-----------
+
+A read/write semaphore is used to implement a 'drain' of currently
+running ioctls. The read semaphore is taken at the beginning of each
+ioctl thread and released upon concluding execution. Additionally the
+semaphore should be released and then reacquired in any ioctl execution
+path which will wait for an event to occur that is outside the scope of
+the ioctl (i.e. an adapter reset). To drain the ioctls currently running,
+a thread simply needs to acquire the write semaphore.
+
+.. _`cxlflash_chr_ioctl.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`init_chrdev`:
+
+init_chrdev
+===========
+
+.. c:function:: int init_chrdev(struct cxlflash_cfg *cfg)
+
+    initialize the character device for the host
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+.. _`init_chrdev.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
 .. _`cxlflash_probe`:
 
 cxlflash_probe
@@ -1839,6 +2186,59 @@ cxlflash_pci_resume
 
     :param struct pci_dev \*pdev:
         PCI device struct
+
+.. _`cxlflash_devnode`:
+
+cxlflash_devnode
+================
+
+.. c:function:: char *cxlflash_devnode(struct device *dev, umode_t *mode)
+
+    provides devtmpfs for devices in the cxlflash class
+
+    :param struct device \*dev:
+        Character device.
+
+    :param umode_t \*mode:
+        Mode that can be used to verify access.
+
+.. _`cxlflash_devnode.return`:
+
+Return
+------
+
+Allocated string describing the devtmpfs structure.
+
+.. _`cxlflash_class_init`:
+
+cxlflash_class_init
+===================
+
+.. c:function:: int cxlflash_class_init( void)
+
+    create character device class
+
+    :param  void:
+        no arguments
+
+.. _`cxlflash_class_init.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`cxlflash_class_exit`:
+
+cxlflash_class_exit
+===================
+
+.. c:function:: void cxlflash_class_exit( void)
+
+    destroy character device class
+
+    :param  void:
+        no arguments
 
 .. _`init_cxlflash`:
 

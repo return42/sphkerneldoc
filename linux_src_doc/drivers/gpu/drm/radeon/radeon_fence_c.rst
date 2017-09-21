@@ -102,11 +102,11 @@ Returns 0 on success, -ENOMEM on failure.
 radeon_fence_check_signaled
 ===========================
 
-.. c:function:: int radeon_fence_check_signaled(wait_queue_t *wait, unsigned mode, int flags, void *key)
+.. c:function:: int radeon_fence_check_signaled(wait_queue_entry_t *wait, unsigned mode, int flags, void *key)
 
     callback from fence_queue
 
-    :param wait_queue_t \*wait:
+    :param wait_queue_entry_t \*wait:
         *undescribed*
 
     :param unsigned mode:

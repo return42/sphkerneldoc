@@ -1,6 +1,127 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/hw/hfi1/init.c
 
+.. _`hfi1_rcd_free`:
+
+hfi1_rcd_free
+=============
+
+.. c:function:: void hfi1_rcd_free(struct kref *kref)
+
+    When reference is zero clean up.
+
+    :param struct kref \*kref:
+        pointer to an initialized rcd data structure
+
+.. _`hfi1_rcd_put`:
+
+hfi1_rcd_put
+============
+
+.. c:function:: int hfi1_rcd_put(struct hfi1_ctxtdata *rcd)
+
+    decrement reference for rcd
+
+    :param struct hfi1_ctxtdata \*rcd:
+        pointer to an initialized rcd data structure
+
+.. _`hfi1_rcd_put.description`:
+
+Description
+-----------
+
+Use this to put a reference after the init.
+
+.. _`hfi1_rcd_get`:
+
+hfi1_rcd_get
+============
+
+.. c:function:: void hfi1_rcd_get(struct hfi1_ctxtdata *rcd)
+
+    increment reference for rcd
+
+    :param struct hfi1_ctxtdata \*rcd:
+        pointer to an initialized rcd data structure
+
+.. _`hfi1_rcd_get.description`:
+
+Description
+-----------
+
+Use this to get a reference after the init.
+
+.. _`allocate_rcd_index`:
+
+allocate_rcd_index
+==================
+
+.. c:function:: int allocate_rcd_index(struct hfi1_devdata *dd, struct hfi1_ctxtdata *rcd, u16 *index)
+
+    allocate an rcd index from the rcd array
+
+    :param struct hfi1_devdata \*dd:
+        pointer to a valid devdata structure
+
+    :param struct hfi1_ctxtdata \*rcd:
+        rcd data structure to assign
+
+    :param u16 \*index:
+        pointer to index that is allocated
+
+.. _`allocate_rcd_index.description`:
+
+Description
+-----------
+
+Find an empty index in the rcd array, and assign the given rcd to it.
+If the array is full, we are EBUSY.
+
+.. _`hfi1_rcd_get_by_index`:
+
+hfi1_rcd_get_by_index
+=====================
+
+.. c:function:: struct hfi1_ctxtdata *hfi1_rcd_get_by_index(struct hfi1_devdata *dd, u16 ctxt)
+
+    :param struct hfi1_devdata \*dd:
+        pointer to a valid devdata structure
+
+    :param u16 ctxt:
+        the index of an possilbe rcd
+
+.. _`hfi1_rcd_get_by_index.description`:
+
+Description
+-----------
+
+We need to protect access to the rcd array.  If access is needed to
+one or more index, get the protecting spinlock and then increment the
+kref.
+
+The caller is responsible for making the \_put().
+
+.. _`hfi1_free_ctxt`:
+
+hfi1_free_ctxt
+==============
+
+.. c:function:: void hfi1_free_ctxt(struct hfi1_ctxtdata *rcd)
+
+    :param struct hfi1_ctxtdata \*rcd:
+        pointer to an initialized rcd data structure
+
+.. _`hfi1_free_ctxt.description`:
+
+Description
+-----------
+
+This wrapper is the free function that matches \ :c:func:`hfi1_create_ctxtdata`\ .
+When a context is done being used (kernel or user), this function is called
+for the "final" put to match the kref init from \ :c:func:`hf1i_create_ctxtdata`\ .
+Other users of the context do a get/put sequence to make sure that the
+structure isn't removed while in use.
+
 .. _`init_after_reset`:
 
 init_after_reset
@@ -107,9 +228,6 @@ Description
 -----------
 
 free up any allocated data for a context
-This should not touch anything that would affect a simultaneous
-re-allocation of context data, because it is called after hfi1_mutex
-is released (and can be called from reinit as well).
 It should never change any chip state, or global driver state.
 
 .. _`hfi1_create_rcvhdrq`:

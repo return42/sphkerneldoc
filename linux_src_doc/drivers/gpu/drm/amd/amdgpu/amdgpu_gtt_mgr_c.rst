@@ -43,6 +43,25 @@ Description
 Destroy and free the GTT manager, returns -EBUSY if ranges are still
 allocated inside it.
 
+.. _`amdgpu_gtt_mgr_is_allocated`:
+
+amdgpu_gtt_mgr_is_allocated
+===========================
+
+.. c:function:: bool amdgpu_gtt_mgr_is_allocated(struct ttm_mem_reg *mem)
+
+    Check if mem has address space
+
+    :param struct ttm_mem_reg \*mem:
+        the mem object to check
+
+.. _`amdgpu_gtt_mgr_is_allocated.description`:
+
+Description
+-----------
+
+Check if a mem object has already address space allocated.
+
 .. _`amdgpu_gtt_mgr_alloc`:
 
 amdgpu_gtt_mgr_alloc
@@ -121,20 +140,39 @@ Description
 
 Free the allocated GTT again.
 
+.. _`amdgpu_gtt_mgr_usage`:
+
+amdgpu_gtt_mgr_usage
+====================
+
+.. c:function:: uint64_t amdgpu_gtt_mgr_usage(struct ttm_mem_type_manager *man)
+
+    return usage of GTT domain
+
+    :param struct ttm_mem_type_manager \*man:
+        TTM memory type manager
+
+.. _`amdgpu_gtt_mgr_usage.description`:
+
+Description
+-----------
+
+Return how many bytes are used in the GTT domain
+
 .. _`amdgpu_gtt_mgr_debug`:
 
 amdgpu_gtt_mgr_debug
 ====================
 
-.. c:function:: void amdgpu_gtt_mgr_debug(struct ttm_mem_type_manager *man, const char *prefix)
+.. c:function:: void amdgpu_gtt_mgr_debug(struct ttm_mem_type_manager *man, struct drm_printer *printer)
 
     dump VRAM table
 
     :param struct ttm_mem_type_manager \*man:
         TTM memory type manager
 
-    :param const char \*prefix:
-        text prefix
+    :param struct drm_printer \*printer:
+        DRM printer to use
 
 .. _`amdgpu_gtt_mgr_debug.description`:
 

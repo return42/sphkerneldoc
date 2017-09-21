@@ -307,15 +307,12 @@ address_space_operation.
 write_one_page
 ==============
 
-.. c:function:: int write_one_page(struct page *page, int wait)
+.. c:function:: int write_one_page(struct page *page)
 
-    write out a single page and optionally wait on I/O
+    write out a single page and wait on I/O
 
     :param struct page \*page:
         the page to write
-
-    :param int wait:
-        if true, wait on writeout
 
 .. _`write_one_page.description`:
 
@@ -324,7 +321,8 @@ Description
 
 The page must be locked by the caller and will be unlocked upon return.
 
-\ :c:func:`write_one_page`\  returns a negative error code if I/O failed.
+Note that the mapping's AS_EIO/AS_ENOSPC flags will be cleared when this
+function returns.
 
 .. _`wait_for_stable_page`:
 

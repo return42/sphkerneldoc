@@ -227,46 +227,6 @@ Description
 
 Tears down the driver GART/VM setup (CIK).
 
-.. _`gmc_v8_0_vm_init`:
-
-gmc_v8_0_vm_init
-================
-
-.. c:function:: int gmc_v8_0_vm_init(struct amdgpu_device *adev)
-
-    cik vm init callback
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v8_0_vm_init.description`:
-
-Description
------------
-
-Inits cik specific vm parameters (number of VMs, base of vram for
-VMIDs 1-15) (CIK).
-Returns 0 for success.
-
-.. _`gmc_v8_0_vm_fini`:
-
-gmc_v8_0_vm_fini
-================
-
-.. c:function:: void gmc_v8_0_vm_fini(struct amdgpu_device *adev)
-
-    cik vm fini callback
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v8_0_vm_fini.description`:
-
-Description
------------
-
-Tear down any asic specific VM setup (CIK).
-
 .. _`gmc_v8_0_vm_decode_fault`:
 
 gmc_v8_0_vm_decode_fault

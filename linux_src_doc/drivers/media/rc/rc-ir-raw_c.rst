@@ -31,15 +31,15 @@ will reset the decoding state machines.
 ir_raw_event_store_edge
 =======================
 
-.. c:function:: int ir_raw_event_store_edge(struct rc_dev *dev, enum raw_event_type type)
+.. c:function:: int ir_raw_event_store_edge(struct rc_dev *dev, bool pulse)
 
     notify raw ir decoders of the start of a pulse/space
 
     :param struct rc_dev \*dev:
         the struct rc_dev device descriptor
 
-    :param enum raw_event_type type:
-        the type of the event that has occurred
+    :param bool pulse:
+        true for pulse, false for space
 
 .. _`ir_raw_event_store_edge.description`:
 
@@ -250,11 +250,11 @@ written.
 ir_raw_encode_scancode
 ======================
 
-.. c:function:: int ir_raw_encode_scancode(enum rc_type protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
+.. c:function:: int ir_raw_encode_scancode(enum rc_proto protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
 
     Encode a scancode as raw events
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         protocol
 
     :param u32 scancode:

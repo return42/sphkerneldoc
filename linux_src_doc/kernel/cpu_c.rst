@@ -72,12 +72,12 @@ Description
 It must be called by the arch code on the new cpu, before the new cpu
 enables interrupts and before the "boot" cpu returns from \__cpu_up().
 
-.. _`__cpuhp_setup_state`:
+.. _`__cpuhp_setup_state_cpuslocked`:
 
-__cpuhp_setup_state
-===================
+__cpuhp_setup_state_cpuslocked
+==============================
 
-.. c:function:: int __cpuhp_setup_state(enum cpuhp_state state, const char *name, bool invoke, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu), bool multi_instance)
+.. c:function:: int __cpuhp_setup_state_cpuslocked(enum cpuhp_state state, const char *name, bool invoke, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu), bool multi_instance)
 
     Setup the callbacks for an hotplug machine state
 
@@ -101,7 +101,14 @@ __cpuhp_setup_state
         State is set up for multiple instances which get
         added afterwards.
 
-.. _`__cpuhp_setup_state.on-success`:
+.. _`__cpuhp_setup_state_cpuslocked.description`:
+
+Description
+-----------
+
+The caller needs to hold cpus read locked while calling this function.
+
+.. _`__cpuhp_setup_state_cpuslocked.on-success`:
 
 On success
 ----------
@@ -109,19 +116,19 @@ On success
 Positive state number if \ ``state``\  is CPUHP_AP_ONLINE_DYN
 0 for all other states
 
-.. _`__cpuhp_setup_state.on-failure`:
+.. _`__cpuhp_setup_state_cpuslocked.on-failure`:
 
 On failure
 ----------
 
 proper (negative) error code
 
-.. _`__cpuhp_remove_state`:
+.. _`__cpuhp_remove_state_cpuslocked`:
 
-__cpuhp_remove_state
-====================
+__cpuhp_remove_state_cpuslocked
+===============================
 
-.. c:function:: void __cpuhp_remove_state(enum cpuhp_state state, bool invoke)
+.. c:function:: void __cpuhp_remove_state_cpuslocked(enum cpuhp_state state, bool invoke)
 
     Remove the callbacks for an hotplug machine state
 
@@ -132,11 +139,12 @@ __cpuhp_remove_state
         If true, the teardown function is invoked for cpus where
         cpu state >= \ ``state``\ 
 
-.. _`__cpuhp_remove_state.description`:
+.. _`__cpuhp_remove_state_cpuslocked.description`:
 
 Description
 -----------
 
+The caller needs to hold cpus read locked while calling this function.
 The teardown callback is currently not allowed to fail. Think
 about module removal!
 

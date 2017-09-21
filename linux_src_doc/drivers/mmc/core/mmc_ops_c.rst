@@ -45,5 +45,72 @@ Description
 
 Modifies the EXT_CSD register for selected card.
 
+.. _`mmc_interrupt_hpi`:
+
+mmc_interrupt_hpi
+=================
+
+.. c:function:: int mmc_interrupt_hpi(struct mmc_card *card)
+
+    Issue for High priority Interrupt
+
+    :param struct mmc_card \*card:
+        the MMC card associated with the HPI transfer
+
+.. _`mmc_interrupt_hpi.description`:
+
+Description
+-----------
+
+Issued High Priority Interrupt, and check for card status
+until out-of prg-state.
+
+.. _`mmc_stop_bkops`:
+
+mmc_stop_bkops
+==============
+
+.. c:function:: int mmc_stop_bkops(struct mmc_card *card)
+
+    stop ongoing BKOPS
+
+    :param struct mmc_card \*card:
+        MMC card to check BKOPS
+
+.. _`mmc_stop_bkops.description`:
+
+Description
+-----------
+
+Send HPI command to stop ongoing background operations to
+allow rapid servicing of foreground operations, e.g. read/
+writes. Wait until the card comes out of the programming state
+to avoid errors in servicing read/write requests.
+
+.. _`mmc_start_bkops`:
+
+mmc_start_bkops
+===============
+
+.. c:function:: void mmc_start_bkops(struct mmc_card *card, bool from_exception)
+
+    start BKOPS for supported cards
+
+    :param struct mmc_card \*card:
+        MMC card to start BKOPS
+
+    :param bool from_exception:
+        A flag to indicate if this function was
+        called due to an exception raised by the card
+
+.. _`mmc_start_bkops.description`:
+
+Description
+-----------
+
+Start background operations whenever requested.
+When the urgent BKOPS bit is set in a R1 command response
+then background operations should be started immediately.
+
 .. This file was automatic generated / don't edit.
 

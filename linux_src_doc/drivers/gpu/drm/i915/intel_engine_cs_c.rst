@@ -1,19 +1,58 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_engine_cs.c
 
-.. _`intel_engines_init_early`:
+.. _`__intel_engine_context_size`:
 
-intel_engines_init_early
-========================
+__intel_engine_context_size
+===========================
 
-.. c:function:: int intel_engines_init_early(struct drm_i915_private *dev_priv)
+.. c:function:: u32 __intel_engine_context_size(struct drm_i915_private *dev_priv, u8 class)
 
-    allocate the Engine Command Streamers
+    return the size of the context for an engine
 
     :param struct drm_i915_private \*dev_priv:
         i915 device private
 
-.. _`intel_engines_init_early.return`:
+    :param u8 class:
+        engine class
+
+.. _`__intel_engine_context_size.description`:
+
+Description
+-----------
+
+Each engine class may require a different amount of space for a context
+image.
+
+.. _`__intel_engine_context_size.return`:
+
+Return
+------
+
+size (in bytes) of an engine class specific context image
+
+.. _`__intel_engine_context_size.note`:
+
+Note
+----
+
+this size includes the HWSP, which is part of the context image
+in LRC mode, but does not include the "shared data page" used with
+GuC submission. The caller should account for this if using the GuC.
+
+.. _`intel_engines_init_mmio`:
+
+intel_engines_init_mmio
+=======================
+
+.. c:function:: int intel_engines_init_mmio(struct drm_i915_private *dev_priv)
+
+    allocate and prepare the Engine Command Streamers
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
+
+.. _`intel_engines_init_mmio.return`:
 
 Return
 ------
@@ -27,7 +66,7 @@ intel_engines_init
 
 .. c:function:: int intel_engines_init(struct drm_i915_private *dev_priv)
 
-    allocate, populate and init the Engine Command Streamers
+    init the Engine Command Streamers
 
     :param struct drm_i915_private \*dev_priv:
         i915 device private

@@ -586,12 +586,12 @@ Description
 
 Used to statically setup per-cpu interrupts in the early boot process.
 
-.. _`request_percpu_irq`:
+.. _`__request_percpu_irq`:
 
-request_percpu_irq
-==================
+__request_percpu_irq
+====================
 
-.. c:function:: int request_percpu_irq(unsigned int irq, irq_handler_t handler, const char *devname, void __percpu *dev_id)
+.. c:function:: int __request_percpu_irq(unsigned int irq, irq_handler_t handler, unsigned long flags, const char *devname, void __percpu *dev_id)
 
     allocate a percpu interrupt line
 
@@ -601,13 +601,16 @@ request_percpu_irq
     :param irq_handler_t handler:
         Function to be called when the IRQ occurs.
 
+    :param unsigned long flags:
+        Interrupt type flags (IRQF_TIMER only)
+
     :param const char \*devname:
         An ascii name for the claiming device
 
     :param void __percpu \*dev_id:
         A percpu cookie passed back to the handler function
 
-.. _`request_percpu_irq.description`:
+.. _`__request_percpu_irq.description`:
 
 Description
 -----------

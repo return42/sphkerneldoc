@@ -33,6 +33,7 @@ ata
     pata_cs5536_c
     pata_cypress_c
     pata_efar_c
+    pata_ftide010_c
     pata_hpt366_c
     pata_hpt37x_c
     pata_hpt3x2n_c
@@ -68,6 +69,7 @@ ata
     pata_sl82c105_c
     pata_triflex_c
     pata_via_c
+    sata_gemini_c
     sata_mv_c
     sata_promise_c
     sata_sil_c

@@ -230,23 +230,23 @@ sample_delay_factor
 wrn_dly_sel
     The delay on the GPMI write strobe.
 
-.. _`timing_threshod`:
+.. _`timing_threshold`:
 
-struct timing_threshod
-======================
+struct timing_threshold
+=======================
 
-.. c:type:: struct timing_threshod
+.. c:type:: struct timing_threshold
 
     Timing threshold
 
-.. _`timing_threshod.definition`:
+.. _`timing_threshold.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct timing_threshod {
+    struct timing_threshold {
         const unsigned int max_chip_count;
         const unsigned int max_data_setup_cycles;
         const unsigned int internal_data_setup_in_ns;
@@ -256,7 +256,7 @@ Definition
         unsigned long clock_frequency_in_hz;
     }
 
-.. _`timing_threshod.members`:
+.. _`timing_threshold.members`:
 
 Members
 -------

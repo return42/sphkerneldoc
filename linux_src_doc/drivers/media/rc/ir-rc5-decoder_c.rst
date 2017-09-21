@@ -28,11 +28,11 @@ This function returns -EINVAL if the pulse violates the state machine
 ir_rc5_encode
 =============
 
-.. c:function:: int ir_rc5_encode(enum rc_type protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
+.. c:function:: int ir_rc5_encode(enum rc_proto protocol, u32 scancode, struct ir_raw_event *events, unsigned int max)
 
     Encode a scancode as a stream of raw events
 
-    :param enum rc_type protocol:
+    :param enum rc_proto protocol:
         protocol variant to encode
 
     :param u32 scancode:

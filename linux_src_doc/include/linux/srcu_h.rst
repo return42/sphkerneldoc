@@ -1,40 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/srcu.h
 
-.. _`call_srcu`:
-
-call_srcu
-=========
-
-.. c:function:: void call_srcu(struct srcu_struct *sp, struct rcu_head *head, void (*func)(struct rcu_head *head))
-
-    Queue a callback for invocation after an SRCU grace period
-
-    :param struct srcu_struct \*sp:
-        srcu_struct in queue the callback
-
-    :param struct rcu_head \*head:
-        structure to be used for queueing the SRCU callback.
-
-    :param void (\*func)(struct rcu_head \*head):
-        function to be invoked after the SRCU grace period
-
-.. _`call_srcu.description`:
-
-Description
------------
-
-The callback function will be invoked some time after a full SRCU
-grace period elapses, in other words after all pre-existing SRCU
-read-side critical sections have completed.  However, the callback
-function might well execute concurrently with other SRCU read-side
-critical sections that started after \ :c:func:`call_srcu`\  was invoked.  SRCU
-read-side critical sections are delimited by \ :c:func:`srcu_read_lock`\  and
-\ :c:func:`srcu_read_unlock`\ , and may be nested.
-
-The callback will be invoked from process context, but must nevertheless
-be fast and must not block.
-
 .. _`srcu_read_lock_held`:
 
 srcu_read_lock_held

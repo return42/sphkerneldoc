@@ -8,7 +8,6 @@ mm
     :maxdepth: 1
 
     kmemcheck/index
-    gup_c
     init_c
     ioremap_c
     numa_c

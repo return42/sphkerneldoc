@@ -22,7 +22,7 @@ Definition
         struct x25_address address;
         unsigned int sigdigits;
         struct net_device *dev;
-        atomic_t refcnt;
+        refcount_t refcnt;
     }
 
 .. _`x25_route.members`:

@@ -44,25 +44,23 @@ Description
 
 This is called to process an incoming packet at interrupt level.
 
-Tlen is the length of the header + data + CRC in bytes.
-
 .. _`egress_pkey_check`:
 
 egress_pkey_check
 =================
 
-.. c:function:: int egress_pkey_check(struct hfi1_pportdata *ppd, __be16 *lrh, __be32 *bth, u8 sc5, int8_t s_pkey_index)
+.. c:function:: int egress_pkey_check(struct hfi1_pportdata *ppd, u32 slid, u16 pkey, u8 sc5, int8_t s_pkey_index)
 
     check P_KEY of a packet
 
     :param struct hfi1_pportdata \*ppd:
         Physical IB port data
 
-    :param __be16 \*lrh:
-        Local route header
+    :param u32 slid:
+        SLID for packet
 
-    :param __be32 \*bth:
-        Base transport header
+    :param u16 pkey:
+        *undescribed*
 
     :param u8 sc5:
         SC for packet
@@ -91,14 +89,14 @@ Return
 get_send_routine
 ================
 
-.. c:function:: send_routine get_send_routine(struct rvt_qp *qp, struct verbs_txreq *tx)
+.. c:function:: send_routine get_send_routine(struct rvt_qp *qp, struct hfi1_pkt_state *ps)
 
     choose an egress routine
 
     :param struct rvt_qp \*qp:
         *undescribed*
 
-    :param struct verbs_txreq \*tx:
+    :param struct hfi1_pkt_state \*ps:
         *undescribed*
 
 .. _`get_send_routine.description`:

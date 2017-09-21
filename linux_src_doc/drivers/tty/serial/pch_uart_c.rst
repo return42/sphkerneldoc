@@ -28,7 +28,7 @@ Members
 -------
 
 port_type
-    The number of DMA channel
+    The type of UART port
 
 line_no
     UART port line number (0, 1, 2...)

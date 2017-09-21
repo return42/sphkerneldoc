@@ -9,4 +9,5 @@ cpu
 
     microcode/index
     mtrr/index
+    intel_rdt_h
     match_c

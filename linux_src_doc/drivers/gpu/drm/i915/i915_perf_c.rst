@@ -168,6 +168,49 @@ hit:
   our locking requirements somewhat complex as we handled the interaction
   with the rest of the i915 driver.
 
+.. _`oa-tail-pointer-race`:
+
+OA Tail Pointer Race
+====================
+
+There's a HW race condition between OA unit tail pointer register updates and
+writes to memory whereby the tail pointer can sometimes get ahead of what's
+been written out to the OA buffer so far (in terms of what's visible to the
+CPU).
+
+Although this can be observed explicitly while copying reports to userspace
+by checking for a zeroed report-id field in tail reports, we want to account
+for this earlier, as part of the oa_buffer_check to avoid lots of redundant
+\ :c:func:`read`\  attempts.
+
+In effect we define a tail pointer for reading that lags the real tail
+pointer by at least \ ``OA_TAIL_MARGIN_NSEC``\  nanoseconds, which gives enough
+time for the corresponding reports to become visible to the CPU.
+
+To manage this we actually track two tail pointers:
+ 1) An 'aging' tail with an associated timestamp that is tracked until we
+    can trust the corresponding data is visible to the CPU; at which point
+    it is considered 'aged'.
+ 2) An 'aged' tail that can be used for \ :c:func:`read`\ ing.
+
+The two separate pointers let us decouple \ :c:func:`read`\ s from tail pointer aging.
+
+The tail pointers are checked and updated at a limited rate within a hrtimer
+callback (the same callback that is used for delivering POLLIN events)
+
+Initially the tails are marked invalid with \ ``INVALID_TAIL_PTR``\  which
+indicates that an updated tail pointer is needed.
+
+Most of the implementation details for this workaround are in
+\ :c:func:`oa_buffer_check_unlocked`\  and \ :c:func:`_append_oa_reports`\ 
+
+Note for posterity: previously the driver used to define an effective tail
+pointer that lagged the real pointer by a 'tail margin' measured in bytes
+derived from \ ``OA_TAIL_MARGIN_NSEC``\  and the configured sampling frequency.
+This was flawed considering that the OA unit may also automatically generate
+non-periodic reports (such as on context switch) or the OA unit may be
+enabled without any periodic sampling.
+
 .. _`perf_open_properties`:
 
 struct perf_open_properties
@@ -228,6 +271,53 @@ Description
 As \ :c:func:`read_properties_unlocked`\  enumerates and validates the properties given
 to open a stream of metrics the configuration is built up in the structure
 which starts out zero initialized.
+
+.. _`oa_buffer_check_unlocked`:
+
+oa_buffer_check_unlocked
+========================
+
+.. c:function:: bool oa_buffer_check_unlocked(struct drm_i915_private *dev_priv)
+
+    check for data and update tail ptr state
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+.. _`oa_buffer_check_unlocked.description`:
+
+Description
+-----------
+
+This is either called via fops (for blocking reads in user ctx) or the poll
+check hrtimer (atomic ctx) to check the OA buffer tail pointer and check
+if there is data available for userspace to read.
+
+This function is central to providing a workaround for the OA unit tail
+pointer having a race with respect to what data is visible to the CPU.
+It is responsible for reading tail pointers from the hardware and giving
+the pointers time to 'age' before they are made available for reading.
+(See description of OA_TAIL_MARGIN_NSEC above for further details.)
+
+Besides returning true when there is data available to \ :c:func:`read`\  this function
+also has the side effect of updating the oa_buffer.tails[], .aging_timestamp
+and .aged_tail_idx state used for reading.
+
+.. _`oa_buffer_check_unlocked.note`:
+
+Note
+----
+
+It's safe to read OA config state here unlocked, assuming that this is
+only called while the stream is enabled, while the global OA configuration
+can't be modified.
+
+.. _`oa_buffer_check_unlocked.return`:
+
+Return
+------
+
+%true if the OA buffer contains data, else \ ``false``\ 
 
 .. _`append_oa_status`:
 
@@ -313,12 +403,12 @@ Return
 
 0 on success, negative error code on failure.
 
-.. _`gen7_append_oa_reports`:
+.. _`gen8_append_oa_reports`:
 
-gen7_append_oa_reports
+gen8_append_oa_reports
 ======================
 
-.. c:function:: int gen7_append_oa_reports(struct i915_perf_stream *stream, char __user *buf, size_t count, size_t *offset, u32 *head_ptr, u32 tail)
+.. c:function:: int gen8_append_oa_reports(struct i915_perf_stream *stream, char __user *buf, size_t count, size_t *offset)
 
     :param struct i915_perf_stream \*stream:
         An i915-perf stream opened for OA metrics
@@ -332,11 +422,96 @@ gen7_append_oa_reports
     :param size_t \*offset:
         (inout): the current position for writing into \ ``buf``\ 
 
-    :param u32 \*head_ptr:
-        (inout): the current oa buffer cpu read position
+.. _`gen8_append_oa_reports.description`:
 
-    :param u32 tail:
-        the current oa buffer gpu write position
+Description
+-----------
+
+Notably any error condition resulting in a short read (-%ENOSPC or
+-%EFAULT) will be returned even though one or more records may
+have been successfully copied. In this case it's up to the caller
+to decide if the error should be squashed before returning to
+userspace.
+
+.. _`gen8_append_oa_reports.note`:
+
+Note
+----
+
+reports are consumed from the head, and appended to the
+tail, so the tail chases the head?... If you think that's mad
+and back-to-front you're not alone, but this follows the
+Gen PRM naming convention.
+
+.. _`gen8_append_oa_reports.return`:
+
+Return
+------
+
+0 on success, negative error code on failure.
+
+.. _`gen8_oa_read`:
+
+gen8_oa_read
+============
+
+.. c:function:: int gen8_oa_read(struct i915_perf_stream *stream, char __user *buf, size_t count, size_t *offset)
+
+    copy status records then buffered OA reports
+
+    :param struct i915_perf_stream \*stream:
+        An i915-perf stream opened for OA metrics
+
+    :param char __user \*buf:
+        destination buffer given by userspace
+
+    :param size_t count:
+        the number of bytes userspace wants to read
+
+    :param size_t \*offset:
+        (inout): the current position for writing into \ ``buf``\ 
+
+.. _`gen8_oa_read.description`:
+
+Description
+-----------
+
+Checks OA unit status registers and if necessary appends corresponding
+status records for userspace (such as for a buffer full condition) and then
+initiate appending any buffered OA reports.
+
+Updates \ ``offset``\  according to the number of bytes successfully copied into
+the userspace buffer.
+
+NB: some data may be successfully copied to the userspace buffer
+even if an error is returned, and this is reflected in the
+updated \ ``offset``\ .
+
+.. _`gen8_oa_read.return`:
+
+Return
+------
+
+zero on success or a negative error code
+
+.. _`gen7_append_oa_reports`:
+
+gen7_append_oa_reports
+======================
+
+.. c:function:: int gen7_append_oa_reports(struct i915_perf_stream *stream, char __user *buf, size_t count, size_t *offset)
+
+    :param struct i915_perf_stream \*stream:
+        An i915-perf stream opened for OA metrics
+
+    :param char __user \*buf:
+        destination buffer given by userspace
+
+    :param size_t count:
+        the number of bytes userspace wants to read
+
+    :param size_t \*offset:
+        (inout): the current position for writing into \ ``buf``\ 
 
 .. _`gen7_append_oa_reports.description`:
 
@@ -355,7 +530,7 @@ Note
 ----
 
 reports are consumed from the head, and appended to the
-tail, so the head chases the tail?... If you think that's mad
+tail, so the tail chases the head?... If you think that's mad
 and back-to-front you're not alone, but this follows the
 Gen PRM naming convention.
 
@@ -1174,6 +1349,74 @@ i915-perf state cleanup is split up into an 'unregister' and
 'deinit' phase where the interface is first hidden from
 userspace by \ :c:func:`i915_perf_unregister`\  before cleaning up
 remaining state in \ :c:func:`i915_perf_fini`\ .
+
+.. _`i915_perf_add_config_ioctl`:
+
+i915_perf_add_config_ioctl
+==========================
+
+.. c:function:: int i915_perf_add_config_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+
+    DRM \ :c:func:`ioctl`\  for userspace to add a new OA config
+
+    :param struct drm_device \*dev:
+        drm device
+
+    :param void \*data:
+        ioctl data (pointer to struct drm_i915_perf_oa_config) copied from
+        userspace (unvalidated)
+
+    :param struct drm_file \*file:
+        drm file
+
+.. _`i915_perf_add_config_ioctl.description`:
+
+Description
+-----------
+
+Validates the submitted OA register to be saved into a new OA config that
+can then be used for programming the OA unit and its NOA network.
+
+.. _`i915_perf_add_config_ioctl.return`:
+
+Return
+------
+
+A new allocated config number to be used with the perf open ioctl
+or a negative error code on failure.
+
+.. _`i915_perf_remove_config_ioctl`:
+
+i915_perf_remove_config_ioctl
+=============================
+
+.. c:function:: int i915_perf_remove_config_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+
+    DRM \ :c:func:`ioctl`\  for userspace to remove an OA config
+
+    :param struct drm_device \*dev:
+        drm device
+
+    :param void \*data:
+        ioctl data (pointer to u64 integer) copied from userspace
+
+    :param struct drm_file \*file:
+        drm file
+
+.. _`i915_perf_remove_config_ioctl.description`:
+
+Description
+-----------
+
+Configs can be removed while being used, the will stop appearing in sysfs
+and their content will be freed when the stream using the config is closed.
+
+.. _`i915_perf_remove_config_ioctl.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
 
 .. _`i915_perf_init`:
 

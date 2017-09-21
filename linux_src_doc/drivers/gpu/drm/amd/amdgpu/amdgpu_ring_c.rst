@@ -114,5 +114,60 @@ Description
 
 Tear down the driver information for the selected ring (all asics).
 
+.. _`amdgpu_ring_lru_get`:
+
+amdgpu_ring_lru_get
+===================
+
+.. c:function:: int amdgpu_ring_lru_get(struct amdgpu_device *adev, int type, int *blacklist, int num_blacklist, struct amdgpu_ring **ring)
+
+    get the least recently used ring for a HW IP block
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param int type:
+        amdgpu_ring_type enum
+
+    :param int \*blacklist:
+        blacklisted ring ids array
+
+    :param int num_blacklist:
+        number of entries in \ ``blacklist``\ 
+
+    :param struct amdgpu_ring \*\*ring:
+        output ring
+
+.. _`amdgpu_ring_lru_get.description`:
+
+Description
+-----------
+
+Retrieve the amdgpu_ring structure for the least recently used ring of
+a specific IP block (all asics).
+Returns 0 on success, error on failure.
+
+.. _`amdgpu_ring_lru_touch`:
+
+amdgpu_ring_lru_touch
+=====================
+
+.. c:function:: void amdgpu_ring_lru_touch(struct amdgpu_device *adev, struct amdgpu_ring *ring)
+
+    mark a ring as recently being used
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_ring \*ring:
+        ring to touch
+
+.. _`amdgpu_ring_lru_touch.description`:
+
+Description
+-----------
+
+Move \ ``ring``\  to the tail of the lru list
+
 .. This file was automatic generated / don't edit.
 

@@ -42,6 +42,7 @@ Definition
         struct blocking_notifier_head event_notifier;
         struct ec_response_get_next_event event_data;
         int event_size;
+        u32 host_event_wake_mask;
     }
 
 .. _`cros_ec_device.members`:
@@ -132,6 +133,9 @@ event_data
 
 event_size
     size in bytes of the event data.
+
+host_event_wake_mask
+    *undescribed*
 
 .. _`cros_ec_sensor_platform`:
 
@@ -362,12 +366,16 @@ cros_ec_query_all
 cros_ec_get_next_event
 ======================
 
-.. c:function:: int cros_ec_get_next_event(struct cros_ec_device *ec_dev)
+.. c:function:: int cros_ec_get_next_event(struct cros_ec_device *ec_dev, bool *wake_event)
 
     Fetch next event from the ChromeOS EC
 
     :param struct cros_ec_device \*ec_dev:
         Device to fetch event from
+
+    :param bool \*wake_event:
+        Pointer to a bool set to true upon return if the event might be
+        treated as a wake event. Ignored if null.
 
 .. _`cros_ec_get_next_event.return`:
 
@@ -375,6 +383,28 @@ Return
 ------
 
 0 on success, Linux error number on failure
+
+.. _`cros_ec_get_host_event`:
+
+cros_ec_get_host_event
+======================
+
+.. c:function:: u32 cros_ec_get_host_event(struct cros_ec_device *ec_dev)
+
+    Return a mask of event set by the EC.
+
+    :param struct cros_ec_device \*ec_dev:
+        *undescribed*
+
+.. _`cros_ec_get_host_event.description`:
+
+Description
+-----------
+
+When MKBP is supported, when the EC raises an interrupt,
+We collect the events raised and call the functions in the ec notifier.
+
+This function is a helper to know which events are raised.
 
 .. This file was automatic generated / don't edit.
 

@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/isci/request.c
 
-.. _`scu_ssp_reqeust_construct_task_context`:
+.. _`scu_ssp_request_construct_task_context`:
 
-scu_ssp_reqeust_construct_task_context
+scu_ssp_request_construct_task_context
 ======================================
 
-.. c:function:: void scu_ssp_reqeust_construct_task_context(struct isci_request *ireq, struct scu_task_context *task_context)
+.. c:function:: void scu_ssp_request_construct_task_context(struct isci_request *ireq, struct scu_task_context *task_context)
 
     :param struct isci_request \*ireq:
         *undescribed*
@@ -53,12 +53,12 @@ SCU_TASK_TYPE_IOREAD.  This simply indicates that a normal request type
 control_frame == 1.  This ensures that the proper endianess is set so
 that the bytes are transmitted in the right order for a task frame.
 
-.. _`scu_sata_reqeust_construct_task_context`:
+.. _`scu_sata_request_construct_task_context`:
 
-scu_sata_reqeust_construct_task_context
+scu_sata_request_construct_task_context
 =======================================
 
-.. c:function:: void scu_sata_reqeust_construct_task_context(struct isci_request *ireq, struct scu_task_context *task_context)
+.. c:function:: void scu_sata_request_construct_task_context(struct isci_request *ireq, struct scu_task_context *task_context)
 
     request.  This is called from the various SATA constructors.
 
@@ -69,7 +69,7 @@ scu_sata_reqeust_construct_task_context
         The buffer pointer for the SCU task context which is being
         constructed.
 
-.. _`scu_sata_reqeust_construct_task_context.description`:
+.. _`scu_sata_request_construct_task_context.description`:
 
 Description
 -----------

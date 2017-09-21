@@ -476,6 +476,58 @@ Description
 Light weight way to stop tracing. Use in conjunction with
 tracing_start.
 
+.. _`tracing_record_taskinfo`:
+
+tracing_record_taskinfo
+=======================
+
+.. c:function:: void tracing_record_taskinfo(struct task_struct *task, int flags)
+
+    record the task info of a task
+
+    :param struct task_struct \*task:
+        *undescribed*
+
+    :param int flags:
+        *undescribed*
+
+.. _`tracing_record_taskinfo.description`:
+
+Description
+-----------
+
+@task  - task to record
+\ ``flags``\  - TRACE_RECORD_CMDLINE for recording comm
+- TRACE_RECORD_TGID for recording tgid
+
+.. _`tracing_record_taskinfo_sched_switch`:
+
+tracing_record_taskinfo_sched_switch
+====================================
+
+.. c:function:: void tracing_record_taskinfo_sched_switch(struct task_struct *prev, struct task_struct *next, int flags)
+
+    record task info for sched_switch
+
+    :param struct task_struct \*prev:
+        *undescribed*
+
+    :param struct task_struct \*next:
+        *undescribed*
+
+    :param int flags:
+        *undescribed*
+
+.. _`tracing_record_taskinfo_sched_switch.description`:
+
+Description
+-----------
+
+@prev - previous task during sched_switch
+\ ``next``\  - next task during sched_switch
+\ ``flags``\  - TRACE_RECORD_CMDLINE for recording comm
+TRACE_RECORD_TGID for recording tgid
+
 .. _`trace_buffered_event_enable`:
 
 trace_buffered_event_enable

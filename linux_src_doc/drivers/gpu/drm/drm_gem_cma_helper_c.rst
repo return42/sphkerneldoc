@@ -134,7 +134,7 @@ Description
 This function frees the backing memory of the CMA GEM object, cleans up the
 GEM object state and frees the memory used to store the object itself.
 Drivers using the CMA helpers should set this as their
-\ :c:type:`drm_driver.gem_free_object <drm_driver>`\  callback.
+\ :c:type:`drm_driver.gem_free_object_unlocked <drm_driver>`\  callback.
 
 .. _`drm_gem_cma_dumb_create_internal`:
 
@@ -204,43 +204,6 @@ set up by userspace and pass the IOCTL data along to the
 \ :c:func:`drm_gem_cma_dumb_create_internal`\  function.
 
 .. _`drm_gem_cma_dumb_create.return`:
-
-Return
-------
-
-0 on success or a negative error code on failure.
-
-.. _`drm_gem_cma_dumb_map_offset`:
-
-drm_gem_cma_dumb_map_offset
-===========================
-
-.. c:function:: int drm_gem_cma_dumb_map_offset(struct drm_file *file_priv, struct drm_device *drm, u32 handle, u64 *offset)
-
-    return the fake mmap offset for a CMA GEM object
-
-    :param struct drm_file \*file_priv:
-        DRM file-private structure containing the GEM object
-
-    :param struct drm_device \*drm:
-        DRM device
-
-    :param u32 handle:
-        GEM object handle
-
-    :param u64 \*offset:
-        return location for the fake mmap offset
-
-.. _`drm_gem_cma_dumb_map_offset.description`:
-
-Description
------------
-
-This function look up an object by its handle and returns the fake mmap
-offset associated with it. Drivers using the CMA helpers should set this
-as their \ :c:type:`drm_driver.dumb_map_offset <drm_driver>`\  callback.
-
-.. _`drm_gem_cma_dumb_map_offset.return`:
 
 Return
 ------

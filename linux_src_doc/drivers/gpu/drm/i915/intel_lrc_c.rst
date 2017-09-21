@@ -180,42 +180,5 @@ intel_logical_ring_cleanup
     :param struct intel_engine_cs \*engine:
         Engine Command Streamer.
 
-.. _`intel_lr_context_size`:
-
-intel_lr_context_size
-=====================
-
-.. c:function:: uint32_t intel_lr_context_size(struct intel_engine_cs *engine)
-
-    return the size of the context for an engine
-
-    :param struct intel_engine_cs \*engine:
-        which engine to find the context size for
-
-.. _`intel_lr_context_size.description`:
-
-Description
------------
-
-Each engine may require a different amount of space for a context image,
-so when allocating (or copying) an image, this function can be used to
-find the right size for the specific engine.
-
-.. _`intel_lr_context_size.return`:
-
-Return
-------
-
-size (in bytes) of an engine-specific context image
-
-.. _`intel_lr_context_size.note`:
-
-Note
-----
-
-this size includes the HWSP, which is part of the context image
-in LRC mode, but does not include the "shared data page" used with
-GuC submission. The caller should account for this if using the GuC.
-
 .. This file was automatic generated / don't edit.
 

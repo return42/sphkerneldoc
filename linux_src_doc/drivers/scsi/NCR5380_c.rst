@@ -456,19 +456,19 @@ this driver are such that a command can appear on one queue only.
 The lock protects driver data structures, but EH handlers also use it
 to serialize their own execution and prevent their own re-entry.
 
-.. _`ncr5380_bus_reset`:
+.. _`ncr5380_host_reset`:
 
-NCR5380_bus_reset
-=================
+NCR5380_host_reset
+==================
 
-.. c:function:: int NCR5380_bus_reset(struct scsi_cmnd *cmd)
+.. c:function:: int NCR5380_host_reset(struct scsi_cmnd *cmd)
 
-    reset the SCSI bus
+    reset the SCSI host
 
     :param struct scsi_cmnd \*cmd:
         SCSI command undergoing EH
 
-.. _`ncr5380_bus_reset.description`:
+.. _`ncr5380_host_reset.description`:
 
 Description
 -----------

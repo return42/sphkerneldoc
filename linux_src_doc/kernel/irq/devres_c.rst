@@ -159,5 +159,76 @@ Note
 
 Use the provided wrappers (devm_irq_alloc_desc\*) for simplicity.
 
+.. _`devm_irq_alloc_generic_chip`:
+
+devm_irq_alloc_generic_chip
+===========================
+
+.. c:function:: struct irq_chip_generic *devm_irq_alloc_generic_chip(struct device *dev, const char *name, int num_ct, unsigned int irq_base, void __iomem *reg_base, irq_flow_handler_t handler)
+
+    Allocate and initialize a generic chip for a managed device
+
+    :param struct device \*dev:
+        Device to allocate the generic chip for
+
+    :param const char \*name:
+        Name of the irq chip
+
+    :param int num_ct:
+        Number of irq_chip_type instances associated with this
+
+    :param unsigned int irq_base:
+        Interrupt base nr for this chip
+
+    :param void __iomem \*reg_base:
+        Register base address (virtual)
+
+    :param irq_flow_handler_t handler:
+        Default flow handler associated with this chip
+
+.. _`devm_irq_alloc_generic_chip.description`:
+
+Description
+-----------
+
+Returns an initialized irq_chip_generic structure. The chip defaults
+to the primary (index 0) irq_chip_type and \ ``handler``\ 
+
+.. _`devm_irq_setup_generic_chip`:
+
+devm_irq_setup_generic_chip
+===========================
+
+.. c:function:: int devm_irq_setup_generic_chip(struct device *dev, struct irq_chip_generic *gc, u32 msk, enum irq_gc_flags flags, unsigned int clr, unsigned int set)
+
+    Setup a range of interrupts with a generic chip for a managed device
+
+    :param struct device \*dev:
+        Device to setup the generic chip for
+
+    :param struct irq_chip_generic \*gc:
+        Generic irq chip holding all data
+
+    :param u32 msk:
+        Bitmask holding the irqs to initialize relative to gc->irq_base
+
+    :param enum irq_gc_flags flags:
+        Flags for initialization
+
+    :param unsigned int clr:
+        IRQ\_\* bits to clear
+
+    :param unsigned int set:
+        IRQ\_\* bits to set
+
+.. _`devm_irq_setup_generic_chip.description`:
+
+Description
+-----------
+
+Set up max. 32 interrupts starting from gc->irq_base. Note, this
+initializes all interrupts to the primary irq_chip_type and its
+associated handler.
+
 .. This file was automatic generated / don't edit.
 

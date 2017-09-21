@@ -24,6 +24,8 @@ Definition
         struct ib_qp *qp;
         struct ib_cq *cq;
         long timeout;
+        bool privport;
+        u16 port;
         int sq_depth;
         struct semaphore sq_sem;
         int rq_depth;
@@ -56,6 +58,12 @@ cq
 
 timeout
     Number of uSecs to wait for connection management events
+
+privport
+    Whether a privileged port may be used
+
+port
+    The port to use
 
 sq_depth
     The depth of the Send Queue

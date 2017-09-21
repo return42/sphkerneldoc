@@ -67,6 +67,38 @@ Description
 
 Return enum dev_dma_attr.
 
+.. _`acpi_dma_get_range`:
+
+acpi_dma_get_range
+==================
+
+.. c:function:: int acpi_dma_get_range(struct device *dev, u64 *dma_addr, u64 *offset, u64 *size)
+
+    Get device DMA parameters.
+
+    :param struct device \*dev:
+        device to configure
+
+    :param u64 \*dma_addr:
+        pointer device DMA address result
+
+    :param u64 \*offset:
+        pointer to the DMA offset result
+
+    :param u64 \*size:
+        pointer to DMA range size result
+
+.. _`acpi_dma_get_range.description`:
+
+Description
+-----------
+
+Evaluate DMA regions and return respectively DMA region start, offset
+and size in dma_addr, offset and size on parsing success; it does not
+update the passed in values on failure.
+
+Return 0 on success, < 0 on failure.
+
 .. _`acpi_dma_configure`:
 
 acpi_dma_configure

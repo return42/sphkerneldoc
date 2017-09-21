@@ -19,10 +19,11 @@ Definition
 
     struct wil_platform_ops {
         int (*bus_request)(void *handle, uint32_t kbps );
-        int (*suspend)(void *handle);
-        int (*resume)(void *handle);
+        int (*suspend)(void *handle, bool keep_device_power);
+        int (*resume)(void *handle, bool device_powered_on);
         void (*uninit)(void *handle);
         int (*notify)(void *handle, enum wil_platform_event evt);
+        bool (*keep_radio_on_during_sleep)(void *handle);
     }
 
 .. _`wil_platform_ops.members`:
@@ -43,6 +44,9 @@ uninit
     *undescribed*
 
 notify
+    *undescribed*
+
+keep_radio_on_during_sleep
     *undescribed*
 
 .. _`wil_platform_rops`:

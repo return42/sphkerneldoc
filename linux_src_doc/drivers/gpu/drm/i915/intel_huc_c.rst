@@ -60,7 +60,7 @@ intel_huc_select_fw
 intel_huc_init_hw
 =================
 
-.. c:function:: int intel_huc_init_hw(struct intel_huc *huc)
+.. c:function:: void intel_huc_init_hw(struct intel_huc *huc)
 
     load HuC uCode to device
 
@@ -78,13 +78,6 @@ Be note that HuC loading must be done before GuC loading.
 The firmware image should have already been fetched into memory by the
 earlier call to \ :c:func:`intel_huc_init`\ , so here we need only check that
 is succeeded, and then transfer the image to the h/w.
-
-.. _`intel_huc_init_hw.return`:
-
-Return
-------
-
-non-zero code on error
 
 .. _`intel_guc_auth_huc`:
 

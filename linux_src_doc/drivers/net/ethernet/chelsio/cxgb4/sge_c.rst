@@ -999,6 +999,82 @@ Description
 Every ingress queue entry has the 60-bit timestamp, convert that timestamp
 which is in Core Clock ticks into ktime_t and assign it
 
+.. _`t4_systim_to_hwstamp`:
+
+t4_systim_to_hwstamp
+====================
+
+.. c:function:: int t4_systim_to_hwstamp(struct adapter *adapter, struct sk_buff *skb)
+
+    read hardware time stamp
+
+    :param struct adapter \*adapter:
+        *undescribed*
+
+    :param struct sk_buff \*skb:
+        the packet
+
+.. _`t4_systim_to_hwstamp.description`:
+
+Description
+-----------
+
+Read Time Stamp from MPS packet and insert in skb which
+is forwarded to PTP application
+
+.. _`t4_rx_hststamp`:
+
+t4_rx_hststamp
+==============
+
+.. c:function:: int t4_rx_hststamp(struct adapter *adapter, const __be64 *rsp, struct sge_eth_rxq *rxq, struct sk_buff *skb)
+
+    Recv PTP Event Message
+
+    :param struct adapter \*adapter:
+        *undescribed*
+
+    :param const __be64 \*rsp:
+        the response queue descriptor holding the RX_PKT message
+
+    :param struct sge_eth_rxq \*rxq:
+        *undescribed*
+
+    :param struct sk_buff \*skb:
+        the packet
+
+.. _`t4_rx_hststamp.description`:
+
+Description
+-----------
+
+PTP enabled and MPS packet, read HW timestamp
+
+.. _`t4_tx_hststamp`:
+
+t4_tx_hststamp
+==============
+
+.. c:function:: int t4_tx_hststamp(struct adapter *adapter, struct sk_buff *skb, struct net_device *dev)
+
+    Loopback PTP Transmit Event Message
+
+    :param struct adapter \*adapter:
+        *undescribed*
+
+    :param struct sk_buff \*skb:
+        the packet
+
+    :param struct net_device \*dev:
+        the ingress net device
+
+.. _`t4_tx_hststamp.description`:
+
+Description
+-----------
+
+Read hardware timestamp for the loopback PTP Tx event message
+
 .. _`t4_ethrx_handler`:
 
 t4_ethrx_handler

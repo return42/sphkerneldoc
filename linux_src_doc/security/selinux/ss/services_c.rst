@@ -271,6 +271,42 @@ security_port_sid
     :param u32 \*out_sid:
         security identifier
 
+.. _`security_ib_pkey_sid`:
+
+security_ib_pkey_sid
+====================
+
+.. c:function:: int security_ib_pkey_sid(u64 subnet_prefix, u16 pkey_num, u32 *out_sid)
+
+    Obtain the SID for a pkey.
+
+    :param u64 subnet_prefix:
+        Subnet Prefix
+
+    :param u16 pkey_num:
+        pkey number
+
+    :param u32 \*out_sid:
+        security identifier
+
+.. _`security_ib_endport_sid`:
+
+security_ib_endport_sid
+=======================
+
+.. c:function:: int security_ib_endport_sid(const char *dev_name, u8 port_num, u32 *out_sid)
+
+    Obtain the SID for a subnet management interface.
+
+    :param const char \*dev_name:
+        device name
+
+    :param u8 port_num:
+        *undescribed*
+
+    :param u32 \*out_sid:
+        security identifier
+
 .. _`security_netif_sid`:
 
 security_netif_sid

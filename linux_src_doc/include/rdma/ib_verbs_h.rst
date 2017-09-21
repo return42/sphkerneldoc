@@ -368,6 +368,7 @@ Definition
         void *clnt_priv;
         struct ib_device *hca;
         u8 port_num;
+        void (*free_rdma_netdev)(struct net_device *netdev);
         void (*set_id)(struct net_device *netdev, int id);
         int (*send)(struct net_device *dev, struct sk_buff *skb, struct ib_ah *address, u32 dqpn);
         int (*attach_mcast)(struct net_device *dev, struct ib_device *hca,union ib_gid *gid, u16 mlid, int set_qkey, u32 qkey);
@@ -386,6 +387,9 @@ hca
     *undescribed*
 
 port_num
+    *undescribed*
+
+free_rdma_netdev
     *undescribed*
 
 set_id
@@ -1175,6 +1179,31 @@ ib_create_qp
         A list of initial attributes required to create the
         QP.  If QP creation succeeds, then the attributes are updated to
         the actual capabilities of the created QP.
+
+.. _`ib_modify_qp_with_udata`:
+
+ib_modify_qp_with_udata
+=======================
+
+.. c:function:: int ib_modify_qp_with_udata(struct ib_qp *qp, struct ib_qp_attr *attr, int attr_mask, struct ib_udata *udata)
+
+    Modifies the attributes for the specified QP.
+
+    :param struct ib_qp \*qp:
+        The QP to modify.
+
+    :param struct ib_qp_attr \*attr:
+        On input, specifies the QP attributes to modify.  On output,
+        the current values of selected QP attributes are returned.
+
+    :param int attr_mask:
+        A bit-mask used to specify which attributes of the QP
+        are being modified.
+
+    :param struct ib_udata \*udata:
+        pointer to user's input output buffer information
+        are being modified.
+        It returns 0 on success and returns appropriate error code on error.
 
 .. _`ib_modify_qp`:
 
@@ -2004,6 +2033,54 @@ ib_check_mr_status
         The container of relevant status checks.
         failed checks will be indicated in the status bitmask
         and the relevant info shall be in the error item.
+
+.. _`ib_lid_cpu16`:
+
+ib_lid_cpu16
+============
+
+.. c:function:: u16 ib_lid_cpu16(u32 lid)
+
+    Return lid in 16bit CPU encoding. In the current implementation the only way to get get the 32bit lid is from other sources for OPA. For IB, lids will always be 16bits so cast the value accordingly.
+
+    :param u32 lid:
+        A 32bit LID
+
+.. _`ib_lid_be16`:
+
+ib_lid_be16
+===========
+
+.. c:function:: __be16 ib_lid_be16(u32 lid)
+
+    Return lid in 16bit BE encoding.
+
+    :param u32 lid:
+        A 32bit LID
+
+.. _`ib_get_vector_affinity`:
+
+ib_get_vector_affinity
+======================
+
+.. c:function:: const struct cpumask *ib_get_vector_affinity(struct ib_device *device, int comp_vector)
+
+    Get the affinity mappings of a given completion vector
+
+    :param struct ib_device \*device:
+        the rdma device
+
+    :param int comp_vector:
+        index of completion vector
+
+.. _`ib_get_vector_affinity.description`:
+
+Description
+-----------
+
+Returns NULL on failure, otherwise a corresponding cpu map of the
+completion vector (returns all-cpus map if the device driver doesn't
+implement get_vector_affinity).
 
 .. This file was automatic generated / don't edit.
 

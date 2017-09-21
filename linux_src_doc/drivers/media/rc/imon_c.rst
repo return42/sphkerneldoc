@@ -227,14 +227,14 @@ imon_touch_display_timeout
 imon_ir_change_protocol
 =======================
 
-.. c:function:: int imon_ir_change_protocol(struct rc_dev *rc, u64 *rc_type)
+.. c:function:: int imon_ir_change_protocol(struct rc_dev *rc, u64 *rc_proto)
 
     - those used by the iMON remotes, and those used by the Windows MCE remotes (which is really just RC-6), but only one or the other at a time, as the signals are decoded onboard the receiver.
 
     :param struct rc_dev \*rc:
         *undescribed*
 
-    :param u64 \*rc_type:
+    :param u64 \*rc_proto:
         *undescribed*
 
 .. _`imon_ir_change_protocol.description`:

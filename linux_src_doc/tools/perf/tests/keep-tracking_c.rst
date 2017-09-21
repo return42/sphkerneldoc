@@ -6,9 +6,12 @@
 test__keep_tracking
 ===================
 
-.. c:function:: int test__keep_tracking(int subtest __maybe_unused)
+.. c:function:: int test__keep_tracking(int subtest __maybe_unused, int subtest __maybe_unused)
 
     test using a dummy software event to keep tracking.
+
+    :param int subtest __maybe_unused:
+        *undescribed*
 
     :param int subtest __maybe_unused:
         *undescribed*

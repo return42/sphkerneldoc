@@ -313,6 +313,29 @@ Description
 A helper close method. Also a convenient debugging and check
 point.
 
+.. _`tty_ldisc_failto`:
+
+tty_ldisc_failto
+================
+
+.. c:function:: int tty_ldisc_failto(struct tty_struct *tty, int ld)
+
+    helper for ldisc failback
+
+    :param struct tty_struct \*tty:
+        tty to open the ldisc on
+
+    :param int ld:
+        ldisc we are trying to fail back to
+
+.. _`tty_ldisc_failto.description`:
+
+Description
+-----------
+
+Helper to try and recover a tty when switching back to the old
+ldisc fails and we need something attached.
+
 .. _`tty_ldisc_restore`:
 
 tty_ldisc_restore

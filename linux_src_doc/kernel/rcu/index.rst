@@ -7,7 +7,6 @@ rcu
 .. toctree::
     :maxdepth: 1
 
-    srcu_c
     srcutree_c
     sync_c
     tree_c

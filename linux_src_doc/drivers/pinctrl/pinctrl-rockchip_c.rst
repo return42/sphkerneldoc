@@ -90,6 +90,94 @@ PULL_TYPE_IO_1V8_ONLY
 PULL_TYPE_MAX
     *undescribed*
 
+.. _`rockchip_mux_recalced_data`:
+
+struct rockchip_mux_recalced_data
+=================================
+
+.. c:type:: struct rockchip_mux_recalced_data
+
+    represent a pin iomux data.
+
+.. _`rockchip_mux_recalced_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rockchip_mux_recalced_data {
+        u8 num;
+        u8 pin;
+        u32 reg;
+        u8 bit;
+        u8 mask;
+    }
+
+.. _`rockchip_mux_recalced_data.members`:
+
+Members
+-------
+
+num
+    bank number.
+
+pin
+    pin number.
+
+reg
+    register offset.
+
+bit
+    index at register.
+
+mask
+    mask bit
+
+.. _`rockchip_mux_route_data`:
+
+struct rockchip_mux_route_data
+==============================
+
+.. c:type:: struct rockchip_mux_route_data
+
+    represent a pin iomux data.
+
+.. _`rockchip_mux_route_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rockchip_mux_route_data {
+        u8 bank_num;
+        u8 pin;
+        u8 func;
+        u32 route_offset;
+        u32 route_val;
+    }
+
+.. _`rockchip_mux_route_data.members`:
+
+Members
+-------
+
+bank_num
+    bank number.
+
+pin
+    index at register or used to calc index.
+
+func
+    the min pin.
+
+route_offset
+    the max pin.
+
+route_val
+    the register offset.
+
 .. _`rockchip_pin_group`:
 
 struct rockchip_pin_group
@@ -165,50 +253,6 @@ groups
 
 ngroups
     *undescribed*
-
-.. _`rockchip_mux_recalced_data`:
-
-struct rockchip_mux_recalced_data
-=================================
-
-.. c:type:: struct rockchip_mux_recalced_data
-
-    represent a pin iomux data.
-
-.. _`rockchip_mux_recalced_data.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct rockchip_mux_recalced_data {
-        u8 num;
-        u8 pin;
-        u8 reg;
-        u8 bit;
-        u8 mask;
-    }
-
-.. _`rockchip_mux_recalced_data.members`:
-
-Members
--------
-
-num
-    bank number.
-
-pin
-    pin number.
-
-reg
-    register offset.
-
-bit
-    index at register.
-
-mask
-    mask bit
 
 .. This file was automatic generated / don't edit.
 

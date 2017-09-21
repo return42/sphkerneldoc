@@ -301,6 +301,7 @@ Definition
 .. code-block:: c
 
     struct media_entity_operations {
+        int (*get_fwnode_pad)(struct fwnode_endpoint *endpoint);
         int (*link_setup)(struct media_entity *entity,const struct media_pad *local, const struct media_pad *remote, u32 flags);
         int (*link_validate)(struct media_link *link);
     }
@@ -309,6 +310,11 @@ Definition
 
 Members
 -------
+
+get_fwnode_pad
+    Return the pad number based on a fwnode endpoint or
+    a negative value on error. This operation can be used
+    to map a fwnode to a media pad number. Optional.
 
 link_setup
     Notify the entity of link changes. The operation can
@@ -1245,11 +1251,11 @@ such link exists, return \ ``NULL``\ .
 media_entity_remote_pad
 =======================
 
-.. c:function:: struct media_pad *media_entity_remote_pad(struct media_pad *pad)
+.. c:function:: struct media_pad *media_entity_remote_pad(const struct media_pad *pad)
 
     Find the pad at the remote end of a link
 
-    :param struct media_pad \*pad:
+    :param const struct media_pad \*pad:
         Pad at the local end of the link
 
 .. _`media_entity_remote_pad.description`:
@@ -1295,6 +1301,46 @@ Return
 ------
 
 returns a pointer to the entity on success or \ ``NULL``\  on failure.
+
+.. _`media_entity_get_fwnode_pad`:
+
+media_entity_get_fwnode_pad
+===========================
+
+.. c:function:: int media_entity_get_fwnode_pad(struct media_entity *entity, struct fwnode_handle *fwnode, unsigned long direction_flags)
+
+    Get pad number from fwnode
+
+    :param struct media_entity \*entity:
+        The entity
+
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the fwnode_handle which should be used to find the pad
+
+    :param unsigned long direction_flags:
+        Expected direction of the pad, as defined in
+        :ref:`include/uapi/linux/media.h <media_header>`
+        (seek for ``MEDIA_PAD_FL_*``)
+
+.. _`media_entity_get_fwnode_pad.description`:
+
+Description
+-----------
+
+This function can be used to resolve the media pad number from
+a fwnode. This is useful for devices which use more complex
+mappings of media pads.
+
+If the entity dose not implement the \ :c:func:`get_fwnode_pad`\  operation
+then this function searches the entity for the first pad that
+matches the \ ``direction_flags``\ .
+
+.. _`media_entity_get_fwnode_pad.return`:
+
+Return
+------
+
+returns the pad number on success or a negative error code.
 
 .. _`media_graph_walk_init`:
 

@@ -125,8 +125,8 @@ Definition
         void (*pmu_enable)(struct pmu *pmu);
         void (*pmu_disable)(struct pmu *pmu);
         int (*event_init)(struct perf_event *event);
-        void (*event_mapped)(struct perf_event *event);
-        void (*event_unmapped)(struct perf_event *event);
+        void (*event_mapped)(struct perf_event *event, struct mm_struct *mm);
+        void (*event_unmapped)(struct perf_event *event, struct mm_struct *mm);
     #define PERF_EF_START 0x01
     #define PERF_EF_RELOAD 0x02
     #define PERF_EF_UPDATE 0x04
@@ -141,7 +141,6 @@ Definition
         int (*event_idx)(struct perf_event *event);
         void (*sched_task)(struct perf_event_context *ctx, bool sched_in);
         size_t task_ctx_size;
-        u64 (*count)(struct perf_event *event);
         void *(*setup_aux)(int cpu, void **pages, int nr_pages, bool overwrite);
         void (*free_aux)(void *aux);
         int (*addr_filters_validate)(struct list_head *filters);
@@ -239,9 +238,6 @@ sched_task
     *undescribed*
 
 task_ctx_size
-    *undescribed*
-
-count
     *undescribed*
 
 setup_aux
@@ -870,6 +866,7 @@ Definition
     #endif
         struct list_head sched_cb_entry;
         int sched_cb_usage;
+        int online;
     }
 
 .. _`perf_cpu_context.members`:
@@ -911,6 +908,9 @@ sched_cb_entry
     *undescribed*
 
 sched_cb_usage
+    *undescribed*
+
+online
     *undescribed*
 
 .. This file was automatic generated / don't edit.

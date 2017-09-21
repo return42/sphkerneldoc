@@ -41,7 +41,7 @@ wmi_query_block
 
 .. c:function:: acpi_status wmi_query_block(const char *guid_string, u8 instance, struct acpi_buffer *out)
 
-    Return contents of a WMI block
+    Return contents of a WMI block (deprecated)
 
     :param const char \*guid_string:
         36 char string of the form fa50ff2b-f2e8-45de-83fa-65417f2f49ba

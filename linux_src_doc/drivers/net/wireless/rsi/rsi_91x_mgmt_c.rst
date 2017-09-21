@@ -85,7 +85,7 @@ Return
 rsi_mgmt_pkt_to_core
 ====================
 
-.. c:function:: int rsi_mgmt_pkt_to_core(struct rsi_common *common, u8 *msg, s32 msg_len, u8 type)
+.. c:function:: int rsi_mgmt_pkt_to_core(struct rsi_common *common, u8 *msg, s32 msg_len)
 
     This function is the entry point for Mgmt module.
 
@@ -97,9 +97,6 @@ rsi_mgmt_pkt_to_core
 
     :param s32 msg_len:
         Length of the recieved packet.
-
-    :param u8 type:
-        Type of recieved packet.
 
 .. _`rsi_mgmt_pkt_to_core.return`:
 
@@ -113,14 +110,14 @@ Return
 rsi_hal_send_sta_notify_frame
 =============================
 
-.. c:function:: int rsi_hal_send_sta_notify_frame(struct rsi_common *common, u8 opmode, u8 notify_event, const unsigned char *bssid, u8 qos_enable, u16 aid)
+.. c:function:: int rsi_hal_send_sta_notify_frame(struct rsi_common *common, enum opmode opmode, u8 notify_event, const unsigned char *bssid, u8 qos_enable, u16 aid, u16 sta_id)
 
     This function sends the station notify frame to firmware.
 
     :param struct rsi_common \*common:
         Pointer to the driver private structure.
 
-    :param u8 opmode:
+    :param enum opmode opmode:
         Operating mode of device.
 
     :param u8 notify_event:
@@ -135,6 +132,9 @@ rsi_hal_send_sta_notify_frame
     :param u16 aid:
         Aid (unique for all STA).
 
+    :param u16 sta_id:
+        *undescribed*
+
 .. _`rsi_hal_send_sta_notify_frame.return`:
 
 Return
@@ -147,7 +147,7 @@ status: 0 on success, corresponding negative error code on failure.
 rsi_send_aggregation_params_frame
 =================================
 
-.. c:function:: int rsi_send_aggregation_params_frame(struct rsi_common *common, u16 tid, u16 ssn, u8 buf_size, u8 event)
+.. c:function:: int rsi_send_aggregation_params_frame(struct rsi_common *common, u16 tid, u16 ssn, u8 buf_size, u8 event, u8 sta_id)
 
     This function sends the ampdu indication frame to firmware.
 
@@ -165,6 +165,9 @@ rsi_send_aggregation_params_frame
 
     :param u8 event:
         notification about station connection.
+
+    :param u8 sta_id:
+        *undescribed*
 
 .. _`rsi_send_aggregation_params_frame.return`:
 
@@ -197,7 +200,7 @@ Return
 rsi_set_vap_capabilities
 ========================
 
-.. c:function:: int rsi_set_vap_capabilities(struct rsi_common *common, enum opmode mode, u8 vap_status)
+.. c:function:: int rsi_set_vap_capabilities(struct rsi_common *common, enum opmode mode, u8 *mac_addr, u8 vap_id, u8 vap_status)
 
     This function send vap capability to firmware.
 
@@ -205,6 +208,12 @@ rsi_set_vap_capabilities
         Pointer to the driver private structure.
 
     :param enum opmode mode:
+        *undescribed*
+
+    :param u8 \*mac_addr:
+        *undescribed*
+
+    :param u8 vap_id:
         *undescribed*
 
     :param u8 vap_status:
@@ -222,7 +231,7 @@ Return
 rsi_hal_load_key
 ================
 
-.. c:function:: int rsi_hal_load_key(struct rsi_common *common, u8 *data, u16 key_len, u8 key_type, u8 key_id, u32 cipher)
+.. c:function:: int rsi_hal_load_key(struct rsi_common *common, u8 *data, u16 key_len, u8 key_type, u8 key_id, u32 cipher, s16 sta_id)
 
     This function is used to load keys within the firmware.
 
@@ -243,6 +252,9 @@ rsi_hal_load_key
 
     :param u32 cipher:
         Type of cipher used.
+
+    :param s16 sta_id:
+        *undescribed*
 
 .. _`rsi_hal_load_key.return`:
 
@@ -379,12 +391,18 @@ Return
 rsi_send_auto_rate_request
 ==========================
 
-.. c:function:: int rsi_send_auto_rate_request(struct rsi_common *common)
+.. c:function:: int rsi_send_auto_rate_request(struct rsi_common *common, struct ieee80211_sta *sta, u16 sta_id)
 
     This function is to set rates for connection and send autorate request to firmware.
 
     :param struct rsi_common \*common:
         Pointer to the driver private structure.
+
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
+    :param u16 sta_id:
+        *undescribed*
 
 .. _`rsi_send_auto_rate_request.return`:
 
@@ -398,24 +416,33 @@ Return
 rsi_inform_bss_status
 =====================
 
-.. c:function:: void rsi_inform_bss_status(struct rsi_common *common, u8 status, const unsigned char *bssid, u8 qos_enable, u16 aid)
+.. c:function:: void rsi_inform_bss_status(struct rsi_common *common, enum opmode opmode, u8 status, const u8 *addr, u8 qos_enable, u16 aid, struct ieee80211_sta *sta, u16 sta_id)
 
     This function informs about bss status with the help of sta notify params by sending an internal management frame to firmware.
 
     :param struct rsi_common \*common:
         Pointer to the driver private structure.
 
+    :param enum opmode opmode:
+        *undescribed*
+
     :param u8 status:
         Bss status type.
 
-    :param const unsigned char \*bssid:
-        Bssid.
+    :param const u8 \*addr:
+        *undescribed*
 
     :param u8 qos_enable:
         Qos is enabled.
 
     :param u16 aid:
         Aid (unique for all STAs).
+
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
+    :param u16 sta_id:
+        *undescribed*
 
 .. _`rsi_inform_bss_status.return`:
 

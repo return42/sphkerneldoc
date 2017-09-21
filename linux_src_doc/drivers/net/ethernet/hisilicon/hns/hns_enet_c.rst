@@ -30,6 +30,33 @@ motivation of doing this is to only perform one pull for IPv4 TCP
 packets so that we can do basic things like calculating the gso_size
 based on the average data per packet.
 
+.. _`smooth_alg`:
+
+smooth_alg
+==========
+
+.. c:function:: u32 smooth_alg(u32 new_param, u32 old_param)
+
+    smoothing algrithm for adjusting coalesce parameter
+
+    :param u32 new_param:
+        *undescribed*
+
+    :param u32 old_param:
+        *undescribed*
+
+.. _`hns_nic_adpt_coalesce`:
+
+hns_nic_adpt_coalesce
+=====================
+
+.. c:function:: void hns_nic_adpt_coalesce(struct hns_nic_ring_data *ring_data)
+
+    self adapte coalesce according to rx rate
+
+    :param struct hns_nic_ring_data \*ring_data:
+        pointer to hns_nic_ring_data
+
 .. _`hns_nic_adjust_link`:
 
 hns_nic_adjust_link

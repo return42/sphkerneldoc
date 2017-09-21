@@ -128,18 +128,6 @@ padata_stop
     :param struct padata_instance \*pinst:
         padata instance to stop
 
-.. _`padata_alloc_possible`:
-
-padata_alloc_possible
-=====================
-
-.. c:function:: struct padata_instance *padata_alloc_possible(struct workqueue_struct *wq)
-
-    Allocate and initialize padata instance. Use the cpu_possible_mask for serial and parallel workers.
-
-    :param struct workqueue_struct \*wq:
-        workqueue to use for the allocated padata instance
-
 .. _`padata_alloc`:
 
 padata_alloc
@@ -157,6 +145,32 @@ padata_alloc
 
     :param const struct cpumask \*cbcpumask:
         cpumask that will be used for padata serialization
+
+.. _`padata_alloc.description`:
+
+Description
+-----------
+
+Must be called from a \ :c:func:`cpus_read_lock`\  protected region
+
+.. _`padata_alloc_possible`:
+
+padata_alloc_possible
+=====================
+
+.. c:function:: struct padata_instance *padata_alloc_possible(struct workqueue_struct *wq)
+
+    Allocate and initialize padata instance. Use the cpu_possible_mask for serial and parallel workers.
+
+    :param struct workqueue_struct \*wq:
+        workqueue to use for the allocated padata instance
+
+.. _`padata_alloc_possible.description`:
+
+Description
+-----------
+
+Must be called from a \ :c:func:`cpus_read_lock`\  protected region
 
 .. _`padata_free`:
 

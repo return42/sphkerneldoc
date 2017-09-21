@@ -202,28 +202,6 @@ RCU-idle period, update rdtp->dynticks and rdtp->dynticks_nmi_nesting
 to let the RCU grace-period handling know that the CPU is back to
 being RCU-idle.
 
-.. _`__rcu_is_watching`:
-
-__rcu_is_watching
-=================
-
-.. c:function:: bool notrace __rcu_is_watching( void)
-
-    are RCU read-side critical sections safe?
-
-    :param  void:
-        no arguments
-
-.. _`__rcu_is_watching.description`:
-
-Description
------------
-
-Return true if RCU is watching the running CPU, which means that
-this CPU can safely enter RCU read-side critical sections.  Unlike
-\ :c:func:`rcu_is_watching`\ , the caller of \ :c:func:`__rcu_is_watching`\  must have at
-least disabled preemption.
-
 .. _`rcu_is_watching`:
 
 rcu_is_watching
@@ -241,7 +219,9 @@ rcu_is_watching
 Description
 -----------
 
-If the current CPU is in its idle loop and is neither in an interrupt
+Return true if RCU is watching the running CPU, which means that this
+CPU can safely enter RCU read-side critical sections.  In other words,
+if the current CPU is in its idle loop and is neither in an interrupt
 or NMI handler, return true.
 
 .. _`rcu_is_cpu_rrupt_from_idle`:
@@ -287,6 +267,76 @@ any RCU CPU stall-warning messages from appearing in the current set of
 RCU grace periods.
 
 The caller must disable hard irqs.
+
+.. _`call_rcu_sched`:
+
+call_rcu_sched
+==============
+
+.. c:function:: void call_rcu_sched(struct rcu_head *head, rcu_callback_t func)
+
+    Queue an RCU for invocation after sched grace period.
+
+    :param struct rcu_head \*head:
+        structure to be used for queueing the RCU updates.
+
+    :param rcu_callback_t func:
+        actual callback function to be invoked after the grace period
+
+.. _`call_rcu_sched.description`:
+
+Description
+-----------
+
+The callback function will be invoked some time after a full grace
+period elapses, in other words after all currently executing RCU
+read-side critical sections have completed. \ :c:func:`call_rcu_sched`\  assumes
+that the read-side critical sections end on enabling of preemption
+or on voluntary preemption.
+RCU read-side critical sections are delimited by :
+ - \ :c:func:`rcu_read_lock_sched`\  and \ :c:func:`rcu_read_unlock_sched`\ , OR
+ - anything that disables preemption.
+
+ These may be nested.
+
+See the description of \ :c:func:`call_rcu`\  for more detailed information on
+memory ordering guarantees.
+
+.. _`call_rcu_bh`:
+
+call_rcu_bh
+===========
+
+.. c:function:: void call_rcu_bh(struct rcu_head *head, rcu_callback_t func)
+
+    Queue an RCU for invocation after a quicker grace period.
+
+    :param struct rcu_head \*head:
+        structure to be used for queueing the RCU updates.
+
+    :param rcu_callback_t func:
+        actual callback function to be invoked after the grace period
+
+.. _`call_rcu_bh.description`:
+
+Description
+-----------
+
+The callback function will be invoked some time after a full grace
+period elapses, in other words after all currently executing RCU
+read-side critical sections have completed. \ :c:func:`call_rcu_bh`\  assumes
+that the read-side critical sections end on completion of a softirq
+handler. This means that read-side critical sections in process
+context must not be interrupted by softirqs. This interface is to be
+used when most of the read-side critical sections are in softirq context.
+RCU read-side critical sections are delimited by :
+ - \ :c:func:`rcu_read_lock`\  and  \ :c:func:`rcu_read_unlock`\ , if in interrupt context.
+ OR
+ - \ :c:func:`rcu_read_lock_bh`\  and \ :c:func:`rcu_read_unlock_bh`\ , if in process context.
+ These may be nested.
+
+See the description of \ :c:func:`call_rcu`\  for more detailed information on
+memory ordering guarantees.
 
 .. _`synchronize_sched`:
 
@@ -336,12 +386,6 @@ to its caller on CPU B, then both CPU A and CPU B are guaranteed
 to have executed a full memory barrier during the execution of
 \ :c:func:`synchronize_sched`\  -- even if CPU A and CPU B are the same CPU (but
 again only if the system has more than one CPU).
-
-This primitive provides the guarantees made by the (now removed)
-\ :c:func:`synchronize_kernel`\  API.  In contrast, \ :c:func:`synchronize_rcu`\  only
-guarantees that \ :c:func:`rcu_read_lock`\  sections will have completed.
-In "classic RCU", these two guarantees happen to be one and
-the same, but can differ in realtime RCU implementations.
 
 .. _`synchronize_rcu_bh`:
 

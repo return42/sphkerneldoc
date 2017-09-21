@@ -19,6 +19,7 @@ Definition
 
     struct nfp_eth_table {
         unsigned int count;
+        unsigned int max_index;
         struct nfp_eth_table_port ports;
     }
 
@@ -29,6 +30,9 @@ Members
 
 count
     number of table entries
+
+max_index
+    max of \ ``index``\  fields of all \ ``ports``\ 
 
 ports
     table of ports
@@ -58,6 +62,7 @@ Definition
         u16 primary;
         u16 secondary;
         u16 nsp;
+        u64 sensor_mask;
     }
 
 .. _`nfp_nsp_identify.members`:
@@ -88,6 +93,9 @@ secondary
 
 nsp
     version id of NSP
+
+sensor_mask
+    mask of present sensors available on NIC
 
 .. This file was automatic generated / don't edit.
 

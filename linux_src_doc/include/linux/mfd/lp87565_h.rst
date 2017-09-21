@@ -1,0 +1,52 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: include/linux/mfd/lp87565.h
+
+.. _`lp87565`:
+
+struct lp87565
+==============
+
+.. c:type:: struct lp87565
+
+    state holder for the LP87565 driver
+
+.. _`lp87565.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct lp87565 {
+        struct device *dev;
+        u8 rev;
+        u8 dev_type;
+        struct regmap *regmap;
+    }
+
+.. _`lp87565.members`:
+
+Members
+-------
+
+dev
+    struct device pointer for MFD device
+
+rev
+    revision of the LP87565
+
+dev_type
+    The device type for example lp87565-q1
+
+regmap
+    register map of the LP87565 PMIC
+
+.. _`lp87565.description`:
+
+Description
+-----------
+
+Device data may be used to access the LP87565 chip
+
+.. This file was automatic generated / don't edit.
+

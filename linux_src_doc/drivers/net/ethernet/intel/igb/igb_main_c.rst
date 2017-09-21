@@ -1310,15 +1310,12 @@ Returns 0 on success, negative on failure
 igb_update_stats
 ================
 
-.. c:function:: void igb_update_stats(struct igb_adapter *adapter, struct rtnl_link_stats64 *net_stats)
+.. c:function:: void igb_update_stats(struct igb_adapter *adapter)
 
     Update the board statistics counters
 
     :param struct igb_adapter \*adapter:
         board private structure
-
-    :param struct rtnl_link_stats64 \*net_stats:
-        *undescribed*
 
 .. _`igb_set_uta`:
 

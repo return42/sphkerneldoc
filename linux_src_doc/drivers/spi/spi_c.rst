@@ -35,11 +35,11 @@ zero on success, else a negative error code.
 spi_alloc_device
 ================
 
-.. c:function:: struct spi_device *spi_alloc_device(struct spi_master *master)
+.. c:function:: struct spi_device *spi_alloc_device(struct spi_controller *ctlr)
 
     Allocate a new SPI device
 
-    :param struct spi_master \*master:
+    :param struct spi_controller \*ctlr:
         Controller to which device is connected
 
 .. _`spi_alloc_device.context`:
@@ -60,7 +60,7 @@ fill the spi_device with device parameters before calling
 \ :c:func:`spi_add_device`\  on it.
 
 Caller is responsible to call \ :c:func:`spi_add_device`\  on the returned
-spi_device structure to add it to the SPI master.  If the caller
+spi_device structure to add it to the SPI controller.  If the caller
 needs to discard the spi_device without adding it, then it should
 call \ :c:func:`spi_dev_put`\  on it.
 
@@ -103,11 +103,11 @@ Return
 spi_new_device
 ==============
 
-.. c:function:: struct spi_device *spi_new_device(struct spi_master *master, struct spi_board_info *chip)
+.. c:function:: struct spi_device *spi_new_device(struct spi_controller *ctlr, struct spi_board_info *chip)
 
     instantiate one new SPI device
 
-    :param struct spi_master \*master:
+    :param struct spi_controller \*ctlr:
         Controller to which device is connected
 
     :param struct spi_board_info \*chip:
@@ -156,7 +156,7 @@ Description
 -----------
 
 Start making the passed SPI device vanish. Normally this would be handled
-by \ :c:func:`spi_unregister_master`\ .
+by \ :c:func:`spi_unregister_controller`\ .
 
 .. _`spi_register_board_info`:
 
@@ -211,12 +211,12 @@ zero on success, else a negative error code.
 spi_finalize_current_transfer
 =============================
 
-.. c:function:: void spi_finalize_current_transfer(struct spi_master *master)
+.. c:function:: void spi_finalize_current_transfer(struct spi_controller *ctlr)
 
     report completion of a transfer
 
-    :param struct spi_master \*master:
-        the master reporting completion
+    :param struct spi_controller \*ctlr:
+        the controller reporting completion
 
 .. _`spi_finalize_current_transfer.description`:
 
@@ -232,12 +232,12 @@ transfer has finished and the next one may be scheduled.
 __spi_pump_messages
 ===================
 
-.. c:function:: void __spi_pump_messages(struct spi_master *master, bool in_kthread)
+.. c:function:: void __spi_pump_messages(struct spi_controller *ctlr, bool in_kthread)
 
     function which processes spi message queue
 
-    :param struct spi_master \*master:
-        master to process queue for
+    :param struct spi_controller \*ctlr:
+        controller to process queue for
 
     :param bool in_kthread:
         true if we are in the context of the message pump thread
@@ -265,19 +265,19 @@ spi_pump_messages
     kthread work function which processes spi message queue
 
     :param struct kthread_work \*work:
-        pointer to kthread work struct contained in the master struct
+        pointer to kthread work struct contained in the controller struct
 
 .. _`spi_get_next_queued_message`:
 
 spi_get_next_queued_message
 ===========================
 
-.. c:function:: struct spi_message *spi_get_next_queued_message(struct spi_master *master)
+.. c:function:: struct spi_message *spi_get_next_queued_message(struct spi_controller *ctlr)
 
     called by driver to check for queued messages
 
-    :param struct spi_master \*master:
-        the master to check for queued messages
+    :param struct spi_controller \*ctlr:
+        the controller to check for queued messages
 
 .. _`spi_get_next_queued_message.description`:
 
@@ -299,12 +299,12 @@ the next message in the queue, else NULL if the queue is empty.
 spi_finalize_current_message
 ============================
 
-.. c:function:: void spi_finalize_current_message(struct spi_master *master)
+.. c:function:: void spi_finalize_current_message(struct spi_controller *ctlr)
 
     the current message is complete
 
-    :param struct spi_master \*master:
-        the master to return the message to
+    :param struct spi_controller \*ctlr:
+        the controller to return the message to
 
 .. _`spi_finalize_current_message.description`:
 
@@ -341,94 +341,112 @@ zero on success, else a negative error code.
 of_register_spi_devices
 =======================
 
-.. c:function:: void of_register_spi_devices(struct spi_master *master)
+.. c:function:: void of_register_spi_devices(struct spi_controller *ctlr)
 
     Register child devices onto the SPI bus
 
-    :param struct spi_master \*master:
-        Pointer to spi_master device
+    :param struct spi_controller \*ctlr:
+        Pointer to spi_controller device
 
 .. _`of_register_spi_devices.description`:
 
 Description
 -----------
 
-Registers an spi_device for each child node of master node which has a 'reg'
-property.
+Registers an spi_device for each child node of controller node which
+represents a valid SPI slave.
 
-.. _`spi_alloc_master`:
+.. _`spi_slave_abort`:
 
-spi_alloc_master
-================
+spi_slave_abort
+===============
 
-.. c:function:: struct spi_master *spi_alloc_master(struct device *dev, unsigned size)
+.. c:function:: int spi_slave_abort(struct spi_device *spi)
 
-    allocate SPI master controller
+    abort the ongoing transfer request on an SPI slave controller
+
+    :param struct spi_device \*spi:
+        device used for the current transfer
+
+.. _`__spi_alloc_controller`:
+
+__spi_alloc_controller
+======================
+
+.. c:function:: struct spi_controller *__spi_alloc_controller(struct device *dev, unsigned int size, bool slave)
+
+    allocate an SPI master or slave controller
 
     :param struct device \*dev:
         the controller, possibly using the platform_bus
 
-    :param unsigned size:
+    :param unsigned int size:
         how much zeroed driver-private data to allocate; the pointer to this
         memory is in the driver_data field of the returned device,
-        accessible with \ :c:func:`spi_master_get_devdata`\ .
+        accessible with \ :c:func:`spi_controller_get_devdata`\ .
 
-.. _`spi_alloc_master.context`:
+    :param bool slave:
+        flag indicating whether to allocate an SPI master (false) or SPI
+        slave (true) controller
+
+.. _`__spi_alloc_controller.context`:
 
 Context
 -------
 
 can sleep
 
-.. _`spi_alloc_master.description`:
+.. _`__spi_alloc_controller.description`:
 
 Description
 -----------
 
-This call is used only by SPI master controller drivers, which are the
+This call is used only by SPI controller drivers, which are the
 only ones directly touching chip registers.  It's how they allocate
-an spi_master structure, prior to calling \ :c:func:`spi_register_master`\ .
+an spi_controller structure, prior to calling \ :c:func:`spi_register_controller`\ .
 
 This must be called from context that can sleep.
 
-The caller is responsible for assigning the bus number and initializing
-the master's methods before calling \ :c:func:`spi_register_master`\ ; and (after errors
-adding the device) calling \ :c:func:`spi_master_put`\  to prevent a memory leak.
+The caller is responsible for assigning the bus number and initializing the
+controller's methods before calling \ :c:func:`spi_register_controller`\ ; and (after
+errors adding the device) calling \ :c:func:`spi_controller_put`\  to prevent a memory
+leak.
 
-.. _`spi_alloc_master.return`:
+.. _`__spi_alloc_controller.return`:
 
 Return
 ------
 
-the SPI master structure on success, else NULL.
+the SPI controller structure on success, else NULL.
 
-.. _`spi_register_master`:
+.. _`spi_register_controller`:
 
-spi_register_master
-===================
+spi_register_controller
+=======================
 
-.. c:function:: int spi_register_master(struct spi_master *master)
+.. c:function:: int spi_register_controller(struct spi_controller *ctlr)
 
-    register SPI master controller
+    register SPI master or slave controller
 
-    :param struct spi_master \*master:
-        initialized master, originally from \ :c:func:`spi_alloc_master`\ 
+    :param struct spi_controller \*ctlr:
+        initialized master, originally from \ :c:func:`spi_alloc_master`\  or
+        \ :c:func:`spi_alloc_slave`\ 
 
-.. _`spi_register_master.context`:
+.. _`spi_register_controller.context`:
 
 Context
 -------
 
 can sleep
 
-.. _`spi_register_master.description`:
+.. _`spi_register_controller.description`:
 
 Description
 -----------
 
-SPI master controllers connect to their drivers using some non-SPI bus,
+SPI controllers connect to their drivers using some non-SPI bus,
 such as the platform bus.  The final stage of \ :c:func:`probe`\  in that code
-includes calling \ :c:func:`spi_register_master`\  to hook up to this SPI bus glue.
+includes calling \ :c:func:`spi_register_controller`\  to hook up to this SPI bus glue.
 
 SPI controllers use board specific (often SOC specific) bus numbers,
 and board-specific addressing for SPI devices combines those numbers
@@ -437,79 +455,80 @@ device identification, boards need configuration tables telling which
 chip is at which address.
 
 This must be called from context that can sleep.  It returns zero on
-success, else a negative error code (dropping the master's refcount).
+success, else a negative error code (dropping the controller's refcount).
 After a successful return, the caller is responsible for calling
-\ :c:func:`spi_unregister_master`\ .
+\ :c:func:`spi_unregister_controller`\ .
 
-.. _`spi_register_master.return`:
+.. _`spi_register_controller.return`:
 
 Return
 ------
 
 zero on success, else a negative error code.
 
-.. _`devm_spi_register_master`:
+.. _`devm_spi_register_controller`:
 
-devm_spi_register_master
-========================
+devm_spi_register_controller
+============================
 
-.. c:function:: int devm_spi_register_master(struct device *dev, struct spi_master *master)
+.. c:function:: int devm_spi_register_controller(struct device *dev, struct spi_controller *ctlr)
 
-    register managed SPI master controller
+    register managed SPI master or slave controller
 
     :param struct device \*dev:
-        device managing SPI master
+        device managing SPI controller
 
-    :param struct spi_master \*master:
-        initialized master, originally from \ :c:func:`spi_alloc_master`\ 
+    :param struct spi_controller \*ctlr:
+        initialized controller, originally from \ :c:func:`spi_alloc_master`\  or
+        \ :c:func:`spi_alloc_slave`\ 
 
-.. _`devm_spi_register_master.context`:
+.. _`devm_spi_register_controller.context`:
 
 Context
 -------
 
 can sleep
 
-.. _`devm_spi_register_master.description`:
+.. _`devm_spi_register_controller.description`:
 
 Description
 -----------
 
-Register a SPI device as with \ :c:func:`spi_register_master`\  which will
+Register a SPI device as with \ :c:func:`spi_register_controller`\  which will
 automatically be unregister
 
-.. _`devm_spi_register_master.return`:
+.. _`devm_spi_register_controller.return`:
 
 Return
 ------
 
 zero on success, else a negative error code.
 
-.. _`spi_unregister_master`:
+.. _`spi_unregister_controller`:
 
-spi_unregister_master
-=====================
+spi_unregister_controller
+=========================
 
-.. c:function:: void spi_unregister_master(struct spi_master *master)
+.. c:function:: void spi_unregister_controller(struct spi_controller *ctlr)
 
-    unregister SPI master controller
+    unregister SPI master or slave controller
 
-    :param struct spi_master \*master:
-        the master being unregistered
+    :param struct spi_controller \*ctlr:
+        the controller being unregistered
 
-.. _`spi_unregister_master.context`:
+.. _`spi_unregister_controller.context`:
 
 Context
 -------
 
 can sleep
 
-.. _`spi_unregister_master.description`:
+.. _`spi_unregister_controller.description`:
 
 Description
 -----------
 
-This call is used only by SPI master controller drivers, which are the
+This call is used only by SPI controller drivers, which are the
 only ones directly touching chip registers.
 
 This must be called from context that can sleep.
@@ -519,7 +538,7 @@ This must be called from context that can sleep.
 spi_busnum_to_master
 ====================
 
-.. c:function:: struct spi_master *spi_busnum_to_master(u16 bus_num)
+.. c:function:: struct spi_controller *spi_busnum_to_master(u16 bus_num)
 
     look up master associated with bus_num
 
@@ -540,7 +559,7 @@ Description
 
 This call may be used with devices that are registered after
 arch init time.  It returns a refcounted pointer to the relevant
-spi_master (which the caller must release), or NULL if there is
+spi_controller (which the caller must release), or NULL if there is
 no such master registered.
 
 .. _`spi_busnum_to_master.return`:
@@ -579,7 +598,7 @@ Return
 the pointer to the allocated data
 
 This may get enhanced in the future to allocate from a memory pool
-of the \ ``spi_device``\  or \ ``spi_master``\  to avoid repeated allocations.
+of the \ ``spi_device``\  or \ ``spi_controller``\  to avoid repeated allocations.
 
 .. _`spi_res_free`:
 
@@ -613,12 +632,12 @@ spi_res_add
 spi_res_release
 ===============
 
-.. c:function:: void spi_res_release(struct spi_master *master, struct spi_message *message)
+.. c:function:: void spi_res_release(struct spi_controller *ctlr, struct spi_message *message)
 
     release all spi resources for this message
 
-    :param struct spi_master \*master:
-        the \ ``spi_master``\ 
+    :param struct spi_controller \*ctlr:
+        the \ ``spi_controller``\ 
 
     :param struct spi_message \*message:
         the \ ``spi_message``\ 
@@ -667,12 +686,12 @@ pointer to \ ``spi_replaced_transfers``\ ,
 spi_split_transfers_maxsize
 ===========================
 
-.. c:function:: int spi_split_transfers_maxsize(struct spi_master *master, struct spi_message *msg, size_t maxsize, gfp_t gfp)
+.. c:function:: int spi_split_transfers_maxsize(struct spi_controller *ctlr, struct spi_message *msg, size_t maxsize, gfp_t gfp)
 
     split spi transfers into multiple transfers when an individual transfer exceeds a certain size
 
-    :param struct spi_master \*master:
-        the \ ``spi_master``\  for this transfer
+    :param struct spi_controller \*ctlr:
+        the \ ``spi_controller``\  for this transfer
 
     :param struct spi_message \*msg:
         the \ ``spi_message``\  to transform
@@ -942,11 +961,11 @@ zero on success, else a negative error code.
 spi_bus_lock
 ============
 
-.. c:function:: int spi_bus_lock(struct spi_master *master)
+.. c:function:: int spi_bus_lock(struct spi_controller *ctlr)
 
     obtain a lock for exclusive SPI bus usage
 
-    :param struct spi_master \*master:
+    :param struct spi_controller \*ctlr:
         SPI bus master that should be locked for exclusive bus access
 
 .. _`spi_bus_lock.context`:
@@ -981,11 +1000,11 @@ always zero.
 spi_bus_unlock
 ==============
 
-.. c:function:: int spi_bus_unlock(struct spi_master *master)
+.. c:function:: int spi_bus_unlock(struct spi_controller *ctlr)
 
     release the lock for exclusive SPI bus usage
 
-    :param struct spi_master \*master:
+    :param struct spi_controller \*ctlr:
         SPI bus master that was locked for exclusive bus access
 
 .. _`spi_bus_unlock.context`:

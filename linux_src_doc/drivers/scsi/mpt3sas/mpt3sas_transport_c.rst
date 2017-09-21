@@ -615,18 +615,18 @@ Returns 0 for success, non-zero for failure.
 _transport_smp_handler
 ======================
 
-.. c:function:: int _transport_smp_handler(struct Scsi_Host *shost, struct sas_rphy *rphy, struct request *req)
+.. c:function:: void _transport_smp_handler(struct bsg_job *job, struct Scsi_Host *shost, struct sas_rphy *rphy)
 
     transport portal for smp passthru
+
+    :param struct bsg_job \*job:
+        *undescribed*
 
     :param struct Scsi_Host \*shost:
         shost object
 
     :param struct sas_rphy \*rphy:
         sas transport rphy object
-
-    :param struct request \*req:
-        *undescribed*
 
 .. _`_transport_smp_handler.description`:
 

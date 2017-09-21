@@ -24,30 +24,6 @@ Description
 MMC drivers should call this function when they have completed
 their processing of a request.
 
-.. _`mmc_start_bkops`:
-
-mmc_start_bkops
-===============
-
-.. c:function:: void mmc_start_bkops(struct mmc_card *card, bool from_exception)
-
-    start BKOPS for supported cards
-
-    :param struct mmc_card \*card:
-        MMC card to start BKOPS
-
-    :param bool from_exception:
-        *undescribed*
-
-.. _`mmc_start_bkops.description`:
-
-Description
------------
-
-Start background operations whenever requested.
-When the urgent BKOPS bit is set in a R1 command response
-then background operations should be started immediately.
-
 .. _`mmc_is_req_done`:
 
 mmc_is_req_done
@@ -205,26 +181,6 @@ commands that do not use the data lines, and then wait by calling
 \ :c:func:`mmc_wait_for_req_done`\ .
 Does not attempt to parse the response.
 
-.. _`mmc_interrupt_hpi`:
-
-mmc_interrupt_hpi
-=================
-
-.. c:function:: int mmc_interrupt_hpi(struct mmc_card *card)
-
-    Issue for High priority Interrupt
-
-    :param struct mmc_card \*card:
-        the MMC card associated with the HPI transfer
-
-.. _`mmc_interrupt_hpi.description`:
-
-Description
------------
-
-Issued High Priority Interrupt, and check for card status
-until out-of prg-state.
-
 .. _`mmc_wait_for_cmd`:
 
 mmc_wait_for_cmd
@@ -251,28 +207,6 @@ Description
 Start a new MMC command for a host, and wait for the command
 to complete.  Return any error that occurred while the command
 was executing.  Do not attempt to parse the response.
-
-.. _`mmc_stop_bkops`:
-
-mmc_stop_bkops
-==============
-
-.. c:function:: int mmc_stop_bkops(struct mmc_card *card)
-
-    stop ongoing BKOPS
-
-    :param struct mmc_card \*card:
-        MMC card to check BKOPS
-
-.. _`mmc_stop_bkops.description`:
-
-Description
------------
-
-Send HPI command to stop ongoing background operations to
-allow rapid servicing of foreground operations, e.g. read/
-writes. Wait until the card comes out of the programming state
-to avoid errors in servicing read/write requests.
 
 .. _`mmc_set_data_timeout`:
 

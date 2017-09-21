@@ -55,7 +55,7 @@ Zero on success, negative error code on failure.
 drm_simple_display_pipe_init
 ============================
 
-.. c:function:: int drm_simple_display_pipe_init(struct drm_device *dev, struct drm_simple_display_pipe *pipe, const struct drm_simple_display_pipe_funcs *funcs, const uint32_t *formats, unsigned int format_count, struct drm_connector *connector)
+.. c:function:: int drm_simple_display_pipe_init(struct drm_device *dev, struct drm_simple_display_pipe *pipe, const struct drm_simple_display_pipe_funcs *funcs, const uint32_t *formats, unsigned int format_count, const uint64_t *format_modifiers, struct drm_connector *connector)
 
     Initialize a simple display pipeline
 
@@ -73,6 +73,9 @@ drm_simple_display_pipe_init
 
     :param unsigned int format_count:
         number of elements in \ ``formats``\ 
+
+    :param const uint64_t \*format_modifiers:
+        array of formats modifiers
 
     :param struct drm_connector \*connector:
         connector to attach and register (optional)

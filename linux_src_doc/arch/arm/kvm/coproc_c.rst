@@ -16,6 +16,21 @@ kvm_handle_cp15_64
     :param struct kvm_run \*run:
         The kvm_run struct
 
+.. _`kvm_handle_cp14_64`:
+
+kvm_handle_cp14_64
+==================
+
+.. c:function:: int kvm_handle_cp14_64(struct kvm_vcpu *vcpu, struct kvm_run *run)
+
+    - handles a mrrc/mcrr trap on a guest CP14 access
+
+    :param struct kvm_vcpu \*vcpu:
+        The VCPU pointer
+
+    :param struct kvm_run \*run:
+        The kvm_run struct
+
 .. _`kvm_handle_cp15_32`:
 
 kvm_handle_cp15_32
@@ -24,6 +39,21 @@ kvm_handle_cp15_32
 .. c:function:: int kvm_handle_cp15_32(struct kvm_vcpu *vcpu, struct kvm_run *run)
 
     - handles a mrc/mcr trap on a guest CP15 access
+
+    :param struct kvm_vcpu \*vcpu:
+        The VCPU pointer
+
+    :param struct kvm_run \*run:
+        The kvm_run struct
+
+.. _`kvm_handle_cp14_32`:
+
+kvm_handle_cp14_32
+==================
+
+.. c:function:: int kvm_handle_cp14_32(struct kvm_vcpu *vcpu, struct kvm_run *run)
+
+    - handles a mrc/mcr trap on a guest CP14 access
 
     :param struct kvm_vcpu \*vcpu:
         The VCPU pointer

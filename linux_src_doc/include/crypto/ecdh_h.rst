@@ -128,11 +128,11 @@ crypto_ecdh_decode_key
         Buffer holding a packet key that should be decoded
 
     :param unsigned int len:
-        Lenth of the packet private key buffer
+        Length of the packet private key buffer
 
     :param struct ecdh \*p:
         Buffer allocated by the caller that is filled with the
-        unpacket ECDH private key.
+        unpacked ECDH private key.
 
 .. _`crypto_ecdh_decode_key.description`:
 

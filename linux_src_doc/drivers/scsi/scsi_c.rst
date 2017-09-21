@@ -201,6 +201,28 @@ to a buffer containing the data from that page.  The caller is
 responsible for calling \ :c:func:`kfree`\  on this pointer when it is no longer
 needed.  If we cannot retrieve the VPD page this routine returns \ ``NULL``\ .
 
+.. _`scsi_get_vpd_buf`:
+
+scsi_get_vpd_buf
+================
+
+.. c:function:: struct scsi_vpd *scsi_get_vpd_buf(struct scsi_device *sdev, u8 page)
+
+    Get Vital Product Data from a SCSI device
+
+    :param struct scsi_device \*sdev:
+        The device to ask
+
+    :param u8 page:
+        Which Vital Product Data to return
+
+.. _`scsi_get_vpd_buf.description`:
+
+Description
+-----------
+
+Returns \ ``NULL``\  upon failure.
+
 .. _`scsi_attach_vpd`:
 
 scsi_attach_vpd

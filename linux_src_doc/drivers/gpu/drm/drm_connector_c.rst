@@ -358,9 +358,9 @@ DPMS:
      drivers, it remaps to controlling the "ACTIVE" property on the CRTC the
      connector is linked to. Drivers should never set this property directly,
      it is handled by the DRM core by calling the \ :c:type:`drm_connector_funcs.dpms <drm_connector_funcs>`\ 
-     callback. Atomic drivers should implement this hook using
-     \ :c:func:`drm_atomic_helper_connector_dpms`\ . This is the only property standard
-     connector property that userspace can change.
+     callback. For atomic drivers the remapping to the "ACTIVE" property is
+     implemented in the DRM core.  This is the only standard connector
+     property that userspace can change.
 PATH:
      Connector path property to identify how this sink is physically
      connected. Used by DP MST. This should be set by calling
@@ -454,6 +454,43 @@ Description
 
 Called by a driver the first time it's needed, must be attached to desired
 connectors.
+
+Atomic drivers should use \ :c:func:`drm_connector_attach_scaling_mode_property`\ 
+instead to correctly assign \ :c:type:`drm_connector_state.picture_aspect_ratio <drm_connector_state>`\ 
+in the atomic state.
+
+.. _`drm_connector_attach_scaling_mode_property`:
+
+drm_connector_attach_scaling_mode_property
+==========================================
+
+.. c:function:: int drm_connector_attach_scaling_mode_property(struct drm_connector *connector, u32 scaling_mode_mask)
+
+    attach atomic scaling mode property
+
+    :param struct drm_connector \*connector:
+        connector to attach scaling mode property on.
+
+    :param u32 scaling_mode_mask:
+        or'ed mask of BIT(%DRM_MODE_SCALE_\*).
+
+.. _`drm_connector_attach_scaling_mode_property.description`:
+
+Description
+-----------
+
+This is used to add support for scaling mode to atomic drivers.
+The scaling mode will be set to \ :c:type:`drm_connector_state.picture_aspect_ratio <drm_connector_state>`\ 
+and can be used from \ :c:type:`drm_connector_helper_funcs->atomic_check <drm_connector_helper_funcs>`\  for validation.
+
+This is the atomic version of \ :c:func:`drm_mode_create_scaling_mode_property`\ .
+
+.. _`drm_connector_attach_scaling_mode_property.return`:
+
+Return
+------
+
+Zero on success, negative errno on failure.
 
 .. _`drm_mode_create_aspect_ratio_property`:
 

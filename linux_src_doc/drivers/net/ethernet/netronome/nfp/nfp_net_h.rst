@@ -184,7 +184,6 @@ Definition
         u32 wr_p;
         u32 rd_p;
         u32 idx;
-        u32 wr_ptr_add;
         int fl_qcidx;
         u8 __iomem *qcp_fl;
         struct nfp_net_rx_buf *rxbufs;
@@ -212,10 +211,6 @@ rd_p
 
 idx
     Ring index from Linux's perspective
-
-wr_ptr_add
-    Accumulated number of buffers to add to QCP write pointer
-    (used for free list batching)
 
 fl_qcidx
     Queue Controller Peripheral (QCP) queue index for the freelist
@@ -253,7 +248,7 @@ Definition
 
     struct nfp_net_r_vector {
         struct nfp_net *nfp_net;
-        struct napi_struct napi;
+        union {unnamed_union};
         struct nfp_net_tx_ring *tx_ring;
         struct nfp_net_rx_ring *rx_ring;
         u16 irq_entry;
@@ -288,8 +283,9 @@ Members
 nfp_net
     Backpointer to nfp_net structure
 
-napi
-    NAPI structure for this ring vec
+{unnamed_union}
+    anonymous
+
 
 tx_ring
     Pointer to TX ring
@@ -510,11 +506,8 @@ Definition
         u32 rss_cfg;
         u8 rss_key;
         u8 rss_itbl;
-        struct nfp_stat_pair rx_filter;
-        struct nfp_stat_pair rx_filter_prev;
-        unsigned long rx_filter_change;
-        struct timer_list rx_filter_stats_timer;
-        spinlock_t rx_filter_lock;
+        u32 xdp_flags;
+        struct bpf_prog *xdp_prog;
         unsigned int max_tx_rings;
         unsigned int max_rx_rings;
         int stride_tx;
@@ -530,7 +523,6 @@ Definition
         char shared_name;
         u32 me_freq_mhz;
         bool link_up;
-        bool link_changed;
         spinlock_t link_status_lock;
         spinlock_t reconfig_lock;
         u32 reconfig_posted;
@@ -547,11 +539,11 @@ Definition
         u8 __iomem *tx_bar;
         u8 __iomem *rx_bar;
         struct dentry *debugfs_dir;
-        u32 ethtool_dump_flag;
-        struct list_head port_list;
+        struct list_head vnic_list;
         struct pci_dev *pdev;
-        struct nfp_cpp *cpp;
-        struct nfp_eth_table_port *eth_port;
+        struct nfp_app *app;
+        struct nfp_port *port;
+        void *app_priv;
     }
 
 .. _`nfp_net.members`:
@@ -583,20 +575,11 @@ rss_key
 rss_itbl
     RSS indirection table
 
-rx_filter
-    Filter offload statistics - dropped packets/bytes
+xdp_flags
+    Flags with which XDP prog was loaded
 
-rx_filter_prev
-    Filter offload statistics - values from previous update
-
-rx_filter_change
-    Jiffies when statistics last changed
-
-rx_filter_stats_timer
-    Timer for polling filter offload statistics
-
-rx_filter_lock
-    Lock protecting timer state changes (teardown)
+xdp_prog
+    XDP prog (for ctrl path, both DRV and HW modes)
 
 max_tx_rings
     Maximum number of TX rings supported by the Firmware
@@ -642,9 +625,6 @@ me_freq_mhz
 
 link_up
     Is the link up?
-
-link_changed
-    Has link state changes since last port refresh?
 
 link_status_lock
     Protects \ ``link``\ \_\* and ensures atomicity with BAR reading
@@ -694,20 +674,20 @@ rx_bar
 debugfs_dir
     Device directory in debugfs
 
-ethtool_dump_flag
-    Ethtool dump flag
-
-port_list
-    Entry on device port list
+vnic_list
+    Entry on device vNIC list
 
 pdev
     Backpointer to PCI device
 
-cpp
-    CPP device handle if available
+app
+    APP handle if available
 
-eth_port
-    Translated ETH Table port entry
+port
+    Pointer to nfp_port structure if vNIC is a port
+
+app_priv
+    APP private data for this vNIC
 
 .. _`nfp_qcp_rd_ptr_add`:
 

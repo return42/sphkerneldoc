@@ -8,5 +8,4 @@ block
     :maxdepth: 1
 
     drbd/index
-    cciss_c
     xen-blkfront_c

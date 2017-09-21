@@ -15,9 +15,6 @@ i915_gem_request_alloc
 
     :param struct i915_gem_context \*ctx:
         context that the request will be associated with.
-        This can be NULL if the request is not directly related to
-        any specific user context, in which case this function will
-        choose an appropriate context to use.
 
 .. _`i915_gem_request_alloc.description`:
 

@@ -1,44 +1,43 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/net/pkt_cls.h
 
-.. _`tcf_exts_is_predicative`:
+.. _`tcf_exts_has_actions`:
 
-tcf_exts_is_predicative
+tcf_exts_has_actions
+====================
+
+.. c:function:: bool tcf_exts_has_actions(struct tcf_exts *exts)
+
+    check if at least one action is present
+
+    :param struct tcf_exts \*exts:
+        tc filter extensions handle
+
+.. _`tcf_exts_has_actions.description`:
+
+Description
+-----------
+
+Returns true if at least one action is present.
+
+.. _`tcf_exts_has_one_action`:
+
+tcf_exts_has_one_action
 =======================
 
-.. c:function:: int tcf_exts_is_predicative(struct tcf_exts *exts)
+.. c:function:: bool tcf_exts_has_one_action(struct tcf_exts *exts)
 
-    check if a predicative extension is present
-
-    :param struct tcf_exts \*exts:
-        tc filter extensions handle
-
-.. _`tcf_exts_is_predicative.description`:
-
-Description
------------
-
-Returns 1 if a predicative extension is present, i.e. an extension which
-might cause further actions and thus overrule the regular tcf_result.
-
-.. _`tcf_exts_is_available`:
-
-tcf_exts_is_available
-=====================
-
-.. c:function:: int tcf_exts_is_available(struct tcf_exts *exts)
-
-    check if at least one extension is present
+    check if exactly one action is present
 
     :param struct tcf_exts \*exts:
         tc filter extensions handle
 
-.. _`tcf_exts_is_available.description`:
+.. _`tcf_exts_has_one_action.description`:
 
 Description
 -----------
 
-Returns 1 if at least one extension is present.
+Returns true if exactly one action is present.
 
 .. _`tcf_exts_exec`:
 
@@ -63,7 +62,7 @@ tcf_exts_exec
 Description
 -----------
 
-Executes all configured extensions. Returns 0 on a normal execution,
+Executes all configured extensions. Returns TC_ACT_OK on a normal execution,
 a negative number if the filter must be considered unmatched or
 a positive action code (TC_ACT\_\*) which must be returned to the
 underlying layer.
@@ -235,33 +234,6 @@ owner
 
 link
     link to previous/next ematch module (internal use)
-
-.. _`tcf_em_tree_change`:
-
-tcf_em_tree_change
-==================
-
-.. c:function:: void tcf_em_tree_change(struct tcf_proto *tp, struct tcf_ematch_tree *dst, struct tcf_ematch_tree *src)
-
-    replace ematch tree of a running classifier
-
-    :param struct tcf_proto \*tp:
-        classifier kind handle
-
-    :param struct tcf_ematch_tree \*dst:
-        destination ematch tree variable
-
-    :param struct tcf_ematch_tree \*src:
-        source ematch tree (temporary tree from tcf_em_tree_validate)
-
-.. _`tcf_em_tree_change.description`:
-
-Description
------------
-
-This functions replaces the ematch tree in \ ``dst``\  with the ematch
-tree in \ ``src``\ . The classifier in charge of the ematch tree may be
-running.
 
 .. _`tcf_em_tree_match`:
 

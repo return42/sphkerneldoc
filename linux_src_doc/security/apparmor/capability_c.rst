@@ -21,18 +21,18 @@ audit_cb
 audit_caps
 ==========
 
-.. c:function:: int audit_caps(struct aa_profile *profile, int cap, int audit, int error)
+.. c:function:: int audit_caps(struct common_audit_data *sa, struct aa_profile *profile, int cap, int error)
 
     audit a capability
+
+    :param struct common_audit_data \*sa:
+        audit data
 
     :param struct aa_profile \*profile:
         profile being tested for confinement (NOT NULL)
 
     :param int cap:
         capability tested
-
-    :param int audit:
-        *undescribed*
 
     :param int error:
         error code returned by test
@@ -57,7 +57,7 @@ Return
 profile_capable
 ===============
 
-.. c:function:: int profile_capable(struct aa_profile *profile, int cap)
+.. c:function:: int profile_capable(struct aa_profile *profile, int cap, int audit, struct common_audit_data *sa)
 
     test if profile allows use of capability \ ``cap``\ 
 
@@ -66,6 +66,12 @@ profile_capable
 
     :param int cap:
         capability to test if allowed
+
+    :param int audit:
+        whether an audit record should be generated
+
+    :param struct common_audit_data \*sa:
+        audit data (MAY BE NULL indicating no auditing)
 
 .. _`profile_capable.return`:
 
@@ -79,12 +85,12 @@ Return
 aa_capable
 ==========
 
-.. c:function:: int aa_capable(struct aa_profile *profile, int cap, int audit)
+.. c:function:: int aa_capable(struct aa_label *label, int cap, int audit)
 
     test permission to use capability
 
-    :param struct aa_profile \*profile:
-        profile being tested against (NOT NULL)
+    :param struct aa_label \*label:
+        label being tested for capability (NOT NULL)
 
     :param int cap:
         capability to be tested

@@ -13,22 +13,19 @@ default_suspend_ok
     :param struct device \*dev:
         Device to check.
 
-.. _`__default_power_down_ok`:
+.. _`default_power_down_ok`:
 
-__default_power_down_ok
-=======================
+default_power_down_ok
+=====================
 
-.. c:function:: bool __default_power_down_ok(struct dev_pm_domain *pd, unsigned int state)
+.. c:function:: bool default_power_down_ok(struct dev_pm_domain *pd)
 
     Default generic PM domain power off governor routine.
 
     :param struct dev_pm_domain \*pd:
         PM domain to check.
 
-    :param unsigned int state:
-        *undescribed*
-
-.. _`__default_power_down_ok.description`:
+.. _`default_power_down_ok.description`:
 
 Description
 -----------

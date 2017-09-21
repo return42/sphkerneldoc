@@ -27,7 +27,9 @@ Definition
         u8 read_opcode;
         u8 read_dummy;
         u8 program_opcode;
-        enum read_mode flash_read;
+        enum spi_nor_protocol read_proto;
+        enum spi_nor_protocol write_proto;
+        enum spi_nor_protocol reg_proto;
         bool sst_write_second;
         u32 flags;
         u8 cmd_buf;
@@ -76,8 +78,15 @@ read_dummy
 program_opcode
     the program opcode
 
-flash_read
-    the mode of the read
+read_proto
+    the SPI protocol for read operations
+
+write_proto
+    the SPI protocol for write operations
+    \ ``reg_proto``\            the SPI protocol for read_reg/write_reg/erase operations
+
+reg_proto
+    *undescribed*
 
 sst_write_second
     used by the SST write operation
@@ -126,12 +135,40 @@ flash_is_locked
 priv
     the private data
 
+.. _`spi_nor_hwcaps`:
+
+struct spi_nor_hwcaps
+=====================
+
+.. c:type:: struct spi_nor_hwcaps
+
+    Structure for describing the hardware capabilies supported by the SPI controller (bus master).
+
+.. _`spi_nor_hwcaps.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct spi_nor_hwcaps {
+        u32 mask;
+    }
+
+.. _`spi_nor_hwcaps.members`:
+
+Members
+-------
+
+mask
+    the bitmask listing all the supported hw capabilies
+
 .. _`spi_nor_scan`:
 
 spi_nor_scan
 ============
 
-.. c:function:: int spi_nor_scan(struct spi_nor *nor, const char *name, enum read_mode mode)
+.. c:function:: int spi_nor_scan(struct spi_nor *nor, const char *name, const struct spi_nor_hwcaps *hwcaps)
 
     scan the SPI NOR
 
@@ -141,8 +178,8 @@ spi_nor_scan
     :param const char \*name:
         the chip type name
 
-    :param enum read_mode mode:
-        the read mode supported by the driver
+    :param const struct spi_nor_hwcaps \*hwcaps:
+        the hardware capabilities supported by the controller driver
 
 .. _`spi_nor_scan.description`:
 

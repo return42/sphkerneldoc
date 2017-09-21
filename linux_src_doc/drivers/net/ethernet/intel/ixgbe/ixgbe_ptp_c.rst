@@ -312,6 +312,18 @@ This function should be called whenever the state related to a Tx timestamp
 needs to be cleared. This helps ensure that all related bits are reset for
 the next Tx timestamp event.
 
+.. _`ixgbe_ptp_tx_hang`:
+
+ixgbe_ptp_tx_hang
+=================
+
+.. c:function:: void ixgbe_ptp_tx_hang(struct ixgbe_adapter *adapter)
+
+    detect error case where Tx timestamp never finishes
+
+    :param struct ixgbe_adapter \*adapter:
+        private network adapter structure
+
 .. _`ixgbe_ptp_tx_hwtstamp`:
 
 ixgbe_ptp_tx_hwtstamp

@@ -588,6 +588,8 @@ Definition
         int ict_index;
         bool use_ict;
         bool is_down;
+        bool opmode_down;
+        bool debug_rfkill;
         struct isr_statistics isr_stats;
         spinlock_t irq_lock;
         struct mutex mutex;
@@ -688,6 +690,12 @@ use_ict
     *undescribed*
 
 is_down
+    *undescribed*
+
+opmode_down
+    *undescribed*
+
+debug_rfkill
     *undescribed*
 
 isr_stats

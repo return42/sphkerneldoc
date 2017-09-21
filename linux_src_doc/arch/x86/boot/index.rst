@@ -7,5 +7,4 @@ boot
 .. toctree::
     :maxdepth: 1
 
-    compressed/index
     string_c

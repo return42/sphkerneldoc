@@ -932,7 +932,7 @@ ata_eh_done
     EH action complete
 
     :param struct ata_link \*link:
-        *undescribed*
+        ATA link for which EH actions are complete
 
     :param struct ata_device \*dev:
         target ATA dev for per-dev action (can be NULL)
@@ -989,51 +989,6 @@ Return
 ------
 
      Descriptive string for \ ``err_mask``\ 
-
-.. _`ata_read_log_page`:
-
-ata_read_log_page
-=================
-
-.. c:function:: unsigned int ata_read_log_page(struct ata_device *dev, u8 log, u8 page, void *buf, unsigned int sectors)
-
-    read a specific log page
-
-    :param struct ata_device \*dev:
-        target device
-
-    :param u8 log:
-        log to read
-
-    :param u8 page:
-        page to read
-
-    :param void \*buf:
-        buffer to store read page
-
-    :param unsigned int sectors:
-        number of sectors to read
-
-.. _`ata_read_log_page.description`:
-
-Description
------------
-
-     Read log page using READ_LOG_EXT command.
-
-.. _`ata_read_log_page.locking`:
-
-LOCKING
--------
-
-     Kernel thread context (may sleep).
-
-.. _`ata_read_log_page.return`:
-
-Return
-------
-
-     0 on success, AC_ERR_* mask otherwise.
 
 .. _`ata_eh_read_log_10h`:
 
@@ -1121,7 +1076,7 @@ ata_eh_request_sense
     perform REQUEST_SENSE_DATA_EXT
 
     :param struct ata_queued_cmd \*qc:
-        *undescribed*
+        qc to perform REQUEST_SENSE_SENSE_DATA_EXT to
 
     :param struct scsi_cmnd \*cmd:
         scsi command for which the sense code should be set

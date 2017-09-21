@@ -6,14 +6,14 @@
 dprc_remove_devices
 ===================
 
-.. c:function:: void dprc_remove_devices(struct fsl_mc_device *mc_bus_dev, struct dprc_obj_desc *obj_desc_array, int num_child_objects_in_mc)
+.. c:function:: void dprc_remove_devices(struct fsl_mc_device *mc_bus_dev, struct fsl_mc_obj_desc *obj_desc_array, int num_child_objects_in_mc)
 
     Removes devices for objects removed from a DPRC
 
     :param struct fsl_mc_device \*mc_bus_dev:
         pointer to the fsl-mc device that represents a DPRC object
 
-    :param struct dprc_obj_desc \*obj_desc_array:
+    :param struct fsl_mc_obj_desc \*obj_desc_array:
         array of object descriptors for child objects currently
         present in the DPRC in the MC.
 
@@ -34,14 +34,14 @@ been dynamically removed in the physical DPRC.
 check_plugged_state_change
 ==========================
 
-.. c:function:: void check_plugged_state_change(struct fsl_mc_device *mc_dev, struct dprc_obj_desc *obj_desc)
+.. c:function:: void check_plugged_state_change(struct fsl_mc_device *mc_dev, struct fsl_mc_obj_desc *obj_desc)
 
     Check change in an MC object's plugged state
 
     :param struct fsl_mc_device \*mc_dev:
         pointer to the fsl-mc device for a given MC object
 
-    :param struct dprc_obj_desc \*obj_desc:
+    :param struct fsl_mc_obj_desc \*obj_desc:
         pointer to the MC object's descriptor in the MC
 
 .. _`check_plugged_state_change.description`:
@@ -59,14 +59,14 @@ device is unbound from the corresponding device driver.
 dprc_add_new_devices
 ====================
 
-.. c:function:: void dprc_add_new_devices(struct fsl_mc_device *mc_bus_dev, struct dprc_obj_desc *obj_desc_array, int num_child_objects_in_mc)
+.. c:function:: void dprc_add_new_devices(struct fsl_mc_device *mc_bus_dev, struct fsl_mc_obj_desc *obj_desc_array, int num_child_objects_in_mc)
 
     Adds devices to the logical bus for a DPRC
 
     :param struct fsl_mc_device \*mc_bus_dev:
         pointer to the fsl-mc device that represents a DPRC object
 
-    :param struct dprc_obj_desc \*obj_desc_array:
+    :param struct fsl_mc_obj_desc \*obj_desc_array:
         array of device descriptors for child devices currently
         present in the physical DPRC.
 

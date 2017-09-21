@@ -138,7 +138,7 @@ Definition
 .. code-block:: c
 
     enum cpcap_adc_channel {
-        CPCAP_ADC_AD0_BATTDETB,
+        CPCAP_ADC_AD0,
         CPCAP_ADC_BATTP,
         CPCAP_ADC_VBUS,
         CPCAP_ADC_AD3,
@@ -164,7 +164,7 @@ Definition
 Constants
 ---------
 
-CPCAP_ADC_AD0_BATTDETB
+CPCAP_ADC_AD0
     *undescribed*
 
 CPCAP_ADC_BATTP

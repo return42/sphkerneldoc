@@ -29,7 +29,7 @@ Requires the IRQ lock to be held.
 kvm_vgic_inject_irq
 ===================
 
-.. c:function:: int kvm_vgic_inject_irq(struct kvm *kvm, int cpuid, unsigned int intid, bool level)
+.. c:function:: int kvm_vgic_inject_irq(struct kvm *kvm, int cpuid, unsigned int intid, bool level, void *owner)
 
     Inject an IRQ from a device to the vgic
 
@@ -48,6 +48,11 @@ kvm_vgic_inject_irq
         Level-sensitive  true:  raise the input signal
         false: lower the input signal
 
+    :param void \*owner:
+        The opaque pointer to the owner of the IRQ being raised to verify
+        that the caller is allowed to inject this IRQ.  Userspace
+        injections will have owner == NULL.
+
 .. _`kvm_vgic_inject_irq.description`:
 
 Description
@@ -56,6 +61,32 @@ Description
 The VGIC is not concerned with devices being active-LOW or active-HIGH for
 level-sensitive interrupts.  You can think of the level parameter as 1
 being HIGH and 0 being LOW and all devices being active-HIGH.
+
+.. _`kvm_vgic_set_owner`:
+
+kvm_vgic_set_owner
+==================
+
+.. c:function:: int kvm_vgic_set_owner(struct kvm_vcpu *vcpu, unsigned int intid, void *owner)
+
+    Set the owner of an interrupt for a VM
+
+    :param struct kvm_vcpu \*vcpu:
+        Pointer to the VCPU (used for PPIs)
+
+    :param unsigned int intid:
+        The virtual INTID identifying the interrupt (PPI or SPI)
+
+    :param void \*owner:
+        Opaque pointer to the owner
+
+.. _`kvm_vgic_set_owner.description`:
+
+Description
+-----------
+
+Returns 0 if intid is not already used by another in-kernel device and the
+owner is set, otherwise returns an error code.
 
 .. _`vgic_prune_ap_list`:
 

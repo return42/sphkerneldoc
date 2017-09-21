@@ -6,18 +6,18 @@
 derive_key_aes
 ==============
 
-.. c:function:: int derive_key_aes(u8 deriving_key, u8 source_key, u8 derived_key)
+.. c:function:: int derive_key_aes(u8 deriving_key, const struct fscrypt_key *source_key, u8 derived_raw_key)
 
     Derive a key using AES-128-ECB
 
     :param u8 deriving_key:
         Encryption key used for derivation.
 
-    :param u8 source_key:
+    :param const struct fscrypt_key \*source_key:
         Source key to which to apply derivation.
 
-    :param u8 derived_key:
-        Derived key.
+    :param u8 derived_raw_key:
+        Derived raw key.
 
 .. _`derive_key_aes.return`:
 

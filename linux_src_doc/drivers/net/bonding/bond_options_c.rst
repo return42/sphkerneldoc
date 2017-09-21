@@ -53,6 +53,34 @@ This function is used to change the bond's option value, it can be
 used for both enabling/changing an option and for disabling it. RTNL lock
 must be obtained before calling this function.
 
+.. _`__bond_opt_set_notify`:
+
+__bond_opt_set_notify
+=====================
+
+.. c:function:: int __bond_opt_set_notify(struct bonding *bond, unsigned int option, struct bond_opt_value *val)
+
+    set a bonding option
+
+    :param struct bonding \*bond:
+        target bond device
+
+    :param unsigned int option:
+        option to set
+
+    :param struct bond_opt_value \*val:
+        value to set it to
+
+.. _`__bond_opt_set_notify.description`:
+
+Description
+-----------
+
+This function is used to change the bond's option value and trigger
+a notification to user sapce. It can be used for both enabling/changing
+an option and for disabling it. RTNL lock must be obtained before calling
+this function.
+
 .. _`bond_opt_tryset_rtnl`:
 
 bond_opt_tryset_rtnl

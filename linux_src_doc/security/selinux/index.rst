@@ -11,6 +11,7 @@ selinux
     ss/index
     avc_c
     hooks_c
+    ibpkey_c
     netif_c
     netlabel_c
     netnode_c

@@ -22,6 +22,7 @@ Definition
         struct list_head hw_submitted;
         struct list_head preempted;
         unsigned num_hw_submitted;
+        bool block_submission;
     }
 
 .. _`vmw_cmdbuf_context.members`:
@@ -42,6 +43,9 @@ preempted
 num_hw_submitted
     Number of buffers currently being processed by hardware
 
+block_submission
+    *undescribed*
+
 .. _`vmw_cmdbuf_man`:
 
 struct vmw_cmdbuf_man
@@ -61,6 +65,7 @@ Definition
     struct vmw_cmdbuf_man {
         struct mutex cur_mutex;
         struct mutex space_mutex;
+        struct mutex error_mutex;
         struct work_struct work;
         struct vmw_private *dev_priv;
         struct vmw_cmdbuf_context ctx;
@@ -76,7 +81,6 @@ Definition
         spinlock_t lock;
         struct dma_pool *headers;
         struct dma_pool *dheaders;
-        struct tasklet_struct tasklet;
         wait_queue_head_t alloc_queue;
         wait_queue_head_t idle_queue;
         bool irq_on;
@@ -98,6 +102,11 @@ cur_mutex
 space_mutex
     Mutex to protect against starvation when we allocate
     main pool buffer space.
+
+error_mutex
+    Mutex to serialize the work queue error handling.
+    Note this is not needed if the same workqueue handler
+    can't race with itself...
 
 work
     A struct work_struct implementeing command buffer error handling.
@@ -152,9 +161,6 @@ headers
 dheaders
     Pool of DMA memory for device command buffer headers with trailing
     space for inline data. Internal protection.
-
-tasklet
-    Tasklet struct for irq processing. Immutable.
 
 alloc_queue
     Wait queue for processes waiting to allocate command buffer
@@ -511,25 +517,24 @@ buffer context identified by \ ``cb_context``\ . It then calls the command buffe
 manager processing to potentially submit the buffer to hardware.
 \ ``man``\ ->lock needs to be held when calling this function.
 
-.. _`vmw_cmdbuf_man_tasklet`:
+.. _`vmw_cmdbuf_irqthread`:
 
-vmw_cmdbuf_man_tasklet
-======================
+vmw_cmdbuf_irqthread
+====================
 
-.. c:function:: void vmw_cmdbuf_man_tasklet(unsigned long data)
+.. c:function:: void vmw_cmdbuf_irqthread(struct vmw_cmdbuf_man *man)
 
-    The main part of the command buffer interrupt handler implemented as a tasklet.
+    The main part of the command buffer interrupt handler implemented as a threaded irq task.
 
-    :param unsigned long data:
-        Tasklet closure. A pointer to the command buffer manager cast to
-        an unsigned long.
+    :param struct vmw_cmdbuf_man \*man:
+        Pointer to the command buffer manager.
 
-.. _`vmw_cmdbuf_man_tasklet.description`:
+.. _`vmw_cmdbuf_irqthread.description`:
 
 Description
 -----------
 
-The bottom half (tasklet) of the interrupt handler simply calls into the
+The bottom half of the interrupt handler simply calls into the
 command buffer processor to free finished buffers and submit any
 queued buffers to hardware.
 
@@ -863,18 +868,6 @@ vmw_cmdbuf_commit
     :param bool flush:
         Whether to flush the command buffer immediately.
 
-.. _`vmw_cmdbuf_tasklet_schedule`:
-
-vmw_cmdbuf_tasklet_schedule
-===========================
-
-.. c:function:: void vmw_cmdbuf_tasklet_schedule(struct vmw_cmdbuf_man *man)
-
-    Schedule the interrupt handler bottom half.
-
-    :param struct vmw_cmdbuf_man \*man:
-        The command buffer manager.
-
 .. _`vmw_cmdbuf_send_device_command`:
 
 vmw_cmdbuf_send_device_command
@@ -900,17 +893,42 @@ Description
 
 Synchronously sends a device context command.
 
+.. _`vmw_cmdbuf_preempt`:
+
+vmw_cmdbuf_preempt
+==================
+
+.. c:function:: int vmw_cmdbuf_preempt(struct vmw_cmdbuf_man *man, u32 context)
+
+    Send a preempt command through the device context.
+
+    :param struct vmw_cmdbuf_man \*man:
+        The command buffer manager.
+
+    :param u32 context:
+        *undescribed*
+
+.. _`vmw_cmdbuf_preempt.description`:
+
+Description
+-----------
+
+Synchronously sends a preempt command.
+
 .. _`vmw_cmdbuf_startstop`:
 
 vmw_cmdbuf_startstop
 ====================
 
-.. c:function:: int vmw_cmdbuf_startstop(struct vmw_cmdbuf_man *man, bool enable)
+.. c:function:: int vmw_cmdbuf_startstop(struct vmw_cmdbuf_man *man, u32 context, bool enable)
 
     Send a start / stop command through the device context.
 
     :param struct vmw_cmdbuf_man \*man:
         The command buffer manager.
+
+    :param u32 context:
+        *undescribed*
 
     :param bool enable:
         Whether to enable or disable the context.

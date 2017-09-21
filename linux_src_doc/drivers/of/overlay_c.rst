@@ -20,6 +20,7 @@ Definition
     struct of_overlay_info {
         struct device_node *target;
         struct device_node *overlay;
+        bool is_symbols_node;
     }
 
 .. _`of_overlay_info.members`:
@@ -32,6 +33,9 @@ target
 
 overlay
     pointer to the overlay contents node
+
+is_symbols_node
+    *undescribed*
 
 .. _`of_overlay_info.description`:
 

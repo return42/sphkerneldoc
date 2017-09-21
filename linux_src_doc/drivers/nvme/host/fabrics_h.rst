@@ -30,7 +30,6 @@ Definition
         bool discovery_nqn;
         unsigned int kato;
         struct nvmf_host *host;
-        int nr_reconnects;
         int max_reconnects;
     }
 
@@ -81,9 +80,6 @@ kato
 
 host
     Virtual NVMe host, contains the NQN and Host ID.
-
-nr_reconnects
-    number of reconnect attempted since the last ctrl failure
 
 max_reconnects
     maximum number of allowed reconnect attempts before removing

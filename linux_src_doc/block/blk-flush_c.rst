@@ -6,12 +6,12 @@
 blk_flush_complete_seq
 ======================
 
-.. c:function:: bool blk_flush_complete_seq(struct request *rq, struct blk_flush_queue *fq, unsigned int seq, int error)
+.. c:function:: bool blk_flush_complete_seq(struct request *rq, struct blk_flush_queue *fq, unsigned int seq, blk_status_t error)
 
     complete flush sequence
 
     :param struct request \*rq:
-        FLUSH/FUA request being sequenced
+        PREFLUSH/FUA request being sequenced
 
     :param struct blk_flush_queue \*fq:
         flush queue
@@ -19,7 +19,7 @@ blk_flush_complete_seq
     :param unsigned int seq:
         sequences to complete (mask of \ ``REQ_FSEQ_``\ *, can be zero)
 
-    :param int error:
+    :param blk_status_t error:
         whether an error occurred
 
 .. _`blk_flush_complete_seq.description`:
@@ -88,7 +88,7 @@ blk_insert_flush
 
 .. c:function:: void blk_insert_flush(struct request *rq)
 
-    insert a new FLUSH/FUA request
+    insert a new PREFLUSH/FUA request
 
     :param struct request \*rq:
         request to insert
@@ -102,13 +102,6 @@ To be called from \ :c:func:`__elv_add_request`\  for \ ``ELEVATOR_INSERT_FLUSH`
 or \ :c:func:`__blk_mq_run_hw_queue`\  to dispatch request.
 \ ``rq``\  is being submitted.  Analyze what needs to be done and put it on the
 right queue.
-
-.. _`blk_insert_flush.context`:
-
-Context
--------
-
-spin_lock_irq(q->queue_lock) in !mq case
 
 .. _`blkdev_issue_flush`:
 

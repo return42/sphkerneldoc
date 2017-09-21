@@ -19,8 +19,10 @@ pinctrl
     samsung/index
     sirf/index
     spear/index
+    sprd/index
     tegra/index
     ti/index
+    zte/index
     core_c
     core_h
     devicetree_c
@@ -30,8 +32,10 @@ pinctrl
     pinctrl-adi2_h
     pinctrl-at91-pio4_c
     pinctrl-at91_c
+    pinctrl-gemini_c
     pinctrl-lpc18xx_c
     pinctrl-rockchip_c
+    pinctrl-rza1_c
     pinctrl-single_c
     pinctrl-st_c
     pinctrl-tb10x_c

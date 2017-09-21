@@ -7,4 +7,5 @@ os-Linux
 .. toctree::
     :maxdepth: 1
 
+    skas/index
     time_c

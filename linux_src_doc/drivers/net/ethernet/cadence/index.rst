@@ -7,5 +7,6 @@ cadence
 .. toctree::
     :maxdepth: 1
 
-    macb_c
+    macb_main_c
     macb_pci_c
+    macb_ptp_c

@@ -20,6 +20,7 @@ Definition
     struct stm32_sai_sub_data {
         struct platform_device *pdev;
         struct regmap *regmap;
+        const struct regmap_config *regmap_config;
         struct snd_dmaengine_dai_dma_data dma_params;
         struct snd_soc_dai_driver *cpu_dai_drv;
         struct snd_soc_dai *cpu_dai;
@@ -50,6 +51,9 @@ pdev
 
 regmap
     SAI register map pointer
+
+regmap_config
+    SAI sub block register map configuration pointer
 
 dma_params
     dma configuration data for rx or tx channel

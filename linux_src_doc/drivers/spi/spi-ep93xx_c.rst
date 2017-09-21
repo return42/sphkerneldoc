@@ -18,12 +18,9 @@ Definition
 .. code-block:: c
 
     struct ep93xx_spi {
-        const struct platform_device *pdev;
         struct clk *clk;
-        void __iomem *regs_base;
+        void __iomem *mmio;
         unsigned long sspdr_phys;
-        struct completion wait;
-        struct spi_message *current_msg;
         size_t tx;
         size_t rx;
         size_t fifo_level;
@@ -41,23 +38,14 @@ Definition
 Members
 -------
 
-pdev
-    pointer to platform device
-
 clk
     clock for the controller
 
-regs_base
+mmio
     pointer to \ :c:func:`ioremap`\ 'd registers
 
 sspdr_phys
     physical address of the SSPDR register
-
-wait
-    wait here until given transfer is completed
-
-current_msg
-    message that is currently processed (or \ ``NULL``\  if none)
 
 tx
     current byte in transfer to transmit
@@ -96,12 +84,12 @@ zeropage
 ep93xx_spi_calc_divisors
 ========================
 
-.. c:function:: int ep93xx_spi_calc_divisors(const struct ep93xx_spi *espi, u32 rate, u8 *div_cpsr, u8 *div_scr)
+.. c:function:: int ep93xx_spi_calc_divisors(struct spi_master *master, u32 rate, u8 *div_cpsr, u8 *div_scr)
 
     calculates SPI clock divisors
 
-    :param const struct ep93xx_spi \*espi:
-        ep93xx SPI controller struct
+    :param struct spi_master \*master:
+        SPI master
 
     :param u32 rate:
         desired SPI output clock rate
@@ -117,12 +105,12 @@ ep93xx_spi_calc_divisors
 ep93xx_spi_read_write
 =====================
 
-.. c:function:: int ep93xx_spi_read_write(struct ep93xx_spi *espi)
+.. c:function:: int ep93xx_spi_read_write(struct spi_master *master)
 
     perform next RX/TX transfer
 
-    :param struct ep93xx_spi \*espi:
-        ep93xx SPI controller struct
+    :param struct spi_master \*master:
+        *undescribed*
 
 .. _`ep93xx_spi_read_write.description`:
 
@@ -141,12 +129,12 @@ full.
 ep93xx_spi_dma_prepare
 ======================
 
-.. c:function:: struct dma_async_tx_descriptor *ep93xx_spi_dma_prepare(struct ep93xx_spi *espi, enum dma_transfer_direction dir)
+.. c:function:: struct dma_async_tx_descriptor *ep93xx_spi_dma_prepare(struct spi_master *master, enum dma_transfer_direction dir)
 
     prepares a DMA transfer
 
-    :param struct ep93xx_spi \*espi:
-        ep93xx SPI controller struct
+    :param struct spi_master \*master:
+        SPI master
 
     :param enum dma_transfer_direction dir:
         DMA transfer direction
@@ -165,12 +153,12 @@ in case of failure.
 ep93xx_spi_dma_finish
 =====================
 
-.. c:function:: void ep93xx_spi_dma_finish(struct ep93xx_spi *espi, enum dma_transfer_direction dir)
+.. c:function:: void ep93xx_spi_dma_finish(struct spi_master *master, enum dma_transfer_direction dir)
 
     finishes with a DMA transfer
 
-    :param struct ep93xx_spi \*espi:
-        ep93xx SPI controller struct
+    :param struct spi_master \*master:
+        SPI master
 
     :param enum dma_transfer_direction dir:
         DMA transfer direction
@@ -182,33 +170,6 @@ Description
 
 Function finishes with the DMA transfer. After this, the DMA buffer is
 unmapped.
-
-.. _`ep93xx_spi_process_transfer`:
-
-ep93xx_spi_process_transfer
-===========================
-
-.. c:function:: void ep93xx_spi_process_transfer(struct ep93xx_spi *espi, struct spi_message *msg, struct spi_transfer *t)
-
-    processes one SPI transfer
-
-    :param struct ep93xx_spi \*espi:
-        ep93xx SPI controller struct
-
-    :param struct spi_message \*msg:
-        current message
-
-    :param struct spi_transfer \*t:
-        transfer to process
-
-.. _`ep93xx_spi_process_transfer.description`:
-
-Description
------------
-
-This function processes one SPI transfer given in \ ``t``\ . Function waits until
-transfer is complete (may sleep) and updates \ ``msg``\ ->status based on whether
-transfer was successfully processed or not.
 
 .. This file was automatic generated / don't edit.
 

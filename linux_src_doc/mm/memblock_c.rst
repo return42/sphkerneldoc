@@ -126,6 +126,16 @@ Return
 
 Found address on success, 0 on failure.
 
+.. _`memblock_discard`:
+
+memblock_discard
+================
+
+.. c:function:: void memblock_discard( void)
+
+    :param  void:
+        no arguments
+
 .. _`memblock_double_array`:
 
 memblock_double_array

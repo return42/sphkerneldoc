@@ -117,6 +117,41 @@ Description
 Drivers can use this function for RGB565 devices that don't natively
 support XRGB8888.
 
+.. _`tinydrm_xrgb8888_to_gray8`:
+
+tinydrm_xrgb8888_to_gray8
+=========================
+
+.. c:function:: void tinydrm_xrgb8888_to_gray8(u8 *dst, void *vaddr, struct drm_framebuffer *fb, struct drm_clip_rect *clip)
+
+    Convert XRGB8888 to grayscale
+
+    :param u8 \*dst:
+        8-bit grayscale destination buffer
+
+    :param void \*vaddr:
+        XRGB8888 source buffer
+
+    :param struct drm_framebuffer \*fb:
+        DRM framebuffer
+
+    :param struct drm_clip_rect \*clip:
+        Clip rectangle area to copy
+
+.. _`tinydrm_xrgb8888_to_gray8.description`:
+
+Description
+-----------
+
+Drm doesn't have native monochrome or grayscale support.
+Such drivers can announce the commonly supported XR24 format to userspace
+and use this function to convert to the native format.
+
+Monochrome drivers will use the most significant bit,
+where 1 means foreground color and 0 background color.
+
+ITU BT.601 is used for the RGB -> luma (brightness) conversion.
+
 .. _`tinydrm_of_find_backlight`:
 
 tinydrm_of_find_backlight

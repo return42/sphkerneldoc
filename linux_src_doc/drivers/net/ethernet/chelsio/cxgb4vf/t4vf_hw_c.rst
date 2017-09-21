@@ -66,28 +66,34 @@ failure can happen either because we are not able to execute the
 command or FW executes it but signals an error.  In the latter case
 the return value is the error code indicated by FW (negated).
 
-.. _`init_link_config`:
+.. _`fwcaps16_to_caps32`:
 
-init_link_config
-================
+fwcaps16_to_caps32
+==================
 
-.. c:function:: void init_link_config(struct link_config *lc, unsigned int caps)
+.. c:function:: fw_port_cap32_t fwcaps16_to_caps32(fw_port_cap16_t caps16)
 
-    initialize a link's SW state
+    convert 16-bit Port Capabilities to 32-bits
 
-    :param struct link_config \*lc:
-        structure holding the link state
+    :param fw_port_cap16_t caps16:
+        a 16-bit Port Capabilities value
 
-    :param unsigned int caps:
-        link capabilities
-
-.. _`init_link_config.description`:
+.. _`fwcaps16_to_caps32.description`:
 
 Description
 -----------
 
-Initializes the SW state maintained for each link, including the link's
-capabilities and default speed/flow-control/autonegotiation settings.
+Returns the equivalent 32-bit Port Capabilities value.
+
+.. _`fwcap_to_speed`:
+
+fwcap_to_speed
+==============
+
+.. c:function:: unsigned int fwcap_to_speed(fw_port_cap32_t caps)
+
+    :param fw_port_cap32_t caps:
+        *undescribed*
 
 .. _`t4vf_port_init`:
 
@@ -817,6 +823,68 @@ Description
 -----------
 
 Frees an Ethernet egress queue.
+
+.. _`t4vf_link_down_rc_str`:
+
+t4vf_link_down_rc_str
+=====================
+
+.. c:function:: const char *t4vf_link_down_rc_str(unsigned char link_down_rc)
+
+    return a string for a Link Down Reason Code
+
+    :param unsigned char link_down_rc:
+        Link Down Reason Code
+
+.. _`t4vf_link_down_rc_str.description`:
+
+Description
+-----------
+
+Returns a string representation of the Link Down Reason Code.
+
+.. _`t4vf_handle_get_port_info`:
+
+t4vf_handle_get_port_info
+=========================
+
+.. c:function:: void t4vf_handle_get_port_info(struct port_info *pi, const struct fw_port_cmd *cmd)
+
+    process a FW reply message
+
+    :param struct port_info \*pi:
+        the port info
+
+    :param const struct fw_port_cmd \*cmd:
+        *undescribed*
+
+.. _`t4vf_handle_get_port_info.description`:
+
+Description
+-----------
+
+Processes a GET_PORT_INFO FW reply message.
+
+.. _`t4vf_update_port_info`:
+
+t4vf_update_port_info
+=====================
+
+.. c:function:: int t4vf_update_port_info(struct port_info *pi)
+
+    retrieve and update port information if changed
+
+    :param struct port_info \*pi:
+        the port_info
+
+.. _`t4vf_update_port_info.description`:
+
+Description
+-----------
+
+We issue a Get Port Information Command to the Firmware and, if
+successful, we check to see if anything is different from what we
+last recorded and update things accordingly.
 
 .. _`t4vf_handle_fw_rpl`:
 

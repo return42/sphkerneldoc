@@ -106,17 +106,29 @@ Description
 
 bfq_sched_data is the basic scheduler queue.  It supports three
 ioprio_classes, and can be used either as a toplevel queue or as an
-intermediate queue on a hierarchical setup.  \ ``next_in_service``\ 
-points to the active entity of the sched_data service trees that
-will be scheduled next. It is used to reduce the number of steps
-needed for each hierarchical-schedule update.
+intermediate queue in a hierarchical setup.
 
 The supported ioprio_classes are the same as in CFQ, in descending
 priority order, IOPRIO_CLASS_RT, IOPRIO_CLASS_BE, IOPRIO_CLASS_IDLE.
 Requests from higher priority queues are served before all the
 requests from lower priority queues; among requests of the same
 queue requests are served according to B-WF2Q+.
-All the fields are protected by the queue lock of the containing bfqd.
+
+The schedule is implemented by the service trees, plus the field
+\ ``next_in_service``\ , which points to the entity on the active trees
+that will be served next, if 1) no changes in the schedule occurs
+before the current in-service entity is expired, 2) the in-service
+queue becomes idle when it expires, and 3) if the entity pointed by
+in_service_entity is not a queue, then the in-service child entity
+of the entity pointed by in_service_entity becomes idle on
+expiration. This peculiar definition allows for the following
+optimization, not yet exploited: while a given entity is still in
+service, we already know which is the best candidate for next
+service among the other active entitities in the same parent
+entity. We can then quickly compare the timestamps of the
+in-service entity with those of such best candidate.
+
+All fields are protected by the lock of the containing bfqd.
 
 .. _`bfq_weight_counter`:
 
@@ -515,7 +527,7 @@ Definition
     #ifdef CONFIG_BFQ_GROUP_IOSCHED
         uint64_t blkcg_serial_nr;
     #endif
-        bool saved_idle_window;
+        bool saved_has_short_ttime;
         bool saved_IO_bound;
         bool saved_in_large_burst;
         bool was_in_burst_list;
@@ -543,7 +555,7 @@ ioprio
 blkcg_serial_nr
     *undescribed*
 
-saved_idle_window
+saved_has_short_ttime
     *undescribed*
 
 saved_IO_bound
@@ -851,6 +863,8 @@ Definition
 
     struct bfq_group {
         struct blkg_policy_data pd;
+        char blkg_path;
+        int ref;
         struct bfq_entity entity;
         struct bfq_sched_data sched_data;
         void *bfqd;
@@ -868,6 +882,12 @@ Members
 -------
 
 pd
+    *undescribed*
+
+blkg_path
+    *undescribed*
+
+ref
     *undescribed*
 
 entity

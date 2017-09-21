@@ -77,5 +77,33 @@ Device drivers are required to ensure that no access (including
 page requests) is currently outstanding for the PASID in question,
 before calling this function.
 
+.. _`intel_svm_is_pasid_valid`:
+
+intel_svm_is_pasid_valid
+========================
+
+.. c:function:: int intel_svm_is_pasid_valid(struct device *dev, int pasid)
+
+    check if pasid is valid
+
+    :param struct device \*dev:
+        Device for which PASID was allocated
+
+    :param int pasid:
+        PASID value to be checked
+
+.. _`intel_svm_is_pasid_valid.description`:
+
+Description
+-----------
+
+This function checks if the specified pasid is still valid. A
+valid pasid means the backing mm is still having a valid user.
+For kernel callers init_mm is always valid. for other mm, if mm->mm_users
+is non-zero, it is valid.
+
+returns -EINVAL if invalid pasid, 0 if pasid ref count is invalid
+1 if pasid is valid.
+
 .. This file was automatic generated / don't edit.
 

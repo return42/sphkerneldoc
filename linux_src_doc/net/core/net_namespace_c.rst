@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/core/net_namespace.c
 
+.. _`net_ns_barrier`:
+
+net_ns_barrier
+==============
+
+.. c:function:: void net_ns_barrier( void)
+
+    wait until concurrent net_cleanup_work is done
+
+    :param  void:
+        no arguments
+
+.. _`net_ns_barrier.description`:
+
+Description
+-----------
+
+cleanup_net runs from work queue and will first remove namespaces
+from the global list, then run net exit functions.
+
+Call this in module exit path to make sure that all netns
+->exit ops have been invoked before the function is removed.
+
 .. _`register_pernet_subsys`:
 
 register_pernet_subsys

@@ -11,12 +11,11 @@ devm_extcon_dev_allocate
     Allocate managed extcon device
 
     :param struct device \*dev:
-        device owning the extcon device being created
+        the device owning the extcon device being created
 
     :param const unsigned int \*supported_cable:
-        Array of supported extcon ending with EXTCON_NONE.
-        If supported_cable is NULL, cable name related APIs
-        are disabled.
+        the array of the supported external connectors
+        ending with EXTCON_NONE.
 
 .. _`devm_extcon_dev_allocate.description`:
 
@@ -40,10 +39,10 @@ devm_extcon_dev_free
     Resource-managed \ :c:func:`extcon_dev_unregister`\ 
 
     :param struct device \*dev:
-        device the extcon belongs to
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the extcon device to unregister
+        the extcon device to be freed
 
 .. _`devm_extcon_dev_free.description`:
 
@@ -63,17 +62,16 @@ devm_extcon_dev_register
     Resource-managed \ :c:func:`extcon_dev_register`\ 
 
     :param struct device \*dev:
-        device to allocate extcon device
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the new extcon device to register
+        the extcon device to be registered
 
 .. _`devm_extcon_dev_register.description`:
 
 Description
 -----------
 
-Managed \ :c:func:`extcon_dev_register`\  function. If extcon device is attached with
 this function, that extcon device is automatically unregistered on driver
 detach. Internally this function calls \ :c:func:`extcon_dev_register`\  function.
 To get more information, refer that function.
@@ -93,10 +91,10 @@ devm_extcon_dev_unregister
     Resource-managed \ :c:func:`extcon_dev_unregister`\ 
 
     :param struct device \*dev:
-        device the extcon belongs to
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the extcon device to unregister
+        the extcon device to unregistered
 
 .. _`devm_extcon_dev_unregister.description`:
 
@@ -116,16 +114,16 @@ devm_extcon_register_notifier
     Resource-managed \ :c:func:`extcon_register_notifier`\ 
 
     :param struct device \*dev:
-        device to allocate extcon device
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector in extcon enumeration.
+        the unique id among the extcon enumeration
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. _`devm_extcon_register_notifier.description`:
 
@@ -150,16 +148,16 @@ devm_extcon_unregister_notifier
 .. c:function:: void devm_extcon_unregister_notifier(struct device *dev, struct extcon_dev *edev, unsigned int id, struct notifier_block *nb)
 
     :param struct device \*dev:
-        device to allocate extcon device
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param unsigned int id:
-        the unique id of each external connector in extcon enumeration.
+        the unique id among the extcon enumeration
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. _`devm_extcon_register_notifier_all`:
 
@@ -171,13 +169,13 @@ devm_extcon_register_notifier_all
     - Resource-managed \ :c:func:`extcon_register_notifier_all`\ 
 
     :param struct device \*dev:
-        device to allocate extcon device
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. _`devm_extcon_register_notifier_all.description`:
 
@@ -200,13 +198,13 @@ devm_extcon_unregister_notifier_all
     - Resource-managed \ :c:func:`extcon_unregister_notifier_all`\ 
 
     :param struct device \*dev:
-        device to allocate extcon device
+        the device owning the extcon device being created
 
     :param struct extcon_dev \*edev:
-        the extcon device that has the external connecotr.
+        the extcon device
 
     :param struct notifier_block \*nb:
-        a notifier block to be registered.
+        a notifier block to be registered
 
 .. This file was automatic generated / don't edit.
 

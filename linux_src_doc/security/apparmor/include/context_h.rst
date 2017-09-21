@@ -1,37 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: security/apparmor/include/context.h
 
-.. _`aa_alloc_file_context`:
-
-aa_alloc_file_context
-=====================
-
-.. c:function:: struct aa_file_ctx *aa_alloc_file_context(gfp_t gfp)
-
-    allocate file_ctx
-
-    :param gfp_t gfp:
-        gfp flags for allocation
-
-.. _`aa_alloc_file_context.return`:
-
-Return
-------
-
-file_ctx or NULL on failure
-
-.. _`aa_free_file_context`:
-
-aa_free_file_context
-====================
-
-.. c:function:: void aa_free_file_context(struct aa_file_ctx *ctx)
-
-    free a file_ctx
-
-    :param struct aa_file_ctx \*ctx:
-        file_ctx to free  (MAYBE_NULL)
-
 .. _`aa_task_ctx`:
 
 struct aa_task_ctx
@@ -49,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct aa_task_ctx {
-        struct aa_profile *profile;
-        struct aa_profile *onexec;
-        struct aa_profile *previous;
+        struct aa_label *label;
+        struct aa_label *onexec;
+        struct aa_label *previous;
         u64 token;
     }
 
@@ -60,24 +29,24 @@ Definition
 Members
 -------
 
-profile
-    the current profile   (NOT NULL)
+label
+    the current label   (NOT NULL)
 
 onexec
     *undescribed*
 
 previous
-    profile the task may return to     (MAYBE NULL)
+    label the task may return to     (MAYBE NULL)
 
 token
-    magic value the task must know for returning to \ ``previous_profile``\ 
+    magic value the task must know for returning to \ ``previous``\ 
 
 .. _`aa_task_ctx.description`:
 
 Description
 -----------
 
-Contains the task's current profile (which could change due to
+Contains the task's current label (which could change due to
 change_hat).  Plus the hat_magic needed during change_hat.
 
 .. _`aa_task_ctx.todo`:
@@ -87,45 +56,64 @@ TODO
 
 make so a task can be confined by a stack of contexts
 
-.. _`aa_cred_profile`:
+.. _`aa_cred_raw_label`:
 
-aa_cred_profile
-===============
+aa_cred_raw_label
+=================
 
-.. c:function:: struct aa_profile *aa_cred_profile(const struct cred *cred)
+.. c:function:: struct aa_label *aa_cred_raw_label(const struct cred *cred)
 
-    obtain cred's profiles
+    obtain cred's label
 
     :param const struct cred \*cred:
-        cred to obtain profiles from  (NOT NULL)
+        cred to obtain label from  (NOT NULL)
 
-.. _`aa_cred_profile.return`:
+.. _`aa_cred_raw_label.return`:
 
 Return
 ------
 
-confining profile
+confining label
 
 does NOT increment reference count
 
-.. _`__aa_task_profile`:
+.. _`aa_get_newest_cred_label`:
 
-__aa_task_profile
-=================
+aa_get_newest_cred_label
+========================
 
-.. c:function:: struct aa_profile *__aa_task_profile(struct task_struct *task)
+.. c:function:: struct aa_label *aa_get_newest_cred_label(const struct cred *cred)
 
-    retrieve another task's profile
+    obtain the newest label on a cred
+
+    :param const struct cred \*cred:
+        cred to obtain label from (NOT NULL)
+
+.. _`aa_get_newest_cred_label.return`:
+
+Return
+------
+
+newest version of confining label
+
+.. _`__aa_task_raw_label`:
+
+__aa_task_raw_label
+===================
+
+.. c:function:: struct aa_label *__aa_task_raw_label(struct task_struct *task)
+
+    retrieve another task's label
 
     :param struct task_struct \*task:
         task to query  (NOT NULL)
 
-.. _`__aa_task_profile.return`:
+.. _`__aa_task_raw_label.return`:
 
 Return
 ------
 
-@task's profile without incrementing its ref count
+@task's label without incrementing its ref count
 
 If \ ``task``\  != current needs to be called in RCU safe critical section
 
@@ -148,49 +136,123 @@ Description
 
 If \ ``task``\  != current needs to be called in RCU safe critical section
 
-.. _`__aa_current_profile`:
+.. _`aa_current_raw_label`:
 
-__aa_current_profile
+aa_current_raw_label
 ====================
 
-.. c:function:: struct aa_profile *__aa_current_profile( void)
+.. c:function:: struct aa_label *aa_current_raw_label( void)
 
-    find the current tasks confining profile
+    find the current tasks confining label
 
     :param  void:
         no arguments
 
-.. _`__aa_current_profile.return`:
+.. _`aa_current_raw_label.return`:
 
 Return
 ------
 
-up to date confining profile or the ns unconfined profile (NOT NULL)
+up to date confining label or the ns unconfined label (NOT NULL)
 
 This fn will not update the tasks cred to the most up to date version
-of the profile so it is safe to call when inside of locks.
+of the label so it is safe to call when inside of locks.
 
-.. _`aa_current_profile`:
+.. _`aa_get_current_label`:
 
-aa_current_profile
-==================
+aa_get_current_label
+====================
 
-.. c:function:: struct aa_profile *aa_current_profile( void)
+.. c:function:: struct aa_label *aa_get_current_label( void)
 
-    find the current tasks confining profile and do updates
+    get the newest version of the current tasks label
 
     :param  void:
         no arguments
 
-.. _`aa_current_profile.return`:
+.. _`aa_get_current_label.return`:
 
 Return
 ------
 
-up to date confining profile or the ns unconfined profile (NOT NULL)
+newest version of confining label (NOT NULL)
 
-This fn will update the tasks cred structure if the profile has been
-replaced.  Not safe to call inside locks
+This fn will not update the tasks cred, so it is safe inside of locks
+
+The returned reference must be put with \ :c:func:`aa_put_label`\ 
+
+.. _`end_current_label_crit_section`:
+
+end_current_label_crit_section
+==============================
+
+.. c:function:: void end_current_label_crit_section(struct aa_label *label)
+
+    put a reference found with begin_current_label..
+
+    :param struct aa_label \*label:
+        label reference to put
+
+.. _`end_current_label_crit_section.description`:
+
+Description
+-----------
+
+Should only be used with a reference obtained with
+begin_current_label_crit_section and never used in situations where the
+task cred may be updated
+
+.. _`__begin_current_label_crit_section`:
+
+__begin_current_label_crit_section
+==================================
+
+.. c:function:: struct aa_label *__begin_current_label_crit_section( void)
+
+    current's confining label
+
+    :param  void:
+        no arguments
+
+.. _`__begin_current_label_crit_section.return`:
+
+Return
+------
+
+up to date confining label or the ns unconfined label (NOT NULL)
+
+safe to call inside locks
+
+The returned reference must be put with \__end_current_label_crit_section()
+This must NOT be used if the task cred could be updated within the
+critical section between \__begin_current_label_crit_section() ..
+\__end_current_label_crit_section()
+
+.. _`begin_current_label_crit_section`:
+
+begin_current_label_crit_section
+================================
+
+.. c:function:: struct aa_label *begin_current_label_crit_section( void)
+
+    current's confining label and update it
+
+    :param  void:
+        no arguments
+
+.. _`begin_current_label_crit_section.return`:
+
+Return
+------
+
+up to date confining label or the ns unconfined label (NOT NULL)
+
+Not safe to call inside locks
+
+The returned reference must be put with \ :c:func:`end_current_label_crit_section`\ 
+This must NOT be used if the task cred could be updated within the
+critical section between \ :c:func:`begin_current_label_crit_section`\  ..
+\ :c:func:`end_current_label_crit_section`\ 
 
 .. _`aa_clear_task_ctx_trans`:
 

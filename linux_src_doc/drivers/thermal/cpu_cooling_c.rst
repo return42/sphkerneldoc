@@ -1,28 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/thermal/cpu_cooling.c
 
-.. _`power_table`:
+.. _`freq_table`:
 
-struct power_table
-==================
+struct freq_table
+=================
 
-.. c:type:: struct power_table
+.. c:type:: struct freq_table
 
-    frequency to power conversion
+    frequency table along with power entries
 
-.. _`power_table.definition`:
+.. _`freq_table.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct power_table {
+    struct freq_table {
         u32 frequency;
         u32 power;
     }
 
-.. _`power_table.members`:
+.. _`freq_table.members`:
 
 Members
 -------
@@ -33,13 +33,45 @@ frequency
 power
     power in mW
 
-.. _`power_table.description`:
+.. _`freq_table.description`:
 
 Description
 -----------
 
 This structure is built when the cooling device registers and helps
-in translating frequency to power and viceversa.
+in translating frequency to power and vice versa.
+
+.. _`time_in_idle`:
+
+struct time_in_idle
+===================
+
+.. c:type:: struct time_in_idle
+
+    Idle time stats
+
+.. _`time_in_idle.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct time_in_idle {
+        u64 time;
+        u64 timestamp;
+    }
+
+.. _`time_in_idle.members`:
+
+Members
+-------
+
+time
+    previous reading of the absolute time that this cpu was idle
+
+timestamp
+    wall time of the last invocation of \ :c:func:`get_cpu_idle_time_us`\ 
 
 .. _`cpufreq_cooling_device`:
 
@@ -59,19 +91,15 @@ Definition
 
     struct cpufreq_cooling_device {
         int id;
-        struct thermal_cooling_device *cool_dev;
+        u32 last_load;
         unsigned int cpufreq_state;
         unsigned int clipped_freq;
         unsigned int max_level;
-        unsigned int *freq_table;
-        struct cpumask allowed_cpus;
+        struct freq_table *freq_table;
+        struct thermal_cooling_device *cdev;
+        struct cpufreq_policy *policy;
         struct list_head node;
-        u32 last_load;
-        u64 *time_in_idle;
-        u64 *time_in_idle_timestamp;
-        struct power_table *dyn_power_table;
-        int dyn_power_table_entries;
-        struct device *cpu_dev;
+        struct time_in_idle *idle_time;
         get_static_t plat_get_static_power;
     }
 
@@ -84,9 +112,8 @@ id
     unique integer value corresponding to each cpufreq_cooling_device
     registered.
 
-cool_dev
-    thermal_cooling_device pointer to keep track of the
-    registered cooling device.
+last_load
+    load measured by the latest call to \ :c:func:`cpufreq_get_requested_power`\ 
 
 cpufreq_state
     integer value representing the current state of cpufreq
@@ -101,33 +128,20 @@ max_level
     cpufreq frequencies.
 
 freq_table
-    *undescribed*
+    Freq table in descending order of frequencies
 
-allowed_cpus
-    all the cpus involved for this cpufreq_cooling_device.
+cdev
+    thermal_cooling_device pointer to keep track of the
+    registered cooling device.
+
+policy
+    cpufreq policy.
 
 node
     list_head to link all cpufreq_cooling_device together.
 
-last_load
-    load measured by the latest call to \ :c:func:`cpufreq_get_requested_power`\ 
-
-time_in_idle
-    previous reading of the absolute time that this cpu was idle
-
-time_in_idle_timestamp
-    wall time of the last invocation of
-    \ :c:func:`get_cpu_idle_time_us`\ 
-
-dyn_power_table
-    array of struct power_table for frequency to power
-    conversion, sorted in ascending order.
-
-dyn_power_table_entries
-    number of entries in the \ ``dyn_power_table``\  array
-
-cpu_dev
-    the first cpu_device from \ ``allowed_cpus``\  that has OPPs registered
+idle_time
+    idle time stats
 
 plat_get_static_power
     callback to calculate the static power
@@ -145,12 +159,12 @@ cpufreq_cooling_device.
 get_level
 =========
 
-.. c:function:: unsigned long get_level(struct cpufreq_cooling_device *cpufreq_dev, unsigned int freq)
+.. c:function:: unsigned long get_level(struct cpufreq_cooling_device *cpufreq_cdev, unsigned int freq)
 
     Find the level for a particular frequency
 
-    :param struct cpufreq_cooling_device \*cpufreq_dev:
-        cpufreq_dev for which the property is required
+    :param struct cpufreq_cooling_device \*cpufreq_cdev:
+        cpufreq_cdev for which the property is required
 
     :param unsigned int freq:
         Frequency
@@ -160,38 +174,7 @@ get_level
 Return
 ------
 
-level on success, THERMAL_CSTATE_INVALID on error.
-
-.. _`cpufreq_cooling_get_level`:
-
-cpufreq_cooling_get_level
-=========================
-
-.. c:function:: unsigned long cpufreq_cooling_get_level(unsigned int cpu, unsigned int freq)
-
-    for a given cpu, return the cooling level.
-
-    :param unsigned int cpu:
-        cpu for which the level is required
-
-    :param unsigned int freq:
-        the frequency of interest
-
-.. _`cpufreq_cooling_get_level.description`:
-
-Description
------------
-
-This function will match the cooling level corresponding to the
-requested \ ``freq``\  and return it.
-
-.. _`cpufreq_cooling_get_level.return`:
-
-Return
-------
-
-The matched cooling level on success or THERMAL_CSTATE_INVALID
-otherwise.
+level corresponding to the frequency.
 
 .. _`cpufreq_thermal_notifier`:
 
@@ -227,58 +210,56 @@ Return
 
 0 (success)
 
-.. _`build_dyn_power_table`:
+.. _`update_freq_table`:
 
-build_dyn_power_table
-=====================
+update_freq_table
+=================
 
-.. c:function:: int build_dyn_power_table(struct cpufreq_cooling_device *cpufreq_device, u32 capacitance)
+.. c:function:: int update_freq_table(struct cpufreq_cooling_device *cpufreq_cdev, u32 capacitance)
 
-    create a dynamic power to frequency table
+    Update the freq table with power numbers
 
-    :param struct cpufreq_cooling_device \*cpufreq_device:
-        the cpufreq cooling device in which to store the table
+    :param struct cpufreq_cooling_device \*cpufreq_cdev:
+        the cpufreq cooling device in which to update the table
 
     :param u32 capacitance:
         dynamic power coefficient for these cpus
 
-.. _`build_dyn_power_table.description`:
+.. _`update_freq_table.description`:
 
 Description
 -----------
 
-Build a dynamic power to frequency table for this cpu and store it
-in \ ``cpufreq_device``\ .  This table will be used in \ :c:func:`cpu_power_to_freq`\  and
-\ :c:func:`cpu_freq_to_power`\  to convert between power and frequency
-efficiently.  Power is stored in mW, frequency in KHz.  The
-resulting table is in ascending order.
+Update the freq table with power numbers.  This table will be used in
+\ :c:func:`cpu_power_to_freq`\  and \ :c:func:`cpu_freq_to_power`\  to convert between power and
+frequency efficiently.  Power is stored in mW, frequency in KHz.  The
+resulting table is in descending order.
 
-.. _`build_dyn_power_table.return`:
+.. _`update_freq_table.return`:
 
 Return
 ------
 
 0 on success, -EINVAL if there are no OPPs for any CPUs,
--ENOMEM if we run out of memory or -EAGAIN if an OPP was
-added/enabled while the function was executing.
+or -ENOMEM if we run out of memory.
 
 .. _`get_load`:
 
 get_load
 ========
 
-.. c:function:: u32 get_load(struct cpufreq_cooling_device *cpufreq_device, int cpu, int cpu_idx)
+.. c:function:: u32 get_load(struct cpufreq_cooling_device *cpufreq_cdev, int cpu, int cpu_idx)
 
     get load for a cpu since last updated
 
-    :param struct cpufreq_cooling_device \*cpufreq_device:
+    :param struct cpufreq_cooling_device \*cpufreq_cdev:
         &struct cpufreq_cooling_device for this cpu
 
     :param int cpu:
         cpu number
 
     :param int cpu_idx:
-        index of the cpu in cpufreq_device->allowed_cpus
+        index of the cpu in time_in_idle\*
 
 .. _`get_load.return`:
 
@@ -293,11 +274,11 @@ function was last called.
 get_static_power
 ================
 
-.. c:function:: int get_static_power(struct cpufreq_cooling_device *cpufreq_device, struct thermal_zone_device *tz, unsigned long freq, u32 *power)
+.. c:function:: int get_static_power(struct cpufreq_cooling_device *cpufreq_cdev, struct thermal_zone_device *tz, unsigned long freq, u32 *power)
 
     calculate the static power consumed by the cpus
 
-    :param struct cpufreq_cooling_device \*cpufreq_device:
+    :param struct cpufreq_cooling_device \*cpufreq_cdev:
         struct \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cpu cdev
 
     :param struct thermal_zone_device \*tz:
@@ -332,11 +313,11 @@ Return
 get_dynamic_power
 =================
 
-.. c:function:: u32 get_dynamic_power(struct cpufreq_cooling_device *cpufreq_device, unsigned long freq)
+.. c:function:: u32 get_dynamic_power(struct cpufreq_cooling_device *cpufreq_cdev, unsigned long freq)
 
     calculate the dynamic power
 
-    :param struct cpufreq_cooling_device \*cpufreq_device:
+    :param struct cpufreq_cooling_device \*cpufreq_cdev:
         &cpufreq_cooling_device for this cdev
 
     :param unsigned long freq:
@@ -348,7 +329,7 @@ Return
 ------
 
 the dynamic power consumed by the cpus described by
-\ ``cpufreq_device``\ .
+\ ``cpufreq_cdev``\ .
 
 .. _`cpufreq_get_max_state`:
 
@@ -573,15 +554,15 @@ device.
 __cpufreq_cooling_register
 ==========================
 
-.. c:function:: struct thermal_cooling_device *__cpufreq_cooling_register(struct device_node *np, const struct cpumask *clip_cpus, u32 capacitance, get_static_t plat_static_func)
+.. c:function:: struct thermal_cooling_device *__cpufreq_cooling_register(struct device_node *np, struct cpufreq_policy *policy, u32 capacitance, get_static_t plat_static_func)
 
     helper function to create cpufreq cooling device
 
     :param struct device_node \*np:
         a valid struct device_node to the cooling device device tree node
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen.
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy
         Normally this should be same as cpufreq policy->related_cpus.
 
     :param u32 capacitance:
@@ -614,12 +595,12 @@ on failure, it returns a corresponding \ :c:func:`ERR_PTR`\ .
 cpufreq_cooling_register
 ========================
 
-.. c:function:: struct thermal_cooling_device *cpufreq_cooling_register(const struct cpumask *clip_cpus)
+.. c:function:: struct thermal_cooling_device *cpufreq_cooling_register(struct cpufreq_policy *policy)
 
     function to create cpufreq cooling device.
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen.
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy
 
 .. _`cpufreq_cooling_register.description`:
 
@@ -643,15 +624,15 @@ on failure, it returns a corresponding \ :c:func:`ERR_PTR`\ .
 of_cpufreq_cooling_register
 ===========================
 
-.. c:function:: struct thermal_cooling_device *of_cpufreq_cooling_register(struct device_node *np, const struct cpumask *clip_cpus)
+.. c:function:: struct thermal_cooling_device *of_cpufreq_cooling_register(struct device_node *np, struct cpufreq_policy *policy)
 
     function to create cpufreq cooling device.
 
     :param struct device_node \*np:
         a valid struct device_node to the cooling device device tree node
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen.
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy
 
 .. _`of_cpufreq_cooling_register.description`:
 
@@ -676,12 +657,12 @@ on failure, it returns a corresponding \ :c:func:`ERR_PTR`\ .
 cpufreq_power_cooling_register
 ==============================
 
-.. c:function:: struct thermal_cooling_device *cpufreq_power_cooling_register(const struct cpumask *clip_cpus, u32 capacitance, get_static_t plat_static_func)
+.. c:function:: struct thermal_cooling_device *cpufreq_power_cooling_register(struct cpufreq_policy *policy, u32 capacitance, get_static_t plat_static_func)
 
     create cpufreq cooling device with power extensions
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy
 
     :param u32 capacitance:
         dynamic power coefficient for these cpus
@@ -719,15 +700,15 @@ on failure, it returns a corresponding \ :c:func:`ERR_PTR`\ .
 of_cpufreq_power_cooling_register
 =================================
 
-.. c:function:: struct thermal_cooling_device *of_cpufreq_power_cooling_register(struct device_node *np, const struct cpumask *clip_cpus, u32 capacitance, get_static_t plat_static_func)
+.. c:function:: struct thermal_cooling_device *of_cpufreq_power_cooling_register(struct device_node *np, struct cpufreq_policy *policy, u32 capacitance, get_static_t plat_static_func)
 
     create cpufreq cooling device with power extensions
 
     :param struct device_node \*np:
         a valid struct device_node to the cooling device device tree node
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy
 
     :param u32 capacitance:
         dynamic power coefficient for these cpus

@@ -135,6 +135,7 @@ Definition
     struct ovs_skb_cb {
         struct vport *input_vport;
         u16 mru;
+        u16 acts_origlen;
         u32 cutlen;
     }
 
@@ -149,10 +150,13 @@ input_vport
 
 mru
     The maximum received fragement size; 0 if the packet is not
+    fragmented.
+
+acts_origlen
+    The netlink size of the flow actions applied to this skb.
 
 cutlen
     The number of bytes from the packet end to be removed.
-    fragmented.
 
 .. _`dp_upcall_info`:
 

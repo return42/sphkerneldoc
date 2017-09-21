@@ -228,17 +228,23 @@ Return
 
 the MSI domain for this device, NULL otherwise
 
-.. _`iort_set_dma_mask`:
+.. _`iort_dma_setup`:
 
-iort_set_dma_mask
-=================
+iort_dma_setup
+==============
 
-.. c:function:: void iort_set_dma_mask(struct device *dev)
+.. c:function:: void iort_dma_setup(struct device *dev, u64 *dma_addr, u64 *dma_size)
 
-    Set-up dma mask for a device.
+    Set-up device DMA parameters.
 
     :param struct device \*dev:
         device to configure
+
+    :param u64 \*dma_addr:
+        device DMA address result pointer
+
+    :param u64 \*dma_size:
+        *undescribed*
 
 .. _`iort_iommu_configure`:
 

@@ -102,7 +102,7 @@ fcoe_fip_recv
         The packet_type structure which was used to register this handler
 
     :param struct net_device \*orig_dev:
-        The original net_device the the skb was received on.
+        The original net_device the skb was received on.
         (in case dev is a bond)
 
 .. _`fcoe_fip_recv.return`:
@@ -131,7 +131,7 @@ fcoe_fip_vlan_recv
         The packet_type structure which was used to register this handler
 
     :param struct net_device \*orig_dev:
-        The original net_device the the skb was received on.
+        The original net_device the skb was received on.
         (in case dev is a bond)
 
 .. _`fcoe_fip_vlan_recv.return`:
@@ -1233,7 +1233,7 @@ fcoe_flogi_resp
         response frame, or error encoded in a pointer (timeout)
 
     :param void \*arg:
-        pointer the the fcoe_ctlr structure
+        pointer to the fcoe_ctlr structure
 
 .. _`fcoe_flogi_resp.description`:
 
@@ -1259,7 +1259,7 @@ fcoe_logo_resp
         response frame, or error encoded in a pointer (timeout)
 
     :param void \*arg:
-        pointer the the fcoe_ctlr structure
+        pointer to the fcoe_ctlr structure
 
 .. _`fcoe_logo_resp.description`:
 

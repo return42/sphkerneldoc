@@ -24,7 +24,7 @@ on concurrent RCU and RCU-bh grace periods.  Waiting on a give SRCU
 domain requires you to write a wrapper function for that SRCU domain's
 \ :c:func:`call_srcu`\  function, supplying the corresponding srcu_struct.
 
-If Tiny RCU, tell \_wait_rcu_gp() not to bother waiting for RCU
+If Tiny RCU, tell \ :c:func:`_wait_rcu_gp`\  not to bother waiting for RCU
 or RCU-bh, given that anywhere \ :c:func:`synchronize_rcu_mult`\  can be called
 is automatically a grace period.
 

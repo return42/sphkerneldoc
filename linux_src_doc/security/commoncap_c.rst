@@ -246,29 +246,6 @@ Set up the proposed credentials for a new execution context being
 constructed by \ :c:func:`execve`\ .  The proposed creds in \ ``bprm``\ ->cred is altered,
 which won't take effect immediately.  Returns 0 if successful, -ve on error.
 
-.. _`cap_bprm_secureexec`:
-
-cap_bprm_secureexec
-===================
-
-.. c:function:: int cap_bprm_secureexec(struct linux_binprm *bprm)
-
-    Determine whether a secure execution is required
-
-    :param struct linux_binprm \*bprm:
-        The execution parameters
-
-.. _`cap_bprm_secureexec.description`:
-
-Description
------------
-
-Determine whether a secure execution is required, return 1 if it is, and 0
-if it is not.
-
-The credentials have been committed by this point, and so are no longer
-available through \ ``bprm``\ ->cred.
-
 .. _`cap_inode_setxattr`:
 
 cap_inode_setxattr

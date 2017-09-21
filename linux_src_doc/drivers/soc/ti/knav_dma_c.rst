@@ -24,7 +24,7 @@ knav_dma_open_channel
 Description
 -----------
 
-Returns pointer to appropriate DMA channel on success or NULL.
+Returns pointer to appropriate DMA channel on success or error.
 
 .. _`knav_dma_close_channel`:
 

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct netlbl_lsm_cache {
-        atomic_t refcount;
+        refcount_t refcount;
         void (*free)(const void *data);
         void *data;
     }

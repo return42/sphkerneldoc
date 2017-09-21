@@ -1,14 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: security/apparmor/policy.c
 
-.. _`__list_add_profile`:
+.. _`__add_profile`:
 
-__list_add_profile
-==================
+__add_profile
+=============
 
-.. c:function:: void __list_add_profile(struct list_head *list, struct aa_profile *profile)
+.. c:function:: void __add_profile(struct list_head *list, struct aa_profile *profile)
 
-    add a profile to a list
+    add a profiles to list and label tree
 
     :param struct list_head \*list:
         list to add it to  (NOT NULL)
@@ -16,14 +16,14 @@ __list_add_profile
     :param struct aa_profile \*profile:
         the profile to add  (NOT NULL)
 
-.. _`__list_add_profile.description`:
+.. _`__add_profile.description`:
 
 Description
 -----------
 
 refcount \ ``profile``\ , should be put by \__list_remove_profile
 
-.. _`__list_add_profile.requires`:
+.. _`__add_profile.requires`:
 
 Requires
 --------
@@ -136,41 +136,20 @@ its hats and null_profile must have been put.
 If the profile was referenced from a task context, \ :c:func:`free_profile`\  will
 be called from an rcu callback routine, so we must not sleep here.
 
-.. _`aa_free_profile_rcu`:
-
-aa_free_profile_rcu
-===================
-
-.. c:function:: void aa_free_profile_rcu(struct rcu_head *head)
-
-    free aa_profile by rcu (called by aa_free_profile_kref)
-
-    :param struct rcu_head \*head:
-        rcu_head callback for freeing of a profile  (NOT NULL)
-
-.. _`aa_free_profile_kref`:
-
-aa_free_profile_kref
-====================
-
-.. c:function:: void aa_free_profile_kref(struct kref *kref)
-
-    free aa_profile by kref (called by aa_put_profile)
-
-    :param struct kref \*kref:
-        *undescribed*
-
 .. _`aa_alloc_profile`:
 
 aa_alloc_profile
 ================
 
-.. c:function:: struct aa_profile *aa_alloc_profile(const char *hname, gfp_t gfp)
+.. c:function:: struct aa_profile *aa_alloc_profile(const char *hname, struct aa_proxy *proxy, gfp_t gfp)
 
     allocate, initialize and return a new profile
 
     :param const char \*hname:
         name of the profile  (NOT NULL)
+
+    :param struct aa_proxy \*proxy:
+        *undescribed*
 
     :param gfp_t gfp:
         allocation type
@@ -224,35 +203,6 @@ Return
 
 new refcounted profile else NULL on failure
 
-.. _`__find_child`:
-
-__find_child
-============
-
-.. c:function:: struct aa_profile *__find_child(struct list_head *head, const char *name)
-
-    find a profile on \ ``head``\  list with a name matching \ ``name``\ 
-
-    :param struct list_head \*head:
-        list to search  (NOT NULL)
-
-    :param const char \*name:
-        name of profile (NOT NULL)
-
-.. _`__find_child.requires`:
-
-Requires
---------
-
-rcu_read_lock be held
-
-.. _`__find_child.return`:
-
-Return
-------
-
-unrefcounted profile ptr, or NULL if not found
-
 .. _`__strn_find_child`:
 
 __strn_find_child
@@ -279,6 +229,35 @@ Requires
 rcu_read_lock be held
 
 .. _`__strn_find_child.return`:
+
+Return
+------
+
+unrefcounted profile ptr, or NULL if not found
+
+.. _`__find_child`:
+
+__find_child
+============
+
+.. c:function:: struct aa_profile *__find_child(struct list_head *head, const char *name)
+
+    find a profile on \ ``head``\  list with a name matching \ ``name``\ 
+
+    :param struct list_head \*head:
+        list to search  (NOT NULL)
+
+    :param const char \*name:
+        name of profile (NOT NULL)
+
+.. _`__find_child.requires`:
+
+Requires
+--------
+
+rcu_read_lock be held
+
+.. _`__find_child.return`:
 
 Return
 ------
@@ -434,18 +413,18 @@ Return
 audit_policy
 ============
 
-.. c:function:: int audit_policy(struct aa_profile *profile, const char *op, const char *nsname, const char *name, const char *info, int error)
+.. c:function:: int audit_policy(struct aa_label *label, const char *op, const char *ns_name, const char *name, const char *info, int error)
 
     Do auditing of policy changes
 
-    :param struct aa_profile \*profile:
-        profile to check if it can manage policy
+    :param struct aa_label \*label:
+        label to check if it can manage policy
 
     :param const char \*op:
         policy operation being performed
 
-    :param const char \*nsname:
-        name of the ns being manipulated (MAY BE NULL)
+    :param const char \*ns_name:
+        name of namespace being manipulated
 
     :param const char \*name:
         name of profile being manipulated (NOT NULL)
@@ -490,18 +469,18 @@ tasks current namespace.
 aa_may_manage_policy
 ====================
 
-.. c:function:: int aa_may_manage_policy(struct aa_profile *profile, struct aa_ns *ns, const char *op)
+.. c:function:: int aa_may_manage_policy(struct aa_label *label, struct aa_ns *ns, u32 mask)
 
     can the current task manage policy
 
-    :param struct aa_profile \*profile:
-        profile to check if it can manage policy
+    :param struct aa_label \*label:
+        label to check if it can manage policy
 
     :param struct aa_ns \*ns:
         *undescribed*
 
-    :param const char \*op:
-        the policy manipulation operation being done
+    :param u32 mask:
+        *undescribed*
 
 .. _`aa_may_manage_policy.return`:
 
@@ -515,7 +494,7 @@ Return
 __replace_profile
 =================
 
-.. c:function:: void __replace_profile(struct aa_profile *old, struct aa_profile *new, bool share_proxy)
+.. c:function:: void __replace_profile(struct aa_profile *old, struct aa_profile *new)
 
     replace \ ``old``\  with \ ``new``\  on a list
 
@@ -524,9 +503,6 @@ __replace_profile
 
     :param struct aa_profile \*new:
         profile to replace \ ``old``\  with  (NOT NULL)
-
-    :param bool share_proxy:
-        transfer \ ``old``\ ->proxy to \ ``new``\ 
 
 .. _`__replace_profile.description`:
 
@@ -581,18 +557,18 @@ profile to replace (no ref) on success else ptr error
 aa_replace_profiles
 ===================
 
-.. c:function:: ssize_t aa_replace_profiles(struct aa_ns *view, struct aa_profile *profile, bool noreplace, struct aa_loaddata *udata)
+.. c:function:: ssize_t aa_replace_profiles(struct aa_ns *policy_ns, struct aa_label *label, u32 mask, struct aa_loaddata *udata)
 
     replace profile(s) on the profile list
 
-    :param struct aa_ns \*view:
-        namespace load is viewed from
+    :param struct aa_ns \*policy_ns:
+        namespace load is occurring on
 
-    :param struct aa_profile \*profile:
-        *undescribed*
+    :param struct aa_label \*label:
+        label that is attempting to load/replace policy
 
-    :param bool noreplace:
-        true if only doing addition, no replacement allowed
+    :param u32 mask:
+        permission mask
 
     :param struct aa_loaddata \*udata:
         serialized data stream  (NOT NULL)
@@ -618,15 +594,15 @@ size of data consumed else error code on failure.
 aa_remove_profiles
 ==================
 
-.. c:function:: ssize_t aa_remove_profiles(struct aa_ns *view, struct aa_profile *subj, char *fqname, size_t size)
+.. c:function:: ssize_t aa_remove_profiles(struct aa_ns *policy_ns, struct aa_label *subj, char *fqname, size_t size)
 
     remove profile(s) from the system
 
-    :param struct aa_ns \*view:
+    :param struct aa_ns \*policy_ns:
         namespace the remove is being done from
 
-    :param struct aa_profile \*subj:
-        profile attempting to remove policy
+    :param struct aa_label \*subj:
+        label attempting to remove policy
 
     :param char \*fqname:
         name of the profile or namespace to remove  (NOT NULL)

@@ -102,6 +102,7 @@ Definition
         int hot_x;
         int hot_y;
         struct list_head filp_head;
+        struct drm_gem_object  *obj;
     }
 
 .. _`drm_framebuffer.members`:
@@ -167,6 +168,11 @@ hot_y
 
 filp_head
     Placed on \ :c:type:`drm_file.fbs <drm_file>`\ , protected by \ :c:type:`drm_file.fbs_lock <drm_file>`\ .
+
+obj
+    GEM objects backing the framebuffer, one per plane (optional).
+    This is used by the GEM framebuffer helpers, see e.g.
+    \ :c:func:`drm_gem_fb_create`\ .
 
 .. _`drm_framebuffer.description`:
 

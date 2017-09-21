@@ -19,4 +19,3 @@ asm
     scsw_h
     spinlock_h
     timex_h
-    uaccess_h

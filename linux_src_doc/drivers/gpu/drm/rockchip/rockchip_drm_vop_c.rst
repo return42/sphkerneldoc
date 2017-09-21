@@ -1,33 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 
-.. _`rockchip_drm_wait_line_flag`:
+.. _`rockchip_drm_wait_vact_end`:
 
-rockchip_drm_wait_line_flag
-===========================
+rockchip_drm_wait_vact_end
+==========================
 
-.. c:function:: int rockchip_drm_wait_line_flag(struct drm_crtc *crtc, unsigned int line_num, unsigned int mstimeout)
-
-    acqiure the give line flag event
+.. c:function:: int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
 
     :param struct drm_crtc \*crtc:
         CRTC to enable line flag
 
-    :param unsigned int line_num:
-        interested line number
-
     :param unsigned int mstimeout:
         millisecond for timeout
 
-.. _`rockchip_drm_wait_line_flag.description`:
+.. _`rockchip_drm_wait_vact_end.description`:
 
 Description
 -----------
 
-Driver would hold here until the interested line flag interrupt have
-happened or timeout to wait.
+Wait for vact_end line flag irq or timeout.
 
-.. _`rockchip_drm_wait_line_flag.return`:
+.. _`rockchip_drm_wait_vact_end.return`:
 
 Return
 ------

@@ -235,6 +235,81 @@ Description
 
 Posix timer callback for expired alarm timers.
 
+.. _`alarm_timer_rearm`:
+
+alarm_timer_rearm
+=================
+
+.. c:function:: void alarm_timer_rearm(struct k_itimer *timr)
+
+    Posix timer callback for rearming timer
+
+    :param struct k_itimer \*timr:
+        Pointer to the posixtimer data struct
+
+.. _`alarm_timer_forward`:
+
+alarm_timer_forward
+===================
+
+.. c:function:: int alarm_timer_forward(struct k_itimer *timr, ktime_t now)
+
+    Posix timer callback for forwarding timer
+
+    :param struct k_itimer \*timr:
+        Pointer to the posixtimer data struct
+
+    :param ktime_t now:
+        Current time to forward the timer against
+
+.. _`alarm_timer_remaining`:
+
+alarm_timer_remaining
+=====================
+
+.. c:function:: ktime_t alarm_timer_remaining(struct k_itimer *timr, ktime_t now)
+
+    Posix timer callback to retrieve remaining time
+
+    :param struct k_itimer \*timr:
+        Pointer to the posixtimer data struct
+
+    :param ktime_t now:
+        Current time to calculate against
+
+.. _`alarm_timer_try_to_cancel`:
+
+alarm_timer_try_to_cancel
+=========================
+
+.. c:function:: int alarm_timer_try_to_cancel(struct k_itimer *timr)
+
+    Posix timer callback to cancel a timer
+
+    :param struct k_itimer \*timr:
+        Pointer to the posixtimer data struct
+
+.. _`alarm_timer_arm`:
+
+alarm_timer_arm
+===============
+
+.. c:function:: void alarm_timer_arm(struct k_itimer *timr, ktime_t expires, bool absolute, bool sigev_none)
+
+    Posix timer callback to arm a timer
+
+    :param struct k_itimer \*timr:
+        Pointer to the posixtimer data struct
+
+    :param ktime_t expires:
+        The new expiry time
+
+    :param bool absolute:
+        Expiry value is absolute time
+
+    :param bool sigev_none:
+        Posix timer does not deliver signals
+
 .. _`alarm_clock_getres`:
 
 alarm_clock_getres
@@ -298,75 +373,6 @@ Description
 
 Initializes the k_itimer structure.
 
-.. _`alarm_timer_get`:
-
-alarm_timer_get
-===============
-
-.. c:function:: void alarm_timer_get(struct k_itimer *timr, struct itimerspec64 *cur_setting)
-
-    posix timer_get interface
-
-    :param struct k_itimer \*timr:
-        *undescribed*
-
-    :param struct itimerspec64 \*cur_setting:
-        itimerspec data to fill
-
-.. _`alarm_timer_get.description`:
-
-Description
------------
-
-Copies out the current itimerspec data
-
-.. _`alarm_timer_del`:
-
-alarm_timer_del
-===============
-
-.. c:function:: int alarm_timer_del(struct k_itimer *timr)
-
-    posix timer_del interface
-
-    :param struct k_itimer \*timr:
-        k_itimer pointer to be deleted
-
-.. _`alarm_timer_del.description`:
-
-Description
------------
-
-Cancels any programmed alarms for the given timer.
-
-.. _`alarm_timer_set`:
-
-alarm_timer_set
-===============
-
-.. c:function:: int alarm_timer_set(struct k_itimer *timr, int flags, struct itimerspec64 *new_setting, struct itimerspec64 *old_setting)
-
-    posix timer_set interface
-
-    :param struct k_itimer \*timr:
-        k_itimer pointer to be deleted
-
-    :param int flags:
-        timer flags
-
-    :param struct itimerspec64 \*new_setting:
-        itimerspec to be used
-
-    :param struct itimerspec64 \*old_setting:
-        itimerspec being replaced
-
-.. _`alarm_timer_set.description`:
-
-Description
------------
-
-Sets the timer to new_setting, and starts the timer.
-
 .. _`alarmtimer_nsleep_wakeup`:
 
 alarmtimer_nsleep_wakeup
@@ -394,7 +400,7 @@ Wakes up the task that set the alarmtimer
 alarmtimer_do_nsleep
 ====================
 
-.. c:function:: int alarmtimer_do_nsleep(struct alarm *alarm, ktime_t absexp)
+.. c:function:: int alarmtimer_do_nsleep(struct alarm *alarm, ktime_t absexp, enum alarmtimer_type type)
 
     Internal alarmtimer nsleep implementation
 
@@ -404,38 +410,15 @@ alarmtimer_do_nsleep
     :param ktime_t absexp:
         absolute expiration time
 
+    :param enum alarmtimer_type type:
+        *undescribed*
+
 .. _`alarmtimer_do_nsleep.description`:
 
 Description
 -----------
 
 Sets the alarm timer and sleeps until it is fired or interrupted.
-
-.. _`update_rmtp`:
-
-update_rmtp
-===========
-
-.. c:function:: int update_rmtp(ktime_t exp, enum alarmtimer_type type, struct timespec __user *rmtp)
-
-    Update remaining timespec value
-
-    :param ktime_t exp:
-        expiration time
-
-    :param enum alarmtimer_type type:
-        timer type
-
-    :param struct timespec __user \*rmtp:
-        user pointer to remaining timepsec value
-
-.. _`update_rmtp.description`:
-
-Description
------------
-
-Helper function that fills in rmtp value with time between
-now and the exp value
 
 .. _`alarm_timer_nsleep_restart`:
 
@@ -461,7 +444,7 @@ Handles restarted clock_nanosleep calls
 alarm_timer_nsleep
 ==================
 
-.. c:function:: int alarm_timer_nsleep(const clockid_t which_clock, int flags, struct timespec64 *tsreq, struct timespec __user *rmtp)
+.. c:function:: int alarm_timer_nsleep(const clockid_t which_clock, int flags, const struct timespec64 *tsreq)
 
     alarmtimer nanosleep
 
@@ -471,11 +454,8 @@ alarm_timer_nsleep
     :param int flags:
         determins abstime or relative
 
-    :param struct timespec64 \*tsreq:
+    :param const struct timespec64 \*tsreq:
         requested sleep time (abs or rel)
-
-    :param struct timespec __user \*rmtp:
-        remaining sleep time saved
 
 .. _`alarm_timer_nsleep.description`:
 

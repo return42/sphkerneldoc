@@ -33,7 +33,7 @@ get_ioc3_port
 port_init
 =========
 
-.. c:function:: int inline port_init(struct ioc3_port *port)
+.. c:function:: int port_init(struct ioc3_port *port)
 
     Initialize the sio and ioc3 hardware for a given port called per port from attach...
 
@@ -270,7 +270,7 @@ receive_chars
 ioc3uart_intr_one
 =================
 
-.. c:function:: int inline ioc3uart_intr_one(struct ioc3_submodule *is, struct ioc3_driver_data *idd, unsigned int pending)
+.. c:function:: int ioc3uart_intr_one(struct ioc3_submodule *is, struct ioc3_driver_data *idd, unsigned int pending)
 
     lowest level (per port) interrupt handler.
 

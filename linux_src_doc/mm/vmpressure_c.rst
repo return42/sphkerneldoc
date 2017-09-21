@@ -93,7 +93,7 @@ vmpressure_register_event
         eventfd context to link notifications with
 
     :param const char \*args:
-        event arguments (used to set up a pressure level threshold)
+        event arguments (pressure level threshold, optional mode)
 
 .. _`vmpressure_register_event.description`:
 
@@ -102,9 +102,10 @@ Description
 
 This function associates eventfd context with the vmpressure
 infrastructure, so that the notifications will be delivered to the
-\ ``eventfd``\ . The \ ``args``\  parameter is a string that denotes pressure level
-threshold (one of vmpressure_str_levels, i.e. "low", "medium", or
-"critical").
+\ ``eventfd``\ . The \ ``args``\  parameter is a comma-delimited string that denotes a
+pressure level threshold (one of vmpressure_str_levels, i.e. "low", "medium",
+or "critical") and an optional mode (one of vmpressure_str_modes, i.e.
+"hierarchy" or "local").
 
 To be used as memcg event method.
 

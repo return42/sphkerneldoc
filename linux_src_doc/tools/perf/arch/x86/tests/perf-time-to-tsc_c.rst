@@ -6,9 +6,12 @@
 test__perf_time_to_tsc
 ======================
 
-.. c:function:: int test__perf_time_to_tsc(int subtest __maybe_unused)
+.. c:function:: int test__perf_time_to_tsc(int subtest __maybe_unused, int subtest __maybe_unused)
 
     test converting perf time to TSC.
+
+    :param int subtest __maybe_unused:
+        *undescribed*
 
     :param int subtest __maybe_unused:
         *undescribed*

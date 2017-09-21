@@ -98,30 +98,27 @@ release all the resources for LPE audio <-> i915 bridge.
 intel_lpe_audio_notify
 ======================
 
-.. c:function:: void intel_lpe_audio_notify(struct drm_i915_private *dev_priv, void *eld, int port, int pipe, int tmds_clk_speed, bool dp_output, int link_rate)
+.. c:function:: void intel_lpe_audio_notify(struct drm_i915_private *dev_priv, enum pipe pipe, enum port port, const void *eld, int ls_clock, bool dp_output)
 
     notify lpe audio event audio driver and i915
 
     :param struct drm_i915_private \*dev_priv:
         the i915 drm device private data
 
-    :param void \*eld:
+    :param enum pipe pipe:
+        pipe
+
+    :param enum port port:
+        port
+
+    :param const void \*eld:
         ELD data
 
-    :param int port:
-        port id
-
-    :param int pipe:
-        pipe id
-
-    :param int tmds_clk_speed:
-        tmds clock frequency in Hz
+    :param int ls_clock:
+        Link symbol clock in kHz
 
     :param bool dp_output:
-        *undescribed*
-
-    :param int link_rate:
-        *undescribed*
+        Driving a DP output?
 
 .. _`intel_lpe_audio_notify.description`:
 

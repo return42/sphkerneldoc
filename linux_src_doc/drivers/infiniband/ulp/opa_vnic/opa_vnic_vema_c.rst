@@ -575,6 +575,21 @@ Return
 
 returns 0 on success. non zero otherwise
 
+.. _`opa_vnic_ctrl_config_dev`:
+
+opa_vnic_ctrl_config_dev
+========================
+
+.. c:function:: void opa_vnic_ctrl_config_dev(struct opa_vnic_ctrl_port *cport, bool en)
+
+    - This function sends a trap to the EM by way of ib_modify_port to indicate support for ethernet on the fabric.
+
+    :param struct opa_vnic_ctrl_port \*cport:
+        pointer to control port
+
+    :param bool en:
+        enable or disable ethernet on fabric support
+
 .. _`opa_vnic_vema_add_one`:
 
 opa_vnic_vema_add_one

@@ -21,7 +21,7 @@ Definition
         struct reset_controller_dev *rcdev;
         struct list_head list;
         unsigned int id;
-        unsigned int refcnt;
+        struct kref refcnt;
         bool shared;
         atomic_t deassert_count;
         atomic_t triggered_count;

@@ -1,17 +1,44 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/hwtracing/intel_th/core.c
 
+.. _`intel_th_output_enable`:
+
+intel_th_output_enable
+======================
+
+.. c:function:: int intel_th_output_enable(struct intel_th *th, unsigned int otype)
+
+    find and enable a device for a given output type
+
+    :param struct intel_th \*th:
+        Intel TH instance
+
+    :param unsigned int otype:
+        output type
+
+.. _`intel_th_output_enable.description`:
+
+Description
+-----------
+
+Go through the unallocated output devices, find the first one whos type
+matches \ ``otype``\  and instantiate it. These devices are removed when the hub
+device is removed, see \ :c:func:`intel_th_remove`\ .
+
 .. _`intel_th_alloc`:
 
 intel_th_alloc
 ==============
 
-.. c:function:: struct intel_th *intel_th_alloc(struct device *dev, struct resource *devres, unsigned int ndevres, int irq)
+.. c:function:: struct intel_th *intel_th_alloc(struct device *dev, struct intel_th_drvdata *drvdata, struct resource *devres, unsigned int ndevres, int irq)
 
     allocate a new Intel TH device and its subdevices
 
     :param struct device \*dev:
         parent device
+
+    :param struct intel_th_drvdata \*drvdata:
+        *undescribed*
 
     :param struct resource \*devres:
         parent's resources

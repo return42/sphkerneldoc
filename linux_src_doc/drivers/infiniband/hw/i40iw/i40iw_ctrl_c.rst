@@ -81,6 +81,34 @@ Description
 parses fpm commit info and copy base value
 of hmc objects in hmc_info
 
+.. _`i40iw_sc_decode_fpm_query`:
+
+i40iw_sc_decode_fpm_query
+=========================
+
+.. c:function:: u64 i40iw_sc_decode_fpm_query(u64 *buf, u32 buf_idx, struct i40iw_hmc_obj_info *obj_info, u32 rsrc_idx)
+
+    Decode a 64 bit value into max count and size
+
+    :param u64 \*buf:
+        ptr to fpm query buffer
+
+    :param u32 buf_idx:
+        index into buf
+
+    :param struct i40iw_hmc_obj_info \*obj_info:
+        *undescribed*
+
+    :param u32 rsrc_idx:
+        resource index into info
+
+.. _`i40iw_sc_decode_fpm_query.description`:
+
+Description
+-----------
+
+Decode a 64 bit value from fpm query buffer into max count and size
+
 .. _`i40iw_sc_parse_fpm_query_buf`:
 
 i40iw_sc_parse_fpm_query_buf

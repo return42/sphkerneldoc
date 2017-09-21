@@ -105,46 +105,46 @@ and the y axis the rotation property is somewhat redundant. Drivers can use
 The property exposed to userspace is a bitmask property (see
 \ :c:func:`drm_property_create_bitmask`\ ) called "rotation" and has the following
 
-.. _`drm_plane_create_rotation_property.drm_rotate_0`:
+.. _`drm_plane_create_rotation_property.drm_mode_rotate_0`:
 
-DRM_ROTATE_0
-------------
+DRM_MODE_ROTATE_0
+-----------------
 
 
      "rotate-0"
 
-.. _`drm_plane_create_rotation_property.drm_rotate_90`:
+.. _`drm_plane_create_rotation_property.drm_mode_rotate_90`:
 
-DRM_ROTATE_90
--------------
+DRM_MODE_ROTATE_90
+------------------
 
      "rotate-90"
 
-.. _`drm_plane_create_rotation_property.drm_rotate_180`:
+.. _`drm_plane_create_rotation_property.drm_mode_rotate_180`:
 
-DRM_ROTATE_180
---------------
+DRM_MODE_ROTATE_180
+-------------------
 
      "rotate-180"
 
-.. _`drm_plane_create_rotation_property.drm_rotate_270`:
+.. _`drm_plane_create_rotation_property.drm_mode_rotate_270`:
 
-DRM_ROTATE_270
---------------
+DRM_MODE_ROTATE_270
+-------------------
 
      "rotate-270"
 
-.. _`drm_plane_create_rotation_property.drm_reflect_x`:
+.. _`drm_plane_create_rotation_property.drm_mode_reflect_x`:
 
-DRM_REFLECT_X
--------------
+DRM_MODE_REFLECT_X
+------------------
 
      "reflect-x"
 
-.. _`drm_plane_create_rotation_property.drm_refelct_y`:
+.. _`drm_plane_create_rotation_property.drm_mode_reflect_y`:
 
-DRM_REFELCT_Y
--------------
+DRM_MODE_REFLECT_Y
+------------------
 
      "reflect-y"
 
@@ -174,7 +174,7 @@ Description
 -----------
 
 Attempt to simplify the rotation to a form that is supported.
-Eg. if the hardware supports everything except DRM_REFLECT_X
+Eg. if the hardware supports everything except DRM_MODE_REFLECT_X
 
 .. _`drm_rotation_simplify.one-could-call-this-function-like-this`:
 
@@ -182,11 +182,11 @@ one could call this function like this
 --------------------------------------
 
 
-drm_rotation_simplify(rotation, DRM_ROTATE_0 |
-                      DRM_ROTATE_90 | DRM_ROTATE_180 |
-                      DRM_ROTATE_270 | DRM_REFLECT_Y);
+drm_rotation_simplify(rotation, DRM_MODE_ROTATE_0 |
+                      DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_180 |
+                      DRM_MODE_ROTATE_270 | DRM_MODE_REFLECT_Y);
 
-to eliminate the DRM_ROTATE_X flag. Depending on what kind of
+to eliminate the DRM_MODE_ROTATE_X flag. Depending on what kind of
 transforms the hardware supports, this function may not
 be able to produce a supported transform, so the caller should
 check the result afterwards.

@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/spinlock.h
 
-.. _`raw_spin_unlock_wait`:
-
-raw_spin_unlock_wait
-====================
-
-.. c:function::  raw_spin_unlock_wait( lock)
-
-    wait until the spinlock gets unlocked
-
-    :param  lock:
-        the spinlock in question.
-
 .. _`raw_spin_can_lock`:
 
 raw_spin_can_lock

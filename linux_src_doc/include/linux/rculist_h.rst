@@ -29,7 +29,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`list_add_rcu`\ 
 or \ :c:func:`list_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`list_for_each_entry_rcu`\ .
 
 .. _`list_add_tail_rcu`:
@@ -60,7 +60,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`list_add_tail_rcu`\ 
 or \ :c:func:`list_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`list_for_each_entry_rcu`\ .
 
 .. _`list_del_rcu`:
@@ -92,7 +92,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`list_del_rcu`\ 
 or \ :c:func:`list_add_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`list_for_each_entry_rcu`\ .
 
 Note that the caller is not permitted to immediately free
@@ -130,7 +130,7 @@ The caller must take whatever precautions are necessary (such as
 holding appropriate locks) to avoid racing with another
 list-mutation primitive, such as \ :c:func:`hlist_add_head_rcu`\  or
 \ :c:func:`hlist_del_rcu`\ , running on this same list.  However, it is
-perfectly legal to run concurrently with the \_rcu list-traversal
+perfectly legal to run concurrently with the _rcu list-traversal
 primitives, such as \ :c:func:`hlist_for_each_entry_rcu`\ .
 
 .. _`list_replace_rcu`:
@@ -193,12 +193,7 @@ concurrently with this function.
 
 Note that this function blocks.
 
-.. _`__list_splice_init_rcu.important-note`:
-
-Important note
---------------
-
-the caller must take whatever action is necessary to prevent
+Important note: the caller must take whatever action is necessary to prevent
 any other updates to the existing list.  In principle, it is possible to
 modify the list as soon as \ :c:func:`sync`\  begins execution. If this sort of thing
 becomes necessary, an alternative version based on \ :c:func:`call_rcu`\  could be
@@ -264,7 +259,7 @@ list_entry_rcu
 Description
 -----------
 
-This primitive may safely run concurrently with the \_rcu list-mutation
+This primitive may safely run concurrently with the _rcu list-mutation
 primitives such as \ :c:func:`list_add_rcu`\  as long as it's guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`list_first_or_null_rcu`:
@@ -298,8 +293,8 @@ conditions as the following snippet shows
 
 
 if (!list_empty_rcu(mylist)) {
-struct foo \*bar = list_first_entry_rcu(mylist, struct foo, list_member);
-do_something(bar);
+     struct foo *bar = list_first_entry_rcu(mylist, struct foo, list_member);
+     do_something(bar);
 }
 
 The list may not be empty when list_empty_rcu checks it, but it may be when
@@ -339,7 +334,7 @@ Description
 
 Note that if the ptr is at the end of the list, NULL is returned.
 
-This primitive may safely run concurrently with the \_rcu list-mutation
+This primitive may safely run concurrently with the _rcu list-mutation
 primitives such as \ :c:func:`list_add_rcu`\  as long as it's guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`list_for_each_entry_rcu`:
@@ -352,7 +347,7 @@ list_for_each_entry_rcu
     iterate over rcu list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -366,7 +361,7 @@ Description
 -----------
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`list_add_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`list_add_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`list_entry_lockless`:
@@ -392,7 +387,7 @@ list_entry_lockless
 Description
 -----------
 
-This primitive may safely run concurrently with the \_rcu list-mutation
+This primitive may safely run concurrently with the _rcu list-mutation
 primitives such as \ :c:func:`list_add_rcu`\ , but requires some implicit RCU
 read-side guarding.  One example is running within a special
 exception-time environment where preemption is disabled and where
@@ -410,7 +405,7 @@ list_for_each_entry_lockless
     iterate over rcu list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -423,7 +418,7 @@ list_for_each_entry_lockless
 Description
 -----------
 
-This primitive may safely run concurrently with the \_rcu list-mutation
+This primitive may safely run concurrently with the _rcu list-mutation
 primitives such as \ :c:func:`list_add_rcu`\ , but requires some implicit RCU
 read-side guarding.  One example is running within a special
 exception-time environment where preemption is disabled and where
@@ -441,7 +436,7 @@ list_for_each_entry_continue_rcu
     continue iteration over list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -486,7 +481,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_add_head_rcu`\ 
 or \ :c:func:`hlist_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_for_each_entry`\ .
 
 .. _`hlist_replace_rcu`:
@@ -537,7 +532,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_add_head_rcu`\ 
 or \ :c:func:`hlist_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_for_each_entry_rcu`\ , used to prevent memory-consistency
 problems on Alpha CPUs.  Regardless of the type of CPU, the
 list-traversal primitive must be guarded by \ :c:func:`rcu_read_lock`\ .
@@ -568,7 +563,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_add_head_rcu`\ 
 or \ :c:func:`hlist_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_for_each_entry_rcu`\ , used to prevent memory-consistency
 problems on Alpha CPUs.  Regardless of the type of CPU, the
 list-traversal primitive must be guarded by \ :c:func:`rcu_read_lock`\ .
@@ -599,7 +594,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_add_head_rcu`\ 
 or \ :c:func:`hlist_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_for_each_entry_rcu`\ , used to prevent memory-consistency
 problems on Alpha CPUs.
 
@@ -629,7 +624,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_add_head_rcu`\ 
 or \ :c:func:`hlist_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_for_each_entry_rcu`\ , used to prevent memory-consistency
 problems on Alpha CPUs.
 
@@ -643,7 +638,7 @@ hlist_for_each_entry_rcu
     iterate over rcu list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -657,7 +652,7 @@ Description
 -----------
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`hlist_for_each_entry_rcu_notrace`:
@@ -670,7 +665,7 @@ hlist_for_each_entry_rcu_notrace
     iterate over rcu list of given type (for tracing)
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -684,7 +679,7 @@ Description
 -----------
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 This is the same as \ :c:func:`hlist_for_each_entry_rcu`\  except that it does
@@ -700,7 +695,7 @@ hlist_for_each_entry_rcu_bh
     iterate over rcu list of given type
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  head:
         the head for your list.
@@ -714,7 +709,7 @@ Description
 -----------
 
 This list-traversal primitive may safely run concurrently with
-the \_rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
+the _rcu list-mutation primitives such as \ :c:func:`hlist_add_head_rcu`\ 
 as long as the traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`hlist_for_each_entry_continue_rcu`:
@@ -727,7 +722,7 @@ hlist_for_each_entry_continue_rcu
     iterate over a hlist continuing after current point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  member:
         the name of the hlist_node within the struct.
@@ -742,7 +737,7 @@ hlist_for_each_entry_continue_rcu_bh
     iterate over a hlist continuing after current point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  member:
         the name of the hlist_node within the struct.
@@ -757,7 +752,7 @@ hlist_for_each_entry_from_rcu
     iterate over a hlist continuing from current point
 
     :param  pos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  member:
         the name of the hlist_node within the struct.

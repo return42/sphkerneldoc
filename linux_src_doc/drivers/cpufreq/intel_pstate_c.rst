@@ -180,65 +180,6 @@ Stores the voltage data for DVFS (Dynamic Voltage and Frequency Scaling)
 This data is used in Atom platforms, where in addition to target P state,
 the voltage data needs to be specified to select next P State.
 
-.. _`_pid`:
-
-struct \_pid
-============
-
-.. c:type:: struct _pid
-
-    Stores PID data
-
-.. _`_pid.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct _pid {
-        int setpoint;
-        int32_t integral;
-        int32_t p_gain;
-        int32_t i_gain;
-        int32_t d_gain;
-        int deadband;
-        int32_t last_err;
-    }
-
-.. _`_pid.members`:
-
-Members
--------
-
-setpoint
-    Target set point for busyness or performance
-
-integral
-    Storage for accumulated error values
-
-p_gain
-    PID proportional gain
-
-i_gain
-    PID integral gain
-
-d_gain
-    PID derivative gain
-
-deadband
-    PID deadband
-
-last_err
-    Last error storage for integral part of PID calculation
-
-.. _`_pid.description`:
-
-Description
------------
-
-Stores PID coefficients and last error for PID controller.
-
 .. _`global_params`:
 
 struct global_params
@@ -307,16 +248,16 @@ Definition
         bool update_util_set;
         struct pstate_data pstate;
         struct vid_data vid;
-        struct _pid pid;
         u64 last_update;
         u64 last_sample_time;
+        u64 aperf_mperf_shift;
         u64 prev_aperf;
         u64 prev_mperf;
         u64 prev_tsc;
         u64 prev_cummulative_iowait;
         struct sample sample;
-        int32_t min_perf;
-        int32_t max_perf;
+        int32_t min_perf_ratio;
+        int32_t max_perf_ratio;
     #ifdef CONFIG_ACPI
         struct acpi_processor_performance acpi_perf_data;
         bool valid_pss_table;
@@ -351,14 +292,16 @@ pstate
 vid
     Stores VID limits for this CPU
 
-pid
-    Stores PID parameters for this CPU
-
 last_update
     Time of the last update.
 
 last_sample_time
     Last Sample time
+
+aperf_mperf_shift
+    Number of clock cycles after aperf, merf is incremented
+    This shift is a multiplier to mperf delta to
+    calculate CPU busy.
 
 prev_aperf
     Last APERF value read from APERF MSR
@@ -376,13 +319,11 @@ prev_cummulative_iowait
 sample
     Storage for storing last Sample data
 
-min_perf
-    Minimum capacity limit as a fraction of the maximum
-    turbo P-state capacity.
+min_perf_ratio
+    Minimum capacity in terms of PERF or HWP ratios
 
-max_perf
-    Maximum capacity limit as a fraction of the maximum
-    turbo P-state capacity.
+max_perf_ratio
+    Maximum capacity in terms of PERF or HWP ratios
 
 acpi_perf_data
     Stores ACPI perf information read from \_PSS
@@ -416,65 +357,6 @@ Description
 
 This structure stores per CPU instance data for all CPUs.
 
-.. _`pstate_adjust_policy`:
-
-struct pstate_adjust_policy
-===========================
-
-.. c:type:: struct pstate_adjust_policy
-
-    Stores static PID configuration data
-
-.. _`pstate_adjust_policy.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct pstate_adjust_policy {
-        int sample_rate_ms;
-        s64 sample_rate_ns;
-        int deadband;
-        int setpoint;
-        int p_gain_pct;
-        int d_gain_pct;
-        int i_gain_pct;
-    }
-
-.. _`pstate_adjust_policy.members`:
-
-Members
--------
-
-sample_rate_ms
-    PID calculation sample rate in ms
-
-sample_rate_ns
-    Sample rate calculation in ns
-
-deadband
-    PID deadband
-
-setpoint
-    PID Setpoint
-
-p_gain_pct
-    PID proportional gain
-
-d_gain_pct
-    PID derivative gain
-
-i_gain_pct
-    PID integral gain
-
-.. _`pstate_adjust_policy.description`:
-
-Description
------------
-
-Stores per CPU model static PID configuration data.
-
 .. _`pstate_funcs`:
 
 struct pstate_funcs
@@ -497,9 +379,9 @@ Definition
         int (*get_min)(void);
         int (*get_turbo)(void);
         int (*get_scaling)(void);
+        int (*get_aperf_mperf_shift)(void);
         u64 (*get_val)(struct cpudata*, int pstate);
         void (*get_vid)(struct cpudata *);
-        void (*update_util)(struct update_util_data *data, u64 time, unsigned int flags);
     }
 
 .. _`pstate_funcs.members`:
@@ -522,14 +404,14 @@ get_turbo
 get_scaling
     Callback to get frequency scaling factor
 
+get_aperf_mperf_shift
+    *undescribed*
+
 get_val
     Callback to convert P state to actual MSR write value
 
 get_vid
     Callback to get VID data for Atom platforms
-
-update_util
-    Active mode utilization update callback.
 
 .. _`pstate_funcs.description`:
 

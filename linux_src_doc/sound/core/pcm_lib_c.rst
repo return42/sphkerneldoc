@@ -808,43 +808,6 @@ Return
 
 The maximum, or a negative error code on failure.
 
-.. _`snd_pcm_hw_params_choose`:
-
-snd_pcm_hw_params_choose
-========================
-
-.. c:function:: int snd_pcm_hw_params_choose(struct snd_pcm_substream *pcm, struct snd_pcm_hw_params *params)
-
-    choose a configuration defined by \ ``params``\ 
-
-    :param struct snd_pcm_substream \*pcm:
-        PCM instance
-
-    :param struct snd_pcm_hw_params \*params:
-        the hw_params instance
-
-.. _`snd_pcm_hw_params_choose.description`:
-
-Description
------------
-
-Choose one configuration from configuration space defined by \ ``params``\ .
-
-.. _`snd_pcm_hw_params_choose.the-configuration-chosen-is-that-obtained-fixing-in-this-order`:
-
-The configuration chosen is that obtained fixing in this order
---------------------------------------------------------------
-
-first access, first format, first subformat, min channels,
-min rate, min period time, max buffer size, min tick time
-
-.. _`snd_pcm_hw_params_choose.return`:
-
-Return
-------
-
-Zero if successful, or a negative error code on failure.
-
 .. _`snd_pcm_lib_ioctl`:
 
 snd_pcm_lib_ioctl

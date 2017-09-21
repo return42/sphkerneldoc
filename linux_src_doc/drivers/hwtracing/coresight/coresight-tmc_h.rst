@@ -33,6 +33,7 @@ Definition
         enum tmc_config_type config_type;
         enum tmc_mem_intf_width memwidth;
         u32 trigger_cntr;
+        u32 etr_caps;
     }
 
 .. _`tmc_drvdata.members`:
@@ -84,6 +85,10 @@ memwidth
 
 trigger_cntr
     amount of words to store after a trigger.
+
+etr_caps
+    Bitmask of capabilities of the TMC ETR, inferred from the
+    device configuration register (DEVID)
 
 .. This file was automatic generated / don't edit.
 

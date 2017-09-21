@@ -18,7 +18,7 @@ Definition
 
     struct mqd_manager {
         int (*init_mqd)(struct mqd_manager *mm, void **mqd,struct kfd_mem_obj **mqd_mem_obj, uint64_t *gart_addr, struct queue_properties *q);
-        int (*load_mqd)(struct mqd_manager *mm, void *mqd,uint32_t pipe_id, uint32_t queue_id, uint32_t __user *wptr);
+        int (*load_mqd)(struct mqd_manager *mm, void *mqd,uint32_t pipe_id, uint32_t queue_id,struct queue_properties *p, struct mm_struct *mms);
         int (*update_mqd)(struct mqd_manager *mm, void *mqd, struct queue_properties *q);
         int (*destroy_mqd)(struct mqd_manager *mm, void *mqd,enum kfd_preempt_type type,unsigned int timeout, uint32_t pipe_id, uint32_t queue_id);
         void (*uninit_mqd)(struct mqd_manager *mm, void *mqd, struct kfd_mem_obj *mqd_mem_obj);

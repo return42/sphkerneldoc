@@ -26,33 +26,6 @@ Description
 -ENOTCONN: The UUID is found, but the target connection is bad (!)
 -EBADF   : The UUID is found, but the OBD of the wrong type (!)
 
-.. _`lmv_connect`:
-
-lmv_connect
-===========
-
-.. c:function:: int lmv_connect(const struct lu_env *env, struct obd_export **exp, struct obd_device *obd, struct obd_uuid *cluuid, struct obd_connect_data *data, void *localdata)
-
-    caller that everything is okay. Real connection will be performed later.
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param struct obd_export \*\*exp:
-        *undescribed*
-
-    :param struct obd_device \*obd:
-        *undescribed*
-
-    :param struct obd_uuid \*cluuid:
-        *undescribed*
-
-    :param struct obd_connect_data \*data:
-        *undescribed*
-
-    :param void \*localdata:
-        *undescribed*
-
 .. _`lmv_placement_policy`:
 
 lmv_placement_policy

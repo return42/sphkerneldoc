@@ -31,7 +31,7 @@ The caller must take whatever precautions are necessary (such as
 holding appropriate locks) to avoid racing with another
 list-mutation primitive, such as \ :c:func:`hlist_nulls_add_head_rcu`\  or
 \ :c:func:`hlist_nulls_del_rcu`\ , running on this same list.  However, it is
-perfectly legal to run concurrently with the \_rcu list-traversal
+perfectly legal to run concurrently with the _rcu list-traversal
 primitives, such as \ :c:func:`hlist_nulls_for_each_entry_rcu`\ .
 
 .. _`hlist_nulls_del_rcu`:
@@ -63,7 +63,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_nulls_add_head_rcu`\ 
 or \ :c:func:`hlist_nulls_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_nulls_for_each_entry`\ .
 
 .. _`hlist_nulls_add_head_rcu`:
@@ -92,7 +92,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_nulls_add_head_rcu`\ 
 or \ :c:func:`hlist_nulls_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_nulls_for_each_entry_rcu`\ , used to prevent memory-consistency
 problems on Alpha CPUs.  Regardless of the type of CPU, the
 list-traversal primitive must be guarded by \ :c:func:`rcu_read_lock`\ .
@@ -124,7 +124,7 @@ The caller must take whatever precautions are necessary
 with another list-mutation primitive, such as \ :c:func:`hlist_nulls_add_head_rcu`\ 
 or \ :c:func:`hlist_nulls_del_rcu`\ , running on this same list.
 However, it is perfectly legal to run concurrently with
-the \_rcu list-traversal primitives, such as
+the _rcu list-traversal primitives, such as
 \ :c:func:`hlist_nulls_for_each_entry_rcu`\ , used to prevent memory-consistency
 problems on Alpha CPUs.  Regardless of the type of CPU, the
 list-traversal primitive must be guarded by \ :c:func:`rcu_read_lock`\ .
@@ -139,7 +139,7 @@ hlist_nulls_for_each_entry_rcu
     iterate over rcu list of given type
 
     :param  tpos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  pos:
         the \ :c:type:`struct hlist_nulls_node <hlist_nulls_node>`\  to use as a loop cursor.
@@ -170,7 +170,7 @@ hlist_nulls_for_each_entry_safe
     iterate over list of given type safe against removal of list entry
 
     :param  tpos:
-        the type \* to use as a loop cursor.
+        the type * to use as a loop cursor.
 
     :param  pos:
         the \ :c:type:`struct hlist_nulls_node <hlist_nulls_node>`\  to use as a loop cursor.

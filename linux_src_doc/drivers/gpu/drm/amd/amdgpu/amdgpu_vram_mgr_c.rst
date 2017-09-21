@@ -43,6 +43,28 @@ Description
 Destroy and free the VRAM manager, returns -EBUSY if ranges are still
 allocated inside it.
 
+.. _`amdgpu_vram_mgr_vis_size`:
+
+amdgpu_vram_mgr_vis_size
+========================
+
+.. c:function:: u64 amdgpu_vram_mgr_vis_size(struct amdgpu_device *adev, struct drm_mm_node *node)
+
+    Calculate visible node size
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device structure
+
+    :param struct drm_mm_node \*node:
+        MM node structure
+
+.. _`amdgpu_vram_mgr_vis_size.description`:
+
+Description
+-----------
+
+Calculate how many bytes of the MM node are inside visible VRAM
+
 .. _`amdgpu_vram_mgr_new`:
 
 amdgpu_vram_mgr_new
@@ -93,20 +115,58 @@ Description
 
 Free the allocated VRAM again.
 
+.. _`amdgpu_vram_mgr_usage`:
+
+amdgpu_vram_mgr_usage
+=====================
+
+.. c:function:: uint64_t amdgpu_vram_mgr_usage(struct ttm_mem_type_manager *man)
+
+    how many bytes are used in this domain
+
+    :param struct ttm_mem_type_manager \*man:
+        TTM memory type manager
+
+.. _`amdgpu_vram_mgr_usage.description`:
+
+Description
+-----------
+
+Returns how many bytes are used in this domain.
+
+.. _`amdgpu_vram_mgr_vis_usage`:
+
+amdgpu_vram_mgr_vis_usage
+=========================
+
+.. c:function:: uint64_t amdgpu_vram_mgr_vis_usage(struct ttm_mem_type_manager *man)
+
+    how many bytes are used in the visible part
+
+    :param struct ttm_mem_type_manager \*man:
+        TTM memory type manager
+
+.. _`amdgpu_vram_mgr_vis_usage.description`:
+
+Description
+-----------
+
+Returns how many bytes are used in the visible part of VRAM
+
 .. _`amdgpu_vram_mgr_debug`:
 
 amdgpu_vram_mgr_debug
 =====================
 
-.. c:function:: void amdgpu_vram_mgr_debug(struct ttm_mem_type_manager *man, const char *prefix)
+.. c:function:: void amdgpu_vram_mgr_debug(struct ttm_mem_type_manager *man, struct drm_printer *printer)
 
     dump VRAM table
 
     :param struct ttm_mem_type_manager \*man:
         TTM memory type manager
 
-    :param const char \*prefix:
-        text prefix
+    :param struct drm_printer \*printer:
+        DRM printer to use
 
 .. _`amdgpu_vram_mgr_debug.description`:
 

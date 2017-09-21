@@ -60,14 +60,14 @@ Returns the previous state of underrun reporting.
 intel_set_pch_fifo_underrun_reporting
 =====================================
 
-.. c:function:: bool intel_set_pch_fifo_underrun_reporting(struct drm_i915_private *dev_priv, enum transcoder pch_transcoder, bool enable)
+.. c:function:: bool intel_set_pch_fifo_underrun_reporting(struct drm_i915_private *dev_priv, enum pipe pch_transcoder, bool enable)
 
     set PCH fifo underrun reporting state
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
 
-    :param enum transcoder pch_transcoder:
+    :param enum pipe pch_transcoder:
         the PCH transcoder (same as pipe on IVB and older)
 
     :param bool enable:
@@ -115,14 +115,14 @@ interrupt to avoid an irq storm.
 intel_pch_fifo_underrun_irq_handler
 ===================================
 
-.. c:function:: void intel_pch_fifo_underrun_irq_handler(struct drm_i915_private *dev_priv, enum transcoder pch_transcoder)
+.. c:function:: void intel_pch_fifo_underrun_irq_handler(struct drm_i915_private *dev_priv, enum pipe pch_transcoder)
 
     handle PCH fifo underrun interrupt
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
 
-    :param enum transcoder pch_transcoder:
+    :param enum pipe pch_transcoder:
         the PCH transcoder (same as pipe on IVB and older)
 
 .. _`intel_pch_fifo_underrun_irq_handler.description`:

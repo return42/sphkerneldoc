@@ -915,6 +915,7 @@ Definition
         int (*fcp_op)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
         void (*fcp_abort)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
         void (*fcp_req_release)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
+        void (*defer_rcv)(struct nvmet_fc_target_port *tgtport, struct nvmefc_tgt_fcp_req *fcpreq);
         u32 max_hw_queues;
         u16 max_sgl_segments;
         u16 max_dif_sgl_segments;
@@ -1021,6 +1022,9 @@ fcp_req_release
     to the LLDD after all operations on the fcp operation are complete.
     This may be due to the command completing or upon completion of
     abort cleanup.
+
+defer_rcv
+    *undescribed*
 
 max_hw_queues
     indicates the maximum number of hw queues the LLDD

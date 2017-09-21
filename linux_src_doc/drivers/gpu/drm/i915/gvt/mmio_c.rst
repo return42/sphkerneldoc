@@ -84,12 +84,15 @@ Zero on success, negative error code if failed
 intel_vgpu_reset_mmio
 =====================
 
-.. c:function:: void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu)
+.. c:function:: void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu, bool dmlr)
 
     reset virtual MMIO space
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
+
+    :param bool dmlr:
+        *undescribed*
 
 .. _`intel_vgpu_init_mmio`:
 

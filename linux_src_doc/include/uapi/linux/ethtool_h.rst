@@ -2268,6 +2268,98 @@ queue_mask
 data
     A complete command structure following for each of the queues addressed
 
+.. _`ethtool_fecparam`:
+
+struct ethtool_fecparam
+=======================
+
+.. c:type:: struct ethtool_fecparam
+
+    Ethernet forward error correction(fec) parameters
+
+.. _`ethtool_fecparam.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ethtool_fecparam {
+        __u32 cmd;
+        __u32 active_fec;
+        __u32 fec;
+        __u32 reserved;
+    }
+
+.. _`ethtool_fecparam.members`:
+
+Members
+-------
+
+cmd
+    Command number = \ ``ETHTOOL_GFECPARAM``\  or \ ``ETHTOOL_SFECPARAM``\ 
+
+active_fec
+    FEC mode which is active on porte
+
+fec
+    Bitmask of supported/configured FEC modes
+
+reserved
+    *undescribed*
+
+.. _`ethtool_fecparam.description`:
+
+Description
+-----------
+
+Drivers should reject a non-zero setting of \ ``autoneg``\  when
+autoneogotiation is disabled (or not supported) for the link.
+
+.. _`ethtool_fec_config_bits`:
+
+enum ethtool_fec_config_bits
+============================
+
+.. c:type:: enum ethtool_fec_config_bits
+
+    flags definition of ethtool_fec_configuration
+
+.. _`ethtool_fec_config_bits.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ethtool_fec_config_bits {
+        ETHTOOL_FEC_NONE_BIT,
+        ETHTOOL_FEC_AUTO_BIT,
+        ETHTOOL_FEC_OFF_BIT,
+        ETHTOOL_FEC_RS_BIT,
+        ETHTOOL_FEC_BASER_BIT
+    };
+
+.. _`ethtool_fec_config_bits.constants`:
+
+Constants
+---------
+
+ETHTOOL_FEC_NONE_BIT
+    *undescribed*
+
+ETHTOOL_FEC_AUTO_BIT
+    *undescribed*
+
+ETHTOOL_FEC_OFF_BIT
+    *undescribed*
+
+ETHTOOL_FEC_RS_BIT
+    *undescribed*
+
+ETHTOOL_FEC_BASER_BIT
+    *undescribed*
+
 .. _`ethtool_link_settings`:
 
 struct ethtool_link_settings

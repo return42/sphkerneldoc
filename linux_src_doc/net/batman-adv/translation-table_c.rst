@@ -771,6 +771,47 @@ Return
 
 true if found, false otherwise
 
+.. _`batadv_tt_global_sync_flags`:
+
+batadv_tt_global_sync_flags
+===========================
+
+.. c:function:: void batadv_tt_global_sync_flags(struct batadv_tt_global_entry *tt_global)
+
+    update TT sync flags
+
+    :param struct batadv_tt_global_entry \*tt_global:
+        the TT global entry to update sync flags in
+
+.. _`batadv_tt_global_sync_flags.description`:
+
+Description
+-----------
+
+Updates the sync flag bits in the tt_global flag attribute with a logical
+OR of all sync flags from any of its TT orig entries.
+
+.. _`batadv_tt_global_orig_entry_add`:
+
+batadv_tt_global_orig_entry_add
+===============================
+
+.. c:function:: void batadv_tt_global_orig_entry_add(struct batadv_tt_global_entry *tt_global, struct batadv_orig_node *orig_node, int ttvn, u8 flags)
+
+    add or update a TT orig entry
+
+    :param struct batadv_tt_global_entry \*tt_global:
+        the TT global entry to add an orig entry in
+
+    :param struct batadv_orig_node \*orig_node:
+        the originator to add an orig entry for
+
+    :param int ttvn:
+        translation table version number of this changeset
+
+    :param u8 flags:
+        TT sync flags
+
 .. _`batadv_tt_global_add`:
 
 batadv_tt_global_add

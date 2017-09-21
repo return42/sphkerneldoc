@@ -44,7 +44,7 @@ gfs2_inode_lookup
 
     :param unsigned int blktype:
         Requested block type (GFS2_BLKST_DINODE or GFS2_BLKST_UNLINKED;
-        GFS2_BLKST_FREE do indicate not to verify)
+        GFS2_BLKST_FREE to indicate not to verify)
 
 .. _`gfs2_inode_lookup.description`:
 

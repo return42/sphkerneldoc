@@ -27,9 +27,10 @@ Description
 Move \ ``bfqq``\  to \ ``bfqg``\ , deactivating it from its old group and reactivating
 it on the new one.  Avoid putting the entity on the old group idle tree.
 
-Must be called under the queue lock; the cgroup owning \ ``bfqg``\  must
-not disappear (by now this just means that we are called under
-\ :c:func:`rcu_read_lock`\ ).
+Must be called under the scheduler lock, to make sure that the blkg
+owning \ ``bfqg``\  does not disappear (see comments in
+bfq_bic_update_cgroup on guaranteeing the consistency of blkg
+objects).
 
 .. _`__bfq_bic_change_cgroup`:
 
@@ -54,8 +55,9 @@ __bfq_bic_change_cgroup
 Description
 -----------
 
-Move bic to blkcg, assuming that bfqd->queue is locked; the caller
-has to make sure that the reference to cgroup is valid across the call.
+Move bic to blkcg, assuming that bfqd->lock is held; which makes
+sure that the reference to cgroup is valid across the call (see
+comments in bfq_bic_update_cgroup on this issue)
 
 .. _`__bfq_bic_change_cgroup.note`:
 
@@ -110,13 +112,6 @@ bfq_reparent_active_entities
 
     :param struct bfq_service_tree \*st:
         the service tree with the entities.
-
-.. _`bfq_reparent_active_entities.description`:
-
-Description
------------
-
-Needs queue_lock to be taken and reference to be valid over the call.
 
 .. _`bfq_pd_offline`:
 

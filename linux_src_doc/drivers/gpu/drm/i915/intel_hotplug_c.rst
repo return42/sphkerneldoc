@@ -49,6 +49,46 @@ this is specific to DP sinks handled by this routine and any other display
 such as HDMI or DVI enabled on the same port will have proper logic since
 it will use i915_hotplug_work_func where this logic is handled.
 
+.. _`intel_hpd_pin_to_port`:
+
+intel_hpd_pin_to_port
+=====================
+
+.. c:function:: enum port intel_hpd_pin_to_port(enum hpd_pin pin)
+
+    return port hard associated with certain pin.
+
+    :param enum hpd_pin pin:
+        the hpd pin to get associated port
+
+.. _`intel_hpd_pin_to_port.description`:
+
+Description
+-----------
+
+Return port that is associatade with \ ``pin``\  and PORT_NONE if no port is
+hard associated with that \ ``pin``\ .
+
+.. _`intel_hpd_pin`:
+
+intel_hpd_pin
+=============
+
+.. c:function:: enum hpd_pin intel_hpd_pin(enum port port)
+
+    return pin hard associated with certain port.
+
+    :param enum port port:
+        the hpd port to get associated pin
+
+.. _`intel_hpd_pin.description`:
+
+Description
+-----------
+
+Return pin that is associatade with \ ``port``\  and HDP_NONE if no pin is
+hard associated with that \ ``port``\ .
+
 .. _`intel_hpd_irq_storm_detect`:
 
 intel_hpd_irq_storm_detect

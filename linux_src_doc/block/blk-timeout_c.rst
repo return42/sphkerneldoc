@@ -42,7 +42,6 @@ Notes
 
 Each request has its own timer, and as it is added to the queue, we
 set up the timer. When the request completes, we cancel the timer.
-Queue lock must be held for the non-mq case, mq case doesn't care.
 
 .. This file was automatic generated / don't edit.
 

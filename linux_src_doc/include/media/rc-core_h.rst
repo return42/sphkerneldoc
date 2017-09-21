@@ -125,13 +125,12 @@ Definition
 
     struct rc_dev {
         struct device dev;
-        atomic_t initialized;
         bool managed_alloc;
         const struct attribute_group  *sysfs_groups;
-        const char *input_name;
+        const char *device_name;
         const char *input_phys;
         struct input_id input_id;
-        char *driver_name;
+        const char *driver_name;
         const char *map_name;
         struct rc_map rc_map;
         struct mutex lock;
@@ -144,7 +143,7 @@ Definition
         u64 allowed_protocols;
         u64 enabled_protocols;
         u64 allowed_wakeup_protocols;
-        enum rc_type wakeup_protocol;
+        enum rc_proto wakeup_protocol;
         struct rc_scancode_filter scancode_filter;
         struct rc_scancode_filter scancode_wakeup_filter;
         u32 scancode_mask;
@@ -155,7 +154,7 @@ Definition
         unsigned long keyup_jiffies;
         struct timer_list timer_keyup;
         u32 last_keycode;
-        enum rc_type last_protocol;
+        enum rc_proto last_protocol;
         u32 last_scancode;
         u8 last_toggle;
         u32 timeout;
@@ -163,7 +162,7 @@ Definition
         u32 max_timeout;
         u32 rx_resolution;
         u32 tx_resolution;
-        int (*change_protocol)(struct rc_dev *dev, u64 *rc_type);
+        int (*change_protocol)(struct rc_dev *dev, u64 *rc_proto);
         int (*open)(struct rc_dev *dev);
         void (*close)(struct rc_dev *dev);
         int (*s_tx_mask)(struct rc_dev *dev, u32 mask);
@@ -187,17 +186,14 @@ Members
 dev
     driver model's view of this device
 
-initialized
-    1 if the device init has completed, 0 otherwise
-
 managed_alloc
     devm_rc_allocate_device was used to create rc_dev
 
 sysfs_groups
     sysfs attribute groups
 
-input_name
-    name of the input child device
+device_name
+    name of the rc child device
 
 input_phys
     physical path to the input child device
@@ -238,17 +234,18 @@ encode_wakeup
     wakeup protocols is the set of all raw encoders
 
 allowed_protocols
-    bitmask with the supported RC_BIT_* protocols
+    bitmask with the supported RC_PROTO_BIT_* protocols
 
 enabled_protocols
-    bitmask with the enabled RC_BIT_* protocols
+    bitmask with the enabled RC_PROTO_BIT_* protocols
 
 allowed_wakeup_protocols
-    bitmask with the supported RC_BIT_* wakeup protocols
+    bitmask with the supported RC_PROTO_BIT_* wakeup
+    protocols
 
 wakeup_protocol
-    the enabled RC_TYPE_* wakeup protocol or
-    RC_TYPE_UNKNOWN if disabled.
+    the enabled RC_PROTO_* wakeup protocol or
+    RC_PROTO_UNKNOWN if disabled.
 
 scancode_filter
     scancode filter

@@ -73,6 +73,7 @@ Definition
         unsigned u1_enable:1;
         unsigned u2_enable:1;
         unsigned is_u3_ip:1;
+        unsigned delayed_status:1;
         u8 address;
         u8 test_mode_nr;
         u32 hw_version;
@@ -174,6 +175,9 @@ u2_enable
 
 is_u3_ip
     *undescribed*
+
+delayed_status
+    true when function drivers ask for delayed status
 
 address
     *undescribed*

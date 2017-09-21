@@ -8,7 +8,6 @@ dma
     :maxdepth: 1
 
     bestcomm/index
-    dw/index
     ioat/index
     ipu/index
     ppc4xx/index
@@ -16,6 +15,7 @@ dma
     sh/index
     xilinx/index
     acpi-dma_c
+    altera-msgdma_c
     amba-pl08x_c
     at_hdmac_c
     at_hdmac_regs_h

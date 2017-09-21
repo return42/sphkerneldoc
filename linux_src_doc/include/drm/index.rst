@@ -35,7 +35,6 @@ drm
     drm_gem_cma_helper_h
     drm_gem_h
     drm_ioctl_h
-    drm_irq_h
     drm_legacy_h
     drm_mipi_dsi_h
     drm_mm_h
@@ -52,5 +51,7 @@ drm
     drm_rect_h
     drm_scdc_helper_h
     drm_simple_kms_helper_h
+    drm_syncobj_h
+    drm_vblank_h
     drm_vma_manager_h
     i915_component_h

@@ -20,6 +20,7 @@ Definition
     struct nla_policy {
         u16 type;
         u16 len;
+        void *validation_data;
     }
 
 .. _`nla_policy.members`:
@@ -32,6 +33,9 @@ type
 
 len
     Type specific length of payload
+
+validation_data
+    *undescribed*
 
 .. _`nla_policy.description`:
 
@@ -56,6 +60,7 @@ NLA_S32, NLA_S64,
 NLA_MSECS            Leaving the length field zero will verify the
 given type fits, using it verifies minimum length
 just like "All other"
+NLA_BITFIELD32      A 32-bit bitmap/bitselector attribute
 All other            Minimum length of attribute payload
 
 .. _`nla_policy.example`:
@@ -69,6 +74,7 @@ Example
          [ATTR_FOO] = { .type = NLA_U16 },
          [ATTR_BAR] = { .type = NLA_STRING, .len = BARSIZ },
          [ATTR_BAZ] = { .len = sizeof(struct mystruct) },
+         [ATTR_GOO] = { .type = NLA_BITFIELD32, .validation_data = &myvalidflags },
     };
 
 
@@ -1442,6 +1448,18 @@ nla_get_in6_addr
 
     :param const struct nlattr \*nla:
         IPv6 address netlink attribute
+
+.. _`nla_get_bitfield32`:
+
+nla_get_bitfield32
+==================
+
+.. c:function:: struct nla_bitfield32 nla_get_bitfield32(const struct nlattr *nla)
+
+    return payload of 32 bitfield attribute
+
+    :param const struct nlattr \*nla:
+        nla_bitfield32 attribute
 
 .. _`nla_memdup`:
 

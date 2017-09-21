@@ -33,6 +33,28 @@ Return
 
 0 on success; Error code otherwise.
 
+.. _`fman_port_use_kg_hash`:
+
+fman_port_use_kg_hash
+=====================
+
+.. c:function:: void fman_port_use_kg_hash(struct fman_port *port, bool enable)
+
+    :param struct fman_port \*port:
+        *undescribed*
+
+    :param bool enable:
+        *undescribed*
+
+.. _`fman_port_use_kg_hash.port`:
+
+port
+----
+
+A pointer to a FM Port module.
+Sets the HW KeyGen or the BMI as HW Parser next engine, enabling
+or bypassing the KeyGen hashing of Rx traffic
+
 .. _`fman_port_init`:
 
 fman_port_init

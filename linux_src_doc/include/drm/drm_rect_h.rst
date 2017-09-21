@@ -49,6 +49,56 @@ x2
 y2
     vertical ending coordinate (exclusive)
 
+.. _`drm_rect_fmt`:
+
+DRM_RECT_FMT
+============
+
+.. c:function::  DRM_RECT_FMT()
+
+    printf string for \ :c:type:`struct drm_rect <drm_rect>`\ 
+
+.. _`drm_rect_arg`:
+
+DRM_RECT_ARG
+============
+
+.. c:function::  DRM_RECT_ARG( r)
+
+    printf arguments for \ :c:type:`struct drm_rect <drm_rect>`\ 
+
+    :param  r:
+        rectangle struct
+
+.. _`drm_rect_fp_fmt`:
+
+DRM_RECT_FP_FMT
+===============
+
+.. c:function::  DRM_RECT_FP_FMT()
+
+    printf string for \ :c:type:`struct drm_rect <drm_rect>`\  in 16.16 fixed point
+
+.. _`drm_rect_fp_arg`:
+
+DRM_RECT_FP_ARG
+===============
+
+.. c:function::  DRM_RECT_FP_ARG( r)
+
+    printf arguments for \ :c:type:`struct drm_rect <drm_rect>`\  in 16.16 fixed point
+
+    :param  r:
+        rectangle struct
+
+.. _`drm_rect_fp_arg.description`:
+
+Description
+-----------
+
+This is useful for e.g. printing plane source rectangles, which are in 16.16
+fixed point.
+
 .. _`drm_rect_adjust_size`:
 
 drm_rect_adjust_size

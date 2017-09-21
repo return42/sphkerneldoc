@@ -1,24 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/unisys/visorbus/visorchannel.c
 
-.. _`visorchannel_get_uuid`:
+.. _`visorchannel_get_guid`:
 
-visorchannel_get_uuid
+visorchannel_get_guid
 =====================
 
-.. c:function:: uuid_le visorchannel_get_uuid(struct visorchannel *channel)
+.. c:function:: const guid_t *visorchannel_get_guid(struct visorchannel *channel)
 
-    queries the UUID of the designated channel
+    queries the GUID of the designated channel
 
     :param struct visorchannel \*channel:
         the channel to query
 
-.. _`visorchannel_get_uuid.return`:
+.. _`visorchannel_get_guid.return`:
 
 Return
 ------
 
-the UUID of the provided channel
+the GUID of the provided channel
 
 .. _`visorchannel_signalremove`:
 

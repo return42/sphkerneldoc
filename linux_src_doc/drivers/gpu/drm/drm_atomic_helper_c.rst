@@ -59,13 +59,15 @@ the various per-object callbacks in the follow order:
 2. \ :c:type:`drm_connector_helper_funcs.atomic_check <drm_connector_helper_funcs>`\  to validate the connector state.
 3. If it's determined a modeset is needed then all connectors on the affected crtc
    crtc are added and \ :c:type:`drm_connector_helper_funcs.atomic_check <drm_connector_helper_funcs>`\  is run on them.
-4. \ :c:type:`drm_bridge_funcs.mode_fixup <drm_bridge_funcs>`\  is called on all encoder bridges.
-5. \ :c:type:`drm_encoder_helper_funcs.atomic_check <drm_encoder_helper_funcs>`\  is called to validate any encoder state.
+4. \ :c:type:`drm_encoder_helper_funcs.mode_valid <drm_encoder_helper_funcs>`\ , \ :c:type:`drm_bridge_funcs.mode_valid <drm_bridge_funcs>`\  and
+   \ :c:type:`drm_crtc_helper_funcs.mode_valid <drm_crtc_helper_funcs>`\  are called on the affected components.
+5. \ :c:type:`drm_bridge_funcs.mode_fixup <drm_bridge_funcs>`\  is called on all encoder bridges.
+6. \ :c:type:`drm_encoder_helper_funcs.atomic_check <drm_encoder_helper_funcs>`\  is called to validate any encoder state.
    This function is only called when the encoder will be part of a configured crtc,
    it must not be used for implementing connector property validation.
    If this function is NULL, \ :c:type:`drm_atomic_encoder_helper_funcs.mode_fixup <drm_atomic_encoder_helper_funcs>`\  is called
    instead.
-6. \ :c:type:`drm_crtc_helper_funcs.mode_fixup <drm_crtc_helper_funcs>`\  is called last, to fix up the mode with crtc constraints.
+7. \ :c:type:`drm_crtc_helper_funcs.mode_fixup <drm_crtc_helper_funcs>`\  is called last, to fix up the mode with crtc constraints.
 
 \ :c:type:`drm_crtc_state.mode_changed <drm_crtc_state>`\  is set when the input mode is changed.
 \ :c:type:`drm_crtc_state.connectors_changed <drm_crtc_state>`\  is set when a connector is added or
@@ -286,8 +288,8 @@ just uses the atomic state to find the changed planes)
 
 Note that \ ``pre_swap``\  is needed since the point where we block for fences moves
 around depending upon whether an atomic commit is blocking or
-non-blocking. For async commit all waiting needs to happen after
-\ :c:func:`drm_atomic_helper_swap_state`\  is called, but for synchronous commits we want
+non-blocking. For non-blocking commit all waiting needs to happen after
+\ :c:func:`drm_atomic_helper_swap_state`\  is called, but for blocking commits we want
 to wait **before** we do anything that can't be easily rolled back. That is
 before we call \ :c:func:`drm_atomic_helper_swap_state`\ .
 
@@ -315,9 +317,43 @@ Description
 
 Helper to, after atomic commit, wait for vblanks on all effected
 crtcs (ie. before cleaning up old framebuffers using
-\ :c:func:`drm_atomic_helper_cleanup_planes`\ ). It will only wait on crtcs where the
+\ :c:func:`drm_atomic_helper_cleanup_planes`\ ). It will only wait on CRTCs where the
 framebuffers have actually changed to optimize for the legacy cursor and
 plane update use-case.
+
+Drivers using the nonblocking commit tracking support initialized by calling
+\ :c:func:`drm_atomic_helper_setup_commit`\  should look at
+\ :c:func:`drm_atomic_helper_wait_for_flip_done`\  as an alternative.
+
+.. _`drm_atomic_helper_wait_for_flip_done`:
+
+drm_atomic_helper_wait_for_flip_done
+====================================
+
+.. c:function:: void drm_atomic_helper_wait_for_flip_done(struct drm_device *dev, struct drm_atomic_state *old_state)
+
+    wait for all page flips to be done
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_atomic_state \*old_state:
+        atomic state object with old state structures
+
+.. _`drm_atomic_helper_wait_for_flip_done.description`:
+
+Description
+-----------
+
+Helper to, after atomic commit, wait for page flips on all effected
+crtcs (ie. before cleaning up old framebuffers using
+\ :c:func:`drm_atomic_helper_cleanup_planes`\ ). Compared to
+\ :c:func:`drm_atomic_helper_wait_for_vblanks`\  this waits for the completion of on all
+CRTCs, assuming that cursors-only updates are signalling their completion
+immediately (or using a different path).
+
+This requires that drivers use the nonblocking commit tracking support
+initialized using \ :c:func:`drm_atomic_helper_setup_commit`\ .
 
 .. _`drm_atomic_helper_commit_tail`:
 
@@ -337,23 +373,90 @@ Description
 -----------
 
 This is the default implementation for the
-\ :c:type:`drm_mode_config_helper_funcs.atomic_commit_tail <drm_mode_config_helper_funcs>`\  hook.
+\ :c:type:`drm_mode_config_helper_funcs.atomic_commit_tail <drm_mode_config_helper_funcs>`\  hook, for drivers
+that do not support runtime_pm or do not need the CRTC to be
+enabled to perform a commit. Otherwise, see
+\ :c:func:`drm_atomic_helper_commit_tail_rpm`\ .
 
 Note that the default ordering of how the various stages are called is to
-match the legacy modeset helper library closest. One peculiarity of that is
-that it doesn't mesh well with runtime PM at all.
+match the legacy modeset helper library closest.
 
-For drivers supporting runtime PM the recommended sequence is instead ::
+.. _`drm_atomic_helper_commit_tail_rpm`:
 
-    drm_atomic_helper_commit_modeset_disables(dev, old_state);
+drm_atomic_helper_commit_tail_rpm
+=================================
 
-    drm_atomic_helper_commit_modeset_enables(dev, old_state);
+.. c:function:: void drm_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
 
-    drm_atomic_helper_commit_planes(dev, old_state,
-                                    DRM_PLANE_COMMIT_ACTIVE_ONLY);
+    commit atomic update to hardware
 
-for committing the atomic update to hardware.  See the kerneldoc entries for
-these three functions for more details.
+    :param struct drm_atomic_state \*old_state:
+        new modeset state to be committed
+
+.. _`drm_atomic_helper_commit_tail_rpm.description`:
+
+Description
+-----------
+
+This is an alternative implementation for the
+\ :c:type:`drm_mode_config_helper_funcs.atomic_commit_tail <drm_mode_config_helper_funcs>`\  hook, for drivers
+that support runtime_pm or need the CRTC to be enabled to perform a
+commit. Otherwise, one should use the default implementation
+\ :c:func:`drm_atomic_helper_commit_tail`\ .
+
+.. _`drm_atomic_helper_async_check`:
+
+drm_atomic_helper_async_check
+=============================
+
+.. c:function:: int drm_atomic_helper_async_check(struct drm_device *dev, struct drm_atomic_state *state)
+
+    check if state can be commited asynchronously
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_atomic_state \*state:
+        the driver state object
+
+.. _`drm_atomic_helper_async_check.description`:
+
+Description
+-----------
+
+This helper will check if it is possible to commit the state asynchronously.
+Async commits are not supposed to swap the states like normal sync commits
+but just do in-place changes on the current state.
+
+It will return 0 if the commit can happen in an asynchronous fashion or error
+if not. Note that error just mean it can't be commited asynchronously, if it
+fails the commit should be treated like a normal synchronous commit.
+
+.. _`drm_atomic_helper_async_commit`:
+
+drm_atomic_helper_async_commit
+==============================
+
+.. c:function:: void drm_atomic_helper_async_commit(struct drm_device *dev, struct drm_atomic_state *state)
+
+    commit state asynchronously
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_atomic_state \*state:
+        the driver state object
+
+.. _`drm_atomic_helper_async_commit.description`:
+
+Description
+-----------
+
+This function commits a state asynchronously, i.e., not vblank
+synchronized. It should be used on a state only when
+\ :c:func:`drm_atomic_async_check`\  succeeds. Async commits are not supposed to swap
+the states like normal sync commits, but just do in-place changes on the
+current state.
 
 .. _`drm_atomic_helper_commit`:
 
@@ -758,7 +861,7 @@ fails at any point after calling \ :c:func:`drm_atomic_helper_prepare_planes`\ .
 drm_atomic_helper_swap_state
 ============================
 
-.. c:function:: void drm_atomic_helper_swap_state(struct drm_atomic_state *state, bool stall)
+.. c:function:: int drm_atomic_helper_swap_state(struct drm_atomic_state *state, bool stall)
 
     store atomic state into current sw state
 
@@ -766,7 +869,7 @@ drm_atomic_helper_swap_state
         atomic state
 
     :param bool stall:
-        stall for proceeding commits
+        stall for preceeding commits
 
 .. _`drm_atomic_helper_swap_state.description`:
 
@@ -778,7 +881,7 @@ driver objects. It should be called after all failing steps have been done
 and succeeded, but before the actual hardware state is committed.
 
 For cleanup and error recovery the current state for all changed objects will
-be swaped into \ ``state``\ .
+be swapped into \ ``state``\ .
 
 With that sequence it fits perfectly into the plane prepare/cleanup sequence:
 
@@ -797,6 +900,15 @@ contains the old state. Also do any other cleanup required with that state.
 the \ :c:type:`drm_plane.state <drm_plane>`\ , \ :c:type:`drm_crtc.state <drm_crtc>`\  or \ :c:type:`drm_connector.state <drm_connector>`\  pointer. With
 the current atomic helpers this is almost always the case, since the helpers
 don't pass the right state structures to the callbacks.
+
+.. _`drm_atomic_helper_swap_state.return`:
+
+Return
+------
+
+
+Returns 0 on success. Can return -ERESTARTSYS when \ ``stall``\  is true and the
+waiting for the previous commits has been interrupted.
 
 .. _`drm_atomic_helper_update_plane`:
 
@@ -1119,105 +1231,6 @@ See also
 
 drm_atomic_helper_suspend()
 
-.. _`drm_atomic_helper_crtc_set_property`:
-
-drm_atomic_helper_crtc_set_property
-===================================
-
-.. c:function:: int drm_atomic_helper_crtc_set_property(struct drm_crtc *crtc, struct drm_property *property, uint64_t val)
-
-    helper for crtc properties
-
-    :param struct drm_crtc \*crtc:
-        DRM crtc
-
-    :param struct drm_property \*property:
-        DRM property
-
-    :param uint64_t val:
-        value of property
-
-.. _`drm_atomic_helper_crtc_set_property.description`:
-
-Description
------------
-
-Provides a default crtc set_property handler using the atomic driver
-interface.
-
-.. _`drm_atomic_helper_crtc_set_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_helper_plane_set_property`:
-
-drm_atomic_helper_plane_set_property
-====================================
-
-.. c:function:: int drm_atomic_helper_plane_set_property(struct drm_plane *plane, struct drm_property *property, uint64_t val)
-
-    helper for plane properties
-
-    :param struct drm_plane \*plane:
-        DRM plane
-
-    :param struct drm_property \*property:
-        DRM property
-
-    :param uint64_t val:
-        value of property
-
-.. _`drm_atomic_helper_plane_set_property.description`:
-
-Description
------------
-
-Provides a default plane set_property handler using the atomic driver
-interface.
-
-.. _`drm_atomic_helper_plane_set_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
-.. _`drm_atomic_helper_connector_set_property`:
-
-drm_atomic_helper_connector_set_property
-========================================
-
-.. c:function:: int drm_atomic_helper_connector_set_property(struct drm_connector *connector, struct drm_property *property, uint64_t val)
-
-    helper for connector properties
-
-    :param struct drm_connector \*connector:
-        DRM connector
-
-    :param struct drm_property \*property:
-        DRM property
-
-    :param uint64_t val:
-        value of property
-
-.. _`drm_atomic_helper_connector_set_property.description`:
-
-Description
------------
-
-Provides a default connector set_property handler using the atomic driver
-interface.
-
-.. _`drm_atomic_helper_connector_set_property.return`:
-
-Return
-------
-
-Zero on success, error code on failure
-
 .. _`drm_atomic_helper_page_flip`:
 
 drm_atomic_helper_page_flip
@@ -1301,38 +1314,6 @@ Similar to \ :c:func:`drm_atomic_helper_page_flip`\  with extra parameter to spe
 target vblank period to flip.
 
 .. _`drm_atomic_helper_page_flip_target.return`:
-
-Return
-------
-
-Returns 0 on success, negative errno numbers on failure.
-
-.. _`drm_atomic_helper_connector_dpms`:
-
-drm_atomic_helper_connector_dpms
-================================
-
-.. c:function:: int drm_atomic_helper_connector_dpms(struct drm_connector *connector, int mode)
-
-    connector dpms helper implementation
-
-    :param struct drm_connector \*connector:
-        affected connector
-
-    :param int mode:
-        DPMS mode
-
-.. _`drm_atomic_helper_connector_dpms.description`:
-
-Description
------------
-
-This is the main helper function provided by the atomic helper framework for
-implementing the legacy DPMS connector interface. It computes the new desired
-\ :c:type:`drm_crtc_state.active <drm_crtc_state>`\  state for the corresponding CRTC (if the connector is
-enabled) and updates it.
-
-.. _`drm_atomic_helper_connector_dpms.return`:
 
 Return
 ------
@@ -1812,7 +1793,31 @@ Description
 
 Implements support for legacy gamma correction table for drivers
 that support color management through the DEGAMMA_LUT/GAMMA_LUT
-properties.
+properties. See \ :c:func:`drm_crtc_enable_color_mgmt`\  and the containing chapter for
+how the atomic color management and gamma tables work.
+
+.. _`__drm_atomic_helper_private_obj_duplicate_state`:
+
+__drm_atomic_helper_private_obj_duplicate_state
+===============================================
+
+.. c:function:: void __drm_atomic_helper_private_obj_duplicate_state(struct drm_private_obj *obj, struct drm_private_state *state)
+
+    copy atomic private state
+
+    :param struct drm_private_obj \*obj:
+        CRTC object
+
+    :param struct drm_private_state \*state:
+        new private object state
+
+.. _`__drm_atomic_helper_private_obj_duplicate_state.description`:
+
+Description
+-----------
+
+Copies atomic state from a private objects's current state and resets inferred values.
+This is useful for drivers that subclass the private state.
 
 .. This file was automatic generated / don't edit.
 

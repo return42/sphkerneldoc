@@ -28,11 +28,11 @@ Check if property \ ``propname``\  is present in the device firmware description
 fwnode_property_present
 =======================
 
-.. c:function:: bool fwnode_property_present(struct fwnode_handle *fwnode, const char *propname)
+.. c:function:: bool fwnode_property_present(const struct fwnode_handle *fwnode, const char *propname)
 
     check if a property of a firmware node is present
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node whose property to check
 
     :param const char \*propname:
@@ -327,11 +327,11 @@ Return
 fwnode_property_read_u8_array
 =============================
 
-.. c:function:: int fwnode_property_read_u8_array(struct fwnode_handle *fwnode, const char *propname, u8 *val, size_t nval)
+.. c:function:: int fwnode_property_read_u8_array(const struct fwnode_handle *fwnode, const char *propname, u8 *val, size_t nval)
 
     return a u8 array property of firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -369,11 +369,11 @@ number of values if \ ``val``\  was \ ``NULL``\ ,
 fwnode_property_read_u16_array
 ==============================
 
-.. c:function:: int fwnode_property_read_u16_array(struct fwnode_handle *fwnode, const char *propname, u16 *val, size_t nval)
+.. c:function:: int fwnode_property_read_u16_array(const struct fwnode_handle *fwnode, const char *propname, u16 *val, size_t nval)
 
     return a u16 array property of firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -411,11 +411,11 @@ number of values if \ ``val``\  was \ ``NULL``\ ,
 fwnode_property_read_u32_array
 ==============================
 
-.. c:function:: int fwnode_property_read_u32_array(struct fwnode_handle *fwnode, const char *propname, u32 *val, size_t nval)
+.. c:function:: int fwnode_property_read_u32_array(const struct fwnode_handle *fwnode, const char *propname, u32 *val, size_t nval)
 
     return a u32 array property of firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -453,11 +453,11 @@ number of values if \ ``val``\  was \ ``NULL``\ ,
 fwnode_property_read_u64_array
 ==============================
 
-.. c:function:: int fwnode_property_read_u64_array(struct fwnode_handle *fwnode, const char *propname, u64 *val, size_t nval)
+.. c:function:: int fwnode_property_read_u64_array(const struct fwnode_handle *fwnode, const char *propname, u64 *val, size_t nval)
 
     return a u64 array property firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -495,11 +495,11 @@ number of values if \ ``val``\  was \ ``NULL``\ ,
 fwnode_property_read_string_array
 =================================
 
-.. c:function:: int fwnode_property_read_string_array(struct fwnode_handle *fwnode, const char *propname, const char **val, size_t nval)
+.. c:function:: int fwnode_property_read_string_array(const struct fwnode_handle *fwnode, const char *propname, const char **val, size_t nval)
 
     return string array property of a node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -537,11 +537,11 @@ number of values available on success if \ ``val``\  is NULL,
 fwnode_property_read_string
 ===========================
 
-.. c:function:: int fwnode_property_read_string(struct fwnode_handle *fwnode, const char *propname, const char **val)
+.. c:function:: int fwnode_property_read_string(const struct fwnode_handle *fwnode, const char *propname, const char **val)
 
     return a string property of a firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -574,11 +574,11 @@ Return
 fwnode_property_match_string
 ============================
 
-.. c:function:: int fwnode_property_match_string(struct fwnode_handle *fwnode, const char *propname, const char *string)
+.. c:function:: int fwnode_property_match_string(const struct fwnode_handle *fwnode, const char *propname, const char *string)
 
     find a string in an array and return index
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to get the property of
 
     :param const char \*propname:
@@ -605,6 +605,46 @@ Return
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  if the property is not an array of strings,
 \ ``-ENXIO``\  if no suitable firmware interface is present.
+
+.. _`fwnode_property_get_reference_args`:
+
+fwnode_property_get_reference_args
+==================================
+
+.. c:function:: int fwnode_property_get_reference_args(const struct fwnode_handle *fwnode, const char *prop, const char *nargs_prop, unsigned int nargs, unsigned int index, struct fwnode_reference_args *args)
+
+    Find a reference with arguments
+
+    :param const struct fwnode_handle \*fwnode:
+        Firmware node where to look for the reference
+
+    :param const char \*prop:
+        The name of the property
+
+    :param const char \*nargs_prop:
+        The name of the property telling the number of
+        arguments in the referred node. NULL if \ ``nargs``\  is known,
+        otherwise \ ``nargs``\  is ignored. Only relevant on OF.
+
+    :param unsigned int nargs:
+        Number of arguments. Ignored if \ ``nargs_prop``\  is non-NULL.
+
+    :param unsigned int index:
+        Index of the reference, from zero onwards.
+
+    :param struct fwnode_reference_args \*args:
+        Result structure with reference and integer arguments.
+
+.. _`fwnode_property_get_reference_args.description`:
+
+Description
+-----------
+
+Obtain a reference based on a named property in an fwnode, with
+integer arguments.
+
+Caller is responsible to call \ :c:func:`fwnode_handle_put`\  on the returned
+args->fwnode pointer.
 
 .. _`property_entries_dup`:
 
@@ -768,11 +808,11 @@ Returns a node pointer with refcount incremented, use
 fwnode_get_parent
 =================
 
-.. c:function:: struct fwnode_handle *fwnode_get_parent(struct fwnode_handle *fwnode)
+.. c:function:: struct fwnode_handle *fwnode_get_parent(const struct fwnode_handle *fwnode)
 
     Return parent firwmare node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware whose parent is retrieved
 
 .. _`fwnode_get_parent.description`:
@@ -788,11 +828,11 @@ parent was available.
 fwnode_get_next_child_node
 ==========================
 
-.. c:function:: struct fwnode_handle *fwnode_get_next_child_node(struct fwnode_handle *fwnode, struct fwnode_handle *child)
+.. c:function:: struct fwnode_handle *fwnode_get_next_child_node(const struct fwnode_handle *fwnode, struct fwnode_handle *child)
 
     Return the next child node handle for a node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to find the next child node for.
 
     :param struct fwnode_handle \*child:
@@ -818,11 +858,11 @@ device_get_next_child_node
 fwnode_get_named_child_node
 ===========================
 
-.. c:function:: struct fwnode_handle *fwnode_get_named_child_node(struct fwnode_handle *fwnode, const char *childname)
+.. c:function:: struct fwnode_handle *fwnode_get_named_child_node(const struct fwnode_handle *fwnode, const char *childname)
 
     Return first matching named child node handle
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Firmware node to find the named child node for.
 
     :param const char \*childname:
@@ -875,6 +915,18 @@ Description
 This has to be used when terminating \ :c:func:`device_for_each_child_node`\  iteration
 with break or return to prevent stale device node references from being left
 behind.
+
+.. _`fwnode_device_is_available`:
+
+fwnode_device_is_available
+==========================
+
+.. c:function:: bool fwnode_device_is_available(const struct fwnode_handle *fwnode)
+
+    check if a device is available for use
+
+    :param const struct fwnode_handle \*fwnode:
+        Pointer to the fwnode of the device.
 
 .. _`device_get_child_node_count`:
 
@@ -954,11 +1006,11 @@ exists but is all zeros.
 fwnode_graph_get_next_endpoint
 ==============================
 
-.. c:function:: struct fwnode_handle *fwnode_graph_get_next_endpoint(struct fwnode_handle *fwnode, struct fwnode_handle *prev)
+.. c:function:: struct fwnode_handle *fwnode_graph_get_next_endpoint(const struct fwnode_handle *fwnode, struct fwnode_handle *prev)
 
     Get next endpoint firmware node
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Pointer to the parent firmware node
 
     :param struct fwnode_handle \*prev:
@@ -972,16 +1024,35 @@ Description
 Returns an endpoint firmware node pointer or \ ``NULL``\  if no more endpoints
 are available.
 
+.. _`fwnode_graph_get_port_parent`:
+
+fwnode_graph_get_port_parent
+============================
+
+.. c:function:: struct fwnode_handle *fwnode_graph_get_port_parent(const struct fwnode_handle *endpoint)
+
+    Return the device fwnode of a port endpoint
+
+    :param const struct fwnode_handle \*endpoint:
+        Endpoint firmware node of the port
+
+.. _`fwnode_graph_get_port_parent.return`:
+
+Return
+------
+
+the firmware node of the device the \ ``endpoint``\  belongs to.
+
 .. _`fwnode_graph_get_remote_port_parent`:
 
 fwnode_graph_get_remote_port_parent
 ===================================
 
-.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_port_parent(struct fwnode_handle *fwnode)
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_port_parent(const struct fwnode_handle *fwnode)
 
     Return fwnode of a remote device
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Endpoint firmware node pointing to the remote endpoint
 
 .. _`fwnode_graph_get_remote_port_parent.description`:
@@ -996,11 +1067,11 @@ Extracts firmware node of a remote device the \ ``fwnode``\  points to.
 fwnode_graph_get_remote_port
 ============================
 
-.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_port(struct fwnode_handle *fwnode)
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_port(const struct fwnode_handle *fwnode)
 
     Return fwnode of a remote port
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Endpoint firmware node pointing to the remote endpoint
 
 .. _`fwnode_graph_get_remote_port.description`:
@@ -1015,11 +1086,11 @@ Extracts firmware node of a remote port the \ ``fwnode``\  points to.
 fwnode_graph_get_remote_endpoint
 ================================
 
-.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_endpoint(struct fwnode_handle *fwnode)
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_endpoint(const struct fwnode_handle *fwnode)
 
     Return fwnode of a remote endpoint
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         Endpoint firmware node pointing to the remote endpoint
 
 .. _`fwnode_graph_get_remote_endpoint.description`:
@@ -1029,16 +1100,42 @@ Description
 
 Extracts firmware node of a remote endpoint the \ ``fwnode``\  points to.
 
+.. _`fwnode_graph_get_remote_node`:
+
+fwnode_graph_get_remote_node
+============================
+
+.. c:function:: struct fwnode_handle *fwnode_graph_get_remote_node(const struct fwnode_handle *fwnode, u32 port_id, u32 endpoint_id)
+
+    get remote parent node for given port/endpoint
+
+    :param const struct fwnode_handle \*fwnode:
+        pointer to parent fwnode_handle containing graph port/endpoint
+
+    :param u32 port_id:
+        identifier of the parent port node
+
+    :param u32 endpoint_id:
+        identifier of the endpoint node
+
+.. _`fwnode_graph_get_remote_node.return`:
+
+Return
+------
+
+Remote fwnode handle associated with remote endpoint node linked
+to \ ``node``\ . Use \ :c:func:`fwnode_node_put`\  on it when done.
+
 .. _`fwnode_graph_parse_endpoint`:
 
 fwnode_graph_parse_endpoint
 ===========================
 
-.. c:function:: int fwnode_graph_parse_endpoint(struct fwnode_handle *fwnode, struct fwnode_endpoint *endpoint)
+.. c:function:: int fwnode_graph_parse_endpoint(const struct fwnode_handle *fwnode, struct fwnode_endpoint *endpoint)
 
     parse common endpoint node properties
 
-    :param struct fwnode_handle \*fwnode:
+    :param const struct fwnode_handle \*fwnode:
         pointer to endpoint fwnode_handle
 
     :param struct fwnode_endpoint \*endpoint:

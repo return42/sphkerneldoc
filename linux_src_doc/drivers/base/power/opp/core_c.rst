@@ -604,6 +604,45 @@ dev_pm_opp_put_regulators
     :param struct opp_table \*opp_table:
         OPP table returned from \ :c:func:`dev_pm_opp_set_regulators`\ .
 
+.. _`dev_pm_opp_set_clkname`:
+
+dev_pm_opp_set_clkname
+======================
+
+.. c:function:: struct opp_table *dev_pm_opp_set_clkname(struct device *dev, const char *name)
+
+    Set clk name for the device
+
+    :param struct device \*dev:
+        Device for which clk name is being set.
+
+    :param const char \*name:
+        Clk name.
+
+.. _`dev_pm_opp_set_clkname.description`:
+
+Description
+-----------
+
+In order to support OPP switching, OPP layer needs to get pointer to the
+clock for the device. Simple cases work fine without using this routine (i.e.
+by passing connection-id as NULL), but for a device with multiple clocks
+available, the OPP core needs to know the exact name of the clk to use.
+
+This must be called before any OPPs are initialized for the device.
+
+.. _`dev_pm_opp_put_clkname`:
+
+dev_pm_opp_put_clkname
+======================
+
+.. c:function:: void dev_pm_opp_put_clkname(struct opp_table *opp_table)
+
+    Releases resources blocked for clk.
+
+    :param struct opp_table \*opp_table:
+        OPP table returned from \ :c:func:`dev_pm_opp_set_clkname`\ .
+
 .. _`dev_pm_opp_register_set_opp_helper`:
 
 dev_pm_opp_register_set_opp_helper

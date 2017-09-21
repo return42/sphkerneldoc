@@ -235,7 +235,7 @@ true if the display can be verified to be on, false otherwise.
 mipi_dbi_spi_init
 =================
 
-.. c:function:: int mipi_dbi_spi_init(struct spi_device *spi, struct mipi_dbi *mipi, struct gpio_desc *dc, const struct drm_simple_display_pipe_funcs *pipe_funcs, struct drm_driver *driver, const struct drm_display_mode *mode, unsigned int rotation)
+.. c:function:: int mipi_dbi_spi_init(struct spi_device *spi, struct mipi_dbi *mipi, struct gpio_desc *dc)
 
     Initialize MIPI DBI SPI interfaced controller
 
@@ -248,25 +248,14 @@ mipi_dbi_spi_init
     :param struct gpio_desc \*dc:
         D/C gpio (optional)
 
-    :param const struct drm_simple_display_pipe_funcs \*pipe_funcs:
-        Display pipe functions
-
-    :param struct drm_driver \*driver:
-        DRM driver
-
-    :param const struct drm_display_mode \*mode:
-        Display mode
-
-    :param unsigned int rotation:
-        Initial rotation in degrees Counter Clock Wise
-
 .. _`mipi_dbi_spi_init.description`:
 
 Description
 -----------
 
 This function sets \ :c:type:`mipi_dbi->command <mipi_dbi>`\ , enables \ :c:type:`mipi->read_commands <mipi>`\  for the
-usual read commands and initializes \ ``mipi``\  using \ :c:func:`mipi_dbi_init`\ .
+usual read commands. It should be followed by a call to \ :c:func:`mipi_dbi_init`\  or
+a driver-specific init.
 
 If \ ``dc``\  is set, a Type C Option 3 interface is assumed, if not
 Type C Option 1.

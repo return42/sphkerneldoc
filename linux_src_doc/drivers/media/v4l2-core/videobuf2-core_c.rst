@@ -185,29 +185,14 @@ __verify_dmabuf_ops
     :param struct vb2_queue \*q:
         *undescribed*
 
-.. _`__qbuf_mmap`:
+.. _`__prepare_mmap`:
 
-__qbuf_mmap
-===========
-
-.. c:function:: int __qbuf_mmap(struct vb2_buffer *vb, const void *pb)
-
-    handle qbuf of an MMAP buffer
-
-    :param struct vb2_buffer \*vb:
-        *undescribed*
-
-    :param const void \*pb:
-        *undescribed*
-
-.. _`__qbuf_userptr`:
-
-__qbuf_userptr
+__prepare_mmap
 ==============
 
-.. c:function:: int __qbuf_userptr(struct vb2_buffer *vb, const void *pb)
+.. c:function:: int __prepare_mmap(struct vb2_buffer *vb, const void *pb)
 
-    handle qbuf of a USERPTR buffer
+    prepare an MMAP buffer
 
     :param struct vb2_buffer \*vb:
         *undescribed*
@@ -215,14 +200,29 @@ __qbuf_userptr
     :param const void \*pb:
         *undescribed*
 
-.. _`__qbuf_dmabuf`:
+.. _`__prepare_userptr`:
 
-__qbuf_dmabuf
-=============
+__prepare_userptr
+=================
 
-.. c:function:: int __qbuf_dmabuf(struct vb2_buffer *vb, const void *pb)
+.. c:function:: int __prepare_userptr(struct vb2_buffer *vb, const void *pb)
 
-    handle qbuf of a DMABUF buffer
+    prepare a USERPTR buffer
+
+    :param struct vb2_buffer \*vb:
+        *undescribed*
+
+    :param const void \*pb:
+        *undescribed*
+
+.. _`__prepare_dmabuf`:
+
+__prepare_dmabuf
+================
+
+.. c:function:: int __prepare_dmabuf(struct vb2_buffer *vb, const void *pb)
+
+    prepare a DMABUF buffer
 
     :param struct vb2_buffer \*vb:
         *undescribed*

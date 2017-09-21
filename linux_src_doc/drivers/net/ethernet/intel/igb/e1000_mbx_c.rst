@@ -6,7 +6,7 @@
 igb_read_mbx
 ============
 
-.. c:function:: s32 igb_read_mbx(struct e1000_hw *hw, u32 *msg, u16 size, u16 mbx_id)
+.. c:function:: s32 igb_read_mbx(struct e1000_hw *hw, u32 *msg, u16 size, u16 mbx_id, bool unlock)
 
     Reads a message from the mailbox
 
@@ -21,6 +21,9 @@ igb_read_mbx
 
     :param u16 mbx_id:
         id of mailbox to read
+
+    :param bool unlock:
+        *undescribed*
 
 .. _`igb_read_mbx.description`:
 
@@ -122,6 +125,28 @@ Description
 -----------
 
 returns SUCCESS if the Status bit was found or else ERR_MBX
+
+.. _`igb_unlock_mbx`:
+
+igb_unlock_mbx
+==============
+
+.. c:function:: s32 igb_unlock_mbx(struct e1000_hw *hw, u16 mbx_id)
+
+    unlock the mailbox
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mbx_id:
+        id of mailbox to check
+
+.. _`igb_unlock_mbx.description`:
+
+Description
+-----------
+
+returns SUCCESS if the mailbox was unlocked or else ERR_MBX
 
 .. _`igb_poll_for_msg`:
 
@@ -313,6 +338,28 @@ Description
 
 return SUCCESS if we obtained the mailbox lock
 
+.. _`igb_release_mbx_lock_pf`:
+
+igb_release_mbx_lock_pf
+=======================
+
+.. c:function:: s32 igb_release_mbx_lock_pf(struct e1000_hw *hw, u16 vf_number)
+
+    release mailbox lock
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 vf_number:
+        the VF index
+
+.. _`igb_release_mbx_lock_pf.description`:
+
+Description
+-----------
+
+return SUCCESS if we released the mailbox lock
+
 .. _`igb_write_mbx_pf`:
 
 igb_write_mbx_pf
@@ -346,7 +393,7 @@ returns SUCCESS if it successfully copied message into the buffer
 igb_read_mbx_pf
 ===============
 
-.. c:function:: s32 igb_read_mbx_pf(struct e1000_hw *hw, u32 *msg, u16 size, u16 vf_number)
+.. c:function:: s32 igb_read_mbx_pf(struct e1000_hw *hw, u32 *msg, u16 size, u16 vf_number, bool unlock)
 
     Read a message from the mailbox
 
@@ -361,6 +408,9 @@ igb_read_mbx_pf
 
     :param u16 vf_number:
         the VF index
+
+    :param bool unlock:
+        unlock the mailbox when done?
 
 .. _`igb_read_mbx_pf.description`:
 

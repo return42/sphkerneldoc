@@ -110,7 +110,7 @@ devm_fwnode_get_index_gpiod_from_child
         GPIO initialization flags
 
     :param const char \*label:
-        *undescribed*
+        label to attach to the requested GPIO
 
 .. _`devm_fwnode_get_index_gpiod_from_child.description`:
 
@@ -219,7 +219,7 @@ devm_gpiod_put
     Resource-managed \ :c:func:`gpiod_put`\ 
 
     :param struct device \*dev:
-        *undescribed*
+        GPIO consumer
 
     :param struct gpio_desc \*desc:
         GPIO descriptor to dispose of
@@ -243,7 +243,7 @@ devm_gpiod_put_array
     Resource-managed \ :c:func:`gpiod_put_array`\ 
 
     :param struct device \*dev:
-        *undescribed*
+        GPIO consumer
 
     :param struct gpio_descs \*descs:
         GPIO descriptor array to dispose of
@@ -280,13 +280,13 @@ devm_gpio_request
 Description
 -----------
 
-Except for the extra \ ``dev``\  argument, this function takes the
-same arguments and performs the same function as
-\ :c:func:`gpio_request`\ .  GPIOs requested with this function will be
-automatically freed on driver detach.
+     Except for the extra \ ``dev``\  argument, this function takes the
+     same arguments and performs the same function as
+     \ :c:func:`gpio_request`\ .  GPIOs requested with this function will be
+     automatically freed on driver detach.
 
-If an GPIO allocated with this function needs to be freed
-separately, \ :c:func:`devm_gpio_free`\  must be used.
+     If an GPIO allocated with this function needs to be freed
+     separately, \ :c:func:`devm_gpio_free`\  must be used.
 
 .. _`devm_gpio_request_one`:
 
@@ -304,7 +304,7 @@ devm_gpio_request_one
         the GPIO number
 
     :param unsigned long flags:
-        GPIO configuration as specified by GPIOF\_\*
+        GPIO configuration as specified by GPIOF_*
 
     :param const char \*label:
         a literal description string of this GPIO
@@ -329,10 +329,10 @@ devm_gpio_free
 Description
 -----------
 
-Except for the extra \ ``dev``\  argument, this function takes the
-same arguments and performs the same function as \ :c:func:`gpio_free`\ .
-This function instead of \ :c:func:`gpio_free`\  should be used to manually
-free GPIOs allocated with \ :c:func:`devm_gpio_request`\ .
+     Except for the extra \ ``dev``\  argument, this function takes the
+     same arguments and performs the same function as \ :c:func:`gpio_free`\ .
+     This function instead of \ :c:func:`gpio_free`\  should be used to manually
+     free GPIOs allocated with \ :c:func:`devm_gpio_request`\ .
 
 .. This file was automatic generated / don't edit.
 

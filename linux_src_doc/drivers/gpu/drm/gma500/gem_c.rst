@@ -1,35 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/gma500/gem.c
 
-.. _`psb_gem_dumb_map_gtt`:
-
-psb_gem_dumb_map_gtt
-====================
-
-.. c:function:: int psb_gem_dumb_map_gtt(struct drm_file *file, struct drm_device *dev, uint32_t handle, uint64_t *offset)
-
-    buffer mapping for dumb interface
-
-    :param struct drm_file \*file:
-        our drm client file
-
-    :param struct drm_device \*dev:
-        drm device
-
-    :param uint32_t handle:
-        GEM handle to the object (from dumb_create)
-
-    :param uint64_t \*offset:
-        *undescribed*
-
-.. _`psb_gem_dumb_map_gtt.description`:
-
-Description
------------
-
-Do the necessary setup to allow the mapping of the frame buffer
-into user memory. We don't have to do much here at the moment.
-
 .. _`psb_gem_create`:
 
 psb_gem_create

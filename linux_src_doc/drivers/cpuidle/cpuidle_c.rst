@@ -55,12 +55,12 @@ cpuidle_find_deepest_state
     :param struct cpuidle_device \*dev:
         cpuidle device for the given CPU.
 
-.. _`cpuidle_enter_freeze`:
+.. _`cpuidle_enter_s2idle`:
 
-cpuidle_enter_freeze
+cpuidle_enter_s2idle
 ====================
 
-.. c:function:: int cpuidle_enter_freeze(struct cpuidle_driver *drv, struct cpuidle_device *dev)
+.. c:function:: int cpuidle_enter_s2idle(struct cpuidle_driver *drv, struct cpuidle_device *dev)
 
     Enter an idle state suitable for suspend-to-idle.
 
@@ -70,12 +70,12 @@ cpuidle_enter_freeze
     :param struct cpuidle_device \*dev:
         cpuidle device for the given CPU.
 
-.. _`cpuidle_enter_freeze.description`:
+.. _`cpuidle_enter_s2idle.description`:
 
 Description
 -----------
 
-If there are states with the ->enter_freeze callback, find the deepest of
+If there are states with the ->enter_s2idle callback, find the deepest of
 them and enter it with frozen tick.
 
 .. _`cpuidle_enter_state`:

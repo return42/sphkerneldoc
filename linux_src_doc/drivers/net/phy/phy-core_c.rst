@@ -1,6 +1,45 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/phy/phy-core.c
 
+.. _`phy_lookup_setting`:
+
+phy_lookup_setting
+==================
+
+.. c:function:: const struct phy_setting *phy_lookup_setting(int speed, int duplex, const unsigned long *mask, size_t maxbit, bool exact)
+
+    lookup a PHY setting
+
+    :param int speed:
+        speed to match
+
+    :param int duplex:
+        duplex to match
+
+    :param const unsigned long \*mask:
+        allowed link modes
+
+    :param size_t maxbit:
+        bit size of link modes
+
+    :param bool exact:
+        an exact match is required
+
+.. _`phy_lookup_setting.description`:
+
+Description
+-----------
+
+Search the settings array for a setting that matches the speed and
+duplex, and which is supported.
+
+If \ ``exact``\  is unset, either an exact match or \ ``NULL``\  for no match will
+be returned.
+
+If \ ``exact``\  is set, an exact match, the fastest supported setting at
+or below the specified speed, the slowest supported setting, or if
+they all fail, \ ``NULL``\  will be returned.
+
 .. _`phy_read_mmd`:
 
 phy_read_mmd

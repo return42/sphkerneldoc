@@ -28,9 +28,12 @@ Returns the masks pointer or NULL if allocation failed.
 irq_calc_affinity_vectors
 =========================
 
-.. c:function:: int irq_calc_affinity_vectors(int maxvec, const struct irq_affinity *affd)
+.. c:function:: int irq_calc_affinity_vectors(int minvec, int maxvec, const struct irq_affinity *affd)
 
     Calculate the optimal number of vectors
+
+    :param int minvec:
+        The minimum number of vectors available
 
     :param int maxvec:
         The maximum number of vectors available

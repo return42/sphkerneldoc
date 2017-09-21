@@ -104,6 +104,39 @@ Locking
 
 caller must hold tty_mutex
 
+.. _`tty_dev_name_to_number`:
+
+tty_dev_name_to_number
+======================
+
+.. c:function:: int tty_dev_name_to_number(const char *name, dev_t *number)
+
+    return dev_t for device name
+
+    :param const char \*name:
+        user space name of device under /dev
+
+    :param dev_t \*number:
+        pointer to dev_t that this function will populate
+
+.. _`tty_dev_name_to_number.description`:
+
+Description
+-----------
+
+This function converts device names like ttyS0 or ttyUSB1 into dev_t
+like (4, 64) or (188, 1). If no corresponding driver is registered then
+the function returns -ENODEV.
+
+.. _`tty_dev_name_to_number.locking`:
+
+Locking
+-------
+
+this acquires tty_mutex to protect the tty_drivers list from
+being modified while we are traversing it, and makes sure to
+release it before exiting.
+
 .. _`tty_find_polling_driver`:
 
 tty_find_polling_driver
@@ -833,6 +866,27 @@ Description
 Performs some paranoid checking before true release of the \ ``tty``\ .
 This is a no-op unless TTY_PARANOIA_CHECK is defined.
 
+.. _`tty_kclose`:
+
+tty_kclose
+==========
+
+.. c:function:: void tty_kclose(struct tty_struct *tty)
+
+    closes tty opened by tty_kopen
+
+    :param struct tty_struct \*tty:
+        tty device
+
+.. _`tty_kclose.description`:
+
+Description
+-----------
+
+Performs the final steps to release and free a tty device. It is the
+same as tty_release_struct except that it also resets TTY_PORT_KOPENED
+flag on tty->port.
+
 .. _`tty_release_struct`:
 
 tty_release_struct
@@ -950,6 +1004,38 @@ Locking
 -------
 
 tty_mutex protects get_tty_driver
+
+.. _`tty_kopen`:
+
+tty_kopen
+=========
+
+.. c:function:: struct tty_struct *tty_kopen(dev_t device)
+
+    open a tty device for kernel
+
+    :param dev_t device:
+        dev_t of device to open
+
+.. _`tty_kopen.description`:
+
+Description
+-----------
+
+Opens tty exclusively for kernel. Performs the driver lookup,
+makes sure it's not already opened and performs the first-time
+tty initialization.
+
+Returns the locked initialized \ :c:type:`struct tty_struct <tty_struct>`\ 
+
+.. _`tty_kopen.claims-the-global-tty_mutex-to-serialize`:
+
+Claims the global tty_mutex to serialize
+----------------------------------------
+
+- concurrent first-time tty initialization
+- concurrent tty driver removal w/ lookup
+- concurrent tty removal from driver table
 
 .. _`tty_open_by_driver`:
 

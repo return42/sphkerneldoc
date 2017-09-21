@@ -71,7 +71,7 @@ try_to_wake_up_local
         the thread to be awakened
 
     :param struct rq_flags \*rf:
-        *undescribed*
+        request-queue flags for pinning
 
 .. _`try_to_wake_up_local.description`:
 

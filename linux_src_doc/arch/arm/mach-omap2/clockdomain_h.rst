@@ -214,6 +214,7 @@ Definition
         void (*clkdm_deny_idle)(struct clockdomain *clkdm);
         int (*clkdm_clk_enable)(struct clockdomain *clkdm);
         int (*clkdm_clk_disable)(struct clockdomain *clkdm);
+        u32 (*clkdm_xlate_address)(struct clockdomain *clkdm);
     }
 
 .. _`clkdm_ops.members`:
@@ -262,6 +263,9 @@ clkdm_clk_enable
 
 clkdm_clk_disable
     Put the clkdm in right state for a clock disable
+
+clkdm_xlate_address
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

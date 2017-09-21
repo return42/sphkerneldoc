@@ -13,10 +13,10 @@ hwicap_type_1_read
     :param u32 reg:
         is the address of the register to be read back.
 
-.. _`hwicap_type_1_read.description`:
+.. _`hwicap_type_1_read.return`:
 
-Description
------------
+Return
+------
 
 Generates a Type 1 read packet header, which is used to indirectly
 read registers in the configuration logic.  This packet must then
@@ -34,6 +34,13 @@ hwicap_type_1_write
 
     :param u32 reg:
         is the address of the register to be read back.
+
+.. _`hwicap_type_1_write.return`:
+
+Return
+------
+
+Type 1 write packet header
 
 .. This file was automatic generated / don't edit.
 

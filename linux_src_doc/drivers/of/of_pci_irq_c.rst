@@ -51,7 +51,8 @@ Description
 -----------
 
 @slot and \ ``pin``\  are unused, but included in the function so that this
-function can be used directly as the map_irq callback to \ :c:func:`pci_fixup_irqs`\ .
+function can be used directly as the map_irq callback to
+\ :c:func:`pci_assign_irq`\  and struct pci_host_bridge.map_irq pointer
 
 .. This file was automatic generated / don't edit.
 

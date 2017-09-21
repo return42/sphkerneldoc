@@ -100,7 +100,6 @@ Definition
         char serial;
         char bus_info;
         u32 hw_revision;
-        u32 driver_version;
         u64 topology_version;
         u32 id;
         struct ida entity_internal_idx;
@@ -146,9 +145,6 @@ bus_info
 
 hw_revision
     Hardware device revision
-
-driver_version
-    Device driver version
 
 topology_version
     Monotonic counter for storing the version of the graph
@@ -358,11 +354,6 @@ The following fields are optional
  - \ :c:type:`media_entity.hw_revision <media_entity>`\  is the hardware device revision in a
    driver-specific format. When possible the revision should be formatted
    with the \ :c:func:`KERNEL_VERSION`\  macro.
-
- - \ :c:type:`media_entity.driver_version <media_entity>`\  is formatted with the \ :c:func:`KERNEL_VERSION`\ 
-   macro. The version minor must be incremented when new features are added
-   to the userspace API without breaking binary compatibility. The version
-   major must be incremented when binary compatibility is broken.
 
 .. note::
 

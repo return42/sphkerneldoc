@@ -6,12 +6,12 @@
 i40e_vc_vf_broadcast
 ====================
 
-.. c:function:: void i40e_vc_vf_broadcast(struct i40e_pf *pf, enum i40e_virtchnl_ops v_opcode, i40e_status v_retval, u8 *msg, u16 msglen)
+.. c:function:: void i40e_vc_vf_broadcast(struct i40e_pf *pf, enum virtchnl_ops v_opcode, i40e_status v_retval, u8 *msg, u16 msglen)
 
     :param struct i40e_pf \*pf:
         pointer to the PF structure
 
-    :param enum i40e_virtchnl_ops v_opcode:
+    :param enum virtchnl_ops v_opcode:
         *undescribed*
 
     :param i40e_status v_retval:
@@ -209,7 +209,7 @@ return PF relative queue id
 i40e_config_irq_link_list
 =========================
 
-.. c:function:: void i40e_config_irq_link_list(struct i40e_vf *vf, u16 vsi_id, struct i40e_virtchnl_vector_map *vecmap)
+.. c:function:: void i40e_config_irq_link_list(struct i40e_vf *vf, u16 vsi_id, struct virtchnl_vector_map *vecmap)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
@@ -217,7 +217,7 @@ i40e_config_irq_link_list
     :param u16 vsi_id:
         id of VSI as given by the FW
 
-    :param struct i40e_virtchnl_vector_map \*vecmap:
+    :param struct virtchnl_vector_map \*vecmap:
         irq map info
 
 .. _`i40e_config_irq_link_list.description`:
@@ -242,12 +242,12 @@ i40e_release_iwarp_qvlist
 i40e_config_iwarp_qvlist
 ========================
 
-.. c:function:: int i40e_config_iwarp_qvlist(struct i40e_vf *vf, struct i40e_virtchnl_iwarp_qvlist_info *qvlist_info)
+.. c:function:: int i40e_config_iwarp_qvlist(struct i40e_vf *vf, struct virtchnl_iwarp_qvlist_info *qvlist_info)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
 
-    :param struct i40e_virtchnl_iwarp_qvlist_info \*qvlist_info:
+    :param struct virtchnl_iwarp_qvlist_info \*qvlist_info:
         queue and vector list
 
 .. _`i40e_config_iwarp_qvlist.description`:
@@ -262,7 +262,7 @@ Return 0 on success or < 0 on error
 i40e_config_vsi_tx_queue
 ========================
 
-.. c:function:: int i40e_config_vsi_tx_queue(struct i40e_vf *vf, u16 vsi_id, u16 vsi_queue_id, struct i40e_virtchnl_txq_info *info)
+.. c:function:: int i40e_config_vsi_tx_queue(struct i40e_vf *vf, u16 vsi_id, u16 vsi_queue_id, struct virtchnl_txq_info *info)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
@@ -273,7 +273,7 @@ i40e_config_vsi_tx_queue
     :param u16 vsi_queue_id:
         vsi relative queue index
 
-    :param struct i40e_virtchnl_txq_info \*info:
+    :param struct virtchnl_txq_info \*info:
         config. info
 
 .. _`i40e_config_vsi_tx_queue.description`:
@@ -288,7 +288,7 @@ configure tx queue
 i40e_config_vsi_rx_queue
 ========================
 
-.. c:function:: int i40e_config_vsi_rx_queue(struct i40e_vf *vf, u16 vsi_id, u16 vsi_queue_id, struct i40e_virtchnl_rxq_info *info)
+.. c:function:: int i40e_config_vsi_rx_queue(struct i40e_vf *vf, u16 vsi_id, u16 vsi_queue_id, struct virtchnl_rxq_info *info)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
@@ -299,7 +299,7 @@ i40e_config_vsi_rx_queue
     :param u16 vsi_queue_id:
         vsi relative queue index
 
-    :param struct i40e_virtchnl_rxq_info \*info:
+    :param struct virtchnl_rxq_info \*info:
         config. info
 
 .. _`i40e_config_vsi_rx_queue.description`:
@@ -611,12 +611,12 @@ send msg to VF
 i40e_vc_send_resp_to_vf
 =======================
 
-.. c:function:: int i40e_vc_send_resp_to_vf(struct i40e_vf *vf, enum i40e_virtchnl_ops opcode, i40e_status retval)
+.. c:function:: int i40e_vc_send_resp_to_vf(struct i40e_vf *vf, enum virtchnl_ops opcode, i40e_status retval)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
 
-    :param enum i40e_virtchnl_ops opcode:
+    :param enum virtchnl_ops opcode:
         operation code
 
     :param i40e_status retval:
@@ -1103,21 +1103,15 @@ Description
 
 Set the RSS HENA bits for the VF
 
-.. _`i40e_vc_validate_vf_msg`:
+.. _`i40e_vc_enable_vlan_stripping`:
 
-i40e_vc_validate_vf_msg
-=======================
+i40e_vc_enable_vlan_stripping
+=============================
 
-.. c:function:: int i40e_vc_validate_vf_msg(struct i40e_vf *vf, u32 v_opcode, u32 v_retval, u8 *msg, u16 msglen)
+.. c:function:: int i40e_vc_enable_vlan_stripping(struct i40e_vf *vf, u8 *msg, u16 msglen)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
-
-    :param u32 v_opcode:
-        *undescribed*
-
-    :param u32 v_retval:
-        *undescribed*
 
     :param u8 \*msg:
         pointer to the msg buffer
@@ -1125,12 +1119,35 @@ i40e_vc_validate_vf_msg
     :param u16 msglen:
         msg length
 
-.. _`i40e_vc_validate_vf_msg.description`:
+.. _`i40e_vc_enable_vlan_stripping.description`:
 
 Description
 -----------
 
-validate msg
+Enable vlan header stripping for the VF
+
+.. _`i40e_vc_disable_vlan_stripping`:
+
+i40e_vc_disable_vlan_stripping
+==============================
+
+.. c:function:: int i40e_vc_disable_vlan_stripping(struct i40e_vf *vf, u8 *msg, u16 msglen)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u8 \*msg:
+        pointer to the msg buffer
+
+    :param u16 msglen:
+        msg length
+
+.. _`i40e_vc_disable_vlan_stripping.description`:
+
+Description
+-----------
+
+Disable vlan header stripping for the VF
 
 .. _`i40e_vc_process_vf_msg`:
 

@@ -46,7 +46,7 @@ gscps2_probe
 gscps2_remove
 =============
 
-.. c:function:: int gscps2_remove(struct parisc_device *dev)
+.. c:function:: int __exit gscps2_remove(struct parisc_device *dev)
 
     Removes PS2 devices
 

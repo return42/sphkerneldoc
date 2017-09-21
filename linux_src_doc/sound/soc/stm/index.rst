@@ -9,3 +9,4 @@ stm
 
     stm32_sai_h
     stm32_sai_sub_c
+    stm32_spdifrx_c

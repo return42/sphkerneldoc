@@ -1,6 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
 
+.. _`amdgpu_bo_create_reserved`:
+
+amdgpu_bo_create_reserved
+=========================
+
+.. c:function:: int amdgpu_bo_create_reserved(struct amdgpu_device *adev, unsigned long size, int align, u32 domain, struct amdgpu_bo **bo_ptr, u64 *gpu_addr, void **cpu_addr)
+
+    create reserved BO for kernel use
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device object
+
+    :param unsigned long size:
+        size for the new BO
+
+    :param int align:
+        alignment for the new BO
+
+    :param u32 domain:
+        where to place it
+
+    :param struct amdgpu_bo \*\*bo_ptr:
+        resulting BO
+
+    :param u64 \*gpu_addr:
+        GPU addr of the pinned BO
+
+    :param void \*\*cpu_addr:
+        optional CPU address mapping
+
+.. _`amdgpu_bo_create_reserved.description`:
+
+Description
+-----------
+
+Allocates and pins a BO for kernel internal use, and returns it still
+reserved.
+
+Returns 0 on success, negative error code otherwise.
+
 .. _`amdgpu_bo_create_kernel`:
 
 amdgpu_bo_create_kernel

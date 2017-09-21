@@ -91,6 +91,7 @@ Definition
         struct i915_gem_context *ctx;
         bool enabled;
         const struct i915_perf_stream_ops *ops;
+        struct i915_oa_config *oa_config;
     }
 
 .. _`i915_perf_stream.members`:
@@ -122,6 +123,9 @@ enabled
 ops
     The callbacks providing the implementation of this specifictype of configured stream.
 
+oa_config
+    The OA configuration used by the stream.
+
 .. _`i915_oa_ops`:
 
 struct i915_oa_ops
@@ -139,19 +143,31 @@ Definition
 .. code-block:: c
 
     struct i915_oa_ops {
+        bool (*is_valid_b_counter_reg)(struct drm_i915_private *dev_priv, u32 addr);
+        bool (*is_valid_mux_reg)(struct drm_i915_private *dev_priv, u32 addr);
+        bool (*is_valid_flex_reg)(struct drm_i915_private *dev_priv, u32 addr);
         void (*init_oa_buffer)(struct drm_i915_private *dev_priv);
-        int (*enable_metric_set)(struct drm_i915_private *dev_priv);
+        int (*enable_metric_set)(struct drm_i915_private *dev_priv, const struct i915_oa_config *oa_config);
         void (*disable_metric_set)(struct drm_i915_private *dev_priv);
         void (*oa_enable)(struct drm_i915_private *dev_priv);
         void (*oa_disable)(struct drm_i915_private *dev_priv);
         int (*read)(struct i915_perf_stream *stream,char __user *buf,size_t count, size_t *offset);
-        bool (*oa_buffer_is_empty)(struct drm_i915_private *dev_priv);
+        u32 (*oa_hw_tail_read)(struct drm_i915_private *dev_priv);
     }
 
 .. _`i915_oa_ops.members`:
 
 Members
 -------
+
+is_valid_b_counter_reg
+    Validates register's address forprogramming boolean counters for a particular platform.
+
+is_valid_mux_reg
+    Validates register's address for programming muxfor a particular platform.
+
+is_valid_flex_reg
+    Validates register's address for programmingflex EU filtering for a particular platform.
 
 init_oa_buffer
     Resets the head and tail pointers of thecircular buffer for periodic OA reports.
@@ -168,8 +184,8 @@ init_oa_buffer
     to the CPU)
 
 enable_metric_set
-    Applies any MUX configuration to set up theBoolean and Custom (B/C) counters that are part of the counter
-    reports being sampled. May apply system constraints such as
+    Selects and applies any MUX configuration to setup the Boolean and Custom (B/C) counters that are part of the
+    counter reports being sampled. May apply system constraints such as
     disabling EU clock gating as required.
 
 disable_metric_set
@@ -184,18 +200,11 @@ oa_disable
 read
     Copy data from the circular OA buffer into a given userspacebuffer.
 
-oa_buffer_is_empty
-    Check if OA buffer empty (false positives OK)
-    This is either called via fops or the poll check hrtimer (atomic
-    ctx) without any locks taken.
-
-    It's safe to read OA config state here unlocked, assuming that this
-    is only called while the stream is enabled, while the global OA
-    configuration can't be modified.
-
-    Efficiency is more important than avoiding some false positives
-    here, which will be handled gracefully - likely resulting in an
-    \ ``EAGAIN``\  error for userspace.
+oa_hw_tail_read
+    read the OA tail pointer register
+    In particular this enables us to share all the fiddly code for
+    handling the OA unit tail pointer race that affects multiple
+    generations.
 
 .. _`__sg_next`:
 

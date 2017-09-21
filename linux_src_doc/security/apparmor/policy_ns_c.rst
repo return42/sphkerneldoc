@@ -146,6 +146,68 @@ called \ ``name``\  exists.
 
 refcount released by caller
 
+.. _`__aa_lookupn_ns`:
+
+__aa_lookupn_ns
+===============
+
+.. c:function:: struct aa_ns *__aa_lookupn_ns(struct aa_ns *view, const char *hname, size_t n)
+
+    lookup the namespace matching \ ``hname``\ 
+
+    :param struct aa_ns \*view:
+        *undescribed*
+
+    :param const char \*hname:
+        hierarchical ns name  (NOT NULL)
+
+    :param size_t n:
+        length of \ ``hname``\ 
+
+.. _`__aa_lookupn_ns.requires`:
+
+Requires
+--------
+
+rcu_read_lock be held
+
+.. _`__aa_lookupn_ns.return`:
+
+Return
+------
+
+unrefcounted ns pointer or NULL if not found
+
+Do a relative name lookup, recursing through profile tree.
+
+.. _`aa_lookupn_ns`:
+
+aa_lookupn_ns
+=============
+
+.. c:function:: struct aa_ns *aa_lookupn_ns(struct aa_ns *view, const char *name, size_t n)
+
+    look up a policy namespace relative to \ ``view``\ 
+
+    :param struct aa_ns \*view:
+        namespace to search in  (NOT NULL)
+
+    :param const char \*name:
+        name of namespace to find  (NOT NULL)
+
+    :param size_t n:
+        length of \ ``name``\ 
+
+.. _`aa_lookupn_ns.return`:
+
+Return
+------
+
+a refcounted namespace on the list, or NULL if no namespace
+called \ ``name``\  exists.
+
+refcount released by caller
+
 .. _`__aa_find_or_create_ns`:
 
 __aa_find_or_create_ns

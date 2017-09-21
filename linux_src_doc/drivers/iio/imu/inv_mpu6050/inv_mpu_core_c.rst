@@ -1,6 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
 
+.. _`inv_mpu6050_set_lpf_regs`:
+
+inv_mpu6050_set_lpf_regs
+========================
+
+.. c:function:: int inv_mpu6050_set_lpf_regs(struct inv_mpu6050_state *st, enum inv_mpu6050_filter_e val)
+
+    set low pass filter registers, chip dependent
+
+    :param struct inv_mpu6050_state \*st:
+        *undescribed*
+
+    :param enum inv_mpu6050_filter_e val:
+        *undescribed*
+
+.. _`inv_mpu6050_set_lpf_regs.description`:
+
+Description
+-----------
+
+MPU60xx/MPU9150 use only 1 register for accelerometer + gyroscope
+MPU6500 and above have a dedicated register for accelerometer
+
 .. _`inv_mpu6050_init_config`:
 
 inv_mpu6050_init_config
@@ -66,6 +89,8 @@ exceed twice of the bandwidth of the signal, or there
 would be alising. This function basically search for the
 correct low pass parameters based on the fifo rate, e.g,
 sampling frequency.
+
+lpf is set automatically when setting sampling rate to avoid any aliases.
 
 .. _`inv_mpu6050_fifo_rate_store`:
 

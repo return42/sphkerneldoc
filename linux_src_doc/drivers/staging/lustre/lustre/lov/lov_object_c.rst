@@ -114,17 +114,17 @@ lov_attr_get
 fiemap_calc_last_stripe
 =======================
 
-.. c:function:: int fiemap_calc_last_stripe(struct lov_stripe_md *lsm, loff_t fm_start, loff_t fm_end, int start_stripe, int *stripe_count)
+.. c:function:: int fiemap_calc_last_stripe(struct lov_stripe_md *lsm, u64 fm_start, u64 fm_end, int start_stripe, int *stripe_count)
 
     is greater than (stripe_size \* stripe_count) then the last_stripe will will be one just before start_stripe. Else we check if the mapping intersects each OST and find last_stripe. This function returns the last_stripe and also sets the stripe_count over which the mapping is spread
 
     :param struct lov_stripe_md \*lsm:
         *undescribed*
 
-    :param loff_t fm_start:
+    :param u64 fm_start:
         *undescribed*
 
-    :param loff_t fm_end:
+    :param u64 fm_end:
         *undescribed*
 
     :param int start_stripe:
@@ -186,7 +186,7 @@ field for each extent
 fiemap_calc_fm_end_offset
 =========================
 
-.. c:function:: loff_t fiemap_calc_fm_end_offset(struct fiemap *fiemap, struct lov_stripe_md *lsm, loff_t fm_start, loff_t fm_end, int *start_stripe)
+.. c:function:: u64 fiemap_calc_fm_end_offset(struct fiemap *fiemap, struct lov_stripe_md *lsm, u64 fm_start, u64 fm_end, int *start_stripe)
 
     zero fe_logical indicates that this is a continuation FIEMAP call. The local end offset and the device are sent in the first fm_extent. This function calculates the stripe number from the index. This function returns a stripe_no on which mapping is to be restarted.
 
@@ -196,10 +196,10 @@ fiemap_calc_fm_end_offset
     :param struct lov_stripe_md \*lsm:
         *undescribed*
 
-    :param loff_t fm_start:
+    :param u64 fm_start:
         *undescribed*
 
-    :param loff_t fm_end:
+    :param u64 fm_end:
         *undescribed*
 
     :param int \*start_stripe:

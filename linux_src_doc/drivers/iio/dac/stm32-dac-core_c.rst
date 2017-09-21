@@ -41,5 +41,33 @@ vref
 common
     Common data for all DAC instances
 
+.. _`stm32_dac_cfg`:
+
+struct stm32_dac_cfg
+====================
+
+.. c:type:: struct stm32_dac_cfg
+
+    DAC configuration
+
+.. _`stm32_dac_cfg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct stm32_dac_cfg {
+        bool has_hfsel;
+    }
+
+.. _`stm32_dac_cfg.members`:
+
+Members
+-------
+
+has_hfsel
+    DAC has high frequency control
+
 .. This file was automatic generated / don't edit.
 

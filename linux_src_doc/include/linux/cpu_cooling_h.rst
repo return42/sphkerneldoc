@@ -6,27 +6,27 @@
 cpufreq_cooling_register
 ========================
 
-.. c:function:: struct thermal_cooling_device *cpufreq_cooling_register(const struct cpumask *clip_cpus)
+.. c:function:: struct thermal_cooling_device *cpufreq_cooling_register(struct cpufreq_policy *policy)
 
     function to create cpufreq cooling device.
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy.
 
 .. _`of_cpufreq_cooling_register`:
 
 of_cpufreq_cooling_register
 ===========================
 
-.. c:function:: struct thermal_cooling_device *of_cpufreq_cooling_register(struct device_node *np, const struct cpumask *clip_cpus)
+.. c:function:: struct thermal_cooling_device *of_cpufreq_cooling_register(struct device_node *np, struct cpufreq_policy *policy)
 
     create cpufreq cooling device based on DT.
 
     :param struct device_node \*np:
         a valid struct device_node to the cooling device device tree node.
 
-    :param const struct cpumask \*clip_cpus:
-        cpumask of cpus where the frequency constraints will happen
+    :param struct cpufreq_policy \*policy:
+        cpufreq policy.
 
 .. _`cpufreq_cooling_unregister`:
 

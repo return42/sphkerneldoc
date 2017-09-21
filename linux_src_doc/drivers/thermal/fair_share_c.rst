@@ -20,7 +20,7 @@ fair_share_throttle
 
 .. c:function:: int fair_share_throttle(struct thermal_zone_device *tz, int trip)
 
-    throttles devices associated with the given zone \ ``tz``\  - thermal_zone_device
+    throttles devices associated with the given zone \ ``tz``\  - thermal_zone_device \ ``trip``\  - trip point index
 
     :param struct thermal_zone_device \*tz:
         *undescribed*

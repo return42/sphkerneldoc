@@ -106,8 +106,8 @@ Definition
 
     struct stable_node {
         union {unnamed_union};
-        struct hlist_head hlist;
-        unsigned long kpfn;
+    #define STABLE_NODE_CHAIN -1024
+        int rmap_hlist_len;
     #ifdef CONFIG_NUMA
         int nid;
     #endif
@@ -122,11 +122,8 @@ Members
     anonymous
 
 
-hlist
-    hlist head of rmap_items using this ksm page
-
-kpfn
-    page frame number of this ksm page (perhaps temporarily on wrong nid)
+rmap_hlist_len
+    number of rmap_item entries in hlist or STABLE_NODE_CHAIN
 
 nid
     NUMA node id of stable tree in which linked (may not match kpfn)

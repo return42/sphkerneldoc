@@ -1,22 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/bpf/core.c
 
-.. _`__bpf_prog_run`:
+.. _`___bpf_prog_run`:
 
-__bpf_prog_run
-==============
+___bpf_prog_run
+===============
 
-.. c:function:: unsigned int __bpf_prog_run(void *ctx, const struct bpf_insn *insn)
+.. c:function:: unsigned int ___bpf_prog_run(u64 *regs, const struct bpf_insn *insn, u64 *stack)
 
     run eBPF program on a given context
 
-    :param void \*ctx:
-        is the data we are operating on
+    :param u64 \*regs:
+        *undescribed*
 
     :param const struct bpf_insn \*insn:
         is the array of eBPF instructions
 
-.. _`__bpf_prog_run.description`:
+    :param u64 \*stack:
+        *undescribed*
+
+.. _`___bpf_prog_run.description`:
 
 Description
 -----------

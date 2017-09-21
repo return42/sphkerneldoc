@@ -40,75 +40,6 @@ tfd_q_hang_detect
 power_scheme
     one of enum iwl_power_scheme
 
-.. _`iwl_mvm_dump_ptrs`:
-
-struct iwl_mvm_dump_ptrs
-========================
-
-.. c:type:: struct iwl_mvm_dump_ptrs
-
-    set of pointers needed for the fw-error-dump
-
-.. _`iwl_mvm_dump_ptrs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_mvm_dump_ptrs {
-        struct iwl_trans_dump_data *trans_ptr;
-        void *op_mode_ptr;
-        u32 op_mode_len;
-    }
-
-.. _`iwl_mvm_dump_ptrs.members`:
-
-Members
--------
-
-trans_ptr
-    pointer to struct \ ``iwl_trans_dump_data``\  which contains the
-    transport's data.
-
-op_mode_ptr
-    pointer to the buffer coming from the mvm op_mode
-
-op_mode_len
-    length of the valid data in op_mode_ptr
-
-.. _`iwl_mvm_dump_desc`:
-
-struct iwl_mvm_dump_desc
-========================
-
-.. c:type:: struct iwl_mvm_dump_desc
-
-    describes the dump
-
-.. _`iwl_mvm_dump_desc.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_mvm_dump_desc {
-        size_t len;
-        struct iwl_fw_error_dump_trigger_desc trig_desc;
-    }
-
-.. _`iwl_mvm_dump_desc.members`:
-
-Members
--------
-
-len
-    length of trig_desc->data
-
-trig_desc
-    the description of the dump
-
 .. _`iwl_power_scheme`:
 
 enum iwl_power_scheme
@@ -653,6 +584,66 @@ mvm
 
 reorder_buf
     reorder buffer, allocated per queue
+
+.. _`iwl_mvm_status`:
+
+enum iwl_mvm_status
+===================
+
+.. c:type:: enum iwl_mvm_status
+
+    MVM status bits
+
+.. _`iwl_mvm_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_mvm_status {
+        IWL_MVM_STATUS_HW_RFKILL,
+        IWL_MVM_STATUS_HW_CTKILL,
+        IWL_MVM_STATUS_ROC_RUNNING,
+        IWL_MVM_STATUS_HW_RESTART_REQUESTED,
+        IWL_MVM_STATUS_IN_HW_RESTART,
+        IWL_MVM_STATUS_IN_D0I3,
+        IWL_MVM_STATUS_ROC_AUX_RUNNING,
+        IWL_MVM_STATUS_D3_RECONFIG,
+        IWL_MVM_STATUS_FIRMWARE_RUNNING
+    };
+
+.. _`iwl_mvm_status.constants`:
+
+Constants
+---------
+
+IWL_MVM_STATUS_HW_RFKILL
+    HW RF-kill is asserted
+
+IWL_MVM_STATUS_HW_CTKILL
+    CT-kill is active
+
+IWL_MVM_STATUS_ROC_RUNNING
+    remain-on-channel is running
+
+IWL_MVM_STATUS_HW_RESTART_REQUESTED
+    HW restart was requested
+
+IWL_MVM_STATUS_IN_HW_RESTART
+    HW restart is active
+
+IWL_MVM_STATUS_IN_D0I3
+    NIC is in D0i3
+
+IWL_MVM_STATUS_ROC_AUX_RUNNING
+    AUX remain-on-channel is running
+
+IWL_MVM_STATUS_D3_RECONFIG
+    D3 reconfiguration is being done
+
+IWL_MVM_STATUS_FIRMWARE_RUNNING
+    firmware is running
 
 .. This file was automatic generated / don't edit.
 

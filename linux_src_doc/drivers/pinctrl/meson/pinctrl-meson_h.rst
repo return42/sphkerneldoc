@@ -193,6 +193,8 @@ Definition
         const char *name;
         unsigned int first;
         unsigned int last;
+        int irq_first;
+        int irq_last;
         struct meson_reg_desc regs;
     }
 
@@ -209,6 +211,12 @@ first
 
 last
     last pin of the bank
+
+irq_first
+    *undescribed*
+
+irq_last
+    *undescribed*
 
 regs
     array of register descriptors

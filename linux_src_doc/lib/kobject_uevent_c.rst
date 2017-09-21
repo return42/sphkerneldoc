@@ -1,30 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/kobject_uevent.c
 
-.. _`kobject_action_type`:
+.. _`kobject_synth_uevent`:
 
-kobject_action_type
-===================
+kobject_synth_uevent
+====================
 
-.. c:function:: int kobject_action_type(const char *buf, size_t count, enum kobject_action *type)
+.. c:function:: int kobject_synth_uevent(struct kobject *kobj, const char *buf, size_t count)
 
-    translate action string to numeric type
+    send synthetic uevent with arguments
+
+    :param struct kobject \*kobj:
+        struct kobject for which synthetic uevent is to be generated
 
     :param const char \*buf:
-        buffer containing the action string, newline is ignored
+        buffer containing action type and action args, newline is ignored
 
     :param size_t count:
         length of buffer
 
-    :param enum kobject_action \*type:
-        pointer to the location to store the action type
-
-.. _`kobject_action_type.description`:
+.. _`kobject_synth_uevent.description`:
 
 Description
 -----------
 
-Returns 0 if the action string was recognized.
+Returns 0 if \ :c:func:`kobject_synthetic_uevent`\  is completed with success or the
+corresponding error when it fails.
 
 .. _`kobject_uevent_env`:
 

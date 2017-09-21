@@ -16,6 +16,7 @@ platform
     mtk-vcodec/index
     mtk-vpu/index
     omap3isp/index
+    qcom/index
     rcar-vin/index
     s3c-camif/index
     s5p-jpeg/index

@@ -64,7 +64,7 @@ Definition
     #endif
     #if defined(CONFIG_OF_GPIO)
         struct device_node *of_node;
-        int of_gpio_n_cells;
+        unsigned int of_gpio_n_cells;
         int (*of_xlate)(struct gpio_chip *gc, const struct of_phandle_args *gpiospec, u32 *flags);
     #endif
     }
@@ -130,6 +130,10 @@ dbg_show
 base
     identifies the first GPIO number handled by this chip;
     or, if negative during registration, requests dynamic ID allocation.
+    DEPRECATION: providing anything non-negative and nailing the base
+    offset of GPIO chips is deprecated. Please pass -1 as base to
+    let gpiolib select the chip base in all possible cases. We want to
+    get rid of the static GPIO number space in the long run.
 
 ngpio
     the number of GPIOs handled by this controller; the last GPIO
@@ -175,7 +179,7 @@ reg_dir
 
 bgpio_bits
     number of register bits used for a generic GPIO i.e.
-    <register width> \* 8
+    <register width> * 8
 
 bgpio_lock
     used to lock chip->bgpio_data. Also, this is needed to keep
@@ -227,23 +231,17 @@ lock_key
     per GPIO IRQ chip lockdep class
 
 of_node
-    *undescribed*
+
+    Pointer to a device tree node representing this GPIO controller.
 
 of_gpio_n_cells
-    *undescribed*
+
+    Number of cells used to form the GPIO specifier.
 
 of_xlate
-    *undescribed*
 
-.. _`gpio_chip.deprecation`:
-
-DEPRECATION
------------
-
-providing anything non-negative and nailing the base
-offset of GPIO chips is deprecated. Please pass -1 as base to
-let gpiolib select the chip base in all possible cases. We want to
-get rid of the static GPIO number space in the long run.
+    Callback to translate a device tree GPIO specifier into a chip-
+    relative GPIO number and flags.
 
 .. _`gpio_chip.description`:
 
@@ -288,7 +286,7 @@ Members
 -------
 
 node
-    *undescribed*
+    list for maintaining set of pin ranges, used internally
 
 pctldev
     pinctrl device which handles corresponding pins

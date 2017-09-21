@@ -127,6 +127,38 @@ max_submissionrings
 max_completionrings
     maximum number of completion rings(d2h) supported.
 
+.. _`brcmf_bus_stats`:
+
+struct brcmf_bus_stats
+======================
+
+.. c:type:: struct brcmf_bus_stats
+
+    bus statistic counters.
+
+.. _`brcmf_bus_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_bus_stats {
+        atomic_t pktcowed;
+        atomic_t pktcow_failed;
+    }
+
+.. _`brcmf_bus_stats.members`:
+
+Members
+-------
+
+pktcowed
+    packets cowed for extra headroom/unorphan.
+
+pktcow_failed
+    packets dropped due to failed cow-ing.
+
 .. _`brcmf_bus`:
 
 struct brcmf_bus
@@ -149,8 +181,8 @@ Definition
         struct device *dev;
         struct brcmf_pub *drvr;
         enum brcmf_bus_state state;
+        struct brcmf_bus_stats stats;
         uint maxctl;
-        unsigned long tx_realloc;
         u32 chip;
         u32 chiprev;
         bool always_use_fws_queue;
@@ -179,11 +211,11 @@ drvr
 state
     operational state of the bus interface.
 
+stats
+    statistics shared between common and bus layer.
+
 maxctl
     maximum size for rxctl request message.
-
-tx_realloc
-    number of tx packets realloced for headroom.
 
 chip
     device identifier of the dongle chip.
@@ -192,7 +224,7 @@ chiprev
     revision of the dongle chip.
 
 always_use_fws_queue
-    *undescribed*
+    bus wants use queue also when fwsignal is inactive.
 
 wowl_supported
     is wowl supported by bus driver.

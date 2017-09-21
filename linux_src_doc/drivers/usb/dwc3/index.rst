@@ -16,7 +16,6 @@ dwc3
     dwc3-omap_c
     dwc3-pci_c
     dwc3-st_c
-    ep0_c
     gadget_c
     gadget_h
     host_c

@@ -640,7 +640,7 @@ other fields within the skb.
 i40e_cleanup_headers
 ====================
 
-.. c:function:: bool i40e_cleanup_headers(struct i40e_ring *rx_ring, struct sk_buff *skb)
+.. c:function:: bool i40e_cleanup_headers(struct i40e_ring *rx_ring, struct sk_buff *skb, union i40e_rx_desc *rx_desc)
 
     Correct empty headers
 
@@ -649,6 +649,9 @@ i40e_cleanup_headers
 
     :param struct sk_buff \*skb:
         pointer to current skb being fixed
+
+    :param union i40e_rx_desc \*rx_desc:
+        pointer to the EOP Rx descriptor
 
 .. _`i40e_cleanup_headers.description`:
 
@@ -802,7 +805,7 @@ for use by the CPU.
 i40e_construct_skb
 ==================
 
-.. c:function:: struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, unsigned int size)
+.. c:function:: struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, struct xdp_buff *xdp)
 
     Allocate skb and populate it
 
@@ -812,8 +815,8 @@ i40e_construct_skb
     :param struct i40e_rx_buffer \*rx_buffer:
         rx buffer to pull data from
 
-    :param unsigned int size:
-        size of buffer to add to skb
+    :param struct xdp_buff \*xdp:
+        xdp_buff pointing to the data
 
 .. _`i40e_construct_skb.description`:
 
@@ -829,7 +832,7 @@ skb correctly.
 i40e_build_skb
 ==============
 
-.. c:function:: struct sk_buff *i40e_build_skb(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, unsigned int size)
+.. c:function:: struct sk_buff *i40e_build_skb(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, struct xdp_buff *xdp)
 
     Build skb around an existing buffer
 
@@ -839,8 +842,8 @@ i40e_build_skb
     :param struct i40e_rx_buffer \*rx_buffer:
         Rx buffer to pull data from
 
-    :param unsigned int size:
-        size of buffer to add to skb
+    :param struct xdp_buff \*xdp:
+        xdp_buff pointing to the data
 
 .. _`i40e_build_skb.description`:
 
@@ -900,6 +903,39 @@ This function updates next to clean.  If the buffer is an EOP buffer
 this function exits returning false, otherwise it will place the
 sk_buff in the next buffer to be chained and return true indicating
 that this is in fact a non-EOP buffer.
+
+.. _`i40e_run_xdp`:
+
+i40e_run_xdp
+============
+
+.. c:function:: struct sk_buff *i40e_run_xdp(struct i40e_ring *rx_ring, struct xdp_buff *xdp)
+
+    run an XDP program
+
+    :param struct i40e_ring \*rx_ring:
+        Rx ring being processed
+
+    :param struct xdp_buff \*xdp:
+        XDP buffer containing the frame
+
+.. _`i40e_rx_buffer_flip`:
+
+i40e_rx_buffer_flip
+===================
+
+.. c:function:: void i40e_rx_buffer_flip(struct i40e_ring *rx_ring, struct i40e_rx_buffer *rx_buffer, unsigned int size)
+
+    adjusted rx_buffer to point to an unused region
+
+    :param struct i40e_ring \*rx_ring:
+        Rx ring
+
+    :param struct i40e_rx_buffer \*rx_buffer:
+        Rx buffer to adjust
+
+    :param unsigned int size:
+        Size of adjustment
 
 .. _`i40e_clean_rx_irq`:
 
@@ -1166,7 +1202,7 @@ fragments.
 i40e_tx_map
 ===========
 
-.. c:function:: void i40e_tx_map(struct i40e_ring *tx_ring, struct sk_buff *skb, struct i40e_tx_buffer *first, u32 tx_flags, const u8 hdr_len, u32 td_cmd, u32 td_offset)
+.. c:function:: int i40e_tx_map(struct i40e_ring *tx_ring, struct sk_buff *skb, struct i40e_tx_buffer *first, u32 tx_flags, const u8 hdr_len, u32 td_cmd, u32 td_offset)
 
     Build the Tx descriptor
 
@@ -1190,6 +1226,28 @@ i40e_tx_map
 
     :param u32 td_offset:
         offset for checksum or crc
+
+.. _`i40e_tx_map.description`:
+
+Description
+-----------
+
+Returns 0 on success, -1 on failure to DMA
+
+.. _`i40e_xmit_xdp_ring`:
+
+i40e_xmit_xdp_ring
+==================
+
+.. c:function:: int i40e_xmit_xdp_ring(struct xdp_buff *xdp, struct i40e_ring *xdp_ring)
+
+    transmits an XDP buffer to an XDP Tx ring
+
+    :param struct xdp_buff \*xdp:
+        data to transmit
+
+    :param struct i40e_ring \*xdp_ring:
+        XDP Tx ring
 
 .. _`i40e_xmit_frame_ring`:
 

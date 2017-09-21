@@ -15,6 +15,7 @@ crypto
     dh_h
     ecdh_h
     hash_h
+    if_alg_h
     kpp_h
     rng_h
     skcipher_h

@@ -27,7 +27,7 @@ is called.
 efi_capsule_setup_info
 ======================
 
-.. c:function:: ssize_t efi_capsule_setup_info(struct capsule_info *cap_info, void *kbuff, size_t hdr_bytes)
+.. c:function:: int efi_capsule_setup_info(struct capsule_info *cap_info, void *kbuff, size_t hdr_bytes)
 
     obtain the efi capsule header in the binary and setup capsule_info structure
 
@@ -39,6 +39,15 @@ efi_capsule_setup_info
 
     :param size_t hdr_bytes:
         the total received number of bytes for efi header
+
+.. _`efi_capsule_setup_info.description`:
+
+Description
+-----------
+
+Platforms with non-standard capsule update mechanisms can override
+this \__weak function so they can perform any required capsule
+image munging. See \ :c:func:`quark_quirk_function`\  for an example.
 
 .. _`efi_capsule_submit_update`:
 

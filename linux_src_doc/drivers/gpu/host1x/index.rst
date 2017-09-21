@@ -8,3 +8,5 @@ host1x
     :maxdepth: 1
 
     bus_c
+    channel_c
+    syncpt_c

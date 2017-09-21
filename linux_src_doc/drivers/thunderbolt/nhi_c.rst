@@ -129,5 +129,51 @@ All enqueued frames will be canceled and their callbacks will be executed
 with frame->canceled set to true (on the callback thread). This method
 returns only after all callback invocations have finished.
 
+.. _`nhi_mailbox_cmd`:
+
+nhi_mailbox_cmd
+===============
+
+.. c:function:: int nhi_mailbox_cmd(struct tb_nhi *nhi, enum nhi_mailbox_cmd cmd, u32 data)
+
+    Send a command through NHI mailbox
+
+    :param struct tb_nhi \*nhi:
+        Pointer to the NHI structure
+
+    :param enum nhi_mailbox_cmd cmd:
+        Command to send
+
+    :param u32 data:
+        Data to be send with the command
+
+.. _`nhi_mailbox_cmd.description`:
+
+Description
+-----------
+
+Sends mailbox command to the firmware running on NHI. Returns \ ``0``\  in
+case of success and negative errno in case of failure.
+
+.. _`nhi_mailbox_mode`:
+
+nhi_mailbox_mode
+================
+
+.. c:function:: enum nhi_fw_mode nhi_mailbox_mode(struct tb_nhi *nhi)
+
+    Return current firmware operation mode
+
+    :param struct tb_nhi \*nhi:
+        Pointer to the NHI structure
+
+.. _`nhi_mailbox_mode.description`:
+
+Description
+-----------
+
+The function reads current firmware operation mode using NHI mailbox
+registers and returns it to the caller.
+
 .. This file was automatic generated / don't edit.
 

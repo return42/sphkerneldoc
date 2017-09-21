@@ -58,11 +58,11 @@ ssi_sram_mgr_init
 ssi_sram_mgr_const2sram_desc
 ============================
 
-.. c:function:: void ssi_sram_mgr_const2sram_desc(const uint32_t *src, ssi_sram_addr_t dst, unsigned int nelement, HwDesc_s *seq, unsigned int *seq_len)
+.. c:function:: void ssi_sram_mgr_const2sram_desc(const u32 *src, ssi_sram_addr_t dst, unsigned int nelement, struct cc_hw_desc *seq, unsigned int *seq_len)
 
     Create const descriptors sequence to set values in given array into SRAM.
 
-    :param const uint32_t \*src:
+    :param const u32 \*src:
         A pointer to array of words to set as consts.
 
     :param ssi_sram_addr_t dst:
@@ -71,7 +71,7 @@ ssi_sram_mgr_const2sram_desc
     :param unsigned int nelement:
         *undescribed*
 
-    :param HwDesc_s \*seq:
+    :param struct cc_hw_desc \*seq:
         A pointer to the given IN/OUT descriptor sequence
 
     :param unsigned int \*seq_len:

@@ -76,6 +76,32 @@ Description
 This is a mostly non-blocking flush.  Not suitable for data-integrity
 purposes - I/O may not be started against all dirty pages.
 
+.. _`filemap_range_has_page`:
+
+filemap_range_has_page
+======================
+
+.. c:function:: bool filemap_range_has_page(struct address_space *mapping, loff_t start_byte, loff_t end_byte)
+
+    check if a page exists in range.
+
+    :param struct address_space \*mapping:
+        address space within which to check
+
+    :param loff_t start_byte:
+        offset in bytes where the range starts
+
+    :param loff_t end_byte:
+        offset in bytes where the range ends (inclusive)
+
+.. _`filemap_range_has_page.description`:
+
+Description
+-----------
+
+Find at least one page in the range supplied, usually used to check if
+direct writing in this range will trigger a writeback.
+
 .. _`filemap_fdatawait_range`:
 
 filemap_fdatawait_range
@@ -107,12 +133,43 @@ Since the error status of the address space is cleared by this function,
 callers are responsible for checking the return value and handling and/or
 reporting the error.
 
+.. _`file_fdatawait_range`:
+
+file_fdatawait_range
+====================
+
+.. c:function:: int file_fdatawait_range(struct file *file, loff_t start_byte, loff_t end_byte)
+
+    wait for writeback to complete
+
+    :param struct file \*file:
+        file pointing to address space structure to wait for
+
+    :param loff_t start_byte:
+        offset in bytes where the range starts
+
+    :param loff_t end_byte:
+        offset in bytes where the range ends (inclusive)
+
+.. _`file_fdatawait_range.description`:
+
+Description
+-----------
+
+Walk the list of under-writeback pages of the address space that file
+refers to, in the given range and wait for all of them.  Check error
+status of the address space vs. the file->f_wb_err cursor and return it.
+
+Since the error status of the file is advanced by this function,
+callers are responsible for checking the return value and handling and/or
+reporting the error.
+
 .. _`filemap_fdatawait_keep_errors`:
 
 filemap_fdatawait_keep_errors
 =============================
 
-.. c:function:: void filemap_fdatawait_keep_errors(struct address_space *mapping)
+.. c:function:: int filemap_fdatawait_keep_errors(struct address_space *mapping)
 
     wait for writeback without clearing errors
 
@@ -131,31 +188,6 @@ does not clear error status of the address space.
 Use this function if callers don't handle errors themselves.  Expected
 call sites are system-wide / filesystem-wide data flushers: e.g. sync(2),
 fsfreeze(8)
-
-.. _`filemap_fdatawait`:
-
-filemap_fdatawait
-=================
-
-.. c:function:: int filemap_fdatawait(struct address_space *mapping)
-
-    wait for all under-writeback pages to complete
-
-    :param struct address_space \*mapping:
-        address space structure to wait for
-
-.. _`filemap_fdatawait.description`:
-
-Description
------------
-
-Walk the list of under-writeback pages of the given address space
-and wait for all of them.  Check error status of the address space
-and return it.
-
-Since the error status of the address space is cleared by this function,
-callers are responsible for checking the return value and handling and/or
-reporting the error.
 
 .. _`filemap_write_and_wait_range`:
 
@@ -184,6 +216,71 @@ Write out and wait upon file offsets lstart->lend, inclusive.
 
 Note that \ ``lend``\  is inclusive (describes the last byte to be written) so
 that this function can be used to write to the very end-of-file (end = -1).
+
+.. _`file_check_and_advance_wb_err`:
+
+file_check_and_advance_wb_err
+=============================
+
+.. c:function:: int file_check_and_advance_wb_err(struct file *file)
+
+    report wb error (if any) that was previously and advance wb_err to current one
+
+    :param struct file \*file:
+        struct file on which the error is being reported
+
+.. _`file_check_and_advance_wb_err.description`:
+
+Description
+-----------
+
+When userland calls fsync (or something like nfsd does the equivalent), we
+want to report any writeback errors that occurred since the last fsync (or
+since the file was opened if there haven't been any).
+
+Grab the wb_err from the mapping. If it matches what we have in the file,
+then just quickly return 0. The file is all caught up.
+
+If it doesn't match, then take the mapping value, set the "seen" flag in
+it and try to swap it into place. If it works, or another task beat us
+to it with the new value, then update the f_wb_err and return the error
+portion. The error at this point must be reported via proper channels
+(a'la fsync, or NFS COMMIT operation, etc.).
+
+While we handle mapping->wb_err with atomic operations, the f_wb_err
+value is protected by the f_lock since we must ensure that it reflects
+the latest value swapped in for this file descriptor.
+
+.. _`file_write_and_wait_range`:
+
+file_write_and_wait_range
+=========================
+
+.. c:function:: int file_write_and_wait_range(struct file *file, loff_t lstart, loff_t lend)
+
+    write out & wait on a file range
+
+    :param struct file \*file:
+        file pointing to address_space with pages
+
+    :param loff_t lstart:
+        offset in bytes where the range starts
+
+    :param loff_t lend:
+        offset in bytes where the range ends (inclusive)
+
+.. _`file_write_and_wait_range.description`:
+
+Description
+-----------
+
+Write out and wait upon file offsets lstart->lend, inclusive.
+
+Note that \ ``lend``\  is inclusive (describes the last byte to be written) so
+that this function can be used to write to the very end-of-file (end = -1).
+
+After writing out and waiting on the data, we check and advance the
+f_wb_err cursor to the latest value, and return any errors detected there.
 
 .. _`replace_page_cache_page`:
 
@@ -251,14 +348,14 @@ This function does not add the page to the LRU.  The caller must do that.
 add_page_wait_queue
 ===================
 
-.. c:function:: void add_page_wait_queue(struct page *page, wait_queue_t *waiter)
+.. c:function:: void add_page_wait_queue(struct page *page, wait_queue_entry_t *waiter)
 
     Add an arbitrary waiter to a page's wait queue
 
     :param struct page \*page:
         Page defining the wait queue of interest
 
-    :param wait_queue_t \*waiter:
+    :param wait_queue_entry_t \*waiter:
         Waiter to add to the queue
 
 .. _`add_page_wait_queue.description`:
@@ -551,20 +648,23 @@ shmem/tmpfs, are included in the returned array.
 \ :c:func:`find_get_entries`\  returns the number of pages and shadow entries
 which were found.
 
-.. _`find_get_pages`:
+.. _`find_get_pages_range`:
 
-find_get_pages
-==============
+find_get_pages_range
+====================
 
-.. c:function:: unsigned find_get_pages(struct address_space *mapping, pgoff_t start, unsigned int nr_pages, struct page **pages)
+.. c:function:: unsigned find_get_pages_range(struct address_space *mapping, pgoff_t *start, pgoff_t end, unsigned int nr_pages, struct page **pages)
 
     gang pagecache lookup
 
     :param struct address_space \*mapping:
         The address_space to search
 
-    :param pgoff_t start:
+    :param pgoff_t \*start:
         The starting page index
+
+    :param pgoff_t end:
+        The final page index (inclusive)
 
     :param unsigned int nr_pages:
         The maximum number of pages
@@ -572,19 +672,23 @@ find_get_pages
     :param struct page \*\*pages:
         Where the resulting pages are placed
 
-.. _`find_get_pages.description`:
+.. _`find_get_pages_range.description`:
 
 Description
 -----------
 
-find_get_pages() will search for and return a group of up to
-\ ``nr_pages``\  pages in the mapping.  The pages are placed at \ ``pages``\ .
-\ :c:func:`find_get_pages`\  takes a reference against the returned pages.
+find_get_pages_range() will search for and return a group of up to \ ``nr_pages``\ 
+pages in the mapping starting at index \ ``start``\  and up to index \ ``end``\ 
+(inclusive).  The pages are placed at \ ``pages``\ .  \ :c:func:`find_get_pages_range`\  takes
+a reference against the returned pages.
 
 The search returns a group of mapping-contiguous pages with ascending
 indexes.  There may be holes in the indices due to not-present pages.
+We also update \ ``start``\  to index the next page for the traversal.
 
-\ :c:func:`find_get_pages`\  returns the number of pages which were found.
+\ :c:func:`find_get_pages_range`\  returns the number of pages which were found. If this
+number is smaller than \ ``nr_pages``\ , the end of specified range has been
+reached.
 
 .. _`find_get_pages_contig`:
 

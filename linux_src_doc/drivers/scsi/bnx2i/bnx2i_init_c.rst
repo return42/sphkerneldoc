@@ -191,12 +191,12 @@ Description
 function callback exported via bnx2i - cnic driver interface to
 retrieve various iSCSI offload related statistics.
 
-.. _`bnx2i_percpu_thread_create`:
+.. _`bnx2i_cpu_online`:
 
-bnx2i_percpu_thread_create
-==========================
+bnx2i_cpu_online
+================
 
-.. c:function:: void bnx2i_percpu_thread_create(unsigned int cpu)
+.. c:function:: int bnx2i_cpu_online(unsigned int cpu)
 
     Create a receive thread for an online CPU
 

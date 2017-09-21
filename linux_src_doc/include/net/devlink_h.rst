@@ -334,7 +334,6 @@ Definition
         void *priv;
         struct list_head list;
         const char *name;
-        u64 size;
         bool counters_enabled;
         bool counter_control_extern;
         struct devlink_dpipe_table_ops *table_ops;
@@ -354,9 +353,6 @@ list
 
 name
     table name
-
-size
-    maximum number of entries
 
 counters_enabled
     indicates if counters are active
@@ -378,7 +374,7 @@ struct devlink_dpipe_table_ops
 
 .. c:type:: struct devlink_dpipe_table_ops
 
-    dpipe_table ops \ ``actions_dump``\  - dumps all tables actions \ ``matches_dump``\  - dumps all tables matches \ ``entries_dump``\  - dumps all active entries in the table \ ``counters_set_update``\  - when changing the counter status hardware sync maybe needed to allocate/free counter related resources
+    dpipe_table ops \ ``actions_dump``\  - dumps all tables actions \ ``matches_dump``\  - dumps all tables matches \ ``entries_dump``\  - dumps all active entries in the table \ ``counters_set_update``\  - when changing the counter status hardware sync maybe needed to allocate/free counter related resources \ ``size_get``\  - get size
 
 .. _`devlink_dpipe_table_ops.definition`:
 
@@ -392,6 +388,7 @@ Definition
         int (*matches_dump)(void *priv, struct sk_buff *skb);
         int (*entries_dump)(void *priv, bool counters_enabled, struct devlink_dpipe_dump_ctx *dump_ctx);
         int (*counters_set_update)(void *priv, bool enable);
+        u64 (*size_get)(void *priv);
     }
 
 .. _`devlink_dpipe_table_ops.members`:
@@ -409,6 +406,9 @@ entries_dump
     *undescribed*
 
 counters_set_update
+    *undescribed*
+
+size_get
     *undescribed*
 
 .. _`devlink_dpipe_headers`:

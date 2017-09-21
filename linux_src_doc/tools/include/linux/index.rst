@@ -8,7 +8,9 @@ linux
     :maxdepth: 1
 
     bitmap_h
+    bitops_h
     hashtable_h
     kernel_h
     list_h
     log2_h
+    string_h

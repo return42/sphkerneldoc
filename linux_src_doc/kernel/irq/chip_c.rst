@@ -390,6 +390,48 @@ Description
      Iterate through all irqs and invoke the chip.irq_cpu_offline()
      for each.
 
+.. _`handle_fasteoi_ack_irq`:
+
+handle_fasteoi_ack_irq
+======================
+
+.. c:function:: void handle_fasteoi_ack_irq(struct irq_desc *desc)
+
+    irq handler for edge hierarchy stacked on transparent controllers
+
+    :param struct irq_desc \*desc:
+        the interrupt description structure for this irq
+
+.. _`handle_fasteoi_ack_irq.description`:
+
+Description
+-----------
+
+     Like \ :c:func:`handle_fasteoi_irq`\ , but for use with hierarchy where
+     the irq_chip also needs to have its ->irq_ack() function
+     called.
+
+.. _`handle_fasteoi_mask_irq`:
+
+handle_fasteoi_mask_irq
+=======================
+
+.. c:function:: void handle_fasteoi_mask_irq(struct irq_desc *desc)
+
+    irq handler for level hierarchy stacked on transparent controllers
+
+    :param struct irq_desc \*desc:
+        the interrupt description structure for this irq
+
+.. _`handle_fasteoi_mask_irq.description`:
+
+Description
+-----------
+
+     Like \ :c:func:`handle_fasteoi_irq`\ , but for use with hierarchy where
+     the irq_chip also needs to have its ->irq_mask_ack() function
+     called.
+
 .. _`irq_chip_enable_parent`:
 
 irq_chip_enable_parent

@@ -8,5 +8,8 @@ dvb
     :maxdepth: 1
 
     audio_h
+    ca_h
+    dmx_h
     frontend_h
+    net_h
     video_h

@@ -21,7 +21,7 @@ Definition
         int rfd;
         int wfd;
         u16 port;
-        int privport;
+        bool privport;
     }
 
 .. _`p9_fd_opts.members`:

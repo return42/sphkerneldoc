@@ -48,6 +48,21 @@ ostid_res_name_eq
     :param const struct ldlm_res_id \*name:
         *undescribed*
 
+.. _`ostid_set_id`:
+
+ostid_set_id
+============
+
+.. c:function:: int ostid_set_id(struct ost_id *oi, __u64 oid)
+
+    we need check oi_seq to decide where to set oi_id, so oi_seq should always be set ahead of oi_id.
+
+    :param struct ost_id \*oi:
+        *undescribed*
+
+    :param __u64 oid:
+        *undescribed*
+
 .. _`fid_flatten`:
 
 fid_flatten

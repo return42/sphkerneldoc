@@ -1272,6 +1272,38 @@ Return
 
 size of formatted string.
 
+.. _`lpfc_enable_bbcr_set`:
+
+lpfc_enable_bbcr_set
+====================
+
+.. c:function:: ssize_t lpfc_enable_bbcr_set(struct lpfc_hba *phba, uint val)
+
+    Sets an attribute value.
+
+    :param struct lpfc_hba \*phba:
+        pointer the the adapter structure.
+
+    :param uint val:
+        integer attribute value.
+
+.. _`lpfc_enable_bbcr_set.description`:
+
+Description
+-----------
+
+Validates the min and max values then sets the
+adapter config field if in the valid range. prints error message
+and does not set the parameter if invalid.
+
+.. _`lpfc_enable_bbcr_set.return`:
+
+Return
+------
+
+zero on success
+-EINVAL if val is invalid
+
 .. _`lpfc_param_show`:
 
 lpfc_param_show

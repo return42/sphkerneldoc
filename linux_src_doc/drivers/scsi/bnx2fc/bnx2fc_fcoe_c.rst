@@ -527,14 +527,14 @@ Return
 
 always 0
 
-.. _`bnx2fc_percpu_thread_create`:
+.. _`bnx2fc_cpu_online`:
 
-bnx2fc_percpu_thread_create
-===========================
+bnx2fc_cpu_online
+=================
 
-.. c:function:: void bnx2fc_percpu_thread_create(unsigned int cpu)
+.. c:function:: int bnx2fc_cpu_online(unsigned int cpu)
 
-    Create a receive thread for an online CPU
+    Create a receive thread for an  online CPU
 
     :param unsigned int cpu:
         cpu index for the online cpu

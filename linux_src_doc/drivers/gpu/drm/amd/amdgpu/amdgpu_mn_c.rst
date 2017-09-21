@@ -68,32 +68,6 @@ Description
 We block for all BOs and unmap them by move them
 into system domain again.
 
-.. _`amdgpu_mn_invalidate_page`:
-
-amdgpu_mn_invalidate_page
-=========================
-
-.. c:function:: void amdgpu_mn_invalidate_page(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long address)
-
-    callback to notify about mm change
-
-    :param struct mmu_notifier \*mn:
-        the mm this callback is about
-
-    :param struct mm_struct \*mm:
-        *undescribed*
-
-    :param unsigned long address:
-        address of invalidate page
-
-.. _`amdgpu_mn_invalidate_page.description`:
-
-Description
------------
-
-Invalidation of a single page. Blocks for all BOs mapping it
-and unmap them by move them into system domain again.
-
 .. _`amdgpu_mn_invalidate_range_start`:
 
 amdgpu_mn_invalidate_range_start

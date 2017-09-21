@@ -231,12 +231,12 @@ tree entries into the pagevec.  This function prunes all
 exceptionals from \ ``pvec``\  without leaving holes, so that it can be
 passed on to page-only pagevec operations.
 
-.. _`pagevec_lookup`:
+.. _`pagevec_lookup_range`:
 
-pagevec_lookup
-==============
+pagevec_lookup_range
+====================
 
-.. c:function:: unsigned pagevec_lookup(struct pagevec *pvec, struct address_space *mapping, pgoff_t start, unsigned nr_pages)
+.. c:function:: unsigned pagevec_lookup_range(struct pagevec *pvec, struct address_space *mapping, pgoff_t *start, pgoff_t end)
 
     gang pagecache lookup
 
@@ -246,25 +246,29 @@ pagevec_lookup
     :param struct address_space \*mapping:
         The address_space to search
 
-    :param pgoff_t start:
+    :param pgoff_t \*start:
         The starting page index
 
-    :param unsigned nr_pages:
-        The maximum number of pages
+    :param pgoff_t end:
+        The final page index
 
-.. _`pagevec_lookup.description`:
+.. _`pagevec_lookup_range.description`:
 
 Description
 -----------
 
-pagevec_lookup() will search for and return a group of up to \ ``nr_pages``\  pages
-in the mapping.  The pages are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup`\  takes a
+pagevec_lookup_range() will search for and return a group of up to \ ``nr_pages``\ 
+pages in the mapping starting from index \ ``start``\  and upto index \ ``end``\ 
+(inclusive).  The pages are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup`\  takes a
 reference against the pages in \ ``pvec``\ .
 
 The search returns a group of mapping-contiguous pages with ascending
-indexes.  There may be holes in the indices due to not-present pages.
+indexes.  There may be holes in the indices due to not-present pages. We
+also update \ ``start``\  to index the next page for the traversal.
 
-\ :c:func:`pagevec_lookup`\  returns the number of pages which were found.
+\ :c:func:`pagevec_lookup_range`\  returns the number of pages which were found. If this
+number is smaller than \ ``nr_pages``\ , the end of specified range has been
+reached.
 
 .. This file was automatic generated / don't edit.
 

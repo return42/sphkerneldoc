@@ -6,12 +6,12 @@
 aa_getprocattr
 ==============
 
-.. c:function:: int aa_getprocattr(struct aa_profile *profile, char **string)
+.. c:function:: int aa_getprocattr(struct aa_label *label, char **string)
 
     Return the profile information for \ ``profile``\ 
 
-    :param struct aa_profile \*profile:
-        the profile to print profile info about  (NOT NULL)
+    :param struct aa_label \*label:
+        *undescribed*
 
     :param char \*\*string:
         Returns - string containing the profile info (NOT NULL)
@@ -65,7 +65,7 @@ start position of name after token else NULL on failure
 aa_setprocattr_changehat
 ========================
 
-.. c:function:: int aa_setprocattr_changehat(char *args, size_t size, int test)
+.. c:function:: int aa_setprocattr_changehat(char *args, size_t size, int flags)
 
     handle procattr interface to change_hat
 
@@ -75,8 +75,8 @@ aa_setprocattr_changehat
     :param size_t size:
         size of the args
 
-    :param int test:
-        true if this is a test of change_hat permissions
+    :param int flags:
+        set of flags governing behavior
 
 .. _`aa_setprocattr_changehat.return`:
 

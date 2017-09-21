@@ -13,5 +13,6 @@ extcon
     extcon-max77693_c
     extcon-qcom-spmi-misc_c
     extcon-usb-gpio_c
+    extcon-usbc-cros-ec_c
     extcon_c
     extcon_h

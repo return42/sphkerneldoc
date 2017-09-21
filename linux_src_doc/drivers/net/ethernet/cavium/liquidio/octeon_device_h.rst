@@ -92,7 +92,7 @@ Description
 octeon_add_console
 ==================
 
-.. c:function:: int octeon_add_console(struct octeon_device *oct, u32 console_num)
+.. c:function:: int octeon_add_console(struct octeon_device *oct, u32 console_num, char *dbg_enb)
 
     :param struct octeon_device \*oct:
         *undescribed*
@@ -100,14 +100,15 @@ octeon_add_console
     :param u32 console_num:
         *undescribed*
 
+    :param char \*dbg_enb:
+        *undescribed*
+
 .. _`octeon_add_console.description`:
 
 Description
 -----------
 
-@param oct which octeon to add to
-\ ``param``\  console_num which console
-\ ``return``\  Zero on success, negative on failure.
+@return Zero on success, negative on failure.
 
 .. _`octeon_console_send_cmd`:
 

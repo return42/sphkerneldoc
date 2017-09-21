@@ -1031,7 +1031,7 @@ the page that was allocated, with the read page of the buffer.
 Return
 ------
 
-The page allocated, or NULL on error.
+The page allocated, or ERR_PTR
 
 .. _`ring_buffer_free_read_page`:
 
@@ -1098,8 +1098,8 @@ for example
 -----------
 
 rpage = ring_buffer_alloc_read_page(buffer, cpu);
-if (!rpage)
-return error;
+if (IS_ERR(rpage))
+return PTR_ERR(rpage);
 ret = ring_buffer_read_page(buffer, \ :c:type:`struct rpage <rpage>`\ , len, cpu, 0);
 if (ret >= 0)
 process_page(rpage, ret);

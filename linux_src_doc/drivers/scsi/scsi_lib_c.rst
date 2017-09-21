@@ -88,7 +88,7 @@ Linux error code if we didn't get that far.
 __scsi_error_from_host_byte
 ===========================
 
-.. c:function:: int __scsi_error_from_host_byte(struct scsi_cmnd *cmd, int result)
+.. c:function:: blk_status_t __scsi_error_from_host_byte(struct scsi_cmnd *cmd, int result)
 
     translate SCSI error code into errno
 
@@ -103,19 +103,31 @@ __scsi_error_from_host_byte
 Description
 -----------
 
-Translate SCSI error code into standard UNIX errno.
+Translate SCSI error code into block errors.
 
-.. _`__scsi_error_from_host_byte.return-values`:
+.. _`scsi_initialize_rq`:
 
-Return values
--------------
+scsi_initialize_rq
+==================
 
--ENOLINK     temporary transport failure
--EREMOTEIO   permanent target failure, do not retry
--EBADE       permanent nexus failure, retry on other path
--ENOSPC      No write space available
--ENODATA     Medium error
--EIO         unspecified I/O error
+.. c:function:: void scsi_initialize_rq(struct request *rq)
+
+    initialize struct scsi_cmnd partially
+
+    :param struct request \*rq:
+        Request associated with the SCSI command to be initialized.
+
+.. _`scsi_initialize_rq.description`:
+
+Description
+-----------
+
+This function initializes the members of struct scsi_cmnd that must be
+initialized before request processing starts and that won't be
+reinitialized if a SCSI command is requeued.
+
+Called from inside \ :c:func:`blk_get_request`\  for pass-through requests and from
+inside \ :c:func:`scsi_init_command`\  for filesystem requests.
 
 .. _`scsi_dispatch_cmd`:
 
@@ -324,7 +336,7 @@ scsi_device_set_state
 Description
 -----------
 
-     Returns zero if unsuccessful or an error if the requested
+     Returns zero if successful or an error if the requested
      transition is illegal.
 
 .. _`scsi_evt_emit`:
@@ -520,45 +532,106 @@ Description
 
      Must be called with user context, may sleep.
 
+.. _`scsi_internal_device_block_nowait`:
+
+scsi_internal_device_block_nowait
+=================================
+
+.. c:function:: int scsi_internal_device_block_nowait(struct scsi_device *sdev)
+
+    try to transition to the SDEV_BLOCK state
+
+    :param struct scsi_device \*sdev:
+        device to block
+
+.. _`scsi_internal_device_block_nowait.description`:
+
+Description
+-----------
+
+Pause SCSI command processing on the specified device. Does not sleep.
+
+Returns zero if successful or a negative error code upon failure.
+
+.. _`scsi_internal_device_block_nowait.notes`:
+
+Notes
+-----
+
+This routine transitions the device to the SDEV_BLOCK state (which must be
+a legal transition). When the device is in this state, command processing
+is paused until the device leaves the SDEV_BLOCK state. See also
+\ :c:func:`scsi_internal_device_unblock_nowait`\ .
+
 .. _`scsi_internal_device_block`:
 
 scsi_internal_device_block
 ==========================
 
-.. c:function:: int scsi_internal_device_block(struct scsi_device *sdev, bool wait)
+.. c:function:: int scsi_internal_device_block(struct scsi_device *sdev)
 
-    internal function to put a device temporarily into the SDEV_BLOCK state
+    try to transition to the SDEV_BLOCK state
 
     :param struct scsi_device \*sdev:
         device to block
-
-    :param bool wait:
-        Whether or not to wait until ongoing .queuecommand() /
-        .queue_rq() calls have finished.
 
 .. _`scsi_internal_device_block.description`:
 
 Description
 -----------
 
-Block request made by scsi lld's to temporarily stop all
-scsi commands on the specified device. May sleep.
+Pause SCSI command processing on the specified device and wait until all
+ongoing \ :c:func:`scsi_request_fn`\  / \ :c:func:`scsi_queue_rq`\  calls have finished. May sleep.
 
-Returns zero if successful or error if not
+Returns zero if successful or a negative error code upon failure.
 
-.. _`scsi_internal_device_block.notes`:
+.. _`scsi_internal_device_block.note`:
 
-Notes
------
+Note
+----
 
-     This routine transitions the device to the SDEV_BLOCK state
-     (which must be a legal transition).  When the device is in this
-     state, all commands are deferred until the scsi lld reenables
-     the device with scsi_device_unblock or device_block_tmo fires.
+This routine transitions the device to the SDEV_BLOCK state (which must be
+a legal transition). When the device is in this state, command processing
+is paused until the device leaves the SDEV_BLOCK state. See also
+\ :c:func:`scsi_internal_device_unblock`\ .
 
 To do: avoid that \ :c:func:`scsi_send_eh_cmnd`\  calls \ :c:func:`queuecommand`\  after
 \ :c:func:`scsi_internal_device_block`\  has blocked a SCSI device and also
 remove the rport mutex lock and unlock calls from \ :c:func:`srp_queuecommand`\ .
+
+.. _`scsi_internal_device_unblock_nowait`:
+
+scsi_internal_device_unblock_nowait
+===================================
+
+.. c:function:: int scsi_internal_device_unblock_nowait(struct scsi_device *sdev, enum scsi_device_state new_state)
+
+    resume a device after a block request
+
+    :param struct scsi_device \*sdev:
+        device to resume
+
+    :param enum scsi_device_state new_state:
+        state to set the device to after unblocking
+
+.. _`scsi_internal_device_unblock_nowait.description`:
+
+Description
+-----------
+
+Restart the device queue for a previously suspended SCSI device. Does not
+sleep.
+
+Returns zero if successful or a negative error code upon failure.
+
+.. _`scsi_internal_device_unblock_nowait.notes`:
+
+Notes
+-----
+
+This routine transitions the device to the SDEV_RUNNING state or to one of
+the offline states (which must be a legal transition) allowing the midlayer
+to goose the queue for this device.
 
 .. _`scsi_internal_device_unblock`:
 
@@ -573,27 +646,25 @@ scsi_internal_device_unblock
         device to resume
 
     :param enum scsi_device_state new_state:
-        state to set devices to after unblocking
+        state to set the device to after unblocking
 
 .. _`scsi_internal_device_unblock.description`:
 
 Description
 -----------
 
-Called by scsi lld's or the midlayer to restart the device queue
-for the previously suspended scsi device.  Called from interrupt or
-normal process context.
+Restart the device queue for a previously suspended SCSI device. May sleep.
 
-Returns zero if successful or error if not.
+Returns zero if successful or a negative error code upon failure.
 
 .. _`scsi_internal_device_unblock.notes`:
 
 Notes
 -----
 
-     This routine transitions the device to the SDEV_RUNNING state
-     or to one of the offline states (which must be a legal transition)
-     allowing the midlayer to goose the queue for this device.
+This routine transitions the device to the SDEV_RUNNING state or to one of
+the offline states (which must be a legal transition) allowing the midlayer
+to goose the queue for this device.
 
 .. _`scsi_kmap_atomic_sg`:
 

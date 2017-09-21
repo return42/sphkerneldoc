@@ -6,7 +6,7 @@
 d_namespace_path
 ================
 
-.. c:function:: int d_namespace_path(const struct path *path, char *buf, int buflen, char **name, int flags)
+.. c:function:: int d_namespace_path(const struct path *path, char *buf, char **name, int flags, const char *disconnected)
 
     lookup a name associated with a given path
 
@@ -16,14 +16,14 @@ d_namespace_path
     :param char \*buf:
         buffer to store path to  (NOT NULL)
 
-    :param int buflen:
-        length of \ ``buf``\ 
-
     :param char \*\*name:
         Returns - pointer for start of path name with in \ ``buf``\  (NOT NULL)
 
     :param int flags:
         flags controlling path lookup
+
+    :param const char \*disconnected:
+        string to prefix to disconnected paths
 
 .. _`d_namespace_path.description`:
 
@@ -41,48 +41,14 @@ Return
 When no error the path name is returned in \ ``name``\  which points to
 to a position in \ ``buf``\ 
 
-.. _`get_name_to_buffer`:
-
-get_name_to_buffer
-==================
-
-.. c:function:: int get_name_to_buffer(const struct path *path, int flags, char *buffer, int size, char **name, const char **info)
-
-    get the pathname to a buffer ensure dir / is appended
-
-    :param const struct path \*path:
-        path to get name for  (NOT NULL)
-
-    :param int flags:
-        flags controlling path lookup
-
-    :param char \*buffer:
-        buffer to put name in  (NOT NULL)
-
-    :param int size:
-        size of buffer
-
-    :param char \*\*name:
-        Returns - contains position of path name in \ ``buffer``\  (NOT NULL)
-
-    :param const char \*\*info:
-        *undescribed*
-
-.. _`get_name_to_buffer.return`:
-
-Return
-------
-
-%0 else error on failure
-
 .. _`aa_path_name`:
 
 aa_path_name
 ============
 
-.. c:function:: int aa_path_name(const struct path *path, int flags, char **buffer, const char **name, const char **info)
+.. c:function:: int aa_path_name(const struct path *path, int flags, char *buffer, const char **name, const char **info, const char *disconnected)
 
-    compute the pathname of a file
+    get the pathname to a buffer ensure dir / is appended
 
     :param const struct path \*path:
         path the file  (NOT NULL)
@@ -90,14 +56,17 @@ aa_path_name
     :param int flags:
         flags controlling path name generation
 
-    :param char \*\*buffer:
-        buffer that \ :c:func:`aa_get_name`\  allocated  (NOT NULL)
+    :param char \*buffer:
+        buffer to put name in (NOT NULL)
 
     :param const char \*\*name:
         Returns - the generated path name if !error (NOT NULL)
 
     :param const char \*\*info:
         Returns - information on why the path lookup failed (MAYBE NULL)
+
+    :param const char \*disconnected:
+        string to prepend to disconnected paths
 
 .. _`aa_path_name.description`:
 

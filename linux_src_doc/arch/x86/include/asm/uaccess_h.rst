@@ -27,7 +27,7 @@ Context
 -------
 
 User context only. This function may sleep if pagefaults are
-enabled.
+         enabled.
 
 .. _`access_ok.description`:
 
@@ -64,7 +64,7 @@ Context
 -------
 
 User context only. This function may sleep if pagefaults are
-enabled.
+         enabled.
 
 .. _`get_user.description`:
 
@@ -102,7 +102,7 @@ Context
 -------
 
 User context only. This function may sleep if pagefaults are
-enabled.
+         enabled.
 
 .. _`put_user.description`:
 
@@ -139,7 +139,7 @@ Context
 -------
 
 User context only. This function may sleep if pagefaults are
-enabled.
+         enabled.
 
 .. _`__get_user.description`:
 
@@ -180,7 +180,7 @@ Context
 -------
 
 User context only. This function may sleep if pagefaults are
-enabled.
+         enabled.
 
 .. _`__put_user.description`:
 
