@@ -256,9 +256,7 @@ Definition
     struct s5p_mfc_buf {
         struct vb2_v4l2_buffer *b;
         struct list_head list;
-        union raw;
-        size_t stream;
-        } cookie;
+        union cookie;
         int flags;
     }
 
@@ -271,12 +269,6 @@ b
     *undescribed*
 
 list
-    *undescribed*
-
-raw
-    *undescribed*
-
-stream
     *undescribed*
 
 cookie

@@ -20,13 +20,9 @@ Definition
     struct mfc_cache {
         struct rhlist_head mnode;
         union {unnamed_union};
-        struct mfc_cache_cmp_arg cmparg;
-         };
         vifi_t mfc_parent;
         int mfc_flags;
-        union unres;
-        struct res;
-        } mfc_un;
+        union mfc_un;
         struct list_head list;
         struct rcu_head rcu;
     }
@@ -43,23 +39,11 @@ mnode
     anonymous
 
 
-cmparg
-    used for rhashtable comparisons
-
-}
-    *undescribed*
-
 mfc_parent
     source interface (iif)
 
 mfc_flags
     entry flags
-
-unres
-    *undescribed*
-
-res
-    *undescribed*
 
 mfc_un
     *undescribed*

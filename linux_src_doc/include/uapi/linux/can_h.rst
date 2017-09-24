@@ -118,8 +118,7 @@ Definition
     struct sockaddr_can {
         __kernel_sa_family_t can_family;
         int can_ifindex;
-        union tp;
-        } can_addr;
+        union can_addr;
     }
 
 .. _`sockaddr_can.members`:
@@ -132,9 +131,6 @@ can_family
 
 can_ifindex
     CAN network interface index.
-
-tp
-    *undescribed*
 
 can_addr
     protocol specific address information

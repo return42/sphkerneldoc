@@ -20,8 +20,7 @@ Definition
     struct key_entry {
         int type;
         u32 code;
-        union sw;
-         };
+        union {unnamed_union};
     }
 
 .. _`key_entry.members`:
@@ -37,19 +36,9 @@ type
 code
     Device-specific data identifying the button/switch
 
-sw
-    *undescribed*
+{unnamed_union}
+    anonymous
 
-sw.code
-    SW_* code assigned to a switch
-
-sw.value
-    Value that should be sent in an input even when KE_SW
-    switch is toggled. KE_VSW switches ignore this field and
-    expect driver to supply value for the event.
-
-}
-    *undescribed*
 
 .. _`key_entry.description`:
 

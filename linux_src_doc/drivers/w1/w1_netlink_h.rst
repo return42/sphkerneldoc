@@ -104,8 +104,7 @@ Definition
         __u8 type;
         __u8 status;
         __u16 len;
-        union mst;
-        } id;
+        union id;
         __u8 data;
     }
 
@@ -122,9 +121,6 @@ status
 
 len
     length of data following w1_netlink_msg
-
-mst
-    *undescribed*
 
 id
     union holding master bus id (msg.id) and slave device id (id[8]).

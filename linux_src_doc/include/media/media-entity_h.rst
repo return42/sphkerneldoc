@@ -425,8 +425,7 @@ Definition
         int stream_count;
         int use_count;
         struct media_pipeline *pipe;
-        union dev;
-        } info;
+        union info;
     }
 
 .. _`media_entity.members`:
@@ -483,9 +482,6 @@ use_count
 
 pipe
     Pipeline this entity belongs to.
-
-dev
-    *undescribed*
 
 info
     Union with devnode information.  Kept just for backward

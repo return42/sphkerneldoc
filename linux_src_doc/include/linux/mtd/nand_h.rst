@@ -964,8 +964,6 @@ Definition
     struct nand_flash_dev {
         char *name;
         union {unnamed_union};
-        uint8_t id;
-         };
         unsigned int pagesize;
         unsigned int chipsize;
         unsigned int erasesize;
@@ -987,12 +985,6 @@ name
 {unnamed_union}
     anonymous
 
-
-id
-    full device ID array
-
-}
-    *undescribed*
 
 pagesize
     size of the NAND page in bytes; if 0, then the real page size (as

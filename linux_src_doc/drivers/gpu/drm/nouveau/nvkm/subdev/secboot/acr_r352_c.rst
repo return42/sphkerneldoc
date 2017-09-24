@@ -135,8 +135,7 @@ Definition
         u32 wpr_offset;
         u32 mmu_mem_range;
     #define FLCN_ACR_MAX_REGIONS 2
-        struct region_props;
-        } regions;
+        struct regions;
         u32 ucode_blob_size;
         u64 ucode_blob_base;
         struct vpr_desc;
@@ -157,9 +156,6 @@ wpr_offset
     offset from the WPR region holding the wpr header
 
 mmu_mem_range
-    *undescribed*
-
-region_props
     *undescribed*
 
 regions

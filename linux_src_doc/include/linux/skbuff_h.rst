@@ -103,8 +103,6 @@ Definition
 
     struct sk_buff {
         union {unnamed_union};
-        struct rb_node rbnode;
-         };
         struct sock *sk;
         union {unnamed_union};
         char cb;
@@ -218,12 +216,6 @@ Members
 {unnamed_union}
     anonymous
 
-
-rbnode
-    RB tree node, alternative to next/prev for netem/tcp
-
-}
-    *undescribed*
 
 sk
     Socket we are owned by

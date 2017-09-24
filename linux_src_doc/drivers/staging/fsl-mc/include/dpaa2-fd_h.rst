@@ -32,8 +32,7 @@ Definition
 .. code-block:: c
 
     struct dpaa2_fd {
-        union simple;
-         };
+        union {unnamed_union};
     }
 
 .. _`dpaa2_fd.members`:
@@ -41,11 +40,9 @@ Definition
 Members
 -------
 
-simple
-    *undescribed*
+{unnamed_union}
+    anonymous
 
-}
-    *undescribed*
 
 .. _`dpaa2_fd.description`:
 

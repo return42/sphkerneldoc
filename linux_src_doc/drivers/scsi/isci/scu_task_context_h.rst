@@ -572,8 +572,7 @@ Definition
         u32 bgc_blk_sz:13;
         u32 reserved_E0_0:3;
         u32 app_tag_gen_mask:16;
-        union bgctl_f;
-         };
+        union {unnamed_union};
         u16 app_tag_verify_mask;
         u32 blk_guard_err:8;
         u32 reserved_E8_0:24;
@@ -824,11 +823,9 @@ reserved_E0_0
 app_tag_gen_mask
     *undescribed*
 
-bgctl_f
-    *undescribed*
+{unnamed_union}
+    anonymous
 
-}
-    *undescribed*
 
 app_tag_verify_mask
     *undescribed*

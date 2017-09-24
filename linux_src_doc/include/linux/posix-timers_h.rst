@@ -33,11 +33,7 @@ Definition
         struct signal_struct *it_signal;
         union {unnamed_union};
         struct sigqueue *sigq;
-        union real;
-        struct cpu_timer_list cpu;
-        struct alarm;
-        struct rcu_head rcu;
-        } it;
+        union it;
     }
 
 .. _`k_itimer.members`:
@@ -91,18 +87,6 @@ it_signal
 
 sigq
     Pointer to preallocated sigqueue
-
-real
-    *undescribed*
-
-cpu
-    *undescribed*
-
-alarm
-    *undescribed*
-
-rcu
-    *undescribed*
 
 it
     Union representing the various posix timer type

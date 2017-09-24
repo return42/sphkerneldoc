@@ -75,10 +75,7 @@ Definition
         unsigned int oas;
         const struct iommu_gather_ops *tlb;
         struct device *iommu_dev;
-        union arm_lpae_s1_cfg;
-        struct arm_lpae_s2_cfg;
-        struct arm_v7s_cfg;
-         };
+        union {unnamed_union};
     }
 
 .. _`io_pgtable_cfg.members`:
@@ -107,17 +104,9 @@ iommu_dev
     The device representing the DMA configuration for the
     page table walker.
 
-arm_lpae_s1_cfg
-    *undescribed*
+{unnamed_union}
+    anonymous
 
-arm_lpae_s2_cfg
-    *undescribed*
-
-arm_v7s_cfg
-    *undescribed*
-
-}
-    *undescribed*
 
 .. _`io_pgtable_ops`:
 

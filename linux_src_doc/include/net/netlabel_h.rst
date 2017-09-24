@@ -79,9 +79,7 @@ Definition
         NETLBL_SECATTR_MLS_CAT | \NETLBL_SECATTR_SECID) u32 type;
         char *domain;
         struct netlbl_lsm_cache *cache;
-        struct mls;
-        u32 secid;
-        } attr;
+        struct attr;
     }
 
 .. _`netlbl_lsm_secattr.members`:
@@ -103,12 +101,6 @@ domain
 
 cache
     NetLabel LSM specific cache
-
-mls
-    *undescribed*
-
-secid
-    *undescribed*
 
 attr
     *undescribed*

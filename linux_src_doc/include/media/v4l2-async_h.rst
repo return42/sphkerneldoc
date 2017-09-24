@@ -67,11 +67,7 @@ Definition
 
     struct v4l2_async_subdev {
         enum v4l2_async_match_type match_type;
-        union fwnode;
-        struct device_name;
-        struct i2c;
-        struct custom;
-        } match;
+        union match;
         struct list_head list;
     }
 
@@ -82,18 +78,6 @@ Members
 
 match_type
     type of match that will be used
-
-fwnode
-    *undescribed*
-
-device_name
-    *undescribed*
-
-i2c
-    *undescribed*
-
-custom
-    *undescribed*
 
 match
     union of per-bus type matching data sets

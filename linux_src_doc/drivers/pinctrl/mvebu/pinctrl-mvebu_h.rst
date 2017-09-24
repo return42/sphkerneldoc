@@ -18,8 +18,7 @@ Definition
 .. code-block:: c
 
     struct mvebu_mpp_ctrl_data {
-        union regmap;
-         };
+        union {unnamed_union};
     }
 
 .. _`mvebu_mpp_ctrl_data.members`:
@@ -27,17 +26,9 @@ Definition
 Members
 -------
 
-regmap
-    *undescribed*
+{unnamed_union}
+    anonymous
 
-regmap.map
-    regmap structure
-
-regmap.offset
-    regmap offset
-
-}
-    *undescribed*
 
 .. _`mvebu_mpp_ctrl`:
 

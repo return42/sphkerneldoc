@@ -154,12 +154,7 @@ Definition
         u32 reserved1;
         s32 rc;
         u32 reserved2;
-        union init_evq;
-        struct init_rxq;
-        struct init_txq;
-        struct mac_filter;
-        struct set_status_page;
-        } u;
+        union u;
     }
 
 .. _`vfdi_req.members`:
@@ -177,21 +172,6 @@ rc
     Response code.  Set to 0 on success or a negative error code on failure.
 
 reserved2
-    *undescribed*
-
-init_evq
-    *undescribed*
-
-init_rxq
-    *undescribed*
-
-init_txq
-    *undescribed*
-
-mac_filter
-    *undescribed*
-
-set_status_page
     *undescribed*
 
 u

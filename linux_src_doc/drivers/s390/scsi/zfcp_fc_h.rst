@@ -293,12 +293,7 @@ Definition
         struct zfcp_fsf_ct_els ct_els;
         struct scatterlist sg_req;
         struct scatterlist sg_rsp;
-        union adisc;
-        struct gid_pn;
-        struct gpn_ft;
-        struct gspn;
-        struct rspn;
-        } u;
+        union u;
     }
 
 .. _`zfcp_fc_req.members`:
@@ -314,21 +309,6 @@ sg_req
 
 sg_rsp
     scatterlist entry for response data
-
-adisc
-    *undescribed*
-
-gid_pn
-    *undescribed*
-
-gpn_ft
-    *undescribed*
-
-gspn
-    *undescribed*
-
-rspn
-    *undescribed*
 
 u
     request specific data

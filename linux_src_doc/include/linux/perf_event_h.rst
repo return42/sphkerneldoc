@@ -20,13 +20,6 @@ Definition
     struct hw_perf_event {
     #ifdef CONFIG_PERF_EVENTS
         union {unnamed_union};
-        struct {unnamed_struct};
-        struct {unnamed_struct};
-        struct {unnamed_struct};
-    #ifdef CONFIG_HAVE_HW_BREAKPOINT
-        struct {unnamed_struct};
-    #endif
-        struct {unnamed_struct};
         struct task_struct *target;
         void *addr_filters;
         unsigned long addr_filters_gen;
@@ -51,26 +44,6 @@ Members
 -------
 
 {unnamed_union}
-    anonymous
-
-
-{unnamed_struct}
-    anonymous
-
-
-{unnamed_struct}
-    anonymous
-
-
-{unnamed_struct}
-    anonymous
-
-
-{unnamed_struct}
-    anonymous
-
-
-{unnamed_struct}
     anonymous
 
 

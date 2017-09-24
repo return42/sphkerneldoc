@@ -912,9 +912,7 @@ Definition
         u8 active_dwell;
         u8 passive_dwell;
         u8 fragmented_dwell;
-        union v1;
-        struct v6;
-         };
+        union {unnamed_union};
     }
 
 .. _`iwl_scan_req_umac.members`:
@@ -952,14 +950,9 @@ passive_dwell
 fragmented_dwell
     dwell time for fragmented passive scan
 
-v1
-    *undescribed*
+{unnamed_union}
+    anonymous
 
-v6
-    *undescribed*
-
-}
-    *undescribed*
 
 .. _`iwl_umac_scan_abort`:
 

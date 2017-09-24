@@ -52,8 +52,6 @@ Definition
         struct hist_entry *parent_he;
         struct hist_entry_ops *ops;
         union {unnamed_union};
-        struct rb_root sorted_chain;
-         };
         struct callchain_root callchain;
     }
 
@@ -165,12 +163,6 @@ ops
 {unnamed_union}
     anonymous
 
-
-sorted_chain
-    *undescribed*
-
-}
-    *undescribed*
 
 callchain
     *undescribed*

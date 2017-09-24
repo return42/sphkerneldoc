@@ -96,7 +96,6 @@ Definition
         struct nfp_app *app;
         struct devlink_port dl_port;
         union {unnamed_union};
-        struct {unnamed_struct};
         struct list_head port_list;
     }
 
@@ -121,10 +120,6 @@ dl_port
     devlink port structure
 
 {unnamed_union}
-    anonymous
-
-
-{unnamed_struct}
     anonymous
 
 

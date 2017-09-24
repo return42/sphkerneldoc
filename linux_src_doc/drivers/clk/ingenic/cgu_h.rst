@@ -293,8 +293,6 @@ Definition
         enum type;
         int parents;
         union {unnamed_union};
-        struct ingenic_cgu_custom_info custom;
-         };
     }
 
 .. _`ingenic_cgu_clk_info.members`:
@@ -316,12 +314,6 @@ parents
 {unnamed_union}
     anonymous
 
-
-custom
-    information valid if type includes CGU_CLK_CUSTOM
-
-}
-    *undescribed*
 
 .. _`ingenic_cgu`:
 

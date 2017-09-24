@@ -24,11 +24,7 @@ Definition
         struct device *dev;
         struct msi_msg msg;
         struct cpumask *affinity;
-        union msi_attrib;
         union {unnamed_union};
-        struct platform_msi_desc platform;
-        struct fsl_mc_msi_desc fsl_mc;
-         };
     }
 
 .. _`msi_desc.members`:
@@ -54,21 +50,9 @@ msg
 affinity
     Optional pointer to a cpu affinity mask for this descriptor
 
-msi_attrib
-    *undescribed*
-
 {unnamed_union}
     anonymous
 
-
-platform
-    [platform]  Platform device specific msi descriptor data
-
-fsl_mc
-    [fsl-mc]    FSL MC device specific msi descriptor data
-
-}
-    *undescribed*
 
 .. _`msi_domain_ops`:
 

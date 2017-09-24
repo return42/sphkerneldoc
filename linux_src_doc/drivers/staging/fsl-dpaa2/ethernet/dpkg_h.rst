@@ -139,10 +139,7 @@ Definition
 
     struct dpkg_extract {
         enum dpkg_extract_type type;
-        union from_hdr;
-        struct from_data;
-        struct from_parse;
-        } extract;
+        union extract;
         u8 num_of_byte_masks;
         struct dpkg_mask masks;
     }
@@ -157,15 +154,6 @@ type
     DPKG_EXTRACT_FROM_HDR: selects 'from_hdr';
     DPKG_EXTRACT_FROM_DATA: selects 'from_data';
     DPKG_EXTRACT_FROM_PARSE: selects 'from_parse'
-
-from_hdr
-    *undescribed*
-
-from_data
-    *undescribed*
-
-from_parse
-    *undescribed*
 
 extract
     Selects extraction method

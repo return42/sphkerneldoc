@@ -1564,17 +1564,6 @@ Definition
         u8 hw_queue;
         u16 ack_frame_id;
         union {unnamed_union};
-        unsigned long jiffies;
-         };
-        union {unnamed_union};
-        struct ieee80211_key_conf *hw_key;
-        u32 flags;
-        } control;
-        struct ack;
-        struct status;
-        struct {unnamed_struct};
-        void  *driver_data;
-         };
     }
 
 .. _`ieee80211_tx_info.members`:
@@ -1597,41 +1586,6 @@ ack_frame_id
 {unnamed_union}
     anonymous
 
-
-jiffies
-    *undescribed*
-
-}
-    *undescribed*
-
-{unnamed_union}
-    anonymous
-
-
-hw_key
-    *undescribed*
-
-flags
-    transmit info flags, defined above
-
-control
-    union for control data
-
-ack
-    *undescribed*
-
-status
-    union for status data
-
-{unnamed_struct}
-    anonymous
-
-
-driver_data
-    array of driver_data pointers
-
-}
-    *undescribed*
 
 .. _`ieee80211_tx_info.description`:
 
@@ -2851,13 +2805,7 @@ Definition
 .. code-block:: c
 
     struct ieee80211_key_seq {
-        union tkip;
-        struct ccmp;
-        struct aes_cmac;
-        struct aes_gmac;
-        struct gcmp;
-        struct hw;
-         };
+        union {unnamed_union};
     }
 
 .. _`ieee80211_key_seq.members`:
@@ -2865,30 +2813,9 @@ Definition
 Members
 -------
 
-tkip
-    TKIP data, containing IV32 and IV16 in host byte order
+{unnamed_union}
+    anonymous
 
-ccmp
-    PN data, most significant byte first (big endian,
-    reverse order than in packet)
-
-aes_cmac
-    PN data, most significant byte first (big endian,
-    reverse order than in packet)
-
-aes_gmac
-    PN data, most significant byte first (big endian,
-    reverse order than in packet)
-
-gcmp
-    PN data, most significant byte first (big endian,
-    reverse order than in packet)
-
-hw
-    data for HW-only (e.g. cipher scheme) keys
-
-}
-    *undescribed*
 
 .. _`ieee80211_cipher_scheme`:
 
