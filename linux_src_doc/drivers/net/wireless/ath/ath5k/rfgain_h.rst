@@ -19,7 +19,7 @@ Definition
 
     struct ath5k_ini_rfgain {
         u16 rfg_register;
-        u32 rfg_value;
+        u32 rfg_value[2];
     }
 
 .. _`ath5k_ini_rfgain.members`:
@@ -59,7 +59,7 @@ Definition
 .. code-block:: c
 
     struct ath5k_gain_opt_step {
-        s8 gos_param;
+        s8 gos_param[AR5K_GAIN_CRN_MAX_FIX_BITS];
         s8 gos_gain;
     }
 
@@ -93,7 +93,7 @@ Definition
     struct ath5k_gain_opt {
         u8 go_default;
         u8 go_steps_count;
-        const struct ath5k_gain_opt_step go_step;
+        const struct ath5k_gain_opt_step go_step[AR5K_GAIN_STEP_COUNT];
     }
 
 .. _`ath5k_gain_opt.members`:

@@ -22,7 +22,7 @@ Definition
         __s32 mtd_num;
         __s32 vid_hdr_offset;
         __s16 max_beb_per1024;
-        __s8 padding;
+        __s8 padding[10];
     }
 
 .. _`ubi_attach_req.members`:
@@ -112,8 +112,8 @@ Definition
         __s8 vol_type;
         __s8 padding1;
         __s16 name_len;
-        __s8 padding2;
-        char name;
+        __s8 padding2[4];
+        char name[UBI_MAX_VOLUME_NAME + 1];
     }
 
 .. _`ubi_mkvol_req.members`:
@@ -230,8 +230,13 @@ Definition
 
     struct ubi_rnvol_req {
         __s32 count;
-        __s8 padding1;
-        struct ents;
+        __s8 padding1[12];
+        struct {
+            __s32 vol_id;
+            __s16 name_len;
+            __s8 padding2[2];
+            char name[UBI_MAX_VOLUME_NAME + 1];
+        } ents[UBI_MAX_RNVOL];
     }
 
 .. _`ubi_rnvol_req.members`:
@@ -245,7 +250,19 @@ count
 padding1
     reserved for future, not used, has to be zeroed
 
-ents
+vol_id
+    ID of the volume to re-name
+
+name_len
+    name length
+
+padding2
+    reserved for future, not used, has to be zeroed
+
+name
+    new volume name
+
+nts
     *undescribed*
 
 .. _`ubi_rnvol_req.description`:
@@ -306,7 +323,7 @@ Definition
         __s32 lnum;
         __s32 bytes;
         __s8 dtype;
-        __s8 padding;
+        __s8 padding[7];
     }
 
 .. _`ubi_leb_change_req.members`:
@@ -365,7 +382,7 @@ Definition
     struct ubi_map_req {
         __s32 lnum;
         __s8 dtype;
-        __s8 padding;
+        __s8 padding[3];
     }
 
 .. _`ubi_map_req.members`:
@@ -400,7 +417,7 @@ Definition
 
     struct ubi_set_vol_prop_req {
         __u8 property;
-        __u8 padding;
+        __u8 padding[7];
         __u64 value;
     }
 
@@ -435,7 +452,7 @@ Definition
 .. code-block:: c
 
     struct ubi_blkcreate_req {
-        __s8 padding;
+        __s8 padding[128];
     }
 
 .. _`ubi_blkcreate_req.members`:

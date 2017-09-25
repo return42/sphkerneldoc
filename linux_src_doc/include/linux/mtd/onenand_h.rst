@@ -48,8 +48,8 @@ Definition
     struct onenand_chip {
         void __iomem *base;
         unsigned dies;
-        unsigned boundary;
-        loff_t diesize;
+        unsigned boundary[MAX_DIES];
+        loff_t diesize[MAX_DIES];
         unsigned int chipsize;
         unsigned int device_id;
         unsigned int version_id;
@@ -61,7 +61,7 @@ Definition
         unsigned int page_mask;
         unsigned int writesize;
         unsigned int bufferram_index;
-        struct onenand_bufferram bufferram;
+        struct onenand_bufferram bufferram[MAX_BUFFERRAM];
         int (*command)(struct mtd_info *mtd, int cmd, loff_t address, size_t len);
         int (*wait)(struct mtd_info *mtd, int state);
         int (*bbt_wait)(struct mtd_info *mtd, int state);

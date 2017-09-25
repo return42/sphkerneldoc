@@ -19,12 +19,8 @@ Definition
 
     struct vmw_kms_sou_surface_dirty {
         struct vmw_kms_dirty base;
-        s32 left;
-        s32 right;
-        s32 top;
-        s32 bottom;
-        s32 dst_x;
-        s32 dst_y;
+        s32 left, right, top, bottom;
+        s32 dst_x, dst_y;
         u32 sid;
     }
 

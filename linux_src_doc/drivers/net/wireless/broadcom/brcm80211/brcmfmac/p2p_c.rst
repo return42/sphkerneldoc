@@ -91,8 +91,11 @@ Definition
 
     struct brcmf_p2p_scan_le {
         u8 type;
-        u8 reserved;
-        union {unnamed_union};
+        u8 reserved[3];
+        union {
+            struct brcmf_escan_params_le eparams;
+            struct brcmf_scan_params_le sparams;
+        } ;
     }
 
 .. _`brcmf_p2p_scan_le.members`:
@@ -108,7 +111,6 @@ reserved
 
 {unnamed_union}
     anonymous
-
 
 .. _`brcmf_p2p_pub_act_frame`:
 
@@ -129,11 +131,11 @@ Definition
     struct brcmf_p2p_pub_act_frame {
         u8 category;
         u8 action;
-        u8 oui;
+        u8 oui[3];
         u8 oui_type;
         u8 subtype;
         u8 dialog_token;
-        u8 elts;
+        u8 elts[1];
     }
 
 .. _`brcmf_p2p_pub_act_frame.members`:
@@ -180,11 +182,11 @@ Definition
 
     struct brcmf_p2p_action_frame {
         u8 category;
-        u8 oui;
+        u8 oui[3];
         u8 type;
         u8 subtype;
         u8 dialog_token;
-        u8 elts;
+        u8 elts[1];
     }
 
 .. _`brcmf_p2p_action_frame.members`:
@@ -230,7 +232,7 @@ Definition
         u8 category;
         u8 action;
         u8 dialog_token;
-        u8 query_data;
+        u8 query_data[1];
     }
 
 .. _`brcmf_p2psd_gas_pub_act_frame.members`:

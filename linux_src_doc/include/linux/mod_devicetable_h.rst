@@ -30,7 +30,7 @@ Definition
         __u8 bInterfaceSubClass;
         __u8 bInterfaceProtocol;
         __u8 bInterfaceNumber;
-        kernel_ulong_t driver_info;
+        kernel_ulong_t driver_info __attribute__((aligned(sizeof(kernel_ulong_t))));
     }
 
 .. _`usb_device_id.members`:
@@ -231,7 +231,7 @@ Definition
 .. code-block:: c
 
     struct mei_cl_device_id {
-        char name;
+        char name[MEI_CL_NAME_SIZE];
         uuid_le uuid;
         __u8 version;
         kernel_ulong_t driver_info;
@@ -278,10 +278,8 @@ Definition
 .. code-block:: c
 
     struct rio_device_id {
-        __u16 did;
-        __u16 vid;
-        __u16 asm_did;
-        __u16 asm_vid;
+        __u16 did, vid;
+        __u16 asm_did, asm_vid;
     }
 
 .. _`rio_device_id.members`:
@@ -327,7 +325,7 @@ Definition
 
     struct fsl_mc_device_id {
         __u16 vendor;
-        const char obj_type;
+        const char obj_type[16];
     }
 
 .. _`fsl_mc_device_id.members`:

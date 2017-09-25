@@ -19,10 +19,8 @@ Definition
 
     struct virtproc_info {
         struct virtio_device *vdev;
-        struct virtqueue *rvq;
-        struct virtqueue * *svq;
-        void *rbufs;
-        void * *sbufs;
+        struct virtqueue *rvq, *svq;
+        void *rbufs, *sbufs;
         unsigned int num_bufs;
         int last_sbuf;
         dma_addr_t bufs_dma;
@@ -114,7 +112,7 @@ Definition
         u32 reserved;
         u16 len;
         u16 flags;
-        u8 data;
+        u8 data[0];
     }
 
 .. _`rpmsg_hdr.members`:
@@ -164,7 +162,7 @@ Definition
 .. code-block:: c
 
     struct rpmsg_ns_msg {
-        char name;
+        char name[RPMSG_NAME_SIZE];
         u32 addr;
         u32 flags;
     }

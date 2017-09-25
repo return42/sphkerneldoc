@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct zfcp_qdio {
-        struct qdio_buffer  *res_q;
-        struct qdio_buffer  *req_q;
+        struct qdio_buffer *res_q[QDIO_MAX_BUFFERS_PER_Q];
+        struct qdio_buffer *req_q[QDIO_MAX_BUFFERS_PER_Q];
         u8 req_q_idx;
         atomic_t req_q_free;
         spinlock_t stat_lock;

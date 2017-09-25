@@ -20,7 +20,7 @@ Definition
     struct sdma_channel_control {
         u32 current_bd_ptr;
         u32 base_bd_ptr;
-        u32 unused;
+        u32 unused[2];
     }
 
 .. _`sdma_channel_control.members`:
@@ -64,17 +64,17 @@ Definition
 .. code-block:: c
 
     struct sdma_state_registers {
-        u32 pc:14;
-        u32 unused1:1;
-        u32 t:1;
-        u32 rpc:14;
-        u32 unused0:1;
-        u32 sf:1;
-        u32 spc:14;
-        u32 unused2:1;
-        u32 df:1;
-        u32 epc:14;
-        u32 lm:2;
+        u32 pc :14;
+        u32 unused1: 1;
+        u32 t : 1;
+        u32 rpc :14;
+        u32 unused0: 1;
+        u32 sf : 1;
+        u32 spc :14;
+        u32 unused2: 1;
+        u32 df : 1;
+        u32 epc :14;
+        u32 lm : 2;
     }
 
 .. _`sdma_state_registers.members`:
@@ -133,7 +133,7 @@ Definition
 
     struct sdma_context_data {
         struct sdma_state_registers channel_state;
-        u32 gReg;
+        u32 gReg[8];
         u32 mda;
         u32 msa;
         u32 ms;
@@ -265,16 +265,13 @@ Definition
         unsigned int period_len;
         struct sdma_buffer_descriptor *bd;
         dma_addr_t bd_phys;
-        unsigned int pc_from_device;
-        unsigned int pc_to_device;
+        unsigned int pc_from_device, pc_to_device;
         unsigned int device_to_device;
         unsigned long flags;
-        dma_addr_t per_address;
-        dma_addr_t per_address2;
-        unsigned long event_mask;
+        dma_addr_t per_address, per_address2;
+        unsigned long event_mask[2];
         unsigned long watermark_level;
-        u32 shp_addr;
-        u32 per_addr;
+        u32 shp_addr, per_addr;
         struct dma_chan chan;
         spinlock_t lock;
         struct dma_async_tx_descriptor desc;

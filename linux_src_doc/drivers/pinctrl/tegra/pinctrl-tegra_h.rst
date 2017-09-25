@@ -57,7 +57,7 @@ Definition
         const char *name;
         const unsigned *pins;
         u8 npins;
-        u8 funcs;
+        u8 funcs[4];
         s16 mux_reg;
         s16 pupd_reg;
         s16 tri_reg;

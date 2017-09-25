@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct tps65217_board {
-        struct regulator_init_data  *tps65217_init_data;
-        struct device_node  *of_node;
+        struct regulator_init_data *tps65217_init_data[TPS65217_NUM_REGULATOR];
+        struct device_node *of_node[TPS65217_NUM_REGULATOR];
         struct tps65217_bl_pdata *bl_pdata;
     }
 
@@ -64,7 +64,7 @@ Definition
         struct device *dev;
         struct tps65217_board *pdata;
         unsigned long id;
-        struct regulator_desc desc;
+        struct regulator_desc desc[TPS65217_NUM_REGULATOR];
         struct regmap *regmap;
         u8 *strobes;
         struct irq_domain *irq_domain;

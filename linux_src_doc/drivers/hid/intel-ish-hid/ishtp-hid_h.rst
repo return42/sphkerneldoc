@@ -27,11 +27,11 @@ Definition
         unsigned int cur_hid_dev;
         unsigned int hid_dev_count;
         struct device_info *hid_devices;
-        unsigned char  *report_descr;
-        int report_descr_size;
-        struct hid_device  *hid_sensor_hubs;
-        unsigned char  *hid_descr;
-        int hid_descr_size;
+        unsigned char *report_descr[MAX_HID_DEVICES];
+        int report_descr_size[MAX_HID_DEVICES];
+        struct hid_device *hid_sensor_hubs[MAX_HID_DEVICES];
+        unsigned char *hid_descr[MAX_HID_DEVICES];
+        int hid_descr_size[MAX_HID_DEVICES];
         wait_queue_head_t init_wait;
         wait_queue_head_t ishtp_resume_wait;
         struct ishtp_cl *hid_ishtp_cl;

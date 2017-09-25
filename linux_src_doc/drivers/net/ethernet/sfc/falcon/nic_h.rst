@@ -19,11 +19,11 @@ Definition
 
     struct falcon_board_type {
         u8 id;
-        int (*init)(struct ef4_nic *nic);
-        void (*init_phy)(struct ef4_nic *efx);
-        void (*fini)(struct ef4_nic *nic);
-        void (*set_id_led)(struct ef4_nic *efx, enum ef4_led_mode mode);
-        int (*monitor)(struct ef4_nic *nic);
+        int (*init) (struct ef4_nic *nic);
+        void (*init_phy) (struct ef4_nic *efx);
+        void (*fini) (struct ef4_nic *nic);
+        void (*set_id_led) (struct ef4_nic *efx, enum ef4_led_mode mode);
+        int (*monitor) (struct ef4_nic *nic);
     }
 
 .. _`falcon_board_type.members`:
@@ -71,8 +71,7 @@ Definition
         int minor;
         struct i2c_adapter i2c_adap;
         struct i2c_algo_bit_data i2c_data;
-        struct i2c_client *hwmon_client;
-        struct i2c_client * *ioexp_client;
+        struct i2c_client *hwmon_client, *ioexp_client;
     }
 
 .. _`falcon_board.members`:
@@ -179,7 +178,7 @@ Definition
     struct falcon_nic_data {
         struct pci_dev *pci_dev2;
         struct falcon_board board;
-        u64 stats;
+        u64 stats[FALCON_STAT_COUNT];
         unsigned int stats_disable_count;
         bool stats_pending;
         struct timer_list stats_timer;

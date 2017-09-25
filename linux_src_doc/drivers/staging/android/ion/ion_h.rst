@@ -79,7 +79,10 @@ Definition
 .. code-block:: c
 
     struct ion_buffer {
-        union {unnamed_union};
+        union {
+            struct rb_node node;
+            struct list_head list;
+        } ;
         struct ion_device *dev;
         struct ion_heap *heap;
         unsigned long flags;
@@ -100,7 +103,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 dev
     back pointer to the ion_device

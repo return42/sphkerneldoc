@@ -105,8 +105,8 @@ Definition
     struct qlink_intf_info {
         __le16 if_type;
         __le16 vlanid;
-        u8 mac_addr;
-        u8 rsvd;
+        u8 mac_addr[ETH_ALEN];
+        u8 rsvd[2];
     }
 
 .. _`qlink_intf_info.members`:
@@ -313,7 +313,7 @@ Definition
         struct qlink_msg_header mhdr;
         __le16 cmd_id;
         __le16 seq_num;
-        u8 rsvd;
+        u8 rsvd[2];
         u8 macid;
         u8 vifid;
     }
@@ -450,7 +450,7 @@ Definition
         __le32 cookie;
         __le16 freq;
         __le16 flags;
-        u8 frame_data;
+        u8 frame_data[0];
     }
 
 .. _`qlink_cmd_mgmt_frame_tx.members`:
@@ -493,7 +493,7 @@ Definition
         struct qlink_cmd chdr;
         u8 type;
         u8 flags;
-        u8 ie_data;
+        u8 ie_data[0];
     }
 
 .. _`qlink_cmd_mgmt_append_ie.members`:
@@ -532,7 +532,7 @@ Definition
 
     struct qlink_cmd_get_sta_info {
         struct qlink_cmd chdr;
-        u8 sta_addr;
+        u8 sta_addr[ETH_ALEN];
     }
 
 .. _`qlink_cmd_get_sta_info.members`:
@@ -566,10 +566,10 @@ Definition
         struct qlink_cmd chdr;
         u8 key_index;
         u8 pairwise;
-        u8 addr;
+        u8 addr[ETH_ALEN];
         __le32 cipher;
         __le16 vlanid;
-        u8 key_data;
+        u8 key_data[0];
     }
 
 .. _`qlink_cmd_add_key.members`:
@@ -618,7 +618,7 @@ Definition
         struct qlink_cmd chdr;
         u8 key_index;
         u8 pairwise;
-        u8 addr;
+        u8 addr[ETH_ALEN];
     }
 
 .. _`qlink_cmd_del_key.members`:
@@ -732,7 +732,7 @@ Definition
         __le32 sta_flags_set;
         __le16 if_type;
         __le16 vlanid;
-        u8 sta_addr;
+        u8 sta_addr[ETH_ALEN];
     }
 
 .. _`qlink_cmd_change_sta.members`:
@@ -778,7 +778,7 @@ Definition
         struct qlink_cmd chdr;
         __le16 reason_code;
         u8 subtype;
-        u8 sta_addr;
+        u8 sta_addr[ETH_ALEN];
     }
 
 .. _`qlink_cmd_del_sta.members`:
@@ -826,8 +826,8 @@ Definition
         __le32 flags;
         __le16 channel;
         __le16 bg_scan_period;
-        u8 bssid;
-        u8 payload;
+        u8 bssid[ETH_ALEN];
+        u8 payload[0];
     }
 
 .. _`qlink_cmd_connect.members`:
@@ -1126,7 +1126,7 @@ Definition
 
     struct qlink_cmd_reg_notify {
         struct qlink_cmd chdr;
-        u8 alpha2;
+        u8 alpha2[2];
         u8 initiator;
         u8 user_reg_hint_type;
     }
@@ -1269,7 +1269,7 @@ Definition
 
     struct qlink_resp_get_mac_info {
         struct qlink_resp rhdr;
-        u8 dev_mac;
+        u8 dev_mac[ETH_ALEN];
         u8 num_tx_chain;
         u8 num_rx_chain;
         struct ieee80211_vht_cap vht_cap;
@@ -1278,7 +1278,7 @@ Definition
         u8 phymode_cap;
         __le16 max_ap_assoc_sta;
         __le16 radar_detect_widths;
-        u8 var_info;
+        u8 var_info[0];
     }
 
 .. _`qlink_resp_get_mac_info.members`:
@@ -1400,10 +1400,10 @@ Definition
         u8 mac_bitmap;
         u8 total_tx_chain;
         u8 total_rx_chain;
-        u8 alpha2;
+        u8 alpha2[2];
         u8 n_reg_rules;
         u8 dfs_region;
-        u8 info;
+        u8 info[0];
     }
 
 .. _`qlink_resp_get_hw_info.members`:
@@ -1512,8 +1512,8 @@ Definition
 
     struct qlink_resp_get_sta_info {
         struct qlink_resp rhdr;
-        u8 sta_addr;
-        u8 info;
+        u8 sta_addr[ETH_ALEN];
+        u8 info[0];
     }
 
 .. _`qlink_resp_get_sta_info.members`:
@@ -1557,8 +1557,8 @@ Definition
         struct qlink_resp rhdr;
         u8 band;
         u8 num_chans;
-        u8 rsvd;
-        u8 info;
+        u8 rsvd[2];
+        u8 info[0];
     }
 
 .. _`qlink_resp_get_chan_info.members`:
@@ -1599,7 +1599,7 @@ Definition
 
     struct qlink_resp_phy_params {
         struct qlink_resp rhdr;
-        u8 info;
+        u8 info[0];
     }
 
 .. _`qlink_resp_phy_params.members`:
@@ -1631,7 +1631,7 @@ Definition
 
     struct qlink_resp_get_chan_stats {
         struct qlink_cmd rhdr;
-        u8 info;
+        u8 info[0];
     }
 
 .. _`qlink_resp_get_chan_stats.members`:
@@ -1712,9 +1712,9 @@ Definition
 
     struct qlink_event_sta_assoc {
         struct qlink_event ehdr;
-        u8 sta_addr;
+        u8 sta_addr[ETH_ALEN];
         __le16 frame_control;
-        u8 ies;
+        u8 ies[0];
     }
 
 .. _`qlink_event_sta_assoc.members`:
@@ -1752,7 +1752,7 @@ Definition
 
     struct qlink_event_sta_deauth {
         struct qlink_event ehdr;
-        u8 sta_addr;
+        u8 sta_addr[ETH_ALEN];
         __le16 reason;
     }
 
@@ -1788,7 +1788,7 @@ Definition
 
     struct qlink_event_bss_join {
         struct qlink_event ehdr;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         __le16 status;
     }
 
@@ -1891,7 +1891,7 @@ Definition
         __le32 freq;
         __le32 sig_dbm;
         __le32 flags;
-        u8 frame_data;
+        u8 frame_data[0];
     }
 
 .. _`qlink_event_rxmgmt.members`:
@@ -1938,10 +1938,10 @@ Definition
         __le16 bintval;
         s8 signal;
         u8 frame_type;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         u8 ssid_len;
-        u8 ssid;
-        u8 payload;
+        u8 ssid[IEEE80211_MAX_SSID_LEN];
+        u8 payload[0];
     }
 
 .. _`qlink_event_scan_result.members`:

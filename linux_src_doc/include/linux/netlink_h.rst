@@ -20,7 +20,7 @@ Definition
     struct netlink_ext_ack {
         const char *_msg;
         const struct nlattr *bad_attr;
-        u8 cookie;
+        u8 cookie[NETLINK_MAX_COOKIE_LEN];
         u8 cookie_len;
     }
 

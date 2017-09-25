@@ -215,7 +215,7 @@ Definition
         bool dst_sgl;
         size_t numf;
         size_t frame_size;
-        struct data_chunk sgl;
+        struct data_chunk sgl[0];
     }
 
 .. _`dma_interleaved_template.members`:

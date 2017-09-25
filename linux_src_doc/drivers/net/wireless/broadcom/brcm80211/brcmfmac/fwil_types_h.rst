@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_tdls_iovar_le {
-        u8 ea;
+        u8 ea[ETH_ALEN];
         u8 mode;
         __le16 chanspec;
         __le32 pad;
@@ -101,7 +101,7 @@ Definition
     struct brcmf_wsec_pmk_le {
         __le16 key_len;
         __le16 flags;
-        u8 key;
+        u8 key[2 * BRCMF_WSEC_MAX_PSK_LEN + 1];
     }
 
 .. _`brcmf_wsec_pmk_le.members`:
@@ -135,7 +135,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_fil_wowl_pattern_le {
-        u8 cmd;
+        u8 cmd[4];
         __le32 masksize;
         __le32 offset;
         __le32 patternoffset;
@@ -191,9 +191,9 @@ Definition
 .. code-block:: c
 
     struct brcmf_fil_country_le {
-        char country_abbrev;
+        char country_abbrev[BRCMF_COUNTRY_BUF_SZ];
         __le32 rev;
-        char ccode;
+        char ccode[BRCMF_COUNTRY_BUF_SZ];
     }
 
 .. _`brcmf_fil_country_le.members`:
@@ -320,7 +320,7 @@ Definition
 
     struct brcmf_assoclist_le {
         __le32 count;
-        u8 mac;
+        u8 mac[BRCMF_MAX_ASSOCLIST][ETH_ALEN];
     }
 
 .. _`brcmf_assoclist_le.members`:
@@ -390,8 +390,8 @@ Definition
 .. code-block:: c
 
     struct brcmf_pmksa {
-        u8 bssid;
-        u8 pmkid;
+        u8 bssid[ETH_ALEN];
+        u8 pmkid[WLAN_PMKID_LEN];
     }
 
 .. _`brcmf_pmksa.members`:
@@ -423,7 +423,7 @@ Definition
 
     struct brcmf_pmk_list_le {
         __le32 npmk;
-        struct brcmf_pmksa pmk;
+        struct brcmf_pmksa pmk[BRCMF_MAXPMKID];
     }
 
 .. _`brcmf_pmk_list_le.members`:
@@ -523,7 +523,7 @@ Definition
     struct brcmf_pno_config_le {
         __le32 reporttype;
         __le32 channel_num;
-        __le16 channel_list;
+        __le16 channel_list[BRCMF_NUMCHANNELS];
         __le32 flags;
     }
 
@@ -609,10 +609,10 @@ Definition
 .. code-block:: c
 
     struct brcmf_pno_net_info_le {
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         u8 channel;
         u8 SSID_len;
-        u8 SSID;
+        u8 SSID[32];
         __le16 RSSI;
         __le16 timestamp;
     }
@@ -695,7 +695,7 @@ Definition
     struct brcmf_pno_macaddr_le {
         u8 version;
         u8 flags;
-        u8 mac;
+        u8 mac[ETH_ALEN];
     }
 
 .. _`brcmf_pno_macaddr_le.members`:
@@ -729,7 +729,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_pno_bssid_le {
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         __le16 flags;
     }
 
@@ -805,9 +805,9 @@ Definition
 .. code-block:: c
 
     struct brcmf_gtk_keyinfo_le {
-        u8 kck;
-        u8 kek;
-        u8 replay_counter;
+        u8 kck[BRCMF_RSN_KCK_LENGTH];
+        u8 kek[BRCMF_RSN_KEK_LENGTH];
+        u8 replay_counter[BRCMF_RSN_REPLAY_LEN];
     }
 
 .. _`brcmf_gtk_keyinfo_le.members`:
@@ -935,7 +935,7 @@ Definition
         u8 count_of_channel_buckets;
         u8 retry_threshold;
         __le16 lost_ap_window;
-        struct brcmf_gscan_bucket_config bucket;
+        struct brcmf_gscan_bucket_config bucket[1];
     }
 
 .. _`brcmf_gscan_config.members`:

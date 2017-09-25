@@ -602,9 +602,9 @@ Definition
         __le32 action;
         __le32 mac_type;
         __le32 tsf_id;
-        u8 node_addr;
+        u8 node_addr[6];
         __le16 reserved_for_node_addr;
-        u8 bssid_addr;
+        u8 bssid_addr[6];
         __le16 reserved_for_bssid_addr;
         __le32 cck_rates;
         __le32 ofdm_rates;
@@ -613,8 +613,16 @@ Definition
         __le32 short_slot;
         __le32 filter_flags;
         __le32 qos_flags;
-        struct iwl_ac_qos ac;
-        union {unnamed_union};
+        struct iwl_ac_qos ac[AC_NUM+1];
+        union {
+            struct iwl_mac_data_ap ap;
+            struct iwl_mac_data_go go;
+            struct iwl_mac_data_sta sta;
+            struct iwl_mac_data_p2p_sta p2p_sta;
+            struct iwl_mac_data_p2p_dev p2p_dev;
+            struct iwl_mac_data_pibss pibss;
+            struct iwl_mac_data_ibss ibss;
+        } ;
     }
 
 .. _`iwl_mac_ctx_cmd.members`:
@@ -672,7 +680,6 @@ ac
 
 {unnamed_union}
     anonymous
-
 
 .. _`iwl_missed_beacons_notif`:
 

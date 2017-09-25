@@ -21,7 +21,7 @@ Definition
         __le32 flags;
         __le32 block_size;
         __le32 block_num;
-        __le32 device_phy_addr;
+        __le32 device_phy_addr[NUM_OF_FW_PAGING_BLOCKS];
     }
 
 .. _`iwl_fw_paging_cmd.members`:

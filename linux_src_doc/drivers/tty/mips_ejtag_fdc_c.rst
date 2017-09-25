@@ -87,9 +87,9 @@ Definition
         struct device *dev;
         struct tty_driver *driver;
         unsigned int cpu;
-        char fdc_name;
-        char driver_name;
-        struct mips_ejtag_fdc_tty_port ports;
+        char fdc_name[16];
+        char driver_name[16];
+        struct mips_ejtag_fdc_tty_port ports[NUM_TTY_CHANNELS];
         wait_queue_head_t waitqueue;
         raw_spinlock_t lock;
         struct task_struct *thread;
@@ -225,7 +225,7 @@ Definition
         struct tty_driver *tty_drv;
         raw_spinlock_t lock;
         bool initialised;
-        void __iomem  *regs;
+        void __iomem *regs[NR_CPUS];
     }
 
 .. _`mips_ejtag_fdc_console.members`:

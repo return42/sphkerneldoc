@@ -104,7 +104,7 @@ Definition
         unsigned int elems;
         unsigned int first;
         unsigned int in_use;
-        struct v4l2_kevent events;
+        struct v4l2_kevent events[];
     }
 
 .. _`v4l2_subscribed_event.members`:

@@ -18,8 +18,19 @@ Definition
 .. code-block:: c
 
     struct nfp_resource_entry {
-        struct nfp_resource_entry_mutex mutex;
-        struct nfp_resource_entry_region region;
+        struct nfp_resource_entry_mutex {
+            u32 owner;
+            u32 key;
+        } mutex;
+        struct nfp_resource_entry_region {
+            u8 name[NFP_RESOURCE_ENTRY_NAME_SZ];
+            u8 reserved[5];
+            u8 cpp_action;
+            u8 cpp_token;
+            u8 cpp_target;
+            u32 page_offset;
+            u32 page_size;
+        } region;
     }
 
 .. _`nfp_resource_entry.members`:

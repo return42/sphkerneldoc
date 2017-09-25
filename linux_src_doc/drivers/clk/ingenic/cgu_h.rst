@@ -20,15 +20,9 @@ Definition
     struct ingenic_cgu_pll_info {
         unsigned reg;
         const s8 *od_encoding;
-        u8 m_shift;
-        u8 m_bits;
-        u8 m_offset;
-        u8 n_shift;
-        u8 n_bits;
-        u8 n_offset;
-        u8 od_shift;
-        u8 od_bits;
-        u8 od_max;
+        u8 m_shift, m_bits, m_offset;
+        u8 n_shift, n_bits, n_offset;
+        u8 od_shift, od_bits, od_max;
         u8 bypass_bit;
         u8 enable_bit;
         u8 stable_bit;
@@ -290,9 +284,19 @@ Definition
 
     struct ingenic_cgu_clk_info {
         const char *name;
-        enum type;
-        int parents;
-        union {unnamed_union};
+        enum {
+            CGU_CLK_NONE = 0,CGU_CLK_EXT = BIT(0),CGU_CLK_PLL = BIT(1),CGU_CLK_GATE = BIT(2),CGU_CLK_MUX = BIT(3),CGU_CLK_MUX_GLITCHFREE = BIT(4),CGU_CLK_DIV = BIT(5),CGU_CLK_FIXDIV = BIT(6),CGU_CLK_CUSTOM = BIT(7), } type;
+            int parents[4];
+            union {
+                struct ingenic_cgu_pll_info pll;
+                struct {
+                    struct ingenic_cgu_gate_info gate;
+                    struct ingenic_cgu_mux_info mux;
+                    struct ingenic_cgu_div_info div;
+                    struct ingenic_cgu_fixdiv_info fixdiv;
+                } ;
+                struct ingenic_cgu_custom_info custom;
+            } ;
     }
 
 .. _`ingenic_cgu_clk_info.members`:
@@ -311,9 +315,17 @@ parents
     within the clock_info array of the CGU, or -1 in entries
     which correspond to no valid parent
 
-{unnamed_union}
+pll
+    information valid if type includes CGU_CLK_PLL
+
+{unnamed_struct}
     anonymous
 
+custom
+    information valid if type includes CGU_CLK_CUSTOM
+
+}
+    *undescribed*
 
 .. _`ingenic_cgu`:
 

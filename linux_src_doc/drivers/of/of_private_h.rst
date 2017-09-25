@@ -22,7 +22,7 @@ Definition
         const char *alias;
         struct device_node *np;
         int id;
-        char stem;
+        char stem[0];
     }
 
 .. _`alias_prop.members`:

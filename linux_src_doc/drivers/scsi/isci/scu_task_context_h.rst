@@ -559,7 +559,7 @@ Definition
         struct scu_sgl_element_pair sgl_pair_cd;
         struct scu_sgl_element_pair sgl_snapshot_ac;
         u32 active_sgl_element_pair;
-        u32 reserved_C4_CC;
+        u32 reserved_C4_CC[3];
         u32 interm_crc_val:16;
         u32 init_crc_seed:16;
         u32 app_tag_verify:16;
@@ -572,7 +572,25 @@ Definition
         u32 bgc_blk_sz:13;
         u32 reserved_E0_0:3;
         u32 app_tag_gen_mask:16;
-        union {unnamed_union};
+        union {
+            u16 bgctl;
+            struct {
+                u16 crc_verify:1;
+                u16 app_tag_chk:1;
+                u16 ref_tag_chk:1;
+                u16 op:2;
+                u16 legacy:1;
+                u16 invert_crc_seed:1;
+                u16 ref_tag_gen:1;
+                u16 fixed_ref_tag:1;
+                u16 invert_crc:1;
+                u16 app_ref_f_detect:1;
+                u16 uninit_dif_check_err:1;
+                u16 uninit_dif_bypass:1;
+                u16 app_f_detect:1;
+                u16 reserved_0:2;
+            } bgctl_f;
+        } ;
         u16 app_tag_verify_mask;
         u32 blk_guard_err:8;
         u32 reserved_E8_0:24;
@@ -825,7 +843,6 @@ app_tag_gen_mask
 
 {unnamed_union}
     anonymous
-
 
 app_tag_verify_mask
     *undescribed*

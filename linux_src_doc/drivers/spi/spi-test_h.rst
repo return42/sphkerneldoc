@@ -18,31 +18,31 @@ Definition
 .. code-block:: c
 
     struct spi_test {
-        char description;
+        char description[64];
         struct spi_message msg;
-        struct spi_transfer transfers;
+        struct spi_transfer transfers[SPI_TEST_MAX_TRANSFERS];
         unsigned int transfer_count;
         int (*run_test)(struct spi_device *spi, struct spi_test *test, void *tx, void *rx);
         int (*execute_msg)(struct spi_device *spi, struct spi_test *test, void *tx, void *rx);
         int expected_return;
-        int iterate_len;
+        int iterate_len[SPI_TEST_MAX_ITERATE];
         int iterate_tx_align;
         int iterate_rx_align;
         u32 iterate_transfer_mask;
         u32 fill_option;
-    #define FILL_MEMSET_8 0
-    #define FILL_MEMSET_16 1
-    #define FILL_MEMSET_24 2
-    #define FILL_MEMSET_32 3
-    #define FILL_COUNT_8 4
-    #define FILL_COUNT_16 5
-    #define FILL_COUNT_24 6
-    #define FILL_COUNT_32 7
-    #define FILL_TRANSFER_BYTE_8 8
-    #define FILL_TRANSFER_BYTE_16 9
-    #define FILL_TRANSFER_BYTE_24 10
-    #define FILL_TRANSFER_BYTE_32 11
-    #define FILL_TRANSFER_NUM 16
+    #define FILL_MEMSET_8 0 
+    #define FILL_MEMSET_16 1 
+    #define FILL_MEMSET_24 2 
+    #define FILL_MEMSET_32 3 
+    #define FILL_COUNT_8 4 
+    #define FILL_COUNT_16 5 
+    #define FILL_COUNT_24 6 
+    #define FILL_COUNT_32 7 
+    #define FILL_TRANSFER_BYTE_8 8 
+    #define FILL_TRANSFER_BYTE_16 9 
+    #define FILL_TRANSFER_BYTE_24 10 
+    #define FILL_TRANSFER_BYTE_32 11 
+    #define FILL_TRANSFER_NUM 16 
         u32 fill_pattern;
         unsigned long long elapsed_time;
     }

@@ -142,7 +142,7 @@ Definition
 .. code-block:: c
 
     struct s3c_camif_variant {
-        struct vp_pix_limits vp_pix_limits;
+        struct vp_pix_limits vp_pix_limits[2];
         struct camif_pix_limits pix_limits;
         u8 ip_revision;
         u8 has_img_effect;
@@ -316,22 +316,29 @@ Definition
         struct v4l2_subdev subdev;
         struct v4l2_mbus_framefmt mbus_fmt;
         struct v4l2_rect camif_crop;
-        struct media_pad pads;
+        struct media_pad pads[CAMIF_SD_PADS_NUM];
         int stream_count;
-        struct cam_sensor sensor;
+        struct cam_sensor {
+            struct v4l2_subdev *sd;
+            short power_count;
+            short stream_count;
+        } sensor;
         struct media_pipeline *m_pipeline;
         struct v4l2_ctrl_handler ctrl_handler;
         struct v4l2_ctrl *ctrl_test_pattern;
-        struct {unnamed_struct};
+        struct {
+            struct v4l2_ctrl *ctrl_colorfx;
+            struct v4l2_ctrl *ctrl_colorfx_cbcr;
+        } ;
         u8 test_pattern;
         u8 colorfx;
         u8 colorfx_cb;
         u8 colorfx_cr;
-        struct camif_vp vp;
+        struct camif_vp vp[CAMIF_VP_NUM];
         const struct s3c_camif_variant *variant;
         struct device *dev;
         struct s3c_camif_plat_data pdata;
-        struct clk  *clock;
+        struct clk *clock[CLK_MAX_NUM];
         struct mutex lock;
         spinlock_t slock;
         void __iomem *io_base;
@@ -377,7 +384,6 @@ ctrl_test_pattern
 
 {unnamed_struct}
     anonymous
-
 
 test_pattern
     test pattern controls

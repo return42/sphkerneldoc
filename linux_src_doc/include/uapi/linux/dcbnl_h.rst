@@ -22,8 +22,8 @@ Definition
         __u8 error;
         __u8 pg_en;
         __u8 tcs_supported;
-        __u8 pg_bw;
-        __u8 prio_pg;
+        __u8 pg_bw[CEE_DCBX_MAX_PGS];
+        __u8 prio_pg[CEE_DCBX_MAX_PGS];
     }
 
 .. _`cee_pg.members`:

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct nsh_md1_ctx {
-        __be32 context;
+        __be32 context[4];
     }
 
 .. _`nsh_md1_ctx.members`:

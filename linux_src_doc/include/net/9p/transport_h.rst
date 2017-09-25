@@ -24,9 +24,9 @@ Definition
         int def;
         struct module *owner;
         int (*create)(struct p9_client *, const char *, char *);
-        void (*close)(struct p9_client *);
-        int (*request)(struct p9_client *, struct p9_req_t *req);
-        int (*cancel)(struct p9_client *, struct p9_req_t *req);
+        void (*close) (struct p9_client *);
+        int (*request) (struct p9_client *, struct p9_req_t *req);
+        int (*cancel) (struct p9_client *, struct p9_req_t *req);
         int (*cancelled)(struct p9_client *, struct p9_req_t *req);
         int (*zc_request)(struct p9_client *, struct p9_req_t *, struct iov_iter *, struct iov_iter *, int , int, int);
         int (*show_options)(struct seq_file *, struct p9_client *);

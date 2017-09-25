@@ -109,7 +109,7 @@ Definition
         struct list_head link;
         u32 max_ptrs;
         u32 num_valid;
-        void  *page;
+        void *page[1];
     }
 
 .. _`bd_resc_page.members`:

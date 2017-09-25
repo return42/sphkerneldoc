@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct adv7343_sd_config {
-        u32 sd_dac_out;
+        u32 sd_dac_out[2];
     }
 
 .. _`adv7343_sd_config.members`:

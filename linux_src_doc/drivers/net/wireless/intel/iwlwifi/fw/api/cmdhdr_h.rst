@@ -150,7 +150,7 @@ Definition
     struct iwl_calib_res_notif_phy_db {
         __le16 type;
         __le16 length;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_calib_res_notif_phy_db.members`:
@@ -186,7 +186,7 @@ Definition
     struct iwl_phy_db_cmd {
         __le16 type;
         __le16 length;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_phy_db_cmd.members`:

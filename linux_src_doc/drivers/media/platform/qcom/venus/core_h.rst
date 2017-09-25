@@ -20,7 +20,7 @@ Definition
     struct venus_core {
         void __iomem *base;
         int irq;
-        struct clk  *clks;
+        struct clk *clks[VIDC_CLKS_NUM_MAX];
         struct clk *core0_clk;
         struct clk *core1_clk;
         struct video_device *vdev_dec;
@@ -162,10 +162,12 @@ Definition
         struct list_head delayed_process;
         struct work_struct delayed_process_work;
         struct v4l2_ctrl_handler ctrl_handler;
-        union controls;
+        union {
+            struct vdec_controls dec;
+            struct venc_controls enc;
+        } controls;
         struct v4l2_fh fh;
-        unsigned int streamon_cap;
-        unsigned int streamon_out;
+        unsigned int streamon_cap, streamon_out;
         bool cmd_stop;
         u32 width;
         u32 height;
@@ -211,8 +213,8 @@ Definition
         bool cap_bufs_mode_static;
         bool cap_bufs_mode_dynamic;
         unsigned int pl_count;
-        struct hfi_profile_level pl;
-        struct hfi_buffer_requirements bufreq;
+        struct hfi_profile_level pl[HFI_MAX_PROFILE_COUNT];
+        struct hfi_buffer_requirements bufreq[HFI_BUFFER_TYPE_MAX];
     }
 
 .. _`venus_inst.members`:
@@ -245,8 +247,14 @@ delayed_process_work
 ctrl_handler
     v4l control handler
 
-controls
-    a union of decoder and encoder control parameters
+dec
+    *undescribed*
+
+enc
+    *undescribed*
+
+ontrols
+    *undescribed*
 
 fh
     a holder of v4l file handle structure

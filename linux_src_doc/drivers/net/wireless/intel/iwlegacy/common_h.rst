@@ -18,7 +18,14 @@ Definition
 
     struct il_device_cmd {
         struct il_cmd_header hdr;
-        union __packed cmd;
+        union {
+            u32 flags;
+            u8 val8;
+            u16 val16;
+            u32 val32;
+            struct il_tx_cmd tx;
+            u8 payload[DEF_CMD_PAYLOAD_SIZE];
+        } __packed cmd;
     }
 
 .. _`il_device_cmd.members`:
@@ -27,6 +34,24 @@ Members
 -------
 
 hdr
+    *undescribed*
+
+flags
+    *undescribed*
+
+val8
+    *undescribed*
+
+val16
+    *undescribed*
+
+val32
+    *undescribed*
+
+tx
+    *undescribed*
+
+payload
     *undescribed*
 
 cmd
@@ -60,8 +85,8 @@ Definition
     struct il_rx_queue {
         __le32 *bd;
         dma_addr_t bd_dma;
-        struct il_rx_buf pool;
-        struct il_rx_buf  *queue;
+        struct il_rx_buf pool[RX_QUEUE_SIZE + RX_FREE_BUFFERS];
+        struct il_rx_buf *queue[RX_QUEUE_SIZE];
         u32 read;
         u32 write;
         u32 free_count;
@@ -368,7 +393,7 @@ Definition
         u16 eeprom_calib_ver;
         const struct il_mod_params *mod_params;
         struct il_base_params *base_params;
-        u8 scan_rx_antennas;
+        u8 scan_rx_antennas[NUM_NL80211_BANDS];
         enum il_led_mode led_mode;
         int eeprom_size;
         int num_of_queues;
@@ -383,7 +408,7 @@ Definition
         const bool ucode_tracing;
         const bool sensitivity_calib_by_driver;
         const bool chain_noise_calib_by_driver;
-        const u32 regulatory_bands;
+        const u32 regulatory_bands[7];
     }
 
 .. _`il_cfg.members`:
@@ -707,9 +732,9 @@ Definition
 .. code-block:: c
 
     struct il_tfd {
-        u8 __reserved1;
+        u8 __reserved1[3];
         u8 num_tbs;
-        struct il_tfd_tb tbs;
+        struct il_tfd_tb tbs[IL_NUM_OF_TBS];
         __le32 __pad;
     }
 
@@ -834,7 +859,7 @@ Definition
         u8 max_search;
         s32 *expected_tpt;
         u32 current_rate;
-        struct il_rate_scale_data win;
+        struct il_rate_scale_data win[RATE_COUNT];
     }
 
 .. _`il_scale_tbl_info.members`:
@@ -920,8 +945,8 @@ Definition
         s8 max_rate_idx;
         u8 missed_rate_counter;
         struct il_link_quality_cmd lq;
-        struct il_scale_tbl_info lq_info;
-        struct il_traffic_load load;
+        struct il_scale_tbl_info lq_info[LQ_SIZE];
+        struct il_traffic_load load[TID_MAX_LOAD_COUNT];
         u8 tx_agg_tid_en;
     #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *rs_sta_dbgfs_scale_table_file;

@@ -22,8 +22,8 @@ Definition
         struct regmap *regmap;
         struct mutex lock;
         enum v4l2_flash_led_mode led_mode;
-        struct v4l2_ctrl_handler ctrls_led;
-        struct v4l2_subdev subdev_led;
+        struct v4l2_ctrl_handler ctrls_led[LM3560_LED_MAX];
+        struct v4l2_subdev subdev_led[LM3560_LED_MAX];
     }
 
 .. _`lm3560_flash.members`:

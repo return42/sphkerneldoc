@@ -171,7 +171,7 @@ Definition
         struct dev_pm_set_opp_data *set_opp_data;
     #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
-        char dentry_name;
+        char dentry_name[NAME_MAX];
     #endif
     }
 

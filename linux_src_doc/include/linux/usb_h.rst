@@ -233,7 +233,7 @@ Definition
     struct usb_interface_cache {
         unsigned num_altsetting;
         struct kref ref;
-        struct usb_host_interface altsetting;
+        struct usb_host_interface altsetting[0];
     }
 
 .. _`usb_interface_cache.members`:
@@ -282,9 +282,9 @@ Definition
     struct usb_host_config {
         struct usb_config_descriptor desc;
         char *string;
-        struct usb_interface_assoc_descriptor  *intf_assoc;
-        struct usb_interface  *interface;
-        struct usb_interface_cache  *intf_cache;
+        struct usb_interface_assoc_descriptor *intf_assoc[USB_MAXIADS];
+        struct usb_interface *interface[USB_MAXINTERFACES];
+        struct usb_interface_cache *intf_cache[USB_MAXINTERFACES];
         unsigned char *extra;
         int extralen;
     }
@@ -367,13 +367,13 @@ Definition
 
     struct usb_device {
         int devnum;
-        char devpath;
+        char devpath[16];
         u32 route;
         enum usb_device_state state;
         enum usb_device_speed speed;
         struct usb_tt *tt;
         int ttport;
-        unsigned int toggle;
+        unsigned int toggle[2];
         struct usb_device *parent;
         struct usb_bus *bus;
         struct usb_host_endpoint ep0;
@@ -382,8 +382,8 @@ Definition
         struct usb_host_bos *bos;
         struct usb_host_config *config;
         struct usb_host_config *actconfig;
-        struct usb_host_endpoint  *ep_in;
-        struct usb_host_endpoint  *ep_out;
+        struct usb_host_endpoint *ep_in[16];
+        struct usb_host_endpoint *ep_out[16];
         char **rawdescriptors;
         unsigned short bus_mA;
         u8 portnum;
@@ -1003,11 +1003,11 @@ Definition
 
     struct usb_driver {
         const char *name;
-        int (*probe)(struct usb_interface *intf, const struct usb_device_id *id);
-        void (*disconnect)(struct usb_interface *intf);
-        int (*unlocked_ioctl)(struct usb_interface *intf, unsigned int code, void *buf);
-        int (*suspend)(struct usb_interface *intf, pm_message_t message);
-        int (*resume)(struct usb_interface *intf);
+        int (*probe) (struct usb_interface *intf, const struct usb_device_id *id);
+        void (*disconnect) (struct usb_interface *intf);
+        int (*unlocked_ioctl) (struct usb_interface *intf, unsigned int code, void *buf);
+        int (*suspend) (struct usb_interface *intf, pm_message_t message);
+        int (*resume) (struct usb_interface *intf);
         int (*reset_resume)(struct usb_interface *intf);
         int (*pre_reset)(struct usb_interface *intf);
         int (*post_reset)(struct usb_interface *intf);
@@ -1141,10 +1141,10 @@ Definition
 
     struct usb_device_driver {
         const char *name;
-        int (*probe)(struct usb_device *udev);
-        void (*disconnect)(struct usb_device *udev);
-        int (*suspend)(struct usb_device *udev, pm_message_t message);
-        int (*resume)(struct usb_device *udev, pm_message_t message);
+        int (*probe) (struct usb_device *udev);
+        void (*disconnect) (struct usb_device *udev);
+        int (*suspend) (struct usb_device *udev, pm_message_t message);
+        int (*resume) (struct usb_device *udev, pm_message_t message);
         struct usbdrv_wrap drvwrap;
         unsigned int supports_autosuspend:1;
     }
@@ -1277,6 +1277,11 @@ Definition
 .. code-block:: c
 
     struct urb {
+        struct kref kref;
+        void *hcpriv;
+        atomic_t use_count;
+        atomic_t reject;
+        int unlinked;
         struct list_head urb_list;
         struct list_head anchor_list;
         struct usb_anchor *anchor;
@@ -1301,13 +1306,28 @@ Definition
         int error_count;
         void *context;
         usb_complete_t complete;
-        struct usb_iso_packet_descriptor iso_frame_desc;
+        struct usb_iso_packet_descriptor iso_frame_desc[0];
     }
 
 .. _`urb.members`:
 
 Members
 -------
+
+kref
+    *undescribed*
+
+hcpriv
+    *undescribed*
+
+use_count
+    *undescribed*
+
+reject
+    *undescribed*
+
+unlinked
+    *undescribed*
 
 urb_list
     For use by current owner of the URB.
@@ -1746,6 +1766,13 @@ Definition
     struct usb_sg_request {
         int status;
         size_t bytes;
+        spinlock_t lock;
+        struct usb_device *dev;
+        int pipe;
+        int entries;
+        struct urb **urbs;
+        int count;
+        struct completion complete;
     }
 
 .. _`usb_sg_request.members`:
@@ -1758,6 +1785,27 @@ status
 
 bytes
     counts bytes transferred.
+
+lock
+    *undescribed*
+
+dev
+    *undescribed*
+
+pipe
+    *undescribed*
+
+entries
+    *undescribed*
+
+urbs
+    *undescribed*
+
+count
+    *undescribed*
+
+complete
+    *undescribed*
 
 .. _`usb_sg_request.description`:
 

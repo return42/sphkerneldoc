@@ -269,10 +269,10 @@ Definition
 .. code-block:: c
 
     struct private_bios_data {
-        uint8_t geometry:4;
-        uint8_t unused:4;
+        uint8_t geometry :4;
+        uint8_t unused :4;
         uint8_t boot_drv;
-        uint8_t rsvd;
+        uint8_t rsvd[12];
         uint16_t cksum;
     }
 

@@ -90,7 +90,10 @@ Definition
         u8 addr_od;
         u8 mask_od;
         u8 addr_stat_drdy;
-        struct ig1;
+        struct {
+            u8 en_addr;
+            u8 en_mask;
+        } ig1;
     }
 
 .. _`st_sensor_data_ready_irq.members`:
@@ -123,7 +126,13 @@ addr_stat_drdy
     address to read status of DRDY (data ready) interrupt
     struct ig1 - represents the Interrupt Generator 1 of sensors.
 
-ig1
+en_addr
+    address of the enable ig1 register.
+
+en_mask
+    mask to write the on/off value for enable.
+
+g1
     *undescribed*
 
 .. _`st_sensor_transfer_buffer`:
@@ -144,8 +153,8 @@ Definition
 
     struct st_sensor_transfer_buffer {
         struct mutex buf_lock;
-        u8 rx_buf;
-        u8 tx_buf;
+        u8 rx_buf[ST_SENSORS_RX_MAX_LENGTH];
+        u8 tx_buf[ST_SENSORS_TX_MAX_LENGTH] ____cacheline_aligned;
     }
 
 .. _`st_sensor_transfer_buffer.members`:
@@ -181,9 +190,9 @@ Definition
 .. code-block:: c
 
     struct st_sensor_transfer_function {
-        int (*read_byte)(struct st_sensor_transfer_buffer *tb, struct device *dev, u8 reg_addr, u8 *res_byte);
-        int (*write_byte)(struct st_sensor_transfer_buffer *tb, struct device *dev, u8 reg_addr, u8 data);
-        int (*read_multiple_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, int len, u8 *data, bool multiread_bit);
+        int (*read_byte) (struct st_sensor_transfer_buffer *tb, struct device *dev, u8 reg_addr, u8 *res_byte);
+        int (*write_byte) (struct st_sensor_transfer_buffer *tb, struct device *dev, u8 reg_addr, u8 data);
+        int (*read_multiple_byte) (struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, int len, u8 *data, bool multiread_bit);
     }
 
 .. _`st_sensor_transfer_function.members`:
@@ -219,7 +228,7 @@ Definition
     struct st_sensor_settings {
         u8 wai;
         u8 wai_addr;
-        char sensors_supported;
+        char sensors_supported[ST_SENSORS_MAX_4WAI][ST_SENSORS_MAX_NAME];
         struct iio_chan_spec *ch;
         int num_ch;
         struct st_sensor_odr odr;
@@ -314,7 +323,7 @@ Definition
         unsigned int num_data_channels;
         u8 drdy_int_pin;
         bool int_pin_open_drain;
-        unsigned int (*get_irq_data_ready)(struct iio_dev *indio_dev);
+        unsigned int (*get_irq_data_ready) (struct iio_dev *indio_dev);
         const struct st_sensor_transfer_function *tf;
         struct st_sensor_transfer_buffer tb;
         bool edge_irq;

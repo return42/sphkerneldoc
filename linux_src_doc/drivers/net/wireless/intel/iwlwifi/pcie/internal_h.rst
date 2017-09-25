@@ -147,7 +147,7 @@ Definition
         dma_addr_t rb_stts_dma;
         spinlock_t lock;
         struct napi_struct napi;
-        struct iwl_rx_mem_buffer  *queue;
+        struct iwl_rx_mem_buffer *queue[RX_QUEUE_SIZE];
     }
 
 .. _`iwl_rxq.members`:
@@ -574,8 +574,8 @@ Definition
 
     struct iwl_trans_pcie {
         struct iwl_rxq *rxq;
-        struct iwl_rx_mem_buffer rx_pool;
-        struct iwl_rx_mem_buffer  *global_table;
+        struct iwl_rx_mem_buffer rx_pool[RX_POOL_SIZE];
+        struct iwl_rx_mem_buffer *global_table[RX_POOL_SIZE];
         struct iwl_rb_allocator rba;
         struct iwl_context_info *ctxt_info;
         dma_addr_t ctxt_info_dma_addr;
@@ -587,8 +587,7 @@ Definition
         dma_addr_t ict_tbl_dma;
         int ict_index;
         bool use_ict;
-        bool is_down;
-        bool opmode_down;
+        bool is_down, opmode_down;
         bool debug_rfkill;
         struct isr_statistics isr_stats;
         spinlock_t irq_lock;
@@ -598,22 +597,21 @@ Definition
         struct iwl_dma_ptr scd_bc_tbls;
         struct iwl_dma_ptr kw;
         struct iwl_txq *txq_memory;
-        struct iwl_txq  *txq;
-        unsigned long queue_used;
-        unsigned long queue_stopped;
+        struct iwl_txq *txq[IWL_MAX_TVQM_QUEUES];
+        unsigned long queue_used[BITS_TO_LONGS(IWL_MAX_TVQM_QUEUES)];
+        unsigned long queue_stopped[BITS_TO_LONGS(IWL_MAX_TVQM_QUEUES)];
         struct pci_dev *pci_dev;
         void __iomem *hw_base;
         bool ucode_write_complete;
         wait_queue_head_t ucode_write_waitq;
         wait_queue_head_t wait_command_queue;
         wait_queue_head_t d0i3_waitq;
-        u8 page_offs;
-        u8 dev_cmd_offs;
+        u8 page_offs, dev_cmd_offs;
         u8 cmd_queue;
         u8 cmd_fifo;
         unsigned int cmd_q_wdg_timeout;
         u8 n_no_reclaim_cmds;
-        u8 no_reclaim_cmds;
+        u8 no_reclaim_cmds[MAX_NO_RECLAIM_CMDS];
         u8 max_tbs;
         u16 tfd_size;
         enum iwl_amsdu_size rx_buf_size;
@@ -627,7 +625,7 @@ Definition
         dma_addr_t fw_mon_phys;
         struct page *fw_mon_page;
         u32 fw_mon_size;
-        struct msix_entry msix_entries;
+        struct msix_entry msix_entries[IWL_MAX_RX_HW_QUEUES];
         bool msix_enabled;
         u8 shared_vec_mask;
         u32 alloc_vecs;
@@ -636,7 +634,7 @@ Definition
         u32 hw_init_mask;
         u32 fh_mask;
         u32 hw_mask;
-        cpumask_t affinity_mask;
+        cpumask_t affinity_mask[IWL_MAX_RX_HW_QUEUES];
     }
 
 .. _`iwl_trans_pcie.members`:

@@ -18,19 +18,19 @@ Definition
 .. code-block:: c
 
     struct qce_sha_reqctx {
-        u8 buf;
-        u8 tmpbuf;
-        u8 digest;
+        u8 buf[QCE_SHA_MAX_BLOCKSIZE];
+        u8 tmpbuf[QCE_SHA_MAX_BLOCKSIZE];
+        u8 digest[QCE_SHA_MAX_DIGESTSIZE];
         unsigned int buflen;
         unsigned long flags;
         struct scatterlist *src_orig;
         unsigned int nbytes_orig;
         int src_nents;
-        __be32 byte_count;
+        __be32 byte_count[2];
         u64 count;
         bool first_blk;
         bool last_blk;
-        struct scatterlist sg;
+        struct scatterlist sg[2];
         u8 *authkey;
         unsigned int authklen;
         struct scatterlist result_sg;

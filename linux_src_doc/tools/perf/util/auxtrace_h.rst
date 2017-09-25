@@ -161,7 +161,7 @@ Definition
     struct auxtrace_index {
         struct list_head list;
         size_t nr;
-        struct auxtrace_index_entry entries;
+        struct auxtrace_index_entry entries[PERF_AUXTRACE_INDEX_ENTRY_COUNT];
     }
 
 .. _`auxtrace_index.members`:

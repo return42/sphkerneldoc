@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct gfar_priv_tx_q {
-        spinlock_t txlock;
+        spinlock_t txlock __attribute__ ((aligned (SMP_CACHE_BYTES)));
         struct txbd8 *tx_bd_base;
         struct txbd8 *cur_tx;
         unsigned int num_txbdfree;
@@ -106,7 +106,7 @@ Definition
 .. code-block:: c
 
     struct gfar_priv_rx_q {
-        struct gfar_rx_buff *rx_buff;
+        struct gfar_rx_buff *rx_buff __aligned(SMP_CACHE_BYTES);
         struct rxbd8 *rx_bd_base;
         struct net_device *ndev;
         struct device *dev;
@@ -194,7 +194,7 @@ Definition
 .. code-block:: c
 
     struct gfar_priv_grp {
-        spinlock_t grplock;
+        spinlock_t grplock __aligned(SMP_CACHE_BYTES);
         struct napi_struct napi_rx;
         struct napi_struct napi_tx;
         struct gfar __iomem *regs;
@@ -207,7 +207,7 @@ Definition
         unsigned long tx_bit_map;
         unsigned long num_rx_queues;
         unsigned long rx_bit_map;
-        struct gfar_irqinfo  *irqinfo;
+        struct gfar_irqinfo *irqinfo[GFAR_NUM_IRQS];
     }
 
 .. _`gfar_priv_grp.members`:

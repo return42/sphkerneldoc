@@ -65,7 +65,7 @@ Definition
         struct list_head node;
         void __iomem *base;
         int irq;
-        struct irq_domain  *domain;
+        struct irq_domain *domain[2];
         struct gpio_pint_regs *regs;
         struct gpio_pint_saved saved_data;
         int map_count;

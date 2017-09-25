@@ -24,7 +24,7 @@ Definition
         unsigned long expires_at;
         struct atalk_addr target_addr;
         struct net_device *dev;
-        char hwaddr;
+        char hwaddr[ETH_ALEN];
         unsigned short xmit_count;
         struct aarp_entry *next;
     }

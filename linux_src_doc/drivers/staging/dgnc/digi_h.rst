@@ -24,9 +24,9 @@ Definition
         unsigned short digi_bufsize;
         unsigned char digi_onlen;
         unsigned char digi_offlen;
-        char digi_onstr;
-        char digi_offstr;
-        char digi_term;
+        char digi_onstr[DIGI_PLEN];
+        char digi_offstr[DIGI_PLEN];
+        char digi_term[DIGI_TSIZ];
     }
 
 .. _`digi_t.members`:
@@ -79,8 +79,8 @@ Definition
 
     struct digi_dinfo {
         unsigned int dinfo_nboards;
-        char dinfo_reserved;
-        char dinfo_version;
+        char dinfo_reserved[12];
+        char dinfo_version[16];
     }
 
 .. _`digi_dinfo.members`:
@@ -122,7 +122,7 @@ Definition
         unsigned short info_bdtype;
         unsigned short info_nports;
         char info_bdstate;
-        char info_reserved;
+        char info_reserved[7];
     }
 
 .. _`digi_info.members`:

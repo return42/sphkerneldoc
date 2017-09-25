@@ -18,11 +18,14 @@ Definition
 .. code-block:: c
 
     struct ccwgroup_device {
-        enum state;
-        unsigned int count;
-        struct device dev;
-        struct work_struct ungroup_work;
-        struct ccw_device  *cdev;
+        enum {
+            CCWGROUP_OFFLINE,CCWGROUP_ONLINE, } state;
+            atomic_t onoff;
+            struct mutex reg_mutex;
+            unsigned int count;
+            struct device dev;
+            struct work_struct ungroup_work;
+            struct ccw_device *cdev[0];
     }
 
 .. _`ccwgroup_device.members`:
@@ -32,6 +35,12 @@ Members
 
 state
     online/offline state
+
+onoff
+    *undescribed*
+
+reg_mutex
+    *undescribed*
 
 count
     number of attached slave devices
@@ -63,15 +72,15 @@ Definition
 .. code-block:: c
 
     struct ccwgroup_driver {
-        int (*setup)(struct ccwgroup_device *);
-        void (*remove)(struct ccwgroup_device *);
-        int (*set_online)(struct ccwgroup_device *);
-        int (*set_offline)(struct ccwgroup_device *);
+        int (*setup) (struct ccwgroup_device *);
+        void (*remove) (struct ccwgroup_device *);
+        int (*set_online) (struct ccwgroup_device *);
+        int (*set_offline) (struct ccwgroup_device *);
         void (*shutdown)(struct ccwgroup_device *);
-        int (*prepare)(struct ccwgroup_device *);
-        void (*complete)(struct ccwgroup_device *);
+        int (*prepare) (struct ccwgroup_device *);
+        void (*complete) (struct ccwgroup_device *);
         int (*freeze)(struct ccwgroup_device *);
-        int (*thaw)(struct ccwgroup_device *);
+        int (*thaw) (struct ccwgroup_device *);
         int (*restore)(struct ccwgroup_device *);
         struct device_driver driver;
     }

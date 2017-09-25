@@ -63,7 +63,7 @@ Definition
         struct usb_gadget g;
         struct usb_gadget_driver *gadget_driver;
         struct mtu3_request ep0_req;
-        u8 setup_buf;
+        u8 setup_buf[EP0_RESPONSE_BUF];
         u32 max_speed;
         unsigned is_active:1;
         unsigned may_wakeup:1;

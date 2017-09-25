@@ -54,7 +54,7 @@ Definition
         unsigned long pgoff;
         unsigned int nr_blocks;
         struct msc *msc;
-        struct msc_block block;
+        struct msc_block block[0];
     }
 
 .. _`msc_window.members`:
@@ -163,15 +163,14 @@ Definition
         struct list_head win_list;
         unsigned long nr_pages;
         unsigned long single_sz;
-        unsigned int single_wrap:1;
+        unsigned int single_wrap : 1;
         void *base;
         dma_addr_t base_addr;
         atomic_t user_count;
         atomic_t mmap_count;
         struct mutex buf_mutex;
         struct list_head iter_list;
-        unsigned int enabled:1;
-        unsigned int wrap:1:1;
+        unsigned int enabled : 1, wrap : 1;
         unsigned int mode;
         unsigned int burst_len;
         unsigned int index;

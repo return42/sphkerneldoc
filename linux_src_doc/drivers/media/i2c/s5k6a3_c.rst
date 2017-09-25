@@ -21,7 +21,7 @@ Definition
         struct device *dev;
         struct v4l2_subdev subdev;
         struct media_pad pad;
-        struct regulator_bulk_data supplies;
+        struct regulator_bulk_data supplies[S5K6A3_NUM_SUPPLIES];
         int gpio_reset;
         struct mutex lock;
         struct v4l2_mbus_framefmt format;

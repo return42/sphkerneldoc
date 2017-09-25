@@ -23,10 +23,10 @@ Definition
         u8 *tx;
         u8 *rx;
         struct mutex buf_lock;
-        struct spi_transfer ring_xfer;
+        struct spi_transfer ring_xfer[4];
         struct spi_message ring_msg;
-        unsigned char rx_buf;
-        unsigned char tx_buf;
+        unsigned char rx_buf[8] ____cacheline_aligned;
+        unsigned char tx_buf[8];
     }
 
 .. _`ade7758_state.members`:

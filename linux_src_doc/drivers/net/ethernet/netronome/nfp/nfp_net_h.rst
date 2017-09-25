@@ -18,7 +18,10 @@ Definition
 .. code-block:: c
 
     struct nfp_net_tx_buf {
-        union {unnamed_union};
+        union {
+            struct sk_buff *skb;
+            void *frag;
+        } ;
         dma_addr_t dma_addr;
         short int fidx;
         u16 pkt_cnt;
@@ -32,7 +35,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 dma_addr
     DMA mapping address of the buffer
@@ -248,7 +250,14 @@ Definition
 
     struct nfp_net_r_vector {
         struct nfp_net *nfp_net;
-        union {unnamed_union};
+        union {
+            struct napi_struct napi;
+            struct {
+                struct tasklet_struct tasklet;
+                struct sk_buff_head queue;
+                struct spinlock lock;
+            } ;
+        } ;
         struct nfp_net_tx_ring *tx_ring;
         struct nfp_net_rx_ring *rx_ring;
         u16 irq_entry;
@@ -271,7 +280,7 @@ Definition
         u64 tx_busy;
         u32 irq_vector;
         irq_handler_t handler;
-        char name;
+        char name[IFNAMSIZ + 8];
         cpumask_t affinity_mask;
     }
 
@@ -283,9 +292,11 @@ Members
 nfp_net
     Backpointer to nfp_net structure
 
-{unnamed_union}
-    anonymous
+napi
+    NAPI structure for this ring vec
 
+{unnamed_struct}
+    anonymous
 
 tx_ring
     Pointer to TX ring
@@ -504,8 +515,8 @@ Definition
         u32 max_mtu;
         u8 rss_hfunc;
         u32 rss_cfg;
-        u8 rss_key;
-        u8 rss_itbl;
+        u8 rss_key[NFP_NET_CFG_RSS_KEY_SZ];
+        u8 rss_itbl[NFP_NET_CFG_RSS_ITBL_SZ];
         u32 xdp_flags;
         struct bpf_prog *xdp_prog;
         unsigned int max_tx_rings;
@@ -513,14 +524,14 @@ Definition
         int stride_tx;
         int stride_rx;
         unsigned int max_r_vecs;
-        struct nfp_net_r_vector r_vecs;
-        struct msix_entry irq_entries;
+        struct nfp_net_r_vector r_vecs[NFP_NET_MAX_R_VECS];
+        struct msix_entry irq_entries[NFP_NET_MAX_IRQS];
         irq_handler_t lsc_handler;
-        char lsc_name;
+        char lsc_name[IFNAMSIZ + 8];
         irq_handler_t exn_handler;
-        char exn_name;
+        char exn_name[IFNAMSIZ + 8];
         irq_handler_t shared_handler;
-        char shared_name;
+        char shared_name[IFNAMSIZ + 8];
         u32 me_freq_mhz;
         bool link_up;
         spinlock_t link_status_lock;
@@ -533,8 +544,8 @@ Definition
         u32 rx_coalesce_max_frames;
         u32 tx_coalesce_usecs;
         u32 tx_coalesce_max_frames;
-        __be16 vxlan_ports;
-        u8 vxlan_usecnt;
+        __be16 vxlan_ports[NFP_NET_N_VXLAN_PORTS];
+        u8 vxlan_usecnt[NFP_NET_N_VXLAN_PORTS];
         u8 __iomem *qcp_cfg;
         u8 __iomem *tx_bar;
         u8 __iomem *rx_bar;

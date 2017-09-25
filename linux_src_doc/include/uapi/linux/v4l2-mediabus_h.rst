@@ -26,7 +26,7 @@ Definition
         __u16 ycbcr_enc;
         __u16 quantization;
         __u16 xfer_func;
-        __u16 reserved;
+        __u16 reserved[11];
     }
 
 .. _`v4l2_mbus_framefmt.members`:

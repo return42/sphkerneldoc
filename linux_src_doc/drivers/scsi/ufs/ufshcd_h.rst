@@ -568,8 +568,8 @@ Definition
 
     struct ufs_uic_err_reg_hist {
         int pos;
-        u32 reg;
-        ktime_t tstamp;
+        u32 reg[UIC_ERR_REG_HIST_LENGTH];
+        ktime_t tstamp[UIC_ERR_REG_HIST_LENGTH];
     }
 
 .. _`ufs_uic_err_reg_hist.members`:

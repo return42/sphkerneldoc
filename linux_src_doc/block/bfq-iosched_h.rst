@@ -78,7 +78,7 @@ Definition
     struct bfq_sched_data {
         struct bfq_entity *in_service_entity;
         struct bfq_entity *next_in_service;
-        struct bfq_service_tree service_tree;
+        struct bfq_service_tree service_tree[BFQ_IOPRIO_CLASSES];
         unsigned long bfq_class_idle_last_service;
     }
 
@@ -186,8 +186,7 @@ Definition
         struct rb_node rb_node;
         struct bfq_weight_counter *weight_counter;
         bool on_st;
-        u64 start;
-        u64 finish;
+        u64 start, finish;
         struct rb_root *tree;
         u64 min_start;
         int service;
@@ -342,16 +341,14 @@ Definition
     struct bfq_queue {
         int ref;
         struct bfq_data *bfqd;
-        unsigned short ioprio;
-        unsigned short ioprio_class;
-        unsigned short new_ioprio;
-        unsigned short new_ioprio_class;
+        unsigned short ioprio, ioprio_class;
+        unsigned short new_ioprio, new_ioprio_class;
         struct bfq_queue *new_bfqq;
         struct rb_node pos_node;
         struct rb_root *pos_root;
         struct rb_root sort_list;
         struct request *next_rq;
-        int queued;
+        int queued[2];
         int allocated;
         int meta_pending;
         struct list_head fifo;
@@ -522,7 +519,7 @@ Definition
 
     struct bfq_io_cq {
         struct io_cq icq;
-        struct bfq_queue  *bfqq;
+        struct bfq_queue *bfqq[2];
         int ioprio;
     #ifdef CONFIG_BFQ_GROUP_IOSCHED
         uint64_t blkcg_serial_nr;
@@ -629,7 +626,7 @@ Definition
         int bfq_max_budget;
         struct list_head active_list;
         struct list_head idle_list;
-        u64 bfq_fifo_expire;
+        u64 bfq_fifo_expire[2];
         unsigned int bfq_back_penalty;
         unsigned int bfq_back_max;
         u32 bfq_slice_idle;
@@ -863,12 +860,12 @@ Definition
 
     struct bfq_group {
         struct blkg_policy_data pd;
-        char blkg_path;
+        char blkg_path[128];
         int ref;
         struct bfq_entity entity;
         struct bfq_sched_data sched_data;
         void *bfqd;
-        struct bfq_queue  *async_bfqq;
+        struct bfq_queue *async_bfqq[2][IOPRIO_BE_NR];
         struct bfq_queue *async_idle_bfqq;
         struct bfq_entity *my_entity;
         int active_entities;

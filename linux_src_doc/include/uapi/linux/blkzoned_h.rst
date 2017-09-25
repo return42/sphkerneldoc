@@ -150,7 +150,7 @@ Definition
         __u8 cond;
         __u8 non_seq;
         __u8 reset;
-        __u8 reserved;
+        __u8 reserved[36];
     }
 
 .. _`blk_zone.members`:
@@ -212,8 +212,8 @@ Definition
     struct blk_zone_report {
         __u64 sector;
         __u32 nr_zones;
-        __u8 reserved;
-        struct blk_zone zones;
+        __u8 reserved[4];
+        struct blk_zone zones[0];
     }
 
 .. _`blk_zone_report.members`:

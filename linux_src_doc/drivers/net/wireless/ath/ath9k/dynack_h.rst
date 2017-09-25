@@ -18,9 +18,8 @@ Definition
 .. code-block:: c
 
     struct ath_dyn_rxbuf {
-        u16 h_rb;
-        u16 t_rb;
-        u32 tstamp;
+        u16 h_rb, t_rb;
+        u32 tstamp[ATH_DYN_BUF];
     }
 
 .. _`ath_dyn_rxbuf.members`:
@@ -54,10 +53,9 @@ Definition
 .. code-block:: c
 
     struct ath_dyn_txbuf {
-        u16 h_rb;
-        u16 t_rb;
-        struct haddr_pair addr;
-        struct ts_info ts;
+        u16 h_rb, t_rb;
+        struct haddr_pair addr[ATH_DYN_BUF];
+        struct ts_info ts[ATH_DYN_BUF];
     }
 
 .. _`ath_dyn_txbuf.members`:

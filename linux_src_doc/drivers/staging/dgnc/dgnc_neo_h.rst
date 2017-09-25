@@ -34,10 +34,10 @@ Definition
         u8 xoffchar2;
         u8 xonchar1;
         u8 xonchar2;
-        u8 reserved1;
-        u8 txrxburst;
-        u8 reserved2;
-        u8 rxburst_with_errors;
+        u8 reserved1[0x2ff - 0x200];
+        u8 txrxburst[64];
+        u8 reserved2[0x37f - 0x340];
+        u8 rxburst_with_errors[64];
     }
 
 .. _`neo_uart_struct.members`:

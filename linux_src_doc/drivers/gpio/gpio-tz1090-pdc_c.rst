@@ -20,7 +20,7 @@ Definition
     struct tz1090_pdc_gpio {
         struct gpio_chip chip;
         void __iomem *reg;
-        int irq;
+        int irq[GPIO_PDC_NIRQ];
     }
 
 .. _`tz1090_pdc_gpio.members`:

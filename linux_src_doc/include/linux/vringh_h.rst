@@ -20,9 +20,7 @@ Definition
     struct vringh_iov {
         struct iovec *iov;
         size_t consumed;
-        unsigned i;
-        unsigned used;
-        unsigned max_num;
+        unsigned i, used, max_num;
     }
 
 .. _`vringh_iov.members`:
@@ -72,9 +70,7 @@ Definition
     struct vringh_kiov {
         struct kvec *iov;
         size_t consumed;
-        unsigned i;
-        unsigned used;
-        unsigned max_num;
+        unsigned i, used, max_num;
     }
 
 .. _`vringh_kiov.members`:

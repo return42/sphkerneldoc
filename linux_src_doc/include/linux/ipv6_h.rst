@@ -35,24 +35,20 @@ Definition
     #endif
     #if defined(__BIG_ENDIAN_BITFIELD)
         __s16 mcast_hops:9;
-        __u16 __unused_2:1:6;
-        __u16 mc_loop:1;
+        __u16 __unused_2:6, mc_loop:1;
     #else
-        __u16 mc_loop:1;
-        __u16 __unused_2:1:6;
+        __u16 mc_loop:1, __unused_2:6;
         __s16 mcast_hops:9;
     #endif
         int ucast_oif;
         int mcast_oif;
-        union rxopt;
-        __u16 recverr:1;
-        __u16 sndflow:1:1;
-        __u16 repflow:1:1:1;
-        __u16 pmtudisc:1:1:1:3;
-        __u16 padding:1:1:1:3:1;
-        __u16 srcprefs:1:1:1:3:1:3;
-        __u16 dontfrag:1:1:1:3:1:3:1;
-        __u16 autoflowlabel:1:1:1:3:1:3:1:1;
+        union {
+            struct {
+                __u16 srcrt:1,osrcrt:1,rxinfo:1,rxoinfo:1,rxhlim:1,rxohlim:1,hopopts:1,ohopopts:1,dstopts:1,odstopts:1,rxflow:1,rxtclass:1,rxpmtu:1,rxorigdstaddr:1, recvfragsize:1;
+            } bits;
+            __u16 all;
+        } rxopt;
+        __u16 recverr:1,sndflow:1,repflow:1,pmtudisc:3,padding:1, srcprefs:3, dontfrag:1, autoflowlabel:1;
         __u8 min_hopcount;
         __u8 tclass;
         __be32 rcv_flowinfo;
@@ -126,7 +122,58 @@ ucast_oif
 mcast_oif
     *undescribed*
 
-rxopt
+srcrt
+    *undescribed*
+
+osrcrt
+    *undescribed*
+
+rxinfo
+    *undescribed*
+
+rxoinfo
+    *undescribed*
+
+rxhlim
+    *undescribed*
+
+rxohlim
+    *undescribed*
+
+hopopts
+    *undescribed*
+
+ohopopts
+    *undescribed*
+
+dstopts
+    *undescribed*
+
+odstopts
+    *undescribed*
+
+rxflow
+    *undescribed*
+
+rxtclass
+    *undescribed*
+
+rxpmtu
+    *undescribed*
+
+rxorigdstaddr
+    *undescribed*
+
+recvfragsize
+    *undescribed*
+
+its
+    *undescribed*
+
+all
+    *undescribed*
+
+xopt
     *undescribed*
 
 recverr

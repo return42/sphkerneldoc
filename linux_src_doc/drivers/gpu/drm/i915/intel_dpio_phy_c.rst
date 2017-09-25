@@ -114,7 +114,9 @@ Definition
         enum dpio_phy rcomp_phy;
         int reset_delay;
         u32 pwron_mask;
-        struct channel;
+        struct {
+            enum port port;
+        } channel[2];
     }
 
 .. _`bxt_ddi_phy_info.members`:
@@ -135,8 +137,11 @@ reset_delay
 pwron_mask
     Mask with the appropriate bit set that would cause thepunit to power this phy if written to BXT_P_CR_GT_DISP_PWRON.
 
-channel
-    struct containing per channel information.
+port
+    which port maps to this channel.
+
+hannel
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

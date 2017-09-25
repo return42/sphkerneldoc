@@ -171,17 +171,17 @@ Definition
 
     struct drm_dp_mst_branch {
         struct kref kref;
-        u8 rad;
+        u8 rad[8];
         u8 lct;
         int num_ports;
         int msg_slots;
         struct list_head ports;
         struct drm_dp_mst_port *port_parent;
         struct drm_dp_mst_topology_mgr *mgr;
-        struct drm_dp_sideband_msg_tx  *tx_slots;
+        struct drm_dp_sideband_msg_tx *tx_slots[2];
         int last_seqno;
         bool link_address_sent;
-        u8 guid;
+        u8 guid[16];
     }
 
 .. _`drm_dp_mst_branch.members`:
@@ -264,7 +264,7 @@ Definition
         struct mutex lock;
         bool mst_state;
         struct drm_dp_mst_branch *mst_primary;
-        u8 dpcd;
+        u8 dpcd[DP_RECEIVER_CAP_SIZE];
         u8 sink_count;
         int pbn_div;
         struct drm_dp_mst_topology_state *state;

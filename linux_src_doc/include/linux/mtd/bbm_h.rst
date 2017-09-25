@@ -19,10 +19,10 @@ Definition
 
     struct nand_bbt_descr {
         int options;
-        int pages;
+        int pages[NAND_MAX_CHIPS];
         int offs;
         int veroffs;
-        uint8_t version;
+        uint8_t version[NAND_MAX_CHIPS];
         int len;
         int maxblocks;
         int reserved_block_code;

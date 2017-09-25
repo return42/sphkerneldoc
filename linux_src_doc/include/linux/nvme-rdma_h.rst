@@ -22,7 +22,7 @@ Definition
         __le16 qid;
         __le16 hrqsize;
         __le16 hsqsize;
-        u8 rsvd;
+        u8 rsvd[24];
     }
 
 .. _`nvme_rdma_cm_req.members`:
@@ -64,7 +64,7 @@ Definition
     struct nvme_rdma_cm_rep {
         __le16 recfmt;
         __le16 crqsize;
-        u8 rsvd;
+        u8 rsvd[28];
     }
 
 .. _`nvme_rdma_cm_rep.members`:

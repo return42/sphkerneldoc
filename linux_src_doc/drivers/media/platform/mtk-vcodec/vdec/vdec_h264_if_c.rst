@@ -62,7 +62,7 @@ Definition
 .. code-block:: c
 
     struct h264_ring_fb_list {
-        struct h264_fb fb_list;
+        struct h264_fb fb_list[H264_MAX_FB_NUM];
         unsigned int read_idx;
         unsigned int write_idx;
         unsigned int count;
@@ -162,9 +162,9 @@ Definition
 .. code-block:: c
 
     struct vdec_h264_vsi {
-        unsigned char hdr_buf;
+        unsigned char hdr_buf[HDR_PARSING_BUF_SZ];
         uint64_t pred_buf_dma;
-        uint64_t mv_buf_dma;
+        uint64_t mv_buf_dma[H264_MAX_FB_NUM];
         struct h264_ring_fb_list list_free;
         struct h264_ring_fb_list list_disp;
         struct vdec_h264_dec_info dec;
@@ -221,7 +221,7 @@ Definition
         unsigned int num_nalu;
         struct mtk_vcodec_ctx *ctx;
         struct mtk_vcodec_mem pred_buf;
-        struct mtk_vcodec_mem mv_buf;
+        struct mtk_vcodec_mem mv_buf[H264_MAX_FB_NUM];
         struct vdec_vpu_inst vpu;
         struct vdec_h264_vsi *vsi;
     }

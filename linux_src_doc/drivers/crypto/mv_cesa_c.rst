@@ -20,8 +20,8 @@ Definition
     struct req_progress {
         struct sg_mapping_iter src_sg_it;
         struct sg_mapping_iter dst_sg_it;
-        void (*complete)(void);
-        void (*process)(int is_first);
+        void (*complete) (void);
+        void (*process) (int is_first);
         int sg_src_left;
         int src_start;
         int crypt_len;

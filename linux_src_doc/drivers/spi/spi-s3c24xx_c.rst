@@ -20,7 +20,7 @@ Definition
     struct spi_fiq_code {
         u32 length;
         u32 ack_offset;
-        u8 data;
+        u8 data[0];
     }
 
 .. _`spi_fiq_code.members`:

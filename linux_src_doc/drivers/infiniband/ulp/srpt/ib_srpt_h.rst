@@ -159,7 +159,7 @@ Definition
         u8 n_rdma;
         u8 n_rw_ctx;
         bool queue_status_only;
-        u8 sense_data;
+        u8 sense_data[TRANSPORT_SENSE_BUFFER];
     }
 
 .. _`srpt_send_ioctx.members`:
@@ -281,8 +281,8 @@ Definition
         u32 rsp_size;
         atomic_t sq_wr_avail;
         struct srpt_port *sport;
-        u8 i_port_id;
-        u8 t_port_id;
+        u8 i_port_id[16];
+        u8 t_port_id[16];
         int max_ti_iu_len;
         atomic_t req_lim;
         atomic_t req_lim_delta;
@@ -293,8 +293,8 @@ Definition
         struct list_head list;
         struct list_head cmd_wait_list;
         struct se_session *sess;
-        u8 sess_name;
-        u8 ini_guid;
+        u8 sess_name[36];
+        u8 ini_guid[24];
         struct work_struct release_work;
         struct completion *release_done;
     }
@@ -440,8 +440,8 @@ Definition
         struct srpt_device *sdev;
         struct ib_mad_agent *mad_agent;
         bool enabled;
-        u8 port_guid;
-        u8 port_gid;
+        u8 port_guid[24];
+        u8 port_gid[64];
         u8 port;
         u32 sm_lid;
         u32 lid;
@@ -530,7 +530,7 @@ Definition
         struct list_head rch_list;
         wait_queue_head_t ch_releaseQ;
         struct mutex mutex;
-        struct srpt_port port;
+        struct srpt_port port[2];
         struct ib_event_handler event_handler;
         struct list_head list;
     }

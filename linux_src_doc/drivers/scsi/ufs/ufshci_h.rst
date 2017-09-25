@@ -58,9 +58,9 @@ Definition
 .. code-block:: c
 
     struct utp_transfer_cmd_desc {
-        u8 command_upiu;
-        u8 response_upiu;
-        struct ufshcd_sg_entry prd_table;
+        u8 command_upiu[ALIGNED_UPIU_SIZE];
+        u8 response_upiu[ALIGNED_UPIU_SIZE];
+        struct ufshcd_sg_entry prd_table[SG_ALL];
     }
 
 .. _`utp_transfer_cmd_desc.members`:
@@ -187,8 +187,8 @@ Definition
 
     struct utp_task_req_desc {
         struct request_desc_header header;
-        __le32 task_req_upiu;
-        __le32 task_rsp_upiu;
+        __le32 task_req_upiu[TASK_REQ_UPIU_SIZE_DWORDS];
+        __le32 task_rsp_upiu[TASK_RSP_UPIU_SIZE_DWORDS];
     }
 
 .. _`utp_task_req_desc.members`:

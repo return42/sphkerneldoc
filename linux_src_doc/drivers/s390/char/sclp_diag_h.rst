@@ -30,7 +30,7 @@ Definition
         u64 failaddr;
         u64 bufaddr;
         u64 asce;
-        u8 fident;
+        u8 fident[256];
     }
 
 .. _`sclp_diag_ftp.members`:
@@ -96,7 +96,9 @@ Definition
     struct sclp_diag_evbuf {
         struct evbuf_header hdr;
         u16 route;
-        union mdd;
+        union {
+            struct sclp_diag_ftp ftp;
+        } mdd;
     }
 
 .. _`sclp_diag_evbuf.members`:
@@ -110,8 +112,11 @@ hdr
 route
     diagnostic route
 
-mdd
-    model-dependent data (@route dependent)
+ftp
+    *undescribed*
+
+dd
+    *undescribed*
 
 .. _`sclp_diag_sccb`:
 

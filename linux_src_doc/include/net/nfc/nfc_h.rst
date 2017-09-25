@@ -50,18 +50,18 @@ Definition
         u16 sens_res;
         u8 sel_res;
         u8 nfcid1_len;
-        u8 nfcid1;
+        u8 nfcid1[NFC_NFCID1_MAXSIZE];
         u8 nfcid2_len;
-        u8 nfcid2;
+        u8 nfcid2[NFC_NFCID2_MAXSIZE];
         u8 sensb_res_len;
-        u8 sensb_res;
+        u8 sensb_res[NFC_SENSB_RES_MAXSIZE];
         u8 sensf_res_len;
-        u8 sensf_res;
+        u8 sensf_res[NFC_SENSF_RES_MAXSIZE];
         u8 hci_reader_gate;
         u8 logical_idx;
         u8 is_iso15693;
         u8 iso15693_dsfid;
-        u8 iso15693_uid;
+        u8 iso15693_uid[NFC_ISO15693_UID_MAXSIZE];
     }
 
 .. _`nfc_target.members`:

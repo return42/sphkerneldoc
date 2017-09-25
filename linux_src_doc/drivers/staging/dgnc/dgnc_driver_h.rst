@@ -128,8 +128,8 @@ Definition
         uint pci_slot;
         uint maxports;
         unsigned char dvid;
-        unsigned char vpd;
-        unsigned char serial_num;
+        unsigned char vpd[128];
+        unsigned char serial_num[20];
         spinlock_t bd_lock;
         spinlock_t bd_intr_lock;
         uint state;
@@ -143,11 +143,11 @@ Definition
         ulong iobase;
         ulong iobase_end;
         uint bd_uart_offset;
-        struct channel_t  *channels;
+        struct channel_t *channels[MAXPORTS];
         struct tty_driver *serial_driver;
-        char serial_name;
+        char serial_name[200];
         struct tty_driver *print_driver;
-        char print_name;
+        char print_name[200];
         u16 dpatype;
         u16 dpastatus;
         uint bd_dividend;

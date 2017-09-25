@@ -82,7 +82,7 @@ Definition
         bool are_ref_measured;
         bool poll_eoc;
         struct completion complete;
-        struct vadc_linear_graph graph;
+        struct vadc_linear_graph graph[2];
         struct mutex lock;
     }
 

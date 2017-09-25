@@ -407,10 +407,10 @@ Definition
         __le16 key_flags;
         u8 tkip_rx_tsc_byte2;
         u8 reserved1;
-        __le16 tkip_rx_ttak;
+        __le16 tkip_rx_ttak[5];
         u8 key_offset;
         u8 reserved2;
-        u8 key;
+        u8 key[16];
         __le64 tx_secur_seq_cnt;
         __le64 hw_tkip_mic_rx_key;
         __le64 hw_tkip_mic_tx_key;
@@ -472,7 +472,7 @@ Definition
         u8 awake_acs;
         __le16 tid_disable_tx;
         __le32 mac_id_n_color;
-        u8 addr;
+        u8 addr[ETH_ALEN];
         __le16 reserved2;
         u8 sta_id;
         u8 modify_mask;
@@ -640,7 +640,7 @@ Definition
         u8 awake_acs;
         __le16 tid_disable_tx;
         __le32 mac_id_n_color;
-        u8 addr;
+        u8 addr[ETH_ALEN];
         __le16 reserved2;
         u8 sta_id;
         u8 modify_mask;
@@ -780,8 +780,8 @@ Definition
         u8 sta_id;
         u8 key_offset;
         __le16 key_flags;
-        u8 key;
-        u8 rx_secur_seq_cnt;
+        u8 key[32];
+        u8 rx_secur_seq_cnt[16];
     }
 
 .. _`iwl_mvm_add_sta_key_common.members`:
@@ -824,7 +824,7 @@ Definition
         struct iwl_mvm_add_sta_key_common common;
         u8 tkip_rx_tsc_byte2;
         u8 reserved;
-        __le16 tkip_rx_ttak;
+        __le16 tkip_rx_ttak[5];
     }
 
 .. _`iwl_mvm_add_sta_key_cmd_v1.members`:
@@ -943,7 +943,7 @@ Definition
 
     struct iwl_mvm_rm_sta_cmd {
         u8 sta_id;
-        u8 reserved;
+        u8 reserved[3];
     }
 
 .. _`iwl_mvm_rm_sta_cmd.members`:
@@ -975,9 +975,9 @@ Definition
 
     struct iwl_mvm_mgmt_mcast_key_cmd_v1 {
         __le32 ctrl_flags;
-        u8 igtk;
-        u8 k1;
-        u8 k2;
+        u8 igtk[16];
+        u8 k1[16];
+        u8 k2[16];
         __le32 key_id;
         __le32 sta_id;
         __le64 receive_seq_cnt;
@@ -1027,7 +1027,7 @@ Definition
 
     struct iwl_mvm_mgmt_mcast_key_cmd {
         __le32 ctrl_flags;
-        u8 igtk;
+        u8 igtk[32];
         __le32 key_id;
         __le32 sta_id;
         __le64 receive_seq_cnt;

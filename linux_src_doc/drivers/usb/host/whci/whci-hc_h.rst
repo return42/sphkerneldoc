@@ -53,7 +53,7 @@ Definition
         __le32 status;
         __le32 options;
         __le64 page_list_ptr;
-        __u8 setup;
+        __u8 setup[8];
     }
 
 .. _`whc_qtd.members`:
@@ -219,8 +219,11 @@ Definition
         __le16 status;
         __le16 err_count;
         __le32 cur_window;
-        __le32 scratch;
-        union overlay;
+        __le32 scratch[3];
+        union {
+            struct whc_qtd qtd;
+            struct whc_itd itd;
+        } overlay;
     }
 
 .. _`whc_qhead.members`:
@@ -252,7 +255,13 @@ cur_window
 scratch
     *undescribed*
 
-overlay
+qtd
+    *undescribed*
+
+itd
+    *undescribed*
+
+verlay
     *undescribed*
 
 .. _`whc_qhead.description`:
@@ -306,7 +315,10 @@ Definition
 
     struct whc_qset {
         struct whc_qhead qh;
-        union {unnamed_union};
+        union {
+            struct whc_qtd qtd[WHCI_QSET_TD_MAX];
+            struct whc_itd itd[WHCI_QSET_TD_MAX];
+        } ;
         dma_addr_t qset_dma;
         struct whc *whc;
         struct usb_host_endpoint *ep;
@@ -336,7 +348,6 @@ qh
 
 {unnamed_union}
     anonymous
-
 
 qset_dma
     DMA address for this qset
@@ -434,9 +445,9 @@ Definition
 .. code-block:: c
 
     struct di_buf_entry {
-        __le32 availability_info;
+        __le32 availability_info[8];
         __le32 addr_sec_info;
-        __le32 reserved;
+        __le32 reserved[7];
     }
 
 .. _`di_buf_entry.members`:
@@ -482,7 +493,7 @@ Definition
         __u8 src_addr;
         __u8 status;
         __le32 tkid;
-        __u8 dn_data;
+        __u8 dn_data[56];
     }
 
 .. _`dn_buf_entry.members`:

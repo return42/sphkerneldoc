@@ -431,7 +431,7 @@ Definition
         __u32 size;
         __u32 width;
         __u32 height;
-        __u32 pitch;
+        __u32 pitch[3];
         __u32 pad64;
         struct drm_vmw_rect src;
         struct drm_vmw_rect dst;

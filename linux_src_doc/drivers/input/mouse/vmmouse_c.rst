@@ -19,8 +19,8 @@ Definition
 
     struct vmmouse_data {
         struct input_dev *abs_dev;
-        char phys;
-        char dev_name;
+        char phys[32];
+        char dev_name[128];
     }
 
 .. _`vmmouse_data.members`:

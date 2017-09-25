@@ -19,9 +19,9 @@ Definition
 
     struct iwl_sf_cfg_cmd {
         __le32 state;
-        __le32 watermark;
-        __le32 long_delay_timeouts;
-        __le32 full_on_timeouts;
+        __le32 watermark[SF_TRANSIENT_STATES_NUMBER];
+        __le32 long_delay_timeouts[SF_NUM_SCENARIO][SF_NUM_TIMEOUT_TYPES];
+        __le32 full_on_timeouts[SF_NUM_SCENARIO][SF_NUM_TIMEOUT_TYPES];
     }
 
 .. _`iwl_sf_cfg_cmd.members`:

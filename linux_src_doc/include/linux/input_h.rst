@@ -58,16 +58,16 @@ Definition
         const char *phys;
         const char *uniq;
         struct input_id id;
-        unsigned long propbit;
-        unsigned long evbit;
-        unsigned long keybit;
-        unsigned long relbit;
-        unsigned long absbit;
-        unsigned long mscbit;
-        unsigned long ledbit;
-        unsigned long sndbit;
-        unsigned long ffbit;
-        unsigned long swbit;
+        unsigned long propbit[BITS_TO_LONGS(INPUT_PROP_CNT)];
+        unsigned long evbit[BITS_TO_LONGS(EV_CNT)];
+        unsigned long keybit[BITS_TO_LONGS(KEY_CNT)];
+        unsigned long relbit[BITS_TO_LONGS(REL_CNT)];
+        unsigned long absbit[BITS_TO_LONGS(ABS_CNT)];
+        unsigned long mscbit[BITS_TO_LONGS(MSC_CNT)];
+        unsigned long ledbit[BITS_TO_LONGS(LED_CNT)];
+        unsigned long sndbit[BITS_TO_LONGS(SND_CNT)];
+        unsigned long ffbit[BITS_TO_LONGS(FF_CNT)];
+        unsigned long swbit[BITS_TO_LONGS(SW_CNT)];
         unsigned int hint_events_per_packet;
         unsigned int keycodemax;
         unsigned int keycodesize;
@@ -77,13 +77,13 @@ Definition
         struct ff_device *ff;
         unsigned int repeat_key;
         struct timer_list timer;
-        int rep;
+        int rep[REP_CNT];
         struct input_mt *mt;
         struct input_absinfo *absinfo;
-        unsigned long key;
-        unsigned long led;
-        unsigned long snd;
-        unsigned long sw;
+        unsigned long key[BITS_TO_LONGS(KEY_CNT)];
+        unsigned long led[BITS_TO_LONGS(LED_CNT)];
+        unsigned long snd[BITS_TO_LONGS(SND_CNT)];
+        unsigned long sw[BITS_TO_LONGS(SW_CNT)];
         int (*open)(struct input_dev *dev);
         void (*close)(struct input_dev *dev);
         int (*flush)(struct input_dev *dev, struct file *file);
@@ -489,11 +489,11 @@ Definition
         void (*set_autocenter)(struct input_dev *dev, u16 magnitude);
         void (*destroy)(struct ff_device *);
         void *private;
-        unsigned long ffbit;
+        unsigned long ffbit[BITS_TO_LONGS(FF_CNT)];
         struct mutex mutex;
         int max_effects;
         struct ff_effect *effects;
-        struct file  *effect_owners;
+        struct file *effect_owners[];
     }
 
 .. _`ff_device.members`:

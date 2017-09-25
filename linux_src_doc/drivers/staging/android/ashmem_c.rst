@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ashmem_area {
-        char name;
+        char name[ASHMEM_FULL_NAME_LEN];
         struct list_head unpinned_list;
         struct file *file;
         size_t size;

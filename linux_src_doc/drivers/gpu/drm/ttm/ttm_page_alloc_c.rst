@@ -79,7 +79,15 @@ Definition
         struct kobject kobj;
         struct shrinker mm_shrink;
         struct ttm_pool_opts options;
-        union {unnamed_union};
+        union {
+            struct ttm_page_pool pools[NUM_POOLS];
+            struct {
+                struct ttm_page_pool wc_pool;
+                struct ttm_page_pool uc_pool;
+                struct ttm_page_pool wc_pool_dma32;
+                struct ttm_page_pool uc_pool_dma32;
+            } ;
+        } ;
     }
 
 .. _`ttm_pool_manager.members`:
@@ -96,9 +104,11 @@ mm_shrink
 options
     *undescribed*
 
-{unnamed_union}
-    anonymous
+pools
+    All pool objects in use.
 
+{unnamed_struct}
+    anonymous
 
 .. _`ttm_pool_manager.description`:
 

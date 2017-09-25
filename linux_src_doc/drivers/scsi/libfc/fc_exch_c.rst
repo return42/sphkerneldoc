@@ -83,7 +83,14 @@ Definition
         u16 min_xid;
         u16 max_xid;
         u16 pool_max_index;
-        struct stats;
+        struct {
+            atomic_t no_free_exch;
+            atomic_t no_free_exch_xid;
+            atomic_t xid_not_found;
+            atomic_t xid_busy;
+            atomic_t seq_not_found;
+            atomic_t non_bls_resp;
+        } stats;
     }
 
 .. _`fc_exch_mgr.members`:
@@ -115,8 +122,26 @@ max_xid
 pool_max_index
     Max exch array index in exch pool
 
-stats
-    Statistics structure
+no_free_exch
+    *undescribed*
+
+no_free_exch_xid
+    *undescribed*
+
+xid_not_found
+    *undescribed*
+
+xid_busy
+    *undescribed*
+
+seq_not_found
+    *undescribed*
+
+non_bls_resp
+    *undescribed*
+
+tats
+    *undescribed*
 
 .. _`fc_exch_mgr.description`:
 

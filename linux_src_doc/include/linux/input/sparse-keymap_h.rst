@@ -20,7 +20,13 @@ Definition
     struct key_entry {
         int type;
         u32 code;
-        union {unnamed_union};
+        union {
+            u16 keycode;
+            struct {
+                u8 code;
+                u8 value;
+            } sw;
+        } ;
     }
 
 .. _`key_entry.members`:
@@ -38,7 +44,6 @@ code
 
 {unnamed_union}
     anonymous
-
 
 .. _`key_entry.description`:
 

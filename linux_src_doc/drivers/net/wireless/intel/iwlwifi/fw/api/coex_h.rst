@@ -132,7 +132,7 @@ Definition
 .. code-block:: c
 
     struct iwl_bt_coex_profile_notif {
-        __le32 mbox_msg;
+        __le32 mbox_msg[8];
         __le32 msg_idx;
         __le32 bt_ci_compliance;
         __le32 primary_ch_lut;
@@ -192,7 +192,7 @@ Definition
 .. code-block:: c
 
     struct iwl_bt_coex_profile_notif_v4 {
-        __le32 mbox_msg;
+        __le32 mbox_msg[4];
         __le32 msg_idx;
         __le32 bt_ci_compliance;
         __le32 primary_ch_lut;

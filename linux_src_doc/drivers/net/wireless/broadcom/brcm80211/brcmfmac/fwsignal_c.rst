@@ -223,7 +223,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_fws_mac_descriptor {
-        char name;
+        char name[16];
         u8 occupied;
         u8 mac_handle;
         u8 interface_id;
@@ -233,8 +233,8 @@ Definition
         u8 ac_bitmap;
         u8 requested_credit;
         u8 requested_packet;
-        u8 ea;
-        u8 seq;
+        u8 ea[ETH_ALEN];
+        u8 seq[BRCMF_FWS_FIFO_COUNT];
         struct pktq psq;
         int transit_count;
         int suppr_transit_count;
@@ -393,7 +393,7 @@ Definition
         u32 failed_to_pop;
         u32 failed_slotfind;
         u32 slot_pos;
-        struct brcmf_fws_hanger_item items;
+        struct brcmf_fws_hanger_item items[BRCMF_FWS_HANGER_MAXITEMS];
     }
 
 .. _`brcmf_fws_hanger.members`:

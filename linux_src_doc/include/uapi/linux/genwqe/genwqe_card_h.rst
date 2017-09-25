@@ -69,8 +69,14 @@ Definition
         __u64 cmplt_ts;
         __u64 disp_ts;
         __u64 ddata_addr;
-        __u8 asv;
-        union {unnamed_union};
+        __u8 asv[DDCB_ASV_LENGTH];
+        union {
+            struct {
+                __u64 ats;
+                __u8 asiv[DDCB_ASIV_LENGTH_ATS];
+            } ;
+            __u8 __asiv[DDCB_ASIV_LENGTH];
+        } ;
     }
 
 .. _`genwqe_ddcb_cmd.members`:
@@ -126,9 +132,14 @@ ddata_addr
 asv
     *undescribed*
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+__asiv
+    *undescribed*
+
+}
+    *undescribed*
 
 .. _`genwqe_ddcb_cmd.description`:
 

@@ -138,9 +138,7 @@ Definition
         struct pch_udc_dev *dev;
         unsigned long offset_addr;
         struct list_head queue;
-        unsigned num:5;
-        unsigned in:5:1;
-        unsigned halted:5:1:1;
+        unsigned num:5,in:1, halted:1;
         unsigned long epsts;
     }
 
@@ -247,8 +245,9 @@ Definition
         struct usb_gadget gadget;
         struct usb_gadget_driver *driver;
         struct pci_dev *pdev;
-        struct pch_udc_ep ep;
+        struct pch_udc_ep ep[PCH_UDC_EP_NUM];
         spinlock_t lock;
+        unsignedstall:1,prot_stall:1,suspended:1,connected:1,vbus_session:1,set_cfg_not_acked:1, waiting_zlp_ack:1;
         struct dma_pool *data_requests;
         struct dma_pool *stp_requests;
         dma_addr_t dma_addr;
@@ -321,9 +320,7 @@ Definition
         struct pch_udc_data_dma_desc *td_data;
         struct pch_udc_data_dma_desc *td_data_last;
         struct list_head queue;
-        unsigned dma_going:1;
-        unsigned dma_mapped:1:1;
-        unsigned dma_done:1:1:1;
+        unsigned dma_going:1,dma_mapped:1, dma_done:1;
         unsigned chain_len;
         void *buf;
         dma_addr_t dma;

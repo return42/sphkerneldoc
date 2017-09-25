@@ -322,7 +322,7 @@ Definition
 .. code-block:: c
 
     struct net_device {
-        char name;
+        char name[IFNAMSIZ];
         struct hlist_node name_hlist;
         char *ifalias;
         unsigned long mem_end;
@@ -337,7 +337,10 @@ Definition
         struct list_head close_list;
         struct list_head ptype_all;
         struct list_head ptype_specific;
-        struct adj_list;
+        struct {
+            struct list_head upper;
+            struct list_head lower;
+        } adj_list;
         netdev_features_t features;
         netdev_features_t hw_features;
         netdev_features_t wanted_features;
@@ -386,7 +389,7 @@ Definition
         unsigned char min_header_len;
         unsigned short needed_headroom;
         unsigned short needed_tailroom;
-        unsigned char perm_addr;
+        unsigned char perm_addr[MAX_ADDR_LEN];
         unsigned char addr_assign_type;
         unsigned char addr_len;
         unsigned short neigh_priv_len;
@@ -439,7 +442,7 @@ Definition
     #ifdef CONFIG_NETFILTER_INGRESS
         struct nf_hook_entries __rcu *nf_hooks_ingress;
     #endif
-        unsigned char broadcast;
+        unsigned char broadcast[MAX_ADDR_LEN];
     #ifdef CONFIG_RFS_ACCEL
         struct cpu_rmap *rx_cpu_rmap;
     #endif
@@ -449,7 +452,7 @@ Definition
         unsigned int real_num_tx_queues;
         struct Qdisc *qdisc;
     #ifdef CONFIG_NET_SCHED
-        unsigned long qdisc_hash;
+        DECLARE_HASHTABLE (qdisc_hash, 4);
     #endif
         unsigned int tx_queue_len;
         spinlock_t tx_global_lock;
@@ -464,46 +467,54 @@ Definition
         int __percpu *pcpu_refcnt;
         struct list_head todo_list;
         struct list_head link_watch_list;
-        enum reg_state:8;
-        bool dismantle;
-        enum rtnl_link_state:16;
-        bool needs_free_netdev;
-        void (*priv_destructor)(struct net_device *dev);
+        enum {
+            NETREG_UNINITIALIZED=0,NETREG_REGISTERED, NETREG_UNREGISTERING, NETREG_UNREGISTERED, NETREG_RELEASED, NETREG_DUMMY, } reg_state:8;
+            bool dismantle;
+            enum {
+                RTNL_LINK_INITIALIZED,RTNL_LINK_INITIALIZING, } rtnl_link_state:16;
+                bool needs_free_netdev;
+                void (*priv_destructor)(struct net_device *dev);
     #ifdef CONFIG_NETPOLL
-        struct netpoll_info __rcu *npinfo;
+                struct netpoll_info __rcu *npinfo;
     #endif
-        possible_net_t nd_net;
-        union {unnamed_union};
+                possible_net_t nd_net;
+                union {
+                    void *ml_priv;
+                    struct pcpu_lstats __percpu *lstats;
+                    struct pcpu_sw_netstats __percpu *tstats;
+                    struct pcpu_dstats __percpu *dstats;
+                    struct pcpu_vstats __percpu *vstats;
+                } ;
     #if IS_ENABLED(CONFIG_GARP)
-        struct garp_port __rcu *garp_port;
+                struct garp_port __rcu *garp_port;
     #endif
     #if IS_ENABLED(CONFIG_MRP)
-        struct mrp_port __rcu *mrp_port;
+                struct mrp_port __rcu *mrp_port;
     #endif
-        struct device dev;
-        const struct attribute_group  *sysfs_groups;
-        const struct attribute_group *sysfs_rx_queue_group;
-        const struct rtnl_link_ops *rtnl_link_ops;
+                struct device dev;
+                const struct attribute_group *sysfs_groups[4];
+                const struct attribute_group *sysfs_rx_queue_group;
+                const struct rtnl_link_ops *rtnl_link_ops;
     #define GSO_MAX_SIZE 65536
-        unsigned int gso_max_size;
+                unsigned int gso_max_size;
     #define GSO_MAX_SEGS 65535
-        u16 gso_max_segs;
+                u16 gso_max_segs;
     #ifdef CONFIG_DCB
-        const struct dcbnl_rtnl_ops *dcbnl_ops;
+                const struct dcbnl_rtnl_ops *dcbnl_ops;
     #endif
-        u8 num_tc;
-        struct netdev_tc_txq tc_to_txq;
-        u8 prio_tc_map;
+                u8 num_tc;
+                struct netdev_tc_txq tc_to_txq[TC_MAX_QUEUE];
+                u8 prio_tc_map[TC_BITMASK + 1];
     #if IS_ENABLED(CONFIG_FCOE)
-        unsigned int fcoe_ddp_xid;
+                unsigned int fcoe_ddp_xid;
     #endif
     #if IS_ENABLED(CONFIG_CGROUP_NET_PRIO)
-        struct netprio_map __rcu *priomap;
+                struct netprio_map __rcu *priomap;
     #endif
-        struct phy_device *phydev;
-        struct lock_class_key *qdisc_tx_busylock;
-        struct lock_class_key *qdisc_running_key;
-        bool proto_down;
+                struct phy_device *phydev;
+                struct lock_class_key *qdisc_tx_busylock;
+                struct lock_class_key *qdisc_running_key;
+                bool proto_down;
     }
 
 .. _`net_device.members`:
@@ -559,8 +570,14 @@ ptype_all
 ptype_specific
     Device-specific, protocol-specific packet handlers
 
-adj_list
-    Directly linked devices, like slaves for bonding
+upper
+    *undescribed*
+
+lower
+    *undescribed*
+
+dj_list
+    *undescribed*
 
 features
     Currently active device features
@@ -891,7 +908,6 @@ nd_net
 
 {unnamed_union}
     anonymous
-
 
 garp_port
     GARP

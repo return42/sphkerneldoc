@@ -57,7 +57,7 @@ Definition
     struct siena_vf {
         struct efx_nic *efx;
         unsigned int pci_rid;
-        char pci_name;
+        char pci_name[13];
         unsigned int index;
         struct work_struct req;
         u64 req_addr;
@@ -78,15 +78,15 @@ Definition
         struct mutex status_lock;
         u64 *peer_page_addrs;
         unsigned peer_page_count;
-        u64 evq0_addrs;
+        u64 evq0_addrs[EFX_MAX_VF_EVQ_SIZE * sizeof(efx_qword_t) / EFX_BUF_SIZE];
         unsigned evq0_count;
         wait_queue_head_t flush_waitq;
         struct mutex txq_lock;
-        unsigned long txq_mask;
+        unsigned long txq_mask[VI_MASK_LENGTH];
         unsigned txq_count;
-        unsigned long rxq_mask;
+        unsigned long rxq_mask[VI_MASK_LENGTH];
         unsigned rxq_count;
-        unsigned long rxq_retry_mask;
+        unsigned long rxq_retry_mask[VI_MASK_LENGTH];
         atomic_t rxq_retry_count;
         struct work_struct reset_work;
     }
@@ -225,7 +225,7 @@ Definition
 
     struct efx_local_addr {
         struct list_head link;
-        u8 addr;
+        u8 addr[ETH_ALEN];
     }
 
 .. _`efx_local_addr.members`:

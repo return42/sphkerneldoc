@@ -20,7 +20,8 @@ Definition
     struct ath5k_ini {
         u16 ini_register;
         u32 ini_value;
-        enum ini_mode;
+        enum {
+            AR5K_INI_WRITE = 0, AR5K_INI_READ = 1, } ini_mode;
     }
 
 .. _`ath5k_ini.members`:
@@ -55,7 +56,7 @@ Definition
 
     struct ath5k_ini_mode {
         u16 mode_register;
-        u32 mode_value;
+        u32 mode_value[3];
     }
 
 .. _`ath5k_ini_mode.members`:

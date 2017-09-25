@@ -33,6 +33,7 @@ Definition
         int (*slave_ts_ctrl)(struct i2c_client *, bool);
         int (*pid_filter)(struct dvb_frontend *, u8, u16, int);
         int (*pid_filter_ctrl)(struct dvb_frontend *, int);
+        struct regmap *regmap;
     }
 
 .. _`rtl2832_platform_data.members`:
@@ -60,6 +61,9 @@ pid_filter
 
 pid_filter_ctrl
     Control PID filter.
+
+regmap
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct mic_intr_info {
-        u16 intr_start_idx;
-        u16 intr_len;
+        u16 intr_start_idx[MIC_NUM_INTR_TYPES];
+        u16 intr_len[MIC_NUM_INTR_TYPES];
     }
 
 .. _`mic_intr_info.members`:
@@ -160,8 +160,8 @@ Definition
         void (*intr_init)(struct mic_device *mdev);
         void (*enable_interrupts)(struct mic_device *mdev);
         void (*disable_interrupts)(struct mic_device *mdev);
-        void (*program_msi_to_src_map)(struct mic_device *mdev, int idx, int intr_src, bool set);
-        u32 (*read_msi_to_src_map)(struct mic_device *mdev, int idx);
+        void (*program_msi_to_src_map) (struct mic_device *mdev, int idx, int intr_src, bool set);
+        u32 (*read_msi_to_src_map) (struct mic_device *mdev, int idx);
     }
 
 .. _`mic_hw_intr_ops.members`:

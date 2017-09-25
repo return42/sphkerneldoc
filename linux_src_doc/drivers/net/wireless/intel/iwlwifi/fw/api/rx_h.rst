@@ -27,7 +27,7 @@ Definition
         __le32 beacon_time_stamp;
         __le16 phy_flags;
         __le16 channel;
-        __le32 non_cfg_phy;
+        __le32 non_cfg_phy[IWL_RX_INFO_PHY_CNT];
         __le32 rate_n_flags;
         __le32 byte_count;
         u8 mac_active_msk;
@@ -455,9 +455,9 @@ Definition
     struct iwl_rss_config_cmd {
         __le32 flags;
         u8 hash_mask;
-        u8 reserved;
-        __le32 secret_key;
-        u8 indirection_table;
+        u8 reserved[3];
+        __le32 secret_key[IWL_RSS_HASH_KEY_CNT];
+        u8 indirection_table[IWL_RSS_INDIRECTION_TABLE_SIZE];
     }
 
 .. _`iwl_rss_config_cmd.members`:
@@ -500,7 +500,7 @@ Definition
         __le32 flags;
         __le32 rxq_mask;
         __le32 count;
-        u8 payload;
+        u8 payload[];
     }
 
 .. _`iwl_rxq_sync_cmd.members`:
@@ -538,7 +538,7 @@ Definition
 
     struct iwl_rxq_sync_notification {
         __le32 count;
-        u8 payload;
+        u8 payload[];
     }
 
 .. _`iwl_rxq_sync_notification.members`:
@@ -604,7 +604,7 @@ Definition
         u16 type;
         u16 sync;
         u32 cookie;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_mvm_internal_rxq_notif.members`:
@@ -683,6 +683,7 @@ Definition
     struct iwl_mvm_pm_state_notification {
         u8 sta_id;
         u8 type;
+        __le16 reserved;
     }
 
 .. _`iwl_mvm_pm_state_notification.members`:
@@ -695,6 +696,9 @@ sta_id
 
 type
     the new powersave state, see \ :c:type:`enum iwl_mvm_pm_event <iwl_mvm_pm_event>`\ 
+
+reserved
+    *undescribed*
 
 .. _`iwl_ba_window_status_notif`:
 
@@ -713,10 +717,10 @@ Definition
 .. code-block:: c
 
     struct iwl_ba_window_status_notif {
-        __le64 bitmap;
-        __le16 ra_tid;
-        __le32 start_seq_num;
-        __le16 mpdu_rx_count;
+        __le64 bitmap[BA_WINDOW_STREAMS_MAX];
+        __le16 ra_tid[BA_WINDOW_STREAMS_MAX];
+        __le32 start_seq_num[BA_WINDOW_STREAMS_MAX];
+        __le16 mpdu_rx_count[BA_WINDOW_STREAMS_MAX];
     }
 
 .. _`iwl_ba_window_status_notif.members`:

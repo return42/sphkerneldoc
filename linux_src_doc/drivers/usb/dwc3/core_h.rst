@@ -103,7 +103,7 @@ Definition
         u32 allocated_requests;
         u32 queued_requests;
         u32 interval;
-        char name;
+        char name[20];
         unsigned direction:1;
         unsigned stream_capable:1;
     }
@@ -390,9 +390,9 @@ Definition
         struct device *dev;
         struct device *sysdev;
         struct platform_device *xhci;
-        struct resource xhci_resources;
+        struct resource xhci_resources[DWC3_XHCI_RESOURCES_NUM];
         struct dwc3_event_buffer *ev_buf;
-        struct dwc3_ep  *eps;
+        struct dwc3_ep *eps[DWC3_ENDPOINTS_NUM];
         struct usb_gadget gadget;
         struct usb_gadget_driver *gadget_driver;
         struct usb_phy *usb2_phy;

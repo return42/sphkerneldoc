@@ -19,10 +19,10 @@ Definition
 
     struct xtpg_device {
         struct xvip_device xvip;
-        struct media_pad pads;
+        struct media_pad pads[2];
         unsigned int npads;
         bool has_input;
-        struct v4l2_mbus_framefmt formats;
+        struct v4l2_mbus_framefmt formats[2];
         struct v4l2_mbus_framefmt default_format;
         const struct xvip_video_format *vip_format;
         bool bayer;

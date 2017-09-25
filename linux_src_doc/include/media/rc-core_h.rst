@@ -126,7 +126,7 @@ Definition
     struct rc_dev {
         struct device dev;
         bool managed_alloc;
-        const struct attribute_group  *sysfs_groups;
+        const struct attribute_group *sysfs_groups[5];
         const char *device_name;
         const char *input_phys;
         struct input_id input_id;
@@ -172,7 +172,7 @@ Definition
         int (*tx_ir)(struct rc_dev *dev, unsigned *txbuf, unsigned n);
         void (*s_idle)(struct rc_dev *dev, bool enable);
         int (*s_learning_mode)(struct rc_dev *dev, int enable);
-        int (*s_carrier_report)(struct rc_dev *dev, int enable);
+        int (*s_carrier_report) (struct rc_dev *dev, int enable);
         int (*s_filter)(struct rc_dev *dev, struct rc_scancode_filter *filter);
         int (*s_wakeup_filter)(struct rc_dev *dev, struct rc_scancode_filter *filter);
         int (*s_timeout)(struct rc_dev *dev, unsigned int timeout);

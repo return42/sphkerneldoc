@@ -158,7 +158,7 @@ Definition
     #define AUTH_TYPE_SHARED_KEY 1
         struct channel_list_t channel_list;
         __le16 scan_type;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
     }
 
 .. _`hostif_infrastructure_set2_request_t.members`:
@@ -285,7 +285,7 @@ Definition
         __le16 capability;
         __le16 scan_type;
         struct channel_list_t channel_list;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
     }
 
 .. _`hostif_adhoc_set2_request_t.members`:

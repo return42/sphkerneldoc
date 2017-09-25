@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ks8851_mll_platform_data {
-        u8 mac_addr;
+        u8 mac_addr[ETH_ALEN];
     }
 
 .. _`ks8851_mll_platform_data.members`:

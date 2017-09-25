@@ -195,7 +195,7 @@ Definition
         uint8_t data_hold_in_cycles;
         uint8_t address_setup_in_cycles;
         uint16_t device_busy_timeout;
-    #define GPMI_DEFAULT_BUSY_TIMEOUT 0x500
+    #define GPMI_DEFAULT_BUSY_TIMEOUT 0x500 
         bool use_half_periods;
         uint8_t sample_delay_factor;
         uint8_t wrn_dly_sel;

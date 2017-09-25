@@ -102,10 +102,23 @@ Definition
 .. code-block:: c
 
     struct sk_buff {
-        union {unnamed_union};
+        union {
+            struct {
+                struct sk_buff *next;
+                struct sk_buff *prev;
+                union {
+                    ktime_t tstamp;
+                    u64 skb_mstamp;
+                } ;
+            } ;
+            struct rb_node rbnode;
+        } ;
         struct sock *sk;
-        union {unnamed_union};
-        char cb;
+        union {
+            struct net_device *dev;
+            unsigned long dev_scratch;
+        } ;
+        char cb[48] __aligned(8);
         unsigned long _skb_refdst;
         void (*destructor)(struct sk_buff *skb);
     #ifdef CONFIG_XFRM
@@ -117,32 +130,27 @@ Definition
     #if IS_ENABLED(CONFIG_BRIDGE_NETFILTER)
         struct nf_bridge_info *nf_bridge;
     #endif
-        unsigned int len;
-        unsigned int data_len;
-        __u16 mac_len;
-        __u16 hdr_len;
+        unsigned int len, data_len;
+        __u16 mac_len, hdr_len;
+        kmemcheck_bitfield_begin(flags1);
         __u16 queue_mapping;
     #ifdef __BIG_ENDIAN_BITFIELD
     #define CLONED_MASK (1 << 7)
     #else
     #define CLONED_MASK 1
     #endif
-    #define CLONED_OFFSET() offsetof(struct sk_buff# __cloned_offset)
-        __u8 __cloned_offset;
-        __u8 cloned:1;
-        __u8 nohdr:1:1;
-        __u8 fclone:1:1:2;
-        __u8 peeked:1:1:2:1;
-        __u8 head_frag:1:1:2:1:1;
-        __u8 xmit_more:1:1:2:1:1:1;
-        __u8 __unused:1:1:2:1:1:1:1;
+    #define CLONED_OFFSET() offsetof(struct sk_buff, __cloned_offset)
+        __u8 __cloned_offset[0];
+        __u8 cloned:1,nohdr:1,fclone:2,peeked:1,head_frag:1,xmit_more:1, __unused:1;
+        kmemcheck_bitfield_end(flags1);
+        __u32 headers_start[0];
     #ifdef __BIG_ENDIAN_BITFIELD
     #define PKT_TYPE_MAX (7 << 5)
     #else
     #define PKT_TYPE_MAX 7
     #endif
-    #define PKT_TYPE_OFFSET() offsetof(struct sk_buff# __pkt_type_offset)
-        __u8 __pkt_type_offset;
+    #define PKT_TYPE_OFFSET() offsetof(struct sk_buff, __pkt_type_offset)
+        __u8 __pkt_type_offset[0];
         __u8 pkt_type:3;
         __u8 pfmemalloc:1;
         __u8 ignore_df:1;
@@ -179,20 +187,35 @@ Definition
     #ifdef CONFIG_NET_SCHED
         __u16 tc_index;
     #endif
-        union {unnamed_union};
+        union {
+            __wsum csum;
+            struct {
+                __u16 csum_start;
+                __u16 csum_offset;
+            } ;
+        } ;
         __u32 priority;
         int skb_iif;
         __u32 hash;
         __be16 vlan_proto;
         __u16 vlan_tci;
     #if defined(CONFIG_NET_RX_BUSY_POLL) || defined(CONFIG_XPS)
-        union {unnamed_union};
+        union {
+            unsigned int napi_id;
+            unsigned int sender_cpu;
+        } ;
     #endif
     #ifdef CONFIG_NETWORK_SECMARK
         __u32 secmark;
     #endif
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            __u32 mark;
+            __u32 reserved_tailroom;
+        } ;
+        union {
+            __be16 inner_protocol;
+            __u8 inner_ipproto;
+        } ;
         __u16 inner_transport_header;
         __u16 inner_network_header;
         __u16 inner_mac_header;
@@ -200,10 +223,10 @@ Definition
         __u16 transport_header;
         __u16 network_header;
         __u16 mac_header;
+        __u32 headers_end[0];
         sk_buff_data_t tail;
         sk_buff_data_t end;
-        unsigned char *head;
-        unsigned char * *data;
+        unsigned char *head, *data;
         unsigned int truesize;
         refcount_t users;
     }
@@ -213,16 +236,26 @@ Definition
 Members
 -------
 
+next
+    Next buffer in list
+
+prev
+    Previous buffer in list
+
 {unnamed_union}
     anonymous
 
+rbnode
+    RB tree node, alternative to next/prev for netem/tcp
+
+}
+    *undescribed*
 
 sk
     Socket we are owned by
 
 {unnamed_union}
     anonymous
-
 
 cb
     Control buffer. Free for use by every layer. Put private vars here
@@ -280,6 +313,9 @@ xmit_more
     More SKBs are pending for this queue
 
 __unused
+    *undescribed*
+
+headers_start
     *undescribed*
 
 __pkt_type_offset
@@ -370,9 +406,11 @@ tc_from_ingress
 tc_index
     Traffic control index
 
-{unnamed_union}
-    anonymous
+csum
+    Checksum (must include start/offset pair)
 
+{unnamed_struct}
+    anonymous
 
 priority
     Packet queueing priority
@@ -392,17 +430,14 @@ vlan_tci
 {unnamed_union}
     anonymous
 
-
 secmark
     security marking
 
 {unnamed_union}
     anonymous
 
-
 {unnamed_union}
     anonymous
-
 
 inner_transport_header
     Inner transport layer header (encapsulation)
@@ -424,6 +459,9 @@ network_header
 
 mac_header
     Link layer header
+
+headers_end
+    *undescribed*
 
 tail
     Tail pointer

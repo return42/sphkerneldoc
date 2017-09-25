@@ -22,8 +22,12 @@ Definition
         u8 dir;
         u8 num;
         u8 type;
-        char name;
-        struct qh;
+        char name[16];
+        struct {
+            struct list_head queue;
+            struct ci_hw_qh *ptr;
+            dma_addr_t dma;
+        } qh;
         int wedge;
         struct ci_hdrc *ci;
         spinlock_t *lock;
@@ -51,8 +55,17 @@ type
 name
     string description of the endpoint
 
-qh
-    queue head for this endpoint
+queue
+    *undescribed*
+
+ptr
+    *undescribed*
+
+dma
+    *undescribed*
+
+h
+    *undescribed*
 
 wedge
     is the endpoint wedged
@@ -132,7 +145,7 @@ Definition
         void __iomem *cap;
         void __iomem *op;
         size_t size;
-        void __iomem  *regmap;
+        void __iomem *regmap[OP_LAST + 1];
     }
 
 .. _`hw_bank.members`:
@@ -182,13 +195,13 @@ Definition
         spinlock_t lock;
         struct hw_bank hw_bank;
         int irq;
-        struct ci_role_driver  *roles;
+        struct ci_role_driver *roles[CI_ROLE_END];
         enum ci_role role;
         bool is_otg;
         struct usb_otg otg;
         struct otg_fsm fsm;
         struct hrtimer otg_fsm_hrtimer;
-        ktime_t hr_timeouts;
+        ktime_t hr_timeouts[NUM_OTG_FSM_TIMERS];
         unsigned enabled_otg_timer_bits;
         enum otg_fsm_timer next_otg_timer;
         struct work_struct work;
@@ -199,10 +212,9 @@ Definition
         struct usb_gadget_driver *driver;
         enum usb_device_state resume_state;
         unsigned hw_ep_max;
-        struct ci_hw_ep ci_hw_ep;
+        struct ci_hw_ep ci_hw_ep[ENDPT_MAX];
         u32 ep0_dir;
-        struct ci_hw_ep *ep0out;
-        struct ci_hw_ep * *ep0in;
+        struct ci_hw_ep *ep0out, *ep0in;
         struct usb_request *status;
         bool setaddr;
         u8 address;

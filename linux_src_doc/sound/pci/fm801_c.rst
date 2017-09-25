@@ -21,8 +21,7 @@ Definition
         struct device *dev;
         int irq;
         unsigned long port;
-        unsigned int multichannel:1;
-        unsigned int secondary:1:1;
+        unsigned int multichannel: 1, secondary: 1;
         unsigned char secondary_addr;
         unsigned int tea575x_tuner;
         unsigned short ply_ctrl;
@@ -54,7 +53,7 @@ Definition
         struct snd_tea575x tea;
     #endif
     #ifdef CONFIG_PM_SLEEP
-        u16 saved_regs;
+        u16 saved_regs[0x20];
     #endif
     }
 

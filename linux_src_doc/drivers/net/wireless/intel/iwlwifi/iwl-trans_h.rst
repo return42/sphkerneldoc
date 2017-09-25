@@ -114,7 +114,16 @@ Definition
 .. code-block:: c
 
     struct iwl_device_cmd {
-        union {unnamed_union};
+        union {
+            struct {
+                struct iwl_cmd_header hdr;
+                u8 payload[DEF_CMD_PAYLOAD_SIZE];
+            } ;
+            struct {
+                struct iwl_cmd_header_wide hdr_wide;
+                u8 payload_wide[DEF_CMD_PAYLOAD_SIZE -sizeof(struct iwl_cmd_header_wide) + sizeof(struct iwl_cmd_header)];
+            } ;
+        } ;
     }
 
 .. _`iwl_device_cmd.members`:
@@ -122,9 +131,11 @@ Definition
 Members
 -------
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+{unnamed_struct}
+    anonymous
 
 .. _`iwl_device_cmd.description`:
 
@@ -193,14 +204,14 @@ Definition
 .. code-block:: c
 
     struct iwl_host_cmd {
-        const void  *data;
+        const void *data[IWL_MAX_CMD_TBS_PER_TFD];
         struct iwl_rx_packet *resp_pkt;
         unsigned long _rx_page_addr;
         u32 _rx_page_order;
         u32 flags;
         u32 id;
-        u16 len;
-        u8 dataflags;
+        u16 len[IWL_MAX_CMD_TBS_PER_TFD];
+        u8 dataflags[IWL_MAX_CMD_TBS_PER_TFD];
     }
 
 .. _`iwl_host_cmd.members`:
@@ -794,9 +805,8 @@ Definition
         u32 hw_rev;
         u32 hw_rf_id;
         u32 hw_id;
-        char hw_id_str;
-        u8 rx_mpdu_cmd;
-        u8 rx_mpdu_cmd_hdr_size;
+        char hw_id_str[52];
+        u8 rx_mpdu_cmd, rx_mpdu_cmd_hdr_size;
         bool pm_support;
         bool ltr_enabled;
         const struct iwl_hcmd_arr *command_groups;
@@ -804,14 +814,14 @@ Definition
         bool wide_cmd_header;
         u8 num_rx_queues;
         struct kmem_cache *dev_cmd_pool;
-        char dev_cmd_pool_name;
+        char dev_cmd_pool_name[50];
         struct dentry *dbgfs_dir;
     #ifdef CONFIG_LOCKDEP
         struct lockdep_map sync_cmd_lockdep_map;
     #endif
         u64 dflt_pwr_limit;
         const struct iwl_fw_dbg_dest_tlv *dbg_dest_tlv;
-        const struct iwl_fw_dbg_conf_tlv  *dbg_conf_tlv;
+        const struct iwl_fw_dbg_conf_tlv *dbg_conf_tlv[FW_DBG_CONF_MAX];
         struct iwl_fw_dbg_trigger_tlv * const *dbg_trigger_tlv;
         u8 dbg_dest_reg_num;
         u32 paging_req_addr;
@@ -820,7 +830,7 @@ Definition
         enum iwl_plat_pm_mode system_pm_mode;
         enum iwl_plat_pm_mode runtime_pm_mode;
         bool suspending;
-        char trans_specific;
+        char trans_specific[0] __aligned(sizeof(void *));
     }
 
 .. _`iwl_trans.members`:

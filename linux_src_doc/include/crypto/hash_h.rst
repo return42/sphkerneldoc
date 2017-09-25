@@ -189,7 +189,7 @@ Definition
         int (*import)(struct shash_desc *desc, const void *in);
         int (*setkey)(struct crypto_shash *tfm, const u8 *key, unsigned int keylen);
         unsigned int descsize;
-        unsigned int digestsize;
+        unsigned int digestsize __attribute__ ((aligned(__alignof__(struct hash_alg_common))));
         unsigned int statesize;
         struct crypto_alg base;
     }

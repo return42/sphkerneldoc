@@ -27,7 +27,7 @@ Definition
         struct dentry *dentry;
         struct dentry **links;
         int num_loaded;
-        char name;
+        char name[0];
     }
 
 .. _`gcov_node.members`:

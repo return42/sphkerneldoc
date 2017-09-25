@@ -27,7 +27,7 @@ Definition
         u32 rambase;
         u32 ramsize;
         u32 srsize;
-        char name;
+        char name[8];
     }
 
 .. _`brcmf_chip.members`:

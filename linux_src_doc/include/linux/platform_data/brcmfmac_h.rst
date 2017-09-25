@@ -99,8 +99,8 @@ Definition
 .. code-block:: c
 
     struct brcmfmac_pd_cc_entry {
-        char iso3166;
-        char cc;
+        char iso3166[BRCMFMAC_COUNTRY_BUF_SZ];
+        char cc[BRCMFMAC_COUNTRY_BUF_SZ];
         s32 rev;
     }
 
@@ -136,7 +136,7 @@ Definition
 
     struct brcmfmac_pd_cc {
         int table_size;
-        struct brcmfmac_pd_cc_entry table;
+        struct brcmfmac_pd_cc_entry table[0];
     }
 
 .. _`brcmfmac_pd_cc.members`:
@@ -172,7 +172,9 @@ Definition
         enum brcmf_bus_type bus_type;
         unsigned int feature_disable;
         struct brcmfmac_pd_cc *country_codes;
-        union bus;
+        union {
+            struct brcmfmac_sdio_pd sdio;
+        } bus;
     }
 
 .. _`brcmfmac_pd_device.members`:
@@ -201,9 +203,11 @@ country_codes
     If available, pointer to struct for translating country
     codes.
 
-bus
-    Bus specific (union) device settings. Currently only
-    SDIO.
+sdio
+    *undescribed*
+
+us
+    *undescribed*
 
 .. _`brcmfmac_platform_data`:
 
@@ -226,7 +230,7 @@ Definition
         void (*power_off)(void);
         char *fw_alternative_path;
         int device_count;
-        struct brcmfmac_pd_device devices;
+        struct brcmfmac_pd_device devices[0];
     }
 
 .. _`brcmfmac_platform_data.members`:

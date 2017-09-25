@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct scm_timestamping {
-        struct timespec ts;
+        struct timespec ts[3];
     }
 
 .. _`scm_timestamping.members`:

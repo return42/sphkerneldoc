@@ -58,12 +58,13 @@ Definition
 .. code-block:: c
 
     struct cmb_operations {
-        int (*alloc)(struct ccw_device *);
-        void (*free)(struct ccw_device *);
-        int (*set)(struct ccw_device *, u32);
-        u64 (*read)(struct ccw_device *, int);
+        int (*alloc) (struct ccw_device *);
+        void (*free) (struct ccw_device *);
+        int (*set) (struct ccw_device *, u32);
+        u64 (*read) (struct ccw_device *, int);
         int (*readall)(struct ccw_device *, struct cmbdata *);
-        void (*reset)(struct ccw_device *);
+        void (*reset) (struct ccw_device *);
+        struct attribute_group *attr_group;
     }
 
 .. _`cmb_operations.members`:
@@ -90,6 +91,9 @@ readall
 reset
     clear the data in the associated measurement block and
     reset its time stamp
+
+attr_group
+    *undescribed*
 
 .. _`cmb_operations.description`:
 
@@ -164,7 +168,7 @@ Definition
         u32 device_disconnect_time;
         u32 control_unit_queuing_time;
         u32 device_active_only_time;
-        u32 reserved;
+        u32 reserved[2];
     }
 
 .. _`cmb.members`:
@@ -234,7 +238,7 @@ Definition
         u32 device_active_only_time;
         u32 device_busy_time;
         u32 initial_command_response_time;
-        u32 reserved;
+        u32 reserved[7];
     }
 
 .. _`cmbe.members`:

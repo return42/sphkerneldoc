@@ -127,8 +127,7 @@ Definition
         __u32 idx;
         __u8 type;
         __u8 op;
-        __u8 soft;
-        __u8 hard;
+        __u8 soft, hard;
     }
 
 .. _`rfkill_event.members`:

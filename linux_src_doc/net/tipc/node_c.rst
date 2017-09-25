@@ -23,8 +23,8 @@ Definition
         rwlock_t lock;
         struct net *net;
         struct hlist_node hash;
-        int active_links;
-        struct tipc_link_entry links;
+        int active_links[2];
+        struct tipc_link_entry links[MAX_BEARERS];
         struct tipc_bclink_entry bc_entry;
         int action_flags;
         struct list_head list;

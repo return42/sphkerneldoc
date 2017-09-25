@@ -55,7 +55,10 @@ Definition
 
     struct img_ascii_lcd_ctx {
         struct platform_device *pdev;
-        union {unnamed_union};
+        union {
+            void __iomem *base;
+            struct regmap *regmap;
+        } ;
         u32 offset;
         const struct img_ascii_lcd_config *cfg;
         char *message;
@@ -63,7 +66,7 @@ Definition
         unsigned int scroll_pos;
         unsigned int scroll_rate;
         struct timer_list timer;
-        char curr;
+        char curr[] __aligned(8);
     }
 
 .. _`img_ascii_lcd_ctx.members`:
@@ -76,7 +79,6 @@ pdev
 
 {unnamed_union}
     anonymous
-
 
 offset
     the offset within regmap to the start of the LCD registers

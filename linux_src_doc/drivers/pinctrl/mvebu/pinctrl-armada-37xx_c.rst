@@ -22,10 +22,10 @@ Definition
         unsigned int start_pin;
         unsigned int npins;
         u32 reg_mask;
-        u32 val;
+        u32 val[NB_FUNCS];
         unsigned int extra_pin;
         unsigned int extra_npins;
-        const char  *funcs;
+        const char *funcs[NB_FUNCS];
         unsigned int *pins;
     }
 

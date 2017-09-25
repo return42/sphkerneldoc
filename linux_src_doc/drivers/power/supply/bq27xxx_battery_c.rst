@@ -20,9 +20,8 @@ Definition
     struct bq27xxx_dm_buf {
         u8 class;
         u8 block;
-        u8 data;
-        bool has_data;
-        bool dirty;
+        u8 data[BQ27XXX_DM_SZ];
+        bool has_data, dirty;
     }
 
 .. _`bq27xxx_dm_buf.members`:

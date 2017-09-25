@@ -18,31 +18,19 @@ Definition
 .. code-block:: c
 
     struct user_regs_struct {
-        unsigned long gr;
-        unsigned long sr;
-        unsigned long iaoq;
-        unsigned long iasq;
+        unsigned long gr[32];
+        unsigned long sr[8];
+        unsigned long iaoq[2];
+        unsigned long iasq[2];
         unsigned long sar;
         unsigned long iir;
         unsigned long isr;
         unsigned long ior;
         unsigned long ipsw;
         unsigned long cr0;
-        unsigned long cr24;
-        unsigned long cr25;
-        unsigned long cr26;
-        unsigned long cr27;
-        unsigned long cr28;
-        unsigned long cr29;
-        unsigned long cr30;
-        unsigned long cr31;
-        unsigned long cr8;
-        unsigned long cr9;
-        unsigned long cr12;
-        unsigned long cr13;
-        unsigned long cr10;
-        unsigned long cr15;
-        unsigned long _pad;
+        unsigned long cr24, cr25, cr26, cr27, cr28, cr29, cr30, cr31;
+        unsigned long cr8, cr9, cr12, cr13, cr10, cr15;
+        unsigned long _pad[80-64];
     }
 
 .. _`user_regs_struct.members`:
@@ -153,7 +141,7 @@ Definition
 .. code-block:: c
 
     struct user_fp_struct {
-        __u64 fr;
+        __u64 fr[32];
     }
 
 .. _`user_fp_struct.members`:

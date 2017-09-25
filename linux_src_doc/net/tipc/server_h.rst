@@ -30,7 +30,7 @@ Definition
         void (*tipc_conn_release)(int conid, void *usr_data);
         void (*tipc_conn_recvmsg)(struct net *net, int conid,struct sockaddr_tipc *addr, void *usr_data, void *buf, size_t len);
         struct sockaddr_tipc *saddr;
-        char name;
+        char name[TIPC_SERVER_NAME_LEN];
         int imp;
         int type;
     }

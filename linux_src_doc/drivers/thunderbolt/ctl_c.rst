@@ -22,7 +22,7 @@ Definition
         struct tb_ring *tx;
         struct tb_ring *rx;
         struct dma_pool *frame_pool;
-        struct ctl_pkg  *rx_packets;
+        struct ctl_pkg *rx_packets[TB_CTL_RX_PKG_COUNT];
         struct mutex request_queue_lock;
         struct list_head request_queue;
         bool running;

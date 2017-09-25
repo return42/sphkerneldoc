@@ -75,7 +75,23 @@ Definition
         unsigned int oas;
         const struct iommu_gather_ops *tlb;
         struct device *iommu_dev;
-        union {unnamed_union};
+        union {
+            struct {
+                u64 ttbr[2];
+                u64 tcr;
+                u64 mair[2];
+            } arm_lpae_s1_cfg;
+            struct {
+                u64 vttbr;
+                u64 vtcr;
+            } arm_lpae_s2_cfg;
+            struct {
+                u32 ttbr[2];
+                u32 tcr;
+                u32 nmrr;
+                u32 prrr;
+            } arm_v7s_cfg;
+        } ;
     }
 
 .. _`io_pgtable_cfg.members`:
@@ -106,7 +122,6 @@ iommu_dev
 
 {unnamed_union}
     anonymous
-
 
 .. _`io_pgtable_ops`:
 

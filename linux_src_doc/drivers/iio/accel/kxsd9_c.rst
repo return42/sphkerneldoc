@@ -21,7 +21,7 @@ Definition
         struct device *dev;
         struct regmap *map;
         struct iio_mount_matrix orientation;
-        struct regulator_bulk_data regs;
+        struct regulator_bulk_data regs[2];
         u8 scale;
     }
 

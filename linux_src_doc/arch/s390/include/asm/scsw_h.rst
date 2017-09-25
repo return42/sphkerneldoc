@@ -18,26 +18,26 @@ Definition
 .. code-block:: c
 
     struct cmd_scsw {
-        __u32 key:4;
-        __u32 sctl:1;
-        __u32 eswf:1;
-        __u32 cc:2;
-        __u32 fmt:1;
-        __u32 pfch:1;
-        __u32 isic:1;
-        __u32 alcc:1;
-        __u32 ssi:1;
-        __u32 zcc:1;
-        __u32 ectl:1;
-        __u32 pno:1;
-        __u32 res:1;
-        __u32 fctl:3;
-        __u32 actl:7;
-        __u32 stctl:5;
+        __u32 key : 4;
+        __u32 sctl : 1;
+        __u32 eswf : 1;
+        __u32 cc : 2;
+        __u32 fmt : 1;
+        __u32 pfch : 1;
+        __u32 isic : 1;
+        __u32 alcc : 1;
+        __u32 ssi : 1;
+        __u32 zcc : 1;
+        __u32 ectl : 1;
+        __u32 pno : 1;
+        __u32 res : 1;
+        __u32 fctl : 3;
+        __u32 actl : 7;
+        __u32 stctl : 5;
         __u32 cpa;
-        __u32 dstat:8;
-        __u32 cstat:8;
-        __u32 count:16;
+        __u32 dstat : 8;
+        __u32 cstat : 8;
+        __u32 count : 16;
     }
 
 .. _`cmd_scsw.members`:
@@ -123,13 +123,16 @@ Definition
 
     struct tm_scsw {
         u32 key:4;
+        u32 :1;
         u32 eswf:1;
         u32 cc:2;
         u32 fmt:3;
         u32 x:1;
         u32 q:1;
+        u32 :1;
         u32 ectl:1;
         u32 pno:1;
+        u32 :1;
         u32 fctl:3;
         u32 actl:7;
         u32 stctl:5;
@@ -215,15 +218,19 @@ Definition
 
     struct eadm_scsw {
         u32 key:4;
+        u32:1;
         u32 eswf:1;
         u32 cc:2;
+        u32:6;
         u32 ectl:1;
+        u32:2;
         u32 fctl:3;
         u32 actl:7;
         u32 stctl:5;
         u32 aob;
         u32 dstat:8;
         u32 cstat:8;
+        u32:16;
     }
 
 .. _`eadm_scsw.members`:

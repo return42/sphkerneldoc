@@ -18,15 +18,15 @@ Definition
 .. code-block:: c
 
     struct pch_gbe_functions {
-        void (*get_bus_info)(struct pch_gbe_hw *);
-        s32 (*init_hw)(struct pch_gbe_hw *);
-        s32 (*read_phy_reg)(struct pch_gbe_hw *, u32, u16 *);
-        s32 (*write_phy_reg)(struct pch_gbe_hw *, u32, u16);
-        void (*reset_phy)(struct pch_gbe_hw *);
-        void (*sw_reset_phy)(struct pch_gbe_hw *);
-        void (*power_up_phy)(struct pch_gbe_hw *hw);
-        void (*power_down_phy)(struct pch_gbe_hw *hw);
-        s32 (*read_mac_addr)(struct pch_gbe_hw *);
+        void (*get_bus_info) (struct pch_gbe_hw *);
+        s32 (*init_hw) (struct pch_gbe_hw *);
+        s32 (*read_phy_reg) (struct pch_gbe_hw *, u32, u16 *);
+        s32 (*write_phy_reg) (struct pch_gbe_hw *, u32, u16);
+        void (*reset_phy) (struct pch_gbe_hw *);
+        void (*sw_reset_phy) (struct pch_gbe_hw *);
+        void (*power_up_phy) (struct pch_gbe_hw *hw);
+        void (*power_down_phy) (struct pch_gbe_hw *hw);
+        s32 (*read_mac_addr) (struct pch_gbe_hw *);
     }
 
 .. _`pch_gbe_functions.members`:
@@ -78,7 +78,7 @@ Definition
 .. code-block:: c
 
     struct pch_gbe_mac_info {
-        u8 addr;
+        u8 addr[6];
         u8 fc;
         u8 fc_autoneg;
         u8 tx_fc_enable;

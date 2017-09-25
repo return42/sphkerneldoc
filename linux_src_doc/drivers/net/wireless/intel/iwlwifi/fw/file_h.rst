@@ -485,7 +485,7 @@ Definition
 
     struct iwl_fw_dbg_reg_op {
         u8 op;
-        u8 reserved;
+        u8 reserved[3];
         __le32 addr;
         __le32 val;
     }
@@ -654,7 +654,7 @@ Definition
         __le32 wrap_count;
         u8 base_shift;
         u8 end_shift;
-        struct iwl_fw_dbg_reg_op reg_ops;
+        struct iwl_fw_dbg_reg_op reg_ops[0];
     }
 
 .. _`iwl_fw_dbg_dest_tlv.members`:
@@ -816,8 +816,8 @@ Definition
         u8 start_conf_id;
         __le16 occurrences;
         __le16 trig_dis_ms;
-        __le16 reserved;
-        u8 data;
+        __le16 reserved[3];
+        u8 data[0];
     }
 
 .. _`iwl_fw_dbg_trigger_tlv.members`:
@@ -880,10 +880,10 @@ Definition
     struct iwl_fw_dbg_trigger_missed_bcon {
         __le32 stop_consec_missed_bcon;
         __le32 stop_consec_missed_bcon_since_rx;
-        __le32 reserved2;
+        __le32 reserved2[2];
         __le32 start_consec_missed_bcon;
         __le32 start_consec_missed_bcon_since_rx;
-        __le32 reserved1;
+        __le32 reserved1[2];
     }
 
 .. _`iwl_fw_dbg_trigger_missed_bcon.members`:
@@ -926,7 +926,10 @@ Definition
 .. code-block:: c
 
     struct iwl_fw_dbg_trigger_cmd {
-        struct cmd __packed cmds;
+        struct cmd {
+            u8 cmd_id;
+            u8 group_id;
+        } __packed cmds[16];
     }
 
 .. _`iwl_fw_dbg_trigger_cmd.members`:
@@ -1085,7 +1088,7 @@ Definition
         __le32 p2p_device;
         __le32 ibss;
         __le32 tdls;
-        __le32 reserved;
+        __le32 reserved[4];
     }
 
 .. _`iwl_fw_dbg_trigger_txq_timer.members`:
@@ -1137,13 +1140,26 @@ Definition
 .. code-block:: c
 
     struct iwl_fw_dbg_trigger_time_event {
-        struct __packed time_events;
+        struct {
+            __le32 id;
+            __le32 action_bitmap;
+            __le32 status_bitmap;
+        } __packed time_events[16];
     }
 
 .. _`iwl_fw_dbg_trigger_time_event.members`:
 
 Members
 -------
+
+id
+    *undescribed*
+
+action_bitmap
+    *undescribed*
+
+status_bitmap
+    *undescribed*
 
 time_events
     *undescribed*
@@ -1285,8 +1301,8 @@ Definition
     struct iwl_fw_dbg_trigger_tdls {
         u8 action_bitmap;
         u8 peer_mode;
-        u8 peer;
-        u8 reserved;
+        u8 peer[ETH_ALEN];
+        u8 reserved[4];
     }
 
 .. _`iwl_fw_dbg_trigger_tdls.members`:
@@ -1323,8 +1339,11 @@ Definition
 .. code-block:: c
 
     struct iwl_fw_dbg_trigger_tx_status {
-        struct tx_status __packed statuses;
-        __le32 reserved;
+        struct tx_status {
+            u8 status;
+            u8 reserved[3];
+        } __packed statuses[16];
+        __le32 reserved[2];
     }
 
 .. _`iwl_fw_dbg_trigger_tx_status.members`:

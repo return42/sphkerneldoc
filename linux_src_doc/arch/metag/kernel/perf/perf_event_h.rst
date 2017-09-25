@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct cpu_hw_events {
-        struct perf_event  *events;
-        unsigned long used_mask;
+        struct perf_event *events[MAX_HWEVENTS];
+        unsigned long used_mask[BITS_TO_LONGS(MAX_HWEVENTS)];
         raw_spinlock_t pmu_lock;
     }
 
@@ -71,7 +71,7 @@ Definition
         u64 (*read)(int idx);
         void (*write)(int idx, u32 val);
         int (*event_map)(int idx);
-        const int cache_events;
+        const int (*cache_events)[PERF_COUNT_HW_CACHE_MAX][PERF_COUNT_HW_CACHE_OP_MAX] [PERF_COUNT_HW_CACHE_RESULT_MAX];
         u32 max_period;
         int max_events;
         atomic_t active_events;

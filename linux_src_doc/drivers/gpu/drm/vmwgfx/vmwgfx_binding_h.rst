@@ -329,9 +329,9 @@ Definition
 
     struct vmw_dx_shader_bindings {
         struct vmw_ctx_bindinfo_shader shader;
-        struct vmw_ctx_bindinfo_cb const_buffers;
-        struct vmw_ctx_bindinfo_view shader_res;
-        unsigned long dirty_sr;
+        struct vmw_ctx_bindinfo_cb const_buffers[SVGA3D_DX_MAX_CONSTBUFFERS];
+        struct vmw_ctx_bindinfo_view shader_res[SVGA3D_DX_MAX_SRVIEWS];
+        DECLARE_BITMAP(dirty_sr, SVGA3D_DX_MAX_SRVIEWS);
         unsigned long dirty;
     }
 

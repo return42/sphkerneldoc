@@ -26,10 +26,10 @@ Definition
         int (*probe)(struct subchannel *);
         int (*remove)(struct subchannel *);
         void (*shutdown)(struct subchannel *);
-        int (*prepare)(struct subchannel *);
-        void (*complete)(struct subchannel *);
+        int (*prepare) (struct subchannel *);
+        void (*complete) (struct subchannel *);
         int (*freeze)(struct subchannel *);
-        int (*thaw)(struct subchannel *);
+        int (*thaw) (struct subchannel *);
         int (*restore)(struct subchannel *);
         int (*settle)(void);
     }

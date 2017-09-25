@@ -46,11 +46,11 @@ Definition
         u32 can_snap_lo;
         u32 can_snap_hi;
         u32 ts_sel;
-        u32 ts_st;
-        u32 reserve1;
+        u32 ts_st[6];
+        u32 reserve1[14];
         u32 stl_max_set_en;
         u32 stl_max_set;
-        u32 reserve2;
+        u32 reserve2[13];
         u32 srst;
     }
 
@@ -242,7 +242,7 @@ Definition
 .. code-block:: c
 
     struct pch_params {
-        u8 station;
+        u8 station[STATION_ADDR_LEN];
     }
 
 .. _`pch_params.members`:

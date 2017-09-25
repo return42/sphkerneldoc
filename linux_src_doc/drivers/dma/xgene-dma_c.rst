@@ -23,7 +23,7 @@ Definition
         struct device *dev;
         int id;
         int rx_irq;
-        char name;
+        char name[10];
         spinlock_t lock;
         int pending;
         int max_outstanding;
@@ -120,8 +120,8 @@ Definition
         void __iomem *csr_ring;
         void __iomem *csr_ring_cmd;
         void __iomem *csr_efuse;
-        struct dma_device dma_dev;
-        struct xgene_dma_chan chan;
+        struct dma_device dma_dev[XGENE_DMA_MAX_CHANNEL];
+        struct xgene_dma_chan chan[XGENE_DMA_MAX_CHANNEL];
     }
 
 .. _`xgene_dma.members`:

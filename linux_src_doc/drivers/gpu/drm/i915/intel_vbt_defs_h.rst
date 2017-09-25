@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct vbt_header {
-        u8 signature;
+        u8 signature[20];
         u16 version;
         u16 header_size;
         u16 vbt_size;
         u8 vbt_checksum;
         u8 reserved0;
         u32 bdb_offset;
-        u32 aim_offset;
+        u32 aim_offset[4];
     }
 
 .. _`vbt_header.members`:
@@ -74,7 +74,7 @@ Definition
 .. code-block:: c
 
     struct bdb_header {
-        u8 signature;
+        u8 signature[16];
         u16 version;
         u16 header_size;
         u16 bdb_size;

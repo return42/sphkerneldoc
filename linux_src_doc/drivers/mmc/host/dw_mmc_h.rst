@@ -65,7 +65,11 @@ Definition
         int data_shift;
         u8 part_buf_start;
         u8 part_buf_count;
-        union {unnamed_union};
+        union {
+            u16 part_buf16;
+            u32 part_buf32;
+            u64 part_buf;
+        } ;
         void (*push_data)(struct dw_mci *host, void *buf, int cnt);
         void (*pull_data)(struct dw_mci *host, void *buf, int cnt);
         bool vqmmc_enabled;
@@ -235,7 +239,6 @@ part_buf_count
 
 {unnamed_union}
     anonymous
-
 
 push_data
     Pointer to FIFO push function.

@@ -75,7 +75,7 @@ Definition
         u8 max_search;
         const u16 *expected_tpt;
         u32 current_rate;
-        struct iwl_rate_scale_data win;
+        struct iwl_rate_scale_data win[IWL_RATE_COUNT];
     }
 
 .. _`iwl_scale_tbl_info.members`:
@@ -162,8 +162,8 @@ Definition
         s8 max_rate_idx;
         u8 missed_rate_counter;
         struct iwl_link_quality_cmd lq;
-        struct iwl_scale_tbl_info lq_info;
-        struct iwl_traffic_load load;
+        struct iwl_scale_tbl_info lq_info[LQ_SIZE];
+        struct iwl_traffic_load load[IWL_MAX_TID_COUNT];
         u8 tx_agg_tid_en;
     #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *rs_sta_dbgfs_scale_table_file;

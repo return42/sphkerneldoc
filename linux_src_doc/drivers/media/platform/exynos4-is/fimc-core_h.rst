@@ -267,8 +267,8 @@ Definition
         u32 offs_v;
         u32 width;
         u32 height;
-        unsigned int payload;
-        unsigned int bytesperline;
+        unsigned int payload[VIDEO_MAX_PLANES];
+        unsigned int bytesperline[VIDEO_MAX_PLANES];
         struct fimc_addr paddr;
         struct fimc_dma_offset dma_offset;
         struct fimc_fmt *fmt;
@@ -383,7 +383,7 @@ Definition
         struct v4l2_subdev subdev;
         struct exynos_video_entity ve;
         struct media_pad vd_pad;
-        struct media_pad sd_pads;
+        struct media_pad sd_pads[FIMC_SD_PADS_NUM];
         struct v4l2_mbus_framefmt ci_fmt;
         struct v4l2_mbus_framefmt wb_fmt;
         struct fimc_source_info source_config;
@@ -597,7 +597,7 @@ Definition
 .. code-block:: c
 
     struct fimc_drvdata {
-        const struct fimc_variant  *variant;
+        const struct fimc_variant *variant[FIMC_MAX_DEVS];
         int num_entities;
         unsigned long lclk_frequency;
         u8 cistatus2;
@@ -657,7 +657,7 @@ Definition
         const struct fimc_variant *variant;
         const struct fimc_drvdata *drv_data;
         int id;
-        struct clk  *clock;
+        struct clk *clock[MAX_FIMC_CLOCKS];
         void __iomem *regs;
         wait_queue_head_t irq_queue;
         struct v4l2_device *v4l2_dev;
@@ -734,7 +734,10 @@ Definition
 
     struct fimc_ctrls {
         struct v4l2_ctrl_handler handler;
-        struct {unnamed_struct};
+        struct {
+            struct v4l2_ctrl *colorfx;
+            struct v4l2_ctrl *colorfx_cbcr;
+        } ;
         struct v4l2_ctrl *rotate;
         struct v4l2_ctrl *hflip;
         struct v4l2_ctrl *vflip;
@@ -752,7 +755,6 @@ handler
 
 {unnamed_struct}
     anonymous
-
 
 rotate
     image rotation control

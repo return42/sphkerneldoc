@@ -384,7 +384,10 @@ Definition
         int dirty;
         int flags;
         int lnum;
-        union {unnamed_union};
+        union {
+            struct list_head list;
+            int hpos;
+        } ;
     }
 
 .. _`ubifs_lprops.members`:
@@ -406,7 +409,6 @@ lnum
 
 {unnamed_union}
     anonymous
-
 
 .. _`ubifs_lpt_lprops`:
 
@@ -595,7 +597,7 @@ Definition
         int iip;
         int level;
         int num;
-        struct ubifs_lprops lprops;
+        struct ubifs_lprops lprops[UBIFS_LPT_FANOUT];
     }
 
 .. _`ubifs_pnode.members`:
@@ -643,7 +645,11 @@ Definition
     struct ubifs_nbranch {
         int lnum;
         int offs;
-        union {unnamed_union};
+        union {
+            struct ubifs_nnode *nnode;
+            struct ubifs_pnode *pnode;
+            struct ubifs_cnode *cnode;
+        } ;
     }
 
 .. _`ubifs_nbranch.members`:
@@ -659,7 +665,6 @@ offs
 
 {unnamed_union}
     anonymous
-
 
 .. _`ubifs_nnode`:
 
@@ -684,7 +689,7 @@ Definition
         int iip;
         int level;
         int num;
-        struct ubifs_nbranch nbranch;
+        struct ubifs_nbranch nbranch[UBIFS_LPT_FANOUT];
     }
 
 .. _`ubifs_nnode.members`:
@@ -971,7 +976,10 @@ Definition
 
     struct ubifs_zbranch {
         union ubifs_key key;
-        union {unnamed_union};
+        union {
+            struct ubifs_znode *znode;
+            void *leaf;
+        } ;
         int lnum;
         int offs;
         int len;
@@ -987,7 +995,6 @@ key
 
 {unnamed_union}
     anonymous
-
 
 lnum
     LEB number of the target node (indexing node or data node)
@@ -1026,7 +1033,7 @@ Definition
         int lnum;
         int offs;
         int len;
-        struct ubifs_zbranch zbranch;
+        struct ubifs_zbranch zbranch[];
     }
 
 .. _`ubifs_znode.members`:
@@ -1096,7 +1103,7 @@ Definition
 
     struct bu_info {
         union ubifs_key key;
-        struct ubifs_zbranch zbranch;
+        struct ubifs_zbranch zbranch[UBIFS_MAX_BULK_READ];
         void *buf;
         int buf_len;
         int gc_seq;
@@ -1151,7 +1158,10 @@ Definition
 .. code-block:: c
 
     struct ubifs_node_range {
-        union {unnamed_union};
+        union {
+            int len;
+            int min_len;
+        } ;
         int max_len;
     }
 
@@ -1162,7 +1172,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 max_len
     maximum possible node length
@@ -1242,14 +1251,14 @@ Definition
         unsigned int fast:1;
         unsigned int recalculate:1;
     #ifndef UBIFS_DEBUG
-        unsigned int new_page;
-        unsigned int dirtied_page;
-        unsigned int new_dent;
-        unsigned int mod_dent;
-        unsigned int new_ino;
-        unsigned int new_ino_d;
-        unsigned int dirtied_ino;
-        unsigned int dirtied_ino_d;
+        unsigned int new_page:1;
+        unsigned int dirtied_page:1;
+        unsigned int new_dent:1;
+        unsigned int mod_dent:1;
+        unsigned int new_ino:1;
+        unsigned int new_ino_d:13;
+        unsigned int dirtied_ino:4;
+        unsigned int dirtied_ino_d:15;
     #else
         unsigned int new_page;
         unsigned int dirtied_page;
@@ -1562,7 +1571,7 @@ Definition
         spinlock_t cnt_lock;
         int fmt_version;
         int ro_compat_version;
-        unsigned char uuid;
+        unsigned char uuid[16];
         int lhead_lnum;
         int lhead_offs;
         int ltail_lnum;
@@ -1660,7 +1669,7 @@ Definition
         int dead_wm;
         int dark_wm;
         int block_cnt;
-        struct ubifs_node_range ranges;
+        struct ubifs_node_range ranges[UBIFS_NODE_TYPES_CNT];
         struct ubi_volume_desc *ubi;
         struct ubi_device_info di;
         struct ubi_volume_info vi;
@@ -1679,7 +1688,7 @@ Definition
         int ohead_offs;
         int no_orphs;
         struct task_struct *bgt;
-        char bgt_name;
+        char bgt_name[sizeof(BGT_NAME_PATTERN) + 9];
         int need_bgt;
         int need_wbuf_sync;
         int gc_lnum;
@@ -1719,7 +1728,7 @@ Definition
         void *lpt_buf;
         struct ubifs_nnode *nroot;
         struct ubifs_cnode *lpt_cnext;
-        struct ubifs_lpt_heap lpt_heap;
+        struct ubifs_lpt_heap lpt_heap[LPROPS_HEAP_CNT];
         struct ubifs_lpt_heap dirty_idx;
         struct list_head uncat_list;
         struct list_head empty_list;

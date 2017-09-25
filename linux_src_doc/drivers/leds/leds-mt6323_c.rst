@@ -61,7 +61,7 @@ Definition
         struct device *dev;
         struct mt6397_chip *hw;
         struct mutex lock;
-        struct mt6323_led  *led;
+        struct mt6323_led *led[MT6323_MAX_LEDS];
     }
 
 .. _`mt6323_leds.members`:

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct rpmsg_channel_info {
-        char name;
+        char name[RPMSG_NAME_SIZE];
         u32 src;
         u32 dst;
     }

@@ -27,7 +27,10 @@ Definition
         unsigned int tsgl_entries;
         unsigned int outlen;
         unsigned int areqlen;
-        union cra_u;
+        union {
+            struct aead_request aead_req;
+            struct skcipher_request skcipher_req;
+        } cra_u;
     }
 
 .. _`af_alg_async_req.members`:
@@ -62,8 +65,14 @@ outlen
 areqlen
     Length of this data structure
 
-cra_u
-    Cipher request
+aead_req
+    *undescribed*
+
+skcipher_req
+    *undescribed*
+
+ra_u
+    *undescribed*
 
 .. _`af_alg_ctx`:
 

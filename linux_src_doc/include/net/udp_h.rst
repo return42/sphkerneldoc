@@ -18,7 +18,12 @@ Definition
 .. code-block:: c
 
     struct udp_skb_cb {
-        union header;
+        union {
+            struct inet_skb_parm h4;
+    #if IS_ENABLED(CONFIG_IPV6)
+            struct inet6_skb_parm h6;
+    #endif
+        } header;
         __u16 cscov;
         __u8 partial_cov;
     }
@@ -28,8 +33,14 @@ Definition
 Members
 -------
 
-header
-    private variables used by IPv4/IPv6
+h4
+    *undescribed*
+
+h6
+    *undescribed*
+
+eader
+    *undescribed*
 
 cscov
     checksum coverage length (UDP-Lite only)

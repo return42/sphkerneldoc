@@ -338,13 +338,17 @@ Definition
         __le16 len;
         __le16 offload_assist;
         __le32 tx_flags;
-        struct scratch;
+        struct {
+            u8 try_cnt;
+            u8 btkill_cnt;
+            __le16 reserved;
+        } scratch;
         __le32 rate_n_flags;
         u8 sta_id;
         u8 sec_ctl;
         u8 initial_rate_index;
         u8 reserved2;
-        u8 key;
+        u8 key[16];
         __le32 reserved3;
         __le32 life_time;
         __le32 dram_lsb_ptr;
@@ -354,8 +358,8 @@ Definition
         u8 tid_tspec;
         __le16 pm_frame_timeout;
         __le16 reserved4;
-        u8 payload;
-        struct ieee80211_hdr hdr;
+        u8 payload[0];
+        struct ieee80211_hdr hdr[0];
     }
 
 .. _`iwl_tx_cmd.members`:
@@ -372,8 +376,17 @@ offload_assist
 tx_flags
     combination of TX_CMD_FLG\_\*
 
-scratch
-    scratch buffer used by the device
+try_cnt
+    *undescribed*
+
+btkill_cnt
+    *undescribed*
+
+reserved
+    *undescribed*
+
+cratch
+    *undescribed*
 
 rate_n_flags
     rate for \*all\* Tx attempts, if TX_CMD_FLG_STA_RATE_MSK is
@@ -475,7 +488,7 @@ Definition
         __le32 flags;
         struct iwl_dram_sec_info dram_info;
         __le32 rate_n_flags;
-        struct ieee80211_hdr hdr;
+        struct ieee80211_hdr hdr[0];
     }
 
 .. _`iwl_tx_cmd_gen2.members`:
@@ -558,9 +571,9 @@ Definition
         __le32 initial_rate;
         __le16 wireless_media_time;
         u8 pa_status;
-        u8 pa_integ_res_a;
-        u8 pa_integ_res_b;
-        u8 pa_integ_res_c;
+        u8 pa_integ_res_a[3];
+        u8 pa_integ_res_b[3];
+        u8 pa_integ_res_c[3];
         __le16 measurement_req_id;
         u8 reduced_tpc;
         u8 reserved;
@@ -570,7 +583,7 @@ Definition
         u8 tlc_info;
         u8 ra_tid;
         __le16 frame_ctrl;
-        struct agg_tx_status status;
+        struct agg_tx_status status[];
     }
 
 .. _`iwl_mvm_tx_resp_v3.members`:
@@ -677,9 +690,9 @@ Definition
         __le32 initial_rate;
         __le16 wireless_media_time;
         u8 pa_status;
-        u8 pa_integ_res_a;
-        u8 pa_integ_res_b;
-        u8 pa_integ_res_c;
+        u8 pa_integ_res_a[3];
+        u8 pa_integ_res_b[3];
+        u8 pa_integ_res_c[3];
         __le16 measurement_req_id;
         u8 reduced_tpc;
         u8 reserved;
@@ -800,7 +813,7 @@ Definition
 .. code-block:: c
 
     struct iwl_mvm_ba_notif {
-        u8 sta_addr;
+        u8 sta_addr[ETH_ALEN];
         __le16 reserved;
         u8 sta_id;
         u8 tid;
@@ -878,7 +891,7 @@ Definition
         __le16 tfd_index;
         u8 scd_queue;
         u8 tid;
-        u8 reserved;
+        u8 reserved[2];
     }
 
 .. _`iwl_mvm_compressed_ba_tfd.members`:
@@ -968,8 +981,8 @@ Definition
         __le32 tx_rate;
         __le16 tfd_cnt;
         __le16 ra_tid_cnt;
-        struct iwl_mvm_compressed_ba_tfd tfd;
-        struct iwl_mvm_compressed_ba_ratid ra_tid;
+        struct iwl_mvm_compressed_ba_tfd tfd[1];
+        struct iwl_mvm_compressed_ba_ratid ra_tid[0];
     }
 
 .. _`iwl_mvm_compressed_ba_notif.members`:
@@ -1050,7 +1063,7 @@ Definition
         __le32 template_id;
         __le32 tim_idx;
         __le32 tim_size;
-        struct ieee80211_hdr frame;
+        struct ieee80211_hdr frame[0];
     }
 
 .. _`iwl_mac_beacon_cmd_v6.members`:
@@ -1097,7 +1110,7 @@ Definition
         __le32 tim_size;
         __le32 ecsa_offset;
         __le32 csa_offset;
-        struct ieee80211_hdr frame;
+        struct ieee80211_hdr frame[0];
     }
 
 .. _`iwl_mac_beacon_cmd_v7.members`:
@@ -1152,7 +1165,7 @@ Definition
         __le32 tim_size;
         __le32 ecsa_offset;
         __le32 csa_offset;
-        struct ieee80211_hdr frame;
+        struct ieee80211_hdr frame[0];
     }
 
 .. _`iwl_mac_beacon_cmd.members`:

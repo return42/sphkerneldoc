@@ -21,11 +21,10 @@ Definition
         __u32 opcode;
         __u32 flags;
         __u32 count;
-        struct bcm_timeval ival1;
-        struct bcm_timeval ival2;
+        struct bcm_timeval ival1, ival2;
         canid_t can_id;
         __u32 nframes;
-        struct can_frame frames;
+        struct can_frame frames[0];
     }
 
 .. _`bcm_msg_head.members`:

@@ -243,15 +243,15 @@ Definition
 .. code-block:: c
 
     struct tee_ioctl_open_session_arg {
-        __u8 uuid;
-        __u8 clnt_uuid;
+        __u8 uuid[TEE_IOCTL_UUID_LEN];
+        __u8 clnt_uuid[TEE_IOCTL_UUID_LEN];
         __u32 clnt_login;
         __u32 cancel_id;
         __u32 session;
         __u32 ret;
         __u32 ret_origin;
         __u32 num_params;
-        struct tee_ioctl_param params;
+        struct tee_ioctl_param params[];
     }
 
 .. _`tee_ioctl_open_session_arg.members`:
@@ -329,7 +329,7 @@ Definition
         __u32 ret;
         __u32 ret_origin;
         __u32 num_params;
-        struct tee_ioctl_param params;
+        struct tee_ioctl_param params[];
     }
 
 .. _`tee_ioctl_invoke_arg.members`:
@@ -474,7 +474,7 @@ Definition
     struct tee_iocl_supp_recv_arg {
         __u32 func;
         __u32 num_params;
-        struct tee_ioctl_param params;
+        struct tee_ioctl_param params[];
     }
 
 .. _`tee_iocl_supp_recv_arg.members`:
@@ -537,7 +537,7 @@ Definition
     struct tee_iocl_supp_send_arg {
         __u32 ret;
         __u32 num_params;
-        struct tee_ioctl_param params;
+        struct tee_ioctl_param params[];
     }
 
 .. _`tee_iocl_supp_send_arg.members`:

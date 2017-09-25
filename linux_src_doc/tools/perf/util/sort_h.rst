@@ -20,7 +20,10 @@ Definition
     struct hist_entry {
         struct rb_node rb_node_in;
         struct rb_node rb_node;
-        union pairs;
+        union {
+            struct list_head node;
+            struct list_head head;
+        } pairs;
         struct he_stat stat;
         struct he_stat *stat_acc;
         struct map_symbol ms;
@@ -37,7 +40,17 @@ Definition
         bool leaf;
         char level;
         u8 filtered;
-        union {unnamed_union};
+        union {
+            struct hist_entry_diff diff;
+            struct {
+                u16 row_offset;
+                u16 nr_rows;
+                bool init_have_children;
+                bool unfolded;
+                bool has_children;
+                bool has_no_entry;
+            } ;
+        } ;
         char *srcline;
         char *srcfile;
         struct inline_node *inline_node;
@@ -51,8 +64,14 @@ Definition
         struct perf_hpp_list *hpp_list;
         struct hist_entry *parent_he;
         struct hist_entry_ops *ops;
-        union {unnamed_union};
-        struct callchain_root callchain;
+        union {
+            struct {
+                struct rb_root hroot_in;
+                struct rb_root hroot_out;
+            } ;
+            struct rb_root sorted_chain;
+        } ;
+        struct callchain_root callchain[0];
     }
 
 .. _`hist_entry.members`:
@@ -66,7 +85,13 @@ rb_node_in
 rb_node
     *undescribed*
 
-pairs
+node
+    *undescribed*
+
+head
+    *undescribed*
+
+airs
     *undescribed*
 
 stat
@@ -117,9 +142,11 @@ level
 filtered
     *undescribed*
 
-{unnamed_union}
-    anonymous
+diff
+    *undescribed*
 
+{unnamed_struct}
+    anonymous
 
 srcline
     *undescribed*
@@ -160,9 +187,14 @@ parent_he
 ops
     *undescribed*
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+sorted_chain
+    *undescribed*
+
+}
+    *undescribed*
 
 callchain
     *undescribed*

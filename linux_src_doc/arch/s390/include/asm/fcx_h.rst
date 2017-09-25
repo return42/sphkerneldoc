@@ -19,16 +19,22 @@ Definition
 
     struct tcw {
         u32 format:2;
+        u32 :6;
         u32 flags:24;
+        u32 :8;
         u32 tccbl:6;
         u32 r:1;
         u32 w:1;
+        u32 :16;
         u64 output;
         u64 input;
         u64 tsb;
         u64 tccb;
         u32 output_count;
         u32 input_count;
+        u32 :32;
+        u32 :32;
+        u32 :32;
         u32 intrg;
     }
 
@@ -91,6 +97,7 @@ Definition
 
     struct tidaw {
         u32 flags:8;
+        u32 :24;
         u32 count;
         u64 addr;
     }
@@ -133,7 +140,7 @@ Definition
         u32 queue_time;
         u32 dev_busy_time;
         u32 dev_act_time;
-        u8 sense;
+        u8 sense[32];
     }
 
 .. _`tsa_iostat.members`:
@@ -176,9 +183,10 @@ Definition
 .. code-block:: c
 
     struct tsa_ddpc {
+        u32 :24;
         u32 rc:8;
-        u8 rcq;
-        u8 sense;
+        u8 rcq[16];
+        u8 sense[32];
     }
 
 .. _`tsa_ddpc.members`:
@@ -217,9 +225,10 @@ Definition
         u32 cu_state:8;
         u32 dev_state:8;
         u32 op_state:8;
-        u8 sd_info;
+        u32 :24;
+        u8 sd_info[12];
         u32 dl_id;
-        u8 dd_data;
+        u8 dd_data[28];
     }
 
 .. _`tsa_intrg.members`:
@@ -274,7 +283,12 @@ Definition
         u32 flags:8;
         u32 dcw_offset:16;
         u32 count;
-        union tsa;
+        u32 :32;
+        union {
+            struct tsa_iostat iostat;
+            struct tsa_ddpc ddpc;
+            struct tsa_intrg intrg;
+        } __attribute__ ((packed)) tsa;
     }
 
 .. _`tsb.members`:
@@ -296,8 +310,17 @@ dcw_offset
 count
     Count
 
-tsa
-    Transport-Status-Area
+iostat
+    *undescribed*
+
+ddpc
+    *undescribed*
+
+intrg
+    *undescribed*
+
+sa
+    *undescribed*
 
 .. _`dcw_intrg_data`:
 
@@ -324,9 +347,11 @@ Definition
         u32 pim:8;
         u32 timeout:16;
         u32 flags:8;
+        u32 :24;
+        u32 :32;
         u64 time;
         u64 prog_id;
-        u8 prog_data;
+        u8 prog_data[0];
     }
 
 .. _`dcw_intrg_data.members`:
@@ -389,9 +414,10 @@ Definition
     struct dcw {
         u32 cmd:8;
         u32 flags:8;
+        u32 :8;
         u32 cd_count:8;
         u32 count;
-        u8 cd;
+        u8 cd[0];
     }
 
 .. _`dcw.members`:
@@ -433,9 +459,13 @@ Definition
 
     struct tccb_tcah {
         u32 format:8;
+        u32 :24;
+        u32 :24;
         u32 tcal:8;
         u32 sac:16;
+        u32 :8;
         u32 prio:8;
+        u32 :32;
     }
 
 .. _`tccb_tcah.members`:
@@ -472,6 +502,7 @@ Definition
 .. code-block:: c
 
     struct tccb_tcat {
+        u32 :32;
         u32 count;
     }
 
@@ -501,7 +532,7 @@ Definition
 
     struct tccb {
         struct tccb_tcah tcah;
-        u8 tca;
+        u8 tca[0];
     }
 
 .. _`tccb.members`:

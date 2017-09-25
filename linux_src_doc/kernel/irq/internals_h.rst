@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct irq_timings {
-        u64 values;
+        u64 values[IRQ_TIMINGS_SIZE];
         int count;
     }
 

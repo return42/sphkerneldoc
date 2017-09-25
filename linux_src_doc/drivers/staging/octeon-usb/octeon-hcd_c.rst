@@ -197,13 +197,13 @@ Definition
 .. code-block:: c
 
     struct cvmx_usb_port_status {
-        u32 reserved:25;
-        u32 port_enabled:1;
-        u32 port_over_current:1;
-        u32 port_powered:1;
-        enum cvmx_usb_speed port_speed:2;
-        u32 connected:1;
-        u32 connect_change:1;
+        u32 reserved : 25;
+        u32 port_enabled : 1;
+        u32 port_over_current : 1;
+        u32 port_powered : 1;
+        enum cvmx_usb_speed port_speed : 2;
+        u32 connected : 1;
+        u32 connect_change : 1;
     }
 
 .. _`cvmx_usb_port_status.members`:
@@ -565,11 +565,11 @@ Definition
         int index;
         int idle_hardware_channels;
         union cvmx_usbcx_hprt usbcx_hprt;
-        struct cvmx_usb_pipe  *pipe_for_channel;
+        struct cvmx_usb_pipe *pipe_for_channel[MAX_CHANNELS];
         int indent;
         struct cvmx_usb_port_status port_status;
         struct list_head idle_pipes;
-        struct list_head active_pipes;
+        struct list_head active_pipes[4];
         u64 frame_number;
         struct cvmx_usb_transaction *active_split;
         struct cvmx_usb_tx_fifo periodic;
@@ -733,7 +733,7 @@ Definition
 
     struct octeon_temp_buffer {
         void *orig_buffer;
-        u8 data;
+        u8 data[0];
     }
 
 .. _`octeon_temp_buffer.members`:

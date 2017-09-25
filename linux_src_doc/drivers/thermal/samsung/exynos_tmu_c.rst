@@ -26,11 +26,8 @@ Definition
         enum soc_type soc;
         struct work_struct irq_work;
         struct mutex lock;
-        struct clk *clk;
-        struct clk * *clk_sec;
-        struct clk * * *sclk;
-        u16 temp_error1;
-        u16 temp_error2;
+        struct clk *clk, *clk_sec, *sclk;
+        u16 temp_error1, temp_error2;
         struct regulator *regulator;
         struct thermal_zone_device *tzd;
         unsigned int ntrip;

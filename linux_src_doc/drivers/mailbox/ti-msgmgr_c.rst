@@ -130,7 +130,7 @@ Definition
 .. code-block:: c
 
     struct ti_queue_inst {
-        char name;
+        char name[30];
         u8 queue_id;
         u8 proxy_id;
         int irq;

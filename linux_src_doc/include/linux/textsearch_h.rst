@@ -19,7 +19,7 @@ Definition
 
     struct ts_state {
         unsigned int offset;
-        char cb;
+        char cb[40];
     }
 
 .. _`ts_state.members`:

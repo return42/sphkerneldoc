@@ -20,7 +20,7 @@ Definition
     struct irq_fwspec {
         struct fwnode_handle *fwnode;
         int param_count;
-        u32 param;
+        u32 param[IRQ_DOMAIN_IRQ_SPEC_PARAMS];
     }
 
 .. _`irq_fwspec.members`:
@@ -160,7 +160,7 @@ Definition
         unsigned int revmap_direct_max_irq;
         unsigned int revmap_size;
         struct radix_tree_root revmap_tree;
-        unsigned int linear_revmap;
+        unsigned int linear_revmap[];
     }
 
 .. _`irq_domain.members`:

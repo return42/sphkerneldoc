@@ -91,7 +91,7 @@ Definition
         __u8 len;
         __u16 index;
         __u32 keycode;
-        __u8 scancode;
+        __u8 scancode[32];
     }
 
 .. _`input_keymap_entry.members`:
@@ -601,7 +601,13 @@ Definition
         __u16 direction;
         struct ff_trigger trigger;
         struct ff_replay replay;
-        union u;
+        union {
+            struct ff_constant_effect constant;
+            struct ff_ramp_effect ramp;
+            struct ff_periodic_effect periodic;
+            struct ff_condition_effect condition[2];
+            struct ff_rumble_effect rumble;
+        } u;
     }
 
 .. _`ff_effect.members`:
@@ -625,10 +631,23 @@ trigger
 replay
     scheduling of the effect (struct ff_replay)
 
-u
-    effect-specific structure (one of ff_constant_effect, ff_ramp_effect,
-    ff_periodic_effect, ff_condition_effect, ff_rumble_effect) further
-    defining effect parameters
+constant
+    *undescribed*
+
+ramp
+    *undescribed*
+
+periodic
+    *undescribed*
+
+condition
+    *undescribed*
+
+rumble
+    *undescribed*
+
+void
+    no arguments
 
 .. _`ff_effect.description`:
 

@@ -152,7 +152,7 @@ Definition
     struct hbm_host_enum_request {
         u8 hbm_cmd;
         u8 flags;
-        u8 reserved;
+        u8 reserved[2];
     }
 
 .. _`hbm_host_enum_request.members`:
@@ -188,7 +188,7 @@ Definition
     struct hbm_add_client_request {
         u8 hbm_cmd;
         u8 me_addr;
-        u8 reserved;
+        u8 reserved[2];
         struct mei_client_properties client_properties;
     }
 
@@ -229,7 +229,7 @@ Definition
         u8 hbm_cmd;
         u8 me_addr;
         u8 status;
-        u8 reserved;
+        u8 reserved[1];
     }
 
 .. _`hbm_add_client_response.members`:
@@ -267,7 +267,7 @@ Definition
 
     struct hbm_power_gate {
         u8 hbm_cmd;
-        u8 reserved;
+        u8 reserved[3];
     }
 
 .. _`hbm_power_gate.members`:
@@ -423,7 +423,7 @@ Definition
         u8 host_addr;
         u8 status;
         u8 start;
-        u8 reserved;
+        u8 reserved[3];
     }
 
 .. _`hbm_notification_response.members`:
@@ -475,7 +475,7 @@ Definition
         u8 hbm_cmd;
         u8 me_addr;
         u8 host_addr;
-        u8 reserved;
+        u8 reserved[1];
     }
 
 .. _`hbm_notification.members`:

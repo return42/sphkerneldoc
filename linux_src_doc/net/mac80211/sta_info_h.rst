@@ -282,9 +282,7 @@ Definition
         u16 ssn;
         u16 buf_size;
         u16 timeout;
-        u8 auto_seq:1;
-        u8 removed:1:1;
-        u8 started:1:1:1;
+        u8 auto_seq:1,removed:1, started:1;
     }
 
 .. _`tid_ampdu_rx.members`:
@@ -374,18 +372,18 @@ Definition
 
     struct sta_ampdu_mlme {
         struct mutex mtx;
-        struct tid_ampdu_rx __rcu  *tid_rx;
-        u8 tid_rx_token;
-        unsigned long tid_rx_timer_expired;
-        unsigned long tid_rx_stop_requested;
-        unsigned long tid_rx_manage_offl;
-        unsigned long agg_session_valid;
-        unsigned long unexpected_agg;
+        struct tid_ampdu_rx __rcu *tid_rx[IEEE80211_NUM_TIDS];
+        u8 tid_rx_token[IEEE80211_NUM_TIDS];
+        unsigned long tid_rx_timer_expired[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
+        unsigned long tid_rx_stop_requested[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
+        unsigned long tid_rx_manage_offl[BITS_TO_LONGS(2 * IEEE80211_NUM_TIDS)];
+        unsigned long agg_session_valid[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
+        unsigned long unexpected_agg[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
         struct work_struct work;
-        struct tid_ampdu_tx __rcu  *tid_tx;
-        struct tid_ampdu_tx  *tid_start_tx;
-        unsigned long last_addba_req_time;
-        u8 addba_req_num;
+        struct tid_ampdu_tx __rcu *tid_tx[IEEE80211_NUM_TIDS];
+        struct tid_ampdu_tx *tid_start_tx[IEEE80211_NUM_TIDS];
+        unsigned long last_addba_req_time[IEEE80211_NUM_TIDS];
+        u8 addba_req_num[IEEE80211_NUM_TIDS];
         u8 dialog_token_allocator;
     }
 
@@ -461,11 +459,9 @@ Definition
     struct ieee80211_fast_tx {
         struct ieee80211_key *key;
         u8 hdr_len;
-        u8 sa_offs;
-        u8 da_offs;
-        u8 pn_offs;
+        u8 sa_offs, da_offs, pn_offs;
         u8 band;
-        u8 hdr;
+        u8 hdr[30 + 2 + IEEE80211_FAST_XMIT_MAX_IV + sizeof(rfc1042_header)] __aligned(2);
         struct rcu_head rcu_head;
     }
 
@@ -526,17 +522,13 @@ Definition
     struct ieee80211_fast_rx {
         struct net_device *dev;
         enum nl80211_iftype vif_type;
-        u8 vif_addr;
-        u8 rfc1042_hdr;
+        u8 vif_addr[ETH_ALEN] __aligned(2);
+        u8 rfc1042_hdr[6] __aligned(2);
         __be16 control_port_protocol;
         __le16 expected_ds_bits;
         u8 icv_len;
-        u8 key:1;
-        u8 sta_notify:1:1;
-        u8 internal_forward:1:1:1;
-        u8 uses_rss:1:1:1:1;
-        u8 da_offs;
-        u8 sa_offs;
+        u8 key:1,sta_notify:1,internal_forward:1, uses_rss:1;
+        u8 da_offs, sa_offs;
         struct rcu_head rcu_head;
     }
 
@@ -703,15 +695,14 @@ Definition
 .. code-block:: c
 
     struct sta_info {
-        struct list_head list;
-        struct list_head free_list;
+        struct list_head list, free_list;
         struct rcu_head rcu_head;
         struct rhlist_head hash_node;
-        u8 addr;
+        u8 addr[ETH_ALEN];
         struct ieee80211_local *local;
         struct ieee80211_sub_if_data *sdata;
-        struct ieee80211_key __rcu  *gtk;
-        struct ieee80211_key __rcu  *ptk;
+        struct ieee80211_key __rcu *gtk[NUM_DEFAULT_KEYS + NUM_DEFAULT_MGMT_KEYS];
+        struct ieee80211_key __rcu *ptk[NUM_DEFAULT_KEYS];
         u8 ptk_idx;
         struct rate_control_ref *rate_ctrl;
         void *rate_ctrl_priv;
@@ -731,19 +722,35 @@ Definition
         enum ieee80211_sta_state sta_state;
         unsigned long _flags;
         spinlock_t ps_lock;
-        struct sk_buff_head ps_tx_buf;
-        struct sk_buff_head tx_filtered;
+        struct sk_buff_head ps_tx_buf[IEEE80211_NUM_ACS];
+        struct sk_buff_head tx_filtered[IEEE80211_NUM_ACS];
         unsigned long driver_buffered_tids;
         unsigned long txq_buffered_tids;
         long last_connected;
         struct ieee80211_sta_rx_stats rx_stats;
-        struct rx_stats_avg;
-        __le16 last_seq_ctrl;
-        struct status_stats;
-        struct tx_stats;
-        u16 tid_seq;
+        struct {
+            struct ewma_signal signal;
+            struct ewma_signal chain_signal[IEEE80211_MAX_CHAINS];
+        } rx_stats_avg;
+        __le16 last_seq_ctrl[IEEE80211_NUM_TIDS + 1];
+        struct {
+            unsigned long filtered;
+            unsigned long retry_failed, retry_count;
+            unsigned int lost_packets;
+            unsigned long last_tdls_pkt_time;
+            u64 msdu_retries[IEEE80211_NUM_TIDS + 1];
+            u64 msdu_failed[IEEE80211_NUM_TIDS + 1];
+            unsigned long last_ack;
+        } status_stats;
+        struct {
+            u64 packets[IEEE80211_NUM_ACS];
+            u64 bytes[IEEE80211_NUM_ACS];
+            struct ieee80211_tx_rate last_rate;
+            u64 msdu[IEEE80211_NUM_TIDS + 1];
+        } tx_stats;
+        u16 tid_seq[IEEE80211_QOS_CTL_TID_MASK + 1];
         struct sta_ampdu_mlme ampdu_mlme;
-        u8 timer_to_tid;
+        u8 timer_to_tid[IEEE80211_NUM_TIDS];
     #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *debugfs_dir;
     #endif
@@ -865,18 +872,60 @@ last_connected
 rx_stats
     RX statistics
 
-rx_stats_avg
+signal
+    *undescribed*
+
+chain_signal
+    *undescribed*
+
+x_stats_avg
     *undescribed*
 
 last_seq_ctrl
     last received seq/frag number from this STA (per TID
     plus one for non-QoS frames)
 
-status_stats
-    TX status statistics
+filtered
+    *undescribed*
 
-tx_stats
-    TX statistics
+retry_failed
+    *undescribed*
+
+retry_count
+    *undescribed*
+
+lost_packets
+    *undescribed*
+
+last_tdls_pkt_time
+    *undescribed*
+
+msdu_retries
+    *undescribed*
+
+msdu_failed
+    *undescribed*
+
+last_ack
+    *undescribed*
+
+tatus_stats
+    *undescribed*
+
+packets
+    *undescribed*
+
+bytes
+    *undescribed*
+
+last_rate
+    *undescribed*
+
+msdu
+    *undescribed*
+
+x_stats
+    *undescribed*
 
 tid_seq
     per-TID sequence numbers for sending to this STA

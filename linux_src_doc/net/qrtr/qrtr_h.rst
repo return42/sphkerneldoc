@@ -19,6 +19,7 @@ Definition
 
     struct qrtr_endpoint {
         int (*xmit)(struct qrtr_endpoint *ep, struct sk_buff *skb);
+        struct qrtr_node *node;
     }
 
 .. _`qrtr_endpoint.members`:
@@ -28,6 +29,9 @@ Members
 
 xmit
     Callback for outgoing packets
+
+node
+    *undescribed*
 
 .. _`qrtr_endpoint.description`:
 

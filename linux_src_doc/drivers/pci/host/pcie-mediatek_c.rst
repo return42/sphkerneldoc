@@ -81,7 +81,10 @@ Definition
         struct resource pio;
         struct resource mem;
         struct resource busn;
-        struct offset;
+        struct {
+            resource_size_t mem;
+            resource_size_t io;
+        } offset;
         struct list_head ports;
     }
 
@@ -111,8 +114,14 @@ mem
 busn
     bus range
 
-offset
-    IO / Memory offset
+mem
+    non-prefetchable memory resource
+
+io
+    IO resource
+
+ffset
+    *undescribed*
 
 ports
     pointer to PCIe port information

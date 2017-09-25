@@ -21,7 +21,12 @@ Definition
         __u8 num_ports;
         __u8 endpoint_numbers_different;
         __le16 reserved1;
-        struct connections;
+        struct {
+            __u32 port_function_id;
+            __u8 port;
+            __u8 end_point_info;
+            __le16 reserved;
+        } connections[2];
     }
 
 .. _`palm_ext_connection_info.members`:
@@ -42,7 +47,22 @@ endpoint_numbers_different
 reserved1
     *undescribed*
 
-connections
+port_function_id
+    contains the creator id of the application that opened
+    this connection.
+
+port
+    contains the in/out endpoint number.  Is 0 if in and out endpoint
+    numbers are different.
+
+end_point_info
+    high nubbe is in endpoint and low nibble will indicate out
+    endpoint.  Is 0 if in and out endpoints are the same.
+
+reserved
+    *undescribed*
+
+onnections
     *undescribed*
 
 .. _`palm_ext_connection_info.description`:

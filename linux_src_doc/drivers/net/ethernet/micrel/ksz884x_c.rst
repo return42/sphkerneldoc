@@ -268,7 +268,7 @@ Definition
 .. code-block:: c
 
     struct ksz_mac_table {
-        u8 mac_addr;
+        u8 mac_addr[ETH_ALEN];
         u16 vid;
         u8 fid;
         u8 ports;
@@ -360,8 +360,8 @@ Definition
         u8 link_down;
         u8 state;
         u8 mib_start;
-        u64 counter;
-        u32 dropped;
+        u64 counter[TOTAL_PORT_COUNTER_NUM];
+        u32 dropped[2];
     }
 
 .. _`ksz_port_mib.members`:
@@ -422,8 +422,8 @@ Definition
         u16 vid;
         u8 member;
         u8 port_prio;
-        u32 rx_rate;
-        u32 tx_rate;
+        u32 rx_rate[PRIO_QUEUES];
+        u32 tx_rate[PRIO_QUEUES];
         int stp_state;
     }
 
@@ -467,13 +467,13 @@ Definition
 .. code-block:: c
 
     struct ksz_switch {
-        struct ksz_mac_table mac_table;
-        struct ksz_vlan_table vlan_table;
-        struct ksz_port_cfg port_cfg;
-        u8 diffserv;
-        u8 p_802_1p;
-        u8 br_addr;
-        u8 other_addr;
+        struct ksz_mac_table mac_table[STATIC_MAC_TABLE_ENTRIES];
+        struct ksz_vlan_table vlan_table[VLAN_TABLE_ENTRIES];
+        struct ksz_port_cfg port_cfg[TOTAL_PORT_NUM];
+        u8 diffserv[DIFFSERV_ENTRIES];
+        u8 p_802_1p[PRIO_802_1P_ENTRIES];
+        u8 br_addr[ETH_ALEN];
+        u8 other_addr[ETH_ALEN];
         u8 broad_per;
         u8 member;
     }
@@ -583,8 +583,8 @@ Definition
     struct ksz_hw {
         void __iomem *io;
         struct ksz_switch *ksz_switch;
-        struct ksz_port_info port_info;
-        struct ksz_port_mib port_mib;
+        struct ksz_port_info port_info[SWITCH_PORT_NUM];
+        struct ksz_port_mib port_mib[TOTAL_PORT_NUM];
         int dev_count;
         int dst_ports;
         int id;
@@ -600,19 +600,19 @@ Definition
         int tx_int_cnt;
         int tx_int_mask;
         int tx_size;
-        u8 perm_addr;
-        u8 override_addr;
-        u8 address;
+        u8 perm_addr[ETH_ALEN];
+        u8 override_addr[ETH_ALEN];
+        u8 address[ADDITIONAL_ENTRIES][ETH_ALEN];
         u8 addr_list_size;
         u8 mac_override;
         u8 promiscuous;
         u8 all_multi;
-        u8 multi_list;
-        u8 multi_bits;
+        u8 multi_list[MAX_MULTICAST_LIST][ETH_ALEN];
+        u8 multi_bits[HW_MULTICAST_SIZE];
         u8 multi_list_size;
         u8 enabled;
         u8 rx_stop;
-        u8 reserved2;
+        u8 reserved2[1];
         uint features;
         uint overrides;
         void *parent;
@@ -753,7 +753,7 @@ Definition
         int first_port;
         int mib_port_cnt;
         int port_cnt;
-        u64 counter;
+        u64 counter[OID_COUNTER_LAST];
         struct ksz_hw *hw;
         struct ksz_port_info *linked;
     }
@@ -949,7 +949,7 @@ Definition
         int skb_len;
         struct work_struct mib_read;
         struct ksz_timer_info mib_timer_info;
-        struct ksz_counter_info counter;
+        struct ksz_counter_info counter[TOTAL_PORT_NUM];
         int mtu;
         int opened;
         struct tasklet_struct rx_tasklet;

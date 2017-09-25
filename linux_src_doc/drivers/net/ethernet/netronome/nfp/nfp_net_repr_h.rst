@@ -19,7 +19,7 @@ Definition
 
     struct nfp_reprs {
         unsigned int num_reprs;
-        struct net_device  *reprs;
+        struct net_device *reprs[0];
     }
 
 .. _`nfp_reprs.members`:

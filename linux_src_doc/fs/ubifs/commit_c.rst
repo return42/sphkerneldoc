@@ -190,7 +190,7 @@ Definition
         struct list_head list;
         int iip;
         union ubifs_key upper_key;
-        struct ubifs_idx_node idx;
+        struct ubifs_idx_node idx __aligned(8);
     }
 
 .. _`idx_node.members`:

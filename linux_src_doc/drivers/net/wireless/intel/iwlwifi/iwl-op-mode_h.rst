@@ -160,7 +160,7 @@ Definition
 
     struct iwl_op_mode {
         const struct iwl_op_mode_ops *ops;
-        char op_mode_specific;
+        char op_mode_specific[0] __aligned(sizeof(void *));
     }
 
 .. _`iwl_op_mode.members`:

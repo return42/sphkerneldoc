@@ -125,9 +125,9 @@ Definition
         u8 num_tx_q;
         u8 num_rx_q;
         u16 vesw_id;
-        struct hfi1_vnic_rx_queue rxq;
-        struct opa_vnic_stats stats;
-        struct hfi1_vnic_sdma sdma;
+        struct hfi1_vnic_rx_queue rxq[HFI1_NUM_VNIC_CTXT];
+        struct opa_vnic_stats stats[HFI1_VNIC_MAX_QUEUE];
+        struct hfi1_vnic_sdma sdma[HFI1_VNIC_MAX_TXQ];
     }
 
 .. _`hfi1_vnic_vport_info.members`:

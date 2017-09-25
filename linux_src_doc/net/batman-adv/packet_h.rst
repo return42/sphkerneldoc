@@ -320,8 +320,8 @@ Definition
         u8 ttl;
         u8 flags;
         __be32 seqno;
-        u8 orig;
-        u8 prev_sender;
+        u8 orig[ETH_ALEN];
+        u8 prev_sender[ETH_ALEN];
         u8 reserved;
         u8 tq;
         __be16 tvlv_len;
@@ -384,7 +384,7 @@ Definition
         u8 ttl;
         u8 flags;
         __be32 seqno;
-        u8 orig;
+        u8 orig[ETH_ALEN];
         __be16 tvlv_len;
         __be32 throughput;
     }
@@ -437,7 +437,7 @@ Definition
     struct batadv_elp_packet {
         u8 packet_type;
         u8 version;
-        u8 orig;
+        u8 orig[ETH_ALEN];
         __be32 seqno;
         __be32 elp_interval;
     }
@@ -483,10 +483,10 @@ Definition
         u8 version;
         u8 ttl;
         u8 msg_type;
-        u8 dst;
-        u8 orig;
+        u8 dst[ETH_ALEN];
+        u8 orig[ETH_ALEN];
         u8 uid;
-        u8 align;
+        u8 align[3];
     }
 
 .. _`batadv_icmp_header.members`:
@@ -548,8 +548,8 @@ Definition
         u8 version;
         u8 ttl;
         u8 msg_type;
-        u8 dst;
-        u8 orig;
+        u8 dst[ETH_ALEN];
+        u8 orig[ETH_ALEN];
         u8 uid;
         u8 reserved;
         __be16 seqno;
@@ -608,11 +608,11 @@ Definition
         u8 version;
         u8 ttl;
         u8 msg_type;
-        u8 dst;
-        u8 orig;
+        u8 dst[ETH_ALEN];
+        u8 orig[ETH_ALEN];
         u8 uid;
         u8 subtype;
-        u8 session;
+        u8 session[2];
         __be32 seqno;
         __be32 timestamp;
     }
@@ -711,12 +711,12 @@ Definition
         u8 version;
         u8 ttl;
         u8 msg_type;
-        u8 dst;
-        u8 orig;
+        u8 dst[ETH_ALEN];
+        u8 orig[ETH_ALEN];
         u8 uid;
         u8 rr_cur;
         __be16 seqno;
-        u8 rr;
+        u8 rr[BATADV_RR_LEN][ETH_ALEN];
     }
 
 .. _`batadv_icmp_packet_rr.members`:
@@ -775,7 +775,7 @@ Definition
         u8 version;
         u8 ttl;
         u8 ttvn;
-        u8 dest;
+        u8 dest[ETH_ALEN];
     }
 
 .. _`batadv_unicast_packet.members`:
@@ -816,7 +816,7 @@ Definition
 
     struct batadv_unicast_4addr_packet {
         struct batadv_unicast_packet u;
-        u8 src;
+        u8 src[ETH_ALEN];
         u8 subtype;
         u8 reserved;
     }
@@ -869,8 +869,8 @@ Definition
     #else
     #error "unknown bitfield endianness"
     #endif
-        u8 dest;
-        u8 orig;
+        u8 dest[ETH_ALEN];
+        u8 orig[ETH_ALEN];
         __be16 seqno;
         __be16 total_size;
     }
@@ -941,7 +941,7 @@ Definition
         u8 ttl;
         u8 reserved;
         __be32 seqno;
-        u8 orig;
+        u8 orig[ETH_ALEN];
     }
 
 .. _`batadv_bcast_packet.members`:
@@ -988,14 +988,14 @@ Definition
         u8 version;
         u8 ttl;
         u8 first_ttvn;
-        u8 first_source;
-        u8 first_orig_dest;
+        u8 first_source[ETH_ALEN];
+        u8 first_orig_dest[ETH_ALEN];
         __be32 first_crc;
         u8 second_ttl;
         u8 second_ttvn;
-        u8 second_dest;
-        u8 second_source;
-        u8 second_orig_dest;
+        u8 second_dest[ETH_ALEN];
+        u8 second_source[ETH_ALEN];
+        u8 second_orig_dest[ETH_ALEN];
         __be32 second_crc;
         __be16 coded_len;
     }
@@ -1068,8 +1068,8 @@ Definition
         u8 version;
         u8 ttl;
         u8 reserved;
-        u8 dst;
-        u8 src;
+        u8 dst[ETH_ALEN];
+        u8 src[ETH_ALEN];
         __be16 tvlv_len;
         u16 align;
     }
@@ -1262,8 +1262,8 @@ Definition
 
     struct batadv_tvlv_tt_change {
         u8 flags;
-        u8 reserved;
-        u8 addr;
+        u8 reserved[3];
+        u8 addr[ETH_ALEN];
         __be16 vid;
     }
 
@@ -1302,7 +1302,7 @@ Definition
 .. code-block:: c
 
     struct batadv_tvlv_roam_adv {
-        u8 client;
+        u8 client[ETH_ALEN];
         __be16 vid;
     }
 
@@ -1335,7 +1335,7 @@ Definition
 
     struct batadv_tvlv_mcast_data {
         u8 flags;
-        u8 reserved;
+        u8 reserved[3];
     }
 
 .. _`batadv_tvlv_mcast_data.members`:

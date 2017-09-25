@@ -24,7 +24,7 @@ Definition
         u8 revision;
         char model;
         u8 minor;
-        char name;
+        char name[CHAMELEON_FILENAME_LEN + 1];
         int (*get_irq)(struct mcb_device *dev);
     }
 

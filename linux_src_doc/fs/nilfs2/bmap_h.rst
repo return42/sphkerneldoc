@@ -158,7 +158,10 @@ Definition
 .. code-block:: c
 
     struct nilfs_bmap {
-        union b_u;
+        union {
+            __u8 u_flags;
+            __le64 u_data[NILFS_BMAP_SIZE / sizeof(__le64)];
+        } b_u;
         struct rw_semaphore b_sem;
         struct inode *b_inode;
         const struct nilfs_bmap_operations *b_ops;
@@ -174,8 +177,14 @@ Definition
 Members
 -------
 
-b_u
-    raw data
+u_flags
+    *undescribed*
+
+u_data
+    *undescribed*
+
+_u
+    *undescribed*
 
 b_sem
     semaphore
@@ -218,7 +227,7 @@ Definition
 .. code-block:: c
 
     struct nilfs_bmap_store {
-        __le64 data;
+        __le64 data[NILFS_BMAP_SIZE / sizeof(__le64)];
         __u64 last_allocated_key;
         __u64 last_allocated_ptr;
         int state;

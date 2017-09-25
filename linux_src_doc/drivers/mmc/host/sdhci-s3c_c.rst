@@ -26,8 +26,8 @@ Definition
         int ext_cd_irq;
         int ext_cd_gpio;
         struct clk *clk_io;
-        struct clk  *clk_bus;
-        unsigned long clk_rates;
+        struct clk *clk_bus[MAX_BUS_CLK];
+        unsigned long clk_rates[MAX_BUS_CLK];
         bool no_divider;
     }
 

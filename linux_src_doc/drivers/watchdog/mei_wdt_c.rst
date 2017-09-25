@@ -76,7 +76,7 @@ Definition
         u16 timeout;
     #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-    #endif
+    #endif 
     }
 
 .. _`mei_wdt.members`:
@@ -129,7 +129,7 @@ Definition
     struct mei_wdt_start_request {
         struct mei_mc_hdr hdr;
         u16 timeout;
-        u8 reserved;
+        u8 reserved[17];
     }
 
 .. _`mei_wdt_start_request.members`:

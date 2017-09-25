@@ -48,8 +48,8 @@ Definition
 .. code-block:: c
 
     union ks_tx_hdr {
-        u8 txb;
-        __le16 txw;
+        u8 txb[4];
+        __le16 txw[2];
     }
 
 .. _`ks_tx_hdr.members`:

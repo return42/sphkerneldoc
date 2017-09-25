@@ -65,7 +65,7 @@ Definition
         struct i2c_client *client;
         struct regmap *regmap;
         int chip_id;
-        struct mfd_cell cells;
+        struct mfd_cell cells[SI476X_MFD_CELLS];
         struct mutex cmd_lock;
         atomic_t users;
         wait_queue_head_t rds_read_queue;
@@ -79,15 +79,14 @@ Definition
         atomic_t stc;
         struct si476x_power_up_args power_up_parameters;
         enum si476x_power_state power_state;
-        struct regulator_bulk_data supplies;
+        struct regulator_bulk_data supplies[4];
         int gpio_reset;
         struct si476x_pinmux pinmux;
         enum si476x_phase_diversity_mode diversity_mode;
         atomic_t is_alive;
         struct delayed_work status_monitor;
     #define SI476X_WORK_TO_CORE(w) container_of(to_delayed_work(w), \
-        struct si476x_core;
-        struct \status_monitor int revision;
+        struct si476x_core, \status_monitor) int revision;
         int rds_fifo_depth;
     }
 
@@ -225,7 +224,9 @@ Definition
 .. code-block:: c
 
     struct si476x_func_info {
-        struct firmware;
+        struct {
+            u8 major, minor[2];
+        } firmware;
         u16 patch_id;
         enum si476x_func func;
     }
@@ -235,14 +236,14 @@ Definition
 Members
 -------
 
-firmware
+major
     *undescribed*
 
-firmware.major
-    Firmware major number.
+minor
+    *undescribed*
 
-firmware.minor
-    Firmware minor numbers.
+irmware
+    *undescribed*
 
 patch_id
     *undescribed*
@@ -374,20 +375,14 @@ Definition
 .. code-block:: c
 
     struct si476x_rds_status_report {
-        bool rdstpptyint;
-        bool rdspiint;
-        bool rdssyncint;
-        bool rdsfifoint;
-        bool tpptyvalid;
-        bool pivalid;
-        bool rdssync;
-        bool rdsfifolost;
+        bool rdstpptyint, rdspiint, rdssyncint, rdsfifoint;
+        bool tpptyvalid, pivalid, rdssync, rdsfifolost;
         bool tp;
         u8 pty;
         u16 pi;
         u8 rdsfifoused;
-        u8 ble;
-        struct v4l2_rds_data rds;
+        u8 ble[4];
+        struct v4l2_rds_data rds[4];
     }
 
 .. _`si476x_rds_status_report.members`:

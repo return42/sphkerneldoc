@@ -19,7 +19,7 @@ Definition
 
     struct sst_codecs {
         int num_codecs;
-        u8 codecs;
+        u8 codecs[SST_ACPI_MAX_CODECS][ACPI_ID_LEN];
     }
 
 .. _`sst_codecs.members`:

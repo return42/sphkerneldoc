@@ -82,7 +82,7 @@ Definition
         struct dma_chan *dma;
         unsigned int align;
         struct dma_interleaved_template xt;
-        struct data_chunk sgl;
+        struct data_chunk sgl[1];
     }
 
 .. _`xvip_dma.members`:

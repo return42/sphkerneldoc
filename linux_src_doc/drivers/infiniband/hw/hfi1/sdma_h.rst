@@ -113,6 +113,55 @@ Definition
     struct sdma_engine {
         struct hfi1_devdata *dd;
         struct hfi1_pportdata *ppd;
+        void __iomem *tail_csr;
+        u64 imask;
+        u64 idle_mask;
+        u64 progress_mask;
+        u64 int_mask;
+        volatile __le64 *head_dma;
+        dma_addr_t head_phys;
+        struct hw_sdma_desc *descq;
+        unsigned descq_full_count;
+        struct sdma_txreq **tx_ring;
+        dma_addr_t descq_phys;
+        u32 sdma_mask;
+        struct sdma_state state;
+        int cpu;
+        u8 sdma_shift;
+        u8 this_idx;
+        spinlock_t senddmactrl_lock;
+        u64 p_senddmactrl;
+        spinlock_t tail_lock ____cacheline_aligned_in_smp;
+    #ifdef CONFIG_HFI1_DEBUG_SDMA_ORDER
+        u64 tail_sn;
+    #endif
+        u32 descq_tail;
+        unsigned long ahg_bits;
+        u16 desc_avail;
+        u16 tx_tail;
+        u16 descq_cnt;
+        seqlock_t head_lock ____cacheline_aligned_in_smp;
+    #ifdef CONFIG_HFI1_DEBUG_SDMA_ORDER
+        u64 head_sn;
+    #endif
+        u32 descq_head;
+        u16 tx_head;
+        u64 last_status;
+        u64 err_cnt;
+        u64 sdma_int_cnt;
+        u64 idle_int_cnt;
+        u64 progress_int_cnt;
+        struct list_head dmawait;
+        struct tasklet_struct sdma_hw_clean_up_task ____cacheline_aligned_in_smp;
+        struct tasklet_struct sdma_sw_clean_up_task ____cacheline_aligned_in_smp;
+        struct work_struct err_halt_worker;
+        struct timer_list err_progress_check_timer;
+        u32 progress_check_head;
+        struct work_struct flush_worker;
+        spinlock_t flushlist_lock;
+        struct list_head flushlist;
+        struct cpumask cpu_mask;
+        struct kobject kobj;
     }
 
 .. _`sdma_engine.members`:
@@ -125,6 +174,141 @@ dd
 
 ppd
     per port back-pointer
+
+tail_csr
+    *undescribed*
+
+imask
+    mask for irq manipulation
+
+idle_mask
+    mask for determining if an interrupt is due to sdma_idle
+
+progress_mask
+    *undescribed*
+
+int_mask
+    *undescribed*
+
+head_dma
+    *undescribed*
+
+head_phys
+    *undescribed*
+
+descq
+    *undescribed*
+
+descq_full_count
+    *undescribed*
+
+tx_ring
+    *undescribed*
+
+descq_phys
+    *undescribed*
+
+sdma_mask
+    *undescribed*
+
+state
+    *undescribed*
+
+cpu
+    *undescribed*
+
+sdma_shift
+    *undescribed*
+
+this_idx
+    *undescribed*
+
+senddmactrl_lock
+    *undescribed*
+
+p_senddmactrl
+    *undescribed*
+
+____cacheline_aligned_in_smp
+    *undescribed*
+
+tail_sn
+    *undescribed*
+
+descq_tail
+    *undescribed*
+
+ahg_bits
+    *undescribed*
+
+desc_avail
+    *undescribed*
+
+tx_tail
+    *undescribed*
+
+descq_cnt
+    *undescribed*
+
+____cacheline_aligned_in_smp
+    *undescribed*
+
+head_sn
+    *undescribed*
+
+descq_head
+    *undescribed*
+
+tx_head
+    *undescribed*
+
+last_status
+    *undescribed*
+
+err_cnt
+    *undescribed*
+
+sdma_int_cnt
+    *undescribed*
+
+idle_int_cnt
+    *undescribed*
+
+progress_int_cnt
+    *undescribed*
+
+dmawait
+    *undescribed*
+
+____cacheline_aligned_in_smp
+    *undescribed*
+
+____cacheline_aligned_in_smp
+    *undescribed*
+
+err_halt_worker
+    *undescribed*
+
+err_progress_check_timer
+    *undescribed*
+
+progress_check_head
+    *undescribed*
+
+flush_worker
+    *undescribed*
+
+flushlist_lock
+    *undescribed*
+
+flushlist
+    *undescribed*
+
+cpu_mask
+    *undescribed*
+
+kobj
+    *undescribed*
 
 .. _`sdma_engine.description`:
 
@@ -534,7 +718,7 @@ Definition
 
     struct sdma_map_elem {
         u32 mask;
-        struct sdma_engine  *sde;
+        struct sdma_engine *sde[0];
     }
 
 .. _`sdma_map_elem.members`:
@@ -574,12 +758,12 @@ Definition
 .. code-block:: c
 
     struct sdma_vl_map {
-        s8 engine_to_vl;
+        s8 engine_to_vl[TXE_NUM_SDMA_ENGINES];
         struct rcu_head list;
         u32 mask;
         u8 actual_vls;
         u8 vls;
-        struct sdma_map_elem  *map;
+        struct sdma_map_elem *map[0];
     }
 
 .. _`sdma_vl_map.members`:

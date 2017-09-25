@@ -50,7 +50,10 @@ Definition
 .. code-block:: c
 
     struct ubi_wl_entry {
-        union u;
+        union {
+            struct rb_node rb;
+            struct list_head list;
+        } u;
         int ec;
         int pnum;
     }
@@ -60,14 +63,14 @@ Definition
 Members
 -------
 
-u
+rb
     *undescribed*
 
-u.rb
-    link in the corresponding (free/used) RB-tree
+list
+    *undescribed*
 
-u.list
-    link in the protection queue
+void
+    no arguments
 
 ec
     erase counter
@@ -157,7 +160,7 @@ Definition
 
     struct ubi_rename_entry {
         int new_name_len;
-        char new_name;
+        char new_name[UBI_VOL_NAME_MAX + 1];
         int remove;
         struct ubi_volume_desc *desc;
         struct list_head list;
@@ -210,8 +213,8 @@ Definition
 .. code-block:: c
 
     struct ubi_fastmap_layout {
-        struct ubi_wl_entry  *e;
-        int to_be_tortured;
+        struct ubi_wl_entry *e[UBI_FM_MAX_BLOCKS];
+        int to_be_tortured[UBI_FM_MAX_BLOCKS];
         int used_blocks;
         int max_pool_size;
         int max_wl_pool_size;
@@ -254,7 +257,7 @@ Definition
 .. code-block:: c
 
     struct ubi_fm_pool {
-        int pebs;
+        int pebs[UBI_FM_MAX_POOL_SIZE];
         int used;
         int size;
         int max_size;
@@ -363,7 +366,7 @@ Definition
         int alignment;
         int data_pad;
         int name_len;
-        char name;
+        char name[UBI_VOL_NAME_MAX + 1];
         int upd_ebs;
         int ch_lnum;
         long long upd_bytes;
@@ -554,7 +557,7 @@ Definition
         unsigned int power_cut_counter;
         unsigned int power_cut_min;
         unsigned int power_cut_max;
-        char dfs_dir_name;
+        char dfs_dir_name[UBI_DFS_DIR_LEN + 1];
         struct dentry *dfs_dir;
         struct dentry *dfs_chk_gen;
         struct dentry *dfs_chk_io;
@@ -655,9 +658,9 @@ Definition
         struct cdev cdev;
         struct device dev;
         int ubi_num;
-        char ubi_name;
+        char ubi_name[sizeof(UBI_NAME_STR)+5];
         int vol_count;
-        struct ubi_volume  *volumes;
+        struct ubi_volume *volumes[UBI_MAX_VOLUMES+UBI_INT_VOL_COUNT];
         spinlock_t volumes_lock;
         int ref_count;
         int image_seq;
@@ -693,7 +696,7 @@ Definition
         struct rb_root free;
         int free_count;
         struct rb_root scrub;
-        struct list_head pq;
+        struct list_head pq[UBI_PROT_QUEUE_LEN];
         int pq_head;
         spinlock_t wl_lock;
         struct mutex move_mutex;
@@ -707,7 +710,7 @@ Definition
         int works_count;
         struct task_struct *bgt_thread;
         int thread_enabled;
-        char bgt_name;
+        char bgt_name[sizeof(UBI_BGT_NAME_PATTERN)+2];
         long long flash_size;
         int peb_count;
         int peb_size;
@@ -1032,7 +1035,10 @@ Definition
         unsigned int scrub:1;
         unsigned int copy_flag:1;
         unsigned long long sqnum;
-        union u;
+        union {
+            struct rb_node rb;
+            struct list_head list;
+        } u;
     }
 
 .. _`ubi_ainf_peb.members`:
@@ -1061,14 +1067,14 @@ copy_flag
 sqnum
     sequence number
 
-u
-    unions RB-tree or \ ``list``\  links
+rb
+    *undescribed*
 
-u.rb
-    link in the per-volume RB-tree of \ :c:type:`struct ubi_ainf_peb <ubi_ainf_peb>`\  objects
+list
+    *undescribed*
 
-u.list
-    link in one of the eraseblock lists
+void
+    no arguments
 
 .. _`ubi_ainf_peb.description`:
 

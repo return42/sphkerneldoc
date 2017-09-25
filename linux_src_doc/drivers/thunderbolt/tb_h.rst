@@ -576,7 +576,7 @@ Definition
         const struct tb_cm_ops *cm_ops;
         int index;
         enum tb_security_level security_level;
-        unsigned long privdata;
+        unsigned long privdata[0];
     }
 
 .. _`tb.members`:

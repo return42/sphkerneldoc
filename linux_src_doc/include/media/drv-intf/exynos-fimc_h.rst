@@ -65,7 +65,7 @@ Definition
         u16 memplanes;
         u16 colplanes;
         u8 colorspace;
-        u8 depth;
+        u8 depth[FIMC_MAX_PLANES];
         u16 mdataplanes;
         u16 flags;
     #define FMT_FLAGS_CAM (1 << 0)

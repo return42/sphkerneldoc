@@ -69,7 +69,7 @@ Definition
         __s32 start_frame;
         __s32 number_of_packets;
         __s32 interval;
-        unsigned char setup;
+        unsigned char setup[8];
     }
 
 .. _`usbip_header_cmd_submit.members`:
@@ -213,7 +213,12 @@ Definition
 
     struct usbip_header {
         struct usbip_header_basic base;
-        union u;
+        union {
+            struct usbip_header_cmd_submit cmd_submit;
+            struct usbip_header_ret_submit ret_submit;
+            struct usbip_header_cmd_unlink cmd_unlink;
+            struct usbip_header_ret_unlink ret_unlink;
+        } u;
     }
 
 .. _`usbip_header.members`:
@@ -224,8 +229,20 @@ Members
 base
     the basic header
 
-u
-    packet type dependent header
+cmd_submit
+    *undescribed*
+
+ret_submit
+    *undescribed*
+
+cmd_unlink
+    *undescribed*
+
+ret_unlink
+    *undescribed*
+
+void
+    no arguments
 
 .. This file was automatic generated / don't edit.
 

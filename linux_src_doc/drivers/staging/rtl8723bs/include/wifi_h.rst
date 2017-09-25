@@ -20,8 +20,8 @@ Definition
     struct rtw_ieee80211_bar {
         __le16 frame_control;
         __le16 duration;
-        unsigned char ra;
-        unsigned char ta;
+        unsigned char ra[6];
+        unsigned char ta[6];
         __le16 control;
         __le16 start_seq_num;
     }
@@ -78,7 +78,7 @@ Definition
         unsigned char ht_param;
         __le16 operation_mode;
         __le16 stbc_param;
-        unsigned char basic_set;
+        unsigned char basic_set[16];
     }
 
 .. _`ieee80211_ht_addt_info.members`:

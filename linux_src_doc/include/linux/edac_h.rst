@@ -624,8 +624,8 @@ Definition
 .. code-block:: c
 
     struct edac_raw_error_desc {
-        char location;
-        char label;
+        char location[LOCATION_SIZE];
+        char label[(EDAC_MC_LABEL_LEN + 1 + sizeof(OTHER_LABEL)) * EDAC_MAX_LABELS];
         long grain;
         u16 error_count;
         int top_layer;

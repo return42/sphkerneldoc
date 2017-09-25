@@ -19,10 +19,31 @@ Definition
 
     struct mfc_cache {
         struct rhlist_head mnode;
-        union {unnamed_union};
+        union {
+            struct {
+                __be32 mfc_mcastgrp;
+                __be32 mfc_origin;
+            } ;
+            struct mfc_cache_cmp_arg cmparg;
+        } ;
         vifi_t mfc_parent;
         int mfc_flags;
-        union mfc_un;
+        union {
+            struct {
+                unsigned long expires;
+                struct sk_buff_head unresolved;
+            } unres;
+            struct {
+                unsigned long last_assert;
+                int minvif;
+                int maxvif;
+                unsigned long bytes;
+                unsigned long pkt;
+                unsigned long wrong_if;
+                unsigned long lastuse;
+                unsigned char ttls[MAXVIFS];
+            } res;
+        } mfc_un;
         struct list_head list;
         struct rcu_head rcu;
     }
@@ -35,9 +56,14 @@ Members
 mnode
     rhashtable list
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+cmparg
+    used for rhashtable comparisons
+
+}
+    *undescribed*
 
 mfc_parent
     source interface (iif)
@@ -45,7 +71,43 @@ mfc_parent
 mfc_flags
     entry flags
 
-mfc_un
+expires
+    unresolved entry expire time
+
+unresolved
+    unresolved cached skbs
+
+nres
+    *undescribed*
+
+last_assert
+    time of last assert
+
+minvif
+    minimum VIF id
+
+maxvif
+    maximum VIF id
+
+bytes
+    bytes that have passed for this entry
+
+pkt
+    packets that have passed for this entry
+
+wrong_if
+    number of wrong source interface hits
+
+lastuse
+    time of last use of the group (traffic or update)
+
+ttls
+    OIF TTL threshold array
+
+es
+    *undescribed*
+
+fc_un
     *undescribed*
 
 list

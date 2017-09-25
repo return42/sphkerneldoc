@@ -212,7 +212,7 @@ Definition
     struct drm_display_mode {
         struct list_head head;
         struct drm_mode_object base;
-        char name;
+        char name[DRM_DISPLAY_MODE_LEN];
         enum drm_mode_status status;
         unsigned int type;
         int clock;

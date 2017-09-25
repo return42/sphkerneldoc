@@ -289,7 +289,7 @@ Definition
 .. code-block:: c
 
     struct kgdb_arch {
-        unsigned char gdb_bpt_instr;
+        unsigned char gdb_bpt_instr[BREAK_INSTR_SIZE];
         unsigned long flags;
         int (*set_breakpoint)(unsigned long, char *);
         int (*remove_breakpoint)(unsigned long, char *);
@@ -361,12 +361,12 @@ Definition
 
     struct kgdb_io {
         const char *name;
-        int (*read_char)(void);
-        void (*write_char)(u8);
-        void (*flush)(void);
-        int (*init)(void);
-        void (*pre_exception)(void);
-        void (*post_exception)(void);
+        int (*read_char) (void);
+        void (*write_char) (u8);
+        void (*flush) (void);
+        int (*init) (void);
+        void (*pre_exception) (void);
+        void (*post_exception) (void);
         int is_console;
     }
 

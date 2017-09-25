@@ -108,7 +108,11 @@ Definition
 
     struct dpni_pools_cfg {
         u8 num_dpbp;
-        struct pools;
+        struct {
+            int dpbp_id;
+            u16 buffer_size;
+            int backup_pool;
+        } pools[DPNI_MAX_DPBP];
     }
 
 .. _`dpni_pools_cfg.members`:
@@ -119,9 +123,17 @@ Members
 num_dpbp
     Number of DPBPs
 
-pools
-    Array of buffer pools parameters; The number of valid entries
-    must match 'num_dpbp' value
+dpbp_id
+    *undescribed*
+
+buffer_size
+    *undescribed*
+
+backup_pool
+    *undescribed*
+
+ools
+    *undescribed*
 
 .. _`dpni_irq_index`:
 
@@ -838,9 +850,17 @@ Definition
 .. code-block:: c
 
     struct dpni_queue {
-        struct destination;
+        struct {
+            u16 id;
+            enum dpni_dest type;
+            char hold_active;
+            u8 priority;
+        } destination;
         u64 user_context;
-        struct flc;
+        struct {
+            u64 value;
+            char stash_control;
+        } flc;
     }
 
 .. _`dpni_queue.members`:
@@ -848,14 +868,32 @@ Definition
 Members
 -------
 
-destination
+id
+    *undescribed*
+
+type
+    *undescribed*
+
+hold_active
+    *undescribed*
+
+priority
+    *undescribed*
+
+estination
     *undescribed*
 
 user_context
     User data, presented to the user along with any frames from
     this queue. Not relevant for Tx queues.
 
-flc
+value
+    *undescribed*
+
+stash_control
+    *undescribed*
+
+lc
     *undescribed*
 
 .. _`dpni_queue_id`:

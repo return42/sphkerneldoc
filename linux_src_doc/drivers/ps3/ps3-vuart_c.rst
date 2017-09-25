@@ -19,8 +19,16 @@ Definition
 
     struct ps3_vuart_port_priv {
         u64 interrupt_mask;
-        struct tx_list;
-        struct rx_list;
+        struct {
+            spinlock_t lock;
+            struct list_head head;
+        } tx_list;
+        struct {
+            struct ps3_vuart_work work;
+            unsigned long bytes_held;
+            spinlock_t lock;
+            struct list_head head;
+        } rx_list;
         struct ps3_vuart_stats stats;
     }
 
@@ -32,10 +40,28 @@ Members
 interrupt_mask
     *undescribed*
 
-tx_list
+lock
     *undescribed*
 
-rx_list
+head
+    *undescribed*
+
+x_list
+    *undescribed*
+
+work
+    *undescribed*
+
+bytes_held
+    *undescribed*
+
+lock
+    *undescribed*
+
+head
+    *undescribed*
+
+x_list
     *undescribed*
 
 stats
@@ -59,7 +85,7 @@ Definition
 
     struct ports_bmp {
         u64 status;
-        u64 unused;
+        u64 unused[3];
     }
 
 .. _`ports_bmp.members`:
@@ -195,7 +221,7 @@ Definition
         const unsigned char *head;
         const unsigned char *tail;
         unsigned long dbg_number;
-        unsigned char data;
+        unsigned char data[];
     }
 
 .. _`list_buffer.members`:

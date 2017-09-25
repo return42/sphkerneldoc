@@ -72,8 +72,21 @@ Definition
 .. code-block:: c
 
     union mips_vdso_data {
-        struct {unnamed_struct};
-        u8 page;
+        struct {
+            u64 xtime_sec;
+            u64 xtime_nsec;
+            u64 wall_to_mono_sec;
+            u64 wall_to_mono_nsec;
+            u32 seq_count;
+            u32 cs_shift;
+            u8 clock_mode;
+            u32 cs_mult;
+            u64 cs_cycle_last;
+            u64 cs_mask;
+            s32 tz_minuteswest;
+            s32 tz_dsttime;
+        } ;
+        u8 page[PAGE_SIZE];
     }
 
 .. _`mips_vdso_data.members`:
@@ -83,7 +96,6 @@ Members
 
 {unnamed_struct}
     anonymous
-
 
 page
     *undescribed*

@@ -185,7 +185,10 @@ Definition
 .. code-block:: c
 
     struct devlink_dpipe_value {
-        union {unnamed_union};
+        union {
+            struct devlink_dpipe_action *action;
+            struct devlink_dpipe_match *match;
+        } ;
         unsigned int mapping_value;
         bool mapping_valid;
         unsigned int value_size;
@@ -200,7 +203,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 mapping_value
     in case the field has some mapping this value

@@ -18,7 +18,13 @@ Definition
 .. code-block:: c
 
     struct mlxsw_i2c {
-        struct cmd;
+        struct {
+            u32 mb_size_in;
+            u32 mb_off_in;
+            u32 mb_size_out;
+            u32 mb_off_out;
+            struct mutex lock;
+        } cmd;
         struct device *dev;
         struct mlxsw_core *core;
         struct mlxsw_bus_info bus_info;
@@ -29,23 +35,23 @@ Definition
 Members
 -------
 
-cmd
+mb_size_in
     *undescribed*
 
-cmd.mb_size_in
-    input mailbox size;
+mb_off_in
+    *undescribed*
 
-cmd.mb_off_in
-    input mailbox offset in register space;
+mb_size_out
+    *undescribed*
 
-cmd.mb_size_out
-    output mailbox size;
+mb_off_out
+    *undescribed*
 
-cmd.mb_off_out
-    output mailbox offset in register space;
+lock
+    *undescribed*
 
-cmd.lock
-    command execution lock;
+md
+    *undescribed*
 
 dev
     I2C device;

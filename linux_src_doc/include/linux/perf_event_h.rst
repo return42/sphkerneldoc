@@ -19,12 +19,48 @@ Definition
 
     struct hw_perf_event {
     #ifdef CONFIG_PERF_EVENTS
-        union {unnamed_union};
+        union {
+            struct {
+                u64 config;
+                u64 last_tag;
+                unsigned long config_base;
+                unsigned long event_base;
+                int event_base_rdpmc;
+                int idx;
+                int last_cpu;
+                int flags;
+                struct hw_perf_event_extra extra_reg;
+                struct hw_perf_event_extra branch_reg;
+            } ;
+            struct {
+                struct hrtimer hrtimer;
+            } ;
+            struct {
+                struct list_head tp_list;
+            } ;
+            struct {
+                u64 pwr_acc;
+                u64 ptsc;
+            } ;
+    #ifdef CONFIG_HAVE_HW_BREAKPOINT
+            struct {
+                struct arch_hw_breakpoint info;
+                struct list_head bp_list;
+            } ;
+    #endif
+            struct {
+                u8 iommu_bank;
+                u8 iommu_cntr;
+                u16 padding;
+                u64 conf;
+                u64 conf1;
+            } ;
+        } ;
         struct task_struct *target;
         void *addr_filters;
         unsigned long addr_filters_gen;
-    #define PERF_HES_STOPPED 0x01
-    #define PERF_HES_UPTODATE 0x02
+    #define PERF_HES_STOPPED 0x01 
+    #define PERF_HES_UPTODATE 0x02 
     #define PERF_HES_ARCH 0x04
         int state;
         local64_t prev_count;
@@ -43,9 +79,23 @@ Definition
 Members
 -------
 
-{unnamed_union}
+struct
+    *undescribed*
+
+{unnamed_struct}
     anonymous
 
+{unnamed_struct}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+{unnamed_struct}
+    anonymous
 
 target
     *undescribed*
@@ -122,30 +172,30 @@ Definition
         int task_ctx_nr;
         int hrtimer_interval_ms;
         unsigned int nr_addr_filters;
-        void (*pmu_enable)(struct pmu *pmu);
-        void (*pmu_disable)(struct pmu *pmu);
-        int (*event_init)(struct perf_event *event);
-        void (*event_mapped)(struct perf_event *event, struct mm_struct *mm);
-        void (*event_unmapped)(struct perf_event *event, struct mm_struct *mm);
-    #define PERF_EF_START 0x01
-    #define PERF_EF_RELOAD 0x02
-    #define PERF_EF_UPDATE 0x04
-        int (*add)(struct perf_event *event, int flags);
-        void (*del)(struct perf_event *event, int flags);
-        void (*start)(struct perf_event *event, int flags);
-        void (*stop)(struct perf_event *event, int flags);
-        void (*read)(struct perf_event *event);
-        void (*start_txn)(struct pmu *pmu, unsigned int txn_flags);
-        int (*commit_txn)(struct pmu *pmu);
-        void (*cancel_txn)(struct pmu *pmu);
-        int (*event_idx)(struct perf_event *event);
-        void (*sched_task)(struct perf_event_context *ctx, bool sched_in);
+        void (*pmu_enable) (struct pmu *pmu);
+        void (*pmu_disable) (struct pmu *pmu);
+        int (*event_init) (struct perf_event *event);
+        void (*event_mapped) (struct perf_event *event, struct mm_struct *mm);
+        void (*event_unmapped) (struct perf_event *event, struct mm_struct *mm);
+    #define PERF_EF_START 0x01 
+    #define PERF_EF_RELOAD 0x02 
+    #define PERF_EF_UPDATE 0x04 
+        int (*add) (struct perf_event *event, int flags);
+        void (*del) (struct perf_event *event, int flags);
+        void (*start) (struct perf_event *event, int flags);
+        void (*stop) (struct perf_event *event, int flags);
+        void (*read) (struct perf_event *event);
+        void (*start_txn) (struct pmu *pmu, unsigned int txn_flags);
+        int (*commit_txn) (struct pmu *pmu);
+        void (*cancel_txn) (struct pmu *pmu);
+        int (*event_idx) (struct perf_event *event);
+        void (*sched_task) (struct perf_event_context *ctx, bool sched_in);
         size_t task_ctx_size;
-        void *(*setup_aux)(int cpu, void **pages, int nr_pages, bool overwrite);
-        void (*free_aux)(void *aux);
-        int (*addr_filters_validate)(struct list_head *filters);
-        void (*addr_filters_sync)(struct perf_event *event);
-        int (*filter_match)(struct perf_event *event);
+        void *(*setup_aux) (int cpu, void **pages, int nr_pages, bool overwrite);
+        void (*free_aux) (void *aux);
+        int (*addr_filters_validate) (struct list_head *filters);
+        void (*addr_filters_sync) (struct perf_event *event);
+        int (*filter_match) (struct perf_event *event);
     }
 
 .. _`pmu.members`:
@@ -276,8 +326,7 @@ Definition
         struct inode *inode;
         unsigned long offset;
         unsigned long size;
-        unsigned int range:1;
-        unsigned int filter:1:1;
+        unsigned int range : 1, filter : 1;
     }
 
 .. _`perf_addr_filter.members`:
@@ -498,7 +547,7 @@ Definition
         int cgrp_defer_enabled;
     #endif
         struct list_head sb_list;
-    #endif
+    #endif 
     }
 
 .. _`perf_event.members`:

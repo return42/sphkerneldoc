@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct rpmsg_endpoint_info {
-        char name;
+        char name[32];
         __u32 src;
         __u32 dst;
     }

@@ -94,7 +94,7 @@ Definition
         enum ad7266_range range;
         enum ad7266_mode mode;
         bool fixed_addr;
-        unsigned int addr_gpios;
+        unsigned int addr_gpios[3];
     }
 
 .. _`ad7266_platform_data.members`:

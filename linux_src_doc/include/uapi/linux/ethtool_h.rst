@@ -34,7 +34,7 @@ Definition
         __u8 eth_tp_mdix;
         __u8 eth_tp_mdix_ctrl;
         __u32 lp_advertising;
-        __u32 reserved;
+        __u32 reserved[2];
     }
 
 .. _`ethtool_cmd.members`:
@@ -167,12 +167,12 @@ Definition
 
     struct ethtool_drvinfo {
         __u32 cmd;
-        char driver;
-        char version;
-        char fw_version;
-        char bus_info;
-        char erom_version;
-        char reserved2;
+        char driver[32];
+        char version[32];
+        char fw_version[ETHTOOL_FWVERS_LEN];
+        char bus_info[ETHTOOL_BUSINFO_LEN];
+        char erom_version[ETHTOOL_EROMVERS_LEN];
+        char reserved2[12];
         __u32 n_priv_flags;
         __u32 n_stats;
         __u32 testinfo_len;
@@ -263,7 +263,7 @@ Definition
         __u32 cmd;
         __u32 supported;
         __u32 wolopts;
-        __u8 sopass;
+        __u8 sopass[SOPASS_MAX];
     }
 
 .. _`ethtool_wolinfo.members`:
@@ -305,7 +305,7 @@ Definition
         __u32 cmd;
         __u32 version;
         __u32 len;
-        __u8 data;
+        __u8 data[0];
     }
 
 .. _`ethtool_regs.members`:
@@ -359,7 +359,7 @@ Definition
         __u32 magic;
         __u32 offset;
         __u32 len;
-        __u8 data;
+        __u8 data[0];
     }
 
 .. _`ethtool_eeprom.members`:
@@ -422,7 +422,7 @@ Definition
         __u32 eee_enabled;
         __u32 tx_lpi_enabled;
         __u32 tx_lpi_timer;
-        __u32 reserved;
+        __u32 reserved[2];
     }
 
 .. _`ethtool_eee.members`:
@@ -483,7 +483,7 @@ Definition
         __u32 cmd;
         __u32 type;
         __u32 eeprom_len;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`ethtool_modinfo.members`:
@@ -968,7 +968,7 @@ Definition
         __u32 cmd;
         __u32 string_set;
         __u32 len;
-        __u8 data;
+        __u8 data[0];
     }
 
 .. _`ethtool_gstrings.members`:
@@ -1018,7 +1018,7 @@ Definition
         __u32 cmd;
         __u32 reserved;
         __u64 sset_mask;
-        __u32 data;
+        __u32 data[0];
     }
 
 .. _`ethtool_sset_info.members`:
@@ -1120,7 +1120,7 @@ Definition
         __u32 flags;
         __u32 reserved;
         __u32 len;
-        __u64 data;
+        __u64 data[0];
     }
 
 .. _`ethtool_test.members`:
@@ -1174,7 +1174,7 @@ Definition
     struct ethtool_stats {
         __u32 cmd;
         __u32 n_stats;
-        __u64 data;
+        __u64 data[0];
     }
 
 .. _`ethtool_stats.members`:
@@ -1220,7 +1220,7 @@ Definition
     struct ethtool_perm_addr {
         __u32 cmd;
         __u32 size;
-        __u8 data;
+        __u8 data[0];
     }
 
 .. _`ethtool_perm_addr.members`:
@@ -1410,8 +1410,8 @@ Definition
 .. code-block:: c
 
     struct ethtool_tcpip6_spec {
-        __be32 ip6src;
-        __be32 ip6dst;
+        __be32 ip6src[4];
+        __be32 ip6dst[4];
         __be16 psrc;
         __be16 pdst;
         __u8 tclass;
@@ -1461,8 +1461,8 @@ Definition
 .. code-block:: c
 
     struct ethtool_ah_espip6_spec {
-        __be32 ip6src;
-        __be32 ip6dst;
+        __be32 ip6src[4];
+        __be32 ip6dst[4];
         __be32 spi;
         __u8 tclass;
     }
@@ -1508,8 +1508,8 @@ Definition
 .. code-block:: c
 
     struct ethtool_usrip6_spec {
-        __be32 ip6src;
-        __be32 ip6dst;
+        __be32 ip6src[4];
+        __be32 ip6dst[4];
         __be32 l4_4_bytes;
         __u8 tclass;
         __u8 l4_proto;
@@ -1552,11 +1552,11 @@ Definition
 .. code-block:: c
 
     struct ethtool_flow_ext {
-        __u8 padding;
-        unsigned char h_dest;
+        __u8 padding[2];
+        unsigned char h_dest[ETH_ALEN];
         __be16 vlan_etype;
         __be16 vlan_tci;
-        __be32 data;
+        __be32 data[2];
     }
 
 .. _`ethtool_flow_ext.members`:
@@ -1668,7 +1668,7 @@ Definition
         __u64 data;
         struct ethtool_rx_flow_spec fs;
         __u32 rule_cnt;
-        __u32 rule_locs;
+        __u32 rule_locs[0];
     }
 
 .. _`ethtool_rxnfc.members`:
@@ -1761,7 +1761,7 @@ Definition
     struct ethtool_rxfh_indir {
         __u32 cmd;
         __u32 size;
-        __u32 ring_index;
+        __u32 ring_index[0];
     }
 
 .. _`ethtool_rxfh_indir.members`:
@@ -1812,9 +1812,9 @@ Definition
         __u32 indir_size;
         __u32 key_size;
         __u8 hfunc;
-        __u8 rsvd8;
+        __u8 rsvd8[3];
         __u32 rsvd32;
-        __u32 rss_config;
+        __u32 rss_config[0];
     }
 
 .. _`ethtool_rxfh.members`:
@@ -1883,15 +1883,23 @@ Definition
 
     struct ethtool_rx_ntuple_flow_spec {
         __u32 flow_type;
-        union h_u;
-        union m_u;
+        union {
+            struct ethtool_tcpip4_spec tcp_ip4_spec;
+            struct ethtool_tcpip4_spec udp_ip4_spec;
+            struct ethtool_tcpip4_spec sctp_ip4_spec;
+            struct ethtool_ah_espip4_spec ah_ip4_spec;
+            struct ethtool_ah_espip4_spec esp_ip4_spec;
+            struct ethtool_usrip4_spec usr_ip4_spec;
+            struct ethhdr ether_spec;
+            __u8 hdata[72];
+        } h_u, m_u;
         __u16 vlan_tag;
         __u16 vlan_tag_mask;
         __u64 data;
         __u64 data_mask;
         __s32 action;
-    #define ETHTOOL_RXNTUPLE_ACTION_DROP (-1)
-    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR (-2)
+    #define ETHTOOL_RXNTUPLE_ACTION_DROP (-1) 
+    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR (-2) 
     }
 
 .. _`ethtool_rx_ntuple_flow_spec.members`:
@@ -1902,8 +1910,32 @@ Members
 flow_type
     Type of match to perform, e.g. \ ``TCP_V4_FLOW``\ 
 
-h_u
-    Flow field values to match (dependent on \ ``flow_type``\ )
+tcp_ip4_spec
+    *undescribed*
+
+udp_ip4_spec
+    *undescribed*
+
+sctp_ip4_spec
+    *undescribed*
+
+ah_ip4_spec
+    *undescribed*
+
+esp_ip4_spec
+    *undescribed*
+
+usr_ip4_spec
+    *undescribed*
+
+ether_spec
+    *undescribed*
+
+hdata
+    *undescribed*
+
+_u
+    *undescribed*
 
 m_u
     Masks for flow field value bits to be ignored
@@ -1986,7 +2018,7 @@ Definition
         __u32 version;
         __u32 flag;
         __u32 len;
-        __u8 data;
+        __u8 data[0];
     }
 
 .. _`ethtool_dump.members`:
@@ -2074,7 +2106,7 @@ Definition
     struct ethtool_gfeatures {
         __u32 cmd;
         __u32 size;
-        struct ethtool_get_features_block features;
+        struct ethtool_get_features_block features[0];
     }
 
 .. _`ethtool_gfeatures.members`:
@@ -2144,7 +2176,7 @@ Definition
     struct ethtool_sfeatures {
         __u32 cmd;
         __u32 size;
-        struct ethtool_set_features_block features;
+        struct ethtool_set_features_block features[0];
     }
 
 .. _`ethtool_sfeatures.members`:
@@ -2182,9 +2214,9 @@ Definition
         __u32 so_timestamping;
         __s32 phc_index;
         __u32 tx_types;
-        __u32 tx_reserved;
+        __u32 tx_reserved[3];
         __u32 rx_filters;
-        __u32 rx_reserved;
+        __u32 rx_reserved[3];
     }
 
 .. _`ethtool_ts_info.members`:
@@ -2247,8 +2279,8 @@ Definition
     struct ethtool_per_queue_op {
         __u32 cmd;
         __u32 sub_command;
-        __u32 queue_mask;
-        char data;
+        __u32 queue_mask[__KERNEL_DIV_ROUND_UP(MAX_NUM_QUEUE, 32)];
+        char data[];
     }
 
 .. _`ethtool_per_queue_op.members`:
@@ -2387,8 +2419,8 @@ Definition
         __u8 eth_tp_mdix;
         __u8 eth_tp_mdix_ctrl;
         __s8 link_mode_masks_nwords;
-        __u32 reserved;
-        __u32 link_mode_masks;
+        __u32 reserved[8];
+        __u32 link_mode_masks[0];
     }
 
 .. _`ethtool_link_settings.members`:

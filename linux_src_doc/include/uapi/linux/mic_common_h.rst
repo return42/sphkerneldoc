@@ -23,7 +23,7 @@ Definition
         __u8 feature_len;
         __u8 config_len;
         __u8 status;
-        __le64 config;
+        __le64 config[0];
     }
 
 .. _`mic_device_desc.members`:
@@ -180,7 +180,7 @@ Definition
 
     struct mic_device_page {
         struct mic_bootparam bootparam;
-        struct mic_device_desc desc;
+        struct mic_device_desc desc[0];
     }
 
 .. _`mic_device_page.members`:

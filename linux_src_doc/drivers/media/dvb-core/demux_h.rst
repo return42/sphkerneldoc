@@ -117,9 +117,9 @@ Definition
 .. code-block:: c
 
     struct dmx_section_filter {
-        u8 filter_value;
-        u8 filter_mask;
-        u8 filter_mode;
+        u8 filter_value[DMX_MAX_FILTER_SIZE];
+        u8 filter_mask[DMX_MAX_FILTER_SIZE];
+        u8 filter_mode[DMX_MAX_FILTER_SIZE];
         struct dmx_section_feed *parent;
         void *priv;
     }
@@ -179,6 +179,10 @@ Definition
         struct dmx_demux *parent;
         void *priv;
         int check_crc;
+        u32 crc_val;
+        u8 *secbuf;
+        u8 secbuf_base[DMX_MAX_SECFEED_SIZE];
+        u16 secbufp, seclen, tsfeedp;
         int (*set)(struct dmx_section_feed *feed,u16 pid, int check_crc);
         int (*allocate_filter)(struct dmx_section_feed *feed, struct dmx_section_filter **filter);
         int (*release_filter)(struct dmx_section_feed *feed, struct dmx_section_filter *filter);
@@ -202,6 +206,24 @@ priv
 
 check_crc
     If non-zero, check the CRC values of filtered sections.
+
+crc_val
+    *undescribed*
+
+secbuf
+    *undescribed*
+
+secbuf_base
+    *undescribed*
+
+secbufp
+    *undescribed*
+
+seclen
+    *undescribed*
+
+tsfeedp
+    *undescribed*
 
 set
     sets the section filter
@@ -534,6 +556,7 @@ Definition
         int (*connect_frontend)(struct dmx_demux *demux, struct dmx_frontend *frontend);
         int (*disconnect_frontend)(struct dmx_demux *demux);
         int (*get_pes_pids)(struct dmx_demux *demux, u16 *pids);
+        int (*get_stc)(struct dmx_demux *demux, unsigned int num, u64 *stc, unsigned int *base);
     }
 
 .. _`dmx_demux.members`:
@@ -766,6 +789,9 @@ get_pes_pids
 
     0 on success;
     -EINVAL on bad parameter.
+
+get_stc
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

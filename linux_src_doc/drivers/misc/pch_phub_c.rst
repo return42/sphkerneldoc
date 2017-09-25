@@ -29,7 +29,7 @@ Definition
         u32 intpin_reg_wpermit_reg1;
         u32 intpin_reg_wpermit_reg2;
         u32 intpin_reg_wpermit_reg3;
-        u32 int_reduce_control_reg;
+        u32 int_reduce_control_reg[MAX_NUM_INT_REDUCE_CONTROL_REG];
         u32 clkcfg_reg;
         u32 funcsel_reg;
         void __iomem *pch_phub_base_address;

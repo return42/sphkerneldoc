@@ -62,7 +62,7 @@ Definition
 
     struct mlx5_fpga_dma_buf {
         enum dma_data_direction dma_dir;
-        struct mlx5_fpga_dma_entry sg;
+        struct mlx5_fpga_dma_entry sg[2];
         struct list_head list;
         void (*complete)(struct mlx5_fpga_conn *conn,struct mlx5_fpga_device *fdev, struct mlx5_fpga_dma_buf *buf, u8 status);
     }

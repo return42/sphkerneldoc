@@ -206,7 +206,7 @@ Definition
         u8 pfa_led_on;
         u8 pend_sas_rphy_add;
         u8 enclosure_level;
-        u8 connector_name;
+        u8 connector_name[5];
         struct kref refcount;
     }
 
@@ -768,7 +768,7 @@ Definition
         u8 msix_index;
         u32 reply_post_host_index;
         Mpi2ReplyDescriptorsUnion_t *reply_post_free;
-        char name;
+        char name[MPT_NAME_LENGTH];
         atomic_t busy;
         struct list_head list;
     }
@@ -820,9 +820,9 @@ Definition
         struct Scsi_Host *shost;
         u8 id;
         int cpu_count;
-        char name;
-        char driver_name;
-        char tmp_string;
+        char name[MPT_NAME_LENGTH];
+        char driver_name[MPT_NAME_LENGTH - 8];
+        char tmp_string[MPT_STRING_LENGTH];
         struct pci_dev *pdev;
         Mpi2SystemInterfaceRegs_t __iomem *chip;
         resource_size_t chip_phys;
@@ -832,10 +832,10 @@ Definition
         int bars;
         u8 mask_interrupts;
         int dma_mask;
-        char fault_reset_work_q_name;
+        char fault_reset_work_q_name[20];
         struct workqueue_struct *fault_reset_work_q;
         struct delayed_work fault_reset_work;
-        char firmware_event_name;
+        char firmware_event_name[20];
         struct workqueue_struct *firmware_event_thread;
         spinlock_t fw_event_lock;
         struct list_head fw_event_list;
@@ -890,10 +890,10 @@ Definition
         u16 hba_mpi_version_belonged;
         MPT_BUILD_SG build_sg_mpi;
         MPT_BUILD_ZERO_LEN_SGE build_zero_len_sge_mpi;
-        u32 event_type;
+        u32 event_type[MPI2_EVENT_NOTIFY_EVENTMASK_WORDS];
         u32 event_context;
         void *event_log;
-        u32 event_masks;
+        u32 event_masks[MPI2_EVENT_NOTIFY_EVENTMASK_WORDS];
         struct mpt3sas_facts facts;
         struct mpt3sas_port_facts *pfacts;
         Mpi2ManufacturingPage0_t manu_pg0;
@@ -992,13 +992,13 @@ Definition
         struct list_head delayed_event_ack_list;
         u8 temp_sensors_count;
         struct mutex pci_access_mutex;
-        u8  *diag_buffer;
-        u32 diag_buffer_sz;
-        dma_addr_t diag_buffer_dma;
-        u8 diag_buffer_status;
-        u32 unique_id;
-        u32 product_specific;
-        u32 diagnostic_flags;
+        u8 *diag_buffer[MPI2_DIAG_BUF_TYPE_COUNT];
+        u32 diag_buffer_sz[MPI2_DIAG_BUF_TYPE_COUNT];
+        dma_addr_t diag_buffer_dma[MPI2_DIAG_BUF_TYPE_COUNT];
+        u8 diag_buffer_status[MPI2_DIAG_BUF_TYPE_COUNT];
+        u32 unique_id[MPI2_DIAG_BUF_TYPE_COUNT];
+        u32 product_specific[MPI2_DIAG_BUF_TYPE_COUNT][23];
+        u32 diagnostic_flags[MPI2_DIAG_BUF_TYPE_COUNT];
         u32 ring_buffer_offset;
         u32 ring_buffer_sz;
         u8 is_warpdrive;

@@ -20,15 +20,15 @@ Definition
     struct hotplug_slot_ops {
         struct module *owner;
         const char *mod_name;
-        int (*enable_slot)(struct hotplug_slot *slot);
-        int (*disable_slot)(struct hotplug_slot *slot);
-        int (*set_attention_status)(struct hotplug_slot *slot, u8 value);
-        int (*hardware_test)(struct hotplug_slot *slot, u32 value);
-        int (*get_power_status)(struct hotplug_slot *slot, u8 *value);
-        int (*get_attention_status)(struct hotplug_slot *slot, u8 *value);
-        int (*get_latch_status)(struct hotplug_slot *slot, u8 *value);
-        int (*get_adapter_status)(struct hotplug_slot *slot, u8 *value);
-        int (*reset_slot)(struct hotplug_slot *slot, int probe);
+        int (*enable_slot) (struct hotplug_slot *slot);
+        int (*disable_slot) (struct hotplug_slot *slot);
+        int (*set_attention_status) (struct hotplug_slot *slot, u8 value);
+        int (*hardware_test) (struct hotplug_slot *slot, u32 value);
+        int (*get_power_status) (struct hotplug_slot *slot, u8 *value);
+        int (*get_attention_status) (struct hotplug_slot *slot, u8 *value);
+        int (*get_latch_status) (struct hotplug_slot *slot, u8 *value);
+        int (*get_adapter_status) (struct hotplug_slot *slot, u8 *value);
+        int (*reset_slot) (struct hotplug_slot *slot, int probe);
     }
 
 .. _`hotplug_slot_ops.members`:
@@ -157,7 +157,7 @@ Definition
     struct hotplug_slot {
         struct hotplug_slot_ops *ops;
         struct hotplug_slot_info *info;
-        void (*release)(struct hotplug_slot *slot);
+        void (*release) (struct hotplug_slot *slot);
         void *private;
         struct list_head slot_list;
         struct pci_slot *pci_slot;

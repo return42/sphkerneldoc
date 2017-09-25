@@ -46,7 +46,7 @@ Definition
         void (*writel)(void __iomem *addr, unsigned offset, u32 data);
         void (*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
         void (*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
-        struct dma_controller * (*dma_init)(struct musb *musb, void __iomem *base);
+        struct dma_controller * (*dma_init) (struct musb *musb, void __iomem *base);
         void (*dma_exit)(struct dma_controller *c);
         int (*set_mode)(struct musb *musb, u8 mode);
         void (*try_idle)(struct musb *musb, unsigned long timeout);

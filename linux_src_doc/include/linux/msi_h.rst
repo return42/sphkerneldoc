@@ -24,7 +24,26 @@ Definition
         struct device *dev;
         struct msi_msg msg;
         struct cpumask *affinity;
-        union {unnamed_union};
+        union {
+            struct {
+                u32 masked;
+                struct {
+                    __u8 is_msix : 1;
+                    __u8 multiple : 3;
+                    __u8 multi_cap : 3;
+                    __u8 maskbit : 1;
+                    __u8 is_64 : 1;
+                    __u16 entry_nr;
+                    unsigned default_irq;
+                } msi_attrib;
+                union {
+                    u8 mask_pos;
+                    void __iomem *mask_base;
+                } ;
+            } ;
+            struct platform_msi_desc platform;
+            struct fsl_mc_msi_desc fsl_mc;
+        } ;
     }
 
 .. _`msi_desc.members`:
@@ -50,9 +69,44 @@ msg
 affinity
     Optional pointer to a cpu affinity mask for this descriptor
 
+masked
+    [PCI MSI/X] Mask bits
+
+is_msix
+    [PCI MSI/X] True if MSI-X
+
+multiple
+    [PCI MSI/X] log2 num of messages allocated
+
+multi_cap
+    [PCI MSI/X] log2 num of messages supported
+
+maskbit
+    [PCI MSI/X] Mask-Pending bit supported?
+
+is_64
+    [PCI MSI/X] Address size: 0=32bit 1=64bit
+
+entry_nr
+    [PCI MSI/X] Entry which is described by this descriptor
+
+default_irq
+    [PCI MSI/X] The default pre-assigned non-MSI irq
+
+si_attrib
+    *undescribed*
+
 {unnamed_union}
     anonymous
 
+platform
+    [platform]  Platform device specific msi descriptor data
+
+fsl_mc
+    [fsl-mc]    FSL MC device specific msi descriptor data
+
+}
+    *undescribed*
 
 .. _`msi_domain_ops`:
 

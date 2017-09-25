@@ -963,9 +963,17 @@ Definition
 .. code-block:: c
 
     struct lpt_scan_node {
-        union {unnamed_union};
+        union {
+            struct ubifs_nnode nnode;
+            struct ubifs_pnode pnode;
+            struct ubifs_cnode cnode;
+        } ;
         int in_tree;
-        union ptr;
+        union {
+            struct ubifs_nnode *nnode;
+            struct ubifs_pnode *pnode;
+            struct ubifs_cnode *cnode;
+        } ptr;
     }
 
 .. _`lpt_scan_node.members`:
@@ -976,22 +984,20 @@ Members
 {unnamed_union}
     anonymous
 
-
 in_tree
     is the node in the tree in memory
 
-ptr
+nnode
+    where to keep a nnode
+
+pnode
+    where to keep a pnode
+
+cnode
+    where to keep a cnode
+
+tr
     *undescribed*
-
-ptr.nnode
-    pointer to the nnode (if it is an nnode) which may be here or in
-    the tree
-
-ptr.pnode
-    ditto for pnode
-
-ptr.cnode
-    ditto for cnode
 
 .. _`scan_get_nnode`:
 

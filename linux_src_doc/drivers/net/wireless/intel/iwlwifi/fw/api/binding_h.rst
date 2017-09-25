@@ -20,7 +20,7 @@ Definition
     struct iwl_binding_cmd_v1 {
         __le32 id_and_color;
         __le32 action;
-        __le32 macs;
+        __le32 macs[MAX_MACS_IN_BINDING];
         __le32 phy;
     }
 
@@ -63,7 +63,7 @@ Definition
     struct iwl_binding_cmd {
         __le32 id_and_color;
         __le32 action;
-        __le32 macs;
+        __le32 macs[MAX_MACS_IN_BINDING];
         __le32 phy;
         __le32 lmac_id;
     }
@@ -146,7 +146,7 @@ Definition
 .. code-block:: c
 
     struct iwl_time_quota_cmd {
-        struct iwl_time_quota_data quotas;
+        struct iwl_time_quota_data quotas[MAX_BINDINGS];
     }
 
 .. _`iwl_time_quota_cmd.members`:

@@ -439,7 +439,7 @@ Definition
 
     struct temp_report_ths_cmd {
         __le32 num_temps;
-        __le16 thresholds;
+        __le16 thresholds[IWL_MAX_DTS_TRIPS];
     }
 
 .. _`temp_report_ths_cmd.members`:

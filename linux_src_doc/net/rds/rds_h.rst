@@ -18,11 +18,10 @@ Definition
 .. code-block:: c
 
     struct rds_transport {
-        char t_name;
+        char t_name[TRANSNAMSIZ];
         struct list_head t_item;
         struct module *t_owner;
-        unsigned int t_prefer_loopback:1;
-        unsigned int t_mp_capable:1:1;
+        unsigned int t_prefer_loopback:1, t_mp_capable:1;
         unsigned int t_type;
         int (*laddr_check)(struct net *net, __be32 addr);
         int (*conn_alloc)(struct rds_connection *conn, gfp_t gfp);

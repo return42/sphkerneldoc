@@ -21,7 +21,7 @@ Definition
         int nr;
         __u32 arch;
         __u64 instruction_pointer;
-        __u64 args;
+        __u64 args[6];
     }
 
 .. _`seccomp_data.members`:

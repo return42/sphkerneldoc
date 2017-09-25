@@ -185,6 +185,10 @@ Definition
         void (*resume)(struct usb_function *);
         int (*get_status)(struct usb_function *);
         int (*func_suspend)(struct usb_function *, u8 suspend_opt);
+        struct list_head list;
+        DECLARE_BITMAP(endpoints, 32);
+        const struct usb_function_instance *fi;
+        unsigned int bind_deactivated:1;
     }
 
 .. _`usb_function.members`:
@@ -282,6 +286,18 @@ func_suspend
     callback to be called when
     SetFeature(FUNCTION_SUSPEND) is reseived
 
+list
+    *undescribed*
+
+endpoints
+    *undescribed*
+
+fi
+    *undescribed*
+
+bind_deactivated
+    *undescribed*
+
 .. _`usb_function.description`:
 
 Description
@@ -337,6 +353,14 @@ Definition
         u8 bmAttributes;
         u16 MaxPower;
         struct usb_composite_dev *cdev;
+        struct list_head list;
+        struct list_head functions;
+        u8 next_interface_id;
+        unsigned superspeed:1;
+        unsigned highspeed:1;
+        unsigned fullspeed:1;
+        unsigned superspeed_plus:1;
+        struct usb_function *interface[MAX_CONFIG_INTERFACES];
     }
 
 .. _`usb_configuration.members`:
@@ -379,6 +403,30 @@ MaxPower
 cdev
     assigned by \ ``usb_add_config``\ () before calling \ ``bind``\ (); this is
     the device associated with this configuration.
+
+list
+    *undescribed*
+
+functions
+    *undescribed*
+
+next_interface_id
+    *undescribed*
+
+superspeed
+    *undescribed*
+
+highspeed
+    *undescribed*
+
+fullspeed
+    *undescribed*
+
+superspeed_plus
+    *undescribed*
+
+interface
+    *undescribed*
 
 .. _`usb_configuration.description`:
 
@@ -546,10 +594,20 @@ Definition
         struct usb_request *req;
         struct usb_request *os_desc_req;
         struct usb_configuration *config;
-        u8 qw_sign;
+        u8 qw_sign[OS_STRING_QW_SIGN_LEN];
         u8 b_vendor_code;
         struct usb_configuration *os_desc_config;
         unsigned int use_os_string:1;
+        unsigned int suspended:1;
+        struct usb_device_descriptor desc;
+        struct list_head configs;
+        struct list_head gstrings;
+        struct usb_composite_driver *driver;
+        u8 next_string_id;
+        char *def_manufacturer;
+        unsigned deactivations;
+        int delayed_status;
+        spinlock_t lock;
         unsigned int setup_pending:1;
         unsigned int os_desc_pending:1;
     }
@@ -582,6 +640,36 @@ os_desc_config
 
 use_os_string
     false by default, interested gadgets set it
+
+suspended
+    *undescribed*
+
+desc
+    *undescribed*
+
+configs
+    *undescribed*
+
+gstrings
+    *undescribed*
+
+driver
+    *undescribed*
+
+next_string_id
+    *undescribed*
+
+def_manufacturer
+    *undescribed*
+
+deactivations
+    *undescribed*
+
+delayed_status
+    *undescribed*
+
+lock
+    *undescribed*
 
 setup_pending
     true when setup request is queued but not completed

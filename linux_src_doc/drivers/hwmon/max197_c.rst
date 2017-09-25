@@ -23,7 +23,7 @@ Definition
         struct mutex lock;
         int limit;
         bool scale;
-        u8 ctrl_bytes;
+        u8 ctrl_bytes[MAX197_NUM_CH];
     }
 
 .. _`max197_data.members`:

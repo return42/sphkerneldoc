@@ -220,7 +220,7 @@ Definition
     struct zfcp_fc_gspn_rsp {
         struct fc_ct_hdr ct_hdr;
         struct fc_gspn_resp gspn;
-        char name;
+        char name[FC_SYMBOLIC_NAME_SIZE];
     }
 
 .. _`zfcp_fc_gspn_rsp.members`:
@@ -256,7 +256,7 @@ Definition
     struct zfcp_fc_rspn_req {
         struct fc_ct_hdr ct_hdr;
         struct fc_ns_rspn rspn;
-        char name;
+        char name[FC_SYMBOLIC_NAME_SIZE];
     }
 
 .. _`zfcp_fc_rspn_req.members`:
@@ -293,7 +293,28 @@ Definition
         struct zfcp_fsf_ct_els ct_els;
         struct scatterlist sg_req;
         struct scatterlist sg_rsp;
-        union u;
+        union {
+            struct {
+                struct fc_els_adisc req;
+                struct fc_els_adisc rsp;
+            } adisc;
+            struct {
+                struct zfcp_fc_gid_pn_req req;
+                struct zfcp_fc_gid_pn_rsp rsp;
+            } gid_pn;
+            struct {
+                struct scatterlist sg_rsp2[ZFCP_FC_GPN_FT_NUM_BUFS - 1];
+                struct zfcp_fc_gpn_ft_req req;
+            } gpn_ft;
+            struct {
+                struct zfcp_fc_gspn_req req;
+                struct zfcp_fc_gspn_rsp rsp;
+            } gspn;
+            struct {
+                struct zfcp_fc_rspn_req req;
+                struct fc_ct_hdr rsp;
+            } rspn;
+        } u;
     }
 
 .. _`zfcp_fc_req.members`:
@@ -310,8 +331,53 @@ sg_req
 sg_rsp
     scatterlist entry for response data
 
-u
-    request specific data
+req
+    *undescribed*
+
+rsp
+    *undescribed*
+
+disc
+    *undescribed*
+
+req
+    *undescribed*
+
+rsp
+    *undescribed*
+
+id_pn
+    *undescribed*
+
+sg_rsp2
+    *undescribed*
+
+req
+    *undescribed*
+
+pn_ft
+    *undescribed*
+
+req
+    *undescribed*
+
+rsp
+    *undescribed*
+
+spn
+    *undescribed*
+
+req
+    *undescribed*
+
+rsp
+    *undescribed*
+
+spn
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zfcp_fc_wka_status`:
 

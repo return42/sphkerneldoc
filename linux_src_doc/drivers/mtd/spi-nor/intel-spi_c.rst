@@ -28,8 +28,8 @@ Definition
         bool writeable;
         bool swseq;
         bool erase_64k;
-        u8 opcodes;
-        u8 preopcodes;
+        u8 opcodes[8];
+        u8 preopcodes[2];
     }
 
 .. _`intel_spi.members`:

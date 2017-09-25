@@ -60,7 +60,7 @@ Definition
     struct tvp514x_decoder {
         struct v4l2_subdev sd;
         struct v4l2_ctrl_handler hdl;
-        struct tvp514x_reg tvp514x_regs;
+        struct tvp514x_reg tvp514x_regs[ARRAY_SIZE(tvp514x_reg_list_default)];
         const struct tvp514x_platform_data *pdata;
         int ver;
         int streaming;

@@ -146,7 +146,11 @@ Definition
 
     struct optee_msg_param {
         u64 attr;
-        union u;
+        union {
+            struct optee_msg_param_tmem tmem;
+            struct optee_msg_param_rmem rmem;
+            struct optee_msg_param_value value;
+        } u;
     }
 
 .. _`optee_msg_param.members`:
@@ -157,8 +161,17 @@ Members
 attr
     attributes
 
-u
-    *undescribed*
+tmem
+    parameter by temporary memory reference
+
+rmem
+    parameter by registered memory reference
+
+value
+    parameter by opaque value
+
+void
+    no arguments
 
 .. _`optee_msg_param.description`:
 
@@ -196,7 +209,7 @@ Definition
         u32 ret;
         u32 ret_origin;
         u32 num_params;
-        struct optee_msg_param params;
+        struct optee_msg_param params[0];
     }
 
 .. _`optee_msg_arg.members`:

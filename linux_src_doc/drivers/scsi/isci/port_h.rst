@@ -36,7 +36,7 @@ Definition
         u32 assigned_device_count;
         u32 hang_detect_users;
         u32 not_ready_reason;
-        struct isci_phy  *phy_table;
+        struct isci_phy *phy_table[SCI_MAX_PHYS];
         struct isci_host *owning_controller;
         struct sci_timer timer;
         struct scu_port_task_scheduler_registers __iomem *port_task_scheduler_registers;

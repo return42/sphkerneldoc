@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct tipc_media_addr {
-        u8 value;
+        u8 value[TIPC_MEDIA_INFO_SIZE];
         u8 media_id;
         u8 broadcast;
     }
@@ -66,7 +66,7 @@ Definition
         u32 window;
         u32 type_id;
         u32 hwaddr_len;
-        char name;
+        char name[TIPC_MAX_MEDIA_NAME];
     }
 
 .. _`tipc_media.members`:
@@ -133,7 +133,7 @@ Definition
         void __rcu *media_ptr;
         u32 mtu;
         struct tipc_media_addr addr;
-        char name;
+        char name[TIPC_MAX_BEARER_NAME];
         struct tipc_media *media;
         struct tipc_media_addr bcast_addr;
         struct packet_type pt;

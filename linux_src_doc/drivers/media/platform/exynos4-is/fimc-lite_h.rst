@@ -159,7 +159,7 @@ Definition
         struct v4l2_fh fh;
         struct v4l2_subdev subdev;
         struct media_pad vd_pad;
-        struct media_pad subdev_pads;
+        struct media_pad subdev_pads[FLITE_SD_PADS_NUM];
         struct v4l2_subdev *sensor;
         struct v4l2_ctrl_handler ctrl_handler;
         struct v4l2_ctrl *test_pattern;
@@ -169,7 +169,7 @@ Definition
         struct clk *clock;
         void __iomem *regs;
         wait_queue_head_t irq_queue;
-        unsigned long payload;
+        unsigned long payload[FLITE_MAX_PLANES];
         struct flite_frame inp_frame;
         struct flite_frame out_frame;
         atomic_t out_path;

@@ -22,7 +22,7 @@ Definition
         struct device *dev;
         unsigned long state;
         struct mutex mutex;
-        unsigned long wcid_mask;
+        unsigned long wcid_mask[N_WCIDS / BITS_PER_LONG];
         struct cfg80211_chan_def chandef;
         struct ieee80211_supported_band *sband_2g;
         struct mt7601u_mcu mcu;
@@ -31,11 +31,11 @@ Definition
         struct workqueue_struct *stat_wq;
         struct delayed_work stat_work;
         struct mt76_wcid *mon_wcid;
-        struct mt76_wcid __rcu  *wcid;
+        struct mt76_wcid __rcu *wcid[N_WCIDS];
         spinlock_t lock;
         spinlock_t mac_lock;
         const u16 *beacon_offsets;
-        u8 macaddr;
+        u8 macaddr[ETH_ALEN];
         struct mt7601u_eeprom_params *ee;
         struct mutex vendor_req_mutex;
         void *vend_buf;
@@ -43,8 +43,8 @@ Definition
         struct mutex hw_atomic_mutex;
         u32 rxfilter;
         u32 debugfs_reg;
-        u8 out_eps;
-        u8 in_eps;
+        u8 out_eps[8];
+        u8 in_eps[8];
         u16 out_max_packet;
         u16 in_max_packet;
         spinlock_t tx_lock;
@@ -56,7 +56,7 @@ Definition
         struct tasklet_struct rx_tasklet;
         struct mt7601u_rx_queue rx_q;
         spinlock_t con_mon_lock;
-        u8 ap_bssid;
+        u8 ap_bssid[ETH_ALEN];
         s8 bcn_freq_off;
         u8 bcn_phy_mode;
         int avg_rssi;
@@ -74,7 +74,7 @@ Definition
         bool pll_lock_protect;
         u8 bw;
         bool chan_ext_below;
-        u32 rf_pa_mode;
+        u32 rf_pa_mode[2];
         struct mac_stats stats;
     }
 

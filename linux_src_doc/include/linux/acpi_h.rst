@@ -42,10 +42,13 @@ Definition
 .. code-block:: c
 
     struct acpi_probe_entry {
-        __u8 id;
+        __u8 id[ACPI_TABLE_ID_LEN];
         __u8 type;
         acpi_probe_entry_validate_subtbl subtable_valid;
-        union {unnamed_union};
+        union {
+            acpi_tbl_table_handler probe_table;
+            acpi_tbl_entry_handler probe_subtbl;
+        } ;
         kernel_ulong_t driver_data;
     }
 
@@ -67,7 +70,6 @@ subtable_valid
 
 {unnamed_union}
     anonymous
-
 
 driver_data
     Sideband data provided back to the driver

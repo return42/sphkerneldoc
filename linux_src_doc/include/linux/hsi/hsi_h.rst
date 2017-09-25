@@ -55,7 +55,10 @@ Definition
         unsigned int num_channels;
         unsigned int num_hw_channels;
         unsigned int speed;
-        union {unnamed_union};
+        union {
+            unsigned int flow;
+            unsigned int arb_mode;
+        } ;
     }
 
 .. _`hsi_config.members`:
@@ -80,7 +83,6 @@ speed
 
 {unnamed_union}
     anonymous
-
 
 .. _`hsi_board_info`:
 
@@ -154,6 +156,9 @@ Definition
         struct device device;
         struct hsi_config tx_cfg;
         struct hsi_config rx_cfg;
+        void (*ehandler)(struct hsi_client *, unsigned long);
+        unsigned int pclaimed:1;
+        struct notifier_block nb;
     }
 
 .. _`hsi_client.members`:
@@ -169,6 +174,15 @@ tx_cfg
 
 rx_cfg
     HSI RX configuration
+
+ehandler
+    *undescribed*
+
+pclaimed
+    *undescribed*
+
+nb
+    *undescribed*
 
 .. _`hsi_client_driver`:
 

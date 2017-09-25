@@ -204,9 +204,9 @@ Definition
 .. code-block:: c
 
     struct dmx_filter {
-        __u8 filter;
-        __u8 mask;
-        __u8 mode;
+        __u8 filter[DMX_FILTER_SIZE];
+        __u8 mask[DMX_FILTER_SIZE];
+        __u8 mode[DMX_FILTER_SIZE];
     }
 
 .. _`dmx_filter.members`:

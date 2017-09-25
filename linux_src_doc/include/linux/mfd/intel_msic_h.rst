@@ -82,7 +82,7 @@ Definition
 .. code-block:: c
 
     struct intel_msic_platform_data {
-        int irq;
+        int irq[INTEL_MSIC_BLOCK_LAST];
         struct intel_msic_gpio_pdata *gpio;
         struct intel_msic_ocd_pdata *ocd;
     }

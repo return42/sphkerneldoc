@@ -24,10 +24,10 @@ Definition
         struct regmap *regmap;
         int key_sense_irq;
         int key_stuck_irq;
-        unsigned short keycodes;
+        unsigned short keycodes[PM8XXX_MATRIX_MAX_SIZE];
         struct device *dev;
-        u16 keystate;
-        u16 stuckstate;
+        u16 keystate[PM8XXX_MAX_ROWS];
+        u16 stuckstate[PM8XXX_MAX_ROWS];
         u8 ctrl_reg;
     }
 

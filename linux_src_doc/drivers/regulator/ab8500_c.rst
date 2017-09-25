@@ -69,7 +69,12 @@ Definition
         u8 voltage_bank;
         u8 voltage_reg;
         u8 voltage_mask;
-        struct expand_register;
+        struct {
+            u8 voltage_limit;
+            u8 voltage_bank;
+            u8 voltage_reg;
+            u8 voltage_mask;
+        } expand_register;
     }
 
 .. _`ab8500_regulator_info.members`:
@@ -134,7 +139,19 @@ voltage_reg
 voltage_mask
     mask to control regulator voltage
 
-expand_register
+voltage_limit
+    *undescribed*
+
+voltage_bank
+    bank to control regulator voltage
+
+voltage_reg
+    register to control regulator voltage
+
+voltage_mask
+    mask to control regulator voltage
+
+xpand_register
     *undescribed*
 
 .. This file was automatic generated / don't edit.

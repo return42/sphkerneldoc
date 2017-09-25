@@ -31,8 +31,8 @@ Definition
         const u8 *regs;
         int irq;
         int num_gpios;
-        u8 ier;
-        u8 oldier;
+        u8 ier[2];
+        u8 oldier[2];
         struct stmpe_platform_data *pdata;
     }
 

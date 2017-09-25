@@ -89,7 +89,7 @@ Definition
 .. code-block:: c
 
     struct xoadc_variant {
-        const char name;
+        const char name[16];
         const struct xoadc_channel *channels;
         bool broken_ratiometric;
         bool prescaling;
@@ -193,7 +193,7 @@ Definition
         unsigned int nchans;
         struct pm8xxx_chan_info *chans;
         struct iio_chan_spec *iio_chans;
-        struct vadc_linear_graph graph;
+        struct vadc_linear_graph graph[2];
         struct completion complete;
         struct mutex lock;
     }

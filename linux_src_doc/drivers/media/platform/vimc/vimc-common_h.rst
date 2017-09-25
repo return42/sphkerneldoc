@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct vimc_platform_data {
-        char entity_name;
+        char entity_name[32];
     }
 
 .. _`vimc_platform_data.members`:

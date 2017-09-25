@@ -27,13 +27,13 @@ Definition
 .. code-block:: c
 
     struct ap_queue_status {
-        unsigned int queue_empty:1;
-        unsigned int replies_waiting:1;
-        unsigned int queue_full:1;
-        unsigned int pad1:4;
-        unsigned int int_enabled:1;
-        unsigned int response_code:8;
-        unsigned int pad2:16;
+        unsigned int queue_empty : 1;
+        unsigned int replies_waiting : 1;
+        unsigned int queue_full : 1;
+        unsigned int pad1 : 4;
+        unsigned int int_enabled : 1;
+        unsigned int response_code : 8;
+        unsigned int pad2 : 16;
     }
 
 .. _`ap_queue_status.members`:

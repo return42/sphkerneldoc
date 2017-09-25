@@ -21,7 +21,7 @@ Definition
         int num_captures;
         unsigned int skip_frames;
         int offset;
-        __u32 reserved;
+        __u32 reserved[5];
     }
 
 .. _`atomisp_cont_capture_conf.members`:

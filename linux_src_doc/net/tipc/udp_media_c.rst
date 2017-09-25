@@ -20,7 +20,10 @@ Definition
     struct udp_media_addr {
         __be16 proto;
         __be16 port;
-        union {unnamed_union};
+        union {
+            struct in_addr ipv4;
+            struct in6_addr ipv6;
+        } ;
     }
 
 .. _`udp_media_addr.members`:
@@ -36,7 +39,6 @@ port
 
 {unnamed_union}
     anonymous
-
 
 .. _`udp_media_addr.description`:
 

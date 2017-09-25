@@ -32,8 +32,8 @@ Definition
         struct dma_slave_config slave_config;
         dma_addr_t phys_addr;
         spinlock_t lock;
-        unsigned char cs;
-        unsigned char ub;
+        unsigned char cs[SPDIFRX_CS_BYTES_NB];
+        unsigned char ub[SPDIFRX_UB_BYTES_NB];
         int irq;
         int refcount;
     }

@@ -24,7 +24,10 @@ Definition
         struct ib_cq *send_cq;
         struct ib_cq *recv_cq;
         struct ib_qp *qp;
-        union {unnamed_union};
+        union {
+            struct ib_fmr_pool *fmr_pool;
+            struct srp_fr_pool *fr_pool;
+        } ;
         struct completion done;
         int status;
         struct sa_path_rec path;
@@ -70,7 +73,6 @@ qp
 
 {unnamed_union}
     anonymous
-
 
 done
     *undescribed*
@@ -152,7 +154,7 @@ Definition
         struct srp_host *srp_host;
         struct Scsi_Host *scsi_host;
         struct srp_rport *rport;
-        char target_name;
+        char target_name[32];
         unsigned int scsi_id;
         unsigned int sg_tablesize;
         int mr_pool_size;
@@ -338,7 +340,7 @@ Definition
         int max_page_list_len;
         spinlock_t lock;
         struct list_head free_list;
-        struct srp_fr_desc desc;
+        struct srp_fr_desc desc[0];
     }
 
 .. _`srp_fr_pool.members`:
@@ -385,9 +387,25 @@ Definition
 .. code-block:: c
 
     struct srp_map_state {
-        union {unnamed_union};
+        union {
+            struct {
+                struct ib_pool_fmr **next;
+                struct ib_pool_fmr **end;
+            } fmr;
+            struct {
+                struct srp_fr_desc **next;
+                struct srp_fr_desc **end;
+            } fr;
+            struct {
+                void **next;
+                void **end;
+            } gen;
+        } ;
         struct srp_direct_buf *desc;
-        union {unnamed_union};
+        union {
+            u64 *pages;
+            struct scatterlist *sg;
+        } ;
         dma_addr_t base_dma_addr;
         u32 dma_len;
         u32 total_len;
@@ -404,14 +422,12 @@ Members
 {unnamed_union}
     anonymous
 
-
 desc
     Pointer to the element of the SRP buffer descriptor array
     that is being filled in.
 
 {unnamed_union}
     anonymous
-
 
 base_dma_addr
     DMA address of the first page that has not yet been mapped.

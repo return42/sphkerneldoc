@@ -58,7 +58,7 @@ Definition
         int group;
         spinlock_t lock;
     #ifdef CONFIG_PM
-        u32 pm_save;
+        u32 pm_save[4];
     #endif
         u32 bitmap_gpio_int;
     }

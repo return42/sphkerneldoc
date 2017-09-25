@@ -20,7 +20,7 @@ Definition
     struct hdac_ext_device {
         struct hdac_device hdac;
         struct hdac_ext_bus *ebus;
-        struct hda_dai_map nid_list;
+        struct hda_dai_map nid_list[HDA_MAX_NIDS];
         unsigned int map_cur_idx;
         struct hdac_ext_codec_ops ops;
         struct snd_card *card;

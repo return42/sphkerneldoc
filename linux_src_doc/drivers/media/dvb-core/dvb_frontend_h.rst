@@ -61,7 +61,7 @@ Definition
 .. code-block:: c
 
     struct dvb_tuner_info {
-        char name;
+        char name[128];
         u32 frequency_min;
         u32 frequency_max;
         u32 frequency_step;
@@ -494,7 +494,7 @@ Definition
 
     struct dvb_frontend_ops {
         struct dvb_frontend_info info;
-        u8 delsys;
+        u8 delsys[MAX_DELSYS];
         void (*detach)(struct dvb_frontend *fe);
         void (*release)(struct dvb_frontend* fe);
         void (*release_sec)(struct dvb_frontend* fe);
@@ -726,7 +726,12 @@ Definition
         u32 isdbt_sb_segment_idx;
         u32 isdbt_sb_segment_count;
         u8 isdbt_layer_enabled;
-        struct layer;
+        struct {
+            u8 segment_count;
+            enum fe_code_rate fec;
+            enum fe_modulation modulation;
+            u8 interleaving;
+        } layer[3];
         u32 stream_id;
         u8 atscmh_fic_ver;
         u8 atscmh_parade_id;
@@ -752,6 +757,7 @@ Definition
         struct dtv_fe_stats post_bit_count;
         struct dtv_fe_stats block_error;
         struct dtv_fe_stats block_count;
+        u32 state;
     }
 
 .. _`dtv_frontend_properties.members`:
@@ -830,20 +836,20 @@ isdbt_sb_segment_count
 isdbt_layer_enabled
     ISDB Layer enabled (only ISDB standard)
 
-layer
-    ISDB per-layer data (only ISDB standard)
+segment_count
+    *undescribed*
 
-layer.segment_count
-    Segment Count;
+fec
+    *undescribed*
 
-layer.fec
-    per layer code rate;
+modulation
+    Frontend modulation type
 
-layer.modulation
-    per layer modulation;
+interleaving
+    interleaving
 
-layer.interleaving
-    per layer interleaving.
+ayer
+    *undescribed*
 
 stream_id
     If different than zero, enable substream filtering, if
@@ -926,6 +932,9 @@ block_error
 
 block_count
     DVBv5 API statistics: block count
+
+state
+    *undescribed*
 
 .. _`dtv_frontend_properties.note`:
 

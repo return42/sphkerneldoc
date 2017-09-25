@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct spu_lscsa {
-        struct spu_reg128 gprs;
+        struct spu_reg128 gprs[128];
         struct spu_reg128 fpcr;
         struct spu_reg128 decr;
         struct spu_reg128 decr_status;
@@ -28,7 +28,7 @@ Definition
         struct spu_reg128 event_mask;
         struct spu_reg128 srr0;
         struct spu_reg128 stopped_status;
-        unsigned char ls;
+        unsigned char ls[LS_SIZE] __attribute__((aligned(65536)));
     }
 
 .. _`spu_lscsa.members`:
@@ -97,14 +97,12 @@ Definition
         struct spu_problem_collapsed prob;
         struct spu_priv1_collapsed priv1;
         struct spu_priv2_collapsed priv2;
-        u64 spu_chnlcnt_RW;
-        u64 spu_chnldata_RW;
-        u32 spu_mailbox_data;
-        u32 pu_mailbox_data;
-        u64 class_0_dar;
-        u64 class_0_pending;
-        u64 class_1_dar;
-        u64 class_1_dsisr;
+        u64 spu_chnlcnt_RW[32];
+        u64 spu_chnldata_RW[32];
+        u32 spu_mailbox_data[4];
+        u32 pu_mailbox_data[1];
+        u64 class_0_dar, class_0_pending;
+        u64 class_1_dar, class_1_dsisr;
         unsigned long suspend_time;
         spinlock_t register_lock;
     }

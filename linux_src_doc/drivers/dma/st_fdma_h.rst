@@ -59,7 +59,9 @@ Definition
         u32 nbytes;
         u32 saddr;
         u32 daddr;
-        union {unnamed_union};
+        union {
+            struct st_fdma_generic_node generic;
+        } ;
     }
 
 .. _`st_fdma_hw_node.members`:
@@ -84,7 +86,6 @@ daddr
 
 {unnamed_union}
     anonymous
-
 
 .. _`st_fdma_hw_node.description`:
 

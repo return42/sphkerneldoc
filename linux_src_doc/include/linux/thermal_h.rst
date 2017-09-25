@@ -19,7 +19,7 @@ Definition
 
     struct thermal_zone_device {
         int id;
-        char type;
+        char type[THERMAL_NAME_LENGTH];
         struct device device;
         struct attribute_group trips_attribute_group;
         struct thermal_attr *trip_temp_attrs;
@@ -171,7 +171,7 @@ Definition
 .. code-block:: c
 
     struct thermal_governor {
-        char name;
+        char name[THERMAL_NAME_LENGTH];
         int (*bind_to_tz)(struct thermal_zone_device *tz);
         void (*unbind_from_tz)(struct thermal_zone_device *tz);
         int (*throttle)(struct thermal_zone_device *tz, int trip);

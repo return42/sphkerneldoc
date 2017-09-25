@@ -23,7 +23,7 @@ Definition
         const struct pmc_reg_map *map;
     #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-    #endif
+    #endif 
         bool has_slp_s0_res;
         int pmc_xram_read_bit;
         struct mutex lock;

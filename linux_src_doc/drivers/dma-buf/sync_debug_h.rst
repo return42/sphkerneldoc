@@ -19,7 +19,7 @@ Definition
 
     struct sync_timeline {
         struct kref kref;
-        char name;
+        char name[32];
         u64 context;
         int value;
         struct rb_root pt_tree;

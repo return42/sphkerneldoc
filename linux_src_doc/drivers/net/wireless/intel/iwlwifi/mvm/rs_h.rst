@@ -65,8 +65,8 @@ Definition
         struct rs_rate rate;
         enum rs_column column;
         const u16 *expected_tpt;
-        struct iwl_rate_scale_data win;
-        struct iwl_rate_scale_data tpc_win;
+        struct iwl_rate_scale_data win[IWL_RATE_COUNT];
+        struct iwl_rate_scale_data tpc_win[TPC_MAX_REDUCTION + 1];
     }
 
 .. _`iwl_scale_tbl_info.members`:
@@ -144,12 +144,23 @@ Definition
         int optimal_nentries;
         u8 missed_rate_counter;
         struct iwl_lq_cmd lq;
-        struct iwl_scale_tbl_info lq_info;
+        struct iwl_scale_tbl_info lq_info[LQ_SIZE];
         u8 tx_agg_tid_en;
         u32 last_rate_n_flags;
         u8 is_agg;
         int tpc_reduce;
-        struct lq_sta_pers pers;
+        struct lq_sta_pers {
+    #ifdef CONFIG_MAC80211_DEBUGFS
+            u32 dbg_fixed_rate;
+            u8 dbg_fixed_txp_reduction;
+            enum rs_ss_force_opt ss_force;
+    #endif
+            u8 chains;
+            s8 chain_signal[IEEE80211_MAX_CHAINS];
+            s8 last_rssi;
+            struct rs_rate_stats tx_stats[RS_COLUMN_COUNT][IWL_RATE_COUNT];
+            struct iwl_mvm *drv;
+        } pers;
     }
 
 .. _`iwl_lq_sta.members`:

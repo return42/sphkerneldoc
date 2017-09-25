@@ -24,7 +24,7 @@ Definition
         int temperature;
         int humidity;
         char valid;
-        char eic;
+        char eic[18];
     }
 
 .. _`sht21.members`:

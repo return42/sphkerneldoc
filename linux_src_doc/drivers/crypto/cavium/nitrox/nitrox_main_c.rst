@@ -19,10 +19,10 @@ Definition
 
     struct ucode {
         u8 id;
-        char version;
+        char version[VERSION_LEN - 1];
         __be32 code_size;
-        u8 raz;
-        u64 code;
+        u8 raz[12];
+        u64 code[0];
     }
 
 .. _`ucode.members`:

@@ -208,7 +208,11 @@ Definition
         unsigned int bytesused;
         unsigned int length;
         unsigned int min_length;
-        union m;
+        union {
+            unsigned int offset;
+            unsigned long userptr;
+            int fd;
+        } m;
         unsigned int data_offset;
     }
 
@@ -236,9 +240,22 @@ min_length
     minimum required size of this plane (NOT the payload) in bytes.
     \ ``length``\  is always greater or equal to \ ``min_length``\ .
 
-m
-    Union with memtype-specific data (@offset, \ ``userptr``\  or
-    \ ``fd``\ ).
+offset
+    when memory in the associated struct vb2_buffer is
+    VB2_MEMORY_MMAP, equals the offset from the start of
+    the device memory for this plane (or is a "cookie" that
+    should be passed to \ :c:func:`mmap`\  called on the video node)
+
+userptr
+    when memory is VB2_MEMORY_USERPTR, a userspace pointer
+    pointing to this plane
+
+fd
+    when memory is VB2_MEMORY_DMABUF, a userspace file
+    descriptor associated with this plane
+
+void
+    no arguments
 
 data_offset
     offset in the plane to the start of data; usually 0,
@@ -372,8 +389,34 @@ Definition
         unsigned int type;
         unsigned int memory;
         unsigned int num_planes;
-        struct vb2_plane planes;
+        struct vb2_plane planes[VB2_MAX_PLANES];
         u64 timestamp;
+        enum vb2_buffer_state state;
+        struct list_head queued_entry;
+        struct list_head done_entry;
+    #ifdef CONFIG_VIDEO_ADV_DEBUG
+        u32 cnt_mem_alloc;
+        u32 cnt_mem_put;
+        u32 cnt_mem_get_dmabuf;
+        u32 cnt_mem_get_userptr;
+        u32 cnt_mem_put_userptr;
+        u32 cnt_mem_prepare;
+        u32 cnt_mem_finish;
+        u32 cnt_mem_attach_dmabuf;
+        u32 cnt_mem_detach_dmabuf;
+        u32 cnt_mem_map_dmabuf;
+        u32 cnt_mem_unmap_dmabuf;
+        u32 cnt_mem_vaddr;
+        u32 cnt_mem_cookie;
+        u32 cnt_mem_num_users;
+        u32 cnt_mem_mmap;
+        u32 cnt_buf_init;
+        u32 cnt_buf_prepare;
+        u32 cnt_buf_finish;
+        u32 cnt_buf_cleanup;
+        u32 cnt_buf_queue;
+        u32 cnt_buf_done;
+    #endif
     }
 
 .. _`vb2_buffer.members`:
@@ -402,6 +445,78 @@ planes
 
 timestamp
     frame timestamp in ns
+
+state
+    *undescribed*
+
+queued_entry
+    *undescribed*
+
+done_entry
+    *undescribed*
+
+cnt_mem_alloc
+    *undescribed*
+
+cnt_mem_put
+    *undescribed*
+
+cnt_mem_get_dmabuf
+    *undescribed*
+
+cnt_mem_get_userptr
+    *undescribed*
+
+cnt_mem_put_userptr
+    *undescribed*
+
+cnt_mem_prepare
+    *undescribed*
+
+cnt_mem_finish
+    *undescribed*
+
+cnt_mem_attach_dmabuf
+    *undescribed*
+
+cnt_mem_detach_dmabuf
+    *undescribed*
+
+cnt_mem_map_dmabuf
+    *undescribed*
+
+cnt_mem_unmap_dmabuf
+    *undescribed*
+
+cnt_mem_vaddr
+    *undescribed*
+
+cnt_mem_cookie
+    *undescribed*
+
+cnt_mem_num_users
+    *undescribed*
+
+cnt_mem_mmap
+    *undescribed*
+
+cnt_buf_init
+    *undescribed*
+
+cnt_buf_prepare
+    *undescribed*
+
+cnt_buf_finish
+    *undescribed*
+
+cnt_buf_cleanup
+    *undescribed*
+
+cnt_buf_queue
+    *undescribed*
+
+cnt_buf_done
+    *undescribed*
 
 .. _`vb2_ops`:
 

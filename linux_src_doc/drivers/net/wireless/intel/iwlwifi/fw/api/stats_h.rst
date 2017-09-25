@@ -123,10 +123,10 @@ Definition
 .. code-block:: c
 
     struct mvm_statistics_load {
-        __le32 air_time;
-        __le32 byte_count;
-        __le32 pkt_count;
-        u8 avg_energy;
+        __le32 air_time[MAC_INDEX_AUX];
+        __le32 byte_count[MAC_INDEX_AUX];
+        __le32 pkt_count[MAC_INDEX_AUX];
+        u8 avg_energy[IWL_MVM_STATION_COUNT];
     }
 
 .. _`mvm_statistics_load.members`:

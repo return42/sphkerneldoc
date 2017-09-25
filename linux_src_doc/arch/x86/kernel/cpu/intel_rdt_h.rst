@@ -451,13 +451,13 @@ Definition
         int cache_level;
         u32 default_ctrl;
         unsigned int msr_base;
-        void (*msr_update)(struct rdt_domain *d, struct msr_param *m, struct rdt_resource *r);
+        void (*msr_update) (struct rdt_domain *d, struct msr_param *m, struct rdt_resource *r);
         int data_width;
         struct list_head domains;
         struct rdt_cache cache;
         struct rdt_membw membw;
         const char *format_str;
-        int (*parse_ctrlval)(char *buf, struct rdt_resource *r, struct rdt_domain *d);
+        int (*parse_ctrlval) (char *buf, struct rdt_resource *r, struct rdt_domain *d);
         struct list_head evt_list;
         int num_rmid;
         unsigned int mon_scale;

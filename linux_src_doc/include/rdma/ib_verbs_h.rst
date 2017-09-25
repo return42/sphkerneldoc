@@ -22,7 +22,7 @@ Definition
         unsigned long lifespan;
         const char * const *names;
         int num_counters;
-        u64 value;
+        u64 value[];
     }
 
 .. _`rdma_hw_stats.members`:
@@ -207,7 +207,9 @@ Definition
 
     struct ib_sig_domain {
         enum ib_signature_type sig_type;
-        union sig;
+        union {
+            struct ib_t10_dif_domain dif;
+        } sig;
     }
 
 .. _`ib_sig_domain.members`:
@@ -218,9 +220,11 @@ Members
 sig_type
     specific signauture type
 
-sig
-    union of all signature domain attributes that may
-    be used to set domain layout.
+dif
+    *undescribed*
+
+ig
+    *undescribed*
 
 .. _`ib_sig_attrs`:
 

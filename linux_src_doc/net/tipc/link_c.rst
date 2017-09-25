@@ -19,7 +19,7 @@ Definition
 
     struct tipc_link {
         u32 addr;
-        char name;
+        char name[TIPC_MAX_LINK_NAME];
         struct net *net;
         u32 peer_session;
         u32 session;
@@ -31,7 +31,7 @@ Definition
         u16 peer_caps;
         bool active;
         u32 silent_intv_cnt;
-        char if_name;
+        char if_name[TIPC_MAX_IF_NAME];
         u32 priority;
         char net_plane;
         struct tipc_mon_state mon_state;
@@ -42,7 +42,10 @@ Definition
         u16 advertised_mtu;
         struct sk_buff_head transmq;
         struct sk_buff_head backlogq;
-        struct backlog;
+        struct {
+            u16 len;
+            u16 limit;
+        } backlog[5];
         u16 snd_nxt;
         u16 last_retransm;
         u16 window;
@@ -143,7 +146,13 @@ transmq
 backlogq
     queue for messages waiting to be sent
 
-backlog
+len
+    *undescribed*
+
+limit
+    *undescribed*
+
+acklog
     *undescribed*
 
 snd_nxt

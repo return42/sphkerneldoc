@@ -20,7 +20,27 @@ Definition
     struct nfp_eth_table {
         unsigned int count;
         unsigned int max_index;
-        struct nfp_eth_table_port ports;
+        struct nfp_eth_table_port {
+            unsigned int eth_index;
+            unsigned int index;
+            unsigned int nbi;
+            unsigned int base;
+            unsigned int lanes;
+            unsigned int speed;
+            unsigned int interface;
+            enum nfp_eth_media media;
+            enum nfp_eth_aneg aneg;
+            u8 mac_addr[ETH_ALEN];
+            u8 label_port;
+            u8 label_subport;
+            bool enabled;
+            bool tx_enabled;
+            bool rx_enabled;
+            bool override_changed;
+            u8 port_type;
+            unsigned int port_lanes;
+            bool is_split;
+        } ports[0];
     }
 
 .. _`nfp_eth_table.members`:
@@ -54,7 +74,7 @@ Definition
 .. code-block:: c
 
     struct nfp_nsp_identify {
-        char version;
+        char version[40];
         u8 flags;
         u8 br_primary;
         u8 br_secondary;

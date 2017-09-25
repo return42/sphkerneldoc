@@ -22,8 +22,8 @@ Definition
         struct i2c_adapter adap;
         struct cros_ec_device *ec;
         u16 remote_bus;
-        u8 request_buf;
-        u8 response_buf;
+        u8 request_buf[256];
+        u8 response_buf[256];
     }
 
 .. _`ec_i2c_device.members`:

@@ -176,7 +176,11 @@ Definition
 .. code-block:: c
 
     struct flow_dissector_key_addrs {
-        union {unnamed_union};
+        union {
+            struct flow_dissector_key_ipv4_addrs v4addrs;
+            struct flow_dissector_key_ipv6_addrs v6addrs;
+            struct flow_dissector_key_tipc_addrs tipcaddrs;
+        } ;
     }
 
 .. _`flow_dissector_key_addrs.members`:
@@ -186,7 +190,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 .. _`flow_dissector_key_eth_addrs`:
 
@@ -204,8 +207,8 @@ Definition
 .. code-block:: c
 
     struct flow_dissector_key_eth_addrs {
-        unsigned char dst;
-        unsigned char src;
+        unsigned char dst[ETH_ALEN];
+        unsigned char src[ETH_ALEN];
     }
 
 .. _`flow_dissector_key_eth_addrs.members`:

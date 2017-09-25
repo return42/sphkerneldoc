@@ -20,7 +20,7 @@ Definition
     struct rcar_du_vsp_plane_state {
         struct drm_plane_state state;
         const struct rcar_du_format_info *format;
-        struct sg_table sg_tables;
+        struct sg_table sg_tables[3];
         unsigned int alpha;
         unsigned int zpos;
     }

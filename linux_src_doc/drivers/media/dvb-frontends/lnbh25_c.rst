@@ -20,7 +20,7 @@ Definition
     struct lnbh25_priv {
         struct i2c_adapter *i2c;
         u8 i2c_address;
-        u8 config;
+        u8 config[3];
     }
 
 .. _`lnbh25_priv.members`:

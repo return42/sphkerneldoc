@@ -199,19 +199,25 @@ Definition
         u32 id;
         const char *name;
         enum v4l2_ctrl_type type;
-        s64 minimum;
-        s64 maximum;
-        s64 default_value;
+        s64 minimum, maximum, default_value;
         u32 elems;
         u32 elem_size;
-        u32 dims;
+        u32 dims[V4L2_CTRL_MAX_DIMS];
         u32 nr_of_dims;
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            u64 step;
+            u64 menu_skip_mask;
+        } ;
+        union {
+            const char * const *qmenu;
+            const s64 *qmenu_int;
+        } ;
         unsigned long flags;
         void *priv;
         s32 val;
-        struct cur;
+        struct {
+            s32 val;
+        } cur;
         union v4l2_ctrl_ptr p_new;
         union v4l2_ctrl_ptr p_cur;
     }
@@ -328,10 +334,8 @@ nr_of_dims
 {unnamed_union}
     anonymous
 
-
 {unnamed_union}
     anonymous
-
 
 flags
     The control's flags.
@@ -346,8 +350,11 @@ priv
 val
     The control's new s32 value.
 
-cur
-    The control's current value.
+val
+    The control's new s32 value.
+
+ur
+    *undescribed*
 
 p_new
     The control's new value represented via a union with provides
@@ -505,7 +512,7 @@ Definition
         s64 max;
         u64 step;
         s64 def;
-        u32 dims;
+        u32 dims[V4L2_CTRL_MAX_DIMS];
         u32 elem_size;
         u32 flags;
         u64 menu_skip_mask;

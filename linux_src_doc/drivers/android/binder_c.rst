@@ -19,7 +19,8 @@ Definition
 
     struct binder_work {
         struct list_head entry;
-        enum type;
+        enum {
+            BINDER_WORK_TRANSACTION = 1,BINDER_WORK_TRANSACTION_COMPLETE,BINDER_WORK_RETURN_ERROR,BINDER_WORK_NODE,BINDER_WORK_DEAD_BINDER,BINDER_WORK_DEAD_BINDER_AND_CLEAR,BINDER_WORK_CLEAR_DEATH_NOTIFICATION, } type;
     }
 
 .. _`binder_work.members`:
@@ -60,7 +61,10 @@ Definition
         int debug_id;
         spinlock_t lock;
         struct binder_work work;
-        union {unnamed_union};
+        union {
+            struct rb_node rb_node;
+            struct hlist_node dead_node;
+        } ;
         struct binder_proc *proc;
         struct hlist_head refs;
         int internal_strong_refs;
@@ -69,8 +73,16 @@ Definition
         int tmp_refs;
         binder_uintptr_t ptr;
         binder_uintptr_t cookie;
-        struct {unnamed_struct};
-        struct {unnamed_struct};
+        struct {
+            u8 has_strong_ref:1;
+            u8 pending_strong_ref:1;
+            u8 has_weak_ref:1;
+            u8 pending_weak_ref:1;
+        } ;
+        struct {
+            u8 accept_fds:1;
+            u8 min_priority;
+        } ;
         bool has_async_transaction;
         struct list_head async_todo;
     }
@@ -93,7 +105,6 @@ work
 
 {unnamed_union}
     anonymous
-
 
 proc
     binder_proc that owns this node
@@ -138,10 +149,8 @@ cookie
 {unnamed_struct}
     anonymous
 
-
 {unnamed_struct}
     anonymous
-
 
 has_async_transaction
     async transaction to node in progress

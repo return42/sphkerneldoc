@@ -48,7 +48,10 @@ Definition
     struct binder_fd_object {
         struct binder_object_header hdr;
         __u32 pad_flags;
-        union {unnamed_union};
+        union {
+            binder_uintptr_t pad_binder;
+            __u32 fd;
+        } ;
         binder_uintptr_t cookie;
     }
 
@@ -65,7 +68,6 @@ pad_flags
 
 {unnamed_union}
     anonymous
-
 
 cookie
     opaque data, used by user-space

@@ -20,9 +20,9 @@ Definition
     struct cycx_fw_info {
         unsigned short codeid;
         unsigned short version;
-        unsigned short adapter;
+        unsigned short adapter[CFM_MAX_CYCX];
         unsigned long memsize;
-        unsigned short reserved;
+        unsigned short reserved[2];
         unsigned short startoffs;
         unsigned short winoffs;
         unsigned short codeoffs;
@@ -86,13 +86,13 @@ Definition
 .. code-block:: c
 
     struct cycx_firmware {
-        char signature;
+        char signature[80];
         unsigned short version;
         unsigned short checksum;
-        unsigned short reserved;
-        char descr;
+        unsigned short reserved[6];
+        char descr[CFM_DESCR_LEN];
         struct cycx_fw_info info;
-        unsigned char image;
+        unsigned char image[0];
     }
 
 .. _`cycx_firmware.members`:

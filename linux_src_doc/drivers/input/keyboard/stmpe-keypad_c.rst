@@ -83,7 +83,7 @@ Definition
         bool no_autorepeat;
         unsigned int rows;
         unsigned int cols;
-        unsigned short keymap;
+        unsigned short keymap[STMPE_KEYPAD_KEYMAP_MAX_SIZE];
     }
 
 .. _`stmpe_keypad.members`:

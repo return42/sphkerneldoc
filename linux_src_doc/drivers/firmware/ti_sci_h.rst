@@ -65,7 +65,7 @@ Definition
 
     struct ti_sci_msg_resp_version {
         struct ti_sci_msg_hdr hdr;
-        char firmware_description;
+        char firmware_description[32];
         u16 firmware_revision;
         u8 abi_major;
         u8 abi_minor;

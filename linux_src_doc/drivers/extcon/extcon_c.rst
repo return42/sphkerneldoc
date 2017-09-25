@@ -23,15 +23,15 @@ Definition
         struct attribute_group attr_g;
         struct device_attribute attr_name;
         struct device_attribute attr_state;
-        struct attribute  *attrs;
-        union extcon_property_value usb_propval;
-        union extcon_property_value chg_propval;
-        union extcon_property_value jack_propval;
-        union extcon_property_value disp_propval;
-        unsigned long usb_bits;
-        unsigned long chg_bits;
-        unsigned long jack_bits;
-        unsigned long disp_bits;
+        struct attribute *attrs[3];
+        union extcon_property_value usb_propval[EXTCON_PROP_USB_CNT];
+        union extcon_property_value chg_propval[EXTCON_PROP_CHG_CNT];
+        union extcon_property_value jack_propval[EXTCON_PROP_JACK_CNT];
+        union extcon_property_value disp_propval[EXTCON_PROP_DISP_CNT];
+        unsigned long usb_bits[BITS_TO_LONGS(EXTCON_PROP_USB_CNT)];
+        unsigned long chg_bits[BITS_TO_LONGS(EXTCON_PROP_CHG_CNT)];
+        unsigned long jack_bits[BITS_TO_LONGS(EXTCON_PROP_JACK_CNT)];
+        unsigned long disp_bits[BITS_TO_LONGS(EXTCON_PROP_DISP_CNT)];
     }
 
 .. _`extcon_cable.members`:

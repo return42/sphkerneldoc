@@ -24,22 +24,22 @@ Definition
         u32 desc_ctrl;
     #define DESC_NUM_ACTIVE_D_BUF_SHIFT 22
     #define DESC_OP_MODE_SHIFT 28
-    #define DESC_OP_MODE_NOP 0
-    #define DESC_OP_MODE_MEMCPY 1
-    #define DESC_OP_MODE_MEMSET 2
-    #define DESC_OP_MODE_MEMINIT 3
-    #define DESC_OP_MODE_MEM_COMPARE 4
-    #define DESC_OP_MODE_CRC32 5
-    #define DESC_OP_MODE_XOR 6
-    #define DESC_OP_MODE_RAID6 7
-    #define DESC_OP_MODE_RAID6_REC 8
+    #define DESC_OP_MODE_NOP 0 
+    #define DESC_OP_MODE_MEMCPY 1 
+    #define DESC_OP_MODE_MEMSET 2 
+    #define DESC_OP_MODE_MEMINIT 3 
+    #define DESC_OP_MODE_MEM_COMPARE 4 
+    #define DESC_OP_MODE_CRC32 5 
+    #define DESC_OP_MODE_XOR 6 
+    #define DESC_OP_MODE_RAID6 7 
+    #define DESC_OP_MODE_RAID6_REC 8 
     #define DESC_Q_BUFFER_ENABLE BIT(16)
     #define DESC_P_BUFFER_ENABLE BIT(17)
     #define DESC_IOD BIT(27)
         u32 buff_size;
-        u32 fill_pattern_src_addr;
-        u32 data_buff_addr;
-        u32 reserved;
+        u32 fill_pattern_src_addr[4];
+        u32 data_buff_addr[MV_XOR_V2_DESC_BUFF_D_ADDR_SIZE];
+        u32 reserved[MV_XOR_V2_DESC_RESERVED_SIZE];
     }
 
 .. _`mv_xor_v2_descriptor.members`:

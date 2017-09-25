@@ -24,7 +24,10 @@ Definition
         u16 data_cport_id;
         struct mutex mutex;
         enum gb_camera_state state;
-        struct debugfs;
+        struct {
+            struct dentry *root;
+            struct gb_camera_debugfs_buffer *buffers;
+        } debugfs;
         struct gb_camera_module module;
     }
 
@@ -51,8 +54,14 @@ mutex
 state
     the current module state
 
-debugfs
-    debugfs entries for camera protocol operations testing
+root
+    *undescribed*
+
+buffers
+    *undescribed*
+
+ebugfs
+    *undescribed*
 
 module
     Greybus camera module registered to HOST processor.

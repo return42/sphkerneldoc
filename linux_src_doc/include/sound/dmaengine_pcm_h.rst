@@ -93,7 +93,7 @@ Definition
         struct dma_chan *(*compat_request_channel)(struct snd_soc_pcm_runtime *rtd, struct snd_pcm_substream *substream);
         dma_filter_fn compat_filter_fn;
         struct device *dma_dev;
-        const char  *chan_names;
+        const char *chan_names[SNDRV_PCM_STREAM_LAST + 1];
         const struct snd_pcm_hardware *pcm_hardware;
         unsigned int prealloc_buffer_size;
     }

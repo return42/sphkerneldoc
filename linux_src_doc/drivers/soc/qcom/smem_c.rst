@@ -20,7 +20,7 @@ Definition
     struct smem_proc_comm {
         __le32 command;
         __le32 status;
-        __le32 params;
+        __le32 params[2];
     }
 
 .. _`smem_proc_comm.members`:
@@ -95,13 +95,13 @@ Definition
 .. code-block:: c
 
     struct smem_header {
-        struct smem_proc_comm proc_comm;
-        __le32 version;
+        struct smem_proc_comm proc_comm[4];
+        __le32 version[32];
         __le32 initialized;
         __le32 free_offset;
         __le32 available;
         __le32 reserved;
-        struct smem_global_entry toc;
+        struct smem_global_entry toc[SMEM_ITEM_COUNT];
     }
 
 .. _`smem_header.members`:
@@ -159,7 +159,7 @@ Definition
         __le32 flags;
         __le16 host0;
         __le16 host1;
-        __le32 reserved;
+        __le32 reserved[8];
     }
 
 .. _`smem_ptable_entry.members`:
@@ -202,11 +202,11 @@ Definition
 .. code-block:: c
 
     struct smem_ptable {
-        u8 magic;
+        u8 magic[4];
         __le32 version;
         __le32 num_entries;
-        __le32 reserved;
-        struct smem_ptable_entry entry;
+        __le32 reserved[5];
+        struct smem_ptable_entry entry[];
     }
 
 .. _`smem_ptable.members`:
@@ -246,13 +246,13 @@ Definition
 .. code-block:: c
 
     struct smem_partition_header {
-        u8 magic;
+        u8 magic[4];
         __le16 host0;
         __le16 host1;
         __le32 size;
         __le32 offset_free_uncached;
         __le32 offset_free_cached;
-        __le32 reserved;
+        __le32 reserved[3];
     }
 
 .. _`smem_partition_header.members`:
@@ -386,9 +386,9 @@ Definition
     struct qcom_smem {
         struct device *dev;
         struct hwspinlock *hwlock;
-        struct smem_partition_header  *partitions;
+        struct smem_partition_header *partitions[SMEM_HOST_COUNT];
         unsigned num_regions;
-        struct smem_region regions;
+        struct smem_region regions[0];
     }
 
 .. _`qcom_smem.members`:

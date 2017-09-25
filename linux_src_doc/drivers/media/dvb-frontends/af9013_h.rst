@@ -19,19 +19,19 @@ Definition
 
     struct af9013_platform_data {
         u32 clk;
-    #define AF9013_TUNER_MXL5003D 3
-    #define AF9013_TUNER_MXL5005D 13
-    #define AF9013_TUNER_MXL5005R 30
-    #define AF9013_TUNER_ENV77H11D5 129
-    #define AF9013_TUNER_MT2060 130
-    #define AF9013_TUNER_MC44S803 133
-    #define AF9013_TUNER_QT1010 134
-    #define AF9013_TUNER_UNKNOWN 140
-    #define AF9013_TUNER_MT2060_2 147
-    #define AF9013_TUNER_TDA18271 156
-    #define AF9013_TUNER_QT1010A 162
-    #define AF9013_TUNER_MXL5007T 177
-    #define AF9013_TUNER_TDA18218 179
+    #define AF9013_TUNER_MXL5003D 3 
+    #define AF9013_TUNER_MXL5005D 13 
+    #define AF9013_TUNER_MXL5005R 30 
+    #define AF9013_TUNER_ENV77H11D5 129 
+    #define AF9013_TUNER_MT2060 130 
+    #define AF9013_TUNER_MC44S803 133 
+    #define AF9013_TUNER_QT1010 134 
+    #define AF9013_TUNER_UNKNOWN 140 
+    #define AF9013_TUNER_MT2060_2 147 
+    #define AF9013_TUNER_TDA18271 156 
+    #define AF9013_TUNER_QT1010A 162 
+    #define AF9013_TUNER_MXL5007T 177 
+    #define AF9013_TUNER_TDA18218 179 
         u8 tuner;
         u32 if_frequency;
     #define AF9013_TS_MODE_USB 0
@@ -40,7 +40,7 @@ Definition
         u8 ts_mode;
         u8 ts_output_pin;
         bool spec_inv;
-        u8 api_version;
+        u8 api_version[4];
     #define AF9013_GPIO_ON (1 << 0)
     #define AF9013_GPIO_EN (1 << 1)
     #define AF9013_GPIO_O (1 << 2)
@@ -49,8 +49,11 @@ Definition
     #define AF9013_GPIO_HI (AF9013_GPIO_ON|AF9013_GPIO_EN|AF9013_GPIO_O)
     #define AF9013_GPIO_TUNER_ON (AF9013_GPIO_ON|AF9013_GPIO_EN)
     #define AF9013_GPIO_TUNER_OFF (AF9013_GPIO_ON|AF9013_GPIO_EN|AF9013_GPIO_O)
-        u8 gpio;
+        u8 gpio[4];
         struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
+        bool attach_in_use;
+        u8 i2c_addr;
+        u32 clock;
     }
 
 .. _`af9013_platform_data.members`:
@@ -84,6 +87,15 @@ gpio
 
 get_dvb_frontend
     Get DVB frontend callback.
+
+attach_in_use
+    *undescribed*
+
+i2c_addr
+    *undescribed*
+
+clock
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

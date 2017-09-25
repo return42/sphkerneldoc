@@ -60,9 +60,12 @@ Definition
     struct ad5360_state {
         struct spi_device *spi;
         const struct ad5360_chip_info *chip_info;
-        struct regulator_bulk_data vref_reg;
+        struct regulator_bulk_data vref_reg[3];
         unsigned int ctrl;
-        union data;
+        union {
+            __be32 d32;
+            u8 d8[4];
+        } data[2] ____cacheline_aligned;
     }
 
 .. _`ad5360_state.members`:
@@ -82,8 +85,14 @@ vref_reg
 ctrl
     control register cache
 
-data
-    spi transfer buffers
+d32
+    *undescribed*
+
+d8
+    *undescribed*
+
+____cacheline_aligned
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

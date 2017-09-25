@@ -29,8 +29,8 @@ Definition
         int (*write)(struct ab8500 *ab8500, u16 addr, u8 data);
         int (*write_masked)(struct ab8500 *ab8500, u16 addr, u8 mask, u8 data);
         int (*read)(struct ab8500 *ab8500, u16 addr);
-        unsigned long tx_buf;
-        unsigned long rx_buf;
+        unsigned long tx_buf[4];
+        unsigned long rx_buf[4];
         u8 *mask;
         u8 *oldmask;
         int mask_size;
@@ -115,7 +115,7 @@ Definition
 .. code-block:: c
 
     struct ab8500_platform_data {
-        void (*init)(struct ab8500 *);
+        void (*init) (struct ab8500 *);
         struct ab8500_regulator_platform_data *regulator;
         struct ab8500_codec_platform_data *codec;
         struct ab8500_sysctrl_platform_data *sysctrl;

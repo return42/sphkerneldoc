@@ -27,13 +27,11 @@ Definition
         struct list_head dmaq;
         spinlock_t lock;
         v4l2_std_id std;
-        unsigned width;
-        unsigned height;
+        unsigned width, height;
         unsigned input;
         unsigned int sequence;
         void __iomem *regs;
-        u8 csr2;
-        u8 config;
+        u8 csr2, config;
     }
 
 .. _`dt3155_priv.members`:

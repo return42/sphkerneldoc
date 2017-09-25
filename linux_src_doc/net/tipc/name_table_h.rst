@@ -105,8 +105,8 @@ Definition
 .. code-block:: c
 
     struct name_table {
-        struct hlist_head seq_hlist;
-        struct list_head publ_list;
+        struct hlist_head seq_hlist[TIPC_NAMETBL_SIZE];
+        struct list_head publ_list[TIPC_PUBL_SCOPE_NUM];
         u32 local_publ_count;
     }
 

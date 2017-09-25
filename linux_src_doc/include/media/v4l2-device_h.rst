@@ -24,7 +24,7 @@ Definition
     #endif
         struct list_head subdevs;
         spinlock_t lock;
-        char name;
+        char name[V4L2_DEVICE_NAME_SIZE];
         void (*notify)(struct v4l2_subdev *sd, unsigned int notification, void *arg);
         struct v4l2_ctrl_handler *ctrl_handler;
         struct v4l2_prio_state prio;

@@ -141,7 +141,7 @@ Definition
         struct device dev;
         struct devfreq_dev_profile *profile;
         const struct devfreq_governor *governor;
-        char governor_name;
+        char governor_name[DEVFREQ_NAME_LEN];
         struct notifier_block nb;
         struct delayed_work work;
         unsigned long previous_freq;

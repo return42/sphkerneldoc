@@ -17,12 +17,12 @@ Definition
 .. code-block:: c
 
     struct ica_rsa_modexpo {
-        char __user *inputdata;
+        char __user * inputdata;
         unsigned int inputdatalength;
-        char __user *outputdata;
+        char __user * outputdata;
         unsigned int outputdatalength;
-        char __user *b_key;
-        char __user *n_modulus;
+        char __user * b_key;
+        char __user * n_modulus;
     }
 
 .. _`ica_rsa_modexpo.members`:
@@ -75,15 +75,15 @@ Definition
 .. code-block:: c
 
     struct ica_rsa_modexpo_crt {
-        char __user *inputdata;
+        char __user * inputdata;
         unsigned int inputdatalength;
-        char __user *outputdata;
+        char __user * outputdata;
         unsigned int outputdatalength;
-        char __user *bp_key;
-        char __user *bq_key;
-        char __user *np_prime;
-        char __user *nq_prime;
-        char __user *u_mult_inv;
+        char __user * bp_key;
+        char __user * bq_key;
+        char __user * np_prime;
+        char __user * nq_prime;
+        char __user * u_mult_inv;
     }
 
 .. _`ica_rsa_modexpo_crt.members`:
@@ -152,9 +152,9 @@ Definition
     struct ep11_cprb {
         uint16_t cprb_len;
         unsigned char cprb_ver_id;
-        unsigned char pad_000;
+        unsigned char pad_000[2];
         unsigned char flags;
-        unsigned char func_id;
+        unsigned char func_id[2];
         uint32_t source_id;
         uint32_t target_id;
         uint32_t ret_code;

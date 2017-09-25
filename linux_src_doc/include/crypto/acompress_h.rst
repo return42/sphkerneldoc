@@ -24,7 +24,7 @@ Definition
         unsigned int slen;
         unsigned int dlen;
         u32 flags;
-        void  *__ctx;
+        void *__ctx[] CRYPTO_MINALIGN_ATTR;
     }
 
 .. _`acomp_req.members`:

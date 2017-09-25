@@ -24,7 +24,7 @@ Definition
         uint32_t dtc;
         uint32_t sd;
         uint32_t drt;
-        uint32_t reserved;
+        uint32_t reserved[2];
     }
 
 .. _`jz4780_dma_hwdesc.members`:

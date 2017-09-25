@@ -153,7 +153,7 @@ Definition
         unsigned int reg;
         unsigned int num_ports;
         struct usb2phy_reg clkout_ctl;
-        const struct rockchip_usb2phy_port_cfg port_cfgs;
+        const struct rockchip_usb2phy_port_cfg port_cfgs[USB2PHY_NUM_PORTS];
         const struct rockchip_chg_det_reg chg_det;
     }
 
@@ -296,7 +296,7 @@ Definition
         u8 dcd_retries;
         struct extcon_dev *edev;
         const struct rockchip_usb2phy_cfg *phy_cfg;
-        struct rockchip_usb2phy_port ports;
+        struct rockchip_usb2phy_port ports[USB2PHY_NUM_PORTS];
     }
 
 .. _`rockchip_usb2phy.members`:

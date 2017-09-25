@@ -60,7 +60,7 @@ Definition
     struct wkup_m3_rproc {
         struct rproc *rproc;
         struct platform_device *pdev;
-        struct wkup_m3_mem mem;
+        struct wkup_m3_mem mem[WKUPM3_MEM_MAX];
     }
 
 .. _`wkup_m3_rproc.members`:

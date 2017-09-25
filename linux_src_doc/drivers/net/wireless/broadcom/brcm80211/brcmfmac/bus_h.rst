@@ -92,7 +92,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_bus_msgbuf {
-        struct brcmf_commonring  *commonrings;
+        struct brcmf_commonring *commonrings[BRCMF_NROF_COMMON_MSGRINGS];
         struct brcmf_commonring **flowrings;
         u32 rx_dataoffset;
         u32 max_rxbufpost;
@@ -176,7 +176,11 @@ Definition
 .. code-block:: c
 
     struct brcmf_bus {
-        union bus_priv;
+        union {
+            struct brcmf_sdio_dev *sdio;
+            struct brcmf_usbdev *usb;
+            struct brcmf_pciedev *pcie;
+        } bus_priv;
         enum brcmf_bus_protocol_type proto_type;
         struct device *dev;
         struct brcmf_pub *drvr;
@@ -196,8 +200,17 @@ Definition
 Members
 -------
 
-bus_priv
-    pointer to private bus device.
+sdio
+    *undescribed*
+
+usb
+    *undescribed*
+
+pcie
+    *undescribed*
+
+us_priv
+    *undescribed*
 
 proto_type
     protocol type, bcdc or msgbuf

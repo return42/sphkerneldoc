@@ -27,7 +27,7 @@ Definition
         void __iomem *regs;
         unsigned int irq;
         enum exynos4_jpeg_result irq_ret;
-        struct clk  *clocks;
+        struct clk *clocks[JPEG_MAX_CLOCKS];
         struct device *dev;
         struct s5p_jpeg_variant *variant;
         u32 irq_status;

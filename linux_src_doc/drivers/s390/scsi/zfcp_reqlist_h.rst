@@ -19,7 +19,7 @@ Definition
 
     struct zfcp_reqlist {
         spinlock_t lock;
-        struct list_head buckets;
+        struct list_head buckets[ZFCP_REQ_LIST_BUCKETS];
     }
 
 .. _`zfcp_reqlist.members`:

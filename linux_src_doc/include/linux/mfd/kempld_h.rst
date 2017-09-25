@@ -25,7 +25,7 @@ Definition
         unsigned int type;
         unsigned int spec_major;
         unsigned int spec_minor;
-        char version;
+        char version[KEMPLD_VERSION_LEN];
     }
 
 .. _`kempld_info.members`:
@@ -133,10 +133,10 @@ Definition
         u32 pld_clock;
         int gpio_base;
         struct resource *ioresource;
-        void (*get_hardware_mutex)(struct kempld_device_data *);
-        void (*release_hardware_mutex)(struct kempld_device_data *);
-        int (*get_info)(struct kempld_device_data *);
-        int (*register_cells)(struct kempld_device_data *);
+        void (*get_hardware_mutex) (struct kempld_device_data *);
+        void (*release_hardware_mutex) (struct kempld_device_data *);
+        int (*get_info) (struct kempld_device_data *);
+        int (*register_cells) (struct kempld_device_data *);
     }
 
 .. _`kempld_platform_data.members`:

@@ -76,7 +76,7 @@ Definition
         void *dp;
         dma_addr_t dp_dma_addr;
         struct mbus_device *dma_mbdev;
-        struct dma_chan  *dma_ch;
+        struct dma_chan *dma_ch[MIC_MAX_DMA_CHAN];
         int num_dma_ch;
         struct scif_hw_dev *scdev;
         struct vop_device *vpdev;

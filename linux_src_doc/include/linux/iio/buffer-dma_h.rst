@@ -118,7 +118,7 @@ Definition
 .. code-block:: c
 
     struct iio_dma_buffer_queue_fileio {
-        struct iio_dma_buffer_block  *blocks;
+        struct iio_dma_buffer_block *blocks[2];
         struct iio_dma_buffer_block *active_block;
         size_t pos;
         size_t block_size;

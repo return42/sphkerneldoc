@@ -25,8 +25,7 @@ Definition
         unsigned long old_addr;
         struct kobject kobj;
         struct list_head stack_node;
-        unsigned long old_size;
-        unsigned long new_size;
+        unsigned long old_size, new_size;
         bool patched;
         bool transition;
     }

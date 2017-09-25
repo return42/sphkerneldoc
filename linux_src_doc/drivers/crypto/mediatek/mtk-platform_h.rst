@@ -24,7 +24,7 @@ Definition
         __le32 ct_hdr;
         __le32 tag;
         __le32 tfm;
-        __le32 bound;
+        __le32 bound[2];
     }
 
 .. _`mtk_desc.members`:
@@ -340,10 +340,10 @@ Definition
         void __iomem *base;
         struct device *dev;
         struct clk *clk_cryp;
-        int irq;
-        struct mtk_ring  *ring;
-        struct mtk_aes_rec  *aes;
-        struct mtk_sha_rec  *sha;
+        int irq[MTK_IRQ_NUM];
+        struct mtk_ring *ring[MTK_RING_MAX];
+        struct mtk_aes_rec *aes[MTK_REC_NUM];
+        struct mtk_sha_rec *sha[MTK_REC_NUM];
         struct list_head aes_list;
         struct list_head sha_list;
         bool rec;

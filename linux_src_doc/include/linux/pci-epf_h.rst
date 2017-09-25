@@ -208,7 +208,7 @@ Definition
         struct device dev;
         const char *name;
         struct pci_epf_header *header;
-        struct pci_epf_bar bar;
+        struct pci_epf_bar bar[6];
         u8 msi_interrupts;
         u8 func_no;
         struct pci_epc *epc;

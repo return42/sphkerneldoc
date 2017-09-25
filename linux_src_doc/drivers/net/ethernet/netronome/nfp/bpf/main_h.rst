@@ -142,8 +142,7 @@ Definition
 .. code-block:: c
 
     struct nfp_net_bpf_priv {
-        struct nfp_stat_pair rx_filter;
-        struct nfp_stat_pair rx_filter_prev;
+        struct nfp_stat_pair rx_filter, rx_filter_prev;
         unsigned long rx_filter_change;
         struct timer_list rx_filter_stats_timer;
         spinlock_t rx_filter_lock;

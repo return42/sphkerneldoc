@@ -36,12 +36,10 @@ Definition
         int slots_allocated;
         struct tasklet_struct irq_tasklet;
         int op_in_desc;
-        char dummy_src;
-        char dummy_dst;
-        dma_addr_t dummy_src_addr;
-        dma_addr_t dummy_dst_addr;
-        u32 saved_config_reg;
-        u32 saved_int_mask_reg;
+        char dummy_src[MV_XOR_MIN_BYTE_COUNT];
+        char dummy_dst[MV_XOR_MIN_BYTE_COUNT];
+        dma_addr_t dummy_src_addr, dummy_dst_addr;
+        u32 saved_config_reg, saved_int_mask_reg;
         struct mv_xor_device *xordev;
     }
 

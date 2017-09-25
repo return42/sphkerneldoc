@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct stp_remote_node_context {
-        u32 data;
+        u32 data[8];
     }
 
 .. _`stp_remote_node_context.members`:

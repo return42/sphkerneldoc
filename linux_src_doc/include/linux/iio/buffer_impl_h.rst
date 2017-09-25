@@ -121,6 +121,16 @@ Definition
         struct list_head demux_list;
         wait_queue_head_t pollq;
         unsigned int watermark;
+        struct attribute_group *scan_el_attrs;
+        bool scan_timestamp;
+        struct list_head scan_el_dev_attr_list;
+        struct attribute_group buffer_group;
+        struct attribute_group scan_el_group;
+        bool stufftoread;
+        const struct attribute **attrs;
+        void *demux_bounce;
+        struct list_head buffer_list;
+        struct kref ref;
     }
 
 .. _`iio_buffer.members`:
@@ -148,6 +158,36 @@ pollq
 
 watermark
     Number of datums to wait for poll/read.
+
+scan_el_attrs
+    *undescribed*
+
+scan_timestamp
+    *undescribed*
+
+scan_el_dev_attr_list
+    *undescribed*
+
+buffer_group
+    *undescribed*
+
+scan_el_group
+    *undescribed*
+
+stufftoread
+    *undescribed*
+
+attrs
+    *undescribed*
+
+demux_bounce
+    *undescribed*
+
+buffer_list
+    *undescribed*
+
+ref
+    *undescribed*
 
 .. _`iio_buffer.description`:
 

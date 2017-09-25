@@ -20,7 +20,7 @@ Definition
     struct iwl_ssid_ie {
         u8 id;
         u8 len;
-        u8 ssid;
+        u8 ssid[IEEE80211_MAX_SSID_LEN];
     }
 
 .. _`iwl_ssid_ie.members`:
@@ -64,7 +64,7 @@ Definition
 .. code-block:: c
 
     struct iwl_scan_offload_blacklist {
-        u8 ssid;
+        u8 ssid[ETH_ALEN];
         u8 reported_rssi;
         u8 client_bitmap;
     }
@@ -106,7 +106,7 @@ Definition
         u8 network_type;
         u8 band_selection;
         u8 client_bitmap;
-        u8 reserved;
+        u8 reserved[2];
     }
 
 .. _`iwl_scan_offload_profile.members`:
@@ -152,14 +152,14 @@ Definition
 .. code-block:: c
 
     struct iwl_scan_offload_profile_cfg {
-        struct iwl_scan_offload_profile profiles;
+        struct iwl_scan_offload_profile profiles[IWL_SCAN_MAX_PROFILES];
         u8 blacklist_len;
         u8 num_profiles;
         u8 match_notify;
         u8 pass_match;
         u8 active_clients;
         u8 any_beacon_notify;
-        u8 reserved;
+        u8 reserved[2];
     }
 
 .. _`iwl_scan_offload_profile_cfg.members`:
@@ -247,7 +247,7 @@ Definition
         __le32 tx_flags;
         __le32 rate_n_flags;
         u8 sta_id;
-        u8 reserved;
+        u8 reserved[3];
     }
 
 .. _`iwl_scan_req_tx_cmd.members`:
@@ -402,14 +402,14 @@ Definition
         __le32 suspend_time;
         __le32 flags;
         __le32 filter_flags;
-        struct iwl_scan_req_tx_cmd tx_cmd;
-        struct iwl_ssid_ie direct_scan;
+        struct iwl_scan_req_tx_cmd tx_cmd[2];
+        struct iwl_ssid_ie direct_scan[PROBE_OPTION_MAX];
         __le32 scan_prio;
         __le32 iter_num;
         __le32 delay;
-        struct iwl_scan_schedule_lmac schedule;
-        struct iwl_scan_channel_opt channel_opt;
-        u8 data;
+        struct iwl_scan_schedule_lmac schedule[IWL_MAX_SCHED_SCAN_PLANS];
+        struct iwl_scan_channel_opt channel_opt[2];
+        u8 data[];
     }
 
 .. _`iwl_scan_req_lmac.members`:
@@ -548,7 +548,7 @@ Definition
         u8 last_channel;
         __le32 tsf_low;
         __le32 tsf_high;
-        struct iwl_scan_results_notif results;
+        struct iwl_scan_results_notif results[];
     }
 
 .. _`iwl_lmac_scan_complete_notif.members`:
@@ -687,10 +687,10 @@ Definition
         __le32 out_of_channel_time;
         __le32 suspend_time;
         struct iwl_scan_dwell dwell;
-        u8 mac_addr;
+        u8 mac_addr[ETH_ALEN];
         u8 bcast_sta_id;
         u8 channel_flags;
-        u8 channel_array;
+        u8 channel_array[];
     }
 
 .. _`iwl_scan_config_v1.members`:
@@ -859,11 +859,11 @@ Definition
 .. code-block:: c
 
     struct iwl_scan_req_umac_tail {
-        struct iwl_scan_umac_schedule schedule;
+        struct iwl_scan_umac_schedule schedule[IWL_MAX_SCHED_SCAN_PLANS];
         __le16 delay;
         __le16 reserved;
         struct iwl_scan_probe_req preq;
-        struct iwl_ssid_ie direct_scan;
+        struct iwl_ssid_ie direct_scan[PROBE_OPTION_MAX];
     }
 
 .. _`iwl_scan_req_umac_tail.members`:
@@ -912,7 +912,26 @@ Definition
         u8 active_dwell;
         u8 passive_dwell;
         u8 fragmented_dwell;
-        union {unnamed_union};
+        union {
+            struct {
+                __le32 max_out_time;
+                __le32 suspend_time;
+                __le32 scan_priority;
+                u8 channel_flags;
+                u8 n_channels;
+                __le16 reserved;
+                u8 data[];
+            } v1;
+            struct {
+                __le32 max_out_time[SCAN_TWO_LMACS];
+                __le32 suspend_time[SCAN_TWO_LMACS];
+                __le32 scan_priority;
+                u8 channel_flags;
+                u8 n_channels;
+                __le16 reserved;
+                u8 data[];
+            } v6;
+        } ;
     }
 
 .. _`iwl_scan_req_umac.members`:
@@ -952,7 +971,6 @@ fragmented_dwell
 
 {unnamed_union}
     anonymous
-
 
 .. _`iwl_umac_scan_abort`:
 
@@ -1053,12 +1071,12 @@ Definition
 .. code-block:: c
 
     struct iwl_scan_offload_profile_match {
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         __le16 reserved;
         u8 channel;
         u8 energy;
         u8 matching_feature;
-        u8 matching_channels;
+        u8 matching_channels[SCAN_OFFLOAD_MATCHING_CHANNELS_LEN];
     }
 
 .. _`iwl_scan_offload_profile_match.members`:
@@ -1110,7 +1128,7 @@ Definition
         u8 resume_while_scanning;
         u8 self_recovery;
         __le16 reserved;
-        struct iwl_scan_offload_profile_match matches;
+        struct iwl_scan_offload_profile_match matches[IWL_SCAN_MAX_PROFILES];
     }
 
 .. _`iwl_scan_offload_profiles_query.members`:
@@ -1169,7 +1187,7 @@ Definition
         u8 bt_status;
         u8 last_channel;
         __le64 start_tsf;
-        struct iwl_scan_results_notif results;
+        struct iwl_scan_results_notif results[];
     }
 
 .. _`iwl_umac_scan_iter_complete_notif.members`:

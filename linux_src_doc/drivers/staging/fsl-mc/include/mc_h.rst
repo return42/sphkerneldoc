@@ -234,7 +234,7 @@ Definition
 .. code-block:: c
 
     struct fsl_mc_obj_desc {
-        char type;
+        char type[16];
         int id;
         u16 vendor;
         u16 ver_major;
@@ -242,7 +242,7 @@ Definition
         u8 irq_count;
         u8 region_count;
         u32 state;
-        char label;
+        char label[16];
         u16 flags;
     }
 
@@ -412,7 +412,10 @@ Definition
         phys_addr_t portal_phys_addr;
         void __iomem *portal_virt_addr;
         struct fsl_mc_device *dpmcp_dev;
-        union {unnamed_union};
+        union {
+            struct mutex mutex;
+            spinlock_t spinlock;
+        } ;
     }
 
 .. _`fsl_mc_io.members`:
@@ -440,7 +443,6 @@ dpmcp_dev
 
 {unnamed_union}
     anonymous
-
 
 .. _`fsl_mc_io.description`:
 

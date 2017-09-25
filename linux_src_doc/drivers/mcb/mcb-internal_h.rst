@@ -23,7 +23,7 @@ Definition
         u8 bus_type;
         u16 magic;
         u16 reserved;
-        char filename;
+        char filename[CHAMELEON_FILENAME_LEN];
     }
 
 .. _`chameleon_fpga_header.members`:

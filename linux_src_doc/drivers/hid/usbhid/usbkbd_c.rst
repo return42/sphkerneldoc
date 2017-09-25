@@ -20,12 +20,11 @@ Definition
     struct usb_kbd {
         struct input_dev *dev;
         struct usb_device *usbdev;
-        unsigned char old;
-        struct urb *irq;
-        struct urb * *led;
+        unsigned char old[8];
+        struct urb *irq, *led;
         unsigned char newleds;
-        char name;
-        char phys;
+        char name[128];
+        char phys[64];
         unsigned char *new;
         struct usb_ctrlrequest *cr;
         unsigned char *leds;

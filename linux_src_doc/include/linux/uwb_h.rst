@@ -26,8 +26,8 @@ Definition
         struct uwb_mac_addr mac_addr;
         struct uwb_dev_addr dev_addr;
         int beacon_slot;
-        unsigned long streams;
-        unsigned long last_availability_bm;
+        DECLARE_BITMAP(streams, UWB_NUM_STREAMS);
+        DECLARE_BITMAP(last_availability_bm, UWB_NUM_MAS);
     }
 
 .. _`uwb_dev.members`:
@@ -94,8 +94,8 @@ Definition
 .. code-block:: c
 
     struct uwb_mas_bm {
-        unsigned long bm;
-        unsigned long unsafe_bm;
+        DECLARE_BITMAP(bm, UWB_NUM_MAS);
+        DECLARE_BITMAP(unsafe_bm, UWB_NUM_MAS);
         int safe;
         int unsafe;
     }
@@ -135,7 +135,10 @@ Definition
 
     struct uwb_rsv_target {
         enum uwb_rsv_target_type type;
-        union {unnamed_union};
+        union {
+            struct uwb_dev *dev;
+            struct uwb_dev_addr devaddr;
+        } ;
     }
 
 .. _`uwb_rsv_target.members`:
@@ -148,7 +151,6 @@ type
 
 {unnamed_union}
     anonymous
-
 
 .. _`uwb_rsv_target.description`:
 
@@ -305,9 +307,9 @@ Definition
 .. code-block:: c
 
     struct uwb_drp_avail {
-        unsigned long global;
-        unsigned long local;
-        unsigned long pending;
+        DECLARE_BITMAP(global, UWB_NUM_MAS);
+        DECLARE_BITMAP(local, UWB_NUM_MAS);
+        DECLARE_BITMAP(pending, UWB_NUM_MAS);
         struct uwb_ie_drp_avail ie;
         bool ie_valid;
     }

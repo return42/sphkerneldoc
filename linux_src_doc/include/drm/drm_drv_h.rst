@@ -18,30 +18,30 @@ Definition
 .. code-block:: c
 
     struct drm_driver {
-        int (*load)(struct drm_device *, unsigned long flags);
-        int (*open)(struct drm_device *, struct drm_file *);
-        void (*postclose)(struct drm_device *, struct drm_file *);
-        void (*lastclose)(struct drm_device *);
-        void (*unload)(struct drm_device *);
-        void (*release)(struct drm_device *);
-        u32 (*get_vblank_counter)(struct drm_device *dev, unsigned int pipe);
-        int (*enable_vblank)(struct drm_device *dev, unsigned int pipe);
-        void (*disable_vblank)(struct drm_device *dev, unsigned int pipe);
-        bool (*get_scanout_position)(struct drm_device *dev, unsigned int pipe,bool in_vblank_irq, int *vpos, int *hpos,ktime_t *stime, ktime_t *etime, const struct drm_display_mode *mode);
-        bool (*get_vblank_timestamp)(struct drm_device *dev, unsigned int pipe,int *max_error,struct timeval *vblank_time, bool in_vblank_irq);
-        irqreturn_t(*irq_handler)(int irq, void *arg);
-        void (*irq_preinstall)(struct drm_device *dev);
-        int (*irq_postinstall)(struct drm_device *dev);
-        void (*irq_uninstall)(struct drm_device *dev);
+        int (*load) (struct drm_device *, unsigned long flags);
+        int (*open) (struct drm_device *, struct drm_file *);
+        void (*postclose) (struct drm_device *, struct drm_file *);
+        void (*lastclose) (struct drm_device *);
+        void (*unload) (struct drm_device *);
+        void (*release) (struct drm_device *);
+        u32 (*get_vblank_counter) (struct drm_device *dev, unsigned int pipe);
+        int (*enable_vblank) (struct drm_device *dev, unsigned int pipe);
+        void (*disable_vblank) (struct drm_device *dev, unsigned int pipe);
+        bool (*get_scanout_position) (struct drm_device *dev, unsigned int pipe,bool in_vblank_irq, int *vpos, int *hpos,ktime_t *stime, ktime_t *etime, const struct drm_display_mode *mode);
+        bool (*get_vblank_timestamp) (struct drm_device *dev, unsigned int pipe,int *max_error,struct timeval *vblank_time, bool in_vblank_irq);
+        irqreturn_t(*irq_handler) (int irq, void *arg);
+        void (*irq_preinstall) (struct drm_device *dev);
+        int (*irq_postinstall) (struct drm_device *dev);
+        void (*irq_uninstall) (struct drm_device *dev);
         int (*master_create)(struct drm_device *dev, struct drm_master *master);
         void (*master_destroy)(struct drm_device *dev, struct drm_master *master);
         int (*master_set)(struct drm_device *dev, struct drm_file *file_priv, bool from_open);
         void (*master_drop)(struct drm_device *dev, struct drm_file *file_priv);
         int (*debugfs_init)(struct drm_minor *minor);
-        void (*gem_free_object)(struct drm_gem_object *obj);
-        void (*gem_free_object_unlocked)(struct drm_gem_object *obj);
-        int (*gem_open_object)(struct drm_gem_object *, struct drm_file *);
-        void (*gem_close_object)(struct drm_gem_object *, struct drm_file *);
+        void (*gem_free_object) (struct drm_gem_object *obj);
+        void (*gem_free_object_unlocked) (struct drm_gem_object *obj);
+        int (*gem_open_object) (struct drm_gem_object *, struct drm_file *);
+        void (*gem_close_object) (struct drm_gem_object *, struct drm_file *);
         struct drm_gem_object *(*gem_create_object)(struct drm_device *dev, size_t size);
         int (*prime_handle_to_fd)(struct drm_device *dev, struct drm_file *file_priv, uint32_t handle, uint32_t flags, int *prime_fd);
         int (*prime_fd_to_handle)(struct drm_device *dev, struct drm_file *file_priv, int prime_fd, uint32_t *handle);
@@ -69,6 +69,13 @@ Definition
         const struct drm_ioctl_desc *ioctls;
         int num_ioctls;
         const struct file_operations *fops;
+        struct list_head legacy_dev_list;
+        int (*firstopen) (struct drm_device *);
+        void (*preclose) (struct drm_device *, struct drm_file *file_priv);
+        int (*dma_ioctl) (struct drm_device *dev, void *data, struct drm_file *file_priv);
+        int (*dma_quiescent) (struct drm_device *);
+        int (*context_dtor) (struct drm_device *dev, int context);
+        int dev_priv_size;
     }
 
 .. _`drm_driver.members`:
@@ -486,6 +493,27 @@ fops
     File operations for the DRM device node. See the discussion in
     :ref:`file operations<drm_driver_fops>` for in-depth coverage and
     some examples.
+
+legacy_dev_list
+    *undescribed*
+
+firstopen
+    *undescribed*
+
+preclose
+    *undescribed*
+
+dma_ioctl
+    *undescribed*
+
+dma_quiescent
+    *undescribed*
+
+context_dtor
+    *undescribed*
+
+dev_priv_size
+    *undescribed*
 
 .. _`drm_driver.description`:
 

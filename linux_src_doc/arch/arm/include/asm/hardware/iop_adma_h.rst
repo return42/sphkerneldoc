@@ -135,7 +135,11 @@ Definition
         u16 idx;
         struct list_head tx_list;
         struct dma_async_tx_descriptor async_tx;
-        union {unnamed_union};
+        union {
+            u32 *xor_check_result;
+            u32 *crc32_result;
+            u32 *pq_check_result;
+        } ;
     }
 
 .. _`iop_adma_desc_slot.members`:
@@ -172,7 +176,6 @@ async_tx
 
 {unnamed_union}
     anonymous
-
 
 .. This file was automatic generated / don't edit.
 

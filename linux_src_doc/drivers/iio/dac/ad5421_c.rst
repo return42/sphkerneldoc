@@ -22,7 +22,10 @@ Definition
         unsigned int ctrl;
         enum ad5421_current_range current_range;
         unsigned int fault_mask;
-        union data;
+        union {
+            __be32 d32;
+            u8 d8[4];
+        } data[2] ____cacheline_aligned;
     }
 
 .. _`ad5421_state.members`:
@@ -42,8 +45,14 @@ current_range
 fault_mask
     software masking of events
 
-data
-    spi transfer buffers
+d32
+    *undescribed*
+
+d8
+    *undescribed*
+
+____cacheline_aligned
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

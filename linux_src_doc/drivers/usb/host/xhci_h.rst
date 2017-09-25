@@ -81,15 +81,15 @@ Definition
         __le32 reserved2;
         __le32 dev_notification;
         __le64 cmd_ring;
-        __le32 reserved3;
+        __le32 reserved3[4];
         __le64 dcbaa_ptr;
         __le32 config_reg;
-        __le32 reserved4;
+        __le32 reserved4[241];
         __le32 port_status_base;
         __le32 port_power_base;
         __le32 port_link_base;
         __le32 reserved5;
-        __le32 reserved6;
+        __le32 reserved6[NUM_PORT_REGS*254];
     }
 
 .. _`xhci_op_regs.members`:
@@ -234,8 +234,8 @@ Definition
 
     struct xhci_run_regs {
         __le32 microframe_index;
-        __le32 rsvd;
-        struct xhci_intr_reg ir_set;
+        __le32 rsvd[7];
+        struct xhci_intr_reg ir_set[128];
     }
 
 .. _`xhci_run_regs.members`:
@@ -277,7 +277,7 @@ Definition
 .. code-block:: c
 
     struct xhci_doorbell_array {
-        __le32 doorbell;
+        __le32 doorbell[256];
     }
 
 .. _`xhci_doorbell_array.members`:
@@ -405,7 +405,7 @@ Definition
         __le32 dev_info2;
         __le32 tt_info;
         __le32 dev_state;
-        __le32 reserved;
+        __le32 reserved[4];
     }
 
 .. _`xhci_slot_ctx.members`:
@@ -457,7 +457,7 @@ Definition
         __le32 ep_info2;
         __le64 deq;
         __le32 tx_info;
-        __le32 reserved;
+        __le32 reserved[3];
     }
 
 .. _`xhci_ep_ctx.members`:
@@ -514,7 +514,7 @@ Definition
     struct xhci_input_control_ctx {
         __le32 drop_flags;
         __le32 add_flags;
-        __le32 rsvd2;
+        __le32 rsvd2[6];
     }
 
 .. _`xhci_input_control_ctx.members`:
@@ -548,7 +548,7 @@ Definition
 .. code-block:: c
 
     struct xhci_device_context_array {
-        __le64 dev_context_ptrs;
+        __le64 dev_context_ptrs[MAX_HC_SLOTS];
         dma_addr_t dma;
     }
 

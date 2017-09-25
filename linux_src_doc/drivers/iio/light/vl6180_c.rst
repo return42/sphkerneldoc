@@ -19,8 +19,7 @@ Definition
 
     struct vl6180_chan_regs {
         u8 drdy_mask;
-        u16 start_reg;
-        u16 value_reg;
+        u16 start_reg, value_reg;
         bool word;
     }
 

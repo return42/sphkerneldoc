@@ -52,7 +52,7 @@ Definition
     struct stm32_adc_calib {
         u32 calfact_s;
         u32 calfact_d;
-        u32 lincalfact;
+        u32 lincalfact[STM32H7_LINCALFACT_NUM];
     }
 
 .. _`stm32_adc_calib.members`:
@@ -90,7 +90,7 @@ Definition
         u32 offset;
         const struct stm32_adc_cfg *cfg;
         struct completion completion;
-        u16 buffer;
+        u16 buffer[STM32_ADC_MAX_SQ];
         struct clk *clk;
         int irq;
         spinlock_t lock;
@@ -103,7 +103,7 @@ Definition
         dma_addr_t rx_dma_buf;
         unsigned int rx_buf_sz;
         u32 pcsel;
-        u32 smpr_val;
+        u32 smpr_val[2];
         struct stm32_adc_calib cal;
     }
 

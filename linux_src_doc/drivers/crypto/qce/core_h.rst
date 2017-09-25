@@ -25,9 +25,7 @@ Definition
         int result;
         void __iomem *base;
         struct device *dev;
-        struct clk *core;
-        struct clk * *iface;
-        struct clk * * *bus;
+        struct clk *core, *iface, *bus;
         struct qce_dma_data dma;
         int burst_size;
         unsigned int pipe_pair_id;

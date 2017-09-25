@@ -20,7 +20,7 @@ Definition
         u8 cmd;
         u8 flags;
         __le16 sequence;
-        u8 data;
+        u8 data[0];
     }
 
 .. _`il_cmd_header.members`:
@@ -215,7 +215,10 @@ Definition
 .. code-block:: c
 
     union il4965_tx_power_dual_stream {
-        struct s;
+        struct {
+            u8 radio_tx_gain[2];
+            u8 dsp_predis_atten[2];
+        } s;
         u32 dw;
     }
 
@@ -224,8 +227,14 @@ Definition
 Members
 -------
 
-s
+radio_tx_gain
     *undescribed*
+
+dsp_predis_atten
+    *undescribed*
+
+void
+    no arguments
 
 dw
     *undescribed*
@@ -300,7 +309,7 @@ Definition
 .. code-block:: c
 
     struct il4965_tx_power_db {
-        struct tx_power_dual_stream power_tbl;
+        struct tx_power_dual_stream power_tbl[POWER_TBL_NUM_ENTRIES];
     }
 
 .. _`il4965_tx_power_db.members`:
@@ -390,7 +399,7 @@ Definition
 .. code-block:: c
 
     struct sta_id_modify {
-        u8 addr;
+        u8 addr[ETH_ALEN];
         __le16 reserved1;
         u8 sta_id;
         u8 modify_mask;
@@ -506,7 +515,7 @@ Definition
         u8 mimo_delimiter;
         u8 single_stream_ant_msk;
         u8 dual_stream_ant_msk;
-        u8 start_rate_idx;
+        u8 start_rate_idx[LINK_QUAL_AC_NUM];
     }
 
 .. _`il_link_qual_general_params.members`:
@@ -671,7 +680,7 @@ Definition
     struct il_ssid_ie {
         u8 id;
         u8 len;
-        u8 ssid;
+        u8 ssid[32];
     }
 
 .. _`il_ssid_ie.members`:
@@ -936,7 +945,7 @@ Definition
 
     struct il_sensitivity_cmd {
         __le16 control;
-        __le16 table;
+        __le16 table[HD_TBL_SIZE];
     }
 
 .. _`il_sensitivity_cmd.members`:

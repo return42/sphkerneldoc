@@ -21,7 +21,7 @@ Definition
         bool error_reported;
         bool error_uncorrectable;
         int error_count;
-        int error_loc;
+        int error_loc[16];
     }
 
 .. _`elm_errorvec.members`:

@@ -95,7 +95,18 @@ Definition
         unsigned long flags;
         struct nfp_app *app;
         struct devlink_port dl_port;
-        union {unnamed_union};
+        union {
+            struct {
+                unsigned int eth_id;
+                struct nfp_eth_table_port *eth_port;
+                u8 __iomem *eth_stats;
+            } ;
+            struct {
+                unsigned int pf_id;
+                unsigned int vf_id;
+                u8 __iomem *vnic;
+            } ;
+        } ;
         struct list_head port_list;
     }
 
@@ -119,9 +130,11 @@ app
 dl_port
     devlink port structure
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+{unnamed_struct}
+    anonymous
 
 port_list
     entry on pf's list of ports

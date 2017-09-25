@@ -146,7 +146,7 @@ Definition
         u16 seq;
         u16 last;
         u32 frag_size;
-        u8 fragment;
+        u8 fragment[];
     }
 
 .. _`wcnss_download_nv_req.members`:

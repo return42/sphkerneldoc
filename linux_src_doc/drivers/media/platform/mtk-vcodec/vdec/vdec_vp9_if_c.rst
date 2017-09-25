@@ -59,7 +59,7 @@ Definition
 
     struct vp9_fb_info {
         struct vdec_fb *fb;
-        unsigned int reserved;
+        unsigned int reserved[32];
     }
 
 .. _`vp9_fb_info.members`:
@@ -125,7 +125,7 @@ Definition
     struct vp9_ref_buf {
         struct vp9_fb_info *buf;
         unsigned int idx;
-        unsigned int reserved;
+        unsigned int reserved[6];
     }
 
 .. _`vp9_ref_buf.members`:

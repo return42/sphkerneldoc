@@ -275,7 +275,10 @@ Definition
         enum pinctrl_map_type type;
         struct pinctrl_dev *pctldev;
         const char *dev_name;
-        union data;
+        union {
+            struct pinctrl_setting_mux mux;
+            struct pinctrl_setting_configs configs;
+        } data;
     }
 
 .. _`pinctrl_setting.members`:
@@ -296,8 +299,14 @@ pctldev
 dev_name
     the name of the device using this state
 
-data
-    Data specific to the setting type
+mux
+    *undescribed*
+
+configs
+    *undescribed*
+
+ata
+    *undescribed*
 
 .. _`pin_desc`:
 

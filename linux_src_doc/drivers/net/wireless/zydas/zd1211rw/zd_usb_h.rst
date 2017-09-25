@@ -24,8 +24,7 @@ Definition
         struct sk_buff_head submitted_skbs;
         struct usb_anchor submitted;
         int submitted_urbs;
-        u8 stopped:1;
-        u8 watchdog_enabled:1:1;
+        u8 stopped:1, watchdog_enabled:1;
     }
 
 .. _`zd_usb_tx.members`:

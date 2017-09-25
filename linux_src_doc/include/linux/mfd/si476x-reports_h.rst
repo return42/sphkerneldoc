@@ -18,12 +18,9 @@ Definition
 .. code-block:: c
 
     struct si476x_rsq_status_report {
-        __u8 multhint;
-        __u8 multlint;
-        __u8 snrhint;
-        __u8 snrlint;
-        __u8 rssihint;
-        __u8 rssilint;
+        __u8 multhint, multlint;
+        __u8 snrhint, snrlint;
+        __u8 rssihint, rssilint;
         __u8 bltf;
         __u8 snr_ready;
         __u8 rssiready;
@@ -35,8 +32,7 @@ Definition
         __s8 rssi;
         __s8 snr;
         __s8 issi;
-        __s8 lassi;
-        __s8 hassi;
+        __s8 lassi, hassi;
         __s8 mult;
         __u8 dev;
         __u16 readantcap;

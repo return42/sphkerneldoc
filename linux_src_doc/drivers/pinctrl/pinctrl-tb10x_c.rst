@@ -58,8 +58,8 @@ Definition
         struct tb10x_of_pinfunc *pinfuncs;
         unsigned int pinfuncnt;
         struct mutex mutex;
-        struct tb10x_port ports;
-        unsigned long gpios;
+        struct tb10x_port ports[TB10X_PORTS];
+        DECLARE_BITMAP(gpios, MAX_PIN + 1);
     }
 
 .. _`tb10x_pinctrl.members`:

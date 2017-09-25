@@ -137,10 +137,8 @@ Definition
 .. code-block:: c
 
     struct knav_region {
-        dma_addr_t dma_start;
-        dma_addr_t dma_end;
-        void *virt_start;
-        void * *virt_end;
+        dma_addr_t dma_start, dma_end;
+        void *virt_start, *virt_end;
         unsigned desc_size;
         unsigned used_desc;
         unsigned id;
@@ -278,9 +276,7 @@ Definition
 
     struct knav_queue_inst {
         u32 *descs;
-        atomic_t desc_head;
-        atomic_t desc_tail;
-        atomic_t desc_count;
+        atomic_t desc_head, desc_tail, desc_count;
         struct knav_acc_channel *acc;
         struct knav_device *kdev;
         struct knav_range_info *range;
@@ -361,9 +357,7 @@ Definition
 .. code-block:: c
 
     struct knav_queue {
-        struct knav_reg_queue __iomem *reg_push;
-        struct knav_reg_queue __iomem * *reg_pop;
-        struct knav_reg_queue __iomem * * *reg_peek;
+        struct knav_reg_queue __iomem *reg_push, *reg_pop, *reg_peek;
         struct knav_queue_inst *inst;
         struct knav_queue_stats stats;
         knav_queue_notify_fn notifier_fn;

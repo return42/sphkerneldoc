@@ -20,10 +20,10 @@ Definition
     struct m88ds3103_platform_data {
         u32 clk;
         u16 i2c_wr_max;
-    #define M88DS3103_TS_SERIAL 0
-    #define M88DS3103_TS_SERIAL_D7 1
-    #define M88DS3103_TS_PARALLEL 2
-    #define M88DS3103_TS_CI 3
+    #define M88DS3103_TS_SERIAL 0 
+    #define M88DS3103_TS_SERIAL_D7 1 
+    #define M88DS3103_TS_PARALLEL 2 
+    #define M88DS3103_TS_CI 3 
         u8 ts_mode:2;
         u32 ts_clk;
         u8 ts_clk_pol:1;
@@ -39,6 +39,7 @@ Definition
         u8 lnb_en_pol:1;
         struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
         struct i2c_adapter* (*get_i2c_adapter)(struct i2c_client *);
+        u8 attach_in_use:1;
     }
 
 .. _`m88ds3103_platform_data.members`:
@@ -90,6 +91,9 @@ get_dvb_frontend
 
 get_i2c_adapter
     Get I2C adapter.
+
+attach_in_use
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

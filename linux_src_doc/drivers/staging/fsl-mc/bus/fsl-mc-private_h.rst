@@ -76,7 +76,7 @@ Definition
 
     struct fsl_mc_bus {
         struct fsl_mc_device mc_dev;
-        struct fsl_mc_resource_pool resource_pools;
+        struct fsl_mc_resource_pool resource_pools[FSL_MC_NUM_POOL_TYPES];
         struct fsl_mc_device_irq *irq_resources;
         struct mutex scan_mutex;
         struct dprc_attributes dprc_attr;

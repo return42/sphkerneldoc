@@ -157,8 +157,7 @@ Definition
         int max_reg_power;
         bool beacon_found;
         u32 orig_flags;
-        int orig_mag;
-        int orig_mpwr;
+        int orig_mag, orig_mpwr;
         enum nl80211_dfs_state dfs_state;
         unsigned long dfs_state_entered;
         unsigned int dfs_cac_ms;
@@ -391,8 +390,7 @@ Definition
     struct ieee80211_rate {
         u32 flags;
         u16 bitrate;
-        u16 hw_value;
-        u16 hw_value_short;
+        u16 hw_value, hw_value_short;
     }
 
 .. _`ieee80211_rate.members`:
@@ -648,7 +646,7 @@ Definition
     struct vif_params {
         u32 flags;
         int use_4addr;
-        u8 macaddr;
+        u8 macaddr[ETH_ALEN];
         const u8 *vht_mumimo_groups;
         const u8 *vht_mumimo_follow_addr;
     }
@@ -1146,9 +1144,9 @@ Definition
         u32 wpa_versions;
         u32 cipher_group;
         int n_ciphers_pairwise;
-        u32 ciphers_pairwise;
+        u32 ciphers_pairwise[NL80211_MAX_NR_CIPHER_SUITES];
         int n_akm_suites;
-        u32 akm_suites;
+        u32 akm_suites[NL80211_MAX_NR_AKM_SUITES];
         bool control_port;
         __be16 control_port_ethertype;
         bool control_port_no_encrypt;
@@ -1222,14 +1220,12 @@ Definition
 .. code-block:: c
 
     struct cfg80211_beacon_data {
-        const u8 *head;
-        const u8 * *tail;
+        const u8 *head, *tail;
         const u8 *beacon_ies;
         const u8 *proberesp_ies;
         const u8 *assocresp_ies;
         const u8 *probe_resp;
-        size_t head_len;
-        size_t tail_len;
+        size_t head_len, tail_len;
         size_t beacon_ies_len;
         size_t proberesp_ies_len;
         size_t assocresp_ies_len;
@@ -1300,7 +1296,7 @@ Definition
     struct cfg80211_acl_data {
         enum nl80211_acl_policy acl_policy;
         int n_acl_entries;
-        struct mac_address mac_addrs;
+        struct mac_address mac_addrs[];
     }
 
 .. _`cfg80211_acl_data.members`:
@@ -1337,8 +1333,7 @@ Definition
     struct cfg80211_ap_settings {
         struct cfg80211_chan_def chandef;
         struct cfg80211_beacon_data beacon;
-        int beacon_interval;
-        int dtim_period;
+        int beacon_interval, dtim_period;
         const u8 *ssid;
         size_t ssid_len;
         enum nl80211_hidden_ssid hidden_ssid;
@@ -1354,8 +1349,7 @@ Definition
         struct cfg80211_bitrate_mask beacon_rate;
         const struct ieee80211_ht_cap *ht_cap;
         const struct ieee80211_vht_cap *vht_cap;
-        bool ht_required;
-        bool vht_required;
+        bool ht_required, vht_required;
     }
 
 .. _`cfg80211_ap_settings.members`:
@@ -1526,7 +1520,7 @@ Definition
     struct iface_combination_params {
         int num_different_channels;
         u8 radar_detect;
-        int iftype_num;
+        int iftype_num[NUM_NL80211_IFTYPES];
         u32 new_beacon_int;
     }
 
@@ -1623,8 +1617,7 @@ Definition
     struct station_parameters {
         const u8 *supported_rates;
         struct net_device *vlan;
-        u32 sta_flags_mask;
-        u32 sta_flags_set;
+        u32 sta_flags_mask, sta_flags_set;
         u32 sta_modify_mask;
         int listen_interval;
         u16 aid;
@@ -2201,8 +2194,8 @@ Definition
         s8 signal;
         s8 signal_avg;
         u8 chains;
-        s8 chain_signal;
-        s8 chain_signal_avg;
+        s8 chain_signal[IEEE80211_MAX_CHAINS];
+        s8 chain_signal_avg[IEEE80211_MAX_CHAINS];
         struct rate_info txrate;
         struct rate_info rxrate;
         u32 rx_packets;
@@ -2224,7 +2217,7 @@ Definition
         u64 rx_beacon;
         u64 rx_duration;
         u8 rx_beacon_signal_avg;
-        struct cfg80211_tid_stats pertid;
+        struct cfg80211_tid_stats pertid[IEEE80211_NUM_TIDS + 1];
     }
 
 .. _`station_info.members`:
@@ -2597,8 +2590,7 @@ Definition
         u8 basic_rates_len;
         int ap_isolate;
         int ht_opmode;
-        s8 p2p_ctwindow;
-        s8 p2p_opp_ps;
+        s8 p2p_ctwindow, p2p_opp_ps;
     }
 
 .. _`bss_parameters.members`:
@@ -2853,7 +2845,7 @@ Definition
         bool user_mpm;
         u8 dtim_period;
         u16 beacon_interval;
-        int mcast_rate;
+        int mcast_rate[NUM_NL80211_BANDS];
         u32 basic_rates;
         struct cfg80211_bitrate_mask beacon_rate;
         bool userspace_handles_dfs;
@@ -3049,7 +3041,7 @@ Definition
 .. code-block:: c
 
     struct cfg80211_ssid {
-        u8 ssid;
+        u8 ssid[IEEE80211_MAX_SSID_LEN];
         u8 ssid_len;
     }
 
@@ -3082,7 +3074,7 @@ Definition
 
     struct cfg80211_scan_info {
         u64 scan_start_tsf;
-        u8 tsf_bssid;
+        u8 tsf_bssid[ETH_ALEN] __aligned(2);
         bool aborted;
     }
 
@@ -3129,17 +3121,17 @@ Definition
         u16 duration;
         bool duration_mandatory;
         u32 flags;
-        u32 rates;
+        u32 rates[NUM_NL80211_BANDS];
         struct wireless_dev *wdev;
-        u8 mac_addr;
-        u8 mac_addr_mask;
-        u8 bssid;
+        u8 mac_addr[ETH_ALEN] __aligned(2);
+        u8 mac_addr_mask[ETH_ALEN] __aligned(2);
+        u8 bssid[ETH_ALEN] __aligned(2);
         struct wiphy *wiphy;
         unsigned long scan_start;
         struct cfg80211_scan_info info;
         bool notified;
         bool no_cck;
-        struct ieee80211_channel  *channels;
+        struct ieee80211_channel *channels[0];
     }
 
 .. _`cfg80211_scan_request.members`:
@@ -3230,7 +3222,7 @@ Definition
 
     struct cfg80211_match_set {
         struct cfg80211_ssid ssid;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         s32 rssi_thold;
     }
 
@@ -3348,8 +3340,8 @@ Definition
         u32 delay;
         struct cfg80211_sched_scan_plan *scan_plans;
         int n_scan_plans;
-        u8 mac_addr;
-        u8 mac_addr_mask;
+        u8 mac_addr[ETH_ALEN] __aligned(2);
+        u8 mac_addr_mask[ETH_ALEN] __aligned(2);
         bool relative_rssi_set;
         s8 relative_rssi;
         struct cfg80211_bss_select_adjust rssi_adjust;
@@ -3361,7 +3353,7 @@ Definition
         u32 owner_nlportid;
         bool nl_owner_dead;
         struct list_head list;
-        struct ieee80211_channel  *channels;
+        struct ieee80211_channel *channels[0];
     }
 
 .. _`cfg80211_sched_scan_request.members`:
@@ -3529,7 +3521,7 @@ Definition
         s32 signal;
         u64 boottime_ns;
         u64 parent_tsf;
-        u8 parent_bssid;
+        u8 parent_bssid[ETH_ALEN] __aligned(2);
     }
 
 .. _`cfg80211_inform_bss.members`:
@@ -3585,7 +3577,7 @@ Definition
         struct rcu_head rcu_head;
         int len;
         bool from_beacon;
-        u8 data;
+        u8 data[];
     }
 
 .. _`cfg80211_bss_ies.members`:
@@ -3634,8 +3626,8 @@ Definition
         s32 signal;
         u16 beacon_interval;
         u16 capability;
-        u8 bssid;
-        u8 priv;
+        u8 bssid[ETH_ALEN];
+        u8 priv[0] __aligned(sizeof(void *));
     }
 
 .. _`cfg80211_bss.members`:
@@ -3745,8 +3737,7 @@ Definition
         size_t ie_len;
         enum nl80211_auth_type auth_type;
         const u8 *key;
-        u8 key_len;
-        u8 key_idx;
+        u8 key_len, key_idx;
         const u8 *auth_data;
         size_t auth_data_len;
     }
@@ -3849,16 +3840,14 @@ Definition
 
     struct cfg80211_assoc_request {
         struct cfg80211_bss *bss;
-        const u8 *ie;
-        const u8 * *prev_bssid;
+        const u8 *ie, *prev_bssid;
         size_t ie_len;
         struct cfg80211_crypto_settings crypto;
         bool use_mfp;
         u32 flags;
         struct ieee80211_ht_cap ht_capa;
         struct ieee80211_ht_cap ht_capa_mask;
-        struct ieee80211_vht_cap vht_capa;
-        struct ieee80211_vht_cap vht_capa_mask;
+        struct ieee80211_vht_cap vht_capa, vht_capa_mask;
         const u8 *fils_kek;
         size_t fils_kek_len;
         const u8 *fils_nonces;
@@ -4058,15 +4047,14 @@ Definition
         const u8 *bssid;
         struct cfg80211_chan_def chandef;
         const u8 *ie;
-        u8 ssid_len;
-        u8 ie_len;
+        u8 ssid_len, ie_len;
         u16 beacon_interval;
         u32 basic_rates;
         bool channel_fixed;
         bool privacy;
         bool control_port;
         bool userspace_handles_dfs;
-        int mcast_rate;
+        int mcast_rate[NUM_NL80211_BANDS];
         struct ieee80211_ht_cap ht_capa;
         struct ieee80211_ht_cap ht_capa_mask;
     }
@@ -4156,7 +4144,10 @@ Definition
 
     struct cfg80211_bss_selection {
         enum nl80211_bss_select_attr behaviour;
-        union param;
+        union {
+            enum nl80211_band band_pref;
+            struct cfg80211_bss_select_adjust adjust;
+        } param;
     }
 
 .. _`cfg80211_bss_selection.members`:
@@ -4167,8 +4158,14 @@ Members
 behaviour
     requested BSS selection behaviour.
 
-param
-    parameters for requestion behaviour.
+band_pref
+    preferred band for \ ``NL80211_BSS_SELECT_ATTR_BAND_PREF``\ .
+
+adjust
+    parameters for \ ``NL80211_BSS_SELECT_ATTR_RSSI_ADJUST``\ .
+
+aram
+    *undescribed*
 
 .. _`cfg80211_connect_params`:
 
@@ -4200,8 +4197,7 @@ Definition
         enum nl80211_mfp mfp;
         struct cfg80211_crypto_settings crypto;
         const u8 *key;
-        u8 key_len;
-        u8 key_idx;
+        u8 key_len, key_idx;
         u32 flags;
         int bg_scan_period;
         struct ieee80211_ht_cap ht_capa;
@@ -4517,8 +4513,7 @@ Definition
 .. code-block:: c
 
     struct cfg80211_pkt_pattern {
-        const u8 *mask;
-        const u8 * *pattern;
+        const u8 *mask, *pattern;
         int pattern_len;
         int pkt_offset;
     }
@@ -4567,18 +4562,15 @@ Definition
 
     struct cfg80211_wowlan_tcp {
         struct socket *sock;
-        __be32 src;
-        __be32 dst;
-        u16 src_port;
-        u16 dst_port;
-        u8 dst_mac;
+        __be32 src, dst;
+        u16 src_port, dst_port;
+        u8 dst_mac[ETH_ALEN];
         int payload_len;
         const u8 *payload;
         struct nl80211_wowlan_tcp_data_seq payload_seq;
         u32 data_interval;
         u32 wake_len;
-        const u8 *wake_data;
-        const u8 * *wake_mask;
+        const u8 *wake_data, *wake_mask;
         u32 tokens_size;
         struct nl80211_wowlan_tcp_data_token payload_tok;
     }
@@ -4650,13 +4642,7 @@ Definition
 .. code-block:: c
 
     struct cfg80211_wowlan {
-        bool any;
-        bool disconnect;
-        bool magic_pkt;
-        bool gtk_rekey_failure;
-        bool eap_identity_req;
-        bool four_way_handshake;
-        bool rfkill_release;
+        bool any, disconnect, magic_pkt, gtk_rekey_failure,eap_identity_req, four_way_handshake, rfkill_release;
         struct cfg80211_pkt_pattern *patterns;
         struct cfg80211_wowlan_tcp *tcp;
         int n_patterns;
@@ -4816,7 +4802,7 @@ Definition
     struct cfg80211_wowlan_nd_match {
         struct cfg80211_ssid ssid;
         int n_channels;
-        u32 channels;
+        u32 channels[];
     }
 
 .. _`cfg80211_wowlan_nd_match.members`:
@@ -4853,7 +4839,7 @@ Definition
 
     struct cfg80211_wowlan_nd_info {
         int n_matches;
-        struct cfg80211_wowlan_nd_match  *matches;
+        struct cfg80211_wowlan_nd_match *matches[];
     }
 
 .. _`cfg80211_wowlan_nd_info.members`:
@@ -4887,19 +4873,9 @@ Definition
 .. code-block:: c
 
     struct cfg80211_wowlan_wakeup {
-        bool disconnect;
-        bool magic_pkt;
-        bool gtk_rekey_failure;
-        bool eap_identity_req;
-        bool four_way_handshake;
-        bool rfkill_release;
-        bool packet_80211;
-        bool tcp_match;
-        bool tcp_connlost;
-        bool tcp_nomoretokens;
+        bool disconnect, magic_pkt, gtk_rekey_failure,eap_identity_req, four_way_handshake,rfkill_release, packet_80211, tcp_match, tcp_connlost, tcp_nomoretokens;
         s32 pattern_idx;
-        u32 packet_present_len;
-        u32 packet_len;
+        u32 packet_present_len, packet_len;
         const void *packet;
         struct cfg80211_wowlan_nd_info *net_detect;
     }
@@ -4974,9 +4950,7 @@ Definition
 .. code-block:: c
 
     struct cfg80211_gtk_rekey_data {
-        const u8 *kek;
-        const u8 * *kck;
-        const u8 * * *replay_ctr;
+        const u8 *kek, *kck, *replay_ctr;
     }
 
 .. _`cfg80211_gtk_rekey_data.members`:
@@ -5185,8 +5159,8 @@ Definition
 
     struct cfg80211_qos_map {
         u8 num_des;
-        struct cfg80211_dscp_exception dscp_exception;
-        struct cfg80211_dscp_range up;
+        struct cfg80211_dscp_exception dscp_exception[IEEE80211_QOS_MAP_MAX_EX];
+        struct cfg80211_dscp_range up[8];
     }
 
 .. _`cfg80211_qos_map.members`:
@@ -5334,7 +5308,7 @@ Definition
 
     struct cfg80211_nan_func {
         enum nl80211_nan_function_type type;
-        u8 service_id;
+        u8 service_id[NL80211_NAN_FUNC_SERVICE_ID_LEN];
         u8 publish_type;
         bool close_range;
         bool publish_bcast;
@@ -5503,7 +5477,7 @@ Definition
         int (*del_virtual_intf)(struct wiphy *wiphy, struct wireless_dev *wdev);
         int (*change_virtual_intf)(struct wiphy *wiphy,struct net_device *dev,enum nl80211_iftype type, struct vif_params *params);
         int (*add_key)(struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr, struct key_params *params);
-        int (*get_key)(struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr,void *cookie, void (*callback);
+        int (*get_key)(struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr,void *cookie, void (*callback)(void *cookie, struct key_params*));
         int (*del_key)(struct wiphy *wiphy, struct net_device *netdev, u8 key_index, bool pairwise, const u8 *mac_addr);
         int (*set_default_key)(struct wiphy *wiphy,struct net_device *netdev, u8 key_index, bool unicast, bool multicast);
         int (*set_default_mgmt_key)(struct wiphy *wiphy,struct net_device *netdev, u8 key_index);
@@ -6678,8 +6652,8 @@ Definition
 .. code-block:: c
 
     struct wiphy {
-        u8 perm_addr;
-        u8 addr_mask;
+        u8 perm_addr[ETH_ALEN];
+        u8 addr_mask[ETH_ALEN];
         struct mac_address *addresses;
         const struct ieee80211_txrx_stypes *mgmt_stypes;
         const struct ieee80211_iface_combination *iface_combinations;
@@ -6688,10 +6662,8 @@ Definition
         u16 n_addresses;
         u16 interface_modes;
         u16 max_acl_mac_addrs;
-        u32 flags;
-        u32 regulatory_flags;
-        u32 features;
-        u8 ext_features;
+        u32 flags, regulatory_flags, features;
+        u8 ext_features[DIV_ROUND_UP(NUM_NL80211_EXT_FEATURES, 8)];
         u32 ap_sme_capa;
         enum cfg80211_signal_type signal_type;
         int bss_priv_size;
@@ -6711,7 +6683,7 @@ Definition
         u32 frag_threshold;
         u32 rts_threshold;
         u8 coverage_class;
-        char fw_version;
+        char fw_version[ETHTOOL_FWVERS_LEN];
         u32 hw_version;
     #ifdef CONFIG_PM
         const struct wiphy_wowlan_support *wowlan;
@@ -6722,13 +6694,12 @@ Definition
         u32 available_antennas_tx;
         u32 available_antennas_rx;
         u32 probe_resp_offload;
-        const u8 *extended_capabilities;
-        const u8 * *extended_capabilities_mask;
+        const u8 *extended_capabilities, *extended_capabilities_mask;
         u8 extended_capabilities_len;
         const struct wiphy_iftype_ext_capab *iftype_ext_capab;
         unsigned int num_iftype_ext_capab;
         const void *privid;
-        struct ieee80211_supported_band  *bands;
+        struct ieee80211_supported_band *bands[NUM_NL80211_BANDS];
         void (*reg_notifier)(struct wiphy *wiphy, struct regulatory_request *request);
         const struct ieee80211_regdomain __rcu *regd;
         struct device dev;
@@ -6744,15 +6715,14 @@ Definition
         const struct wiphy_coalesce_support *coalesce;
         const struct wiphy_vendor_command *vendor_commands;
         const struct nl80211_vendor_cmd_info *vendor_events;
-        int n_vendor_commands;
-        int n_vendor_events;
+        int n_vendor_commands, n_vendor_events;
         u16 max_ap_assoc_sta;
         u8 max_num_csa_counters;
         u8 max_adj_channel_rssi_comp;
         u32 bss_select_support;
         u64 cookie_counter;
         u8 nan_supported_bands;
-        char priv;
+        char priv[0] __aligned(NETDEV_ALIGN);
     }
 
 .. _`wiphy.members`:
@@ -7278,19 +7248,16 @@ Definition
         struct list_head mgmt_registrations;
         spinlock_t mgmt_registrations_lock;
         struct mutex mtx;
-        bool use_4addr;
-        bool is_running;
-        u8 address;
-        u8 ssid;
-        u8 ssid_len;
-        u8 mesh_id_len;
-        u8 mesh_id_up_len;
+        bool use_4addr, is_running;
+        u8 address[ETH_ALEN] __aligned(sizeof(u16));
+        u8 ssid[IEEE80211_MAX_SSID_LEN];
+        u8 ssid_len, mesh_id_len, mesh_id_up_len;
         struct cfg80211_conn *conn;
         struct cfg80211_cached_keys *connect_keys;
         enum ieee80211_bss_type conn_bss_type;
         u32 conn_owner_nlportid;
         struct work_struct disconnect_wk;
-        u8 disconnect_bssid;
+        u8 disconnect_bssid[ETH_ALEN];
         struct list_head event_list;
         spinlock_t event_lock;
         struct cfg80211_internal_bss *current_bss;
@@ -7308,7 +7275,17 @@ Definition
         unsigned long cac_start_time;
         unsigned int cac_time_ms;
     #ifdef CONFIG_CFG80211_WEXT
-        struct wext;
+        struct {
+            struct cfg80211_ibss_params ibss;
+            struct cfg80211_connect_params connect;
+            struct cfg80211_cached_keys *keys;
+            const u8 *ie;
+            size_t ie_len;
+            u8 bssid[ETH_ALEN], prev_bssid[ETH_ALEN];
+            u8 ssid[IEEE80211_MAX_SSID_LEN];
+            s8 default_key, default_mgmt_key;
+            bool prev_bssid_valid;
+        } wext;
     #endif
         struct cfg80211_cqm_config *cqm_config;
     }
@@ -7439,8 +7416,41 @@ cac_start_time
 cac_time_ms
     CAC time in ms
 
-wext
-    (private) Used by the internal wireless extensions compat code
+ibss
+    *undescribed*
+
+connect
+    *undescribed*
+
+keys
+    *undescribed*
+
+ie
+    *undescribed*
+
+ie_len
+    *undescribed*
+
+bssid
+    (private) Used by the internal configuration code
+
+prev_bssid
+    *undescribed*
+
+ssid
+    (private) Used by the internal configuration code
+
+default_key
+    *undescribed*
+
+default_mgmt_key
+    *undescribed*
+
+prev_bssid_valid
+    *undescribed*
+
+ext
+    *undescribed*
 
 cqm_config
     (private) nl80211 RSSI monitor state
@@ -7621,8 +7631,7 @@ Definition
         struct ieee80211_radiotap_header *_rtheader;
         const struct ieee80211_radiotap_vendor_namespaces *_vns;
         const struct ieee80211_radiotap_namespace *current_namespace;
-        unsigned char *_arg;
-        unsigned char * *_next_ns_data;
+        unsigned char *_arg, *_next_ns_data;
         __le32 *_next_bitmap;
         unsigned char *this_arg;
         int this_arg_index;

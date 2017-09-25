@@ -22,8 +22,8 @@ Definition
         struct device *dev;
         u16 base;
         bool poll_eoc;
-        u32 rsense;
-        u16 offset;
+        u32 rsense[2];
+        u16 offset[2];
         u16 gain;
         struct mutex lock;
         struct completion complete;

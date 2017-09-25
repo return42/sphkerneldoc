@@ -180,7 +180,7 @@ Definition
         struct ttm_bo_global *glob;
         struct ttm_bo_device *bdev;
         enum ttm_bo_type type;
-        void (*destroy)(struct ttm_buffer_object *);
+        void (*destroy) (struct ttm_buffer_object *);
         unsigned long num_pages;
         size_t acc_size;
         struct kref kref;

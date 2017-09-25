@@ -132,7 +132,7 @@ Definition
     struct jpu_fmt {
         u32 fourcc;
         u32 colorspace;
-        u8 bpp;
+        u8 bpp[2];
         u8 h_align;
         u8 v_align;
         u8 subsampling;

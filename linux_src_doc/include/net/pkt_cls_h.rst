@@ -84,7 +84,7 @@ Definition
 .. code-block:: c
 
     struct tcf_pkt_info {
-        unsigned char *ptr;
+        unsigned char * ptr;
         int nexthdr;
     }
 
@@ -116,7 +116,7 @@ Definition
 .. code-block:: c
 
     struct tcf_ematch {
-        struct tcf_ematch_ops *ops;
+        struct tcf_ematch_ops * ops;
         unsigned long data;
         unsigned int datalen;
         u16 matchid;
@@ -165,7 +165,7 @@ Definition
 
     struct tcf_ematch_tree {
         struct tcf_ematch_tree_hdr hdr;
-        struct tcf_ematch *matches;
+        struct tcf_ematch * matches;
     }
 
 .. _`tcf_ematch_tree.members`:

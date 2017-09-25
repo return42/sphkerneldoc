@@ -66,7 +66,7 @@ Definition
         struct regulator *regu;
         int irq_sw;
         int irq_hw;
-        struct adc_cal_data cal_data;
+        struct adc_cal_data cal_data[NBR_CAL_INPUTS];
     }
 
 .. _`ab8500_gpadc.members`:

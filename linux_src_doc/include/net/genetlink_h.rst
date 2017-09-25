@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct genl_multicast_group {
-        char name;
+        char name[GENL_NAMSIZ];
     }
 
 .. _`genl_multicast_group.members`:
@@ -48,7 +48,7 @@ Definition
     struct genl_family {
         int id;
         unsigned int hdrsize;
-        char name;
+        char name[GENL_NAMSIZ];
         unsigned int version;
         unsigned int maxattr;
         bool netnsok;
@@ -57,8 +57,8 @@ Definition
         void (*post_doit)(const struct genl_ops *ops,struct sk_buff *skb, struct genl_info *info);
         int (*mcast_bind)(struct net *net, int group);
         void (*mcast_unbind)(struct net *net, int group);
-        struct nlattr **attrbuf;
-        const struct genl_ops *ops;
+        struct nlattr ** attrbuf;
+        const struct genl_ops * ops;
         const struct genl_multicast_group *mcgrps;
         unsigned int n_ops;
         unsigned int n_mcgrps;
@@ -153,12 +153,12 @@ Definition
     struct genl_info {
         u32 snd_seq;
         u32 snd_portid;
-        struct nlmsghdr *nlhdr;
-        struct genlmsghdr *genlhdr;
-        void *userhdr;
-        struct nlattr **attrs;
+        struct nlmsghdr * nlhdr;
+        struct genlmsghdr * genlhdr;
+        void * userhdr;
+        struct nlattr ** attrs;
         possible_net_t _net;
-        void *user_ptr;
+        void * user_ptr[2];
         struct netlink_ext_ack *extack;
     }
 

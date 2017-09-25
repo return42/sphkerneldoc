@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_prio_state {
-        atomic_t prios;
+        atomic_t prios[4];
     }
 
 .. _`v4l2_prio_state.members`:
@@ -184,17 +184,17 @@ Definition
 
     struct v4l2_file_operations {
         struct module *owner;
-        ssize_t (*read)(struct file *, char __user *, size_t, loff_t *);
-        ssize_t (*write)(struct file *, const char __user *, size_t, loff_t *);
-        unsigned int (*poll)(struct file *, struct poll_table_struct *);
-        long (*unlocked_ioctl)(struct file *, unsigned int, unsigned long);
+        ssize_t (*read) (struct file *, char __user *, size_t, loff_t *);
+        ssize_t (*write) (struct file *, const char __user *, size_t, loff_t *);
+        unsigned int (*poll) (struct file *, struct poll_table_struct *);
+        long (*unlocked_ioctl) (struct file *, unsigned int, unsigned long);
     #ifdef CONFIG_COMPAT
-        long (*compat_ioctl32)(struct file *, unsigned int, unsigned long);
+        long (*compat_ioctl32) (struct file *, unsigned int, unsigned long);
     #endif
-        unsigned long (*get_unmapped_area)(struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
-        int (*mmap)(struct file *, struct vm_area_struct *);
-        int (*open)(struct file *);
-        int (*release)(struct file *);
+        unsigned long (*get_unmapped_area) (struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
+        int (*mmap) (struct file *, struct vm_area_struct *);
+        int (*open) (struct file *);
+        int (*release) (struct file *);
     }
 
 .. _`v4l2_file_operations.members`:
@@ -276,7 +276,7 @@ Definition
         struct v4l2_ctrl_handler *ctrl_handler;
         struct vb2_queue *queue;
         struct v4l2_prio_state *prio;
-        char name;
+        char name[32];
         int vfl_type;
         int vfl_dir;
         int minor;
@@ -289,8 +289,8 @@ Definition
         v4l2_std_id tvnorms;
         void (*release)(struct video_device *vdev);
         const struct v4l2_ioctl_ops *ioctl_ops;
-        unsigned long valid_ioctls;
-        unsigned long disable_locking;
+        DECLARE_BITMAP(valid_ioctls, BASE_VIDIOC_PRIVATE);
+        DECLARE_BITMAP(disable_locking, BASE_VIDIOC_PRIVATE);
         struct mutex *lock;
     }
 

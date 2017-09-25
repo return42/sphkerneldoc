@@ -337,7 +337,9 @@ Definition
         const char *clk;
         struct clk *_clk;
         struct list_head node;
-        union fw;
+        union {
+            struct omap_hwmod_omap2_firewall omap2;
+        } fw;
         u8 width;
         u8 user;
         u8 flags;
@@ -367,8 +369,11 @@ _clk
 node
     *undescribed*
 
-fw
-    interface firewall data
+omap2
+    *undescribed*
+
+w
+    *undescribed*
 
 width
     OCP data width
@@ -745,7 +750,10 @@ Definition
         struct omap_hwmod_irq_info *mpu_irqs;
         struct omap_hwmod_dma_info *sdma_reqs;
         struct omap_hwmod_rst_info *rst_lines;
-        union prcm;
+        union {
+            struct omap_hwmod_omap2_prcm omap2;
+            struct omap_hwmod_omap4_prcm omap4;
+        } prcm;
         const char *main_clk;
         struct clk *_clk;
         struct omap_hwmod_opt_clk *opt_clks;
@@ -799,8 +807,14 @@ sdma_reqs
 rst_lines
     *undescribed*
 
-prcm
-    PRCM data pertaining to this hwmod
+omap2
+    *undescribed*
+
+omap4
+    *undescribed*
+
+rcm
+    *undescribed*
 
 main_clk
     main clock: OMAP clock name

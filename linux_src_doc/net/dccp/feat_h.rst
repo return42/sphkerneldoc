@@ -30,10 +30,7 @@ Definition
         dccp_feat_val val;
         enum dccp_feat_state state:8;
         u8 feat_num;
-        bool needs_mandatory;
-        bool needs_confirm;
-        bool empty_confirm;
-        bool is_local;
+        bool needs_mandatory,needs_confirm,empty_confirm, is_local;
         struct list_head node;
     }
 
@@ -84,8 +81,7 @@ Definition
 
     struct ccid_dependency {
         u8 dependent_feat;
-        bool is_local:1;
-        bool is_mandatory:1:1;
+        bool is_local:1, is_mandatory:1;
         u8 val;
     }
 

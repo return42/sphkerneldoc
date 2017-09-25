@@ -71,9 +71,7 @@ Definition
         struct task_struct *rx_kthread;
         wait_queue_head_t rx_wq;
         atomic_t rx_pending_count;
-        size_t rx_size;
-        size_t rx_size_acc;
-        size_t rx_size_cnt;
+        size_t rx_size, rx_size_acc, rx_size_cnt;
         atomic_t do_autopm;
         u8 rx_size_auto_shrink;
         struct dentry *debugfs_dentry;

@@ -21,7 +21,7 @@ Definition
         struct gpio_chip chip;
         raw_spinlock_t lock;
         spinlock_t ack_lock;
-        unsigned char irq_mask;
+        unsigned char irq_mask[6];
         unsigned base;
         unsigned char cos_enb;
     }

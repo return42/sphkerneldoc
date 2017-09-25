@@ -109,9 +109,9 @@ Definition
         struct vmw_dma_buffer *new_backup;
         struct vmw_ctx_binding_state *staged_bindings;
         unsigned long new_backup_offset;
-        u32 first_usage:1;
-        u32 switching_backup:1;
-        u32 no_buffer_needed:1;
+        u32 first_usage : 1;
+        u32 switching_backup : 1;
+        u32 no_buffer_needed : 1;
     }
 
 .. _`vmw_resource_val_node.members`:
@@ -168,7 +168,7 @@ Definition
 .. code-block:: c
 
     struct vmw_cmd_entry {
-        int (*func)(struct vmw_private *, struct vmw_sw_context *, SVGA3dCmdHeader *);
+        int (*func) (struct vmw_private *, struct vmw_sw_context *, SVGA3dCmdHeader *);
         bool user_allow;
         bool gb_disable;
         bool gb_enable;

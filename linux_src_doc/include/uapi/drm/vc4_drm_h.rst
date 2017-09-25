@@ -39,7 +39,7 @@ Definition
         struct drm_vc4_submit_rcl_surface zs_write;
         struct drm_vc4_submit_rcl_surface msaa_color_write;
         struct drm_vc4_submit_rcl_surface msaa_zs_write;
-        __u32 clear_color;
+        __u32 clear_color[2];
         __u32 clear_z;
         __u8 clear_s;
         __u32 pad:24;
@@ -405,20 +405,13 @@ Definition
     struct drm_vc4_get_hang_state {
         __u64 bo;
         __u32 bo_count;
-        __u32 start_bin;
-        __u32 start_render;
-        __u32 ct0ca;
-        __u32 ct0ea;
-        __u32 ct1ca;
-        __u32 ct1ea;
-        __u32 ct0cs;
-        __u32 ct1cs;
-        __u32 ct0ra0;
-        __u32 ct1ra0;
-        __u32 bpca;
-        __u32 bpcs;
-        __u32 bpoa;
-        __u32 bpos;
+        __u32 start_bin, start_render;
+        __u32 ct0ca, ct0ea;
+        __u32 ct1ca, ct1ea;
+        __u32 ct0cs, ct1cs;
+        __u32 ct0ra0, ct1ra0;
+        __u32 bpca, bpcs;
+        __u32 bpoa, bpos;
         __u32 vpmbase;
         __u32 dbge;
         __u32 fdbgo;
@@ -426,7 +419,7 @@ Definition
         __u32 fdbgr;
         __u32 fdbgs;
         __u32 errstat;
-        __u32 pad;
+        __u32 pad[16];
     }
 
 .. _`drm_vc4_get_hang_state.members`:

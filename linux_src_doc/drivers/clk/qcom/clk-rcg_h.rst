@@ -221,13 +221,13 @@ Definition
 .. code-block:: c
 
     struct clk_dyn_rcg {
-        u32 ns_reg;
-        u32 md_reg;
+        u32 ns_reg[2];
+        u32 md_reg[2];
         u32 bank_reg;
         u8 mux_sel_bit;
-        struct mn mn;
-        struct pre_div p;
-        struct src_sel s;
+        struct mn mn[2];
+        struct pre_div p[2];
+        struct src_sel s[2];
         const struct freq_tbl *freq_tbl;
         struct clk_regmap clkr;
     }

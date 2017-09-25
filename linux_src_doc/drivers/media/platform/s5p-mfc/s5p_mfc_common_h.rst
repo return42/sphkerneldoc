@@ -256,7 +256,13 @@ Definition
     struct s5p_mfc_buf {
         struct vb2_v4l2_buffer *b;
         struct list_head list;
-        union cookie;
+        union {
+            struct {
+                size_t luma;
+                size_t chroma;
+            } raw;
+            size_t stream;
+        } cookie;
         int flags;
     }
 
@@ -271,7 +277,19 @@ b
 list
     *undescribed*
 
-cookie
+luma
+    *undescribed*
+
+chroma
+    *undescribed*
+
+aw
+    *undescribed*
+
+stream
+    *undescribed*
+
+ookie
     *undescribed*
 
 flags
@@ -296,7 +314,7 @@ Definition
     struct s5p_mfc_pm {
         struct clk *clock_gate;
         const char * const *clk_names;
-        struct clk  *clocks;
+        struct clk *clocks[MFC_MAX_CLOCKS];
         int num_clocks;
         bool use_clock_gating;
         struct device *device;
@@ -391,7 +409,7 @@ Definition
         struct video_device *vfd_dec;
         struct video_device *vfd_enc;
         struct platform_device *plat_dev;
-        struct device  *mem_dev;
+        struct device *mem_dev[BANK_CTX_NUM];
         void __iomem *regs_base;
         int irq;
         struct v4l2_ctrl_handler dec_ctrl_handler;
@@ -411,9 +429,9 @@ Definition
         dma_addr_t mem_base;
         unsigned long *mem_bitmap;
         void *mem_virt;
-        dma_addr_t dma_base;
+        dma_addr_t dma_base[BANK_CTX_NUM];
         unsigned long hw_lock;
-        struct s5p_mfc_ctx  *ctx;
+        struct s5p_mfc_ctx *ctx[MFC_NUM_CONTEXTS];
         int curr_ctx;
         unsigned long ctx_work_bits;
         atomic_t watchdog_cnt;
@@ -613,7 +631,7 @@ Definition
         u8 hier_qp;
         u8 hier_qp_type;
         u8 hier_qp_layer;
-        u8 hier_qp_layer_qp;
+        u8 hier_qp_layer_qp[7];
         u8 sei_frame_packing;
         u8 sei_fp_curr_frame_0;
         u8 sei_fp_arrangement_type;
@@ -622,9 +640,9 @@ Definition
         u8 fmo_slice_grp;
         u8 fmo_chg_dir;
         u32 fmo_chg_rate;
-        u32 fmo_run_len;
+        u32 fmo_run_len[4];
         u8 aso;
-        u32 aso_slice_order;
+        u32 aso_slice_order[8];
     }
 
 .. _`s5p_mfc_h264_enc_params.members`:
@@ -851,7 +869,7 @@ Definition
         u32 golden_frame_ref_period;
         enum v4l2_vp8_golden_frame_sel golden_frame_sel;
         u8 hier_layer;
-        u8 hier_layer_qp;
+        u8 hier_layer_qp[3];
         u8 rc_min_qp;
         u8 rc_max_qp;
         u8 rc_frame_qp;
@@ -948,7 +966,11 @@ Definition
         u8 num_b_frame;
         u32 rc_framerate_num;
         u32 rc_framerate_denom;
-        struct codec;
+        struct {
+            struct s5p_mfc_h264_enc_params h264;
+            struct s5p_mfc_mpeg4_enc_params mpeg4;
+            struct s5p_mfc_vp8_enc_params vp8;
+        } codec;
     }
 
 .. _`s5p_mfc_enc_params.members`:
@@ -1031,7 +1053,16 @@ rc_framerate_num
 rc_framerate_denom
     *undescribed*
 
-codec
+h264
+    *undescribed*
+
+mpeg4
+    *undescribed*
+
+vp8
+    *undescribed*
+
+odec
     *undescribed*
 
 .. _`s5p_mfc_codec_ops`:
@@ -1051,10 +1082,10 @@ Definition
 .. code-block:: c
 
     struct s5p_mfc_codec_ops {
-        int (*pre_seq_start)(struct s5p_mfc_ctx *ctx);
-        int (*post_seq_start)(struct s5p_mfc_ctx *ctx);
-        int (*pre_frame_start)(struct s5p_mfc_ctx *ctx);
-        int (*post_frame_start)(struct s5p_mfc_ctx *ctx);
+        int (*pre_seq_start) (struct s5p_mfc_ctx *ctx);
+        int (*post_seq_start) (struct s5p_mfc_ctx *ctx);
+        int (*pre_frame_start) (struct s5p_mfc_ctx *ctx);
+        int (*post_frame_start) (struct s5p_mfc_ctx *ctx);
     }
 
 .. _`s5p_mfc_codec_ops.members`:
@@ -1123,9 +1154,9 @@ Definition
         struct s5p_mfc_priv_buf bank2;
         enum s5p_mfc_queue_state capture_state;
         enum s5p_mfc_queue_state output_state;
-        struct s5p_mfc_buf src_bufs;
+        struct s5p_mfc_buf src_bufs[MFC_MAX_BUFFERS];
         int src_bufs_cnt;
-        struct s5p_mfc_buf dst_bufs;
+        struct s5p_mfc_buf dst_bufs[MFC_MAX_BUFFERS];
         int dst_bufs_cnt;
         unsigned int sequence;
         unsigned long dec_dst_flag;
@@ -1153,9 +1184,12 @@ Definition
         struct list_head ref_queue;
         unsigned int ref_queue_cnt;
         enum v4l2_mpeg_video_multi_slice_mode slice_mode;
-        union slice_size;
+        union {
+            unsigned int mb;
+            unsigned int bits;
+        } slice_size;
         const struct s5p_mfc_codec_ops *c_ops;
-        struct v4l2_ctrl  *ctrls;
+        struct v4l2_ctrl *ctrls[MFC_MAX_CTRLS];
         struct v4l2_ctrl_handler ctrl_handler;
         unsigned int frame_tag;
         size_t scratch_buf_size;
@@ -1360,7 +1394,13 @@ ref_queue_cnt
 slice_mode
     *undescribed*
 
-slice_size
+mb
+    *undescribed*
+
+bits
+    *undescribed*
+
+lice_size
     *undescribed*
 
 c_ops
@@ -1398,14 +1438,14 @@ Definition
     struct mfc_control {
         __u32 id;
         enum v4l2_ctrl_type type;
-        __u8 name;
+        __u8 name[32];
         __s32 minimum;
         __s32 maximum;
         __s32 step;
         __u32 menu_skip_mask;
         __s32 default_value;
         __u32 flags;
-        __u32 reserved;
+        __u32 reserved[2];
         __u8 is_volatile;
     }
 

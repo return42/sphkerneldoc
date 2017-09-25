@@ -59,10 +59,10 @@ Definition
 
     struct st_proto_s {
         enum proto_type type;
-        long (*recv)(void *, struct sk_buff *);
-        unsigned char (*match_packet)(const unsigned char *data);
-        void (*reg_complete_cb)(void *, int data);
-        long (*write)(struct sk_buff *skb);
+        long (*recv) (void *, struct sk_buff *);
+        unsigned char (*match_packet) (const unsigned char *data);
+        void (*reg_complete_cb) (void *, int data);
+        long (*write) (struct sk_buff *skb);
         void *priv_data;
         unsigned char chnl_id;
         unsigned short max_frame_size;
@@ -149,14 +149,13 @@ Definition
     #define ST_TX_SENDING 1
     #define ST_TX_WAKEUP 2
         unsigned long tx_state;
-        struct st_proto_s  *list;
-        bool is_registered;
+        struct st_proto_s *list[ST_MAX_CHANNELS];
+        bool is_registered[ST_MAX_CHANNELS];
         unsigned long rx_state;
         unsigned long rx_count;
         struct sk_buff *rx_skb;
         unsigned char rx_chnl;
-        struct sk_buff_head txq;
-        struct sk_buff_head tx_waitq;
+        struct sk_buff_head txq, tx_waitq;
         spinlock_t lock;
         unsigned char protos_registered;
         unsigned long ll_state;
@@ -328,9 +327,8 @@ Definition
     struct kim_data_s {
         long uim_pid;
         struct platform_device *kim_pdev;
-        struct completion kim_rcvd;
-        struct completion ldisc_installed;
-        char resp_buffer;
+        struct completion kim_rcvd, ldisc_installed;
+        char resp_buffer[30];
         const struct firmware *fw_entry;
         unsigned nshutdown;
         unsigned long rx_state;
@@ -339,7 +337,7 @@ Definition
         struct st_data_s *core_data;
         struct chip_version version;
         unsigned char ldisc_install;
-        unsigned char dev_name;
+        unsigned char dev_name[UART_DEV_NAME_LEN + 1];
         unsigned flow_cntrl;
         unsigned baud_rate;
     }
@@ -436,8 +434,8 @@ Definition
     struct bts_header {
         u32 magic;
         u32 version;
-        u8 future;
-        u8 actions;
+        u8 future[24];
+        u8 actions[0];
     }
 
 .. _`bts_header.members`:
@@ -476,7 +474,7 @@ Definition
     struct bts_action {
         u16 type;
         u16 size;
-        u8 data;
+        u8 data[0];
     }
 
 .. _`bts_action.members`:
@@ -575,15 +573,15 @@ Definition
 
     struct ti_st_plat_data {
         u32 nshutdown_gpio;
-        unsigned char dev_name;
+        unsigned char dev_name[UART_DEV_NAME_LEN];
         u32 flow_cntrl;
         u32 baud_rate;
         int (*suspend)(struct platform_device *, pm_message_t);
         int (*resume)(struct platform_device *);
-        int (*chip_enable)(struct kim_data_s *);
-        int (*chip_disable)(struct kim_data_s *);
-        int (*chip_asleep)(struct kim_data_s *);
-        int (*chip_awake)(struct kim_data_s *);
+        int (*chip_enable) (struct kim_data_s *);
+        int (*chip_disable) (struct kim_data_s *);
+        int (*chip_asleep) (struct kim_data_s *);
+        int (*chip_awake) (struct kim_data_s *);
     }
 
 .. _`ti_st_plat_data.members`:

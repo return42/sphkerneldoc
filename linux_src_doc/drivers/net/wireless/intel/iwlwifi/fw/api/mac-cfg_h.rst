@@ -95,14 +95,14 @@ Definition
 .. code-block:: c
 
     struct iwl_link_qual_msrmnt_notif {
-        __le32 frequent_stations_air_time;
+        __le32 frequent_stations_air_time[LQM_NUMBER_OF_STATIONS_IN_REPORT];
         __le32 number_of_stations;
         __le32 total_air_time_other_stations;
         __le32 time_in_measurement_window;
         __le32 tx_frame_dropped;
         __le32 mac_id;
         __le32 status;
-        u8 reserved;
+        u8 reserved[12];
     }
 
 .. _`iwl_link_qual_msrmnt_notif.members`:

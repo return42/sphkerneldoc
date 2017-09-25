@@ -29,7 +29,7 @@ Definition
         int ipc_bit;
         struct list_head channels;
         spinlock_t channels_lock;
-        unsigned long allocated;
+        DECLARE_BITMAP(allocated[SMD_ALLOC_TBL_COUNT], SMD_ALLOC_TBL_SIZE);
         unsigned smem_available;
         wait_queue_head_t new_channel_event;
         struct work_struct scan_work;
@@ -202,7 +202,7 @@ Definition
 .. code-block:: c
 
     struct qcom_smd_alloc_entry {
-        u8 name;
+        u8 name[20];
         __le32 cid;
         __le32 flags;
         __le32 ref_count;

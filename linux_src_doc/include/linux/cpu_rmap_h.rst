@@ -19,10 +19,12 @@ Definition
 
     struct cpu_rmap {
         struct kref refcount;
-        u16 size;
-        u16 used;
+        u16 size, used;
         void **obj;
-        struct near;
+        struct {
+            u16 index;
+            u16 dist;
+        } near[0];
     }
 
 .. _`cpu_rmap.members`:
@@ -42,9 +44,14 @@ used
 obj
     Pointer to array of object pointers
 
-near
-    For each CPU, the index and distance to the nearest object,
-    based on affinity masks
+index
+    *undescribed*
+
+dist
+    *undescribed*
+
+ear
+    *undescribed*
 
 .. _`alloc_irq_cpu_rmap`:
 

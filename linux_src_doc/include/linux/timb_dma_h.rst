@@ -61,7 +61,7 @@ Definition
 
     struct timb_dma_platform_data {
         unsigned nr_channels;
-        struct timb_dma_platform_data_channel channels;
+        struct timb_dma_platform_data_channel channels[32];
     }
 
 .. _`timb_dma_platform_data.members`:

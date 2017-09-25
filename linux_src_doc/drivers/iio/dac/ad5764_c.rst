@@ -54,8 +54,11 @@ Definition
     struct ad5764_state {
         struct spi_device *spi;
         const struct ad5764_chip_info *chip_info;
-        struct regulator_bulk_data vref_reg;
-        union data;
+        struct regulator_bulk_data vref_reg[2];
+        union {
+            __be32 d32;
+            u8 d8[4];
+        } data[2] ____cacheline_aligned;
     }
 
 .. _`ad5764_state.members`:
@@ -72,8 +75,14 @@ chip_info
 vref_reg
     vref supply regulators
 
-data
-    spi transfer buffers
+d32
+    *undescribed*
+
+d8
+    *undescribed*
+
+____cacheline_aligned
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

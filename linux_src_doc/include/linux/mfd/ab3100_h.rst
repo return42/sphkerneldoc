@@ -21,10 +21,10 @@ Definition
         struct device *dev;
         struct i2c_client *i2c_client;
         struct i2c_client *testreg_client;
-        char chip_name;
+        char chip_name[32];
         u8 chip_id;
         struct blocking_notifier_head event_subscribers;
-        u8 startup_events;
+        u8 startup_events[3];
         bool startup_events_read;
     }
 
@@ -86,8 +86,8 @@ Definition
 .. code-block:: c
 
     struct ab3100_platform_data {
-        struct regulator_init_data reg_constraints;
-        u8 reg_initvals;
+        struct regulator_init_data reg_constraints[AB3100_NUM_REGULATORS];
+        u8 reg_initvals[AB3100_NUM_REGULATORS+2];
         int external_voltage;
     }
 

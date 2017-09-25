@@ -22,10 +22,10 @@ Definition
         void (*multi_read)(void *, u32 *addr, u32 *val, u16 count);
         void (*write)(void *, u32 val, u32 reg_offset);
         void (*enable_write_buffer)(void *);
-        void (*write_flush)(void *);
+        void (*write_flush) (void *);
         u32 (*rmw)(void *, u32 reg_offset, u32 set, u32 clr);
         void (*enable_rmw_buffer)(void *);
-        void (*rmw_flush)(void *);
+        void (*rmw_flush) (void *);
     }
 
 .. _`ath_ops.members`:

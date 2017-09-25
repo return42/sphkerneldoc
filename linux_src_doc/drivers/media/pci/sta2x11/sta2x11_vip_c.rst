@@ -22,7 +22,7 @@ Definition
         struct video_device video_dev;
         struct pci_dev *pdev;
         struct i2c_adapter *adapter;
-        unsigned int register_save_area;
+        unsigned int register_save_area[IRQ_COUNT + SAVE_COUNT + AUX_COUNT];
         struct v4l2_subdev *decoder;
         struct v4l2_ctrl_handler ctrl_hdl;
         struct v4l2_pix_format format;
@@ -35,8 +35,7 @@ Definition
         unsigned int sequence;
         struct vip_buffer *active;
         spinlock_t lock;
-        int tcount;
-        int bcount;
+        int tcount, bcount;
         int overflow;
         void __iomem *iomem;
         struct vip_config *config;

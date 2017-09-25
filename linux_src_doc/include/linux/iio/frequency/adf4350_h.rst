@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct adf4350_platform_data {
-        char name;
+        char name[32];
         unsigned long clkin;
         unsigned long channel_spacing;
         unsigned long long power_up_frequency;

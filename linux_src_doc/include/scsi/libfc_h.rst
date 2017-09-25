@@ -1040,7 +1040,7 @@ Definition
         struct mutex lp_mutex;
         struct list_head list;
         struct delayed_work retry_work;
-        void  *prov;
+        void *prov[FC_FC4_PROV_SIZE];
         struct list_head lport_list;
     }
 

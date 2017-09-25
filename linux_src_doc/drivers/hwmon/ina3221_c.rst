@@ -19,8 +19,8 @@ Definition
 
     struct ina3221_data {
         struct regmap *regmap;
-        struct regmap_field  *fields;
-        int shunt_resistors;
+        struct regmap_field *fields[F_MAX_FIELDS];
+        int shunt_resistors[INA3221_NUM_CHANNELS];
     }
 
 .. _`ina3221_data.members`:

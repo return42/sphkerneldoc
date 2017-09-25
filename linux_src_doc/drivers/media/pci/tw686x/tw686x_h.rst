@@ -21,7 +21,7 @@ Definition
         spinlock_t lock;
         struct v4l2_device v4l2_dev;
         struct snd_card *snd_card;
-        char name;
+        char name[32];
         unsigned int type;
         unsigned int dma_mode;
         struct pci_dev *pci_dev;

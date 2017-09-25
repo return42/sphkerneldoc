@@ -168,7 +168,7 @@ Definition
         unsigned int index;
         unsigned int type;
         unsigned int length;
-        unsigned char msg;
+        unsigned char msg[256];
     }
 
 .. _`ca_msg.members`:
@@ -214,7 +214,7 @@ Definition
     struct ca_descr {
         unsigned int index;
         unsigned int parity;
-        unsigned char cw;
+        unsigned char cw[8];
     }
 
 .. _`ca_descr.members`:

@@ -50,7 +50,7 @@ Definition
 .. code-block:: c
 
     struct iss_csiphy_lanes_cfg {
-        struct iss_csiphy_lane data;
+        struct iss_csiphy_lane data[ISS_CSIPHY1_NUM_DATA_LANES];
         struct iss_csiphy_lane clk;
     }
 

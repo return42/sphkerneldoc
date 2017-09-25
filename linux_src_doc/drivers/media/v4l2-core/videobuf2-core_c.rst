@@ -438,7 +438,7 @@ Definition
         unsigned int count;
         unsigned int type;
         unsigned int memory;
-        struct vb2_fileio_buf bufs;
+        struct vb2_fileio_buf bufs[VB2_MAX_FRAME];
         unsigned int cur_index;
         unsigned int initial_index;
         unsigned int q_count;

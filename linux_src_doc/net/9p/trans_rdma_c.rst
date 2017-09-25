@@ -18,22 +18,23 @@ Definition
 .. code-block:: c
 
     struct p9_trans_rdma {
-        enum state;
-        struct rdma_cm_id *cm_id;
-        struct ib_pd *pd;
-        struct ib_qp *qp;
-        struct ib_cq *cq;
-        long timeout;
-        bool privport;
-        u16 port;
-        int sq_depth;
-        struct semaphore sq_sem;
-        int rq_depth;
-        struct semaphore rq_sem;
-        atomic_t excess_rc;
-        struct sockaddr_in addr;
-        spinlock_t req_lock;
-        struct completion cm_done;
+        enum {
+            P9_RDMA_INIT,P9_RDMA_ADDR_RESOLVED,P9_RDMA_ROUTE_RESOLVED,P9_RDMA_CONNECTED,P9_RDMA_FLUSHING,P9_RDMA_CLOSING,P9_RDMA_CLOSED, } state;
+            struct rdma_cm_id *cm_id;
+            struct ib_pd *pd;
+            struct ib_qp *qp;
+            struct ib_cq *cq;
+            long timeout;
+            bool privport;
+            u16 port;
+            int sq_depth;
+            struct semaphore sq_sem;
+            int rq_depth;
+            struct semaphore rq_sem;
+            atomic_t excess_rc;
+            struct sockaddr_in addr;
+            spinlock_t req_lock;
+            struct completion cm_done;
     }
 
 .. _`p9_trans_rdma.members`:

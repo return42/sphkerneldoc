@@ -146,7 +146,7 @@ Definition
         u8 tx_rate_idx;
         u8 tx_rate_flags;
         void *desc;
-        __le32 iv;
+        __le32 iv[2];
         dma_addr_t skb_dma;
         struct ieee80211_sta *sta;
     }
@@ -292,7 +292,7 @@ Definition
         enum rate_info_bw bw;
         u8 cipher;
         u8 cipher_status;
-        __le32 iv;
+        __le32 iv[2];
         __le32 icv;
     }
 
@@ -567,7 +567,23 @@ Definition
         unsigned long flags;
         u16 length;
         u16 header_length;
-        union u;
+        union {
+            struct {
+                u16 length_high;
+                u16 length_low;
+                u16 signal;
+                u16 service;
+                enum ifs ifs;
+            } plcp;
+            struct {
+                u16 mcs;
+                u8 stbc;
+                u8 ba_size;
+                u8 mpdu_density;
+                enum txop txop;
+                int wcid;
+            } ht;
+        } u;
         enum rate_modulation rate_mode;
         short retry_limit;
         enum cipher cipher;
@@ -590,8 +606,47 @@ length
 header_length
     Length of 802.11 header.
 
-u
+length_high
+    PLCP length high word.
+
+length_low
+    PLCP length low word.
+
+signal
+    PLCP signal.
+
+service
+    PLCP service.
+
+ifs
+    IFS value.
+
+lcp
     *undescribed*
+
+mcs
+    *undescribed*
+
+stbc
+    Use Space Time Block Coding (only available for MCS rates < 8).
+
+ba_size
+    Size of the recepients RX reorder buffer - 1.
+
+mpdu_density
+    MDPU density.
+
+txop
+    IFS value for 11n capable chips.
+
+wcid
+    *undescribed*
+
+t
+    *undescribed*
+
+void
+    no arguments
 
 rate_mode
     Rate mode (See \ ``enum``\  rate_modulation).
@@ -844,7 +899,7 @@ Definition
         unsigned short limit;
         unsigned short threshold;
         unsigned short length;
-        unsigned short index;
+        unsigned short index[Q_INDEX_MAX];
         unsigned short txop;
         unsigned short aifs;
         unsigned short cw_min;

@@ -702,7 +702,7 @@ Definition
         u32 timeout;
         u32 transfer_length;
         struct fc_ba_rjt ba_rjt;
-        struct scatterlist sg;
+        struct scatterlist sg[NVME_FC_MAX_SEGMENTS];
         int sg_cnt;
         void *rspaddr;
         dma_addr_t rspdma;

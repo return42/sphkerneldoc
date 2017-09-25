@@ -382,7 +382,7 @@ Definition
         enum omap3isp_cfa_fmt format;
         __u8 gradthrs_vert;
         __u8 gradthrs_horz;
-        __u32 table;
+        __u32 table[4][OMAP3ISP_PREV_CFA_BLK_SIZE];
     }
 
 .. _`omap3isp_prev_cfa.members`:
@@ -535,8 +535,8 @@ Definition
 .. code-block:: c
 
     struct omap3isp_prev_rgbtorgb {
-        __u16 matrix;
-        __u16 offset;
+        __u16 matrix[OMAP3ISP_RGB_MAX][OMAP3ISP_RGB_MAX];
+        __u16 offset[OMAP3ISP_RGB_MAX];
     }
 
 .. _`omap3isp_prev_rgbtorgb.members`:
@@ -570,8 +570,8 @@ Definition
 .. code-block:: c
 
     struct omap3isp_prev_csc {
-        __u16 matrix;
-        __s16 offset;
+        __u16 matrix[OMAP3ISP_RGB_MAX][OMAP3ISP_RGB_MAX];
+        __s16 offset[OMAP3ISP_RGB_MAX];
     }
 
 .. _`omap3isp_prev_csc.members`:
@@ -646,7 +646,7 @@ Definition
 
     struct omap3isp_prev_dcor {
         __u8 couplet_mode_en;
-        __u32 detect_correct;
+        __u32 detect_correct[OMAP3ISP_PREV_DETECT_CORRECT_CHANNELS];
     }
 
 .. _`omap3isp_prev_dcor.members`:
@@ -678,7 +678,7 @@ Definition
 
     struct omap3isp_prev_nf {
         __u8 spread;
-        __u32 table;
+        __u32 table[OMAP3ISP_PREV_NF_TBL_SIZE];
     }
 
 .. _`omap3isp_prev_nf.members`:
@@ -709,9 +709,9 @@ Definition
 .. code-block:: c
 
     struct omap3isp_prev_gtables {
-        __u32 red;
-        __u32 green;
-        __u32 blue;
+        __u32 red[OMAP3ISP_PREV_GAMMA_TBL_SIZE];
+        __u32 green[OMAP3ISP_PREV_GAMMA_TBL_SIZE];
+        __u32 blue[OMAP3ISP_PREV_GAMMA_TBL_SIZE];
     }
 
 .. _`omap3isp_prev_gtables.members`:
@@ -745,7 +745,7 @@ Definition
 .. code-block:: c
 
     struct omap3isp_prev_luma {
-        __u32 table;
+        __u32 table[OMAP3ISP_PREV_YENH_TBL_SIZE];
     }
 
 .. _`omap3isp_prev_luma.members`:

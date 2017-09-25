@@ -63,7 +63,7 @@ Definition
 
     struct mtk_mdp_comp {
         struct device_node *dev_node;
-        struct clk  *clk;
+        struct clk *clk[2];
         void __iomem *regs;
         struct device *larb_dev;
         enum mtk_mdp_comp_type type;

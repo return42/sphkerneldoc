@@ -105,9 +105,9 @@ Definition
         struct device *dev;
         struct i2c_client *client;
         struct mutex mutex;
-        struct device_node  *endpoints;
-        struct i2c_client  *i2c_clients;
-        struct regmap  *regmap;
+        struct device_node *endpoints[ADV748X_PORT_MAX];
+        struct i2c_client *i2c_clients[ADV748X_PAGE_MAX];
+        struct regmap *regmap[ADV748X_PAGE_MAX];
         struct adv748x_hdmi hdmi;
         struct adv748x_afe afe;
         struct adv748x_csi2 txa;

@@ -110,13 +110,13 @@ Definition
         __le32 sample_buff_addr;
         __le32 sample_buff_size;
         __le32 txfifo_addr;
-        __le32 txfifo_size;
-        __le32 rxfifo_size;
+        __le32 txfifo_size[TX_FIFO_MAX_NUM_9000];
+        __le32 rxfifo_size[RX_FIFO_MAX_NUM];
         __le32 page_buff_addr;
         __le32 page_buff_size;
         __le32 rxfifo_addr;
         __le32 internal_txfifo_addr;
-        __le32 internal_txfifo_size;
+        __le32 internal_txfifo_size[TX_FIFO_INTERNAL_MAX_NUM];
     }
 
 .. _`iwl_shared_mem_cfg_v2.members`:
@@ -190,7 +190,7 @@ Definition
 
     struct iwl_shared_mem_lmac_cfg {
         __le32 txfifo_addr;
-        __le32 txfifo_size;
+        __le32 txfifo_size[TX_FIFO_MAX_NUM];
         __le32 rxfifo1_addr;
         __le32 rxfifo1_size;
     }
@@ -238,7 +238,7 @@ Definition
         __le32 page_buff_addr;
         __le32 page_buff_size;
         __le32 lmac_num;
-        struct iwl_shared_mem_lmac_cfg lmac_smem;
+        struct iwl_shared_mem_lmac_cfg lmac_smem[2];
     }
 
 .. _`iwl_shared_mem_cfg.members`:
@@ -343,7 +343,7 @@ Definition
         __le16 index_num;
         __le16 parts_num;
         __le32 data_size;
-        __le32 data;
+        __le32 data[0];
     }
 
 .. _`iwl_mfu_assert_dump_notif.members`:
@@ -425,7 +425,7 @@ Definition
         u8 marker_id;
         __le16 reserved;
         __le64 timestamp;
-        __le32 metadata;
+        __le32 metadata[0];
     }
 
 .. _`iwl_mvm_marker.members`:
@@ -479,7 +479,7 @@ Definition
         __le32 op;
         __le32 addr;
         __le32 len;
-        __le32 data;
+        __le32 data[];
     }
 
 .. _`iwl_dbg_mem_access_cmd.members`:
@@ -518,7 +518,7 @@ Definition
     struct iwl_dbg_mem_access_rsp {
         __le32 status;
         __le32 len;
-        __le32 data;
+        __le32 data[];
     }
 
 .. _`iwl_dbg_mem_access_rsp.members`:

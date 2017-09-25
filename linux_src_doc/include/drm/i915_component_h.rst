@@ -119,7 +119,7 @@ Definition
 
     struct i915_audio_component {
         struct device *dev;
-        int aud_sample_rate;
+        int aud_sample_rate[MAX_PORTS];
         const struct i915_audio_component_ops *ops;
         const struct i915_audio_component_audio_ops *audio_ops;
     }

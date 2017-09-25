@@ -30,7 +30,11 @@ Definition
         struct irq_domain *irq_domain;
         int *irqs;
         unsigned *pm_wakeup_sources;
-        struct *pm_suspend_backup;
+        struct {
+            u32 imr;
+            u32 odsr;
+            u32 cfgr[ATMEL_PIO_NPINS_PER_BANK];
+        } *pm_suspend_backup;
         struct device *dev;
         struct device_node *node;
     }
@@ -78,6 +82,15 @@ irqs
     table is the bank id.
 
 pm_wakeup_sources
+    *undescribed*
+
+imr
+    *undescribed*
+
+odsr
+    *undescribed*
+
+cfgr
     *undescribed*
 
 pm_suspend_backup

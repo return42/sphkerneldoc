@@ -19,10 +19,10 @@ Definition
 
     struct v4l2_fwnode_bus_mipi_csi2 {
         unsigned int flags;
-        unsigned char data_lanes;
+        unsigned char data_lanes[V4L2_FWNODE_CSI2_MAX_DATA_LANES];
         unsigned char clock_lane;
         unsigned short num_data_lanes;
-        bool lane_polarities;
+        bool lane_polarities[1 + V4L2_FWNODE_CSI2_MAX_DATA_LANES];
     }
 
 .. _`v4l2_fwnode_bus_mipi_csi2.members`:
@@ -101,7 +101,7 @@ Definition
     struct v4l2_fwnode_bus_mipi_csi1 {
         bool clock_inv;
         bool strobe;
-        bool lane_polarity;
+        bool lane_polarity[2];
         unsigned char data_lane;
         unsigned char clock_lane;
     }
@@ -147,7 +147,11 @@ Definition
     struct v4l2_fwnode_endpoint {
         struct fwnode_endpoint base;
         enum v4l2_mbus_type bus_type;
-        union bus;
+        union {
+            struct v4l2_fwnode_bus_parallel parallel;
+            struct v4l2_fwnode_bus_mipi_csi1 mipi_csi1;
+            struct v4l2_fwnode_bus_mipi_csi2 mipi_csi2;
+        } bus;
         u64 *link_frequencies;
         unsigned int nr_of_link_frequencies;
     }
@@ -163,8 +167,17 @@ base
 bus_type
     bus type
 
-bus
-    bus configuration data structure
+parallel
+    *undescribed*
+
+mipi_csi1
+    *undescribed*
+
+mipi_csi2
+    *undescribed*
+
+us
+    *undescribed*
 
 link_frequencies
     array of supported link frequencies

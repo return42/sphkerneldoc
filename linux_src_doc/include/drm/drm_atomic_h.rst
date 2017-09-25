@@ -188,9 +188,9 @@ Definition
     struct drm_atomic_state {
         struct kref ref;
         struct drm_device *dev;
-        bool allow_modeset:1;
-        bool legacy_cursor_update:1;
-        bool async_update:1;
+        bool allow_modeset : 1;
+        bool legacy_cursor_update : 1;
+        bool async_update : 1;
         struct __drm_planes_state *planes;
         struct __drm_crtcs_state *crtcs;
         int num_connector;

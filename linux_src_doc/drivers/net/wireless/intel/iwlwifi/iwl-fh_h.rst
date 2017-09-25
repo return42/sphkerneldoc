@@ -560,7 +560,7 @@ Definition
 
     struct iwl_tfh_tfd {
         __le16 num_tbs;
-        struct iwl_tfh_tb tbs;
+        struct iwl_tfh_tb tbs[IWL_TFH_NUM_TBS];
         __le32 __pad;
     }
 
@@ -595,7 +595,7 @@ Definition
 .. code-block:: c
 
     struct iwlagn_scd_bc_tbl {
-        __le16 tfd_offset;
+        __le16 tfd_offset[TFD_QUEUE_BC_SIZE];
     }
 
 .. _`iwlagn_scd_bc_tbl.members`:

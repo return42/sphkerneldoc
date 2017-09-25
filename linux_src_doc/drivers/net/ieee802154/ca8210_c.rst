@@ -20,8 +20,8 @@ Definition
     struct cas_control {
         struct spi_message msg;
         struct spi_transfer transfer;
-        u8 tx_buf;
-        u8 tx_in_buf;
+        u8 tx_buf[CA8210_SPI_BUF_SIZE];
+        u8 tx_in_buf[CA8210_SPI_BUF_SIZE];
         struct ca8210_priv *priv;
     }
 
@@ -127,10 +127,8 @@ Definition
         bool async_tx_pending;
         u8 *sync_command_response;
         struct completion ca8210_is_awake;
-        int sync_down;
-        int sync_up;
-        struct completion spi_transfer_complete;
-        struct completion sync_exchange_complete;
+        int sync_down, sync_up;
+        struct completion spi_transfer_complete, sync_exchange_complete;
         bool promiscuous;
         int retries;
     }
@@ -306,8 +304,8 @@ Definition
 
     struct fulladdr {
         u8 mode;
-        u8 pan_id;
-        u8 address;
+        u8 pan_id[2];
+        u8 address[8];
     }
 
 .. _`fulladdr.members`:
@@ -342,7 +340,7 @@ Definition
 
     union macaddr {
         u16 short_address;
-        u8 ieee_address;
+        u8 ieee_address[8];
     }
 
 .. _`macaddr.members`:
@@ -375,7 +373,7 @@ Definition
     struct secspec {
         u8 security_level;
         u8 key_id_mode;
-        u8 key_source;
+        u8 key_source[8];
         u8 key_index;
     }
 

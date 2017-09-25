@@ -112,7 +112,10 @@ Definition
 
     struct ef4_tx_buffer {
         const struct sk_buff *skb;
-        union {unnamed_union};
+        union {
+            ef4_qword_t option;
+            dma_addr_t dma_addr;
+        } ;
         unsigned short flags;
         unsigned short len;
         unsigned short unmap_len;
@@ -130,7 +133,6 @@ skb
 
 {unnamed_union}
     anonymous
-
 
 flags
     Flags for allocation and DMA mapping type
@@ -163,7 +165,7 @@ Definition
 .. code-block:: c
 
     struct ef4_tx_queue {
-        unsigned int empty_read_count ____cacheline_aligned_in_smp;
+        struct ef4_nic *efx ____cacheline_aligned_in_smp;
         unsigned queue;
         struct ef4_channel *channel;
         struct netdev_queue *core_txq;
@@ -174,12 +176,12 @@ Definition
         bool initialised;
         unsigned int tx_min_size;
         int (*handle_tso)(struct ef4_tx_queue*, struct sk_buff*, bool *);
-        unsigned int empty_read_count ____cacheline_aligned_in_smp;
+        unsigned int read_count ____cacheline_aligned_in_smp;
         unsigned int old_write_count;
         unsigned int merge_events;
         unsigned int bytes_compl;
         unsigned int pkts_compl;
-        unsigned int empty_read_count ____cacheline_aligned_in_smp;
+        unsigned int insert_count ____cacheline_aligned_in_smp;
         unsigned int write_count;
         unsigned int old_read_count;
         unsigned int pushes;
@@ -372,7 +374,7 @@ Definition
 
     struct ef4_rx_page_state {
         dma_addr_t dma_addr;
-        unsigned int __pad;
+        unsigned int __pad[0] ____cacheline_aligned;
     }
 
 .. _`ef4_rx_page_state.members`:
@@ -587,7 +589,7 @@ Definition
         unsigned int rx_pkt_n_frags;
         unsigned int rx_pkt_index;
         struct ef4_rx_queue rx_queue;
-        struct ef4_tx_queue tx_queue;
+        struct ef4_tx_queue tx_queue[EF4_TXQ_TYPES];
     }
 
 .. _`ef4_channel.members`:
@@ -723,7 +725,7 @@ Definition
     struct ef4_msi_context {
         struct ef4_nic *efx;
         unsigned int index;
-        char name;
+        char name[IFNAMSIZ + 6];
     }
 
 .. _`ef4_msi_context.members`:
@@ -860,20 +862,20 @@ Definition
 .. code-block:: c
 
     struct ef4_phy_operations {
-        int (*probe)(struct ef4_nic *efx);
-        int (*init)(struct ef4_nic *efx);
-        void (*fini)(struct ef4_nic *efx);
-        void (*remove)(struct ef4_nic *efx);
-        int (*reconfigure)(struct ef4_nic *efx);
-        bool (*poll)(struct ef4_nic *efx);
+        int (*probe) (struct ef4_nic *efx);
+        int (*init) (struct ef4_nic *efx);
+        void (*fini) (struct ef4_nic *efx);
+        void (*remove) (struct ef4_nic *efx);
+        int (*reconfigure) (struct ef4_nic *efx);
+        bool (*poll) (struct ef4_nic *efx);
         void (*get_link_ksettings)(struct ef4_nic *efx, struct ethtool_link_ksettings *cmd);
         int (*set_link_ksettings)(struct ef4_nic *efx, const struct ethtool_link_ksettings *cmd);
-        void (*set_npage_adv)(struct ef4_nic *efx, u32);
-        int (*test_alive)(struct ef4_nic *efx);
-        const char *(*test_name)(struct ef4_nic *efx, unsigned int index);
-        int (*run_tests)(struct ef4_nic *efx, int *results, unsigned flags);
-        int (*get_module_eeprom)(struct ef4_nic *efx,struct ethtool_eeprom *ee, u8 *data);
-        int (*get_module_info)(struct ef4_nic *efx, struct ethtool_modinfo *modinfo);
+        void (*set_npage_adv) (struct ef4_nic *efx, u32);
+        int (*test_alive) (struct ef4_nic *efx);
+        const char *(*test_name) (struct ef4_nic *efx, unsigned int index);
+        int (*run_tests) (struct ef4_nic *efx, int *results, unsigned flags);
+        int (*get_module_eeprom) (struct ef4_nic *efx,struct ethtool_eeprom *ee, u8 *data);
+        int (*get_module_info) (struct ef4_nic *efx, struct ethtool_modinfo *modinfo);
     }
 
 .. _`ef4_phy_operations.members`:
@@ -1025,7 +1027,7 @@ Definition
 .. code-block:: c
 
     struct ef4_nic {
-        char name;
+        char name[IFNAMSIZ];
         struct list_head node;
         struct ef4_nic *primary;
         struct list_head secondary_list;
@@ -1035,7 +1037,7 @@ Definition
         int legacy_irq;
         bool eeh_disabled_legacy_irq;
         struct workqueue_struct *workqueue;
-        char workqueue_name;
+        char workqueue_name[16];
         struct work_struct reset_work;
         resource_size_t membase_phys;
         void __iomem *membase;
@@ -1048,9 +1050,9 @@ Definition
         u32 msg_enable;
         enum nic_state state;
         unsigned long reset_pending;
-        struct ef4_channel  *channel;
-        struct ef4_msi_context msi_context;
-        const struct ef4_channel_type *extra_channel_type;
+        struct ef4_channel *channel[EF4_MAX_CHANNELS];
+        struct ef4_msi_context msi_context[EF4_MAX_CHANNELS];
+        const struct ef4_channel_type * extra_channel_type[EF4_MAX_EXTRA_CHANNELS];
         unsigned rxq_entries;
         unsigned txq_entries;
         unsigned int txq_stop_thresh;
@@ -1077,8 +1079,8 @@ Definition
         int rx_packet_hash_offset;
         int rx_packet_len_offset;
         int rx_packet_ts_offset;
-        u8 rx_hash_key;
-        u32 rx_indir_table;
+        u8 rx_hash_key[40];
+        u32 rx_indir_table[128];
         bool rx_scatter;
         unsigned int_error_count;
         unsigned long int_error_expire;

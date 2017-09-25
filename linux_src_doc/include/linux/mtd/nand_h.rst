@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct nand_id {
-        u8 data;
+        u8 data[8];
         int len;
     }
 
@@ -573,7 +573,9 @@ Definition
 
     struct nand_data_interface {
         enum nand_data_interface_type type;
-        union timings;
+        union {
+            struct nand_sdr_timings sdr;
+        } timings;
     }
 
 .. _`nand_data_interface.members`:
@@ -584,8 +586,11 @@ Members
 type
     type of the timing
 
-timings
-    The timing, type according to \ ``type``\ 
+sdr
+    *undescribed*
+
+imings
+    *undescribed*
 
 .. _`nand_get_sdr_timings`:
 
@@ -697,7 +702,10 @@ Definition
         struct nand_id id;
         int onfi_version;
         int jedec_version;
-        union {unnamed_union};
+        union {
+            struct nand_onfi_params onfi_params;
+            struct nand_jedec_params jedec_params;
+        } ;
         u16 max_bb_per_die;
         u32 blocks_per_die;
         struct nand_data_interface *data_interface;
@@ -714,7 +722,10 @@ Definition
         struct nand_bbt_descr *bbt_md;
         struct nand_bbt_descr *badblock_pattern;
         void *priv;
-        struct manufacturer;
+        struct {
+            const struct nand_manufacturer *desc;
+            void *priv;
+        } manufacturer;
     }
 
 .. _`nand_chip.members`:
@@ -887,7 +898,6 @@ jedec_version
 {unnamed_union}
     anonymous
 
-
 max_bb_per_die
     [INTERN] the max number of bad blocks each die of a
     this nand device will encounter their life times.
@@ -942,8 +952,14 @@ badblock_pattern
 priv
     [OPTIONAL] pointer to private chip data
 
-manufacturer
-    [INTERN] Contains manufacturer information
+desc
+    *undescribed*
+
+priv
+    [OPTIONAL] pointer to private chip data
+
+anufacturer
+    *undescribed*
 
 .. _`nand_flash_dev`:
 
@@ -963,14 +979,23 @@ Definition
 
     struct nand_flash_dev {
         char *name;
-        union {unnamed_union};
+        union {
+            struct {
+                uint8_t mfr_id;
+                uint8_t dev_id;
+            } ;
+            uint8_t id[NAND_MAX_ID_LEN];
+        } ;
         unsigned int pagesize;
         unsigned int chipsize;
         unsigned int erasesize;
         unsigned int options;
         uint16_t id_len;
         uint16_t oobsize;
-        struct ecc;
+        struct {
+            uint16_t strength_ds;
+            uint16_t step_ds;
+        } ecc;
         int onfi_timing_mode_default;
     }
 
@@ -982,9 +1007,14 @@ Members
 name
     a human-readable name of the NAND chip
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+id
+    full device ID array
+
+}
+    *undescribed*
 
 pagesize
     size of the NAND page in bytes; if 0, then the real page size (as
@@ -1006,18 +1036,14 @@ id_len
 oobsize
     OOB size
 
-ecc
-    ECC correctability and step information from the datasheet.
+strength_ds
+    *undescribed*
 
-ecc.strength_ds
-    The ECC correctability from the datasheet, same as the
-    \ ``ecc_strength_ds``\  in nand_chip{}.
+step_ds
+    *undescribed*
 
-ecc.step_ds
-    The ECC step required by the \ ``ecc``\ .strength_ds, same as the
-    \ ``ecc_step_ds``\  in nand_chip{}, also from the datasheet.
-    For example, the "4bit ECC for each 512Byte" can be set with
-    NAND_ECC_INFO(4, 512).
+cc
+    *undescribed*
 
 onfi_timing_mode_default
     the default ONFI timing mode entered after a NAND

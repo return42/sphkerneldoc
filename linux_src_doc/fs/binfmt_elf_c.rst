@@ -42,7 +42,6 @@ Definition
 .. code-block:: c
 
     struct arch_elf_state {
-         void;
     }
 
 .. _`arch_elf_state.members`:

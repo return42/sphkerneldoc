@@ -20,7 +20,7 @@ Definition
     struct tipc_bc_base {
         struct tipc_link *link;
         struct sk_buff_head inputq;
-        int dests;
+        int dests[MAX_BEARERS];
         int primary_bearer;
         bool bcast_support;
         bool rcast_support;

@@ -199,13 +199,22 @@ Definition
         struct p9_trans_module *trans_mod;
         enum p9_trans_status status;
         void *trans;
-        union trans_opts;
+        union {
+            struct {
+                int rfd;
+                int wfd;
+            } fd;
+            struct {
+                u16 port;
+                bool privport;
+            } tcp;
+        } trans_opts;
         struct p9_idpool *fidpool;
         struct list_head fidlist;
         struct p9_idpool *tagpool;
-        struct p9_req_t  *reqs;
+        struct p9_req_t *reqs[P9_ROW_MAXTAG];
         int max_tag;
-        char name;
+        char name[__NEW_UTS_LEN + 1];
     }
 
 .. _`p9_client.members`:
@@ -231,7 +240,25 @@ status
 trans
     tranport instance state and API
 
-trans_opts
+rfd
+    *undescribed*
+
+wfd
+    *undescribed*
+
+d
+    *undescribed*
+
+port
+    *undescribed*
+
+privport
+    *undescribed*
+
+cp
+    *undescribed*
+
+rans_opts
     *undescribed*
 
 fidpool
@@ -366,7 +393,7 @@ Definition
         struct p9_qid qid;
         u64 d_off;
         unsigned char d_type;
-        char d_name;
+        char d_name[256];
     }
 
 .. _`p9_dirent.members`:

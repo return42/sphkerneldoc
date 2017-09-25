@@ -22,7 +22,7 @@ Definition
         __u32 count;
         __u32 memory;
         struct v4l2_format32 format;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_create_buffers32.members`:

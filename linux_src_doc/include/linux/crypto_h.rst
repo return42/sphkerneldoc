@@ -293,10 +293,15 @@ Definition
         unsigned int cra_alignmask;
         int cra_priority;
         atomic_t cra_refcnt;
-        char cra_name;
-        char cra_driver_name;
+        char cra_name[CRYPTO_MAX_ALG_NAME];
+        char cra_driver_name[CRYPTO_MAX_ALG_NAME];
         const struct crypto_type *cra_type;
-        union cra_u;
+        union {
+            struct ablkcipher_alg ablkcipher;
+            struct blkcipher_alg blkcipher;
+            struct cipher_alg cipher;
+            struct compress_alg compress;
+        } cra_u;
         int (*cra_init)(struct crypto_tfm *tfm);
         void (*cra_exit)(struct crypto_tfm *tfm);
         void (*cra_destroy)(struct crypto_alg *alg);
@@ -380,12 +385,20 @@ cra_type
     This field might be empty. In that case, there are no common
     callbacks. This is the case for: cipher, compress, shash.
 
-cra_u
-    Callbacks implementing the transformation. This is a union of
-    multiple structures. Depending on the type of transformation selected
-    by \ ``cra_type``\  and \ ``cra_flags``\  above, the associated structure must be
-    filled with callbacks. This field might be empty. This is the case
-    for ahash, shash.
+ablkcipher
+    *undescribed*
+
+blkcipher
+    *undescribed*
+
+cipher
+    *undescribed*
+
+compress
+    *undescribed*
+
+ra_u
+    *undescribed*
 
 cra_init
     Initialize the cryptographic transformation object. This function

@@ -29,7 +29,7 @@ Definition
         unsigned view_id;
         u32 cmd_size;
         bool committed;
-        u32 cmd;
+        u32 cmd[1];
     }
 
 .. _`vmw_view.members`:

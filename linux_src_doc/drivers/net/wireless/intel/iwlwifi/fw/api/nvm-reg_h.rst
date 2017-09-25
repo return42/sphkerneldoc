@@ -176,7 +176,7 @@ Definition
         __le16 type;
         __le16 offset;
         __le16 length;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_nvm_access_cmd.members`:
@@ -223,7 +223,7 @@ Definition
         __le16 length;
         __le16 type;
         __le16 status;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_nvm_access_resp.members`:
@@ -412,7 +412,7 @@ Definition
 
     struct iwl_nvm_get_info_regulatory {
         __le32 lar_enabled;
-        __le16 channel_profile;
+        __le16 channel_profile[IWL_NUM_CHANNELS];
         __le16 reserved;
     }
 
@@ -555,7 +555,7 @@ Definition
         u8 source_id;
         u8 reserved;
         __le32 key;
-        u8 reserved2;
+        u8 reserved2[20];
     }
 
 .. _`iwl_mcc_update_cmd.members`:
@@ -600,7 +600,7 @@ Definition
         u8 cap;
         u8 source_id;
         __le32 n_channels;
-        __le32 channels;
+        __le32 channels[0];
     }
 
 .. _`iwl_mcc_update_resp_v1.members`:
@@ -652,7 +652,7 @@ Definition
         __le16 time;
         __le16 reserved;
         __le32 n_channels;
-        __le32 channels;
+        __le32 channels[0];
     }
 
 .. _`iwl_mcc_update_resp.members`:

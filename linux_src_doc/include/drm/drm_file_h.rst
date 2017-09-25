@@ -18,7 +18,13 @@ Definition
 .. code-block:: c
 
     struct drm_minor {
-         void;
+        int index;
+        int type;
+        struct device *kdev;
+        struct drm_device *dev;
+        struct dentry *debugfs_root;
+        struct list_head debugfs_list;
+        struct mutex debugfs_lock;
     }
 
 .. _`drm_minor.members`:
@@ -26,8 +32,26 @@ Definition
 Members
 -------
 
-void
-    no arguments
+index
+    *undescribed*
+
+type
+    *undescribed*
+
+kdev
+    *undescribed*
+
+dev
+    *undescribed*
+
+debugfs_root
+    *undescribed*
+
+debugfs_list
+    *undescribed*
+
+debugfs_lock
+    *undescribed*
 
 .. _`drm_minor.description`:
 
@@ -138,8 +162,8 @@ Definition
 .. code-block:: c
 
     struct drm_file {
-        unsigned authenticated:1;
-        unsigned stereo_allowed:1;
+        unsigned authenticated :1;
+        unsigned stereo_allowed :1;
         unsigned universal_planes:1;
         unsigned atomic:1;
         unsigned is_master:1;
@@ -163,6 +187,7 @@ Definition
         int event_space;
         struct mutex event_read_lock;
         struct drm_prime_file_private prime;
+        unsigned long lock_count;
     }
 
 .. _`drm_file.members`:
@@ -291,6 +316,9 @@ event_read_lock
 prime
 
     Per-file buffer caches used by the PRIME buffer sharing code.
+
+lock_count
+    *undescribed*
 
 .. _`drm_file.description`:
 

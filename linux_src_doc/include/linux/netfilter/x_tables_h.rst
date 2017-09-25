@@ -18,8 +18,13 @@ Definition
 .. code-block:: c
 
     struct xt_action_param {
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            const struct xt_match *match;
+            const struct xt_target *target;
+        } ;
+        union {
+            const void *matchinfo, *targinfo;
+        } ;
         const struct nf_hook_state *state;
         int fragoff;
         unsigned int thoff;
@@ -34,10 +39,8 @@ Members
 {unnamed_union}
     anonymous
 
-
 {unnamed_union}
     anonymous
-
 
 state
     pointer to hook state this packet came from

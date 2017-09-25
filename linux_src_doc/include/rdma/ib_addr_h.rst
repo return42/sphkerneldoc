@@ -42,9 +42,9 @@ Definition
 .. code-block:: c
 
     struct rdma_dev_addr {
-        unsigned char src_dev_addr;
-        unsigned char dst_dev_addr;
-        unsigned char broadcast;
+        unsigned char src_dev_addr[MAX_ADDR_LEN];
+        unsigned char dst_dev_addr[MAX_ADDR_LEN];
+        unsigned char broadcast[MAX_ADDR_LEN];
         unsigned short dev_type;
         int bound_dev_if;
         enum rdma_transport_type transport;

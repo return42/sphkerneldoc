@@ -18,7 +18,7 @@ Definition
 
     struct lp8755_platform_data {
         int mphase;
-        struct regulator_init_data  *buck_data;
+        struct regulator_init_data *buck_data[LP8755_BUCK_MAX];
     }
 
 .. _`lp8755_platform_data.members`:

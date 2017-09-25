@@ -21,12 +21,12 @@ Definition
         struct drm_crtc *crtc;
         bool enable;
         bool active;
-        bool planes_changed:1;
-        bool mode_changed:1;
-        bool active_changed:1;
-        bool connectors_changed:1;
-        bool zpos_changed:1;
-        bool color_mgmt_changed:1;
+        bool planes_changed : 1;
+        bool mode_changed : 1;
+        bool active_changed : 1;
+        bool connectors_changed : 1;
+        bool zpos_changed : 1;
+        bool color_mgmt_changed : 1;
         u32 plane_mask;
         u32 connector_mask;
         u32 encoder_mask;
@@ -644,8 +644,7 @@ Definition
         bool enabled;
         struct drm_display_mode mode;
         struct drm_display_mode hwmode;
-        int x;
-        int y;
+        int x, y;
         const struct drm_crtc_funcs *funcs;
         uint32_t gamma_size;
         uint16_t *gamma_store;
@@ -661,7 +660,7 @@ Definition
         unsigned int fence_context;
         spinlock_t fence_lock;
         unsigned long fence_seqno;
-        char timeline_name;
+        char timeline_name[32];
     }
 
 .. _`drm_crtc.members`:

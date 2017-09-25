@@ -138,7 +138,10 @@ Definition
 .. code-block:: c
 
     struct media_graph {
-        struct stack;
+        struct {
+            struct media_entity *entity;
+            struct list_head *link;
+        } stack[MEDIA_ENTITY_ENUM_MAX_DEPTH];
         struct media_entity_enum ent_enum;
         int top;
     }
@@ -148,10 +151,14 @@ Definition
 Members
 -------
 
-stack
-    Graph traversal stack; the stack contains information
-    on the path the media entities to be walked and the
-    links through which they were reached.
+entity
+    *undescribed*
+
+link
+    *undescribed*
+
+tack
+    *undescribed*
 
 ent_enum
     Visited entities
@@ -210,8 +217,16 @@ Definition
     struct media_link {
         struct media_gobj graph_obj;
         struct list_head list;
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            struct media_gobj *gobj0;
+            struct media_pad *source;
+            struct media_interface *intf;
+        } ;
+        union {
+            struct media_gobj *gobj1;
+            struct media_pad *sink;
+            struct media_entity *entity;
+        } ;
         struct media_link *reverse;
         unsigned long flags;
         bool is_backlink;
@@ -232,10 +247,8 @@ list
 {unnamed_union}
     anonymous
 
-
 {unnamed_union}
     anonymous
-
 
 reverse
     Pointer to the link for the reverse direction of a pad to pad
@@ -425,7 +438,12 @@ Definition
         int stream_count;
         int use_count;
         struct media_pipeline *pipe;
-        union info;
+        union {
+            struct {
+                u32 major;
+                u32 minor;
+            } dev;
+        } info;
     }
 
 .. _`media_entity.members`:
@@ -483,9 +501,19 @@ use_count
 pipe
     Pipeline this entity belongs to.
 
-info
-    Union with devnode information.  Kept just for backward
-    compatibility.
+major
+    Devnode major number (zero if not applicable). Kept just
+    for backward compatibility.
+
+minor
+    Devnode minor number (zero if not applicable). Kept just
+    for backward compatibility.
+
+ev
+    *undescribed*
+
+nfo
+    *undescribed*
 
 .. _`media_entity.description`:
 

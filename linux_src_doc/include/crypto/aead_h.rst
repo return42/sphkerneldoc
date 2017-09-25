@@ -79,7 +79,7 @@ Definition
         u8 *iv;
         struct scatterlist *src;
         struct scatterlist *dst;
-        void  *__ctx;
+        void *__ctx[] CRYPTO_MINALIGN_ATTR;
     }
 
 .. _`aead_request.members`:

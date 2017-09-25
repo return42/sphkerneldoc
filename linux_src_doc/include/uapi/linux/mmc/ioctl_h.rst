@@ -19,7 +19,7 @@ Definition
 
     struct mmc_ioc_multi_cmd {
         __u64 num_of_cmds;
-        struct mmc_ioc_cmd cmds;
+        struct mmc_ioc_cmd cmds[0];
     }
 
 .. _`mmc_ioc_multi_cmd.members`:

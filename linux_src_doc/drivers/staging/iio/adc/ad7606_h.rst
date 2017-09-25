@@ -68,7 +68,7 @@ Definition
         struct gpio_desc *gpio_standby;
         struct gpio_desc *gpio_frstdata;
         struct gpio_descs *gpio_os;
-        unsigned short data;
+        unsigned short data[12] ____cacheline_aligned;
     }
 
 .. _`ad7606_state.members`:

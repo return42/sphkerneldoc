@@ -18,13 +18,13 @@ Definition
 .. code-block:: c
 
     struct v4l2_capability {
-        __u8 driver;
-        __u8 card;
-        __u8 bus_info;
+        __u8 driver[16];
+        __u8 card[32];
+        __u8 bus_info[32];
         __u32 version;
         __u32 capabilities;
         __u32 device_caps;
-        __u32 reserved;
+        __u32 reserved[3];
     }
 
 .. _`v4l2_capability.members`:
@@ -72,9 +72,13 @@ Definition
     struct v4l2_plane {
         __u32 bytesused;
         __u32 length;
-        union m;
+        union {
+            __u32 mem_offset;
+            unsigned long userptr;
+            __s32 fd;
+        } m;
         __u32 data_offset;
-        __u32 reserved;
+        __u32 reserved[11];
     }
 
 .. _`v4l2_plane.members`:
@@ -88,8 +92,22 @@ bytesused
 length
     size of this plane (NOT the payload) in bytes
 
-m
-    *undescribed*
+mem_offset
+    when memory in the associated struct v4l2_buffer is
+    V4L2_MEMORY_MMAP, equals the offset from the start of
+    the device memory for this plane (or is a "cookie" that
+    should be passed to \ :c:func:`mmap`\  called on the video node)
+
+userptr
+    when memory is V4L2_MEMORY_USERPTR, a userspace pointer
+    pointing to this plane
+
+fd
+    when memory is V4L2_MEMORY_DMABUF, a userspace file
+    descriptor associated with this plane
+
+void
+    no arguments
 
 data_offset
     offset in the plane to the start of data; usually 0,
@@ -134,7 +152,12 @@ Definition
         struct v4l2_timecode timecode;
         __u32 sequence;
         __u32 memory;
-        union m;
+        union {
+            __u32 offset;
+            unsigned long userptr;
+            struct v4l2_plane *planes;
+            __s32 fd;
+        } m;
         __u32 length;
         __u32 reserved2;
         __u32 reserved;
@@ -175,8 +198,25 @@ memory
     enum v4l2_memory; the method, in which the actual video data is
     passed
 
-m
-    *undescribed*
+offset
+    for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
+    offset from the start of the device memory for this plane,
+    (or a "cookie" that should be passed to \ :c:func:`mmap`\  as offset)
+
+userptr
+    for non-multiplanar buffers with memory == V4L2_MEMORY_USERPTR;
+    a userspace pointer pointing to this buffer
+
+planes
+    for multiplanar buffers; userspace pointer to the array of plane
+    info structs for this buffer
+
+fd
+    for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
+    a userspace file descriptor associated with this buffer
+
+void
+    no arguments
 
 length
     size in bytes of the buffer (NOT its payload) for single-plane
@@ -219,7 +259,7 @@ Definition
         __u32 plane;
         __u32 flags;
         __s32 fd;
-        __u32 reserved;
+        __u32 reserved[11];
     }
 
 .. _`v4l2_exportbuffer.members`:
@@ -280,7 +320,7 @@ Definition
         __u32 target;
         __u32 flags;
         struct v4l2_rect r;
-        __u32 reserved;
+        __u32 reserved[9];
     }
 
 .. _`v4l2_selection.members`:
@@ -332,7 +372,7 @@ Definition
     struct v4l2_plane_pix_format {
         __u32 sizeimage;
         __u32 bytesperline;
-        __u16 reserved;
+        __u16 reserved[6];
     }
 
 .. _`v4l2_plane_pix_format.members`:
@@ -373,13 +413,16 @@ Definition
         __u32 pixelformat;
         __u32 field;
         __u32 colorspace;
-        struct v4l2_plane_pix_format plane_fmt;
+        struct v4l2_plane_pix_format plane_fmt[VIDEO_MAX_PLANES];
         __u8 num_planes;
         __u8 flags;
-        union {unnamed_union};
+        union {
+            __u8 ycbcr_enc;
+            __u8 hsv_enc;
+        } ;
         __u8 quantization;
         __u8 xfer_func;
-        __u8 reserved;
+        __u8 reserved[7];
     }
 
 .. _`v4l2_pix_format_mplane.members`:
@@ -414,7 +457,6 @@ flags
 {unnamed_union}
     anonymous
 
-
 quantization
     enum v4l2_quantization, colorspace quantization
 
@@ -443,7 +485,7 @@ Definition
     struct v4l2_sdr_format {
         __u32 pixelformat;
         __u32 buffersize;
-        __u8 reserved;
+        __u8 reserved[24];
     }
 
 .. _`v4l2_sdr_format.members`:
@@ -510,7 +552,16 @@ Definition
 
     struct v4l2_format {
         __u32 type;
-        union fmt;
+        union {
+            struct v4l2_pix_format pix;
+            struct v4l2_pix_format_mplane pix_mp;
+            struct v4l2_window win;
+            struct v4l2_vbi_format vbi;
+            struct v4l2_sliced_vbi_format sliced;
+            struct v4l2_sdr_format sdr;
+            struct v4l2_meta_format meta;
+            __u8 raw_data[200];
+        } fmt;
     }
 
 .. _`v4l2_format.members`:
@@ -521,7 +572,31 @@ Members
 type
     enum v4l2_buf_type; type of the data stream
 
-fmt
+pix
+    definition of an image format
+
+pix_mp
+    definition of a multiplanar image format
+
+win
+    definition of an overlaid image
+
+vbi
+    raw VBI capture or output parameters
+
+sliced
+    sliced VBI capture or output parameters
+
+sdr
+    *undescribed*
+
+meta
+    *undescribed*
+
+raw_data
+    placeholder for future extensions and custom formats
+
+mt
     *undescribed*
 
 .. _`v4l2_event_motion_det`:
@@ -582,7 +657,7 @@ Definition
         __u32 count;
         __u32 memory;
         struct v4l2_format format;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_create_buffers.members`:

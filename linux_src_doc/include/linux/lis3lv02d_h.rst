@@ -84,8 +84,8 @@ Definition
         int default_rate;
         int (*setup_resources)(void);
         int (*release_resources)(void);
-        s16 st_min_limits;
-        s16 st_max_limits;
+        s16 st_min_limits[3];
+        s16 st_max_limits[3];
         int irq2;
     }
 

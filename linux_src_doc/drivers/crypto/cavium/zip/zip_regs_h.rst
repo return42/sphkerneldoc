@@ -119,7 +119,15 @@ Definition
 
     union zip_zptr_addr_s {
         u64 u_reg64;
-        struct s;
+        struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_49_63 : 15;
+            u64 addr : 49;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 addr : 49;
+            u64 reserved_49_63 : 15;
+    #endif
+        } s;
     }
 
 .. _`zip_zptr_addr_s.members`:
@@ -130,8 +138,23 @@ Members
 u_reg64
     *undescribed*
 
-s
+defined__BIG_ENDIAN_BITFIELD
     *undescribed*
+
+reserved_49_63
+    *undescribed*
+
+addr
+    *undescribed*
+
+addr
+    *undescribed*
+
+reserved_49_63
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zip_zptr_addr_s.description`:
 
@@ -158,7 +181,23 @@ Definition
 
     union zip_zptr_ctl_s {
         u64 u_reg64;
-        struct s;
+        struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_112_127 : 16;
+            u64 length : 16;
+            u64 reserved_67_95 : 29;
+            u64 fw : 1;
+            u64 nc : 1;
+            u64 data_be : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 data_be : 1;
+            u64 nc : 1;
+            u64 fw : 1;
+            u64 reserved_67_95 : 29;
+            u64 length : 16;
+            u64 reserved_112_127 : 16;
+    #endif
+        } s;
     }
 
 .. _`zip_zptr_ctl_s.members`:
@@ -169,8 +208,47 @@ Members
 u_reg64
     *undescribed*
 
-s
+defined__BIG_ENDIAN_BITFIELD
     *undescribed*
+
+reserved_112_127
+    *undescribed*
+
+length
+    *undescribed*
+
+reserved_67_95
+    *undescribed*
+
+fw
+    *undescribed*
+
+nc
+    *undescribed*
+
+data_be
+    *undescribed*
+
+data_be
+    *undescribed*
+
+nc
+    *undescribed*
+
+fw
+    *undescribed*
+
+reserved_67_95
+    *undescribed*
+
+length
+    *undescribed*
+
+reserved_112_127
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zip_zptr_ctl_s.description`:
 
@@ -196,8 +274,97 @@ Definition
 .. code-block:: c
 
     union zip_inst_s {
-        u64 u_reg64;
-        struct s;
+        u64 u_reg64[16];
+        struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 doneint : 1;
+            u64 reserved_56_62 : 7;
+            u64 totaloutputlength : 24;
+            u64 reserved_27_31 : 5;
+            u64 exn : 3;
+            u64 reserved_23_23 : 1;
+            u64 exbits : 7;
+            u64 reserved_12_15 : 4;
+            u64 sf : 1;
+            u64 ss : 2;
+            u64 cc : 2;
+            u64 ef : 1;
+            u64 bf : 1;
+            u64 ce : 1;
+            u64 reserved_3_3 : 1;
+            u64 ds : 1;
+            u64 dg : 1;
+            u64 hg : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 hg : 1;
+            u64 dg : 1;
+            u64 ds : 1;
+            u64 reserved_3_3 : 1;
+            u64 ce : 1;
+            u64 bf : 1;
+            u64 ef : 1;
+            u64 cc : 2;
+            u64 ss : 2;
+            u64 sf : 1;
+            u64 reserved_12_15 : 4;
+            u64 exbits : 7;
+            u64 reserved_23_23 : 1;
+            u64 exn : 3;
+            u64 reserved_27_31 : 5;
+            u64 totaloutputlength : 24;
+            u64 reserved_56_62 : 7;
+            u64 doneint : 1;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 historylength : 16;
+            u64 reserved_96_111 : 16;
+            u64 adlercrc32 : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 adlercrc32 : 32;
+            u64 reserved_96_111 : 16;
+            u64 historylength : 16;
+    #endif
+            union zip_zptr_addr_s ctx_ptr_addr;
+            union zip_zptr_ctl_s ctx_ptr_ctl;
+            union zip_zptr_addr_s his_ptr_addr;
+            union zip_zptr_ctl_s his_ptr_ctl;
+            union zip_zptr_addr_s inp_ptr_addr;
+            union zip_zptr_ctl_s inp_ptr_ctl;
+            union zip_zptr_addr_s out_ptr_addr;
+            union zip_zptr_ctl_s out_ptr_ctl;
+            union zip_zptr_addr_s res_ptr_addr;
+            union zip_zptr_ctl_s res_ptr_ctl;
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_817_831 : 15;
+            u64 wq_ptr : 49;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 wq_ptr : 49;
+            u64 reserved_817_831 : 15;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_882_895 : 14;
+            u64 tt : 2;
+            u64 reserved_874_879 : 6;
+            u64 grp : 10;
+            u64 tag : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 tag : 32;
+            u64 grp : 10;
+            u64 reserved_874_879 : 6;
+            u64 tt : 2;
+            u64 reserved_882_895 : 14;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_896_959 : 64;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 reserved_896_959 : 64;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_960_1023 : 64;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 reserved_960_1023 : 64;
+    #endif
+        } s;
     }
 
 .. _`zip_inst_s.members`:
@@ -208,8 +375,221 @@ Members
 u_reg64
     *undescribed*
 
-s
+defined__BIG_ENDIAN_BITFIELD
     *undescribed*
+
+doneint
+    *undescribed*
+
+reserved_56_62
+    *undescribed*
+
+totaloutputlength
+    *undescribed*
+
+reserved_27_31
+    *undescribed*
+
+exn
+    *undescribed*
+
+reserved_23_23
+    *undescribed*
+
+exbits
+    *undescribed*
+
+reserved_12_15
+    *undescribed*
+
+sf
+    *undescribed*
+
+ss
+    *undescribed*
+
+cc
+    *undescribed*
+
+ef
+    *undescribed*
+
+bf
+    *undescribed*
+
+ce
+    *undescribed*
+
+reserved_3_3
+    *undescribed*
+
+ds
+    *undescribed*
+
+dg
+    *undescribed*
+
+hg
+    *undescribed*
+
+hg
+    *undescribed*
+
+dg
+    *undescribed*
+
+ds
+    *undescribed*
+
+reserved_3_3
+    *undescribed*
+
+ce
+    *undescribed*
+
+bf
+    *undescribed*
+
+ef
+    *undescribed*
+
+cc
+    *undescribed*
+
+ss
+    *undescribed*
+
+sf
+    *undescribed*
+
+reserved_12_15
+    *undescribed*
+
+exbits
+    *undescribed*
+
+reserved_23_23
+    *undescribed*
+
+exn
+    *undescribed*
+
+reserved_27_31
+    *undescribed*
+
+totaloutputlength
+    *undescribed*
+
+reserved_56_62
+    *undescribed*
+
+doneint
+    *undescribed*
+
+historylength
+    *undescribed*
+
+reserved_96_111
+    *undescribed*
+
+adlercrc32
+    *undescribed*
+
+adlercrc32
+    *undescribed*
+
+reserved_96_111
+    *undescribed*
+
+historylength
+    *undescribed*
+
+ctx_ptr_addr
+    *undescribed*
+
+ctx_ptr_ctl
+    *undescribed*
+
+his_ptr_addr
+    *undescribed*
+
+his_ptr_ctl
+    *undescribed*
+
+inp_ptr_addr
+    *undescribed*
+
+inp_ptr_ctl
+    *undescribed*
+
+out_ptr_addr
+    *undescribed*
+
+out_ptr_ctl
+    *undescribed*
+
+res_ptr_addr
+    *undescribed*
+
+res_ptr_ctl
+    *undescribed*
+
+reserved_817_831
+    *undescribed*
+
+wq_ptr
+    *undescribed*
+
+wq_ptr
+    *undescribed*
+
+reserved_817_831
+    *undescribed*
+
+reserved_882_895
+    *undescribed*
+
+tt
+    *undescribed*
+
+reserved_874_879
+    *undescribed*
+
+grp
+    *undescribed*
+
+tag
+    *undescribed*
+
+tag
+    *undescribed*
+
+grp
+    *undescribed*
+
+reserved_874_879
+    *undescribed*
+
+tt
+    *undescribed*
+
+reserved_882_895
+    *undescribed*
+
+reserved_896_959
+    *undescribed*
+
+reserved_896_959
+    *undescribed*
+
+reserved_960_1023
+    *undescribed*
+
+reserved_960_1023
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zip_nptr_s`:
 
@@ -229,7 +609,15 @@ Definition
 
     union zip_nptr_s {
         u64 u_reg64;
-        struct s;
+        struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_49_63 : 15;
+            u64 addr : 49;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 addr : 49;
+            u64 reserved_49_63 : 15;
+    #endif
+        } s;
     }
 
 .. _`zip_nptr_s.members`:
@@ -240,8 +628,23 @@ Members
 u_reg64
     *undescribed*
 
-s
+defined__BIG_ENDIAN_BITFIELD
     *undescribed*
+
+reserved_49_63
+    *undescribed*
+
+addr
+    *undescribed*
+
+addr
+    *undescribed*
+
+reserved_49_63
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zip_nptr_s.description`:
 
@@ -269,8 +672,31 @@ Definition
 .. code-block:: c
 
     union zip_zptr_s {
-        u64 u_reg64;
-        struct s;
+        u64 u_reg64[2];
+        struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_49_63 : 15;
+            u64 addr : 49;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 addr : 49;
+            u64 reserved_49_63 : 15;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_112_127 : 16;
+            u64 length : 16;
+            u64 reserved_67_95 : 29;
+            u64 fw : 1;
+            u64 nc : 1;
+            u64 data_be : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 data_be : 1;
+            u64 nc : 1;
+            u64 fw : 1;
+            u64 reserved_67_95 : 29;
+            u64 length : 16;
+            u64 reserved_112_127 : 16;
+    #endif
+        } s;
     }
 
 .. _`zip_zptr_s.members`:
@@ -281,8 +707,59 @@ Members
 u_reg64
     *undescribed*
 
-s
+defined__BIG_ENDIAN_BITFIELD
     *undescribed*
+
+reserved_49_63
+    *undescribed*
+
+addr
+    *undescribed*
+
+addr
+    *undescribed*
+
+reserved_49_63
+    *undescribed*
+
+reserved_112_127
+    *undescribed*
+
+length
+    *undescribed*
+
+reserved_67_95
+    *undescribed*
+
+fw
+    *undescribed*
+
+nc
+    *undescribed*
+
+data_be
+    *undescribed*
+
+data_be
+    *undescribed*
+
+nc
+    *undescribed*
+
+fw
+    *undescribed*
+
+reserved_67_95
+    *undescribed*
+
+length
+    *undescribed*
+
+reserved_112_127
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zip_zptr_s.description`:
 
@@ -308,8 +785,44 @@ Definition
 .. code-block:: c
 
     union zip_zres_s {
-        u64 u_reg64;
-        struct s;
+        u64 u_reg64[3];
+        struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 crc32 : 32;
+            u64 adler32 : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 adler32 : 32;
+            u64 crc32 : 32;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 totalbyteswritten : 32;
+            u64 totalbytesread : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 totalbytesread : 32;
+            u64 totalbyteswritten : 32;
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 totalbitsprocessed : 32;
+            u64 doneint : 1;
+            u64 reserved_155_158 : 4;
+            u64 exn : 3;
+            u64 reserved_151_151 : 1;
+            u64 exbits : 7;
+            u64 reserved_137_143 : 7;
+            u64 ef : 1;
+            volatile u64 compcode : 8;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            volatile u64 compcode : 8;
+            u64 ef : 1;
+            u64 reserved_137_143 : 7;
+            u64 exbits : 7;
+            u64 reserved_151_151 : 1;
+            u64 exn : 3;
+            u64 reserved_155_158 : 4;
+            u64 doneint : 1;
+            u64 totalbitsprocessed : 32;
+    #endif
+        } s;
     }
 
 .. _`zip_zres_s.members`:
@@ -320,8 +833,89 @@ Members
 u_reg64
     *undescribed*
 
-s
+defined__BIG_ENDIAN_BITFIELD
     *undescribed*
+
+crc32
+    *undescribed*
+
+adler32
+    *undescribed*
+
+adler32
+    *undescribed*
+
+crc32
+    *undescribed*
+
+totalbyteswritten
+    *undescribed*
+
+totalbytesread
+    *undescribed*
+
+totalbytesread
+    *undescribed*
+
+totalbyteswritten
+    *undescribed*
+
+totalbitsprocessed
+    *undescribed*
+
+doneint
+    *undescribed*
+
+reserved_155_158
+    *undescribed*
+
+exn
+    *undescribed*
+
+reserved_151_151
+    *undescribed*
+
+exbits
+    *undescribed*
+
+reserved_137_143
+    *undescribed*
+
+ef
+    *undescribed*
+
+compcode
+    *undescribed*
+
+compcode
+    *undescribed*
+
+ef
+    *undescribed*
+
+reserved_137_143
+    *undescribed*
+
+exbits
+    *undescribed*
+
+reserved_151_151
+    *undescribed*
+
+exn
+    *undescribed*
+
+reserved_155_158
+    *undescribed*
+
+doneint
+    *undescribed*
+
+totalbitsprocessed
+    *undescribed*
+
+void
+    no arguments
 
 .. _`zip_zres_s.description`:
 
@@ -350,7 +944,17 @@ Definition
 
     union zip_cmd_ctl {
         u64 u_reg64;
-        struct zip_cmd_ctl_s s;
+        struct zip_cmd_ctl_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_2_63 : 62;
+            u64 forceclk : 1;
+            u64 reset : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 reset : 1;
+            u64 forceclk : 1;
+            u64 reserved_2_63 : 62;
+    #endif
+        } s;
     }
 
 .. _`zip_cmd_ctl.members`:
@@ -382,7 +986,27 @@ Definition
 
     union zip_constants {
         u64 u_reg64;
-        struct zip_constants_s s;
+        struct zip_constants_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 nexec : 8;
+            u64 reserved_49_55 : 7;
+            u64 syncflush_capable : 1;
+            u64 depth : 16;
+            u64 onfsize : 12;
+            u64 ctxsize : 12;
+            u64 reserved_1_7 : 7;
+            u64 disabled : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 disabled : 1;
+            u64 reserved_1_7 : 7;
+            u64 ctxsize : 12;
+            u64 onfsize : 12;
+            u64 depth : 16;
+            u64 syncflush_capable : 1;
+            u64 reserved_49_55 : 7;
+            u64 nexec : 8;
+    #endif
+        } s;
     }
 
 .. _`zip_constants.members`:
@@ -414,7 +1038,15 @@ Definition
 
     union zip_corex_bist_status {
         u64 u_reg64;
-        struct zip_corex_bist_status_s s;
+        struct zip_corex_bist_status_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_53_63 : 11;
+            u64 bstatus : 53;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 bstatus : 53;
+            u64 reserved_53_63 : 11;
+    #endif
+        } s;
     }
 
 .. _`zip_corex_bist_status.members`:
@@ -454,7 +1086,15 @@ Definition
 
     union zip_ctl_bist_status {
         u64 u_reg64;
-        struct zip_ctl_bist_status_s s;
+        struct zip_ctl_bist_status_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_9_63 : 55;
+            u64 bstatus : 9;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 bstatus : 9;
+            u64 reserved_9_63 : 55;
+    #endif
+        } s;
     }
 
 .. _`zip_ctl_bist_status.members`:
@@ -494,7 +1134,33 @@ Definition
 
     union zip_ctl_cfg {
         u64 u_reg64;
-        struct zip_ctl_cfg_s s;
+        struct zip_ctl_cfg_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_52_63 : 12;
+            u64 ildf : 4;
+            u64 reserved_36_47 : 12;
+            u64 drtf : 4;
+            u64 reserved_27_31 : 5;
+            u64 stcf : 3;
+            u64 reserved_19_23 : 5;
+            u64 ldf : 3;
+            u64 reserved_2_15 : 14;
+            u64 busy : 1;
+            u64 reserved_0_0 : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 reserved_0_0 : 1;
+            u64 busy : 1;
+            u64 reserved_2_15 : 14;
+            u64 ldf : 3;
+            u64 reserved_19_23 : 5;
+            u64 stcf : 3;
+            u64 reserved_27_31 : 5;
+            u64 drtf : 4;
+            u64 reserved_36_47 : 12;
+            u64 ildf : 4;
+            u64 reserved_52_63 : 12;
+    #endif
+        } s;
     }
 
 .. _`zip_ctl_cfg.members`:
@@ -534,7 +1200,19 @@ Definition
 
     union zip_dbg_corex_inst {
         u64 u_reg64;
-        struct zip_dbg_corex_inst_s s;
+        struct zip_dbg_corex_inst_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 busy : 1;
+            u64 reserved_35_62 : 28;
+            u64 qid : 3;
+            u64 iid : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 iid : 32;
+            u64 qid : 3;
+            u64 reserved_35_62 : 28;
+            u64 busy : 1;
+    #endif
+        } s;
     }
 
 .. _`zip_dbg_corex_inst.members`:
@@ -573,7 +1251,19 @@ Definition
 
     union zip_dbg_corex_sta {
         u64 u_reg64;
-        struct zip_dbg_corex_sta_s s;
+        struct zip_dbg_corex_sta_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 busy : 1;
+            u64 reserved_37_62 : 26;
+            u64 ist : 5;
+            u64 nie : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 nie : 32;
+            u64 ist : 5;
+            u64 reserved_37_62 : 26;
+            u64 busy : 1;
+    #endif
+        } s;
     }
 
 .. _`zip_dbg_corex_sta.members`:
@@ -612,7 +1302,19 @@ Definition
 
     union zip_dbg_quex_sta {
         u64 u_reg64;
-        struct zip_dbg_quex_sta_s s;
+        struct zip_dbg_quex_sta_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 busy : 1;
+            u64 reserved_56_62 : 7;
+            u64 rqwc : 24;
+            u64 nii : 32;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 nii : 32;
+            u64 rqwc : 24;
+            u64 reserved_56_62 : 7;
+            u64 busy : 1;
+    #endif
+        } s;
     }
 
 .. _`zip_dbg_quex_sta.members`:
@@ -651,7 +1353,41 @@ Definition
 
     union zip_ecc_ctl {
         u64 u_reg64;
-        struct zip_ecc_ctl_s s;
+        struct zip_ecc_ctl_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_19_63 : 45;
+            u64 vmem_cdis : 1;
+            u64 vmem_fs : 2;
+            u64 reserved_15_15 : 1;
+            u64 idf1_cdis : 1;
+            u64 idf1_fs : 2;
+            u64 reserved_11_11 : 1;
+            u64 idf0_cdis : 1;
+            u64 idf0_fs : 2;
+            u64 reserved_7_7 : 1;
+            u64 gspf_cdis : 1;
+            u64 gspf_fs : 2;
+            u64 reserved_3_3 : 1;
+            u64 iqf_cdis : 1;
+            u64 iqf_fs : 2;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 iqf_fs : 2;
+            u64 iqf_cdis : 1;
+            u64 reserved_3_3 : 1;
+            u64 gspf_fs : 2;
+            u64 gspf_cdis : 1;
+            u64 reserved_7_7 : 1;
+            u64 idf0_fs : 2;
+            u64 idf0_cdis : 1;
+            u64 reserved_11_11 : 1;
+            u64 idf1_fs : 2;
+            u64 idf1_cdis : 1;
+            u64 reserved_15_15 : 1;
+            u64 vmem_fs : 2;
+            u64 vmem_cdis : 1;
+            u64 reserved_19_63 : 45;
+    #endif
+        } s;
     }
 
 .. _`zip_ecc_ctl.members`:
@@ -690,7 +1426,19 @@ Definition
 
     union zip_ecce_int {
         u64 u_reg64;
-        struct zip_ecce_int_s s;
+        struct zip_ecce_int_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_37_63 : 27;
+            u64 dbe : 5;
+            u64 reserved_5_31 : 27;
+            u64 sbe : 5;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 sbe : 5;
+            u64 reserved_5_31 : 27;
+            u64 dbe : 5;
+            u64 reserved_37_63 : 27;
+    #endif
+        } s;
     }
 
 .. _`zip_ecce_int.members`:
@@ -722,7 +1470,13 @@ Definition
 
     union zip_msix_pbax {
         u64 u_reg64;
-        struct zip_msix_pbax_s s;
+        struct zip_msix_pbax_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 pend : 64;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 pend : 64;
+    #endif
+        } s;
     }
 
 .. _`zip_msix_pbax.members`:
@@ -761,7 +1515,19 @@ Definition
 
     union zip_msix_vecx_addr {
         u64 u_reg64;
-        struct zip_msix_vecx_addr_s s;
+        struct zip_msix_vecx_addr_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_49_63 : 15;
+            u64 addr : 47;
+            u64 reserved_1_1 : 1;
+            u64 secvec : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 secvec : 1;
+            u64 reserved_1_1 : 1;
+            u64 addr : 47;
+            u64 reserved_49_63 : 15;
+    #endif
+        } s;
     }
 
 .. _`zip_msix_vecx_addr.members`:
@@ -793,7 +1559,19 @@ Definition
 
     union zip_msix_vecx_ctl {
         u64 u_reg64;
-        struct zip_msix_vecx_ctl_s s;
+        struct zip_msix_vecx_ctl_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_33_63 : 31;
+            u64 mask : 1;
+            u64 reserved_20_31 : 12;
+            u64 data : 20;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 data : 20;
+            u64 reserved_20_31 : 12;
+            u64 mask : 1;
+            u64 reserved_33_63 : 31;
+    #endif
+        } s;
     }
 
 .. _`zip_msix_vecx_ctl.members`:
@@ -825,7 +1603,15 @@ Definition
 
     union zip_quex_done {
         u64 u_reg64;
-        struct zip_quex_done_s s;
+        struct zip_quex_done_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_20_63 : 44;
+            u64 done : 20;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 done : 20;
+            u64 reserved_20_63 : 44;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_done.members`:
@@ -857,7 +1643,15 @@ Definition
 
     union zip_quex_done_ack {
         u64 u_reg64;
-        struct zip_quex_done_ack_s s;
+        struct zip_quex_done_ack_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_20_63 : 44;
+            u64 done_ack : 20;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 done_ack : 20;
+            u64 reserved_20_63 : 44;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_done_ack.members`:
@@ -889,7 +1683,15 @@ Definition
 
     union zip_quex_done_ena_w1c {
         u64 u_reg64;
-        struct zip_quex_done_ena_w1c_s s;
+        struct zip_quex_done_ena_w1c_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_1_63 : 63;
+            u64 done_ena : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 done_ena : 1;
+            u64 reserved_1_63 : 63;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_done_ena_w1c.members`:
@@ -921,7 +1723,15 @@ Definition
 
     union zip_quex_done_ena_w1s {
         u64 u_reg64;
-        struct zip_quex_done_ena_w1s_s s;
+        struct zip_quex_done_ena_w1s_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_1_63 : 63;
+            u64 done_ena : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 done_ena : 1;
+            u64 reserved_1_63 : 63;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_done_ena_w1s.members`:
@@ -953,7 +1763,19 @@ Definition
 
     union zip_quex_done_wait {
         u64 u_reg64;
-        struct zip_quex_done_wait_s s;
+        struct zip_quex_done_wait_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_48_63 : 16;
+            u64 time_wait : 16;
+            u64 reserved_20_31 : 12;
+            u64 num_wait : 20;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 num_wait : 20;
+            u64 reserved_20_31 : 12;
+            u64 time_wait : 16;
+            u64 reserved_48_63 : 16;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_done_wait.members`:
@@ -985,7 +1807,15 @@ Definition
 
     union zip_quex_doorbell {
         u64 u_reg64;
-        struct zip_quex_doorbell_s s;
+        struct zip_quex_doorbell_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_20_63 : 44;
+            u64 dbell_cnt : 20;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 dbell_cnt : 20;
+            u64 reserved_20_63 : 44;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_doorbell.members`:
@@ -1017,7 +1847,23 @@ Definition
 
     union zip_quex_err_int {
         u64 u_reg64;
-        struct zip_quex_err_int_s s;
+        struct zip_quex_err_int_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_5_63 : 59;
+            u64 mdbe : 1;
+            u64 nwrp : 1;
+            u64 nrrp : 1;
+            u64 irde : 1;
+            u64 dovf : 1;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 dovf : 1;
+            u64 irde : 1;
+            u64 nrrp : 1;
+            u64 nwrp : 1;
+            u64 mdbe : 1;
+            u64 reserved_5_63 : 59;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_err_int.members`:
@@ -1049,7 +1895,19 @@ Definition
 
     union zip_quex_gcfg {
         u64 u_reg64;
-        struct zip_quex_gcfg_s s;
+        struct zip_quex_gcfg_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_4_63 : 60;
+            u64 iqb_ldwb : 1;
+            u64 cbw_sty : 1;
+            u64 l2ld_cmd : 2;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 l2ld_cmd : 2;
+            u64 cbw_sty : 1;
+            u64 iqb_ldwb : 1;
+            u64 reserved_4_63 : 60;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_gcfg.members`:
@@ -1081,7 +1939,15 @@ Definition
 
     union zip_quex_map {
         u64 u_reg64;
-        struct zip_quex_map_s s;
+        struct zip_quex_map_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_2_63 : 62;
+            u64 zce : 2;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 zce : 2;
+            u64 reserved_2_63 : 62;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_map.members`:
@@ -1113,7 +1979,17 @@ Definition
 
     union zip_quex_sbuf_addr {
         u64 u_reg64;
-        struct zip_quex_sbuf_addr_s s;
+        struct zip_quex_sbuf_addr_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_49_63 : 15;
+            u64 ptr : 42;
+            u64 off : 7;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 off : 7;
+            u64 ptr : 42;
+            u64 reserved_49_63 : 15;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_sbuf_addr.members`:
@@ -1155,7 +2031,25 @@ Definition
 
     union zip_quex_sbuf_ctl {
         u64 u_reg64;
-        struct zip_quex_sbuf_ctl_s s;
+        struct zip_quex_sbuf_ctl_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_45_63 : 19;
+            u64 size : 13;
+            u64 inst_be : 1;
+            u64 reserved_24_30 : 7;
+            u64 stream_id : 8;
+            u64 reserved_12_15 : 4;
+            u64 aura : 12;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 aura : 12;
+            u64 reserved_12_15 : 4;
+            u64 stream_id : 8;
+            u64 reserved_24_30 : 7;
+            u64 inst_be : 1;
+            u64 size : 13;
+            u64 reserved_45_63 : 19;
+    #endif
+        } s;
     }
 
 .. _`zip_quex_sbuf_ctl.members`:
@@ -1197,7 +2091,15 @@ Definition
 
     union zip_que_ena {
         u64 u_reg64;
-        struct zip_que_ena_s s;
+        struct zip_que_ena_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_8_63 : 56;
+            u64 ena : 8;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 ena : 8;
+            u64 reserved_8_63 : 56;
+    #endif
+        } s;
     }
 
 .. _`zip_que_ena.members`:
@@ -1236,7 +2138,15 @@ Definition
 
     union zip_que_pri {
         u64 u_reg64;
-        struct zip_que_pri_s s;
+        struct zip_que_pri_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_8_63 : 56;
+            u64 pri : 8;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 pri : 8;
+            u64 reserved_8_63 : 56;
+    #endif
+        } s;
     }
 
 .. _`zip_que_pri.members`:
@@ -1268,7 +2178,15 @@ Definition
 
     union zip_throttle {
         u64 u_reg64;
-        struct zip_throttle_s s;
+        struct zip_throttle_s {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+            u64 reserved_6_63 : 58;
+            u64 ld_infl : 6;
+    #elif defined(__LITTLE_ENDIAN_BITFIELD)
+            u64 ld_infl : 6;
+            u64 reserved_6_63 : 58;
+    #endif
+        } s;
     }
 
 .. _`zip_throttle.members`:

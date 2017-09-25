@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ps3_private {
-        struct ps3_bmp bmp __attribute__ ((aligned PS3_BMP_MINALIGN;
+        struct ps3_bmp bmp __attribute__ ((aligned (PS3_BMP_MINALIGN)));
         spinlock_t bmp_lock;
         u64 ppe_id;
         u64 thread_id;

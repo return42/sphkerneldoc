@@ -18,15 +18,15 @@ Definition
 .. code-block:: c
 
     struct pinmux_ops {
-        int (*request)(struct pinctrl_dev *pctldev, unsigned offset);
-        int (*free)(struct pinctrl_dev *pctldev, unsigned offset);
-        int (*get_functions_count)(struct pinctrl_dev *pctldev);
-        const char *(*get_function_name)(struct pinctrl_dev *pctldev, unsigned selector);
-        int (*get_function_groups)(struct pinctrl_dev *pctldev,unsigned selector,const char * const **groups, unsigned *num_groups);
-        int (*set_mux)(struct pinctrl_dev *pctldev, unsigned func_selector, unsigned group_selector);
-        int (*gpio_request_enable)(struct pinctrl_dev *pctldev,struct pinctrl_gpio_range *range, unsigned offset);
-        void (*gpio_disable_free)(struct pinctrl_dev *pctldev,struct pinctrl_gpio_range *range, unsigned offset);
-        int (*gpio_set_direction)(struct pinctrl_dev *pctldev,struct pinctrl_gpio_range *range,unsigned offset, bool input);
+        int (*request) (struct pinctrl_dev *pctldev, unsigned offset);
+        int (*free) (struct pinctrl_dev *pctldev, unsigned offset);
+        int (*get_functions_count) (struct pinctrl_dev *pctldev);
+        const char *(*get_function_name) (struct pinctrl_dev *pctldev, unsigned selector);
+        int (*get_function_groups) (struct pinctrl_dev *pctldev,unsigned selector,const char * const **groups, unsigned *num_groups);
+        int (*set_mux) (struct pinctrl_dev *pctldev, unsigned func_selector, unsigned group_selector);
+        int (*gpio_request_enable) (struct pinctrl_dev *pctldev,struct pinctrl_gpio_range *range, unsigned offset);
+        void (*gpio_disable_free) (struct pinctrl_dev *pctldev,struct pinctrl_gpio_range *range, unsigned offset);
+        int (*gpio_set_direction) (struct pinctrl_dev *pctldev,struct pinctrl_gpio_range *range,unsigned offset, bool input);
         bool strict;
     }
 

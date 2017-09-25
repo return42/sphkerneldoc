@@ -149,7 +149,7 @@ Definition
         u16 id;
         u16 color;
         u8 ap_sta_id;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         bool associated;
         u8 ap_assoc_sta_count;
         u16 cab_queue;
@@ -157,29 +157,34 @@ Definition
         bool ap_ibss_active;
         bool pm_enabled;
         bool monitor_active;
-        bool low_latency_traffic;
-        bool low_latency_dbgfs;
-        bool low_latency_vcmd;
+        bool low_latency_traffic, low_latency_dbgfs, low_latency_vcmd;
         bool ps_disabled;
         struct iwl_mvm_vif_bf_data bf_data;
-        struct beacon_stats;
+        struct {
+            u32 num_beacons, accu_num_beacons;
+            u8 avg_signal;
+        } beacon_stats;
         u32 ap_beacon_time;
         enum iwl_tsf_id tsf_id;
-        struct ieee80211_tx_queue_params queue_params;
+        struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
         struct iwl_mvm_time_event_data time_event_data;
         struct iwl_mvm_time_event_data hs_time_event_data;
         struct iwl_mvm_int_sta bcast_sta;
         struct iwl_mvm_int_sta mcast_sta;
         struct iwl_mvm_phy_ctxt *phy_ctxt;
     #ifdef CONFIG_PM
-        struct rekey_data;
+        struct {
+            u8 kck[NL80211_KCK_LEN], kek[NL80211_KEK_LEN];
+            __le64 replay_ctr;
+            bool valid;
+        } rekey_data;
         int tx_key_idx;
         bool seqno_valid;
         u16 seqno;
     #endif
     #if IS_ENABLED(CONFIG_IPV6)
-        struct in6_addr target_ipv6_addrs;
-        unsigned long tentative_addrs;
+        struct in6_addr target_ipv6_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_MAX];
+        unsigned long tentative_addrs[BITS_TO_LONGS(IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_MAX)];
         int num_target_ipv6_addrs;
     #endif
     #ifdef CONFIG_IWLWIFI_DEBUGFS
@@ -190,8 +195,8 @@ Definition
         struct iwl_mac_power_cmd mac_pwr_cmd;
         int dbgfs_quota_min;
     #endif
-        enum ieee80211_smps_mode smps_requests;
-        u8 uapsd_misbehaving_bssid;
+        enum ieee80211_smps_mode smps_requests[NUM_IWL_MVM_SMPS_REQ];
+        u8 uapsd_misbehaving_bssid[ETH_ALEN];
         bool csa_countdown;
         bool csa_failed;
         u16 csa_target_freq;
@@ -260,10 +265,17 @@ ps_disabled
 bf_data
     *undescribed*
 
-beacon_stats
-    beacon statistics, containing the # of received beacons,
-    # of received beacons accumulated over FW restart, and the current
-    average signal of beacons retrieved from the firmware
+num_beacons
+    *undescribed*
+
+accu_num_beacons
+    *undescribed*
+
+avg_signal
+    *undescribed*
+
+eacon_stats
+    *undescribed*
 
 ap_beacon_time
     *undescribed*
@@ -289,7 +301,19 @@ mcast_sta
 phy_ctxt
     *undescribed*
 
-rekey_data
+kck
+    *undescribed*
+
+kek
+    *undescribed*
+
+replay_ctr
+    *undescribed*
+
+valid
+    *undescribed*
+
+ekey_data
     *undescribed*
 
 tx_key_idx
@@ -463,8 +487,8 @@ Definition
 .. code-block:: c
 
     struct iwl_mvm_thermal_device {
-        s16 temp_trips;
-        u8 fw_trips_index;
+        s16 temp_trips[IWL_MAX_DTS_TRIPS];
+        u8 fw_trips_index[IWL_MAX_DTS_TRIPS];
         struct thermal_zone_device *tzone;
     }
 
@@ -506,8 +530,8 @@ Definition
         int queue;
         u16 last_amsdu;
         u8 last_sub_index;
-        struct sk_buff_head entries;
-        unsigned long reorder_time;
+        struct sk_buff_head entries[IEEE80211_MAX_AMPDU_BUF];
+        unsigned long reorder_time[IEEE80211_MAX_AMPDU_BUF];
         struct timer_list reorder_timer;
         bool removed;
         bool valid;
@@ -588,7 +612,7 @@ Definition
         unsigned long last_rx;
         struct timer_list session_timer;
         struct iwl_mvm *mvm;
-        struct iwl_mvm_reorder_buffer reorder_buf;
+        struct iwl_mvm_reorder_buffer reorder_buf[];
     }
 
 .. _`iwl_mvm_baid_data.members`:

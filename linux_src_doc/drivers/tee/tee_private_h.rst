@@ -184,7 +184,7 @@ Definition
 .. code-block:: c
 
     struct tee_device {
-        char name;
+        char name[TEE_MAX_DEV_NAME_LEN];
         const struct tee_desc *desc;
         int id;
         unsigned int flags;

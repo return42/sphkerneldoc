@@ -30,7 +30,7 @@ Definition
         int error;
         spinlock_t lock;
         struct completion done;
-        u32 tokens;
+        u32 tokens[2];
         int num_tokens;
     }
 

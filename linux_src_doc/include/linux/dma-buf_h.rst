@@ -253,8 +253,11 @@ Definition
         void *priv;
         struct reservation_object *resv;
         wait_queue_head_t poll;
-        struct dma_buf_poll_cb_t cb_excl;
-        struct dma_buf_poll_cb_t cb_shared;
+        struct dma_buf_poll_cb_t {
+            struct dma_fence_cb cb;
+            wait_queue_head_t *poll;
+            unsigned long active;
+        } cb_excl, cb_shared;
     }
 
 .. _`dma_buf.members`:

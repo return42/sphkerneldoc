@@ -64,7 +64,7 @@ Definition
     struct iwl_tdls_channel_switch_frame {
         __le32 switch_time_offset;
         struct iwl_tx_cmd tx_cmd;
-        u8 data;
+        u8 data[IWL_TDLS_CH_SW_FRAME_MAX_SIZE];
     }
 
 .. _`iwl_tdls_channel_switch_frame.members`:
@@ -237,10 +237,10 @@ Definition
         u8 tdls_peer_count;
         u8 tx_to_ap_tid;
         __le16 tx_to_ap_ssn;
-        struct iwl_tdls_sta_info sta_info;
+        struct iwl_tdls_sta_info sta_info[IWL_MVM_TDLS_STA_COUNT];
         __le32 pti_req_data_offset;
         struct iwl_tx_cmd pti_req_tx_cmd;
-        u8 pti_req_template;
+        u8 pti_req_template[0];
     }
 
 .. _`iwl_tdls_config_cmd.members`:
@@ -323,7 +323,7 @@ Definition
 
     struct iwl_tdls_config_res {
         __le32 tx_to_ap_last_seq;
-        struct iwl_tdls_config_sta_info_res sta_info;
+        struct iwl_tdls_config_sta_info_res sta_info[IWL_MVM_TDLS_STA_COUNT];
     }
 
 .. _`iwl_tdls_config_res.members`:

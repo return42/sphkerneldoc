@@ -32,7 +32,7 @@ Definition
         enum spi_nor_protocol reg_proto;
         bool sst_write_second;
         u32 flags;
-        u8 cmd_buf;
+        u8 cmd_buf[SPI_NOR_MAX_CMD_SIZE];
         int (*prepare)(struct spi_nor *nor, enum spi_nor_ops ops);
         void (*unprepare)(struct spi_nor *nor, enum spi_nor_ops ops);
         int (*read_reg)(struct spi_nor *nor, u8 opcode, u8 *buf, int len);

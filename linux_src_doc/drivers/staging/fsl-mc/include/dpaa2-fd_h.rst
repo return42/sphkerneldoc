@@ -32,7 +32,18 @@ Definition
 .. code-block:: c
 
     struct dpaa2_fd {
-        union {unnamed_union};
+        union {
+            u32 words[8];
+            struct dpaa2_fd_simple {
+                __le64 addr;
+                __le32 len;
+                __le16 bpid;
+                __le16 format_offset;
+                __le32 frc;
+                __le32 ctrl;
+                __le64 flc;
+            } simple;
+        } ;
     }
 
 .. _`dpaa2_fd.members`:
@@ -40,9 +51,14 @@ Definition
 Members
 -------
 
-{unnamed_union}
-    anonymous
+words
+    for easier/faster copying the whole FD structure
 
+simple
+    *undescribed*
+
+}
+    *undescribed*
 
 .. _`dpaa2_fd.description`:
 

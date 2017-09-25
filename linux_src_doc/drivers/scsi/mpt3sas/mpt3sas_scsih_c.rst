@@ -63,7 +63,7 @@ Definition
         u8 ignore;
         u16 event;
         struct kref refcount;
-        char event_data;
+        char event_data[0] __aligned(4);
     }
 
 .. _`fw_event_work.members`:
@@ -130,10 +130,10 @@ Definition
         enum dma_data_direction dir;
         u32 data_length;
         dma_addr_t data_dma;
-        u8 sense;
+        u8 sense[SCSI_SENSE_BUFFERSIZE];
         u32 lun;
         u8 cdb_length;
-        u8 cdb;
+        u8 cdb[32];
         u8 timeout;
         u8 VF_ID;
         u8 VP_ID;

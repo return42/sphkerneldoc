@@ -22,7 +22,7 @@ Definition
         unsigned int height;
         enum v4l2_mbus_pixelcode pixel_code;
         unsigned int vc;
-        unsigned int dt;
+        unsigned int dt[2];
         unsigned int max_size;
     }
 

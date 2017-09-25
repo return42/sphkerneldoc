@@ -27,12 +27,16 @@ Definition
         unsigned short ctrl_src;
         struct spi_transfer xfer;
         struct spi_message msg;
-        struct spi_transfer freq_xfer;
+        struct spi_transfer freq_xfer[4];
         struct spi_message freq_msg;
-        struct spi_transfer phase_xfer;
+        struct spi_transfer phase_xfer[2];
         struct spi_message phase_msg;
         struct mutex lock;
-        union {unnamed_union};
+        union {
+            __be16 freq_data[4]____cacheline_aligned;
+            __be16 phase_data[2];
+            __be16 data;
+        } ;
     }
 
 .. _`ad9832_state.members`:
@@ -85,7 +89,6 @@ lock
 
 {unnamed_union}
     anonymous
-
 
 .. _`iio_dev_attr_freq`:
 

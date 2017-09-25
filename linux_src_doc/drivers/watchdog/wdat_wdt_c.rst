@@ -59,7 +59,7 @@ Definition
         unsigned int period;
         bool stopped_in_sleep;
         bool stopped;
-        struct list_head  *instructions;
+        struct list_head *instructions[MAX_WDAT_ACTIONS];
     }
 
 .. _`wdat_wdt.members`:

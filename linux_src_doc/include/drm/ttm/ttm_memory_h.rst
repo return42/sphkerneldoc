@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ttm_mem_shrink {
-        int (*do_shrink)(struct ttm_mem_shrink *);
+        int (*do_shrink) (struct ttm_mem_shrink *);
     }
 
 .. _`ttm_mem_shrink.members`:

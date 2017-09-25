@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ad799x_chip_config {
-        const struct iio_chan_spec channel;
+        const struct iio_chan_spec channel[9];
         u16 default_config;
         const struct iio_info *info;
     }

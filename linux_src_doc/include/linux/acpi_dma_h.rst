@@ -57,7 +57,7 @@ Definition
     struct acpi_dma {
         struct list_head dma_controllers;
         struct device *dev;
-        struct dma_chan *(*acpi_dma_xlate)(struct acpi_dma_spec *, struct acpi_dma *);
+        struct dma_chan *(*acpi_dma_xlate) (struct acpi_dma_spec *, struct acpi_dma *);
         void *data;
         unsigned short base_request_line;
         unsigned short end_request_line;

@@ -19,7 +19,18 @@ Definition
     struct gpio_mouse_platform_data {
         int scan_ms;
         int polarity;
-        union {unnamed_union};
+        union {
+            struct {
+                int up;
+                int down;
+                int left;
+                int right;
+                int bleft;
+                int bmiddle;
+                int bright;
+            } ;
+            int pins[GPIO_MOUSE_PIN_MAX];
+        } ;
     }
 
 .. _`gpio_mouse_platform_data.members`:
@@ -33,9 +44,14 @@ scan_ms
 polarity
     Pin polarity, active high or low.
 
-{unnamed_union}
-    anonymous
+struct
+    *undescribed*
 
+pins
+    *undescribed*
+
+}
+    *undescribed*
 
 .. _`gpio_mouse_platform_data.description`:
 

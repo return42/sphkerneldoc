@@ -105,9 +105,21 @@ Definition
 .. code-block:: c
 
     struct stable_node {
-        union {unnamed_union};
+        union {
+            struct rb_node node;
+            struct {
+                struct list_head *head;
+                struct {
+                    struct hlist_node hlist_dup;
+                    struct list_head list;
+                } ;
+            } ;
+        } ;
         struct hlist_head hlist;
-        union {unnamed_union};
+        union {
+            unsigned long kpfn;
+            unsigned long chain_prune_time;
+        } ;
     #define STABLE_NODE_CHAIN -1024
         int rmap_hlist_len;
     #ifdef CONFIG_NUMA
@@ -120,16 +132,20 @@ Definition
 Members
 -------
 
-{unnamed_union}
-    anonymous
+node
+    rb node of this ksm page in the stable tree
 
+head
+    (overlaying parent) \ :c:type:`struct migrate_nodes <migrate_nodes>`\  indicates temporarily on that list
+
+{unnamed_struct}
+    anonymous
 
 hlist
     hlist head of rmap_items using this ksm page
 
 {unnamed_union}
     anonymous
-
 
 rmap_hlist_len
     number of rmap_item entries in hlist or STABLE_NODE_CHAIN
@@ -155,11 +171,22 @@ Definition
 
     struct rmap_item {
         struct rmap_item *rmap_list;
-        union {unnamed_union};
+        union {
+            struct anon_vma *anon_vma;
+    #ifdef CONFIG_NUMA
+            int nid;
+    #endif
+        } ;
         struct mm_struct *mm;
         unsigned long address;
         unsigned int oldchecksum;
-        union {unnamed_union};
+        union {
+            struct rb_node node;
+            struct {
+                struct stable_node *head;
+                struct hlist_node hlist;
+            } ;
+        } ;
     }
 
 .. _`rmap_item.members`:
@@ -173,7 +200,6 @@ rmap_list
 {unnamed_union}
     anonymous
 
-
 mm
     the memory structure this rmap_item is pointing into
 
@@ -183,9 +209,11 @@ address
 oldchecksum
     previous checksum of the page at that virtual address
 
-{unnamed_union}
-    anonymous
+node
+    rb node of this rmap_item in the unstable tree
 
+{unnamed_struct}
+    anonymous
 
 .. _`replace_page`:
 

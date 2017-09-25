@@ -20,7 +20,7 @@ Definition
     struct glink_defer_cmd {
         struct list_head node;
         struct glink_msg msg;
-        u8 data;
+        u8 data[];
     }
 
 .. _`glink_defer_cmd.members`:

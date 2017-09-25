@@ -21,7 +21,7 @@ Definition
         struct sci_timer timer;
         u8 phys_waiting;
         u8 phys_granted_power;
-        struct isci_phy  *requesters;
+        struct isci_phy *requesters[SCI_MAX_PHYS];
     }
 
 .. _`sci_power_control.members`:

@@ -19,7 +19,7 @@ Definition
 
     struct nfp_net_vf {
         struct nfp_net *nn;
-        struct msix_entry irq_entries;
+        struct msix_entry irq_entries[NFP_NET_NON_Q_VECTORS + NFP_NET_MAX_TX_RINGS];
         u8 __iomem *q_bar;
         struct dentry *ddir;
     }

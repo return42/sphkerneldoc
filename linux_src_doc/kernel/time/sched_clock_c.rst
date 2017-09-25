@@ -78,7 +78,7 @@ Definition
 
     struct clock_data {
         seqcount_t seq;
-        struct clock_read_data read_data;
+        struct clock_read_data read_data[2];
         ktime_t wrap_kt;
         unsigned long rate;
         u64 (*actual_read_sched_clock)(void);

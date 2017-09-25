@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct brcmf_mp_global_t {
-        char firmware_path;
+        char firmware_path[BRCMF_FW_ALTPATH_LEN];
     }
 
 .. _`brcmf_mp_global_t.members`:
@@ -52,7 +52,9 @@ Definition
         bool roamoff;
         bool ignore_probe_fail;
         struct brcmfmac_pd_cc *country_codes;
-        union bus;
+        union {
+            struct brcmfmac_sdio_pd sdio;
+        } bus;
     }
 
 .. _`brcmf_mp_device.members`:
@@ -78,8 +80,11 @@ ignore_probe_fail
 country_codes
     If available, pointer to struct for translating country codes
 
-bus
-    Bus specific platform data. Only SDIO at the mmoment.
+sdio
+    *undescribed*
+
+us
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

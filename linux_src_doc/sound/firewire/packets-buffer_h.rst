@@ -19,7 +19,10 @@ Definition
 
     struct iso_packets_buffer {
         struct fw_iso_buffer iso_buffer;
-        struct *packets;
+        struct {
+            void *buffer;
+            unsigned int offset;
+        } *packets;
     }
 
 .. _`iso_packets_buffer.members`:
@@ -29,6 +32,12 @@ Members
 
 iso_buffer
     the memory containing the packets
+
+buffer
+    *undescribed*
+
+offset
+    *undescribed*
 
 packets
     an array, with each element pointing to one packet

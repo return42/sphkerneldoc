@@ -141,7 +141,7 @@ Definition
         struct nfp_pf *pf;
         struct nfp_cpp *cpp;
         struct nfp_net *ctrl;
-        struct nfp_reprs __rcu  *reprs;
+        struct nfp_reprs __rcu *reprs[NFP_REPR_TYPE_MAX + 1];
         const struct nfp_app_type *type;
         void *priv;
     }

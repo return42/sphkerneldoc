@@ -362,8 +362,8 @@ Definition
 .. code-block:: c
 
     struct iwl_mvm_rxq_dup_data {
-        __le16 last_seq;
-        u8 last_sub_frame;
+        __le16 last_seq[IWL_MAX_TID_COUNT + 1];
+        u8 last_sub_frame[IWL_MAX_TID_COUNT + 1];
     }
 
 .. _`iwl_mvm_rxq_dup_data.members`:
@@ -403,11 +403,11 @@ Definition
         bool bt_reduced_txpower;
         bool next_status_eosp;
         spinlock_t lock;
-        struct iwl_mvm_tid_data tid_data;
-        u8 tid_to_baid;
+        struct iwl_mvm_tid_data tid_data[IWL_MAX_TID_COUNT + 1];
+        u8 tid_to_baid[IWL_MAX_TID_COUNT];
         struct iwl_lq_sta lq_sta;
         struct ieee80211_vif *vif;
-        struct iwl_mvm_key_pn __rcu  *ptk_pn;
+        struct iwl_mvm_key_pn __rcu *ptk_pn[4];
         struct iwl_mvm_rxq_dup_data *dup_data;
         u16 deferred_traffic_tid_map;
         u8 reserved_queue;

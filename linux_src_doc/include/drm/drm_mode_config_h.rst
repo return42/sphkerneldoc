@@ -311,10 +311,8 @@ Definition
         int num_crtc;
         struct list_head crtc_list;
         struct list_head property_list;
-        int min_width;
-        int min_height;
-        int max_width;
-        int max_height;
+        int min_width, min_height;
+        int max_width, max_height;
         const struct drm_mode_config_funcs *funcs;
         resource_size_t fb_base;
         bool poll_enabled;
@@ -367,13 +365,11 @@ Definition
         struct drm_property *gamma_lut_size_property;
         struct drm_property *suggested_x_property;
         struct drm_property *suggested_y_property;
-        uint32_t preferred_depth;
-        uint32_t prefer_shadow;
+        uint32_t preferred_depth, prefer_shadow;
         bool async_page_flip;
         bool allow_fb_modifiers;
         struct drm_property *modifiers_property;
-        uint32_t cursor_width;
-        uint32_t cursor_height;
+        uint32_t cursor_width, cursor_height;
         const struct drm_mode_config_helper_funcs *helper_private;
     }
 

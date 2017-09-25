@@ -71,7 +71,7 @@ Definition
         u64 ctx_handle;
         struct gphdr gph;
         union se_req_ctrl ctrl;
-        u8 iv;
+        u8 iv[MAX_IV_LEN];
         u16 ivsize;
         struct scatterlist *src;
         struct scatterlist *dst;
@@ -129,8 +129,11 @@ Definition
 .. code-block:: c
 
     struct crypto_keys {
-        union u;
-        u8 iv;
+        union {
+            u8 key[AES_MAX_KEY_SIZE];
+            u8 key1[AES_MAX_KEY_SIZE];
+        } u;
+        u8 iv[AES_BLOCK_SIZE];
     }
 
 .. _`crypto_keys.members`:
@@ -138,8 +141,14 @@ Definition
 Members
 -------
 
-u
+key
+    Encryption key or KEY1 for AES-XTS
+
+key1
     *undescribed*
+
+void
+    no arguments
 
 iv
     Encryption IV or Tweak for AES-XTS
@@ -161,8 +170,11 @@ Definition
 .. code-block:: c
 
     struct auth_keys {
-        union u;
-        u8 opad;
+        union {
+            u8 ipad[64];
+            u8 key2[64];
+        } u;
+        u8 opad[64];
     }
 
 .. _`auth_keys.members`:
@@ -170,8 +182,14 @@ Definition
 Members
 -------
 
-u
+ipad
+    IPAD or KEY2 for AES-XTS
+
+key2
     *undescribed*
+
+void
+    no arguments
 
 opad
     OPAD or AUTH KEY if auth_input_type = 1
@@ -193,7 +211,32 @@ Definition
 .. code-block:: c
 
     struct flexi_crypto_context {
-        union {unnamed_union};
+        union {
+            __be64 flags;
+            struct {
+    #if defined(__BIG_ENDIAN_BITFIELD)
+                u64 cipher_type : 4;
+                u64 reserved_59 : 1;
+                u64 aes_keylen : 2;
+                u64 iv_source : 1;
+                u64 hash_type : 4;
+                u64 reserved_49_51 : 3;
+                u64 auth_input_type: 1;
+                u64 mac_len : 8;
+                u64 reserved_0_39 : 40;
+    #else
+                u64 reserved_0_39 : 40;
+                u64 mac_len : 8;
+                u64 auth_input_type: 1;
+                u64 reserved_49_51 : 3;
+                u64 hash_type : 4;
+                u64 iv_source : 1;
+                u64 aes_keylen : 2;
+                u64 reserved_59 : 1;
+                u64 cipher_type : 4;
+    #endif
+            } w0;
+        } ;
         struct crypto_keys crypto;
         struct auth_keys auth;
     }
@@ -205,7 +248,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 crypto
     Crypto keys
@@ -234,7 +276,7 @@ Definition
         union pkt_instr_hdr ih;
         union pkt_hdr irh;
         union slc_store_info slc;
-        u64 fdata;
+        u64 fdata[2];
     }
 
 .. _`nps_pkt_instr.members`:

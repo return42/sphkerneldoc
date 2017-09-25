@@ -20,7 +20,7 @@ Definition
     struct usb_os_string {
         __u8 bLength;
         __u8 bDescriptorType;
-        __u8 qwSignature;
+        __u8 qwSignature[OS_STRING_QW_SIGN_LEN];
         __u8 bMS_VendorCode;
         __u8 bPad;
     }

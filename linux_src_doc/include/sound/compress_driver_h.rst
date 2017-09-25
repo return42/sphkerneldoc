@@ -155,8 +155,8 @@ Definition
         int (*copy)(struct snd_compr_stream *stream, char __user *buf, size_t count);
         int (*mmap)(struct snd_compr_stream *stream, struct vm_area_struct *vma);
         int (*ack)(struct snd_compr_stream *stream, size_t bytes);
-        int (*get_caps)(struct snd_compr_stream *stream, struct snd_compr_caps *caps);
-        int (*get_codec_caps)(struct snd_compr_stream *stream, struct snd_compr_codec_caps *codec);
+        int (*get_caps) (struct snd_compr_stream *stream, struct snd_compr_caps *caps);
+        int (*get_codec_caps) (struct snd_compr_stream *stream, struct snd_compr_codec_caps *codec);
     }
 
 .. _`snd_compr_ops.members`:
@@ -236,6 +236,10 @@ Definition
         struct mutex lock;
         int device;
     #ifdef CONFIG_SND_VERBOSE_PROCFS
+        char id[64];
+        struct snd_info_entry *proc_root;
+        struct snd_info_entry *proc_info_entry;
+    #endif
     }
 
 .. _`snd_compr.members`:
@@ -266,6 +270,15 @@ lock
 
 device
     device id
+
+id
+    *undescribed*
+
+proc_root
+    *undescribed*
+
+proc_info_entry
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

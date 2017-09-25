@@ -104,8 +104,14 @@ Definition
         __u8 type;
         __u8 status;
         __u16 len;
-        union id;
-        __u8 data;
+        union {
+            __u8 id[8];
+            struct w1_mst {
+                __u32 id;
+                __u32 res;
+            } mst;
+        } id;
+        __u8 data[0];
     }
 
 .. _`w1_netlink_msg.members`:
@@ -121,6 +127,12 @@ status
 
 len
     length of data following w1_netlink_msg
+
+id
+    union holding master bus id (msg.id) and slave device id (id[8]).
+
+mst
+    *undescribed*
 
 id
     union holding master bus id (msg.id) and slave device id (id[8]).
@@ -224,7 +236,7 @@ Definition
         __u8 cmd;
         __u8 res;
         __u16 len;
-        __u8 data;
+        __u8 data[0];
     }
 
 .. _`w1_netlink_cmd.members`:

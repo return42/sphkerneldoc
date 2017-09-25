@@ -164,7 +164,7 @@ Definition
 .. code-block:: c
 
     struct iio_mount_matrix {
-        const char  *rotation;
+        const char *rotation[9];
     }
 
 .. _`iio_mount_matrix.members`:
@@ -266,7 +266,14 @@ Definition
         int channel2;
         unsigned long address;
         int scan_index;
-        struct scan_type;
+        struct {
+            char sign;
+            u8 realbits;
+            u8 storagebits;
+            u8 shift;
+            u8 repeat;
+            enum iio_endian endianness;
+        } scan_type;
         long info_mask_separate;
         long info_mask_separate_available;
         long info_mask_shared_by_type;
@@ -309,19 +316,26 @@ scan_index
     Monotonic index to give ordering in scans when read
     from a buffer.
 
-scan_type
-    sign:           's' or 'u' to specify signed or unsigned
-    realbits:       Number of valid bits of data
-    storagebits:    Realbits + padding
-    shift:          Shift right by this before masking out
-    realbits.
-    repeat:         Number of times real/storage bits
-    repeats. When the repeat element is
-    more than 1, then the type element in
-    sysfs will show a repeat value.
-    Otherwise, the number of repetitions is
-    omitted.
-    endianness:     little or big endian
+sign
+    *undescribed*
+
+realbits
+    *undescribed*
+
+storagebits
+    *undescribed*
+
+shift
+    *undescribed*
+
+repeat
+    *undescribed*
+
+endianness
+    *undescribed*
+
+can_type
+    *undescribed*
 
 info_mask_separate
     What information is to be exported that is specific to
@@ -667,7 +681,7 @@ Definition
         const struct iio_buffer_setup_ops *setup_ops;
         struct cdev chrdev;
     #define IIO_MAX_GROUPS 6
-        const struct attribute_group  *groups;
+        const struct attribute_group *groups[IIO_MAX_GROUPS + 1];
         int groupcounter;
         unsigned long flags;
     #if defined(CONFIG_DEBUG_FS)

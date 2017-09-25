@@ -59,7 +59,7 @@ Definition
         int wiphy_idx;
         enum nl80211_reg_initiator initiator;
         enum nl80211_user_reg_hint_type user_reg_hint_type;
-        char alpha2;
+        char alpha2[2];
         enum nl80211_dfs_regions dfs_region;
         bool intersect;
         bool processed;

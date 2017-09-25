@@ -80,7 +80,7 @@ Definition
         u8 sta_id;
         __le16 tsf_timer_offset_msecs;
         __le16 toa_offset;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
     }
 
 .. _`iwl_tof_responder_config_cmd.members`:
@@ -251,7 +251,7 @@ Definition
         u8 bandwidth;
         u8 tsf_delta_direction;
         u8 ctrl_ch_position;
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         u8 measure_type;
         u8 num_of_bursts;
         __le16 burst_period;
@@ -402,9 +402,9 @@ Definition
         u8 los_det_disable;
         u8 num_of_ap;
         u8 macaddr_random;
-        u8 macaddr_template;
-        u8 macaddr_mask;
-        struct iwl_tof_range_req_ap_entry ap;
+        u8 macaddr_template[ETH_ALEN];
+        u8 macaddr_mask[ETH_ALEN];
+        struct iwl_tof_range_req_ap_entry ap[IWL_MVM_TOF_MAX_APS];
     }
 
 .. _`iwl_tof_range_req_cmd.members`:
@@ -475,7 +475,7 @@ Definition
 
     struct iwl_tof_gen_resp_cmd {
         __le32 sub_grp_cmd_id;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_tof_gen_resp_cmd.members`:
@@ -506,7 +506,7 @@ Definition
 .. code-block:: c
 
     struct iwl_tof_range_rsp_ap_entry_ntfy {
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         u8 measure_status;
         u8 measure_bw;
         __le32 rtt;
@@ -586,7 +586,7 @@ Definition
         u8 request_status;
         u8 last_in_batch;
         u8 num_of_aps;
-        struct iwl_tof_range_rsp_ap_entry_ntfy ap;
+        struct iwl_tof_range_rsp_ap_entry_ntfy ap[IWL_MVM_TOF_MAX_APS];
     }
 
 .. _`iwl_tof_range_rsp_ntfy.members`:
@@ -629,9 +629,9 @@ Definition
         u8 token;
         u8 role;
         __le16 reserved;
-        u8 initiator_bssid;
-        u8 responder_bssid;
-        u8 mcsi_buffer;
+        u8 initiator_bssid[ETH_ALEN];
+        u8 responder_bssid[ETH_ALEN];
+        u8 mcsi_buffer[IWL_MVM_TOF_MCSI_BUF_SIZE * 4];
     }
 
 .. _`iwl_tof_mcsi_notif.members`:
@@ -673,11 +673,11 @@ Definition
 .. code-block:: c
 
     struct iwl_tof_neighbor_report {
-        u8 bssid;
+        u8 bssid[ETH_ALEN];
         u8 request_token;
         u8 status;
         __le16 report_ie_len;
-        u8 data;
+        u8 data[];
     }
 
 .. _`iwl_tof_neighbor_report.members`:
@@ -718,7 +718,7 @@ Definition
     struct iwl_tof_range_abort_cmd {
         __le32 sub_grp_cmd_id;
         u8 request_id;
-        u8 reserved;
+        u8 reserved[3];
     }
 
 .. _`iwl_tof_range_abort_cmd.members`:

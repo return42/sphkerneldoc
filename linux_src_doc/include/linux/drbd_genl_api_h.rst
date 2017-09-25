@@ -19,7 +19,10 @@ Definition
 
     struct drbd_genlmsghdr {
         __u32 minor;
-        union {unnamed_union};
+        union {
+            __u32 flags;
+            __s32 ret_code;
+        } ;
     }
 
 .. _`drbd_genlmsghdr.members`:
@@ -37,7 +40,6 @@ minor
 
 {unnamed_union}
     anonymous
-
 
 .. This file was automatic generated / don't edit.
 

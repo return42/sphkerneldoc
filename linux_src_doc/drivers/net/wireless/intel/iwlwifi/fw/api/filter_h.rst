@@ -22,9 +22,9 @@ Definition
         u8 port_id;
         u8 count;
         u8 pass_all;
-        u8 bssid;
-        u8 reserved;
-        u8 addr_list;
+        u8 bssid[6];
+        u8 reserved[2];
+        u8 addr_list[0];
     }
 
 .. _`iwl_mcast_filter_cmd.members`:
@@ -188,7 +188,7 @@ Definition
         u8 frame_type;
         u8 num_attrs;
         u8 reserved1;
-        struct iwl_fw_bcast_filter_attr attrs;
+        struct iwl_fw_bcast_filter_attr attrs[MAX_BCAST_FILTER_ATTRS];
     }
 
 .. _`iwl_fw_bcast_filter.members`:
@@ -269,8 +269,8 @@ Definition
         u8 max_bcast_filters;
         u8 max_macs;
         u8 reserved1;
-        struct iwl_fw_bcast_filter filters;
-        struct iwl_fw_bcast_mac macs;
+        struct iwl_fw_bcast_filter filters[MAX_BCAST_FILTERS];
+        struct iwl_fw_bcast_mac macs[NUM_MAC_INDEX_DRIVER];
     }
 
 .. _`iwl_bcast_filter_cmd.members`:

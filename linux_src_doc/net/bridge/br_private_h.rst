@@ -23,8 +23,14 @@ Definition
         u16 vid;
         u16 flags;
         struct br_vlan_stats __percpu *stats;
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            struct net_bridge *br;
+            struct net_bridge_port *port;
+        } ;
+        union {
+            refcount_t refcnt;
+            struct net_bridge_vlan *brvlan;
+        } ;
         struct br_tunnel_info tinfo;
         struct list_head vlist;
         struct rcu_head rcu;
@@ -53,10 +59,8 @@ stats
 {unnamed_union}
     anonymous
 
-
 {unnamed_union}
     anonymous
-
 
 tinfo
     *undescribed*

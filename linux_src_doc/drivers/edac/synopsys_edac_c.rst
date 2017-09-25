@@ -103,7 +103,7 @@ Definition
 
     struct synps_edac_priv {
         void __iomem *baseaddr;
-        char message;
+        char message[SYNPS_EDAC_MSG_SIZE];
         struct synps_ecc_status stat;
         u32 ce_cnt;
         u32 ue_cnt;

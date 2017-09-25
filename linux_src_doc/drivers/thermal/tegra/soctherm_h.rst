@@ -22,11 +22,8 @@ Definition
         u8 id;
         u16 sensor_temp_offset;
         u32 sensor_temp_mask;
-        u32 pdiv;
-        u32 pdiv_ate;
-        u32 pdiv_mask;
-        u32 pllx_hotspot_diff;
-        u32 pllx_hotspot_mask;
+        u32 pdiv, pdiv_ate, pdiv_mask;
+        u32 pllx_hotspot_diff, pllx_hotspot_mask;
         u32 thermtrip_enable_mask;
         u32 thermtrip_any_en_mask;
         u32 thermtrip_threshold_mask;

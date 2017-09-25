@@ -62,7 +62,7 @@ Definition
         unsigned int sop_offset;
         unsigned int dst_q;
         enum knav_dma_rx_thresholds thresh;
-        unsigned int fdq;
+        unsigned int fdq[KNAV_DMA_FDQ_PER_CHAN];
         unsigned int sz_thresh0;
         unsigned int sz_thresh1;
         unsigned int sz_thresh2;
@@ -127,7 +127,10 @@ Definition
 
     struct knav_dma_cfg {
         enum dma_transfer_direction direction;
-        union u;
+        union {
+            struct knav_dma_tx_cfg tx;
+            struct knav_dma_rx_cfg rx;
+        } u;
     }
 
 .. _`knav_dma_cfg.members`:
@@ -138,8 +141,14 @@ Members
 direction
     *undescribed*
 
-u
-    *undescribed*
+tx
+    Tx channel configuration
+
+rx
+    Rx flow configuration
+
+void
+    no arguments
 
 .. _`knav_dma_desc`:
 
@@ -166,9 +175,9 @@ Definition
         __le32 next_desc;
         __le32 orig_len;
         __le32 orig_buff;
-        __le32 epib;
-        __le32 psdata;
-        u32 sw_data;
+        __le32 epib[KNAV_DMA_NUM_EPIB_WORDS];
+        __le32 psdata[KNAV_DMA_NUM_PS_WORDS];
+        u32 sw_data[KNAV_DMA_NUM_SW_DATA_WORDS];
     }
 
 .. _`knav_dma_desc.members`:

@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct os_area_header {
-        u8 magic_num;
+        u8 magic_num[16];
         u32 hdr_version;
         u32 db_area_offset;
         u32 ldr_area_offset;
         u32 _reserved_1;
         u32 ldr_format;
         u32 ldr_size;
-        u32 _reserved_2;
+        u32 _reserved_2[6];
     }
 
 .. _`os_area_header.members`:
@@ -85,20 +85,20 @@ Definition
 
     struct os_area_params {
         u32 boot_flag;
-        u32 _reserved_1;
+        u32 _reserved_1[3];
         u32 num_params;
-        u32 _reserved_2;
+        u32 _reserved_2[3];
         s64 rtc_diff;
         u8 av_multi_out;
         u8 ctrl_button;
-        u8 _reserved_3;
-        u8 static_ip_addr;
-        u8 network_mask;
-        u8 default_gateway;
-        u8 _reserved_4;
-        u8 dns_primary;
-        u8 dns_secondary;
-        u8 _reserved_5;
+        u8 _reserved_3[6];
+        u8 static_ip_addr[4];
+        u8 network_mask[4];
+        u8 default_gateway[4];
+        u8 _reserved_4[4];
+        u8 dns_primary[4];
+        u8 dns_secondary[4];
+        u8 _reserved_5[8];
     }
 
 .. _`os_area_params.members`:
@@ -179,7 +179,7 @@ Definition
 .. code-block:: c
 
     struct os_area_db {
-        u8 magic_num;
+        u8 magic_num[4];
         u16 version;
         u16 _reserved_1;
         u16 index_64;
@@ -189,7 +189,7 @@ Definition
         u16 index_16;
         u16 count_16;
         u32 _reserved_2;
-        u8 _db_data;
+        u8 _db_data[1000];
     }
 
 .. _`os_area_db.members`:

@@ -51,7 +51,7 @@ Definition
 
     struct exynos_muxed_weint_data {
         unsigned int nr_banks;
-        struct samsung_pin_bank  *banks;
+        struct samsung_pin_bank *banks[];
     }
 
 .. _`exynos_muxed_weint_data.members`:

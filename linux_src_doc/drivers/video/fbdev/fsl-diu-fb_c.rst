@@ -19,20 +19,20 @@ Definition
 
     struct fsl_diu_data {
         dma_addr_t dma_addr;
-        struct fb_info fsl_diu_info;
-        struct mfb_info mfb;
+        struct fb_info fsl_diu_info[NUM_AOIS];
+        struct mfb_info mfb[NUM_AOIS];
         struct device_attribute dev_attr;
         unsigned int irq;
         enum fsl_diu_monitor_port monitor_port;
         struct diu __iomem *diu_reg;
         spinlock_t reg_lock;
-        u8 dummy_aoi;
-        struct diu_ad dummy_ad;
-        struct diu_ad ad;
-        u8 gamma;
-        __le16 cursor;
-        __le16 blank_cursor;
-        uint8_t edid_data;
+        u8 dummy_aoi[4 * 4 * 4];
+        struct diu_ad dummy_ad __aligned(8);
+        struct diu_ad ad[NUM_AOIS] __aligned(8);
+        u8 gamma[256 * 3] __aligned(32);
+        __le16 cursor[MAX_CURS * MAX_CURS] __aligned(32);
+        __le16 blank_cursor[MAX_CURS * MAX_CURS] __aligned(32);
+        uint8_t edid_data[EDID_LENGTH];
         bool has_edid;
     }
 

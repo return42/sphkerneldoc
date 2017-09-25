@@ -371,7 +371,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_mbus_frame_desc {
-        struct v4l2_mbus_frame_desc_entry entry;
+        struct v4l2_mbus_frame_desc_entry entry[V4L2_FRAME_DESC_ENTRY_MAX];
         unsigned short num_entries;
     }
 
@@ -882,7 +882,7 @@ Definition
         int (*enum_dv_timings)(struct v4l2_subdev *sd, struct v4l2_enum_dv_timings *timings);
     #ifdef CONFIG_MEDIA_CONTROLLER
         int (*link_validate)(struct v4l2_subdev *sd, struct media_link *link,struct v4l2_subdev_format *source_fmt, struct v4l2_subdev_format *sink_fmt);
-    #endif
+    #endif 
         int (*get_frame_desc)(struct v4l2_subdev *sd, unsigned int pad, struct v4l2_mbus_frame_desc *fd);
         int (*set_frame_desc)(struct v4l2_subdev *sd, unsigned int pad, struct v4l2_mbus_frame_desc *fd);
     }
@@ -1115,7 +1115,7 @@ Definition
         const struct v4l2_subdev_ops *ops;
         const struct v4l2_subdev_internal_ops *internal_ops;
         struct v4l2_ctrl_handler *ctrl_handler;
-        char name;
+        char name[V4L2_SUBDEV_NAME_SIZE];
         u32 grp_id;
         void *dev_priv;
         void *host_priv;

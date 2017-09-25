@@ -19,7 +19,7 @@ Definition
 
     struct max1363_mode {
         int8_t conf;
-        unsigned long modemask;
+        DECLARE_BITMAP(modemask, MAX1363_MAX_CHANNELS);
     }
 
 .. _`max1363_mode.members`:
@@ -117,8 +117,8 @@ Definition
         unsigned int monitor_speed:3;
         u8 mask_high;
         u8 mask_low;
-        s16 thresh_high;
-        s16 thresh_low;
+        s16 thresh_high[8];
+        s16 thresh_low[8];
         struct regulator *vref;
         u32 vref_uv;
         int (*send)(const struct i2c_client *client, const char *buf, int count);

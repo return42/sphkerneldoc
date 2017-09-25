@@ -127,7 +127,7 @@ Definition
         short busy;
         unsigned short message_number;
         unsigned short uvhub_quiesce;
-        short socket_acknowledge_count;
+        short socket_acknowledge_count[DEST_Q_SIZE];
         cycles_t send_message;
         cycles_t period_end;
         cycles_t period_time;

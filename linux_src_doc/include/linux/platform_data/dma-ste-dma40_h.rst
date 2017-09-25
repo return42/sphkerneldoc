@@ -131,7 +131,7 @@ Definition
 .. code-block:: c
 
     struct stedma40_platform_data {
-        int disabled_channels;
+        int disabled_channels[STEDMA40_MAX_PHYS];
         int *soft_lli_chans;
         int num_of_soft_lli_chans;
         bool use_esram_lcla;

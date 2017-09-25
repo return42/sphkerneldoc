@@ -59,7 +59,9 @@ Definition
 
     struct arm_smccc_quirk {
         int id;
-        union state;
+        union {
+            unsigned long a6;
+        } state;
     }
 
 .. _`arm_smccc_quirk.members`:
@@ -70,8 +72,11 @@ Members
 id
     quirk identification
 
-state
-    quirk specific information
+a6
+    Qualcomm quirk entry for returning post-smc call contents of a6
+
+tate
+    *undescribed*
 
 .. _`__arm_smccc_smc`:
 

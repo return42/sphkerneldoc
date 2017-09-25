@@ -20,11 +20,11 @@ Definition
     struct ad7150_chip_info {
         struct i2c_client *client;
         u64 current_event;
-        u16 threshold;
-        u8 thresh_sensitivity;
-        u8 mag_sensitivity;
-        u8 thresh_timeout;
-        u8 mag_timeout;
+        u16 threshold[2][2];
+        u8 thresh_sensitivity[2][2];
+        u8 mag_sensitivity[2][2];
+        u8 thresh_timeout[2][2];
+        u8 mag_timeout[2][2];
         int old_state;
         char *conversion_mode;
         struct mutex state_lock;

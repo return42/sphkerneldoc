@@ -70,7 +70,7 @@ Definition
         u32 corder;
         u16 num_planes;
         u16 num_comp;
-        u8 depth;
+        u8 depth[VIDEO_MAX_PLANES];
         u32 flags;
     }
 
@@ -245,7 +245,7 @@ Definition
         u32 f_width;
         u32 f_height;
         struct v4l2_rect crop;
-        unsigned long payload;
+        unsigned long payload[VIDEO_MAX_PLANES];
         struct gsc_addr addr;
         const struct gsc_fmt *fmt;
         u32 colorspace;
@@ -530,8 +530,8 @@ Definition
 .. code-block:: c
 
     struct gsc_driverdata {
-        struct gsc_variant  *variant;
-        const char  *clk_names;
+        struct gsc_variant *variant[GSC_MAX_DEVS];
+        const char *clk_names[GSC_MAX_CLOCKS];
         int num_clocks;
         int num_entities;
     }
@@ -576,7 +576,7 @@ Definition
         struct gsc_variant *variant;
         u16 id;
         int num_clocks;
-        struct clk  *clock;
+        struct clk *clock[GSC_MAX_CLOCKS];
         void __iomem *regs;
         wait_queue_head_t irq_queue;
         struct gsc_m2m_device m2m;

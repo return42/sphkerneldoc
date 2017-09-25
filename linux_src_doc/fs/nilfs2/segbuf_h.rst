@@ -87,8 +87,7 @@ Definition
         struct nilfs_segsum_info sb_sum;
         __u64 sb_segnum;
         __u64 sb_nextnum;
-        sector_t sb_fseg_start;
-        sector_t sb_fseg_end;
+        sector_t sb_fseg_start, sb_fseg_end;
         sector_t sb_pseg_start;
         unsigned int sb_rest_blocks;
         struct list_head sb_segsum_buffers;

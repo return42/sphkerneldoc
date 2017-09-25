@@ -21,7 +21,7 @@ Definition
         struct adis16400_chip_info *variant;
         int filt_int;
         struct adis adis;
-        unsigned long avail_scan_mask;
+        unsigned long avail_scan_mask[2];
     }
 
 .. _`adis16400_state.members`:

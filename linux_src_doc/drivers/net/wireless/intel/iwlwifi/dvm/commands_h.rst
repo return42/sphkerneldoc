@@ -126,7 +126,7 @@ Definition
         __le32 rxon_flags;
         __le32 rxon_filter_flags;
         __le32 switch_time;
-        __le32 reserved;
+        __le32 reserved[2][IWL_PWR_NUM_HT_OFDM_ENTRIES + IWL_PWR_CCK_ENTRIES];
     }
 
 .. _`iwl5000_channel_switch_cmd.members`:
@@ -178,7 +178,7 @@ Definition
         __le32 rxon_flags;
         __le32 rxon_filter_flags;
         __le32 switch_time;
-        __le32 reserved;
+        __le32 reserved[3][IWL_PWR_NUM_HT_OFDM_ENTRIES + IWL_PWR_CCK_ENTRIES];
     }
 
 .. _`iwl6000_channel_switch_cmd.members`:
@@ -280,7 +280,7 @@ Definition
 .. code-block:: c
 
     struct sta_id_modify {
-        u8 addr;
+        u8 addr[ETH_ALEN];
         __le16 reserved1;
         u8 sta_id;
         u8 modify_mask;
@@ -338,7 +338,7 @@ Definition
         u8 mimo_delimiter;
         u8 single_stream_ant_msk;
         u8 dual_stream_ant_msk;
-        u8 start_rate_index;
+        u8 start_rate_index[LINK_QUAL_AC_NUM];
     }
 
 .. _`iwl_link_qual_general_params.members`:
@@ -507,7 +507,7 @@ Definition
     struct iwl_ssid_ie {
         u8 id;
         u8 len;
-        u8 ssid;
+        u8 ssid[32];
     }
 
 .. _`iwl_ssid_ie.members`:
@@ -772,7 +772,7 @@ Definition
 
     struct iwl_sensitivity_cmd {
         __le16 control;
-        __le16 table;
+        __le16 table[HD_TABLE_SIZE];
     }
 
 .. _`iwl_sensitivity_cmd.members`:
@@ -848,7 +848,7 @@ Definition
         __le16 flags;
         u8 reserved;
         u8 num_slots;
-        struct iwl_wipan_slot slots;
+        struct iwl_wipan_slot slots[10];
     }
 
 .. _`iwl_wipan_params_cmd.members`:

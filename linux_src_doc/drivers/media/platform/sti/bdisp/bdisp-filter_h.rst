@@ -20,7 +20,7 @@ Definition
     struct bdisp_filter_h_spec {
         const u16 min;
         const u16 max;
-        const u8 coef;
+        const u8 coef[BDISP_HF_NB];
     }
 
 .. _`bdisp_filter_h_spec.members`:
@@ -63,7 +63,7 @@ Definition
     struct bdisp_filter_v_spec {
         const u16 min;
         const u16 max;
-        const u8 coef;
+        const u8 coef[BDISP_VF_NB];
     }
 
 .. _`bdisp_filter_v_spec.members`:

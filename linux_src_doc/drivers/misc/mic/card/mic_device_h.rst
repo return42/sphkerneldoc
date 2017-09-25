@@ -103,7 +103,7 @@ Definition
 .. code-block:: c
 
     struct mic_driver {
-        char name;
+        char name[20];
         struct dentry *dbg_dir;
         struct device *dev;
         void __iomem *dp;
@@ -112,7 +112,7 @@ Definition
         struct mic_irq_info irq_info;
         struct mic_intr_info intr_info;
         struct mbus_device *dma_mbdev;
-        struct dma_chan  *dma_ch;
+        struct dma_chan *dma_ch[MIC_MAX_DMA_CHAN];
         int num_dma_ch;
         struct scif_hw_dev *scdev;
         struct vop_device *vpdev;

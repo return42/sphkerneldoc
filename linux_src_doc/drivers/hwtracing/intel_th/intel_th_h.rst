@@ -72,7 +72,7 @@ Definition
 .. code-block:: c
 
     struct intel_th_drvdata {
-        unsigned int tscu_enable:1;
+        unsigned int tscu_enable : 1;
     }
 
 .. _`intel_th_drvdata.members`:
@@ -108,7 +108,7 @@ Definition
         int id;
         bool host_mode;
         struct intel_th_output output;
-        char name;
+        char name[];
     }
 
 .. _`intel_th_device.members`:
@@ -283,7 +283,7 @@ Definition
 
     struct intel_th {
         struct device *dev;
-        struct intel_th_device  *thdev;
+        struct intel_th_device *thdev[TH_SUBDEVICE_MAX];
         struct intel_th_device *hub;
         struct intel_th_drvdata *drvdata;
         struct resource *resource;
@@ -296,7 +296,7 @@ Definition
         int major;
     #ifdef CONFIG_MODULES
         struct work_struct request_module_work;
-    #endif
+    #endif 
     #ifdef CONFIG_INTEL_TH_DEBUG
         struct dentry *dbg;
     #endif

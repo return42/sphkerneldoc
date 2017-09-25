@@ -148,7 +148,7 @@ Definition
     struct ubi_sgl {
         int list_pos;
         int page_pos;
-        struct scatterlist sg;
+        struct scatterlist sg[UBI_MAX_SG_COUNT];
     }
 
 .. _`ubi_sgl.members`:

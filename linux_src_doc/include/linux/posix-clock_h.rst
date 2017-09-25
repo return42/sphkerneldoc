@@ -21,13 +21,13 @@ Definition
         struct module *owner;
         int (*clock_adjtime)(struct posix_clock *pc, struct timex *tx);
         int (*clock_gettime)(struct posix_clock *pc, struct timespec64 *ts);
-        int (*clock_getres)(struct posix_clock *pc, struct timespec64 *ts);
+        int (*clock_getres) (struct posix_clock *pc, struct timespec64 *ts);
         int (*clock_settime)(struct posix_clock *pc, const struct timespec64 *ts);
-        long (*ioctl)(struct posix_clock *pc, unsigned int cmd, unsigned long arg);
-        int (*open)(struct posix_clock *pc, fmode_t f_mode);
-        uint (*poll)(struct posix_clock *pc, struct file *file, poll_table *wait);
-        int (*release)(struct posix_clock *pc);
-        ssize_t (*read)(struct posix_clock *pc, uint flags, char __user *buf, size_t cnt);
+        long (*ioctl) (struct posix_clock *pc, unsigned int cmd, unsigned long arg);
+        int (*open) (struct posix_clock *pc, fmode_t f_mode);
+        uint (*poll) (struct posix_clock *pc, struct file *file, poll_table *wait);
+        int (*release) (struct posix_clock *pc);
+        ssize_t (*read) (struct posix_clock *pc, uint flags, char __user *buf, size_t cnt);
     }
 
 .. _`posix_clock_operations.members`:

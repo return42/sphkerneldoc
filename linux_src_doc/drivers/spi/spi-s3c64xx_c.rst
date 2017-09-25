@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct s3c64xx_spi_port_config {
-        int fifo_lvl_mask;
+        int fifo_lvl_mask[MAX_SPI_PORTS];
         int rx_lvl_offset;
         int tx_st_done;
         int quirks;
@@ -93,8 +93,7 @@ Definition
         unsigned long sfr_start;
         struct completion xfer_completion;
         unsigned state;
-        unsigned cur_mode;
-        unsigned cur_bpw;
+        unsigned cur_mode, cur_bpw;
         unsigned cur_speed;
         struct s3c64xx_spi_dma_data rx_dma;
         struct s3c64xx_spi_dma_data tx_dma;

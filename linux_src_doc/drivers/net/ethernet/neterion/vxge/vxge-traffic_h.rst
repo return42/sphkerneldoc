@@ -1463,10 +1463,10 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_xmac_stats {
-        struct vxge_hw_xmac_aggr_stats aggr_stats;
-        struct vxge_hw_xmac_port_stats port_stats;
-        struct vxge_hw_xmac_vpath_tx_stats vpath_tx_stats;
-        struct vxge_hw_xmac_vpath_rx_stats vpath_rx_stats;
+        struct vxge_hw_xmac_aggr_stats aggr_stats[VXGE_HW_MAC_MAX_MAC_PORT_ID];
+        struct vxge_hw_xmac_port_stats port_stats[VXGE_HW_MAC_MAX_MAC_PORT_ID+1];
+        struct vxge_hw_xmac_vpath_tx_stats vpath_tx_stats[VXGE_HW_MAX_VIRTUAL_PATHS];
+        struct vxge_hw_xmac_vpath_rx_stats vpath_rx_stats[VXGE_HW_MAX_VIRTUAL_PATHS];
     }
 
 .. _`vxge_hw_xmac_stats.members`:
@@ -1538,11 +1538,11 @@ Definition
         u32 prog_event_vnum3;
         u32 prog_event_vnum2;
         u16 rx_multi_cast_frame_discard;
-        u8 unused10;
+        u8 unused10[6];
         u32 rx_frm_transferred;
         u32 unused11;
         u16 rxd_returned;
-        u8 unused12;
+        u8 unused12[6];
         u16 rx_mpa_len_fail_frms;
         u16 rx_mpa_mrk_fail_frms;
         u16 rx_mpa_crc_fail_frms;
@@ -1723,9 +1723,18 @@ Definition
     struct vxge_hw_device_stats_mrpcim_info {
         u32 pic_ini_rd_drop;
         u32 pic_ini_wr_drop;
-        struct pic_wrcrdtarb_ph_crdt_depleted_vplane;
-        struct pic_wrcrdtarb_pd_crdt_depleted_vplane;
-        struct pic_rdcrdtarb_nph_crdt_depleted_vplane;
+        struct {
+            u32 pic_wrcrdtarb_ph_crdt_depleted;
+            u32 unused1;
+        } pic_wrcrdtarb_ph_crdt_depleted_vplane[17];
+        struct {
+            u32 pic_wrcrdtarb_pd_crdt_depleted;
+            u32 unused2;
+        } pic_wrcrdtarb_pd_crdt_depleted_vplane[17];
+        struct {
+            u32 pic_rdcrdtarb_nph_crdt_depleted;
+            u32 unused3;
+        } pic_rdcrdtarb_nph_crdt_depleted_vplane[17];
         u32 pic_ini_rd_vpin_drop;
         u32 pic_ini_wr_vpin_drop;
         u32 pic_genstats_count0;
@@ -1742,10 +1751,20 @@ Definition
         u32 pci_rstdrop_client0;
         u32 pci_rstdrop_client2;
         u32 unused6;
-        struct pci_depl_h_vplane;
-        struct pci_depl_d_vplane;
-        struct vxge_hw_xmac_port_stats xgmac_port;
-        struct vxge_hw_xmac_aggr_stats xgmac_aggr;
+        struct {
+            u16 unused7;
+            u16 pci_depl_cplh;
+            u16 pci_depl_nph;
+            u16 pci_depl_ph;
+        } pci_depl_h_vplane[17];
+        struct {
+            u16 unused8;
+            u16 pci_depl_cpld;
+            u16 pci_depl_npd;
+            u16 pci_depl_pd;
+        } pci_depl_d_vplane[17];
+        struct vxge_hw_xmac_port_stats xgmac_port[3];
+        struct vxge_hw_xmac_aggr_stats xgmac_aggr[2];
         u64 xgmac_global_prog_event_gnum0;
         u64 xgmac_global_prog_event_gnum1;
         u64 unused7;
@@ -1777,13 +1796,31 @@ pic_ini_rd_drop
 pic_ini_wr_drop
     *undescribed*
 
-pic_wrcrdtarb_ph_crdt_depleted_vplane
+pic_wrcrdtarb_ph_crdt_depleted
     *undescribed*
 
-pic_wrcrdtarb_pd_crdt_depleted_vplane
+unused1
     *undescribed*
 
-pic_rdcrdtarb_nph_crdt_depleted_vplane
+ic_wrcrdtarb_ph_crdt_depleted_vplane
+    *undescribed*
+
+pic_wrcrdtarb_pd_crdt_depleted
+    *undescribed*
+
+unused2
+    *undescribed*
+
+ic_wrcrdtarb_pd_crdt_depleted_vplane
+    *undescribed*
+
+pic_rdcrdtarb_nph_crdt_depleted
+    *undescribed*
+
+unused3
+    *undescribed*
+
+ic_rdcrdtarb_nph_crdt_depleted_vplane
     *undescribed*
 
 pic_ini_rd_vpin_drop
@@ -1834,10 +1871,34 @@ pci_rstdrop_client2
 unused6
     *undescribed*
 
-pci_depl_h_vplane
+unused7
     *undescribed*
 
-pci_depl_d_vplane
+pci_depl_cplh
+    *undescribed*
+
+pci_depl_nph
+    *undescribed*
+
+pci_depl_ph
+    *undescribed*
+
+ci_depl_h_vplane
+    *undescribed*
+
+unused8
+    *undescribed*
+
+pci_depl_cpld
+    *undescribed*
+
+pci_depl_npd
+    *undescribed*
+
+pci_depl_pd
+    *undescribed*
+
+ci_depl_d_vplane
     *undescribed*
 
 xgmac_port
@@ -1924,8 +1985,8 @@ Definition
 .. code-block:: c
 
     struct vxge_hw_device_stats_hw_info {
-        struct vxge_hw_vpath_stats_hw_info  *vpath_info;
-        struct vxge_hw_vpath_stats_hw_info vpath_info_sav;
+        struct vxge_hw_vpath_stats_hw_info *vpath_info[VXGE_HW_MAX_VIRTUAL_PATHS];
+        struct vxge_hw_vpath_stats_hw_info vpath_info_sav[VXGE_HW_MAX_VIRTUAL_PATHS];
     }
 
 .. _`vxge_hw_device_stats_hw_info.members`:
@@ -2025,7 +2086,7 @@ Definition
         struct vxge_hw_vpath_stats_sw_common_info common_stats;
         u32 total_posts;
         u32 total_buffers;
-        u32 txd_t_code_err_cnt;
+        u32 txd_t_code_err_cnt[VXGE_HW_DTR_MAX_T_CODE];
     }
 
 .. _`vxge_hw_vpath_stats_sw_fifo_info.members`:
@@ -2082,7 +2143,7 @@ Definition
 
     struct vxge_hw_vpath_stats_sw_ring_info {
         struct vxge_hw_vpath_stats_sw_common_info common_stats;
-        u32 rxd_t_code_err_cnt;
+        u32 rxd_t_code_err_cnt[VXGE_HW_DTR_MAX_T_CODE];
     }
 
 .. _`vxge_hw_vpath_stats_sw_ring_info.members`:
@@ -2282,7 +2343,7 @@ Definition
         u32 traffic_intr_cnt;
         u32 total_intr_cnt;
         u32 soft_reset_cnt;
-        struct vxge_hw_vpath_stats_sw_info vpath_info;
+        struct vxge_hw_vpath_stats_sw_info vpath_info[VXGE_HW_MAX_VIRTUAL_PATHS];
     }
 
 .. _`vxge_hw_device_stats_sw_info.members`:

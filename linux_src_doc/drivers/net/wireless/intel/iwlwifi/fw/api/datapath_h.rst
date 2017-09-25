@@ -67,8 +67,8 @@ Definition
 
     struct iwl_mu_group_mgmt_cmd {
         __le32 reserved;
-        __le32 membership_status;
-        __le32 user_position;
+        __le32 membership_status[2];
+        __le32 user_position[4];
     }
 
 .. _`iwl_mu_group_mgmt_cmd.members`:
@@ -103,8 +103,8 @@ Definition
 .. code-block:: c
 
     struct iwl_mu_group_mgmt_notif {
-        __le32 membership_status;
-        __le32 user_position;
+        __le32 membership_status[2];
+        __le32 user_position[4];
     }
 
 .. _`iwl_mu_group_mgmt_notif.members`:

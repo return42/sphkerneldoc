@@ -26,7 +26,10 @@ Definition
         unsigned long len;
         unsigned long offset;
         unsigned long bus_addr;
-        struct chunk_list;
+        struct {
+            spinlock_t lock;
+            struct list_head head;
+        } chunk_list;
     }
 
 .. _`ps3_dma_region.members`:
@@ -58,8 +61,14 @@ offset
 bus_addr
     The 'translated' bus address of the region.
 
-chunk_list
-    Opaque variable used by the ioc page manager.
+lock
+    *undescribed*
+
+head
+    *undescribed*
+
+hunk_list
+    *undescribed*
 
 .. _`ps3_mmio_region`:
 
@@ -142,7 +151,11 @@ Definition
         struct ps3_dma_region *d_region;
         struct ps3_mmio_region *m_region;
         unsigned int port_number;
-        struct lpm;
+        struct {
+            u64 node_id;
+            u64 pu_id;
+            u64 rights;
+        } lpm;
         struct device core;
         void *driver_priv;
     }
@@ -179,7 +192,16 @@ m_region
 port_number
     *undescribed*
 
-lpm
+node_id
+    *undescribed*
+
+pu_id
+    *undescribed*
+
+rights
+    *undescribed*
+
+pm
     *undescribed*
 
 core

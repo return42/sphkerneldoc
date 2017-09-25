@@ -641,7 +641,7 @@ Definition
         enum ssp_microwire_wait_state wait_state;
         enum ssp_duplex duplex;
         enum ssp_clkdelay clkdelay;
-        void (*cs_control)(u32 control);
+        void (*cs_control) (u32 control);
     }
 
 .. _`pl022_config_chip.members`:

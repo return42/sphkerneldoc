@@ -24,17 +24,13 @@ Definition
         struct dma_fence *fence;
         int32_t crtc_x;
         int32_t crtc_y;
-        uint32_t crtc_w;
-        uint32_t crtc_h;
-        uint32_t src_x;
-        uint32_t src_y;
-        uint32_t src_h;
-        uint32_t src_w;
+        uint32_t crtc_w, crtc_h;
+        uint32_t src_x, src_y;
+        uint32_t src_h, src_w;
         unsigned int rotation;
         unsigned int zpos;
         unsigned int normalized_zpos;
-        struct drm_rect src;
-        struct drm_rect dst;
+        struct drm_rect src, dst;
         bool visible;
         struct drm_atomic_state *state;
     }

@@ -46,7 +46,7 @@ Definition
 .. code-block:: c
 
     struct omap_sr_pmic_data {
-        void (*sr_pmic_init)(void);
+        void (*sr_pmic_init) (void);
     }
 
 .. _`omap_sr_pmic_data.members`:

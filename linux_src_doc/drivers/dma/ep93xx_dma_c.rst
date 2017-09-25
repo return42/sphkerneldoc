@@ -187,7 +187,7 @@ Definition
     #define INTERRUPT_DONE 1
     #define INTERRUPT_NEXT_BUFFER 2
         size_t num_channels;
-        struct ep93xx_dma_chan channels;
+        struct ep93xx_dma_chan channels[];
     }
 
 .. _`ep93xx_dma_engine.members`:

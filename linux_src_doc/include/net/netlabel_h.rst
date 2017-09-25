@@ -19,7 +19,7 @@ Definition
 
     struct netlbl_lsm_cache {
         refcount_t refcount;
-        void (*free)(const void *data);
+        void (*free) (const void *data);
         void *data;
     }
 
@@ -79,7 +79,13 @@ Definition
         NETLBL_SECATTR_MLS_CAT | \NETLBL_SECATTR_SECID) u32 type;
         char *domain;
         struct netlbl_lsm_cache *cache;
-        struct attr;
+        struct {
+            struct {
+                struct netlbl_lsm_catmap *cat;
+                u32 lvl;
+            } mls;
+            u32 secid;
+        } attr;
     }
 
 .. _`netlbl_lsm_secattr.members`:
@@ -102,20 +108,20 @@ domain
 cache
     NetLabel LSM specific cache
 
-attr
+cat
     *undescribed*
 
-attr.mls
-    MLS sensitivity label
+lvl
+    *undescribed*
 
-attr.mls.cat
-    MLS category bitmap
+ls
+    *undescribed*
 
-attr.mls.lvl
-    MLS sensitivity level
+secid
+    *undescribed*
 
-attr.secid
-    LSM specific secid token
+ttr
+    *undescribed*
 
 .. _`netlbl_lsm_secattr.description`:
 
@@ -151,7 +157,7 @@ Definition
         int (*doi_remove)(u32 doi, struct netlbl_audit *audit_info);
         struct calipso_doi *(*doi_getdef)(u32 doi);
         void (*doi_putdef)(struct calipso_doi *doi_def);
-        int (*doi_walk)(u32 *skip_cnt,int (*callback);
+        int (*doi_walk)(u32 *skip_cnt,int (*callback)(struct calipso_doi *doi_def, void *arg), void *cb_arg);
         int (*sock_getattr)(struct sock *sk, struct netlbl_lsm_secattr *secattr);
         int (*sock_setattr)(struct sock *sk,const struct calipso_doi *doi_def, const struct netlbl_lsm_secattr *secattr);
         void (*sock_delattr)(struct sock *sk);

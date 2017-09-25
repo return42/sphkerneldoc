@@ -123,8 +123,8 @@ Definition
 .. code-block:: c
 
     struct mesh_path {
-        u8 dst;
-        u8 mpp;
+        u8 dst[ETH_ALEN];
+        u8 mpp[ETH_ALEN];
         struct rhash_head rhash;
         struct hlist_node gate_list;
         struct ieee80211_sub_if_data *sdata;
@@ -140,7 +140,7 @@ Definition
         u8 discovery_retries;
         enum mesh_path_flags flags;
         spinlock_t state_lock;
-        u8 rann_snd_addr;
+        u8 rann_snd_addr[ETH_ALEN];
         u32 rann_metric;
         unsigned long last_preq_to_root;
         bool is_root;
@@ -294,7 +294,7 @@ Definition
         struct hlist_node list;
         unsigned long exp_time;
         u32 seqnum;
-        u8 sa;
+        u8 sa[ETH_ALEN];
     }
 
 .. _`rmc_entry.members`:

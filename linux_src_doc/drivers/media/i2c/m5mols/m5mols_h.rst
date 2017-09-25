@@ -267,8 +267,16 @@ Definition
         wait_queue_head_t irq_waitq;
         atomic_t irq_done;
         struct v4l2_ctrl_handler handle;
-        struct {unnamed_struct};
-        struct {unnamed_struct};
+        struct {
+            struct v4l2_ctrl *auto_exposure;
+            struct v4l2_ctrl *exposure_bias;
+            struct v4l2_ctrl *exposure;
+            struct v4l2_ctrl *metering;
+        } ;
+        struct {
+            struct v4l2_ctrl *auto_iso;
+            struct v4l2_ctrl *iso;
+        } ;
         struct v4l2_ctrl *auto_wb;
         struct v4l2_ctrl *lock_3a;
         struct v4l2_ctrl *colorfx;
@@ -279,7 +287,7 @@ Definition
         struct v4l2_ctrl *jpeg_quality;
         int (*set_power)(struct device *dev, int on);
         struct mutex lock;
-        struct v4l2_mbus_framefmt ffmt;
+        struct v4l2_mbus_framefmt ffmt[M5MOLS_RESTYPE_MAX];
         int res_type;
         struct m5mols_version ver;
         struct m5mols_capture cap;
@@ -316,10 +324,8 @@ handle
 {unnamed_struct}
     anonymous
 
-
 {unnamed_struct}
     anonymous
-
 
 auto_wb
     auto white balance control

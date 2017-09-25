@@ -136,7 +136,7 @@ Definition
 .. code-block:: c
 
     struct ion_heap_data {
-        char name;
+        char name[MAX_HEAP_NAME];
         __u32 type;
         __u32 heap_id;
         __u32 reserved0;

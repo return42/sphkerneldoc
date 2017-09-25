@@ -20,7 +20,7 @@ Definition
     struct drm_crtc_crc_entry {
         bool has_frame_counter;
         uint32_t frame;
-        uint32_t crcs;
+        uint32_t crcs[DRM_MAX_CRC_NR];
     }
 
 .. _`drm_crtc_crc_entry.members`:
@@ -58,8 +58,7 @@ Definition
         const char *source;
         bool opened;
         struct drm_crtc_crc_entry *entries;
-        int head;
-        int tail;
+        int head, tail;
         size_t values_cnt;
         wait_queue_head_t wq;
     }

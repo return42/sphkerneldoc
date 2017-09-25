@@ -38,7 +38,14 @@ Definition
         u32 user_handle;
         int priority;
         u32 ggtt_offset_bias;
-        struct intel_context engine;
+        struct intel_context {
+            struct i915_vma *state;
+            struct intel_ring *ring;
+            u32 *lrc_reg_state;
+            u64 lrc_desc;
+            int pin_count;
+            bool initialised;
+        } engine[I915_NUM_ENGINES];
         u32 ring_size;
         u32 desc_template;
         atomic_t guilty_count;

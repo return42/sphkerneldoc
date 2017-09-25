@@ -26,6 +26,8 @@ Definition
         unsigned int poll_interval_max;
         unsigned int poll_interval_min;
         struct input_dev *input;
+        struct delayed_work work;
+        bool devres_managed;
     }
 
 .. _`input_polled_dev.members`:
@@ -63,6 +65,12 @@ poll_interval_min
 input
     input device structure associated with the polled device.
     Must be properly initialized by the driver (id, name, phys, bits).
+
+work
+    *undescribed*
+
+devres_managed
+    *undescribed*
 
 .. _`input_polled_dev.description`:
 

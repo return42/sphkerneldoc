@@ -224,7 +224,7 @@ Definition
         bool enable_dma;
         enum ssp_reading read;
         enum ssp_writing write;
-        void (*cs_control)(u32 command);
+        void (*cs_control) (u32 command);
         int xfer_type;
     }
 

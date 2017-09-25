@@ -19,8 +19,7 @@ Definition
 
     struct alps_protocol_info {
         u16 version;
-        u8 byte0;
-        u8 mask0;
+        u8 byte0, mask0;
         unsigned int flags;
     }
 
@@ -60,7 +59,7 @@ Definition
 .. code-block:: c
 
     struct alps_model_info {
-        u8 signature;
+        u8 signature[3];
         struct alps_protocol_info protocol_info;
     }
 
@@ -149,7 +148,7 @@ Definition
         unsigned int fingers;
         int pressure;
         struct input_mt_pos st;
-        struct input_mt_pos mt;
+        struct input_mt_pos mt[MAX_TOUCHES];
         unsigned int first_mp:1;
         unsigned int is_mp:1;
         unsigned int left:1;
@@ -227,16 +226,15 @@ Definition
         struct psmouse *psmouse;
         struct input_dev *dev2;
         struct input_dev *dev3;
-        char phys2;
-        char phys3;
+        char phys2[32];
+        char phys3[32];
         struct delayed_work dev3_register_work;
         const struct alps_nibble_commands *nibble_commands;
         int addr_command;
         u16 proto_version;
-        u8 byte0;
-        u8 mask0;
-        u8 dev_id;
-        u8 fw_ver;
+        u8 byte0, mask0;
+        u8 dev_id[3];
+        u8 fw_ver[3];
         int flags;
         int x_max;
         int y_max;
@@ -251,7 +249,7 @@ Definition
         int prev_fin;
         int multi_packet;
         int second_touch;
-        unsigned char multi_data;
+        unsigned char multi_data[6];
         struct alps_fields f;
         u8 quirks;
         struct timer_list timer;

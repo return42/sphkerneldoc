@@ -532,8 +532,8 @@ Definition
         enum mei_pg_event pg_event;
     #ifdef CONFIG_PM
         struct dev_pm_domain pg_domain;
-    #endif
-        unsigned char rd_msg_buf;
+    #endif 
+        unsigned char rd_msg_buf[MEI_RD_MSG_BUF_SIZE];
         u32 rd_msg_hdr;
         u8 hbuf_depth;
         bool hbuf_is_ready;
@@ -547,8 +547,8 @@ Definition
         unsigned int hbm_f_os_supported:1;
         struct rw_semaphore me_clients_rwsem;
         struct list_head me_clients;
-        unsigned long me_clients_map;
-        unsigned long host_clients_map;
+        DECLARE_BITMAP(me_clients_map, MEI_CLIENTS_MAX);
+        DECLARE_BITMAP(host_clients_map, MEI_CLIENTS_MAX);
         bool allow_fixed_address;
         bool override_fixed_address;
         struct work_struct reset_work;
@@ -557,9 +557,9 @@ Definition
         struct mutex cl_bus_lock;
     #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-    #endif
+    #endif 
         const struct mei_hw_ops *ops;
-        char hw;
+        char hw[0] __aligned(sizeof(void *));
     }
 
 .. _`mei_device.members`:

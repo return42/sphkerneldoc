@@ -53,7 +53,7 @@ Definition
         __u32 which;
         __u32 pad;
         struct v4l2_mbus_framefmt format;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_subdev_format.members`:
@@ -93,7 +93,7 @@ Definition
         __u32 which;
         __u32 pad;
         struct v4l2_rect rect;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_subdev_crop.members`:
@@ -134,7 +134,7 @@ Definition
         __u32 index;
         __u32 code;
         __u32 which;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_subdev_mbus_code_enum.members`:
@@ -182,7 +182,7 @@ Definition
         __u32 min_height;
         __u32 max_height;
         __u32 which;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_subdev_frame_size_enum.members`:
@@ -236,7 +236,7 @@ Definition
     struct v4l2_subdev_frame_interval {
         __u32 pad;
         struct v4l2_fract interval;
-        __u32 reserved;
+        __u32 reserved[9];
     }
 
 .. _`v4l2_subdev_frame_interval.members`:
@@ -277,7 +277,7 @@ Definition
         __u32 height;
         struct v4l2_fract interval;
         __u32 which;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_subdev_frame_interval_enum.members`:
@@ -331,7 +331,7 @@ Definition
         __u32 target;
         __u32 flags;
         struct v4l2_rect r;
-        __u32 reserved;
+        __u32 reserved[8];
     }
 
 .. _`v4l2_subdev_selection.members`:

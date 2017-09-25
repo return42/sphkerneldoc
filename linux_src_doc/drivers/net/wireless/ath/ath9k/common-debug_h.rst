@@ -27,7 +27,7 @@ Definition
         u32 pre_delim_crc_err;
         u32 post_delim_crc_err;
         u32 decrypt_busy_err;
-        u32 phy_err_stats;
+        u32 phy_err_stats[ATH9K_PHYERR_MAX];
         u32 rx_len_err;
         u32 rx_oom_err;
         u32 rx_rate_err;

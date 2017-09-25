@@ -19,8 +19,7 @@ Definition
 
     struct blk_alloc_info {
         struct nd_mapping *nd_mapping;
-        resource_size_t available;
-        resource_size_t busy;
+        resource_size_t available, busy;
         struct resource *res;
     }
 

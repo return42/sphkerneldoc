@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct acr_r352_flcn_bl_desc {
-        u32 reserved;
-        u32 signature;
+        u32 reserved[4];
+        u32 signature[4];
         u32 ctx_dma;
         u32 code_dma_base;
         u32 non_sec_code_off;
@@ -130,15 +130,33 @@ Definition
 .. code-block:: c
 
     struct hsflcn_acr_desc {
-        union ucode_reserved_space;
+        union {
+            u8 reserved_dmem[0x200];
+            u32 signatures[4];
+        } ucode_reserved_space;
         u32 wpr_region_id;
         u32 wpr_offset;
         u32 mmu_mem_range;
     #define FLCN_ACR_MAX_REGIONS 2
-        struct regions;
+        struct {
+            u32 no_regions;
+            struct {
+                u32 start_addr;
+                u32 end_addr;
+                u32 region_id;
+                u32 read_mask;
+                u32 write_mask;
+                u32 client_mask;
+            } region_props[FLCN_ACR_MAX_REGIONS];
+        } regions;
         u32 ucode_blob_size;
-        u64 ucode_blob_base;
-        struct vpr_desc;
+        u64 ucode_blob_base __aligned(8);
+        struct {
+            u32 vpr_enabled;
+            u32 vpr_start;
+            u32 vpr_end;
+            u32 hdcp_policies;
+        } vpr_desc;
     }
 
 .. _`hsflcn_acr_desc.members`:
@@ -146,7 +164,13 @@ Definition
 Members
 -------
 
-ucode_reserved_space
+reserved_dmem
+    *undescribed*
+
+signatures
+    *undescribed*
+
+code_reserved_space
     *undescribed*
 
 wpr_region_id
@@ -158,8 +182,32 @@ wpr_offset
 mmu_mem_range
     *undescribed*
 
-regions
-    region descriptors
+no_regions
+    *undescribed*
+
+start_addr
+    *undescribed*
+
+end_addr
+    *undescribed*
+
+region_id
+    *undescribed*
+
+read_mask
+    *undescribed*
+
+write_mask
+    *undescribed*
+
+client_mask
+    *undescribed*
+
+egion_props
+    *undescribed*
+
+egions
+    *undescribed*
 
 ucode_blob_size
     *undescribed*
@@ -167,7 +215,19 @@ ucode_blob_size
 ucode_blob_base
     *undescribed*
 
-vpr_desc
+vpr_enabled
+    *undescribed*
+
+vpr_start
+    *undescribed*
+
+vpr_end
+    *undescribed*
+
+hdcp_policies
+    *undescribed*
+
+pr_desc
     *undescribed*
 
 .. _`hsflcn_acr_desc.description`:
@@ -194,7 +254,13 @@ Definition
 .. code-block:: c
 
     struct acr_r352_lsf_lsb_header {
-        struct signature;
+        struct {
+            u8 prd_keys[2][16];
+            u8 dbg_keys[2][16];
+            u32 b_prd_present;
+            u32 b_dbg_present;
+            u32 falcon_id;
+        } signature;
         u32 ucode_off;
         u32 ucode_size;
         u32 data_size;
@@ -214,8 +280,23 @@ Definition
 Members
 -------
 
-signature
-    signature to verify the firmware against
+prd_keys
+    *undescribed*
+
+dbg_keys
+    *undescribed*
+
+b_prd_present
+    *undescribed*
+
+b_dbg_present
+    *undescribed*
+
+falcon_id
+    *undescribed*
+
+ignature
+    *undescribed*
 
 ucode_off
     offset of the ucode blob in the WPR region. The ucode

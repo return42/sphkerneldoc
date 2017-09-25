@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct docg3_cascade {
-        struct mtd_info  *floors;
+        struct mtd_info *floors[DOC_MAX_NBFLOORS];
         void __iomem *base;
         struct bch_control *bch;
         struct mutex lock;
@@ -67,7 +67,7 @@ Definition
         u8 *bbt;
         loff_t oob_write_ofs;
         int oob_autoecc;
-        u8 oob_write_buf;
+        u8 oob_write_buf[DOC_LAYOUT_OOB_SIZE];
         struct dentry *debugfs_root;
     }
 

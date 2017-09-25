@@ -139,9 +139,26 @@ Definition
 
     struct dpkg_extract {
         enum dpkg_extract_type type;
-        union extract;
+        union {
+            struct {
+                enum net_prot prot;
+                enum dpkg_extract_from_hdr_type type;
+                u32 field;
+                u8 size;
+                u8 offset;
+                u8 hdr_index;
+            } from_hdr;
+            struct {
+                u8 size;
+                u8 offset;
+            } from_data;
+            struct {
+                u8 size;
+                u8 offset;
+            } from_parse;
+        } extract;
         u8 num_of_byte_masks;
-        struct dpkg_mask masks;
+        struct dpkg_mask masks[DPKG_NUM_OF_MASKS];
     }
 
 .. _`dpkg_extract.members`:
@@ -155,8 +172,50 @@ type
     DPKG_EXTRACT_FROM_DATA: selects 'from_data';
     DPKG_EXTRACT_FROM_PARSE: selects 'from_parse'
 
-extract
-    Selects extraction method
+prot
+    *undescribed*
+
+type
+    Determines how the union below is interpreted:
+    DPKG_EXTRACT_FROM_HDR: selects 'from_hdr';
+    DPKG_EXTRACT_FROM_DATA: selects 'from_data';
+    DPKG_EXTRACT_FROM_PARSE: selects 'from_parse'
+
+field
+    *undescribed*
+
+size
+    *undescribed*
+
+offset
+    *undescribed*
+
+hdr_index
+    *undescribed*
+
+rom_hdr
+    *undescribed*
+
+size
+    *undescribed*
+
+offset
+    *undescribed*
+
+rom_data
+    *undescribed*
+
+size
+    *undescribed*
+
+offset
+    *undescribed*
+
+rom_parse
+    *undescribed*
+
+xtract
+    *undescribed*
 
 num_of_byte_masks
     Defines the number of valid entries in the array below;
@@ -183,7 +242,7 @@ Definition
 
     struct dpkg_profile_cfg {
         u8 num_extracts;
-        struct dpkg_extract extracts;
+        struct dpkg_extract extracts[DPKG_MAX_NUM_OF_EXTRACTS];
     }
 
 .. _`dpkg_profile_cfg.members`:

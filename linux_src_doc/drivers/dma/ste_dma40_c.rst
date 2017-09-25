@@ -134,7 +134,7 @@ Definition
         void *base;
         int size;
         dma_addr_t dma_addr;
-        u8 pre_alloc_lli;
+        u8 pre_alloc_lli[3 * sizeof(struct d40_phy_lli)];
     }
 
 .. _`d40_lli_pool.members`:
@@ -571,8 +571,8 @@ Definition
         dma_addr_t phy_lcpa;
         resource_size_t lcpa_size;
         struct kmem_cache *desc_slab;
-        u32 reg_val_backup;
-        u32 reg_val_backup_v4;
+        u32 reg_val_backup[BACKUP_REGS_SZ];
+        u32 reg_val_backup_v4[BACKUP_REGS_SZ_MAX];
         u32 *reg_val_backup_chan;
         u16 gcc_pwr_off_mask;
         struct d40_gen_dmac gen_dmac;

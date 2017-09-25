@@ -74,9 +74,16 @@ Definition
 .. code-block:: c
 
     struct pri_detector {
-        void (*exit)(struct pri_detector *de);
+        void (*exit) (struct pri_detector *de);
         struct pri_sequence * (*add_pulse)(struct pri_detector *de, struct pulse_event *e);
-        void (*reset)(struct pri_detector *de, u64 ts);
+        void (*reset) (struct pri_detector *de, u64 ts);
+        const struct radar_detector_specs *rs;
+        u64 last_ts;
+        struct list_head sequences;
+        struct list_head pulses;
+        u32 count;
+        u32 max_count;
+        u32 window_size;
     }
 
 .. _`pri_detector.members`:
@@ -92,6 +99,27 @@ add_pulse
 
 reset
     clear states and reset to given time stamp
+
+rs
+    detector specs for this detector element
+
+last_ts
+    last pulse time stamp considered for this element in usecs
+
+sequences
+    list_head holding potential pulse sequences
+
+pulses
+    list connecting pulse_elem objects
+
+count
+    number of pulses in queue
+
+max_count
+    maximum number of pulses to be queued
+
+window_size
+    window size back from newest pulse time stamp in usecs
 
 .. This file was automatic generated / don't edit.
 

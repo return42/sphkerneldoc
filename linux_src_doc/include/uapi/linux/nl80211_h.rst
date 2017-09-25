@@ -5628,7 +5628,7 @@ Definition
 .. code-block:: c
 
     struct nl80211_txrate_vht {
-        __u16 mcs;
+        __u16 mcs[NL80211_VHT_NSS_MAX];
     }
 
 .. _`nl80211_txrate_vht.members`:
@@ -6208,9 +6208,7 @@ Definition
 .. code-block:: c
 
     struct nl80211_wowlan_tcp_data_seq {
-        __u32 start;
-        __u32 offset;
-        __u32 len;
+        __u32 start, offset, len;
     }
 
 .. _`nl80211_wowlan_tcp_data_seq.members`:
@@ -6253,9 +6251,8 @@ Definition
 .. code-block:: c
 
     struct nl80211_wowlan_tcp_data_token {
-        __u32 offset;
-        __u32 len;
-        __u8 token_stream;
+        __u32 offset, len;
+        __u8 token_stream[];
     }
 
 .. _`nl80211_wowlan_tcp_data_token.members`:
@@ -6290,9 +6287,7 @@ Definition
 .. code-block:: c
 
     struct nl80211_wowlan_tcp_data_token_feature {
-        __u32 min_len;
-        __u32 max_len;
-        __u32 bufsize;
+        __u32 min_len, max_len, bufsize;
     }
 
 .. _`nl80211_wowlan_tcp_data_token_feature.members`:

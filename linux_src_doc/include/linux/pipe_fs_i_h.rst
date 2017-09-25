@@ -19,8 +19,7 @@ Definition
 
     struct pipe_buffer {
         struct page *page;
-        unsigned int offset;
-        unsigned int len;
+        unsigned int offset, len;
         const struct pipe_buf_operations *ops;
         unsigned int flags;
         unsigned long private;
@@ -68,9 +67,7 @@ Definition
     struct pipe_inode_info {
         struct mutex mutex;
         wait_queue_head_t wait;
-        unsigned int nrbufs;
-        unsigned int curbuf;
-        unsigned int buffers;
+        unsigned int nrbufs, curbuf, buffers;
         unsigned int readers;
         unsigned int writers;
         unsigned int files;

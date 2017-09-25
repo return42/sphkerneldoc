@@ -68,7 +68,7 @@ Definition
 
     struct ccw0 {
         __u8 cmd_code;
-        __u32 cda:24;
+        __u32 cda : 24;
         __u8 flags;
         __u8 reserved;
         __u16 count;
@@ -118,16 +118,16 @@ Definition
 .. code-block:: c
 
     struct erw {
-        __u32 res0:3;
-        __u32 auth:1;
-        __u32 pvrf:1;
-        __u32 cpt:1;
-        __u32 fsavf:1;
-        __u32 cons:1;
-        __u32 scavf:1;
-        __u32 fsaf:1;
-        __u32 scnt:6;
-        __u32 res16:16;
+        __u32 res0 : 3;
+        __u32 auth : 1;
+        __u32 pvrf : 1;
+        __u32 cpt : 1;
+        __u32 fsavf : 1;
+        __u32 cons : 1;
+        __u32 scavf : 1;
+        __u32 fsaf : 1;
+        __u32 scnt : 6;
+        __u32 res16 : 16;
     }
 
 .. _`erw.members`:
@@ -182,8 +182,10 @@ Definition
 .. code-block:: c
 
     struct erw_eadm {
-        __u32 b:1;
-        __u32 r:1;
+        __u32 : 16;
+        __u32 b : 1;
+        __u32 r : 1;
+        __u32 : 14;
     }
 
 .. _`erw_eadm.members`:
@@ -214,17 +216,17 @@ Definition
 .. code-block:: c
 
     struct sublog {
-        __u32 res0:1;
-        __u32 esf:7;
-        __u32 lpum:8;
-        __u32 arep:1;
-        __u32 fvf:5;
-        __u32 sacc:2;
-        __u32 termc:2;
-        __u32 devsc:1;
-        __u32 serr:1;
-        __u32 ioerr:1;
-        __u32 seqc:3;
+        __u32 res0 : 1;
+        __u32 esf : 7;
+        __u32 lpum : 8;
+        __u32 arep : 1;
+        __u32 fvf : 5;
+        __u32 sacc : 2;
+        __u32 termc : 2;
+        __u32 devsc : 1;
+        __u32 serr : 1;
+        __u32 ioerr : 1;
+        __u32 seqc : 3;
     }
 
 .. _`sublog.members`:
@@ -284,7 +286,7 @@ Definition
     struct esw0 {
         struct sublog sublog;
         struct erw erw;
-        __u32 faddr;
+        __u32 faddr[2];
         __u32 saddr;
     }
 
@@ -326,7 +328,7 @@ Definition
         __u8 lpum;
         __u16 zero16;
         struct erw erw;
-        __u32 zeros;
+        __u32 zeros[3];
     }
 
 .. _`esw1.members`:
@@ -370,7 +372,7 @@ Definition
         __u8 lpum;
         __u16 dcti;
         struct erw erw;
-        __u32 zeros;
+        __u32 zeros[3];
     }
 
 .. _`esw2.members`:
@@ -414,7 +416,7 @@ Definition
         __u8 lpum;
         __u16 res;
         struct erw erw;
-        __u32 zeros;
+        __u32 zeros[3];
     }
 
 .. _`esw3.members`:
@@ -456,6 +458,9 @@ Definition
     struct esw_eadm {
         __u32 sublog;
         struct erw_eadm erw;
+        __u32 : 32;
+        __u32 : 32;
+        __u32 : 32;
     }
 
 .. _`esw_eadm.members`:
@@ -487,8 +492,14 @@ Definition
 
     struct irb {
         union scsw scsw;
-        union esw;
-        __u8 ecw;
+        union {
+            struct esw0 esw0;
+            struct esw1 esw1;
+            struct esw2 esw2;
+            struct esw3 esw3;
+            struct esw_eadm eadm;
+        } esw;
+        __u8 ecw[32];
     }
 
 .. _`irb.members`:
@@ -499,8 +510,23 @@ Members
 scsw
     subchannel status word
 
-esw
-    extended status word
+esw0
+    *undescribed*
+
+esw1
+    *undescribed*
+
+esw2
+    *undescribed*
+
+esw3
+    *undescribed*
+
+eadm
+    *undescribed*
+
+sw
+    *undescribed*
 
 ecw
     extended control word
@@ -536,11 +562,11 @@ Definition
 .. code-block:: c
 
     struct ciw {
-        __u32 et:2;
-        __u32 reserved:2;
-        __u32 ct:4;
-        __u32 cmd:8;
-        __u32 count:16;
+        __u32 et : 2;
+        __u32 reserved : 2;
+        __u32 ct : 4;
+        __u32 cmd : 8;
+        __u32 count : 16;
     }
 
 .. _`ciw.members`:

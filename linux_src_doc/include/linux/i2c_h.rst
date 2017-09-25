@@ -19,7 +19,7 @@ Definition
 
     struct i2c_driver {
         unsigned int class;
-        int (*attach_adapter)(struct i2c_adapter *);
+        int (*attach_adapter)(struct i2c_adapter *) __deprecated;
         int (*probe)(struct i2c_client *, const struct i2c_device_id *);
         int (*remove)(struct i2c_client *);
         int (*probe_new)(struct i2c_client *);
@@ -125,7 +125,7 @@ Definition
     struct i2c_client {
         unsigned short flags;
         unsigned short addr;
-        char name;
+        char name[I2C_NAME_SIZE];
         struct i2c_adapter *adapter;
         struct device dev;
         int irq;
@@ -194,7 +194,7 @@ Definition
 .. code-block:: c
 
     struct i2c_board_info {
-        char type;
+        char type[I2C_NAME_SIZE];
         unsigned short flags;
         unsigned short addr;
         void *platform_data;
@@ -304,8 +304,8 @@ Definition
 
     struct i2c_algorithm {
         int (*master_xfer)(struct i2c_adapter *adap, struct i2c_msg *msgs, int num);
-        int (*smbus_xfer)(struct i2c_adapter *adap, u16 addr,unsigned short flags, char read_write, u8 command, int size, union i2c_smbus_data *data);
-        u32 (*functionality)(struct i2c_adapter *);
+        int (*smbus_xfer) (struct i2c_adapter *adap, u16 addr,unsigned short flags, char read_write, u8 command, int size, union i2c_smbus_data *data);
+        u32 (*functionality) (struct i2c_adapter *);
     #if IS_ENABLED(CONFIG_I2C_SLAVE)
         int (*reg_slave)(struct i2c_client *client);
         int (*unreg_slave)(struct i2c_client *client);

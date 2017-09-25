@@ -25,7 +25,13 @@ Definition
         struct clk *utmiclk;
         struct clk *itpclk;
         const struct exynos5_usbdrd_phy_drvdata *drv_data;
-        struct phy_usb_instance phys;
+        struct phy_usb_instance {
+            struct phy *phy;
+            u32 index;
+            struct regmap *reg_pmu;
+            u32 pmu_offset;
+            const struct exynos5_usbdrd_phy_config *phy_cfg;
+        } phys[EXYNOS5_DRDPHYS_NUM];
         u32 extrefclk;
         struct clk *ref_clk;
         struct regulator *vbus;

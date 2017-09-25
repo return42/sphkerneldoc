@@ -95,7 +95,10 @@ Definition
         const char *name;
         enum pinctrl_map_type type;
         const char *ctrl_dev_name;
-        union data;
+        union {
+            struct pinctrl_map_mux mux;
+            struct pinctrl_map_configs configs;
+        } data;
     }
 
 .. _`pinctrl_map.members`:
@@ -121,8 +124,14 @@ ctrl_dev_name
     the name must be the same as in your struct device\*. This field is not
     used for PIN_MAP_TYPE_DUMMY_STATE
 
-data
-    Data specific to the mapping type
+mux
+    *undescribed*
+
+configs
+    *undescribed*
+
+ata
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

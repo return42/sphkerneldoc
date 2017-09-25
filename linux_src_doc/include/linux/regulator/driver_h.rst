@@ -66,38 +66,38 @@ Definition
 .. code-block:: c
 
     struct regulator_ops {
-        int (*list_voltage)(struct regulator_dev *, unsigned selector);
-        int (*set_voltage)(struct regulator_dev *, int min_uV, int max_uV, unsigned *selector);
+        int (*list_voltage) (struct regulator_dev *, unsigned selector);
+        int (*set_voltage) (struct regulator_dev *, int min_uV, int max_uV, unsigned *selector);
         int (*map_voltage)(struct regulator_dev *, int min_uV, int max_uV);
-        int (*set_voltage_sel)(struct regulator_dev *, unsigned selector);
-        int (*get_voltage)(struct regulator_dev *);
-        int (*get_voltage_sel)(struct regulator_dev *);
-        int (*set_current_limit)(struct regulator_dev *, int min_uA, int max_uA);
-        int (*get_current_limit)(struct regulator_dev *);
-        int (*set_input_current_limit)(struct regulator_dev *, int lim_uA);
-        int (*set_over_current_protection)(struct regulator_dev *);
-        int (*set_active_discharge)(struct regulator_dev *, bool enable);
-        int (*enable)(struct regulator_dev *);
-        int (*disable)(struct regulator_dev *);
-        int (*is_enabled)(struct regulator_dev *);
-        int (*set_mode)(struct regulator_dev *, unsigned int mode);
-        unsigned int (*get_mode)(struct regulator_dev *);
+        int (*set_voltage_sel) (struct regulator_dev *, unsigned selector);
+        int (*get_voltage) (struct regulator_dev *);
+        int (*get_voltage_sel) (struct regulator_dev *);
+        int (*set_current_limit) (struct regulator_dev *, int min_uA, int max_uA);
+        int (*get_current_limit) (struct regulator_dev *);
+        int (*set_input_current_limit) (struct regulator_dev *, int lim_uA);
+        int (*set_over_current_protection) (struct regulator_dev *);
+        int (*set_active_discharge) (struct regulator_dev *, bool enable);
+        int (*enable) (struct regulator_dev *);
+        int (*disable) (struct regulator_dev *);
+        int (*is_enabled) (struct regulator_dev *);
+        int (*set_mode) (struct regulator_dev *, unsigned int mode);
+        unsigned int (*get_mode) (struct regulator_dev *);
         int (*get_error_flags)(struct regulator_dev *, unsigned int *flags);
-        int (*enable_time)(struct regulator_dev *);
-        int (*set_ramp_delay)(struct regulator_dev *, int ramp_delay);
-        int (*set_voltage_time)(struct regulator_dev *, int old_uV, int new_uV);
-        int (*set_voltage_time_sel)(struct regulator_dev *,unsigned int old_selector, unsigned int new_selector);
-        int (*set_soft_start)(struct regulator_dev *);
+        int (*enable_time) (struct regulator_dev *);
+        int (*set_ramp_delay) (struct regulator_dev *, int ramp_delay);
+        int (*set_voltage_time) (struct regulator_dev *, int old_uV, int new_uV);
+        int (*set_voltage_time_sel) (struct regulator_dev *,unsigned int old_selector, unsigned int new_selector);
+        int (*set_soft_start) (struct regulator_dev *);
         int (*get_status)(struct regulator_dev *);
-        unsigned int (*get_optimum_mode)(struct regulator_dev *, int input_uV, int output_uV, int load_uA);
+        unsigned int (*get_optimum_mode) (struct regulator_dev *, int input_uV, int output_uV, int load_uA);
         int (*set_load)(struct regulator_dev *, int load_uA);
         int (*set_bypass)(struct regulator_dev *dev, bool enable);
         int (*get_bypass)(struct regulator_dev *dev, bool *enable);
-        int (*set_suspend_voltage)(struct regulator_dev *, int uV);
-        int (*set_suspend_enable)(struct regulator_dev *);
-        int (*set_suspend_disable)(struct regulator_dev *);
-        int (*set_suspend_mode)(struct regulator_dev *, unsigned int mode);
-        int (*set_pull_down)(struct regulator_dev *);
+        int (*set_suspend_voltage) (struct regulator_dev *, int uV);
+        int (*set_suspend_enable) (struct regulator_dev *);
+        int (*set_suspend_disable) (struct regulator_dev *);
+        int (*set_suspend_mode) (struct regulator_dev *, unsigned int mode);
+        int (*set_pull_down) (struct regulator_dev *);
     }
 
 .. _`regulator_ops.members`:

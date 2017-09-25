@@ -82,8 +82,8 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_blkcipher_op_ctx {
-        u32 key;
-        u32 iv;
+        u32 key[8];
+        u32 iv[4];
     }
 
 .. _`mv_cesa_blkcipher_op_ctx.members`:
@@ -121,8 +121,8 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_hash_op_ctx {
-        u32 iv;
-        u32 hash;
+        u32 iv[16];
+        u32 hash[8];
     }
 
 .. _`mv_cesa_hash_op_ctx.members`:
@@ -161,7 +161,10 @@ Definition
 
     struct mv_cesa_op_ctx {
         struct mv_cesa_sec_accel_desc desc;
-        union ctx;
+        union {
+            struct mv_cesa_blkcipher_op_ctx blkcipher;
+            struct mv_cesa_hash_op_ctx hash;
+        } ctx;
     }
 
 .. _`mv_cesa_op_ctx.members`:
@@ -172,8 +175,14 @@ Members
 desc
     CESA descriptor
 
-ctx
-    context associated to the crypto operation
+blkcipher
+    *undescribed*
+
+hash
+    *undescribed*
+
+tx
+    *undescribed*
 
 .. _`mv_cesa_op_ctx.description`:
 
@@ -205,7 +214,10 @@ Definition
         __le32 next_dma;
         dma_addr_t cur_dma;
         struct mv_cesa_tdma_desc *next;
-        union {unnamed_union};
+        union {
+            struct mv_cesa_op_ctx *op;
+            void *data;
+        } ;
         u32 flags;
     }
 
@@ -234,7 +246,6 @@ next
 
 {unnamed_union}
     anonymous
-
 
 flags
     flags describing the TDMA transfer. See the
@@ -766,7 +777,7 @@ Definition
 
     struct mv_cesa_hmac_ctx {
         struct mv_cesa_ctx base;
-        u32 iv;
+        u32 iv[16];
     }
 
 .. _`mv_cesa_hmac_ctx.members`:
@@ -1049,15 +1060,18 @@ Definition
 
     struct mv_cesa_ahash_req {
         struct mv_cesa_req base;
-        union req;
+        union {
+            struct mv_cesa_ahash_dma_req dma;
+            struct mv_cesa_ahash_std_req std;
+        } req;
         struct mv_cesa_op_ctx op_tmpl;
-        u8 cache;
+        u8 cache[CESA_MAX_HASH_BLOCK_SIZE];
         unsigned int cache_ptr;
         u64 len;
         int src_nents;
         bool last_req;
         bool algo_le;
-        u32 state;
+        u32 state[8];
     }
 
 .. _`mv_cesa_ahash_req.members`:
@@ -1068,8 +1082,14 @@ Members
 base
     *undescribed*
 
-req
-    type specific request information
+dma
+    *undescribed*
+
+std
+    *undescribed*
+
+eq
+    *undescribed*
 
 op_tmpl
     *undescribed*

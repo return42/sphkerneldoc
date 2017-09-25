@@ -50,7 +50,10 @@ Definition
 .. code-block:: c
 
     struct nft_regs {
-        union {unnamed_union};
+        union {
+            u32 data[20];
+            struct nft_verdict verdict;
+        } ;
     }
 
 .. _`nft_regs.members`:
@@ -60,7 +63,6 @@ Members
 
 {unnamed_union}
     anonymous
-
 
 .. _`nft_regs.description`:
 
@@ -143,7 +145,7 @@ Definition
 
     struct nft_userdata {
         u8 len;
-        unsigned char data;
+        unsigned char data[0];
     }
 
 .. _`nft_userdata.members`:
@@ -183,7 +185,10 @@ Definition
 .. code-block:: c
 
     struct nft_set_elem {
-        union key;
+        union {
+            u32 buf[NFT_DATA_VALUE_MAXLEN / sizeof(u32)];
+            struct nft_data val;
+        } key;
         void *priv;
     }
 
@@ -192,8 +197,14 @@ Definition
 Members
 -------
 
-key
-    element key
+buf
+    *undescribed*
+
+val
+    *undescribed*
+
+ey
+    *undescribed*
 
 priv
     element private data and extensions
@@ -364,7 +375,7 @@ Definition
 
     struct nft_set_ops {
         bool (*lookup)(const struct net *net,const struct nft_set *set,const u32 *key, const struct nft_set_ext **ext);
-        bool (*update)(struct nft_set *set,const u32 *key,void *(*new);
+        bool (*update)(struct nft_set *set,const u32 *key,void *(*new)(struct nft_set *,const struct nft_expr *,struct nft_regs *),const struct nft_expr *expr,struct nft_regs *regs, const struct nft_set_ext **ext);
         int (*insert)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem, struct nft_set_ext **ext);
         void (*activate)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
         void * (*deactivate)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
@@ -462,11 +473,10 @@ Definition
         u16 udlen;
         unsigned char *udata;
         const struct nft_set_ops *ops ____cacheline_aligned;
-        u16 flags:14;
-        u16 genmask:14:2;
+        u16 flags:14, genmask:2;
         u8 klen;
         u8 dlen;
-        unsigned char data;
+        unsigned char data[] __attribute__((aligned(__alignof__(u64))));
     }
 
 .. _`nft_set.members`:
@@ -688,7 +698,7 @@ Definition
 
     struct nft_set_ext_tmpl {
         u16 len;
-        u8 offset;
+        u8 offset[NFT_SET_EXT_NUM];
     }
 
 .. _`nft_set_ext_tmpl.members`:
@@ -720,8 +730,8 @@ Definition
 
     struct nft_set_ext {
         u8 genmask;
-        u8 offset;
-        char data;
+        u8 offset[NFT_SET_EXT_NUM];
+        char data[0];
     }
 
 .. _`nft_set_ext.members`:
@@ -792,7 +802,7 @@ Definition
 
     struct nft_set_gc_batch {
         struct nft_set_gc_batch_head head;
-        void  *elems;
+        void *elems[NFT_SET_GC_BATCH_SIZE];
     }
 
 .. _`nft_set_gc_batch.members`:
@@ -884,7 +894,7 @@ Definition
 
     struct nft_expr {
         const struct nft_expr_ops *ops;
-        unsigned char data;
+        unsigned char data[];
     }
 
 .. _`nft_expr.members`:
@@ -916,11 +926,8 @@ Definition
 
     struct nft_rule {
         struct list_head list;
-        u64 handle:42;
-        u64 genmask:42:2;
-        u64 dlen:42:2:12;
-        u64 udata:42:2:12:1;
-        unsigned char data;
+        u64 handle:42,genmask:2,dlen:12, udata:1;
+        unsigned char data[] __attribute__((aligned(__alignof__(struct nft_expr))));
     }
 
 .. _`nft_rule.members`:
@@ -969,8 +976,7 @@ Definition
         u64 handle;
         u32 use;
         u16 level;
-        u8 flags:6;
-        u8 genmask:6:2;
+        u8 flags:6, genmask:2;
         char *name;
     }
 
@@ -1028,7 +1034,7 @@ Definition
         int family;
         struct module *owner;
         unsigned int hook_mask;
-        nf_hookfn  *hooks;
+        nf_hookfn *hooks[NF_MAX_HOOKS];
     }
 
 .. _`nf_chain_type.members`:
@@ -1071,13 +1077,13 @@ Definition
 .. code-block:: c
 
     struct nft_base_chain {
-        struct nf_hook_ops ops;
+        struct nf_hook_ops ops[NFT_HOOK_OPS_MAX];
         const struct nf_chain_type *type;
         u8 policy;
         u8 flags;
         struct nft_stats __percpu *stats;
         struct nft_chain chain;
-        char dev_name;
+        char dev_name[IFNAMSIZ];
     }
 
 .. _`nft_base_chain.members`:
@@ -1129,8 +1135,7 @@ Definition
         struct list_head objects;
         u64 hgenerator;
         u32 use;
-        u16 flags:14;
-        u16 genmask:14:2;
+        u16 flags:14, genmask:2;
         char *name;
     }
 
@@ -1191,7 +1196,7 @@ Definition
         u32 flags;
         unsigned int nops;
         void (*hook_ops_init)(struct nf_hook_ops *, unsigned int);
-        nf_hookfn  *hooks;
+        nf_hookfn *hooks[NF_MAX_HOOKS];
     }
 
 .. _`nft_af_info.members`:
@@ -1246,10 +1251,9 @@ Definition
         struct list_head list;
         char *name;
         struct nft_table *table;
-        u32 genmask:2;
-        u32 use:2:30;
+        u32 genmask:2, use:30;
         const struct nft_object_ops *ops ____cacheline_aligned;
-        unsigned char data;
+        unsigned char data[] __attribute__((aligned(__alignof__(u64))));
     }
 
 .. _`nft_object.members`:
@@ -1454,7 +1458,7 @@ Definition
         struct list_head list;
         int msg_type;
         struct nft_ctx ctx;
-        char data;
+        char data[0];
     }
 
 .. _`nft_trans.members`:

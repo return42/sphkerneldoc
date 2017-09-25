@@ -21,7 +21,13 @@ Definition
         u32 mode;
         u32 channels;
         u32 frame_size;
-        union {unnamed_union};
+        union {
+            u32 timeout;
+            struct {
+                u32 arb_mode;
+                u32 divisor;
+            } ;
+        } ;
     }
 
 .. _`omap_ssm_ctx.members`:
@@ -38,9 +44,11 @@ channels
 frame_size
     *undescribed*
 
-{unnamed_union}
-    anonymous
+timeout
+    RX frame timeout
 
+{unnamed_struct}
+    anonymous
 
 .. _`omap_ssi_port`:
 
@@ -68,8 +76,8 @@ Definition
         spinlock_t wk_lock;
         spinlock_t lock;
         unsigned int channels;
-        struct list_head txqueue;
-        struct list_head rxqueue;
+        struct list_head txqueue[SSI_MAX_CHANNELS];
+        struct list_head rxqueue[SSI_MAX_CHANNELS];
         struct list_head brkqueue;
         struct list_head errqueue;
         struct delayed_work errqueue_work;
@@ -231,7 +239,7 @@ Definition
         struct clk *fck;
         unsigned int gdd_irq;
         struct tasklet_struct gdd_tasklet;
-        struct gdd_trn gdd_trn;
+        struct gdd_trn gdd_trn[SSI_MAX_GDD_LCH];
         spinlock_t lock;
         struct notifier_block fck_nb;
         unsigned long fck_rate;

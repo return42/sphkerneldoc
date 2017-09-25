@@ -18,9 +18,24 @@ Definition
 .. code-block:: c
 
     struct sock_common {
-        union {unnamed_union};
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            __addrpair skc_addrpair;
+            struct {
+                __be32 skc_daddr;
+                __be32 skc_rcv_saddr;
+            } ;
+        } ;
+        union {
+            unsigned int skc_hash;
+            __u16 skc_u16hashes[2];
+        } ;
+        union {
+            __portpair skc_portpair;
+            struct {
+                __be16 skc_dport;
+                __u16 skc_num;
+            } ;
+        } ;
         unsigned short skc_family;
         volatile unsigned char skc_state;
         unsigned char skc_reuse:4;
@@ -28,7 +43,10 @@ Definition
         unsigned char skc_ipv6only:1;
         unsigned char skc_net_refcnt:1;
         int skc_bound_dev_if;
-        union {unnamed_union};
+        union {
+            struct hlist_node skc_bind_node;
+            struct hlist_node skc_portaddr_node;
+        } ;
         struct proto *skc_prot;
         possible_net_t skc_net;
     #if IS_ENABLED(CONFIG_IPV6)
@@ -36,11 +54,29 @@ Definition
         struct in6_addr skc_v6_rcv_saddr;
     #endif
         atomic64_t skc_cookie;
-        union {unnamed_union};
-        union {unnamed_union};
+        union {
+            unsigned long skc_flags;
+            struct sock *skc_listener;
+            struct inet_timewait_death_row *skc_tw_dr;
+        } ;
+        int skc_dontcopy_begin[0];
+        union {
+            struct hlist_node skc_node;
+            struct hlist_nulls_node skc_nulls_node;
+        } ;
         int skc_tx_queue_mapping;
-        union {unnamed_union};
+        union {
+            int skc_incoming_cpu;
+            u32 skc_rcv_wnd;
+            u32 skc_tw_rcv_nxt;
+        } ;
         refcount_t skc_refcnt;
+        int skc_dontcopy_end[0];
+        union {
+            u32 skc_rxhash;
+            u32 skc_window_clamp;
+            u32 skc_tw_snd_nxt;
+        } ;
     }
 
 .. _`sock_common.members`:
@@ -48,17 +84,20 @@ Definition
 Members
 -------
 
+skc_addrpair
+    *undescribed*
+
+{unnamed_struct}
+    anonymous
+
 {unnamed_union}
     anonymous
 
+skc_portpair
+    *undescribed*
 
-{unnamed_union}
+{unnamed_struct}
     anonymous
-
-
-{unnamed_union}
-    anonymous
-
 
 skc_family
     network address family
@@ -84,7 +123,6 @@ skc_bound_dev_if
 {unnamed_union}
     anonymous
 
-
 skc_prot
     protocol handlers inside a network family
 
@@ -103,10 +141,11 @@ skc_cookie
 {unnamed_union}
     anonymous
 
+skc_dontcopy_begin
+    *undescribed*
 
 {unnamed_union}
     anonymous
-
 
 skc_tx_queue_mapping
     tx queue number for this connection
@@ -114,9 +153,14 @@ skc_tx_queue_mapping
 {unnamed_union}
     anonymous
 
-
 skc_refcnt
     reference count
+
+skc_dontcopy_end
+    *undescribed*
+
+{unnamed_union}
+    anonymous
 
 .. _`sock_common.description`:
 
@@ -178,7 +222,12 @@ Definition
         int sk_rcvlowat;
         struct sk_buff_head sk_error_queue;
         struct sk_buff_head sk_receive_queue;
-        struct sk_backlog;
+        struct {
+            atomic_t rmem_alloc;
+            int len;
+            struct sk_buff *head;
+            struct sk_buff *tail;
+        } sk_backlog;
     #define sk_rmem_alloc sk_backlog.rmem_alloc
         int sk_forward_alloc;
     #ifdef CONFIG_NET_RX_BUSY_POLL
@@ -187,9 +236,12 @@ Definition
     #endif
         int sk_rcvbuf;
         struct sk_filter __rcu *sk_filter;
-        union {unnamed_union};
+        union {
+            struct socket_wq __rcu *sk_wq;
+            struct socket_wq *sk_wq_raw;
+        } ;
     #ifdef CONFIG_XFRM
-        struct xfrm_policy __rcu  *sk_policy;
+        struct xfrm_policy __rcu *sk_policy[2];
     #endif
         struct dst_entry *sk_rx_dst;
         struct dst_entry __rcu *sk_dst_cache;
@@ -217,7 +269,7 @@ Definition
         unsigned int sk_gso_max_size;
         gfp_t sk_allocation;
         __u32 sk_txhash;
-        unsigned int __sk_flags_offset;
+        unsigned int __sk_flags_offset[0];
     #ifdef __BIG_ENDIAN_BITFIELD
     #define SK_FL_PROTO_SHIFT 16
     #define SK_FL_PROTO_MASK 0x00ff0000
@@ -229,20 +281,15 @@ Definition
     #define SK_FL_TYPE_SHIFT 16
     #define SK_FL_TYPE_MASK 0xffff0000
     #endif
-        unsigned int sk_padding:1;
-        unsigned int sk_kern_sock:1:1;
-        unsigned int sk_no_check_tx:1:1:1;
-        unsigned int sk_no_check_rx:1:1:1:1;
-        unsigned int sk_userlocks:1:1:1:1:4;
-        unsigned int sk_protocol:1:1:1:1:4:8;
-        unsigned int sk_type:1:1:1:1:4:8:16;
+        kmemcheck_bitfield_begin(flags);
+        unsigned int sk_padding : 1,sk_kern_sock : 1,sk_no_check_tx : 1,sk_no_check_rx : 1,sk_userlocks : 4,sk_protocol : 8, sk_type : 16;
     #define SK_PROTOCOL_MAX U8_MAX
+        kmemcheck_bitfield_end(flags);
         u16 sk_gso_max_segs;
         unsigned long sk_lingertime;
         struct proto *sk_prot_creator;
         rwlock_t sk_callback_lock;
-        int sk_err;
-        int sk_err_soft;
+        int sk_err, sk_err_soft;
         u32 sk_ack_backlog;
         u32 sk_max_ack_backlog;
         kuid_t sk_uid;
@@ -294,8 +341,20 @@ sk_error_queue
 sk_receive_queue
     incoming packets
 
-sk_backlog
-    always used with the per-socket spinlock held
+rmem_alloc
+    *undescribed*
+
+len
+    *undescribed*
+
+head
+    *undescribed*
+
+tail
+    *undescribed*
+
+k_backlog
+    *undescribed*
 
 sk_forward_alloc
     space allocated forward
@@ -314,7 +373,6 @@ sk_filter
 
 {unnamed_union}
     anonymous
-
 
 sk_policy
     flow policy

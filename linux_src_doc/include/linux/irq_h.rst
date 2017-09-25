@@ -439,7 +439,7 @@ Definition
         unsigned long unused;
         struct irq_domain *domain;
         struct list_head list;
-        struct irq_chip_type chip_types;
+        struct irq_chip_type chip_types[0];
     }
 
 .. _`irq_chip_generic.members`:

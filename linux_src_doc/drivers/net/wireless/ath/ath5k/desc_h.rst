@@ -395,7 +395,11 @@ Definition
     struct ath5k_desc {
         u32 ds_link;
         u32 ds_data;
-        union ud;
+        union {
+            struct ath5k_hw_5210_tx_desc ds_tx5210;
+            struct ath5k_hw_5212_tx_desc ds_tx5212;
+            struct ath5k_hw_all_rx_desc ds_rx;
+        } ud;
     }
 
 .. _`ath5k_desc.members`:
@@ -409,8 +413,17 @@ ds_link
 ds_data
     Physical address of data buffer (skb)
 
-ud
-    Union containing hw_5xxx_tx_desc structs and hw_all_rx_desc
+ds_tx5210
+    *undescribed*
+
+ds_tx5212
+    *undescribed*
+
+ds_rx
+    *undescribed*
+
+d
+    *undescribed*
 
 .. _`ath5k_desc.description`:
 

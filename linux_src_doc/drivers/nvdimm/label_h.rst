@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct nd_namespace_index {
-        u8 sig;
-        u8 flags;
+        u8 sig[NSINDEX_SIG_LEN];
+        u8 flags[3];
         u8 labelsize;
         __le32 seq;
         __le64 myoff;
@@ -30,7 +30,7 @@ Definition
         __le16 major;
         __le16 minor;
         __le64 checksum;
-        u8 free;
+        u8 free[0];
     }
 
 .. _`nd_namespace_index.members`:
@@ -103,8 +103,8 @@ Definition
 .. code-block:: c
 
     struct nd_namespace_label {
-        u8 uuid;
-        u8 name;
+        u8 uuid[NSLABEL_UUID_LEN];
+        u8 name[NSLABEL_NAME_LEN];
         __le32 flags;
         __le16 nlabel;
         __le16 position;
@@ -114,10 +114,10 @@ Definition
         __le64 rawsize;
         __le32 slot;
         u8 align;
-        u8 reserved;
+        u8 reserved[3];
         guid_t type_guid;
         guid_t abstraction_guid;
-        u8 reserved2;
+        u8 reserved2[88];
         __le64 checksum;
     }
 
@@ -191,7 +191,7 @@ Definition
 .. code-block:: c
 
     struct nd_label_id {
-        char id;
+        char id[ND_LABEL_ID_SIZE];
     }
 
 .. _`nd_label_id.members`:

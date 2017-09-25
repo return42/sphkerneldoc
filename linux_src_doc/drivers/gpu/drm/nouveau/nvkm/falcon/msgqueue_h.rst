@@ -223,9 +223,10 @@ Definition
 
     struct nvkm_msgqueue_seq {
         u16 id;
-        enum state;
-        nvkm_msgqueue_callback callback;
-        struct completion *completion;
+        enum {
+            SEQ_STATE_FREE = 0,SEQ_STATE_PENDING,SEQ_STATE_USED,SEQ_STATE_CANCELLED } state;
+            nvkm_msgqueue_callback callback;
+            struct completion *completion;
     }
 
 .. _`nvkm_msgqueue_seq.members`:
@@ -277,8 +278,8 @@ Definition
         bool init_msg_received;
         struct completion init_done;
         struct mutex seq_lock;
-        struct nvkm_msgqueue_seq seq;
-        unsigned long seq_tbl;
+        struct nvkm_msgqueue_seq seq[NVKM_MSGQUEUE_NUM_SEQUENCES];
+        unsigned long seq_tbl[BITS_TO_LONGS(NVKM_MSGQUEUE_NUM_SEQUENCES)];
     }
 
 .. _`nvkm_msgqueue.members`:

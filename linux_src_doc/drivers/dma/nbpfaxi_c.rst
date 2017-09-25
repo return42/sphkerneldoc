@@ -70,7 +70,7 @@ Definition
         struct tasklet_struct tasklet;
         void __iomem *base;
         struct nbpf_device *nbpf;
-        char name;
+        char name[16];
         int irq;
         dma_addr_t slave_src_addr;
         size_t slave_src_width;

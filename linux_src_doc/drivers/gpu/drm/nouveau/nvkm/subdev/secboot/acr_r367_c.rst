@@ -18,7 +18,18 @@ Definition
 .. code-block:: c
 
     struct acr_r367_lsf_lsb_header {
-        struct signature;
+        struct {
+            u8 prd_keys[2][16];
+            u8 dbg_keys[2][16];
+            u32 b_prd_present;
+            u32 b_dbg_present;
+            u32 falcon_id;
+            u32 supports_versioning;
+            u32 version;
+            u32 depmap_count;
+            u8 depmap[LSF_LSB_DEPMAP_SIZE * 2 * 4];
+            u8 kdf[16];
+        } signature;
         u32 ucode_off;
         u32 ucode_size;
         u32 data_size;
@@ -38,7 +49,37 @@ Definition
 Members
 -------
 
-signature
+prd_keys
+    *undescribed*
+
+dbg_keys
+    *undescribed*
+
+b_prd_present
+    *undescribed*
+
+b_dbg_present
+    *undescribed*
+
+falcon_id
+    *undescribed*
+
+supports_versioning
+    *undescribed*
+
+version
+    *undescribed*
+
+depmap_count
+    *undescribed*
+
+depmap
+    *undescribed*
+
+kdf
+    *undescribed*
+
+ignature
     *undescribed*
 
 ucode_off

@@ -79,7 +79,7 @@ Definition
         struct device dev;
         int id;
         int num_resources;
-        struct resource res;
+        struct resource res[0];
     }
 
 .. _`dev_dax.members`:

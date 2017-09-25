@@ -22,7 +22,10 @@ Definition
         int nr_alloc;
         int nr_autogrow;
         struct pollfd *entries;
-        union *priv;
+        union {
+            int idx;
+            void *ptr;
+        } *priv;
     }
 
 .. _`fdarray.members`:
@@ -40,6 +43,12 @@ nr_autogrow
     *undescribed*
 
 entries
+    *undescribed*
+
+idx
+    *undescribed*
+
+ptr
     *undescribed*
 
 priv

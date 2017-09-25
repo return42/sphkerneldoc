@@ -23,8 +23,14 @@ Definition
         int ntouches;
         int scroll_accel;
         unsigned long scroll_jiffies;
-        struct touches;
-        int tracking_ids;
+        struct {
+            short x;
+            short y;
+            short scroll_x;
+            short scroll_y;
+            u8 size;
+        } touches[16];
+        int tracking_ids[16];
     }
 
 .. _`magicmouse_sc.members`:
@@ -47,8 +53,23 @@ scroll_accel
 scroll_jiffies
     Time of last scroll motion.
 
-touches
-    Most recent data for a touch, indexed by tracking ID.
+x
+    *undescribed*
+
+y
+    *undescribed*
+
+scroll_x
+    *undescribed*
+
+scroll_y
+    *undescribed*
+
+size
+    *undescribed*
+
+ouches
+    *undescribed*
 
 tracking_ids
     Mapping of current touch input data to \ ``touches``\ .

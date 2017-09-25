@@ -70,7 +70,7 @@ Definition
         struct ls_ucode_img *(*ls_ucode_img_load)(const struct acr_r352 *,const struct nvkm_secboot *, enum nvkm_secboot_falcon);
         int (*ls_fill_headers)(struct acr_r352 *, struct list_head *);
         int (*ls_write_wpr)(struct acr_r352 *, struct list_head *, struct nvkm_gpuobj *, u64);
-        const struct acr_r352_ls_func  *ls_func;
+        const struct acr_r352_ls_func *ls_func[NVKM_SECBOOT_FALCON_END];
     }
 
 .. _`acr_r352_func.members`:
@@ -123,15 +123,22 @@ Definition
         struct nvkm_acr base;
         const struct acr_r352_func *func;
         struct nvkm_gpuobj *load_blob;
-        struct {unnamed_struct};
+        struct {
+            struct hsf_load_header load_bl_header;
+            u32 __load_apps[ACR_R352_MAX_APPS * 2];
+        } ;
         struct nvkm_gpuobj *unload_blob;
-        struct {unnamed_struct};
+        struct {
+            struct hsf_load_header unload_bl_header;
+            u32 __unload_apps[ACR_R352_MAX_APPS * 2];
+        } ;
         void *hsbl_blob;
         void *hsbl_unload_blob;
         struct nvkm_gpuobj *ls_blob;
         bool firmware_ok;
         u32 lazy_bootstrap;
-        enum falcon_state;
+        enum {
+            NON_SECURE = 0,RESET,RUNNING, } falcon_state[NVKM_SECBOOT_FALCON_END];
     }
 
 .. _`acr_r352.members`:
@@ -151,13 +158,11 @@ load_blob
 {unnamed_struct}
     anonymous
 
-
 unload_blob
     *undescribed*
 
 {unnamed_struct}
     anonymous
-
 
 hsbl_blob
     *undescribed*

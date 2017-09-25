@@ -24,8 +24,8 @@ Definition
         u64 flower_version;
         struct nfp_fl_stats_id stats_ids;
         struct nfp_fl_mask_id mask_ids;
-        unsigned long mask_table;
-        unsigned long flow_table;
+        DECLARE_HASHTABLE(mask_table, NFP_FLOWER_MASK_HASH_BITS);
+        DECLARE_HASHTABLE(flow_table, NFP_FLOWER_HASH_BITS);
         struct work_struct cmsg_work;
         struct sk_buff_head cmsg_skbs;
     }

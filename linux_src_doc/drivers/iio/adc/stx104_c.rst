@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct stx104_iio {
-        unsigned int chan_out_states;
+        unsigned int chan_out_states[STX104_NUM_OUT_CHAN];
         unsigned int base;
     }
 

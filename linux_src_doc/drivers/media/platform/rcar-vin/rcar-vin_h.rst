@@ -141,7 +141,7 @@ Definition
         struct mutex lock;
         struct vb2_queue queue;
         spinlock_t qlock;
-        struct vb2_v4l2_buffer  *queue_buf;
+        struct vb2_v4l2_buffer *queue_buf[HW_BUFFER_NUM];
         struct list_head buf_list;
         bool continuous;
         unsigned int sequence;

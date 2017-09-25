@@ -53,7 +53,7 @@ Definition
         __le16 channel;
         __le32 rates;
         __le32 byte_count;
-        u8 data;
+        u8 data[MAX_STORED_BEACON_SIZE];
     }
 
 .. _`iwl_stored_beacon_notif.members`:

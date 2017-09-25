@@ -24,12 +24,18 @@ Definition
         const struct iwl_fw_runtime_ops *ops;
         void *ops_ctx;
         unsigned long status;
-        struct iwl_fw_paging fw_paging_db;
+        struct iwl_fw_paging fw_paging_db[NUM_OF_FW_PAGING_BLOCKS];
         u16 num_of_paging_blk;
         u16 num_of_pages_in_last_blk;
         enum iwl_ucode_type cur_fw_img;
         struct iwl_fwrt_shared_mem_cfg smem_cfg;
-        struct dump;
+        struct {
+            const struct iwl_fw_dump_desc *desc;
+            const struct iwl_fw_dbg_trigger_tlv *trig;
+            struct delayed_work wk;
+            u8 conf;
+            unsigned long non_collect_ts_start[FW_DBG_TRIGGER_MAX - 1];
+        } dump;
     }
 
 .. _`iwl_fw_runtime.members`:
@@ -71,8 +77,23 @@ cur_fw_img
 smem_cfg
     saved firmware SMEM configuration
 
-dump
-    debug dump data
+desc
+    *undescribed*
+
+trig
+    *undescribed*
+
+wk
+    *undescribed*
+
+conf
+    *undescribed*
+
+non_collect_ts_start
+    *undescribed*
+
+ump
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

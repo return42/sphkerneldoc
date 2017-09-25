@@ -149,8 +149,8 @@ Definition
         bool shareable;
         struct ttm_object_file *tfile;
         struct kref refcount;
-        void (*refcount_release)(struct ttm_base_object **base);
-        void (*ref_obj_release)(struct ttm_base_object *base, enum ttm_ref_type ref_type);
+        void (*refcount_release) (struct ttm_base_object **base);
+        void (*ref_obj_release) (struct ttm_base_object *base, enum ttm_ref_type ref_type);
     }
 
 .. _`ttm_base_object.members`:
@@ -225,7 +225,7 @@ Definition
         size_t size;
         enum ttm_object_type real_type;
         struct dma_buf *dma_buf;
-        void (*refcount_release)(struct ttm_base_object **);
+        void (*refcount_release) (struct ttm_base_object **);
     }
 
 .. _`ttm_prime_object.members`:

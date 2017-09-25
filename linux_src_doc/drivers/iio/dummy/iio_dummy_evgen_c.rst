@@ -75,9 +75,9 @@ Definition
     struct iio_dummy_eventgen {
         struct irq_chip chip;
         int base;
-        bool enabled;
-        bool inuse;
-        struct iio_dummy_regs regs;
+        bool enabled[IIO_EVENTGEN_NO];
+        bool inuse[IIO_EVENTGEN_NO];
+        struct iio_dummy_regs regs[IIO_EVENTGEN_NO];
         struct mutex lock;
         struct iio_dummy_handle_irq handler;
     }

@@ -25,7 +25,13 @@ Definition
         unsigned long long sqnum;
         struct list_head list;
         union ubifs_key key;
-        union {unnamed_union};
+        union {
+            struct fscrypt_name nm;
+            struct {
+                loff_t old_size;
+                loff_t new_size;
+            } ;
+        } ;
     }
 
 .. _`replay_entry.members`:
@@ -54,9 +60,11 @@ list
 key
     node key
 
-{unnamed_union}
-    anonymous
+nm
+    directory entry name
 
+{unnamed_struct}
+    anonymous
 
 .. _`replay_entry.description`:
 

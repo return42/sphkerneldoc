@@ -58,7 +58,7 @@ Definition
 .. code-block:: c
 
     struct coh_dma_channel {
-        const char name;
+        const char name[32];
         const int number;
         const int desc_nbr_max;
         const int priority_high;

@@ -25,11 +25,8 @@ Definition
         u32 dynamic_smps_exit;
         u32 tx_protection_entry;
         u32 tx_protection_exit;
-        struct iwl_tt_tx_backoff tx_backoff;
-        u8 support_ct_kill:1;
-        u8 support_dynamic_smps:1:1;
-        u8 support_tx_protection:1:1:1;
-        u8 support_tx_backoff:1:1:1:1;
+        struct iwl_tt_tx_backoff tx_backoff[TT_TX_BACKOFF_SIZE];
+        u8 support_ct_kill:1,support_dynamic_smps:1,support_tx_protection:1, support_tx_backoff:1;
     }
 
 .. _`iwl_tt_params.members`:
@@ -113,24 +110,7 @@ Definition
         u32 smem_len;
         u16 nvm_ver;
         u16 nvm_calib_ver;
-        u16 rx_with_siso_diversity:1;
-        u16 bt_shared_single_ant:1:1;
-        u16 internal_wimax_coex:1:1:1;
-        u16 host_interrupt_operation_mode:1:1:1:1;
-        u16 high_temp:1:1:1:1:1;
-        u16 mac_addr_from_csr:1:1:1:1:1:1;
-        u16 lp_xtal_workaround:1:1:1:1:1:1:1;
-        u16 disable_dummy_notification:1:1:1:1:1:1:1:1;
-        u16 apmg_not_supported:1:1:1:1:1:1:1:1:1;
-        u16 mq_rx_supported:1:1:1:1:1:1:1:1:1:1;
-        u16 vht_mu_mimo_supported:1:1:1:1:1:1:1:1:1:1:1;
-        u16 rf_id:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 integrated:1:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 use_tfh:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 gen2:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 cdb:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 ext_nvm:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 dbgc_supported:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 rx_with_siso_diversity:1,bt_shared_single_ant:1,internal_wimax_coex:1,host_interrupt_operation_mode:1,high_temp:1,mac_addr_from_csr:1,lp_xtal_workaround:1,disable_dummy_notification:1,apmg_not_supported:1,mq_rx_supported:1,vht_mu_mimo_supported:1,rf_id:1,integrated:1,use_tfh:1,gen2:1,cdb:1,ext_nvm:1, dbgc_supported:1;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         u8 non_shared_ant;

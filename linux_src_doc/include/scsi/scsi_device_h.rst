@@ -20,7 +20,7 @@ Definition
     struct scsi_vpd {
         struct rcu_head rcu;
         int len;
-        unsigned char data;
+        unsigned char data[];
     }
 
 .. _`scsi_vpd.members`:

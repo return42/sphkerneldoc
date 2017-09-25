@@ -102,8 +102,7 @@ Definition
         u32 key_len;
         struct scatterlist *iv;
         u32 iv_len;
-        struct scatterlist *src;
-        struct scatterlist * *dst;
+        struct scatterlist *src, *dst;
         u64 src_len;
         u32 cmac_final;
         struct scatterlist *cmac_key;
@@ -196,8 +195,7 @@ Definition
         u32 key_len;
         struct scatterlist *iv;
         u32 iv_len;
-        struct scatterlist *src;
-        struct scatterlist * *dst;
+        struct scatterlist *src, *dst;
         u64 src_len;
         u32 final;
     }
@@ -351,8 +349,7 @@ Definition
         u32 key_len;
         struct scatterlist *iv;
         u32 iv_len;
-        struct scatterlist *src;
-        struct scatterlist * *dst;
+        struct scatterlist *src, *dst;
         u64 src_len;
     }
 
@@ -425,8 +422,7 @@ Definition
         u32 exp_len;
         struct scatterlist *mod;
         u32 mod_len;
-        struct scatterlist *src;
-        struct scatterlist * *dst;
+        struct scatterlist *src, *dst;
         u32 src_len;
     }
 
@@ -488,8 +484,7 @@ Definition
         enum ccp_passthru_byteswap byte_swap;
         struct scatterlist *mask;
         u32 mask_len;
-        struct scatterlist *src;
-        struct scatterlist * *dst;
+        struct scatterlist *src, *dst;
         u64 src_len;
         u32 final;
     }
@@ -553,8 +548,7 @@ Definition
         enum ccp_passthru_byteswap byte_swap;
         dma_addr_t mask;
         u32 mask_len;
-        dma_addr_t src_dma;
-        dma_addr_t dst_dma;
+        dma_addr_t src_dma, dst_dma;
         u64 src_len;
         u32 final;
     }
@@ -762,7 +756,10 @@ Definition
         enum ccp_ecc_function function;
         struct scatterlist *mod;
         u32 mod_len;
-        union u;
+        union {
+            struct ccp_ecc_modular_math mm;
+            struct ccp_ecc_point_math pm;
+        } u;
         u16 ecc_result;
     }
 
@@ -780,8 +777,14 @@ mod
 mod_len
     length in bytes of modulus
 
-u
-    *undescribed*
+mm
+    module math parameters
+
+pm
+    point math parameters
+
+void
+    no arguments
 
 ecc_result
     result of the ECC operation
@@ -820,7 +823,16 @@ Definition
         u32 flags;
         enum ccp_engine engine;
         u32 engine_error;
-        union u;
+        union {
+            struct ccp_aes_engine aes;
+            struct ccp_xts_aes_engine xts;
+            struct ccp_des3_engine des3;
+            struct ccp_sha_engine sha;
+            struct ccp_rsa_engine rsa;
+            struct ccp_passthru_engine passthru;
+            struct ccp_passthru_nomap_engine passthru_nomap;
+            struct ccp_ecc_engine ecc;
+        } u;
         void (*callback)(void *data, int err);
         void *data;
     }
@@ -851,8 +863,32 @@ engine
 engine_error
     CCP engine return code
 
-u
-    engine specific structures, refer to specific engine struct below
+aes
+    *undescribed*
+
+xts
+    *undescribed*
+
+des3
+    *undescribed*
+
+sha
+    *undescribed*
+
+rsa
+    *undescribed*
+
+passthru
+    *undescribed*
+
+passthru_nomap
+    *undescribed*
+
+ecc
+    *undescribed*
+
+void
+    no arguments
 
 callback
     operation completion callback function

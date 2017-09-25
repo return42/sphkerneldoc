@@ -67,7 +67,22 @@ Definition
 
     struct v4l2_async_subdev {
         enum v4l2_async_match_type match_type;
-        union match;
+        union {
+            struct {
+                struct fwnode_handle *fwnode;
+            } fwnode;
+            struct {
+                const char *name;
+            } device_name;
+            struct {
+                int adapter_id;
+                unsigned short address;
+            } i2c;
+            struct {
+                bool (*match)(struct device *, struct v4l2_async_subdev *);
+                void *priv;
+            } custom;
+        } match;
         struct list_head list;
     }
 
@@ -79,8 +94,38 @@ Members
 match_type
     type of match that will be used
 
+fwnode
+    *undescribed*
+
+wnode
+    *undescribed*
+
+name
+    *undescribed*
+
+evice_name
+    *undescribed*
+
+adapter_id
+    *undescribed*
+
+address
+    *undescribed*
+
+2c
+    *undescribed*
+
 match
     union of per-bus type matching data sets
+
+priv
+    *undescribed*
+
+ustom
+    *undescribed*
+
+atch
+    *undescribed*
 
 list
     used to link struct v4l2_async_subdev objects, waiting to be

@@ -65,23 +65,33 @@ Definition
 .. code-block:: c
 
     struct fimc_md {
-        struct fimc_csis_info csis;
-        struct fimc_sensor_info sensor;
+        struct fimc_csis_info csis[CSIS_MAX_ENTITIES];
+        struct fimc_sensor_info sensor[FIMC_MAX_SENSORS];
         int num_sensors;
-        struct fimc_camclk_info camclk;
-        struct clk  *wbclk;
-        struct fimc_lite  *fimc_lite;
-        struct fimc_dev  *fimc;
+        struct fimc_camclk_info camclk[FIMC_MAX_CAMCLKS];
+        struct clk *wbclk[FIMC_MAX_WBCLKS];
+        struct fimc_lite *fimc_lite[FIMC_LITE_MAX_DEVS];
+        struct fimc_dev *fimc[FIMC_MAX_DEVS];
         struct fimc_is *fimc_is;
         bool use_isp;
         struct device *pmf;
         struct media_device media_dev;
         struct v4l2_device v4l2_dev;
         struct platform_device *pdev;
-        struct fimc_pinctrl pinctl;
-        struct cam_clk_provider clk_provider;
+        struct fimc_pinctrl {
+            struct pinctrl *pinctrl;
+            struct pinctrl_state *state_default;
+            struct pinctrl_state *state_idle;
+        } pinctl;
+        struct cam_clk_provider {
+            struct clk *clks[FIMC_MAX_CAMCLKS];
+            struct clk_onecell_data clk_data;
+            struct device_node *of_node;
+            struct cam_clk camclk[FIMC_MAX_CAMCLKS];
+            int num_clocks;
+        } clk_provider;
         struct v4l2_async_notifier subdev_notifier;
-        struct v4l2_async_subdev  *async_subdevs;
+        struct v4l2_async_subdev *async_subdevs[FIMC_MAX_SENSORS];
         bool user_subdev_api;
         spinlock_t slock;
         struct list_head pipelines;

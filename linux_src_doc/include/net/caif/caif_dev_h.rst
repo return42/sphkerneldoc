@@ -19,7 +19,7 @@ Definition
 
     struct caif_param {
         u16 size;
-        u8 data;
+        u8 data[256];
     }
 
 .. _`caif_param.members`:

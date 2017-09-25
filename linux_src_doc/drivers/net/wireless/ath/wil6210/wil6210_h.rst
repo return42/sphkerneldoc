@@ -207,7 +207,7 @@ Definition
 .. code-block:: c
 
     struct wil_tid_crypto_rx_single {
-        u8 pn;
+        u8 pn[IEEE80211_GCMP_PN_LEN];
         bool key_set;
     }
 
@@ -239,14 +239,14 @@ Definition
 .. code-block:: c
 
     struct wil_sta_info {
-        u8 addr;
+        u8 addr[ETH_ALEN];
         enum wil_sta_status status;
         struct wil_net_stats stats;
-        struct wil_tid_ampdu_rx  *tid_rx;
+        struct wil_tid_ampdu_rx *tid_rx[WIL_STA_TID_NUM];
         spinlock_t tid_rx_lock;
-        unsigned long tid_rx_timer_expired;
-        unsigned long tid_rx_stop_requested;
-        struct wil_tid_crypto_rx tid_crypto_rx;
+        unsigned long tid_rx_timer_expired[BITS_TO_LONGS(WIL_STA_TID_NUM)];
+        unsigned long tid_rx_stop_requested[BITS_TO_LONGS(WIL_STA_TID_NUM)];
+        struct wil_tid_crypto_rx tid_crypto_rx[WIL_STA_TID_NUM];
         struct wil_tid_crypto_rx group_crypto_rx;
         u8 aid;
     }

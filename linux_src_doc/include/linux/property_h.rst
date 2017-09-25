@@ -22,7 +22,24 @@ Definition
         size_t length;
         bool is_array;
         bool is_string;
-        union {unnamed_union};
+        union {
+            union {
+                const void *raw_data;
+                const u8 *u8_data;
+                const u16 *u16_data;
+                const u32 *u32_data;
+                const u64 *u64_data;
+                const char * const *str;
+            } pointer;
+            union {
+                unsigned long long raw_data;
+                u8 u8_data;
+                u16 u16_data;
+                u32 u32_data;
+                u64 u64_data;
+                const char *str;
+            } value;
+        } ;
     }
 
 .. _`property_entry.members`:
@@ -44,7 +61,6 @@ is_string
 
 {unnamed_union}
     anonymous
-
 
 .. This file was automatic generated / don't edit.
 

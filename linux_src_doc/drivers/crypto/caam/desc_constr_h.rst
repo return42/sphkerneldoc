@@ -21,7 +21,10 @@ Definition
         u32 algtype;
         unsigned int keylen;
         unsigned int keylen_pad;
-        union {unnamed_union};
+        union {
+            dma_addr_t key_dma;
+            void *key_virt;
+        } ;
         bool key_inline;
     }
 
@@ -42,7 +45,6 @@ keylen_pad
 
 {unnamed_union}
     anonymous
-
 
 key_inline
     true - key can be inlined in the descriptor; false - key is

@@ -132,7 +132,7 @@ Definition
         __le32 enabled;
         __be32 remote_ipv4_addr;
         __be32 host_ipv4_addr;
-        u8 arp_mac_addr;
+        u8 arp_mac_addr[ETH_ALEN];
         __le16 reserved;
     }
 
@@ -174,10 +174,10 @@ Definition
 
     struct iwl_proto_offload_cmd_v1 {
         struct iwl_proto_offload_cmd_common common;
-        u8 remote_ipv6_addr;
-        u8 solicited_node_ipv6_addr;
-        u8 target_ipv6_addr;
-        u8 ndp_mac_addr;
+        u8 remote_ipv6_addr[16];
+        u8 solicited_node_ipv6_addr[16];
+        u8 target_ipv6_addr[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V1][16];
+        u8 ndp_mac_addr[ETH_ALEN];
         __le16 reserved2;
     }
 
@@ -223,12 +223,12 @@ Definition
 
     struct iwl_proto_offload_cmd_v2 {
         struct iwl_proto_offload_cmd_common common;
-        u8 remote_ipv6_addr;
-        u8 solicited_node_ipv6_addr;
-        u8 target_ipv6_addr;
-        u8 ndp_mac_addr;
+        u8 remote_ipv6_addr[16];
+        u8 solicited_node_ipv6_addr[16];
+        u8 target_ipv6_addr[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V2][16];
+        u8 ndp_mac_addr[ETH_ALEN];
         u8 num_valid_ipv6_addrs;
-        u8 reserved2;
+        u8 reserved2[3];
     }
 
 .. _`iwl_proto_offload_cmd_v2.members`:
@@ -277,8 +277,8 @@ Definition
     struct iwl_proto_offload_cmd_v3_small {
         struct iwl_proto_offload_cmd_common common;
         __le32 num_valid_ipv6_addrs;
-        struct iwl_targ_addr targ_addrs;
-        struct iwl_ns_config ns_config;
+        struct iwl_targ_addr targ_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V3S];
+        struct iwl_ns_config ns_config[IWL_PROTO_OFFLOAD_NUM_NS_CONFIG_V3S];
     }
 
 .. _`iwl_proto_offload_cmd_v3_small.members`:
@@ -317,8 +317,8 @@ Definition
     struct iwl_proto_offload_cmd_v3_large {
         struct iwl_proto_offload_cmd_common common;
         __le32 num_valid_ipv6_addrs;
-        struct iwl_targ_addr targ_addrs;
-        struct iwl_ns_config ns_config;
+        struct iwl_targ_addr targ_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_V3L];
+        struct iwl_ns_config ns_config[IWL_PROTO_OFFLOAD_NUM_NS_CONFIG_V3L];
     }
 
 .. _`iwl_proto_offload_cmd_v3_large.members`:
@@ -357,12 +357,12 @@ Definition
     struct iwl_wowlan_config_cmd {
         __le32 wakeup_filter;
         __le16 non_qos_seq;
-        __le16 qos_seq;
+        __le16 qos_seq[8];
         u8 wowlan_ba_teardown_tids;
         u8 is_11n_connection;
         u8 offloading_tid;
         u8 flags;
-        u8 reserved;
+        u8 reserved[2];
     }
 
 .. _`iwl_wowlan_config_cmd.members`:
@@ -415,14 +415,14 @@ Definition
         __le64 replay_ctr;
         __le16 pattern_number;
         __le16 non_qos_seq_ctr;
-        __le16 qos_seq_ctr;
+        __le16 qos_seq_ctr[8];
         __le32 wakeup_reasons;
         __le32 num_of_gtk_rekeys;
         __le32 transmitted_ndps;
         __le32 received_beacons;
         __le32 wake_packet_length;
         __le32 wake_packet_bufsize;
-        u8 wake_packet;
+        u8 wake_packet[];
     }
 
 .. _`iwl_wowlan_status.members`:

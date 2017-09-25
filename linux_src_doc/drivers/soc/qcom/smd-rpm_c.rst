@@ -140,7 +140,10 @@ Definition
     struct qcom_rpm_message {
         __le32 msg_type;
         __le32 length;
-        union {unnamed_union};
+        union {
+            __le32 msg_id;
+            u8 message[0];
+        } ;
     }
 
 .. _`qcom_rpm_message.members`:
@@ -156,7 +159,6 @@ length
 
 {unnamed_union}
     anonymous
-
 
 .. _`qcom_rpm_message.description`:
 

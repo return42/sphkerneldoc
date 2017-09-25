@@ -24,8 +24,8 @@ Definition
         struct notifier_block restart_nb;
         int irq;
         raw_spinlock_t lock;
-        unsigned long dual_edge_irqs;
-        unsigned long enabled_irqs;
+        DECLARE_BITMAP(dual_edge_irqs, MAX_NR_GPIO);
+        DECLARE_BITMAP(enabled_irqs, MAX_NR_GPIO);
         const struct msm_pinctrl_soc_data *soc;
         void __iomem *regs;
     }

@@ -20,14 +20,13 @@ Definition
     struct vmw_stdu_dirty {
         struct vmw_kms_dirty base;
         SVGA3dTransferType transfer;
-        s32 left;
-        s32 right;
-        s32 top;
-        s32 bottom;
-        s32 fb_left;
-        s32 fb_top;
+        s32 left, right, top, bottom;
+        s32 fb_left, fb_top;
         u32 pitch;
-        union {unnamed_union};
+        union {
+            struct vmw_dma_buffer *buf;
+            u32 sid;
+        } ;
     }
 
 .. _`vmw_stdu_dirty.members`:
@@ -65,7 +64,6 @@ pitch
 {unnamed_union}
     anonymous
 
-
 .. _`vmw_screen_target_display_unit`:
 
 struct vmw_screen_target_display_unit
@@ -85,11 +83,9 @@ Definition
         struct vmw_display_unit base;
         const struct vmw_surface *display_srf;
         enum stdu_content_type content_fb_type;
-        s32 display_width;
-        s32 display_height;
+        s32 display_width, display_height;
         bool defined;
-        struct ttm_bo_kmap_obj host_map;
-        struct ttm_bo_kmap_obj guest_map;
+        struct ttm_bo_kmap_obj host_map, guest_map;
         unsigned int cpp;
     }
 

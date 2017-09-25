@@ -21,7 +21,7 @@ Definition
         u8 abi_major;
         u8 abi_minor;
         u16 firmware_revision;
-        char firmware_description;
+        char firmware_description[32];
     }
 
 .. _`ti_sci_version_info.members`:

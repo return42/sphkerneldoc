@@ -99,7 +99,7 @@ Definition
         bool is_data_encrypted;
         struct wcn36xx_hal_supported_rates supported_rates;
         spinlock_t ampdu_lock;
-        enum wcn36xx_ampdu_state ampdu_state;
+        enum wcn36xx_ampdu_state ampdu_state[16];
         int non_agg_frame_ct;
     }
 

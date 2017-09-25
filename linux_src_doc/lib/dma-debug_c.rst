@@ -31,7 +31,7 @@ Definition
         enum map_err_types map_err_type;
     #ifdef CONFIG_STACKTRACE
         struct stack_trace stacktrace;
-        unsigned long st_entries;
+        unsigned long st_entries[DMA_DEBUG_STACKTRACE_ENTRIES];
     #endif
     }
 

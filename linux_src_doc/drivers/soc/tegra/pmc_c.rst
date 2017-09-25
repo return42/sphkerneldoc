@@ -36,7 +36,7 @@ Definition
         bool cpu_pwr_good_en;
         u32 lp0_vec_phys;
         u32 lp0_vec_size;
-        unsigned long powergates_available;
+        DECLARE_BITMAP(powergates_available, TEGRA_POWERGATE_MAX);
         struct mutex powergates_lock;
     }
 

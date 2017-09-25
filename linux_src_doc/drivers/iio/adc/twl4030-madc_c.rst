@@ -25,7 +25,7 @@ Definition
         bool active;
         bool result_pending;
         bool raw;
-        int rbuf;
+        int rbuf[TWL4030_MADC_MAX_CHANNELS];
     }
 
 .. _`twl4030_madc_request.members`:
@@ -77,7 +77,7 @@ Definition
         struct device *dev;
         struct mutex lock;
         struct regulator *usb3v1;
-        struct twl4030_madc_request requests;
+        struct twl4030_madc_request requests[TWL4030_MADC_NUM_METHODS];
         bool use_second_irq;
         u8 imr;
         u8 isr;

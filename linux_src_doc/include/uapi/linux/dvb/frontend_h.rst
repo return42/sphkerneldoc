@@ -171,7 +171,7 @@ Definition
 .. code-block:: c
 
     struct dvb_frontend_info {
-        char name;
+        char name[128];
         enum fe_type type;
         __u32 frequency_min;
         __u32 frequency_max;
@@ -259,7 +259,7 @@ Definition
 .. code-block:: c
 
     struct dvb_diseqc_master_cmd {
-        __u8 msg;
+        __u8 msg[6];
         __u8 msg_len;
     }
 
@@ -301,7 +301,7 @@ Definition
 .. code-block:: c
 
     struct dvb_diseqc_slave_reply {
-        __u8 msg;
+        __u8 msg[4];
         __u8 msg_len;
         int timeout;
     }
@@ -1385,7 +1385,10 @@ Definition
 
     struct dtv_stats {
         __u8 scale;
-        union {unnamed_union};
+        union {
+            __u64 uvalue;
+            __s64 svalue;
+        } ;
     }
 
 .. _`dtv_stats.members`:
@@ -1399,7 +1402,6 @@ scale
 
 {unnamed_union}
     anonymous
-
 
 .. _`dtv_stats.description`:
 
@@ -1463,7 +1465,7 @@ Definition
 
     struct dtv_fe_stats {
         __u8 len;
-        struct dtv_stats stat;
+        struct dtv_stats stat[MAX_DTV_STATS];
     }
 
 .. _`dtv_fe_stats.members`:
@@ -1505,8 +1507,17 @@ Definition
 
     struct dtv_property {
         __u32 cmd;
-        __u32 reserved;
-        union u;
+        __u32 reserved[3];
+        union {
+            __u32 data;
+            struct dtv_fe_stats st;
+            struct {
+                __u8 data[32];
+                __u32 len;
+                __u32 reserved1[3];
+                void *reserved2;
+            } buffer;
+        } u;
         int result;
     }
 
@@ -1521,8 +1532,29 @@ cmd
 reserved
     Not used.
 
-u
-    Union with the values for the command.
+data
+    *undescribed*
+
+st
+    *undescribed*
+
+data
+    *undescribed*
+
+len
+    *undescribed*
+
+reserved1
+    *undescribed*
+
+reserved2
+    *undescribed*
+
+uffer
+    *undescribed*
+
+void
+    no arguments
 
 result
     Result of the command set (currently unused).

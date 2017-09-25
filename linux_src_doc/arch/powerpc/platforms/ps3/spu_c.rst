@@ -54,23 +54,23 @@ Definition
 .. code-block:: c
 
     struct spe_shadow {
-        u8 padding_0140;
+        u8 padding_0140[0x0140];
         u64 int_status_class0_RW;
         u64 int_status_class1_RW;
         u64 int_status_class2_RW;
-        u8 padding_0158;
+        u8 padding_0158[0x0610-0x0158];
         u64 mfc_dsisr_RW;
-        u8 padding_0618;
+        u8 padding_0618[0x0620-0x0618];
         u64 mfc_dar_RW;
-        u8 padding_0628;
+        u8 padding_0628[0x0800-0x0628];
         u64 mfc_dsipr_R;
-        u8 padding_0808;
+        u8 padding_0808[0x0810-0x0808];
         u64 mfc_lscrr_R;
-        u8 padding_0818;
+        u8 padding_0818[0x0c00-0x0818];
         u64 mfc_cer_R;
-        u8 padding_0c08;
+        u8 padding_0c08[0x0f00-0x0c08];
         u64 spe_execution_status;
-        u8 padding_0f08;
+        u8 padding_0f08[0x1000-0x0f08];
     }
 
 .. _`spe_shadow.members`:
@@ -197,7 +197,7 @@ Definition
 .. code-block:: c
 
     struct priv1_cache {
-        u64 masks;
+        u64 masks[3];
         u64 sr1;
         u64 tclass_id;
     }

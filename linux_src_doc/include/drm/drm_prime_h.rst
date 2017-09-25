@@ -18,7 +18,9 @@ Definition
 .. code-block:: c
 
     struct drm_prime_file_private {
-         void;
+        struct mutex lock;
+        struct rb_root dmabufs;
+        struct rb_root handles;
     }
 
 .. _`drm_prime_file_private.members`:
@@ -26,8 +28,14 @@ Definition
 Members
 -------
 
-void
-    no arguments
+lock
+    *undescribed*
+
+dmabufs
+    *undescribed*
+
+handles
+    *undescribed*
 
 .. _`drm_prime_file_private.description`:
 

@@ -20,19 +20,16 @@ Definition
     struct pt_buffer {
         int cpu;
         struct list_head tables;
-        struct topa *first;
-        struct topa * *last;
-        struct topa * * *cur;
+        struct topa *first, *last, *cur;
         unsigned int cur_idx;
         size_t output_off;
         unsigned long nr_pages;
         local_t data_size;
         local64_t head;
         bool snapshot;
-        unsigned long stop_pos;
-        unsigned long intr_pos;
+        unsigned long stop_pos, intr_pos;
         void **data_pages;
-        struct topa_entry  *topa_index;
+        struct topa_entry *topa_index[0];
     }
 
 .. _`pt_buffer.members`:
@@ -138,7 +135,7 @@ Definition
 .. code-block:: c
 
     struct pt_filters {
-        struct pt_filter filter;
+        struct pt_filter filter[PT_FILTERS_NUM];
         unsigned int nr_filters;
     }
 

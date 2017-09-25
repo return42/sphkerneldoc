@@ -271,7 +271,7 @@ Definition
 
     struct mmc_test_card {
         struct mmc_card *card;
-        u8 scratch;
+        u8 scratch[BUFFER_SIZE];
         u8 *buffer;
     #ifdef CONFIG_HIGHMEM
         struct page *highmem;

@@ -18,7 +18,10 @@ Definition
 .. code-block:: c
 
     struct clkdm_autodep {
-        union clkdm;
+        union {
+            const char *name;
+            struct clockdomain *ptr;
+        } clkdm;
     }
 
 .. _`clkdm_autodep.members`:
@@ -26,8 +29,14 @@ Definition
 Members
 -------
 
-clkdm
-    clockdomain to add wkdep+sleepdep on - set name member only
+name
+    *undescribed*
+
+ptr
+    *undescribed*
+
+lkdm
+    *undescribed*
 
 .. _`clkdm_autodep.description`:
 
@@ -110,7 +119,10 @@ Definition
 
     struct clockdomain {
         const char *name;
-        union pwrdm;
+        union {
+            const char *name;
+            struct powerdomain *ptr;
+        } pwrdm;
         const u16 clktrctrl_mask;
         const u8 flags;
         u8 _flags;
@@ -133,8 +145,14 @@ Members
 name
     clockdomain name
 
-pwrdm
-    powerdomain containing this clockdomain
+name
+    clockdomain name
+
+ptr
+    *undescribed*
+
+wrdm
+    *undescribed*
 
 clktrctrl_mask
     CLKTRCTRL/AUTOSTATE field mask in CM_CLKSTCTRL reg

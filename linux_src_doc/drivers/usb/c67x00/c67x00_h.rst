@@ -20,7 +20,7 @@ Definition
     struct c67x00_sie {
         spinlock_t lock;
         void *private_data;
-        void (*irq)(struct c67x00_sie *sie, u16 int_status, u16 msg);
+        void (*irq) (struct c67x00_sie *sie, u16 int_status, u16 msg);
         struct c67x00_device *dev;
         int sie_num;
         int mode;
@@ -102,7 +102,7 @@ Definition
 
     struct c67x00_device {
         struct c67x00_hpi hpi;
-        struct c67x00_sie sie;
+        struct c67x00_sie sie[C67X00_SIES];
         struct platform_device *pdev;
         struct c67x00_platform_data *pdata;
     }

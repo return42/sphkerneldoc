@@ -22,8 +22,8 @@ Definition
         struct list_head list_head;
         struct list_head device_list;
         const char *name;
-        u8 proposed_mac;
-        void*priv;
+        u8 proposed_mac [6];
+        void* priv;
         struct device *device;
         struct module *module;
         int mfe_shared;
@@ -119,10 +119,8 @@ Definition
         const char *name;
         struct media_intf_devnode *intf_devnode;
         unsigned tsout_num_entities;
-        struct media_entity *entity;
-        struct media_entity * *tsout_entity;
-        struct media_pad *pads;
-        struct media_pad * *tsout_pads;
+        struct media_entity *entity, *tsout_entity;
+        struct media_pad *pads, *tsout_pads;
     #endif
         void *priv;
     }

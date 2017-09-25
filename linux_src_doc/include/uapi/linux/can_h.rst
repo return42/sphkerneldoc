@@ -23,7 +23,7 @@ Definition
         __u8 __pad;
         __u8 __res0;
         __u8 __res1;
-        __u8 data;
+        __u8 data[CAN_MAX_DLEN] __attribute__((aligned(8)));
     }
 
 .. _`can_frame.members`:
@@ -73,7 +73,7 @@ Definition
         __u8 flags;
         __u8 __res0;
         __u8 __res1;
-        __u8 data;
+        __u8 data[CANFD_MAX_DLEN] __attribute__((aligned(8)));
     }
 
 .. _`canfd_frame.members`:
@@ -118,7 +118,11 @@ Definition
     struct sockaddr_can {
         __kernel_sa_family_t can_family;
         int can_ifindex;
-        union can_addr;
+        union {
+            struct {
+                canid_t rx_id, tx_id;
+            } tp;
+        } can_addr;
     }
 
 .. _`sockaddr_can.members`:
@@ -132,8 +136,17 @@ can_family
 can_ifindex
     CAN network interface index.
 
-can_addr
-    protocol specific address information
+rx_id
+    *undescribed*
+
+tx_id
+    *undescribed*
+
+p
+    *undescribed*
+
+an_addr
+    *undescribed*
 
 .. _`can_filter`:
 

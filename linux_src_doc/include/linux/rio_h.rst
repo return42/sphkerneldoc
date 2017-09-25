@@ -23,7 +23,7 @@ Definition
         u32 port_ok;
         struct rio_switch_ops *ops;
         spinlock_t lock;
-        struct rio_dev  *nextdev;
+        struct rio_dev *nextdev[0];
     }
 
 .. _`rio_switch.members`:
@@ -67,13 +67,13 @@ Definition
 
     struct rio_switch_ops {
         struct module *owner;
-        int (*add_entry)(struct rio_mport *mport, u16 destid, u8 hopcount, u16 table, u16 route_destid, u8 route_port);
-        int (*get_entry)(struct rio_mport *mport, u16 destid, u8 hopcount, u16 table, u16 route_destid, u8 *route_port);
-        int (*clr_table)(struct rio_mport *mport, u16 destid, u8 hopcount, u16 table);
-        int (*set_domain)(struct rio_mport *mport, u16 destid, u8 hopcount, u8 sw_domain);
-        int (*get_domain)(struct rio_mport *mport, u16 destid, u8 hopcount, u8 *sw_domain);
-        int (*em_init)(struct rio_dev *dev);
-        int (*em_handle)(struct rio_dev *dev, u8 swport);
+        int (*add_entry) (struct rio_mport *mport, u16 destid, u8 hopcount, u16 table, u16 route_destid, u8 route_port);
+        int (*get_entry) (struct rio_mport *mport, u16 destid, u8 hopcount, u16 table, u16 route_destid, u8 *route_port);
+        int (*clr_table) (struct rio_mport *mport, u16 destid, u8 hopcount, u16 table);
+        int (*set_domain) (struct rio_mport *mport, u16 destid, u8 hopcount, u8 sw_domain);
+        int (*get_domain) (struct rio_mport *mport, u16 destid, u8 hopcount, u8 *sw_domain);
+        int (*em_init) (struct rio_dev *dev);
+        int (*em_handle) (struct rio_dev *dev, u8 swport);
     }
 
 .. _`rio_switch_ops.members`:
@@ -152,13 +152,13 @@ Definition
         u64 dma_mask;
         struct rio_driver *driver;
         struct device dev;
-        struct resource riores;
-        int (*pwcback)(struct rio_dev *rdev, union rio_pw_msg *msg, int step);
+        struct resource riores[RIO_MAX_DEV_RESOURCES];
+        int (*pwcback) (struct rio_dev *rdev, union rio_pw_msg *msg, int step);
         u16 destid;
         u8 hopcount;
         struct rio_dev *prev;
         atomic_t state;
-        struct rio_switch rswitch;
+        struct rio_switch rswitch[0];
     }
 
 .. _`rio_dev.members`:
@@ -271,7 +271,7 @@ Definition
 
     struct rio_msg {
         struct resource *res;
-        void (*mcback)(struct rio_mport * mport, void *dev_id, int mbox, int slot);
+        void (*mcback) (struct rio_mport * mport, void *dev_id, int mbox, int slot);
     }
 
 .. _`rio_msg.members`:
@@ -304,7 +304,7 @@ Definition
     struct rio_dbell {
         struct list_head node;
         struct resource *res;
-        void (*dinb)(struct rio_mport *mport, void *dev_id, u16 src, u16 dst, u16 info);
+        void (*dinb) (struct rio_mport *mport, void *dev_id, u16 src, u16 dst, u16 info);
         void *dev_id;
     }
 
@@ -349,9 +349,9 @@ Definition
         struct rio_net *net;
         struct mutex lock;
         struct resource iores;
-        struct resource riores;
-        struct rio_msg inb_msg;
-        struct rio_msg outb_msg;
+        struct resource riores[RIO_MAX_MPORT_RESOURCES];
+        struct rio_msg inb_msg[RIO_MAX_MBOX];
+        struct rio_msg outb_msg[RIO_MAX_MBOX];
         int host_deviceid;
         struct rio_ops *ops;
         unsigned char id;
@@ -359,7 +359,7 @@ Definition
         unsigned int sys_size;
         u32 phys_efptr;
         u32 phys_rmap;
-        unsigned char name;
+        unsigned char name[RIO_MAX_MPORT_NAME];
         struct device dev;
         void *priv;
     #ifdef CONFIG_RAPIDIO_DMA_ENGINE
@@ -572,12 +572,12 @@ Definition
 .. code-block:: c
 
     struct rio_ops {
-        int (*lcread)(struct rio_mport *mport, int index, u32 offset, int len, u32 *data);
-        int (*lcwrite)(struct rio_mport *mport, int index, u32 offset, int len, u32 data);
-        int (*cread)(struct rio_mport *mport, int index, u16 destid, u8 hopcount, u32 offset, int len, u32 *data);
-        int (*cwrite)(struct rio_mport *mport, int index, u16 destid, u8 hopcount, u32 offset, int len, u32 data);
-        int (*dsend)(struct rio_mport *mport, int index, u16 destid, u16 data);
-        int (*pwenable)(struct rio_mport *mport, int enable);
+        int (*lcread) (struct rio_mport *mport, int index, u32 offset, int len, u32 *data);
+        int (*lcwrite) (struct rio_mport *mport, int index, u32 offset, int len, u32 data);
+        int (*cread) (struct rio_mport *mport, int index, u16 destid, u8 hopcount, u32 offset, int len, u32 *data);
+        int (*cwrite) (struct rio_mport *mport, int index, u16 destid, u8 hopcount, u32 offset, int len, u32 data);
+        int (*dsend) (struct rio_mport *mport, int index, u16 destid, u16 data);
+        int (*pwenable) (struct rio_mport *mport, int enable);
         int (*open_outb_mbox)(struct rio_mport *mport, void *dev_id, int mbox, int entries);
         void (*close_outb_mbox)(struct rio_mport *mport, int mbox);
         int (*open_inb_mbox)(struct rio_mport *mport, void *dev_id, int mbox, int entries);
@@ -671,12 +671,12 @@ Definition
         struct list_head node;
         char *name;
         const struct rio_device_id *id_table;
-        int (*probe)(struct rio_dev * dev, const struct rio_device_id * id);
-        void (*remove)(struct rio_dev * dev);
+        int (*probe) (struct rio_dev * dev, const struct rio_device_id * id);
+        void (*remove) (struct rio_dev * dev);
         void (*shutdown)(struct rio_dev *dev);
-        int (*suspend)(struct rio_dev * dev, u32 state);
-        int (*resume)(struct rio_dev * dev);
-        int (*enable_wake)(struct rio_dev * dev, u32 state, int enable);
+        int (*suspend) (struct rio_dev * dev, u32 state);
+        int (*resume) (struct rio_dev * dev);
+        int (*enable_wake) (struct rio_dev * dev, u32 state, int enable);
         struct device_driver driver;
     }
 

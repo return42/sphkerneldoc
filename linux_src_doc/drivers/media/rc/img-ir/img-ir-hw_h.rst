@@ -188,11 +188,7 @@ Definition
 .. code-block:: c
 
     struct img_ir_timings {
-        struct img_ir_symbol_timing ldr;
-        struct img_ir_symbol_timing s00;
-        struct img_ir_symbol_timing s01;
-        struct img_ir_symbol_timing s10;
-        struct img_ir_symbol_timing s11;
+        struct img_ir_symbol_timing ldr, s00, s01, s10, s11;
         struct img_ir_free_timing ft;
     }
 
@@ -276,12 +272,7 @@ Definition
 .. code-block:: c
 
     struct img_ir_timing_regvals {
-        u32 ldr;
-        u32 s00;
-        u32 s01;
-        u32 s10;
-        u32 s11;
-        u32 ft;
+        u32 ldr, s00, s01, s10, s11, ft;
     }
 
 .. _`img_ir_timing_regvals.members`:
@@ -464,7 +455,7 @@ Definition
 .. code-block:: c
 
     struct img_ir_priv_hw {
-        unsigned int ct_quirks;
+        unsigned int ct_quirks[4];
         struct rc_dev *rdev;
         struct notifier_block clk_nb;
         struct timer_list end_timer;
@@ -474,7 +465,7 @@ Definition
         unsigned long clk_hz;
         struct img_ir_reg_timings reg_timings;
         unsigned int flags;
-        struct img_ir_filter filters;
+        struct img_ir_filter filters[RC_FILTER_MAX];
         enum img_ir_mode mode;
         bool stopping;
         u32 suspend_irqen;

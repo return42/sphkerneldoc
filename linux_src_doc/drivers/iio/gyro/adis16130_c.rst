@@ -20,7 +20,7 @@ Definition
     struct adis16130_state {
         struct spi_device *us;
         struct mutex buf_lock;
-        u8 buf;
+        u8 buf[4] ____cacheline_aligned;
     }
 
 .. _`adis16130_state.members`:

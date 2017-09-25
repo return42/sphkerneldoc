@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ad5791_chip_info {
-        int (*get_lin_comp)(unsigned int span);
+        int (*get_lin_comp) (unsigned int span);
     }
 
 .. _`ad5791_chip_info.members`:
@@ -55,7 +55,10 @@ Definition
         unsigned ctrl;
         unsigned pwr_down_mode;
         bool pwr_down;
-        union data;
+        union {
+            __be32 d32;
+            u8 d8[4];
+        } data[3] ____cacheline_aligned;
     }
 
 .. _`ad5791_state.members`:
@@ -91,7 +94,13 @@ pwr_down_mode
 pwr_down
     *undescribed*
 
-data
+d32
+    *undescribed*
+
+d8
+    *undescribed*
+
+____cacheline_aligned
     *undescribed*
 
 .. This file was automatic generated / don't edit.

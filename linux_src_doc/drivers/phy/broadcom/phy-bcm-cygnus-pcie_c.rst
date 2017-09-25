@@ -57,7 +57,7 @@ Definition
         struct device *dev;
         void __iomem *base;
         struct mutex lock;
-        struct cygnus_pcie_phy phys;
+        struct cygnus_pcie_phy phys[MAX_NUM_PHYS];
     }
 
 .. _`cygnus_pcie_phy_core.members`:

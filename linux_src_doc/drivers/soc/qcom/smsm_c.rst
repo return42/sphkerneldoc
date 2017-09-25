@@ -85,9 +85,9 @@ Definition
     struct smsm_entry {
         struct qcom_smsm *smsm;
         struct irq_domain *domain;
-        unsigned long irq_enabled;
-        unsigned long irq_rising;
-        unsigned long irq_falling;
+        DECLARE_BITMAP(irq_enabled, 32);
+        DECLARE_BITMAP(irq_rising, 32);
+        DECLARE_BITMAP(irq_falling, 32);
         u32 last_value;
         u32 *remote_state;
         u32 *subscription;

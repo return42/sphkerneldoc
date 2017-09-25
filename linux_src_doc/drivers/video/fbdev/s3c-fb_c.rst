@@ -29,7 +29,7 @@ Definition
         unsigned short buf_size;
         unsigned short osd;
         unsigned short osd_stride;
-        unsigned short palette;
+        unsigned short palette[S3C_FB_MAX_WIN];
         unsigned int has_prtcon:1;
         unsigned int has_shadowcon:1;
         unsigned int has_blendcon:1;
@@ -170,7 +170,7 @@ Definition
 
     struct s3c_fb_driverdata {
         struct s3c_fb_variant variant;
-        struct s3c_fb_win_variant  *win;
+        struct s3c_fb_win_variant *win[S3C_FB_MAX_WIN];
     }
 
 .. _`s3c_fb_driverdata.members`:
@@ -247,7 +247,7 @@ Definition
         struct s3c_fb_palette palette;
         struct s3c_fb_win_variant variant;
         u32 *palette_buffer;
-        u32 pseudo_palette;
+        u32 pseudo_palette[16];
         unsigned int index;
     }
 
@@ -338,7 +338,7 @@ Definition
         unsigned char enabled;
         bool output_on;
         struct s3c_fb_platdata *pdata;
-        struct s3c_fb_win  *windows;
+        struct s3c_fb_win *windows[S3C_FB_MAX_WIN];
         int irq_no;
         unsigned long irq_flags;
         struct s3c_fb_vsync vsync_info;

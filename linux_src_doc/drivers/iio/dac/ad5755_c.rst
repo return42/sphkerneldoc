@@ -57,9 +57,12 @@ Definition
         struct spi_device *spi;
         const struct ad5755_chip_info *chip_info;
         unsigned int pwr_down;
-        unsigned int ctrl;
-        struct iio_chan_spec channels;
-        union data;
+        unsigned int ctrl[AD5755_NUM_CHANNELS];
+        struct iio_chan_spec channels[AD5755_NUM_CHANNELS];
+        union {
+            __be32 d32;
+            u8 d8[4];
+        } data[2] ____cacheline_aligned;
     }
 
 .. _`ad5755_state.members`:
@@ -82,8 +85,14 @@ ctrl
 channels
     iio channel spec for the device
 
-data
-    spi transfer buffers
+d32
+    *undescribed*
+
+d8
+    *undescribed*
+
+____cacheline_aligned
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

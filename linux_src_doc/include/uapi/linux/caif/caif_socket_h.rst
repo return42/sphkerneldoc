@@ -237,7 +237,26 @@ Definition
 
     struct sockaddr_caif {
         __kernel_sa_family_t family;
-        union u;
+        union {
+            struct {
+                __u8 type;
+            } at;
+            struct {
+                char service[16];
+            } util;
+            union {
+                __u32 connection_id;
+                __u8 nsapi;
+            } dgm;
+            struct {
+                __u32 connection_id;
+                char volume[16];
+            } rfm;
+            struct {
+                __u8 type;
+                __u8 service;
+            } dbg;
+        } u;
     }
 
 .. _`sockaddr_caif.members`:
@@ -248,49 +267,47 @@ Members
 family
     Address family number, must be AF_CAIF.
 
-u
-    Union of address data 'switched' by family.
-    :
+type
+    *undescribed*
 
-u.at
-    Applies when family = CAIFPROTO_AT.
+t
+    *undescribed*
 
-u.at.type
-    Type of AT link to set up (enum caif_at_type).
+service
+    *undescribed*
 
-u.util
-    Applies when family = CAIFPROTO_UTIL
+til
+    *undescribed*
 
-u.util.service
-    Utility service name.
+connection_id
+    *undescribed*
 
-u.dgm
-    Applies when family = CAIFPROTO_DATAGRAM
+nsapi
+    *undescribed*
 
-u.dgm.connection_id
-    Datagram connection id.
+gm
+    *undescribed*
 
-u.dgm.nsapi
-    NSAPI of the PDP-Context.
+connection_id
+    *undescribed*
 
-u.rfm
-    Applies when family = CAIFPROTO_RFM
+volume
+    *undescribed*
 
-u.rfm.connection_id
-    Connection ID for RFM.
+fm
+    *undescribed*
 
-u.rfm.volume
-    Volume to mount.
+type
+    *undescribed*
 
-u.dbg
-    Applies when family = CAIFPROTO_DEBUG.
+service
+    *undescribed*
 
-u.dbg.type
-    Type of debug connection to set up
-    (caif_debug_type).
+bg
+    *undescribed*
 
-u.dbg.service
-    Service sub-system to connect (caif_debug_service
+void
+    no arguments
 
 .. _`sockaddr_caif.description`:
 

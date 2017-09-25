@@ -72,7 +72,7 @@ Definition
 .. code-block:: c
 
     struct rockchip_tsadc_chip {
-        int chn_id;
+        int chn_id[SOC_MAX_SENSORS];
         int chn_num;
         int tshut_temp;
         enum tshut_mode tshut_mode;
@@ -187,7 +187,7 @@ Definition
         const struct rockchip_tsadc_chip *chip;
         struct platform_device *pdev;
         struct reset_control *reset;
-        struct rockchip_thermal_sensor sensors;
+        struct rockchip_thermal_sensor sensors[SOC_MAX_SENSORS];
         struct clk *clk;
         struct clk *pclk;
         struct regmap *grf;

@@ -73,7 +73,7 @@ Definition
         u8 delivery_mode;
         u16 vector_count;
         u16 processor_count;
-        u16 processor_array;
+        u16 processor_array[32];
     }
 
 .. _`hv_msi_desc2.members`:

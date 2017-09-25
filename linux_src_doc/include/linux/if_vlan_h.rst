@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct vlan_ethhdr {
-        unsigned char h_dest;
-        unsigned char h_source;
+        unsigned char h_dest[ETH_ALEN];
+        unsigned char h_source[ETH_ALEN];
         __be16 h_vlan_proto;
         __be16 h_vlan_TCI;
         __be16 h_vlan_encapsulated_proto;
@@ -155,14 +155,14 @@ Definition
 
     struct vlan_dev_priv {
         unsigned int nr_ingress_mappings;
-        u32 ingress_priority_map;
+        u32 ingress_priority_map[8];
         unsigned int nr_egress_mappings;
-        struct vlan_priority_tci_mapping  *egress_priority_map;
+        struct vlan_priority_tci_mapping *egress_priority_map[16];
         __be16 vlan_proto;
         u16 vlan_id;
         u16 flags;
         struct net_device *real_dev;
-        unsigned char real_dev_addr;
+        unsigned char real_dev_addr[ETH_ALEN];
         struct proc_dir_entry *dent;
         struct vlan_pcpu_stats __percpu *vlan_pcpu_stats;
     #ifdef CONFIG_NET_POLL_CONTROLLER

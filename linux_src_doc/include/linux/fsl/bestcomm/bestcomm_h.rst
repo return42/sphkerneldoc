@@ -19,7 +19,7 @@ Definition
 
     struct bcom_bd {
         u32 status;
-        u32 data;
+        u32 data[0];
     }
 
 .. _`bcom_bd.members`:
@@ -69,7 +69,7 @@ Definition
         unsigned short outdex;
         unsigned int num_bd;
         unsigned int bd_size;
-        void*priv;
+        void* priv;
     }
 
 .. _`bcom_task.members`:

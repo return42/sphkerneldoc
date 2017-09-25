@@ -137,7 +137,7 @@ Definition
 
     struct nvec_msg {
         struct list_head node;
-        unsigned char data;
+        unsigned char data[NVEC_MSG_SIZE];
         unsigned short size;
         unsigned short pos;
         atomic_t used;
@@ -198,19 +198,16 @@ Definition
         struct clk *i2c_clk;
         struct reset_control *rst;
         struct atomic_notifier_head notifier_list;
-        struct list_head rx_data;
-        struct list_head tx_data;
+        struct list_head rx_data, tx_data;
         struct notifier_block nvec_status_notifier;
-        struct work_struct rx_work;
-        struct work_struct tx_work;
+        struct work_struct rx_work, tx_work;
         struct workqueue_struct *wq;
-        struct nvec_msg msg_pool;
+        struct nvec_msg msg_pool[NVEC_POOL_SIZE];
         struct nvec_msg *rx;
         struct nvec_msg *tx;
         struct nvec_msg tx_scratch;
         struct completion ec_transfer;
-        spinlock_t tx_lock;
-        spinlock_t rx_lock;
+        spinlock_t tx_lock, rx_lock;
         struct mutex sync_write_mutex;
         struct completion sync_write;
         u16 sync_write_pending;

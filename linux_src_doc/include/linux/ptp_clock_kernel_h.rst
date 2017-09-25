@@ -19,7 +19,7 @@ Definition
 
     struct ptp_clock_info {
         struct module *owner;
-        char name;
+        char name[16];
         s32 max_adj;
         int n_alarm;
         int n_ext_ts;
@@ -157,7 +157,10 @@ Definition
     struct ptp_clock_event {
         int type;
         int index;
-        union {unnamed_union};
+        union {
+            u64 timestamp;
+            struct pps_event_time pps_times;
+        } ;
     }
 
 .. _`ptp_clock_event.members`:
@@ -173,7 +176,6 @@ index
 
 {unnamed_union}
     anonymous
-
 
 .. _`ptp_clock_register`:
 

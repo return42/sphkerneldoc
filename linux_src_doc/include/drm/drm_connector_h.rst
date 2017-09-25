@@ -104,8 +104,8 @@ Definition
 
     struct drm_hdmi_info {
         struct drm_scdc scdc;
-        unsigned long y420_vdb_modes;
-        unsigned long y420_cmdb_modes;
+        unsigned long y420_vdb_modes[BITS_TO_LONGS(128)];
+        unsigned long y420_cmdb_modes[BITS_TO_LONGS(128)];
         u64 y420_cmdb_map;
         u8 y420_dc_modes;
     }
@@ -201,7 +201,7 @@ Definition
 .. code-block:: c
 
     struct drm_display_info {
-        char name;
+        char name[DRM_DISPLAY_INFO_LEN];
         unsigned int width_mm;
         unsigned int height_mm;
         unsigned int pixel_clock;
@@ -313,7 +313,12 @@ Definition
 
     struct drm_tv_connector_state {
         enum drm_mode_subconnector subconnector;
-        struct margins;
+        struct {
+            unsigned int left;
+            unsigned int right;
+            unsigned int top;
+            unsigned int bottom;
+        } margins;
         unsigned int mode;
         unsigned int brightness;
         unsigned int contrast;
@@ -331,8 +336,20 @@ Members
 subconnector
     selected subconnector
 
-margins
-    left/right/top/bottom margins
+left
+    *undescribed*
+
+right
+    *undescribed*
+
+top
+    *undescribed*
+
+bottom
+    *undescribed*
+
+argins
+    *undescribed*
 
 mode
     TV mode
@@ -744,13 +761,13 @@ Definition
         enum drm_connector_force force;
         bool override_edid;
     #define DRM_CONNECTOR_MAX_ENCODER 3
-        uint32_t encoder_ids;
+        uint32_t encoder_ids[DRM_CONNECTOR_MAX_ENCODER];
         struct drm_encoder *encoder;
     #define MAX_ELD_BYTES 128
-        uint8_t eld;
-        bool latency_present;
-        int video_latency;
-        int audio_latency;
+        uint8_t eld[MAX_ELD_BYTES];
+        bool latency_present[2];
+        int video_latency[2];
+        int audio_latency[2];
         int null_edid_counter;
         unsigned bad_edid_counter;
         bool edid_corrupt;
@@ -759,12 +776,9 @@ Definition
         bool has_tile;
         struct drm_tile_group *tile_group;
         bool tile_is_single_monitor;
-        uint8_t num_h_tile;
-        uint8_t num_v_tile;
-        uint8_t tile_h_loc;
-        uint8_t tile_v_loc;
-        uint16_t tile_h_size;
-        uint16_t tile_v_size;
+        uint8_t num_h_tile, num_v_tile;
+        uint8_t tile_h_loc, tile_v_loc;
+        uint16_t tile_h_size, tile_v_size;
     }
 
 .. _`drm_connector.members`:
@@ -1104,7 +1118,7 @@ Definition
         struct kref refcount;
         struct drm_device *dev;
         int id;
-        u8 group_data;
+        u8 group_data[8];
     }
 
 .. _`drm_tile_group.members`:
@@ -1149,7 +1163,8 @@ Definition
 .. code-block:: c
 
     struct drm_connector_list_iter {
-         void;
+        struct drm_device *dev;
+        struct drm_connector *conn;
     }
 
 .. _`drm_connector_list_iter.members`:
@@ -1157,8 +1172,11 @@ Definition
 Members
 -------
 
-void
-    no arguments
+dev
+    *undescribed*
+
+conn
+    *undescribed*
 
 .. _`drm_connector_list_iter.description`:
 

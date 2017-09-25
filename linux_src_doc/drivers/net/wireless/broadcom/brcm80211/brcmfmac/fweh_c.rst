@@ -21,10 +21,10 @@ Definition
         struct list_head q;
         enum brcmf_fweh_event_code code;
         u8 ifidx;
-        u8 ifaddr;
+        u8 ifaddr[ETH_ALEN];
         struct brcmf_event_msg_be emsg;
         u32 datalen;
-        u8 data;
+        u8 data[0];
     }
 
 .. _`brcmf_fweh_queue_item.members`:

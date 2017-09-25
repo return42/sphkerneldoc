@@ -171,8 +171,8 @@ Definition
         __u32 max_fragment_size;
         __u32 min_fragments;
         __u32 max_fragments;
-        __u32 codecs;
-        __u32 reserved;
+        __u32 codecs[MAX_NUM_CODECS];
+        __u32 reserved[11];
     }
 
 .. _`snd_compr_caps.members`:
@@ -223,7 +223,7 @@ Definition
     struct snd_compr_codec_caps {
         __u32 codec;
         __u32 num_descriptors;
-        struct snd_codec_desc descriptor;
+        struct snd_codec_desc descriptor[MAX_NUM_CODEC_DESCRIPTORS];
     }
 
 .. _`snd_compr_codec_caps.members`:
@@ -291,7 +291,7 @@ Definition
 
     struct snd_compr_metadata {
         __u32 key;
-        __u32 value;
+        __u32 value[8];
     }
 
 .. _`snd_compr_metadata.members`:

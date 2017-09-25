@@ -97,10 +97,10 @@ Definition
         struct regulator *v3p3;
         struct regulator *v1p8;
         struct regulator *vddcx;
-        struct regulator_bulk_data supplies;
+        struct regulator_bulk_data supplies[3];
         struct reset_control *phy_rst;
         struct reset_control *link_rst;
-        int vdd_levels;
+        int vdd_levels[3];
         bool manual_pullup;
         struct gpio_desc *switch_gpio;
         struct notifier_block reboot;

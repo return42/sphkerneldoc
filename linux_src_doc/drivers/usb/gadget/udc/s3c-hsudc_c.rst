@@ -19,7 +19,7 @@ Definition
 
     struct s3c_hsudc_ep {
         struct usb_ep ep;
-        char name;
+        char name[20];
         struct s3c_hsudc *dev;
         struct list_head queue;
         u8 stopped;
@@ -111,13 +111,13 @@ Definition
         struct device *dev;
         struct s3c24xx_hsudc_platdata *pd;
         struct usb_phy *transceiver;
-        struct regulator_bulk_data supplies;
+        struct regulator_bulk_data supplies[ARRAY_SIZE(s3c_hsudc_supply_names)];
         spinlock_t lock;
         void __iomem *regs;
         int irq;
         struct clk *uclk;
         int ep0state;
-        struct s3c_hsudc_ep ep;
+        struct s3c_hsudc_ep ep[];
     }
 
 .. _`s3c_hsudc.members`:

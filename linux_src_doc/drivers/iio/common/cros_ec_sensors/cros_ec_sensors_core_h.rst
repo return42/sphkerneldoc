@@ -25,8 +25,8 @@ Definition
         struct ec_response_motion_sense *resp;
         enum motionsensor_type type;
         enum motionsensor_location loc;
-        s16 calib;
-        u8 samples;
+        s16 calib[CROS_EC_SENSOR_MAX_AXIS];
+        u8 samples[CROS_EC_SAMPLE_SIZE];
         int (*read_ec_sensors_data)(struct iio_dev *indio_dev, unsigned long scan_mask, s16 *data);
         int curr_sampl_freq;
     }

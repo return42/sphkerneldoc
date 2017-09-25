@@ -66,7 +66,7 @@ Definition
 .. code-block:: c
 
     struct adapter_info {
-        struct i2c_algo_pch_data pch_data;
+        struct i2c_algo_pch_data pch_data[PCH_I2C_MAX_DEV];
         bool pch_i2c_suspended;
         int ch_num;
     }

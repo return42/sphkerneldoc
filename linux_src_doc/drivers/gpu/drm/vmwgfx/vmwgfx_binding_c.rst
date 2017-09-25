@@ -20,16 +20,16 @@ Definition
     struct vmw_ctx_binding_state {
         struct vmw_private *dev_priv;
         struct list_head list;
-        struct vmw_ctx_bindinfo_view render_targets;
-        struct vmw_ctx_bindinfo_tex texture_units;
+        struct vmw_ctx_bindinfo_view render_targets[SVGA3D_RT_MAX];
+        struct vmw_ctx_bindinfo_tex texture_units[SVGA3D_NUM_TEXTURE_UNITS];
         struct vmw_ctx_bindinfo_view ds_view;
-        struct vmw_ctx_bindinfo_so so_targets;
-        struct vmw_ctx_bindinfo_vb vertex_buffers;
+        struct vmw_ctx_bindinfo_so so_targets[SVGA3D_DX_MAX_SOTARGETS];
+        struct vmw_ctx_bindinfo_vb vertex_buffers[SVGA3D_DX_MAX_VERTEXBUFFERS];
         struct vmw_ctx_bindinfo_ib index_buffer;
-        struct vmw_dx_shader_bindings per_shader;
+        struct vmw_dx_shader_bindings per_shader[SVGA3D_NUM_SHADERTYPE_DX10];
         unsigned long dirty;
-        unsigned long dirty_vb;
-        u32 bind_cmd_buffer;
+        DECLARE_BITMAP(dirty_vb, SVGA3D_DX_MAX_VERTEXBUFFERS);
+        u32 bind_cmd_buffer[VMW_MAX_VIEW_BINDINGS];
         u32 bind_cmd_count;
         u32 bind_first_slot;
     }

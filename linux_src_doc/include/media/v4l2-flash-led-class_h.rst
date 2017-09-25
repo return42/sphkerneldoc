@@ -52,8 +52,8 @@ Definition
 
     struct v4l2_flash_ops {
         int (*external_strobe_set)(struct v4l2_flash *v4l2_flash, bool enable);
-        enum led_brightness (*intensity_to_led_brightness)(struct v4l2_flash *v4l2_flash, s32 intensity);
-        s32 (*led_brightness_to_intensity)(struct v4l2_flash *v4l2_flash, enum led_brightness);
+        enum led_brightness (*intensity_to_led_brightness) (struct v4l2_flash *v4l2_flash, s32 intensity);
+        s32 (*led_brightness_to_intensity) (struct v4l2_flash *v4l2_flash, enum led_brightness);
     }
 
 .. _`v4l2_flash_ops.members`:
@@ -90,7 +90,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_flash_config {
-        char dev_name;
+        char dev_name[32];
         struct led_flash_setting intensity;
         u32 flash_faults;
         unsigned int has_external_strobe:1;

@@ -195,7 +195,7 @@ Definition
         unsigned int last;
         int irq_first;
         int irq_last;
-        struct meson_reg_desc regs;
+        struct meson_reg_desc regs[NUM_REG];
     }
 
 .. _`meson_bank.members`:

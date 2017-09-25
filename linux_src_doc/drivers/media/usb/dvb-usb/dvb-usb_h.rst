@@ -20,8 +20,8 @@ Definition
     struct dvb_usb_device_description {
         const char *name;
     #define DVB_USB_ID_MAX_NUM 15
-        struct usb_device_id  *cold_ids;
-        struct usb_device_id  *warm_ids;
+        struct usb_device_id *cold_ids[DVB_USB_ID_MAX_NUM];
+        struct usb_device_id *warm_ids[DVB_USB_ID_MAX_NUM];
     }
 
 .. _`dvb_usb_device_description.members`:
@@ -72,11 +72,11 @@ Definition
     #define DVB_USB_ADAP_RECEIVES_RAW_PAYLOAD 0x10
         int caps;
         int pid_filter_count;
-        int (*streaming_ctrl)(struct dvb_usb_adapter *, int);
-        int (*pid_filter_ctrl)(struct dvb_usb_adapter *, int);
-        int (*pid_filter)(struct dvb_usb_adapter *, int, u16, int);
-        int (*frontend_attach)(struct dvb_usb_adapter *);
-        int (*tuner_attach)(struct dvb_usb_adapter *);
+        int (*streaming_ctrl) (struct dvb_usb_adapter *, int);
+        int (*pid_filter_ctrl) (struct dvb_usb_adapter *, int);
+        int (*pid_filter) (struct dvb_usb_adapter *, int, u16, int);
+        int (*frontend_attach) (struct dvb_usb_adapter *);
+        int (*tuner_attach) (struct dvb_usb_adapter *);
         struct usb_data_stream_properties stream;
         int size_of_priv;
     }
@@ -139,7 +139,7 @@ Definition
     #define REMOTE_KEY_REPEAT 0x02
         struct rc_map_table *rc_map_table;
         int rc_map_size;
-        int (*rc_query)(struct dvb_usb_device *, u32 *, int *);
+        int (*rc_query) (struct dvb_usb_device *, u32 *, int *);
         int rc_interval;
     }
 
@@ -184,7 +184,7 @@ Definition
         enum rc_driver_type driver_type;
         int (*change_protocol)(struct rc_dev *dev, u64 *rc_proto);
         char *module_name;
-        int (*rc_query)(struct dvb_usb_device *d);
+        int (*rc_query) (struct dvb_usb_device *d);
         int rc_interval;
         bool bulk_mode;
     }
@@ -271,8 +271,8 @@ Definition
 
     struct dvb_usb_fe_adapter {
         struct dvb_frontend *fe;
-        int (*fe_init)(struct dvb_frontend *);
-        int (*fe_sleep)(struct dvb_frontend *);
+        int (*fe_init) (struct dvb_frontend *);
+        int (*fe_sleep) (struct dvb_frontend *);
         struct usb_data_stream stream;
         int pid_filtering;
         int max_feed_count;
@@ -337,10 +337,10 @@ Definition
         struct mutex i2c_mutex;
         struct i2c_adapter i2c_adap;
         int num_adapters_initialized;
-        struct dvb_usb_adapter adapter;
+        struct dvb_usb_adapter adapter[MAX_NO_OF_ADAPTER_PER_DEVICE];
         struct rc_dev *rc_dev;
         struct input_dev *input_dev;
-        char rc_phys;
+        char rc_phys[64];
         struct delayed_work rc_query_work;
         u32 last_event;
         int last_state;

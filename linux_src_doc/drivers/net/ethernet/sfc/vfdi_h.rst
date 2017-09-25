@@ -154,7 +154,45 @@ Definition
         u32 reserved1;
         s32 rc;
         u32 reserved2;
-        union u;
+        union {
+            struct {
+                u32 index;
+                u32 buf_count;
+                u64 addr[];
+            } init_evq;
+            struct {
+                u32 index;
+                u32 buf_count;
+                u32 evq;
+                u32 label;
+                u32 flags;
+    #define VFDI_RXQ_FLAG_SCATTER_EN 1
+                u32 reserved;
+                u64 addr[];
+            } init_rxq;
+            struct {
+                u32 index;
+                u32 buf_count;
+                u32 evq;
+                u32 label;
+                u32 flags;
+    #define VFDI_TXQ_FLAG_IP_CSUM_DIS 1
+    #define VFDI_TXQ_FLAG_TCPUDP_CSUM_DIS 2
+                u32 reserved;
+                u64 addr[];
+            } init_txq;
+            struct {
+                u32 rxq;
+                u32 flags;
+    #define VFDI_MAC_FILTER_FLAG_RSS 1
+    #define VFDI_MAC_FILTER_FLAG_SCATTER 2
+            } mac_filter;
+            struct {
+                u64 dma_addr;
+                u64 peer_page_count;
+                u64 peer_page_addr[];
+            } set_status_page;
+        } u;
     }
 
 .. _`vfdi_req.members`:
@@ -174,80 +212,89 @@ rc
 reserved2
     *undescribed*
 
-u
+index
     *undescribed*
 
-u.init_evq.index
-    Index of event queue to create.
+buf_count
+    *undescribed*
 
-u.init_evq.buf_count
-    Number of 4k buffers backing event queue.
+addr
+    *undescribed*
 
-u.init_evq.addr
-    Array of length \ ``u``\ .init_evq.buf_count containing DMA
-    address of each page backing the event queue.
+nit_evq
+    *undescribed*
 
-u.init_rxq.index
-    Index of receive queue to create.
+index
+    *undescribed*
 
-u.init_rxq.buf_count
-    Number of 4k buffers backing receive queue.
+buf_count
+    *undescribed*
 
-u.init_rxq.evq
-    Instance of event queue to target receive events at.
+evq
+    *undescribed*
 
-u.init_rxq.label
-    Label used in receive events.
+label
+    *undescribed*
 
-u.init_rxq.flags
-    Unused.
+flags
+    *undescribed*
 
-u.init_rxq.addr
-    Array of length \ ``u``\ .init_rxq.buf_count containing DMA
-    address of each page backing the receive queue.
+reserved
+    *undescribed*
 
-u.init_txq.index
-    Index of transmit queue to create.
+addr
+    *undescribed*
 
-u.init_txq.buf_count
-    Number of 4k buffers backing transmit queue.
+nit_rxq
+    *undescribed*
 
-u.init_txq.evq
-    Instance of event queue to target transmit completion
-    events at.
+index
+    *undescribed*
 
-u.init_txq.label
-    Label used in transmit completion events.
+buf_count
+    *undescribed*
 
-u.init_txq.flags
-    Checksum offload flags.
+evq
+    *undescribed*
 
-u.init_txq.addr
-    Array of length \ ``u``\ .init_txq.buf_count containing DMA
-    address of each page backing the transmit queue.
+label
+    *undescribed*
 
-u.mac_filter.rxq
-    Insert MAC filter at VF local address/VLAN targeting
-    all traffic at this receive queue.
+flags
+    *undescribed*
 
-u.mac_filter.flags
-    MAC filter flags.
+reserved
+    *undescribed*
 
-u.set_status_page.dma_addr
-    Base address for the \ :c:type:`struct vfdi_status <vfdi_status>`\ .
-    This address must be page-aligned and the PF may write up to a
-    whole page (allowing for extension of the structure).
+addr
+    *undescribed*
 
-u.set_status_page.peer_page_count
-    Number of additional pages the VF
-    has provided into which peer addresses may be DMAd.
+nit_txq
+    *undescribed*
 
-u.set_status_page.peer_page_addr
-    Array of DMA addresses of pages.
-    If the number of peers exceeds 256, then the VF must provide
-    additional pages in this array. The PF will then DMA up to
-    512 vfdi_endpoint structures into each page.  These addresses
-    must be page-aligned.
+rxq
+    *undescribed*
+
+flags
+    *undescribed*
+
+ac_filter
+    *undescribed*
+
+dma_addr
+    *undescribed*
+
+peer_page_count
+    *undescribed*
+
+peer_page_addr
+    *undescribed*
+
+et_status_page
+    *undescribed*
+
+void
+    no arguments
 
 .. _`vfdi_status`:
 
@@ -277,7 +324,7 @@ Definition
         u16 peer_count;
         u16 reserved2;
         struct vfdi_endpoint local;
-        struct vfdi_endpoint peers;
+        struct vfdi_endpoint peers[256];
         u32 timer_quantum_ns;
     }
 
