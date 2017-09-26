@@ -636,21 +636,6 @@ u
     ff_periodic_effect, ff_condition_effect, ff_rumble_effect) further
     defining effect parameters
 
-constant
-    *undescribed*
-
-ramp
-    *undescribed*
-
-periodic
-    *undescribed*
-
-condition
-    *undescribed*
-
-rumble
-    *undescribed*
-
 .. _`ff_effect.description`:
 
 Description

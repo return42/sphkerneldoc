@@ -293,17 +293,5 @@ trigger_type
 u
     trigger condition that caused trigger to be sent
 
-master
-    *undescribed*
-
-event
-    *undescribed*
-
-scsi
-    *undescribed*
-
-mpi
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

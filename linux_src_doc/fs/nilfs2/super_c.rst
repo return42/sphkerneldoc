@@ -19,7 +19,7 @@ __nilfs_error
     :param const char \*fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`__nilfs_error.description`:

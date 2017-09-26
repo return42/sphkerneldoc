@@ -302,12 +302,6 @@ dev_name
 data
     Data specific to the setting type
 
-mux
-    *undescribed*
-
-configs
-    *undescribed*
-
 .. _`pin_desc`:
 
 struct pin_desc

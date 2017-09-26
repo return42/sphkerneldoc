@@ -172,7 +172,7 @@ tomoyo_write_log
     :param const char \*fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`tomoyo_write_log.description`:

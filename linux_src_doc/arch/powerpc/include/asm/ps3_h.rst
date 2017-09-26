@@ -64,12 +64,6 @@ bus_addr
 chunk_list
     Opaque variable used by the ioc page manager.
 
-lock
-    *undescribed*
-
-head
-    *undescribed*
-
 .. _`ps3_mmio_region`:
 
 struct ps3_mmio_region
@@ -193,15 +187,6 @@ port_number
     *undescribed*
 
 lpm
-    *undescribed*
-
-node_id
-    *undescribed*
-
-pu_id
-    *undescribed*
-
-rights
     *undescribed*
 
 core

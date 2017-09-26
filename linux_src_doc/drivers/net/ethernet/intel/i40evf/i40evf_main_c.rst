@@ -88,7 +88,7 @@ i40evf_debug_d
     :param char \*fmt_str:
         printf-type format description
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`i40evf_schedule_reset`:

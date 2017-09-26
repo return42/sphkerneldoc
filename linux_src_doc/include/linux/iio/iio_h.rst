@@ -330,24 +330,6 @@ scan_type
     omitted.
     endianness:     little or big endian
 
-sign
-    *undescribed*
-
-realbits
-    *undescribed*
-
-storagebits
-    *undescribed*
-
-shift
-    *undescribed*
-
-repeat
-    *undescribed*
-
-endianness
-    *undescribed*
-
 info_mask_separate
     What information is to be exported that is specific to
     this channel.

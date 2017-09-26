@@ -74,26 +74,5 @@ dac.slew.rate
 dac.slew.step_size
     Slew step size of the digital slew.
 
-mode
-    *undescribed*
-
-ext_current_sense_resistor
-    *undescribed*
-
-enable_voltage_overrange
-    *undescribed*
-
-slew
-    *undescribed*
-
-enable
-    *undescribed*
-
-rate
-    *undescribed*
-
-step_size
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

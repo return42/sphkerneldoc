@@ -513,21 +513,6 @@ scsw
 esw
     extended status word
 
-esw0
-    *undescribed*
-
-esw1
-    *undescribed*
-
-esw2
-    *undescribed*
-
-esw3
-    *undescribed*
-
-eadm
-    *undescribed*
-
 ecw
     extended control word
 

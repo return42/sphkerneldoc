@@ -87,15 +87,6 @@ pm_wakeup_sources
 pm_suspend_backup
     *undescribed*
 
-imr
-    *undescribed*
-
-odsr
-    *undescribed*
-
-cfgr
-    *undescribed*
-
 dev
     device entry for the Atmel PIO controller.
 

@@ -75,9 +75,6 @@ id
 state
     quirk specific information
 
-a6
-    Qualcomm quirk entry for returning post-smc call contents of a6
-
 .. _`__arm_smccc_smc`:
 
 __arm_smccc_smc

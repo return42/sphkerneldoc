@@ -125,57 +125,6 @@ mcast_oif
 rxopt
     *undescribed*
 
-bits
-    *undescribed*
-
-srcrt
-    *undescribed*
-
-osrcrt
-    *undescribed*
-
-rxinfo
-    *undescribed*
-
-rxoinfo
-    *undescribed*
-
-rxhlim
-    *undescribed*
-
-rxohlim
-    *undescribed*
-
-hopopts
-    *undescribed*
-
-ohopopts
-    *undescribed*
-
-dstopts
-    *undescribed*
-
-odstopts
-    *undescribed*
-
-rxflow
-    *undescribed*
-
-rxtclass
-    *undescribed*
-
-rxpmtu
-    *undescribed*
-
-rxorigdstaddr
-    *undescribed*
-
-recvfragsize
-    *undescribed*
-
-all
-    *undescribed*
-
 recverr
     *undescribed*
 

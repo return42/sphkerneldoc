@@ -289,18 +289,6 @@ ts_corrections.pps_out
 ts_corrections.pps_in
     Required driver correction of PPS input timestamps
 
-tx
-    *undescribed*
-
-rx
-    *undescribed*
-
-pps_out
-    *undescribed*
-
-pps_in
-    *undescribed*
-
 evt_frags
     Partly assembled PTP events
 

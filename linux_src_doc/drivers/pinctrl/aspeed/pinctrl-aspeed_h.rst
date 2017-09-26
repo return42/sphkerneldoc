@@ -48,7 +48,7 @@ SIG_EXPR_DECL
     :param  func:
         The function in which the signal is participating
 
-    :param ... :
+    :param ellipsis ellipsis:
         Signal descriptors that define the signal expression
 
 .. _`sig_expr_decl.description`:
@@ -92,7 +92,7 @@ SIG_EXPR_LIST_DECL
     :param  sig:
         A macro symbol name for the signal (is subjected to token pasting)
 
-    :param ... :
+    :param ellipsis ellipsis:
         Signal expression structure pointers (use \ :c:func:`SIG_EXPR_PTR`\ )
 
 .. _`sig_expr_list_decl.description`:
@@ -129,7 +129,7 @@ SIG_EXPR_LIST_DECL_SINGLE
     :param  func:
         A macro symbol name for the function (is subjected to token pasting)
 
-    :param ... :
+    :param ellipsis ellipsis:
         Function descriptors that define the function expression
 
 .. _`sig_expr_list_decl_single.description`:
@@ -219,7 +219,7 @@ SSSF_PIN_DECL
     :param  sig:
         Macro name for the signal (subjected to stringification)
 
-    :param ... :
+    :param ellipsis ellipsis:
         Signal descriptors that define the function expression
 
 .. _`sssf_pin_decl.for-example`:

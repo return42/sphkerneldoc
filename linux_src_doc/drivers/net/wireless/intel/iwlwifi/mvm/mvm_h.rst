@@ -270,15 +270,6 @@ beacon_stats
     # of received beacons accumulated over FW restart, and the current
     average signal of beacons retrieved from the firmware
 
-num_beacons
-    *undescribed*
-
-accu_num_beacons
-    *undescribed*
-
-avg_signal
-    *undescribed*
-
 ap_beacon_time
     *undescribed*
 
@@ -304,18 +295,6 @@ phy_ctxt
     *undescribed*
 
 rekey_data
-    *undescribed*
-
-kck
-    *undescribed*
-
-kek
-    *undescribed*
-
-replay_ctr
-    *undescribed*
-
-valid
     *undescribed*
 
 tx_key_idx

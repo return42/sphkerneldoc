@@ -49,9 +49,6 @@ LDLM_DEBUG_NOLOCK
     :param  format:
         *undescribed*
 
-    :param  a...:
-        variable arguments
-
 .. _`ldlm_lock_debug`:
 
 ldlm_lock_debug
@@ -76,9 +73,6 @@ ldlm_lock_debug
     :param  fmt:
         *undescribed*
 
-    :param  a...:
-        variable arguments
-
 .. _`ldlm_debug_limit`:
 
 LDLM_DEBUG_LIMIT
@@ -96,9 +90,6 @@ LDLM_DEBUG_LIMIT
 
     :param  fmt:
         *undescribed*
-
-    :param  a...:
-        variable arguments
 
 .. _`ldlm_iter_continue`:
 

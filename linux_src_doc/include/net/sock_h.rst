@@ -90,8 +90,8 @@ Members
 skc_addrpair
     *undescribed*
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 skc_daddr
     Foreign IPv4 addr
@@ -114,8 +114,8 @@ skc_u16hashes
 skc_portpair
     *undescribed*
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 skc_dport
     placeholder for inet_dport/tw_dport
@@ -408,18 +408,6 @@ sk_receive_queue
 
 sk_backlog
     always used with the per-socket spinlock held
-
-rmem_alloc
-    *undescribed*
-
-len
-    *undescribed*
-
-head
-    *undescribed*
-
-tail
-    *undescribed*
 
 sk_forward_alloc
     space allocated forward

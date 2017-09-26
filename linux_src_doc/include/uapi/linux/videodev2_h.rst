@@ -95,20 +95,6 @@ length
 m
     *undescribed*
 
-mem_offset
-    when memory in the associated struct v4l2_buffer is
-    V4L2_MEMORY_MMAP, equals the offset from the start of
-    the device memory for this plane (or is a "cookie" that
-    should be passed to \ :c:func:`mmap`\  called on the video node)
-
-userptr
-    when memory is V4L2_MEMORY_USERPTR, a userspace pointer
-    pointing to this plane
-
-fd
-    when memory is V4L2_MEMORY_DMABUF, a userspace file
-    descriptor associated with this plane
-
 data_offset
     offset in the plane to the start of data; usually 0,
     unless there is a header in front of the data
@@ -200,23 +186,6 @@ memory
 
 m
     *undescribed*
-
-offset
-    for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
-    offset from the start of the device memory for this plane,
-    (or a "cookie" that should be passed to \ :c:func:`mmap`\  as offset)
-
-userptr
-    for non-multiplanar buffers with memory == V4L2_MEMORY_USERPTR;
-    a userspace pointer pointing to this buffer
-
-planes
-    for multiplanar buffers; userspace pointer to the array of plane
-    info structs for this buffer
-
-fd
-    for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
-    a userspace file descriptor associated with this buffer
 
 length
     size in bytes of the buffer (NOT its payload) for single-plane
@@ -580,30 +549,6 @@ type
 
 fmt
     *undescribed*
-
-pix
-    definition of an image format
-
-pix_mp
-    definition of a multiplanar image format
-
-win
-    definition of an overlaid image
-
-vbi
-    raw VBI capture or output parameters
-
-sliced
-    sliced VBI capture or output parameters
-
-sdr
-    *undescribed*
-
-meta
-    *undescribed*
-
-raw_data
-    placeholder for future extensions and custom formats
 
 .. _`v4l2_event_motion_det`:
 

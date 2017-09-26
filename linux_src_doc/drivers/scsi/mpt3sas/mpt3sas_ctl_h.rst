@@ -108,21 +108,6 @@ Members
 u
     *undescribed*
 
-bits
-    *undescribed*
-
-device
-    *undescribed*
-
-function
-    *undescribed*
-
-bus
-    *undescribed*
-
-word
-    *undescribed*
-
 segment_id
     *undescribed*
 

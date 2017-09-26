@@ -127,11 +127,5 @@ ctrl_dev_name
 data
     Data specific to the mapping type
 
-mux
-    *undescribed*
-
-configs
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

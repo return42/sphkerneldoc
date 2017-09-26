@@ -144,12 +144,6 @@ Members
 u
     *undescribed*
 
-key
-    Encryption key or KEY1 for AES-XTS
-
-key1
-    *undescribed*
-
 iv
     Encryption IV or Tweak for AES-XTS
 
@@ -183,12 +177,6 @@ Members
 -------
 
 u
-    *undescribed*
-
-ipad
-    IPAD or KEY2 for AES-XTS
-
-key2
     *undescribed*
 
 opad
@@ -254,64 +242,6 @@ flags
 
 w0
     *undescribed*
-
-cipher_type
-    Encryption cipher type
-
-reserved_59
-    *undescribed*
-
-aes_keylen
-    AES key length
-
-iv_source
-    Encryption IV source
-
-hash_type
-    Authentication type
-
-reserved_49_51
-    *undescribed*
-
-auth_input_type
-    Authentication input type
-    1 - Authentication IV and KEY, microcode calculates OPAD/IPAD
-    0 - Authentication OPAD/IPAD
-
-mac_len
-    mac length
-
-reserved_0_39
-    *undescribed*
-
-reserved_0_39
-    *undescribed*
-
-mac_len
-    mac length
-
-auth_input_type
-    Authentication input type
-    1 - Authentication IV and KEY, microcode calculates OPAD/IPAD
-    0 - Authentication OPAD/IPAD
-
-reserved_49_51
-    *undescribed*
-
-hash_type
-    Authentication type
-
-iv_source
-    Encryption IV source
-
-aes_keylen
-    AES key length
-
-reserved_59
-    *undescribed*
-
-cipher_type
-    Encryption cipher type
 
 crypto
     Crypto keys

@@ -313,15 +313,6 @@ count
 tsa
     Transport-Status-Area
 
-iostat
-    *undescribed*
-
-ddpc
-    *undescribed*
-
-intrg
-    *undescribed*
-
 .. _`dcw_intrg_data`:
 
 struct dcw_intrg_data

@@ -36,12 +36,6 @@ Members
 header
     private variables used by IPv4/IPv6
 
-h4
-    *undescribed*
-
-h6
-    *undescribed*
-
 cscov
     checksum coverage length (UDP-Lite only)
 

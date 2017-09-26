@@ -280,18 +280,6 @@ list
 cookie
     *undescribed*
 
-raw
-    *undescribed*
-
-luma
-    *undescribed*
-
-chroma
-    *undescribed*
-
-stream
-    *undescribed*
-
 flags
     *undescribed*
 
@@ -1056,15 +1044,6 @@ rc_framerate_denom
 codec
     *undescribed*
 
-h264
-    *undescribed*
-
-mpeg4
-    *undescribed*
-
-vp8
-    *undescribed*
-
 .. _`s5p_mfc_codec_ops`:
 
 struct s5p_mfc_codec_ops
@@ -1395,12 +1374,6 @@ slice_mode
     *undescribed*
 
 slice_size
-    *undescribed*
-
-mb
-    *undescribed*
-
-bits
     *undescribed*
 
 c_ops

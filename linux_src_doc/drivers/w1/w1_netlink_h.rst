@@ -131,12 +131,6 @@ len
 id
     union holding master bus id (msg.id) and slave device id (id[8]).
 
-mst
-    *undescribed*
-
-id
-    union holding master bus id (msg.id) and slave device id (id[8]).
-
 data
     start address of any following data
 

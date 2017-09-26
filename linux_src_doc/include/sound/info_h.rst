@@ -16,9 +16,6 @@ snd_iprintf
     :param  fmt:
         the printf format
 
-    :param  args...:
-        variable arguments
-
 .. _`snd_iprintf.description`:
 
 Description

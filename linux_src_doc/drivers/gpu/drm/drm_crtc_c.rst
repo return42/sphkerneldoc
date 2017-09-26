@@ -137,7 +137,7 @@ drm_crtc_init_with_planes
     :param const char \*name:
         printf style format string for the CRTC name, or NULL for default name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`drm_crtc_init_with_planes.description`:

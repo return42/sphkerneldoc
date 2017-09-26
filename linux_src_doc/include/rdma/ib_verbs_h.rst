@@ -224,9 +224,6 @@ sig
     union of all signature domain attributes that may
     be used to set domain layout.
 
-dif
-    *undescribed*
-
 .. _`ib_sig_attrs`:
 
 struct ib_sig_attrs

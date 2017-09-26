@@ -47,12 +47,6 @@ regmap.map
 regmap.offset
     regmap offset
 
-map
-    *undescribed*
-
-offset
-    *undescribed*
-
 .. _`mvebu_mpp_ctrl`:
 
 struct mvebu_mpp_ctrl

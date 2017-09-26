@@ -109,12 +109,6 @@ nb_overlays
 load_ovl
     *undescribed*
 
-start
-    *undescribed*
-
-size
-    *undescribed*
-
 compressed
     *undescribed*
 

@@ -48,9 +48,6 @@ target
 {unnamed_union}
     anonymous
 
-matchinfo
-    per-match data
-
 targinfo
     *undescribed*
 

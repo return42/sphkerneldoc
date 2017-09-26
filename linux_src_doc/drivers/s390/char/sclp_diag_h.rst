@@ -115,9 +115,6 @@ route
 mdd
     model-dependent data (@route dependent)
 
-ftp
-    *undescribed*
-
 .. _`sclp_diag_sccb`:
 
 struct sclp_diag_sccb

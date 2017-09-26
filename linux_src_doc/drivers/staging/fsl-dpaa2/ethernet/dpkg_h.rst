@@ -175,48 +175,6 @@ type
 extract
     Selects extraction method
 
-from_hdr
-    *undescribed*
-
-prot
-    *undescribed*
-
-type
-    Determines how the union below is interpreted:
-    DPKG_EXTRACT_FROM_HDR: selects 'from_hdr';
-    DPKG_EXTRACT_FROM_DATA: selects 'from_data';
-    DPKG_EXTRACT_FROM_PARSE: selects 'from_parse'
-
-field
-    *undescribed*
-
-size
-    *undescribed*
-
-offset
-    *undescribed*
-
-hdr_index
-    *undescribed*
-
-from_data
-    *undescribed*
-
-size
-    *undescribed*
-
-offset
-    *undescribed*
-
-from_parse
-    *undescribed*
-
-size
-    *undescribed*
-
-offset
-    *undescribed*
-
 num_of_byte_masks
     Defines the number of valid entries in the array below;
     This is also the number of bytes to be used as masks

@@ -19,7 +19,7 @@ fscache_init_cache
     :param const char \*idfmt:
         Format string to define identifier
 
-    :param ... :
+    :param ellipsis ellipsis:
         sprintf-style arguments
 
 .. _`fscache_init_cache.description`:

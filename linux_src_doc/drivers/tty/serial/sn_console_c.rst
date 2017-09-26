@@ -274,7 +274,7 @@ sn_debug_printf
     :param const char \*fmt:
         printf format
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`sn_debug_printf.description`:

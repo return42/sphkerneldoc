@@ -43,7 +43,7 @@ clkdev_create
     :param const char \*dev_fmt:
         format string describing device name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`clkdev_create.description`:
@@ -72,7 +72,7 @@ clkdev_hw_create
     :param const char \*dev_fmt:
         format string describing device name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`clkdev_hw_create.description`:

@@ -56,21 +56,6 @@ scroll_jiffies
 touches
     Most recent data for a touch, indexed by tracking ID.
 
-x
-    *undescribed*
-
-y
-    *undescribed*
-
-scroll_x
-    *undescribed*
-
-scroll_y
-    *undescribed*
-
-size
-    *undescribed*
-
 tracking_ids
     Mapping of current touch input data to \ ``touches``\ .
 

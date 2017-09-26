@@ -127,15 +127,6 @@ pools
     Array of buffer pools parameters; The number of valid entries
     must match 'num_dpbp' value
 
-dpbp_id
-    *undescribed*
-
-buffer_size
-    *undescribed*
-
-backup_pool
-    *undescribed*
-
 .. _`dpni_irq_index`:
 
 DPNI_IRQ_INDEX
@@ -872,29 +863,11 @@ Members
 destination
     *undescribed*
 
-id
-    *undescribed*
-
-type
-    *undescribed*
-
-hold_active
-    *undescribed*
-
-priority
-    *undescribed*
-
 user_context
     User data, presented to the user along with any frames from
     this queue. Not relevant for Tx queues.
 
 flc
-    *undescribed*
-
-value
-    *undescribed*
-
-stash_control
     *undescribed*
 
 .. _`dpni_queue_id`:

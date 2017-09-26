@@ -575,7 +575,7 @@ dev_set_name
     :param const char \*fmt:
         format string for the device's name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`device_to_dev_kobj`:
@@ -1083,7 +1083,7 @@ device_create
     :param const char \*fmt:
         string for the device's name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`device_create.description`:
@@ -1139,7 +1139,7 @@ device_create_with_groups
     :param const char \*fmt:
         string for the device's name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`device_create_with_groups.description`:

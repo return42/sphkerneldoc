@@ -72,12 +72,6 @@ u.rb
 u.list
     link in the protection queue
 
-rb
-    *undescribed*
-
-list
-    *undescribed*
-
 ec
     erase counter
 
@@ -1081,12 +1075,6 @@ u.rb
 
 u.list
     link in one of the eraseblock lists
-
-rb
-    *undescribed*
-
-list
-    *undescribed*
 
 .. _`ubi_ainf_peb.description`:
 

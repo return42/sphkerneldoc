@@ -50,12 +50,6 @@ priv
     not set it to anything, as it is kept in synch with \ ``entries``\ , being
     realloc'ed, \* for instance, in fdarray__{grow,filter}.
 
-idx
-    *undescribed*
-
-ptr
-    *undescribed*
-
 .. _`fdarray.description`:
 
 Description

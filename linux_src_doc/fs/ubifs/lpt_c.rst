@@ -1009,15 +1009,6 @@ ptr.pnode
 ptr.cnode
     ditto for cnode
 
-nnode
-    where to keep a nnode
-
-pnode
-    where to keep a pnode
-
-cnode
-    where to keep a cnode
-
 .. _`scan_get_nnode`:
 
 scan_get_nnode

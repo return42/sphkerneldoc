@@ -193,12 +193,6 @@ u.trig
 u.run
     structure zfcp_dbf_rec_running
 
-trig
-    *undescribed*
-
-run
-    *undescribed*
-
 .. _`zfcp_dbf_san_id`:
 
 enum zfcp_dbf_san_id
@@ -430,15 +424,6 @@ pl_len
 
 u
     record type specific data
-
-res
-    *undescribed*
-
-uss
-    *undescribed*
-
-be
-    *undescribed*
 
 .. _`zfcp_dbf_scsi_id`:
 

@@ -258,12 +258,6 @@ scratch
 overlay
     *undescribed*
 
-qtd
-    *undescribed*
-
-itd
-    *undescribed*
-
 .. _`whc_qhead.description`:
 
 Description

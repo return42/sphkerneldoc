@@ -416,15 +416,6 @@ ds_data
 ud
     Union containing hw_5xxx_tx_desc structs and hw_all_rx_desc
 
-ds_tx5210
-    *undescribed*
-
-ds_tx5212
-    *undescribed*
-
-ds_rx
-    *undescribed*
-
 .. _`ath5k_desc.description`:
 
 Description

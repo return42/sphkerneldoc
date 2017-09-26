@@ -1253,7 +1253,7 @@ pevent_register_print_function
     :param char \*name:
         the name of the helper function
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`pevent_register_print_function.description`:

@@ -13,9 +13,6 @@ ntfs_debug
     :param  f:
         a printf format string containing the message
 
-    :param  a...:
-        variable arguments
-
 .. _`ntfs_debug.description`:
 
 Description

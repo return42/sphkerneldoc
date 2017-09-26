@@ -65,44 +65,8 @@ is_string
 pointer
     Pointer to the property (an array of items of the given type).
 
-raw_data
-    *undescribed*
-
-u8_data
-    *undescribed*
-
-u16_data
-    *undescribed*
-
-u32_data
-    *undescribed*
-
-u64_data
-    *undescribed*
-
-str
-    *undescribed*
-
 value
     Value of the property (when it is a single item of the given type).
-
-raw_data
-    *undescribed*
-
-u8_data
-    *undescribed*
-
-u16_data
-    *undescribed*
-
-u32_data
-    *undescribed*
-
-u64_data
-    *undescribed*
-
-str
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

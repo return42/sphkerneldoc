@@ -13,9 +13,6 @@ snd_printddd
     :param  format:
         format string
 
-    :param  args...:
-        variable arguments
-
 .. _`snd_printddd.description`:
 
 Description

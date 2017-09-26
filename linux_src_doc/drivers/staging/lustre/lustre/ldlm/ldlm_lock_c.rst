@@ -940,7 +940,7 @@ _ldlm_lock_debug
     :param const char \*fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. This file was automatic generated / don't edit.

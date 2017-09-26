@@ -589,9 +589,6 @@ type
 timings
     The timing, type according to \ ``type``\ 
 
-sdr
-    *undescribed*
-
 .. _`nand_get_sdr_timings`:
 
 nand_get_sdr_timings
@@ -963,12 +960,6 @@ priv
 manufacturer
     [INTERN] Contains manufacturer information
 
-desc
-    *undescribed*
-
-priv
-    [OPTIONAL] pointer to private chip data
-
 .. _`nand_flash_dev`:
 
 struct nand_flash_dev
@@ -1018,8 +1009,8 @@ name
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 mfr_id
     manufecturer ID part of the full chip ID array (refers the same
@@ -1064,12 +1055,6 @@ ecc.step_ds
     \ ``ecc_step_ds``\  in nand_chip{}, also from the datasheet.
     For example, the "4bit ECC for each 512Byte" can be set with
     NAND_ECC_INFO(4, 512).
-
-strength_ds
-    *undescribed*
-
-step_ds
-    *undescribed*
 
 onfi_timing_mode_default
     the default ONFI timing mode entered after a NAND

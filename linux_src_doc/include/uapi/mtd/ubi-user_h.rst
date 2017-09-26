@@ -253,18 +253,6 @@ padding1
 ents
     *undescribed*
 
-vol_id
-    ID of the volume to re-name
-
-name_len
-    name length
-
-padding2
-    reserved for future, not used, has to be zeroed
-
-name
-    new volume name
-
 .. _`ubi_rnvol_req.description`:
 
 Description

@@ -52,7 +52,7 @@ drm_encoder_init
     :param const char \*name:
         printf style format string for the encoder name, or NULL for default name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`drm_encoder_init.description`:

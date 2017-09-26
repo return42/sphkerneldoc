@@ -68,7 +68,7 @@ esas2r_log
     :param const char \*format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`esas2r_log.description`:
@@ -100,7 +100,7 @@ esas2r_log_dev
     :param const char \*format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`esas2r_log_dev.description`:

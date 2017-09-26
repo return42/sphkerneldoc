@@ -119,7 +119,7 @@ devm_iio_trigger_alloc
         format are formatted and inserted in the resulting
         string replacing their respective specifiers.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`devm_iio_trigger_alloc.description`:

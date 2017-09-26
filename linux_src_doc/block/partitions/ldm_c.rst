@@ -10,7 +10,7 @@ ldm_debug
 
     Support for Windows Logical Disk Manager (Dynamic Disks)
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`ldm_debug.description`:

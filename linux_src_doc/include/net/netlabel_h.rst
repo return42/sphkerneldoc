@@ -123,18 +123,6 @@ attr.mls.lvl
 attr.secid
     LSM specific secid token
 
-mls
-    *undescribed*
-
-cat
-    *undescribed*
-
-lvl
-    *undescribed*
-
-secid
-    *undescribed*
-
 .. _`netlbl_lsm_secattr.description`:
 
 Description

@@ -373,9 +373,6 @@ val
 cur
     The control's current value.
 
-val
-    The control's new s32 value.
-
 p_new
     The control's new value represented via a union with provides
     a standard way of accessing control types

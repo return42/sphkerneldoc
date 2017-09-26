@@ -609,45 +609,6 @@ header_length
 u
     *undescribed*
 
-plcp
-    *undescribed*
-
-length_high
-    PLCP length high word.
-
-length_low
-    PLCP length low word.
-
-signal
-    PLCP signal.
-
-service
-    PLCP service.
-
-ifs
-    IFS value.
-
-ht
-    *undescribed*
-
-mcs
-    *undescribed*
-
-stbc
-    Use Space Time Block Coding (only available for MCS rates < 8).
-
-ba_size
-    Size of the recepients RX reorder buffer - 1.
-
-mpdu_density
-    MDPU density.
-
-txop
-    IFS value for 11n capable chips.
-
-wcid
-    *undescribed*
-
 rate_mode
     Rate mode (See \ ``enum``\  rate_modulation).
 

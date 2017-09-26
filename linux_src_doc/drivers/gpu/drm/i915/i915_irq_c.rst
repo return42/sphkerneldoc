@@ -216,7 +216,7 @@ i915_handle_error
     :param const char \*fmt:
         Error message format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`i915_handle_error.description`:

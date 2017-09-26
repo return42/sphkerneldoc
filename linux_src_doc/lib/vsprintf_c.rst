@@ -205,7 +205,7 @@ snprintf
     :param const char \*fmt:
         The format string to use
 
-    :param ... :
+    :param ellipsis ellipsis:
         Arguments for the format string
 
 .. _`snprintf.description`:
@@ -238,7 +238,7 @@ scnprintf
     :param const char \*fmt:
         The format string to use
 
-    :param ... :
+    :param ellipsis ellipsis:
         Arguments for the format string
 
 .. _`scnprintf.description`:
@@ -295,7 +295,7 @@ sprintf
     :param const char \*fmt:
         The format string to use
 
-    :param ... :
+    :param ellipsis ellipsis:
         Arguments for the format string
 
 .. _`sprintf.description`:
@@ -408,7 +408,7 @@ bprintf
     :param const char \*fmt:
         The format string to use
 
-    :param ... :
+    :param ellipsis ellipsis:
         Arguments for the format string
 
 .. _`bprintf.description`:
@@ -452,7 +452,7 @@ sscanf
     :param const char \*fmt:
         formatting of buffer
 
-    :param ... :
+    :param ellipsis ellipsis:
         resulting arguments
 
 .. This file was automatic generated / don't edit.

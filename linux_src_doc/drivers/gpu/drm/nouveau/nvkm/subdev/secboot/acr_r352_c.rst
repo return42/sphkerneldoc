@@ -167,12 +167,6 @@ Members
 ucode_reserved_space
     *undescribed*
 
-reserved_dmem
-    *undescribed*
-
-signatures
-    *undescribed*
-
 wpr_region_id
     region ID holding the WPR header and its details
 
@@ -185,30 +179,6 @@ mmu_mem_range
 regions
     region descriptors
 
-no_regions
-    *undescribed*
-
-region_props
-    *undescribed*
-
-start_addr
-    *undescribed*
-
-end_addr
-    *undescribed*
-
-region_id
-    *undescribed*
-
-read_mask
-    *undescribed*
-
-write_mask
-    *undescribed*
-
-client_mask
-    *undescribed*
-
 ucode_blob_size
     *undescribed*
 
@@ -216,18 +186,6 @@ ucode_blob_base
     *undescribed*
 
 vpr_desc
-    *undescribed*
-
-vpr_enabled
-    *undescribed*
-
-vpr_start
-    *undescribed*
-
-vpr_end
-    *undescribed*
-
-hdcp_policies
     *undescribed*
 
 .. _`hsflcn_acr_desc.description`:
@@ -282,21 +240,6 @@ Members
 
 signature
     signature to verify the firmware against
-
-prd_keys
-    *undescribed*
-
-dbg_keys
-    *undescribed*
-
-b_prd_present
-    *undescribed*
-
-b_dbg_present
-    *undescribed*
-
-falcon_id
-    *undescribed*
 
 ucode_off
     offset of the ucode blob in the WPR region. The ucode

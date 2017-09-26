@@ -134,8 +134,8 @@ Members
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 hdr
     *undescribed*
@@ -143,13 +143,13 @@ hdr
 payload
     *undescribed*
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 hdr_wide
     *undescribed*
 
-payload_wide
+iwl_cmd_header]
     *undescribed*
 
 .. _`iwl_device_cmd.description`:

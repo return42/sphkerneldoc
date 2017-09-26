@@ -178,12 +178,6 @@ desc
 ctx
     context associated to the crypto operation
 
-blkcipher
-    *undescribed*
-
-hash
-    *undescribed*
-
 .. _`mv_cesa_op_ctx.description`:
 
 Description
@@ -1090,12 +1084,6 @@ base
 
 req
     type specific request information
-
-dma
-    *undescribed*
-
-std
-    *undescribed*
 
 op_tmpl
     *undescribed*

@@ -19,7 +19,7 @@ __ntfs_warning
     :param const char \*fmt:
         warning string containing format specifications
 
-    :param ... :
+    :param ellipsis ellipsis:
         a variable number of arguments specified in \ ``fmt``\ 
 
 .. _`__ntfs_warning.description`:
@@ -57,7 +57,7 @@ __ntfs_error
     :param const char \*fmt:
         error string containing format specifications
 
-    :param ... :
+    :param ellipsis ellipsis:
         a variable number of arguments specified in \ ``fmt``\ 
 
 .. _`__ntfs_error.description`:

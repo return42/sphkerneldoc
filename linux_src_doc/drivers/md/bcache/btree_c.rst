@@ -22,7 +22,7 @@ btree
     :param  op:
         pointer to struct btree_op
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`btree_root`:
@@ -43,7 +43,7 @@ btree_root
     :param  op:
         pointer to struct btree_op
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`bch_btree_node_get`:

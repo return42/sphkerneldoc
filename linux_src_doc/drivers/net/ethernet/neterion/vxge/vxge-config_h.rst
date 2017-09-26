@@ -1694,7 +1694,7 @@ vxge_debug_ll
     :param  fmt:
         printf like format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`vxge_debug_ll.description`:

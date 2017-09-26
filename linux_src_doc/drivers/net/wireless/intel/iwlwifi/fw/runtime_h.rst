@@ -80,20 +80,5 @@ smem_cfg
 dump
     debug dump data
 
-desc
-    *undescribed*
-
-trig
-    *undescribed*
-
-wk
-    *undescribed*
-
-conf
-    *undescribed*
-
-non_collect_ts_start
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

@@ -13,7 +13,7 @@ printk
     :param const char \*fmt:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`printk.description`:
@@ -487,7 +487,7 @@ dump_stack_set_arch_desc
     :param const char \*fmt:
         printf-style format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         arguments for the format string
 
 .. _`dump_stack_set_arch_desc.description`:

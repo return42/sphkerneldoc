@@ -393,12 +393,6 @@ num_txfifo_entries
 lmac
     sizes of lmacs txfifos and rxfifo1
 
-txfifo_size
-    *undescribed*
-
-rxfifo1_size
-    *undescribed*
-
 rxfifo2_size
     size of rxfifo2
 

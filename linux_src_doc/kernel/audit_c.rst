@@ -497,7 +497,7 @@ audit_log_format
     :param const char \*fmt:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         optional parameters matching \ ``fmt``\  string
 
 .. _`audit_log_format.description`:
@@ -686,7 +686,7 @@ audit_log
     :param const char \*fmt:
         format string to use
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable parameters matching the format string
 
 .. _`audit_log.description`:

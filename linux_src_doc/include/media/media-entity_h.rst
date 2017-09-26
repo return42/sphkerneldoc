@@ -156,12 +156,6 @@ stack
     on the path the media entities to be walked and the
     links through which they were reached.
 
-entity
-    *undescribed*
-
-link
-    *undescribed*
-
 ent_enum
     Visited entities
 
@@ -530,17 +524,6 @@ pipe
 info
     Union with devnode information.  Kept just for backward
     compatibility.
-
-dev
-    *undescribed*
-
-major
-    Devnode major number (zero if not applicable). Kept just
-    for backward compatibility.
-
-minor
-    Devnode minor number (zero if not applicable). Kept just
-    for backward compatibility.
 
 .. _`media_entity.description`:
 
@@ -1803,9 +1786,6 @@ media_entity_call
     :param  operation:
         type of the operation. Should be the name of a member of
         struct \ :c:type:`struct media_entity_operations <media_entity_operations>`\ .
-
-    :param  args...:
-        variable arguments
 
 .. _`media_entity_call.description`:
 

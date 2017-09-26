@@ -170,15 +170,6 @@ bus_type
 bus
     bus configuration data structure
 
-parallel
-    *undescribed*
-
-mipi_csi1
-    *undescribed*
-
-mipi_csi2
-    *undescribed*
-
 link_frequencies
     array of supported link frequencies
 

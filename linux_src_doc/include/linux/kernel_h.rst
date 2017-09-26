@@ -191,7 +191,7 @@ trace_printk
     :param  fmt:
         the printf format for printing
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`trace_printk.note`:

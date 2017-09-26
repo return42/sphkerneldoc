@@ -331,7 +331,7 @@ snd_pcm_hw_rule_add
     :param int dep:
         the dependent variables
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`snd_pcm_hw_rule_add.return`:

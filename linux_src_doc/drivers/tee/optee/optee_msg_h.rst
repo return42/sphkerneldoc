@@ -164,15 +164,6 @@ attr
 u
     *undescribed*
 
-tmem
-    parameter by temporary memory reference
-
-rmem
-    parameter by registered memory reference
-
-value
-    parameter by opaque value
-
 .. _`optee_msg_param.description`:
 
 Description

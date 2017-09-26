@@ -180,12 +180,6 @@ Members
 b_u
     raw data
 
-u_flags
-    *undescribed*
-
-u_data
-    *undescribed*
-
 b_sem
     semaphore
 

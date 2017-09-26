@@ -109,7 +109,7 @@ s3c_pm_dbg
     :param const char \*msg:
         The message to print.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`s3c_pm_dbg.description`:

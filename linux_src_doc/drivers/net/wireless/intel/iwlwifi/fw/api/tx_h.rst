@@ -379,15 +379,6 @@ tx_flags
 scratch
     scratch buffer used by the device
 
-try_cnt
-    *undescribed*
-
-btkill_cnt
-    *undescribed*
-
-reserved
-    *undescribed*
-
 rate_n_flags
     rate for \*all\* Tx attempts, if TX_CMD_FLG_STA_RATE_MSK is
     cleared. Combination of RATE_MCS\_\*

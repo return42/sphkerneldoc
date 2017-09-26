@@ -56,9 +56,6 @@ throtl_log
     :param  fmt:
         printf format string
 
-    :param  args...:
-        variable arguments
-
 .. _`throtl_log.description`:
 
 Description

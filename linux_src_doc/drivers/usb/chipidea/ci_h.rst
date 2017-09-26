@@ -58,15 +58,6 @@ name
 qh
     queue head for this endpoint
 
-queue
-    *undescribed*
-
-ptr
-    *undescribed*
-
-dma
-    *undescribed*
-
 wedge
     is the endpoint wedged
 

@@ -17,7 +17,7 @@ cirrusfb_dbg_print_regs
     :param enum cirrusfb_dbg_reg_class reg_class:
         type of registers to read: \ ``CRT``\ , or \ ``SEQ``\ 
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`cirrusfb_dbg_print_regs.description`:

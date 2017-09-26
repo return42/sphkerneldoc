@@ -206,12 +206,6 @@ Members
 key
     element key
 
-buf
-    *undescribed*
-
-val
-    *undescribed*
-
 priv
     element private data and extensions
 

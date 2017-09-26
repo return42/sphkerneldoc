@@ -64,7 +64,7 @@ drm_universal_plane_init
     :param const char \*name:
         printf style format string for the plane name, or NULL for default name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`drm_universal_plane_init.description`:

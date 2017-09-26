@@ -64,12 +64,6 @@ flags
 entries
     individual communication entries
 
-name
-    name of the entry
-
-value
-    content of the entry
-
 .. _`smp2p_entry`:
 
 struct smp2p_entry

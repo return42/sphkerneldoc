@@ -51,13 +51,13 @@ Definition
 Members
 -------
 
+{unnamed_union}
+    anonymous
+
 words
     for easier/faster copying the whole FD structure
 
 simple
-    *undescribed*
-
-}
     *undescribed*
 
 .. _`dpaa2_fd.description`:

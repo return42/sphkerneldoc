@@ -28,7 +28,7 @@ config_item_set_name
     :param const char \*fmt:
         The \ :c:func:`vsnprintf`\ 's format string.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`config_item_set_name.description`:

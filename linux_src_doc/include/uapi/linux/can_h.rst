@@ -139,15 +139,6 @@ can_ifindex
 can_addr
     protocol specific address information
 
-tp
-    *undescribed*
-
-rx_id
-    *undescribed*
-
-tx_id
-    *undescribed*
-
 .. _`can_filter`:
 
 struct can_filter

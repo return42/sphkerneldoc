@@ -117,12 +117,6 @@ busn
 offset
     IO / Memory offset
 
-mem
-    non-prefetchable memory resource
-
-io
-    IO resource
-
 ports
     pointer to PCIe port information
 

@@ -334,51 +334,6 @@ sg_rsp
 u
     request specific data
 
-adisc
-    *undescribed*
-
-req
-    *undescribed*
-
-rsp
-    *undescribed*
-
-gid_pn
-    *undescribed*
-
-req
-    *undescribed*
-
-rsp
-    *undescribed*
-
-gpn_ft
-    *undescribed*
-
-sg_rsp2
-    *undescribed*
-
-req
-    *undescribed*
-
-gspn
-    *undescribed*
-
-req
-    *undescribed*
-
-rsp
-    *undescribed*
-
-rspn
-    *undescribed*
-
-req
-    *undescribed*
-
-rsp
-    *undescribed*
-
 .. _`zfcp_fc_wka_status`:
 
 enum zfcp_fc_wka_status

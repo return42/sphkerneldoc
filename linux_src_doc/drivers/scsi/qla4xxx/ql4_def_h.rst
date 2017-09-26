@@ -17,8 +17,5 @@ ql4_printk
     :param  format:
         *undescribed*
 
-    :param  arg...:
-        variable arguments
-
 .. This file was automatic generated / don't edit.
 

@@ -16,7 +16,7 @@ __request_module
     :param const char \*fmt:
         printf style format string for the name of the module
 
-    :param ... :
+    :param ellipsis ellipsis:
         arguments as specified in the format string
 
 .. _`__request_module.description`:

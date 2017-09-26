@@ -61,7 +61,7 @@ pci_request_irq
     :param const char \*fmt:
         Printf-like format string naming the handler
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`pci_request_irq.description`:

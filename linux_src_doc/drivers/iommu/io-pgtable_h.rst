@@ -126,37 +126,10 @@ iommu_dev
 arm_lpae_s1_cfg
     *undescribed*
 
-ttbr
-    *undescribed*
-
-tcr
-    *undescribed*
-
-mair
-    *undescribed*
-
 arm_lpae_s2_cfg
     *undescribed*
 
-vttbr
-    *undescribed*
-
-vtcr
-    *undescribed*
-
 arm_v7s_cfg
-    *undescribed*
-
-ttbr
-    *undescribed*
-
-tcr
-    *undescribed*
-
-nmrr
-    *undescribed*
-
-prrr
     *undescribed*
 
 .. _`io_pgtable_ops`:

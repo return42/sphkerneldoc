@@ -42,7 +42,7 @@ LOV_2DISPATCH_NOLOCK
     :param  op:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lov_type`:
@@ -70,7 +70,7 @@ LOV_2DISPATCH
     :param  op:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lov_io_init`:

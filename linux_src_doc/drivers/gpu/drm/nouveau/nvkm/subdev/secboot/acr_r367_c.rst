@@ -52,36 +52,6 @@ Members
 signature
     *undescribed*
 
-prd_keys
-    *undescribed*
-
-dbg_keys
-    *undescribed*
-
-b_prd_present
-    *undescribed*
-
-b_dbg_present
-    *undescribed*
-
-falcon_id
-    *undescribed*
-
-supports_versioning
-    *undescribed*
-
-version
-    *undescribed*
-
-depmap_count
-    *undescribed*
-
-depmap
-    *undescribed*
-
-kdf
-    *undescribed*
-
 ucode_off
     *undescribed*
 

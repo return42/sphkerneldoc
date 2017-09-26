@@ -230,12 +230,6 @@ Members
 s
     *undescribed*
 
-radio_tx_gain
-    *undescribed*
-
-dsp_predis_atten
-    *undescribed*
-
 dw
     *undescribed*
 

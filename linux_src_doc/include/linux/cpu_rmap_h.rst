@@ -48,12 +48,6 @@ near
     For each CPU, the index and distance to the nearest object,
     based on affinity masks
 
-index
-    *undescribed*
-
-dist
-    *undescribed*
-
 .. _`alloc_irq_cpu_rmap`:
 
 alloc_irq_cpu_rmap

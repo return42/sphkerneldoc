@@ -912,7 +912,7 @@ module_driver
     :param  __unregister:
         unregister function for this driver type
 
-    :param ... :
+    :param ellipsis ellipsis:
         Additional arguments to be passed to __register and __unregister.
 
 .. _`module_driver.description`:
@@ -938,7 +938,7 @@ builtin_driver
     :param  __register:
         register function for this driver type
 
-    :param ... :
+    :param ellipsis ellipsis:
         Additional arguments to be passed to __register
 
 .. _`builtin_driver.description`:

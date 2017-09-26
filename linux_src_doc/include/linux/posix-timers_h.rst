@@ -109,23 +109,5 @@ it
     Union representing the various posix timer type
     internals. Also used for rcu freeing the timer.
 
-real
-    *undescribed*
-
-timer
-    *undescribed*
-
-cpu
-    *undescribed*
-
-alarm
-    *undescribed*
-
-alarmtimer
-    *undescribed*
-
-rcu
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

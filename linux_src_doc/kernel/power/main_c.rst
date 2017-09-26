@@ -16,7 +16,7 @@ __pm_pr_dbg
     :param const char \*fmt:
         Message format.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`__pm_pr_dbg.description`:

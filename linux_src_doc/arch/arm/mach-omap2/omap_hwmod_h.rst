@@ -372,9 +372,6 @@ node
 fw
     interface firewall data
 
-omap2
-    *undescribed*
-
 width
     OCP data width
 
@@ -809,12 +806,6 @@ rst_lines
 
 prcm
     PRCM data pertaining to this hwmod
-
-omap2
-    *undescribed*
-
-omap4
-    *undescribed*
 
 main_clk
     main clock: OMAP clock name

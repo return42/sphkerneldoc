@@ -243,24 +243,6 @@ trans
 trans_opts
     *undescribed*
 
-fd
-    *undescribed*
-
-rfd
-    *undescribed*
-
-wfd
-    *undescribed*
-
-tcp
-    *undescribed*
-
-port
-    *undescribed*
-
-privport
-    *undescribed*
-
 fidpool
     fid handle accounting for session
 

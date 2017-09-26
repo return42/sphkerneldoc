@@ -126,7 +126,7 @@ __of_node_dup
     :param const char \*fmt:
         Format string (plus vargs) for new full name of the device node
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`__of_node_dup.description`:

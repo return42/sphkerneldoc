@@ -55,7 +55,7 @@ xenbus_watch_pathfmt
     :param const char \*pathfmt:
         format of path to watch
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`xenbus_watch_pathfmt.description`:
@@ -109,7 +109,7 @@ xenbus_dev_error
     :param const char \*fmt:
         error message format
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`xenbus_dev_error.description`:
@@ -136,7 +136,7 @@ xenbus_dev_fatal
     :param const char \*fmt:
         error message format
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`xenbus_dev_fatal.description`:
@@ -169,7 +169,7 @@ xenbus_switch_fatal
     :param const char \*fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`xenbus_grant_ring`:

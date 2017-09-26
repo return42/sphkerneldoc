@@ -224,9 +224,6 @@ debug_req
     :param  fmt:
         *undescribed*
 
-    :param  a...:
-        variable arguments
-
 .. _`debug_req`:
 
 DEBUG_REQ
@@ -244,9 +241,6 @@ DEBUG_REQ
 
     :param  fmt:
         *undescribed*
-
-    :param  args...:
-        variable arguments
 
 .. _`ptlrpc_svc_hp_ratio`:
 

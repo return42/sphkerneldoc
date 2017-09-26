@@ -13,7 +13,7 @@ panic
     :param const char \*fmt:
         The text string to print
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`panic.description`:

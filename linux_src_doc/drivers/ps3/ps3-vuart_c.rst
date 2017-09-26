@@ -43,25 +43,7 @@ interrupt_mask
 tx_list
     *undescribed*
 
-lock
-    *undescribed*
-
-head
-    *undescribed*
-
 rx_list
-    *undescribed*
-
-work
-    *undescribed*
-
-bytes_held
-    *undescribed*
-
-lock
-    *undescribed*
-
-head
     *undescribed*
 
 stats

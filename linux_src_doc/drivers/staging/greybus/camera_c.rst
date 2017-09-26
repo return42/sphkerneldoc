@@ -57,12 +57,6 @@ state
 debugfs
     debugfs entries for camera protocol operations testing
 
-root
-    *undescribed*
-
-buffers
-    *undescribed*
-
 module
     Greybus camera module registered to HOST processor.
 

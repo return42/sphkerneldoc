@@ -245,12 +245,6 @@ firmware.major
 firmware.minor
     Firmware minor numbers.
 
-major
-    *undescribed*
-
-minor
-    *undescribed*
-
 patch_id
     *undescribed*
 

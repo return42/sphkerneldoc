@@ -144,12 +144,6 @@ direction
 u
     *undescribed*
 
-tx
-    Tx channel configuration
-
-rx
-    Rx flow configuration
-
 .. _`knav_dma_desc`:
 
 struct knav_dma_desc

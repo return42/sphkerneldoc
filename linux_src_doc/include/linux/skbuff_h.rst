@@ -239,8 +239,8 @@ Members
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 next
     Next buffer in list
@@ -248,8 +248,8 @@ next
 prev
     Previous buffer in list
 
-{unnamed_union}
-    anonymous
+union
+    *undescribed*
 
 tstamp
     Time we arrived/left
@@ -427,8 +427,8 @@ tc_index
 csum
     Checksum (must include start/offset pair)
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 csum_start
     Offset from skb->head where checksumming should start

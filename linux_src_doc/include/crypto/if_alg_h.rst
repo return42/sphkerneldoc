@@ -68,12 +68,6 @@ areqlen
 cra_u
     Cipher request
 
-aead_req
-    *undescribed*
-
-skcipher_req
-    *undescribed*
-
 .. _`af_alg_ctx`:
 
 struct af_alg_ctx

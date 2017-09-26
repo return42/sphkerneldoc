@@ -73,9 +73,6 @@ __rpm_callback
     :param int (\*cb)(struct device \*):
         Runtime PM callback to run.
 
-    :param struct device \*dev) __releases(&dev->power.lock) __acquires&dev->power.lock:
-        *undescribed*
-
 .. _`rpm_idle`:
 
 rpm_idle

@@ -573,12 +573,6 @@ ptype_specific
 adj_list
     Directly linked devices, like slaves for bonding
 
-upper
-    *undescribed*
-
-lower
-    *undescribed*
-
 features
     Currently active device features
 

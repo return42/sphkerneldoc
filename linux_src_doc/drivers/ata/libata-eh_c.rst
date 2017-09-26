@@ -16,7 +16,7 @@ __ata_ehi_push_desc
     :param const char \*fmt:
         printf format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`__ata_ehi_push_desc.description`:
@@ -48,7 +48,7 @@ ata_ehi_push_desc
     :param const char \*fmt:
         printf format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`ata_ehi_push_desc.description`:
@@ -107,7 +107,7 @@ ata_port_desc
     :param const char \*fmt:
         printf format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`ata_port_desc.description`:

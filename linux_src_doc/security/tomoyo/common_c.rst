@@ -31,7 +31,7 @@ tomoyo_addprintf
     :param const char \*fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`tomoyo_addprintf.description`:
@@ -99,7 +99,7 @@ tomoyo_io_printf
     :param const char \*fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`tomoyo_set_space`:
@@ -997,7 +997,7 @@ tomoyo_supervisor
     :param const char \*fmt:
         The \ :c:func:`printf`\ 's format string, followed by parameters.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`tomoyo_supervisor.description`:

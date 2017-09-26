@@ -145,7 +145,7 @@ lu_cdebug_printer
     :param const char \*format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_object_debug`:
@@ -169,7 +169,7 @@ LU_OBJECT_DEBUG
     :param  format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_object_header`:
@@ -193,7 +193,7 @@ LU_OBJECT_HEADER
     :param  format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_object_invariant`:

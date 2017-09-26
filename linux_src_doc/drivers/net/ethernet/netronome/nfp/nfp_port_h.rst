@@ -133,8 +133,8 @@ dl_port
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 eth_id
     for \ ``NFP_PORT_PHYS_PORT``\  port ID in NFP enumeration scheme
@@ -145,8 +145,8 @@ eth_port
 eth_stats
     for \ ``NFP_PORT_PHYS_PORT``\  MAC stats if available
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 pf_id
     for \ ``NFP_PORT_PF_PORT``\ , \ ``NFP_PORT_VF_PORT``\  ID of the PCI PF (0-3)

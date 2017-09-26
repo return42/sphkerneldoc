@@ -14,7 +14,7 @@ DRM_DEV_ERROR
     :param  fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`drm_dev_error.description`:
@@ -38,7 +38,7 @@ DRM_DEV_ERROR_RATELIMITED
     :param  fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`drm_dev_error_ratelimited.description`:
@@ -62,9 +62,6 @@ DRM_DEV_DEBUG
     :param  fmt:
         *undescribed*
 
-    :param  args...:
-        variable arguments
-
 .. _`drm_dev_debug.description`:
 
 Description
@@ -85,9 +82,6 @@ DRM_DEV_DEBUG_RATELIMITED
 
     :param  fmt:
         *undescribed*
-
-    :param  args...:
-        variable arguments
 
 .. _`drm_dev_debug_ratelimited.description`:
 

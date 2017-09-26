@@ -1541,27 +1541,6 @@ reserved
 u
     Union with the values for the command.
 
-data
-    *undescribed*
-
-st
-    *undescribed*
-
-buffer
-    *undescribed*
-
-data
-    *undescribed*
-
-len
-    *undescribed*
-
-reserved1
-    *undescribed*
-
-reserved2
-    *undescribed*
-
 result
     Result of the command set (currently unused).
 

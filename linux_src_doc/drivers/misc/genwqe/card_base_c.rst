@@ -8,9 +8,6 @@ MODULE_AUTHOR
 
 .. c:function::  MODULE_AUTHOR("Frank Haverkamp <haver@linux.vnet.ibm.com>")
 
-    :param "Frank Haverkamp <haver@linux.vnet.ibm.com>":
-        *undescribed*
-
 .. _`module_author.description`:
 
 Description

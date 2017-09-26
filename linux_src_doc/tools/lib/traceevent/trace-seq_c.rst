@@ -59,7 +59,7 @@ trace_seq_printf
     :param const char \*fmt:
         printf format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`trace_seq_printf.description`:

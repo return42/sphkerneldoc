@@ -138,14 +138,14 @@ Members
 node
     rb node of this ksm page in the stable tree
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 head
     (overlaying parent) \ :c:type:`struct migrate_nodes <migrate_nodes>`\  indicates temporarily on that list
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 hlist_dup
     linked into the stable_node->hlist with a stable_node chain
@@ -239,8 +239,8 @@ oldchecksum
 node
     rb node of this rmap_item in the unstable tree
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 head
     pointer to stable_node heading this list in the stable tree

@@ -16,7 +16,7 @@ drm_printf
     :param const char \*f:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. This file was automatic generated / don't edit.

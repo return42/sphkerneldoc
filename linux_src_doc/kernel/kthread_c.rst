@@ -133,7 +133,7 @@ kthread_create_on_node
     :param const char namefmt:
         printf-style name for the thread.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kthread_create_on_node.description`:
@@ -328,7 +328,7 @@ kthread_create_worker
     :param const char namefmt:
         printf-style name for the kthread worker (task).
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kthread_create_worker.description`:
@@ -358,7 +358,7 @@ kthread_create_worker_on_cpu
     :param const char namefmt:
         printf-style name for the kthread worker (task).
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kthread_create_worker_on_cpu.description`:

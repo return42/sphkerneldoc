@@ -129,12 +129,6 @@ addr_stat_drdy
 ig1
     *undescribed*
 
-en_addr
-    address of the enable ig1 register.
-
-en_mask
-    mask to write the on/off value for enable.
-
 .. _`st_sensor_transfer_buffer`:
 
 struct st_sensor_transfer_buffer

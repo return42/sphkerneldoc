@@ -606,7 +606,7 @@ devm_kasprintf
     :param const char \*fmt:
         The \ :c:func:`printf`\ -style format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         Arguments for the format string
 
 .. _`devm_kasprintf.return`:

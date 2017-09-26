@@ -126,12 +126,6 @@ rmw
 sys_clk
     system clock name/frequency, used for various timing calculations
 
-name
-    Name of the voltage domain which can be used as a unique identifier.
-
-rate
-    *undescribed*
-
 scale
     function used to scale the voltage of the voltagedomain
 

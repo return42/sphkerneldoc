@@ -1893,7 +1893,7 @@ set_worker_desc
     :param const char \*fmt:
         printf-style format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         arguments for the format string
 
 .. _`set_worker_desc.description`:

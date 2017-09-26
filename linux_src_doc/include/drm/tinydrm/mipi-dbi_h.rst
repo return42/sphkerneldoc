@@ -101,9 +101,6 @@ mipi_dbi_command
     :param  cmd:
         Command
 
-    :param  seq...:
-        Optional parameter(s)
-
 .. _`mipi_dbi_command.description`:
 
 Description

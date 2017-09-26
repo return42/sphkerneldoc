@@ -4161,12 +4161,6 @@ behaviour
 param
     parameters for requestion behaviour.
 
-band_pref
-    preferred band for \ ``NL80211_BSS_SELECT_ATTR_BAND_PREF``\ .
-
-adjust
-    parameters for \ ``NL80211_BSS_SELECT_ATTR_RSSI_ADJUST``\ .
-
 .. _`cfg80211_connect_params`:
 
 struct cfg80211_connect_params
@@ -7418,39 +7412,6 @@ cac_time_ms
 
 wext
     (private) Used by the internal wireless extensions compat code
-
-ibss
-    *undescribed*
-
-connect
-    *undescribed*
-
-keys
-    *undescribed*
-
-ie
-    *undescribed*
-
-ie_len
-    *undescribed*
-
-bssid
-    (private) Used by the internal configuration code
-
-prev_bssid
-    *undescribed*
-
-ssid
-    (private) Used by the internal configuration code
-
-default_key
-    *undescribed*
-
-default_mgmt_key
-    *undescribed*
-
-prev_bssid_valid
-    *undescribed*
 
 cqm_config
     (private) nl80211 RSSI monitor state

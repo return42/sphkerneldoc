@@ -91,7 +91,7 @@ add_uevent_var
     :param const char \*format:
         printf format for the key=value pair
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`add_uevent_var.description`:

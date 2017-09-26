@@ -780,12 +780,6 @@ mod_len
 u
     *undescribed*
 
-mm
-    module math parameters
-
-pm
-    point math parameters
-
 ecc_result
     result of the ECC operation
 
@@ -865,30 +859,6 @@ engine_error
 
 u
     engine specific structures, refer to specific engine struct below
-
-aes
-    *undescribed*
-
-xts
-    *undescribed*
-
-des3
-    *undescribed*
-
-sha
-    *undescribed*
-
-rsa
-    *undescribed*
-
-passthru
-    *undescribed*
-
-passthru_nomap
-    *undescribed*
-
-ecc
-    *undescribed*
 
 callback
     operation completion callback function

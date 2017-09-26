@@ -50,21 +50,6 @@ reserved1
 connections
     *undescribed*
 
-port_function_id
-    contains the creator id of the application that opened
-    this connection.
-
-port
-    contains the in/out endpoint number.  Is 0 if in and out endpoint
-    numbers are different.
-
-end_point_info
-    high nubbe is in endpoint and low nibble will indicate out
-    endpoint.  Is 0 if in and out endpoints are the same.
-
-reserved
-    *undescribed*
-
 .. _`palm_ext_connection_info.description`:
 
 Description

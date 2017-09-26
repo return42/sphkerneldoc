@@ -270,7 +270,7 @@ p9_client_rpc
     :param const char \*fmt:
         protocol format string (see protocol.c)
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`p9_client_rpc.description`:
@@ -313,7 +313,7 @@ p9_client_zc_rpc
     :param const char \*fmt:
         protocol format string (see protocol.c)
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`p9_client_zc_rpc.description`:

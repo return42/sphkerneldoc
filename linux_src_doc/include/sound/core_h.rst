@@ -13,7 +13,7 @@ snd_printk
     :param  fmt:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`snd_printk.description`:
@@ -36,7 +36,7 @@ snd_printd
     :param  fmt:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`snd_printd.description`:
@@ -109,7 +109,7 @@ snd_printdd
     :param  format:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`snd_printdd.description`:

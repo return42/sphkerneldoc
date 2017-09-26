@@ -10,7 +10,7 @@ synchronize_rcu_mult
 
     Wait concurrently for multiple grace periods
 
-    :param ... :
+    :param ellipsis ellipsis:
         List of \ :c:func:`call_rcu`\  functions for the flavors to wait on.
 
 .. _`synchronize_rcu_mult.description`:

@@ -175,9 +175,6 @@ d_fnstart
     :param  f:
         printf-like format and arguments
 
-    :param  a...:
-        variable arguments
-
 .. _`d_fnend`:
 
 d_fnend
@@ -196,9 +193,6 @@ d_fnend
     :param  f:
         printf-like format and arguments
 
-    :param  a...:
-        variable arguments
-
 .. _`d_printf`:
 
 d_printf
@@ -216,9 +210,6 @@ d_printf
 
     :param  f:
         printf-like format and arguments
-
-    :param  a...:
-        variable arguments
 
 .. _`d_dump`:
 

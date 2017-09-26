@@ -50,8 +50,8 @@ frame_size
 timeout
     RX frame timeout
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 arb_mode
     Arbitration mode for TX frame (Round robin, priority)

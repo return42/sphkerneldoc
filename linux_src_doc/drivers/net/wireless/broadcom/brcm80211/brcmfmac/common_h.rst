@@ -83,8 +83,5 @@ country_codes
 bus
     Bus specific platform data. Only SDIO at the mmoment.
 
-sdio
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

@@ -250,12 +250,6 @@ ctrl_handler
 controls
     a union of decoder and encoder control parameters
 
-dec
-    *undescribed*
-
-enc
-    *undescribed*
-
 fh
     a holder of v4l file handle structure
 

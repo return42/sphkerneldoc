@@ -232,17 +232,5 @@ base
 u
     packet type dependent header
 
-cmd_submit
-    *undescribed*
-
-ret_submit
-    *undescribed*
-
-cmd_unlink
-    *undescribed*
-
-ret_unlink
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

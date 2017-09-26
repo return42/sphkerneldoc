@@ -59,12 +59,6 @@ sw.value
     switch is toggled. KE_VSW switches ignore this field and
     expect driver to supply value for the event.
 
-code
-    Device-specific data identifying the button/switch
-
-value
-    *undescribed*
-
 .. _`key_entry.description`:
 
 Description

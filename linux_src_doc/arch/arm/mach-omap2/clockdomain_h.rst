@@ -32,12 +32,6 @@ Members
 clkdm
     clockdomain to add wkdep+sleepdep on - set name member only
 
-name
-    *undescribed*
-
-ptr
-    *undescribed*
-
 .. _`clkdm_autodep.description`:
 
 Description
@@ -147,12 +141,6 @@ name
 
 pwrdm
     powerdomain containing this clockdomain
-
-name
-    clockdomain name
-
-ptr
-    *undescribed*
 
 clktrctrl_mask
     CLKTRCTRL/AUTOSTATE field mask in CM_CLKSTCTRL reg

@@ -88,7 +88,7 @@ seq_buf_printf
     :param const char \*fmt:
         printf format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`seq_buf_printf.description`:

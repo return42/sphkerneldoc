@@ -392,18 +392,6 @@ cra_u
     filled with callbacks. This field might be empty. This is the case
     for ahash, shash.
 
-ablkcipher
-    *undescribed*
-
-blkcipher
-    *undescribed*
-
-cipher
-    *undescribed*
-
-compress
-    *undescribed*
-
 cra_init
     Initialize the cryptographic transformation object. This function
     is used to initialize the cryptographic transformation object.

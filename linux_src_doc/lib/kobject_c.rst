@@ -77,7 +77,7 @@ kobject_set_name
     :param const char \*fmt:
         format string used to build the name
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kobject_set_name.description`:
@@ -134,7 +134,7 @@ kobject_add
     :param const char \*fmt:
         format to name the kobject with.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kobject_add.description`:
@@ -182,7 +182,7 @@ kobject_init_and_add
     :param const char \*fmt:
         the name of the kobject.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kobject_init_and_add.description`:

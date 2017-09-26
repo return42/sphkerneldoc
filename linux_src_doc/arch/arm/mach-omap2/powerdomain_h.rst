@@ -64,12 +64,6 @@ name
 voltdm
     voltagedomain containing this powerdomain
 
-name
-    Powerdomain name
-
-ptr
-    *undescribed*
-
 prcm_offs
     the address offset from CM_BASE/PRM_BASE
 

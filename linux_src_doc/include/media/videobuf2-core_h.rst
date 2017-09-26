@@ -244,20 +244,6 @@ m
     Union with memtype-specific data (@offset, \ ``userptr``\  or
     \ ``fd``\ ).
 
-offset
-    when memory in the associated struct vb2_buffer is
-    VB2_MEMORY_MMAP, equals the offset from the start of
-    the device memory for this plane (or is a "cookie" that
-    should be passed to \ :c:func:`mmap`\  called on the video node)
-
-userptr
-    when memory is VB2_MEMORY_USERPTR, a userspace pointer
-    pointing to this plane
-
-fd
-    when memory is VB2_MEMORY_DMABUF, a userspace file
-    descriptor associated with this plane
-
 data_offset
     offset in the plane to the start of data; usually 0,
     unless there is a header in front of the data

@@ -19,9 +19,6 @@ kthread_create
     :param  namefmt:
         printf-style format string for the thread name
 
-    :param  arg...:
-        arguments for \ ``namefmt``\ .
-
 .. _`kthread_create.description`:
 
 Description
@@ -49,7 +46,7 @@ kthread_run
     :param  namefmt:
         printf-style name for the thread.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`kthread_run.description`:

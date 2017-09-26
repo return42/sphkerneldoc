@@ -50,7 +50,7 @@ CL_PAGE_DEBUG
     :param  format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`cl_page_header`:
@@ -72,7 +72,7 @@ CL_PAGE_HEADER
     :param  format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`__page_in_use`:

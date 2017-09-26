@@ -117,7 +117,7 @@ lu_cdebug_printer
     :param const char \*format:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_object_header_print`:
@@ -525,7 +525,7 @@ lu_context_key_register_many
     :param struct lu_context_key \*k:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_context_key_degister_many`:
@@ -540,7 +540,7 @@ lu_context_key_degister_many
     :param struct lu_context_key \*k:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_context_key_revive_many`:
@@ -553,7 +553,7 @@ lu_context_key_revive_many
     :param struct lu_context_key \*k:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_context_key_quiesce_many`:
@@ -566,7 +566,7 @@ lu_context_key_quiesce_many
     :param struct lu_context_key \*k:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`lu_context_key_get`:

@@ -1799,28 +1799,10 @@ pic_ini_wr_drop
 pic_wrcrdtarb_ph_crdt_depleted_vplane
     *undescribed*
 
-pic_wrcrdtarb_ph_crdt_depleted
-    *undescribed*
-
-unused1
-    *undescribed*
-
 pic_wrcrdtarb_pd_crdt_depleted_vplane
     *undescribed*
 
-pic_wrcrdtarb_pd_crdt_depleted
-    *undescribed*
-
-unused2
-    *undescribed*
-
 pic_rdcrdtarb_nph_crdt_depleted_vplane
-    *undescribed*
-
-pic_rdcrdtarb_nph_crdt_depleted
-    *undescribed*
-
-unused3
     *undescribed*
 
 pic_ini_rd_vpin_drop
@@ -1874,31 +1856,7 @@ unused6
 pci_depl_h_vplane
     *undescribed*
 
-unused7
-    *undescribed*
-
-pci_depl_cplh
-    *undescribed*
-
-pci_depl_nph
-    *undescribed*
-
-pci_depl_ph
-    *undescribed*
-
 pci_depl_d_vplane
-    *undescribed*
-
-unused8
-    *undescribed*
-
-pci_depl_cpld
-    *undescribed*
-
-pci_depl_npd
-    *undescribed*
-
-pci_depl_pd
     *undescribed*
 
 xgmac_port

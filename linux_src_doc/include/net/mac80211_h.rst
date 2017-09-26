@@ -849,15 +849,6 @@ type
 u
     union holding the fields above
 
-rssi
-    relevant if \ :c:type:`struct type <type>`\  is \ ``RSSI_EVENT``\ 
-
-mlme
-    relevant if \ :c:type:`struct type <type>`\  is \ ``AUTH_EVENT``\ 
-
-ba
-    relevant if \ :c:type:`struct type <type>`\  is \ ``BAR_RX_EVENT``\  or \ ``BA_FRAME_TIMEOUT``\ 
-
 .. _`ieee80211_mu_group_data`:
 
 struct ieee80211_mu_group_data
@@ -1637,94 +1628,26 @@ ack_frame_id
 control
     union for control data
 
-{unnamed_union}
-    anonymous
-
-{unnamed_struct}
-    anonymous
-
-rates
-    *undescribed*
-
-rts_cts_rate_idx
-    *undescribed*
-
-use_rts
-    *undescribed*
-
-use_cts_prot
-    *undescribed*
-
-short_preamble
-    *undescribed*
-
-skip_table
-    *undescribed*
-
-jiffies
-    *undescribed*
-
-{unnamed_union}
-    anonymous
-
-vif
-    *undescribed*
-
-enqueue_time
-    *undescribed*
-
-hw_key
-    *undescribed*
-
-flags
-    transmit info flags, defined above
-
 ack
-    *undescribed*
-
-cookie
     *undescribed*
 
 status
     union for status data
 
-rates
+struct
     *undescribed*
 
-ack_signal
-    signal strength of the ACK frame
-
-ampdu_ack_len
-    number of acked aggregated frames.
-    relevant only if IEEE80211_TX_STAT_AMPDU was set.
-
-ampdu_len
-    number of aggregated frames.
-    relevant only if IEEE80211_TX_STAT_AMPDU was set.
-
-antenna
-    *undescribed*
-
-tx_time
-    *undescribed*
-
-status_driver_data
-    *undescribed*
-
-{unnamed_struct}
-    anonymous
-
-driver_rates
+IEEE80211_TX_MAX_RATES]
     *undescribed*
 
 pad
     *undescribed*
 
-rate_driver_data
+]
     *undescribed*
 
-driver_data
-    array of driver_data pointers
+]
+    *undescribed*
 
 .. _`ieee80211_tx_info.description`:
 
@@ -2976,48 +2899,24 @@ Members
 tkip
     TKIP data, containing IV32 and IV16 in host byte order
 
-iv32
-    *undescribed*
-
-iv16
-    *undescribed*
-
 ccmp
     PN data, most significant byte first (big endian,
     reverse order than in packet)
-
-pn
-    *undescribed*
 
 aes_cmac
     PN data, most significant byte first (big endian,
     reverse order than in packet)
 
-pn
-    *undescribed*
-
 aes_gmac
     PN data, most significant byte first (big endian,
     reverse order than in packet)
-
-pn
-    *undescribed*
 
 gcmp
     PN data, most significant byte first (big endian,
     reverse order than in packet)
 
-pn
-    *undescribed*
-
 hw
     data for HW-only (e.g. cipher scheme) keys
-
-seq
-    *undescribed*
-
-seq_len
-    *undescribed*
 
 .. _`ieee80211_cipher_scheme`:
 
@@ -3263,21 +3162,6 @@ rcu_head
 rate
     transmit rates/flags to be used by default.
     Overriding entries per-packet is possible by using cb tx control.
-
-idx
-    *undescribed*
-
-count
-    *undescribed*
-
-count_cts
-    *undescribed*
-
-count_rts
-    *undescribed*
-
-flags
-    *undescribed*
 
 .. _`ieee80211_sta`:
 
@@ -3992,12 +3876,6 @@ radiotap_timestamp
     field will be added and populated from the \ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ 
     device_timestamp. If the 'accuracy' member is non-negative, it's put
     into the accuracy radiotap field and the accuracy known flag is set.
-
-units_pos
-    *undescribed*
-
-accuracy
-    *undescribed*
 
 netdev_features
     netdev features to be set in each netdev created
@@ -9114,15 +8992,6 @@ count
 
 desc
     adjusted data from the NoA
-
-start
-    *undescribed*
-
-duration
-    *undescribed*
-
-interval
-    *undescribed*
 
 .. _`ieee80211_parse_p2p_noa`:
 

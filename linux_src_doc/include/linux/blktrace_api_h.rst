@@ -20,7 +20,7 @@ blk_add_cgroup_trace_msg
         format to print message in
         args...      Variable argument list for format
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`blk_add_cgroup_trace_msg.description`:

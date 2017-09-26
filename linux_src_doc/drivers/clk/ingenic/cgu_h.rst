@@ -321,8 +321,8 @@ parents
 pll
     information valid if type includes CGU_CLK_PLL
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 gate
     information valid if type includes CGU_CLK_GATE

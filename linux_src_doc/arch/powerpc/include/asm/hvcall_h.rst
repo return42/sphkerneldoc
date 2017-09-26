@@ -13,7 +13,7 @@ plpar_hcall_norets
     :param unsigned long opcode:
         The hypervisor call to make.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`plpar_hcall_norets.description`:
@@ -59,7 +59,7 @@ plpar_hcall_raw
     :param unsigned long \*retbuf:
         Buffer to store up to 4 return arguments in.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`plpar_hcall_raw.description`:

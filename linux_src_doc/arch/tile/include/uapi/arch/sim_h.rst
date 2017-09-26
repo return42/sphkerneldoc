@@ -214,9 +214,6 @@ _sim_syscall
     :param  nr:
         *undescribed*
 
-    :param  args...:
-        variable arguments
-
 .. _`_sim_syscall.description`:
 
 Description

@@ -339,18 +339,6 @@ subconnector
 margins
     left/right/top/bottom margins
 
-left
-    *undescribed*
-
-right
-    *undescribed*
-
-top
-    *undescribed*
-
-bottom
-    *undescribed*
-
 mode
     TV mode
 

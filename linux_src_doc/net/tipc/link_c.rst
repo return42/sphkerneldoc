@@ -149,12 +149,6 @@ backlogq
 backlog
     *undescribed*
 
-len
-    *undescribed*
-
-limit
-    *undescribed*
-
 snd_nxt
     *undescribed*
 

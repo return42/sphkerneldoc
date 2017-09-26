@@ -36,11 +36,5 @@ iso_buffer
 packets
     an array, with each element pointing to one packet
 
-buffer
-    *undescribed*
-
-offset
-    *undescribed*
-
 .. This file was automatic generated / don't edit.
 

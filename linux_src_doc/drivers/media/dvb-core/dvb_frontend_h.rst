@@ -851,18 +851,6 @@ layer.modulation
 layer.interleaving
     per layer interleaving.
 
-segment_count
-    *undescribed*
-
-fec
-    *undescribed*
-
-modulation
-    Frontend modulation type
-
-interleaving
-    interleaving
-
 stream_id
     If different than zero, enable substream filtering, if
     hardware supports (DVB-S2 and DVB-T2).

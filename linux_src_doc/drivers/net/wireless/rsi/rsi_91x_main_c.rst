@@ -43,7 +43,7 @@ rsi_dbg
     :param const char \*fmt:
         printf-style format for output message.
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`rsi_dbg.return`:

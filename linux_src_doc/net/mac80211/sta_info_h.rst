@@ -875,12 +875,6 @@ rx_stats
 rx_stats_avg
     *undescribed*
 
-signal
-    *undescribed*
-
-chain_signal
-    *undescribed*
-
 last_seq_ctrl
     last received seq/frag number from this STA (per TID
     plus one for non-QoS frames)
@@ -888,44 +882,8 @@ last_seq_ctrl
 status_stats
     TX status statistics
 
-filtered
-    *undescribed*
-
-retry_failed
-    *undescribed*
-
-retry_count
-    *undescribed*
-
-lost_packets
-    *undescribed*
-
-last_tdls_pkt_time
-    *undescribed*
-
-msdu_retries
-    *undescribed*
-
-msdu_failed
-    *undescribed*
-
-last_ack
-    *undescribed*
-
 tx_stats
     TX statistics
-
-packets
-    *undescribed*
-
-bytes
-    *undescribed*
-
-last_rate
-    *undescribed*
-
-msdu
-    *undescribed*
 
 tid_seq
     per-TID sequence numbers for sending to this STA

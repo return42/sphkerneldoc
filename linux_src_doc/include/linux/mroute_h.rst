@@ -59,8 +59,8 @@ mnode
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 mfc_mcastgrp
     destination multicast group address
@@ -79,42 +79,6 @@ mfc_flags
 
 mfc_un
     *undescribed*
-
-unres
-    *undescribed*
-
-expires
-    unresolved entry expire time
-
-unresolved
-    unresolved cached skbs
-
-res
-    *undescribed*
-
-last_assert
-    time of last assert
-
-minvif
-    minimum VIF id
-
-maxvif
-    maximum VIF id
-
-bytes
-    bytes that have passed for this entry
-
-pkt
-    packets that have passed for this entry
-
-wrong_if
-    number of wrong source interface hits
-
-lastuse
-    time of last use of the group (traffic or update)
-
-ttls
-    OIF TTL threshold array
 
 list
     global entry list

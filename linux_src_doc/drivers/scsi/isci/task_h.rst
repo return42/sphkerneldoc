@@ -88,15 +88,6 @@ proto
 resp
     *undescribed*
 
-resp_iu
-    *undescribed*
-
-d2h_fis
-    *undescribed*
-
-rsp_buf
-    *undescribed*
-
 lun
     *undescribed*
 

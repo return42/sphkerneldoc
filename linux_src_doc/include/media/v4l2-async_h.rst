@@ -97,36 +97,6 @@ match_type
 match
     union of per-bus type matching data sets
 
-fwnode
-    *undescribed*
-
-fwnode
-    *undescribed*
-
-device_name
-    *undescribed*
-
-name
-    *undescribed*
-
-i2c
-    *undescribed*
-
-adapter_id
-    *undescribed*
-
-address
-    *undescribed*
-
-custom
-    *undescribed*
-
-match
-    union of per-bus type matching data sets
-
-priv
-    *undescribed*
-
 list
     used to link struct v4l2_async_subdev objects, waiting to be
     probed, to a notifier->waiting list

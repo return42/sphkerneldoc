@@ -311,45 +311,6 @@ u.dbg.type
 u.dbg.service
     Service sub-system to connect (caif_debug_service
 
-at
-    *undescribed*
-
-type
-    *undescribed*
-
-util
-    *undescribed*
-
-service
-    *undescribed*
-
-dgm
-    *undescribed*
-
-connection_id
-    *undescribed*
-
-nsapi
-    *undescribed*
-
-rfm
-    *undescribed*
-
-connection_id
-    *undescribed*
-
-volume
-    *undescribed*
-
-dbg
-    *undescribed*
-
-type
-    *undescribed*
-
-service
-    *undescribed*
-
 .. _`sockaddr_caif.description`:
 
 Description

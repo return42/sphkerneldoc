@@ -72,8 +72,8 @@ affinity
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 masked
     [PCI MSI/X] Mask bits
@@ -81,29 +81,8 @@ masked
 msi_attrib
     *undescribed*
 
-is_msix
-    [PCI MSI/X] True if MSI-X
-
-multiple
-    [PCI MSI/X] log2 num of messages allocated
-
-multi_cap
-    [PCI MSI/X] log2 num of messages supported
-
-maskbit
-    [PCI MSI/X] Mask-Pending bit supported?
-
-is_64
-    [PCI MSI/X] Address size: 0=32bit 1=64bit
-
-entry_nr
-    [PCI MSI/X] Entry which is described by this descriptor
-
-default_irq
-    [PCI MSI/X] The default pre-assigned non-MSI irq
-
-{unnamed_union}
-    anonymous
+union
+    *undescribed*
 
 mask_pos
     [PCI MSI]   Mask register position

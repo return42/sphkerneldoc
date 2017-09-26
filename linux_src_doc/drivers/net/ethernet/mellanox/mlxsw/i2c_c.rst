@@ -53,21 +53,6 @@ cmd.mb_off_out
 cmd.lock
     command execution lock;
 
-mb_size_in
-    *undescribed*
-
-mb_off_in
-    *undescribed*
-
-mb_size_out
-    *undescribed*
-
-mb_off_out
-    *undescribed*
-
-lock
-    *undescribed*
-
 dev
     I2C device;
 

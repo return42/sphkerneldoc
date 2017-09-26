@@ -125,24 +125,6 @@ pool_max_index
 stats
     Statistics structure
 
-no_free_exch
-    *undescribed*
-
-no_free_exch_xid
-    *undescribed*
-
-xid_not_found
-    *undescribed*
-
-xid_busy
-    *undescribed*
-
-seq_not_found
-    *undescribed*
-
-non_bls_resp
-    *undescribed*
-
 .. _`fc_exch_mgr.description`:
 
 Description

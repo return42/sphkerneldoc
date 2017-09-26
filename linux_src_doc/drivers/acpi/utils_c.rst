@@ -68,7 +68,7 @@ acpi_handle_printk
     :param const char \*fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`acpi_handle_printk.description`:
@@ -99,7 +99,7 @@ __acpi_handle_debug
     :param const char \*fmt:
         *undescribed*
 
-    :param ... :
+    :param ellipsis ellipsis:
         variable arguments
 
 .. _`__acpi_handle_debug.description`:

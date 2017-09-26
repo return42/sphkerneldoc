@@ -88,12 +88,6 @@ rb_node
 pairs
     *undescribed*
 
-node
-    *undescribed*
-
-head
-    *undescribed*
-
 stat
     *undescribed*
 
@@ -148,8 +142,8 @@ filtered
 diff
     *undescribed*
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 row_offset
     *undescribed*
@@ -211,8 +205,8 @@ ops
 {unnamed_union}
     anonymous
 
-{unnamed_struct}
-    anonymous
+struct
+    *undescribed*
 
 hroot_in
     *undescribed*

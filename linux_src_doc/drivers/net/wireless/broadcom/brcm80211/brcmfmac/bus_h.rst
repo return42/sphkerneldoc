@@ -203,15 +203,6 @@ Members
 bus_priv
     pointer to private bus device.
 
-sdio
-    *undescribed*
-
-usb
-    *undescribed*
-
-pcie
-    *undescribed*
-
 proto_type
     protocol type, bcdc or msgbuf
 

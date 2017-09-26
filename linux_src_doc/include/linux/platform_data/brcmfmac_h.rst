@@ -207,9 +207,6 @@ bus
     Bus specific (union) device settings. Currently only
     SDIO.
 
-sdio
-    *undescribed*
-
 .. _`brcmfmac_platform_data`:
 
 struct brcmfmac_platform_data

@@ -53,7 +53,7 @@ TH_LOG
     :param  fmt:
         format string
 
-    :param ... :
+    :param ellipsis ellipsis:
         optional arguments
 
 .. _`th_log.description`:
