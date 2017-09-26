@@ -882,7 +882,7 @@ Definition
         int (*enum_dv_timings)(struct v4l2_subdev *sd, struct v4l2_enum_dv_timings *timings);
     #ifdef CONFIG_MEDIA_CONTROLLER
         int (*link_validate)(struct v4l2_subdev *sd, struct media_link *link,struct v4l2_subdev_format *source_fmt, struct v4l2_subdev_format *sink_fmt);
-    #endif 
+    #endif
         int (*get_frame_desc)(struct v4l2_subdev *sd, unsigned int pad, struct v4l2_mbus_frame_desc *fd);
         int (*set_frame_desc)(struct v4l2_subdev *sd, unsigned int pad, struct v4l2_mbus_frame_desc *fd);
     }

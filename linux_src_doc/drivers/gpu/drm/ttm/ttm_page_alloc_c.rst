@@ -104,11 +104,26 @@ mm_shrink
 options
     *undescribed*
 
+{unnamed_union}
+    anonymous
+
 pools
     All pool objects in use.
 
 {unnamed_struct}
     anonymous
+
+wc_pool
+    *undescribed*
+
+uc_pool
+    *undescribed*
+
+wc_pool_dma32
+    *undescribed*
+
+uc_pool_dma32
+    *undescribed*
 
 .. _`ttm_pool_manager.description`:
 

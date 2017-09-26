@@ -631,6 +631,11 @@ trigger
 replay
     scheduling of the effect (struct ff_replay)
 
+u
+    effect-specific structure (one of ff_constant_effect, ff_ramp_effect,
+    ff_periodic_effect, ff_condition_effect, ff_rumble_effect) further
+    defining effect parameters
+
 constant
     *undescribed*
 
@@ -645,9 +650,6 @@ condition
 
 rumble
     *undescribed*
-
-void
-    no arguments
 
 .. _`ff_effect.description`:
 

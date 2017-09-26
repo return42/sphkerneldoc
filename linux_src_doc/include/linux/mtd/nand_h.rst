@@ -586,10 +586,10 @@ Members
 type
     type of the timing
 
-sdr
-    *undescribed*
+timings
+    The timing, type according to \ ``type``\ 
 
-imings
+sdr
     *undescribed*
 
 .. _`nand_get_sdr_timings`:
@@ -898,6 +898,14 @@ jedec_version
 {unnamed_union}
     anonymous
 
+onfi_params
+    [INTERN] holds the ONFI page parameter when ONFI is
+    supported, 0 otherwise.
+
+jedec_params
+    [INTERN] holds the JEDEC parameter page when JEDEC is
+    supported, 0 otherwise.
+
 max_bb_per_die
     [INTERN] the max number of bad blocks each die of a
     this nand device will encounter their life times.
@@ -952,14 +960,14 @@ badblock_pattern
 priv
     [OPTIONAL] pointer to private chip data
 
+manufacturer
+    [INTERN] Contains manufacturer information
+
 desc
     *undescribed*
 
 priv
     [OPTIONAL] pointer to private chip data
-
-anufacturer
-    *undescribed*
 
 .. _`nand_flash_dev`:
 
@@ -1007,14 +1015,22 @@ Members
 name
     a human-readable name of the NAND chip
 
-struct
-    *undescribed*
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+mfr_id
+    manufecturer ID part of the full chip ID array (refers the same
+    memory address as \ ``id``\ [0])
+
+dev_id
+    device ID part of the full chip ID array (refers the same memory
+    address as \ ``id``\ [1])
 
 id
     full device ID array
-
-}
-    *undescribed*
 
 pagesize
     size of the NAND page in bytes; if 0, then the real page size (as
@@ -1036,13 +1052,23 @@ id_len
 oobsize
     OOB size
 
+ecc
+    ECC correctability and step information from the datasheet.
+
+ecc.strength_ds
+    The ECC correctability from the datasheet, same as the
+    \ ``ecc_strength_ds``\  in nand_chip{}.
+
+ecc.step_ds
+    The ECC step required by the \ ``ecc``\ .strength_ds, same as the
+    \ ``ecc_step_ds``\  in nand_chip{}, also from the datasheet.
+    For example, the "4bit ECC for each 512Byte" can be set with
+    NAND_ECC_INFO(4, 512).
+
 strength_ds
     *undescribed*
 
 step_ds
-    *undescribed*
-
-cc
     *undescribed*
 
 onfi_timing_mode_default

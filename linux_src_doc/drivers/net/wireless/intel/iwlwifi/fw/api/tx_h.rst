@@ -376,6 +376,9 @@ offload_assist
 tx_flags
     combination of TX_CMD_FLG\_\*
 
+scratch
+    scratch buffer used by the device
+
 try_cnt
     *undescribed*
 
@@ -383,9 +386,6 @@ btkill_cnt
     *undescribed*
 
 reserved
-    *undescribed*
-
-cratch
     *undescribed*
 
 rate_n_flags

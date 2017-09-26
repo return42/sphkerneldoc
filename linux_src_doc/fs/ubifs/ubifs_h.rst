@@ -410,6 +410,12 @@ lnum
 {unnamed_union}
     anonymous
 
+list
+    list of same-category lprops (for LPROPS_EMPTY and LPROPS_FREEABLE)
+
+hpos
+    heap position in heap of same-category lprops (other categories)
+
 .. _`ubifs_lpt_lprops`:
 
 struct ubifs_lpt_lprops
@@ -665,6 +671,15 @@ offs
 
 {unnamed_union}
     anonymous
+
+nnode
+    nnode child
+
+pnode
+    pnode child
+
+cnode
+    cnode child
 
 .. _`ubifs_nnode`:
 
@@ -996,6 +1011,12 @@ key
 {unnamed_union}
     anonymous
 
+znode
+    znode address in memory
+
+leaf
+    *undescribed*
+
 lnum
     LEB number of the target node (indexing node or data node)
 
@@ -1172,6 +1193,12 @@ Members
 
 {unnamed_union}
     anonymous
+
+len
+    fixed node length
+
+min_len
+    minimum possible node length
 
 max_len
     maximum possible node length

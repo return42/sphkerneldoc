@@ -146,13 +146,13 @@ transmq
 backlogq
     queue for messages waiting to be sent
 
+backlog
+    *undescribed*
+
 len
     *undescribed*
 
 limit
-    *undescribed*
-
-acklog
     *undescribed*
 
 snd_nxt

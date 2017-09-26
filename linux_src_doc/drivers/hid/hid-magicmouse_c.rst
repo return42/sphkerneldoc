@@ -53,6 +53,9 @@ scroll_accel
 scroll_jiffies
     Time of last scroll motion.
 
+touches
+    Most recent data for a touch, indexed by tracking ID.
+
 x
     *undescribed*
 
@@ -66,9 +69,6 @@ scroll_y
     *undescribed*
 
 size
-    *undescribed*
-
-ouches
     *undescribed*
 
 tracking_ids

@@ -96,28 +96,35 @@ it_signal
 {unnamed_union}
     anonymous
 
+it_pid
+    The pid of the process/task targeted by the signal
+
+it_process
+    The task to wakeup on clock_nanosleep (CPU timers)
+
 sigq
     Pointer to preallocated sigqueue
 
-timer
+it
+    Union representing the various posix timer type
+    internals. Also used for rcu freeing the timer.
+
+real
     *undescribed*
 
-eal
+timer
     *undescribed*
 
 cpu
     *undescribed*
 
+alarm
+    *undescribed*
+
 alarmtimer
     *undescribed*
 
-larm
-    *undescribed*
-
 rcu
-    *undescribed*
-
-t
     *undescribed*
 
 .. This file was automatic generated / don't edit.

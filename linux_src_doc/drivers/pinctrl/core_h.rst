@@ -299,13 +299,13 @@ pctldev
 dev_name
     the name of the device using this state
 
+data
+    Data specific to the setting type
+
 mux
     *undescribed*
 
 configs
-    *undescribed*
-
-ata
     *undescribed*
 
 .. _`pin_desc`:

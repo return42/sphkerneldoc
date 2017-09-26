@@ -1898,8 +1898,8 @@ Definition
         __u64 data;
         __u64 data_mask;
         __s32 action;
-    #define ETHTOOL_RXNTUPLE_ACTION_DROP (-1) 
-    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR (-2) 
+    #define ETHTOOL_RXNTUPLE_ACTION_DROP (-1)
+    #define ETHTOOL_RXNTUPLE_ACTION_CLEAR (-2)
     }
 
 .. _`ethtool_rx_ntuple_flow_spec.members`:
@@ -1910,32 +1910,8 @@ Members
 flow_type
     Type of match to perform, e.g. \ ``TCP_V4_FLOW``\ 
 
-tcp_ip4_spec
-    *undescribed*
-
-udp_ip4_spec
-    *undescribed*
-
-sctp_ip4_spec
-    *undescribed*
-
-ah_ip4_spec
-    *undescribed*
-
-esp_ip4_spec
-    *undescribed*
-
-usr_ip4_spec
-    *undescribed*
-
-ether_spec
-    *undescribed*
-
-hdata
-    *undescribed*
-
-_u
-    *undescribed*
+h_u
+    Flow field values to match (dependent on \ ``flow_type``\ )
 
 m_u
     Masks for flow field value bits to be ignored

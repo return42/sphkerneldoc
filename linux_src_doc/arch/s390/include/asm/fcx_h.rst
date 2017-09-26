@@ -310,6 +310,9 @@ dcw_offset
 count
     Count
 
+tsa
+    Transport-Status-Area
+
 iostat
     *undescribed*
 
@@ -317,9 +320,6 @@ ddpc
     *undescribed*
 
 intrg
-    *undescribed*
-
-sa
     *undescribed*
 
 .. _`dcw_intrg_data`:

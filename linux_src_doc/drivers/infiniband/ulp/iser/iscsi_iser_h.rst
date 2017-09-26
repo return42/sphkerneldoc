@@ -434,6 +434,12 @@ Members
 {unnamed_union}
     anonymous
 
+mr
+    memory region
+
+fmr_pool
+    pool of fmrs
+
 page_vec
     fast reg page list used by fmr pool
 

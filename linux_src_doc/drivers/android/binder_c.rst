@@ -106,6 +106,14 @@ work
 {unnamed_union}
     anonymous
 
+rb_node
+    element for proc->nodes tree
+    (protected by \ ``proc``\ ->inner_lock)
+
+dead_node
+    element for binder_dead_nodes list
+    (protected by binder_dead_nodes_lock)
+
 proc
     binder_proc that owns this node
     (invariant after initialized)
@@ -149,8 +157,36 @@ cookie
 {unnamed_struct}
     anonymous
 
+has_strong_ref
+    userspace notified of strong ref
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
+pending_strong_ref
+    userspace has acked notification of strong ref
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
+has_weak_ref
+    userspace notified of weak ref
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
+pending_weak_ref
+    userspace has acked notification of weak ref
+    (protected by \ ``proc``\ ->inner_lock if \ ``proc``\ 
+    and by \ ``lock``\ )
+
 {unnamed_struct}
     anonymous
+
+accept_fds
+    file descriptor operations supported for node
+    (invariant after initialized)
+
+min_priority
+    minimum scheduling priority
+    (invariant after initialized)
 
 has_async_transaction
     async transaction to node in progress

@@ -45,16 +45,16 @@ nr_autogrow
 entries
     *undescribed*
 
+priv
+    Per array entry priv area, users should access just its contents,
+    not set it to anything, as it is kept in synch with \ ``entries``\ , being
+    realloc'ed, \* for instance, in fdarray__{grow,filter}.
+
 idx
     *undescribed*
 
 ptr
     *undescribed*
-
-priv
-    Per array entry priv area, users should access just its contents,
-    not set it to anything, as it is kept in synch with \ ``entries``\ , being
-    realloc'ed, \* for instance, in fdarray__{grow,filter}.
 
 .. _`fdarray.description`:
 

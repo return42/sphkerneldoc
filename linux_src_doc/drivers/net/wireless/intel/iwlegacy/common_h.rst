@@ -36,24 +36,6 @@ Members
 hdr
     *undescribed*
 
-flags
-    *undescribed*
-
-val8
-    *undescribed*
-
-val16
-    *undescribed*
-
-val32
-    *undescribed*
-
-tx
-    *undescribed*
-
-payload
-    *undescribed*
-
 cmd
     *undescribed*
 

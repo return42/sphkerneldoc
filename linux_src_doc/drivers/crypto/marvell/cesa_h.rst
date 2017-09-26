@@ -175,13 +175,13 @@ Members
 desc
     CESA descriptor
 
+ctx
+    context associated to the crypto operation
+
 blkcipher
     *undescribed*
 
 hash
-    *undescribed*
-
-tx
     *undescribed*
 
 .. _`mv_cesa_op_ctx.description`:
@@ -246,6 +246,12 @@ next
 
 {unnamed_union}
     anonymous
+
+op
+    CESA operation attached to this TDMA descriptor
+
+data
+    raw data attached to this TDMA descriptor
 
 flags
     flags describing the TDMA transfer. See the
@@ -1082,13 +1088,13 @@ Members
 base
     *undescribed*
 
+req
+    type specific request information
+
 dma
     *undescribed*
 
 std
-    *undescribed*
-
-eq
     *undescribed*
 
 op_tmpl

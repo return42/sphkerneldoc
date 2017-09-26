@@ -132,13 +132,19 @@ ddata_addr
 asv
     *undescribed*
 
-struct
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+ats
+    *undescribed*
+
+asiv
     *undescribed*
 
 __asiv
-    *undescribed*
-
-}
     *undescribed*
 
 .. _`genwqe_ddcb_cmd.description`:

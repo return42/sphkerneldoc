@@ -80,6 +80,12 @@ pdev
 {unnamed_union}
     anonymous
 
+base
+    the base address of the LCD registers
+
+regmap
+    the regmap through which LCD registers are accessed
+
 offset
     the offset within regmap to the start of the LCD registers
 

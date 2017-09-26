@@ -94,13 +94,7 @@ pwr_down_mode
 pwr_down
     *undescribed*
 
-d32
-    *undescribed*
-
-d8
-    *undescribed*
-
-____cacheline_aligned
+data
     *undescribed*
 
 .. This file was automatic generated / don't edit.

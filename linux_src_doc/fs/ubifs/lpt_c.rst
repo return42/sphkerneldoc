@@ -984,9 +984,6 @@ Members
 {unnamed_union}
     anonymous
 
-in_tree
-    is the node in the tree in memory
-
 nnode
     where to keep a nnode
 
@@ -996,8 +993,30 @@ pnode
 cnode
     where to keep a cnode
 
-tr
+in_tree
+    is the node in the tree in memory
+
+ptr
     *undescribed*
+
+ptr.nnode
+    pointer to the nnode (if it is an nnode) which may be here or in
+    the tree
+
+ptr.pnode
+    ditto for pnode
+
+ptr.cnode
+    ditto for cnode
+
+nnode
+    where to keep a nnode
+
+pnode
+    where to keep a pnode
+
+cnode
+    where to keep a cnode
 
 .. _`scan_get_nnode`:
 

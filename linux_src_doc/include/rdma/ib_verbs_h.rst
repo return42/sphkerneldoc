@@ -220,10 +220,11 @@ Members
 sig_type
     specific signauture type
 
-dif
-    *undescribed*
+sig
+    union of all signature domain attributes that may
+    be used to set domain layout.
 
-ig
+dif
     *undescribed*
 
 .. _`ib_sig_attrs`:

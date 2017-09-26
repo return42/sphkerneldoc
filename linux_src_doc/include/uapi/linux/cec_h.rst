@@ -424,5 +424,14 @@ flags
 {unnamed_union}
     anonymous
 
+state_change
+    the event payload for CEC_EVENT_STATE_CHANGE.
+
+lost_msgs
+    the event payload for CEC_EVENT_LOST_MSGS.
+
+raw
+    array to pad the union.
+
 .. This file was automatic generated / don't edit.
 

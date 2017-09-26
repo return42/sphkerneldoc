@@ -177,13 +177,13 @@ Definition
 Members
 -------
 
+b_u
+    raw data
+
 u_flags
     *undescribed*
 
 u_data
-    *undescribed*
-
-_u
     *undescribed*
 
 b_sem

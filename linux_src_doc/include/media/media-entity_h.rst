@@ -151,13 +151,15 @@ Definition
 Members
 -------
 
+stack
+    Graph traversal stack; the stack contains information
+    on the path the media entities to be walked and the
+    links through which they were reached.
+
 entity
     *undescribed*
 
 link
-    *undescribed*
-
-tack
     *undescribed*
 
 ent_enum
@@ -247,8 +249,32 @@ list
 {unnamed_union}
     anonymous
 
+gobj0
+    Part of a union. Used to get the pointer for the first
+    graph_object of the link.
+
+source
+    Part of a union. Used only if the first object (gobj0) is
+    a pad. In that case, it represents the source pad.
+
+intf
+    Part of a union. Used only if the first object (gobj0) is
+    an interface.
+
 {unnamed_union}
     anonymous
+
+gobj1
+    Part of a union. Used to get the pointer for the second
+    graph_object of the link.
+
+sink
+    Part of a union. Used only if the second object (gobj1) is
+    a pad. In that case, it represents the sink pad.
+
+entity
+    Part of a union. Used only if the second object (gobj1) is
+    an entity.
 
 reverse
     Pointer to the link for the reverse direction of a pad to pad
@@ -501,6 +527,13 @@ use_count
 pipe
     Pipeline this entity belongs to.
 
+info
+    Union with devnode information.  Kept just for backward
+    compatibility.
+
+dev
+    *undescribed*
+
 major
     Devnode major number (zero if not applicable). Kept just
     for backward compatibility.
@@ -508,12 +541,6 @@ major
 minor
     Devnode minor number (zero if not applicable). Kept just
     for backward compatibility.
-
-ev
-    *undescribed*
-
-nfo
-    *undescribed*
 
 .. _`media_entity.description`:
 

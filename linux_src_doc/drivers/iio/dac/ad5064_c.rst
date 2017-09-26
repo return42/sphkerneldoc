@@ -142,12 +142,6 @@ use_internal_vref
 write
     register write callback
 
-i2c
-    *undescribed*
-
-spi
-    *undescribed*
-
 ____cacheline_aligned
     *undescribed*
 

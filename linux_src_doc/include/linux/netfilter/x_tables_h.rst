@@ -39,8 +39,20 @@ Members
 {unnamed_union}
     anonymous
 
+match
+    the match extension
+
+target
+    the target extension
+
 {unnamed_union}
     anonymous
+
+matchinfo
+    per-match data
+
+targinfo
+    *undescribed*
 
 state
     pointer to hook state this packet came from

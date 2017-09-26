@@ -77,6 +77,9 @@ cur_fw_img
 smem_cfg
     saved firmware SMEM configuration
 
+dump
+    debug dump data
+
 desc
     *undescribed*
 
@@ -90,9 +93,6 @@ conf
     *undescribed*
 
 non_collect_ts_start
-    *undescribed*
-
-ump
     *undescribed*
 
 .. This file was automatic generated / don't edit.

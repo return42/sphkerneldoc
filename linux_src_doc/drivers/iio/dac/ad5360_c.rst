@@ -85,14 +85,8 @@ vref_reg
 ctrl
     control register cache
 
-d32
-    *undescribed*
-
-d8
-    *undescribed*
-
-____cacheline_aligned
-    *undescribed*
+data
+    spi transfer buffers
 
 .. This file was automatic generated / don't edit.
 

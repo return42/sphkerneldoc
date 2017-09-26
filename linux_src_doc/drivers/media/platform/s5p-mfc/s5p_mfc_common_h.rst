@@ -277,19 +277,19 @@ b
 list
     *undescribed*
 
+cookie
+    *undescribed*
+
+raw
+    *undescribed*
+
 luma
     *undescribed*
 
 chroma
     *undescribed*
 
-aw
-    *undescribed*
-
 stream
-    *undescribed*
-
-ookie
     *undescribed*
 
 flags
@@ -1053,6 +1053,9 @@ rc_framerate_num
 rc_framerate_denom
     *undescribed*
 
+codec
+    *undescribed*
+
 h264
     *undescribed*
 
@@ -1060,9 +1063,6 @@ mpeg4
     *undescribed*
 
 vp8
-    *undescribed*
-
-odec
     *undescribed*
 
 .. _`s5p_mfc_codec_ops`:
@@ -1394,13 +1394,13 @@ ref_queue_cnt
 slice_mode
     *undescribed*
 
+slice_size
+    *undescribed*
+
 mb
     *undescribed*
 
 bits
-    *undescribed*
-
-lice_size
     *undescribed*
 
 c_ops

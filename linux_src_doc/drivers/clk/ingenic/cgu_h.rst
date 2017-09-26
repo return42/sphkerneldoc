@@ -315,17 +315,29 @@ parents
     within the clock_info array of the CGU, or -1 in entries
     which correspond to no valid parent
 
+{unnamed_union}
+    anonymous
+
 pll
     information valid if type includes CGU_CLK_PLL
 
 {unnamed_struct}
     anonymous
 
+gate
+    information valid if type includes CGU_CLK_GATE
+
+mux
+    information valid if type includes CGU_CLK_MUX
+
+div
+    information valid if type includes CGU_CLK_DIV
+
+fixdiv
+    information valid if type includes CGU_CLK_FIXDIV
+
 custom
     information valid if type includes CGU_CLK_CUSTOM
-
-}
-    *undescribed*
 
 .. _`ingenic_cgu`:
 

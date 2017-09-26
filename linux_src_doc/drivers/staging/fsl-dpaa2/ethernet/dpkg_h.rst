@@ -172,6 +172,12 @@ type
     DPKG_EXTRACT_FROM_DATA: selects 'from_data';
     DPKG_EXTRACT_FROM_PARSE: selects 'from_parse'
 
+extract
+    Selects extraction method
+
+from_hdr
+    *undescribed*
+
 prot
     *undescribed*
 
@@ -193,7 +199,7 @@ offset
 hdr_index
     *undescribed*
 
-rom_hdr
+from_data
     *undescribed*
 
 size
@@ -202,19 +208,13 @@ size
 offset
     *undescribed*
 
-rom_data
+from_parse
     *undescribed*
 
 size
     *undescribed*
 
 offset
-    *undescribed*
-
-rom_parse
-    *undescribed*
-
-xtract
     *undescribed*
 
 num_of_byte_masks

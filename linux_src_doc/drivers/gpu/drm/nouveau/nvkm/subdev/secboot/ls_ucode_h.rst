@@ -106,13 +106,13 @@ app_resident_data_size
 nb_overlays
     *undescribed*
 
+load_ovl
+    *undescribed*
+
 start
     *undescribed*
 
 size
-    *undescribed*
-
-oad_ovl
     *undescribed*
 
 compressed

@@ -134,6 +134,12 @@ skb
 {unnamed_union}
     anonymous
 
+option
+    When \ ``flags``\  & \ ``EFX_TX_BUF_OPTION``\ , a NIC-specific option descriptor.
+
+dma_addr
+    DMA address of the fragment.
+
 flags
     Flags for allocation and DMA mapping type
 

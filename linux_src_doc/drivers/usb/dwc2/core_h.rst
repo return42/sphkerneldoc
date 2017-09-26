@@ -994,7 +994,7 @@ Definition
         u32 hfnum_other_samples_b;
         u64 hfnum_other_frrem_accum_b;
     #endif
-    #endif 
+    #endif
     #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || \
         IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE) struct usb_gadget_driver *driver;
         int fifo_mem;
@@ -1018,7 +1018,7 @@ Definition
         unsigned int connected:1;
         struct dwc2_hsotg_ep *eps_in[MAX_EPS_CHANNELS];
         struct dwc2_hsotg_ep *eps_out[MAX_EPS_CHANNELS];
-    #endif 
+    #endif
     }
 
 .. _`dwc2_hsotg.members`:

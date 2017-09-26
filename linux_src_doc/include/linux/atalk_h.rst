@@ -21,8 +21,8 @@ Definition
         struct net_device *dev;
         struct atalk_addr address;
         int status;
-    #define ATIF_PROBE 1 
-    #define ATIF_PROBE_FAIL 2 
+    #define ATIF_PROBE 1
+    #define ATIF_PROBE_FAIL 2
         struct atalk_netrange nets;
         struct atalk_iface *next;
     }

@@ -112,6 +112,12 @@ reserved
 {unnamed_union}
     anonymous
 
+eparams
+    parameters used for type 'E'.
+
+sparams
+    parameters used for type 'S'.
+
 .. _`brcmf_p2p_pub_act_frame`:
 
 struct brcmf_p2p_pub_act_frame

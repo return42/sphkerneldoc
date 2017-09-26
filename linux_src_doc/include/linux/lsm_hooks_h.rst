@@ -203,13 +203,13 @@ Definition
         int (*tun_dev_attach_queue)(void *security);
         int (*tun_dev_attach)(struct sock *sk, void *security);
         int (*tun_dev_open)(void *security);
-    #endif 
+    #endif
     #ifdef CONFIG_SECURITY_INFINIBAND
         int (*ib_pkey_access)(void *sec, u64 subnet_prefix, u16 pkey);
         int (*ib_endport_manage_subnet)(void *sec, const char *dev_name, u8 port_num);
         int (*ib_alloc_security)(void **sec);
         void (*ib_free_security)(void *sec);
-    #endif 
+    #endif
     #ifdef CONFIG_SECURITY_NETWORK_XFRM
         int (*xfrm_policy_alloc_security)(struct xfrm_sec_ctx **ctxp,struct xfrm_user_sec_ctx *sec_ctx, gfp_t gfp);
         int (*xfrm_policy_clone_security)(struct xfrm_sec_ctx *old_ctx, struct xfrm_sec_ctx **new_ctx);
@@ -222,19 +222,19 @@ Definition
         int (*xfrm_policy_lookup)(struct xfrm_sec_ctx *ctx, u32 fl_secid, u8 dir);
         int (*xfrm_state_pol_flow_match)(struct xfrm_state *x,struct xfrm_policy *xp, const struct flowi *fl);
         int (*xfrm_decode_session)(struct sk_buff *skb, u32 *secid, int ckall);
-    #endif 
+    #endif
     #ifdef CONFIG_KEYS
         int (*key_alloc)(struct key *key, const struct cred *cred, unsigned long flags);
         void (*key_free)(struct key *key);
         int (*key_permission)(key_ref_t key_ref, const struct cred *cred, unsigned perm);
         int (*key_getsecurity)(struct key *key, char **_buffer);
-    #endif 
+    #endif
     #ifdef CONFIG_AUDIT
         int (*audit_rule_init)(u32 field, u32 op, char *rulestr, void **lsmrule);
         int (*audit_rule_known)(struct audit_krule *krule);
         int (*audit_rule_match)(u32 secid, u32 field, u32 op, void *lsmrule, struct audit_context *actx);
         void (*audit_rule_free)(void *lsmrule);
-    #endif 
+    #endif
     }
 
 .. _`security_list_options.members`:

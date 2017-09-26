@@ -532,7 +532,7 @@ Definition
         enum mei_pg_event pg_event;
     #ifdef CONFIG_PM
         struct dev_pm_domain pg_domain;
-    #endif 
+    #endif
         unsigned char rd_msg_buf[MEI_RD_MSG_BUF_SIZE];
         u32 rd_msg_hdr;
         u8 hbuf_depth;
@@ -557,7 +557,7 @@ Definition
         struct mutex cl_bus_lock;
     #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-    #endif 
+    #endif
         const struct mei_hw_ops *ops;
         char hw[0] __aligned(sizeof(void *));
     }

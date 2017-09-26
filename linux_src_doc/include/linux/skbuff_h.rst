@@ -236,6 +236,12 @@ Definition
 Members
 -------
 
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
 next
     Next buffer in list
 
@@ -245,17 +251,26 @@ prev
 {unnamed_union}
     anonymous
 
+tstamp
+    Time we arrived/left
+
+skb_mstamp
+    *undescribed*
+
 rbnode
     RB tree node, alternative to next/prev for netem/tcp
-
-}
-    *undescribed*
 
 sk
     Socket we are owned by
 
 {unnamed_union}
     anonymous
+
+dev
+    Device we arrived on/are leaving by
+
+dev_scratch
+    *undescribed*
 
 cb
     Control buffer. Free for use by every layer. Put private vars here
@@ -406,11 +421,20 @@ tc_from_ingress
 tc_index
     Traffic control index
 
+{unnamed_union}
+    anonymous
+
 csum
     Checksum (must include start/offset pair)
 
 {unnamed_struct}
     anonymous
+
+csum_start
+    Offset from skb->head where checksumming should start
+
+csum_offset
+    Offset from csum_start where checksum should be stored
 
 priority
     Packet queueing priority
@@ -430,14 +454,32 @@ vlan_tci
 {unnamed_union}
     anonymous
 
+napi_id
+    id of the NAPI struct this skb came from
+
+sender_cpu
+    *undescribed*
+
 secmark
     security marking
 
 {unnamed_union}
     anonymous
 
+mark
+    Generic packet mark
+
+reserved_tailroom
+    *undescribed*
+
 {unnamed_union}
     anonymous
+
+inner_protocol
+    Protocol (encapsulation)
+
+inner_ipproto
+    *undescribed*
 
 inner_transport_header
     Inner transport layer header (encapsulation)

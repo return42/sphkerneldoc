@@ -385,6 +385,13 @@ cra_type
     This field might be empty. In that case, there are no common
     callbacks. This is the case for: cipher, compress, shash.
 
+cra_u
+    Callbacks implementing the transformation. This is a union of
+    multiple structures. Depending on the type of transformation selected
+    by \ ``cra_type``\  and \ ``cra_flags``\  above, the associated structure must be
+    filled with callbacks. This field might be empty. This is the case
+    for ahash, shash.
+
 ablkcipher
     *undescribed*
 
@@ -395,9 +402,6 @@ cipher
     *undescribed*
 
 compress
-    *undescribed*
-
-ra_u
     *undescribed*
 
 cra_init

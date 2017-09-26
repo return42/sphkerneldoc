@@ -61,13 +61,13 @@ Members
 name
     Powerdomain name
 
+voltdm
+    voltagedomain containing this powerdomain
+
 name
     Powerdomain name
 
 ptr
-    *undescribed*
-
-oltdm
     *undescribed*
 
 prcm_offs

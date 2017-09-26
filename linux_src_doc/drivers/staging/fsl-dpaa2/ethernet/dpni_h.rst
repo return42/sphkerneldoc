@@ -123,6 +123,10 @@ Members
 num_dpbp
     Number of DPBPs
 
+pools
+    Array of buffer pools parameters; The number of valid entries
+    must match 'num_dpbp' value
+
 dpbp_id
     *undescribed*
 
@@ -130,9 +134,6 @@ buffer_size
     *undescribed*
 
 backup_pool
-    *undescribed*
-
-ools
     *undescribed*
 
 .. _`dpni_irq_index`:
@@ -868,6 +869,9 @@ Definition
 Members
 -------
 
+destination
+    *undescribed*
+
 id
     *undescribed*
 
@@ -880,20 +884,17 @@ hold_active
 priority
     *undescribed*
 
-estination
-    *undescribed*
-
 user_context
     User data, presented to the user along with any frames from
     this queue. Not relevant for Tx queues.
+
+flc
+    *undescribed*
 
 value
     *undescribed*
 
 stash_control
-    *undescribed*
-
-lc
     *undescribed*
 
 .. _`dpni_queue_id`:

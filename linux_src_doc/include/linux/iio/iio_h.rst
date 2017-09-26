@@ -316,6 +316,20 @@ scan_index
     Monotonic index to give ordering in scans when read
     from a buffer.
 
+scan_type
+    sign:           's' or 'u' to specify signed or unsigned
+    realbits:       Number of valid bits of data
+    storagebits:    Realbits + padding
+    shift:          Shift right by this before masking out
+    realbits.
+    repeat:         Number of times real/storage bits
+    repeats. When the repeat element is
+    more than 1, then the type element in
+    sysfs will show a repeat value.
+    Otherwise, the number of repetitions is
+    omitted.
+    endianness:     little or big endian
+
 sign
     *undescribed*
 
@@ -332,9 +346,6 @@ repeat
     *undescribed*
 
 endianness
-    *undescribed*
-
-can_type
     *undescribed*
 
 info_mask_separate

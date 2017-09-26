@@ -40,13 +40,16 @@ Members
 interrupt_mask
     *undescribed*
 
+tx_list
+    *undescribed*
+
 lock
     *undescribed*
 
 head
     *undescribed*
 
-x_list
+rx_list
     *undescribed*
 
 work
@@ -59,9 +62,6 @@ lock
     *undescribed*
 
 head
-    *undescribed*
-
-x_list
     *undescribed*
 
 stats

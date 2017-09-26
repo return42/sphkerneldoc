@@ -836,6 +836,21 @@ isdbt_sb_segment_count
 isdbt_layer_enabled
     ISDB Layer enabled (only ISDB standard)
 
+layer
+    ISDB per-layer data (only ISDB standard)
+
+layer.segment_count
+    Segment Count;
+
+layer.fec
+    per layer code rate;
+
+layer.modulation
+    per layer modulation;
+
+layer.interleaving
+    per layer interleaving.
+
 segment_count
     *undescribed*
 
@@ -847,9 +862,6 @@ modulation
 
 interleaving
     interleaving
-
-ayer
-    *undescribed*
 
 stream_id
     If different than zero, enable substream filtering, if

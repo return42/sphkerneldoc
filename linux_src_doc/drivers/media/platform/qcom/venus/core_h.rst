@@ -247,13 +247,13 @@ delayed_process_work
 ctrl_handler
     v4l control handler
 
+controls
+    a union of decoder and encoder control parameters
+
 dec
     *undescribed*
 
 enc
-    *undescribed*
-
-ontrols
     *undescribed*
 
 fh

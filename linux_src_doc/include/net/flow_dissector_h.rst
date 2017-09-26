@@ -191,6 +191,15 @@ Members
 {unnamed_union}
     anonymous
 
+v4addrs
+    IPv4 addresses
+
+v6addrs
+    IPv6 addresses
+
+tipcaddrs
+    *undescribed*
+
 .. _`flow_dissector_key_eth_addrs`:
 
 struct flow_dissector_key_eth_addrs

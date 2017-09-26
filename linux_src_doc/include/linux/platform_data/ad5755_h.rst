@@ -52,6 +52,28 @@ dc_dc_freq
 dc_dc_maxv
     DC-DC maximum allowed boost voltage.
 
+dac
+    *undescribed*
+
+dac.mode
+    The mode to be used for the DAC output.
+
+dac.ext_current_sense_resistor
+    Whether an external current sense resistor
+    is used.
+
+dac.enable_voltage_overrange
+    Whether to enable 20% voltage output overrange.
+
+dac.slew.enable
+    Whether to enable digital slew.
+
+dac.slew.rate
+    Slew rate of the digital slew.
+
+dac.slew.step_size
+    Slew step size of the digital slew.
+
 mode
     *undescribed*
 
@@ -61,6 +83,9 @@ ext_current_sense_resistor
 enable_voltage_overrange
     *undescribed*
 
+slew
+    *undescribed*
+
 enable
     *undescribed*
 
@@ -68,12 +93,6 @@ rate
     *undescribed*
 
 step_size
-    *undescribed*
-
-lew
-    *undescribed*
-
-ac
     *undescribed*
 
 .. This file was automatic generated / don't edit.

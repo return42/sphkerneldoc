@@ -2292,7 +2292,7 @@ Definition
     #ifdef CONFIG_BATMAN_ADV_NC
         atomic_t network_coding;
         struct batadv_priv_nc nc;
-    #endif 
+    #endif
     #ifdef CONFIG_BATMAN_ADV_BATMAN_V
         struct batadv_priv_bat_v bat_v;
     #endif

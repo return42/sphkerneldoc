@@ -56,14 +56,20 @@ Members
 mnode
     rhashtable list
 
-struct
-    *undescribed*
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+mfc_mcastgrp
+    destination multicast group address
+
+mfc_origin
+    source address
 
 cmparg
     used for rhashtable comparisons
-
-}
-    *undescribed*
 
 mfc_parent
     source interface (iif)
@@ -71,13 +77,19 @@ mfc_parent
 mfc_flags
     entry flags
 
+mfc_un
+    *undescribed*
+
+unres
+    *undescribed*
+
 expires
     unresolved entry expire time
 
 unresolved
     unresolved cached skbs
 
-nres
+res
     *undescribed*
 
 last_assert
@@ -103,12 +115,6 @@ lastuse
 
 ttls
     OIF TTL threshold array
-
-es
-    *undescribed*
-
-fc_un
-    *undescribed*
 
 list
     global entry list

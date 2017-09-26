@@ -296,7 +296,7 @@ Definition
         int major;
     #ifdef CONFIG_MODULES
         struct work_struct request_module_work;
-    #endif 
+    #endif
     #ifdef CONFIG_INTEL_TH_DEBUG
         struct dentry *dbg;
     #endif

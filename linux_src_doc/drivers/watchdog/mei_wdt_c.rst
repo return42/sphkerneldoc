@@ -76,7 +76,7 @@ Definition
         u16 timeout;
     #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-    #endif 
+    #endif
     }
 
 .. _`mei_wdt.members`:

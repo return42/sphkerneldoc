@@ -46,6 +46,12 @@ keylen_pad
 {unnamed_union}
     anonymous
 
+key_dma
+    *undescribed*
+
+key_virt
+    *undescribed*
+
 key_inline
     true - key can be inlined in the descriptor; false - key is
     referenced by the descriptor

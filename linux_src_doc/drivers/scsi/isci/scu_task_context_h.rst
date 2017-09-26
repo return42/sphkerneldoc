@@ -844,6 +844,54 @@ app_tag_gen_mask
 {unnamed_union}
     anonymous
 
+bgctl
+    *undescribed*
+
+bgctl_f
+    *undescribed*
+
+crc_verify
+    *undescribed*
+
+app_tag_chk
+    *undescribed*
+
+ref_tag_chk
+    *undescribed*
+
+op
+    *undescribed*
+
+legacy
+    *undescribed*
+
+invert_crc_seed
+    *undescribed*
+
+ref_tag_gen
+    *undescribed*
+
+fixed_ref_tag
+    *undescribed*
+
+invert_crc
+    *undescribed*
+
+app_ref_f_detect
+    *undescribed*
+
+uninit_dif_check_err
+    *undescribed*
+
+uninit_dif_bypass
+    *undescribed*
+
+app_f_detect
+    *undescribed*
+
+reserved_0
+    *undescribed*
+
 app_tag_verify_mask
     *undescribed*
 

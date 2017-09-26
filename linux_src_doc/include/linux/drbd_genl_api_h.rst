@@ -41,5 +41,12 @@ minor
 {unnamed_union}
     anonymous
 
+flags
+    possible operation modifiers (relevant only for user->kernel):
+    DRBD_GENL_F_SET_DEFAULTS
+
+ret_code
+    kernel->userland unicast cfg reply return code (union with flags);
+
 .. This file was automatic generated / don't edit.
 

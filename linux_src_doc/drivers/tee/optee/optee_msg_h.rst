@@ -161,6 +161,9 @@ Members
 attr
     attributes
 
+u
+    *undescribed*
+
 tmem
     parameter by temporary memory reference
 
@@ -169,9 +172,6 @@ rmem
 
 value
     parameter by opaque value
-
-void
-    no arguments
 
 .. _`optee_msg_param.description`:
 

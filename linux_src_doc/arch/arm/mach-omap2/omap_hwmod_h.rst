@@ -369,10 +369,10 @@ _clk
 node
     *undescribed*
 
-omap2
-    *undescribed*
+fw
+    interface firewall data
 
-w
+omap2
     *undescribed*
 
 width
@@ -807,13 +807,13 @@ sdma_reqs
 rst_lines
     *undescribed*
 
+prcm
+    PRCM data pertaining to this hwmod
+
 omap2
     *undescribed*
 
 omap4
-    *undescribed*
-
-rcm
     *undescribed*
 
 main_clk

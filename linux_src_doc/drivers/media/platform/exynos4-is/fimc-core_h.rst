@@ -756,6 +756,12 @@ handler
 {unnamed_struct}
     anonymous
 
+colorfx
+    image effect control
+
+colorfx_cbcr
+    Cb/Cr coefficients control
+
 rotate
     image rotation control
 

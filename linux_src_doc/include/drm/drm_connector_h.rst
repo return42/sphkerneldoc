@@ -336,6 +336,9 @@ Members
 subconnector
     selected subconnector
 
+margins
+    left/right/top/bottom margins
+
 left
     *undescribed*
 
@@ -346,9 +349,6 @@ top
     *undescribed*
 
 bottom
-    *undescribed*
-
-argins
     *undescribed*
 
 mode

@@ -75,14 +75,8 @@ chip_info
 vref_reg
     vref supply regulators
 
-d32
-    *undescribed*
-
-d8
-    *undescribed*
-
-____cacheline_aligned
-    *undescribed*
+data
+    spi transfer buffers
 
 .. This file was automatic generated / don't edit.
 

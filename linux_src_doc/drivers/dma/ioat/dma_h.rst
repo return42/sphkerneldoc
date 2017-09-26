@@ -166,6 +166,27 @@ Members
 {unnamed_union}
     anonymous
 
+hw
+    hardware DMA descriptor (for memcpy)
+
+xor
+    hardware xor descriptor
+
+xor_ex
+    hardware xor extension descriptor
+
+pq
+    hardware pq descriptor
+
+pq_ex
+    hardware pq extension descriptor
+
+pqu
+    hardware pq update descriptor
+
+raw
+    hardware raw (un-typed) descriptor
+
 len
     total transaction length for unmap
 

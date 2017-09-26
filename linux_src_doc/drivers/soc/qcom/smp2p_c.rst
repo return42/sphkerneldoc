@@ -61,14 +61,14 @@ valid_entries
 flags
     *undescribed*
 
+entries
+    individual communication entries
+
 name
     name of the entry
 
 value
     content of the entry
-
-ntries
-    *undescribed*
 
 .. _`smp2p_entry`:
 

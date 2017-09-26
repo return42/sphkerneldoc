@@ -33,13 +33,13 @@ Definition
 Members
 -------
 
+header
+    private variables used by IPv4/IPv6
+
 h4
     *undescribed*
 
 h6
-    *undescribed*
-
-eader
     *undescribed*
 
 cscov

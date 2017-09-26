@@ -236,13 +236,19 @@ Definition
 Members
 -------
 
+firmware
+    *undescribed*
+
+firmware.major
+    Firmware major number.
+
+firmware.minor
+    Firmware minor numbers.
+
 major
     *undescribed*
 
 minor
-    *undescribed*
-
-irmware
     *undescribed*
 
 patch_id

@@ -164,13 +164,13 @@ Definition
 Members
 -------
 
+ucode_reserved_space
+    *undescribed*
+
 reserved_dmem
     *undescribed*
 
 signatures
-    *undescribed*
-
-code_reserved_space
     *undescribed*
 
 wpr_region_id
@@ -182,7 +182,13 @@ wpr_offset
 mmu_mem_range
     *undescribed*
 
+regions
+    region descriptors
+
 no_regions
+    *undescribed*
+
+region_props
     *undescribed*
 
 start_addr
@@ -203,16 +209,13 @@ write_mask
 client_mask
     *undescribed*
 
-egion_props
-    *undescribed*
-
-egions
-    *undescribed*
-
 ucode_blob_size
     *undescribed*
 
 ucode_blob_base
+    *undescribed*
+
+vpr_desc
     *undescribed*
 
 vpr_enabled
@@ -225,9 +228,6 @@ vpr_end
     *undescribed*
 
 hdcp_policies
-    *undescribed*
-
-pr_desc
     *undescribed*
 
 .. _`hsflcn_acr_desc.description`:
@@ -280,6 +280,9 @@ Definition
 Members
 -------
 
+signature
+    signature to verify the firmware against
+
 prd_keys
     *undescribed*
 
@@ -293,9 +296,6 @@ b_dbg_present
     *undescribed*
 
 falcon_id
-    *undescribed*
-
-ignature
     *undescribed*
 
 ucode_off

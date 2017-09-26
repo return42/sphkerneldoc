@@ -63,14 +63,20 @@ Definition
 Members
 -------
 
+u
+    *undescribed*
+
+u.rb
+    link in the corresponding (free/used) RB-tree
+
+u.list
+    link in the protection queue
+
 rb
     *undescribed*
 
 list
     *undescribed*
-
-void
-    no arguments
 
 ec
     erase counter
@@ -1067,14 +1073,20 @@ copy_flag
 sqnum
     sequence number
 
+u
+    unions RB-tree or \ ``list``\  links
+
+u.rb
+    link in the per-volume RB-tree of \ :c:type:`struct ubi_ainf_peb <ubi_ainf_peb>`\  objects
+
+u.list
+    link in one of the eraseblock lists
+
 rb
     *undescribed*
 
 list
     *undescribed*
-
-void
-    no arguments
 
 .. _`ubi_ainf_peb.description`:
 

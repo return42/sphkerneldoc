@@ -90,6 +90,15 @@ lock
 {unnamed_union}
     anonymous
 
+freq_data
+    tuning word spi transmit buffer
+
+phase_data
+    tuning word spi transmit buffer
+
+data
+    spi transmit buffer
+
 .. _`iio_dev_attr_freq`:
 
 IIO_DEV_ATTR_FREQ

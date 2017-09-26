@@ -44,13 +44,14 @@ used
 obj
     Pointer to array of object pointers
 
+near
+    For each CPU, the index and distance to the nearest object,
+    based on affinity masks
+
 index
     *undescribed*
 
 dist
-    *undescribed*
-
-ear
     *undescribed*
 
 .. _`alloc_irq_cpu_rmap`:

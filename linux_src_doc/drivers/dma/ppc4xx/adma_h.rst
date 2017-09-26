@@ -188,17 +188,17 @@ Definition
         u8 descs_per_op;
         unsigned long flags;
         unsigned long reverse_flags[8];
-    #define PPC440SPE_DESC_INT 0 
-    #define PPC440SPE_ZERO_P 1 
-    #define PPC440SPE_ZERO_Q 2 
-    #define PPC440SPE_COHERENT 3 
-    #define PPC440SPE_DESC_WXOR 4 
-    #define PPC440SPE_DESC_RXOR 5 
-    #define PPC440SPE_DESC_RXOR123 8 
-    #define PPC440SPE_DESC_RXOR124 9 
-    #define PPC440SPE_DESC_RXOR125 10 
-    #define PPC440SPE_DESC_RXOR12 11 
-    #define PPC440SPE_DESC_RXOR_REV 12 
+    #define PPC440SPE_DESC_INT 0
+    #define PPC440SPE_ZERO_P 1
+    #define PPC440SPE_ZERO_Q 2
+    #define PPC440SPE_COHERENT 3
+    #define PPC440SPE_DESC_WXOR 4
+    #define PPC440SPE_DESC_RXOR 5
+    #define PPC440SPE_DESC_RXOR123 8
+    #define PPC440SPE_DESC_RXOR124 9
+    #define PPC440SPE_DESC_RXOR125 10
+    #define PPC440SPE_DESC_RXOR12 11
+    #define PPC440SPE_DESC_RXOR_REV 12
     #define PPC440SPE_DESC_PCHECK 13
     #define PPC440SPE_DESC_QCHECK 14
     #define PPC440SPE_DESC_RXOR_MSK 0x3
@@ -275,6 +275,12 @@ rxor_cursor
 
 {unnamed_union}
     anonymous
+
+xor_check_result
+    result of zero sum
+
+crc32_result
+    result crc calculation
 
 .. This file was automatic generated / don't edit.
 

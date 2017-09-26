@@ -47,6 +47,9 @@ endpoint_numbers_different
 reserved1
     *undescribed*
 
+connections
+    *undescribed*
+
 port_function_id
     contains the creator id of the application that opened
     this connection.
@@ -60,9 +63,6 @@ end_point_info
     endpoint.  Is 0 if in and out endpoints are the same.
 
 reserved
-    *undescribed*
-
-onnections
     *undescribed*
 
 .. _`palm_ext_connection_info.description`:

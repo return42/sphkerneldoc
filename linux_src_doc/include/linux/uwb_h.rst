@@ -152,6 +152,12 @@ type
 {unnamed_union}
     anonymous
 
+dev
+    *undescribed*
+
+devaddr
+    *undescribed*
+
 .. _`uwb_rsv_target.description`:
 
 Description

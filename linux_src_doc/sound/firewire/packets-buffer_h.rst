@@ -33,14 +33,14 @@ Members
 iso_buffer
     the memory containing the packets
 
+packets
+    an array, with each element pointing to one packet
+
 buffer
     *undescribed*
 
 offset
     *undescribed*
-
-packets
-    an array, with each element pointing to one packet
 
 .. This file was automatic generated / don't edit.
 

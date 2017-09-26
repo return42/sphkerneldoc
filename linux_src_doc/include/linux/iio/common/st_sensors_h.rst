@@ -126,14 +126,14 @@ addr_stat_drdy
     address to read status of DRDY (data ready) interrupt
     struct ig1 - represents the Interrupt Generator 1 of sensors.
 
+ig1
+    *undescribed*
+
 en_addr
     address of the enable ig1 register.
 
 en_mask
     mask to write the on/off value for enable.
-
-g1
-    *undescribed*
 
 .. _`st_sensor_transfer_buffer`:
 

@@ -92,6 +92,9 @@ bytesused
 length
     size of this plane (NOT the payload) in bytes
 
+m
+    *undescribed*
+
 mem_offset
     when memory in the associated struct v4l2_buffer is
     V4L2_MEMORY_MMAP, equals the offset from the start of
@@ -105,9 +108,6 @@ userptr
 fd
     when memory is V4L2_MEMORY_DMABUF, a userspace file
     descriptor associated with this plane
-
-void
-    no arguments
 
 data_offset
     offset in the plane to the start of data; usually 0,
@@ -198,6 +198,9 @@ memory
     enum v4l2_memory; the method, in which the actual video data is
     passed
 
+m
+    *undescribed*
+
 offset
     for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
     offset from the start of the device memory for this plane,
@@ -214,9 +217,6 @@ planes
 fd
     for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
     a userspace file descriptor associated with this buffer
-
-void
-    no arguments
 
 length
     size in bytes of the buffer (NOT its payload) for single-plane
@@ -457,6 +457,12 @@ flags
 {unnamed_union}
     anonymous
 
+ycbcr_enc
+    enum v4l2_ycbcr_encoding, Y'CbCr encoding
+
+hsv_enc
+    *undescribed*
+
 quantization
     enum v4l2_quantization, colorspace quantization
 
@@ -572,6 +578,9 @@ Members
 type
     enum v4l2_buf_type; type of the data stream
 
+fmt
+    *undescribed*
+
 pix
     definition of an image format
 
@@ -595,9 +604,6 @@ meta
 
 raw_data
     placeholder for future extensions and custom formats
-
-mt
-    *undescribed*
 
 .. _`v4l2_event_motion_det`:
 

@@ -45,6 +45,26 @@ code
 {unnamed_union}
     anonymous
 
+keycode
+    KEY_* code assigned to a key/button
+
+sw
+    *undescribed*
+
+sw.code
+    SW_* code assigned to a switch
+
+sw.value
+    Value that should be sent in an input even when KE_SW
+    switch is toggled. KE_VSW switches ignore this field and
+    expect driver to supply value for the event.
+
+code
+    Device-specific data identifying the button/switch
+
+value
+    *undescribed*
+
 .. _`key_entry.description`:
 
 Description

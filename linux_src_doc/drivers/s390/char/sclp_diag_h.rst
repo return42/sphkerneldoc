@@ -112,10 +112,10 @@ hdr
 route
     diagnostic route
 
-ftp
-    *undescribed*
+mdd
+    model-dependent data (@route dependent)
 
-dd
+ftp
     *undescribed*
 
 .. _`sclp_diag_sccb`:

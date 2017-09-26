@@ -267,16 +267,63 @@ Members
 family
     Address family number, must be AF_CAIF.
 
+u
+    Union of address data 'switched' by family.
+    :
+
+u.at
+    Applies when family = CAIFPROTO_AT.
+
+u.at.type
+    Type of AT link to set up (enum caif_at_type).
+
+u.util
+    Applies when family = CAIFPROTO_UTIL
+
+u.util.service
+    Utility service name.
+
+u.dgm
+    Applies when family = CAIFPROTO_DATAGRAM
+
+u.dgm.connection_id
+    Datagram connection id.
+
+u.dgm.nsapi
+    NSAPI of the PDP-Context.
+
+u.rfm
+    Applies when family = CAIFPROTO_RFM
+
+u.rfm.connection_id
+    Connection ID for RFM.
+
+u.rfm.volume
+    Volume to mount.
+
+u.dbg
+    Applies when family = CAIFPROTO_DEBUG.
+
+u.dbg.type
+    Type of debug connection to set up
+    (caif_debug_type).
+
+u.dbg.service
+    Service sub-system to connect (caif_debug_service
+
+at
+    *undescribed*
+
 type
     *undescribed*
 
-t
+util
     *undescribed*
 
 service
     *undescribed*
 
-til
+dgm
     *undescribed*
 
 connection_id
@@ -285,7 +332,7 @@ connection_id
 nsapi
     *undescribed*
 
-gm
+rfm
     *undescribed*
 
 connection_id
@@ -294,7 +341,7 @@ connection_id
 volume
     *undescribed*
 
-fm
+dbg
     *undescribed*
 
 type
@@ -302,12 +349,6 @@ type
 
 service
     *undescribed*
-
-bg
-    *undescribed*
-
-void
-    no arguments
 
 .. _`sockaddr_caif.description`:
 

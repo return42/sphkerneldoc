@@ -85,13 +85,13 @@ rb_node_in
 rb_node
     *undescribed*
 
+pairs
+    *undescribed*
+
 node
     *undescribed*
 
 head
-    *undescribed*
-
-airs
     *undescribed*
 
 stat
@@ -142,11 +142,32 @@ level
 filtered
     *undescribed*
 
+{unnamed_union}
+    anonymous
+
 diff
     *undescribed*
 
 {unnamed_struct}
     anonymous
+
+row_offset
+    *undescribed*
+
+nr_rows
+    *undescribed*
+
+init_have_children
+    *undescribed*
+
+unfolded
+    *undescribed*
+
+has_children
+    *undescribed*
+
+has_no_entry
+    *undescribed*
 
 srcline
     *undescribed*
@@ -187,13 +208,19 @@ parent_he
 ops
     *undescribed*
 
-struct
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+hroot_in
+    *undescribed*
+
+hroot_out
     *undescribed*
 
 sorted_chain
-    *undescribed*
-
-}
     *undescribed*
 
 callchain

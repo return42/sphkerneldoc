@@ -167,6 +167,9 @@ base
 bus_type
     bus type
 
+bus
+    bus configuration data structure
+
 parallel
     *undescribed*
 
@@ -174,9 +177,6 @@ mipi_csi1
     *undescribed*
 
 mipi_csi2
-    *undescribed*
-
-us
     *undescribed*
 
 link_frequencies

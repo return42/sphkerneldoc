@@ -131,11 +131,26 @@ Definition
 Members
 -------
 
-struct
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+hdr
+    *undescribed*
+
+payload
     *undescribed*
 
 {unnamed_struct}
     anonymous
+
+hdr_wide
+    *undescribed*
+
+payload_wide
+    *undescribed*
 
 .. _`iwl_device_cmd.description`:
 

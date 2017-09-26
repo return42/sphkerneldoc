@@ -49,6 +49,9 @@ Definition
 Members
 -------
 
+signature
+    *undescribed*
+
 prd_keys
     *undescribed*
 
@@ -77,9 +80,6 @@ depmap
     *undescribed*
 
 kdf
-    *undescribed*
-
-ignature
     *undescribed*
 
 ucode_off

@@ -64,6 +64,12 @@ Members
 {unnamed_union}
     anonymous
 
+data
+    data registers
+
+verdict
+    verdict register
+
 .. _`nft_regs.description`:
 
 Description
@@ -197,13 +203,13 @@ Definition
 Members
 -------
 
+key
+    element key
+
 buf
     *undescribed*
 
 val
-    *undescribed*
-
-ey
     *undescribed*
 
 priv

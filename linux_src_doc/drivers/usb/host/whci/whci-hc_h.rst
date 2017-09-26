@@ -255,13 +255,13 @@ cur_window
 scratch
     *undescribed*
 
+overlay
+    *undescribed*
+
 qtd
     *undescribed*
 
 itd
-    *undescribed*
-
-verlay
     *undescribed*
 
 .. _`whc_qhead.description`:
@@ -348,6 +348,13 @@ qh
 
 {unnamed_union}
     anonymous
+
+qtd
+    up to 8 qTDs (for qsets for control, bulk and interrupt
+    transfers)
+
+itd
+    up to 8 iTDs (for qsets for isochronous transfers)
 
 qset_dma
     DMA address for this qset

@@ -265,6 +265,11 @@ ps_disabled
 bf_data
     *undescribed*
 
+beacon_stats
+    beacon statistics, containing the # of received beacons,
+    # of received beacons accumulated over FW restart, and the current
+    average signal of beacons retrieved from the firmware
+
 num_beacons
     *undescribed*
 
@@ -272,9 +277,6 @@ accu_num_beacons
     *undescribed*
 
 avg_signal
-    *undescribed*
-
-eacon_stats
     *undescribed*
 
 ap_beacon_time
@@ -301,6 +303,9 @@ mcast_sta
 phy_ctxt
     *undescribed*
 
+rekey_data
+    *undescribed*
+
 kck
     *undescribed*
 
@@ -311,9 +316,6 @@ replay_ctr
     *undescribed*
 
 valid
-    *undescribed*
-
-ekey_data
     *undescribed*
 
 tx_key_idx

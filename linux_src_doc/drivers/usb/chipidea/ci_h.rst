@@ -55,6 +55,9 @@ type
 name
     string description of the endpoint
 
+qh
+    queue head for this endpoint
+
 queue
     *undescribed*
 
@@ -62,9 +65,6 @@ ptr
     *undescribed*
 
 dma
-    *undescribed*
-
-h
     *undescribed*
 
 wedge

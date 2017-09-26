@@ -137,11 +137,11 @@ reset_delay
 pwron_mask
     Mask with the appropriate bit set that would cause thepunit to power this phy if written to BXT_P_CR_GT_DISP_PWRON.
 
+channel
+    struct containing per channel information.
+
 port
     which port maps to this channel.
-
-hannel
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

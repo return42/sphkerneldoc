@@ -104,6 +104,12 @@ Members
 {unnamed_union}
     anonymous
 
+node
+    node in the ion_device buffers tree
+
+list
+    *undescribed*
+
 dev
     back pointer to the ion_device
 

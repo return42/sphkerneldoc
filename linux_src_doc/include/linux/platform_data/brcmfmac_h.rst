@@ -203,10 +203,11 @@ country_codes
     If available, pointer to struct for translating country
     codes.
 
-sdio
-    *undescribed*
+bus
+    Bus specific (union) device settings. Currently only
+    SDIO.
 
-us
+sdio
     *undescribed*
 
 .. _`brcmfmac_platform_data`:

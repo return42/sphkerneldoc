@@ -204,6 +204,12 @@ Members
 {unnamed_union}
     anonymous
 
+action
+    action
+
+match
+    match
+
 mapping_value
     in case the field has some mapping this value
     specified the mapping value

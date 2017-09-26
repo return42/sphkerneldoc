@@ -139,6 +139,9 @@ voltage_reg
 voltage_mask
     mask to control regulator voltage
 
+expand_register
+    *undescribed*
+
 voltage_limit
     *undescribed*
 
@@ -150,9 +153,6 @@ voltage_reg
 
 voltage_mask
     mask to control regulator voltage
-
-xpand_register
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

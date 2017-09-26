@@ -84,6 +84,9 @@ irqs
 pm_wakeup_sources
     *undescribed*
 
+pm_suspend_backup
+    *undescribed*
+
 imr
     *undescribed*
 
@@ -91,9 +94,6 @@ odsr
     *undescribed*
 
 cfgr
-    *undescribed*
-
-pm_suspend_backup
     *undescribed*
 
 dev

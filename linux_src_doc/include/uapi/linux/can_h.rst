@@ -136,16 +136,16 @@ can_family
 can_ifindex
     CAN network interface index.
 
+can_addr
+    protocol specific address information
+
+tp
+    *undescribed*
+
 rx_id
     *undescribed*
 
 tx_id
-    *undescribed*
-
-p
-    *undescribed*
-
-an_addr
     *undescribed*
 
 .. _`can_filter`:

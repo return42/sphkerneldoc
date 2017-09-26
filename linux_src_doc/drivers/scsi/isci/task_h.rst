@@ -85,6 +85,9 @@ complete
 proto
     *undescribed*
 
+resp
+    *undescribed*
+
 resp_iu
     *undescribed*
 
@@ -92,9 +95,6 @@ d2h_fis
     *undescribed*
 
 rsp_buf
-    *undescribed*
-
-esp
     *undescribed*
 
 lun

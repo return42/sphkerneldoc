@@ -74,6 +74,12 @@ qp
 {unnamed_union}
     anonymous
 
+fmr_pool
+    *undescribed*
+
+fr_pool
+    *undescribed*
+
 done
     *undescribed*
 
@@ -422,12 +428,46 @@ Members
 {unnamed_union}
     anonymous
 
+fmr
+    *undescribed*
+
+next
+    *undescribed*
+
+end
+    *undescribed*
+
+fr
+    *undescribed*
+
+next
+    *undescribed*
+
+end
+    *undescribed*
+
+gen
+    *undescribed*
+
+next
+    *undescribed*
+
+end
+    *undescribed*
+
 desc
     Pointer to the element of the SRP buffer descriptor array
     that is being filled in.
 
 {unnamed_union}
     anonymous
+
+pages
+    Array with DMA addresses of pages being considered for
+    memory registration.
+
+sg
+    *undescribed*
 
 base_dma_addr
     DMA address of the first page that has not yet been mapped.

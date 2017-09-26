@@ -71,6 +71,14 @@ subtable_valid
 {unnamed_union}
     anonymous
 
+probe_table
+    Callback to the driver being probed when table
+    match is successful
+
+probe_subtbl
+    Callback to the driver being probed when table and
+    subtable match (and optional callback is successful)
+
 driver_data
     Sideband data provided back to the driver
 

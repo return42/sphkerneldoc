@@ -158,11 +158,23 @@ load_blob
 {unnamed_struct}
     anonymous
 
+load_bl_header
+    *undescribed*
+
+__load_apps
+    *undescribed*
+
 unload_blob
     *undescribed*
 
 {unnamed_struct}
     anonymous
+
+unload_bl_header
+    *undescribed*
+
+__unload_apps
+    *undescribed*
 
 hsbl_blob
     *undescribed*

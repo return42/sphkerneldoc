@@ -122,6 +122,12 @@ ucast_oif
 mcast_oif
     *undescribed*
 
+rxopt
+    *undescribed*
+
+bits
+    *undescribed*
+
 srcrt
     *undescribed*
 
@@ -167,13 +173,7 @@ rxorigdstaddr
 recvfragsize
     *undescribed*
 
-its
-    *undescribed*
-
 all
-    *undescribed*
-
-xopt
     *undescribed*
 
 recverr

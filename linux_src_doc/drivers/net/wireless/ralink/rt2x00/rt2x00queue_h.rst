@@ -606,6 +606,12 @@ length
 header_length
     Length of 802.11 header.
 
+u
+    *undescribed*
+
+plcp
+    *undescribed*
+
 length_high
     PLCP length high word.
 
@@ -621,7 +627,7 @@ service
 ifs
     IFS value.
 
-lcp
+ht
     *undescribed*
 
 mcs
@@ -641,12 +647,6 @@ txop
 
 wcid
     *undescribed*
-
-t
-    *undescribed*
-
-void
-    no arguments
 
 rate_mode
     Rate mode (See \ ``enum``\  rate_modulation).

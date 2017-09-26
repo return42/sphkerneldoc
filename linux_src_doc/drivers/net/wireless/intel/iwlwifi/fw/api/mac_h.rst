@@ -681,6 +681,27 @@ ac
 {unnamed_union}
     anonymous
 
+ap
+    *undescribed*
+
+go
+    *undescribed*
+
+sta
+    *undescribed*
+
+p2p_sta
+    *undescribed*
+
+p2p_dev
+    *undescribed*
+
+pibss
+    *undescribed*
+
+ibss
+    *undescribed*
+
 .. _`iwl_missed_beacons_notif`:
 
 struct iwl_missed_beacons_notif

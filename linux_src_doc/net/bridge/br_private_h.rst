@@ -59,8 +59,21 @@ stats
 {unnamed_union}
     anonymous
 
+br
+    if MASTER flag set, this points to a bridge struct
+
+port
+    if MASTER flag unset, this points to a port struct
+
 {unnamed_union}
     anonymous
+
+refcnt
+    if MASTER flag set, this is bumped for each port referencing it
+
+brvlan
+    if MASTER flag unset, this points to the global per-VLAN context
+    for this VLAN entry
 
 tinfo
     *undescribed*

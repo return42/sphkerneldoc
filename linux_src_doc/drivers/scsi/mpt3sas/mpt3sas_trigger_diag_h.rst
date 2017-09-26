@@ -290,6 +290,9 @@ Members
 trigger_type
     trigger type (see MPT3SAS_TRIGGER_XXXX)
 
+u
+    trigger condition that caused trigger to be sent
+
 master
     *undescribed*
 
@@ -301,9 +304,6 @@ scsi
 
 mpi
     *undescribed*
-
-void
-    no arguments
 
 .. This file was automatic generated / don't edit.
 

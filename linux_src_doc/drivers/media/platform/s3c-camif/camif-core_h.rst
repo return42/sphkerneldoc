@@ -385,6 +385,12 @@ ctrl_test_pattern
 {unnamed_struct}
     anonymous
 
+ctrl_colorfx
+    *undescribed*
+
+ctrl_colorfx_cbcr
+    *undescribed*
+
 test_pattern
     test pattern controls
 

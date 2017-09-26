@@ -141,14 +141,14 @@ Members
 direction
     *undescribed*
 
+u
+    *undescribed*
+
 tx
     Tx channel configuration
 
 rx
     Rx flow configuration
-
-void
-    no arguments
 
 .. _`knav_dma_desc`:
 

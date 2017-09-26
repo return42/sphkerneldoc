@@ -69,8 +69,17 @@ msg
 affinity
     Optional pointer to a cpu affinity mask for this descriptor
 
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
 masked
     [PCI MSI/X] Mask bits
+
+msi_attrib
+    *undescribed*
 
 is_msix
     [PCI MSI/X] True if MSI-X
@@ -93,20 +102,20 @@ entry_nr
 default_irq
     [PCI MSI/X] The default pre-assigned non-MSI irq
 
-si_attrib
-    *undescribed*
-
 {unnamed_union}
     anonymous
+
+mask_pos
+    [PCI MSI]   Mask register position
+
+mask_base
+    [PCI MSI-X] Mask register base address
 
 platform
     [platform]  Platform device specific msi descriptor data
 
 fsl_mc
     [fsl-mc]    FSL MC device specific msi descriptor data
-
-}
-    *undescribed*
 
 .. _`msi_domain_ops`:
 

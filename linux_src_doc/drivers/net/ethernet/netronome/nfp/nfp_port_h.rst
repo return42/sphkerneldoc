@@ -130,11 +130,32 @@ app
 dl_port
     devlink port structure
 
-struct
-    *undescribed*
+{unnamed_union}
+    anonymous
 
 {unnamed_struct}
     anonymous
+
+eth_id
+    for \ ``NFP_PORT_PHYS_PORT``\  port ID in NFP enumeration scheme
+
+eth_port
+    for \ ``NFP_PORT_PHYS_PORT``\  translated ETH Table port entry
+
+eth_stats
+    for \ ``NFP_PORT_PHYS_PORT``\  MAC stats if available
+
+{unnamed_struct}
+    anonymous
+
+pf_id
+    for \ ``NFP_PORT_PF_PORT``\ , \ ``NFP_PORT_VF_PORT``\  ID of the PCI PF (0-3)
+
+vf_id
+    for \ ``NFP_PORT_VF_PORT``\  ID of the PCI VF within \ ``pf_id``\ 
+
+vnic
+    for \ ``NFP_PORT_PF_PORT``\ , \ ``NFP_PORT_VF_PORT``\  vNIC ctrl memory
 
 port_list
     entry on pf's list of ports

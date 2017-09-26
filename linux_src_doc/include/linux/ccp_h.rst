@@ -777,14 +777,14 @@ mod
 mod_len
     length in bytes of modulus
 
+u
+    *undescribed*
+
 mm
     module math parameters
 
 pm
     point math parameters
-
-void
-    no arguments
 
 ecc_result
     result of the ECC operation
@@ -863,6 +863,9 @@ engine
 engine_error
     CCP engine return code
 
+u
+    engine specific structures, refer to specific engine struct below
+
 aes
     *undescribed*
 
@@ -886,9 +889,6 @@ passthru_nomap
 
 ecc
     *undescribed*
-
-void
-    no arguments
 
 callback
     operation completion callback function

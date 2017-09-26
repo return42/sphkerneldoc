@@ -85,14 +85,8 @@ pwr_down_mask
 pwr_down_mode
     current power down mode
 
-d32
-    *undescribed*
-
-d8
-    *undescribed*
-
-____cacheline_aligned
-    *undescribed*
+data
+    spi transfer buffers
 
 .. This file was automatic generated / don't edit.
 

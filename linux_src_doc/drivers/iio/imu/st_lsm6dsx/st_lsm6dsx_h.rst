@@ -98,7 +98,7 @@ Definition
         const struct st_lsm6dsx_transfer_function *tf;
     #if defined(CONFIG_SPI_MASTER)
         struct st_lsm6dsx_transfer_buffer tb;
-    #endif 
+    #endif
     }
 
 .. _`st_lsm6dsx_hw.members`:

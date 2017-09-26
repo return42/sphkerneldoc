@@ -59,8 +59,8 @@ Definition
         struct task_struct *target;
         void *addr_filters;
         unsigned long addr_filters_gen;
-    #define PERF_HES_STOPPED 0x01 
-    #define PERF_HES_UPTODATE 0x02 
+    #define PERF_HES_STOPPED 0x01
+    #define PERF_HES_UPTODATE 0x02
     #define PERF_HES_ARCH 0x04
         int state;
         local64_t prev_count;
@@ -79,23 +79,89 @@ Definition
 Members
 -------
 
-struct
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+config
+    *undescribed*
+
+last_tag
+    *undescribed*
+
+config_base
+    *undescribed*
+
+event_base
+    *undescribed*
+
+event_base_rdpmc
+    *undescribed*
+
+idx
+    *undescribed*
+
+last_cpu
+    *undescribed*
+
+flags
+    *undescribed*
+
+extra_reg
+    *undescribed*
+
+branch_reg
     *undescribed*
 
 {unnamed_struct}
     anonymous
 
-{unnamed_struct}
-    anonymous
+hrtimer
+    *undescribed*
 
 {unnamed_struct}
     anonymous
 
-{unnamed_struct}
-    anonymous
+tp_list
+    *undescribed*
 
 {unnamed_struct}
     anonymous
+
+pwr_acc
+    *undescribed*
+
+ptsc
+    *undescribed*
+
+{unnamed_struct}
+    anonymous
+
+info
+    *undescribed*
+
+bp_list
+    *undescribed*
+
+{unnamed_struct}
+    anonymous
+
+iommu_bank
+    *undescribed*
+
+iommu_cntr
+    *undescribed*
+
+padding
+    *undescribed*
+
+conf
+    *undescribed*
+
+conf1
+    *undescribed*
 
 target
     *undescribed*
@@ -177,9 +243,9 @@ Definition
         int (*event_init) (struct perf_event *event);
         void (*event_mapped) (struct perf_event *event, struct mm_struct *mm);
         void (*event_unmapped) (struct perf_event *event, struct mm_struct *mm);
-    #define PERF_EF_START 0x01 
-    #define PERF_EF_RELOAD 0x02 
-    #define PERF_EF_UPDATE 0x04 
+    #define PERF_EF_START 0x01
+    #define PERF_EF_RELOAD 0x02
+    #define PERF_EF_UPDATE 0x04
         int (*add) (struct perf_event *event, int flags);
         void (*del) (struct perf_event *event, int flags);
         void (*start) (struct perf_event *event, int flags);
@@ -547,7 +613,7 @@ Definition
         int cgrp_defer_enabled;
     #endif
         struct list_head sb_list;
-    #endif 
+    #endif
     }
 
 .. _`perf_event.members`:

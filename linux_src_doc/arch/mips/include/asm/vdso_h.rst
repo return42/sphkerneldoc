@@ -97,6 +97,42 @@ Members
 {unnamed_struct}
     anonymous
 
+xtime_sec
+    Current real time (seconds part).
+
+xtime_nsec
+    Current real time (nanoseconds part, shifted).
+
+wall_to_mono_sec
+    Wall-to-monotonic offset (seconds part).
+
+wall_to_mono_nsec
+    Wall-to-monotonic offset (nanoseconds part).
+
+seq_count
+    Counter to synchronise updates (odd = updating).
+
+cs_shift
+    Clocksource shift value.
+
+clock_mode
+    Clocksource to use for time functions.
+
+cs_mult
+    Clocksource multiplier value.
+
+cs_cycle_last
+    Clock cycle value at last update.
+
+cs_mask
+    Clocksource mask value.
+
+tz_minuteswest
+    Minutes west of Greenwich (from timezone).
+
+tz_dsttime
+    Type of DST correction (from timezone).
+
 page
     *undescribed*
 

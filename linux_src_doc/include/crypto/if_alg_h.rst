@@ -65,13 +65,13 @@ outlen
 areqlen
     Length of this data structure
 
+cra_u
+    Cipher request
+
 aead_req
     *undescribed*
 
 skcipher_req
-    *undescribed*
-
-ra_u
     *undescribed*
 
 .. _`af_alg_ctx`:

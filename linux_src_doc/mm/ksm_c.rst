@@ -132,8 +132,14 @@ Definition
 Members
 -------
 
+{unnamed_union}
+    anonymous
+
 node
     rb node of this ksm page in the stable tree
+
+{unnamed_struct}
+    anonymous
 
 head
     (overlaying parent) \ :c:type:`struct migrate_nodes <migrate_nodes>`\  indicates temporarily on that list
@@ -141,11 +147,23 @@ head
 {unnamed_struct}
     anonymous
 
+hlist_dup
+    linked into the stable_node->hlist with a stable_node chain
+
+list
+    linked into migrate_nodes, pending placement in the proper node tree
+
 hlist
     hlist head of rmap_items using this ksm page
 
 {unnamed_union}
     anonymous
+
+kpfn
+    page frame number of this ksm page (perhaps temporarily on wrong nid)
+
+chain_prune_time
+    time of the last full garbage collection
 
 rmap_hlist_len
     number of rmap_item entries in hlist or STABLE_NODE_CHAIN
@@ -200,6 +218,12 @@ rmap_list
 {unnamed_union}
     anonymous
 
+anon_vma
+    pointer to anon_vma for this mm,address, when in stable tree
+
+nid
+    NUMA node id of unstable tree in which linked (may not match page)
+
 mm
     the memory structure this rmap_item is pointing into
 
@@ -209,11 +233,20 @@ address
 oldchecksum
     previous checksum of the page at that virtual address
 
+{unnamed_union}
+    anonymous
+
 node
     rb node of this rmap_item in the unstable tree
 
 {unnamed_struct}
     anonymous
+
+head
+    pointer to stable_node heading this list in the stable tree
+
+hlist
+    link into hlist of rmap_items hanging off that stable_node
 
 .. _`replace_page`:
 

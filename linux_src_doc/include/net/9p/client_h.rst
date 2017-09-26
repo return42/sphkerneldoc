@@ -240,25 +240,25 @@ status
 trans
     tranport instance state and API
 
+trans_opts
+    *undescribed*
+
+fd
+    *undescribed*
+
 rfd
     *undescribed*
 
 wfd
     *undescribed*
 
-d
+tcp
     *undescribed*
 
 port
     *undescribed*
 
 privport
-    *undescribed*
-
-cp
-    *undescribed*
-
-rans_opts
     *undescribed*
 
 fidpool

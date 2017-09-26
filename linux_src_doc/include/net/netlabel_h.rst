@@ -108,19 +108,31 @@ domain
 cache
     NetLabel LSM specific cache
 
+attr
+    *undescribed*
+
+attr.mls
+    MLS sensitivity label
+
+attr.mls.cat
+    MLS category bitmap
+
+attr.mls.lvl
+    MLS sensitivity level
+
+attr.secid
+    LSM specific secid token
+
+mls
+    *undescribed*
+
 cat
     *undescribed*
 
 lvl
     *undescribed*
 
-ls
-    *undescribed*
-
 secid
-    *undescribed*
-
-ttr
     *undescribed*
 
 .. _`netlbl_lsm_secattr.description`:

@@ -104,22 +104,22 @@ Definition
         u8 chip_select;
         u8 bits_per_word;
         u16 mode;
-    #define SPI_CPHA 0x01 
-    #define SPI_CPOL 0x02 
-    #define SPI_MODE_0 (0|0) 
+    #define SPI_CPHA 0x01
+    #define SPI_CPOL 0x02
+    #define SPI_MODE_0 (0|0)
     #define SPI_MODE_1 (0|SPI_CPHA)
     #define SPI_MODE_2 (SPI_CPOL|0)
     #define SPI_MODE_3 (SPI_CPOL|SPI_CPHA)
-    #define SPI_CS_HIGH 0x04 
-    #define SPI_LSB_FIRST 0x08 
-    #define SPI_3WIRE 0x10 
-    #define SPI_LOOP 0x20 
-    #define SPI_NO_CS 0x40 
-    #define SPI_READY 0x80 
-    #define SPI_TX_DUAL 0x100 
-    #define SPI_TX_QUAD 0x200 
-    #define SPI_RX_DUAL 0x400 
-    #define SPI_RX_QUAD 0x800 
+    #define SPI_CS_HIGH 0x04
+    #define SPI_LSB_FIRST 0x08
+    #define SPI_3WIRE 0x10
+    #define SPI_LOOP 0x20
+    #define SPI_NO_CS 0x40
+    #define SPI_READY 0x80
+    #define SPI_TX_DUAL 0x100
+    #define SPI_TX_QUAD 0x200
+    #define SPI_RX_DUAL 0x400
+    #define SPI_RX_QUAD 0x800
         int irq;
         void *controller_state;
         void *controller_data;
@@ -338,12 +338,12 @@ Definition
         u32 min_speed_hz;
         u32 max_speed_hz;
         u16 flags;
-    #define SPI_CONTROLLER_HALF_DUPLEX BIT(0) 
-    #define SPI_CONTROLLER_NO_RX BIT(1) 
-    #define SPI_CONTROLLER_NO_TX BIT(2) 
-    #define SPI_CONTROLLER_MUST_RX BIT(3) 
-    #define SPI_CONTROLLER_MUST_TX BIT(4) 
-    #define SPI_MASTER_GPIO_SS BIT(5) 
+    #define SPI_CONTROLLER_HALF_DUPLEX BIT(0)
+    #define SPI_CONTROLLER_NO_RX BIT(1)
+    #define SPI_CONTROLLER_NO_TX BIT(2)
+    #define SPI_CONTROLLER_MUST_RX BIT(3)
+    #define SPI_CONTROLLER_MUST_TX BIT(4)
+    #define SPI_MASTER_GPIO_SS BIT(5)
         bool slave;
         size_t (*max_transfer_size)(struct spi_device *spi);
         size_t (*max_message_size)(struct spi_device *spi);
@@ -695,9 +695,9 @@ Definition
         unsigned cs_change:1;
         unsigned tx_nbits:3;
         unsigned rx_nbits:3;
-    #define SPI_NBITS_SINGLE 0x01 
-    #define SPI_NBITS_DUAL 0x02 
-    #define SPI_NBITS_QUAD 0x04 
+    #define SPI_NBITS_SINGLE 0x01
+    #define SPI_NBITS_DUAL 0x02
+    #define SPI_NBITS_QUAD 0x04
         u8 bits_per_word;
         u16 delay_usecs;
         u32 speed_hz;

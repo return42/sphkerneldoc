@@ -80,10 +80,10 @@ ignore_probe_fail
 country_codes
     If available, pointer to struct for translating country codes
 
-sdio
-    *undescribed*
+bus
+    Bus specific platform data. Only SDIO at the mmoment.
 
-us
+sdio
     *undescribed*
 
 .. This file was automatic generated / don't edit.

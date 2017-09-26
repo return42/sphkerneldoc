@@ -138,7 +138,7 @@ Members
 u_reg64
     *undescribed*
 
-defined__BIG_ENDIAN_BITFIELD
+s
     *undescribed*
 
 reserved_49_63
@@ -152,9 +152,6 @@ addr
 
 reserved_49_63
     *undescribed*
-
-void
-    no arguments
 
 .. _`zip_zptr_addr_s.description`:
 
@@ -208,7 +205,7 @@ Members
 u_reg64
     *undescribed*
 
-defined__BIG_ENDIAN_BITFIELD
+s
     *undescribed*
 
 reserved_112_127
@@ -246,9 +243,6 @@ length
 
 reserved_112_127
     *undescribed*
-
-void
-    no arguments
 
 .. _`zip_zptr_ctl_s.description`:
 
@@ -375,7 +369,7 @@ Members
 u_reg64
     *undescribed*
 
-defined__BIG_ENDIAN_BITFIELD
+s
     *undescribed*
 
 doneint
@@ -588,9 +582,6 @@ reserved_960_1023
 reserved_960_1023
     *undescribed*
 
-void
-    no arguments
-
 .. _`zip_nptr_s`:
 
 union zip_nptr_s
@@ -628,7 +619,7 @@ Members
 u_reg64
     *undescribed*
 
-defined__BIG_ENDIAN_BITFIELD
+s
     *undescribed*
 
 reserved_49_63
@@ -642,9 +633,6 @@ addr
 
 reserved_49_63
     *undescribed*
-
-void
-    no arguments
 
 .. _`zip_nptr_s.description`:
 
@@ -707,7 +695,7 @@ Members
 u_reg64
     *undescribed*
 
-defined__BIG_ENDIAN_BITFIELD
+s
     *undescribed*
 
 reserved_49_63
@@ -757,9 +745,6 @@ length
 
 reserved_112_127
     *undescribed*
-
-void
-    no arguments
 
 .. _`zip_zptr_s.description`:
 
@@ -833,7 +818,7 @@ Members
 u_reg64
     *undescribed*
 
-defined__BIG_ENDIAN_BITFIELD
+s
     *undescribed*
 
 crc32
@@ -913,9 +898,6 @@ doneint
 
 totalbitsprocessed
     *undescribed*
-
-void
-    no arguments
 
 .. _`zip_zres_s.description`:
 

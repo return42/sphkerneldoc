@@ -44,13 +44,34 @@ scan_ms
 polarity
     Pin polarity, active high or low.
 
-struct
-    *undescribed*
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+up
+    GPIO line for up value.
+
+down
+    GPIO line for down value.
+
+left
+    GPIO line for left value.
+
+right
+    GPIO line for right value.
+
+bleft
+    GPIO line for left button.
+
+bmiddle
+    GPIO line for middle button.
+
+bright
+    GPIO line for right button.
 
 pins
-    *undescribed*
-
-}
     *undescribed*
 
 .. _`gpio_mouse_platform_data.description`:

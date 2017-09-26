@@ -21,8 +21,8 @@ Definition
         __u16 pid;
         __u16 if_num;
         __u8 feedtype;
-    #define DVB_NET_FEEDTYPE_MPE 0 
-    #define DVB_NET_FEEDTYPE_ULE 1 
+    #define DVB_NET_FEEDTYPE_MPE 0
+    #define DVB_NET_FEEDTYPE_ULE 1
     }
 
 .. _`dvb_net_if.members`:

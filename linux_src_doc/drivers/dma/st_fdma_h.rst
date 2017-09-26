@@ -87,6 +87,10 @@ daddr
 {unnamed_union}
     anonymous
 
+generic
+    generic node for free running/paced transfert type
+    2 others transfert type are possible, but not yet implemented
+
 .. _`st_fdma_hw_node.description`:
 
 Description

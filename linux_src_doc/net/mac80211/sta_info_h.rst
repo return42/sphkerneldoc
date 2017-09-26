@@ -872,18 +872,21 @@ last_connected
 rx_stats
     RX statistics
 
+rx_stats_avg
+    *undescribed*
+
 signal
     *undescribed*
 
 chain_signal
     *undescribed*
 
-x_stats_avg
-    *undescribed*
-
 last_seq_ctrl
     last received seq/frag number from this STA (per TID
     plus one for non-QoS frames)
+
+status_stats
+    TX status statistics
 
 filtered
     *undescribed*
@@ -909,8 +912,8 @@ msdu_failed
 last_ack
     *undescribed*
 
-tatus_stats
-    *undescribed*
+tx_stats
+    TX statistics
 
 packets
     *undescribed*
@@ -922,9 +925,6 @@ last_rate
     *undescribed*
 
 msdu
-    *undescribed*
-
-x_stats
     *undescribed*
 
 tid_seq

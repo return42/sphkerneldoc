@@ -160,6 +160,12 @@ header
 {unnamed_union}
     anonymous
 
+sc
+    fields structure for scsi command DW-3 to DW-7
+
+qr
+    fields structure for query request DW-3 to DW-7
+
 .. _`utp_cmd_rsp`:
 
 struct utp_cmd_rsp
@@ -234,6 +240,12 @@ header
 
 {unnamed_union}
     anonymous
+
+sr
+    fields structure for scsi command DW-3 to DW-12
+
+qr
+    fields structure for query request DW-3 to DW-7
 
 .. _`utp_upiu_task_req`:
 

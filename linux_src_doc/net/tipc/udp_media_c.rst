@@ -40,6 +40,12 @@ port
 {unnamed_union}
     anonymous
 
+ipv4
+    *undescribed*
+
+ipv6
+    *undescribed*
+
 .. _`udp_media_addr.description`:
 
 Description

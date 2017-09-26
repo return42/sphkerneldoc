@@ -105,6 +105,12 @@ Definition
 Members
 -------
 
+u
+    *undescribed*
+
+bits
+    *undescribed*
+
 device
     *undescribed*
 
@@ -114,14 +120,8 @@ function
 bus
     *undescribed*
 
-its
-    *undescribed*
-
 word
     *undescribed*
-
-void
-    no arguments
 
 segment_id
     *undescribed*

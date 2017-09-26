@@ -85,14 +85,8 @@ ctrl
 channels
     iio channel spec for the device
 
-d32
-    *undescribed*
-
-d8
-    *undescribed*
-
-____cacheline_aligned
-    *undescribed*
+data
+    spi transfer buffers
 
 .. This file was automatic generated / don't edit.
 

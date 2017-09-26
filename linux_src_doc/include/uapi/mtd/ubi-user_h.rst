@@ -250,6 +250,9 @@ count
 padding1
     reserved for future, not used, has to be zeroed
 
+ents
+    *undescribed*
+
 vol_id
     ID of the volume to re-name
 
@@ -261,9 +264,6 @@ padding2
 
 name
     new volume name
-
-nts
-    *undescribed*
 
 .. _`ubi_rnvol_req.description`:
 

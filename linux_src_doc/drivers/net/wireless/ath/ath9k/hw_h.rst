@@ -111,7 +111,7 @@ Definition
         void (*ani_cache_ini_regs)(struct ath_hw *ah);
     #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
         bool (*is_aic_enabled)(struct ath_hw *ah);
-    #endif 
+    #endif
     }
 
 .. _`ath_hw_private_ops.members`:

@@ -240,6 +240,10 @@ min_length
     minimum required size of this plane (NOT the payload) in bytes.
     \ ``length``\  is always greater or equal to \ ``min_length``\ .
 
+m
+    Union with memtype-specific data (@offset, \ ``userptr``\  or
+    \ ``fd``\ ).
+
 offset
     when memory in the associated struct vb2_buffer is
     VB2_MEMORY_MMAP, equals the offset from the start of
@@ -253,9 +257,6 @@ userptr
 fd
     when memory is VB2_MEMORY_DMABUF, a userspace file
     descriptor associated with this plane
-
-void
-    no arguments
 
 data_offset
     offset in the plane to the start of data; usually 0,

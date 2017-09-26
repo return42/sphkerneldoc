@@ -160,6 +160,12 @@ length
 {unnamed_union}
     anonymous
 
+msg_id
+    message id
+
+message
+    textual message from the rpm
+
 .. _`qcom_rpm_message.description`:
 
 Description

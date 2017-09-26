@@ -200,6 +200,9 @@ Definition
 Members
 -------
 
+bus_priv
+    pointer to private bus device.
+
 sdio
     *undescribed*
 
@@ -207,9 +210,6 @@ usb
     *undescribed*
 
 pcie
-    *undescribed*
-
-us_priv
     *undescribed*
 
 proto_type

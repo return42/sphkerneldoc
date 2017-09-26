@@ -36,6 +36,12 @@ Members
 {unnamed_union}
     anonymous
 
+skb
+    sk_buff associated with this buffer
+
+frag
+    *undescribed*
+
 dma_addr
     DMA mapping address of the buffer
 
@@ -292,11 +298,23 @@ Members
 nfp_net
     Backpointer to nfp_net structure
 
+{unnamed_union}
+    anonymous
+
 napi
     NAPI structure for this ring vec
 
 {unnamed_struct}
     anonymous
+
+tasklet
+    *undescribed*
+
+queue
+    *undescribed*
+
+lock
+    *undescribed*
 
 tx_ring
     Pointer to TX ring

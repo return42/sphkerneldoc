@@ -177,5 +177,14 @@ async_tx
 {unnamed_union}
     anonymous
 
+xor_check_result
+    result of zero sum
+
+crc32_result
+    result crc calculation
+
+pq_check_result
+    *undescribed*
+
 .. This file was automatic generated / don't edit.
 

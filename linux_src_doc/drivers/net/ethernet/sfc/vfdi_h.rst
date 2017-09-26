@@ -212,6 +212,84 @@ rc
 reserved2
     *undescribed*
 
+u
+    *undescribed*
+
+u.init_evq.index
+    Index of event queue to create.
+
+u.init_evq.buf_count
+    Number of 4k buffers backing event queue.
+
+u.init_evq.addr
+    Array of length \ ``u``\ .init_evq.buf_count containing DMA
+    address of each page backing the event queue.
+
+u.init_rxq.index
+    Index of receive queue to create.
+
+u.init_rxq.buf_count
+    Number of 4k buffers backing receive queue.
+
+u.init_rxq.evq
+    Instance of event queue to target receive events at.
+
+u.init_rxq.label
+    Label used in receive events.
+
+u.init_rxq.flags
+    Unused.
+
+u.init_rxq.addr
+    Array of length \ ``u``\ .init_rxq.buf_count containing DMA
+    address of each page backing the receive queue.
+
+u.init_txq.index
+    Index of transmit queue to create.
+
+u.init_txq.buf_count
+    Number of 4k buffers backing transmit queue.
+
+u.init_txq.evq
+    Instance of event queue to target transmit completion
+    events at.
+
+u.init_txq.label
+    Label used in transmit completion events.
+
+u.init_txq.flags
+    Checksum offload flags.
+
+u.init_txq.addr
+    Array of length \ ``u``\ .init_txq.buf_count containing DMA
+    address of each page backing the transmit queue.
+
+u.mac_filter.rxq
+    Insert MAC filter at VF local address/VLAN targeting
+    all traffic at this receive queue.
+
+u.mac_filter.flags
+    MAC filter flags.
+
+u.set_status_page.dma_addr
+    Base address for the \ :c:type:`struct vfdi_status <vfdi_status>`\ .
+    This address must be page-aligned and the PF may write up to a
+    whole page (allowing for extension of the structure).
+
+u.set_status_page.peer_page_count
+    Number of additional pages the VF
+    has provided into which peer addresses may be DMAd.
+
+u.set_status_page.peer_page_addr
+    Array of DMA addresses of pages.
+    If the number of peers exceeds 256, then the VF must provide
+    additional pages in this array. The PF will then DMA up to
+    512 vfdi_endpoint structures into each page.  These addresses
+    must be page-aligned.
+
+init_evq
+    *undescribed*
+
 index
     *undescribed*
 
@@ -221,7 +299,7 @@ buf_count
 addr
     *undescribed*
 
-nit_evq
+init_rxq
     *undescribed*
 
 index
@@ -245,7 +323,7 @@ reserved
 addr
     *undescribed*
 
-nit_rxq
+init_txq
     *undescribed*
 
 index
@@ -269,7 +347,7 @@ reserved
 addr
     *undescribed*
 
-nit_txq
+mac_filter
     *undescribed*
 
 rxq
@@ -278,7 +356,7 @@ rxq
 flags
     *undescribed*
 
-ac_filter
+set_status_page
     *undescribed*
 
 dma_addr
@@ -289,12 +367,6 @@ peer_page_count
 
 peer_page_addr
     *undescribed*
-
-et_status_page
-    *undescribed*
-
-void
-    no arguments
 
 .. _`vfdi_status`:
 

@@ -240,6 +240,15 @@ part_buf_count
 {unnamed_union}
     anonymous
 
+part_buf16
+    *undescribed*
+
+part_buf32
+    *undescribed*
+
+part_buf
+    Simple buffer for partial fifo reads/writes.
+
 push_data
     Pointer to FIFO push function.
 

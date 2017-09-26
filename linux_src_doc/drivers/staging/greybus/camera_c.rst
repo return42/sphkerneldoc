@@ -54,13 +54,13 @@ mutex
 state
     the current module state
 
+debugfs
+    debugfs entries for camera protocol operations testing
+
 root
     *undescribed*
 
 buffers
-    *undescribed*
-
-ebugfs
     *undescribed*
 
 module

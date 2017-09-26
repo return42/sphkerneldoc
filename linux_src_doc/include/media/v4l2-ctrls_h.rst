@@ -334,8 +334,28 @@ nr_of_dims
 {unnamed_union}
     anonymous
 
+step
+    The control's step value for non-menu controls.
+
+menu_skip_mask
+    The control's skip mask for menu controls. This makes it
+    easy to skip menu items that are not valid. If bit X is set,
+    then menu item X is skipped. Of course, this only works for
+    menus with <= 32 menu items. There are no menus that come
+    close to that number, so this is OK. Should we ever need more,
+    then this will have to be extended to a u64 or a bit array.
+
 {unnamed_union}
     anonymous
+
+qmenu
+    A const char * array for all menu items. Array entries that are
+    empty strings ("") correspond to non-existing menu items (this
+    is in addition to the menu_skip_mask above). The last entry
+    must be NULL.
+
+qmenu_int
+    *undescribed*
 
 flags
     The control's flags.
@@ -350,11 +370,11 @@ priv
 val
     The control's new s32 value.
 
+cur
+    The control's current value.
+
 val
     The control's new s32 value.
-
-ur
-    *undescribed*
 
 p_new
     The control's new value represented via a union with provides

@@ -229,6 +229,9 @@ Members
 base
     the basic header
 
+u
+    packet type dependent header
+
 cmd_submit
     *undescribed*
 
@@ -240,9 +243,6 @@ cmd_unlink
 
 ret_unlink
     *undescribed*
-
-void
-    no arguments
 
 .. This file was automatic generated / don't edit.
 

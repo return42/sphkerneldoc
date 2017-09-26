@@ -1403,6 +1403,12 @@ scale
 {unnamed_union}
     anonymous
 
+uvalue
+    *undescribed*
+
+svalue
+    *undescribed*
+
 .. _`dtv_stats.description`:
 
 Description
@@ -1532,10 +1538,16 @@ cmd
 reserved
     Not used.
 
+u
+    Union with the values for the command.
+
 data
     *undescribed*
 
 st
+    *undescribed*
+
+buffer
     *undescribed*
 
 data
@@ -1549,12 +1561,6 @@ reserved1
 
 reserved2
     *undescribed*
-
-uffer
-    *undescribed*
-
-void
-    no arguments
 
 result
     Result of the command set (currently unused).

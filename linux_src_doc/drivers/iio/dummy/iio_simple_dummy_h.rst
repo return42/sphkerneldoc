@@ -36,7 +36,7 @@ Definition
         int event_val;
         bool event_en;
         s64 event_timestamp;
-    #endif 
+    #endif
     }
 
 .. _`iio_dummy_state.members`:

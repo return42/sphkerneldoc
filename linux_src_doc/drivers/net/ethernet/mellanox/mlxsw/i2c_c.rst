@@ -35,6 +35,24 @@ Definition
 Members
 -------
 
+cmd
+    *undescribed*
+
+cmd.mb_size_in
+    input mailbox size;
+
+cmd.mb_off_in
+    input mailbox offset in register space;
+
+cmd.mb_size_out
+    output mailbox size;
+
+cmd.mb_off_out
+    output mailbox offset in register space;
+
+cmd.lock
+    command execution lock;
+
 mb_size_in
     *undescribed*
 
@@ -48,9 +66,6 @@ mb_off_out
     *undescribed*
 
 lock
-    *undescribed*
-
-md
     *undescribed*
 
 dev

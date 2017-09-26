@@ -64,6 +64,12 @@ pitch
 {unnamed_union}
     anonymous
 
+buf
+    DMA buffer when DMA-ing between buffer and screen targets.
+
+sid
+    Surface ID when copying between surface and screen targets.
+
 .. _`vmw_screen_target_display_unit`:
 
 struct vmw_screen_target_display_unit

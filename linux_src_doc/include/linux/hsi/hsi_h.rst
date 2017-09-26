@@ -84,6 +84,12 @@ speed
 {unnamed_union}
     anonymous
 
+flow
+    RX flow type (SYNCHRONIZED or PIPELINE)
+
+arb_mode
+    Arbitration mode for TX frame (Round robin, priority)
+
 .. _`hsi_board_info`:
 
 struct hsi_board_info

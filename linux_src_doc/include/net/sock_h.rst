@@ -84,11 +84,29 @@ Definition
 Members
 -------
 
+{unnamed_union}
+    anonymous
+
 skc_addrpair
     *undescribed*
 
 {unnamed_struct}
     anonymous
+
+skc_daddr
+    Foreign IPv4 addr
+
+skc_rcv_saddr
+    Bound local IPv4 addr
+
+{unnamed_union}
+    anonymous
+
+skc_hash
+    hash value used with various protocol lookup tables
+
+skc_u16hashes
+    two u16 hash values used by UDP lookup tables
 
 {unnamed_union}
     anonymous
@@ -98,6 +116,12 @@ skc_portpair
 
 {unnamed_struct}
     anonymous
+
+skc_dport
+    placeholder for inet_dport/tw_dport
+
+skc_num
+    placeholder for inet_num/tw_num
 
 skc_family
     network address family
@@ -123,6 +147,12 @@ skc_bound_dev_if
 {unnamed_union}
     anonymous
 
+skc_bind_node
+    bind hash linkage for various protocol lookup tables
+
+skc_portaddr_node
+    second hash linkage for UDP/UDP-Lite protocol
+
 skc_prot
     protocol handlers inside a network family
 
@@ -141,17 +171,43 @@ skc_cookie
 {unnamed_union}
     anonymous
 
+skc_flags
+    place holder for sk_flags
+    \ ``SO_LINGER``\  (l_onoff), \ ``SO_BROADCAST``\ , \ ``SO_KEEPALIVE``\ ,
+    \ ``SO_OOBINLINE``\  settings, \ ``SO_TIMESTAMPING``\  settings
+
+skc_listener
+    *undescribed*
+
+skc_tw_dr
+    *undescribed*
+
 skc_dontcopy_begin
     *undescribed*
 
 {unnamed_union}
     anonymous
 
+skc_node
+    main hash linkage for various protocol lookup tables
+
+skc_nulls_node
+    main hash linkage for TCP/UDP/UDP-Lite protocol
+
 skc_tx_queue_mapping
     tx queue number for this connection
 
 {unnamed_union}
     anonymous
+
+skc_incoming_cpu
+    record/match cpu processing incoming packets
+
+skc_rcv_wnd
+    *undescribed*
+
+skc_tw_rcv_nxt
+    *undescribed*
 
 skc_refcnt
     reference count
@@ -161,6 +217,15 @@ skc_dontcopy_end
 
 {unnamed_union}
     anonymous
+
+skc_rxhash
+    *undescribed*
+
+skc_window_clamp
+    *undescribed*
+
+skc_tw_snd_nxt
+    *undescribed*
 
 .. _`sock_common.description`:
 
@@ -341,6 +406,9 @@ sk_error_queue
 sk_receive_queue
     incoming packets
 
+sk_backlog
+    always used with the per-socket spinlock held
+
 rmem_alloc
     *undescribed*
 
@@ -351,9 +419,6 @@ head
     *undescribed*
 
 tail
-    *undescribed*
-
-k_backlog
     *undescribed*
 
 sk_forward_alloc
@@ -373,6 +438,12 @@ sk_filter
 
 {unnamed_union}
     anonymous
+
+sk_wq
+    sock wait queue and async head
+
+sk_wq_raw
+    *undescribed*
 
 sk_policy
     flow policy

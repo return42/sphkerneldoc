@@ -331,13 +331,10 @@ sg_req
 sg_rsp
     scatterlist entry for response data
 
-req
-    *undescribed*
+u
+    request specific data
 
-rsp
-    *undescribed*
-
-disc
+adisc
     *undescribed*
 
 req
@@ -346,7 +343,16 @@ req
 rsp
     *undescribed*
 
-id_pn
+gid_pn
+    *undescribed*
+
+req
+    *undescribed*
+
+rsp
+    *undescribed*
+
+gpn_ft
     *undescribed*
 
 sg_rsp2
@@ -355,7 +361,7 @@ sg_rsp2
 req
     *undescribed*
 
-pn_ft
+gspn
     *undescribed*
 
 req
@@ -364,7 +370,7 @@ req
 rsp
     *undescribed*
 
-spn
+rspn
     *undescribed*
 
 req
@@ -372,12 +378,6 @@ req
 
 rsp
     *undescribed*
-
-spn
-    *undescribed*
-
-void
-    no arguments
 
 .. _`zfcp_fc_wka_status`:
 

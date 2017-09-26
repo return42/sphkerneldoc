@@ -82,14 +82,8 @@ vref
 range
     output range mode used
 
-d32
-    *undescribed*
-
-d8
-    *undescribed*
-
-____cacheline_aligned
-    *undescribed*
+data
+    cache aligned spi buffer
 
 .. This file was automatic generated / don't edit.
 

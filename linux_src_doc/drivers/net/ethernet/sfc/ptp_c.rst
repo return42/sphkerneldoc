@@ -274,6 +274,21 @@ nic_to_kernel_time
 min_synchronisation_ns
     Minimum acceptable corrected sync window
 
+ts_corrections
+    *undescribed*
+
+ts_corrections.tx
+    Required driver correction of transmit timestamps
+
+ts_corrections.rx
+    Required driver correction of receive timestamps
+
+ts_corrections.pps_out
+    PPS output error (information only)
+
+ts_corrections.pps_in
+    Required driver correction of PPS input timestamps
+
 tx
     *undescribed*
 
@@ -284,9 +299,6 @@ pps_out
     *undescribed*
 
 pps_in
-    *undescribed*
-
-s_corrections
     *undescribed*
 
 evt_frags

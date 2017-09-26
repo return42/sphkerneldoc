@@ -35,6 +35,24 @@ Members
 {unnamed_union}
     anonymous
 
+base
+    base address of pinctrl hardware
+
+regmap
+    *undescribed*
+
+regmap.map
+    regmap structure
+
+regmap.offset
+    regmap offset
+
+map
+    *undescribed*
+
+offset
+    *undescribed*
+
 .. _`mvebu_mpp_ctrl`:
 
 struct mvebu_mpp_ctrl

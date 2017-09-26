@@ -1152,15 +1152,6 @@ Definition
 Members
 -------
 
-id
-    *undescribed*
-
-action_bitmap
-    *undescribed*
-
-status_bitmap
-    *undescribed*
-
 time_events
     *undescribed*
 

@@ -324,8 +324,26 @@ handle
 {unnamed_struct}
     anonymous
 
+auto_exposure
+    auto/manual exposure control
+
+exposure_bias
+    exposure compensation control
+
+exposure
+    manual exposure control
+
+metering
+    exposure metering control
+
 {unnamed_struct}
     anonymous
+
+auto_iso
+    auto/manual ISO sensitivity control
+
+iso
+    manual ISO sensitivity control
 
 auto_wb
     auto white balance control

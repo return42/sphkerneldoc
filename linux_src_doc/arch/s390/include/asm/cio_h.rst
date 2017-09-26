@@ -510,6 +510,9 @@ Members
 scsw
     subchannel status word
 
+esw
+    extended status word
+
 esw0
     *undescribed*
 
@@ -523,9 +526,6 @@ esw3
     *undescribed*
 
 eadm
-    *undescribed*
-
-sw
     *undescribed*
 
 ecw

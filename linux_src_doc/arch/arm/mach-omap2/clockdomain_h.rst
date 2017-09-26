@@ -29,13 +29,13 @@ Definition
 Members
 -------
 
+clkdm
+    clockdomain to add wkdep+sleepdep on - set name member only
+
 name
     *undescribed*
 
 ptr
-    *undescribed*
-
-lkdm
     *undescribed*
 
 .. _`clkdm_autodep.description`:
@@ -145,13 +145,13 @@ Members
 name
     clockdomain name
 
+pwrdm
+    powerdomain containing this clockdomain
+
 name
     clockdomain name
 
 ptr
-    *undescribed*
-
-wrdm
     *undescribed*
 
 clktrctrl_mask

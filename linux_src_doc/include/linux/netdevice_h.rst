@@ -570,13 +570,13 @@ ptype_all
 ptype_specific
     Device-specific, protocol-specific packet handlers
 
+adj_list
+    Directly linked devices, like slaves for bonding
+
 upper
     *undescribed*
 
 lower
-    *undescribed*
-
-dj_list
     *undescribed*
 
 features
@@ -908,6 +908,21 @@ nd_net
 
 {unnamed_union}
     anonymous
+
+ml_priv
+    Mid-layer private
+
+lstats
+    Loopback statistics
+
+tstats
+    Tunnel statistics
+
+dstats
+    Dummy statistics
+
+vstats
+    Virtual ethernet statistics
 
 garp_port
     GARP

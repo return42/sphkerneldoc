@@ -60,11 +60,20 @@ list
 key
     node key
 
+{unnamed_union}
+    anonymous
+
 nm
     directory entry name
 
 {unnamed_struct}
     anonymous
+
+old_size
+    truncation old size
+
+new_size
+    truncation new size
 
 .. _`replay_entry.description`:
 

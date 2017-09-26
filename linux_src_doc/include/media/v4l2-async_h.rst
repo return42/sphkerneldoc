@@ -94,16 +94,22 @@ Members
 match_type
     type of match that will be used
 
+match
+    union of per-bus type matching data sets
+
 fwnode
     *undescribed*
 
-wnode
+fwnode
+    *undescribed*
+
+device_name
     *undescribed*
 
 name
     *undescribed*
 
-evice_name
+i2c
     *undescribed*
 
 adapter_id
@@ -112,19 +118,13 @@ adapter_id
 address
     *undescribed*
 
-2c
+custom
     *undescribed*
 
 match
     union of per-bus type matching data sets
 
 priv
-    *undescribed*
-
-ustom
-    *undescribed*
-
-atch
     *undescribed*
 
 list

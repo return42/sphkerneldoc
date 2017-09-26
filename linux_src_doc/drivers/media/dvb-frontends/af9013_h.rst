@@ -19,19 +19,19 @@ Definition
 
     struct af9013_platform_data {
         u32 clk;
-    #define AF9013_TUNER_MXL5003D 3 
-    #define AF9013_TUNER_MXL5005D 13 
-    #define AF9013_TUNER_MXL5005R 30 
-    #define AF9013_TUNER_ENV77H11D5 129 
-    #define AF9013_TUNER_MT2060 130 
-    #define AF9013_TUNER_MC44S803 133 
-    #define AF9013_TUNER_QT1010 134 
-    #define AF9013_TUNER_UNKNOWN 140 
-    #define AF9013_TUNER_MT2060_2 147 
-    #define AF9013_TUNER_TDA18271 156 
-    #define AF9013_TUNER_QT1010A 162 
-    #define AF9013_TUNER_MXL5007T 177 
-    #define AF9013_TUNER_TDA18218 179 
+    #define AF9013_TUNER_MXL5003D 3
+    #define AF9013_TUNER_MXL5005D 13
+    #define AF9013_TUNER_MXL5005R 30
+    #define AF9013_TUNER_ENV77H11D5 129
+    #define AF9013_TUNER_MT2060 130
+    #define AF9013_TUNER_MC44S803 133
+    #define AF9013_TUNER_QT1010 134
+    #define AF9013_TUNER_UNKNOWN 140
+    #define AF9013_TUNER_MT2060_2 147
+    #define AF9013_TUNER_TDA18271 156
+    #define AF9013_TUNER_QT1010A 162
+    #define AF9013_TUNER_MXL5007T 177
+    #define AF9013_TUNER_TDA18218 179
         u8 tuner;
         u32 if_frequency;
     #define AF9013_TS_MODE_USB 0

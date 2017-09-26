@@ -69,6 +69,12 @@ pad_flags
 {unnamed_union}
     anonymous
 
+pad_binder
+    padding to remain compatible with old userspace code
+
+fd
+    file descriptor
+
 cookie
     opaque data, used by user-space
 

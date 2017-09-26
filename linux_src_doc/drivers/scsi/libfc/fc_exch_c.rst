@@ -122,6 +122,9 @@ max_xid
 pool_max_index
     Max exch array index in exch pool
 
+stats
+    Statistics structure
+
 no_free_exch
     *undescribed*
 
@@ -138,9 +141,6 @@ seq_not_found
     *undescribed*
 
 non_bls_resp
-    *undescribed*
-
-tats
     *undescribed*
 
 .. _`fc_exch_mgr.description`:

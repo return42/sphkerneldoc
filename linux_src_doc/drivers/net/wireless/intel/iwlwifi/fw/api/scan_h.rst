@@ -972,6 +972,58 @@ fragmented_dwell
 {unnamed_union}
     anonymous
 
+v1
+    *undescribed*
+
+max_out_time
+    max out of serving channel time, per LMAC - for CDB there
+    are 2 LMACs
+
+suspend_time
+    max suspend time, per LMAC - for CDB there are 2 LMACs
+
+scan_priority
+    scan internal prioritization \ :c:type:`enum iwl_scan_priority <iwl_scan_priority>`\ 
+
+channel_flags
+    &enum iwl_scan_channel_flags
+
+n_channels
+    num of channels in scan request
+
+reserved
+    for future use and alignment
+
+data
+    &struct iwl_scan_channel_cfg_umac and
+    \ :c:type:`struct iwl_scan_req_umac_tail <iwl_scan_req_umac_tail>`\ 
+
+v6
+    *undescribed*
+
+max_out_time
+    max out of serving channel time, per LMAC - for CDB there
+    are 2 LMACs
+
+suspend_time
+    max suspend time, per LMAC - for CDB there are 2 LMACs
+
+scan_priority
+    scan internal prioritization \ :c:type:`enum iwl_scan_priority <iwl_scan_priority>`\ 
+
+channel_flags
+    &enum iwl_scan_channel_flags
+
+n_channels
+    num of channels in scan request
+
+reserved
+    for future use and alignment
+
+data
+    &struct iwl_scan_channel_cfg_umac and
+    \ :c:type:`struct iwl_scan_req_umac_tail <iwl_scan_req_umac_tail>`\ 
+
 .. _`iwl_umac_scan_abort`:
 
 struct iwl_umac_scan_abort

@@ -44,11 +44,20 @@ channels
 frame_size
     *undescribed*
 
+{unnamed_union}
+    anonymous
+
 timeout
     RX frame timeout
 
 {unnamed_struct}
     anonymous
+
+arb_mode
+    Arbitration mode for TX frame (Round robin, priority)
+
+divisor
+    TX divider
 
 .. _`omap_ssi_port`:
 

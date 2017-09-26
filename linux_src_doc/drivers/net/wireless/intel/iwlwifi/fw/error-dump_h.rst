@@ -390,13 +390,13 @@ num_lmacs
 num_txfifo_entries
     number of tx fifos
 
+lmac
+    sizes of lmacs txfifos and rxfifo1
+
 txfifo_size
     *undescribed*
 
 rxfifo1_size
-    *undescribed*
-
-mac
     *undescribed*
 
 rxfifo2_size

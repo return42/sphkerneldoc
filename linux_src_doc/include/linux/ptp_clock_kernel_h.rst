@@ -177,6 +177,12 @@ index
 {unnamed_union}
     anonymous
 
+timestamp
+    When the event occurred (%PTP_CLOCK_EXTTS only).
+
+pps_times
+    When the event occurred (%PTP_CLOCK_PPSUSR only).
+
 .. _`ptp_clock_register`:
 
 ptp_clock_register

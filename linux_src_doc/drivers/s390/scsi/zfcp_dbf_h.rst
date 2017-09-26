@@ -184,14 +184,20 @@ port_status
 lun_status
     current status of the lun
 
+u
+    *undescribed*
+
+u.trig
+    structure zfcp_dbf_rec_trigger
+
+u.run
+    structure zfcp_dbf_rec_running
+
 trig
     *undescribed*
 
 run
     *undescribed*
-
-void
-    no arguments
 
 .. _`zfcp_dbf_san_id`:
 
@@ -422,6 +428,9 @@ fsf_seq_no
 pl_len
     length of payload stored as zfcp_dbf_pay
 
+u
+    record type specific data
+
 res
     *undescribed*
 
@@ -430,9 +439,6 @@ uss
 
 be
     *undescribed*
-
-void
-    no arguments
 
 .. _`zfcp_dbf_scsi_id`:
 
