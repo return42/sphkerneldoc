@@ -38,12 +38,6 @@ Definition
         void (*resume)(struct clocksource *cs);
         void (*mark_unstable)(struct clocksource *cs);
         void (*tick_stable)(struct clocksource *cs);
-    #ifdef CONFIG_CLOCKSOURCE_WATCHDOG
-        struct list_head wd_list;
-        u64 cs_last;
-        u64 wd_last;
-    #endif
-        struct module *owner;
     }
 
 .. _`clocksource.members`:
@@ -120,18 +114,6 @@ mark_unstable
 
 tick_stable
     *undescribed*
-
-wd_list
-    *undescribed*
-
-cs_last
-    *undescribed*
-
-wd_last
-    *undescribed*
-
-owner
-    module reference, must be set by clocksource in modules
 
 .. _`clocksource.note`:
 

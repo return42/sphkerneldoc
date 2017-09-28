@@ -66,8 +66,8 @@ key
 nm
     directory entry name
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 old_size
     truncation old size

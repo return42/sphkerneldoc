@@ -56,7 +56,6 @@ Definition
     struct regulator_bulk_data {
         const char *supply;
         struct regulator *consumer;
-        int ret;
     }
 
 .. _`regulator_bulk_data.members`:
@@ -71,9 +70,6 @@ supply
 consumer
     The regulator consumer for the supply.  This will be managed
     by the bulk API.
-
-ret
-    *undescribed*
 
 .. _`regulator_bulk_data.description`:
 

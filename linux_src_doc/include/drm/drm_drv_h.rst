@@ -69,13 +69,6 @@ Definition
         const struct drm_ioctl_desc *ioctls;
         int num_ioctls;
         const struct file_operations *fops;
-        struct list_head legacy_dev_list;
-        int (*firstopen) (struct drm_device *);
-        void (*preclose) (struct drm_device *, struct drm_file *file_priv);
-        int (*dma_ioctl) (struct drm_device *dev, void *data, struct drm_file *file_priv);
-        int (*dma_quiescent) (struct drm_device *);
-        int (*context_dtor) (struct drm_device *dev, int context);
-        int dev_priv_size;
     }
 
 .. _`drm_driver.members`:
@@ -493,27 +486,6 @@ fops
     File operations for the DRM device node. See the discussion in
     :ref:`file operations<drm_driver_fops>` for in-depth coverage and
     some examples.
-
-legacy_dev_list
-    *undescribed*
-
-firstopen
-    *undescribed*
-
-preclose
-    *undescribed*
-
-dma_ioctl
-    *undescribed*
-
-dma_quiescent
-    *undescribed*
-
-context_dtor
-    *undescribed*
-
-dev_priv_size
-    *undescribed*
 
 .. _`drm_driver.description`:
 

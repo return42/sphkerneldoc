@@ -1151,8 +1151,6 @@ Definition
 .. code-block:: c
 
     struct drm_connector_list_iter {
-        struct drm_device *dev;
-        struct drm_connector *conn;
     }
 
 .. _`drm_connector_list_iter.members`:
@@ -1160,11 +1158,8 @@ Definition
 Members
 -------
 
-dev
-    *undescribed*
-
-conn
-    *undescribed*
+void
+    no arguments
 
 .. _`drm_connector_list_iter.description`:
 

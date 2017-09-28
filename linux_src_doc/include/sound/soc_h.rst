@@ -111,11 +111,6 @@ Definition
         int invert;
         int debounce_time;
         bool wake;
-        struct snd_soc_jack *jack;
-        struct delayed_work work;
-        struct notifier_block pm_notifier;
-        struct gpio_desc *desc;
-        void *data;
         int (*jack_status_check)(void *data);
     }
 
@@ -149,21 +144,6 @@ debounce_time
 
 wake
     enable as wake source
-
-jack
-    *undescribed*
-
-work
-    *undescribed*
-
-pm_notifier
-    *undescribed*
-
-desc
-    *undescribed*
-
-data
-    *undescribed*
 
 jack_status_check
     callback function which overrides the detection

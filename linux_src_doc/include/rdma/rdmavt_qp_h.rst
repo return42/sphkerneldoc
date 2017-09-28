@@ -219,11 +219,6 @@ Definition
 
     struct rvt_qp_iter {
         struct rvt_qp *qp;
-        struct rvt_dev_info *rdi;
-        void (*cb)(struct rvt_qp *qp, u64 v);
-        u64 v;
-        int specials;
-        int n;
     }
 
 .. _`rvt_qp_iter.members`:
@@ -232,21 +227,6 @@ Members
 -------
 
 qp
-    *undescribed*
-
-rdi
-    *undescribed*
-
-cb
-    *undescribed*
-
-v
-    *undescribed*
-
-specials
-    *undescribed*
-
-n
     *undescribed*
 
 .. _`rvt_qp_iter.description`:

@@ -72,8 +72,8 @@ affinity
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 masked
     [PCI MSI/X] Mask bits
@@ -81,8 +81,8 @@ masked
 msi_attrib
     *undescribed*
 
-union
-    *undescribed*
+{unnamed_union}
+    anonymous
 
 mask_pos
     [PCI MSI]   Mask register position

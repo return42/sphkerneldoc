@@ -526,8 +526,6 @@ Definition
         const struct ntb_dev_ops *ops;
         void *ctx;
         const struct ntb_ctx_ops *ctx_ops;
-        spinlock_t ctx_lock;
-        struct completion released;
     }
 
 .. _`ntb_dev.members`:
@@ -552,12 +550,6 @@ ctx
 
 ctx_ops
     See \ :c:type:`struct ntb_ctx_ops <ntb_ctx_ops>`\ .
-
-ctx_lock
-    *undescribed*
-
-released
-    *undescribed*
 
 .. _`ntb_register_client`:
 

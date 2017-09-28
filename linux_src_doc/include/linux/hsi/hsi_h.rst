@@ -162,9 +162,6 @@ Definition
         struct device device;
         struct hsi_config tx_cfg;
         struct hsi_config rx_cfg;
-        void (*ehandler)(struct hsi_client *, unsigned long);
-        unsigned int pclaimed:1;
-        struct notifier_block nb;
     }
 
 .. _`hsi_client.members`:
@@ -180,15 +177,6 @@ tx_cfg
 
 rx_cfg
     HSI RX configuration
-
-ehandler
-    *undescribed*
-
-pclaimed
-    *undescribed*
-
-nb
-    *undescribed*
 
 .. _`hsi_client_driver`:
 

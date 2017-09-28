@@ -24,7 +24,6 @@ Definition
         bool spec_inv;
         int **gpio_chip_base;
         struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
-        bool attach_in_use;
     }
 
 .. _`cxd2820r_platform_data.members`:
@@ -49,9 +48,6 @@ gpio_chip_base
 
 get_dvb_frontend
     Get DVB frontend.
-
-attach_in_use
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

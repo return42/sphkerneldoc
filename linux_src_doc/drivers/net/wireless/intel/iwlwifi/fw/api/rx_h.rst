@@ -683,7 +683,6 @@ Definition
     struct iwl_mvm_pm_state_notification {
         u8 sta_id;
         u8 type;
-        __le16 reserved;
     }
 
 .. _`iwl_mvm_pm_state_notification.members`:
@@ -696,9 +695,6 @@ sta_id
 
 type
     the new powersave state, see \ :c:type:`enum iwl_mvm_pm_event <iwl_mvm_pm_event>`\ 
-
-reserved
-    *undescribed*
 
 .. _`iwl_ba_window_status_notif`:
 

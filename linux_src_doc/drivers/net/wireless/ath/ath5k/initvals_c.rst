@@ -21,7 +21,9 @@ Definition
         u16 ini_register;
         u32 ini_value;
         enum {
-            AR5K_INI_WRITE = 0, AR5K_INI_READ = 1, } ini_mode;
+            AR5K_INI_WRITE = 0,
+            AR5K_INI_READ = 1,
+        } ini_mode;
     }
 
 .. _`ath5k_ini.members`:

@@ -134,8 +134,8 @@ Members
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 hdr
     *undescribed*
@@ -143,8 +143,8 @@ hdr
 payload
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 hdr_wide
     *undescribed*

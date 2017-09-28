@@ -102,12 +102,6 @@ Definition
     struct ad_sigma_delta {
         struct spi_device *spi;
         struct iio_trigger *trig;
-        struct completion completion;
-        bool irq_dis;
-        bool bus_locked;
-        uint8_t comm;
-        const struct ad_sigma_delta_info *info;
-        uint8_t data[4] ____cacheline_aligned;
     }
 
 .. _`ad_sigma_delta.members`:
@@ -120,24 +114,6 @@ spi
 
 trig
     The IIO trigger associated with the Sigma Delta device.
-
-completion
-    *undescribed*
-
-irq_dis
-    *undescribed*
-
-bus_locked
-    *undescribed*
-
-comm
-    *undescribed*
-
-info
-    *undescribed*
-
-data
-    *undescribed*
 
 .. _`ad_sigma_delta.description`:
 

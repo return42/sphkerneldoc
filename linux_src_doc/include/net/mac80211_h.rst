@@ -1628,14 +1628,23 @@ ack_frame_id
 control
     union for control data
 
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
+{unnamed_union}
+    anonymous
+
 ack
     *undescribed*
 
 status
     union for status data
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 IEEE80211_TX_MAX_RATES]
     *undescribed*

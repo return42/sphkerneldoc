@@ -143,7 +143,6 @@ Definition
         __u8 __cloned_offset[0];
         __u8 cloned:1,nohdr:1,fclone:2,peeked:1,head_frag:1,xmit_more:1, __unused:1;
         kmemcheck_bitfield_end(flags1);
-        __u32 headers_start[0];
     #ifdef __BIG_ENDIAN_BITFIELD
     #define PKT_TYPE_MAX (7 << 5)
     #else
@@ -223,7 +222,6 @@ Definition
         __u16 transport_header;
         __u16 network_header;
         __u16 mac_header;
-        __u32 headers_end[0];
         sk_buff_data_t tail;
         sk_buff_data_t end;
         unsigned char *head, *data;
@@ -239,8 +237,8 @@ Members
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 next
     Next buffer in list
@@ -248,8 +246,8 @@ next
 prev
     Previous buffer in list
 
-union
-    *undescribed*
+{unnamed_union}
+    anonymous
 
 tstamp
     Time we arrived/left
@@ -328,9 +326,6 @@ xmit_more
     More SKBs are pending for this queue
 
 __unused
-    *undescribed*
-
-headers_start
     *undescribed*
 
 __pkt_type_offset
@@ -427,8 +422,8 @@ tc_index
 csum
     Checksum (must include start/offset pair)
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 csum_start
     Offset from skb->head where checksumming should start
@@ -501,9 +496,6 @@ network_header
 
 mac_header
     Link layer header
-
-headers_end
-    *undescribed*
 
 tail
     Tail pointer

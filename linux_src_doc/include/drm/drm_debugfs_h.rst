@@ -70,8 +70,6 @@ Definition
     struct drm_info_node {
         struct drm_minor *minor;
         const struct drm_info_list *info_ent;
-        struct list_head list;
-        struct dentry *dent;
     }
 
 .. _`drm_info_node.members`:
@@ -84,12 +82,6 @@ minor
 
 info_ent
     template for this node.
-
-list
-    *undescribed*
-
-dent
-    *undescribed*
 
 .. _`drm_info_node.description`:
 

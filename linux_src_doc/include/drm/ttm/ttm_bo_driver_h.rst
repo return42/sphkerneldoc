@@ -28,7 +28,10 @@ Definition
         struct file *swap_storage;
         enum ttm_caching_state caching_state;
         enum {
-            tt_bound,tt_unbound,tt_unpopulated, } state;
+            tt_bound,
+            tt_unbound,
+            tt_unpopulated,
+        } state;
     }
 
 .. _`ttm_tt.members`:

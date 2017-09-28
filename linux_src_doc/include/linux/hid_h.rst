@@ -38,7 +38,6 @@ Definition
         int (*resume)(struct hid_device *hdev);
         int (*reset_resume)(struct hid_device *hdev);
     #endif
-        struct device_driver driver;
     }
 
 .. _`hid_driver.members`:
@@ -103,9 +102,6 @@ resume
 
 reset_resume
     invoked on resume if device was reset (NULL means nop)
-
-driver
-    *undescribed*
 
 .. _`hid_driver.description`:
 

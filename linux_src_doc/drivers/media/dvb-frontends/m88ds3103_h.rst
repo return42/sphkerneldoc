@@ -39,7 +39,6 @@ Definition
         u8 lnb_en_pol:1;
         struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
         struct i2c_adapter* (*get_i2c_adapter)(struct i2c_client *);
-        u8 attach_in_use:1;
     }
 
 .. _`m88ds3103_platform_data.members`:
@@ -91,9 +90,6 @@ get_dvb_frontend
 
 get_i2c_adapter
     Get I2C adapter.
-
-attach_in_use
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

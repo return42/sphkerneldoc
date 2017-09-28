@@ -378,32 +378,6 @@ Definition
         unsigned int num_planes;
         struct vb2_plane planes[VB2_MAX_PLANES];
         u64 timestamp;
-        enum vb2_buffer_state state;
-        struct list_head queued_entry;
-        struct list_head done_entry;
-    #ifdef CONFIG_VIDEO_ADV_DEBUG
-        u32 cnt_mem_alloc;
-        u32 cnt_mem_put;
-        u32 cnt_mem_get_dmabuf;
-        u32 cnt_mem_get_userptr;
-        u32 cnt_mem_put_userptr;
-        u32 cnt_mem_prepare;
-        u32 cnt_mem_finish;
-        u32 cnt_mem_attach_dmabuf;
-        u32 cnt_mem_detach_dmabuf;
-        u32 cnt_mem_map_dmabuf;
-        u32 cnt_mem_unmap_dmabuf;
-        u32 cnt_mem_vaddr;
-        u32 cnt_mem_cookie;
-        u32 cnt_mem_num_users;
-        u32 cnt_mem_mmap;
-        u32 cnt_buf_init;
-        u32 cnt_buf_prepare;
-        u32 cnt_buf_finish;
-        u32 cnt_buf_cleanup;
-        u32 cnt_buf_queue;
-        u32 cnt_buf_done;
-    #endif
     }
 
 .. _`vb2_buffer.members`:
@@ -432,78 +406,6 @@ planes
 
 timestamp
     frame timestamp in ns
-
-state
-    *undescribed*
-
-queued_entry
-    *undescribed*
-
-done_entry
-    *undescribed*
-
-cnt_mem_alloc
-    *undescribed*
-
-cnt_mem_put
-    *undescribed*
-
-cnt_mem_get_dmabuf
-    *undescribed*
-
-cnt_mem_get_userptr
-    *undescribed*
-
-cnt_mem_put_userptr
-    *undescribed*
-
-cnt_mem_prepare
-    *undescribed*
-
-cnt_mem_finish
-    *undescribed*
-
-cnt_mem_attach_dmabuf
-    *undescribed*
-
-cnt_mem_detach_dmabuf
-    *undescribed*
-
-cnt_mem_map_dmabuf
-    *undescribed*
-
-cnt_mem_unmap_dmabuf
-    *undescribed*
-
-cnt_mem_vaddr
-    *undescribed*
-
-cnt_mem_cookie
-    *undescribed*
-
-cnt_mem_num_users
-    *undescribed*
-
-cnt_mem_mmap
-    *undescribed*
-
-cnt_buf_init
-    *undescribed*
-
-cnt_buf_prepare
-    *undescribed*
-
-cnt_buf_finish
-    *undescribed*
-
-cnt_buf_cleanup
-    *undescribed*
-
-cnt_buf_queue
-    *undescribed*
-
-cnt_buf_done
-    *undescribed*
 
 .. _`vb2_ops`:
 

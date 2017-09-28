@@ -757,7 +757,6 @@ Definition
         struct dtv_fe_stats post_bit_count;
         struct dtv_fe_stats block_error;
         struct dtv_fe_stats block_count;
-        u32 state;
     }
 
 .. _`dtv_frontend_properties.members`:
@@ -932,9 +931,6 @@ block_error
 
 block_count
     DVBv5 API statistics: block count
-
-state
-    *undescribed*
 
 .. _`dtv_frontend_properties.note`:
 

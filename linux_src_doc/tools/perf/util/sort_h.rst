@@ -142,8 +142,8 @@ filtered
 diff
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 row_offset
     *undescribed*
@@ -205,8 +205,8 @@ ops
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 hroot_in
     *undescribed*

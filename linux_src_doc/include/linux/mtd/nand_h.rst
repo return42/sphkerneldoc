@@ -1009,8 +1009,8 @@ name
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 mfr_id
     manufecturer ID part of the full chip ID array (refers the same

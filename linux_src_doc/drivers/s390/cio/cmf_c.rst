@@ -64,7 +64,6 @@ Definition
         u64 (*read) (struct ccw_device *, int);
         int (*readall)(struct ccw_device *, struct cmbdata *);
         void (*reset) (struct ccw_device *);
-        struct attribute_group *attr_group;
     }
 
 .. _`cmb_operations.members`:
@@ -91,9 +90,6 @@ readall
 reset
     clear the data in the associated measurement block and
     reset its time stamp
-
-attr_group
-    *undescribed*
 
 .. _`cmb_operations.description`:
 

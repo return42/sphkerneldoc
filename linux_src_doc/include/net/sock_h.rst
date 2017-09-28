@@ -59,7 +59,6 @@ Definition
             struct sock *skc_listener;
             struct inet_timewait_death_row *skc_tw_dr;
         } ;
-        int skc_dontcopy_begin[0];
         union {
             struct hlist_node skc_node;
             struct hlist_nulls_node skc_nulls_node;
@@ -71,12 +70,6 @@ Definition
             u32 skc_tw_rcv_nxt;
         } ;
         refcount_t skc_refcnt;
-        int skc_dontcopy_end[0];
-        union {
-            u32 skc_rxhash;
-            u32 skc_window_clamp;
-            u32 skc_tw_snd_nxt;
-        } ;
     }
 
 .. _`sock_common.members`:
@@ -90,8 +83,8 @@ Members
 skc_addrpair
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 skc_daddr
     Foreign IPv4 addr
@@ -114,8 +107,8 @@ skc_u16hashes
 skc_portpair
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 skc_dport
     placeholder for inet_dport/tw_dport
@@ -182,9 +175,6 @@ skc_listener
 skc_tw_dr
     *undescribed*
 
-skc_dontcopy_begin
-    *undescribed*
-
 {unnamed_union}
     anonymous
 
@@ -211,21 +201,6 @@ skc_tw_rcv_nxt
 
 skc_refcnt
     reference count
-
-skc_dontcopy_end
-    *undescribed*
-
-{unnamed_union}
-    anonymous
-
-skc_rxhash
-    *undescribed*
-
-skc_window_clamp
-    *undescribed*
-
-skc_tw_snd_nxt
-    *undescribed*
 
 .. _`sock_common.description`:
 

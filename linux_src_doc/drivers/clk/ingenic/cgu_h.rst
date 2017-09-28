@@ -285,18 +285,27 @@ Definition
     struct ingenic_cgu_clk_info {
         const char *name;
         enum {
-            CGU_CLK_NONE = 0,CGU_CLK_EXT = BIT(0),CGU_CLK_PLL = BIT(1),CGU_CLK_GATE = BIT(2),CGU_CLK_MUX = BIT(3),CGU_CLK_MUX_GLITCHFREE = BIT(4),CGU_CLK_DIV = BIT(5),CGU_CLK_FIXDIV = BIT(6),CGU_CLK_CUSTOM = BIT(7), } type;
-            int parents[4];
-            union {
-                struct ingenic_cgu_pll_info pll;
-                struct {
-                    struct ingenic_cgu_gate_info gate;
-                    struct ingenic_cgu_mux_info mux;
-                    struct ingenic_cgu_div_info div;
-                    struct ingenic_cgu_fixdiv_info fixdiv;
-                } ;
-                struct ingenic_cgu_custom_info custom;
+            CGU_CLK_NONE = 0,
+            CGU_CLK_EXT = BIT(0),
+            CGU_CLK_PLL = BIT(1),
+            CGU_CLK_GATE = BIT(2),
+            CGU_CLK_MUX = BIT(3),
+            CGU_CLK_MUX_GLITCHFREE = BIT(4),
+            CGU_CLK_DIV = BIT(5),
+            CGU_CLK_FIXDIV = BIT(6),
+            CGU_CLK_CUSTOM = BIT(7),
+        } type;
+        int parents[4];,
+        union {,
+            struct ingenic_cgu_pll_info pll;
+            struct {
+                struct ingenic_cgu_gate_info gate;
+                struct ingenic_cgu_mux_info mux;
+                struct ingenic_cgu_div_info div;
+                struct ingenic_cgu_fixdiv_info fixdiv;
             } ;
+            struct ingenic_cgu_custom_info custom;
+        } ;
     }
 
 .. _`ingenic_cgu_clk_info.members`:
@@ -321,8 +330,8 @@ parents
 pll
     information valid if type includes CGU_CLK_PLL
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 gate
     information valid if type includes CGU_CLK_GATE

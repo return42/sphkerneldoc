@@ -51,9 +51,6 @@ Definition
     #define AF9013_GPIO_TUNER_OFF (AF9013_GPIO_ON|AF9013_GPIO_EN|AF9013_GPIO_O)
         u8 gpio[4];
         struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
-        bool attach_in_use;
-        u8 i2c_addr;
-        u32 clock;
     }
 
 .. _`af9013_platform_data.members`:
@@ -87,15 +84,6 @@ gpio
 
 get_dvb_frontend
     Get DVB frontend callback.
-
-attach_in_use
-    *undescribed*
-
-i2c_addr
-    *undescribed*
-
-clock
-    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

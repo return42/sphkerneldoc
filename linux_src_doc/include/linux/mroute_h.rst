@@ -59,8 +59,8 @@ mnode
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 mfc_mcastgrp
     destination multicast group address

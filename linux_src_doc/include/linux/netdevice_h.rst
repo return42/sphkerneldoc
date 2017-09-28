@@ -468,53 +468,61 @@ Definition
         struct list_head todo_list;
         struct list_head link_watch_list;
         enum {
-            NETREG_UNINITIALIZED=0,NETREG_REGISTERED, NETREG_UNREGISTERING, NETREG_UNREGISTERED, NETREG_RELEASED, NETREG_DUMMY, } reg_state:8;
-            bool dismantle;
-            enum {
-                RTNL_LINK_INITIALIZED,RTNL_LINK_INITIALIZING, } rtnl_link_state:16;
-                bool needs_free_netdev;
-                void (*priv_destructor)(struct net_device *dev);
+            NETREG_UNINITIALIZED=0,
+            NETREG_REGISTERED,
+            NETREG_UNREGISTERING,
+            NETREG_UNREGISTERED,
+            NETREG_RELEASED,
+            NETREG_DUMMY,
+        } reg_state:8;
+        bool dismantle;,
+        enum {,
+            RTNL_LINK_INITIALIZED,
+            RTNL_LINK_INITIALIZING,
+        } rtnl_link_state:16;
+        bool needs_free_netdev;,
+        void (*priv_destructor)(struct net_device *dev);,
     #ifdef CONFIG_NETPOLL
-                struct netpoll_info __rcu *npinfo;
+        struct netpoll_info __rcu *npinfo;,
     #endif
-                possible_net_t nd_net;
-                union {
-                    void *ml_priv;
-                    struct pcpu_lstats __percpu *lstats;
-                    struct pcpu_sw_netstats __percpu *tstats;
-                    struct pcpu_dstats __percpu *dstats;
-                    struct pcpu_vstats __percpu *vstats;
-                } ;
+        possible_net_t nd_net;,
+        union {,
+            void *ml_priv;
+            struct pcpu_lstats __percpu *lstats;
+            struct pcpu_sw_netstats __percpu *tstats;
+            struct pcpu_dstats __percpu *dstats;
+            struct pcpu_vstats __percpu *vstats;
+        } ;
     #if IS_ENABLED(CONFIG_GARP)
-                struct garp_port __rcu *garp_port;
+        struct garp_port __rcu *garp_port;
     #endif
     #if IS_ENABLED(CONFIG_MRP)
-                struct mrp_port __rcu *mrp_port;
+        struct mrp_port __rcu *mrp_port;
     #endif
-                struct device dev;
-                const struct attribute_group *sysfs_groups[4];
-                const struct attribute_group *sysfs_rx_queue_group;
-                const struct rtnl_link_ops *rtnl_link_ops;
+        struct device dev;
+        const struct attribute_group *sysfs_groups[4];
+        const struct attribute_group *sysfs_rx_queue_group;
+        const struct rtnl_link_ops *rtnl_link_ops;
     #define GSO_MAX_SIZE 65536
-                unsigned int gso_max_size;
+        unsigned int gso_max_size;
     #define GSO_MAX_SEGS 65535
-                u16 gso_max_segs;
+        u16 gso_max_segs;
     #ifdef CONFIG_DCB
-                const struct dcbnl_rtnl_ops *dcbnl_ops;
+        const struct dcbnl_rtnl_ops *dcbnl_ops;
     #endif
-                u8 num_tc;
-                struct netdev_tc_txq tc_to_txq[TC_MAX_QUEUE];
-                u8 prio_tc_map[TC_BITMASK + 1];
+        u8 num_tc;
+        struct netdev_tc_txq tc_to_txq[TC_MAX_QUEUE];
+        u8 prio_tc_map[TC_BITMASK + 1];
     #if IS_ENABLED(CONFIG_FCOE)
-                unsigned int fcoe_ddp_xid;
+        unsigned int fcoe_ddp_xid;
     #endif
     #if IS_ENABLED(CONFIG_CGROUP_NET_PRIO)
-                struct netprio_map __rcu *priomap;
+        struct netprio_map __rcu *priomap;
     #endif
-                struct phy_device *phydev;
-                struct lock_class_key *qdisc_tx_busylock;
-                struct lock_class_key *qdisc_running_key;
-                bool proto_down;
+        struct phy_device *phydev;
+        struct lock_class_key *qdisc_tx_busylock;
+        struct lock_class_key *qdisc_running_key;
+        bool proto_down;
     }
 
 .. _`net_device.members`:

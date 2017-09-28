@@ -82,8 +82,8 @@ Members
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 config
     *undescribed*
@@ -115,20 +115,20 @@ extra_reg
 branch_reg
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 hrtimer
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 tp_list
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 pwr_acc
     *undescribed*
@@ -136,8 +136,8 @@ pwr_acc
 ptsc
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 info
     *undescribed*
@@ -145,8 +145,8 @@ info
 bp_list
     *undescribed*
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 iommu_bank
     *undescribed*

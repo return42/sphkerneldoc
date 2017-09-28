@@ -47,8 +47,8 @@ polarity
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 up
     GPIO line for up value.

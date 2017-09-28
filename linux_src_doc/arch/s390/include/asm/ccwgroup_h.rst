@@ -19,13 +19,13 @@ Definition
 
     struct ccwgroup_device {
         enum {
-            CCWGROUP_OFFLINE,CCWGROUP_ONLINE, } state;
-            atomic_t onoff;
-            struct mutex reg_mutex;
-            unsigned int count;
-            struct device dev;
-            struct work_struct ungroup_work;
-            struct ccw_device *cdev[0];
+            CCWGROUP_OFFLINE,
+            CCWGROUP_ONLINE,
+        } state;
+        unsigned int count;,
+        struct device dev;,
+        struct work_struct ungroup_work;,
+        struct ccw_device *cdev[0];,
     }
 
 .. _`ccwgroup_device.members`:
@@ -35,12 +35,6 @@ Members
 
 state
     online/offline state
-
-onoff
-    *undescribed*
-
-reg_mutex
-    *undescribed*
 
 count
     number of attached slave devices

@@ -138,7 +138,10 @@ Definition
         bool firmware_ok;
         u32 lazy_bootstrap;
         enum {
-            NON_SECURE = 0,RESET,RUNNING, } falcon_state[NVKM_SECBOOT_FALCON_END];
+            NON_SECURE = 0,
+            RESET,
+            RUNNING,
+        } falcon_state[NVKM_SECBOOT_FALCON_END];
     }
 
 .. _`acr_r352.members`:

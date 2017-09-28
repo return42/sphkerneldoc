@@ -135,8 +135,8 @@ asv
 {unnamed_union}
     anonymous
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 ats
     *undescribed*

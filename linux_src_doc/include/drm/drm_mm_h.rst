@@ -94,19 +94,6 @@ Definition
         unsigned long color;
         u64 start;
         u64 size;
-        struct drm_mm *mm;
-        struct list_head node_list;
-        struct list_head hole_stack;
-        struct rb_node rb;
-        struct rb_node rb_hole_size;
-        struct rb_node rb_hole_addr;
-        u64 __subtree_last;
-        u64 hole_size;
-        bool allocated : 1;
-        bool scanned_block : 1;
-    #ifdef CONFIG_DRM_DEBUG_MM
-        depot_stack_handle_t stack;
-    #endif
     }
 
 .. _`drm_mm_node.members`:
@@ -122,39 +109,6 @@ start
 
 size
     Size of the allocated block.
-
-mm
-    *undescribed*
-
-node_list
-    *undescribed*
-
-hole_stack
-    *undescribed*
-
-rb
-    *undescribed*
-
-rb_hole_size
-    *undescribed*
-
-rb_hole_addr
-    *undescribed*
-
-__subtree_last
-    *undescribed*
-
-hole_size
-    *undescribed*
-
-allocated
-    *undescribed*
-
-scanned_block
-    *undescribed*
-
-stack
-    *undescribed*
 
 .. _`drm_mm_node.description`:
 
@@ -185,12 +139,6 @@ Definition
 
     struct drm_mm {
         void (*color_adjust)(const struct drm_mm_node *node,unsigned long color, u64 *start, u64 *end);
-        struct list_head hole_stack;
-        struct drm_mm_node head_node;
-        struct rb_root interval_tree;
-        struct rb_root holes_size;
-        struct rb_root holes_addr;
-        unsigned long scan_active;
     }
 
 .. _`drm_mm.members`:
@@ -205,24 +153,6 @@ color_adjust
     block would be allocated (see \ :c:func:`drm_mm_hole_follows`\  and friends). The
     other arguments are the size of the block to be allocated. The driver
     can adjust the start and end as needed to e.g. insert guard pages.
-
-hole_stack
-    *undescribed*
-
-head_node
-    *undescribed*
-
-interval_tree
-    *undescribed*
-
-holes_size
-    *undescribed*
-
-holes_addr
-    *undescribed*
-
-scan_active
-    *undescribed*
 
 .. _`drm_mm.description`:
 
@@ -251,16 +181,6 @@ Definition
 .. code-block:: c
 
     struct drm_mm_scan {
-        struct drm_mm *mm;
-        u64 size;
-        u64 alignment;
-        u64 remainder_mask;
-        u64 range_start;
-        u64 range_end;
-        u64 hit_start;
-        u64 hit_end;
-        unsigned long color;
-        enum drm_mm_insert_mode mode;
     }
 
 .. _`drm_mm_scan.members`:
@@ -268,35 +188,8 @@ Definition
 Members
 -------
 
-mm
-    *undescribed*
-
-size
-    *undescribed*
-
-alignment
-    *undescribed*
-
-remainder_mask
-    *undescribed*
-
-range_start
-    *undescribed*
-
-range_end
-    *undescribed*
-
-hit_start
-    *undescribed*
-
-hit_end
-    *undescribed*
-
-color
-    *undescribed*
-
-mode
-    *undescribed*
+void
+    no arguments
 
 .. _`drm_mm_scan.description`:
 

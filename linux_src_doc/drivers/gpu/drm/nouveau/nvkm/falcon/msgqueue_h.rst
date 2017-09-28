@@ -224,9 +224,12 @@ Definition
     struct nvkm_msgqueue_seq {
         u16 id;
         enum {
-            SEQ_STATE_FREE = 0,SEQ_STATE_PENDING,SEQ_STATE_USED,SEQ_STATE_CANCELLED } state;
-            nvkm_msgqueue_callback callback;
-            struct completion *completion;
+            SEQ_STATE_FREE = 0,
+            SEQ_STATE_PENDING,
+            SEQ_STATE_USED,
+            SEQ_STATE_CANCELLED } state;,
+            nvkm_msgqueue_callback callback;,
+            struct completion *completion;,
     }
 
 .. _`nvkm_msgqueue_seq.members`:

@@ -600,7 +600,6 @@ Definition
 .. code-block:: c
 
     struct comedi_driver {
-        struct comedi_driver *next;
         const char *driver_name;
         struct module *module;
         int (*attach)(struct comedi_device *, struct comedi_devconfig *);
@@ -615,9 +614,6 @@ Definition
 
 Members
 -------
-
-next
-    *undescribed*
 
 driver_name
     Name of driver.

@@ -304,8 +304,8 @@ nfp_net
 napi
     NAPI structure for this ring vec
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 tasklet
     *undescribed*

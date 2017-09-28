@@ -19,13 +19,6 @@ Definition
 
     struct cmp_connection {
         int speed;
-        bool connected;
-        struct mutex mutex;
-        struct fw_iso_resources resources;
-        __be32 last_pcr_value;
-        unsigned int pcr_index;
-        unsigned int max_speed;
-        enum cmp_direction direction;
     }
 
 .. _`cmp_connection.members`:
@@ -35,27 +28,6 @@ Members
 
 speed
     the connection's actual speed
-
-connected
-    *undescribed*
-
-mutex
-    *undescribed*
-
-resources
-    *undescribed*
-
-last_pcr_value
-    *undescribed*
-
-pcr_index
-    *undescribed*
-
-max_speed
-    *undescribed*
-
-direction
-    *undescribed*
 
 .. _`cmp_connection.description`:
 

@@ -1277,11 +1277,6 @@ Definition
 .. code-block:: c
 
     struct urb {
-        struct kref kref;
-        void *hcpriv;
-        atomic_t use_count;
-        atomic_t reject;
-        int unlinked;
         struct list_head urb_list;
         struct list_head anchor_list;
         struct usb_anchor *anchor;
@@ -1313,21 +1308,6 @@ Definition
 
 Members
 -------
-
-kref
-    *undescribed*
-
-hcpriv
-    *undescribed*
-
-use_count
-    *undescribed*
-
-reject
-    *undescribed*
-
-unlinked
-    *undescribed*
 
 urb_list
     For use by current owner of the URB.
@@ -1766,13 +1746,6 @@ Definition
     struct usb_sg_request {
         int status;
         size_t bytes;
-        spinlock_t lock;
-        struct usb_device *dev;
-        int pipe;
-        int entries;
-        struct urb **urbs;
-        int count;
-        struct completion complete;
     }
 
 .. _`usb_sg_request.members`:
@@ -1785,27 +1758,6 @@ status
 
 bytes
     counts bytes transferred.
-
-lock
-    *undescribed*
-
-dev
-    *undescribed*
-
-pipe
-    *undescribed*
-
-entries
-    *undescribed*
-
-urbs
-    *undescribed*
-
-count
-    *undescribed*
-
-complete
-    *undescribed*
 
 .. _`usb_sg_request.description`:
 

@@ -19,7 +19,6 @@ Definition
 
     struct ccw_device {
         spinlock_t *ccwlock;
-        struct ccw_device_private *private;
         struct ccw_device_id id;
         struct ccw_driver *drv;
         struct device dev;
@@ -34,9 +33,6 @@ Members
 
 ccwlock
     pointer to device lock
-
-private
-    *undescribed*
 
 id
     id of this device

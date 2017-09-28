@@ -48,9 +48,6 @@ Definition
 .. code-block:: c
 
     struct drm_printer {
-        void (*printfn)(struct drm_printer *p, struct va_format *vaf);
-        void *arg;
-        const char *prefix;
     }
 
 .. _`drm_printer.members`:
@@ -58,14 +55,8 @@ Definition
 Members
 -------
 
-printfn
-    *undescribed*
-
-arg
-    *undescribed*
-
-prefix
-    *undescribed*
+void
+    no arguments
 
 .. _`drm_printer.description`:
 

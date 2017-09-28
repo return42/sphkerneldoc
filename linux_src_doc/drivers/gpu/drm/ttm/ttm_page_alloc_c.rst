@@ -110,8 +110,8 @@ options
 pools
     All pool objects in use.
 
-struct
-    *undescribed*
+{unnamed_struct}
+    anonymous
 
 wc_pool
     *undescribed*
