@@ -624,7 +624,7 @@ Returns 0 for success, -EINVAL for failure.
 amdgpu_vm_bo_split_mapping
 ==========================
 
-.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint64_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint64_t flags, struct drm_mm_node *nodes, struct dma_fence **fence)
+.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint64_t flags, struct drm_mm_node *nodes, struct dma_fence **fence)
 
     split a mapping into smaller chunks
 
@@ -633,9 +633,6 @@ amdgpu_vm_bo_split_mapping
 
     :param struct dma_fence \*exclusive:
         fence we need to sync to
-
-    :param uint64_t gtt_flags:
-        flags as they are used for GTT
 
     :param dma_addr_t \*pages_addr:
         DMA addresses to use for mapping

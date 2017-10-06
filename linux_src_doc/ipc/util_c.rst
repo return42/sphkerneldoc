@@ -30,7 +30,7 @@ called upon successful memory add / remove to recompute msmgni.
 ipc_init_ids
 ============
 
-.. c:function:: void ipc_init_ids(struct ipc_ids *ids)
+.. c:function:: int ipc_init_ids(struct ipc_ids *ids)
 
     initialise ipc identifiers
 
@@ -43,7 +43,7 @@ Description
 -----------
 
 Set up the sequence range to use for the ipc identifier range (limited
-below IPCMNI) then initialise the ids idr.
+below IPCMNI) then initialise the keys hashtable and ids idr.
 
 .. _`ipc_init_proc_interface`:
 
@@ -89,7 +89,7 @@ Description
 Returns the locked pointer to the ipc structure if found or NULL
 otherwise. If key is found ipc points to the owning ipc structure
 
-Called with ipc_ids.rwsem held.
+Called with writer ipc_ids.rwsem held.
 
 .. _`ipc_get_maxid`:
 
@@ -236,6 +236,29 @@ It adds a new entry if the key is not found and does some permission
 
 On success, the ipc id is returned.
 
+.. _`ipc_kht_remove`:
+
+ipc_kht_remove
+==============
+
+.. c:function:: void ipc_kht_remove(struct ipc_ids *ids, struct kern_ipc_perm *ipcp)
+
+    remove an ipc from the key hashtable
+
+    :param struct ipc_ids \*ids:
+        ipc identifier set
+
+    :param struct kern_ipc_perm \*ipcp:
+        ipc perm structure containing the key to remove
+
+.. _`ipc_kht_remove.description`:
+
+Description
+-----------
+
+ipc_ids.rwsem (as a writer) and the spinlock for this ID are held
+before this function is called, and remain locked on the exit.
+
 .. _`ipc_rmid`:
 
 ipc_rmid
@@ -252,6 +275,29 @@ ipc_rmid
         ipc perm structure containing the identifier to remove
 
 .. _`ipc_rmid.description`:
+
+Description
+-----------
+
+ipc_ids.rwsem (as a writer) and the spinlock for this ID are held
+before this function is called, and remain locked on the exit.
+
+.. _`ipc_set_key_private`:
+
+ipc_set_key_private
+===================
+
+.. c:function:: void ipc_set_key_private(struct ipc_ids *ids, struct kern_ipc_perm *ipcp)
+
+    switch the key of an existing ipc to IPC_PRIVATE
+
+    :param struct ipc_ids \*ids:
+        ipc identifier set
+
+    :param struct kern_ipc_perm \*ipcp:
+        ipc perm structure containing the key to modify
+
+.. _`ipc_set_key_private.description`:
 
 Description
 -----------

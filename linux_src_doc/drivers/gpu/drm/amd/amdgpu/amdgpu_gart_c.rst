@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c
 
-.. _`amdgpu_gart_set_defaults`:
-
-amdgpu_gart_set_defaults
-========================
-
-.. c:function:: void amdgpu_gart_set_defaults(struct amdgpu_device *adev)
-
-    set the default gart_size
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`amdgpu_gart_set_defaults.description`:
-
-Description
------------
-
-Set the default gart_size based on parameters and available VRAM.
-
 .. _`amdgpu_gart_table_ram_alloc`:
 
 amdgpu_gart_table_ram_alloc

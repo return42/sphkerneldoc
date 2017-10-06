@@ -152,28 +152,6 @@ Description
 
 Invoked by Port Bus driver when performing link reset at Root Port.
 
-.. _`aer_error_detected`:
-
-aer_error_detected
-==================
-
-.. c:function:: pci_ers_result_t aer_error_detected(struct pci_dev *dev, enum pci_channel_state error)
-
-    update severity status
-
-    :param struct pci_dev \*dev:
-        pointer to Root Port's pci_dev data structure
-
-    :param enum pci_channel_state error:
-        error severity being notified by port bus
-
-.. _`aer_error_detected.description`:
-
-Description
------------
-
-Invoked by Port Bus driver during error recovery.
-
 .. _`aer_error_resume`:
 
 aer_error_resume

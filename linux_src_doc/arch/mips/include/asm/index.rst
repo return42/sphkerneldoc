@@ -25,6 +25,8 @@ asm
     machine_h
     mips-cm_h
     mips-cpc_h
+    mips-cps_h
+    mips-gic_h
     msa_h
     pm-cps_h
     pm_h

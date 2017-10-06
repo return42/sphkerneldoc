@@ -7,7 +7,6 @@ power
 .. toctree::
     :maxdepth: 1
 
-    bq27xxx_battery_h
     charger-manager_h
     generic-adc-battery_h
     gpio-charger_h

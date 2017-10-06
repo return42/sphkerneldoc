@@ -288,33 +288,5 @@ Return
 0 if successful. If it is anything else, go have a coffee and
 try again.
 
-.. _`ashmem_read`:
-
-ashmem_read
-===========
-
-.. c:function:: ssize_t ashmem_read(struct file *file, char __user *buf, size_t len, loff_t *pos)
-
-    Reads a set of bytes from an Ashmem-enabled file
-
-    :param struct file \*file:
-        The associated backing file.
-
-    :param char __user \*buf:
-        The buffer of data being written to
-
-    :param size_t len:
-        The number of bytes being read
-
-    :param loff_t \*pos:
-        The position of the first byte to read.
-
-.. _`ashmem_read.return`:
-
-Return
-------
-
-0 if successful, or another return code if not.
-
 .. This file was automatic generated / don't edit.
 

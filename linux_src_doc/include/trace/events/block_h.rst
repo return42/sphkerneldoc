@@ -279,7 +279,7 @@ trace_block_getrq
         queue for operations
 
     :param struct bio \*bio:
-        pending block IO operation
+        pending block IO operation (can be \ ``NULL``\ )
 
     :param int rw:
         low bit indicates a read (%0) or a write (%1)
@@ -305,7 +305,7 @@ trace_block_sleeprq
         queue for operation
 
     :param struct bio \*bio:
-        pending block IO operation
+        pending block IO operation (can be \ ``NULL``\ )
 
     :param int rw:
         low bit indicates a read (%0) or a write (%1)

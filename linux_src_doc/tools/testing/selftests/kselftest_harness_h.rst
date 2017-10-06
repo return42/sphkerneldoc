@@ -71,6 +71,14 @@ E.g., #define TH_LOG_ENABLED 1
 
 If no definition is provided, logging is enabled by default.
 
+If there is no way to print an error message for the process running the
+test (e.g. not allowed to write to stderr), it is still possible to get the
+ASSERT_* number for which the test failed.  This behavior can be enabled by
+writing `_metadata->no_print = true;` before the check sequence that is
+unable to print.  When an error occur, instead of printing an error message
+and calling `abort(3)`, the test process call `_exit(2)` with the assert
+number as argument, which is then printed by the parent process.
+
 .. _`test`:
 
 TEST

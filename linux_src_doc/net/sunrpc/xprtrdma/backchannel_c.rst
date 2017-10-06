@@ -128,14 +128,6 @@ rpcrdma_bc_receive_call
     :param struct rpcrdma_rep \*rep:
         receive buffer containing the call
 
-.. _`rpcrdma_bc_receive_call.description`:
-
-Description
------------
-
-Called in the RPC reply handler, which runs in a tasklet.
-Be quick about it.
-
 .. _`rpcrdma_bc_receive_call.operational-assumptions`:
 
 Operational assumptions

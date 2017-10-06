@@ -354,15 +354,15 @@ reference or \ ``NULL``\  if none was found.
 do_remount_sb
 =============
 
-.. c:function:: int do_remount_sb(struct super_block *sb, int flags, void *data, int force)
+.. c:function:: int do_remount_sb(struct super_block *sb, int sb_flags, void *data, int force)
 
     asks filesystem to change mount options.
 
     :param struct super_block \*sb:
         superblock in question
 
-    :param int flags:
-        numeric part of options
+    :param int sb_flags:
+        revised superblock flags
 
     :param void \*data:
         the rest of options

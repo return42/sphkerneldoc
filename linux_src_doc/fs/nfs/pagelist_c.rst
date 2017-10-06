@@ -228,7 +228,7 @@ nfs_pgio_release
 nfs_pageio_init
 ===============
 
-.. c:function:: void nfs_pageio_init(struct nfs_pageio_descriptor *desc, struct inode *inode, const struct nfs_pageio_ops *pg_ops, const struct nfs_pgio_completion_ops *compl_ops, const struct nfs_rw_ops *rw_ops, size_t bsize, int io_flags, gfp_t gfp_flags)
+.. c:function:: void nfs_pageio_init(struct nfs_pageio_descriptor *desc, struct inode *inode, const struct nfs_pageio_ops *pg_ops, const struct nfs_pgio_completion_ops *compl_ops, const struct nfs_rw_ops *rw_ops, size_t bsize, int io_flags)
 
     initialise a page io descriptor
 
@@ -252,9 +252,6 @@ nfs_pageio_init
 
     :param int io_flags:
         extra parameters for the io function
-
-    :param gfp_t gfp_flags:
-        *undescribed*
 
 .. _`nfs_pgio_result`:
 

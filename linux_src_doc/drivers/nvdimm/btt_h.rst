@@ -27,6 +27,7 @@ Definition
         u32 nfree;
         u16 version_major;
         u16 version_minor;
+        u32 sector_size;
         u64 nextoff;
         u64 infooff;
         u64 dataoff;
@@ -40,6 +41,7 @@ Definition
         struct list_head list;
         struct dentry *debugfs_dir;
         u32 flags;
+        struct mutex err_lock;
     }
 
 .. _`arena_info.members`:
@@ -80,6 +82,9 @@ version_major
 version_minor
     Metadata layout version minor.
 
+sector_size
+    The Linux sector size - 512 or 4096
+
 nextoff
     Offset in bytes to the start of the next arena.
 
@@ -119,6 +124,9 @@ debugfs_dir
 flags
     Arena flags - may signify error states.
 
+err_lock
+    *undescribed*
+
 .. _`arena_info.description`:
 
 Description
@@ -157,6 +165,7 @@ Definition
         struct mutex init_lock;
         int init_state;
         int num_arenas;
+        struct badblocks *phys_bb;
     }
 
 .. _`btt.members`:
@@ -204,6 +213,9 @@ init_state
 
 num_arenas
     Number of arenas in the BTT instance
+
+phys_bb
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

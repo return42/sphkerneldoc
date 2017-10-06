@@ -31,7 +31,7 @@ octeon_smp_hotplug_setup
 octeon_boot_secondary
 =====================
 
-.. c:function:: void octeon_boot_secondary(int cpu, struct task_struct *idle)
+.. c:function:: int octeon_boot_secondary(int cpu, struct task_struct *idle)
 
     :param int cpu:
         *undescribed*

@@ -448,14 +448,14 @@ Description
 -----------
 
 Use the firmware data to find a device-specific MSI domain
-(i.e. not one that is ste as a default).
+(i.e. not one that is set as a default).
 
 .. _`pci_msi_get_device_domain.return`:
 
 Return
 ------
 
-The coresponding MSI domain or NULL if none has been found.
+The corresponding MSI domain or NULL if none has been found.
 
 .. This file was automatic generated / don't edit.
 

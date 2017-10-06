@@ -8,3 +8,4 @@ lib
     :maxdepth: 1
 
     bitops_c
+    iomap_copy_c

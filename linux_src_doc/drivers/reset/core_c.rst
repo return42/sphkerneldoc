@@ -23,6 +23,7 @@ Definition
         unsigned int id;
         struct kref refcnt;
         bool shared;
+        bool array;
         atomic_t deassert_count;
         atomic_t triggered_count;
     }
@@ -49,6 +50,9 @@ refcnt
 shared
     Is this a shared (1), or an exclusive (0) reset_control?
 
+array
+    *undescribed*
+
 deassert_count
     *undescribed*
 
@@ -56,6 +60,42 @@ triggered_count
     Number of times this reset line has been reset. Currently
     only used for shared resets, which means that the value
     will be either 0 or 1.
+
+.. _`reset_control_array`:
+
+struct reset_control_array
+==========================
+
+.. c:type:: struct reset_control_array
+
+    an array of reset controls
+
+.. _`reset_control_array.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct reset_control_array {
+        struct reset_control base;
+        unsigned int num_rstcs;
+        struct reset_control *rstc[];
+    }
+
+.. _`reset_control_array.members`:
+
+Members
+-------
+
+base
+    reset control for compatibility with reset control API functions
+
+num_rstcs
+    number of reset controls
+
+rstc
+    array of reset controls
 
 .. _`of_reset_simple_xlate`:
 
@@ -259,6 +299,72 @@ Description
 Convenience wrapper for \ :c:func:`reset_control_get`\  and \ :c:func:`reset_control_reset`\ .
 This is useful for the common case of devices with single, dedicated reset
 lines.
+
+.. _`of_reset_control_get_count`:
+
+of_reset_control_get_count
+==========================
+
+.. c:function:: int of_reset_control_get_count(struct device_node *node)
+
+    :param struct device_node \*node:
+        *undescribed*
+
+.. _`of_reset_control_array_get`:
+
+of_reset_control_array_get
+==========================
+
+.. c:function:: struct reset_control *of_reset_control_array_get(struct device_node *np, bool shared, bool optional)
+
+    Get a list of reset controls using device node.
+
+    :param struct device_node \*np:
+        device node for the device that requests the reset controls array
+
+    :param bool shared:
+        whether reset controls are shared or not
+
+    :param bool optional:
+        whether it is optional to get the reset controls
+
+.. _`of_reset_control_array_get.description`:
+
+Description
+-----------
+
+Returns pointer to allocated reset_control_array on success or
+error on failure
+
+.. _`devm_reset_control_array_get`:
+
+devm_reset_control_array_get
+============================
+
+.. c:function:: struct reset_control *devm_reset_control_array_get(struct device *dev, bool shared, bool optional)
+
+    Resource managed reset control array get
+
+    :param struct device \*dev:
+        device that requests the list of reset controls
+
+    :param bool shared:
+        whether reset controls are shared or not
+
+    :param bool optional:
+        whether it is optional to get the reset controls
+
+.. _`devm_reset_control_array_get.description`:
+
+Description
+-----------
+
+The reset control array APIs are intended for a list of resets
+that just have to be asserted or deasserted, without any
+requirements on the order.
+
+Returns pointer to allocated reset_control_array on success or
+error on failure
 
 .. This file was automatic generated / don't edit.
 

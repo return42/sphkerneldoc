@@ -9,3 +9,4 @@ spi-nor
 
     hisi-sfc_c
     intel-spi_c
+    spi-nor_c

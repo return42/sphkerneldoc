@@ -57,6 +57,7 @@ Definition
         struct pwm_chip chip;
         struct samsung_pwm_variant variant;
         u8 inverter_mask;
+        u8 disabled_mask;
         void __iomem *base;
         struct clk *base_clk;
         struct clk *tclk0;
@@ -76,6 +77,9 @@ variant
 
 inverter_mask
     inverter status for all channels - one bit per channel
+
+disabled_mask
+    disabled status for all channels - one bit per channel
 
 base
     base address of mapped PWM registers

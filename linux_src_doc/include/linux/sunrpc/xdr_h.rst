@@ -1,6 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/sunrpc/xdr.h
 
+.. _`xdr_stream_remaining`:
+
+xdr_stream_remaining
+====================
+
+.. c:function:: size_t xdr_stream_remaining(const struct xdr_stream *xdr)
+
+    Return the number of bytes remaining in the stream
+
+    :param const struct xdr_stream \*xdr:
+        pointer to struct xdr_stream
+
+.. _`xdr_stream_remaining.return-value`:
+
+Return value
+------------
+
+Number of bytes remaining in \ ``xdr``\  before xdr->end
+
 .. _`xdr_align_size`:
 
 xdr_align_size

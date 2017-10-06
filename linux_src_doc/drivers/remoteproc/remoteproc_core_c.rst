@@ -292,30 +292,6 @@ Description
 This function needs to handle everything related to a crash, like cpu
 registers and stack dump, information to help to debug the fatal error, etc.
 
-.. _`__rproc_boot`:
-
-__rproc_boot
-============
-
-.. c:function:: int __rproc_boot(struct rproc *rproc)
-
-    boot a remote processor
-
-    :param struct rproc \*rproc:
-        handle of a remote processor
-
-.. _`__rproc_boot.description`:
-
-Description
------------
-
-Boot a remote processor (i.e. load its firmware, power it on, ...).
-
-If the remote processor is already powered on, this function immediately
-returns (successfully).
-
-Returns 0 on success, and an appropriate error value otherwise.
-
 .. _`rproc_boot`:
 
 rproc_boot
@@ -327,6 +303,18 @@ rproc_boot
 
     :param struct rproc \*rproc:
         handle of a remote processor
+
+.. _`rproc_boot.description`:
+
+Description
+-----------
+
+Boot a remote processor (i.e. load its firmware, power it on, ...).
+
+If the remote processor is already powered on, this function immediately
+returns (successfully).
+
+Returns 0 on success, and an appropriate error value otherwise.
 
 .. _`rproc_shutdown`:
 
@@ -605,6 +593,25 @@ rproc_remove_subdev
 
     :param struct rproc_subdev \*subdev:
         subdev handle, previously registered with \ :c:func:`rproc_add_subdev`\ 
+
+.. _`rproc_get_by_child`:
+
+rproc_get_by_child
+==================
+
+.. c:function:: struct rproc *rproc_get_by_child(struct device *dev)
+
+    acquire rproc handle of \ ``dev``\ 's ancestor
+
+    :param struct device \*dev:
+        child device to find ancestor of
+
+.. _`rproc_get_by_child.description`:
+
+Description
+-----------
+
+Returns the ancestor rproc instance, or NULL if not found.
 
 .. _`rproc_report_crash`:
 

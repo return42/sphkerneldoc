@@ -515,7 +515,9 @@ RETURN VALUE
 -EINVAL if the requested state is invalid.
 -EIO if device does not support PCI PM or its PM capabilities register has a
 wrong version, or device doesn't support the requested state.
+0 if the transition is to D1 or D2 but D1 and D2 are not supported.
 0 if device already is in the requested state.
+0 if the transition is to D3 but D3 is not supported.
 0 if device's power state has been successfully changed.
 
 .. _`pci_choose_state`:

@@ -783,7 +783,7 @@ links
 
 power
     For device power management.
-    See Documentation/power/admin-guide/devices.rst for details.
+    See Documentation/driver-api/pm/devices.rst for details.
 
 pm_domain
     Provide callbacks that are executed during system suspend,

@@ -7,6 +7,8 @@ executive
 .. toctree::
     :maxdepth: 1
 
+    cvmx-boot-vector_c
+    cvmx-bootmem_c
     cvmx-cmd-queue_c
     cvmx-helper-board_c
     cvmx-helper-errata_c

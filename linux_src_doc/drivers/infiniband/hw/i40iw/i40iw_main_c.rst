@@ -787,6 +787,18 @@ i40iw_register_notifiers
     :param  void:
         no arguments
 
+.. _`i40iw_unregister_notifiers`:
+
+i40iw_unregister_notifiers
+==========================
+
+.. c:function:: void i40iw_unregister_notifiers( void)
+
+    unregister tcp ip notifiers
+
+    :param  void:
+        no arguments
+
 .. _`i40iw_save_msix_info`:
 
 i40iw_save_msix_info

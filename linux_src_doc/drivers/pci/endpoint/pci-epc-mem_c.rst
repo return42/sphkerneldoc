@@ -1,37 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pci/endpoint/pci-epc-mem.c
 
-.. _`pci_epc_mem_init`:
+.. _`pci_epc_mem_get_order`:
 
-pci_epc_mem_init
-================
+pci_epc_mem_get_order
+=====================
 
-.. c:function:: int pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size)
+.. c:function:: int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
 
-    :param struct pci_epc \*epc:
-        *undescribed*
-
-    :param phys_addr_t phys_base:
+    :param struct pci_epc_mem \*mem:
         *undescribed*
 
     :param size_t size:
         *undescribed*
 
-.. _`pci_epc_mem_init.description`:
+.. _`pci_epc_mem_get_order.description`:
 
 Description
 -----------
 
 Copyright (C) 2017 Texas Instruments
 
-.. _`pci_epc_mem_init.author`:
+.. _`pci_epc_mem_get_order.author`:
 
 Author
 ------
 
 Kishon Vijay Abraham I <kishon@ti.com>
 
-.. _`pci_epc_mem_init.this-program-is-free-software`:
+.. _`pci_epc_mem_get_order.this-program-is-free-software`:
 
 This program is free software
 -----------------------------
@@ -47,6 +44,35 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+.. _`__pci_epc_mem_init`:
+
+__pci_epc_mem_init
+==================
+
+.. c:function:: int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size, size_t page_size)
+
+    initialize the pci_epc_mem structure
+
+    :param struct pci_epc \*epc:
+        the EPC device that invoked pci_epc_mem_init
+
+    :param phys_addr_t phys_base:
+        the physical address of the base
+
+    :param size_t size:
+        the size of the address space
+
+    :param size_t page_size:
+        size of each page
+
+.. _`__pci_epc_mem_init.description`:
+
+Description
+-----------
+
+Invoke to initialize the pci_epc_mem structure used by the
+endpoint functions to allocate mapped PCI address.
 
 .. _`pci_epc_mem_exit`:
 

@@ -72,17 +72,39 @@ Description
 
 Returns 1 if AP configuration information is available.
 
+.. _`ap_apft_available`:
+
+ap_apft_available
+=================
+
+.. c:function:: int ap_apft_available( void)
+
+    Test if AP facilities test (APFT) facility is available.
+
+    :param  void:
+        no arguments
+
+.. _`ap_apft_available.description`:
+
+Description
+-----------
+
+Returns 1 if APFT is is available.
+
 .. _`ap_test_queue`:
 
 ap_test_queue
 =============
 
-.. c:function:: struct ap_queue_status ap_test_queue(ap_qid_t qid, unsigned long *info)
+.. c:function:: struct ap_queue_status ap_test_queue(ap_qid_t qid, int tbit, unsigned long *info)
 
     Test adjunct processor queue.
 
     :param ap_qid_t qid:
         The AP queue number
+
+    :param int tbit:
+        Test facilities bit
 
     :param unsigned long \*info:
         Pointer to queue descriptor

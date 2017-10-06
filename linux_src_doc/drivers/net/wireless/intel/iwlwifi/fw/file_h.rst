@@ -213,6 +213,7 @@ Definition
         IWL_UCODE_TLV_CAPA_EXTEND_SHARED_MEM_CFG,
         IWL_UCODE_TLV_CAPA_LQM_SUPPORT,
         IWL_UCODE_TLV_CAPA_TX_POWER_ACK,
+        IWL_UCODE_TLV_CAPA_LED_CMD_SUPPORT,
         IWL_UCODE_TLV_CAPA_MLME_OFFLOAD,
         NUM_IWL_UCODE_TLV_CAPA
     };
@@ -362,6 +363,9 @@ IWL_UCODE_TLV_CAPA_TX_POWER_ACK
     reduced TX power API has larger
     command size (command version 4) that supports toggling ACK TX
     power reduction.
+
+IWL_UCODE_TLV_CAPA_LED_CMD_SUPPORT
+    *undescribed*
 
 IWL_UCODE_TLV_CAPA_MLME_OFFLOAD
     supports MLME offload

@@ -304,7 +304,7 @@ Return
 ------
 
 1 when packing is required and a task should be moved to
-this CPU.  The amount of the imbalance is returned in *imbalance.
+this CPU.  The amount of the imbalance is returned in env->imbalance.
 
 .. _`fix_small_imbalance`:
 

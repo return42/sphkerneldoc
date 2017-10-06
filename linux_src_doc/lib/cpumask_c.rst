@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/cpumask.c
 
+.. _`cpumask_next`:
+
+cpumask_next
+============
+
+.. c:function:: unsigned int cpumask_next(int n, const struct cpumask *srcp)
+
+    get the next cpu in a cpumask
+
+    :param int n:
+        the cpu prior to the place to search (ie. return will be > \ ``n``\ )
+
+    :param const struct cpumask \*srcp:
+        the cpumask pointer
+
+.. _`cpumask_next.description`:
+
+Description
+-----------
+
+Returns >= nr_cpu_ids if no further cpus set.
+
 .. _`cpumask_next_and`:
 
 cpumask_next_and

@@ -72,5 +72,29 @@ src2 --\|--/
 
 sometimes without one of those components.
 
+.. _`rockchip_fractional_approximation`:
+
+rockchip_fractional_approximation
+=================================
+
+.. c:function:: void rockchip_fractional_approximation(struct clk_hw *hw, unsigned long rate, unsigned long *parent_rate, unsigned long *m, unsigned long *n)
+
+    numerator to generate precise clock frequency.
+
+    :param struct clk_hw \*hw:
+        *undescribed*
+
+    :param unsigned long rate:
+        *undescribed*
+
+    :param unsigned long \*parent_rate:
+        *undescribed*
+
+    :param unsigned long \*m:
+        *undescribed*
+
+    :param unsigned long \*n:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

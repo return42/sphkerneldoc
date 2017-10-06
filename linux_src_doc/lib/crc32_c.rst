@@ -33,7 +33,7 @@ crc32_generic_shift
 
 .. c:function:: u32 __attribute_const__ crc32_generic_shift(u32 crc, size_t len, u32 polynomial)
 
-    Append len 0 bytes to crc, in logarithmic time
+    Append \ ``len``\  0 bytes to crc, in logarithmic time
 
     :param u32 crc:
         The original little-endian CRC (i.e. lsbit is x^31 coefficient)

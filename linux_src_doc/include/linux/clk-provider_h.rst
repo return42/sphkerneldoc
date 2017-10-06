@@ -660,6 +660,7 @@ Definition
         u8 nwidth;
         u32 nmask;
         u8 flags;
+        void (*approximation)(struct clk_hw *hw,unsigned long rate, unsigned long *parent_rate, unsigned long *m, unsigned long *n);
         spinlock_t *lock;
     }
 
@@ -693,6 +694,9 @@ nmask
     *undescribed*
 
 flags
+    *undescribed*
+
+approximation
     *undescribed*
 
 lock

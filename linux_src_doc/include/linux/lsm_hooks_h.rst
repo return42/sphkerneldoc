@@ -106,7 +106,6 @@ Definition
         int (*file_send_sigiotask)(struct task_struct *tsk, struct fown_struct *fown, int sig);
         int (*file_receive)(struct file *file);
         int (*file_open)(struct file *file, const struct cred *cred);
-        int (*task_create)(unsigned long clone_flags);
         int (*task_alloc)(struct task_struct *task, unsigned long clone_flags);
         void (*task_free)(struct task_struct *task);
         int (*cred_alloc_blank)(struct cred *cred, gfp_t gfp);
@@ -879,12 +878,6 @@ file_open
     Save open-time permission checking state for later use upon
     file_permission, and recheck access if anything has changed
     since inode_permission.
-
-task_create
-    Check permission before creating a child process.  See the clone(2)
-    manual page for definitions of the \ ``clone_flags``\ .
-    \ ``clone_flags``\  contains the flags indicating what should be shared.
-    Return 0 if permission is granted.
 
 task_alloc
     @task task being allocated.

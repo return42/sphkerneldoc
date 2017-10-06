@@ -1,6 +1,58 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/pci.h
 
+.. _`pci_interrupt_pin`:
+
+enum pci_interrupt_pin
+======================
+
+.. c:type:: enum pci_interrupt_pin
+
+    PCI INTx interrupt values
+
+.. _`pci_interrupt_pin.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum pci_interrupt_pin {
+        PCI_INTERRUPT_UNKNOWN,
+        PCI_INTERRUPT_INTA,
+        PCI_INTERRUPT_INTB,
+        PCI_INTERRUPT_INTC,
+        PCI_INTERRUPT_INTD
+    };
+
+.. _`pci_interrupt_pin.constants`:
+
+Constants
+---------
+
+PCI_INTERRUPT_UNKNOWN
+    Unknown or unassigned interrupt
+
+PCI_INTERRUPT_INTA
+    PCI INTA pin
+
+PCI_INTERRUPT_INTB
+    PCI INTB pin
+
+PCI_INTERRUPT_INTC
+    PCI INTC pin
+
+PCI_INTERRUPT_INTD
+    PCI INTD pin
+
+.. _`pci_interrupt_pin.description`:
+
+Description
+-----------
+
+Corresponds to values for legacy PCI INTx interrupts, as can be found in the
+PCI_INTERRUPT_PIN register.
+
 .. _`pci_is_bridge`:
 
 pci_is_bridge
@@ -165,6 +217,45 @@ Helper macro for PCI drivers which do not do anything special in their
 init code. This eliminates a lot of boilerplate. Each driver may only
 use this macro once, and calling it replaces device_initcall(...)
 
+.. _`pci_irqd_intx_xlate`:
+
+pci_irqd_intx_xlate
+===================
+
+.. c:function:: int pci_irqd_intx_xlate(struct irq_domain *d, struct device_node *node, const u32 *intspec, unsigned int intsize, unsigned long *out_hwirq, unsigned int *out_type)
+
+    Translate PCI INTx value to an IRQ domain hwirq
+
+    :param struct irq_domain \*d:
+        the INTx IRQ domain
+
+    :param struct device_node \*node:
+        the DT node for the device whose interrupt we're translating
+
+    :param const u32 \*intspec:
+        the interrupt specifier data from the DT
+
+    :param unsigned int intsize:
+        the number of entries in \ ``intspec``\ 
+
+    :param unsigned long \*out_hwirq:
+        pointer at which to write the hwirq number
+
+    :param unsigned int \*out_type:
+        pointer at which to write the interrupt type
+
+.. _`pci_irqd_intx_xlate.description`:
+
+Description
+-----------
+
+Translate a PCI INTx interrupt number from device tree in the range 1-4, as
+stored in the standard PCI_INTERRUPT_PIN register, to a value in the range
+0-3 suitable for use in a 4 entry IRQ domain. That is, subtract one from the
+INTx value to obtain the hwirq number.
+
+Returns 0 on success, or -EINVAL if the interrupt specifier is out of range.
+
 .. _`pci_pcie_cap`:
 
 pci_pcie_cap
@@ -280,7 +371,7 @@ pci_vpd_srdt_size
     Extracts the Small Resource Data Type length
 
     :param const u8 \*srdt:
-        *undescribed*
+        Pointer to the beginning of the Small Resource Data Type tag
 
 .. _`pci_vpd_srdt_size.description`:
 
@@ -299,7 +390,7 @@ pci_vpd_srdt_tag
     Extracts the Small Resource Data Type Tag Item
 
     :param const u8 \*srdt:
-        *undescribed*
+        Pointer to the beginning of the Small Resource Data Type tag
 
 .. _`pci_vpd_srdt_tag.description`:
 

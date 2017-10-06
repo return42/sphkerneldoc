@@ -155,7 +155,7 @@ automatic_shrinking
     Enable automatic shrinking of tables
 
 locks_mul
-    Number of bucket locks to allocate per cpu (default: 128)
+    Number of bucket locks to allocate per cpu (default: 32)
 
 nulls_base
     Base value to generate nulls marker

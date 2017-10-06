@@ -21,17 +21,5 @@ Description
 This function creates all debugfs files for UBI device \ ``ubi``\ . Returns zero in
 case of success and a negative error code in case of failure.
 
-.. _`nandsim_debugfs_remove`:
-
-nandsim_debugfs_remove
-======================
-
-.. c:function:: void nandsim_debugfs_remove(struct nandsim *ns)
-
-    destroy all debugfs files
-
-    :param struct nandsim \*ns:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

@@ -788,20 +788,17 @@ Description
 Like find_get_entries, except we only return entries which are tagged with
 \ ``tag``\ .
 
-.. _`do_generic_file_read`:
+.. _`generic_file_buffered_read`:
 
-do_generic_file_read
-====================
+generic_file_buffered_read
+==========================
 
-.. c:function:: ssize_t do_generic_file_read(struct file *filp, loff_t *ppos, struct iov_iter *iter, ssize_t written)
+.. c:function:: ssize_t generic_file_buffered_read(struct kiocb *iocb, struct iov_iter *iter, ssize_t written)
 
     generic file read routine
 
-    :param struct file \*filp:
-        the file to read
-
-    :param loff_t \*ppos:
-        current file position
+    :param struct kiocb \*iocb:
+        the iocb to read
 
     :param struct iov_iter \*iter:
         data destination
@@ -809,7 +806,7 @@ do_generic_file_read
     :param ssize_t written:
         already copied
 
-.. _`do_generic_file_read.description`:
+.. _`generic_file_buffered_read.description`:
 
 Description
 -----------

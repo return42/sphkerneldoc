@@ -31,3 +31,4 @@ tty
     tty_jobctrl_c
     tty_ldisc_c
     tty_port_c
+    vcc_c

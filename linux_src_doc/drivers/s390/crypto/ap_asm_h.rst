@@ -66,12 +66,15 @@ Returns AP queue status structure.
 ap_aqic
 =======
 
-.. c:function:: struct ap_queue_status ap_aqic(ap_qid_t qid, void *ind)
+.. c:function:: struct ap_queue_status ap_aqic(ap_qid_t qid, struct ap_qirq_ctrl qirqctrl, void *ind)
 
-    Enable interruption for a specific AP.
+    Control interruption for a specific AP.
 
     :param ap_qid_t qid:
         The AP queue number
+
+    :param struct ap_qirq_ctrl qirqctrl:
+        struct ap_qirq_ctrl (64 bit value)
 
     :param void \*ind:
         The notification indicator byte

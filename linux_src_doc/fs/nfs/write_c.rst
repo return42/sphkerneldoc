@@ -28,7 +28,8 @@ This sets the PG_CLEAN bit, updates the cinfo count of
 number of outstanding requests requiring a commit as well as
 the MM page stats.
 
-The caller must hold cinfo->inode->i_lock, and the nfs_page lock.
+The caller must hold NFS_I(cinfo->inode)->commit_mutex, and the
+nfs_page lock.
 
 .. _`nfs_request_add_commit_list`:
 

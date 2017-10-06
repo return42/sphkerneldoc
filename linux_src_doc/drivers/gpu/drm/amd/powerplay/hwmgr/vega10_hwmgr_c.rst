@@ -115,7 +115,7 @@ Description
 vega10_populate_single_gfx_level
 ================================
 
-.. c:function:: int vega10_populate_single_gfx_level(struct pp_hwmgr *hwmgr, uint32_t gfx_clock, PllSetting_t *current_gfxclk_level)
+.. c:function:: int vega10_populate_single_gfx_level(struct pp_hwmgr *hwmgr, uint32_t gfx_clock, PllSetting_t *current_gfxclk_level, uint32_t *acg_freq)
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -124,6 +124,9 @@ vega10_populate_single_gfx_level
         *undescribed*
 
     :param PllSetting_t \*current_gfxclk_level:
+        *undescribed*
+
+    :param uint32_t \*acg_freq:
         *undescribed*
 
 .. _`vega10_populate_single_gfx_level.description`:

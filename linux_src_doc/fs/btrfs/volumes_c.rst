@@ -1,28 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/btrfs/volumes.c
 
-.. _`alloc_fs_devices`:
-
-alloc_fs_devices
-================
-
-.. c:function:: struct btrfs_fs_devices *alloc_fs_devices(const u8 *fsid)
-
-    allocate struct btrfs_fs_devices
-
-    :param const u8 \*fsid:
-        a pointer to UUID for this FS.  If NULL a new UUID is
-        generated.
-
-.. _`alloc_fs_devices.return`:
-
-Return
-------
-
-a pointer to a new \ :c:type:`struct btrfs_fs_devices <btrfs_fs_devices>`\  on success;
-\ :c:func:`ERR_PTR`\  on error.  Returned struct is not linked onto any lists and
-can be destroyed with \ :c:func:`kfree`\  right away.
-
 .. _`alloc_profile_is_valid`:
 
 alloc_profile_is_valid

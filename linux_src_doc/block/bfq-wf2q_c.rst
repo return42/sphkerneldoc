@@ -28,7 +28,7 @@ Return \ ``a``\  > \ ``b``\ , dealing with wrapping correctly.
 bfq_update_next_in_service
 ==========================
 
-.. c:function:: bool bfq_update_next_in_service(struct bfq_sched_data *sd, struct bfq_entity *new_entity)
+.. c:function:: bool bfq_update_next_in_service(struct bfq_sched_data *sd, struct bfq_entity *new_entity, bool expiration)
 
     update sd->next_in_service
 
@@ -39,6 +39,10 @@ bfq_update_next_in_service
         if not NULL, pointer to the entity whose activation,
         requeueing or repositionig triggered the invocation of
         this function.
+
+    :param bool expiration:
+        id true, this function is being invoked after the
+        expiration of the in-service entity
 
 .. _`bfq_update_next_in_service.description`:
 
@@ -538,7 +542,7 @@ the new values of the timestamps).
 bfq_activate_requeue_entity
 ===========================
 
-.. c:function:: void bfq_activate_requeue_entity(struct bfq_entity *entity, bool non_blocking_wait_rq, bool requeue)
+.. c:function:: void bfq_activate_requeue_entity(struct bfq_entity *entity, bool non_blocking_wait_rq, bool requeue, bool expiration)
 
     activate or requeue an entity representing a bfq_queue, and activate, requeue or reposition all ancestors for which such an update becomes necessary.
 
@@ -552,6 +556,10 @@ bfq_activate_requeue_entity
         true if this is a requeue, which implies that bfqq is
         being expired; thus ALL its ancestors stop being served and must
         therefore be requeued
+
+    :param bool expiration:
+        true if this function is being invoked in the expiration path
+        of the in-service queue
 
 .. _`__bfq_deactivate_entity`:
 
@@ -595,7 +603,8 @@ bfq_deactivate_entity
         true if the entity can be put into the idle tree
 
     :param bool expiration:
-        *undescribed*
+        true if this function is being invoked in the expiration path
+        of the in-service queue
 
 .. _`bfq_calc_vtime_jump`:
 
@@ -690,12 +699,15 @@ in-service entity, on expiration,
 bfq_lookup_next_entity
 ======================
 
-.. c:function:: struct bfq_entity *bfq_lookup_next_entity(struct bfq_sched_data *sd)
+.. c:function:: struct bfq_entity *bfq_lookup_next_entity(struct bfq_sched_data *sd, bool expiration)
 
     return the first eligible entity in \ ``sd``\ .
 
     :param struct bfq_sched_data \*sd:
         the sched_data.
+
+    :param bool expiration:
+        true if we are on the expiration path of the in-service queue
 
 .. _`bfq_lookup_next_entity.description`:
 
@@ -703,8 +715,8 @@ Description
 -----------
 
 This function is invoked when there has been a change in the trees
-for sd, and we need know what is the new next entity after this
-change.
+for sd, and we need to know what is the new next entity to serve
+after this change.
 
 .. This file was automatic generated / don't edit.
 

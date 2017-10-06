@@ -41,13 +41,13 @@ div
     divisor value (1-64)
 
 src_shift
-    *undescribed*
+    Shift to access the register bits to select the parent clock
 
 src_width
-    *undescribed*
+    Number of register bits to select the parent clock (may be 0)
 
 parents
-    *undescribed*
+    Array to map from valid parent clocks indices to hardware indices
 
 .. _`cpg_div6_register`:
 

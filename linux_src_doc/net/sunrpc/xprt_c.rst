@@ -377,6 +377,45 @@ xprt_lookup_rqst
     :param __be32 xid:
         RPC XID of incoming reply
 
+.. _`xprt_pin_rqst`:
+
+xprt_pin_rqst
+=============
+
+.. c:function:: void xprt_pin_rqst(struct rpc_rqst *req)
+
+    Pin a request on the transport receive list
+
+    :param struct rpc_rqst \*req:
+        Request to pin
+
+.. _`xprt_pin_rqst.description`:
+
+Description
+-----------
+
+Caller must ensure this is atomic with the call to \ :c:func:`xprt_lookup_rqst`\ 
+so should be holding the xprt transport lock.
+
+.. _`xprt_unpin_rqst`:
+
+xprt_unpin_rqst
+===============
+
+.. c:function:: void xprt_unpin_rqst(struct rpc_rqst *req)
+
+    Unpin a request on the transport receive list
+
+    :param struct rpc_rqst \*req:
+        Request to pin
+
+.. _`xprt_unpin_rqst.description`:
+
+Description
+-----------
+
+Caller should be holding the xprt transport lock.
+
 .. _`xprt_complete_rqst`:
 
 xprt_complete_rqst

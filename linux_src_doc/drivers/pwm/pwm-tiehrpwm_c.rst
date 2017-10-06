@@ -6,17 +6,17 @@
 set_prescale_div
 ================
 
-.. c:function:: int set_prescale_div(unsigned long rqst_prescaler, unsigned short *prescale_div, unsigned short *tb_clk_div)
+.. c:function:: int set_prescale_div(unsigned long rqst_prescaler, u16 *prescale_div, u16 *tb_clk_div)
 
     Set up the prescaler divider function
 
     :param unsigned long rqst_prescaler:
         prescaler value min
 
-    :param unsigned short \*prescale_div:
+    :param u16 \*prescale_div:
         prescaler value set
 
-    :param unsigned short \*tb_clk_div:
+    :param u16 \*tb_clk_div:
         Time Base Control prescaler bits
 
 .. This file was automatic generated / don't edit.

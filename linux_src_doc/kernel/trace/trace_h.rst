@@ -46,6 +46,7 @@ Definition
     #ifdef CONFIG_TRACER_MAX_TRACE
         bool use_max_tr;
     #endif
+        bool noboot;
     }
 
 .. _`tracer.members`:
@@ -123,6 +124,9 @@ allow_instances
     *undescribed*
 
 use_max_tr
+    *undescribed*
+
+noboot
     *undescribed*
 
 .. _`event_trigger_unlock_commit`:

@@ -1,5 +1,5 @@
 .. -*- coding: utf-8; mode: rst -*-
-.. src-file: drivers/video/console/fbcon.c
+.. src-file: drivers/video/fbdev/core/fbcon.c
 
 .. _`set_con2fb_map`:
 

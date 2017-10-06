@@ -161,48 +161,6 @@ Return
 
 refcount profile or NULL on failure
 
-.. _`aa_new_null_profile`:
-
-aa_new_null_profile
-===================
-
-.. c:function:: struct aa_profile *aa_new_null_profile(struct aa_profile *parent, bool hat, const char *base, gfp_t gfp)
-
-    create or find a null-X learning profile
-
-    :param struct aa_profile \*parent:
-        profile that caused this profile to be created (NOT NULL)
-
-    :param bool hat:
-        true if the null- learning profile is a hat
-
-    :param const char \*base:
-        name to base the null profile off of
-
-    :param gfp_t gfp:
-        type of allocation
-
-.. _`aa_new_null_profile.description`:
-
-Description
------------
-
-Find/Create a null- complain mode profile used in learning mode.  The
-name of the profile is unique and follows the format of parent//null-XXX.
-where XXX is based on the \ ``name``\  or if that fails or is not supplied
-a unique number
-
-null profiles are added to the profile list but the list does not
-hold a count on them so that they are automatically released when
-not in use.
-
-.. _`aa_new_null_profile.return`:
-
-Return
-------
-
-new refcounted profile else NULL on failure
-
 .. _`__strn_find_child`:
 
 __strn_find_child
@@ -382,6 +340,48 @@ Return
 ------
 
 refcounted profile or NULL if not found
+
+.. _`aa_new_null_profile`:
+
+aa_new_null_profile
+===================
+
+.. c:function:: struct aa_profile *aa_new_null_profile(struct aa_profile *parent, bool hat, const char *base, gfp_t gfp)
+
+    create or find a null-X learning profile
+
+    :param struct aa_profile \*parent:
+        profile that caused this profile to be created (NOT NULL)
+
+    :param bool hat:
+        true if the null- learning profile is a hat
+
+    :param const char \*base:
+        name to base the null profile off of
+
+    :param gfp_t gfp:
+        type of allocation
+
+.. _`aa_new_null_profile.description`:
+
+Description
+-----------
+
+Find/Create a null- complain mode profile used in learning mode.  The
+name of the profile is unique and follows the format of parent//null-XXX.
+where XXX is based on the \ ``name``\  or if that fails or is not supplied
+a unique number
+
+null profiles are added to the profile list but the list does not
+hold a count on them so that they are automatically released when
+not in use.
+
+.. _`aa_new_null_profile.return`:
+
+Return
+------
+
+new refcounted profile else NULL on failure
 
 .. _`replacement_allowed`:
 

@@ -1,6 +1,44 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/xprtrdma/rpc_rdma.c
 
+.. _`rpcrdma_marshal_req`:
+
+rpcrdma_marshal_req
+===================
+
+.. c:function:: int rpcrdma_marshal_req(struct rpcrdma_xprt *r_xprt, struct rpc_rqst *rqst)
+
+    Marshal and send one RPC request
+
+    :param struct rpcrdma_xprt \*r_xprt:
+        controlling transport
+
+    :param struct rpc_rqst \*rqst:
+        RPC request to be marshaled
+
+.. _`rpcrdma_marshal_req.description`:
+
+Description
+-----------
+
+For the RPC in "rqst", this function:
+- Chooses the transfer mode (eg., RDMA_MSG or RDMA_NOMSG)
+- Registers Read, Write, and Reply chunks
+- Constructs the transport header
+- Posts a Send WR to send the transport header and request
+
+.. _`rpcrdma_marshal_req.return`:
+
+Return
+------
+
+%0 if the RPC was sent successfully,
+\ ``-ENOTCONN``\  if the connection was lost,
+\ ``-EAGAIN``\  if not enough pages are available for on-demand reply buffer,
+\ ``-ENOBUFS``\  if no MRs are available to register chunks,
+\ ``-EMSGSIZE``\  if the transport header is too small,
+\ ``-EIO``\  if a permanent problem occurred while marshaling.
+
 .. _`rpcrdma_inline_fixup`:
 
 rpcrdma_inline_fixup

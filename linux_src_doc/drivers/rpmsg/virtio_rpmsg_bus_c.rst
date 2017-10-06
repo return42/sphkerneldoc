@@ -22,6 +22,7 @@ Definition
         struct virtqueue *rvq, *svq;
         void *rbufs, *sbufs;
         unsigned int num_bufs;
+        unsigned int buf_size;
         int last_sbuf;
         dma_addr_t bufs_dma;
         struct mutex tx_lock;
@@ -54,6 +55,9 @@ sbufs
 
 num_bufs
     total number of buffers for rx and tx
+
+buf_size
+    size of one rx or tx buffer
 
 last_sbuf
     index of last tx buffer used
@@ -223,6 +227,32 @@ RPMSG_NS_CREATE
 
 RPMSG_NS_DESTROY
     a known remote service was just destroyed
+
+.. _`rpmsg_sg_init`:
+
+rpmsg_sg_init
+=============
+
+.. c:function:: void rpmsg_sg_init(struct scatterlist *sg, void *cpu_addr, unsigned int len)
+
+    initialize scatterlist according to cpu address location
+
+    :param struct scatterlist \*sg:
+        scatterlist to fill
+
+    :param void \*cpu_addr:
+        virtual address of the buffer
+
+    :param unsigned int len:
+        buffer length
+
+.. _`rpmsg_sg_init.description`:
+
+Description
+-----------
+
+An internal function filling scatterlist according to virtual address
+location (in vmalloc or in kernel).
 
 .. _`__ept_release`:
 

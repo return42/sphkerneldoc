@@ -68,13 +68,6 @@ After \ ``cl``\  is no longer waiting on anything (i.e. all outstanding refs hav
 been dropped with \ :c:func:`closure_put`\ ), it will resume execution at \ ``fn``\  running out
 of \ ``wq``\  (or, if \ ``wq``\  is NULL, \ ``fn``\  will be called by \ :c:func:`closure_put`\  directly).
 
-.. _`continue_at.note`:
-
-NOTE
-----
-
-This macro expands to a return in the calling function!
-
 This is because after calling \ :c:func:`continue_at`\  you no longer have a ref on \ ``cl``\ ,
 and whatever \ ``cl``\  owns may be freed out from under you - a running closure fn
 has a ref on its own closure which \ :c:func:`continue_at`\  drops.
@@ -126,13 +119,6 @@ Description
 
 Causes \ ``fn``\  to be executed out of \ ``cl``\ , in \ ``wq``\  context (or called directly if
 \ ``wq``\  is NULL).
-
-.. _`continue_at_nobarrier.note`:
-
-NOTE
-----
-
-like \ :c:func:`continue_at`\ , this macro expands to a return in the caller!
 
 The ref the caller of \ :c:func:`continue_at_nobarrier`\  had on \ ``cl``\  is now owned by \ ``fn``\ ,
 thus it's not safe to touch anything protected by \ ``cl``\  after a

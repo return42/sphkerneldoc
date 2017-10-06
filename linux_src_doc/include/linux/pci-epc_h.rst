@@ -91,6 +91,7 @@ Definition
         phys_addr_t phys_base;
         size_t size;
         unsigned long *bitmap;
+        size_t page_size;
         int pages;
     }
 
@@ -107,6 +108,9 @@ size
 
 bitmap
     bitmap to manage the PCI address space
+
+page_size
+    size of each page
 
 pages
     number of bits representing the address region

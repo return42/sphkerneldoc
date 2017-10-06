@@ -68,7 +68,6 @@ Definition
         loff_t oob_write_ofs;
         int oob_autoecc;
         u8 oob_write_buf[DOC_LAYOUT_OOB_SIZE];
-        struct dentry *debugfs_root;
     }
 
 .. _`docg3.members`:
@@ -110,9 +109,6 @@ oob_autoecc
 
 oob_write_buf
     prepared OOB for next page_write
-
-debugfs_root
-    debugfs root node
 
 .. This file was automatic generated / don't edit.
 

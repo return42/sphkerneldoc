@@ -8,6 +8,7 @@ remoteproc
     :maxdepth: 1
 
     da8xx_remoteproc_c
+    imx_rproc_c
     keystone_remoteproc_c
     omap_remoteproc_c
     qcom_common_c

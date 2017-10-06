@@ -159,6 +159,50 @@ Description
 
 Returns a pointer to block of memory, NULL on error
 
+.. _`cvmx_bootmem_alloc_named_range_once`:
+
+cvmx_bootmem_alloc_named_range_once
+===================================
+
+.. c:function:: void *cvmx_bootmem_alloc_named_range_once(uint64_t size, uint64_t min_addr, uint64_t max_addr, uint64_t align, char *name, void (*init)(void *))
+
+    free list that was passed to the application by the bootloader, and assign it a name in the global named block table.  (part of the cvmx_bootmem_descriptor_t structure) Named blocks can later be freed.  If the requested name block is already allocated, return the pointer to block of memory.  If request cannot be satisfied within the address range specified, NULL is returned
+
+    :param uint64_t size:
+        *undescribed*
+
+    :param uint64_t min_addr:
+        *undescribed*
+
+    :param uint64_t max_addr:
+        *undescribed*
+
+    :param uint64_t align:
+        *undescribed*
+
+    :param char \*name:
+        *undescribed*
+
+    :param void (\*init)(void \*):
+        *undescribed*
+
+.. _`cvmx_bootmem_alloc_named_range_once.description`:
+
+Description
+-----------
+
+@param size   Size in bytes of block to allocate
+\ ``param``\  min_addr  minimum address of range
+\ ``param``\  max_addr  maximum address of range
+\ ``param``\  align  Alignment of memory to be allocated. (must be a power of 2)
+\ ``param``\  name   name of block - must be less than CVMX_BOOTMEM_NAME_LEN bytes
+\ ``param``\  init   Initialization function
+
+The initialization function is optional, if omitted the named block
+is initialized to all zeros when it is created, i.e. once.
+
+\ ``return``\  pointer to block of memory, NULL on error
+
 .. _`cvmx_bootmem_find_named_block`:
 
 cvmx_bootmem_find_named_block

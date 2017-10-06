@@ -31,5 +31,24 @@ Return
 
 0 on success, the proper error value otherwise.
 
+.. _`destroy_trip_attrs`:
+
+destroy_trip_attrs
+==================
+
+.. c:function:: void destroy_trip_attrs(struct thermal_zone_device *tz)
+
+    destroy attributes for trip points
+
+    :param struct thermal_zone_device \*tz:
+        the thermal zone device
+
+.. _`destroy_trip_attrs.description`:
+
+Description
+-----------
+
+helper function to free resources allocated by \ :c:func:`create_trip_attrs`\ 
+
 .. This file was automatic generated / don't edit.
 

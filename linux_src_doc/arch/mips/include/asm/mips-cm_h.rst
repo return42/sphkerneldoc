@@ -95,46 +95,6 @@ Description
 
 Returns true if the system implements an L2-only sync region, else false.
 
-.. _`mips_cm_numcores`:
-
-mips_cm_numcores
-================
-
-.. c:function:: unsigned mips_cm_numcores( void)
-
-    return the number of cores present in the system
-
-    :param  void:
-        no arguments
-
-.. _`mips_cm_numcores.description`:
-
-Description
------------
-
-Returns the value of the PCORES field of the GCR_CONFIG register plus 1, or
-zero if no Coherence Manager is present.
-
-.. _`mips_cm_numiocu`:
-
-mips_cm_numiocu
-===============
-
-.. c:function:: unsigned mips_cm_numiocu( void)
-
-    return the number of IOCUs present in the system
-
-    :param  void:
-        no arguments
-
-.. _`mips_cm_numiocu.description`:
-
-Description
------------
-
-Returns the value of the NUMIOCU field of the GCR_CONFIG register, or zero
-if no Coherence Manager is present.
-
 .. _`mips_cm_l2sync`:
 
 mips_cm_l2sync
@@ -228,9 +188,12 @@ the VP ID for the CPU.
 mips_cm_lock_other
 ==================
 
-.. c:function:: void mips_cm_lock_other(unsigned int core, unsigned int vp)
+.. c:function:: void mips_cm_lock_other(unsigned int cluster, unsigned int core, unsigned int vp, unsigned int block)
 
-    lock access to another core
+    lock access to redirect/other region
+
+    :param unsigned int cluster:
+        the other cluster to be accessed
 
     :param unsigned int core:
         the other core to be accessed
@@ -238,14 +201,24 @@ mips_cm_lock_other
     :param unsigned int vp:
         the VP within the other core to be accessed
 
+    :param unsigned int block:
+        the register block to be accessed
+
 .. _`mips_cm_lock_other.description`:
 
 Description
 -----------
 
-Call before operating upon a core via the 'other' register region in
-order to prevent the region being moved during access. Must be followed
-by a call to mips_cm_unlock_other.
+Configure the redirect/other region for the local core/VP (depending upon
+the CM revision) to target the specified \ ``cluster``\ , \ ``core``\ , \ ``vp``\  & register
+\ ``block``\ . Must be called before using the redirect/other region, and followed
+by a call to \ :c:func:`mips_cm_unlock_other`\  when access to the redirect/other region
+is complete.
+
+This function acquires a spinlock such that code between it &
+\ :c:func:`mips_cm_unlock_other`\  calls cannot be pre-empted by anything which may
+reconfigure the redirect/other region, and cannot be interfered with by
+another VP in the core. As such calls to this function should not be nested.
 
 .. _`mips_cm_unlock_other`:
 
@@ -254,7 +227,7 @@ mips_cm_unlock_other
 
 .. c:function:: void mips_cm_unlock_other( void)
 
-    unlock access to another core
+    unlock access to redirect/other region
 
     :param  void:
         no arguments
@@ -264,8 +237,33 @@ mips_cm_unlock_other
 Description
 -----------
 
-Call after operating upon another core via the 'other' register region.
-Must be called after mips_cm_lock_other.
+Must be called after \ :c:func:`mips_cm_lock_other`\  once all required access to the
+redirect/other region has been completed.
+
+.. _`mips_cm_lock_other_cpu`:
+
+mips_cm_lock_other_cpu
+======================
+
+.. c:function:: void mips_cm_lock_other_cpu(unsigned int cpu, unsigned int block)
+
+    lock access to redirect/other region
+
+    :param unsigned int cpu:
+        the other CPU whose register we want to access
+
+    :param unsigned int block:
+        *undescribed*
+
+.. _`mips_cm_lock_other_cpu.description`:
+
+Description
+-----------
+
+Configure the redirect/other region for the local core/VP (depending upon
+the CM revision) to target the specified \ ``cpu``\  & register \ ``block``\ . This is
+equivalent to calling \ :c:func:`mips_cm_lock_other`\  but accepts a Linux CPU number
+for convenience.
 
 .. This file was automatic generated / don't edit.
 

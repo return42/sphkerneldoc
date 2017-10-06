@@ -603,12 +603,12 @@ i40iw_add_hte_node
     :param struct i40iw_cm_node \*cm_node:
         connection's node
 
-.. _`i40iw_listen_port_in_use`:
+.. _`i40iw_port_in_use`:
 
-i40iw_listen_port_in_use
-========================
+i40iw_port_in_use
+=================
 
-.. c:function:: bool i40iw_listen_port_in_use(struct i40iw_cm_core *cm_core, u16 port)
+.. c:function:: bool i40iw_port_in_use(struct i40iw_cm_core *cm_core, u16 port, bool active_side)
 
     determine if port is in use
 
@@ -616,7 +616,10 @@ i40iw_listen_port_in_use
         *undescribed*
 
     :param u16 port:
-        Listen port number
+        port number
+
+    :param bool active_side:
+        flag for listener side vs active side
 
 .. _`i40iw_del_multiple_qhash`:
 

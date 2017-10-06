@@ -12,7 +12,6 @@ linux_src_doc
     certs/index
     crypto/index
     drivers/index
-    firmware/index
     fs/index
     include/index
     init/index
@@ -27,3 +26,7 @@ linux_src_doc
     sound/index
     tools/index
     virt/index
+    nested_foobar_h
+    test123_c
+    xxx_h
+    yyy_c

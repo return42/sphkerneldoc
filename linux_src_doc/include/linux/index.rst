@@ -20,7 +20,6 @@ linux
     hsi/index
     iio/index
     input/index
-    irqchip/index
     mfd/index
     mmc/index
     mtd/index
@@ -147,7 +146,6 @@ linux
     hwspinlock_h
     i2c-gpio_h
     i2c-mux-gpio_h
-    i2c-mux-pinctrl_h
     i2c-xiic_h
     i2c_h
     ide_h
@@ -374,5 +372,7 @@ linux
     workqueue_h
     writeback_h
     ww_mutex_h
+    xxhash_h
     xz_h
     zpool_h
+    zstd_h

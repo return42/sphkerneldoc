@@ -19,6 +19,7 @@ apparmor
     lib_c
     lsm_c
     match_c
+    mount_c
     path_c
     policy_c
     policy_ns_c

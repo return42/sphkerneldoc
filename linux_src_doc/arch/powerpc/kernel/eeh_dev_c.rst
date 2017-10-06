@@ -41,25 +41,5 @@ Description
 Scan the PHB OF node and its child association, then create the
 EEH devices accordingly
 
-.. _`eeh_dev_phb_init`:
-
-eeh_dev_phb_init
-================
-
-.. c:function:: int eeh_dev_phb_init( void)
-
-    Create EEH devices for devices included in existing PHBs
-
-    :param  void:
-        no arguments
-
-.. _`eeh_dev_phb_init.description`:
-
-Description
------------
-
-Scan all the existing PHBs and create EEH devices for their OF
-nodes and their children OF nodes
-
 .. This file was automatic generated / don't edit.
 

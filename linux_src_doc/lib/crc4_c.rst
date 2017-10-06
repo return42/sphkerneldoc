@@ -11,7 +11,7 @@ crc4
     calculate the 4-bit crc of a value.
 
     :param uint8_t c:
-        *undescribed*
+        starting crc4
 
     :param uint64_t x:
         value to checksum

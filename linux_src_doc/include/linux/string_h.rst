@@ -50,5 +50,29 @@ kbasename
     :param const char \*path:
         path to extract the filename from.
 
+.. _`memcpy_and_pad`:
+
+memcpy_and_pad
+==============
+
+.. c:function:: void memcpy_and_pad(void *dest, size_t dest_len, const void *src, size_t count, int pad)
+
+    Copy one buffer to another with padding
+
+    :param void \*dest:
+        Where to copy to
+
+    :param size_t dest_len:
+        The destination buffer size
+
+    :param const void \*src:
+        Where to copy from
+
+    :param size_t count:
+        The number of bytes to copy
+
+    :param int pad:
+        Character to use for padding if space is left in destination.
+
 .. This file was automatic generated / don't edit.
 

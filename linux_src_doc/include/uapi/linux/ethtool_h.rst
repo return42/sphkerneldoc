@@ -2395,7 +2395,9 @@ Definition
         __u8 eth_tp_mdix;
         __u8 eth_tp_mdix_ctrl;
         __s8 link_mode_masks_nwords;
-        __u32 reserved[8];
+        __u8 transceiver;
+        __u8 reserved1[3];
+        __u32 reserved[7];
         __u32 link_mode_masks[0];
     }
 
@@ -2446,6 +2448,13 @@ link_mode_masks_nwords
     supported, advertising, lp_advertising link mode bitmaps. For
     \ ``ETHTOOL_GLINKSETTINGS``\ : on entry, number of words passed by user
     (>= 0); on return, if handshake in progress, negative if
+
+transceiver
+    Used to distinguish different possible PHY types,
+    reported consistently by PHYLIB.  Read-only.
+
+reserved1
+    *undescribed*
 
 reserved
     *undescribed*

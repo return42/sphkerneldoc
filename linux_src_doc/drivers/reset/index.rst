@@ -9,6 +9,5 @@ reset
 
     sti/index
     core_c
-    reset-gemini_c
     reset-ti-sci_c
     reset-ti-syscon_c

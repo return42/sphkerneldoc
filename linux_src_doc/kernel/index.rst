@@ -64,6 +64,7 @@ kernel
     task_work_c
     tracepoint_c
     tsacct_c
+    umh_c
     user_namespace_c
     watchdog_c
     workqueue_c

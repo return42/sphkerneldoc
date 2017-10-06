@@ -20,25 +20,6 @@ Description
 
 Drops dst reference count if a reference was taken.
 
-.. _`skb_dst_force`:
-
-skb_dst_force
-=============
-
-.. c:function:: void skb_dst_force(struct sk_buff *skb)
-
-    makes sure skb dst is refcounted
-
-    :param struct sk_buff \*skb:
-        buffer
-
-.. _`skb_dst_force.description`:
-
-Description
------------
-
-If dst is not yet refcounted, let's do it
-
 .. _`dst_hold_safe`:
 
 dst_hold_safe
@@ -59,19 +40,19 @@ Description
 This helper returns false if it could not safely
 take a reference on a dst.
 
-.. _`skb_dst_force_safe`:
+.. _`skb_dst_force`:
 
-skb_dst_force_safe
-==================
+skb_dst_force
+=============
 
-.. c:function:: void skb_dst_force_safe(struct sk_buff *skb)
+.. c:function:: void skb_dst_force(struct sk_buff *skb)
 
     makes sure skb dst is refcounted
 
     :param struct sk_buff \*skb:
         buffer
 
-.. _`skb_dst_force_safe.description`:
+.. _`skb_dst_force.description`:
 
 Description
 -----------

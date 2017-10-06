@@ -250,5 +250,33 @@ given pair. This value can be retrieved by MTD users using the
 Examples are given in the \ :c:func:`mtd_pairing_info_to_wunit`\  and
 \ :c:func:`mtd_wunit_to_pairing_info`\  documentation.
 
+.. _`mtd_debug_info`:
+
+struct mtd_debug_info
+=====================
+
+.. c:type:: struct mtd_debug_info
+
+    debugging information for an MTD device.
+
+.. _`mtd_debug_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mtd_debug_info {
+        struct dentry *dfs_dir;
+    }
+
+.. _`mtd_debug_info.members`:
+
+Members
+-------
+
+dfs_dir
+    direntry object of the MTD device debugfs directory
+
 .. This file was automatic generated / don't edit.
 

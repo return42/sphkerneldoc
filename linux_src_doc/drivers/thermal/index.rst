@@ -26,5 +26,6 @@ thermal
     thermal_core_c
     thermal_helpers_c
     thermal_sysfs_c
+    uniphier_thermal_c
     user_space_c
     zx2967_thermal_c

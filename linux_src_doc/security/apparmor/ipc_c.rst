@@ -41,5 +41,35 @@ Return
 
 %0 else error code if permission denied or error
 
+.. _`audit_signal_mask`:
+
+audit_signal_mask
+=================
+
+.. c:function:: void audit_signal_mask(struct audit_buffer *ab, u32 mask)
+
+    convert mask to permission string
+
+    :param struct audit_buffer \*ab:
+        *undescribed*
+
+    :param u32 mask:
+        permission mask to convert
+
+.. _`audit_signal_cb`:
+
+audit_signal_cb
+===============
+
+.. c:function:: void audit_signal_cb(struct audit_buffer *ab, void *va)
+
+    call back for signal specific audit fields
+
+    :param struct audit_buffer \*ab:
+        audit_buffer  (NOT NULL)
+
+    :param void \*va:
+        audit struct to audit values of  (NOT NULL)
+
 .. This file was automatic generated / don't edit.
 

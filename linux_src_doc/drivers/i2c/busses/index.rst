@@ -8,6 +8,7 @@ busses
     :maxdepth: 1
 
     i2c-ali1563_c
+    i2c-altera_c
     i2c-axxia_c
     i2c-cadence_c
     i2c-cbus-gpio_c
@@ -29,6 +30,7 @@ busses
     i2c-rk3x_c
     i2c-st_c
     i2c-stm32f4_c
+    i2c-stm32f7_c
     i2c-stu300_c
     i2c-tegra-bpmp_c
     i2c-tegra_c

@@ -104,6 +104,25 @@ if the address is valid.
 
 The return value is PDC_OK (0) in case accessing this address is valid.
 
+.. _`pdc_instr`:
+
+pdc_instr
+=========
+
+.. c:function:: int pdc_instr(unsigned int *instr)
+
+    Get instruction that invokes PDCE_CHECK in HPMC handler.
+
+    :param unsigned int \*instr:
+        Pointer to variable which will get instruction opcode.
+
+.. _`pdc_instr.description`:
+
+Description
+-----------
+
+The return value is PDC_OK (0) in case call succeeded.
+
 .. _`pdc_chassis_info`:
 
 pdc_chassis_info

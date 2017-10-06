@@ -62,16 +62,26 @@ Definition
 .. code-block:: c
 
     struct dev_pagemap {
+        dev_page_fault_t page_fault;
+        dev_page_free_t page_free;
         struct vmem_altmap *altmap;
         const struct resource *res;
         struct percpu_ref *ref;
         struct device *dev;
+        void *data;
+        enum memory_type type;
     }
 
 .. _`dev_pagemap.members`:
 
 Members
 -------
+
+page_fault
+    callback when CPU fault on an unaddressable device page
+
+page_free
+    free page callback when page refcount reaches 1
 
 altmap
     pre-allocated/reserved memory for vmemmap allocations
@@ -84,6 +94,12 @@ ref
 
 dev
     host device of the mapping for debug
+
+data
+    private data pointer for \ :c:func:`page_free`\ 
+
+type
+    memory type: see MEMORY\_\* in memory_hotplug.h
 
 .. _`get_dev_pagemap`:
 

@@ -561,6 +561,87 @@ order to prevent the compiler from optimising away zeroing.
 \ :c:func:`memzero_explicit`\  doesn't need an arch-specific version as
 it just invokes the one of \ :c:func:`memset`\  implicitly.
 
+.. _`memset16`:
+
+memset16
+========
+
+.. c:function:: void *memset16(uint16_t *s, uint16_t v, size_t count)
+
+    Fill a memory area with a uint16_t
+
+    :param uint16_t \*s:
+        Pointer to the start of the area.
+
+    :param uint16_t v:
+        The value to fill the area with
+
+    :param size_t count:
+        The number of values to store
+
+.. _`memset16.description`:
+
+Description
+-----------
+
+Differs from \ :c:func:`memset`\  in that it fills with a uint16_t instead
+of a byte.  Remember that \ ``count``\  is the number of uint16_ts to
+store, not the number of bytes.
+
+.. _`memset32`:
+
+memset32
+========
+
+.. c:function:: void *memset32(uint32_t *s, uint32_t v, size_t count)
+
+    Fill a memory area with a uint32_t
+
+    :param uint32_t \*s:
+        Pointer to the start of the area.
+
+    :param uint32_t v:
+        The value to fill the area with
+
+    :param size_t count:
+        The number of values to store
+
+.. _`memset32.description`:
+
+Description
+-----------
+
+Differs from \ :c:func:`memset`\  in that it fills with a uint32_t instead
+of a byte.  Remember that \ ``count``\  is the number of uint32_ts to
+store, not the number of bytes.
+
+.. _`memset64`:
+
+memset64
+========
+
+.. c:function:: void *memset64(uint64_t *s, uint64_t v, size_t count)
+
+    Fill a memory area with a uint64_t
+
+    :param uint64_t \*s:
+        Pointer to the start of the area.
+
+    :param uint64_t v:
+        The value to fill the area with
+
+    :param size_t count:
+        The number of values to store
+
+.. _`memset64.description`:
+
+Description
+-----------
+
+Differs from \ :c:func:`memset`\  in that it fills with a uint64_t instead
+of a byte.  Remember that \ ``count``\  is the number of uint64_ts to
+store, not the number of bytes.
+
 .. _`memcpy`:
 
 memcpy

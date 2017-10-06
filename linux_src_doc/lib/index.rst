@@ -11,6 +11,7 @@ lib
     fonts/index
     mpi/index
     reed_solomon/index
+    zstd/index
     argv_split_c
     asn1_decoder_c
     assoc_array_c
@@ -26,6 +27,7 @@ lib
     crc32_c
     crc4_c
     crc7_c
+    crc8_c
     debugobjects_c
     devres_c
     digsig_c

@@ -1,32 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/char/tpm/tpm_ibmvtpm.c
 
-.. _`ibmvtpm_send_crq`:
-
-ibmvtpm_send_crq
-================
-
-.. c:function:: int ibmvtpm_send_crq(struct vio_dev *vdev, u64 w1, u64 w2)
-
-    Send a CRQ request
-
-    :param struct vio_dev \*vdev:
-        vio device struct
-
-    :param u64 w1:
-        first word
-
-    :param u64 w2:
-        second word
-
-.. _`ibmvtpm_send_crq.return`:
-
-Return
-------
-
-0 -Sucess
-Non-zero - Failure
-
 .. _`tpm_ibmvtpm_recv`:
 
 tpm_ibmvtpm_recv

@@ -1,6 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/crypto/ap_queue.c
 
+.. _`ap_queue_irq_ctrl`:
+
+ap_queue_irq_ctrl
+=================
+
+.. c:function:: struct ap_queue_status ap_queue_irq_ctrl(ap_qid_t qid, struct ap_qirq_ctrl qirqctrl, void *ind)
+
+    Control interruption on a AP queue.
+
+    :param ap_qid_t qid:
+        *undescribed*
+
+    :param struct ap_qirq_ctrl qirqctrl:
+        struct ap_qirq_ctrl (64 bit value)
+
+    :param void \*ind:
+        The notification indicator byte
+
+.. _`ap_queue_irq_ctrl.description`:
+
+Description
+-----------
+
+Returns AP queue status.
+
+Control interruption on the given AP queue.
+Just a simple wrapper function for the low level PQAP(AQIC)
+instruction available for other kernel modules.
+
 .. _`ap_queue_enable_interruption`:
 
 ap_queue_enable_interruption

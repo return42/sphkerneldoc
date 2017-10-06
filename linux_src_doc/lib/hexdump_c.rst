@@ -44,7 +44,7 @@ hex2bin
 Description
 -----------
 
-Return 0 on success, -1 in case of bad input.
+Return 0 on success, -EINVAL in case of bad input.
 
 .. _`bin2hex`:
 

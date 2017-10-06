@@ -1,6 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/pci/host/pcie-mediatek.c
 
+.. _`mtk_pcie_soc`:
+
+struct mtk_pcie_soc
+===================
+
+.. c:type:: struct mtk_pcie_soc
+
+    differentiate between host generations
+
+.. _`mtk_pcie_soc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mtk_pcie_soc {
+        bool has_msi;
+        struct pci_ops *ops;
+        int (*startup)(struct mtk_pcie_port *port);
+        int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+    }
+
+.. _`mtk_pcie_soc.members`:
+
+Members
+-------
+
+has_msi
+    whether this host supports MSI interrupts or not
+
+ops
+    pointer to configuration access functions
+
+startup
+    pointer to controller setting functions
+
+setup_irq
+    pointer to initialize IRQ functions
+
 .. _`mtk_pcie_port`:
 
 struct mtk_pcie_port
@@ -23,9 +63,17 @@ Definition
         struct mtk_pcie *pcie;
         struct reset_control *reset;
         struct clk *sys_ck;
+        struct clk *ahb_ck;
+        struct clk *axi_ck;
+        struct clk *aux_ck;
+        struct clk *obff_ck;
+        struct clk *pipe_ck;
         struct phy *phy;
         u32 lane;
-        u32 index;
+        u32 slot;
+        struct irq_domain *irq_domain;
+        struct irq_domain *msi_domain;
+        DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
     }
 
 .. _`mtk_pcie_port.members`:
@@ -46,16 +94,42 @@ reset
     pointer to port reset control
 
 sys_ck
-    pointer to bus clock
+    pointer to transaction/data link layer clock
+
+ahb_ck
+    pointer to AHB slave interface operating clock for CSR access
+    and RC initiated MMIO access
+
+axi_ck
+    pointer to application layer MMIO channel operating clock
+
+aux_ck
+    pointer to pe2_mac_bridge and pe2_mac_core operating clock
+    when pcie_mac_ck/pcie_pipe_ck is turned off
+
+obff_ck
+    pointer to OBFF functional block operating clock
+
+pipe_ck
+    pointer to LTSSM and PHY/MAC layer operating clock
 
 phy
-    pointer to phy control block
+    pointer to PHY control block
 
 lane
     lane count
 
-index
-    port index
+slot
+    port slot
+
+irq_domain
+    legacy INTx IRQ domain
+
+msi_domain
+    MSI IRQ domain
+
+msi_irq_in_use
+    bit map for assigned MSI IRQ
 
 .. _`mtk_pcie`:
 
@@ -86,6 +160,7 @@ Definition
             resource_size_t io;
         } offset;
         struct list_head ports;
+        const struct mtk_pcie_soc *soc;
     }
 
 .. _`mtk_pcie.members`:
@@ -119,6 +194,9 @@ offset
 
 ports
     pointer to PCIe port information
+
+soc
+    pointer to SoC-dependent operations
 
 .. This file was automatic generated / don't edit.
 

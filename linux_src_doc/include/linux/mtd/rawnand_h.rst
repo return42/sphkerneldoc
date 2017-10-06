@@ -1,5 +1,5 @@
 .. -*- coding: utf-8; mode: rst -*-
-.. src-file: include/linux/mtd/nand.h
+.. src-file: include/linux/mtd/rawnand.h
 
 .. _`nand_id`:
 
@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct nand_id {
-        u8 data[8];
+        u8 data[NAND_MAX_ID_LEN];
         int len;
     }
 
@@ -28,8 +28,7 @@ Members
 -------
 
 data
-    buffer containing the id bytes. Currently 8 bytes large, but can
-    be extended if required.
+    buffer containing the id bytes.
 
 len
     ID length.

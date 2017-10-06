@@ -91,6 +91,31 @@ Description
 This is like \__mnt_want_write, but it takes a file and can
 do some optimisations if the file is open for write already
 
+.. _`mnt_want_write_file_path`:
+
+mnt_want_write_file_path
+========================
+
+.. c:function:: int mnt_want_write_file_path(struct file *file)
+
+    get write access to a file's mount
+
+    :param struct file \*file:
+        the file who's mount on which to take a write
+
+.. _`mnt_want_write_file_path.description`:
+
+Description
+-----------
+
+This is like mnt_want_write, but it takes a file and can
+do some optimisations if the file is open for write already
+
+Called by the vfs for cases when we have an open file at hand, but will do an
+inode operation on it (important distinction for files opened on overlayfs,
+since the file operations will come from the real underlying file, while
+inode operations come from the overlay).
+
 .. _`mnt_want_write_file`:
 
 mnt_want_write_file
@@ -110,6 +135,10 @@ Description
 
 This is like mnt_want_write, but it takes a file and can
 do some optimisations if the file is open for write already
+
+Mostly called by filesystems from their ioctl operation before performing
+modification.  On overlayfs this needs to check if the file is on a read-only
+lower layer and deny access in that case.
 
 .. _`__mnt_drop_write`:
 

@@ -225,5 +225,33 @@ rdma_rw_ctx_destroy_signature
     :param enum dma_data_direction dir:
         %DMA_TO_DEVICE for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
 
+.. _`rdma_rw_mr_factor`:
+
+rdma_rw_mr_factor
+=================
+
+.. c:function:: unsigned int rdma_rw_mr_factor(struct ib_device *device, u8 port_num, unsigned int maxpages)
+
+    return number of MRs required for a payload
+
+    :param struct ib_device \*device:
+        device handling the connection
+
+    :param u8 port_num:
+        port num to which the connection is bound
+
+    :param unsigned int maxpages:
+        maximum payload pages per rdma_rw_ctx
+
+.. _`rdma_rw_mr_factor.description`:
+
+Description
+-----------
+
+Returns the number of MRs the device requires to move \ ``maxpayload``\ 
+bytes. The returned value is used during transport creation to
+compute max_rdma_ctxts and the size of the transport's Send and
+Send Completion Queues.
+
 .. This file was automatic generated / don't edit.
 

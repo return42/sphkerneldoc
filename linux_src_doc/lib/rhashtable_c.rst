@@ -101,9 +101,9 @@ rhashtable_walk_start
 Description
 -----------
 
-Start a hash table walk.  Note that we take the RCU lock in all
-cases including when we return an error.  So you must always call
-rhashtable_walk_stop to clean up.
+Start a hash table walk at the current iterator position.  Note that we take
+the RCU lock in all cases including when we return an error.  So you must
+always call rhashtable_walk_stop to clean up.
 
 Returns zero if successful.
 
@@ -153,7 +153,8 @@ rhashtable_walk_stop
 Description
 -----------
 
-Finish a hash table walk.
+Finish a hash table walk.  Does not reset the iterator to the start of the
+hash table.
 
 .. _`rhashtable_init`:
 

@@ -1577,12 +1577,10 @@ Definition
                     } ;
                     unsigned long jiffies;
                 } ;
-                union {
-                    struct ieee80211_vif *vif;
-                    codel_time_t enqueue_time;
-                } ;
+                struct ieee80211_vif *vif;
                 struct ieee80211_key_conf *hw_key;
                 u32 flags;
+                codel_time_t enqueue_time;
             } control;
             struct {
                 u64 cookie;
@@ -1632,9 +1630,6 @@ control
     anonymous
 
 {unnamed_struct}
-    anonymous
-
-{unnamed_union}
     anonymous
 
 ack

@@ -264,7 +264,7 @@ __audit_mq_open
 __audit_mq_sendrecv
 ===================
 
-.. c:function:: void __audit_mq_sendrecv(mqd_t mqdes, size_t msg_len, unsigned int msg_prio, const struct timespec *abs_timeout)
+.. c:function:: void __audit_mq_sendrecv(mqd_t mqdes, size_t msg_len, unsigned int msg_prio, const struct timespec64 *abs_timeout)
 
     record audit data for a POSIX MQ timed send/receive
 
@@ -277,7 +277,7 @@ __audit_mq_sendrecv
     :param unsigned int msg_prio:
         Message priority
 
-    :param const struct timespec \*abs_timeout:
+    :param const struct timespec64 \*abs_timeout:
         Message timeout in absolute time
 
 .. _`__audit_mq_notify`:

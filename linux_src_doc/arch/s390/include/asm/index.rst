@@ -8,6 +8,7 @@ asm
     :maxdepth: 1
 
     trace/index
+    ap_h
     bitops_h
     ccwdev_h
     ccwgroup_h

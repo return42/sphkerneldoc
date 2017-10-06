@@ -264,25 +264,25 @@ Description
      Functions identically to kfree_skb, but kfree_skb assumes that the frame
      is being dropped after a failure and notes that
 
-.. _`consume_stateless_skb`:
+.. _`__consume_stateless_skb`:
 
-consume_stateless_skb
-=====================
+__consume_stateless_skb
+=======================
 
-.. c:function:: void consume_stateless_skb(struct sk_buff *skb)
+.. c:function:: void __consume_stateless_skb(struct sk_buff *skb)
 
     free an skbuff, assuming it is stateless
 
     :param struct sk_buff \*skb:
         buffer to free
 
-.. _`consume_stateless_skb.description`:
+.. _`__consume_stateless_skb.description`:
 
 Description
 -----------
 
-     Works like \ :c:func:`consume_skb`\ , but this variant assumes that all the head
-     states have been already dropped.
+     Alike \ :c:func:`consume_skb`\ , but this variant assumes that this is the last
+     skb reference and all the head states have been already dropped
 
 .. _`skb_morph`:
 

@@ -19,6 +19,7 @@ Definition
 
     struct seccomp_filter {
         refcount_t usage;
+        bool log;
         struct seccomp_filter *prev;
         struct bpf_prog *prog;
     }
@@ -33,6 +34,9 @@ usage
     get/put helpers should be used when accessing an instance
     outside of a lifetime-guarded section.  In general, this
     is only needed for handling filters shared across tasks.
+
+log
+    true if all actions except for SECCOMP_RET_ALLOW should be logged
 
 prev
     points to a previously installed, or inherited, filter
@@ -82,19 +86,19 @@ enforces length and alignment checking of those loads.
 
 Returns 0 if the rule set is legal or -EINVAL if not.
 
-.. _`seccomp_run_filters`:
+.. _`action_only`:
 
-seccomp_run_filters
-===================
+ACTION_ONLY
+===========
 
-.. c:function:: u32 seccomp_run_filters(const struct seccomp_data *sd)
+.. c:function::  ACTION_ONLY( ret)
 
     evaluates all seccomp filters against \ ``sd``\ 
 
-    :param const struct seccomp_data \*sd:
-        optional seccomp data to be passed to filters
+    :param  ret:
+        *undescribed*
 
-.. _`seccomp_run_filters.description`:
+.. _`action_only.description`:
 
 Description
 -----------

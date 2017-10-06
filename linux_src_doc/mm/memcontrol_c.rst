@@ -658,6 +658,13 @@ with extra refcnt got(Callers should handle it).
 2(MC_TARGET_SWAP): if the swap entry corresponding to this pte is a
 target for charge migration. if \ ``target``\  is not NULL, the entry is stored
 in target->ent.
+3(MC_TARGET_DEVICE): like MC_TARGET_PAGE  but page is MEMORY_DEVICE_PUBLIC
+or MEMORY_DEVICE_PRIVATE (so ZONE_DEVICE page and thus not on the lru).
+For now we such page is charge like a regular page would be as for all
+intent and purposes it is just special memory taking the place of a
+regular page.
+
+See Documentations/vm/hmm.txt and include/linux/hmm.h
 
 Called with pte lock held.
 

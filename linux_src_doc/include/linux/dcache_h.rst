@@ -186,7 +186,7 @@ Normal filesystems should not use this to access their own dentries.
 d_real
 ======
 
-.. c:function:: struct dentry *d_real(struct dentry *dentry, const struct inode *inode, unsigned int flags)
+.. c:function:: struct dentry *d_real(struct dentry *dentry, const struct inode *inode, unsigned int open_flags, unsigned int flags)
 
     Return the real dentry
 
@@ -196,8 +196,11 @@ d_real
     :param const struct inode \*inode:
         inode to select the dentry from multiple layers (can be NULL)
 
-    :param unsigned int flags:
+    :param unsigned int open_flags:
         open flags to control copy-up behavior
+
+    :param unsigned int flags:
+        flags to control what is returned by this function
 
 .. _`d_real.description`:
 

@@ -15,6 +15,7 @@ watchdog
     it87_wdt_c
     mei_wdt_c
     octeon-wdt-main_c
+    of_xilinx_wdt_c
     pc87413_wdt_c
     pcwd_usb_c
     pretimeout_noop_c

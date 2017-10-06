@@ -70,6 +70,9 @@ Definition
         int (*map)(struct iommu_domain *domain, unsigned long iova, phys_addr_t paddr, size_t size, int prot);
         size_t (*unmap)(struct iommu_domain *domain, unsigned long iova, size_t size);
         size_t (*map_sg)(struct iommu_domain *domain, unsigned long iova, struct scatterlist *sg, unsigned int nents, int prot);
+        void (*flush_iotlb_all)(struct iommu_domain *domain);
+        void (*iotlb_range_add)(struct iommu_domain *domain, unsigned long iova, size_t size);
+        void (*iotlb_sync)(struct iommu_domain *domain);
         phys_addr_t (*iova_to_phys)(struct iommu_domain *domain, dma_addr_t iova);
         int (*add_device)(struct device *dev);
         void (*remove_device)(struct device *dev);
@@ -84,6 +87,7 @@ Definition
         int (*domain_set_windows)(struct iommu_domain *domain, u32 w_count);
         u32 (*domain_get_windows)(struct iommu_domain *domain);
         int (*of_xlate)(struct device *dev, struct of_phandle_args *args);
+        bool (*is_attach_deferred)(struct iommu_domain *domain, struct device *dev);
         unsigned long pgsize_bitmap;
     }
 
@@ -115,7 +119,15 @@ unmap
 
 map_sg
     map a scatter-gather list of physically contiguous memory chunks
-    to an iommu domain
+
+flush_iotlb_all
+    *undescribed*
+
+iotlb_range_add
+    *undescribed*
+
+iotlb_sync
+    *undescribed*
 
 iova_to_phys
     translate iova to physical address
@@ -158,6 +170,9 @@ domain_get_windows
 
 of_xlate
     add OF master IDs to iommu grouping
+
+is_attach_deferred
+    *undescribed*
 
 pgsize_bitmap
     bitmap of all possible supported page sizes

@@ -7,6 +7,7 @@ qcom
 .. toctree::
     :maxdepth: 1
 
+    glink_ssr_c
     mdt_loader_c
     smd-rpm_c
     smem_c

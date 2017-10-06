@@ -92,6 +92,39 @@ NOTE
 
 This function implictly unlocks the resource handle
 
+.. _`nfp_resource_wait`:
+
+nfp_resource_wait
+=================
+
+.. c:function:: int nfp_resource_wait(struct nfp_cpp *cpp, const char *name, unsigned int secs)
+
+    Wait for resource to appear
+
+    :param struct nfp_cpp \*cpp:
+        NFP CPP handle
+
+    :param const char \*name:
+        Name of the resource
+
+    :param unsigned int secs:
+        Number of seconds to wait
+
+.. _`nfp_resource_wait.description`:
+
+Description
+-----------
+
+Wait for resource to appear in the resource table, grab and release
+its lock.  The wait is jiffies-based, don't expect fine granularity.
+
+.. _`nfp_resource_wait.return`:
+
+Return
+------
+
+0 on success, errno otherwise.
+
 .. _`nfp_resource_cpp_id`:
 
 nfp_resource_cpp_id

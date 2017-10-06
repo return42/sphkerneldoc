@@ -1,6 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/remoteproc/da8xx_remoteproc.c
 
+.. _`da8xx_rproc_mem`:
+
+struct da8xx_rproc_mem
+======================
+
+.. c:type:: struct da8xx_rproc_mem
+
+    internal memory structure
+
+.. _`da8xx_rproc_mem.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct da8xx_rproc_mem {
+        void __iomem *cpu_addr;
+        phys_addr_t bus_addr;
+        u32 dev_addr;
+        size_t size;
+    }
+
+.. _`da8xx_rproc_mem.members`:
+
+Members
+-------
+
+cpu_addr
+    MPU virtual address of the memory region
+
+bus_addr
+    Bus address used to access the memory region
+
+dev_addr
+    Device address of the memory region from DSP view
+
+size
+    Size of the memory region
+
 .. _`da8xx_rproc`:
 
 struct da8xx_rproc
@@ -19,6 +59,8 @@ Definition
 
     struct da8xx_rproc {
         struct rproc *rproc;
+        struct da8xx_rproc_mem *mem;
+        int num_mems;
         struct clk *dsp_clk;
         void (*ack_fxn)(struct irq_data *data);
         struct irq_data *irq_data;
@@ -34,6 +76,12 @@ Members
 
 rproc
     rproc handle
+
+mem
+    internal memory regions data
+
+num_mems
+    number of internal memory regions
 
 dsp_clk
     placeholder for platform's DSP clk
