@@ -149,7 +149,7 @@ payload
 hdr_wide
     *undescribed*
 
-iwl_cmd_header]
+payload_wide
     *undescribed*
 
 .. _`iwl_device_cmd.description`:

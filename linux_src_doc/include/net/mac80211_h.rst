@@ -1641,17 +1641,17 @@ status
 {unnamed_struct}
     anonymous
 
-IEEE80211_TX_MAX_RATES]
+driver_rates
     *undescribed*
 
 pad
     *undescribed*
 
-]
+rate_driver_data
     *undescribed*
 
-]
-    *undescribed*
+driver_data
+    array of driver_data pointers
 
 .. _`ieee80211_tx_info.description`:
 

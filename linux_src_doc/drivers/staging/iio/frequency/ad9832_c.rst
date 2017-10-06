@@ -90,8 +90,8 @@ lock
 {unnamed_union}
     anonymous
 
-freq_data
-    tuning word spi transmit buffer
+freq_data____cacheline_aligned
+    *undescribed*
 
 phase_data
     tuning word spi transmit buffer
