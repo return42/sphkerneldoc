@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/div64.c
 
+.. _`div_s64_rem`:
+
+div_s64_rem
+===========
+
+.. c:function:: s64 div_s64_rem(s64 dividend, s32 divisor, s32 *remainder)
+
+    signed 64bit divide with 64bit divisor and remainder
+
+    :param s64 dividend:
+        64bit dividend
+
+    :param s32 divisor:
+        64bit divisor
+
+    :param s32 \*remainder:
+        64bit remainder
+
 .. _`div64_u64_rem`:
 
 div64_u64_rem

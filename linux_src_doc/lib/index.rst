@@ -36,6 +36,7 @@ lib
     earlycpio_c
     errseq_c
     flex_array_c
+    gcd_c
     gen_crc32table_c
     genalloc_c
     glob_c

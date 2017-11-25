@@ -11,18 +11,20 @@ div_u64_rem
     unsigned 64bit divide with 32bit divisor with remainder
 
     :param u64 dividend:
-        *undescribed*
+        unsigned 64bit dividend
 
     :param u32 divisor:
-        *undescribed*
+        unsigned 32bit divisor
 
     :param u32 \*remainder:
-        *undescribed*
+        pointer to unsigned 32bit remainder
 
-.. _`div_u64_rem.description`:
+.. _`div_u64_rem.return`:
 
-Description
------------
+Return
+------
+
+sets ``*remainder``, then returns dividend / divisor
 
 This is commonly provided by 32bit archs to provide an optimized 64bit
 divide.
@@ -37,13 +39,20 @@ div_s64_rem
     signed 64bit divide with 32bit divisor with remainder
 
     :param s64 dividend:
-        *undescribed*
+        signed 64bit dividend
 
     :param s32 divisor:
-        *undescribed*
+        signed 32bit divisor
 
     :param s32 \*remainder:
-        *undescribed*
+        pointer to signed 32bit remainder
+
+.. _`div_s64_rem.return`:
+
+Return
+------
+
+sets ``*remainder``, then returns dividend / divisor
 
 .. _`div64_u64_rem`:
 
@@ -55,13 +64,20 @@ div64_u64_rem
     unsigned 64bit divide with 64bit divisor and remainder
 
     :param u64 dividend:
-        *undescribed*
+        unsigned 64bit dividend
 
     :param u64 divisor:
-        *undescribed*
+        unsigned 64bit divisor
 
     :param u64 \*remainder:
-        *undescribed*
+        pointer to unsigned 64bit remainder
+
+.. _`div64_u64_rem.return`:
+
+Return
+------
+
+sets ``*remainder``, then returns dividend / divisor
 
 .. _`div64_u64`:
 
@@ -73,10 +89,17 @@ div64_u64
     unsigned 64bit divide with 64bit divisor
 
     :param u64 dividend:
-        *undescribed*
+        unsigned 64bit dividend
 
     :param u64 divisor:
-        *undescribed*
+        unsigned 64bit divisor
+
+.. _`div64_u64.return`:
+
+Return
+------
+
+dividend / divisor
 
 .. _`div64_s64`:
 
@@ -88,10 +111,17 @@ div64_s64
     signed 64bit divide with 64bit divisor
 
     :param s64 dividend:
-        *undescribed*
+        signed 64bit dividend
 
     :param s64 divisor:
-        *undescribed*
+        signed 64bit divisor
+
+.. _`div64_s64.return`:
+
+Return
+------
+
+dividend / divisor
 
 .. _`div_u64`:
 
@@ -103,10 +133,10 @@ div_u64
     unsigned 64bit divide with 32bit divisor
 
     :param u64 dividend:
-        *undescribed*
+        unsigned 64bit dividend
 
     :param u32 divisor:
-        *undescribed*
+        unsigned 32bit divisor
 
 .. _`div_u64.description`:
 
@@ -127,10 +157,10 @@ div_s64
     signed 64bit divide with 32bit divisor
 
     :param s64 dividend:
-        *undescribed*
+        signed 64bit dividend
 
     :param s32 divisor:
-        *undescribed*
+        signed 32bit divisor
 
 .. This file was automatic generated / don't edit.
 

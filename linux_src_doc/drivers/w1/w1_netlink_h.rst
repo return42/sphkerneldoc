@@ -129,19 +129,7 @@ len
     length of data following w1_netlink_msg
 
 id
-    union holding bus master id (msg.id) and slave device id (id[8]).
-
-id.id
-    Slave ID (8 bytes)
-
-id.mst
-    bus master identification
-
-id.mst.id
-    bus master ID
-
-id.mst.res
-    bus master reserved
+    union holding master bus id (msg.id) and slave device id (id[8]).
 
 data
     start address of any following data

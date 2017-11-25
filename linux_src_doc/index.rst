@@ -26,7 +26,3 @@ linux_src_doc
     sound/index
     tools/index
     virt/index
-    nested_foobar_h
-    test123_c
-    xxx_h
-    yyy_c
