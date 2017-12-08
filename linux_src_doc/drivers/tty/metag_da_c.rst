@@ -136,12 +136,12 @@ drain the buffer.
 dashtty_put_timer
 =================
 
-.. c:function:: void dashtty_put_timer(unsigned long ignored)
+.. c:function:: void dashtty_put_timer(struct timer_list *unused)
 
     Delayed wake up of kernel thread.
 
-    :param unsigned long ignored:
-        unused
+    :param struct timer_list \*unused:
+        *undescribed*
 
 .. _`dashtty_put_timer.description`:
 

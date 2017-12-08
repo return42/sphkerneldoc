@@ -74,5 +74,17 @@ amdgpu_bo_gpu_accessible
     :param struct amdgpu_bo \*bo:
         *undescribed*
 
+.. _`amdgpu_bo_explicit_sync`:
+
+amdgpu_bo_explicit_sync
+=======================
+
+.. c:function:: bool amdgpu_bo_explicit_sync(struct amdgpu_bo *bo)
+
+    return whether the bo is explicitly synced
+
+    :param struct amdgpu_bo \*bo:
+        *undescribed*
+
 .. This file was automatic generated / don't edit.
 

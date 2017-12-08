@@ -7,5 +7,5 @@ pl111
 .. toctree::
     :maxdepth: 1
 
-    pl111_connector_c
+    pl111_drm_h
     pl111_drv_c

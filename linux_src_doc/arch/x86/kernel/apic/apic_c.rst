@@ -139,7 +139,7 @@ APIC is disabled.
 apic_bsp_setup
 ==============
 
-.. c:function:: int apic_bsp_setup(bool upmode)
+.. c:function:: void apic_bsp_setup(bool upmode)
 
     Setup function for local apic and io-apic
 

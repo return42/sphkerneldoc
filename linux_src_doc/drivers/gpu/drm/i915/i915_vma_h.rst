@@ -54,7 +54,7 @@ called on a VMA previously iomapped by the caller with \ :c:func:`i915_vma_pin_i
 i915_vma_pin_fence
 ==================
 
-.. c:function:: bool i915_vma_pin_fence(struct i915_vma *vma)
+.. c:function:: int i915_vma_pin_fence(struct i915_vma *vma)
 
     pin fencing state
 

@@ -581,6 +581,18 @@ Description
 
 Return 0 if successful, otherwise return error
 
+.. _`i40iw_reinitialize_ieq`:
+
+i40iw_reinitialize_ieq
+======================
+
+.. c:function:: void i40iw_reinitialize_ieq(struct i40iw_sc_dev *dev)
+
+    destroy and re-create ieq
+
+    :param struct i40iw_sc_dev \*dev:
+        iwarp device
+
 .. _`i40iw_hmc_setup`:
 
 i40iw_hmc_setup

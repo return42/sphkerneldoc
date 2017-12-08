@@ -646,6 +646,16 @@ integer arguments.
 Caller is responsible to call \ :c:func:`fwnode_handle_put`\  on the returned
 args->fwnode pointer.
 
+.. _`fwnode_property_get_reference_args.return`:
+
+Return
+------
+
+%0 on success
+\ ``-ENOENT``\  when the index is out of bounds, the index has an empty
+reference or the property was not found
+\ ``-EINVAL``\  on parse error
+
 .. _`property_entries_dup`:
 
 property_entries_dup
@@ -888,12 +898,19 @@ device_get_named_child_node
 fwnode_handle_get
 =================
 
-.. c:function:: void fwnode_handle_get(struct fwnode_handle *fwnode)
+.. c:function:: struct fwnode_handle *fwnode_handle_get(struct fwnode_handle *fwnode)
 
     Obtain a reference to a device node
 
     :param struct fwnode_handle \*fwnode:
         Pointer to the device node to obtain the reference to.
+
+.. _`fwnode_handle_get.description`:
+
+Description
+-----------
+
+Returns the fwnode handle.
 
 .. _`fwnode_handle_put`:
 

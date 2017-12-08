@@ -253,12 +253,12 @@ Description
 Allocate and initialize an sg table. If \ ``nents``\ @ is larger than
 SG_MAX_SINGLE_ALLOC a chained sg table will be setup.
 
-.. _`sg_alloc_table_from_pages`:
+.. _`__sg_alloc_table_from_pages`:
 
-sg_alloc_table_from_pages
-=========================
+__sg_alloc_table_from_pages
+===========================
 
-.. c:function:: int sg_alloc_table_from_pages(struct sg_table *sgt, struct page **pages, unsigned int n_pages, unsigned long offset, unsigned long size, gfp_t gfp_mask)
+.. c:function:: int __sg_alloc_table_from_pages(struct sg_table *sgt, struct page **pages, unsigned int n_pages, unsigned int offset, unsigned long size, unsigned int max_segment, gfp_t gfp_mask)
 
     Allocate and initialize an sg table from an array of pages
 
@@ -271,7 +271,55 @@ sg_alloc_table_from_pages
     :param unsigned int n_pages:
         Number of pages in the pages array
 
-    :param unsigned long offset:
+    :param unsigned int offset:
+        Offset from start of the first page to the start of a buffer
+
+    :param unsigned long size:
+        Number of valid bytes in the buffer (after offset)
+
+    :param unsigned int max_segment:
+        Maximum size of a scatterlist node in bytes (page aligned)
+
+    :param gfp_t gfp_mask:
+        GFP allocation mask
+
+.. _`__sg_alloc_table_from_pages.description`:
+
+Description
+-----------
+
+Allocate and initialize an sg table from a list of pages. Contiguous
+ranges of the pages are squashed into a single scatterlist node up to the
+maximum size specified in \ ``max_segment``\ . An user may provide an offset at a
+start and a size of valid data in a buffer specified by the page array.
+The returned sg table is released by sg_free_table.
+
+.. _`__sg_alloc_table_from_pages.return`:
+
+Return
+------
+
+0 on success, negative error on failure
+
+.. _`sg_alloc_table_from_pages`:
+
+sg_alloc_table_from_pages
+=========================
+
+.. c:function:: int sg_alloc_table_from_pages(struct sg_table *sgt, struct page **pages, unsigned int n_pages, unsigned int offset, unsigned long size, gfp_t gfp_mask)
+
+    Allocate and initialize an sg table from an array of pages
+
+    :param struct sg_table \*sgt:
+        The sg table header to use
+
+    :param struct page \*\*pages:
+        Pointer to an array of page pointers
+
+    :param unsigned int n_pages:
+        Number of pages in the pages array
+
+    :param unsigned int offset:
         Offset from start of the first page to the start of a buffer
 
     :param unsigned long size:

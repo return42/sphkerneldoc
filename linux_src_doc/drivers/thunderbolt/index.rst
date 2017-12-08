@@ -15,11 +15,12 @@ thunderbolt
     eeprom_c
     icm_c
     nhi_c
-    nhi_h
     nhi_regs_h
     path_c
+    property_c
     switch_c
     tb_c
     tb_h
     tb_regs_h
     tunnel_pci_c
+    xdomain_c

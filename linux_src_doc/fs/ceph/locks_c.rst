@@ -6,7 +6,7 @@
 ceph_lock_message
 =================
 
-.. c:function:: int ceph_lock_message(u8 lock_type, u16 operation, struct file *file, int cmd, u8 wait, struct file_lock *fl)
+.. c:function:: int ceph_lock_message(u8 lock_type, u16 operation, struct inode *inode, int cmd, u8 wait, struct file_lock *fl)
 
     :param u8 lock_type:
         *undescribed*
@@ -14,7 +14,7 @@ ceph_lock_message
     :param u16 operation:
         *undescribed*
 
-    :param struct file \*file:
+    :param struct inode \*inode:
         *undescribed*
 
     :param int cmd:

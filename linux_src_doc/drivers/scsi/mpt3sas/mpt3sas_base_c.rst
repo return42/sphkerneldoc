@@ -6,14 +6,14 @@
 _scsih_set_fwfault_debug
 ========================
 
-.. c:function:: int _scsih_set_fwfault_debug(const char *val, struct kernel_param *kp)
+.. c:function:: int _scsih_set_fwfault_debug(const char *val, const struct kernel_param *kp)
 
     global setting of ioc->fwfault_debug.
 
     :param const char \*val:
         *undescribed*
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         *undescribed*
 
 .. _`mpt3sas_remove_dead_ioc_func`:
@@ -623,6 +623,133 @@ Description
 
 Return nothing.
 
+.. _`_base_build_nvme_prp`:
+
+_base_build_nvme_prp
+====================
+
+.. c:function:: void _base_build_nvme_prp(struct MPT3SAS_ADAPTER *ioc, u16 smid, Mpi26NVMeEncapsulatedRequest_t *nvme_encap_request, dma_addr_t data_out_dma, size_t data_out_sz, dma_addr_t data_in_dma, size_t data_in_sz)
+
+    This function is called for NVMe end devices to build a native SGL (NVMe PRP). The native SGL is built starting in the first PRP entry of the NVMe message (PRP1).  If the data buffer is small enough to be described entirely using PRP1, then PRP2 is not used.  If needed, PRP2 is used to describe a larger data buffer.  If the data buffer is too large to describe using the two PRP entriess inside the NVMe message, then PRP1 describes the first data memory segment, and PRP2 contains a pointer to a PRP list located elsewhere in memory to describe the remaining data memory segments.  The PRP list will be contiguous. The native SGL for NVMe devices is a Physical Region Page (PRP).  A PRP consists of a list of PRP entries to describe a number of noncontigous physical memory segments as a single memory buffer, just as a SGL does.  Note however, that this function is only used by the IOCTL call, so the memory given will be guaranteed to be contiguous.  There is no need to translate non-contiguous SGL into a PRP in this case.  All PRPs will describe contiguous space that is one page size each.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index for getting asscociated SGL
+
+    :param Mpi26NVMeEncapsulatedRequest_t \*nvme_encap_request:
+        the NVMe request msg frame pointer
+
+    :param dma_addr_t data_out_dma:
+        physical address for WRITES
+
+    :param size_t data_out_sz:
+        data xfer size for WRITES
+
+    :param dma_addr_t data_in_dma:
+        physical address for READS
+
+    :param size_t data_in_sz:
+        data xfer size for READS
+
+.. _`_base_build_nvme_prp.description`:
+
+Description
+-----------
+
+Each NVMe message contains two PRP entries.  The first (PRP1) either contains
+a PRP list pointer or a PRP element, depending upon the command.  PRP2
+contains the second PRP element if the memory being described fits within 2
+PRP entries, or a PRP list pointer if the PRP spans more than two entries.
+
+A PRP list pointer contains the address of a PRP list, structured as a linear
+array of PRP entries.  Each PRP entry in this list describes a segment of
+physical memory.
+
+Each 64-bit PRP entry comprises an address and an offset field.  The address
+always points at the beginning of a 4KB physical memory page, and the offset
+describes where within that 4KB page the memory segment begins.  Only the
+first element in a PRP list may contain a non-zero offest, implying that all
+memory segments following the first begin at the start of a 4KB page.
+
+Each PRP element normally describes 4KB of physical memory, with exceptions
+for the first and last elements in the list.  If the memory being described
+by the list begins at a non-zero offset within the first 4KB page, then the
+first PRP element will contain a non-zero offset indicating where the region
+begins within the 4KB page.  The last memory segment may end before the end
+of the 4KB segment, depending upon the overall size of the memory being
+described by the PRP list.
+
+Since PRP entries lack any indication of size, the overall data buffer length
+is used to determine where the end of the data memory buffer is located, and
+how many PRP entries are required to describe it.
+
+Returns nothing.
+
+.. _`base_make_prp_nvme`:
+
+base_make_prp_nvme
+==================
+
+.. c:function:: void base_make_prp_nvme(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, Mpi25SCSIIORequest_t *mpi_request, u16 smid, int sge_count)
+
+    Prepare PRPs(Physical Region Page)- SGLs specific to NVMe drives only
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct scsi_cmnd \*scmd:
+        SCSI command from the mid-layer
+
+    :param Mpi25SCSIIORequest_t \*mpi_request:
+        mpi request
+
+    :param u16 smid:
+        msg Index
+
+    :param int sge_count:
+        scatter gather element count.
+
+.. _`base_make_prp_nvme.return`:
+
+Return
+------
+
+true: PRPs are built
+false: IEEE SGLs needs to be built
+
+.. _`_base_check_pcie_native_sgl`:
+
+_base_check_pcie_native_sgl
+===========================
+
+.. c:function:: int _base_check_pcie_native_sgl(struct MPT3SAS_ADAPTER *ioc, Mpi25SCSIIORequest_t *mpi_request, u16 smid, struct scsi_cmnd *scmd, struct _pcie_device *pcie_device)
+
+    This function is called for PCIe end devices to determine if the driver needs to build a native SGL.  If so, that native SGL is built in the special contiguous buffers allocated especially for PCIe SGL creation.  If the driver will not build a native SGL, return TRUE and a normal IEEE SGL will be built.  Currently this routine supports NVMe.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi25SCSIIORequest_t \*mpi_request:
+        mf request pointer
+
+    :param u16 smid:
+        system request message index
+
+    :param struct scsi_cmnd \*scmd:
+        scsi command
+
+    :param struct _pcie_device \*pcie_device:
+        points to the PCIe device's info
+
+.. _`_base_check_pcie_native_sgl.description`:
+
+Description
+-----------
+
+Returns 0 if native SGL was built, 1 if no SGL was built
+
 .. _`_base_add_sg_single_ieee`:
 
 _base_add_sg_single_ieee
@@ -685,9 +812,9 @@ Return nothing.
 _base_build_sg_scmd
 ===================
 
-.. c:function:: int _base_build_sg_scmd(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, u16 smid)
+.. c:function:: int _base_build_sg_scmd(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, u16 smid, struct _pcie_device *unused)
 
-    main sg creation routine
+    main sg creation routine pcie_device is unused here!
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         per adapter object
@@ -697,6 +824,9 @@ _base_build_sg_scmd
 
     :param u16 smid:
         system request message index
+
+    :param struct _pcie_device \*unused:
+        unused pcie_device pointer
 
 .. _`_base_build_sg_scmd.context`:
 
@@ -720,7 +850,7 @@ Returns 0 success, anything else error
 _base_build_sg_scmd_ieee
 ========================
 
-.. c:function:: int _base_build_sg_scmd_ieee(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, u16 smid)
+.. c:function:: int _base_build_sg_scmd_ieee(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, u16 smid, struct _pcie_device *pcie_device)
 
     main sg creation routine for IEEE format
 
@@ -732,6 +862,10 @@ _base_build_sg_scmd_ieee
 
     :param u16 smid:
         system request message index
+
+    :param struct _pcie_device \*pcie_device:
+        Pointer to pcie_device. If set, the pcie native sgl will be
+        constructed on need.
 
 .. _`_base_build_sg_scmd_ieee.context`:
 
@@ -1010,6 +1144,50 @@ Description
 
 Returns phys pointer to the low 32bit address of the sense buffer.
 
+.. _`mpt3sas_base_get_pcie_sgl`:
+
+mpt3sas_base_get_pcie_sgl
+=========================
+
+.. c:function:: void *mpt3sas_base_get_pcie_sgl(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    obtain a PCIe SGL virt addr
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`mpt3sas_base_get_pcie_sgl.description`:
+
+Description
+-----------
+
+Returns virt pointer to a PCIe SGL.
+
+.. _`mpt3sas_base_get_pcie_sgl_dma`:
+
+mpt3sas_base_get_pcie_sgl_dma
+=============================
+
+.. c:function:: dma_addr_t mpt3sas_base_get_pcie_sgl_dma(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    obtain a PCIe SGL dma addr
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`mpt3sas_base_get_pcie_sgl_dma.description`:
+
+Description
+-----------
+
+Returns phys pointer to the address of the PCIe buffer.
+
 .. _`mpt3sas_base_get_reply_virt_addr`:
 
 mpt3sas_base_get_reply_virt_addr
@@ -1219,6 +1397,28 @@ _base_put_smid_hi_priority
         msix_task will be same as msix of IO incase of task abort else 0.
         Return nothing.
 
+.. _`_base_put_smid_nvme_encap`:
+
+_base_put_smid_nvme_encap
+=========================
+
+.. c:function:: void _base_put_smid_nvme_encap(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    send NVMe encapsulated request to firmware
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`_base_put_smid_nvme_encap.description`:
+
+Description
+-----------
+
+Return nothing.
+
 .. _`_base_put_smid_default`:
 
 _base_put_smid_default
@@ -1304,6 +1504,28 @@ _base_put_smid_hi_priority_atomic
         msix_task will be same as msix of IO incase of task abort else 0
 
 .. _`_base_put_smid_hi_priority_atomic.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_base_put_smid_nvme_encap_atomic`:
+
+_base_put_smid_nvme_encap_atomic
+================================
+
+.. c:function:: void _base_put_smid_nvme_encap_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+
+    send NVMe encapsulated request to firmware using Atomic Request Descriptor
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 smid:
+        system request message index
+
+.. _`_base_put_smid_nvme_encap_atomic.description`:
 
 Description
 -----------

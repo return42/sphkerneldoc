@@ -33,7 +33,7 @@ and evicting any page cache pages in the region under I/O.
 dax_iomap_fault
 ===============
 
-.. c:function:: int dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, const struct iomap_ops *ops)
+.. c:function:: int dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t *pfnp, const struct iomap_ops *ops)
 
     handle a page fault on a DAX file
 
@@ -41,10 +41,13 @@ dax_iomap_fault
         The description of the fault
 
     :param enum page_entry_size pe_size:
-        *undescribed*
+        Size of the page to fault in
+
+    :param pfn_t \*pfnp:
+        PFN to insert for synchronous faults if fsync is required
 
     :param const struct iomap_ops \*ops:
-        iomap ops passed from the file system
+        Iomap ops passed from the file system
 
 .. _`dax_iomap_fault.description`:
 
@@ -55,6 +58,60 @@ When a page fault occurs, filesystems may call this helper in
 their fault handler for DAX files. \ :c:func:`dax_iomap_fault`\  assumes the caller
 has done all the necessary locking for page fault to proceed
 successfully.
+
+.. _`dax_insert_pfn_mkwrite`:
+
+dax_insert_pfn_mkwrite
+======================
+
+.. c:function:: int dax_insert_pfn_mkwrite(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
+
+    insert PTE or PMD entry into page tables
+
+    :param struct vm_fault \*vmf:
+        The description of the fault
+
+    :param enum page_entry_size pe_size:
+        Size of entry to be inserted
+
+    :param pfn_t pfn:
+        PFN to insert
+
+.. _`dax_insert_pfn_mkwrite.description`:
+
+Description
+-----------
+
+This function inserts writeable PTE or PMD entry into page tables for mmaped
+DAX file.  It takes care of marking corresponding radix tree entry as dirty
+as well.
+
+.. _`dax_finish_sync_fault`:
+
+dax_finish_sync_fault
+=====================
+
+.. c:function:: int dax_finish_sync_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t pfn)
+
+    finish synchronous page fault
+
+    :param struct vm_fault \*vmf:
+        The description of the fault
+
+    :param enum page_entry_size pe_size:
+        Size of entry to be inserted
+
+    :param pfn_t pfn:
+        PFN to insert
+
+.. _`dax_finish_sync_fault.description`:
+
+Description
+-----------
+
+This function ensures that the file range touched by the page fault is
+stored persistently on the media and handles inserting of appropriate page
+table entry.
 
 .. This file was automatic generated / don't edit.
 

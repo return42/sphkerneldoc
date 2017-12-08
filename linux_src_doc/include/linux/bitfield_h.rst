@@ -59,7 +59,7 @@ FIELD_GET
         shifted mask defining the field's length and position
 
     :param  _reg:
-        32bit value of entire bitfield
+        value of entire bitfield
 
 .. _`field_get.description`:
 

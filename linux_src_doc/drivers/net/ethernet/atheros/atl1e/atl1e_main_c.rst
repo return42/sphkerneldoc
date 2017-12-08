@@ -42,12 +42,12 @@ atl1e_irq_reset
 atl1e_phy_config
 ================
 
-.. c:function:: void atl1e_phy_config(unsigned long data)
+.. c:function:: void atl1e_phy_config(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to netdev cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`atl1e_link_chg_task`:
 

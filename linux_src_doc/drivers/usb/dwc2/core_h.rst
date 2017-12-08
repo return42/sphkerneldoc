@@ -242,6 +242,7 @@ Definition
         bool dma_desc_fs_enable;
         bool host_support_fs_ls_low_power;
         bool host_ls_low_power_phy_clk;
+        bool oc_disable;
         u8 host_channels;
         u16 host_rx_fifo_size;
         u16 host_nperio_tx_fifo_size;
@@ -428,6 +429,11 @@ host_ls_low_power_phy_clk
     (default when phy_type is UTMI+ or ULPI)
     1 - 6 MHz
     (default when phy_type is Full Speed)
+
+oc_disable
+    Flag to disable overcurrent condition.
+    0 - Allow overcurrent condition to get detected
+    1 - Disable overcurrent condtion to get detected
 
 host_channels
     The number of host channel registers to use

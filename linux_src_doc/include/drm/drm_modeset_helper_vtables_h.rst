@@ -275,7 +275,7 @@ atomic_check
     implementation in \ :c:func:`drm_atomic_helper_check`\ .
 
     When using \ :c:func:`drm_atomic_helper_check_planes`\  this hook is called
-    after the \ :c:type:`drm_plane_helper_funcs.atomc_check <drm_plane_helper_funcs>`\  hook for planes, which
+    after the \ :c:type:`drm_plane_helper_funcs.atomic_check <drm_plane_helper_funcs>`\  hook for planes, which
     allows drivers to assign shared resources requested by planes in this
     callback here. For more complicated dependencies the driver can call
     the provided check helpers multiple times until the computed state

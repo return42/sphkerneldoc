@@ -17,17 +17,32 @@ loading to HW is deferred until GEM initialization is done.
 
 Note that HuC firmware loading must be done before GuC loading.
 
+.. _`intel_huc_select_fw`:
+
+intel_huc_select_fw
+===================
+
+.. c:function:: void intel_huc_select_fw(struct intel_huc *huc)
+
+    selects HuC firmware for loading
+
+    :param struct intel_huc \*huc:
+        intel_huc struct
+
 .. _`huc_ucode_xfer`:
 
 huc_ucode_xfer
 ==============
 
-.. c:function:: int huc_ucode_xfer(struct drm_i915_private *dev_priv)
+.. c:function:: int huc_ucode_xfer(struct intel_uc_fw *huc_fw, struct i915_vma *vma)
 
     DMA's the firmware
 
-    :param struct drm_i915_private \*dev_priv:
-        the drm_i915_private device
+    :param struct intel_uc_fw \*huc_fw:
+        *undescribed*
+
+    :param struct i915_vma \*vma:
+        *undescribed*
 
 .. _`huc_ucode_xfer.description`:
 
@@ -42,18 +57,6 @@ Return
 ------
 
 0 on success, non-zero on failure
-
-.. _`intel_huc_select_fw`:
-
-intel_huc_select_fw
-===================
-
-.. c:function:: void intel_huc_select_fw(struct intel_huc *huc)
-
-    selects HuC firmware for loading
-
-    :param struct intel_huc \*huc:
-        intel_huc struct
 
 .. _`intel_huc_init_hw`:
 
@@ -79,25 +82,29 @@ The firmware image should have already been fetched into memory by the
 earlier call to \ :c:func:`intel_huc_init`\ , so here we need only check that
 is succeeded, and then transfer the image to the h/w.
 
-.. _`intel_guc_auth_huc`:
+.. _`intel_huc_auth`:
 
-intel_guc_auth_huc
-==================
+intel_huc_auth
+==============
 
-.. c:function:: void intel_guc_auth_huc(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_huc_auth(struct intel_huc *huc)
 
-    authenticate ucode
+    Authenticate HuC uCode
 
-    :param struct drm_i915_private \*dev_priv:
-        the drm_i915_device
+    :param struct intel_huc \*huc:
+        intel_huc structure
 
-.. _`intel_guc_auth_huc.description`:
+.. _`intel_huc_auth.description`:
 
 Description
 -----------
 
-Triggers a HuC fw authentication request to the GuC via intel_guc_action\_
-authenticate_huc interface.
+Called after HuC and GuC firmware loading during \ :c:func:`intel_uc_init_hw`\ .
+
+This function pins HuC firmware image object into GGTT.
+Then it invokes GuC action to authenticate passing the offset to RSA
+signature through \ :c:func:`intel_guc_auth_huc`\ . It then waits for 50ms for
+firmware verification ACK and unpins the object.
 
 .. This file was automatic generated / don't edit.
 

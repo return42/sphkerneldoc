@@ -76,7 +76,7 @@ call_srcu
         srcu_struct in queue the callback
 
     :param struct rcu_head \*rhp:
-        *undescribed*
+        structure to be used for queueing the SRCU callback.
 
     :param rcu_callback_t func:
         function to be invoked after the SRCU grace period

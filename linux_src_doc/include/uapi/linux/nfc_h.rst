@@ -48,6 +48,7 @@ Definition
         NFC_CMD_SE_IO,
         NFC_CMD_ACTIVATE_TARGET,
         NFC_CMD_VENDOR,
+        NFC_CMD_DEACTIVATE_TARGET,
         __NFC_CMD_AFTER_LAST
     };
 
@@ -175,6 +176,9 @@ NFC_CMD_ACTIVATE_TARGET
 NFC_CMD_VENDOR
     Vendor specific command, to be implemented directly
     from the driver in order to support hardware specific operations.
+
+NFC_CMD_DEACTIVATE_TARGET
+    Request NFC controller to deactivate target.
 
 __NFC_CMD_AFTER_LAST
     *undescribed*

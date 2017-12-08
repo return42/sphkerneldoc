@@ -11,5 +11,6 @@ mouse
     appletouch_c
     cyapa_c
     cyapa_gen5_c
+    gpio_mouse_c
     synaptics_c
     vmmouse_c

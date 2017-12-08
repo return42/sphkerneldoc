@@ -29,6 +29,7 @@ Definition
             unsigned int speed;
             unsigned int interface;
             enum nfp_eth_media media;
+            enum nfp_eth_fec fec;
             enum nfp_eth_aneg aneg;
             u8 mac_addr[ETH_ALEN];
             u8 label_port;
@@ -40,6 +41,7 @@ Definition
             u8 port_type;
             unsigned int port_lanes;
             bool is_split;
+            unsigned int fec_modes_supported;
         } ports[0];
     }
 

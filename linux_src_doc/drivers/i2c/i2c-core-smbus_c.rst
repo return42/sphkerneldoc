@@ -279,5 +279,46 @@ effect as a byte read. Before using this function you must double-check
 if the I2C slave does support exchanging a block transfer with a byte
 transfer.
 
+.. _`i2c_setup_smbus_alert`:
+
+i2c_setup_smbus_alert
+=====================
+
+.. c:function:: struct i2c_client *i2c_setup_smbus_alert(struct i2c_adapter *adapter, struct i2c_smbus_alert_setup *setup)
+
+    Setup SMBus alert support
+
+    :param struct i2c_adapter \*adapter:
+        the target adapter
+
+    :param struct i2c_smbus_alert_setup \*setup:
+        setup data for the SMBus alert handler
+
+.. _`i2c_setup_smbus_alert.context`:
+
+Context
+-------
+
+can sleep
+
+.. _`i2c_setup_smbus_alert.description`:
+
+Description
+-----------
+
+Setup handling of the SMBus alert protocol on a given I2C bus segment.
+
+Handling can be done either through our IRQ handler, or by the
+adapter (from its handler, periodic polling, or whatever).
+
+NOTE that if we manage the IRQ, we *MUST* know if it's level or
+edge triggered in order to hand it to the workqueue correctly.
+If triggering the alert seems to wedge the system, you probably
+should have said it's level triggered.
+
+This returns the ara client, which should be saved for later use with
+\ :c:func:`i2c_handle_smbus_alert`\  and ultimately \ :c:func:`i2c_unregister_device`\ ; or NULL
+to indicate an error.
+
 .. This file was automatic generated / don't edit.
 

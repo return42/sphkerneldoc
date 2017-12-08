@@ -1,21 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/crypto/fname.c
 
-.. _`fname_crypt_complete`:
-
-fname_crypt_complete
-====================
-
-.. c:function:: void fname_crypt_complete(struct crypto_async_request *req, int res)
-
-    completion callback for filename crypto
-
-    :param struct crypto_async_request \*req:
-        The asynchronous cipher request context
-
-    :param int res:
-        The result of the cipher operation
-
 .. _`fname_encrypt`:
 
 fname_encrypt

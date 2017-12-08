@@ -159,7 +159,8 @@ Definition
         __le32 flags;
         __le16 host0;
         __le16 host1;
-        __le32 reserved[8];
+        __le32 cacheline;
+        __le32 reserved[7];
     }
 
 .. _`smem_ptable_entry.members`:
@@ -181,6 +182,9 @@ host0
 
 host1
     second processor/host with access to this partition
+
+cacheline
+    alignment for "cached" entries
 
 reserved
     reserved entries for later use
@@ -331,6 +335,50 @@ padding_hdr
 reserved
     for now reserved entry
 
+.. _`smem_info`:
+
+struct smem_info
+================
+
+.. c:type:: struct smem_info
+
+    smem region info located after the table of contents
+
+.. _`smem_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct smem_info {
+        u8 magic[4];
+        __le32 size;
+        __le32 base_addr;
+        __le32 reserved;
+        __le16 num_items;
+    }
+
+.. _`smem_info.members`:
+
+Members
+-------
+
+magic
+    magic number, must be SMEM_INFO_MAGIC
+
+size
+    size of the smem region
+
+base_addr
+    base address of the smem region
+
+reserved
+    for now reserved entry
+
+num_items
+    highest accepted item number
+
 .. _`smem_region`:
 
 struct smem_region
@@ -386,7 +434,11 @@ Definition
     struct qcom_smem {
         struct device *dev;
         struct hwspinlock *hwlock;
+        struct smem_partition_header *global_partition;
+        size_t global_cacheline;
         struct smem_partition_header *partitions[SMEM_HOST_COUNT];
+        size_t cacheline[SMEM_HOST_COUNT];
+        u32 item_count;
         unsigned num_regions;
         struct smem_region regions[0];
     }
@@ -402,9 +454,21 @@ dev
 hwlock
     reference to a hwspinlock
 
+global_partition
+    pointer to global partition when in use
+
+global_cacheline
+    cacheline size for global partition
+
 partitions
     list of pointers to partitions affecting the current
     processor/host
+
+cacheline
+    list of cacheline sizes for each host
+
+item_count
+    max accepted item number
 
 num_regions
     number of \ ``regions``\ 

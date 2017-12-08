@@ -11,5 +11,4 @@ asm
     bitops_h
     mmu_context_h
     smp_h
-    spinlock_h
     tlbflush_h

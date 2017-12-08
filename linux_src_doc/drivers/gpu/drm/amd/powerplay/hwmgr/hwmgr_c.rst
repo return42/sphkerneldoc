@@ -27,7 +27,7 @@ phm_wait_on_register
 phm_wait_on_indirect_register
 =============================
 
-.. c:function:: void phm_wait_on_indirect_register(struct pp_hwmgr *hwmgr, uint32_t indirect_port, uint32_t index, uint32_t value, uint32_t mask)
+.. c:function:: int phm_wait_on_indirect_register(struct pp_hwmgr *hwmgr, uint32_t indirect_port, uint32_t index, uint32_t value, uint32_t mask)
 
     reached the given value.The indirect space is described by giving the memory-mapped index of the indirect index register.
 

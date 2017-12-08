@@ -26,6 +26,7 @@ Definition
         struct snd_soc_dai *cpu_dai;
         struct snd_pcm_substream *substream;
         struct stm32_sai_data *pdata;
+        struct device_node *np_sync_provider;
         struct clk *sai_ck;
         dma_addr_t phys_addr;
         unsigned int mclk_rate;
@@ -34,6 +35,8 @@ Definition
         bool master;
         int fmt;
         int sync;
+        int synco;
+        int synci;
         int fs_length;
         int slots;
         int slot_width;
@@ -70,6 +73,9 @@ substream
 pdata
     SAI block parent data pointer
 
+np_sync_provider
+    synchronization provider node
+
 sai_ck
     kernel clock feeding the SAI clock generator
 
@@ -93,6 +99,12 @@ fmt
 
 sync
     SAI block synchronization mode. (none, internal or external)
+
+synco
+    SAI block ext sync source (provider setting). (none, sub-block A/B)
+
+synci
+    SAI block ext sync source (client setting). (SAI sync provider index)
 
 fs_length
     frame synchronization length. depends on protocol settings

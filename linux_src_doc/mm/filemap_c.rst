@@ -721,20 +721,23 @@ that the returned number of pages are guaranteed to be contiguous.
 
 \ :c:func:`find_get_pages_contig`\  returns the number of pages which were found.
 
-.. _`find_get_pages_tag`:
+.. _`find_get_pages_range_tag`:
 
-find_get_pages_tag
-==================
+find_get_pages_range_tag
+========================
 
-.. c:function:: unsigned find_get_pages_tag(struct address_space *mapping, pgoff_t *index, int tag, unsigned int nr_pages, struct page **pages)
+.. c:function:: unsigned find_get_pages_range_tag(struct address_space *mapping, pgoff_t *index, pgoff_t end, int tag, unsigned int nr_pages, struct page **pages)
 
-    find and return pages that match \ ``tag``\ 
+    find and return pages in given range matching \ ``tag``\ 
 
     :param struct address_space \*mapping:
         the address_space to search
 
     :param pgoff_t \*index:
         the starting page index
+
+    :param pgoff_t end:
+        The final page index (inclusive)
 
     :param int tag:
         the tag index
@@ -745,7 +748,7 @@ find_get_pages_tag
     :param struct page \*\*pages:
         where the resulting pages are placed
 
-.. _`find_get_pages_tag.description`:
+.. _`find_get_pages_range_tag.description`:
 
 Description
 -----------

@@ -84,46 +84,145 @@ their callbacks are invoked.
 Otherwise we collect all completed frame from the ring buffer, write new
 frame to the ring buffer and invoke the callbacks for the completed frames.
 
-.. _`ring_start`:
+.. _`tb_ring_poll`:
 
-ring_start
-==========
+tb_ring_poll
+============
 
-.. c:function:: void ring_start(struct tb_ring *ring)
+.. c:function:: struct ring_frame *tb_ring_poll(struct tb_ring *ring)
+
+    Poll one completed frame from the ring
+
+    :param struct tb_ring \*ring:
+        Ring to poll
+
+.. _`tb_ring_poll.description`:
+
+Description
+-----------
+
+This function can be called when \ ``start_poll``\  callback of the \ ``ring``\ 
+has been called. It will read one completed frame from the ring and
+return it to the caller. Returns \ ``NULL``\  if there is no more completed
+frames.
+
+.. _`tb_ring_poll_complete`:
+
+tb_ring_poll_complete
+=====================
+
+.. c:function:: void tb_ring_poll_complete(struct tb_ring *ring)
+
+    Re-start interrupt for the ring
+
+    :param struct tb_ring \*ring:
+        Ring to re-start the interrupt
+
+.. _`tb_ring_poll_complete.description`:
+
+Description
+-----------
+
+This will re-start (unmask) the ring interrupt once the user is done
+with polling.
+
+.. _`tb_ring_alloc_tx`:
+
+tb_ring_alloc_tx
+================
+
+.. c:function:: struct tb_ring *tb_ring_alloc_tx(struct tb_nhi *nhi, int hop, int size, unsigned int flags)
+
+    Allocate DMA ring for transmit
+
+    :param struct tb_nhi \*nhi:
+        Pointer to the NHI the ring is to be allocated
+
+    :param int hop:
+        HopID (ring) to allocate
+
+    :param int size:
+        Number of entries in the ring
+
+    :param unsigned int flags:
+        Flags for the ring
+
+.. _`tb_ring_alloc_rx`:
+
+tb_ring_alloc_rx
+================
+
+.. c:function:: struct tb_ring *tb_ring_alloc_rx(struct tb_nhi *nhi, int hop, int size, unsigned int flags, u16 sof_mask, u16 eof_mask, void (*start_poll)(void *), void *poll_data)
+
+    Allocate DMA ring for receive
+
+    :param struct tb_nhi \*nhi:
+        Pointer to the NHI the ring is to be allocated
+
+    :param int hop:
+        HopID (ring) to allocate. Pass \ ``-1``\  for automatic allocation.
+
+    :param int size:
+        Number of entries in the ring
+
+    :param unsigned int flags:
+        Flags for the ring
+
+    :param u16 sof_mask:
+        Mask of PDF values that start a frame
+
+    :param u16 eof_mask:
+        Mask of PDF values that end a frame
+
+    :param void (\*start_poll)(void \*):
+        If not \ ``NULL``\  the ring will call this function when an
+        interrupt is triggered and masked, instead of callback
+        in each Rx frame.
+
+    :param void \*poll_data:
+        Optional data passed to \ ``start_poll``\ 
+
+.. _`tb_ring_start`:
+
+tb_ring_start
+=============
+
+.. c:function:: void tb_ring_start(struct tb_ring *ring)
 
     enable a ring
 
     :param struct tb_ring \*ring:
         *undescribed*
 
-.. _`ring_start.description`:
+.. _`tb_ring_start.description`:
 
 Description
 -----------
 
-Must not be invoked in parallel with \ :c:func:`ring_stop`\ .
+Must not be invoked in parallel with \ :c:func:`tb_ring_stop`\ .
 
-.. _`ring_stop`:
+.. _`tb_ring_stop`:
 
-ring_stop
-=========
+tb_ring_stop
+============
 
-.. c:function:: void ring_stop(struct tb_ring *ring)
+.. c:function:: void tb_ring_stop(struct tb_ring *ring)
 
     shutdown a ring
 
     :param struct tb_ring \*ring:
         *undescribed*
 
-.. _`ring_stop.description`:
+.. _`tb_ring_stop.description`:
 
 Description
 -----------
 
 Must not be invoked from a callback.
 
-This method will disable the ring. Further calls to ring_tx/ring_rx will
-return -ESHUTDOWN until ring_stop has been called.
+This method will disable the ring. Further calls to
+tb_ring_tx/tb_ring_rx will return -ESHUTDOWN until ring_stop has been
+called.
 
 All enqueued frames will be canceled and their callbacks will be executed
 with frame->canceled set to true (on the callback thread). This method

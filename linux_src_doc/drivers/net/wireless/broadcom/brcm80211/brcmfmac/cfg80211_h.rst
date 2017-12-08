@@ -367,7 +367,6 @@ Definition
         unsigned long scan_status;
         struct brcmf_pub *pub;
         u32 channel;
-        bool active_scan;
         u32 int_escan_map;
         bool ibss_starter;
         bool pwr_save;
@@ -431,9 +430,6 @@ pub
 
 channel
     current channel.
-
-active_scan
-    current scan mode.
 
 int_escan_map
     bucket map for which internal e-scan is done.

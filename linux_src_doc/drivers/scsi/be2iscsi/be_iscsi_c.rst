@@ -161,28 +161,6 @@ Description
 
 returns iscsi parameter
 
-.. _`beiscsi_get_initname`:
-
-beiscsi_get_initname
-====================
-
-.. c:function:: int beiscsi_get_initname(char *buf, struct beiscsi_hba *phba)
-
-    Read Initiator Name from flash
-
-    :param char \*buf:
-        buffer bointer
-
-    :param struct beiscsi_hba \*phba:
-        The device priv structure instance
-
-.. _`beiscsi_get_initname.description`:
-
-Description
------------
-
-returns number of bytes
-
 .. _`beiscsi_get_port_state`:
 
 beiscsi_get_port_state
@@ -224,13 +202,6 @@ beiscsi_get_host_param
 
     :param char \*buf:
         buffer pointer
-
-.. _`beiscsi_get_host_param.description`:
-
-Description
------------
-
-returns host parameter
 
 .. _`beiscsi_conn_get_stats`:
 

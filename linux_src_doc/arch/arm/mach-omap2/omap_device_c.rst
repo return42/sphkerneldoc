@@ -121,92 +121,6 @@ If any hwmods exist for the omap_device associated with \ ``pdev``\ ,
 return the context loss counter for that hwmod, otherwise return
 zero.
 
-.. _`omap_device_count_resources`:
-
-omap_device_count_resources
-===========================
-
-.. c:function:: int omap_device_count_resources(struct omap_device *od, unsigned long flags)
-
-    count number of struct resource entries needed
-
-    :param struct omap_device \*od:
-        struct omap_device \*
-
-    :param unsigned long flags:
-        Type of resources to include when counting (IRQ/DMA/MEM)
-
-.. _`omap_device_count_resources.description`:
-
-Description
------------
-
-Count the number of struct resource entries needed for this
-omap_device \ ``od``\ .  Used by \ :c:func:`omap_device_build_ss`\  to determine how
-much memory to allocate before calling
-\ :c:func:`omap_device_fill_resources`\ .  Returns the count.
-
-.. _`omap_device_fill_resources`:
-
-omap_device_fill_resources
-==========================
-
-.. c:function:: int omap_device_fill_resources(struct omap_device *od, struct resource *res)
-
-    fill in array of struct resource
-
-    :param struct omap_device \*od:
-        struct omap_device \*
-
-    :param struct resource \*res:
-        pointer to an array of struct resource to be filled in
-
-.. _`omap_device_fill_resources.description`:
-
-Description
------------
-
-Populate one or more empty struct resource pointed to by \ ``res``\  with
-the resource data for this omap_device \ ``od``\ .  Used by
-\ :c:func:`omap_device_build_ss`\  after calling \ :c:func:`omap_device_count_resources`\ .
-Ideally this function would not be needed at all.  If omap_device
-replaces platform_device, then we can specify our own
-\ :c:func:`get_resource`\ / \ :c:func:`get_irq`\ /etc functions that use the underlying
-omap_hwmod information.  Or if platform_device is extended to use
-subarchitecture-specific function pointers, the various
-platform_device functions can simply call omap_device internal
-functions to get device resources.  Hacking around the existing
-platform_device code wastes memory.  Returns 0.
-
-.. _`_od_fill_dma_resources`:
-
-_od_fill_dma_resources
-======================
-
-.. c:function:: int _od_fill_dma_resources(struct omap_device *od, struct resource *res)
-
-    fill in array of struct resource with dma resources
-
-    :param struct omap_device \*od:
-        struct omap_device \*
-
-    :param struct resource \*res:
-        pointer to an array of struct resource to be filled in
-
-.. _`_od_fill_dma_resources.description`:
-
-Description
------------
-
-Populate one or more empty struct resource pointed to by \ ``res``\  with
-the dma resource data for this omap_device \ ``od``\ .  Used by
-\ :c:func:`omap_device_alloc`\  after calling \ :c:func:`omap_device_count_resources`\ .
-
-Ideally this function would not be needed at all.  If we have
-mechanism to get dma resources from DT.
-
-Returns 0.
-
 .. _`omap_device_alloc`:
 
 omap_device_alloc
@@ -234,6 +148,32 @@ Convenience function for allocating an omap_device structure and filling
 hwmods, and resources.
 
 Returns an struct omap_device pointer or \ :c:func:`ERR_PTR`\  on error;
+
+.. _`omap_device_copy_resources`:
+
+omap_device_copy_resources
+==========================
+
+.. c:function:: int omap_device_copy_resources(struct omap_hwmod *oh, struct platform_device *pdev)
+
+    Add legacy IO and IRQ resources
+
+    :param struct omap_hwmod \*oh:
+        interconnect target module
+
+    :param struct platform_device \*pdev:
+        platform device to copy resources to
+
+.. _`omap_device_copy_resources.description`:
+
+Description
+-----------
+
+We still have legacy DMA and smartreflex needing resources.
+Let's populate what they need until we can eventually just
+remove this function. Note that there should be no need to
+call this from \ :c:func:`omap_device_build_from_dt`\ , nor should there
+be any need to call it for other devices.
 
 .. _`omap_device_build`:
 
@@ -269,44 +209,6 @@ omap_device record, which in turn builds and registers a
 platform_device record.  See \ :c:func:`omap_device_build_ss`\  for more
 information.  Returns ERR_PTR(-EINVAL) if \ ``oh``\  is NULL; otherwise,
 passes along the return value of \ :c:func:`omap_device_build_ss`\ .
-
-.. _`omap_device_build_ss`:
-
-omap_device_build_ss
-====================
-
-.. c:function:: struct platform_device *omap_device_build_ss(const char *pdev_name, int pdev_id, struct omap_hwmod **ohs, int oh_cnt, void *pdata, int pdata_len)
-
-    build and register an omap_device with multiple hwmods
-
-    :param const char \*pdev_name:
-        name of the platform_device driver to use
-
-    :param int pdev_id:
-        this platform_device's connection ID
-
-    :param struct omap_hwmod \*\*ohs:
-        *undescribed*
-
-    :param int oh_cnt:
-        *undescribed*
-
-    :param void \*pdata:
-        platform_data ptr to associate with the platform_device
-
-    :param int pdata_len:
-        amount of memory pointed to by \ ``pdata``\ 
-
-.. _`omap_device_build_ss.description`:
-
-Description
------------
-
-Convenience function for building and registering an omap_device
-subsystem record.  Subsystem records consist of multiple
-omap_hwmods.  This function in turn builds and registers a
-platform_device record.  Returns an \ :c:func:`ERR_PTR`\  on error, or passes
-along the return value of \ :c:func:`omap_device_register`\ .
 
 .. _`omap_device_register`:
 

@@ -37,31 +37,27 @@ BATADV_TT_CLIENT_DEL
     the client has to be deleted from the table
 
 BATADV_TT_CLIENT_ROAM
-    the client roamed to/from another node and the new
-    update telling its new real location has not been received/sent yet
+    the client roamed to/from another node andthe new update telling its new real location has not been
+    received/sent yet
 
 BATADV_TT_CLIENT_WIFI
-    this client is connected through a wifi interface.
-    This information is used by the "AP Isolation" feature
+    this client is connected through a wifiinterface. This information is used by the "AP Isolation" feature
 
 BATADV_TT_CLIENT_ISOLA
-    this client is considered "isolated". This
-    information is used by the Extended Isolation feature
+    this client is considered "isolated". Thisinformation is used by the Extended Isolation feature
 
 BATADV_TT_CLIENT_NOPURGE
-    this client should never be removed from the table
+    this client should never be removed fromthe table
 
 BATADV_TT_CLIENT_NEW
-    this client has been added to the local table but has
-    not been announced yet
+    this client has been added to the local tablebut has not been announced yet
 
 BATADV_TT_CLIENT_PENDING
-    this client is marked for removal but it is kept
-    in the table for one more originator interval for consistency purposes
+    this client is marked for removal but itis kept in the table for one more originator interval for consistency
+    purposes
 
 BATADV_TT_CLIENT_TEMP
-    this global client has been detected to be part of
-    the network but no nnode has already announced it
+    this global client has been detected to bepart of the network but no nnode has already announced it
 
 .. _`batadv_tt_client_flags.description`:
 
@@ -163,13 +159,13 @@ BATADV_ATTR_HARD_IFNAME
     name of the non-batman-adv interface
 
 BATADV_ATTR_HARD_ADDRESS
-    mac address of the non-batman-adv interface
+    mac address of the non-batman-advinterface
 
 BATADV_ATTR_ORIG_ADDRESS
     originator mac address
 
 BATADV_ATTR_TPMETER_RESULT
-    result of run (see batadv_tp_meter_status)
+    result of run (seebatadv_tp_meter_status)
 
 BATADV_ATTR_TPMETER_TEST_TIME
     time (msec) the run took
@@ -295,7 +291,7 @@ BATADV_CMD_UNSPEC
     unspecified command to catch errors
 
 BATADV_CMD_GET_MESH_INFO
-    Query basic information about batman-adv device
+    Query basic information about batman-advdevice
 
 BATADV_CMD_TP_METER
     Start a tp meter session
@@ -311,10 +307,9 @@ BATADV_CMD_GET_HARDIFS
 
 BATADV_CMD_GET_TRANSTABLE_LOCAL
     Query list of local translations
-    \ ``BATADV_CMD_GET_TRANSTABLE_GLOBAL``\  Query list of global translations
 
 BATADV_CMD_GET_TRANSTABLE_GLOBAL
-    *undescribed*
+    Query list of global translations
 
 BATADV_CMD_GET_ORIGINATORS
     Query list of originators
@@ -329,7 +324,7 @@ BATADV_CMD_GET_BLA_CLAIM
     Query list of bridge loop avoidance claims
 
 BATADV_CMD_GET_BLA_BACKBONE
-    Query list of bridge loop avoidance backbones
+    Query list of bridge loop avoidancebackbones
 
 __BATADV_CMD_AFTER_LAST
     internal use
@@ -376,15 +371,13 @@ BATADV_TP_REASON_CANCEL
     sender was stopped during run
 
 BATADV_TP_REASON_DST_UNREACHABLE
-    receiver could not be reached or didn't
-    answer
+    receiver could not be reached ordidn't answer
 
 BATADV_TP_REASON_RESEND_LIMIT
     (unused) sender retry reached limit
 
 BATADV_TP_REASON_ALREADY_ONGOING
-    test to or from the same node already
-    ongoing
+    test to or from the same nodealready ongoing
 
 BATADV_TP_REASON_MEMORY_ERROR
     test was stopped due to low memory

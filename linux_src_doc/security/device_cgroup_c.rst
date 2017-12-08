@@ -46,7 +46,7 @@ match_exception
         list of exceptions
 
     :param short type:
-        device type (DEV_BLOCK or DEV_CHAR)
+        device type (DEVCG_DEV_BLOCK or DEVCG_DEV_CHAR)
 
     :param u32 major:
         device file major number, ~0 to match all
@@ -55,7 +55,7 @@ match_exception
         device file minor number, ~0 to match all
 
     :param short access:
-        permission mask (ACC_READ, ACC_WRITE, ACC_MKNOD)
+        permission mask (DEVCG_ACC_READ, DEVCG_ACC_WRITE, DEVCG_ACC_MKNOD)
 
 .. _`match_exception.description`:
 
@@ -85,7 +85,7 @@ match_exception_partial
         list of exceptions
 
     :param short type:
-        device type (DEV_BLOCK or DEV_CHAR)
+        device type (DEVCG_DEV_BLOCK or DEVCG_DEV_CHAR)
 
     :param u32 major:
         device file major number, ~0 to match all
@@ -94,7 +94,7 @@ match_exception_partial
         device file minor number, ~0 to match all
 
     :param short access:
-        permission mask (ACC_READ, ACC_WRITE, ACC_MKNOD)
+        permission mask (DEVCG_ACC_READ, DEVCG_ACC_WRITE, DEVCG_ACC_MKNOD)
 
 .. _`match_exception_partial.description`:
 
@@ -252,7 +252,7 @@ __devcgroup_check_permission
         device minor number
 
     :param short access:
-        combination of ACC_WRITE, ACC_READ and ACC_MKNOD
+        combination of DEVCG_ACC_WRITE, DEVCG_ACC_READ and DEVCG_ACC_MKNOD
 
 .. _`__devcgroup_check_permission.description`:
 

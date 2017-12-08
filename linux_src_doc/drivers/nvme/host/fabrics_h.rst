@@ -28,6 +28,7 @@ Definition
         unsigned int nr_io_queues;
         unsigned int reconnect_delay;
         bool discovery_nqn;
+        bool duplicate_connect;
         unsigned int kato;
         struct nvmf_host *host;
         int max_reconnects;
@@ -74,6 +75,9 @@ reconnect_delay
 
 discovery_nqn
     indicates if the subsysnqn is the well-known discovery NQN.
+
+duplicate_connect
+    *undescribed*
 
 kato
     Keep-alive timeout.

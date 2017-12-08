@@ -12,7 +12,5 @@ asm
     bitops_h
     bug_h
     ptrace_h
-    spinlock-cas_h
-    spinlock-llsc_h
     tlb_64_h
     watchdog_h

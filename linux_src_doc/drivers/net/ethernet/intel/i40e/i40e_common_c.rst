@@ -1067,7 +1067,7 @@ Fill the buf with switch configuration returned from AdminQ command
 i40e_aq_set_switch_config
 =========================
 
-.. c:function:: enum i40e_status_code i40e_aq_set_switch_config(struct i40e_hw *hw, u16 flags, u16 valid_flags, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: enum i40e_status_code i40e_aq_set_switch_config(struct i40e_hw *hw, u16 flags, u16 valid_flags, u8 mode, struct i40e_asq_cmd_details *cmd_details)
 
     :param struct i40e_hw \*hw:
         pointer to the hardware structure
@@ -1077,6 +1077,9 @@ i40e_aq_set_switch_config
 
     :param u16 valid_flags:
         which bit flags to set
+
+    :param u8 mode:
+        cloud filter mode
 
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
@@ -2710,6 +2713,42 @@ Description
 
 Blinks PHY link LED
 
+.. _`i40e_led_get_reg`:
+
+i40e_led_get_reg
+================
+
+.. c:function:: enum i40e_status_code i40e_led_get_reg(struct i40e_hw *hw, u16 led_addr, u32 *reg_val)
+
+    read LED register
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 led_addr:
+        LED register address
+
+    :param u32 \*reg_val:
+        read register value
+
+.. _`i40e_led_set_reg`:
+
+i40e_led_set_reg
+================
+
+.. c:function:: enum i40e_status_code i40e_led_set_reg(struct i40e_hw *hw, u16 led_addr, u32 reg_val)
+
+    write LED register
+
+    :param struct i40e_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 led_addr:
+        LED register address
+
+    :param u32 reg_val:
+        register value to write
+
 .. _`i40e_led_get_phy`:
 
 i40e_led_get_phy
@@ -2837,6 +2876,70 @@ i40e_write_rx_ctl
     :param u32 reg_val:
         register value
 
+.. _`i40e_aq_set_phy_register`:
+
+i40e_aq_set_phy_register
+========================
+
+.. c:function:: i40e_status i40e_aq_set_phy_register(struct i40e_hw *hw, u8 phy_select, u8 dev_addr, u32 reg_addr, u32 reg_val, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u8 phy_select:
+        select which phy should be accessed
+
+    :param u8 dev_addr:
+        PHY device address
+
+    :param u32 reg_addr:
+        PHY register address
+
+    :param u32 reg_val:
+        new register value
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40e_aq_set_phy_register.description`:
+
+Description
+-----------
+
+Write the external PHY register.
+
+.. _`i40e_aq_get_phy_register`:
+
+i40e_aq_get_phy_register
+========================
+
+.. c:function:: i40e_status i40e_aq_get_phy_register(struct i40e_hw *hw, u8 phy_select, u8 dev_addr, u32 reg_addr, u32 *reg_val, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u8 phy_select:
+        select which phy should be accessed
+
+    :param u8 dev_addr:
+        PHY device address
+
+    :param u32 reg_addr:
+        PHY register address
+
+    :param u32 \*reg_val:
+        read register value
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40e_aq_get_phy_register.description`:
+
+Description
+-----------
+
+Read the external PHY register.
+
 .. _`i40e_aq_write_ppp`:
 
 i40e_aq_write_ppp
@@ -2961,6 +3064,118 @@ Description
 -----------
 
 Register a profile to the list of loaded profiles.
+
+.. _`i40e_aq_add_cloud_filters`:
+
+i40e_aq_add_cloud_filters
+=========================
+
+.. c:function:: enum i40e_status_code i40e_aq_add_cloud_filters(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_data *filters, u8 filter_count)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param u16 seid:
+        VSI seid to add cloud filters from
+
+    :param struct i40e_aqc_cloud_filters_element_data \*filters:
+        Buffer which contains the filters to be added
+
+    :param u8 filter_count:
+        number of filters contained in the buffer
+
+.. _`i40e_aq_add_cloud_filters.description`:
+
+Description
+-----------
+
+Set the cloud filters for a given VSI.  The contents of the
+i40e_aqc_cloud_filters_element_data are filled in by the caller
+of the function.
+
+.. _`i40e_aq_add_cloud_filters_bb`:
+
+i40e_aq_add_cloud_filters_bb
+============================
+
+.. c:function:: i40e_status i40e_aq_add_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param u16 seid:
+        VSI seid to add cloud filters from
+
+    :param struct i40e_aqc_cloud_filters_element_bb \*filters:
+        Buffer which contains the filters in big buffer to be added
+
+    :param u8 filter_count:
+        number of filters contained in the buffer
+
+.. _`i40e_aq_add_cloud_filters_bb.description`:
+
+Description
+-----------
+
+Set the big buffer cloud filters for a given VSI.  The contents of the
+i40e_aqc_cloud_filters_element_bb are filled in by the caller of the
+function.
+
+.. _`i40e_aq_rem_cloud_filters`:
+
+i40e_aq_rem_cloud_filters
+=========================
+
+.. c:function:: enum i40e_status_code i40e_aq_rem_cloud_filters(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_data *filters, u8 filter_count)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param u16 seid:
+        VSI seid to remove cloud filters from
+
+    :param struct i40e_aqc_cloud_filters_element_data \*filters:
+        Buffer which contains the filters to be removed
+
+    :param u8 filter_count:
+        number of filters contained in the buffer
+
+.. _`i40e_aq_rem_cloud_filters.description`:
+
+Description
+-----------
+
+Remove the cloud filters for a given VSI.  The contents of the
+i40e_aqc_cloud_filters_element_data are filled in by the caller
+of the function.
+
+.. _`i40e_aq_rem_cloud_filters_bb`:
+
+i40e_aq_rem_cloud_filters_bb
+============================
+
+.. c:function:: i40e_status i40e_aq_rem_cloud_filters_bb(struct i40e_hw *hw, u16 seid, struct i40e_aqc_cloud_filters_element_bb *filters, u8 filter_count)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
+    :param u16 seid:
+        VSI seid to remove cloud filters from
+
+    :param struct i40e_aqc_cloud_filters_element_bb \*filters:
+        Buffer which contains the filters in big buffer to be removed
+
+    :param u8 filter_count:
+        number of filters contained in the buffer
+
+.. _`i40e_aq_rem_cloud_filters_bb.description`:
+
+Description
+-----------
+
+Remove the big buffer cloud filters for a given VSI.  The contents of the
+i40e_aqc_cloud_filters_element_bb are filled in by the caller of the
+function.
 
 .. This file was automatic generated / don't edit.
 

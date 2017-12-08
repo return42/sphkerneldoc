@@ -250,24 +250,24 @@ atl2_tx_timeout
 atl2_watchdog
 =============
 
-.. c:function:: void atl2_watchdog(unsigned long data)
+.. c:function:: void atl2_watchdog(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to netdev cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`atl2_phy_config`:
 
 atl2_phy_config
 ===============
 
-.. c:function:: void atl2_phy_config(unsigned long data)
+.. c:function:: void atl2_phy_config(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to netdev cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`atl2_link_chg_task`:
 

@@ -21,6 +21,7 @@ util
     evsel_h
     intlist_h
     map_c
+    mmap_h
     sort_h
     strfilter_h
     string_c

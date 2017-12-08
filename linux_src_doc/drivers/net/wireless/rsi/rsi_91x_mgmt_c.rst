@@ -110,7 +110,7 @@ Return
 rsi_hal_send_sta_notify_frame
 =============================
 
-.. c:function:: int rsi_hal_send_sta_notify_frame(struct rsi_common *common, enum opmode opmode, u8 notify_event, const unsigned char *bssid, u8 qos_enable, u16 aid, u16 sta_id)
+.. c:function:: int rsi_hal_send_sta_notify_frame(struct rsi_common *common, enum opmode opmode, u8 notify_event, const unsigned char *bssid, u8 qos_enable, u16 aid, u16 sta_id, struct ieee80211_vif *vif)
 
     This function sends the station notify frame to firmware.
 
@@ -133,6 +133,9 @@ rsi_hal_send_sta_notify_frame
         Aid (unique for all STA).
 
     :param u16 sta_id:
+        *undescribed*
+
+    :param struct ieee80211_vif \*vif:
         *undescribed*
 
 .. _`rsi_hal_send_sta_notify_frame.return`:
@@ -231,7 +234,7 @@ Return
 rsi_hal_load_key
 ================
 
-.. c:function:: int rsi_hal_load_key(struct rsi_common *common, u8 *data, u16 key_len, u8 key_type, u8 key_id, u32 cipher, s16 sta_id)
+.. c:function:: int rsi_hal_load_key(struct rsi_common *common, u8 *data, u16 key_len, u8 key_type, u8 key_id, u32 cipher, s16 sta_id, struct ieee80211_vif *vif)
 
     This function is used to load keys within the firmware.
 
@@ -254,6 +257,9 @@ rsi_hal_load_key
         Type of cipher used.
 
     :param s16 sta_id:
+        *undescribed*
+
+    :param struct ieee80211_vif \*vif:
         *undescribed*
 
 .. _`rsi_hal_load_key.return`:
@@ -287,12 +293,15 @@ Return
 rsi_band_check
 ==============
 
-.. c:function:: int rsi_band_check(struct rsi_common *common)
+.. c:function:: int rsi_band_check(struct rsi_common *common, struct ieee80211_channel *curchan)
 
     This function programs the band
 
     :param struct rsi_common \*common:
         Pointer to the driver private structure.
+
+    :param struct ieee80211_channel \*curchan:
+        *undescribed*
 
 .. _`rsi_band_check.return`:
 
@@ -391,7 +400,7 @@ Return
 rsi_send_auto_rate_request
 ==========================
 
-.. c:function:: int rsi_send_auto_rate_request(struct rsi_common *common, struct ieee80211_sta *sta, u16 sta_id)
+.. c:function:: int rsi_send_auto_rate_request(struct rsi_common *common, struct ieee80211_sta *sta, u16 sta_id, struct ieee80211_vif *vif)
 
     This function is to set rates for connection and send autorate request to firmware.
 
@@ -402,6 +411,9 @@ rsi_send_auto_rate_request
         *undescribed*
 
     :param u16 sta_id:
+        *undescribed*
+
+    :param struct ieee80211_vif \*vif:
         *undescribed*
 
 .. _`rsi_send_auto_rate_request.return`:
@@ -416,7 +428,7 @@ Return
 rsi_inform_bss_status
 =====================
 
-.. c:function:: void rsi_inform_bss_status(struct rsi_common *common, enum opmode opmode, u8 status, const u8 *addr, u8 qos_enable, u16 aid, struct ieee80211_sta *sta, u16 sta_id)
+.. c:function:: void rsi_inform_bss_status(struct rsi_common *common, enum opmode opmode, u8 status, const u8 *addr, u8 qos_enable, u16 aid, struct ieee80211_sta *sta, u16 sta_id, struct ieee80211_vif *vif)
 
     This function informs about bss status with the help of sta notify params by sending an internal management frame to firmware.
 
@@ -442,6 +454,9 @@ rsi_inform_bss_status
         *undescribed*
 
     :param u16 sta_id:
+        *undescribed*
+
+    :param struct ieee80211_vif \*vif:
         *undescribed*
 
 .. _`rsi_inform_bss_status.return`:

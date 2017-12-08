@@ -456,14 +456,14 @@ negative error code in case of failure.
 ubi_mtd_param_parse
 ===================
 
-.. c:function:: int ubi_mtd_param_parse(const char *val, struct kernel_param *kp)
+.. c:function:: int ubi_mtd_param_parse(const char *val, const struct kernel_param *kp)
 
     parse the 'mtd=' UBI parameter.
 
     :param const char \*val:
         the parameter value to parse
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         not used
 
 .. _`ubi_mtd_param_parse.description`:

@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/super.c
 
-.. _`destroy_super`:
-
-destroy_super
-=============
-
-.. c:function:: void destroy_super(struct super_block *s)
-
-    frees a superblock
-
-    :param struct super_block \*s:
-        superblock to free
-
-.. _`destroy_super.description`:
-
-Description
------------
-
-     Frees a superblock.
-
 .. _`alloc_super`:
 
 alloc_super

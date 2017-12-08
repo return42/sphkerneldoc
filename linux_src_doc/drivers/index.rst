@@ -76,6 +76,7 @@ drivers
     nvme/index
     nvmem/index
     of/index
+    opp/index
     oprofile/index
     parisc/index
     parport/index

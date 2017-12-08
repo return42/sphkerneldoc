@@ -6,14 +6,14 @@
 arch_kexec_walk_mem
 ===================
 
-.. c:function:: int arch_kexec_walk_mem(struct kexec_buf *kbuf, int (*func)(u64, u64, void *))
+.. c:function:: int arch_kexec_walk_mem(struct kexec_buf *kbuf, int (*func)(struct resource *, void *))
 
     call func(data) for each unreserved memory block
 
     :param struct kexec_buf \*kbuf:
         Context info for the search. Also passed to \ ``func``\ .
 
-    :param int (\*func)(u64, u64, void \*):
+    :param int (\*func)(struct resource \*, void \*):
         Function to call for each memory block.
 
 .. _`arch_kexec_walk_mem.description`:

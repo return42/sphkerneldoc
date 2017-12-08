@@ -8,6 +8,7 @@ fw
     :maxdepth: 1
 
     api/index
+    acpi_h
     dbg_c
     dbg_h
     error-dump_h

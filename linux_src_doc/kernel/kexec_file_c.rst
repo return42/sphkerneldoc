@@ -6,14 +6,14 @@
 arch_kexec_walk_mem
 ===================
 
-.. c:function:: int arch_kexec_walk_mem(struct kexec_buf *kbuf, int (*func)(u64, u64, void *))
+.. c:function:: int arch_kexec_walk_mem(struct kexec_buf *kbuf, int (*func)(struct resource *, void *))
 
     call func(data) on free memory regions
 
     :param struct kexec_buf \*kbuf:
         Context info for the search. Also passed to \ ``func``\ .
 
-    :param int (\*func)(u64, u64, void \*):
+    :param int (\*func)(struct resource \*, void \*):
         Function to call for each memory region.
 
 .. _`arch_kexec_walk_mem.return`:

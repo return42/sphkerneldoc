@@ -117,8 +117,8 @@ id
     FQID or channel ID, needed for rearm
 
 desired_cpu
-    The cpu on which the notifications will show up. -1 means
-    any CPU.
+    The cpu on which the notifications will show up. Use
+    DPAA2_IO_ANY_CPU if don't care
 
 dpio_id
     The dpio index

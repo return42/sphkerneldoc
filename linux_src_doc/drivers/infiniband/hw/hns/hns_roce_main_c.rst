@@ -42,30 +42,5 @@ hns_roce_setup_hca
         pointer to hns roce device
         Return : int
 
-.. _`hns_roce_probe`:
-
-hns_roce_probe
-==============
-
-.. c:function:: int hns_roce_probe(struct platform_device *pdev)
-
-    RoCE driver entrance
-
-    :param struct platform_device \*pdev:
-        pointer to platform device
-        Return : int
-
-.. _`hns_roce_remove`:
-
-hns_roce_remove
-===============
-
-.. c:function:: int hns_roce_remove(struct platform_device *pdev)
-
-    remove RoCE device
-
-    :param struct platform_device \*pdev:
-        pointer to platform device
-
 .. This file was automatic generated / don't edit.
 

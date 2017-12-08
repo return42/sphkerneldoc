@@ -1,6 +1,69 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/media/dvb-core/dvbdev.h
 
+.. _`dvb_device_type`:
+
+enum dvb_device_type
+====================
+
+.. c:type:: enum dvb_device_type
+
+    type of the Digital TV device
+
+.. _`dvb_device_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dvb_device_type {
+        DVB_DEVICE_SEC,
+        DVB_DEVICE_FRONTEND,
+        DVB_DEVICE_DEMUX,
+        DVB_DEVICE_DVR,
+        DVB_DEVICE_CA,
+        DVB_DEVICE_NET,
+        DVB_DEVICE_VIDEO,
+        DVB_DEVICE_AUDIO,
+        DVB_DEVICE_OSD
+    };
+
+.. _`dvb_device_type.constants`:
+
+Constants
+---------
+
+DVB_DEVICE_SEC
+    Digital TV standalone Common Interface (CI)
+
+DVB_DEVICE_FRONTEND
+    Digital TV frontend.
+
+DVB_DEVICE_DEMUX
+    Digital TV demux.
+
+DVB_DEVICE_DVR
+    Digital TV digital video record (DVR).
+
+DVB_DEVICE_CA
+    Digital TV Conditional Access (CA).
+
+DVB_DEVICE_NET
+    Digital TV network.
+
+DVB_DEVICE_VIDEO
+    Digital TV video decoder.
+    Deprecated. Used only on av7110-av.
+
+DVB_DEVICE_AUDIO
+    Digital TV audio decoder.
+    Deprecated. Used only on av7110-av.
+
+DVB_DEVICE_OSD
+    Digital TV On Screen Display (OSD).
+    Deprecated. Used only on av7110.
+
 .. _`dvb_adapter`:
 
 struct dvb_adapter
@@ -107,7 +170,7 @@ Definition
         struct list_head list_head;
         const struct file_operations *fops;
         struct dvb_adapter *adapter;
-        int type;
+        enum dvb_device_type type;
         int minor;
         u32 id;
         int readers;
@@ -140,8 +203,7 @@ adapter
     pointer to the adapter that holds this device node
 
 type
-    type of the device: DVB_DEVICE_SEC, DVB_DEVICE_FRONTEND,
-    DVB_DEVICE_DEMUX, DVB_DEVICE_DVR, DVB_DEVICE_CA, DVB_DEVICE_NET
+    type of the device, as defined by \ :c:type:`enum dvb_device_type <dvb_device_type>`\ .
 
 minor
     devnode minor number. Major number is always DVB_MAJOR.
@@ -245,7 +307,7 @@ dvb_unregister_adapter
 dvb_register_device
 ===================
 
-.. c:function:: int dvb_register_device(struct dvb_adapter *adap, struct dvb_device **pdvbdev, const struct dvb_device *template, void *priv, int type, int demux_sink_pads)
+.. c:function:: int dvb_register_device(struct dvb_adapter *adap, struct dvb_device **pdvbdev, const struct dvb_device *template, void *priv, enum dvb_device_type type, int demux_sink_pads)
 
     Registers a new DVB device
 
@@ -262,10 +324,8 @@ dvb_register_device
     :param void \*priv:
         private data
 
-    :param int type:
-        type of the device: \ ``DVB_DEVICE_SEC``\ , \ ``DVB_DEVICE_FRONTEND``\ ,
-        \ ``DVB_DEVICE_DEMUX``\ , \ ``DVB_DEVICE_DVR``\ , \ ``DVB_DEVICE_CA``\ ,
-        \ ``DVB_DEVICE_NET``\ 
+    :param enum dvb_device_type type:
+        type of the device, as defined by \ :c:type:`enum dvb_device_type <dvb_device_type>`\ .
 
     :param int demux_sink_pads:
         Number of demux outputs, to be used to create the TS
@@ -341,7 +401,7 @@ dvb_create_media_graph
     Creates media graph for the Digital TV part of the device.
 
     :param struct dvb_adapter \*adap:
-        pointer to struct dvb_adapter
+        pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
 
     :param bool create_rf_connector:
         if true, it creates the RF connector too
@@ -357,6 +417,176 @@ capable of working with multiple tuners or multiple frontends, but it
 won't create links if the device has multiple tuners and multiple frontends
 or if the device has multiple muxes. In such case, the caller driver should
 manually create the remaining links.
+
+.. _`dvb_register_media_controller`:
+
+dvb_register_media_controller
+=============================
+
+.. c:function:: void dvb_register_media_controller(struct dvb_adapter *adap, struct media_device *mdev)
+
+    registers a media controller at DVB adapter
+
+    :param struct dvb_adapter \*adap:
+        pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
+
+    :param struct media_device \*mdev:
+        pointer to \ :c:type:`struct media_device <media_device>`\ 
+
+.. _`dvb_get_media_controller`:
+
+dvb_get_media_controller
+========================
+
+.. c:function:: struct media_device *dvb_get_media_controller(struct dvb_adapter *adap)
+
+    gets the associated media controller
+
+    :param struct dvb_adapter \*adap:
+        pointer to \ :c:type:`struct dvb_adapter <dvb_adapter>`\ 
+
+.. _`dvb_generic_open`:
+
+dvb_generic_open
+================
+
+.. c:function:: int dvb_generic_open(struct inode *inode, struct file *file)
+
+    Digital TV open function, used by DVB devices
+
+    :param struct inode \*inode:
+        pointer to \ :c:type:`struct inode <inode>`\ .
+
+    :param struct file \*file:
+        pointer to \ :c:type:`struct file <file>`\ .
+
+.. _`dvb_generic_open.description`:
+
+Description
+-----------
+
+Checks if a DVB devnode is still valid, and if the permissions are
+OK and increment negative use count.
+
+.. _`dvb_generic_release`:
+
+dvb_generic_release
+===================
+
+.. c:function:: int dvb_generic_release(struct inode *inode, struct file *file)
+
+    Digital TV close function, used by DVB devices
+
+    :param struct inode \*inode:
+        pointer to \ :c:type:`struct inode <inode>`\ .
+
+    :param struct file \*file:
+        pointer to \ :c:type:`struct file <file>`\ .
+
+.. _`dvb_generic_release.description`:
+
+Description
+-----------
+
+Checks if a DVB devnode is still valid, and if the permissions are
+OK and decrement negative use count.
+
+.. _`dvb_generic_ioctl`:
+
+dvb_generic_ioctl
+=================
+
+.. c:function:: long dvb_generic_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+
+    Digital TV close function, used by DVB devices
+
+    :param struct file \*file:
+        pointer to \ :c:type:`struct file <file>`\ .
+
+    :param unsigned int cmd:
+        Ioctl name.
+
+    :param unsigned long arg:
+        Ioctl argument.
+
+.. _`dvb_generic_ioctl.description`:
+
+Description
+-----------
+
+Checks if a DVB devnode and struct dvbdev.kernel_ioctl is still valid.
+If so, calls \ :c:func:`dvb_usercopy`\ .
+
+.. _`dvb_usercopy`:
+
+dvb_usercopy
+============
+
+.. c:function:: int dvb_usercopy(struct file *file, unsigned int cmd, unsigned long arg, int (*func)(struct file *file, unsigned int cmd, void *arg))
+
+    copies data from/to userspace memory when an ioctl is issued.
+
+    :param struct file \*file:
+        Pointer to struct \ :c:type:`struct file <file>`\ .
+
+    :param unsigned int cmd:
+        Ioctl name.
+
+    :param unsigned long arg:
+        Ioctl argument.
+
+    :param int (\*func)(struct file \*file, unsigned int cmd, void \*arg):
+        function that will actually handle the ioctl
+
+.. _`dvb_usercopy.description`:
+
+Description
+-----------
+
+Ancillary function that uses ioctl direction and size to copy from
+userspace. Then, it calls \ ``func``\ , and, if needed, data is copied back
+to userspace.
+
+.. _`dvb_attach`:
+
+dvb_attach
+==========
+
+.. c:function::  dvb_attach( FUNCTION,  ARGS...)
+
+    attaches a DVB frontend into the DVB core.
+
+    :param  FUNCTION:
+        function on a frontend module to be called.
+
+.. _`dvb_attach.description`:
+
+Description
+-----------
+
+This ancillary function loads a frontend module in runtime and runs
+the \ ``FUNCTION``\  function there, with \ ``ARGS``\ .
+As it increments symbol usage cont, at unregister, \ :c:func:`dvb_detach`\ 
+should be called.
+
+.. _`dvb_detach`:
+
+dvb_detach
+==========
+
+.. c:function::  dvb_detach( FUNC)
+
+    detaches a DVB frontend loaded via \ :c:func:`dvb_attach`\ 
+
+    :param  FUNC:
+        attach function
+
+.. _`dvb_detach.description`:
+
+Description
+-----------
+
+Decrements usage count for a function previously called via \ :c:func:`dvb_attach`\ .
 
 .. This file was automatic generated / don't edit.
 

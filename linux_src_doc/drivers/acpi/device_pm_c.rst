@@ -313,48 +313,50 @@ acpi_dev_pm_full_power
     :param struct acpi_device \*adev:
         ACPI device node to put into the full-power state.
 
-.. _`acpi_dev_runtime_suspend`:
+.. _`acpi_dev_suspend`:
 
-acpi_dev_runtime_suspend
-========================
+acpi_dev_suspend
+================
 
-.. c:function:: int acpi_dev_runtime_suspend(struct device *dev)
+.. c:function:: int acpi_dev_suspend(struct device *dev, bool wakeup)
 
     Put device into a low-power state using ACPI.
 
     :param struct device \*dev:
         Device to put into a low-power state.
 
-.. _`acpi_dev_runtime_suspend.description`:
+    :param bool wakeup:
+        Whether or not to enable wakeup for the device.
+
+.. _`acpi_dev_suspend.description`:
 
 Description
 -----------
 
-Put the given device into a runtime low-power state using the standard ACPI
+Put the given device into a low-power state using the standard ACPI
 mechanism.  Set up remote wakeup if desired, choose the state to put the
 device into (this checks if remote wakeup is expected to work too), and set
 the power state of the device.
 
-.. _`acpi_dev_runtime_resume`:
+.. _`acpi_dev_resume`:
 
-acpi_dev_runtime_resume
-=======================
+acpi_dev_resume
+===============
 
-.. c:function:: int acpi_dev_runtime_resume(struct device *dev)
+.. c:function:: int acpi_dev_resume(struct device *dev)
 
     Put device into the full-power state using ACPI.
 
     :param struct device \*dev:
         Device to put into the full-power state.
 
-.. _`acpi_dev_runtime_resume.description`:
+.. _`acpi_dev_resume.description`:
 
 Description
 -----------
 
 Put the given device into the full-power state using the standard ACPI
-mechanism at run time.  Set the power state of the device to ACPI D0 and
-disable remote wakeup.
+mechanism.  Set the power state of the device to ACPI D0 and disable wakeup.
 
 .. _`acpi_subsys_runtime_suspend`:
 
@@ -396,49 +398,6 @@ Description
 Use ACPI to put the given device into the full-power state and carry out the
 generic runtime resume procedure for it.
 
-.. _`acpi_dev_suspend_late`:
-
-acpi_dev_suspend_late
-=====================
-
-.. c:function:: int acpi_dev_suspend_late(struct device *dev)
-
-    Put device into a low-power state using ACPI.
-
-    :param struct device \*dev:
-        Device to put into a low-power state.
-
-.. _`acpi_dev_suspend_late.description`:
-
-Description
------------
-
-Put the given device into a low-power state during system transition to a
-sleep state using the standard ACPI mechanism.  Set up system wakeup if
-desired, choose the state to put the device into (this checks if system
-wakeup is expected to work too), and set the power state of the device.
-
-.. _`acpi_dev_resume_early`:
-
-acpi_dev_resume_early
-=====================
-
-.. c:function:: int acpi_dev_resume_early(struct device *dev)
-
-    Put device into the full-power state using ACPI.
-
-    :param struct device \*dev:
-        Device to put into the full-power state.
-
-.. _`acpi_dev_resume_early.description`:
-
-Description
------------
-
-Put the given device into the full-power state using the standard ACPI
-mechanism during system transition to the working state.  Set the power
-state of the device to ACPI D0 and disable remote wakeup.
-
 .. _`acpi_subsys_prepare`:
 
 acpi_subsys_prepare
@@ -450,6 +409,18 @@ acpi_subsys_prepare
 
     :param struct device \*dev:
         Device to prepare.
+
+.. _`acpi_subsys_complete`:
+
+acpi_subsys_complete
+====================
+
+.. c:function:: void acpi_subsys_complete(struct device *dev)
+
+    Finalize device's resume during system resume.
+
+    :param struct device \*dev:
+        Device to handle.
 
 .. _`acpi_subsys_suspend`:
 
@@ -468,8 +439,10 @@ acpi_subsys_suspend
 Description
 -----------
 
-Follow PCI and resume devices suspended at run time before running their
-system suspend callbacks.
+Follow PCI and resume devices from runtime suspend before running their
+system suspend callbacks, unless the driver can cope with runtime-suspended
+devices during system suspend and there are no ACPI-specific reasons for
+resuming them.
 
 .. _`acpi_subsys_suspend_late`:
 
@@ -490,6 +463,30 @@ Description
 
 Carry out the generic late suspend procedure for \ ``dev``\  and use ACPI to put
 it into a low-power state during system transition into a sleep state.
+
+.. _`acpi_subsys_suspend_noirq`:
+
+acpi_subsys_suspend_noirq
+=========================
+
+.. c:function:: int acpi_subsys_suspend_noirq(struct device *dev)
+
+    Run the device driver's "noirq" suspend callback.
+
+    :param struct device \*dev:
+        Device to suspend.
+
+.. _`acpi_subsys_resume_noirq`:
+
+acpi_subsys_resume_noirq
+========================
+
+.. c:function:: int acpi_subsys_resume_noirq(struct device *dev)
+
+    Run the device driver's "noirq" resume callback.
+
+    :param struct device \*dev:
+        Device to handle.
 
 .. _`acpi_subsys_resume_early`:
 
@@ -520,6 +517,42 @@ acpi_subsys_freeze
 .. c:function:: int acpi_subsys_freeze(struct device *dev)
 
     Run the device driver's freeze callback.
+
+    :param struct device \*dev:
+        Device to handle.
+
+.. _`acpi_subsys_freeze_late`:
+
+acpi_subsys_freeze_late
+=======================
+
+.. c:function:: int acpi_subsys_freeze_late(struct device *dev)
+
+    Run the device driver's "late" freeze callback.
+
+    :param struct device \*dev:
+        Device to handle.
+
+.. _`acpi_subsys_freeze_noirq`:
+
+acpi_subsys_freeze_noirq
+========================
+
+.. c:function:: int acpi_subsys_freeze_noirq(struct device *dev)
+
+    Run the device driver's "noirq" freeze callback.
+
+    :param struct device \*dev:
+        Device to handle.
+
+.. _`acpi_subsys_thaw_noirq`:
+
+acpi_subsys_thaw_noirq
+======================
+
+.. c:function:: int acpi_subsys_thaw_noirq(struct device *dev)
+
+    Run the device driver's "noirq" thaw callback.
 
     :param struct device \*dev:
         Device to handle.

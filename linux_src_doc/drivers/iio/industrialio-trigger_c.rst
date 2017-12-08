@@ -162,12 +162,12 @@ Description
 
 Free iio_trigger allocated with \ :c:func:`devm_iio_trigger_alloc`\ .
 
-.. _`devm_iio_trigger_register`:
+.. _`__devm_iio_trigger_register`:
 
-devm_iio_trigger_register
-=========================
+__devm_iio_trigger_register
+===========================
 
-.. c:function:: int devm_iio_trigger_register(struct device *dev, struct iio_trigger *trig_info)
+.. c:function:: int __devm_iio_trigger_register(struct device *dev, struct iio_trigger *trig_info, struct module *this_mod)
 
     Resource-managed \ :c:func:`iio_trigger_register`\ 
 
@@ -177,7 +177,10 @@ devm_iio_trigger_register
     :param struct iio_trigger \*trig_info:
         trigger to register
 
-.. _`devm_iio_trigger_register.description`:
+    :param struct module \*this_mod:
+        module registering the trigger
+
+.. _`__devm_iio_trigger_register.description`:
 
 Description
 -----------
@@ -190,7 +193,7 @@ information.
 If an iio_trigger registered with this function needs to be unregistered
 separately, \ :c:func:`devm_iio_trigger_unregister`\  must be used.
 
-.. _`devm_iio_trigger_register.return`:
+.. _`__devm_iio_trigger_register.return`:
 
 Return
 ------

@@ -135,7 +135,7 @@ amdgpu_cs_wait_fences_ioctl
 amdgpu_cs_find_mapping
 ======================
 
-.. c:function:: struct amdgpu_bo_va_mapping *amdgpu_cs_find_mapping(struct amdgpu_cs_parser *parser, uint64_t addr, struct amdgpu_bo **bo)
+.. c:function:: int amdgpu_cs_find_mapping(struct amdgpu_cs_parser *parser, uint64_t addr, struct amdgpu_bo **bo, struct amdgpu_bo_va_mapping **map)
 
     find bo_va for VM address
 
@@ -148,6 +148,9 @@ amdgpu_cs_find_mapping
     :param struct amdgpu_bo \*\*bo:
         resulting BO of the mapping found
 
+    :param struct amdgpu_bo_va_mapping \*\*map:
+        *undescribed*
+
 .. _`amdgpu_cs_find_mapping.description`:
 
 Description
@@ -156,25 +159,6 @@ Description
 Search the buffer objects in the command submission context for a certain
 virtual memory address. Returns allocation structure when found, NULL
 otherwise.
-
-.. _`amdgpu_cs_sysvm_access_required`:
-
-amdgpu_cs_sysvm_access_required
-===============================
-
-.. c:function:: int amdgpu_cs_sysvm_access_required(struct amdgpu_cs_parser *parser)
-
-    make BOs accessible by the system VM
-
-    :param struct amdgpu_cs_parser \*parser:
-        command submission parser context
-
-.. _`amdgpu_cs_sysvm_access_required.description`:
-
-Description
------------
-
-Helper for UVD/VCE VM emulation, make sure BOs are accessible by the system VM.
 
 .. This file was automatic generated / don't edit.
 

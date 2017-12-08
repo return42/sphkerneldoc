@@ -59,12 +59,9 @@ ep93xx_register_eth
 ep93xx_register_i2c
 ===================
 
-.. c:function:: void ep93xx_register_i2c(struct i2c_gpio_platform_data *data, struct i2c_board_info *devices, int num)
+.. c:function:: void ep93xx_register_i2c(struct i2c_board_info *devices, int num)
 
     Register the i2c platform device.
-
-    :param struct i2c_gpio_platform_data \*data:
-        platform specific i2c-gpio configuration (__initdata)
 
     :param struct i2c_board_info \*devices:
         platform specific i2c bus device information (__initdata)

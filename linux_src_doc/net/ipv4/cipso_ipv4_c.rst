@@ -1108,11 +1108,11 @@ negative values on failure.
 cipso_v4_delopt
 ===============
 
-.. c:function:: int cipso_v4_delopt(struct ip_options_rcu **opt_ptr)
+.. c:function:: int cipso_v4_delopt(struct ip_options_rcu __rcu **opt_ptr)
 
     Delete the CIPSO option from a set of IP options
 
-    :param struct ip_options_rcu \*\*opt_ptr:
+    :param struct ip_options_rcu __rcu \*\*opt_ptr:
         IP option pointer
 
 .. _`cipso_v4_delopt.description`:

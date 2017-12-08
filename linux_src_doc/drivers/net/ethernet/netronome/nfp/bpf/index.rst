@@ -7,5 +7,4 @@ bpf
 .. toctree::
     :maxdepth: 1
 
-    jit_c
     main_h

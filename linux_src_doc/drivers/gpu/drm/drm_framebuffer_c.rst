@@ -291,12 +291,15 @@ Zero on success, error code on failure.
 drm_framebuffer_lookup
 ======================
 
-.. c:function:: struct drm_framebuffer *drm_framebuffer_lookup(struct drm_device *dev, uint32_t id)
+.. c:function:: struct drm_framebuffer *drm_framebuffer_lookup(struct drm_device *dev, struct drm_file *file_priv, uint32_t id)
 
     look up a drm framebuffer and grab a reference
 
     :param struct drm_device \*dev:
         drm device
+
+    :param struct drm_file \*file_priv:
+        drm file to check for lease against.
 
     :param uint32_t id:
         id of the fb object

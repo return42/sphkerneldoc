@@ -91,31 +91,12 @@ otherwise. If key is found ipc points to the owning ipc structure
 
 Called with writer ipc_ids.rwsem held.
 
-.. _`ipc_get_maxid`:
-
-ipc_get_maxid
-=============
-
-.. c:function:: int ipc_get_maxid(struct ipc_ids *ids)
-
-    get the last assigned id
-
-    :param struct ipc_ids \*ids:
-        ipc identifier set
-
-.. _`ipc_get_maxid.description`:
-
-Description
------------
-
-Called with ipc_ids.rwsem held.
-
 .. _`ipc_addid`:
 
 ipc_addid
 =========
 
-.. c:function:: int ipc_addid(struct ipc_ids *ids, struct kern_ipc_perm *new, int size)
+.. c:function:: int ipc_addid(struct ipc_ids *ids, struct kern_ipc_perm *new, int limit)
 
     add an ipc identifier
 
@@ -125,7 +106,7 @@ ipc_addid
     :param struct kern_ipc_perm \*new:
         new ipc permission set
 
-    :param int size:
+    :param int limit:
         limit for the number of used ids
 
 .. _`ipc_addid.description`:

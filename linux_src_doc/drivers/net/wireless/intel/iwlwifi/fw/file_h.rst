@@ -103,9 +103,11 @@ Definition
         IWL_UCODE_TLV_API_TKIP_MIC_KEYS,
         IWL_UCODE_TLV_API_STA_TYPE,
         IWL_UCODE_TLV_API_NAN2_VER2,
+        IWL_UCODE_TLV_API_ADAPTIVE_DWELL,
         IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE,
         IWL_UCODE_TLV_API_NEW_RX_STATS,
         IWL_UCODE_TLV_API_COEX_ATS_EXTERNAL,
+        IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY,
         NUM_IWL_UCODE_TLV_API
     };
 
@@ -143,6 +145,9 @@ IWL_UCODE_TLV_API_STA_TYPE
 IWL_UCODE_TLV_API_NAN2_VER2
     This ucode supports NAN API version 2
 
+IWL_UCODE_TLV_API_ADAPTIVE_DWELL
+    *undescribed*
+
 IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE
     *undescribed*
 
@@ -151,6 +156,10 @@ IWL_UCODE_TLV_API_NEW_RX_STATS
 
 IWL_UCODE_TLV_API_COEX_ATS_EXTERNAL
     *undescribed*
+
+IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY
+    Quota command includes a field
+    indicating low latency direction.
 
 NUM_IWL_UCODE_TLV_API
     number of bits used

@@ -125,6 +125,42 @@ Description
 
 Only to be called from kref_put in drm_syncobj_put.
 
+.. _`drm_syncobj_create`:
+
+drm_syncobj_create
+==================
+
+.. c:function:: int drm_syncobj_create(struct drm_syncobj **out_syncobj, uint32_t flags, struct dma_fence *fence)
+
+    create a new syncobj
+
+    :param struct drm_syncobj \*\*out_syncobj:
+        returned syncobj
+
+    :param uint32_t flags:
+        DRM_SYNCOBJ_* flags
+
+    :param struct dma_fence \*fence:
+        if non-NULL, the syncobj will represent this fence
+
+.. _`drm_syncobj_get_handle`:
+
+drm_syncobj_get_handle
+======================
+
+.. c:function:: int drm_syncobj_get_handle(struct drm_file *file_private, struct drm_syncobj *syncobj, u32 *handle)
+
+    get a handle from a syncobj
+
+    :param struct drm_file \*file_private:
+        *undescribed*
+
+    :param struct drm_syncobj \*syncobj:
+        *undescribed*
+
+    :param u32 \*handle:
+        *undescribed*
+
 .. _`drm_syncobj_open`:
 
 drm_syncobj_open

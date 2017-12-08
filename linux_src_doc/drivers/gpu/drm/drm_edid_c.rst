@@ -155,6 +155,10 @@ As in the general case the DDC bus is accessible by the kernel at the I2C
 level, drivers must make all reasonable efforts to expose it as an I2C
 adapter and use \ :c:func:`drm_get_edid`\  instead of abusing this function.
 
+The EDID may be overridden using debugfs override_edid or firmare EDID
+(drm_load_edid_firmware() and drm.edid_firmware parameter), in this priority
+order. Having either of them bypasses actual EDID reads.
+
 .. _`drm_do_get_edid.return`:
 
 Return

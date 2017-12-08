@@ -20,7 +20,12 @@ Definition
     struct drm_pending_vblank_event {
         struct drm_pending_event base;
         unsigned int pipe;
-        struct drm_event_vblank event;
+        u64 sequence;
+        union {
+            struct drm_event base;
+            struct drm_event_vblank vbl;
+            struct drm_event_crtc_sequence seq;
+        } event;
     }
 
 .. _`drm_pending_vblank_event.members`:
@@ -33,6 +38,9 @@ base
 
 pipe
     drm_crtc_index() of the \ :c:type:`struct drm_crtc <drm_crtc>`\  this event is for.
+
+sequence
+    frame event should be triggered at
 
 event
     Actual event which will be sent to userspace.
@@ -58,8 +66,8 @@ Definition
         wait_queue_head_t queue;
         struct timer_list disable_timer;
         seqlock_t seqlock;
-        u32 count;
-        struct timeval time;
+        u64 count;
+        ktime_t time;
         atomic_t refcount;
         u32 last;
         unsigned int inmodeset;

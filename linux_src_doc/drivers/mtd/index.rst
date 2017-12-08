@@ -11,6 +11,7 @@ mtd
     maps/index
     nand/index
     onenand/index
+    parsers/index
     spi-nor/index
     ubi/index
     bcm47xxpart_c

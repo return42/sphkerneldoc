@@ -28,6 +28,8 @@ Definition
         void (*vnic_free)(struct nfp_app *app, struct nfp_net *nn);
         int (*vnic_init)(struct nfp_app *app, struct nfp_net *nn);
         void (*vnic_clean)(struct nfp_app *app, struct nfp_net *nn);
+        int (*repr_init)(struct nfp_app *app, struct net_device *netdev);
+        void (*repr_clean)(struct nfp_app *app, struct net_device *netdev);
         int (*repr_open)(struct nfp_app *app, struct nfp_repr *repr);
         int (*repr_stop)(struct nfp_app *app, struct nfp_repr *repr);
         int (*start)(struct nfp_app *app);
@@ -36,6 +38,9 @@ Definition
         int (*setup_tc)(struct nfp_app *app, struct net_device *netdev, enum tc_setup_type type, void *type_data);
         bool (*tc_busy)(struct nfp_app *app, struct nfp_net *nn);
         int (*xdp_offload)(struct nfp_app *app, struct nfp_net *nn, struct bpf_prog *prog);
+        int (*bpf_verifier_prep)(struct nfp_app *app, struct nfp_net *nn, struct netdev_bpf *bpf);
+        int (*bpf_translate)(struct nfp_app *app, struct nfp_net *nn, struct bpf_prog *prog);
+        int (*bpf_destroy)(struct nfp_app *app, struct nfp_net *nn, struct bpf_prog *prog);
         int (*sriov_enable)(struct nfp_app *app, int num_vfs);
         void (*sriov_disable)(struct nfp_app *app);
         enum devlink_eswitch_mode (*eswitch_mode_get)(struct nfp_app *app);
@@ -77,6 +82,12 @@ vnic_init
 vnic_clean
     vNIC netdev about to be unregistered
 
+repr_init
+    representor about to be registered
+
+repr_clean
+    representor about to be unregistered
+
 repr_open
     representor netdev open callback
 
@@ -100,6 +111,15 @@ tc_busy
 
 xdp_offload
     offload an XDP program
+
+bpf_verifier_prep
+    verifier prep for dev-specific BPF programs
+
+bpf_translate
+    translate call for dev-specific BPF programs
+
+bpf_destroy
+    destroy for dev-specific BPF programs
 
 sriov_enable
     app-specific sriov initialisation

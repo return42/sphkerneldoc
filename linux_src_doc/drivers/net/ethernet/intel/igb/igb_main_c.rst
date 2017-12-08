@@ -507,6 +507,45 @@ igb_get_hw_control sets CTRL_EXT:DRV_LOAD bit.
 For ASF and Pass Through versions of f/w this means that
 the driver is loaded.
 
+.. _`igb_configure_cbs`:
+
+igb_configure_cbs
+=================
+
+.. c:function:: void igb_configure_cbs(struct igb_adapter *adapter, int queue, bool enable, int idleslope, int sendslope, int hicredit, int locredit)
+
+    Configure Credit-Based Shaper (CBS)
+
+    :param struct igb_adapter \*adapter:
+        pointer to adapter struct
+
+    :param int queue:
+        queue number
+
+    :param bool enable:
+        true = enable CBS, false = disable CBS
+
+    :param int idleslope:
+        idleSlope in kbps
+
+    :param int sendslope:
+        sendSlope in kbps
+
+    :param int hicredit:
+        hiCredit in bytes
+
+    :param int locredit:
+        loCredit in bytes
+
+.. _`igb_configure_cbs.description`:
+
+Description
+-----------
+
+Configure CBS for a given hardware queue. When disabling, idleslope,
+sendslope, hicredit, locredit arguments are ignored. Returns 0 if
+success. Negative otherwise.
+
 .. _`igb_configure`:
 
 igb_configure
@@ -1178,12 +1217,12 @@ igb_check_lvmmc
 igb_watchdog
 ============
 
-.. c:function:: void igb_watchdog(unsigned long data)
+.. c:function:: void igb_watchdog(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to adapter cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`igb_update_ring_itr`:
 

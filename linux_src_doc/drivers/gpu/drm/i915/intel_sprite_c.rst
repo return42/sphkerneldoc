@@ -6,12 +6,12 @@
 intel_pipe_update_start
 =======================
 
-.. c:function:: void intel_pipe_update_start(struct intel_crtc *crtc)
+.. c:function:: void intel_pipe_update_start(const struct intel_crtc_state *new_crtc_state)
 
     start update of a set of display registers
 
-    :param struct intel_crtc \*crtc:
-        the crtc of which the registers are going to be updated
+    :param const struct intel_crtc_state \*new_crtc_state:
+        the new crtc state
 
 .. _`intel_pipe_update_start.description`:
 
@@ -24,20 +24,19 @@ the next 100 us, this function waits until the vblank passes.
 
 After a successful call to this function, interrupts will be disabled
 until a subsequent call to \ :c:func:`intel_pipe_update_end`\ . That is done to
-avoid random delays. The value written to \ ``start_vbl_count``\  should be
-supplied to \ :c:func:`intel_pipe_update_end`\  for error checking.
+avoid random delays.
 
 .. _`intel_pipe_update_end`:
 
 intel_pipe_update_end
 =====================
 
-.. c:function:: void intel_pipe_update_end(struct intel_crtc *crtc)
+.. c:function:: void intel_pipe_update_end(struct intel_crtc_state *new_crtc_state)
 
     end update of a set of display registers
 
-    :param struct intel_crtc \*crtc:
-        the crtc of which the registers were updated
+    :param struct intel_crtc_state \*new_crtc_state:
+        the new crtc state
 
 .. _`intel_pipe_update_end.description`:
 
@@ -46,7 +45,7 @@ Description
 
 Mark the end of an update started with \ :c:func:`intel_pipe_update_start`\ . This
 re-enables interrupts and verifies the update was actually completed
-before a vblank using the value of \ ``start_vbl_count``\ .
+before a vblank.
 
 .. This file was automatic generated / don't edit.
 

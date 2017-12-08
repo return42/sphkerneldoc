@@ -196,12 +196,12 @@ tg->qnode_on_self[] is used.
 throtl_pending_timer_fn
 =======================
 
-.. c:function:: void throtl_pending_timer_fn(unsigned long arg)
+.. c:function:: void throtl_pending_timer_fn(struct timer_list *t)
 
     timer function for service_queue->pending_timer
 
-    :param unsigned long arg:
-        the throtl_service_queue being serviced
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`throtl_pending_timer_fn.description`:
 

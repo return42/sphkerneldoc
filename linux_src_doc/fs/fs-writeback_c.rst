@@ -463,38 +463,12 @@ Start writeback on some inodes on this super_block. No guarantees are made
 on how many (if any) will be written, and this function does not wait
 for IO completion of submitted IO.
 
-.. _`try_to_writeback_inodes_sb_nr`:
-
-try_to_writeback_inodes_sb_nr
-=============================
-
-.. c:function:: bool try_to_writeback_inodes_sb_nr(struct super_block *sb, unsigned long nr, enum wb_reason reason)
-
-    try to start writeback if none underway
-
-    :param struct super_block \*sb:
-        the superblock
-
-    :param unsigned long nr:
-        the number of pages to write
-
-    :param enum wb_reason reason:
-        the reason of writeback
-
-.. _`try_to_writeback_inodes_sb_nr.description`:
-
-Description
------------
-
-Invoke writeback_inodes_sb_nr if no writeback is currently underway.
-Returns 1 if writeback was started, 0 if not.
-
 .. _`try_to_writeback_inodes_sb`:
 
 try_to_writeback_inodes_sb
 ==========================
 
-.. c:function:: bool try_to_writeback_inodes_sb(struct super_block *sb, enum wb_reason reason)
+.. c:function:: void try_to_writeback_inodes_sb(struct super_block *sb, enum wb_reason reason)
 
     try to start writeback if none underway
 
@@ -509,8 +483,7 @@ try_to_writeback_inodes_sb
 Description
 -----------
 
-Implement by \ :c:func:`try_to_writeback_inodes_sb_nr`\ 
-Returns 1 if writeback was started, 0 if not.
+Invoke __writeback_inodes_sb_nr if no writeback is currently underway.
 
 .. _`sync_inodes_sb`:
 

@@ -434,11 +434,14 @@ Returns true if and only if the previous command state was equal to 'old'.
 srpt_post_recv
 ==============
 
-.. c:function:: int srpt_post_recv(struct srpt_device *sdev, struct srpt_recv_ioctx *ioctx)
+.. c:function:: int srpt_post_recv(struct srpt_device *sdev, struct srpt_rdma_ch *ch, struct srpt_recv_ioctx *ioctx)
 
     Post an IB receive request.
 
     :param struct srpt_device \*sdev:
+        *undescribed*
+
+    :param struct srpt_rdma_ch \*ch:
         *undescribed*
 
     :param struct srpt_recv_ioctx \*ioctx:

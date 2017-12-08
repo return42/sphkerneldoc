@@ -61,12 +61,12 @@ atomctrl_get_reference_clock
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
 
-.. _`atomctrl_is_voltage_controled_by_gpio_v3`:
+.. _`atomctrl_is_voltage_controlled_by_gpio_v3`:
 
-atomctrl_is_voltage_controled_by_gpio_v3
-========================================
+atomctrl_is_voltage_controlled_by_gpio_v3
+=========================================
 
-.. c:function:: bool atomctrl_is_voltage_controled_by_gpio_v3(struct pp_hwmgr *hwmgr, uint8_t voltage_type, uint8_t voltage_mode)
+.. c:function:: bool atomctrl_is_voltage_controlled_by_gpio_v3(struct pp_hwmgr *hwmgr, uint8_t voltage_type, uint8_t voltage_mode)
 
     voltage_type is one of SET_VOLTAGE_TYPE_ASIC_VDDC, SET_VOLTAGE_TYPE_ASIC_MVDDC, SET_VOLTAGE_TYPE_ASIC_MVDDQ. voltage_mode is one of ATOM_SET_VOLTAGE, ATOM_SET_VOLTAGE_PHASE
 

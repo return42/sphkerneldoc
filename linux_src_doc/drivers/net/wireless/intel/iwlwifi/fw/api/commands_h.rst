@@ -422,7 +422,7 @@ MCC_CHUB_UPDATE_CMD
     using \ :c:type:`struct iwl_mcc_chub_notif <iwl_mcc_chub_notif>`\ 
 
 MARKER_CMD
-    trace marker command, uses \ :c:type:`struct iwl_mvm_marker <iwl_mvm_marker>`\ 
+    trace marker command, uses \ :c:type:`struct iwl_mvm_markerwith <iwl_mvm_markerwith>`\  \ :c:type:`struct iwl_mvm_marker_rsp <iwl_mvm_marker_rsp>`\ 
 
 BT_PROFILE_NOTIFICATION
     &struct iwl_bt_coex_profile_notif

@@ -74,6 +74,54 @@ i915_ggtt_cleanup_hw
     :param struct drm_i915_private \*dev_priv:
         i915 device
 
+.. _`intel_ppat_get`:
+
+intel_ppat_get
+==============
+
+.. c:function:: const struct intel_ppat_entry *intel_ppat_get(struct drm_i915_private *i915, u8 value)
+
+    get a usable PPAT entry
+
+    :param struct drm_i915_private \*i915:
+        i915 device instance
+
+    :param u8 value:
+        the PPAT value required by the caller
+
+.. _`intel_ppat_get.description`:
+
+Description
+-----------
+
+The function tries to search if there is an existing PPAT entry which
+matches with the required value. If perfectly matched, the existing PPAT
+entry will be used. If only partially matched, it will try to check if
+there is any available PPAT index. If yes, it will allocate a new PPAT
+index for the required entry and update the HW. If not, the partially
+matched entry will be used.
+
+.. _`intel_ppat_put`:
+
+intel_ppat_put
+==============
+
+.. c:function:: void intel_ppat_put(const struct intel_ppat_entry *entry)
+
+    put back the PPAT entry got from \ :c:func:`intel_ppat_get`\ 
+
+    :param const struct intel_ppat_entry \*entry:
+        an intel PPAT entry
+
+.. _`intel_ppat_put.description`:
+
+Description
+-----------
+
+Put back the PPAT entry got from \ :c:func:`intel_ppat_get`\ . If the PPAT index of the
+entry is dynamically allocated, its reference count will be decreased. Once
+the reference count becomes into zero, the PPAT index becomes free again.
+
 .. _`i915_ggtt_probe_hw`:
 
 i915_ggtt_probe_hw

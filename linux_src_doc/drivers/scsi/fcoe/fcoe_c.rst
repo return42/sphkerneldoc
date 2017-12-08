@@ -387,6 +387,13 @@ fcoe_if_destroy
     :param struct fc_lport \*lport:
         The local port to be destroyed
 
+.. _`fcoe_if_destroy.locking`:
+
+Locking
+-------
+
+Must be called with the RTNL mutex held.
+
 .. _`fcoe_ddp_setup`:
 
 fcoe_ddp_setup
@@ -1350,6 +1357,18 @@ Return
 ------
 
 0 for success
+
+.. _`fcoe_vport_remove`:
+
+fcoe_vport_remove
+=================
+
+.. c:function:: void fcoe_vport_remove(struct fc_lport *lport)
+
+    remove attached vports
+
+    :param struct fc_lport \*lport:
+        lport for which the vports should be removed
 
 .. _`fcoe_vport_disable`:
 

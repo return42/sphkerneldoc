@@ -195,6 +195,53 @@ will not have is_added set.
 
 Returns the number of new devices found.
 
+.. _`pci_scan_child_bus_extend`:
+
+pci_scan_child_bus_extend
+=========================
+
+.. c:function:: unsigned int pci_scan_child_bus_extend(struct pci_bus *bus, unsigned int available_buses)
+
+    Scan devices below a bus
+
+    :param struct pci_bus \*bus:
+        Bus to scan for devices
+
+    :param unsigned int available_buses:
+        Total number of buses available (%0 does not try to
+        extend beyond the minimal)
+
+.. _`pci_scan_child_bus_extend.description`:
+
+Description
+-----------
+
+Scans devices below \ ``bus``\  including subordinate buses. Returns new
+subordinate number including all the found devices. Passing
+\ ``available_buses``\  causes the remaining bus space to be distributed
+equally between hotplug-capable bridges to allow future extension of the
+hierarchy.
+
+.. _`pci_scan_child_bus`:
+
+pci_scan_child_bus
+==================
+
+.. c:function:: unsigned int pci_scan_child_bus(struct pci_bus *bus)
+
+    Scan devices below a bus
+
+    :param struct pci_bus \*bus:
+        Bus to scan for devices
+
+.. _`pci_scan_child_bus.description`:
+
+Description
+-----------
+
+Scans devices below \ ``bus``\  including subordinate buses. Returns new
+subordinate number including all the found devices.
+
 .. _`pcibios_root_bridge_prepare`:
 
 pcibios_root_bridge_prepare

@@ -177,6 +177,7 @@ Definition
 
     struct falcon_nic_data {
         struct pci_dev *pci_dev2;
+        struct ef4_nic *efx;
         struct falcon_board board;
         u64 stats[FALCON_STAT_COUNT];
         unsigned int stats_disable_count;
@@ -196,6 +197,9 @@ Members
 
 pci_dev2
     Secondary function of Falcon A
+
+efx
+    ef4_nic pointer
 
 board
     Board state and functions

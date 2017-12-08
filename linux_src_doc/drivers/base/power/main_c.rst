@@ -183,12 +183,12 @@ executed.
 dpm_watchdog_handler
 ====================
 
-.. c:function:: void dpm_watchdog_handler(unsigned long data)
+.. c:function:: void dpm_watchdog_handler(struct timer_list *t)
 
     Driver suspend / resume watchdog handler.
 
-    :param unsigned long data:
-        Watchdog object address.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`dpm_watchdog_handler.description`:
 
@@ -233,7 +233,7 @@ device_resume_noirq
 
 .. c:function:: int device_resume_noirq(struct device *dev, pm_message_t state, bool async)
 
-    Execute an "early resume" callback for given device.
+    Execute a "noirq resume" callback for given device.
 
     :param struct device \*dev:
         Device to handle.
@@ -441,7 +441,7 @@ __device_suspend_noirq
 
 .. c:function:: int __device_suspend_noirq(struct device *dev, pm_message_t state, bool async)
 
-    Execute a "late suspend" callback for given device.
+    Execute a "noirq suspend" callback for given device.
 
     :param struct device \*dev:
         Device to handle.

@@ -6,9 +6,9 @@
 nes_mgt_rq_wqes_timeout
 =======================
 
-.. c:function:: void nes_mgt_rq_wqes_timeout(unsigned long parm)
+.. c:function:: void nes_mgt_rq_wqes_timeout(struct timer_list *t)
 
-    :param unsigned long parm:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`nes_mgt_free_skb`:

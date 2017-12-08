@@ -18,16 +18,13 @@ Definition
 .. code-block:: c
 
     struct ssi_drvdata {
-        struct resource *res_mem;
-        struct resource *res_irq;
         void __iomem *cc_base;
-        unsigned int irq;
+        int irq;
         u32 irq_mask;
         u32 fw_ver;
         u32 monitor_null_cycles;
         struct platform_device *plat_dev;
         ssi_sram_addr_t mlli_sram_addr;
-        struct completion icache_setup_completion;
         void *buff_mgr_handle;
         void *hash_handle;
         void *aead_handle;
@@ -36,7 +33,6 @@ Definition
         void *fips_handle;
         void *ivgen_handle;
         void *sram_mgr_handle;
-        u32 inflight_counter;
         struct clk *clk;
         bool coherent;
     }
@@ -45,12 +41,6 @@ Definition
 
 Members
 -------
-
-res_mem
-    *undescribed*
-
-res_irq
-    *undescribed*
 
 cc_base
     virt address of the CC registers
@@ -71,9 +61,6 @@ plat_dev
     *undescribed*
 
 mlli_sram_addr
-    *undescribed*
-
-icache_setup_completion
     *undescribed*
 
 buff_mgr_handle
@@ -98,9 +85,6 @@ ivgen_handle
     *undescribed*
 
 sram_mgr_handle
-    *undescribed*
-
-inflight_counter
     *undescribed*
 
 clk

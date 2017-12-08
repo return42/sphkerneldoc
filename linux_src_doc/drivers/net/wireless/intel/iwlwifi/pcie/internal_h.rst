@@ -618,6 +618,7 @@ Definition
         bool bc_table_dword;
         bool scd_set_active;
         bool sw_csum_tx;
+        bool pcie_dbg_dumped_once;
         u32 rx_page_order;
         spinlock_t reg_lock;
         bool cmd_hold_nic_awake;
@@ -635,6 +636,7 @@ Definition
         u32 fh_mask;
         u32 hw_mask;
         cpumask_t affinity_mask[IWL_MAX_RX_HW_QUEUES];
+        u16 tx_cmd_queue_size;
     }
 
 .. _`iwl_trans_pcie.members`:
@@ -788,6 +790,9 @@ sw_csum_tx
     if true, then the transport will compute the csum of the TXed
     frame.
 
+pcie_dbg_dumped_once
+    *undescribed*
+
 rx_page_order
     page order for receive buffer size
 
@@ -839,6 +844,9 @@ hw_mask
 
 affinity_mask
     *undescribed*
+
+tx_cmd_queue_size
+    the size of the tx command queue
 
 .. This file was automatic generated / don't edit.
 

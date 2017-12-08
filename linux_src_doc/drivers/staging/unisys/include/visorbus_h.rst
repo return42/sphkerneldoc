@@ -1,84 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/unisys/include/visorbus.h
 
-.. _`visor_driver`:
-
-struct visor_driver
-===================
-
-.. c:type:: struct visor_driver
-
-    Information provided by each visor driver when it registers with the visorbus driver.
-
-.. _`visor_driver.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct visor_driver {
-        const char *name;
-        struct module *owner;
-        struct visor_channeltype_descriptor *channel_types;
-        int (*probe)(struct visor_device *dev);
-        void (*remove)(struct visor_device *dev);
-        void (*channel_interrupt)(struct visor_device *dev);
-        int (*pause)(struct visor_device *dev, visorbus_state_complete_func complete_func);
-        int (*resume)(struct visor_device *dev, visorbus_state_complete_func complete_func);
-        struct device_driver driver;
-    }
-
-.. _`visor_driver.members`:
-
-Members
--------
-
-name
-    Name of the visor driver.
-
-owner
-    The module owner.
-
-channel_types
-    Types of channels handled by this driver, ending with
-    a zero GUID. Our specialized BUS.match() method knows
-    about this list, and uses it to determine whether this
-    driver will in fact handle a new device that it has
-    detected.
-
-probe
-    Called when a new device comes online, by our \ :c:func:`probe`\ 
-    function specified by driver.probe() (triggered
-    ultimately by some call to \ :c:func:`driver_register`\ ,
-    \ :c:func:`bus_add_driver`\ , or \ :c:func:`driver_attach`\ ).
-
-remove
-    Called when a new device is removed, by our \ :c:func:`remove`\ 
-    function specified by driver.remove() (triggered
-    ultimately by some call to \ :c:func:`device_release_driver`\ ).
-
-channel_interrupt
-    Called periodically, whenever there is a possiblity
-    that "something interesting" may have happened to the
-    channel.
-
-pause
-    Called to initiate a change of the device's state.  If
-    the return valu\`e is < 0, there was an error and the
-    state transition will NOT occur.  If the return value
-    is >= 0, then the state transition was INITIATED
-    successfully, and \ :c:func:`complete_func`\  will be called (or
-    was just called) with the final status when either the
-    state transition fails or completes successfully.
-
-resume
-    Behaves similar to pause.
-
-driver
-    Private reference to the device driver. For use by bus
-    driver only.
-
 .. _`visor_device`:
 
 struct visor_device
@@ -115,7 +37,7 @@ Definition
         void *vbus_hdr_info;
         guid_t partition_guid;
         struct dentry *debugfs_dir;
-        struct dentry *debugfs_client_bus_info;
+        struct dentry *debugfs_bus_info;
     }
 
 .. _`visor_device.members`:
@@ -192,8 +114,86 @@ partition_guid
 debugfs_dir
     *undescribed*
 
-debugfs_client_bus_info
+debugfs_bus_info
     *undescribed*
+
+.. _`visor_driver`:
+
+struct visor_driver
+===================
+
+.. c:type:: struct visor_driver
+
+    Information provided by each visor driver when it registers with the visorbus driver
+
+.. _`visor_driver.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct visor_driver {
+        const char *name;
+        struct module *owner;
+        struct visor_channeltype_descriptor *channel_types;
+        int (*probe)(struct visor_device *dev);
+        void (*remove)(struct visor_device *dev);
+        void (*channel_interrupt)(struct visor_device *dev);
+        int (*pause)(struct visor_device *dev, visorbus_state_complete_func complete_func);
+        int (*resume)(struct visor_device *dev, visorbus_state_complete_func complete_func);
+        struct device_driver driver;
+    }
+
+.. _`visor_driver.members`:
+
+Members
+-------
+
+name
+    Name of the visor driver.
+
+owner
+    The module owner.
+
+channel_types
+    Types of channels handled by this driver, ending with
+    a zero GUID. Our specialized BUS.match() method knows
+    about this list, and uses it to determine whether this
+    driver will in fact handle a new device that it has
+    detected.
+
+probe
+    Called when a new device comes online, by our \ :c:func:`probe`\ 
+    function specified by driver.probe() (triggered
+    ultimately by some call to \ :c:func:`driver_register`\ ,
+    \ :c:func:`bus_add_driver`\ , or \ :c:func:`driver_attach`\ ).
+
+remove
+    Called when a new device is removed, by our \ :c:func:`remove`\ 
+    function specified by driver.remove() (triggered
+    ultimately by some call to \ :c:func:`device_release_driver`\ ).
+
+channel_interrupt
+    Called periodically, whenever there is a possiblity
+    that "something interesting" may have happened to the
+    channel.
+
+pause
+    Called to initiate a change of the device's state.  If
+    the return valu\`e is < 0, there was an error and the
+    state transition will NOT occur.  If the return value
+    is >= 0, then the state transition was INITIATED
+    successfully, and \ :c:func:`complete_func`\  will be called (or
+    was just called) with the final status when either the
+    state transition fails or completes successfully.
+
+resume
+    Behaves similar to pause.
+
+driver
+    Private reference to the device driver. For use by bus
+    driver only.
 
 .. This file was automatic generated / don't edit.
 

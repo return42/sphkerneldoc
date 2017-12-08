@@ -75,32 +75,17 @@ crypto4xx_build_sdr
     :param struct crypto4xx_device \*dev:
         *undescribed*
 
-.. _`crypto4xx_memcpy_le`:
+.. _`crypto4xx_ctx_init`:
 
-crypto4xx_memcpy_le
-===================
-
-.. c:function:: void crypto4xx_memcpy_le(unsigned int *dst, const unsigned char *buf, int len)
-
-    Only use this function to copy items that is word aligned.
-
-    :param unsigned int \*dst:
-        *undescribed*
-
-    :param const unsigned char \*buf:
-        *undescribed*
-
-    :param int len:
-        *undescribed*
-
-.. _`crypto4xx_alg_init`:
-
-crypto4xx_alg_init
+crypto4xx_ctx_init
 ==================
 
-.. c:function:: int crypto4xx_alg_init(struct crypto_tfm *tfm)
+.. c:function:: void crypto4xx_ctx_init(struct crypto4xx_alg *amcc_alg, struct crypto4xx_ctx *ctx)
 
-    :param struct crypto_tfm \*tfm:
+    :param struct crypto4xx_alg \*amcc_alg:
+        *undescribed*
+
+    :param struct crypto4xx_ctx \*ctx:
         *undescribed*
 
 .. _`crypto4xx_ce_interrupt_handler`:

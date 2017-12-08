@@ -409,12 +409,12 @@ ibmvscsi_reset_host
 ibmvscsi_timeout
 ================
 
-.. c:function:: void ibmvscsi_timeout(struct srp_event_struct *evt_struct)
+.. c:function:: void ibmvscsi_timeout(struct timer_list *t)
 
     Internal command timeout handler
 
-    :param struct srp_event_struct \*evt_struct:
-        struct srp_event_struct that timed out
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ibmvscsi_timeout.description`:
 

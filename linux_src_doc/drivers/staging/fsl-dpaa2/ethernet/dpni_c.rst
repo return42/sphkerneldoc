@@ -1326,5 +1326,33 @@ Return
 
 '0' on Success; Error code otherwise.
 
+.. _`dpni_get_api_version`:
+
+dpni_get_api_version
+====================
+
+.. c:function:: int dpni_get_api_version(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 *major_ver, u16 *minor_ver)
+
+    Get Data Path Network Interface API version
+
+    :param struct fsl_mc_io \*mc_io:
+        Pointer to MC portal's I/O object
+
+    :param u32 cmd_flags:
+        Command flags; one or more of 'MC_CMD_FLAG_'
+
+    :param u16 \*major_ver:
+        Major version of data path network interface API
+
+    :param u16 \*minor_ver:
+        Minor version of data path network interface API
+
+.. _`dpni_get_api_version.return`:
+
+Return
+------
+
+'0' on Success; Error code otherwise.
+
 .. This file was automatic generated / don't edit.
 

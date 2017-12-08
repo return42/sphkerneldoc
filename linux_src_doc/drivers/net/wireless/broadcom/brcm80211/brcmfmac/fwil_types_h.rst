@@ -712,6 +712,50 @@ flags
 mac
     MAC address.
 
+.. _`brcmf_dload_data_le`:
+
+struct brcmf_dload_data_le
+==========================
+
+.. c:type:: struct brcmf_dload_data_le
+
+    data passing to firmware for downloading
+
+.. _`brcmf_dload_data_le.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct brcmf_dload_data_le {
+        __le16 flag;
+        __le16 dload_type;
+        __le32 len;
+        __le32 crc;
+        u8 data[1];
+    }
+
+.. _`brcmf_dload_data_le.members`:
+
+Members
+-------
+
+flag
+    flags related to download data.
+
+dload_type
+    type of download data.
+
+len
+    length in bytes of download data.
+
+crc
+    crc of download data.
+
+data
+    download data.
+
 .. _`brcmf_pno_bssid_le`:
 
 struct brcmf_pno_bssid_le

@@ -27,9 +27,9 @@ Definition
         u8 rsvd2[4];
         u32 u_mcast_dlid;
         u32 u_ucast_dlid[OPA_VESW_MAX_NUM_DEF_PORT];
-        u8 rsvd3[44];
-        u16 eth_mtu[OPA_VNIC_MAX_NUM_PCP];
-        u16 eth_mtu_non_vlan;
+        u32 rc;
+        u8 rsvd3[56];
+        u16 eth_mtu;
         u8 rsvd4[2];
     }
 
@@ -65,13 +65,13 @@ u_mcast_dlid
 u_ucast_dlid
     *undescribed*
 
+rc
+    *undescribed*
+
 rsvd3
     *undescribed*
 
 eth_mtu
-    *undescribed*
-
-eth_mtu_non_vlan
     *undescribed*
 
 rsvd4

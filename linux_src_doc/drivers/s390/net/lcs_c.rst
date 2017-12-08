@@ -213,9 +213,9 @@ lcs_notify_lancmd_waiters
 lcs_lancmd_timeout
 ==================
 
-.. c:function:: void lcs_lancmd_timeout(unsigned long data)
+.. c:function:: void lcs_lancmd_timeout(struct timer_list *t)
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`lcs_send_startup`:

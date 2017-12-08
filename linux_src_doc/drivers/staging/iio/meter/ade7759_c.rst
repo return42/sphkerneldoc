@@ -33,7 +33,7 @@ us
     actual spi_device
 
 buf_lock
-    mutex to protect tx and rx
+    mutex to protect tx and rx and write frequency
 
 tx
     transmit buffer

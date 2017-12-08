@@ -91,6 +91,81 @@ phy
 lmac_id
     the lmac id the binding belongs to
 
+.. _`iwl_time_quota_data_v1`:
+
+struct iwl_time_quota_data_v1
+=============================
+
+.. c:type:: struct iwl_time_quota_data_v1
+
+    configuration of time quota per binding
+
+.. _`iwl_time_quota_data_v1.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_time_quota_data_v1 {
+        __le32 id_and_color;
+        __le32 quota;
+        __le32 max_duration;
+    }
+
+.. _`iwl_time_quota_data_v1.members`:
+
+Members
+-------
+
+id_and_color
+    ID and color of the relevant Binding,
+    \ :c:type:`enum iwl_ctxt_id_and_color <iwl_ctxt_id_and_color>`\ 
+
+quota
+    absolute time quota in TU. The scheduler will try to divide the
+    remainig quota (after Time Events) according to this quota.
+
+max_duration
+    max uninterrupted context duration in TU
+
+.. _`iwl_time_quota_cmd_v1`:
+
+struct iwl_time_quota_cmd_v1
+============================
+
+.. c:type:: struct iwl_time_quota_cmd_v1
+
+    configuration of time quota between bindings ( TIME_QUOTA_CMD = 0x2c )
+
+.. _`iwl_time_quota_cmd_v1.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_time_quota_cmd_v1 {
+        struct iwl_time_quota_data_v1 quotas[MAX_BINDINGS];
+    }
+
+.. _`iwl_time_quota_cmd_v1.members`:
+
+Members
+-------
+
+quotas
+    allocations per binding
+
+.. _`iwl_time_quota_cmd_v1.note`:
+
+Note
+----
+
+on non-CDB the fourth one is the auxilary mac and is
+essentially zero.
+On CDB the fourth one is a regular binding.
+
 .. _`iwl_time_quota_data`:
 
 struct iwl_time_quota_data
@@ -111,6 +186,7 @@ Definition
         __le32 id_and_color;
         __le32 quota;
         __le32 max_duration;
+        __le32 low_latency;
     }
 
 .. _`iwl_time_quota_data.members`:
@@ -119,8 +195,7 @@ Members
 -------
 
 id_and_color
-    ID and color of the relevant Binding,
-    \ :c:type:`enum iwl_ctxt_id_and_color <iwl_ctxt_id_and_color>`\ 
+    ID and color of the relevant Binding.
 
 quota
     absolute time quota in TU. The scheduler will try to divide the
@@ -128,6 +203,9 @@ quota
 
 max_duration
     max uninterrupted context duration in TU
+
+low_latency
+    low latency status, \ :c:type:`enum iwl_quota_low_latency <iwl_quota_low_latency>`\ 
 
 .. _`iwl_time_quota_cmd`:
 
@@ -162,8 +240,7 @@ quotas
 Note
 ----
 
-on non-CDB the fourth one is the auxilary mac and is
-essentially zero.
+on non-CDB the fourth one is the auxilary mac and is essentially zero.
 On CDB the fourth one is a regular binding.
 
 .. This file was automatic generated / don't edit.

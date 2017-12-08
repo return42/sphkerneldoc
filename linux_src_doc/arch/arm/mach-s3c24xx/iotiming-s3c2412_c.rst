@@ -8,7 +8,7 @@ s3c2412_print_timing
 
 .. c:function:: void s3c2412_print_timing(const char *pfx, struct s3c_iotimings *iot)
 
-    print timing infromation via printk.
+    print timing information via printk.
 
     :param const char \*pfx:
         The prefix to print each line with.

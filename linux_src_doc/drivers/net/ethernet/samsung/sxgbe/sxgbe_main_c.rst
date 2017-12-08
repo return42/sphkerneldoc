@@ -26,10 +26,10 @@ Note that wrong parameters are replaced with the default values.
 sxgbe_eee_ctrl_timer
 ====================
 
-.. c:function:: void sxgbe_eee_ctrl_timer(unsigned long arg)
+.. c:function:: void sxgbe_eee_ctrl_timer(struct timer_list *t)
 
-    :param unsigned long arg:
-        data hook
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sxgbe_eee_ctrl_timer.description`:
 
@@ -504,12 +504,12 @@ It disables the MTL queues by invoking the specific SXGBE callback.
 sxgbe_tx_timer
 ==============
 
-.. c:function:: void sxgbe_tx_timer(unsigned long data)
+.. c:function:: void sxgbe_tx_timer(struct timer_list *t)
 
     mitigation sw timer for tx.
 
-    :param unsigned long data:
-        data pointer
+    :param struct timer_list \*t:
+        timer pointer
 
 .. _`sxgbe_tx_timer.description`:
 

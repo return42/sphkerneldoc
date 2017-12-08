@@ -9,6 +9,8 @@ amd
 
     amdgpu/index
     amdkfd/index
+    display/index
     include/index
+    lib/index
     powerplay/index
     scheduler/index

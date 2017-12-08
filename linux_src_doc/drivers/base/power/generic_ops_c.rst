@@ -297,27 +297,5 @@ Description
 
 Complete a device power transition during a system-wide power transition.
 
-.. _`pm_complete_with_resume_check`:
-
-pm_complete_with_resume_check
-=============================
-
-.. c:function:: void pm_complete_with_resume_check(struct device *dev)
-
-    Complete a device power transition.
-
-    :param struct device \*dev:
-        Device to handle.
-
-.. _`pm_complete_with_resume_check.description`:
-
-Description
------------
-
-Complete a device power transition during a system-wide power transition and
-optionally schedule a runtime resume of the device if the system resume in
-progress has been initated by the platform firmware and the device had its
-power.direct_complete flag set.
-
 .. This file was automatic generated / don't edit.
 

@@ -164,6 +164,28 @@ vgic_its_restore_ite
     :param void \*opaque:
         pointer to the its_device
 
+.. _`vgic_its_restore_itt`:
+
+vgic_its_restore_itt
+====================
+
+.. c:function:: int vgic_its_restore_itt(struct vgic_its *its, struct its_device *dev)
+
+    restore the ITT of a device
+
+    :param struct vgic_its \*its:
+        its handle
+
+    :param struct its_device \*dev:
+        device handle
+
+.. _`vgic_its_restore_itt.description`:
+
+Description
+-----------
+
+Return 0 on success, < 0 on error
+
 .. _`vgic_its_save_dte`:
 
 vgic_its_save_dte

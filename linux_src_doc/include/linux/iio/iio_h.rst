@@ -467,7 +467,6 @@ Definition
 .. code-block:: c
 
     struct iio_info {
-        struct module *driver_module;
         const struct attribute_group *event_attrs;
         const struct attribute_group *attrs;
         int (*read_raw)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int *val,int *val2, long mask);
@@ -491,10 +490,6 @@ Definition
 
 Members
 -------
-
-driver_module
-    module structure used to ensure correct
-    ownership of chrdevs etc
 
 event_attrs
     event control attributes
@@ -646,6 +641,7 @@ Definition
 
     struct iio_dev {
         int id;
+        struct module *driver_module;
         int modes;
         int currentmode;
         struct device dev;
@@ -690,6 +686,9 @@ Members
 
 id
     [INTERN] used to identify device internally
+
+driver_module
+    [INTERN] used to make it harder to undercut users
 
 modes
     [DRIVER] operating modes supported by device
@@ -791,6 +790,53 @@ debugfs_dentry
 
 cached_reg_addr
     [INTERN] cached register address for debugfs reads.
+
+.. _`iio_device_register`:
+
+iio_device_register
+===================
+
+.. c:function::  iio_device_register( iio_dev)
+
+    register a device with the IIO subsystem
+
+    :param  iio_dev:
+        *undescribed*
+
+.. _`devm_iio_device_register`:
+
+devm_iio_device_register
+========================
+
+.. c:function::  devm_iio_device_register( dev,  indio_dev)
+
+    Resource-managed \ :c:func:`iio_device_register`\ 
+
+    :param  dev:
+        Device to allocate iio_dev for
+
+    :param  indio_dev:
+        Device structure filled by the device driver
+
+.. _`devm_iio_device_register.description`:
+
+Description
+-----------
+
+Managed iio_device_register.  The IIO device registered with this
+function is automatically unregistered on driver detach. This function
+calls \ :c:func:`iio_device_register`\  internally. Refer to that function for more
+information.
+
+If an iio_dev registered with this function needs to be unregistered
+separately, \ :c:func:`devm_iio_device_unregister`\  must be used.
+
+.. _`devm_iio_device_register.return`:
+
+Return
+------
+
+0 on success, negative error number on failure.
 
 .. _`iio_device_put`:
 

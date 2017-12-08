@@ -295,29 +295,6 @@ tpm2_shutdown
         shutdown type. The value is either
         TPM_SU_CLEAR or TPM_SU_STATE.
 
-.. _`tpm2_start_selftest`:
-
-tpm2_start_selftest
-===================
-
-.. c:function:: int tpm2_start_selftest(struct tpm_chip *chip, bool full)
-
-    start a self test
-
-    :param struct tpm_chip \*chip:
-        TPM chip to use
-
-    :param bool full:
-        test all commands instead of testing only those that were not
-        previously tested.
-
-.. _`tpm2_start_selftest.return`:
-
-Return
-------
-
-Same as with tpm_transmit_cmd with exception of RC_TESTING.
-
 .. _`tpm2_do_selftest`:
 
 tpm2_do_selftest
@@ -325,7 +302,7 @@ tpm2_do_selftest
 
 .. c:function:: int tpm2_do_selftest(struct tpm_chip *chip)
 
-    run a full self test
+    ensure that all self tests have passed
 
     :param struct tpm_chip \*chip:
         TPM chip to use
@@ -337,8 +314,11 @@ Return
 
 Same as with tpm_transmit_cmd.
 
-During the self test TPM2 commands return with the error code RC_TESTING.
-Waiting is done by issuing PCR read until it executes successfully.
+The TPM can either run all self tests synchronously and then return
+RC_SUCCESS once all tests were successful. Or it can choose to run the tests
+asynchronously and return RC_TESTING immediately while the self tests still
+execute in the background. This function handles both cases and waits until
+all tests have completed.
 
 .. _`tpm2_probe`:
 

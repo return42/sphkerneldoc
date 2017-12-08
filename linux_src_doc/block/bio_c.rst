@@ -59,7 +59,7 @@ bio_alloc_bioset
     allocate a bio for I/O
 
     :param gfp_t gfp_mask:
-        the GFP_ mask given to the slab allocator
+        the GFP_* mask given to the slab allocator
 
     :param unsigned int nr_iovecs:
         number of iovecs to pre-allocate
@@ -395,14 +395,14 @@ min(src->bi_size, dst->bi_size) bytes (or the equivalent for lists of bios).
 bio_copy_from_iter
 ==================
 
-.. c:function:: int bio_copy_from_iter(struct bio *bio, struct iov_iter iter)
+.. c:function:: int bio_copy_from_iter(struct bio *bio, struct iov_iter *iter)
 
     copy all pages from iov_iter to bio
 
     :param struct bio \*bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O as destination
 
-    :param struct iov_iter iter:
+    :param struct iov_iter \*iter:
         iov_iter as source
 
 .. _`bio_copy_from_iter.description`:
@@ -461,7 +461,7 @@ Description
 bio_copy_user_iov
 =================
 
-.. c:function:: struct bio *bio_copy_user_iov(struct request_queue *q, struct rq_map_data *map_data, const struct iov_iter *iter, gfp_t gfp_mask)
+.. c:function:: struct bio *bio_copy_user_iov(struct request_queue *q, struct rq_map_data *map_data, struct iov_iter *iter, gfp_t gfp_mask)
 
     copy user data to bio
 
@@ -471,7 +471,7 @@ bio_copy_user_iov
     :param struct rq_map_data \*map_data:
         pointer to the rq_map_data holding pages (if necessary)
 
-    :param const struct iov_iter \*iter:
+    :param struct iov_iter \*iter:
         iovec iterator
 
     :param gfp_t gfp_mask:
@@ -491,14 +491,14 @@ Description
 bio_map_user_iov
 ================
 
-.. c:function:: struct bio *bio_map_user_iov(struct request_queue *q, const struct iov_iter *iter, gfp_t gfp_mask)
+.. c:function:: struct bio *bio_map_user_iov(struct request_queue *q, struct iov_iter *iter, gfp_t gfp_mask)
 
     map user iovec into bio
 
     :param struct request_queue \*q:
         the struct request_queue for the bio
 
-    :param const struct iov_iter \*iter:
+    :param struct iov_iter \*iter:
         iovec iterator
 
     :param gfp_t gfp_mask:
@@ -733,32 +733,6 @@ treat \ ``bio``\  as if it were issued by a task which belongs to the blkcg.
 This function takes an extra reference of \ ``blkcg_css``\  which will be put
 when \ ``bio``\  is released.  The caller must own \ ``bio``\  and is responsible for
 synchronizing calls to this function.
-
-.. _`bio_associate_current`:
-
-bio_associate_current
-=====================
-
-.. c:function:: int bio_associate_current(struct bio *bio)
-
-    associate a bio with \ ``current``\ 
-
-    :param struct bio \*bio:
-        target bio
-
-.. _`bio_associate_current.description`:
-
-Description
------------
-
-Associate \ ``bio``\  with \ ``current``\  if it hasn't been associated yet.  Block
-layer will treat \ ``bio``\  as if it were issued by \ ``current``\  no matter which
-task actually issues it.
-
-This function takes an extra reference of \ ``task``\ 's io_context and blkcg
-which will be put when \ ``bio``\  is released.  The caller must own \ ``bio``\ ,
-ensure \ ``current-``\ >io_context exists, and is responsible for synchronizing
-calls to this function.
 
 .. _`bio_disassociate_task`:
 

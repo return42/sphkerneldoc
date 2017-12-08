@@ -168,7 +168,6 @@ Definition
         } controls;
         struct v4l2_fh fh;
         unsigned int streamon_cap, streamon_out;
-        bool cmd_stop;
         u32 width;
         u32 height;
         u32 out_width;
@@ -258,9 +257,6 @@ streamon_cap
 
 streamon_out
     stream on flag for output queue
-
-cmd_stop
-    a flag to signal encoder/decoder commands
 
 width
     current capture width

@@ -163,5 +163,42 @@ DVB-S, drivers that support both DVB-S and DVB-S2 should have the
 SYS_DVBS entry before the SYS_DVBS2, otherwise it won't switch back
 to DVB-S.
 
+.. _`dtv_property_process_set`:
+
+dtv_property_process_set
+========================
+
+.. c:function:: int dtv_property_process_set(struct dvb_frontend *fe, struct file *file, u32 cmd, u32 data)
+
+    Sets a single DTV property
+
+    :param struct dvb_frontend \*fe:
+        Pointer to \ :c:type:`struct dvb_frontend <dvb_frontend>`\ 
+
+    :param struct file \*file:
+        Pointer to \ :c:type:`struct file <file>`\ 
+
+    :param u32 cmd:
+        Digital TV command
+
+    :param u32 data:
+        An unsigned 32-bits number
+
+.. _`dtv_property_process_set.description`:
+
+Description
+-----------
+
+This routine assigns the property
+value to the corresponding member of
+\ :c:type:`struct dtv_frontend_properties <dtv_frontend_properties>`\ 
+
+.. _`dtv_property_process_set.return`:
+
+Return
+------
+
+Zero on success, negative errno on failure.
+
 .. This file was automatic generated / don't edit.
 

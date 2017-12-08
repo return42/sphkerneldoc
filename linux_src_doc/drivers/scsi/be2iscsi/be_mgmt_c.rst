@@ -43,6 +43,24 @@ Failure
 
 Error code
 
+.. _`beiscsi_get_initiator_name`:
+
+beiscsi_get_initiator_name
+==========================
+
+.. c:function:: int beiscsi_get_initiator_name(struct beiscsi_hba *phba, char *name, bool cfg)
+
+    read initiator name from flash
+
+    :param struct beiscsi_hba \*phba:
+        device priv structure
+
+    :param char \*name:
+        buffer pointer
+
+    :param bool cfg:
+        fetch user configured
+
 .. _`beiscsi_if_set_vlan`:
 
 beiscsi_if_set_vlan

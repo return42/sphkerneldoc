@@ -120,14 +120,8 @@ This function can be only called when using SSI as DAI master
 freq
 ----
 
-Output BCLK frequency = samplerate \* 32 (fixed) \* channels
-
-.. _`fsl_ssi_set_bclk.dir`:
-
-dir
----
-
-SND_SOC_CLOCK_OUT -> TxBCLK, SND_SOC_CLOCK_IN -> RxBCLK.
+Output BCLK frequency = samplerate \* slots \* slot_width
+(In 2-channel I2S Master mode, slot_width is fixed 32)
 
 .. _`fsl_ssi_hw_params`:
 

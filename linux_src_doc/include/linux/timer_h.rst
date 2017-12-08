@@ -1,6 +1,33 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/timer.h
 
+.. _`timer_setup`:
+
+timer_setup
+===========
+
+.. c:function::  timer_setup( timer,  callback,  flags)
+
+    prepare a timer for first use
+
+    :param  timer:
+        the timer in question
+
+    :param  callback:
+        the function to call when timer expires
+
+    :param  flags:
+        any TIMER\_\* flags
+
+.. _`timer_setup.description`:
+
+Description
+-----------
+
+Regular timer initialization should use either \ :c:func:`DEFINE_TIMER`\  above,
+or \ :c:func:`timer_setup`\ . For timers on the stack, \ :c:func:`timer_setup_on_stack`\  must
+be used and must be balanced with a call to \ :c:func:`destroy_timer_on_stack`\ .
+
 .. _`timer_pending`:
 
 timer_pending

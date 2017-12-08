@@ -25,11 +25,11 @@ only support for existing drivers not yet converted to the new scheme.
 When cleaning up a device instance everything needs to be done in reverse:
 First unpublish the device instance with \ :c:func:`drm_dev_unregister`\ . Then clean up
 any other resources allocated at device initialization and drop the driver's
-reference to \ :c:type:`struct drm_device <drm_device>`\  using \ :c:func:`drm_dev_unref`\ .
+reference to \ :c:type:`struct drm_device <drm_device>`\  using \ :c:func:`drm_dev_put`\ .
 
 Note that the lifetime rules for \ :c:type:`struct drm_device <drm_device>`\  instance has still a lot of
 historical baggage. Hence use the reference counting provided by
-\ :c:func:`drm_dev_ref`\  and \ :c:func:`drm_dev_unref`\  only carefully.
+\ :c:func:`drm_dev_get`\  and \ :c:func:`drm_dev_put`\  only carefully.
 
 It is recommended that drivers embed \ :c:type:`struct drm_device <drm_device>`\  into their own device
 structure, which is supported through \ :c:func:`drm_dev_init`\ .
@@ -61,7 +61,7 @@ Note
 ----
 
 Use of this function is deprecated. It will eventually go away
-completely.  Please use \ :c:func:`drm_dev_unregister`\  and \ :c:func:`drm_dev_unref`\  explicitly
+completely.  Please use \ :c:func:`drm_dev_unregister`\  and \ :c:func:`drm_dev_put`\  explicitly
 instead to make sure that the device isn't userspace accessible any more
 while teardown is in progress, ensuring that userspace can't access an
 inconsistent state.
@@ -117,8 +117,8 @@ with other core subsystems. This should be done last in the device
 initialization sequence to make sure userspace can't access an inconsistent
 state.
 
-The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_ref`\  and
-\ :c:func:`drm_dev_unref`\  to take and drop further ref-counts.
+The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_get`\  and
+\ :c:func:`drm_dev_put`\  to take and drop further ref-counts.
 
 Note that for purely virtual devices \ ``parent``\  can be NULL.
 
@@ -190,8 +190,8 @@ with other core subsystems. This should be done last in the device
 initialization sequence to make sure userspace can't access an inconsistent
 state.
 
-The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_ref`\  and
-\ :c:func:`drm_dev_unref`\  to take and drop further ref-counts.
+The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_get`\  and
+\ :c:func:`drm_dev_put`\  to take and drop further ref-counts.
 
 Note that for purely virtual devices \ ``parent``\  can be NULL.
 
@@ -205,30 +205,50 @@ Return
 
 Pointer to new DRM device, or ERR_PTR on failure.
 
-.. _`drm_dev_ref`:
+.. _`drm_dev_get`:
 
-drm_dev_ref
+drm_dev_get
 ===========
 
-.. c:function:: void drm_dev_ref(struct drm_device *dev)
+.. c:function:: void drm_dev_get(struct drm_device *dev)
 
     Take reference of a DRM device
 
     :param struct drm_device \*dev:
         device to take reference of or NULL
 
-.. _`drm_dev_ref.description`:
+.. _`drm_dev_get.description`:
 
 Description
 -----------
 
 This increases the ref-count of \ ``dev``\  by one. You *must* already own a
-reference when calling this. Use \ :c:func:`drm_dev_unref`\  to drop this reference
+reference when calling this. Use \ :c:func:`drm_dev_put`\  to drop this reference
 again.
 
 This function never fails. However, this function does not provide *any*
 guarantee whether the device is alive or running. It only provides a
 reference to the object and the memory associated with it.
+
+.. _`drm_dev_put`:
+
+drm_dev_put
+===========
+
+.. c:function:: void drm_dev_put(struct drm_device *dev)
+
+    Drop reference of a DRM device
+
+    :param struct drm_device \*dev:
+        device to drop reference of or NULL
+
+.. _`drm_dev_put.description`:
+
+Description
+-----------
+
+This decreases the ref-count of \ ``dev``\  by one. The device is destroyed if the
+ref-count drops to zero.
 
 .. _`drm_dev_unref`:
 
@@ -247,8 +267,8 @@ drm_dev_unref
 Description
 -----------
 
-This decreases the ref-count of \ ``dev``\  by one. The device is destroyed if the
-ref-count drops to zero.
+This is a compatibility alias for \ :c:func:`drm_dev_put`\  and should not be used by new
+code.
 
 .. _`drm_dev_register`:
 
@@ -313,7 +333,7 @@ Description
 
 Unregister the DRM device from the system. This does the reverse of
 \ :c:func:`drm_dev_register`\  but does not deallocate the device. The caller must call
-\ :c:func:`drm_dev_unref`\  to drop their final reference.
+\ :c:func:`drm_dev_put`\  to drop their final reference.
 
 A special form of unregistering for hotpluggable devices is \ :c:func:`drm_dev_unplug`\ ,
 which can be called while there are still open users of \ ``dev``\ .

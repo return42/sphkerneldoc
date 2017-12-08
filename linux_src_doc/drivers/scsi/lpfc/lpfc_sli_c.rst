@@ -1550,7 +1550,8 @@ Description
 
 This function looks up the iocb_lookup table to get the command iocb
 corresponding to the given response iocb using the iotag of the
-response iocb. This function is called with the hbalock held.
+response iocb. This function is called with the hbalock held
+for sli3 devices or the ring_lock for sli4 devices.
 This function returns the command iocb object if it finds the command
 iocb else returns NULL.
 
@@ -1647,12 +1648,12 @@ thread will transition the HBA to offline state.
 lpfc_poll_eratt
 ===============
 
-.. c:function:: void lpfc_poll_eratt(unsigned long ptr)
+.. c:function:: void lpfc_poll_eratt(struct timer_list *t)
 
     Error attention polling timer timeout handler
 
-    :param unsigned long ptr:
-        Pointer to address of HBA context object.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_poll_eratt.description`:
 
@@ -2759,12 +2760,12 @@ locks.
 lpfc_mbox_timeout
 =================
 
-.. c:function:: void lpfc_mbox_timeout(unsigned long ptr)
+.. c:function:: void lpfc_mbox_timeout(struct timer_list *t)
 
     Timeout call back function for mbox timer
 
-    :param unsigned long ptr:
-        context object - pointer to hba structure.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_mbox_timeout.description`:
 
@@ -4973,7 +4974,7 @@ true if work posted to worker thread, otherwise false.
 lpfc_sli4_sp_handle_eqe
 =======================
 
-.. c:function:: int lpfc_sli4_sp_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, struct lpfc_queue *speq)
+.. c:function:: void lpfc_sli4_sp_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, struct lpfc_queue *speq)
 
     Process a slow-path event queue entry
 
@@ -4987,6 +4988,30 @@ lpfc_sli4_sp_handle_eqe
         *undescribed*
 
 .. _`lpfc_sli4_sp_handle_eqe.description`:
+
+Description
+-----------
+
+This routine process a event queue entry from the slow-path event queue.
+It will check the MajorCode and MinorCode to determine this is for a
+completion event on a completion queue, if not, an error shall be logged
+and just return. Otherwise, it will get to the corresponding completion
+queue and process all the entries on that completion queue, rearm the
+completion queue, and then return.
+
+.. _`lpfc_sli4_sp_process_cq`:
+
+lpfc_sli4_sp_process_cq
+=======================
+
+.. c:function:: void lpfc_sli4_sp_process_cq(struct work_struct *work)
+
+    Process a slow-path event queue entry
+
+    :param struct work_struct \*work:
+        *undescribed*
+
+.. _`lpfc_sli4_sp_process_cq.description`:
 
 Description
 -----------
@@ -5113,7 +5138,7 @@ event queue for FCP command response completion.
 lpfc_sli4_hba_handle_eqe
 ========================
 
-.. c:function:: int lpfc_sli4_hba_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, uint32_t qidx)
+.. c:function:: void lpfc_sli4_hba_handle_eqe(struct lpfc_hba *phba, struct lpfc_eqe *eqe, uint32_t qidx)
 
     Process a fast-path event queue entry
 
@@ -5127,6 +5152,30 @@ lpfc_sli4_hba_handle_eqe
         *undescribed*
 
 .. _`lpfc_sli4_hba_handle_eqe.description`:
+
+Description
+-----------
+
+This routine process a event queue entry from the fast-path event queue.
+It will check the MajorCode and MinorCode to determine this is for a
+completion event on a completion queue, if not, an error shall be logged
+and just return. Otherwise, it will get to the corresponding completion
+queue and process all the entries on the completion queue, rearm the
+completion queue, and then return.
+
+.. _`lpfc_sli4_hba_process_cq`:
+
+lpfc_sli4_hba_process_cq
+========================
+
+.. c:function:: void lpfc_sli4_hba_process_cq(struct work_struct *work)
+
+    Process a fast-path event queue entry
+
+    :param struct work_struct \*work:
+        *undescribed*
+
+.. _`lpfc_sli4_hba_process_cq.description`:
 
 Description
 -----------

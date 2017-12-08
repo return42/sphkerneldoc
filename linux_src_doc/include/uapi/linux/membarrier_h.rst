@@ -20,7 +20,8 @@ Definition
     enum membarrier_cmd {
         MEMBARRIER_CMD_QUERY,
         MEMBARRIER_CMD_SHARED,
-        MEMBARRIER_CMD_PRIVATE_EXPEDITED
+        MEMBARRIER_CMD_PRIVATE_EXPEDITED,
+        MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED
     };
 
 .. _`membarrier_cmd.constants`:
@@ -55,10 +56,19 @@ MEMBARRIER_CMD_PRIVATE_EXPEDITED
     (non-running threads are de facto in such a
     state). This only covers threads from the
     same processes as the caller thread. This
-    command returns 0. The "expedited" commands
-    complete faster than the non-expedited ones,
-    they never block, but have the downside of
-    causing extra overhead.
+    command returns 0 on success. The
+    "expedited" commands complete faster than
+    the non-expedited ones, they never block,
+    but have the downside of causing extra
+    overhead. A process needs to register its
+    intent to use the private expedited command
+    prior to using it, otherwise this command
+    returns -EPERM.
+
+MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED
+    Register the process intent to use
+    MEMBARRIER_CMD_PRIVATE_EXPEDITED. Always
+    returns 0.
 
 .. _`membarrier_cmd.description`:
 

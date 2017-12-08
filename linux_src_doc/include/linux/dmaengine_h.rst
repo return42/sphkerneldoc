@@ -722,7 +722,7 @@ slave_id
 Legal values
 ------------
 
-1, 2, 4, 8.
+1, 2, 3, 4, 8, 16, 32, 64.
 
 .. _`dma_slave_config.description`:
 
@@ -802,6 +802,68 @@ DMA_RESIDUE_GRANULARITY_BURST
     register of some sort (E.g. a register with the current read/write address
     or a register with the amount of bursts/beats/bytes that have been
     transferred or still need to be transferred).
+
+.. _`dma_slave_caps`:
+
+struct dma_slave_caps
+=====================
+
+.. c:type:: struct dma_slave_caps
+
+    expose capabilities of a slave channel only
+
+.. _`dma_slave_caps.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dma_slave_caps {
+        u32 src_addr_widths;
+        u32 dst_addr_widths;
+        u32 directions;
+        u32 max_burst;
+        bool cmd_pause;
+        bool cmd_terminate;
+        enum dma_residue_granularity residue_granularity;
+        bool descriptor_reuse;
+    }
+
+.. _`dma_slave_caps.members`:
+
+Members
+-------
+
+src_addr_widths
+    bit mask of src addr widths the channel supports.
+    Width is specified in bytes, e.g. for a channel supporting
+    a width of 4 the mask should have BIT(4) set.
+
+dst_addr_widths
+    bit mask of dst addr widths the channel supports
+
+directions
+    bit mask of slave directions the channel supports.
+    Since the enum dma_transfer_direction is not defined as bit flag for
+    each type, the dma controller should set BIT(<TYPE>) and same
+    should be checked by controller as well
+
+max_burst
+    max burst capability per-transfer
+
+cmd_pause
+    true, if pause and thereby resume is supported
+
+cmd_terminate
+    true, if terminate cmd is supported
+
+residue_granularity
+    granularity of the reported transfer residue
+
+descriptor_reuse
+    if a descriptor can be reused by client and
+    resubmitted multiple times
 
 .. _`dma_filter_fn`:
 
@@ -1183,15 +1245,17 @@ dev
 
 src_addr_widths
     bit mask of src addr widths the device supports
+    Width is specified in bytes, e.g. for a device supporting
+    a width of 4 the mask should have BIT(4) set.
 
 dst_addr_widths
     bit mask of dst addr widths the device supports
 
 directions
-    bit mask of slave direction the device supports since
-    the enum dma_transfer_direction is not defined as bits for
-    each type of direction, the dma controller should fill (1 <<
-    <TYPE>) and same should be checked by controller as well
+    bit mask of slave directions the device supports.
+    Since the enum dma_transfer_direction is not defined as bit flag for
+    each type, the dma controller should set BIT(<TYPE>) and same
+    should be checked by controller as well
 
 max_burst
     max burst capability per-transfer

@@ -1494,5 +1494,48 @@ Return
 true if the transactions was successfully queued
 false if the target process or thread is dead
 
+.. _`binder_get_node_refs_for_txn`:
+
+binder_get_node_refs_for_txn
+============================
+
+.. c:function:: struct binder_node *binder_get_node_refs_for_txn(struct binder_node *node, struct binder_proc **procp, uint32_t *error)
+
+    Get required refs on node for txn
+
+    :param struct binder_node \*node:
+        struct binder_node for which to get refs
+
+    :param struct binder_proc \*\*procp:
+        *undescribed*
+
+    :param uint32_t \*error:
+        if no \ ``proc``\  then returns BR_DEAD_REPLY
+
+.. _`binder_get_node_refs_for_txn.description`:
+
+Description
+-----------
+
+User-space normally keeps the node alive when creating a transaction
+since it has a reference to the target. The local strong ref keeps it
+alive if the sending process dies before the target process processes
+the transaction. If the source process is malicious or has a reference
+counting bug, relying on the local strong ref can fail.
+
+Since user-space can cause the local strong ref to go away, we also take
+a tmpref on the node to ensure it survives while we are constructing
+the transaction. We also need a tmpref on the proc while we are
+constructing the transaction, so we take that here as well.
+
+.. _`binder_get_node_refs_for_txn.return`:
+
+Return
+------
+
+The target_node with refs taken or NULL if no \ ``node``\ ->proc is NULL.
+Also sets \ ``proc``\  if valid. If the \ ``node``\ ->proc is NULL indicating that the
+target proc has died, \ ``error``\  is set to BR_DEAD_REPLY
+
 .. This file was automatic generated / don't edit.
 

@@ -65,6 +65,46 @@ addr
 mask
     mask to write the das flag for left alignment.
 
+.. _`st_sensor_int_drdy`:
+
+struct st_sensor_int_drdy
+=========================
+
+.. c:type:: struct st_sensor_int_drdy
+
+    ST sensor device drdy line parameters
+
+.. _`st_sensor_int_drdy.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct st_sensor_int_drdy {
+        u8 addr;
+        u8 mask;
+        u8 addr_od;
+        u8 mask_od;
+    }
+
+.. _`st_sensor_int_drdy.members`:
+
+Members
+-------
+
+addr
+    address of INT drdy register.
+
+mask
+    mask to enable drdy line.
+
+addr_od
+    address to enable/disable Open Drain on the INT line.
+
+mask_od
+    mask to enable/disable Open Drain on the INT line.
+
 .. _`st_sensor_data_ready_irq`:
 
 struct st_sensor_data_ready_irq
@@ -72,7 +112,7 @@ struct st_sensor_data_ready_irq
 
 .. c:type:: struct st_sensor_data_ready_irq
 
-    ST sensor device data-ready interrupt
+    ST sensor device data-ready interrupt struct int1 - data-ready configuration register for INT1 pin. struct int2 - data-ready configuration register for INT2 pin.
 
 .. _`st_sensor_data_ready_irq.definition`:
 
@@ -82,14 +122,14 @@ Definition
 .. code-block:: c
 
     struct st_sensor_data_ready_irq {
-        u8 addr;
-        u8 mask_int1;
-        u8 mask_int2;
+        struct st_sensor_int_drdy int1;
+        struct st_sensor_int_drdy int2;
         u8 addr_ihl;
         u8 mask_ihl;
-        u8 addr_od;
-        u8 mask_od;
-        u8 addr_stat_drdy;
+        struct {
+            u8 addr;
+            u8 mask;
+        } stat_drdy;
         struct {
             u8 en_addr;
             u8 en_mask;
@@ -101,30 +141,22 @@ Definition
 Members
 -------
 
-addr
-    address of the register.
+int1
+    *undescribed*
 
-mask_int1
-    mask to enable/disable IRQ on INT1 pin.
-
-mask_int2
-    mask to enable/disable IRQ on INT2 pin.
+int2
+    *undescribed*
 
 addr_ihl
     address to enable/disable active low on the INT lines.
 
 mask_ihl
     mask to enable/disable active low on the INT lines.
-
-addr_od
-    address to enable/disable Open Drain on the INT lines.
-
-mask_od
-    mask to enable/disable Open Drain on the INT lines.
-
-addr_stat_drdy
-    address to read status of DRDY (data ready) interrupt
+    struct stat_drdy - status register of DRDY (data ready) interrupt.
     struct ig1 - represents the Interrupt Generator 1 of sensors.
+
+stat_drdy
+    *undescribed*
 
 ig1
     *undescribed*

@@ -86,6 +86,36 @@ crypto4xx_setkey_aes
     :param u8 fb:
         *undescribed*
 
+.. _`crypto4xx_setkey_aes_ccm`:
+
+crypto4xx_setkey_aes_ccm
+========================
+
+.. c:function:: int crypto4xx_setkey_aes_ccm(struct crypto_aead *cipher, const u8 *key, unsigned int keylen)
+
+    CCM Functions
+
+    :param struct crypto_aead \*cipher:
+        *undescribed*
+
+    :param const u8 \*key:
+        *undescribed*
+
+    :param unsigned int keylen:
+        *undescribed*
+
+.. _`crypto4xx_aes_gcm_validate_keylen`:
+
+crypto4xx_aes_gcm_validate_keylen
+=================================
+
+.. c:function:: int crypto4xx_aes_gcm_validate_keylen(unsigned int keylen)
+
+    GCM Functions
+
+    :param unsigned int keylen:
+        *undescribed*
+
 .. _`crypto4xx_hash_alg_init`:
 
 crypto4xx_hash_alg_init

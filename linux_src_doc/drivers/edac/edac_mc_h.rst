@@ -50,27 +50,24 @@ Return
      On success, return a pointer to struct mem_ctl_info pointer;
      \ ``NULL``\  otherwise
 
-.. _`edac_mc_add_mc_with_groups`:
+.. _`edac_get_owner`:
 
-edac_mc_add_mc_with_groups
-==========================
+edac_get_owner
+==============
 
-.. c:function:: int edac_mc_add_mc_with_groups(struct mem_ctl_info *mci, const struct attribute_group **groups)
+.. c:function:: const char *edac_get_owner( void)
 
-    Insert the \ ``mci``\  structure into the mci global list and create sysfs entries associated with \ ``mci``\  structure.
+    Return the owner's mod_name of EDAC MC
 
-    :param struct mem_ctl_info \*mci:
-        pointer to the mci structure to be added to the list
+    :param  void:
+        no arguments
 
-    :param const struct attribute_group \*\*groups:
-        optional attribute groups for the driver-specific sysfs entries
-
-.. _`edac_mc_add_mc_with_groups.return`:
+.. _`edac_get_owner.return`:
 
 Return
 ------
 
-     0 on Success, or an error code on failure
+     Pointer to mod_name string when EDAC MC is owned. NULL otherwise.
 
 .. _`edac_mc_free`:
 

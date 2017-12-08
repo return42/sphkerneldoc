@@ -22,6 +22,5 @@ crypto
     vmx/index
     atmel-ecc_c
     bfin_crc_c
-    mv_cesa_c
     s5p-sss_c
     talitos_c

@@ -51,6 +51,34 @@ It is an error to call this function while any resources in the pd still
 exist.  The caller is responsible to synchronously destroy them and
 guarantee no new allocations will happen.
 
+.. _`rdma_create_user_ah`:
+
+rdma_create_user_ah
+===================
+
+.. c:function:: struct ib_ah *rdma_create_user_ah(struct ib_pd *pd, struct rdma_ah_attr *ah_attr, struct ib_udata *udata)
+
+    Creates an address handle for the given address vector. It resolves destination mac address for ah attribute of RoCE type.
+
+    :param struct ib_pd \*pd:
+        The protection domain associated with the address handle.
+
+    :param struct rdma_ah_attr \*ah_attr:
+        The attributes of the address vector.
+
+    :param struct ib_udata \*udata:
+        pointer to user's input output buffer information need by
+        provider driver.
+
+.. _`rdma_create_user_ah.description`:
+
+Description
+-----------
+
+It returns 0 on success and returns appropriate error code on error.
+The address handle is used to reference a local or global destination
+in all UD QP post sends.
+
 .. _`ib_modify_qp_with_udata`:
 
 ib_modify_qp_with_udata

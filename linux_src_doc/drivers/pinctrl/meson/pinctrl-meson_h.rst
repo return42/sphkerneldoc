@@ -21,9 +21,7 @@ Definition
         const char *name;
         const unsigned int *pins;
         unsigned int num_pins;
-        bool is_gpio;
-        unsigned int reg;
-        unsigned int bit;
+        const void *data;
     }
 
 .. _`meson_pmx_group.members`:
@@ -40,14 +38,7 @@ pins
 num_pins
     number of pins in the group
 
-is_gpio
-    whether the group is a single GPIO group
-
-reg
-    register offset for the group in the domain mux registers
-    \ ``bit``\          bit index enabling the group
-
-bit
+data
     *undescribed*
 
 .. _`meson_pmx_func`:

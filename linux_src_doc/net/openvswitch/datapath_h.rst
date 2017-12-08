@@ -75,6 +75,7 @@ Definition
         possible_net_t net;
         u32 user_features;
         u32 max_headroom;
+        struct hlist_head *meters;
     }
 
 .. _`datapath.members`:
@@ -107,6 +108,9 @@ user_features
 max_headroom
     the maximum headroom of all vports in this datapath; it will
     be used by all the internal vports in this dp.
+
+meters
+    *undescribed*
 
 .. _`datapath.context`:
 

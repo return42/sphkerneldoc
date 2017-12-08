@@ -86,6 +86,59 @@ rpcrdma_ia_close
     :param struct rpcrdma_ia \*ia:
         interface adapter to close
 
+.. _`rpcrdma_sendctx_get_locked`:
+
+rpcrdma_sendctx_get_locked
+==========================
+
+.. c:function:: struct rpcrdma_sendctx *rpcrdma_sendctx_get_locked(struct rpcrdma_buffer *buf)
+
+    Acquire a send context
+
+    :param struct rpcrdma_buffer \*buf:
+        transport buffers from which to acquire an unused context
+
+.. _`rpcrdma_sendctx_get_locked.description`:
+
+Description
+-----------
+
+Returns pointer to a free send completion context; or NULL if
+the queue is empty.
+
+.. _`rpcrdma_sendctx_get_locked.usage`:
+
+Usage
+-----
+
+Called to acquire an SGE array before preparing a Send WR.
+
+The caller serializes calls to this function (per rpcrdma_buffer),
+and provides an effective memory barrier that flushes the new value
+of rb_sc_head.
+
+.. _`rpcrdma_sendctx_put_locked`:
+
+rpcrdma_sendctx_put_locked
+==========================
+
+.. c:function:: void rpcrdma_sendctx_put_locked(struct rpcrdma_sendctx *sc)
+
+    Release a send context
+
+    :param struct rpcrdma_sendctx \*sc:
+        send context to release
+
+.. _`rpcrdma_sendctx_put_locked.usage`:
+
+Usage
+-----
+
+Called from Send completion to return a sendctxt
+to the queue.
+
+The caller serializes calls to this function (per rpcrdma_buffer).
+
 .. _`rpcrdma_alloc_regbuf`:
 
 rpcrdma_alloc_regbuf

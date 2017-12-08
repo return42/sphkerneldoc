@@ -435,14 +435,14 @@ for both reading and writing with
 eccsize0 = 0  (no additional protected byte in spare area)
 eccsize1 = 32 (skip 32 nibbles = 16 bytes per sector in spare area)
 
-.. _`omap_calculate_ecc_bch`:
+.. _`_omap_calculate_ecc_bch`:
 
-omap_calculate_ecc_bch
-======================
+_omap_calculate_ecc_bch
+=======================
 
-.. c:function:: int __maybe_unused omap_calculate_ecc_bch(struct mtd_info *mtd, const u_char *dat, u_char *ecc_calc)
+.. c:function:: int _omap_calculate_ecc_bch(struct mtd_info *mtd, const u_char *dat, u_char *ecc_calc, int i)
 
-    Generate bytes of ECC bytes
+    Generate ECC bytes for one sector
 
     :param struct mtd_info \*mtd:
         MTD device structure
@@ -453,12 +453,68 @@ omap_calculate_ecc_bch
     :param u_char \*ecc_calc:
         *undescribed*
 
-.. _`omap_calculate_ecc_bch.description`:
+    :param int i:
+        The sector number (for a multi sector page)
+
+.. _`_omap_calculate_ecc_bch.description`:
 
 Description
 -----------
 
-Support calculating of BCH4/8 ecc vectors for the page
+Support calculating of BCH4/8/16 ECC vectors for one sector
+within a page. Sector number is in \ ``i``\ .
+
+.. _`omap_calculate_ecc_bch_sw`:
+
+omap_calculate_ecc_bch_sw
+=========================
+
+.. c:function:: int omap_calculate_ecc_bch_sw(struct mtd_info *mtd, const u_char *dat, u_char *ecc_calc)
+
+    ECC generator for sector for SW based correction
+
+    :param struct mtd_info \*mtd:
+        MTD device structure
+
+    :param const u_char \*dat:
+        The pointer to data on which ecc is computed
+
+    :param u_char \*ecc_calc:
+        *undescribed*
+
+.. _`omap_calculate_ecc_bch_sw.description`:
+
+Description
+-----------
+
+Support calculating of BCH4/8/16 ECC vectors for one sector. This is used
+when SW based correction is required as ECC is required for one sector
+at a time.
+
+.. _`omap_calculate_ecc_bch_multi`:
+
+omap_calculate_ecc_bch_multi
+============================
+
+.. c:function:: int omap_calculate_ecc_bch_multi(struct mtd_info *mtd, const u_char *dat, u_char *ecc_calc)
+
+    Generate ECC for multiple sectors
+
+    :param struct mtd_info \*mtd:
+        MTD device structure
+
+    :param const u_char \*dat:
+        The pointer to data on which ecc is computed
+
+    :param u_char \*ecc_calc:
+        *undescribed*
+
+.. _`omap_calculate_ecc_bch_multi.description`:
+
+Description
+-----------
+
+Support calculating of BCH4/8/16 ecc vectors for the entire page in one go.
 
 .. _`erased_sector_bitflips`:
 
@@ -547,6 +603,43 @@ Description
 -----------
 
 Custom write page method evolved to support multi sector writing in one shot
+
+.. _`omap_write_subpage_bch`:
+
+omap_write_subpage_bch
+======================
+
+.. c:function:: int omap_write_subpage_bch(struct mtd_info *mtd, struct nand_chip *chip, u32 offset, u32 data_len, const u8 *buf, int oob_required, int page)
+
+    BCH hardware ECC based subpage write
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param struct nand_chip \*chip:
+        nand chip info structure
+
+    :param u32 offset:
+        column address of subpage within the page
+
+    :param u32 data_len:
+        data length
+
+    :param const u8 \*buf:
+        data buffer
+
+    :param int oob_required:
+        must write chip->oob_poi to OOB
+
+    :param int page:
+        page number to write
+
+.. _`omap_write_subpage_bch.description`:
+
+Description
+-----------
+
+OMAP optimized subpage write method.
 
 .. _`omap_read_page_bch`:
 

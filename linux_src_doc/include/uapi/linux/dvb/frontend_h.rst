@@ -1542,7 +1542,7 @@ u
     Union with the values for the command.
 
 result
-    Result of the command set (currently unused).
+    Unused
 
 .. _`dtv_property.description`:
 

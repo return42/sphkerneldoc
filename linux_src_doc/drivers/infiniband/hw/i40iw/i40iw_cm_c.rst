@@ -491,12 +491,12 @@ i40iw_handle_close_entry
 i40iw_cm_timer_tick
 ===================
 
-.. c:function:: void i40iw_cm_timer_tick(unsigned long pass)
+.. c:function:: void i40iw_cm_timer_tick(struct timer_list *t)
 
     system's timer expired callback
 
-    :param unsigned long pass:
-        Pointing to cm_core
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`i40iw_send_syn`:
 

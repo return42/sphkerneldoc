@@ -19,6 +19,7 @@ Definition
 
     enum mmc_drv_op {
         MMC_DRV_OP_IOCTL,
+        MMC_DRV_OP_IOCTL_RPMB,
         MMC_DRV_OP_BOOT_WP,
         MMC_DRV_OP_GET_CARD_STATUS,
         MMC_DRV_OP_GET_EXT_CSD
@@ -31,6 +32,9 @@ Constants
 
 MMC_DRV_OP_IOCTL
     ioctl operation
+
+MMC_DRV_OP_IOCTL_RPMB
+    RPMB-oriented ioctl operation
 
 MMC_DRV_OP_BOOT_WP
     write protect boot partitions

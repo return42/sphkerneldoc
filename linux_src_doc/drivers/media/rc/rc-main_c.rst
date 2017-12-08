@@ -297,12 +297,12 @@ remote control.
 ir_timer_keyup
 ==============
 
-.. c:function:: void ir_timer_keyup(unsigned long cookie)
+.. c:function:: void ir_timer_keyup(struct timer_list *t)
 
     generates a keyup event after a timeout
 
-    :param unsigned long cookie:
-        a pointer to the struct rc_dev for the device
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ir_timer_keyup.description`:
 

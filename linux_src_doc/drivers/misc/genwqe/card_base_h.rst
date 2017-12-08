@@ -100,6 +100,7 @@ Definition
         unsigned int size;
         struct list_head card_list;
         struct list_head pin_list;
+        int write;
     }
 
 .. _`dma_mapping.members`:
@@ -135,6 +136,9 @@ card_list
     *undescribed*
 
 pin_list
+    *undescribed*
+
+write
     *undescribed*
 
 .. _`ddcb_queue`:
@@ -497,6 +501,7 @@ Definition
         size_t sgl_size;
         void __user *user_addr;
         size_t user_size;
+        int write;
         unsigned long nr_pages;
         unsigned long fpage_offs;
         size_t fpage_size;
@@ -526,6 +531,9 @@ user_addr
 
 user_size
     size of user-space memory area
+
+write
+    should we write it back to userspace?
 
 nr_pages
     *undescribed*

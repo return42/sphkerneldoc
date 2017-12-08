@@ -176,7 +176,7 @@ __i40e_read_nvm_word
 
 .. c:function:: i40e_status __i40e_read_nvm_word(struct i40e_hw *hw, u16 offset, u16 *data)
 
-    Reads nvm word, assumes called does the locking
+    Reads nvm word, assumes caller does the locking
 
     :param struct i40e_hw \*hw:
         pointer to the HW structure

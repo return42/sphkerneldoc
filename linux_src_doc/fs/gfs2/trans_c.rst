@@ -22,7 +22,7 @@ This is used in two distinct cases
 ----------------------------------
 
 i) In ordered write mode
-We put the data buffer on a list so that we can ensure that its
+We put the data buffer on a list so that we can ensure that it's
 synced to disk at the right time
 ii) In journaled data mode
 We need to journal the data block in the same way as metadata in

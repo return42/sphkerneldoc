@@ -25,3 +25,4 @@ dac
     stm32-dac-core_c
     stm32-dac-core_h
     stm32-dac_c
+    ti-dac082s085_c

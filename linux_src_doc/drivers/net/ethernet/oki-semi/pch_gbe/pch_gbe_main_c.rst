@@ -490,12 +490,12 @@ pch_gbe_clean_rx_ring
 pch_gbe_watchdog
 ================
 
-.. c:function:: void pch_gbe_watchdog(unsigned long data)
+.. c:function:: void pch_gbe_watchdog(struct timer_list *t)
 
     Watchdog process
 
-    :param unsigned long data:
-        Board private structure
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`pch_gbe_tx_queue`:
 

@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/platform/x86/wmi.c
 
+.. _`set_required_buffer_size`:
+
+set_required_buffer_size
+========================
+
+.. c:function:: int set_required_buffer_size(struct wmi_device *wdev, u64 length)
+
+    Sets the buffer size needed for performing IOCTL
+
+    :param struct wmi_device \*wdev:
+        A wmi bus device from a driver
+
+    :param u64 length:
+        *undescribed*
+
+.. _`set_required_buffer_size.description`:
+
+Description
+-----------
+
+Allocates memory needed for buffer, stores the buffer size in that memory
+
 .. _`wmi_evaluate_method`:
 
 wmi_evaluate_method
@@ -28,6 +50,39 @@ wmi_evaluate_method
         *undescribed*
 
 .. _`wmi_evaluate_method.description`:
+
+Description
+-----------
+
+Call an ACPI-WMI method
+
+.. _`wmidev_evaluate_method`:
+
+wmidev_evaluate_method
+======================
+
+.. c:function:: acpi_status wmidev_evaluate_method(struct wmi_device *wdev, u8 instance, u32 method_id, const struct acpi_buffer *in, struct acpi_buffer *out)
+
+    Evaluate a WMI method
+
+    :param struct wmi_device \*wdev:
+        A wmi bus device from a driver
+
+    :param u8 instance:
+        Instance index
+
+    :param u32 method_id:
+        Method ID to call
+        \ :c:type:`struct in <in>`\ : Buffer containing input for the method call
+        \ :c:type:`struct out <out>`\ : Empty buffer to return the method results
+
+    :param const struct acpi_buffer \*in:
+        *undescribed*
+
+    :param struct acpi_buffer \*out:
+        *undescribed*
+
+.. _`wmidev_evaluate_method.description`:
 
 Description
 -----------

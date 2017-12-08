@@ -620,6 +620,7 @@ Definition
         atomic_t irq_sem;
         struct net_device *netdev;
         struct pci_dev *pdev;
+        int irq;
         struct net_device *polling_netdev;
         struct napi_struct napi;
         struct pch_gbe_hw hw;
@@ -634,7 +635,6 @@ Definition
         struct pch_gbe_rx_ring *rx_ring;
         unsigned long rx_buffer_len;
         unsigned long tx_queue_len;
-        bool have_msi;
         bool rx_stop_flag;
         int hwts_tx_en;
         int hwts_rx_en;
@@ -661,6 +661,9 @@ netdev
 
 pdev
     Pointer of pci device structure
+
+irq
+    *undescribed*
 
 polling_netdev
     Pointer of polling network device structure
@@ -703,9 +706,6 @@ rx_buffer_len
 
 tx_queue_len
     Transmit queue length
-
-have_msi
-    PCI MSI mode flag
 
 rx_stop_flag
     *undescribed*

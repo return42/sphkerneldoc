@@ -28,9 +28,6 @@ The command validator needs to reference BOs by their index within
 the submitted job's BO list.  This does the validation of the job's
 BO list and reference counting for the lifetime of the job.
 
-Note that this function doesn't need to unreference the BOs on
-failure, because that will happen at \ :c:func:`vc4_complete_exec`\  time.
-
 .. _`vc4_submit_cl_ioctl`:
 
 vc4_submit_cl_ioctl

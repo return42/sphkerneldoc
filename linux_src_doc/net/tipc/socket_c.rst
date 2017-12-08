@@ -41,6 +41,7 @@ Definition
         struct rhash_head node;
         struct tipc_mc_method mc_method;
         struct rcu_head rcu;
+        struct tipc_group *group;
     }
 
 .. _`tipc_sock.members`:
@@ -92,7 +93,7 @@ cong_link_cnt
     number of congested links
 
 snt_unacked
-    *undescribed*
+    # messages sent by socket, and not yet acked by peer
 
 snd_win
     *undescribed*
@@ -117,6 +118,9 @@ mc_method
 
 rcu
     rcu struct for tipc_sock
+
+group
+    *undescribed*
 
 .. _`tsk_advance_rx_queue`:
 
@@ -371,6 +375,152 @@ Description
 Called from function \ :c:func:`tipc_sendmsg`\ , which has done all sanity checks
 Returns the number of bytes sent on success, or errno
 
+.. _`tipc_send_group_msg`:
+
+tipc_send_group_msg
+===================
+
+.. c:function:: int tipc_send_group_msg(struct net *net, struct tipc_sock *tsk, struct msghdr *m, struct tipc_member *mb, u32 dnode, u32 dport, int dlen)
+
+    send a message to a member in the group
+
+    :param struct net \*net:
+        network namespace
+
+    :param struct tipc_sock \*tsk:
+        *undescribed*
+
+    :param struct msghdr \*m:
+        message to send
+
+    :param struct tipc_member \*mb:
+        group member
+
+    :param u32 dnode:
+        destination node
+
+    :param u32 dport:
+        destination port
+
+    :param int dlen:
+        total length of message data
+
+.. _`tipc_send_group_unicast`:
+
+tipc_send_group_unicast
+=======================
+
+.. c:function:: int tipc_send_group_unicast(struct socket *sock, struct msghdr *m, int dlen, long timeout)
+
+    send message to a member in the group
+
+    :param struct socket \*sock:
+        socket structure
+
+    :param struct msghdr \*m:
+        message to send
+
+    :param int dlen:
+        total length of message data
+
+    :param long timeout:
+        timeout to wait for wakeup
+
+.. _`tipc_send_group_unicast.description`:
+
+Description
+-----------
+
+Called from function \ :c:func:`tipc_sendmsg`\ , which has done all sanity checks
+Returns the number of bytes sent on success, or errno
+
+.. _`tipc_send_group_anycast`:
+
+tipc_send_group_anycast
+=======================
+
+.. c:function:: int tipc_send_group_anycast(struct socket *sock, struct msghdr *m, int dlen, long timeout)
+
+    send message to any member with given identity
+
+    :param struct socket \*sock:
+        socket structure
+
+    :param struct msghdr \*m:
+        message to send
+
+    :param int dlen:
+        total length of message data
+
+    :param long timeout:
+        timeout to wait for wakeup
+
+.. _`tipc_send_group_anycast.description`:
+
+Description
+-----------
+
+Called from function \ :c:func:`tipc_sendmsg`\ , which has done all sanity checks
+Returns the number of bytes sent on success, or errno
+
+.. _`tipc_send_group_bcast`:
+
+tipc_send_group_bcast
+=====================
+
+.. c:function:: int tipc_send_group_bcast(struct socket *sock, struct msghdr *m, int dlen, long timeout)
+
+    send message to all members in communication group
+
+    :param struct socket \*sock:
+        *undescribed*
+
+    :param struct msghdr \*m:
+        message to send
+
+    :param int dlen:
+        total length of message data
+
+    :param long timeout:
+        timeout to wait for wakeup
+
+.. _`tipc_send_group_bcast.description`:
+
+Description
+-----------
+
+Called from function \ :c:func:`tipc_sendmsg`\ , which has done all sanity checks
+Returns the number of bytes sent on success, or errno
+
+.. _`tipc_send_group_mcast`:
+
+tipc_send_group_mcast
+=====================
+
+.. c:function:: int tipc_send_group_mcast(struct socket *sock, struct msghdr *m, int dlen, long timeout)
+
+    send message to all members with given identity
+
+    :param struct socket \*sock:
+        socket structure
+
+    :param struct msghdr \*m:
+        message to send
+
+    :param int dlen:
+        total length of message data
+
+    :param long timeout:
+        timeout to wait for wakeup
+
+.. _`tipc_send_group_mcast.description`:
+
+Description
+-----------
+
+Called from function \ :c:func:`tipc_sendmsg`\ , which has done all sanity checks
+Returns the number of bytes sent on success, or errno
+
 .. _`tipc_sk_mcast_rcv`:
 
 tipc_sk_mcast_rcv
@@ -396,12 +546,12 @@ Description
 
 Multi-threaded: parallel calls with reference to same queues may occur
 
-.. _`tipc_sk_proto_rcv`:
+.. _`tipc_sk_conn_proto_rcv`:
 
-tipc_sk_proto_rcv
-=================
+tipc_sk_conn_proto_rcv
+======================
 
-.. c:function:: void tipc_sk_proto_rcv(struct tipc_sock *tsk, struct sk_buff *skb, struct sk_buff_head *xmitq)
+.. c:function:: void tipc_sk_conn_proto_rcv(struct tipc_sock *tsk, struct sk_buff *skb, struct sk_buff_head *xmitq)
 
     receive a connection mng protocol message
 
@@ -499,22 +649,22 @@ Used for SOCK_SEQPACKET messages.
 
 Returns the number of bytes sent on success, or errno otherwise
 
-.. _`set_orig_addr`:
+.. _`tipc_sk_set_orig_addr`:
 
-set_orig_addr
-=============
+tipc_sk_set_orig_addr
+=====================
 
-.. c:function:: void set_orig_addr(struct msghdr *m, struct tipc_msg *msg)
+.. c:function:: void tipc_sk_set_orig_addr(struct msghdr *m, struct sk_buff *skb)
 
     capture sender's address for received message
 
     :param struct msghdr \*m:
         descriptor for message info
 
-    :param struct tipc_msg \*msg:
-        received message header
+    :param struct sk_buff \*skb:
+        *undescribed*
 
-.. _`set_orig_addr.note`:
+.. _`tipc_sk_set_orig_addr.note`:
 
 Note
 ----
@@ -634,14 +784,14 @@ tipc_data_ready
     :param struct sock \*sk:
         socket
 
-.. _`filter_connect`:
+.. _`tipc_sk_filter_connect`:
 
-filter_connect
-==============
+tipc_sk_filter_connect
+======================
 
-.. c:function:: bool filter_connect(struct tipc_sock *tsk, struct sk_buff *skb)
+.. c:function:: bool tipc_sk_filter_connect(struct tipc_sock *tsk, struct sk_buff *skb)
 
-    Handle all incoming messages for a connection-based socket
+    Handle incoming message for a connection-based socket
 
     :param struct tipc_sock \*tsk:
         TIPC socket
@@ -649,7 +799,7 @@ filter_connect
     :param struct sk_buff \*skb:
         pointer to message buffer. Set to NULL if buffer is consumed
 
-.. _`filter_connect.description`:
+.. _`tipc_sk_filter_connect.description`:
 
 Description
 -----------
@@ -694,12 +844,12 @@ TIPC_CRITICAL_IMPORTANCE  (16 MB)
 
 Returns overload limit according to corresponding message importance
 
-.. _`filter_rcv`:
+.. _`tipc_sk_filter_rcv`:
 
-filter_rcv
-==========
+tipc_sk_filter_rcv
+==================
 
-.. c:function:: bool filter_rcv(struct sock *sk, struct sk_buff *skb, struct sk_buff_head *xmitq)
+.. c:function:: void tipc_sk_filter_rcv(struct sock *sk, struct sk_buff *skb, struct sk_buff_head *xmitq)
 
     validate incoming message
 
@@ -712,7 +862,7 @@ filter_rcv
     :param struct sk_buff_head \*xmitq:
         *undescribed*
 
-.. _`filter_rcv.description`:
+.. _`tipc_sk_filter_rcv.description`:
 
 Description
 -----------
@@ -722,14 +872,12 @@ disconnect indication for a connected socket.
 
 Called with socket lock already taken
 
-Returns true if message was added to socket receive queue, otherwise false
+.. _`tipc_sk_backlog_rcv`:
 
-.. _`tipc_backlog_rcv`:
+tipc_sk_backlog_rcv
+===================
 
-tipc_backlog_rcv
-================
-
-.. c:function:: int tipc_backlog_rcv(struct sock *sk, struct sk_buff *skb)
+.. c:function:: int tipc_sk_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 
     handle incoming message from backlog queue
 
@@ -739,14 +887,12 @@ tipc_backlog_rcv
     :param struct sk_buff \*skb:
         message
 
-.. _`tipc_backlog_rcv.description`:
+.. _`tipc_sk_backlog_rcv.description`:
 
 Description
 -----------
 
 Caller must hold socket lock
-
-Returns 0
 
 .. _`tipc_sk_enqueue`:
 

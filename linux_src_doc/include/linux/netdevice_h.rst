@@ -324,7 +324,7 @@ Definition
     struct net_device {
         char name[IFNAMSIZ];
         struct hlist_node name_hlist;
-        char *ifalias;
+        struct dev_ifalias __rcu *ifalias;
         unsigned long mem_end;
         unsigned long mem_start;
         unsigned long base_addr;
@@ -410,7 +410,7 @@ Definition
         struct vlan_info __rcu *vlan_info;
     #endif
     #if IS_ENABLED(CONFIG_NET_DSA)
-        struct dsa_switch_tree *dsa_ptr;
+        struct dsa_port *dsa_ptr;
     #endif
     #if IS_ENABLED(CONFIG_TIPC)
         struct tipc_bearer __rcu *tipc_ptr;
@@ -436,7 +436,7 @@ Definition
         rx_handler_func_t __rcu *rx_handler;
         void __rcu *rx_handler_data;
     #ifdef CONFIG_NET_CLS_ACT
-        struct tcf_proto __rcu *ingress_cl_list;
+        struct mini_Qdisc __rcu *miniq_ingress;
     #endif
         struct netdev_queue __rcu *ingress_queue;
     #ifdef CONFIG_NETFILTER_INGRESS
@@ -461,7 +461,7 @@ Definition
         struct xps_dev_maps __rcu *xps_maps;
     #endif
     #ifdef CONFIG_NET_CLS_ACT
-        struct tcf_proto __rcu *egress_cl_list;
+        struct mini_Qdisc __rcu *miniq_egress;
     #endif
         struct timer_list watchdog_timer;
         int __percpu *pcpu_refcnt;
@@ -822,8 +822,9 @@ rx_handler
 rx_handler_data
     XXX: need comments on this one
 
-ingress_cl_list
-    *undescribed*
+miniq_ingress
+    ingress/clsact qdisc specific data for
+    ingress processing
 
 ingress_queue
     XXX: need comments on this one
@@ -871,8 +872,9 @@ watchdog_timeo
 xps_maps
     XXX: need comments on this one
 
-egress_cl_list
-    *undescribed*
+miniq_egress
+    clsact qdisc specific data for
+    egress processing
 
 watchdog_timer
     List of timers

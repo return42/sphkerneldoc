@@ -62,10 +62,11 @@ i915
     intel_fifo_underrun_c
     intel_frontbuffer_c
     intel_frontbuffer_h
+    intel_guc_c
     intel_guc_ct_c
     intel_guc_ct_h
+    intel_guc_fw_c
     intel_guc_fwif_h
-    intel_guc_loader_c
     intel_guc_log_c
     intel_gvt_c
     intel_hotplug_c
@@ -81,9 +82,12 @@ i915
     intel_pm_c
     intel_psr_c
     intel_ringbuffer_c
+    intel_ringbuffer_h
     intel_runtime_pm_c
     intel_sdvo_c
     intel_sprite_c
     intel_tv_c
+    intel_uc_c
+    intel_uc_fw_c
     intel_uncore_c
     intel_vbt_defs_h

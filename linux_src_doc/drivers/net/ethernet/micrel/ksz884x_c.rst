@@ -4010,12 +4010,12 @@ Return 0 if successful; otherwise an error code.
 dev_monitor
 ===========
 
-.. c:function:: void dev_monitor(unsigned long ptr)
+.. c:function:: void dev_monitor(struct timer_list *t)
 
     periodic monitoring
 
-    :param unsigned long ptr:
-        Network device pointer.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`dev_monitor.description`:
 

@@ -194,8 +194,8 @@ irq
 wait
     wait queue that handles blocking reads of events
 
-16
-    *undescribed*
+events
+    KFIFO for the GPIO events
 
 read_lock
     mutex lock to protect reads from colliding with adding
@@ -232,53 +232,6 @@ gpio_chrdev_release
     :param struct file \*filp:
         file struct for storing private data
         Returns 0 on success
-
-.. _`gpiochip_add_data`:
-
-gpiochip_add_data
-=================
-
-.. c:function:: int gpiochip_add_data(struct gpio_chip *chip, void *data)
-
-    register a gpio_chip
-
-    :param struct gpio_chip \*chip:
-        the chip to register, with chip->base initialized
-
-    :param void \*data:
-        driver-private data associated with this chip
-
-.. _`gpiochip_add_data.context`:
-
-Context
--------
-
-potentially before irqs will work
-
-.. _`gpiochip_add_data.description`:
-
-Description
------------
-
-When \ :c:func:`gpiochip_add_data`\  is called very early during boot, so that GPIOs
-can be freely used, the chip->parent device must be registered before
-the gpio framework's \ :c:func:`arch_initcall`\ .  Otherwise sysfs initialization
-for GPIOs will fail rudely.
-
-\ :c:func:`gpiochip_add_data`\  must only be called after gpiolib initialization,
-ie after \ :c:func:`core_initcall`\ .
-
-If chip->base is negative, this requests dynamic assignment of
-a range of valid GPIOs.
-
-.. _`gpiochip_add_data.return`:
-
-Return
-------
-
-A negative errno if the chip can't be registered, such as because the
-chip->base is invalid or already associated with a different chip.
-Otherwise it returns zero as a success code.
 
 .. _`gpiochip_get_data`:
 
@@ -501,6 +454,21 @@ This function will set up the mapping for a certain IRQ line on a
 gpiochip by assigning the gpiochip as chip data, and using the irqchip
 stored inside the gpiochip.
 
+.. _`gpiochip_add_irqchip`:
+
+gpiochip_add_irqchip
+====================
+
+.. c:function:: int gpiochip_add_irqchip(struct gpio_chip *gpiochip, struct lock_class_key *lock_key)
+
+    adds an IRQ chip to a GPIO chip
+
+    :param struct gpio_chip \*gpiochip:
+        the GPIO chip to add the IRQ chip to
+
+    :param struct lock_class_key \*lock_key:
+        lockdep class
+
 .. _`gpiochip_irqchip_remove`:
 
 gpiochip_irqchip_remove
@@ -525,7 +493,7 @@ This is called only from \ :c:func:`gpiochip_remove`\
 gpiochip_irqchip_add_key
 ========================
 
-.. c:function:: int gpiochip_irqchip_add_key(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool nested, struct lock_class_key *lock_key)
+.. c:function:: int gpiochip_irqchip_add_key(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool threaded, struct lock_class_key *lock_key)
 
     adds an irqchip to a gpiochip
 
@@ -546,9 +514,8 @@ gpiochip_irqchip_add_key
         the default type for IRQs on this irqchip, pass IRQ_TYPE_NONE
         to have the core avoid setting up any default type in the hardware.
 
-    :param bool nested:
-        whether this is a nested irqchip calling \ :c:func:`handle_nested_irq`\ 
-        in its IRQ handler
+    :param bool threaded:
+        whether this irqchip uses a nested thread handler
 
     :param struct lock_class_key \*lock_key:
         lockdep class
@@ -933,6 +900,65 @@ account, or negative errno on failure.
 This function should be called from contexts where we cannot sleep, and will
 complain if the GPIO chip functions potentially sleep.
 
+.. _`gpiod_get_raw_array_value`:
+
+gpiod_get_raw_array_value
+=========================
+
+.. c:function:: int gpiod_get_raw_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+
+    read raw values from an array of GPIOs
+
+    :param unsigned int array_size:
+        number of elements in the descriptor / value arrays
+
+    :param struct gpio_desc \*\*desc_array:
+        array of GPIO descriptors whose values will be read
+
+    :param int \*value_array:
+        array to store the read values
+
+.. _`gpiod_get_raw_array_value.description`:
+
+Description
+-----------
+
+Read the raw values of the GPIOs, i.e. the values of the physical lines
+without regard for their ACTIVE_LOW status.  Return 0 in case of success,
+else an error code.
+
+This function should be called from contexts where we cannot sleep,
+and it will complain if the GPIO chip functions potentially sleep.
+
+.. _`gpiod_get_array_value`:
+
+gpiod_get_array_value
+=====================
+
+.. c:function:: int gpiod_get_array_value(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+
+    read values from an array of GPIOs
+
+    :param unsigned int array_size:
+        number of elements in the descriptor / value arrays
+
+    :param struct gpio_desc \*\*desc_array:
+        array of GPIO descriptors whose values will be read
+
+    :param int \*value_array:
+        array to store the read values
+
+.. _`gpiod_get_array_value.description`:
+
+Description
+-----------
+
+Read the logical values of the GPIOs, i.e. taking their ACTIVE_LOW status
+into account.  Return 0 in case of success, else an error code.
+
+This function should be called from contexts where we cannot sleep,
+and it will complain if the GPIO chip functions potentially sleep.
+
 .. _`gpiod_set_raw_value`:
 
 gpiod_set_raw_value
@@ -979,8 +1005,8 @@ gpiod_set_value
 Description
 -----------
 
-Set the logical value of the GPIO, i.e. taking its ACTIVE_LOW status into
-account
+Set the logical value of the GPIO, i.e. taking its ACTIVE_LOW,
+OPEN_DRAIN and OPEN_SOURCE flags into account.
 
 This function should be called from contexts where we cannot sleep, and will
 complain if the GPIO chip functions potentially sleep.
@@ -1162,6 +1188,63 @@ Description
 
 Return the GPIO's logical value, i.e. taking the ACTIVE_LOW status into
 account, or negative errno on failure.
+
+This function is to be called from contexts that can sleep.
+
+.. _`gpiod_get_raw_array_value_cansleep`:
+
+gpiod_get_raw_array_value_cansleep
+==================================
+
+.. c:function:: int gpiod_get_raw_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+
+    read raw values from an array of GPIOs
+
+    :param unsigned int array_size:
+        number of elements in the descriptor / value arrays
+
+    :param struct gpio_desc \*\*desc_array:
+        array of GPIO descriptors whose values will be read
+
+    :param int \*value_array:
+        array to store the read values
+
+.. _`gpiod_get_raw_array_value_cansleep.description`:
+
+Description
+-----------
+
+Read the raw values of the GPIOs, i.e. the values of the physical lines
+without regard for their ACTIVE_LOW status.  Return 0 in case of success,
+else an error code.
+
+This function is to be called from contexts that can sleep.
+
+.. _`gpiod_get_array_value_cansleep`:
+
+gpiod_get_array_value_cansleep
+==============================
+
+.. c:function:: int gpiod_get_array_value_cansleep(unsigned int array_size, struct gpio_desc **desc_array, int *value_array)
+
+    read values from an array of GPIOs
+
+    :param unsigned int array_size:
+        number of elements in the descriptor / value arrays
+
+    :param struct gpio_desc \*\*desc_array:
+        array of GPIO descriptors whose values will be read
+
+    :param int \*value_array:
+        array to store the read values
+
+.. _`gpiod_get_array_value_cansleep.description`:
+
+Description
+-----------
+
+Read the logical values of the GPIOs, i.e. taking their ACTIVE_LOW status
+into account.  Return 0 in case of success, else an error code.
 
 This function is to be called from contexts that can sleep.
 

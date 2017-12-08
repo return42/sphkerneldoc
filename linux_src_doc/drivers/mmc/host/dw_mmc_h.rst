@@ -132,7 +132,8 @@ timing
     Record of current ios timing.
 
 use_dma
-    Whether DMA channel is initialized or not.
+    Which DMA channel is in use for the current transfer, zero
+    denotes PIO mode.
 
 using_dma
     Whether DMA is in use for the current transfer.

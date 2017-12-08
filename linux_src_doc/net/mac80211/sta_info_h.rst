@@ -179,6 +179,7 @@ Definition
         struct timer_list session_timer;
         struct timer_list addba_resp_timer;
         struct sk_buff_head pending;
+        struct sta_info *sta;
         unsigned long state;
         unsigned long last_tx;
         u16 timeout;
@@ -189,6 +190,7 @@ Definition
         u16 failed_bar_ssn;
         bool bar_pending;
         bool amsdu;
+        u8 tid;
     }
 
 .. _`tid_ampdu_tx.members`:
@@ -207,6 +209,9 @@ addba_resp_timer
 
 pending
     pending frames queue -- use sta's spinlock to protect
+
+sta
+    station we are attached to
 
 state
     session state (see above)
@@ -237,6 +242,9 @@ bar_pending
 
 amsdu
     support A-MSDU withing A-MDPU
+
+tid
+    TID number
 
 .. _`tid_ampdu_tx.description`:
 
@@ -274,6 +282,7 @@ Definition
         u64 reorder_buf_filtered;
         struct sk_buff_head *reorder_buf;
         unsigned long *reorder_time;
+        struct sta_info *sta;
         struct timer_list session_timer;
         struct timer_list reorder_timer;
         unsigned long last_rx;
@@ -282,6 +291,7 @@ Definition
         u16 ssn;
         u16 buf_size;
         u16 timeout;
+        u8 tid;
         u8 auto_seq:1,removed:1, started:1;
     }
 
@@ -307,6 +317,9 @@ reorder_buf
 reorder_time
     jiffies when skb was added
 
+sta
+    station we are attached to
+
 session_timer
     check if peer keeps Tx-ing on the TID (by timeout value)
 
@@ -330,6 +343,9 @@ buf_size
 
 timeout
     reset timer value (in TUs).
+
+tid
+    TID number
 
 auto_seq
     used for offloaded BA sessions to automatically pick head_seq_and
@@ -597,6 +613,7 @@ Definition
 
     struct mesh_sta {
         struct timer_list plink_timer;
+        struct sta_info *plink_sta;
         s64 t_offset;
         s64 t_offset_setpoint;
         spinlock_t plink_lock;
@@ -621,6 +638,9 @@ Members
 
 plink_timer
     peer link watch timer
+
+plink_sta
+    peer link watch timer's sta_info
 
 t_offset
     timing offset relative to this host
@@ -668,15 +688,6 @@ nonpeer_pm
 
 fail_avg
     moving percentage of failed MSDUs
-
-.. _`sta_slow_threshold`:
-
-STA_SLOW_THRESHOLD
-==================
-
-.. c:function::  STA_SLOW_THRESHOLD()
-
-    station CoDel parameters will be scaled to be more lenient (to prevent starvation of slow stations). This value will be scaled by the number of active stations when it is being applied.
 
 .. _`sta_info`:
 
@@ -750,7 +761,6 @@ Definition
         } tx_stats;
         u16 tid_seq[IEEE80211_QOS_CTL_TID_MASK + 1];
         struct sta_ampdu_mlme ampdu_mlme;
-        u8 timer_to_tid[IEEE80211_NUM_TIDS];
     #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *debugfs_dir;
     #endif
@@ -890,9 +900,6 @@ tid_seq
 
 ampdu_mlme
     A-MPDU state machine state
-
-timer_to_tid
-    identity mapping to ID timers
 
 debugfs_dir
     debug filesystem directory dentry

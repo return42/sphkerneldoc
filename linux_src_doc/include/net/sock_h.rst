@@ -290,7 +290,10 @@ Definition
         int sk_wmem_queued;
         refcount_t sk_wmem_alloc;
         unsigned long sk_tsq_flags;
-        struct sk_buff *sk_send_head;
+        union {
+            struct sk_buff *sk_send_head;
+            struct rb_root tcp_rtx_queue;
+        } ;
         struct sk_buff_head sk_write_queue;
         __s32 sk_peek_off;
         int sk_write_pending;
@@ -321,11 +324,10 @@ Definition
     #define SK_FL_TYPE_SHIFT 16
     #define SK_FL_TYPE_MASK 0xffff0000
     #endif
-        kmemcheck_bitfield_begin(flags);
         unsigned int sk_padding : 1,sk_kern_sock : 1,sk_no_check_tx : 1,sk_no_check_rx : 1,sk_userlocks : 4,sk_protocol : 8, sk_type : 16;
     #define SK_PROTOCOL_MAX U8_MAX
-        kmemcheck_bitfield_end(flags);
         u16 sk_gso_max_segs;
+        u8 sk_pacing_shift;
         unsigned long sk_lingertime;
         struct proto *sk_prot_creator;
         rwlock_t sk_callback_lock;
@@ -432,8 +434,14 @@ sk_wmem_alloc
 sk_tsq_flags
     TCP Small Queues flags
 
+{unnamed_union}
+    anonymous
+
 sk_send_head
     front of stuff to transmit
+
+tcp_rtx_queue
+    *undescribed*
 
 sk_write_queue
     Packet sending queue
@@ -515,6 +523,9 @@ sk_type
 
 sk_gso_max_segs
     Maximum number of GSO segments
+
+sk_pacing_shift
+    scaling factor for TCP Small Queues
 
 sk_lingertime
     %SO_LINGER l_linger setting

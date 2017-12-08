@@ -103,10 +103,7 @@ indicate a pending reset to the given VF
 i40e_vc_disable_vf
 ==================
 
-.. c:function:: void i40e_vc_disable_vf(struct i40e_pf *pf, struct i40e_vf *vf)
-
-    :param struct i40e_pf \*pf:
-        pointer to the PF info
+.. c:function:: void i40e_vc_disable_vf(struct i40e_vf *vf)
 
     :param struct i40e_vf \*vf:
         pointer to the VF info
@@ -116,7 +113,7 @@ i40e_vc_disable_vf
 Description
 -----------
 
-Disable the VF through a SW reset
+Disable the VF through a SW reset.
 
 .. _`i40e_vc_isvalid_vsi_id`:
 
@@ -461,7 +458,7 @@ minimum amount of wait time has passed.
 i40e_reset_vf
 =============
 
-.. c:function:: void i40e_reset_vf(struct i40e_vf *vf, bool flr)
+.. c:function:: bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
 
     :param struct i40e_vf \*vf:
         pointer to the VF structure
@@ -474,14 +471,14 @@ i40e_reset_vf
 Description
 -----------
 
-reset the VF
+Returns true if the VF is reset, false otherwise.
 
 .. _`i40e_reset_all_vfs`:
 
 i40e_reset_all_vfs
 ==================
 
-.. c:function:: void i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+.. c:function:: bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
 
     :param struct i40e_pf \*pf:
         pointer to the PF structure
@@ -498,6 +495,8 @@ Reset all allocated VFs in one go. First, tell the hardware to reset each
 VF, then do all the waiting in one chunk, and finally finish restoring each
 VF after the wait. This is useful during PF routines which need to reset
 all VFs, as otherwise it must perform these resets in a serialized fashion.
+
+Returns true if any VFs were reset, and false otherwise.
 
 .. _`i40e_free_vfs`:
 
@@ -823,6 +822,32 @@ Description
 
 called from the VF to disable all or specific
 queue(s)
+
+.. _`i40e_vc_request_queues_msg`:
+
+i40e_vc_request_queues_msg
+==========================
+
+.. c:function:: int i40e_vc_request_queues_msg(struct i40e_vf *vf, u8 *msg, int msglen)
+
+    :param struct i40e_vf \*vf:
+        pointer to the VF info
+
+    :param u8 \*msg:
+        pointer to the msg buffer
+
+    :param int msglen:
+        msg length
+
+.. _`i40e_vc_request_queues_msg.description`:
+
+Description
+-----------
+
+VFs get a default number of queues but can use this message to request a
+different number.  If the request is successful, PF will reset the VF and
+return 0.  If unsuccessful, PF will send message informing VF of number of
+available queues and return result of sending VF a message.
 
 .. _`i40e_vc_get_stats_msg`:
 
@@ -1222,6 +1247,27 @@ Description
 -----------
 
 program VF mac address
+
+.. _`i40e_vsi_has_vlans`:
+
+i40e_vsi_has_vlans
+==================
+
+.. c:function:: bool i40e_vsi_has_vlans(struct i40e_vsi *vsi)
+
+    True if VSI has configured VLANs
+
+    :param struct i40e_vsi \*vsi:
+        pointer to the vsi
+
+.. _`i40e_vsi_has_vlans.description`:
+
+Description
+-----------
+
+Check if a VSI has configured any VLANs. False if we have a port VLAN or if
+we have no configured VLANs. Do not call while holding the
+mac_filter_hash_lock.
 
 .. _`i40e_ndo_set_vf_port_vlan`:
 

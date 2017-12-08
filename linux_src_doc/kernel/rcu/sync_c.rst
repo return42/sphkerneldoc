@@ -23,13 +23,17 @@ rcu_sync_enter_start
 
 .. c:function:: void rcu_sync_enter_start(struct rcu_sync *rsp)
 
+    Force readers onto slow path for multiple updates
+
     :param struct rcu_sync \*rsp:
-        *undescribed*
+        Pointer to rcu_sync structure to use for synchronization
 
 .. _`rcu_sync_enter_start.description`:
 
 Description
 -----------
+
+Must be called after \ :c:func:`rcu_sync_init`\  and before first use.
 
 Ensures \ :c:func:`rcu_sync_is_idle`\  returns false and rcu_sync_{enter,exit}()
 pairs turn into NO-OPs.
@@ -67,12 +71,12 @@ by \ :c:func:`rcu_sync_enter`\ , \ :c:func:`rcu_sync_exit`\ , and \ :c:func:`rcu
 rcu_sync_func
 =============
 
-.. c:function:: void rcu_sync_func(struct rcu_head *rcu)
+.. c:function:: void rcu_sync_func(struct rcu_head *rhp)
 
     Callback function managing reader access to fastpath
 
-    :param struct rcu_head \*rcu:
-        *undescribed*
+    :param struct rcu_head \*rhp:
+        Pointer to rcu_head in rcu_sync structure to use for synchronization
 
 .. _`rcu_sync_func.description`:
 

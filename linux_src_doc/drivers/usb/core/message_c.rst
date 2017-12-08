@@ -518,15 +518,18 @@ or \ ``NULL``\  if the index is 0 or the string could not be read.
 usb_get_status
 ==============
 
-.. c:function:: int usb_get_status(struct usb_device *dev, int type, int target, void *data)
+.. c:function:: int usb_get_status(struct usb_device *dev, int recip, int type, int target, void *data)
 
     issues a GET_STATUS call
 
     :param struct usb_device \*dev:
         the device whose status is being checked
 
-    :param int type:
+    :param int recip:
         USB_RECIP_*; for device, interface, or endpoint
+
+    :param int type:
+        USB_STATUS_TYPE_*; for standard or PTM status types
 
     :param int target:
         zero (for device), else interface or endpoint number

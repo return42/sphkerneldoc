@@ -162,6 +162,27 @@ Description
 
 Call this to stop the system keeping track of this URB
 
+.. _`usb_urb_ep_type_check`:
+
+usb_urb_ep_type_check
+=====================
+
+.. c:function:: int usb_urb_ep_type_check(const struct urb *urb)
+
+    sanity check of endpoint in the given urb
+
+    :param const struct urb \*urb:
+        urb to be checked
+
+.. _`usb_urb_ep_type_check.description`:
+
+Description
+-----------
+
+This performs a light-weight sanity check for the endpoint in the
+given urb.  It returns 0 if the urb contains a valid endpoint, otherwise
+a negative error code.
+
 .. _`usb_submit_urb`:
 
 usb_submit_urb

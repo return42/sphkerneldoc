@@ -27,9 +27,9 @@ Definition
         u8 rsvd2[4];
         __be32 u_mcast_dlid;
         __be32 u_ucast_dlid[OPA_VESW_MAX_NUM_DEF_PORT];
-        u8 rsvd3[44];
-        __be16 eth_mtu[OPA_VNIC_MAX_NUM_PCP];
-        __be16 eth_mtu_non_vlan;
+        __be32 rc;
+        u8 rsvd3[56];
+        __be16 eth_mtu;
         u8 rsvd4[2];
     }
 
@@ -65,14 +65,14 @@ u_mcast_dlid
 u_ucast_dlid
     array of unknown unicast dlids
 
+rc
+    routing control
+
 rsvd3
     *undescribed*
 
 eth_mtu
-    MTUs for each vlan PCP
-
-eth_mtu_non_vlan
-    MTU for non vlan packets
+    Ethernet MTU
 
 rsvd4
     *undescribed*

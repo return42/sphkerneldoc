@@ -1364,12 +1364,12 @@ waiting for it, and we can't msleep in a timer.
 e1000_update_phy_info
 =====================
 
-.. c:function:: void e1000_update_phy_info(unsigned long data)
+.. c:function:: void e1000_update_phy_info(struct timer_list *t)
 
     timre call-back to update PHY info
 
-    :param unsigned long data:
-        pointer to adapter cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`e1000_update_phy_info.description`:
 
@@ -1427,12 +1427,12 @@ e1000_phy_read_status
 e1000_watchdog
 ==============
 
-.. c:function:: void e1000_watchdog(unsigned long data)
+.. c:function:: void e1000_watchdog(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to adapter cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`e1000_tx_timeout`:
 

@@ -179,9 +179,9 @@ schedule_nes_timer
 nes_cm_timer_tick
 =================
 
-.. c:function:: void nes_cm_timer_tick(unsigned long pass)
+.. c:function:: void nes_cm_timer_tick(struct timer_list *unused)
 
-    :param unsigned long pass:
+    :param struct timer_list \*unused:
         *undescribed*
 
 .. _`send_syn`:

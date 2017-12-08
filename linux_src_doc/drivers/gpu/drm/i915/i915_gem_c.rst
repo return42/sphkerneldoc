@@ -6,7 +6,7 @@
 i915_gem_object_wait
 ====================
 
-.. c:function:: int i915_gem_object_wait(struct drm_i915_gem_object *obj, unsigned int flags, long timeout, struct intel_rps_client *rps)
+.. c:function:: int i915_gem_object_wait(struct drm_i915_gem_object *obj, unsigned int flags, long timeout, struct intel_rps_client *rps_client)
 
     :param struct drm_i915_gem_object \*obj:
         i915 gem object
@@ -17,8 +17,8 @@ i915_gem_object_wait
     :param long timeout:
         how long to wait
 
-    :param struct intel_rps_client \*rps:
-        client (user process) to charge for any waitboosting
+    :param struct intel_rps_client \*rps_client:
+        *undescribed*
 
 .. _`i915_gem_create_ioctl`:
 

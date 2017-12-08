@@ -9,6 +9,7 @@ lib
 
     cmdline_c
     csum-wrappers_64_c
+    insn-eval_c
     insn_c
     msr_c
     usercopy_32_c

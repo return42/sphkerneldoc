@@ -368,12 +368,12 @@ Reschedule the timer using tp_vars->rto as delay
 batadv_tp_sender_timeout
 ========================
 
-.. c:function:: void batadv_tp_sender_timeout(unsigned long arg)
+.. c:function:: void batadv_tp_sender_timeout(struct timer_list *t)
 
     timer that fires in case of packet loss
 
-    :param unsigned long arg:
-        address of the related tp_vars
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`batadv_tp_sender_timeout.description`:
 
@@ -614,12 +614,12 @@ start the receiver shutdown timer or reset it if already started
 batadv_tp_receiver_shutdown
 ===========================
 
-.. c:function:: void batadv_tp_receiver_shutdown(unsigned long arg)
+.. c:function:: void batadv_tp_receiver_shutdown(struct timer_list *t)
 
     stop a tp meter receiver when timeout is reached without received ack
 
-    :param unsigned long arg:
-        address of the related tp_vars
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`batadv_tp_send_ack`:
 

@@ -33,7 +33,7 @@ Returns next bit offset, or size if nothing found.
 radix_tree_shrink
 =================
 
-.. c:function:: bool radix_tree_shrink(struct radix_tree_root *root, radix_tree_update_node_t update_node, void *private)
+.. c:function:: bool radix_tree_shrink(struct radix_tree_root *root, radix_tree_update_node_t update_node)
 
     shrink radix tree to minimum height \ ``root``\            radix tree root
 
@@ -41,9 +41,6 @@ radix_tree_shrink
         *undescribed*
 
     :param radix_tree_update_node_t update_node:
-        *undescribed*
-
-    :param void \*private:
         *undescribed*
 
 .. _`__radix_tree_create`:
@@ -205,7 +202,7 @@ returned item, however.
 __radix_tree_replace
 ====================
 
-.. c:function:: void __radix_tree_replace(struct radix_tree_root *root, struct radix_tree_node *node, void __rcu **slot, void *item, radix_tree_update_node_t update_node, void *private)
+.. c:function:: void __radix_tree_replace(struct radix_tree_root *root, struct radix_tree_node *node, void __rcu **slot, void *item, radix_tree_update_node_t update_node)
 
     replace item in a slot
 
@@ -223,9 +220,6 @@ __radix_tree_replace
 
     :param radix_tree_update_node_t update_node:
         callback for changing leaf nodes
-
-    :param void \*private:
-        private data to pass to \ ``update_node``\ 
 
 .. _`__radix_tree_replace.description`:
 
@@ -671,7 +665,7 @@ returns the number of slots which were placed at \*@results.
 __radix_tree_delete_node
 ========================
 
-.. c:function:: void __radix_tree_delete_node(struct radix_tree_root *root, struct radix_tree_node *node, radix_tree_update_node_t update_node, void *private)
+.. c:function:: void __radix_tree_delete_node(struct radix_tree_root *root, struct radix_tree_node *node, radix_tree_update_node_t update_node)
 
     try to free node after clearing a slot
 
@@ -683,9 +677,6 @@ __radix_tree_delete_node
 
     :param radix_tree_update_node_t update_node:
         callback for changing leaf nodes
-
-    :param void \*private:
-        private data to pass to \ ``update_node``\ 
 
 .. _`__radix_tree_delete_node.description`:
 

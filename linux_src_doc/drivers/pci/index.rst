@@ -15,7 +15,6 @@ pci
     access_c
     ats_c
     bus_c
-    htirq_c
     iov_c
     irq_c
     msi_c

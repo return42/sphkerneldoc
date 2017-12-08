@@ -9,3 +9,4 @@ livepatch
 
     core_c
     patch_h
+    shadow_c

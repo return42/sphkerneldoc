@@ -13,3 +13,4 @@ bus
     omap_l3_noc_h
     qcom-ebi2_c
     sunxi-rsb_c
+    ti-sysc_c

@@ -232,5 +232,97 @@ controller. Makes sure all PCIe paths are disconnected.
 
 Return \ ``0``\  on success and negative errno in case of error.
 
+.. _`tb_domain_approve_xdomain_paths`:
+
+tb_domain_approve_xdomain_paths
+===============================
+
+.. c:function:: int tb_domain_approve_xdomain_paths(struct tb *tb, struct tb_xdomain *xd)
+
+    Enable DMA paths for XDomain
+
+    :param struct tb \*tb:
+        Domain enabling the DMA paths
+
+    :param struct tb_xdomain \*xd:
+        XDomain DMA paths are created to
+
+.. _`tb_domain_approve_xdomain_paths.description`:
+
+Description
+-----------
+
+Calls connection manager specific method to enable DMA paths to the
+XDomain in question.
+
+.. _`tb_domain_approve_xdomain_paths.return`:
+
+Return
+------
+
+0% in case of success and negative errno otherwise. In
+particular returns \ ``-ENOTSUPP``\  if the connection manager
+implementation does not support XDomains.
+
+.. _`tb_domain_disconnect_xdomain_paths`:
+
+tb_domain_disconnect_xdomain_paths
+==================================
+
+.. c:function:: int tb_domain_disconnect_xdomain_paths(struct tb *tb, struct tb_xdomain *xd)
+
+    Disable DMA paths for XDomain
+
+    :param struct tb \*tb:
+        Domain disabling the DMA paths
+
+    :param struct tb_xdomain \*xd:
+        XDomain whose DMA paths are disconnected
+
+.. _`tb_domain_disconnect_xdomain_paths.description`:
+
+Description
+-----------
+
+Calls connection manager specific method to disconnect DMA paths to
+the XDomain in question.
+
+.. _`tb_domain_disconnect_xdomain_paths.return`:
+
+Return
+------
+
+0% in case of success and negative errno otherwise. In
+particular returns \ ``-ENOTSUPP``\  if the connection manager
+implementation does not support XDomains.
+
+.. _`tb_domain_disconnect_all_paths`:
+
+tb_domain_disconnect_all_paths
+==============================
+
+.. c:function:: int tb_domain_disconnect_all_paths(struct tb *tb)
+
+    Disconnect all paths for the domain
+
+    :param struct tb \*tb:
+        Domain whose paths are disconnected
+
+.. _`tb_domain_disconnect_all_paths.description`:
+
+Description
+-----------
+
+This function can be used to disconnect all paths (PCIe, XDomain) for
+example in preparation for host NVM firmware upgrade. After this is
+called the paths cannot be established without resetting the switch.
+
+.. _`tb_domain_disconnect_all_paths.return`:
+
+Return
+------
+
+%0 in case of success and negative errno otherwise.
+
 .. This file was automatic generated / don't edit.
 

@@ -382,12 +382,12 @@ promiscuous mode, and all-multi behavior.
 ixgb_watchdog
 =============
 
-.. c:function:: void ixgb_watchdog(unsigned long data)
+.. c:function:: void ixgb_watchdog(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to netdev cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ixgb_tx_timeout`:
 

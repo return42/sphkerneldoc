@@ -11,7 +11,7 @@ srcu_read_lock_held
     might we be in SRCU read-side critical section?
 
     :param struct srcu_struct \*sp:
-        *undescribed*
+        The srcu_struct structure to check
 
 .. _`srcu_read_lock_held.description`:
 

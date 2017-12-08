@@ -359,7 +359,7 @@ none
 ipr_do_req
 ==========
 
-.. c:function:: void ipr_do_req(struct ipr_cmnd *ipr_cmd, void (*done)(struct ipr_cmnd *), void (*timeout_func)(struct ipr_cmnd *), u32 timeout)
+.. c:function:: void ipr_do_req(struct ipr_cmnd *ipr_cmd, void (*done)(struct ipr_cmnd *), void (*timeout_func)(struct timer_list *), u32 timeout)
 
     Send driver initiated requests.
 
@@ -369,7 +369,7 @@ ipr_do_req
     :param void (\*done)(struct ipr_cmnd \*):
         done function
 
-    :param void (\*timeout_func)(struct ipr_cmnd \*):
+    :param void (\*timeout_func)(struct timer_list \*):
         timeout function
 
     :param u32 timeout:
@@ -458,14 +458,14 @@ nothing
 ipr_send_blocking_cmd
 =====================
 
-.. c:function:: void ipr_send_blocking_cmd(struct ipr_cmnd *ipr_cmd, void (*timeout_func)(struct ipr_cmnd *ipr_cmd), u32 timeout)
+.. c:function:: void ipr_send_blocking_cmd(struct ipr_cmnd *ipr_cmd, void (*timeout_func)(struct timer_list *), u32 timeout)
 
     Send command and sleep on its completion.
 
     :param struct ipr_cmnd \*ipr_cmd:
         ipr command struct
 
-    :param void (\*timeout_func)(struct ipr_cmnd \*ipr_cmd):
+    :param void (\*timeout_func)(struct timer_list \*):
         function to invoke if command times out
 
     :param u32 timeout:
@@ -1350,12 +1350,12 @@ none
 ipr_timeout
 ===========
 
-.. c:function:: void ipr_timeout(struct ipr_cmnd *ipr_cmd)
+.. c:function:: void ipr_timeout(struct timer_list *t)
 
     An internally generated op has timed out.
 
-    :param struct ipr_cmnd \*ipr_cmd:
-        ipr command struct
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ipr_timeout.description`:
 
@@ -1377,12 +1377,12 @@ none
 ipr_oper_timeout
 ================
 
-.. c:function:: void ipr_oper_timeout(struct ipr_cmnd *ipr_cmd)
+.. c:function:: void ipr_oper_timeout(struct timer_list *t)
 
     Adapter timed out transitioning to operational
 
-    :param struct ipr_cmnd \*ipr_cmd:
-        ipr command struct
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ipr_oper_timeout.description`:
 
@@ -2953,12 +2953,12 @@ none
 ipr_abort_timeout
 =================
 
-.. c:function:: void ipr_abort_timeout(struct ipr_cmnd *ipr_cmd)
+.. c:function:: void ipr_abort_timeout(struct timer_list *t)
 
     An abort task has timed out
 
-    :param struct ipr_cmnd \*ipr_cmd:
-        ipr command struct
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ipr_abort_timeout.description`:
 
@@ -4512,12 +4512,12 @@ IPR_RC_JOB_RETURN
 ipr_reset_timer_done
 ====================
 
-.. c:function:: void ipr_reset_timer_done(struct ipr_cmnd *ipr_cmd)
+.. c:function:: void ipr_reset_timer_done(struct timer_list *t)
 
     Adapter reset timer function
 
-    :param struct ipr_cmnd \*ipr_cmd:
-        ipr command struct
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ipr_reset_timer_done.description`:
 

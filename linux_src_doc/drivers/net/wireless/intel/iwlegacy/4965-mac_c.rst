@@ -417,11 +417,11 @@ Does NOT free the TFD itself (which is within circular buffer)
 il4965_bg_stats_periodic
 ========================
 
-.. c:function:: void il4965_bg_stats_periodic(unsigned long data)
+.. c:function:: void il4965_bg_stats_periodic(struct timer_list *t)
 
     Timer callback to queue stats
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`il4965_bg_stats_periodic.description`:

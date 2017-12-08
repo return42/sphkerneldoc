@@ -147,7 +147,7 @@ This is done to accelerate the reclaim of \ ``page``\ .
 release_pages
 =============
 
-.. c:function:: void release_pages(struct page **pages, int nr, bool cold)
+.. c:function:: void release_pages(struct page **pages, int nr)
 
     batched \ :c:func:`put_page`\ 
 
@@ -156,9 +156,6 @@ release_pages
 
     :param int nr:
         number of pages
-
-    :param bool cold:
-        whether the pages are cache cold
 
 .. _`release_pages.description`:
 

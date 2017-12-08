@@ -255,15 +255,12 @@ flags
 genlmsg_nlhdr
 =============
 
-.. c:function:: struct nlmsghdr *genlmsg_nlhdr(void *user_hdr, const struct genl_family *family)
+.. c:function:: struct nlmsghdr *genlmsg_nlhdr(void *user_hdr)
 
     Obtain netlink header from user specified header
 
     :param void \*user_hdr:
         user header as returned from \ :c:func:`genlmsg_put`\ 
-
-    :param const struct genl_family \*family:
-        generic netlink family
 
 .. _`genlmsg_nlhdr.description`:
 
@@ -304,7 +301,7 @@ genlmsg_parse
 genl_dump_check_consistent
 ==========================
 
-.. c:function:: void genl_dump_check_consistent(struct netlink_callback *cb, void *user_hdr, const struct genl_family *family)
+.. c:function:: void genl_dump_check_consistent(struct netlink_callback *cb, void *user_hdr)
 
     check if sequence is consistent and advertise if not
 
@@ -313,9 +310,6 @@ genl_dump_check_consistent
 
     :param void \*user_hdr:
         user header as returned from \ :c:func:`genlmsg_put`\ 
-
-    :param const struct genl_family \*family:
-        generic netlink family
 
 .. _`genl_dump_check_consistent.description`:
 

@@ -204,12 +204,12 @@ ioctl_done
 lld_timedout
 ============
 
-.. c:function:: void lld_timedout(unsigned long ptr)
+.. c:function:: void lld_timedout(struct timer_list *t)
 
     callback from the expired timer
 
-    :param unsigned long ptr:
-        ioctl packet that timed out
+    :param struct timer_list \*t:
+        timer that timed out
 
 .. _`kioc_to_mimd`:
 

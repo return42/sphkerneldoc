@@ -218,7 +218,7 @@ is_kicker
 cgs_alloc_gpu_mem_t
 ===================
 
-.. c:function:: int cgs_alloc_gpu_mem_t(struct cgs_device *cgs_device, enum cgs_gpu_mem_type type, uint64_t size, uint64_t align, uint64_t min_offset, uint64_t max_offset, cgs_handle_t *handle)
+.. c:function:: int cgs_alloc_gpu_mem_t(struct cgs_device *cgs_device, enum cgs_gpu_mem_type type, uint64_t size, uint64_t align, cgs_handle_t *handle)
 
     Allocate GPU memory
 
@@ -233,12 +233,6 @@ cgs_alloc_gpu_mem_t
 
     :param uint64_t align:
         alignment in bytes
-
-    :param uint64_t min_offset:
-        minimum offset from start of heap
-
-    :param uint64_t max_offset:
-        maximum offset from start of heap
 
     :param cgs_handle_t \*handle:
         memory handle (output)

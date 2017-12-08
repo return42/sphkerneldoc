@@ -101,7 +101,7 @@ Undoes \ :c:func:`configfs_register_group`\
 configfs_register_default_group
 ===============================
 
-.. c:function:: struct config_group *configfs_register_default_group(struct config_group *parent_group, const char *name, struct config_item_type *item_type)
+.. c:function:: struct config_group *configfs_register_default_group(struct config_group *parent_group, const char *name, const struct config_item_type *item_type)
 
     allocates and registers a child group
 
@@ -111,7 +111,7 @@ configfs_register_default_group
     :param const char \*name:
         child group name
 
-    :param struct config_item_type \*item_type:
+    :param const struct config_item_type \*item_type:
         child item type description
 
 .. _`configfs_register_default_group.description`:

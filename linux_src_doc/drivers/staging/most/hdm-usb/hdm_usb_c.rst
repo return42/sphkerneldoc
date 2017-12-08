@@ -527,12 +527,12 @@ polls for the NI state of the INIC every 2 seconds.
 link_stat_timer_handler
 =======================
 
-.. c:function:: void link_stat_timer_handler(unsigned long data)
+.. c:function:: void link_stat_timer_handler(struct timer_list *t)
 
     schedule work obtaining mac address and link status
 
-    :param unsigned long data:
-        pointer to USB device instance
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`link_stat_timer_handler.description`:
 

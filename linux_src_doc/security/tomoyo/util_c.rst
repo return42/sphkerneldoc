@@ -6,12 +6,12 @@
 tomoyo_convert_time
 ===================
 
-.. c:function:: void tomoyo_convert_time(time_t time, struct tomoyo_time *stamp)
+.. c:function:: void tomoyo_convert_time(time64_t time64, struct tomoyo_time *stamp)
 
     Convert time_t to YYYY/MM/DD hh/mm/ss.
 
-    :param time_t time:
-        Seconds since 1970/01/01 00:00:00.
+    :param time64_t time64:
+        *undescribed*
 
     :param struct tomoyo_time \*stamp:
         Pointer to "struct tomoyo_time".
@@ -22,8 +22,6 @@ Description
 -----------
 
 Returns nothing.
-
-This function does not handle Y2038 problem.
 
 .. _`tomoyo_permstr`:
 

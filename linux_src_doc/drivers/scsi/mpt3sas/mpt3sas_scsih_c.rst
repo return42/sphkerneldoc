@@ -221,14 +221,14 @@ Refer to \_scsi_send_scsi_io().
 _scsih_set_debug_level
 ======================
 
-.. c:function:: int _scsih_set_debug_level(const char *val, struct kernel_param *kp)
+.. c:function:: int _scsih_set_debug_level(const char *val, const struct kernel_param *kp)
 
     global setting of ioc->logging_level.
 
     :param const char \*val:
         *undescribed*
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         *undescribed*
 
 .. _`_scsih_set_debug_level.note`:
@@ -371,7 +371,7 @@ Returns 0 success, non-zero when failure
 _scsih_determine_boot_device
 ============================
 
-.. c:function:: void _scsih_determine_boot_device(struct MPT3SAS_ADAPTER *ioc, void *device, u8 is_raid)
+.. c:function:: void _scsih_determine_boot_device(struct MPT3SAS_ADAPTER *ioc, void *device, u32 channel)
 
     determine boot device.
 
@@ -379,10 +379,10 @@ _scsih_determine_boot_device
         per adapter object
 
     :param void \*device:
-        either sas_device or raid_device object
+        sas_device or pcie_device object
 
-    :param u8 is_raid:
-        [flag] 1 = raid object, 0 = sas object
+    :param u32 channel:
+        SAS or PCIe channel
 
 .. _`_scsih_determine_boot_device.description`:
 
@@ -393,8 +393,38 @@ Determines whether this device should be first reported device to
 to scsi-ml or sas transport, this purpose is for persistent boot device.
 There are primary, alternate, and current entries in bios page 2. The order
 priority is primary, alternate, then current.  This routine saves
-the corresponding device object and is_raid flag in the ioc object.
+the corresponding device object.
 The saved data to be used later in \_scsih_probe_boot_devices().
+
+.. _`mpt3sas_get_pdev_from_target`:
+
+mpt3sas_get_pdev_from_target
+============================
+
+.. c:function:: struct _pcie_device *mpt3sas_get_pdev_from_target(struct MPT3SAS_ADAPTER *ioc, struct MPT3SAS_TARGET *tgt_priv)
+
+    pcie device search
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct MPT3SAS_TARGET \*tgt_priv:
+        starget private object
+
+.. _`mpt3sas_get_pdev_from_target.context`:
+
+Context
+-------
+
+This function will acquire ioc->pcie_device_lock and will release
+before returning the pcie_device object.
+
+.. _`mpt3sas_get_pdev_from_target.description`:
+
+Description
+-----------
+
+This searches for pcie_device from target, then return pcie_device object.
 
 .. _`mpt3sas_get_sdev_by_addr`:
 
@@ -455,6 +485,34 @@ Description
 
 This searches for sas_device based on sas_address, then return sas_device
 object.
+
+.. _`_scsih_display_enclosure_chassis_info`:
+
+_scsih_display_enclosure_chassis_info
+=====================================
+
+.. c:function:: void _scsih_display_enclosure_chassis_info(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device, struct scsi_device *sdev, struct scsi_target *starget)
+
+    display device location info
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct _sas_device \*sas_device:
+        per sas device object
+
+    :param struct scsi_device \*sdev:
+        scsi device struct
+
+    :param struct scsi_target \*starget:
+        scsi target struct
+
+.. _`_scsih_display_enclosure_chassis_info.description`:
+
+Description
+-----------
+
+Returns nothing.
 
 .. _`_scsih_sas_device_remove`:
 
@@ -586,6 +644,140 @@ Description
 -----------
 
 Adding new object at driver load time to the ioc->sas_device_init_list.
+
+.. _`mpt3sas_get_pdev_by_wwid`:
+
+mpt3sas_get_pdev_by_wwid
+========================
+
+.. c:function:: struct _pcie_device *mpt3sas_get_pdev_by_wwid(struct MPT3SAS_ADAPTER *ioc, u64 wwid)
+
+    pcie device search
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u64 wwid:
+        wwid
+
+.. _`mpt3sas_get_pdev_by_wwid.context`:
+
+Context
+-------
+
+This function will acquire ioc->pcie_device_lock and will release
+before returning the pcie_device object.
+
+.. _`mpt3sas_get_pdev_by_wwid.description`:
+
+Description
+-----------
+
+This searches for pcie_device based on wwid, then return pcie_device object.
+
+.. _`mpt3sas_get_pdev_by_handle`:
+
+mpt3sas_get_pdev_by_handle
+==========================
+
+.. c:function:: struct _pcie_device *mpt3sas_get_pdev_by_handle(struct MPT3SAS_ADAPTER *ioc, u16 handle)
+
+    pcie device search
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 handle:
+        Firmware device handle
+
+.. _`mpt3sas_get_pdev_by_handle.context`:
+
+Context
+-------
+
+This function will acquire ioc->pcie_device_lock and will release
+before returning the pcie_device object.
+
+.. _`mpt3sas_get_pdev_by_handle.description`:
+
+Description
+-----------
+
+This searches for pcie_device based on handle, then return pcie_device
+object.
+
+.. _`_scsih_pcie_device_remove`:
+
+_scsih_pcie_device_remove
+=========================
+
+.. c:function:: void _scsih_pcie_device_remove(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
+
+    remove pcie_device from list.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct _pcie_device \*pcie_device:
+        the pcie_device object
+
+.. _`_scsih_pcie_device_remove.context`:
+
+Context
+-------
+
+This function will acquire ioc->pcie_device_lock.
+
+.. _`_scsih_pcie_device_remove.description`:
+
+Description
+-----------
+
+If pcie_device is on the list, remove it and decrement its reference count.
+
+.. _`_scsih_pcie_device_remove_by_handle`:
+
+_scsih_pcie_device_remove_by_handle
+===================================
+
+.. c:function:: void _scsih_pcie_device_remove_by_handle(struct MPT3SAS_ADAPTER *ioc, u16 handle)
+
+    removing pcie device object by handle
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 handle:
+        device handle
+
+.. _`_scsih_pcie_device_remove_by_handle.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_scsih_pcie_device_add`:
+
+_scsih_pcie_device_add
+======================
+
+.. c:function:: void _scsih_pcie_device_add(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
+
+    add pcie_device object
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct _pcie_device \*pcie_device:
+        pcie_device object
+
+.. _`_scsih_pcie_device_add.description`:
+
+Description
+-----------
+
+This is added to the pcie_device_list link list.
 
 .. _`_scsih_raid_device_find_by_id`:
 
@@ -833,6 +1025,32 @@ Description
 -----------
 
 Returns 1 if end device.
+
+.. _`_scsih_is_nvme_device`:
+
+_scsih_is_nvme_device
+=====================
+
+.. c:function:: int _scsih_is_nvme_device(u32 device_info)
+
+    determines if device is an nvme device
+
+    :param u32 device_info:
+        bitfield providing information about the device.
+
+.. _`_scsih_is_nvme_device.context`:
+
+Context
+-------
+
+none
+
+.. _`_scsih_is_nvme_device.description`:
+
+Description
+-----------
+
+Returns 1 if nvme device.
 
 .. _`_scsih_scsi_lookup_get`:
 
@@ -1810,6 +2028,27 @@ Description
 This routine set sdev state to SDEV_BLOCK for all devices
 direct attached during device pull.
 
+.. _`_scsih_block_io_to_pcie_children_attached_directly`:
+
+_scsih_block_io_to_pcie_children_attached_directly
+==================================================
+
+.. c:function:: void _scsih_block_io_to_pcie_children_attached_directly(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi26EventDataPCIeTopologyChangeList_t \*event_data:
+        topology change event data
+
+.. _`_scsih_block_io_to_pcie_children_attached_directly.description`:
+
+Description
+-----------
+
+This routine set sdev state to SDEV_BLOCK for all devices
+direct attached during device pull/reconnect.
+
 .. _`_scsih_tm_tr_send`:
 
 _scsih_tm_tr_send
@@ -2132,6 +2371,33 @@ the routine will void any pending add events waiting in the event queue.
 
 Return nothing.
 
+.. _`_scsih_check_pcie_topo_remove_events`:
+
+_scsih_check_pcie_topo_remove_events
+====================================
+
+.. c:function:: void _scsih_check_pcie_topo_remove_events(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
+
+    sanity check on topo events
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi26EventDataPCIeTopologyChangeList_t \*event_data:
+        the event data payload
+
+.. _`_scsih_check_pcie_topo_remove_events.description`:
+
+Description
+-----------
+
+This handles the case where driver receives multiple switch
+or device add and delete events in a single shot.  When there
+is a delete event the routine will void any pending add
+events waiting in the event queue.
+
+Return nothing.
+
 .. _`_scsih_set_volume_delete_flag`:
 
 _scsih_set_volume_delete_flag
@@ -2305,7 +2571,7 @@ Return nothing.
 _scsih_setup_eedp
 =================
 
-.. c:function:: void _scsih_setup_eedp(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, Mpi2SCSIIORequest_t *mpi_request)
+.. c:function:: void _scsih_setup_eedp(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, Mpi25SCSIIORequest_t *mpi_request)
 
     setup MPI request for EEDP transfer
 
@@ -2315,7 +2581,7 @@ _scsih_setup_eedp
     :param struct scsi_cmnd \*scmd:
         pointer to scsi command object
 
-    :param Mpi2SCSIIORequest_t \*mpi_request:
+    :param Mpi25SCSIIORequest_t \*mpi_request:
         pointer to the SCSI_IO request message frame
 
 .. _`_scsih_setup_eedp.description`:
@@ -2733,6 +2999,31 @@ Description
 
 Return 0 for success, else failure
 
+.. _`_scsih_get_enclosure_logicalid_chassis_slot`:
+
+_scsih_get_enclosure_logicalid_chassis_slot
+===========================================
+
+.. c:function:: void _scsih_get_enclosure_logicalid_chassis_slot(struct MPT3SAS_ADAPTER *ioc, Mpi2SasDevicePage0_t *sas_device_pg0, struct _sas_device *sas_device)
+
+    get device's EnclosureLogicalID and ChassisSlot information.
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi2SasDevicePage0_t \*sas_device_pg0:
+        SAS device page0
+
+    :param struct _sas_device \*sas_device:
+        per sas device object
+
+.. _`_scsih_get_enclosure_logicalid_chassis_slot.description`:
+
+Description
+-----------
+
+Returns nothing.
+
 .. _`_scsih_check_device`:
 
 _scsih_check_device
@@ -2918,6 +3209,204 @@ Description
 
 Return nothing.
 
+.. _`_scsih_check_pcie_access_status`:
+
+_scsih_check_pcie_access_status
+===============================
+
+.. c:function:: u8 _scsih_check_pcie_access_status(struct MPT3SAS_ADAPTER *ioc, u64 wwid, u16 handle, u8 access_status)
+
+    check access flags
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u64 wwid:
+        wwid
+
+    :param u16 handle:
+        sas device handle
+
+    :param u8 access_status:
+        *undescribed*
+
+.. _`_scsih_check_pcie_access_status.description`:
+
+Description
+-----------
+
+Return 0 for success, else failure
+
+.. _`_scsih_pcie_device_remove_from_sml`:
+
+_scsih_pcie_device_remove_from_sml
+==================================
+
+.. c:function:: void _scsih_pcie_device_remove_from_sml(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
+
+    removing pcie device from SML and free up associated memory
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct _pcie_device \*pcie_device:
+        the pcie_device object
+
+.. _`_scsih_pcie_device_remove_from_sml.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_scsih_pcie_check_device`:
+
+_scsih_pcie_check_device
+========================
+
+.. c:function:: void _scsih_pcie_check_device(struct MPT3SAS_ADAPTER *ioc, u16 handle)
+
+    checking device responsiveness
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 handle:
+        attached device handle
+
+.. _`_scsih_pcie_check_device.description`:
+
+Description
+-----------
+
+Returns nothing.
+
+.. _`_scsih_pcie_add_device`:
+
+_scsih_pcie_add_device
+======================
+
+.. c:function:: int _scsih_pcie_add_device(struct MPT3SAS_ADAPTER *ioc, u16 handle)
+
+    creating pcie device object
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param u16 handle:
+        pcie device handle
+
+.. _`_scsih_pcie_add_device.description`:
+
+Description
+-----------
+
+Creating end device object, stored in ioc->pcie_device_list.
+
+Return 1 means queue the event later, 0 means complete the event
+
+.. _`_scsih_pcie_topology_change_event_debug`:
+
+_scsih_pcie_topology_change_event_debug
+=======================================
+
+.. c:function:: void _scsih_pcie_topology_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
+
+    debug for topology event
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi26EventDataPCIeTopologyChangeList_t \*event_data:
+        event data payload
+
+.. _`_scsih_pcie_topology_change_event_debug.context`:
+
+Context
+-------
+
+user.
+
+.. _`_scsih_pcie_topology_change_event`:
+
+_scsih_pcie_topology_change_event
+=================================
+
+.. c:function:: int _scsih_pcie_topology_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
+
+    handle PCIe topology changes
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct fw_event_work \*fw_event:
+        The fw_event_work object
+
+.. _`_scsih_pcie_topology_change_event.context`:
+
+Context
+-------
+
+user.
+
+.. _`_scsih_pcie_device_status_change_event_debug`:
+
+_scsih_pcie_device_status_change_event_debug
+============================================
+
+.. c:function:: void _scsih_pcie_device_status_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeDeviceStatusChange_t *event_data)
+
+    debug for device event
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        *undescribed*
+
+    :param Mpi26EventDataPCIeDeviceStatusChange_t \*event_data:
+        event data payload
+
+.. _`_scsih_pcie_device_status_change_event_debug.context`:
+
+Context
+-------
+
+user.
+
+.. _`_scsih_pcie_device_status_change_event_debug.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_scsih_pcie_device_status_change_event`:
+
+_scsih_pcie_device_status_change_event
+======================================
+
+.. c:function:: void _scsih_pcie_device_status_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
+
+    handle device status change
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct fw_event_work \*fw_event:
+        The fw_event_work object
+
+.. _`_scsih_pcie_device_status_change_event.context`:
+
+Context
+-------
+
+user.
+
+.. _`_scsih_pcie_device_status_change_event.description`:
+
+Description
+-----------
+
+Return nothing.
+
 .. _`_scsih_sas_enclosure_dev_status_change_event_debug`:
 
 _scsih_sas_enclosure_dev_status_change_event_debug
@@ -3028,6 +3517,35 @@ Context
 user.
 
 .. _`_scsih_sas_discovery_event.description`:
+
+Description
+-----------
+
+Return nothing.
+
+.. _`_scsih_pcie_enumeration_event`:
+
+_scsih_pcie_enumeration_event
+=============================
+
+.. c:function:: void _scsih_pcie_enumeration_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
+
+    handle enumeration events
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct fw_event_work \*fw_event:
+        The fw_event_work object
+
+.. _`_scsih_pcie_enumeration_event.context`:
+
+Context
+-------
+
+user.
+
+.. _`_scsih_pcie_enumeration_event.description`:
 
 Description
 -----------
@@ -3487,6 +4005,51 @@ If not remove.
 
 Return nothing.
 
+.. _`_scsih_mark_responding_pcie_device`:
+
+_scsih_mark_responding_pcie_device
+==================================
+
+.. c:function:: void _scsih_mark_responding_pcie_device(struct MPT3SAS_ADAPTER *ioc, Mpi26PCIeDevicePage0_t *pcie_device_pg0)
+
+    mark a pcie_device as responding
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi26PCIeDevicePage0_t \*pcie_device_pg0:
+        PCIe Device page 0
+
+.. _`_scsih_mark_responding_pcie_device.description`:
+
+Description
+-----------
+
+After host reset, find out whether devices are still responding.
+Used in \_scsih_remove_unresponding_devices.
+
+Return nothing.
+
+.. _`_scsih_search_responding_pcie_devices`:
+
+_scsih_search_responding_pcie_devices
+=====================================
+
+.. c:function:: void _scsih_search_responding_pcie_devices(struct MPT3SAS_ADAPTER *ioc)
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+.. _`_scsih_search_responding_pcie_devices.description`:
+
+Description
+-----------
+
+After host reset, find out whether devices are still responding.
+If not remove.
+
+Return nothing.
+
 .. _`_scsih_mark_responding_raid_device`:
 
 _scsih_mark_responding_raid_device
@@ -3540,18 +4103,15 @@ Return nothing.
 _scsih_mark_responding_expander
 ===============================
 
-.. c:function:: void _scsih_mark_responding_expander(struct MPT3SAS_ADAPTER *ioc, u64 sas_address, u16 handle)
+.. c:function:: void _scsih_mark_responding_expander(struct MPT3SAS_ADAPTER *ioc, Mpi2ExpanderPage0_t *expander_pg0)
 
     mark a expander as responding
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         per adapter object
 
-    :param u64 sas_address:
-        sas address
-
-    :param u16 handle:
-        *undescribed*
+    :param Mpi2ExpanderPage0_t \*expander_pg0:
+        SAS Expander Config Page0
 
 .. _`_scsih_mark_responding_expander.description`:
 
@@ -3583,19 +4143,19 @@ If not remove.
 
 Return nothing.
 
-.. _`_scsih_remove_unresponding_sas_devices`:
+.. _`_scsih_remove_unresponding_devices`:
 
-_scsih_remove_unresponding_sas_devices
-======================================
+_scsih_remove_unresponding_devices
+==================================
 
-.. c:function:: void _scsih_remove_unresponding_sas_devices(struct MPT3SAS_ADAPTER *ioc)
+.. c:function:: void _scsih_remove_unresponding_devices(struct MPT3SAS_ADAPTER *ioc)
 
     removing unresponding devices
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         per adapter object
 
-.. _`_scsih_remove_unresponding_sas_devices.description`:
+.. _`_scsih_remove_unresponding_devices.description`:
 
 Description
 -----------
@@ -3754,13 +4314,6 @@ _scsih_expander_node_remove
     :param struct _sas_node \*sas_expander:
         the sas_device object
 
-.. _`_scsih_expander_node_remove.context`:
-
-Context
--------
-
-Calling function should acquire ioc->sas_node_lock.
-
 .. _`_scsih_expander_node_remove.description`:
 
 Description
@@ -3885,6 +4438,70 @@ _scsih_probe_sas
         per adapter object
 
 .. _`_scsih_probe_sas.description`:
+
+Description
+-----------
+
+Called during initial loading of the driver.
+
+.. _`get_next_pcie_device`:
+
+get_next_pcie_device
+====================
+
+.. c:function:: struct _pcie_device *get_next_pcie_device(struct MPT3SAS_ADAPTER *ioc)
+
+    Get the next pcie device
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+.. _`get_next_pcie_device.description`:
+
+Description
+-----------
+
+Get the next pcie device from pcie_device_init_list list.
+
+Returns pcie device structure if pcie_device_init_list list is not empty
+otherwise returns NULL
+
+.. _`pcie_device_make_active`:
+
+pcie_device_make_active
+=======================
+
+.. c:function:: void pcie_device_make_active(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
+
+    Add pcie device to pcie_device_list list
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct _pcie_device \*pcie_device:
+        pcie device object
+
+.. _`pcie_device_make_active.description`:
+
+Description
+-----------
+
+Add the pcie device which has registered with SCSI Transport Later to
+pcie_device_list list
+
+.. _`_scsih_probe_pcie`:
+
+_scsih_probe_pcie
+=================
+
+.. c:function:: void _scsih_probe_pcie(struct MPT3SAS_ADAPTER *ioc)
+
+    reporting PCIe devices to scsi-ml
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+.. _`_scsih_probe_pcie.description`:
 
 Description
 -----------

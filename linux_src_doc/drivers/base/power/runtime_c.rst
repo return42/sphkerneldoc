@@ -209,12 +209,12 @@ is to be done and execute the appropriate runtime PM function.
 pm_suspend_timer_fn
 ===================
 
-.. c:function:: void pm_suspend_timer_fn(unsigned long data)
+.. c:function:: void pm_suspend_timer_fn(struct timer_list *t)
 
     Timer function for \ :c:func:`pm_schedule_suspend`\ .
 
-    :param unsigned long data:
-        Device pointer passed by \ :c:func:`pm_schedule_suspend`\ .
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`pm_suspend_timer_fn.description`:
 

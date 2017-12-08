@@ -114,6 +114,7 @@ Definition
         void (*pre_vector_init)(void);
         void (*intr_init)(void);
         void (*trap_init)(void);
+        void (*intr_mode_init)(void);
     }
 
 .. _`x86_init_irqs.members`:
@@ -130,6 +131,9 @@ intr_init
 
 trap_init
     platform specific trap setup
+
+intr_mode_init
+    interrupt delivery mode setup
 
 .. _`x86_init_oem`:
 
@@ -298,6 +302,46 @@ init_irq
 fixup_irqs
     platform specific pci irq fixup
 
+.. _`x86_hyper_init`:
+
+struct x86_hyper_init
+=====================
+
+.. c:type:: struct x86_hyper_init
+
+    x86 hypervisor init functions
+
+.. _`x86_hyper_init.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct x86_hyper_init {
+        void (*init_platform)(void);
+        void (*guest_late_init)(void);
+        bool (*x2apic_available)(void);
+        void (*init_mem_mapping)(void);
+    }
+
+.. _`x86_hyper_init.members`:
+
+Members
+-------
+
+init_platform
+    platform setup
+
+guest_late_init
+    guest late init
+
+x2apic_available
+    X2APIC detection
+
+init_mem_mapping
+    setup early mappings during \ :c:func:`init_mem_mapping`\ 
+
 .. _`x86_init_ops`:
 
 struct x86_init_ops
@@ -323,6 +367,7 @@ Definition
         struct x86_init_timers timers;
         struct x86_init_iommu iommu;
         struct x86_init_pci pci;
+        struct x86_hyper_init hyper;
     }
 
 .. _`x86_init_ops.members`:
@@ -352,6 +397,9 @@ iommu
     *undescribed*
 
 pci
+    *undescribed*
+
+hyper
     *undescribed*
 
 .. _`x86_cpuinit_ops`:
@@ -494,6 +542,7 @@ Definition
     struct x86_legacy_features {
         enum x86_legacy_i8042_state i8042;
         int rtc;
+        int no_vga;
         int reserve_bios_regions;
         struct x86_legacy_devices devices;
     }
@@ -510,6 +559,9 @@ i8042
 rtc
     this device has a CMOS real-time clock present
 
+no_vga
+    *undescribed*
+
 reserve_bios_regions
     boot code will search for the EBDA address and the
     start of the 640k - 1M BIOS region.  If false, the platform must
@@ -518,6 +570,34 @@ reserve_bios_regions
 devices
     legacy x86 devices, refer to struct x86_legacy_devices
     documentation for further details.
+
+.. _`x86_hyper_runtime`:
+
+struct x86_hyper_runtime
+========================
+
+.. c:type:: struct x86_hyper_runtime
+
+    x86 hypervisor specific runtime callbacks
+
+.. _`x86_hyper_runtime.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct x86_hyper_runtime {
+        void (*pin_vcpu)(int cpu);
+    }
+
+.. _`x86_hyper_runtime.members`:
+
+Members
+-------
+
+pin_vcpu
+    pin current vcpu to specified physical cpu (run rarely)
 
 .. _`x86_platform_ops`:
 
@@ -549,6 +629,7 @@ Definition
         void (*apic_post_init)(void);
         struct x86_legacy_features legacy;
         void (*set_legacy_features)(void);
+        struct x86_hyper_runtime hyper;
     }
 
 .. _`x86_platform_ops.members`:
@@ -602,6 +683,9 @@ set_legacy_features
     possible in \ :c:func:`x86_early_init_platform_quirks`\  by
     only using the current x86_hardware_subarch
     semantics.
+
+hyper
+    x86 hypervisor specific runtime callbacks
 
 .. This file was automatic generated / don't edit.
 

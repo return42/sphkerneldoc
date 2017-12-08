@@ -9,6 +9,5 @@ intel
 
     atom/index
     baytrail/index
-    common/index
     haswell/index
     skylake/index

@@ -174,6 +174,27 @@ Description
 Request that the PF map queues to interrupt vectors. Misc causes, including
 admin queue, are always mapped to vector 0.
 
+.. _`i40evf_request_queues`:
+
+i40evf_request_queues
+=====================
+
+.. c:function:: int i40evf_request_queues(struct i40evf_adapter *adapter, int num)
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+    :param int num:
+        number of requested queues
+
+.. _`i40evf_request_queues.description`:
+
+Description
+-----------
+
+We get a default number of queues from the PF.  This enables us to request a
+different number.  Returns 0 on success, negative on failure
+
 .. _`i40evf_add_ether_addrs`:
 
 i40evf_add_ether_addrs

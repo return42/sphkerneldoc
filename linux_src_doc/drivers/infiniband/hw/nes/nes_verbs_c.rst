@@ -731,9 +731,9 @@ nes_init_ofa_device
 nes_handle_delayed_event
 ========================
 
-.. c:function:: void nes_handle_delayed_event(unsigned long data)
+.. c:function:: void nes_handle_delayed_event(struct timer_list *t)
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`nes_destroy_ofa_device`:

@@ -663,9 +663,9 @@ rvt_del_timers_sync
 rvt_rc_timeout
 ==============
 
-.. c:function:: void rvt_rc_timeout(unsigned long arg)
+.. c:function:: void rvt_rc_timeout(struct timer_list *t)
 
-    :param unsigned long arg:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`rvt_qp_iter_init`:

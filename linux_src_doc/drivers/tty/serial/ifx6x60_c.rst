@@ -168,12 +168,12 @@ Can SRDY even go high as we are running this code ?
 ifx_spi_timeout
 ===============
 
-.. c:function:: void ifx_spi_timeout(unsigned long arg)
+.. c:function:: void ifx_spi_timeout(struct timer_list *t)
 
     SPI timeout
 
-    :param unsigned long arg:
-        our SPI device
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ifx_spi_timeout.the-spi-has-timed-out`:
 

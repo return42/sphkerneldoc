@@ -1,57 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mfd/tps65218.h
 
-.. _`tps_info`:
-
-struct tps_info
-===============
-
-.. c:type:: struct tps_info
-
-    packages regulator constraints
-
-.. _`tps_info.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct tps_info {
-        int id;
-        const char *name;
-        int min_uV;
-        int max_uV;
-        int strobe;
-    }
-
-.. _`tps_info.members`:
-
-Members
--------
-
-id
-    Id of the regulator
-
-name
-    Voltage regulator name
-
-min_uV
-    minimum micro volts
-
-max_uV
-    minimum micro volts
-
-strobe
-    sequencing strobe value for the regulator
-
-.. _`tps_info.description`:
-
-Description
------------
-
-This data is used to check the regualtor voltage limits while setting.
-
 .. _`tps65218`:
 
 struct tps65218
@@ -77,7 +26,6 @@ Definition
         u32 irq_mask;
         struct regmap_irq_chip_data *irq_data;
         struct regulator_desc desc[TPS65218_NUM_REGULATOR];
-        struct tps_info *info[TPS65218_NUM_REGULATOR];
         struct regmap *regmap;
         u8 *strobes;
     }
@@ -109,9 +57,6 @@ irq_data
     *undescribed*
 
 desc
-    *undescribed*
-
-info
     *undescribed*
 
 regmap

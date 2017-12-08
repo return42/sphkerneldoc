@@ -47,20 +47,17 @@ managers that called \ :c:func:`locks_start_grace`\  also call \ :c:func:`locks_
 Note that callers count on it being safe to call this more than once,
 and the second call should be a no-op.
 
-.. _`__state_in_grace`:
+.. _`locks_in_grace`:
 
-__state_in_grace
-================
+locks_in_grace
+==============
 
-.. c:function:: int __state_in_grace(struct net *net, bool open)
+.. c:function:: bool locks_in_grace(struct net *net)
 
     :param struct net \*net:
         *undescribed*
 
-    :param bool open:
-        *undescribed*
-
-.. _`__state_in_grace.description`:
+.. _`locks_in_grace.description`:
 
 Description
 -----------

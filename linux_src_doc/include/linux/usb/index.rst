@@ -16,5 +16,7 @@ usb
     ohci_pdriver_h
     otg-fsm_h
     otg_h
+    pd_h
     phy_h
+    tcpm_h
     wusb_h

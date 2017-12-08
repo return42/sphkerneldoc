@@ -235,12 +235,15 @@ Returns false if \ ``encoder``\  can't be driven by \ ``crtc``\ , true otherwise
 drm_encoder_find
 ================
 
-.. c:function:: struct drm_encoder *drm_encoder_find(struct drm_device *dev, uint32_t id)
+.. c:function:: struct drm_encoder *drm_encoder_find(struct drm_device *dev, struct drm_file *file_priv, uint32_t id)
 
     find a \ :c:type:`struct drm_encoder <drm_encoder>`\ 
 
     :param struct drm_device \*dev:
         DRM device
+
+    :param struct drm_file \*file_priv:
+        drm file to check for lease against.
 
     :param uint32_t id:
         encoder id

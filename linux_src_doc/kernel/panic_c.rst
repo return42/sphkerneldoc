@@ -58,6 +58,7 @@ Description
  'E' - Unsigned module has been loaded.
  'L' - A soft lockup has previously occurred.
  'K' - Kernel has been live patched.
+ 'X' - Auxiliary taint, for distros' use.
 
      The string is overwritten by the next call to \ :c:func:`print_tainted`\ .
 

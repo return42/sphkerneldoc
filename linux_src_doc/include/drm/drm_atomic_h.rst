@@ -198,6 +198,7 @@ Definition
         int num_private_objs;
         struct __drm_private_objs_state *private_objs;
         struct drm_modeset_acquire_ctx *acquire_ctx;
+        struct drm_crtc_commit *fake_commit;
         struct work_struct commit_work;
     }
 
@@ -242,6 +243,15 @@ private_objs
 acquire_ctx
     acquire context for this atomic modeset state update
 
+fake_commit
+
+    Used for signaling unbound planes/connectors.
+    When a connector or plane is not bound to any CRTC, it's still important
+    to preserve linearity to prevent the atomic states from being freed to early.
+
+    This commit (if set) is not bound to any crtc, but will be completed when
+    \ :c:func:`drm_atomic_helper_commit_hw_done`\  is called.
+
 commit_work
 
     Work item which can be used by the driver or helpers to execute the
@@ -252,7 +262,7 @@ commit_work
 drm_crtc_commit_get
 ===================
 
-.. c:function:: void drm_crtc_commit_get(struct drm_crtc_commit *commit)
+.. c:function:: struct drm_crtc_commit *drm_crtc_commit_get(struct drm_crtc_commit *commit)
 
     acquire a reference to the CRTC commit
 
@@ -265,6 +275,13 @@ Description
 -----------
 
 Increases the reference of \ ``commit``\ .
+
+.. _`drm_crtc_commit_get.return`:
+
+Return
+------
+
+The pointer to \ ``commit``\ , with reference increased.
 
 .. _`drm_crtc_commit_put`:
 
@@ -590,46 +607,6 @@ Return
 
 Read-only pointer to the current plane state.
 
-.. _`for_each_connector_in_state`:
-
-for_each_connector_in_state
-===========================
-
-.. c:function::  for_each_connector_in_state( __state,  connector,  connector_state,  __i)
-
-    iterate over all connectors in an atomic update
-
-    :param  __state:
-        &struct drm_atomic_state pointer
-
-    :param  connector:
-        &struct drm_connector iteration cursor
-
-    :param  connector_state:
-        &struct drm_connector_state iteration cursor
-
-    :param  __i:
-        int iteration cursor, for macro-internal use
-
-.. _`for_each_connector_in_state.description`:
-
-Description
------------
-
-This iterates over all connectors in an atomic update. Note that before the
-software state is committed (by calling \ :c:func:`drm_atomic_helper_swap_state`\ , this
-points to the new state, while afterwards it points to the old state. Due to
-this tricky confusion this macro is deprecated.
-
-.. _`for_each_connector_in_state.fixme`:
-
-FIXME
------
-
-
-Replace all usage of this with one of the explicit iterators below and then
-remove this macro.
-
 .. _`for_each_oldnew_connector_in_state`:
 
 for_each_oldnew_connector_in_state
@@ -727,46 +704,6 @@ This iterates over all connectors in an atomic update, tracking only the new
 state. This is useful in enable functions, where we need the new state the
 hardware should be in when the atomic commit operation has completed.
 
-.. _`for_each_crtc_in_state`:
-
-for_each_crtc_in_state
-======================
-
-.. c:function::  for_each_crtc_in_state( __state,  crtc,  crtc_state,  __i)
-
-    iterate over all connectors in an atomic update
-
-    :param  __state:
-        &struct drm_atomic_state pointer
-
-    :param  crtc:
-        &struct drm_crtc iteration cursor
-
-    :param  crtc_state:
-        &struct drm_crtc_state iteration cursor
-
-    :param  __i:
-        int iteration cursor, for macro-internal use
-
-.. _`for_each_crtc_in_state.description`:
-
-Description
------------
-
-This iterates over all CRTCs in an atomic update. Note that before the
-software state is committed (by calling \ :c:func:`drm_atomic_helper_swap_state`\ , this
-points to the new state, while afterwards it points to the old state. Due to
-this tricky confusion this macro is deprecated.
-
-.. _`for_each_crtc_in_state.fixme`:
-
-FIXME
------
-
-
-Replace all usage of this with one of the explicit iterators below and then
-remove this macro.
-
 .. _`for_each_oldnew_crtc_in_state`:
 
 for_each_oldnew_crtc_in_state
@@ -859,46 +796,6 @@ Description
 This iterates over all CRTCs in an atomic update, tracking only the new
 state. This is useful in enable functions, where we need the new state the
 hardware should be in when the atomic commit operation has completed.
-
-.. _`for_each_plane_in_state`:
-
-for_each_plane_in_state
-=======================
-
-.. c:function::  for_each_plane_in_state( __state,  plane,  plane_state,  __i)
-
-    iterate over all planes in an atomic update
-
-    :param  __state:
-        &struct drm_atomic_state pointer
-
-    :param  plane:
-        &struct drm_plane iteration cursor
-
-    :param  plane_state:
-        &struct drm_plane_state iteration cursor
-
-    :param  __i:
-        int iteration cursor, for macro-internal use
-
-.. _`for_each_plane_in_state.description`:
-
-Description
------------
-
-This iterates over all planes in an atomic update. Note that before the
-software state is committed (by calling \ :c:func:`drm_atomic_helper_swap_state`\ , this
-points to the new state, while afterwards it points to the old state. Due to
-this tricky confusion this macro is deprecated.
-
-.. _`for_each_plane_in_state.fixme`:
-
-FIXME
------
-
-
-Replace all usage of this with one of the explicit iterators below and then
-remove this macro.
 
 .. _`for_each_oldnew_plane_in_state`:
 

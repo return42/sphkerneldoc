@@ -347,5 +347,62 @@ Description
 Type of entries in the "device Id" table for MC object devices supported by
 a MC object device driver. The last entry of the table has vendor set to 0x0
 
+.. _`tb_service_id`:
+
+struct tb_service_id
+====================
+
+.. c:type:: struct tb_service_id
+
+    Thunderbolt service identifiers
+
+.. _`tb_service_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tb_service_id {
+        __u32 match_flags;
+        char protocol_key[8 + 1];
+        __u32 protocol_id;
+        __u32 protocol_version;
+        __u32 protocol_revision;
+        kernel_ulong_t driver_data;
+    }
+
+.. _`tb_service_id.members`:
+
+Members
+-------
+
+match_flags
+    Flags used to match the structure
+
+protocol_key
+    Protocol key the service supports
+
+protocol_id
+    Protocol id the service supports
+
+protocol_version
+    Version of the protocol
+
+protocol_revision
+    Revision of the protocol software
+
+driver_data
+    Driver specific data
+
+.. _`tb_service_id.description`:
+
+Description
+-----------
+
+Thunderbolt XDomain services are exposed as devices where each device
+carries the protocol information the service supports. Thunderbolt
+XDomain service drivers match against that information.
+
 .. This file was automatic generated / don't edit.
 

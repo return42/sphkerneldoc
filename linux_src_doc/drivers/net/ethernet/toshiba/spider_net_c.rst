@@ -520,12 +520,12 @@ returns 0 on success, !0 on failure
 spider_net_cleanup_tx_ring
 ==========================
 
-.. c:function:: void spider_net_cleanup_tx_ring(struct spider_net_card *card)
+.. c:function:: void spider_net_cleanup_tx_ring(struct timer_list *t)
 
     cleans up the TX ring
 
-    :param struct spider_net_card \*card:
-        card structure
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`spider_net_cleanup_tx_ring.description`:
 
@@ -946,10 +946,10 @@ operation, sets up multicast list and enables interrupts
 spider_net_link_phy
 ===================
 
-.. c:function:: void spider_net_link_phy(unsigned long data)
+.. c:function:: void spider_net_link_phy(struct timer_list *t)
 
-    :param unsigned long data:
-        used for pointer to card structure
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`spider_net_setup_phy`:
 

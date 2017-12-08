@@ -233,7 +233,7 @@ of_changeset_action
 
 .. c:function:: int of_changeset_action(struct of_changeset *ocs, unsigned long action, struct device_node *np, struct property *prop)
 
-    Perform a changeset action
+    Add an action to the tail of the changeset list
 
     :param struct of_changeset \*ocs:
         changeset pointer

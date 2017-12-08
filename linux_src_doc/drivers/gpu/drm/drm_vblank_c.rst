@@ -144,7 +144,7 @@ into account.
 drm_calc_vbltimestamp_from_scanoutpos
 =====================================
 
-.. c:function:: bool drm_calc_vbltimestamp_from_scanoutpos(struct drm_device *dev, unsigned int pipe, int *max_error, struct timeval *vblank_time, bool in_vblank_irq)
+.. c:function:: bool drm_calc_vbltimestamp_from_scanoutpos(struct drm_device *dev, unsigned int pipe, int *max_error, ktime_t *vblank_time, bool in_vblank_irq)
 
     precise vblank timestamp helper
 
@@ -158,8 +158,8 @@ drm_calc_vbltimestamp_from_scanoutpos
         Desired maximum allowable error in timestamps (nanosecs)
         On return contains true maximum error of timestamp
 
-    :param struct timeval \*vblank_time:
-        Pointer to struct timeval which should receive the timestamp
+    :param ktime_t \*vblank_time:
+        Pointer to time which should receive the timestamp
 
     :param bool in_vblank_irq:
         True when called from \ :c:func:`drm_crtc_handle_vblank`\ .  Some drivers
@@ -199,7 +199,7 @@ timestamp could be acquired.
 drm_get_last_vbltimestamp
 =========================
 
-.. c:function:: bool drm_get_last_vbltimestamp(struct drm_device *dev, unsigned int pipe, struct timeval *tvblank, bool in_vblank_irq)
+.. c:function:: bool drm_get_last_vbltimestamp(struct drm_device *dev, unsigned int pipe, ktime_t *tvblank, bool in_vblank_irq)
 
     retrieve raw timestamp for the most recent vblank interval
 
@@ -209,8 +209,8 @@ drm_get_last_vbltimestamp
     :param unsigned int pipe:
         index of CRTC whose vblank timestamp to retrieve
 
-    :param struct timeval \*tvblank:
-        Pointer to target struct timeval which should receive the timestamp
+    :param ktime_t \*tvblank:
+        Pointer to target time which should receive the timestamp
 
     :param bool in_vblank_irq:
         True when called from \ :c:func:`drm_crtc_handle_vblank`\ .  Some drivers
@@ -241,7 +241,7 @@ True if timestamp is considered to be very precise, false otherwise.
 drm_crtc_vblank_count
 =====================
 
-.. c:function:: u32 drm_crtc_vblank_count(struct drm_crtc *crtc)
+.. c:function:: u64 drm_crtc_vblank_count(struct drm_crtc *crtc)
 
     retrieve "cooked" vblank counter value
 
@@ -266,20 +266,50 @@ Return
 
 The software vblank counter.
 
+.. _`drm_vblank_count_and_time`:
+
+drm_vblank_count_and_time
+=========================
+
+.. c:function:: u64 drm_vblank_count_and_time(struct drm_device *dev, unsigned int pipe, ktime_t *vblanktime)
+
+    retrieve "cooked" vblank counter value and the system timestamp corresponding to that vblank counter value.
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param unsigned int pipe:
+        index of CRTC whose counter to retrieve
+
+    :param ktime_t \*vblanktime:
+        Pointer to ktime_t to receive the vblank timestamp.
+
+.. _`drm_vblank_count_and_time.description`:
+
+Description
+-----------
+
+Fetches the "cooked" vblank count value that represents the number of
+vblank events since the system was booted, including lost events due to
+modesetting activity. Returns corresponding system timestamp of the time
+of the vblank interval that corresponds to the current vblank counter value.
+
+This is the legacy version of \ :c:func:`drm_crtc_vblank_count_and_time`\ .
+
 .. _`drm_crtc_vblank_count_and_time`:
 
 drm_crtc_vblank_count_and_time
 ==============================
 
-.. c:function:: u32 drm_crtc_vblank_count_and_time(struct drm_crtc *crtc, struct timeval *vblanktime)
+.. c:function:: u64 drm_crtc_vblank_count_and_time(struct drm_crtc *crtc, ktime_t *vblanktime)
 
     retrieve "cooked" vblank counter value and the system timestamp corresponding to that vblank counter value
 
     :param struct drm_crtc \*crtc:
         which counter to retrieve
 
-    :param struct timeval \*vblanktime:
-        Pointer to struct timeval to receive the vblank timestamp.
+    :param ktime_t \*vblanktime:
+        Pointer to time to receive the vblank timestamp.
 
 .. _`drm_crtc_vblank_count_and_time.description`:
 

@@ -122,6 +122,26 @@ Description
     out of elevator or throttling code. That would require \ :c:func:`elevator_exit`\ 
     and \ :c:func:`blkcg_exit_queue`\  to be called with queue lock initialized.
 
+.. _`blk_set_preempt_only`:
+
+blk_set_preempt_only
+====================
+
+.. c:function:: int blk_set_preempt_only(struct request_queue *q)
+
+    set QUEUE_FLAG_PREEMPT_ONLY
+
+    :param struct request_queue \*q:
+        request queue pointer
+
+.. _`blk_set_preempt_only.description`:
+
+Description
+-----------
+
+Returns the previous value of the PREEMPT_ONLY flag - 0 if the flag was not
+set and 1 if the flag was already set.
+
 .. _`__blk_run_queue_uncond`:
 
 __blk_run_queue_uncond
@@ -307,6 +327,21 @@ Description
 Mark \ ``q``\  DYING, drain all pending requests, mark \ ``q``\  DEAD, destroy and
 put it.  All future requests will be failed immediately with -ENODEV.
 
+.. _`blk_queue_enter`:
+
+blk_queue_enter
+===============
+
+.. c:function:: int blk_queue_enter(struct request_queue *q, blk_mq_req_flags_t flags)
+
+    try to increase q->q_usage_counter
+
+    :param struct request_queue \*q:
+        request queue pointer
+
+    :param blk_mq_req_flags_t flags:
+        BLK_MQ_REQ_NOWAIT and/or BLK_MQ_REQ_PREEMPT
+
 .. _`blk_init_queue`:
 
 blk_init_queue
@@ -362,7 +397,7 @@ Note
 __get_request
 =============
 
-.. c:function:: struct request *__get_request(struct request_list *rl, unsigned int op, struct bio *bio, gfp_t gfp_mask)
+.. c:function:: struct request *__get_request(struct request_list *rl, unsigned int op, struct bio *bio, blk_mq_req_flags_t flags)
 
     get a free request
 
@@ -375,8 +410,8 @@ __get_request
     :param struct bio \*bio:
         bio to allocate request for (can be \ ``NULL``\ )
 
-    :param gfp_t gfp_mask:
-        allocation mask
+    :param blk_mq_req_flags_t flags:
+        BLQ_MQ_REQ_* flags
 
 .. _`__get_request.description`:
 
@@ -395,7 +430,7 @@ Returns request pointer on success, with \ ``q``\ ->queue_lock *not held*.
 get_request
 ===========
 
-.. c:function:: struct request *get_request(struct request_queue *q, unsigned int op, struct bio *bio, gfp_t gfp_mask)
+.. c:function:: struct request *get_request(struct request_queue *q, unsigned int op, struct bio *bio, blk_mq_req_flags_t flags)
 
     get a free request
 
@@ -408,8 +443,8 @@ get_request
     :param struct bio \*bio:
         bio to allocate request for (can be \ ``NULL``\ )
 
-    :param gfp_t gfp_mask:
-        allocation mask
+    :param blk_mq_req_flags_t flags:
+        BLK_MQ_REQ_* flags.
 
 .. _`get_request.description`:
 
@@ -422,6 +457,24 @@ this function keeps retrying under memory pressure and fails iff \ ``q``\  is de
 Must be called with \ ``q``\ ->queue_lock held and,
 Returns ERR_PTR on failure, with \ ``q``\ ->queue_lock held.
 Returns request pointer on success, with \ ``q``\ ->queue_lock *not held*.
+
+.. _`blk_get_request_flags`:
+
+blk_get_request_flags
+=====================
+
+.. c:function:: struct request *blk_get_request_flags(struct request_queue *q, unsigned int op, blk_mq_req_flags_t flags)
+
+    allocate a request
+
+    :param struct request_queue \*q:
+        request queue to allocate a request for
+
+    :param unsigned int op:
+        operation (REQ_OP_*) and REQ_* flags, e.g. REQ_SYNC.
+
+    :param blk_mq_req_flags_t flags:
+        BLK_MQ_REQ_* flags, e.g. BLK_MQ_REQ_NOWAIT.
 
 .. _`blk_requeue_request`:
 
@@ -558,6 +611,29 @@ generic_make_request and the drivers it calls may use bi_next if this
 bio happens to be merged with someone else, and may resubmit the bio to
 a lower device by calling into generic_make_request recursively, which
 means the bio should NOT be touched after the call to ->make_request_fn.
+
+.. _`direct_make_request`:
+
+direct_make_request
+===================
+
+.. c:function:: blk_qc_t direct_make_request(struct bio *bio)
+
+    hand a buffer directly to its device driver for I/O
+
+    :param struct bio \*bio:
+        The bio describing the location in memory and on the device.
+
+.. _`direct_make_request.description`:
+
+Description
+-----------
+
+This function behaves like \ :c:func:`generic_make_request`\ , but does not protect
+against recursion.  Must only be used if the called driver is known
+to not call generic_make_request (or direct_make_request) again from
+its make_request function.  (Calling direct_make_request again from
+a workqueue is perfectly fine as that doesn't recurse).
 
 .. _`submit_bio`:
 

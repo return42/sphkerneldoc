@@ -62,6 +62,27 @@ shmem_file_setup
     :param unsigned long flags:
         VM_NORESERVE suppresses pre-accounting of the entire object size
 
+.. _`shmem_file_setup_with_mnt`:
+
+shmem_file_setup_with_mnt
+=========================
+
+.. c:function:: struct file *shmem_file_setup_with_mnt(struct vfsmount *mnt, const char *name, loff_t size, unsigned long flags)
+
+    get an unlinked file living in tmpfs
+
+    :param struct vfsmount \*mnt:
+        the tmpfs mount where the file will be created
+
+    :param const char \*name:
+        name for dentry (to be seen in /proc/<pid>/maps
+
+    :param loff_t size:
+        size to be set for the file
+
+    :param unsigned long flags:
+        VM_NORESERVE suppresses pre-accounting of the entire object size
+
 .. _`shmem_zero_setup`:
 
 shmem_zero_setup

@@ -583,7 +583,7 @@ At the very end, before cleaning up \ ``state``\  drivers must call
 \ :c:func:`drm_atomic_helper_commit_cleanup_done`\ .
 
 This is all implemented by in \ :c:func:`drm_atomic_helper_commit`\ , giving drivers a
-complete and esay-to-use default implementation of the \ :c:func:`atomic_commit`\  hook.
+complete and easy-to-use default implementation of the \ :c:func:`atomic_commit`\  hook.
 
 The tracking of asynchronously executed and still pending commits is done
 using the core structure \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
@@ -621,7 +621,7 @@ Description
 This function waits for all preceeding commits that touch the same CRTC as
 \ ``old_state``\  to both be committed to the hardware (as signalled by
 drm_atomic_helper_commit_hw_done) and executed by the hardware (as signalled
-by calling \ :c:func:`drm_crtc_vblank_send_event`\  on the \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\ ).
+by calling \ :c:func:`drm_crtc_send_vblank_event`\  on the \ :c:type:`drm_crtc_state.event <drm_crtc_state>`\ ).
 
 This is part of the atomic helper support for nonblocking commits, see
 \ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.

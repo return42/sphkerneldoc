@@ -131,16 +131,6 @@ Description
 
 Returns current cycle counter
 
-.. _`cvmx_wait`:
-
-cvmx_wait
-=========
-
-.. c:function:: void cvmx_wait(uint64_t cycles)
-
-    :param uint64_t cycles:
-        *undescribed*
-
 .. _`cvmx_get_cycle_global`:
 
 cvmx_get_cycle_global

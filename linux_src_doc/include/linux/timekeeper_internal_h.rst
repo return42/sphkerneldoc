@@ -25,6 +25,7 @@ Definition
         u32 shift;
         u64 xtime_nsec;
         ktime_t base;
+        u64 base_real;
     }
 
 .. _`tk_read_base.members`:
@@ -53,6 +54,9 @@ xtime_nsec
 base
     ktime_t (nanoseconds) base time for readout
 
+base_real
+    Nanoseconds base value for clock REALTIME readout
+
 .. _`tk_read_base.description`:
 
 Description
@@ -63,6 +67,9 @@ occupies a single 64byte cache line.
 
 The struct is separate from struct timekeeper as it is also used
 for a fast NMI safe accessors.
+
+\ ``base_real``\  is for the fast NMI safe accessor to allow reading clock
+realtime from any context.
 
 .. _`timekeeper`:
 

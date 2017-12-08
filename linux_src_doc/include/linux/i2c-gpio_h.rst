@@ -18,8 +18,6 @@ Definition
 .. code-block:: c
 
     struct i2c_gpio_platform_data {
-        unsigned int sda_pin;
-        unsigned int scl_pin;
         int udelay;
         int timeout;
         unsigned int sda_is_open_drain:1;
@@ -31,12 +29,6 @@ Definition
 
 Members
 -------
-
-sda_pin
-    GPIO pin ID to use for SDA
-
-scl_pin
-    GPIO pin ID to use for SCL
 
 udelay
     signal toggle delay. SCL frequency is (500 / udelay) kHz

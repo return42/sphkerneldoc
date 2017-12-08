@@ -286,7 +286,6 @@ Definition
         u8 hid_width;
         const struct parent_map *parent_map;
         const struct freq_tbl *freq_tbl;
-        unsigned long current_freq;
         struct clk_regmap clkr;
     }
 
@@ -309,9 +308,6 @@ parent_map
 
 freq_tbl
     frequency table
-
-current_freq
-    last cached frequency when using branches with shared RCGs
 
 clkr
     regmap clock handle

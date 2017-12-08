@@ -7,11 +7,10 @@ i2c
 .. toctree::
     :maxdepth: 1
 
-    imx/index
     ov5693/index
+    atomisp-mt9m114_c
     gc0310_h
     gc2235_h
-    mt9m114_c
     ov2722_h
     ov8858_btns_h
     ov8858_h

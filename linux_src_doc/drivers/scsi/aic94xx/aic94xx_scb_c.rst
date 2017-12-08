@@ -132,12 +132,12 @@ See the default implementation.
 asd_ascb_timedout
 =================
 
-.. c:function:: void asd_ascb_timedout(unsigned long data)
+.. c:function:: void asd_ascb_timedout(struct timer_list *t)
 
     - called when a pending SCB's timer has expired
 
-    :param unsigned long data:
-        unsigned long, a pointer to the ascb in question
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`asd_ascb_timedout.description`:
 
@@ -148,7 +148,7 @@ This is the default timeout function which does the most necessary.
 Upper layers can implement their own timeout function, say to free
 resources they have with this SCB, and then call this one at the
 end of their timeout function.  To do this, one should initialize
-the ascb->timer.{function, data, expires} prior to calling the post
+the ascb->timer.{function, expires} prior to calling the post
 function. The timer is started by the post function.
 
 .. This file was automatic generated / don't edit.

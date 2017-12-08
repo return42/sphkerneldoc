@@ -78,8 +78,8 @@ Description
 Dumps the current memory state of all eligible tasks.  Tasks not in the same
 memcg, not in the same cpuset, or bound to a disjoint set of mempolicy nodes
 are not shown.
-State information includes task's pid, uid, tgid, vm size, rss, nr_ptes,
-swapents, oom_score_adj value, and name.
+State information includes task's pid, uid, tgid, vm size, rss,
+pgtables_bytes, swapents, oom_score_adj value, and name.
 
 .. _`mark_oom_victim`:
 

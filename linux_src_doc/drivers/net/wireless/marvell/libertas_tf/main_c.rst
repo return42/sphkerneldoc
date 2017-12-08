@@ -32,11 +32,11 @@ Return
 command_timer_fn
 ================
 
-.. c:function:: void command_timer_fn(unsigned long data)
+.. c:function:: void command_timer_fn(struct timer_list *t)
 
     It will re-send the same command again.
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`lbtf_add_card`:

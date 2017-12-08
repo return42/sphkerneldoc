@@ -1417,12 +1417,12 @@ This routine starts the fcp_poll_timer of \ ``phba``\ .
 lpfc_poll_timeout
 =================
 
-.. c:function:: void lpfc_poll_timeout(unsigned long ptr)
+.. c:function:: void lpfc_poll_timeout(struct timer_list *t)
 
     Restart polling timer
 
-    :param unsigned long ptr:
-        Map to lpfc_hba data structure pointer.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_poll_timeout.description`:
 

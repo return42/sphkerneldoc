@@ -56,34 +56,6 @@ Return
 
 errno
 
-.. _`fsflags_cvt`:
-
-fsflags_cvt
-===========
-
-.. c:function:: u32 fsflags_cvt(const u32 *table, u32 val)
-
-    :param const u32 \*table:
-        A table of 32 u32 flags
-
-    :param u32 val:
-        a 32 bit value to convert
-
-.. _`fsflags_cvt.description`:
-
-Description
------------
-
-This function can be used to convert between fsflags values and
-GFS2's own flags values.
-
-.. _`fsflags_cvt.return`:
-
-Return
-------
-
-the converted flags
-
 .. _`do_gfs2_set_flags`:
 
 do_gfs2_set_flags

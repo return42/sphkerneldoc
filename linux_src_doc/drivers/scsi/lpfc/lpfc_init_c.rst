@@ -396,12 +396,12 @@ Any other value - error.
 lpfc_hb_timeout
 ===============
 
-.. c:function:: void lpfc_hb_timeout(unsigned long ptr)
+.. c:function:: void lpfc_hb_timeout(struct timer_list *t)
 
     The HBA-timer timeout handler
 
-    :param unsigned long ptr:
-        unsigned long holds the pointer to lpfc hba data structure.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_hb_timeout.description`:
 
@@ -421,12 +421,12 @@ be cleared by the worker thread after it has taken the event bitmap out.
 lpfc_rrq_timeout
 ================
 
-.. c:function:: void lpfc_rrq_timeout(unsigned long ptr)
+.. c:function:: void lpfc_rrq_timeout(struct timer_list *t)
 
     The RRQ-timer timeout handler
 
-    :param unsigned long ptr:
-        unsigned long holds the pointer to lpfc hba data structure.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_rrq_timeout.description`:
 
@@ -1499,12 +1499,12 @@ This routine starts the timer waiting for the FCF rediscovery to complete.
 lpfc_sli4_fcf_redisc_wait_tmo
 =============================
 
-.. c:function:: void lpfc_sli4_fcf_redisc_wait_tmo(unsigned long ptr)
+.. c:function:: void lpfc_sli4_fcf_redisc_wait_tmo(struct timer_list *t)
 
     FCF table rediscover wait timeout
 
-    :param unsigned long ptr:
-        Map to lpfc_hba data structure pointer.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_sli4_fcf_redisc_wait_tmo.description`:
 

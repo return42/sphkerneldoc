@@ -56,5 +56,7 @@ creates the event hierachry in the \ ``parent``\ /events directory.
 
 Returns 0 on success.
 
+Must be called with event_mutex held.
+
 .. This file was automatic generated / don't edit.
 

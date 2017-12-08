@@ -66,6 +66,30 @@ Description
 Emits a fence command on the requested ring (all asics).
 Returns 0 on success, -ENOMEM on failure.
 
+.. _`amdgpu_fence_emit_polling`:
+
+amdgpu_fence_emit_polling
+=========================
+
+.. c:function:: int amdgpu_fence_emit_polling(struct amdgpu_ring *ring, uint32_t *s)
+
+    emit a fence on the requeste ring
+
+    :param struct amdgpu_ring \*ring:
+        ring the fence is associated with
+
+    :param uint32_t \*s:
+        resulting sequence number
+
+.. _`amdgpu_fence_emit_polling.description`:
+
+Description
+-----------
+
+Emits a fence command on the requested ring (all asics).
+Used For polling fence.
+Returns 0 on success, -ENOMEM on failure.
+
 .. _`amdgpu_fence_schedule_fallback`:
 
 amdgpu_fence_schedule_fallback
@@ -111,11 +135,11 @@ sequence number has increased.
 amdgpu_fence_fallback
 =====================
 
-.. c:function:: void amdgpu_fence_fallback(unsigned long arg)
+.. c:function:: void amdgpu_fence_fallback(struct timer_list *t)
 
     fallback for hardware interrupts
 
-    :param unsigned long arg:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`amdgpu_fence_fallback.description`:
@@ -144,6 +168,32 @@ Description
 
 Wait for all fences on the requested ring to signal (all asics).
 Returns 0 if the fences have passed, error for all other cases.
+
+.. _`amdgpu_fence_wait_polling`:
+
+amdgpu_fence_wait_polling
+=========================
+
+.. c:function:: signed long amdgpu_fence_wait_polling(struct amdgpu_ring *ring, uint32_t wait_seq, signed long timeout)
+
+    busy wait for givn sequence number
+
+    :param struct amdgpu_ring \*ring:
+        ring index the fence is associated with
+
+    :param uint32_t wait_seq:
+        sequence number to wait
+
+    :param signed long timeout:
+        the timeout for waiting in usecs
+
+.. _`amdgpu_fence_wait_polling.description`:
+
+Description
+-----------
+
+Wait for all fences on the requested ring to signal (all asics).
+Returns left time if no timeout, 0 or minus if timeout.
 
 .. _`amdgpu_fence_count_emitted`:
 

@@ -394,52 +394,6 @@ to publishing node and returns port reference (will be non-zero)
 - if name translation is attempted and fails, sets 'destnode' to 0
 and returns 0
 
-.. _`tipc_nametbl_mc_translate`:
-
-tipc_nametbl_mc_translate
-=========================
-
-.. c:function:: int tipc_nametbl_mc_translate(struct net *net, u32 type, u32 lower, u32 upper, u32 limit, struct list_head *dports)
-
-    find multicast destinations
-
-    :param struct net \*net:
-        *undescribed*
-
-    :param u32 type:
-        *undescribed*
-
-    :param u32 lower:
-        *undescribed*
-
-    :param u32 upper:
-        *undescribed*
-
-    :param u32 limit:
-        *undescribed*
-
-    :param struct list_head \*dports:
-        *undescribed*
-
-.. _`tipc_nametbl_mc_translate.description`:
-
-Description
------------
-
-Creates list of all local ports that overlap the given multicast address;
-also determines if any off-node ports overlap.
-
-.. _`tipc_nametbl_mc_translate.note`:
-
-Note
-----
-
-Publications with a scope narrower than 'limit' are ignored.
-(i.e. local node-scope publications mustn't receive messages arriving
-from another node, even if the multcast link brought it here)
-
-Returns non-zero if any off-node ports overlap
-
 .. _`tipc_nametbl_withdraw`:
 
 tipc_nametbl_withdraw

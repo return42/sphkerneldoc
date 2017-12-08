@@ -24,6 +24,7 @@ Definition
         int (*power_off)(struct phy *phy);
         int (*set_mode)(struct phy *phy, enum phy_mode mode);
         int (*reset)(struct phy *phy);
+        int (*calibrate)(struct phy *phy);
         struct module *owner;
     }
 
@@ -49,6 +50,9 @@ set_mode
 
 reset
     resetting the phy
+
+calibrate
+    calibrate the phy
 
 owner
     the module owner containing the ops

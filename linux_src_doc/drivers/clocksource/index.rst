@@ -14,4 +14,5 @@ clocksource
     exynos_mct_c
     mmio_c
     timer-keystone_c
+    timer-of_c
     timer-ti-32k_c

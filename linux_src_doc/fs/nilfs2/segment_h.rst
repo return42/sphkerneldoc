@@ -167,6 +167,7 @@ Definition
         unsigned long sc_lseg_stime;
         unsigned long sc_watermark;
         struct timer_list sc_timer;
+        struct task_struct *sc_timer_task;
         struct task_struct *sc_task;
     }
 
@@ -294,6 +295,9 @@ sc_watermark
 
 sc_timer
     Timer for segctord
+
+sc_timer_task
+    *undescribed*
 
 sc_task
     current thread of segctord

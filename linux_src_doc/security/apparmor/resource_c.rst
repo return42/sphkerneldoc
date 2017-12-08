@@ -14,7 +14,7 @@ audit_resource
         profile being enforced  (NOT NULL)
 
     :param unsigned int resource:
-        *undescribed*
+        rlimit being auditing
 
     :param unsigned long value:
         value being set

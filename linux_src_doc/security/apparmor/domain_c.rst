@@ -204,14 +204,17 @@ not arbitrary combinations. Eg. A//&B, C
 __attach_match
 ==============
 
-.. c:function:: struct aa_profile *__attach_match(const char *name, struct list_head *head)
+.. c:function:: struct aa_profile *__attach_match(const char *name, struct list_head *head, const char **info)
 
-    find an attachment match \ ``name``\  - to match against  (NOT NULL) \ ``head``\  - profile list to walk  (NOT NULL)
+    find an attachment match \ ``name``\  - to match against  (NOT NULL) \ ``head``\  - profile list to walk  (NOT NULL) \ ``info``\  - info message if there was an error (NOT NULL)
 
     :param const char \*name:
         *undescribed*
 
     :param struct list_head \*head:
+        *undescribed*
+
+    :param const char \*\*info:
         *undescribed*
 
 .. _`__attach_match.description`:
@@ -243,7 +246,7 @@ profile or NULL if no match found
 find_attach
 ===========
 
-.. c:function:: struct aa_label *find_attach(struct aa_ns *ns, struct list_head *list, const char *name)
+.. c:function:: struct aa_label *find_attach(struct aa_ns *ns, struct list_head *list, const char *name, const char **info)
 
     do attachment search for unconfined processes
 
@@ -255,6 +258,9 @@ find_attach
 
     :param const char \*name:
         the executable name to match against  (NOT NULL)
+
+    :param const char \*\*info:
+        info message if there was an error
 
 .. _`find_attach.return`:
 

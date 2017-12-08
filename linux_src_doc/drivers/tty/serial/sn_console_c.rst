@@ -354,12 +354,12 @@ sn_sal_interrupt
 sn_sal_timer_poll
 =================
 
-.. c:function:: void sn_sal_timer_poll(unsigned long data)
+.. c:function:: void sn_sal_timer_poll(struct timer_list *t)
 
     this function handles polled console mode
 
-    :param unsigned long data:
-        A pointer to our sn_cons_port (which contains the uart port)
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sn_sal_timer_poll.description`:
 

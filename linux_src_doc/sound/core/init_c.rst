@@ -95,6 +95,28 @@ Note
 The current implementation replaces all active file->f_op with special
        dummy file operations (they do nothing except release).
 
+.. _`snd_card_disconnect_sync`:
+
+snd_card_disconnect_sync
+========================
+
+.. c:function:: void snd_card_disconnect_sync(struct snd_card *card)
+
+    disconnect card and wait until files get closed
+
+    :param struct snd_card \*card:
+        card object to disconnect
+
+.. _`snd_card_disconnect_sync.description`:
+
+Description
+-----------
+
+This calls \ :c:func:`snd_card_disconnect`\  for disconnecting all belonging components
+and waits until all pending files get closed.
+It assures that all accesses from user-space finished so that the driver
+can release its resources gracefully.
+
 .. _`snd_card_free_when_closed`:
 
 snd_card_free_when_closed

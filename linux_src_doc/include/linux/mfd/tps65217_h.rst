@@ -63,7 +63,6 @@ Definition
     struct tps65217 {
         struct device *dev;
         struct tps65217_board *pdata;
-        unsigned long id;
         struct regulator_desc desc[TPS65217_NUM_REGULATOR];
         struct regmap *regmap;
         u8 *strobes;
@@ -82,9 +81,6 @@ dev
     *undescribed*
 
 pdata
-    *undescribed*
-
-id
     *undescribed*
 
 desc

@@ -1637,9 +1637,9 @@ Description
 -----------
 
      Enable SATA Interface power management.  This will enable
-     Device Interface Power Management (DIPM) for min_power
-     policy, and then call driver specific callbacks for
-     enabling Host Initiated Power management.
+     Device Interface Power Management (DIPM) for min_power and
+     medium_power_with_dipm policies, and then call driver specific
+     callbacks for enabling Host Initiated Power management.
 
 .. _`ata_eh_set_lpm.locking`:
 

@@ -39,7 +39,7 @@ Description
 -----------
 
 Return the value of the specified RCU-protected pointer, but omit
-both the \ :c:func:`smp_read_barrier_depends`\  and the \ :c:func:`ACCESS_ONCE`\ , because
+both the \ :c:func:`smp_read_barrier_depends`\  and the \ :c:func:`READ_ONCE`\ , because
 caller holds genl mutex.
 
 .. This file was automatic generated / don't edit.

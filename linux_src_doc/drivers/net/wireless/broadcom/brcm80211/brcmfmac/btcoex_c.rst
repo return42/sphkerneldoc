@@ -249,11 +249,11 @@ brcmf_btcoex_restore_part1
 brcmf_btcoex_timerfunc
 ======================
 
-.. c:function:: void brcmf_btcoex_timerfunc(ulong data)
+.. c:function:: void brcmf_btcoex_timerfunc(struct timer_list *t)
 
     BT coex timer callback
 
-    :param ulong data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`brcmf_btcoex_handler`:

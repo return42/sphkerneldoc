@@ -20,6 +20,7 @@ irq
     irqdesc_c
     irqdomain_c
     manage_c
+    matrix_c
     migration_c
     msi_c
     pm_c

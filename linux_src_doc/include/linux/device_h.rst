@@ -38,6 +38,7 @@ Definition
         const struct iommu_ops *iommu_ops;
         struct subsys_private *p;
         struct lock_class_key lock_key;
+        bool force_dma;
     }
 
 .. _`bus_type.members`:
@@ -116,6 +117,10 @@ p
 
 lock_key
     Lock class key for use by the lock validator
+
+force_dma
+    Assume devices on this bus should be set up by \ :c:func:`dma_configure`\ 
+    even if DMA capability is not explicitly described by firmware.
 
 .. _`bus_type.description`:
 
@@ -371,8 +376,6 @@ Definition
         char *(*devnode)(struct device *dev, umode_t *mode);
         void (*class_release)(struct class *class);
         void (*dev_release)(struct device *dev);
-        int (*suspend)(struct device *dev, pm_message_t state);
-        int (*resume)(struct device *dev);
         int (*shutdown_pre)(struct device *dev);
         const struct kobj_ns_type_operations *ns_type;
         const void *(*namespace)(struct device *dev);
@@ -413,13 +416,6 @@ class_release
 
 dev_release
     Called to release the device.
-
-suspend
-    Used to put the device to sleep mode, usually to a low power
-    state.
-
-resume
-    Used to bring the device from the sleep mode.
 
 shutdown_pre
     Called at shut-down time before driver shutdown.

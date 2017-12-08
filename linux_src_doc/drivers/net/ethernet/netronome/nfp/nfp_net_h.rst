@@ -282,6 +282,7 @@ Definition
         u64 hw_csum_tx_inner;
         u64 tx_gather;
         u64 tx_lso;
+        u64 rx_replace_buf_alloc_fail;
         u64 tx_errors;
         u64 tx_busy;
         u32 irq_vector;
@@ -370,6 +371,9 @@ tx_gather
 tx_lso
     Counter of LSO packets sent
 
+rx_replace_buf_alloc_fail
+    Counter of RX buffer allocation failures
+
 tx_errors
     How many TX errors were encountered
 
@@ -418,7 +422,6 @@ Definition
         struct device *dev;
         struct net_device *netdev;
         u8 is_vf:1;
-        u8 bpf_offload_skip_sw:1;
         u8 bpf_offload_xdp:1;
         u8 chained_metadata_format:1;
         u8 rx_dma_dir;
@@ -452,9 +455,6 @@ netdev
 
 is_vf
     Is the driver attached to a VF?
-
-bpf_offload_skip_sw
-    Offloaded BPF program will not be rerun by cls_bpf
 
 bpf_offload_xdp
     Offloaded BPF program is XDP

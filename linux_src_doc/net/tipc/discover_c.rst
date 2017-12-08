@@ -167,12 +167,12 @@ tipc_disc_remove_dest
 disc_timeout
 ============
 
-.. c:function:: void disc_timeout(unsigned long data)
+.. c:function:: void disc_timeout(struct timer_list *t)
 
     send a periodic link setup request
 
-    :param unsigned long data:
-        ptr to link request structure
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`disc_timeout.description`:
 

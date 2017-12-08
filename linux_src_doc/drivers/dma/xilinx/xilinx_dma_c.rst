@@ -462,6 +462,63 @@ stop_transfer
 tdest
     *undescribed*
 
+.. _`xdma_ip_type`:
+
+enum xdma_ip_type
+=================
+
+.. c:type:: enum xdma_ip_type
+
+    DMA IP type.
+
+.. _`xdma_ip_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum xdma_ip_type {
+        XDMA_TYPE_AXIDMA,
+        XDMA_TYPE_CDMA,
+        XDMA_TYPE_VDMA
+    };
+
+.. _`xdma_ip_type.constants`:
+
+Constants
+---------
+
+XDMA_TYPE_AXIDMA
+    *undescribed*
+
+XDMA_TYPE_CDMA
+    *undescribed*
+
+XDMA_TYPE_VDMA
+    *undescribed*
+
+.. _`xdma_ip_type.xdma_type_axidma`:
+
+XDMA_TYPE_AXIDMA
+----------------
+
+Axi dma ip.
+
+.. _`xdma_ip_type.xdma_type_cdma`:
+
+XDMA_TYPE_CDMA
+--------------
+
+Axi cdma ip.
+
+.. _`xdma_ip_type.xdma_type_vdma`:
+
+XDMA_TYPE_VDMA
+--------------
+
+Axi vdma ip.
+
 .. _`xilinx_dma_device`:
 
 struct xilinx_dma_device

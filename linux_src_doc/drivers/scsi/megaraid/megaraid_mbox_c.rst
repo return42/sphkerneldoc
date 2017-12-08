@@ -1107,12 +1107,12 @@ Callback routine called in the ISR/tasklet context for get ldmap call
 megaraid_sysfs_get_ldmap_timeout
 ================================
 
-.. c:function:: void megaraid_sysfs_get_ldmap_timeout(unsigned long data)
+.. c:function:: void megaraid_sysfs_get_ldmap_timeout(struct timer_list *t)
 
     timeout handling for get ldmap
 
-    :param unsigned long data:
-        timed out packet
+    :param struct timer_list \*t:
+        timed out timer
 
 .. _`megaraid_sysfs_get_ldmap_timeout.description`:
 

@@ -836,7 +836,7 @@ and configuration data via \ ``soc``\ . Returns 0 on success or -err on failure.
 tegra_dfll_unregister
 =====================
 
-.. c:function:: int tegra_dfll_unregister(struct platform_device *pdev)
+.. c:function:: struct tegra_dfll_soc_data *tegra_dfll_unregister(struct platform_device *pdev)
 
     release all of the DFLL driver resources for a device
 
@@ -849,8 +849,8 @@ Description
 -----------
 
 Unbind this driver from the DFLL hardware device represented by
-\ ``pdev``\ . The DFLL must be disabled for this to succeed. Returns 0
-upon success or -EBUSY if the DFLL is still active.
+\ ``pdev``\ . The DFLL must be disabled for this to succeed. Returns a
+soc pointer upon success or -EBUSY if the DFLL is still active.
 
 .. This file was automatic generated / don't edit.
 

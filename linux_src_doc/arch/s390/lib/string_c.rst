@@ -191,14 +191,14 @@ terminated.
 strcmp
 ======
 
-.. c:function:: int strcmp(const char *cs, const char *ct)
+.. c:function:: int strcmp(const char *s1, const char *s2)
 
     Compare two strings
 
-    :param const char \*cs:
+    :param const char \*s1:
         One string
 
-    :param const char \*ct:
+    :param const char \*s2:
         Another string
 
 .. _`strcmp.description`:
@@ -206,9 +206,9 @@ strcmp
 Description
 -----------
 
-returns   0 if \ ``cs``\  and \ ``ct``\  are equal,
-< 0 if \ ``cs``\  is less than \ ``ct``\ 
-> 0 if \ ``cs``\  is greater than \ ``ct``\ 
+returns   0 if \ ``s1``\  and \ ``s2``\  are equal,
+< 0 if \ ``s1``\  is less than \ ``s2``\ 
+> 0 if \ ``s1``\  is greater than \ ``s2``\ 
 
 .. _`strrchr`:
 
@@ -271,14 +271,14 @@ if \ ``c``\  is not found
 memcmp
 ======
 
-.. c:function:: int memcmp(const void *cs, const void *ct, size_t n)
+.. c:function:: int memcmp(const void *s1, const void *s2, size_t n)
 
     Compare two areas of memory
 
-    :param const void \*cs:
+    :param const void \*s1:
         One area of memory
 
-    :param const void \*ct:
+    :param const void \*s2:
         Another area of memory
 
     :param size_t n:

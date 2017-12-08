@@ -101,8 +101,7 @@ reservation_object_copy_fences
 Description
 -----------
 
-Copy all fences from src to dst. Both src->lock as well as dst-lock must be
-held.
+Copy all fences from src to dst. dst-lock must be held.
 
 .. _`reservation_object_get_fences_rcu`:
 

@@ -50,7 +50,8 @@ Definition
 .. code-block:: c
 
     struct sht15_data {
-        struct sht15_platform_data *pdata;
+        struct gpio_desc *sck;
+        struct gpio_desc *data;
         struct work_struct read_work;
         wait_queue_head_t wait_queue;
         uint16_t val_temp;
@@ -79,8 +80,11 @@ Definition
 Members
 -------
 
-pdata
-    platform data (gpio's etc).
+sck
+    clock GPIO line
+
+data
+    data GPIO line
 
 read_work
     bh of interrupt handler.

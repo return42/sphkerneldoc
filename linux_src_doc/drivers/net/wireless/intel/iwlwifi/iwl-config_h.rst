@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/intel/iwlwifi/iwl-config.h
 
+.. _`iwl_nvm_type`:
+
+enum iwl_nvm_type
+=================
+
+.. c:type:: enum iwl_nvm_type
+
+    nvm formats
+
+.. _`iwl_nvm_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_nvm_type {
+        IWL_NVM,
+        IWL_NVM_EXT,
+        IWL_NVM_SDP
+    };
+
+.. _`iwl_nvm_type.constants`:
+
+Constants
+---------
+
+IWL_NVM
+    the regular format
+
+IWL_NVM_EXT
+    extended NVM format
+
+IWL_NVM_SDP
+    NVM format used by 3168 series
+
 .. _`iwl_tt_params`:
 
 struct iwl_tt_params
@@ -99,6 +135,7 @@ Definition
         const struct iwl_tt_params *thermal_params;
         enum iwl_device_family device_family;
         enum iwl_led_mode led_mode;
+        enum iwl_nvm_type nvm_type;
         u32 max_data_size;
         u32 max_inst_size;
         netdev_features_t features;
@@ -108,9 +145,11 @@ Definition
         u32 dccm2_len;
         u32 smem_offset;
         u32 smem_len;
+        u32 soc_latency;
         u16 nvm_ver;
         u16 nvm_calib_ver;
-        u16 rx_with_siso_diversity:1,bt_shared_single_ant:1,internal_wimax_coex:1,host_interrupt_operation_mode:1,high_temp:1,mac_addr_from_csr:1,lp_xtal_workaround:1,disable_dummy_notification:1,apmg_not_supported:1,mq_rx_supported:1,vht_mu_mimo_supported:1,rf_id:1,integrated:1,use_tfh:1,gen2:1,cdb:1,ext_nvm:1, dbgc_supported:1;
+        u16 rx_with_siso_diversity:1,bt_shared_single_ant:1,internal_wimax_coex:1,host_interrupt_operation_mode:1,high_temp:1,mac_addr_from_csr:1,lp_xtal_workaround:1,disable_dummy_notification:1,apmg_not_supported:1,mq_rx_supported:1,vht_mu_mimo_supported:1,rf_id:1,integrated:1,use_tfh:1,gen2:1,cdb:1, dbgc_supported:1;
+        u16 tx_cmd_queue_size;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         u8 non_shared_ant;
@@ -121,6 +160,7 @@ Definition
         u8 max_vht_ampdu_exponent;
         u8 ucode_api_max;
         u8 ucode_api_min;
+        u32 min_umac_error_event_table;
     }
 
 .. _`iwl_cfg.members`:
@@ -168,6 +208,9 @@ device_family
 led_mode
     0=blinking, 1=On(RF On)/Off(RF Off)
 
+nvm_type
+    see \ :c:type:`enum iwl_nvm_type <iwl_nvm_type>`\ 
+
 max_data_size
     The maximal length of the fw data section
 
@@ -194,6 +237,9 @@ smem_offset
 
 smem_len
     the length of SMEM
+
+soc_latency
+    *undescribed*
 
 nvm_ver
     NVM version
@@ -250,11 +296,12 @@ gen2
 cdb
     CDB support
 
-ext_nvm
-    extended NVM format
-
 dbgc_supported
     *undescribed*
+
+tx_cmd_queue_size
+    size of the cmd queue. If zero, use the same value as
+    the regular queues
 
 valid_tx_ant
     valid transmit antenna
@@ -286,6 +333,9 @@ ucode_api_max
 
 ucode_api_min
     Lowest version of uCode API supported by driver.
+
+min_umac_error_event_table
+    *undescribed*
 
 .. _`iwl_cfg.description`:
 

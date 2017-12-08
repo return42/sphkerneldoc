@@ -173,8 +173,9 @@ Description
 
 \param[in]     file  - File descriptor against which to perform the operation
 \param[in,out] arg   - User-filled structure containing the linkno to operate
-on and the available size. It is eventually filled with
-the requested information or left untouched on error
+on and the available size. It is eventually filled
+with the requested information or left untouched on
+error
 
 \retval - 0 on success
 \retval - Appropriate negative error code on failure

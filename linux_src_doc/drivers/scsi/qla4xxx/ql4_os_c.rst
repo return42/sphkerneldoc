@@ -225,12 +225,12 @@ Interrupt
 qla4xxx_timer
 =============
 
-.. c:function:: void qla4xxx_timer(struct scsi_qla_host *ha)
+.. c:function:: void qla4xxx_timer(struct timer_list *t)
 
     checks every second for work to do.
 
-    :param struct scsi_qla_host \*ha:
-        Pointer to host adapter structure.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`qla4xxx_cmd_wait`:
 

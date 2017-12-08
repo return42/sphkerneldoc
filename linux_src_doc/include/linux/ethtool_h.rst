@@ -144,6 +144,28 @@ Description
 
 Returns true/false.
 
+.. _`ethtool_intersect_link_masks`:
+
+ethtool_intersect_link_masks
+============================
+
+.. c:function:: void ethtool_intersect_link_masks(struct ethtool_link_ksettings *dst, struct ethtool_link_ksettings *src)
+
+    Given two link masks, AND them together
+
+    :param struct ethtool_link_ksettings \*dst:
+        first mask and where result is stored
+
+    :param struct ethtool_link_ksettings \*src:
+        second mask to intersect with
+
+.. _`ethtool_intersect_link_masks.description`:
+
+Description
+-----------
+
+Given two link mode masks, AND them together and save the result in dst.
+
 .. _`ethtool_ops`:
 
 struct ethtool_ops

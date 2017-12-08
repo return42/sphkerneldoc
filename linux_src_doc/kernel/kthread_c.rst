@@ -408,12 +408,12 @@ For example, when the worker was stopped and started again.
 kthread_delayed_work_timer_fn
 =============================
 
-.. c:function:: void kthread_delayed_work_timer_fn(unsigned long __data)
+.. c:function:: void kthread_delayed_work_timer_fn(struct timer_list *t)
 
     callback that queues the associated kthread delayed work when the timer expires.
 
-    :param unsigned long __data:
-        pointer to the data associated with the timer
+    :param struct timer_list \*t:
+        pointer to the expired timer
 
 .. _`kthread_delayed_work_timer_fn.description`:
 
@@ -623,6 +623,48 @@ Description
 Flush and destroy \ ``worker``\ .  The simple flush is enough because the kthread
 worker API is used only in trivial scenarios.  There are no multi-step state
 machines needed.
+
+.. _`kthread_associate_blkcg`:
+
+kthread_associate_blkcg
+=======================
+
+.. c:function:: void kthread_associate_blkcg(struct cgroup_subsys_state *css)
+
+    associate blkcg to current kthread
+
+    :param struct cgroup_subsys_state \*css:
+        the cgroup info
+
+.. _`kthread_associate_blkcg.description`:
+
+Description
+-----------
+
+Current thread must be a kthread. The thread is running jobs on behalf of
+other threads. In some cases, we expect the jobs attach cgroup info of
+original threads instead of that of current thread. This function stores
+original thread's cgroup info in current kthread context for later
+retrieval.
+
+.. _`kthread_blkcg`:
+
+kthread_blkcg
+=============
+
+.. c:function:: struct cgroup_subsys_state *kthread_blkcg( void)
+
+    get associated blkcg css of current kthread
+
+    :param  void:
+        no arguments
+
+.. _`kthread_blkcg.description`:
+
+Description
+-----------
+
+Current thread must be a kthread.
 
 .. This file was automatic generated / don't edit.
 

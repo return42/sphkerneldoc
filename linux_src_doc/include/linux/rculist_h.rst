@@ -269,42 +269,26 @@ list_first_or_null_rcu
 
 .. c:function::  list_first_or_null_rcu( ptr,  type,  member)
 
+    get the first element from a list
+
     :param  ptr:
-        *undescribed*
+        the list head to take the element from.
 
     :param  type:
-        *undescribed*
+        the type of the struct this is embedded in.
 
     :param  member:
-        *undescribed*
+        the name of the list_head within the struct.
 
 .. _`list_first_or_null_rcu.description`:
 
 Description
 -----------
 
-Implementing those functions following their counterparts \ :c:func:`list_empty`\  and
-\ :c:func:`list_first_entry`\  is not advisable because they lead to subtle race
+Note that if the list is empty, it returns NULL.
 
-.. _`list_first_or_null_rcu.conditions-as-the-following-snippet-shows`:
-
-conditions as the following snippet shows
------------------------------------------
-
-
-if (!list_empty_rcu(mylist)) {
-     struct foo *bar = list_first_entry_rcu(mylist, struct foo, list_member);
-     do_something(bar);
-}
-
-The list may not be empty when list_empty_rcu checks it, but it may be when
-list_first_entry_rcu rereads the ->next pointer.
-
-Rereading the ->next pointer is not a problem for \ :c:func:`list_empty`\  and
-\ :c:func:`list_first_entry`\  because they would be protected by a lock that blocks
-writers.
-
-See list_first_or_null_rcu for an alternative.
+This primitive may safely run concurrently with the _rcu list-mutation
+primitives such as \ :c:func:`list_add_rcu`\  as long as it's guarded by \ :c:func:`rcu_read_lock`\ .
 
 .. _`list_next_or_null_rcu`:
 

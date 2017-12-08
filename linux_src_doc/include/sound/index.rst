@@ -7,6 +7,7 @@ sound
 .. toctree::
     :maxdepth: 1
 
+    ac97/index
     aess_h
     ak4641_h
     compress_driver_h
@@ -21,5 +22,6 @@ sound
     max9768_h
     pcm_h
     pcm_params_h
+    soc-acpi_h
     soc-dapm_h
     soc_h

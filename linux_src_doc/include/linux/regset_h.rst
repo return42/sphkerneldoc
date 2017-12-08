@@ -168,6 +168,7 @@ Definition
         user_regset_set_fn *set;
         user_regset_active_fn *active;
         user_regset_writeback_fn *writeback;
+        user_regset_get_size_fn *get_size;
         unsigned int n;
         unsigned int size;
         unsigned int align;
@@ -191,6 +192,9 @@ active
 
 writeback
     Function to write data back to user memory, or \ ``NULL``\ .
+
+get_size
+    Function to return the regset's size, or \ ``NULL``\ .
 
 n
     Number of slots (registers).
@@ -216,14 +220,27 @@ This data structure describes a machine resource we call a register set.
 This is part of the state of an individual thread, not necessarily
 actual CPU registers per se.  A register set consists of a number of
 similar slots, given by \ ``n``\ .  Each slot is \ ``size``\  bytes, and aligned to
-\ ``align``\  bytes (which is at least \ ``size``\ ).
+\ ``align``\  bytes (which is at least \ ``size``\ ).  For dynamically-sized
+regsets, \ ``n``\  must contain the maximum possible number of slots for the
+regset, and \ ``get_size``\  must point to a function that returns the
+current regset size.
 
-These functions must be called only on the current thread or on a
-thread that is in \ ``TASK_STOPPED``\  or \ ``TASK_TRACED``\  state, that we are
-guaranteed will not be woken up and return to user mode, and that we
-have called \ :c:func:`wait_task_inactive`\  on.  (The target thread always might
-wake up for SIGKILL while these functions are working, in which case
-that thread's user_regset state might be scrambled.)
+Callers that need to know only the current size of the regset and do
+not care about its internal structure should call \ :c:func:`regset_size`\ 
+instead of inspecting \ ``n``\  or calling \ ``get_size``\ .
+
+For backward compatibility, the \ ``get``\  and \ ``set``\  methods must pad to, or
+accept, \ ``n``\  \* \ ``size``\  bytes, even if the current regset size is smaller.
+The precise semantics of these operations depend on the regset being
+accessed.
+
+The functions to which \ :c:type:`struct user_regset <user_regset>`\  members point must be
+called only on the current thread or on a thread that is in
+\ ``TASK_STOPPED``\  or \ ``TASK_TRACED``\  state, that we are guaranteed will not
+be woken up and return to user mode, and that we have called
+\ :c:func:`wait_task_inactive`\  on.  (The target thread always might wake up for
+SIGKILL while these functions are working, in which case that
+thread's user_regset state might be scrambled.)
 
 The \ ``pos``\  argument must be aligned according to \ ``align``\ ; the \ ``count``\ 
 argument must be a multiple of \ ``size``\ .  These functions are not
@@ -381,6 +398,29 @@ copy_regset_from_user
 
     :param const void __user \*data:
         user-mode pointer to copy from
+
+.. _`regset_size`:
+
+regset_size
+===========
+
+.. c:function:: unsigned int regset_size(struct task_struct *target, const struct user_regset *regset)
+
+    determine the current size of a regset
+
+    :param struct task_struct \*target:
+        thread to be examined
+
+    :param const struct user_regset \*regset:
+        regset to be examined
+
+.. _`regset_size.description`:
+
+Description
+-----------
+
+Note that the returned size is valid only until the next time
+(if any) \ ``regset``\  is modified for \ ``target``\ .
 
 .. This file was automatic generated / don't edit.
 

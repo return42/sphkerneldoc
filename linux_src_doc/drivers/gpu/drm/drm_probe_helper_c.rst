@@ -117,8 +117,6 @@ The basic procedure is as follows
    \ :c:func:`drm_mode_probed_add`\ . New modes start their life with status as OK.
    Modes are added from a single source using the following priority order.
 
-   - debugfs 'override_edid' (used for testing only)
-   - firmware EDID (drm_load_edid_firmware())
    - \ :c:type:`drm_connector_helper_funcs.get_modes <drm_connector_helper_funcs>`\  vfunc
    - if the connector status is connector_status_connected, standard
      VESA DMT modes up to 1024x768 are automatically added

@@ -133,32 +133,32 @@ src
 dst
     destination ip address
 
-.. _`flow_dissector_key_tipc_addrs`:
+.. _`flow_dissector_key_tipc`:
 
-struct flow_dissector_key_tipc_addrs
-====================================
+struct flow_dissector_key_tipc
+==============================
 
-.. c:type:: struct flow_dissector_key_tipc_addrs
+.. c:type:: struct flow_dissector_key_tipc
 
 
-.. _`flow_dissector_key_tipc_addrs.definition`:
+.. _`flow_dissector_key_tipc.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct flow_dissector_key_tipc_addrs {
-        __be32 srcnode;
+    struct flow_dissector_key_tipc {
+        __be32 key;
     }
 
-.. _`flow_dissector_key_tipc_addrs.members`:
+.. _`flow_dissector_key_tipc.members`:
 
 Members
 -------
 
-srcnode
-    source node address
+key
+    source node address combined with selector
 
 .. _`flow_dissector_key_addrs`:
 
@@ -179,7 +179,7 @@ Definition
         union {
             struct flow_dissector_key_ipv4_addrs v4addrs;
             struct flow_dissector_key_ipv6_addrs v6addrs;
-            struct flow_dissector_key_tipc_addrs tipcaddrs;
+            struct flow_dissector_key_tipc tipckey;
         } ;
     }
 
@@ -197,7 +197,7 @@ v4addrs
 v6addrs
     IPv6 addresses
 
-tipcaddrs
+tipckey
     *undescribed*
 
 .. _`flow_dissector_key_eth_addrs`:

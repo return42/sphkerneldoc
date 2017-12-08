@@ -24,6 +24,44 @@ Description
 MMC drivers should call this function when they have completed
 their processing of a request.
 
+.. _`mmc_cqe_request_done`:
+
+mmc_cqe_request_done
+====================
+
+.. c:function:: void mmc_cqe_request_done(struct mmc_host *host, struct mmc_request *mrq)
+
+    CQE has finished processing an MMC request
+
+    :param struct mmc_host \*host:
+        MMC host which completed request
+
+    :param struct mmc_request \*mrq:
+        MMC request which completed
+
+.. _`mmc_cqe_request_done.description`:
+
+Description
+-----------
+
+CQE drivers should call this function when they have completed
+their processing of a request.
+
+.. _`mmc_cqe_post_req`:
+
+mmc_cqe_post_req
+================
+
+.. c:function:: void mmc_cqe_post_req(struct mmc_host *host, struct mmc_request *mrq)
+
+    CQE post process of a completed MMC request
+
+    :param struct mmc_host \*host:
+        MMC host
+
+    :param struct mmc_request \*mrq:
+        MMC request to be processed
+
 .. _`mmc_is_req_done`:
 
 mmc_is_req_done
@@ -265,12 +303,16 @@ single scatter gather entry.
 __mmc_claim_host
 ================
 
-.. c:function:: int __mmc_claim_host(struct mmc_host *host, atomic_t *abort)
+.. c:function:: int __mmc_claim_host(struct mmc_host *host, struct mmc_ctx *ctx, atomic_t *abort)
 
     exclusively claim a host
 
     :param struct mmc_host \*host:
         mmc host to claim
+
+    :param struct mmc_ctx \*ctx:
+        context that claims the host or NULL in which case the default
+        context will be used
 
     :param atomic_t \*abort:
         whether or not the operation should be aborted
@@ -501,6 +543,29 @@ we match.
 
 This function is expected to be used by a controller's
 \ :c:func:`start_signal_voltage_switch`\  function.
+
+.. _`mmc_regulator_get_supply`:
+
+mmc_regulator_get_supply
+========================
+
+.. c:function:: int mmc_regulator_get_supply(struct mmc_host *mmc)
+
+    try to get VMMC and VQMMC regulators for a host
+
+    :param struct mmc_host \*mmc:
+        the host to regulate
+
+.. _`mmc_regulator_get_supply.description`:
+
+Description
+-----------
+
+Returns 0 or errno. errno should be handled, it is either a critical error
+or -EPROBE_DEFER. 0 means no critical error but it does not mean all
+regulators have been found because they all are optional. If you require
+certain regulators, you need to check separately in your driver if they got
+populated after calling this function.
 
 .. _`mmc_detect_change`:
 

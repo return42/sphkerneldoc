@@ -21,6 +21,7 @@ Definition
         struct list_head list;
         struct parallel_data *pd;
         int cb_cpu;
+        int cpu;
         int info;
         void (*parallel)(struct padata_priv *padata);
         void (*serial)(struct padata_priv *padata);
@@ -39,6 +40,9 @@ pd
 
 cb_cpu
     Callback cpu for serializatioon.
+
+cpu
+    Cpu for parallelization.
 
 info
     Used to pass information from the parallel to the serial function.
@@ -137,6 +141,7 @@ Definition
         struct padata_list reorder;
         struct parallel_data *pd;
         struct work_struct work;
+        struct work_struct reorder_work;
         atomic_t num_obj;
         int cpu_index;
     }
@@ -157,6 +162,9 @@ pd
 
 work
     work struct for parallelization.
+
+reorder_work
+    work struct for reordering.
 
 num_obj
     Number of objects that are processed by this cpu.

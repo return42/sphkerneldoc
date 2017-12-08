@@ -72,6 +72,28 @@ Description
 
 Returns 0 on success, an error code otherwise.
 
+.. _`ad_sd_reset`:
+
+ad_sd_reset
+===========
+
+.. c:function:: int ad_sd_reset(struct ad_sigma_delta *sigma_delta, unsigned int reset_length)
+
+    Reset the serial interface
+
+    :param struct ad_sigma_delta \*sigma_delta:
+        The sigma delta device
+
+    :param unsigned int reset_length:
+        Number of SCLKs with DIN = 1
+
+.. _`ad_sd_reset.description`:
+
+Description
+-----------
+
+Returns 0 on success, an error code otherwise.
+
 .. _`ad_sd_calibrate_all`:
 
 ad_sd_calibrate_all

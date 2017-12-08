@@ -36,23 +36,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 02111-1307, USA.
 
-.. _`ecryptfs_to_hex`:
-
-ecryptfs_to_hex
-===============
-
-.. c:function:: void ecryptfs_to_hex(char *dst, char *src, size_t src_size)
-
-    :param char \*dst:
-        Buffer to take hex character representation of contents of
-        src; must be at least of size (src_size \* 2)
-
-    :param char \*src:
-        Buffer to be converted to a hex string representation
-
-    :param size_t src_size:
-        number of bytes to convert
-
 .. _`ecryptfs_from_hex`:
 
 ecryptfs_from_hex

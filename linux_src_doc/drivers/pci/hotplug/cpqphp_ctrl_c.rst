@@ -350,12 +350,12 @@ remove_board
 cpqhp_pushbutton_thread
 =======================
 
-.. c:function:: void cpqhp_pushbutton_thread(unsigned long slot)
+.. c:function:: void cpqhp_pushbutton_thread(struct timer_list *t)
 
     handle pushbutton events
 
-    :param unsigned long slot:
-        target slot (struct)
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`cpqhp_pushbutton_thread.description`:
 

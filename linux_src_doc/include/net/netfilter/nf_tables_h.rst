@@ -382,6 +382,7 @@ Definition
         bool (*flush)(const struct net *net,const struct nft_set *set, void *priv);
         void (*remove)(const struct net *net,const struct nft_set *set, const struct nft_set_elem *elem);
         void (*walk)(const struct nft_ctx *ctx,struct nft_set *set, struct nft_set_iter *iter);
+        void * (*get)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem, unsigned int flags);
         unsigned int (*privsize)(const struct nlattr * const nla[], const struct nft_set_desc *desc);
         bool (*estimate)(const struct nft_set_desc *desc,u32 features, struct nft_set_estimate *est);
         int (*init)(const struct nft_set *set,const struct nft_set_desc *desc, const struct nlattr * const nla[]);
@@ -419,6 +420,9 @@ remove
 
 walk
     iterate over all set elemeennts
+
+get
+    get set elements
 
 privsize
     function to return size of set private data

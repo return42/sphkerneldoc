@@ -180,10 +180,9 @@ Package () {
 }
 }
 
-Calling this function with index \ ``2``\  return \ ``-ENOENT``\  and with index \ ``3``\ 
-returns the last entry. If the property does not contain any more values
-\ ``-ENODATA``\  is returned. The NULL entry must be single integer and
-preferably contain value \ ``0``\ .
+Calling this function with index \ ``2``\  or index \ ``3``\  return \ ``-ENOENT``\ . If the
+property does not contain any more values \ ``-ENOENT``\  is returned. The NULL
+entry must be single integer and preferably contain value \ ``0``\ .
 
 .. _`__acpi_node_get_property_reference.return`:
 

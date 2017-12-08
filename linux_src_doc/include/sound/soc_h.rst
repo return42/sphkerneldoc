@@ -304,6 +304,28 @@ Description
 
 Initializes the CODEC DAPM bias level. See \ :c:func:`snd_soc_dapm_init_bias_level`\ .
 
+.. _`snd_soc_component_init_bias_level`:
+
+snd_soc_component_init_bias_level
+=================================
+
+.. c:function:: void snd_soc_component_init_bias_level(struct snd_soc_component *component, enum snd_soc_bias_level level)
+
+    Initialize COMPONENT DAPM bias level
+
+    :param struct snd_soc_component \*component:
+        The COMPONENT for which to initialize the DAPM bias level
+
+    :param enum snd_soc_bias_level level:
+        The DAPM level to initialize to
+
+.. _`snd_soc_component_init_bias_level.description`:
+
+Description
+-----------
+
+Initializes the COMPONENT DAPM bias level. See \ :c:func:`snd_soc_dapm_init_bias_level`\ .
+
 .. _`snd_soc_codec_get_bias_level`:
 
 snd_soc_codec_get_bias_level
@@ -322,6 +344,25 @@ Return
 ------
 
 The current DAPM bias level of the CODEC.
+
+.. _`snd_soc_component_get_bias_level`:
+
+snd_soc_component_get_bias_level
+================================
+
+.. c:function:: enum snd_soc_bias_level snd_soc_component_get_bias_level(struct snd_soc_component *component)
+
+    Get current COMPONENT DAPM bias level
+
+    :param struct snd_soc_component \*component:
+        The COMPONENT for which to get the DAPM bias level
+
+.. _`snd_soc_component_get_bias_level.return`:
+
+Return
+------
+
+The current DAPM bias level of the COMPONENT.
 
 .. _`snd_soc_codec_force_bias_level`:
 
@@ -346,6 +387,29 @@ Description
 Forces the CODEC bias level to a specific state. See
 \ :c:func:`snd_soc_dapm_force_bias_level`\ .
 
+.. _`snd_soc_component_force_bias_level`:
+
+snd_soc_component_force_bias_level
+==================================
+
+.. c:function:: int snd_soc_component_force_bias_level(struct snd_soc_component *component, enum snd_soc_bias_level level)
+
+    Set the COMPONENT DAPM bias level
+
+    :param struct snd_soc_component \*component:
+        The COMPONENT for which to set the level
+
+    :param enum snd_soc_bias_level level:
+        The level to set to
+
+.. _`snd_soc_component_force_bias_level.description`:
+
+Description
+-----------
+
+Forces the COMPONENT bias level to a specific state. See
+\ :c:func:`snd_soc_dapm_force_bias_level`\ .
+
 .. _`snd_soc_dapm_kcontrol_codec`:
 
 snd_soc_dapm_kcontrol_codec
@@ -366,6 +430,26 @@ Description
 This function must only be used on DAPM contexts that are known to be part of
 a CODEC (e.g. in a CODEC driver). Otherwise the behavior is undefined.
 
+.. _`snd_soc_dapm_kcontrol_component`:
+
+snd_soc_dapm_kcontrol_component
+===============================
+
+.. c:function:: struct snd_soc_component *snd_soc_dapm_kcontrol_component(struct snd_kcontrol *kcontrol)
+
+    Returns the component associated to a kcontrol
+
+    :param struct snd_kcontrol \*kcontrol:
+        The kcontrol
+
+.. _`snd_soc_dapm_kcontrol_component.description`:
+
+Description
+-----------
+
+This function must only be used on DAPM contexts that are known to be part of
+a COMPONENT (e.g. in a COMPONENT driver). Otherwise the behavior is undefined.
+
 .. _`snd_soc_cache_sync`:
 
 snd_soc_cache_sync
@@ -379,6 +463,25 @@ snd_soc_cache_sync
         CODEC to sync
 
 .. _`snd_soc_cache_sync.note`:
+
+Note
+----
+
+This function will call \ :c:func:`regcache_sync`\ 
+
+.. _`snd_soc_component_cache_sync`:
+
+snd_soc_component_cache_sync
+============================
+
+.. c:function:: int snd_soc_component_cache_sync(struct snd_soc_component *component)
+
+    Sync the register cache with the hardware
+
+    :param struct snd_soc_component \*component:
+        COMPONENT to sync
+
+.. _`snd_soc_component_cache_sync.note`:
 
 Note
 ----

@@ -102,6 +102,7 @@ Definition
         u8 resource_index;
         u32 allocated_requests;
         u32 queued_requests;
+        u32 frame_number;
         u32 interval;
         char name[20];
         unsigned direction:1;
@@ -166,6 +167,9 @@ allocated_requests
 
 queued_requests
     number of requests queued for transfer
+
+frame_number
+    set to the frame number we want this transfer to start (ISOC)
 
 interval
     the interval on which the ISOC transfer is started

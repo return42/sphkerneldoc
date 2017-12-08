@@ -1,17 +1,98 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/fm10k/fm10k_pci.c
 
+.. _`fm10k_macvlan_schedule`:
+
+fm10k_macvlan_schedule
+======================
+
+.. c:function:: void fm10k_macvlan_schedule(struct fm10k_intfc *interface)
+
+    Schedule MAC/VLAN queue task
+
+    :param struct fm10k_intfc \*interface:
+        fm10k private interface structure
+
+.. _`fm10k_macvlan_schedule.description`:
+
+Description
+-----------
+
+Schedule the MAC/VLAN queue monitor task. If the MAC/VLAN task cannot be
+started immediately, request that it be restarted when possible.
+
+.. _`fm10k_stop_macvlan_task`:
+
+fm10k_stop_macvlan_task
+=======================
+
+.. c:function:: void fm10k_stop_macvlan_task(struct fm10k_intfc *interface)
+
+    Stop the MAC/VLAN queue monitor
+
+    :param struct fm10k_intfc \*interface:
+        fm10k private interface structure
+
+.. _`fm10k_stop_macvlan_task.description`:
+
+Description
+-----------
+
+Wait until the MAC/VLAN queue task has stopped, and cancel any future
+requests.
+
+.. _`fm10k_resume_macvlan_task`:
+
+fm10k_resume_macvlan_task
+=========================
+
+.. c:function:: void fm10k_resume_macvlan_task(struct fm10k_intfc *interface)
+
+    Restart the MAC/VLAN queue monitor
+
+    :param struct fm10k_intfc \*interface:
+        fm10k private interface structure
+
+.. _`fm10k_resume_macvlan_task.description`:
+
+Description
+-----------
+
+Clear the \__FM10K_MACVLAN_DISABLE bit and, if a request occurred, schedule
+the MAC/VLAN work monitor.
+
 .. _`fm10k_service_timer`:
 
 fm10k_service_timer
 ===================
 
-.. c:function:: void fm10k_service_timer(unsigned long data)
+.. c:function:: void fm10k_service_timer(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to interface cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
+
+.. _`fm10k_prepare_for_reset`:
+
+fm10k_prepare_for_reset
+=======================
+
+.. c:function:: bool fm10k_prepare_for_reset(struct fm10k_intfc *interface)
+
+    Prepare the driver and device for a pending reset
+
+    :param struct fm10k_intfc \*interface:
+        fm10k private data structure
+
+.. _`fm10k_prepare_for_reset.description`:
+
+Description
+-----------
+
+This function prepares for a device reset by shutting as much down as we
+can. It does nothing and returns false if \__FM10K_RESETTING was already set
+prior to calling this function. It returns true if it actually did work.
 
 .. _`fm10k_configure_swpri_map`:
 
@@ -156,6 +237,30 @@ fm10k_service_task
 
     :param struct work_struct \*work:
         pointer to work_struct containing our data
+
+.. _`fm10k_macvlan_task`:
+
+fm10k_macvlan_task
+==================
+
+.. c:function:: void fm10k_macvlan_task(struct work_struct *work)
+
+    send queued MAC/VLAN requests to switch manager
+
+    :param struct work_struct \*work:
+        pointer to work_struct containing our data
+
+.. _`fm10k_macvlan_task.description`:
+
+Description
+-----------
+
+This work item handles sending MAC/VLAN updates to the switch manager. When
+the interface is up, it will attempt to queue mailbox messages to the
+switch manager requesting updates for MAC/VLAN pairs. If the Tx fifo of the
+mailbox is full, it will reschedule itself to try again in a short while.
+This ensures that the driver does not overload the switch mailbox with too
+many simultaneous requests, causing an unnecessary reset.
 
 .. _`fm10k_configure_tx_ring`:
 
@@ -435,45 +540,42 @@ memory.
 fm10k_resume
 ============
 
-.. c:function:: int fm10k_resume(struct pci_dev *pdev)
+.. c:function:: int fm10k_resume(struct device *dev)
 
-    Restore device to pre-sleep state
+    Generic PM resume hook
 
-    :param struct pci_dev \*pdev:
-        PCI device information struct
+    :param struct device \*dev:
+        generic device structure
 
 .. _`fm10k_resume.description`:
 
 Description
 -----------
 
-fm10k_resume is called after the system has powered back up from a sleep
-state and is ready to resume operation.  This function is meant to restore
-the device back to its pre-sleep state.
+Generic PM hook used when waking the device from a low power state after
+suspend or hibernation. This function does not need to handle lower PCIe
+device state as the stack takes care of that for us.
 
 .. _`fm10k_suspend`:
 
 fm10k_suspend
 =============
 
-.. c:function:: int fm10k_suspend(struct pci_dev *pdev, pm_message_t __always_unused state)
+.. c:function:: int fm10k_suspend(struct device *dev)
 
-    Prepare the device for a system sleep state
+    Generic PM suspend hook
 
-    :param struct pci_dev \*pdev:
-        PCI device information struct
-
-    :param pm_message_t __always_unused state:
-        *undescribed*
+    :param struct device \*dev:
+        generic device structure
 
 .. _`fm10k_suspend.description`:
 
 Description
 -----------
 
-fm10k_suspend is meant to shutdown the device prior to the system entering
-a sleep state.  The fm10k hardware does not support wake on lan so the
-driver simply needs to shut down the device so it is in a low power state.
+Generic PM hook used when setting the device into a low power state for
+system suspend or hibernation. This function does not need to handle lower
+PCIe device state as the stack takes care of that for us.
 
 .. _`fm10k_io_error_detected`:
 
@@ -536,6 +638,46 @@ Description
 
 This callback is called when the error recovery driver tells us that
 its OK to resume normal operation.
+
+.. _`fm10k_io_reset_prepare`:
+
+fm10k_io_reset_prepare
+======================
+
+.. c:function:: void fm10k_io_reset_prepare(struct pci_dev *pdev)
+
+    called when PCI function is about to be reset
+
+    :param struct pci_dev \*pdev:
+        Pointer to PCI device
+
+.. _`fm10k_io_reset_prepare.description`:
+
+Description
+-----------
+
+This callback is called when the PCI function is about to be reset,
+allowing the device driver to prepare for it.
+
+.. _`fm10k_io_reset_done`:
+
+fm10k_io_reset_done
+===================
+
+.. c:function:: void fm10k_io_reset_done(struct pci_dev *pdev)
+
+    called when PCI function has finished resetting
+
+    :param struct pci_dev \*pdev:
+        Pointer to PCI device
+
+.. _`fm10k_io_reset_done.description`:
+
+Description
+-----------
+
+This callback is called just after the PCI function is reset, such as via
+/sys/class/net/<enpX>/device/reset or similar.
 
 .. _`fm10k_register_pci_driver`:
 

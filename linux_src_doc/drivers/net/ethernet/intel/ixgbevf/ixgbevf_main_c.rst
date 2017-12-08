@@ -764,12 +764,12 @@ ixgbevf_update_stats
 ixgbevf_service_timer
 =====================
 
-.. c:function:: void ixgbevf_service_timer(unsigned long data)
+.. c:function:: void ixgbevf_service_timer(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to adapter cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ixgbevf_check_hang_subtask`:
 

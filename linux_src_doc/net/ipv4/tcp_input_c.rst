@@ -6,15 +6,12 @@
 tcp_try_coalesce
 ================
 
-.. c:function:: bool tcp_try_coalesce(struct sock *sk, enum tcp_queue dest, struct sk_buff *to, struct sk_buff *from, bool *fragstolen)
+.. c:function:: bool tcp_try_coalesce(struct sock *sk, struct sk_buff *to, struct sk_buff *from, bool *fragstolen)
 
     try to merge skb to prior one
 
     :param struct sock \*sk:
         socket
-
-    :param enum tcp_queue dest:
-        destination queue
 
     :param struct sk_buff \*to:
         prior buffer

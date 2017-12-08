@@ -22,5 +22,6 @@ net
     mdio_c
     mii_c
     netconsole_c
+    thunderbolt_c
     tun_c
     xen-netfront_c

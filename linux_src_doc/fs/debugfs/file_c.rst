@@ -1,63 +1,55 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/debugfs/file.c
 
-.. _`debugfs_use_file_start`:
+.. _`debugfs_file_get`:
 
-debugfs_use_file_start
-======================
+debugfs_file_get
+================
 
-.. c:function:: int debugfs_use_file_start(const struct dentry *dentry, int *srcu_idx)
+.. c:function:: int debugfs_file_get(struct dentry *dentry)
 
     mark the beginning of file data access
 
-    :param const struct dentry \*dentry:
+    :param struct dentry \*dentry:
         the dentry object whose data is being accessed.
 
-    :param int \*srcu_idx:
-        a pointer to some memory to store a SRCU index in.
-
-.. _`debugfs_use_file_start.description`:
+.. _`debugfs_file_get.description`:
 
 Description
 -----------
 
-Up to a matching call to \ :c:func:`debugfs_use_file_finish`\ , any
-successive call into the file removing functions \ :c:func:`debugfs_remove`\ 
-and \ :c:func:`debugfs_remove_recursive`\  will block. Since associated private
+Up to a matching call to \ :c:func:`debugfs_file_put`\ , any successive call
+into the file removing functions \ :c:func:`debugfs_remove`\  and
+\ :c:func:`debugfs_remove_recursive`\  will block. Since associated private
 file data may only get freed after a successful return of any of
 the removal functions, you may safely access it after a successful
-call to \ :c:func:`debugfs_use_file_start`\  without worrying about
-lifetime issues.
+call to \ :c:func:`debugfs_file_get`\  without worrying about lifetime issues.
 
 If -%EIO is returned, the file has already been removed and thus,
 it is not safe to access any of its data. If, on the other hand,
 it is allowed to access the file data, zero is returned.
 
-Regardless of the return code, any call to
-\ :c:func:`debugfs_use_file_start`\  must be followed by a matching call
-to \ :c:func:`debugfs_use_file_finish`\ .
+.. _`debugfs_file_put`:
 
-.. _`debugfs_use_file_finish`:
+debugfs_file_put
+================
 
-debugfs_use_file_finish
-=======================
-
-.. c:function:: void debugfs_use_file_finish(int srcu_idx)
+.. c:function:: void debugfs_file_put(struct dentry *dentry)
 
     mark the end of file data access
 
-    :param int srcu_idx:
-        the SRCU index "created" by a former call to
-        \ :c:func:`debugfs_use_file_start`\ .
+    :param struct dentry \*dentry:
+        the dentry object formerly passed to
+        \ :c:func:`debugfs_file_get`\ .
 
-.. _`debugfs_use_file_finish.description`:
+.. _`debugfs_file_put.description`:
 
 Description
 -----------
 
 Allow any ongoing concurrent call into \ :c:func:`debugfs_remove`\  or
 \ :c:func:`debugfs_remove_recursive`\  blocked by a former call to
-\ :c:func:`debugfs_use_file_start`\  to proceed and return to its caller.
+\ :c:func:`debugfs_file_get`\  to proceed and return to its caller.
 
 .. _`debugfs_create_u8`:
 

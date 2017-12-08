@@ -351,7 +351,7 @@ Description
 Callers other than \ :c:func:`flush_to_ldisc`\  need to exclude the kworker
 from concurrent use of the line discipline, see \ :c:func:`paste_selection`\ .
 
-Returns the number of bytes not processed
+Returns the number of bytes processed
 
 .. _`flush_to_ldisc`:
 

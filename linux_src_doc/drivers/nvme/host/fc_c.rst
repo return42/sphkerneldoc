@@ -98,5 +98,25 @@ Return
 a completion status. Must be 0 upon success; a negative errno
 (ex: -ENXIO) upon failure.
 
+.. _`nvme_fc_rescan_remoteport`:
+
+nvme_fc_rescan_remoteport
+=========================
+
+.. c:function:: void nvme_fc_rescan_remoteport(struct nvme_fc_remote_port *remoteport)
+
+    transport entry point called by an LLDD to request a nvme device rescan.
+
+    :param struct nvme_fc_remote_port \*remoteport:
+        pointer to the (registered) remote port that is to be
+        rescanned.
+
+.. _`nvme_fc_rescan_remoteport.return`:
+
+Return
+------
+
+N/A
+
 .. This file was automatic generated / don't edit.
 

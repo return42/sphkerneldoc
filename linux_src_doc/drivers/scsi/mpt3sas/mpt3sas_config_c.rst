@@ -705,6 +705,82 @@ Description
 
 Returns 0 for success, non-zero for failure.
 
+.. _`mpt3sas_config_get_pcie_device_pg0`:
+
+mpt3sas_config_get_pcie_device_pg0
+==================================
+
+.. c:function:: int mpt3sas_config_get_pcie_device_pg0(struct MPT3SAS_ADAPTER *ioc, Mpi2ConfigReply_t *mpi_reply, Mpi26PCIeDevicePage0_t *config_page, u32 form, u32 handle)
+
+    obtain pcie device page 0
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi2ConfigReply_t \*mpi_reply:
+        reply mf payload returned from firmware
+
+    :param Mpi26PCIeDevicePage0_t \*config_page:
+        contents of the config page
+
+    :param u32 form:
+        GET_NEXT_HANDLE or HANDLE
+
+    :param u32 handle:
+        device handle
+
+.. _`mpt3sas_config_get_pcie_device_pg0.context`:
+
+Context
+-------
+
+sleep.
+
+.. _`mpt3sas_config_get_pcie_device_pg0.description`:
+
+Description
+-----------
+
+Returns 0 for success, non-zero for failure.
+
+.. _`mpt3sas_config_get_pcie_device_pg2`:
+
+mpt3sas_config_get_pcie_device_pg2
+==================================
+
+.. c:function:: int mpt3sas_config_get_pcie_device_pg2(struct MPT3SAS_ADAPTER *ioc, Mpi2ConfigReply_t *mpi_reply, Mpi26PCIeDevicePage2_t *config_page, u32 form, u32 handle)
+
+    obtain pcie device page 2
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param Mpi2ConfigReply_t \*mpi_reply:
+        reply mf payload returned from firmware
+
+    :param Mpi26PCIeDevicePage2_t \*config_page:
+        contents of the config page
+
+    :param u32 form:
+        GET_NEXT_HANDLE or HANDLE
+
+    :param u32 handle:
+        device handle
+
+.. _`mpt3sas_config_get_pcie_device_pg2.context`:
+
+Context
+-------
+
+sleep.
+
+.. _`mpt3sas_config_get_pcie_device_pg2.description`:
+
+Description
+-----------
+
+Returns 0 for success, non-zero for failure.
+
 .. _`mpt3sas_config_get_number_hba_phys`:
 
 mpt3sas_config_get_number_hba_phys

@@ -1,6 +1,49 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/xprtrdma/rpc_rdma.c
 
+.. _`rpcrdma_unmap_sendctx`:
+
+rpcrdma_unmap_sendctx
+=====================
+
+.. c:function:: void rpcrdma_unmap_sendctx(struct rpcrdma_sendctx *sc)
+
+    DMA-unmap Send buffers
+
+    :param struct rpcrdma_sendctx \*sc:
+        sendctx containing SGEs to unmap
+
+.. _`rpcrdma_prepare_send_sges`:
+
+rpcrdma_prepare_send_sges
+=========================
+
+.. c:function:: int rpcrdma_prepare_send_sges(struct rpcrdma_xprt *r_xprt, struct rpcrdma_req *req, u32 hdrlen, struct xdr_buf *xdr, enum rpcrdma_chunktype rtype)
+
+    Construct SGEs for a Send WR
+
+    :param struct rpcrdma_xprt \*r_xprt:
+        controlling transport
+
+    :param struct rpcrdma_req \*req:
+        context of RPC Call being marshalled
+
+    :param u32 hdrlen:
+        size of transport header, in bytes
+
+    :param struct xdr_buf \*xdr:
+        xdr_buf containing RPC Call
+
+    :param enum rpcrdma_chunktype rtype:
+        chunk type being encoded
+
+.. _`rpcrdma_prepare_send_sges.description`:
+
+Description
+-----------
+
+Returns 0 on success; otherwise a negative errno is returned.
+
 .. _`rpcrdma_marshal_req`:
 
 rpcrdma_marshal_req

@@ -44,25 +44,6 @@ Description
 
 Callable from all contexts.
 
-.. _`transport_put_cmd`:
-
-transport_put_cmd
-=================
-
-.. c:function:: int transport_put_cmd(struct se_cmd *cmd)
-
-    release a reference to a command
-
-    :param struct se_cmd \*cmd:
-        command to release
-
-.. _`transport_put_cmd.description`:
-
-Description
------------
-
-This routine releases our reference to the command and frees it if possible.
-
 .. _`target_put_sess_cmd`:
 
 target_put_sess_cmd

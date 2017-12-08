@@ -233,5 +233,38 @@ qcom_scm_is_available
     :param  void:
         no arguments
 
+.. _`qcom_scm_assign_mem`:
+
+qcom_scm_assign_mem
+===================
+
+.. c:function:: int qcom_scm_assign_mem(phys_addr_t mem_addr, size_t mem_sz, unsigned int *srcvm, struct qcom_scm_vmperm *newvm, int dest_cnt)
+
+    Make a secure call to reassign memory ownership
+
+    :param phys_addr_t mem_addr:
+        mem region whose ownership need to be reassigned
+
+    :param size_t mem_sz:
+        size of the region.
+
+    :param unsigned int \*srcvm:
+        vmid for current set of owners, each set bit in
+        flag indicate a unique owner
+
+    :param struct qcom_scm_vmperm \*newvm:
+        array having new owners and corrsponding permission
+        flags
+
+    :param int dest_cnt:
+        number of owners in next set.
+
+.. _`qcom_scm_assign_mem.description`:
+
+Description
+-----------
+
+Return negative errno on failure, 0 on success, with \ ``srcvm``\  updated.
+
 .. This file was automatic generated / don't edit.
 

@@ -16,6 +16,7 @@ adc
     cpcap-adc_c
     max1363_c
     max9611_c
+    mcp320x_c
     palmas_gpadc_c
     qcom-pm8xxx-xoadc_c
     qcom-spmi-iadc_c

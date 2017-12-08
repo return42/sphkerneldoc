@@ -226,6 +226,7 @@ Definition
         u8 edid_hdmi_dc_modes;
         u8 cea_rev;
         struct drm_hdmi_info hdmi;
+        bool non_desktop;
     }
 
 .. _`drm_display_info.members`:
@@ -281,6 +282,9 @@ cea_rev
 
 hdmi
     advance features of a HDMI sink.
+
+non_desktop
+    Non desktop display (HMD).
 
 .. _`drm_display_info.description`:
 
@@ -382,6 +386,7 @@ Definition
         struct drm_encoder *best_encoder;
         enum drm_link_status link_status;
         struct drm_atomic_state *state;
+        struct drm_crtc_commit *commit;
         struct drm_tv_connector_state tv;
         enum hdmi_picture_aspect picture_aspect_ratio;
         unsigned int scaling_mode;
@@ -408,6 +413,10 @@ link_status
 
 state
     backpointer to global drm_atomic_state
+
+commit
+    Tracks the pending commit to prevent use-after-free conditions.
+    Is only set when \ ``crtc``\  is NULL.
 
 tv
     TV connector state
@@ -940,8 +949,7 @@ state
     This is protected by \ ``drm_mode_config``\ .connection_mutex. Note that
     nonblocking atomic commits access the current connector state without
     taking locks. Either by going through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ 
-    pointers, see \ :c:func:`for_each_connector_in_state`\ ,
-    \ :c:func:`for_each_oldnew_connector_in_state`\ ,
+    pointers, see \ :c:func:`for_each_oldnew_connector_in_state`\ ,
     \ :c:func:`for_each_old_connector_in_state`\  and
     \ :c:func:`for_each_new_connector_in_state`\ . Or through careful ordering of
     atomic commit operations as implemented in the atomic helpers, see
@@ -989,12 +997,15 @@ span multiple monitors).
 drm_connector_lookup
 ====================
 
-.. c:function:: struct drm_connector *drm_connector_lookup(struct drm_device *dev, uint32_t id)
+.. c:function:: struct drm_connector *drm_connector_lookup(struct drm_device *dev, struct drm_file *file_priv, uint32_t id)
 
     lookup connector object
 
     :param struct drm_device \*dev:
         DRM device
+
+    :param struct drm_file \*file_priv:
+        drm file to check for lease against.
 
     :param uint32_t id:
         connector object id

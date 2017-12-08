@@ -516,12 +516,12 @@ Execute \__pm_relax() for the \ ``dev``\ 's wakeup source object.
 pm_wakeup_timer_fn
 ==================
 
-.. c:function:: void pm_wakeup_timer_fn(unsigned long data)
+.. c:function:: void pm_wakeup_timer_fn(struct timer_list *t)
 
     Delayed finalization of a wakeup event.
 
-    :param unsigned long data:
-        Address of the wakeup source object associated with the event source.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`pm_wakeup_timer_fn.description`:
 

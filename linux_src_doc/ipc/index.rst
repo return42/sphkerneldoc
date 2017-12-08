@@ -11,3 +11,4 @@ ipc
     sem_c
     shm_c
     util_c
+    util_h

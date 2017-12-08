@@ -236,7 +236,7 @@ Definition
         unsigned int msg_num;
         unsigned int msg_id;
         struct stm32f7_i2c_msg f7_msg;
-        struct stm32f7_i2c_setup *setup;
+        struct stm32f7_i2c_setup setup;
         struct stm32f7_i2c_timings timing;
     }
 

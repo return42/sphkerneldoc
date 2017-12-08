@@ -67,5 +67,6 @@ kernel
     umh_c
     user_namespace_c
     watchdog_c
+    watchdog_hld_c
     workqueue_c
     workqueue_internal_h

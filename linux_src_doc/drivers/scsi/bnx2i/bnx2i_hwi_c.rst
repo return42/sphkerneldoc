@@ -370,12 +370,12 @@ sends down iSCSI Conn Update request to move iSCSI conn to FFP
 bnx2i_ep_ofld_timer
 ===================
 
-.. c:function:: void bnx2i_ep_ofld_timer(unsigned long data)
+.. c:function:: void bnx2i_ep_ofld_timer(struct timer_list *t)
 
     post iSCSI logout request WQE to hardware
 
-    :param unsigned long data:
-        endpoint (transport handle) structure pointer
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`bnx2i_ep_ofld_timer.description`:
 

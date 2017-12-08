@@ -60,19 +60,19 @@ Return
 
 0 on success, negative error code on failure.
 
-.. _`i915_vma_get_fence`:
+.. _`i915_vma_pin_fence`:
 
-i915_vma_get_fence
+i915_vma_pin_fence
 ==================
 
-.. c:function:: int i915_vma_get_fence(struct i915_vma *vma)
+.. c:function:: int i915_vma_pin_fence(struct i915_vma *vma)
 
     set up fencing for a vma
 
     :param struct i915_vma \*vma:
         vma to map through a fence reg
 
-.. _`i915_vma_get_fence.description`:
+.. _`i915_vma_pin_fence.description`:
 
 Description
 -----------
@@ -87,13 +87,52 @@ and tiling format.
 
 For an untiled surface, this removes any existing fence.
 
-.. _`i915_vma_get_fence.return`:
+.. _`i915_vma_pin_fence.return`:
 
 Return
 ------
 
 
 0 on success, negative error code on failure.
+
+.. _`i915_reserve_fence`:
+
+i915_reserve_fence
+==================
+
+.. c:function:: struct drm_i915_fence_reg *i915_reserve_fence(struct drm_i915_private *dev_priv)
+
+    Reserve a fence for vGPU
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
+
+.. _`i915_reserve_fence.description`:
+
+Description
+-----------
+
+This function walks the fence regs looking for a free one and remove
+it from the fence_list. It is used to reserve fence for vGPU to use.
+
+.. _`i915_unreserve_fence`:
+
+i915_unreserve_fence
+====================
+
+.. c:function:: void i915_unreserve_fence(struct drm_i915_fence_reg *fence)
+
+    Reclaim a reserved fence
+
+    :param struct drm_i915_fence_reg \*fence:
+        the fence reg
+
+.. _`i915_unreserve_fence.description`:
+
+Description
+-----------
+
+This function add a reserved fence register from vGPU to the fence_list.
 
 .. _`i915_gem_revoke_fences`:
 

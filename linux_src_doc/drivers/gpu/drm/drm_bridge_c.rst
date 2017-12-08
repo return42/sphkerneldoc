@@ -37,19 +37,12 @@ Both legacy CRTC helpers and the new atomic modeset helpers support bridges.
 drm_bridge_add
 ==============
 
-.. c:function:: int drm_bridge_add(struct drm_bridge *bridge)
+.. c:function:: void drm_bridge_add(struct drm_bridge *bridge)
 
     add the given bridge to the global bridge list
 
     :param struct drm_bridge \*bridge:
         bridge control structure
-
-.. _`drm_bridge_add.return`:
-
-Return
-------
-
-Unconditionally returns Zero.
 
 .. _`drm_bridge_remove`:
 

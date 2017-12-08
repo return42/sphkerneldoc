@@ -67,6 +67,63 @@ set_pkeys
     :param u16 \*pkeys:
         the PKEY table
 
+.. _`hfi1_pkey_validation_pma`:
+
+hfi1_pkey_validation_pma
+========================
+
+.. c:function:: int hfi1_pkey_validation_pma(struct hfi1_ibport *ibp, const struct opa_mad *in_mad, const struct ib_wc *in_wc)
+
+    It validates PKEYs for incoming PMA MAD packets.
+
+    :param struct hfi1_ibport \*ibp:
+        IB port data
+
+    :param const struct opa_mad \*in_mad:
+        MAD packet with header and data
+
+    :param const struct ib_wc \*in_wc:
+        Work completion data such as source LID, port number, etc.
+
+.. _`hfi1_pkey_validation_pma.these-are-all-the-possible-logic-rules-for-validating-a-pkey`:
+
+These are all the possible logic rules for validating a pkey
+------------------------------------------------------------
+
+
+a) If pkey neither FULL_MGMT_P_KEY nor LIM_MGMT_P_KEY,
+and NOT self-originated packet:
+Drop MAD packet as it should always be part of the
+management partition unless it's a self-originated packet.
+
+b) If pkey_index -> FULL_MGMT_P_KEY, and LIM_MGMT_P_KEY in pkey table:
+The packet is coming from a management node and the receiving node
+is also a management node, so it is safe for the packet to go through.
+
+c) If pkey_index -> FULL_MGMT_P_KEY, and LIM_MGMT_P_KEY is NOT in pkey table:
+Drop the packet as LIM_MGMT_P_KEY should always be in the pkey table.
+It could be an FM misconfiguration.
+
+d) If pkey_index -> LIM_MGMT_P_KEY and FULL_MGMT_P_KEY is NOT in pkey table:
+It is safe for the packet to go through since a non-management node is
+talking to another non-management node.
+
+e) If pkey_index -> LIM_MGMT_P_KEY and FULL_MGMT_P_KEY in pkey table:
+Drop the packet because a non-management node is talking to a
+management node, and it could be an attack.
+
+For the implementation, these rules can be simplied to only checking
+for (a) and (e). There's no need to check for rule (b) as
+the packet doesn't need to be dropped. Rule (c) is not possible in
+the driver as LIM_MGMT_P_KEY is always in the pkey table.
+
+.. _`hfi1_pkey_validation_pma.return`:
+
+Return
+------
+
+0 - pkey is okay, -EINVAL it's a bad pkey
+
 .. _`hfi1_process_mad`:
 
 hfi1_process_mad

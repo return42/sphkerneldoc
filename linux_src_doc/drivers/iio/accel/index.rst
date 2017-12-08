@@ -8,6 +8,7 @@ accel
     :maxdepth: 1
 
     bma220_spi_c
+    cros_ec_accel_legacy_c
     da280_c
     da311_c
     dmard10_c

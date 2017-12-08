@@ -305,7 +305,6 @@ Definition
         struct list_head connector_list;
         int num_encoder;
         struct list_head encoder_list;
-        int num_overlay_plane;
         int num_total_plane;
         struct list_head plane_list;
         int num_crtc;
@@ -365,6 +364,7 @@ Definition
         struct drm_property *gamma_lut_size_property;
         struct drm_property *suggested_x_property;
         struct drm_property *suggested_y_property;
+        struct drm_property *non_desktop_property;
         uint32_t preferred_depth, prefer_shadow;
         bool async_page_flip;
         bool allow_fb_modifiers;
@@ -450,17 +450,6 @@ encoder_list
     List of encoder objects linked with \ :c:type:`drm_encoder.head <drm_encoder>`\ . This is
     invariant over the lifetime of a device and hence doesn't need any
     locks.
-
-num_overlay_plane
-
-    Number of overlay planes on this device, excluding primary and cursor
-    planes.
-
-    Track number of overlay planes separately from number of total
-    planes.  By default we only advertise overlay planes to userspace; if
-    userspace sets the "universal plane" capability bit, we'll go ahead
-    and expose all planes. This is invariant over the lifetime of a
-    device and hence doesn't need any locks.
 
 num_total_plane
 
@@ -666,6 +655,10 @@ suggested_x_property
 
 suggested_y_property
     Optional connector property with a hint forthe position of the output on the host's screen.
+
+non_desktop_property
+    Optional connector property with a hintthat device isn't a standard display, and the console/desktop,
+    should not be displayed on it.
 
 preferred_depth
     preferred RBG pixel depth, used by fb helpers

@@ -18,61 +18,66 @@ cgroup_bpf_put
 cgroup_bpf_inherit
 ==================
 
-.. c:function:: void cgroup_bpf_inherit(struct cgroup *cgrp, struct cgroup *parent)
+.. c:function:: int cgroup_bpf_inherit(struct cgroup *cgrp)
 
     inherit effective programs from parent
 
     :param struct cgroup \*cgrp:
         the cgroup to modify
 
-    :param struct cgroup \*parent:
-        the parent to inherit from
+.. _`__cgroup_bpf_attach`:
 
-.. _`__cgroup_bpf_update`:
-
-__cgroup_bpf_update
+__cgroup_bpf_attach
 ===================
 
-.. c:function:: int __cgroup_bpf_update(struct cgroup *cgrp, struct cgroup *parent, struct bpf_prog *prog, enum bpf_attach_type type, bool new_overridable)
+.. c:function:: int __cgroup_bpf_attach(struct cgroup *cgrp, struct bpf_prog *prog, enum bpf_attach_type type, u32 flags)
 
-    Update the pinned program of a cgroup, and propagate the change to descendants
+    Attach the program to a cgroup, and propagate the change to descendants
 
     :param struct cgroup \*cgrp:
         The cgroup which descendants to traverse
 
-    :param struct cgroup \*parent:
-        The parent of \ ``cgrp``\ , or \ ``NULL``\  if \ ``cgrp``\  is the root
-
     :param struct bpf_prog \*prog:
-        A new program to pin
+        A program to attach
 
     :param enum bpf_attach_type type:
-        Type of pinning operation (ingress/egress)
+        Type of attach operation
 
-    :param bool new_overridable:
+    :param u32 flags:
         *undescribed*
 
-.. _`__cgroup_bpf_update.description`:
+.. _`__cgroup_bpf_attach.description`:
 
 Description
 -----------
 
-Each cgroup has a set of two pointers for bpf programs; one for eBPF
-programs it owns, and which is effective for execution.
+Must be called with cgroup_mutex held.
 
-If \ ``prog``\  is not \ ``NULL``\ , this function attaches a new program to the cgroup
-and releases the one that is currently attached, if any. \ ``prog``\  is then made
-the effective program of type \ ``type``\  in that cgroup.
+.. _`__cgroup_bpf_detach`:
 
-If \ ``prog``\  is \ ``NULL``\ , the currently attached program of type \ ``type``\  is released,
-and the effective program of the parent cgroup (if any) is inherited to
-\ ``cgrp``\ .
+__cgroup_bpf_detach
+===================
 
-Then, the descendants of \ ``cgrp``\  are walked and the effective program for
-each of them is set to the effective program of \ ``cgrp``\  unless the
-descendant has its own program attached, in which case the subbranch is
-skipped. This ensures that delegated subcgroups with own programs are left
-untouched.
+.. c:function:: int __cgroup_bpf_detach(struct cgroup *cgrp, struct bpf_prog *prog, enum bpf_attach_type type, u32 unused_flags)
+
+    Detach the program from a cgroup, and propagate the change to descendants
+
+    :param struct cgroup \*cgrp:
+        The cgroup which descendants to traverse
+
+    :param struct bpf_prog \*prog:
+        A program to detach or NULL
+
+    :param enum bpf_attach_type type:
+        Type of detach operation
+
+    :param u32 unused_flags:
+        *undescribed*
+
+.. _`__cgroup_bpf_detach.description`:
+
+Description
+-----------
 
 Must be called with cgroup_mutex held.
 

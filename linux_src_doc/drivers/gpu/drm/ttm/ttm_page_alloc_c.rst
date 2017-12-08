@@ -86,6 +86,8 @@ Definition
                 struct ttm_page_pool uc_pool;
                 struct ttm_page_pool wc_pool_dma32;
                 struct ttm_page_pool uc_pool_dma32;
+                struct ttm_page_pool wc_pool_huge;
+                struct ttm_page_pool uc_pool_huge;
             } ;
         } ;
     }
@@ -123,6 +125,12 @@ wc_pool_dma32
     *undescribed*
 
 uc_pool_dma32
+    *undescribed*
+
+wc_pool_huge
+    *undescribed*
+
+uc_pool_huge
     *undescribed*
 
 .. _`ttm_pool_manager.description`:
@@ -220,7 +228,7 @@ ttm_handle_caching_state_failure
 ttm_alloc_new_pages
 ===================
 
-.. c:function:: int ttm_alloc_new_pages(struct list_head *pages, gfp_t gfp_flags, int ttm_flags, enum ttm_caching_state cstate, unsigned count)
+.. c:function:: int ttm_alloc_new_pages(struct list_head *pages, gfp_t gfp_flags, int ttm_flags, enum ttm_caching_state cstate, unsigned count, unsigned order)
 
     :param struct list_head \*pages:
         *undescribed*
@@ -235,6 +243,9 @@ ttm_alloc_new_pages
         *undescribed*
 
     :param unsigned count:
+        *undescribed*
+
+    :param unsigned order:
         *undescribed*
 
 .. _`ttm_alloc_new_pages.description`:
@@ -274,7 +285,7 @@ ttm_page_pool_fill_locked
 ttm_page_pool_get_pages
 =======================
 
-.. c:function:: unsigned ttm_page_pool_get_pages(struct ttm_page_pool *pool, struct list_head *pages, int ttm_flags, enum ttm_caching_state cstate, unsigned count)
+.. c:function:: int ttm_page_pool_get_pages(struct ttm_page_pool *pool, struct list_head *pages, int ttm_flags, enum ttm_caching_state cstate, unsigned count, unsigned order)
 
     :param struct ttm_page_pool \*pool:
         *undescribed*
@@ -291,12 +302,15 @@ ttm_page_pool_get_pages
     :param unsigned count:
         *undescribed*
 
+    :param unsigned order:
+        *undescribed*
+
 .. _`ttm_page_pool_get_pages.description`:
 
 Description
 -----------
 
-@return count of pages still required to fulfill the request.
+@return zero for success or negative error code.
 
 .. This file was automatic generated / don't edit.
 

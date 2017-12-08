@@ -590,12 +590,12 @@ Called to send an abort and then wait for abort completion
 fc_lun_reset_send
 =================
 
-.. c:function:: void fc_lun_reset_send(unsigned long data)
+.. c:function:: void fc_lun_reset_send(struct timer_list *t)
 
     Send LUN reset command
 
-    :param unsigned long data:
-        The FCP packet that identifies the LUN to be reset
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`fc_lun_reset`:
 
@@ -653,12 +653,12 @@ fc_fcp_cleanup
 fc_fcp_timeout
 ==============
 
-.. c:function:: void fc_fcp_timeout(unsigned long data)
+.. c:function:: void fc_fcp_timeout(struct timer_list *t)
 
     Handler for fcp_pkt timeouts
 
-    :param unsigned long data:
-        The FCP packet that has timed out
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`fc_fcp_timeout.description`:
 

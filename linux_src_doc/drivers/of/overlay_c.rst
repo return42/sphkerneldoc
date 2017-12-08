@@ -1,29 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/of/overlay.c
 
-.. _`of_overlay_info`:
+.. _`fragment`:
 
-struct of_overlay_info
-======================
+struct fragment
+===============
 
-.. c:type:: struct of_overlay_info
+.. c:type:: struct fragment
 
-    Holds a single overlay info
+    info about fragment nodes in overlay expanded device tree
 
-.. _`of_overlay_info.definition`:
+.. _`fragment.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct of_overlay_info {
+    struct fragment {
         struct device_node *target;
         struct device_node *overlay;
-        bool is_symbols_node;
     }
 
-.. _`of_overlay_info.members`:
+.. _`fragment.members`:
 
 Members
 -------
@@ -32,44 +31,34 @@ target
     target of the overlay operation
 
 overlay
-    pointer to the overlay contents node
+    pointer to the \__overlay_\_ node
 
-is_symbols_node
-    *undescribed*
+.. _`overlay_changeset`:
 
-.. _`of_overlay_info.description`:
+struct overlay_changeset
+========================
 
-Description
------------
+.. c:type:: struct overlay_changeset
 
-Holds a single overlay state, including all the overlay logs &
-records.
 
-.. _`of_overlay`:
-
-struct of_overlay
-=================
-
-.. c:type:: struct of_overlay
-
-    Holds a complete overlay transaction
-
-.. _`of_overlay.definition`:
+.. _`overlay_changeset.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct of_overlay {
+    struct overlay_changeset {
         int id;
-        struct list_head node;
+        struct list_head ovcs_list;
+        struct device_node *overlay_tree;
         int count;
-        struct of_overlay_info *ovinfo_tab;
+        struct fragment *fragments;
+        bool symbols_fragment;
         struct of_changeset cset;
     }
 
-.. _`of_overlay.members`:
+.. _`overlay_changeset.members`:
 
 Members
 -------
@@ -77,183 +66,313 @@ Members
 id
     *undescribed*
 
-node
-    List on which we are located
+ovcs_list
+    list on which we are located
+
+overlay_tree
+    expanded device tree that contains the fragment nodes
 
 count
-    Count of ovinfo structures
+    count of fragment structures
 
-ovinfo_tab
-    Overlay info table (count sized)
+fragments
+    fragment nodes in the overlay expanded device tree
+
+symbols_fragment
+    last element of \ ``fragments``\ [] is the  \__symbols_\_ node
 
 cset
-    Changeset to be used
+    changeset to apply fragments to live device tree
 
-.. _`of_overlay.description`:
+.. _`add_changeset_property`:
+
+add_changeset_property
+======================
+
+.. c:function:: int add_changeset_property(struct overlay_changeset *ovcs, struct device_node *target_node, struct property *overlay_prop, bool is_symbols_prop)
+
+    add \ ``overlay_prop``\  to overlay changeset
+
+    :param struct overlay_changeset \*ovcs:
+        overlay changeset
+
+    :param struct device_node \*target_node:
+        where to place \ ``overlay_prop``\  in live tree
+
+    :param struct property \*overlay_prop:
+        property to add or update, from overlay tree
+
+    :param bool is_symbols_prop:
+        1 if \ ``overlay_prop``\  is from node "/__symbols__"
+
+.. _`add_changeset_property.description`:
 
 Description
 -----------
 
-Holds a complete overlay transaction
+If \ ``overlay_prop``\  does not already exist in \ ``target_node``\ , add changeset entry
+to add \ ``overlay_prop``\  in \ ``target_node``\ , else add changeset entry to update
+value of \ ``overlay_prop``\ .
+
+Some special properties are not updated (no error returned).
+
+Update of property in symbols node is not allowed.
+
+Returns 0 on success, -ENOMEM if memory allocation failure, or -EINVAL if
+invalid \ ``overlay``\ .
+
+.. _`add_changeset_node`:
+
+add_changeset_node
+==================
+
+.. c:function:: int add_changeset_node(struct overlay_changeset *ovcs, struct device_node *target_node, struct device_node *node)
+
+    add \ ``node``\  (and children) to overlay changeset
+
+    :param struct overlay_changeset \*ovcs:
+        overlay changeset
+
+    :param struct device_node \*target_node:
+        where to place \ ``node``\  in live tree
+
+    :param struct device_node \*node:
+        node from within overlay device tree fragment
+
+.. _`add_changeset_node.description`:
+
+Description
+-----------
+
+If \ ``node``\  does not already exist in \ ``target_node``\ , add changeset entry
+to add \ ``node``\  in \ ``target_node``\ .
+
+If \ ``node``\  already exists in \ ``target_node``\ , and the existing node has
+a phandle, the overlay node is not allowed to have a phandle.
+
+If \ ``node``\  has child nodes, add the children recursively via
+\ :c:func:`build_changeset_next_level`\ .
+
+.. _`add_changeset_node.note`:
+
+NOTE
+----
+
+Multiple mods of created nodes not supported.
+If more than one fragment contains a node that does not already exist
+in the live tree, then for each fragment \ :c:func:`of_changeset_attach_node`\ 
+will add a changeset entry to add the node.  When the changeset is
+applied, \__of_attach_node() will attach the node twice (once for
+each fragment).  At this point the device tree will be corrupted.
+
+.. _`add_changeset_node.todo`:
+
+TODO
+----
+
+add integrity check to ensure that multiple fragments do not
+create the same node.
+
+Returns 0 on success, -ENOMEM if memory allocation failure, or -EINVAL if
+invalid \ ``overlay``\ .
+
+.. _`build_changeset_next_level`:
+
+build_changeset_next_level
+==========================
+
+.. c:function:: int build_changeset_next_level(struct overlay_changeset *ovcs, struct device_node *target_node, const struct device_node *overlay_node)
+
+    add level of overlay changeset
+
+    :param struct overlay_changeset \*ovcs:
+        overlay changeset
+
+    :param struct device_node \*target_node:
+        where to place \ ``overlay_node``\  in live tree
+
+    :param const struct device_node \*overlay_node:
+        node from within an overlay device tree fragment
+
+.. _`build_changeset_next_level.description`:
+
+Description
+-----------
+
+Add the properties (if any) and nodes (if any) from \ ``overlay_node``\  to the
+\ ``ovcs``\ ->cset changeset.  If an added node has child nodes, they will
+be added recursively.
+
+Do not allow symbols node to have any children.
+
+Returns 0 on success, -ENOMEM if memory allocation failure, or -EINVAL if
+invalid \ ``overlay_node``\ .
+
+.. _`build_changeset`:
+
+build_changeset
+===============
+
+.. c:function:: int build_changeset(struct overlay_changeset *ovcs)
+
+    populate overlay changeset in \ ``ovcs``\  from \ ``ovcs``\ ->fragments
+
+    :param struct overlay_changeset \*ovcs:
+        Overlay changeset
+
+.. _`build_changeset.description`:
+
+Description
+-----------
+
+Create changeset \ ``ovcs``\ ->cset to contain the nodes and properties of the
+overlay device tree fragments in \ ``ovcs``\ ->fragments[].  If an error occurs,
+any portions of the changeset that were successfully created will remain
+in \ ``ovcs``\ ->cset.
+
+Returns 0 on success, -ENOMEM if memory allocation failure, or -EINVAL if
+invalid overlay in \ ``ovcs``\ ->fragments[].
+
+.. _`init_overlay_changeset`:
+
+init_overlay_changeset
+======================
+
+.. c:function:: int init_overlay_changeset(struct overlay_changeset *ovcs, struct device_node *tree)
+
+    initialize overlay changeset from overlay tree \ ``ovcs``\         Overlay changeset to build
+
+    :param struct overlay_changeset \*ovcs:
+        *undescribed*
+
+    :param struct device_node \*tree:
+        Contains all the overlay fragments and overlay fixup nodes
+
+.. _`init_overlay_changeset.description`:
+
+Description
+-----------
+
+Initialize \ ``ovcs``\ .  Populate \ ``ovcs``\ ->fragments with node information from
+the top level of \ ``tree``\ .  The relevant top level nodes are the fragment
+nodes and the \__symbols_\_ node.  Any other top level node will be ignored.
+
+Returns 0 on success, -ENOMEM if memory allocation failure, -EINVAL if error
+detected in \ ``tree``\ , or -ENOSPC if \ :c:func:`idr_alloc`\  error.
 
 .. _`of_overlay_apply`:
 
 of_overlay_apply
 ================
 
-.. c:function:: int of_overlay_apply(struct of_overlay *ov)
+.. c:function:: int of_overlay_apply(struct device_node *tree, int *ovcs_id)
 
-    Apply \ ``count``\  overlays pointed at by \ ``ovinfo_tab``\ 
+    Create and apply an overlay changeset
 
-    :param struct of_overlay \*ov:
-        Overlay to apply
+    :param struct device_node \*tree:
+        Expanded overlay device tree
+
+    :param int \*ovcs_id:
+        Pointer to overlay changeset id
 
 .. _`of_overlay_apply.description`:
 
 Description
 -----------
 
-Applies the overlays given, while handling all error conditions
-appropriately. Either the operation succeeds, or if it fails the
-live tree is reverted to the state before the attempt.
-Returns 0, or an error if the overlay attempt failed.
+Creates and applies an overlay changeset.
 
-.. _`of_fill_overlay_info`:
+If an error occurs in a pre-apply notifier, then no changes are made
+to the device tree.
 
-of_fill_overlay_info
-====================
+A non-zero return value will not have created the changeset if error is from:
+- parameter checks
+- building the changeset
+- overlay changset pre-apply notifier
 
-.. c:function:: int of_fill_overlay_info(struct of_overlay *ov, struct device_node *info_node, struct of_overlay_info *ovinfo)
+If an error is returned by an overlay changeset pre-apply notifier
+then no further overlay changeset pre-apply notifier will be called.
 
-    Fill an overlay info structure \ ``ov``\           Overlay to fill
+A non-zero return value will have created the changeset if error is from:
+- overlay changeset entry notifier
+- overlay changset post-apply notifier
 
-    :param struct of_overlay \*ov:
-        *undescribed*
+If an error is returned by an overlay changeset post-apply notifier
+then no further overlay changeset post-apply notifier will be called.
 
-    :param struct device_node \*info_node:
-        Device node containing the overlay
+If more than one notifier returns an error, then the last notifier
+error to occur is returned.
 
-    :param struct of_overlay_info \*ovinfo:
-        Pointer to the overlay info structure to fill
+If an error occurred while applying the overlay changeset, then an
+attempt is made to revert any changes that were made to the
+device tree.  If there were any errors during the revert attempt
+then the state of the device tree can not be determined, and any
+following attempt to apply or remove an overlay changeset will be
+refused.
 
-.. _`of_fill_overlay_info.description`:
+Returns 0 on success, or a negative error number.  Overlay changeset
+id is returned to \*ovcs_id.
 
-Description
------------
+.. _`of_overlay_remove`:
 
-Fills an overlay info structure with the overlay information
-from a device node. This device node must have a target property
-which contains a phandle of the overlay target node, and an
-\__overlay_\_ child node which has the overlay contents.
-Both ovinfo->target & ovinfo->overlay have their references taken.
-
-Returns 0 on success, or a negative error value.
-
-.. _`of_build_overlay_info`:
-
-of_build_overlay_info
-=====================
-
-.. c:function:: int of_build_overlay_info(struct of_overlay *ov, struct device_node *tree)
-
-    Build an overlay info array \ ``ov``\           Overlay to build
-
-    :param struct of_overlay \*ov:
-        *undescribed*
-
-    :param struct device_node \*tree:
-        Device node containing all the overlays
-
-.. _`of_build_overlay_info.description`:
-
-Description
------------
-
-Helper function that given a tree containing overlay information,
-allocates and builds an overlay info array containing it, ready
-for use using of_overlay_apply.
-
-Returns 0 on success with the \ ``cntp``\  \ ``ovinfop``\  pointers valid,
-while on error a negative error value is returned.
-
-.. _`of_free_overlay_info`:
-
-of_free_overlay_info
-====================
-
-.. c:function:: int of_free_overlay_info(struct of_overlay *ov)
-
-    Free an overlay info array \ ``ov``\           Overlay to free the overlay info from
-
-    :param struct of_overlay \*ov:
-        *undescribed*
-
-.. _`of_free_overlay_info.description`:
-
-Description
------------
-
-Releases the memory of a previously allocated ovinfo array
-by of_build_overlay_info.
-Returns 0, or an error if the arguments are bogus.
-
-.. _`of_overlay_create`:
-
-of_overlay_create
+of_overlay_remove
 =================
 
-.. c:function:: int of_overlay_create(struct device_node *tree)
+.. c:function:: int of_overlay_remove(int *ovcs_id)
 
-    Create and apply an overlay
+    Revert and free an overlay changeset
 
-    :param struct device_node \*tree:
-        Device node containing all the overlays
+    :param int \*ovcs_id:
+        Pointer to overlay changeset id
 
-.. _`of_overlay_create.description`:
-
-Description
------------
-
-Creates and applies an overlay while also keeping track
-of the overlay in a list. This list can be used to prevent
-illegal overlay removals.
-
-Returns the id of the created overlay, or a negative error number
-
-.. _`of_overlay_destroy`:
-
-of_overlay_destroy
-==================
-
-.. c:function:: int of_overlay_destroy(int id)
-
-    Removes an overlay
-
-    :param int id:
-        Overlay id number returned by a previous call to of_overlay_create
-
-.. _`of_overlay_destroy.description`:
+.. _`of_overlay_remove.description`:
 
 Description
 -----------
 
-Removes an overlay if it is permissible.
+Removes an overlay if it is permissible.  \ ``ovcs_id``\  was previously returned
+by \ :c:func:`of_overlay_apply`\ .
 
-Returns 0 on success, or a negative error number
+If an error occurred while attempting to revert the overlay changeset,
+then an attempt is made to re-apply any changeset entry that was
+reverted.  If an error occurs on re-apply then the state of the device
+tree can not be determined, and any following attempt to apply or remove
+an overlay changeset will be refused.
 
-.. _`of_overlay_destroy_all`:
+A non-zero return value will not revert the changeset if error is from:
+- parameter checks
+- overlay changset pre-remove notifier
+- overlay changeset entry revert
 
-of_overlay_destroy_all
-======================
+If an error is returned by an overlay changeset pre-remove notifier
+then no further overlay changeset pre-remove notifier will be called.
 
-.. c:function:: int of_overlay_destroy_all( void)
+If more than one notifier returns an error, then the last notifier
+error to occur is returned.
 
-    Removes all overlays from the system
+A non-zero return value will revert the changeset if error is from:
+- overlay changeset entry notifier
+- overlay changset post-remove notifier
+
+If an error is returned by an overlay changeset post-remove notifier
+then no further overlay changeset post-remove notifier will be called.
+
+Returns 0 on success, or a negative error number.  \*ovcs_id is set to
+zero after reverting the changeset, even if a subsequent error occurs.
+
+.. _`of_overlay_remove_all`:
+
+of_overlay_remove_all
+=====================
+
+.. c:function:: int of_overlay_remove_all( void)
+
+    Reverts and frees all overlay changesets
 
     :param  void:
         no arguments
 
-.. _`of_overlay_destroy_all.description`:
+.. _`of_overlay_remove_all.description`:
 
 Description
 -----------

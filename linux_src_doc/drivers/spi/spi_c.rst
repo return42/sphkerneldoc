@@ -495,7 +495,7 @@ Description
 -----------
 
 Register a SPI device as with \ :c:func:`spi_register_controller`\  which will
-automatically be unregister
+automatically be unregistered and freed.
 
 .. _`devm_spi_register_controller.return`:
 
@@ -532,6 +532,8 @@ This call is used only by SPI controller drivers, which are the
 only ones directly touching chip registers.
 
 This must be called from context that can sleep.
+
+Note that this function also drops a reference to the controller.
 
 .. _`spi_busnum_to_master`:
 

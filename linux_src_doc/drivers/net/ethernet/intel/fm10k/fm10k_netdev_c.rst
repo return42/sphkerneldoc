@@ -390,6 +390,96 @@ queue when the receiver is not ready. VF interfaces are exempt from this
 check since it will block all PF-VF mailbox messages from being sent from
 the VF to the PF at initialization.
 
+.. _`fm10k_queue_vlan_request`:
+
+fm10k_queue_vlan_request
+========================
+
+.. c:function:: int fm10k_queue_vlan_request(struct fm10k_intfc *interface, u32 vid, u8 vsi, bool set)
+
+    Queue a VLAN update request
+
+    :param struct fm10k_intfc \*interface:
+        the fm10k interface structure
+
+    :param u32 vid:
+        the VLAN vid
+
+    :param u8 vsi:
+        VSI index number
+
+    :param bool set:
+        whether to set or clear
+
+.. _`fm10k_queue_vlan_request.description`:
+
+Description
+-----------
+
+This function queues up a VLAN update. For VFs, this must be sent to the
+managing PF over the mailbox. For PFs, we'll use the same handling so that
+it's similar to the VF. This avoids storming the PF<->VF mailbox with too
+many VLAN updates during reset.
+
+.. _`fm10k_queue_mac_request`:
+
+fm10k_queue_mac_request
+=======================
+
+.. c:function:: int fm10k_queue_mac_request(struct fm10k_intfc *interface, u16 glort, const unsigned char *addr, u16 vid, bool set)
+
+    Queue a MAC update request
+
+    :param struct fm10k_intfc \*interface:
+        the fm10k interface structure
+
+    :param u16 glort:
+        the target glort for this update
+
+    :param const unsigned char \*addr:
+        the address to update
+
+    :param u16 vid:
+        the vid to update
+
+    :param bool set:
+        *undescribed*
+
+.. _`fm10k_queue_mac_request.description`:
+
+Description
+-----------
+
+This function queues up a MAC request for sending to the switch manager.
+A separate thread monitors the queue and sends updates to the switch
+manager. Return 0 on success, and negative error code on failure.
+
+.. _`fm10k_clear_macvlan_queue`:
+
+fm10k_clear_macvlan_queue
+=========================
+
+.. c:function:: void fm10k_clear_macvlan_queue(struct fm10k_intfc *interface, u16 glort, bool vlans)
+
+    Cancel pending updates for a given glort
+
+    :param struct fm10k_intfc \*interface:
+        the fm10k interface structure
+
+    :param u16 glort:
+        the target glort to clear
+
+    :param bool vlans:
+        true to clear VLAN messages, false to ignore them
+
+.. _`fm10k_clear_macvlan_queue.description`:
+
+Description
+-----------
+
+Cancel any outstanding MAC/VLAN requests for a given glort. This is
+expected to be called when a logical port goes down.
+
 .. _`fm10k_get_stats64`:
 
 fm10k_get_stats64

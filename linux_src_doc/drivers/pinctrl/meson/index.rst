@@ -7,5 +7,6 @@ meson
 .. toctree::
     :maxdepth: 1
 
+    pinctrl-meson8-pmx_c
     pinctrl-meson_c
     pinctrl-meson_h

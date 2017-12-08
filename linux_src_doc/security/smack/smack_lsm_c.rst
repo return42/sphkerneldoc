@@ -796,7 +796,7 @@ smack_inode_getsecurity
         where to put the result
 
     :param bool alloc:
-        unused
+        duplicate memory
 
 .. _`smack_inode_getsecurity.description`:
 

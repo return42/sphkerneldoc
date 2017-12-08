@@ -77,6 +77,7 @@ Definition
         int (*thaw) (struct ccwgroup_device *);
         int (*restore)(struct ccwgroup_device *);
         struct device_driver driver;
+        struct ccw_driver *ccw_driver;
     }
 
 .. _`ccwgroup_driver.members`:
@@ -116,6 +117,9 @@ restore
 
 driver
     embedded driver structure
+
+ccw_driver
+    supported ccw_driver (optional)
 
 .. This file was automatic generated / don't edit.
 

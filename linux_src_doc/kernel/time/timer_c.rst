@@ -226,12 +226,15 @@ early.
 init_timer_key
 ==============
 
-.. c:function:: void init_timer_key(struct timer_list *timer, unsigned int flags, const char *name, struct lock_class_key *key)
+.. c:function:: void init_timer_key(struct timer_list *timer, void (*func)(struct timer_list *), unsigned int flags, const char *name, struct lock_class_key *key)
 
     initialize a timer
 
     :param struct timer_list \*timer:
         the timer to be initialized
+
+    :param void (\*func)(struct timer_list \*):
+        timer callback function
 
     :param unsigned int flags:
         timer flags
@@ -311,6 +314,30 @@ The function returns whether it has modified a pending timer or not.
 (ie. \ :c:func:`mod_timer`\  of an inactive timer returns 0, \ :c:func:`mod_timer`\  of an
 active timer returns 1.)
 
+.. _`timer_reduce`:
+
+timer_reduce
+============
+
+.. c:function:: int timer_reduce(struct timer_list *timer, unsigned long expires)
+
+    Modify a timer's timeout if it would reduce the timeout
+
+    :param struct timer_list \*timer:
+        The timer to be modified
+
+    :param unsigned long expires:
+        New timeout in jiffies
+
+.. _`timer_reduce.description`:
+
+Description
+-----------
+
+timer_reduce() is very similar to \ :c:func:`mod_timer`\ , except that it will only
+modify a running timer if that would reduce the expiration time (it will
+start a timer that isn't running).
+
 .. _`add_timer`:
 
 add_timer
@@ -328,12 +355,12 @@ add_timer
 Description
 -----------
 
-The kernel will do a ->function(->data) callback from the
+The kernel will do a ->function(@timer) callback from the
 timer interrupt at the ->expires point in the future. The
 current time is 'jiffies'.
 
-The timer's ->expires, ->function (and if the handler uses it, ->data)
-fields must be set prior calling this function.
+The timer's ->expires, ->function fields must be set prior calling this
+function.
 
 Timers with an ->expires field in the past will be executed in the next
 timer tick.

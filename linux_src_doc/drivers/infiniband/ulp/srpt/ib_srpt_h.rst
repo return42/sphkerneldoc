@@ -290,6 +290,7 @@ Definition
         struct list_head free_list;
         enum rdma_ch_state state;
         struct srpt_send_ioctx **ioctx_ring;
+        struct srpt_recv_ioctx **ioctx_recv_ring;
         struct list_head list;
         struct list_head cmd_wait_list;
         struct se_session *sess;
@@ -361,6 +362,9 @@ state
 ioctx_ring
     Send ring.
 
+ioctx_recv_ring
+    Receive I/O context ring.
+
 list
     Node for insertion in the srpt_device.rch_list list.
 
@@ -404,6 +408,7 @@ Definition
         u32 srp_max_rdma_size;
         u32 srp_max_rsp_size;
         u32 srp_sq_size;
+        bool use_srq;
     }
 
 .. _`srpt_port_attrib.members`:
@@ -419,6 +424,9 @@ srp_max_rsp_size
 
 srp_sq_size
     Shared receive queue (SRQ) size.
+
+use_srq
+    Whether or not to use SRQ.
 
 .. _`srpt_port`:
 
@@ -523,9 +531,11 @@ Definition
     struct srpt_device {
         struct ib_device *device;
         struct ib_pd *pd;
+        u32 lkey;
         struct ib_srq *srq;
         struct ib_cm_id *cm_id;
         int srq_size;
+        bool use_srq;
         struct srpt_recv_ioctx **ioctx_ring;
         struct list_head rch_list;
         wait_queue_head_t ch_releaseQ;
@@ -546,6 +556,9 @@ device
 pd
     IB protection domain.
 
+lkey
+    L_Key (local key) with write access to all local memory.
+
 srq
     Per-HCA SRQ (shared receive queue).
 
@@ -554,6 +567,9 @@ cm_id
 
 srq_size
     SRQ size.
+
+use_srq
+    Whether or not to use SRQ.
 
 ioctx_ring
     Per-HCA SRQ.

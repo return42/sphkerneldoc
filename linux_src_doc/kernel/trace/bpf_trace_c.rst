@@ -6,12 +6,12 @@
 trace_call_bpf
 ==============
 
-.. c:function:: unsigned int trace_call_bpf(struct bpf_prog *prog, void *ctx)
+.. c:function:: unsigned int trace_call_bpf(struct trace_event_call *call, void *ctx)
 
     invoke BPF program
 
-    :param struct bpf_prog \*prog:
-        BPF program
+    :param struct trace_event_call \*call:
+        tracepoint event
 
     :param void \*ctx:
         opaque context pointer

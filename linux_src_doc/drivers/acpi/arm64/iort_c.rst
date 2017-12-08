@@ -55,6 +55,25 @@ iort_delete_fwnode
     :param struct acpi_iort_node \*node:
         IORT table node associated with fwnode to delete
 
+.. _`iort_get_iort_node`:
+
+iort_get_iort_node
+==================
+
+.. c:function:: struct acpi_iort_node *iort_get_iort_node(struct fwnode_handle *fwnode)
+
+    Retrieve iort_node associated with an fwnode
+
+    :param struct fwnode_handle \*fwnode:
+        fwnode associated with device to be looked-up
+
+.. _`iort_get_iort_node.return`:
+
+Return
+------
+
+iort_node pointer on success, NULL on failure
+
 .. _`iort_register_domain_token`:
 
 iort_register_domain_token
@@ -266,19 +285,22 @@ Return
 iommu_ops pointer on configuration success
 NULL on configuration failure
 
-.. _`iort_add_smmu_platform_device`:
+.. _`iort_add_platform_device`:
 
-iort_add_smmu_platform_device
-=============================
+iort_add_platform_device
+========================
 
-.. c:function:: int iort_add_smmu_platform_device(struct acpi_iort_node *node)
+.. c:function:: int iort_add_platform_device(struct acpi_iort_node *node, const struct iort_dev_config *ops)
 
-    Allocate a platform device for SMMU
+    Allocate a platform device for IORT node
 
     :param struct acpi_iort_node \*node:
-        Pointer to SMMU ACPI IORT node
+        Pointer to device ACPI IORT node
 
-.. _`iort_add_smmu_platform_device.return`:
+    :param const struct iort_dev_config \*ops:
+        *undescribed*
+
+.. _`iort_add_platform_device.return`:
 
 Return
 ------

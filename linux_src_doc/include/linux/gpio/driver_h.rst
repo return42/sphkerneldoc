@@ -1,6 +1,113 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/gpio/driver.h
 
+.. _`gpio_irq_chip`:
+
+struct gpio_irq_chip
+====================
+
+.. c:type:: struct gpio_irq_chip
+
+    GPIO interrupt controller
+
+.. _`gpio_irq_chip.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gpio_irq_chip {
+        struct irq_chip *chip;
+        struct irq_domain *domain;
+        const struct irq_domain_ops *domain_ops;
+        irq_flow_handler_t handler;
+        unsigned int default_type;
+        struct lock_class_key *lock_key;
+        irq_flow_handler_t parent_handler;
+        void *parent_handler_data;
+        unsigned int num_parents;
+        unsigned int *parents;
+        unsigned int *map;
+        bool threaded;
+        bool need_valid_mask;
+        unsigned long *valid_mask;
+        unsigned int first;
+    }
+
+.. _`gpio_irq_chip.members`:
+
+Members
+-------
+
+chip
+
+    GPIO IRQ chip implementation, provided by GPIO driver.
+
+domain
+
+    Interrupt translation domain; responsible for mapping between GPIO
+    hwirq number and Linux IRQ number.
+
+domain_ops
+
+    Table of interrupt domain operations for this IRQ chip.
+
+handler
+
+    The IRQ handler to use (often a predefined IRQ core function) for
+    GPIO IRQs, provided by GPIO driver.
+
+default_type
+
+    Default IRQ triggering type applied during GPIO driver
+    initialization, provided by GPIO driver.
+
+lock_key
+
+    Per GPIO IRQ chip lockdep class.
+
+parent_handler
+
+    The interrupt handler for the GPIO chip's parent interrupts, may be
+    NULL if the parent interrupts are nested rather than cascaded.
+
+parent_handler_data
+
+    Data associated, and passed to, the handler for the parent
+    interrupt.
+
+num_parents
+
+    The number of interrupt parents of a GPIO chip.
+
+parents
+
+    A list of interrupt parents of a GPIO chip. This is owned by the
+    driver, so the core will only reference this list, not modify it.
+
+map
+
+    A list of interrupt parents for each line of a GPIO chip.
+
+threaded
+
+    True if set the interrupt handling uses nested threads.
+
+need_valid_mask
+
+    If set core allocates \ ``valid_mask``\  with all bits set to one.
+
+valid_mask
+
+    If not \ ``NULL``\  holds bitmask of GPIOs which are valid to be included
+    in IRQ domain of the chip.
+
+first
+
+    Required for static IRQ allocation. If set, \ :c:func:`irq_domain_add_simple`\ 
+    will allocate and map all IRQs during initialization.
+
 .. _`gpio_chip`:
 
 struct gpio_chip
@@ -28,6 +135,7 @@ Definition
         int (*direction_input)(struct gpio_chip *chip, unsigned offset);
         int (*direction_output)(struct gpio_chip *chip, unsigned offset, int value);
         int (*get)(struct gpio_chip *chip, unsigned offset);
+        int (*get_multiple)(struct gpio_chip *chip,unsigned long *mask, unsigned long *bits);
         void (*set)(struct gpio_chip *chip, unsigned offset, int value);
         void (*set_multiple)(struct gpio_chip *chip,unsigned long *mask, unsigned long *bits);
         int (*set_config)(struct gpio_chip *chip,unsigned offset, unsigned long config);
@@ -40,7 +148,7 @@ Definition
     #if IS_ENABLED(CONFIG_GPIO_GENERIC)
         unsigned long (*read_reg)(void __iomem *reg);
         void (*write_reg)(void __iomem *reg, unsigned long data);
-        unsigned long (*pin2mask)(struct gpio_chip *gc, unsigned int pin);
+        bool be_bits;
         void __iomem *reg_dat;
         void __iomem *reg_set;
         void __iomem *reg_clr;
@@ -51,16 +159,7 @@ Definition
         unsigned long bgpio_dir;
     #endif
     #ifdef CONFIG_GPIOLIB_IRQCHIP
-        struct irq_chip *irqchip;
-        struct irq_domain *irqdomain;
-        unsigned int irq_base;
-        irq_flow_handler_t irq_handler;
-        unsigned int irq_default_type;
-        unsigned int irq_chained_parent;
-        bool irq_nested;
-        bool irq_need_valid_mask;
-        unsigned long *irq_valid_mask;
-        struct lock_class_key *lock_key;
+        struct gpio_irq_chip irq;
     #endif
     #if defined(CONFIG_OF_GPIO)
         struct device_node *of_node;
@@ -107,6 +206,10 @@ direction_output
 
 get
     returns value for signal "offset", 0=low, 1=high, or negative error
+
+get_multiple
+    reads values for multiple signals defined by "mask" and
+    stores them in "bits", returns 0 on success or negative error
 
 set
     assigns output value for signal "offset"
@@ -160,10 +263,10 @@ read_reg
 write_reg
     writer function for generic GPIO
 
-pin2mask
-    some generic GPIO controllers work with the big-endian bits
-    notation, e.g. in a 8-bits register, GPIO7 is the least significant
-    bit. This callback assigns the right bit mask.
+be_bits
+    if the generic GPIO has big endian bit order (bit 31 is representing
+    line 0, bit 30 is line 1 ... bit 0 is line 31) this is set to true by the
+    generic GPIO core. It is for internal housekeeping only.
 
 reg_dat
     data (in) register for generic GPIO
@@ -193,42 +296,10 @@ bgpio_dir
     shadowed direction register for generic GPIO to clear/set
     direction safely.
 
-irqchip
-    GPIO IRQ chip impl, provided by GPIO driver
+irq
 
-irqdomain
-    Interrupt translation domain; responsible for mapping
-    between GPIO hwirq number and linux irq number
-
-irq_base
-    first linux IRQ number assigned to GPIO IRQ chip (deprecated)
-
-irq_handler
-    the irq handler to use (often a predefined irq core function)
-    for GPIO IRQs, provided by GPIO driver
-
-irq_default_type
-    default IRQ triggering type applied during GPIO driver
-    initialization, provided by GPIO driver
-
-irq_chained_parent
-    GPIO IRQ chip parent/bank linux irq number,
-    provided by GPIO driver for chained interrupt (not for nested
-    interrupts).
-
-irq_nested
-    True if set the interrupt handling is nested.
-
-irq_need_valid_mask
-    If set core allocates \ ``irq_valid_mask``\  with all
-    bits set to one
-
-irq_valid_mask
-    If not \ ``NULL``\  holds bitmask of GPIOs which are valid to
-    be included in IRQ domain of the chip
-
-lock_key
-    per GPIO IRQ chip lockdep class
+    Integrates interrupt chip functionality with the GPIO chip. Can be
+    used to handle IRQs for most practical cases.
 
 of_node
 
@@ -257,6 +328,53 @@ Each chip controls a number of signals, identified in method calls
 by "offset" values in the range 0..(@ngpio - 1).  When those signals
 are referenced through calls like gpio_get_value(gpio), the offset
 is calculated by subtracting \ ``base``\  from the gpio number.
+
+.. _`gpiochip_add_data`:
+
+gpiochip_add_data
+=================
+
+.. c:function::  gpiochip_add_data( chip,  data)
+
+    register a gpio_chip
+
+    :param  chip:
+        the chip to register, with chip->base initialized
+
+    :param  data:
+        driver-private data associated with this chip
+
+.. _`gpiochip_add_data.context`:
+
+Context
+-------
+
+potentially before irqs will work
+
+.. _`gpiochip_add_data.description`:
+
+Description
+-----------
+
+When \ :c:func:`gpiochip_add_data`\  is called very early during boot, so that GPIOs
+can be freely used, the chip->parent device must be registered before
+the gpio framework's \ :c:func:`arch_initcall`\ .  Otherwise sysfs initialization
+for GPIOs will fail rudely.
+
+\ :c:func:`gpiochip_add_data`\  must only be called after gpiolib initialization,
+ie after \ :c:func:`core_initcall`\ .
+
+If chip->base is negative, this requests dynamic assignment of
+a range of valid GPIOs.
+
+.. _`gpiochip_add_data.return`:
+
+Return
+------
+
+A negative errno if the chip can't be registered, such as because the
+chip->base is invalid or already associated with a different chip.
+Otherwise it returns zero as a success code.
 
 .. _`gpio_pin_range`:
 

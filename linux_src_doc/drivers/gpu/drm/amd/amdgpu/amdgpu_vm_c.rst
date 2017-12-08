@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
 
+.. _`amdgpu_vm_alloc_pasid`:
+
+amdgpu_vm_alloc_pasid
+=====================
+
+.. c:function:: int amdgpu_vm_alloc_pasid(unsigned int bits)
+
+    Allocate a PASID
+
+    :param unsigned int bits:
+        Maximum width of the PASID in bits, must be at least 1
+
+.. _`amdgpu_vm_alloc_pasid.description`:
+
+Description
+-----------
+
+Allocates a PASID of the given width while keeping smaller PASIDs
+available if possible.
+
+Returns a positive integer on success. Returns \ ``-EINVAL``\  if bits==0.
+Returns \ ``-ENOSPC``\  if no PASID was available. Returns \ ``-ENOMEM``\  on
+memory allocation failure.
+
+.. _`amdgpu_vm_free_pasid`:
+
+amdgpu_vm_free_pasid
+====================
+
+.. c:function:: void amdgpu_vm_free_pasid(unsigned int pasid)
+
+    Free a PASID
+
+    :param unsigned int pasid:
+        PASID to free
+
 .. _`amdgpu_vm_num_entries`:
 
 amdgpu_vm_num_entries
@@ -71,37 +107,6 @@ Description
 Add the page directory to the list of BOs to
 validate for command submission.
 
-.. _`amdgpu_vm_validate_level`:
-
-amdgpu_vm_validate_level
-========================
-
-.. c:function:: int amdgpu_vm_validate_level(struct amdgpu_vm_pt *parent, int (*validate)(void *, struct amdgpu_bo *), void *param, bool use_cpu_for_update, struct ttm_bo_global *glob)
-
-    validate a single page table level
-
-    :param struct amdgpu_vm_pt \*parent:
-        parent page table level
-
-    :param int (\*validate)(void \*, struct amdgpu_bo \*):
-        callback to do the validation
-
-    :param void \*param:
-        parameter for the validation callback
-
-    :param bool use_cpu_for_update:
-        *undescribed*
-
-    :param struct ttm_bo_global \*glob:
-        *undescribed*
-
-.. _`amdgpu_vm_validate_level.description`:
-
-Description
------------
-
-Validate the page table BOs on command submission if neccessary.
-
 .. _`amdgpu_vm_validate_pt_bos`:
 
 amdgpu_vm_validate_pt_bos
@@ -129,6 +134,25 @@ Description
 -----------
 
 Validate the page table BOs on command submission if neccessary.
+
+.. _`amdgpu_vm_ready`:
+
+amdgpu_vm_ready
+===============
+
+.. c:function:: bool amdgpu_vm_ready(struct amdgpu_vm *vm)
+
+    check VM is ready for updates
+
+    :param struct amdgpu_vm \*vm:
+        VM to check
+
+.. _`amdgpu_vm_ready.description`:
+
+Description
+-----------
+
+Check if all VM PDs/PTs are ready for updates
 
 .. _`amdgpu_vm_alloc_levels`:
 
@@ -577,7 +601,7 @@ Returns 0 for success, -EINVAL for failure.
 amdgpu_vm_bo_update_mapping
 ===========================
 
-.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint64_t flags, uint64_t addr, struct dma_fence **fence)
+.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct dma_fence *exclusive, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint64_t flags, uint64_t addr, struct dma_fence **fence)
 
     update a mapping in the vm page table
 
@@ -586,9 +610,6 @@ amdgpu_vm_bo_update_mapping
 
     :param struct dma_fence \*exclusive:
         fence we need to sync to
-
-    :param uint64_t src:
-        address where to copy page table entries from
 
     :param dma_addr_t \*pages_addr:
         DMA addresses to use for mapping
@@ -832,14 +853,14 @@ Returns 0 for success.
 
 PTs have to be reserved and mutex must be locked!
 
-.. _`amdgpu_vm_clear_moved`:
+.. _`amdgpu_vm_handle_moved`:
 
-amdgpu_vm_clear_moved
-=====================
+amdgpu_vm_handle_moved
+======================
 
-.. c:function:: int amdgpu_vm_clear_moved(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct amdgpu_sync *sync)
+.. c:function:: int amdgpu_vm_handle_moved(struct amdgpu_device *adev, struct amdgpu_vm *vm)
 
-    clear moved BOs in the PT
+    handle moved BOs in the PT
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
@@ -847,18 +868,15 @@ amdgpu_vm_clear_moved
     :param struct amdgpu_vm \*vm:
         requested vm
 
-    :param struct amdgpu_sync \*sync:
-        *undescribed*
-
-.. _`amdgpu_vm_clear_moved.description`:
+.. _`amdgpu_vm_handle_moved.description`:
 
 Description
 -----------
 
-Make sure all moved BOs are cleared in the PT.
+Make sure all BOs which are moved are updated in the PTs.
 Returns 0 for success.
 
-PTs have to be reserved and mutex must be locked!
+PTs have to be reserved!
 
 .. _`amdgpu_vm_bo_add`:
 
@@ -888,6 +906,31 @@ Add \ ``bo``\  to the list of bos associated with the vm
 Returns newly added bo_va or NULL for failure
 
 Object has to be reserved!
+
+.. _`amdgpu_vm_bo_insert_map`:
+
+amdgpu_vm_bo_insert_map
+=======================
+
+.. c:function:: void amdgpu_vm_bo_insert_map(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, struct amdgpu_bo_va_mapping *mapping)
+
+    insert a new mapping
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param struct amdgpu_bo_va \*bo_va:
+        bo_va to store the address
+
+    :param struct amdgpu_bo_va_mapping \*mapping:
+        the mapping to insert
+
+.. _`amdgpu_vm_bo_insert_map.description`:
+
+Description
+-----------
+
+Insert a new mapping into all structures.
 
 .. _`amdgpu_vm_bo_map`:
 
@@ -1021,6 +1064,28 @@ Description
 Remove all mappings in a range, split them as appropriate.
 Returns 0 for success, error for failure.
 
+.. _`amdgpu_vm_bo_lookup_mapping`:
+
+amdgpu_vm_bo_lookup_mapping
+===========================
+
+.. c:function:: struct amdgpu_bo_va_mapping *amdgpu_vm_bo_lookup_mapping(struct amdgpu_vm *vm, uint64_t addr)
+
+    find mapping by address
+
+    :param struct amdgpu_vm \*vm:
+        the requested VM
+
+    :param uint64_t addr:
+        *undescribed*
+
+.. _`amdgpu_vm_bo_lookup_mapping.description`:
+
+Description
+-----------
+
+Find a mapping by it's address.
+
 .. _`amdgpu_vm_bo_rmv`:
 
 amdgpu_vm_bo_rmv
@@ -1050,7 +1115,7 @@ Object have to be reserved!
 amdgpu_vm_bo_invalidate
 =======================
 
-.. c:function:: void amdgpu_vm_bo_invalidate(struct amdgpu_device *adev, struct amdgpu_bo *bo)
+.. c:function:: void amdgpu_vm_bo_invalidate(struct amdgpu_device *adev, struct amdgpu_bo *bo, bool evicted)
 
     mark the bo as invalid
 
@@ -1059,6 +1124,9 @@ amdgpu_vm_bo_invalidate
 
     :param struct amdgpu_bo \*bo:
         amdgpu buffer object
+
+    :param bool evicted:
+        *undescribed*
 
 .. _`amdgpu_vm_bo_invalidate.description`:
 
@@ -1105,7 +1173,7 @@ amdgpu_vm_adjust_size
 amdgpu_vm_init
 ==============
 
-.. c:function:: int amdgpu_vm_init(struct amdgpu_device *adev, struct amdgpu_vm *vm, int vm_context)
+.. c:function:: int amdgpu_vm_init(struct amdgpu_device *adev, struct amdgpu_vm *vm, int vm_context, unsigned int pasid)
 
     initialize a vm instance
 
@@ -1117,6 +1185,9 @@ amdgpu_vm_init
 
     :param int vm_context:
         Indicates if it GFX or Compute context
+
+    :param unsigned int pasid:
+        *undescribed*
 
 .. _`amdgpu_vm_init.description`:
 
@@ -1166,6 +1237,29 @@ Description
 
 Tear down \ ``vm``\ .
 Unbind the VM and remove all bos from the vm bo list
+
+.. _`amdgpu_vm_pasid_fault_credit`:
+
+amdgpu_vm_pasid_fault_credit
+============================
+
+.. c:function:: bool amdgpu_vm_pasid_fault_credit(struct amdgpu_device *adev, unsigned int pasid)
+
+    Check fault credit for given PASID
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+    :param unsigned int pasid:
+        PASID do identify the VM
+
+.. _`amdgpu_vm_pasid_fault_credit.description`:
+
+Description
+-----------
+
+This function is expected to be called in interrupt context. Returns
+true if there was fault credit, false otherwise
 
 .. _`amdgpu_vm_manager_init`:
 

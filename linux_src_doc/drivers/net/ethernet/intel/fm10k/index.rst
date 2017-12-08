@@ -10,6 +10,7 @@ fm10k
     fm10k_common_c
     fm10k_dcbnl_c
     fm10k_debugfs_c
+    fm10k_iov_c
     fm10k_main_c
     fm10k_mbx_c
     fm10k_netdev_c

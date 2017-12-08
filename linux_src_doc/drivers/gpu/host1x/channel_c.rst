@@ -41,8 +41,7 @@ host1x_channel_request
 Description
 -----------
 
-Allocates a new host1x channel for \ ``device``\ . If there are no free channels,
-this will sleep until one becomes available. May return NULL if CDMA
+Allocates a new host1x channel for \ ``device``\ . May return NULL if CDMA
 initialization fails.
 
 .. This file was automatic generated / don't edit.

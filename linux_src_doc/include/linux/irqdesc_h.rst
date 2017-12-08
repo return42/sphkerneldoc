@@ -59,6 +59,7 @@ Definition
     #endif
     #ifdef CONFIG_GENERIC_IRQ_DEBUGFS
         struct dentry *debugfs_file;
+        const char *dev_name;
     #endif
     #ifdef CONFIG_SPARSE_IRQ
         struct rcu_head rcu;
@@ -166,6 +167,9 @@ dir
 
 debugfs_file
     dentry for the debugfs file
+
+dev_name
+    *undescribed*
 
 rcu
     rcu head for delayed free

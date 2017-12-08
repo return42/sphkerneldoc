@@ -622,12 +622,12 @@ Called with ctlr_mutex held.  The caller must not hold ctlr_lock.
 fcoe_ctlr_timeout
 =================
 
-.. c:function:: void fcoe_ctlr_timeout(unsigned long arg)
+.. c:function:: void fcoe_ctlr_timeout(struct timer_list *t)
 
     FIP timeout handler
 
-    :param unsigned long arg:
-        The FCoE controller that timed out
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`fcoe_ctlr_timer_work`:
 

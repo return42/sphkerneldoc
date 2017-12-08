@@ -88,7 +88,7 @@ Definition
         struct list_head tsgl_list;
         void *iv;
         size_t aead_assoclen;
-        struct af_alg_completion completion;
+        struct crypto_wait wait;
         size_t used;
         size_t rcvused;
         bool more;
@@ -111,8 +111,8 @@ iv
 aead_assoclen
     Length of AAD for AEAD cipher operations
 
-completion
-    Work queue for synchronous operation
+wait
+    *undescribed*
 
 used
     TX bytes sent to kernel. This variable is used to

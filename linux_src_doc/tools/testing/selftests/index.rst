@@ -7,6 +7,8 @@ selftests
 .. toctree::
     :maxdepth: 1
 
+    android/index
+    bpf/index
     futex/index
     mqueue/index
     rcutorture/index

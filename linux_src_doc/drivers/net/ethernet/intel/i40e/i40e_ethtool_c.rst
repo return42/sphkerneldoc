@@ -18,57 +18,54 @@ i40e_partition_setting_complaint
 i40e_phy_type_to_ethtool
 ========================
 
-.. c:function:: void i40e_phy_type_to_ethtool(struct i40e_pf *pf, u32 *supported, u32 *advertising)
+.. c:function:: void i40e_phy_type_to_ethtool(struct i40e_pf *pf, struct ethtool_link_ksettings *ks)
 
     convert the phy_types to ethtool link modes
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        PF struct with phy_types
 
-    :param u32 \*supported:
-        pointer to the ethtool supported variable to fill in
-
-    :param u32 \*advertising:
-        pointer to the ethtool advertising variable to fill in
+    :param struct ethtool_link_ksettings \*ks:
+        ethtool link ksettings struct to fill out
 
 .. _`i40e_get_settings_link_up`:
 
 i40e_get_settings_link_up
 =========================
 
-.. c:function:: void i40e_get_settings_link_up(struct i40e_hw *hw, struct ethtool_link_ksettings *cmd, struct net_device *netdev, struct i40e_pf *pf)
+.. c:function:: void i40e_get_settings_link_up(struct i40e_hw *hw, struct ethtool_link_ksettings *ks, struct net_device *netdev, struct i40e_pf *pf)
 
     Get the Link settings for when link is up
 
     :param struct i40e_hw \*hw:
         hw structure
 
-    :param struct ethtool_link_ksettings \*cmd:
-        *undescribed*
+    :param struct ethtool_link_ksettings \*ks:
+        ethtool ksettings to fill in
 
     :param struct net_device \*netdev:
         network interface device structure
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        pointer to physical function struct
 
 .. _`i40e_get_settings_link_down`:
 
 i40e_get_settings_link_down
 ===========================
 
-.. c:function:: void i40e_get_settings_link_down(struct i40e_hw *hw, struct ethtool_link_ksettings *cmd, struct i40e_pf *pf)
+.. c:function:: void i40e_get_settings_link_down(struct i40e_hw *hw, struct ethtool_link_ksettings *ks, struct i40e_pf *pf)
 
     Get the Link settings for when link is down
 
     :param struct i40e_hw \*hw:
         hw structure
 
-    :param struct ethtool_link_ksettings \*cmd:
-        *undescribed*
+    :param struct ethtool_link_ksettings \*ks:
+        ethtool ksettings to fill in
 
     :param struct i40e_pf \*pf:
-        *undescribed*
+        pointer to physical function struct
 
 .. _`i40e_get_settings_link_down.description`:
 
@@ -82,15 +79,15 @@ Reports link settings that can be determined when link is down
 i40e_get_link_ksettings
 =======================
 
-.. c:function:: int i40e_get_link_ksettings(struct net_device *netdev, struct ethtool_link_ksettings *cmd)
+.. c:function:: int i40e_get_link_ksettings(struct net_device *netdev, struct ethtool_link_ksettings *ks)
 
     Get Link Speed and Duplex settings
 
     :param struct net_device \*netdev:
         network interface device structure
 
-    :param struct ethtool_link_ksettings \*cmd:
-        *undescribed*
+    :param struct ethtool_link_ksettings \*ks:
+        ethtool ksettings
 
 .. _`i40e_get_link_ksettings.description`:
 
@@ -104,15 +101,15 @@ Reports speed/duplex settings based on media_type
 i40e_set_link_ksettings
 =======================
 
-.. c:function:: int i40e_set_link_ksettings(struct net_device *netdev, const struct ethtool_link_ksettings *cmd)
+.. c:function:: int i40e_set_link_ksettings(struct net_device *netdev, const struct ethtool_link_ksettings *ks)
 
     Set Speed and Duplex
 
     :param struct net_device \*netdev:
         network interface device structure
 
-    :param const struct ethtool_link_ksettings \*cmd:
-        *undescribed*
+    :param const struct ethtool_link_ksettings \*ks:
+        ethtool ksettings
 
 .. _`i40e_set_link_ksettings.description`:
 
@@ -1028,6 +1025,35 @@ Description
 
 Returns the table size.
 
+.. _`i40e_get_rxfh`:
+
+i40e_get_rxfh
+=============
+
+.. c:function:: int i40e_get_rxfh(struct net_device *netdev, u32 *indir, u8 *key, u8 *hfunc)
+
+    get the rx flow hash indirection table
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+    :param u32 \*indir:
+        indirection table
+
+    :param u8 \*key:
+        hash key
+
+    :param u8 \*hfunc:
+        hash function
+
+.. _`i40e_get_rxfh.description`:
+
+Description
+-----------
+
+Reads the indirection table directly from the hardware. Returns 0 on
+success.
+
 .. _`i40e_set_rxfh`:
 
 i40e_set_rxfh
@@ -1094,6 +1120,39 @@ i40e_set_priv_flags
 
     :param u32 flags:
         bit flags to be set
+
+.. _`i40e_get_module_info`:
+
+i40e_get_module_info
+====================
+
+.. c:function:: int i40e_get_module_info(struct net_device *netdev, struct ethtool_modinfo *modinfo)
+
+    get (Q)SFP+ module type info
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+    :param struct ethtool_modinfo \*modinfo:
+        module EEPROM size and layout information structure
+
+.. _`i40e_get_module_eeprom`:
+
+i40e_get_module_eeprom
+======================
+
+.. c:function:: int i40e_get_module_eeprom(struct net_device *netdev, struct ethtool_eeprom *ee, u8 *data)
+
+    fills buffer with (Q)SFP+ module memory contents
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+    :param struct ethtool_eeprom \*ee:
+        EEPROM dump request structure
+
+    :param u8 \*data:
+        buffer to be filled with EEPROM contents
 
 .. This file was automatic generated / don't edit.
 

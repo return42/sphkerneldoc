@@ -6,7 +6,7 @@
 may_commit_transaction
 ======================
 
-.. c:function:: int may_commit_transaction(struct btrfs_fs_info *fs_info, struct btrfs_space_info *space_info, u64 bytes, int force)
+.. c:function:: int may_commit_transaction(struct btrfs_fs_info *fs_info, struct btrfs_space_info *space_info)
 
     possibly commit the transaction if its ok to \ ``root``\  - the root we're allocating for \ ``bytes``\  - the number of bytes we want to reserve \ ``force``\  - force the commit
 
@@ -14,12 +14,6 @@ may_commit_transaction
         *undescribed*
 
     :param struct btrfs_space_info \*space_info:
-        *undescribed*
-
-    :param u64 bytes:
-        *undescribed*
-
-    :param int force:
         *undescribed*
 
 .. _`may_commit_transaction.description`:
@@ -100,64 +94,50 @@ possible or committing the transaction.  If flush is 0 then no attempts to
 regain reservations will be made and this will fail if there is not enough
 space already.
 
-.. _`drop_outstanding_extent`:
+.. _`btrfs_inode_rsv_refill`:
 
-drop_outstanding_extent
-=======================
+btrfs_inode_rsv_refill
+======================
 
-.. c:function:: unsigned drop_outstanding_extent(struct btrfs_inode *inode, u64 num_bytes)
+.. c:function:: int btrfs_inode_rsv_refill(struct btrfs_inode *inode, enum btrfs_reserve_flush_enum flush)
 
-    drop an outstanding extent
+    refill the inode block rsv. \ ``inode``\  - the inode we are refilling. \ ``flush``\  - the flusing restriction.
 
     :param struct btrfs_inode \*inode:
-        the inode we're dropping the extent for
+        *undescribed*
 
-    :param u64 num_bytes:
-        the number of bytes we're releasing.
+    :param enum btrfs_reserve_flush_enum flush:
+        *undescribed*
 
-.. _`drop_outstanding_extent.description`:
+.. _`btrfs_inode_rsv_refill.description`:
 
 Description
 -----------
 
-This is called when we are freeing up an outstanding extent, either called
-after an error or after an extent is written.  This will return the number of
-reserved extents that need to be freed.  This must be called with
-BTRFS_I(inode)->lock held.
+Essentially the same as btrfs_block_rsv_refill, except it uses the
+block_rsv->size as the minimum size.  We'll either refill the missing amount
+or return if we already have enough space.  This will also handle the resreve
+tracepoint for the reserved amount.
 
-.. _`calc_csum_metadata_size`:
+.. _`btrfs_inode_rsv_release`:
 
-calc_csum_metadata_size
+btrfs_inode_rsv_release
 =======================
 
-.. c:function:: u64 calc_csum_metadata_size(struct btrfs_inode *inode, u64 num_bytes, int reserve)
+.. c:function:: void btrfs_inode_rsv_release(struct btrfs_inode *inode)
 
-    return the amount of metadata space that must be reserved/freed for the given bytes.
+    release any excessive reservation. \ ``inode``\  - the inode we need to release from.
 
     :param struct btrfs_inode \*inode:
-        the inode we're manipulating
+        *undescribed*
 
-    :param u64 num_bytes:
-        the number of bytes in question
-
-    :param int reserve:
-        1 if we are reserving space, 0 if we are freeing space
-
-.. _`calc_csum_metadata_size.description`:
+.. _`btrfs_inode_rsv_release.description`:
 
 Description
 -----------
 
-This adjusts the number of csum_bytes in the inode and then returns the
-correct amount of metadata that must either be reserved or freed.  We
-calculate how many checksums we can fit into one leaf and then divide the
-number of bytes that will need to be checksumed by this value to figure out
-how many checksums will be required.  If we are adding bytes then the number
-may go up and we will return the number of additional bytes that must be
-reserved.  If it is going down we will return the number of bytes that must
-be freed.
-
-This must be called with BTRFS_I(inode)->lock held.
+This is the same as btrfs_block_rsv_release, except that it handles the
+tracepoint for the reservation.
 
 .. _`btrfs_delalloc_release_metadata`:
 
@@ -169,10 +149,10 @@ btrfs_delalloc_release_metadata
     release a metadata reservation for an inode
 
     :param struct btrfs_inode \*inode:
-        the inode to release the reservation for
+        the inode to release the reservation for.
 
     :param u64 num_bytes:
-        the number of bytes we're releasing
+        the number of bytes we are releasing.
 
 .. _`btrfs_delalloc_release_metadata.description`:
 
@@ -181,7 +161,33 @@ Description
 
 This will release the metadata reservation for an inode.  This can be called
 once we complete IO for a given set of bytes to release their metadata
-reservations.
+reservations, or on error for the same reason.
+
+.. _`btrfs_delalloc_release_extents`:
+
+btrfs_delalloc_release_extents
+==============================
+
+.. c:function:: void btrfs_delalloc_release_extents(struct btrfs_inode *inode, u64 num_bytes)
+
+    release our outstanding_extents
+
+    :param struct btrfs_inode \*inode:
+        the inode to balance the reservation for.
+
+    :param u64 num_bytes:
+        the number of bytes we originally reserved with
+
+.. _`btrfs_delalloc_release_extents.description`:
+
+Description
+-----------
+
+When we reserve space we increase outstanding_extents for the extents we may
+add.  Once we've set the range as delalloc or created our ordered extents we
+have outstanding_extents to track the real usage, so we use this to free our
+temporarily tracked outstanding_extents.  This \_must\_ be used in conjunction
+with btrfs_delalloc_reserve_metadata.
 
 .. _`btrfs_delalloc_reserve_space`:
 
@@ -251,10 +257,6 @@ btrfs_delalloc_release_space
 
 Description
 -----------
-
-This must be matched with a call to btrfs_delalloc_reserve_space.  This is
-called in the case that we don't need the metadata AND data reservations
-anymore.  So if there is an error or we insert an inline extent.
 
 This function will release the metadata space that was not used and will
 decrement ->delalloc_bytes and remove it from the fs_info delalloc_inodes

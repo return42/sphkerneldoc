@@ -14,4 +14,5 @@ vgic
     vgic-mmio-v3_c
     vgic-v2_c
     vgic-v3_c
+    vgic-v4_c
     vgic_c

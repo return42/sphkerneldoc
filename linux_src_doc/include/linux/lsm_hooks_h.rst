@@ -234,6 +234,15 @@ Definition
         int (*audit_rule_match)(u32 secid, u32 field, u32 op, void *lsmrule, struct audit_context *actx);
         void (*audit_rule_free)(void *lsmrule);
     #endif
+    #ifdef CONFIG_BPF_SYSCALL
+        int (*bpf)(int cmd, union bpf_attr *attr, unsigned int size);
+        int (*bpf_map)(struct bpf_map *map, fmode_t fmode);
+        int (*bpf_prog)(struct bpf_prog *prog);
+        int (*bpf_map_alloc_security)(struct bpf_map *map);
+        void (*bpf_map_free_security)(struct bpf_map *map);
+        int (*bpf_prog_alloc_security)(struct bpf_prog_aux *aux);
+        void (*bpf_prog_free_security)(struct bpf_prog_aux *aux);
+    #endif
     }
 
 .. _`security_list_options.members`:
@@ -1681,6 +1690,31 @@ audit_rule_free
     audit_rule_init.
     \ ``rule``\  contains the allocated rule
 
+bpf
+    Do a initial check for all bpf syscalls after the attribute is copied
+    into the kernel. The actual security module can implement their own
+    rules to check the specific cmd they need.
+
+bpf_map
+    Do a check when the kernel generate and return a file descriptor for
+    eBPF maps.
+
+bpf_prog
+    Do a check when the kernel generate and return a file descriptor for
+    eBPF programs.
+
+bpf_map_alloc_security
+    Initialize the security field inside bpf map.
+
+bpf_map_free_security
+    Clean up the security information stored inside bpf map.
+
+bpf_prog_alloc_security
+    Initialize the security field inside bpf program.
+
+bpf_prog_free_security
+    Clean up the security information stored inside bpf prog.
+
 .. _`security_list_options.description`:
 
 Description
@@ -1746,6 +1780,9 @@ Must be called with inode->i_mutex locked.
 \ ``inode``\  we wish to get the security context of.
 \ ``ctx``\  is a pointer in which to place the allocated security context.
 \ ``ctxlen``\  points to the place to put the length of \ ``ctx``\ .
+
+Security hooks for using the eBPF maps and programs functionalities through
+eBPF syscalls.
 
 .. _`security_list_options.caveat`:
 

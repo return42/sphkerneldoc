@@ -98,7 +98,6 @@ linux
     dcache_h
     dccp_h
     dcookies_h
-    debugfs_h
     debugobjects_h
     devfreq-event_h
     devfreq_cooling_h
@@ -124,6 +123,7 @@ linux
     fs_h
     fscache-cache_h
     fscache_h
+    fscrypt_h
     fscrypt_supp_h
     fsl_hypervisor_h
     ftrace_h
@@ -133,7 +133,6 @@ linux
     genetlink_h
     gpio_h
     gpio_keys_h
-    gpio_mouse_h
     hashtable_h
     hdmi_h
     hid-sensor-hub_h
@@ -338,13 +337,16 @@ linux
     textsearch_fsm_h
     textsearch_h
     thermal_h
+    thunderbolt_h
     ti_wilink_st_h
     timb_dma_h
     timb_gpio_h
+    time32_h
     time64_h
     time_h
     timecounter_h
     timekeeper_internal_h
+    timekeeping32_h
     timekeeping_h
     timer_h
     timerqueue_h

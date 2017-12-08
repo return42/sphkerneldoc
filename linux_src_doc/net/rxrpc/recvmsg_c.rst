@@ -6,7 +6,7 @@
 rxrpc_kernel_recv_data
 ======================
 
-.. c:function:: int rxrpc_kernel_recv_data(struct socket *sock, struct rxrpc_call *call, void *buf, size_t size, size_t *_offset, bool want_more, u32 *_abort)
+.. c:function:: int rxrpc_kernel_recv_data(struct socket *sock, struct rxrpc_call *call, void *buf, size_t size, size_t *_offset, bool want_more, u32 *_abort, u16 *_service)
 
     Allow a kernel service to receive data/info
 
@@ -30,6 +30,9 @@ rxrpc_kernel_recv_data
 
     :param u32 \*_abort:
         Where the abort code is stored if -ECONNABORTED is returned
+
+    :param u16 \*_service:
+        Where to store the actual service ID (may be upgraded)
 
 .. _`rxrpc_kernel_recv_data.description`:
 

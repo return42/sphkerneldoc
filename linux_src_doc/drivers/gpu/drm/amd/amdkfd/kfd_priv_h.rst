@@ -47,44 +47,46 @@ KFD_SCHED_POLICY_NO_HWS
     set the command processor registers and sets the queues "manually". This
     mode is used \*ONLY\* for debugging proposes.
 
-.. _`kfd_preempt_type_filter`:
+.. _`kfd_unmap_queues_filter`:
 
-enum kfd_preempt_type_filter
+enum kfd_unmap_queues_filter
 ============================
 
-.. c:type:: enum kfd_preempt_type_filter
+.. c:type:: enum kfd_unmap_queues_filter
 
 
-.. _`kfd_preempt_type_filter.definition`:
+.. _`kfd_unmap_queues_filter.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    enum kfd_preempt_type_filter {
-        KFD_PREEMPT_TYPE_FILTER_SINGLE_QUEUE,
-        KFD_PREEMPT_TYPE_FILTER_ALL_QUEUES,
-        KFD_PREEMPT_TYPE_FILTER_DYNAMIC_QUEUES,
-        KFD_PREEMPT_TYPE_FILTER_BY_PASID
+    enum kfd_unmap_queues_filter {
+        KFD_UNMAP_QUEUES_FILTER_SINGLE_QUEUE,
+        KFD_UNMAP_QUEUES_FILTER_ALL_QUEUES,
+        KFD_UNMAP_QUEUES_FILTER_DYNAMIC_QUEUES,
+        KFD_UNMAP_QUEUES_FILTER_BY_PASID
     };
 
-.. _`kfd_preempt_type_filter.constants`:
+.. _`kfd_unmap_queues_filter.constants`:
 
 Constants
 ---------
 
-KFD_PREEMPT_TYPE_FILTER_SINGLE_QUEUE
+KFD_UNMAP_QUEUES_FILTER_SINGLE_QUEUE
     Preempts single queue.
 
-KFD_PREEMPT_TYPE_FILTER_ALL_QUEUES
+KFD_UNMAP_QUEUES_FILTER_ALL_QUEUES
+    Preempts all queues in the
+    running queues list.
+
+KFD_UNMAP_QUEUES_FILTER_DYNAMIC_QUEUES
     *undescribed*
 
-KFD_PREEMPT_TYPE_FILTER_DYNAMIC_QUEUES
-    *undescribed*
-
-KFD_PREEMPT_TYPE_FILTER_BY_PASID
-    *undescribed*
+KFD_UNMAP_QUEUES_FILTER_BY_PASID
+    Preempts queues that belongs to
+    specific process.
 
 .. _`kfd_queue_type`:
 

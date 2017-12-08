@@ -7,11 +7,11 @@ overview
 ========
 
 This library provides helpers for drivers that don't subclass
-\ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  and and use \ :c:type:`struct drm_gem_object <drm_gem_object>`\  for their backing storage.
+\ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  and use \ :c:type:`struct drm_gem_object <drm_gem_object>`\  for their backing storage.
 
 Drivers without additional needs to validate framebuffers can simply use
-\ :c:func:`drm_gem_fb_create`\  and everything is wired up automatically. But all
-parts can be used individually.
+\ :c:func:`drm_gem_fb_create`\  and everything is wired up automatically. Other drivers
+can use all parts independently.
 
 .. _`drm_gem_fb_get_obj`:
 
@@ -20,20 +20,29 @@ drm_gem_fb_get_obj
 
 .. c:function:: struct drm_gem_object *drm_gem_fb_get_obj(struct drm_framebuffer *fb, unsigned int plane)
 
-    Get GEM object for framebuffer
+    Get GEM object backing the framebuffer
 
     :param struct drm_framebuffer \*fb:
-        The framebuffer
+        Framebuffer
 
     :param unsigned int plane:
-        Which plane
+        Plane index
 
 .. _`drm_gem_fb_get_obj.description`:
 
 Description
 -----------
 
-Returns the GEM object for given framebuffer.
+No additional reference is taken beyond the one that the \ :c:type:`struct drm_frambuffer <drm_frambuffer>`\ 
+already holds.
+
+.. _`drm_gem_fb_get_obj.return`:
+
+Return
+------
+
+Pointer to \ :c:type:`struct drm_gem_object <drm_gem_object>`\  for the given framebuffer and plane index or NULL
+if it does not exist.
 
 .. _`drm_gem_fb_destroy`:
 
@@ -45,7 +54,7 @@ drm_gem_fb_destroy
     Free GEM backed framebuffer
 
     :param struct drm_framebuffer \*fb:
-        DRM framebuffer
+        Framebuffer
 
 .. _`drm_gem_fb_destroy.description`:
 
@@ -66,21 +75,22 @@ drm_gem_fb_create_handle
     Create handle for GEM backed framebuffer
 
     :param struct drm_framebuffer \*fb:
-        DRM framebuffer
+        Framebuffer
 
     :param struct drm_file \*file:
-        drm file
+        DRM file to register the handle for
 
     :param unsigned int \*handle:
-        handle created
+        Pointer to return the created handle
 
 .. _`drm_gem_fb_create_handle.description`:
 
 Description
 -----------
 
+This function creates a handle for the GEM object backing the framebuffer.
 Drivers can use this as their \ :c:type:`drm_framebuffer_funcs->create_handle <drm_framebuffer_funcs>`\ 
-callback.
+callback. The GETFB IOCTL calls into this callback.
 
 .. _`drm_gem_fb_create_handle.return`:
 
@@ -96,16 +106,16 @@ drm_gem_fb_create_with_funcs
 
 .. c:function:: struct drm_framebuffer *drm_gem_fb_create_with_funcs(struct drm_device *dev, struct drm_file *file, const struct drm_mode_fb_cmd2 *mode_cmd, const struct drm_framebuffer_funcs *funcs)
 
-    helper function for the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback
+    Helper function for the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback
 
     :param struct drm_device \*dev:
         DRM device
 
     :param struct drm_file \*file:
-        drm file for the ioctl call
+        DRM file that holds the GEM handle(s) backing the framebuffer
 
     :param const struct drm_mode_fb_cmd2 \*mode_cmd:
-        metadata from the userspace fb creation request
+        Metadata from the userspace framebuffer creation request
 
     :param const struct drm_framebuffer_funcs \*funcs:
         vtable to be used for the new framebuffer object
@@ -120,6 +130,13 @@ This can be used to set \ :c:type:`struct drm_framebuffer_funcs <drm_framebuffer
 need to change \ :c:type:`struct drm_framebuffer_funcs <drm_framebuffer_funcs>`\ .
 The function does buffer size validation.
 
+.. _`drm_gem_fb_create_with_funcs.return`:
+
+Return
+------
+
+Pointer to a \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  on success or an error pointer on failure.
+
 .. _`drm_gem_fb_create`:
 
 drm_gem_fb_create
@@ -127,26 +144,40 @@ drm_gem_fb_create
 
 .. c:function:: struct drm_framebuffer *drm_gem_fb_create(struct drm_device *dev, struct drm_file *file, const struct drm_mode_fb_cmd2 *mode_cmd)
 
-    &drm_mode_config_funcs.fb_create callback function
+    Helper function for the \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback
 
     :param struct drm_device \*dev:
         DRM device
 
     :param struct drm_file \*file:
-        drm file for the ioctl call
+        DRM file that holds the GEM handle(s) backing the framebuffer
 
     :param const struct drm_mode_fb_cmd2 \*mode_cmd:
-        metadata from the userspace fb creation request
+        Metadata from the userspace framebuffer creation request
 
 .. _`drm_gem_fb_create.description`:
 
 Description
 -----------
 
+This function creates a new framebuffer object described by
+\ :c:type:`struct drm_mode_fb_cmd2 <drm_mode_fb_cmd2>`\ . This description includes handles for the buffer(s)
+backing the framebuffer.
+
 If your hardware has special alignment or pitch requirements these should be
 checked before calling this function. The function does buffer size
 validation. Use \ :c:func:`drm_gem_fb_create_with_funcs`\  if you need to set
 \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\ .
+
+Drivers can use this as their \ :c:type:`drm_mode_config_funcs.fb_create <drm_mode_config_funcs>`\  callback.
+The ADDFB2 IOCTL calls into this callback.
+
+.. _`drm_gem_fb_create.return`:
+
+Return
+------
+
+Pointer to a \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  on success or an error pointer on failure.
 
 .. _`drm_gem_fb_prepare_fb`:
 
@@ -155,24 +186,24 @@ drm_gem_fb_prepare_fb
 
 .. c:function:: int drm_gem_fb_prepare_fb(struct drm_plane *plane, struct drm_plane_state *state)
 
-    Prepare gem framebuffer
+    Prepare a GEM backed framebuffer
 
     :param struct drm_plane \*plane:
-        Which plane
+        Plane
 
     :param struct drm_plane_state \*state:
-        Plane state attach fence to
+        Plane state the fence will be attached to
 
 .. _`drm_gem_fb_prepare_fb.description`:
 
 Description
 -----------
 
-This can be used as the \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\  hook.
-
-This function checks if the plane FB has an dma-buf attached, extracts
-the exclusive fence and attaches it to plane state for the atomic helper
-to wait on.
+This function prepares a GEM backed framebuffer for scanout by checking if
+the plane framebuffer has a DMA-BUF attached. If it does, it extracts the
+exclusive fence and attaches it to the plane state for the atomic helper to
+wait on. This function can be used as the \ :c:type:`drm_plane_helper_funcs.prepare_fb <drm_plane_helper_funcs>`\ 
+callback.
 
 There is no need for \ :c:type:`drm_plane_helper_funcs.cleanup_fb <drm_plane_helper_funcs>`\  hook for simple
 gem based framebuffer drivers which have their buffers always pinned in
@@ -185,7 +216,7 @@ drm_gem_fbdev_fb_create
 
 .. c:function:: struct drm_framebuffer *drm_gem_fbdev_fb_create(struct drm_device *dev, struct drm_fb_helper_surface_size *sizes, unsigned int pitch_align, struct drm_gem_object *obj, const struct drm_framebuffer_funcs *funcs)
 
-    Create a drm_framebuffer for fbdev emulation
+    Create a GEM backed \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  for fbdev emulation
 
     :param struct drm_device \*dev:
         DRM device
@@ -194,7 +225,7 @@ drm_gem_fbdev_fb_create
         fbdev size description
 
     :param unsigned int pitch_align:
-        optional pitch alignment
+        Optional pitch alignment
 
     :param struct drm_gem_object \*obj:
         GEM object backing the framebuffer
@@ -207,14 +238,15 @@ drm_gem_fbdev_fb_create
 Description
 -----------
 
-This function creates a framebuffer for use with fbdev emulation.
+This function creates a framebuffer from a \ :c:type:`struct drm_fb_helper_surface_size <drm_fb_helper_surface_size>`\ 
+description for use in the \ :c:type:`drm_fb_helper_funcs.fb_probe <drm_fb_helper_funcs>`\  callback.
 
 .. _`drm_gem_fbdev_fb_create.return`:
 
 Return
 ------
 
-Pointer to a drm_framebuffer on success or an error pointer on failure.
+Pointer to a \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  on success or an error pointer on failure.
 
 .. This file was automatic generated / don't edit.
 

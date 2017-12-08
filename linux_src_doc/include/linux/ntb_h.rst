@@ -22,7 +22,8 @@ Definition
         NTB_TOPO_PRI,
         NTB_TOPO_SEC,
         NTB_TOPO_B2B_USD,
-        NTB_TOPO_B2B_DSD
+        NTB_TOPO_B2B_DSD,
+        NTB_TOPO_SWITCH
     };
 
 .. _`ntb_topo.constants`:
@@ -44,6 +45,9 @@ NTB_TOPO_B2B_USD
 
 NTB_TOPO_B2B_DSD
     On primary side of local ntb downstream of remote ntb.
+
+NTB_TOPO_SWITCH
+    Connected via a switch which supports ntb.
 
 .. _`ntb_speed`:
 
@@ -1139,7 +1143,8 @@ Description
 Hardware and topology may support a different number of memory windows.
 Moreover different peer devices can support different number of memory
 windows. Simply speaking this method returns the number of possible inbound
-memory windows to share with specified peer device.
+memory windows to share with specified peer device. Note: this may return
+zero if the link is not up yet.
 
 .. _`ntb_mw_count.return`:
 
@@ -1183,7 +1188,7 @@ Description
 Get the alignments of an inbound memory window with specified index.
 NULL may be given for any output parameter if the value is not needed.
 The alignment and size parameters may be used for allocation of proper
-shared memory.
+shared memory. Note: this must only be called when the link is up.
 
 .. _`ntb_mw_get_align.return`:
 

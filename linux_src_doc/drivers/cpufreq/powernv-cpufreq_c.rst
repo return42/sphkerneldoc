@@ -25,6 +25,7 @@ Definition
         int last_gpstate_idx;
         spinlock_t gpstate_lock;
         struct timer_list timer;
+        struct cpufreq_policy *policy;
     }
 
 .. _`global_pstate_info.members`:
@@ -61,6 +62,9 @@ timer
     Is used for ramping down if cpu goes idle for
     a long time with global pstate held high
 
+policy
+    *undescribed*
+
 .. _`calc_global_pstate`:
 
 calc_global_pstate
@@ -93,10 +97,10 @@ equation which ensures that it reaches ramping down to pmin in 5sec.
 gpstate_timer_handler
 =====================
 
-.. c:function:: void gpstate_timer_handler(unsigned long data)
+.. c:function:: void gpstate_timer_handler(struct timer_list *t)
 
-    :param unsigned long data:
-        pointer to cpufreq_policy on which timer was queued
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`gpstate_timer_handler.description`:
 

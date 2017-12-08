@@ -59,46 +59,6 @@ buf_data_size
 authenticating
     The switch is authenticating the new NVM
 
-.. _`tb_security_level`:
-
-enum tb_security_level
-======================
-
-.. c:type:: enum tb_security_level
-
-    Thunderbolt security level
-
-.. _`tb_security_level.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum tb_security_level {
-        TB_SECURITY_NONE,
-        TB_SECURITY_USER,
-        TB_SECURITY_SECURE,
-        TB_SECURITY_DPONLY
-    };
-
-.. _`tb_security_level.constants`:
-
-Constants
----------
-
-TB_SECURITY_NONE
-    No security, legacy mode
-
-TB_SECURITY_USER
-    User approval required at minimum
-
-TB_SECURITY_SECURE
-    One time saved key required at minimum
-
-TB_SECURITY_DPONLY
-    Only tunnel Display port (and USB)
-
 .. _`tb_switch`:
 
 struct tb_switch
@@ -260,6 +220,7 @@ Definition
         struct tb_regs_port_header config;
         struct tb_switch *sw;
         struct tb_port *remote;
+        struct tb_xdomain *xdomain;
         int cap_phy;
         u8 port;
         bool disabled;
@@ -273,28 +234,32 @@ Members
 -------
 
 config
-    *undescribed*
+    Cached port configuration read from registers
 
 sw
-    *undescribed*
+    Switch the port belongs to
 
 remote
-    *undescribed*
+    Remote port (%NULL if not connected)
+
+xdomain
+    Remote host (%NULL if not connected)
 
 cap_phy
-    *undescribed*
+    Offset, zero if not found
 
 port
-    *undescribed*
+    Port number on switch
 
 disabled
-    *undescribed*
+    Disabled by eeprom
 
 dual_link_port
-    *undescribed*
+    If the switch is connected using two ports, points
+    to the other port.
 
 link_nr
-    *undescribed*
+    Is this primary or secondary port on the dual_link.
 
 .. _`tb_path_hop`:
 
@@ -506,6 +471,8 @@ Definition
         int (*add_switch_key)(struct tb *tb, struct tb_switch *sw);
         int (*challenge_switch_key)(struct tb *tb, struct tb_switch *sw, const u8 *challenge, u8 *response);
         int (*disconnect_pcie_paths)(struct tb *tb);
+        int (*approve_xdomain_paths)(struct tb *tb, struct tb_xdomain *xd);
+        int (*disconnect_xdomain_paths)(struct tb *tb, struct tb_xdomain *xd);
     }
 
 .. _`tb_cm_ops.members`:
@@ -550,70 +517,11 @@ challenge_switch_key
 disconnect_pcie_paths
     Disconnects PCIe paths before NVM update
 
-.. _`tb`:
+approve_xdomain_paths
+    Approve (establish) XDomain DMA paths
 
-struct tb
-=========
-
-.. c:type:: struct tb
-
-    main thunderbolt bus structure
-
-.. _`tb.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct tb {
-        struct device dev;
-        struct mutex lock;
-        struct tb_nhi *nhi;
-        struct tb_ctl *ctl;
-        struct workqueue_struct *wq;
-        struct tb_switch *root_switch;
-        const struct tb_cm_ops *cm_ops;
-        int index;
-        enum tb_security_level security_level;
-        unsigned long privdata[0];
-    }
-
-.. _`tb.members`:
-
-Members
--------
-
-dev
-    Domain device
-
-lock
-    Big lock. Must be held when accessing any struct
-    tb_switch / struct tb_port.
-
-nhi
-    Pointer to the NHI structure
-
-ctl
-    Control channel for this domain
-
-wq
-    Ordered workqueue for all domain specific work
-
-root_switch
-    Root switch of this domain
-
-cm_ops
-    Connection manager specific operations vector
-
-index
-    Linux assigned domain number
-
-security_level
-    Current security level
-
-privdata
-    Private connection manager specific data
+disconnect_xdomain_paths
+    Disconnect XDomain DMA paths
 
 .. _`tb_upstream_port`:
 

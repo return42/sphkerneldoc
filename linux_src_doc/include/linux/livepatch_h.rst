@@ -89,6 +89,61 @@ patched=1 transition=1: patched, may be visible to some tasks
 patched=0 transition=1: unpatched, temporary ending state
 patched=0 transition=0: unpatched
 
+.. _`klp_callbacks`:
+
+struct klp_callbacks
+====================
+
+.. c:type:: struct klp_callbacks
+
+    pre/post live-(un)patch callback structure
+
+.. _`klp_callbacks.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct klp_callbacks {
+        int (*pre_patch)(struct klp_object *obj);
+        void (*post_patch)(struct klp_object *obj);
+        void (*pre_unpatch)(struct klp_object *obj);
+        void (*post_unpatch)(struct klp_object *obj);
+        bool post_unpatch_enabled;
+    }
+
+.. _`klp_callbacks.members`:
+
+Members
+-------
+
+pre_patch
+    executed before code patching
+
+post_patch
+    executed after code patching
+
+pre_unpatch
+    executed before code unpatching
+
+post_unpatch
+    executed after code unpatching
+
+post_unpatch_enabled
+    flag indicating if post-unpatch callback
+    should run
+
+.. _`klp_callbacks.description`:
+
+Description
+-----------
+
+All callbacks are optional.  Only the pre-patch callback, if provided,
+will be unconditionally executed.  If the parent klp_object fails to
+patch for any reason, including a non-zero error status returned from
+the pre-patch callback, no further callbacks will be executed.
+
 .. _`klp_object`:
 
 struct klp_object
@@ -108,6 +163,7 @@ Definition
     struct klp_object {
         const char *name;
         struct klp_func *funcs;
+        struct klp_callbacks callbacks;
         struct kobject kobj;
         struct module *mod;
         bool patched;
@@ -123,6 +179,9 @@ name
 
 funcs
     function entries for functions to be patched in the object
+
+callbacks
+    functions to be executed pre/post (un)patching
 
 kobj
     kobject for sysfs resources

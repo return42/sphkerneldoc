@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/tile/include/asm/spinlock_32.h
 
-.. _`arch_read_can_lock`:
-
-arch_read_can_lock
-==================
-
-.. c:function:: int arch_read_can_lock(arch_rwlock_t *rwlock)
-
-    would \ :c:func:`read_trylock`\  succeed?
-
-    :param arch_rwlock_t \*rwlock:
-        *undescribed*
-
-.. _`arch_write_can_lock`:
-
-arch_write_can_lock
-===================
-
-.. c:function:: int arch_write_can_lock(arch_rwlock_t *rwlock)
-
-    would \ :c:func:`write_trylock`\  succeed?
-
-    :param arch_rwlock_t \*rwlock:
-        *undescribed*
-
 .. _`arch_read_lock`:
 
 arch_read_lock

@@ -24,7 +24,7 @@ tty_port_link_device
 Description
 -----------
 
-Provide the tty layer wit ha link from a tty (specified by \ ``index``\ ) to a
+Provide the tty layer with a link from a tty (specified by \ ``index``\ ) to a
 tty_port (@port). Use this only if neither tty_port_register_device nor
 tty_port_install is used in the driver. If used, this has to be called before
 tty_register_driver.
@@ -196,7 +196,7 @@ tty_port_destroy
     - destroy inited port
 
     :param struct tty_port \*port:
-        tty port to be doestroyed
+        tty port to be destroyed
 
 .. _`tty_port_destroy.description`:
 

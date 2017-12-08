@@ -345,7 +345,7 @@ If you require other GFP-masks, you have to do those allocations yourself.
 Note that you are not allowed to change gfp-zones during runtime. That is,
 \ :c:func:`shmem_read_mapping_page_gfp`\  must be called with the same gfp_zone(gfp) as
 set during initialization. If you have special zone constraints, set them
-after \ :c:func:`drm_gem_init_object`\  via \ :c:func:`mapping_set_gfp_mask`\ . shmem-core takes care
+after \ :c:func:`drm_gem_object_init`\  via \ :c:func:`mapping_set_gfp_mask`\ . shmem-core takes care
 to keep pages in the required zone during swap-in.
 
 .. _`drm_gem_put_pages`:

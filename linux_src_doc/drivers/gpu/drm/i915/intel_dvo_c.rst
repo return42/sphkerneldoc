@@ -26,9 +26,9 @@ Unimplemented.
 intel_dvo_get_current_mode
 ==========================
 
-.. c:function:: struct drm_display_mode *intel_dvo_get_current_mode(struct drm_connector *connector)
+.. c:function:: struct drm_display_mode *intel_dvo_get_current_mode(struct intel_encoder *encoder)
 
-    :param struct drm_connector \*connector:
+    :param struct intel_encoder \*encoder:
         *undescribed*
 
 .. _`intel_dvo_get_current_mode.description`:

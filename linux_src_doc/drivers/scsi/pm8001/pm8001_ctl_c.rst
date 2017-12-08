@@ -51,6 +51,56 @@ Description
 
 A sysfs 'read-only' shost attribute.
 
+.. _`pm8001_ctl_ila_version_show`:
+
+pm8001_ctl_ila_version_show
+===========================
+
+.. c:function:: ssize_t pm8001_ctl_ila_version_show(struct device *cdev, struct device_attribute *attr, char *buf)
+
+    ila version
+
+    :param struct device \*cdev:
+        pointer to embedded class device
+
+    :param struct device_attribute \*attr:
+        *undescribed*
+
+    :param char \*buf:
+        the buffer returned
+
+.. _`pm8001_ctl_ila_version_show.description`:
+
+Description
+-----------
+
+A sysfs 'read-only' shost attribute.
+
+.. _`pm8001_ctl_inactive_fw_version_show`:
+
+pm8001_ctl_inactive_fw_version_show
+===================================
+
+.. c:function:: ssize_t pm8001_ctl_inactive_fw_version_show(struct device *cdev, struct device_attribute *attr, char *buf)
+
+    Inacative firmware version number
+
+    :param struct device \*cdev:
+        pointer to embedded class device
+
+    :param struct device_attribute \*attr:
+        *undescribed*
+
+    :param char \*buf:
+        the buffer returned
+
+.. _`pm8001_ctl_inactive_fw_version_show.description`:
+
+Description
+-----------
+
+A sysfs 'read-only' shost attribute.
+
 .. _`pm8001_ctl_max_out_io_show`:
 
 pm8001_ctl_max_out_io_show

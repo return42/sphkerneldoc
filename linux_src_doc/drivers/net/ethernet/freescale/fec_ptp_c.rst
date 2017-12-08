@@ -199,9 +199,12 @@ fec_time_keep
 fec_ptp_init
 ============
 
-.. c:function:: void fec_ptp_init(struct platform_device *pdev)
+.. c:function:: void fec_ptp_init(struct platform_device *pdev, int irq_idx)
 
     :param struct platform_device \*pdev:
+        *undescribed*
+
+    :param int irq_idx:
         *undescribed*
 
 .. _`fec_ptp_init.description`:
@@ -212,23 +215,6 @@ Description
 This function performs the required steps for enabling ptp
 support. If ptp support has already been loaded it simply calls the
 cyclecounter init routine and exits.
-
-.. _`fec_ptp_check_pps_event`:
-
-fec_ptp_check_pps_event
-=======================
-
-.. c:function:: uint fec_ptp_check_pps_event(struct fec_enet_private *fep)
-
-    :param struct fec_enet_private \*fep:
-        the fec_enet_private structure handle
-
-.. _`fec_ptp_check_pps_event.description`:
-
-Description
------------
-
-This function check the pps event and reload the timer compare counter.
 
 .. This file was automatic generated / don't edit.
 

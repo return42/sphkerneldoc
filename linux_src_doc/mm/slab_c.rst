@@ -30,7 +30,7 @@ kmem_cache_node ->list_lock is not held/needed.
 calculate_slab_order
 ====================
 
-.. c:function:: size_t calculate_slab_order(struct kmem_cache *cachep, size_t size, unsigned long flags)
+.. c:function:: size_t calculate_slab_order(struct kmem_cache *cachep, size_t size, slab_flags_t flags)
 
     calculate size (page order) of slabs
 
@@ -40,7 +40,7 @@ calculate_slab_order
     :param size_t size:
         size of objects to be created in this cache.
 
-    :param unsigned long flags:
+    :param slab_flags_t flags:
         slab allocation flags
 
 .. _`calculate_slab_order.description`:
@@ -59,14 +59,14 @@ towards high-order requests, this should be changed.
 __kmem_cache_create
 ===================
 
-.. c:function:: int __kmem_cache_create(struct kmem_cache *cachep, unsigned long flags)
+.. c:function:: int __kmem_cache_create(struct kmem_cache *cachep, slab_flags_t flags)
 
     Create a cache.
 
     :param struct kmem_cache \*cachep:
         cache management descriptor
 
-    :param unsigned long flags:
+    :param slab_flags_t flags:
         SLAB flags
 
 .. _`__kmem_cache_create.description`:

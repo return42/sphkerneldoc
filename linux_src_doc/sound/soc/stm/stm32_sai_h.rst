@@ -47,10 +47,13 @@ Definition
 
     struct stm32_sai_data {
         struct platform_device *pdev;
+        void __iomem *base;
+        struct clk *pclk;
         struct clk *clk_x8k;
         struct clk *clk_x11k;
         struct stm32_sai_conf *conf;
         int irq;
+        int (*set_sync)(struct stm32_sai_data *sai, struct device_node *np_provider, int synco, int synci);
     }
 
 .. _`stm32_sai_data.members`:
@@ -60,6 +63,12 @@ Members
 
 pdev
     device data pointer
+
+base
+    common register bank virtual base address
+
+pclk
+    SAI bus clock
 
 clk_x8k
     SAI parent clock for sampling frequencies multiple of 8kHz
@@ -72,6 +81,9 @@ conf
 
 irq
     SAI interrupt line
+
+set_sync
+    pointer to synchro mode configuration callback
 
 .. This file was automatic generated / don't edit.
 

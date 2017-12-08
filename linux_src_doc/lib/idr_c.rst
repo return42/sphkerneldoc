@@ -126,8 +126,8 @@ the one being replaced!).
 Return
 ------
 
-0 on success.  \ ``-ENOENT``\  indicates that \ ``id``\  was not found.
-\ ``-EINVAL``\  indicates that \ ``id``\  or \ ``ptr``\  were not valid.
+the old value on success.  \ ``-ENOENT``\  indicates that \ ``id``\  was not
+found.  \ ``-EINVAL``\  indicates that \ ``id``\  or \ ``ptr``\  were not valid.
 
 .. _`ida-description`:
 

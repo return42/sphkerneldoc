@@ -18,7 +18,6 @@ Definition
 .. code-block:: c
 
     struct ufs_qcom_phy_specific_ops {
-        int (*calibrate_phy)(struct ufs_qcom_phy *phy, bool is_rate_B);
         void (*start_serdes)(struct ufs_qcom_phy *phy);
         int (*is_physical_coding_sublayer_ready)(struct ufs_qcom_phy *phy);
         void (*set_tx_lane_enable)(struct ufs_qcom_phy *phy, u32 val);
@@ -29,9 +28,6 @@ Definition
 
 Members
 -------
-
-calibrate_phy
-    pointer to a function that calibrate the phy
 
 start_serdes
     pointer to a function that starts the serdes

@@ -558,11 +558,11 @@ by the given qh.
 dwc2_unreserve_timer_fn
 =======================
 
-.. c:function:: void dwc2_unreserve_timer_fn(unsigned long data)
+.. c:function:: void dwc2_unreserve_timer_fn(struct timer_list *t)
 
     Timer function to release periodic reservation
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`dwc2_unreserve_timer_fn.description`:

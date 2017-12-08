@@ -60,12 +60,15 @@ Fetch the DMA Bus-Master-I/O-Base-Address (BMIBA) from PCI space.
 ide_pci_enable
 ==============
 
-.. c:function:: int ide_pci_enable(struct pci_dev *dev, const struct ide_port_info *d)
+.. c:function:: int ide_pci_enable(struct pci_dev *dev, int bars, const struct ide_port_info *d)
 
     do PCI enables
 
     :param struct pci_dev \*dev:
         PCI device
+
+    :param int bars:
+        PCI BARs mask
 
     :param const struct ide_port_info \*d:
         IDE port info
@@ -192,12 +195,15 @@ state
 ide_setup_pci_controller
 ========================
 
-.. c:function:: int ide_setup_pci_controller(struct pci_dev *dev, const struct ide_port_info *d, int noisy)
+.. c:function:: int ide_setup_pci_controller(struct pci_dev *dev, int bars, const struct ide_port_info *d, int noisy)
 
     set up IDE PCI
 
     :param struct pci_dev \*dev:
         PCI device
+
+    :param int bars:
+        PCI BARs mask
 
     :param const struct ide_port_info \*d:
         IDE port info

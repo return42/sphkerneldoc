@@ -25,8 +25,11 @@ Definition
         void __iomem *pregs;
         void __iomem *sregs;
         size_t nregions;
+        size_t pr_num;
         bool writeable;
-        bool swseq;
+        bool locked;
+        bool swseq_reg;
+        bool swseq_erase;
         bool erase_64k;
         u8 opcodes[8];
         u8 preopcodes[2];
@@ -58,11 +61,20 @@ sregs
 nregions
     Maximum number of regions
 
+pr_num
+    Maximum number of protected range registers
+
 writeable
     Is the chip writeable
 
-swseq
+locked
+    Is SPI setting locked
+
+swseq_reg
     Use SW sequencer in register reads/writes
+
+swseq_erase
+    Use SW sequencer in erase operation
 
 erase_64k
     64k erase supported

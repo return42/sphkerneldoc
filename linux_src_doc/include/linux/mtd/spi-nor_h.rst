@@ -21,6 +21,7 @@ Definition
         struct mtd_info mtd;
         struct mutex lock;
         struct device *dev;
+        const struct flash_info *info;
         u32 page_size;
         u8 addr_width;
         u8 erase_opcode;
@@ -43,6 +44,7 @@ Definition
         int (*flash_lock)(struct spi_nor *nor, loff_t ofs, uint64_t len);
         int (*flash_unlock)(struct spi_nor *nor, loff_t ofs, uint64_t len);
         int (*flash_is_locked)(struct spi_nor *nor, loff_t ofs, uint64_t len);
+        int (*quad_enable)(struct spi_nor *nor);
         void *priv;
     }
 
@@ -59,6 +61,9 @@ lock
 
 dev
     point to a spi device, or a spi nor controller device.
+
+info
+    spi-nor part JDEC MFR id and other info
 
 page_size
     the page size of the SPI NOR
@@ -130,6 +135,9 @@ flash_unlock
 
 flash_is_locked
     [FLASH-SPECIFIC] check if a region of the SPI NOR is
+
+quad_enable
+    [FLASH-SPECIFIC] enables SPI NOR quad mode
     completely locked
 
 priv

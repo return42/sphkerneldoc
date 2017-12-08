@@ -93,6 +93,40 @@ Description
 Walks over free (memory && !reserved) areas of memblock.  Available as
 soon as memblock is initialized.
 
+.. _`for_each_resv_unavail_range`:
+
+for_each_resv_unavail_range
+===========================
+
+.. c:function::  for_each_resv_unavail_range( i,  p_start,  p_end)
+
+    iterate through reserved and unavailable memory
+
+    :param  i:
+        u64 used as loop variable
+
+    :param  p_start:
+        ptr to phys_addr_t for start address of the range, can be \ ``NULL``\ 
+
+    :param  p_end:
+        ptr to phys_addr_t for end address of the range, can be \ ``NULL``\ 
+
+.. _`for_each_resv_unavail_range.description`:
+
+Description
+-----------
+
+Walks over unavailable but reserved (reserved && !memory) areas of memblock.
+Available as soon as memblock is initialized.
+
+.. _`for_each_resv_unavail_range.note`:
+
+Note
+----
+
+because this memory does not belong to any physical node, flags and
+nid arguments do not make sense and thus not exported as arguments.
+
 .. _`memblock_set_current_limit`:
 
 memblock_set_current_limit

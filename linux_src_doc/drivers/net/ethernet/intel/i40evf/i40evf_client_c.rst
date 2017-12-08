@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40evf/i40evf_client.c
 
+.. _`i40evf_client_get_params`:
+
+i40evf_client_get_params
+========================
+
+.. c:function:: void i40evf_client_get_params(struct i40e_vsi *vsi, struct i40e_params *params)
+
+    retrieve relevant client parameters
+
+    :param struct i40e_vsi \*vsi:
+        VSI with parameters
+
+    :param struct i40e_params \*params:
+        client param struct
+
 .. _`i40evf_notify_client_message`:
 
 i40evf_notify_client_message

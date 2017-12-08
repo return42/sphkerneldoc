@@ -22,6 +22,7 @@ Definition
         struct drm_modeset_lock *contended;
         struct list_head locked;
         bool trylock_only;
+        bool interruptible;
     }
 
 .. _`drm_modeset_acquire_ctx.members`:
@@ -40,6 +41,9 @@ locked
 
 trylock_only
     trylock mode used in atomic contexts/panic notifiers
+
+interruptible
+    whether interruptible locking should be used.
 
 .. _`drm_modeset_acquire_ctx.description`:
 

@@ -63,14 +63,14 @@ opa_get_lid_from_gid
 opa_is_extended_lid
 ===================
 
-.. c:function:: bool opa_is_extended_lid(u32 dlid, u32 slid)
+.. c:function:: bool opa_is_extended_lid(__be32 dlid, __be32 slid)
 
     Returns true if dlid or slid are extended.
 
-    :param u32 dlid:
+    :param __be32 dlid:
         The DLID
 
-    :param u32 slid:
+    :param __be32 slid:
         The SLID
 
 .. This file was automatic generated / don't edit.

@@ -81,7 +81,7 @@ free_iova
 alloc_iova_fast
 ===============
 
-.. c:function:: unsigned long alloc_iova_fast(struct iova_domain *iovad, unsigned long size, unsigned long limit_pfn)
+.. c:function:: unsigned long alloc_iova_fast(struct iova_domain *iovad, unsigned long size, unsigned long limit_pfn, bool flush_rcache)
 
     allocates an iova from rcache
 
@@ -93,8 +93,12 @@ alloc_iova_fast
 
     :param unsigned long limit_pfn:
         - max limit address
+
+    :param bool flush_rcache:
+        - set to flush rcache on regular allocation failure
         This function tries to satisfy an iova allocation from the rcache,
-        and falls back to regular allocation on failure.
+        and falls back to regular allocation on failure. If regular allocation
+        fails too and the flush_rcache flag is set then the rcache will be flushed.
 
 .. _`free_iova_fast`:
 

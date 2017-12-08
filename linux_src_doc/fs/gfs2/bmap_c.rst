@@ -147,7 +147,7 @@ metaptr1
 
 .. c:function:: __be64 *metaptr1(unsigned int height, const struct metapath *mp)
 
-    Return the first possible metadata pointer in a metaath buffer
+    Return the first possible metadata pointer in a metapath buffer
 
     :param unsigned int height:
         The metadata height (0 = dinode)
@@ -305,37 +305,28 @@ Return
 
 The length of the extent (minimum of one block)
 
-.. _`gfs2_bmap_alloc`:
+.. _`gfs2_iomap_alloc`:
 
-gfs2_bmap_alloc
-===============
+gfs2_iomap_alloc
+================
 
-.. c:function:: int gfs2_bmap_alloc(struct inode *inode, const sector_t lblock, struct buffer_head *bh_map, struct metapath *mp, const unsigned int sheight, const unsigned int height, const size_t maxlen)
+.. c:function:: int gfs2_iomap_alloc(struct inode *inode, struct iomap *iomap, unsigned flags, struct metapath *mp)
 
     Build a metadata tree of the requested height
 
     :param struct inode \*inode:
         The GFS2 inode
 
-    :param const sector_t lblock:
-        The logical starting block of the extent
+    :param struct iomap \*iomap:
+        *undescribed*
 
-    :param struct buffer_head \*bh_map:
-        This is used to return the mapping details
+    :param unsigned flags:
+        *undescribed*
 
     :param struct metapath \*mp:
-        The metapath
+        The metapath, with proper height information calculated
 
-    :param const unsigned int sheight:
-        The starting height (i.e. whats already mapped)
-
-    :param const unsigned int height:
-        The height to build to
-
-    :param const size_t maxlen:
-        The max number of data blocks to alloc
-
-.. _`gfs2_bmap_alloc.in-this-routine-we-may-have-to-alloc`:
+.. _`gfs2_iomap_alloc.in-this-routine-we-may-have-to-alloc`:
 
 In this routine we may have to alloc
 ------------------------------------
@@ -350,12 +341,68 @@ allocation asking for an extent at a time (if enough contiguous free
 blocks are available, there will only be one request per bmap call)
 and uses the state machine to initialise the blocks in order.
 
-.. _`gfs2_bmap_alloc.return`:
+.. _`gfs2_iomap_alloc.return`:
 
 Return
 ------
 
 errno on error
+
+.. _`hole_size`:
+
+hole_size
+=========
+
+.. c:function:: u64 hole_size(struct inode *inode, sector_t lblock, struct metapath *mp)
+
+    figure out the size of a hole
+
+    :param struct inode \*inode:
+        The inode
+
+    :param sector_t lblock:
+        The logical starting block number
+
+    :param struct metapath \*mp:
+        The metapath
+
+.. _`hole_size.return`:
+
+Return
+------
+
+The hole size in bytes
+
+.. _`gfs2_iomap_begin`:
+
+gfs2_iomap_begin
+================
+
+.. c:function:: int gfs2_iomap_begin(struct inode *inode, loff_t pos, loff_t length, unsigned flags, struct iomap *iomap)
+
+    Map blocks from an inode to disk blocks
+
+    :param struct inode \*inode:
+        The inode
+
+    :param loff_t pos:
+        Starting position in bytes
+
+    :param loff_t length:
+        Length to map, in bytes
+
+    :param unsigned flags:
+        iomap flags
+
+    :param struct iomap \*iomap:
+        The iomap structure
+
+.. _`gfs2_iomap_begin.return`:
+
+Return
+------
+
+errno
 
 .. _`gfs2_block_map`:
 

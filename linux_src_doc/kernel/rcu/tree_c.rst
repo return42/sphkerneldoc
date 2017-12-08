@@ -27,6 +27,9 @@ We crowbar the ->dynticks_nesting field to zero to allow for
 the possibility of usermode upcalls having messed up our count
 of interrupt nesting level during the prior busy period.
 
+If you add or remove a call to \ :c:func:`rcu_idle_enter`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_user_enter`:
 
 rcu_user_enter
@@ -48,6 +51,9 @@ Enter RCU idle mode right before resuming userspace.  No use of RCU
 is permitted between this call and \ :c:func:`rcu_user_exit`\ . This way the
 CPU doesn't need to maintain the tick for RCU maintenance purposes
 when the CPU runs in userspace.
+
+If you add or remove a call to \ :c:func:`rcu_user_enter`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
 
 .. _`rcu_irq_exit`:
 
@@ -79,6 +85,9 @@ Use things like work queues to work around this limitation.
 
 You have been warned.
 
+If you add or remove a call to \ :c:func:`rcu_irq_exit`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_idle_exit`:
 
 rcu_idle_exit
@@ -104,6 +113,9 @@ allow for the possibility of usermode upcalls messing up our count
 of interrupt nesting level during the busy period that is just
 now starting.
 
+If you add or remove a call to \ :c:func:`rcu_idle_exit`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_user_exit`:
 
 rcu_user_exit
@@ -123,6 +135,9 @@ Description
 
 Exit RCU idle mode while entering the kernel because it can
 run a RCU read side critical section anytime.
+
+If you add or remove a call to \ :c:func:`rcu_user_exit`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
 
 .. _`rcu_irq_enter`:
 
@@ -157,6 +172,9 @@ Use things like work queues to work around this limitation.
 
 You have been warned.
 
+If you add or remove a call to \ :c:func:`rcu_irq_enter`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_nmi_enter`:
 
 rcu_nmi_enter
@@ -180,6 +198,9 @@ that the CPU is active.  This implementation permits nested NMIs, as
 long as the nesting level does not overflow an int.  (You will probably
 run out of stack space first.)
 
+If you add or remove a call to \ :c:func:`rcu_nmi_enter`\ , be sure to test
+with CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_nmi_exit`:
 
 rcu_nmi_exit
@@ -201,6 +222,9 @@ If we are returning from the outermost NMI handler that interrupted an
 RCU-idle period, update rdtp->dynticks and rdtp->dynticks_nmi_nesting
 to let the RCU grace-period handling know that the CPU is back to
 being RCU-idle.
+
+If you add or remove a call to \ :c:func:`rcu_nmi_exit`\ , be sure to test
+with CONFIG_RCU_EQS_DEBUG=y.
 
 .. _`rcu_is_watching`:
 
@@ -293,9 +317,10 @@ period elapses, in other words after all currently executing RCU
 read-side critical sections have completed. \ :c:func:`call_rcu_sched`\  assumes
 that the read-side critical sections end on enabling of preemption
 or on voluntary preemption.
-RCU read-side critical sections are delimited by :
- - \ :c:func:`rcu_read_lock_sched`\  and \ :c:func:`rcu_read_unlock_sched`\ , OR
- - anything that disables preemption.
+RCU read-side critical sections are delimited by:
+
+- \ :c:func:`rcu_read_lock_sched`\  and \ :c:func:`rcu_read_unlock_sched`\ , OR
+- anything that disables preemption.
 
  These may be nested.
 
@@ -329,11 +354,12 @@ that the read-side critical sections end on completion of a softirq
 handler. This means that read-side critical sections in process
 context must not be interrupted by softirqs. This interface is to be
 used when most of the read-side critical sections are in softirq context.
-RCU read-side critical sections are delimited by :
- - \ :c:func:`rcu_read_lock`\  and  \ :c:func:`rcu_read_unlock`\ , if in interrupt context.
- OR
- - \ :c:func:`rcu_read_lock_bh`\  and \ :c:func:`rcu_read_unlock_bh`\ , if in process context.
- These may be nested.
+RCU read-side critical sections are delimited by:
+
+- \ :c:func:`rcu_read_lock`\  and  \ :c:func:`rcu_read_unlock`\ , if in interrupt context, OR
+- \ :c:func:`rcu_read_lock_bh`\  and \ :c:func:`rcu_read_unlock_bh`\ , if in process context.
+
+These may be nested.
 
 See the description of \ :c:func:`call_rcu`\  for more detailed information on
 memory ordering guarantees.

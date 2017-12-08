@@ -18,7 +18,7 @@ Description
 
 Takes care of the handoff between the Pre-OS (i.e. BIOS) and the OS.
 It signals to the BIOS that the OS wants control of the host controller,
-and then waits 5 seconds for the BIOS to hand over control.
+and then waits 1 second for the BIOS to hand over control.
 If we timeout, assume the BIOS is broken and take control anyway.
 
 .. This file was automatic generated / don't edit.

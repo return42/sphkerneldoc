@@ -310,7 +310,7 @@ Description
 Return the value of the specified RCU-protected pointer, but omit
 both the \ :c:func:`smp_read_barrier_depends`\  and the \ :c:func:`READ_ONCE`\ .  This
 is useful in cases where update-side locks prevent the value of the
-pointer from changing.  Please note that this primitive does -not-
+pointer from changing.  Please note that this primitive does *not*
 prevent the compiler from repeating this reference or combining it
 with other references, so it should not be used without protection
 of appropriate locks.
@@ -397,7 +397,7 @@ This is simply an identity function, but it documents where a pointer
 is handed off from RCU to some other synchronization mechanism, for
 example, reference counting or locking.  In C11, it would map to
 \ :c:func:`kill_dependency`\ .  It could be used as follows:
-
+``
      \ :c:func:`rcu_read_lock`\ ;
      p = rcu_dereference(gp);
      long_lived = is_long_lived(p);
@@ -408,6 +408,7 @@ example, reference counting or locking.  In C11, it would map to
                      p = rcu_pointer_handoff(p);
      }
      \ :c:func:`rcu_read_unlock`\ ;
+``
 
 .. _`rcu_read_lock`:
 
@@ -581,10 +582,10 @@ RCU_INIT_POINTER
     initialize an RCU protected pointer
 
     :param  p:
-        *undescribed*
+        The pointer to be initialized.
 
     :param  v:
-        *undescribed*
+        The value to initialized the pointer to.
 
 .. _`rcu_init_pointer.description`:
 
@@ -600,13 +601,14 @@ special cases are
 -----------------
 
 
-1.   This use of \ :c:func:`RCU_INIT_POINTER`\  is NULLing out the pointer -or-
+1.   This use of \ :c:func:`RCU_INIT_POINTER`\  is NULLing out the pointer *or*
 2.   The caller has taken whatever steps are required to prevent
-     RCU readers from concurrently accessing this pointer -or-
+     RCU readers from concurrently accessing this pointer *or*
 3.   The referenced data structure has already been exposed to
-     readers either at compile time or via \ :c:func:`rcu_assign_pointer`\  -and-
-     a.      You have not made -any- reader-visible changes to
-             this structure since then -or-
+     readers either at compile time or via \ :c:func:`rcu_assign_pointer`\  *and*
+
+     a.      You have not made *any* reader-visible changes to
+             this structure since then *or*
      b.      It is OK for readers accessing this structure from its
              new location to see the old state of the structure.  (For
              example, the changes were to statistical counters or to
@@ -622,7 +624,7 @@ If you are creating an RCU-protected linked structure that is accessed
 by a single external-to-structure RCU-protected pointer, then you may
 use \ :c:func:`RCU_INIT_POINTER`\  to initialize the internal RCU-protected
 pointers, but you must use \ :c:func:`rcu_assign_pointer`\  to initialize the
-external-to-structure pointer -after- you have completely initialized
+external-to-structure pointer *after* you have completely initialized
 the reader-accessible portions of the linked structure.
 
 Note that unlike \ :c:func:`rcu_assign_pointer`\ , \ :c:func:`RCU_INIT_POINTER`\  provides no
@@ -638,10 +640,10 @@ RCU_POINTER_INITIALIZER
     statically initialize an RCU protected pointer
 
     :param  p:
-        *undescribed*
+        The pointer to be initialized.
 
     :param  v:
-        *undescribed*
+        The value to initialized the pointer to.
 
 .. _`rcu_pointer_initializer.description`:
 

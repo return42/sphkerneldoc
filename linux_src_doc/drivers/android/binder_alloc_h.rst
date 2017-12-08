@@ -138,7 +138,6 @@ Definition
 
     struct binder_alloc {
         struct mutex mutex;
-        struct task_struct *tsk;
         struct vm_area_struct *vma;
         struct mm_struct *vma_vm_mm;
         void *buffer;
@@ -160,10 +159,6 @@ Members
 
 mutex
     *undescribed*
-
-tsk
-    tid for task that called init for this proc
-    (invariant after init)
 
 vma
     vm_area_struct passed to mmap_handler

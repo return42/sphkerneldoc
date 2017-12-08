@@ -930,6 +930,34 @@ Description
 The address handle is used to reference a local or global destination
 in all UD QP post sends.
 
+.. _`rdma_create_user_ah`:
+
+rdma_create_user_ah
+===================
+
+.. c:function:: struct ib_ah *rdma_create_user_ah(struct ib_pd *pd, struct rdma_ah_attr *ah_attr, struct ib_udata *udata)
+
+    Creates an address handle for the given address vector. It resolves destination mac address for ah attribute of RoCE type.
+
+    :param struct ib_pd \*pd:
+        The protection domain associated with the address handle.
+
+    :param struct rdma_ah_attr \*ah_attr:
+        The attributes of the address vector.
+
+    :param struct ib_udata \*udata:
+        pointer to user's input output buffer information need by
+        provider driver.
+
+.. _`rdma_create_user_ah.description`:
+
+Description
+-----------
+
+It returns 0 on success and returns appropriate error code on error.
+The address handle is used to reference a local or global destination
+in all UD QP post sends.
+
 .. _`ib_get_gids_from_rdma_hdr`:
 
 ib_get_gids_from_rdma_hdr
@@ -1414,12 +1442,12 @@ Description
 
 Users can examine the cq structure to determine the actual CQ size.
 
-.. _`ib_modify_cq`:
+.. _`rdma_set_cq_moderation`:
 
-ib_modify_cq
-============
+rdma_set_cq_moderation
+======================
 
-.. c:function:: int ib_modify_cq(struct ib_cq *cq, u16 cq_count, u16 cq_period)
+.. c:function:: int rdma_set_cq_moderation(struct ib_cq *cq, u16 cq_count, u16 cq_period)
 
     Modifies moderation params of the CQ
 

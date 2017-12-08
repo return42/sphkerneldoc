@@ -32,6 +32,7 @@ amdgpu
     amdgpu_ring_c
     amdgpu_sa_c
     amdgpu_sync_c
+    amdgpu_ttm_c
     amdgpu_uvd_c
     amdgpu_vce_c
     amdgpu_virt_c
@@ -62,6 +63,7 @@ amdgpu
     sdma_v4_0_c
     si_dma_c
     si_dpm_c
+    si_ih_c
     tonga_ih_c
     uvd_v4_2_c
     uvd_v5_0_c

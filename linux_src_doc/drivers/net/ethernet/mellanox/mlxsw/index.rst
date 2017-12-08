@@ -8,3 +8,4 @@ mlxsw
     :maxdepth: 1
 
     i2c_c
+    spectrum_router_c

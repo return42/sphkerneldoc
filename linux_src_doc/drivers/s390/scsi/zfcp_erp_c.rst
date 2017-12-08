@@ -186,12 +186,12 @@ zfcp_erp_notify
 zfcp_erp_timeout_handler
 ========================
 
-.. c:function:: void zfcp_erp_timeout_handler(unsigned long data)
+.. c:function:: void zfcp_erp_timeout_handler(struct timer_list *t)
 
     Trigger ERP action from timed out ERP request
 
-    :param unsigned long data:
-        ERP action (from timer data)
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`zfcp_erp_try_rport_unblock`:
 

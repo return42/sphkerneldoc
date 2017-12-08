@@ -660,7 +660,9 @@ Description
 -----------
 
 Allocate percpu area of \ ``size``\  bytes aligned at \ ``align``\ .  If \ ``gfp``\  doesn't
-contain \ ``GFP_KERNEL``\ , the allocation is atomic.
+contain \ ``GFP_KERNEL``\ , the allocation is atomic. If \ ``gfp``\  has \__GFP_NOWARN
+then no warning will be triggered on invalid or failed allocation
+requests.
 
 .. _`pcpu_alloc.return`:
 
@@ -694,7 +696,9 @@ Description
 
 Allocate zero-filled percpu area of \ ``size``\  bytes aligned at \ ``align``\ .  If
 \ ``gfp``\  doesn't contain \ ``GFP_KERNEL``\ , the allocation doesn't block and can
-be called from any context but is a lot more likely to fail.
+be called from any context but is a lot more likely to fail. If \ ``gfp``\ 
+has \__GFP_NOWARN then no warning will be triggered on invalid or failed
+allocation requests.
 
 .. _`__alloc_percpu_gfp.return`:
 

@@ -221,6 +221,7 @@ Definition
 
     enum iwl_mvm_agg_state {
         IWL_AGG_OFF,
+        IWL_AGG_QUEUED,
         IWL_AGG_STARTING,
         IWL_AGG_ON,
         IWL_EMPTYING_HW_QUEUE_ADDBA,
@@ -234,6 +235,9 @@ Constants
 
 IWL_AGG_OFF
     aggregation is not used
+
+IWL_AGG_QUEUED
+    aggregation start work has been queued
 
 IWL_AGG_STARTING
     aggregation are starting (between start and oper)

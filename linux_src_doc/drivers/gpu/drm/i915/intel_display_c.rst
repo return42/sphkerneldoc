@@ -19,27 +19,6 @@ intel_PLL_is_valid
     :param const struct dpll \*clock:
         *undescribed*
 
-.. _`i9xx_disable_pll`:
-
-i9xx_disable_pll
-================
-
-.. c:function:: void i9xx_disable_pll(struct intel_crtc *crtc)
-
-    disable a PLL
-
-    :param struct intel_crtc \*crtc:
-        *undescribed*
-
-.. _`i9xx_disable_pll.description`:
-
-Description
------------
-
-Disable the PLL for \ ``pipe``\ , making sure the pipe is off first.
-
-Note!  This is for pre-ILK only.
-
 .. _`intel_enable_pipe`:
 
 intel_enable_pipe

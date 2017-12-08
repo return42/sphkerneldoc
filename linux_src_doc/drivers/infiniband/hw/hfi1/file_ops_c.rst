@@ -78,12 +78,89 @@ Return
 errno  EINVAL (incorrect parameters)
 EBUSY (all sub contexts in use)
 
+.. _`user_exp_rcv_setup`:
+
+user_exp_rcv_setup
+==================
+
+.. c:function:: int user_exp_rcv_setup(struct hfi1_filedata *fd, unsigned long arg, u32 len)
+
+    Set up the given tid rcv list
+
+    :param struct hfi1_filedata \*fd:
+        file data of the current driver instance
+
+    :param unsigned long arg:
+        ioctl argumnent for user space information
+
+    :param u32 len:
+        length of data structure associated with ioctl command
+
+.. _`user_exp_rcv_setup.description`:
+
+Description
+-----------
+
+Wrapper to validate ioctl information before doing \_rcv_setup.
+
+.. _`user_exp_rcv_clear`:
+
+user_exp_rcv_clear
+==================
+
+.. c:function:: int user_exp_rcv_clear(struct hfi1_filedata *fd, unsigned long arg, u32 len)
+
+    Clear the given tid rcv list
+
+    :param struct hfi1_filedata \*fd:
+        file data of the current driver instance
+
+    :param unsigned long arg:
+        ioctl argumnent for user space information
+
+    :param u32 len:
+        length of data structure associated with ioctl command
+
+.. _`user_exp_rcv_clear.description`:
+
+Description
+-----------
+
+The \ :c:func:`hfi1_user_exp_rcv_clear`\  can be called from the error path.  Because
+of this, we need to use this wrapper to copy the user space information
+before doing the clear.
+
+.. _`user_exp_rcv_invalid`:
+
+user_exp_rcv_invalid
+====================
+
+.. c:function:: int user_exp_rcv_invalid(struct hfi1_filedata *fd, unsigned long arg, u32 len)
+
+    Invalidate the given tid rcv list
+
+    :param struct hfi1_filedata \*fd:
+        file data of the current driver instance
+
+    :param unsigned long arg:
+        ioctl argumnent for user space information
+
+    :param u32 len:
+        length of data structure associated with ioctl command
+
+.. _`user_exp_rcv_invalid.description`:
+
+Description
+-----------
+
+Wrapper to validate ioctl information before doing \_rcv_invalid.
+
 .. _`manage_rcvq`:
 
 manage_rcvq
 ===========
 
-.. c:function:: int manage_rcvq(struct hfi1_ctxtdata *uctxt, u16 subctxt, int start_stop)
+.. c:function:: int manage_rcvq(struct hfi1_ctxtdata *uctxt, u16 subctxt, unsigned long arg)
 
     manage a context's receive queue
 
@@ -93,8 +170,8 @@ manage_rcvq
     :param u16 subctxt:
         the sub-context
 
-    :param int start_stop:
-        action to carry out
+    :param unsigned long arg:
+        *undescribed*
 
 .. _`manage_rcvq.description`:
 
@@ -104,6 +181,18 @@ Description
 start_stop == 0 disables receive on the context, for use in queue
 overflow conditions.  start_stop==1 re-enables, to be used to
 re-init the software copy of the head register
+
+.. _`ctxt_reset`:
+
+ctxt_reset
+==========
+
+.. c:function:: int ctxt_reset(struct hfi1_ctxtdata *uctxt)
+
+    Reset the user context
+
+    :param struct hfi1_ctxtdata \*uctxt:
+        valid user context
 
 .. This file was automatic generated / don't edit.
 

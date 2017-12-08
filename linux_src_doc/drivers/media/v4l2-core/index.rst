@@ -11,7 +11,6 @@ v4l2-core
     v4l2-compat-ioctl32_c
     v4l2-dev_c
     v4l2-dv-timings_c
-    v4l2-fwnode_c
     v4l2-mem2mem_c
     videobuf-core_c
     videobuf-dma-contig_c

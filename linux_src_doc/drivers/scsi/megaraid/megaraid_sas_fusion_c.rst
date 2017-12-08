@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/megaraid/megaraid_sas_fusion.c
 
+.. _`megasas_check_same_4gb_region`:
+
+megasas_check_same_4gb_region
+=============================
+
+.. c:function:: bool megasas_check_same_4gb_region(struct megasas_instance *instance, dma_addr_t start_addr, size_t size)
+
+    check if allocation crosses same 4GB boundary or not \ ``instance``\  -                          adapter's soft instance start_addr -                 start address of DMA allocation size -                               size of allocation in bytes return -                             true : allocation does not cross same 4GB boundary false: allocation crosses same 4GB boundary
+
+    :param struct megasas_instance \*instance:
+        *undescribed*
+
+    :param dma_addr_t start_addr:
+        *undescribed*
+
+    :param size_t size:
+        *undescribed*
+
 .. _`megasas_enable_intr_fusion`:
 
 megasas_enable_intr_fusion
@@ -252,6 +270,30 @@ Return
 
 if success: return 0
 failed:  return -ENOMEM
+
+.. _`megasas_configure_queue_sizes`:
+
+megasas_configure_queue_sizes
+=============================
+
+.. c:function:: void megasas_configure_queue_sizes(struct megasas_instance *instance)
+
+    Calculate size of request desc queue, reply desc queue, IO request frame queue, set can_queue.
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+.. _`megasas_free_ioc_init_cmd`:
+
+megasas_free_ioc_init_cmd
+=========================
+
+.. c:function:: void megasas_free_ioc_init_cmd(struct megasas_instance *instance)
+
+    Free IOC INIT command frame
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
 
 .. _`megasas_init_adapter_fusion`:
 

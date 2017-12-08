@@ -1,143 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/arm/mach-omap2/omap_hwmod.h
 
-.. _`omap_hwmod_mux_info`:
-
-struct omap_hwmod_mux_info
-==========================
-
-.. c:type:: struct omap_hwmod_mux_info
-
-    hwmod specific mux configuration
-
-.. _`omap_hwmod_mux_info.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_hwmod_mux_info {
-        int nr_pads;
-        struct omap_device_pad *pads;
-        int nr_pads_dynamic;
-        struct omap_device_pad **pads_dynamic;
-        int *irqs;
-        bool enabled;
-    }
-
-.. _`omap_hwmod_mux_info.members`:
-
-Members
--------
-
-nr_pads
-    number of omap_device_pad entries
-
-pads
-    array of omap_device_pad entries
-
-nr_pads_dynamic
-    *undescribed*
-
-pads_dynamic
-    *undescribed*
-
-irqs
-    *undescribed*
-
-enabled
-    *undescribed*
-
-.. _`omap_hwmod_mux_info.description`:
-
-Description
------------
-
-Note that this is currently built during init as needed.
-
-.. _`omap_hwmod_irq_info`:
-
-struct omap_hwmod_irq_info
-==========================
-
-.. c:type:: struct omap_hwmod_irq_info
-
-    MPU IRQs used by the hwmod
-
-.. _`omap_hwmod_irq_info.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_hwmod_irq_info {
-        const char *name;
-        s16 irq;
-    }
-
-.. _`omap_hwmod_irq_info.members`:
-
-Members
--------
-
-name
-    name of the IRQ channel (module local name)
-
-irq
-    IRQ channel ID (should be non-negative except -1 = terminator)
-
-.. _`omap_hwmod_irq_info.description`:
-
-Description
------------
-
-@name should be something short, e.g., "tx" or "rx".  It is for use
-by \ :c:func:`platform_get_resource_byname`\ .  It is defined locally to the
-hwmod.
-
-.. _`omap_hwmod_dma_info`:
-
-struct omap_hwmod_dma_info
-==========================
-
-.. c:type:: struct omap_hwmod_dma_info
-
-    DMA channels used by the hwmod
-
-.. _`omap_hwmod_dma_info.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_hwmod_dma_info {
-        const char *name;
-        s16 dma_req;
-    }
-
-.. _`omap_hwmod_dma_info.members`:
-
-Members
--------
-
-name
-    name of the DMA channel (module local name)
-
-dma_req
-    DMA request ID (should be non-negative except -1 = terminator)
-
-.. _`omap_hwmod_dma_info.description`:
-
-Description
------------
-
-@name should be something short, e.g., "tx" or "rx".  It is for use
-by \ :c:func:`platform_get_resource_byname`\ .  It is defined locally to the
-hwmod.
-
 .. _`omap_hwmod_rst_info`:
 
 struct omap_hwmod_rst_info
@@ -265,54 +128,6 @@ l4_prot_group
 
 flags
     (see omap_hwmod_omap2_firewall.flags macros above)
-
-.. _`omap_hwmod_addr_space`:
-
-struct omap_hwmod_addr_space
-============================
-
-.. c:type:: struct omap_hwmod_addr_space
-
-    address space handled by the hwmod
-
-.. _`omap_hwmod_addr_space.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_hwmod_addr_space {
-        const char *name;
-        u32 pa_start;
-        u32 pa_end;
-        u8 flags;
-    }
-
-.. _`omap_hwmod_addr_space.members`:
-
-Members
--------
-
-name
-    name of the address space
-
-pa_start
-    starting physical address
-
-pa_end
-    ending physical address
-
-flags
-    (see omap_hwmod_addr_space.flags macros above)
-
-.. _`omap_hwmod_addr_space.description`:
-
-Description
------------
-
-Address space doesn't necessarily follow physical interconnect
-structure.  GPMC is one example.
 
 .. _`omap_hwmod_ocp_if`:
 
@@ -743,9 +558,6 @@ Definition
         const char *name;
         struct omap_hwmod_class *class;
         struct omap_device *od;
-        struct omap_hwmod_mux_info *mux;
-        struct omap_hwmod_irq_info *mpu_irqs;
-        struct omap_hwmod_dma_info *sdma_reqs;
         struct omap_hwmod_rst_info *rst_lines;
         union {
             struct omap_hwmod_omap2_prcm omap2;
@@ -764,7 +576,6 @@ Definition
         struct lock_class_key hwmod_key;
         struct list_head node;
         struct omap_hwmod_ocp_if *_mpu_port;
-        unsigned int (*xlate_irq)(unsigned int);
         u32 flags;
         u8 mpu_rt_idx;
         u8 response_lat;
@@ -791,15 +602,6 @@ class
 
 od
     struct omap_device currently associated with this hwmod (internal use)
-
-mux
-    *undescribed*
-
-mpu_irqs
-    ptr to an array of MPU IRQs
-
-sdma_reqs
-    ptr to an array of System DMA request IDs
 
 rst_lines
     *undescribed*
@@ -845,9 +647,6 @@ node
 
 _mpu_port
     cached MPU register target slave (internal use)
-
-xlate_irq
-    *undescribed*
 
 flags
     hwmod flags (documented below)

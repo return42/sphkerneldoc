@@ -105,6 +105,33 @@ Description
 
 Returns 0 on success, or -EOPNOTSUPP.
 
+.. _`ap_qact`:
+
+ap_qact
+=======
+
+.. c:function:: struct ap_queue_status ap_qact(ap_qid_t qid, int ifbit, union ap_qact_ap_info *apinfo)
+
+    Query AP combatibility type.
+
+    :param ap_qid_t qid:
+        The AP queue number
+
+    :param int ifbit:
+        *undescribed*
+
+    :param union ap_qact_ap_info \*apinfo:
+        On input the info about the AP queue. On output the
+        alternate AP queue info provided by the qact function
+        in GR2 is stored in.
+
+.. _`ap_qact.description`:
+
+Description
+-----------
+
+Returns AP queue status. Check response_code field for failures.
+
 .. _`ap_nqap`:
 
 ap_nqap

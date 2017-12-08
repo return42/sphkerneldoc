@@ -90,7 +90,7 @@ Definition
 .. code-block:: c
 
     struct fwnode_operations {
-        void (*get)(struct fwnode_handle *fwnode);
+        struct fwnode_handle *(*get)(struct fwnode_handle *fwnode);
         void (*put)(struct fwnode_handle *fwnode);
         bool (*device_is_available)(const struct fwnode_handle *fwnode);
         bool (*property_present)(const struct fwnode_handle *fwnode, const char *propname);

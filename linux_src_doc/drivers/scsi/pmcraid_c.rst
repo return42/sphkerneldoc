@@ -326,14 +326,12 @@ pmcraid_start_bist
 pmcraid_reset_alert_done
 ========================
 
-.. c:function:: void pmcraid_reset_alert_done(struct pmcraid_cmd *cmd)
+.. c:function:: void pmcraid_reset_alert_done(struct timer_list *t)
 
     completion routine for reset_alert
 
-    :param struct pmcraid_cmd \*cmd:
-        pointer to command block used in reset sequence
-        Return value
-        None
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`pmcraid_notify_ioastate`:
 
@@ -365,12 +363,12 @@ is not accessible
 pmcraid_timeout_handler
 =======================
 
-.. c:function:: void pmcraid_timeout_handler(struct pmcraid_cmd *cmd)
+.. c:function:: void pmcraid_timeout_handler(struct timer_list *t)
 
     Timeout handler for internally generated ops
 
-    :param struct pmcraid_cmd \*cmd:
-        pointer to command structure, that got timedout
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`pmcraid_timeout_handler.description`:
 
@@ -488,7 +486,7 @@ None
 pmcraid_send_cmd
 ================
 
-.. c:function:: void pmcraid_send_cmd(struct pmcraid_cmd *cmd, void (*cmd_done)(struct pmcraid_cmd *), unsigned long timeout, void (*timeout_func)(struct pmcraid_cmd *))
+.. c:function:: void pmcraid_send_cmd(struct pmcraid_cmd *cmd, void (*cmd_done)(struct pmcraid_cmd *), unsigned long timeout, void (*timeout_func)(struct timer_list *))
 
     fires a command to IOA
 
@@ -501,7 +499,7 @@ pmcraid_send_cmd
     :param unsigned long timeout:
         timeout to wait for this command completion
 
-    :param void (\*timeout_func)(struct pmcraid_cmd \*):
+    :param void (\*timeout_func)(struct timer_list \*):
         timeout handler
 
 .. _`pmcraid_send_cmd.description`:

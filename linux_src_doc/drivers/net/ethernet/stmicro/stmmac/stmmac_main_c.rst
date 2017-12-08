@@ -180,12 +180,12 @@ LPI state is true. This is called by the xmit.
 stmmac_eee_ctrl_timer
 =====================
 
-.. c:function:: void stmmac_eee_ctrl_timer(unsigned long arg)
+.. c:function:: void stmmac_eee_ctrl_timer(struct timer_list *t)
 
     EEE TX SW timer.
 
-    :param unsigned long arg:
-        data hook
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`stmmac_eee_ctrl_timer.description`:
 
@@ -1065,12 +1065,12 @@ in case of these are not passed a default is kept for the MAC or GMAC.
 stmmac_tx_timer
 ===============
 
-.. c:function:: void stmmac_tx_timer(unsigned long data)
+.. c:function:: void stmmac_tx_timer(struct timer_list *t)
 
     mitigation sw timer for tx.
 
-    :param unsigned long data:
-        data pointer
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`stmmac_tx_timer.description`:
 

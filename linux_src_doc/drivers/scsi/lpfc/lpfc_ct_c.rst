@@ -197,11 +197,11 @@ Builds and sends a FDMI command using the CT subsystem.
 lpfc_delayed_disc_tmo
 =====================
 
-.. c:function:: void lpfc_delayed_disc_tmo(unsigned long ptr)
+.. c:function:: void lpfc_delayed_disc_tmo(struct timer_list *t)
 
     Timeout handler for delayed discovery timer. \ ``ptr``\  - Context object of the timer.
 
-    :param unsigned long ptr:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`lpfc_delayed_disc_tmo.description`:

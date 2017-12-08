@@ -19,6 +19,8 @@ Definition
 
     struct nfp_insn_meta {
         struct bpf_insn insn;
+        struct bpf_reg_state ptr;
+        bool ptr_not_const;
         unsigned int off;
         unsigned short n;
         bool skip;
@@ -33,6 +35,12 @@ Members
 
 insn
     BPF instruction
+
+ptr
+    pointer type for memory operations
+
+ptr_not_const
+    pointer is not always constant
 
 off
     index of first generated machine instruction (in nfp_prog.prog)
@@ -69,15 +77,15 @@ Definition
         u64 *prog;
         unsigned int prog_len;
         unsigned int __prog_alloc_len;
-        enum nfp_bpf_action_type act;
-        unsigned int num_regs;
-        unsigned int regs_per_thread;
+        struct nfp_insn_meta *verifier_meta;
+        enum bpf_prog_type type;
         unsigned int start_off;
         unsigned int tgt_out;
         unsigned int tgt_abort;
         unsigned int tgt_done;
         unsigned int n_translated;
         int error;
+        unsigned int stack_depth;
         struct list_head insns;
     }
 
@@ -95,14 +103,11 @@ prog_len
 __prog_alloc_len
     alloc size of \ ``prog``\  array
 
-act
-    BPF program/action type (TC DA, TC with action, XDP etc.)
+verifier_meta
+    temporary storage for verifier's insn meta
 
-num_regs
-    number of registers used by this program
-
-regs_per_thread
-    number of basic registers allocated per thread
+type
+    BPF program type
 
 start_off
     address of the first instruction in the memory
@@ -122,51 +127,11 @@ n_translated
 error
     error code if something went wrong
 
+stack_depth
+    max stack depth from the verifier
+
 insns
     list of BPF instruction wrappers (struct nfp_insn_meta)
-
-.. _`nfp_net_bpf_priv`:
-
-struct nfp_net_bpf_priv
-=======================
-
-.. c:type:: struct nfp_net_bpf_priv
-
-    per-vNIC BPF private data
-
-.. _`nfp_net_bpf_priv.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct nfp_net_bpf_priv {
-        struct nfp_stat_pair rx_filter, rx_filter_prev;
-        unsigned long rx_filter_change;
-        struct timer_list rx_filter_stats_timer;
-        spinlock_t rx_filter_lock;
-    }
-
-.. _`nfp_net_bpf_priv.members`:
-
-Members
--------
-
-rx_filter
-    Filter offload statistics - dropped packets/bytes
-
-rx_filter_prev
-    Filter offload statistics - values from previous update
-
-rx_filter_change
-    Jiffies when statistics last changed
-
-rx_filter_stats_timer
-    Timer for polling filter offload statistics
-
-rx_filter_lock
-    Lock protecting timer state changes (teardown)
 
 .. This file was automatic generated / don't edit.
 

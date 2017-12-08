@@ -97,7 +97,7 @@ Definition
 
     struct rt2x00dump_hdr {
         __le32 version;
-    #define DUMP_HEADER_VERSION 2
+    #define DUMP_HEADER_VERSION 3
         __le32 header_length;
         __le32 desc_length;
         __le32 data_length;

@@ -10,6 +10,7 @@ i2c
     adv748x/index
     m5mols/index
     smiapp/index
+    imx274_c
     lm3560_c
     mt9m032_c
     s5k6a3_c

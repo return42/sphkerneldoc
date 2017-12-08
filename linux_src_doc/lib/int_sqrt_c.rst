@@ -8,17 +8,17 @@ int_sqrt
 
 .. c:function:: unsigned long int_sqrt(unsigned long x)
 
-    rough approximation to sqrt
+    computes the integer square root
 
     :param unsigned long x:
         integer of which to calculate the sqrt
 
-.. _`int_sqrt.description`:
+.. _`int_sqrt.computes`:
 
-Description
------------
+Computes
+--------
 
-A very rough approximation to the \ :c:func:`sqrt`\  function.
+floor(sqrt(x))
 
 .. This file was automatic generated / don't edit.
 

@@ -444,12 +444,12 @@ max >= 15      --> set equalizer to max+5 or set equalizer to max+6 if max == mi
 sis900_timer
 ============
 
-.. c:function:: void sis900_timer(unsigned long data)
+.. c:function:: void sis900_timer(struct timer_list *t)
 
     sis900 timer routine
 
-    :param unsigned long data:
-        pointer to sis900 net device
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sis900_timer.description`:
 

@@ -29,6 +29,7 @@ Definition
         u32 tx_srtt,tx_mdev,tx_mdev_max,tx_rttvar, tx_rto;
         u64 tx_rtt_seq:48;
         struct timer_list tx_rtotimer;
+        struct sock *sk;
         u32 tx_cwnd_used,tx_expected_wnd,tx_cwnd_stamp, tx_lsndtime;
         u64 tx_rpseq;
         int tx_rpdupack;
@@ -85,6 +86,9 @@ tx_rtt_seq
     to decay RTTVAR at most once per flight
 
 tx_rtotimer
+    *undescribed*
+
+sk
     *undescribed*
 
 tx_cwnd_used

@@ -198,6 +198,24 @@ On 64 bit arches this is a synomyn for \__ffs
 The result is not defined if no bits are set, so check that \ ``word``\ 
 is non-zero before calling this.
 
+.. _`assign_bit`:
+
+assign_bit
+==========
+
+.. c:function:: void assign_bit(long nr, volatile unsigned long *addr, bool value)
+
+    Assign value to a bit in memory
+
+    :param long nr:
+        the bit to set
+
+    :param volatile unsigned long \*addr:
+        the address to start counting from
+
+    :param bool value:
+        the value to assign
+
 .. _`find_last_bit`:
 
 find_last_bit

@@ -7,4 +7,4 @@ x86
 .. toctree::
     :maxdepth: 1
 
-    insn/index
+    lib/index

@@ -235,6 +235,8 @@ Definition
         OVS_VPORT_ATTR_UPCALL_PID,
         OVS_VPORT_ATTR_STATS,
         OVS_VPORT_ATTR_PAD,
+        OVS_VPORT_ATTR_IFINDEX,
+        OVS_VPORT_ATTR_NETNSID,
         __OVS_VPORT_ATTR_MAX
     };
 
@@ -272,6 +274,12 @@ OVS_VPORT_ATTR_STATS
     packets sent or received through the vport.
 
 OVS_VPORT_ATTR_PAD
+    *undescribed*
+
+OVS_VPORT_ATTR_IFINDEX
+    *undescribed*
+
+OVS_VPORT_ATTR_NETNSID
     *undescribed*
 
 __OVS_VPORT_ATTR_MAX
@@ -852,6 +860,10 @@ Definition
         OVS_ACTION_ATTR_TRUNC,
         OVS_ACTION_ATTR_PUSH_ETH,
         OVS_ACTION_ATTR_POP_ETH,
+        OVS_ACTION_ATTR_CT_CLEAR,
+        OVS_ACTION_ATTR_PUSH_NSH,
+        OVS_ACTION_ATTR_POP_NSH,
+        OVS_ACTION_ATTR_METER,
         __OVS_ACTION_ATTR_MAX,
         OVS_ACTION_ATTR_SET_TO_MASKED
     };
@@ -929,6 +941,19 @@ OVS_ACTION_ATTR_PUSH_ETH
 OVS_ACTION_ATTR_POP_ETH
     Pop the outermost Ethernet header off the
     packet.
+
+OVS_ACTION_ATTR_CT_CLEAR
+    Clear conntrack state from the packet.
+
+OVS_ACTION_ATTR_PUSH_NSH
+    push NSH header to the packet.
+
+OVS_ACTION_ATTR_POP_NSH
+    pop the outermost NSH header off the packet.
+
+OVS_ACTION_ATTR_METER
+    Run packet through a meter, which may drop the
+    packet, or modify the packet (e.g., change the DSCP field).
 
 __OVS_ACTION_ATTR_MAX
     *undescribed*

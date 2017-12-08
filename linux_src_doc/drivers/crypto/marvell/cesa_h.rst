@@ -409,7 +409,7 @@ Definition
     struct mv_cesa_caps {
         int nengines;
         bool has_tdma;
-        struct crypto_alg **cipher_algs;
+        struct skcipher_alg **cipher_algs;
         int ncipher_algs;
         struct ahash_alg **ahash_algs;
         int nahash_algs;
@@ -894,30 +894,30 @@ iter
 offset
     current offset in the SG entry mapped in memory
 
-.. _`mv_cesa_ablkcipher_std_req`:
+.. _`mv_cesa_skcipher_std_req`:
 
-struct mv_cesa_ablkcipher_std_req
-=================================
+struct mv_cesa_skcipher_std_req
+===============================
 
-.. c:type:: struct mv_cesa_ablkcipher_std_req
+.. c:type:: struct mv_cesa_skcipher_std_req
 
     cipher standard request
 
-.. _`mv_cesa_ablkcipher_std_req.definition`:
+.. _`mv_cesa_skcipher_std_req.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct mv_cesa_ablkcipher_std_req {
+    struct mv_cesa_skcipher_std_req {
         struct mv_cesa_op_ctx op;
         unsigned int offset;
         unsigned int size;
         bool skip_ctx;
     }
 
-.. _`mv_cesa_ablkcipher_std_req.members`:
+.. _`mv_cesa_skcipher_std_req.members`:
 
 Members
 -------
@@ -934,30 +934,30 @@ size
 skip_ctx
     *undescribed*
 
-.. _`mv_cesa_ablkcipher_req`:
+.. _`mv_cesa_skcipher_req`:
 
-struct mv_cesa_ablkcipher_req
-=============================
+struct mv_cesa_skcipher_req
+===========================
 
-.. c:type:: struct mv_cesa_ablkcipher_req
+.. c:type:: struct mv_cesa_skcipher_req
 
     cipher request
 
-.. _`mv_cesa_ablkcipher_req.definition`:
+.. _`mv_cesa_skcipher_req.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct mv_cesa_ablkcipher_req {
+    struct mv_cesa_skcipher_req {
         struct mv_cesa_req base;
-        struct mv_cesa_ablkcipher_std_req std;
+        struct mv_cesa_skcipher_std_req std;
         int src_nents;
         int dst_nents;
     }
 
-.. _`mv_cesa_ablkcipher_req.members`:
+.. _`mv_cesa_skcipher_req.members`:
 
 Members
 -------

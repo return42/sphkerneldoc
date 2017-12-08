@@ -34,8 +34,8 @@ Members
 wait
     wait queue to allow blocking reads of events
 
-16
-    *undescribed*
+det_events
+    list of detected events
 
 dev_attr_list
     list of event interface sysfs attribute

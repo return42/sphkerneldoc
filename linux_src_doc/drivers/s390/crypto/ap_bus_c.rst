@@ -154,12 +154,12 @@ ap_query_queue
 ap_request_timeout
 ==================
 
-.. c:function:: void ap_request_timeout(unsigned long data)
+.. c:function:: void ap_request_timeout(struct timer_list *t)
 
     Handling of request timeouts
 
-    :param unsigned long data:
-        Holds the AP device.
+    :param struct timer_list \*t:
+        timer making this callback
 
 .. _`ap_request_timeout.description`:
 

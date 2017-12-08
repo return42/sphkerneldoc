@@ -22,6 +22,8 @@ Definition
         uint64_t (*get_vmem_size)(struct kgd_dev *kgd);
         uint64_t (*get_gpu_clock_counter)(struct kgd_dev *kgd);
         uint32_t (*get_max_engine_clock_in_mhz)(struct kgd_dev *kgd);
+        int (*alloc_pasid)(unsigned int bits);
+        void (*free_pasid)(unsigned int pasid);
         void (*program_sh_mem_settings)(struct kgd_dev *kgd, uint32_t vmid,uint32_t sh_mem_config, uint32_t sh_mem_ape1_base, uint32_t sh_mem_ape1_limit, uint32_t sh_mem_bases);
         int (*set_pasid_vmid_mapping)(struct kgd_dev *kgd, unsigned int pasid, unsigned int vmid);
         int (*init_pipeline)(struct kgd_dev *kgd, uint32_t pipe_id, uint32_t hpd_size, uint64_t hpd_gpu_addr);
@@ -64,6 +66,12 @@ get_gpu_clock_counter
 
 get_max_engine_clock_in_mhz
     Retrieves maximum GPU clock in MHz
+
+alloc_pasid
+    Allocate a PASID
+
+free_pasid
+    Free a PASID
 
 program_sh_mem_settings
     A function that should initiate the memory

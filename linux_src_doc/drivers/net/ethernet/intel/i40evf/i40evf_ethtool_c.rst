@@ -467,6 +467,30 @@ Description
 For the purposes of our device, we only use combined channels, i.e. a tx/rx
 queue pair. Report one extra channel to match our "other" MSI-X vector.
 
+.. _`i40evf_set_channels`:
+
+i40evf_set_channels
+===================
+
+.. c:function:: int i40evf_set_channels(struct net_device *netdev, struct ethtool_channels *ch)
+
+    set the new channel count
+
+    :param struct net_device \*netdev:
+        network interface device structure
+
+    :param struct ethtool_channels \*ch:
+        channel information structure
+
+.. _`i40evf_set_channels.description`:
+
+Description
+-----------
+
+Negotiate a new number of channels with the PF then do a reset.  During
+reset we'll realloc queues and fix the RSS table.  Returns 0 on success,
+negative on failure.
+
 .. _`i40evf_get_rxfh_key_size`:
 
 i40evf_get_rxfh_key_size

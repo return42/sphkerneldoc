@@ -32,6 +32,7 @@ Definition
         unsigned int normalized_zpos;
         struct drm_rect src, dst;
         bool visible;
+        struct drm_crtc_commit *commit;
         struct drm_atomic_state *state;
     }
 
@@ -114,6 +115,11 @@ visible
 
     Visibility of the plane. This can be false even if fb!=NULL and
     crtc!=NULL, due to clipping.
+
+commit
+    Tracks the pending commit to prevent use-after-free conditions,and for async plane updates.
+
+    May be NULL.
 
 state
     backpointer to global drm_atomic_state
@@ -534,10 +540,10 @@ state
     This is protected by \ ``mutex``\ . Note that nonblocking atomic commits
     access the current plane state without taking locks. Either by going
     through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointers, see
-    \ :c:func:`for_each_plane_in_state`\ , \ :c:func:`for_each_oldnew_plane_in_state`\ ,
-    \ :c:func:`for_each_old_plane_in_state`\  and \ :c:func:`for_each_new_plane_in_state`\ . Or
-    through careful ordering of atomic commit operations as implemented
-    in the atomic helpers, see \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
+    \ :c:func:`for_each_oldnew_plane_in_state`\ , \ :c:func:`for_each_old_plane_in_state`\  and
+    \ :c:func:`for_each_new_plane_in_state`\ . Or through careful ordering of atomic
+    commit operations as implemented in the atomic helpers, see
+    \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
 
 zpos_property
     zpos property for this plane
@@ -570,12 +576,15 @@ device's list of planes.
 drm_plane_find
 ==============
 
-.. c:function:: struct drm_plane *drm_plane_find(struct drm_device *dev, uint32_t id)
+.. c:function:: struct drm_plane *drm_plane_find(struct drm_device *dev, struct drm_file *file_priv, uint32_t id)
 
     find a \ :c:type:`struct drm_plane <drm_plane>`\ 
 
     :param struct drm_device \*dev:
         DRM device
+
+    :param struct drm_file \*file_priv:
+        drm file to check for lease against.
 
     :param uint32_t id:
         plane id

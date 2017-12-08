@@ -279,18 +279,6 @@ Return
 
 0 for successful release
 
-.. _`iio_device_register`:
-
-iio_device_register
-===================
-
-.. c:function:: int iio_device_register(struct iio_dev *indio_dev)
-
-    register a device with the IIO subsystem
-
-    :param struct iio_dev \*indio_dev:
-        Device structure filled by the device driver
-
 .. _`iio_device_unregister`:
 
 iio_device_unregister
@@ -302,41 +290,6 @@ iio_device_unregister
 
     :param struct iio_dev \*indio_dev:
         Device structure representing the device.
-
-.. _`devm_iio_device_register`:
-
-devm_iio_device_register
-========================
-
-.. c:function:: int devm_iio_device_register(struct device *dev, struct iio_dev *indio_dev)
-
-    Resource-managed \ :c:func:`iio_device_register`\ 
-
-    :param struct device \*dev:
-        Device to allocate iio_dev for
-
-    :param struct iio_dev \*indio_dev:
-        Device structure filled by the device driver
-
-.. _`devm_iio_device_register.description`:
-
-Description
------------
-
-Managed iio_device_register.  The IIO device registered with this
-function is automatically unregistered on driver detach. This function
-calls \ :c:func:`iio_device_register`\  internally. Refer to that function for more
-information.
-
-If an iio_dev registered with this function needs to be unregistered
-separately, \ :c:func:`devm_iio_device_unregister`\  must be used.
-
-.. _`devm_iio_device_register.return`:
-
-Return
-------
-
-0 on success, negative error number on failure.
 
 .. _`devm_iio_device_unregister`:
 

@@ -118,5 +118,27 @@ Description
 This function releases structures allocated for memory region handling for
 the given device.
 
+.. _`of_reserved_mem_lookup`:
+
+of_reserved_mem_lookup
+======================
+
+.. c:function:: struct reserved_mem *of_reserved_mem_lookup(struct device_node *np)
+
+    acquire reserved_mem from a device node
+
+    :param struct device_node \*np:
+        node pointer of the desired reserved-memory region
+
+.. _`of_reserved_mem_lookup.description`:
+
+Description
+-----------
+
+This function allows drivers to acquire a reference to the reserved_mem
+struct based on a device node handle.
+
+Returns a reserved_mem reference, or NULL on error.
+
 .. This file was automatic generated / don't edit.
 

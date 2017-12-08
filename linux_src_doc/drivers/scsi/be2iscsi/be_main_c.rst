@@ -250,5 +250,14 @@ beiscsi_bsg_request
     :param struct bsg_job \*job:
         job to handle
 
+.. _`beiscsi_sysfs_iscsi_boot_flags`:
+
+BEISCSI_SYSFS_ISCSI_BOOT_FLAGS
+==============================
+
+.. c:function::  BEISCSI_SYSFS_ISCSI_BOOT_FLAGS()
+
+    utilities Bit 0 Block valid flag Bit 1 Firmware booting selected
+
 .. This file was automatic generated / don't edit.
 

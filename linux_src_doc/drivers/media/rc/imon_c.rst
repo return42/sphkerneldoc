@@ -217,9 +217,9 @@ usb_tx_callback
 imon_touch_display_timeout
 ==========================
 
-.. c:function:: void imon_touch_display_timeout(unsigned long data)
+.. c:function:: void imon_touch_display_timeout(struct timer_list *t)
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`imon_ir_change_protocol`:

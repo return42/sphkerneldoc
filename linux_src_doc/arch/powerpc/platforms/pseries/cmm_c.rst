@@ -289,14 +289,14 @@ nothing
 cmm_set_disable
 ===============
 
-.. c:function:: int cmm_set_disable(const char *val, struct kernel_param *kp)
+.. c:function:: int cmm_set_disable(const char *val, const struct kernel_param *kp)
 
     Disable/Enable CMM
 
     :param const char \*val:
         *undescribed*
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         *undescribed*
 
 .. _`cmm_set_disable.return-value`:

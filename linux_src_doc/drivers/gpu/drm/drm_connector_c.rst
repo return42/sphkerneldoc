@@ -361,6 +361,29 @@ DPMS:
      callback. For atomic drivers the remapping to the "ACTIVE" property is
      implemented in the DRM core.  This is the only standard connector
      property that userspace can change.
+
+     Note that this property cannot be set through the MODE_ATOMIC ioctl,
+     userspace must use "ACTIVE" on the CRTC instead.
+
+     WARNING:
+
+     For userspace also running on legacy drivers the "DPMS" semantics are a
+     lot more complicated. First, userspace cannot rely on the "DPMS" value
+     returned by the GETCONNECTOR actually reflecting reality, because many
+     drivers fail to update it. For atomic drivers this is taken care of in
+     \ :c:func:`drm_atomic_helper_update_legacy_modeset_state`\ .
+
+     The second issue is that the DPMS state is only well-defined when the
+     connector is connected to a CRTC. In atomic the DRM core enforces that
+     "ACTIVE" is off in such a case, no such checks exists for "DPMS".
+
+     Finally, when enabling an output using the legacy SETCONFIG ioctl then
+     "DPMS" is forced to ON. But see above, that might not be reflected in
+     the software value on legacy drivers.
+
+     Summarizing: Only set "DPMS" when the connector is known to be enabled,
+     assume that a successful SETCONFIG call also sets "DPMS" to on, and
+     never read back the value of "DPMS" because it can be incorrect.
 PATH:
      Connector path property to identify how this sink is physically
      connected. Used by DP MST. This should be set by calling
@@ -382,6 +405,10 @@ link-status:
      value of link-status is "GOOD". If something fails during or after modeset,
      the kernel driver may set this to "BAD" and issue a hotplug uevent. Drivers
      should update this value using \ :c:func:`drm_mode_connector_set_link_status_property`\ .
+non_desktop:
+     Indicates the output should be ignored for purposes of displaying a
+     standard desktop environment or console. This is most likely because
+     the output device is not rectilinear.
 
 Connectors also have one standardized atomic property:
 

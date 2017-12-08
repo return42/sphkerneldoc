@@ -72,7 +72,6 @@ platform_data
     pixcir_i2c_ts_h
     s3c-hsotg_h
     sc18is602_h
-    sht15_h
     si5351_h
     sky81452-backlight_h
     spi-ep93xx_h

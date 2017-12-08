@@ -170,158 +170,26 @@ vega10_thermal_stop_thermal_controller
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
 
-.. _`tf_vega10_thermal_setup_fan_table`:
+.. _`vega10_thermal_setup_fan_table`:
 
-tf_vega10_thermal_setup_fan_table
-=================================
-
-.. c:function:: int tf_vega10_thermal_setup_fan_table(struct pp_hwmgr *hwmgr, void *input, void *output, void *storage, int result)
-
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
-
-    :param struct pp_hwmgr \*hwmgr:
-        *undescribed*
-
-    :param void \*input:
-        *undescribed*
-
-    :param void \*output:
-        *undescribed*
-
-    :param void \*storage:
-        *undescribed*
-
-    :param int result:
-        *undescribed*
-
-.. _`tf_vega10_thermal_start_smc_fan_control`:
-
-tf_vega10_thermal_start_smc_fan_control
-=======================================
-
-.. c:function:: int tf_vega10_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr, void *input, void *output, void *storage, int result)
-
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
-
-    :param struct pp_hwmgr \*hwmgr:
-        *undescribed*
-
-    :param void \*input:
-        *undescribed*
-
-    :param void \*output:
-        *undescribed*
-
-    :param void \*storage:
-        *undescribed*
-
-    :param int result:
-        *undescribed*
-
-.. _`tf_vega10_thermal_set_temperature_range`:
-
-tf_vega10_thermal_set_temperature_range
-=======================================
-
-.. c:function:: int tf_vega10_thermal_set_temperature_range(struct pp_hwmgr *hwmgr, void *input, void *output, void *storage, int result)
-
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
-
-    :param struct pp_hwmgr \*hwmgr:
-        *undescribed*
-
-    :param void \*input:
-        *undescribed*
-
-    :param void \*output:
-        *undescribed*
-
-    :param void \*storage:
-        *undescribed*
-
-    :param int result:
-        *undescribed*
-
-.. _`tf_vega10_thermal_initialize`:
-
-tf_vega10_thermal_initialize
-============================
-
-.. c:function:: int tf_vega10_thermal_initialize(struct pp_hwmgr *hwmgr, void *input, void *output, void *storage, int result)
-
-    time setting registers \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from initialize thermal controller routine
-
-    :param struct pp_hwmgr \*hwmgr:
-        *undescribed*
-
-    :param void \*input:
-        *undescribed*
-
-    :param void \*output:
-        *undescribed*
-
-    :param void \*storage:
-        *undescribed*
-
-    :param int result:
-        *undescribed*
-
-.. _`tf_vega10_thermal_enable_alert`:
-
-tf_vega10_thermal_enable_alert
+vega10_thermal_setup_fan_table
 ==============================
 
-.. c:function:: int tf_vega10_thermal_enable_alert(struct pp_hwmgr *hwmgr, void *input, void *output, void *storage, int result)
+.. c:function:: int vega10_thermal_setup_fan_table(struct pp_hwmgr *hwmgr)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from enable alert routine
-
-    :param struct pp_hwmgr \*hwmgr:
-        *undescribed*
-
-    :param void \*input:
-        *undescribed*
-
-    :param void \*output:
-        *undescribed*
-
-    :param void \*storage:
-        *undescribed*
-
-    :param int result:
-        *undescribed*
-
-.. _`tf_vega10_thermal_disable_alert`:
-
-tf_vega10_thermal_disable_alert
-===============================
-
-.. c:function:: int tf_vega10_thermal_disable_alert(struct pp_hwmgr *hwmgr, void *input, void *output, void *storage, int result)
-
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from disable alert routine
+    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
 
-    :param void \*input:
-        *undescribed*
+.. _`vega10_thermal_start_smc_fan_control`:
 
-    :param void \*output:
-        *undescribed*
+vega10_thermal_start_smc_fan_control
+====================================
 
-    :param void \*storage:
-        *undescribed*
+.. c:function:: int vega10_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr)
 
-    :param int result:
-        *undescribed*
-
-.. _`pp_vega10_thermal_initialize`:
-
-pp_vega10_thermal_initialize
-============================
-
-.. c:function:: int pp_vega10_thermal_initialize(struct pp_hwmgr *hwmgr)
-
-    in the Hardware Manager structure. \ ``param``\     hwmgr The address of the hardware manager. \ ``exception``\  Any error code from the low-level communication.
+    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*

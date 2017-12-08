@@ -8,6 +8,7 @@ irqchip
     :maxdepth: 1
 
     exynos-combiner_c
+    irq-brcmstb-l2_c
     irq-crossbar_c
     irq-ftintc010_c
     irq-imgpdc_c

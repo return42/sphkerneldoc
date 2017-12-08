@@ -7,9 +7,9 @@ mm
 .. toctree::
     :maxdepth: 1
 
-    kmemcheck/index
     init_c
     ioremap_c
+    mmap_c
     numa_c
     numa_emulation_c
     pageattr_c

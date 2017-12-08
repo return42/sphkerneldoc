@@ -24,6 +24,7 @@ Definition
         u32 src_shift;
         u32 src_width;
         u8 *parents;
+        struct notifier_block nb;
     }
 
 .. _`div6_clock.members`:
@@ -49,12 +50,15 @@ src_width
 parents
     Array to map from valid parent clocks indices to hardware indices
 
+nb
+    Notifier block to save/restore clock state for system resume
+
 .. _`cpg_div6_register`:
 
 cpg_div6_register
 =================
 
-.. c:function:: struct clk *cpg_div6_register(const char *name, unsigned int num_parents, const char **parent_names, void __iomem *reg)
+.. c:function:: struct clk *cpg_div6_register(const char *name, unsigned int num_parents, const char **parent_names, void __iomem *reg, struct raw_notifier_head *notifiers)
 
     Register a DIV6 clock
 
@@ -69,6 +73,9 @@ cpg_div6_register
 
     :param void __iomem \*reg:
         Mapped register used to control the DIV6 clock
+
+    :param struct raw_notifier_head \*notifiers:
+        Optional notifier chain to save/restore state for system resume
 
 .. This file was automatic generated / don't edit.
 

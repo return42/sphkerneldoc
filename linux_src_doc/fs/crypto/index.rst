@@ -9,5 +9,6 @@ crypto
 
     crypto_c
     fname_c
+    hooks_c
     keyinfo_c
     policy_c

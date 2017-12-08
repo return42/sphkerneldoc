@@ -698,30 +698,5 @@ This is a convenience function that calls audit_log_start,
 audit_log_vformat, and audit_log_end.  It may be called
 in any context.
 
-.. _`audit_log_secctx`:
-
-audit_log_secctx
-================
-
-.. c:function:: void audit_log_secctx(struct audit_buffer *ab, u32 secid)
-
-    Converts and logs SELinux context
-
-    :param struct audit_buffer \*ab:
-        audit_buffer
-
-    :param u32 secid:
-        security number
-
-.. _`audit_log_secctx.description`:
-
-Description
------------
-
-This is a helper function that calls security_secid_to_secctx to convert
-secid to secctx and then adds the (converted) SELinux context to the audit
-log by calling audit_log_format, thus also preventing leak of internal secid
-to userspace. If secid cannot be converted audit_panic is called.
-
 .. This file was automatic generated / don't edit.
 

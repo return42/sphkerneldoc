@@ -187,6 +187,7 @@ Definition
         int (*rc_query) (struct dvb_usb_device *d);
         int rc_interval;
         bool bulk_mode;
+        u32 scancode_mask;
     }
 
 .. _`dvb_rc.members`:
@@ -220,6 +221,9 @@ rc_interval
 
 bulk_mode
     device supports bulk mode for RC (disable polling mode)
+
+scancode_mask
+    *undescribed*
 
 .. _`dvb_usb_mode`:
 

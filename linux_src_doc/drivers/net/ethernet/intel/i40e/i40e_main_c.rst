@@ -326,6 +326,24 @@ i40e_stat_update32
     :param u64 \*stat:
         ptr to the stat
 
+.. _`i40e_stat_update_and_clear32`:
+
+i40e_stat_update_and_clear32
+============================
+
+.. c:function:: void i40e_stat_update_and_clear32(struct i40e_hw *hw, u32 reg, u64 *stat)
+
+    read and clear hw reg, update a 32 bit stat
+
+    :param struct i40e_hw \*hw:
+        ptr to the hardware info
+
+    :param u32 reg:
+        the hw reg to read and clear
+
+    :param u64 \*stat:
+        ptr to the stat
+
 .. _`i40e_update_eth_stats`:
 
 i40e_update_eth_stats
@@ -730,6 +748,64 @@ Description
 
 Returns 0 on success, negative on failure
 
+.. _`i40e_config_rss_aq`:
+
+i40e_config_rss_aq
+==================
+
+.. c:function:: int i40e_config_rss_aq(struct i40e_vsi *vsi, const u8 *seed, u8 *lut, u16 lut_size)
+
+    Prepare for RSS using AQ commands
+
+    :param struct i40e_vsi \*vsi:
+        vsi structure
+
+    :param const u8 \*seed:
+        RSS hash seed
+
+    :param u8 \*lut:
+        *undescribed*
+
+    :param u16 lut_size:
+        *undescribed*
+
+.. _`i40e_vsi_config_rss`:
+
+i40e_vsi_config_rss
+===================
+
+.. c:function:: int i40e_vsi_config_rss(struct i40e_vsi *vsi)
+
+    Prepare for VSI(VMDq) RSS if used
+
+    :param struct i40e_vsi \*vsi:
+        VSI structure
+
+.. _`i40e_vsi_setup_queue_map_mqprio`:
+
+i40e_vsi_setup_queue_map_mqprio
+===============================
+
+.. c:function:: int i40e_vsi_setup_queue_map_mqprio(struct i40e_vsi *vsi, struct i40e_vsi_context *ctxt, u8 enabled_tc)
+
+    Prepares mqprio based tc_config
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured,
+
+    :param struct i40e_vsi_context \*ctxt:
+        VSI context structure
+
+    :param u8 enabled_tc:
+        number of traffic classes to enable
+
+.. _`i40e_vsi_setup_queue_map_mqprio.description`:
+
+Description
+-----------
+
+Prepares VSI tc_config to have queue configurations based on MQPRIO options.
+
 .. _`i40e_vsi_setup_queue_map`:
 
 i40e_vsi_setup_queue_map
@@ -1007,6 +1083,30 @@ filters in order to properly receive broadcast frames. Assumes that only
 broadcast filters are passed.
 
 Returns status indicating success or failure;
+
+.. _`i40e_set_promiscuous`:
+
+i40e_set_promiscuous
+====================
+
+.. c:function:: int i40e_set_promiscuous(struct i40e_pf *pf, bool promisc)
+
+    set promiscuous mode
+
+    :param struct i40e_pf \*pf:
+        board private structure
+
+    :param bool promisc:
+        promisc on or off
+
+.. _`i40e_set_promiscuous.description`:
+
+Description
+-----------
+
+There are different ways of setting promiscuous mode on a PF depending on
+what state/environment we're in.  This identifies and sets it appropriately.
+Returns 0 on success.
 
 .. _`i40e_sync_vsi_filters`:
 
@@ -1613,15 +1713,12 @@ i40e_irq_dynamic_disable_icr0
 i40e_irq_dynamic_enable_icr0
 ============================
 
-.. c:function:: void i40e_irq_dynamic_enable_icr0(struct i40e_pf *pf, bool clearpba)
+.. c:function:: void i40e_irq_dynamic_enable_icr0(struct i40e_pf *pf)
 
     Enable default interrupt generation for icr0
 
     :param struct i40e_pf \*pf:
         board private structure
-
-    :param bool clearpba:
-        true when all pending interrupt events should be cleared
 
 .. _`i40e_msix_clean_rings`:
 
@@ -1728,14 +1825,14 @@ i40e_vsi_enable_irq
     :param struct i40e_vsi \*vsi:
         the VSI being configured
 
-.. _`i40e_stop_misc_vector`:
+.. _`i40e_free_misc_vector`:
 
-i40e_stop_misc_vector
+i40e_free_misc_vector
 =====================
 
-.. c:function:: void i40e_stop_misc_vector(struct i40e_pf *pf)
+.. c:function:: void i40e_free_misc_vector(struct i40e_pf *pf)
 
-    Stop the vector that handles non-queue events
+    Free the vector that handles non-queue events
 
     :param struct i40e_pf \*pf:
         board private structure
@@ -2404,6 +2501,26 @@ Description
 Query the current DCB configuration and return the number of
 traffic classes enabled from the given DCBX config
 
+.. _`i40e_mqprio_get_enabled_tc`:
+
+i40e_mqprio_get_enabled_tc
+==========================
+
+.. c:function:: u8 i40e_mqprio_get_enabled_tc(struct i40e_pf *pf)
+
+    Get enabled traffic classes
+
+    :param struct i40e_pf \*pf:
+        PF being queried
+
+.. _`i40e_mqprio_get_enabled_tc.description`:
+
+Description
+-----------
+
+Query the current MQPRIO configuration and return the number of
+traffic classes enabled.
+
 .. _`i40e_pf_get_num_tc`:
 
 i40e_pf_get_num_tc
@@ -2547,6 +2664,347 @@ NOTE
 
 It is expected that the VSI queues have been quisced before calling
 this function.
+
+.. _`i40e_get_link_speed`:
+
+i40e_get_link_speed
+===================
+
+.. c:function:: int i40e_get_link_speed(struct i40e_vsi *vsi)
+
+    Returns link speed for the interface
+
+    :param struct i40e_vsi \*vsi:
+        VSI to be configured
+
+.. _`i40e_set_bw_limit`:
+
+i40e_set_bw_limit
+=================
+
+.. c:function:: int i40e_set_bw_limit(struct i40e_vsi *vsi, u16 seid, u64 max_tx_rate)
+
+    setup BW limit for Tx traffic based on max_tx_rate
+
+    :param struct i40e_vsi \*vsi:
+        VSI to be configured
+
+    :param u16 seid:
+        seid of the channel/VSI
+
+    :param u64 max_tx_rate:
+        max TX rate to be configured as BW limit
+
+.. _`i40e_set_bw_limit.description`:
+
+Description
+-----------
+
+Helper function to set BW limit for a given VSI
+
+.. _`i40e_remove_queue_channels`:
+
+i40e_remove_queue_channels
+==========================
+
+.. c:function:: void i40e_remove_queue_channels(struct i40e_vsi *vsi)
+
+    Remove queue channels for the TCs
+
+    :param struct i40e_vsi \*vsi:
+        VSI to be configured
+
+.. _`i40e_remove_queue_channels.description`:
+
+Description
+-----------
+
+Remove queue channels for the TCs
+
+.. _`i40e_is_any_channel`:
+
+i40e_is_any_channel
+===================
+
+.. c:function:: bool i40e_is_any_channel(struct i40e_vsi *vsi)
+
+    channel exist or not
+
+    :param struct i40e_vsi \*vsi:
+        ptr to VSI to which channels are associated with
+
+.. _`i40e_is_any_channel.description`:
+
+Description
+-----------
+
+Returns true or false if channel(s) exist for associated VSI or not
+
+.. _`i40e_get_max_queues_for_channel`:
+
+i40e_get_max_queues_for_channel
+===============================
+
+.. c:function:: int i40e_get_max_queues_for_channel(struct i40e_vsi *vsi)
+
+    :param struct i40e_vsi \*vsi:
+        ptr to VSI to which channels are associated with
+
+.. _`i40e_get_max_queues_for_channel.description`:
+
+Description
+-----------
+
+Helper function which returns max value among the queue counts set on the
+channels/TCs created.
+
+.. _`i40e_validate_num_queues`:
+
+i40e_validate_num_queues
+========================
+
+.. c:function:: int i40e_validate_num_queues(struct i40e_pf *pf, int num_queues, struct i40e_vsi *vsi, bool *reconfig_rss)
+
+    validate num_queues w.r.t channel
+
+    :param struct i40e_pf \*pf:
+        ptr to PF device
+
+    :param int num_queues:
+        number of queues
+
+    :param struct i40e_vsi \*vsi:
+        the parent VSI
+
+    :param bool \*reconfig_rss:
+        indicates should the RSS be reconfigured or not
+
+.. _`i40e_validate_num_queues.description`:
+
+Description
+-----------
+
+This function validates number of queues in the context of new channel
+which is being established and determines if RSS should be reconfigured
+or not for parent VSI.
+
+.. _`i40e_vsi_reconfig_rss`:
+
+i40e_vsi_reconfig_rss
+=====================
+
+.. c:function:: int i40e_vsi_reconfig_rss(struct i40e_vsi *vsi, u16 rss_size)
+
+    reconfig RSS based on specified rss_size
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being setup
+
+    :param u16 rss_size:
+        size of RSS, accordingly LUT gets reprogrammed
+
+.. _`i40e_vsi_reconfig_rss.description`:
+
+Description
+-----------
+
+This function reconfigures RSS by reprogramming LUTs using 'rss_size'
+
+.. _`i40e_channel_setup_queue_map`:
+
+i40e_channel_setup_queue_map
+============================
+
+.. c:function:: void i40e_channel_setup_queue_map(struct i40e_pf *pf, struct i40e_vsi_context *ctxt, struct i40e_channel *ch)
+
+    Setup a channel queue map
+
+    :param struct i40e_pf \*pf:
+        ptr to PF device
+
+    :param struct i40e_vsi_context \*ctxt:
+        VSI context structure
+
+    :param struct i40e_channel \*ch:
+        ptr to channel structure
+
+.. _`i40e_channel_setup_queue_map.description`:
+
+Description
+-----------
+
+Setup queue map for a specific channel
+
+.. _`i40e_add_channel`:
+
+i40e_add_channel
+================
+
+.. c:function:: int i40e_add_channel(struct i40e_pf *pf, u16 uplink_seid, struct i40e_channel *ch)
+
+    add a channel by adding VSI
+
+    :param struct i40e_pf \*pf:
+        ptr to PF device
+
+    :param u16 uplink_seid:
+        underlying HW switching element (VEB) ID
+
+    :param struct i40e_channel \*ch:
+        ptr to channel structure
+
+.. _`i40e_add_channel.description`:
+
+Description
+-----------
+
+Add a channel (VSI) using add_vsi and queue_map
+
+.. _`i40e_channel_config_tx_ring`:
+
+i40e_channel_config_tx_ring
+===========================
+
+.. c:function:: int i40e_channel_config_tx_ring(struct i40e_pf *pf, struct i40e_vsi *vsi, struct i40e_channel *ch)
+
+    config TX ring associated with new channel
+
+    :param struct i40e_pf \*pf:
+        ptr to PF device
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being setup
+
+    :param struct i40e_channel \*ch:
+        ptr to channel structure
+
+.. _`i40e_channel_config_tx_ring.description`:
+
+Description
+-----------
+
+Configure TX rings associated with channel (VSI) since queues are being
+from parent VSI.
+
+.. _`i40e_setup_hw_channel`:
+
+i40e_setup_hw_channel
+=====================
+
+.. c:function:: int i40e_setup_hw_channel(struct i40e_pf *pf, struct i40e_vsi *vsi, struct i40e_channel *ch, u16 uplink_seid, u8 type)
+
+    setup new channel
+
+    :param struct i40e_pf \*pf:
+        ptr to PF device
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being setup
+
+    :param struct i40e_channel \*ch:
+        ptr to channel structure
+
+    :param u16 uplink_seid:
+        underlying HW switching element (VEB) ID
+
+    :param u8 type:
+        type of channel to be created (VMDq2/VF)
+
+.. _`i40e_setup_hw_channel.description`:
+
+Description
+-----------
+
+Setup new channel (VSI) based on specified type (VMDq2/VF)
+and configures TX rings accordingly
+
+.. _`i40e_setup_channel`:
+
+i40e_setup_channel
+==================
+
+.. c:function:: bool i40e_setup_channel(struct i40e_pf *pf, struct i40e_vsi *vsi, struct i40e_channel *ch)
+
+    setup new channel using uplink element
+
+    :param struct i40e_pf \*pf:
+        ptr to PF device
+
+    :param struct i40e_vsi \*vsi:
+        *undescribed*
+
+    :param struct i40e_channel \*ch:
+        ptr to channel structure
+
+.. _`i40e_setup_channel.description`:
+
+Description
+-----------
+
+Setup new channel (VSI) based on specified type (VMDq2/VF)
+and uplink switching element (uplink_seid)
+
+.. _`i40e_validate_and_set_switch_mode`:
+
+i40e_validate_and_set_switch_mode
+=================================
+
+.. c:function:: int i40e_validate_and_set_switch_mode(struct i40e_vsi *vsi)
+
+    sets up switch mode correctly
+
+    :param struct i40e_vsi \*vsi:
+        ptr to VSI which has PF backing
+
+.. _`i40e_validate_and_set_switch_mode.description`:
+
+Description
+-----------
+
+Sets up switch mode correctly if it needs to be changed and perform
+what are allowed modes.
+
+.. _`i40e_create_queue_channel`:
+
+i40e_create_queue_channel
+=========================
+
+.. c:function:: int i40e_create_queue_channel(struct i40e_vsi *vsi, struct i40e_channel *ch)
+
+    function to create channel
+
+    :param struct i40e_vsi \*vsi:
+        VSI to be configured
+
+    :param struct i40e_channel \*ch:
+        ptr to channel (it contains channel specific params)
+
+.. _`i40e_create_queue_channel.description`:
+
+Description
+-----------
+
+This function creates channel (VSI) using num_queues specified by user,
+reconfigs RSS if needed.
+
+.. _`i40e_configure_queue_channels`:
+
+i40e_configure_queue_channels
+=============================
+
+.. c:function:: int i40e_configure_queue_channels(struct i40e_vsi *vsi)
+
+    Add queue channel for the given TCs
+
+    :param struct i40e_vsi \*vsi:
+        VSI to be configured
+
+.. _`i40e_configure_queue_channels.description`:
+
+Description
+-----------
+
+Configures queue channel mapping to the given TCs
 
 .. _`i40e_veb_config_tc`:
 
@@ -2702,20 +3160,217 @@ i40e_down
     :param struct i40e_vsi \*vsi:
         the VSI being stopped
 
+.. _`i40e_validate_mqprio_qopt`:
+
+i40e_validate_mqprio_qopt
+=========================
+
+.. c:function:: int i40e_validate_mqprio_qopt(struct i40e_vsi *vsi, struct tc_mqprio_qopt_offload *mqprio_qopt)
+
+    validate queue mapping info
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured
+
+    :param struct tc_mqprio_qopt_offload \*mqprio_qopt:
+        queue parametrs
+
+.. _`i40e_vsi_set_default_tc_config`:
+
+i40e_vsi_set_default_tc_config
+==============================
+
+.. c:function:: void i40e_vsi_set_default_tc_config(struct i40e_vsi *vsi)
+
+    set default values for tc configuration
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured
+
 .. _`i40e_setup_tc`:
 
 i40e_setup_tc
 =============
 
-.. c:function:: int i40e_setup_tc(struct net_device *netdev, u8 tc)
+.. c:function:: int i40e_setup_tc(struct net_device *netdev, void *type_data)
 
     configure multiple traffic classes
 
     :param struct net_device \*netdev:
         net device to configure
 
-    :param u8 tc:
-        number of traffic classes to enable
+    :param void \*type_data:
+        tc offload data
+
+.. _`i40e_set_cld_element`:
+
+i40e_set_cld_element
+====================
+
+.. c:function:: void i40e_set_cld_element(struct i40e_cloud_filter *filter, struct i40e_aqc_cloud_filters_element_data *cld)
+
+    sets cloud filter element data
+
+    :param struct i40e_cloud_filter \*filter:
+        cloud filter rule
+
+    :param struct i40e_aqc_cloud_filters_element_data \*cld:
+        ptr to cloud filter element data
+
+.. _`i40e_set_cld_element.description`:
+
+Description
+-----------
+
+This is helper function to copy data into cloud filter element
+
+.. _`i40e_add_del_cloud_filter`:
+
+i40e_add_del_cloud_filter
+=========================
+
+.. c:function:: int i40e_add_del_cloud_filter(struct i40e_vsi *vsi, struct i40e_cloud_filter *filter, bool add)
+
+    Add/del cloud filter
+
+    :param struct i40e_vsi \*vsi:
+        pointer to VSI
+
+    :param struct i40e_cloud_filter \*filter:
+        cloud filter rule
+
+    :param bool add:
+        if true, add, if false, delete
+
+.. _`i40e_add_del_cloud_filter.description`:
+
+Description
+-----------
+
+Add or delete a cloud filter for a specific flow spec.
+Returns 0 if the filter were successfully added.
+
+.. _`i40e_add_del_cloud_filter_big_buf`:
+
+i40e_add_del_cloud_filter_big_buf
+=================================
+
+.. c:function:: int i40e_add_del_cloud_filter_big_buf(struct i40e_vsi *vsi, struct i40e_cloud_filter *filter, bool add)
+
+    Add/del cloud filter using big_buf
+
+    :param struct i40e_vsi \*vsi:
+        pointer to VSI
+
+    :param struct i40e_cloud_filter \*filter:
+        cloud filter rule
+
+    :param bool add:
+        if true, add, if false, delete
+
+.. _`i40e_add_del_cloud_filter_big_buf.description`:
+
+Description
+-----------
+
+Add or delete a cloud filter for a specific flow spec using big buffer.
+Returns 0 if the filter were successfully added.
+
+.. _`i40e_parse_cls_flower`:
+
+i40e_parse_cls_flower
+=====================
+
+.. c:function:: int i40e_parse_cls_flower(struct i40e_vsi *vsi, struct tc_cls_flower_offload *f, struct i40e_cloud_filter *filter)
+
+    Parse tc flower filters provided by kernel
+
+    :param struct i40e_vsi \*vsi:
+        Pointer to VSI
+
+    :param struct tc_cls_flower_offload \*f:
+        *undescribed*
+
+    :param struct i40e_cloud_filter \*filter:
+        Pointer to cloud filter structure
+
+.. _`i40e_handle_tclass`:
+
+i40e_handle_tclass
+==================
+
+.. c:function:: int i40e_handle_tclass(struct i40e_vsi *vsi, u32 tc, struct i40e_cloud_filter *filter)
+
+    Forward to a traffic class on the device
+
+    :param struct i40e_vsi \*vsi:
+        Pointer to VSI
+
+    :param u32 tc:
+        traffic class index on the device
+
+    :param struct i40e_cloud_filter \*filter:
+        Pointer to cloud filter structure
+
+.. _`i40e_configure_clsflower`:
+
+i40e_configure_clsflower
+========================
+
+.. c:function:: int i40e_configure_clsflower(struct i40e_vsi *vsi, struct tc_cls_flower_offload *cls_flower)
+
+    Configure tc flower filters
+
+    :param struct i40e_vsi \*vsi:
+        Pointer to VSI
+
+    :param struct tc_cls_flower_offload \*cls_flower:
+        Pointer to struct tc_cls_flower_offload
+
+.. _`i40e_find_cloud_filter`:
+
+i40e_find_cloud_filter
+======================
+
+.. c:function:: struct i40e_cloud_filter *i40e_find_cloud_filter(struct i40e_vsi *vsi, unsigned long *cookie)
+
+    Find the could filter in the list
+
+    :param struct i40e_vsi \*vsi:
+        Pointer to VSI
+
+    :param unsigned long \*cookie:
+        filter specific cookie
+
+.. _`i40e_delete_clsflower`:
+
+i40e_delete_clsflower
+=====================
+
+.. c:function:: int i40e_delete_clsflower(struct i40e_vsi *vsi, struct tc_cls_flower_offload *cls_flower)
+
+    Remove tc flower filters
+
+    :param struct i40e_vsi \*vsi:
+        Pointer to VSI
+
+    :param struct tc_cls_flower_offload \*cls_flower:
+        Pointer to struct tc_cls_flower_offload
+
+.. _`i40e_setup_tc_cls_flower`:
+
+i40e_setup_tc_cls_flower
+========================
+
+.. c:function:: int i40e_setup_tc_cls_flower(struct i40e_netdev_priv *np, struct tc_cls_flower_offload *cls_flower)
+
+    flower classifier offloads
+
+    :param struct i40e_netdev_priv \*np:
+        *undescribed*
+
+    :param struct tc_cls_flower_offload \*cls_flower:
+        *undescribed*
 
 .. _`i40e_open`:
 
@@ -2787,6 +3442,26 @@ Description
 
 This function destroys the hlist where all the Flow Director
 filters were saved.
+
+.. _`i40e_cloud_filter_exit`:
+
+i40e_cloud_filter_exit
+======================
+
+.. c:function:: void i40e_cloud_filter_exit(struct i40e_pf *pf)
+
+    Cleans up the cloud filters
+
+    :param struct i40e_pf \*pf:
+        Pointer to PF
+
+.. _`i40e_cloud_filter_exit.description`:
+
+Description
+-----------
+
+This function destroys the hlist where all the cloud filters
+were saved.
 
 .. _`i40e_close`:
 
@@ -3181,12 +3856,15 @@ change across the reset.
 i40e_get_capabilities
 =====================
 
-.. c:function:: int i40e_get_capabilities(struct i40e_pf *pf)
+.. c:function:: int i40e_get_capabilities(struct i40e_pf *pf, enum i40e_admin_queue_opc list_type)
 
     get info about the HW
 
     :param struct i40e_pf \*pf:
         the PF struct
+
+    :param enum i40e_admin_queue_opc list_type:
+        *undescribed*
 
 .. _`i40e_fdir_sb_setup`:
 
@@ -3211,6 +3889,48 @@ i40e_fdir_teardown
 
     :param struct i40e_pf \*pf:
         board private structure
+
+.. _`i40e_rebuild_cloud_filters`:
+
+i40e_rebuild_cloud_filters
+==========================
+
+.. c:function:: int i40e_rebuild_cloud_filters(struct i40e_vsi *vsi, u16 seid)
+
+    Rebuilds cloud filters for VSIs
+
+    :param struct i40e_vsi \*vsi:
+        PF main vsi
+
+    :param u16 seid:
+        seid of main or channel VSIs
+
+.. _`i40e_rebuild_cloud_filters.description`:
+
+Description
+-----------
+
+Rebuilds cloud filters associated with main VSI and channel VSIs if they
+existed before reset
+
+.. _`i40e_rebuild_channels`:
+
+i40e_rebuild_channels
+=====================
+
+.. c:function:: int i40e_rebuild_channels(struct i40e_vsi *vsi)
+
+    Rebuilds channel VSIs if they existed before reset
+
+    :param struct i40e_vsi \*vsi:
+        PF main vsi
+
+.. _`i40e_rebuild_channels.description`:
+
+Description
+-----------
+
+Rebuilds channel VSIs if they existed before reset
 
 .. _`i40e_prep_for_reset`:
 
@@ -3391,12 +4111,12 @@ i40e_service_task
 i40e_service_timer
 ==================
 
-.. c:function:: void i40e_service_timer(unsigned long data)
+.. c:function:: void i40e_service_timer(struct timer_list *t)
 
     timer callback
 
-    :param unsigned long data:
-        pointer to PF struct
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`i40e_set_num_rings_in_vsi`:
 
@@ -3420,7 +4140,7 @@ i40e_vsi_alloc_arrays
     Allocate queue and vector pointer arrays for the vsi
 
     :param struct i40e_vsi \*vsi:
-        *undescribed*
+        VSI pointer
 
     :param bool alloc_qvectors:
         a bool to specify if q_vectors need to be allocated.
@@ -3645,6 +4365,27 @@ i40e_init_interrupt_scheme
     :param struct i40e_pf \*pf:
         board private structure to initialize
 
+.. _`i40e_restore_interrupt_scheme`:
+
+i40e_restore_interrupt_scheme
+=============================
+
+.. c:function:: int i40e_restore_interrupt_scheme(struct i40e_pf *pf)
+
+    Restore the interrupt scheme
+
+    :param struct i40e_pf \*pf:
+        private board data structure
+
+.. _`i40e_restore_interrupt_scheme.description`:
+
+Description
+-----------
+
+Restore the interrupt scheme that was cleared when we suspended the
+device. This should be called during resume to re-allocate the q_vectors
+and reacquire IRQs.
+
 .. _`i40e_setup_misc_vector`:
 
 i40e_setup_misc_vector
@@ -3665,27 +4406,6 @@ Description
 This sets up the handler for MSIX 0, which is used to manage the
 non-queue interrupts, e.g. AdminQ and errors.  This is not used
 when in MSI or Legacy interrupt mode.
-
-.. _`i40e_config_rss_aq`:
-
-i40e_config_rss_aq
-==================
-
-.. c:function:: int i40e_config_rss_aq(struct i40e_vsi *vsi, const u8 *seed, u8 *lut, u16 lut_size)
-
-    Prepare for RSS using AQ commands
-
-    :param struct i40e_vsi \*vsi:
-        vsi structure
-
-    :param const u8 \*seed:
-        RSS hash seed
-
-    :param u8 \*lut:
-        *undescribed*
-
-    :param u16 lut_size:
-        *undescribed*
 
 .. _`i40e_get_rss_aq`:
 
@@ -3714,18 +4434,6 @@ Description
 -----------
 
 Return 0 on success, negative on failure
-
-.. _`i40e_vsi_config_rss`:
-
-i40e_vsi_config_rss
-===================
-
-.. c:function:: int i40e_vsi_config_rss(struct i40e_vsi *vsi)
-
-    Prepare for VSI(VMDq) RSS if used
-
-    :param struct i40e_vsi \*vsi:
-        VSI structure
 
 .. _`i40e_config_rss_reg`:
 
@@ -4206,14 +4914,14 @@ i40e_xdp_setup
 i40e_xdp
 ========
 
-.. c:function:: int i40e_xdp(struct net_device *dev, struct netdev_xdp *xdp)
+.. c:function:: int i40e_xdp(struct net_device *dev, struct netdev_bpf *xdp)
 
-    implements ndo_xdp for i40e
+    implements ndo_bpf for i40e
 
     :param struct net_device \*dev:
         netdevice
 
-    :param struct netdev_xdp \*xdp:
+    :param struct netdev_bpf \*xdp:
         XDP command
 
 .. _`i40e_config_netdev`:
@@ -4758,6 +5466,30 @@ the pci slot has been reset.  If a basic connection seems good
 (registers are readable and have sane content) then return a
 happy little PCI_ERS_RESULT_xxx.
 
+.. _`i40e_pci_error_reset_prepare`:
+
+i40e_pci_error_reset_prepare
+============================
+
+.. c:function:: void i40e_pci_error_reset_prepare(struct pci_dev *pdev)
+
+    prepare device driver for pci reset
+
+    :param struct pci_dev \*pdev:
+        PCI device information struct
+
+.. _`i40e_pci_error_reset_done`:
+
+i40e_pci_error_reset_done
+=========================
+
+.. c:function:: void i40e_pci_error_reset_done(struct pci_dev *pdev)
+
+    pci reset done, device driver reset can begin
+
+    :param struct pci_dev \*pdev:
+        PCI device information struct
+
 .. _`i40e_pci_error_resume`:
 
 i40e_pci_error_resume
@@ -4807,27 +5539,24 @@ i40e_shutdown
 i40e_suspend
 ============
 
-.. c:function:: int i40e_suspend(struct pci_dev *pdev, pm_message_t state)
+.. c:function:: int __maybe_unused i40e_suspend(struct device *dev)
 
-    PCI callback for moving to D3
+    PM callback for moving to D3
 
-    :param struct pci_dev \*pdev:
-        PCI device information struct
-
-    :param pm_message_t state:
-        *undescribed*
+    :param struct device \*dev:
+        generic device information structure
 
 .. _`i40e_resume`:
 
 i40e_resume
 ===========
 
-.. c:function:: int i40e_resume(struct pci_dev *pdev)
+.. c:function:: int __maybe_unused i40e_resume(struct device *dev)
 
-    PCI callback for waking up from D3
+    PM callback for waking up from D3
 
-    :param struct pci_dev \*pdev:
-        PCI device information struct
+    :param struct device \*dev:
+        generic device information structure
 
 .. _`i40e_init_module`:
 

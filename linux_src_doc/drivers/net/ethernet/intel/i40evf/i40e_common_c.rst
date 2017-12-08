@@ -362,6 +362,70 @@ i40evf_write_rx_ctl
     :param u32 reg_val:
         register value
 
+.. _`i40evf_aq_set_phy_register`:
+
+i40evf_aq_set_phy_register
+==========================
+
+.. c:function:: i40e_status i40evf_aq_set_phy_register(struct i40e_hw *hw, u8 phy_select, u8 dev_addr, u32 reg_addr, u32 reg_val, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u8 phy_select:
+        select which phy should be accessed
+
+    :param u8 dev_addr:
+        PHY device address
+
+    :param u32 reg_addr:
+        PHY register address
+
+    :param u32 reg_val:
+        new register value
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40evf_aq_set_phy_register.description`:
+
+Description
+-----------
+
+Reset the external PHY.
+
+.. _`i40evf_aq_get_phy_register`:
+
+i40evf_aq_get_phy_register
+==========================
+
+.. c:function:: i40e_status i40evf_aq_get_phy_register(struct i40e_hw *hw, u8 phy_select, u8 dev_addr, u32 reg_addr, u32 *reg_val, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u8 phy_select:
+        select which phy should be accessed
+
+    :param u8 dev_addr:
+        PHY device address
+
+    :param u32 reg_addr:
+        PHY register address
+
+    :param u32 \*reg_val:
+        read register value
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40evf_aq_get_phy_register.description`:
+
+Description
+-----------
+
+Reset the external PHY.
+
 .. _`i40e_aq_send_msg_to_pf`:
 
 i40e_aq_send_msg_to_pf

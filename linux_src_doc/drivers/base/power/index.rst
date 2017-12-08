@@ -7,7 +7,6 @@ power
 .. toctree::
     :maxdepth: 1
 
-    opp/index
     clock_ops_c
     common_c
     domain_c

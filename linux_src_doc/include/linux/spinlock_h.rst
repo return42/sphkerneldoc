@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/spinlock.h
 
-.. _`raw_spin_can_lock`:
-
-raw_spin_can_lock
-=================
-
-.. c:function::  raw_spin_can_lock( lock)
-
-    would \ :c:func:`raw_spin_trylock`\  succeed?
-
-    :param  lock:
-        the spinlock in question.
-
 .. _`_atomic_dec_and_lock`:
 
 _atomic_dec_and_lock

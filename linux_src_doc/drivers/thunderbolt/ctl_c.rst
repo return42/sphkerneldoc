@@ -157,7 +157,7 @@ Returns 0 on success or an error code on failure.
 tb_ctl_handle_event
 ===================
 
-.. c:function:: void tb_ctl_handle_event(struct tb_ctl *ctl, enum tb_cfg_pkg_type type, struct ctl_pkg *pkg, size_t size)
+.. c:function:: bool tb_ctl_handle_event(struct tb_ctl *ctl, enum tb_cfg_pkg_type type, struct ctl_pkg *pkg, size_t size)
 
     acknowledge a plug event, invoke ctl->callback
 

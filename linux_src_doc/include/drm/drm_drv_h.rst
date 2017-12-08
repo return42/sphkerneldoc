@@ -28,7 +28,7 @@ Definition
         int (*enable_vblank) (struct drm_device *dev, unsigned int pipe);
         void (*disable_vblank) (struct drm_device *dev, unsigned int pipe);
         bool (*get_scanout_position) (struct drm_device *dev, unsigned int pipe,bool in_vblank_irq, int *vpos, int *hpos,ktime_t *stime, ktime_t *etime, const struct drm_display_mode *mode);
-        bool (*get_vblank_timestamp) (struct drm_device *dev, unsigned int pipe,int *max_error,struct timeval *vblank_time, bool in_vblank_irq);
+        bool (*get_vblank_timestamp) (struct drm_device *dev, unsigned int pipe,int *max_error,ktime_t *vblank_time, bool in_vblank_irq);
         irqreturn_t(*irq_handler) (int irq, void *arg);
         void (*irq_preinstall) (struct drm_device *dev);
         int (*irq_postinstall) (struct drm_device *dev);
@@ -152,7 +152,7 @@ unload
     reverse order of the initialization.  Similarly to the load
     hook, this handler is deprecated and its usage should be
     dropped in favor of an open-coded teardown function at the
-    driver layer.  See \ :c:func:`drm_dev_unregister`\  and \ :c:func:`drm_dev_unref`\ 
+    driver layer.  See \ :c:func:`drm_dev_unregister`\  and \ :c:func:`drm_dev_put`\ 
     for the proper way to remove a \ :c:type:`struct drm_device <drm_device>`\ .
 
     The \ :c:func:`unload`\  hook is called right after unregistering

@@ -57,7 +57,7 @@ key_size
 crypto_ecdh_key_len
 ===================
 
-.. c:function:: int crypto_ecdh_key_len(const struct ecdh *params)
+.. c:function:: unsigned int crypto_ecdh_key_len(const struct ecdh *params)
 
     Obtain the size of the private ECDH key
 

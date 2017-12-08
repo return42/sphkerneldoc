@@ -119,6 +119,7 @@ unmap
 
 map_sg
     map a scatter-gather list of physically contiguous memory chunks
+    to an iommu domain
 
 flush_iotlb_all
     *undescribed*

@@ -363,7 +363,7 @@ mux_setting
     The most recent selected mux setting for this pin, if any.
 
 gpio_owner
-    If \ :c:func:`pinctrl_request_gpio`\  was called for this pin, this is
+    If \ :c:func:`pinctrl_gpio_request`\  was called for this pin, this is
     the name of the GPIO that "owns" this pin.
 
 .. _`pinctrl_maps`:

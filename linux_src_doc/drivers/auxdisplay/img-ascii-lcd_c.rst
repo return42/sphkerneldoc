@@ -115,12 +115,12 @@ curr
 img_ascii_lcd_scroll
 ====================
 
-.. c:function:: void img_ascii_lcd_scroll(unsigned long arg)
+.. c:function:: void img_ascii_lcd_scroll(struct timer_list *t)
 
     scroll the display by a character
 
-    :param unsigned long arg:
-        really a pointer to the private data structure
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`img_ascii_lcd_scroll.description`:
 

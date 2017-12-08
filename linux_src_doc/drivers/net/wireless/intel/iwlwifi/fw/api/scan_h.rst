@@ -906,31 +906,51 @@ Definition
         __le32 uid;
         __le32 ooc_priority;
         __le16 general_flags;
-        u8 reserved2;
+        u8 reserved;
         u8 scan_start_mac_id;
-        u8 extended_dwell;
-        u8 active_dwell;
-        u8 passive_dwell;
-        u8 fragmented_dwell;
         union {
             struct {
+                u8 extended_dwell;
+                u8 active_dwell;
+                u8 passive_dwell;
+                u8 fragmented_dwell;
                 __le32 max_out_time;
                 __le32 suspend_time;
                 __le32 scan_priority;
                 u8 channel_flags;
                 u8 n_channels;
-                __le16 reserved;
+                __le16 reserved2;
                 u8 data[];
             } v1;
             struct {
+                u8 extended_dwell;
+                u8 active_dwell;
+                u8 passive_dwell;
+                u8 fragmented_dwell;
                 __le32 max_out_time[SCAN_TWO_LMACS];
                 __le32 suspend_time[SCAN_TWO_LMACS];
                 __le32 scan_priority;
                 u8 channel_flags;
                 u8 n_channels;
-                __le16 reserved;
+                __le16 reserved2;
                 u8 data[];
             } v6;
+            struct {
+                u8 active_dwell;
+                u8 passive_dwell;
+                u8 fragmented_dwell;
+                u8 adwell_default_n_aps;
+                u8 adwell_default_n_aps_social;
+                u8 reserved3;
+                __le16 adwell_max_budget;
+                __le32 max_out_time[SCAN_TWO_LMACS];
+                __le32 suspend_time[SCAN_TWO_LMACS];
+                __le32 scan_priority;
+                u8 channel_flags;
+                u8 n_channels;
+                __le16 reserved2;
+                u8 data[];
+            } v7;
         } ;
     }
 
@@ -951,23 +971,11 @@ ooc_priority
 general_flags
     &enum iwl_umac_scan_general_flags
 
-reserved2
+reserved
     for future use and alignment
 
 scan_start_mac_id
     report the scan start TSF time according to this mac TSF
-
-extended_dwell
-    dwell time for channels 1, 6 and 11
-
-active_dwell
-    dwell time for active scan
-
-passive_dwell
-    dwell time for passive scan
-
-fragmented_dwell
-    dwell time for fragmented passive scan
 
 {unnamed_union}
     anonymous
@@ -976,6 +984,9 @@ v1
     *undescribed*
 
 v6
+    *undescribed*
+
+v7
     *undescribed*
 
 .. _`iwl_umac_scan_abort`:

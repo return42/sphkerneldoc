@@ -470,23 +470,23 @@ Description
 A child event will use parent's \ ``list``\  (and therefore \ ``lock``\ ), so they are
 bundled together; see \ :c:func:`perf_event_addr_filters`\ .
 
-.. _`perf_event_active_state`:
+.. _`perf_event_state`:
 
-enum perf_event_active_state
-============================
+enum perf_event_state
+=====================
 
-.. c:type:: enum perf_event_active_state
+.. c:type:: enum perf_event_state
 
     the states of a event
 
-.. _`perf_event_active_state.definition`:
+.. _`perf_event_state.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    enum perf_event_active_state {
+    enum perf_event_state {
         PERF_EVENT_STATE_DEAD,
         PERF_EVENT_STATE_EXIT,
         PERF_EVENT_STATE_ERROR,
@@ -495,7 +495,7 @@ Definition
         PERF_EVENT_STATE_ACTIVE
     };
 
-.. _`perf_event_active_state.constants`:
+.. _`perf_event_state.constants`:
 
 Constants
 ---------
@@ -548,15 +548,13 @@ Definition
         struct perf_event *group_leader;
         struct pmu *pmu;
         void *pmu_private;
-        enum perf_event_active_state state;
+        enum perf_event_state state;
         unsigned int attach_state;
         local64_t count;
         atomic64_t child_count;
         u64 total_time_enabled;
         u64 total_time_running;
-        u64 tstamp_enabled;
-        u64 tstamp_running;
-        u64 tstamp_stopped;
+        u64 tstamp;
         u64 shadow_ctx_time;
         struct perf_event_attr attr;
         u16 header_size;
@@ -610,7 +608,6 @@ Definition
     #endif
     #ifdef CONFIG_CGROUP_PERF
         struct perf_cgroup *cgrp;
-        int cgrp_defer_enabled;
     #endif
         struct list_head sb_list;
     #endif
@@ -675,13 +672,7 @@ total_time_enabled
 total_time_running
     *undescribed*
 
-tstamp_enabled
-    *undescribed*
-
-tstamp_running
-    *undescribed*
-
-tstamp_stopped
+tstamp
     *undescribed*
 
 shadow_ctx_time
@@ -820,9 +811,6 @@ ftrace_ops
     *undescribed*
 
 cgrp
-    *undescribed*
-
-cgrp_defer_enabled
     *undescribed*
 
 sb_list

@@ -36,18 +36,6 @@ devfreq_get_freq_level
     :param unsigned long freq:
         the target frequency
 
-.. _`devfreq_set_freq_table`:
-
-devfreq_set_freq_table
-======================
-
-.. c:function:: void devfreq_set_freq_table(struct devfreq *devfreq)
-
-    Initialize freq_table for the frequency
-
-    :param struct devfreq \*devfreq:
-        the devfreq instance
-
 .. _`devfreq_update_status`:
 
 devfreq_update_status

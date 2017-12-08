@@ -139,7 +139,7 @@ s3c2410_calc_bank
 
 .. c:function:: int s3c2410_calc_bank(struct s3c_cpufreq_config *cfg, struct s3c2410_iobank_timing *bt)
 
-    calculate bank timing infromation
+    calculate bank timing information
 
     :param struct s3c_cpufreq_config \*cfg:
         The configuration we need to calculate for.

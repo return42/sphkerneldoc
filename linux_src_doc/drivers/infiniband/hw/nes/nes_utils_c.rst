@@ -157,9 +157,9 @@ nes_arp_table
 nes_mh_fix
 ==========
 
-.. c:function:: void nes_mh_fix(unsigned long parm)
+.. c:function:: void nes_mh_fix(struct timer_list *t)
 
-    :param unsigned long parm:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`nes_clc`:
@@ -167,9 +167,9 @@ nes_mh_fix
 nes_clc
 =======
 
-.. c:function:: void nes_clc(unsigned long parm)
+.. c:function:: void nes_clc(struct timer_list *t)
 
-    :param unsigned long parm:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`nes_dump_mem`:

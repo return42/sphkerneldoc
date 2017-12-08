@@ -53,7 +53,7 @@ Definition
         struct macsec_key key;
         spinlock_t lock;
         u32 next_pn;
-        atomic_t refcnt;
+        refcount_t refcnt;
         bool active;
         struct macsec_rx_sa_stats __percpu *stats;
         struct macsec_rx_sc *sc;
@@ -111,7 +111,7 @@ Definition
         bool active;
         struct macsec_rx_sa __rcu *sa[MACSEC_NUM_AN];
         struct pcpu_rx_sc_stats __percpu *stats;
-        atomic_t refcnt;
+        refcount_t refcnt;
         struct rcu_head rcu_head;
     }
 
@@ -161,7 +161,7 @@ Definition
         struct macsec_key key;
         spinlock_t lock;
         u32 next_pn;
-        atomic_t refcnt;
+        refcount_t refcnt;
         bool active;
         struct macsec_tx_sa_stats __percpu *stats;
         struct rcu_head rcu;

@@ -627,6 +627,49 @@ Return
 
 Virtual address of allocated memory block on success, NULL on failure.
 
+.. _`memblock_virt_alloc_try_nid_raw`:
+
+memblock_virt_alloc_try_nid_raw
+===============================
+
+.. c:function:: void *memblock_virt_alloc_try_nid_raw(phys_addr_t size, phys_addr_t align, phys_addr_t min_addr, phys_addr_t max_addr, int nid)
+
+    allocate boot memory block without zeroing memory and without panicking
+
+    :param phys_addr_t size:
+        size of memory block to be allocated in bytes
+
+    :param phys_addr_t align:
+        alignment of the region and block's size
+
+    :param phys_addr_t min_addr:
+        the lower bound of the memory region from where the allocation
+        is preferred (phys address)
+
+    :param phys_addr_t max_addr:
+        the upper bound of the memory region from where the allocation
+        is preferred (phys address), or \ ``BOOTMEM_ALLOC_ACCESSIBLE``\  to
+        allocate only from memory limited by memblock.current_limit value
+
+    :param int nid:
+        nid of the free area to find, \ ``NUMA_NO_NODE``\  for any node
+
+.. _`memblock_virt_alloc_try_nid_raw.description`:
+
+Description
+-----------
+
+Public function, provides additional debug information (including caller
+info), if enabled. Does not zero allocated memory, does not panic if request
+cannot be satisfied.
+
+.. _`memblock_virt_alloc_try_nid_raw.return`:
+
+Return
+------
+
+Virtual address of allocated memory block on success, NULL on failure.
+
 .. _`memblock_virt_alloc_try_nid_nopanic`:
 
 memblock_virt_alloc_try_nid_nopanic
@@ -659,8 +702,8 @@ memblock_virt_alloc_try_nid_nopanic
 Description
 -----------
 
-Public version of \_memblock_virt_alloc_try_nid_nopanic() which provides
-additional debug information (including caller info), if enabled.
+Public function, provides additional debug information (including caller
+info), if enabled. This function zeroes the allocated memory.
 
 .. _`memblock_virt_alloc_try_nid_nopanic.return`:
 
@@ -701,7 +744,7 @@ memblock_virt_alloc_try_nid
 Description
 -----------
 
-Public panicking version of \_memblock_virt_alloc_try_nid_nopanic()
+Public panicking version of \ :c:func:`memblock_virt_alloc_try_nid_nopanic`\ 
 which provides debug information (including caller info), if enabled,
 and panics if the request can not be satisfied.
 

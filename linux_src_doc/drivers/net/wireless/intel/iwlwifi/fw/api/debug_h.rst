@@ -459,6 +459,34 @@ Mark the UTC time stamp into the usniffer logs together with additional
 metadata, so the usniffer output can be parsed.
 In the command response the ucode will return the GP2 time.
 
+.. _`iwl_mvm_marker_rsp`:
+
+struct iwl_mvm_marker_rsp
+=========================
+
+.. c:type:: struct iwl_mvm_marker_rsp
+
+    Response to marker cmd
+
+.. _`iwl_mvm_marker_rsp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_marker_rsp {
+        __le32 gp2;
+    }
+
+.. _`iwl_mvm_marker_rsp.members`:
+
+Members
+-------
+
+gp2
+    The gp2 clock value in the FW
+
 .. _`iwl_dbg_mem_access_cmd`:
 
 struct iwl_dbg_mem_access_cmd

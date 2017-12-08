@@ -6,12 +6,15 @@
 rtc_set_ntp_time
 ================
 
-.. c:function:: int rtc_set_ntp_time(struct timespec64 now)
+.. c:function:: int rtc_set_ntp_time(struct timespec64 now, unsigned long *target_nsec)
 
     Save NTP synchronized time to the RTC
 
     :param struct timespec64 now:
         Current time of day
+
+    :param unsigned long \*target_nsec:
+        pointer for desired now->tv_nsec value
 
 .. _`rtc_set_ntp_time.description`:
 
@@ -25,6 +28,7 @@ Returns 0 on successful RTC update, -ENODEV if a RTC update is not
 possible at all, and various other -errno for specific temporary failure
 cases.
 
+-EPROTO is returned if now.tv_nsec is not close enough to \*target_nsec.
 If temporary failure is indicated the caller should try again 'soon'
 
 .. This file was automatic generated / don't edit.

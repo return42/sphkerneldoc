@@ -43,5 +43,30 @@ hfi1_format_hwerrors
     :param size_t msgl:
         *undescribed*
 
+.. _`handle_linkup_change`:
+
+handle_linkup_change
+====================
+
+.. c:function:: void handle_linkup_change(struct hfi1_devdata *dd, u32 linkup)
+
+    finish linkup/down state changes
+
+    :param struct hfi1_devdata \*dd:
+        valid device
+
+    :param u32 linkup:
+        link state information
+
+.. _`handle_linkup_change.description`:
+
+Description
+-----------
+
+Handle a linkup or link down notification.
+The HW needs time to finish its link up state change. Give it that chance.
+
+This is called outside an interrupt.
+
 .. This file was automatic generated / don't edit.
 

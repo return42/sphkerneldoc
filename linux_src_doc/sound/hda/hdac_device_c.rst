@@ -327,32 +327,15 @@ This function reads parameters always without caching.
 snd_hdac_refresh_widgets
 ========================
 
-.. c:function:: int snd_hdac_refresh_widgets(struct hdac_device *codec)
+.. c:function:: int snd_hdac_refresh_widgets(struct hdac_device *codec, bool sysfs)
 
     Reset the widget start/end nodes
 
     :param struct hdac_device \*codec:
         the codec object
 
-.. _`snd_hdac_refresh_widget_sysfs`:
-
-snd_hdac_refresh_widget_sysfs
-=============================
-
-.. c:function:: int snd_hdac_refresh_widget_sysfs(struct hdac_device *codec)
-
-    Reset the codec widgets and reinit the codec sysfs
-
-    :param struct hdac_device \*codec:
-        the codec object
-
-.. _`snd_hdac_refresh_widget_sysfs.description`:
-
-Description
------------
-
-first we need to remove sysfs, then refresh widgets and lastly
-recreate it
+    :param bool sysfs:
+        re-initialize sysfs tree, too
 
 .. _`snd_hdac_get_connections`:
 

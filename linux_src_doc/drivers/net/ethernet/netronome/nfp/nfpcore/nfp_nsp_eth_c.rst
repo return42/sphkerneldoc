@@ -158,6 +158,63 @@ Return
 
 0 or -ERRNO.
 
+.. _`__nfp_eth_set_fec`:
+
+__nfp_eth_set_fec
+=================
+
+.. c:function:: int __nfp_eth_set_fec(struct nfp_nsp *nsp, enum nfp_eth_fec mode)
+
+    set PHY forward error correction control bit
+
+    :param struct nfp_nsp \*nsp:
+        NFP NSP handle returned from \ :c:func:`nfp_eth_config_start`\ 
+
+    :param enum nfp_eth_fec mode:
+        Desired fec mode
+
+.. _`__nfp_eth_set_fec.description`:
+
+Description
+-----------
+
+Set the PHY module forward error correction mode.
+Will write to hwinfo overrides in the flash (persistent config).
+
+.. _`__nfp_eth_set_fec.return`:
+
+Return
+------
+
+0 or -ERRNO.
+
+.. _`nfp_eth_set_fec`:
+
+nfp_eth_set_fec
+===============
+
+.. c:function:: int nfp_eth_set_fec(struct nfp_cpp *cpp, unsigned int idx, enum nfp_eth_fec mode)
+
+    set PHY forward error correction control mode
+
+    :param struct nfp_cpp \*cpp:
+        NFP CPP handle
+
+    :param unsigned int idx:
+        NFP chip-wide port index
+
+    :param enum nfp_eth_fec mode:
+        Desired fec mode
+
+.. _`nfp_eth_set_fec.return`:
+
+Return
+------
+
+0 - configuration successful;
+1 - no changes were needed;
+-ERRNO - configuration failed.
+
 .. _`__nfp_eth_set_speed`:
 
 __nfp_eth_set_speed

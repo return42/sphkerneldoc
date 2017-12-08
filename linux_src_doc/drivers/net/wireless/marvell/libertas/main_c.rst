@@ -120,36 +120,36 @@ Return
 lbs_cmd_timeout_handler
 =======================
 
-.. c:function:: void lbs_cmd_timeout_handler(unsigned long data)
+.. c:function:: void lbs_cmd_timeout_handler(struct timer_list *t)
 
     handles the timeout of command sending. It will re-send the same command again.
 
-    :param unsigned long data:
-        &struct lbs_private pointer
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lbs_tx_lockup_handler`:
 
 lbs_tx_lockup_handler
 =====================
 
-.. c:function:: void lbs_tx_lockup_handler(unsigned long data)
+.. c:function:: void lbs_tx_lockup_handler(struct timer_list *t)
 
     handles the timeout of the passing of TX frames to the hardware. This is known to frequently happen with SD8686 when waking up after a Wake-on-WLAN-triggered resume.
 
-    :param unsigned long data:
-        &struct lbs_private pointer
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`auto_deepsleep_timer_fn`:
 
 auto_deepsleep_timer_fn
 =======================
 
-.. c:function:: void auto_deepsleep_timer_fn(unsigned long data)
+.. c:function:: void auto_deepsleep_timer_fn(struct timer_list *t)
 
     put the device back to deep sleep mode when timer expires and no activity (command, event, data etc.) is detected.
 
-    :param unsigned long data:
-        &struct lbs_private pointer
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`auto_deepsleep_timer_fn.return`:
 

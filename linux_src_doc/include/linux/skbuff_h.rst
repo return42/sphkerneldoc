@@ -107,20 +107,25 @@ Definition
                 struct sk_buff *next;
                 struct sk_buff *prev;
                 union {
-                    ktime_t tstamp;
-                    u64 skb_mstamp;
+                    struct net_device *dev;
+                    unsigned long dev_scratch;
                 } ;
             } ;
             struct rb_node rbnode;
         } ;
         struct sock *sk;
         union {
-            struct net_device *dev;
-            unsigned long dev_scratch;
+            ktime_t tstamp;
+            u64 skb_mstamp;
         } ;
         char cb[48] __aligned(8);
-        unsigned long _skb_refdst;
-        void (*destructor)(struct sk_buff *skb);
+        union {
+            struct {
+                unsigned long _skb_refdst;
+                void (*destructor)(struct sk_buff *skb);
+            } ;
+            struct list_head tcp_tsorted_anchor;
+        } ;
     #ifdef CONFIG_XFRM
         struct sec_path *sp;
     #endif
@@ -132,7 +137,6 @@ Definition
     #endif
         unsigned int len, data_len;
         __u16 mac_len, hdr_len;
-        kmemcheck_bitfield_begin(flags1);
         __u16 queue_mapping;
     #ifdef __BIG_ENDIAN_BITFIELD
     #define CLONED_MASK (1 << 7)
@@ -142,7 +146,6 @@ Definition
     #define CLONED_OFFSET() offsetof(struct sk_buff, __cloned_offset)
         __u8 __cloned_offset[0];
         __u8 cloned:1,nohdr:1,fclone:2,peeked:1,head_frag:1,xmit_more:1, __unused:1;
-        kmemcheck_bitfield_end(flags1);
     #ifdef __BIG_ENDIAN_BITFIELD
     #define PKT_TYPE_MAX (7 << 5)
     #else
@@ -176,6 +179,7 @@ Definition
         __u8 remcsum_offload:1;
     #ifdef CONFIG_NET_SWITCHDEV
         __u8 offload_fwd_mark:1;
+        __u8 offload_mr_fwd_mark:1;
     #endif
     #ifdef CONFIG_NET_CLS_ACT
         __u8 tc_skip_classify:1;
@@ -249,10 +253,10 @@ prev
 {unnamed_union}
     anonymous
 
-tstamp
-    Time we arrived/left
+dev
+    Device we arrived on/are leaving by
 
-skb_mstamp
+dev_scratch
     *undescribed*
 
 rbnode
@@ -264,20 +268,29 @@ sk
 {unnamed_union}
     anonymous
 
-dev
-    Device we arrived on/are leaving by
+tstamp
+    Time we arrived/left
 
-dev_scratch
+skb_mstamp
     *undescribed*
 
 cb
     Control buffer. Free for use by every layer. Put private vars here
+
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
 
 _skb_refdst
     destination entry (with norefcount bit)
 
 destructor
     Destruct function
+
+tcp_tsorted_anchor
+    list structure for TCP (tp->tsorted_sent_queue)
 
 sp
     the security path, used for xfrm
@@ -399,6 +412,9 @@ remcsum_offload
     *undescribed*
 
 offload_fwd_mark
+    *undescribed*
+
+offload_mr_fwd_mark
     *undescribed*
 
 tc_skip_classify
@@ -814,28 +830,6 @@ Description
      Returns true if modifying the header part of the buffer requires
      the data to be copied.
 
-.. _`skb_header_release`:
-
-skb_header_release
-==================
-
-.. c:function:: void skb_header_release(struct sk_buff *skb)
-
-    release reference to header
-
-    :param struct sk_buff \*skb:
-        buffer to operate on
-
-.. _`skb_header_release.description`:
-
-Description
------------
-
-     Drop a reference to the header part of the buffer.  This is done
-     by acquiring a payload reference.  You must not read from the header
-     part of skb->data after this.
-     Note : Check if you can use \ :c:func:`__skb_header_release`\  instead.
-
 .. _`__skb_header_release`:
 
 __skb_header_release
@@ -847,14 +841,6 @@ __skb_header_release
 
     :param struct sk_buff \*skb:
         buffer to operate on
-
-.. _`__skb_header_release.description`:
-
-Description
------------
-
-     Variant of \ :c:func:`skb_header_release`\  assuming skb is private to caller.
-     We can avoid one atomic operation.
 
 .. _`skb_shared`:
 

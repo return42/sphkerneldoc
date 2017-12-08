@@ -209,25 +209,6 @@ Description
 
 Returns 0 on success or a negative error code.
 
-.. _`__rtnl_af_unregister`:
-
-__rtnl_af_unregister
-====================
-
-.. c:function:: void __rtnl_af_unregister(struct rtnl_af_ops *ops)
-
-    Unregister rtnl_af_ops from rtnetlink.
-
-    :param struct rtnl_af_ops \*ops:
-        struct rtnl_af_ops \* to unregister
-
-.. _`__rtnl_af_unregister.description`:
-
-Description
------------
-
-The caller must hold the rtnl_mutex.
-
 .. _`rtnl_af_unregister`:
 
 rtnl_af_unregister

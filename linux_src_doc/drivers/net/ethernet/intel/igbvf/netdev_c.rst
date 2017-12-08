@@ -599,12 +599,12 @@ igbvf_update_stats
 igbvf_watchdog
 ==============
 
-.. c:function:: void igbvf_watchdog(unsigned long data)
+.. c:function:: void igbvf_watchdog(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to adapter cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`igbvf_tx_timeout`:
 

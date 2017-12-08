@@ -557,6 +557,30 @@ Description
 Enables all clocks necessary for register reads and writes to succeed
 on the hwmod \ ``oh``\ .  Returns 0.
 
+.. _`_omap4_clkctrl_managed_by_clkfwk`:
+
+_omap4_clkctrl_managed_by_clkfwk
+================================
+
+.. c:function:: bool _omap4_clkctrl_managed_by_clkfwk(struct omap_hwmod *oh)
+
+    true if clkctrl managed by clock framework
+
+    :param struct omap_hwmod \*oh:
+        struct omap_hwmod \*
+
+.. _`_omap4_has_clkctrl_clock`:
+
+_omap4_has_clkctrl_clock
+========================
+
+.. c:function:: bool _omap4_has_clkctrl_clock(struct omap_hwmod *oh)
+
+    returns true if a module has clkctrl clock
+
+    :param struct omap_hwmod \*oh:
+        struct omap_hwmod \*
+
 .. _`_disable_clocks`:
 
 _disable_clocks
@@ -618,173 +642,6 @@ does not have an IDLEST bit or if the module successfully enters
 slave idle; otherwise, pass along the return value of the
 appropriate \*\_cm\*\_wait_module_idle() function.
 
-.. _`_count_mpu_irqs`:
-
-_count_mpu_irqs
-===============
-
-.. c:function:: int _count_mpu_irqs(struct omap_hwmod *oh)
-
-    count the number of MPU IRQ lines associated with \ ``oh``\ 
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*oh
-
-.. _`_count_mpu_irqs.description`:
-
-Description
------------
-
-Count and return the number of MPU IRQs associated with the hwmod
-\ ``oh``\ .  Used to allocate struct resource data.  Returns 0 if \ ``oh``\  is
-NULL.
-
-.. _`_count_sdma_reqs`:
-
-_count_sdma_reqs
-================
-
-.. c:function:: int _count_sdma_reqs(struct omap_hwmod *oh)
-
-    count the number of SDMA request lines associated with \ ``oh``\ 
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*oh
-
-.. _`_count_sdma_reqs.description`:
-
-Description
------------
-
-Count and return the number of SDMA request lines associated with
-the hwmod \ ``oh``\ .  Used to allocate struct resource data.  Returns 0
-if \ ``oh``\  is NULL.
-
-.. _`_count_ocp_if_addr_spaces`:
-
-_count_ocp_if_addr_spaces
-=========================
-
-.. c:function:: int _count_ocp_if_addr_spaces(struct omap_hwmod_ocp_if *os)
-
-    count the number of address space entries for \ ``oh``\ 
-
-    :param struct omap_hwmod_ocp_if \*os:
-        *undescribed*
-
-.. _`_count_ocp_if_addr_spaces.description`:
-
-Description
------------
-
-Count and return the number of address space ranges associated with
-the hwmod \ ``oh``\ .  Used to allocate struct resource data.  Returns 0
-if \ ``oh``\  is NULL.
-
-.. _`_get_mpu_irq_by_name`:
-
-_get_mpu_irq_by_name
-====================
-
-.. c:function:: int _get_mpu_irq_by_name(struct omap_hwmod *oh, const char *name, unsigned int *irq)
-
-    fetch MPU interrupt line number by name
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \* to operate on
-
-    :param const char \*name:
-        pointer to the name of the MPU interrupt number to fetch (optional)
-
-    :param unsigned int \*irq:
-        pointer to an unsigned int to store the MPU IRQ number to
-
-.. _`_get_mpu_irq_by_name.description`:
-
-Description
------------
-
-Retrieve a MPU hardware IRQ line number named by \ ``name``\  associated
-with the IP block pointed to by \ ``oh``\ .  The IRQ number will be filled
-into the address pointed to by \ ``dma``\ .  When \ ``name``\  is non-null, the
-IRQ line number associated with the named entry will be returned.
-If \ ``name``\  is null, the first matching entry will be returned.  Data
-order is not meaningful in hwmod data, so callers are strongly
-encouraged to use a non-null \ ``name``\  whenever possible to avoid
-unpredictable effects if hwmod data is later added that causes data
-ordering to change.  Returns 0 upon success or a negative error
-code upon error.
-
-.. _`_get_sdma_req_by_name`:
-
-_get_sdma_req_by_name
-=====================
-
-.. c:function:: int _get_sdma_req_by_name(struct omap_hwmod *oh, const char *name, unsigned int *dma)
-
-    fetch SDMA request line ID by name
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \* to operate on
-
-    :param const char \*name:
-        pointer to the name of the SDMA request line to fetch (optional)
-
-    :param unsigned int \*dma:
-        pointer to an unsigned int to store the request line ID to
-
-.. _`_get_sdma_req_by_name.description`:
-
-Description
------------
-
-Retrieve an SDMA request line ID named by \ ``name``\  on the IP block
-pointed to by \ ``oh``\ .  The ID will be filled into the address pointed
-to by \ ``dma``\ .  When \ ``name``\  is non-null, the request line ID associated
-with the named entry will be returned.  If \ ``name``\  is null, the first
-matching entry will be returned.  Data order is not meaningful in
-hwmod data, so callers are strongly encouraged to use a non-null
-\ ``name``\  whenever possible to avoid unpredictable effects if hwmod
-data is later added that causes data ordering to change.  Returns 0
-upon success or a negative error code upon error.
-
-.. _`_get_addr_space_by_name`:
-
-_get_addr_space_by_name
-=======================
-
-.. c:function:: int _get_addr_space_by_name(struct omap_hwmod *oh, const char *name, u32 *pa_start, u32 *pa_end)
-
-    fetch address space start & end by name
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \* to operate on
-
-    :param const char \*name:
-        pointer to the name of the address space to fetch (optional)
-
-    :param u32 \*pa_start:
-        pointer to a u32 to store the starting address to
-
-    :param u32 \*pa_end:
-        pointer to a u32 to store the ending address to
-
-.. _`_get_addr_space_by_name.description`:
-
-Description
------------
-
-Retrieve address space start and end addresses for the IP block
-pointed to by \ ``oh``\ .  The data will be filled into the addresses
-pointed to by \ ``pa_start``\  and \ ``pa_end``\ .  When \ ``name``\  is non-null, the
-address space data associated with the named entry will be
-returned.  If \ ``name``\  is null, the first matching entry will be
-returned.  Data order is not meaningful in hwmod data, so callers
-are strongly encouraged to use a non-null \ ``name``\  whenever possible
-to avoid unpredictable effects if hwmod data is later added that
-causes data ordering to change.  Returns 0 upon success or a
-negative error code upon error.
-
 .. _`_save_mpu_port_index`:
 
 _save_mpu_port_index
@@ -832,26 +689,6 @@ connected to the IP block represented by \ ``oh``\ .  Returns a pointer
 to the struct omap_hwmod_ocp_if \* upon success, or returns NULL upon
 error or if there does not appear to be a path from the MPU to this
 IP block.
-
-.. _`_find_mpu_rt_addr_space`:
-
-_find_mpu_rt_addr_space
-=======================
-
-.. c:function:: struct omap_hwmod_addr_space *_find_mpu_rt_addr_space(struct omap_hwmod *oh)
-
-    return MPU register target address space for \ ``oh``\ 
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*
-
-.. _`_find_mpu_rt_addr_space.description`:
-
-Description
------------
-
-Returns a pointer to the struct omap_hwmod_addr_space record representing
-the register target MPU address space; or returns NULL upon error.
 
 .. _`_enable_sysc`:
 
@@ -1391,6 +1228,35 @@ Return
 ------
 
 Returns 0 on success, -ENODEV when not found.
+
+.. _`omap_hwmod_parse_module_range`:
+
+omap_hwmod_parse_module_range
+=============================
+
+.. c:function:: int omap_hwmod_parse_module_range(struct omap_hwmod *oh, struct device_node *np, struct resource *res)
+
+    map module IO range from device tree
+
+    :param struct omap_hwmod \*oh:
+        struct omap_hwmod \*
+
+    :param struct device_node \*np:
+        struct device_node \*
+
+    :param struct resource \*res:
+        *undescribed*
+
+.. _`omap_hwmod_parse_module_range.description`:
+
+Description
+-----------
+
+Parse the device tree range an interconnect target module provides
+for it's child device IP blocks. This way we can support the old
+"ti,hwmods" property with just dts data without a need for platform
+data for IO resources. And we don't need all the child IP device
+nodes available in the dts.
 
 .. _`_init_mpu_rt_base`:
 
@@ -2153,127 +2019,6 @@ Description
 Shutdown an omap_hwmod \ ``oh``\ .  Intended to be called by
 \ :c:func:`omap_device_shutdown`\ .  Returns -EINVAL on error or passes along
 the return value from \_shutdown().
-
-.. _`omap_hwmod_count_resources`:
-
-omap_hwmod_count_resources
-==========================
-
-.. c:function:: int omap_hwmod_count_resources(struct omap_hwmod *oh, unsigned long flags)
-
-    count number of struct resources needed by hwmod
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*
-
-    :param unsigned long flags:
-        Type of resources to include when counting (IRQ/DMA/MEM)
-
-.. _`omap_hwmod_count_resources.description`:
-
-Description
------------
-
-Count the number of struct resource array elements necessary to
-contain omap_hwmod \ ``oh``\  resources.  Intended to be called by code
-that registers omap_devices.  Intended to be used to determine the
-size of a dynamically-allocated struct resource array, before
-calling \ :c:func:`omap_hwmod_fill_resources`\ .  Returns the number of struct
-resource array elements needed.
-
-XXX This code is not optimized.  It could attempt to merge adjacent
-resource IDs.
-
-.. _`omap_hwmod_fill_resources`:
-
-omap_hwmod_fill_resources
-=========================
-
-.. c:function:: int omap_hwmod_fill_resources(struct omap_hwmod *oh, struct resource *res)
-
-    fill struct resource array with hwmod data
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*
-
-    :param struct resource \*res:
-        pointer to the first element of an array of struct resource to fill
-
-.. _`omap_hwmod_fill_resources.description`:
-
-Description
------------
-
-Fill the struct resource array \ ``res``\  with resource data from the
-omap_hwmod \ ``oh``\ .  Intended to be called by code that registers
-omap_devices.  See also \ :c:func:`omap_hwmod_count_resources`\ .  Returns the
-number of array elements filled.
-
-.. _`omap_hwmod_fill_dma_resources`:
-
-omap_hwmod_fill_dma_resources
-=============================
-
-.. c:function:: int omap_hwmod_fill_dma_resources(struct omap_hwmod *oh, struct resource *res)
-
-    fill struct resource array with dma data
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \*
-
-    :param struct resource \*res:
-        pointer to the array of struct resource to fill
-
-.. _`omap_hwmod_fill_dma_resources.description`:
-
-Description
------------
-
-Fill the struct resource array \ ``res``\  with dma resource data from the
-omap_hwmod \ ``oh``\ .  Intended to be called by code that registers
-omap_devices.  See also \ :c:func:`omap_hwmod_count_resources`\ .  Returns the
-number of array elements filled.
-
-.. _`omap_hwmod_get_resource_byname`:
-
-omap_hwmod_get_resource_byname
-==============================
-
-.. c:function:: int omap_hwmod_get_resource_byname(struct omap_hwmod *oh, unsigned int type, const char *name, struct resource *rsrc)
-
-    fetch IP block integration data by name
-
-    :param struct omap_hwmod \*oh:
-        struct omap_hwmod \* to operate on
-
-    :param unsigned int type:
-        one of the IORESOURCE\_\* constants from include/linux/ioport.h
-
-    :param const char \*name:
-        pointer to the name of the data to fetch (optional)
-
-    :param struct resource \*rsrc:
-        pointer to a struct resource, allocated by the caller
-
-.. _`omap_hwmod_get_resource_byname.description`:
-
-Description
------------
-
-Retrieve MPU IRQ, SDMA request line, or address space start/end
-data for the IP block pointed to by \ ``oh``\ .  The data will be filled
-into a struct resource record pointed to by \ ``rsrc``\ .  The struct
-resource must be allocated by the caller.  When \ ``name``\  is non-null,
-the data associated with the matching entry in the IRQ/SDMA/address
-space hwmod data arrays will be returned.  If \ ``name``\  is null, the
-first array entry will be returned.  Data order is not meaningful
-in hwmod data, so callers are strongly encouraged to use a non-null
-\ ``name``\  whenever possible to avoid unpredictable effects if hwmod
-data is later added that causes data ordering to change.  This
-function is only intended for use by OMAP core code.  Device
-drivers should not call this function - the appropriate bus-related
-data accessor functions should be used instead.  Returns 0 upon
-success or a negative error code upon error.
 
 .. _`omap_hwmod_get_pwrdm`:
 

@@ -13,5 +13,4 @@ asm
     bitops_h
     pci_h
     spinlock_32_h
-    spinlock_64_h
     uaccess_h

@@ -615,7 +615,8 @@ Description
 -----------
 
 This routine is invoked by the worker thread to process a SLI4 fast-path
-FCP aborted xri.
+NVME aborted xri.  Aborted NVME IO commands are completed to the transport
+here.
 
 .. This file was automatic generated / don't edit.
 

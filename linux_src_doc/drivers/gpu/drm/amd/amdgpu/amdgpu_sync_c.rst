@@ -129,7 +129,7 @@ amdgpu_sync_fence
 amdgpu_sync_resv
 ================
 
-.. c:function:: int amdgpu_sync_resv(struct amdgpu_device *adev, struct amdgpu_sync *sync, struct reservation_object *resv, void *owner)
+.. c:function:: int amdgpu_sync_resv(struct amdgpu_device *adev, struct amdgpu_sync *sync, struct reservation_object *resv, void *owner, bool explicit_sync)
 
     sync to a reservation object
 
@@ -144,6 +144,9 @@ amdgpu_sync_resv
 
     :param void \*owner:
         *undescribed*
+
+    :param bool explicit_sync:
+        true if we should only sync to the exclusive fence
 
 .. _`amdgpu_sync_resv.description`:
 

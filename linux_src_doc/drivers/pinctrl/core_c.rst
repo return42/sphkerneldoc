@@ -404,19 +404,19 @@ pinctrl_get_group_selector
     :param const char \*pin_group:
         the pin group to look up
 
-.. _`pinctrl_request_gpio`:
+.. _`pinctrl_gpio_request`:
 
-pinctrl_request_gpio
+pinctrl_gpio_request
 ====================
 
-.. c:function:: int pinctrl_request_gpio(unsigned gpio)
+.. c:function:: int pinctrl_gpio_request(unsigned gpio)
 
     request a single pin to be used as GPIO
 
     :param unsigned gpio:
         the GPIO pin number from the GPIO subsystem number space
 
-.. _`pinctrl_request_gpio.description`:
+.. _`pinctrl_gpio_request.description`:
 
 Description
 -----------
@@ -425,19 +425,19 @@ This function should \*ONLY\* be used from gpiolib-based GPIO drivers,
 as part of their \ :c:func:`gpio_request`\  semantics, platforms and individual drivers
 shall \*NOT\* request GPIO pins to be muxed in.
 
-.. _`pinctrl_free_gpio`:
+.. _`pinctrl_gpio_free`:
 
-pinctrl_free_gpio
+pinctrl_gpio_free
 =================
 
-.. c:function:: void pinctrl_free_gpio(unsigned gpio)
+.. c:function:: void pinctrl_gpio_free(unsigned gpio)
 
     free control on a single pin, currently used as GPIO
 
     :param unsigned gpio:
         the GPIO pin number from the GPIO subsystem number space
 
-.. _`pinctrl_free_gpio.description`:
+.. _`pinctrl_gpio_free.description`:
 
 Description
 -----------

@@ -6,7 +6,7 @@
 rxrpc_kernel_begin_call
 =======================
 
-.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, s64 tx_total_len, gfp_t gfp, rxrpc_notify_rx_t notify_rx)
+.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, s64 tx_total_len, gfp_t gfp, rxrpc_notify_rx_t notify_rx, bool upgrade)
 
     Allow a kernel service to begin a call
 
@@ -30,6 +30,9 @@ rxrpc_kernel_begin_call
 
     :param rxrpc_notify_rx_t notify_rx:
         Where to send notifications instead of socket queue
+
+    :param bool upgrade:
+        Request service upgrade for call
 
 .. _`rxrpc_kernel_begin_call.description`:
 
@@ -65,6 +68,34 @@ Description
 
 Allow a kernel service to end a call it was using.  The call must be
 complete before this is called (the call should be aborted if necessary).
+
+.. _`rxrpc_kernel_check_life`:
+
+rxrpc_kernel_check_life
+=======================
+
+.. c:function:: u32 rxrpc_kernel_check_life(struct socket *sock, struct rxrpc_call *call)
+
+    Check to see whether a call is still alive
+
+    :param struct socket \*sock:
+        The socket the call is on
+
+    :param struct rxrpc_call \*call:
+        The call to check
+
+.. _`rxrpc_kernel_check_life.description`:
+
+Description
+-----------
+
+Allow a kernel service to find out whether a call is still alive - ie. we're
+getting ACKs from the server.  Returns a number representing the life state
+which can be compared to that returned by a previous call.
+
+If this is a client call, ping ACKs will be sent to the server to find out
+whether it's still responsive and whether the call is still alive on the
+server.
 
 .. _`rxrpc_kernel_check_call`:
 

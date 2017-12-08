@@ -57,17 +57,5 @@ Description
 Provides the time of the next leapsecond against CLOCK_REALTIME in
 a ktime_t format. Returns KTIME_MAX if no leapsecond is pending.
 
-.. _`ntp_validate_timex`:
-
-ntp_validate_timex
-==================
-
-.. c:function:: int ntp_validate_timex(struct timex *txc)
-
-    Ensures the timex is ok for use in do_adjtimex
-
-    :param struct timex \*txc:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

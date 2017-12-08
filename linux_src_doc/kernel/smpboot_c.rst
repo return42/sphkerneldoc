@@ -101,7 +101,7 @@ Stops all threads on all possible cpus.
 smpboot_update_cpumask_percpu_thread
 ====================================
 
-.. c:function:: int smpboot_update_cpumask_percpu_thread(struct smp_hotplug_thread *plug_thread, const struct cpumask *new)
+.. c:function:: void smpboot_update_cpumask_percpu_thread(struct smp_hotplug_thread *plug_thread, const struct cpumask *new)
 
     Adjust which per_cpu hotplug threads stay parked
 

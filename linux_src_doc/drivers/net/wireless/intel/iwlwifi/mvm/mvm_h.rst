@@ -201,7 +201,6 @@ Definition
         bool csa_failed;
         u16 csa_target_freq;
         netdev_features_t features;
-        bool lqm_active;
     }
 
 .. _`iwl_mvm_vif.members`:
@@ -351,9 +350,6 @@ csa_target_freq
 
 features
     hw features active for this vif
-
-lqm_active
-    *undescribed*
 
 .. _`iwl_mvm_vif.vifs`:
 
@@ -507,12 +503,9 @@ Definition
         u16 head_sn;
         u16 num_stored;
         u8 buf_size;
-        u8 sta_id;
         int queue;
         u16 last_amsdu;
         u8 last_sub_index;
-        struct sk_buff_head entries[IEEE80211_MAX_AMPDU_BUF];
-        unsigned long reorder_time[IEEE80211_MAX_AMPDU_BUF];
         struct timer_list reorder_timer;
         bool removed;
         bool valid;
@@ -534,9 +527,6 @@ num_stored
 buf_size
     the reorder buffer size as set by the last addba request
 
-sta_id
-    sta id of this reorder buffer
-
 queue
     queue of this reorder buffer
 
@@ -545,12 +535,6 @@ last_amsdu
 
 last_sub_index
     track ASMDU sub frame index for duplication detection
-
-entries
-    list of skbs stored
-
-reorder_time
-    time the packet was stored in the reorder buffer
 
 reorder_timer
     timer for frames are in the reorder buffer. For AMSDU
@@ -567,6 +551,38 @@ lock
 
 mvm
     mvm pointer, needed for frame timer context
+
+.. _`_iwl_mvm_reorder_buf_entry`:
+
+struct \_iwl_mvm_reorder_buf_entry
+==================================
+
+.. c:type:: struct _iwl_mvm_reorder_buf_entry
+
+    reorder buffer entry per-queue/per-seqno
+
+.. _`_iwl_mvm_reorder_buf_entry.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct _iwl_mvm_reorder_buf_entry {
+        struct sk_buff_head frames;
+        unsigned long reorder_time;
+    }
+
+.. _`_iwl_mvm_reorder_buf_entry.members`:
+
+Members
+-------
+
+frames
+    list of skbs stored
+
+reorder_time
+    time the packet was stored in the reorder buffer
 
 .. _`iwl_mvm_baid_data`:
 
@@ -590,10 +606,13 @@ Definition
         u8 tid;
         u8 baid;
         u16 timeout;
+        u16 entries_per_queue;
         unsigned long last_rx;
         struct timer_list session_timer;
+        struct iwl_mvm_baid_data __rcu **rcu_ptr;
         struct iwl_mvm *mvm;
-        struct iwl_mvm_reorder_buffer reorder_buf[];
+        struct iwl_mvm_reorder_buffer reorder_buf[IWL_MAX_RX_HW_QUEUES];
+        struct iwl_mvm_reorder_buf_entry entries[];
     }
 
 .. _`iwl_mvm_baid_data.members`:
@@ -617,17 +636,27 @@ baid
 timeout
     the timeout set in the addba request
 
+entries_per_queue
+    # of buffers per queue, this actually gets
+    aligned up to avoid cache line sharing between queues
+
 last_rx
     last rx jiffies, updated only if timeout passed from last update
 
 session_timer
     timer to check if BA session expired, runs at 2 \* timeout
 
+rcu_ptr
+    *undescribed*
+
 mvm
     mvm pointer, needed for timer context
 
 reorder_buf
     reorder buffer, allocated per queue
+
+entries
+    *undescribed*
 
 .. _`iwl_mvm_status`:
 

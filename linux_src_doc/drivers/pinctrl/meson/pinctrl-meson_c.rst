@@ -50,32 +50,5 @@ meson_calc_reg_and_bit
     :param unsigned int \*bit:
         the computed bit
 
-.. _`meson_pmx_disable_other_groups`:
-
-meson_pmx_disable_other_groups
-==============================
-
-.. c:function:: void meson_pmx_disable_other_groups(struct meson_pinctrl *pc, unsigned int pin, int sel_group)
-
-    disable other groups using a given pin
-
-    :param struct meson_pinctrl \*pc:
-        meson pin controller device
-
-    :param unsigned int pin:
-        number of the pin
-
-    :param int sel_group:
-        index of the selected group, or -1 if none
-
-.. _`meson_pmx_disable_other_groups.description`:
-
-Description
------------
-
-The function disables all pinmux groups using a pin except the
-selected one. If \ ``sel_group``\  is -1 all groups are disabled, leaving
-the pin in GPIO mode.
-
 .. This file was automatic generated / don't edit.
 

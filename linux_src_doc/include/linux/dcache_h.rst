@@ -122,7 +122,7 @@ d_inode_rcu
 
 .. c:function:: struct inode *d_inode_rcu(const struct dentry *dentry)
 
-    Get the actual inode of this dentry with \ :c:func:`ACCESS_ONCE`\ 
+    Get the actual inode of this dentry with \ :c:func:`READ_ONCE`\ 
 
     :param const struct dentry \*dentry:
         The dentry to query

@@ -6,11 +6,11 @@
 iwl_bg_statistics_periodic
 ==========================
 
-.. c:function:: void iwl_bg_statistics_periodic(unsigned long data)
+.. c:function:: void iwl_bg_statistics_periodic(struct timer_list *t)
 
     Timer callback to queue statistics
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`iwl_bg_statistics_periodic.description`:
@@ -30,11 +30,11 @@ to update the temperature used for calibrating the TXPOWER.
 iwl_bg_ucode_trace
 ==================
 
-.. c:function:: void iwl_bg_ucode_trace(unsigned long data)
+.. c:function:: void iwl_bg_ucode_trace(struct timer_list *t)
 
     Timer callback to log ucode event
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`iwl_bg_ucode_trace.description`:

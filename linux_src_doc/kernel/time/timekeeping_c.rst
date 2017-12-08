@@ -188,6 +188,18 @@ timekeeping_update(tk, TK_CLEAR_NTP...);
 partially updated.  Since the tk->offs_boot update is a rare event, this
 should be a rare occurrence which postprocessing should be able to handle.
 
+.. _`ktime_get_real_fast_ns`:
+
+ktime_get_real_fast_ns
+======================
+
+.. c:function:: u64 ktime_get_real_fast_ns( void)
+
+    - NMI safe and fast access to clock realtime.
+
+    :param  void:
+        no arguments
+
 .. _`halt_fast_timekeeper`:
 
 halt_fast_timekeeper
@@ -526,11 +538,11 @@ Sets the time of day to the new time and update NTP and notify hrtimers
 timekeeping_inject_offset
 =========================
 
-.. c:function:: int timekeeping_inject_offset(struct timespec *ts)
+.. c:function:: int timekeeping_inject_offset(struct timespec64 *ts)
 
     Adds or subtracts from the current time.
 
-    :param struct timespec \*ts:
+    :param struct timespec64 \*ts:
         *undescribed*
 
 .. _`timekeeping_inject_offset.description`:
@@ -909,6 +921,18 @@ sequence number in \ ``cwsseq``\  and timekeeper.clock_was_set_seq are
 different.
 
 Called from \ :c:func:`hrtimer_interrupt`\  or \ :c:func:`retrigger_next_event`\ 
+
+.. _`timekeeping_validate_timex`:
+
+timekeeping_validate_timex
+==========================
+
+.. c:function:: int timekeeping_validate_timex(struct timex *txc)
+
+    Ensures the timex is ok for use in do_adjtimex
+
+    :param struct timex \*txc:
+        *undescribed*
 
 .. _`do_adjtimex`:
 

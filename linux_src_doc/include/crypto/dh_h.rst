@@ -66,7 +66,7 @@ g_size
 crypto_dh_key_len
 =================
 
-.. c:function:: int crypto_dh_key_len(const struct dh *params)
+.. c:function:: unsigned int crypto_dh_key_len(const struct dh *params)
 
     Obtain the size of the private DH key
 

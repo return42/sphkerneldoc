@@ -272,7 +272,7 @@ Definition
     struct nilfs_root {
         __u64 cno;
         struct rb_node rb_node;
-        atomic_t count;
+        refcount_t count;
         struct the_nilfs *nilfs;
         struct inode *ifile;
         atomic64_t inodes_count;

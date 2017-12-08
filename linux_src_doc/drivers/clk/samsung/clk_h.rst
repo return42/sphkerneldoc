@@ -19,6 +19,7 @@ Definition
 
     struct samsung_clk_provider {
         void __iomem *reg_base;
+        struct device *dev;
         spinlock_t lock;
         struct clk_hw_onecell_data clk_data;
     }
@@ -30,6 +31,9 @@ Members
 
 reg_base
     virtual address for the register base.
+
+dev
+    *undescribed*
 
 lock
     maintains exclusion between callbacks for a given clock-provider.
@@ -135,7 +139,6 @@ Definition
 
     struct samsung_mux_clock {
         unsigned int id;
-        const char *dev_name;
         const char *name;
         const char *const *parent_names;
         u8 num_parents;
@@ -144,7 +147,6 @@ Definition
         u8 shift;
         u8 width;
         u8 mux_flags;
-        const char *alias;
     }
 
 .. _`samsung_mux_clock.members`:
@@ -154,9 +156,6 @@ Members
 
 id
     platform specific id of the clock.
-
-dev_name
-    name of the device to which this clock belongs.
 
 name
     name of this mux clock.
@@ -182,9 +181,6 @@ width
 mux_flags
     flags for mux-type clock.
 
-alias
-    optional clock alias name to be assigned to this clock.
-
 .. _`samsung_gate_clock`:
 
 struct samsung_gate_clock
@@ -203,14 +199,12 @@ Definition
 
     struct samsung_gate_clock {
         unsigned int id;
-        const char *dev_name;
         const char *name;
         const char *parent_name;
         unsigned long flags;
         unsigned long offset;
         u8 bit_idx;
         u8 gate_flags;
-        const char *alias;
     }
 
 .. _`samsung_gate_clock.members`:
@@ -220,9 +214,6 @@ Members
 
 id
     platform specific id of the clock.
-
-dev_name
-    name of the device to which this clock belongs.
 
 name
     name of this gate clock.
@@ -241,9 +232,6 @@ bit_idx
 
 gate_flags
     flags for gate-type clock.
-
-alias
-    optional clock alias name to be assigned to this clock.
 
 .. _`samsung_clk_reg_dump`:
 
@@ -295,7 +283,6 @@ Definition
 
     struct samsung_pll_clock {
         unsigned int id;
-        const char *dev_name;
         const char *name;
         const char *parent_name;
         unsigned long flags;
@@ -303,7 +290,6 @@ Definition
         int lock_offset;
         enum samsung_pll_type type;
         const struct samsung_pll_rate_table *rate_table;
-        const char *alias;
     }
 
 .. _`samsung_pll_clock.members`:
@@ -313,9 +299,6 @@ Members
 
 id
     platform specific id of the clock.
-
-dev_name
-    name of the device to which this clock belongs.
 
 name
     name of this pll clock.
@@ -337,9 +320,6 @@ type
 
 rate_table
     *undescribed*
-
-alias
-    optional clock alias name to be assigned to this clock.
 
 .. This file was automatic generated / don't edit.
 

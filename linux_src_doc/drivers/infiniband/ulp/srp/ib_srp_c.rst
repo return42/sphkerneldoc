@@ -77,15 +77,12 @@ desc->mr->rkey before calling this function.
 srp_destroy_qp
 ==============
 
-.. c:function:: void srp_destroy_qp(struct srp_rdma_ch *ch, struct ib_qp *qp)
+.. c:function:: void srp_destroy_qp(struct srp_rdma_ch *ch)
 
     destroy an RDMA queue pair
 
     :param struct srp_rdma_ch \*ch:
-        *undescribed*
-
-    :param struct ib_qp \*qp:
-        RDMA queue pair.
+        SRP RDMA channel.
 
 .. _`srp_destroy_qp.description`:
 

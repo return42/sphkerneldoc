@@ -331,12 +331,15 @@ used by new code.
 drm_property_find
 =================
 
-.. c:function:: struct drm_property *drm_property_find(struct drm_device *dev, uint32_t id)
+.. c:function:: struct drm_property *drm_property_find(struct drm_device *dev, struct drm_file *file_priv, uint32_t id)
 
     find property object
 
     :param struct drm_device \*dev:
         DRM device
+
+    :param struct drm_file \*file_priv:
+        drm file to check for lease against.
 
     :param uint32_t id:
         property object id

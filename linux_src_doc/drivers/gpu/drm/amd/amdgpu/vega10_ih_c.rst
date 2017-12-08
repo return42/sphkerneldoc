@@ -103,6 +103,25 @@ or the writeback memory buffer (VEGA10).  Also check for
 ring buffer overflow and deal with it.
 Returns the value of the wptr.
 
+.. _`vega10_ih_prescreen_iv`:
+
+vega10_ih_prescreen_iv
+======================
+
+.. c:function:: bool vega10_ih_prescreen_iv(struct amdgpu_device *adev)
+
+    prescreen an interrupt vector
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`vega10_ih_prescreen_iv.description`:
+
+Description
+-----------
+
+Returns true if the interrupt vector should be further processed.
+
 .. _`vega10_ih_decode_iv`:
 
 vega10_ih_decode_iv

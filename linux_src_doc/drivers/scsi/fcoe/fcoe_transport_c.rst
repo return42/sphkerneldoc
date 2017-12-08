@@ -225,12 +225,12 @@ by the next skb transmit.
 fcoe_queue_timer
 ================
 
-.. c:function:: void fcoe_queue_timer(ulong lport)
+.. c:function:: void fcoe_queue_timer(struct timer_list *t)
 
     The fcoe queue timer
 
-    :param ulong lport:
-        The local port
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`fcoe_queue_timer.description`:
 
@@ -413,14 +413,14 @@ Return
 fcoe_transport_create
 =====================
 
-.. c:function:: int fcoe_transport_create(const char *buffer, struct kernel_param *kp)
+.. c:function:: int fcoe_transport_create(const char *buffer, const struct kernel_param *kp)
 
     Create a fcoe interface
 
     :param const char \*buffer:
         The name of the Ethernet interface to create on
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         The associated kernel param
 
 .. _`fcoe_transport_create.description`:
@@ -443,14 +443,14 @@ Return
 fcoe_transport_destroy
 ======================
 
-.. c:function:: int fcoe_transport_destroy(const char *buffer, struct kernel_param *kp)
+.. c:function:: int fcoe_transport_destroy(const char *buffer, const struct kernel_param *kp)
 
     Destroy a FCoE interface
 
     :param const char \*buffer:
         The name of the Ethernet interface to be destroyed
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         The associated kernel parameter
 
 .. _`fcoe_transport_destroy.description`:
@@ -473,14 +473,14 @@ Return
 fcoe_transport_disable
 ======================
 
-.. c:function:: int fcoe_transport_disable(const char *buffer, struct kernel_param *kp)
+.. c:function:: int fcoe_transport_disable(const char *buffer, const struct kernel_param *kp)
 
     Disables a FCoE interface
 
     :param const char \*buffer:
         The name of the Ethernet interface to be disabled
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         The associated kernel parameter
 
 .. _`fcoe_transport_disable.description`:
@@ -502,14 +502,14 @@ Return
 fcoe_transport_enable
 =====================
 
-.. c:function:: int fcoe_transport_enable(const char *buffer, struct kernel_param *kp)
+.. c:function:: int fcoe_transport_enable(const char *buffer, const struct kernel_param *kp)
 
     Enables a FCoE interface
 
     :param const char \*buffer:
         The name of the Ethernet interface to be enabled
 
-    :param struct kernel_param \*kp:
+    :param const struct kernel_param \*kp:
         The associated kernel parameter
 
 .. _`fcoe_transport_enable.description`:

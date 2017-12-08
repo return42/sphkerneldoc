@@ -6,7 +6,7 @@
 dio_complete
 ============
 
-.. c:function:: ssize_t dio_complete(struct dio *dio, ssize_t ret, bool is_async)
+.. c:function:: ssize_t dio_complete(struct dio *dio, ssize_t ret, unsigned int flags)
 
     called when all DIO BIO I/O has been completed
 
@@ -16,7 +16,7 @@ dio_complete
     :param ssize_t ret:
         *undescribed*
 
-    :param bool is_async:
+    :param unsigned int flags:
         *undescribed*
 
 .. _`dio_complete.description`:

@@ -122,7 +122,8 @@ ecryptfs_verify_auth_tok_from_key
 Description
 -----------
 
-Returns zero on valid auth tok; -EINVAL otherwise
+Returns zero on valid auth tok; -EINVAL if the payload is invalid; or
+-EKEYREVOKED if the key was revoked before we acquired its semaphore.
 
 .. _`ecryptfs_find_auth_tok_for_sig`:
 

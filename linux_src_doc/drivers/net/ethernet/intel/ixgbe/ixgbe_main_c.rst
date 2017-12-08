@@ -1433,12 +1433,12 @@ ixgbe_sfp_link_config_subtask
 ixgbe_service_timer
 ===================
 
-.. c:function:: void ixgbe_service_timer(unsigned long data)
+.. c:function:: void ixgbe_service_timer(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to adapter cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ixgbe_service_task`:
 

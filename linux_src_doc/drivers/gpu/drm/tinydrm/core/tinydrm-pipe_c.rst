@@ -45,7 +45,7 @@ tinydrm_display_pipe_prepare_fb
 Description
 -----------
 
-This function uses \ :c:func:`drm_fb_cma_prepare_fb`\  to check if the plane FB has an
+This function uses \ :c:func:`drm_gem_fb_prepare_fb`\  to check if the plane FB has an
 dma-buf attached, extracts the exclusive fence and attaches it to plane
 state for the atomic helper to wait on. Drivers can use this as their
 \ :c:type:`drm_simple_display_pipe_funcs->prepare_fb <drm_simple_display_pipe_funcs>`\  callback.

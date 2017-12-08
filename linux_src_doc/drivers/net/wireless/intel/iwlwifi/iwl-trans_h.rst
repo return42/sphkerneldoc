@@ -385,7 +385,6 @@ Definition
         bool sw_csum_tx;
         const struct iwl_hcmd_arr *command_groups;
         int command_groups_size;
-        u32 sdio_adma_addr;
         u8 cb_data_offs;
     }
 
@@ -437,10 +436,6 @@ command_groups
 command_groups_size
     number of command groups, to avoid illegal access
 
-sdio_adma_addr
-    the default address to set for the ADMA in SDIO mode until
-    we get the ALIVE from the uCode
-
 cb_data_offs
     offset inside skb->cb to store transport data at, must have
     space for at least two pointers
@@ -465,7 +460,6 @@ Definition
         int (*start_hw)(struct iwl_trans *iwl_trans, bool low_power);
         void (*op_mode_leave)(struct iwl_trans *iwl_trans);
         int (*start_fw)(struct iwl_trans *trans, const struct fw_img *fw, bool run_in_rfkill);
-        int (*update_sf)(struct iwl_trans *trans, struct iwl_sf_region *st_fwrd_space);
         void (*fw_alive)(struct iwl_trans *trans, u32 scd_addr);
         void (*stop_device)(struct iwl_trans *trans, bool low_power);
         void (*d3_suspend)(struct iwl_trans *trans, bool test, bool reset);
@@ -499,6 +493,7 @@ Definition
         int (*suspend)(struct iwl_trans *trans);
         void (*resume)(struct iwl_trans *trans);
         struct iwl_trans_dump_data *(*dump_data)(struct iwl_trans *trans,const struct iwl_fw_dbg_trigger_tlv *trigger);
+        void (*dump_regs)(struct iwl_trans *trans);
     }
 
 .. _`iwl_trans_ops.members`:
@@ -519,9 +514,6 @@ start_fw
     allocates and inits all the resources for the transport
     layer. Also kick a fw image.
     May sleep
-
-update_sf
-    *undescribed*
 
 fw_alive
     called when the fw sends alive notification. If the fw provides
@@ -665,6 +657,11 @@ dump_data
     return a vmalloc'ed buffer with debug data, maybe containing last
     TX'ed commands and similar. The buffer will be vfree'd by the caller.
     Note that the transport must fill in the proper file headers.
+
+dump_regs
+    dump using IWL_ERR configuration space and memory mapped
+    registers of the device to diagnose failure, e.g., when HW becomes
+    inaccessible.
 
 .. _`iwl_trans_ops.description`:
 
@@ -834,14 +831,10 @@ Definition
     #ifdef CONFIG_LOCKDEP
         struct lockdep_map sync_cmd_lockdep_map;
     #endif
-        u64 dflt_pwr_limit;
         const struct iwl_fw_dbg_dest_tlv *dbg_dest_tlv;
         const struct iwl_fw_dbg_conf_tlv *dbg_conf_tlv[FW_DBG_CONF_MAX];
         struct iwl_fw_dbg_trigger_tlv * const *dbg_trigger_tlv;
         u8 dbg_dest_reg_num;
-        u32 paging_req_addr;
-        struct iwl_fw_paging *paging_db;
-        void *paging_download_buf;
         enum iwl_plat_pm_mode system_pm_mode;
         enum iwl_plat_pm_mode runtime_pm_mode;
         bool suspending;
@@ -933,9 +926,6 @@ dbgfs_dir
 sync_cmd_lockdep_map
     *undescribed*
 
-dflt_pwr_limit
-    default power limit fetched from the platform (ACPI)
-
 dbg_dest_tlv
     points to the destination TLV for debug
 
@@ -947,18 +937,6 @@ dbg_trigger_tlv
 
 dbg_dest_reg_num
     num of reg_ops in \ ``dbg_dest_tlv``\ 
-
-paging_req_addr
-    The location were the FW will upload / download the pages
-    from. The address is set by the opmode
-
-paging_db
-    Pointer to the opmode paging data base, the pointer is set by
-    the opmode.
-
-paging_download_buf
-    Buffer used for copying all of the pages before
-    downloading them to the FW. The buffer is allocated in the opmode
 
 system_pm_mode
     the system-wide power management mode in use.

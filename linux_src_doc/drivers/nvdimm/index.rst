@@ -7,6 +7,7 @@ nvdimm
 .. toctree::
     :maxdepth: 1
 
+    badrange_c
     btt_c
     btt_devs_c
     btt_h

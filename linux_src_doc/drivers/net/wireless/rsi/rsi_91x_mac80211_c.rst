@@ -258,12 +258,12 @@ Return
 rsi_get_connected_channel
 =========================
 
-.. c:function:: u16 rsi_get_connected_channel(struct rsi_hw *adapter)
+.. c:function:: u16 rsi_get_connected_channel(struct ieee80211_vif *vif)
 
     This function is used to get the current connected channel number.
 
-    :param struct rsi_hw \*adapter:
-        Pointer to the adapter structure.
+    :param struct ieee80211_vif \*vif:
+        *undescribed*
 
 .. _`rsi_get_connected_channel.return`:
 
@@ -492,7 +492,7 @@ Return
 rsi_perform_cqm
 ===============
 
-.. c:function:: void rsi_perform_cqm(struct rsi_common *common, u8 *bssid, s8 rssi)
+.. c:function:: void rsi_perform_cqm(struct rsi_common *common, u8 *bssid, s8 rssi, struct ieee80211_vif *vif)
 
     This function performs cqm.
 
@@ -504,6 +504,9 @@ rsi_perform_cqm
 
     :param s8 rssi:
         RSSI value.
+
+    :param struct ieee80211_vif \*vif:
+        *undescribed*
 
 .. _`rsi_fill_rx_status`:
 

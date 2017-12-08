@@ -28,6 +28,8 @@ Definition
         int (*get_route)(struct tb *tb, u8 link, u8 depth, u64 *route);
         void (*device_connected)(struct tb *tb, const struct icm_pkg_header *hdr);
         void (*device_disconnected)(struct tb *tb, const struct icm_pkg_header *hdr);
+        void (*xdomain_connected)(struct tb *tb, const struct icm_pkg_header *hdr);
+        void (*xdomain_disconnected)(struct tb *tb, const struct icm_pkg_header *hdr);
     }
 
 .. _`icm.members`:
@@ -67,6 +69,14 @@ device_connected
 
 device_disconnected
     Handle device disconnected ICM message
+    \ ``xdomain_connected``\  - Handle XDomain connected ICM message
+    \ ``xdomain_disconnected``\  - Handle XDomain disconnected ICM message
+
+xdomain_connected
+    *undescribed*
+
+xdomain_disconnected
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

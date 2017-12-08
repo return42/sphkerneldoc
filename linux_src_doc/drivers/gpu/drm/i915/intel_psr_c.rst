@@ -37,12 +37,15 @@ must be correctly synchronized/cancelled when shutting down the pipe."
 intel_psr_enable
 ================
 
-.. c:function:: void intel_psr_enable(struct intel_dp *intel_dp)
+.. c:function:: void intel_psr_enable(struct intel_dp *intel_dp, const struct intel_crtc_state *crtc_state)
 
     Enable PSR
 
     :param struct intel_dp \*intel_dp:
         Intel DP
+
+    :param const struct intel_crtc_state \*crtc_state:
+        new CRTC state
 
 .. _`intel_psr_enable.description`:
 
@@ -56,12 +59,15 @@ This function can only be called after the pipe is fully trained and enabled.
 intel_psr_disable
 =================
 
-.. c:function:: void intel_psr_disable(struct intel_dp *intel_dp)
+.. c:function:: void intel_psr_disable(struct intel_dp *intel_dp, const struct intel_crtc_state *old_crtc_state)
 
     Disable PSR
 
     :param struct intel_dp \*intel_dp:
         Intel DP
+
+    :param const struct intel_crtc_state \*old_crtc_state:
+        old CRTC state
 
 .. _`intel_psr_disable.description`:
 

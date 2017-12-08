@@ -420,5 +420,28 @@ Description
 User is responsible to call tty_flip_buffer_push when they are done with
 insertion.
 
+.. _`of_get_rs485_mode`:
+
+of_get_rs485_mode
+=================
+
+.. c:function:: void of_get_rs485_mode(struct device_node *np, struct serial_rs485 *rs485conf)
+
+    Implement parsing rs485 properties
+
+    :param struct device_node \*np:
+        uart node
+
+    :param struct serial_rs485 \*rs485conf:
+        output parameter
+
+.. _`of_get_rs485_mode.description`:
+
+Description
+-----------
+
+This function implements the device tree binding described in
+Documentation/devicetree/bindings/serial/rs485.txt.
+
 .. This file was automatic generated / don't edit.
 

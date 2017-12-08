@@ -147,18 +147,6 @@ i40iw_dealloc_pd
     :param struct ib_pd \*ibpd:
         ptr of pd to be deallocated
 
-.. _`i40iw_qp_roundup`:
-
-i40iw_qp_roundup
-================
-
-.. c:function:: int i40iw_qp_roundup(u32 wr_ring_size)
-
-    return round up qp ring size
-
-    :param u32 wr_ring_size:
-        ring size to round up
-
 .. _`i40iw_get_pbl`:
 
 i40iw_get_pbl

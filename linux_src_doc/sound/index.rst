@@ -7,11 +7,11 @@ sound
 .. toctree::
     :maxdepth: 1
 
+    ac97/index
     core/index
     drivers/index
     firewire/index
     hda/index
-    oss/index
     pci/index
     pcmcia/index
     soc/index

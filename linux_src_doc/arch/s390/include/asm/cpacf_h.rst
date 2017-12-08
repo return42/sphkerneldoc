@@ -280,5 +280,35 @@ Description
 
 Returns 0.
 
+.. _`cpacf_kma`:
+
+cpacf_kma
+=========
+
+.. c:function:: void cpacf_kma(unsigned long func, void *param, u8 *dest, const u8 *src, unsigned long src_len, const u8 *aad, unsigned long aad_len)
+
+    executes the KMA (CIPHER MESSAGE WITH AUTHENTICATION) instruction
+
+    :param unsigned long func:
+        the function code passed to KMA; see CPACF_KMA_xxx defines
+
+    :param void \*param:
+        address of parameter block; see POP for details on each func
+
+    :param u8 \*dest:
+        address of destination memory area
+
+    :param const u8 \*src:
+        address of source memory area
+
+    :param unsigned long src_len:
+        length of src operand in bytes
+
+    :param const u8 \*aad:
+        address of additional authenticated data memory area
+
+    :param unsigned long aad_len:
+        length of aad operand in bytes
+
 .. This file was automatic generated / don't edit.
 

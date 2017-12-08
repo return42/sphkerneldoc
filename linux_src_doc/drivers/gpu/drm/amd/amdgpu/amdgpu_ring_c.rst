@@ -63,6 +63,50 @@ Description
 
 Reset the driver's copy of the wptr (all asics).
 
+.. _`amdgpu_ring_priority_put`:
+
+amdgpu_ring_priority_put
+========================
+
+.. c:function:: void amdgpu_ring_priority_put(struct amdgpu_ring *ring, enum amd_sched_priority priority)
+
+    restore a ring's priority
+
+    :param struct amdgpu_ring \*ring:
+        amdgpu_ring structure holding the information
+
+    :param enum amd_sched_priority priority:
+        target priority
+
+.. _`amdgpu_ring_priority_put.description`:
+
+Description
+-----------
+
+Release a request for executing at \ ``priority``\ 
+
+.. _`amdgpu_ring_priority_get`:
+
+amdgpu_ring_priority_get
+========================
+
+.. c:function:: void amdgpu_ring_priority_get(struct amdgpu_ring *ring, enum amd_sched_priority priority)
+
+    change the ring's priority
+
+    :param struct amdgpu_ring \*ring:
+        amdgpu_ring structure holding the information
+
+    :param enum amd_sched_priority priority:
+        target priority
+
+.. _`amdgpu_ring_priority_get.description`:
+
+Description
+-----------
+
+Request a ring's priority to be raised to \ ``priority``\  (refcounted).
+
 .. _`amdgpu_ring_init`:
 
 amdgpu_ring_init
@@ -119,7 +163,7 @@ Tear down the driver information for the selected ring (all asics).
 amdgpu_ring_lru_get
 ===================
 
-.. c:function:: int amdgpu_ring_lru_get(struct amdgpu_device *adev, int type, int *blacklist, int num_blacklist, struct amdgpu_ring **ring)
+.. c:function:: int amdgpu_ring_lru_get(struct amdgpu_device *adev, int type, int *blacklist, int num_blacklist, bool lru_pipe_order, struct amdgpu_ring **ring)
 
     get the least recently used ring for a HW IP block
 
@@ -134,6 +178,9 @@ amdgpu_ring_lru_get
 
     :param int num_blacklist:
         number of entries in \ ``blacklist``\ 
+
+    :param bool lru_pipe_order:
+        find a ring from the least recently used pipe
 
     :param struct amdgpu_ring \*\*ring:
         output ring

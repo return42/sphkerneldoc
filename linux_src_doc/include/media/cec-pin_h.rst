@@ -25,6 +25,7 @@ Definition
         void (*disable_irq)(struct cec_adapter *adap);
         void (*free)(struct cec_adapter *adap);
         void (*status)(struct cec_adapter *adap, struct seq_file *file);
+        int (*read_hpd)(struct cec_adapter *adap);
     }
 
 .. _`cec_pin_ops.members`:
@@ -54,6 +55,11 @@ free
 
 status
     optional, log status information.
+
+read_hpd
+    read the HPD pin. Return true if high, false if low or
+    an error if negative. If NULL or -ENOTTY is returned,
+    then this is not supported.
 
 .. _`cec_pin_ops.description`:
 

@@ -1125,6 +1125,7 @@ Definition
         struct list_head async_list;
         struct v4l2_async_subdev *asd;
         struct v4l2_async_notifier *notifier;
+        struct v4l2_async_notifier *subdev_notifier;
         struct v4l2_subdev_platform_data *pdata;
     }
 
@@ -1200,6 +1201,10 @@ asd
 
 notifier
     Pointer to the managing notifier.
+
+subdev_notifier
+    A sub-device notifier implicitly registered for the sub-
+    device using \ :c:func:`v4l2_device_register_sensor_subdev`\ .
 
 pdata
     common part of subdevice platform data

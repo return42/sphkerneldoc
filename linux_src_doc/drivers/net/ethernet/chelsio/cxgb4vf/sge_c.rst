@@ -877,12 +877,12 @@ Selects the top-level interrupt handler based on the type of interrupts
 sge_rx_timer_cb
 ===============
 
-.. c:function:: void sge_rx_timer_cb(unsigned long data)
+.. c:function:: void sge_rx_timer_cb(struct timer_list *t)
 
     perform periodic maintenance of SGE RX queues
 
-    :param unsigned long data:
-        the adapter
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sge_rx_timer_cb.description`:
 
@@ -901,12 +901,12 @@ the actual refill.
 sge_tx_timer_cb
 ===============
 
-.. c:function:: void sge_tx_timer_cb(unsigned long data)
+.. c:function:: void sge_tx_timer_cb(struct timer_list *t)
 
     perform periodic maintenance of SGE Tx queues
 
-    :param unsigned long data:
-        the adapter
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sge_tx_timer_cb.description`:
 

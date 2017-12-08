@@ -908,12 +908,12 @@ Return
 ibmvfc_timeout
 ==============
 
-.. c:function:: void ibmvfc_timeout(struct ibmvfc_event *evt)
+.. c:function:: void ibmvfc_timeout(struct timer_list *t)
 
     Internal command timeout handler
 
-    :param struct ibmvfc_event \*evt:
-        struct ibmvfc_event that timed out
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ibmvfc_timeout.description`:
 
@@ -1989,12 +1989,12 @@ which will fire and cause the CRQ to get reset.
 ibmvfc_adisc_timeout
 ====================
 
-.. c:function:: void ibmvfc_adisc_timeout(struct ibmvfc_target *tgt)
+.. c:function:: void ibmvfc_adisc_timeout(struct timer_list *t)
 
     Handle an ADISC timeout
 
-    :param struct ibmvfc_target \*tgt:
-        ibmvfc target struct
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ibmvfc_adisc_timeout.description`:
 

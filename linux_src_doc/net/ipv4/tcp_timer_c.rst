@@ -101,12 +101,12 @@ retransmissions with an initial RTO of TCP_RTO_MIN.
 tcp_delack_timer
 ================
 
-.. c:function:: void tcp_delack_timer(unsigned long data)
+.. c:function:: void tcp_delack_timer(struct timer_list *t)
 
     The TCP delayed ACK timeout handler
 
-    :param unsigned long data:
-        Pointer to the current socket. (gets casted to struct sock \*)
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`tcp_delack_timer.description`:
 

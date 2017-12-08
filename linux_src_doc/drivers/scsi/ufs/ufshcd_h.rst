@@ -87,6 +87,7 @@ Definition
         u8 lun;
         bool intr_cmd;
         ktime_t issue_time_stamp;
+        ktime_t compl_time_stamp;
         bool req_abort_skip;
     }
 
@@ -145,6 +146,9 @@ intr_cmd
 
 issue_time_stamp
     time stamp for debug purposes
+
+compl_time_stamp
+    time stamp for statistics
 
 req_abort_skip
     skip request abort task flag
@@ -686,13 +690,13 @@ Definition
         void *priv;
         unsigned int irq;
         bool is_irq_enabled;
-    #define UFSHCD_QUIRK_BROKEN_INTR_AGGR UFS_BIT(0)
-    #define UFSHCD_QUIRK_DELAY_BEFORE_DME_CMDS UFS_BIT(1)
-    #define UFSHCD_QUIRK_BROKEN_LCC UFS_BIT(2)
-    #define UFSHCD_QUIRK_BROKEN_PA_RXHSUNTERMCAP UFS_BIT(3)
-    #define UFSHCD_QUIRK_DME_PEER_ACCESS_AUTO_MODE UFS_BIT(4)
-    #define UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION UFS_BIT(5)
-    #define UFSHCD_QUIRK_PRDT_BYTE_GRAN UFS_BIT(7)
+    #define UFSHCD_QUIRK_BROKEN_INTR_AGGR 0x1
+    #define UFSHCD_QUIRK_DELAY_BEFORE_DME_CMDS 0x2
+    #define UFSHCD_QUIRK_BROKEN_LCC 0x4
+    #define UFSHCD_QUIRK_BROKEN_PA_RXHSUNTERMCAP 0x8
+    #define UFSHCD_QUIRK_DME_PEER_ACCESS_AUTO_MODE 0x10
+    #define UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION 0x20
+    #define UFSHCD_QUIRK_PRDT_BYTE_GRAN 0x80
         unsigned int quirks;
         unsigned int dev_quirks;
         wait_queue_head_t tm_wq;

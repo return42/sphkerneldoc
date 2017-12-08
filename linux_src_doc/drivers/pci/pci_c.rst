@@ -1445,6 +1445,102 @@ Description
 Walk up a device tree from start to end testing PCI ACS support.  If
 any step along the way does not support the required flags, return false.
 
+.. _`pci_rebar_find_pos`:
+
+pci_rebar_find_pos
+==================
+
+.. c:function:: int pci_rebar_find_pos(struct pci_dev *pdev, int bar)
+
+    find position of resize ctrl reg for BAR
+
+    :param struct pci_dev \*pdev:
+        PCI device
+
+    :param int bar:
+        BAR to find
+
+.. _`pci_rebar_find_pos.description`:
+
+Description
+-----------
+
+Helper to find the position of the ctrl register for a BAR.
+Returns -ENOTSUPP if resizable BARs are not supported at all.
+Returns -ENOENT if no ctrl register for the BAR could be found.
+
+.. _`pci_rebar_get_possible_sizes`:
+
+pci_rebar_get_possible_sizes
+============================
+
+.. c:function:: u32 pci_rebar_get_possible_sizes(struct pci_dev *pdev, int bar)
+
+    get possible sizes for BAR
+
+    :param struct pci_dev \*pdev:
+        PCI device
+
+    :param int bar:
+        BAR to query
+
+.. _`pci_rebar_get_possible_sizes.description`:
+
+Description
+-----------
+
+Get the possible sizes of a resizable BAR as bitmask defined in the spec
+(bit 0=1MB, bit 19=512GB). Returns 0 if BAR isn't resizable.
+
+.. _`pci_rebar_get_current_size`:
+
+pci_rebar_get_current_size
+==========================
+
+.. c:function:: int pci_rebar_get_current_size(struct pci_dev *pdev, int bar)
+
+    get the current size of a BAR
+
+    :param struct pci_dev \*pdev:
+        PCI device
+
+    :param int bar:
+        BAR to set size to
+
+.. _`pci_rebar_get_current_size.description`:
+
+Description
+-----------
+
+Read the size of a BAR from the resizable BAR config.
+Returns size if found or negative error code.
+
+.. _`pci_rebar_set_size`:
+
+pci_rebar_set_size
+==================
+
+.. c:function:: int pci_rebar_set_size(struct pci_dev *pdev, int bar, int size)
+
+    set a new size for a BAR
+
+    :param struct pci_dev \*pdev:
+        PCI device
+
+    :param int bar:
+        BAR to set size to
+
+    :param int size:
+        new size as defined in the spec (0=1MB, 19=512GB)
+
+.. _`pci_rebar_set_size.description`:
+
+Description
+-----------
+
+Set the new size of a BAR as defined in the spec.
+Returns zero if resizing was successful, error code otherwise.
+
 .. _`pci_swizzle_interrupt_pin`:
 
 pci_swizzle_interrupt_pin
@@ -1842,7 +1938,7 @@ proper PCI configuration space memory attributes are guaranteed.
 All operations are managed and will be undone on driver detach.
 
 Returns a pointer to the remapped memory or an \ :c:func:`ERR_PTR`\  encoded error code
-on failure. Usage example:
+on failure. Usage example::
 
      res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
      base = devm_pci_remap_cfg_resource(&pdev->dev, res);
@@ -2201,36 +2297,6 @@ Description
 Use the bridge control register to assert reset on the secondary bus.
 Devices on the secondary bus are left in power-on state.
 
-.. _`__pci_reset_function`:
-
-__pci_reset_function
-====================
-
-.. c:function:: int __pci_reset_function(struct pci_dev *dev)
-
-    reset a PCI device function
-
-    :param struct pci_dev \*dev:
-        PCI device to reset
-
-.. _`__pci_reset_function.description`:
-
-Description
------------
-
-Some devices allow an individual function to be reset without affecting
-other functions in the same device.  The PCI device must be responsive
-to PCI config space in order to use this function.
-
-The device function is presumed to be unused when this function is called.
-Resetting the device will make the contents of PCI configuration space
-random, so any caller of this must be prepared to reinitialise the
-device including MSI, bus mastering, BARs, decoding IO and memory spaces,
-etc.
-
-Returns 0 if the device function was successfully reset or negative if the
-device doesn't support resetting a single function.
-
 .. _`__pci_reset_function_locked`:
 
 __pci_reset_function_locked
@@ -2309,8 +2375,8 @@ to PCI config space in order to use this function.
 
 This function does not just reset the PCI portion of a device, but
 clears all the state associated with the device.  This function differs
-from __pci_reset_function in that it saves and restores device state
-over the reset.
+from \ :c:func:`__pci_reset_function_locked`\  in that it saves and restores device state
+over the reset and takes the PCI device lock.
 
 Returns 0 if the device function was successfully reset or negative if the
 device doesn't support resetting a single function.
@@ -2338,7 +2404,7 @@ to PCI config space in order to use this function.
 
 This function does not just reset the PCI portion of a device, but
 clears all the state associated with the device.  This function differs
-from \ :c:func:`__pci_reset_function`\  in that it saves and restores device state
+from \ :c:func:`__pci_reset_function_locked`\  in that it saves and restores device state
 over the reset.  It also differs from \ :c:func:`pci_reset_function`\  in that it
 requires the PCI device lock to be held.
 

@@ -60,17 +60,40 @@ multiple removals.
 These modeset identifiers are _not_ reference counted. Hence don't use this
 for reference counted modeset objects like framebuffers.
 
+.. _`drm_mode_object_lease_required`:
+
+drm_mode_object_lease_required
+==============================
+
+.. c:function:: bool drm_mode_object_lease_required(uint32_t type)
+
+    check types which must be leased to be used
+
+    :param uint32_t type:
+        type of object
+
+.. _`drm_mode_object_lease_required.description`:
+
+Description
+-----------
+
+Returns whether the provided type of drm_mode_object must
+be owned or leased to be used by a process.
+
 .. _`drm_mode_object_find`:
 
 drm_mode_object_find
 ====================
 
-.. c:function:: struct drm_mode_object *drm_mode_object_find(struct drm_device *dev, uint32_t id, uint32_t type)
+.. c:function:: struct drm_mode_object *drm_mode_object_find(struct drm_device *dev, struct drm_file *file_priv, uint32_t id, uint32_t type)
 
     look up a drm object with static lifetime
 
     :param struct drm_device \*dev:
         drm device
+
+    :param struct drm_file \*file_priv:
+        drm file
 
     :param uint32_t id:
         id of the mode object

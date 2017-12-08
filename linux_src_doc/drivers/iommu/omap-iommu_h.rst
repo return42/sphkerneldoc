@@ -1,6 +1,38 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iommu/omap-iommu.h
 
+.. _`omap_iommu_device`:
+
+struct omap_iommu_device
+========================
+
+.. c:type:: struct omap_iommu_device
+
+    omap iommu device data
+
+.. _`omap_iommu_device.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct omap_iommu_device {
+        u32 *pgtable;
+        struct omap_iommu *iommu_dev;
+    }
+
+.. _`omap_iommu_device.members`:
+
+Members
+-------
+
+pgtable
+    page table used by an omap iommu attached to a domain
+
+iommu_dev
+    pointer to store an omap iommu instance attached to a domain
+
 .. _`omap_iommu_domain`:
 
 struct omap_iommu_domain
@@ -18,8 +50,8 @@ Definition
 .. code-block:: c
 
     struct omap_iommu_domain {
-        u32 *pgtable;
-        struct omap_iommu *iommu_dev;
+        u32 num_iommus;
+        struct omap_iommu_device *iommus;
         struct device *dev;
         spinlock_t lock;
         struct iommu_domain domain;
@@ -30,12 +62,11 @@ Definition
 Members
 -------
 
-pgtable
-    the page table
+num_iommus
+    number of iommus in this domain
 
-iommu_dev
-    an omap iommu device attached to this domain. only a single
-    iommu device can be attached for now.
+iommus
+    omap iommu device data for all iommus in this domain
 
 dev
     Device using this domain.
@@ -83,18 +114,6 @@ This is an omap iommu private data object, which binds an iommu user
 to its iommu device. This object should be placed at the iommu user's
 dev_archdata so generic IOMMU API can be used without having to
 utilize omap-specific plumbing anymore.
-
-.. _`dev_to_omap_iommu`:
-
-dev_to_omap_iommu
-=================
-
-.. c:function:: struct omap_iommu *dev_to_omap_iommu(struct device *dev)
-
-    retrieves an omap iommu object from a user device
-
-    :param struct device \*dev:
-        iommu client device
 
 .. This file was automatic generated / don't edit.
 

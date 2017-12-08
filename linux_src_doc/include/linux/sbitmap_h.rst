@@ -340,6 +340,35 @@ Return
 
 true if any bit in the bitmap is clear, false otherwise.
 
+.. _`__sbitmap_for_each_set`:
+
+__sbitmap_for_each_set
+======================
+
+.. c:function:: void __sbitmap_for_each_set(struct sbitmap *sb, unsigned int start, sb_for_each_fn fn, void *data)
+
+    Iterate over each set bit in a \ :c:type:`struct sbitmap <sbitmap>`\ .
+
+    :param struct sbitmap \*sb:
+        Bitmap to iterate over.
+
+    :param unsigned int start:
+        Where to start the iteration.
+
+    :param sb_for_each_fn fn:
+        Callback. Should return true to continue or false to break early.
+
+    :param void \*data:
+        Pointer to pass to callback.
+
+.. _`__sbitmap_for_each_set.description`:
+
+Description
+-----------
+
+This is inline even though it's non-trivial so that the function calls to the
+callback will hopefully get optimized away.
+
 .. _`sbitmap_for_each_set`:
 
 sbitmap_for_each_set
@@ -357,14 +386,6 @@ sbitmap_for_each_set
 
     :param void \*data:
         Pointer to pass to callback.
-
-.. _`sbitmap_for_each_set.description`:
-
-Description
------------
-
-This is inline even though it's non-trivial so that the function calls to the
-callback will hopefully get optimized away.
 
 .. _`sbitmap_show`:
 

@@ -115,7 +115,6 @@ Definition
 
     struct dgnc_board {
         int boardnum;
-        int type;
         char *name;
         struct pci_dev *pdev;
         unsigned long bd_flags;
@@ -152,8 +151,6 @@ Definition
         u16 dpastatus;
         uint bd_dividend;
         struct board_ops *bd_ops;
-        struct proc_dir_entry *proc_entry_pointer;
-        struct dgnc_proc_entry *dgnc_board_table;
     }
 
 .. _`dgnc_board.members`:
@@ -163,9 +160,6 @@ Members
 
 boardnum
     Board number (0 - 32).
-
-type
-    Type of board.
 
 name
     Product name.
@@ -275,12 +269,6 @@ bd_dividend
 bd_ops
     Pointer to board operations structure.
 
-proc_entry_pointer
-    Proc/<board> entry
-
-dgnc_board_table
-    Proc/<board> entry
-
 .. _`un_t`:
 
 struct un_t
@@ -299,7 +287,6 @@ Definition
 
     struct un_t {
         struct channel_t *un_ch;
-        ulong un_time;
         uint un_type;
         uint un_open_count;
         struct tty_struct *un_tty;
@@ -315,9 +302,6 @@ Members
 -------
 
 un_ch
-    *undescribed*
-
-un_time
     *undescribed*
 
 un_type
@@ -405,8 +389,6 @@ Definition
         ulong ch_err_overrun;
         ulong ch_xon_sends;
         ulong ch_xoff_sends;
-        struct proc_dir_entry *proc_entry_pointer;
-        struct dgnc_proc_entry *dgnc_channel_table;
     }
 
 .. _`channel_t.members`:
@@ -555,12 +537,6 @@ ch_xon_sends
 
 ch_xoff_sends
     Count of xoffs transmitted.
-
-proc_entry_pointer
-    Proc/<board>/<channel> entry.
-
-dgnc_channel_table
-    Proc/<board>/<channel> entry.
 
 .. This file was automatic generated / don't edit.
 

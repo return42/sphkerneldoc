@@ -1,23 +1,23 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/qrtr/qrtr.c
 
-.. _`qrtr_hdr`:
+.. _`qrtr_hdr_v1`:
 
-struct qrtr_hdr
-===============
+struct qrtr_hdr_v1
+==================
 
-.. c:type:: struct qrtr_hdr
+.. c:type:: struct qrtr_hdr_v1
 
-    (I\|R)PCrouter packet header
+    (I\|R)PCrouter packet header version 1
 
-.. _`qrtr_hdr.definition`:
+.. _`qrtr_hdr_v1.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct qrtr_hdr {
+    struct qrtr_hdr_v1 {
         __le32 version;
         __le32 type;
         __le32 src_node_id;
@@ -28,7 +28,7 @@ Definition
         __le32 dst_port_id;
     }
 
-.. _`qrtr_hdr.members`:
+.. _`qrtr_hdr_v1.members`:
 
 Members
 -------
@@ -50,6 +50,66 @@ confirm_rx
 
 size
     length of packet, excluding this header
+
+dst_node_id
+    destination node
+
+dst_port_id
+    destination port
+
+.. _`qrtr_hdr_v2`:
+
+struct qrtr_hdr_v2
+==================
+
+.. c:type:: struct qrtr_hdr_v2
+
+    (I\|R)PCrouter packet header later versions
+
+.. _`qrtr_hdr_v2.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qrtr_hdr_v2 {
+        u8 version;
+        u8 type;
+        u8 flags;
+        u8 optlen;
+        __le32 size;
+        __le16 src_node_id;
+        __le16 src_port_id;
+        __le16 dst_node_id;
+        __le16 dst_port_id;
+    }
+
+.. _`qrtr_hdr_v2.members`:
+
+Members
+-------
+
+version
+    protocol version
+
+type
+    packet type; one of QRTR_TYPE\_\*
+
+flags
+    bitmask of QRTR_FLAGS\_\*
+
+optlen
+    length of optional header data
+
+size
+    length of packet, excluding this header and optlen
+
+src_node_id
+    source node
+
+src_port_id
+    source port
 
 dst_node_id
     destination node
@@ -133,6 +193,28 @@ Return
 ------
 
 0 on success; negative error code on failure
+
+.. _`qrtr_alloc_ctrl_packet`:
+
+qrtr_alloc_ctrl_packet
+======================
+
+.. c:function:: struct sk_buff *qrtr_alloc_ctrl_packet(struct qrtr_ctrl_pkt **pkt)
+
+    allocate control packet skb
+
+    :param struct qrtr_ctrl_pkt \*\*pkt:
+        reference to qrtr_ctrl_pkt pointer
+
+.. _`qrtr_alloc_ctrl_packet.description`:
+
+Description
+-----------
+
+Returns newly allocated sk_buff, or NULL on failure
+
+This function allocates a sk_buff large enough to carry a qrtr_ctrl_pkt and
+on success returns a reference to the control packet in \ ``pkt``\ .
 
 .. _`qrtr_endpoint_register`:
 

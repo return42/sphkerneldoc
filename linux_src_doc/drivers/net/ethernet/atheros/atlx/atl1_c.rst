@@ -157,12 +157,12 @@ atl1_intr
 atl1_phy_config
 ===============
 
-.. c:function:: void atl1_phy_config(unsigned long data)
+.. c:function:: void atl1_phy_config(struct timer_list *t)
 
     Timer Call-back
 
-    :param unsigned long data:
-        pointer to netdev cast into an unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`atl1_change_mtu`:
 

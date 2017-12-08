@@ -95,5 +95,31 @@ Forcibly call the put callback of each slave and call the hook function
 to synchronize with the current value of the given vmaster element.
 NOP when NULL is passed to \ ``kcontrol``\ .
 
+.. _`snd_ctl_apply_vmaster_slaves`:
+
+snd_ctl_apply_vmaster_slaves
+============================
+
+.. c:function:: int snd_ctl_apply_vmaster_slaves(struct snd_kcontrol *kctl, int (*func)(struct snd_kcontrol *vslave, struct snd_kcontrol *slave, void *arg), void *arg)
+
+    Apply function to each vmaster slave
+
+    :param struct snd_kcontrol \*kctl:
+        vmaster kctl element
+
+    :param int (\*func)(struct snd_kcontrol \*vslave, struct snd_kcontrol \*slave, void \*arg):
+        function to apply
+
+    :param void \*arg:
+        optional function argument
+
+.. _`snd_ctl_apply_vmaster_slaves.description`:
+
+Description
+-----------
+
+Apply the function \ ``func``\  to each slave kctl of the given vmaster kctl.
+Returns 0 if successful, or a negative error code.
+
 .. This file was automatic generated / don't edit.
 

@@ -373,10 +373,10 @@ of_find_node_by_name
     Find a node by its "name" property
 
     :param struct device_node \*from:
-        The node to start searching from or NULL, the node
+        The node to start searching from or NULL; the node
         you pass will not be searched, only the next one
-        will; typically, you pass what the previous call
-        returned. \ :c:func:`of_node_put`\  will be called on it
+        will. Typically, you pass what the previous call
+        returned. \ :c:func:`of_node_put`\  will be called on \ ``from``\ .
 
     :param const char \*name:
         The name string to match against

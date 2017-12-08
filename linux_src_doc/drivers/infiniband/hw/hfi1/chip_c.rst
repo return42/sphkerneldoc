@@ -88,6 +88,82 @@ Return
 The iomem address to use in subsequent
 writeq/readq operations.
 
+.. _`update_statusp`:
+
+update_statusp
+==============
+
+.. c:function:: void update_statusp(struct hfi1_pportdata *ppd, u32 state)
+
+    Update userspace status flag
+
+    :param struct hfi1_pportdata \*ppd:
+        Port data structure
+
+    :param u32 state:
+        port state information
+
+.. _`update_statusp.description`:
+
+Description
+-----------
+
+Actual port status is determined by the host_link_state value
+in the ppd.
+
+host_link_state MUST be updated before updating the user space
+statusp.
+
+.. _`wait_logical_linkstate`:
+
+wait_logical_linkstate
+======================
+
+.. c:function:: int wait_logical_linkstate(struct hfi1_pportdata *ppd, u32 state, int msecs)
+
+    wait for an IB link state change to occur
+
+    :param struct hfi1_pportdata \*ppd:
+        port device
+
+    :param u32 state:
+        the state to wait for
+
+    :param int msecs:
+        the number of milliseconds to wait
+
+.. _`wait_logical_linkstate.description`:
+
+Description
+-----------
+
+Wait up to msecs milliseconds for IB link state change to occur.
+For now, take the easy polling route.
+Returns 0 if state reached, otherwise -ETIMEDOUT.
+
+.. _`get_int_mask`:
+
+get_int_mask
+============
+
+.. c:function:: u64 get_int_mask(struct hfi1_devdata *dd, u32 i)
+
+    get 64 bit int mask \ ``dd``\  - the devdata \ ``i``\  - the csr (relative to CCE_INT_MASK)
+
+    :param struct hfi1_devdata \*dd:
+        *undescribed*
+
+    :param u32 i:
+        *undescribed*
+
+.. _`get_int_mask.description`:
+
+Description
+-----------
+
+Returns the mask with the urgent interrupt mask
+bit clear for kernel receive contexts.
+
 .. _`init_qpmap_table`:
 
 init_qpmap_table

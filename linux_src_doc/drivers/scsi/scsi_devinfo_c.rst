@@ -6,7 +6,7 @@
 scsi_dev_info_list_add
 ======================
 
-.. c:function:: int scsi_dev_info_list_add(int compatible, char *vendor, char *model, char *strflags, int flags)
+.. c:function:: int scsi_dev_info_list_add(int compatible, char *vendor, char *model, char *strflags, blist_flags_t flags)
 
     add one dev_info list entry.
 
@@ -22,7 +22,7 @@ scsi_dev_info_list_add
     :param char \*strflags:
         integer string
 
-    :param int flags:
+    :param blist_flags_t flags:
         if strflags NULL, use this flag value
 
 .. _`scsi_dev_info_list_add.description`:
@@ -47,7 +47,7 @@ Return
 scsi_dev_info_list_add_keyed
 ============================
 
-.. c:function:: int scsi_dev_info_list_add_keyed(int compatible, char *vendor, char *model, char *strflags, int flags, int key)
+.. c:function:: int scsi_dev_info_list_add_keyed(int compatible, char *vendor, char *model, char *strflags, blist_flags_t flags, int key)
 
     add one dev_info list entry.
 
@@ -63,7 +63,7 @@ scsi_dev_info_list_add_keyed
     :param char \*strflags:
         integer string
 
-    :param int flags:
+    :param blist_flags_t flags:
         if strflags NULL, use this flag value
 
     :param int key:
@@ -97,10 +97,10 @@ scsi_dev_info_list_find
     find a matching dev_info list entry.
 
     :param const char \*vendor:
-        vendor string
+        full vendor string
 
     :param const char \*model:
-        model (product) string
+        full model (product) string
 
     :param int key:
         specify list to use
@@ -187,7 +187,7 @@ Return
 scsi_get_device_flags
 =====================
 
-.. c:function:: int scsi_get_device_flags(struct scsi_device *sdev, const unsigned char *vendor, const unsigned char *model)
+.. c:function:: blist_flags_t scsi_get_device_flags(struct scsi_device *sdev, const unsigned char *vendor, const unsigned char *model)
 
     get device specific flags from the dynamic device list.
 
@@ -215,7 +215,7 @@ Description
 scsi_get_device_flags_keyed
 ===========================
 
-.. c:function:: int scsi_get_device_flags_keyed(struct scsi_device *sdev, const unsigned char *vendor, const unsigned char *model, int key)
+.. c:function:: blist_flags_t scsi_get_device_flags_keyed(struct scsi_device *sdev, const unsigned char *vendor, const unsigned char *model, int key)
 
     get device specific flags from the dynamic device list
 

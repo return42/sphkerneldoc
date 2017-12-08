@@ -30,9 +30,6 @@ TODO:
 - Fix race between setting plane base address and getting IRQ for
   vsync firing the pageflip completion.
 
-- Expose the correct set of formats we can support based on the
-  "arm,pl11x,tft-r0g0b0-pads" DT property.
-
 - Use the "max-memory-bandwidth" DT property to filter the
   supported formats.
 

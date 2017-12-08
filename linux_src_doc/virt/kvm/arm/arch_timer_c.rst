@@ -1,28 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: virt/kvm/arm/arch_timer.c
 
-.. _`kvm_timer_flush_hwstate`:
-
-kvm_timer_flush_hwstate
-=======================
-
-.. c:function:: void kvm_timer_flush_hwstate(struct kvm_vcpu *vcpu)
-
-    prepare timers before running the vcpu
-
-    :param struct kvm_vcpu \*vcpu:
-        The vcpu pointer
-
-.. _`kvm_timer_flush_hwstate.description`:
-
-Description
------------
-
-Check if the virtual timer has expired while we were running in the host,
-and inject an interrupt if that was the case, making sure the timer is
-masked or disabled on the host so that we keep executing.  Also schedule a
-software timer for the physical timer if it is enabled.
-
 .. _`kvm_timer_sync_hwstate`:
 
 kvm_timer_sync_hwstate

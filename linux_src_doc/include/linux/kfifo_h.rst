@@ -273,7 +273,7 @@ Description
 
 This macro dynamically allocates a new fifo buffer.
 
-The numer of elements will be rounded-up to a power of 2.
+The number of elements will be rounded-up to a power of 2.
 The fifo will be release with \ :c:func:`kfifo_free`\ .
 Return 0 if no error, otherwise an error code.
 
@@ -312,9 +312,9 @@ kfifo_init
 Description
 -----------
 
-This macro initialize a fifo using a preallocated buffer.
+This macro initializes a fifo using a preallocated buffer.
 
-The numer of elements will be rounded-up to a power of 2.
+The number of elements will be rounded-up to a power of 2.
 Return 0 if no error, otherwise an error code.
 
 .. _`kfifo_put`:

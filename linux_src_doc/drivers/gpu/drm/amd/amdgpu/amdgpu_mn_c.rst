@@ -42,6 +42,68 @@ Description
 
 Shedule a work item to lazy destroy our notifier.
 
+.. _`amdgpu_mn_lock`:
+
+amdgpu_mn_lock
+==============
+
+.. c:function:: void amdgpu_mn_lock(struct amdgpu_mn *mn)
+
+    take the write side lock for this mn
+
+    :param struct amdgpu_mn \*mn:
+        *undescribed*
+
+.. _`amdgpu_mn_unlock`:
+
+amdgpu_mn_unlock
+================
+
+.. c:function:: void amdgpu_mn_unlock(struct amdgpu_mn *mn)
+
+    drop the write side lock for this mn
+
+    :param struct amdgpu_mn \*mn:
+        *undescribed*
+
+.. _`amdgpu_mn_read_lock`:
+
+amdgpu_mn_read_lock
+===================
+
+.. c:function:: void amdgpu_mn_read_lock(struct amdgpu_mn *rmn)
+
+    take the rmn read lock
+
+    :param struct amdgpu_mn \*rmn:
+        our notifier
+
+.. _`amdgpu_mn_read_lock.description`:
+
+Description
+-----------
+
+Take the rmn read side lock.
+
+.. _`amdgpu_mn_read_unlock`:
+
+amdgpu_mn_read_unlock
+=====================
+
+.. c:function:: void amdgpu_mn_read_unlock(struct amdgpu_mn *rmn)
+
+    drop the rmn read lock
+
+    :param struct amdgpu_mn \*rmn:
+        our notifier
+
+.. _`amdgpu_mn_read_unlock.description`:
+
+Description
+-----------
+
+Drop the rmn read side lock.
+
 .. _`amdgpu_mn_invalidate_node`:
 
 amdgpu_mn_invalidate_node
@@ -96,6 +158,34 @@ Description
 
 We block for all BOs between start and end to be idle and
 unmap them by move them into system domain again.
+
+.. _`amdgpu_mn_invalidate_range_end`:
+
+amdgpu_mn_invalidate_range_end
+==============================
+
+.. c:function:: void amdgpu_mn_invalidate_range_end(struct mmu_notifier *mn, struct mm_struct *mm, unsigned long start, unsigned long end)
+
+    callback to notify about mm change
+
+    :param struct mmu_notifier \*mn:
+        the mm this callback is about
+
+    :param struct mm_struct \*mm:
+        *undescribed*
+
+    :param unsigned long start:
+        start of updated range
+
+    :param unsigned long end:
+        end of updated range
+
+.. _`amdgpu_mn_invalidate_range_end.description`:
+
+Description
+-----------
+
+Release the lock again to allow new command submissions.
 
 .. _`amdgpu_mn_get`:
 

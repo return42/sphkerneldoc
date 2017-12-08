@@ -50,13 +50,20 @@ wq
     wait queue for fence signaling
 
 flags
-    *undescribed*
+    flags for the sync_file
 
 fence
     fence with the fences in the sync_file
 
 cb
     fence callback information
+
+.. _`sync_file.flags`:
+
+flags
+-----
+
+POLL_ENABLED: whether userspace is currently \ :c:func:`poll`\ 'ing or not
 
 .. This file was automatic generated / don't edit.
 

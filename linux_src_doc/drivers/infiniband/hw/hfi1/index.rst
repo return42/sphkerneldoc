@@ -27,5 +27,6 @@ hfi1
     uc_c
     ud_c
     user_exp_rcv_c
+    user_sdma_h
     verbs_c
     vnic_h

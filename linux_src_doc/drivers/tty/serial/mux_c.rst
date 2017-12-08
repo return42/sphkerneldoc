@@ -386,11 +386,11 @@ suitable for this port type.
 mux_poll
 ========
 
-.. c:function:: void mux_poll(unsigned long unused)
+.. c:function:: void mux_poll(struct timer_list *unused)
 
     Mux poll function.
 
-    :param unsigned long unused:
+    :param struct timer_list \*unused:
         Unused variable
 
 .. _`mux_poll.description`:

@@ -26,7 +26,8 @@ Definition
         u32 flags;
         u8 deleted;
         u8 tm_busy;
-        struct _sas_device *sdev;
+        struct _sas_device *sas_dev;
+        struct _pcie_device *pcie_dev;
     }
 
 .. _`mpt3sas_target.members`:
@@ -58,8 +59,11 @@ deleted
 tm_busy
     target is busy with TM request.
 
-sdev
+sas_dev
     The sas_device associated with this target
+
+pcie_dev
+    The pcie device associated with this target
 
 .. _`mpt3sas_device`:
 
@@ -206,6 +210,8 @@ Definition
         u8 pfa_led_on;
         u8 pend_sas_rphy_add;
         u8 enclosure_level;
+        u8 chassis_slot;
+        u8 is_chassis_slot_valid;
         u8 connector_name[5];
         struct kref refcount;
     }
@@ -276,11 +282,80 @@ pend_sas_rphy_add
 enclosure_level
     *undescribed*
 
+chassis_slot
+    chassis slot
+
+is_chassis_slot_valid
+    chassis slot valid or not
+
 connector_name
     *undescribed*
 
 refcount
     *undescribed*
+
+.. _`pcie_device_get`:
+
+pcie_device_get
+===============
+
+.. c:function:: void pcie_device_get(struct _pcie_device *p)
+
+    Increment the pcie device reference count
+
+    :param struct _pcie_device \*p:
+        pcie_device object
+
+.. _`pcie_device_get.description`:
+
+Description
+-----------
+
+When ever this function called it will increment the
+reference count of the pcie device for which this function called.
+
+.. _`pcie_device_free`:
+
+pcie_device_free
+================
+
+.. c:function:: void pcie_device_free(struct kref *r)
+
+    Release the pcie device object \ ``r``\  - kref object
+
+    :param struct kref \*r:
+        *undescribed*
+
+.. _`pcie_device_free.description`:
+
+Description
+-----------
+
+Free's the pcie device object. It will be called when reference count
+reaches to zero.
+
+.. _`pcie_device_put`:
+
+pcie_device_put
+===============
+
+.. c:function:: void pcie_device_put(struct _pcie_device *p)
+
+    Decrement the pcie device reference count
+
+    :param struct _pcie_device \*p:
+        pcie_device object
+
+.. _`pcie_device_put.description`:
+
+Description
+-----------
+
+When ever this function called it will decrement the
+reference count of the pcie device for which this function called.
+
+When refernce count reaches to Zero, this will call pcie_device_free to the
+pcie_device object.
 
 .. _`_boot_device`:
 
@@ -299,7 +374,7 @@ Definition
 .. code-block:: c
 
     struct _boot_device {
-        u8 is_raid;
+        int channel;
         void *device;
     }
 
@@ -308,12 +383,12 @@ Definition
 Members
 -------
 
-is_raid
-    flag to indicate whether this is volume
+channel
+    sas, raid, or pcie channel
 
 device
-    holds pointer for either struct \_sas_device or
-    struct \_raid_device
+    holds pointer for struct \_sas_device, struct \_raid_device or
+    struct \_pcie_device
 
 .. _`_sas_port`:
 
@@ -519,6 +594,38 @@ FORCE_BIG_HAMMER
 SOFT_RESET
     issue message_unit_reset, if fails to to big hammer
 
+.. _`pcie_sg_list`:
+
+struct pcie_sg_list
+===================
+
+.. c:type:: struct pcie_sg_list
+
+    PCIe SGL buffer (contiguous per I/O)
+
+.. _`pcie_sg_list.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct pcie_sg_list {
+        void *pcie_sgl;
+        dma_addr_t pcie_sgl_dma;
+    }
+
+.. _`pcie_sg_list.members`:
+
+Members
+-------
+
+pcie_sgl
+    PCIe native SGL for NVMe devices
+
+pcie_sgl_dma
+    physical address
+
 .. _`chain_tracker`:
 
 struct chain_tracker
@@ -576,6 +683,7 @@ Definition
         struct scsi_cmnd *scmd;
         u8 cb_idx;
         u8 direct_io;
+        struct pcie_sg_list pcie_sg_list;
         struct list_head chain_list;
         struct list_head tracker_list;
         u16 msix_io;
@@ -597,6 +705,9 @@ cb_idx
 
 direct_io
     To indicate whether I/O is direct (WARPDRIVE)
+
+pcie_sg_list
+    *undescribed*
 
 chain_list
     *undescribed*
@@ -890,6 +1001,7 @@ Definition
         u16 hba_mpi_version_belonged;
         MPT_BUILD_SG build_sg_mpi;
         MPT_BUILD_ZERO_LEN_SGE build_zero_len_sge_mpi;
+        NVME_BUILD_PRP build_nvme_prp;
         u32 event_type[MPI2_EVENT_NOTIFY_EVENTMASK_WORDS];
         u32 event_context;
         void *event_log;
@@ -914,11 +1026,15 @@ Definition
         struct list_head sas_device_list;
         struct list_head sas_device_init_list;
         spinlock_t sas_device_lock;
+        struct list_head pcie_device_list;
+        struct list_head pcie_device_init_list;
+        spinlock_t pcie_device_lock;
         struct list_head raid_device_list;
         spinlock_t raid_device_lock;
         u8 io_missing_delay;
         u16 device_missing_delay;
         int sas_id;
+        int pcie_target_id;
         void *blocking_handles;
         void *pd_handles;
         u16 pd_handles_sz;
@@ -940,6 +1056,8 @@ Definition
         struct list_head free_list;
         int pending_io_count;
         wait_queue_head_t reset_wq;
+        struct dma_pool *pcie_sgl_dma_pool;
+        u32 page_size;
         struct chain_tracker *chain_lookup;
         struct list_head free_chain_list;
         struct dma_pool *chain_dma_pool;
@@ -1019,6 +1137,7 @@ Definition
         PUT_SMID_IO_FP_HIP put_smid_fast_path;
         PUT_SMID_IO_FP_HIP put_smid_hi_priority;
         PUT_SMID_DEFAULT put_smid_default;
+        PUT_SMID_DEFAULT put_smid_nvme_encap;
     }
 
 .. _`mpt3sas_adapter.members`:
@@ -1249,6 +1368,9 @@ build_sg_mpi
 build_zero_len_sge_mpi
     *undescribed*
 
+build_nvme_prp
+    *undescribed*
+
 event_type
     bits indicating which events to log
 
@@ -1321,6 +1443,15 @@ sas_device_init_list
 sas_device_lock
     *undescribed*
 
+pcie_device_list
+    pcie device object list
+
+pcie_device_init_list
+    pcie device object list (used only at init time)
+
+pcie_device_lock
+    *undescribed*
+
 raid_device_list
     *undescribed*
 
@@ -1335,6 +1466,9 @@ device_missing_delay
 
 sas_id
     used for setting volume target IDs
+
+pcie_target_id
+    used for setting pcie target IDs
 
 blocking_handles
     bitmask used to identify which devices need blocking
@@ -1397,6 +1531,12 @@ pending_io_count
     *undescribed*
 
 reset_wq
+    *undescribed*
+
+pcie_sgl_dma_pool
+    *undescribed*
+
+page_size
     *undescribed*
 
 chain_lookup
@@ -1641,6 +1781,9 @@ put_smid_hi_priority
     *undescribed*
 
 put_smid_default
+    *undescribed*
+
+put_smid_nvme_encap
     *undescribed*
 
 .. This file was automatic generated / don't edit.

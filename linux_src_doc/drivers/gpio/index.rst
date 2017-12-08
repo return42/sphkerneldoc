@@ -18,6 +18,7 @@ gpio
     gpio-ftgpio010_c
     gpio-gpio-mm_c
     gpio-it87_c
+    gpio-max3191x_c
     gpio-max730x_c
     gpio-ml-ioh_c
     gpio-mm-lantiq_c

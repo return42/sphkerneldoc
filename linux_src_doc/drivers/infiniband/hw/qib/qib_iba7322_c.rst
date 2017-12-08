@@ -346,11 +346,11 @@ qib_portcntr_7322
 qib_get_7322_faststats
 ======================
 
-.. c:function:: void qib_get_7322_faststats(unsigned long opaque)
+.. c:function:: void qib_get_7322_faststats(struct timer_list *t)
 
     get word counters from chip before they overflow \ ``opaque``\  - contains a pointer to the qlogic_ib device qib_devdata
 
-    :param unsigned long opaque:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`qib_get_7322_faststats.description`:

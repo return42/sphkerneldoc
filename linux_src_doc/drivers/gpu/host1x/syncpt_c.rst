@@ -75,12 +75,12 @@ host1x_syncpt_wait
 host1x_syncpt_request
 =====================
 
-.. c:function:: struct host1x_syncpt *host1x_syncpt_request(struct device *dev, unsigned long flags)
+.. c:function:: struct host1x_syncpt *host1x_syncpt_request(struct host1x_client *client, unsigned long flags)
 
     request a syncpoint
 
-    :param struct device \*dev:
-        device requesting the syncpoint
+    :param struct host1x_client \*client:
+        client requesting the syncpoint
 
     :param unsigned long flags:
         flags

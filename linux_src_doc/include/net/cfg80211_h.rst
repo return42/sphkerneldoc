@@ -7798,37 +7798,6 @@ Return
 
 0 on success. Non-zero on error.
 
-.. _`ieee80211_data_from_8023`:
-
-ieee80211_data_from_8023
-========================
-
-.. c:function:: int ieee80211_data_from_8023(struct sk_buff *skb, const u8 *addr, enum nl80211_iftype iftype, const u8 *bssid, bool qos)
-
-    convert an 802.3 frame to 802.11
-
-    :param struct sk_buff \*skb:
-        the 802.3 frame
-
-    :param const u8 \*addr:
-        the device MAC address
-
-    :param enum nl80211_iftype iftype:
-        the virtual interface type
-
-    :param const u8 \*bssid:
-        the network bssid (used only for iftype STATION and ADHOC)
-
-    :param bool qos:
-        build 802.11 QoS data frame
-
-.. _`ieee80211_data_from_8023.return`:
-
-Return
-------
-
-0 on success, or a negative error code.
-
 .. _`ieee80211_amsdu_to_8023s`:
 
 ieee80211_amsdu_to_8023s
@@ -9540,7 +9509,6 @@ Definition
         size_t req_ie_len;
         const u8 *resp_ie;
         size_t resp_ie_len;
-        bool authorized;
     }
 
 .. _`cfg80211_roam_info.members`:
@@ -9568,11 +9536,6 @@ resp_ie
 
 resp_ie_len
     assoc response IEs length
-
-authorized
-    true if the 802.1X authentication was done by the driver or is
-    not needed (e.g., when Fast Transition protocol was used), false
-    otherwise. Ignored for networks that don't use 802.1X authentication.
 
 .. _`cfg80211_roamed`:
 
@@ -9607,6 +9570,36 @@ time it is accessed in \ :c:func:`__cfg80211_roamed`\  due to delay in schedulin
 rdev->event_work. In case of any failures, the reference is released
 either in \ :c:func:`cfg80211_roamed`\  or in \ :c:func:`__cfg80211_romed`\ , Otherwise, it will be
 released while diconneting from the current bss.
+
+.. _`cfg80211_port_authorized`:
+
+cfg80211_port_authorized
+========================
+
+.. c:function:: void cfg80211_port_authorized(struct net_device *dev, const u8 *bssid, gfp_t gfp)
+
+    notify cfg80211 of successful security association
+
+    :param struct net_device \*dev:
+        network device
+
+    :param const u8 \*bssid:
+        the BSSID of the AP
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`cfg80211_port_authorized.description`:
+
+Description
+-----------
+
+This function should be called by a driver that supports 4 way handshake
+offload after a security association was successfully established (i.e.,
+the 4 way handshake was completed successfully). The call to this function
+should be preceded with a call to \ :c:func:`cfg80211_connect_result`\ ,
+\ :c:func:`cfg80211_connect_done`\ , \ :c:func:`cfg80211_connect_bss`\  or \ :c:func:`cfg80211_roamed`\  to
+indicate the 802.11 association.
 
 .. _`cfg80211_disconnected`:
 
@@ -10445,7 +10438,8 @@ ieee80211_ie_split_ric
 
     :param const u8 \*ids:
         an array with element IDs that are allowed before
-        the split
+        the split. A WLAN_EID_EXTENSION value means that the next
+        EID in the list is a sub-element of the EXTENSION IE.
 
     :param int n_ids:
         the size of the element ID array
@@ -10496,7 +10490,8 @@ ieee80211_ie_split
 
     :param const u8 \*ids:
         an array with element IDs that are allowed before
-        the split
+        the split. A WLAN_EID_EXTENSION value means that the next
+        EID in the list is a sub-element of the EXTENSION IE.
 
     :param int n_ids:
         the size of the element ID array

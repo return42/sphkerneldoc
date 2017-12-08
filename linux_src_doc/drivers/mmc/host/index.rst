@@ -15,5 +15,6 @@ host
     sdhci-msm_c
     sdhci-of-arasan_c
     sdhci-of-esdhc_c
+    sdhci-omap_c
     sdhci-s3c_c
     sdhci-st_c

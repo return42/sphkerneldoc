@@ -285,7 +285,7 @@ error code on failures
 batadv_softif_slave_add
 =======================
 
-.. c:function:: int batadv_softif_slave_add(struct net_device *dev, struct net_device *slave_dev)
+.. c:function:: int batadv_softif_slave_add(struct net_device *dev, struct net_device *slave_dev, struct netlink_ext_ack *extack)
 
     Add a slave interface to a batadv_soft_interface
 
@@ -294,6 +294,9 @@ batadv_softif_slave_add
 
     :param struct net_device \*slave_dev:
         net_device which should become the slave interface
+
+    :param struct netlink_ext_ack \*extack:
+        extended ACK report struct
 
 .. _`batadv_softif_slave_add.return`:
 

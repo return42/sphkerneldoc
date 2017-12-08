@@ -8,6 +8,7 @@ spi
     :maxdepth: 1
 
     flash_h
+    spi-fsl-dspi_h
     spi_gpio_h
     spi_h
     spi_oc_tiny_h

@@ -191,9 +191,9 @@ nes_replenish_nic_rq
 nes_rq_wqes_timeout
 ===================
 
-.. c:function:: void nes_rq_wqes_timeout(unsigned long parm)
+.. c:function:: void nes_rq_wqes_timeout(struct timer_list *t)
 
-    :param unsigned long parm:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`nes_init_nic_qp`:

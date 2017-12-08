@@ -300,6 +300,44 @@ If the provided register buffer isn't large enough for the chip's
 full register range, the register dump will be truncated to the
 register buffer's size.
 
+.. _`t4_eeprom_ptov`:
+
+t4_eeprom_ptov
+==============
+
+.. c:function:: int t4_eeprom_ptov(unsigned int phys_addr, unsigned int fn, unsigned int sz)
+
+    translate a physical EEPROM address to virtual
+
+    :param unsigned int phys_addr:
+        the physical EEPROM address
+
+    :param unsigned int fn:
+        the PCI function number
+
+    :param unsigned int sz:
+        size of function-specific area
+
+.. _`t4_eeprom_ptov.description`:
+
+Description
+-----------
+
+Translate a physical EEPROM address to virtual.  The first 1K is
+accessed through virtual addresses starting at 31K, the rest is
+accessed through virtual addresses starting at 0.
+
+.. _`t4_eeprom_ptov.the-mapping-is-as-follows`:
+
+The mapping is as follows
+-------------------------
+
+[0..1K) -> [31K..32K)
+[1K..1K+A) -> [31K-A..31K)
+[1K+A..ES) -> [0..ES-A-1K)
+
+where A = \ ``fn``\  \* \ ``sz``\ , and ES = EEPROM size.
+
 .. _`t4_seeprom_wp`:
 
 t4_seeprom_wp
@@ -1238,17 +1276,20 @@ Description
 
 Reads the contents of the RSS hash->queue mapping table.
 
-.. _`t4_fw_tp_pio_rw`:
+.. _`t4_tp_fw_ldst_rw`:
 
-t4_fw_tp_pio_rw
-===============
+t4_tp_fw_ldst_rw
+================
 
-.. c:function:: void t4_fw_tp_pio_rw(struct adapter *adap, u32 *vals, unsigned int nregs, unsigned int start_index, unsigned int rw)
+.. c:function:: int t4_tp_fw_ldst_rw(struct adapter *adap, int cmd, u32 *vals, unsigned int nregs, unsigned int start_index, unsigned int rw, bool sleep_ok)
 
-    Access TP PIO through LDST
+    Access TP indirect register through LDST
 
     :param struct adapter \*adap:
         the adapter
+
+    :param int cmd:
+        TP fw ldst address space type
 
     :param u32 \*vals:
         where the indirect register values are stored/written
@@ -1262,19 +1303,187 @@ t4_fw_tp_pio_rw
     :param unsigned int rw:
         Read (1) or Write (0)
 
-.. _`t4_fw_tp_pio_rw.description`:
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_tp_fw_ldst_rw.description`:
 
 Description
 -----------
 
-Access TP PIO registers through LDST
+Access TP indirect registers through LDST
+
+.. _`t4_tp_indirect_rw`:
+
+t4_tp_indirect_rw
+=================
+
+.. c:function:: void t4_tp_indirect_rw(struct adapter *adap, u32 reg_addr, u32 reg_data, u32 *buff, u32 nregs, u32 start_index, int rw, bool sleep_ok)
+
+    Read/Write TP indirect register through LDST or backdoor
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param u32 reg_addr:
+        Address Register
+
+    :param u32 reg_data:
+        Data register
+
+    :param u32 \*buff:
+        where the indirect register values are stored/written
+
+    :param u32 nregs:
+        how many indirect registers to read/write
+
+    :param u32 start_index:
+        index of first indirect register to read/write
+
+    :param int rw:
+        READ(1) or WRITE(0)
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_tp_indirect_rw.description`:
+
+Description
+-----------
+
+Read/Write TP indirect registers through LDST if possible.
+Else, use backdoor access
+
+.. _`t4_tp_pio_read`:
+
+t4_tp_pio_read
+==============
+
+.. c:function:: void t4_tp_pio_read(struct adapter *adap, u32 *buff, u32 nregs, u32 start_index, bool sleep_ok)
+
+    Read TP PIO registers
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param u32 \*buff:
+        where the indirect register values are written
+
+    :param u32 nregs:
+        how many indirect registers to read
+
+    :param u32 start_index:
+        index of first indirect register to read
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_tp_pio_read.description`:
+
+Description
+-----------
+
+Read TP PIO Registers
+
+.. _`t4_tp_pio_write`:
+
+t4_tp_pio_write
+===============
+
+.. c:function:: void t4_tp_pio_write(struct adapter *adap, u32 *buff, u32 nregs, u32 start_index, bool sleep_ok)
+
+    Write TP PIO registers
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param u32 \*buff:
+        where the indirect register values are stored
+
+    :param u32 nregs:
+        how many indirect registers to write
+
+    :param u32 start_index:
+        index of first indirect register to write
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_tp_pio_write.description`:
+
+Description
+-----------
+
+Write TP PIO Registers
+
+.. _`t4_tp_tm_pio_read`:
+
+t4_tp_tm_pio_read
+=================
+
+.. c:function:: void t4_tp_tm_pio_read(struct adapter *adap, u32 *buff, u32 nregs, u32 start_index, bool sleep_ok)
+
+    Read TP TM PIO registers
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param u32 \*buff:
+        where the indirect register values are written
+
+    :param u32 nregs:
+        how many indirect registers to read
+
+    :param u32 start_index:
+        index of first indirect register to read
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_tp_tm_pio_read.description`:
+
+Description
+-----------
+
+Read TP TM PIO Registers
+
+.. _`t4_tp_mib_read`:
+
+t4_tp_mib_read
+==============
+
+.. c:function:: void t4_tp_mib_read(struct adapter *adap, u32 *buff, u32 nregs, u32 start_index, bool sleep_ok)
+
+    Read TP MIB registers
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param u32 \*buff:
+        where the indirect register values are written
+
+    :param u32 nregs:
+        how many indirect registers to read
+
+    :param u32 start_index:
+        index of first indirect register to read
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_tp_mib_read.description`:
+
+Description
+-----------
+
+Read TP MIB Registers
 
 .. _`t4_read_rss_key`:
 
 t4_read_rss_key
 ===============
 
-.. c:function:: void t4_read_rss_key(struct adapter *adap, u32 *key)
+.. c:function:: void t4_read_rss_key(struct adapter *adap, u32 *key, bool sleep_ok)
 
     read the global RSS key
 
@@ -1283,6 +1492,9 @@ t4_read_rss_key
 
     :param u32 \*key:
         10-entry array holding the 320-bit RSS key
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_read_rss_key.description`:
 
@@ -1296,7 +1508,7 @@ Reads the global 320-bit RSS key.
 t4_write_rss_key
 ================
 
-.. c:function:: void t4_write_rss_key(struct adapter *adap, const u32 *key, int idx)
+.. c:function:: void t4_write_rss_key(struct adapter *adap, const u32 *key, int idx, bool sleep_ok)
 
     program one of the RSS keys
 
@@ -1308,6 +1520,9 @@ t4_write_rss_key
 
     :param int idx:
         which RSS key to write
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_write_rss_key.description`:
 
@@ -1323,7 +1538,7 @@ otherwise the global RSS key is written.
 t4_read_rss_pf_config
 =====================
 
-.. c:function:: void t4_read_rss_pf_config(struct adapter *adapter, unsigned int index, u32 *valp)
+.. c:function:: void t4_read_rss_pf_config(struct adapter *adapter, unsigned int index, u32 *valp, bool sleep_ok)
 
     read PF RSS Configuration Table
 
@@ -1335,6 +1550,9 @@ t4_read_rss_pf_config
 
     :param u32 \*valp:
         where to store the returned value
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_read_rss_pf_config.description`:
 
@@ -1349,7 +1567,7 @@ the value found there.
 t4_read_rss_vf_config
 =====================
 
-.. c:function:: void t4_read_rss_vf_config(struct adapter *adapter, unsigned int index, u32 *vfl, u32 *vfh)
+.. c:function:: void t4_read_rss_vf_config(struct adapter *adapter, unsigned int index, u32 *vfl, u32 *vfh, bool sleep_ok)
 
     read VF RSS Configuration Table
 
@@ -1365,6 +1583,9 @@ t4_read_rss_vf_config
     :param u32 \*vfh:
         where to store the returned VFH
 
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
 .. _`t4_read_rss_vf_config.description`:
 
 Description
@@ -1378,12 +1599,15 @@ the (VFL, VFH) values found there.
 t4_read_rss_pf_map
 ==================
 
-.. c:function:: u32 t4_read_rss_pf_map(struct adapter *adapter)
+.. c:function:: u32 t4_read_rss_pf_map(struct adapter *adapter, bool sleep_ok)
 
     read PF RSS Map
 
     :param struct adapter \*adapter:
         the adapter
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_read_rss_pf_map.description`:
 
@@ -1397,12 +1621,15 @@ Reads the PF RSS Map register and returns its value.
 t4_read_rss_pf_mask
 ===================
 
-.. c:function:: u32 t4_read_rss_pf_mask(struct adapter *adapter)
+.. c:function:: u32 t4_read_rss_pf_mask(struct adapter *adapter, bool sleep_ok)
 
     read PF RSS Mask
 
     :param struct adapter \*adapter:
         the adapter
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_read_rss_pf_mask.description`:
 
@@ -1416,7 +1643,7 @@ Reads the PF RSS Mask register and returns its value.
 t4_tp_get_tcp_stats
 ===================
 
-.. c:function:: void t4_tp_get_tcp_stats(struct adapter *adap, struct tp_tcp_stats *v4, struct tp_tcp_stats *v6)
+.. c:function:: void t4_tp_get_tcp_stats(struct adapter *adap, struct tp_tcp_stats *v4, struct tp_tcp_stats *v6, bool sleep_ok)
 
     read TP's TCP MIB counters
 
@@ -1428,6 +1655,9 @@ t4_tp_get_tcp_stats
 
     :param struct tp_tcp_stats \*v6:
         holds the TCP/IPv6 counter values
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_tp_get_tcp_stats.description`:
 
@@ -1442,7 +1672,7 @@ Either \ ``v4``\  or \ ``v6``\  may be \ ``NULL``\  to skip the corresponding st
 t4_tp_get_err_stats
 ===================
 
-.. c:function:: void t4_tp_get_err_stats(struct adapter *adap, struct tp_err_stats *st)
+.. c:function:: void t4_tp_get_err_stats(struct adapter *adap, struct tp_err_stats *st, bool sleep_ok)
 
     read TP's error MIB counters
 
@@ -1451,6 +1681,9 @@ t4_tp_get_err_stats
 
     :param struct tp_err_stats \*st:
         holds the counter values
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_tp_get_err_stats.description`:
 
@@ -1464,7 +1697,7 @@ Returns the values of TP's error counters.
 t4_tp_get_cpl_stats
 ===================
 
-.. c:function:: void t4_tp_get_cpl_stats(struct adapter *adap, struct tp_cpl_stats *st)
+.. c:function:: void t4_tp_get_cpl_stats(struct adapter *adap, struct tp_cpl_stats *st, bool sleep_ok)
 
     read TP's CPL MIB counters
 
@@ -1473,6 +1706,9 @@ t4_tp_get_cpl_stats
 
     :param struct tp_cpl_stats \*st:
         holds the counter values
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_tp_get_cpl_stats.description`:
 
@@ -1486,7 +1722,7 @@ Returns the values of TP's CPL counters.
 t4_tp_get_rdma_stats
 ====================
 
-.. c:function:: void t4_tp_get_rdma_stats(struct adapter *adap, struct tp_rdma_stats *st)
+.. c:function:: void t4_tp_get_rdma_stats(struct adapter *adap, struct tp_rdma_stats *st, bool sleep_ok)
 
     read TP's RDMA MIB counters
 
@@ -1495,6 +1731,9 @@ t4_tp_get_rdma_stats
 
     :param struct tp_rdma_stats \*st:
         holds the counter values
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_tp_get_rdma_stats.description`:
 
@@ -1508,7 +1747,7 @@ Returns the values of TP's RDMA counters.
 t4_get_fcoe_stats
 =================
 
-.. c:function:: void t4_get_fcoe_stats(struct adapter *adap, unsigned int idx, struct tp_fcoe_stats *st)
+.. c:function:: void t4_get_fcoe_stats(struct adapter *adap, unsigned int idx, struct tp_fcoe_stats *st, bool sleep_ok)
 
     read TP's FCoE MIB counters for a port
 
@@ -1520,6 +1759,9 @@ t4_get_fcoe_stats
 
     :param struct tp_fcoe_stats \*st:
         holds the counter values
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_get_fcoe_stats.description`:
 
@@ -1533,7 +1775,7 @@ Returns the values of TP's FCoE counters for the selected port.
 t4_get_usm_stats
 ================
 
-.. c:function:: void t4_get_usm_stats(struct adapter *adap, struct tp_usm_stats *st)
+.. c:function:: void t4_get_usm_stats(struct adapter *adap, struct tp_usm_stats *st, bool sleep_ok)
 
     read TP's non-TCP DDP MIB counters
 
@@ -1542,6 +1784,9 @@ t4_get_usm_stats
 
     :param struct tp_usm_stats \*st:
         holds the counter values
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_get_usm_stats.description`:
 
@@ -3437,12 +3682,15 @@ Initialize various fields of the adapter's SGE Parameters structure.
 t4_init_tp_params
 =================
 
-.. c:function:: int t4_init_tp_params(struct adapter *adap)
+.. c:function:: int t4_init_tp_params(struct adapter *adap, bool sleep_ok)
 
     initialize adap->params.tp
 
     :param struct adapter \*adap:
         the adapter
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
 
 .. _`t4_init_tp_params.description`:
 
@@ -3799,6 +4047,88 @@ t4_set_vf_mac_acl
 
     :param u8 \*addr:
         the MAC address(es) to be set to the specified VF
+
+.. _`t4_read_pace_tbl`:
+
+t4_read_pace_tbl
+================
+
+.. c:function:: void t4_read_pace_tbl(struct adapter *adap, unsigned int pace_vals)
+
+    read the pace table
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int pace_vals:
+        holds the returned values
+
+.. _`t4_read_pace_tbl.description`:
+
+Description
+-----------
+
+Returns the values of TP's pace table in microseconds.
+
+.. _`t4_get_tx_sched`:
+
+t4_get_tx_sched
+===============
+
+.. c:function:: void t4_get_tx_sched(struct adapter *adap, unsigned int sched, unsigned int *kbps, unsigned int *ipg, bool sleep_ok)
+
+    get the configuration of a Tx HW traffic scheduler
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int sched:
+        the scheduler index
+
+    :param unsigned int \*kbps:
+        the byte rate in Kbps
+
+    :param unsigned int \*ipg:
+        the interpacket delay in tenths of nanoseconds
+
+    :param bool sleep_ok:
+        if true we may sleep while awaiting command completion
+
+.. _`t4_get_tx_sched.description`:
+
+Description
+-----------
+
+Return the current configuration of a HW Tx scheduler.
+
+.. _`t4_sge_ctxt_rd_bd`:
+
+t4_sge_ctxt_rd_bd
+=================
+
+.. c:function:: int t4_sge_ctxt_rd_bd(struct adapter *adap, unsigned int cid, enum ctxt_type ctype, u32 *data)
+
+    read an SGE context bypassing FW
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int cid:
+        the context id
+
+    :param enum ctxt_type ctype:
+        the context type
+
+    :param u32 \*data:
+        where to store the context data
+
+.. _`t4_sge_ctxt_rd_bd.description`:
+
+Description
+-----------
+
+Reads an SGE context directly, bypassing FW.  This is only for
+debugging when FW is unavailable.
 
 .. This file was automatic generated / don't edit.
 

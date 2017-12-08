@@ -120,7 +120,7 @@ __unflatten_device_tree
         for the resulting tree
 
     :param bool detached:
-        *undescribed*
+        if true set OF_DETACHED on \ ``mynodes``\ 
 
 .. _`__unflatten_device_tree.description`:
 

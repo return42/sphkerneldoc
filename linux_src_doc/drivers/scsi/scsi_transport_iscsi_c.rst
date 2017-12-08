@@ -354,26 +354,6 @@ Description
 
 This can be called from a LLD or iscsi_transport.
 
-.. _`iscsi_destroy_session`:
-
-iscsi_destroy_session
-=====================
-
-.. c:function:: int iscsi_destroy_session(struct iscsi_cls_session *session)
-
-    destroy iscsi session
-
-    :param struct iscsi_cls_session \*session:
-        iscsi_session
-
-.. _`iscsi_destroy_session.description`:
-
-Description
------------
-
-Can be called by a LLD or iscsi_transport. There must not be
-any running connections.
-
 .. _`iscsi_create_conn`:
 
 iscsi_create_conn

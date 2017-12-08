@@ -26,7 +26,8 @@ The device should respond within TIMEOUT_C by clearing the bit.
 Anyhow, we do not wait here as a consequent CMD_READY request
 will be handled correctly even if idle was not completed.
 
-The function does nothing for devices with ACPI-start method.
+The function does nothing for devices with ACPI-start method
+or SMC-start method.
 
 .. _`crb_go_idle.return`:
 
@@ -60,6 +61,7 @@ and poll till the device acknowledge it by clearing the bit.
 The device should respond within TIMEOUT_C.
 
 The function does nothing for devices with ACPI-start method
+or SMC-start method.
 
 .. _`crb_cmd_ready.return`:
 

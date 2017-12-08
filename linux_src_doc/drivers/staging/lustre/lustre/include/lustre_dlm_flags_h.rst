@@ -55,17 +55,14 @@ LDLM_FL_CANCEL_ON_BLOCK
 
     cancel notification to original lock holder, but expect no reply. This is for clients (like liblustre) that cannot be expected to reliably response to blocking AST.
 
-.. _`ldlm_is_deny_on_contention`:
+.. _`ldlm_fl_deny_on_contention`:
 
-ldlm_is_deny_on_contention
+LDLM_FL_DENY_ON_CONTENTION
 ==========================
 
-.. c:function::  ldlm_is_deny_on_contention( _l)
+.. c:function::  LDLM_FL_DENY_ON_CONTENTION()
 
-    EUSERS if locking contention is high \*/
-
-    :param  _l:
-        *undescribed*
+    EUSERS if locking contention is high
 
 .. _`ldlm_fl_ast_discard_data`:
 
@@ -73,6 +70,8 @@ LDLM_FL_AST_DISCARD_DATA
 ========================
 
 .. c:function::  LDLM_FL_AST_DISCARD_DATA()
+
+    locks Add FL_DISCARD to blocking ASTs
 
 .. _`ldlm_fl_fail_loc`:
 

@@ -209,7 +209,7 @@ crc32 checksum.
 genwqe_alloc_sync_sgl
 =====================
 
-.. c:function:: int genwqe_alloc_sync_sgl(struct genwqe_dev *cd, struct genwqe_sgl *sgl, void __user *user_addr, size_t user_size)
+.. c:function:: int genwqe_alloc_sync_sgl(struct genwqe_dev *cd, struct genwqe_sgl *sgl, void __user *user_addr, size_t user_size, int write)
 
     Allocate memory for sgl and overlapping pages
 
@@ -223,6 +223,9 @@ genwqe_alloc_sync_sgl
         *undescribed*
 
     :param size_t user_size:
+        *undescribed*
+
+    :param int write:
         *undescribed*
 
 .. _`genwqe_alloc_sync_sgl.description`:

@@ -244,10 +244,10 @@ caps
     The structure describing types and directions supported by endoint.
 
 claimed
-    *undescribed*
+    True if this endpoint is claimed by a function.
 
 enabled
-    *undescribed*
+    The current endpoint enabled/disabled state.
 
 maxpacket
     The maximum packet size used on this endpoint.  The initial
@@ -427,13 +427,13 @@ quirk_ep_out_aligned_size
     MaxPacketSize.
 
 quirk_altset_not_supp
-    *undescribed*
+    UDC controller doesn't support alt settings.
 
 quirk_stall_not_supp
-    *undescribed*
+    UDC controller doesn't support stalling.
 
 quirk_zlp_not_supp
-    *undescribed*
+    UDC controller doesn't support ZLP.
 
 quirk_avoids_skb_reserve
     udc/platform wants to avoid \ :c:func:`skb_reserve`\  in

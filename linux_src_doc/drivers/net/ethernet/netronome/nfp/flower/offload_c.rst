@@ -6,7 +6,7 @@
 nfp_flower_add_offload
 ======================
 
-.. c:function:: int nfp_flower_add_offload(struct nfp_app *app, struct net_device *netdev, struct tc_cls_flower_offload *flow)
+.. c:function:: int nfp_flower_add_offload(struct nfp_app *app, struct net_device *netdev, struct tc_cls_flower_offload *flow, bool egress)
 
     Adds a new flow to hardware.
 
@@ -18,6 +18,9 @@ nfp_flower_add_offload
 
     :param struct tc_cls_flower_offload \*flow:
         TC flower classifier offload structure.
+
+    :param bool egress:
+        NFP netdev is the egress.
 
 .. _`nfp_flower_add_offload.description`:
 

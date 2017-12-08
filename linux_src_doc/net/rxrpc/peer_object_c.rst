@@ -26,5 +26,27 @@ Description
 
 Get the address of the remote peer in a call.
 
+.. _`rxrpc_kernel_get_rtt`:
+
+rxrpc_kernel_get_rtt
+====================
+
+.. c:function:: u64 rxrpc_kernel_get_rtt(struct socket *sock, struct rxrpc_call *call)
+
+    Get a call's peer RTT
+
+    :param struct socket \*sock:
+        The socket on which the call is in progress.
+
+    :param struct rxrpc_call \*call:
+        The call to query
+
+.. _`rxrpc_kernel_get_rtt.description`:
+
+Description
+-----------
+
+Get the call's peer RTT.
+
 .. This file was automatic generated / don't edit.
 

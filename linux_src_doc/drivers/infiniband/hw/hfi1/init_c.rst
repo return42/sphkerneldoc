@@ -77,6 +77,31 @@ Description
 Find an empty index in the rcd array, and assign the given rcd to it.
 If the array is full, we are EBUSY.
 
+.. _`hfi1_rcd_get_by_index_safe`:
+
+hfi1_rcd_get_by_index_safe
+==========================
+
+.. c:function:: struct hfi1_ctxtdata *hfi1_rcd_get_by_index_safe(struct hfi1_devdata *dd, u16 ctxt)
+
+    validate the ctxt index before accessing the array
+
+    :param struct hfi1_devdata \*dd:
+        pointer to a valid devdata structure
+
+    :param u16 ctxt:
+        the index of an possilbe rcd
+
+.. _`hfi1_rcd_get_by_index_safe.description`:
+
+Description
+-----------
+
+This is a wrapper for \ :c:func:`hfi1_rcd_get_by_index`\  to validate that the given
+ctxt index is valid.
+
+The caller is responsible for making the \_put().
+
 .. _`hfi1_rcd_get_by_index`:
 
 hfi1_rcd_get_by_index

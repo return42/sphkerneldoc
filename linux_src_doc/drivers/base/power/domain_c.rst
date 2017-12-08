@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/base/power/domain.c
 
+.. _`dev_pm_genpd_set_performance_state`:
+
+dev_pm_genpd_set_performance_state
+==================================
+
+.. c:function:: int dev_pm_genpd_set_performance_state(struct device *dev, unsigned int state)
+
+    Set performance state of device's power domain.
+
+    :param struct device \*dev:
+        Device for which the performance-state needs to be set.
+
+    :param unsigned int state:
+        Target performance state of the device. This can be set as 0 when the
+        device doesn't have any performance state constraints left (And so
+        the device wouldn't participate anymore to find the target
+        performance state of the genpd).
+
+.. _`dev_pm_genpd_set_performance_state.description`:
+
+Description
+-----------
+
+It is assumed that the users guarantee that the genpd wouldn't be detached
+while this routine is getting called.
+
+Returns 0 on success and negative error values on failures.
+
 .. _`genpd_queue_power_off_work`:
 
 genpd_queue_power_off_work
@@ -163,18 +191,6 @@ genpd_power_off_unused
     :param  void:
         no arguments
 
-.. _`pm_genpd_present`:
-
-pm_genpd_present
-================
-
-.. c:function:: bool pm_genpd_present(const struct generic_pm_domain *genpd)
-
-    Check if the given PM domain has been initialized.
-
-    :param const struct generic_pm_domain \*genpd:
-        PM domain to check.
-
 .. _`genpd_sync_power_off`:
 
 genpd_sync_power_off
@@ -253,7 +269,7 @@ Description
 -----------
 
 There are two cases in which a device that can wake up the system from sleep
-states should be resumed by \ :c:func:`pm_genpd_prepare`\ : (1) if the device is enabled
+states should be resumed by \ :c:func:`genpd_prepare`\ : (1) if the device is enabled
 to wake up the system and it has to remain active for this purpose while the
 system is in the sleep state and (2) if the device is not enabled to wake up
 the system from sleep states and it generally doesn't generate wakeup signals
@@ -263,19 +279,19 @@ wakeup settings during system suspend, because it may have been set up to
 signal remote wakeup from the system's working state as needed by runtime PM.
 Return 'true' in either of the above cases.
 
-.. _`pm_genpd_prepare`:
+.. _`genpd_prepare`:
 
-pm_genpd_prepare
-================
+genpd_prepare
+=============
 
-.. c:function:: int pm_genpd_prepare(struct device *dev)
+.. c:function:: int genpd_prepare(struct device *dev)
 
     Start power transition of a device in a PM domain.
 
     :param struct device \*dev:
         Device to start the transition of.
 
-.. _`pm_genpd_prepare.description`:
+.. _`genpd_prepare.description`:
 
 Description
 -----------
@@ -308,19 +324,19 @@ Description
 Stop the device and remove power from the domain if all devices in it have
 been stopped.
 
-.. _`pm_genpd_suspend_noirq`:
+.. _`genpd_suspend_noirq`:
 
-pm_genpd_suspend_noirq
-======================
+genpd_suspend_noirq
+===================
 
-.. c:function:: int pm_genpd_suspend_noirq(struct device *dev)
+.. c:function:: int genpd_suspend_noirq(struct device *dev)
 
     Completion of suspend of device in an I/O PM domain.
 
     :param struct device \*dev:
         Device to suspend.
 
-.. _`pm_genpd_suspend_noirq.description`:
+.. _`genpd_suspend_noirq.description`:
 
 Description
 -----------
@@ -328,38 +344,38 @@ Description
 Stop the device and remove power from the domain if all devices in it have
 been stopped.
 
-.. _`pm_genpd_resume_noirq`:
+.. _`genpd_resume_noirq`:
 
-pm_genpd_resume_noirq
-=====================
+genpd_resume_noirq
+==================
 
-.. c:function:: int pm_genpd_resume_noirq(struct device *dev)
+.. c:function:: int genpd_resume_noirq(struct device *dev)
 
     Start of resume of device in an I/O PM domain.
 
     :param struct device \*dev:
         Device to resume.
 
-.. _`pm_genpd_resume_noirq.description`:
+.. _`genpd_resume_noirq.description`:
 
 Description
 -----------
 
 Restore power to the device's PM domain, if necessary, and start the device.
 
-.. _`pm_genpd_freeze_noirq`:
+.. _`genpd_freeze_noirq`:
 
-pm_genpd_freeze_noirq
-=====================
+genpd_freeze_noirq
+==================
 
-.. c:function:: int pm_genpd_freeze_noirq(struct device *dev)
+.. c:function:: int genpd_freeze_noirq(struct device *dev)
 
     Completion of freezing a device in an I/O PM domain.
 
     :param struct device \*dev:
         Device to freeze.
 
-.. _`pm_genpd_freeze_noirq.description`:
+.. _`genpd_freeze_noirq.description`:
 
 Description
 -----------
@@ -369,19 +385,19 @@ pm_domain field points to the domain member of an object of type
 struct generic_pm_domain representing a power domain consisting of I/O
 devices.
 
-.. _`pm_genpd_thaw_noirq`:
+.. _`genpd_thaw_noirq`:
 
-pm_genpd_thaw_noirq
-===================
+genpd_thaw_noirq
+================
 
-.. c:function:: int pm_genpd_thaw_noirq(struct device *dev)
+.. c:function:: int genpd_thaw_noirq(struct device *dev)
 
     Early thaw of device in an I/O PM domain.
 
     :param struct device \*dev:
         Device to thaw.
 
-.. _`pm_genpd_thaw_noirq.description`:
+.. _`genpd_thaw_noirq.description`:
 
 Description
 -----------
@@ -389,19 +405,19 @@ Description
 Start the device, unless power has been removed from the domain already
 before the system transition.
 
-.. _`pm_genpd_poweroff_noirq`:
+.. _`genpd_poweroff_noirq`:
 
-pm_genpd_poweroff_noirq
-=======================
+genpd_poweroff_noirq
+====================
 
-.. c:function:: int pm_genpd_poweroff_noirq(struct device *dev)
+.. c:function:: int genpd_poweroff_noirq(struct device *dev)
 
     Completion of hibernation of device in an I/O PM domain.
 
     :param struct device \*dev:
         Device to poweroff.
 
-.. _`pm_genpd_poweroff_noirq.description`:
+.. _`genpd_poweroff_noirq.description`:
 
 Description
 -----------
@@ -409,19 +425,19 @@ Description
 Stop the device and remove power from the domain if all devices in it have
 been stopped.
 
-.. _`pm_genpd_restore_noirq`:
+.. _`genpd_restore_noirq`:
 
-pm_genpd_restore_noirq
-======================
+genpd_restore_noirq
+===================
 
-.. c:function:: int pm_genpd_restore_noirq(struct device *dev)
+.. c:function:: int genpd_restore_noirq(struct device *dev)
 
     Start of restore of device in an I/O PM domain.
 
     :param struct device \*dev:
         Device to resume.
 
-.. _`pm_genpd_restore_noirq.description`:
+.. _`genpd_restore_noirq.description`:
 
 Description
 -----------
@@ -429,19 +445,19 @@ Description
 Make sure the domain will be in the same power state as before the
 hibernation the system is resuming from and start the device if necessary.
 
-.. _`pm_genpd_complete`:
+.. _`genpd_complete`:
 
-pm_genpd_complete
-=================
+genpd_complete
+==============
 
-.. c:function:: void pm_genpd_complete(struct device *dev)
+.. c:function:: void genpd_complete(struct device *dev)
 
     Complete power transition of a device in a power domain.
 
     :param struct device \*dev:
         Device to complete the transition of.
 
-.. _`pm_genpd_complete.description`:
+.. _`genpd_complete.description`:
 
 Description
 -----------

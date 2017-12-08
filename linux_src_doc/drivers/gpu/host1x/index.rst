@@ -7,6 +7,7 @@ host1x
 .. toctree::
     :maxdepth: 1
 
+    hw/index
     bus_c
     channel_c
     syncpt_c

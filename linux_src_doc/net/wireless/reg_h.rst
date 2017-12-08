@@ -224,5 +224,17 @@ reg_dfs_domain_same
     :param struct wiphy \*wiphy2:
         *undescribed*
 
+.. _`reg_reload_regdb`:
+
+reg_reload_regdb
+================
+
+.. c:function:: int reg_reload_regdb( void)
+
+    reload the regulatory.db firmware file
+
+    :param  void:
+        no arguments
+
 .. This file was automatic generated / don't edit.
 

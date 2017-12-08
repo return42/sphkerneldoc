@@ -1,0 +1,41 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/hwmon/max6621.c
+
+.. _`max6621_data`:
+
+struct max6621_data
+===================
+
+.. c:type:: struct max6621_data
+
+    private data:
+
+.. _`max6621_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct max6621_data {
+        struct i2c_client *client;
+        struct regmap *regmap;
+        int input_chan2reg[MAX6621_TEMP_INPUT_REG_NUM + 1];
+    }
+
+.. _`max6621_data.members`:
+
+Members
+-------
+
+client
+    I2C client;
+
+regmap
+    register map handle;
+
+input_chan2reg
+    mapping from channel to register;
+
+.. This file was automatic generated / don't edit.
+

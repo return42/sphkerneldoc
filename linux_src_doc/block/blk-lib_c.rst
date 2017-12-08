@@ -132,12 +132,6 @@ Description
  Zero-fill a block range, either using hardware offload or by explicitly
  writing zeroes to the device.
 
- Note that this function may fail with -EOPNOTSUPP if the driver signals
- zeroing offload support, but the device fails to process the command (for
- some devices there is no non-destructive way to verify whether this
- operation is actually supported).  In this case the caller should call
- retry the call to \ :c:func:`blkdev_issue_zeroout`\  and the fallback path will be used.
-
  If a device is using logical block provisioning, the underlying space will
  not be released if \ ``flags``\  contains BLKDEV_ZERO_NOUNMAP.
 

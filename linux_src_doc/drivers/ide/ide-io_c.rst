@@ -105,12 +105,12 @@ to the port by sleeping for timeout jiffies.
 ide_timer_expiry
 ================
 
-.. c:function:: void ide_timer_expiry(unsigned long data)
+.. c:function:: void ide_timer_expiry(struct timer_list *t)
 
     handle lack of an IDE interrupt
 
-    :param unsigned long data:
-        timer callback magic (hwif)
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`ide_timer_expiry.description`:
 

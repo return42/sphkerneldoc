@@ -546,14 +546,6 @@ iscsi_session_teardown
     :param struct iscsi_cls_session \*cls_session:
         iscsi session
 
-.. _`iscsi_session_teardown.description`:
-
-Description
------------
-
-The driver must have called iscsi_remove_session before
-calling this.
-
 .. _`iscsi_conn_setup`:
 
 iscsi_conn_setup

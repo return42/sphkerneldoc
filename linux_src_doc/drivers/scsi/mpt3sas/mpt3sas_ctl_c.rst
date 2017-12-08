@@ -41,36 +41,6 @@ Description
 These states are for ioctls that need to wait for a response
 from firmware, so they probably require sleep.
 
-.. _`_ctl_sas_device_find_by_handle`:
-
-_ctl_sas_device_find_by_handle
-==============================
-
-.. c:function:: struct _sas_device *_ctl_sas_device_find_by_handle(struct MPT3SAS_ADAPTER *ioc, u16 handle)
-
-    sas device search
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 handle:
-        sas device handle (assigned by firmware)
-
-.. _`_ctl_sas_device_find_by_handle.context`:
-
-Context
--------
-
-Calling function should acquire ioc->sas_device_lock
-
-.. _`_ctl_sas_device_find_by_handle.description`:
-
-Description
------------
-
-This searches for sas_device based on sas_address, then return sas_device
-object.
-
 .. _`_ctl_display_some_debug`:
 
 _ctl_display_some_debug
@@ -455,6 +425,21 @@ _ctl_btdh_search_sas_device
 .. c:function:: int _ctl_btdh_search_sas_device(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_btdh_mapping *btdh)
 
     searching for sas device
+
+    :param struct MPT3SAS_ADAPTER \*ioc:
+        per adapter object
+
+    :param struct mpt3_ioctl_btdh_mapping \*btdh:
+        btdh ioctl payload
+
+.. _`_ctl_btdh_search_pcie_device`:
+
+_ctl_btdh_search_pcie_device
+============================
+
+.. c:function:: int _ctl_btdh_search_pcie_device(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_btdh_mapping *btdh)
+
+    searching for pcie device
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         per adapter object

@@ -655,6 +655,32 @@ Description
 
      Set ifalias for a device,
 
+.. _`dev_get_alias`:
+
+dev_get_alias
+=============
+
+.. c:function:: int dev_get_alias(const struct net_device *dev, char *name, size_t len)
+
+    get ifalias of a device
+
+    :param const struct net_device \*dev:
+        device
+
+    :param char \*name:
+        buffer to store name of ifalias
+
+    :param size_t len:
+        size of buffer
+
+.. _`dev_get_alias.description`:
+
+Description
+-----------
+
+     get ifalias for a device.  Caller must make sure dev cannot go
+     away,  e.g. rcu read lock or own a reference count to device.
+
 .. _`netdev_features_change`:
 
 netdev_features_change
@@ -843,15 +869,12 @@ the need for special case cleanup code.
 call_netdevice_notifiers_info
 =============================
 
-.. c:function:: int call_netdevice_notifiers_info(unsigned long val, struct net_device *dev, struct netdev_notifier_info *info)
+.. c:function:: int call_netdevice_notifiers_info(unsigned long val, struct netdev_notifier_info *info)
 
     call all network notifier blocks
 
     :param unsigned long val:
         value passed unmodified to notifier function
-
-    :param struct net_device \*dev:
-        net_device pointer passed unmodified to notifier function
 
     :param struct netdev_notifier_info \*info:
         notifier information data
@@ -1267,6 +1290,34 @@ Description
 
      The caller must hold the rtnl_mutex.
 
+.. _`netif_receive_skb_core`:
+
+netif_receive_skb_core
+======================
+
+.. c:function:: int netif_receive_skb_core(struct sk_buff *skb)
+
+    special purpose version of netif_receive_skb
+
+    :param struct sk_buff \*skb:
+        buffer to process
+
+.. _`netif_receive_skb_core.description`:
+
+Description
+-----------
+
+     More direct receive version of \ :c:func:`netif_receive_skb`\ .  It should
+     only be used by callers that have a need to skip RPS and Generic XDP.
+     Caller must also take care of handling if (page_is_)pfmemalloc.
+
+     This function may only be called from softirq context and interrupts
+     should be enabled.
+
+     Return values (usually ignored):
+     NET_RX_SUCCESS: no congestion
+     NET_RX_DROP: packet was dropped
+
 .. _`netif_receive_skb`:
 
 netif_receive_skb
@@ -1605,7 +1656,7 @@ it's not there. The caller must hold the RCU read lock.
 netdev_upper_dev_link
 =====================
 
-.. c:function:: int netdev_upper_dev_link(struct net_device *dev, struct net_device *upper_dev)
+.. c:function:: int netdev_upper_dev_link(struct net_device *dev, struct net_device *upper_dev, struct netlink_ext_ack *extack)
 
     Add a link to the upper device
 
@@ -1614,6 +1665,9 @@ netdev_upper_dev_link
 
     :param struct net_device \*upper_dev:
         new upper device
+
+    :param struct netlink_ext_ack \*extack:
+        *undescribed*
 
 .. _`netdev_upper_dev_link.description`:
 
@@ -1630,7 +1684,7 @@ returns zero.
 netdev_master_upper_dev_link
 ============================
 
-.. c:function:: int netdev_master_upper_dev_link(struct net_device *dev, struct net_device *upper_dev, void *upper_priv, void *upper_info)
+.. c:function:: int netdev_master_upper_dev_link(struct net_device *dev, struct net_device *upper_dev, void *upper_priv, void *upper_info, struct netlink_ext_ack *extack)
 
     Add a master link to the upper device
 
@@ -1645,6 +1699,9 @@ netdev_master_upper_dev_link
 
     :param void \*upper_info:
         upper info to be passed down via notifier
+
+    :param struct netlink_ext_ack \*extack:
+        *undescribed*
 
 .. _`netdev_master_upper_dev_link.description`:
 

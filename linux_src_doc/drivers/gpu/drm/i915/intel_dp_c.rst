@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_dp.c
 
-.. _`is_edp`:
+.. _`intel_dp_is_edp`:
 
-is_edp
-======
+intel_dp_is_edp
+===============
 
-.. c:function:: bool is_edp(struct intel_dp *intel_dp)
+.. c:function:: bool intel_dp_is_edp(struct intel_dp *intel_dp)
 
     is the given port attached to an eDP panel (either CPU or PCH)
 
     :param struct intel_dp \*intel_dp:
         DP struct
 
-.. _`is_edp.description`:
+.. _`intel_dp_is_edp.description`:
 
 Description
 -----------
@@ -26,14 +26,14 @@ will return true, and false otherwise.
 intel_dp_set_drrs_state
 =======================
 
-.. c:function:: void intel_dp_set_drrs_state(struct drm_i915_private *dev_priv, struct intel_crtc_state *crtc_state, int refresh_rate)
+.. c:function:: void intel_dp_set_drrs_state(struct drm_i915_private *dev_priv, const struct intel_crtc_state *crtc_state, int refresh_rate)
 
     program registers for RR switch to take effect
 
     :param struct drm_i915_private \*dev_priv:
         i915 device
 
-    :param struct intel_crtc_state \*crtc_state:
+    :param const struct intel_crtc_state \*crtc_state:
         a pointer to the active intel_crtc_state
 
     :param int refresh_rate:
@@ -56,14 +56,14 @@ The caller of this function needs to take a lock on dev_priv->drrs.
 intel_edp_drrs_enable
 =====================
 
-.. c:function:: void intel_edp_drrs_enable(struct intel_dp *intel_dp, struct intel_crtc_state *crtc_state)
+.. c:function:: void intel_edp_drrs_enable(struct intel_dp *intel_dp, const struct intel_crtc_state *crtc_state)
 
     init drrs struct if supported
 
     :param struct intel_dp \*intel_dp:
         DP struct
 
-    :param struct intel_crtc_state \*crtc_state:
+    :param const struct intel_crtc_state \*crtc_state:
         A pointer to the active crtc state.
 
 .. _`intel_edp_drrs_enable.description`:
@@ -78,14 +78,14 @@ Initializes frontbuffer_bits and drrs.dp
 intel_edp_drrs_disable
 ======================
 
-.. c:function:: void intel_edp_drrs_disable(struct intel_dp *intel_dp, struct intel_crtc_state *old_crtc_state)
+.. c:function:: void intel_edp_drrs_disable(struct intel_dp *intel_dp, const struct intel_crtc_state *old_crtc_state)
 
     Disable DRRS
 
     :param struct intel_dp \*intel_dp:
         DP struct
 
-    :param struct intel_crtc_state \*old_crtc_state:
+    :param const struct intel_crtc_state \*old_crtc_state:
         Pointer to old crtc_state.
 
 .. _`intel_edp_drrs_invalidate`:

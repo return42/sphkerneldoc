@@ -7,4 +7,5 @@ libfdt
 .. toctree::
     :maxdepth: 1
 
+    fdt_overlay_c
     libfdt_h

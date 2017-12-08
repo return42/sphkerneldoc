@@ -692,12 +692,12 @@ Send out a pending control command (called under control lock)
 gsm_control_retransmit
 ======================
 
-.. c:function:: void gsm_control_retransmit(unsigned long data)
+.. c:function:: void gsm_control_retransmit(struct timer_list *t)
 
     retransmit a control frame
 
-    :param unsigned long data:
-        pointer to our gsm object
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`gsm_control_retransmit.description`:
 
@@ -808,11 +808,11 @@ Perform processing when moving a DLCI into open state.
 gsm_dlci_t1
 ===========
 
-.. c:function:: void gsm_dlci_t1(unsigned long data)
+.. c:function:: void gsm_dlci_t1(struct timer_list *t)
 
     T1 timer expiry
 
-    :param unsigned long data:
+    :param struct timer_list \*t:
         *undescribed*
 
 .. _`gsm_dlci_t1.description`:

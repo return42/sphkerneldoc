@@ -70,9 +70,12 @@ Definition
     #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
         int (*alloc)(struct irq_domain *d, unsigned int virq, unsigned int nr_irqs, void *arg);
         void (*free)(struct irq_domain *d, unsigned int virq, unsigned int nr_irqs);
-        void (*activate)(struct irq_domain *d, struct irq_data *irq_data);
+        int (*activate)(struct irq_domain *d, struct irq_data *irqd, bool early);
         void (*deactivate)(struct irq_domain *d, struct irq_data *irq_data);
         int (*translate)(struct irq_domain *d, struct irq_fwspec *fwspec, unsigned long *out_hwirq, unsigned int *out_type);
+    #endif
+    #ifdef CONFIG_GENERIC_IRQ_DEBUGFS
+        void (*debug_show)(struct seq_file *m, struct irq_domain *d, struct irq_data *irqd, int ind);
     #endif
     }
 
@@ -112,6 +115,9 @@ deactivate
     *undescribed*
 
 translate
+    *undescribed*
+
+debug_show
     *undescribed*
 
 .. _`irq_domain_ops.description`:
@@ -160,6 +166,7 @@ Definition
         unsigned int revmap_direct_max_irq;
         unsigned int revmap_size;
         struct radix_tree_root revmap_tree;
+        struct mutex revmap_tree_mutex;
         unsigned int linear_revmap[];
     }
 
@@ -188,7 +195,8 @@ mapcount
     The number of mapped interrupts
 
 fwnode
-    *undescribed*
+    Pointer to firmware node associated with the irq_domain. Pretty easy
+    to swap it for the of_node via the irq_domain_get_of_node accessor
 
 bus_token
     *undescribed*
@@ -216,6 +224,9 @@ revmap_size
 
 revmap_tree
     Radix map tree for hwirqs that don't fit in the linear map
+
+revmap_tree_mutex
+    *undescribed*
 
 linear_revmap
     Linear table of hwirq->virq reverse mappings

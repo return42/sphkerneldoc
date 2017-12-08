@@ -36,7 +36,7 @@ lengths and total buffer length to be used to build descriptors.
 create_hdr_descs
 ================
 
-.. c:function:: void create_hdr_descs(u8 hdr_field, u8 *hdr_data, int len, int *hdr_len, union sub_crq *scrq_arr)
+.. c:function:: int create_hdr_descs(u8 hdr_field, u8 *hdr_data, int len, int *hdr_len, union sub_crq *scrq_arr)
 
     create header and header extension descriptors \ ``hdr_field``\  - bitfield determining needed headers \ ``data``\  - buffer containing header data \ ``len``\  - length of data buffer \ ``hdr_len``\  - array of individual header lengths \ ``scrq_arr``\  - descriptor array
 

@@ -114,7 +114,8 @@ exit
     this is the time to unregister it.
 
 freq_table
-    Optional list of frequencies to support statistics.
+    Optional list of frequencies to support statistics
+    and freq_table must be generated in ascending order.
 
 max_state
     The size of freq_table.
@@ -149,6 +150,8 @@ Definition
         void *data;
         unsigned long min_freq;
         unsigned long max_freq;
+        unsigned long scaling_min_freq;
+        unsigned long scaling_max_freq;
         bool stop_polling;
         unsigned int total_trans;
         unsigned int *trans_table;
@@ -205,6 +208,12 @@ min_freq
 
 max_freq
     Limit maximum frequency requested by user (0: none)
+
+scaling_min_freq
+    Limit minimum frequency requested by OPP interface
+
+scaling_max_freq
+    Limit maximum frequency requested by OPP interface
 
 stop_polling
     devfreq polling status of a device.

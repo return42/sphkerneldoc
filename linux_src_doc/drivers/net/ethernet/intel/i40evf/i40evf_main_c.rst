@@ -267,7 +267,7 @@ i40evf_map_vector_to_txq
 i40evf_map_rings_to_vectors
 ===========================
 
-.. c:function:: int i40evf_map_rings_to_vectors(struct i40evf_adapter *adapter)
+.. c:function:: void i40evf_map_rings_to_vectors(struct i40evf_adapter *adapter)
 
     Maps descriptor rings to vectors
 
@@ -951,17 +951,36 @@ i40evf_free_rss
     :param struct i40evf_adapter \*adapter:
         board private structure
 
+.. _`i40evf_reinit_interrupt_scheme`:
+
+i40evf_reinit_interrupt_scheme
+==============================
+
+.. c:function:: int i40evf_reinit_interrupt_scheme(struct i40evf_adapter *adapter)
+
+    Reallocate queues and vectors
+
+    :param struct i40evf_adapter \*adapter:
+        board private structure
+
+.. _`i40evf_reinit_interrupt_scheme.description`:
+
+Description
+-----------
+
+Returns 0 on success, negative on failure
+
 .. _`i40evf_watchdog_timer`:
 
 i40evf_watchdog_timer
 =====================
 
-.. c:function:: void i40evf_watchdog_timer(unsigned long data)
+.. c:function:: void i40evf_watchdog_timer(struct timer_list *t)
 
     Periodic call-back timer
 
-    :param unsigned long data:
-        pointer to adapter disguised as unsigned long
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`i40evf_watchdog_task`:
 

@@ -152,7 +152,8 @@ irq_set_vcpu_affinity
         interrupt number to set affinity
 
     :param void \*vcpu_info:
-        vCPU specific data
+        vCPU specific data or pointer to a percpu array of vCPU
+        specific data for percpu_devid interrupts
 
 .. _`irq_set_vcpu_affinity.description`:
 

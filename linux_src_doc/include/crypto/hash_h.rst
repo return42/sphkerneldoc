@@ -96,6 +96,7 @@ init
     state of the HASH transformation at the beginning. This shall fill in
     the internal structures used during the entire duration of the whole
     transformation. No data processing happens at this point.
+    Note: mandatory.
 
 update
     Push a chunk of data into the driver for transformation. This
@@ -107,12 +108,15 @@ update
     context, as this function may be called in parallel with the same
     transformation object. Data processing can happen synchronously
     [SHASH] or asynchronously [AHASH] at this point.
+    Note: mandatory.
 
 final
     Retrieve result from the driver. This function finalizes the
     transformation and retrieves the resulting hash from the driver and
     pushes it back to upper layers. No data processing happens at this
-    point.
+    point unless hardware requires it to finish the transformation
+    (then the data buffered by the device driver is processed).
+    Note: mandatory.
 
 finup
     Combination of \ ``update``\  and \ ``final``\ . This function is effectively a
@@ -121,6 +125,7 @@ finup
     added to allow such hardware to be used at least by IPsec. Data
     processing can happen synchronously [SHASH] or asynchronously [AHASH]
     at this point.
+    Note: optional.
 
 digest
     Combination of \ ``init``\  and \ ``update``\  and \ ``final``\ . This function
@@ -504,7 +509,7 @@ Description
 -----------
 
 This function is a "short-hand" for the function calls of
-crypto_ahash_update and crypto_shash_final. The parameters have the same
+crypto_ahash_update and crypto_ahash_final. The parameters have the same
 meaning as discussed for those separate functions.
 
 .. _`crypto_ahash_finup.return`:
@@ -512,8 +517,7 @@ meaning as discussed for those separate functions.
 Return
 ------
 
-0 if the message digest creation was successful; < 0 if an error
-        occurred
+see \ :c:func:`crypto_ahash_final`\ 
 
 .. _`crypto_ahash_final`:
 
@@ -542,8 +546,10 @@ into the output buffer registered with the ahash_request handle.
 Return
 ------
 
-0 if the message digest creation was successful; < 0 if an error
-        occurred
+0            if the message digest was successfully calculated;
+-EINPROGRESS if data is feeded into hardware (DMA) or queued for later;
+-EBUSY       if queue is full and request should be resubmitted later;
+other < 0    if an error occurred
 
 .. _`crypto_ahash_digest`:
 
@@ -572,8 +578,7 @@ meaning as discussed for those separate three functions.
 Return
 ------
 
-0 if the message digest creation was successful; < 0 if an error
-        occurred
+see \ :c:func:`crypto_ahash_final`\ 
 
 .. _`crypto_ahash_export`:
 
@@ -664,8 +669,7 @@ discarded.
 Return
 ------
 
-0 if the message digest initialization was successful; < 0 if an
-        error occurred
+see \ :c:func:`crypto_ahash_final`\ 
 
 .. _`crypto_ahash_update`:
 
@@ -694,8 +698,7 @@ handle
 Return
 ------
 
-0 if the message digest update was successful; < 0 if an error
-        occurred
+see \ :c:func:`crypto_ahash_final`\ 
 
 .. _`asynchronous-hash-request-handle`:
 

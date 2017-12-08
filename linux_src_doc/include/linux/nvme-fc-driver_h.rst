@@ -22,6 +22,7 @@ Definition
         u64 port_name;
         u32 port_role;
         u32 port_id;
+        u32 dev_loss_tmo;
     }
 
 .. _`nvme_fc_port_info.members`:
@@ -41,6 +42,10 @@ port_role
 port_id
     FC N_Port_ID currently assigned the port. Upper 8 bits must
     be set to 0.
+
+dev_loss_tmo
+    maximum delay for reconnects to an association on
+    this device. Used only on a remoteport.
 
 .. _`nvmefc_ls_req`:
 
@@ -324,6 +329,7 @@ Definition
         u64 port_name;
         struct nvme_fc_local_port *localport;
         void *private;
+        u32 dev_loss_tmo;
         u32 port_id;
         enum nvme_fc_obj_state port_state;
     }
@@ -355,6 +361,9 @@ private
     The length of the buffer corresponds to the remote_priv_sz
     value specified in the nvme_fc_port_template supplied by
     the LLDD.
+
+dev_loss_tmo
+    *undescribed*
 
 port_id
     FC N_Port_ID currently assigned the port. Upper 8 bits must
@@ -1016,15 +1025,21 @@ fcp_abort
     outstanding operation (if there was one) to complete, then will
     call the \ :c:func:`fcp_req_release`\  callback to return the command's
     exchange context back to the LLDD.
+    Entrypoint is Mandatory.
 
 fcp_req_release
     Called by the transport to return a nvmefc_tgt_fcp_req
     to the LLDD after all operations on the fcp operation are complete.
     This may be due to the command completing or upon completion of
     abort cleanup.
+    Entrypoint is Mandatory.
 
 defer_rcv
-    *undescribed*
+    Called by the transport to signal the LLLD that it has
+    begun processing of a previously received NVME CMD IU. The LLDD
+    is now free to re-use the rcv buffer associated with the
+    nvmefc_tgt_fcp_req.
+    Entrypoint is Optional.
 
 max_hw_queues
     indicates the maximum number of hw queues the LLDD

@@ -797,7 +797,7 @@ prepend_name
 Description
 -----------
 
-With RCU path tracing, it may race with \ :c:func:`d_move`\ . Use \ :c:func:`ACCESS_ONCE`\  to
+With RCU path tracing, it may race with \ :c:func:`d_move`\ . Use \ :c:func:`READ_ONCE`\  to
 make sure that either the old or the new name pointer and length are
 fetched. However, there may be mismatch between length and pointer.
 The length cannot be trusted, we need to copy it byte-by-byte until

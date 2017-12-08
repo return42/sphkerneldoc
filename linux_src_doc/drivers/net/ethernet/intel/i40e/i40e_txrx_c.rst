@@ -332,6 +332,28 @@ theoretical maximum wire speed and thresholds were set based on
 testing data as well as attempting to minimize response time
 while increasing bulk throughput.
 
+.. _`i40e_reuse_rx_page`:
+
+i40e_reuse_rx_page
+==================
+
+.. c:function:: void i40e_reuse_rx_page(struct i40e_ring *rx_ring, struct i40e_rx_buffer *old_buff)
+
+    page flip buffer and store it back on the ring
+
+    :param struct i40e_ring \*rx_ring:
+        rx descriptor ring to store buffers on
+
+    :param struct i40e_rx_buffer \*old_buff:
+        donor buffer to have page reused
+
+.. _`i40e_reuse_rx_page.description`:
+
+Description
+-----------
+
+Synchronizes page for reuse by the adapter
+
 .. _`i40e_rx_is_programming_status`:
 
 i40e_rx_is_programming_status
@@ -665,28 +687,6 @@ In addition if skb is not at least 60 bytes we need to pad it so that
 it is large enough to qualify as a valid Ethernet frame.
 
 Returns true if an error was encountered and skb was freed.
-
-.. _`i40e_reuse_rx_page`:
-
-i40e_reuse_rx_page
-==================
-
-.. c:function:: void i40e_reuse_rx_page(struct i40e_ring *rx_ring, struct i40e_rx_buffer *old_buff)
-
-    page flip buffer and store it back on the ring
-
-    :param struct i40e_ring \*rx_ring:
-        rx descriptor ring to store buffers on
-
-    :param struct i40e_rx_buffer \*old_buff:
-        donor buffer to have page reused
-
-.. _`i40e_reuse_rx_page.description`:
-
-Description
------------
-
-Synchronizes page for reuse by the adapter
 
 .. _`i40e_page_is_reusable`:
 

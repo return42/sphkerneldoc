@@ -47,6 +47,35 @@ Return
 
 true for supported, false for not supported
 
+.. _`pcc_data_alloc`:
+
+pcc_data_alloc
+==============
+
+.. c:function:: int pcc_data_alloc(int pcc_ss_id)
+
+    Allocate the pcc_data memory for pcc subspace
+
+    :param int pcc_ss_id:
+        *undescribed*
+
+.. _`pcc_data_alloc.description`:
+
+Description
+-----------
+
+Check and allocate the cppc_pcc_data memory.
+In some processor configurations it is possible that same subspace
+is shared between multiple CPU's. This is seen especially in CPU's
+with hardware multi-threading support.
+
+.. _`pcc_data_alloc.return`:
+
+Return
+------
+
+0 for success, errno for failure
+
 .. _`acpi_cppc_processor_probe`:
 
 acpi_cppc_processor_probe

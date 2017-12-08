@@ -29,6 +29,47 @@ sequence. And subsequently the reference should be dropped by symmetric
 call to \ :c:func:`intel_unforce_forcewake_put`\ . Usually caller wants all the domains
 to be kept awake so the \ ``fw_domains``\  would be then FORCEWAKE_ALL.
 
+.. _`intel_uncore_forcewake_user_get`:
+
+intel_uncore_forcewake_user_get
+===============================
+
+.. c:function:: void intel_uncore_forcewake_user_get(struct drm_i915_private *dev_priv)
+
+    claim forcewake on behalf of userspace
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+.. _`intel_uncore_forcewake_user_get.description`:
+
+Description
+-----------
+
+This function is a wrapper around \ :c:func:`intel_uncore_forcewake_get`\  to acquire
+the GT powerwell and in the process disable our debugging for the
+duration of userspace's bypass.
+
+.. _`intel_uncore_forcewake_user_put`:
+
+intel_uncore_forcewake_user_put
+===============================
+
+.. c:function:: void intel_uncore_forcewake_user_put(struct drm_i915_private *dev_priv)
+
+    release forcewake on behalf of userspace
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device instance
+
+.. _`intel_uncore_forcewake_user_put.description`:
+
+Description
+-----------
+
+This function complements \ :c:func:`intel_uncore_forcewake_user_get`\  and releases
+the GT powerwell taken on behalf of the userspace bypass.
+
 .. _`intel_uncore_forcewake_get__locked`:
 
 intel_uncore_forcewake_get__locked

@@ -1856,6 +1856,36 @@ Return
 -FDT_ERR_BADSTRUCTURE,
 -FDT_ERR_TRUNCATED, standard meanings
 
+.. _`fdt_property_placeholder`:
+
+fdt_property_placeholder
+========================
+
+.. c:function:: int fdt_property_placeholder(void *fdt, const char *name, int len, void **valp)
+
+    add a new property and return a ptr to its value
+
+    :param void \*fdt:
+        pointer to the device tree blob
+
+    :param const char \*name:
+        name of property to add
+
+    :param int len:
+        length of property value in bytes
+
+    :param void \*\*valp:
+        returns a pointer to where where the value should be placed
+
+.. _`fdt_property_placeholder.return`:
+
+Return
+------
+
+0, on success
+-FDT_ERR_BADMAGIC,
+-FDT_ERR_NOSPACE, standard meanings
+
 .. _`fdt_add_mem_rsv`:
 
 fdt_add_mem_rsv
@@ -2023,6 +2053,59 @@ This function may insert or delete data from the blob, and will
 therefore change the offsets of some existing nodes.
 
 .. _`fdt_setprop.return`:
+
+Return
+------
+
+0, on success
+-FDT_ERR_NOSPACE, there is insufficient free space in the blob to
+contain the new property value
+-FDT_ERR_BADOFFSET, nodeoffset did not point to FDT_BEGIN_NODE tag
+-FDT_ERR_BADLAYOUT,
+-FDT_ERR_BADMAGIC,
+-FDT_ERR_BADVERSION,
+-FDT_ERR_BADSTATE,
+-FDT_ERR_BADSTRUCTURE,
+-FDT_ERR_BADLAYOUT,
+-FDT_ERR_TRUNCATED, standard meanings
+
+.. _`fdt_setprop_placeholder`:
+
+fdt_setprop_placeholder
+=======================
+
+.. c:function:: int fdt_setprop_placeholder(void *fdt, int nodeoffset, const char *name, int len, void **prop_data)
+
+    allocate space for a property
+
+    :param void \*fdt:
+        pointer to the device tree blob
+
+    :param int nodeoffset:
+        offset of the node whose property to change
+
+    :param const char \*name:
+        name of the property to change
+
+    :param int len:
+        length of the property value
+
+    :param void \*\*prop_data:
+        return pointer to property data
+
+.. _`fdt_setprop_placeholder.description`:
+
+Description
+-----------
+
+fdt_setprop_placeholer() allocates the named property in the given node.
+If the property exists it is resized. In either case a pointer to the
+property data is returned.
+
+This function may insert or delete data from the blob, and will
+therefore change the offsets of some existing nodes.
+
+.. _`fdt_setprop_placeholder.return`:
 
 Return
 ------

@@ -30,10 +30,6 @@ Author
 
 Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2 as
-published by the Free Software Foundation.
-
 .. _`__ulpi_register_driver`:
 
 __ulpi_register_driver

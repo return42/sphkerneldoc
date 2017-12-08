@@ -104,6 +104,25 @@ ring buffer overflow and deal with it.
 Used by cz_irq_process(VI).
 Returns the value of the wptr.
 
+.. _`tonga_ih_prescreen_iv`:
+
+tonga_ih_prescreen_iv
+=====================
+
+.. c:function:: bool tonga_ih_prescreen_iv(struct amdgpu_device *adev)
+
+    prescreen an interrupt vector
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`tonga_ih_prescreen_iv.description`:
+
+Description
+-----------
+
+Returns true if the interrupt vector should be further processed.
+
 .. _`tonga_ih_decode_iv`:
 
 tonga_ih_decode_iv

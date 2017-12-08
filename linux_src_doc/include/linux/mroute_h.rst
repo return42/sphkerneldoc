@@ -42,6 +42,7 @@ Definition
                 unsigned long wrong_if;
                 unsigned long lastuse;
                 unsigned char ttls[MAXVIFS];
+                refcount_t refcount;
             } res;
         } mfc_un;
         struct list_head list;

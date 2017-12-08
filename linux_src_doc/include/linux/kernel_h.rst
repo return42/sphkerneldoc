@@ -1,6 +1,60 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/kernel.h
 
+.. _`repeat_byte`:
+
+REPEAT_BYTE
+===========
+
+.. c:function::  REPEAT_BYTE( x)
+
+    repeat the value \ ``x``\  multiple times as an unsigned long value
+
+    :param  x:
+        value to repeat
+
+.. _`repeat_byte.note`:
+
+NOTE
+----
+
+@x is not checked for > 0xff; larger values produce odd results.
+
+.. _`array_size`:
+
+ARRAY_SIZE
+==========
+
+.. c:function::  ARRAY_SIZE( arr)
+
+    get the number of elements in array \ ``arr``\ 
+
+    :param  arr:
+        array to be sized
+
+.. _`field_sizeof`:
+
+FIELD_SIZEOF
+============
+
+.. c:function::  FIELD_SIZEOF( t,  f)
+
+    get the size of a struct's field
+
+    :param  t:
+        the target struct
+
+    :param  f:
+        the target struct's field
+
+.. _`field_sizeof.return`:
+
+Return
+------
+
+the size of \ ``f``\  in the struct definition without having a
+declared instance of \ ``t``\ .
+
 .. _`upper_32_bits`:
 
 upper_32_bits
@@ -100,9 +154,9 @@ Description
 -----------
 
 Perform a "reciprocal multiplication" in order to "scale" a value into
-range [0, ep_ro), where the upper interval endpoint is right-open.
+range [0, \ ``ep_ro``\ ), where the upper interval endpoint is right-open.
 This is useful, e.g. for accessing a index of an array containing
-ep_ro elements, for example. Think of it as sort of modulus, only that
+\ ``ep_ro``\  elements, for example. Think of it as sort of modulus, only that
 the result isn't that of modulo. ;) Note that if initial input is a
 small value, then result will return 0.
 
@@ -111,7 +165,7 @@ small value, then result will return 0.
 Return
 ------
 
-a result based on val in interval [0, ep_ro).
+a result based on \ ``val``\  in interval [0, \ ``ep_ro``\ ).
 
 .. _`kstrtoul`:
 
@@ -199,8 +253,8 @@ trace_printk
 Note
 ----
 
-__trace_printk is an internal function for trace_printk and
-      the \ ``ip``\  is passed in via the trace_printk macro.
+__trace_printk is an internal function for \ :c:func:`trace_printk`\  and
+      the \ ``ip``\  is passed in via the \ :c:func:`trace_printk`\  macro.
 
 This function allows a kernel developer to debug fast path sections
 that printk is not appropriate for. By scattering in various
@@ -210,7 +264,7 @@ where problems are occurring.
 This is intended as a debugging tool for the developer only.
 Please refrain from leaving trace_printks scattered around in
 your code. (Extra memory is used for special buffers that are
-allocated when \ :c:func:`trace_printk`\  is used)
+allocated when \ :c:func:`trace_printk`\  is used.)
 
 A little optization trick is done here. If there's only one
 argument, there's no need to scan the string for printf formats.
@@ -245,7 +299,7 @@ __trace_bputs is an internal function for trace_puts and
       the \ ``ip``\  is passed in via the trace_puts macro.
 
 This is similar to \ :c:func:`trace_printk`\  but is made for those really fast
-paths that a developer wants the least amount of "Heisenbug" affects,
+paths that a developer wants the least amount of "Heisenbug" effects,
 where the processing of the print format is still too much.
 
 This function allows a kernel developer to debug fast path sections
@@ -256,7 +310,7 @@ where problems are occurring.
 This is intended as a debugging tool for the developer only.
 Please refrain from leaving trace_puts scattered around in
 your code. (Extra memory is used for special buffers that are
-allocated when \ :c:func:`trace_puts`\  is used)
+allocated when \ :c:func:`trace_puts`\  is used.)
 
 .. _`trace_puts.return`:
 
@@ -265,6 +319,72 @@ Return
 
 0 if nothing was written, positive # if string was.
  (1 when __trace_bputs is used, strlen(str) when __trace_puts is used)
+
+.. _`min`:
+
+min
+===
+
+.. c:function::  min( x,  y)
+
+    return minimum of two values of the same or compatible types
+
+    :param  x:
+        first value
+
+    :param  y:
+        second value
+
+.. _`max`:
+
+max
+===
+
+.. c:function::  max( x,  y)
+
+    return maximum of two values of the same or compatible types
+
+    :param  x:
+        first value
+
+    :param  y:
+        second value
+
+.. _`min3`:
+
+min3
+====
+
+.. c:function::  min3( x,  y,  z)
+
+    return minimum of three values
+
+    :param  x:
+        first value
+
+    :param  y:
+        second value
+
+    :param  z:
+        third value
+
+.. _`max3`:
+
+max3
+====
+
+.. c:function::  max3( x,  y,  z)
+
+    return maximum of three values
+
+    :param  x:
+        first value
+
+    :param  y:
+        second value
+
+    :param  z:
+        third value
 
 .. _`min_not_zero`:
 
@@ -304,8 +424,44 @@ clamp
 Description
 -----------
 
-This macro does strict typechecking of lo/hi to make sure they are of the
-same type as val.  See the unnecessary pointer comparisons.
+This macro does strict typechecking of \ ``lo``\ /@hi to make sure they are of the
+same type as \ ``val``\ .  See the unnecessary pointer comparisons.
+
+.. _`min_t`:
+
+min_t
+=====
+
+.. c:function::  min_t( type,  x,  y)
+
+    return minimum of two values, using the specified type
+
+    :param  type:
+        data type to use
+
+    :param  x:
+        first value
+
+    :param  y:
+        second value
+
+.. _`max_t`:
+
+max_t
+=====
+
+.. c:function::  max_t( type,  x,  y)
+
+    return maximum of two values, using the specified type
+
+    :param  type:
+        data type to use
+
+    :param  x:
+        first value
+
+    :param  y:
+        second value
 
 .. _`clamp_t`:
 
@@ -334,7 +490,7 @@ Description
 -----------
 
 This macro does no typechecking and uses temporary variables of type
-'type' to make all the comparisons.
+\ ``type``\  to make all the comparisons.
 
 .. _`clamp_val`:
 
@@ -360,9 +516,24 @@ Description
 -----------
 
 This macro does no typechecking and uses temporary variables of whatever
-type the input argument 'val' is.  This is useful when val is an unsigned
-type and min and max are literals that will otherwise be assigned a signed
+type the input argument \ ``val``\  is.  This is useful when \ ``val``\  is an unsigned
+type and \ ``lo``\  and \ ``hi``\  are literals that will otherwise be assigned a signed
 integer type.
+
+.. _`swap`:
+
+swap
+====
+
+.. c:function::  swap( a,  b)
+
+    swap values of \ ``a``\  and \ ``b``\ 
+
+    :param  a:
+        first value
+
+    :param  b:
+        second value
 
 .. _`container_of`:
 

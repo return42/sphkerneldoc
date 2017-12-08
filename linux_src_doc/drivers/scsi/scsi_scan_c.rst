@@ -185,7 +185,7 @@ Description
 scsi_probe_lun
 ==============
 
-.. c:function:: int scsi_probe_lun(struct scsi_device *sdev, unsigned char *inq_result, int result_len, int *bflags)
+.. c:function:: int scsi_probe_lun(struct scsi_device *sdev, unsigned char *inq_result, int result_len, blist_flags_t *bflags)
 
     probe a single LUN using a SCSI INQUIRY
 
@@ -198,7 +198,7 @@ scsi_probe_lun
     :param int result_len:
         len of inq_result
 
-    :param int \*bflags:
+    :param blist_flags_t \*bflags:
         store any bflags found here
 
 .. _`scsi_probe_lun.description`:

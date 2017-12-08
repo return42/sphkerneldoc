@@ -12,6 +12,7 @@ hwmon
     iio_hwmon_c
     ina3221_c
     max197_c
+    max6621_c
     s3c-hwmon_c
     sht15_c
     sht21_c

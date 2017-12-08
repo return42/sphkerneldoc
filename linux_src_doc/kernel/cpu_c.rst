@@ -6,19 +6,22 @@
 cpuhp_invoke_callback
 =====================
 
-.. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state state, bool bringup, struct hlist_node *node)
+.. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state state, bool bringup, struct hlist_node *node, struct hlist_node **lastp)
 
     :param unsigned int cpu:
         The cpu for which the callback should be invoked
 
     :param enum cpuhp_state state:
-        *undescribed*
+        The state to do callbacks for
 
     :param bool bringup:
         True if the bringup callback should be invoked
 
     :param struct hlist_node \*node:
-        *undescribed*
+        For multi-instance, do a single entry callback for install/remove
+
+    :param struct hlist_node \*\*lastp:
+        For multi-instance rollback, remember how far we got
 
 .. _`cpuhp_invoke_callback.description`:
 

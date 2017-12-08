@@ -118,6 +118,29 @@ the caller is responsible for pinning the returned css if it wants to
 keep accessing it outside the said locks.  This function may return
 \ ``NULL``\  if \ ``cgrp``\  doesn't have \ ``subsys_id``\  enabled.
 
+.. _`cgroup_tryget_css`:
+
+cgroup_tryget_css
+=================
+
+.. c:function:: struct cgroup_subsys_state *cgroup_tryget_css(struct cgroup *cgrp, struct cgroup_subsys *ss)
+
+    try to get a cgroup's css for the specified subsystem
+
+    :param struct cgroup \*cgrp:
+        the cgroup of interest
+
+    :param struct cgroup_subsys \*ss:
+        the subsystem of interest
+
+.. _`cgroup_tryget_css.description`:
+
+Description
+-----------
+
+Find and get \ ``cgrp``\ 's css assocaited with \ ``ss``\ .  If the css doesn't exist
+or is offline, \ ``NULL``\  is returned.
+
 .. _`cgroup_e_css`:
 
 cgroup_e_css

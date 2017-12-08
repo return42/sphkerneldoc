@@ -21,29 +21,5 @@ Description
 arch_spin_trylock() tries to get the lock and returns a result.
 On the m32r, the result value is 1 (= Success) or 0 (= Failure).
 
-.. _`arch_read_can_lock`:
-
-arch_read_can_lock
-==================
-
-.. c:function::  arch_read_can_lock( x)
-
-    would \ :c:func:`read_trylock`\  succeed?
-
-    :param  x:
-        *undescribed*
-
-.. _`arch_write_can_lock`:
-
-arch_write_can_lock
-===================
-
-.. c:function::  arch_write_can_lock( x)
-
-    would \ :c:func:`write_trylock`\  succeed?
-
-    :param  x:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

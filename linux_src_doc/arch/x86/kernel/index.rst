@@ -26,4 +26,5 @@ kernel
     smpboot_c
     traps_c
     tsc_c
+    umip_c
     uprobes_c

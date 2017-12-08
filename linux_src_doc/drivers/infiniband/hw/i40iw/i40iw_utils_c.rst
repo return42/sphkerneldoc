@@ -517,12 +517,12 @@ i40iw_terminate_done
 i40iw_terminate_timeout
 =======================
 
-.. c:function:: void i40iw_terminate_timeout(unsigned long context)
+.. c:function:: void i40iw_terminate_timeout(struct timer_list *t)
 
     timeout happened
 
-    :param unsigned long context:
-        points to iwarp qp
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`i40iw_terminate_start_timer`:
 
@@ -854,12 +854,12 @@ i40iw_puda_get_tcpip_info
 i40iw_hw_stats_timeout
 ======================
 
-.. c:function:: void i40iw_hw_stats_timeout(unsigned long vsi)
+.. c:function:: void i40iw_hw_stats_timeout(struct timer_list *t)
 
     Stats timer-handler which updates all HW stats
 
-    :param unsigned long vsi:
-        pointer to the vsi structure
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`i40iw_hw_stats_start_timer`:
 

@@ -6,15 +6,15 @@
 intel_enable_lvds
 =================
 
-.. c:function:: void intel_enable_lvds(struct intel_encoder *encoder, struct intel_crtc_state *pipe_config, struct drm_connector_state *conn_state)
+.. c:function:: void intel_enable_lvds(struct intel_encoder *encoder, const struct intel_crtc_state *pipe_config, const struct drm_connector_state *conn_state)
 
     :param struct intel_encoder \*encoder:
         *undescribed*
 
-    :param struct intel_crtc_state \*pipe_config:
+    :param const struct intel_crtc_state \*pipe_config:
         *undescribed*
 
-    :param struct drm_connector_state \*conn_state:
+    :param const struct drm_connector_state \*conn_state:
         *undescribed*
 
 .. _`intel_lvds_detect`:

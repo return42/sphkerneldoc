@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/megaraid/megaraid_sas_base.c
 
+.. _`megasas_set_dma_settings`:
+
+megasas_set_dma_settings
+========================
+
+.. c:function:: void megasas_set_dma_settings(struct megasas_instance *instance, struct megasas_dcmd_frame *dcmd, dma_addr_t dma_addr, u32 dma_len)
+
+    Populate DMA address, length and flags for DCMDs
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+    :param struct megasas_dcmd_frame \*dcmd:
+        DCMD frame inside MFI command
+
+    :param dma_addr_t dma_addr:
+        DMA address of buffer to be passed to FW
+
+    :param u32 dma_len:
+        Length of DMA buffer to be passed to FW
+
 .. _`megasas_get_cmd`:
 
 megasas_get_cmd
@@ -670,21 +691,12 @@ Tasklet to complete cmds
 megasas_start_timer
 ===================
 
-.. c:function:: void megasas_start_timer(struct megasas_instance *instance, struct timer_list *timer, void *fn, unsigned long interval)
+.. c:function:: void megasas_start_timer(struct megasas_instance *instance)
 
-    Initializes a timer object
+    Initializes sriov heartbeat timer object
 
     :param struct megasas_instance \*instance:
         Adapter soft state
-
-    :param struct timer_list \*timer:
-        timer object to be initialized
-
-    :param void \*fn:
-        timer function
-
-    :param unsigned long interval:
-        time interval between timer function call
 
 .. _`megasas_wait_for_outstanding`:
 
@@ -1305,6 +1317,74 @@ megasas_io_attach
 
     :param struct megasas_instance \*instance:
         Adapter soft state
+
+.. _`megasas_set_dma_mask`:
+
+megasas_set_dma_mask
+====================
+
+.. c:function:: int megasas_set_dma_mask(struct megasas_instance *instance)
+
+    Set DMA mask for supported controllers
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+.. _`megasas_set_dma_mask.description`:
+
+Description
+-----------
+
+
+For Ventura, driver/FW will operate in 64bit DMA addresses.
+
+For invader-
+By default, driver/FW will operate in 32bit DMA addresses
+for consistent DMA mapping but if 32 bit consistent
+DMA mask fails, driver will try with 64 bit consistent
+mask provided FW is true 64bit DMA capable
+
+For older controllers(Thunderbolt and MFI based adapters)-
+driver/FW will operate in 32 bit consistent DMA addresses.
+
+.. _`megasas_alloc_ctrl_mem`:
+
+megasas_alloc_ctrl_mem
+======================
+
+.. c:function:: int megasas_alloc_ctrl_mem(struct megasas_instance *instance)
+
+    Allocate per controller memory for core data structures which are not common across MFI adapters and fusion adapters. For MFI based adapters, allocate producer and consumer buffers. For fusion adapters, allocate memory for fusion context.
+
+    :param struct megasas_instance \*instance:
+        Adapter soft state
+
+.. _`megasas_alloc_ctrl_mem.return`:
+
+Return
+------
+
+0 for SUCCESS
+
+.. _`megasas_alloc_ctrl_dma_buffers`:
+
+megasas_alloc_ctrl_dma_buffers
+==============================
+
+.. c:function:: int megasas_alloc_ctrl_dma_buffers(struct megasas_instance *instance)
+
+    Allocate consistent DMA buffers during driver load time
+
+    :param struct megasas_instance \*instance:
+        *undescribed*
+
+.. _`megasas_alloc_ctrl_dma_buffers.description`:
+
+Description
+-----------
+
+@instance-                           Adapter soft instance
+\ ``return``\ -                             O for SUCCESS
 
 .. _`megasas_probe_one`:
 

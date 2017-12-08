@@ -1,6 +1,92 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/iio/imu/st_lsm6dsx/st_lsm6dsx.h
 
+.. _`st_lsm6dsx_fifo_ops`:
+
+struct st_lsm6dsx_fifo_ops
+==========================
+
+.. c:type:: struct st_lsm6dsx_fifo_ops
+
+    ST IMU FIFO settings
+
+.. _`st_lsm6dsx_fifo_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct st_lsm6dsx_fifo_ops {
+        struct {
+            u8 addr;
+            u16 mask;
+        } fifo_th;
+        struct {
+            u8 addr;
+            u16 mask;
+        } fifo_diff;
+        u8 th_wl;
+    }
+
+.. _`st_lsm6dsx_fifo_ops.members`:
+
+Members
+-------
+
+fifo_th
+    FIFO threshold register info (addr + mask).
+
+fifo_diff
+    FIFO diff status register info (addr + mask).
+
+th_wl
+    FIFO threshold word length.
+
+.. _`st_lsm6dsx_settings`:
+
+struct st_lsm6dsx_settings
+==========================
+
+.. c:type:: struct st_lsm6dsx_settings
+
+    ST IMU sensor settings
+
+.. _`st_lsm6dsx_settings.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct st_lsm6dsx_settings {
+        u8 wai;
+        u16 max_fifo_size;
+        enum st_lsm6dsx_hw_id id[ST_LSM6DSX_MAX_ID];
+        struct st_lsm6dsx_reg decimator[ST_LSM6DSX_MAX_ID];
+        struct st_lsm6dsx_fifo_ops fifo_ops;
+    }
+
+.. _`st_lsm6dsx_settings.members`:
+
+Members
+-------
+
+wai
+    Sensor WhoAmI default value.
+
+max_fifo_size
+    Sensor max fifo length in FIFO words.
+
+id
+    List of hw id supported by the driver configuration.
+
+decimator
+    List of decimator register info (addr + mask).
+
+fifo_ops
+    Sensor hw FIFO parameters.
+
 .. _`st_lsm6dsx_sensor`:
 
 struct st_lsm6dsx_sensor
@@ -26,7 +112,6 @@ Definition
         u16 watermark;
         u8 sip;
         u8 decimator;
-        u8 decimator_mask;
         s64 delta_ts;
         s64 ts;
     }
@@ -59,9 +144,6 @@ sip
 
 decimator
     FIFO decimation factor.
-
-decimator_mask
-    Sensor mask for decimation register.
 
 delta_ts
     Delta time between two consecutive interrupts.

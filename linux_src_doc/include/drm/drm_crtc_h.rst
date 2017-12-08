@@ -39,6 +39,7 @@ Definition
         u32 target_vblank;
         u32 pageflip_flags;
         struct drm_pending_vblank_event *event;
+        struct drm_crtc_commit *commit;
         struct drm_atomic_state *state;
     }
 
@@ -183,6 +184,12 @@ event
     committed. In the worst case the driver will send the event to
     userspace one frame too late. This doesn't allow for a real atomic
     update, but it should avoid tearing.
+
+commit
+
+    This tracks how the commit for this update proceeds through the
+    various phases. This is never cleared, except when we destroy the
+    state, so that subsequent commits can synchronize with previous ones.
 
 state
     backpointer to global drm_atomic_state
@@ -744,18 +751,24 @@ state
     This is protected by \ ``mutex``\ . Note that nonblocking atomic commits
     access the current CRTC state without taking locks. Either by going
     through the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointers, see
-    \ :c:func:`for_each_crtc_in_state`\ , \ :c:func:`for_each_oldnew_crtc_in_state`\ ,
-    \ :c:func:`for_each_old_crtc_in_state`\  and \ :c:func:`for_each_new_crtc_in_state`\ . Or
-    through careful ordering of atomic commit operations as implemented
-    in the atomic helpers, see \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
+    \ :c:func:`for_each_oldnew_crtc_in_state`\ , \ :c:func:`for_each_old_crtc_in_state`\  and
+    \ :c:func:`for_each_new_crtc_in_state`\ . Or through careful ordering of atomic
+    commit operations as implemented in the atomic helpers, see
+    \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\ .
 
 commit_list
 
     List of \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\  structures tracking pending commits.
-    Protected by \ ``commit_lock``\ . This list doesn't hold its own full
-    reference, but burrows it from the ongoing commit. Commit entries
-    must be removed from this list once the commit is fully completed,
-    but before it's correspoding \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  gets destroyed.
+    Protected by \ ``commit_lock``\ . This list holds its own full reference,
+    as does the ongoing commit.
+
+    "Note that the commit for a state change is also tracked in
+    \ :c:type:`drm_crtc_state.commit <drm_crtc_state>`\ . For accessing the immediately preceding
+    commit in an atomic update it is recommended to just use that
+    pointer in the old CRTC state, since accessing that doesn't need
+    any locking or list-walking. \ ``commit_list``\  should only be used to
+    stall for framebuffer cleanup that's signalled through
+    \ :c:type:`drm_crtc_commit.cleanup_done <drm_crtc_commit>`\ ."
 
 commit_lock
 
@@ -899,12 +912,15 @@ encoder's possible_crtcs field.
 drm_crtc_find
 =============
 
-.. c:function:: struct drm_crtc *drm_crtc_find(struct drm_device *dev, uint32_t id)
+.. c:function:: struct drm_crtc *drm_crtc_find(struct drm_device *dev, struct drm_file *file_priv, uint32_t id)
 
     look up a CRTC object from its ID
 
     :param struct drm_device \*dev:
         DRM device
+
+    :param struct drm_file \*file_priv:
+        drm file to check for lease against.
 
     :param uint32_t id:
         &drm_mode_object ID

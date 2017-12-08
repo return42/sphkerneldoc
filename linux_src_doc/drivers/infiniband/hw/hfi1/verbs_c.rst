@@ -44,6 +44,32 @@ Description
 
 This is called to process an incoming packet at interrupt level.
 
+.. _`update_tx_opstats`:
+
+update_tx_opstats
+=================
+
+.. c:function:: void update_tx_opstats(struct rvt_qp *qp, struct hfi1_pkt_state *ps, u32 plen)
+
+    record stats by opcode \ ``qp``\ ; the qp
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param struct hfi1_pkt_state \*ps:
+        transmit packet state
+
+    :param u32 plen:
+        the plen in dwords
+
+.. _`update_tx_opstats.description`:
+
+Description
+-----------
+
+This is a routine to record the tx opstats after a
+packet has been presented to the egress mechanism.
+
 .. _`egress_pkey_check`:
 
 egress_pkey_check

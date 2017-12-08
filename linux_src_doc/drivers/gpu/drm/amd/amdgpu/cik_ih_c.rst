@@ -104,6 +104,25 @@ ring buffer overflow and deal with it.
 Used by \ :c:func:`cik_irq_process`\ .
 Returns the value of the wptr.
 
+.. _`cik_ih_prescreen_iv`:
+
+cik_ih_prescreen_iv
+===================
+
+.. c:function:: bool cik_ih_prescreen_iv(struct amdgpu_device *adev)
+
+    prescreen an interrupt vector
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`cik_ih_prescreen_iv.description`:
+
+Description
+-----------
+
+Returns true if the interrupt vector should be further processed.
+
 .. _`cik_ih_set_rptr`:
 
 cik_ih_set_rptr

@@ -1,6 +1,99 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/user_namespace.c
 
+.. _`cmp_map_id`:
+
+cmp_map_id
+==========
+
+.. c:function:: int cmp_map_id(const void *k, const void *e)
+
+    Function to be passed to \ :c:func:`bsearch`\  to find the requested idmapping. Expects struct idmap_key to be passed via \ ``k``\ .
+
+    :param const void \*k:
+        *undescribed*
+
+    :param const void \*e:
+        *undescribed*
+
+.. _`map_id_range_down_max`:
+
+map_id_range_down_max
+=====================
+
+.. c:function:: struct uid_gid_extent *map_id_range_down_max(unsigned extents, struct uid_gid_map *map, u32 id, u32 count)
+
+    Find idmap via binary search in ordered idmap array. Can only be called if number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
+
+    :param unsigned extents:
+        *undescribed*
+
+    :param struct uid_gid_map \*map:
+        *undescribed*
+
+    :param u32 id:
+        *undescribed*
+
+    :param u32 count:
+        *undescribed*
+
+.. _`map_id_range_down_base`:
+
+map_id_range_down_base
+======================
+
+.. c:function:: struct uid_gid_extent *map_id_range_down_base(unsigned extents, struct uid_gid_map *map, u32 id, u32 count)
+
+    Find idmap via binary search in static extent array. Can only be called if number of mappings is equal or less than UID_GID_MAP_MAX_BASE_EXTENTS.
+
+    :param unsigned extents:
+        *undescribed*
+
+    :param struct uid_gid_map \*map:
+        *undescribed*
+
+    :param u32 id:
+        *undescribed*
+
+    :param u32 count:
+        *undescribed*
+
+.. _`map_id_up_base`:
+
+map_id_up_base
+==============
+
+.. c:function:: struct uid_gid_extent *map_id_up_base(unsigned extents, struct uid_gid_map *map, u32 id)
+
+    Find idmap via binary search in static extent array. Can only be called if number of mappings is equal or less than UID_GID_MAP_MAX_BASE_EXTENTS.
+
+    :param unsigned extents:
+        *undescribed*
+
+    :param struct uid_gid_map \*map:
+        *undescribed*
+
+    :param u32 id:
+        *undescribed*
+
+.. _`map_id_up_max`:
+
+map_id_up_max
+=============
+
+.. c:function:: struct uid_gid_extent *map_id_up_max(unsigned extents, struct uid_gid_map *map, u32 id)
+
+    Find idmap via binary search in ordered idmap array. Can only be called if number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
+
+    :param unsigned extents:
+        *undescribed*
+
+    :param struct uid_gid_map \*map:
+        *undescribed*
+
+    :param u32 id:
+        *undescribed*
+
 .. _`make_kuid`:
 
 make_kuid
@@ -263,6 +356,33 @@ failing the system call and failing to provide a valid projid are
 not an options.
 
 If \ ``kprojid``\  has no mapping in \ ``targ``\  OVERFLOW_PROJID is returned.
+
+.. _`insert_extent`:
+
+insert_extent
+=============
+
+.. c:function:: int insert_extent(struct uid_gid_map *map, struct uid_gid_extent *extent)
+
+    Safely insert a new idmap extent into struct uid_gid_map. Takes care to allocate a 4K block of memory if the number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
+
+    :param struct uid_gid_map \*map:
+        *undescribed*
+
+    :param struct uid_gid_extent \*extent:
+        *undescribed*
+
+.. _`sort_idmaps`:
+
+sort_idmaps
+===========
+
+.. c:function:: int sort_idmaps(struct uid_gid_map *map)
+
+    Sorts an array of idmap entries. Can only be called if number of mappings exceeds UID_GID_MAP_MAX_BASE_EXTENTS.
+
+    :param struct uid_gid_map \*map:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

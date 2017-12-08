@@ -357,12 +357,12 @@ IRQ_NONE otherwise.
 mips_ejtag_fdc_tty_timer
 ========================
 
-.. c:function:: void mips_ejtag_fdc_tty_timer(unsigned long opaque)
+.. c:function:: void mips_ejtag_fdc_tty_timer(struct timer_list *t)
 
     Poll FDC for incoming data.
 
-    :param unsigned long opaque:
-        Pointer to driver private data.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`mips_ejtag_fdc_tty_timer.description`:
 

@@ -92,7 +92,7 @@ Returns Nothing.
 mpt3sas_setup_direct_io
 =======================
 
-.. c:function:: void mpt3sas_setup_direct_io(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, struct _raid_device *raid_device, Mpi2SCSIIORequest_t *mpi_request, u16 smid)
+.. c:function:: void mpt3sas_setup_direct_io(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, struct _raid_device *raid_device, Mpi25SCSIIORequest_t *mpi_request, u16 smid)
 
     setup MPI request for WARPDRIVE Direct I/O
 
@@ -105,7 +105,7 @@ mpt3sas_setup_direct_io
     :param struct _raid_device \*raid_device:
         pointer to raid device data structure
 
-    :param Mpi2SCSIIORequest_t \*mpi_request:
+    :param Mpi25SCSIIORequest_t \*mpi_request:
         pointer to the SCSI_IO reqest message frame
 
     :param u16 smid:

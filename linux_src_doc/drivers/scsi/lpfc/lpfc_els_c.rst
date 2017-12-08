@@ -1071,12 +1071,12 @@ ADISC.
 lpfc_els_retry_delay
 ====================
 
-.. c:function:: void lpfc_els_retry_delay(unsigned long ptr)
+.. c:function:: void lpfc_els_retry_delay(struct timer_list *t)
 
     Timer function with a ndlp delayed function timer
 
-    :param unsigned long ptr:
-        holder for the pointer to the timer function associated data (ndlp).
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_els_retry_delay.description`:
 
@@ -2397,12 +2397,12 @@ Return code
 lpfc_els_timeout
 ================
 
-.. c:function:: void lpfc_els_timeout(unsigned long ptr)
+.. c:function:: void lpfc_els_timeout(struct timer_list *t)
 
     Handler funciton to the els timer
 
-    :param unsigned long ptr:
-        holder for the timer function associated data.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_els_timeout.description`:
 
@@ -2902,12 +2902,12 @@ Return codes
 lpfc_fabric_block_timeout
 =========================
 
-.. c:function:: void lpfc_fabric_block_timeout(unsigned long ptr)
+.. c:function:: void lpfc_fabric_block_timeout(struct timer_list *t)
 
     Handler function to the fabric block timer
 
-    :param unsigned long ptr:
-        holder for the timer function associated data.
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`lpfc_fabric_block_timeout.description`:
 

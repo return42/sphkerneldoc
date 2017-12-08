@@ -59,6 +59,25 @@ Description
 
 Returns >= nr_cpu_ids if no cpus set.
 
+.. _`cpumask_last`:
+
+cpumask_last
+============
+
+.. c:function:: unsigned int cpumask_last(const struct cpumask *srcp)
+
+    get the last CPU in a cpumask
+
+    :param const struct cpumask \*srcp:
+        - the cpumask pointer
+
+.. _`cpumask_last.description`:
+
+Description
+-----------
+
+Returns      >= nr_cpumask_bits if no CPUs set.
+
 .. _`cpumask_next_zero`:
 
 cpumask_next_zero

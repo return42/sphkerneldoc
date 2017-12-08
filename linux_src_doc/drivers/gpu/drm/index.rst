@@ -18,6 +18,7 @@ drm
     msm/index
     nouveau/index
     omapdrm/index
+    panel/index
     pl111/index
     r128/index
     radeon/index
@@ -28,6 +29,7 @@ drm
     tegra/index
     tinydrm/index
     ttm/index
+    tve200/index
     vc4/index
     vgem/index
     vmwgfx/index
@@ -69,6 +71,7 @@ drm
     drm_ioc32_c
     drm_ioctl_c
     drm_irq_c
+    drm_lease_c
     drm_lock_c
     drm_mipi_dsi_c
     drm_mm_c

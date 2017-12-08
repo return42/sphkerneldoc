@@ -18,7 +18,6 @@ Definition
 .. code-block:: c
 
     struct iio_trigger_ops {
-        struct module *owner;
         int (*set_trigger_state)(struct iio_trigger *trig, bool state);
         int (*try_reenable)(struct iio_trigger *trig);
         int (*validate_device)(struct iio_trigger *trig, struct iio_dev *indio_dev);
@@ -28,9 +27,6 @@ Definition
 
 Members
 -------
-
-owner
-    used to monitor usage count of the trigger.
 
 set_trigger_state
     switch on/off the trigger on demand
@@ -69,6 +65,7 @@ Definition
 
     struct iio_trigger {
         const struct iio_trigger_ops *ops;
+        struct module *owner;
         int id;
         const char *name;
         struct device dev;
@@ -90,6 +87,9 @@ Members
 
 ops
     [DRIVER] operations structure
+
+owner
+    *undescribed*
 
 id
     [INTERN] unique id number
@@ -176,11 +176,11 @@ Returns the data previously set with \ :c:func:`iio_trigger_set_drvdata`\
 iio_trigger_register
 ====================
 
-.. c:function:: int iio_trigger_register(struct iio_trigger *trig_info)
+.. c:function::  iio_trigger_register( trig_info)
 
     register a trigger with the IIO core
 
-    :param struct iio_trigger \*trig_info:
+    :param  trig_info:
         trigger to be registered
 
 .. _`iio_trigger_unregister`:

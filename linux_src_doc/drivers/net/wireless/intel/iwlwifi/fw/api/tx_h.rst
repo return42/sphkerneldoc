@@ -961,7 +961,7 @@ Definition
         __le32 flags;
         u8 sta_id;
         u8 reduced_txp;
-        u8 initial_rate;
+        u8 tlc_rate_info;
         u8 retry_cnt;
         __le32 query_byte_cnt;
         __le16 query_frame_cnt;
@@ -992,7 +992,7 @@ reduced_txp
     not a copy from the LQ command. Thus, if not the first rate was used
     for Tx-ing then this value will be set to 0 by FW.
 
-initial_rate
+tlc_rate_info
     TLC rate info, initial rate index, TLC table color
 
 retry_cnt

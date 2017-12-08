@@ -322,6 +322,29 @@ Description
 Returns one if there are any nfs_delegation structures attached
 to this nfs_client.
 
+.. _`nfs4_refresh_delegation_stateid`:
+
+nfs4_refresh_delegation_stateid
+===============================
+
+.. c:function:: bool nfs4_refresh_delegation_stateid(nfs4_stateid *dst, struct inode *inode)
+
+    Update delegation stateid seqid
+
+    :param nfs4_stateid \*dst:
+        stateid to refresh
+
+    :param struct inode \*inode:
+        inode to check
+
+.. _`nfs4_refresh_delegation_stateid.description`:
+
+Description
+-----------
+
+Returns "true" and updates "dst->seqid" \* if inode had a delegation
+that matches our delegation stateid. Otherwise "false" is returned.
+
 .. _`nfs4_copy_delegation_stateid`:
 
 nfs4_copy_delegation_stateid

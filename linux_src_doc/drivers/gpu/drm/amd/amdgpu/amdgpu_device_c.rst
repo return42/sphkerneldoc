@@ -477,6 +477,44 @@ FIXME
 
 when reducing GTT size align new size on power of 2.
 
+.. _`amdgpu_fw_reserve_vram_fini`:
+
+amdgpu_fw_reserve_vram_fini
+===========================
+
+.. c:function:: void amdgpu_fw_reserve_vram_fini(struct amdgpu_device *adev)
+
+    free fw reserved vram
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`amdgpu_fw_reserve_vram_fini.description`:
+
+Description
+-----------
+
+free fw reserved vram if it has been reserved.
+
+.. _`amdgpu_fw_reserve_vram_init`:
+
+amdgpu_fw_reserve_vram_init
+===========================
+
+.. c:function:: int amdgpu_fw_reserve_vram_init(struct amdgpu_device *adev)
+
+    create bo vram reservation from fw
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`amdgpu_fw_reserve_vram_init.description`:
+
+Description
+-----------
+
+create bo vram reservation from fw.
+
 .. _`amdgpu_need_post`:
 
 amdgpu_need_post
@@ -908,6 +946,25 @@ Description
 
 Adds the IP block driver information to the collection of IPs
 on the asic.
+
+.. _`amdgpu_device_has_dc_support`:
+
+amdgpu_device_has_dc_support
+============================
+
+.. c:function:: bool amdgpu_device_has_dc_support(struct amdgpu_device *adev)
+
+    check if dc is supported
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device_pointer
+
+.. _`amdgpu_device_has_dc_support.description`:
+
+Description
+-----------
+
+Returns true for supported, false for not supported
 
 .. _`amdgpu_device_init`:
 

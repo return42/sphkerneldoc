@@ -545,12 +545,12 @@ Description
 Returns the number of Tx descriptors needed for the given Ethernet
 packet.  Ethernet packets require addition of WR and CPL headers.
 
-.. _`make_sgl`:
+.. _`write_sgl`:
 
-make_sgl
-========
+write_sgl
+=========
 
-.. c:function:: unsigned int make_sgl(const struct sk_buff *skb, struct sg_ent *sgp, unsigned char *start, unsigned int len, struct pci_dev *pdev)
+.. c:function:: unsigned int write_sgl(const struct sk_buff *skb, struct sg_ent *sgp, unsigned char *start, unsigned int len, const dma_addr_t *addr)
 
     populate a scatter/gather list for a packet
 
@@ -566,15 +566,15 @@ make_sgl
     :param unsigned int len:
         length of skb main body data to include in the SGL
 
-    :param struct pci_dev \*pdev:
-        the PCI device
+    :param const dma_addr_t \*addr:
+        the list of the mapped addresses
 
-.. _`make_sgl.description`:
+.. _`write_sgl.description`:
 
 Description
 -----------
 
-Generates a scatter/gather list for the buffers that make up a packet
+Copies the scatter/gather list for the buffers that make up a packet
 and returns the SGL size in 8-byte words.  The caller must size the SGL
 appropriately.
 
@@ -662,7 +662,7 @@ SGL across the number of descriptors it spans.
 write_tx_pkt_wr
 ===============
 
-.. c:function:: void write_tx_pkt_wr(struct adapter *adap, struct sk_buff *skb, const struct port_info *pi, unsigned int pidx, unsigned int gen, struct sge_txq *q, unsigned int ndesc, unsigned int compl)
+.. c:function:: void write_tx_pkt_wr(struct adapter *adap, struct sk_buff *skb, const struct port_info *pi, unsigned int pidx, unsigned int gen, struct sge_txq *q, unsigned int ndesc, unsigned int compl, const dma_addr_t *addr)
 
     write a TX_PKT work request
 
@@ -689,6 +689,9 @@ write_tx_pkt_wr
 
     :param unsigned int compl:
         the value of the COMPL bit to use
+
+    :param const dma_addr_t \*addr:
+        *undescribed*
 
 .. _`write_tx_pkt_wr.description`:
 
@@ -882,7 +885,7 @@ freed.
 write_ofld_wr
 =============
 
-.. c:function:: void write_ofld_wr(struct adapter *adap, struct sk_buff *skb, struct sge_txq *q, unsigned int pidx, unsigned int gen, unsigned int ndesc)
+.. c:function:: void write_ofld_wr(struct adapter *adap, struct sk_buff *skb, struct sge_txq *q, unsigned int pidx, unsigned int gen, unsigned int ndesc, const dma_addr_t *addr)
 
     write an offload work request
 
@@ -903,6 +906,9 @@ write_ofld_wr
 
     :param unsigned int ndesc:
         number of descriptors the packet will occupy
+
+    :param const dma_addr_t \*addr:
+        *undescribed*
 
 .. _`write_ofld_wr.description`:
 
@@ -1501,12 +1507,12 @@ Interrupt handler for SGE asynchronous (non-data) events.
 sge_timer_tx
 ============
 
-.. c:function:: void sge_timer_tx(unsigned long data)
+.. c:function:: void sge_timer_tx(struct timer_list *t)
 
     perform periodic maintenance of an SGE qset
 
-    :param unsigned long data:
-        the SGE queue set to maintain
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sge_timer_tx.description`:
 
@@ -1531,12 +1537,12 @@ bother cleaning them up here.
 sge_timer_rx
 ============
 
-.. c:function:: void sge_timer_rx(unsigned long data)
+.. c:function:: void sge_timer_rx(struct timer_list *t)
 
     perform periodic maintenance of an SGE qset
 
-    :param unsigned long data:
-        the SGE queue set to maintain
+    :param struct timer_list \*t:
+        *undescribed*
 
 .. _`sge_timer_rx.description`:
 
