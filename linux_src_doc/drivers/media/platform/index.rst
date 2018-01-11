@@ -23,7 +23,6 @@ platform
     s5p-mfc/index
     soc_camera/index
     sti/index
-    ti-vpe/index
     vimc/index
     vsp1/index
     xilinx/index
@@ -31,5 +30,3 @@ platform
     rcar-fcp_c
     rcar_fdp1_c
     rcar_jpu_c
-    sh_veu_c
-    vim2m_c

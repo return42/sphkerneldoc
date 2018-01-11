@@ -65,7 +65,7 @@ ir_raw_event_store_with_filter
         the struct rc_dev device descriptor
 
     :param struct ir_raw_event \*ev:
-        *undescribed*
+        the event that has occurred
 
 .. _`ir_raw_event_store_with_filter.description`:
 

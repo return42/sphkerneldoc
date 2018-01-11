@@ -8,7 +8,6 @@ mtk-vcodec
     :maxdepth: 1
 
     vdec/index
-    venc/index
     mtk_vcodec_dec_h
     mtk_vcodec_drv_h
     mtk_vcodec_enc_h

@@ -185,7 +185,7 @@ Description
 -----------
 
 Make sure that no inodes with zero refcount are retained.  This is
-called by superblock shutdown after having MS_ACTIVE flag removed,
+called by superblock shutdown after having SB_ACTIVE flag removed,
 so any inode reaching zero refcount during or after that call will
 be immediately evicted.
 

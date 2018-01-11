@@ -85,5 +85,37 @@ gpio
 get_dvb_frontend
     Get DVB frontend callback.
 
+.. _`af9013_platform_data.description`:
+
+Description
+-----------
+
+AF9013/5 GPIOs (mostly guessed):
+  * demod#1-gpio#0 - set demod#2 i2c-addr for dual devices
+  * demod#1-gpio#1 - xtal setting (?)
+  * demod#1-gpio#3 - tuner#1
+  * demod#2-gpio#0 - tuner#2
+  * demod#2-gpio#1 - xtal setting (?)
+
+.. _`af9013_attach`:
+
+af9013_attach
+=============
+
+.. c:function:: struct dvb_frontend *af9013_attach(const struct af9013_config *config, struct i2c_adapter *i2c)
+
+    :param const struct af9013_config \*config:
+        pointer to \ :c:type:`struct af9013_config <af9013_config>`\  with demod configuration.
+
+    :param struct i2c_adapter \*i2c:
+        i2c adapter to use.
+
+.. _`af9013_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
 .. This file was automatic generated / don't edit.
 

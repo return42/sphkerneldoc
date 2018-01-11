@@ -83,7 +83,7 @@ vpif_start_streaming
     Starts the DMA engine for streaming
 
     :param struct vb2_queue \*vq:
-        *undescribed*
+        ptr to vb2_buffer
 
     :param unsigned int count:
         number of buffers
@@ -133,16 +133,16 @@ vpif_output_to_subdev
 
 .. c:function:: int vpif_output_to_subdev(struct vpif_display_config *vpif_cfg, struct vpif_display_chan_config *chan_cfg, int index)
 
-    Maps output to sub device \ ``vpif_cfg``\  - global config ptr \ ``chan_cfg``\  - channel config ptr \ ``index``\  - Given output index from application
+    Maps output to sub device
 
     :param struct vpif_display_config \*vpif_cfg:
-        *undescribed*
+        global config ptr
 
     :param struct vpif_display_chan_config \*chan_cfg:
-        *undescribed*
+        channel config ptr
 
     :param int index:
-        *undescribed*
+        Given output index from application
 
 .. _`vpif_output_to_subdev.description`:
 
@@ -160,16 +160,16 @@ vpif_set_output
 
 .. c:function:: int vpif_set_output(struct vpif_display_config *vpif_cfg, struct channel_obj *ch, int index)
 
-    Select an output \ ``vpif_cfg``\  - global config ptr \ ``ch``\  - channel \ ``index``\  - Given output index from application
+    Select an output
 
     :param struct vpif_display_config \*vpif_cfg:
-        *undescribed*
+        global config ptr
 
     :param struct channel_obj \*ch:
-        *undescribed*
+        channel
 
     :param int index:
-        *undescribed*
+        Given output index from application
 
 .. _`vpif_set_output.description`:
 

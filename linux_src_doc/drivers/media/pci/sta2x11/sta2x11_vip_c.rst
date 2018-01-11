@@ -132,7 +132,7 @@ vidioc_querycap
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param struct v4l2_capability \*cap:
         contains return values
@@ -164,7 +164,7 @@ vidioc_s_std
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param v4l2_std_id std:
         contains standard to be set
@@ -200,7 +200,7 @@ vidioc_g_std
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param v4l2_std_id \*std:
         contains return values
@@ -232,7 +232,7 @@ vidioc_querystd
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param v4l2_std_id \*std:
         contains return values
@@ -264,7 +264,7 @@ vidioc_s_input
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param unsigned int i:
         new input line number
@@ -298,7 +298,7 @@ vidioc_g_input
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param unsigned int \*i:
         returned input line number
@@ -327,10 +327,10 @@ vidioc_enum_fmt_vid_cap
     return video capture format
 
     :param struct file \*file:
-        *undescribed*
+        descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param struct v4l2_fmtdesc \*f:
         returned format information
@@ -363,7 +363,7 @@ vidioc_try_fmt_vid_cap
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param struct v4l2_format \*f:
         new format
@@ -400,7 +400,7 @@ vidioc_s_fmt_vid_cap
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param struct v4l2_format \*f:
         returned format information
@@ -434,7 +434,7 @@ vidioc_g_fmt_vid_cap
         descriptor of device
 
     :param void \*priv:
-        *undescribed*
+        unused
 
     :param struct v4l2_format \*f:
         contains format information

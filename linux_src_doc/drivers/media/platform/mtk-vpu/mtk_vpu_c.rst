@@ -345,7 +345,7 @@ run
     VPU initialization status
 
 wdt
-    *undescribed*
+    VPU watchdog workqueue
 
 ipi_desc
     VPU IPI descriptor
@@ -375,11 +375,10 @@ vpu_mutex
     suppose a client is using VPU to decode VP8.
     If the other client wants to encode VP8,
     it has to wait until VP8 decode completes.
-    \ ``wdt_refcnt``\           WDT reference count to make sure the watchdog can be
-    disabled if no other client is using VPU service
 
 wdt_refcnt
-    *undescribed*
+    WDT reference count to make sure the watchdog can be
+    disabled if no other client is using VPU service
 
 ack_wq
     The wait queue for each codec and mdp. When sleeping

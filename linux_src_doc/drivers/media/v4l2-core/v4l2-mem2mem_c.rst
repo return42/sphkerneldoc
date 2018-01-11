@@ -51,7 +51,7 @@ v4l2_m2m_try_run
     select next job to perform and run it if possible
 
     :param struct v4l2_m2m_dev \*m2m_dev:
-        *undescribed*
+        per-device context
 
 .. _`v4l2_m2m_try_run.description`:
 
@@ -70,7 +70,7 @@ v4l2_m2m_cancel_job
     cancel pending jobs for the context
 
     :param struct v4l2_m2m_ctx \*m2m_ctx:
-        *undescribed*
+        m2m context with jobs to be canceled
 
 .. _`v4l2_m2m_cancel_job.description`:
 

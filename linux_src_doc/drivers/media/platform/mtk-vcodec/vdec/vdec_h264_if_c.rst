@@ -87,7 +87,7 @@ count
     buffer count in list
 
 reserved
-    *undescribed*
+    for 8 bytes alignment
 
 .. _`vdec_h264_dec_info`:
 

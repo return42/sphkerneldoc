@@ -169,5 +169,93 @@ num_planes
 types
     types of queue this format is applicable to
 
+.. _`jpu_q_data`:
+
+struct jpu_q_data
+=================
+
+.. c:type:: struct jpu_q_data
+
+    parameters of one queue
+
+.. _`jpu_q_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct jpu_q_data {
+        struct jpu_fmt *fmtinfo;
+        struct v4l2_pix_format_mplane format;
+        unsigned int sequence;
+    }
+
+.. _`jpu_q_data.members`:
+
+Members
+-------
+
+fmtinfo
+    driver-specific format of this queue
+
+format
+    multiplanar format of this queue
+
+sequence
+    sequence number
+
+.. _`jpu_ctx`:
+
+struct jpu_ctx
+==============
+
+.. c:type:: struct jpu_ctx
+
+    the device context data
+
+.. _`jpu_ctx.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct jpu_ctx {
+        struct jpu *jpu;
+        bool encoder;
+        unsigned short compr_quality;
+        struct jpu_q_data out_q;
+        struct jpu_q_data cap_q;
+        struct v4l2_fh fh;
+        struct v4l2_ctrl_handler ctrl_handler;
+    }
+
+.. _`jpu_ctx.members`:
+
+Members
+-------
+
+jpu
+    JPEG IP device for this context
+
+encoder
+    compression (encode) operation or decompression (decode)
+
+compr_quality
+    destination image quality in compression (encode) mode
+
+out_q
+    source (output) queue information
+
+cap_q
+    destination (capture) queue information
+
+fh
+    file handler
+
+ctrl_handler
+    controls handler
+
 .. This file was automatic generated / don't edit.
 

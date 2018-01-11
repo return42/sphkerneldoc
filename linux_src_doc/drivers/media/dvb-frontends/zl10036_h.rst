@@ -1,0 +1,28 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/media/dvb-frontends/zl10036.h
+
+.. _`zl10036_attach`:
+
+zl10036_attach
+==============
+
+.. c:function:: struct dvb_frontend *zl10036_attach(struct dvb_frontend *fe, const struct zl10036_config *config, struct i2c_adapter *i2c)
+
+    :param struct dvb_frontend \*fe:
+        Frontend to attach to.
+
+    :param const struct zl10036_config \*config:
+        zl10036_config structure.
+
+    :param struct i2c_adapter \*i2c:
+        pointer to struct i2c_adapter.
+
+.. _`zl10036_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
+.. This file was automatic generated / don't edit.
+

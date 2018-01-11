@@ -52,9 +52,13 @@ start_addr_hi
 
 size
     DMA ring buffer size register
+    \* Bits [0-7]:   DMA packet size, 188 bytes
+    \* Bits [16-23]: packets count in block, 128 packets
+    \* Bits [24-31]: blocks count, 8 blocks
 
 timeout
     DMA timeout in units of 8ns
+    For example, value of 375000000 equals to 3 sec
 
 curr_addr_lo
     Current ring buffer head address, lower part

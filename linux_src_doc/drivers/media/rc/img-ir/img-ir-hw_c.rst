@@ -182,7 +182,7 @@ img_ir_decoder_convert
         Decoder to be converted to internal timings.
 
     :param struct img_ir_reg_timings \*reg_timings:
-        *undescribed*
+        Timing register values.
 
     :param unsigned int clock_hz:
         IR clock rate in Hz.

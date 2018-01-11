@@ -42,5 +42,28 @@ set_tuner_callback
     Callback function that notifies the parent driver
     which tuner is active now
 
+.. _`ascot2e_attach`:
+
+ascot2e_attach
+==============
+
+.. c:function:: struct dvb_frontend *ascot2e_attach(struct dvb_frontend *fe, const struct ascot2e_config *config, struct i2c_adapter *i2c)
+
+    :param struct dvb_frontend \*fe:
+        frontend to be attached
+
+    :param const struct ascot2e_config \*config:
+        pointer to \ :c:type:`struct ascot2e_config <ascot2e_config>`\  with tuner configuration.
+
+    :param struct i2c_adapter \*i2c:
+        i2c adapter to use.
+
+.. _`ascot2e_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
 .. This file was automatic generated / don't edit.
 

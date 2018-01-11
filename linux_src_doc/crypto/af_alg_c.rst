@@ -264,6 +264,18 @@ Description
 
 This is a generic implementation of sendpage to fill ctx->tsgl_list.
 
+.. _`af_alg_free_resources`:
+
+af_alg_free_resources
+=====================
+
+.. c:function:: void af_alg_free_resources(struct af_alg_async_req *areq)
+
+    release resources required for crypto request
+
+    :param struct af_alg_async_req \*areq:
+        *undescribed*
+
 .. _`af_alg_async_cb`:
 
 af_alg_async_cb

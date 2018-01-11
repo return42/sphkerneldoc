@@ -6858,7 +6858,7 @@ The PS Poll template. \ ``NULL``\  on error.
 ieee80211_nullfunc_get
 ======================
 
-.. c:function:: struct sk_buff *ieee80211_nullfunc_get(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+.. c:function:: struct sk_buff *ieee80211_nullfunc_get(struct ieee80211_hw *hw, struct ieee80211_vif *vif, bool qos_ok)
 
     retrieve a nullfunc template
 
@@ -6868,6 +6868,10 @@ ieee80211_nullfunc_get
     :param struct ieee80211_vif \*vif:
         &struct ieee80211_vif pointer from the add_interface callback.
 
+    :param bool qos_ok:
+        QoS NDP is acceptable to the caller, this should be set
+        if at all possible
+
 .. _`ieee80211_nullfunc_get.description`:
 
 Description
@@ -6876,6 +6880,9 @@ Description
 Creates a Nullfunc template which can, for example, uploaded to
 hardware. The template must be updated after association so that correct
 BSSID and address is used.
+
+If \ ``qos_ndp``\  is set and the association is to an AP with QoS/WMM, the
+returned packet will be QoS NDP.
 
 .. _`ieee80211_nullfunc_get.note`:
 

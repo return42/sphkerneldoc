@@ -35,7 +35,7 @@ swap_func function optimized to your element type.
 
 Sorting time is O(n log n) both on average and worst-case. While
 qsort is about 20% faster on average, it suffers from exploitable
-O(n\*n) worst-case behavior and extra memory requirements that make
+O(n*n) worst-case behavior and extra memory requirements that make
 it less suitable for kernel use.
 
 .. This file was automatic generated / don't edit.

@@ -14,7 +14,7 @@ ir_sanyo_decode
         the struct rc_dev descriptor of the device
 
     :param struct ir_raw_event ev:
-        *undescribed*
+        the struct ir_raw_event descriptor of the pulse/space
 
 .. _`ir_sanyo_decode.description`:
 

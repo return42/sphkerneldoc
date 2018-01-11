@@ -11,10 +11,10 @@ ir_lirc_decode
     Send raw IR data to lirc_dev to be relayed to the lircd userspace daemon for decoding.
 
     :param struct rc_dev \*dev:
-        *undescribed*
+        the struct rc_dev descriptor of the device
 
     :param struct ir_raw_event ev:
-        *undescribed*
+        the struct ir_raw_event descriptor of the pulse/space
 
 .. _`ir_lirc_decode.description`:
 

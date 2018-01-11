@@ -87,7 +87,7 @@ iio_format_value
         which is assumed to be big enough (i.e. PAGE_SIZE).
 
     :param unsigned int type:
-        One of the IIO_VAL_... constants. This decides how the val
+        One of the IIO_VAL_* constants. This decides how the val
         and val2 parameters are formatted.
 
     :param int size:
@@ -104,7 +104,7 @@ Return
 
 0 by default, a negative number on failure or the
         total number of characters written for a type that belongs
-        to the IIO_VAL_... constant.
+        to the IIO_VAL_* constant.
 
 .. _`iio_str_to_fixpoint`:
 

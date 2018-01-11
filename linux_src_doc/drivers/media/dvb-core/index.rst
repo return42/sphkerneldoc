@@ -15,7 +15,6 @@ dvb-core
     dvb_frontend_c
     dvb_frontend_h
     dvb_math_h
-    dvb_net_c
     dvb_net_h
     dvb_ringbuffer_h
     dvbdev_h

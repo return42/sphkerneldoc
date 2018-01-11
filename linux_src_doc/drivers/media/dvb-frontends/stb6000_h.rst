@@ -9,23 +9,20 @@ stb6000_attach
 .. c:function:: struct dvb_frontend *stb6000_attach(struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c)
 
     :param struct dvb_frontend \*fe:
-        *undescribed*
+        Frontend to attach to.
 
     :param int addr:
-        *undescribed*
+        i2c address of the tuner.
 
     :param struct i2c_adapter \*i2c:
-        *undescribed*
+        i2c adapter to use.
 
-.. _`stb6000_attach.description`:
+.. _`stb6000_attach.return`:
 
-Description
------------
+Return
+------
 
-@param fe Frontend to attach to.
-\ ``param``\  addr i2c address of the tuner.
-\ ``param``\  i2c i2c adapter to use.
-\ ``return``\  FE pointer on success, NULL on failure.
+FE pointer on success, NULL on failure.
 
 .. This file was automatic generated / don't edit.
 

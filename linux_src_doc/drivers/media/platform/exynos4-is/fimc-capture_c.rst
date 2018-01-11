@@ -11,7 +11,7 @@ fimc_capture_config_update
     apply the camera interface configuration
 
     :param struct fimc_ctx \*ctx:
-        *undescribed*
+        FIMC capture context
 
 .. _`fimc_capture_config_update.description`:
 
@@ -59,7 +59,7 @@ fimc_get_sensor_frame_desc
         provides plane sizes corresponding to the frame layout entries
 
     :param unsigned int num_planes:
-        *undescribed*
+        number of planes
 
     :param bool try:
         true to set the frame parameters, false to query only
@@ -81,7 +81,7 @@ fimc_pipeline_validate
     check for formats inconsistencies between source and sink pad of each link
 
     :param struct fimc_dev \*fimc:
-        *undescribed*
+        the FIMC device this context applies to
 
 .. _`fimc_pipeline_validate.description`:
 

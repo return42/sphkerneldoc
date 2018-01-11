@@ -7,7 +7,6 @@ dvb-frontends
 .. toctree::
     :maxdepth: 1
 
-    drx39xyj/index
     a8293_h
     af9013_h
     ascot2e_h
@@ -17,16 +16,16 @@ dvb-frontends
     dvb-pll_h
     helene_h
     horus3a_h
-    ix2505v_c
+    ix2505v_h
     lnbh25_c
     m88ds3103_h
     mb86a20s_h
+    mn88472_h
     rtl2830_h
     rtl2832_h
     rtl2832_sdr_h
-    sp887x_c
     stb6000_h
     tda10071_h
     tda826x_h
     zd1301_demod_h
-    zl10036_c
+    zl10036_h

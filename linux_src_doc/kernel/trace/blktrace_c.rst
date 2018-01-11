@@ -67,7 +67,7 @@ Description
 blk_add_trace_bio
 =================
 
-.. c:function:: void blk_add_trace_bio(struct request_queue *q, struct bio *bio, u32 what, int error, union kernfs_node_id *cgid)
+.. c:function:: void blk_add_trace_bio(struct request_queue *q, struct bio *bio, u32 what, int error)
 
     Add a trace for a bio oriented action
 
@@ -82,9 +82,6 @@ blk_add_trace_bio
 
     :param int error:
         error, if any
-
-    :param union kernfs_node_id \*cgid:
-        *undescribed*
 
 .. _`blk_add_trace_bio.description`:
 

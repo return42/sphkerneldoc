@@ -68,7 +68,7 @@ mpeg_out_clk_strength
     DRXK Mpeg output clock drive strength.
 
 chunk_size
-    *undescribed*
+    maximum size for I2C messages
 
 microcode_name
     Name of the firmware file with the microcode
@@ -77,7 +77,7 @@ qam_demod_parameter_count
     The number of parameters used for the command
     to set the demodulator parameters. All
     firmwares are using the 2-parameter commmand.
-    An exception is the "drxk_a3.mc" firmware,
+    An exception is the ``drxk_a3.mc`` firmware,
     which uses the 4-parameter command.
     A value of 0 (default) or lower indicates that
     the correct number of parameters will be
@@ -88,8 +88,28 @@ qam_demod_parameter_count
 Description
 -----------
 
-On the \*\_gpio vars, bit 0 is UIO-1, bit 1 is UIO-2 and bit 2 is
+On the ``*_gpio`` vars, bit 0 is UIO-1, bit 1 is UIO-2 and bit 2 is
 UIO-3.
+
+.. _`drxk_attach`:
+
+drxk_attach
+===========
+
+.. c:function:: struct dvb_frontend *drxk_attach(const struct drxk_config *config, struct i2c_adapter *i2c)
+
+    :param const struct drxk_config \*config:
+        pointer to \ :c:type:`struct drxk_config <drxk_config>`\  with demod configuration.
+
+    :param struct i2c_adapter \*i2c:
+        i2c adapter to use.
+
+.. _`drxk_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
 
 .. This file was automatic generated / don't edit.
 

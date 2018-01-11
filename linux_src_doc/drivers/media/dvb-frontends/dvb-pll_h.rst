@@ -11,27 +11,23 @@ dvb_pll_attach
     pll to the supplied frontend structure.
 
     :param struct dvb_frontend \*fe:
-        *undescribed*
+        Frontend to attach to.
 
     :param int pll_addr:
-        *undescribed*
+        i2c address of the PLL (if used).
 
     :param struct i2c_adapter \*i2c:
-        *undescribed*
+        i2c adapter to use (set to NULL if not used).
 
     :param unsigned int pll_desc_id:
-        *undescribed*
+        dvb_pll_desc to use.
 
-.. _`dvb_pll_attach.description`:
+.. _`dvb_pll_attach.return`:
 
-Description
------------
+Return
+------
 
-@param fe Frontend to attach to.
-\ ``param``\  pll_addr i2c address of the PLL (if used).
-\ ``param``\  i2c i2c adapter to use (set to NULL if not used).
-\ ``param``\  pll_desc_id dvb_pll_desc to use.
-\ ``return``\  Frontend pointer on success, NULL on failure
+Frontend pointer on success, NULL on failure
 
 .. This file was automatic generated / don't edit.
 

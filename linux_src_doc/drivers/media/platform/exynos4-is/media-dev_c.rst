@@ -11,7 +11,7 @@ fimc_pipeline_prepare
     update pipeline information with subdevice pointers
 
     :param struct fimc_pipeline \*p:
-        *undescribed*
+        fimc pipeline
 
     :param struct media_entity \*me:
         media entity terminating the pipeline
@@ -56,10 +56,10 @@ fimc_pipeline_s_power
     change power state of all pipeline subdevs
 
     :param struct fimc_pipeline \*p:
-        *undescribed*
+        fimc device terminating the pipeline
 
     :param bool on:
-        *undescribed*
+        true to power on, false to power off
 
 .. _`fimc_pipeline_s_power.description`:
 
@@ -100,7 +100,7 @@ __fimc_pipeline_open
     update the pipeline information, enable power of all pipeline subdevs and the sensor clock
 
     :param struct exynos_media_pipeline \*ep:
-        *undescribed*
+        fimc device terminating the pipeline
 
     :param struct media_entity \*me:
         media entity to start graph walk with
@@ -125,7 +125,7 @@ __fimc_pipeline_close
     disable the sensor clock and pipeline power
 
     :param struct exynos_media_pipeline \*ep:
-        *undescribed*
+        fimc device terminating the pipeline
 
 .. _`__fimc_pipeline_close.description`:
 
@@ -144,7 +144,7 @@ __fimc_pipeline_s_stream
     call \ :c:func:`s_stream`\  on pipeline subdevs
 
     :param struct exynos_media_pipeline \*ep:
-        *undescribed*
+        video pipeline structure
 
     :param bool on:
         passed as the \ :c:func:`s_stream`\  callback argument
@@ -183,7 +183,7 @@ fimc_md_create_links
     create default links between registered entities
 
     :param struct fimc_md \*fmd:
-        *undescribed*
+        fimc media device
 
 .. _`fimc_md_create_links.description`:
 

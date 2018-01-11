@@ -1,0 +1,72 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/media/dvb-frontends/ix2505v.h
+
+.. _`ix2505v_config`:
+
+struct ix2505v_config
+=====================
+
+.. c:type:: struct ix2505v_config
+
+    ix2505 attachment configuration
+
+.. _`ix2505v_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ix2505v_config {
+        u8 tuner_address;
+        u8 tuner_gain;
+        u8 tuner_chargepump;
+        int min_delay_ms;
+        u8 tuner_write_only;
+    }
+
+.. _`ix2505v_config.members`:
+
+Members
+-------
+
+tuner_address
+    tuner address
+
+tuner_gain
+    Baseband AMP gain control 0/1=0dB(default) 2=-2bB 3=-4dB
+
+tuner_chargepump
+    Charge pump output +/- 0=120 1=260 2=555 3=1200(default)
+
+min_delay_ms
+    delay after tune
+
+tuner_write_only
+    disables reads
+
+.. _`ix2505v_attach`:
+
+ix2505v_attach
+==============
+
+.. c:function:: struct dvb_frontend *ix2505v_attach(struct dvb_frontend *fe, const struct ix2505v_config *config, struct i2c_adapter *i2c)
+
+    :param struct dvb_frontend \*fe:
+        Frontend to attach to.
+
+    :param const struct ix2505v_config \*config:
+        pointer to \ :c:type:`struct ix2505v_config <ix2505v_config>`\ 
+
+    :param struct i2c_adapter \*i2c:
+        pointer to \ :c:type:`struct i2c_adapter <i2c_adapter>`\ .
+
+.. _`ix2505v_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
+.. This file was automatic generated / don't edit.
+

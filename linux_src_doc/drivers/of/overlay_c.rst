@@ -288,14 +288,14 @@ to the device tree.
 A non-zero return value will not have created the changeset if error is from:
 - parameter checks
 - building the changeset
-- overlay changset pre-apply notifier
+- overlay changeset pre-apply notifier
 
 If an error is returned by an overlay changeset pre-apply notifier
 then no further overlay changeset pre-apply notifier will be called.
 
 A non-zero return value will have created the changeset if error is from:
 - overlay changeset entry notifier
-- overlay changset post-apply notifier
+- overlay changeset post-apply notifier
 
 If an error is returned by an overlay changeset post-apply notifier
 then no further overlay changeset post-apply notifier will be called.
@@ -341,7 +341,7 @@ an overlay changeset will be refused.
 
 A non-zero return value will not revert the changeset if error is from:
 - parameter checks
-- overlay changset pre-remove notifier
+- overlay changeset pre-remove notifier
 - overlay changeset entry revert
 
 If an error is returned by an overlay changeset pre-remove notifier
@@ -352,7 +352,7 @@ error to occur is returned.
 
 A non-zero return value will revert the changeset if error is from:
 - overlay changeset entry notifier
-- overlay changset post-remove notifier
+- overlay changeset post-remove notifier
 
 If an error is returned by an overlay changeset post-remove notifier
 then no further overlay changeset post-remove notifier will be called.

@@ -67,7 +67,7 @@ wl1273_fm_set_tx_power
     Set the transmission power value.
 
     :param struct wl1273_device \*radio:
-        *undescribed*
+        A pointer to the device struct.
 
     :param u16 power:
         The new power value.

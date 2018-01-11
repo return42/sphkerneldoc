@@ -49,5 +49,77 @@ gpio_chip_base
 get_dvb_frontend
     Get DVB frontend.
 
+.. _`cxd2820r_config`:
+
+struct cxd2820r_config
+======================
+
+.. c:type:: struct cxd2820r_config
+
+    configuration for cxd2020r demod
+
+.. _`cxd2820r_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cxd2820r_config {
+        u8 i2c_address;
+        u8 ts_mode;
+        bool ts_clock_inv;
+        bool if_agc_polarity;
+        bool spec_inv;
+    }
+
+.. _`cxd2820r_config.members`:
+
+Members
+-------
+
+i2c_address
+    Demodulator I2C address. Driver determines DVB-C slave I2C
+    address automatically from master address.
+    Default: none, must set. Values: 0x6c, 0x6d.
+
+ts_mode
+    TS output mode. Default: none, must set. Values: FIXME?
+
+ts_clock_inv
+    TS clock inverted. Default: 0. Values: 0, 1.
+
+if_agc_polarity
+    Default: 0. Values: 0, 1
+
+spec_inv
+    Spectrum inversion. Default: 0. Values: 0, 1.
+
+.. _`cxd2820r_attach`:
+
+cxd2820r_attach
+===============
+
+.. c:function:: struct dvb_frontend *cxd2820r_attach(const struct cxd2820r_config *config, struct i2c_adapter *i2c, int *gpio_chip_base)
+
+    :param const struct cxd2820r_config \*config:
+        pointer to \ :c:type:`struct cxd2820r_config <cxd2820r_config>`\  with demod configuration.
+
+    :param struct i2c_adapter \*i2c:
+        i2c adapter to use.
+
+    :param int \*gpio_chip_base:
+        if zero, disables GPIO setting. Otherwise, if
+        CONFIG_GPIOLIB is set dynamically allocate
+        gpio base; if is not set, use its value to
+        setup the GPIO pins.
+
+.. _`cxd2820r_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
 .. This file was automatic generated / don't edit.
 

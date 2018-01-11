@@ -160,7 +160,7 @@ order
     Sample order when storing in memory
 
 layout
-    *undescribed*
+    Planes layout in memory
 
 bits_per_sample
     How many bits the bridge has to sample
@@ -252,16 +252,16 @@ pxa_init_dma_channel
         pxa camera device
 
     :param struct pxa_buffer \*buf:
-        *undescribed*
+        pxa camera buffer
 
     :param int channel:
         dma channel (0 => 'Y', 1 => 'U', 2 => 'V')
 
     :param struct scatterlist \*sg:
-        *undescribed*
+        dma scatter list
 
     :param int sglen:
-        *undescribed*
+        dma scatter list length
 
 .. _`pxa_init_dma_channel.description`:
 
@@ -326,10 +326,10 @@ pxa_camera_check_link_miss
         camera device
 
     :param dma_cookie_t last_submitted:
-        *undescribed*
+        an opaque DMA cookie for last submitted
 
     :param dma_cookie_t last_issued:
-        *undescribed*
+        an opaque DMA cookie for last issued
 
 .. _`pxa_camera_check_link_miss.description`:
 

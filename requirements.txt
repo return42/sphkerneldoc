@@ -9,11 +9,11 @@ Sphinx==1.5.6
 
 sphinx_rtd_theme
 
-git+http://github.com/return42/linuxdoc.git
-#-e file:../linuxdoc
+#git+http://github.com/return42/linuxdoc.git
+-e file:../linuxdoc
 
-fspath
-#-e file:../fspath
+#fspath
+-e file:../fspath
 
 # --------------
 # tests_requires

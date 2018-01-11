@@ -38,5 +38,25 @@ demod_address
 is_serial
     if true, TS is serial. Otherwise, TS is parallel
 
+.. _`mb86a20s_attach`:
+
+mb86a20s_attach
+===============
+
+.. c:function:: struct dvb_frontend *mb86a20s_attach(const struct mb86a20s_config *config, struct i2c_adapter *i2c)
+
+    :param const struct mb86a20s_config \*config:
+        pointer to \ :c:type:`struct mb86a20s_config <mb86a20s_config>`\  with demod configuration.
+
+    :param struct i2c_adapter \*i2c:
+        i2c adapter to use.
+
+.. _`mb86a20s_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
 .. This file was automatic generated / don't edit.
 

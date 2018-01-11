@@ -57,13 +57,13 @@ format
     media bus format at the sensor's source pad
 
 clock
-    *undescribed*
+    pointer to \ :c:type:`struct clk <clk>`\ .
 
 clock_frequency
-    *undescribed*
+    clock frequency
 
 power_count
-    *undescribed*
+    stores state if device is powered
 
 .. This file was automatic generated / don't edit.
 

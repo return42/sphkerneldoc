@@ -11,5 +11,4 @@ usb
     dvb-usb/index
     dvb-usb-v2/index
     em28xx/index
-    gspca/index
-    siano/index
+    pwc/index

@@ -8,20 +8,21 @@ dvb_frontend_swzigzag_autotune
 
 .. c:function:: int dvb_frontend_swzigzag_autotune(struct dvb_frontend *fe, int check_wrapped)
 
+    Performs automatic twiddling of frontend parameters.
+
     :param struct dvb_frontend \*fe:
-        *undescribed*
+        The frontend concerned.
 
     :param int check_wrapped:
-        *undescribed*
+        Checks if an iteration has completed.
+        DO NOT SET ON THE FIRST ATTEMPT.
 
-.. _`dvb_frontend_swzigzag_autotune.description`:
+.. _`dvb_frontend_swzigzag_autotune.return`:
 
-Description
------------
+Return
+------
 
-@param fe The frontend concerned.
-\ ``param``\  check_wrapped Checks if an iteration has completed. DO NOT SET ON THE FIRST ATTEMPT
-\ ``returns``\  Number of complete iterations that have been performed.
+Number of complete iterations that have been performed.
 
 .. _`dtv_get_frontend`:
 
@@ -37,10 +38,9 @@ dtv_get_frontend
 
     :param struct dtv_frontend_properties \*c:
         struct dtv_frontend_properties pointer (DVBv5 cache)
-        \ ``p_out``\        struct dvb_frontend_parameters pointer (DVBv3 FE struct)
 
     :param struct dvb_frontend_parameters \*p_out:
-        *undescribed*
+        struct dvb_frontend_parameters pointer (DVBv3 FE struct)
 
 .. _`dtv_get_frontend.description`:
 

@@ -65,17 +65,5 @@ swap
 types
     types of queue this format is applicable to
 
-.. _`fdp1_m2m_job_ready`:
-
-fdp1_m2m_job_ready
-==================
-
-.. c:function:: int fdp1_m2m_job_ready(void *priv)
-
-    check whether an instance is ready to be scheduled to run
-
-    :param void \*priv:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

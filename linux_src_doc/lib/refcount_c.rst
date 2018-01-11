@@ -273,12 +273,7 @@ Description
 No atomic_t counterpart, it decrements unless the value is 1, in which case
 it will return false.
 
-.. _`refcount_dec_not_one.was-often-done-like`:
-
-Was often done like
--------------------
-
-atomic_add_unless(&var, -1, 1)
+Was often done like: atomic_add_unless(&var, -1, 1)
 
 .. _`refcount_dec_not_one.return`:
 
@@ -320,7 +315,7 @@ Return
 ------
 
 true and hold mutex if able to decrement refcount to 0, false
-otherwise
+        otherwise
 
 .. _`refcount_dec_and_lock`:
 
@@ -355,7 +350,7 @@ Return
 ------
 
 true and hold spinlock if able to decrement refcount to 0, false
-otherwise
+        otherwise
 
 .. This file was automatic generated / don't edit.
 

@@ -30,6 +30,13 @@ Description
 This routine will initialize the rc_map and will allocate
 memory to hold at least the specified number of elements.
 
+.. _`ir_create_table.return`:
+
+Return
+------
+
+zero on success or a negative error code
+
 .. _`ir_free_table`:
 
 ir_free_table
@@ -73,6 +80,13 @@ Description
 This routine will shrink the rc_map if it has lots of
 unused entries and grow it if it is full.
 
+.. _`ir_resize_table.return`:
+
+Return
+------
+
+zero on success or a negative error code
+
 .. _`ir_update_mapping`:
 
 ir_update_mapping
@@ -92,7 +106,7 @@ ir_update_mapping
         index of the mapping that needs to be updated
 
     :param unsigned int new_keycode:
-        *undescribed*
+        the desired keycode
 
 .. _`ir_update_mapping.description`:
 
@@ -101,6 +115,13 @@ Description
 
 This routine is used to update scancode->keycode mapping at given
 position.
+
+.. _`ir_update_mapping.return`:
+
+Return
+------
+
+previous keycode assigned to the mapping
 
 .. _`ir_establish_scancode`:
 
@@ -133,6 +154,14 @@ This routine is used to locate given scancode in rc_map.
 If scancode is not yet present the routine will allocate a new slot
 for it.
 
+.. _`ir_establish_scancode.return`:
+
+Return
+------
+
+index of the mapping containing scancode in question
+or -1U in case of failure.
+
 .. _`ir_setkeycode`:
 
 ir_setkeycode
@@ -146,10 +175,10 @@ ir_setkeycode
         the struct input_dev device descriptor
 
     :param const struct input_keymap_entry \*ke:
-        *undescribed*
+        Input keymap entry
 
     :param unsigned int \*old_keycode:
-        *undescribed*
+        result
 
 .. _`ir_setkeycode.description`:
 
@@ -157,6 +186,13 @@ Description
 -----------
 
 This routine is used to handle evdev EVIOCSKEY ioctl.
+
+.. _`ir_setkeycode.return`:
+
+Return
+------
+
+-EINVAL if the keycode could not be inserted, otherwise zero.
 
 .. _`ir_setkeytable`:
 
@@ -179,6 +215,13 @@ Description
 -----------
 
 This routine is used to handle table initialization.
+
+.. _`ir_setkeytable.return`:
+
+Return
+------
+
+-ENOMEM if all keycodes could not be inserted, otherwise zero.
 
 .. _`ir_lookup_by_scancode`:
 
@@ -203,6 +246,13 @@ Description
 This routine performs binary search in RC keykeymap table for
 given scancode.
 
+.. _`ir_lookup_by_scancode.return`:
+
+Return
+------
+
+index in the table, -1U if not found
+
 .. _`ir_getkeycode`:
 
 ir_getkeycode
@@ -216,7 +266,7 @@ ir_getkeycode
         the struct input_dev device descriptor
 
     :param struct input_keymap_entry \*ke:
-        *undescribed*
+        Input keymap entry
 
 .. _`ir_getkeycode.description`:
 
@@ -224,6 +274,13 @@ Description
 -----------
 
 This routine is used to handle evdev EVIOCGKEY ioctl.
+
+.. _`ir_getkeycode.return`:
+
+Return
+------
+
+always returns zero.
 
 .. _`rc_g_keycode_from_table`:
 
@@ -248,6 +305,13 @@ Description
 This routine is used by drivers which need to convert a scancode to a
 keycode. Normally it should not be used since drivers should have no
 interest in keycodes.
+
+.. _`rc_g_keycode_from_table.return`:
+
+Return
+------
+
+the corresponding keycode, or KEY_RESERVED
 
 .. _`ir_do_keyup`:
 
@@ -302,7 +366,7 @@ ir_timer_keyup
     generates a keyup event after a timeout
 
     :param struct timer_list \*t:
-        *undescribed*
+        a pointer to the struct timer_list
 
 .. _`ir_timer_keyup.description`:
 
@@ -439,6 +503,13 @@ rc_validate_filter
 
     :param struct rc_scancode_filter \*filter:
         the scancode and mask
+
+.. _`rc_validate_filter.return`:
+
+Return
+------
+
+0 or -EINVAL if the filter is not valid
 
 .. _`rc_filter_attribute`:
 

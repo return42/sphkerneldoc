@@ -97,38 +97,6 @@ the _rcu list-traversal primitives, such as
 problems on Alpha CPUs.  Regardless of the type of CPU, the
 list-traversal primitive must be guarded by \ :c:func:`rcu_read_lock`\ .
 
-.. _`hlist_nulls_add_tail_rcu`:
-
-hlist_nulls_add_tail_rcu
-========================
-
-.. c:function:: void hlist_nulls_add_tail_rcu(struct hlist_nulls_node *n, struct hlist_nulls_head *h)
-
-    :param struct hlist_nulls_node \*n:
-        the element to add to the hash list.
-
-    :param struct hlist_nulls_head \*h:
-        the list to add to.
-
-.. _`hlist_nulls_add_tail_rcu.description`:
-
-Description
------------
-
-Adds the specified element to the end of the specified hlist_nulls,
-while permitting racing traversals.  NOTE: tail insertion requires
-list traversal.
-
-The caller must take whatever precautions are necessary
-(such as holding appropriate locks) to avoid racing
-with another list-mutation primitive, such as \ :c:func:`hlist_nulls_add_head_rcu`\ 
-or \ :c:func:`hlist_nulls_del_rcu`\ , running on this same list.
-However, it is perfectly legal to run concurrently with
-the _rcu list-traversal primitives, such as
-\ :c:func:`hlist_nulls_for_each_entry_rcu`\ , used to prevent memory-consistency
-problems on Alpha CPUs.  Regardless of the type of CPU, the
-list-traversal primitive must be guarded by \ :c:func:`rcu_read_lock`\ .
-
 .. _`hlist_nulls_for_each_entry_rcu`:
 
 hlist_nulls_for_each_entry_rcu

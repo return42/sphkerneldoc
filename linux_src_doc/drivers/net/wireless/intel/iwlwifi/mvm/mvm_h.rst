@@ -683,7 +683,8 @@ Definition
         IWL_MVM_STATUS_IN_D0I3,
         IWL_MVM_STATUS_ROC_AUX_RUNNING,
         IWL_MVM_STATUS_D3_RECONFIG,
-        IWL_MVM_STATUS_FIRMWARE_RUNNING
+        IWL_MVM_STATUS_FIRMWARE_RUNNING,
+        IWL_MVM_STATUS_NEED_FLUSH_P2P
     };
 
 .. _`iwl_mvm_status.constants`:
@@ -717,6 +718,9 @@ IWL_MVM_STATUS_D3_RECONFIG
 
 IWL_MVM_STATUS_FIRMWARE_RUNNING
     firmware is running
+
+IWL_MVM_STATUS_NEED_FLUSH_P2P
+    need to flush P2P bcast STA
 
 .. This file was automatic generated / don't edit.
 

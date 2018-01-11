@@ -54,7 +54,7 @@ Returns 0 on success, error on failure.
 amdgpu_queue_mgr_map
 ====================
 
-.. c:function:: int amdgpu_queue_mgr_map(struct amdgpu_device *adev, struct amdgpu_queue_mgr *mgr, int hw_ip, int instance, int ring, struct amdgpu_ring **out_ring)
+.. c:function:: int amdgpu_queue_mgr_map(struct amdgpu_device *adev, struct amdgpu_queue_mgr *mgr, u32 hw_ip, u32 instance, u32 ring, struct amdgpu_ring **out_ring)
 
     Map a userspace ring id to an amdgpu_ring
 
@@ -64,13 +64,13 @@ amdgpu_queue_mgr_map
     :param struct amdgpu_queue_mgr \*mgr:
         amdgpu_queue_mgr structure holding queue information
 
-    :param int hw_ip:
+    :param u32 hw_ip:
         HW IP enum
 
-    :param int instance:
+    :param u32 instance:
         HW instance
 
-    :param int ring:
+    :param u32 ring:
         user ring id
 
     :param struct amdgpu_ring \*\*out_ring:

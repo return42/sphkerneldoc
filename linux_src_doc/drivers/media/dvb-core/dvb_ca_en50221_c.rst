@@ -19,22 +19,13 @@ findstr
 
     :param int nlen:
         Number of bytes in needle.
-        \ ``return``\  Pointer into haystack needle was found at, or NULL if not found.
 
-.. _`dvb_ca_en50221_check_camstatus`:
+.. _`findstr.return`:
 
-dvb_ca_en50221_check_camstatus
-==============================
+Return
+------
 
-.. c:function:: int dvb_ca_en50221_check_camstatus(struct dvb_ca_private *ca, int slot)
-
-    Check CAM status.
-
-    :param struct dvb_ca_private \*ca:
-        *undescribed*
-
-    :param int slot:
-        *undescribed*
+Pointer into haystack needle was found at, or NULL if not found.
 
 .. _`dvb_ca_en50221_wait_if_status`:
 
@@ -55,14 +46,14 @@ dvb_ca_en50221_wait_if_status
         Flags to wait for.
 
     :param int timeout_hz:
-        *undescribed*
+        Timeout in milliseconds.
 
-.. _`dvb_ca_en50221_wait_if_status.description`:
+.. _`dvb_ca_en50221_wait_if_status.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, nonzero on error.
+0 on success, nonzero on error.
 
 .. _`dvb_ca_en50221_link_init`:
 
@@ -79,12 +70,12 @@ dvb_ca_en50221_link_init
     :param int slot:
         Slot id.
 
-.. _`dvb_ca_en50221_link_init.description`:
+.. _`dvb_ca_en50221_link_init.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, nonzero on failure.
+0 on success, nonzero on failure.
 
 .. _`dvb_ca_en50221_read_tuple`:
 
@@ -105,20 +96,20 @@ dvb_ca_en50221_read_tuple
         Address to read from. Updated.
 
     :param int \*tuple_type:
-        *undescribed*
+        Tuple id byte. Updated.
 
     :param int \*tuple_length:
-        *undescribed*
+        Tuple length. Updated.
 
     :param u8 \*tuple:
         Dest buffer for tuple (must be 256 bytes). Updated.
 
-.. _`dvb_ca_en50221_read_tuple.description`:
+.. _`dvb_ca_en50221_read_tuple.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, nonzero on error.
+0 on success, nonzero on error.
 
 .. _`dvb_ca_en50221_parse_attributes`:
 
@@ -135,12 +126,12 @@ dvb_ca_en50221_parse_attributes
     :param int slot:
         Slot id.
 
-.. _`dvb_ca_en50221_parse_attributes.description`:
+.. _`dvb_ca_en50221_parse_attributes.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, <0 on failure.
+0 on success, <0 on failure.
 
 .. _`dvb_ca_en50221_set_configoption`:
 
@@ -174,17 +165,18 @@ dvb_ca_en50221_read_data
 
     :param u8 \*ebuf:
         If non-NULL, the data will be written to this buffer. If NULL,
-        the data will be added into the buffering system as a normal fragment.
+        the data will be added into the buffering system as a normal
+        fragment.
 
     :param int ecount:
         Size of ebuf. Ignored if ebuf is NULL.
 
-.. _`dvb_ca_en50221_read_data.description`:
+.. _`dvb_ca_en50221_read_data.return`:
 
-Description
------------
+Return
+------
 
-@return Number of bytes read, or < 0 on error
+Number of bytes read, or < 0 on error
 
 .. _`dvb_ca_en50221_write_data`:
 
@@ -202,17 +194,18 @@ dvb_ca_en50221_write_data
         Slot to write to.
 
     :param u8 \*buf:
-        *undescribed*
+        The data in this buffer is treated as a complete link-level packet to
+        be written.
 
     :param int bytes_write:
-        *undescribed*
+        Size of ebuf.
 
-.. _`dvb_ca_en50221_write_data.description`:
+.. _`dvb_ca_en50221_write_data.return`:
 
-Description
------------
+Return
+------
 
-@return Number of bytes written, or < 0 on error.
+Number of bytes written, or < 0 on error.
 
 .. _`dvb_ca_en50221_slot_shutdown`:
 
@@ -239,7 +232,7 @@ dvb_ca_en50221_camchange_irq
     A CAMCHANGE IRQ has occurred.
 
     :param struct dvb_ca_en50221 \*pubca:
-        *undescribed*
+        CA instance.
 
     :param int slot:
         Slot concerned.
@@ -257,7 +250,7 @@ dvb_ca_en50221_camready_irq
     A CAMREADY IRQ has occurred.
 
     :param struct dvb_ca_en50221 \*pubca:
-        *undescribed*
+        CA instance.
 
     :param int slot:
         Slot concerned.
@@ -272,7 +265,7 @@ dvb_ca_en50221_frda_irq
     An FR or DA IRQ has occurred.
 
     :param struct dvb_ca_en50221 \*pubca:
-        *undescribed*
+        CA instance.
 
     :param int slot:
         Slot concerned.
@@ -309,6 +302,8 @@ dvb_ca_en50221_poll_cam_gone
 
     :param int slot:
         Slot to process.
+        return:: 0 .. no change
+        1 .. CAM state changed
 
 .. _`dvb_ca_en50221_thread_state_machine`:
 
@@ -322,18 +317,6 @@ dvb_ca_en50221_thread_state_machine
 
     :param int slot:
         Slot to process.
-
-.. _`dvb_ca_en50221_thread`:
-
-dvb_ca_en50221_thread
-=====================
-
-.. c:function:: int dvb_ca_en50221_thread(void *data)
-
-    transfers.
-
-    :param void \*data:
-        *undescribed*
 
 .. _`dvb_ca_en50221_io_do_ioctl`:
 
@@ -349,7 +332,7 @@ dvb_ca_en50221_io_do_ioctl
         IOCTL command.
 
     :param void \*parg:
-        *undescribed*
+        Associated argument.
 
 .. _`dvb_ca_en50221_io_do_ioctl.note`:
 
@@ -358,12 +341,12 @@ NOTE
 
 CA_SEND_MSG/CA_GET_MSG ioctls have userspace buffers passed to them.
 
-.. _`dvb_ca_en50221_io_do_ioctl.description`:
+.. _`dvb_ca_en50221_io_do_ioctl.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, <0 on error.
+0 on success, <0 on error.
 
 .. _`dvb_ca_en50221_io_ioctl`:
 
@@ -381,12 +364,12 @@ dvb_ca_en50221_io_ioctl
     :param unsigned long arg:
         Associated argument.
 
-.. _`dvb_ca_en50221_io_ioctl.description`:
+.. _`dvb_ca_en50221_io_ioctl.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, <0 on error.
+0 on success, <0 on error.
 
 .. _`dvb_ca_en50221_io_write`:
 
@@ -407,28 +390,12 @@ dvb_ca_en50221_io_write
     :param loff_t \*ppos:
         Position in file (ignored).
 
-.. _`dvb_ca_en50221_io_write.description`:
+.. _`dvb_ca_en50221_io_write.return`:
 
-Description
------------
+Return
+------
 
-@return Number of bytes read, or <0 on error.
-
-.. _`dvb_ca_en50221_io_read_condition`:
-
-dvb_ca_en50221_io_read_condition
-================================
-
-.. c:function:: int dvb_ca_en50221_io_read_condition(struct dvb_ca_private *ca, int *result, int *_slot)
-
-    :param struct dvb_ca_private \*ca:
-        *undescribed*
-
-    :param int \*result:
-        *undescribed*
-
-    :param int \*_slot:
-        *undescribed*
+Number of bytes read, or <0 on error.
 
 .. _`dvb_ca_en50221_io_read`:
 
@@ -449,12 +416,12 @@ dvb_ca_en50221_io_read
     :param loff_t \*ppos:
         Position in file (ignored).
 
-.. _`dvb_ca_en50221_io_read.description`:
+.. _`dvb_ca_en50221_io_read.return`:
 
-Description
------------
+Return
+------
 
-@return Number of bytes read, or <0 on error.
+Number of bytes read, or <0 on error.
 
 .. _`dvb_ca_en50221_io_open`:
 
@@ -469,12 +436,12 @@ dvb_ca_en50221_io_open
     :param struct file \*file:
         File concerned.
 
-.. _`dvb_ca_en50221_io_open.description`:
+.. _`dvb_ca_en50221_io_open.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, <0 on failure.
+0 on success, <0 on failure.
 
 .. _`dvb_ca_en50221_io_release`:
 
@@ -489,12 +456,12 @@ dvb_ca_en50221_io_release
     :param struct file \*file:
         File concerned.
 
-.. _`dvb_ca_en50221_io_release.description`:
+.. _`dvb_ca_en50221_io_release.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, <0 on failure.
+0 on success, <0 on failure.
 
 .. _`dvb_ca_en50221_io_poll`:
 
@@ -509,12 +476,12 @@ dvb_ca_en50221_io_poll
     :param poll_table \*wait:
         poll wait table.
 
-.. _`dvb_ca_en50221_io_poll.description`:
+.. _`dvb_ca_en50221_io_poll.return`:
 
-Description
------------
+Return
+------
 
-@return Standard poll mask.
+Standard poll mask.
 
 .. _`dvb_ca_en50221_init`:
 
@@ -527,7 +494,7 @@ dvb_ca_en50221_init
         DVB adapter to attach the new CA device to.
 
     :param struct dvb_ca_en50221 \*pubca:
-        *undescribed*
+        The dvb_ca instance.
 
     :param int flags:
         Flags describing the CA device (DVB_CA_FLAG\_\*).
@@ -535,12 +502,12 @@ dvb_ca_en50221_init
     :param int slot_count:
         Number of slots supported.
 
-.. _`dvb_ca_en50221_init.description`:
+.. _`dvb_ca_en50221_init.return`:
 
-Description
------------
+Return
+------
 
-@return 0 on success, nonzero on failure
+0 on success, nonzero on failure
 
 .. _`dvb_ca_en50221_release`:
 
@@ -550,7 +517,7 @@ dvb_ca_en50221_release
 .. c:function:: void dvb_ca_en50221_release(struct dvb_ca_en50221 *pubca)
 
     :param struct dvb_ca_en50221 \*pubca:
-        *undescribed*
+        The associated dvb_ca instance.
 
 .. This file was automatic generated / don't edit.
 

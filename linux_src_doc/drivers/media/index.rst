@@ -7,7 +7,6 @@ media
 .. toctree::
     :maxdepth: 1
 
-    common/index
     dvb-core/index
     dvb-frontends/index
     i2c/index

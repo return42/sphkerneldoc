@@ -776,6 +776,7 @@ Definition
         uint8_t num_h_tile, num_v_tile;
         uint8_t tile_h_loc, tile_v_loc;
         uint16_t tile_h_size, tile_v_size;
+        struct work_struct free_work;
     }
 
 .. _`drm_connector.members`:
@@ -981,6 +982,11 @@ tile_h_size
 
 tile_v_size
     vertical size of this tile.
+
+free_work
+
+    Work used only by \ :c:type:`struct drm_connector_iter <drm_connector_iter>`\  to be able to clean up a
+    connector from any context.
 
 .. _`drm_connector.description`:
 

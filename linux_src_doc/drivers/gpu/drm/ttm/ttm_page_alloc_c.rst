@@ -26,6 +26,7 @@ Definition
         char *name;
         unsigned long nfrees;
         unsigned long nrefills;
+        unsigned int order;
     }
 
 .. _`ttm_page_pool.members`:
@@ -57,6 +58,9 @@ nfrees
     *undescribed*
 
 nrefills
+    *undescribed*
+
+order
     *undescribed*
 
 .. _`ttm_pool_manager`:
@@ -145,12 +149,15 @@ Manager is read only object for pool code so it doesn't need locking.
 ttm_pages_put
 =============
 
-.. c:function:: void ttm_pages_put(struct page  *pages, unsigned npages)
+.. c:function:: void ttm_pages_put(struct page  *pages, unsigned npages, unsigned int order)
 
     :param struct page  \*pages:
         *undescribed*
 
     :param unsigned npages:
+        *undescribed*
+
+    :param unsigned int order:
         *undescribed*
 
 .. _`ttm_page_pool_free`:

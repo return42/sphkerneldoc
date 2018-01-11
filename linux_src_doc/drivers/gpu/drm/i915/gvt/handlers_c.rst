@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/handlers.c
 
+.. _`intel_gvt_render_mmio_to_ring_id`:
+
+intel_gvt_render_mmio_to_ring_id
+================================
+
+.. c:function:: int intel_gvt_render_mmio_to_ring_id(struct intel_gvt *gvt, unsigned int offset)
+
+    convert a mmio offset into ring id
+
+    :param struct intel_gvt \*gvt:
+        a GVT device
+
+    :param unsigned int offset:
+        register offset
+
+.. _`intel_gvt_render_mmio_to_ring_id.return`:
+
+Return
+------
+
+Ring ID on success, negative error code if failed.
+
 .. _`intel_gvt_clean_mmio_info`:
 
 intel_gvt_clean_mmio_info

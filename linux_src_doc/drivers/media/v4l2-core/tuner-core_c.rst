@@ -21,6 +21,7 @@ set_type
 
     :param void \*new_config:
         an optional parameter used by a few tuners to adjust
+        internal parameters, like LNA mode
 
     :param int (\*tuner_callback)(void \*dev, int component, int cmd, int arg):
         an optional function to be called when switching
@@ -169,7 +170,7 @@ check_mode
         a pointer to the module's internal struct_tuner
 
     :param enum v4l2_tuner_type mode:
-        *undescribed*
+        mode of the tuner, as defined by \ :c:type:`enum v4l2_tuner_type <v4l2_tuner_type>`\ .
 
 .. _`check_mode.description`:
 

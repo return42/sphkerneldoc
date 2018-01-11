@@ -86,7 +86,7 @@ sd
     Subdevice Slave handle
 
 hdl
-    *undescribed*
+    embedded \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
 
 tvp514x_regs
     copy of hw's regs with preset values.
@@ -125,13 +125,13 @@ output
     Output routing at chip level
 
 pad
-    *undescribed*
+    subdev media pad associated with the decoder
 
 format
-    *undescribed*
+    media bus frame format
 
 int_seq
-    *undescribed*
+    driver's register init sequence
 
 .. _`tvp514x_read_reg`:
 
@@ -520,7 +520,7 @@ tvp514x_set_pad_format
         pad configuration
 
     :param struct v4l2_subdev_format \*fmt:
-        *undescribed*
+        pointer to v4l2_subdev_format structure
 
 .. _`tvp514x_set_pad_format.description`:
 

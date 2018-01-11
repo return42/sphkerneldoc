@@ -58,6 +58,32 @@ Description
 
 Free all pages of \ ``ttm``\ 
 
+.. _`ttm_populate_and_map_pages`:
+
+ttm_populate_and_map_pages
+==========================
+
+.. c:function:: int ttm_populate_and_map_pages(struct device *dev, struct ttm_dma_tt *tt)
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param struct ttm_dma_tt \*tt:
+        *undescribed*
+
+.. _`ttm_unmap_and_unpopulate_pages`:
+
+ttm_unmap_and_unpopulate_pages
+==============================
+
+.. c:function:: void ttm_unmap_and_unpopulate_pages(struct device *dev, struct ttm_dma_tt *tt)
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param struct ttm_dma_tt \*tt:
+        *undescribed*
+
 .. _`ttm_page_alloc_debugfs`:
 
 ttm_page_alloc_debugfs
@@ -105,32 +131,6 @@ ttm_dma_page_alloc_debugfs
         *undescribed*
 
     :param void \*data:
-        *undescribed*
-
-.. _`ttm_populate_and_map_pages`:
-
-ttm_populate_and_map_pages
-==========================
-
-.. c:function:: int ttm_populate_and_map_pages(struct device *dev, struct ttm_dma_tt *tt)
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param struct ttm_dma_tt \*tt:
-        *undescribed*
-
-.. _`ttm_unmap_and_unpopulate_pages`:
-
-ttm_unmap_and_unpopulate_pages
-==============================
-
-.. c:function:: void ttm_unmap_and_unpopulate_pages(struct device *dev, struct ttm_dma_tt *tt)
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param struct ttm_dma_tt \*tt:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

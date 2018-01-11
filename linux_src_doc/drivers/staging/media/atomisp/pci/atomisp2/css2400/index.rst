@@ -15,5 +15,4 @@ css2400
     ia_css_prbs_h
     ia_css_stream_h
     ia_css_tpg_h
-    sh_css_c
     sh_css_internal_h

@@ -2385,7 +2385,7 @@ remounting_rw
     %1 while re-mounting from R/O mode to R/W mode
 
 probing
-    %1 while attempting to mount if MS_SILENT mount flag is set
+    %1 while attempting to mount if SB_SILENT mount flag is set
 
 replay_list
     temporary list used during journal replay

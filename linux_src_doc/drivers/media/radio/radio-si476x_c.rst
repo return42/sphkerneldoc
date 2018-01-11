@@ -100,13 +100,13 @@ Members
 -------
 
 v4l2dev
-    *undescribed*
+    Pointer to V4L2 device created by V4L2 subsystem
 
 videodev
     Pointer to video device created by V4L2 subsystem
 
 ctrl_handler
-    *undescribed*
+    V4L2 controls handler
 
 core
     Pointer to underlying core device
@@ -115,10 +115,18 @@ ops
     Vtable of functions. See struct si476x_radio_ops for details
 
 debugfs
-    *undescribed*
+    pointer to \ :c:type:`struct strucd <strucd>`\  dentry for debugfs
 
 audmode
-    *undescribed*
+    audio mode, as defined for the rxsubchans field
+    at videodev2.h
+
+.. _`si476x_radio.description`:
+
+Description
+-----------
+
+core structure is the radio device is being used
 
 .. This file was automatic generated / don't edit.
 

@@ -441,7 +441,7 @@ i40iw_schedule_cm_timer
         buffer to send
 
     :param enum i40iw_timer_type type:
-        if it es send ot close
+        if it is send or close
 
     :param int send_retrans:
         if rexmits to be done

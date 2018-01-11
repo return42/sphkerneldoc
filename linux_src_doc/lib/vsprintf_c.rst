@@ -138,7 +138,7 @@ extensions and a few limitations
  - ``%n`` is unsupported
  - ``%p*`` is handled by \ :c:func:`pointer`\ 
 
-See \ :c:func:`pointer`\  or Documentation/printk-formats.txt for more
+See \ :c:func:`pointer`\  or Documentation/core-api/printk-formats.rst for more
 extensive description.
 
 **Please update the documentation in both places when making changes**

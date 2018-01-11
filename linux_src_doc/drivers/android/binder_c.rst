@@ -1327,6 +1327,24 @@ Return
 
 the value of t->from
 
+.. _`binder_cleanup_transaction`:
+
+binder_cleanup_transaction
+==========================
+
+.. c:function:: void binder_cleanup_transaction(struct binder_transaction *t, const char *reason, uint32_t error_code)
+
+    cleans up undelivered transaction
+
+    :param struct binder_transaction \*t:
+        transaction that needs to be cleaned up
+
+    :param const char \*reason:
+        reason the transaction wasn't delivered
+
+    :param uint32_t error_code:
+        error to return to caller (if synchronous call)
+
 .. _`binder_validate_object`:
 
 binder_validate_object

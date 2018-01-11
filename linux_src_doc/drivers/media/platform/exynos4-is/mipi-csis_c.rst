@@ -85,7 +85,7 @@ flags
     the state variable for power and streaming control
 
 clk_frequency
-    *undescribed*
+    device bus clock frequency
 
 hs_settle
     HS-RX settle time

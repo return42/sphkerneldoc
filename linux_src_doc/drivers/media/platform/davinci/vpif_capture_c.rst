@@ -76,7 +76,7 @@ vpif_start_streaming
     Starts the DMA engine for streaming
 
     :param struct vb2_queue \*vq:
-        *undescribed*
+        ptr to vb2_buffer
 
     :param unsigned int count:
         number of buffers
@@ -213,10 +213,10 @@ vpif_get_default_field
 
 .. c:function:: enum v4l2_field vpif_get_default_field(struct vpif_interface *iface)
 
-    Get default field type based on interface \ ``vpif_params``\  - ptr to vpif params
+    Get default field type based on interface
 
     :param struct vpif_interface \*iface:
-        *undescribed*
+        ptr to vpif interface
 
 .. _`vpif_config_addr`:
 
@@ -225,13 +225,13 @@ vpif_config_addr
 
 .. c:function:: void vpif_config_addr(struct channel_obj *ch, int muxmode)
 
-    function to configure buffer address in vpif \ ``ch``\  - channel ptr \ ``muxmode``\  - channel mux mode
+    function to configure buffer address in vpif
 
     :param struct channel_obj \*ch:
-        *undescribed*
+        channel ptr
 
     :param int muxmode:
-        *undescribed*
+        channel mux mode
 
 .. _`vpif_input_to_subdev`:
 
@@ -240,16 +240,16 @@ vpif_input_to_subdev
 
 .. c:function:: int vpif_input_to_subdev(struct vpif_capture_config *vpif_cfg, struct vpif_capture_chan_config *chan_cfg, int input_index)
 
-    Maps input to sub device \ ``vpif_cfg``\  - global config ptr \ ``chan_cfg``\  - channel config ptr \ ``input_index``\  - Given input index from application
+    Maps input to sub device
 
     :param struct vpif_capture_config \*vpif_cfg:
-        *undescribed*
+        global config ptr
 
     :param struct vpif_capture_chan_config \*chan_cfg:
-        *undescribed*
+        channel config ptr
 
     :param int input_index:
-        *undescribed*
+        Given input index from application
 
 .. _`vpif_input_to_subdev.description`:
 
@@ -267,16 +267,16 @@ vpif_set_input
 
 .. c:function:: int vpif_set_input(struct vpif_capture_config *vpif_cfg, struct channel_obj *ch, int index)
 
-    Select an input \ ``vpif_cfg``\  - global config ptr \ ``ch``\  - channel \ ``_index``\  - Given input index from application
+    Select an input
 
     :param struct vpif_capture_config \*vpif_cfg:
-        *undescribed*
+        global config ptr
 
     :param struct channel_obj \*ch:
-        *undescribed*
+        channel
 
     :param int index:
-        *undescribed*
+        Given input index from application
 
 .. _`vpif_set_input.description`:
 
@@ -326,7 +326,7 @@ vpif_g_std
         file handle
 
     :param v4l2_std_id \*std:
-        *undescribed*
+        ptr to std id
 
 .. _`vpif_s_std`:
 
@@ -416,7 +416,7 @@ vpif_enum_fmt_vid_cap
         file handle
 
     :param struct v4l2_fmtdesc \*fmt:
-        *undescribed*
+        ptr to V4L2 format descriptor
 
 .. _`vpif_try_fmt_vid_cap`:
 
@@ -630,7 +630,7 @@ vpif_suspend
     vpif device suspend
 
     :param struct device \*dev:
-        *undescribed*
+        pointer to \ :c:type:`struct device <device>`\ 
 
 .. This file was automatic generated / don't edit.
 

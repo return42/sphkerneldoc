@@ -11,7 +11,7 @@ m5mols_do_scenemode
     Change current scenemode
 
     :param struct m5mols_info \*info:
-        *undescribed*
+        M-5MOLS driver data structure
 
     :param u8 mode:
         Desired mode of the scenemode

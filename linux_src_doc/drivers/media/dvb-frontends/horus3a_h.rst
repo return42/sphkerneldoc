@@ -42,5 +42,28 @@ set_tuner_callback
     Callback function that notifies the parent driver
     which tuner is active now
 
+.. _`horus3a_attach`:
+
+horus3a_attach
+==============
+
+.. c:function:: struct dvb_frontend *horus3a_attach(struct dvb_frontend *fe, const struct horus3a_config *config, struct i2c_adapter *i2c)
+
+    :param struct dvb_frontend \*fe:
+        frontend to be attached
+
+    :param const struct horus3a_config \*config:
+        pointer to \ :c:type:`struct helene_config <helene_config>`\  with tuner configuration.
+
+    :param struct i2c_adapter \*i2c:
+        i2c adapter to use.
+
+.. _`horus3a_attach.return`:
+
+Return
+------
+
+FE pointer on success, NULL on failure.
+
 .. This file was automatic generated / don't edit.
 

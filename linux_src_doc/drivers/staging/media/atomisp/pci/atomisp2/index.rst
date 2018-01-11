@@ -9,4 +9,3 @@ atomisp2
 
     css2400/index
     include/index
-    atomisp_cmd_c

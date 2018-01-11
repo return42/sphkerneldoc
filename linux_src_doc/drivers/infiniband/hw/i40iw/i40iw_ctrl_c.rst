@@ -301,6 +301,24 @@ i40iw_sc_cqp_post_sq
     :param struct i40iw_sc_cqp \*cqp:
         struct for cqp hw
 
+.. _`i40iw_sc_cqp_get_next_send_wqe_idx`:
+
+i40iw_sc_cqp_get_next_send_wqe_idx
+==================================
+
+.. c:function:: u64 *i40iw_sc_cqp_get_next_send_wqe_idx(struct i40iw_sc_cqp *cqp, u64 scratch, u32 *wqe_idx)
+
+    get next WQE on CQP SQ and pass back the index
+
+    :param struct i40iw_sc_cqp \*cqp:
+        pointer to CQP structure
+
+    :param u64 scratch:
+        private data for CQP WQE
+
+    :param u32 \*wqe_idx:
+        WQE index for next WQE on CQP SQ
+
 .. _`i40iw_sc_cqp_get_next_send_wqe`:
 
 i40iw_sc_cqp_get_next_send_wqe
@@ -314,7 +332,7 @@ i40iw_sc_cqp_get_next_send_wqe
         struct for cqp hw
 
     :param u64 scratch:
-        *undescribed*
+        private data for CQP WQE
 
 .. _`i40iw_sc_cqp_destroy`:
 

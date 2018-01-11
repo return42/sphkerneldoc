@@ -850,7 +850,7 @@ Return
 drm_hdmi_avi_infoframe_quant_range
 ==================================
 
-.. c:function:: void drm_hdmi_avi_infoframe_quant_range(struct hdmi_avi_infoframe *frame, const struct drm_display_mode *mode, enum hdmi_quantization_range rgb_quant_range, bool rgb_quant_range_selectable)
+.. c:function:: void drm_hdmi_avi_infoframe_quant_range(struct hdmi_avi_infoframe *frame, const struct drm_display_mode *mode, enum hdmi_quantization_range rgb_quant_range, bool rgb_quant_range_selectable, bool is_hdmi2_sink)
 
     fill the HDMI AVI infoframe quantization range information
 
@@ -865,6 +865,9 @@ drm_hdmi_avi_infoframe_quant_range
 
     :param bool rgb_quant_range_selectable:
         Sink support selectable RGB quantization range (QS)
+
+    :param bool is_hdmi2_sink:
+        *undescribed*
 
 .. _`drm_hdmi_vendor_infoframe_from_display_mode`:
 

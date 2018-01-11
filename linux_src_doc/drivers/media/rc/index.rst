@@ -8,7 +8,6 @@ rc
     :maxdepth: 1
 
     img-ir/index
-    imon_c
     ir-jvc-decoder_c
     ir-lirc-codec_c
     ir-mce_kbd-decoder_c
@@ -22,5 +21,3 @@ rc
     rc-core-priv_h
     rc-ir-raw_c
     rc-main_c
-    st_rc_c
-    streamzap_c

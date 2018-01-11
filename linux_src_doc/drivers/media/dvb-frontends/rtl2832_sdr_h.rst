@@ -45,7 +45,7 @@ tuner
     Used tuner model.
 
 regmap
-    *undescribed*
+    pointer to \ :c:type:`struct regmap <regmap>`\ .
 
 dvb_frontend
     rtl2832 DVB frontend.

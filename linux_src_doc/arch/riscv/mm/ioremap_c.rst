@@ -6,11 +6,11 @@
 iounmap
 =======
 
-.. c:function:: void iounmap(void __iomem *addr)
+.. c:function:: void iounmap(volatile void __iomem *addr)
 
     Free a IO remapping
 
-    :param void __iomem \*addr:
+    :param volatile void __iomem \*addr:
         virtual address from ioremap\_\*
 
 .. _`iounmap.description`:

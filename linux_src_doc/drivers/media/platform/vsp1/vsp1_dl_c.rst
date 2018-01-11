@@ -100,7 +100,7 @@ fragments
     list of extra display list bodies
 
 has_chain
-    *undescribed*
+    if true, indicates that there's a partition chain
 
 chain
     entry in the display list partition chain

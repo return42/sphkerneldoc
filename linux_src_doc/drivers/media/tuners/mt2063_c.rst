@@ -64,7 +64,7 @@ MT2063_fLO_FractionalTerm
     Calculates the portion contributed by FracN / denom. This function preserves maximum precision without risk of overflow.  It accurately calculates f_ref \* num / denom to within 1 HZ with fixed math.
 
     :param u32 f_ref:
-        *undescribed*
+        SRO frequency.
 
     :param u32 num:
         Fractional portion of the multiplier

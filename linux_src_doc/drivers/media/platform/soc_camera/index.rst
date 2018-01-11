@@ -8,3 +8,4 @@ soc_camera
     :maxdepth: 1
 
     soc_camera_c
+    soc_scale_crop_c

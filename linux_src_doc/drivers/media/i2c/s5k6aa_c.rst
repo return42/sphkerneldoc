@@ -11,7 +11,7 @@ s5k6aa_configure_pixel_clocks
     apply ISP main clock/PLL configuration
 
     :param struct s5k6aa \*s5k6aa:
-        *undescribed*
+        pointer to \ :c:type:`struct s5k6aa <s5k6aa>`\  describing the device
 
 .. _`s5k6aa_configure_pixel_clocks.description`:
 
@@ -37,7 +37,7 @@ s5k6aa_configure_video_bus
     configure the video output interface
 
     :param struct s5k6aa \*s5k6aa:
-        *undescribed*
+        pointer to \ :c:type:`struct s5k6aa <s5k6aa>`\  describing the device
 
     :param enum v4l2_mbus_type bus_type:
         video bus type: parallel or MIPI-CSI
@@ -62,10 +62,10 @@ s5k6aa_set_prev_config
     write user preview register set
 
     :param struct s5k6aa \*s5k6aa:
-        *undescribed*
+        pointer to \ :c:type:`struct s5k6aa <s5k6aa>`\  describing the device
 
     :param struct s5k6aa_preset \*preset:
-        *undescribed*
+        s5kaa preset to be applied
 
 .. _`s5k6aa_set_prev_config.description`:
 
@@ -85,7 +85,7 @@ s5k6aa_initialize_isp
     basic ISP MCU initialization
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        pointer to V4L2 sub-device descriptor
 
 .. _`s5k6aa_initialize_isp.description`:
 

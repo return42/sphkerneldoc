@@ -32,7 +32,7 @@ Members
 -------
 
 dev
-    *undescribed*
+    pointer to \ :c:type:`struct device <device>`\ 
 
 pdata
     platform data

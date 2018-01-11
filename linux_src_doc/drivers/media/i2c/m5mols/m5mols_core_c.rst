@@ -11,10 +11,10 @@ m5mols_swap_byte
     an byte array to integer conversion function
 
     :param u8 \*data:
-        *undescribed*
+        byte array
 
     :param u8 length:
-        *undescribed*
+        size in bytes of I2C packet defined in the M-5MOLS datasheet
 
 .. _`m5mols_swap_byte.description`:
 
@@ -35,7 +35,7 @@ m5mols_read
     I2C read function
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param u32 size:
         desired size of I2C packet
@@ -63,7 +63,7 @@ m5mols_write
     I2C command write function
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param u32 reg:
         combination of size, category and command for the I2C packet
@@ -88,7 +88,7 @@ m5mols_busy_wait
     Busy waiting with I2C register polling
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param u32 reg:
         the \ :c:func:`I2C_REG`\  address of an 8-bit status register to check
@@ -127,10 +127,10 @@ m5mols_enable_interrupt
     Clear interrupt pending bits and unmask interrupts
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param u8 reg:
-        *undescribed*
+        combination of size, category and command for the I2C packet
 
 .. _`m5mols_enable_interrupt.description`:
 
@@ -150,10 +150,10 @@ m5mols_reg_mode
     Write the mode and check busy status
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param u8 mode:
-        *undescribed*
+        the required operation mode
 
 .. _`m5mols_reg_mode.description`:
 
@@ -173,7 +173,7 @@ m5mols_set_mode
     set the M-5MOLS controller mode
 
     :param struct m5mols_info \*info:
-        *undescribed*
+        M-5MOLS driver data structure
 
     :param u8 mode:
         the required operation mode
@@ -197,7 +197,7 @@ m5mols_get_version
     retrieve full revisions information of M-5MOLS
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
 .. _`m5mols_get_version.description`:
 
@@ -229,7 +229,7 @@ __find_resolution
     Lookup preset and type of M-5MOLS's resolution
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param struct v4l2_mbus_framefmt \*mf:
         pixel format to find/negotiate the resolution preset for
@@ -258,7 +258,7 @@ m5mols_restore_controls
     Apply current control values to the registers
 
     :param struct m5mols_info \*info:
-        *undescribed*
+        M-5MOLS driver data structure
 
 .. _`m5mols_restore_controls.description`:
 
@@ -279,7 +279,7 @@ m5mols_start_monitor
     Start the monitor mode
 
     :param struct m5mols_info \*info:
-        *undescribed*
+        M-5MOLS driver data structure
 
 .. _`m5mols_start_monitor.description`:
 
@@ -299,7 +299,7 @@ m5mols_fw_start
     M-5MOLS internal ARM controller initialization
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
 .. _`m5mols_fw_start.description`:
 
@@ -320,10 +320,10 @@ m5mols_s_power
     Main sensor power control function
 
     :param struct v4l2_subdev \*sd:
-        *undescribed*
+        sub-device, as pointed by struct v4l2_subdev
 
     :param int on:
-        *undescribed*
+        if true, powers on the device; powers off otherwise.
 
 .. _`m5mols_s_power.description`:
 
