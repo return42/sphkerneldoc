@@ -82,7 +82,7 @@ list_del
 Note
 ----
 
-list_empty() on entry does not return true after this, the entry is
+\ :c:func:`list_empty`\  on entry does not return true after this, the entry is
 in an undefined state.
 
 .. _`list_replace`:

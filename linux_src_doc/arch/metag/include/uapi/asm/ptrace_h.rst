@@ -54,7 +54,7 @@ bpobits
 mode
     TXMODE register
 
-_pad1
+\_pad1
     Reserved padding to make sizeof obviously 64bit aligned
 
 .. _`user_gp_regs.description`:

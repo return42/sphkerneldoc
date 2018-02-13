@@ -45,8 +45,8 @@ this function, memory access functions may still return -EFAULT.
 
 .. _`__get_user`:
 
-__get_user
-==========
+\__get_user
+===========
 
 .. c:function::  __get_user( x,  ptr)
 
@@ -86,8 +86,8 @@ function.
 
 .. _`__put_user`:
 
-__put_user
-==========
+\__put_user
+===========
 
 .. c:function::  __put_user( x,  ptr)
 

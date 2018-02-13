@@ -74,7 +74,7 @@ sk_dev_hash
 Description
 -----------
 
-@station - station this sap belongs to
+\ ``station``\  - station this sap belongs to
 \ ``state``\  - sap state
 \ ``p_bit``\  - only lowest-order bit used
 \ ``f_bit``\  - only lowest-order bit used

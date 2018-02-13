@@ -3,8 +3,8 @@
 
 .. _`__put_cred`:
 
-__put_cred
-==========
+\__put_cred
+===========
 
 .. c:function:: void __put_cred(struct cred *cred)
 

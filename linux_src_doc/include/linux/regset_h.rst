@@ -358,7 +358,7 @@ copy_regset_to_user
         thread to be examined
 
     :param const struct user_regset_view \*view:
-        &struct user_regset_view describing user thread machine state
+        \ :c:type:`struct user_regset_view <user_regset_view>`\  describing user thread machine state
 
     :param unsigned int setno:
         index in \ ``view``\ ->regsets
@@ -385,7 +385,7 @@ copy_regset_from_user
         thread to be examined
 
     :param const struct user_regset_view \*view:
-        &struct user_regset_view describing user thread machine state
+        \ :c:type:`struct user_regset_view <user_regset_view>`\  describing user thread machine state
 
     :param unsigned int setno:
         index in \ ``view``\ ->regsets

@@ -25,7 +25,7 @@ pointer to \ ``ns``\ , if \ ``ns``\  is NULL returns NULL
 Requires
 --------
 
-@ns must be held with valid refcount when called
+\ ``ns``\  must be held with valid refcount when called
 
 .. _`aa_put_ns`:
 
@@ -48,8 +48,8 @@ Decrement reference count of \ ``ns``\  and if no longer in use free it
 
 .. _`__aa_findn_ns`:
 
-__aa_findn_ns
-=============
+\__aa_findn_ns
+==============
 
 .. c:function:: struct aa_ns *__aa_findn_ns(struct list_head *head, const char *name, size_t n)
 

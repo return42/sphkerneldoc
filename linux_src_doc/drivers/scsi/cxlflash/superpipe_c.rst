@@ -375,8 +375,8 @@ virtual mode).
 
 .. _`_cxlflash_disk_release`:
 
-_cxlflash_disk_release
-======================
+\_cxlflash_disk_release
+=======================
 
 .. c:function:: int _cxlflash_disk_release(struct scsi_device *sdev, struct ctx_info *ctxi, struct dk_cxlflash_release *release)
 
@@ -510,8 +510,8 @@ relinquishing access to the context holds its mutex.
 
 .. _`_cxlflash_disk_detach`:
 
-_cxlflash_disk_detach
-=====================
+\_cxlflash_disk_detach
+======================
 
 .. c:function:: int _cxlflash_disk_detach(struct scsi_device *sdev, struct ctx_info *ctxi, struct dk_cxlflash_detach *detach)
 

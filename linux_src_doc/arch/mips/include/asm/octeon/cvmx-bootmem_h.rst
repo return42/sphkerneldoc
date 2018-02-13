@@ -191,7 +191,7 @@ cvmx_bootmem_alloc_named_range_once
 Description
 -----------
 
-@param size   Size in bytes of block to allocate
+\ ``param``\  size   Size in bytes of block to allocate
 \ ``param``\  min_addr  minimum address of range
 \ ``param``\  max_addr  maximum address of range
 \ ``param``\  align  Alignment of memory to be allocated. (must be a power of 2)
@@ -292,7 +292,7 @@ cvmx_bootmem_phy_named_block_alloc
 Description
 -----------
 
-@param size      size of region to allocate.  All requests are rounded
+\ ``param``\  size      size of region to allocate.  All requests are rounded
 up to be a multiple CVMX_BOOTMEM_ALIGNMENT_SIZE
 bytes size
 \ ``param``\  min_addr Minimum address that block can occupy.
@@ -358,8 +358,8 @@ Returns 0 on failure
 
 .. _`__cvmx_bootmem_phy_free`:
 
-__cvmx_bootmem_phy_free
-=======================
+\__cvmx_bootmem_phy_free
+========================
 
 .. c:function:: int __cvmx_bootmem_phy_free(uint64_t phy_addr, uint64_t size, uint32_t flags)
 

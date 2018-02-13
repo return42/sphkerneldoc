@@ -189,8 +189,8 @@ false  Failure, the runlists cannot be merged.
 
 .. _`__ntfs_rl_merge`:
 
-__ntfs_rl_merge
-===============
+\__ntfs_rl_merge
+================
 
 .. c:function:: void __ntfs_rl_merge(runlist_element *dst, runlist_element *src)
 
@@ -682,7 +682,7 @@ fully mapped runlists to this function.
 Locking
 -------
 
-@rl must be locked on entry (either for reading or writing), it
+\ ``rl``\  must be locked on entry (either for reading or writing), it
 remains locked throughout, and is left locked upon return.
 
 .. _`ntfs_write_significant_bytes`:
@@ -790,7 +790,7 @@ fully mapped runlists to this function.
 Locking
 -------
 
-@rl must be locked on entry (either for reading or writing), it
+\ ``rl``\  must be locked on entry (either for reading or writing), it
 remains locked throughout, and is left locked upon return.
 
 .. _`ntfs_rl_truncate_nolock`:

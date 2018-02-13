@@ -34,7 +34,7 @@ NFNL_BATCH_UNSPEC
 NFNL_BATCH_GENID
     generation ID for this changeset (NLA_U32)
 
-__NFNL_BATCH_MAX
+\__NFNL_BATCH_MAX
     *undescribed*
 
 .. This file was automatic generated / don't edit.

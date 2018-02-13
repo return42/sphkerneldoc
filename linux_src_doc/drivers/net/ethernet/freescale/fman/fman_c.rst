@@ -212,7 +212,7 @@ fman_get_revision
 
 .. c:function:: void fman_get_revision(struct fman *fman, struct fman_rev_info *rev_info)
 
-    @fman                - Pointer to the FMan module \ ``rev_info``\             - A structure of revision information parameters.
+    \ ``fman``\                 - Pointer to the FMan module \ ``rev_info``\             - A structure of revision information parameters.
 
     :param struct fman \*fman:
         *undescribed*

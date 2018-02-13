@@ -3,8 +3,8 @@
 
 .. _`__sa1111_probe`:
 
-__sa1111_probe
-==============
+\__sa1111_probe
+===============
 
 .. c:function:: int __sa1111_probe(struct device *me, struct resource *mem, int irq)
 
@@ -32,7 +32,7 @@ before any other SA1111-specific code.
 Return
 ------
 
-%-ENODEV        device not found.
+\ ``-ENODEV``\         device not found.
 \ ``-EBUSY``\          physical address already marked in-use.
 \ ``-EINVAL``\         no platform data passed
 \ ``0``\               successful.

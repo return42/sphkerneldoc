@@ -309,7 +309,8 @@ acpi_dma_simple_xlate
 Description
 -----------
 
-A simple translation function for ACPI based devices. Passes \ :c:type:`struct dma_spec <dma_spec>`\  to the DMA controller driver provided filter function.
+A simple translation function for ACPI based devices. Passes \ :c:type:`struct struct <struct>`\ 
+dma_spec to the DMA controller driver provided filter function.
 
 .. _`acpi_dma_simple_xlate.return`:
 

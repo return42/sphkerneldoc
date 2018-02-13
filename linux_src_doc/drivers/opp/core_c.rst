@@ -3,8 +3,8 @@
 
 .. _`_find_opp_table`:
 
-_find_opp_table
-===============
+\_find_opp_table
+================
 
 .. c:function:: struct opp_table *_find_opp_table(struct device *dev)
 
@@ -418,8 +418,8 @@ This function removes an opp from the opp table.
 
 .. _`_opp_add_v1`:
 
-_opp_add_v1
-===========
+\_opp_add_v1
+============
 
 .. c:function:: int _opp_add_v1(struct opp_table *opp_table, struct device *dev, unsigned long freq, long u_volt, bool dynamic)
 
@@ -774,8 +774,8 @@ Duplicate OPPs (both freq and volt are same) and !opp->available
 
 .. _`_opp_set_availability`:
 
-_opp_set_availability
-=====================
+\_opp_set_availability
+======================
 
 .. c:function:: int _opp_set_availability(struct device *dev, unsigned long freq, bool availability_req)
 

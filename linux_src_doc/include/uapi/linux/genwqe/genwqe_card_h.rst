@@ -144,7 +144,7 @@ ats
 asiv
     *undescribed*
 
-__asiv
+\__asiv
     *undescribed*
 
 .. _`genwqe_ddcb_cmd.description`:

@@ -665,7 +665,7 @@ max_ref_pic
 num_ref_pic_4p
     *undescribed*
 
-_8x8_transform
+\_8x8_transform
     *undescribed*
 
 rc_mb_dark

@@ -350,7 +350,7 @@ Return zero on success or error code on failure.
 NOTE
 ----
 
-_Never\_ directly free \ ``dev``\  after calling this function, even
+\_Never\_ directly free \ ``dev``\  after calling this function, even
 if it returned an error! Always use \ :c:func:`ipack_put_device`\  to give up the
 reference initialized in this function instead.
 
@@ -381,7 +381,7 @@ Return zero on success or error code on failure.
 NOTE
 ----
 
-_Never\_ directly free \ ``dev``\  after calling this function, even
+\_Never\_ directly free \ ``dev``\  after calling this function, even
 if it returned an error! Always use \ :c:func:`ipack_put_device`\  to give up the
 reference initialized in this function instead.
 

@@ -42,7 +42,7 @@ st_shift
 Description
 -----------
 
-@name should be something short, e.g., "cpu0" or "rst". It is defined
+\ ``name``\  should be something short, e.g., "cpu0" or "rst". It is defined
 locally to the hwmod.
 
 .. _`omap_hwmod_opt_clk`:
@@ -78,7 +78,7 @@ role
 clk
     opt clock: OMAP clock name
 
-_clk
+\_clk
     pointer to the struct clk (filled in at runtime)
 
 .. _`omap_hwmod_opt_clk.description`:
@@ -178,7 +178,7 @@ addr
 clk
     interface clock: OMAP clock name
 
-_clk
+\_clk
     pointer to the interface struct clk (filled in at runtime)
 
 node
@@ -196,7 +196,7 @@ user
 flags
     OCP interface flags (see OCPIF\_\* macros above)
 
-_int_flags
+\_int_flags
     internal flags (see \_OCPIF_INT_FLAGS\* macros above)
 
 .. _`omap_hwmod_ocp_if.description`:
@@ -272,7 +272,7 @@ idlemodes
 Description
 -----------
 
-@clockact describes to the module which clocks are likely to be
+\ ``clockact``\  describes to the module which clocks are likely to be
 disabled when the PRCM issues its idle request to the module.  Some
 modules have separate clockdomains for the interface clock and main
 functional clock, and can check whether they should acknowledge the
@@ -321,7 +321,7 @@ idlest_idle_bit
 Description
 -----------
 
-@prcm_reg_id and \ ``module_bit``\  are specific to the AUTOIDLE, WKST,
+\ ``prcm_reg_id``\  and \ ``module_bit``\  are specific to the AUTOIDLE, WKST,
 WKEN, GRPSEL registers.  In an ideal world, no extra information
 would be needed for IDLEST information, but alas, there are some
 exceptions, so \ ``idlest_reg_id``\ , \ ``idlest_idle_bit``\ , \ ``idlest_stdby_bit``\ 
@@ -548,7 +548,7 @@ prcm
 main_clk
     main clock: OMAP clock name
 
-_clk
+\_clk
     pointer to the main struct clk (filled in at runtime)
 
 opt_clks
@@ -566,13 +566,13 @@ slave_ports
 dev_attr
     arbitrary device attributes that can be passed to the driver
 
-_sysc_cache
+\_sysc_cache
     internal-use hwmod flags
 
-_mpu_rt_va
+\_mpu_rt_va
     cached register target start address (internal use)
 
-_lock
+\_lock
     spinlock serializing operations on this hwmod
 
 hwmod_key
@@ -581,7 +581,7 @@ hwmod_key
 node
     list node for hwmod list (internal use)
 
-_mpu_port
+\_mpu_port
     cached MPU register target slave (internal use)
 
 flags
@@ -605,13 +605,13 @@ slaves_cnt
 hwmods_cnt
     *undescribed*
 
-_int_flags
+\_int_flags
     internal-use hwmod flags
 
-_state
+\_state
     internal-use hwmod state
 
-_postsetup_state
+\_postsetup_state
     internal-use state to leave the hwmod in after \_setup()
 
 parent_hwmod
@@ -622,7 +622,7 @@ parent_hwmod
 Description
 -----------
 
-@main_clk refers to this module's "main clock," which for our
+\ ``main_clk``\  refers to this module's "main clock," which for our
 purposes is defined as "the functional clock needed for register
 accesses to complete."  Modules may not have a main clock if the
 interface clock also serves as a main clock.

@@ -186,8 +186,8 @@ and the stack is notified that the interface is ready.
 
 .. _`__bdx_vlan_rx_vid`:
 
-__bdx_vlan_rx_vid
-=================
+\__bdx_vlan_rx_vid
+==================
 
 .. c:function:: void __bdx_vlan_rx_vid(struct net_device *ndev, uint16_t vid, int enable)
 
@@ -384,8 +384,8 @@ normal. fifo has an extra space to allow such operations
 
 .. _`__bdx_tx_db_ptr_next`:
 
-__bdx_tx_db_ptr_next
-====================
+\__bdx_tx_db_ptr_next
+=====================
 
 .. c:function:: void __bdx_tx_db_ptr_next(struct txdb *db, struct tx_map **pptr)
 

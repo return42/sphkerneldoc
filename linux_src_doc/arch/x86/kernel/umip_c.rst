@@ -3,8 +3,8 @@
 
 .. _`__printf`:
 
-__printf
-========
+\__printf
+=========
 
 .. c:function::  __printf( 3,  4)
 

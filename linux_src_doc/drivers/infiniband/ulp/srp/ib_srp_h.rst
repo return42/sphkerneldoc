@@ -66,7 +66,7 @@ lock
 req_lim
     *undescribed*
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 send_cq

@@ -18,7 +18,7 @@ ___d_drop
 Description
 -----------
 
-d_drop() unhashes the entry from the parent dentry hashes, so that it won't
+\ :c:func:`d_drop`\  unhashes the entry from the parent dentry hashes, so that it won't
 be found through a VFS lookup any more. Note that this is different from
 deleting the dentry - d_delete will try to mark the dentry negative if
 possible, giving a successful _negative_ lookup, while d_drop will

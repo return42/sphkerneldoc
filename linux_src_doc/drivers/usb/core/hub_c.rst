@@ -86,7 +86,7 @@ usb_remove_device
 Context
 -------
 
-@udev locked, must be able to sleep.
+\ ``udev``\  locked, must be able to sleep.
 
 .. _`usb_remove_device.description`:
 
@@ -499,7 +499,7 @@ pointer.
 Return
 ------
 
-%NULL if input param is invalid and
+\ ``NULL``\  if input param is invalid and
 child's usb_device pointer if non-NULL.
 
 .. _`usb_get_hub_port_acpi_handle`:

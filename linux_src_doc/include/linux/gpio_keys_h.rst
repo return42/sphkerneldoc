@@ -39,10 +39,10 @@ code
     input event code (KEY\_\*, SW\_\*)
 
 gpio
-    %-1 if this key does not support gpio
+    \ ``-1``\  if this key does not support gpio
 
 active_low
-    %true indicates that button is considered
+    \ ``true``\  indicates that button is considered
     depressed when gpio is low
 
 desc
@@ -58,7 +58,7 @@ debounce_interval
     debounce ticks interval in msecs
 
 can_disable
-    %true indicates that userspace is allowed to
+    \ ``true``\  indicates that userspace is allowed to
     disable button via sysfs
 
 value

@@ -21,7 +21,7 @@ cgroup_cpu_stat_updated
 Description
 -----------
 
-@cgrp's cpu_stat on \ ``cpu``\  was updated.  Put it on the parent's matching
+\ ``cgrp``\ 's cpu_stat on \ ``cpu``\  was updated.  Put it on the parent's matching
 cpu_stat->updated_children list.  See the comment on top of
 cgroup_cpu_stat definition for details.
 

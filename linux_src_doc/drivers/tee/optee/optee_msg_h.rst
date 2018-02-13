@@ -169,7 +169,7 @@ u
 Description
 -----------
 
-@attr & OPTEE_MSG_ATTR_TYPE_MASK indicates if tmem, rmem or value is used in
+\ ``attr``\  & OPTEE_MSG_ATTR_TYPE_MASK indicates if tmem, rmem or value is used in
 the union. OPTEE_MSG_ATTR_TYPE_VALUE\_\* indicates value,
 OPTEE_MSG_ATTR_TYPE_TMEM\_\* indicates \ ``tmem``\  and
 OPTEE_MSG_ATTR_TYPE_RMEM\_\* indicates \ ``rmem``\ ,

@@ -388,8 +388,8 @@ gfs2_rsqa_alloc
 
 .. _`__rs_deltree`:
 
-__rs_deltree
-============
+\__rs_deltree
+=============
 
 .. c:function:: void __rs_deltree(struct gfs2_blkreserv *rs)
 
@@ -1137,8 +1137,8 @@ Return
 
 .. _`__gfs2_free_blocks`:
 
-__gfs2_free_blocks
-==================
+\__gfs2_free_blocks
+===================
 
 .. c:function:: void __gfs2_free_blocks(struct gfs2_inode *ip, u64 bstart, u32 blen, int meta)
 

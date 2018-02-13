@@ -8,7 +8,7 @@ flush_dcache_mft_record_page
 
 .. c:function:: void flush_dcache_mft_record_page(ntfs_inode *ni)
 
-    flush_dcache_page() for mft records
+    \ :c:func:`flush_dcache_page`\  for mft records
 
     :param ntfs_inode \*ni:
         ntfs inode structure of mft record

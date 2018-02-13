@@ -3,8 +3,8 @@
 
 .. _`__x25_remove_route`:
 
-__x25_remove_route
-==================
+\__x25_remove_route
+===================
 
 .. c:function:: void __x25_remove_route(struct x25_route *rt)
 

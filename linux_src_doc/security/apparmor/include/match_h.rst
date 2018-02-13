@@ -47,7 +47,7 @@ pointer to \ ``dfa``\  if \ ``dfa``\  is NULL will return NULL
 Requires
 --------
 
-@dfa must be held with valid refcount when called
+\ ``dfa``\  must be held with valid refcount when called
 
 .. _`aa_put_dfa`:
 

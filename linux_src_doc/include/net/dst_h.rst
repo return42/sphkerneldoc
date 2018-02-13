@@ -61,8 +61,8 @@ If dst is not yet refcounted and not destroyed, grab a ref on it.
 
 .. _`__skb_tunnel_rx`:
 
-__skb_tunnel_rx
-===============
+\__skb_tunnel_rx
+================
 
 .. c:function:: void __skb_tunnel_rx(struct sk_buff *skb, struct net_device *dev, struct net *net)
 

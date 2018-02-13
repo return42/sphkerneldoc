@@ -157,7 +157,7 @@ xdr_stream_decode_u32
 Return values
 -------------
 
-%0 on success
+\ ``0``\  on success
 \ ``-EBADMSG``\  on XDR buffer overflow
 
 .. _`xdr_stream_decode_opaque_fixed`:

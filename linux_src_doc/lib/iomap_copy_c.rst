@@ -3,8 +3,8 @@
 
 .. _`__iowrite32_copy`:
 
-__iowrite32_copy
-================
+\__iowrite32_copy
+=================
 
 .. c:function:: void __iowrite32_copy(void __iomem *to, const void *from, size_t count)
 
@@ -30,8 +30,8 @@ performed afterwards.
 
 .. _`__ioread32_copy`:
 
-__ioread32_copy
-===============
+\__ioread32_copy
+================
 
 .. c:function:: void __ioread32_copy(void *to, const void __iomem *from, size_t count)
 
@@ -57,8 +57,8 @@ performed afterwards.
 
 .. _`__iowrite64_copy`:
 
-__iowrite64_copy
-================
+\__iowrite64_copy
+=================
 
 .. c:function:: void __iowrite64_copy(void __iomem *to, const void *from, size_t count)
 

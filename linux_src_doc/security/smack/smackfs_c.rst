@@ -163,7 +163,7 @@ smk_write_rules_list
 
 .. c:function:: ssize_t smk_write_rules_list(struct file *file, const char __user *buf, size_t count, loff_t *ppos, struct list_head *rule_list, struct mutex *rule_lock, int format)
 
-    write() for any /smack rule file
+    \ :c:func:`write`\  for any /smack rule file
 
     :param struct file \*file:
         file pointer, not actually used
@@ -222,7 +222,7 @@ smk_open_load
 
 .. c:function:: int smk_open_load(struct inode *inode, struct file *file)
 
-    open() for /smack/load
+    \ :c:func:`open`\  for /smack/load
 
     :param struct inode \*inode:
         inode structure representing file
@@ -244,7 +244,7 @@ smk_write_load
 
 .. c:function:: ssize_t smk_write_load(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/load
+    \ :c:func:`write`\  for /smack/load
 
     :param struct file \*file:
         file pointer, not actually used
@@ -289,7 +289,7 @@ smk_open_cipso
 
 .. c:function:: int smk_open_cipso(struct inode *inode, struct file *file)
 
-    open() for /smack/cipso
+    \ :c:func:`open`\  for /smack/cipso
 
     :param struct inode \*inode:
         inode structure representing file
@@ -344,7 +344,7 @@ smk_write_cipso
 
 .. c:function:: ssize_t smk_write_cipso(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/cipso
+    \ :c:func:`write`\  for /smack/cipso
 
     :param struct file \*file:
         file pointer, not actually used
@@ -373,7 +373,7 @@ smk_open_cipso2
 
 .. c:function:: int smk_open_cipso2(struct inode *inode, struct file *file)
 
-    open() for /smack/cipso2
+    \ :c:func:`open`\  for /smack/cipso2
 
     :param struct inode \*inode:
         inode structure representing file
@@ -396,7 +396,7 @@ smk_write_cipso2
 
 .. c:function:: ssize_t smk_write_cipso2(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/cipso2
+    \ :c:func:`write`\  for /smack/cipso2
 
     :param struct file \*file:
         file pointer, not actually used
@@ -425,7 +425,7 @@ smk_open_net4addr
 
 .. c:function:: int smk_open_net4addr(struct inode *inode, struct file *file)
 
-    open() for /smack/netlabel
+    \ :c:func:`open`\  for /smack/netlabel
 
     :param struct inode \*inode:
         inode structure representing file
@@ -467,7 +467,7 @@ smk_write_net4addr
 
 .. c:function:: ssize_t smk_write_net4addr(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/netlabel
+    \ :c:func:`write`\  for /smack/netlabel
 
     :param struct file \*file:
         file pointer, not actually used
@@ -496,7 +496,7 @@ smk_open_net6addr
 
 .. c:function:: int smk_open_net6addr(struct inode *inode, struct file *file)
 
-    open() for /smack/netlabel
+    \ :c:func:`open`\  for /smack/netlabel
 
     :param struct inode \*inode:
         inode structure representing file
@@ -538,7 +538,7 @@ smk_write_net6addr
 
 .. c:function:: ssize_t smk_write_net6addr(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/netlabel
+    \ :c:func:`write`\  for /smack/netlabel
 
     :param struct file \*file:
         file pointer, not actually used
@@ -567,7 +567,7 @@ smk_read_doi
 
 .. c:function:: ssize_t smk_read_doi(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
 
-    read() for /smack/doi
+    \ :c:func:`read`\  for /smack/doi
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -595,7 +595,7 @@ smk_write_doi
 
 .. c:function:: ssize_t smk_write_doi(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/doi
+    \ :c:func:`write`\  for /smack/doi
 
     :param struct file \*file:
         file pointer, not actually used
@@ -623,7 +623,7 @@ smk_read_direct
 
 .. c:function:: ssize_t smk_read_direct(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
 
-    read() for /smack/direct
+    \ :c:func:`read`\  for /smack/direct
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -651,7 +651,7 @@ smk_write_direct
 
 .. c:function:: ssize_t smk_write_direct(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/direct
+    \ :c:func:`write`\  for /smack/direct
 
     :param struct file \*file:
         file pointer, not actually used
@@ -679,7 +679,7 @@ smk_read_mapped
 
 .. c:function:: ssize_t smk_read_mapped(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
 
-    read() for /smack/mapped
+    \ :c:func:`read`\  for /smack/mapped
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -707,7 +707,7 @@ smk_write_mapped
 
 .. c:function:: ssize_t smk_write_mapped(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/mapped
+    \ :c:func:`write`\  for /smack/mapped
 
     :param struct file \*file:
         file pointer, not actually used
@@ -735,7 +735,7 @@ smk_read_ambient
 
 .. c:function:: ssize_t smk_read_ambient(struct file *filp, char __user *buf, size_t cn, loff_t *ppos)
 
-    read() for /smack/ambient
+    \ :c:func:`read`\  for /smack/ambient
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -763,7 +763,7 @@ smk_write_ambient
 
 .. c:function:: ssize_t smk_write_ambient(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/ambient
+    \ :c:func:`write`\  for /smack/ambient
 
     :param struct file \*file:
         file pointer, not actually used
@@ -840,7 +840,7 @@ smk_write_onlycap
 
 .. c:function:: ssize_t smk_write_onlycap(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for smackfs/onlycap
+    \ :c:func:`write`\  for smackfs/onlycap
 
     :param struct file \*file:
         file pointer, not actually used
@@ -868,7 +868,7 @@ smk_read_unconfined
 
 .. c:function:: ssize_t smk_read_unconfined(struct file *filp, char __user *buf, size_t cn, loff_t *ppos)
 
-    read() for smackfs/unconfined
+    \ :c:func:`read`\  for smackfs/unconfined
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -896,7 +896,7 @@ smk_write_unconfined
 
 .. c:function:: ssize_t smk_write_unconfined(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for smackfs/unconfined
+    \ :c:func:`write`\  for smackfs/unconfined
 
     :param struct file \*file:
         file pointer, not actually used
@@ -924,7 +924,7 @@ smk_read_logging
 
 .. c:function:: ssize_t smk_read_logging(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
 
-    read() for /smack/logging
+    \ :c:func:`read`\  for /smack/logging
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -952,7 +952,7 @@ smk_write_logging
 
 .. c:function:: ssize_t smk_write_logging(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/logging
+    \ :c:func:`write`\  for /smack/logging
 
     :param struct file \*file:
         file pointer, not actually used
@@ -980,7 +980,7 @@ smk_open_load_self
 
 .. c:function:: int smk_open_load_self(struct inode *inode, struct file *file)
 
-    open() for /smack/load-self2
+    \ :c:func:`open`\  for /smack/load-self2
 
     :param struct inode \*inode:
         inode structure representing file
@@ -1002,7 +1002,7 @@ smk_write_load_self
 
 .. c:function:: ssize_t smk_write_load_self(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/load-self
+    \ :c:func:`write`\  for /smack/load-self
 
     :param struct file \*file:
         file pointer, not actually used
@@ -1068,7 +1068,7 @@ smk_open_load2
 
 .. c:function:: int smk_open_load2(struct inode *inode, struct file *file)
 
-    open() for /smack/load2
+    \ :c:func:`open`\  for /smack/load2
 
     :param struct inode \*inode:
         inode structure representing file
@@ -1090,7 +1090,7 @@ smk_write_load2
 
 .. c:function:: ssize_t smk_write_load2(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/load2
+    \ :c:func:`write`\  for /smack/load2
 
     :param struct file \*file:
         file pointer, not actually used
@@ -1111,7 +1111,7 @@ smk_open_load_self2
 
 .. c:function:: int smk_open_load_self2(struct inode *inode, struct file *file)
 
-    open() for /smack/load-self2
+    \ :c:func:`open`\  for /smack/load-self2
 
     :param struct inode \*inode:
         inode structure representing file
@@ -1133,7 +1133,7 @@ smk_write_load_self2
 
 .. c:function:: ssize_t smk_write_load_self2(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/load-self2
+    \ :c:func:`write`\  for /smack/load-self2
 
     :param struct file \*file:
         file pointer, not actually used
@@ -1175,7 +1175,7 @@ smk_write_revoke_subj
 
 .. c:function:: ssize_t smk_write_revoke_subj(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/revoke-subject
+    \ :c:func:`write`\  for /smack/revoke-subject
 
     :param struct file \*file:
         file pointer
@@ -1208,7 +1208,7 @@ smk_write_change_rule
 
 .. c:function:: ssize_t smk_write_change_rule(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/change-rule
+    \ :c:func:`write`\  for /smack/change-rule
 
     :param struct file \*file:
         file pointer
@@ -1229,7 +1229,7 @@ smk_read_syslog
 
 .. c:function:: ssize_t smk_read_syslog(struct file *filp, char __user *buf, size_t cn, loff_t *ppos)
 
-    read() for smackfs/syslog
+    \ :c:func:`read`\  for smackfs/syslog
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -1257,7 +1257,7 @@ smk_write_syslog
 
 .. c:function:: ssize_t smk_write_syslog(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for smackfs/syslog
+    \ :c:func:`write`\  for smackfs/syslog
 
     :param struct file \*file:
         file pointer, not actually used
@@ -1285,7 +1285,7 @@ smk_open_relabel_self
 
 .. c:function:: int smk_open_relabel_self(struct inode *inode, struct file *file)
 
-    open() for /smack/relabel-self
+    \ :c:func:`open`\  for /smack/relabel-self
 
     :param struct inode \*inode:
         inode structure representing file
@@ -1308,7 +1308,7 @@ smk_write_relabel_self
 
 .. c:function:: ssize_t smk_write_relabel_self(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/relabel-self
+    \ :c:func:`write`\  for /smack/relabel-self
 
     :param struct file \*file:
         file pointer, not actually used
@@ -1329,7 +1329,7 @@ smk_read_ptrace
 
 .. c:function:: ssize_t smk_read_ptrace(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
 
-    read() for /smack/ptrace
+    \ :c:func:`read`\  for /smack/ptrace
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -1357,7 +1357,7 @@ smk_write_ptrace
 
 .. c:function:: ssize_t smk_write_ptrace(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for /smack/ptrace
+    \ :c:func:`write`\  for /smack/ptrace
 
     :param struct file \*file:
         file pointer

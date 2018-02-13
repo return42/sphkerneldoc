@@ -1526,7 +1526,7 @@ dma_async_is_complete
 Description
 -----------
 
-dma_async_is_complete() is used in \ :c:func:`dma_async_is_tx_complete`\ 
+\ :c:func:`dma_async_is_complete`\  is used in \ :c:func:`dma_async_is_tx_complete`\ 
 the test logic is separated for lightweight testing of multiple cookies
 
 .. This file was automatic generated / don't edit.

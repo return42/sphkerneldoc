@@ -3,8 +3,8 @@
 
 .. _`_mpt3sas_raise_sigio`:
 
-_mpt3sas_raise_sigio
-====================
+\_mpt3sas_raise_sigio
+=====================
 
 .. c:function:: void _mpt3sas_raise_sigio(struct MPT3SAS_ADAPTER *ioc, struct SL_WH_TRIGGERS_EVENT_DATA_T *event_data)
 

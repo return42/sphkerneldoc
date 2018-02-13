@@ -3,8 +3,8 @@
 
 .. _`__cvmx_interrupt_asxx_enable`:
 
-__cvmx_interrupt_asxx_enable
-============================
+\__cvmx_interrupt_asxx_enable
+=============================
 
 .. c:function:: void __cvmx_interrupt_asxx_enable(int block)
 
@@ -15,8 +15,8 @@ __cvmx_interrupt_asxx_enable
 
 .. _`__cvmx_interrupt_gmxx_enable`:
 
-__cvmx_interrupt_gmxx_enable
-============================
+\__cvmx_interrupt_gmxx_enable
+=============================
 
 .. c:function:: void __cvmx_interrupt_gmxx_enable(int interface)
 

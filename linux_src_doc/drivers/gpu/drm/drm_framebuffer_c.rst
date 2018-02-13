@@ -34,7 +34,8 @@ which the last reference is never dropped (e.g. for the fbdev framebuffer
 when the struct \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  is embedded into the fbdev helper
 struct) drivers can manually clean up a framebuffer at module unload time
 with \ :c:func:`drm_framebuffer_unregister_private`\ . But doing this is not
-recommended, and it's better to have a normal free-standing \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
+recommended, and it's better to have a normal free-standing \ :c:type:`struct struct <struct>`\ 
+drm_framebuffer.
 
 .. _`drm_mode_addfb`:
 

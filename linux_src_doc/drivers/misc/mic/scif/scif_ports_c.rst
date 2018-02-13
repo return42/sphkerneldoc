@@ -3,8 +3,8 @@
 
 .. _`__scif_get_port`:
 
-__scif_get_port
-===============
+\__scif_get_port
+================
 
 .. c:function:: int __scif_get_port(int start, int end)
 

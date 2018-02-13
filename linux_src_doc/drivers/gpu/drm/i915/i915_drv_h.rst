@@ -114,7 +114,7 @@ sample_size
     of a single sample record.
 
 ctx
-    %NULL if measuring system-wide across all contexts or aspecific context that is being monitored.
+    \ ``NULL``\  if measuring system-wide across all contexts or aspecific context that is being monitored.
 
 enabled
     Whether the stream is currently enabled, consideringwhether the stream was opened in a disabled state and based

@@ -29,7 +29,7 @@ Definition
 Constants
 ---------
 
-__TEST_KMOD_INVALID
+\__TEST_KMOD_INVALID
     *undescribed*
 
 TEST_KMOD_DRIVER
@@ -38,7 +38,7 @@ TEST_KMOD_DRIVER
 TEST_KMOD_FS_TYPE
     stress tests \ :c:func:`get_fs_type`\ 
 
-__TEST_KMOD_MAX
+\__TEST_KMOD_MAX
     *undescribed*
 
 .. _`kmod_test_case.description`:

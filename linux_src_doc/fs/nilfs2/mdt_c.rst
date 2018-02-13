@@ -30,7 +30,7 @@ nilfs_mdt_get_block
 Description
 -----------
 
-nilfs_mdt_get_block() looks up the specified buffer and tries to create
+\ :c:func:`nilfs_mdt_get_block`\  looks up the specified buffer and tries to create
 a new buffer if \ ``create``\  is not zero.  On success, the returned buffer is
 assured to be either existing or formatted using a buffer lock on success.
 \ ``out_bh``\  is substituted only when zero is returned.
@@ -80,7 +80,7 @@ nilfs_mdt_find_block
 Description
 -----------
 
-nilfs_mdt_find_block() looks up an existing block in range of
+\ :c:func:`nilfs_mdt_find_block`\  looks up an existing block in range of
 [@start, \ ``end``\ ] and stores pointer to a buffer head of the block to
 \ ``out_bh``\ , and block offset to \ ``blkoff``\ , respectively.  \ ``out_bh``\  and
 \ ``blkoff``\  are substituted only when zero is returned.
@@ -146,7 +146,7 @@ nilfs_mdt_forget_block
 Description
 -----------
 
-nilfs_mdt_forget_block() clears a dirty flag of the specified buffer, and
+\ :c:func:`nilfs_mdt_forget_block`\  clears a dirty flag of the specified buffer, and
 tries to release the page including the buffer from a page cache.
 
 .. _`nilfs_mdt_forget_block.return-value`:

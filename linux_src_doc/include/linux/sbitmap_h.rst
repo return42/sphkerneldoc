@@ -342,8 +342,8 @@ true if any bit in the bitmap is clear, false otherwise.
 
 .. _`__sbitmap_for_each_set`:
 
-__sbitmap_for_each_set
-======================
+\__sbitmap_for_each_set
+=======================
 
 .. c:function:: void __sbitmap_for_each_set(struct sbitmap *sb, unsigned int start, sb_for_each_fn fn, void *data)
 
@@ -504,8 +504,8 @@ resize the underlying \ :c:type:`struct sbitmap <sbitmap>`\ .
 
 .. _`__sbitmap_queue_get`:
 
-__sbitmap_queue_get
-===================
+\__sbitmap_queue_get
+====================
 
 .. c:function:: int __sbitmap_queue_get(struct sbitmap_queue *sbq)
 
@@ -523,8 +523,8 @@ Non-negative allocated bit number if successful, -1 otherwise.
 
 .. _`__sbitmap_queue_get_shallow`:
 
-__sbitmap_queue_get_shallow
-===========================
+\__sbitmap_queue_get_shallow
+============================
 
 .. c:function:: int __sbitmap_queue_get_shallow(struct sbitmap_queue *sbq, unsigned int shallow_depth)
 

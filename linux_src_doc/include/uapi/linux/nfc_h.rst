@@ -180,7 +180,7 @@ NFC_CMD_VENDOR
 NFC_CMD_DEACTIVATE_TARGET
     Request NFC controller to deactivate target.
 
-__NFC_CMD_AFTER_LAST
+\__NFC_CMD_AFTER_LAST
     *undescribed*
 
 .. _`nfc_attrs`:
@@ -339,7 +339,7 @@ NFC_ATTR_VENDOR_DATA
     Vendor specific data, to be optionally passed
     to a vendor specific command implementation
 
-__NFC_ATTR_AFTER_LAST
+\__NFC_ATTR_AFTER_LAST
     *undescribed*
 
 .. _`nfc_raw_header_size`:

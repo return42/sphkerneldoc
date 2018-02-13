@@ -3,8 +3,8 @@
 
 .. _`__genwqe_writeq`:
 
-__genwqe_writeq
-===============
+\__genwqe_writeq
+================
 
 .. c:function:: int __genwqe_writeq(struct genwqe_dev *cd, u64 byte_offs, u64 val)
 
@@ -48,8 +48,8 @@ GNU General Public License for more details.
 
 .. _`__genwqe_readq`:
 
-__genwqe_readq
-==============
+\__genwqe_readq
+===============
 
 .. c:function:: u64 __genwqe_readq(struct genwqe_dev *cd, u64 byte_offs)
 
@@ -70,8 +70,8 @@ value from register
 
 .. _`__genwqe_writel`:
 
-__genwqe_writel
-===============
+\__genwqe_writel
+================
 
 .. c:function:: int __genwqe_writel(struct genwqe_dev *cd, u64 byte_offs, u32 val)
 
@@ -95,8 +95,8 @@ Return
 
 .. _`__genwqe_readl`:
 
-__genwqe_readl
-==============
+\__genwqe_readl
+===============
 
 .. c:function:: u32 __genwqe_readl(struct genwqe_dev *cd, u64 byte_offs)
 

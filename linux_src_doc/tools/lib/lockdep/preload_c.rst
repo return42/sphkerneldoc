@@ -48,8 +48,8 @@ name
 
 .. _`__get_lock`:
 
-__get_lock
-==========
+\__get_lock
+===========
 
 .. c:function:: struct lock_lookup *__get_lock(void *lock)
 

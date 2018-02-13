@@ -61,7 +61,7 @@ mark_buffer_dirty
 Description
 -----------
 
-mark_buffer_dirty() will set the dirty bit against the buffer, then set its
+\ :c:func:`mark_buffer_dirty`\  will set the dirty bit against the buffer, then set its
 backing page dirty, then tag the page as dirty in its address_space's radix
 tree and then attach the address_space's inode to its superblock's dirty
 inode list.
@@ -123,7 +123,7 @@ block_invalidatepage
 Description
 -----------
 
-block_invalidatepage() is called when all or part of the page has become
+\ :c:func:`block_invalidatepage`\  is called when all or part of the page has become
 invalidated by a truncate operation.
 
 \ :c:func:`block_invalidatepage`\  does not have to release all buffers, but it must
@@ -195,7 +195,7 @@ ll_rw_block
 Description
 -----------
 
-ll_rw_block() takes an array of pointers to \ :c:type:`struct buffer_heads <buffer_heads>`\ , and
+\ :c:func:`ll_rw_block`\  takes an array of pointers to \ :c:type:`struct buffer_heads <buffer_heads>`\ , and
 requests an I/O operation on them, either a \ ``REQ_OP_READ``\  or a \ ``REQ_OP_WRITE``\ .
 \ ``op_flags``\  contains flags modifying the detailed I/O behavior, most notably
 \ ``REQ_RAHEAD``\ .

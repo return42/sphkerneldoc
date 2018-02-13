@@ -77,8 +77,8 @@ CL_PAGE_HEADER
 
 .. _`__page_in_use`:
 
-__page_in_use
-=============
+\__page_in_use
+==============
 
 .. c:function:: bool __page_in_use(const struct cl_page *page, int refc)
 

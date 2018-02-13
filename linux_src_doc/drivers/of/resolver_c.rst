@@ -49,7 +49,7 @@ yet implemented.
 Return
 ------
 
-%0 on success or a negative error value on error.
+\ ``0``\  on success or a negative error value on error.
 
 .. This file was automatic generated / don't edit.
 

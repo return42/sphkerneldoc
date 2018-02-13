@@ -24,7 +24,7 @@ svc_rdma_handle_bc_reply
 Return
 ------
 
-%0 if \ ``rcvbuf``\  is filled in, xprt_complete_rqst called,
+\ ``0``\  if \ ``rcvbuf``\  is filled in, xprt_complete_rqst called,
 \ ``-EAGAIN``\  if server should call ->recvfrom again.
 
 .. This file was automatic generated / don't edit.

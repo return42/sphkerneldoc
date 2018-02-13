@@ -586,7 +586,7 @@ inode_alloc_security
     Return 0 if operation was successful.
 
 inode_free_security
-    @inode contains the inode structure.
+    \ ``inode``\  contains the inode structure.
     Deallocate the inode security structure and set \ ``inode``\ ->i_security to
     NULL.
 
@@ -821,7 +821,7 @@ file_free_security
     \ ``file``\  contains the file structure being modified.
 
 file_ioctl
-    @file contains the file structure.
+    \ ``file``\  contains the file structure.
     \ ``cmd``\  contains the operation to perform.
     \ ``arg``\  contains the operational arguments.
     Check permission for an ioctl operation on \ ``file``\ .  Note that \ ``arg``\ 
@@ -889,34 +889,34 @@ file_open
     since inode_permission.
 
 task_alloc
-    @task task being allocated.
+    \ ``task``\  task being allocated.
     \ ``clone_flags``\  contains the flags indicating what should be shared.
     Handle allocation of task-related resources.
     Returns a zero on success, negative values on failure.
 
 task_free
-    @task task about to be freed.
+    \ ``task``\  task about to be freed.
     Handle release of task-related resources. (Note that this can be called
     from interrupt context.)
 
 cred_alloc_blank
-    @cred points to the credentials.
+    \ ``cred``\  points to the credentials.
     \ ``gfp``\  indicates the atomicity of any memory allocations.
     Only allocate sufficient memory and attach to \ ``cred``\  such that
     \ :c:func:`cred_transfer`\  will not get ENOMEM.
 
 cred_free
-    @cred points to the credentials.
+    \ ``cred``\  points to the credentials.
     Deallocate and clear the cred->security field in a set of credentials.
 
 cred_prepare
-    @new points to the new credentials.
+    \ ``new``\  points to the new credentials.
     \ ``old``\  points to the original credentials.
     \ ``gfp``\  indicates the atomicity of any memory allocations.
     Prepare a new set of credentials by copying the data from the old set.
 
 cred_transfer
-    @new points to the new credentials.
+    \ ``new``\  points to the new credentials.
     \ ``old``\  points to the original credentials.
     Transfer data from original creds to new creds
 
@@ -1549,7 +1549,7 @@ ib_free_security
     \ ``sec``\  contains the security structure to be freed.
 
 xfrm_policy_alloc_security
-    @ctxp is a pointer to the xfrm_sec_ctx being added to Security Policy
+    \ ``ctxp``\  is a pointer to the xfrm_sec_ctx being added to Security Policy
     Database used by the XFRM system.
     \ ``sec_ctx``\  contains the security context information being provided by
     the user-level policy update program (e.g., setkey).
@@ -1559,22 +1559,22 @@ xfrm_policy_alloc_security
     \ ``gfp``\  is to specify the context for the allocation
 
 xfrm_policy_clone_security
-    @old_ctx contains an existing xfrm_sec_ctx.
+    \ ``old_ctx``\  contains an existing xfrm_sec_ctx.
     \ ``new_ctxp``\  contains a new xfrm_sec_ctx being cloned from old.
     Allocate a security structure in new_ctxp that contains the
     information from the old_ctx structure.
     Return 0 if operation was successful (memory to allocate).
 
 xfrm_policy_free_security
-    @ctx contains the xfrm_sec_ctx
+    \ ``ctx``\  contains the xfrm_sec_ctx
     Deallocate xp->security.
 
 xfrm_policy_delete_security
-    @ctx contains the xfrm_sec_ctx.
+    \ ``ctx``\  contains the xfrm_sec_ctx.
     Authorize deletion of xp->security.
 
 xfrm_state_alloc
-    @x contains the xfrm_state being added to the Security Association
+    \ ``x``\  contains the xfrm_state being added to the Security Association
     Database by the XFRM system.
     \ ``sec_ctx``\  contains the security context information being provided by
     the user-level SA generation program (e.g., setkey or racoon).
@@ -1584,7 +1584,7 @@ xfrm_state_alloc
     (memory to allocate, legal context).
 
 xfrm_state_alloc_acquire
-    @x contains the xfrm_state being added to the Security Association
+    \ ``x``\  contains the xfrm_state being added to the Security Association
     Database by the XFRM system.
     \ ``polsec``\  contains the policy's security context.
     \ ``secid``\  contains the secid from which to take the mls portion of the
@@ -1595,15 +1595,15 @@ xfrm_state_alloc_acquire
     (memory to allocate, legal context).
 
 xfrm_state_free_security
-    @x contains the xfrm_state.
+    \ ``x``\  contains the xfrm_state.
     Deallocate x->security.
 
 xfrm_state_delete_security
-    @x contains the xfrm_state.
+    \ ``x``\  contains the xfrm_state.
     Authorize deletion of x->security.
 
 xfrm_policy_lookup
-    @ctx contains the xfrm_sec_ctx for which the access control is being
+    \ ``ctx``\  contains the xfrm_sec_ctx for which the access control is being
     checked.
     \ ``fl_secid``\  contains the flow security label that is used to authorize
     access to the policy xp.
@@ -1615,13 +1615,13 @@ xfrm_policy_lookup
     on other errors.
 
 xfrm_state_pol_flow_match
-    @x contains the state to match.
+    \ ``x``\  contains the state to match.
     \ ``xp``\  contains the policy to check for a match.
     \ ``fl``\  contains the flow to check for a match.
     Return 1 if there is a match.
 
 xfrm_decode_session
-    @skb points to skb to decode.
+    \ ``skb``\  points to skb to decode.
     \ ``secid``\  points to the flow key secid to set.
     \ ``ckall``\  says if all xfrms used should be checked for same secid.
     Return 0 if ckall is zero or all xfrms used have the same secid.

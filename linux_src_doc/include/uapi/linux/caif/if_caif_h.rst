@@ -30,7 +30,7 @@ Definition
 Constants
 ---------
 
-__IFLA_CAIF_UNSPEC
+\__IFLA_CAIF_UNSPEC
     *undescribed*
 
 IFLA_CAIF_IPV4_CONNID
@@ -45,7 +45,7 @@ IFLA_CAIF_LOOPBACK
     If different from zero, device is doing loopback
     The type of attribute is NLA_U8.
 
-__IFLA_CAIF_MAX
+\__IFLA_CAIF_MAX
     *undescribed*
 
 .. _`ifla_caif.description`:

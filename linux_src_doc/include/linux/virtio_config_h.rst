@@ -122,8 +122,8 @@ Returns 0 on success or error status
 
 .. _`__virtio_test_bit`:
 
-__virtio_test_bit
-=================
+\__virtio_test_bit
+==================
 
 .. c:function:: bool __virtio_test_bit(const struct virtio_device *vdev, unsigned int fbit)
 
@@ -137,8 +137,8 @@ __virtio_test_bit
 
 .. _`__virtio_set_bit`:
 
-__virtio_set_bit
-================
+\__virtio_set_bit
+=================
 
 .. c:function:: void __virtio_set_bit(struct virtio_device *vdev, unsigned int fbit)
 
@@ -152,8 +152,8 @@ __virtio_set_bit
 
 .. _`__virtio_clear_bit`:
 
-__virtio_clear_bit
-==================
+\__virtio_clear_bit
+===================
 
 .. c:function:: void __virtio_clear_bit(struct virtio_device *vdev, unsigned int fbit)
 

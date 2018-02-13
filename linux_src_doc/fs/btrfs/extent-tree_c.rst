@@ -27,8 +27,8 @@ will return -ENOSPC.
 
 .. _`__reserve_metadata_bytes`:
 
-__reserve_metadata_bytes
-========================
+\__reserve_metadata_bytes
+=========================
 
 .. c:function:: int __reserve_metadata_bytes(struct btrfs_fs_info *fs_info, struct btrfs_space_info *space_info, u64 orig_bytes, enum btrfs_reserve_flush_enum flush, bool system_chunk)
 

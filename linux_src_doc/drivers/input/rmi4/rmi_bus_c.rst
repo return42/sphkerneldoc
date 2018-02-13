@@ -27,8 +27,8 @@ rmi_unregister_transport_device
 
 .. _`__rmi_register_function_handler`:
 
-__rmi_register_function_handler
-===============================
+\__rmi_register_function_handler
+================================
 
 .. c:function:: int __rmi_register_function_handler(struct rmi_function_handler *handler, struct module *owner, const char *mod_name)
 

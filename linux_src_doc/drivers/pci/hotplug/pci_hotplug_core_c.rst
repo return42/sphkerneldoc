@@ -80,7 +80,7 @@ pci_hp_change_slot_info
 Description
 -----------
 
-@slot must have been registered with the pci
+\ ``slot``\  must have been registered with the pci
 hotplug subsystem previously with a call to \ :c:func:`pci_hp_register`\ .
 
 Returns 0 if successful, anything else for an error.

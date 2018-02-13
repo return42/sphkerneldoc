@@ -57,8 +57,8 @@ Writes 32 bit register at a give offset
 
 .. _`_ish_read_fw_sts_reg`:
 
-_ish_read_fw_sts_reg
-====================
+\_ish_read_fw_sts_reg
+=====================
 
 .. c:function:: uint32_t _ish_read_fw_sts_reg(struct ishtp_device *dev)
 
@@ -218,8 +218,8 @@ Send host not ready indication to FW
 
 .. _`_ishtp_read_hdr`:
 
-_ishtp_read_hdr
-===============
+\_ishtp_read_hdr
+================
 
 .. c:function:: uint32_t _ishtp_read_hdr(const struct ishtp_device *dev)
 
@@ -244,8 +244,8 @@ Read register value
 
 .. _`_ishtp_read`:
 
-_ishtp_read
-===========
+\_ishtp_read
+============
 
 .. c:function:: int _ishtp_read(struct ishtp_device *dev, unsigned char *buffer, unsigned long buffer_length)
 
@@ -461,8 +461,8 @@ Call ish_fw_reset_handler to complete FW reset
 
 .. _`_ish_sync_fw_clock`:
 
-_ish_sync_fw_clock
-==================
+\_ish_sync_fw_clock
+===================
 
 .. c:function:: void _ish_sync_fw_clock(struct ishtp_device *dev)
 
@@ -579,8 +579,8 @@ it wil wakeup FW from waiting-for-host state.
 
 .. _`_ish_hw_reset`:
 
-_ish_hw_reset
-=============
+\_ish_hw_reset
+==============
 
 .. c:function:: int _ish_hw_reset(struct ishtp_device *dev)
 
@@ -605,8 +605,8 @@ Return
 
 .. _`_ish_ipc_reset`:
 
-_ish_ipc_reset
-==============
+\_ish_ipc_reset
+===============
 
 .. c:function:: int _ish_ipc_reset(struct ishtp_device *dev)
 

@@ -144,7 +144,7 @@ mptsas_find_vtarget
 Description
 -----------
 
-@ioc
+\ ``ioc``\ 
 \ ``volume_id``\ 
 \ ``volume_bus``\ 
 
@@ -269,7 +269,7 @@ mptsas_ioc_reset
 Description
 -----------
 
-@ioc
+\ ``ioc``\ 
 \ ``reset_phase``\ 
 
 .. _`device_state`:

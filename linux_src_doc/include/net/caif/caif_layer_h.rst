@@ -77,15 +77,15 @@ CAIF_CTRLCMD_DEINIT_RSP
 CAIF_CTRLCMD_INIT_FAIL_RSP
     Called if initialization fails
 
-_CAIF_CTRLCMD_PHYIF_FLOW_OFF_IND
+\_CAIF_CTRLCMD_PHYIF_FLOW_OFF_IND
     CAIF Link layer temporarily cannot
     send more packets.
 
-_CAIF_CTRLCMD_PHYIF_FLOW_ON_IND
+\_CAIF_CTRLCMD_PHYIF_FLOW_ON_IND
     Called if CAIF Link layer is able
     to send packets again.
 
-_CAIF_CTRLCMD_PHYIF_DOWN_IND
+\_CAIF_CTRLCMD_PHYIF_DOWN_IND
     Called if CAIF Link layer is going
     down.
 
@@ -134,10 +134,10 @@ CAIF_MODEMCMD_FLOW_OFF_REQ
     Flow Control is OFF, transmit function
     should stop sending data.
 
-_CAIF_MODEMCMD_PHYIF_USEFULL
+\_CAIF_MODEMCMD_PHYIF_USEFULL
     Notify physical layer that it is in use
 
-_CAIF_MODEMCMD_PHYIF_USELESS
+\_CAIF_MODEMCMD_PHYIF_USELESS
     Notify physical layer that it is
     no longer in use.
 

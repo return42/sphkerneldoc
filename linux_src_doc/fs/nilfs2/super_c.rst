@@ -3,8 +3,8 @@
 
 .. _`__nilfs_error`:
 
-__nilfs_error
-=============
+\__nilfs_error
+==============
 
 .. c:function:: void __nilfs_error(struct super_block *sb, const char *function, const char *fmt,  ...)
 
@@ -27,7 +27,7 @@ __nilfs_error
 Description
 -----------
 
-__nilfs_error() sets an ERROR_FS flag on the superblock as well as
+\__nilfs_error() sets an ERROR_FS flag on the superblock as well as
 reporting an error message.  This function should be called when
 NILFS detects incoherences or defects of meta data on disk.
 

@@ -212,7 +212,7 @@ bfq_update_active_node
 Description
 -----------
 
-@node may have changed position or one of its children may have moved,
+\ ``node``\  may have changed position or one of its children may have moved,
 this function updates its min_start value.  The left and right subtrees
 are assumed to hold a correct min_start value.
 
@@ -233,7 +233,7 @@ bfq_update_active_tree
 Description
 -----------
 
-@node must be the deepest modified node after an update.  This function
+\ ``node``\  must be the deepest modified node after an update.  This function
 updates its min_start using the values held by its children, assuming
 that they did not change, and then updates all the nodes that may have
 changed in the path to the root.  The only nodes that may have changed
@@ -484,8 +484,8 @@ especially true for short service slots.
 
 .. _`__bfq_activate_entity`:
 
-__bfq_activate_entity
-=====================
+\__bfq_activate_entity
+======================
 
 .. c:function:: void __bfq_activate_entity(struct bfq_entity *entity, bool non_blocking_wait_rq)
 
@@ -511,8 +511,8 @@ from its idle tree.
 
 .. _`__bfq_requeue_entity`:
 
-__bfq_requeue_entity
-====================
+\__bfq_requeue_entity
+=====================
 
 .. c:function:: void __bfq_requeue_entity(struct bfq_entity *entity)
 
@@ -563,8 +563,8 @@ bfq_activate_requeue_entity
 
 .. _`__bfq_deactivate_entity`:
 
-__bfq_deactivate_entity
-=======================
+\__bfq_deactivate_entity
+========================
 
 .. c:function:: bool __bfq_deactivate_entity(struct bfq_entity *entity, bool ins_into_idle_tree)
 
@@ -653,8 +653,8 @@ entities and b) no eligible entity has been found yet.
 
 .. _`__bfq_lookup_next_entity`:
 
-__bfq_lookup_next_entity
-========================
+\__bfq_lookup_next_entity
+=========================
 
 .. c:function:: struct bfq_entity *__bfq_lookup_next_entity(struct bfq_service_tree *st, bool in_service)
 

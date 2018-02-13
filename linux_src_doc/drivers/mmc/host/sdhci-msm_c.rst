@@ -3,8 +3,8 @@
 
 .. _`__sdhci_msm_set_clock`:
 
-__sdhci_msm_set_clock
-=====================
+\__sdhci_msm_set_clock
+======================
 
 .. c:function:: void __sdhci_msm_set_clock(struct sdhci_host *host, unsigned int clock)
 

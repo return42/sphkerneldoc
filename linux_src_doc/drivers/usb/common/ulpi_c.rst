@@ -32,8 +32,8 @@ Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
 .. _`__ulpi_register_driver`:
 
-__ulpi_register_driver
-======================
+\__ulpi_register_driver
+=======================
 
 .. c:function:: int __ulpi_register_driver(struct ulpi_driver *drv, struct module *module)
 

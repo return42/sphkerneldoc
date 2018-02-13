@@ -592,7 +592,7 @@ generic_make_request
 Description
 -----------
 
-generic_make_request() is used to make I/O requests of block
+\ :c:func:`generic_make_request`\  is used to make I/O requests of block
 devices. It is passed a \ :c:type:`struct bio <bio>`\ , which describes the I/O that needs
 to be done.
 
@@ -652,7 +652,7 @@ submit_bio
 Description
 -----------
 
-submit_bio() is very similar in purpose to \ :c:func:`generic_make_request`\ , and
+\ :c:func:`submit_bio`\  is very similar in purpose to \ :c:func:`generic_make_request`\ , and
 uses that function to do most of the work. Both are fairly rough
 interfaces; \ ``bio``\  must be presetup and ready for I/O.
 

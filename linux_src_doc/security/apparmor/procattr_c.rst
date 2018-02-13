@@ -83,7 +83,7 @@ aa_setprocattr_changehat
 Return
 ------
 
-%0 or error code if change_hat fails
+\ ``0``\  or error code if change_hat fails
 
 .. This file was automatic generated / don't edit.
 

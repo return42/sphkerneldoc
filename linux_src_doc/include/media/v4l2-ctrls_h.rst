@@ -275,7 +275,8 @@ is_string
 is_ptr
     If set, then this control is an array and/or has type >=
     \ ``V4L2_CTRL_COMPOUND_TYPES``\ 
-    and/or has type \ ``V4L2_CTRL_TYPE_STRING``\ . In other words, \ :c:type:`struct v4l2_ext_control <v4l2_ext_control>`\  uses field p to point to the data.
+    and/or has type \ ``V4L2_CTRL_TYPE_STRING``\ . In other words, \ :c:type:`struct struct <struct>`\ 
+    v4l2_ext_control uses field p to point to the data.
 
 is_array
     If set, then this control contains an N-dimensional array.
@@ -695,8 +696,8 @@ Description
 
 .. attention::
 
-   Never use this call directly, always use the \ :c:func:`v4l2_ctrl_handler_init`\ 
-   macro that hides the \ ``key``\  and \ ``name``\  arguments.
+   Never use this call directly, always use the v4l2_ctrl_handler_init()
+   macro that hides the @key and @name arguments.
 
 .. _`v4l2_ctrl_handler_init_class.return`:
 

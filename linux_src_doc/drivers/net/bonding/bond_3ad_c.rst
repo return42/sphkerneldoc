@@ -3,8 +3,8 @@
 
 .. _`__get_bond_by_port`:
 
-__get_bond_by_port
-==================
+\__get_bond_by_port
+===================
 
 .. c:function:: struct bonding *__get_bond_by_port(struct port *port)
 
@@ -22,8 +22,8 @@ Return \ ``port``\ 's bonding struct, or \ ``NULL``\  if it can't be found.
 
 .. _`__get_first_agg`:
 
-__get_first_agg
-===============
+\__get_first_agg
+================
 
 .. c:function:: struct aggregator *__get_first_agg(struct port *port)
 
@@ -43,8 +43,8 @@ The caller must hold RCU or RTNL lock.
 
 .. _`__agg_has_partner`:
 
-__agg_has_partner
-=================
+\__agg_has_partner
+==================
 
 .. c:function:: int __agg_has_partner(struct aggregator *agg)
 
@@ -63,8 +63,8 @@ address for the partner). Return 0 if not.
 
 .. _`__disable_port`:
 
-__disable_port
-==============
+\__disable_port
+===============
 
 .. c:function:: void __disable_port(struct port *port)
 
@@ -75,8 +75,8 @@ __disable_port
 
 .. _`__enable_port`:
 
-__enable_port
-=============
+\__enable_port
+==============
 
 .. c:function:: void __enable_port(struct port *port)
 
@@ -87,8 +87,8 @@ __enable_port
 
 .. _`__port_is_enabled`:
 
-__port_is_enabled
-=================
+\__port_is_enabled
+==================
 
 .. c:function:: int __port_is_enabled(struct port *port)
 
@@ -99,8 +99,8 @@ __port_is_enabled
 
 .. _`__get_agg_selection_mode`:
 
-__get_agg_selection_mode
-========================
+\__get_agg_selection_mode
+=========================
 
 .. c:function:: u32 __get_agg_selection_mode(struct port *port)
 
@@ -118,8 +118,8 @@ Get the aggregator selection mode. Can be \ ``STABLE``\ , \ ``BANDWIDTH``\  or \
 
 .. _`__check_agg_selection_timer`:
 
-__check_agg_selection_timer
-===========================
+\__check_agg_selection_timer
+============================
 
 .. c:function:: int __check_agg_selection_timer(struct port *port)
 
@@ -130,8 +130,8 @@ __check_agg_selection_timer
 
 .. _`__get_link_speed`:
 
-__get_link_speed
-================
+\__get_link_speed
+=================
 
 .. c:function:: u16 __get_link_speed(struct port *port)
 
@@ -163,8 +163,8 @@ Return \ ``port``\ 's speed in 802.3ad enum format. i.e. one of:
 
 .. _`__get_duplex`:
 
-__get_duplex
-============
+\__get_duplex
+=============
 
 .. c:function:: u8 __get_duplex(struct port *port)
 
@@ -184,8 +184,8 @@ Return \ ``port``\ 's duplex in 802.3ad bitmask format. i.e.:
 
 .. _`__ad_timer_to_ticks`:
 
-__ad_timer_to_ticks
-===================
+\__ad_timer_to_ticks
+====================
 
 .. c:function:: u16 __ad_timer_to_ticks(u16 timer_type, u16 par)
 
@@ -208,8 +208,8 @@ If \ ``timer_type``\  is \ ``periodic_timer``\ , \ ``par``\  is one of \ ``FAST_
 
 .. _`__choose_matched`:
 
-__choose_matched
-================
+\__choose_matched
+=================
 
 .. c:function:: void __choose_matched(struct lacpdu *lacpdu, struct port *port)
 
@@ -251,8 +251,8 @@ recordPDU to "match" the LACPDU parameters to the stored values.
 
 .. _`__record_pdu`:
 
-__record_pdu
-============
+\__record_pdu
+=============
 
 .. c:function:: void __record_pdu(struct lacpdu *lacpdu, struct port *port)
 
@@ -275,8 +275,8 @@ actor_oper_port_state.defaulted to FALSE.
 
 .. _`__record_default`:
 
-__record_default
-================
+\__record_default
+=================
 
 .. c:function:: void __record_default(struct port *port)
 
@@ -296,8 +296,8 @@ values and sets actor_oper_port_state.defaulted to TRUE.
 
 .. _`__update_selected`:
 
-__update_selected
-=================
+\__update_selected
+==================
 
 .. c:function:: void __update_selected(struct lacpdu *lacpdu, struct port *port)
 
@@ -324,8 +324,8 @@ set to out_of_sync. Otherwise, selected remains unchanged.
 
 .. _`__update_default_selected`:
 
-__update_default_selected
-=========================
+\__update_default_selected
+==========================
 
 .. c:function:: void __update_default_selected(struct port *port)
 
@@ -349,8 +349,8 @@ Selected remains unchanged.
 
 .. _`__update_ntt`:
 
-__update_ntt
-============
+\__update_ntt
+=============
 
 .. c:function:: void __update_ntt(struct lacpdu *lacpdu, struct port *port)
 
@@ -376,8 +376,8 @@ then ntt is set to TRUE. Otherwise, ntt remains unchanged.
 
 .. _`__agg_ports_are_ready`:
 
-__agg_ports_are_ready
-=====================
+\__agg_ports_are_ready
+======================
 
 .. c:function:: int __agg_ports_are_ready(struct aggregator *aggregator)
 
@@ -388,8 +388,8 @@ __agg_ports_are_ready
 
 .. _`__set_agg_ports_ready`:
 
-__set_agg_ports_ready
-=====================
+\__set_agg_ports_ready
+======================
 
 .. c:function:: void __set_agg_ports_ready(struct aggregator *aggregator, int val)
 
@@ -403,8 +403,8 @@ __set_agg_ports_ready
 
 .. _`__get_agg_bandwidth`:
 
-__get_agg_bandwidth
-===================
+\__get_agg_bandwidth
+====================
 
 .. c:function:: u32 __get_agg_bandwidth(struct aggregator *aggregator)
 
@@ -415,8 +415,8 @@ __get_agg_bandwidth
 
 .. _`__get_active_agg`:
 
-__get_active_agg
-================
+\__get_active_agg
+=================
 
 .. c:function:: struct aggregator *__get_active_agg(struct aggregator *aggregator)
 
@@ -434,8 +434,8 @@ Caller must hold RCU lock.
 
 .. _`__update_lacpdu_from_port`:
 
-__update_lacpdu_from_port
-=========================
+\__update_lacpdu_from_port
+==========================
 
 .. c:function:: void __update_lacpdu_from_port(struct port *port)
 
@@ -1021,8 +1021,8 @@ change, nonzero if it does.
 
 .. _`__bond_3ad_get_active_agg_info`:
 
-__bond_3ad_get_active_agg_info
-==============================
+\__bond_3ad_get_active_agg_info
+===============================
 
 .. c:function:: int __bond_3ad_get_active_agg_info(struct bonding *bond, struct ad_info *ad_info)
 

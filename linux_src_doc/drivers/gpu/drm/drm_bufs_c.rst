@@ -175,8 +175,8 @@ PCI memory respectively.
 
 .. _`__drm_legacy_infobufs`:
 
-__drm_legacy_infobufs
-=====================
+\__drm_legacy_infobufs
+======================
 
 .. c:function:: int __drm_legacy_infobufs(struct drm_device *dev, void *data, int *p, int (*f)(void *, int, struct drm_buf_entry *))
 
@@ -275,8 +275,8 @@ This function is primarily used for debugging.
 
 .. _`__drm_legacy_mapbufs`:
 
-__drm_legacy_mapbufs
-====================
+\__drm_legacy_mapbufs
+=====================
 
 .. c:function:: int __drm_legacy_mapbufs(struct drm_device *dev, void *data, int *p, void __user **v, int (*f)(void *, int, unsigned long, struct drm_buf *), struct drm_file *file_priv)
 

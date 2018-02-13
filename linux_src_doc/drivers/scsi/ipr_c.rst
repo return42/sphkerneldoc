@@ -88,8 +88,8 @@ none
 
 .. _`__ipr_get_free_ipr_cmnd`:
 
-__ipr_get_free_ipr_cmnd
-=======================
+\__ipr_get_free_ipr_cmnd
+========================
 
 .. c:function:: struct ipr_cmnd *__ipr_get_free_ipr_cmnd(struct ipr_hrr_queue *hrrq)
 
@@ -194,8 +194,8 @@ Return value
 
 .. _`__ipr_sata_eh_done`:
 
-__ipr_sata_eh_done
-==================
+\__ipr_sata_eh_done
+===================
 
 .. c:function:: void __ipr_sata_eh_done(struct ipr_cmnd *ipr_cmd)
 
@@ -248,8 +248,8 @@ none
 
 .. _`__ipr_scsi_eh_done`:
 
-__ipr_scsi_eh_done
-==================
+\__ipr_scsi_eh_done
+===================
 
 .. c:function:: void __ipr_scsi_eh_done(struct ipr_cmnd *ipr_cmd)
 
@@ -580,8 +580,8 @@ Return value
 
 .. _`__ipr_format_res_path`:
 
-__ipr_format_res_path
-=====================
+\__ipr_format_res_path
+======================
 
 .. c:function:: char *__ipr_format_res_path(u8 *res_path, char *buffer, int len)
 
@@ -2896,8 +2896,8 @@ Return value
 
 .. _`__ipr_eh_dev_reset`:
 
-__ipr_eh_dev_reset
-==================
+\__ipr_eh_dev_reset
+===================
 
 .. c:function:: int __ipr_eh_dev_reset(struct scsi_cmnd *scsi_cmd)
 
@@ -3180,8 +3180,8 @@ Return value
 
 .. _`__ipr_erp_done`:
 
-__ipr_erp_done
-==============
+\__ipr_erp_done
+===============
 
 .. c:function:: void __ipr_erp_done(struct ipr_cmnd *ipr_cmd)
 
@@ -3253,8 +3253,8 @@ none
 
 .. _`__ipr_erp_request_sense`:
 
-__ipr_erp_request_sense
-=======================
+\__ipr_erp_request_sense
+========================
 
 .. c:function:: void __ipr_erp_request_sense(struct ipr_cmnd *ipr_cmd)
 
@@ -5213,8 +5213,8 @@ none
 
 .. _`_ipr_initiate_ioa_reset`:
 
-_ipr_initiate_ioa_reset
-=======================
+\_ipr_initiate_ioa_reset
+========================
 
 .. c:function:: void _ipr_initiate_ioa_reset(struct ipr_ioa_cfg *ioa_cfg, int (*job_step)(struct ipr_cmnd *), enum ipr_shutdown_type shutdown_type)
 
@@ -5764,8 +5764,8 @@ none
 
 .. _`__ipr_remove`:
 
-__ipr_remove
-============
+\__ipr_remove
+=============
 
 .. c:function:: void __ipr_remove(struct pci_dev *pdev)
 

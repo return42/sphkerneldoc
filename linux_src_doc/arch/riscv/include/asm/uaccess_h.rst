@@ -44,8 +44,8 @@ this function, memory access functions may still return -EFAULT.
 
 .. _`__get_user`:
 
-__get_user
-==========
+\__get_user
+===========
 
 .. c:function::  __get_user( x,  ptr)
 
@@ -121,8 +121,8 @@ On error, the variable \ ``x``\  is set to zero.
 
 .. _`__put_user`:
 
-__put_user
-==========
+\__put_user
+===========
 
 .. c:function::  __put_user( x,  ptr)
 

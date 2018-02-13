@@ -3,8 +3,8 @@
 
 .. _`__mmc_switch`:
 
-__mmc_switch
-============
+\__mmc_switch
+=============
 
 .. c:function:: int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value, unsigned int timeout_ms, unsigned char timing, bool use_busy_signal, bool send_status, bool retry_crc_err)
 

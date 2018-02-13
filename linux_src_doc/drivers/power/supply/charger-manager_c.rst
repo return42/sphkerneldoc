@@ -211,8 +211,8 @@ charged state for battery.
 
 .. _`_cm_monitor`:
 
-_cm_monitor
-===========
+\_cm_monitor
+============
 
 .. c:function:: bool _cm_monitor(struct charger_manager *cm)
 
@@ -251,8 +251,8 @@ Returns true if there is an event to notify from any of the batteries.
 
 .. _`_setup_polling`:
 
-_setup_polling
-==============
+\_setup_polling
+===============
 
 .. c:function:: void _setup_polling(struct work_struct *work)
 

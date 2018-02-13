@@ -116,8 +116,8 @@ pll_data
 
 .. _`_of_pll_clk_init`:
 
-_of_pll_clk_init
-================
+\_of_pll_clk_init
+=================
 
 .. c:function:: void _of_pll_clk_init(struct device_node *node, bool pllctrl)
 

@@ -505,8 +505,8 @@ ibmvfc_hard_reset_host
 
 .. _`__ibmvfc_reset_host`:
 
-__ibmvfc_reset_host
-===================
+\__ibmvfc_reset_host
+====================
 
 .. c:function:: void __ibmvfc_reset_host(struct ibmvfc_host *vhost)
 
@@ -548,8 +548,8 @@ Return
 
 .. _`__ibmvfc_get_target`:
 
-__ibmvfc_get_target
-===================
+\__ibmvfc_get_target
+====================
 
 .. c:function:: struct ibmvfc_target *__ibmvfc_get_target(struct scsi_target *starget)
 
@@ -2187,8 +2187,8 @@ Return
 
 .. _`__ibmvfc_work_to_do`:
 
-__ibmvfc_work_to_do
-===================
+\__ibmvfc_work_to_do
+====================
 
 .. c:function:: int __ibmvfc_work_to_do(struct ibmvfc_host *vhost)
 

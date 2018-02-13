@@ -1291,7 +1291,7 @@ Used to pass RTH hash types to rts_rts_set.
 See also
 --------
 
-vxge_hw_vpath_rts_rth_set(), \ :c:func:`vxge_hw_vpath_rts_rth_get`\ .
+\ :c:func:`vxge_hw_vpath_rts_rth_set`\ , \ :c:func:`vxge_hw_vpath_rts_rth_get`\ .
 
 .. _`vxge_hw_ring_rxd_size_get`:
 

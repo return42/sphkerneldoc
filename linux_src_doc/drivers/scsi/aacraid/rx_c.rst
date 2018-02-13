@@ -236,8 +236,8 @@ aac_rx_select_comm
 
 .. _`_aac_rx_init`:
 
-_aac_rx_init
-============
+\_aac_rx_init
+=============
 
 .. c:function:: int _aac_rx_init(struct aac_dev *dev)
 

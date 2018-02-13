@@ -25,7 +25,7 @@ memremap
 Description
 -----------
 
-memremap() is "ioremap" for cases where it is known that the resource
+\ :c:func:`memremap`\  is "ioremap" for cases where it is known that the resource
 being mapped does not have i/o side effects and the \__iomem
 annotation is not applicable. In the case of multiple flags, the different
 mapping types will be attempted in the order listed below until one of

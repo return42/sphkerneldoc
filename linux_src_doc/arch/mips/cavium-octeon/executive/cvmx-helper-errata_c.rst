@@ -3,8 +3,8 @@
 
 .. _`__cvmx_helper_errata_qlm_disable_2nd_order_cdr`:
 
-__cvmx_helper_errata_qlm_disable_2nd_order_cdr
-==============================================
+\__cvmx_helper_errata_qlm_disable_2nd_order_cdr
+===============================================
 
 .. c:function:: void __cvmx_helper_errata_qlm_disable_2nd_order_cdr(int qlm)
 

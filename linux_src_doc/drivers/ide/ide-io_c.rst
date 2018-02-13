@@ -18,7 +18,7 @@ do_special
 Description
 -----------
 
-do_special() is used to issue ATA_CMD_INIT_DEV_PARAMS,
+\ :c:func:`do_special`\  is used to issue ATA_CMD_INIT_DEV_PARAMS,
 ATA_CMD_RESTORE and ATA_CMD_SET_MULTI commands to a drive.
 
 .. _`execute_drive_cmd`:
@@ -41,7 +41,7 @@ execute_drive_cmd
 Description
 -----------
 
-execute_drive_cmd() issues a special drive command,  usually
+\ :c:func:`execute_drive_cmd`\  issues a special drive command,  usually
 initiated by \ :c:func:`ioctl`\  from the external hdparm program. The
 command can be a drive command, drive task or taskfile
 operation. Weirdly you can call it with NULL to wait for
@@ -67,7 +67,7 @@ start_request
 Description
 -----------
 
-start_request() initiates handling of a new I/O request. It
+\ :c:func:`start_request`\  initiates handling of a new I/O request. It
 accepts commands and I/O (read/write) requests.
 
 .. _`start_request.fixme`:
@@ -97,7 +97,7 @@ ide_stall_queue
 Description
 -----------
 
-ide_stall_queue() can be used by a drive to give excess bandwidth back
+\ :c:func:`ide_stall_queue`\  can be used by a drive to give excess bandwidth back
 to the port by sleeping for timeout jiffies.
 
 .. _`ide_timer_expiry`:

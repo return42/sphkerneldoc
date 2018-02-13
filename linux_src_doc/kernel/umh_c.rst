@@ -3,8 +3,8 @@
 
 .. _`__usermodehelper_set_disable_depth`:
 
-__usermodehelper_set_disable_depth
-==================================
+\__usermodehelper_set_disable_depth
+===================================
 
 .. c:function:: void __usermodehelper_set_disable_depth(enum umh_disable_depth depth)
 
@@ -23,8 +23,8 @@ writing) and wakeup tasks waiting for it to change.
 
 .. _`__usermodehelper_disable`:
 
-__usermodehelper_disable
-========================
+\__usermodehelper_disable
+=========================
 
 .. c:function:: int __usermodehelper_disable(enum umh_disable_depth depth)
 

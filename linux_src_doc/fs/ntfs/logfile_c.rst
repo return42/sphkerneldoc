@@ -11,7 +11,7 @@ ntfs_check_restart_page_header
     check the page header for consistency
 
     :param struct inode \*vi:
-        $LogFile inode to which the restart page header belongs
+        \ ``$LogFile``\  inode to which the restart page header belongs
 
     :param RESTART_PAGE_HEADER \*rp:
         restart page header to check
@@ -40,7 +40,7 @@ ntfs_check_restart_area
     check the restart area for consistency
 
     :param struct inode \*vi:
-        $LogFile inode to which the restart page belongs
+        \ ``$LogFile``\  inode to which the restart page belongs
 
     :param RESTART_PAGE_HEADER \*rp:
         restart page whose restart area to check
@@ -69,7 +69,7 @@ ntfs_check_log_client_array
     check the log client array for consistency
 
     :param struct inode \*vi:
-        $LogFile inode to which the restart page belongs
+        \ ``$LogFile``\  inode to which the restart page belongs
 
     :param RESTART_PAGE_HEADER \*rp:
         restart page whose log client array to check
@@ -99,7 +99,7 @@ ntfs_check_and_load_restart_page
     check the restart page for consistency
 
     :param struct inode \*vi:
-        $LogFile inode to which the restart page belongs
+        \ ``$LogFile``\  inode to which the restart page belongs
 
     :param RESTART_PAGE_HEADER \*rp:
         restart page to check

@@ -42,7 +42,7 @@ mdev
 Description
 -----------
 
-@ccwchain_list is the head of a ccwchain list, that contents the
+\ ``ccwchain_list``\  is the head of a ccwchain list, that contents the
 translated result of the guest channel program that pointed out by
 the iova parameter when calling cp_init.
 

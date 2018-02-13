@@ -49,7 +49,7 @@ tee_device_register
 Description
 -----------
 
-tee_device_unregister() need to be called to remove the \ ``teedev``\  if
+\ :c:func:`tee_device_unregister`\  need to be called to remove the \ ``teedev``\  if
 this function fails.
 
 \ ``returns``\  < 0 on failure

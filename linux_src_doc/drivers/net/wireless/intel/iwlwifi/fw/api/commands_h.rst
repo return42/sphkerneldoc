@@ -233,14 +233,14 @@ BA_WINDOW_STATUS_NOTIFICATION_ID
     uses \ :c:type:`struct iwl_ba_window_status_notif <iwl_ba_window_status_notif>`\ 
 
 ADD_STA_KEY
-    &struct iwl_mvm_add_sta_key_cmd_v1 or
+    \ :c:type:`struct iwl_mvm_add_sta_key_cmd_v1 <iwl_mvm_add_sta_key_cmd_v1>`\  or
     \ :c:type:`struct iwl_mvm_add_sta_key_cmd <iwl_mvm_add_sta_key_cmd>`\ .
 
 ADD_STA
-    &struct iwl_mvm_add_sta_cmd or \ :c:type:`struct iwl_mvm_add_sta_cmd_v7 <iwl_mvm_add_sta_cmd_v7>`\ .
+    \ :c:type:`struct iwl_mvm_add_sta_cmd <iwl_mvm_add_sta_cmd>`\  or \ :c:type:`struct iwl_mvm_add_sta_cmd_v7 <iwl_mvm_add_sta_cmd_v7>`\ .
 
 REMOVE_STA
-    &struct iwl_mvm_rm_sta_cmd
+    \ :c:type:`struct iwl_mvm_rm_sta_cmd <iwl_mvm_rm_sta_cmd>`\ 
 
 FW_GET_ITEM_CMD
     uses \ :c:type:`struct iwl_fw_get_item_cmd <iwl_fw_get_item_cmd>`\ 
@@ -250,14 +250,14 @@ TX_CMD
     \ :c:type:`struct iwl_mvm_tx_resp_v3 <iwl_mvm_tx_resp_v3>`\ 
 
 TXPATH_FLUSH
-    &struct iwl_tx_path_flush_cmd
+    \ :c:type:`struct iwl_tx_path_flush_cmd <iwl_tx_path_flush_cmd>`\ 
 
 MGMT_MCAST_KEY
-    &struct iwl_mvm_mgmt_mcast_key_cmd or
+    \ :c:type:`struct iwl_mvm_mgmt_mcast_key_cmd <iwl_mvm_mgmt_mcast_key_cmd>`\  or
     \ :c:type:`struct iwl_mvm_mgmt_mcast_key_cmd_v1 <iwl_mvm_mgmt_mcast_key_cmd_v1>`\ 
 
 SCD_QUEUE_CFG
-    &struct iwl_scd_txq_cfg_cmd for older hardware,     \ :c:type:`struct iwl_tx_queue_cfg_cmd <iwl_tx_queue_cfg_cmd>`\  with \ :c:type:`struct iwl_tx_queue_cfg_rsp <iwl_tx_queue_cfg_rsp>`\ 
+    \ :c:type:`struct iwl_scd_txq_cfg_cmd <iwl_scd_txq_cfg_cmd>`\  for older hardware,     \ :c:type:`struct iwl_tx_queue_cfg_cmd <iwl_tx_queue_cfg_cmd>`\  with \ :c:type:`struct iwl_tx_queue_cfg_rsp <iwl_tx_queue_cfg_rsp>`\ 
     for newer (22000) hardware.
 
 WEP_KEY
@@ -274,22 +274,22 @@ TDLS_CHANNEL_SWITCH_NOTIFICATION
     uses \ :c:type:`struct iwl_tdls_channel_switch_notif <iwl_tdls_channel_switch_notif>`\ 
 
 TDLS_CONFIG_CMD
-    &struct iwl_tdls_config_cmd, response in \ :c:type:`struct iwl_tdls_config_res <iwl_tdls_config_res>`\ 
+    \ :c:type:`struct iwl_tdls_config_cmd <iwl_tdls_config_cmd>`\ , response in \ :c:type:`struct iwl_tdls_config_res <iwl_tdls_config_res>`\ 
 
 MAC_CONTEXT_CMD
-    &struct iwl_mac_ctx_cmd
+    \ :c:type:`struct iwl_mac_ctx_cmd <iwl_mac_ctx_cmd>`\ 
 
 TIME_EVENT_CMD
-    &struct iwl_time_event_cmd, response in \ :c:type:`struct iwl_time_event_resp <iwl_time_event_resp>`\ 
+    \ :c:type:`struct iwl_time_event_cmd <iwl_time_event_cmd>`\ , response in \ :c:type:`struct iwl_time_event_resp <iwl_time_event_resp>`\ 
 
 TIME_EVENT_NOTIFICATION
-    &struct iwl_time_event_notif
+    \ :c:type:`struct iwl_time_event_notif <iwl_time_event_notif>`\ 
 
 BINDING_CONTEXT_CMD
-    &struct iwl_binding_cmd or \ :c:type:`struct iwl_binding_cmd_v1 <iwl_binding_cmd_v1>`\ 
+    \ :c:type:`struct iwl_binding_cmd <iwl_binding_cmd>`\  or \ :c:type:`struct iwl_binding_cmd_v1 <iwl_binding_cmd_v1>`\ 
 
 TIME_QUOTA_CMD
-    &struct iwl_time_quota_cmd
+    \ :c:type:`struct iwl_time_quota_cmd <iwl_time_quota_cmd>`\ 
 
 NON_QOS_TX_COUNTER_CMD
     command is \ :c:type:`struct iwl_nonqos_seq_query_cmd <iwl_nonqos_seq_query_cmd>`\ 
@@ -301,7 +301,7 @@ LQ_CMD
     using \ :c:type:`struct iwl_lq_cmd <iwl_lq_cmd>`\ 
 
 FW_PAGING_BLOCK_CMD
-    &struct iwl_fw_paging_cmd
+    \ :c:type:`struct iwl_fw_paging_cmd <iwl_fw_paging_cmd>`\ 
 
 SCAN_OFFLOAD_REQUEST_CMD
     uses \ :c:type:`struct iwl_scan_req_lmac <iwl_scan_req_lmac>`\ 
@@ -325,28 +325,28 @@ SCAN_ITERATION_COMPLETE
     uses \ :c:type:`struct iwl_lmac_scan_complete_notif <iwl_lmac_scan_complete_notif>`\ 
 
 PHY_CONFIGURATION_CMD
-    &struct iwl_phy_cfg_cmd
+    \ :c:type:`struct iwl_phy_cfg_cmd <iwl_phy_cfg_cmd>`\ 
 
 CALIB_RES_NOTIF_PHY_DB
-    &struct iwl_calib_res_notif_phy_db
+    \ :c:type:`struct iwl_calib_res_notif_phy_db <iwl_calib_res_notif_phy_db>`\ 
 
 PHY_DB_CMD
-    &struct iwl_phy_db_cmd
+    \ :c:type:`struct iwl_phy_db_cmd <iwl_phy_db_cmd>`\ 
 
 TOF_CMD
-    &struct iwl_tof_config_cmd
+    \ :c:type:`struct iwl_tof_config_cmd <iwl_tof_config_cmd>`\ 
 
 TOF_NOTIFICATION
-    &struct iwl_tof_gen_resp_cmd
+    \ :c:type:`struct iwl_tof_gen_resp_cmd <iwl_tof_gen_resp_cmd>`\ 
 
 POWER_TABLE_CMD
-    &struct iwl_device_power_cmd
+    \ :c:type:`struct iwl_device_power_cmd <iwl_device_power_cmd>`\ 
 
 PSM_UAPSD_AP_MISBEHAVING_NOTIFICATION
-    &struct iwl_uapsd_misbehaving_ap_notif
+    \ :c:type:`struct iwl_uapsd_misbehaving_ap_notif <iwl_uapsd_misbehaving_ap_notif>`\ 
 
 LTR_CONFIG
-    &struct iwl_ltr_config_cmd
+    \ :c:type:`struct iwl_ltr_config_cmd <iwl_ltr_config_cmd>`\ 
 
 REPLY_THERMAL_MNG_BACKOFF
     Thermal throttling command
@@ -360,7 +360,7 @@ NVM_ACCESS_CMD
     using \ :c:type:`struct iwl_nvm_access_cmd <iwl_nvm_access_cmd>`\ 
 
 BEACON_NOTIFICATION
-    &struct iwl_extended_beacon_notif
+    \ :c:type:`struct iwl_extended_beacon_notif <iwl_extended_beacon_notif>`\ 
 
 BEACON_TEMPLATE_CMD
     Uses one of \ :c:type:`struct iwl_mac_beacon_cmd_v6 <iwl_mac_beacon_cmd_v6>`\ ,
@@ -368,10 +368,10 @@ BEACON_TEMPLATE_CMD
     depending on the device version.
 
 TX_ANT_CONFIGURATION_CMD
-    &struct iwl_tx_ant_cfg_cmd
+    \ :c:type:`struct iwl_tx_ant_cfg_cmd <iwl_tx_ant_cfg_cmd>`\ 
 
 STATISTICS_CMD
-    &struct iwl_statistics_cmd
+    \ :c:type:`struct iwl_statistics_cmd <iwl_statistics_cmd>`\ 
 
 STATISTICS_NOTIFICATION
     one of \ :c:type:`struct iwl_notif_statistics_v10 <iwl_notif_statistics_v10>`\ ,
@@ -383,29 +383,29 @@ EOSP_NOTIFICATION
     \ :c:type:`struct iwl_mvm_eosp_notification <iwl_mvm_eosp_notification>`\ 
 
 REDUCE_TX_POWER_CMD
-    &struct iwl_dev_tx_power_cmd_v3 or \ :c:type:`struct iwl_dev_tx_power_cmd <iwl_dev_tx_power_cmd>`\ 
+    \ :c:type:`struct iwl_dev_tx_power_cmd_v3 <iwl_dev_tx_power_cmd_v3>`\  or \ :c:type:`struct iwl_dev_tx_power_cmd <iwl_dev_tx_power_cmd>`\ 
 
 CARD_STATE_NOTIFICATION
     Card state (RF/CT kill) notification,
     uses \ :c:type:`struct iwl_card_state_notif <iwl_card_state_notif>`\ 
 
 MISSED_BEACONS_NOTIFICATION
-    &struct iwl_missed_beacons_notif
+    \ :c:type:`struct iwl_missed_beacons_notif <iwl_missed_beacons_notif>`\ 
 
 MAC_PM_POWER_TABLE
     using \ :c:type:`struct iwl_mac_power_cmd <iwl_mac_power_cmd>`\ 
 
 MFUART_LOAD_NOTIFICATION
-    &struct iwl_mfuart_load_notif
+    \ :c:type:`struct iwl_mfuart_load_notif <iwl_mfuart_load_notif>`\ 
 
 RSS_CONFIG_CMD
-    &struct iwl_rss_config_cmd
+    \ :c:type:`struct iwl_rss_config_cmd <iwl_rss_config_cmd>`\ 
 
 REPLY_RX_PHY_CMD
-    &struct iwl_rx_phy_info
+    \ :c:type:`struct iwl_rx_phy_info <iwl_rx_phy_info>`\ 
 
 REPLY_RX_MPDU_CMD
-    &struct iwl_rx_mpdu_res_start or \ :c:type:`struct iwl_rx_mpdu_desc <iwl_rx_mpdu_desc>`\ 
+    \ :c:type:`struct iwl_rx_mpdu_res_start <iwl_rx_mpdu_res_start>`\  or \ :c:type:`struct iwl_rx_mpdu_desc <iwl_rx_mpdu_desc>`\ 
 
 FRAME_RELEASE
     Frame release (reorder helper) notification, uses
@@ -425,25 +425,25 @@ MARKER_CMD
     trace marker command, uses \ :c:type:`struct iwl_mvm_markerwith <iwl_mvm_markerwith>`\  \ :c:type:`struct iwl_mvm_marker_rsp <iwl_mvm_marker_rsp>`\ 
 
 BT_PROFILE_NOTIFICATION
-    &struct iwl_bt_coex_profile_notif
+    \ :c:type:`struct iwl_bt_coex_profile_notif <iwl_bt_coex_profile_notif>`\ 
 
 BT_CONFIG
-    &struct iwl_bt_coex_cmd
+    \ :c:type:`struct iwl_bt_coex_cmd <iwl_bt_coex_cmd>`\ 
 
 BT_COEX_UPDATE_REDUCED_TXP
-    &struct iwl_bt_coex_reduced_txp_update_cmd
+    \ :c:type:`struct iwl_bt_coex_reduced_txp_update_cmd <iwl_bt_coex_reduced_txp_update_cmd>`\ 
 
 BT_COEX_CI
-    &struct iwl_bt_coex_ci_cmd
+    \ :c:type:`struct iwl_bt_coex_ci_cmd <iwl_bt_coex_ci_cmd>`\ 
 
 REPLY_SF_CFG_CMD
-    &struct iwl_sf_cfg_cmd
+    \ :c:type:`struct iwl_sf_cfg_cmd <iwl_sf_cfg_cmd>`\ 
 
 REPLY_BEACON_FILTERING_CMD
-    &struct iwl_beacon_filter_cmd
+    \ :c:type:`struct iwl_beacon_filter_cmd <iwl_beacon_filter_cmd>`\ 
 
 DTS_MEASUREMENT_NOTIFICATION
-    &struct iwl_dts_measurement_notif_v1 or
+    \ :c:type:`struct iwl_dts_measurement_notif_v1 <iwl_dts_measurement_notif_v1>`\  or
     \ :c:type:`struct iwl_dts_measurement_notif_v2 <iwl_dts_measurement_notif_v2>`\ 
 
 LDBG_CONFIG_CMD
@@ -453,13 +453,13 @@ DEBUG_LOG_MSG
     Debugging log data from firmware
 
 BCAST_FILTER_CMD
-    &struct iwl_bcast_filter_cmd
+    \ :c:type:`struct iwl_bcast_filter_cmd <iwl_bcast_filter_cmd>`\ 
 
 MCAST_FILTER_CMD
-    &struct iwl_mcast_filter_cmd
+    \ :c:type:`struct iwl_mcast_filter_cmd <iwl_mcast_filter_cmd>`\ 
 
 D3_CONFIG_CMD
-    &struct iwl_d3_manager_config
+    \ :c:type:`struct iwl_d3_manager_config <iwl_d3_manager_config>`\ 
 
 PROT_OFFLOAD_CONFIG_CMD
     Depending on firmware, uses one of&struct iwl_proto_offload_cmd_v1, \ :c:type:`struct iwl_proto_offload_cmd_v2 <iwl_proto_offload_cmd_v2>`\ ,
@@ -470,25 +470,25 @@ OFFLOADS_QUERY_CMD
     No data in command, response in \ :c:type:`struct iwl_wowlan_status <iwl_wowlan_status>`\ 
 
 REMOTE_WAKE_CONFIG_CMD
-    &struct iwl_wowlan_remote_wake_config
+    \ :c:type:`struct iwl_wowlan_remote_wake_config <iwl_wowlan_remote_wake_config>`\ 
 
 D0I3_END_CMD
     End D0i3/D3 state, no command data
 
 WOWLAN_PATTERNS
-    &struct iwl_wowlan_patterns_cmd
+    \ :c:type:`struct iwl_wowlan_patterns_cmd <iwl_wowlan_patterns_cmd>`\ 
 
 WOWLAN_CONFIGURATION
-    &struct iwl_wowlan_config_cmd
+    \ :c:type:`struct iwl_wowlan_config_cmd <iwl_wowlan_config_cmd>`\ 
 
 WOWLAN_TSC_RSC_PARAM
-    &struct iwl_wowlan_rsc_tsc_params_cmd
+    \ :c:type:`struct iwl_wowlan_rsc_tsc_params_cmd <iwl_wowlan_rsc_tsc_params_cmd>`\ 
 
 WOWLAN_TKIP_PARAM
-    &struct iwl_wowlan_tkip_params_cmd
+    \ :c:type:`struct iwl_wowlan_tkip_params_cmd <iwl_wowlan_tkip_params_cmd>`\ 
 
 WOWLAN_KEK_KCK_MATERIAL
-    &struct iwl_wowlan_kek_kck_material_cmd
+    \ :c:type:`struct iwl_wowlan_kek_kck_material_cmd <iwl_wowlan_kek_kck_material_cmd>`\ 
 
 WOWLAN_GET_STATUSES
     response in \ :c:type:`struct iwl_wowlan_status <iwl_wowlan_status>`\ 
@@ -528,7 +528,7 @@ SHARED_MEM_CFG_CMD
     \ :c:type:`struct iwl_shared_mem_cfg_v2 <iwl_shared_mem_cfg_v2>`\ 
 
 INIT_EXTENDED_CFG_CMD
-    &struct iwl_init_extended_cfg_cmd
+    \ :c:type:`struct iwl_init_extended_cfg_cmd <iwl_init_extended_cfg_cmd>`\ 
 
 FSEQ_VER_MISMATCH_NTF
     Notification about fseq version     mismatch during init.  The format is specified in

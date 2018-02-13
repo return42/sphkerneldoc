@@ -27,7 +27,7 @@ cvmx_pcie_get_io_size
 
 .. c:function:: uint64_t cvmx_pcie_get_io_size(int pcie_port)
 
-    cvmx_pcie_get_io_base_address()
+    \ :c:func:`cvmx_pcie_get_io_base_address`\ 
 
     :param int pcie_port:
         PCIe port the IO is for
@@ -65,7 +65,7 @@ cvmx_pcie_get_mem_size
 
 .. c:function:: uint64_t cvmx_pcie_get_mem_size(int pcie_port)
 
-    cvmx_pcie_get_mem_base_address()
+    \ :c:func:`cvmx_pcie_get_mem_base_address`\ 
 
     :param int pcie_port:
         PCIe port the IO is for
@@ -119,8 +119,8 @@ cvmx_pcie_cfgx_write
 
 .. _`__cvmx_pcie_build_config_addr`:
 
-__cvmx_pcie_build_config_addr
-=============================
+\__cvmx_pcie_build_config_addr
+==============================
 
 .. c:function:: uint64_t __cvmx_pcie_build_config_addr(int pcie_port, int bus, int dev, int fn, int reg)
 
@@ -310,8 +310,8 @@ cvmx_pcie_config_write32
 
 .. _`__cvmx_pcie_rc_initialize_config_space`:
 
-__cvmx_pcie_rc_initialize_config_space
-======================================
+\__cvmx_pcie_rc_initialize_config_space
+=======================================
 
 .. c:function:: void __cvmx_pcie_rc_initialize_config_space(int pcie_port)
 
@@ -320,8 +320,8 @@ __cvmx_pcie_rc_initialize_config_space
 
 .. _`__cvmx_pcie_rc_initialize_link_gen1`:
 
-__cvmx_pcie_rc_initialize_link_gen1
-===================================
+\__cvmx_pcie_rc_initialize_link_gen1
+====================================
 
 .. c:function:: int __cvmx_pcie_rc_initialize_link_gen1(int pcie_port)
 
@@ -339,8 +339,8 @@ Returns Zero on success
 
 .. _`__cvmx_pcie_rc_initialize_gen1`:
 
-__cvmx_pcie_rc_initialize_gen1
-==============================
+\__cvmx_pcie_rc_initialize_gen1
+===============================
 
 .. c:function:: int __cvmx_pcie_rc_initialize_gen1(int pcie_port)
 
@@ -358,8 +358,8 @@ Returns Zero on success
 
 .. _`__cvmx_pcie_rc_initialize_link_gen2`:
 
-__cvmx_pcie_rc_initialize_link_gen2
-===================================
+\__cvmx_pcie_rc_initialize_link_gen2
+====================================
 
 .. c:function:: int __cvmx_pcie_rc_initialize_link_gen2(int pcie_port)
 
@@ -377,8 +377,8 @@ Return Zero on success.
 
 .. _`__cvmx_pcie_rc_initialize_gen2`:
 
-__cvmx_pcie_rc_initialize_gen2
-==============================
+\__cvmx_pcie_rc_initialize_gen2
+===============================
 
 .. c:function:: int __cvmx_pcie_rc_initialize_gen2(int pcie_port)
 

@@ -749,7 +749,7 @@ Description
 
 .. note::
 
-   If prefix != \ ``NULL``\ , then it will issue a
+   If prefix != %NULL, then it will issue a
    ``printk(KERN_DEBUG "%s: ", prefix)`` first.
 
 .. _`v4l2_ioctl_get_lock`:

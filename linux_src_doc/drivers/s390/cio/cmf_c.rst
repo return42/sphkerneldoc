@@ -308,7 +308,7 @@ Description
 Return
 ------
 
-%0 for success or a negative error value.
+\ ``0``\  for success or a negative error value.
 
 .. _`enable_cmf.context`:
 
@@ -334,7 +334,7 @@ __disable_cmf
 Return
 ------
 
-%0 for success or a negative error value.
+\ ``0``\  for success or a negative error value.
 
 .. _`__disable_cmf.context`:
 
@@ -360,7 +360,7 @@ disable_cmf
 Return
 ------
 
-%0 for success or a negative error value.
+\ ``0``\  for success or a negative error value.
 
 .. _`disable_cmf.context`:
 
@@ -418,7 +418,7 @@ cmf_readall
 Return
 ------
 
-%0 on success, a negative error value otherwise.
+\ ``0``\  on success, a negative error value otherwise.
 
 .. _`cmf_readall.context`:
 

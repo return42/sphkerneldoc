@@ -281,8 +281,8 @@ reset_control_put
 
 .. _`__device_reset`:
 
-__device_reset
-==============
+\__device_reset
+===============
 
 .. c:function:: int __device_reset(struct device *dev, bool optional)
 

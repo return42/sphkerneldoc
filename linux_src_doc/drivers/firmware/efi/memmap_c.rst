@@ -26,8 +26,8 @@ success, zero on failure.
 
 .. _`__efi_memmap_init`:
 
-__efi_memmap_init
-=================
+\__efi_memmap_init
+==================
 
 .. c:function:: int __efi_memmap_init(struct efi_memory_map_data *data, bool late)
 

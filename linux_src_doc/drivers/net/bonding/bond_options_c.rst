@@ -28,8 +28,8 @@ or the struct_opt_value that matched. It also strips the new line from
 
 .. _`__bond_opt_set`:
 
-__bond_opt_set
-==============
+\__bond_opt_set
+===============
 
 .. c:function:: int __bond_opt_set(struct bonding *bond, unsigned int option, struct bond_opt_value *val)
 
@@ -55,8 +55,8 @@ must be obtained before calling this function.
 
 .. _`__bond_opt_set_notify`:
 
-__bond_opt_set_notify
-=====================
+\__bond_opt_set_notify
+======================
 
 .. c:function:: int __bond_opt_set_notify(struct bonding *bond, unsigned int option, struct bond_opt_value *val)
 

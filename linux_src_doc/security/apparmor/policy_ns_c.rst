@@ -148,8 +148,8 @@ refcount released by caller
 
 .. _`__aa_lookupn_ns`:
 
-__aa_lookupn_ns
-===============
+\__aa_lookupn_ns
+================
 
 .. c:function:: struct aa_ns *__aa_lookupn_ns(struct aa_ns *view, const char *hname, size_t n)
 
@@ -210,8 +210,8 @@ refcount released by caller
 
 .. _`__aa_find_or_create_ns`:
 
-__aa_find_or_create_ns
-======================
+\__aa_find_or_create_ns
+=======================
 
 .. c:function:: struct aa_ns *__aa_find_or_create_ns(struct aa_ns *parent, const char *name, struct dentry *dir)
 
@@ -269,8 +269,8 @@ destroy_ns
 
 .. _`__aa_remove_ns`:
 
-__aa_remove_ns
-==============
+\__aa_remove_ns
+===============
 
 .. c:function:: void __aa_remove_ns(struct aa_ns *ns)
 
@@ -288,8 +288,8 @@ ns->parent->lock be held and ns removed from parent.
 
 .. _`__ns_list_release`:
 
-__ns_list_release
-=================
+\__ns_list_release
+==================
 
 .. c:function:: void __ns_list_release(struct list_head *head)
 
@@ -322,7 +322,7 @@ aa_alloc_root_ns
 Return
 ------
 
-%0 on success else error
+\ ``0``\  on success else error
 
 .. This file was automatic generated / don't edit.
 

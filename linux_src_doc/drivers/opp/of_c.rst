@@ -22,8 +22,8 @@ Free OPPs created using static entries present in DT.
 
 .. _`_opp_add_static_v2`:
 
-_opp_add_static_v2
-==================
+\_opp_add_static_v2
+===================
 
 .. c:function:: int _opp_add_static_v2(struct opp_table *opp_table, struct device *dev, struct device_node *np)
 

@@ -72,7 +72,7 @@ pvrdma_modify_srq
 Description
 -----------
 
-@returns 0 on success, otherwise returns an errno.
+\ ``returns``\  0 on success, otherwise returns an errno.
 
 .. This file was automatic generated / don't edit.
 

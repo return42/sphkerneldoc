@@ -300,8 +300,8 @@ Sets the parent of a TI SCI clock. Return TI SCI protocol status.
 
 .. _`_sci_clk_build`:
 
-_sci_clk_build
-==============
+\_sci_clk_build
+===============
 
 .. c:function:: struct clk_hw *_sci_clk_build(struct sci_clk_provider *provider, u16 dev_id, u8 clk_id)
 

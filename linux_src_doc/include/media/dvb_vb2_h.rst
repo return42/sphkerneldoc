@@ -267,11 +267,11 @@ dvb_vb2_poll
         control struct for VB2 handler
 
     :param struct file \*file:
-        &struct file argument passed to the poll
+        \ :c:type:`struct file <file>`\  argument passed to the poll
         file operation handler.
 
     :param poll_table \*wait:
-        &poll_table wait argument passed to the poll
+        \ :c:type:`struct poll_table <poll_table>`\  wait argument passed to the poll
         file operation handler.
 
 .. _`dvb_vb2_poll.description`:
@@ -332,7 +332,7 @@ dvb_vb2_reqbufs
         control struct for VB2 handler
 
     :param struct dmx_requestbuffers \*req:
-        &struct dmx_requestbuffers passed from userspace in
+        \ :c:type:`struct dmx_requestbuffers <dmx_requestbuffers>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_REQBUFS <DMX_REQBUFS>`\ .
 
 .. _`dvb_vb2_reqbufs.description`:
@@ -356,7 +356,7 @@ dvb_vb2_querybuf
         control struct for VB2 handler
 
     :param struct dmx_buffer \*b:
-        &struct dmx_buffer passed from userspace in
+        \ :c:type:`struct dmx_buffer <dmx_buffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_QUERYBUF <DMX_QUERYBUF>`\ .
 
 .. _`dvb_vb2_querybuf.description`:
@@ -379,7 +379,7 @@ dvb_vb2_expbuf
         control struct for VB2 handler
 
     :param struct dmx_exportbuffer \*exp:
-        &struct dmx_exportbuffer passed from userspace in
+        \ :c:type:`struct dmx_exportbuffer <dmx_exportbuffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_EXPBUF <DMX_EXPBUF>`\ .
 
 .. _`dvb_vb2_expbuf.description`:
@@ -402,7 +402,7 @@ dvb_vb2_qbuf
         control struct for VB2 handler
 
     :param struct dmx_buffer \*b:
-        &struct dmx_buffer passed from userspace in
+        \ :c:type:`struct dmx_buffer <dmx_buffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_QBUF <DMX_QBUF>`\ .
 
 .. _`dvb_vb2_qbuf.description`:
@@ -425,7 +425,7 @@ dvb_vb2_dqbuf
         control struct for VB2 handler
 
     :param struct dmx_buffer \*b:
-        &struct dmx_buffer passed from userspace in
+        \ :c:type:`struct dmx_buffer <dmx_buffer>`\  passed from userspace in
         order to handle \ :c:type:`struct DMX_DQBUF <DMX_DQBUF>`\ .
 
 .. _`dvb_vb2_dqbuf.description`:

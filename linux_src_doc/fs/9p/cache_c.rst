@@ -22,8 +22,8 @@ The value of jiffies is used for a fairly randomly cache tag.
 
 .. _`__v9fs_readpage_from_fscache`:
 
-__v9fs_readpage_from_fscache
-============================
+\__v9fs_readpage_from_fscache
+=============================
 
 .. c:function:: int __v9fs_readpage_from_fscache(struct inode *inode, struct page *page)
 
@@ -45,8 +45,8 @@ Returns 0 if the pages are in cache and a BIO is submitted,
 
 .. _`__v9fs_readpages_from_fscache`:
 
-__v9fs_readpages_from_fscache
-=============================
+\__v9fs_readpages_from_fscache
+==============================
 
 .. c:function:: int __v9fs_readpages_from_fscache(struct inode *inode, struct address_space *mapping, struct list_head *pages, unsigned *nr_pages)
 
@@ -74,8 +74,8 @@ Returns 0 if the pages are in cache and a BIO is submitted,
 
 .. _`__v9fs_readpage_to_fscache`:
 
-__v9fs_readpage_to_fscache
-==========================
+\__v9fs_readpage_to_fscache
+===========================
 
 .. c:function:: void __v9fs_readpage_to_fscache(struct inode *inode, struct page *page)
 

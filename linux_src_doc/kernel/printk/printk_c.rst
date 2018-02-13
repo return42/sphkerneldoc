@@ -331,7 +331,7 @@ printk_timed_ratelimit
 Description
 -----------
 
-printk_timed_ratelimit() returns true if more than \ ``interval_msecs``\ 
+\ :c:func:`printk_timed_ratelimit`\  returns true if more than \ ``interval_msecs``\ 
 milliseconds have elapsed since the last time \ :c:func:`printk_timed_ratelimit`\ 
 returned true.
 
@@ -621,7 +621,7 @@ show_regs_print_info
 Description
 -----------
 
-show_regs() implementations can use this function to print out generic
+\ :c:func:`show_regs`\  implementations can use this function to print out generic
 debug information.
 
 .. This file was automatic generated / don't edit.

@@ -42,7 +42,7 @@ pp_atomfwctrl_enter_self_refresh
 
 .. c:function:: int pp_atomfwctrl_enter_self_refresh(struct pp_hwmgr *hwmgr)
 
-    @param hwmgr
+    \ ``param``\  hwmgr
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*

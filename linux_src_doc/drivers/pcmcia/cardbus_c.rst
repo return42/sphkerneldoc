@@ -18,7 +18,7 @@ cb_alloc
 Description
 -----------
 
-cb_alloc() allocates the kernel data structures for a Cardbus device
+\ :c:func:`cb_alloc`\  allocates the kernel data structures for a Cardbus device
 and handles the lowest level PCI device setup issues.
 
 .. _`cb_free`:
@@ -38,7 +38,7 @@ cb_free
 Description
 -----------
 
-cb_free() handles the lowest level PCI device cleanup.
+\ :c:func:`cb_free`\  handles the lowest level PCI device cleanup.
 
 .. This file was automatic generated / don't edit.
 

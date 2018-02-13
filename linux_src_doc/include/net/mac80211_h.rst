@@ -2057,7 +2057,7 @@ ampdu_reference
     each A-MPDU but the same for each subframe within one A-MPDU
 
 flag
-    %RX_FLAG_\*
+    \ ``RX_FLAG_``\ \*
 
 freq
     frequency the radio was tuned to when receiving this frame, in MHz
@@ -2068,10 +2068,10 @@ enc_flags
     uses bits from \ :c:type:`enum mac80211_rx_encoding_flags <mac80211_rx_encoding_flags>`\ 
 
 encoding
-    &enum mac80211_rx_encoding
+    \ :c:type:`enum mac80211_rx_encoding <mac80211_rx_encoding>`\ 
 
 bw
-    &enum rate_info_bw
+    \ :c:type:`enum rate_info_bw <rate_info_bw>`\ 
 
 rate_idx
     index of data rate into band's supported rates or MCS index if
@@ -3419,7 +3419,7 @@ Members
 -------
 
 vif
-    &struct ieee80211_vif pointer from the add_interface callback.
+    \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 sta
     station table entry, \ ``NULL``\  for per-vif queue
@@ -3780,7 +3780,7 @@ Members
 -------
 
 conf
-    &struct ieee80211_conf, device configuration, don't use.
+    \ :c:type:`struct ieee80211_conf <ieee80211_conf>`\ , device configuration, don't use.
 
 wiphy
     This points to the \ :c:type:`struct wiphy <wiphy>`\  allocated for this
@@ -5974,7 +5974,7 @@ ieee80211_create_tpt_led_trigger
 Return
 ------
 
-%NULL (in case of error, or if no LED triggers are
+\ ``NULL``\  (in case of error, or if no LED triggers are
 configured) or the name of the new trigger.
 
 .. _`ieee80211_create_tpt_led_trigger.note`:
@@ -6309,7 +6309,7 @@ ieee80211_sta_set_buffered
     inform mac80211 about driver-buffered frames
 
     :param struct ieee80211_sta \*sta:
-        &struct ieee80211_sta pointer for the sleeping station
+        \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer for the sleeping station
 
     :param u8 tid:
         the TID that has buffered frames
@@ -6354,7 +6354,7 @@ ieee80211_get_tx_rates
     get the selected transmit rates for a packet
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param struct ieee80211_sta \*sta:
         the receiver station to which this packet is sent.
@@ -6620,10 +6620,10 @@ ieee80211_beacon_get_template
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param struct ieee80211_mutable_offsets \*offs:
-        &struct ieee80211_mutable_offsets pointer to struct that will
+        \ :c:type:`struct ieee80211_mutable_offsets <ieee80211_mutable_offsets>`\  pointer to struct that will
         receive the offsets that may be updated by the driver.
 
 .. _`ieee80211_beacon_get_template.description`:
@@ -6661,7 +6661,7 @@ ieee80211_beacon_get_tim
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param u16 \*tim_offset:
         pointer to variable that will receive the TIM IE offset.
@@ -6707,7 +6707,7 @@ ieee80211_beacon_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_beacon_get.description`:
 
@@ -6733,7 +6733,7 @@ ieee80211_csa_update_counter
     request mac80211 to decrement the csa counter
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_csa_update_counter.description`:
 
@@ -6763,7 +6763,7 @@ ieee80211_csa_finish
     notify mac80211 about channel switch
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_csa_finish.description`:
 
@@ -6784,7 +6784,7 @@ ieee80211_csa_is_complete
     find out if counters reached 1
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_csa_is_complete.description`:
 
@@ -6806,7 +6806,7 @@ ieee80211_proberesp_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_proberesp_get.description`:
 
@@ -6838,7 +6838,7 @@ ieee80211_pspoll_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_pspoll_get.description`:
 
@@ -6877,7 +6877,7 @@ ieee80211_nullfunc_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param bool qos_ok:
         QoS NDP is acceptable to the caller, this should be set
@@ -6962,7 +6962,7 @@ ieee80211_rts_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param const void \*frame:
         pointer to the frame that is going to be protected by the RTS.
@@ -6971,7 +6971,7 @@ ieee80211_rts_get
         the frame length (in octets).
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        &struct ieee80211_tx_info of the frame.
+        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
 
     :param struct ieee80211_rts \*rts:
         The buffer where to store the RTS frame.
@@ -6999,13 +6999,13 @@ ieee80211_rts_duration
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param size_t frame_len:
         the length of the frame that is going to be protected by the RTS.
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        &struct ieee80211_tx_info of the frame.
+        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
 
 .. _`ieee80211_rts_duration.description`:
 
@@ -7036,7 +7036,7 @@ ieee80211_ctstoself_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param const void \*frame:
         pointer to the frame that is going to be protected by the CTS-to-self.
@@ -7045,7 +7045,7 @@ ieee80211_ctstoself_get
         the frame length (in octets).
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        &struct ieee80211_tx_info of the frame.
+        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
 
     :param struct ieee80211_cts \*cts:
         The buffer where to store the CTS-to-self frame.
@@ -7073,13 +7073,13 @@ ieee80211_ctstoself_duration
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param size_t frame_len:
         the length of the frame that is going to be protected by the CTS-to-self.
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        &struct ieee80211_tx_info of the frame.
+        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
 
 .. _`ieee80211_ctstoself_duration.description`:
 
@@ -7110,7 +7110,7 @@ ieee80211_generic_frame_duration
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param enum nl80211_band band:
         the band to calculate the frame duration on
@@ -7149,7 +7149,7 @@ ieee80211_get_buffered_bc
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_get_buffered_bc.description`:
 
@@ -7544,7 +7544,7 @@ Drivers should use this function instead of netif_stop_queue.
 Return
 ------
 
-%true if the queue is stopped. \ ``false``\  otherwise.
+\ ``true``\  if the queue is stopped. \ ``false``\  otherwise.
 
 .. _`ieee80211_stop_queues`:
 
@@ -7934,7 +7934,7 @@ ieee80211_start_tx_ba_cb_irqsafe
     low level driver ready to aggregate.
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
 
     :param const u8 \*ra:
         receiver address of the BA session recipient.
@@ -7987,7 +7987,7 @@ ieee80211_stop_tx_ba_cb_irqsafe
     low level driver ready to stop aggregate.
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
 
     :param const u8 \*ra:
         receiver address of the BA session recipient.
@@ -8315,7 +8315,7 @@ ieee80211_ap_probereq_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_ap_probereq_get.description`:
 
@@ -8346,7 +8346,7 @@ ieee80211_beacon_loss
     inform hardware does not receive beacons
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_beacon_loss.description`:
 
@@ -8367,7 +8367,7 @@ ieee80211_connection_loss
     inform hardware has lost connection to the AP
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_connection_loss.description`:
 
@@ -8393,7 +8393,7 @@ ieee80211_resume_disconnect
     disconnect from AP after resume
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
 .. _`ieee80211_resume_disconnect.description`:
 
@@ -8426,7 +8426,7 @@ ieee80211_cqm_rssi_notify
     inform a configured connection quality monitoring rssi threshold triggered
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param enum nl80211_cqm_rssi_threshold_event rssi_event:
         the RSSI trigger event type
@@ -8456,7 +8456,7 @@ ieee80211_cqm_beacon_loss_notify
     inform CQM of beacon loss
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param gfp_t gfp:
         context flags
@@ -8483,7 +8483,7 @@ ieee80211_chswitch_done
     Complete channel switch process
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param bool success:
         make the channel switch successful or not
@@ -8506,7 +8506,7 @@ ieee80211_request_smps
     request SM PS transition
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param enum ieee80211_smps_mode smps_mode:
         new SM PS mode
@@ -8554,7 +8554,7 @@ ieee80211_stop_rx_ba_session
     callback to stop existing BA sessions
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param u16 ba_rx_bitmap:
         Bit map of open rx ba per tid
@@ -8619,7 +8619,7 @@ ieee80211_send_bar
     send a BlockAckReq frame
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param u8 \*ra:
         the peer's destination address
@@ -8648,7 +8648,7 @@ ieee80211_manage_rx_ba_offl
     helper to queue an RX BA work
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
 
     :param const u8 \*addr:
         station mac address
@@ -8666,7 +8666,7 @@ ieee80211_start_rx_ba_session_offl
     start a Rx BA session
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
 
     :param const u8 \*addr:
         station mac address
@@ -8696,7 +8696,7 @@ ieee80211_stop_rx_ba_session_offl
     stop a Rx BA session
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
 
     :param const u8 \*addr:
         station mac address
@@ -8726,7 +8726,7 @@ ieee80211_rx_ba_timer_expired
     stop a Rx BA session due to timeout
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
 
     :param const u8 \*addr:
         station mac address
@@ -8822,7 +8822,7 @@ rate_control_send_low
     helper for drivers for management/no-ack frames
 
     :param struct ieee80211_sta \*sta:
-        &struct ieee80211_sta pointer to the target destination. Note
+        \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer to the target destination. Note
         that this may be null.
 
     :param void \*priv_sta:
@@ -8859,7 +8859,7 @@ rate_control_set_rates
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
 
     :param struct ieee80211_sta \*pubsta:
-        &struct ieee80211_sta pointer to the target destination.
+        \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer to the target destination.
 
     :param struct ieee80211_sta_rates \*rates:
         new tx rate set to be used for this station.
@@ -9229,7 +9229,7 @@ ieee80211_nan_func_terminated
     notify about NAN function termination.
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param u8 inst_id:
         the local instance id
@@ -9258,7 +9258,7 @@ ieee80211_nan_func_match
     notify about NAN function match event.
 
     :param struct ieee80211_vif \*vif:
-        &struct ieee80211_vif pointer from the add_interface callback.
+        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
 
     :param struct cfg80211_nan_match_params \*match:
         match event information

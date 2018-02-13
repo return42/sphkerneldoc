@@ -46,7 +46,7 @@ via_set_drive
 Description
 -----------
 
-via_set_drive() computes timing values configures the chipset to
+\ :c:func:`via_set_drive`\  computes timing values configures the chipset to
 a desired transfer mode.  It also can be called by upper layers.
 
 .. _`via_set_pio_mode`:

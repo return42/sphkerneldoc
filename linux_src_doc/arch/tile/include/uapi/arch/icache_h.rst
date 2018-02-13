@@ -22,7 +22,7 @@ invalidate_icache
 Description
 -----------
 
-@param addr The start of memory to be invalidated.
+\ ``param``\  addr The start of memory to be invalidated.
 \ ``param``\  size The number of bytes to be invalidated.
 \ ``param``\  page_size The system's page size, e.g. \ :c:func:`getpagesize`\  in userspace.
 This value must be a power of two no larger than the page containing

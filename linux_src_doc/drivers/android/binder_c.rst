@@ -1515,7 +1515,7 @@ binder_validate_fixup
 Return
 ------
 
-%true if a fixup in buffer \ ``buffer``\  at offset \ ``offset``\  is
+\ ``true``\  if a fixup in buffer \ ``buffer``\  at offset \ ``offset``\  is
 allowed.
 
 For safety reasons, we only allow fixups inside a buffer to happen

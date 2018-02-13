@@ -3,8 +3,8 @@
 
 .. _`__replace_page`:
 
-__replace_page
-==============
+\__replace_page
+===============
 
 .. c:function:: int __replace_page(struct vm_area_struct *vma, unsigned long addr, struct page *old_page, struct page *new_page)
 

@@ -3,8 +3,8 @@
 
 .. _`__execute_vchan_pending`:
 
-__execute_vchan_pending
-=======================
+\__execute_vchan_pending
+========================
 
 .. c:function:: int __execute_vchan_pending(struct sun4i_dma_dev *priv, struct sun4i_dma_vchan *vchan)
 

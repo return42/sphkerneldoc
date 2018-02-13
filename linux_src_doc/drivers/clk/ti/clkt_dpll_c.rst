@@ -3,8 +3,8 @@
 
 .. _`_omap2_dpll_is_in_bypass`:
 
-_omap2_dpll_is_in_bypass
-========================
+\_omap2_dpll_is_in_bypass
+=========================
 
 .. c:function:: int _omap2_dpll_is_in_bypass(u32 v)
 

@@ -77,8 +77,8 @@ mac_fw_hdrs_push
 
 .. _`__mac_fw_upload`:
 
-__mac_fw_upload
-===============
+\__mac_fw_upload
+================
 
 .. c:function:: int __mac_fw_upload(struct i1480 *i1480, const char *fw_name, const char *fw_tag)
 

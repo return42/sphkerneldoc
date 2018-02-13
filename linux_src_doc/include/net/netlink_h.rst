@@ -1248,7 +1248,7 @@ nla_get_be32
     return payload of \__be32 attribute
 
     :param const struct nlattr \*nla:
-        __be32 netlink attribute
+        \__be32 netlink attribute
 
 .. _`nla_get_le32`:
 
@@ -1260,7 +1260,7 @@ nla_get_le32
     return payload of \__le32 attribute
 
     :param const struct nlattr \*nla:
-        __le32 netlink attribute
+        \__le32 netlink attribute
 
 .. _`nla_get_u16`:
 
@@ -1284,7 +1284,7 @@ nla_get_be16
     return payload of \__be16 attribute
 
     :param const struct nlattr \*nla:
-        __be16 netlink attribute
+        \__be16 netlink attribute
 
 .. _`nla_get_le16`:
 
@@ -1296,7 +1296,7 @@ nla_get_le16
     return payload of \__le16 attribute
 
     :param const struct nlattr \*nla:
-        __le16 netlink attribute
+        \__le16 netlink attribute
 
 .. _`nla_get_u8`:
 
@@ -1332,7 +1332,7 @@ nla_get_be64
     return payload of \__be64 attribute
 
     :param const struct nlattr \*nla:
-        __be64 netlink attribute
+        \__be64 netlink attribute
 
 .. _`nla_get_le64`:
 
@@ -1344,7 +1344,7 @@ nla_get_le64
     return payload of \__le64 attribute
 
     :param const struct nlattr \*nla:
-        __le64 netlink attribute
+        \__le64 netlink attribute
 
 .. _`nla_get_s32`:
 

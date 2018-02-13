@@ -3,8 +3,8 @@
 
 .. _`__tty_check_change`:
 
-__tty_check_change
-==================
+\__tty_check_change
+===================
 
 .. c:function:: int __tty_check_change(struct tty_struct *tty, int sig)
 
@@ -34,8 +34,8 @@ ctrl_lock
 
 .. _`__proc_set_tty`:
 
-__proc_set_tty
-==============
+\__proc_set_tty
+===============
 
 .. c:function:: void __proc_set_tty(struct tty_struct *tty)
 
@@ -57,7 +57,7 @@ a controlling terminal.
 Caller must hold
 ----------------
 
-tty_lock()
+\ :c:func:`tty_lock`\ 
 a readlock on tasklist_lock
 sighand lock
 

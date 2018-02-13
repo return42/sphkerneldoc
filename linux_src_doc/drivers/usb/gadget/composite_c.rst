@@ -246,7 +246,7 @@ single threaded during gadget setup
 Description
 -----------
 
-usb_interface_id() is called from usb_function.bind() callbacks to
+\ :c:func:`usb_interface_id`\  is called from usb_function.bind() callbacks to
 allocate new interface IDs.  The function driver will then store that
 ID in interface, association, CDC union, and other descriptors.  It
 will also handle any control requests targeted at that interface,
@@ -371,7 +371,7 @@ single threaded during gadget setup
 Description
 -----------
 
-@usb_string_id() is called from \ :c:func:`bind`\  callbacks to allocate
+\ ``usb_string_id``\ () is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then store that ID in the appropriate descriptors and string table.
 
@@ -407,7 +407,7 @@ single threaded during gadget setup
 Description
 -----------
 
-@usb_string_ids() is called from \ :c:func:`bind`\  callbacks to allocate
+\ ``usb_string_ids``\ () is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then copy IDs from the string table to the appropriate descriptors
 and string table for other languages.

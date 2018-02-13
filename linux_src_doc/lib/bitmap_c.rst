@@ -562,22 +562,22 @@ Example [2] for \ :c:func:`bitmap_fold`\  + \ :c:func:`bitmap_onto`\ :
  Fibonacci sequence.)
 
  Further lets say we use the following code, invoking
- \ :c:func:`bitmap_fold`\  then bitmap_onto, as suggested above to
- avoid the possibility of an empty \ ``dst``\  result::
+ bitmap_fold() then bitmap_onto, as suggested above to
+ avoid the possibility of an empty @dst result::
 
      unsigned long *tmp;     // a temporary bitmap's bits
 
      bitmap_fold(tmp, orig, bitmap_weight(relmap, bits), bits);
      bitmap_onto(dst, tmp, relmap, bits);
 
- Then this table shows what various values of \ ``dst``\  would be, for
- various \ ``orig``\ 's.  I list the zero-based positions of each set bit.
+ Then this table shows what various values of @dst would be, for
+ various @orig's.  I list the zero-based positions of each set bit.
  The tmp column shows the intermediate result, as computed by
- using \ :c:func:`bitmap_fold`\  to fold the \ ``orig``\  bitmap modulo ten
- (the weight of \ ``relmap``\ ):
+ using bitmap_fold() to fold the @orig bitmap modulo ten
+ (the weight of @relmap):
 
      =============== ============== =================
-     \ ``orig``\            tmp            \ ``dst``\ 
+     @orig           tmp            @dst
      0                0             40
      1                1             41
      9                9             95

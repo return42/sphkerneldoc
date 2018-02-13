@@ -71,7 +71,7 @@ efx_filter_is_mc_recipient
 Return
 ------
 
-%true if the specification is a non-drop RX filter that
+\ ``true``\  if the specification is a non-drop RX filter that
 matches a local MAC address I/G bit value of 1 or matches a local
 IPv4 or IPv6 address value in the respective multicast address
 range.  Otherwise \ ``false``\ .

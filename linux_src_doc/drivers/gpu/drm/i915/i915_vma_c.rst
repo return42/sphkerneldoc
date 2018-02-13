@@ -24,7 +24,7 @@ i915_vma_instance
 Description
 -----------
 
-i915_vma_instance() looks up an existing VMA of the \ ``obj``\  in the \ ``vm``\  with
+\ :c:func:`i915_vma_instance`\  looks up an existing VMA of the \ ``obj``\  in the \ ``vm``\  with
 the same \ ``view``\  characteristics. If a match is not found, one is created.
 Once created, the VMA is kept until either the object is freed, or the
 address space is closed.

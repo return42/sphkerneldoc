@@ -673,8 +673,8 @@ Percpu pointer to the allocated area on success, NULL on failure.
 
 .. _`__alloc_percpu_gfp`:
 
-__alloc_percpu_gfp
-==================
+\__alloc_percpu_gfp
+===================
 
 .. c:function:: void __percpu *__alloc_percpu_gfp(size_t size, size_t align, gfp_t gfp)
 
@@ -709,8 +709,8 @@ Percpu pointer to the allocated area on success, NULL on failure.
 
 .. _`__alloc_percpu`:
 
-__alloc_percpu
-==============
+\__alloc_percpu
+===============
 
 .. c:function:: void __percpu *__alloc_percpu(size_t size, size_t align)
 
@@ -731,8 +731,8 @@ Equivalent to \__alloc_percpu_gfp(size, align, \ ``GFP_KERNEL``\ ).
 
 .. _`__alloc_reserved_percpu`:
 
-__alloc_reserved_percpu
-=======================
+\__alloc_reserved_percpu
+========================
 
 .. c:function:: void __percpu *__alloc_reserved_percpu(size_t size, size_t align)
 
@@ -839,7 +839,7 @@ static percpu areas are not considered.  For those, use
 Return
 ------
 
-%true if \ ``addr``\  is from in-kernel static percpu area, \ ``false``\  otherwise.
+\ ``true``\  if \ ``addr``\  is from in-kernel static percpu area, \ ``false``\  otherwise.
 
 .. _`per_cpu_ptr_to_phys`:
 

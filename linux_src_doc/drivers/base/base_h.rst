@@ -78,7 +78,7 @@ class
 Description
 -----------
 
-@subsys - the struct kset that defines this subsystem
+\ ``subsys``\  - the struct kset that defines this subsystem
 \ ``devices_kset``\  - the subsystem's 'devices' directory
 \ ``interfaces``\  - list of subsystem interfaces associated
 \ ``mutex``\  - protect the devices, and interfaces lists.
@@ -153,7 +153,7 @@ device
 Description
 -----------
 
-@klist_children - klist containing all children of this device
+\ ``klist_children``\  - klist containing all children of this device
 \ ``knode_parent``\  - node in sibling list
 \ ``knode_driver``\  - node in driver list
 \ ``knode_bus``\  - node in bus list

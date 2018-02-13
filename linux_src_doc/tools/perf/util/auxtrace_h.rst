@@ -290,7 +290,7 @@ mmap_size
     size of the mmap at \ ``mmap_addr``\ 
 
 data_needs_freeing
-    @data was malloc'd so free it when it is no longer
+    \ ``data``\  was malloc'd so free it when it is no longer
     needed
 
 consecutive
@@ -353,7 +353,7 @@ cpu
     in per-cpu mode, the cpu this queue is associated with
 
 set
-    %true once this queue has been dedicated to a specific thread or cpu
+    \ ``true``\  once this queue has been dedicated to a specific thread or cpu
 
 priv
     implementation-specific data
@@ -510,7 +510,7 @@ userpg
     pointer to buffer's perf_event_mmap_page
 
 mask
-    %0 if \ ``len``\  is not a power of two, otherwise (@len - \ ``1``\ )
+    \ ``0``\  if \ ``len``\  is not a power of two, otherwise (@len - \ ``1``\ )
 
 len
     size of mapped area
@@ -560,7 +560,7 @@ Members
 -------
 
 mask
-    %0 if \ ``len``\  is not a power of two, otherwise (@len - \ ``1``\ )
+    \ ``0``\  if \ ``len``\  is not a power of two, otherwise (@len - \ ``1``\ )
 
 offset
     file offset of mapped area

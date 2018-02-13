@@ -589,7 +589,7 @@ setup_adaptive_interrupts
 Description
 -----------
 
-@vptr velocity adapter
+\ ``vptr``\  velocity adapter
 
 The velocity is able to suppress interrupt during high interrupt load.
 This function turns on that feature.

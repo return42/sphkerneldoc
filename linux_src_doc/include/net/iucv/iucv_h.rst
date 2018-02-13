@@ -290,8 +290,8 @@ Returns the result from the CP IUCV call.
 
 .. _`__iucv_message_receive`:
 
-__iucv_message_receive
-======================
+\__iucv_message_receive
+=======================
 
 .. c:function:: int __iucv_message_receive(struct iucv_path *path, struct iucv_message *msg, u8 flags, void *buffer, size_t size, size_t *residual)
 
@@ -434,8 +434,8 @@ Returns the result from the CP IUCV call.
 
 .. _`__iucv_message_send`:
 
-__iucv_message_send
-===================
+\__iucv_message_send
+====================
 
 .. c:function:: int __iucv_message_send(struct iucv_path *path, struct iucv_message *msg, u8 flags, u32 srccls, void *buffer, size_t size)
 

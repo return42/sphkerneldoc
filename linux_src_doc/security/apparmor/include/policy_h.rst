@@ -25,7 +25,7 @@ Returns refcount to newest version of the profile (maybe \ ``p``\ )
 Requires
 --------
 
-@p must be held with a valid refcount
+\ ``p``\  must be held with a valid refcount
 
 .. _`aa_get_profile`:
 
@@ -51,7 +51,7 @@ pointer to \ ``p``\  if \ ``p``\  is NULL will return NULL
 Requires
 --------
 
-@p must be held with valid refcount when called
+\ ``p``\  must be held with valid refcount when called
 
 .. _`aa_get_profile_not0`:
 
@@ -77,7 +77,7 @@ pointer to \ ``p``\  if \ ``p``\  is NULL will return NULL
 Requires
 --------
 
-@p must be held with valid refcount when called
+\ ``p``\  must be held with valid refcount when called
 
 .. _`aa_get_profile_rcu`:
 

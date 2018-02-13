@@ -130,7 +130,7 @@ Members
 -------
 
 type
-    &enum iwl_fw_error_dump_type
+    \ :c:type:`enum iwl_fw_error_dump_type <iwl_fw_error_dump_type>`\ 
 
 len
     the length starting from \ ``data``\ 
@@ -462,7 +462,7 @@ Members
 -------
 
 type
-    &enum iwl_fw_error_dump_mem_type
+    \ :c:type:`enum iwl_fw_error_dump_mem_type <iwl_fw_error_dump_mem_type>`\ 
 
 offset
     the offset from which the memory was read
@@ -689,7 +689,7 @@ Members
 -------
 
 type
-    &enum iwl_fw_dbg_trigger
+    \ :c:type:`enum iwl_fw_dbg_trigger <iwl_fw_dbg_trigger>`\ 
 
 data
     raw data about what happened

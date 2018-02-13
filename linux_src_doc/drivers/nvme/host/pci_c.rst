@@ -3,8 +3,8 @@
 
 .. _`__nvme_submit_cmd`:
 
-__nvme_submit_cmd
-=================
+\__nvme_submit_cmd
+==================
 
 .. c:function:: void __nvme_submit_cmd(struct nvme_queue *nvmeq, struct nvme_command *cmd)
 

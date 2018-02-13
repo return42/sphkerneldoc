@@ -154,7 +154,7 @@ txb
 Description
 -----------
 
-@i2c_addresses       I2C Page addresses
+\ ``i2c_addresses``\        I2C Page addresses
 \ ``i2c_clients``\          I2C clients for the page accesses
 \ ``regmap``\               regmap configuration pages.
 

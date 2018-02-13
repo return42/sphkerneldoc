@@ -84,7 +84,7 @@ i915_wait_request
 Description
 -----------
 
-i915_wait_request() waits for the request to be completed, for a
+\ :c:func:`i915_wait_request`\  waits for the request to be completed, for a
 maximum of \ ``timeout``\  jiffies (with MAX_SCHEDULE_TIMEOUT implying an
 unbounded wait).
 

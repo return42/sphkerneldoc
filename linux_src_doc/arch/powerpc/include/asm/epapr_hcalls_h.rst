@@ -147,7 +147,7 @@ ev_byte_channel_send
 Description
 -----------
 
-@buffer must be at least 16 bytes long, because all 16 bytes will be
+\ ``buffer``\  must be at least 16 bytes long, because all 16 bytes will be
 read from memory into registers, even if count < 16.
 
 Returns 0 for success, or an error code.

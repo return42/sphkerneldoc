@@ -77,8 +77,8 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
 .. _`__atomic_notifier_call_chain`:
 
-__atomic_notifier_call_chain
-============================
+\__atomic_notifier_call_chain
+=============================
 
 .. c:function:: int __atomic_notifier_call_chain(struct atomic_notifier_head *nh, unsigned long val, void *v, int nr_to_call, int *nr_calls)
 
@@ -193,8 +193,8 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
 .. _`__blocking_notifier_call_chain`:
 
-__blocking_notifier_call_chain
-==============================
+\__blocking_notifier_call_chain
+===============================
 
 .. c:function:: int __blocking_notifier_call_chain(struct blocking_notifier_head *nh, unsigned long val, void *v, int nr_to_call, int *nr_calls)
 
@@ -282,8 +282,8 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
 .. _`__raw_notifier_call_chain`:
 
-__raw_notifier_call_chain
-=========================
+\__raw_notifier_call_chain
+==========================
 
 .. c:function:: int __raw_notifier_call_chain(struct raw_notifier_head *nh, unsigned long val, void *v, int nr_to_call, int *nr_calls)
 
@@ -372,8 +372,8 @@ Returns zero on success or \ ``-ENOENT``\  on failure.
 
 .. _`__srcu_notifier_call_chain`:
 
-__srcu_notifier_call_chain
-==========================
+\__srcu_notifier_call_chain
+===========================
 
 .. c:function:: int __srcu_notifier_call_chain(struct srcu_notifier_head *nh, unsigned long val, void *v, int nr_to_call, int *nr_calls)
 

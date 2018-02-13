@@ -32,8 +32,8 @@ offset poff
 
 .. _`__skb_flow_get_ports`:
 
-__skb_flow_get_ports
-====================
+\__skb_flow_get_ports
+=====================
 
 .. c:function:: __be32 __skb_flow_get_ports(const struct sk_buff *skb, int thoff, u8 ip_proto, void *data, int hlen)
 
@@ -64,8 +64,8 @@ is the protocol port offset returned from proto_ports_offset
 
 .. _`__skb_flow_dissect_batadv`:
 
-__skb_flow_dissect_batadv
-=========================
+\__skb_flow_dissect_batadv
+==========================
 
 .. c:function:: enum flow_dissect_ret __skb_flow_dissect_batadv(const struct sk_buff *skb, struct flow_dissector_key_control *key_control, void *data, __be16 *p_proto, int *p_nhoff, int hlen, unsigned int flags)
 
@@ -113,8 +113,8 @@ otherwise FLOW_DISSECT_RET_OUT_BAD
 
 .. _`__skb_flow_dissect`:
 
-__skb_flow_dissect
-==================
+\__skb_flow_dissect
+===================
 
 .. c:function:: bool __skb_flow_dissect(const struct sk_buff *skb, struct flow_dissector *flow_dissector, void *target_container, void *data, __be16 proto, int nhoff, int hlen, unsigned int flags)
 
@@ -157,8 +157,8 @@ Caller must take care of zeroing target container memory.
 
 .. _`__skb_get_hash`:
 
-__skb_get_hash
-==============
+\__skb_get_hash
+===============
 
 .. c:function:: void __skb_get_hash(struct sk_buff *skb)
 

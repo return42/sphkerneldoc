@@ -41,7 +41,7 @@ to trace the new domain
 Return
 ------
 
-%0 or error if change not allowed
+\ ``0``\  or error if change not allowed
 
 .. _`label_compound_match`:
 
@@ -201,8 +201,8 @@ not arbitrary combinations. Eg. A//&B, C
 
 .. _`__attach_match`:
 
-__attach_match
-==============
+\__attach_match
+===============
 
 .. c:function:: struct aa_profile *__attach_match(const char *name, struct list_head *head, const char **info)
 
@@ -232,7 +232,7 @@ xmatch_len are preferred.
 Requires
 --------
 
-@head not be shared or have appropriate locks held
+\ ``head``\  not be shared or have appropriate locks held
 
 .. _`__attach_match.return`:
 
@@ -349,7 +349,7 @@ apparmor_bprm_set_creds
 Return
 ------
 
-%0 or error on failure
+\ ``0``\  or error on failure
 
 .. _`apparmor_bprm_set_creds.todo`:
 

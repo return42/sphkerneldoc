@@ -87,8 +87,8 @@ In \ :c:func:`of_node_put`\  this function is passed to \ :c:func:`kref_put`\  a
 
 .. _`__of_prop_dup`:
 
-__of_prop_dup
-=============
+\__of_prop_dup
+==============
 
 .. c:function:: struct property *__of_prop_dup(const struct property *prop, gfp_t allocflags)
 
@@ -113,8 +113,8 @@ Returns the newly allocated property or NULL on out of memory error.
 
 .. _`__of_node_dup`:
 
-__of_node_dup
-=============
+\__of_node_dup
+==============
 
 .. c:function:: struct device_node *__of_node_dup(const struct device_node *np, const char *fmt,  ...)
 

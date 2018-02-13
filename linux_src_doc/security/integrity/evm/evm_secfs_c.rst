@@ -8,7 +8,7 @@ evm_read_key
 
 .. c:function:: ssize_t evm_read_key(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
 
-    read() for <securityfs>/evm
+    \ :c:func:`read`\  for <securityfs>/evm
 
     :param struct file \*filp:
         file pointer, not actually used
@@ -36,7 +36,7 @@ evm_write_key
 
 .. c:function:: ssize_t evm_write_key(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    write() for <securityfs>/evm
+    \ :c:func:`write`\  for <securityfs>/evm
 
     :param struct file \*file:
         file pointer, not actually used

@@ -1387,7 +1387,7 @@ aggregate
     1 aggregated queue, 0 otherwise
 
 tx_fifo
-    &enum iwl_mvm_tx_fifo
+    \ :c:type:`enum iwl_mvm_tx_fifo <iwl_mvm_tx_fifo>`\ 
 
 window
     BA window size

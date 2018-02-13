@@ -136,7 +136,7 @@ lpfc_sli4_clear_fcf_rr_bmask
 
 .. c:function:: void lpfc_sli4_clear_fcf_rr_bmask(struct lpfc_hba *phba)
 
-    @phba pointer to the struct lpfc_hba for this port. This fucnction resets the round robin bit mask and clears the fcf priority list. The list deletions are done while holding the hbalock. The ON_LIST flag and the FLOGI_FAILED flags are cleared from the lpfc_fcf_pri record.
+    \ ``phba``\  pointer to the struct lpfc_hba for this port. This fucnction resets the round robin bit mask and clears the fcf priority list. The list deletions are done while holding the hbalock. The ON_LIST flag and the FLOGI_FAILED flags are cleared from the lpfc_fcf_pri record.
 
     :param struct lpfc_hba \*phba:
         *undescribed*
@@ -215,8 +215,8 @@ returns 1 else return 0.
 
 .. _`__lpfc_update_fcf_record_pri`:
 
-__lpfc_update_fcf_record_pri
-============================
+\__lpfc_update_fcf_record_pri
+=============================
 
 .. c:function:: void __lpfc_update_fcf_record_pri(struct lpfc_hba *phba, uint16_t fcf_index, struct fcf_record *new_fcf_record)
 
@@ -264,8 +264,8 @@ record to lpfc_hba data structure.
 
 .. _`__lpfc_update_fcf_record`:
 
-__lpfc_update_fcf_record
-========================
+\__lpfc_update_fcf_record
+=========================
 
 .. c:function:: void __lpfc_update_fcf_record(struct lpfc_hba *phba, struct lpfc_fcf_rec *fcf_rec, struct fcf_record *new_fcf_record, uint32_t addr_mode, uint16_t vlan_id, uint32_t flag)
 

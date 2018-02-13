@@ -665,7 +665,7 @@ usb_gadget_giveback_request
 Context
 -------
 
-in_interrupt()
+\ :c:func:`in_interrupt`\ 
 
 .. _`usb_gadget_giveback_request.description`:
 

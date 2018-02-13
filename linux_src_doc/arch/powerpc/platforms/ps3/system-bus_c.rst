@@ -30,7 +30,7 @@ ps3_system_bus_device_register
 Description
 -----------
 
-ps3_system_bus_device_register() expects the dev object to be allocated
+\ :c:func:`ps3_system_bus_device_register`\  expects the dev object to be allocated
 dynamically by the caller.  The system bus takes ownership of the dev
 object and frees the object in \ :c:func:`ps3_system_bus_release_device`\ .
 

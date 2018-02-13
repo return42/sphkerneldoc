@@ -23,8 +23,8 @@ raise of the blk iopoll softirq.
 
 .. _`__irq_poll_complete`:
 
-__irq_poll_complete
-===================
+\__irq_poll_complete
+====================
 
 .. c:function:: void __irq_poll_complete(struct irq_poll *iop)
 

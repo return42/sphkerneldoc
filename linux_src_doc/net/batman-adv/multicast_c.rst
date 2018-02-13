@@ -394,8 +394,8 @@ otherwise.
 
 .. _`__batadv_mcast_mla_update`:
 
-__batadv_mcast_mla_update
-=========================
+\__batadv_mcast_mla_update
+==========================
 
 .. c:function:: void __batadv_mcast_mla_update(struct batadv_priv *bat_priv)
 

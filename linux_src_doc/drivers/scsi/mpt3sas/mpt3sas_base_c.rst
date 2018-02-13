@@ -3,8 +3,8 @@
 
 .. _`_scsih_set_fwfault_debug`:
 
-_scsih_set_fwfault_debug
-========================
+\_scsih_set_fwfault_debug
+=========================
 
 .. c:function:: int _scsih_set_fwfault_debug(const char *val, const struct kernel_param *kp)
 
@@ -38,8 +38,8 @@ Return -1 for other case.
 
 .. _`_base_fault_reset_work`:
 
-_base_fault_reset_work
-======================
+\_base_fault_reset_work
+=======================
 
 .. c:function:: void _base_fault_reset_work(struct work_struct *work)
 
@@ -160,8 +160,8 @@ obtain a ring buffer from controller UART.
 
 .. _`_base_sas_ioc_info`:
 
-_base_sas_ioc_info
-==================
+\_base_sas_ioc_info
+===================
 
 .. c:function:: void _base_sas_ioc_info(struct MPT3SAS_ADAPTER *ioc, MPI2DefaultReply_t *mpi_reply, MPI2RequestHeader_t *request_hdr)
 
@@ -185,8 +185,8 @@ Return nothing.
 
 .. _`_base_display_event_data`:
 
-_base_display_event_data
-========================
+\_base_display_event_data
+=========================
 
 .. c:function:: void _base_display_event_data(struct MPT3SAS_ADAPTER *ioc, Mpi2EventNotificationReply_t *mpi_reply)
 
@@ -207,8 +207,8 @@ Return nothing.
 
 .. _`_base_sas_log_info`:
 
-_base_sas_log_info
-==================
+\_base_sas_log_info
+===================
 
 .. c:function:: void _base_sas_log_info(struct MPT3SAS_ADAPTER *ioc, u32 log_info)
 
@@ -229,8 +229,8 @@ Return nothing.
 
 .. _`_base_display_reply_info`:
 
-_base_display_reply_info
-========================
+\_base_display_reply_info
+=========================
 
 .. c:function:: void _base_display_reply_info(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -284,8 +284,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_base_async_event`:
 
-_base_async_event
-=================
+\_base_async_event
+==================
 
 .. c:function:: u8 _base_async_event(struct MPT3SAS_ADAPTER *ioc, u8 msix_index, u32 reply)
 
@@ -310,8 +310,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_base_get_cb_idx`:
 
-_base_get_cb_idx
-================
+\_base_get_cb_idx
+=================
 
 .. c:function:: u8 _base_get_cb_idx(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
@@ -332,8 +332,8 @@ Return callback index.
 
 .. _`_base_mask_interrupts`:
 
-_base_mask_interrupts
-=====================
+\_base_mask_interrupts
+======================
 
 .. c:function:: void _base_mask_interrupts(struct MPT3SAS_ADAPTER *ioc)
 
@@ -353,8 +353,8 @@ Return nothing.
 
 .. _`_base_unmask_interrupts`:
 
-_base_unmask_interrupts
-=======================
+\_base_unmask_interrupts
+========================
 
 .. c:function:: void _base_unmask_interrupts(struct MPT3SAS_ADAPTER *ioc)
 
@@ -374,8 +374,8 @@ Return nothing.
 
 .. _`_base_interrupt`:
 
-_base_interrupt
-===============
+\_base_interrupt
+================
 
 .. c:function:: irqreturn_t _base_interrupt(int irq, void *bus_id)
 
@@ -396,8 +396,8 @@ Return IRQ_HANDLE if processed, else IRQ_NONE.
 
 .. _`_base_is_controller_msix_enabled`:
 
-_base_is_controller_msix_enabled
-================================
+\_base_is_controller_msix_enabled
+=================================
 
 .. c:function:: int _base_is_controller_msix_enabled(struct MPT3SAS_ADAPTER *ioc)
 
@@ -493,8 +493,8 @@ Return nothing.
 
 .. _`_base_build_zero_len_sge`:
 
-_base_build_zero_len_sge
-========================
+\_base_build_zero_len_sge
+=========================
 
 .. c:function:: void _base_build_zero_len_sge(struct MPT3SAS_ADAPTER *ioc, void *paddr)
 
@@ -519,8 +519,8 @@ Return nothing.
 
 .. _`_base_add_sg_single_32`:
 
-_base_add_sg_single_32
-======================
+\_base_add_sg_single_32
+=======================
 
 .. c:function:: void _base_add_sg_single_32(void *paddr, u32 flags_length, dma_addr_t dma_addr)
 
@@ -544,8 +544,8 @@ Return nothing.
 
 .. _`_base_add_sg_single_64`:
 
-_base_add_sg_single_64
-======================
+\_base_add_sg_single_64
+=======================
 
 .. c:function:: void _base_add_sg_single_64(void *paddr, u32 flags_length, dma_addr_t dma_addr)
 
@@ -569,8 +569,8 @@ Return nothing.
 
 .. _`_base_get_chain_buffer_tracker`:
 
-_base_get_chain_buffer_tracker
-==============================
+\_base_get_chain_buffer_tracker
+===============================
 
 .. c:function:: struct chain_tracker *_base_get_chain_buffer_tracker(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd)
 
@@ -591,8 +591,8 @@ Returns chain tracker(from ioc->free_chain_list)
 
 .. _`_base_build_sg`:
 
-_base_build_sg
-==============
+\_base_build_sg
+===============
 
 .. c:function:: void _base_build_sg(struct MPT3SAS_ADAPTER *ioc, void *psge, dma_addr_t data_out_dma, size_t data_out_sz, dma_addr_t data_in_dma, size_t data_in_sz)
 
@@ -625,8 +625,8 @@ Return nothing.
 
 .. _`_base_build_nvme_prp`:
 
-_base_build_nvme_prp
-====================
+\_base_build_nvme_prp
+=====================
 
 .. c:function:: void _base_build_nvme_prp(struct MPT3SAS_ADAPTER *ioc, u16 smid, Mpi26NVMeEncapsulatedRequest_t *nvme_encap_request, dma_addr_t data_out_dma, size_t data_out_sz, dma_addr_t data_in_dma, size_t data_in_sz)
 
@@ -721,8 +721,8 @@ false: IEEE SGLs needs to be built
 
 .. _`_base_check_pcie_native_sgl`:
 
-_base_check_pcie_native_sgl
-===========================
+\_base_check_pcie_native_sgl
+============================
 
 .. c:function:: int _base_check_pcie_native_sgl(struct MPT3SAS_ADAPTER *ioc, Mpi25SCSIIORequest_t *mpi_request, u16 smid, struct scsi_cmnd *scmd, struct _pcie_device *pcie_device)
 
@@ -752,8 +752,8 @@ Returns 0 if native SGL was built, 1 if no SGL was built
 
 .. _`_base_add_sg_single_ieee`:
 
-_base_add_sg_single_ieee
-========================
+\_base_add_sg_single_ieee
+=========================
 
 .. c:function:: void _base_add_sg_single_ieee(void *paddr, u8 flags, u8 chain_offset, u32 length, dma_addr_t dma_addr)
 
@@ -783,8 +783,8 @@ Return nothing.
 
 .. _`_base_build_zero_len_sge_ieee`:
 
-_base_build_zero_len_sge_ieee
-=============================
+\_base_build_zero_len_sge_ieee
+==============================
 
 .. c:function:: void _base_build_zero_len_sge_ieee(struct MPT3SAS_ADAPTER *ioc, void *paddr)
 
@@ -809,8 +809,8 @@ Return nothing.
 
 .. _`_base_build_sg_scmd`:
 
-_base_build_sg_scmd
-===================
+\_base_build_sg_scmd
+====================
 
 .. c:function:: int _base_build_sg_scmd(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, u16 smid, struct _pcie_device *unused)
 
@@ -847,8 +847,8 @@ Returns 0 success, anything else error
 
 .. _`_base_build_sg_scmd_ieee`:
 
-_base_build_sg_scmd_ieee
-========================
+\_base_build_sg_scmd_ieee
+=========================
 
 .. c:function:: int _base_build_sg_scmd_ieee(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, u16 smid, struct _pcie_device *pcie_device)
 
@@ -886,8 +886,8 @@ Returns 0 success, anything else error
 
 .. _`_base_build_sg_ieee`:
 
-_base_build_sg_ieee
-===================
+\_base_build_sg_ieee
+====================
 
 .. c:function:: void _base_build_sg_ieee(struct MPT3SAS_ADAPTER *ioc, void *psge, dma_addr_t data_out_dma, size_t data_out_sz, dma_addr_t data_in_dma, size_t data_in_sz)
 
@@ -920,8 +920,8 @@ Return nothing.
 
 .. _`_base_config_dma_addressing`:
 
-_base_config_dma_addressing
-===========================
+\_base_config_dma_addressing
+============================
 
 .. c:function:: int _base_config_dma_addressing(struct MPT3SAS_ADAPTER *ioc, struct pci_dev *pdev)
 
@@ -942,8 +942,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_check_enable_msix`:
 
-_base_check_enable_msix
-=======================
+\_base_check_enable_msix
+========================
 
 .. c:function:: int _base_check_enable_msix(struct MPT3SAS_ADAPTER *ioc)
 
@@ -962,8 +962,8 @@ of available msix vectors
 
 .. _`_base_free_irq`:
 
-_base_free_irq
-==============
+\_base_free_irq
+===============
 
 .. c:function:: void _base_free_irq(struct MPT3SAS_ADAPTER *ioc)
 
@@ -981,8 +981,8 @@ Freeing respective reply_queue from the list.
 
 .. _`_base_request_irq`:
 
-_base_request_irq
-=================
+\_base_request_irq
+==================
 
 .. c:function:: int _base_request_irq(struct MPT3SAS_ADAPTER *ioc, u8 index)
 
@@ -1003,8 +1003,8 @@ Inserting respective reply_queue into the list.
 
 .. _`_base_assign_reply_queues`:
 
-_base_assign_reply_queues
-=========================
+\_base_assign_reply_queues
+==========================
 
 .. c:function:: void _base_assign_reply_queues(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1025,8 +1025,8 @@ an exported symbol
 
 .. _`_base_disable_msix`:
 
-_base_disable_msix
-==================
+\_base_disable_msix
+===================
 
 .. c:function:: void _base_disable_msix(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1037,8 +1037,8 @@ _base_disable_msix
 
 .. _`_base_enable_msix`:
 
-_base_enable_msix
-=================
+\_base_enable_msix
+==================
 
 .. c:function:: int _base_enable_msix(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1303,8 +1303,8 @@ Return nothing.
 
 .. _`_base_writeq`:
 
-_base_writeq
-============
+\_base_writeq
+=============
 
 .. c:function:: void _base_writeq(__u64 b, volatile void __iomem *addr, spinlock_t *writeq_lock)
 
@@ -1330,8 +1330,8 @@ in one transfer.
 
 .. _`_base_put_smid_scsi_io`:
 
-_base_put_smid_scsi_io
-======================
+\_base_put_smid_scsi_io
+=======================
 
 .. c:function:: void _base_put_smid_scsi_io(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
@@ -1355,8 +1355,8 @@ Return nothing.
 
 .. _`_base_put_smid_fast_path`:
 
-_base_put_smid_fast_path
-========================
+\_base_put_smid_fast_path
+=========================
 
 .. c:function:: void _base_put_smid_fast_path(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
@@ -1380,8 +1380,8 @@ Return nothing.
 
 .. _`_base_put_smid_hi_priority`:
 
-_base_put_smid_hi_priority
-==========================
+\_base_put_smid_hi_priority
+===========================
 
 .. c:function:: void _base_put_smid_hi_priority(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
 
@@ -1399,8 +1399,8 @@ _base_put_smid_hi_priority
 
 .. _`_base_put_smid_nvme_encap`:
 
-_base_put_smid_nvme_encap
-=========================
+\_base_put_smid_nvme_encap
+==========================
 
 .. c:function:: void _base_put_smid_nvme_encap(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
@@ -1421,8 +1421,8 @@ Return nothing.
 
 .. _`_base_put_smid_default`:
 
-_base_put_smid_default
-======================
+\_base_put_smid_default
+=======================
 
 .. c:function:: void _base_put_smid_default(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
@@ -1443,8 +1443,8 @@ Return nothing.
 
 .. _`_base_put_smid_scsi_io_atomic`:
 
-_base_put_smid_scsi_io_atomic
-=============================
+\_base_put_smid_scsi_io_atomic
+==============================
 
 .. c:function:: void _base_put_smid_scsi_io_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
@@ -1468,8 +1468,8 @@ Return nothing.
 
 .. _`_base_put_smid_fast_path_atomic`:
 
-_base_put_smid_fast_path_atomic
-===============================
+\_base_put_smid_fast_path_atomic
+================================
 
 .. c:function:: void _base_put_smid_fast_path_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
@@ -1487,8 +1487,8 @@ _base_put_smid_fast_path_atomic
 
 .. _`_base_put_smid_hi_priority_atomic`:
 
-_base_put_smid_hi_priority_atomic
-=================================
+\_base_put_smid_hi_priority_atomic
+==================================
 
 .. c:function:: void _base_put_smid_hi_priority_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 msix_task)
 
@@ -1512,8 +1512,8 @@ Return nothing.
 
 .. _`_base_put_smid_nvme_encap_atomic`:
 
-_base_put_smid_nvme_encap_atomic
-================================
+\_base_put_smid_nvme_encap_atomic
+=================================
 
 .. c:function:: void _base_put_smid_nvme_encap_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
@@ -1534,8 +1534,8 @@ Return nothing.
 
 .. _`_base_put_smid_default_atomic`:
 
-_base_put_smid_default_atomic
-=============================
+\_base_put_smid_default_atomic
+==============================
 
 .. c:function:: void _base_put_smid_default_atomic(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
@@ -1556,8 +1556,8 @@ Return nothing.
 
 .. _`_base_display_oems_branding`:
 
-_base_display_OEMs_branding
-===========================
+\_base_display_OEMs_branding
+============================
 
 .. c:function:: void _base_display_OEMs_branding(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1575,8 +1575,8 @@ Return nothing.
 
 .. _`_base_display_ioc_capabilities`:
 
-_base_display_ioc_capabilities
-==============================
+\_base_display_ioc_capabilities
+===============================
 
 .. c:function:: void _base_display_ioc_capabilities(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1623,8 +1623,8 @@ load time.
 
 .. _`_base_static_config_pages`:
 
-_base_static_config_pages
-=========================
+\_base_static_config_pages
+==========================
 
 .. c:function:: void _base_static_config_pages(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1642,8 +1642,8 @@ Return nothing.
 
 .. _`_base_release_memory_pools`:
 
-_base_release_memory_pools
-==========================
+\_base_release_memory_pools
+===========================
 
 .. c:function:: void _base_release_memory_pools(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1663,8 +1663,8 @@ Return nothing.
 
 .. _`_base_allocate_memory_pools`:
 
-_base_allocate_memory_pools
-===========================
+\_base_allocate_memory_pools
+============================
 
 .. c:function:: int _base_allocate_memory_pools(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1705,8 +1705,8 @@ Doorbell bits in MPI_IOC_STATE_MASK.
 
 .. _`_base_wait_on_iocstate`:
 
-_base_wait_on_iocstate
-======================
+\_base_wait_on_iocstate
+=======================
 
 .. c:function:: int _base_wait_on_iocstate(struct MPT3SAS_ADAPTER *ioc, u32 ioc_state, int timeout)
 
@@ -1730,8 +1730,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_diag_reset`:
 
-_base_diag_reset
-================
+\_base_diag_reset
+=================
 
 .. c:function:: int _base_diag_reset(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1756,8 +1756,8 @@ MPI2_HIS_IOC2SYS_DB_STATUS - set to one when IOC writes to doorbell.
 
 .. _`_base_wait_for_doorbell_ack`:
 
-_base_wait_for_doorbell_ack
-===========================
+\_base_wait_for_doorbell_ack
+============================
 
 .. c:function:: int _base_wait_for_doorbell_ack(struct MPT3SAS_ADAPTER *ioc, int timeout)
 
@@ -1786,8 +1786,8 @@ doorbell.
 
 .. _`_base_wait_for_doorbell_not_used`:
 
-_base_wait_for_doorbell_not_used
-================================
+\_base_wait_for_doorbell_not_used
+=================================
 
 .. c:function:: int _base_wait_for_doorbell_not_used(struct MPT3SAS_ADAPTER *ioc, int timeout)
 
@@ -1808,8 +1808,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_send_ioc_reset`:
 
-_base_send_ioc_reset
-====================
+\_base_send_ioc_reset
+=====================
 
 .. c:function:: int _base_send_ioc_reset(struct MPT3SAS_ADAPTER *ioc, u8 reset_type, int timeout)
 
@@ -1833,8 +1833,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_handshake_req_reply_wait`:
 
-_base_handshake_req_reply_wait
-==============================
+\_base_handshake_req_reply_wait
+===============================
 
 .. c:function:: int _base_handshake_req_reply_wait(struct MPT3SAS_ADAPTER *ioc, int request_bytes, u32 *request, int reply_bytes, u16 *reply, int timeout)
 
@@ -1926,8 +1926,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_get_port_facts`:
 
-_base_get_port_facts
-====================
+\_base_get_port_facts
+=====================
 
 .. c:function:: int _base_get_port_facts(struct MPT3SAS_ADAPTER *ioc, int port)
 
@@ -1948,8 +1948,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_wait_for_iocstate`:
 
-_base_wait_for_iocstate
-=======================
+\_base_wait_for_iocstate
+========================
 
 .. c:function:: int _base_wait_for_iocstate(struct MPT3SAS_ADAPTER *ioc, int timeout)
 
@@ -1970,8 +1970,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_get_ioc_facts`:
 
-_base_get_ioc_facts
-===================
+\_base_get_ioc_facts
+====================
 
 .. c:function:: int _base_get_ioc_facts(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1989,8 +1989,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_send_ioc_init`:
 
-_base_send_ioc_init
-===================
+\_base_send_ioc_init
+====================
 
 .. c:function:: int _base_send_ioc_init(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2037,8 +2037,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_base_send_port_enable`:
 
-_base_send_port_enable
-======================
+\_base_send_port_enable
+=======================
 
 .. c:function:: int _base_send_port_enable(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2075,8 +2075,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_determine_wait_on_discovery`:
 
-_base_determine_wait_on_discovery
-=================================
+\_base_determine_wait_on_discovery
+==================================
 
 .. c:function:: int _base_determine_wait_on_discovery(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2097,8 +2097,8 @@ Returns 1 for wait, 0 for don't wait
 
 .. _`_base_unmask_events`:
 
-_base_unmask_events
-===================
+\_base_unmask_events
+====================
 
 .. c:function:: void _base_unmask_events(struct MPT3SAS_ADAPTER *ioc, u16 event)
 
@@ -2119,8 +2119,8 @@ The mask is stored in ioc->event_masks.
 
 .. _`_base_event_notification`:
 
-_base_event_notification
-========================
+\_base_event_notification
+=========================
 
 .. c:function:: int _base_event_notification(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2161,8 +2161,8 @@ ask for that event. We don't mask events that are already enabled.
 
 .. _`_base_diag_reset`:
 
-_base_diag_reset
-================
+\_base_diag_reset
+=================
 
 .. c:function:: int _base_diag_reset(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2180,8 +2180,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_make_ioc_ready`:
 
-_base_make_ioc_ready
-====================
+\_base_make_ioc_ready
+=====================
 
 .. c:function:: int _base_make_ioc_ready(struct MPT3SAS_ADAPTER *ioc, enum reset_type type)
 
@@ -2202,8 +2202,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_base_make_ioc_operational`:
 
-_base_make_ioc_operational
-==========================
+\_base_make_ioc_operational
+===========================
 
 .. c:function:: int _base_make_ioc_operational(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2278,8 +2278,8 @@ Return nothing.
 
 .. _`_base_reset_handler`:
 
-_base_reset_handler
-===================
+\_base_reset_handler
+====================
 
 .. c:function:: void _base_reset_handler(struct MPT3SAS_ADAPTER *ioc, int reset_phase)
 
@@ -2305,8 +2305,8 @@ Return nothing.
 
 .. _`_wait_for_commands_to_complete`:
 
-_wait_for_commands_to_complete
-==============================
+\_wait_for_commands_to_complete
+===============================
 
 .. c:function:: void _wait_for_commands_to_complete(struct MPT3SAS_ADAPTER *ioc)
 

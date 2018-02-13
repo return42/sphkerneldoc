@@ -328,7 +328,7 @@ dma_dir
     or \ ``DMA_NONE``\  if pages allocated from regular memory.
 
 refcount
-    &struct kref reference counter used to free the buffer.
+    \ :c:type:`struct kref <kref>`\  reference counter used to free the buffer.
 
 .. _`comedi_buf_map.description`:
 
@@ -534,7 +534,7 @@ enum comedi_cb
 
 .. c:type:: enum comedi_cb
 
-    &struct comedi_async callback "events"
+    \ :c:type:`struct comedi_async <comedi_async>`\  callback "events"
 
 .. _`comedi_cb.definition`:
 
@@ -774,7 +774,8 @@ board_name
 
 board_ptr
     Optional pointer to private, read-only board type information in
-    the low-level driver.  If the 'num_names' member of the \ :c:type:`struct comedi_driver <comedi_driver>`\  is non-zero, the handler for the \ ``COMEDI_DEVCONFIG``\  ioctl
+    the low-level driver.  If the 'num_names' member of the \ :c:type:`struct struct <struct>`\ 
+    comedi_driver is non-zero, the handler for the \ ``COMEDI_DEVCONFIG``\  ioctl
     will point it to a pointer to a matched board name string within the
     driver's private array of static, read-only board type information when
     calling the driver's "attach" handler.  The low-level driver is free to
@@ -795,7 +796,7 @@ mutex
     Generic mutex for use by the COMEDI core module.
 
 attach_lock
-    &struct rw_semaphore used to guard against the COMEDI device
+    \ :c:type:`struct rw_semaphore <rw_semaphore>`\  used to guard against the COMEDI device
     being detached while an operation is in progress.  The \ :c:func:`down_write`\ 
     operation is only allowed while \ ``mutex``\  is held and is used when
     changing \ ``attached``\  and \ ``detach_count``\  and calling the low-level driver's
@@ -803,7 +804,7 @@ attach_lock
     holding \ ``mutex``\ .
 
 refcount
-    &struct kref reference counter for freeing COMEDI device.
+    \ :c:type:`struct kref <kref>`\  reference counter for freeing COMEDI device.
 
 n_subdevices
     Number of COMEDI subdevices allocated by the low-level
@@ -936,7 +937,7 @@ channel-specific range table list.
 Return
 ------
 
-%true if the range is bipolar.
+\ ``true``\  if the range is bipolar.
 \ ``false``\  if the range is unipolar.
 
 .. _`comedi_range_is_unipolar`:
@@ -970,7 +971,7 @@ channel-specific range table list.
 Return
 ------
 
-%true if the range is unipolar.
+\ ``true``\  if the range is unipolar.
 \ ``false``\  if the range is bipolar.
 
 .. _`comedi_range_is_external`:
@@ -1004,7 +1005,7 @@ channel-specific range table list.
 Return
 ------
 
-%true if the range is external.
+\ ``true``\  if the range is external.
 \ ``false``\  if the range is internal.
 
 .. _`comedi_chan_range_is_bipolar`:
@@ -1041,7 +1042,7 @@ channel-specific range table list.
 Return
 ------
 
-%true if the range is bipolar.
+\ ``true``\  if the range is bipolar.
 \ ``false``\  if the range is unipolar.
 
 .. _`comedi_chan_range_is_unipolar`:
@@ -1078,7 +1079,7 @@ channel-specific range table list.
 Return
 ------
 
-%true if the range is unipolar.
+\ ``true``\  if the range is unipolar.
 \ ``false``\  if the range is bipolar.
 
 .. _`comedi_chan_range_is_external`:
@@ -1115,7 +1116,7 @@ channel-specific range table list.
 Return
 ------
 
-%true if the range is bipolar.
+\ ``true``\  if the range is bipolar.
 \ ``false``\  if the range is unipolar.
 
 .. _`comedi_offset_munge`:

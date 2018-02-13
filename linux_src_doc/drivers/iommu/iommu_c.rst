@@ -168,8 +168,8 @@ it's current group.  This decrements the iommu group reference count.
 
 .. _`__iommu_group_for_each_dev`:
 
-__iommu_group_for_each_dev
-==========================
+\__iommu_group_for_each_dev
+===========================
 
 .. c:function:: int __iommu_group_for_each_dev(struct iommu_group *group, void *data, int (*fn)(struct device *, void *))
 

@@ -21,7 +21,7 @@ util_is_printable_string
 Description
 -----------
 
-@param data  The string to check
+\ ``param``\  data  The string to check
 \ ``param``\  len   The string length including terminator
 \ ``return``\  1 if a valid printable string, 0 if not
 
@@ -42,7 +42,7 @@ utilfdt_read
 Description
 -----------
 
-@param filename      The filename to read, or - for stdin
+\ ``param``\  filename      The filename to read, or - for stdin
 \ ``return``\  Pointer to allocated buffer containing fdt, or NULL on error
 
 .. _`utilfdt_read_len`:
@@ -63,7 +63,7 @@ utilfdt_read_len
 Description
 -----------
 
-@param len           If non-NULL, the amount of data we managed to read
+\ ``param``\  len           If non-NULL, the amount of data we managed to read
 
 .. _`utilfdt_read_err`:
 
@@ -85,7 +85,7 @@ utilfdt_read_err
 Description
 -----------
 
-@param filename      The filename to read, or - for stdin
+\ ``param``\  filename      The filename to read, or - for stdin
 \ ``param``\  buffp         Returns pointer to buffer containing fdt
 \ ``return``\  0 if ok, else an errno value representing the error
 
@@ -110,7 +110,7 @@ utilfdt_read_err_len
 Description
 -----------
 
-@param len           If non-NULL, the amount of data we managed to read
+\ ``param``\  len           If non-NULL, the amount of data we managed to read
 
 .. _`utilfdt_write`:
 
@@ -132,7 +132,7 @@ utilfdt_write
 Description
 -----------
 
-@param filename      The filename to write, or - for stdout
+\ ``param``\  filename      The filename to write, or - for stdout
 \ ``param``\  blob          Poiner to buffer containing fdt
 \ ``return``\  0 if ok, -1 on error
 
@@ -156,7 +156,7 @@ utilfdt_write_err
 Description
 -----------
 
-@param filename      The filename to write, or - for stdout
+\ ``param``\  filename      The filename to write, or - for stdout
 \ ``param``\  blob          Poiner to buffer containing fdt
 \ ``return``\  0 if ok, else an errno value representing the error
 

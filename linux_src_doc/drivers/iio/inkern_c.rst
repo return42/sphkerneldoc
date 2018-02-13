@@ -3,8 +3,8 @@
 
 .. _`__of_iio_simple_xlate`:
 
-__of_iio_simple_xlate
-=====================
+\__of_iio_simple_xlate
+======================
 
 .. c:function:: int __of_iio_simple_xlate(struct iio_dev *indio_dev, const struct of_phandle_args *iiospec)
 

@@ -371,7 +371,7 @@ ftrace_regex_open
 Description
 -----------
 
-ftrace_regex_open() initializes the filter files for the
+\ :c:func:`ftrace_regex_open`\  initializes the filter files for the
 \ ``ops``\ . Depending on \ ``flag``\  it may process the filter hash or
 the notrace hash of \ ``ops``\ . With this called from the open
 routine, you can use \ :c:func:`ftrace_filter_write`\  for the write
@@ -739,7 +739,7 @@ kernel.
 Note
 ----
 
-@ops->func and all the functions it calls must be labeled
+\ ``ops``\ ->func and all the functions it calls must be labeled
 with "notrace", otherwise it will go into a
 recursive loop.
 

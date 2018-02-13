@@ -1712,8 +1712,8 @@ extremely rare.
 
 .. _`__vmw_execbuf_release_pinned_bo`:
 
-__vmw_execbuf_release_pinned_bo
-===============================
+\__vmw_execbuf_release_pinned_bo
+================================
 
 .. c:function:: void __vmw_execbuf_release_pinned_bo(struct vmw_private *dev_priv, struct vmw_fence_obj *fence)
 

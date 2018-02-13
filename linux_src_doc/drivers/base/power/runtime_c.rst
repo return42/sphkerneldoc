@@ -63,8 +63,8 @@ rpm_check_suspend_allowed
 
 .. _`__rpm_callback`:
 
-__rpm_callback
-==============
+\__rpm_callback
+===============
 
 .. c:function:: int __rpm_callback(int (*cb)(struct device *), struct device *dev) __releases(&dev->power.lock) __acquires&dev->power.lock)
 
@@ -240,8 +240,8 @@ pm_schedule_suspend
 
 .. _`__pm_runtime_idle`:
 
-__pm_runtime_idle
-=================
+\__pm_runtime_idle
+==================
 
 .. c:function:: int __pm_runtime_idle(struct device *dev, int rpmflags)
 
@@ -267,8 +267,8 @@ or if \ :c:func:`pm_runtime_irq_safe`\  has been called.
 
 .. _`__pm_runtime_suspend`:
 
-__pm_runtime_suspend
-====================
+\__pm_runtime_suspend
+=====================
 
 .. c:function:: int __pm_runtime_suspend(struct device *dev, int rpmflags)
 
@@ -294,8 +294,8 @@ or if \ :c:func:`pm_runtime_irq_safe`\  has been called.
 
 .. _`__pm_runtime_resume`:
 
-__pm_runtime_resume
-===================
+\__pm_runtime_resume
+====================
 
 .. c:function:: int __pm_runtime_resume(struct device *dev, int rpmflags)
 
@@ -343,8 +343,8 @@ return 1.  Otherwise return 0 without changing the counter.
 
 .. _`__pm_runtime_set_status`:
 
-__pm_runtime_set_status
-=======================
+\__pm_runtime_set_status
+========================
 
 .. c:function:: int __pm_runtime_set_status(struct device *dev, unsigned int status)
 
@@ -375,8 +375,8 @@ notification request for the parent is submitted.
 
 .. _`__pm_runtime_barrier`:
 
-__pm_runtime_barrier
-====================
+\__pm_runtime_barrier
+=====================
 
 .. c:function:: void __pm_runtime_barrier(struct device *dev)
 
@@ -428,8 +428,8 @@ Return value
 
 .. _`__pm_runtime_disable`:
 
-__pm_runtime_disable
-====================
+\__pm_runtime_disable
+=====================
 
 .. c:function:: void __pm_runtime_disable(struct device *dev, bool check_resume)
 
@@ -606,8 +606,8 @@ changes the other way, allow runtime suspends.
 
 .. _`__pm_runtime_use_autosuspend`:
 
-__pm_runtime_use_autosuspend
-============================
+\__pm_runtime_use_autosuspend
+=============================
 
 .. c:function:: void __pm_runtime_use_autosuspend(struct device *dev, bool use)
 

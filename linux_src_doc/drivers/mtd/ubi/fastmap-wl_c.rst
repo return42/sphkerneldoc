@@ -157,7 +157,7 @@ ubi_wl_put_fm_peb
 see
 ---
 
-ubi_wl_put_peb()
+\ :c:func:`ubi_wl_put_peb`\ 
 
 .. _`ubi_is_erase_work`:
 

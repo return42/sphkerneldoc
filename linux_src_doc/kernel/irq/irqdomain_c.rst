@@ -3,8 +3,8 @@
 
 .. _`__irq_domain_alloc_fwnode`:
 
-__irq_domain_alloc_fwnode
-=========================
+\__irq_domain_alloc_fwnode
+==========================
 
 .. c:function:: struct fwnode_handle *__irq_domain_alloc_fwnode(unsigned int type, int id, const char *name, void *data)
 
@@ -61,8 +61,8 @@ Free a fwnode_handle allocated with irq_domain_alloc_fwnode.
 
 .. _`__irq_domain_add`:
 
-__irq_domain_add
-================
+\__irq_domain_add
+=================
 
 .. c:function:: struct irq_domain *__irq_domain_add(struct fwnode_handle *fwnode, int size, irq_hw_number_t hwirq_max, int direct_max, const struct irq_domain_ops *ops, void *host_data)
 
@@ -638,8 +638,8 @@ irq_domain_free_irqs_top
 
 .. _`__irq_domain_alloc_irqs`:
 
-__irq_domain_alloc_irqs
-=======================
+\__irq_domain_alloc_irqs
+========================
 
 .. c:function:: int __irq_domain_alloc_irqs(struct irq_domain *domain, int irq_base, unsigned int nr_irqs, int node, void *arg, bool realloc, const struct cpumask *affinity)
 

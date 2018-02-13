@@ -1152,8 +1152,8 @@ required entries before calling this function.
 
 .. note::
 
-   The following fields at \ ``q``\  should be set before calling this function:
-   \ :c:type:`vb2_queue->ops <vb2_queue>`\ , \ :c:type:`vb2_queue->mem_ops <vb2_queue>`\ , \ :c:type:`vb2_queue->type <vb2_queue>`\ .
+   The following fields at @q should be set before calling this function:
+   &vb2_queue->ops, &vb2_queue->mem_ops, &vb2_queue->type.
 
 .. _`vb2_core_queue_release`:
 
@@ -1288,11 +1288,11 @@ vb2_core_poll
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct file \*file:
-        &struct file argument passed to the poll
+        \ :c:type:`struct file <file>`\  argument passed to the poll
         file operation handler.
 
     :param poll_table \*wait:
-        &poll_table wait argument passed to the poll
+        \ :c:type:`struct poll_table <poll_table>`\  wait argument passed to the poll
         file operation handler.
 
 .. _`vb2_core_poll.description`:
@@ -1393,7 +1393,7 @@ vb2_thread_start
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param vb2_thread_fnc fnc:
-        &vb2_thread_fnc callback function.
+        \ :c:type:`struct vb2_thread_fnc <vb2_thread_fnc>`\  callback function.
 
     :param void \*priv:
         priv pointer passed to the callback function.

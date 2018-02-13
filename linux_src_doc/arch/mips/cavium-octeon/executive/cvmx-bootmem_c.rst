@@ -33,8 +33,8 @@ CVMX_BOOTMEM_NAMED_GET_FIELD
 
 .. _`__cvmx_bootmem_desc_get`:
 
-__cvmx_bootmem_desc_get
-=======================
+\__cvmx_bootmem_desc_get
+========================
 
 .. c:function:: uint64_t __cvmx_bootmem_desc_get(uint64_t base, int offset, int size)
 
@@ -54,7 +54,7 @@ __cvmx_bootmem_desc_get
 Description
 -----------
 
-@param base   64bit physical address of the complete structure
+\ ``param``\  base   64bit physical address of the complete structure
 \ ``param``\  offset Offset from the beginning of the structure to the member being
 accessed.
 \ ``param``\  size   Size of the structure member.

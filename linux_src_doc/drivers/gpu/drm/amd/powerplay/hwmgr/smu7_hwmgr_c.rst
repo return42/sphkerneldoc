@@ -16,7 +16,7 @@ smu7_get_mc_microcode_version
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_enable_smc_voltage_controller`:
@@ -34,7 +34,7 @@ smu7_enable_smc_voltage_controller
 Description
 -----------
 
-@param    pHwMgr  the address of the powerplay hardware manager.
+\ ``param``\     pHwMgr  the address of the powerplay hardware manager.
 \ ``return``\    always PP_Result_OK
 
 .. _`smu7_voltage_control`:
@@ -52,7 +52,7 @@ smu7_voltage_control
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 
 .. _`smu7_enable_voltage_control`:
 
@@ -69,7 +69,7 @@ smu7_enable_voltage_control
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_construct_voltage_tables`:
@@ -87,7 +87,7 @@ smu7_construct_voltage_tables
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_program_static_screen_threshold_parameters`:
@@ -105,7 +105,7 @@ smu7_program_static_screen_threshold_parameters
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_enable_display_gap`:
@@ -123,7 +123,7 @@ smu7_enable_display_gap
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always  0
 
 .. _`smu7_program_voting_clients`:
@@ -141,7 +141,7 @@ smu7_program_voting_clients
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always  0
 
 .. _`smu7_initial_switch_from_arbf0_to_f1`:
@@ -161,7 +161,7 @@ smu7_initial_switch_from_arbf0_to_f1
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 This function is to be called from the SetPowerState table.
 
@@ -180,7 +180,7 @@ smu7_get_evv_voltages
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_patch_ppt_v1_with_vdd_leakage`:
@@ -204,7 +204,7 @@ smu7_patch_ppt_v1_with_vdd_leakage
 Description
 -----------
 
-@param     hwmgr  the address of the powerplay hardware manager.
+\ ``param``\      hwmgr  the address of the powerplay hardware manager.
 \ ``param``\      pointer to changing voltage
 \ ``param``\      pointer to leakage table
 
@@ -229,7 +229,7 @@ smu7_patch_lookup_table_with_leakage
 Description
 -----------
 
-@param     hwmgr  the address of the powerplay hardware manager.
+\ ``param``\      hwmgr  the address of the powerplay hardware manager.
 \ ``param``\      pointer to voltage lookup table
 \ ``param``\      pointer to leakage table
 \ ``return``\      always 0
@@ -255,7 +255,7 @@ smu7_patch_ppt_v0_with_vdd_leakage
 Description
 -----------
 
-@param     hwmgr  the address of the powerplay hardware manager.
+\ ``param``\      hwmgr  the address of the powerplay hardware manager.
 \ ``param``\      pointer to changing voltage
 \ ``param``\      pointer to leakage table
 
@@ -274,7 +274,7 @@ smu7_program_display_gap
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always OK
 
 .. _`smu7_set_max_fan_rpm_output`:
@@ -305,7 +305,7 @@ smu7_get_memory_type
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_enable_acpi_power_management`:
@@ -323,7 +323,7 @@ smu7_enable_acpi_power_management
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`smu7_init_power_gate_state`:
@@ -341,7 +341,7 @@ smu7_init_power_gate_state
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. This file was automatic generated / don't edit.

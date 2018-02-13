@@ -257,8 +257,8 @@ is specified in the file handle, or NULL otherwise.
 
 .. _`__generic_file_fsync`:
 
-__generic_file_fsync
-====================
+\__generic_file_fsync
+=====================
 
 .. c:function:: int __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync)
 

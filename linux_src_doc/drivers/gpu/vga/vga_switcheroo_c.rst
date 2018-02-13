@@ -367,7 +367,7 @@ register the client ere thou hast called this.
 Return
 ------
 
-%true if probing should be deferred, otherwise \ ``false``\ .
+\ ``true``\  if probing should be deferred, otherwise \ ``false``\ .
 
 .. _`vga_switcheroo_get_client_state`:
 

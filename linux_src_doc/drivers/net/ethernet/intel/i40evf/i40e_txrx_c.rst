@@ -860,8 +860,8 @@ i40e_create_tx_ctx
 
 .. _`__i40evf_chk_linearize`:
 
-__i40evf_chk_linearize
-======================
+\__i40evf_chk_linearize
+=======================
 
 .. c:function:: bool __i40evf_chk_linearize(struct sk_buff *skb)
 
@@ -886,8 +886,8 @@ fragments.
 
 .. _`__i40evf_maybe_stop_tx`:
 
-__i40evf_maybe_stop_tx
-======================
+\__i40evf_maybe_stop_tx
+=======================
 
 .. c:function:: int __i40evf_maybe_stop_tx(struct i40e_ring *tx_ring, int size)
 

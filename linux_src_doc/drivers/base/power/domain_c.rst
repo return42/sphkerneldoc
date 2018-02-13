@@ -115,8 +115,8 @@ genpd_power_off_work_fn
 
 .. _`__genpd_runtime_suspend`:
 
-__genpd_runtime_suspend
-=======================
+\__genpd_runtime_suspend
+========================
 
 .. c:function:: int __genpd_runtime_suspend(struct device *dev)
 
@@ -127,8 +127,8 @@ __genpd_runtime_suspend
 
 .. _`__genpd_runtime_resume`:
 
-__genpd_runtime_resume
-======================
+\__genpd_runtime_resume
+=======================
 
 .. c:function:: int __genpd_runtime_resume(struct device *dev)
 
@@ -492,8 +492,8 @@ resume phase for devices whose "always on" flags are set.
 
 .. _`__pm_genpd_add_device`:
 
-__pm_genpd_add_device
-=====================
+\__pm_genpd_add_device
+======================
 
 .. c:function:: int __pm_genpd_add_device(struct generic_pm_domain *genpd, struct device *dev, struct gpd_timing_data *td)
 

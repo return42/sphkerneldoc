@@ -73,8 +73,8 @@ The range must be contiguous but may span node boundaries.
 
 .. _`__alloc_bootmem_nopanic`:
 
-__alloc_bootmem_nopanic
-=======================
+\__alloc_bootmem_nopanic
+========================
 
 .. c:function:: void *__alloc_bootmem_nopanic(unsigned long size, unsigned long align, unsigned long goal)
 
@@ -103,8 +103,8 @@ Returns NULL on failure.
 
 .. _`__alloc_bootmem`:
 
-__alloc_bootmem
-===============
+\__alloc_bootmem
+================
 
 .. c:function:: void *__alloc_bootmem(unsigned long size, unsigned long align, unsigned long goal)
 
@@ -133,8 +133,8 @@ The function panics if the request can not be satisfied.
 
 .. _`__alloc_bootmem_node`:
 
-__alloc_bootmem_node
-====================
+\__alloc_bootmem_node
+=====================
 
 .. c:function:: void *__alloc_bootmem_node(pg_data_t *pgdat, unsigned long size, unsigned long align, unsigned long goal)
 
@@ -167,8 +167,8 @@ The function panics if the request can not be satisfied.
 
 .. _`__alloc_bootmem_low`:
 
-__alloc_bootmem_low
-===================
+\__alloc_bootmem_low
+====================
 
 .. c:function:: void *__alloc_bootmem_low(unsigned long size, unsigned long align, unsigned long goal)
 
@@ -197,8 +197,8 @@ The function panics if the request can not be satisfied.
 
 .. _`__alloc_bootmem_low_node`:
 
-__alloc_bootmem_low_node
-========================
+\__alloc_bootmem_low_node
+=========================
 
 .. c:function:: void *__alloc_bootmem_low_node(pg_data_t *pgdat, unsigned long size, unsigned long align, unsigned long goal)
 

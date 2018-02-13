@@ -440,7 +440,8 @@ v4l2_async_notifier_parse_fwnode_endpoints
 
     :param size_t asd_struct_size:
         size of the driver's async sub-device struct, including
-        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct v4l2_async_subdev <v4l2_async_subdev>`\  shall be the first member of
+        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
+        v4l2_async_subdev shall be the first member of
         the driver's async sub-device struct, i.e. both
         begin at the same memory address.
 
@@ -483,7 +484,7 @@ sub-devices are no longer in use, even if the function returned an error.
 Return
 ------
 
-%0 on success, including when no async sub-devices are found
+\ ``0``\  on success, including when no async sub-devices are found
         \ ``-ENOMEM``\  if memory allocation failed
         \ ``-EINVAL``\  if graph or endpoint parsing failed
         Other error codes as returned by \ ``parse_endpoint``\ 
@@ -505,7 +506,8 @@ v4l2_async_notifier_parse_fwnode_endpoints_by_port
 
     :param size_t asd_struct_size:
         size of the driver's async sub-device struct, including
-        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct v4l2_async_subdev <v4l2_async_subdev>`\  shall be the first member of
+        sizeof(struct v4l2_async_subdev). The \ :c:type:`struct struct <struct>`\ 
+        v4l2_async_subdev shall be the first member of
         the driver's async sub-device struct, i.e. both
         begin at the same memory address.
 
@@ -557,7 +559,7 @@ sub-devices are no longer in use, even if the function returned an error.
 Return
 ------
 
-%0 on success, including when no async sub-devices are found
+\ ``0``\  on success, including when no async sub-devices are found
         \ ``-ENOMEM``\  if memory allocation failed
         \ ``-EINVAL``\  if graph or endpoint parsing failed
         Other error codes as returned by \ ``parse_endpoint``\ 

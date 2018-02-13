@@ -144,8 +144,8 @@ pointers.
 
 .. _`__e1000_access_emi_reg_locked`:
 
-__e1000_access_emi_reg_locked
-=============================
+\__e1000_access_emi_reg_locked
+==============================
 
 .. c:function:: s32 __e1000_access_emi_reg_locked(struct e1000_hw *hw, u16 address, u16 *data, bool read)
 

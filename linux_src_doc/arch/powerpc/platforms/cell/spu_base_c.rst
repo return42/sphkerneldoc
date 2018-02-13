@@ -3,8 +3,8 @@
 
 .. _`__slb_present`:
 
-__slb_present
-=============
+\__slb_present
+==============
 
 .. c:function:: int __slb_present(struct copro_slb *slbs, int nr_slbs, void *new_addr)
 

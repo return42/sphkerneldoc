@@ -234,7 +234,7 @@ nilfs_search_super_root
 Description
 -----------
 
-nilfs_search_super_root() looks for the latest super-root from a partial
+\ :c:func:`nilfs_search_super_root`\  looks for the latest super-root from a partial
 segment pointed by the superblock.  It sets up struct the_nilfs through
 this search. It fills nilfs_recovery_info (ri) required for recovery.
 

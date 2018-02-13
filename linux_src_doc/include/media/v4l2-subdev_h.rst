@@ -315,7 +315,7 @@ Description
 
      On devices that have both AM/FM and TV, it is up to the driver
      to explicitly call s_radio when the tuner should be switched to
-     radio mode, before handling other \ :c:type:`struct v4l2_subdev_tuner_ops <v4l2_subdev_tuner_ops>`\ 
+     radio mode, before handling other &struct v4l2_subdev_tuner_ops
      that would require it. An example of such usage is::
 
        static void s_frequency(void *priv, const struct v4l2_frequency *f)
@@ -937,13 +937,13 @@ Members
 -------
 
 try_fmt
-    &struct v4l2_mbus_framefmt
+    \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\ 
 
 try_crop
-    &struct v4l2_rect to be used for crop
+    \ :c:type:`struct v4l2_rect <v4l2_rect>`\  to be used for crop
 
 try_compose
-    &struct v4l2_rect to be used for compose
+    \ :c:type:`struct v4l2_rect <v4l2_rect>`\  to be used for compose
 
 .. _`v4l2_subdev_pad_config.description`:
 

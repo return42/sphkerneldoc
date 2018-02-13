@@ -85,8 +85,8 @@ DISABLED.
 
 .. _`__cvmx_helper_port_setup_ipd`:
 
-__cvmx_helper_port_setup_ipd
-============================
+\__cvmx_helper_port_setup_ipd
+=============================
 
 .. c:function:: int __cvmx_helper_port_setup_ipd(int ipd_port)
 
@@ -143,8 +143,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_interface_setup_ipd`:
 
-__cvmx_helper_interface_setup_ipd
-=================================
+\__cvmx_helper_interface_setup_ipd
+==================================
 
 .. c:function:: int __cvmx_helper_interface_setup_ipd(int interface)
 
@@ -162,8 +162,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_global_setup_ipd`:
 
-__cvmx_helper_global_setup_ipd
-==============================
+\__cvmx_helper_global_setup_ipd
+===============================
 
 .. c:function:: int __cvmx_helper_global_setup_ipd( void)
 
@@ -181,8 +181,8 @@ Returns Zero on success, negative on failure.
 
 .. _`__cvmx_helper_interface_setup_pko`:
 
-__cvmx_helper_interface_setup_pko
-=================================
+\__cvmx_helper_interface_setup_pko
+==================================
 
 .. c:function:: int __cvmx_helper_interface_setup_pko(int interface)
 
@@ -200,8 +200,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_global_setup_pko`:
 
-__cvmx_helper_global_setup_pko
-==============================
+\__cvmx_helper_global_setup_pko
+===============================
 
 .. c:function:: int __cvmx_helper_global_setup_pko( void)
 
@@ -219,8 +219,8 @@ Returns Zero on success, negative on failure.
 
 .. _`__cvmx_helper_global_setup_backpressure`:
 
-__cvmx_helper_global_setup_backpressure
-=======================================
+\__cvmx_helper_global_setup_backpressure
+========================================
 
 .. c:function:: int __cvmx_helper_global_setup_backpressure( void)
 
@@ -236,8 +236,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_packet_hardware_enable`:
 
-__cvmx_helper_packet_hardware_enable
-====================================
+\__cvmx_helper_packet_hardware_enable
+=====================================
 
 .. c:function:: int __cvmx_helper_packet_hardware_enable(int interface)
 
@@ -255,8 +255,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_errata_fix_ipd_ptr_alignment`:
 
-__cvmx_helper_errata_fix_ipd_ptr_alignment
-==========================================
+\__cvmx_helper_errata_fix_ipd_ptr_alignment
+===========================================
 
 .. c:function:: int __cvmx_helper_errata_fix_ipd_ptr_alignment( void)
 

@@ -3,8 +3,8 @@
 
 .. _`__mnt_want_write`:
 
-__mnt_want_write
-================
+\__mnt_want_write
+=================
 
 .. c:function:: int __mnt_want_write(struct vfsmount *m)
 
@@ -73,8 +73,8 @@ drop the reference.
 
 .. _`__mnt_want_write_file`:
 
-__mnt_want_write_file
-=====================
+\__mnt_want_write_file
+======================
 
 .. c:function:: int __mnt_want_write_file(struct file *file)
 
@@ -142,8 +142,8 @@ lower layer and deny access in that case.
 
 .. _`__mnt_drop_write`:
 
-__mnt_drop_write
-================
+\__mnt_drop_write
+=================
 
 .. c:function:: void __mnt_drop_write(struct vfsmount *mnt)
 

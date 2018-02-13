@@ -156,8 +156,8 @@ Returns a pointer to the currently enabled gmap. 0 if none is enabled.
 
 .. _`__gmap_segment_gaddr`:
 
-__gmap_segment_gaddr
-====================
+\__gmap_segment_gaddr
+=====================
 
 .. c:function:: unsigned long __gmap_segment_gaddr(unsigned long *entry)
 
@@ -175,8 +175,8 @@ Returns the virtual address in the guest address space for the segment
 
 .. _`__gmap_unlink_by_vmaddr`:
 
-__gmap_unlink_by_vmaddr
-=======================
+\__gmap_unlink_by_vmaddr
+========================
 
 .. c:function:: int __gmap_unlink_by_vmaddr(struct gmap *gmap, unsigned long vmaddr)
 
@@ -197,8 +197,8 @@ Returns 1 if a TLB flush is required
 
 .. _`__gmap_unmap_by_gaddr`:
 
-__gmap_unmap_by_gaddr
-=====================
+\__gmap_unmap_by_gaddr
+======================
 
 .. c:function:: int __gmap_unmap_by_gaddr(struct gmap *gmap, unsigned long gaddr)
 
@@ -272,8 +272,8 @@ Returns 0 if the mmap succeeded, -EINVAL or -ENOMEM if not.
 
 .. _`__gmap_translate`:
 
-__gmap_translate
-================
+\__gmap_translate
+=================
 
 .. c:function:: unsigned long __gmap_translate(struct gmap *gmap, unsigned long gaddr)
 
@@ -347,8 +347,8 @@ gmap_unlink
 
 .. _`__gmap_link`:
 
-__gmap_link
-===========
+\__gmap_link
+============
 
 .. c:function:: int __gmap_link(struct gmap *gmap, unsigned long gaddr, unsigned long vmaddr)
 
@@ -707,8 +707,8 @@ Called with the sg->guest_table_lock
 
 .. _`__gmap_unshadow_pgt`:
 
-__gmap_unshadow_pgt
-===================
+\__gmap_unshadow_pgt
+====================
 
 .. c:function:: void __gmap_unshadow_pgt(struct gmap *sg, unsigned long raddr, unsigned long *pgt)
 
@@ -754,8 +754,8 @@ Called with the sg->guest_table_lock
 
 .. _`__gmap_unshadow_sgt`:
 
-__gmap_unshadow_sgt
-===================
+\__gmap_unshadow_sgt
+====================
 
 .. c:function:: void __gmap_unshadow_sgt(struct gmap *sg, unsigned long raddr, unsigned long *sgt)
 
@@ -801,8 +801,8 @@ Called with the shadow->guest_table_lock
 
 .. _`__gmap_unshadow_r3t`:
 
-__gmap_unshadow_r3t
-===================
+\__gmap_unshadow_r3t
+====================
 
 .. c:function:: void __gmap_unshadow_r3t(struct gmap *sg, unsigned long raddr, unsigned long *r3t)
 
@@ -848,8 +848,8 @@ Called with the sg->guest_table_lock
 
 .. _`__gmap_unshadow_r2t`:
 
-__gmap_unshadow_r2t
-===================
+\__gmap_unshadow_r2t
+====================
 
 .. c:function:: void __gmap_unshadow_r2t(struct gmap *sg, unsigned long raddr, unsigned long *r2t)
 
@@ -895,8 +895,8 @@ Called with the sg->guest_table_lock
 
 .. _`__gmap_unshadow_r1t`:
 
-__gmap_unshadow_r1t
-===================
+\__gmap_unshadow_r1t
+====================
 
 .. c:function:: void __gmap_unshadow_r1t(struct gmap *sg, unsigned long raddr, unsigned long *r1t)
 

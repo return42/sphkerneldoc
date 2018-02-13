@@ -363,8 +363,8 @@ vmw_cmdbuf_header_inline_free
 
 .. _`__vmw_cmdbuf_header_free`:
 
-__vmw_cmdbuf_header_free
-========================
+\__vmw_cmdbuf_header_free
+=========================
 
 .. c:function:: void __vmw_cmdbuf_header_free(struct vmw_cmdbuf_header *header)
 
@@ -575,8 +575,8 @@ vmw_cmdbuf_man_idle
 
 .. _`__vmw_cmdbuf_cur_flush`:
 
-__vmw_cmdbuf_cur_flush
-======================
+\__vmw_cmdbuf_cur_flush
+=======================
 
 .. c:function:: void __vmw_cmdbuf_cur_flush(struct vmw_cmdbuf_man *man)
 

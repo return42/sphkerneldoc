@@ -285,8 +285,8 @@ handle, we needn't account for errors happened in last hour.
 
 .. _`__eeh_pe_state_mark`:
 
-__eeh_pe_state_mark
-===================
+\__eeh_pe_state_mark
+====================
 
 .. c:function:: void *__eeh_pe_state_mark(void *data, void *flag)
 
@@ -355,8 +355,8 @@ Mark specific state for all child devices of the PE.
 
 .. _`__eeh_pe_state_clear`:
 
-__eeh_pe_state_clear
-====================
+\__eeh_pe_state_clear
+=====================
 
 .. c:function:: void *__eeh_pe_state_clear(void *data, void *flag)
 

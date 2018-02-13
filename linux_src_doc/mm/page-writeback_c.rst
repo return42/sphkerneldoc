@@ -134,7 +134,7 @@ __wb_calc_thresh
 
 .. c:function:: unsigned long __wb_calc_thresh(struct dirty_throttle_control *dtc)
 
-    @wb's share of dirty throttling threshold
+    \ ``wb``\ 's share of dirty throttling threshold
 
     :param struct dirty_throttle_control \*dtc:
         dirty_throttle_context of interest

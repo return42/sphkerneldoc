@@ -148,7 +148,7 @@ clktrctrl_mask
 flags
     Clockdomain capability flags
 
-_flags
+\_flags
     Flags for use only by internal clockdomain code
 
 dep_bit
@@ -183,7 +183,7 @@ node
 Description
 -----------
 
-@prcm_partition should be a macro from mach-omap2/prcm44xx.h (OMAP4 only)
+\ ``prcm_partition``\  should be a macro from mach-omap2/prcm44xx.h (OMAP4 only)
 \ ``cm_inst``\  should be a macro ending in \_INST from the OMAP4 CM instance
 definitions (OMAP4 only)
 \ ``clkdm_offs``\  should be a macro ending in \_CDOFFS from the OMAP4 CM instance

@@ -24,7 +24,7 @@ kmemleak_alloc
         the object is ignored (not scanned and not reported as a leak)
 
     :param gfp_t gfp:
-        kmalloc() flags used for kmemleak internal memory allocations
+        \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
 
 .. _`kmemleak_alloc.description`:
 
@@ -44,7 +44,7 @@ kmemleak_alloc_percpu
     register a newly allocated \__percpu object
 
     :param const void __percpu \*ptr:
-        __percpu pointer to beginning of the object
+        \__percpu pointer to beginning of the object
 
     :param size_t size:
         size of the object
@@ -76,7 +76,7 @@ kmemleak_vmalloc
         size of the object
 
     :param gfp_t gfp:
-        __vmalloc() flags used for kmemleak internal memory allocations
+        \__vmalloc() flags used for kmemleak internal memory allocations
 
 .. _`kmemleak_vmalloc.description`:
 
@@ -140,7 +140,7 @@ kmemleak_free_percpu
     unregister a previously registered \__percpu object
 
     :param const void __percpu \*ptr:
-        __percpu pointer to beginning of the object
+        \__percpu pointer to beginning of the object
 
 .. _`kmemleak_free_percpu.description`:
 
@@ -229,7 +229,7 @@ kmemleak_scan_area
         size of the scan area
 
     :param gfp_t gfp:
-        kmalloc() flags used for kmemleak internal memory allocations
+        \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
 
 .. _`kmemleak_scan_area.description`:
 

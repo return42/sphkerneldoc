@@ -34,8 +34,8 @@ objects).
 
 .. _`__bfq_bic_change_cgroup`:
 
-__bfq_bic_change_cgroup
-=======================
+\__bfq_bic_change_cgroup
+========================
 
 .. c:function:: struct bfq_group *__bfq_bic_change_cgroup(struct bfq_data *bfqd, struct bfq_io_cq *bic, struct blkcg *blkcg)
 

@@ -125,7 +125,7 @@ Zero on success, negative error code on error.
 See also
 --------
 
-drm_kms_helper_poll_disable() and \ :c:func:`drm_fb_helper_set_suspend_unlocked`\ .
+\ :c:func:`drm_kms_helper_poll_disable`\  and \ :c:func:`drm_fb_helper_set_suspend_unlocked`\ .
 
 .. _`drm_mode_config_helper_resume`:
 
@@ -160,7 +160,7 @@ Zero on success, negative error code on error.
 See also
 --------
 
-drm_fb_helper_set_suspend_unlocked() and \ :c:func:`drm_kms_helper_poll_enable`\ .
+\ :c:func:`drm_fb_helper_set_suspend_unlocked`\  and \ :c:func:`drm_kms_helper_poll_enable`\ .
 
 .. This file was automatic generated / don't edit.
 

@@ -27,7 +27,7 @@ svc_rdma_map_reply_hdr
 Return
 ------
 
-%0 if the header is DMA mapped,
+\ ``0``\  if the header is DMA mapped,
 \ ``-EIO``\  if DMA mapping failed.
 
 .. _`svc_rdma_post_send_wr`:
@@ -56,7 +56,7 @@ svc_rdma_post_send_wr
 Return
 ------
 
-%0 if the Send\* was posted successfully,
+\ ``0``\  if the Send\* was posted successfully,
 \ ``-ENOTCONN``\  if the connection was lost or dropped,
 \ ``-EINVAL``\  if there was a problem with the Send we built,
 \ ``-ENOMEM``\  if ib_post_send failed.
@@ -86,7 +86,7 @@ If no reply message was possible, the connection is closed.
 Return
 ------
 
-%0 if an RPC reply has been successfully posted,
+\ ``0``\  if an RPC reply has been successfully posted,
 \ ``-ENOMEM``\  if a resource shortage occurred (connection is lost),
 \ ``-ENOTCONN``\  if posting failed (connection is lost).
 

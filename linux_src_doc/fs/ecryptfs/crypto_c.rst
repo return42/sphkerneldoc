@@ -342,7 +342,7 @@ ecryptfs_compute_root_iv
 
 .. c:function:: int ecryptfs_compute_root_iv(struct ecryptfs_crypt_stat *crypt_stat)
 
-    @crypt_stats
+    \ ``crypt_stats``\ 
 
     :param struct ecryptfs_crypt_stat \*crypt_stat:
         *undescribed*

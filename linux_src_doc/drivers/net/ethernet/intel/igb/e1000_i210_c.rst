@@ -381,8 +381,8 @@ LED configuration is not valid, set to a valid LED configuration.
 
 .. _`__igb_access_xmdio_reg`:
 
-__igb_access_xmdio_reg
-======================
+\__igb_access_xmdio_reg
+=======================
 
 .. c:function:: s32 __igb_access_xmdio_reg(struct e1000_hw *hw, u16 address, u8 dev_addr, u16 *data, bool read)
 

@@ -8,7 +8,7 @@ typedef netio_ipp_address_t
 
 .. c:type:: typedef netio_ipp_address_t
 
-    @ingroup types
+    \ ``ingroup``\  types
 
 .. _`netio_ipp_address_t.description`:
 

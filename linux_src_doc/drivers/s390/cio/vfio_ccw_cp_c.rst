@@ -71,7 +71,7 @@ Limitations
 Return
 ------
 
-%0 on success and a negative error value on failure.
+\ ``0``\  on success and a negative error value on failure.
 
 .. _`cp_free`:
 
@@ -141,7 +141,7 @@ We support direct ccw chaining by translating them to idal ccws.
 Return
 ------
 
-%0 on success and a negative error value on failure.
+\ ``0``\  on success and a negative error value on failure.
 
 .. _`cp_get_orb`:
 
@@ -191,7 +191,7 @@ cp_update_scsw
 Description
 -----------
 
-@scsw contains the I/O results of the channel program that pointed
+\ ``scsw``\  contains the I/O results of the channel program that pointed
 to by \ ``cp``\ . However what \ ``scsw``\ ->cpa stores is a host physical
 address, which is meaningless for the guest, which is waiting for
 the I/O results.

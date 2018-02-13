@@ -41,8 +41,8 @@ returns none
 
 .. _`_mic_start`:
 
-_mic_start
-==========
+\_mic_start
+===========
 
 .. c:function:: int _mic_start(struct cosm_device *cdev, int id)
 
@@ -72,8 +72,8 @@ For all cosm_hw_ops the caller holds a mutex to ensure serialization.
 
 .. _`_mic_stop`:
 
-_mic_stop
-=========
+\_mic_stop
+==========
 
 .. c:function:: void _mic_stop(struct cosm_device *cdev, bool force)
 

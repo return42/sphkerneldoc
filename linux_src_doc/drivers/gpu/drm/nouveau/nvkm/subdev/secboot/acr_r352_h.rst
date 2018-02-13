@@ -164,7 +164,7 @@ load_blob
 load_bl_header
     *undescribed*
 
-__load_apps
+\__load_apps
     *undescribed*
 
 unload_blob
@@ -176,7 +176,7 @@ unload_blob
 unload_bl_header
     *undescribed*
 
-__unload_apps
+\__unload_apps
     *undescribed*
 
 hsbl_blob

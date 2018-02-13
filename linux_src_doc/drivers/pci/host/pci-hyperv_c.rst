@@ -229,8 +229,8 @@ The Linux representation
 
 .. _`_hv_pcifront_read_config`:
 
-_hv_pcifront_read_config
-========================
+\_hv_pcifront_read_config
+=========================
 
 .. c:function:: void _hv_pcifront_read_config(struct hv_pci_dev *hpdev, int where, int size, u32 *val)
 
@@ -250,8 +250,8 @@ _hv_pcifront_read_config
 
 .. _`_hv_pcifront_write_config`:
 
-_hv_pcifront_write_config
-=========================
+\_hv_pcifront_write_config
+==========================
 
 .. c:function:: void _hv_pcifront_write_config(struct hv_pci_dev *hpdev, int where, int size, u32 val)
 

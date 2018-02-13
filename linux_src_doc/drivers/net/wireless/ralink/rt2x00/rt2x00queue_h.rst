@@ -107,10 +107,10 @@ Constants
 ---------
 
 SKBDESC_DMA_MAPPED_RX
-    &skb_dma field has been mapped for RX
+    \ :c:type:`struct skb_dma <skb_dma>`\  field has been mapped for RX
 
 SKBDESC_DMA_MAPPED_TX
-    &skb_dma field has been mapped for TX
+    \ :c:type:`struct skb_dma <skb_dma>`\  field has been mapped for TX
 
 SKBDESC_IV_STRIPPED
     Frame contained a IV/EIV provided by
@@ -200,7 +200,7 @@ get_skb_frame_desc
     Obtain the rt2x00 frame descriptor from a sk_buff.
 
     :param struct sk_buff \*skb:
-        &struct sk_buff from where we obtain the \ :c:type:`struct skb_frame_desc <skb_frame_desc>`\ 
+        \ :c:type:`struct sk_buff <sk_buff>`\  from where we obtain the \ :c:type:`struct skb_frame_desc <skb_frame_desc>`\ 
 
 .. _`rxdone_entry_desc_flags`:
 
@@ -1120,10 +1120,10 @@ rt2x00queue_for_each_entry
         Pointer to \ ``data_queue``\ 
 
     :param enum queue_index start:
-        &enum queue_index Pointer to start index
+        \ :c:type:`enum queue_index <queue_index>`\  Pointer to start index
 
     :param enum queue_index end:
-        &enum queue_index Pointer to end index
+        \ :c:type:`enum queue_index <queue_index>`\  Pointer to end index
 
     :param void \*data:
         Data to pass to the callback function
@@ -1205,8 +1205,8 @@ rt2x00queue_dma_timeout
 
 .. _`_rt2x00_desc_read`:
 
-_rt2x00_desc_read
-=================
+\_rt2x00_desc_read
+==================
 
 .. c:function:: __le32 _rt2x00_desc_read(__le32 *desc, const u8 word)
 
@@ -1235,8 +1235,8 @@ rt2x00_desc_read
 
 .. _`_rt2x00_desc_write`:
 
-_rt2x00_desc_write
-==================
+\_rt2x00_desc_write
+===================
 
 .. c:function:: void _rt2x00_desc_write(__le32 *desc, const u8 word, __le32 value)
 

@@ -76,7 +76,7 @@ Members
 -------
 
 flags
-    %EEPROM_CHANNEL\_\* flags
+    \ ``EEPROM_CHANNEL``\ \_\* flags
 
 max_power_avg
     max power (in dBm) on this channel, at most 31 dBm

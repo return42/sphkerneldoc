@@ -64,7 +64,7 @@ kthread_freezable_should_stop
 Description
 -----------
 
-kthread_should_stop() for freezable kthreads, which will enter
+\ :c:func:`kthread_should_stop`\  for freezable kthreads, which will enter
 refrigerator if necessary.  This function is safe from \ :c:func:`kthread_stop`\  /
 freezer deadlock and freezable kthreads should use this function instead
 of calling \ :c:func:`try_to_freeze`\  directly.
@@ -107,7 +107,7 @@ kthread_probe_data
 Description
 -----------
 
-@task could be a kthread task.  Return the data value specified when it
+\ ``task``\  could be a kthread task.  Return the data value specified when it
 was created if accessible.  If \ ``task``\  isn't a kthread task or its data is
 inaccessible for any reason, \ ``NULL``\  is returned.  This function requires
 that \ ``task``\  itself is safe to dereference.
@@ -455,7 +455,7 @@ work immediately.
 Return
 ------
 
-%false if the \ ``work``\  has already been pending. It means that
+\ ``false``\  if the \ ``work``\  has already been pending. It means that
 either the timer was running or the work was queued. It returns \ ``true``\ 
 otherwise.
 
@@ -510,7 +510,7 @@ modify \ ``dwork``\ 's timer so that it expires after \ ``delay``\ . If \ ``dela
 Return
 ------
 
-%true if \ ``dwork``\  was pending and its timer was modified,
+\ ``true``\  if \ ``dwork``\  was pending and its timer was modified,
 \ ``false``\  otherwise.
 
 A special case is when the work is being canceled in parallel.
@@ -555,7 +555,7 @@ queued can't be destroyed before this function returns.
 Return
 ------
 
-%true if \ ``work``\  was pending, \ ``false``\  otherwise.
+\ ``true``\  if \ ``work``\  was pending, \ ``false``\  otherwise.
 
 .. _`kthread_cancel_delayed_work_sync`:
 
@@ -581,7 +581,7 @@ This is \ :c:func:`kthread_cancel_work_sync`\  for delayed works.
 Return
 ------
 
-%true if \ ``dwork``\  was pending, \ ``false``\  otherwise.
+\ ``true``\  if \ ``dwork``\  was pending, \ ``false``\  otherwise.
 
 .. _`kthread_flush_worker`:
 

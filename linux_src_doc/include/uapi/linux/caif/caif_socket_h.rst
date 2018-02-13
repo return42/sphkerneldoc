@@ -148,7 +148,7 @@ CAIFPROTO_RFM
 CAIFPROTO_DEBUG
     Debug link
 
-_CAIFPROTO_MAX
+\_CAIFPROTO_MAX
     *undescribed*
 
 .. _`caif_protocol_type.description`:

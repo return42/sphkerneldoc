@@ -164,8 +164,8 @@ fsl_mc_bus_uevent
 
 .. _`__fsl_mc_driver_register`:
 
-__fsl_mc_driver_register
-========================
+\__fsl_mc_driver_register
+=========================
 
 .. c:function:: int __fsl_mc_driver_register(struct fsl_mc_driver *mc_driver, struct module *owner)
 

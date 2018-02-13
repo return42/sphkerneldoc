@@ -113,8 +113,8 @@ samples.
 
 .. _`_wait_for`:
 
-_wait_for
-=========
+\_wait_for
+==========
 
 .. c:function::  _wait_for( COND,  MS,  W)
 

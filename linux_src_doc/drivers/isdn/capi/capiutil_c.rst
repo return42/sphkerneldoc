@@ -33,7 +33,7 @@ capi_cmsg2message
     assemble CAPI 2.0 message from \_cmsg structure
 
     :param _cmsg \*cmsg:
-        _cmsg structure
+        \_cmsg structure
 
     :param u8 \*msg:
         buffer for assembled message
@@ -55,7 +55,7 @@ capi_message2cmsg
     disassemble CAPI 2.0 message into \_cmsg structure
 
     :param _cmsg \*cmsg:
-        _cmsg structure
+        \_cmsg structure
 
     :param u8 \*msg:
         buffer for assembled message
@@ -77,7 +77,7 @@ capi_cmsg_header
     initialize header part of \_cmsg structure
 
     :param _cmsg \*cmsg:
-        _cmsg structure
+        \_cmsg structure
 
     :param u16 _ApplId:
         ApplID field value
@@ -173,7 +173,7 @@ capi_cmsg2str
     format \_cmsg structure for printing
 
     :param _cmsg \*cmsg:
-        _cmsg structure
+        \_cmsg structure
 
 .. _`capi_cmsg2str.description`:
 

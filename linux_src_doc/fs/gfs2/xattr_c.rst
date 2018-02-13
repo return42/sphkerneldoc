@@ -122,8 +122,8 @@ errno
 
 .. _`__gfs2_xattr_get`:
 
-__gfs2_xattr_get
-================
+\__gfs2_xattr_get
+=================
 
 .. c:function:: int __gfs2_xattr_get(struct inode *inode, const char *name, void *buffer, size_t size, int type)
 
@@ -267,8 +267,8 @@ Return
 
 .. _`__gfs2_xattr_set`:
 
-__gfs2_xattr_set
-================
+\__gfs2_xattr_set
+=================
 
 .. c:function:: int __gfs2_xattr_set(struct inode *inode, const char *name, const void *value, size_t size, int flags, int type)
 

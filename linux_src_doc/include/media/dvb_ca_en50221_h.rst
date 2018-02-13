@@ -161,7 +161,7 @@ dvb_ca_en50221_init
 Description
 -----------
 
-@return 0 on success, nonzero on failure
+\ ``return``\  0 on success, nonzero on failure
 
 .. _`dvb_ca_en50221_release`:
 

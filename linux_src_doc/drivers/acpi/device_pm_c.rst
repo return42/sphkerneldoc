@@ -104,7 +104,7 @@ acpi_add_pm_notifier
 NOTE
 ----
 
-@adev need not be a run-wake or wakeup device to be a valid source of
+\ ``adev``\  need not be a run-wake or wakeup device to be a valid source of
 PM wakeup events.  For example, wakeup events may be generated for bridges
 if one of the devices below the bridge is signaling wakeup, even if the
 bridge itself doesn't have a wakeup GPE associated with it.

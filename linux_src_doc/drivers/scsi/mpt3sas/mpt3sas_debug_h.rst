@@ -3,8 +3,8 @@
 
 .. _`_debug_dump_mf`:
 
-_debug_dump_mf
-==============
+\_debug_dump_mf
+===============
 
 .. c:function:: void _debug_dump_mf(void *mpi_request, int sz)
 
@@ -18,8 +18,8 @@ _debug_dump_mf
 
 .. _`_debug_dump_reply`:
 
-_debug_dump_reply
-=================
+\_debug_dump_reply
+==================
 
 .. c:function:: void _debug_dump_reply(void *mpi_request, int sz)
 
@@ -33,8 +33,8 @@ _debug_dump_reply
 
 .. _`_debug_dump_config`:
 
-_debug_dump_config
-==================
+\_debug_dump_config
+===================
 
 .. c:function:: void _debug_dump_config(void *mpi_request, int sz)
 

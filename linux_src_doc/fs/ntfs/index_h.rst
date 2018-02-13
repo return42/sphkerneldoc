@@ -8,7 +8,7 @@ ntfs_index_entry_flush_dcache_page
 
 .. c:function:: void ntfs_index_entry_flush_dcache_page(ntfs_index_context *ictx)
 
-    flush_dcache_page() for index entries
+    \ :c:func:`flush_dcache_page`\  for index entries
 
     :param ntfs_index_context \*ictx:
         ntfs index context describing the index entry

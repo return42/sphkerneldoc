@@ -379,8 +379,8 @@ Remove a SPMI controller.  Caller is responsible for calling
 
 .. _`__spmi_driver_register`:
 
-__spmi_driver_register
-======================
+\__spmi_driver_register
+=======================
 
 .. c:function:: int __spmi_driver_register(struct spmi_driver *sdrv, struct module *owner)
 

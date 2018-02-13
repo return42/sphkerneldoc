@@ -227,8 +227,8 @@ success, 1 to indicate failure of at least one action.
 
 .. _`__llc_lookup_established`:
 
-__llc_lookup_established
-========================
+\__llc_lookup_established
+=========================
 
 .. c:function:: struct sock *__llc_lookup_established(struct llc_sap *sap, struct llc_addr *daddr, struct llc_addr *laddr)
 

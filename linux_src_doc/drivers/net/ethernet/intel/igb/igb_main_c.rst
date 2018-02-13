@@ -745,8 +745,8 @@ OS network device settings (MTU size).
 
 .. _`__igb_open`:
 
-__igb_open
-==========
+\__igb_open
+===========
 
 .. c:function:: int __igb_open(struct net_device *netdev, bool resuming)
 
@@ -773,8 +773,8 @@ and the stack is notified that the interface is ready.
 
 .. _`__igb_close`:
 
-__igb_close
-===========
+\__igb_close
+============
 
 .. c:function:: int __igb_close(struct net_device *netdev, bool suspending)
 

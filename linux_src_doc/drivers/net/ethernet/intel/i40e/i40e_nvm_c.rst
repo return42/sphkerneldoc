@@ -171,8 +171,8 @@ Reads one 16 bit word from the Shadow RAM using the AdminQ
 
 .. _`__i40e_read_nvm_word`:
 
-__i40e_read_nvm_word
-====================
+\__i40e_read_nvm_word
+=====================
 
 .. c:function:: i40e_status __i40e_read_nvm_word(struct i40e_hw *hw, u16 offset, u16 *data)
 
@@ -284,8 +284,8 @@ and followed by the release.
 
 .. _`__i40e_read_nvm_buffer`:
 
-__i40e_read_nvm_buffer
-======================
+\__i40e_read_nvm_buffer
+=======================
 
 .. c:function:: i40e_status __i40e_read_nvm_buffer(struct i40e_hw *hw, u16 offset, u16 *words, u16 *data)
 

@@ -124,8 +124,8 @@ to conclude the operation.
 
 .. _`__phy_read`:
 
-__phy_read
-==========
+\__phy_read
+===========
 
 .. c:function:: int __phy_read(struct phy_device *phydev, u32 regnum)
 
@@ -173,8 +173,8 @@ to conclude the operation.
 
 .. _`__phy_write`:
 
-__phy_write
-===========
+\__phy_write
+============
 
 .. c:function:: int __phy_write(struct phy_device *phydev, u32 regnum, u16 val)
 
@@ -198,8 +198,8 @@ The caller must have taken the MDIO bus lock.
 
 .. _`__phy_set_bits`:
 
-__phy_set_bits
-==============
+\__phy_set_bits
+===============
 
 .. c:function:: int __phy_set_bits(struct phy_device *phydev, u32 regnum, u16 val)
 
@@ -223,8 +223,8 @@ The caller must have taken the MDIO bus lock.
 
 .. _`__phy_clear_bits`:
 
-__phy_clear_bits
-================
+\__phy_clear_bits
+=================
 
 .. c:function:: int __phy_clear_bits(struct phy_device *phydev, u32 regnum, u16 val)
 

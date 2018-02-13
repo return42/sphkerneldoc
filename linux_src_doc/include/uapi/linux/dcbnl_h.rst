@@ -268,7 +268,7 @@ DCB_CMD_CEE_GET
 DCB_CMD_IEEE_DEL
     delete IEEE 802.1Qaz configuration
 
-__DCB_CMD_ENUM_MAX
+\__DCB_CMD_ENUM_MAX
     *undescribed*
 
 DCB_CMD_MAX
@@ -368,7 +368,7 @@ DCB_ATTR_FEATCFG
 DCB_ATTR_CEE
     CEE std supported attributes (NLA_NESTED)
 
-__DCB_ATTR_ENUM_MAX
+\__DCB_ATTR_ENUM_MAX
     *undescribed*
 
 DCB_ATTR_MAX
@@ -439,7 +439,7 @@ DCB_ATTR_IEEE_QCN
 DCB_ATTR_IEEE_QCN_STATS
     *undescribed*
 
-__DCB_ATTR_IEEE_MAX
+\__DCB_ATTR_IEEE_MAX
     *undescribed*
 
 .. _`cee_attrs`:
@@ -503,7 +503,7 @@ DCB_ATTR_CEE_APP_TABLE
 DCB_ATTR_CEE_FEAT
     DCBX features flags (DCB_CMD_GFEATCFG)
 
-__DCB_ATTR_CEE_MAX
+\__DCB_ATTR_CEE_MAX
     *undescribed*
 
 .. _`cee_attrs.description`:
@@ -579,7 +579,7 @@ DCB_PFC_UP_ATTR_7
 DCB_PFC_UP_ATTR_ALL
     apply to all priority flow control attrs (NLA_FLAG)
 
-__DCB_PFC_UP_ATTR_ENUM_MAX
+\__DCB_PFC_UP_ATTR_ENUM_MAX
     *undescribed*
 
 DCB_PFC_UP_ATTR_MAX
@@ -695,7 +695,7 @@ DCB_PG_ATTR_BW_ID_MAX
 DCB_PG_ATTR_BW_ID_ALL
     apply to all priority groups (NLA_FLAG)
 
-__DCB_PG_ATTR_ENUM_MAX
+\__DCB_PG_ATTR_ENUM_MAX
     *undescribed*
 
 DCB_PG_ATTR_MAX
@@ -760,7 +760,7 @@ DCB_TC_ATTR_PARAM_BW_PCT
 DCB_TC_ATTR_PARAM_ALL
     (NLA_FLAG) all traffic class parameters
 
-__DCB_TC_ATTR_PARAM_ENUM_MAX
+\__DCB_TC_ATTR_PARAM_ENUM_MAX
     *undescribed*
 
 DCB_TC_ATTR_PARAM_MAX
@@ -838,7 +838,7 @@ DCB_CAP_ATTR_BCN
 DCB_CAP_ATTR_DCBX
     (NLA_U8) device supports DCBX engine
 
-__DCB_CAP_ATTR_ENUM_MAX
+\__DCB_CAP_ATTR_ENUM_MAX
     *undescribed*
 
 DCB_CAP_ATTR_MAX
@@ -895,7 +895,7 @@ DCB_NUMTCS_ATTR_PFC
     (NLA_U8) number of traffic classes which can
     support priority flow control
 
-__DCB_NUMTCS_ATTR_ENUM_MAX
+\__DCB_NUMTCS_ATTR_ENUM_MAX
     *undescribed*
 
 DCB_NUMTCS_ATTR_MAX

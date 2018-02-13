@@ -24,7 +24,7 @@ do_invalidatepage
 Description
 -----------
 
-do_invalidatepage() is called when all or part of the page has become
+\ :c:func:`do_invalidatepage`\  is called when all or part of the page has become
 invalidated by a truncate operation.
 
 \ :c:func:`do_invalidatepage`\  does not have to release all buffers, but it must

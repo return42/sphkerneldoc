@@ -2012,8 +2012,8 @@ field.
 
 .. _`_ieee80211_is_robust_mgmt_frame`:
 
-_ieee80211_is_robust_mgmt_frame
-===============================
+\_ieee80211_is_robust_mgmt_frame
+================================
 
 .. c:function:: bool _ieee80211_is_robust_mgmt_frame(struct ieee80211_hdr *hdr)
 
@@ -2051,8 +2051,8 @@ ieee80211_is_public_action
 
 .. _`_ieee80211_is_group_privacy_action`:
 
-_ieee80211_is_group_privacy_action
-==================================
+\_ieee80211_is_group_privacy_action
+===================================
 
 .. c:function:: bool _ieee80211_is_group_privacy_action(struct ieee80211_hdr *hdr)
 

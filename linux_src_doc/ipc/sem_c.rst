@@ -242,7 +242,7 @@ do_smart_update
 Description
 -----------
 
-do_smart_update() does the required calls to update_queue and wakeup_zero,
+\ :c:func:`do_smart_update`\  does the required calls to update_queue and wakeup_zero,
 based on the actual changes that were performed on the semaphore array.
 Note that the function does not do the actual wake-up: the caller is
 responsible for calling \ :c:func:`wake_up_q`\ .

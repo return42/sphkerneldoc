@@ -302,8 +302,8 @@ mapping.  Returns zero on success, negative values on failure.
 
 .. _`_netlbl_catmap_getnode`:
 
-_netlbl_catmap_getnode
-======================
+\_netlbl_catmap_getnode
+=======================
 
 .. c:function:: struct netlbl_lsm_catmap *_netlbl_catmap_getnode(struct netlbl_lsm_catmap **catmap, u32 offset, unsigned int cm_flags, gfp_t gfp_flags)
 

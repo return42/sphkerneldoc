@@ -235,8 +235,8 @@ Return
 
 .. _`__devcgroup_check_permission`:
 
-__devcgroup_check_permission
-============================
+\__devcgroup_check_permission
+=============================
 
 .. c:function:: int __devcgroup_check_permission(short type, u32 major, u32 minor, short access)
 

@@ -3,8 +3,8 @@
 
 .. _`__atomic_add_unless`:
 
-__atomic_add_unless
-===================
+\__atomic_add_unless
+====================
 
 .. c:function:: int __atomic_add_unless(atomic_t *v, int a, int u)
 

@@ -3,8 +3,8 @@
 
 .. _`___bpf_prog_run`:
 
-___bpf_prog_run
-===============
+\___bpf_prog_run
+================
 
 .. c:function:: u64 ___bpf_prog_run(u64 *regs, const struct bpf_insn *insn, u64 *stack)
 

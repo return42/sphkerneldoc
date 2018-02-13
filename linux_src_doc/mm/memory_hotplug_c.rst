@@ -3,8 +3,8 @@
 
 .. _`__remove_pages`:
 
-__remove_pages
-==============
+\__remove_pages
+===============
 
 .. c:function:: int __remove_pages(struct zone *zone, unsigned long phys_start_pfn, unsigned long nr_pages, struct vmem_altmap *altmap)
 

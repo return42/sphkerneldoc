@@ -1174,7 +1174,7 @@ non_periodic_qh_ptr
 
 periodic_sched_inactive
     Inactive QHs in the periodic schedule. This is a
-    list of QHs for periodic transfers that are \_not\_
+    list of QHs for periodic transfers that are \_not_
     scheduled for the next frame. Each QH in the list has an
     interval counter that determines when it needs to be
     scheduled for execution. This scheduling mechanism

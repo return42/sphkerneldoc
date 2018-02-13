@@ -86,8 +86,8 @@ programmed on the same DMA channel.
 
 .. _`__scif_rma_destroy_tcw`:
 
-__scif_rma_destroy_tcw
-======================
+\__scif_rma_destroy_tcw
+=======================
 
 .. c:function:: void __scif_rma_destroy_tcw(struct scif_mmu_notif *mmn, u64 start, u64 len)
 

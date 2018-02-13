@@ -534,7 +534,7 @@ udlen
 udata
     user data
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 flags
@@ -1239,7 +1239,7 @@ use
 handle
     unique object handle
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 data
@@ -1406,7 +1406,7 @@ use
 handle
     unique object handle
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 data

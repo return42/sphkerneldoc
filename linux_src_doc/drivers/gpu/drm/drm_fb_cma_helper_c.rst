@@ -42,7 +42,7 @@ Initialize::
     fbdev = drm_fb_cma_fbdev_init_with_funcs(dev, 16,
                                           dev->mode_config.num_crtc,
                                           dev->mode_config.num_connector,
-                                          \ :c:type:`struct driver_fb_funcs <driver_fb_funcs>`\ );
+                                          &driver_fb_funcs);
 
 .. _`drm_fb_cma_get_gem_obj`:
 

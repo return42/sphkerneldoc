@@ -155,7 +155,7 @@ This routine reserves space for the per-cpu data struct, the list of
 pg_data_ts and the per-node data struct.  Each node will have something like
 the following in the first chunk of addr. space large enough to hold it.
 
-\_______________________\_
+\________________________
 \|                        \|
 \|~~~~~~~~~~~~~~~~~~~~~~~~\| <-- NODEDATA_ALIGN(start, node) for the first
 \|    PERCPU_PAGE_SIZE \*  \|     start and length big enough
@@ -308,7 +308,7 @@ per_cpu_init
 Description
 -----------
 
-find_pernode_space() does most of this already, we just need to set
+\ :c:func:`find_pernode_space`\  does most of this already, we just need to set
 local_per_cpu_offset
 
 .. _`call_pernode_memory`:
@@ -334,7 +334,7 @@ call_pernode_memory
 Description
 -----------
 
-efi_memmap_walk() knows nothing about layout of memory across nodes. Find
+\ :c:func:`efi_memmap_walk`\  knows nothing about layout of memory across nodes. Find
 out to which node a block of memory belongs.  Ignore memory that we cannot
 identify, and split blocks that run across multiple nodes.
 
@@ -386,7 +386,7 @@ paging_init
 Description
 -----------
 
-paging_init() sets up the page tables for each node of the system and frees
+\ :c:func:`paging_init`\  sets up the page tables for each node of the system and frees
 the bootmem allocator memory for general use.
 
 .. This file was automatic generated / don't edit.

@@ -157,7 +157,7 @@ handle_error
 Description
 -----------
 
-@get_hwirq, \ ``msi_init``\  and \ ``msi_free``\  are callbacks used by
+\ ``get_hwirq``\ , \ ``msi_init``\  and \ ``msi_free``\  are callbacks used by
 \ :c:func:`msi_create_irq_domain`\  and related interfaces
 
 \ ``msi_check``\ , \ ``msi_prepare``\ , \ ``msi_finish``\ , \ ``set_desc``\  and \ ``handle_error``\ 

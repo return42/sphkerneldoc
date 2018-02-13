@@ -55,8 +55,8 @@ an entry in aliases_lookup list.
 
 .. _`__of_prop_dup`:
 
-__of_prop_dup
-=============
+\__of_prop_dup
+==============
 
 .. c:function:: struct property *__of_prop_dup(const struct property *prop, gfp_t allocflags)
 

@@ -120,8 +120,8 @@ Returns zero on success, or -EFAULT on error.
 
 .. _`__get_user`:
 
-__get_user
-==========
+\__get_user
+===========
 
 .. c:function::  __get_user( x,  ptr)
 
@@ -161,8 +161,8 @@ On error, the variable \ ``x``\  is set to zero.
 
 .. _`__put_user`:
 
-__put_user
-==========
+\__put_user
+===========
 
 .. c:function::  __put_user( x,  ptr)
 
@@ -201,8 +201,8 @@ Returns zero on success, or -EFAULT on error.
 
 .. _`__clear_user`:
 
-__clear_user
-============
+\__clear_user
+=============
 
 .. c:function:: unsigned long __clear_user(void __user *mem, unsigned long len)
 

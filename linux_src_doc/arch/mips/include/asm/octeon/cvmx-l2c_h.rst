@@ -25,7 +25,7 @@ cvmx_l2c_config_perf
 Description
 -----------
 
-@note The routine does not clear the counter.
+\ ``note``\  The routine does not clear the counter.
 
 .. _`cvmx_l2c_read_perf`:
 
@@ -87,7 +87,7 @@ cvmx_l2c_set_core_way_partition
 Description
 -----------
 
-@note If any ways are blocked for all cores and the HW blocks, then
+\ ``note``\  If any ways are blocked for all cores and the HW blocks, then
 those ways will never have any cache lines evicted from them.
 All cores and the hardware blocks are free to read from all
 ways regardless of the partitioning.
@@ -130,7 +130,7 @@ cvmx_l2c_set_hw_way_partition
 Description
 -----------
 
-@note If any ways are blocked for all cores and the HW blocks, then
+\ ``note``\  If any ways are blocked for all cores and the HW blocks, then
 those ways will never have any cache lines evicted from them.
 All cores and the hardware blocks are free to read from all
 ways regardless of the partitioning.

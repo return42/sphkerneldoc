@@ -46,7 +46,7 @@ NLMSGERR_ATTR_COOKIE
     be used - in the success case - to identify a created
     object or operation or similar (binary)
 
-__NLMSGERR_ATTR_MAX
+\__NLMSGERR_ATTR_MAX
     number of attributes
 
 NLMSGERR_ATTR_MAX

@@ -3,8 +3,8 @@
 
 .. _`__hwspin_trylock`:
 
-__hwspin_trylock
-================
+\__hwspin_trylock
+=================
 
 .. c:function:: int __hwspin_trylock(struct hwspinlock *hwlock, int mode, unsigned long *flags)
 
@@ -45,8 +45,8 @@ This function will never sleep.
 
 .. _`__hwspin_lock_timeout`:
 
-__hwspin_lock_timeout
-=====================
+\__hwspin_lock_timeout
+======================
 
 .. c:function:: int __hwspin_lock_timeout(struct hwspinlock *hwlock, unsigned int to, int mode, unsigned long *flags)
 
@@ -91,8 +91,8 @@ busy after \ ``timeout``\  msecs). The function will never sleep.
 
 .. _`__hwspin_unlock`:
 
-__hwspin_unlock
-===============
+\__hwspin_unlock
+================
 
 .. c:function:: void __hwspin_unlock(struct hwspinlock *hwlock, int mode, unsigned long *flags)
 
@@ -238,8 +238,8 @@ Returns 0 on success, or an appropriate error code on failure
 
 .. _`__hwspin_lock_request`:
 
-__hwspin_lock_request
-=====================
+\__hwspin_lock_request
+======================
 
 .. c:function:: int __hwspin_lock_request(struct hwspinlock *hwlock)
 

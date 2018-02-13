@@ -3,8 +3,8 @@
 
 .. _`__memblock_find_range_top_down`:
 
-__memblock_find_range_top_down
-==============================
+\__memblock_find_range_top_down
+===============================
 
 .. c:function:: phys_addr_t __init_memblock __memblock_find_range_top_down(phys_addr_t start, phys_addr_t end, phys_addr_t size, phys_addr_t align, int nid, ulong flags)
 
@@ -420,8 +420,8 @@ Return 0 on success, -errno on failure.
 
 .. _`__next_reserved_mem_region`:
 
-__next_reserved_mem_region
-==========================
+\__next_reserved_mem_region
+===========================
 
 .. c:function:: void __init_memblock __next_reserved_mem_region(u64 *idx, phys_addr_t *out_start, phys_addr_t *out_end)
 
@@ -445,8 +445,8 @@ Iterate over all reserved memory regions.
 
 .. _`__next_mem_range`:
 
-__next_mem_range
-================
+\__next_mem_range
+=================
 
 .. c:function:: void __init_memblock __next_mem_range(u64 *idx, int nid, ulong flags, struct memblock_type *type_a, struct memblock_type *type_b, phys_addr_t *out_start, phys_addr_t *out_end, int *out_nid)
 
@@ -498,8 +498,8 @@ in lockstep and returns each intersection.
 
 .. _`__next_mem_range_rev`:
 
-__next_mem_range_rev
-====================
+\__next_mem_range_rev
+=====================
 
 .. c:function:: void __init_memblock __next_mem_range_rev(u64 *idx, int nid, ulong flags, struct memblock_type *type_a, struct memblock_type *type_b, phys_addr_t *out_start, phys_addr_t *out_end, int *out_nid)
 
@@ -757,8 +757,8 @@ Virtual address of allocated memory block on success, NULL on failure.
 
 .. _`__memblock_free_early`:
 
-__memblock_free_early
-=====================
+\__memblock_free_early
+======================
 
 .. c:function:: void __memblock_free_early(phys_addr_t base, phys_addr_t size)
 

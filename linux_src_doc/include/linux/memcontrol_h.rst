@@ -47,8 +47,8 @@ controller is in legacy no-hierarchy mode.
 
 .. _`__mod_memcg_page_state`:
 
-__mod_memcg_page_state
-======================
+\__mod_memcg_page_state
+=======================
 
 .. c:function:: void __mod_memcg_page_state(struct page *page, int idx, int val)
 

@@ -18,7 +18,7 @@ ftrace_graph_is_dead
 Description
 -----------
 
-ftrace_graph_stop() is called when a severe error is detected in
+\ :c:func:`ftrace_graph_stop`\  is called when a severe error is detected in
 the function graph tracing. This function is called by the critical
 paths of function graph to keep those paths from doing any more harm.
 

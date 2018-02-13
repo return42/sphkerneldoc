@@ -3,8 +3,8 @@
 
 .. _`__flush_hash_table_range`:
 
-__flush_hash_table_range
-========================
+\__flush_hash_table_range
+=========================
 
 .. c:function:: void __flush_hash_table_range(struct mm_struct *mm, unsigned long start, unsigned long end)
 

@@ -264,7 +264,7 @@ Description
 
 .. note::
 
-   if \ ``elems``\  is zero, the framework will fill in a default value,
+   if @elems is zero, the framework will fill in a default value,
    with is currently 1 element.
 
 .. _`v4l2_event_unsubscribe`:
@@ -319,8 +319,8 @@ Description
 
 .. note::
 
-     This function should be used for the \ :c:type:`struct v4l2_subdev_core_ops <v4l2_subdev_core_ops>`\ 
-     \ ``unsubscribe_event``\  field.
+     This function should be used for the &struct v4l2_subdev_core_ops
+     %unsubscribe_event field.
 
 .. _`v4l2_src_change_event_subscribe`:
 

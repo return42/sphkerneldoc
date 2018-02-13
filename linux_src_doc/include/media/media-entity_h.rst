@@ -377,7 +377,7 @@ Description
 
 .. note::
 
-   Those these callbacks are called with struct \ :c:type:`media_device.graph_mutex <media_device>`\ 
+   Those these callbacks are called with struct &media_device.graph_mutex
    mutex held.
 
 .. _`media_entity_type`:
@@ -547,7 +547,7 @@ Description
 
 .. note::
 
-   \ ``stream_count``\  and \ ``use_count``\  reference counts must never be
+   @stream_count and @use_count reference counts must never be
    negative, but are signed integers on purpose: a simple ``WARN_ON(<0)``
    check can be used to detect reference count bugs that would make them
    negative.
@@ -603,7 +603,7 @@ Description
 
 .. note::
 
-   Currently, no flags for \ :c:type:`struct media_interface <media_interface>`\  is defined.
+   Currently, no flags for &media_interface is defined.
 
 .. _`media_intf_devnode`:
 
@@ -709,7 +709,7 @@ is_media_entity_v4l2_video_device
 Return
 ------
 
-%true if the entity is an instance of a video_device object and can
+\ ``true``\  if the entity is an instance of a video_device object and can
 safely be cast to a struct video_device using the \ :c:func:`container_of`\  macro, or
 \ ``false``\  otherwise.
 
@@ -730,7 +730,7 @@ is_media_entity_v4l2_subdev
 Return
 ------
 
-%true if the entity is an instance of a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  object and can
+\ ``true``\  if the entity is an instance of a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  object and can
 safely be cast to a struct \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  using the \ :c:func:`container_of`\  macro, or
 \ ``false``\  otherwise.
 
@@ -871,7 +871,7 @@ media_entity_enum_empty
 Return
 ------
 
-%true if the entity was empty.
+\ ``true``\  if the entity was empty.
 
 .. _`media_entity_enum_intersects`:
 
@@ -893,7 +893,7 @@ media_entity_enum_intersects
 Return
 ------
 
-%true if entity enumerations \ ``ent_enum1``\  and \ ``ent_enum2``\  intersect,
+\ ``true``\  if entity enumerations \ ``ent_enum1``\  and \ ``ent_enum2``\  intersect,
 otherwise \ ``false``\ .
 
 .. _`gobj_to_entity`:
@@ -1107,8 +1107,8 @@ Valid values for flags
 
 .. note::
 
-   Before calling this function, \ :c:func:`media_entity_pads_init`\  and
-   \ :c:func:`media_device_register_entity`\  should be called previously for both ends.
+   Before calling this function, media_entity_pads_init() and
+   media_device_register_entity() should be called previously for both ends.
 
 .. _`media_create_pad_links`:
 
@@ -1176,8 +1176,8 @@ cross-bar (n:n) links.
 
 .. note::
 
-   Before calling this function, \ :c:func:`media_entity_pads_init`\  and
-   \ :c:func:`media_device_register_entity`\  should be called previously for the
+   Before calling this function, media_entity_pads_init() and
+   media_device_register_entity() should be called previously for the
    entities to be linked.
 
 .. _`media_entity_remove_links`:
@@ -1200,7 +1200,7 @@ Description
 .. note::
 
    This is called automatically when an entity is unregistered via
-   \ :c:func:`media_device_register_entity`\ .
+   media_device_register_entity().
 
 .. _`__media_entity_setup_link`:
 
@@ -1278,8 +1278,8 @@ implicitly disable the first enabled link.
 .. note::
 
    The valid values of the flags for the link is the same as described
-   on \ :c:func:`media_create_pad_link`\ , for pad to pad links or the same as described
-   on \ :c:func:`media_create_intf_link`\ , for interface to entity links.
+   on media_create_pad_link(), for pad to pad links or the same as described
+   on media_create_intf_link(), for interface to entity links.
 
 .. _`media_entity_find_link`:
 
@@ -1639,7 +1639,7 @@ if succeeded, returns a pointer to the newly allocated
 
 .. note::
 
-   Currently, no flags for \ :c:type:`struct media_interface <media_interface>`\  is defined.
+   Currently, no flags for &media_interface is defined.
 
 .. _`media_devnode_remove`:
 
@@ -1701,8 +1701,8 @@ Valid values for flags
 
 .. note::
 
-   Before calling this function, \ :c:func:`media_devnode_create`\  should be called for
-   the interface and \ :c:func:`media_device_register_entity`\  should be called for the
+   Before calling this function, media_devnode_create() should be called for
+   the interface and media_device_register_entity() should be called for the
    interface that will be part of the link.
 
 .. _`__media_remove_intf_link`:
@@ -1782,9 +1782,9 @@ Description
 .. note::
 
   #) This is called automatically when an entity is unregistered via
-     \ :c:func:`media_device_register_entity`\  and by \ :c:func:`media_devnode_remove`\ .
+     media_device_register_entity() and by media_devnode_remove().
 
-  #) Prefer to use this one, instead of \ :c:func:`__media_remove_intf_links`\ .
+  #) Prefer to use this one, instead of __media_remove_intf_links().
 
 .. _`media_entity_call`:
 

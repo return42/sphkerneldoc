@@ -518,7 +518,7 @@ scsi_eh_tur
     Send TUR to device.
 
     :param struct scsi_cmnd \*scmd:
-        &scsi_cmnd to send TUR
+        \ :c:type:`struct scsi_cmnd <scsi_cmnd>`\  to send TUR
 
 .. _`scsi_eh_tur.return-value`:
 
@@ -568,7 +568,7 @@ scsi_eh_try_stu
     Send START_UNIT to device.
 
     :param struct scsi_cmnd \*scmd:
-        &scsi_cmnd to send START_UNIT
+        \ :c:type:`struct scsi_cmnd <scsi_cmnd>`\  to send START_UNIT
 
 .. _`scsi_eh_try_stu.return-value`:
 
@@ -590,10 +590,10 @@ scsi_eh_bus_device_reset
         scsi host being recovered.
 
     :param struct list_head \*work_q:
-        &list_head for pending commands.
+        \ :c:type:`struct list_head <list_head>`\  for pending commands.
 
     :param struct list_head \*done_q:
-        &list_head for processed commands.
+        \ :c:type:`struct list_head <list_head>`\  for processed commands.
 
 .. _`scsi_eh_bus_device_reset.notes`:
 
@@ -618,10 +618,10 @@ scsi_eh_target_reset
         scsi host being recovered.
 
     :param struct list_head \*work_q:
-        &list_head for pending commands.
+        \ :c:type:`struct list_head <list_head>`\  for pending commands.
 
     :param struct list_head \*done_q:
-        &list_head for processed commands.
+        \ :c:type:`struct list_head <list_head>`\  for processed commands.
 
 .. _`scsi_eh_target_reset.notes`:
 
@@ -640,13 +640,13 @@ scsi_eh_bus_reset
     send a bus reset
 
     :param struct Scsi_Host \*shost:
-        &scsi host being recovered.
+        \ :c:type:`struct scsi <scsi>`\  host being recovered.
 
     :param struct list_head \*work_q:
-        &list_head for pending commands.
+        \ :c:type:`struct list_head <list_head>`\  for pending commands.
 
     :param struct list_head \*done_q:
-        &list_head for processed commands.
+        \ :c:type:`struct list_head <list_head>`\  for processed commands.
 
 .. _`scsi_eh_host_reset`:
 
@@ -661,10 +661,10 @@ scsi_eh_host_reset
         host to be reset.
 
     :param struct list_head \*work_q:
-        &list_head for pending commands.
+        \ :c:type:`struct list_head <list_head>`\  for pending commands.
 
     :param struct list_head \*done_q:
-        &list_head for processed commands.
+        \ :c:type:`struct list_head <list_head>`\  for processed commands.
 
 .. _`scsi_eh_offline_sdevs`:
 
@@ -676,10 +676,10 @@ scsi_eh_offline_sdevs
     offline scsi devices that fail to recover
 
     :param struct list_head \*work_q:
-        &list_head for pending commands.
+        \ :c:type:`struct list_head <list_head>`\  for pending commands.
 
     :param struct list_head \*done_q:
-        &list_head for processed commands.
+        \ :c:type:`struct list_head <list_head>`\  for processed commands.
 
 .. _`scsi_noretry_cmd`:
 
@@ -779,10 +779,10 @@ scsi_eh_ready_devs
         host to be recovered.
 
     :param struct list_head \*work_q:
-        &list_head for pending commands.
+        \ :c:type:`struct list_head <list_head>`\  for pending commands.
 
     :param struct list_head \*done_q:
-        &list_head for processed commands.
+        \ :c:type:`struct list_head <list_head>`\  for processed commands.
 
 .. _`scsi_eh_flush_done_q`:
 

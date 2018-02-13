@@ -37,13 +37,13 @@ pdev
 hwmods
     (one .. many per omap_device)
 
-_driver_status
+\_driver_status
     one of BUS_NOTIFY\_\*\_DRIVER from <linux/device.h>
 
 hwmods_cnt
-    ARRAY_SIZE() of \ ``hwmods``\ 
+    \ :c:func:`ARRAY_SIZE`\  of \ ``hwmods``\ 
 
-_state
+\_state
     one of OMAP_DEVICE_STATE\_\* (see above)
 
 flags

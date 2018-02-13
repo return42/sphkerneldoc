@@ -411,7 +411,7 @@ See \ :c:func:`asd_init_escbs`\  and \ :c:func:`asd_init_post_escbs`\ .
 
 Since sending a list of ascbs is a superset of sending a single
 ascb, this function exists to generalize this.  More specifically,
-when sending a list of those, we want to do only a \_single\_
+when sending a list of those, we want to do only a \_single_
 \ :c:func:`memcpy`\  at swap head, as opposed to for each ascb sent (in the
 case of sending them one by one).  That is, we want to minimize the
 ratio of \ :c:func:`memcpy`\  operations to the number of ascbs sent.  The same

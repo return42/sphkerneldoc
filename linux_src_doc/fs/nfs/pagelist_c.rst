@@ -319,8 +319,8 @@ existing list of pages 'desc'.
 
 .. _`__nfs_pageio_add_request`:
 
-__nfs_pageio_add_request
-========================
+\__nfs_pageio_add_request
+=========================
 
 .. c:function:: int __nfs_pageio_add_request(struct nfs_pageio_descriptor *desc, struct nfs_page *req)
 

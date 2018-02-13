@@ -3,8 +3,8 @@
 
 .. _`__swab16`:
 
-__swab16
-========
+\__swab16
+=========
 
 .. c:function::  __swab16( x)
 
@@ -15,8 +15,8 @@ __swab16
 
 .. _`__swab32`:
 
-__swab32
-========
+\__swab32
+=========
 
 .. c:function::  __swab32( x)
 
@@ -27,8 +27,8 @@ __swab32
 
 .. _`__swab64`:
 
-__swab64
-========
+\__swab64
+=========
 
 .. c:function::  __swab64( x)
 
@@ -39,8 +39,8 @@ __swab64
 
 .. _`__swahw32`:
 
-__swahw32
-=========
+\__swahw32
+==========
 
 .. c:function::  __swahw32( x)
 
@@ -54,12 +54,12 @@ __swahw32
 Description
 -----------
 
-__swahw32(0x12340000) is 0x00001234
+\__swahw32(0x12340000) is 0x00001234
 
 .. _`__swahb32`:
 
-__swahb32
-=========
+\__swahb32
+==========
 
 .. c:function::  __swahb32( x)
 
@@ -73,12 +73,12 @@ __swahb32
 Description
 -----------
 
-__swahb32(0x12345678) is 0x34127856
+\__swahb32(0x12345678) is 0x34127856
 
 .. _`__swab16p`:
 
-__swab16p
-=========
+\__swab16p
+==========
 
 .. c:function:: __u16 __swab16p(const __u16 *p)
 
@@ -89,8 +89,8 @@ __swab16p
 
 .. _`__swab32p`:
 
-__swab32p
-=========
+\__swab32p
+==========
 
 .. c:function:: __u32 __swab32p(const __u32 *p)
 
@@ -101,8 +101,8 @@ __swab32p
 
 .. _`__swab64p`:
 
-__swab64p
-=========
+\__swab64p
+==========
 
 .. c:function:: __u64 __swab64p(const __u64 *p)
 
@@ -113,8 +113,8 @@ __swab64p
 
 .. _`__swahw32p`:
 
-__swahw32p
-==========
+\__swahw32p
+===========
 
 .. c:function:: __u32 __swahw32p(const __u32 *p)
 
@@ -132,8 +132,8 @@ See \__swahw32() for details of wordswapping.
 
 .. _`__swahb32p`:
 
-__swahb32p
-==========
+\__swahb32p
+===========
 
 .. c:function:: __u32 __swahb32p(const __u32 *p)
 
@@ -151,8 +151,8 @@ See \__swahb32() for details of high/low byteswapping.
 
 .. _`__swab16s`:
 
-__swab16s
-=========
+\__swab16s
+==========
 
 .. c:function:: void __swab16s(__u16 *p)
 
@@ -163,8 +163,8 @@ __swab16s
 
 .. _`__swab32s`:
 
-__swab32s
-=========
+\__swab32s
+==========
 
 .. c:function:: void __swab32s(__u32 *p)
 
@@ -175,8 +175,8 @@ __swab32s
 
 .. _`__swab64s`:
 
-__swab64s
-=========
+\__swab64s
+==========
 
 .. c:function:: void __swab64s(__u64 *p)
 
@@ -187,8 +187,8 @@ __swab64s
 
 .. _`__swahw32s`:
 
-__swahw32s
-==========
+\__swahw32s
+===========
 
 .. c:function:: void __swahw32s(__u32 *p)
 
@@ -206,8 +206,8 @@ See \__swahw32() for details of wordswapping
 
 .. _`__swahb32s`:
 
-__swahb32s
-==========
+\__swahb32s
+===========
 
 .. c:function:: void __swahb32s(__u32 *p)
 

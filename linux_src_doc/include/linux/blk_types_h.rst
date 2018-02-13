@@ -26,7 +26,7 @@ that may be successful if retried on a failover path.
 Return
 ------
 
-%false - retrying failover path will not help
+\ ``false``\  - retrying failover path will not help
 \ ``true``\   - may succeed if retried
 
 .. This file was automatic generated / don't edit.

@@ -3,8 +3,8 @@
 
 .. _`__omap_dm_timer_override_errata`:
 
-__omap_dm_timer_override_errata
-===============================
+\__omap_dm_timer_override_errata
+================================
 
 .. c:function:: void __omap_dm_timer_override_errata(struct omap_dm_timer *timer, u32 errata)
 

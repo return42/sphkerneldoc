@@ -78,7 +78,7 @@ netlbl_calipso_listall_cb
 
 .. c:function:: int netlbl_calipso_listall_cb(struct calipso_doi *doi_def, void *arg)
 
-    calipso_doi_walk() callback for LISTALL
+    \ :c:func:`calipso_doi_walk`\  callback for LISTALL
 
     :param struct calipso_doi \*doi_def:
         the CALIPSO DOI definition
@@ -126,7 +126,7 @@ netlbl_calipso_remove_cb
 
 .. c:function:: int netlbl_calipso_remove_cb(struct netlbl_dom_map *entry, void *arg)
 
-    netlbl_calipso_remove() callback for REMOVE
+    \ :c:func:`netlbl_calipso_remove`\  callback for REMOVE
 
     :param struct netlbl_dom_map \*entry:
         LSM domain mapping entry

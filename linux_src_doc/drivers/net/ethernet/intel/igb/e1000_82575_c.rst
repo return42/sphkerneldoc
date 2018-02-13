@@ -1090,8 +1090,8 @@ checksum and writes the value to the EEPROM.
 
 .. _`__igb_access_emi_reg`:
 
-__igb_access_emi_reg
-====================
+\__igb_access_emi_reg
+=====================
 
 .. c:function:: s32 __igb_access_emi_reg(struct e1000_hw *hw, u16 address, u16 *data, bool read)
 

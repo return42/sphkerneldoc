@@ -24,8 +24,8 @@ false otherwise.
 
 .. _`_kvm_vz_restore_stimer`:
 
-_kvm_vz_restore_stimer
-======================
+\_kvm_vz_restore_stimer
+=======================
 
 .. c:function:: void _kvm_vz_restore_stimer(struct kvm_vcpu *vcpu, u32 compare, u32 cause)
 
@@ -50,8 +50,8 @@ later.
 
 .. _`_kvm_vz_restore_htimer`:
 
-_kvm_vz_restore_htimer
-======================
+\_kvm_vz_restore_htimer
+=======================
 
 .. c:function:: void _kvm_vz_restore_htimer(struct kvm_vcpu *vcpu, u32 compare, u32 cause)
 
@@ -117,8 +117,8 @@ disabled by the caller.
 
 .. _`_kvm_vz_save_htimer`:
 
-_kvm_vz_save_htimer
-===================
+\_kvm_vz_save_htimer
+====================
 
 .. c:function:: void _kvm_vz_save_htimer(struct kvm_vcpu *vcpu, u32 *out_compare, u32 *out_cause)
 

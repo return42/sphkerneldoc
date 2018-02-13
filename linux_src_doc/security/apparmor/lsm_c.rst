@@ -27,7 +27,7 @@ common_perm
 Return
 ------
 
-%0 else error code if error or permission denied
+\ ``0``\  else error code if error or permission denied
 
 .. _`common_perm_cond`:
 
@@ -52,7 +52,7 @@ common_perm_cond
 Return
 ------
 
-%0 else error code if error or permission denied
+\ ``0``\  else error code if error or permission denied
 
 .. _`common_perm_dir_dentry`:
 
@@ -83,7 +83,7 @@ common_perm_dir_dentry
 Return
 ------
 
-%0 else error code if error or permission denied
+\ ``0``\  else error code if error or permission denied
 
 .. _`common_perm_rm`:
 
@@ -111,7 +111,7 @@ common_perm_rm
 Return
 ------
 
-%0 else error code if error or permission denied
+\ ``0``\  else error code if error or permission denied
 
 .. _`common_perm_create`:
 
@@ -142,7 +142,7 @@ common_perm_create
 Return
 ------
 
-%0 else error code if error or permission denied
+\ ``0``\  else error code if error or permission denied
 
 .. _`apparmor_bprm_committing_creds`:
 

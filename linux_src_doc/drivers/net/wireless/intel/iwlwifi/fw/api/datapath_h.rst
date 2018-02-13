@@ -35,31 +35,31 @@ Constants
 ---------
 
 DQA_ENABLE_CMD
-    &struct iwl_dqa_enable_cmd
+    \ :c:type:`struct iwl_dqa_enable_cmd <iwl_dqa_enable_cmd>`\ 
 
 UPDATE_MU_GROUPS_CMD
-    &struct iwl_mu_group_mgmt_cmd
+    \ :c:type:`struct iwl_mu_group_mgmt_cmd <iwl_mu_group_mgmt_cmd>`\ 
 
 TRIGGER_RX_QUEUES_NOTIF_CMD
-    &struct iwl_rxq_sync_cmd
+    \ :c:type:`struct iwl_rxq_sync_cmd <iwl_rxq_sync_cmd>`\ 
 
 TLC_MNG_CONFIG_CMD
-    &struct iwl_tlc_config_cmd
+    \ :c:type:`struct iwl_tlc_config_cmd <iwl_tlc_config_cmd>`\ 
 
 TLC_MNG_NOTIF_REQ_CMD
-    &struct iwl_tlc_notif_req_config_cmd
+    \ :c:type:`struct iwl_tlc_notif_req_config_cmd <iwl_tlc_notif_req_config_cmd>`\ 
 
 TLC_MNG_UPDATE_NOTIF
-    &struct iwl_tlc_update_notif
+    \ :c:type:`struct iwl_tlc_update_notif <iwl_tlc_update_notif>`\ 
 
 STA_PM_NOTIF
-    &struct iwl_mvm_pm_state_notification
+    \ :c:type:`struct iwl_mvm_pm_state_notification <iwl_mvm_pm_state_notification>`\ 
 
 MU_GROUP_MGMT_NOTIF
-    &struct iwl_mu_group_mgmt_notif
+    \ :c:type:`struct iwl_mu_group_mgmt_notif <iwl_mu_group_mgmt_notif>`\ 
 
 RX_QUEUES_NOTIFICATION
-    &struct iwl_rxq_sync_notification
+    \ :c:type:`struct iwl_rxq_sync_notification <iwl_rxq_sync_notification>`\ 
 
 .. _`iwl_mu_group_mgmt_cmd`:
 

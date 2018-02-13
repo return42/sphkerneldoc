@@ -43,7 +43,7 @@ shpchp_pushbutton_thread
     handle pushbutton events
 
     :param struct work_struct \*work:
-        &struct work_struct to be handled
+        \ :c:type:`struct work_struct <work_struct>`\  to be handled
 
 .. _`shpchp_pushbutton_thread.description`:
 

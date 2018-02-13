@@ -27,7 +27,7 @@ hwmon_device_register_with_groups
 Description
 -----------
 
-hwmon_device_unregister() must be called when the device is no
+\ :c:func:`hwmon_device_unregister`\  must be called when the device is no
 longer needed.
 
 Returns the pointer to the new device.
@@ -61,7 +61,7 @@ hwmon_device_register_with_info
 Description
 -----------
 
-hwmon_device_unregister() must be called when the device is no
+\ :c:func:`hwmon_device_unregister`\  must be called when the device is no
 longer needed.
 
 Returns the pointer to the new device.
@@ -83,7 +83,7 @@ hwmon_device_register
 Description
 -----------
 
-hwmon_device_unregister() must be called when the device is no
+\ :c:func:`hwmon_device_unregister`\  must be called when the device is no
 longer needed.
 
 Returns the pointer to the new device.

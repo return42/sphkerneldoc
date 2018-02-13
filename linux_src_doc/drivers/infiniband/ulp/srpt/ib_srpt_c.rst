@@ -915,7 +915,7 @@ A non-zero return value will cause the caller destroy the CM ID.
 Note
 ----
 
-srpt_cm_handler() must only return a non-zero value when transferring
+\ :c:func:`srpt_cm_handler`\  must only return a non-zero value when transferring
 ownership of the cm_id to a channel by \ :c:func:`srpt_cm_req_recv`\  failed. Returning
 a non-zero value in any other case will trigger a race with the
 \ :c:func:`ib_destroy_cm_id`\  call in \ :c:func:`srpt_release_channel`\ .
@@ -1053,7 +1053,7 @@ srpt_make_tpg
         Not used.
 
     :param const char \*name:
-        $tpg.
+        \ ``$tpg``\ .
 
 .. _`srpt_drop_tpg`:
 
@@ -1083,7 +1083,7 @@ srpt_make_tport
         Not used.
 
     :param const char \*name:
-        $port.
+        \ ``$port``\ .
 
 .. _`srpt_drop_tport`:
 
@@ -1095,7 +1095,7 @@ srpt_drop_tport
     configfs callback invoked for rmdir /sys/kernel/config/target/$driver/$port
 
     :param struct se_wwn \*wwn:
-        $port.
+        \ ``$port``\ .
 
 .. _`srpt_init_module`:
 

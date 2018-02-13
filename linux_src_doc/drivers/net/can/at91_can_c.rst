@@ -139,7 +139,7 @@ scheduled. We read the mailbox, but do \_not\_ reenable the mb (to
 receive another message).
 
 lower mbxs      upper
-\____^_____\_    \__^_\_
+\____^_____\_    \__^__
 /           \  /     \
 +-+-+-+-+-+-+-+-++-+-+-+-+
 \| \|x\|x\|x\|x\|x\|x\|x\|\| \| \| \| \|

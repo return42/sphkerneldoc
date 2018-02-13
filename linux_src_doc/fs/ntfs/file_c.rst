@@ -92,8 +92,8 @@ held by the caller.
 
 .. _`__ntfs_grab_cache_pages`:
 
-__ntfs_grab_cache_pages
-=======================
+\__ntfs_grab_cache_pages
+========================
 
 .. c:function:: int __ntfs_grab_cache_pages(struct address_space *mapping, pgoff_t index, const unsigned nr_pages, struct page **pages, struct page **cached_page)
 

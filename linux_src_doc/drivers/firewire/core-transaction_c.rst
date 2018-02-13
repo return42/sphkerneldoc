@@ -52,7 +52,7 @@ Submit a request packet into the asynchronous request transmission queue.
 Can be called from atomic context.  If you prefer a blocking API, use
 \ :c:func:`fw_run_transaction`\  in a context that can sleep.
 
-In case of lock requests, specify one of the firewire-core specific \ ``TCODE``\ \_
+In case of lock requests, specify one of the firewire-core specific \ ``TCODE_``\ 
 constants instead of \ ``TCODE_LOCK_REQUEST``\  in \ ``tcode``\ .
 
 Make sure that the value in \ ``destination_id``\  is not older than the one in
@@ -82,7 +82,7 @@ generation, or missing ACK respectively.
 Note some timing corner cases
 -----------------------------
 
-fw_send_request() may complete much earlier
+\ :c:func:`fw_send_request`\  may complete much earlier
 than when the request packet actually hits the wire.  On the other hand,
 transaction completion and hence execution of \ ``callback``\  may happen even
 before \ :c:func:`fw_send_request`\  returns.

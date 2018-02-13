@@ -3,8 +3,8 @@
 
 .. _`__kvm_tlb_flush_vmid`:
 
-__kvm_tlb_flush_vmid
-====================
+\__kvm_tlb_flush_vmid
+=====================
 
 .. c:function:: void __hyp_text __kvm_tlb_flush_vmid(struct kvm *kvm)
 
@@ -18,7 +18,7 @@ __kvm_tlb_flush_vmid
 Description
 -----------
 
-__kvm_tlb_flush_vmid(struct kvm \*kvm);
+\__kvm_tlb_flush_vmid(struct kvm \*kvm);
 
 We rely on the hardware to broadcast the TLB invalidation to all CPUs
 inside the inner-shareable domain (which is the case for all v7

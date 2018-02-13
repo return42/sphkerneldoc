@@ -33,7 +33,7 @@ attributes representing the selected events and one mmap event.
 Return
 ------
 
-%0 on success, \ ``-1``\  if the test fails.
+\ ``0``\  on success, \ ``-1``\  if the test fails.
 
 .. This file was automatic generated / don't edit.
 

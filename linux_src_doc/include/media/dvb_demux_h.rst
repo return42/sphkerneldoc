@@ -124,7 +124,7 @@ next
     pointer to the next section filter.
 
 feed
-    &struct dvb_demux_feed pointer.
+    \ :c:type:`struct dvb_demux_feed <dvb_demux_feed>`\  pointer.
 
 index
     index of the used demux filter.
@@ -348,7 +348,7 @@ feed
     pointer to \ :c:type:`struct dvb_demux_feed <dvb_demux_feed>`\ .
 
 frontend_list
-    &struct list_head with frontends used by the demux.
+    \ :c:type:`struct list_head <list_head>`\  with frontends used by the demux.
 
 pesfilter
     array of \ :c:type:`struct dvb_demux_feed <dvb_demux_feed>`\  with the PES types
@@ -358,7 +358,7 @@ pids
     list of filtered program IDs.
 
 feed_list
-    &struct list_head with feeds.
+    \ :c:type:`struct list_head <list_head>`\  with feeds.
 
 tsbuf
     temporary buffer used internally to store TS packets.
@@ -377,7 +377,7 @@ cnt_storage
     buffer used for TS/TEI continuity check.
 
 speed_last_time
-    &ktime_t used for TS speed check.
+    \ :c:type:`struct ktime_t <ktime_t>`\  used for TS speed check.
 
 speed_pkts_cnt
     packets count used for TS speed check.
@@ -392,7 +392,7 @@ dvb_dmx_init
     initialize a digital TV demux struct.
 
     :param struct dvb_demux \*demux:
-        &struct dvb_demux to be initialized.
+        \ :c:type:`struct dvb_demux <dvb_demux>`\  to be initialized.
 
 .. _`dvb_dmx_init.description`:
 
@@ -427,7 +427,7 @@ dvb_dmx_release
     releases a digital TV demux internal buffers.
 
     :param struct dvb_demux \*demux:
-        &struct dvb_demux to be released.
+        \ :c:type:`struct dvb_demux <dvb_demux>`\  to be released.
 
 .. _`dvb_dmx_release.description`:
 

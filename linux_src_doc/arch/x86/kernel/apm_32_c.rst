@@ -26,8 +26,8 @@ an APM error.  Note that this also handles (negative) kernel errors.
 
 .. _`__apm_bios_call`:
 
-__apm_bios_call
-===============
+\__apm_bios_call
+================
 
 .. c:function:: long __apm_bios_call(void *_call)
 
@@ -77,8 +77,8 @@ If there is an error, it is returned in \ ``call``\ .err.
 
 .. _`__apm_bios_call_simple`:
 
-__apm_bios_call_simple
-======================
+\__apm_bios_call_simple
+=======================
 
 .. c:function:: long __apm_bios_call_simple(void *_call)
 

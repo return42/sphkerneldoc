@@ -193,7 +193,6 @@ Description
 Never directly called by client. It used by dmaengine.
 
 
-
 .. _`stedma40_slave_mem`:
 
 stedma40_slave_mem

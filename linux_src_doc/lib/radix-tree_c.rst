@@ -45,8 +45,8 @@ radix_tree_shrink
 
 .. _`__radix_tree_create`:
 
-__radix_tree_create
-===================
+\__radix_tree_create
+====================
 
 .. c:function:: int __radix_tree_create(struct radix_tree_root *root, unsigned long index, unsigned order, struct radix_tree_node **nodep, void __rcu ***slotp)
 
@@ -83,8 +83,8 @@ Returns -ENOMEM, or 0 for success.
 
 .. _`__radix_tree_insert`:
 
-__radix_tree_insert
-===================
+\__radix_tree_insert
+====================
 
 .. c:function:: int __radix_tree_insert(struct radix_tree_root *root, unsigned long index, unsigned order, void *item)
 
@@ -111,8 +111,8 @@ Insert an item into the radix tree at position \ ``index``\ .
 
 .. _`__radix_tree_lookup`:
 
-__radix_tree_lookup
-===================
+\__radix_tree_lookup
+====================
 
 .. c:function:: void *__radix_tree_lookup(const struct radix_tree_root *root, unsigned long index, struct radix_tree_node **nodep, void __rcu ***slotp)
 
@@ -199,8 +199,8 @@ returned item, however.
 
 .. _`__radix_tree_replace`:
 
-__radix_tree_replace
-====================
+\__radix_tree_replace
+=====================
 
 .. c:function:: void __radix_tree_replace(struct radix_tree_root *root, struct radix_tree_node *node, void __rcu **slot, void *item, radix_tree_update_node_t update_node)
 
@@ -662,8 +662,8 @@ returns the number of slots which were placed at \*@results.
 
 .. _`__radix_tree_delete_node`:
 
-__radix_tree_delete_node
-========================
+\__radix_tree_delete_node
+=========================
 
 .. c:function:: void __radix_tree_delete_node(struct radix_tree_root *root, struct radix_tree_node *node, radix_tree_update_node_t update_node)
 

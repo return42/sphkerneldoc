@@ -515,7 +515,7 @@ Requires external locking.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_enable_pin`:
@@ -546,7 +546,7 @@ a valid audio route and active audio stream.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_force_enable_pin_unlocked`:
@@ -580,7 +580,7 @@ Requires external locking.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_force_enable_pin`:
@@ -612,7 +612,7 @@ jack detection.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_disable_pin_unlocked`:
@@ -644,7 +644,7 @@ Requires external locking.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_disable_pin`:
@@ -674,7 +674,7 @@ Disables input/output pin and its parents or children widgets.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_nc_pin_unlocked`:
@@ -710,7 +710,7 @@ Requires external locking.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_nc_pin`:
@@ -744,7 +744,7 @@ paths through the pin.
 NOTE
 ----
 
-snd_soc_dapm_sync() needs to be called after this for DAPM to
+\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_get_pin_status`:

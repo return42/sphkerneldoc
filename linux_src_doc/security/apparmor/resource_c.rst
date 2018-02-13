@@ -94,8 +94,8 @@ Return
 
 .. _`__aa_transition_rlimits`:
 
-__aa_transition_rlimits
-=======================
+\__aa_transition_rlimits
+========================
 
 .. c:function:: void __aa_transition_rlimits(struct aa_label *old_l, struct aa_label *new_l)
 

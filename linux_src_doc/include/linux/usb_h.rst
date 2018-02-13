@@ -658,7 +658,7 @@ usb_interface_claimed
 Return
 ------
 
-%true (nonzero) iff the interface is claimed, else \ ``false``\ 
+\ ``true``\  (nonzero) iff the interface is claimed, else \ ``false``\ 
 (zero).
 
 .. _`usb_interface_claimed.note`:

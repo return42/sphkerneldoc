@@ -40,7 +40,7 @@ mask
     Bitmask for two's complement subtraction of non 64bit clocks
 
 cycle_last
-    @clock cycle value at last update
+    \ ``clock``\  cycle value at last update
 
 mult
     (NTP adjusted) multiplier for scaled math conversion

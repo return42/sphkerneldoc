@@ -3,8 +3,8 @@
 
 .. _`__perf_evsel__calc_id_pos`:
 
-__perf_evsel__calc_id_pos
-=========================
+\__perf_evsel__calc_id_pos
+==========================
 
 .. c:function:: int __perf_evsel__calc_id_pos(u64 sample_type)
 
@@ -24,8 +24,8 @@ sample_event.
 
 .. _`__perf_evsel__calc_is_pos`:
 
-__perf_evsel__calc_is_pos
-=========================
+\__perf_evsel__calc_is_pos
+==========================
 
 .. c:function:: int __perf_evsel__calc_is_pos(u64 sample_type)
 
@@ -60,7 +60,7 @@ perf_evsel__is_function_event
 Description
 -----------
 
-@evsel - evsel selector to be tested
+\ ``evsel``\  - evsel selector to be tested
 
 Return \ ``true``\  if event is function trace event
 

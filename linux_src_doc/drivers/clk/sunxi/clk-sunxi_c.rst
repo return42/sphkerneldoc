@@ -175,7 +175,7 @@ Description
 -----------
 
 These clocks look something like this
-\_______________________\_
+\________________________
 \|         \___divisor 1---\|----> to consumer
 parent >--\|  pll___/___divisor 2---\|----> to consumer
 \|        \_______________\|____> to consumer

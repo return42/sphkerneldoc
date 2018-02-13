@@ -3,8 +3,8 @@
 
 .. _`__ffs`:
 
-__ffs
-=====
+\__ffs
+======
 
 .. c:function:: unsigned long __ffs(unsigned long x)
 
@@ -43,8 +43,8 @@ This is defined the same way as ffs
 
 .. _`__fls`:
 
-__fls
-=====
+\__fls
+======
 
 .. c:function:: unsigned long __fls(unsigned long word)
 

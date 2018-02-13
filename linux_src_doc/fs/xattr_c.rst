@@ -3,8 +3,8 @@
 
 .. _`__vfs_setxattr_noperm`:
 
-__vfs_setxattr_noperm
-=====================
+\__vfs_setxattr_noperm
+======================
 
 .. c:function:: int __vfs_setxattr_noperm(struct dentry *dentry, const char *name, const void *value, size_t size, int flags)
 
@@ -30,7 +30,7 @@ __vfs_setxattr_noperm
 Description
 -----------
 
-@dentry - object to perform setxattr on
+\ ``dentry``\  - object to perform setxattr on
 \ ``name``\  - xattr name to set
 \ ``value``\  - value to set \ ``name``\  to
 \ ``size``\  - size of \ ``value``\ 
@@ -98,14 +98,14 @@ simple_xattr_set
         size of the new xattr
 
     :param int flags:
-        %XATTR_{CREATE\|REPLACE}
+        \ ``XATTR_``\ {CREATE\|REPLACE}
 
 .. _`simple_xattr_set.description`:
 
 Description
 -----------
 
-%XATTR_CREATE is set, the xattr shouldn't exist already; otherwise fails
+\ ``XATTR_CREATE``\  is set, the xattr shouldn't exist already; otherwise fails
 with -EEXIST.  If \ ``XATTR_REPLACE``\  is set, the xattr should exist;
 otherwise, fails with -ENODATA.
 

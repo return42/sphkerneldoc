@@ -467,22 +467,22 @@ eba_tbl
     EBA table of this volume (LEB->PEB mapping)
 
 checked
-    %1 if this static volume was checked
+    \ ``1``\  if this static volume was checked
 
 corrupted
-    %1 if the volume is corrupted (static volumes only)
+    \ ``1``\  if the volume is corrupted (static volumes only)
 
 upd_marker
-    %1 if the update marker is set for this volume
+    \ ``1``\  if the update marker is set for this volume
 
 updating
-    %1 if the volume is being updated
+    \ ``1``\  if the volume is being updated
 
 changing_leb
-    %1 if the atomic LEB change ioctl command is in progress
+    \ ``1``\  if the atomic LEB change ioctl command is in progress
 
 direct_writes
-    %1 if direct writes are enabled for this volume
+    \ ``1``\  if direct writes are enabled for this volume
 
 .. _`ubi_volume.description`:
 
@@ -848,7 +848,7 @@ fm_protect
     that critical sections cannot be interrupted by \ :c:func:`ubi_update_fastmap`\ 
 
 fm_buf
-    vmalloc()'d buffer which holds the raw fastmap
+    \ :c:func:`vmalloc`\ 'd buffer which holds the raw fastmap
 
 fm_size
     fastmap size in bytes

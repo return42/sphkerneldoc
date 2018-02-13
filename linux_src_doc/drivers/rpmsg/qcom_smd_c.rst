@@ -231,8 +231,8 @@ ref_count
 
 .. _`__qcom_smd_send`:
 
-__qcom_smd_send
-===============
+\__qcom_smd_send
+================
 
 .. c:function:: int __qcom_smd_send(struct qcom_smd_channel *channel, const void *data, int len, bool wait)
 

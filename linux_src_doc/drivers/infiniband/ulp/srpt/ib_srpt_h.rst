@@ -172,7 +172,7 @@ ch
     Channel pointer.
 
 s_rw_ctx
-    @rw_ctxs points here if only a single rw_ctx is needed.
+    \ ``rw_ctxs``\  points here if only a single rw_ctx is needed.
 
 rw_ctxs
     RDMA read/write contexts.

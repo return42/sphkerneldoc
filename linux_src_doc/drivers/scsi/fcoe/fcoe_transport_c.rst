@@ -23,8 +23,8 @@ Return
 
 .. _`__fcoe_get_lesb`:
 
-__fcoe_get_lesb
-===============
+\__fcoe_get_lesb
+================
 
 .. c:function:: void __fcoe_get_lesb(struct fc_lport *lport, struct fc_els_lesb *fc_lesb, struct net_device *netdev)
 

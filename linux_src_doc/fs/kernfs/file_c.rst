@@ -146,8 +146,8 @@ context.
 
 .. _`__kernfs_create_file`:
 
-__kernfs_create_file
-====================
+\__kernfs_create_file
+=====================
 
 .. c:function:: struct kernfs_node *__kernfs_create_file(struct kernfs_node *parent, const char *name, umode_t mode, loff_t size, const struct kernfs_ops *ops, void *priv, const void *ns, struct lock_class_key *key)
 

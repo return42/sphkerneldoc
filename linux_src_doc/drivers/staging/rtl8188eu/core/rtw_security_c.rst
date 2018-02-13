@@ -22,7 +22,7 @@ ROUND
 Description
 -----------
 
-@return      the number of rounds for the given cipher key size.
+\ ``return``\       the number of rounds for the given cipher key size.
 
 .. This file was automatic generated / don't edit.
 

@@ -367,7 +367,7 @@ zpa2326_clear_fifo
 Description
 -----------
 
-@min_count argument is a hint corresponding to the known minimum number of
+\ ``min_count``\  argument is a hint corresponding to the known minimum number of
 samples currently living in the FIFO. This allows to reduce the number of bus
 accesses by skipping status register read operation as long as we know for
 sure there are still entries left.
@@ -543,7 +543,7 @@ See \ :c:func:`zpa2326_trigger_handler`\ .
 Return
 ------
 
-%IRQ_NONE - no consistent interrupt happened ;
+\ ``IRQ_NONE``\  - no consistent interrupt happened ;
 \ ``IRQ_HANDLED``\  - there was new samples available.
 
 .. _`zpa2326_wait_oneshot_completion`:
@@ -687,7 +687,7 @@ is delegated to userspace in buffered mode (endianness, etc...).
 Return
 ------
 
-%IRQ_NONE - no consistent interrupt happened ;
+\ ``IRQ_NONE``\  - no consistent interrupt happened ;
 \ ``IRQ_HANDLED``\  - there was new samples available.
 
 .. _`zpa2326_preenable_buffer`:

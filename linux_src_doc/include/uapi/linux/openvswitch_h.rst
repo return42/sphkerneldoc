@@ -100,7 +100,7 @@ OVS_DP_ATTR_USER_FEATURES
 OVS_DP_ATTR_PAD
     *undescribed*
 
-__OVS_DP_ATTR_MAX
+\__OVS_DP_ATTR_MAX
     *undescribed*
 
 .. _`ovs_datapath_attr.description`:
@@ -199,7 +199,7 @@ OVS_PACKET_ATTR_LEN
     \ ``OVS_PACKET_ATTR_USERSPACE``\  action specify the Maximum received fragment
     size.
 
-__OVS_PACKET_ATTR_MAX
+\__OVS_PACKET_ATTR_MAX
     *undescribed*
 
 .. _`ovs_packet_attr.description`:
@@ -282,7 +282,7 @@ OVS_VPORT_ATTR_IFINDEX
 OVS_VPORT_ATTR_NETNSID
     *undescribed*
 
-__OVS_VPORT_ATTR_MAX
+\__OVS_VPORT_ATTR_MAX
     *undescribed*
 
 .. _`ovs_vport_attr.description`:
@@ -300,7 +300,8 @@ Whether \ ``OVS_VPORT_ATTR_OPTIONS``\  is required or optional depends on the ty
 of vport.
 
 For other requests, if \ ``OVS_VPORT_ATTR_NAME``\  is specified then it is used to
-look up the vport to operate on; otherwise dp_idx from the \ :c:type:`struct ovs_header <ovs_header>`\  plus \ ``OVS_VPORT_ATTR_PORT_NO``\  determine the vport.
+look up the vport to operate on; otherwise dp_idx from the \ :c:type:`struct struct <struct>`\ 
+ovs_header plus \ ``OVS_VPORT_ATTR_PORT_NO``\  determine the vport.
 
 .. _`ovs_frag_type`:
 
@@ -339,7 +340,7 @@ OVS_FRAG_TYPE_FIRST
 OVS_FRAG_TYPE_LATER
     Packet is a fragment with nonzero offset.
 
-__OVS_FRAG_TYPE_MAX
+\__OVS_FRAG_TYPE_MAX
     *undescribed*
 
 .. _`ovs_frag_type.description`:
@@ -347,7 +348,8 @@ __OVS_FRAG_TYPE_MAX
 Description
 -----------
 
-Used as the \ ``ipv4_frag``\  in \ :c:type:`struct ovs_key_ipv4 <ovs_key_ipv4>`\  and as \ ``ipv6_frag``\  \ :c:type:`struct ovs_key_ipv6 <ovs_key_ipv6>`\ .
+Used as the \ ``ipv4_frag``\  in \ :c:type:`struct ovs_key_ipv4 <ovs_key_ipv4>`\  and as \ ``ipv6_frag``\  \ :c:type:`struct struct <struct>`\ 
+ovs_key_ipv6.
 
 .. _`ovs_flow_attr`:
 
@@ -403,7 +405,7 @@ OVS_FLOW_ATTR_ACTIONS
     an \ ``OVS_FLOW_ATTR_ACTIONS``\  without any nested attributes must be given.
 
 OVS_FLOW_ATTR_STATS
-    &struct ovs_flow_stats giving statistics for this
+    \ :c:type:`struct ovs_flow_stats <ovs_flow_stats>`\  giving statistics for this
     flow.  Present in notifications if the stats would be nonzero.  Ignored in
     requests.
 
@@ -449,7 +451,7 @@ OVS_FLOW_ATTR_UFID_FLAGS
 OVS_FLOW_ATTR_PAD
     *undescribed*
 
-__OVS_FLOW_ATTR_MAX
+\__OVS_FLOW_ATTR_MAX
     *undescribed*
 
 .. _`ovs_flow_attr.description`:
@@ -517,7 +519,7 @@ OVS_SAMPLE_ATTR_ACTIONS
     Set of actions to execute in sampling event.
     Actions are passed as nested attributes.
 
-__OVS_SAMPLE_ATTR_MAX
+\__OVS_SAMPLE_ATTR_MAX
     *undescribed*
 
 OVS_SAMPLE_ATTR_ARG
@@ -579,7 +581,7 @@ OVS_USERSPACE_ATTR_EGRESS_TUN_PORT
 OVS_USERSPACE_ATTR_ACTIONS
     If present, send actions with upcall.
 
-__OVS_USERSPACE_ATTR_MAX
+\__OVS_USERSPACE_ATTR_MAX
     *undescribed*
 
 .. _`ovs_action_push_mpls`:
@@ -589,7 +591,7 @@ struct ovs_action_push_mpls
 
 .. c:type:: struct ovs_action_push_mpls
 
-    %OVS_ACTION_ATTR_PUSH_MPLS action argument.
+    \ ``OVS_ACTION_ATTR_PUSH_MPLS``\  action argument.
 
 .. _`ovs_action_push_mpls.definition`:
 
@@ -629,7 +631,7 @@ struct ovs_action_push_vlan
 
 .. c:type:: struct ovs_action_push_vlan
 
-    %OVS_ACTION_ATTR_PUSH_VLAN action argument.
+    \ ``OVS_ACTION_ATTR_PUSH_VLAN``\  action argument.
 
 .. _`ovs_action_push_vlan.definition`:
 
@@ -717,7 +719,7 @@ OVS_CT_ATTR_MARK
     tracking mark field in the connection.
 
 OVS_CT_ATTR_LABELS
-    %OVS_CT_LABELS_LEN value followed by \ ``OVS_CT_LABELS_LEN``\ 
+    \ ``OVS_CT_LABELS_LEN``\  value followed by \ ``OVS_CT_LABELS_LEN``\ 
     mask. For each bit set in the mask, the corresponding bit in the value is
     copied to the connection tracking label field in the connection.
 
@@ -747,7 +749,7 @@ OVS_CT_ATTR_EVENTMASK
     respectively.  Remaining bits control the changes for which an event is
     delivered on the NFNLGRP_CONNTRACK_UPDATE group.
 
-__OVS_CT_ATTR_MAX
+\__OVS_CT_ATTR_MAX
     *undescribed*
 
 .. _`ovs_nat_attr`:
@@ -824,7 +826,7 @@ OVS_NAT_ATTR_PROTO_HASH
 OVS_NAT_ATTR_PROTO_RANDOM
     Flag for fully randomized L4 port mapping
 
-__OVS_NAT_ATTR_MAX
+\__OVS_NAT_ATTR_MAX
     *undescribed*
 
 .. _`ovs_action_attr`:
@@ -955,7 +957,7 @@ OVS_ACTION_ATTR_METER
     Run packet through a meter, which may drop the
     packet, or modify the packet (e.g., change the DSCP field).
 
-__OVS_ACTION_ATTR_MAX
+\__OVS_ACTION_ATTR_MAX
     *undescribed*
 
 OVS_ACTION_ATTR_SET_TO_MASKED

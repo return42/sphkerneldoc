@@ -216,7 +216,7 @@ Definition
 Members
 -------
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 queue
@@ -261,7 +261,7 @@ handle_tso
     TSO xmit preparation handler.  Sets up the TSO metadata and
     may also map tx data, depending on the nature of the TSO implementation.
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 old_write_count
@@ -291,7 +291,7 @@ completed_timestamp_major
 completed_timestamp_minor
     Low part of the most recent tx timestamp.
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 write_count
@@ -343,7 +343,7 @@ cb_packets
 tx_packets
     *undescribed*
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 flush_outstanding
@@ -448,7 +448,7 @@ Members
 dma_addr
     The dma address of this page.
 
-__pad
+\__pad
     *undescribed*
 
 .. _`efx_rx_page_state.description`:
@@ -1270,7 +1270,7 @@ node
     List node for maintaning primary/secondary function lists
 
 primary
-    &struct efx_nic instance for the primary function of this
+    \ :c:type:`struct efx_nic <efx_nic>`\  instance for the primary function of this
     controller.  May be the same structure, and may be \ ``NULL``\  if no
     primary function is bound.  Serialised by rtnl_lock.
 
@@ -1541,7 +1541,7 @@ mdio_bus
 phy_mode
     PHY operating mode. Serialised by \ ``mac_lock``\ .
 
-__ETHTOOL_DECLARE_LINK_MODE_MASKlink_advertising
+\__ETHTOOL_DECLARE_LINK_MODE_MASKlink_advertising
     *undescribed*
 
 link_state
@@ -1627,7 +1627,7 @@ ptp_warned
 vpd_sn
     Serial number read from VPD
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 biu_lock

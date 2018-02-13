@@ -989,7 +989,7 @@ Members
 -------
 
 ctrl_flags
-    &enum iwl_sta_key_flag
+    \ :c:type:`enum iwl_sta_key_flag <iwl_sta_key_flag>`\ 
 
 igtk
     IGTK key material
@@ -1039,7 +1039,7 @@ Members
 -------
 
 ctrl_flags
-    &enum iwl_sta_key_flag
+    \ :c:type:`enum iwl_sta_key_flag <iwl_sta_key_flag>`\ 
 
 igtk
     IGTK master key

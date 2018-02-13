@@ -163,7 +163,7 @@ tee_device_register
 Description
 -----------
 
-tee_device_unregister() need to be called to remove the \ ``teedev``\  if
+\ :c:func:`tee_device_unregister`\  need to be called to remove the \ ``teedev``\  if
 this function fails.
 
 \ ``returns``\  < 0 on failure
@@ -552,7 +552,7 @@ tee_shm_register
 Description
 -----------
 
-@returns a pointer to 'struct tee_shm'
+\ ``returns``\  a pointer to 'struct tee_shm'
 
 .. _`tee_shm_is_registered`:
 

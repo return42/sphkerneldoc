@@ -126,7 +126,7 @@ tomoyo_get_dqword
 
 .. c:function:: const struct tomoyo_path_info *tomoyo_get_dqword(char *start)
 
-    tomoyo_get_name() for a quoted string.
+    \ :c:func:`tomoyo_get_name`\  for a quoted string.
 
     :param char \*start:
         String to save.

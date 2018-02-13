@@ -124,8 +124,8 @@ conditionals in this code.
 
 .. _`_update_sysc_cache`:
 
-_update_sysc_cache
-==================
+\_update_sysc_cache
+===================
 
 .. c:function:: int _update_sysc_cache(struct omap_hwmod *oh)
 
@@ -145,8 +145,8 @@ OCP_SYSCONFIG register or 0 upon success.
 
 .. _`_write_sysconfig`:
 
-_write_sysconfig
-================
+\_write_sysconfig
+=================
 
 .. c:function:: void _write_sysconfig(u32 v, struct omap_hwmod *oh)
 
@@ -168,8 +168,8 @@ one.  No return value.
 
 .. _`_set_master_standbymode`:
 
-_set_master_standbymode
-=======================
+\_set_master_standbymode
+========================
 
 .. c:function:: int _set_master_standbymode(struct omap_hwmod *oh, u8 standbymode, u32 *v)
 
@@ -195,8 +195,8 @@ upon error or 0 upon success.
 
 .. _`_set_slave_idlemode`:
 
-_set_slave_idlemode
-===================
+\_set_slave_idlemode
+====================
 
 .. c:function:: int _set_slave_idlemode(struct omap_hwmod *oh, u8 idlemode, u32 *v)
 
@@ -222,8 +222,8 @@ or 0 upon success.
 
 .. _`_set_clockactivity`:
 
-_set_clockactivity
-==================
+\_set_clockactivity
+===================
 
 .. c:function:: int _set_clockactivity(struct omap_hwmod *oh, u8 clockact, u32 *v)
 
@@ -250,8 +250,8 @@ success.
 
 .. _`_set_softreset`:
 
-_set_softreset
-==============
+\_set_softreset
+===============
 
 .. c:function:: int _set_softreset(struct omap_hwmod *oh, u32 *v)
 
@@ -273,8 +273,8 @@ error or 0 upon success.
 
 .. _`_clear_softreset`:
 
-_clear_softreset
-================
+\_clear_softreset
+=================
 
 .. c:function:: int _clear_softreset(struct omap_hwmod *oh, u32 *v)
 
@@ -296,8 +296,8 @@ error or 0 upon success.
 
 .. _`_wait_softreset_complete`:
 
-_wait_softreset_complete
-========================
+\_wait_softreset_complete
+=========================
 
 .. c:function:: int _wait_softreset_complete(struct omap_hwmod *oh)
 
@@ -319,8 +319,8 @@ microseconds.  Returns the number of microseconds waited.
 
 .. _`_set_dmadisable`:
 
-_set_dmadisable
-===============
+\_set_dmadisable
+================
 
 .. c:function:: int _set_dmadisable(struct omap_hwmod *oh)
 
@@ -344,8 +344,8 @@ error or 0 upon success.
 
 .. _`_set_module_autoidle`:
 
-_set_module_autoidle
-====================
+\_set_module_autoidle
+=====================
 
 .. c:function:: int _set_module_autoidle(struct omap_hwmod *oh, u8 autoidle, u32 *v)
 
@@ -374,8 +374,8 @@ error or 0 upon success.
 
 .. _`_enable_wakeup`:
 
-_enable_wakeup
-==============
+\_enable_wakeup
+===============
 
 .. c:function:: int _enable_wakeup(struct omap_hwmod *oh, u32 *v)
 
@@ -397,8 +397,8 @@ upon error or 0 upon success.
 
 .. _`_disable_wakeup`:
 
-_disable_wakeup
-===============
+\_disable_wakeup
+================
 
 .. c:function:: int _disable_wakeup(struct omap_hwmod *oh, u32 *v)
 
@@ -420,8 +420,8 @@ upon error or 0 upon success.
 
 .. _`_add_initiator_dep`:
 
-_add_initiator_dep
-==================
+\_add_initiator_dep
+===================
 
 .. c:function:: int _add_initiator_dep(struct omap_hwmod *oh, struct omap_hwmod *init_oh)
 
@@ -449,8 +449,8 @@ passes along \ :c:func:`clkdm_add_sleepdep`\  value upon success.
 
 .. _`_del_initiator_dep`:
 
-_del_initiator_dep
-==================
+\_del_initiator_dep
+===================
 
 .. c:function:: int _del_initiator_dep(struct omap_hwmod *oh, struct omap_hwmod *init_oh)
 
@@ -478,8 +478,8 @@ along \ :c:func:`clkdm_del_sleepdep`\  value upon success.
 
 .. _`_init_main_clk`:
 
-_init_main_clk
-==============
+\_init_main_clk
+===============
 
 .. c:function:: int _init_main_clk(struct omap_hwmod *oh)
 
@@ -499,8 +499,8 @@ or a main_clk is present.  Returns 0 on success or -EINVAL on error.
 
 .. _`_init_interface_clks`:
 
-_init_interface_clks
-====================
+\_init_interface_clks
+=====================
 
 .. c:function:: int _init_interface_clks(struct omap_hwmod *oh)
 
@@ -519,8 +519,8 @@ clock pointers.  Returns 0 on success or -EINVAL on error.
 
 .. _`_init_opt_clks`:
 
-_init_opt_clks
-==============
+\_init_opt_clks
+===============
 
 .. c:function:: int _init_opt_clks(struct omap_hwmod *oh)
 
@@ -539,8 +539,8 @@ clock pointers.  Returns 0 on success or -EINVAL on error.
 
 .. _`_enable_clocks`:
 
-_enable_clocks
-==============
+\_enable_clocks
+===============
 
 .. c:function:: int _enable_clocks(struct omap_hwmod *oh)
 
@@ -559,8 +559,8 @@ on the hwmod \ ``oh``\ .  Returns 0.
 
 .. _`_omap4_clkctrl_managed_by_clkfwk`:
 
-_omap4_clkctrl_managed_by_clkfwk
-================================
+\_omap4_clkctrl_managed_by_clkfwk
+=================================
 
 .. c:function:: bool _omap4_clkctrl_managed_by_clkfwk(struct omap_hwmod *oh)
 
@@ -571,8 +571,8 @@ _omap4_clkctrl_managed_by_clkfwk
 
 .. _`_omap4_has_clkctrl_clock`:
 
-_omap4_has_clkctrl_clock
-========================
+\_omap4_has_clkctrl_clock
+=========================
 
 .. c:function:: bool _omap4_has_clkctrl_clock(struct omap_hwmod *oh)
 
@@ -583,8 +583,8 @@ _omap4_has_clkctrl_clock
 
 .. _`_disable_clocks`:
 
-_disable_clocks
-===============
+\_disable_clocks
+================
 
 .. c:function:: int _disable_clocks(struct omap_hwmod *oh)
 
@@ -602,8 +602,8 @@ Disables the hwmod \ ``oh``\  main functional and interface clocks.  Returns 0.
 
 .. _`_omap4_enable_module`:
 
-_omap4_enable_module
-====================
+\_omap4_enable_module
+=====================
 
 .. c:function:: void _omap4_enable_module(struct omap_hwmod *oh)
 
@@ -622,8 +622,8 @@ No return value.
 
 .. _`_omap4_wait_target_disable`:
 
-_omap4_wait_target_disable
-==========================
+\_omap4_wait_target_disable
+===========================
 
 .. c:function:: int _omap4_wait_target_disable(struct omap_hwmod *oh)
 
@@ -644,8 +644,8 @@ appropriate \*\_cm\*\_wait_module_idle() function.
 
 .. _`_save_mpu_port_index`:
 
-_save_mpu_port_index
-====================
+\_save_mpu_port_index
+=====================
 
 .. c:function:: void _save_mpu_port_index(struct omap_hwmod *oh)
 
@@ -666,8 +666,8 @@ value.
 
 .. _`_find_mpu_rt_port`:
 
-_find_mpu_rt_port
-=================
+\_find_mpu_rt_port
+==================
 
 .. c:function:: struct omap_hwmod_ocp_if *_find_mpu_rt_port(struct omap_hwmod *oh)
 
@@ -692,8 +692,8 @@ IP block.
 
 .. _`_enable_sysc`:
 
-_enable_sysc
-============
+\_enable_sysc
+=============
 
 .. c:function:: void _enable_sysc(struct omap_hwmod *oh)
 
@@ -716,8 +716,8 @@ no-idle variants of these modes.  No return value.
 
 .. _`_idle_sysc`:
 
-_idle_sysc
-==========
+\_idle_sysc
+===========
 
 .. c:function:: void _idle_sysc(struct omap_hwmod *oh)
 
@@ -738,8 +738,8 @@ configure it for smart-standby.  No return value.
 
 .. _`_shutdown_sysc`:
 
-_shutdown_sysc
-==============
+\_shutdown_sysc
+===============
 
 .. c:function:: void _shutdown_sysc(struct omap_hwmod *oh)
 
@@ -758,8 +758,8 @@ value.
 
 .. _`_lookup`:
 
-_lookup
-=======
+\_lookup
+========
 
 .. c:function:: struct omap_hwmod *_lookup(const char *name)
 
@@ -777,8 +777,8 @@ Return a pointer to an omap_hwmod by name, or NULL if not found.
 
 .. _`_init_clkdm`:
 
-_init_clkdm
-===========
+\_init_clkdm
+============
 
 .. c:function:: int _init_clkdm(struct omap_hwmod *oh)
 
@@ -798,12 +798,12 @@ Return -EINVAL if the clkdm_name lookup failed.
 
 .. _`_init_clocks`:
 
-_init_clocks
-============
+\_init_clocks
+=============
 
 .. c:function:: int _init_clocks(struct omap_hwmod *oh, struct device_node *np)
 
-    clk_get() all clocks associated with this hwmod. Retrieve as well the clockdomain.
+    \ :c:func:`clk_get`\  all clocks associated with this hwmod. Retrieve as well the clockdomain.
 
     :param struct omap_hwmod \*oh:
         struct omap_hwmod \*
@@ -822,8 +822,8 @@ success, or a negative error code on failure.
 
 .. _`_lookup_hardreset`:
 
-_lookup_hardreset
-=================
+\_lookup_hardreset
+==================
 
 .. c:function:: int _lookup_hardreset(struct omap_hwmod *oh, const char *name, struct omap_hwmod_rst_info *ohri)
 
@@ -848,8 +848,8 @@ input name. Return -ENOENT if not found.
 
 .. _`_assert_hardreset`:
 
-_assert_hardreset
-=================
+\_assert_hardreset
+==================
 
 .. c:function:: int _assert_hardreset(struct omap_hwmod *oh, const char *name)
 
@@ -875,8 +875,8 @@ assert_hardreset code.
 
 .. _`_deassert_hardreset`:
 
-_deassert_hardreset
-===================
+\_deassert_hardreset
+====================
 
 .. c:function:: int _deassert_hardreset(struct omap_hwmod *oh, const char *name)
 
@@ -902,8 +902,8 @@ deassert_hardreset code.
 
 .. _`_read_hardreset`:
 
-_read_hardreset
-===============
+\_read_hardreset
+================
 
 .. c:function:: int _read_hardreset(struct omap_hwmod *oh, const char *name)
 
@@ -928,8 +928,8 @@ code.
 
 .. _`_are_all_hardreset_lines_asserted`:
 
-_are_all_hardreset_lines_asserted
-=================================
+\_are_all_hardreset_lines_asserted
+==================================
 
 .. c:function:: bool _are_all_hardreset_lines_asserted(struct omap_hwmod *oh)
 
@@ -951,8 +951,8 @@ enable/disable sequence if its hardreset line is set.
 
 .. _`_are_any_hardreset_lines_asserted`:
 
-_are_any_hardreset_lines_asserted
-=================================
+\_are_any_hardreset_lines_asserted
+==================================
 
 .. c:function:: bool _are_any_hardreset_lines_asserted(struct omap_hwmod *oh)
 
@@ -974,8 +974,8 @@ enable/disable sequence if any hardreset line is set.
 
 .. _`_omap4_disable_module`:
 
-_omap4_disable_module
-=====================
+\_omap4_disable_module
+======================
 
 .. c:function:: int _omap4_disable_module(struct omap_hwmod *oh)
 
@@ -994,8 +994,8 @@ Return EINVAL if the modulemode is not supported and 0 in case of success.
 
 .. _`_ocp_softreset`:
 
-_ocp_softreset
-==============
+\_ocp_softreset
+===============
 
 .. c:function:: int _ocp_softreset(struct omap_hwmod *oh)
 
@@ -1023,8 +1023,8 @@ reset status.
 
 .. _`_reset`:
 
-_reset
-======
+\_reset
+=======
 
 .. c:function:: int _reset(struct omap_hwmod *oh)
 
@@ -1069,8 +1069,8 @@ cannot be reset this way or if the hwmod is in the wrong state,
 
 .. _`_omap4_update_context_lost`:
 
-_omap4_update_context_lost
-==========================
+\_omap4_update_context_lost
+===========================
 
 .. c:function:: void _omap4_update_context_lost(struct omap_hwmod *oh)
 
@@ -1090,8 +1090,8 @@ bits. No return value.
 
 .. _`_omap4_get_context_lost`:
 
-_omap4_get_context_lost
-=======================
+\_omap4_get_context_lost
+========================
 
 .. c:function:: int _omap4_get_context_lost(struct omap_hwmod *oh)
 
@@ -1109,8 +1109,8 @@ Returns the in-memory context loss counter for a hwmod.
 
 .. _`_enable_preprogram`:
 
-_enable_preprogram
-==================
+\_enable_preprogram
+===================
 
 .. c:function:: int _enable_preprogram(struct omap_hwmod *oh)
 
@@ -1131,8 +1131,8 @@ return value; otherwise, return 0.
 
 .. _`_enable`:
 
-_enable
-=======
+\_enable
+========
 
 .. c:function:: int _enable(struct omap_hwmod *oh)
 
@@ -1152,8 +1152,8 @@ state or passes along the return value of \_wait_target_ready().
 
 .. _`_idle`:
 
-_idle
-=====
+\_idle
+======
 
 .. c:function:: int _idle(struct omap_hwmod *oh)
 
@@ -1173,8 +1173,8 @@ state or returns 0.
 
 .. _`_shutdown`:
 
-_shutdown
-=========
+\_shutdown
+==========
 
 .. c:function:: int _shutdown(struct omap_hwmod *oh)
 
@@ -1260,8 +1260,8 @@ nodes available in the dts.
 
 .. _`_init_mpu_rt_base`:
 
-_init_mpu_rt_base
-=================
+\_init_mpu_rt_base
+==================
 
 .. c:function:: int _init_mpu_rt_base(struct omap_hwmod *oh, void *data, int index, struct device_node *np)
 
@@ -1296,8 +1296,8 @@ Returns 0 on success, -EINVAL if an invalid hwmod is passed, and
 
 .. _`_init`:
 
-_init
-=====
+\_init
+======
 
 .. c:function:: int _init(struct omap_hwmod *oh, void *data)
 
@@ -1324,8 +1324,8 @@ address space is not defined, or -EINVAL upon failure.
 
 .. _`_setup_iclk_autoidle`:
 
-_setup_iclk_autoidle
-====================
+\_setup_iclk_autoidle
+=====================
 
 .. c:function:: void _setup_iclk_autoidle(struct omap_hwmod *oh)
 
@@ -1345,8 +1345,8 @@ the clock code.   No return value.
 
 .. _`_setup_reset`:
 
-_setup_reset
-============
+\_setup_reset
+=============
 
 .. c:function:: int _setup_reset(struct omap_hwmod *oh)
 
@@ -1367,8 +1367,8 @@ failure.
 
 .. _`_setup_postsetup`:
 
-_setup_postsetup
-================
+\_setup_postsetup
+=================
 
 .. c:function:: void _setup_postsetup(struct omap_hwmod *oh)
 
@@ -1416,8 +1416,8 @@ No return value.
 
 .. _`_setup`:
 
-_setup
-======
+\_setup
+=======
 
 .. c:function:: int _setup(struct omap_hwmod *oh, void *data)
 
@@ -1447,8 +1447,8 @@ associated with the IP block.  Returns 0.
 
 .. _`_register`:
 
-_register
-=========
+\_register
+==========
 
 .. c:function:: int _register(struct omap_hwmod *oh)
 
@@ -1477,8 +1477,8 @@ of substructures.
 
 .. _`_add_link`:
 
-_add_link
-=========
+\_add_link
+==========
 
 .. c:function:: int _add_link(struct omap_hwmod_ocp_if *oi)
 
@@ -1500,8 +1500,8 @@ additional locking.  Returns 0.
 
 .. _`_register_link`:
 
-_register_link
-==============
+\_register_link
+===============
 
 .. c:function:: int _register_link(struct omap_hwmod_ocp_if *oi)
 
@@ -1526,8 +1526,8 @@ unneeded omap_hwmods to be freed on multi-OMAP configurations.
 
 .. _`_omap2xxx_3xxx_wait_target_ready`:
 
-_omap2xxx_3xxx_wait_target_ready
-================================
+\_omap2xxx_3xxx_wait_target_ready
+=================================
 
 .. c:function:: int _omap2xxx_3xxx_wait_target_ready(struct omap_hwmod *oh)
 
@@ -1548,8 +1548,8 @@ appropriate \*\_cm\*\_wait_module_ready() function.
 
 .. _`_omap4_wait_target_ready`:
 
-_omap4_wait_target_ready
-========================
+\_omap4_wait_target_ready
+=========================
 
 .. c:function:: int _omap4_wait_target_ready(struct omap_hwmod *oh)
 
@@ -1570,8 +1570,8 @@ appropriate \*\_cm\*\_wait_module_ready() function.
 
 .. _`_omap2_assert_hardreset`:
 
-_omap2_assert_hardreset
-=======================
+\_omap2_assert_hardreset
+========================
 
 .. c:function:: int _omap2_assert_hardreset(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1596,8 +1596,8 @@ for removal when the PRM code is moved into drivers/.
 
 .. _`_omap2_deassert_hardreset`:
 
-_omap2_deassert_hardreset
-=========================
+\_omap2_deassert_hardreset
+==========================
 
 .. c:function:: int _omap2_deassert_hardreset(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1622,8 +1622,8 @@ scheduled for removal when the PRM code is moved into drivers/.
 
 .. _`_omap2_is_hardreset_asserted`:
 
-_omap2_is_hardreset_asserted
-============================
+\_omap2_is_hardreset_asserted
+=============================
 
 .. c:function:: int _omap2_is_hardreset_asserted(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1649,8 +1649,8 @@ drivers/.
 
 .. _`_omap4_assert_hardreset`:
 
-_omap4_assert_hardreset
-=======================
+\_omap4_assert_hardreset
+========================
 
 .. c:function:: int _omap4_assert_hardreset(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1676,8 +1676,8 @@ drivers/.
 
 .. _`_omap4_deassert_hardreset`:
 
-_omap4_deassert_hardreset
-=========================
+\_omap4_deassert_hardreset
+==========================
 
 .. c:function:: int _omap4_deassert_hardreset(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1703,8 +1703,8 @@ drivers/.
 
 .. _`_omap4_is_hardreset_asserted`:
 
-_omap4_is_hardreset_asserted
-============================
+\_omap4_is_hardreset_asserted
+=============================
 
 .. c:function:: int _omap4_is_hardreset_asserted(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1730,8 +1730,8 @@ into drivers/.
 
 .. _`_omap4_disable_direct_prcm`:
 
-_omap4_disable_direct_prcm
-==========================
+\_omap4_disable_direct_prcm
+===========================
 
 .. c:function:: int _omap4_disable_direct_prcm(struct omap_hwmod *oh)
 
@@ -1751,8 +1751,8 @@ will be using its main_clk to enable/disable the module. Returns
 
 .. _`_am33xx_deassert_hardreset`:
 
-_am33xx_deassert_hardreset
-==========================
+\_am33xx_deassert_hardreset
+===========================
 
 .. c:function:: int _am33xx_deassert_hardreset(struct omap_hwmod *oh, struct omap_hwmod_rst_info *ohri)
 
@@ -1871,8 +1871,8 @@ success.
 
 .. _`_ensure_mpu_hwmod_is_setup`:
 
-_ensure_mpu_hwmod_is_setup
-==========================
+\_ensure_mpu_hwmod_is_setup
+===========================
 
 .. c:function:: void _ensure_mpu_hwmod_is_setup(struct omap_hwmod *oh)
 

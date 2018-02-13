@@ -3,8 +3,8 @@
 
 .. _`__flush_cache_one`:
 
-__flush_cache_one
-=================
+\__flush_cache_one
+==================
 
 .. c:function:: void __flush_cache_one(unsigned long addr, unsigned long phys, unsigned long exec_offset)
 

@@ -62,7 +62,7 @@ NFT_REG_3
 NFT_REG_4
     *undescribed*
 
-__NFT_REG_MAX
+\__NFT_REG_MAX
     *undescribed*
 
 NFT_REG32_00
@@ -336,7 +336,7 @@ NFTA_LIST_UNPEC
 NFTA_LIST_ELEM
     list element (NLA_NESTED)
 
-__NFTA_LIST_MAX
+\__NFTA_LIST_MAX
     *undescribed*
 
 .. _`nft_hook_attributes`:
@@ -380,7 +380,7 @@ NFTA_HOOK_PRIORITY
 NFTA_HOOK_DEV
     netdevice name (NLA_STRING)
 
-__NFTA_HOOK_MAX
+\__NFTA_HOOK_MAX
     *undescribed*
 
 .. _`nft_table_flags`:
@@ -460,7 +460,7 @@ NFTA_TABLE_HANDLE
 NFTA_TABLE_PAD
     *undescribed*
 
-__NFTA_TABLE_MAX
+\__NFTA_TABLE_MAX
     *undescribed*
 
 .. _`nft_chain_attributes`:
@@ -528,7 +528,7 @@ NFTA_CHAIN_COUNTERS
 NFTA_CHAIN_PAD
     *undescribed*
 
-__NFTA_CHAIN_MAX
+\__NFTA_CHAIN_MAX
     *undescribed*
 
 .. _`nft_rule_attributes`:
@@ -596,7 +596,7 @@ NFTA_RULE_PAD
 NFTA_RULE_ID
     uniquely identifies a rule in a transaction (NLA_U32)
 
-__NFTA_RULE_MAX
+\__NFTA_RULE_MAX
     *undescribed*
 
 .. _`nft_rule_compat_flags`:
@@ -668,7 +668,7 @@ NFTA_RULE_COMPAT_PROTO
 NFTA_RULE_COMPAT_FLAGS
     bitmask of enum nft_rule_compat_flags (NLA_U32)
 
-__NFTA_RULE_COMPAT_MAX
+\__NFTA_RULE_COMPAT_MAX
     *undescribed*
 
 .. _`nft_set_flags`:
@@ -788,7 +788,7 @@ NFTA_SET_DESC_UNSPEC
 NFTA_SET_DESC_SIZE
     number of elements in set (NLA_U32)
 
-__NFTA_SET_DESC_MAX
+\__NFTA_SET_DESC_MAX
     *undescribed*
 
 .. _`nft_set_attributes`:
@@ -884,7 +884,7 @@ NFTA_SET_OBJ_TYPE
 NFTA_SET_HANDLE
     set handle (NLA_U64)
 
-__NFTA_SET_MAX
+\__NFTA_SET_MAX
     *undescribed*
 
 .. _`nft_set_elem_flags`:
@@ -980,7 +980,7 @@ NFTA_SET_ELEM_PAD
 NFTA_SET_ELEM_OBJREF
     stateful object reference (NLA_STRING)
 
-__NFTA_SET_ELEM_MAX
+\__NFTA_SET_ELEM_MAX
     *undescribed*
 
 .. _`nft_set_elem_list_attributes`:
@@ -1028,7 +1028,7 @@ NFTA_SET_ELEM_LIST_ELEMENTS
 NFTA_SET_ELEM_LIST_SET_ID
     uniquely identifies a set in a transaction (NLA_U32)
 
-__NFTA_SET_ELEM_LIST_MAX
+\__NFTA_SET_ELEM_LIST_MAX
     *undescribed*
 
 .. _`nft_data_types`:
@@ -1113,7 +1113,7 @@ NFTA_DATA_VALUE
 NFTA_DATA_VERDICT
     nf_tables verdict (NLA_NESTED: nft_verdict_attributes)
 
-__NFTA_DATA_MAX
+\__NFTA_DATA_MAX
     *undescribed*
 
 .. _`nft_verdict_attributes`:
@@ -1153,7 +1153,7 @@ NFTA_VERDICT_CODE
 NFTA_VERDICT_CHAIN
     jump target chain name (NLA_STRING)
 
-__NFTA_VERDICT_MAX
+\__NFTA_VERDICT_MAX
     *undescribed*
 
 .. _`nft_expr_attributes`:
@@ -1193,7 +1193,7 @@ NFTA_EXPR_NAME
 NFTA_EXPR_DATA
     type specific data (NLA_NESTED)
 
-__NFTA_EXPR_MAX
+\__NFTA_EXPR_MAX
     *undescribed*
 
 .. _`nft_immediate_attributes`:
@@ -1233,7 +1233,7 @@ NFTA_IMMEDIATE_DREG
 NFTA_IMMEDIATE_DATA
     data to load (NLA_NESTED: nft_data_attributes)
 
-__NFTA_IMMEDIATE_MAX
+\__NFTA_IMMEDIATE_MAX
     *undescribed*
 
 .. _`nft_bitwise_attributes`:
@@ -1285,7 +1285,7 @@ NFTA_BITWISE_MASK
 NFTA_BITWISE_XOR
     xor value (NLA_NESTED: nft_data_attributes)
 
-__NFTA_BITWISE_MAX
+\__NFTA_BITWISE_MAX
     *undescribed*
 
 .. _`nft_bitwise_attributes.the-bitwise-expression-performs-the-following-operation`:
@@ -1407,7 +1407,7 @@ NFTA_BYTEORDER_LEN
 NFTA_BYTEORDER_SIZE
     data size in bytes (NLA_U32: 2 or 4)
 
-__NFTA_BYTEORDER_MAX
+\__NFTA_BYTEORDER_MAX
     *undescribed*
 
 .. _`nft_cmp_ops`:
@@ -1499,7 +1499,7 @@ NFTA_CMP_OP
 NFTA_CMP_DATA
     data to compare against (NLA_NESTED: nft_data_attributes)
 
-__NFTA_CMP_MAX
+\__NFTA_CMP_MAX
     *undescribed*
 
 .. _`nft_range_ops`:
@@ -1579,7 +1579,7 @@ NFTA_RANGE_FROM_DATA
 NFTA_RANGE_TO_DATA
     data range to (NLA_NESTED: nft_data_attributes)
 
-__NFTA_RANGE_MAX
+\__NFTA_RANGE_MAX
     *undescribed*
 
 .. _`nft_lookup_attributes`:
@@ -1631,7 +1631,7 @@ NFTA_LOOKUP_SET_ID
 NFTA_LOOKUP_FLAGS
     flags (NLA_U32: enum nft_lookup_flags)
 
-__NFTA_LOOKUP_MAX
+\__NFTA_LOOKUP_MAX
     *undescribed*
 
 .. _`nft_dynset_attributes`:
@@ -1699,7 +1699,7 @@ NFTA_DYNSET_PAD
 NFTA_DYNSET_FLAGS
     flags (NLA_U32)
 
-__NFTA_DYNSET_MAX
+\__NFTA_DYNSET_MAX
     *undescribed*
 
 .. _`nft_payload_bases`:
@@ -1831,7 +1831,7 @@ NFTA_PAYLOAD_CSUM_OFFSET
 NFTA_PAYLOAD_CSUM_FLAGS
     checksum flags (NLA_U32)
 
-__NFTA_PAYLOAD_MAX
+\__NFTA_PAYLOAD_MAX
     *undescribed*
 
 .. _`nft_exthdr_op`:
@@ -1867,7 +1867,7 @@ NFT_EXTHDR_OP_IPV6
 NFT_EXTHDR_OP_TCPOPT
     *undescribed*
 
-__NFT_EXTHDR_OP_MAX
+\__NFT_EXTHDR_OP_MAX
     *undescribed*
 
 .. _`nft_exthdr_attributes`:
@@ -1927,7 +1927,7 @@ NFTA_EXTHDR_OP
 NFTA_EXTHDR_SREG
     option match type (NLA_U32)
 
-__NFTA_EXTHDR_MAX
+\__NFTA_EXTHDR_MAX
     *undescribed*
 
 .. _`nft_meta_keys`:
@@ -2187,7 +2187,7 @@ NFTA_HASH_OFFSET
 NFTA_HASH_TYPE
     hash operation (NLA_U32: nft_hash_types)
 
-__NFTA_HASH_MAX
+\__NFTA_HASH_MAX
     *undescribed*
 
 .. _`nft_meta_attributes`:
@@ -2231,7 +2231,7 @@ NFTA_META_KEY
 NFTA_META_SREG
     source register (NLA_U32)
 
-__NFTA_META_MAX
+\__NFTA_META_MAX
     *undescribed*
 
 .. _`nft_rt_attributes`:
@@ -2271,7 +2271,7 @@ NFTA_RT_DREG
 NFTA_RT_KEY
     routing data item to load (NLA_U32: nft_rt_keys)
 
-__NFTA_RT_MAX
+\__NFTA_RT_MAX
     *undescribed*
 
 .. _`nft_ct_keys`:
@@ -2419,7 +2419,7 @@ NFTA_CT_DIRECTION
 NFTA_CT_SREG
     source register (NLA_U32)
 
-__NFTA_CT_MAX
+\__NFTA_CT_MAX
     *undescribed*
 
 .. _`nft_offload_attributes`:
@@ -2455,7 +2455,7 @@ NFTA_FLOW_UNSPEC
 NFTA_FLOW_TABLE_NAME
     flow table name (NLA_STRING)
 
-__NFTA_FLOW_MAX
+\__NFTA_FLOW_MAX
     *undescribed*
 
 .. _`nft_limit_attributes`:
@@ -2511,7 +2511,7 @@ NFTA_LIMIT_FLAGS
 NFTA_LIMIT_PAD
     *undescribed*
 
-__NFTA_LIMIT_MAX
+\__NFTA_LIMIT_MAX
     *undescribed*
 
 .. _`nft_counter_attributes`:
@@ -2555,7 +2555,7 @@ NFTA_COUNTER_PACKETS
 NFTA_COUNTER_PAD
     *undescribed*
 
-__NFTA_COUNTER_MAX
+\__NFTA_COUNTER_MAX
     *undescribed*
 
 .. _`nft_log_attributes`:
@@ -2611,7 +2611,7 @@ NFTA_LOG_LEVEL
 NFTA_LOG_FLAGS
     logging flags (NLA_U32)
 
-__NFTA_LOG_MAX
+\__NFTA_LOG_MAX
     *undescribed*
 
 .. _`nft_queue_attributes`:
@@ -2659,7 +2659,7 @@ NFTA_QUEUE_FLAGS
 NFTA_QUEUE_SREG_QNUM
     source register of queue number (NLA_U32: nft_registers)
 
-__NFTA_QUEUE_MAX
+\__NFTA_QUEUE_MAX
     *undescribed*
 
 .. _`nft_quota_attributes`:
@@ -2707,7 +2707,7 @@ NFTA_QUOTA_PAD
 NFTA_QUOTA_CONSUMED
     quota already consumed in bytes (NLA_U64)
 
-__NFTA_QUOTA_MAX
+\__NFTA_QUOTA_MAX
     *undescribed*
 
 .. _`nft_reject_types`:
@@ -2787,7 +2787,7 @@ NFT_REJECT_ICMPX_HOST_UNREACH
 NFT_REJECT_ICMPX_ADMIN_PROHIBITED
     administratively prohibited
 
-__NFT_REJECT_ICMPX_MAX
+\__NFT_REJECT_ICMPX_MAX
     *undescribed*
 
 .. _`nft_reject_inet_code.description`:
@@ -2834,7 +2834,7 @@ NFTA_REJECT_TYPE
 NFTA_REJECT_ICMP_CODE
     ICMP code to use (NLA_U8)
 
-__NFTA_REJECT_MAX
+\__NFTA_REJECT_MAX
     *undescribed*
 
 .. _`nft_nat_types`:
@@ -2926,7 +2926,7 @@ NFTA_NAT_REG_PROTO_MAX
 NFTA_NAT_FLAGS
     NAT flags (see NF_NAT_RANGE\_\* in linux/netfilter/nf_nat.h) (NLA_U32)
 
-__NFTA_NAT_MAX
+\__NFTA_NAT_MAX
     *undescribed*
 
 .. _`nft_masq_attributes`:
@@ -2970,7 +2970,7 @@ NFTA_MASQ_REG_PROTO_MIN
 NFTA_MASQ_REG_PROTO_MAX
     source register of proto range end (NLA_U32: nft_registers)
 
-__NFTA_MASQ_MAX
+\__NFTA_MASQ_MAX
     *undescribed*
 
 .. _`nft_redir_attributes`:
@@ -3014,7 +3014,7 @@ NFTA_REDIR_REG_PROTO_MAX
 NFTA_REDIR_FLAGS
     NAT flags (see NF_NAT_RANGE\_\* in linux/netfilter/nf_nat.h) (NLA_U32)
 
-__NFTA_REDIR_MAX
+\__NFTA_REDIR_MAX
     *undescribed*
 
 .. _`nft_dup_attributes`:
@@ -3054,7 +3054,7 @@ NFTA_DUP_SREG_ADDR
 NFTA_DUP_SREG_DEV
     source register of output interface (NLA_U32: nft_register)
 
-__NFTA_DUP_MAX
+\__NFTA_DUP_MAX
     *undescribed*
 
 .. _`nft_fwd_attributes`:
@@ -3090,7 +3090,7 @@ NFTA_FWD_UNSPEC
 NFTA_FWD_SREG_DEV
     source register of output interface (NLA_U32: nft_register)
 
-__NFTA_FWD_MAX
+\__NFTA_FWD_MAX
     *undescribed*
 
 .. _`nft_objref_attributes`:
@@ -3142,7 +3142,7 @@ NFTA_OBJREF_SET_NAME
 NFTA_OBJREF_SET_ID
     id of the set where to look for in this transaction (NLA_U32)
 
-__NFTA_OBJREF_MAX
+\__NFTA_OBJREF_MAX
     *undescribed*
 
 .. _`nft_gen_attributes`:
@@ -3186,7 +3186,7 @@ NFTA_GEN_PROC_PID
 NFTA_GEN_PROC_NAME
     *undescribed*
 
-__NFTA_GEN_MAX
+\__NFTA_GEN_MAX
     *undescribed*
 
 .. _`nft_object_attributes`:
@@ -3246,7 +3246,7 @@ NFTA_OBJ_HANDLE
 NFTA_OBJ_PAD
     *undescribed*
 
-__NFTA_OBJ_MAX
+\__NFTA_OBJ_MAX
     *undescribed*
 
 .. _`nft_flowtable_attributes`:
@@ -3302,7 +3302,7 @@ NFTA_FLOWTABLE_HANDLE
 NFTA_FLOWTABLE_PAD
     *undescribed*
 
-__NFTA_FLOWTABLE_MAX
+\__NFTA_FLOWTABLE_MAX
     *undescribed*
 
 .. _`nft_flowtable_hook_attributes`:
@@ -3346,7 +3346,7 @@ NFTA_FLOWTABLE_HOOK_PRIORITY
 NFTA_FLOWTABLE_HOOK_DEVS
     input devices this flow table is bound to (NLA_NESTED)
 
-__NFTA_FLOWTABLE_HOOK_MAX
+\__NFTA_FLOWTABLE_HOOK_MAX
     *undescribed*
 
 .. _`nft_devices_attributes`:
@@ -3382,7 +3382,7 @@ NFTA_DEVICE_UNSPEC
 NFTA_DEVICE_NAME
     name of this device (NLA_STRING)
 
-__NFTA_DEVICE_MAX
+\__NFTA_DEVICE_MAX
     *undescribed*
 
 .. _`nft_trace_attributes`:
@@ -3482,7 +3482,7 @@ NFTA_TRACE_POLICY
 NFTA_TRACE_PAD
     *undescribed*
 
-__NFTA_TRACE_MAX
+\__NFTA_TRACE_MAX
     *undescribed*
 
 .. _`nft_ng_attributes`:
@@ -3530,7 +3530,7 @@ NFTA_NG_TYPE
 NFTA_NG_OFFSET
     offset to be added to the counter (NLA_U32)
 
-__NFTA_NG_MAX
+\__NFTA_NG_MAX
     *undescribed*
 
 .. This file was automatic generated / don't edit.

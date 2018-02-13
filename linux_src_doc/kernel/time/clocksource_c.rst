@@ -196,8 +196,8 @@ which is selected by userspace override.
 
 .. _`__clocksource_update_freq_scale`:
 
-__clocksource_update_freq_scale
-===============================
+\__clocksource_update_freq_scale
+================================
 
 .. c:function:: void __clocksource_update_freq_scale(struct clocksource *cs, u32 scale, u32 freq)
 
@@ -225,8 +225,8 @@ functions.
 
 .. _`__clocksource_register_scale`:
 
-__clocksource_register_scale
-============================
+\__clocksource_register_scale
+=============================
 
 .. c:function:: int __clocksource_register_scale(struct clocksource *cs, u32 scale, u32 freq)
 

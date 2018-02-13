@@ -75,7 +75,7 @@ For the RPC in "rqst", this function:
 Return
 ------
 
-%0 if the RPC was sent successfully,
+\ ``0``\  if the RPC was sent successfully,
 \ ``-ENOTCONN``\  if the connection was lost,
 \ ``-EAGAIN``\  if not enough pages are available for on-demand reply buffer,
 \ ``-ENOBUFS``\  if no MRs are available to register chunks,

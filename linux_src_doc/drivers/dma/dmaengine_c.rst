@@ -177,8 +177,8 @@ dma_get_slave_channel
 
 .. _`__dma_request_channel`:
 
-__dma_request_channel
-=====================
+\__dma_request_channel
+======================
 
 .. c:function:: struct dma_chan *__dma_request_channel(const dma_cap_mask_t *mask, dma_filter_fn fn, void *fn_param)
 
@@ -297,7 +297,7 @@ dma_async_device_register
     registers DMA devices found
 
     :param struct dma_device \*device:
-        &dma_device
+        \ :c:type:`struct dma_device <dma_device>`\ 
 
 .. _`dma_async_device_unregister`:
 
@@ -309,7 +309,7 @@ dma_async_device_unregister
     unregister a DMA device
 
     :param struct dma_device \*device:
-        &dma_device
+        \ :c:type:`struct dma_device <dma_device>`\ 
 
 .. _`dma_async_device_unregister.description`:
 

@@ -3,8 +3,8 @@
 
 .. _`__cpuidle_find_governor`:
 
-__cpuidle_find_governor
-=======================
+\__cpuidle_find_governor
+========================
 
 .. c:function:: struct cpuidle_governor *__cpuidle_find_governor(const char *str)
 

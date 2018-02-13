@@ -109,10 +109,10 @@ ret_logic_off_counter
 ret_mem_off_counter
     *undescribed*
 
-_lock
+\_lock
     spinlock used to serialize powerdomain and some clockdomain ops
 
-_lock_flags
+\_lock_flags
     stored flags when \ ``_lock``\  is taken
 
 pwrstctrl_offs
@@ -149,7 +149,7 @@ state_timer
 Description
 -----------
 
-@prcm_partition possible values are defined in mach-omap2/prcm44xx.h.
+\ ``prcm_partition``\  possible values are defined in mach-omap2/prcm44xx.h.
 
 .. _`pwrdm_ops`:
 

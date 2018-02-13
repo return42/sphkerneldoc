@@ -230,7 +230,7 @@ mem_cgroup_print_oom_info
 NOTE
 ----
 
-@memcg and \ ``p``\ 's mem_cgroup can be different when hierarchy is
+\ ``memcg``\  and \ ``p``\ 's mem_cgroup can be different when hierarchy is
 enabled
 
 .. _`test_mem_cgroup_node_reclaimable`:
@@ -314,8 +314,8 @@ when \ ``page``\  might get freed inside the locked section.
 
 .. _`__unlock_page_memcg`:
 
-__unlock_page_memcg
-===================
+\__unlock_page_memcg
+====================
 
 .. c:function:: void __unlock_page_memcg(struct mem_cgroup *memcg)
 

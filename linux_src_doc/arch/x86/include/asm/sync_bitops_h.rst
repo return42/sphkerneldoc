@@ -47,7 +47,7 @@ sync_clear_bit
 Description
 -----------
 
-sync_clear_bit() is atomic and may not be reordered.  However, it does
+\ :c:func:`sync_clear_bit`\  is atomic and may not be reordered.  However, it does
 not contain a memory barrier, so if it is used for locking purposes,
 you should call \ :c:func:`smp_mb__before_atomic`\  and/or \ :c:func:`smp_mb__after_atomic`\ 
 in order to ensure changes are visible on other processors.
@@ -72,7 +72,7 @@ sync_change_bit
 Description
 -----------
 
-sync_change_bit() is atomic and may not be reordered.
+\ :c:func:`sync_change_bit`\  is atomic and may not be reordered.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.
 

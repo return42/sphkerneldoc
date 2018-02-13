@@ -1282,7 +1282,7 @@ NL80211_CMD_PORT_AUTHORIZED
 NL80211_CMD_RELOAD_REGDB
     Request that the regdb firmware file is reloaded.
 
-__NL80211_CMD_AFTER_LAST
+\__NL80211_CMD_AFTER_LAST
     internal use
 
 NL80211_CMD_MAX
@@ -1305,7 +1305,7 @@ NL80211_CMD_DEAUTHENTICATE, and NL80211_CMD_DISASSOCIATE.
 attributes
 ----------
 
-%NL80211_ATTR_NAN_MASTER_PREF,
+\ ``NL80211_ATTR_NAN_MASTER_PREF``\ ,
 \ ``NL80211_ATTR_BANDS``\ .  If \ ``NL80211_ATTR_BANDS``\  is omitted, the
 current configuration is not changed.  If it is present but
 set to zero, the configuration is changed to don't-care
@@ -2621,7 +2621,8 @@ NL80211_ATTR_WIPHY_SELF_MANAGED_REG
 
 NL80211_ATTR_EXT_FEATURES
     extended feature flags contained in a byte
-    array. The feature flags are identified by their bit index (see \ :c:type:`enum nl80211_ext_feature_index <nl80211_ext_feature_index>`\ ). The bit index is ordered starting at the
+    array. The feature flags are identified by their bit index (see \ :c:type:`struct enum <enum>`\ 
+    nl80211_ext_feature_index). The bit index is ordered starting at the
     least-significant bit of the first byte in the array, ie. bit index 0
     is located at bit 0 of byte 0. bit index 25 would be located at bit 1
     of byte 3 (u8 array).
@@ -2853,7 +2854,7 @@ NL80211_ATTR_PMKR0_NAME
 NL80211_ATTR_PORT_AUTHORIZED
     (reserved)
 
-__NL80211_ATTR_AFTER_LAST
+\__NL80211_ATTR_AFTER_LAST
     internal use
 
 NUM_NL80211_ATTR
@@ -2902,7 +2903,7 @@ the station debugfs ht_caps file.
 underlying device supports these minimal RRM features
 -----------------------------------------------------
 
-%NL80211_FEATURE_DS_PARAM_SET_IE_IN_PROBES,
+\ ``NL80211_FEATURE_DS_PARAM_SET_IE_IN_PROBES``\ ,
 \ ``NL80211_FEATURE_QUIET``\ ,
 Or, if global RRM is supported, see:
 \ ``NL80211_EXT_FEATURE_RRM``\ 
@@ -3055,7 +3056,7 @@ Definition
 Constants
 ---------
 
-__NL80211_STA_FLAG_INVALID
+\__NL80211_STA_FLAG_INVALID
     attribute number 0 is reserved
 
 NL80211_STA_FLAG_AUTHORIZED
@@ -3086,7 +3087,7 @@ NL80211_STA_FLAG_ASSOCIATED
     that support \ ``NL80211_FEATURE_FULL_AP_CLIENT_STATE``\  to transition a
     previously added station into associated state
 
-__NL80211_STA_FLAG_AFTER_LAST
+\__NL80211_STA_FLAG_AFTER_LAST
     internal use
 
 NL80211_STA_FLAG_MAX
@@ -3215,7 +3216,7 @@ Definition
 Constants
 ---------
 
-__NL80211_RATE_INFO_INVALID
+\__NL80211_RATE_INFO_INVALID
     attribute number 0 is reserved
 
 NL80211_RATE_INFO_BITRATE
@@ -3259,7 +3260,7 @@ NL80211_RATE_INFO_5_MHZ_WIDTH
     a legacy rate and will be reported as the actual bitrate, i.e.
     a quarter of the base (20 MHz) rate
 
-__NL80211_RATE_INFO_AFTER_LAST
+\__NL80211_RATE_INFO_AFTER_LAST
     internal use
 
 NL80211_RATE_INFO_MAX
@@ -3312,7 +3313,7 @@ Definition
 Constants
 ---------
 
-__NL80211_STA_BSS_PARAM_INVALID
+\__NL80211_STA_BSS_PARAM_INVALID
     attribute number 0 is reserved
 
 NL80211_STA_BSS_PARAM_CTS_PROT
@@ -3332,7 +3333,7 @@ NL80211_STA_BSS_PARAM_DTIM_PERIOD
 NL80211_STA_BSS_PARAM_BEACON_INTERVAL
     Beacon interval (u16)
 
-__NL80211_STA_BSS_PARAM_AFTER_LAST
+\__NL80211_STA_BSS_PARAM_AFTER_LAST
     internal use
 
 NL80211_STA_BSS_PARAM_MAX
@@ -3406,7 +3407,7 @@ Definition
 Constants
 ---------
 
-__NL80211_STA_INFO_INVALID
+\__NL80211_STA_INFO_INVALID
     attribute number 0 is reserved
 
 NL80211_STA_INFO_INACTIVE_TIME
@@ -3529,7 +3530,7 @@ NL80211_STA_INFO_RX_DURATION
 NL80211_STA_INFO_PAD
     attribute used for padding for 64-bit alignment
 
-__NL80211_STA_INFO_AFTER_LAST
+\__NL80211_STA_INFO_AFTER_LAST
     internal
 
 NL80211_STA_INFO_MAX
@@ -3575,7 +3576,7 @@ Definition
 Constants
 ---------
 
-__NL80211_TID_STATS_INVALID
+\__NL80211_TID_STATS_INVALID
     attribute number 0 is reserved
 
 NL80211_TID_STATS_RX_MSDU
@@ -3680,7 +3681,7 @@ Definition
 Constants
 ---------
 
-__NL80211_MPATH_INFO_INVALID
+\__NL80211_MPATH_INFO_INVALID
     attribute number 0 is reserved
 
 NL80211_MPATH_INFO_FRAME_QLEN
@@ -3705,7 +3706,7 @@ NL80211_MPATH_INFO_DISCOVERY_TIMEOUT
 NL80211_MPATH_INFO_DISCOVERY_RETRIES
     mesh path discovery retries
 
-__NL80211_MPATH_INFO_AFTER_LAST
+\__NL80211_MPATH_INFO_AFTER_LAST
     internal use
 
 NL80211_MPATH_INFO_MAX
@@ -3755,7 +3756,7 @@ Definition
 Constants
 ---------
 
-__NL80211_BAND_ATTR_INVALID
+\__NL80211_BAND_ATTR_INVALID
     attribute number 0 is reserved
 
 NL80211_BAND_ATTR_FREQS
@@ -3786,7 +3787,7 @@ NL80211_BAND_ATTR_VHT_MCS_SET
 NL80211_BAND_ATTR_VHT_CAPA
     VHT capabilities, as in the HT information IE
 
-__NL80211_BAND_ATTR_AFTER_LAST
+\__NL80211_BAND_ATTR_AFTER_LAST
     internal use
 
 NL80211_BAND_ATTR_MAX
@@ -3836,7 +3837,7 @@ Definition
 Constants
 ---------
 
-__NL80211_FREQUENCY_ATTR_INVALID
+\__NL80211_FREQUENCY_ATTR_INVALID
     attribute number 0 is reserved
 
 NL80211_FREQUENCY_ATTR_FREQ
@@ -3851,7 +3852,7 @@ NL80211_FREQUENCY_ATTR_NO_IR
     are permitted on this channel, this includes sending probe
     requests, or modes of operation that require beaconing.
 
-__NL80211_FREQUENCY_ATTR_NO_IBSS
+\__NL80211_FREQUENCY_ATTR_NO_IBSS
     *undescribed*
 
 NL80211_FREQUENCY_ATTR_RADAR
@@ -3920,7 +3921,7 @@ NL80211_FREQUENCY_ATTR_NO_10MHZ
     10 MHz operation is not allowed
     on this channel in current regulatory domain.
 
-__NL80211_FREQUENCY_ATTR_AFTER_LAST
+\__NL80211_FREQUENCY_ATTR_AFTER_LAST
     internal use
 
 NL80211_FREQUENCY_ATTR_MAX
@@ -3966,7 +3967,7 @@ Definition
 Constants
 ---------
 
-__NL80211_BITRATE_ATTR_INVALID
+\__NL80211_BITRATE_ATTR_INVALID
     attribute number 0 is reserved
 
 NL80211_BITRATE_ATTR_RATE
@@ -3976,7 +3977,7 @@ NL80211_BITRATE_ATTR_2GHZ_SHORTPREAMBLE
     Short preamble supported
     in 2.4 GHz band.
 
-__NL80211_BITRATE_ATTR_AFTER_LAST
+\__NL80211_BITRATE_ATTR_AFTER_LAST
     internal use
 
 NL80211_BITRATE_ATTR_MAX
@@ -4115,7 +4116,7 @@ Definition
 Constants
 ---------
 
-__NL80211_REG_RULE_ATTR_INVALID
+\__NL80211_REG_RULE_ATTR_INVALID
     attribute number 0 is reserved
 
 NL80211_ATTR_REG_RULE_FLAGS
@@ -4150,7 +4151,7 @@ NL80211_ATTR_DFS_CAC_TIME
     DFS CAC time in milliseconds.
     If not present or 0 default CAC time will be used.
 
-__NL80211_REG_RULE_ATTR_AFTER_LAST
+\__NL80211_REG_RULE_ATTR_AFTER_LAST
     internal use
 
 NL80211_REG_RULE_ATTR_MAX
@@ -4189,7 +4190,7 @@ Definition
 Constants
 ---------
 
-__NL80211_SCHED_SCAN_MATCH_ATTR_INVALID
+\__NL80211_SCHED_SCAN_MATCH_ATTR_INVALID
     attribute number 0 is reserved
 
 NL80211_SCHED_SCAN_MATCH_ATTR_SSID
@@ -4222,7 +4223,7 @@ NL80211_SCHED_SCAN_MATCH_ATTR_BSSID
     BSSID to be used for matching
     (this cannot be used together with SSID).
 
-__NL80211_SCHED_SCAN_MATCH_ATTR_AFTER_LAST
+\__NL80211_SCHED_SCAN_MATCH_ATTR_AFTER_LAST
     internal use
 
 NL80211_SCHED_SCAN_MATCH_ATTR_MAX
@@ -4294,7 +4295,7 @@ NL80211_RRF_NO_IR
     this includes probe requests or modes of operation that require
     beaconing.
 
-__NL80211_RRF_NO_IBSS
+\__NL80211_RRF_NO_IBSS
     *undescribed*
 
 NL80211_RRF_AUTO_BW
@@ -4440,7 +4441,7 @@ Definition
 Constants
 ---------
 
-__NL80211_SURVEY_INFO_INVALID
+\__NL80211_SURVEY_INFO_INVALID
     attribute number 0 is reserved
 
 NL80211_SURVEY_INFO_FREQUENCY
@@ -4479,7 +4480,7 @@ NL80211_SURVEY_INFO_TIME_SCAN
 NL80211_SURVEY_INFO_PAD
     attribute used for padding for 64-bit alignment
 
-__NL80211_SURVEY_INFO_AFTER_LAST
+\__NL80211_SURVEY_INFO_AFTER_LAST
     internal use
 
 NL80211_SURVEY_INFO_MAX
@@ -4527,7 +4528,7 @@ Definition
 Constants
 ---------
 
-__NL80211_MNTR_FLAG_INVALID
+\__NL80211_MNTR_FLAG_INVALID
     reserved
 
 NL80211_MNTR_FLAG_FCSFAIL
@@ -4550,7 +4551,7 @@ NL80211_MNTR_FLAG_ACTIVE
     use the configured MAC address
     and ACK incoming unicast packets.
 
-__NL80211_MNTR_FLAG_AFTER_LAST
+\__NL80211_MNTR_FLAG_AFTER_LAST
     internal use
 
 NL80211_MNTR_FLAG_MAX
@@ -4611,7 +4612,7 @@ NL80211_MESH_POWER_DEEP_SLEEP
     alternate between Active and Doze states, but may not wake up
     for neighbor's beacons.
 
-__NL80211_MESH_POWER_AFTER_LAST
+\__NL80211_MESH_POWER_AFTER_LAST
     *undescribed*
 
 NL80211_MESH_POWER_MAX
@@ -4622,7 +4623,7 @@ NL80211_MESH_POWER_MAX
 Description
 -----------
 
-@__NL80211_MESH_POWER_AFTER_LAST - internal use
+\ ``__NL80211_MESH_POWER_AFTER_LAST``\  - internal use
 \ ``NL80211_MESH_POWER_MAX``\  - highest possible power save level
 
 .. _`nl80211_meshconf_params`:
@@ -4680,7 +4681,7 @@ Definition
 Constants
 ---------
 
-__NL80211_MESHCONF_INVALID
+\__NL80211_MESHCONF_INVALID
     internal use
 
 NL80211_MESHCONF_RETRY_TIMEOUT
@@ -4807,7 +4808,7 @@ NL80211_MESHCONF_PLINK_TIMEOUT
     remove it from the STA's list of peers. You may set this to 0 to disable
     the removal of the STA. Default is 30 minutes.
 
-__NL80211_MESHCONF_ATTR_AFTER_LAST
+\__NL80211_MESHCONF_ATTR_AFTER_LAST
     internal use
 
 NL80211_MESHCONF_ATTR_MAX
@@ -4856,7 +4857,7 @@ Definition
 Constants
 ---------
 
-__NL80211_MESH_SETUP_INVALID
+\__NL80211_MESH_SETUP_INVALID
     Internal use
 
 NL80211_MESH_SETUP_ENABLE_VENDOR_PATH_SEL
@@ -4904,7 +4905,7 @@ NL80211_MESH_SETUP_AUTH_PROTOCOL
     method (u8, as defined in IEEE 8.4.2.100.6, e.g. 0x1 for SAE).
     Default is no authentication method required.
 
-__NL80211_MESH_SETUP_ATTR_AFTER_LAST
+\__NL80211_MESH_SETUP_ATTR_AFTER_LAST
     Internal use
 
 NL80211_MESH_SETUP_ATTR_MAX
@@ -4950,7 +4951,7 @@ Definition
 Constants
 ---------
 
-__NL80211_TXQ_ATTR_INVALID
+\__NL80211_TXQ_ATTR_INVALID
     Attribute number 0 is reserved
 
 NL80211_TXQ_ATTR_AC
@@ -4971,7 +4972,7 @@ NL80211_TXQ_ATTR_CWMAX
 NL80211_TXQ_ATTR_AIFS
     Arbitration interframe space [0..255]
 
-__NL80211_TXQ_ATTR_AFTER_LAST
+\__NL80211_TXQ_ATTR_AFTER_LAST
     Internal
 
 NL80211_TXQ_ATTR_MAX
@@ -5176,7 +5177,7 @@ Definition
 Constants
 ---------
 
-__NL80211_BSS_INVALID
+\__NL80211_BSS_INVALID
     invalid
 
 NL80211_BSS_BSSID
@@ -5262,7 +5263,7 @@ NL80211_BSS_CHAIN_SIGNAL
     Contains a nested array of signal strength attributes (u8, dBm),
     using the nesting index as the antenna number.
 
-__NL80211_BSS_AFTER_LAST
+\__NL80211_BSS_AFTER_LAST
     internal
 
 NL80211_BSS_MAX
@@ -5374,7 +5375,7 @@ NL80211_AUTHTYPE_FILS_SK_PFS
 NL80211_AUTHTYPE_FILS_PK
     Fast Initial Link Setup public key
 
-__NL80211_AUTHTYPE_NUM
+\__NL80211_AUTHTYPE_NUM
     internal
 
 NL80211_AUTHTYPE_MAX
@@ -5489,7 +5490,7 @@ Definition
 Constants
 ---------
 
-__NL80211_KEY_DEFAULT_TYPE_INVALID
+\__NL80211_KEY_DEFAULT_TYPE_INVALID
     invalid
 
 NL80211_KEY_DEFAULT_TYPE_UNICAST
@@ -5538,7 +5539,7 @@ Definition
 Constants
 ---------
 
-__NL80211_KEY_INVALID
+\__NL80211_KEY_INVALID
     invalid
 
 NL80211_KEY_DATA
@@ -5573,7 +5574,7 @@ NL80211_KEY_DEFAULT_TYPES
     attributes, specifying what a key should be set as default as.
     See \ :c:type:`enum nl80211_key_default_types <nl80211_key_default_types>`\ .
 
-__NL80211_KEY_AFTER_LAST
+\__NL80211_KEY_AFTER_LAST
     internal
 
 NL80211_KEY_MAX
@@ -5610,7 +5611,7 @@ Definition
 Constants
 ---------
 
-__NL80211_TXRATE_INVALID
+\__NL80211_TXRATE_INVALID
     invalid
 
 NL80211_TXRATE_LEGACY
@@ -5630,7 +5631,7 @@ NL80211_TXRATE_VHT
 NL80211_TXRATE_GI
     configure GI, see \ :c:type:`enum nl80211_txrate_gi <nl80211_txrate_gi>`\ 
 
-__NL80211_TXRATE_AFTER_LAST
+\__NL80211_TXRATE_AFTER_LAST
     internal
 
 NL80211_TXRATE_MAX
@@ -5773,7 +5774,7 @@ Definition
 Constants
 ---------
 
-__NL80211_ATTR_CQM_INVALID
+\__NL80211_ATTR_CQM_INVALID
     invalid
 
 NL80211_ATTR_CQM_RSSI_THOLD
@@ -5821,7 +5822,7 @@ NL80211_ATTR_CQM_RSSI_LEVEL
     the RSSI value in dBm that triggered the
     RSSI threshold event.
 
-__NL80211_ATTR_CQM_AFTER_LAST
+\__NL80211_ATTR_CQM_AFTER_LAST
     internal
 
 NL80211_ATTR_CQM_MAX
@@ -5931,7 +5932,7 @@ Definition
 Constants
 ---------
 
-__NL80211_PKTPAT_INVALID
+\__NL80211_PKTPAT_INVALID
     invalid number for nested attribute
 
 NL80211_PKTPAT_MASK
@@ -6058,7 +6059,7 @@ Definition
 Constants
 ---------
 
-__NL80211_WOWLAN_TRIG_INVALID
+\__NL80211_WOWLAN_TRIG_INVALID
     invalid number for nested attributes
 
 NL80211_WOWLAN_TRIG_ANY
@@ -6367,7 +6368,7 @@ Definition
 Constants
 ---------
 
-__NL80211_WOWLAN_TCP_INVALID
+\__NL80211_WOWLAN_TCP_INVALID
     invalid number for nested attributes
 
 NL80211_WOWLAN_TCP_SRC_IPV4
@@ -6498,7 +6499,7 @@ Definition
 Constants
 ---------
 
-__NL80211_COALESCE_RULE_INVALID
+\__NL80211_COALESCE_RULE_INVALID
     invalid number for nested attribute
 
 NL80211_ATTR_COALESCE_RULE_DELAY
@@ -6836,7 +6837,7 @@ Definition
 Constants
 ---------
 
-__NL80211_REKEY_DATA_INVALID
+\__NL80211_REKEY_DATA_INVALID
     invalid number for nested attributes
 
 NL80211_REKEY_DATA_KEK
@@ -6922,7 +6923,7 @@ Definition
 Constants
 ---------
 
-__NL80211_STA_WME_INVALID
+\__NL80211_STA_WME_INVALID
     invalid number for nested attribute
 
 NL80211_STA_WME_UAPSD_QUEUES
@@ -6933,7 +6934,7 @@ NL80211_STA_WME_MAX_SP
     max service period. the format is the same
     as the MAX_SP field in the QoS info field (but already shifted down).
 
-__NL80211_STA_WME_AFTER_LAST
+\__NL80211_STA_WME_AFTER_LAST
     internal
 
 NL80211_STA_WME_MAX
@@ -6969,7 +6970,7 @@ Definition
 Constants
 ---------
 
-__NL80211_PMKSA_CANDIDATE_INVALID
+\__NL80211_PMKSA_CANDIDATE_INVALID
     invalid number for nested attributes
 
 NL80211_PMKSA_CANDIDATE_INDEX
@@ -7686,7 +7687,7 @@ NL80211_SMPS_DYNAMIC
     dynamic smps (start with a single antenna and
     turn on other antennas after CTS/RTS).
 
-__NL80211_SMPS_AFTER_LAST
+\__NL80211_SMPS_AFTER_LAST
     *undescribed*
 
 NL80211_SMPS_MAX
@@ -8022,7 +8023,7 @@ Definition
 Constants
 ---------
 
-__NL80211_SCHED_SCAN_PLAN_INVALID
+\__NL80211_SCHED_SCAN_PLAN_INVALID
     attribute number 0 is reserved
 
 NL80211_SCHED_SCAN_PLAN_INTERVAL
@@ -8035,7 +8036,7 @@ NL80211_SCHED_SCAN_PLAN_ITERATIONS
     because it will run infinitely. A value of zero is invalid as it will
     make the scan plan meaningless.
 
-__NL80211_SCHED_SCAN_PLAN_AFTER_LAST
+\__NL80211_SCHED_SCAN_PLAN_AFTER_LAST
     internal use
 
 NL80211_SCHED_SCAN_PLAN_MAX
@@ -8105,7 +8106,7 @@ Definition
 Constants
 ---------
 
-__NL80211_BSS_SELECT_ATTR_INVALID
+\__NL80211_BSS_SELECT_ATTR_INVALID
     reserved.
 
 NL80211_BSS_SELECT_ATTR_RSSI
@@ -8125,7 +8126,7 @@ NL80211_BSS_SELECT_ATTR_RSSI_ADJUST
     RSSI-based BSS selection. The attribute value is a packed structure
     value as specified by \ :c:type:`struct nl80211_bss_select_rssi_adjust <nl80211_bss_select_rssi_adjust>`\ .
 
-__NL80211_BSS_SELECT_ATTR_AFTER_LAST
+\__NL80211_BSS_SELECT_ATTR_AFTER_LAST
     internal use.
 
 NL80211_BSS_SELECT_ATTR_MAX
@@ -8178,7 +8179,7 @@ NL80211_NAN_FUNC_SUBSCRIBE
 NL80211_NAN_FUNC_FOLLOW_UP
     function is follow-up
 
-__NL80211_NAN_FUNC_TYPE_AFTER_LAST
+\__NL80211_NAN_FUNC_TYPE_AFTER_LAST
     *undescribed*
 
 NL80211_NAN_FUNC_MAX_TYPE
@@ -8316,11 +8317,11 @@ Definition
 Constants
 ---------
 
-__NL80211_NAN_FUNC_INVALID
+\__NL80211_NAN_FUNC_INVALID
     invalid
 
 NL80211_NAN_FUNC_TYPE
-    &enum nl80211_nan_function_type (u8).
+    \ :c:type:`enum nl80211_nan_function_type <nl80211_nan_function_type>`\  (u8).
 
 NL80211_NAN_FUNC_SERVICE_ID
     6 bytes of the service ID hash as
@@ -8423,7 +8424,7 @@ Definition
 Constants
 ---------
 
-__NL80211_NAN_SRF_INVALID
+\__NL80211_NAN_SRF_INVALID
     invalid
 
 NL80211_NAN_SRF_INCLUDE
@@ -8478,7 +8479,7 @@ Definition
 Constants
 ---------
 
-__NL80211_NAN_MATCH_INVALID
+\__NL80211_NAN_MATCH_INVALID
     invalid
 
 NL80211_NAN_MATCH_FUNC_LOCAL

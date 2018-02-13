@@ -1855,8 +1855,8 @@ This routine frees the previously allocated device data structure passed.
 
 .. _`__lpfc_get_device_data`:
 
-__lpfc_get_device_data
-======================
+\__lpfc_get_device_data
+=======================
 
 .. c:function:: struct lpfc_device_data*__lpfc_get_device_data(struct lpfc_hba *phba, struct list_head *list, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun)
 

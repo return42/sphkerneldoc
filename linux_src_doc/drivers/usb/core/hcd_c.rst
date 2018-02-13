@@ -342,7 +342,7 @@ usb_hcd_giveback_urb
 Context
 -------
 
-in_interrupt()
+\ :c:func:`in_interrupt`\ 
 
 .. _`usb_hcd_giveback_urb.description`:
 
@@ -545,7 +545,7 @@ usb_bus_start_enum
 Context
 -------
 
-in_interrupt()
+\ :c:func:`in_interrupt`\ 
 
 .. _`usb_bus_start_enum.description`:
 
@@ -592,7 +592,7 @@ Checks whether the controller is now dead.
 Return
 ------
 
-%IRQ_HANDLED if the IRQ was handled. \ ``IRQ_NONE``\  otherwise.
+\ ``IRQ_HANDLED``\  if the IRQ was handled. \ ``IRQ_NONE``\  otherwise.
 
 .. _`usb_hc_died`:
 

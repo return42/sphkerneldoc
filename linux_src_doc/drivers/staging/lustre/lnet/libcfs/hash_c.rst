@@ -8,7 +8,7 @@ cfs_hash_rehash_worker
 
 .. c:function:: void cfs_hash_rehash_worker(struct work_struct *work)
 
-    @name     - Descriptive hash name \ ``cur_bits``\  - Initial hash table size, in bits \ ``max_bits``\  - Maximum allowed hash table resize, in bits \ ``ops``\       - Registered hash table operations \ ``flags``\     - CFS_HASH_REHASH enable synamic hash resizing - CFS_HASH_SORT enable chained hash sort
+    \ ``name``\      - Descriptive hash name \ ``cur_bits``\  - Initial hash table size, in bits \ ``max_bits``\  - Maximum allowed hash table resize, in bits \ ``ops``\       - Registered hash table operations \ ``flags``\     - CFS_HASH_REHASH enable synamic hash resizing - CFS_HASH_SORT enable chained hash sort
 
     :param struct work_struct \*work:
         *undescribed*
@@ -194,7 +194,7 @@ cfs_hash_for_each_empty
 
 .. c:function:: int cfs_hash_for_each_empty(struct cfs_hash *hs, cfs_hash_for_each_cb_t func, void *data)
 
-    @func until all the hash buckets are empty.  The passed callback \ ``func``\  or the previously registered callback hs->hs_put must remove the item from the hash.  You may either use the \ :c:func:`cfs_hash_del`\  or \ :c:func:`hlist_del`\  functions.  No rwlocks will be held during the callback \ ``func``\  it is safe to sleep if needed.  This function will not terminate until the hash is empty.  Note it is still possible to concurrently add new items in to the hash.  It is the callers responsibility to ensure the required locking is in place to prevent concurrent insertions.
+    \ ``func``\  until all the hash buckets are empty.  The passed callback \ ``func``\  or the previously registered callback hs->hs_put must remove the item from the hash.  You may either use the \ :c:func:`cfs_hash_del`\  or \ :c:func:`hlist_del`\  functions.  No rwlocks will be held during the callback \ ``func``\  it is safe to sleep if needed.  This function will not terminate until the hash is empty.  Note it is still possible to concurrently add new items in to the hash.  It is the callers responsibility to ensure the required locking is in place to prevent concurrent insertions.
 
     :param struct cfs_hash \*hs:
         *undescribed*
@@ -224,7 +224,7 @@ cfs_hash_rehash_key
 
 .. c:function:: void cfs_hash_rehash_key(struct cfs_hash *hs, const void *old_key, void *new_key, struct hlist_node *hnode)
 
-    @old_key must be provided to locate the objects previous location in the hash, and the \ ``new_key``\  will be used to reinsert the object. Use this function instead of a \ :c:func:`cfs_hash_add`\  + \ :c:func:`cfs_hash_del`\  combo when it is critical that there is no window in time where the object is missing from the hash.  When an object is being rehashed the registered \ :c:func:`cfs_hash_get`\  and \ :c:func:`cfs_hash_put`\  functions will not be called.
+    \ ``old_key``\  must be provided to locate the objects previous location in the hash, and the \ ``new_key``\  will be used to reinsert the object. Use this function instead of a \ :c:func:`cfs_hash_add`\  + \ :c:func:`cfs_hash_del`\  combo when it is critical that there is no window in time where the object is missing from the hash.  When an object is being rehashed the registered \ :c:func:`cfs_hash_get`\  and \ :c:func:`cfs_hash_put`\  functions will not be called.
 
     :param struct cfs_hash \*hs:
         *undescribed*

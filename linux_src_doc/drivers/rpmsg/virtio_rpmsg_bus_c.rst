@@ -140,7 +140,7 @@ flags
     message flags
 
 data
-    @len bytes of message payload data
+    \ ``len``\  bytes of message payload data
 
 .. _`rpmsg_hdr.description`:
 
@@ -256,8 +256,8 @@ location (in vmalloc or in kernel).
 
 .. _`__ept_release`:
 
-__ept_release
-=============
+\__ept_release
+==============
 
 .. c:function:: void __ept_release(struct kref *kref)
 
@@ -278,8 +278,8 @@ Never invoke this function directly!
 
 .. _`__rpmsg_destroy_ept`:
 
-__rpmsg_destroy_ept
-===================
+\__rpmsg_destroy_ept
+====================
 
 .. c:function:: void __rpmsg_destroy_ept(struct virtproc_info *vrp, struct rpmsg_endpoint *ept)
 

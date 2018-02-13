@@ -49,8 +49,8 @@ This is useful for implementing queues.
 
 .. _`__list_del_entry`:
 
-__list_del_entry
-================
+\__list_del_entry
+=================
 
 .. c:function:: void __list_del_entry(struct list_head *entry)
 
@@ -64,7 +64,7 @@ __list_del_entry
 Note
 ----
 
-list_empty() on entry does not return true after this, the entry is
+\ :c:func:`list_empty`\  on entry does not return true after this, the entry is
 in an undefined state.
 
 .. _`list_replace`:

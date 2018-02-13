@@ -343,8 +343,8 @@ Called only during error in pci driver init path.
 
 .. _`__ishtp_cl_driver_register`:
 
-__ishtp_cl_driver_register
-==========================
+\__ishtp_cl_driver_register
+===========================
 
 .. c:function:: int __ishtp_cl_driver_register(struct ishtp_cl_driver *driver, struct module *owner)
 

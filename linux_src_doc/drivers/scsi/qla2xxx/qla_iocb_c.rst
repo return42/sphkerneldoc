@@ -153,8 +153,8 @@ qla2x00_start_iocbs
 
 .. _`__qla2x00_marker`:
 
-__qla2x00_marker
-================
+\__qla2x00_marker
+=================
 
 .. c:function:: int __qla2x00_marker(struct scsi_qla_host *vha, struct req_que *req, struct rsp_que *rsp, uint16_t loop_id, uint64_t lun, uint8_t type)
 

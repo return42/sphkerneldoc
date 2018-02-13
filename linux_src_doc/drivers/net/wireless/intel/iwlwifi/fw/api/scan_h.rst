@@ -442,7 +442,7 @@ rx_chain_select
     PHY_RX_CHAIN\_\* flags
 
 scan_flags
-    &enum iwl_mvm_lmac_scan_flags
+    \ :c:type:`enum iwl_mvm_lmac_scan_flags <iwl_mvm_lmac_scan_flags>`\ 
 
 max_out_time
     max time (in TU) to be out of associated channel
@@ -614,7 +614,7 @@ last_schedule_iteration
     last scan iteration executed before scan abort
 
 status
-    &enum iwl_scan_offload_complete_status
+    \ :c:type:`enum iwl_scan_offload_complete_status <iwl_scan_offload_complete_status>`\ 
 
 ebs_status
     EBS success status \ :c:type:`enum iwl_scan_ebs_status <iwl_scan_ebs_status>`\ 
@@ -960,7 +960,7 @@ Members
 -------
 
 flags
-    &enum iwl_umac_scan_flags
+    \ :c:type:`enum iwl_umac_scan_flags <iwl_umac_scan_flags>`\ 
 
 uid
     scan id, \ :c:type:`enum iwl_umac_scan_uid_offsets <iwl_umac_scan_uid_offsets>`\ 
@@ -969,7 +969,7 @@ ooc_priority
     out of channel priority - \ :c:type:`enum iwl_scan_priority <iwl_scan_priority>`\ 
 
 general_flags
-    &enum iwl_umac_scan_general_flags
+    \ :c:type:`enum iwl_umac_scan_general_flags <iwl_umac_scan_general_flags>`\ 
 
 reserved
     for future use and alignment
@@ -1060,10 +1060,10 @@ last_iter
     last scan iteration number
 
 status
-    &enum iwl_scan_offload_complete_status
+    \ :c:type:`enum iwl_scan_offload_complete_status <iwl_scan_offload_complete_status>`\ 
 
 ebs_status
-    &enum iwl_scan_ebs_status
+    \ :c:type:`enum iwl_scan_ebs_status <iwl_scan_ebs_status>`\ 
 
 time_from_last_iter
     time elapsed from last iteration

@@ -37,7 +37,7 @@ usb_unregister_notify
 Description
 -----------
 
-usb_register_notify() must have been previously called for this function
+\ :c:func:`usb_register_notify`\  must have been previously called for this function
 to work properly.
 
 .. This file was automatic generated / don't edit.

@@ -130,8 +130,8 @@ Return
 
 .. _`__nfp_eth_set_aneg`:
 
-__nfp_eth_set_aneg
-==================
+\__nfp_eth_set_aneg
+===================
 
 .. c:function:: int __nfp_eth_set_aneg(struct nfp_nsp *nsp, enum nfp_eth_aneg mode)
 
@@ -160,8 +160,8 @@ Return
 
 .. _`__nfp_eth_set_fec`:
 
-__nfp_eth_set_fec
-=================
+\__nfp_eth_set_fec
+==================
 
 .. c:function:: int __nfp_eth_set_fec(struct nfp_nsp *nsp, enum nfp_eth_fec mode)
 
@@ -217,8 +217,8 @@ Return
 
 .. _`__nfp_eth_set_speed`:
 
-__nfp_eth_set_speed
-===================
+\__nfp_eth_set_speed
+====================
 
 .. c:function:: int __nfp_eth_set_speed(struct nfp_nsp *nsp, unsigned int speed)
 
@@ -249,8 +249,8 @@ Return
 
 .. _`__nfp_eth_set_split`:
 
-__nfp_eth_set_split
-===================
+\__nfp_eth_set_split
+====================
 
 .. c:function:: int __nfp_eth_set_split(struct nfp_nsp *nsp, unsigned int lanes)
 

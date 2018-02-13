@@ -3,8 +3,8 @@
 
 .. _`___ia64_mmiowb`:
 
-___ia64_mmiowb
-==============
+\___ia64_mmiowb
+===============
 
 .. c:function:: void ___ia64_mmiowb( void)
 

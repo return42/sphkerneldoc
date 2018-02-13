@@ -110,7 +110,7 @@ cr10
 cr15
     *undescribed*
 
-_pad
+\_pad
     *undescribed*
 
 .. _`user_regs_struct.description`:

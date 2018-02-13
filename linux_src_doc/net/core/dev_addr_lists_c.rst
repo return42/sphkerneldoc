@@ -3,8 +3,8 @@
 
 .. _`__hw_addr_sync_dev`:
 
-__hw_addr_sync_dev
-==================
+\__hw_addr_sync_dev
+===================
 
 .. c:function:: int __hw_addr_sync_dev(struct netdev_hw_addr_list *list, struct net_device *dev, int (*sync)(struct net_device *, const unsigned char *), int (*unsync)(struct net_device *, const unsigned char *))
 
@@ -35,8 +35,8 @@ any notification to the device.
 
 .. _`__hw_addr_unsync_dev`:
 
-__hw_addr_unsync_dev
-====================
+\__hw_addr_unsync_dev
+=====================
 
 .. c:function:: void __hw_addr_unsync_dev(struct netdev_hw_addr_list *list, struct net_device *dev, int (*unsync)(struct net_device *, const unsigned char *))
 

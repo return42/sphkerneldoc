@@ -116,8 +116,8 @@ Same rules as for \ :c:func:`phy_write`\ ;
 
 .. _`__phy_modify`:
 
-__phy_modify
-============
+\__phy_modify
+=============
 
 .. c:function:: int __phy_modify(struct phy_device *phydev, u32 regnum, u16 mask, u16 set)
 
@@ -252,7 +252,7 @@ operations.
 Return
 ------
 
-@oldpage if it was a negative value, otherwise
+\ ``oldpage``\  if it was a negative value, otherwise
 \ ``ret``\  if it was a negative errno value, otherwise
 \ :c:func:`phy_write_page`\ 's negative value if it were in error, otherwise
 \ ``ret``\ .

@@ -8,7 +8,7 @@ struct lm3692x_led
 
 .. c:type:: struct lm3692x_led
 
-    @lock - Lock for reading/writing the device \ ``client``\  - Pointer to the I2C client \ ``led_dev``\  - LED class device pointer \ ``regmap``\  - Devices register map \ ``enable_gpio``\  - VDDIO/EN gpio to enable communication interface \ ``regulator``\  - LED supply regulator pointer \ ``label``\  - LED label
+    \ ``lock``\  - Lock for reading/writing the device \ ``client``\  - Pointer to the I2C client \ ``led_dev``\  - LED class device pointer \ ``regmap``\  - Devices register map \ ``enable_gpio``\  - VDDIO/EN gpio to enable communication interface \ ``regulator``\  - LED supply regulator pointer \ ``label``\  - LED label
 
 .. _`lm3692x_led.definition`:
 

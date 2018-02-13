@@ -82,7 +82,7 @@ mmc_is_req_done
 Description
 -----------
 
-mmc_is_req_done() is used with requests that have
+\ :c:func:`mmc_is_req_done`\  is used with requests that have
 mrq->cap_cmd_during_tfr = true. \ :c:func:`mmc_is_req_done`\  must be called after
 starting a request and before waiting for it to complete. That is,
 either in between calls to \ :c:func:`mmc_start_req`\ , or after \ :c:func:`mmc_wait_for_req`\ 
@@ -197,8 +197,8 @@ single scatter gather entry.
 
 .. _`__mmc_claim_host`:
 
-__mmc_claim_host
-================
+\__mmc_claim_host
+=================
 
 .. c:function:: int __mmc_claim_host(struct mmc_host *host, struct mmc_ctx *ctx, atomic_t *abort)
 

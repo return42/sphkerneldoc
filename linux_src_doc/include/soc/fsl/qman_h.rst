@@ -245,7 +245,7 @@ by the driver;
 affects one frame queue
 -----------------------
 
-@fq).
+\ ``fq``\ ).
 2. the QM_INITFQ_WE_CONTEXTB option of the 'we_mask' field and the associated
 'fqd' structure's 'context_b' field are sometimes overwritten;
 - if \ ``fq``\  was not created with QMAN_FQ_FLAG_TO_DCPORTAL, then context_b is

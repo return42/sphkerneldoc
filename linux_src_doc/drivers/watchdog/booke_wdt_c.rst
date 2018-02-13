@@ -3,8 +3,8 @@
 
 .. _`__booke_wdt_disable`:
 
-__booke_wdt_disable
-===================
+\__booke_wdt_disable
+====================
 
 .. c:function:: void __booke_wdt_disable(void *data)
 

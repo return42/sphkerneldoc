@@ -3,8 +3,8 @@
 
 .. _`__iucv_call_b2f0`:
 
-__iucv_call_b2f0
-================
+\__iucv_call_b2f0
+=================
 
 .. c:function:: int __iucv_call_b2f0(int command, union iucv_param *parm)
 
@@ -25,8 +25,8 @@ Returns the result of the CP IUCV call.
 
 .. _`__iucv_query_maxconn`:
 
-__iucv_query_maxconn
-====================
+\__iucv_query_maxconn
+=====================
 
 .. c:function:: int __iucv_query_maxconn(void *param, unsigned long *max_pathid)
 
@@ -226,8 +226,8 @@ Sever an iucv path to free up the pathid. Used internally.
 
 .. _`__iucv_cleanup_queue`:
 
-__iucv_cleanup_queue
-====================
+\__iucv_cleanup_queue
+=====================
 
 .. c:function:: void __iucv_cleanup_queue(void *dummy)
 
@@ -497,8 +497,8 @@ to receive RMDATA data stored in struct iucv_message.
 
 .. _`__iucv_message_receive`:
 
-__iucv_message_receive
-======================
+\__iucv_message_receive
+=======================
 
 .. c:function:: int __iucv_message_receive(struct iucv_path *path, struct iucv_message *msg, u8 flags, void *buffer, size_t size, size_t *residual)
 
@@ -641,8 +641,8 @@ Returns the result from the CP IUCV call.
 
 .. _`__iucv_message_send`:
 
-__iucv_message_send
-===================
+\__iucv_message_send
+====================
 
 .. c:function:: int __iucv_message_send(struct iucv_path *path, struct iucv_message *msg, u8 flags, u32 srccls, void *buffer, size_t size)
 

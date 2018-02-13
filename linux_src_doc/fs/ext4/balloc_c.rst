@@ -86,7 +86,7 @@ ext4_should_retry_alloc
 Description
 -----------
 
-ext4_should_retry_alloc() is called when ENOSPC is returned, and if
+\ :c:func:`ext4_should_retry_alloc`\  is called when ENOSPC is returned, and if
 it is profitable to retry the operation, this function will wait
 for the current or committing transaction to complete, and then
 return TRUE.  We will only retry once.

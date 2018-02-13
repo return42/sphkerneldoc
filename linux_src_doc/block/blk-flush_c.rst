@@ -27,7 +27,7 @@ blk_flush_complete_seq
 Description
 -----------
 
-@rq just completed \ ``seq``\  part of its flush sequence, record the
+\ ``rq``\  just completed \ ``seq``\  part of its flush sequence, record the
 completion and trigger the next step.
 
 .. _`blk_flush_complete_seq.context`:
@@ -42,7 +42,7 @@ spin_lock_irq(q->queue_lock or fq->mq_flush_lock)
 Return
 ------
 
-%true if requests were added to the dispatch queue, \ ``false``\  otherwise.
+\ ``true``\  if requests were added to the dispatch queue, \ ``false``\  otherwise.
 
 .. _`blk_kick_flush`:
 
@@ -79,7 +79,7 @@ spin_lock_irq(q->queue_lock or fq->mq_flush_lock)
 Return
 ------
 
-%true if flush was issued, \ ``false``\  otherwise.
+\ ``true``\  if flush was issued, \ ``false``\  otherwise.
 
 .. _`blk_insert_flush`:
 

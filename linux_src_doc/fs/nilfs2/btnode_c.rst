@@ -18,7 +18,7 @@ nilfs_btnode_delete
 Description
 -----------
 
-nilfs_btnode_delete() invalidates the specified buffer and delete the page
+\ :c:func:`nilfs_btnode_delete`\  invalidates the specified buffer and delete the page
 including the buffer if the page gets unbusy.
 
 .. _`nilfs_btnode_prepare_change_key`:

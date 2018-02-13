@@ -8,7 +8,7 @@ struct rdma_hw_stats
 
 .. c:type:: struct rdma_hw_stats
 
-    @timestamp - Used by the core code to track when the last update was \ ``lifespan``\  - Used by the core code to determine how old the counters should be before being updated again.  Stored in jiffies, defaults to 10 milliseconds, drivers can override the default be specifying their own value during their allocation routine. \ ``name``\  - Array of pointers to static names used for the counters in directory. \ ``num_counters``\  - How many hardware counters there are.  If name is shorter than this number, a kernel oops will result.  Driver authors are encouraged to leave BUILD_BUG_ON(ARRAY_SIZE(@name) < num_counters) in their code to prevent this. \ ``value``\  - Array of u64 counters that are accessed by the sysfs code and filled in by the drivers get_stats routine
+    \ ``timestamp``\  - Used by the core code to track when the last update was \ ``lifespan``\  - Used by the core code to determine how old the counters should be before being updated again.  Stored in jiffies, defaults to 10 milliseconds, drivers can override the default be specifying their own value during their allocation routine. \ ``name``\  - Array of pointers to static names used for the counters in directory. \ ``num_counters``\  - How many hardware counters there are.  If name is shorter than this number, a kernel oops will result.  Driver authors are encouraged to leave BUILD_BUG_ON(ARRAY_SIZE(@name) < num_counters) in their code to prevent this. \ ``value``\  - Array of u64 counters that are accessed by the sysfs code and filled in by the drivers get_stats routine
 
 .. _`rdma_hw_stats.definition`:
 
@@ -2021,8 +2021,8 @@ ib_detach_mcast
 
 .. _`__ib_alloc_xrcd`:
 
-__ib_alloc_xrcd
-===============
+\__ib_alloc_xrcd
+================
 
 .. c:function:: struct ib_xrcd *__ib_alloc_xrcd(struct ib_device *device, const char *caller)
 

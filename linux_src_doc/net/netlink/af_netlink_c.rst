@@ -3,8 +3,8 @@
 
 .. _`__netlink_ns_capable`:
 
-__netlink_ns_capable
-====================
+\__netlink_ns_capable
+=====================
 
 .. c:function:: bool __netlink_ns_capable(const struct netlink_skb_parms *nsp, struct user_namespace *user_ns, int cap)
 

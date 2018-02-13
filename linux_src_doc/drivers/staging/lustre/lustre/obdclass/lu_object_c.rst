@@ -715,7 +715,7 @@ lu_kmem_fini
 
 .. c:function:: void lu_kmem_fini(struct lu_kmem_descr *caches)
 
-    lu_kmem_init().
+    \ :c:func:`lu_kmem_init`\ .
 
     :param struct lu_kmem_descr \*caches:
         *undescribed*

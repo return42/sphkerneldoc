@@ -139,7 +139,7 @@ mark_page_lazyfree
 Description
 -----------
 
-mark_page_lazyfree() moves \ ``page``\  to the inactive file list.
+\ :c:func:`mark_page_lazyfree`\  moves \ ``page``\  to the inactive file list.
 This is done to accelerate the reclaim of \ ``page``\ .
 
 .. _`release_pages`:
@@ -194,7 +194,7 @@ pagevec_lookup_entries
 Description
 -----------
 
-pagevec_lookup_entries() will search for and return a group of up
+\ :c:func:`pagevec_lookup_entries`\  will search for and return a group of up
 to \ ``nr_pages``\  pages and shadow entries in the mapping.  All
 entries are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup_entries`\  takes a
 reference against actual pages in \ ``pvec``\ .
@@ -223,7 +223,7 @@ pagevec_remove_exceptionals
 Description
 -----------
 
-pagevec_lookup_entries() fills both pages and exceptional radix
+\ :c:func:`pagevec_lookup_entries`\  fills both pages and exceptional radix
 tree entries into the pagevec.  This function prunes all
 exceptionals from \ ``pvec``\  without leaving holes, so that it can be
 passed on to page-only pagevec operations.
@@ -254,7 +254,7 @@ pagevec_lookup_range
 Description
 -----------
 
-pagevec_lookup_range() will search for & return a group of up to PAGEVEC_SIZE
+\ :c:func:`pagevec_lookup_range`\  will search for & return a group of up to PAGEVEC_SIZE
 pages in the mapping starting from index \ ``start``\  and upto index \ ``end``\ 
 (inclusive).  The pages are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup`\  takes a
 reference against the pages in \ ``pvec``\ .

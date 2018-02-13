@@ -3,8 +3,8 @@
 
 .. _`__vmw_piter_non_sg_next`:
 
-__vmw_piter_non_sg_next
-=======================
+\__vmw_piter_non_sg_next
+========================
 
 .. c:function:: bool __vmw_piter_non_sg_next(struct vmw_piter *viter)
 
@@ -22,8 +22,8 @@ DMA mapping mode.
 
 .. _`__vmw_piter_non_sg_page`:
 
-__vmw_piter_non_sg_page
-=======================
+\__vmw_piter_non_sg_page
+========================
 
 .. c:function:: struct page *__vmw_piter_non_sg_page(struct vmw_piter *viter)
 
@@ -41,8 +41,8 @@ current mapping mode.
 
 .. _`__vmw_piter_phys_addr`:
 
-__vmw_piter_phys_addr
-=====================
+\__vmw_piter_phys_addr
+======================
 
 .. c:function:: dma_addr_t __vmw_piter_phys_addr(struct vmw_piter *viter)
 

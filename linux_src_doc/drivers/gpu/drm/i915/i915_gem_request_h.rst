@@ -65,7 +65,7 @@ init_request_active
 Description
 -----------
 
-init_request_active() prepares the embedded \ ``active``\  struct for use as
+\ :c:func:`init_request_active`\  prepares the embedded \ ``active``\  struct for use as
 an activity tracker, that is for tracking the last known active request
 associated with it. When the last request becomes idle, when it is retired
 after completion, the optional callback \ ``func``\  is invoked.
@@ -90,7 +90,7 @@ i915_gem_active_set
 Description
 -----------
 
-i915_gem_active_set() watches the given \ ``request``\  for completion. Whilst
+\ :c:func:`i915_gem_active_set`\  watches the given \ ``request``\  for completion. Whilst
 that \ ``request``\  is busy, the \ ``active``\  reports busy. When that \ ``request``\  is
 retired, the \ ``active``\  tracker is updated to report idle.
 
@@ -117,7 +117,7 @@ i915_gem_active_set_retire_fn
 Description
 -----------
 
-i915_gem_active_set_retire_fn() updates the function pointer that
+\ :c:func:`i915_gem_active_set_retire_fn`\  updates the function pointer that
 is called when the final request associated with the \ ``active``\  tracker
 is retired.
 
@@ -141,7 +141,7 @@ i915_gem_active_raw
 Description
 -----------
 
-i915_gem_active_raw() returns the current request being tracked, or NULL.
+\ :c:func:`i915_gem_active_raw`\  returns the current request being tracked, or NULL.
 It does not obtain a reference on the request for the caller, so the caller
 must hold struct_mutex.
 
@@ -165,7 +165,7 @@ i915_gem_active_peek
 Description
 -----------
 
-i915_gem_active_peek() returns the current request being tracked if
+\ :c:func:`i915_gem_active_peek`\  returns the current request being tracked if
 still active, or NULL. It does not obtain a reference on the request
 for the caller, so the caller must hold struct_mutex.
 
@@ -189,13 +189,13 @@ i915_gem_active_get
 Description
 -----------
 
-i915_gem_active_get() returns a reference to the active request, or NULL
+\ :c:func:`i915_gem_active_get`\  returns a reference to the active request, or NULL
 if the active tracker is idle. The caller must hold struct_mutex.
 
 .. _`__i915_gem_active_get_rcu`:
 
-__i915_gem_active_get_rcu
-=========================
+\__i915_gem_active_get_rcu
+==========================
 
 .. c:function:: struct drm_i915_gem_request *__i915_gem_active_get_rcu(const struct i915_gem_active *active)
 
@@ -209,7 +209,7 @@ __i915_gem_active_get_rcu
 Description
 -----------
 
-__i915_gem_active_get() returns a reference to the active request, or NULL
+\__i915_gem_active_get() returns a reference to the active request, or NULL
 if the active tracker is idle. The caller must hold the RCU read lock, but
 the returned pointer is safe to use outside of RCU.
 
@@ -230,7 +230,7 @@ i915_gem_active_get_unlocked
 Description
 -----------
 
-i915_gem_active_get_unlocked() returns a reference to the active request,
+\ :c:func:`i915_gem_active_get_unlocked`\  returns a reference to the active request,
 or NULL if the active tracker is idle. The reference is obtained under RCU,
 so no locking is required by the caller.
 
@@ -253,7 +253,7 @@ i915_gem_active_isset
 Description
 -----------
 
-i915_gem_active_isset() returns true if the active tracker is currently
+\ :c:func:`i915_gem_active_isset`\  returns true if the active tracker is currently
 assigned to a request. Due to the lazy retiring, that request may be idle
 and this may report stale information.
 
@@ -277,7 +277,7 @@ i915_gem_active_wait
 Description
 -----------
 
-i915_gem_active_wait() waits until the request is completed before
+\ :c:func:`i915_gem_active_wait`\  waits until the request is completed before
 returning, without requiring any locks to be held. Note that it does not
 retire any requests before returning.
 
@@ -312,7 +312,7 @@ i915_gem_active_retire
 Description
 -----------
 
-i915_gem_active_retire() waits until the request is completed,
+\ :c:func:`i915_gem_active_retire`\  waits until the request is completed,
 and then ensures that at least the retirement handler for this
 \ ``active``\  tracker is called before returning. If the \ ``active``\ 
 tracker is idle, the function returns immediately.

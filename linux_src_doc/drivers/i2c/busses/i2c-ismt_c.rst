@@ -3,8 +3,8 @@
 
 .. _`__ismt_desc_dump`:
 
-__ismt_desc_dump
-================
+\__ismt_desc_dump
+=================
 
 .. c:function:: void __ismt_desc_dump(struct device *dev, const struct ismt_desc *desc)
 

@@ -175,7 +175,7 @@ hid_device_io_start
 Description
 -----------
 
-@hid - the device
+\ ``hid``\  - the device
 
 This should only be called during probe or remove and only be
 called by the thread calling probe or remove. It will allow
@@ -198,7 +198,7 @@ hid_device_io_stop
 Description
 -----------
 
-@hid - the device
+\ ``hid``\  - the device
 
 Should only be called after hid_device_io_start. It will prevent
 incoming packets from going to the driver for the duration of

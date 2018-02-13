@@ -191,8 +191,8 @@ must set it appropriately (if necessary) after this function returns.
 
 .. _`__e1000e_read_phy_reg_igp`:
 
-__e1000e_read_phy_reg_igp
-=========================
+\__e1000e_read_phy_reg_igp
+==========================
 
 .. c:function:: s32 __e1000e_read_phy_reg_igp(struct e1000_hw *hw, u32 offset, u16 *data, bool locked)
 
@@ -274,8 +274,8 @@ in data.  Assumes semaphore already acquired.
 
 .. _`__e1000e_write_phy_reg_igp`:
 
-__e1000e_write_phy_reg_igp
-==========================
+\__e1000e_write_phy_reg_igp
+===========================
 
 .. c:function:: s32 __e1000e_write_phy_reg_igp(struct e1000_hw *hw, u32 offset, u16 data, bool locked)
 
@@ -355,8 +355,8 @@ Assumes semaphore already acquired.
 
 .. _`__e1000_read_kmrn_reg`:
 
-__e1000_read_kmrn_reg
-=====================
+\__e1000_read_kmrn_reg
+======================
 
 .. c:function:: s32 __e1000_read_kmrn_reg(struct e1000_hw *hw, u32 offset, u16 *data, bool locked)
 
@@ -439,8 +439,8 @@ Assumes semaphore already acquired.
 
 .. _`__e1000_write_kmrn_reg`:
 
-__e1000_write_kmrn_reg
-======================
+\__e1000_write_kmrn_reg
+=======================
 
 .. c:function:: s32 __e1000_write_kmrn_reg(struct e1000_hw *hw, u32 offset, u16 data, bool locked)
 
@@ -1419,8 +1419,8 @@ settings.
 
 .. _`__e1000_read_phy_reg_hv`:
 
-__e1000_read_phy_reg_hv
-=======================
+\__e1000_read_phy_reg_hv
+========================
 
 .. c:function:: s32 __e1000_read_phy_reg_hv(struct e1000_hw *hw, u32 offset, u16 *data, bool locked, bool page_set)
 
@@ -1531,8 +1531,8 @@ in data.  Assumes semaphore already acquired and page already set.
 
 .. _`__e1000_write_phy_reg_hv`:
 
-__e1000_write_phy_reg_hv
-========================
+\__e1000_write_phy_reg_hv
+=========================
 
 .. c:function:: s32 __e1000_write_phy_reg_hv(struct e1000_hw *hw, u32 offset, u16 data, bool locked, bool page_set)
 

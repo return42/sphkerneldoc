@@ -192,8 +192,8 @@ negative errno if a local failure occurred.
 
 .. _`_nfs4_proc_secinfo`:
 
-_nfs4_proc_secinfo
-==================
+\_nfs4_proc_secinfo
+===================
 
 .. c:function:: int _nfs4_proc_secinfo(struct inode *dir, const struct qstr *name, struct nfs4_secinfo_flavors *flavors, bool use_integrity)
 
@@ -242,8 +242,8 @@ Upon success, add the new transport to the rpc_clnt
 
 .. _`_nfs41_proc_secinfo_no_name`:
 
-_nfs41_proc_secinfo_no_name
-===========================
+\_nfs41_proc_secinfo_no_name
+============================
 
 .. c:function:: int _nfs41_proc_secinfo_no_name(struct nfs_server *server, struct nfs_fh *fhandle, struct nfs_fsinfo *info, struct nfs4_secinfo_flavors *flavors, bool use_integrity)
 

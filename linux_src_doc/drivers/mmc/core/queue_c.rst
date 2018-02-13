@@ -3,8 +3,8 @@
 
 .. _`__mmc_init_request`:
 
-__mmc_init_request
-==================
+\__mmc_init_request
+===================
 
 .. c:function:: int __mmc_init_request(struct mmc_queue *mq, struct request *req, gfp_t gfp)
 

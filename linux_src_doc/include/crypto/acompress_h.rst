@@ -50,7 +50,7 @@ dlen
 flags
     Internal flags
 
-__ctx
+\__ctx
     Start of private context data
 
 .. _`crypto_acomp`:

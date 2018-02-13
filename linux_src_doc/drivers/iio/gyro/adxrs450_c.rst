@@ -35,7 +35,7 @@ us
 buf_lock
     mutex to protect tx and rx
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 rx

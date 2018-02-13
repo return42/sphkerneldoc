@@ -84,7 +84,7 @@ pci_destroy_slot
 Description
 -----------
 
-%struct pci_slot is refcounted, so destroying them is really easy; we
+\ ``struct``\  pci_slot is refcounted, so destroying them is really easy; we
 just call kobject_put on its kobj and let our release methods do the
 rest.
 

@@ -62,7 +62,7 @@ and release the domain after this function has been called, call
 Return
 ------
 
-%0 in case of success and negative errno in case of error
+\ ``0``\  in case of success and negative errno in case of error
 
 .. _`tb_domain_remove`:
 
@@ -176,7 +176,7 @@ adding the key is successful, the switch is approved and connected.
 Return
 ------
 
-%0 on success and negative errno in case of failure.
+\ ``0``\  on success and negative errno in case of failure.
 
 .. _`tb_domain_challenge_switch_key`:
 
@@ -208,7 +208,7 @@ approved and connected.
 Return
 ------
 
-%0 on success and negative errno in case of failure.
+\ ``0``\  on success and negative errno in case of failure.
 
 .. _`tb_domain_disconnect_pcie_paths`:
 
@@ -322,7 +322,7 @@ called the paths cannot be established without resetting the switch.
 Return
 ------
 
-%0 in case of success and negative errno otherwise.
+\ ``0``\  in case of success and negative errno otherwise.
 
 .. This file was automatic generated / don't edit.
 

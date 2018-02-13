@@ -196,8 +196,8 @@ Number of DDCBs which were finished
 
 .. _`__genwqe_wait_ddcb`:
 
-__genwqe_wait_ddcb
-==================
+\__genwqe_wait_ddcb
+===================
 
 .. c:function:: int __genwqe_wait_ddcb(struct genwqe_dev *cd, struct ddcb_requ *req)
 
@@ -266,8 +266,8 @@ NULL if no empty DDCB available otherwise ptr to next DDCB.
 
 .. _`__genwqe_purge_ddcb`:
 
-__genwqe_purge_ddcb
-===================
+\__genwqe_purge_ddcb
+====================
 
 .. c:function:: int __genwqe_purge_ddcb(struct genwqe_dev *cd, struct ddcb_requ *req)
 
@@ -301,8 +301,8 @@ Return
 
 .. _`__genwqe_enqueue_ddcb`:
 
-__genwqe_enqueue_ddcb
-=====================
+\__genwqe_enqueue_ddcb
+======================
 
 .. c:function:: int __genwqe_enqueue_ddcb(struct genwqe_dev *cd, struct ddcb_requ *req, unsigned int f_flags)
 
@@ -328,8 +328,8 @@ Return
 
 .. _`__genwqe_execute_raw_ddcb`:
 
-__genwqe_execute_raw_ddcb
-=========================
+\__genwqe_execute_raw_ddcb
+==========================
 
 .. c:function:: int __genwqe_execute_raw_ddcb(struct genwqe_dev *cd, struct genwqe_ddcb_cmd *cmd, unsigned int f_flags)
 

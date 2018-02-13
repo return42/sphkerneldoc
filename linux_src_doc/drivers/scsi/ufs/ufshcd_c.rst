@@ -582,8 +582,8 @@ Returns 0 only if success.
 
 .. _`__ufshcd_send_uic_cmd`:
 
-__ufshcd_send_uic_cmd
-=====================
+\__ufshcd_send_uic_cmd
+======================
 
 .. c:function:: int __ufshcd_send_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd, bool completion)
 
@@ -1800,8 +1800,8 @@ ufshcd_uic_cmd_compl
 
 .. _`__ufshcd_transfer_req_compl`:
 
-__ufshcd_transfer_req_compl
-===========================
+\__ufshcd_transfer_req_compl
+============================
 
 .. c:function:: void __ufshcd_transfer_req_compl(struct ufs_hba *hba, unsigned long completed_reqs)
 

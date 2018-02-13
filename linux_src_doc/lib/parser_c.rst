@@ -250,7 +250,7 @@ match_strlcpy
         where to copy to
 
     :param const substring_t \*src:
-        &substring_t to copy
+        \ :c:type:`struct substring_t <substring_t>`\  to copy
 
     :param size_t size:
         size of destination buffer
@@ -274,7 +274,7 @@ match_strdup
     - allocate a new string with the contents of a substring_t
 
     :param const substring_t \*s:
-        &substring_t to copy
+        \ :c:type:`struct substring_t <substring_t>`\  to copy
 
 .. _`match_strdup.description`:
 

@@ -192,8 +192,8 @@ structure of the mapped extent inode.
 
 .. _`__mark_mft_record_dirty`:
 
-__mark_mft_record_dirty
-=======================
+\__mark_mft_record_dirty
+========================
 
 .. c:function:: void __mark_mft_record_dirty(ntfs_inode *ni)
 

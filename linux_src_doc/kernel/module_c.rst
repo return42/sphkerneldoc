@@ -25,7 +25,7 @@ Test whether \ ``addr``\  belongs to module static percpu area.
 Return
 ------
 
-%true if \ ``addr``\  is from module static percpu area
+\ ``true``\  if \ ``addr``\  is from module static percpu area
 
 .. _`module_refcount`:
 

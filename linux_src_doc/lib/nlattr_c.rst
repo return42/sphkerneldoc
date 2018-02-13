@@ -240,8 +240,8 @@ nla_strcmp
 
 .. _`__nla_reserve`:
 
-__nla_reserve
-=============
+\__nla_reserve
+==============
 
 .. c:function:: struct nlattr *__nla_reserve(struct sk_buff *skb, int attrtype, int attrlen)
 
@@ -269,8 +269,8 @@ tailroom for the attribute header and payload.
 
 .. _`__nla_reserve_64bit`:
 
-__nla_reserve_64bit
-===================
+\__nla_reserve_64bit
+====================
 
 .. c:function:: struct nlattr *__nla_reserve_64bit(struct sk_buff *skb, int attrtype, int attrlen, int padattr)
 
@@ -302,8 +302,8 @@ tailroom for the attribute header and payload.
 
 .. _`__nla_reserve_nohdr`:
 
-__nla_reserve_nohdr
-===================
+\__nla_reserve_nohdr
+====================
 
 .. c:function:: void *__nla_reserve_nohdr(struct sk_buff *skb, int attrlen)
 
@@ -414,8 +414,8 @@ the attribute payload.
 
 .. _`__nla_put`:
 
-__nla_put
-=========
+\__nla_put
+==========
 
 .. c:function:: void __nla_put(struct sk_buff *skb, int attrtype, int attrlen, const void *data)
 
@@ -443,8 +443,8 @@ tailroom for the attribute header and payload.
 
 .. _`__nla_put_64bit`:
 
-__nla_put_64bit
-===============
+\__nla_put_64bit
+================
 
 .. c:function:: void __nla_put_64bit(struct sk_buff *skb, int attrtype, int attrlen, const void *data, int padattr)
 
@@ -475,8 +475,8 @@ tailroom for the attribute header and payload.
 
 .. _`__nla_put_nohdr`:
 
-__nla_put_nohdr
-===============
+\__nla_put_nohdr
+================
 
 .. c:function:: void __nla_put_nohdr(struct sk_buff *skb, int attrlen, const void *data)
 

@@ -18,7 +18,7 @@ af_alg_alloc_tsgl
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 
 .. _`af_alg_count_tsgl`:
 
@@ -106,7 +106,7 @@ af_alg_free_areq_sgls
 Description
 -----------
 
-@areq Request holding the TX and RX SGL
+\ ``areq``\  Request holding the TX and RX SGL
 
 .. _`af_alg_wait_for_wmem`:
 
@@ -128,7 +128,7 @@ af_alg_wait_for_wmem
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``flags``\  If MSG_DONTWAIT is set, then only report if function would sleep
 \ ``return``\  0 when writable memory is available, < 0 upon error
 
@@ -149,7 +149,7 @@ af_alg_wmem_wakeup
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 
 .. _`af_alg_wait_for_data`:
 
@@ -171,7 +171,7 @@ af_alg_wait_for_data
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``flags``\  If MSG_DONTWAIT is set, then only report if function would sleep
 \ ``return``\  0 when writable memory is available, < 0 upon error
 
@@ -192,7 +192,7 @@ af_alg_data_wakeup
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 
 .. _`af_alg_sendmsg`:
 
@@ -340,7 +340,7 @@ af_alg_alloc_areq
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``areqlen``\  size of struct af_alg_async_req + crypto\_\*\_reqsize
 \ ``return``\  allocated data structure or ERR_PTR upon error
 
@@ -376,7 +376,7 @@ af_alg_get_rsgl
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``msg``\  user space message
 \ ``flags``\  flags used to invoke recvmsg with
 \ ``areq``\  instance of the cryptographic request that will hold the RX SGL

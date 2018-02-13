@@ -78,7 +78,7 @@ nilfs_palloc_desc_blkoff
 Description
 -----------
 
-nilfs_palloc_desc_blkoff() returns block offset of the descriptor
+\ :c:func:`nilfs_palloc_desc_blkoff`\  returns block offset of the descriptor
 block which contains a descriptor of the specified group.
 
 .. _`nilfs_palloc_bitmap_blkoff`:
@@ -101,7 +101,7 @@ nilfs_palloc_bitmap_blkoff
 Description
 -----------
 
-nilfs_palloc_bitmap_blkoff() returns block offset of the bitmap
+\ :c:func:`nilfs_palloc_bitmap_blkoff`\  returns block offset of the bitmap
 block used to allocate/deallocate entries in the specified group.
 
 .. _`nilfs_palloc_group_desc_nfrees`:

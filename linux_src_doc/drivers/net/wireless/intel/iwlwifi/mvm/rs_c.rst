@@ -3,8 +3,8 @@
 
 .. _`_rs_collect_tx_data`:
 
-_rs_collect_tx_data
-===================
+\_rs_collect_tx_data
+====================
 
 .. c:function:: int _rs_collect_tx_data(struct iwl_mvm *mvm, struct iwl_scale_tbl_info *tbl, int scale_index, int attempts, int successes, struct iwl_rate_scale_data *window)
 

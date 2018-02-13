@@ -309,8 +309,8 @@ Return
 
 .. _`__thermal_cooling_device_register`:
 
-__thermal_cooling_device_register
-=================================
+\__thermal_cooling_device_register
+==================================
 
 .. c:function:: struct thermal_cooling_device *__thermal_cooling_device_register(struct device_node *np, char *type, void *devdata, const struct thermal_cooling_device_ops *ops)
 
@@ -438,7 +438,7 @@ thermal_cooling_device_unregister
 Description
 -----------
 
-thermal_cooling_device_unregister() must be called when a registered
+\ :c:func:`thermal_cooling_device_unregister`\  must be called when a registered
 thermal cooling device is no longer needed.
 
 .. _`thermal_zone_device_register`:

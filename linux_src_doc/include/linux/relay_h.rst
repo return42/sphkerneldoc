@@ -33,8 +33,8 @@ interrupt context.
 
 .. _`__relay_write`:
 
-__relay_write
-=============
+\__relay_write
+==============
 
 .. c:function:: void __relay_write(struct rchan *chan, const void *data, size_t length)
 

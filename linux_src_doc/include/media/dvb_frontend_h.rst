@@ -540,7 +540,8 @@ delsys
 
 detach
     callback function called when frontend is detached.
-    drivers should clean up, but not yet free the \ :c:type:`struct dvb_frontend <dvb_frontend>`\  allocation.
+    drivers should clean up, but not yet free the \ :c:type:`struct struct <struct>`\ 
+    dvb_frontend allocation.
 
 release
     callback function called when frontend is ready to be
@@ -573,7 +574,8 @@ get_frontend_algo
 set_frontend
     callback function used to inform the demod to set the
     parameters for demodulating a digital TV channel.
-    The properties to be used are stored at \ :c:type:`struct dvb_frontend <dvb_frontend>`\ .dtv_property_cache. The demod can change
+    The properties to be used are stored at \ :c:type:`struct struct <struct>`\ 
+    dvb_frontend.dtv_property_cache. The demod can change
     the parameters to reflect the changes needed for the
     channel to be decoded, and update statistics.
 

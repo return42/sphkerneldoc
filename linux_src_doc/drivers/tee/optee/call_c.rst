@@ -76,7 +76,7 @@ optee_fill_pages_list
 Description
 -----------
 
-@dst should be big enough to hold list of user page addresses and
+\ ``dst``\  should be big enough to hold list of user page addresses and
 links to the next pages of buffer
 
 .. This file was automatic generated / don't edit.

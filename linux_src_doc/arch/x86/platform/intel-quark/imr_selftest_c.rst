@@ -24,8 +24,8 @@ addresses and setup/teardown sanity.
 
 .. _`__printf`:
 
-__printf
-========
+\__printf
+=========
 
 .. c:function::  __printf( 2,  3)
 

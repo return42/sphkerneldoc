@@ -408,8 +408,8 @@ wakeup_source_report_event
 
 .. _`__pm_stay_awake`:
 
-__pm_stay_awake
-===============
+\__pm_stay_awake
+================
 
 .. c:function:: void __pm_stay_awake(struct wakeup_source *ws)
 
@@ -472,8 +472,8 @@ and incrementing the counter of registered wakeup events.
 
 .. _`__pm_relax`:
 
-__pm_relax
-==========
+\__pm_relax
+===========
 
 .. c:function:: void __pm_relax(struct wakeup_source *ws)
 

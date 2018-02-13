@@ -105,7 +105,7 @@ See \ :c:type:`struct blk_stat_callback <blk_stat_callback>`\  for details on th
 Return
 ------
 
-&struct blk_stat_callback on success or NULL on ENOMEM.
+\ :c:type:`struct blk_stat_callback <blk_stat_callback>`\  on success or NULL on ENOMEM.
 
 .. _`blk_stat_add_callback`:
 
@@ -170,7 +170,7 @@ blk_stat_free_callback
 Description
 -----------
 
-@cb may be NULL, in which case this does nothing. If it is not NULL, \ ``cb``\  must
+\ ``cb``\  may be NULL, in which case this does nothing. If it is not NULL, \ ``cb``\  must
 not be associated with a request queue. I.e., if it was previously added with
 \ :c:func:`blk_stat_add_callback`\ , it must also have been removed since then with
 \ :c:func:`blk_stat_remove_callback`\ .

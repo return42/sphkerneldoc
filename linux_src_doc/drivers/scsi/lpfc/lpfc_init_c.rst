@@ -934,8 +934,8 @@ port is treated as \ ``vport``\  0.
 
 .. _`__lpfc_sli4_stop_fcf_redisc_wait_timer`:
 
-__lpfc_sli4_stop_fcf_redisc_wait_timer
-======================================
+\__lpfc_sli4_stop_fcf_redisc_wait_timer
+=======================================
 
 .. c:function:: void __lpfc_sli4_stop_fcf_redisc_wait_timer(struct lpfc_hba *phba)
 
@@ -3014,8 +3014,8 @@ to destroy the pool.
 
 .. _`__lpfc_sli4_cq_event_alloc`:
 
-__lpfc_sli4_cq_event_alloc
-==========================
+\__lpfc_sli4_cq_event_alloc
+===========================
 
 .. c:function:: struct lpfc_cq_event *__lpfc_sli4_cq_event_alloc(struct lpfc_hba *phba)
 
@@ -3070,8 +3070,8 @@ NULL otherwise.
 
 .. _`__lpfc_sli4_cq_event_release`:
 
-__lpfc_sli4_cq_event_release
-============================
+\__lpfc_sli4_cq_event_release
+=============================
 
 .. c:function:: void __lpfc_sli4_cq_event_release(struct lpfc_hba *phba, struct lpfc_cq_event *cq_event)
 

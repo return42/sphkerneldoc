@@ -89,10 +89,10 @@ frag_size
 hop_limit
     *undescribed*
 
-__unused_1
+\__unused_1
     *undescribed*
 
-__unused_1
+\__unused_1
     *undescribed*
 
 hop_limit
@@ -101,7 +101,7 @@ hop_limit
 mcast_hops
     *undescribed*
 
-__unused_2
+\__unused_2
     *undescribed*
 
 mc_loop
@@ -110,7 +110,7 @@ mc_loop
 mc_loop
     *undescribed*
 
-__unused_2
+\__unused_2
     *undescribed*
 
 mcast_hops

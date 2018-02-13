@@ -70,8 +70,8 @@ Pointer to the corresponding mapping NULL if not found
 
 .. _`__genwqe_search_mapping`:
 
-__genwqe_search_mapping
-=======================
+\__genwqe_search_mapping
+========================
 
 .. c:function:: struct dma_mapping *__genwqe_search_mapping(struct genwqe_file *cfile, unsigned long u_addr, unsigned int size, dma_addr_t *dma_addr, void **virt_addr)
 

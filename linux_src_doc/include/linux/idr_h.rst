@@ -160,7 +160,7 @@ idr_is_empty
 Return
 ------
 
-%true if any IDs have been allocated from this IDR.
+\ ``true``\  if any IDs have been allocated from this IDR.
 
 .. _`idr_preload_end`:
 
@@ -205,7 +205,7 @@ idr_for_each_entry
 Description
 -----------
 
-@entry and \ ``id``\  do not need to be initialized before the loop, and
+\ ``entry``\  and \ ``id``\  do not need to be initialized before the loop, and
 after normal termination \ ``entry``\  is left with the value NULL.  This
 is convenient for a "not found" value.
 
@@ -232,7 +232,7 @@ idr_for_each_entry_ul
 Description
 -----------
 
-@entry and \ ``id``\  do not need to be initialized before the loop, and
+\ ``entry``\  and \ ``id``\  do not need to be initialized before the loop, and
 after normal termination \ ``entry``\  is left with the value NULL.  This
 is convenient for a "not found" value.
 

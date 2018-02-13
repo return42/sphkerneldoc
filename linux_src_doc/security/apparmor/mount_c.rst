@@ -66,7 +66,7 @@ audit_mount
 Return
 ------
 
-%0 or error on failure
+\ ``0``\  or error on failure
 
 .. _`match_mnt_flags`:
 

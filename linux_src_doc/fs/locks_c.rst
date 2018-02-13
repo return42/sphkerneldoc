@@ -96,7 +96,7 @@ locks_mandatory_area
         lastbyte in the file to check
 
     :param unsigned char type:
-        %F_WRLCK for a write lock, else \ ``F_RDLCK``\ 
+        \ ``F_WRLCK``\  for a write lock, else \ ``F_RDLCK``\ 
 
 .. _`locks_mandatory_area.description`:
 

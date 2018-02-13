@@ -61,7 +61,7 @@ pci
     our link to PCI bus
 
 guid
-    _DSM GUID
+    \_DSM GUID
 
 has_dsm_for_pm
     true for devices which need to run \_DSM on runtime PM

@@ -3,8 +3,8 @@
 
 .. _`__dev_pm_qos_flags`:
 
-__dev_pm_qos_flags
-==================
+\__dev_pm_qos_flags
+===================
 
 .. c:function:: enum pm_qos_flags_status __dev_pm_qos_flags(struct device *dev, s32 mask)
 
@@ -40,8 +40,8 @@ dev_pm_qos_flags
 
 .. _`__dev_pm_qos_read_value`:
 
-__dev_pm_qos_read_value
-=======================
+\__dev_pm_qos_read_value
+========================
 
 .. c:function:: s32 __dev_pm_qos_read_value(struct device *dev)
 
@@ -155,8 +155,8 @@ using this function for requests of type DEV_PM_QOS_FLAGS.
 
 .. _`__dev_pm_qos_update_request`:
 
-__dev_pm_qos_update_request
-===========================
+\__dev_pm_qos_update_request
+============================
 
 .. c:function:: int __dev_pm_qos_update_request(struct dev_pm_qos_request *req, s32 new_value)
 

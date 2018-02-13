@@ -45,8 +45,8 @@ find_iova
 
 .. _`__free_iova`:
 
-__free_iova
-===========
+\__free_iova
+============
 
 .. c:function:: void __free_iova(struct iova_domain *iovad, struct iova *iova)
 

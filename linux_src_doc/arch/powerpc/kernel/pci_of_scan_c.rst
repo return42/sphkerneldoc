@@ -92,14 +92,14 @@ of_scan_pci_bridge
 Description
 -----------
 
-of_scan_bus() calls this routine for each PCI bridge that it finds, and
+\ :c:func:`of_scan_bus`\  calls this routine for each PCI bridge that it finds, and
 this routine in turn call \ :c:func:`of_scan_bus`\  recusively to scan for more child
 devices.
 
 .. _`__of_scan_bus`:
 
-__of_scan_bus
-=============
+\__of_scan_bus
+==============
 
 .. c:function:: void __of_scan_bus(struct device_node *node, struct pci_bus *bus, int rescan_existing)
 

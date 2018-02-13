@@ -3,8 +3,8 @@
 
 .. _`__cvmx_helper_npi_probe`:
 
-__cvmx_helper_npi_probe
-=======================
+\__cvmx_helper_npi_probe
+========================
 
 .. c:function:: int __cvmx_helper_npi_probe(int interface)
 
@@ -22,8 +22,8 @@ Returns Number of ports on the interface. Zero to disable.
 
 .. _`__cvmx_helper_npi_enable`:
 
-__cvmx_helper_npi_enable
-========================
+\__cvmx_helper_npi_enable
+=========================
 
 .. c:function:: int __cvmx_helper_npi_enable(int interface)
 

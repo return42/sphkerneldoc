@@ -158,8 +158,8 @@ Lock must be held.
 
 .. _`__sca3000_unlock_reg_lock`:
 
-__sca3000_unlock_reg_lock
-=========================
+\__sca3000_unlock_reg_lock
+==========================
 
 .. c:function:: int __sca3000_unlock_reg_lock(struct sca3000_state *st)
 
@@ -239,8 +239,8 @@ sca3000_print_rev
 
 .. _`__sca3000_get_base_freq`:
 
-__sca3000_get_base_freq
-=======================
+\__sca3000_get_base_freq
+========================
 
 .. c:function:: int __sca3000_get_base_freq(struct sca3000_state *st, const struct sca3000_chip_info *info, int *base_freq)
 

@@ -84,7 +84,7 @@ and started beforehand.
 Return
 ------
 
-%0 on success.
+\ ``0``\  on success.
 -%ETIMEDOUT if timed out waiting for abort to complete.
 
 .. This file was automatic generated / don't edit.

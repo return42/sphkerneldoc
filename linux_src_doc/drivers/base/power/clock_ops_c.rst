@@ -3,8 +3,8 @@
 
 .. _`__pm_clk_enable`:
 
-__pm_clk_enable
-===============
+\__pm_clk_enable
+================
 
 .. c:function:: void __pm_clk_enable(struct device *dev, struct pm_clock_entry *ce)
 
@@ -129,8 +129,8 @@ or if adding a clock fails.
 
 .. _`__pm_clk_remove`:
 
-__pm_clk_remove
-===============
+\__pm_clk_remove
+================
 
 .. c:function:: void __pm_clk_remove(struct pm_clock_entry *ce)
 

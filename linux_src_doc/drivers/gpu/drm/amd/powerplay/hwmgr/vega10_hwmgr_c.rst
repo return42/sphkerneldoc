@@ -16,7 +16,7 @@ vega10_get_evv_voltages
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0.
 
 .. _`vega10_patch_with_vdd_leakage`:
@@ -40,7 +40,7 @@ vega10_patch_with_vdd_leakage
 Description
 -----------
 
-@param     hwmgr  the address of the powerplay hardware manager.
+\ ``param``\      hwmgr  the address of the powerplay hardware manager.
 \ ``param``\      pointer to changing voltage
 \ ``param``\      pointer to leakage table
 
@@ -65,7 +65,7 @@ vega10_patch_lookup_table_with_leakage
 Description
 -----------
 
-@param     hwmgr  the address of the powerplay hardware manager.
+\ ``param``\      hwmgr  the address of the powerplay hardware manager.
 \ ``param``\      pointer to voltage lookup table
 \ ``param``\      pointer to leakage table
 \ ``return``\      always 0
@@ -88,7 +88,7 @@ vega10_trim_voltage_table
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``param``\     vol_table  the pointer to changing voltage table
 \ ``return``\     0 in success
 
@@ -107,7 +107,7 @@ vega10_construct_voltage_tables
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``return``\    always 0
 
 .. _`vega10_populate_single_gfx_level`:
@@ -134,7 +134,7 @@ vega10_populate_single_gfx_level
 Description
 -----------
 
-@param    hwmgr      the address of the hardware manager
+\ ``param``\     hwmgr      the address of the hardware manager
 \ ``param``\     gfx_clock  the GFX clock to use to populate the structure.
 \ ``param``\     current_gfxclk_level  location in PPTable for the SMC GFXCLK structure.
 
@@ -153,7 +153,7 @@ vega10_populate_all_graphic_levels
 Description
 -----------
 
-@param    hwmgr      the address of the hardware manager
+\ ``param``\     hwmgr      the address of the hardware manager
 
 .. _`vega10_init_smc_table`:
 
@@ -170,7 +170,7 @@ vega10_init_smc_table
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 \ ``param``\     pInput  the pointer to input data (PowerState)
 \ ``return``\    always 0
 

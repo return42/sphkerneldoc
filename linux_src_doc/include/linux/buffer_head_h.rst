@@ -3,8 +3,8 @@
 
 .. _`__bread`:
 
-__bread
-=======
+\__bread
+========
 
 .. c:function:: struct buffer_head *__bread(struct block_device *bdev, sector_t block, unsigned size)
 

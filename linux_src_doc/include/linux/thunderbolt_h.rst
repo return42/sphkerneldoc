@@ -691,7 +691,7 @@ tb_ring_rx
 Description
 -----------
 
-@frame->buffer, \ ``frame``\ ->buffer_phy have to be set. The buffer must
+\ ``frame``\ ->buffer, \ ``frame``\ ->buffer_phy have to be set. The buffer must
 contain at least \ ``TB_FRAME_SIZE``\  bytes.
 
 \ ``frame``\ ->callback will be invoked with \ ``frame``\ ->size, \ ``frame``\ ->flags,
@@ -727,7 +727,7 @@ tb_ring_tx
 Description
 -----------
 
-@frame->buffer, \ ``frame``\ ->buffer_phy, \ ``frame``\ ->size, \ ``frame``\ ->eof and
+\ ``frame``\ ->buffer, \ ``frame``\ ->buffer_phy, \ ``frame``\ ->size, \ ``frame``\ ->eof and
 \ ``frame``\ ->sof have to be set.
 
 \ ``frame``\ ->callback will be invoked with once the frame has been transmitted.

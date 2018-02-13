@@ -839,7 +839,8 @@ mode_valid
 
     RETURNS:
 
-    Either \ :c:type:`drm_mode_status.MODE_OK <drm_mode_status>`\  or one of the failure reasons in \ :c:type:`enum drm_mode_status <drm_mode_status>`\ .
+    Either \ :c:type:`drm_mode_status.MODE_OK <drm_mode_status>`\  or one of the failure reasons in \ :c:type:`struct enum <enum>`\ 
+    drm_mode_status.
 
 best_encoder
 

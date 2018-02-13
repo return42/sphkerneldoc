@@ -3,8 +3,8 @@
 
 .. _`__uwb_dev_sys_add`:
 
-__uwb_dev_sys_add
-=================
+\__uwb_dev_sys_add
+==================
 
 .. c:function:: int __uwb_dev_sys_add(struct uwb_dev *uwb_dev, struct device *parent_dev)
 
@@ -61,13 +61,13 @@ uwb_dev_try_get
 Description
 -----------
 
-@returns NULL if the device does not exist or is quiescing; the ptr to
+\ ``returns``\  NULL if the device does not exist or is quiescing; the ptr to
 it otherwise.
 
 .. _`__uwb_dev_offair`:
 
-__uwb_dev_offair
-================
+\__uwb_dev_offair
+=================
 
 .. c:function:: int __uwb_dev_offair(struct uwb_dev *uwb_dev, struct uwb_rc *rc)
 

@@ -34,7 +34,7 @@ Fills the \ :c:type:`struct v4l2_queryctrl <v4l2_queryctrl>`\  fields for the qu
 
 .. note::
 
-   This function assumes that the \ ``qctrl``\ ->id field is filled.
+   This function assumes that the @qctrl->id field is filled.
 
 Returns -EINVAL if the control is not known by the V4L2 core, 0 on success.
 
@@ -312,12 +312,12 @@ size :math:`width * height` will be a multiple of :math:`2^{salign}`.
 
    #. The clipping rectangle may be shrunk or enlarged to fit the alignment
       constraints.
-   #. \ ``wmax``\  must not be smaller than \ ``wmin``\ .
-   #. \ ``hmax``\  must not be smaller than \ ``hmin``\ .
+   #. @wmax must not be smaller than @wmin.
+   #. @hmax must not be smaller than @hmin.
    #. The alignments must not be so high there are no possible image
       sizes within the allowed bounds.
-   #. \ ``wmin``\  and \ ``hmin``\  must be at least 1 (don't use 0).
-   #. For \ ``walign``\ , \ ``halign``\  and \ ``salign``\ , if you don't care about a certain
+   #. @wmin and @hmin must be at least 1 (don't use 0).
+   #. For @walign, @halign and @salign, if you don't care about a certain
       alignment, specify ``0``, as :math:`2^0 = 1` and one byte alignment
       is equivalent to no alignment.
    #. If you only want to adjust downward, specify a maximum that's the

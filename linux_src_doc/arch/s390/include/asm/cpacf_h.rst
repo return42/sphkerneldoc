@@ -3,8 +3,8 @@
 
 .. _`__cpacf_query`:
 
-__cpacf_query
-=============
+\__cpacf_query
+==============
 
 .. c:function:: void __cpacf_query(unsigned int opcode, cpacf_mask_t *mask)
 

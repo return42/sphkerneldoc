@@ -216,7 +216,7 @@ adjust_txpower
     Write the previously calculated TX power settings
     (from \ ``recalc_txpower``\ ) to the hardware.
     This function may sleep.
-    Can be NULL, if (and ONLY if) \ ``recalc_txpower``\  \_always\_
+    Can be NULL, if (and ONLY if) \ ``recalc_txpower``\  \_always_
     returns B43_TXPWR_RES_DONE.
 
 pwork_15sec

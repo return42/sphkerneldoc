@@ -115,8 +115,8 @@ rcu
 
 .. _`__tipc_node_link_up`:
 
-__tipc_node_link_up
-===================
+\__tipc_node_link_up
+====================
 
 .. c:function:: void __tipc_node_link_up(struct tipc_node *n, int bearer_id, struct sk_buff_head *xmitq)
 
@@ -158,8 +158,8 @@ Link becomes active (alone or shared) or standby, depending on its priority.
 
 .. _`__tipc_node_link_down`:
 
-__tipc_node_link_down
-=====================
+\__tipc_node_link_down
+======================
 
 .. c:function:: void __tipc_node_link_down(struct tipc_node *n, int *bearer_id, struct sk_buff_head *xmitq, struct tipc_media_addr **maddr)
 

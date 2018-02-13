@@ -400,8 +400,8 @@ Number of bytes read, or -EFAULT.
 
 .. note::
 
-   unlike \ :c:func:`dvb_ringbuffer_read`\ , this does **NOT** update the read pointer
-   in the ringbuffer. You must use \ :c:func:`dvb_ringbuffer_pkt_dispose`\  to mark a
+   unlike dvb_ringbuffer_read(), this does **NOT** update the read pointer
+   in the ringbuffer. You must use dvb_ringbuffer_pkt_dispose() to mark a
    packet as no longer required.
 
 .. _`dvb_ringbuffer_pkt_read`:

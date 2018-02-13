@@ -3,8 +3,8 @@
 
 .. _`__cmdline_find_option_bool`:
 
-__cmdline_find_option_bool
-==========================
+\__cmdline_find_option_bool
+===========================
 
 .. c:function:: int __cmdline_find_option_bool(const char *cmdline, int max_cmdline_size, const char *option)
 

@@ -73,7 +73,7 @@ mdc_hsm_copytool_send
 
 .. c:function:: int mdc_hsm_copytool_send(size_t len, void *val)
 
-    @param val KUC message (kuc_hdr + hsm_action_list) \ ``param``\  len total length of message
+    \ ``param``\  val KUC message (kuc_hdr + hsm_action_list) \ ``param``\  len total length of message
 
     :param size_t len:
         *undescribed*

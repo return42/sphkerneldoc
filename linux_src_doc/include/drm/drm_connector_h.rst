@@ -1223,7 +1223,7 @@ group_data
 Description
 -----------
 
-@group_data corresponds to displayid vend/prod/serial for external screens
+\ ``group_data``\  corresponds to displayid vend/prod/serial for external screens
 with an EDID.
 
 .. _`drm_connector_list_iter`:
@@ -1274,10 +1274,10 @@ drm_for_each_connector_iter
     connector_list iterator macro
 
     :param  connector:
-        &struct drm_connector pointer used as cursor
+        \ :c:type:`struct drm_connector <drm_connector>`\  pointer used as cursor
 
     :param  iter:
-        &struct drm_connector_list_iter
+        \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\ 
 
 .. _`drm_for_each_connector_iter.description`:
 

@@ -60,7 +60,7 @@ Helper function to write bandgap registers. It uses the io remapped area.
 macro to update bits.
 =====================
 
-RMW_BITS() - used to read, modify and update bandgap bitfields.
+\ :c:func:`RMW_BITS`\  - used to read, modify and update bandgap bitfields.
 The value passed will be shifted.
 
 .. _`ti_bandgap_power`:
@@ -432,8 +432,8 @@ Return
 
 .. _`_ti_bandgap_write_threshold`:
 
-_ti_bandgap_write_threshold
-===========================
+\_ti_bandgap_write_threshold
+============================
 
 .. c:function:: int _ti_bandgap_write_threshold(struct ti_bandgap *bgp, int id, int val, bool hot)
 
@@ -471,8 +471,8 @@ Return
 
 .. _`_ti_bandgap_read_threshold`:
 
-_ti_bandgap_read_threshold
-==========================
+\_ti_bandgap_read_threshold
+===========================
 
 .. c:function:: int _ti_bandgap_read_threshold(struct ti_bandgap *bgp, int id, int *val, bool hot)
 

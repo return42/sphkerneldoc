@@ -156,7 +156,7 @@ netlbl_cipsov4_listall_cb
 
 .. c:function:: int netlbl_cipsov4_listall_cb(struct cipso_v4_doi *doi_def, void *arg)
 
-    cipso_v4_doi_walk() callback for LISTALL
+    \ :c:func:`cipso_v4_doi_walk`\  callback for LISTALL
 
     :param struct cipso_v4_doi \*doi_def:
         the CIPSOv4 DOI definition
@@ -204,7 +204,7 @@ netlbl_cipsov4_remove_cb
 
 .. c:function:: int netlbl_cipsov4_remove_cb(struct netlbl_dom_map *entry, void *arg)
 
-    netlbl_cipsov4_remove() callback for REMOVE
+    \ :c:func:`netlbl_cipsov4_remove`\  callback for REMOVE
 
     :param struct netlbl_dom_map \*entry:
         LSM domain mapping entry

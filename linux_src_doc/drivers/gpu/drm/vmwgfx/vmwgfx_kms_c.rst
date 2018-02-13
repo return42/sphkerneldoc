@@ -595,7 +595,7 @@ vmw_guess_mode_timing
 Description
 -----------
 
-@mode - Pointer to a struct drm_display_mode with hdisplay and vdisplay
+\ ``mode``\  - Pointer to a struct drm_display_mode with hdisplay and vdisplay
 members filled in.
 
 .. _`vmw_du_connector_atomic_set_property`:
@@ -624,7 +624,7 @@ vmw_du_connector_atomic_set_property
 Description
 -----------
 
-@crtc - crtc the property is associated with
+\ ``crtc``\  - crtc the property is associated with
 
 .. _`vmw_du_connector_atomic_set_property.return`:
 
@@ -659,7 +659,7 @@ vmw_du_connector_atomic_get_property
 Description
 -----------
 
-@connector - connector the property is associated with
+\ ``connector``\  - connector the property is associated with
 
 .. _`vmw_du_connector_atomic_get_property.return`:
 
@@ -735,7 +735,7 @@ vmw_kms_helper_buffer_prepare
 Description
 -----------
 
-@dev_priv. Pointer to a device private structure.
+\ ``dev_priv``\ . Pointer to a device private structure.
 
 Returns 0 on success, negative error code on failure, -ERESTARTSYS if
 interrupted by a signal.

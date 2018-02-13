@@ -3,8 +3,8 @@
 
 .. _`__pata_platform_probe`:
 
-__pata_platform_probe
-=====================
+\__pata_platform_probe
+======================
 
 .. c:function:: int __pata_platform_probe(struct device *dev, struct resource *io_res, struct resource *ctl_res, struct resource *irq_res, unsigned int ioport_shift, int __pio_mask, struct scsi_host_template *sht)
 

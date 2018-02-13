@@ -386,10 +386,10 @@ drm_mm_for_each_node
     iterator to walk over all allocated nodes
 
     :param  entry:
-        &struct drm_mm_node to assign to in each iteration step
+        \ :c:type:`struct drm_mm_node <drm_mm_node>`\  to assign to in each iteration step
 
     :param  mm:
-        &drm_mm allocator to walk
+        \ :c:type:`struct drm_mm <drm_mm>`\  allocator to walk
 
 .. _`drm_mm_for_each_node.description`:
 
@@ -409,13 +409,13 @@ drm_mm_for_each_node_safe
     iterator to walk over all allocated nodes
 
     :param  entry:
-        &struct drm_mm_node to assign to in each iteration step
+        \ :c:type:`struct drm_mm_node <drm_mm_node>`\  to assign to in each iteration step
 
     :param  next:
-        &struct drm_mm_node to store the next step
+        \ :c:type:`struct drm_mm_node <drm_mm_node>`\  to store the next step
 
     :param  mm:
-        &drm_mm allocator to walk
+        \ :c:type:`struct drm_mm <drm_mm>`\  allocator to walk
 
 .. _`drm_mm_for_each_node_safe.description`:
 
@@ -435,10 +435,10 @@ drm_mm_for_each_hole
     iterator to walk over all holes
 
     :param  pos:
-        &drm_mm_node used internally to track progress
+        \ :c:type:`struct drm_mm_node <drm_mm_node>`\  used internally to track progress
 
     :param  mm:
-        &drm_mm allocator to walk
+        \ :c:type:`struct drm_mm <drm_mm>`\  allocator to walk
 
     :param  hole_start:
         ulong variable to assign the hole start to on each iteration

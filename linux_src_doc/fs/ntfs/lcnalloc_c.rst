@@ -133,7 +133,7 @@ I have added in double the required zone position pointer wrap around
 logic which can be optimized to having only one of the two logic sets.
 However, having the double logic will work fine, but if we have only one of
 the sets and we get it wrong somewhere, then we get into trouble, so
-removing the duplicate logic requires \_very\_ careful consideration of \_all\_
+removing the duplicate logic requires \_very\_ careful consideration of \_all_
 possible code paths.  So at least for now, I am leaving the double logic -
 better safe than sorry... (AIA)
 
@@ -149,8 +149,8 @@ modifies the bitmap contents.
 
 .. _`__ntfs_cluster_free`:
 
-__ntfs_cluster_free
-===================
+\__ntfs_cluster_free
+====================
 
 .. c:function:: s64 __ntfs_cluster_free(ntfs_inode *ni, const VCN start_vcn, s64 count, ntfs_attr_search_ctx *ctx, const bool is_rollback)
 

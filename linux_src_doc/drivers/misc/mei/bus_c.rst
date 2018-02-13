@@ -3,8 +3,8 @@
 
 .. _`__mei_cl_send`:
 
-__mei_cl_send
-=============
+\__mei_cl_send
+==============
 
 .. c:function:: ssize_t __mei_cl_send(struct mei_cl *cl, u8 *buf, size_t length, unsigned int mode)
 
@@ -31,8 +31,8 @@ written size bytes or < 0 on error
 
 .. _`__mei_cl_recv`:
 
-__mei_cl_recv
-=============
+\__mei_cl_recv
+==============
 
 .. c:function:: ssize_t __mei_cl_recv(struct mei_cl *cl, u8 *buf, size_t length, unsigned int mode)
 

@@ -167,8 +167,8 @@ and then calls the original bio end_io function.
 
 .. _`__bio_integrity_endio`:
 
-__bio_integrity_endio
-=====================
+\__bio_integrity_endio
+======================
 
 .. c:function:: bool __bio_integrity_endio(struct bio *bio)
 

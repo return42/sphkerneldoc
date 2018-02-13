@@ -528,7 +528,7 @@ acr_r352_prepare_hs_blob
 Description
 -----------
 
-@sb secure boot instance to prepare for
+\ ``sb``\  secure boot instance to prepare for
 \ ``fw``\  name of the HS firmware to load
 \ ``blob``\  pointer to gpuobj that will be allocated to receive the HS FW payload
 \ ``bl_desc``\  pointer to the BL descriptor to write for this firmware

@@ -37,7 +37,7 @@ UMAC_RD_WR
     \ :c:type:`struct iwl_dbg_mem_access_rsp <iwl_dbg_mem_access_rsp>`\ 
 
 MFU_ASSERT_DUMP_NTF
-    &struct iwl_mfu_assert_dump_notif
+    \ :c:type:`struct iwl_mfu_assert_dump_notif <iwl_mfu_assert_dump_notif>`\ 
 
 .. _`iwl_error_resp`:
 

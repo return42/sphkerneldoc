@@ -3,8 +3,8 @@
 
 .. _`__hostap_cmd_queue_free`:
 
-__hostap_cmd_queue_free
-=======================
+\__hostap_cmd_queue_free
+========================
 
 .. c:function:: void __hostap_cmd_queue_free(local_info_t *local, struct hostap_cmd_queue *entry, int del_req)
 
@@ -149,8 +149,8 @@ command is completed.
 
 .. _`__hfa384x_cmd_no_wait`:
 
-__hfa384x_cmd_no_wait
-=====================
+\__hfa384x_cmd_no_wait
+======================
 
 .. c:function:: int __hfa384x_cmd_no_wait(struct net_device *dev, u16 cmd, u16 param0, int io_debug_num)
 

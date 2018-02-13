@@ -201,8 +201,8 @@ qib_register_ib_device
 
 .. _`_qib_schedule_send`:
 
-_qib_schedule_send
-==================
+\_qib_schedule_send
+===================
 
 .. c:function:: void _qib_schedule_send(struct rvt_qp *qp)
 

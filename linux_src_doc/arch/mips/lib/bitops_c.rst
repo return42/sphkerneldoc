@@ -3,8 +3,8 @@
 
 .. _`__mips_set_bit`:
 
-__mips_set_bit
-==============
+\__mips_set_bit
+===============
 
 .. c:function:: void __mips_set_bit(unsigned long nr, volatile unsigned long *addr)
 
@@ -18,8 +18,8 @@ __mips_set_bit
 
 .. _`__mips_clear_bit`:
 
-__mips_clear_bit
-================
+\__mips_clear_bit
+=================
 
 .. c:function:: void __mips_clear_bit(unsigned long nr, volatile unsigned long *addr)
 
@@ -33,8 +33,8 @@ __mips_clear_bit
 
 .. _`__mips_change_bit`:
 
-__mips_change_bit
-=================
+\__mips_change_bit
+==================
 
 .. c:function:: void __mips_change_bit(unsigned long nr, volatile unsigned long *addr)
 
@@ -48,8 +48,8 @@ __mips_change_bit
 
 .. _`__mips_test_and_set_bit`:
 
-__mips_test_and_set_bit
-=======================
+\__mips_test_and_set_bit
+========================
 
 .. c:function:: int __mips_test_and_set_bit(unsigned long nr, volatile unsigned long *addr)
 
@@ -63,8 +63,8 @@ __mips_test_and_set_bit
 
 .. _`__mips_test_and_set_bit_lock`:
 
-__mips_test_and_set_bit_lock
-============================
+\__mips_test_and_set_bit_lock
+=============================
 
 .. c:function:: int __mips_test_and_set_bit_lock(unsigned long nr, volatile unsigned long *addr)
 
@@ -78,8 +78,8 @@ __mips_test_and_set_bit_lock
 
 .. _`__mips_test_and_clear_bit`:
 
-__mips_test_and_clear_bit
-=========================
+\__mips_test_and_clear_bit
+==========================
 
 .. c:function:: int __mips_test_and_clear_bit(unsigned long nr, volatile unsigned long *addr)
 
@@ -93,8 +93,8 @@ __mips_test_and_clear_bit
 
 .. _`__mips_test_and_change_bit`:
 
-__mips_test_and_change_bit
-==========================
+\__mips_test_and_change_bit
+===========================
 
 .. c:function:: int __mips_test_and_change_bit(unsigned long nr, volatile unsigned long *addr)
 

@@ -3,8 +3,8 @@
 
 .. _`__anon_vma_prepare`:
 
-__anon_vma_prepare
-==================
+\__anon_vma_prepare
+===================
 
 .. c:function:: int __anon_vma_prepare(struct vm_area_struct *vma)
 
@@ -98,8 +98,8 @@ processes.
 
 .. _`__page_set_anon_rmap`:
 
-__page_set_anon_rmap
-====================
+\__page_set_anon_rmap
+=====================
 
 .. c:function:: void __page_set_anon_rmap(struct page *page, struct vm_area_struct *vma, unsigned long address, int exclusive)
 
@@ -119,8 +119,8 @@ __page_set_anon_rmap
 
 .. _`__page_check_anon_rmap`:
 
-__page_check_anon_rmap
-======================
+\__page_check_anon_rmap
+=======================
 
 .. c:function:: void __page_check_anon_rmap(struct page *page, struct vm_area_struct *vma, unsigned long address)
 

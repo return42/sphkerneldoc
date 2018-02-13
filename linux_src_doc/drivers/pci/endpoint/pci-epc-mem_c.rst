@@ -30,8 +30,8 @@ Kishon Vijay Abraham I <kishon@ti.com>
 
 .. _`__pci_epc_mem_init`:
 
-__pci_epc_mem_init
-==================
+\__pci_epc_mem_init
+===================
 
 .. c:function:: int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size, size_t page_size)
 

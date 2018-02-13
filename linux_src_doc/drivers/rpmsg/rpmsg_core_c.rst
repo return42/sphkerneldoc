@@ -336,8 +336,8 @@ Returns 0 on success and an appropriate error value on failure.
 
 .. _`__register_rpmsg_driver`:
 
-__register_rpmsg_driver
-=======================
+\__register_rpmsg_driver
+========================
 
 .. c:function:: int __register_rpmsg_driver(struct rpmsg_driver *rpdrv, struct module *owner)
 

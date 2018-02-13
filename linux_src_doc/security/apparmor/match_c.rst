@@ -64,7 +64,7 @@ this does not valid accept table values
 Return
 ------
 
-%0 else error code on failure to verify
+\ ``0``\  else error code on failure to verify
 
 .. _`dfa_free`:
 

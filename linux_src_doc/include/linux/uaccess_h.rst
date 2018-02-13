@@ -3,8 +3,8 @@
 
 .. _`__copy_to_user_inatomic`:
 
-__copy_to_user_inatomic
-=======================
+\__copy_to_user_inatomic
+========================
 
 .. c:function:: unsigned long __copy_to_user_inatomic(void __user *to, const void *from, unsigned long n)
 

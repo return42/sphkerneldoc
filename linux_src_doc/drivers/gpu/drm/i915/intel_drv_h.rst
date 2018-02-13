@@ -3,8 +3,8 @@
 
 .. _`_wait_for`:
 
-_wait_for
-=========
+\_wait_for
+==========
 
 .. c:function::  _wait_for( COND,  US,  Wmin,  Wmax)
 

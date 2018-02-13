@@ -96,7 +96,7 @@ fdt_check_header
 Description
 -----------
 
-fdt_check_header() checks that the given buffer contains what
+\ :c:func:`fdt_check_header`\  checks that the given buffer contains what
 appears to be a flattened device tree with sane information in its
 header.
 
@@ -133,7 +133,7 @@ fdt_move
 Description
 -----------
 
-fdt_move() relocates, if possible, the device tree blob located at
+\ :c:func:`fdt_move`\  relocates, if possible, the device tree blob located at
 fdt to the buffer at buf of size bufsize.  The buffer may overlap
 with the existing device tree blob at fdt.  Therefore,
 fdt_move(fdt, fdt, fdt_totalsize(fdt))
@@ -170,7 +170,7 @@ fdt_string
 Description
 -----------
 
-fdt_string() retrieves a pointer to a single string from the
+\ :c:func:`fdt_string`\  retrieves a pointer to a single string from the
 strings block of the device tree blob at fdt.
 
 .. _`fdt_string.return`:
@@ -333,7 +333,7 @@ fdt_subnode_offset
 Description
 -----------
 
-fdt_subnode_offset() finds a subnode of the node at structure block
+\ :c:func:`fdt_subnode_offset`\  finds a subnode of the node at structure block
 offset parentoffset with the given name.  name may include a unit
 address, in which case \ :c:func:`fdt_subnode_offset`\  will find the subnode
 with that unit address, or the unit address may be omitted, in
@@ -401,7 +401,7 @@ fdt_path_offset
 Description
 -----------
 
-fdt_path_offset() finds a node of a given path in the device tree.
+\ :c:func:`fdt_path_offset`\  finds a node of a given path in the device tree.
 Each path component may omit the unit address portion, but the
 results of this are undefined if any such path component is
 ambiguous (that is if there are multiple nodes at the relevant
@@ -446,7 +446,7 @@ fdt_get_name
 Description
 -----------
 
-fdt_get_name() retrieves the name (including unit address) of the
+\ :c:func:`fdt_get_name`\  retrieves the name (including unit address) of the
 device tree node at structure block offset nodeoffset.  If lenp is
 non-NULL, the length of this name is also returned, in the integer
 pointed to by lenp.
@@ -487,7 +487,7 @@ fdt_first_property_offset
 Description
 -----------
 
-fdt_first_property_offset() finds the first property of the node at
+\ :c:func:`fdt_first_property_offset`\  finds the first property of the node at
 the given structure block offset.
 
 .. _`fdt_first_property_offset.return`:
@@ -524,7 +524,7 @@ fdt_next_property_offset
 Description
 -----------
 
-fdt_next_property_offset() finds the property immediately after the
+\ :c:func:`fdt_next_property_offset`\  finds the property immediately after the
 one at the given structure block offset.  This will be a property
 of the same node as the given property.
 
@@ -602,7 +602,7 @@ fdt_get_property_by_offset
 Description
 -----------
 
-fdt_get_property_by_offset() retrieves a pointer to the
+\ :c:func:`fdt_get_property_by_offset`\  retrieves a pointer to the
 fdt_property structure within the device tree blob at the given
 offset.  If lenp is non-NULL, the length of the property value is
 also returned, in the integer pointed to by lenp.
@@ -682,7 +682,7 @@ fdt_get_property
 Description
 -----------
 
-fdt_get_property() retrieves a pointer to the fdt_property
+\ :c:func:`fdt_get_property`\  retrieves a pointer to the fdt_property
 structure within the device tree blob corresponding to the property
 named 'name' of the node at offset nodeoffset.  If lenp is
 non-NULL, the length of the property value is also returned, in the
@@ -733,7 +733,7 @@ fdt_getprop_by_offset
 Description
 -----------
 
-fdt_getprop_by_offset() retrieves a pointer to the value of the
+\ :c:func:`fdt_getprop_by_offset`\  retrieves a pointer to the value of the
 property at structure block offset 'offset' (this will be a pointer
 to within the device blob itself, not a copy of the value).  If
 lenp is non-NULL, the length of the property value is also
@@ -819,7 +819,7 @@ fdt_getprop
 Description
 -----------
 
-fdt_getprop() retrieves a pointer to the value of the property
+\ :c:func:`fdt_getprop`\  retrieves a pointer to the value of the property
 named 'name' of the node at offset nodeoffset (this will be a
 pointer to within the device blob itself, not a copy of the value).
 If lenp is non-NULL, the length of the property value is also
@@ -864,7 +864,7 @@ fdt_get_phandle
 Description
 -----------
 
-fdt_get_phandle() retrieves the phandle of the device tree node at
+\ :c:func:`fdt_get_phandle`\  retrieves the phandle of the device tree node at
 structure block offset nodeoffset.
 
 .. _`fdt_get_phandle.return`:
@@ -921,7 +921,7 @@ fdt_get_alias
 Description
 -----------
 
-fdt_get_alias() retrieves the value of a given alias.  That is, the
+\ :c:func:`fdt_get_alias`\  retrieves the value of a given alias.  That is, the
 value of the property named 'name' in the node /aliases.
 
 .. _`fdt_get_alias.return`:
@@ -958,7 +958,7 @@ fdt_get_path
 Description
 -----------
 
-fdt_get_path() computes the full path of the node at offset
+\ :c:func:`fdt_get_path`\  computes the full path of the node at offset
 nodeoffset, and records that path in the buffer at buf.
 
 .. _`fdt_get_path.note`:
@@ -1011,7 +1011,7 @@ fdt_supernode_atdepth_offset
 Description
 -----------
 
-fdt_supernode_atdepth_offset() finds an ancestor of the given node
+\ :c:func:`fdt_supernode_atdepth_offset`\  finds an ancestor of the given node
 at a specific depth from the root (where the root itself has depth
 0, its immediate subnodes depth 1 and so forth).  So
 fdt_supernode_atdepth_offset(fdt, nodeoffset, 0, NULL);
@@ -1063,7 +1063,7 @@ fdt_node_depth
 Description
 -----------
 
-fdt_node_depth() finds the depth of a given node.  The root node
+\ :c:func:`fdt_node_depth`\  finds the depth of a given node.  The root node
 has depth 0, its immediate subnodes depth 1 and so forth.
 
 .. _`fdt_node_depth.note`:
@@ -1106,7 +1106,7 @@ fdt_parent_offset
 Description
 -----------
 
-fdt_parent_offset() locates the parent node of a given node (that
+\ :c:func:`fdt_parent_offset`\  locates the parent node of a given node (that
 is, it finds the offset of the node which contains the node at
 nodeoffset as a subnode).
 
@@ -1160,7 +1160,7 @@ fdt_node_offset_by_prop_value
 Description
 -----------
 
-fdt_node_offset_by_prop_value() returns the offset of the first
+\ :c:func:`fdt_node_offset_by_prop_value`\  returns the offset of the first
 node after startoffset, which has a property named propname whose
 value is of length proplen and has value equal to propval; or if
 startoffset is -1, the very first such node in the tree.
@@ -1219,7 +1219,7 @@ fdt_node_offset_by_phandle
 Description
 -----------
 
-fdt_node_offset_by_phandle() returns the offset of the node
+\ :c:func:`fdt_node_offset_by_phandle`\  returns the offset of the node
 which has the given phandle value.  If there is more than one node
 in the tree with the given phandle (an invalid tree), results are
 undefined.
@@ -1303,7 +1303,7 @@ fdt_node_offset_by_compatible
 Description
 -----------
 
-fdt_node_offset_by_compatible() returns the offset of the first
+\ :c:func:`fdt_node_offset_by_compatible`\  returns the offset of the first
 node after startoffset, which has a 'compatible' property which
 lists the given compatible string; or if startoffset is -1, the
 very first such node in the tree.
@@ -1616,7 +1616,7 @@ fdt_setprop_inplace
 Description
 -----------
 
-fdt_setprop_inplace() replaces the value of a given property with
+\ :c:func:`fdt_setprop_inplace`\  replaces the value of a given property with
 the data in val, of length len.  This function cannot change the
 size of a property, and so will only work if len is equal to the
 current length of the property.
@@ -1666,7 +1666,7 @@ fdt_setprop_inplace_u32
 Description
 -----------
 
-fdt_setprop_inplace_u32() replaces the value of a given property
+\ :c:func:`fdt_setprop_inplace_u32`\  replaces the value of a given property
 with the 32-bit integer value in val, converting val to big-endian
 if necessary.  This function cannot change the size of a property,
 and so will only work if the property already exists and has length
@@ -1717,7 +1717,7 @@ fdt_setprop_inplace_u64
 Description
 -----------
 
-fdt_setprop_inplace_u64() replaces the value of a given property
+\ :c:func:`fdt_setprop_inplace_u64`\  replaces the value of a given property
 with the 64-bit integer value in val, converting val to big-endian
 if necessary.  This function cannot change the size of a property,
 and so will only work if the property already exists and has length
@@ -1793,7 +1793,7 @@ fdt_nop_property
 Description
 -----------
 
-fdt_nop_property() will replace a given property's representation
+\ :c:func:`fdt_nop_property`\  will replace a given property's representation
 in the blob with FDT_NOP tags, effectively removing it from the
 tree.
 
@@ -1835,7 +1835,7 @@ fdt_nop_node
 Description
 -----------
 
-fdt_nop_node() will replace a given node's representation in the
+\ :c:func:`fdt_nop_node`\  will replace a given node's representation in the
 blob, including all its subnodes, if any, with FDT_NOP tags,
 effectively removing it from the tree.
 
@@ -1950,7 +1950,7 @@ fdt_del_mem_rsv
 Description
 -----------
 
-fdt_del_mem_rsv() removes the n-th memory reserve map entry from
+\ :c:func:`fdt_del_mem_rsv`\  removes the n-th memory reserve map entry from
 the blob.
 
 This function will delete data from the reservation table and will
@@ -1994,7 +1994,7 @@ fdt_set_name
 Description
 -----------
 
-fdt_set_name() replaces the name (including unit address, if any)
+\ :c:func:`fdt_set_name`\  replaces the name (including unit address, if any)
 of the given node with the given string.  NOTE: this function can't
 efficiently check if the new name is unique amongst the given
 node's siblings; results are undefined if this function is invoked
@@ -2045,7 +2045,7 @@ fdt_setprop
 Description
 -----------
 
-fdt_setprop() sets the value of the named property in the given
+\ :c:func:`fdt_setprop`\  sets the value of the named property in the given
 node to the given value and length, creating the property if it
 does not already exist.
 
@@ -2098,7 +2098,7 @@ fdt_setprop_placeholder
 Description
 -----------
 
-fdt_setprop_placeholer() allocates the named property in the given node.
+\ :c:func:`fdt_setprop_placeholer`\  allocates the named property in the given node.
 If the property exists it is resized. In either case a pointer to the
 property data is returned.
 
@@ -2148,7 +2148,7 @@ fdt_setprop_u32
 Description
 -----------
 
-fdt_setprop_u32() sets the value of the named property in the given
+\ :c:func:`fdt_setprop_u32`\  sets the value of the named property in the given
 node to the given 32-bit integer value (converting to big-endian if
 necessary), or creates a new property with that value if it does
 not already exist.
@@ -2199,7 +2199,7 @@ fdt_setprop_u64
 Description
 -----------
 
-fdt_setprop_u64() sets the value of the named property in the given
+\ :c:func:`fdt_setprop_u64`\  sets the value of the named property in the given
 node to the given 64-bit integer value (converting to big-endian if
 necessary), or creates a new property with that value if it does
 not already exist.
@@ -2278,7 +2278,7 @@ fdt_setprop_string
 Description
 -----------
 
-fdt_setprop_string() sets the value of the named property in the
+\ :c:func:`fdt_setprop_string`\  sets the value of the named property in the
 given node to the given string value (using the length of the
 string to determine the new length of the property), or creates a
 new property with that value if it does not already exist.
@@ -2326,7 +2326,7 @@ fdt_setprop_empty
 Description
 -----------
 
-fdt_setprop_empty() sets the value of the named property in the
+\ :c:func:`fdt_setprop_empty`\  sets the value of the named property in the
 given node to an empty (zero length) value, or creates a new empty
 property if it does not already exist.
 
@@ -2379,7 +2379,7 @@ fdt_appendprop
 Description
 -----------
 
-fdt_appendprop() appends the value to the named property in the
+\ :c:func:`fdt_appendprop`\  appends the value to the named property in the
 given node, creating the property if it does not already exist.
 
 This function may insert data into the blob, and will therefore
@@ -2428,7 +2428,7 @@ fdt_appendprop_u32
 Description
 -----------
 
-fdt_appendprop_u32() appends the given 32-bit integer value
+\ :c:func:`fdt_appendprop_u32`\  appends the given 32-bit integer value
 (converting to big-endian if necessary) to the value of the named
 property in the given node, or creates a new property with that
 value if it does not already exist.
@@ -2479,7 +2479,7 @@ fdt_appendprop_u64
 Description
 -----------
 
-fdt_appendprop_u64() appends the given 64-bit integer value
+\ :c:func:`fdt_appendprop_u64`\  appends the given 64-bit integer value
 (converting to big-endian if necessary) to the value of the named
 property in the given node, or creates a new property with that
 value if it does not already exist.
@@ -2558,7 +2558,7 @@ fdt_appendprop_string
 Description
 -----------
 
-fdt_appendprop_string() appends the given string to the value of
+\ :c:func:`fdt_appendprop_string`\  appends the given string to the value of
 the named property in the given node, or creates a new property
 with that value if it does not already exist.
 
@@ -2605,7 +2605,7 @@ fdt_delprop
 Description
 -----------
 
-fdt_del_property() will delete the given property.
+\ :c:func:`fdt_del_property`\  will delete the given property.
 
 This function will delete data from the blob, and will therefore
 change the offsets of some existing nodes.
@@ -2679,7 +2679,7 @@ fdt_add_subnode
 Description
 -----------
 
-fdt_add_subnode() creates a new node as a subnode of the node at
+\ :c:func:`fdt_add_subnode`\  creates a new node as a subnode of the node at
 structure block offset parentoffset, with the given name (which
 should include the unit address, if any).
 
@@ -2728,7 +2728,7 @@ fdt_del_node
 Description
 -----------
 
-fdt_del_node() will remove the given node, including all its
+\ :c:func:`fdt_del_node`\  will remove the given node, including all its
 subnodes if any, from the blob.
 
 This function will delete data from the blob, and will therefore
@@ -2768,7 +2768,7 @@ fdt_overlay_apply
 Description
 -----------
 
-fdt_overlay_apply() will apply the given device tree overlay on the
+\ :c:func:`fdt_overlay_apply`\  will apply the given device tree overlay on the
 given base device tree.
 
 Expect the base device tree to be modified, even if the function

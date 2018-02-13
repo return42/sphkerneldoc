@@ -3,8 +3,8 @@
 
 .. _`__async_tx_find_channel`:
 
-__async_tx_find_channel
-=======================
+\__async_tx_find_channel
+========================
 
 .. c:function:: struct dma_chan *__async_tx_find_channel(struct async_submit_ctl *submit, enum dma_transaction_type tx_type)
 

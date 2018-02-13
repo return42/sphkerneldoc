@@ -3,8 +3,8 @@
 
 .. _`__ffs`:
 
-__ffs
-=====
+\__ffs
+======
 
 .. c:function:: unsigned long __ffs(unsigned long x)
 
@@ -18,7 +18,7 @@ __ffs
 Description
 -----------
 
-__ffs() return is undefined if no bit is set.
+\__ffs() return is undefined if no bit is set.
 
 32-bit fast \__ffs by LaMont Jones "lamont At hp com".
 64-bit enhancement by Grant Grundler "grundler At parisc-linux org".

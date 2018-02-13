@@ -63,8 +63,8 @@ BATADV_DBG_ALL
 
 .. _`_batadv_dbg`:
 
-_batadv_dbg
-===========
+\_batadv_dbg
+============
 
 .. c:function::  _batadv_dbg( type,  bat_priv,  ratelimited,  fmt,  arg...)
 

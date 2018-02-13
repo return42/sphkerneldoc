@@ -8,7 +8,7 @@ hgsmi_report_flags_location
 
 .. c:function:: int hgsmi_report_flags_location(struct gen_pool *ctx, u32 location)
 
-    @param    ctx          the context of the guest heap to use. \ ``param``\     location     the offset chosen for the flags within guest VRAM. \ ``returns``\  0 on success, -errno on failure
+    \ ``param``\     ctx          the context of the guest heap to use. \ ``param``\     location     the offset chosen for the flags within guest VRAM. \ ``returns``\  0 on success, -errno on failure
 
     :param struct gen_pool \*ctx:
         *undescribed*
@@ -38,7 +38,7 @@ hgsmi_query_conf
 
 .. c:function:: int hgsmi_query_conf(struct gen_pool *ctx, u32 index, u32 *value_ret)
 
-    @param  ctx        the context containing the heap used \ ``param``\   index      the index of the parameter to query, \ ``see``\  vbva_conf32::index \ ``param``\   value_ret  where to store the value of the parameter on success \ ``returns``\  0 on success, -errno on failure
+    \ ``param``\   ctx        the context containing the heap used \ ``param``\   index      the index of the parameter to query, \ ``see``\  vbva_conf32::index \ ``param``\   value_ret  where to store the value of the parameter on success \ ``returns``\  0 on success, -errno on failure
 
     :param struct gen_pool \*ctx:
         *undescribed*
@@ -85,7 +85,7 @@ hgsmi_update_pointer_shape
 Description
 -----------
 
-@param  ctx      the context containing the heap to be used
+\ ``param``\   ctx      the context containing the heap to be used
 
 .. _`hgsmi_cursor_position`:
 

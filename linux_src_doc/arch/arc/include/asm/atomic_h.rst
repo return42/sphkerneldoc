@@ -3,8 +3,8 @@
 
 .. _`__atomic_add_unless`:
 
-__atomic_add_unless
-===================
+\__atomic_add_unless
+====================
 
 .. c:function::  __atomic_add_unless( v,  a,  u)
 

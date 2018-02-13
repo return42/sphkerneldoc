@@ -230,7 +230,7 @@ script_addrs
 Description
 -----------
 
-@fw_name             The firmware name
+\ ``fw_name``\              The firmware name
 \ ``script_addrs``\         SDMA scripts addresses in SDMA ROM
 
 .. This file was automatic generated / don't edit.

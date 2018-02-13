@@ -49,7 +49,7 @@ if_usb_probe
     sets the configuration values
 
     :param struct usb_interface \*intf:
-        &usb_interface pointer
+        \ :c:type:`struct usb_interface <usb_interface>`\  pointer
 
     :param const struct usb_device_id \*id:
         pointer to usb_device_id

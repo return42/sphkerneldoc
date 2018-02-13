@@ -50,7 +50,7 @@ plist_head_init
     dynamic struct plist_head initializer
 
     :param struct plist_head \*head:
-        &struct plist_head pointer
+        \ :c:type:`struct plist_head <plist_head>`\  pointer
 
 .. _`plist_node_init`:
 
@@ -62,7 +62,7 @@ plist_node_init
     Dynamic struct plist_node initializer
 
     :param struct plist_node \*node:
-        &struct plist_node pointer
+        \ :c:type:`struct plist_node <plist_node>`\  pointer
 
     :param int prio:
         initial node priority
@@ -211,7 +211,7 @@ plist_head_empty
     return !0 if a plist_head is empty
 
     :param const struct plist_head \*head:
-        &struct plist_head pointer
+        \ :c:type:`struct plist_head <plist_head>`\  pointer
 
 .. _`plist_node_empty`:
 
@@ -223,7 +223,7 @@ plist_node_empty
     return !0 if plist_node is not on a list
 
     :param const struct plist_node \*node:
-        &struct plist_node pointer
+        \ :c:type:`struct plist_node <plist_node>`\  pointer
 
 .. _`plist_first_entry`:
 

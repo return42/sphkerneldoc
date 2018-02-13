@@ -19,7 +19,7 @@ rijndaelKeySetupEnc
 Description
 -----------
 
-@return      the number of rounds for the given cipher key size.
+\ ``return``\       the number of rounds for the given cipher key size.
 
 .. _`omac1_aes_128_vector`:
 

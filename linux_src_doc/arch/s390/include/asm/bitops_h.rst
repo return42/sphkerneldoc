@@ -3,8 +3,8 @@
 
 .. _`__flogr`:
 
-__flogr
-=======
+\__flogr
+========
 
 .. c:function:: unsigned char __flogr(unsigned long word)
 
@@ -24,8 +24,8 @@ If no bit is set this function returns 64.
 
 .. _`__ffs`:
 
-__ffs
-=====
+\__ffs
+======
 
 .. c:function:: unsigned long __ffs(unsigned long word)
 
@@ -63,8 +63,8 @@ compiler builtin ffs routines (man ffs).
 
 .. _`__fls`:
 
-__fls
-=====
+\__fls
+======
 
 .. c:function:: unsigned long __fls(unsigned long word)
 

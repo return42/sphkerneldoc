@@ -17,12 +17,12 @@ typedef netio_size_t
 
 .. c:type:: typedef netio_size_t
 
-    @ingroup setup
+    \ ``ingroup``\  setup
 
 .. _`_netio_pkt_handle_base`:
 
-_NETIO_PKT_HANDLE_BASE
-======================
+\_NETIO_PKT_HANDLE_BASE
+=======================
 
 .. c:function::  _NETIO_PKT_HANDLE_BASE( p)
 
@@ -31,8 +31,8 @@ _NETIO_PKT_HANDLE_BASE
 
 .. _`_netio_pkt_base`:
 
-_NETIO_PKT_BASE
-===============
+\_NETIO_PKT_BASE
+================
 
 .. c:function::  _NETIO_PKT_BASE( p)
 

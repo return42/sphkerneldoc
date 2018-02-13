@@ -230,8 +230,8 @@ imr_add_range
 
 .. _`__imr_remove_range`:
 
-__imr_remove_range
-==================
+\__imr_remove_range
+===================
 
 .. c:function:: int __imr_remove_range(int reg, phys_addr_t base, size_t size)
 

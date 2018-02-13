@@ -3,8 +3,8 @@
 
 .. _`_transport_sas_node_find_by_sas_address`:
 
-_transport_sas_node_find_by_sas_address
-=======================================
+\_transport_sas_node_find_by_sas_address
+========================================
 
 .. c:function:: struct _sas_node *_transport_sas_node_find_by_sas_address(struct MPT3SAS_ADAPTER *ioc, u64 sas_address)
 
@@ -33,8 +33,8 @@ the sas_node object.
 
 .. _`_transport_convert_phy_link_rate`:
 
-_transport_convert_phy_link_rate
-================================
+\_transport_convert_phy_link_rate
+=================================
 
 .. c:function:: enum sas_linkrate _transport_convert_phy_link_rate(u8 link_rate)
 
@@ -50,8 +50,8 @@ Convert link_rate from mpi fusion into sas_transport form.
 
 .. _`_transport_set_identify`:
 
-_transport_set_identify
-=======================
+\_transport_set_identify
+========================
 
 .. c:function:: int _transport_set_identify(struct MPT3SAS_ADAPTER *ioc, u16 handle, struct sas_identify *identify)
 
@@ -109,8 +109,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_transport_expander_report_manufacture`:
 
-_transport_expander_report_manufacture
-======================================
+\_transport_expander_report_manufacture
+=======================================
 
 .. c:function:: int _transport_expander_report_manufacture(struct MPT3SAS_ADAPTER *ioc, u64 sas_address, struct sas_expander_device *edev)
 
@@ -136,8 +136,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_delete_port`:
 
-_transport_delete_port
-======================
+\_transport_delete_port
+=======================
 
 .. c:function:: void _transport_delete_port(struct MPT3SAS_ADAPTER *ioc, struct _sas_port *mpt3sas_port)
 
@@ -158,8 +158,8 @@ Returns nothing.
 
 .. _`_transport_delete_phy`:
 
-_transport_delete_phy
-=====================
+\_transport_delete_phy
+======================
 
 .. c:function:: void _transport_delete_phy(struct MPT3SAS_ADAPTER *ioc, struct _sas_port *mpt3sas_port, struct _sas_phy *mpt3sas_phy)
 
@@ -183,8 +183,8 @@ Returns nothing.
 
 .. _`_transport_add_phy`:
 
-_transport_add_phy
-==================
+\_transport_add_phy
+===================
 
 .. c:function:: void _transport_add_phy(struct MPT3SAS_ADAPTER *ioc, struct _sas_port *mpt3sas_port, struct _sas_phy *mpt3sas_phy)
 
@@ -208,8 +208,8 @@ Returns nothing.
 
 .. _`_transport_add_phy_to_an_existing_port`:
 
-_transport_add_phy_to_an_existing_port
-======================================
+\_transport_add_phy_to_an_existing_port
+=======================================
 
 .. c:function:: void _transport_add_phy_to_an_existing_port(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_node, struct _sas_phy *mpt3sas_phy, u64 sas_address)
 
@@ -236,8 +236,8 @@ Returns nothing.
 
 .. _`_transport_del_phy_from_an_existing_port`:
 
-_transport_del_phy_from_an_existing_port
-========================================
+\_transport_del_phy_from_an_existing_port
+=========================================
 
 .. c:function:: void _transport_del_phy_from_an_existing_port(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_node, struct _sas_phy *mpt3sas_phy)
 
@@ -261,8 +261,8 @@ Returns nothing.
 
 .. _`_transport_sanity_check`:
 
-_transport_sanity_check
-=======================
+\_transport_sanity_check
+========================
 
 .. c:function:: void _transport_sanity_check(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_node, u64 sas_address)
 
@@ -442,8 +442,8 @@ Returns nothing.
 
 .. _`_transport_get_expander_phy_error_log`:
 
-_transport_get_expander_phy_error_log
-=====================================
+\_transport_get_expander_phy_error_log
+======================================
 
 .. c:function:: int _transport_get_expander_phy_error_log(struct MPT3SAS_ADAPTER *ioc, struct sas_phy *phy)
 
@@ -464,8 +464,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_get_linkerrors`:
 
-_transport_get_linkerrors
-=========================
+\_transport_get_linkerrors
+==========================
 
 .. c:function:: int _transport_get_linkerrors(struct sas_phy *phy)
 
@@ -483,8 +483,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_get_enclosure_identifier`:
 
-_transport_get_enclosure_identifier
-===================================
+\_transport_get_enclosure_identifier
+====================================
 
 .. c:function:: int _transport_get_enclosure_identifier(struct sas_rphy *rphy, u64 *identifier)
 
@@ -504,8 +504,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_get_bay_identifier`:
 
-_transport_get_bay_identifier
-=============================
+\_transport_get_bay_identifier
+==============================
 
 .. c:function:: int _transport_get_bay_identifier(struct sas_rphy *rphy)
 
@@ -521,8 +521,8 @@ Returns the slot id for a device that resides inside an enclosure.
 
 .. _`_transport_expander_phy_control`:
 
-_transport_expander_phy_control
-===============================
+\_transport_expander_phy_control
+================================
 
 .. c:function:: int _transport_expander_phy_control(struct MPT3SAS_ADAPTER *ioc, struct sas_phy *phy, u8 phy_operation)
 
@@ -546,8 +546,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_phy_reset`:
 
-_transport_phy_reset
-====================
+\_transport_phy_reset
+=====================
 
 .. c:function:: int _transport_phy_reset(struct sas_phy *phy, int hard_reset)
 
@@ -566,8 +566,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_phy_enable`:
 
-_transport_phy_enable
-=====================
+\_transport_phy_enable
+======================
 
 .. c:function:: int _transport_phy_enable(struct sas_phy *phy, int enable)
 
@@ -589,8 +589,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_phy_speed`:
 
-_transport_phy_speed
-====================
+\_transport_phy_speed
+=====================
 
 .. c:function:: int _transport_phy_speed(struct sas_phy *phy, struct sas_phy_linkrates *rates)
 
@@ -612,8 +612,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_transport_smp_handler`:
 
-_transport_smp_handler
-======================
+\_transport_smp_handler
+=======================
 
 .. c:function:: void _transport_smp_handler(struct bsg_job *job, struct Scsi_Host *shost, struct sas_rphy *rphy)
 

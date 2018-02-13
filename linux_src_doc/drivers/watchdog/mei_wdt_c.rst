@@ -330,8 +330,8 @@ Return
 
 .. _`__mei_wdt_is_registered`:
 
-__mei_wdt_is_registered
-=======================
+\__mei_wdt_is_registered
+========================
 
 .. c:function:: bool __mei_wdt_is_registered(struct mei_wdt *wdt)
 

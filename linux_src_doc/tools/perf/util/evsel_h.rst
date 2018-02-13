@@ -24,7 +24,7 @@ perf_evsel__read_on_cpu
 Description
 -----------
 
-@evsel - event selector to read value
+\ ``evsel``\  - event selector to read value
 \ ``cpu``\  - CPU of interest
 \ ``thread``\  - thread of interest
 
@@ -51,7 +51,7 @@ perf_evsel__read_on_cpu_scaled
 Description
 -----------
 
-@evsel - event selector to read value
+\ ``evsel``\  - event selector to read value
 \ ``cpu``\  - CPU of interest
 \ ``thread``\  - thread of interest
 
@@ -72,7 +72,7 @@ perf_evsel__is_group_leader
 Description
 -----------
 
-@evsel - evsel selector to be tested
+\ ``evsel``\  - evsel selector to be tested
 
 Return \ ``true``\  if \ ``evsel``\  is a group leader or a stand-alone event
 
@@ -93,7 +93,7 @@ perf_evsel__is_group_event
 Description
 -----------
 
-@evsel - evsel selector to be tested
+\ ``evsel``\  - evsel selector to be tested
 
 Return \ ``true``\  iff event group view is enabled and \ ``evsel``\  is a actual group
 leader which has other members in the group

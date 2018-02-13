@@ -32,7 +32,7 @@ Members
 -------
 
 epoch_ns
-    sched_clock() value at last update
+    \ :c:func:`sched_clock`\  value at last update
 
 epoch_cyc
     Clock cycle value at last update.

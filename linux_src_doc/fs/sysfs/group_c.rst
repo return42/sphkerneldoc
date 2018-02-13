@@ -211,8 +211,8 @@ sysfs_remove_link_from_group
 
 .. _`__compat_only_sysfs_link_entry_to_kobj`:
 
-__compat_only_sysfs_link_entry_to_kobj
-======================================
+\__compat_only_sysfs_link_entry_to_kobj
+=======================================
 
 .. c:function:: int __compat_only_sysfs_link_entry_to_kobj(struct kobject *kobj, struct kobject *target_kobj, const char *target_name)
 

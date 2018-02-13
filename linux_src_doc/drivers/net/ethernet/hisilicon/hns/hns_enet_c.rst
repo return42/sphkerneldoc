@@ -101,7 +101,7 @@ hns_nic_clear_all_rx_fetch
 Description
 -----------
 
-@ndev: net device
+\ ``ndev``\ : net device
 
 .. _`hns_set_multicast_list`:
 

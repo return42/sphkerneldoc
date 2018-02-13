@@ -63,8 +63,8 @@ Description
 
 .. _`__ffs`:
 
-__ffs
-=====
+\__ffs
+======
 
 .. c:function:: int __ffs(unsigned long x)
 
@@ -83,8 +83,8 @@ Description
 
 .. _`__fls`:
 
-__fls
-=====
+\__fls
+======
 
 .. c:function:: unsigned long __fls(unsigned long word)
 

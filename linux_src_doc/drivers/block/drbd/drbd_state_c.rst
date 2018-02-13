@@ -68,8 +68,8 @@ Should not be called directly, use \ :c:func:`drbd_request_state`\  or
 
 .. _`_drbd_request_state`:
 
-_drbd_request_state
-===================
+\_drbd_request_state
+====================
 
 .. c:function:: enum drbd_state_rv _drbd_request_state(struct drbd_device *device, union drbd_state mask, union drbd_state val, enum chg_state_flags f)
 
@@ -174,8 +174,8 @@ to D_UNKNOWN. This rule and many more along those lines are in this function.
 
 .. _`_drbd_set_state`:
 
-_drbd_set_state
-===============
+\_drbd_set_state
+================
 
 .. c:function:: enum drbd_state_rv _drbd_set_state(struct drbd_device *device, union drbd_state ns, enum chg_state_flags flags, struct completion *done)
 

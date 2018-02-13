@@ -3,8 +3,8 @@
 
 .. _`_wil_cfg80211_find_ie`:
 
-_wil_cfg80211_find_ie
-=====================
+\_wil_cfg80211_find_ie
+======================
 
 .. c:function:: const u8 *_wil_cfg80211_find_ie(const u8 *ies, u16 ies_len, const u8 *ie, u16 ie_len)
 
@@ -24,8 +24,8 @@ _wil_cfg80211_find_ie
 
 .. _`_wil_cfg80211_merge_extra_ies`:
 
-_wil_cfg80211_merge_extra_ies
-=============================
+\_wil_cfg80211_merge_extra_ies
+==============================
 
 .. c:function:: int _wil_cfg80211_merge_extra_ies(const u8 *ies1, u16 ies1_len, const u8 *ies2, u16 ies2_len, u8 **merged_ies, u16 *merged_len)
 

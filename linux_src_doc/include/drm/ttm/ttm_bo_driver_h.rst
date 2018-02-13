@@ -651,7 +651,7 @@ ttm_tt_set_placement_caching
 Description
 -----------
 
-@ttm A struct ttm_tt the backing pages of which will change caching policy.
+\ ``ttm``\  A struct ttm_tt the backing pages of which will change caching policy.
 
 This function will change caching policy of any default kernel mappings of
 the pages backing \ ``ttm``\ . If changing from cached to uncached or
@@ -802,8 +802,8 @@ The caller must take ttm_mem_io_lock before calling this function.
 
 .. _`__ttm_bo_reserve`:
 
-__ttm_bo_reserve
-================
+\__ttm_bo_reserve
+=================
 
 .. c:function:: int __ttm_bo_reserve(struct ttm_buffer_object *bo, bool interruptible, bool no_wait, struct ww_acquire_ctx *ticket)
 

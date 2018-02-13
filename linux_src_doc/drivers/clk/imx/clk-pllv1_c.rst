@@ -13,7 +13,7 @@ MFN_BITS
 Description
 -----------
 
-@clk_hw      clock source
+\ ``clk_hw``\       clock source
 \ ``parent``\       the parent clock name
 \ ``base``\         base address of pll registers
 

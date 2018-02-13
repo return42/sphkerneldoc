@@ -79,8 +79,8 @@ called under "dev->device_lock" lock
 
 .. _`__mei_me_cl_del`:
 
-__mei_me_cl_del
-===============
+\__mei_me_cl_del
+================
 
 .. c:function:: void __mei_me_cl_del(struct mei_device *dev, struct mei_me_client *me_cl)
 
@@ -131,8 +131,8 @@ mei_me_cl_add
 
 .. _`__mei_me_cl_by_uuid`:
 
-__mei_me_cl_by_uuid
-===================
+\__mei_me_cl_by_uuid
+====================
 
 .. c:function:: struct mei_me_client *__mei_me_cl_by_uuid(struct mei_device *dev, const uuid_le *uuid)
 
@@ -218,8 +218,8 @@ dev->me_clients_rwsem
 
 .. _`__mei_me_cl_by_uuid_id`:
 
-__mei_me_cl_by_uuid_id
-======================
+\__mei_me_cl_by_uuid_id
+=======================
 
 .. c:function:: struct mei_me_client *__mei_me_cl_by_uuid_id(struct mei_device *dev, const uuid_le *uuid, u8 client_id)
 
@@ -401,8 +401,8 @@ mei_cl_cb pointer or NULL;
 
 .. _`__mei_io_list_flush_cl`:
 
-__mei_io_list_flush_cl
-======================
+\__mei_io_list_flush_cl
+=======================
 
 .. c:function:: void __mei_io_list_flush_cl(struct list_head *head, const struct mei_cl *cl, bool free)
 
@@ -713,8 +713,8 @@ Return
 
 .. _`__mei_cl_disconnect`:
 
-__mei_cl_disconnect
-===================
+\__mei_cl_disconnect
+====================
 
 .. c:function:: int __mei_cl_disconnect(struct mei_cl *cl)
 

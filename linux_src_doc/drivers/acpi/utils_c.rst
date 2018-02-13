@@ -83,8 +83,8 @@ context, it shows the object path as <n/a>.
 
 .. _`__acpi_handle_debug`:
 
-__acpi_handle_debug
-===================
+\__acpi_handle_debug
+====================
 
 .. c:function:: void __acpi_handle_debug(struct _ddebug *descriptor, acpi_handle handle, const char *fmt,  ...)
 

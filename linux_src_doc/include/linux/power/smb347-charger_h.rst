@@ -125,7 +125,7 @@ enable_control
 Description
 -----------
 
-@use_main, \ ``use_usb``\ , and \ ``use_usb_otg``\  are means to enable/disable
+\ ``use_main``\ , \ ``use_usb``\ , and \ ``use_usb_otg``\  are means to enable/disable
 hardware support for these. This is useful when we want to have for
 example OTG charging controlled via OTG transceiver driver and not by
 the SMB347 hardware.

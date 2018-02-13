@@ -179,8 +179,8 @@ it is same as \ :c:func:`get_count_order`\  but with long type parameter
 
 .. _`__ffs64`:
 
-__ffs64
-=======
+\__ffs64
+========
 
 .. c:function:: unsigned long __ffs64(u64 word)
 

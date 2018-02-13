@@ -84,7 +84,7 @@ mux_chip_unregister
 Description
 -----------
 
-mux_chip_unregister() reverses the effects of \ :c:func:`mux_chip_register`\ .
+\ :c:func:`mux_chip_unregister`\  reverses the effects of \ :c:func:`mux_chip_register`\ .
 But not completely, you should not try to call \ :c:func:`mux_chip_register`\ 
 on a mux-chip that has been registered before.
 
@@ -105,7 +105,7 @@ mux_chip_free
 Description
 -----------
 
-mux_chip_free() reverses the effects of \ :c:func:`mux_chip_alloc`\ .
+\ :c:func:`mux_chip_free`\  reverses the effects of \ :c:func:`mux_chip_alloc`\ .
 
 .. _`devm_mux_chip_alloc`:
 
@@ -328,7 +328,7 @@ mux_control_put
 Description
 -----------
 
-mux_control_put() reverses the effects of \ :c:func:`mux_control_get`\ .
+\ :c:func:`mux_control_put`\  reverses the effects of \ :c:func:`mux_control_get`\ .
 
 .. _`devm_mux_control_get`:
 

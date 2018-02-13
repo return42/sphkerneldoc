@@ -27,7 +27,7 @@ esas2r_check_active_queue
 Description
 -----------
 
-@param [in] a
+\ ``param``\  [in] a
 \ ``param``\  [in] abort_request
 \ ``param``\  [in] cmd
 t

@@ -18,7 +18,7 @@ ata_is_port
 Return
 ------
 
-%1 if the device represents a ATA Port, \ ``0``\  else
+\ ``1``\  if the device represents a ATA Port, \ ``0``\  else
 
 .. _`ata_tport_delete`:
 
@@ -56,7 +56,7 @@ ata_is_link
 Return
 ------
 
-%1 if the device represents a ATA link, \ ``0``\  else
+\ ``1``\  if the device represents a ATA link, \ ``0``\  else
 
 .. _`ata_tlink_delete`:
 
@@ -116,7 +116,7 @@ ata_is_ata_dev
 Return
 ------
 
-%1 if the device represents a ATA device, \ ``0``\  else
+\ ``1``\  if the device represents a ATA device, \ ``0``\  else
 
 .. _`ata_tdev_free`:
 

@@ -292,8 +292,8 @@ tty layer write lock)
 
 .. _`__process_echoes`:
 
-__process_echoes
-================
+\__process_echoes
+=================
 
 .. c:function:: size_t __process_echoes(struct tty_struct *tty)
 
@@ -516,8 +516,8 @@ caller holds non-exclusive termios_rwsem
 
 .. _`__isig`:
 
-__isig
-======
+\__isig
+=======
 
 .. c:function:: void __isig(int sig, struct tty_struct *tty)
 

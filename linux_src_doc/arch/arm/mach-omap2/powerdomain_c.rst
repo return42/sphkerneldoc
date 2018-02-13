@@ -3,8 +3,8 @@
 
 .. _`_pwrdm_register`:
 
-_pwrdm_register
-===============
+\_pwrdm_register
+================
 
 .. c:function:: int _pwrdm_register(struct powerdomain *pwrdm)
 
@@ -24,8 +24,8 @@ already registered by the provided name, or 0 upon success.
 
 .. _`_pwrdm_save_clkdm_state_and_activate`:
 
-_pwrdm_save_clkdm_state_and_activate
-====================================
+\_pwrdm_save_clkdm_state_and_activate
+=====================================
 
 .. c:function:: u8 _pwrdm_save_clkdm_state_and_activate(struct powerdomain *pwrdm, u8 curr_pwrst, u8 pwrst)
 
@@ -55,8 +55,8 @@ Returns the power state switch mode currently in use (see the
 
 .. _`_pwrdm_restore_clkdm_state`:
 
-_pwrdm_restore_clkdm_state
-==========================
+\_pwrdm_restore_clkdm_state
+===========================
 
 .. c:function:: void _pwrdm_restore_clkdm_state(struct powerdomain *pwrdm, u8 sleep_switch)
 

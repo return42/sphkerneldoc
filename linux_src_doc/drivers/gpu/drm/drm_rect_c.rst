@@ -29,7 +29,7 @@ Calculate the intersection of rectangles \ ``r1``\  and \ ``r2``\ .
 Return
 ------
 
-%true if rectangle \ ``r1``\  is still visible after the operation,
+\ ``true``\  if rectangle \ ``r1``\  is still visible after the operation,
 \ ``false``\  otherwise.
 
 .. _`drm_rect_clip_scaled`:
@@ -69,7 +69,7 @@ same amounts multiplied by \ ``hscale``\  and \ ``vscale``\ .
 Return
 ------
 
-%true if rectangle \ ``dst``\  is still visible after being clipped,
+\ ``true``\  if rectangle \ ``dst``\  is still visible after being clipped,
 \ ``false``\  otherwise
 
 .. _`drm_rect_calc_hscale`:

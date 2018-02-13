@@ -39,7 +39,7 @@ aa_may_ptrace
 Return
 ------
 
-%0 else error code if permission denied or error
+\ ``0``\  else error code if permission denied or error
 
 .. _`audit_signal_mask`:
 

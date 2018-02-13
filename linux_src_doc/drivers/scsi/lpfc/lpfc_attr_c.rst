@@ -608,7 +608,7 @@ Do not make this function static.
 Return
 ------
 
-lpfc_do_offline() return code if not zero
+\ :c:func:`lpfc_do_offline`\  return code if not zero
 -EIO reset not configured or error posting the event
 zero for success
 
@@ -3520,7 +3520,7 @@ lpfc_rport_show_function
 Description
 -----------
 
-Macro that uses field to generate a function with the name lpfc_show_rport\_
+Macro that uses field to generate a function with the name lpfc_show_rport_
 
 lpfc_show_rport_##field: returns the bytes formatted in buf
 

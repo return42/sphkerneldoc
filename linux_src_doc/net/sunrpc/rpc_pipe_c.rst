@@ -45,7 +45,7 @@ rpc_mkpipe_dentry
         private data to associate with the pipe, for the caller's use
 
     :param struct rpc_pipe \*pipe:
-        &rpc_pipe containing input parameters
+        \ :c:type:`struct rpc_pipe <rpc_pipe>`\  containing input parameters
 
 .. _`rpc_mkpipe_dentry.description`:
 

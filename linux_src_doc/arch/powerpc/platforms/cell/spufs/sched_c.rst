@@ -33,8 +33,8 @@ spu_unbind_context
 
 .. _`__spu_add_to_rq`:
 
-__spu_add_to_rq
-===============
+\__spu_add_to_rq
+================
 
 .. c:function:: void __spu_add_to_rq(struct spu_context *ctx)
 

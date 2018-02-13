@@ -29,7 +29,7 @@ The caller is expected to perform the necessary locking.
 Return
 ------
 
-%-ETIMEDOUT        timeout occurred
+\ ``-ETIMEDOUT``\         timeout occurred
 0                  success
 
 .. This file was automatic generated / don't edit.

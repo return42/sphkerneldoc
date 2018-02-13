@@ -889,7 +889,8 @@ crypto_alloc_shash
 Description
 -----------
 
-Allocate a cipher handle for a message digest. The returned \ :c:type:`struct crypto_shash <crypto_shash>`\  is the cipher handle that is required for any subsequent
+Allocate a cipher handle for a message digest. The returned \ :c:type:`struct struct <struct>`\ 
+crypto_shash is the cipher handle that is required for any subsequent
 API invocation for that message digest.
 
 .. _`crypto_alloc_shash.return`:

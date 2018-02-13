@@ -16,7 +16,7 @@ tcm_deinit
 Description
 -----------
 
-@param tcm   Pointer to container manager.
+\ ``param``\  tcm   Pointer to container manager.
 
 \ ``return``\  0 on success, non-0 error value on error.  The call
 should free as much memory as possible and meaningful
@@ -56,7 +56,7 @@ tcm_reserve_2d
 Description
 -----------
 
-@param tcm           Pointer to container manager.
+\ ``param``\  tcm           Pointer to container manager.
 \ ``param``\  height        Height(in pages) of area to be reserved.
 \ ``param``\  width         Width(in pages) of area to be reserved.
 \ ``param``\  align         Alignment requirement for top-left corner of area. Not
@@ -95,7 +95,7 @@ tcm_reserve_1d
 Description
 -----------
 
-@param tcm           Pointer to container manager.
+\ ``param``\  tcm           Pointer to container manager.
 \ ``param``\  slots         Number of (contiguous) slots to reserve.
 \ ``param``\  area          Pointer to where the reserved area should be stored.
 
@@ -120,7 +120,7 @@ tcm_free
 Description
 -----------
 
-@param area  Pointer to area reserved by a prior call to
+\ ``param``\  area  Pointer to area reserved by a prior call to
 tcm_reserve_1d or tcm_reserve_2d call, whether
 it was successful or not. (Note: all fields of
 the structure must match.)
@@ -150,7 +150,7 @@ tcm_slice
 Description
 -----------
 
-@param parent        Pointer to a VALID parent area that will get modified
+\ ``param``\  parent        Pointer to a VALID parent area that will get modified
 \ ``param``\  slice         Pointer to the slice area that will get modified
 
 .. _`tcm_for_each_slice`:
@@ -176,7 +176,7 @@ tcm_for_each_slice
 Description
 -----------
 
-@param var           Name of a local variable of type 'struct
+\ ``param``\  var           Name of a local variable of type 'struct
 tcm_area \*' that will get modified to
 contain each slice.
 \ ``param``\  area          Pointer to the VALID parent area. This

@@ -27,8 +27,8 @@ cgroup_bpf_inherit
 
 .. _`__cgroup_bpf_attach`:
 
-__cgroup_bpf_attach
-===================
+\__cgroup_bpf_attach
+====================
 
 .. c:function:: int __cgroup_bpf_attach(struct cgroup *cgrp, struct bpf_prog *prog, enum bpf_attach_type type, u32 flags)
 
@@ -55,8 +55,8 @@ Must be called with cgroup_mutex held.
 
 .. _`__cgroup_bpf_detach`:
 
-__cgroup_bpf_detach
-===================
+\__cgroup_bpf_detach
+====================
 
 .. c:function:: int __cgroup_bpf_detach(struct cgroup *cgrp, struct bpf_prog *prog, enum bpf_attach_type type, u32 unused_flags)
 
@@ -83,8 +83,8 @@ Must be called with cgroup_mutex held.
 
 .. _`__cgroup_bpf_run_filter_skb`:
 
-__cgroup_bpf_run_filter_skb
-===========================
+\__cgroup_bpf_run_filter_skb
+============================
 
 .. c:function:: int __cgroup_bpf_run_filter_skb(struct sock *sk, struct sk_buff *skb, enum bpf_attach_type type)
 
@@ -115,8 +115,8 @@ and if it returned != 1 during execution. In all other cases, 0 is returned.
 
 .. _`__cgroup_bpf_run_filter_sk`:
 
-__cgroup_bpf_run_filter_sk
-==========================
+\__cgroup_bpf_run_filter_sk
+===========================
 
 .. c:function:: int __cgroup_bpf_run_filter_sk(struct sock *sk, enum bpf_attach_type type)
 
@@ -143,8 +143,8 @@ and if it returned != 1 during execution. In all other cases, 0 is returned.
 
 .. _`__cgroup_bpf_run_filter_sock_ops`:
 
-__cgroup_bpf_run_filter_sock_ops
-================================
+\__cgroup_bpf_run_filter_sock_ops
+=================================
 
 .. c:function:: int __cgroup_bpf_run_filter_sock_ops(struct sock *sk, struct bpf_sock_ops_kern *sock_ops, enum bpf_attach_type type)
 

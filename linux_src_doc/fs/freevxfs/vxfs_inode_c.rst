@@ -59,8 +59,8 @@ buffercache.  This function should not be used outside the
 
 .. _`__vxfs_iget`:
 
-__vxfs_iget
-===========
+\__vxfs_iget
+============
 
 .. c:function:: int __vxfs_iget(struct inode *ilistp, struct vxfs_inode_info *vip, ino_t ino)
 
@@ -148,7 +148,7 @@ vxfs_evict_inode
 Description
 -----------
 
-vxfs_evict_inode() is called on the final iput and frees the private
+\ :c:func:`vxfs_evict_inode`\  is called on the final iput and frees the private
 inode area.
 
 .. This file was automatic generated / don't edit.

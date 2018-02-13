@@ -34,7 +34,8 @@ name
 
 show
 
-    Show callback. \ :c:type:`seq_file->private <seq_file>`\  will be set to the \ :c:type:`struct drm_info_node <drm_info_node>`\  corresponding to the instance of this info on a given
+    Show callback. \ :c:type:`seq_file->private <seq_file>`\  will be set to the \ :c:type:`struct struct <struct>`\ 
+    drm_info_node corresponding to the instance of this info on a given
     \ :c:type:`struct drm_minor <drm_minor>`\ .
 
 driver_features
@@ -78,7 +79,7 @@ Members
 -------
 
 minor
-    &struct drm_minor for this node.
+    \ :c:type:`struct drm_minor <drm_minor>`\  for this node.
 
 info_ent
     template for this node.
@@ -88,7 +89,8 @@ info_ent
 Description
 -----------
 
-This structure represents a debugfs file, as an instantiation of a \ :c:type:`struct drm_info_list <drm_info_list>`\  on a \ :c:type:`struct drm_minor <drm_minor>`\ .
+This structure represents a debugfs file, as an instantiation of a \ :c:type:`struct struct <struct>`\ 
+drm_info_list on a \ :c:type:`struct drm_minor <drm_minor>`\ .
 
 .. _`drm_info_node.fixme`:
 

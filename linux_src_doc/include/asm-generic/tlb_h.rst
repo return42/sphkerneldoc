@@ -30,8 +30,8 @@ userspace is unmapping already-unmapped pages, which happens quite a lot.
 
 .. _`__tlb_remove_pmd_tlb_entry`:
 
-__tlb_remove_pmd_tlb_entry
-==========================
+\__tlb_remove_pmd_tlb_entry
+===========================
 
 .. c:function::  __tlb_remove_pmd_tlb_entry( tlb,  pmdp,  address)
 
@@ -48,8 +48,8 @@ __tlb_remove_pmd_tlb_entry
 
 .. _`__tlb_remove_pud_tlb_entry`:
 
-__tlb_remove_pud_tlb_entry
-==========================
+\__tlb_remove_pud_tlb_entry
+===========================
 
 .. c:function::  __tlb_remove_pud_tlb_entry( tlb,  pudp,  address)
 

@@ -24,8 +24,8 @@ fdt_reserved_mem_save_node
 
 .. _`__reserved_mem_alloc_size`:
 
-__reserved_mem_alloc_size
-=========================
+\__reserved_mem_alloc_size
+==========================
 
 .. c:function:: int __reserved_mem_alloc_size(unsigned long node, const char *uname, phys_addr_t *res_base, phys_addr_t *res_size)
 
@@ -45,8 +45,8 @@ __reserved_mem_alloc_size
 
 .. _`__reserved_mem_init_node`:
 
-__reserved_mem_init_node
-========================
+\__reserved_mem_init_node
+=========================
 
 .. c:function:: int __reserved_mem_init_node(struct reserved_mem *rmem)
 

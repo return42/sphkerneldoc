@@ -47,7 +47,7 @@ enum iwl_power_scheme
 
 .. c:type:: enum iwl_power_scheme
 
-    @IWL_POWER_LEVEL_CAM - Continuously Active Mode \ ``IWL_POWER_LEVEL_BPS``\  - Balanced Power Save (default) \ ``IWL_POWER_LEVEL_LP``\   - Low Power
+    \ ``IWL_POWER_LEVEL_CAM``\  - Continuously Active Mode \ ``IWL_POWER_LEVEL_BPS``\  - Balanced Power Save (default) \ ``IWL_POWER_LEVEL_LP``\   - Low Power
 
 .. _`iwl_power_scheme.definition`:
 

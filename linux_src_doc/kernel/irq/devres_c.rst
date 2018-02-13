@@ -115,8 +115,8 @@ free IRQs allocated with \ :c:func:`devm_request_irq`\ .
 
 .. _`__devm_irq_alloc_descs`:
 
-__devm_irq_alloc_descs
-======================
+\__devm_irq_alloc_descs
+=======================
 
 .. c:function:: int __devm_irq_alloc_descs(struct device *dev, int irq, unsigned int from, unsigned int cnt, int node, struct module *owner, const struct cpumask *affinity)
 

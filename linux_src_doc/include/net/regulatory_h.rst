@@ -254,7 +254,7 @@ includes any modes unsupported for enforcement checking.
 This flag is incompatible with the flags
 ----------------------------------------
 
-%REGULATORY_CUSTOM_REG,
+\ ``REGULATORY_CUSTOM_REG``\ ,
 \ ``REGULATORY_STRICT_REG``\ , \ ``REGULATORY_COUNTRY_IE_FOLLOW_POWER``\ ,
 \ ``REGULATORY_COUNTRY_IE_IGNORE``\  and \ ``REGULATORY_DISABLE_BEACON_HINTS``\ .
 Mixing any of the above flags with this flag will result in a failure

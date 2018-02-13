@@ -3,8 +3,8 @@
 
 .. _`__import_set_state`:
 
-__import_set_state
-==================
+\__import_set_state
+===================
 
 .. c:function:: void __import_set_state(struct obd_import *imp, enum lustre_imp_state state)
 

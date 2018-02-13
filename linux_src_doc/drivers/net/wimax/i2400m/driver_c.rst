@@ -3,8 +3,8 @@
 
 .. _`__i2400m_dev_start`:
 
-__i2400m_dev_start
-==================
+\__i2400m_dev_start
+===================
 
 .. c:function:: int __i2400m_dev_start(struct i2400m *i2400m, enum i2400m_bri flags)
 
@@ -36,8 +36,8 @@ shutdown, the bus-tx code could try to access it).
 
 .. _`__i2400m_dev_stop`:
 
-__i2400m_dev_stop
-=================
+\__i2400m_dev_stop
+==================
 
 .. c:function:: void __i2400m_dev_stop(struct i2400m *i2400m)
 

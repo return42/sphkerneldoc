@@ -136,8 +136,8 @@ cftype->read_seq_string method.
 
 .. _`__blkg_prfill_u64`:
 
-__blkg_prfill_u64
-=================
+\__blkg_prfill_u64
+==================
 
 .. c:function:: u64 __blkg_prfill_u64(struct seq_file *sf, struct blkg_policy_data *pd, u64 v)
 
@@ -161,8 +161,8 @@ Print \ ``v``\  to \ ``sf``\  for the device assocaited with \ ``pd``\ .
 
 .. _`__blkg_prfill_rwstat`:
 
-__blkg_prfill_rwstat
-====================
+\__blkg_prfill_rwstat
+=====================
 
 .. c:function:: u64 __blkg_prfill_rwstat(struct seq_file *sf, struct blkg_policy_data *pd, const struct blkg_rwstat *rwstat)
 

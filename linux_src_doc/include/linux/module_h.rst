@@ -18,7 +18,7 @@ module_init
 Description
 -----------
 
-module_init() will either be called during \ :c:func:`do_initcalls`\  (if
+\ :c:func:`module_init`\  will either be called during \ :c:func:`do_initcalls`\  (if
 builtin) or at module insertion time (if a module).  There can only
 be one per module.
 
@@ -39,7 +39,7 @@ module_exit
 Description
 -----------
 
-module_exit() will wrap the driver clean-up code
+\ :c:func:`module_exit`\  will wrap the driver clean-up code
 with \ :c:func:`cleanup_module`\  when used with rmmod when
 the driver is a module.  If the driver is statically
 compiled into the kernel, \ :c:func:`module_exit`\  has no effect.

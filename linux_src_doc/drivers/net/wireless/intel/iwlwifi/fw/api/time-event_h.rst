@@ -242,7 +242,7 @@ id_and_color
     ID and color of the relevant MAC
 
 action
-    &enum iwl_time_event_policy
+    \ :c:type:`enum iwl_time_event_policy <iwl_time_event_policy>`\ 
 
 status
     true if scheduled, false otherwise (not executed)

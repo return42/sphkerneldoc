@@ -36,7 +36,7 @@ set_link_hw_format
     Set the HW audio format of the physical DAI link.
 
     :param struct snd_soc_dai_link \*link:
-        &snd_soc_dai_link which should be updated
+        \ :c:type:`struct snd_soc_dai_link <snd_soc_dai_link>`\  which should be updated
 
     :param struct snd_soc_tplg_link_config \*cfg:
         physical link configs.

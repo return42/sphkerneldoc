@@ -133,7 +133,7 @@ on init.
 station table - AP Station in STA mode
 ======================================
 
-%iwl_mvm_vif includes the index of the AP station in the fw's STA table:
+\ ``iwl_mvm_vif``\  includes the index of the AP station in the fw's STA table:
 \ ``ap_sta_id``\ . To get the point to the corresponding \ ``ieee80211_sta``\ ,
 \ :c:type:`struct fw_id_to_mac_id <fw_id_to_mac_id>`\  can be used. Due to the way the fw works, we must not remove
 the AP station from the fw before setting the MAC context as unassociated.

@@ -41,8 +41,8 @@ Enable autoidle on an OMAP clock.
 
 .. _`_clk_generic_allow_autoidle_all`:
 
-_clk_generic_allow_autoidle_all
-===============================
+\_clk_generic_allow_autoidle_all
+================================
 
 .. c:function:: void _clk_generic_allow_autoidle_all( void)
 
@@ -61,8 +61,8 @@ the feature.
 
 .. _`_clk_generic_deny_autoidle_all`:
 
-_clk_generic_deny_autoidle_all
-==============================
+\_clk_generic_deny_autoidle_all
+===============================
 
 .. c:function:: void _clk_generic_deny_autoidle_all( void)
 

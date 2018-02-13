@@ -8,7 +8,7 @@ set_hw_cap
 
 .. c:function:: void set_hw_cap(struct pp_hwmgr *hwmgr, bool setIt, enum phm_platform_caps cap)
 
-    @param hwmgr Pointer to the hardware manager. \ ``param``\  setIt A flag indication if the capability should be set (TRUE) or reset (FALSE). \ ``param``\  cap Which capability to set/reset.
+    \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  setIt A flag indication if the capability should be set (TRUE) or reset (FALSE). \ ``param``\  cap Which capability to set/reset.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -26,7 +26,7 @@ set_platform_caps
 
 .. c:function:: int set_platform_caps(struct pp_hwmgr *hwmgr, uint32_t powerplay_caps)
 
-    @param hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_caps the bit array (from BIOS) of capability bits. \ ``exception``\  the current implementation always returns 1.
+    \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  powerplay_caps the bit array (from BIOS) of capability bits. \ ``exception``\  the current implementation always returns 1.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*

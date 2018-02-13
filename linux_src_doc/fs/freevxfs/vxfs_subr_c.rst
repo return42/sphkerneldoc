@@ -79,7 +79,7 @@ vxfs_getblk
         buffer skeleton
 
     :param int create:
-        %TRUE if blocks may be newly allocated.
+        \ ``TRUE``\  if blocks may be newly allocated.
 
 .. _`vxfs_getblk.description`:
 
@@ -132,7 +132,7 @@ Zero on success, else a negative error code.
 Locking status
 --------------
 
-@page is locked and will be unlocked.
+\ ``page``\  is locked and will be unlocked.
 
 .. _`vxfs_bmap`:
 

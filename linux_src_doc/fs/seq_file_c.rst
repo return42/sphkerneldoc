@@ -35,7 +35,7 @@ Description
 Note
 ----
 
-seq_open() will allocate a struct seq_file and store its
+\ :c:func:`seq_open`\  will allocate a struct seq_file and store its
      pointer in \ ``file``\ ->private_data. This pointer should not be modified.
 
 .. _`seq_read`:

@@ -52,7 +52,7 @@ ll_dir_getstripe
 
 .. c:function:: int ll_dir_getstripe(struct inode *inode, void **plmm, int *plmm_size, struct ptlrpc_request **request, u64 valid)
 
-    @valid will be used to indicate which stripe it will retrieve OBD_MD_MEA              LMV stripe EA OBD_MD_DEFAULT_MEA      Default LMV stripe EA otherwise               Default LOV EA. Each time, it can only retrieve 1 stripe EA
+    \ ``valid``\  will be used to indicate which stripe it will retrieve OBD_MD_MEA              LMV stripe EA OBD_MD_DEFAULT_MEA      Default LMV stripe EA otherwise               Default LOV EA. Each time, it can only retrieve 1 stripe EA
 
     :param struct inode \*inode:
         *undescribed*

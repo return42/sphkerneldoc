@@ -3,8 +3,8 @@
 
 .. _`__ew32_prepare`:
 
-__ew32_prepare
-==============
+\__ew32_prepare
+===============
 
 .. c:function:: s32 __ew32_prepare(struct e1000_hw *hw)
 
@@ -1523,8 +1523,8 @@ exception of "all V2 events regardless of level 2 or 4".
 
 .. _`__e1000e_disable_aspm`:
 
-__e1000e_disable_aspm
-=====================
+\__e1000e_disable_aspm
+======================
 
 .. c:function:: void __e1000e_disable_aspm(struct pci_dev *pdev, u16 state, int locked)
 

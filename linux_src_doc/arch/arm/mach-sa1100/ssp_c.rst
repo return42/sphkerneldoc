@@ -29,7 +29,7 @@ The caller is expected to perform the necessary locking.
 Return
 ------
 
-%-ETIMEDOUT        timeout occurred
+\ ``-ETIMEDOUT``\         timeout occurred
 0                  success
 
 .. _`ssp_read_word`:
@@ -67,7 +67,7 @@ The caller is expected to perform the necessary locking.
 Return
 ------
 
-%-ETIMEDOUT        timeout occurred
+\ ``-ETIMEDOUT``\         timeout occurred
 16-bit data        success
 
 .. _`ssp_flush`:
@@ -97,7 +97,7 @@ The caller is expected to perform the necessary locking.
 Return
 ------
 
-%-ETIMEDOUT        timeout occurred
+\ ``-ETIMEDOUT``\         timeout occurred
 0                  success
 
 .. _`ssp_enable`:
@@ -200,7 +200,7 @@ initialise and claim resources for the SSP port.
 Return
 ------
 
-%-ENODEV   if the SSP port is unavailable
+\ ``-ENODEV``\    if the SSP port is unavailable
 \ ``-EBUSY``\     if the resources are already in use
 \ ``0``\          on success
 

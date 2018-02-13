@@ -57,7 +57,7 @@ pvrdma_modify_qp
 Description
 -----------
 
-@returns 0 on success, otherwise returns an errno.
+\ ``returns``\  0 on success, otherwise returns an errno.
 
 .. _`pvrdma_post_send`:
 
@@ -121,7 +121,7 @@ pvrdma_query_qp
 Description
 -----------
 
-@returns 0 on success, otherwise returns an errno.
+\ ``returns``\  0 on success, otherwise returns an errno.
 
 .. This file was automatic generated / don't edit.
 

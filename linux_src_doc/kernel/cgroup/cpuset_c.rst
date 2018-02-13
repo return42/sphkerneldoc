@@ -317,8 +317,8 @@ Are any of the nodes in the nodemask allowed in current->mems_allowed?
 
 .. _`__cpuset_node_allowed`:
 
-__cpuset_node_allowed
-=====================
+\__cpuset_node_allowed
+======================
 
 .. c:function:: bool __cpuset_node_allowed(int node, gfp_t gfp_mask)
 
@@ -461,8 +461,8 @@ mems_allowed to the kernel log.
 
 .. _`__cpuset_memory_pressure_bump`:
 
-__cpuset_memory_pressure_bump
-=============================
+\__cpuset_memory_pressure_bump
+==============================
 
 .. c:function:: void __cpuset_memory_pressure_bump( void)
 

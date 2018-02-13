@@ -19,8 +19,8 @@ efi_pstore_scan_sysfs_enter
 
 .. _`__efi_pstore_scan_sysfs_exit`:
 
-__efi_pstore_scan_sysfs_exit
-============================
+\__efi_pstore_scan_sysfs_exit
+=============================
 
 .. c:function:: int __efi_pstore_scan_sysfs_exit(struct efivar_entry *entry, bool turn_off_scanning)
 

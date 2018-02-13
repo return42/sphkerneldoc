@@ -38,7 +38,7 @@ freed by the ACPI core automatically during the removal of \ ``data``\ .
 Return
 ------
 
-%0 if property with \ ``name``\  has been found (success),
+\ ``0``\  if property with \ ``name``\  has been found (success),
 \ ``-EINVAL``\  if the arguments are invalid,
 \ ``-EINVAL``\  if the property doesn't exist,
 \ ``-EPROTO``\  if the property value type doesn't match \ ``type``\ .
@@ -119,7 +119,7 @@ freed by the ACPI core automatically during the removal of \ ``data``\ .
 Return
 ------
 
-%0 if array property (package) with \ ``name``\  has been found (success),
+\ ``0``\  if array property (package) with \ ``name``\  has been found (success),
 \ ``-EINVAL``\  if the arguments are invalid,
 \ ``-EINVAL``\  if the property doesn't exist,
 \ ``-EPROTO``\  if the property is not a package or the type of its elements
@@ -127,8 +127,8 @@ doesn't match \ ``type``\ .
 
 .. _`__acpi_node_get_property_reference`:
 
-__acpi_node_get_property_reference
-==================================
+\__acpi_node_get_property_reference
+===================================
 
 .. c:function:: int __acpi_node_get_property_reference(const struct fwnode_handle *fwnode, const char *propname, size_t index, size_t num_args, struct acpi_reference_args *args)
 
@@ -189,7 +189,7 @@ entry must be single integer and preferably contain value \ ``0``\ .
 Return
 ------
 
-%0 on success, negative error code on failure.
+\ ``0``\  on success, negative error code on failure.
 
 .. _`acpi_node_prop_read`:
 

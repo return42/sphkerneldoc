@@ -745,8 +745,8 @@ content of the register
 
 .. _`__genwqe_execute_ddcb`:
 
-__genwqe_execute_ddcb
-=====================
+\__genwqe_execute_ddcb
+======================
 
 .. c:function:: int __genwqe_execute_ddcb(struct genwqe_dev *cd, struct genwqe_ddcb_cmd *cmd, unsigned int f_flags)
 
@@ -774,8 +774,8 @@ buildup and teardown.
 
 .. _`__genwqe_execute_raw_ddcb`:
 
-__genwqe_execute_raw_ddcb
-=========================
+\__genwqe_execute_raw_ddcb
+==========================
 
 .. c:function:: int __genwqe_execute_raw_ddcb(struct genwqe_dev *cd, struct genwqe_ddcb_cmd *cmd, unsigned int f_flags)
 

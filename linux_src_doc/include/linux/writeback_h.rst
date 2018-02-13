@@ -67,7 +67,7 @@ inode_detach_wb
 Description
 -----------
 
-@inode is being freed.  Detach from its wb.
+\ ``inode``\  is being freed.  Detach from its wb.
 
 .. _`wbc_attach_fdatawrite_inode`:
 
@@ -113,7 +113,7 @@ wbc_init_bio
 Description
 -----------
 
-@bio is a part of the writeback in progress controlled by \ ``wbc``\ .  Perform
+\ ``bio``\  is a part of the writeback in progress controlled by \ ``wbc``\ .  Perform
 writeback specific initialization.  This is used to apply the cgroup
 writeback context.
 

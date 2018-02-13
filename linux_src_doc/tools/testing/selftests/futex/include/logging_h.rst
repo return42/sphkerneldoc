@@ -53,7 +53,7 @@ print_result
 Description
 -----------
 
-print_result() is primarily intended for functional tests.
+\ :c:func:`print_result`\  is primarily intended for functional tests.
 
 .. This file was automatic generated / don't edit.
 

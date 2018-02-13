@@ -3,8 +3,8 @@
 
 .. _`__gfs2_ail_flush`:
 
-__gfs2_ail_flush
-================
+\__gfs2_ail_flush
+=================
 
 .. c:function:: void __gfs2_ail_flush(struct gfs2_glock *gl, bool fsync, unsigned int nr_revokes)
 

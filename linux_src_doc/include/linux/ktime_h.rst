@@ -112,7 +112,7 @@ ktime_to_timespec_cond
 Return
 ------
 
-%true if there was a successful conversion, \ ``false``\  if kt was 0.
+\ ``true``\  if there was a successful conversion, \ ``false``\  if kt was 0.
 
 .. _`ktime_to_timespec64_cond`:
 
@@ -134,7 +134,7 @@ ktime_to_timespec64_cond
 Return
 ------
 
-%true if there was a successful conversion, \ ``false``\  if kt was 0.
+\ ``true``\  if there was a successful conversion, \ ``false``\  if kt was 0.
 
 .. This file was automatic generated / don't edit.
 

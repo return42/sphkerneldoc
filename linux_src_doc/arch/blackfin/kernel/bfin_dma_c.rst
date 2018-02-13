@@ -65,8 +65,8 @@ the kernel booting process.  Really this just means using \ :c:func:`dma_memcpy`
 
 .. _`__dma_memcpy`:
 
-__dma_memcpy
-============
+\__dma_memcpy
+=============
 
 .. c:function:: void __dma_memcpy(u32 daddr, s16 dmod, u32 saddr, s16 smod, size_t cnt, u32 conf)
 
@@ -102,8 +102,8 @@ check will make sure we don't clobber any existing transfer.
 
 .. _`_dma_memcpy`:
 
-_dma_memcpy
-===========
+\_dma_memcpy
+============
 
 .. c:function:: void *_dma_memcpy(void *pdst, const void *psrc, size_t size)
 

@@ -30,8 +30,8 @@ hp->lock
 
 .. _`__hvc_resize`:
 
-__hvc_resize
-============
+\__hvc_resize
+=============
 
 .. c:function:: void __hvc_resize(struct hvc_struct *hp, struct winsize ws)
 

@@ -45,7 +45,7 @@ db_area_offset
 ldr_area_offset
     Starting segment number of bootloader image area.
 
-_reserved_1
+\_reserved_1
     *undescribed*
 
 ldr_format
@@ -54,7 +54,7 @@ ldr_format
 ldr_size
     Size of bootloader image in bytes.
 
-_reserved_2
+\_reserved_2
     *undescribed*
 
 .. _`os_area_header.description`:
@@ -109,13 +109,13 @@ Members
 boot_flag
     User preference of operating system, PARAM_BOOT_FLAG flag.
 
-_reserved_1
+\_reserved_1
     *undescribed*
 
 num_params
     Number of params in this (params) segment.
 
-_reserved_2
+\_reserved_2
     *undescribed*
 
 rtc_diff
@@ -128,7 +128,7 @@ ctrl_button
     User preference of controller button config, PARAM_CTRL_BUTTON
     flag.
 
-_reserved_3
+\_reserved_3
     *undescribed*
 
 static_ip_addr
@@ -140,7 +140,7 @@ network_mask
 default_gateway
     User preference of static default gateway.
 
-_reserved_4
+\_reserved_4
     *undescribed*
 
 dns_primary
@@ -149,7 +149,7 @@ dns_primary
 dns_secondary
     User preference of static secondary dns server.
 
-_reserved_5
+\_reserved_5
     *undescribed*
 
 .. _`os_area_params.description`:
@@ -203,7 +203,7 @@ magic_num
 version
     os_area_db format version number.
 
-_reserved_1
+\_reserved_1
     *undescribed*
 
 index_64
@@ -224,10 +224,10 @@ index_16
 count_16
     number of usable 16 bit index entries
 
-_reserved_2
+\_reserved_2
     *undescribed*
 
-_db_data
+\_db_data
     *undescribed*
 
 .. _`os_area_db.description`:

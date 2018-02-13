@@ -218,7 +218,7 @@ lhead
     \ :c:type:`drm_device.filelist <drm_device>`\ . Protected by \ :c:type:`drm_device.filelist_mutex <drm_device>`\ .
 
 minor
-    &struct drm_minor for this file.
+    \ :c:type:`struct drm_minor <drm_minor>`\  for this file.
 
 object_idr
 

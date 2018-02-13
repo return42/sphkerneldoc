@@ -27,7 +27,7 @@ Constants
 ---------
 
 STORED_BEACON_NTF
-    &struct iwl_stored_beacon_notif
+    \ :c:type:`struct iwl_stored_beacon_notif <iwl_stored_beacon_notif>`\ 
 
 .. _`iwl_stored_beacon_notif`:
 

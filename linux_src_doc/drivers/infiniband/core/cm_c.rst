@@ -3,8 +3,8 @@
 
 .. _`__ib_cm_listen`:
 
-__ib_cm_listen
-==============
+\__ib_cm_listen
+===============
 
 .. c:function:: int __ib_cm_listen(struct ib_cm_id *cm_id, __be64 service_id, __be64 service_mask)
 

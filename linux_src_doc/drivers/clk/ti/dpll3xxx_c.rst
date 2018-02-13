@@ -3,8 +3,8 @@
 
 .. _`_lookup_dco`:
 
-_lookup_dco
-===========
+\_lookup_dco
+============
 
 .. c:function:: void _lookup_dco(struct clk_hw_omap *clk, u8 *dco, u16 m, u8 n)
 
@@ -34,8 +34,8 @@ out in non-multi-OMAP builds for those chips?
 
 .. _`_lookup_sddiv`:
 
-_lookup_sddiv
-=============
+\_lookup_sddiv
+==============
 
 .. c:function:: void _lookup_sddiv(struct clk_hw_omap *clk, u8 *sd_div, u16 m, u8 n)
 

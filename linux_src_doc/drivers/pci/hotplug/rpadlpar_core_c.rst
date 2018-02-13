@@ -66,7 +66,7 @@ dlpar_remove_vio_slot
         drc-name of newly added slot
 
     :param struct device_node \*dn:
-        &device_node
+        \ :c:type:`struct device_node <device_node>`\ 
 
 .. _`dlpar_remove_vio_slot.description`:
 
@@ -96,7 +96,7 @@ dlpar_remove_pci_slot
         drc-name of newly added slot
 
     :param struct device_node \*dn:
-        &device_node
+        \ :c:type:`struct device_node <device_node>`\ 
 
 .. _`dlpar_remove_pci_slot.description`:
 

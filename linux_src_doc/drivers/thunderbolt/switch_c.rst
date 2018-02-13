@@ -289,7 +289,7 @@ connection manager to use.
 Return
 ------
 
-%0 in case of success and negative errno in case of failure
+\ ``0``\  in case of success and negative errno in case of failure
 
 .. _`tb_switch_add`:
 
@@ -319,7 +319,7 @@ remove and release the switch, call \ :c:func:`tb_switch_remove`\ .
 Return
 ------
 
-%0 in case of success and negative errno in case of failure
+\ ``0``\  in case of success and negative errno in case of failure
 
 .. _`tb_switch_remove`:
 

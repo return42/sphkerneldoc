@@ -655,7 +655,7 @@ finished_rb_num
 finished_fr_nam
     *undescribed*
 
-__unused
+\__unused
     *undescribed*
 
 .. _`il_tfd_tb`:
@@ -725,7 +725,7 @@ Definition
 Members
 -------
 
-__reserved1
+\__reserved1
     *undescribed*
 
 num_tbs
@@ -734,7 +734,7 @@ num_tbs
 tbs
     *undescribed*
 
-__pad
+\__pad
     *undescribed*
 
 .. _`il_tfd.description`:

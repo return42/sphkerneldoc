@@ -16,7 +16,7 @@ dal_cmd_table_helper_transmitter_bp_to_atom
 Description
 -----------
 
-@brief
+\ ``brief``\ 
 Translate the Transmitter to the corresponding ATOM BIOS value
 
 \ ``param``\ 

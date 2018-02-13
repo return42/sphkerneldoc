@@ -72,7 +72,7 @@ register_wide_hw_breakpoint
 Description
 -----------
 
-@return a set of per_cpu pointers to perf events
+\ ``return``\  a set of per_cpu pointers to perf events
 
 .. _`unregister_wide_hw_breakpoint`:
 

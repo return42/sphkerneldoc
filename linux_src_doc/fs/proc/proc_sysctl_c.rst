@@ -32,8 +32,8 @@ simply dropped.
 
 .. _`__register_sysctl_table`:
 
-__register_sysctl_table
-=======================
+\__register_sysctl_table
+========================
 
 .. c:function:: struct ctl_table_header *__register_sysctl_table(struct ctl_table_set *set, const char *path, struct ctl_table *table)
 
@@ -116,8 +116,8 @@ See \__register_sysctl_table for more details.
 
 .. _`__register_sysctl_paths`:
 
-__register_sysctl_paths
-=======================
+\__register_sysctl_paths
+========================
 
 .. c:function:: struct ctl_table_header *__register_sysctl_paths(struct ctl_table_set *set, const struct ctl_path *path, struct ctl_table *table)
 

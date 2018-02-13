@@ -20,7 +20,7 @@ tomoyo_addprintf
 
 .. c:function:: void tomoyo_addprintf(char *buffer, int len, const char *fmt,  ...)
 
-    strncat()-like-snprintf().
+    \ :c:func:`strncat`\ -like-snprintf().
 
     :param char \*buffer:
         Buffer to write to. Must be '\0'-terminated.
@@ -91,7 +91,7 @@ tomoyo_io_printf
 
 .. c:function:: void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt,  ...)
 
-    printf() to "struct tomoyo_io_buffer" structure.
+    \ :c:func:`printf`\  to "struct tomoyo_io_buffer" structure.
 
     :param struct tomoyo_io_buffer \*head:
         Pointer to "struct tomoyo_io_buffer".
@@ -1036,7 +1036,7 @@ tomoyo_poll_query
 
 .. c:function:: __poll_t tomoyo_poll_query(struct file *file, poll_table *wait)
 
-    poll() for /sys/kernel/security/tomoyo/query.
+    \ :c:func:`poll`\  for /sys/kernel/security/tomoyo/query.
 
     :param struct file \*file:
         Pointer to "struct file".
@@ -1167,7 +1167,7 @@ tomoyo_open_control
 
 .. c:function:: int tomoyo_open_control(const u8 type, struct file *file)
 
-    open() for /sys/kernel/security/tomoyo/ interface.
+    \ :c:func:`open`\  for /sys/kernel/security/tomoyo/ interface.
 
     :param const u8 type:
         Type of interface.
@@ -1189,7 +1189,7 @@ tomoyo_poll_control
 
 .. c:function:: __poll_t tomoyo_poll_control(struct file *file, poll_table *wait)
 
-    poll() for /sys/kernel/security/tomoyo/ interface.
+    \ :c:func:`poll`\  for /sys/kernel/security/tomoyo/ interface.
 
     :param struct file \*file:
         Pointer to "struct file".
@@ -1250,7 +1250,7 @@ tomoyo_read_control
 
 .. c:function:: ssize_t tomoyo_read_control(struct tomoyo_io_buffer *head, char __user *buffer, const int buffer_len)
 
-    read() for /sys/kernel/security/tomoyo/ interface.
+    \ :c:func:`read`\  for /sys/kernel/security/tomoyo/ interface.
 
     :param struct tomoyo_io_buffer \*head:
         Pointer to "struct tomoyo_io_buffer".
@@ -1299,7 +1299,7 @@ tomoyo_write_control
 
 .. c:function:: ssize_t tomoyo_write_control(struct tomoyo_io_buffer *head, const char __user *buffer, const int buffer_len)
 
-    write() for /sys/kernel/security/tomoyo/ interface.
+    \ :c:func:`write`\  for /sys/kernel/security/tomoyo/ interface.
 
     :param struct tomoyo_io_buffer \*head:
         Pointer to "struct tomoyo_io_buffer".
@@ -1324,7 +1324,7 @@ tomoyo_close_control
 
 .. c:function:: void tomoyo_close_control(struct tomoyo_io_buffer *head)
 
-    close() for /sys/kernel/security/tomoyo/ interface.
+    \ :c:func:`close`\  for /sys/kernel/security/tomoyo/ interface.
 
     :param struct tomoyo_io_buffer \*head:
         Pointer to "struct tomoyo_io_buffer".

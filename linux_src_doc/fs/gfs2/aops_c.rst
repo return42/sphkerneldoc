@@ -68,8 +68,8 @@ gfs2_writepage
 
 .. _`__gfs2_jdata_writepage`:
 
-__gfs2_jdata_writepage
-======================
+\__gfs2_jdata_writepage
+=======================
 
 .. c:function:: int __gfs2_jdata_writepage(struct page *page, struct writeback_control *wbc)
 
@@ -229,8 +229,8 @@ errno
 
 .. _`__gfs2_readpage`:
 
-__gfs2_readpage
-===============
+\__gfs2_readpage
+================
 
 .. c:function:: int __gfs2_readpage(void *file, struct page *page)
 

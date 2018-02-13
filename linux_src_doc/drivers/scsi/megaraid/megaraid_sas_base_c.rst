@@ -1383,7 +1383,7 @@ megasas_alloc_ctrl_dma_buffers
 Description
 -----------
 
-@instance-                           Adapter soft instance
+\ ``instance``\ -                           Adapter soft instance
 \ ``return``\ -                             O for SUCCESS
 
 .. _`megasas_probe_one`:

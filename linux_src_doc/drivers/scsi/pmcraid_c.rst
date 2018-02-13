@@ -460,8 +460,8 @@ none
 
 .. _`_pmcraid_fire_command`:
 
-_pmcraid_fire_command
-=====================
+\_pmcraid_fire_command
+======================
 
 .. c:function:: void _pmcraid_fire_command(struct pmcraid_cmd *cmd)
 
@@ -1359,8 +1359,8 @@ SUCCESS / FAILED
 
 .. _`_pmcraid_io_done`:
 
-_pmcraid_io_done
-================
+\_pmcraid_io_done
+=================
 
 .. c:function:: int _pmcraid_io_done(struct pmcraid_cmd *cmd, int reslen, int ioasc)
 

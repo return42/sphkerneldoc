@@ -1138,7 +1138,7 @@ Return
 See also
 --------
 
-drm_atomic_helper_suspend(), \ :c:func:`drm_atomic_helper_resume`\  and
+\ :c:func:`drm_atomic_helper_suspend`\ , \ :c:func:`drm_atomic_helper_resume`\  and
 \ :c:func:`drm_atomic_helper_shutdown`\ .
 
 .. _`drm_atomic_helper_shutdown`:
@@ -1208,7 +1208,7 @@ resume.
 See also
 --------
 
-drm_atomic_helper_duplicate_state(), \ :c:func:`drm_atomic_helper_disable_all`\ ,
+\ :c:func:`drm_atomic_helper_duplicate_state`\ , \ :c:func:`drm_atomic_helper_disable_all`\ ,
 \ :c:func:`drm_atomic_helper_resume`\ , \ :c:func:`drm_atomic_helper_commit_duplicated_state`\ 
 
 .. _`drm_atomic_helper_commit_duplicated_state`:
@@ -1247,7 +1247,7 @@ Return
 See also
 --------
 
-drm_atomic_helper_suspend()
+\ :c:func:`drm_atomic_helper_suspend`\ 
 
 .. _`drm_atomic_helper_resume`:
 
@@ -1286,7 +1286,7 @@ Return
 See also
 --------
 
-drm_atomic_helper_suspend()
+\ :c:func:`drm_atomic_helper_suspend`\ 
 
 .. _`drm_atomic_helper_page_flip`:
 
@@ -1332,7 +1332,7 @@ Returns 0 on success, negative errno numbers on failure.
 See also
 --------
 
-drm_atomic_helper_page_flip_target()
+\ :c:func:`drm_atomic_helper_page_flip_target`\ 
 
 .. _`drm_atomic_helper_page_flip_target`:
 
@@ -1770,7 +1770,7 @@ A pointer to the copy of the atomic state object on success or an
 See also
 --------
 
-drm_atomic_helper_suspend(), \ :c:func:`drm_atomic_helper_resume`\ 
+\ :c:func:`drm_atomic_helper_suspend`\ , \ :c:func:`drm_atomic_helper_resume`\ 
 
 .. _`__drm_atomic_helper_connector_destroy_state`:
 

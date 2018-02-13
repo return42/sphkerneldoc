@@ -547,8 +547,8 @@ ppc440spe_adma_clean_slot
 
 .. _`__ppc440spe_adma_slot_cleanup`:
 
-__ppc440spe_adma_slot_cleanup
-=============================
+\__ppc440spe_adma_slot_cleanup
+==============================
 
 .. c:function:: void __ppc440spe_adma_slot_cleanup(struct ppc440spe_adma_chan *chan)
 

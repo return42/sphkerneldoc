@@ -39,8 +39,8 @@ page_dma
 
 .. _`_config_display_some_debug`:
 
-_config_display_some_debug
-==========================
+\_config_display_some_debug
+===========================
 
 .. c:function:: void _config_display_some_debug(struct MPT3SAS_ADAPTER *ioc, u16 smid, char *calling_function_name, MPI2DefaultReply_t *mpi_reply)
 
@@ -75,8 +75,8 @@ in this module.
 
 .. _`_config_alloc_config_dma_memory`:
 
-_config_alloc_config_dma_memory
-===============================
+\_config_alloc_config_dma_memory
+================================
 
 .. c:function:: int _config_alloc_config_dma_memory(struct MPT3SAS_ADAPTER *ioc, struct config_request *mem)
 
@@ -99,8 +99,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_config_free_config_dma_memory`:
 
-_config_free_config_dma_memory
-==============================
+\_config_free_config_dma_memory
+===============================
 
 .. c:function:: void _config_free_config_dma_memory(struct MPT3SAS_ADAPTER *ioc, struct config_request *mem)
 
@@ -161,8 +161,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_config_request`:
 
-_config_request
-===============
+\_config_request
+================
 
 .. c:function:: int _config_request(struct MPT3SAS_ADAPTER *ioc, Mpi2ConfigRequest_t *mpi_request, Mpi2ConfigReply_t *mpi_reply, int timeout, void *config_page, u16 config_page_sz)
 

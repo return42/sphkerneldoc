@@ -26,8 +26,8 @@ etc. as well.
 
 .. _`__rfkill_switch_all`:
 
-__rfkill_switch_all
-===================
+\__rfkill_switch_all
+====================
 
 .. c:function:: void __rfkill_switch_all(const enum rfkill_type type, bool blocked)
 

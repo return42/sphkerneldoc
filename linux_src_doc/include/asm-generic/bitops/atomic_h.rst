@@ -56,7 +56,7 @@ clear_bit
 Description
 -----------
 
-clear_bit() is atomic and may not be reordered.  However, it does
+\ :c:func:`clear_bit`\  is atomic and may not be reordered.  However, it does
 not contain a memory barrier, so if it is used for locking purposes,
 you should call \ :c:func:`smp_mb__before_atomic`\  and/or \ :c:func:`smp_mb__after_atomic`\ 
 in order to ensure changes are visible on other processors.
@@ -81,7 +81,7 @@ change_bit
 Description
 -----------
 
-change_bit() is atomic and may not be reordered. It may be
+\ :c:func:`change_bit`\  is atomic and may not be reordered. It may be
 reordered on other architectures than x86.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.

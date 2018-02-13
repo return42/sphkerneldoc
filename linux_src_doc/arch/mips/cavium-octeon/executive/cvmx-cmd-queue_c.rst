@@ -3,8 +3,8 @@
 
 .. _`__cvmx_cmd_queue_init_state_ptr`:
 
-__cvmx_cmd_queue_init_state_ptr
-===============================
+\__cvmx_cmd_queue_init_state_ptr
+================================
 
 .. c:function:: cvmx_cmd_queue_result_t __cvmx_cmd_queue_init_state_ptr( void)
 

@@ -3,8 +3,8 @@
 
 .. _`__fls`:
 
-__fls
-=====
+\__fls
+======
 
 .. c:function:: unsigned long __fls(unsigned long word)
 

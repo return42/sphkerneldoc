@@ -348,8 +348,8 @@ this function for the given memory bitmap.
 
 .. _`__register_nosave_region`:
 
-__register_nosave_region
-========================
+\__register_nosave_region
+=========================
 
 .. c:function:: void __register_nosave_region(unsigned long start_pfn, unsigned long end_pfn, int use_kmalloc)
 
@@ -619,8 +619,8 @@ Number of page frames actually allocated
 
 .. _`__fraction`:
 
-__fraction
-==========
+\__fraction
+===========
 
 .. c:function:: unsigned long __fraction(u64 x, u64 multiplier, u64 base)
 

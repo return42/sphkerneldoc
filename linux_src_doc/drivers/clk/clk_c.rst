@@ -18,7 +18,7 @@ clk_rate_exclusive_put
 Description
 -----------
 
-clk_rate_exclusive_put() completes a critical section during which a clock
+\ :c:func:`clk_rate_exclusive_put`\  completes a critical section during which a clock
 consumer cannot tolerate any other consumer making any operation on the
 clock which could result in a rate change or rate glitch. Exclusive clocks
 cannot have their rate changed, either directly or indirectly due to changes
@@ -49,7 +49,7 @@ clk_rate_exclusive_get
 Description
 -----------
 
-clk_rate_exlusive_get() begins a critical section during which a clock
+\ :c:func:`clk_rate_exlusive_get`\  begins a critical section during which a clock
 consumer cannot tolerate any other consumer making any operation on the
 clock which could result in a rate change or rate glitch. Exclusive clocks
 cannot have their rate changed, either directly or indirectly due to changes
@@ -165,8 +165,8 @@ otherwise.
 
 .. _`__clk_determine_rate`:
 
-__clk_determine_rate
-====================
+\__clk_determine_rate
+=====================
 
 .. c:function:: int __clk_determine_rate(struct clk_hw *hw, struct clk_rate_request *req)
 
@@ -211,8 +211,8 @@ then the parent rate is returned.
 
 .. _`__clk_notify`:
 
-__clk_notify
-============
+\__clk_notify
+=============
 
 .. c:function:: int __clk_notify(struct clk_core *core, unsigned long msg, unsigned long old_rate, unsigned long new_rate)
 
@@ -244,8 +244,8 @@ a driver returns that.
 
 .. _`__clk_recalc_accuracies`:
 
-__clk_recalc_accuracies
-=======================
+\__clk_recalc_accuracies
+========================
 
 .. c:function:: void __clk_recalc_accuracies(struct clk_core *core)
 
@@ -286,8 +286,8 @@ If clk is NULL then returns 0.
 
 .. _`__clk_recalc_rates`:
 
-__clk_recalc_rates
-==================
+\__clk_recalc_rates
+===================
 
 .. c:function:: void __clk_recalc_rates(struct clk_core *core, unsigned long msg)
 
@@ -332,8 +332,8 @@ If clk is NULL then returns 0.
 
 .. _`__clk_speculate_rates`:
 
-__clk_speculate_rates
-=====================
+\__clk_speculate_rates
+======================
 
 .. c:function:: int __clk_speculate_rates(struct clk_core *core, unsigned long parent_rate)
 
@@ -699,8 +699,8 @@ added dynamically will be done so with clk_debug_register.
 
 .. _`__clk_core_init`:
 
-__clk_core_init
-===============
+\__clk_core_init
+================
 
 .. c:function:: int __clk_core_init(struct clk_core *core)
 

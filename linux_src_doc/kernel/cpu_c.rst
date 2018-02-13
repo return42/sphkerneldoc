@@ -77,8 +77,8 @@ enables interrupts and before the "boot" cpu returns from \__cpu_up().
 
 .. _`__cpuhp_setup_state_cpuslocked`:
 
-__cpuhp_setup_state_cpuslocked
-==============================
+\__cpuhp_setup_state_cpuslocked
+===============================
 
 .. c:function:: int __cpuhp_setup_state_cpuslocked(enum cpuhp_state state, const char *name, bool invoke, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu), bool multi_instance)
 
@@ -128,8 +128,8 @@ proper (negative) error code
 
 .. _`__cpuhp_remove_state_cpuslocked`:
 
-__cpuhp_remove_state_cpuslocked
-===============================
+\__cpuhp_remove_state_cpuslocked
+================================
 
 .. c:function:: void __cpuhp_remove_state_cpuslocked(enum cpuhp_state state, bool invoke)
 

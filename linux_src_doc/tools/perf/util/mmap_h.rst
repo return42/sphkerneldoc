@@ -58,7 +58,7 @@ event_copy
 Description
 -----------
 
-@refcnt - e.g. code using PERF_EVENT_IOC_SET_OUTPUT to share this
+\ ``refcnt``\  - e.g. code using PERF_EVENT_IOC_SET_OUTPUT to share this
 
 .. This file was automatic generated / don't edit.
 

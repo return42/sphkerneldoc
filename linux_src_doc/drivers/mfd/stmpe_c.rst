@@ -203,7 +203,7 @@ stmpe_set_altfunc
 Description
 -----------
 
-@pins is assumed to have a bit set for each of the bits whose alternate
+\ ``pins``\  is assumed to have a bit set for each of the bits whose alternate
 function is to be changed, numbered according to the GPIOXY numbers.
 
 If the GPIO module is not enabled, this function automatically enables it in

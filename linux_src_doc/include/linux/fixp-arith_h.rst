@@ -3,8 +3,8 @@
 
 .. _`__fixp_sin32`:
 
-__fixp_sin32
-============
+\__fixp_sin32
+=============
 
 .. c:function:: s32 __fixp_sin32(int degrees)
 

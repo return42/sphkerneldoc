@@ -126,7 +126,7 @@ fs/ext3/namei.c::ext3_get_parent().
 Note
 ----
 
-ntfs_get_parent() is called with \ ``d_inode``\ (child_dent)->i_mutex down.
+\ :c:func:`ntfs_get_parent`\  is called with \ ``d_inode``\ (child_dent)->i_mutex down.
 
 Return the dentry of the parent directory on success or the error code on
 error (IS_ERR() is true).

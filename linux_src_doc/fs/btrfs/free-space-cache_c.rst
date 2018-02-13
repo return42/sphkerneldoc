@@ -3,8 +3,8 @@
 
 .. _`__btrfs_write_out_cache`:
 
-__btrfs_write_out_cache
-=======================
+\__btrfs_write_out_cache
+========================
 
 .. c:function:: int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode, struct btrfs_free_space_ctl *ctl, struct btrfs_block_group_cache *block_group, struct btrfs_io_ctl *io_ctl, struct btrfs_trans_handle *trans)
 

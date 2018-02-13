@@ -495,8 +495,8 @@ Do nothing.
 
 .. _`__cpu_up`:
 
-__cpu_up
-========
+\__cpu_up
+=========
 
 .. c:function:: int __cpu_up(unsigned int cpu, struct task_struct *tidle)
 

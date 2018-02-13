@@ -23,8 +23,8 @@ array used for read/write of cm module registers.
 
 .. _`_clkctrl_idlest`:
 
-_clkctrl_idlest
-===============
+\_clkctrl_idlest
+================
 
 .. c:function:: u32 _clkctrl_idlest(u8 part, u16 inst, u16 clkctrl_offs)
 
@@ -49,8 +49,8 @@ bit 0.
 
 .. _`_is_module_ready`:
 
-_is_module_ready
-================
+\_is_module_ready
+=================
 
 .. c:function:: bool _is_module_ready(u8 part, u16 inst, u16 clkctrl_offs)
 
@@ -75,8 +75,8 @@ Returns true if the module's CM\_\*\_CLKCTRL.IDLEST bitfield is either
 
 .. _`_clktrctrl_write`:
 
-_clktrctrl_write
-================
+\_clktrctrl_write
+=================
 
 .. c:function:: void _clktrctrl_write(u8 c, u8 part, u16 inst, u16 cdoffs)
 
@@ -99,7 +99,7 @@ _clktrctrl_write
 Description
 -----------
 
-@c must be the unshifted value for CLKTRCTRL - i.e., this function
+\ ``c``\  must be the unshifted value for CLKTRCTRL - i.e., this function
 will handle the shift itself.
 
 .. _`omap4_cminst_is_clkdm_in_hwsup`:

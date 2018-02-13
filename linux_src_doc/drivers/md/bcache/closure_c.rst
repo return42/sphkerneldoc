@@ -15,8 +15,8 @@ closure_put
 
 .. _`__closure_wake_up`:
 
-__closure_wake_up
-=================
+\__closure_wake_up
+==================
 
 .. c:function:: void __closure_wake_up(struct closure_waitlist *wait_list)
 
@@ -45,7 +45,7 @@ closure_wait
 Description
 -----------
 
-@waitlist will own a ref on \ ``cl``\ , which will be released when
+\ ``waitlist``\  will own a ref on \ ``cl``\ , which will be released when
 \ :c:func:`closure_wake_up`\  is called on \ ``waitlist``\ .
 
 .. This file was automatic generated / don't edit.

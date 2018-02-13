@@ -1093,8 +1093,8 @@ Error code, or length of message on success
 
 .. _`_batadv_tt_global_del_orig_entry`:
 
-_batadv_tt_global_del_orig_entry
-================================
+\_batadv_tt_global_del_orig_entry
+=================================
 
 .. c:function:: void _batadv_tt_global_del_orig_entry(struct batadv_tt_global_entry *tt_global_entry, struct batadv_tt_orig_list_entry *orig_entry)
 

@@ -3,8 +3,8 @@
 
 .. _`_sim_control_operator_bits`:
 
-_SIM_CONTROL_OPERATOR_BITS
-==========================
+\_SIM_CONTROL_OPERATOR_BITS
+===========================
 
 .. c:function::  _SIM_CONTROL_OPERATOR_BITS()
 

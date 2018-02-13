@@ -173,7 +173,7 @@ DRM_DEV_ERROR
         device pointer
 
     :param  fmt:
-        printf() like format string.
+        \ :c:func:`printf`\  like format string.
 
     :param ellipsis ellipsis:
         variable arguments
@@ -189,7 +189,7 @@ DRM_DEV_ERROR_RATELIMITED
         device pointer
 
     :param  fmt:
-        printf() like format string.
+        \ :c:func:`printf`\  like format string.
 
     :param ellipsis ellipsis:
         variable arguments
@@ -205,7 +205,7 @@ DRM_DEV_DEBUG
         device pointer
 
     :param  fmt:
-        printf() like format string.
+        \ :c:func:`printf`\  like format string.
 
 .. _`drm_dev_debug_ratelimited`:
 
@@ -218,7 +218,7 @@ DRM_DEV_DEBUG_RATELIMITED
         device pointer
 
     :param  fmt:
-        printf() like format string.
+        \ :c:func:`printf`\  like format string.
 
 .. This file was automatic generated / don't edit.
 

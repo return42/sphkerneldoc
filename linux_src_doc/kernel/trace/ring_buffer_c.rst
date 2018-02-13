@@ -152,8 +152,8 @@ been corrupted.
 
 .. _`__ring_buffer_alloc`:
 
-__ring_buffer_alloc
-===================
+\__ring_buffer_alloc
+====================
 
 .. c:function:: struct ring_buffer *__ring_buffer_alloc(unsigned long size, unsigned flags, struct lock_class_key *key)
 

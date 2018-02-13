@@ -73,7 +73,7 @@ bfa_cee_reset_stats_isr
 Description
 -----------
 
-@brief CEE ISR for reset-stats responses from f/w
+\ ``brief``\  CEE ISR for reset-stats responses from f/w
 
 \ ``param``\ [in] cee - Pointer to the CEE module
 status - Return status from the f/w

@@ -8,7 +8,7 @@ mega_setup_mailbox
 
 .. c:function:: int mega_setup_mailbox(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -27,7 +27,7 @@ mega_runpendq
 
 .. c:function:: void mega_runpendq(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -46,7 +46,7 @@ mega_allocate_scb
 
 .. c:function:: scb_t *mega_allocate_scb(adapter_t *adapter, Scsi_Cmnd *cmd)
 
-    @adapter - pointer to our soft state \ ``cmd``\  - scsi command from the mid-layer
+    \ ``adapter``\  - pointer to our soft state \ ``cmd``\  - scsi command from the mid-layer
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -69,7 +69,7 @@ mega_get_ldrv_num
 
 .. c:function:: int mega_get_ldrv_num(adapter_t *adapter, Scsi_Cmnd *cmd, int channel)
 
-    @adapter - pointer to our soft state \ ``cmd``\  - scsi mid layer command \ ``channel``\  - channel on the controller
+    \ ``adapter``\  - pointer to our soft state \ ``cmd``\  - scsi mid layer command \ ``channel``\  - channel on the controller
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -95,7 +95,7 @@ mega_build_cmd
 
 .. c:function:: scb_t *mega_build_cmd(adapter_t *adapter, Scsi_Cmnd *cmd, int *busy)
 
-    @adapter - pointer to our soft state \ ``cmd``\  - Prepare using this scsi command \ ``busy``\  - busy flag if no resources
+    \ ``adapter``\  - pointer to our soft state \ ``cmd``\  - Prepare using this scsi command \ ``busy``\  - busy flag if no resources
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -125,7 +125,7 @@ mega_prepare_passthru
 
 .. c:function:: mega_passthru *mega_prepare_passthru(adapter_t *adapter, scb_t *scb, Scsi_Cmnd *cmd, int channel, int target)
 
-    @adapter - pointer to our soft state \ ``scb``\  - our scsi control block \ ``cmd``\  - scsi command from the mid-layer \ ``channel``\  - actual channel on the controller \ ``target``\  - actual id on the controller.
+    \ ``adapter``\  - pointer to our soft state \ ``scb``\  - our scsi control block \ ``cmd``\  - scsi command from the mid-layer \ ``channel``\  - actual channel on the controller \ ``target``\  - actual id on the controller.
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -156,7 +156,7 @@ mega_prepare_extpassthru
 
 .. c:function:: mega_ext_passthru *mega_prepare_extpassthru(adapter_t *adapter, scb_t *scb, Scsi_Cmnd *cmd, int channel, int target)
 
-    @adapter - pointer to our soft state \ ``scb``\  - our scsi control block \ ``cmd``\  - scsi command from the mid-layer \ ``channel``\  - actual channel on the controller \ ``target``\  - actual id on the controller.
+    \ ``adapter``\  - pointer to our soft state \ ``scb``\  - our scsi control block \ ``cmd``\  - scsi command from the mid-layer \ ``channel``\  - actual channel on the controller \ ``target``\  - actual id on the controller.
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -188,7 +188,7 @@ issue_scb
 
 .. c:function:: int issue_scb(adapter_t *adapter, scb_t *scb)
 
-    @adapter - pointer to our soft state \ ``scb``\  - scsi control block
+    \ ``adapter``\  - pointer to our soft state \ ``scb``\  - scsi control block
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -212,7 +212,7 @@ issue_scb_block
 
 .. c:function:: int issue_scb_block(adapter_t *adapter, u_char *raw_mbox)
 
-    @adapter - pointer to our soft state \ ``raw_mbox``\  - the mailbox
+    \ ``adapter``\  - pointer to our soft state \ ``raw_mbox``\  - the mailbox
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -234,7 +234,7 @@ megaraid_isr_iomapped
 
 .. c:function:: irqreturn_t megaraid_isr_iomapped(int irq, void *devp)
 
-    @irq - irq \ ``devp``\  - pointer to our soft state
+    \ ``irq``\  - irq \ ``devp``\  - pointer to our soft state
 
     :param int irq:
         *undescribed*
@@ -258,7 +258,7 @@ megaraid_isr_memmapped
 
 .. c:function:: irqreturn_t megaraid_isr_memmapped(int irq, void *devp)
 
-    @irq - irq \ ``devp``\  - pointer to our soft state
+    \ ``irq``\  - irq \ ``devp``\  - pointer to our soft state
 
     :param int irq:
         *undescribed*
@@ -282,7 +282,7 @@ mega_cmd_done
 
 .. c:function:: void mega_cmd_done(adapter_t *adapter, u8 completed, int nstatus, int status)
 
-    @adapter - pointer to our soft state \ ``completed``\  - array of ids of completed commands \ ``nstatus``\  - number of completed commands \ ``status``\  - status of the last command completed
+    \ ``adapter``\  - pointer to our soft state \ ``completed``\  - array of ids of completed commands \ ``nstatus``\  - number of completed commands \ ``status``\  - status of the last command completed
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -310,7 +310,7 @@ megaraid_abort_and_reset
 
 .. c:function:: int megaraid_abort_and_reset(adapter_t *adapter, Scsi_Cmnd *cmd, int aor)
 
-    @adapter - megaraid soft state \ ``cmd``\  - scsi command to be aborted or reset \ ``aor``\  - abort or reset flag
+    \ ``adapter``\  - megaraid soft state \ ``cmd``\  - scsi command to be aborted or reset \ ``aor``\  - abort or reset flag
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -336,7 +336,7 @@ mega_allocate_inquiry
 
 .. c:function:: void *mega_allocate_inquiry(dma_addr_t *dma_handle, struct pci_dev *pdev)
 
-    @dma_handle - handle returned for dma address \ ``pdev``\  - handle to pci device
+    \ ``dma_handle``\  - handle returned for dma address \ ``pdev``\  - handle to pci device
 
     :param dma_addr_t \*dma_handle:
         *undescribed*
@@ -358,7 +358,7 @@ proc_show_config
 
 .. c:function:: int proc_show_config(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -380,7 +380,7 @@ proc_show_stat
 
 .. c:function:: int proc_show_stat(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -402,7 +402,7 @@ proc_show_mbox
 
 .. c:function:: int proc_show_mbox(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -425,7 +425,7 @@ proc_show_rebuild_rate
 
 .. c:function:: int proc_show_rebuild_rate(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -447,7 +447,7 @@ proc_show_battery
 
 .. c:function:: int proc_show_battery(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -469,7 +469,7 @@ proc_show_pdrv
 
 .. c:function:: int proc_show_pdrv(struct seq_file *m, adapter_t *adapter, int channel)
 
-    @m - Synthetic file construction data \ ``page``\  - buffer to write the data in \ ``adapter``\  - pointer to our soft state
+    \ ``m``\  - Synthetic file construction data \ ``page``\  - buffer to write the data in \ ``adapter``\  - pointer to our soft state
 
     :param struct seq_file \*m:
         *undescribed*
@@ -494,7 +494,7 @@ proc_show_pdrv_ch0
 
 .. c:function:: int proc_show_pdrv_ch0(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -516,7 +516,7 @@ proc_show_pdrv_ch1
 
 .. c:function:: int proc_show_pdrv_ch1(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -538,7 +538,7 @@ proc_show_pdrv_ch2
 
 .. c:function:: int proc_show_pdrv_ch2(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -560,7 +560,7 @@ proc_show_pdrv_ch3
 
 .. c:function:: int proc_show_pdrv_ch3(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -582,7 +582,7 @@ proc_show_rdrv
 
 .. c:function:: int proc_show_rdrv(struct seq_file *m, adapter_t *adapter, int start, int end)
 
-    @m - Synthetic file construction data \ ``adapter``\  - pointer to our soft state \ ``start``\  - starting logical drive to display \ ``end``\  - ending logical drive to display
+    \ ``m``\  - Synthetic file construction data \ ``adapter``\  - pointer to our soft state \ ``start``\  - starting logical drive to display \ ``end``\  - ending logical drive to display
 
     :param struct seq_file \*m:
         *undescribed*
@@ -611,7 +611,7 @@ proc_show_rdrv_10
 
 .. c:function:: int proc_show_rdrv_10(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -633,7 +633,7 @@ proc_show_rdrv_20
 
 .. c:function:: int proc_show_rdrv_20(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -655,7 +655,7 @@ proc_show_rdrv_30
 
 .. c:function:: int proc_show_rdrv_30(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -677,7 +677,7 @@ proc_show_rdrv_40
 
 .. c:function:: int proc_show_rdrv_40(struct seq_file *m, void *v)
 
-    @m - Synthetic file construction data \ ``v``\  - File iterator
+    \ ``m``\  - Synthetic file construction data \ ``v``\  - File iterator
 
     :param struct seq_file \*m:
         *undescribed*
@@ -699,7 +699,7 @@ mega_create_proc_entry
 
 .. c:function:: void mega_create_proc_entry(int index, struct proc_dir_entry *parent)
 
-    @index - index in soft state array \ ``parent``\  - parent node for this /proc entry
+    \ ``index``\  - index in soft state array \ ``parent``\  - parent node for this /proc entry
 
     :param int index:
         *undescribed*
@@ -747,7 +747,7 @@ mega_init_scb
 
 .. c:function:: int mega_init_scb(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -767,7 +767,7 @@ megadev_open
 
 .. c:function:: int megadev_open(struct inode *inode, struct file *filep)
 
-    @inode - unused \ ``filep``\  - unused
+    \ ``inode``\  - unused \ ``filep``\  - unused
 
     :param struct inode \*inode:
         *undescribed*
@@ -790,7 +790,7 @@ megadev_ioctl
 
 .. c:function:: int megadev_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 
-    @inode - Our device inode \ ``filep``\  - unused \ ``cmd``\  - ioctl command \ ``arg``\  - user buffer
+    \ ``inode``\  - Our device inode \ ``filep``\  - unused \ ``cmd``\  - ioctl command \ ``arg``\  - user buffer
 
     :param struct file \*filep:
         *undescribed*
@@ -818,7 +818,7 @@ mega_m_to_n
 
 .. c:function:: int mega_m_to_n(void __user *arg, nitioctl_t *uioc)
 
-    @arg - user address \ ``uioc``\  - new ioctl structure
+    \ ``arg``\  - user address \ ``uioc``\  - new ioctl structure
 
     :param void __user \*arg:
         *undescribed*
@@ -843,7 +843,7 @@ mega_is_bios_enabled
 
 .. c:function:: int mega_is_bios_enabled(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -862,7 +862,7 @@ mega_enum_raid_scsi
 
 .. c:function:: void mega_enum_raid_scsi(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -883,7 +883,7 @@ mega_get_boot_drv
 
 .. c:function:: void mega_get_boot_drv(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -903,7 +903,7 @@ mega_support_random_del
 
 .. c:function:: int mega_support_random_del(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -923,7 +923,7 @@ mega_support_ext_cdb
 
 .. c:function:: int mega_support_ext_cdb(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -942,7 +942,7 @@ mega_del_logdrv
 
 .. c:function:: int mega_del_logdrv(adapter_t *adapter, int logdrv)
 
-    @adapter - pointer to our soft state \ ``logdrv``\  - logical drive to be deleted
+    \ ``adapter``\  - pointer to our soft state \ ``logdrv``\  - logical drive to be deleted
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -965,7 +965,7 @@ mega_get_max_sgl
 
 .. c:function:: void mega_get_max_sgl(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -985,7 +985,7 @@ mega_support_cluster
 
 .. c:function:: int mega_support_cluster(adapter_t *adapter)
 
-    @adapter - pointer to our soft state
+    \ ``adapter``\  - pointer to our soft state
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -1004,7 +1004,7 @@ mega_adapinq
 
 .. c:function:: int mega_adapinq(adapter_t *adapter, dma_addr_t dma_handle)
 
-    @adapter - pointer to our soft state \ ``dma_handle``\  - DMA address of the buffer
+    \ ``adapter``\  - pointer to our soft state \ ``dma_handle``\  - DMA address of the buffer
 
     :param adapter_t \*adapter:
         *undescribed*
@@ -1028,7 +1028,7 @@ mega_internal_command
 
 .. c:function:: int mega_internal_command(adapter_t *adapter, megacmd_t *mc, mega_passthru *pthru)
 
-    @adapter - pointer to our soft state \ ``mc``\  - the mailbox command \ ``pthru``\  - Passthru structure for DCDB commands
+    \ ``adapter``\  - pointer to our soft state \ ``mc``\  - the mailbox command \ ``pthru``\  - Passthru structure for DCDB commands
 
     :param adapter_t \*adapter:
         *undescribed*

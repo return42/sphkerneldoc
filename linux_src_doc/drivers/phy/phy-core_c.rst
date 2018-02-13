@@ -54,8 +54,8 @@ Finds and unregisters phy_lookup entry that was created with
 
 .. _`_of_phy_get`:
 
-_of_phy_get
-===========
+\_of_phy_get
+============
 
 .. c:function:: struct phy *_of_phy_get(struct device_node *np, int index)
 
@@ -424,8 +424,8 @@ to destroy the phy.
 
 .. _`__of_phy_provider_register`:
 
-__of_phy_provider_register
-==========================
+\__of_phy_provider_register
+===========================
 
 .. c:function:: struct phy_provider *__of_phy_provider_register(struct device *dev, struct device_node *children, struct module *owner, struct phy * (*of_xlate)(struct device *dev, struct of_phandle_args *args))
 
@@ -461,8 +461,8 @@ error code is returned.
 
 .. _`__devm_of_phy_provider_register`:
 
-__devm_of_phy_provider_register
-===============================
+\__devm_of_phy_provider_register
+================================
 
 .. c:function:: struct phy_provider *__devm_of_phy_provider_register(struct device *dev, struct device_node *children, struct module *owner, struct phy * (*of_xlate)(struct device *dev, struct of_phandle_args *args))
 

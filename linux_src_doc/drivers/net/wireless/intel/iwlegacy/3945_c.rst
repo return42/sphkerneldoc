@@ -297,7 +297,7 @@ This does \*not\* send anything to NIC, just sets up ch_info for one channel.
 NOTE
 ----
 
-reg_compensate_for_temperature_dif() \*must\* be run after this to
+\ :c:func:`reg_compensate_for_temperature_dif`\  \*must\* be run after this to
 properly fill out the scan powers, and actual h/w gain settings,
 and send changes to NIC
 

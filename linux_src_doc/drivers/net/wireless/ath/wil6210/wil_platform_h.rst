@@ -115,7 +115,7 @@ wil_platform_init
 Description
 -----------
 
-@dev - pointer to the wil6210 device
+\ ``dev``\  - pointer to the wil6210 device
 \ ``ops``\  - structure with platform driver operations. Platform
 driver will fill this structure with function pointers.
 \ ``rops``\  - structure with callbacks from platform driver to

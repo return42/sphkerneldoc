@@ -18,7 +18,7 @@ REPEAT_BYTE
 NOTE
 ----
 
-@x is not checked for > 0xff; larger values produce odd results.
+\ ``x``\  is not checked for > 0xff; larger values produce odd results.
 
 .. _`array_size`:
 

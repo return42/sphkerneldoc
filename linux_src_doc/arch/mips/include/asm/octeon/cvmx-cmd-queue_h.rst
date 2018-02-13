@@ -124,8 +124,8 @@ Returns Command buffer or NULL on failure
 
 .. _`__cvmx_cmd_queue_get_index`:
 
-__cvmx_cmd_queue_get_index
-==========================
+\__cvmx_cmd_queue_get_index
+===========================
 
 .. c:function:: int __cvmx_cmd_queue_get_index(cvmx_cmd_queue_id_t queue_id)
 
@@ -141,8 +141,8 @@ Returns Index into the state arrays
 
 .. _`__cvmx_cmd_queue_lock`:
 
-__cvmx_cmd_queue_lock
-=====================
+\__cvmx_cmd_queue_lock
+======================
 
 .. c:function:: void __cvmx_cmd_queue_lock(cvmx_cmd_queue_id_t queue_id, __cvmx_cmd_queue_state_t *qptr)
 
@@ -156,8 +156,8 @@ __cvmx_cmd_queue_lock
 
 .. _`__cvmx_cmd_queue_unlock`:
 
-__cvmx_cmd_queue_unlock
-=======================
+\__cvmx_cmd_queue_unlock
+========================
 
 .. c:function:: void __cvmx_cmd_queue_unlock(__cvmx_cmd_queue_state_t *qptr)
 
@@ -166,8 +166,8 @@ __cvmx_cmd_queue_unlock
 
 .. _`__cvmx_cmd_queue_get_state`:
 
-__cvmx_cmd_queue_get_state
-==========================
+\__cvmx_cmd_queue_get_state
+===========================
 
 .. c:function:: __cvmx_cmd_queue_state_t *__cvmx_cmd_queue_get_state(cvmx_cmd_queue_id_t queue_id)
 

@@ -24,8 +24,8 @@ SN i/o address.  Used by sn_in\*() and sn_out\*().
 
 .. _`__sn_mmiowb`:
 
-__sn_mmiowb
-===========
+\__sn_mmiowb
+============
 
 .. c:function:: void __sn_mmiowb( void)
 

@@ -68,7 +68,7 @@ itcw_init
         number of bytes in buffer
 
     :param int op:
-        %ITCW_OP_READ for a read operation tcw, \ ``ITCW_OP_WRITE``\  for a write
+        \ ``ITCW_OP_READ``\  for a read operation tcw, \ ``ITCW_OP_WRITE``\  for a write
         operation tcw
 
     :param int intrg:

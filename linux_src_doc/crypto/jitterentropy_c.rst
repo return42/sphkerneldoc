@@ -24,7 +24,7 @@ jent_loop_shuffle
 Input
 -----
 
-@ec entropy collector struct -- may be NULL
+\ ``ec``\  entropy collector struct -- may be NULL
 \ ``bits``\  is the number of low bits of the timer to consider
 \ ``min``\  is the number of bits we shift the timer value to the right at
 the end to make sure we have a guaranteed minimum value
@@ -87,7 +87,7 @@ this function implies that careful retesting must be done.
 Input
 -----
 
-@ec entropy collector struct -- may be NULL
+\ ``ec``\  entropy collector struct -- may be NULL
 \ ``time``\  time stamp to be folded
 \ ``loop_cnt``\  if a value not equal to 0 is set, use the given value as number of
 loops to perform the folding
@@ -97,7 +97,7 @@ loops to perform the folding
 Output
 ------
 
-@folded result of folding operation
+\ ``folded``\  result of folding operation
 
 \ ``return``\  Number of loops the folding operation is performed
 
@@ -140,7 +140,7 @@ large which is usually not desirable.
 Input
 -----
 
-@ec Reference to the entropy collector with the memory access data -- if
+\ ``ec``\  Reference to the entropy collector with the memory access data -- if
 the reference to the memory block to be accessed is NULL, this noise
 source is disabled
 \ ``loop_cnt``\  if a value not equal to 0 is set, use the given value as number of
@@ -175,7 +175,7 @@ All values must always be non-zero.
 Input
 -----
 
-@ec Reference to entropy collector
+\ ``ec``\  Reference to entropy collector
 \ ``current_delta``\  Jitter time delta
 
 \ ``return``\ 
@@ -208,7 +208,7 @@ and not using its result.
 Input
 -----
 
-@entropy_collector Reference to entropy collector
+\ ``entropy_collector``\  Reference to entropy collector
 
 \ ``return``\  One random bit
 
@@ -229,7 +229,7 @@ jent_unbiased_bit
 Input
 -----
 
-@entropy_collector Reference to entropy collector
+\ ``entropy_collector``\  Reference to entropy collector
 
 \ ``return``\  One random bit
 
@@ -265,7 +265,7 @@ operation, it can also not destroy any entropy present in the entropy pool.
 Input
 -----
 
-@entropy_collector Reference to entropy collector
+\ ``entropy_collector``\  Reference to entropy collector
 
 .. _`jent_gen_entropy`:
 
@@ -284,7 +284,7 @@ jent_gen_entropy
 Input
 -----
 
-@ec Reference to entropy collector
+\ ``ec``\  Reference to entropy collector
 
 .. _`jent_fips_test`:
 
@@ -341,7 +341,7 @@ size specified by the caller.
 Input
 -----
 
-@ec Reference to entropy collector
+\ ``ec``\  Reference to entropy collector
 \ ``data``\  pointer to buffer for storing random data -- buffer must already
 exist
 \ ``len``\  size of the buffer, specifying also the requested number of random

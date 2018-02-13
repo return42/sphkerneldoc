@@ -3,8 +3,8 @@
 
 .. _`__in6_dev_get`:
 
-__in6_dev_get
-=============
+\__in6_dev_get
+==============
 
 .. c:function:: struct inet6_dev *__in6_dev_get(const struct net_device *dev)
 

@@ -36,7 +36,7 @@ lio_sync_octeon_time_cb
 Description
 -----------
 
-@oct - octeon device structure
+\ ``oct``\  - octeon device structure
 \ ``status``\  - indicates success or failure
 \ ``buf``\  - pointer to the command that was sent to firmware
 
@@ -69,7 +69,7 @@ setup_sync_octeon_time_wq
 Description
 -----------
 
-@netdev - network device which should send time update to firmware
+\ ``netdev``\  - network device which should send time update to firmware
 
 .. _`cleanup_sync_octeon_time_wq`:
 
@@ -88,7 +88,7 @@ cleanup_sync_octeon_time_wq
 Description
 -----------
 
-@netdev - network device which should send time update to firmware
+\ ``netdev``\  - network device which should send time update to firmware
 
 .. This file was automatic generated / don't edit.
 

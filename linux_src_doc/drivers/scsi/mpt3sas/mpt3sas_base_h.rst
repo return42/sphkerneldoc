@@ -436,7 +436,7 @@ port
     sas transport wide/narrow port object
 
 phy_list
-    _sas_phy list objects belonging to this port
+    \_sas_phy list objects belonging to this port
 
 .. _`_sas_phy`:
 

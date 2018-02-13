@@ -23,8 +23,8 @@ drm_master at the top of the tree (i.e, with lessor NULL
 
 .. _`_drm_find_lessee`:
 
-_drm_find_lessee
-================
+\_drm_find_lessee
+=================
 
 .. c:function:: struct drm_master*_drm_find_lessee(struct drm_master *master, int lessee_id)
 
@@ -46,8 +46,8 @@ drm_master of the lessee if valid, NULL otherwise
 
 .. _`_drm_lease_held_master`:
 
-_drm_lease_held_master
-======================
+\_drm_lease_held_master
+=======================
 
 .. c:function:: int _drm_lease_held_master(struct drm_master *master, int id)
 
@@ -77,8 +77,8 @@ false           'master' does not hold a lease.
 
 .. _`_drm_has_leased`:
 
-_drm_has_leased
-===============
+\_drm_has_leased
+================
 
 .. c:function:: bool _drm_has_leased(struct drm_master *master, int id)
 
@@ -108,8 +108,8 @@ false           No lessee has a lease on the object.
 
 .. _`_drm_lease_held`:
 
-_drm_lease_held
-===============
+\_drm_lease_held
+================
 
 .. c:function:: bool _drm_lease_held(struct drm_file *file_priv, int id)
 
@@ -215,8 +215,8 @@ the list of lessees.
 
 .. _`_drm_lease_revoke`:
 
-_drm_lease_revoke
-=================
+\_drm_lease_revoke
+==================
 
 .. c:function:: void _drm_lease_revoke(struct drm_master *top)
 

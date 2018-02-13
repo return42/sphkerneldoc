@@ -555,8 +555,8 @@ Return
 
 .. _`__xudc_ep_enable`:
 
-__xudc_ep_enable
-================
+\__xudc_ep_enable
+=================
 
 .. c:function:: int __xudc_ep_enable(struct xusb_ep *ep, const struct usb_endpoint_descriptor *desc)
 
@@ -655,8 +655,8 @@ xudc_free_request
 
 .. _`__xudc_ep0_queue`:
 
-__xudc_ep0_queue
-================
+\__xudc_ep0_queue
+=================
 
 .. c:function:: int __xudc_ep0_queue(struct xusb_ep *ep0, struct xusb_req *req)
 

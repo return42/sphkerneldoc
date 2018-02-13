@@ -225,8 +225,8 @@ The session back_lock must be held.
 
 .. _`__iscsi_complete_pdu`:
 
-__iscsi_complete_pdu
-====================
+\__iscsi_complete_pdu
+=====================
 
 .. c:function:: int __iscsi_complete_pdu(struct iscsi_conn *conn, struct iscsi_hdr *hdr, char *data, int datalen)
 

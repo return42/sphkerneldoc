@@ -58,8 +58,8 @@ true if the entry has to be purged now, false otherwise.
 
 .. _`__batadv_dat_purge`:
 
-__batadv_dat_purge
-==================
+\__batadv_dat_purge
+===================
 
 .. c:function:: void __batadv_dat_purge(struct batadv_priv *bat_priv, bool (*to_purge)(struct batadv_dat_entry *))
 

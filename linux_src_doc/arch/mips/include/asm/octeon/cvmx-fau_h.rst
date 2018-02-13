@@ -48,8 +48,8 @@ typedef cvmx_fau_async_tagwait_result_t
 
 .. _`__cvmx_fau_store_address`:
 
-__cvmx_fau_store_address
-========================
+\__cvmx_fau_store_address
+=========================
 
 .. c:function:: uint64_t __cvmx_fau_store_address(uint64_t noadd, uint64_t reg)
 
@@ -66,8 +66,8 @@ __cvmx_fau_store_address
 
 .. _`__cvmx_fau_atomic_address`:
 
-__cvmx_fau_atomic_address
-=========================
+\__cvmx_fau_atomic_address
+==========================
 
 .. c:function:: uint64_t __cvmx_fau_atomic_address(uint64_t tagwait, uint64_t reg, int64_t value)
 
@@ -229,8 +229,8 @@ cvmx_fau_tagwait_fetch_and_add8
 
 .. _`__cvmx_fau_iobdma_data`:
 
-__cvmx_fau_iobdma_data
-======================
+\__cvmx_fau_iobdma_data
+=======================
 
 .. c:function:: uint64_t __cvmx_fau_iobdma_data(uint64_t scraddr, int64_t value, uint64_t tagwait, cvmx_fau_op_size_t size, uint64_t reg)
 

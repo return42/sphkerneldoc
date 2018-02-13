@@ -3,8 +3,8 @@
 
 .. _`__global_lock1`:
 
-__global_lock1
-==============
+\__global_lock1
+===============
 
 .. c:function::  __global_lock1( flags)
 
@@ -29,8 +29,8 @@ the locks.
 
 .. _`__global_unlock1`:
 
-__global_unlock1
-================
+\__global_unlock1
+=================
 
 .. c:function::  __global_unlock1( flags)
 
@@ -54,8 +54,8 @@ exclusive locks.
 
 .. _`__global_lock2`:
 
-__global_lock2
-==============
+\__global_lock2
+===============
 
 .. c:function::  __global_lock2( flags)
 
@@ -79,8 +79,8 @@ released with \ ``__global_unlock2``\ .
 
 .. _`__global_unlock2`:
 
-__global_unlock2
-================
+\__global_unlock2
+=================
 
 .. c:function::  __global_unlock2( flags)
 

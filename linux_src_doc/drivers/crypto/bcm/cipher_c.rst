@@ -631,7 +631,7 @@ aead_gcm_esp_setkey
 
 .. c:function:: int aead_gcm_esp_setkey(struct crypto_aead *cipher, const u8 *key, unsigned int keylen)
 
-    setkey() operation for ESP variant of GCM AES.
+    \ :c:func:`setkey`\  operation for ESP variant of GCM AES.
 
     :param struct crypto_aead \*cipher:
         AEAD structure
@@ -713,7 +713,7 @@ aead_ccm_esp_setkey
 
 .. c:function:: int aead_ccm_esp_setkey(struct crypto_aead *cipher, const u8 *key, unsigned int keylen)
 
-    setkey() operation for ESP variant of CCM AES.
+    \ :c:func:`setkey`\  operation for ESP variant of CCM AES.
 
     :param struct crypto_aead \*cipher:
         AEAD structure

@@ -53,7 +53,7 @@ nilfs_store_log_cursor
 Description
 -----------
 
-nilfs_store_log_cursor() reads the last position of the log
+\ :c:func:`nilfs_store_log_cursor`\  reads the last position of the log
 containing a super root from a given super block, and initializes
 relevant information on the nilfs object preparatory for log
 scanning and recovery.
@@ -78,7 +78,7 @@ load_nilfs
 Description
 -----------
 
-load_nilfs() searches and load the latest super root,
+\ :c:func:`load_nilfs`\  searches and load the latest super root,
 attaches the last segment, and does recovery if needed.
 The caller must call this exclusively for simultaneous mounts.
 
@@ -120,7 +120,7 @@ init_nilfs
 Description
 -----------
 
-init_nilfs() performs common initialization per block device (e.g.
+\ :c:func:`init_nilfs`\  performs common initialization per block device (e.g.
 reading the super block, getting disk layout information, initializing
 shared fields in the_nilfs).
 

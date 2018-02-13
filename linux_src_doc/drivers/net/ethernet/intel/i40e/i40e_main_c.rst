@@ -600,8 +600,8 @@ being held.
 
 .. _`__i40e_del_filter`:
 
-__i40e_del_filter
-=================
+\__i40e_del_filter
+==================
 
 .. c:function:: void __i40e_del_filter(struct i40e_vsi *vsi, struct i40e_mac_filter *f)
 

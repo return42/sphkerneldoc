@@ -135,7 +135,7 @@ LDLM_LOCK_PUT
 
 .. c:function::  LDLM_LOCK_PUT( lock)
 
-    __ldlm_handle2lock().
+    \__ldlm_handle2lock().
 
     :param  lock:
         *undescribed*
@@ -147,7 +147,7 @@ LDLM_LOCK_RELEASE
 
 .. c:function::  LDLM_LOCK_RELEASE( lock)
 
-    LDLM_LOCK_PUT()).
+    \ :c:func:`LDLM_LOCK_PUT`\ ).
 
     :param  lock:
         *undescribed*

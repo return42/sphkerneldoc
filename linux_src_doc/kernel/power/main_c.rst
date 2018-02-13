@@ -3,8 +3,8 @@
 
 .. _`__pm_pr_dbg`:
 
-__pm_pr_dbg
-===========
+\__pm_pr_dbg
+============
 
 .. c:function:: void __pm_pr_dbg(bool defer, const char *fmt,  ...)
 
@@ -50,7 +50,7 @@ state_show
 Description
 -----------
 
-show() returns available sleep state labels, which may be "mem", "standby",
+\ :c:func:`show`\  returns available sleep state labels, which may be "mem", "standby",
 "freeze" and "disk" (hibernation).  See Documentation/power/states.txt for a
 description of what they mean.
 

@@ -182,7 +182,7 @@ i915_gem_gtt_reserve
 Description
 -----------
 
-i915_gem_gtt_reserve() tries to insert the \ ``node``\  at the exact \ ``offset``\  inside
+\ :c:func:`i915_gem_gtt_reserve`\  tries to insert the \ ``node``\  at the exact \ ``offset``\  inside
 the address space (using \ ``size``\  and \ ``color``\ ). If the \ ``node``\  does not fit, it
 tries to evict any overlapping nodes from the GTT, including any
 neighbouring nodes if the colors do not match (to ensure guard pages between
@@ -242,7 +242,7 @@ i915_gem_gtt_insert
 Description
 -----------
 
-i915_gem_gtt_insert() first searches for an available hole into which
+\ :c:func:`i915_gem_gtt_insert`\  first searches for an available hole into which
 is can insert the node. The hole address is aligned to \ ``alignment``\  and
 its \ ``size``\  must then fit entirely within the [@start, \ ``end``\ ] bounds. The
 nodes on either side of the hole must match \ ``color``\ , or else a guard page

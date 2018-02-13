@@ -910,8 +910,8 @@ ring buffer used. The \ ``buf``\  should be copied from
 
 .. _`__pevent_parse_format`:
 
-__pevent_parse_format
-=====================
+\__pevent_parse_format
+======================
 
 .. c:function:: enum pevent_errno __pevent_parse_format(struct event_format **eventp, struct pevent *pevent, const char *buf, unsigned long size, const char *sys)
 

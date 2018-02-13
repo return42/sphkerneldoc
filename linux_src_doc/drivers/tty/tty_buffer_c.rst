@@ -18,7 +18,7 @@ tty_buffer_lock_exclusive
 Description
 -----------
 
-@port - tty_port owning the flip buffer
+\ ``port``\  - tty_port owning the flip buffer
 
 Guarantees safe use of the line discipline's \ :c:func:`receive_buf`\  method by
 excluding the buffer work and any pending flush from using the flip
@@ -159,8 +159,8 @@ takes buffer lock to ensure single-threaded flip buffer
 
 .. _`__tty_buffer_request_room`:
 
-__tty_buffer_request_room
-=========================
+\__tty_buffer_request_room
+==========================
 
 .. c:function:: int __tty_buffer_request_room(struct tty_port *port, size_t size, int flags)
 
@@ -248,8 +248,8 @@ number added.
 
 .. _`__tty_insert_flip_char`:
 
-__tty_insert_flip_char
-======================
+\__tty_insert_flip_char
+=======================
 
 .. c:function:: int __tty_insert_flip_char(struct tty_port *port, unsigned char ch, char flag)
 

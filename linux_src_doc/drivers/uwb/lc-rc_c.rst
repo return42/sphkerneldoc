@@ -63,8 +63,8 @@ it [through ops->{get\|put}_device(). We'll take our own, though.
 
 .. _`__uwb_rc_try_get`:
 
-__uwb_rc_try_get
-================
+\__uwb_rc_try_get
+=================
 
 .. c:function:: struct uwb_rc *__uwb_rc_try_get(struct uwb_rc *target_rc)
 
@@ -76,7 +76,7 @@ __uwb_rc_try_get
 Description
 -----------
 
-@returns NULL if the rc does not exist or is quiescing; the ptr to
+\ ``returns``\  NULL if the rc does not exist or is quiescing; the ptr to
 it otherwise.
 
 .. _`uwb_rc_get_by_grandpa`:
@@ -96,7 +96,7 @@ uwb_rc_get_by_grandpa
 Description
 -----------
 
-@grandpa_dev  Pointer to the 'grandparent' device structure.
+\ ``grandpa_dev``\   Pointer to the 'grandparent' device structure.
 \ ``returns``\  NULL If the rc does not exist or is quiescing; the ptr to
 it otherwise, properly referenced.
 
@@ -127,7 +127,7 @@ find_rc_dev
 Description
 -----------
 
-@returns the pointer to the radio controller, properly referenced
+\ ``returns``\  the pointer to the radio controller, properly referenced
 
 .. _`uwb_rc_put`:
 

@@ -3,8 +3,8 @@
 
 .. _`__fnic_set_state_flags`:
 
-__fnic_set_state_flags
-======================
+\__fnic_set_state_flags
+=======================
 
 .. c:function:: void __fnic_set_state_flags(struct fnic *fnic, unsigned long st_flags, unsigned long clearbits)
 

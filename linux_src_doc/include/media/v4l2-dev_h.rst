@@ -163,8 +163,8 @@ Description
 
 
 .. note::
-   The size of \ ``prios``\  array matches the number of priority types defined
-   by enum \ :c:type:`struct v4l2_priority <v4l2_priority>`\ .
+   The size of @prios array matches the number of priority types defined
+   by enum &v4l2_priority.
 
 .. _`v4l2_prio_init`:
 
@@ -427,13 +427,13 @@ Members
 -------
 
 entity
-    &struct media_entity
+    \ :c:type:`struct media_entity <media_entity>`\ 
 
 intf_devnode
     pointer to \ :c:type:`struct media_intf_devnode <media_intf_devnode>`\ 
 
 pipe
-    &struct media_pipeline
+    \ :c:type:`struct media_pipeline <media_pipeline>`\ 
 
 fops
     pointer to \ :c:type:`struct v4l2_file_operations <v4l2_file_operations>`\  for the video device
@@ -442,7 +442,7 @@ device_caps
     device capabilities as used in v4l2_capabilities
 
 dev
-    &struct device for the video device
+    \ :c:type:`struct device <device>`\  for the video device
 
 cdev
     character device
@@ -458,7 +458,7 @@ ctrl_handler
     May be NULL.
 
 queue
-    &struct vb2_queue associated with this device node. May be NULL.
+    \ :c:type:`struct vb2_queue <vb2_queue>`\  associated with this device node. May be NULL.
 
 prio
     pointer to \ :c:type:`struct v4l2_prio_state <v4l2_prio_state>`\  with device's Priority state.
@@ -519,7 +519,7 @@ Description
 -----------
 
 .. note::
-     Only set \ ``dev_parent``\  if that can't be deduced from \ ``v4l2_dev``\ .
+     Only set @dev_parent if that can't be deduced from @v4l2_dev.
 
 .. _`media_entity_to_video_device`:
 
@@ -591,8 +591,8 @@ Returns 0 on success.
 .. note::
 
      This function is meant to be used only inside the V4L2 core.
-     Drivers should use \ :c:func:`video_register_device`\  or
-     \ :c:func:`video_register_device_no_warn`\ .
+     Drivers should use video_register_device() or
+     video_register_device_no_warn().
 
 .. _`video_register_device`:
 
@@ -622,10 +622,10 @@ Internally, it calls \ :c:func:`__video_register_device`\ . Please see its
 documentation for more details.
 
 .. note::
-     if video_register_device fails, the \ :c:func:`release`\  callback of
-     \ :c:type:`struct video_device <video_device>`\  structure is *not* called, so the caller
+     if video_register_device fails, the release() callback of
+     &struct video_device structure is *not* called, so the caller
      is responsible for freeing any data. Usually that means that
-     you \ :c:func:`video_device_release`\  should be called on failure.
+     you video_device_release() should be called on failure.
 
 .. _`video_register_device_no_warn`:
 
@@ -658,10 +658,10 @@ Internally, it calls \ :c:func:`__video_register_device`\ . Please see its
 documentation for more details.
 
 .. note::
-     if video_register_device fails, the \ :c:func:`release`\  callback of
-     \ :c:type:`struct video_device <video_device>`\  structure is *not* called, so the caller
+     if video_register_device fails, the release() callback of
+     &struct video_device structure is *not* called, so the caller
      is responsible for freeing any data. Usually that means that
-     you \ :c:func:`video_device_release`\  should be called on failure.
+     you video_device_release() should be called on failure.
 
 .. _`video_unregister_device`:
 
@@ -673,7 +673,7 @@ video_unregister_device
     Unregister video devices.
 
     :param struct video_device \*vdev:
-        &struct video_device to register
+        \ :c:type:`struct video_device <video_device>`\  to register
 
 .. _`video_unregister_device.description`:
 
@@ -789,7 +789,7 @@ disable ioctls based on the specific card that is actually found.
 .. note::
 
    This must be called before video_register_device.
-   See also the comments for \ :c:func:`determine_valid_ioctls`\ .
+   See also the comments for determine_valid_ioctls().
 
 .. _`video_get_drvdata`:
 

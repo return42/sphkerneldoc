@@ -35,7 +35,7 @@ its effective set, returning 0 if it does, -ve if it does not.
 NOTE WELL
 ---------
 
-cap_has_capability() cannot be used like the kernel's \ :c:func:`capable`\ 
+\ :c:func:`cap_has_capability`\  cannot be used like the kernel's \ :c:func:`capable`\ 
 and \ :c:func:`has_capability`\  functions.  That is, it has the reverse semantics:
 \ :c:func:`cap_has_capability`\  returns 0 when a task has a capability, but the
 kernel's \ :c:func:`capable`\  and \ :c:func:`has_capability`\  returns 1 for this case.

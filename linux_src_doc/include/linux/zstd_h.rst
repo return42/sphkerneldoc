@@ -924,7 +924,7 @@ ZSTD_flushStream
 Description
 -----------
 
-ZSTD_flushStream() must be called until it returns 0, meaning all the data
+\ :c:func:`ZSTD_flushStream`\  must be called until it returns 0, meaning all the data
 has been flushed. Since \ :c:func:`ZSTD_flushStream`\  causes a block to be ended,
 calling it too often will degrade the compression ratio.
 
@@ -957,7 +957,7 @@ ZSTD_endStream
 Description
 -----------
 
-ZSTD_endStream() must be called until it returns 0, meaning all the data has
+\ :c:func:`ZSTD_endStream`\  must be called until it returns 0, meaning all the data has
 been flushed and the frame epilogue has been written.
 
 .. _`zstd_endstream.return`:

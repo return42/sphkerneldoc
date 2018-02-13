@@ -28,8 +28,8 @@ Returns MII PHY address and bus number or -1.
 
 .. _`__cvmx_helper_board_link_get`:
 
-__cvmx_helper_board_link_get
-============================
+\__cvmx_helper_board_link_get
+=============================
 
 .. c:function:: cvmx_helper_link_info_t __cvmx_helper_board_link_get(int ipd_port)
 
@@ -55,8 +55,8 @@ return zero.
 
 .. _`__cvmx_helper_board_interface_probe`:
 
-__cvmx_helper_board_interface_probe
-===================================
+\__cvmx_helper_board_interface_probe
+====================================
 
 .. c:function:: int __cvmx_helper_board_interface_probe(int interface, int supported_ports)
 
@@ -84,8 +84,8 @@ simple be "support_ports".
 
 .. _`__cvmx_helper_board_hardware_enable`:
 
-__cvmx_helper_board_hardware_enable
-===================================
+\__cvmx_helper_board_hardware_enable
+====================================
 
 .. c:function:: int __cvmx_helper_board_hardware_enable(int interface)
 
@@ -103,8 +103,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_board_usb_get_clock_type`:
 
-__cvmx_helper_board_usb_get_clock_type
-======================================
+\__cvmx_helper_board_usb_get_clock_type
+=======================================
 
 .. c:function:: enum cvmx_helper_board_usb_clock_types __cvmx_helper_board_usb_get_clock_type( void)
 

@@ -18,7 +18,7 @@ watchdog_nmi_stop
 The reconfiguration steps are
 -----------------------------
 
-watchdog_nmi_stop();
+\ :c:func:`watchdog_nmi_stop`\ ;
 \ :c:func:`update_variables`\ ;
 \ :c:func:`watchdog_nmi_start`\ ;
 

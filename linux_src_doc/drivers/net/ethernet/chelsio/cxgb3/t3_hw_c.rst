@@ -705,7 +705,7 @@ Write the supplied firmware image to the card's serial flash.
 The FW image has the following sections
 ---------------------------------------
 
-@size - 8 bytes of code and
+\ ``size``\  - 8 bytes of code and
 data, followed by 4 bytes of FW version, followed by the 32-bit
 1's complement checksum of the whole image.
 

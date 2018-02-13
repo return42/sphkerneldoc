@@ -182,7 +182,7 @@ be locked down with an 'acquire' before it can be safely accessed.
 NOTE
 ----
 
-@address and \ ``size``\  must be 32-bit aligned values.
+\ ``address``\  and \ ``size``\  must be 32-bit aligned values.
 
 .. _`nfp_cpp_area_alloc_with_name.return`:
 
@@ -225,7 +225,7 @@ be locked down with an 'acquire' before it can be safely accessed.
 NOTE
 ----
 
-@address and \ ``size``\  must be 32-bit aligned values.
+\ ``address``\  and \ ``size``\  must be 32-bit aligned values.
 
 .. _`nfp_cpp_area_alloc.return`:
 
@@ -271,7 +271,7 @@ that it can be accessed directly.
 NOTE
 ----
 
-@address and \ ``size``\  must be 32-bit aligned values.
+\ ``address``\  and \ ``size``\  must be 32-bit aligned values.
 The area must also be 'released' when the structure is freed.
 
 .. _`nfp_cpp_area_alloc_acquire.return`:
@@ -432,7 +432,7 @@ Read data from indicated CPP region.
 NOTE
 ----
 
-@offset and \ ``length``\  must be 32-bit aligned values.
+\ ``offset``\  and \ ``length``\  must be 32-bit aligned values.
 Area must have been locked down with an 'acquire'.
 
 .. _`nfp_cpp_area_read.return`:
@@ -475,7 +475,7 @@ Write data to indicated CPP region.
 NOTE
 ----
 
-@offset and \ ``length``\  must be 32-bit aligned values.
+\ ``offset``\  and \ ``length``\  must be 32-bit aligned values.
 Area must have been locked down with an 'acquire'.
 
 .. _`nfp_cpp_area_write.return`:
@@ -645,7 +645,7 @@ Area must have been locked down with an 'acquire'.
 Return
 ------
 
-__iomem pointer to the area, or NULL
+\__iomem pointer to the area, or NULL
 
 .. _`nfp_cpp_area_readl`:
 

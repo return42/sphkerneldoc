@@ -500,7 +500,7 @@ inode number is not sufficient for unique identification of an inode.
 Note
 ----
 
-@test is called with the inode_hash_lock held, so can't sleep.
+\ ``test``\  is called with the inode_hash_lock held, so can't sleep.
 
 .. _`ilookup`:
 

@@ -70,7 +70,7 @@ rtw_ies_remove_ie
 Return
 ------
 
-_SUCCESS: ies is updated, \_FAIL: not updated
+\_SUCCESS: ies is updated, \_FAIL: not updated
 
 .. _`rtw_get_wps_ie`:
 

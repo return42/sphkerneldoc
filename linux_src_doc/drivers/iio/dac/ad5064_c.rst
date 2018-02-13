@@ -142,7 +142,7 @@ use_internal_vref
 write
     register write callback
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 .. This file was automatic generated / don't edit.

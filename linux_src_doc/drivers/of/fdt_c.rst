@@ -99,8 +99,8 @@ It returns the size of unflattened device tree or error code
 
 .. _`__unflatten_device_tree`:
 
-__unflatten_device_tree
-=======================
+\__unflatten_device_tree
+========================
 
 .. c:function:: void *__unflatten_device_tree(const void *blob, struct device_node *dad, struct device_node **mynodes, void *(*dt_alloc)(u64 size, u64 align), bool detached)
 
@@ -168,8 +168,8 @@ device tree on success.
 
 .. _`__reserved_mem_reserve_reg`:
 
-__reserved_mem_reserve_reg
-==========================
+\__reserved_mem_reserve_reg
+===========================
 
 .. c:function:: int __reserved_mem_reserve_reg(unsigned long node, const char *uname)
 
@@ -183,8 +183,8 @@ __reserved_mem_reserve_reg
 
 .. _`__reserved_mem_check_root`:
 
-__reserved_mem_check_root
-=========================
+\__reserved_mem_check_root
+==========================
 
 .. c:function:: int __reserved_mem_check_root(unsigned long node)
 
@@ -195,8 +195,8 @@ __reserved_mem_check_root
 
 .. _`__fdt_scan_reserved_mem`:
 
-__fdt_scan_reserved_mem
-=======================
+\__fdt_scan_reserved_mem
+========================
 
 .. c:function:: int __fdt_scan_reserved_mem(unsigned long node, const char *uname, int depth, void *data)
 

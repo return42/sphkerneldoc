@@ -43,8 +43,8 @@ from firmware, so they probably require sleep.
 
 .. _`_ctl_display_some_debug`:
 
-_ctl_display_some_debug
-=======================
+\_ctl_display_some_debug
+========================
 
 .. c:function:: void _ctl_display_some_debug(struct MPT3SAS_ADAPTER *ioc, u16 smid, char *calling_function_name, MPI2DefaultReply_t *mpi_reply)
 
@@ -117,8 +117,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_ctl_check_event_type`:
 
-_ctl_check_event_type
-=====================
+\_ctl_check_event_type
+======================
 
 .. c:function:: int _ctl_check_event_type(struct MPT3SAS_ADAPTER *ioc, u16 event)
 
@@ -200,8 +200,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_ctl_verify_adapter`:
 
-_ctl_verify_adapter
-===================
+\_ctl_verify_adapter
+====================
 
 .. c:function:: int _ctl_verify_adapter(int ioc_number, struct MPT3SAS_ADAPTER **iocpp, int mpi_version)
 
@@ -251,12 +251,12 @@ MPT3_IOC_DONE_RESET
 
 .. _`_ctl_fasync`:
 
-_ctl_fasync
-===========
+\_ctl_fasync
+============
 
 .. c:function:: int _ctl_fasync(int fd, struct file *filep, int mode)
 
-    @fd - \ ``filep``\  - \ ``mode``\  -
+    \ ``fd``\  - \ ``filep``\  - \ ``mode``\  -
 
     :param int fd:
         *undescribed*
@@ -276,12 +276,12 @@ Called when application request fasyn callback handler.
 
 .. _`_ctl_poll`:
 
-_ctl_poll
-=========
+\_ctl_poll
+==========
 
 .. c:function:: __poll_t _ctl_poll(struct file *filep, poll_table *wait)
 
-    @file - \ ``wait``\  -
+    \ ``file``\  - \ ``wait``\  -
 
     :param struct file \*filep:
         *undescribed*
@@ -291,8 +291,8 @@ _ctl_poll
 
 .. _`_ctl_set_task_mid`:
 
-_ctl_set_task_mid
-=================
+\_ctl_set_task_mid
+==================
 
 .. c:function:: int _ctl_set_task_mid(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_command *karg, Mpi2SCSITaskManagementRequest_t *tm_request)
 
@@ -319,8 +319,8 @@ during failure, the reply frame is filled.
 
 .. _`_ctl_do_mpt_command`:
 
-_ctl_do_mpt_command
-===================
+\_ctl_do_mpt_command
+====================
 
 .. c:function:: long _ctl_do_mpt_command(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_command karg, void __user *mf)
 
@@ -339,8 +339,8 @@ _ctl_do_mpt_command
 
 .. _`_ctl_getiocinfo`:
 
-_ctl_getiocinfo
-===============
+\_ctl_getiocinfo
+================
 
 .. c:function:: long _ctl_getiocinfo(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -355,8 +355,8 @@ _ctl_getiocinfo
 
 .. _`_ctl_eventquery`:
 
-_ctl_eventquery
-===============
+\_ctl_eventquery
+================
 
 .. c:function:: long _ctl_eventquery(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -371,8 +371,8 @@ _ctl_eventquery
 
 .. _`_ctl_eventenable`:
 
-_ctl_eventenable
-================
+\_ctl_eventenable
+=================
 
 .. c:function:: long _ctl_eventenable(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -387,8 +387,8 @@ _ctl_eventenable
 
 .. _`_ctl_eventreport`:
 
-_ctl_eventreport
-================
+\_ctl_eventreport
+=================
 
 .. c:function:: long _ctl_eventreport(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -403,8 +403,8 @@ _ctl_eventreport
 
 .. _`_ctl_do_reset`:
 
-_ctl_do_reset
-=============
+\_ctl_do_reset
+==============
 
 .. c:function:: long _ctl_do_reset(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -419,8 +419,8 @@ _ctl_do_reset
 
 .. _`_ctl_btdh_search_sas_device`:
 
-_ctl_btdh_search_sas_device
-===========================
+\_ctl_btdh_search_sas_device
+============================
 
 .. c:function:: int _ctl_btdh_search_sas_device(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_btdh_mapping *btdh)
 
@@ -434,8 +434,8 @@ _ctl_btdh_search_sas_device
 
 .. _`_ctl_btdh_search_pcie_device`:
 
-_ctl_btdh_search_pcie_device
-============================
+\_ctl_btdh_search_pcie_device
+=============================
 
 .. c:function:: int _ctl_btdh_search_pcie_device(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_btdh_mapping *btdh)
 
@@ -449,8 +449,8 @@ _ctl_btdh_search_pcie_device
 
 .. _`_ctl_btdh_search_raid_device`:
 
-_ctl_btdh_search_raid_device
-============================
+\_ctl_btdh_search_raid_device
+=============================
 
 .. c:function:: int _ctl_btdh_search_raid_device(struct MPT3SAS_ADAPTER *ioc, struct mpt3_ioctl_btdh_mapping *btdh)
 
@@ -464,8 +464,8 @@ _ctl_btdh_search_raid_device
 
 .. _`_ctl_btdh_mapping`:
 
-_ctl_btdh_mapping
-=================
+\_ctl_btdh_mapping
+==================
 
 .. c:function:: long _ctl_btdh_mapping(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -480,8 +480,8 @@ _ctl_btdh_mapping
 
 .. _`_ctl_diag_capability`:
 
-_ctl_diag_capability
-====================
+\_ctl_diag_capability
+=====================
 
 .. c:function:: u8 _ctl_diag_capability(struct MPT3SAS_ADAPTER *ioc, u8 buffer_type)
 
@@ -502,8 +502,8 @@ returns 1 when diag buffer support is enabled in firmware
 
 .. _`_ctl_diag_register_2`:
 
-_ctl_diag_register_2
-====================
+\_ctl_diag_register_2
+=====================
 
 .. c:function:: long _ctl_diag_register_2(struct MPT3SAS_ADAPTER *ioc, struct mpt3_diag_register *diag_register)
 
@@ -540,8 +540,8 @@ at driver load time.
 
 .. _`_ctl_diag_register`:
 
-_ctl_diag_register
-==================
+\_ctl_diag_register
+===================
 
 .. c:function:: long _ctl_diag_register(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -564,8 +564,8 @@ needed by firmware to communicate with the driver.
 
 .. _`_ctl_diag_unregister`:
 
-_ctl_diag_unregister
-====================
+\_ctl_diag_unregister
+=====================
 
 .. c:function:: long _ctl_diag_unregister(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -588,8 +588,8 @@ messages and to free up any resources.
 
 .. _`_ctl_diag_query`:
 
-_ctl_diag_query
-===============
+\_ctl_diag_query
+================
 
 .. c:function:: long _ctl_diag_query(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -633,8 +633,8 @@ mpt3sas_send_diag_release
 
 .. _`_ctl_diag_release`:
 
-_ctl_diag_release
-=================
+\_ctl_diag_release
+==================
 
 .. c:function:: long _ctl_diag_release(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -657,8 +657,8 @@ overwriting information in the buffer.
 
 .. _`_ctl_diag_read_buffer`:
 
-_ctl_diag_read_buffer
-=====================
+\_ctl_diag_read_buffer
+======================
 
 .. c:function:: long _ctl_diag_read_buffer(struct MPT3SAS_ADAPTER *ioc, void __user *arg)
 
@@ -673,8 +673,8 @@ _ctl_diag_read_buffer
 
 .. _`_ctl_compat_mpt_command`:
 
-_ctl_compat_mpt_command
-=======================
+\_ctl_compat_mpt_command
+========================
 
 .. c:function:: long _ctl_compat_mpt_command(struct MPT3SAS_ADAPTER *ioc, unsigned cmd, void __user *arg)
 
@@ -700,8 +700,8 @@ MPT3COMMAND32 - Handle 32bit applications running on 64bit os.
 
 .. _`_ctl_ioctl_main`:
 
-_ctl_ioctl_main
-===============
+\_ctl_ioctl_main
+================
 
 .. c:function:: long _ctl_ioctl_main(struct file *file, unsigned int cmd, void __user *arg, u8 compat, u16 mpi_version)
 
@@ -725,8 +725,8 @@ _ctl_ioctl_main
 
 .. _`_ctl_ioctl`:
 
-_ctl_ioctl
-==========
+\_ctl_ioctl
+===========
 
 .. c:function:: long _ctl_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
@@ -743,8 +743,8 @@ _ctl_ioctl
 
 .. _`_ctl_mpt2_ioctl`:
 
-_ctl_mpt2_ioctl
-===============
+\_ctl_mpt2_ioctl
+================
 
 .. c:function:: long _ctl_mpt2_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
@@ -761,8 +761,8 @@ _ctl_mpt2_ioctl
 
 .. _`_ctl_ioctl_compat`:
 
-_ctl_ioctl_compat
-=================
+\_ctl_ioctl_compat
+==================
 
 .. c:function:: long _ctl_ioctl_compat(struct file *file, unsigned cmd, unsigned long arg)
 
@@ -786,8 +786,8 @@ This routine handles 32 bit applications in 64bit os.
 
 .. _`_ctl_mpt2_ioctl_compat`:
 
-_ctl_mpt2_ioctl_compat
-======================
+\_ctl_mpt2_ioctl_compat
+=======================
 
 .. c:function:: long _ctl_mpt2_ioctl_compat(struct file *file, unsigned cmd, unsigned long arg)
 
@@ -811,8 +811,8 @@ This routine handles 32 bit applications in 64bit os.
 
 .. _`_ctl_version_fw_show`:
 
-_ctl_version_fw_show
-====================
+\_ctl_version_fw_show
+=====================
 
 .. c:function:: ssize_t _ctl_version_fw_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -836,8 +836,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_version_bios_show`:
 
-_ctl_version_bios_show
-======================
+\_ctl_version_bios_show
+=======================
 
 .. c:function:: ssize_t _ctl_version_bios_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -861,8 +861,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_version_mpi_show`:
 
-_ctl_version_mpi_show
-=====================
+\_ctl_version_mpi_show
+======================
 
 .. c:function:: ssize_t _ctl_version_mpi_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -886,8 +886,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_version_product_show`:
 
-_ctl_version_product_show
-=========================
+\_ctl_version_product_show
+==========================
 
 .. c:function:: ssize_t _ctl_version_product_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -911,8 +911,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_version_nvdata_persistent_show`:
 
-_ctl_version_nvdata_persistent_show
-===================================
+\_ctl_version_nvdata_persistent_show
+====================================
 
 .. c:function:: ssize_t _ctl_version_nvdata_persistent_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -936,8 +936,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_version_nvdata_default_show`:
 
-_ctl_version_nvdata_default_show
-================================
+\_ctl_version_nvdata_default_show
+=================================
 
 .. c:function:: ssize_t _ctl_version_nvdata_default_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -961,8 +961,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_board_name_show`:
 
-_ctl_board_name_show
-====================
+\_ctl_board_name_show
+=====================
 
 .. c:function:: ssize_t _ctl_board_name_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -986,8 +986,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_board_assembly_show`:
 
-_ctl_board_assembly_show
-========================
+\_ctl_board_assembly_show
+=========================
 
 .. c:function:: ssize_t _ctl_board_assembly_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1011,8 +1011,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_board_tracer_show`:
 
-_ctl_board_tracer_show
-======================
+\_ctl_board_tracer_show
+=======================
 
 .. c:function:: ssize_t _ctl_board_tracer_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1036,8 +1036,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_io_delay_show`:
 
-_ctl_io_delay_show
-==================
+\_ctl_io_delay_show
+===================
 
 .. c:function:: ssize_t _ctl_io_delay_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1064,8 +1064,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_device_delay_show`:
 
-_ctl_device_delay_show
-======================
+\_ctl_device_delay_show
+=======================
 
 .. c:function:: ssize_t _ctl_device_delay_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1092,8 +1092,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_fw_queue_depth_show`:
 
-_ctl_fw_queue_depth_show
-========================
+\_ctl_fw_queue_depth_show
+=========================
 
 .. c:function:: ssize_t _ctl_fw_queue_depth_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1119,8 +1119,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_host_sas_address_show`:
 
-_ctl_host_sas_address_show
-==========================
+\_ctl_host_sas_address_show
+===========================
 
 .. c:function:: ssize_t _ctl_host_sas_address_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1146,8 +1146,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_logging_level_show`:
 
-_ctl_logging_level_show
-=======================
+\_ctl_logging_level_show
+========================
 
 .. c:function:: ssize_t _ctl_logging_level_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1171,8 +1171,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_fwfault_debug_show`:
 
-_ctl_fwfault_debug_show
-=======================
+\_ctl_fwfault_debug_show
+========================
 
 .. c:function:: ssize_t _ctl_fwfault_debug_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1197,8 +1197,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_ioc_reset_count_show`:
 
-_ctl_ioc_reset_count_show
-=========================
+\_ctl_ioc_reset_count_show
+==========================
 
 .. c:function:: ssize_t _ctl_ioc_reset_count_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1224,8 +1224,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_ioc_reply_queue_count_show`:
 
-_ctl_ioc_reply_queue_count_show
-===============================
+\_ctl_ioc_reply_queue_count_show
+================================
 
 .. c:function:: ssize_t _ctl_ioc_reply_queue_count_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1251,8 +1251,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_brm_status_show`:
 
-_ctl_BRM_status_show
-====================
+\_ctl_BRM_status_show
+=====================
 
 .. c:function:: ssize_t _ctl_BRM_status_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1278,8 +1278,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_host_trace_buffer_size_show`:
 
-_ctl_host_trace_buffer_size_show
-================================
+\_ctl_host_trace_buffer_size_show
+=================================
 
 .. c:function:: ssize_t _ctl_host_trace_buffer_size_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1303,8 +1303,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_host_trace_buffer_show`:
 
-_ctl_host_trace_buffer_show
-===========================
+\_ctl_host_trace_buffer_show
+============================
 
 .. c:function:: ssize_t _ctl_host_trace_buffer_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1332,8 +1332,8 @@ offset to the same attribute, it will move the pointer.
 
 .. _`_ctl_host_trace_buffer_enable_show`:
 
-_ctl_host_trace_buffer_enable_show
-==================================
+\_ctl_host_trace_buffer_enable_show
+===================================
 
 .. c:function:: ssize_t _ctl_host_trace_buffer_enable_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1359,8 +1359,8 @@ This is a mechnism to post/release host_trace_buffers
 
 .. _`_ctl_diag_trigger_master_show`:
 
-_ctl_diag_trigger_master_show
-=============================
+\_ctl_diag_trigger_master_show
+==============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_master_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1384,8 +1384,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_master_store`:
 
-_ctl_diag_trigger_master_store
-==============================
+\_ctl_diag_trigger_master_store
+===============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_master_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
@@ -1412,8 +1412,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_event_show`:
 
-_ctl_diag_trigger_event_show
-============================
+\_ctl_diag_trigger_event_show
+=============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_event_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1437,8 +1437,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_event_store`:
 
-_ctl_diag_trigger_event_store
-=============================
+\_ctl_diag_trigger_event_store
+==============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_event_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
@@ -1465,8 +1465,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_scsi_show`:
 
-_ctl_diag_trigger_scsi_show
-===========================
+\_ctl_diag_trigger_scsi_show
+============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_scsi_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1490,8 +1490,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_scsi_store`:
 
-_ctl_diag_trigger_scsi_store
-============================
+\_ctl_diag_trigger_scsi_store
+=============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_scsi_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
@@ -1518,8 +1518,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_mpi_show`:
 
-_ctl_diag_trigger_mpi_show
-==========================
+\_ctl_diag_trigger_mpi_show
+===========================
 
 .. c:function:: ssize_t _ctl_diag_trigger_mpi_show(struct device *cdev, struct device_attribute *attr, char *buf)
 
@@ -1543,8 +1543,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_diag_trigger_mpi_store`:
 
-_ctl_diag_trigger_mpi_store
-===========================
+\_ctl_diag_trigger_mpi_store
+============================
 
 .. c:function:: ssize_t _ctl_diag_trigger_mpi_store(struct device *cdev, struct device_attribute *attr, const char *buf, size_t count)
 
@@ -1571,8 +1571,8 @@ A sysfs 'read/write' shost attribute.
 
 .. _`_ctl_device_sas_address_show`:
 
-_ctl_device_sas_address_show
-============================
+\_ctl_device_sas_address_show
+=============================
 
 .. c:function:: ssize_t _ctl_device_sas_address_show(struct device *dev, struct device_attribute *attr, char *buf)
 
@@ -1598,8 +1598,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_device_handle_show`:
 
-_ctl_device_handle_show
-=======================
+\_ctl_device_handle_show
+========================
 
 .. c:function:: ssize_t _ctl_device_handle_show(struct device *dev, struct device_attribute *attr, char *buf)
 
@@ -1625,8 +1625,8 @@ A sysfs 'read-only' shost attribute.
 
 .. _`_ctl_device_ncq_prio_enable_show`:
 
-_ctl_device_ncq_prio_enable_show
-================================
+\_ctl_device_ncq_prio_enable_show
+=================================
 
 .. c:function:: ssize_t _ctl_device_ncq_prio_enable_show(struct device *dev, struct device_attribute *attr, char *buf)
 

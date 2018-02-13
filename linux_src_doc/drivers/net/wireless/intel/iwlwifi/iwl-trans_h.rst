@@ -240,10 +240,10 @@ data
 resp_pkt
     response packet, if \ ``CMD_WANT_SKB``\  was set
 
-_rx_page_addr
+\_rx_page_addr
     (internally used to free response packet)
 
-_rx_page_order
+\_rx_page_order
     (internally used to free response packet)
 
 flags
@@ -963,7 +963,7 @@ trans_specific
 Description
 -----------
 
-@ops - pointer to iwl_trans_ops
+\ ``ops``\  - pointer to iwl_trans_ops
 \ ``op_mode``\  - pointer to the op_mode
 \ ``cfg``\  - pointer to the configuration
 \ ``drv``\  - pointer to iwl_drv

@@ -26,8 +26,8 @@ struct sdw_device_id.
 
 .. _`__sdw_register_driver`:
 
-__sdw_register_driver
-=====================
+\__sdw_register_driver
+======================
 
 .. c:function:: int __sdw_register_driver(struct sdw_driver *drv, struct module *owner)
 

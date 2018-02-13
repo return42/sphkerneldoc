@@ -22,7 +22,7 @@ xhci_find_next_ext_cap
 Description
 -----------
 
-@base        PCI MMIO registers base address.
+\ ``base``\         PCI MMIO registers base address.
 \ ``start``\        address at which to start looking, (0 or HCC_PARAMS to start at
 beginning of list)
 \ ``id``\           Extended capability ID to search for.

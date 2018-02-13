@@ -37,7 +37,7 @@ pagefault_data_segments
 Description
 -----------
 
-@qp the QP on which the fault occurred.
+\ ``qp``\  the QP on which the fault occurred.
 \ ``pfault``\  contains page fault information.
 \ ``wqe``\  points at the first data segment in the WQE.
 \ ``wqe_end``\  points after the end of the WQE.

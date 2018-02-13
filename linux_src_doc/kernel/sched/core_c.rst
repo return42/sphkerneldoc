@@ -55,7 +55,7 @@ Atomic against \ :c:func:`schedule`\  which would dequeue a task, also see
 Return
 ------
 
-%true if \ ``p``\ ->state changes (an actual wakeup was done),
+\ ``true``\  if \ ``p``\ ->state changes (an actual wakeup was done),
         \ ``false``\  otherwise.
 
 .. _`try_to_wake_up_local`:

@@ -369,7 +369,7 @@ queue_node
 clock
     Clock rate configured by \ :c:func:`set_ios`\ . Protected by host->lock.
 
-__clk_old
+\__clk_old
     The last clock value that was requested from core.
     Keeping track of this helps us to avoid spamming the console.
 

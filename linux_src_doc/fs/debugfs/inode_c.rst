@@ -109,7 +109,7 @@ debugfs_create_file_unsafe
 Description
 -----------
 
-debugfs_create_file_unsafe() is completely analogous to
+\ :c:func:`debugfs_create_file_unsafe`\  is completely analogous to
 \ :c:func:`debugfs_create_file`\ , the only difference being that the fops
 handed it will not get protected against file removals by the
 debugfs core.
@@ -234,7 +234,7 @@ debugfs_create_automount
 Description
 -----------
 
-@f should return what ->d_automount() would.
+\ ``f``\  should return what ->d_automount() would.
 
 .. _`debugfs_create_symlink`:
 

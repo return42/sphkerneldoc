@@ -36,19 +36,19 @@ CMD_DTS_MEASUREMENT_TRIGGER_WIDE
     \ :c:type:`struct iwl_ext_dts_measurement_cmd <iwl_ext_dts_measurement_cmd>`\ 
 
 CTDP_CONFIG_CMD
-    &struct iwl_mvm_ctdp_cmd
+    \ :c:type:`struct iwl_mvm_ctdp_cmd <iwl_mvm_ctdp_cmd>`\ 
 
 TEMP_REPORTING_THRESHOLDS_CMD
-    &struct temp_report_ths_cmd
+    \ :c:type:`struct temp_report_ths_cmd <temp_report_ths_cmd>`\ 
 
 GEO_TX_POWER_LIMIT
-    &struct iwl_geo_tx_power_profiles_cmd
+    \ :c:type:`struct iwl_geo_tx_power_profiles_cmd <iwl_geo_tx_power_profiles_cmd>`\ 
 
 CT_KILL_NOTIFICATION
-    &struct ct_kill_notif
+    \ :c:type:`struct ct_kill_notif <ct_kill_notif>`\ 
 
 DTS_MEASUREMENT_NOTIF_WIDE
-    &struct iwl_dts_measurement_notif_v1 or
+    \ :c:type:`struct iwl_dts_measurement_notif_v1 <iwl_dts_measurement_notif_v1>`\  or
     \ :c:type:`struct iwl_dts_measurement_notif_v2 <iwl_dts_measurement_notif_v2>`\ 
 
 .. _`iwl_dts_measurement_cmd`:

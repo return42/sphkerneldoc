@@ -27,8 +27,8 @@ acpi_pm_pre_suspend
 
 .. _`__acpi_pm_prepare`:
 
-__acpi_pm_prepare
-=================
+\__acpi_pm_prepare
+==================
 
 .. c:function:: int __acpi_pm_prepare( void)
 

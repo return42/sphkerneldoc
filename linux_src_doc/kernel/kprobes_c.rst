@@ -3,8 +3,8 @@
 
 .. _`__get_insn_slot`:
 
-__get_insn_slot
-===============
+\__get_insn_slot
+================
 
 .. c:function:: kprobe_opcode_t *__get_insn_slot(struct kprobe_insn_cache *c)
 

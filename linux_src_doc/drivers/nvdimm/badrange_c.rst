@@ -3,8 +3,8 @@
 
 .. _`__add_badblock_range`:
 
-__add_badblock_range
-====================
+\__add_badblock_range
+=====================
 
 .. c:function:: void __add_badblock_range(struct badblocks *bb, u64 ns_offset, u64 len)
 

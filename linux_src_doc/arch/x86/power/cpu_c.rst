@@ -3,8 +3,8 @@
 
 .. _`__save_processor_state`:
 
-__save_processor_state
-======================
+\__save_processor_state
+=======================
 
 .. c:function:: void __save_processor_state(struct saved_context *ctxt)
 
@@ -30,8 +30,8 @@ regardless of what kernel B does in the meantime.
 
 .. _`__restore_processor_state`:
 
-__restore_processor_state
-=========================
+\__restore_processor_state
+==========================
 
 .. c:function:: void notrace __restore_processor_state(struct saved_context *ctxt)
 

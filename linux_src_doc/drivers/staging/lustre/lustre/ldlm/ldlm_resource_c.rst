@@ -73,8 +73,8 @@ Also used during shutdown.
 
 .. _`__ldlm_namespace_free`:
 
-__ldlm_namespace_free
-=====================
+\__ldlm_namespace_free
+======================
 
 .. c:function:: int __ldlm_namespace_free(struct ldlm_namespace *ns, int force)
 

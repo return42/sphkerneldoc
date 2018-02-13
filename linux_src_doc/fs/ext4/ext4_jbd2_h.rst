@@ -45,8 +45,8 @@ as it's first element and pass it to \ :c:func:`ext4_journal_callback_add`\ .
 
 .. _`_ext4_journal_callback_add`:
 
-_ext4_journal_callback_add
-==========================
+\_ext4_journal_callback_add
+===========================
 
 .. c:function:: void _ext4_journal_callback_add(handle_t *handle, struct ext4_journal_cb_entry *jce)
 

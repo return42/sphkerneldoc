@@ -224,7 +224,7 @@ toptree_get_child
 Description
 -----------
 
-@cand's children are searched for a child with matching ID.
+\ ``cand``\ 's children are searched for a child with matching ID.
 If no match can be found, a new child with the desired ID
 is created and returned.
 
@@ -248,7 +248,7 @@ toptree_first
 Return
 ------
 
-@context's first descendant on the specified level, or NULL
+\ ``context``\ 's first descendant on the specified level, or NULL
 if there is no matching descendant
 
 .. _`toptree_next_sibling`:

@@ -81,8 +81,8 @@ Returns 0 on success, -EBADR on bad flags.
 
 .. _`__generic_block_fiemap`:
 
-__generic_block_fiemap
-======================
+\__generic_block_fiemap
+=======================
 
 .. c:function:: int __generic_block_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo, loff_t start, loff_t len, get_block_t *get_block)
 

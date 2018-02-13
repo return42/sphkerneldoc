@@ -3,8 +3,8 @@
 
 .. _`_clkctrl_idlest`:
 
-_clkctrl_idlest
-===============
+\_clkctrl_idlest
+================
 
 .. c:function:: u32 _clkctrl_idlest(u16 inst, u16 clkctrl_offs)
 
@@ -26,8 +26,8 @@ bit 0.
 
 .. _`_is_module_ready`:
 
-_is_module_ready
-================
+\_is_module_ready
+=================
 
 .. c:function:: bool _is_module_ready(u16 inst, u16 clkctrl_offs)
 
@@ -49,8 +49,8 @@ Returns true if the module's CM\_\*\_CLKCTRL.IDLEST bitfield is either
 
 .. _`_clktrctrl_write`:
 
-_clktrctrl_write
-================
+\_clktrctrl_write
+=================
 
 .. c:function:: void _clktrctrl_write(u8 c, u16 inst, u16 cdoffs)
 
@@ -70,7 +70,7 @@ _clktrctrl_write
 Description
 -----------
 
-@c must be the unshifted value for CLKTRCTRL - i.e., this function
+\ ``c``\  must be the unshifted value for CLKTRCTRL - i.e., this function
 will handle the shift itself.
 
 .. _`am33xx_cm_is_clkdm_in_hwsup`:

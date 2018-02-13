@@ -3,8 +3,8 @@
 
 .. _`_warpdrive_disable_ddio`:
 
-_warpdrive_disable_ddio
-=======================
+\_warpdrive_disable_ddio
+========================
 
 .. c:function:: void _warpdrive_disable_ddio(struct MPT3SAS_ADAPTER *ioc)
 

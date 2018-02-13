@@ -100,7 +100,7 @@ then release them upon ->del_vqs().
 Note
 ----
 
-@da is currently not really handled correctly: we dynamically
+\ ``da``\  is currently not really handled correctly: we dynamically
 allocate it using the DMA API, ignoring requested hard coded addresses,
 and we don't take care of any required IOMMU programming. This is all
 going to be taken care of when the generic iommu-based DMA API will be
@@ -483,7 +483,7 @@ On success the new rproc is returned, and on failure, NULL.
 Note
 ----
 
-_never\_ directly deallocate \ ``rproc``\ , even if it was not registered
+\_never\_ directly deallocate \ ``rproc``\ , even if it was not registered
 yet. Instead, when you need to unroll \ :c:func:`rproc_alloc`\ , use \ :c:func:`rproc_free`\ .
 
 .. _`rproc_free`:

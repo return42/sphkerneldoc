@@ -226,12 +226,12 @@ from \ ``disable_source``\ .
 .. note::
 
    Bridge driver is expected to implement and set the
-   handler when \ :c:type:`struct media_device <media_device>`\  is registered or when
+   handler when &media_device is registered or when
    bridge driver finds the media_device during probe.
    Bridge driver sets source_priv with information
-   necessary to run \ ``enable_source``\  and \ ``disable_source``\  handlers.
-   Callers should hold graph_mutex to access and call \ ``enable_source``\ 
-   and \ ``disable_source``\  handlers.
+   necessary to run @enable_source and @disable_source handlers.
+   Callers should hold graph_mutex to access and call @enable_source
+   and @disable_source handlers.
 
 .. _`media_entity_enum_init`:
 
@@ -458,8 +458,8 @@ Entities have flags that describe the entity capabilities and state
 .. note::
 
    Drivers should set the entity function before calling this function.
-   Please notice that the values \ ``MEDIA_ENT_F_V4L2_SUBDEV_UNKNOWN``\  and
-   \ ``MEDIA_ENT_F_UNKNOWN``\  should not be used by the drivers.
+   Please notice that the values %MEDIA_ENT_F_V4L2_SUBDEV_UNKNOWN and
+   %MEDIA_ENT_F_UNKNOWN should not be used by the drivers.
 
 .. _`media_device_unregister_entity`:
 
@@ -582,8 +582,8 @@ Description
 
 .. note::
 
-   It is better to call \ :c:func:`media_device_usb_init`\  instead, as
-   such macro fills driver_name with \ ``KBUILD_MODNAME``\ .
+   It is better to call media_device_usb_init() instead, as
+   such macro fills driver_name with %KBUILD_MODNAME.
 
 .. _`media_device_usb_init`:
 

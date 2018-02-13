@@ -236,8 +236,8 @@ Returns true if the ether type is a vlan ether type.
 
 .. _`__vlan_insert_tag`:
 
-__vlan_insert_tag
-=================
+\__vlan_insert_tag
+==================
 
 .. c:function:: int __vlan_insert_tag(struct sk_buff *skb, __be16 vlan_proto, u16 vlan_tci)
 
@@ -324,8 +324,8 @@ doesn't have to worry about freeing the original skb.
 
 .. _`__vlan_hwaccel_put_tag`:
 
-__vlan_hwaccel_put_tag
-======================
+\__vlan_hwaccel_put_tag
+=======================
 
 .. c:function:: void __vlan_hwaccel_put_tag(struct sk_buff *skb, __be16 vlan_proto, u16 vlan_tci)
 
@@ -349,8 +349,8 @@ Puts the VLAN TCI in \ ``skb``\ ->vlan_tci and lets the device do the rest
 
 .. _`__vlan_get_tag`:
 
-__vlan_get_tag
-==============
+\__vlan_get_tag
+===============
 
 .. c:function:: int __vlan_get_tag(const struct sk_buff *skb, u16 *vlan_tci)
 
@@ -371,8 +371,8 @@ Returns error if the skb is not of VLAN type
 
 .. _`__vlan_hwaccel_get_tag`:
 
-__vlan_hwaccel_get_tag
-======================
+\__vlan_hwaccel_get_tag
+=======================
 
 .. c:function:: int __vlan_hwaccel_get_tag(const struct sk_buff *skb, u16 *vlan_tci)
 
@@ -415,8 +415,8 @@ Returns error if the skb is not VLAN tagged
 
 .. _`__vlan_get_protocol`:
 
-__vlan_get_protocol
-===================
+\__vlan_get_protocol
+====================
 
 .. c:function:: __be16 __vlan_get_protocol(struct sk_buff *skb, __be16 type, int *depth)
 

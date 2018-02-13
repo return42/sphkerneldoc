@@ -888,7 +888,7 @@ sdata
 Description
 -----------
 
-&p9_fcall represents the structure for all 9P RPC
+\ :c:type:`struct p9_fcall <p9_fcall>`\  represents the structure for all 9P RPC
 transactions.  Requests are packaged into fcalls, and reponses
 must be extracted from them.
 

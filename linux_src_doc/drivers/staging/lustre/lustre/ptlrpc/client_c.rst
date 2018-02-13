@@ -160,8 +160,8 @@ ptlrpc_prep_req_from_pool
 
 .. _`__ptlrpc_free_req_to_pool`:
 
-__ptlrpc_free_req_to_pool
-=========================
+\__ptlrpc_free_req_to_pool
+==========================
 
 .. c:function:: void __ptlrpc_free_req_to_pool(struct ptlrpc_request *request)
 
@@ -188,8 +188,8 @@ ptlrpc_request_pack
 
 .. _`__ptlrpc_request_alloc`:
 
-__ptlrpc_request_alloc
-======================
+\__ptlrpc_request_alloc
+=======================
 
 .. c:function:: struct ptlrpc_request *__ptlrpc_request_alloc(struct obd_import *imp, struct ptlrpc_request_pool *pool)
 
@@ -551,8 +551,8 @@ ptlrpc_set_wait
 
 .. _`__ptlrpc_free_req`:
 
-__ptlrpc_free_req
-=================
+\__ptlrpc_free_req
+==================
 
 .. c:function:: void __ptlrpc_free_req(struct ptlrpc_request *request, int locked)
 
@@ -566,8 +566,8 @@ __ptlrpc_free_req
 
 .. _`__ptlrpc_req_finished`:
 
-__ptlrpc_req_finished
-=====================
+\__ptlrpc_req_finished
+======================
 
 .. c:function:: int __ptlrpc_req_finished(struct ptlrpc_request *request, int locked)
 

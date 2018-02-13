@@ -316,7 +316,7 @@ tegra_io_rail_power_on
 See also
 --------
 
-tegra_io_pad_power_enable()
+\ :c:func:`tegra_io_pad_power_enable`\ 
 
 .. _`tegra_io_rail_power_off`:
 
@@ -335,7 +335,7 @@ tegra_io_rail_power_off
 See also
 --------
 
-tegra_io_pad_power_disable()
+\ :c:func:`tegra_io_pad_power_disable`\ 
 
 .. This file was automatic generated / don't edit.
 

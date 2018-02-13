@@ -289,7 +289,7 @@ data
 Description
 -----------
 
-@ui_mutex exists for two main reasons. At first it prevents inodes from
+\ ``ui_mutex``\  exists for two main reasons. At first it prevents inodes from
 being written back while UBIFS changing them, being in the middle of an VFS
 operation. This way UBIFS makes sure the inode fields are consistent. For
 example, in 'ubifs_rename()' we change 3 inodes simultaneously, and
@@ -1379,7 +1379,7 @@ dd_growth
 Description
 -----------
 
-@idx_growth, \ ``data_growth``\  and \ ``dd_growth``\  are not used in budget request. The
+\ ``idx_growth``\ , \ ``data_growth``\  and \ ``dd_growth``\  are not used in budget request. The
 budgeting subsystem caches index and data growth values there to avoid
 re-calculating them when the budget is released. However, if \ ``idx_growth``\  is
 \ ``-1``\ , it is calculated by the release function using other fields.
@@ -1444,13 +1444,13 @@ inum
     inode number
 
 new
-    %1 => added since the last commit, otherwise \ ``0``\ 
+    \ ``1``\  => added since the last commit, otherwise \ ``0``\ 
 
 cmt
-    %1 => commit pending, otherwise \ ``0``\ 
+    \ ``1``\  => commit pending, otherwise \ ``0``\ 
 
 del
-    %1 => delete pending, otherwise \ ``0``\ 
+    \ ``1``\  => delete pending, otherwise \ ``0``\ 
 
 .. _`ubifs_mount_opts`:
 
@@ -2370,22 +2370,22 @@ rp_gid
     reserved pool group ID
 
 empty
-    %1 if the UBI device is empty
+    \ ``1``\  if the UBI device is empty
 
 need_recovery
-    %1 if the file-system needs recovery
+    \ ``1``\  if the file-system needs recovery
 
 replaying
-    %1 during journal replay
+    \ ``1``\  during journal replay
 
 mounting
-    %1 while mounting
+    \ ``1``\  while mounting
 
 remounting_rw
-    %1 while re-mounting from R/O mode to R/W mode
+    \ ``1``\  while re-mounting from R/O mode to R/W mode
 
 probing
-    %1 while attempting to mount if SB_SILENT mount flag is set
+    \ ``1``\  while attempting to mount if SB_SILENT mount flag is set
 
 replay_list
     temporary list used during journal replay

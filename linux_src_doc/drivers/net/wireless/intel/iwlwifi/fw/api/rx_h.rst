@@ -376,16 +376,16 @@ mpdu_len
     MPDU length
 
 mac_flags1
-    &enum iwl_rx_mpdu_mac_flags1
+    \ :c:type:`enum iwl_rx_mpdu_mac_flags1 <iwl_rx_mpdu_mac_flags1>`\ 
 
 mac_flags2
-    &enum iwl_rx_mpdu_mac_flags2
+    \ :c:type:`enum iwl_rx_mpdu_mac_flags2 <iwl_rx_mpdu_mac_flags2>`\ 
 
 amsdu_info
-    &enum iwl_rx_mpdu_amsdu_info
+    \ :c:type:`enum iwl_rx_mpdu_amsdu_info <iwl_rx_mpdu_amsdu_info>`\ 
 
 phy_info
-    &enum iwl_rx_mpdu_phy_info
+    \ :c:type:`enum iwl_rx_mpdu_phy_info <iwl_rx_mpdu_phy_info>`\ 
 
 mac_phy_idx
     MAC/PHY index
@@ -394,19 +394,19 @@ raw_csum
     raw checksum (alledgedly unreliable)
 
 l3l4_flags
-    &enum iwl_rx_l3l4_flags
+    \ :c:type:`enum iwl_rx_l3l4_flags <iwl_rx_l3l4_flags>`\ 
 
 status
-    &enum iwl_rx_mpdu_status
+    \ :c:type:`enum iwl_rx_mpdu_status <iwl_rx_mpdu_status>`\ 
 
 hash_filter
     hash filter value
 
 sta_id_flags
-    &enum iwl_rx_mpdu_sta_id_flags
+    \ :c:type:`enum iwl_rx_mpdu_sta_id_flags <iwl_rx_mpdu_sta_id_flags>`\ 
 
 reorder_data
-    &enum iwl_rx_mpdu_reorder_data
+    \ :c:type:`enum iwl_rx_mpdu_reorder_data <iwl_rx_mpdu_reorder_data>`\ 
 
 rss_hash
     RSS hash value

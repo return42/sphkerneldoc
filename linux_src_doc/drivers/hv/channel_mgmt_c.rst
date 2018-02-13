@@ -39,7 +39,7 @@ vmbus_prep_negotiate_resp
 Description
 -----------
 
-@icmsghdrp is of type \ :c:type:`struct icmsg_hdr <icmsg_hdr>`\ .
+\ ``icmsghdrp``\  is of type \ :c:type:`struct icmsg_hdr <icmsg_hdr>`\ .
 Set up and fill in default negotiate response message.
 
 The fw_version and fw_vercnt specifies the framework version that

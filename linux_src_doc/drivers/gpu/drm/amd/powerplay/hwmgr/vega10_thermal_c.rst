@@ -23,7 +23,7 @@ vega10_fan_ctrl_set_default_mode
 
 .. c:function:: int vega10_fan_ctrl_set_default_mode(struct pp_hwmgr *hwmgr)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Should always succeed.
+    \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Should always succeed.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -35,7 +35,7 @@ vega10_fan_ctrl_set_fan_speed_percent
 
 .. c:function:: int vega10_fan_ctrl_set_fan_speed_percent(struct pp_hwmgr *hwmgr, uint32_t speed)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     speed is the percentage value (0% - 100%) to be set. \ ``exception``\  Fails is the 100% setting appears to be 0.
+    \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     speed is the percentage value (0% - 100%) to be set. \ ``exception``\  Fails is the 100% setting appears to be 0.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -50,7 +50,7 @@ vega10_fan_ctrl_reset_fan_speed_to_default
 
 .. c:function:: int vega10_fan_ctrl_reset_fan_speed_to_default(struct pp_hwmgr *hwmgr)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Always succeeds.
+    \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``exception``\  Always succeeds.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -62,7 +62,7 @@ vega10_fan_ctrl_set_fan_speed_rpm
 
 .. c:function:: int vega10_fan_ctrl_set_fan_speed_rpm(struct pp_hwmgr *hwmgr, uint32_t speed)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     speed is the percentage value (min - max) to be set. \ ``exception``\  Fails is the speed not lie between min and max.
+    \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     speed is the percentage value (min - max) to be set. \ ``exception``\  Fails is the speed not lie between min and max.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -85,7 +85,7 @@ vega10_thermal_get_temperature
 Description
 -----------
 
-@param    hwmgr The address of the hardware manager.
+\ ``param``\     hwmgr The address of the hardware manager.
 
 .. _`vega10_thermal_set_temperature_range`:
 
@@ -105,7 +105,7 @@ vega10_thermal_set_temperature_range
 Description
 -----------
 
-@param    hwmgr The address of the hardware manager.
+\ ``param``\     hwmgr The address of the hardware manager.
 \ ``param``\     range Temperature range to be programmed for
 high and low alert signals
 \ ``exception``\  PP_Result_BadInput if the input data is not valid.
@@ -127,7 +127,7 @@ vega10_thermal_initialize
 Description
 -----------
 
-@param    hwmgr The address of the hardware manager.
+\ ``param``\     hwmgr The address of the hardware manager.
 
 .. _`vega10_thermal_enable_alert`:
 
@@ -144,7 +144,7 @@ vega10_thermal_enable_alert
 Description
 -----------
 
-@param    hwmgr The address of the hardware manager.
+\ ``param``\     hwmgr The address of the hardware manager.
 
 .. _`vega10_thermal_disable_alert`:
 
@@ -153,7 +153,7 @@ vega10_thermal_disable_alert
 
 .. c:function:: int vega10_thermal_disable_alert(struct pp_hwmgr *hwmgr)
 
-    @param    hwmgr The address of the hardware manager.
+    \ ``param``\     hwmgr The address of the hardware manager.
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -177,7 +177,7 @@ vega10_thermal_setup_fan_table
 
 .. c:function:: int vega10_thermal_setup_fan_table(struct pp_hwmgr *hwmgr)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
+    \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*
@@ -189,7 +189,7 @@ vega10_thermal_start_smc_fan_control
 
 .. c:function:: int vega10_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr)
 
-    @param    hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
+    \ ``param``\     hwmgr  the address of the powerplay hardware manager. \ ``param``\     pInput the pointer to input data \ ``param``\     pOutput the pointer to output data \ ``param``\     pStorage the pointer to temporary storage \ ``param``\     Result the last failure code \ ``return``\    result from set temperature range routine
 
     :param struct pp_hwmgr \*hwmgr:
         *undescribed*

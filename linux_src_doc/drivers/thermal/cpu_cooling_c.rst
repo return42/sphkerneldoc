@@ -249,7 +249,7 @@ get_load
     get load for a cpu since last updated
 
     :param struct cpufreq_cooling_device \*cpufreq_cdev:
-        &struct cpufreq_cooling_device for this cpu
+        \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cpu
 
     :param int cpu:
         cpu number
@@ -275,7 +275,7 @@ get_dynamic_power
     calculate the dynamic power
 
     :param struct cpufreq_cooling_device \*cpufreq_cdev:
-        &cpufreq_cooling_device for this cdev
+        \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cdev
 
     :param unsigned long freq:
         current frequency
@@ -388,7 +388,7 @@ cpufreq_get_requested_power
     get the current power
 
     :param struct thermal_cooling_device \*cdev:
-        &thermal_cooling_device pointer
+        \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\  pointer
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -433,7 +433,7 @@ cpufreq_state2power
     convert a cpu cdev state to power consumed
 
     :param struct thermal_cooling_device \*cdev:
-        &thermal_cooling_device pointer
+        \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\  pointer
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -472,7 +472,7 @@ cpufreq_power2state
     convert power to a cooling device state
 
     :param struct thermal_cooling_device \*cdev:
-        &thermal_cooling_device pointer
+        \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\  pointer
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -508,8 +508,8 @@ device.
 
 .. _`__cpufreq_cooling_register`:
 
-__cpufreq_cooling_register
-==========================
+\__cpufreq_cooling_register
+===========================
 
 .. c:function:: struct thermal_cooling_device *__cpufreq_cooling_register(struct device_node *np, struct cpufreq_policy *policy, u32 capacitance)
 

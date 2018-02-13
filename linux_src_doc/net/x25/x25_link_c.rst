@@ -3,8 +3,8 @@
 
 .. _`__x25_remove_neigh`:
 
-__x25_remove_neigh
-==================
+\__x25_remove_neigh
+===================
 
 .. c:function:: void __x25_remove_neigh(struct x25_neigh *nb)
 

@@ -404,7 +404,7 @@ ht_supp_rates
     bitmap of supported HT/VHT rates, valid bits are 0-9
 
 mode
-    &enum iwl_tlc_mng_cfg_mode
+    \ :c:type:`enum iwl_tlc_mng_cfg_mode <iwl_tlc_mng_cfg_mode>`\ 
 
 reserved2
     reserved

@@ -30,7 +30,7 @@ NFP_NET_LSO_MAX_HDR_SZ
 
 .. c:function::  NFP_NET_LSO_MAX_HDR_SZ()
 
-    %NFP_NET_LSO_MAX_HDR_SZ:     Maximum header size supported for LSO frames \ ``NFP_NET_LSO_MAX_SEGS``\ :       Maximum number of segments LSO frame can produce
+    \ ``NFP_NET_LSO_MAX_HDR_SZ``\ :     Maximum header size supported for LSO frames \ ``NFP_NET_LSO_MAX_SEGS``\ :       Maximum number of segments LSO frame can produce
 
 .. _`nfp_net_meta_field_size`:
 
@@ -55,7 +55,7 @@ NFP_NET_TXR_MAX
 
 .. c:function::  NFP_NET_TXR_MAX()
 
-    %NFP_NET_TXR_MAX:         Maximum number of TX rings \ ``NFP_NET_RXR_MAX``\ :         Maximum number of RX rings
+    \ ``NFP_NET_TXR_MAX``\ :         Maximum number of TX rings \ ``NFP_NET_RXR_MAX``\ :         Maximum number of RX rings
 
 .. _`nfp_net_cfg_ctrl`:
 
@@ -103,7 +103,7 @@ NFP_NET_CFG_RSS_CAP
 
 .. c:function::  NFP_NET_CFG_RSS_CAP()
 
-    %NFP_NET_CFG_RSS_CAP_HFUNC:  supported hash functions (same bits as \ ``NFP_NET_CFG_RSS_HFUNC``\ )
+    \ ``NFP_NET_CFG_RSS_CAP_HFUNC``\ :  supported hash functions (same bits as \ ``NFP_NET_CFG_RSS_HFUNC``\ )
 
 .. _`nfp_net_cfg_tlv_base`:
 
@@ -112,7 +112,7 @@ NFP_NET_CFG_TLV_BASE
 
 .. c:function::  NFP_NET_CFG_TLV_BASE()
 
-    %NFP_NET_CFG_TLV_BASE:       start anchor of the TLV area
+    \ ``NFP_NET_CFG_TLV_BASE``\ :       start anchor of the TLV area
 
 .. _`nfp_net_cfg_vxlan_port`:
 
@@ -121,7 +121,7 @@ NFP_NET_CFG_VXLAN_PORT
 
 .. c:function::  NFP_NET_CFG_VXLAN_PORT()
 
-    %NFP_NET_CFG_VXLAN_PORT:     Base address of table of tunnels' UDP dst ports \ ``NFP_NET_CFG_VXLAN_SZ``\ :       Size of the UDP port table in bytes
+    \ ``NFP_NET_CFG_VXLAN_PORT``\ :     Base address of table of tunnels' UDP dst ports \ ``NFP_NET_CFG_VXLAN_SZ``\ :       Size of the UDP port table in bytes
 
 .. _`nfp_net_cfg_bpf_abi`:
 
@@ -130,7 +130,7 @@ NFP_NET_CFG_BPF_ABI
 
 .. c:function::  NFP_NET_CFG_BPF_ABI()
 
-    %NFP_NET_CFG_BPF_ABI:        BPF ABI version \ ``NFP_NET_CFG_BPF_CAP``\ :        BPF capabilities \ ``NFP_NET_CFG_BPF_MAX_LEN``\ :    Maximum size of JITed BPF code in bytes \ ``NFP_NET_CFG_BPF_START``\ :      Offset at which BPF will be loaded \ ``NFP_NET_CFG_BPF_DONE``\ :       Offset to jump to on exit \ ``NFP_NET_CFG_BPF_STACK_SZ``\ :   Total size of stack area in 64B chunks \ ``NFP_NET_CFG_BPF_INL_MTU``\ :    Packet data split offset in 64B chunks \ ``NFP_NET_CFG_BPF_SIZE``\ :       Size of the JITed BPF code in instructions \ ``NFP_NET_CFG_BPF_ADDR``\ :       DMA address of the buffer with JITed BPF code
+    \ ``NFP_NET_CFG_BPF_ABI``\ :        BPF ABI version \ ``NFP_NET_CFG_BPF_CAP``\ :        BPF capabilities \ ``NFP_NET_CFG_BPF_MAX_LEN``\ :    Maximum size of JITed BPF code in bytes \ ``NFP_NET_CFG_BPF_START``\ :      Offset at which BPF will be loaded \ ``NFP_NET_CFG_BPF_DONE``\ :       Offset to jump to on exit \ ``NFP_NET_CFG_BPF_STACK_SZ``\ :   Total size of stack area in 64B chunks \ ``NFP_NET_CFG_BPF_INL_MTU``\ :    Packet data split offset in 64B chunks \ ``NFP_NET_CFG_BPF_SIZE``\ :       Size of the JITed BPF code in instructions \ ``NFP_NET_CFG_BPF_ADDR``\ :       DMA address of the buffer with JITed BPF code
 
 .. _`nfp_net_cfg_reserved`:
 
@@ -211,7 +211,7 @@ NFP_NET_CFG_VLAN_FILTER
 
 .. c:function::  NFP_NET_CFG_VLAN_FILTER()
 
-    %NFP_NET_CFG_VLAN_FILTER:            Base address of VLAN filter mailbox \ ``NFP_NET_CFG_VLAN_FILTER_VID``\ :        VLAN ID to filter \ ``NFP_NET_CFG_VLAN_FILTER_PROTO``\ :      VLAN proto to filter \ ``NFP_NET_CFG_VXLAN_SZ``\ :               Size of the VLAN filter mailbox in bytes
+    \ ``NFP_NET_CFG_VLAN_FILTER``\ :            Base address of VLAN filter mailbox \ ``NFP_NET_CFG_VLAN_FILTER_VID``\ :        VLAN ID to filter \ ``NFP_NET_CFG_VLAN_FILTER_PROTO``\ :      VLAN proto to filter \ ``NFP_NET_CFG_VXLAN_SZ``\ :               Size of the VLAN filter mailbox in bytes
 
 .. _`nfp_net_cfg_tlv_type`:
 
@@ -220,7 +220,7 @@ NFP_NET_CFG_TLV_TYPE
 
 .. c:function::  NFP_NET_CFG_TLV_TYPE()
 
-    %NFP_NET_CFG_TLV_TYPE:       Offset of type within the TLV \ ``NFP_NET_CFG_TLV_TYPE_REQUIRED``\ : Driver must be able to parse the TLV \ ``NFP_NET_CFG_TLV_LENGTH``\ :     Offset of length within the TLV \ ``NFP_NET_CFG_TLV_LENGTH_INC``\ : TLV length increments \ ``NFP_NET_CFG_TLV_VALUE``\ :      Offset of value with the TLV
+    \ ``NFP_NET_CFG_TLV_TYPE``\ :       Offset of type within the TLV \ ``NFP_NET_CFG_TLV_TYPE_REQUIRED``\ : Driver must be able to parse the TLV \ ``NFP_NET_CFG_TLV_LENGTH``\ :     Offset of length within the TLV \ ``NFP_NET_CFG_TLV_LENGTH_INC``\ : TLV length increments \ ``NFP_NET_CFG_TLV_VALUE``\ :      Offset of value with the TLV
 
 .. _`nfp_net_cfg_tlv_type.description`:
 
@@ -248,7 +248,7 @@ NFP_NET_CFG_TLV_TYPE_UNKNOWN
 Description
 -----------
 
-%NFP_NET_CFG_TLV_TYPE_UNKNOWN:
+\ ``NFP_NET_CFG_TLV_TYPE_UNKNOWN``\ :
 Special TLV type to catch bugs, should never be encountered.  Drivers should
 treat encountering this type as error and refuse to probe.
 

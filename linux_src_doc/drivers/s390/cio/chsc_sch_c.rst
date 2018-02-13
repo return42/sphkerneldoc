@@ -28,7 +28,7 @@ Tries to start a chsc request on one of the existing chsc subchannels.
 Return
 ------
 
-%0 if the request was performed synchronously
+\ ``0``\  if the request was performed synchronously
 \ ``-EINPROGRESS``\  if the request was successfully started
 \ ``-EBUSY``\  if all chsc subchannels are busy
 \ ``-ENODEV``\  if no chsc subchannels are available

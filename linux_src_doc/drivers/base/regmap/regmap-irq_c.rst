@@ -52,7 +52,7 @@ regmap_del_irq_chip
         Primary IRQ for the device
 
     :param struct regmap_irq_chip_data \*d:
-        &regmap_irq_chip_data allocated by \ :c:func:`regmap_add_irq_chip`\ 
+        \ :c:type:`struct regmap_irq_chip_data <regmap_irq_chip_data>`\  allocated by \ :c:func:`regmap_add_irq_chip`\ 
 
 .. _`regmap_del_irq_chip.description`:
 
@@ -117,7 +117,7 @@ devm_regmap_del_irq_chip
         Primary IRQ for the device.
 
     :param struct regmap_irq_chip_data \*data:
-        &regmap_irq_chip_data allocated by \ :c:func:`regmap_add_irq_chip`\ .
+        \ :c:type:`struct regmap_irq_chip_data <regmap_irq_chip_data>`\  allocated by \ :c:func:`regmap_add_irq_chip`\ .
 
 .. _`devm_regmap_del_irq_chip.description`:
 

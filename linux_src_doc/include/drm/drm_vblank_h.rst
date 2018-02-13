@@ -37,7 +37,7 @@ base
     Base structure for tracking pending DRM events.
 
 pipe
-    drm_crtc_index() of the \ :c:type:`struct drm_crtc <drm_crtc>`\  this event is for.
+    \ :c:func:`drm_crtc_index`\  of the \ :c:type:`struct drm_crtc <drm_crtc>`\  this event is for.
 
 sequence
     frame event should be triggered at
@@ -118,7 +118,7 @@ inmodeset
     save and restore the vblank count.
 
 pipe
-    drm_crtc_index() of the \ :c:type:`struct drm_crtc <drm_crtc>`\  corresponding to thisstructure.
+    \ :c:func:`drm_crtc_index`\  of the \ :c:type:`struct drm_crtc <drm_crtc>`\  corresponding to thisstructure.
 
 framedur_ns
     Frame/Field duration in ns, used \ :c:func:`bydrm_calc_vbltimestamp_from_scanoutpos`\  and computed by

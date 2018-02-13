@@ -83,8 +83,8 @@ Return
 
 .. _`__stm_source_link_drop`:
 
-__stm_source_link_drop
-======================
+\__stm_source_link_drop
+=======================
 
 .. c:function:: int __stm_source_link_drop(struct stm_source_device *src, struct stm_device *stm)
 

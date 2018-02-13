@@ -139,7 +139,7 @@ change_bit
 Description
 -----------
 
-change_bit()  may be reordered on other architectures than x86.
+\ :c:func:`change_bit`\   may be reordered on other architectures than x86.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.
 
@@ -190,8 +190,8 @@ This operation is atomic and provides release barrier semantics.
 
 .. _`__clear_bit_unlock`:
 
-__clear_bit_unlock
-==================
+\__clear_bit_unlock
+===================
 
 .. c:function:: void __clear_bit_unlock(unsigned long nr, volatile unsigned long *addr)
 

@@ -127,7 +127,7 @@ Members
 -------
 
 flags
-    &enum iwl_card_state_flags
+    \ :c:type:`enum iwl_card_state_flags <iwl_card_state_flags>`\ 
 
 .. _`iwl_fseq_ver_mismatch_ntf`:
 

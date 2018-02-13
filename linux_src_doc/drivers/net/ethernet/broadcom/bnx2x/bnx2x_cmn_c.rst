@@ -142,8 +142,8 @@ reporting.
 
 .. _`__bnx2x_link_report`:
 
-__bnx2x_link_report
-===================
+\__bnx2x_link_report
+====================
 
 .. c:function:: void __bnx2x_link_report(struct bnx2x *bp)
 

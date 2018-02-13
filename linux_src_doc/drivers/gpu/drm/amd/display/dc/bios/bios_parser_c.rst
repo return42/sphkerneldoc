@@ -65,7 +65,7 @@ get_ss_info_from_tbl
 Description
 -----------
 
-@param this
+\ ``param``\  this
 \ ``param``\  id, spread sprectrum info index
 \ ``param``\  pSSinfo, sprectrum information structure,
 \ ``return``\  Bios parser result code
@@ -93,7 +93,7 @@ get_ss_info_from_internal_ss_info_tbl_V2_1
 Description
 -----------
 
-@param id, spread sprectrum info index
+\ ``param``\  id, spread sprectrum info index
 \ ``param``\  pSSinfo, sprectrum information structure,
 \ ``return``\  Bios parser result code
 
@@ -120,7 +120,7 @@ get_ss_info_from_ss_info_table
 Description
 -----------
 
-@param [in] id, spread sprectrum id
+\ ``param``\  [in] id, spread sprectrum id
 \ ``param``\  [out] pSSinfo, sprectrum information structure,
 \ ``return``\  Bios parser result code
 
@@ -145,7 +145,7 @@ bios_parser_get_encoder_cap_info
 Description
 -----------
 
-@brief
+\ ``brief``\ 
 Get encoder capability information of input object id
 
 \ ``param``\  object_id, Object id
@@ -171,7 +171,7 @@ get_encoder_cap_record
 Description
 -----------
 
-@brief
+\ ``brief``\ 
 Get encoder cap record for the object
 
 \ ``param``\  object, ATOM object
@@ -201,7 +201,7 @@ bios_parser_get_ss_entry_number
 Description
 -----------
 
-@param[in] signal, ASSignalType to be converted to SSid
+\ ``param``\ [in] signal, ASSignalType to be converted to SSid
 \ ``return``\  number of SS Entry that match the signal
 
 .. _`get_ss_entry_number_from_ss_info_tbl`:
@@ -224,7 +224,7 @@ get_ss_entry_number_from_ss_info_tbl
 Description
 -----------
 
-@note There can only be one entry for each id for SS_Info Table
+\ ``note``\  There can only be one entry for each id for SS_Info Table
 
 \ ``param``\  [in] id, spread spectrum id
 \ ``return``\  number of SS Entry that match the id
@@ -249,7 +249,7 @@ get_ss_entry_number
 Description
 -----------
 
-@param id, spread sprectrum info index
+\ ``param``\  id, spread sprectrum info index
 \ ``return``\  Bios parser result code
 
 .. _`get_ss_entry_number_from_internal_ss_info_tbl_v2_1`:
@@ -272,7 +272,7 @@ get_ss_entry_number_from_internal_ss_info_tbl_v2_1
 Description
 -----------
 
-@param id, spread sprectrum info index
+\ ``param``\  id, spread sprectrum info index
 \ ``return``\  number of SS Entry that match the id
 
 .. _`get_ss_entry_number_from_internal_ss_info_tbl_v3_1`:
@@ -295,7 +295,7 @@ get_ss_entry_number_from_internal_ss_info_tbl_V3_1
 Description
 -----------
 
-@param[in]  id, spread sprectrum id
+\ ``param``\ [in]  id, spread sprectrum id
 \ ``return``\  number of SS Entry that match the id
 
 .. _`bios_parser_get_gpio_pin_info`:
@@ -321,7 +321,7 @@ bios_parser_get_gpio_pin_info
 Description
 -----------
 
-@param gpio_id, GPIO ID
+\ ``param``\  gpio_id, GPIO ID
 \ ``param``\  info, GpioPin information structure
 \ ``return``\  Bios parser result code
 \ ``note``\ 
@@ -372,7 +372,7 @@ get_ext_display_connection_info
 Description
 -----------
 
-@return enum bp_result whether all data was sucessfully read
+\ ``return``\  enum bp_result whether all data was sucessfully read
 
 .. _`bios_parser_set_scratch_critical_state`:
 
@@ -392,7 +392,7 @@ bios_parser_set_scratch_critical_state
 Description
 -----------
 
-@brief
+\ ``brief``\ 
 update critical state bit in VBIOS scratch register
 
 \ ``param``\ 

@@ -185,7 +185,7 @@ userhdr
 attrs
     netlink attributes
 
-_net
+\_net
     network namespace
 
 user_ptr

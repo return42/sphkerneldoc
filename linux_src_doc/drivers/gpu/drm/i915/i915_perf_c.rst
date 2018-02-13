@@ -317,7 +317,7 @@ can't be modified.
 Return
 ------
 
-%true if the OA buffer contains data, else \ ``false``\ 
+\ ``true``\  if the OA buffer contains data, else \ ``false``\ 
 
 .. _`append_oa_status`:
 
@@ -634,7 +634,7 @@ i915_oa_poll_wait
         An i915 perf stream file
 
     :param poll_table \*wait:
-        poll() state table
+        \ :c:func:`poll`\  state table
 
 .. _`i915_oa_poll_wait.description`:
 
@@ -819,7 +819,7 @@ i915_perf_read_locked
 
 .. c:function:: ssize_t i915_perf_read_locked(struct i915_perf_stream *stream, struct file *file, char __user *buf, size_t count, loff_t *ppos)
 
-    &i915_perf_stream_ops->read with error normalisation
+    \ :c:type:`i915_perf_stream_ops->read <i915_perf_stream_ops>`\  with error normalisation
 
     :param struct i915_perf_stream \*stream:
         An i915 perf stream
@@ -917,7 +917,7 @@ i915_perf_poll_locked
 
 .. c:function:: __poll_t i915_perf_poll_locked(struct drm_i915_private *dev_priv, struct i915_perf_stream *stream, struct file *file, poll_table *wait)
 
-    poll_wait() with a suitable wait queue for stream
+    \ :c:func:`poll_wait`\  with a suitable wait queue for stream
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
@@ -929,7 +929,7 @@ i915_perf_poll_locked
         An i915 perf stream file
 
     :param poll_table \*wait:
-        poll() state table
+        \ :c:func:`poll`\  state table
 
 .. _`i915_perf_poll_locked.description`:
 
@@ -968,7 +968,7 @@ i915_perf_poll
         An i915 perf stream file
 
     :param poll_table \*wait:
-        poll() state table
+        \ :c:func:`poll`\  state table
 
 .. _`i915_perf_poll.description`:
 

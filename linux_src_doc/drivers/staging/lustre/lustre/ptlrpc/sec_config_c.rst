@@ -43,8 +43,8 @@ sptlrpc_conf_merge_rule
 
 .. _`__sptlrpc_process_config`:
 
-__sptlrpc_process_config
-========================
+\__sptlrpc_process_config
+=========================
 
 .. c:function:: int __sptlrpc_process_config(struct lustre_cfg *lcfg, struct sptlrpc_conf *conf)
 

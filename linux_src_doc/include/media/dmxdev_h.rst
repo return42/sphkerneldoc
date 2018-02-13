@@ -123,7 +123,7 @@ ts
     pointer to \ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`\ 
 
 next
-    &struct list_head pointing to the next feed.
+    \ :c:type:`struct list_head <list_head>`\  pointing to the next feed.
 
 .. _`dmxdev_filter`:
 
@@ -222,7 +222,7 @@ mutex
     protects the access to \ :c:type:`struct dmxdev_filter <dmxdev_filter>`\ .
 
 timer
-    &struct timer_list embedded timer, used to check for
+    \ :c:type:`struct timer_list <timer_list>`\  embedded timer, used to check for
     feed timeouts.
     Only for section filter.
 

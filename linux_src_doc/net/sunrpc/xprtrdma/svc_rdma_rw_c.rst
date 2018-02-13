@@ -139,7 +139,7 @@ svc_rdma_recv_read_chunk
 Return
 ------
 
-%0 if all needed RDMA Reads were posted successfully,
+\ ``0``\  if all needed RDMA Reads were posted successfully,
 \ ``-EINVAL``\  if client provided too many segments,
 \ ``-ENOMEM``\  if rdma_rw context pool was exhausted,
 \ ``-ENOTCONN``\  if posting failed (connection is lost),

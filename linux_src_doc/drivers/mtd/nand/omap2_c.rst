@@ -437,8 +437,8 @@ eccsize1 = 32 (skip 32 nibbles = 16 bytes per sector in spare area)
 
 .. _`_omap_calculate_ecc_bch`:
 
-_omap_calculate_ecc_bch
-=======================
+\_omap_calculate_ecc_bch
+========================
 
 .. c:function:: int _omap_calculate_ecc_bch(struct mtd_info *mtd, const u_char *dat, u_char *ecc_calc, int i)
 

@@ -25,8 +25,8 @@ Caller holds the graph mutex.
 
 .. _`__subdev_set_power`:
 
-__subdev_set_power
-==================
+\__subdev_set_power
+===================
 
 .. c:function:: int __subdev_set_power(struct v4l2_subdev *sd, int on)
 
@@ -70,8 +70,8 @@ Needs to be called with the graph mutex held.
 
 .. _`__fimc_pipeline_enable`:
 
-__fimc_pipeline_enable
-======================
+\__fimc_pipeline_enable
+=======================
 
 .. c:function:: int __fimc_pipeline_enable(struct exynos_media_pipeline *ep, struct fimc_md *fmd)
 
@@ -92,8 +92,8 @@ Called with the graph mutex held.
 
 .. _`__fimc_pipeline_open`:
 
-__fimc_pipeline_open
-====================
+\__fimc_pipeline_open
+=====================
 
 .. c:function:: int __fimc_pipeline_open(struct exynos_media_pipeline *ep, struct media_entity *me, bool prepare)
 
@@ -117,8 +117,8 @@ Called with the graph mutex held.
 
 .. _`__fimc_pipeline_close`:
 
-__fimc_pipeline_close
-=====================
+\__fimc_pipeline_close
+======================
 
 .. c:function:: int __fimc_pipeline_close(struct exynos_media_pipeline *ep)
 
@@ -136,8 +136,8 @@ Disable power of all subdevs and turn the external sensor clock off.
 
 .. _`__fimc_pipeline_s_stream`:
 
-__fimc_pipeline_s_stream
-========================
+\__fimc_pipeline_s_stream
+=========================
 
 .. c:function:: int __fimc_pipeline_s_stream(struct exynos_media_pipeline *ep, bool on)
 
@@ -151,8 +151,8 @@ __fimc_pipeline_s_stream
 
 .. _`__fimc_md_create_fimc_sink_links`:
 
-__fimc_md_create_fimc_sink_links
-================================
+\__fimc_md_create_fimc_sink_links
+=================================
 
 .. c:function:: int __fimc_md_create_fimc_sink_links(struct fimc_md *fmd, struct media_entity *source, struct v4l2_subdev *sensor, int pad, int link_mask)
 

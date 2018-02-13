@@ -40,7 +40,7 @@ mmc_pre_req
 Description
 -----------
 
-mmc_pre_req() is called in prior to \ :c:func:`mmc_start_req`\  to let
+\ :c:func:`mmc_pre_req`\  is called in prior to \ :c:func:`mmc_start_req`\  to let
 host prepare for the new request. Preparation of a request may be
 performed while another request is running on the host.
 

@@ -106,7 +106,7 @@ modules have not been loaded or unloaded while the copies were taking place.
 Return
 ------
 
-%0 on success, \ ``-1``\  on failure.
+\ ``0``\  on success, \ ``-1``\  on failure.
 
 .. _`populate_sdt_note`:
 

@@ -77,8 +77,8 @@ Frees the resources allocated by \ :c:func:`percpu_ida_init`\ .
 
 .. _`__percpu_ida_init`:
 
-__percpu_ida_init
-=================
+\__percpu_ida_init
+==================
 
 .. c:function:: int __percpu_ida_init(struct percpu_ida *pool, unsigned long nr_tags, unsigned long max_size, unsigned long batch_size)
 

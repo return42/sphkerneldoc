@@ -18,7 +18,8 @@ ib_alloc_device
 Description
 -----------
 
-Low-level drivers should use \ :c:func:`ib_alloc_device`\  to allocate \ :c:type:`struct ib_device <ib_device>`\ .  \ ``size``\  is the size of the structure to be allocated,
+Low-level drivers should use \ :c:func:`ib_alloc_device`\  to allocate \ :c:type:`struct struct <struct>`\ 
+ib_device.  \ ``size``\  is the size of the structure to be allocated,
 including any private data used by the low-level driver.
 \ :c:func:`ib_dealloc_device`\  must be used to free structures allocated with
 \ :c:func:`ib_alloc_device`\ .
@@ -44,8 +45,8 @@ Free a structure allocated with \ :c:func:`ib_alloc_device`\ .
 
 .. _`__dev_new_index`:
 
-__dev_new_index
-===============
+\__dev_new_index
+================
 
 .. c:function:: u32 __dev_new_index( void)
 
@@ -174,7 +175,7 @@ ib_get_client_data
 Description
 -----------
 
-ib_get_client_data() returns client context set with
+\ :c:func:`ib_get_client_data`\  returns client context set with
 \ :c:func:`ib_set_client_data`\ .
 
 .. _`ib_set_client_data`:
@@ -200,7 +201,7 @@ ib_set_client_data
 Description
 -----------
 
-ib_set_client_data() sets client context that can be retrieved with
+\ :c:func:`ib_set_client_data`\  sets client context that can be retrieved with
 \ :c:func:`ib_get_client_data`\ .
 
 .. _`ib_register_event_handler`:
@@ -220,7 +221,7 @@ ib_register_event_handler
 Description
 -----------
 
-ib_register_event_handler() registers an event handler that will be
+\ :c:func:`ib_register_event_handler`\  registers an event handler that will be
 called back when asynchronous IB events occur (as defined in
 chapter 11 of the InfiniBand Architecture Specification).  This
 callback may occur in interrupt context.
@@ -289,7 +290,7 @@ ib_query_port
 Description
 -----------
 
-ib_query_port() returns the attributes of a port through the
+\ :c:func:`ib_query_port`\  returns the attributes of a port through the
 \ ``port_attr``\  pointer.
 
 .. _`ib_query_gid`:
@@ -322,7 +323,7 @@ ib_query_gid
 Description
 -----------
 
-ib_query_gid() fetches the specified GID table entry.
+\ :c:func:`ib_query_gid`\  fetches the specified GID table entry.
 
 .. _`ib_enum_roce_netdev`:
 
@@ -438,7 +439,7 @@ ib_query_pkey
 Description
 -----------
 
-ib_query_pkey() fetches the specified P_Key table entry.
+\ :c:func:`ib_query_pkey`\  fetches the specified P_Key table entry.
 
 .. _`ib_modify_device`:
 
@@ -463,7 +464,7 @@ ib_modify_device
 Description
 -----------
 
-ib_modify_device() changes a device's attributes as specified by
+\ :c:func:`ib_modify_device`\  changes a device's attributes as specified by
 the \ ``device_modify_mask``\  and \ ``device_modify``\  structure.
 
 .. _`ib_modify_port`:
@@ -493,7 +494,7 @@ ib_modify_port
 Description
 -----------
 
-ib_modify_port() changes a port's attributes as specified by the
+\ :c:func:`ib_modify_port`\  changes a port's attributes as specified by the
 \ ``port_modify_mask``\  and \ ``port_modify``\  structure.
 
 .. _`ib_find_gid`:

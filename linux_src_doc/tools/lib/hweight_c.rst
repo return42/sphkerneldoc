@@ -3,8 +3,8 @@
 
 .. _`__sw_hweight32`:
 
-__sw_hweight32
-==============
+\__sw_hweight32
+===============
 
 .. c:function:: unsigned int __sw_hweight32(unsigned int w)
 

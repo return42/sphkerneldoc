@@ -46,8 +46,8 @@ HT20 peer is present. Otherwise no-protection mode is selected.
 
 .. _`__mesh_plink_deactivate`:
 
-__mesh_plink_deactivate
-=======================
+\__mesh_plink_deactivate
+========================
 
 .. c:function:: u32 __mesh_plink_deactivate(struct sta_info *sta)
 

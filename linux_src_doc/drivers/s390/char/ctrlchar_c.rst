@@ -22,7 +22,7 @@ ctrlchar_handle
 Description
 -----------
 
-@param buf Console input buffer.
+\ ``param``\  buf Console input buffer.
 \ ``param``\  len Length of valid data in buffer.
 \ ``param``\  tty The tty struct for this console.
 \ ``return``\  CTRLCHAR_NONE, if nothing matched,

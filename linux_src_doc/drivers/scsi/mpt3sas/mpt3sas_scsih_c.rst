@@ -218,8 +218,8 @@ Refer to \_scsi_send_scsi_io().
 
 .. _`_scsih_set_debug_level`:
 
-_scsih_set_debug_level
-======================
+\_scsih_set_debug_level
+=======================
 
 .. c:function:: int _scsih_set_debug_level(const char *val, const struct kernel_param *kp)
 
@@ -240,8 +240,8 @@ The logging levels are defined in mpt3sas_debug.h.
 
 .. _`_scsih_srch_boot_sas_address`:
 
-_scsih_srch_boot_sas_address
-============================
+\_scsih_srch_boot_sas_address
+=============================
 
 .. c:function:: int _scsih_srch_boot_sas_address(u64 sas_address, Mpi2BootDeviceSasWwid_t *boot_device)
 
@@ -262,8 +262,8 @@ Returns 1 when there's a match, 0 means no match.
 
 .. _`_scsih_srch_boot_device_name`:
 
-_scsih_srch_boot_device_name
-============================
+\_scsih_srch_boot_device_name
+=============================
 
 .. c:function:: int _scsih_srch_boot_device_name(u64 device_name, Mpi2BootDeviceDeviceName_t *boot_device)
 
@@ -284,8 +284,8 @@ Returns 1 when there's a match, 0 means no match.
 
 .. _`_scsih_srch_boot_encl_slot`:
 
-_scsih_srch_boot_encl_slot
-==========================
+\_scsih_srch_boot_encl_slot
+===========================
 
 .. c:function:: int _scsih_srch_boot_encl_slot(u64 enclosure_logical_id, u16 slot_number, Mpi2BootDeviceEnclosureSlot_t *boot_device)
 
@@ -309,8 +309,8 @@ Returns 1 when there's a match, 0 means no match.
 
 .. _`_scsih_is_boot_device`:
 
-_scsih_is_boot_device
-=====================
+\_scsih_is_boot_device
+======================
 
 .. c:function:: int _scsih_is_boot_device(u64 sas_address, u64 device_name, u64 enclosure_logical_id, u16 slot, u8 form, Mpi2BiosPage2BootDevice_t *boot_device)
 
@@ -343,8 +343,8 @@ Returns 1 when there's a match, 0 means no match.
 
 .. _`_scsih_get_sas_address`:
 
-_scsih_get_sas_address
-======================
+\_scsih_get_sas_address
+=======================
 
 .. c:function:: int _scsih_get_sas_address(struct MPT3SAS_ADAPTER *ioc, u16 handle, u64 *sas_address)
 
@@ -368,8 +368,8 @@ Returns 0 success, non-zero when failure
 
 .. _`_scsih_determine_boot_device`:
 
-_scsih_determine_boot_device
-============================
+\_scsih_determine_boot_device
+=============================
 
 .. c:function:: void _scsih_determine_boot_device(struct MPT3SAS_ADAPTER *ioc, void *device, u32 channel)
 
@@ -488,8 +488,8 @@ object.
 
 .. _`_scsih_display_enclosure_chassis_info`:
 
-_scsih_display_enclosure_chassis_info
-=====================================
+\_scsih_display_enclosure_chassis_info
+======================================
 
 .. c:function:: void _scsih_display_enclosure_chassis_info(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device, struct scsi_device *sdev, struct scsi_target *starget)
 
@@ -516,8 +516,8 @@ Returns nothing.
 
 .. _`_scsih_sas_device_remove`:
 
-_scsih_sas_device_remove
-========================
+\_scsih_sas_device_remove
+=========================
 
 .. c:function:: void _scsih_sas_device_remove(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device)
 
@@ -545,8 +545,8 @@ If sas_device is on the list, remove it and decrement its reference count.
 
 .. _`_scsih_device_remove_by_handle`:
 
-_scsih_device_remove_by_handle
-==============================
+\_scsih_device_remove_by_handle
+===============================
 
 .. c:function:: void _scsih_device_remove_by_handle(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -589,8 +589,8 @@ Return nothing.
 
 .. _`_scsih_sas_device_add`:
 
-_scsih_sas_device_add
-=====================
+\_scsih_sas_device_add
+======================
 
 .. c:function:: void _scsih_sas_device_add(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device)
 
@@ -618,8 +618,8 @@ Adding new object to the ioc->sas_device_list.
 
 .. _`_scsih_sas_device_init_add`:
 
-_scsih_sas_device_init_add
-==========================
+\_scsih_sas_device_init_add
+===========================
 
 .. c:function:: void _scsih_sas_device_init_add(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device)
 
@@ -708,8 +708,8 @@ object.
 
 .. _`_scsih_pcie_device_remove`:
 
-_scsih_pcie_device_remove
-=========================
+\_scsih_pcie_device_remove
+==========================
 
 .. c:function:: void _scsih_pcie_device_remove(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
 
@@ -737,8 +737,8 @@ If pcie_device is on the list, remove it and decrement its reference count.
 
 .. _`_scsih_pcie_device_remove_by_handle`:
 
-_scsih_pcie_device_remove_by_handle
-===================================
+\_scsih_pcie_device_remove_by_handle
+====================================
 
 .. c:function:: void _scsih_pcie_device_remove_by_handle(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -759,8 +759,8 @@ Return nothing.
 
 .. _`_scsih_pcie_device_add`:
 
-_scsih_pcie_device_add
-======================
+\_scsih_pcie_device_add
+=======================
 
 .. c:function:: void _scsih_pcie_device_add(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
 
@@ -781,8 +781,8 @@ This is added to the pcie_device_list link list.
 
 .. _`_scsih_raid_device_find_by_id`:
 
-_scsih_raid_device_find_by_id
-=============================
+\_scsih_raid_device_find_by_id
+==============================
 
 .. c:function:: struct _raid_device *_scsih_raid_device_find_by_id(struct MPT3SAS_ADAPTER *ioc, int id, int channel)
 
@@ -844,8 +844,8 @@ object.
 
 .. _`_scsih_raid_device_find_by_wwid`:
 
-_scsih_raid_device_find_by_wwid
-===============================
+\_scsih_raid_device_find_by_wwid
+================================
 
 .. c:function:: struct _raid_device *_scsih_raid_device_find_by_wwid(struct MPT3SAS_ADAPTER *ioc, u64 wwid)
 
@@ -874,8 +874,8 @@ object.
 
 .. _`_scsih_raid_device_add`:
 
-_scsih_raid_device_add
-======================
+\_scsih_raid_device_add
+=======================
 
 .. c:function:: void _scsih_raid_device_add(struct MPT3SAS_ADAPTER *ioc, struct _raid_device *raid_device)
 
@@ -896,8 +896,8 @@ This is added to the raid_device_list link list.
 
 .. _`_scsih_raid_device_remove`:
 
-_scsih_raid_device_remove
-=========================
+\_scsih_raid_device_remove
+==========================
 
 .. c:function:: void _scsih_raid_device_remove(struct MPT3SAS_ADAPTER *ioc, struct _raid_device *raid_device)
 
@@ -971,8 +971,8 @@ sas_node object.
 
 .. _`_scsih_expander_node_add`:
 
-_scsih_expander_node_add
-========================
+\_scsih_expander_node_add
+=========================
 
 .. c:function:: void _scsih_expander_node_add(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_expander)
 
@@ -1002,8 +1002,8 @@ Return nothing.
 
 .. _`_scsih_is_end_device`:
 
-_scsih_is_end_device
-====================
+\_scsih_is_end_device
+=====================
 
 .. c:function:: int _scsih_is_end_device(u32 device_info)
 
@@ -1028,8 +1028,8 @@ Returns 1 if end device.
 
 .. _`_scsih_is_nvme_device`:
 
-_scsih_is_nvme_device
-=====================
+\_scsih_is_nvme_device
+======================
 
 .. c:function:: int _scsih_is_nvme_device(u32 device_info)
 
@@ -1177,8 +1177,8 @@ Returns nothing.
 
 .. _`_scsih_display_sata_capabilities`:
 
-_scsih_display_sata_capabilities
-================================
+\_scsih_display_sata_capabilities
+=================================
 
 .. c:function:: void _scsih_display_sata_capabilities(struct MPT3SAS_ADAPTER *ioc, u16 handle, struct scsi_device *sdev)
 
@@ -1231,8 +1231,8 @@ scsih_get_state
 
 .. _`_scsih_set_level`:
 
-_scsih_set_level
-================
+\_scsih_set_level
+=================
 
 .. c:function:: void _scsih_set_level(struct MPT3SAS_ADAPTER *ioc, struct scsi_device *sdev, u8 volume_type)
 
@@ -1249,8 +1249,8 @@ _scsih_set_level
 
 .. _`_scsih_get_volume_capabilities`:
 
-_scsih_get_volume_capabilities
-==============================
+\_scsih_get_volume_capabilities
+===============================
 
 .. c:function:: int _scsih_get_volume_capabilities(struct MPT3SAS_ADAPTER *ioc, struct _raid_device *raid_device)
 
@@ -1271,8 +1271,8 @@ Returns 0 for success, else 1
 
 .. _`_scsih_enable_tlr`:
 
-_scsih_enable_tlr
-=================
+\_scsih_enable_tlr
+==================
 
 .. c:function:: void _scsih_enable_tlr(struct MPT3SAS_ADAPTER *ioc, struct scsi_device *sdev)
 
@@ -1345,8 +1345,8 @@ Return nothing.
 
 .. _`_scsih_response_code`:
 
-_scsih_response_code
-====================
+\_scsih_response_code
+=====================
 
 .. c:function:: void _scsih_response_code(struct MPT3SAS_ADAPTER *ioc, u8 response_code)
 
@@ -1367,8 +1367,8 @@ Return nothing.
 
 .. _`_scsih_tm_done`:
 
-_scsih_tm_done
-==============
+\_scsih_tm_done
+===============
 
 .. c:function:: u8 _scsih_tm_done(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -1498,8 +1498,8 @@ Return SUCCESS or FAILED.
 
 .. _`_scsih_tm_display_info`:
 
-_scsih_tm_display_info
-======================
+\_scsih_tm_display_info
+=======================
 
 .. c:function:: void _scsih_tm_display_info(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd)
 
@@ -1596,8 +1596,8 @@ Returns SUCCESS if command aborted else FAILED
 
 .. _`_scsih_fw_event_add`:
 
-_scsih_fw_event_add
-===================
+\_scsih_fw_event_add
+====================
 
 .. c:function:: void _scsih_fw_event_add(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -1628,8 +1628,8 @@ Return nothing.
 
 .. _`_scsih_fw_event_del_from_list`:
 
-_scsih_fw_event_del_from_list
-=============================
+\_scsih_fw_event_del_from_list
+==============================
 
 .. c:function:: void _scsih_fw_event_del_from_list(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -1659,8 +1659,8 @@ Return nothing.
 
 .. _`_scsih_error_recovery_delete_devices`:
 
-_scsih_error_recovery_delete_devices
-====================================
+\_scsih_error_recovery_delete_devices
+=====================================
 
 .. c:function:: void _scsih_error_recovery_delete_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1697,8 +1697,8 @@ Return nothing.
 
 .. _`_scsih_fw_event_cleanup_queue`:
 
-_scsih_fw_event_cleanup_queue
-=============================
+\_scsih_fw_event_cleanup_queue
+==============================
 
 .. c:function:: void _scsih_fw_event_cleanup_queue(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1719,8 +1719,8 @@ Return nothing.
 
 .. _`_scsih_internal_device_block`:
 
-_scsih_internal_device_block
-============================
+\_scsih_internal_device_block
+=============================
 
 .. c:function:: void _scsih_internal_device_block(struct scsi_device *sdev, struct MPT3SAS_DEVICE *sas_device_priv_data)
 
@@ -1742,8 +1742,8 @@ print an error
 
 .. _`_scsih_internal_device_unblock`:
 
-_scsih_internal_device_unblock
-==============================
+\_scsih_internal_device_unblock
+===============================
 
 .. c:function:: void _scsih_internal_device_unblock(struct scsi_device *sdev, struct MPT3SAS_DEVICE *sas_device_priv_data)
 
@@ -1759,8 +1759,8 @@ _scsih_internal_device_unblock
 
 .. _`_scsih_ublock_io_all_device`:
 
-_scsih_ublock_io_all_device
-===========================
+\_scsih_ublock_io_all_device
+============================
 
 .. c:function:: void _scsih_ublock_io_all_device(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1778,8 +1778,8 @@ change the device state from block to running
 
 .. _`_scsih_ublock_io_device`:
 
-_scsih_ublock_io_device
-=======================
+\_scsih_ublock_io_device
+========================
 
 .. c:function:: void _scsih_ublock_io_device(struct MPT3SAS_ADAPTER *ioc, u64 sas_address)
 
@@ -1800,8 +1800,8 @@ unblock then put device in offline state
 
 .. _`_scsih_block_io_all_device`:
 
-_scsih_block_io_all_device
-==========================
+\_scsih_block_io_all_device
+===========================
 
 .. c:function:: void _scsih_block_io_all_device(struct MPT3SAS_ADAPTER *ioc)
 
@@ -1819,8 +1819,8 @@ During device pull we need to appropriately set the sdev state.
 
 .. _`_scsih_block_io_device`:
 
-_scsih_block_io_device
-======================
+\_scsih_block_io_device
+=======================
 
 .. c:function:: void _scsih_block_io_device(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -1841,8 +1841,8 @@ During device pull we need to appropriately set the sdev state.
 
 .. _`_scsih_block_io_to_children_attached_to_ex`:
 
-_scsih_block_io_to_children_attached_to_ex
-==========================================
+\_scsih_block_io_to_children_attached_to_ex
+===========================================
 
 .. c:function:: void _scsih_block_io_to_children_attached_to_ex(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_expander)
 
@@ -1863,8 +1863,8 @@ pulled.
 
 .. _`_scsih_block_io_to_children_attached_directly`:
 
-_scsih_block_io_to_children_attached_directly
-=============================================
+\_scsih_block_io_to_children_attached_directly
+==============================================
 
 .. c:function:: void _scsih_block_io_to_children_attached_directly(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataSasTopologyChangeList_t *event_data)
 
@@ -1884,8 +1884,8 @@ direct attached during device pull.
 
 .. _`_scsih_block_io_to_pcie_children_attached_directly`:
 
-_scsih_block_io_to_pcie_children_attached_directly
-==================================================
+\_scsih_block_io_to_pcie_children_attached_directly
+===================================================
 
 .. c:function:: void _scsih_block_io_to_pcie_children_attached_directly(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
 
@@ -1905,8 +1905,8 @@ direct attached during device pull/reconnect.
 
 .. _`_scsih_tm_tr_send`:
 
-_scsih_tm_tr_send
-=================
+\_scsih_tm_tr_send
+==================
 
 .. c:function:: void _scsih_tm_tr_send(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -1941,8 +1941,8 @@ and process it in a future completion.
 
 .. _`_scsih_tm_tr_complete`:
 
-_scsih_tm_tr_complete
-=====================
+\_scsih_tm_tr_complete
+======================
 
 .. c:function:: u8 _scsih_tm_tr_complete(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -1980,8 +1980,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_sas_control_complete`:
 
-_scsih_sas_control_complete
-===========================
+\_scsih_sas_control_complete
+============================
 
 .. c:function:: u8 _scsih_sas_control_complete(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -2020,8 +2020,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_tm_tr_volume_send`:
 
-_scsih_tm_tr_volume_send
-========================
+\_scsih_tm_tr_volume_send
+=========================
 
 .. c:function:: void _scsih_tm_tr_volume_send(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -2051,8 +2051,8 @@ and process it in a future completion.
 
 .. _`_scsih_tm_volume_tr_complete`:
 
-_scsih_tm_volume_tr_complete
-============================
+\_scsih_tm_volume_tr_complete
+=============================
 
 .. c:function:: u8 _scsih_tm_volume_tr_complete(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -2087,8 +2087,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_issue_delayed_event_ack`:
 
-_scsih_issue_delayed_event_ack
-==============================
+\_scsih_issue_delayed_event_ack
+===============================
 
 .. c:function:: void _scsih_issue_delayed_event_ack(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 event, u32 event_context)
 
@@ -2115,8 +2115,8 @@ Context - processed in interrupt context.
 
 .. _`_scsih_issue_delayed_sas_io_unit_ctrl`:
 
-_scsih_issue_delayed_sas_io_unit_ctrl
-=====================================
+\_scsih_issue_delayed_sas_io_unit_ctrl
+======================================
 
 .. c:function:: void _scsih_issue_delayed_sas_io_unit_ctrl(struct MPT3SAS_ADAPTER *ioc, u16 smid, u16 handle)
 
@@ -2173,8 +2173,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_check_for_pending_tm`:
 
-_scsih_check_for_pending_tm
-===========================
+\_scsih_check_for_pending_tm
+============================
 
 .. c:function:: u8 _scsih_check_for_pending_tm(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
@@ -2199,8 +2199,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_check_topo_delete_events`:
 
-_scsih_check_topo_delete_events
-===============================
+\_scsih_check_topo_delete_events
+================================
 
 .. c:function:: void _scsih_check_topo_delete_events(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataSasTopologyChangeList_t *event_data)
 
@@ -2227,8 +2227,8 @@ Return nothing.
 
 .. _`_scsih_check_pcie_topo_remove_events`:
 
-_scsih_check_pcie_topo_remove_events
-====================================
+\_scsih_check_pcie_topo_remove_events
+=====================================
 
 .. c:function:: void _scsih_check_pcie_topo_remove_events(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
 
@@ -2254,8 +2254,8 @@ Return nothing.
 
 .. _`_scsih_set_volume_delete_flag`:
 
-_scsih_set_volume_delete_flag
-=============================
+\_scsih_set_volume_delete_flag
+==============================
 
 .. c:function:: void _scsih_set_volume_delete_flag(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -2276,8 +2276,8 @@ This returns nothing.
 
 .. _`_scsih_set_volume_handle_for_tr`:
 
-_scsih_set_volume_handle_for_tr
-===============================
+\_scsih_set_volume_handle_for_tr
+================================
 
 .. c:function:: void _scsih_set_volume_handle_for_tr(u16 handle, u16 *a, u16 *b)
 
@@ -2303,8 +2303,8 @@ input handle is non-zero, or when a and b have not been set before.
 
 .. _`_scsih_check_ir_config_unhide_events`:
 
-_scsih_check_ir_config_unhide_events
-====================================
+\_scsih_check_ir_config_unhide_events
+=====================================
 
 .. c:function:: void _scsih_check_ir_config_unhide_events(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataIrConfigChangeList_t *event_data)
 
@@ -2338,8 +2338,8 @@ Return nothing.
 
 .. _`_scsih_check_volume_delete_events`:
 
-_scsih_check_volume_delete_events
-=================================
+\_scsih_check_volume_delete_events
+==================================
 
 .. c:function:: void _scsih_check_volume_delete_events(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataIrVolume_t *event_data)
 
@@ -2371,8 +2371,8 @@ Return nothing.
 
 .. _`_scsih_temp_threshold_events`:
 
-_scsih_temp_threshold_events
-============================
+\_scsih_temp_threshold_events
+=============================
 
 .. c:function:: void _scsih_temp_threshold_events(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataTemperature_t *event_data)
 
@@ -2400,8 +2400,8 @@ Return nothing.
 
 .. _`_scsih_flush_running_cmds`:
 
-_scsih_flush_running_cmds
-=========================
+\_scsih_flush_running_cmds
+==========================
 
 .. c:function:: void _scsih_flush_running_cmds(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2422,8 +2422,8 @@ Return nothing.
 
 .. _`_scsih_setup_eedp`:
 
-_scsih_setup_eedp
-=================
+\_scsih_setup_eedp
+==================
 
 .. c:function:: void _scsih_setup_eedp(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, Mpi25SCSIIORequest_t *mpi_request)
 
@@ -2449,8 +2449,8 @@ Returns nothing
 
 .. _`_scsih_eedp_error_handling`:
 
-_scsih_eedp_error_handling
-==========================
+\_scsih_eedp_error_handling
+===========================
 
 .. c:function:: void _scsih_eedp_error_handling(struct scsi_cmnd *scmd, u16 ioc_status)
 
@@ -2497,8 +2497,8 @@ SCSI_MLQUEUE_HOST_BUSY if the entire host queue is full
 
 .. _`_scsih_normalize_sense`:
 
-_scsih_normalize_sense
-======================
+\_scsih_normalize_sense
+=======================
 
 .. c:function:: void _scsih_normalize_sense(char *sense_buffer, struct sense_info *data)
 
@@ -2519,8 +2519,8 @@ Return nothing.
 
 .. _`_scsih_scsi_ioc_info`:
 
-_scsih_scsi_ioc_info
-====================
+\_scsih_scsi_ioc_info
+=====================
 
 .. c:function:: void _scsih_scsi_ioc_info(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, Mpi2SCSIIOReply_t *mpi_reply, u16 smid)
 
@@ -2551,8 +2551,8 @@ Return nothing.
 
 .. _`_scsih_turn_on_pfa_led`:
 
-_scsih_turn_on_pfa_led
-======================
+\_scsih_turn_on_pfa_led
+=======================
 
 .. c:function:: void _scsih_turn_on_pfa_led(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -2580,8 +2580,8 @@ Return nothing.
 
 .. _`_scsih_turn_off_pfa_led`:
 
-_scsih_turn_off_pfa_led
-=======================
+\_scsih_turn_off_pfa_led
+========================
 
 .. c:function:: void _scsih_turn_off_pfa_led(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device)
 
@@ -2609,8 +2609,8 @@ Return nothing.
 
 .. _`_scsih_send_event_to_turn_on_pfa_led`:
 
-_scsih_send_event_to_turn_on_pfa_led
-====================================
+\_scsih_send_event_to_turn_on_pfa_led
+=====================================
 
 .. c:function:: void _scsih_send_event_to_turn_on_pfa_led(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -2638,8 +2638,8 @@ Return nothing.
 
 .. _`_scsih_smart_predicted_fault`:
 
-_scsih_smart_predicted_fault
-============================
+\_scsih_smart_predicted_fault
+=============================
 
 .. c:function:: void _scsih_smart_predicted_fault(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -2667,8 +2667,8 @@ Return nothing.
 
 .. _`_scsih_io_done`:
 
-_scsih_io_done
-==============
+\_scsih_io_done
+===============
 
 .. c:function:: u8 _scsih_io_done(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -2698,8 +2698,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_sas_host_refresh`:
 
-_scsih_sas_host_refresh
-=======================
+\_scsih_sas_host_refresh
+========================
 
 .. c:function:: void _scsih_sas_host_refresh(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2728,8 +2728,8 @@ Return nothing.
 
 .. _`_scsih_sas_host_add`:
 
-_scsih_sas_host_add
-===================
+\_scsih_sas_host_add
+====================
 
 .. c:function:: void _scsih_sas_host_add(struct MPT3SAS_ADAPTER *ioc)
 
@@ -2749,8 +2749,8 @@ Return nothing.
 
 .. _`_scsih_expander_add`:
 
-_scsih_expander_add
-===================
+\_scsih_expander_add
+====================
 
 .. c:function:: int _scsih_expander_add(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -2795,8 +2795,8 @@ Return nothing.
 
 .. _`_scsih_done`:
 
-_scsih_done
-===========
+\_scsih_done
+============
 
 .. c:function:: u8 _scsih_done(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 msix_index, u32 reply)
 
@@ -2827,8 +2827,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_check_access_status`:
 
-_scsih_check_access_status
-==========================
+\_scsih_check_access_status
+===========================
 
 .. c:function:: u8 _scsih_check_access_status(struct MPT3SAS_ADAPTER *ioc, u64 sas_address, u16 handle, u8 access_status)
 
@@ -2855,8 +2855,8 @@ Return 0 for success, else failure
 
 .. _`_scsih_get_enclosure_logicalid_chassis_slot`:
 
-_scsih_get_enclosure_logicalid_chassis_slot
-===========================================
+\_scsih_get_enclosure_logicalid_chassis_slot
+============================================
 
 .. c:function:: void _scsih_get_enclosure_logicalid_chassis_slot(struct MPT3SAS_ADAPTER *ioc, Mpi2SasDevicePage0_t *sas_device_pg0, struct _sas_device *sas_device)
 
@@ -2880,8 +2880,8 @@ Returns nothing.
 
 .. _`_scsih_check_device`:
 
-_scsih_check_device
-===================
+\_scsih_check_device
+====================
 
 .. c:function:: void _scsih_check_device(struct MPT3SAS_ADAPTER *ioc, u64 parent_sas_address, u16 handle, u8 phy_number, u8 link_rate)
 
@@ -2911,8 +2911,8 @@ Returns nothing.
 
 .. _`_scsih_add_device`:
 
-_scsih_add_device
-=================
+\_scsih_add_device
+==================
 
 .. c:function:: int _scsih_add_device(struct MPT3SAS_ADAPTER *ioc, u16 handle, u8 phy_num, u8 is_pd)
 
@@ -2941,8 +2941,8 @@ Returns 0 for success, non-zero for failure.
 
 .. _`_scsih_remove_device`:
 
-_scsih_remove_device
-====================
+\_scsih_remove_device
+=====================
 
 .. c:function:: void _scsih_remove_device(struct MPT3SAS_ADAPTER *ioc, struct _sas_device *sas_device)
 
@@ -2963,8 +2963,8 @@ Return nothing.
 
 .. _`_scsih_sas_topology_change_event_debug`:
 
-_scsih_sas_topology_change_event_debug
-======================================
+\_scsih_sas_topology_change_event_debug
+=======================================
 
 .. c:function:: void _scsih_sas_topology_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataSasTopologyChangeList_t *event_data)
 
@@ -2985,8 +2985,8 @@ user.
 
 .. _`_scsih_sas_topology_change_event`:
 
-_scsih_sas_topology_change_event
-================================
+\_scsih_sas_topology_change_event
+=================================
 
 .. c:function:: int _scsih_sas_topology_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3007,8 +3007,8 @@ user.
 
 .. _`_scsih_sas_device_status_change_event_debug`:
 
-_scsih_sas_device_status_change_event_debug
-===========================================
+\_scsih_sas_device_status_change_event_debug
+============================================
 
 .. c:function:: void _scsih_sas_device_status_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataSasDeviceStatusChange_t *event_data)
 
@@ -3036,8 +3036,8 @@ Return nothing.
 
 .. _`_scsih_sas_device_status_change_event`:
 
-_scsih_sas_device_status_change_event
-=====================================
+\_scsih_sas_device_status_change_event
+======================================
 
 .. c:function:: void _scsih_sas_device_status_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3065,8 +3065,8 @@ Return nothing.
 
 .. _`_scsih_check_pcie_access_status`:
 
-_scsih_check_pcie_access_status
-===============================
+\_scsih_check_pcie_access_status
+================================
 
 .. c:function:: u8 _scsih_check_pcie_access_status(struct MPT3SAS_ADAPTER *ioc, u64 wwid, u16 handle, u8 access_status)
 
@@ -3093,8 +3093,8 @@ Return 0 for success, else failure
 
 .. _`_scsih_pcie_device_remove_from_sml`:
 
-_scsih_pcie_device_remove_from_sml
-==================================
+\_scsih_pcie_device_remove_from_sml
+===================================
 
 .. c:function:: void _scsih_pcie_device_remove_from_sml(struct MPT3SAS_ADAPTER *ioc, struct _pcie_device *pcie_device)
 
@@ -3115,8 +3115,8 @@ Return nothing.
 
 .. _`_scsih_pcie_check_device`:
 
-_scsih_pcie_check_device
-========================
+\_scsih_pcie_check_device
+=========================
 
 .. c:function:: void _scsih_pcie_check_device(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -3137,8 +3137,8 @@ Returns nothing.
 
 .. _`_scsih_pcie_add_device`:
 
-_scsih_pcie_add_device
-======================
+\_scsih_pcie_add_device
+=======================
 
 .. c:function:: int _scsih_pcie_add_device(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -3161,8 +3161,8 @@ Return 1 means queue the event later, 0 means complete the event
 
 .. _`_scsih_pcie_topology_change_event_debug`:
 
-_scsih_pcie_topology_change_event_debug
-=======================================
+\_scsih_pcie_topology_change_event_debug
+========================================
 
 .. c:function:: void _scsih_pcie_topology_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeTopologyChangeList_t *event_data)
 
@@ -3183,8 +3183,8 @@ user.
 
 .. _`_scsih_pcie_topology_change_event`:
 
-_scsih_pcie_topology_change_event
-=================================
+\_scsih_pcie_topology_change_event
+==================================
 
 .. c:function:: void _scsih_pcie_topology_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3205,8 +3205,8 @@ user.
 
 .. _`_scsih_pcie_device_status_change_event_debug`:
 
-_scsih_pcie_device_status_change_event_debug
-============================================
+\_scsih_pcie_device_status_change_event_debug
+=============================================
 
 .. c:function:: void _scsih_pcie_device_status_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi26EventDataPCIeDeviceStatusChange_t *event_data)
 
@@ -3234,8 +3234,8 @@ Return nothing.
 
 .. _`_scsih_pcie_device_status_change_event`:
 
-_scsih_pcie_device_status_change_event
-======================================
+\_scsih_pcie_device_status_change_event
+=======================================
 
 .. c:function:: void _scsih_pcie_device_status_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3263,8 +3263,8 @@ Return nothing.
 
 .. _`_scsih_sas_enclosure_dev_status_change_event_debug`:
 
-_scsih_sas_enclosure_dev_status_change_event_debug
-==================================================
+\_scsih_sas_enclosure_dev_status_change_event_debug
+===================================================
 
 .. c:function:: void _scsih_sas_enclosure_dev_status_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataSasEnclDevStatusChange_t *event_data)
 
@@ -3292,8 +3292,8 @@ Return nothing.
 
 .. _`_scsih_sas_enclosure_dev_status_change_event`:
 
-_scsih_sas_enclosure_dev_status_change_event
-============================================
+\_scsih_sas_enclosure_dev_status_change_event
+=============================================
 
 .. c:function:: void _scsih_sas_enclosure_dev_status_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3321,8 +3321,8 @@ Return nothing.
 
 .. _`_scsih_sas_broadcast_primitive_event`:
 
-_scsih_sas_broadcast_primitive_event
-====================================
+\_scsih_sas_broadcast_primitive_event
+=====================================
 
 .. c:function:: void _scsih_sas_broadcast_primitive_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3350,8 +3350,8 @@ Return nothing.
 
 .. _`_scsih_sas_discovery_event`:
 
-_scsih_sas_discovery_event
-==========================
+\_scsih_sas_discovery_event
+===========================
 
 .. c:function:: void _scsih_sas_discovery_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3379,8 +3379,8 @@ Return nothing.
 
 .. _`_scsih_pcie_enumeration_event`:
 
-_scsih_pcie_enumeration_event
-=============================
+\_scsih_pcie_enumeration_event
+==============================
 
 .. c:function:: void _scsih_pcie_enumeration_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3408,8 +3408,8 @@ Return nothing.
 
 .. _`_scsih_ir_fastpath`:
 
-_scsih_ir_fastpath
-==================
+\_scsih_ir_fastpath
+===================
 
 .. c:function:: int _scsih_ir_fastpath(struct MPT3SAS_ADAPTER *ioc, u16 handle, u8 phys_disk_num)
 
@@ -3433,8 +3433,8 @@ Return 0 for success, else failure.
 
 .. _`_scsih_reprobe_lun`:
 
-_scsih_reprobe_lun
-==================
+\_scsih_reprobe_lun
+===================
 
 .. c:function:: void _scsih_reprobe_lun(struct scsi_device *sdev, void *no_uld_attach)
 
@@ -3448,8 +3448,8 @@ _scsih_reprobe_lun
 
 .. _`_scsih_sas_volume_add`:
 
-_scsih_sas_volume_add
-=====================
+\_scsih_sas_volume_add
+======================
 
 .. c:function:: void _scsih_sas_volume_add(struct MPT3SAS_ADAPTER *ioc, Mpi2EventIrConfigElement_t *element)
 
@@ -3477,8 +3477,8 @@ Return nothing.
 
 .. _`_scsih_sas_volume_delete`:
 
-_scsih_sas_volume_delete
-========================
+\_scsih_sas_volume_delete
+=========================
 
 .. c:function:: void _scsih_sas_volume_delete(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 
@@ -3506,8 +3506,8 @@ Return nothing.
 
 .. _`_scsih_sas_pd_expose`:
 
-_scsih_sas_pd_expose
-====================
+\_scsih_sas_pd_expose
+=====================
 
 .. c:function:: void _scsih_sas_pd_expose(struct MPT3SAS_ADAPTER *ioc, Mpi2EventIrConfigElement_t *element)
 
@@ -3535,8 +3535,8 @@ Return nothing.
 
 .. _`_scsih_sas_pd_hide`:
 
-_scsih_sas_pd_hide
-==================
+\_scsih_sas_pd_hide
+===================
 
 .. c:function:: void _scsih_sas_pd_hide(struct MPT3SAS_ADAPTER *ioc, Mpi2EventIrConfigElement_t *element)
 
@@ -3564,8 +3564,8 @@ Return nothing.
 
 .. _`_scsih_sas_pd_delete`:
 
-_scsih_sas_pd_delete
-====================
+\_scsih_sas_pd_delete
+=====================
 
 .. c:function:: void _scsih_sas_pd_delete(struct MPT3SAS_ADAPTER *ioc, Mpi2EventIrConfigElement_t *element)
 
@@ -3593,8 +3593,8 @@ Return nothing.
 
 .. _`_scsih_sas_pd_add`:
 
-_scsih_sas_pd_add
-=================
+\_scsih_sas_pd_add
+==================
 
 .. c:function:: void _scsih_sas_pd_add(struct MPT3SAS_ADAPTER *ioc, Mpi2EventIrConfigElement_t *element)
 
@@ -3622,8 +3622,8 @@ Return nothing.
 
 .. _`_scsih_sas_ir_config_change_event_debug`:
 
-_scsih_sas_ir_config_change_event_debug
-=======================================
+\_scsih_sas_ir_config_change_event_debug
+========================================
 
 .. c:function:: void _scsih_sas_ir_config_change_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataIrConfigChangeList_t *event_data)
 
@@ -3651,8 +3651,8 @@ Return nothing.
 
 .. _`_scsih_sas_ir_config_change_event`:
 
-_scsih_sas_ir_config_change_event
-=================================
+\_scsih_sas_ir_config_change_event
+==================================
 
 .. c:function:: void _scsih_sas_ir_config_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3680,8 +3680,8 @@ Return nothing.
 
 .. _`_scsih_sas_ir_volume_event`:
 
-_scsih_sas_ir_volume_event
-==========================
+\_scsih_sas_ir_volume_event
+===========================
 
 .. c:function:: void _scsih_sas_ir_volume_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3709,8 +3709,8 @@ Return nothing.
 
 .. _`_scsih_sas_ir_physical_disk_event`:
 
-_scsih_sas_ir_physical_disk_event
-=================================
+\_scsih_sas_ir_physical_disk_event
+==================================
 
 .. c:function:: void _scsih_sas_ir_physical_disk_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3738,8 +3738,8 @@ Return nothing.
 
 .. _`_scsih_sas_ir_operation_status_event_debug`:
 
-_scsih_sas_ir_operation_status_event_debug
-==========================================
+\_scsih_sas_ir_operation_status_event_debug
+===========================================
 
 .. c:function:: void _scsih_sas_ir_operation_status_event_debug(struct MPT3SAS_ADAPTER *ioc, Mpi2EventDataIrOperationStatus_t *event_data)
 
@@ -3767,8 +3767,8 @@ Return nothing.
 
 .. _`_scsih_sas_ir_operation_status_event`:
 
-_scsih_sas_ir_operation_status_event
-====================================
+\_scsih_sas_ir_operation_status_event
+=====================================
 
 .. c:function:: void _scsih_sas_ir_operation_status_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -3796,8 +3796,8 @@ Return nothing.
 
 .. _`_scsih_prep_device_scan`:
 
-_scsih_prep_device_scan
-=======================
+\_scsih_prep_device_scan
+========================
 
 .. c:function:: void _scsih_prep_device_scan(struct MPT3SAS_ADAPTER *ioc)
 
@@ -3816,8 +3816,8 @@ the scan, then we clear the deleted flag.
 
 .. _`_scsih_mark_responding_sas_device`:
 
-_scsih_mark_responding_sas_device
-=================================
+\_scsih_mark_responding_sas_device
+==================================
 
 .. c:function:: void _scsih_mark_responding_sas_device(struct MPT3SAS_ADAPTER *ioc, Mpi2SasDevicePage0_t *sas_device_pg0)
 
@@ -3841,8 +3841,8 @@ Return nothing.
 
 .. _`_scsih_search_responding_sas_devices`:
 
-_scsih_search_responding_sas_devices
-====================================
+\_scsih_search_responding_sas_devices
+=====================================
 
 .. c:function:: void _scsih_search_responding_sas_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -3861,8 +3861,8 @@ Return nothing.
 
 .. _`_scsih_mark_responding_pcie_device`:
 
-_scsih_mark_responding_pcie_device
-==================================
+\_scsih_mark_responding_pcie_device
+===================================
 
 .. c:function:: void _scsih_mark_responding_pcie_device(struct MPT3SAS_ADAPTER *ioc, Mpi26PCIeDevicePage0_t *pcie_device_pg0)
 
@@ -3886,8 +3886,8 @@ Return nothing.
 
 .. _`_scsih_search_responding_pcie_devices`:
 
-_scsih_search_responding_pcie_devices
-=====================================
+\_scsih_search_responding_pcie_devices
+======================================
 
 .. c:function:: void _scsih_search_responding_pcie_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -3906,8 +3906,8 @@ Return nothing.
 
 .. _`_scsih_mark_responding_raid_device`:
 
-_scsih_mark_responding_raid_device
-==================================
+\_scsih_mark_responding_raid_device
+===================================
 
 .. c:function:: void _scsih_mark_responding_raid_device(struct MPT3SAS_ADAPTER *ioc, u64 wwid, u16 handle)
 
@@ -3934,8 +3934,8 @@ Return nothing.
 
 .. _`_scsih_search_responding_raid_devices`:
 
-_scsih_search_responding_raid_devices
-=====================================
+\_scsih_search_responding_raid_devices
+======================================
 
 .. c:function:: void _scsih_search_responding_raid_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -3954,8 +3954,8 @@ Return nothing.
 
 .. _`_scsih_mark_responding_expander`:
 
-_scsih_mark_responding_expander
-===============================
+\_scsih_mark_responding_expander
+================================
 
 .. c:function:: void _scsih_mark_responding_expander(struct MPT3SAS_ADAPTER *ioc, Mpi2ExpanderPage0_t *expander_pg0)
 
@@ -3979,8 +3979,8 @@ Return nothing.
 
 .. _`_scsih_search_responding_expanders`:
 
-_scsih_search_responding_expanders
-==================================
+\_scsih_search_responding_expanders
+===================================
 
 .. c:function:: void _scsih_search_responding_expanders(struct MPT3SAS_ADAPTER *ioc)
 
@@ -3999,8 +3999,8 @@ Return nothing.
 
 .. _`_scsih_remove_unresponding_devices`:
 
-_scsih_remove_unresponding_devices
-==================================
+\_scsih_remove_unresponding_devices
+===================================
 
 .. c:function:: void _scsih_remove_unresponding_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4018,8 +4018,8 @@ Return nothing.
 
 .. _`_scsih_scan_for_devices_after_reset`:
 
-_scsih_scan_for_devices_after_reset
-===================================
+\_scsih_scan_for_devices_after_reset
+====================================
 
 .. c:function:: void _scsih_scan_for_devices_after_reset(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4064,8 +4064,8 @@ Return nothing.
 
 .. _`_mpt3sas_fw_work`:
 
-_mpt3sas_fw_work
-================
+\_mpt3sas_fw_work
+=================
 
 .. c:function:: void _mpt3sas_fw_work(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
@@ -4093,8 +4093,8 @@ Return nothing.
 
 .. _`_firmware_event_work`:
 
-_firmware_event_work
-====================
+\_firmware_event_work
+=====================
 
 .. c:function:: void _firmware_event_work(struct work_struct *work)
 
@@ -4155,8 +4155,8 @@ Return 1 meaning mf should be freed from \_base_interrupt
 
 .. _`_scsih_expander_node_remove`:
 
-_scsih_expander_node_remove
-===========================
+\_scsih_expander_node_remove
+============================
 
 .. c:function:: void _scsih_expander_node_remove(struct MPT3SAS_ADAPTER *ioc, struct _sas_node *sas_expander)
 
@@ -4180,8 +4180,8 @@ Return nothing.
 
 .. _`_scsih_ir_shutdown`:
 
-_scsih_ir_shutdown
-==================
+\_scsih_ir_shutdown
+===================
 
 .. c:function:: void _scsih_ir_shutdown(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4241,8 +4241,8 @@ Return nothing.
 
 .. _`_scsih_probe_boot_devices`:
 
-_scsih_probe_boot_devices
-=========================
+\_scsih_probe_boot_devices
+==========================
 
 .. c:function:: void _scsih_probe_boot_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4262,8 +4262,8 @@ purposes.  Please refer to function \_scsih_determine_boot_device()
 
 .. _`_scsih_probe_raid`:
 
-_scsih_probe_raid
-=================
+\_scsih_probe_raid
+==================
 
 .. c:function:: void _scsih_probe_raid(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4281,8 +4281,8 @@ Called during initial loading of the driver.
 
 .. _`_scsih_probe_sas`:
 
-_scsih_probe_sas
-================
+\_scsih_probe_sas
+=================
 
 .. c:function:: void _scsih_probe_sas(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4345,8 +4345,8 @@ pcie_device_list list
 
 .. _`_scsih_probe_pcie`:
 
-_scsih_probe_pcie
-=================
+\_scsih_probe_pcie
+==================
 
 .. c:function:: void _scsih_probe_pcie(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4364,8 +4364,8 @@ Called during initial loading of the driver.
 
 .. _`_scsih_probe_devices`:
 
-_scsih_probe_devices
-====================
+\_scsih_probe_devices
+=====================
 
 .. c:function:: void _scsih_probe_devices(struct MPT3SAS_ADAPTER *ioc)
 
@@ -4428,8 +4428,8 @@ we wait for firmware discovery to complete, then return 1.
 
 .. _`_scsih_determine_hba_mpi_version`:
 
-_scsih_determine_hba_mpi_version
-================================
+\_scsih_determine_hba_mpi_version
+=================================
 
 .. c:function:: u16 _scsih_determine_hba_mpi_version(struct pci_dev *pdev)
 
@@ -4449,8 +4449,8 @@ MPI26 VERSION for Cutlass & Invader SAS 3.0 HBA devices
 
 .. _`_scsih_probe`:
 
-_scsih_probe
-============
+\_scsih_probe
+=============
 
 .. c:function:: int _scsih_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 
@@ -4653,8 +4653,8 @@ Returns 0 success, anything else error.
 
 .. _`_mpt3sas_init`:
 
-_mpt3sas_init
-=============
+\_mpt3sas_init
+==============
 
 .. c:function:: int _mpt3sas_init( void)
 
@@ -4672,8 +4672,8 @@ Returns 0 success, anything else error.
 
 .. _`_mpt3sas_exit`:
 
-_mpt3sas_exit
-=============
+\_mpt3sas_exit
+==============
 
 .. c:function:: void __exit _mpt3sas_exit( void)
 

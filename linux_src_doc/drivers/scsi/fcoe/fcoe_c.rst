@@ -947,8 +947,8 @@ fcoe_dcb_create
 
 .. _`_fcoe_create`:
 
-_fcoe_create
-============
+\_fcoe_create
+=============
 
 .. c:function:: int _fcoe_create(struct net_device *netdev, enum fip_mode fip_mode, enum fcoe_create_link_state link_state)
 

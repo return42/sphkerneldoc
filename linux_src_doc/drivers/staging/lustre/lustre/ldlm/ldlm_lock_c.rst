@@ -229,8 +229,8 @@ ldlm_lock2handle
 
 .. _`__ldlm_handle2lock`:
 
-__ldlm_handle2lock
-==================
+\__ldlm_handle2lock
+===================
 
 .. c:function:: struct ldlm_lock *__ldlm_handle2lock(const struct lustre_handle *handle, __u64 flags)
 
@@ -924,8 +924,8 @@ Used when printing all locks on a resource for debug purposes.
 
 .. _`_ldlm_lock_debug`:
 
-_ldlm_lock_debug
-================
+\_ldlm_lock_debug
+=================
 
 .. c:function:: void _ldlm_lock_debug(struct ldlm_lock *lock, struct libcfs_debug_msg_data *msgdata, const char *fmt,  ...)
 

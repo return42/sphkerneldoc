@@ -269,7 +269,7 @@ get_vm_area
         size of the area
 
     :param unsigned long flags:
-        %VM_IOREMAP for I/O mappings or VM_ALLOC
+        \ ``VM_IOREMAP``\  for I/O mappings or VM_ALLOC
 
 .. _`get_vm_area.description`:
 
@@ -905,7 +905,7 @@ pvm_find_next_prev
 Return
 ------
 
-%true if either or both of next and prev are found,
+\ ``true``\  if either or both of next and prev are found,
          \ ``false``\  if no vmap_area exists
 
 Find vmap_areas end addresses of which enclose \ ``end``\ .  ie. if not

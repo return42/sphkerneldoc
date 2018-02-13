@@ -15,8 +15,8 @@ uwb_rc_neh_put
 
 .. _`__uwb_rc_ctx_get`:
 
-__uwb_rc_ctx_get
-================
+\__uwb_rc_ctx_get
+=================
 
 .. c:function:: int __uwb_rc_ctx_get(struct uwb_rc *rc, struct uwb_rc_neh *neh)
 

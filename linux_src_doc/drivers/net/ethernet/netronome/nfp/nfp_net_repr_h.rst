@@ -161,7 +161,7 @@ NFP_REPR_TYPE_PF
 NFP_REPR_TYPE_VF
     virtual function
 
-__NFP_REPR_TYPE_MAX
+\__NFP_REPR_TYPE_MAX
     number of representor types
 
 .. This file was automatic generated / don't edit.

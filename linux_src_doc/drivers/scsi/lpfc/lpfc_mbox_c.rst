@@ -946,8 +946,8 @@ pointer to the driver internal queue element for mailbox command.
 
 .. _`__lpfc_mbox_cmpl_put`:
 
-__lpfc_mbox_cmpl_put
-====================
+\__lpfc_mbox_cmpl_put
+=====================
 
 .. c:function:: void __lpfc_mbox_cmpl_put(struct lpfc_hba *phba, LPFC_MBOXQ_t *mbq)
 

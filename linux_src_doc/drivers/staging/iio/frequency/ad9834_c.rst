@@ -67,7 +67,7 @@ freq_msg
 lock
     protect sensor state
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 freq_data

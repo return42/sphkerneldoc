@@ -58,7 +58,7 @@ get_subsequent_smbios_entry
         location of the SMBIOS table
 
     :param void __iomem \*curr:
-        %NULL or pointer to previously returned structure
+        \ ``NULL``\  or pointer to previously returned structure
 
 .. _`get_subsequent_smbios_entry.description`:
 
@@ -90,7 +90,7 @@ get_SMBIOS_entry
         SMBIOS structure type to be returned
 
     :param void __iomem \*previous:
-        %NULL or pointer to previously returned structure
+        \ ``NULL``\  or pointer to previously returned structure
 
 .. _`get_smbios_entry.description`:
 

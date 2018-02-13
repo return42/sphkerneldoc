@@ -3,8 +3,8 @@
 
 .. _`__add_profile`:
 
-__add_profile
-=============
+\__add_profile
+==============
 
 .. c:function:: void __add_profile(struct list_head *list, struct aa_profile *profile)
 
@@ -32,8 +32,8 @@ namespace lock be held, or list not be shared
 
 .. _`__list_remove_profile`:
 
-__list_remove_profile
-=====================
+\__list_remove_profile
+======================
 
 .. c:function:: void __list_remove_profile(struct aa_profile *profile)
 
@@ -62,8 +62,8 @@ namespace lock be held, or list not have been live
 
 .. _`__remove_profile`:
 
-__remove_profile
-================
+\__remove_profile
+=================
 
 .. c:function:: void __remove_profile(struct aa_profile *profile)
 
@@ -81,8 +81,8 @@ namespace list lock be held, or list not be shared
 
 .. _`__aa_profile_list_release`:
 
-__aa_profile_list_release
-=========================
+\__aa_profile_list_release
+==========================
 
 .. c:function:: void __aa_profile_list_release(struct list_head *head)
 
@@ -163,8 +163,8 @@ refcount profile or NULL on failure
 
 .. _`__strn_find_child`:
 
-__strn_find_child
-=================
+\__strn_find_child
+==================
 
 .. c:function:: struct aa_profile *__strn_find_child(struct list_head *head, const char *name, int len)
 
@@ -195,8 +195,8 @@ unrefcounted profile ptr, or NULL if not found
 
 .. _`__find_child`:
 
-__find_child
-============
+\__find_child
+=============
 
 .. c:function:: struct aa_profile *__find_child(struct list_head *head, const char *name)
 
@@ -246,8 +246,8 @@ a refcounted profile or NULL if not found
 
 .. _`__lookup_parent`:
 
-__lookup_parent
-===============
+\__lookup_parent
+================
 
 .. c:function:: struct aa_policy *__lookup_parent(struct aa_ns *ns, const char *hname)
 
@@ -284,8 +284,8 @@ unrefcounted policy or NULL if not found
 
 .. _`__lookupn_profile`:
 
-__lookupn_profile
-=================
+\__lookupn_profile
+==================
 
 .. c:function:: struct aa_profile *__lookupn_profile(struct aa_policy *base, const char *hname, size_t n)
 
@@ -406,7 +406,7 @@ replacement_allowed
 Return
 ------
 
-%0 if replacement allowed else error code
+\ ``0``\  if replacement allowed else error code
 
 .. _`audit_policy`:
 
@@ -491,8 +491,8 @@ Return
 
 .. _`__replace_profile`:
 
-__replace_profile
-=================
+\__replace_profile
+==================
 
 .. c:function:: void __replace_profile(struct aa_profile *old, struct aa_profile *new)
 
@@ -523,8 +523,8 @@ namespace list lock be held, or list not be shared
 
 .. _`__lookup_replace`:
 
-__lookup_replace
-================
+\__lookup_replace
+=================
 
 .. c:function:: int __lookup_replace(struct aa_ns *ns, const char *hname, bool noreplace, struct aa_profile **p, const char **info)
 

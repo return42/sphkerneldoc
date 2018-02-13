@@ -40,8 +40,8 @@ matching lport pointer or NULL if there is no match
 
 .. _`__fc_vport_setlink`:
 
-__fc_vport_setlink
-==================
+\__fc_vport_setlink
+===================
 
 .. c:function:: void __fc_vport_setlink(struct fc_lport *n_port, struct fc_lport *vn_port)
 

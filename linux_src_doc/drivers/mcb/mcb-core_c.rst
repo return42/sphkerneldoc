@@ -3,8 +3,8 @@
 
 .. _`__mcb_register_driver`:
 
-__mcb_register_driver
-=====================
+\__mcb_register_driver
+======================
 
 .. c:function:: int __mcb_register_driver(struct mcb_driver *drv, struct module *owner, const char *mod_name)
 

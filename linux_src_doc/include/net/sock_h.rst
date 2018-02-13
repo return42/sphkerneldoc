@@ -123,10 +123,10 @@ skc_state
     Connection state
 
 skc_reuse
-    %SO_REUSEADDR setting
+    \ ``SO_REUSEADDR``\  setting
 
 skc_reuseport
-    %SO_REUSEPORT setting
+    \ ``SO_REUSEPORT``\  setting
 
 skc_ipv6only
     *undescribed*
@@ -375,7 +375,7 @@ sk_drops
     raw/udp drops counter
 
 sk_rcvlowat
-    %SO_RCVLOWAT setting
+    \ ``SO_RCVLOWAT``\  setting
 
 sk_error_queue
     rarely used
@@ -459,13 +459,13 @@ sk_pacing_status
     Pacing status (requested, handled by sch_fq)
 
 sk_sndtimeo
-    %SO_SNDTIMEO setting
+    \ ``SO_SNDTIMEO``\  setting
 
 sk_timer
     sock cleanup timer
 
 sk_priority
-    %SO_PRIORITY setting
+    \ ``SO_PRIORITY``\  setting
 
 sk_mark
     generic packet mark
@@ -507,13 +507,13 @@ sk_kern_sock
     True if sock is using kernel lock classes
 
 sk_no_check_tx
-    %SO_NO_CHECK setting, set checksum in TX packets
+    \ ``SO_NO_CHECK``\  setting, set checksum in TX packets
 
 sk_no_check_rx
     allow zero checksum in RX packets
 
 sk_userlocks
-    %SO_SNDBUF and \ ``SO_RCVBUF``\  settings
+    \ ``SO_SNDBUF``\  and \ ``SO_RCVBUF``\  settings
 
 sk_protocol
     which protocol this socket belongs in this network family
@@ -528,7 +528,7 @@ sk_pacing_shift
     scaling factor for TCP Small Queues
 
 sk_lingertime
-    %SO_LINGER l_linger setting
+    \ ``SO_LINGER``\  l_linger setting
 
 sk_prot_creator
     sk_prot of original sock creator (see ipv6_setsockopt,
@@ -554,13 +554,13 @@ sk_uid
     user id of owner
 
 sk_peer_pid
-    &struct pid for this socket's peer
+    \ :c:type:`struct pid <pid>`\  for this socket's peer
 
 sk_peer_cred
-    %SO_PEERCRED setting
+    \ ``SO_PEERCRED``\  setting
 
 sk_rcvtimeo
-    %SO_RCVTIMEO setting
+    \ ``SO_RCVTIMEO``\  setting
 
 sk_stamp
     time stamp of last packet received
@@ -748,7 +748,7 @@ Consider following tcp code paths::
   ...                 ...
   tp->rcv_nxt check   sock_def_readable
   ...                 {
-  schedule               \ :c:func:`rcu_read_lock`\ ;
+  schedule               rcu_read_lock();
                          wq = rcu_dereference(sk->sk_wq);
                          if (wq && waitqueue_active(&wq->wait))
                              wake_up_interruptible(&wq->wait)

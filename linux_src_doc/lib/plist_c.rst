@@ -11,10 +11,10 @@ plist_add
     add \ ``node``\  to \ ``head``\ 
 
     :param struct plist_node \*node:
-        &struct plist_node pointer
+        \ :c:type:`struct plist_node <plist_node>`\  pointer
 
     :param struct plist_head \*head:
-        &struct plist_head pointer
+        \ :c:type:`struct plist_head <plist_head>`\  pointer
 
 .. _`plist_del`:
 
@@ -26,10 +26,10 @@ plist_del
     Remove a \ ``node``\  from plist.
 
     :param struct plist_node \*node:
-        &struct plist_node pointer - entry to be removed
+        \ :c:type:`struct plist_node <plist_node>`\  pointer - entry to be removed
 
     :param struct plist_head \*head:
-        &struct plist_head pointer - list head
+        \ :c:type:`struct plist_head <plist_head>`\  pointer - list head
 
 .. _`plist_requeue`:
 
@@ -41,10 +41,10 @@ plist_requeue
     Requeue \ ``node``\  at end of same-prio entries.
 
     :param struct plist_node \*node:
-        &struct plist_node pointer - entry to be moved
+        \ :c:type:`struct plist_node <plist_node>`\  pointer - entry to be moved
 
     :param struct plist_head \*head:
-        &struct plist_head pointer - list head
+        \ :c:type:`struct plist_head <plist_head>`\  pointer - list head
 
 .. _`plist_requeue.description`:
 

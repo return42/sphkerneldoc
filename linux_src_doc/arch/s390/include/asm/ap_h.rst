@@ -50,7 +50,7 @@ replies_waiting
 queue_full
     Is 1 if the queue is full
 
-_pad1
+\_pad1
     *undescribed*
 
 irq_enabled
@@ -59,7 +59,7 @@ irq_enabled
 response_code
     Holds the 8 bit response code
 
-_pad2
+\_pad2
     *undescribed*
 
 .. _`ap_queue_status.description`:

@@ -3,8 +3,8 @@
 
 .. _`__cvmx_helper_sgmii_hardware_init_one_time`:
 
-__cvmx_helper_sgmii_hardware_init_one_time
-==========================================
+\__cvmx_helper_sgmii_hardware_init_one_time
+===========================================
 
 .. c:function:: int __cvmx_helper_sgmii_hardware_init_one_time(int interface, int index)
 
@@ -23,8 +23,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_sgmii_hardware_init_link`:
 
-__cvmx_helper_sgmii_hardware_init_link
-======================================
+\__cvmx_helper_sgmii_hardware_init_link
+=======================================
 
 .. c:function:: int __cvmx_helper_sgmii_hardware_init_link(int interface, int index)
 
@@ -45,8 +45,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_sgmii_hardware_init_link_speed`:
 
-__cvmx_helper_sgmii_hardware_init_link_speed
-============================================
+\__cvmx_helper_sgmii_hardware_init_link_speed
+=============================================
 
 .. c:function:: int __cvmx_helper_sgmii_hardware_init_link_speed(int interface, int index, cvmx_helper_link_info_t link_info)
 
@@ -70,8 +70,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_sgmii_hardware_init`:
 
-__cvmx_helper_sgmii_hardware_init
-=================================
+\__cvmx_helper_sgmii_hardware_init
+==================================
 
 .. c:function:: int __cvmx_helper_sgmii_hardware_init(int interface, int num_ports)
 
@@ -92,8 +92,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_sgmii_probe`:
 
-__cvmx_helper_sgmii_probe
-=========================
+\__cvmx_helper_sgmii_probe
+==========================
 
 .. c:function:: int __cvmx_helper_sgmii_probe(int interface)
 
@@ -111,8 +111,8 @@ Returns Number of ports on the interface. Zero to disable.
 
 .. _`__cvmx_helper_sgmii_enable`:
 
-__cvmx_helper_sgmii_enable
-==========================
+\__cvmx_helper_sgmii_enable
+===========================
 
 .. c:function:: int __cvmx_helper_sgmii_enable(int interface)
 
@@ -130,8 +130,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_sgmii_link_get`:
 
-__cvmx_helper_sgmii_link_get
-============================
+\__cvmx_helper_sgmii_link_get
+=============================
 
 .. c:function:: cvmx_helper_link_info_t __cvmx_helper_sgmii_link_get(int ipd_port)
 
@@ -149,8 +149,8 @@ Returns Link state
 
 .. _`__cvmx_helper_sgmii_link_set`:
 
-__cvmx_helper_sgmii_link_set
-============================
+\__cvmx_helper_sgmii_link_set
+=============================
 
 .. c:function:: int __cvmx_helper_sgmii_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
 
@@ -171,8 +171,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_sgmii_configure_loopback`:
 
-__cvmx_helper_sgmii_configure_loopback
-======================================
+\__cvmx_helper_sgmii_configure_loopback
+=======================================
 
 .. c:function:: int __cvmx_helper_sgmii_configure_loopback(int ipd_port, int enable_internal, int enable_external)
 

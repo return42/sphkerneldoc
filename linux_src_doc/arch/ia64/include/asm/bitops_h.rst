@@ -35,8 +35,8 @@ bit 0 is the LSB of addr; bit 32 is the LSB of (addr+1).
 
 .. _`__set_bit`:
 
-__set_bit
-=========
+\__set_bit
+==========
 
 .. c:function:: void __set_bit(int nr, volatile void *addr)
 
@@ -77,7 +77,7 @@ clear_bit
 Description
 -----------
 
-clear_bit() is atomic and may not be reordered.  However, it does
+\ :c:func:`clear_bit`\  is atomic and may not be reordered.  However, it does
 not contain a memory barrier, so if it is used for locking purposes,
 you should call \ :c:func:`smp_mb__before_atomic`\  and/or \ :c:func:`smp_mb__after_atomic`\ 
 in order to ensure changes are visible on other processors.
@@ -102,13 +102,13 @@ clear_bit_unlock
 Description
 -----------
 
-clear_bit_unlock() is atomic and may not be reordered.  It does
+\ :c:func:`clear_bit_unlock`\  is atomic and may not be reordered.  It does
 contain a memory barrier suitable for unlock type operations.
 
 .. _`__clear_bit_unlock`:
 
-__clear_bit_unlock
-==================
+\__clear_bit_unlock
+===================
 
 .. c:function:: void __clear_bit_unlock(int nr, void *addr)
 
@@ -130,8 +130,8 @@ with release semantics. See also \ :c:func:`arch_spin_unlock`\ .
 
 .. _`__clear_bit`:
 
-__clear_bit
-===========
+\__clear_bit
+============
 
 .. c:function:: void __clear_bit(int nr, volatile void *addr)
 
@@ -172,14 +172,14 @@ change_bit
 Description
 -----------
 
-change_bit() is atomic and may not be reordered.
+\ :c:func:`change_bit`\  is atomic and may not be reordered.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.
 
 .. _`__change_bit`:
 
-__change_bit
-============
+\__change_bit
+=============
 
 .. c:function:: void __change_bit(int nr, volatile void *addr)
 
@@ -241,8 +241,8 @@ This is the same as test_and_set_bit on ia64
 
 .. _`__test_and_set_bit`:
 
-__test_and_set_bit
-==================
+\__test_and_set_bit
+===================
 
 .. c:function:: int __test_and_set_bit(int nr, volatile void *addr)
 
@@ -288,8 +288,8 @@ It also implies the acquisition side of the memory barrier.
 
 .. _`__test_and_clear_bit`:
 
-__test_and_clear_bit
-====================
+\__test_and_clear_bit
+=====================
 
 .. c:function:: int __test_and_clear_bit(int nr, volatile void *addr)
 
@@ -335,8 +335,8 @@ It also implies the acquisition side of the memory barrier.
 
 .. _`__test_and_change_bit`:
 
-__test_and_change_bit
-=====================
+\__test_and_change_bit
+======================
 
 .. c:function:: int __test_and_change_bit(int nr, void *addr)
 
@@ -377,8 +377,8 @@ Undefined if no zero exists, so code should check against ~0UL first...
 
 .. _`__ffs`:
 
-__ffs
-=====
+\__ffs
+======
 
 .. c:function:: unsigned long __ffs(unsigned long x)
 

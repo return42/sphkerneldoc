@@ -184,8 +184,8 @@ to receive more output data.
 
 .. _`__tty_hangup`:
 
-__tty_hangup
-============
+\__tty_hangup
+=============
 
 .. c:function:: void __tty_hangup(struct tty_struct *tty, int exit_session)
 
@@ -329,8 +329,8 @@ loss
 
 .. _`__stop_tty`:
 
-__stop_tty
-==========
+\__stop_tty
+===========
 
 .. c:function:: void __stop_tty(struct tty_struct *tty)
 
@@ -362,8 +362,8 @@ flow_lock
 
 .. _`__start_tty`:
 
-__start_tty
-===========
+\__start_tty
+============
 
 .. c:function:: void __start_tty(struct tty_struct *tty)
 
@@ -1670,8 +1670,8 @@ Locking
 
 .. _`__tty_alloc_driver`:
 
-__tty_alloc_driver
-==================
+\__tty_alloc_driver
+===================
 
 .. c:function:: struct tty_driver *__tty_alloc_driver(unsigned int lines, struct module *owner, unsigned long flags)
 

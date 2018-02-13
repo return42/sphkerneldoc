@@ -67,7 +67,7 @@ vb2_reqbufs
         pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_requestbuffers \*req:
-        &struct v4l2_requestbuffers passed from userspace to
+        \ :c:type:`struct v4l2_requestbuffers <v4l2_requestbuffers>`\  passed from userspace to
         \ :c:type:`v4l2_ioctl_ops->vidioc_reqbufs <v4l2_ioctl_ops>`\  handler in driver.
 
 .. _`vb2_create_bufs`:

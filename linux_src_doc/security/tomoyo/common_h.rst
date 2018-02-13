@@ -90,7 +90,7 @@ tomoyo_pathcmp
 
 .. c:function:: bool tomoyo_pathcmp(const struct tomoyo_path_info *a, const struct tomoyo_path_info *b)
 
-    strcmp() for "struct tomoyo_path_info" structure.
+    \ :c:func:`strcmp`\  for "struct tomoyo_path_info" structure.
 
     :param const struct tomoyo_path_info \*a:
         Pointer to "struct tomoyo_path_info".

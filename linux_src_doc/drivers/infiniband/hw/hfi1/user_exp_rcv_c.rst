@@ -31,7 +31,7 @@ unpin_rcv_pages
 Description
 -----------
 
-@mapped - true if the pages have been DMA mapped. false otherwise.
+\ ``mapped``\  - true if the pages have been DMA mapped. false otherwise.
 \ ``idx``\  - Index of the first page to unpin.
 \ ``npages``\  - No of pages to unpin.
 

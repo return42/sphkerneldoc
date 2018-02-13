@@ -94,7 +94,7 @@ backlight_register_notifier
 Description
 -----------
 
-@return 0 on success, otherwise a negative error code
+\ ``return``\  0 on success, otherwise a negative error code
 
 Register a notifier to get notified when backlight devices get registered
 or unregistered.
@@ -116,7 +116,7 @@ backlight_unregister_notifier
 Description
 -----------
 
-@return 0 on success, otherwise a negative error code
+\ ``return``\  0 on success, otherwise a negative error code
 
 Register a notifier to get notified when backlight devices get registered
 or unregistered.
@@ -153,7 +153,7 @@ devm_backlight_device_register
 Description
 -----------
 
-@return a struct backlight on success, or an ERR_PTR on error
+\ ``return``\  a struct backlight on success, or an ERR_PTR on error
 
 Managed \ :c:func:`backlight_device_register`\ . The backlight_device returned
 from this function are automatically freed on driver detach.

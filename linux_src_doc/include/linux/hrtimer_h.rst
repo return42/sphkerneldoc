@@ -220,7 +220,7 @@ hres_active
     State of high resolution mode
 
 in_hrtirq
-    hrtimer_interrupt() is currently executing
+    \ :c:func:`hrtimer_interrupt`\  is currently executing
 
 hang_detected
     The last hrtimer interrupt detected a hang

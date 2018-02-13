@@ -8,7 +8,7 @@ drain_bufs
 
 .. c:function:: void drain_bufs(struct dpaa2_eth_priv *priv, int count)
 
-    @count must not exceeed DPAA2_ETH_BUFS_PER_CMD
+    \ ``count``\  must not exceeed DPAA2_ETH_BUFS_PER_CMD
 
     :param struct dpaa2_eth_priv \*priv:
         *undescribed*

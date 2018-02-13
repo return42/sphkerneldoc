@@ -3,8 +3,8 @@
 
 .. _`__aa_get_label`:
 
-__aa_get_label
-==============
+\__aa_get_label
+===============
 
 .. c:function:: struct aa_label *__aa_get_label(struct aa_label *l)
 

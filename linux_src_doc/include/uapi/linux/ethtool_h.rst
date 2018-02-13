@@ -492,7 +492,7 @@ Members
 -------
 
 cmd
-    %ETHTOOL_GMODULEINFO
+    \ ``ETHTOOL_GMODULEINFO``\ 
 
 type
     Standard the module information conforms to \ ``ETH_MODULE_SFF_xxxx``\ 

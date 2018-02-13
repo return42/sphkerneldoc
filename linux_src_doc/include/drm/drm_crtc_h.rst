@@ -61,10 +61,10 @@ planes_changed
     planes on this crtc are updated
 
 mode_changed
-    @mode or \ ``enable``\  has been changed
+    \ ``mode``\  or \ ``enable``\  has been changed
 
 active_changed
-    @active has been toggled.
+    \ ``active``\  has been toggled.
 
 connectors_changed
     connectors to this crtc have been updated
@@ -109,7 +109,7 @@ mode
     everything).
 
 mode_blob
-    &drm_property_blob for \ ``mode``\ 
+    \ :c:type:`struct drm_property_blob <drm_property_blob>`\  for \ ``mode``\ 
 
 degamma_lut
 
@@ -923,7 +923,7 @@ drm_crtc_find
         drm file to check for lease against.
 
     :param uint32_t id:
-        &drm_mode_object ID
+        \ :c:type:`struct drm_mode_object <drm_mode_object>`\  ID
 
 .. _`drm_crtc_find.description`:
 

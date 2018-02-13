@@ -31,8 +31,8 @@ also \ :c:func:`crc32_combine_test`\ .
 
 .. _`__crc32c_le_shift`:
 
-__crc32c_le_shift
-=================
+\__crc32c_le_shift
+==================
 
 .. c:function:: u32 __attribute_const__ __crc32c_le_shift(u32 crc, size_t len)
 

@@ -446,8 +446,8 @@ from the firmware request or the callback function.
 
 .. _`__comedi_request_region`:
 
-__comedi_request_region
-=======================
+\__comedi_request_region
+========================
 
 .. c:function:: int __comedi_request_region(struct comedi_device *dev, unsigned long start, unsigned long len)
 

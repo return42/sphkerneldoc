@@ -233,7 +233,7 @@ of_irq_parse_and_map_pci
 Description
 -----------
 
-@slot and \ ``pin``\  are unused, but included in the function so that this
+\ ``slot``\  and \ ``pin``\  are unused, but included in the function so that this
 function can be used directly as the map_irq callback to
 \ :c:func:`pci_assign_irq`\  and struct pci_host_bridge.map_irq pointer
 

@@ -317,7 +317,7 @@ ttm_page_pool_get_pages
 Description
 -----------
 
-@return zero for success or negative error code.
+\ ``return``\  zero for success or negative error code.
 
 .. This file was automatic generated / don't edit.
 

@@ -38,7 +38,7 @@ type
 Description
 -----------
 
-This struct may be used to access generic members of all fw_cdev_event\_
+This struct may be used to access generic members of all fw_cdev_event_
 types regardless of the specific type.
 
 Data passed in the \ ``closure``\  field for a request will be returned in the
@@ -479,7 +479,7 @@ closure
     set by \ ``FW_CDEV_CREATE_ISO_CONTEXT``\  ioctl
 
 type
-    %FW_CDEV_EVENT_ISO_INTERRUPT_MULTICHANNEL
+    \ ``FW_CDEV_EVENT_ISO_INTERRUPT_MULTICHANNEL``\ 
 
 completed
     Offset into the receive buffer; data before this offset is valid
@@ -547,7 +547,7 @@ closure
     set by \ ``FW_CDEV_IOC_``\ (DE)ALLOCATE_ISO_RESOURCE(_ONCE) ioctl
 
 type
-    %FW_CDEV_EVENT_ISO_RESOURCE_ALLOCATED or
+    \ ``FW_CDEV_EVENT_ISO_RESOURCE_ALLOCATED``\  or
     \ ``FW_CDEV_EVENT_ISO_RESOURCE_DEALLOCATED``\ 
 
 handle
@@ -609,10 +609,10 @@ closure
     or \ ``FW_CDEV_IOC_RECEIVE_PHY_PACKETS``\  ioctl
 
 type
-    %FW_CDEV_EVENT_PHY_PACKET_SENT or %..._RECEIVED
+    \ ``FW_CDEV_EVENT_PHY_PACKET_SENT``\  or %..._RECEIVED
 
 rcode
-    %RCODE_..., indicates success or failure of transmission
+    \ ``RCODE_``\ ..., indicates success or failure of transmission
 
 length
     Data length in bytes
@@ -1028,7 +1028,7 @@ Members
 -------
 
 type
-    %FW_CDEV_SHORT_RESET or \ ``FW_CDEV_LONG_RESET``\ 
+    \ ``FW_CDEV_SHORT_RESET``\  or \ ``FW_CDEV_LONG_RESET``\ 
 
 .. _`fw_cdev_initiate_bus_reset.description`:
 
@@ -1183,7 +1183,7 @@ Members
 -------
 
 type
-    %FW_CDEV_ISO_CONTEXT_TRANSMIT or \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\  or
+    \ ``FW_CDEV_ISO_CONTEXT_TRANSMIT``\  or \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\  or
     \ ``FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL``\ 
 
 header_size
@@ -1271,7 +1271,7 @@ handle
 Description
 -----------
 
-@channels is the bitwise or of 1ULL << n for each channel n to listen to.
+\ ``channels``\  is the bitwise or of 1ULL << n for each channel n to listen to.
 
 The ioctl fails with errno \ ``EBUSY``\  if there is already another receive context
 on a channel in \ ``channels``\ .  In that case, the bitmask of all unoccupied
@@ -1317,7 +1317,7 @@ header
 Description
 -----------
 
-&struct fw_cdev_iso_packet is used to describe isochronous packet queues.
+\ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  is used to describe isochronous packet queues.
 Use the FW_CDEV_ISO\_ macros to fill in \ ``control``\ .
 The \ ``header``\  array is empty in case of receive contexts.
 

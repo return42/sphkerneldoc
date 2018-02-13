@@ -3,8 +3,8 @@
 
 .. _`__cvmx_pko_int`:
 
-__cvmx_pko_int
-==============
+\__cvmx_pko_int
+===============
 
 .. c:function:: int __cvmx_pko_int(int interface, int index)
 
@@ -70,8 +70,8 @@ cvmx_pko_disable
 
 .. _`__cvmx_pko_reset`:
 
-__cvmx_pko_reset
-================
+\__cvmx_pko_reset
+=================
 
 .. c:function:: void __cvmx_pko_reset( void)
 

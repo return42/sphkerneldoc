@@ -88,7 +88,7 @@ dev_priv
 Description
 -----------
 
-@resources and \ ``list``\  are protected by the cmdbuf mutex for now.
+\ ``resources``\  and \ ``list``\  are protected by the cmdbuf mutex for now.
 
 .. _`vmw_cmdbuf_res_lookup`:
 

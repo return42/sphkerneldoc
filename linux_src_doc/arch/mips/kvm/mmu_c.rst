@@ -192,8 +192,8 @@ acquire \ ``kvm``\ ->mmu_lock.
 
 .. _`_kvm_mips_map_page_fast`:
 
-_kvm_mips_map_page_fast
-=======================
+\_kvm_mips_map_page_fast
+========================
 
 .. c:function:: int _kvm_mips_map_page_fast(struct kvm_vcpu *vcpu, unsigned long gpa, bool write_fault, pte_t *out_entry, pte_t *out_buddy)
 

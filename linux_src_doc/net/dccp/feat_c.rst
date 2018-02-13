@@ -150,8 +150,8 @@ dccp_feat_insert_opts
 
 .. _`__feat_register_nn`:
 
-__feat_register_nn
-==================
+\__feat_register_nn
+===================
 
 .. c:function:: int __feat_register_nn(struct list_head *fn, u8 feat, u8 mandatory, u64 nn_val)
 
@@ -178,8 +178,8 @@ Note that NN features are local by definition (RFC 4340, 6.3.2).
 
 .. _`__feat_register_sp`:
 
-__feat_register_sp
-==================
+\__feat_register_sp
+===================
 
 .. c:function:: int __feat_register_sp(struct list_head *fn, u8 feat, u8 is_local, u8 mandatory, u8 const *sp_val, u8 sp_len)
 
@@ -393,7 +393,7 @@ dccp_feat_change_recv
         whether the Change was preceded by a Mandatory option
 
     :param u8 opt:
-        %DCCPO_CHANGE_L or \ ``DCCPO_CHANGE_R``\ 
+        \ ``DCCPO_CHANGE_L``\  or \ ``DCCPO_CHANGE_R``\ 
 
     :param u8 feat:
         one of \ ``dccp_feature_numbers``\ 
@@ -423,7 +423,7 @@ dccp_feat_confirm_recv
         whether \ ``opt``\  was preceded by a Mandatory option
 
     :param u8 opt:
-        %DCCPO_CONFIRM_L or \ ``DCCPO_CONFIRM_R``\ 
+        \ ``DCCPO_CONFIRM_L``\  or \ ``DCCPO_CONFIRM_R``\ 
 
     :param u8 feat:
         one of \ ``dccp_feature_numbers``\ 
@@ -453,7 +453,7 @@ dccp_feat_handle_nn_established
         whether \ ``opt``\  was preceded by a Mandatory option
 
     :param u8 opt:
-        %DCCPO_CHANGE_L \| \ ``DCCPO_CONFIRM_R``\  (NN only)
+        \ ``DCCPO_CHANGE_L``\  \| \ ``DCCPO_CONFIRM_R``\  (NN only)
 
     :param u8 feat:
         NN number, one of \ ``dccp_feature_numbers``\ 
@@ -497,7 +497,7 @@ dccp_feat_parse_options
         whether \ ``opt``\  was preceded by a Mandatory option
 
     :param u8 opt:
-        %DCCPO_CHANGE_L \| \ ``DCCPO_CHANGE_R``\  \| \ ``DCCPO_CONFIRM_L``\  \| \ ``DCCPO_CONFIRM_R``\ 
+        \ ``DCCPO_CHANGE_L``\  \| \ ``DCCPO_CHANGE_R``\  \| \ ``DCCPO_CONFIRM_L``\  \| \ ``DCCPO_CONFIRM_R``\ 
 
     :param u8 feat:
         one of \ ``dccp_feature_numbers``\ 

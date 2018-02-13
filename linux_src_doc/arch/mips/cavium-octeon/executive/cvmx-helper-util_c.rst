@@ -66,8 +66,8 @@ cvmx_helper_setup_red
 
 .. _`__cvmx_helper_setup_gmx`:
 
-__cvmx_helper_setup_gmx
-=======================
+\__cvmx_helper_setup_gmx
+========================
 
 .. c:function:: int __cvmx_helper_setup_gmx(int interface, int num_ports)
 

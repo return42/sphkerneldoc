@@ -46,7 +46,7 @@ clear_bit
 Description
 -----------
 
-clear_bit() is atomic and may not be reordered.
+\ :c:func:`clear_bit`\  is atomic and may not be reordered.
 See \__clear_bit() if you do not require the atomic guarantees.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.
@@ -75,7 +75,7 @@ change_bit
 Description
 -----------
 
-change_bit() is atomic and may not be reordered.
+\ :c:func:`change_bit`\  is atomic and may not be reordered.
 See \__change_bit() if you do not require the atomic guarantees.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.

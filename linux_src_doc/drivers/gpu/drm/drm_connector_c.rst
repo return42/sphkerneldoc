@@ -13,7 +13,8 @@ plane abstractions) connectors can be hotplugged and unplugged at runtime.
 Hence they are reference-counted using \ :c:func:`drm_connector_get`\  and
 \ :c:func:`drm_connector_put`\ .
 
-KMS driver must create, initialize, register and attach at a \ :c:type:`struct drm_connector <drm_connector>`\  for each such sink. The instance is created as other KMS
+KMS driver must create, initialize, register and attach at a \ :c:type:`struct struct <struct>`\ 
+drm_connector for each such sink. The instance is created as other KMS
 objects and initialized by setting the following fields. The connector is
 initialized with a call to \ :c:func:`drm_connector_init`\  with a pointer to the
 \ :c:type:`struct drm_connector_funcs <drm_connector_funcs>`\  and a connector type, and then exposed to

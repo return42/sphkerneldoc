@@ -82,8 +82,8 @@ basic V4L2 device-level support.
 
 .. note::
 
-   #) \ ``dev``\ ->driver_data points to this struct.
-   #) \ ``dev``\  might be \ ``NULL``\  if there is no parent device
+   #) @dev->driver_data points to this struct.
+   #) @dev might be %NULL if there is no parent device
 
 .. _`v4l2_device_get`:
 
@@ -146,8 +146,8 @@ Description
 -----------
 
 .. note::
-     \ ``dev``\  may be \ ``NULL``\  in rare cases (ISA devices).
-     In such case the caller must fill in the \ ``v4l2_dev``\ ->name field
+     @dev may be %NULL in rare cases (ISA devices).
+     In such case the caller must fill in the @v4l2_dev->name field
      before calling this function.
 
 .. _`v4l2_device_set_name`:
@@ -174,7 +174,7 @@ v4l2_device_set_name
 Description
 -----------
 
-v4l2_device_set_name() initializes the name field of struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
+\ :c:func:`v4l2_device_set_name`\  initializes the name field of struct \ :c:type:`struct v4l2_device <v4l2_device>`\ 
 using the driver name and a driver-global atomic_t instance.
 
 This function will increment the instance counter and returns the
@@ -327,7 +327,7 @@ v4l2_device_for_each_subdev
         \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  pointer used as an iterator by the loop.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
 .. _`v4l2_device_for_each_subdev.description`:
 
@@ -348,7 +348,7 @@ __v4l2_device_call_subdevs_p
     Calls the specified operation for all subdevs matching the condition.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  sd:
         pointer that will be filled by the macro with all
@@ -391,7 +391,7 @@ __v4l2_device_call_subdevs
     Calls the specified operation for all subdevs matching the condition.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  cond:
         condition to be match
@@ -430,7 +430,7 @@ __v4l2_device_call_subdevs_until_err_p
     Calls the specified operation for all subdevs matching the condition.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  sd:
         pointer that will be filled by the macro with all
@@ -476,7 +476,7 @@ __v4l2_device_call_subdevs_until_err
     Calls the specified operation for all subdevs matching the condition.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  cond:
         condition to be match
@@ -518,10 +518,10 @@ v4l2_device_call_all
     Calls the specified operation for all subdevs matching the \ :c:type:`v4l2_subdev.grp_id <v4l2_subdev>`\ , as assigned by the bridge driver.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  grpid:
-        &struct v4l2_subdev->grp_id group ID to match.
+        \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id group ID to match.
         Use 0 to match them all.
 
     :param  o:
@@ -558,10 +558,10 @@ v4l2_device_call_until_err
     Calls the specified operation for all subdevs matching the \ :c:type:`v4l2_subdev.grp_id <v4l2_subdev>`\ , as assigned by the bridge driver, until an error occurs.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  grpid:
-        &struct v4l2_subdev->grp_id group ID to match.
+        \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id group ID to match.
         Use 0 to match them all.
 
     :param  o:
@@ -601,7 +601,7 @@ v4l2_device_mask_call_all
     Calls the specified operation for all subdevices where a group ID matches a specified bitmask.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  grpmsk:
         bitmask to be checked against \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id
@@ -641,7 +641,7 @@ v4l2_device_mask_call_until_err
     Calls the specified operation for all subdevices where a group ID matches a specified bitmask.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  grpmsk:
         bitmask to be checked against \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id
@@ -684,10 +684,10 @@ v4l2_device_has_op
     checks if any subdev with matching grpid has a given ops.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  grpid:
-        &struct v4l2_subdev->grp_id group ID to match.
+        \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id group ID to match.
         Use 0 to match them all.
 
     :param  o:
@@ -709,7 +709,7 @@ v4l2_device_mask_has_op
     checks if any subdev with matching group mask has a given ops.
 
     :param  v4l2_dev:
-        &struct v4l2_device owning the sub-devices to iterate over.
+        \ :c:type:`struct v4l2_device <v4l2_device>`\  owning the sub-devices to iterate over.
 
     :param  grpmsk:
         bitmask to be checked against \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ ->grp_id

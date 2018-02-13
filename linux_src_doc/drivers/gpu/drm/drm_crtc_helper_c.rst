@@ -308,7 +308,7 @@ setting and use the atomic suspend/resume helpers.
 See also
 --------
 
-drm_atomic_helper_suspend(), \ :c:func:`drm_atomic_helper_resume`\ 
+\ :c:func:`drm_atomic_helper_suspend`\ , \ :c:func:`drm_atomic_helper_resume`\ 
 
 .. _`drm_helper_crtc_mode_set`:
 

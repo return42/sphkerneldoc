@@ -154,7 +154,7 @@ lc_del
 Description
 -----------
 
-@e must be unused (refcnt == 0). Moves \ ``e``\  from "lru" to "free" list,
+\ ``e``\  must be unused (refcnt == 0). Moves \ ``e``\  from "lru" to "free" list,
 sets \ ``e``\ ->enr to \ ``LC_FREE``\ .
 
 .. _`lc_get`:

@@ -120,7 +120,7 @@ Members
 -------
 
 offset_type
-    &enum iwl_mvm_bcast_filter_attr_offset.
+    \ :c:type:`enum iwl_mvm_bcast_filter_attr_offset <iwl_mvm_bcast_filter_attr_offset>`\ .
 
 offset
     starting offset of this pattern.
@@ -200,7 +200,7 @@ discard
     discard frame (1) or let it pass (0).
 
 frame_type
-    &enum iwl_mvm_bcast_filter_frame_type.
+    \ :c:type:`enum iwl_mvm_bcast_filter_frame_type <iwl_mvm_bcast_filter_frame_type>`\ .
 
 num_attrs
     number of valid attributes in this filter.

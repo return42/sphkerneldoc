@@ -209,8 +209,8 @@ AutoFocus alghorithm version and the version string.
 
 .. _`__find_restype`:
 
-__find_restype
-==============
+\__find_restype
+===============
 
 .. c:function:: enum m5mols_restype __find_restype(u32 code)
 
@@ -221,8 +221,8 @@ __find_restype
 
 .. _`__find_resolution`:
 
-__find_resolution
-=================
+\__find_resolution
+==================
 
 .. c:function:: int __find_resolution(struct v4l2_subdev *sd, struct v4l2_mbus_framefmt *mf, enum m5mols_restype *type, u32 *resolution)
 
@@ -265,7 +265,7 @@ m5mols_restore_controls
 Description
 -----------
 
-m5mols_do_scenemode() handles all parameters for which there is yet no
+\ :c:func:`m5mols_do_scenemode`\  handles all parameters for which there is yet no
 individual control. It should be replaced at some point by setting each
 control individually, in required register set up order.
 

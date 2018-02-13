@@ -3,8 +3,8 @@
 
 .. _`__cvmx_helper_rgmii_probe`:
 
-__cvmx_helper_rgmii_probe
-=========================
+\__cvmx_helper_rgmii_probe
+==========================
 
 .. c:function:: int __cvmx_helper_rgmii_probe(int interface)
 
@@ -32,8 +32,8 @@ cvmx_helper_rgmii_internal_loopback
 
 .. _`__cvmx_helper_rgmii_enable`:
 
-__cvmx_helper_rgmii_enable
-==========================
+\__cvmx_helper_rgmii_enable
+===========================
 
 .. c:function:: int __cvmx_helper_rgmii_enable(int interface)
 
@@ -51,8 +51,8 @@ Returns Zero on success
 
 .. _`__cvmx_helper_rgmii_link_get`:
 
-__cvmx_helper_rgmii_link_get
-============================
+\__cvmx_helper_rgmii_link_get
+=============================
 
 .. c:function:: cvmx_helper_link_info_t __cvmx_helper_rgmii_link_get(int ipd_port)
 
@@ -70,8 +70,8 @@ Returns Link state
 
 .. _`__cvmx_helper_rgmii_link_set`:
 
-__cvmx_helper_rgmii_link_set
-============================
+\__cvmx_helper_rgmii_link_set
+=============================
 
 .. c:function:: int __cvmx_helper_rgmii_link_set(int ipd_port, cvmx_helper_link_info_t link_info)
 
@@ -92,8 +92,8 @@ Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_rgmii_configure_loopback`:
 
-__cvmx_helper_rgmii_configure_loopback
-======================================
+\__cvmx_helper_rgmii_configure_loopback
+=======================================
 
 .. c:function:: int __cvmx_helper_rgmii_configure_loopback(int ipd_port, int enable_internal, int enable_external)
 

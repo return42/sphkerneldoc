@@ -45,8 +45,8 @@ Returns 0 on success, -EINVAL on failure
 
 .. _`_hfi1_schedule_send`:
 
-_hfi1_schedule_send
-===================
+\_hfi1_schedule_send
+====================
 
 .. c:function:: void _hfi1_schedule_send(struct rvt_qp *qp)
 

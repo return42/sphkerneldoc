@@ -3,8 +3,8 @@
 
 .. _`_i40e_trace_name`:
 
-_I40E_TRACE_NAME
-================
+\_I40E_TRACE_NAME
+=================
 
 .. c:function::  _I40E_TRACE_NAME( trace_name)
 

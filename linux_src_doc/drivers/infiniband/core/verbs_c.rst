@@ -3,8 +3,8 @@
 
 .. _`__ib_alloc_pd`:
 
-__ib_alloc_pd
-=============
+\__ib_alloc_pd
+==============
 
 .. c:function:: struct ib_pd *__ib_alloc_pd(struct ib_device *device, unsigned int flags, const char *caller)
 
@@ -81,8 +81,8 @@ in all UD QP post sends.
 
 .. _`_ib_modify_qp`:
 
-_ib_modify_qp
-=============
+\_ib_modify_qp
+==============
 
 .. c:function:: int _ib_modify_qp(struct ib_qp *qp, struct ib_qp_attr *attr, int attr_mask, struct ib_udata *udata)
 

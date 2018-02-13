@@ -177,7 +177,7 @@ cdev_add
 Description
 -----------
 
-cdev_add() adds the device represented by \ ``p``\  to the system, making it
+\ :c:func:`cdev_add`\  adds the device represented by \ ``p``\  to the system, making it
 live immediately.  A negative error code is returned on failure.
 
 .. _`cdev_set_parent`:
@@ -200,7 +200,7 @@ cdev_set_parent
 Description
 -----------
 
-cdev_set_parent() sets a parent kobject which will be referenced
+\ :c:func:`cdev_set_parent`\  sets a parent kobject which will be referenced
 appropriately so the parent is not freed before the cdev. This
 should be called before cdev_add.
 
@@ -224,7 +224,7 @@ cdev_device_add
 Description
 -----------
 
-cdev_device_add() adds the char device represented by \ ``cdev``\  to the system,
+\ :c:func:`cdev_device_add`\  adds the char device represented by \ ``cdev``\  to the system,
 just as cdev_add does. It then adds \ ``dev``\  to the system using device_add
 The dev_t for the char device will be taken from the struct device which
 needs to be initialized first. This helper function correctly takes a
@@ -266,7 +266,7 @@ cdev_device_del
 Description
 -----------
 
-cdev_device_del() is a helper function to call cdev_del and device_del.
+\ :c:func:`cdev_device_del`\  is a helper function to call cdev_del and device_del.
 It should be used whenever cdev_device_add is used.
 
 If dev->devt is not set it will not remove the cdev and will be equivalent
@@ -298,7 +298,7 @@ cdev_del
 Description
 -----------
 
-cdev_del() removes \ ``p``\  from the system, possibly freeing the structure
+\ :c:func:`cdev_del`\  removes \ ``p``\  from the system, possibly freeing the structure
 itself.
 
 .. _`cdev_del.note`:

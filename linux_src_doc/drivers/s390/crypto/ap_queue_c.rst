@@ -56,8 +56,8 @@ have been switched on using \ :c:func:`ap_test_queue`\ .
 
 .. _`__ap_send`:
 
-__ap_send
-=========
+\__ap_send
+==========
 
 .. c:function:: struct ap_queue_status __ap_send(ap_qid_t qid, unsigned long long psmid, void *msg, size_t length, unsigned int special)
 
@@ -282,8 +282,8 @@ reply will be discarded because the psmid can't be found.
 
 .. _`__ap_flush_queue`:
 
-__ap_flush_queue
-================
+\__ap_flush_queue
+=================
 
 .. c:function:: void __ap_flush_queue(struct ap_queue *aq)
 

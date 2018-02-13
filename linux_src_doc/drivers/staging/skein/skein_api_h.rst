@@ -143,7 +143,7 @@ skein_update
 Description
 -----------
 
-@param ctx
+\ ``param``\  ctx
 Pointer to initialized Skein context
 \ ``param``\  msg
 Pointer to the message.

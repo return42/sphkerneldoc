@@ -513,8 +513,8 @@ parport_ip32_read_status
 
 .. _`__parport_ip32_read_control`:
 
-__parport_ip32_read_control
-===========================
+\__parport_ip32_read_control
+============================
 
 .. c:function:: unsigned int __parport_ip32_read_control(struct parport *p)
 
@@ -525,8 +525,8 @@ __parport_ip32_read_control
 
 .. _`__parport_ip32_write_control`:
 
-__parport_ip32_write_control
-============================
+\__parport_ip32_write_control
+=============================
 
 .. c:function:: void __parport_ip32_write_control(struct parport *p, unsigned int c)
 
@@ -540,8 +540,8 @@ __parport_ip32_write_control
 
 .. _`__parport_ip32_frob_control`:
 
-__parport_ip32_frob_control
-===========================
+\__parport_ip32_frob_control
+============================
 
 .. c:function:: void __parport_ip32_frob_control(struct parport *p, unsigned int mask, unsigned int val)
 
@@ -913,7 +913,7 @@ parport_ip32_fifo_wait_break
 Description
 -----------
 
-parport_ip32_fifo_wait_break() checks if the waiting function should return
+\ :c:func:`parport_ip32_fifo_wait_break`\  checks if the waiting function should return
 immediately or not.  The break conditions are:
 - expired timeout;
 - a pending signal;

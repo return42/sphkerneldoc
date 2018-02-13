@@ -21,7 +21,7 @@ overlay_get_target_phandle
 Description
 -----------
 
-overlay_get_target_phandle() retrieves the target phandle of an
+\ :c:func:`overlay_get_target_phandle`\  retrieves the target phandle of an
 overlay fragment when that fragment uses a phandle (target
 property) instead of a path (target-path property).
 
@@ -60,7 +60,7 @@ overlay_get_target
 Description
 -----------
 
-overlay_get_target() retrieves the target offset in the base
+\ :c:func:`overlay_get_target`\  retrieves the target offset in the base
 device tree of a fragment, no matter how the actual targetting is
 done (through a phandle or a path)
 
@@ -98,7 +98,7 @@ overlay_phandle_add_offset
 Description
 -----------
 
-overlay_phandle_add_offset() increments a node phandle by a given
+\ :c:func:`overlay_phandle_add_offset`\  increments a node phandle by a given
 offset.
 
 .. _`overlay_phandle_add_offset.return`:
@@ -132,7 +132,7 @@ overlay_adjust_node_phandles
 Description
 -----------
 
-overlay_adjust_node_phandles() adds a constant to all the phandles
+\ :c:func:`overlay_adjust_node_phandles`\  adds a constant to all the phandles
 of a given node. This is mainly use as part of the overlay
 application process, when we want to update all the overlay
 phandles to not conflict with the overlays of the base device tree.
@@ -165,7 +165,7 @@ overlay_adjust_local_phandles
 Description
 -----------
 
-overlay_adjust_local_phandles() adds a constant to all the
+\ :c:func:`overlay_adjust_local_phandles`\  adds a constant to all the
 phandles of an overlay. This is mainly use as part of the overlay
 application process, when we want to update all the overlay
 phandles to not conflict with the overlays of the base device tree.
@@ -204,7 +204,7 @@ overlay_update_local_node_references
 Description
 -----------
 
-overlay_update_local_nodes_references() update the phandles
+\ :c:func:`overlay_update_local_nodes_references`\  update the phandles
 pointing to a node within the device tree overlay by adding a
 constant delta.
 
@@ -240,7 +240,7 @@ overlay_update_local_references
 Description
 -----------
 
-overlay_update_local_references() update all the phandles pointing
+\ :c:func:`overlay_update_local_references`\  update all the phandles pointing
 to a node within the device tree overlay by adding a constant
 delta to not conflict with the base overlay.
 
@@ -297,7 +297,7 @@ overlay_fixup_one_phandle
 Description
 -----------
 
-overlay_fixup_one_phandle() resolves an overlay phandle pointing to
+\ :c:func:`overlay_fixup_one_phandle`\  resolves an overlay phandle pointing to
 a node in the base device tree.
 
 This is part of the device tree overlay application process, when
@@ -338,7 +338,7 @@ overlay_fixup_phandle
 Description
 -----------
 
-overlay_fixup_phandle() resolves all the overlay phandles pointed
+\ :c:func:`overlay_fixup_phandle`\  resolves all the overlay phandles pointed
 to in a \__fixups_\_ property, and updates them to match the phandles
 in use in the base device tree.
 
@@ -374,7 +374,7 @@ overlay_fixup_phandles
 Description
 -----------
 
-overlay_fixup_phandles() resolves all the overlay phandles pointing
+\ :c:func:`overlay_fixup_phandles`\  resolves all the overlay phandles pointing
 to nodes in the base device tree.
 
 This is one of the steps of the device tree overlay application
@@ -415,7 +415,7 @@ overlay_apply_node
 Description
 -----------
 
-overlay_apply_node() merges a node into a target base device tree
+\ :c:func:`overlay_apply_node`\  merges a node into a target base device tree
 node pointed.
 
 This is part of the final step in the device tree overlay
@@ -451,7 +451,7 @@ overlay_merge
 Description
 -----------
 
-overlay_merge() merges an overlay into its base device tree.
+\ :c:func:`overlay_merge`\  merges an overlay into its base device tree.
 
 This is the next to last step in the device tree overlay application
 process, when all the phandles have been adjusted and resolved and
@@ -485,7 +485,7 @@ overlay_symbol_update
 Description
 -----------
 
-overlay_symbol_update() updates the symbols of the base tree with the
+\ :c:func:`overlay_symbol_update`\  updates the symbols of the base tree with the
 symbols of the applied overlay
 
 This is the last step in the device tree overlay application

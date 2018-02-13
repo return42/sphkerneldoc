@@ -13,8 +13,8 @@ rpipe_avail_inc
 
 .. _`__wa_get_status`:
 
-__wa_get_status
-===============
+\__wa_get_status
+================
 
 .. c:function:: s32 __wa_get_status(struct wahc *wa)
 
@@ -32,8 +32,8 @@ need malloc, some arches don't take USB from the stack
 
 .. _`__wa_wait_status`:
 
-__wa_wait_status
-================
+\__wa_wait_status
+=================
 
 .. c:function:: s32 __wa_wait_status(struct wahc *wa, u32 mask, u32 value)
 

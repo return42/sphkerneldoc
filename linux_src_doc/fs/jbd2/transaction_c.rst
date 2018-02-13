@@ -336,7 +336,7 @@ jbd2_journal_forget
 
 .. c:function:: int jbd2_journal_forget(handle_t *handle, struct buffer_head *bh)
 
-    bforget() for potentially-journaled buffers.
+    \ :c:func:`bforget`\  for potentially-journaled buffers.
 
     :param handle_t \*handle:
         transaction handle

@@ -3,8 +3,8 @@
 
 .. _`__uwb_rc_cmd`:
 
-__uwb_rc_cmd
-============
+\__uwb_rc_cmd
+=============
 
 .. c:function:: ssize_t __uwb_rc_cmd(struct uwb_rc *rc, const char *cmd_name, struct uwb_rccb *cmd, size_t cmd_size, struct uwb_rceb *reply, size_t reply_size, u8 expected_type, u16 expected_event, struct uwb_rceb **preply)
 
@@ -26,7 +26,7 @@ __uwb_rc_cmd
         Pointer to where to store the reply
 
     :param size_t reply_size:
-        @reply's size
+        \ ``reply``\ 's size
 
     :param u8 expected_type:
         Expected type in the return event

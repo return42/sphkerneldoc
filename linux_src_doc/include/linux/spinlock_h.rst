@@ -3,8 +3,8 @@
 
 .. _`_atomic_dec_and_lock`:
 
-_atomic_dec_and_lock
-====================
+\_atomic_dec_and_lock
+=====================
 
 .. c:function:: int _atomic_dec_and_lock(atomic_t *atomic, spinlock_t *lock)
 

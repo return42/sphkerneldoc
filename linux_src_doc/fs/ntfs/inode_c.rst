@@ -187,8 +187,8 @@ obtained from \ :c:func:`PTR_ERR`\ .
 
 .. _`__ntfs_init_inode`:
 
-__ntfs_init_inode
-=================
+\__ntfs_init_inode
+==================
 
 .. c:function:: void __ntfs_init_inode(struct super_block *sb, ntfs_inode *ni)
 
@@ -264,7 +264,7 @@ ntfs_read_locked_inode
 Description
 -----------
 
-ntfs_read_locked_inode() is called from \ :c:func:`ntfs_iget`\  to read the inode
+\ :c:func:`ntfs_read_locked_inode`\  is called from \ :c:func:`ntfs_iget`\  to read the inode
 described by \ ``vi``\  into memory from the device.
 
 The only fields in \ ``vi``\  that we need to/can look at when the function is
@@ -306,7 +306,7 @@ ntfs_read_locked_attr_inode
 Description
 -----------
 
-ntfs_read_locked_attr_inode() is called from \ :c:func:`ntfs_attr_iget`\  to read the
+\ :c:func:`ntfs_read_locked_attr_inode`\  is called from \ :c:func:`ntfs_attr_iget`\  to read the
 attribute inode described by \ ``vi``\  into memory from the base mft record
 described by \ ``base_ni``\ .
 
@@ -343,7 +343,7 @@ ntfs_read_locked_index_inode
 Description
 -----------
 
-ntfs_read_locked_index_inode() is called from \ :c:func:`ntfs_index_iget`\  to read the
+\ :c:func:`ntfs_read_locked_index_inode`\  is called from \ :c:func:`ntfs_index_iget`\  to read the
 index inode described by \ ``vi``\  into memory from the base mft record described
 by \ ``base_ni``\ .
 
@@ -541,8 +541,8 @@ Called with ->i_mutex held.
 
 .. _`__ntfs_write_inode`:
 
-__ntfs_write_inode
-==================
+\__ntfs_write_inode
+===================
 
 .. c:function:: int __ntfs_write_inode(struct inode *vi, int sync)
 

@@ -24,7 +24,7 @@ module_param
 Description
 -----------
 
-@value becomes the module parameter, or (prefixed by KBUILD_MODNAME and a
+\ ``value``\  becomes the module parameter, or (prefixed by KBUILD_MODNAME and a
 ".") the kernel commandline parameter.  Note that - is changed to _, so
 the user can use "foo-bar=1" even for variable "foo_bar".
 

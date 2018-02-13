@@ -21,7 +21,7 @@ __round_jiffies
 Description
 -----------
 
-__round_jiffies() rounds an absolute time in the future (in jiffies)
+\ :c:func:`__round_jiffies`\  rounds an absolute time in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -56,7 +56,7 @@ __round_jiffies_relative
 Description
 -----------
 
-__round_jiffies_relative() rounds a time delta  in the future (in jiffies)
+\ :c:func:`__round_jiffies_relative`\  rounds a time delta  in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -88,7 +88,7 @@ round_jiffies
 Description
 -----------
 
-round_jiffies() rounds an absolute time in the future (in jiffies)
+\ :c:func:`round_jiffies`\  rounds an absolute time in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -116,7 +116,7 @@ round_jiffies_relative
 Description
 -----------
 
-round_jiffies_relative() rounds a time delta  in the future (in jiffies)
+\ :c:func:`round_jiffies_relative`\  rounds a time delta  in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -251,7 +251,7 @@ init_timer_key
 Description
 -----------
 
-init_timer_key() must be done to a timer prior calling *any* of the
+\ :c:func:`init_timer_key`\  must be done to a timer prior calling *any* of the
 other timer functions.
 
 .. _`mod_timer_pending`:
@@ -274,7 +274,7 @@ mod_timer_pending
 Description
 -----------
 
-mod_timer_pending() is the same for pending timers as \ :c:func:`mod_timer`\ ,
+\ :c:func:`mod_timer_pending`\  is the same for pending timers as \ :c:func:`mod_timer`\ ,
 but will not re-activate and modify already deleted timers.
 
 It is useful for unserialized use of timers.
@@ -299,7 +299,7 @@ mod_timer
 Description
 -----------
 
-mod_timer() is a more efficient way to update the expire field of an
+\ :c:func:`mod_timer`\  is a more efficient way to update the expire field of an
 active timer (if the timer is inactive it will be activated)
 
 mod_timer(timer, expires) is equivalent to:
@@ -334,7 +334,7 @@ timer_reduce
 Description
 -----------
 
-timer_reduce() is very similar to \ :c:func:`mod_timer`\ , except that it will only
+\ :c:func:`timer_reduce`\  is very similar to \ :c:func:`mod_timer`\ , except that it will only
 modify a running timer if that would reduce the expiration time (it will
 start a timer that isn't running).
 
@@ -404,7 +404,7 @@ del_timer
 Description
 -----------
 
-del_timer() deactivates a timer - this works on both active and inactive
+\ :c:func:`del_timer`\  deactivates a timer - this works on both active and inactive
 timers.
 
 The function returns whether it has deactivated a pending timer or not.

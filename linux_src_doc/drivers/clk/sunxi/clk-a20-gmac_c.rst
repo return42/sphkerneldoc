@@ -16,7 +16,7 @@ Description
 -----------
 
 This clock looks something like this
-\_______________________\_
+\________________________
 MII TX clock from PHY >-----\|__________\_    \_________\|----> to GMAC core
 GMAC Int. RGMII TX clk >----\|___________\__/__gate---\|----> to PHY
 Ext. 125MHz RGMII TX clk >--\|__divider__/            \|

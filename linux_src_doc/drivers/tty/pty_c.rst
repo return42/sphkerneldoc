@@ -99,7 +99,7 @@ pty_start
 
 .. c:function:: void pty_start(struct tty_struct *tty)
 
-    start() handler pty_stop  - \ :c:func:`stop`\  handler
+    \ :c:func:`start`\  handler pty_stop  - \ :c:func:`stop`\  handler
 
     :param struct tty_struct \*tty:
         tty being flow-controlled

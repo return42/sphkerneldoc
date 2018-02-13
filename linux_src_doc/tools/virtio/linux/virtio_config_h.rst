@@ -3,8 +3,8 @@
 
 .. _`__virtio_set_bit`:
 
-__virtio_set_bit
-================
+\__virtio_set_bit
+=================
 
 .. c:function:: void __virtio_set_bit(struct virtio_device *vdev, unsigned int fbit)
 
@@ -18,8 +18,8 @@ __virtio_set_bit
 
 .. _`__virtio_clear_bit`:
 
-__virtio_clear_bit
-==================
+\__virtio_clear_bit
+===================
 
 .. c:function:: void __virtio_clear_bit(struct virtio_device *vdev, unsigned int fbit)
 

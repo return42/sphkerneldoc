@@ -279,7 +279,7 @@ stores the value into \ ``val``\  if found. The value is checked to be a string.
 Return
 ------
 
-%0 if the property was found (success),
+\ ``0``\  if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  or \ ``-EILSEQ``\  if the property type is not a string.
@@ -316,7 +316,7 @@ index back.
 Return
 ------
 
-%0 if the property was found (success),
+\ ``0``\  if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  if the property is not an array of strings,
@@ -563,7 +563,7 @@ Read property \ ``propname``\  from the given firmware node and store the value 
 Return
 ------
 
-%0 if the property was found (success),
+\ ``0``\  if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  or \ ``-EILSEQ``\  if the property is not a string,
@@ -600,7 +600,7 @@ index back.
 Return
 ------
 
-%0 if the property was found (success),
+\ ``0``\  if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  if the property is not an array of strings,
@@ -651,7 +651,7 @@ args->fwnode pointer.
 Return
 ------
 
-%0 on success
+\ ``0``\  on success
 \ ``-ENOENT``\  when the index is out of bounds, the index has an empty
 reference or the property was not found
 \ ``-EINVAL``\  on parse error

@@ -257,8 +257,8 @@ and should be moved to the used tree.
 
 .. _`__schedule_ubi_work`:
 
-__schedule_ubi_work
-===================
+\__schedule_ubi_work
+====================
 
 .. c:function:: void __schedule_ubi_work(struct ubi_device *ubi, struct ubi_work *wrk)
 
@@ -414,8 +414,8 @@ code in case of failure.
 
 .. _`__erase_worker`:
 
-__erase_worker
-==============
+\__erase_worker
+===============
 
 .. c:function:: int __erase_worker(struct ubi_device *ubi, struct ubi_work *wl_wrk)
 

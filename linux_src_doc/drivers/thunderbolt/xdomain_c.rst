@@ -35,7 +35,7 @@ domain. No response for the message is expected.
 Return
 ------
 
-%0 in case of success and negative errno in case of failure
+\ ``0``\  in case of success and negative errno in case of failure
 
 .. _`tb_xdomain_request`:
 
@@ -84,7 +84,7 @@ or when timeout triggers. Whichever comes first.
 Return
 ------
 
-%0 in case of success and negative errno in case of failure
+\ ``0``\  in case of success and negative errno in case of failure
 
 .. _`tb_register_protocol_handler`:
 
@@ -281,7 +281,7 @@ path.
 Return
 ------
 
-%0 in case of success and negative errno in case of error
+\ ``0``\  in case of success and negative errno in case of error
 
 .. _`tb_xdomain_disable_paths`:
 
@@ -308,7 +308,7 @@ this the caller is not expected to use the rings anymore.
 Return
 ------
 
-%0 in case of success and negative errno in case of error
+\ ``0``\  in case of success and negative errno in case of error
 
 .. _`tb_xdomain_find_by_uuid`:
 
@@ -403,7 +403,7 @@ interested.
 Return
 ------
 
-%0 on success and negative errno on failure
+\ ``0``\  on success and negative errno on failure
 
 .. _`tb_unregister_property_dir`:
 

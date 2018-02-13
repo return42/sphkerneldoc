@@ -18,7 +18,7 @@ NTFS_I
 Description
 -----------
 
-NTFS_I() returns the ntfs inode associated with the VFS \ ``inode``\ .
+\ :c:func:`NTFS_I`\  returns the ntfs inode associated with the VFS \ ``inode``\ .
 
 .. _`ntfs_attr`:
 

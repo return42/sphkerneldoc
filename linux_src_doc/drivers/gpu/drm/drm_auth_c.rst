@@ -6,7 +6,7 @@
 master and authentication
 =========================
 
-&struct drm_master is used to track groups of clients with open
+\ :c:type:`struct drm_master <drm_master>`\  is used to track groups of clients with open
 primary/legacy device nodes. For every \ :c:type:`struct drm_file <drm_file>`\  which has had at
 least once successfully became the device master (either through the
 SET_MASTER IOCTL, or implicitly through opening the primary device node when
@@ -57,7 +57,7 @@ drm_master_get
     reference a master pointer
 
     :param struct drm_master \*master:
-        &struct drm_master
+        \ :c:type:`struct drm_master <drm_master>`\ 
 
 .. _`drm_master_get.description`:
 

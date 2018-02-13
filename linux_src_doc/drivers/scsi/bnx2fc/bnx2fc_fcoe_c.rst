@@ -389,8 +389,8 @@ here.
 
 .. _`_bnx2fc_create`:
 
-_bnx2fc_create
-==============
+\_bnx2fc_create
+===============
 
 .. c:function:: int _bnx2fc_create(struct net_device *netdev, enum fip_mode fip_mode, enum bnx2fc_create_link_state link_state)
 
@@ -506,7 +506,7 @@ bnx2fc_ulp_exit
 Description
 -----------
 
-@dev         cnic device handle
+\ ``dev``\          cnic device handle
 
 .. _`bnx2fc_fcoe_reset`:
 

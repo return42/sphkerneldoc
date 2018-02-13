@@ -71,7 +71,7 @@ LNetEQHandleIsInvalid
 Description
 -----------
 
-@return 1 if handle is invalid, 0 if valid.
+\ ``return``\  1 if handle is invalid, 0 if valid.
 
 .. _`lnetinvalidatemdhandle`:
 
@@ -98,7 +98,7 @@ LNetMDHandleIsInvalid
 Description
 -----------
 
-@return 1 if handle is invalid, 0 if valid.
+\ ``return``\  1 if handle is invalid, 0 if valid.
 
 .. _`lnet_md_op_put`:
 

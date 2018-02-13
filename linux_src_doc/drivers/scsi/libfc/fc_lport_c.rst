@@ -314,8 +314,8 @@ with the lport lock held.
 
 .. _`__fc_linkup`:
 
-__fc_linkup
-===========
+\__fc_linkup
+============
 
 .. c:function:: void __fc_linkup(struct fc_lport *lport)
 
@@ -345,8 +345,8 @@ fc_linkup
 
 .. _`__fc_linkdown`:
 
-__fc_linkdown
-=============
+\__fc_linkdown
+==============
 
 .. c:function:: void __fc_linkdown(struct fc_lport *lport)
 

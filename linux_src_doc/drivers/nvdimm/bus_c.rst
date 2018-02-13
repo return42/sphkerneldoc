@@ -3,8 +3,8 @@
 
 .. _`__nd_driver_register`:
 
-__nd_driver_register
-====================
+\__nd_driver_register
+=====================
 
 .. c:function:: int __nd_driver_register(struct nd_device_driver *nd_drv, struct module *owner, const char *mod_name)
 

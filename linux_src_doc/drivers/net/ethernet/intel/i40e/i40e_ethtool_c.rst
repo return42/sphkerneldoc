@@ -165,8 +165,8 @@ i40e_set_wol
 
 .. _`__i40e_get_coalesce`:
 
-__i40e_get_coalesce
-===================
+\__i40e_get_coalesce
+====================
 
 .. c:function:: int __i40e_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
 
@@ -266,8 +266,8 @@ Change the ITR settings for a specific queue.
 
 .. _`__i40e_set_coalesce`:
 
-__i40e_set_coalesce
-===================
+\__i40e_set_coalesce
+====================
 
 .. c:function:: int __i40e_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
 
@@ -716,8 +716,8 @@ Returns 0 on success, and negative value on error.
 
 .. _`__i40e_reprogram_flex_pit`:
 
-__i40e_reprogram_flex_pit
-=========================
+\__i40e_reprogram_flex_pit
+==========================
 
 .. c:function:: void __i40e_reprogram_flex_pit(struct i40e_pf *pf, struct list_head *flex_pit_list, int flex_pit_start)
 

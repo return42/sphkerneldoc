@@ -3,8 +3,8 @@
 
 .. _`__mips_cm_phys_base`:
 
-__mips_cm_phys_base
-===================
+\__mips_cm_phys_base
+====================
 
 .. c:function:: phys_addr_t __mips_cm_phys_base( void)
 

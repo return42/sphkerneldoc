@@ -3,8 +3,8 @@
 
 .. _`_batadv_update_route`:
 
-_batadv_update_route
-====================
+\_batadv_update_route
+=====================
 
 .. c:function:: void _batadv_update_route(struct batadv_priv *bat_priv, struct batadv_orig_node *orig_node, struct batadv_hard_iface *recv_if, struct batadv_neigh_node *neigh_node)
 

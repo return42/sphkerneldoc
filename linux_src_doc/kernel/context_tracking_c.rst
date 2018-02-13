@@ -3,8 +3,8 @@
 
 .. _`__context_tracking_enter`:
 
-__context_tracking_enter
-========================
+\__context_tracking_enter
+=========================
 
 .. c:function:: void __context_tracking_enter(enum ctx_state state)
 
@@ -25,8 +25,8 @@ because this function sets RCU in extended quiescent state.
 
 .. _`__context_tracking_exit`:
 
-__context_tracking_exit
-=======================
+\__context_tracking_exit
+========================
 
 .. c:function:: void __context_tracking_exit(enum ctx_state state)
 

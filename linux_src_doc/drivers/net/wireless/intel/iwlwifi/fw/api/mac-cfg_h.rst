@@ -28,10 +28,10 @@ Constants
 ---------
 
 LOW_LATENCY_CMD
-    &struct iwl_mac_low_latency_cmd
+    \ :c:type:`struct iwl_mac_low_latency_cmd <iwl_mac_low_latency_cmd>`\ 
 
 CHANNEL_SWITCH_NOA_NOTIF
-    &struct iwl_channel_switch_noa_notif
+    \ :c:type:`struct iwl_channel_switch_noa_notif <iwl_channel_switch_noa_notif>`\ 
 
 .. _`iwl_channel_switch_noa_notif`:
 

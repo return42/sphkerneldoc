@@ -178,7 +178,7 @@ is_boot_sector_ntfs
 Description
 -----------
 
-is_boot_sector_ntfs() checks whether the boot sector \ ``b``\  is a valid NTFS boot
+\ :c:func:`is_boot_sector_ntfs`\  checks whether the boot sector \ ``b``\  is a valid NTFS boot
 sector. Returns 'true' if it is valid and 'false' if not.
 
 \ ``sb``\  is only needed for warning/error output, i.e. it can be NULL when silent
@@ -490,7 +490,7 @@ ntfs_put_super
 Description
 -----------
 
-ntfs_put_super() is called by the VFS (from fs/super.c::do_umount()) when
+\ :c:func:`ntfs_put_super`\  is called by the VFS (from fs/super.c::do_umount()) when
 the volume is being unmounted (umount system call has been invoked) and it
 releases all inodes and memory belonging to the NTFS specific part of the
 super block.
@@ -529,8 +529,8 @@ an overestimate.
 
 .. _`__get_nr_free_mft_records`:
 
-__get_nr_free_mft_records
-=========================
+\__get_nr_free_mft_records
+==========================
 
 .. c:function:: unsigned long __get_nr_free_mft_records(ntfs_volume *vol, s64 nr_free, const pgoff_t max_index)
 
@@ -622,7 +622,7 @@ ntfs_fill_super
 Description
 -----------
 
-ntfs_fill_super() is called by the VFS to mount the device described by \ ``sb``\ 
+\ :c:func:`ntfs_fill_super`\  is called by the VFS to mount the device described by \ ``sb``\ 
 with the mount otions in \ ``data``\  with the NTFS filesystem.
 
 If \ ``silent``\  is true, remain silent even if errors are detected. This is used
@@ -637,7 +637,7 @@ fact this is what is supposed to happen.
 NOTE
 ----
 
-@sb->s_flags contains the mount options flags.
+\ ``sb``\ ->s_flags contains the mount options flags.
 
 .. This file was automatic generated / don't edit.
 

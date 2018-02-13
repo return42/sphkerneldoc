@@ -3,8 +3,8 @@
 
 .. _`__fnic_flags_fwreset`:
 
-__FNIC_FLAGS_FWRESET
-====================
+\__FNIC_FLAGS_FWRESET
+=====================
 
 .. c:function::  __FNIC_FLAGS_FWRESET()
 

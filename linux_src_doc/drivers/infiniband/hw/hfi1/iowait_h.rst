@@ -327,7 +327,7 @@ iowait_get_txhead
 Description
 -----------
 
-@wait wait struture
+\ ``wait``\  wait struture
 
 .. _`iowait_queue`:
 

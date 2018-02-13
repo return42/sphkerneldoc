@@ -160,7 +160,7 @@ enum netdev_priv_flags
 
 .. c:type:: enum netdev_priv_flags
 
-    &struct net_device priv_flags
+    \ :c:type:`struct net_device <net_device>`\  priv_flags
 
 .. _`netdev_priv_flags.definition`:
 
@@ -221,7 +221,7 @@ IFF_WAN_HDLC
     WAN HDLC device
 
 IFF_XMIT_DST_RELEASE
-    dev_hard_start_xmit() is allowed to
+    \ :c:func:`dev_hard_start_xmit`\  is allowed to
     release skb->dst
 
 IFF_DONT_BRIDGE
@@ -1046,7 +1046,7 @@ netif_napi_add
 Description
 -----------
 
-netif_napi_add() must be used to initialize a NAPI context prior to calling
+\ :c:func:`netif_napi_add`\  must be used to initialize a NAPI context prior to calling
 *any* of the other NAPI-related functions.
 
 .. _`netif_tx_napi_add`:

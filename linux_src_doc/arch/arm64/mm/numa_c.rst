@@ -90,8 +90,8 @@ or \ ``distance``\  doesn't make sense, the call is ignored.
 
 .. _`__node_distance`:
 
-__node_distance
-===============
+\__node_distance
+================
 
 .. c:function:: int __node_distance(int from, int to)
 

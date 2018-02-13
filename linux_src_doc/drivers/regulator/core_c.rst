@@ -112,7 +112,7 @@ set_consumer_device_supply
         regulator source
 
     :param const char \*consumer_dev_name:
-        dev_name() string for device supply applies to
+        \ :c:func:`dev_name`\  string for device supply applies to
 
     :param const char \*supply:
         symbolic name for supply
@@ -356,7 +356,7 @@ regulator_bulk_register_supply_alias
 Description
 -----------
 
-@return 0 on success, an errno on failure.
+\ ``return``\  0 on success, an errno on failure.
 
 This helper function allows drivers to register several supply
 aliases in one operation.  If any of the aliases cannot be
@@ -1167,7 +1167,7 @@ regulator_bulk_get
 Description
 -----------
 
-@return 0 on success, an errno on failure.
+\ ``return``\  0 on success, an errno on failure.
 
 This helper function allows drivers to get several regulator
 consumers in one operation.  If any of the regulators cannot be

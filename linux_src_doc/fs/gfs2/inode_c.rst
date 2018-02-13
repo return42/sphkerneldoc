@@ -270,8 +270,8 @@ errno
 
 .. _`__gfs2_lookup`:
 
-__gfs2_lookup
-=============
+\__gfs2_lookup
+==============
 
 .. c:function:: struct dentry *__gfs2_lookup(struct inode *dir, struct dentry *dentry, struct file *file, int *opened)
 

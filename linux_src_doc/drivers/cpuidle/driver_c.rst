@@ -3,8 +3,8 @@
 
 .. _`__cpuidle_get_cpu_driver`:
 
-__cpuidle_get_cpu_driver
-========================
+\__cpuidle_get_cpu_driver
+=========================
 
 .. c:function:: struct cpuidle_driver *__cpuidle_get_cpu_driver(int cpu)
 
@@ -23,8 +23,8 @@ registered for \ ``cpu``\ .
 
 .. _`__cpuidle_unset_driver`:
 
-__cpuidle_unset_driver
-======================
+\__cpuidle_unset_driver
+=======================
 
 .. c:function:: void __cpuidle_unset_driver(struct cpuidle_driver *drv)
 
@@ -44,8 +44,8 @@ variable is not cleared.
 
 .. _`__cpuidle_set_driver`:
 
-__cpuidle_set_driver
-====================
+\__cpuidle_set_driver
+=====================
 
 .. c:function:: int __cpuidle_set_driver(struct cpuidle_driver *drv)
 
@@ -66,8 +66,8 @@ Returns 0 on success, -EBUSY if the CPUs have driver(s) already.
 
 .. _`__cpuidle_get_cpu_driver`:
 
-__cpuidle_get_cpu_driver
-========================
+\__cpuidle_get_cpu_driver
+=========================
 
 .. c:function:: struct cpuidle_driver *__cpuidle_get_cpu_driver(int cpu)
 
@@ -86,8 +86,8 @@ previously registered.
 
 .. _`__cpuidle_set_driver`:
 
-__cpuidle_set_driver
-====================
+\__cpuidle_set_driver
+=====================
 
 .. c:function:: int __cpuidle_set_driver(struct cpuidle_driver *drv)
 
@@ -105,8 +105,8 @@ Returns 0 on success, -EBUSY if the driver is already registered.
 
 .. _`__cpuidle_unset_driver`:
 
-__cpuidle_unset_driver
-======================
+\__cpuidle_unset_driver
+=======================
 
 .. c:function:: void __cpuidle_unset_driver(struct cpuidle_driver *drv)
 
@@ -147,8 +147,8 @@ supposed to be called directly.
 
 .. _`__cpuidle_driver_init`:
 
-__cpuidle_driver_init
-=====================
+\__cpuidle_driver_init
+======================
 
 .. c:function:: void __cpuidle_driver_init(struct cpuidle_driver *drv)
 
@@ -159,8 +159,8 @@ __cpuidle_driver_init
 
 .. _`__cpuidle_register_driver`:
 
-__cpuidle_register_driver
-=========================
+\__cpuidle_register_driver
+==========================
 
 .. c:function:: int __cpuidle_register_driver(struct cpuidle_driver *drv)
 
@@ -185,8 +185,8 @@ Returns 0 on success, a negative error code otherwise:
 
 .. _`__cpuidle_unregister_driver`:
 
-__cpuidle_unregister_driver
-===========================
+\__cpuidle_unregister_driver
+============================
 
 .. c:function:: void __cpuidle_unregister_driver(struct cpuidle_driver *drv)
 

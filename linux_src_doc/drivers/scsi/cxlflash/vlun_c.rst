@@ -349,8 +349,8 @@ Return
 
 .. _`_cxlflash_vlun_resize`:
 
-_cxlflash_vlun_resize
-=====================
+\_cxlflash_vlun_resize
+======================
 
 .. c:function:: int _cxlflash_vlun_resize(struct scsi_device *sdev, struct ctx_info *ctxi, struct dk_cxlflash_resize *resize)
 

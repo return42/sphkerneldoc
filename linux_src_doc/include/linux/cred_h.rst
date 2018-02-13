@@ -147,8 +147,8 @@ since nobody else can modify it.
 
 .. _`__task_cred`:
 
-__task_cred
-===========
+\__task_cred
+============
 
 .. c:function::  __task_cred( task)
 

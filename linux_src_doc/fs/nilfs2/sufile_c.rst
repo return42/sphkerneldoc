@@ -85,7 +85,7 @@ nilfs_sufile_updatev
 Description
 -----------
 
-nilfs_sufile_updatev() repeatedly calls \ ``dofunc``\ 
+\ :c:func:`nilfs_sufile_updatev`\  repeatedly calls \ ``dofunc``\ 
 against the given array of segments.  The \ ``dofunc``\  is called with
 buffers of a header block and the sufile block in which the target
 segment usage entry is contained.  If \ ``ndone``\  is given, the number
@@ -157,7 +157,7 @@ nilfs_sufile_alloc
 Description
 -----------
 
-nilfs_sufile_alloc() allocates a clean segment.
+\ :c:func:`nilfs_sufile_alloc`\  allocates a clean segment.
 
 .. _`nilfs_sufile_alloc.return-value`:
 
@@ -230,7 +230,7 @@ nilfs_sufile_get_stat
 Description
 -----------
 
-nilfs_sufile_get_stat() returns information about segment
+\ :c:func:`nilfs_sufile_get_stat`\  returns information about segment
 usage.
 
 .. _`nilfs_sufile_get_stat.return-value`:

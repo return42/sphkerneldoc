@@ -247,8 +247,8 @@ number of rings is not specified, so all rings get the same settings.
 
 .. _`__i40evf_get_coalesce`:
 
-__i40evf_get_coalesce
-=====================
+\__i40evf_get_coalesce
+======================
 
 .. c:function:: int __i40evf_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
 
@@ -349,8 +349,8 @@ Change the ITR settings for a specific queue.
 
 .. _`__i40evf_set_coalesce`:
 
-__i40evf_set_coalesce
-=====================
+\__i40evf_set_coalesce
+======================
 
 .. c:function:: int __i40evf_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
 

@@ -79,7 +79,7 @@ gen6_sema_emit_breadcrumb
 Description
 -----------
 
-@request - request to write to the ring
+\ ``request``\  - request to write to the ring
 
 Update the mailbox registers in the \*other\* rings with the current seqno.
 This acts like a signal in the canonical semaphore.

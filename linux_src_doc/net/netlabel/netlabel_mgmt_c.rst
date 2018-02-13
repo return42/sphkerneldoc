@@ -103,7 +103,7 @@ netlbl_mgmt_listall_cb
 
 .. c:function:: int netlbl_mgmt_listall_cb(struct netlbl_dom_map *entry, void *arg)
 
-    netlbl_domhsh_walk() callback for LISTALL
+    \ :c:func:`netlbl_domhsh_walk`\  callback for LISTALL
 
     :param struct netlbl_dom_map \*entry:
         the domain mapping hash table entry

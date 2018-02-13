@@ -377,8 +377,8 @@ number of elements in the array.
 
 .. _`__security_genfs_sid`:
 
-__security_genfs_sid
-====================
+\__security_genfs_sid
+=====================
 
 .. c:function:: int __security_genfs_sid(const char *fstype, char *path, u16 orig_sclass, u32 *sid)
 

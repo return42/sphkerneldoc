@@ -3,8 +3,8 @@
 
 .. _`_allow_idle`:
 
-_allow_idle
-===========
+\_allow_idle
+============
 
 .. c:function:: void _allow_idle(struct clk_hw_omap *clk)
 
@@ -31,8 +31,8 @@ instead.  Add some mechanism to optionally enter this mode.
 
 .. _`_deny_idle`:
 
-_deny_idle
-==========
+\_deny_idle
+===========
 
 .. c:function:: void _deny_idle(struct clk_hw_omap *clk)
 

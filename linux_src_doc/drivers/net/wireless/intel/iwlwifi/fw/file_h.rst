@@ -518,7 +518,7 @@ Members
 -------
 
 op
-    &enum iwl_fw_dbg_reg_operator
+    \ :c:type:`enum iwl_fw_dbg_reg_operator <iwl_fw_dbg_reg_operator>`\ 
 
 reserved
     *undescribed*
@@ -688,7 +688,7 @@ version
     version of the TLV - currently 0
 
 monitor_mode
-    &enum iwl_fw_dbg_monitor_mode
+    \ :c:type:`enum iwl_fw_dbg_monitor_mode <iwl_fw_dbg_monitor_mode>`\ 
 
 size_power
     buffer size will be 2^(size_power + 11)
@@ -848,10 +848,10 @@ Members
 -------
 
 id
-    &enum iwl_fw_dbg_trigger
+    \ :c:type:`enum iwl_fw_dbg_trigger <iwl_fw_dbg_trigger>`\ 
 
 vif_type
-    &enum iwl_fw_dbg_trigger_vif_type
+    \ :c:type:`enum iwl_fw_dbg_trigger_vif_type <iwl_fw_dbg_trigger_vif_type>`\ 
 
 stop_conf_ids
     bitmap of configurations this trigger relates to.
@@ -864,7 +864,7 @@ stop_delay
     after the STOP trigger fires.
 
 mode
-    &enum iwl_fw_dbg_trigger_mode - can be stop / start of both
+    \ :c:type:`enum iwl_fw_dbg_trigger_mode <iwl_fw_dbg_trigger_mode>`\  - can be stop / start of both
 
 start_conf_id
     if mode is \ ``IWL_FW_DBG_TRIGGER_START``\ , this defines what

@@ -124,8 +124,8 @@ vfio_ioctl_check_extension
 
 .. _`__vfio_group_unset_container`:
 
-__vfio_group_unset_container
-============================
+\__vfio_group_unset_container
+=============================
 
 .. c:function:: void __vfio_group_unset_container(struct vfio_group *group)
 

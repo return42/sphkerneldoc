@@ -3,8 +3,8 @@
 
 .. _`_rtl_tx_desc_checksum`:
 
-_rtl_tx_desc_checksum
-=====================
+\_rtl_tx_desc_checksum
+======================
 
 .. c:function:: void _rtl_tx_desc_checksum(u8 *txdesc)
 

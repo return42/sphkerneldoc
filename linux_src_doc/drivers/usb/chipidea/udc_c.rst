@@ -346,8 +346,8 @@ This function returns an error code
 
 .. _`_usb_addr`:
 
-_usb_addr
-=========
+\_usb_addr
+==========
 
 .. c:function:: u8 _usb_addr(struct ci_hw_ep *ep)
 
@@ -358,8 +358,8 @@ _usb_addr
 
 .. _`_hardware_enqueue`:
 
-_hardware_enqueue
-=================
+\_hardware_enqueue
+==================
 
 .. c:function:: int _hardware_enqueue(struct ci_hw_ep *hwep, struct ci_hw_req *hwreq)
 
@@ -380,8 +380,8 @@ This function returns an error code
 
 .. _`_hardware_dequeue`:
 
-_hardware_dequeue
-=================
+\_hardware_dequeue
+==================
 
 .. c:function:: int _hardware_dequeue(struct ci_hw_ep *hwep, struct ci_hw_req *hwreq)
 
@@ -402,8 +402,8 @@ This function returns an error code
 
 .. _`_ep_nuke`:
 
-_ep_nuke
-========
+\_ep_nuke
+=========
 
 .. c:function:: int _ep_nuke(struct ci_hw_ep *hwep)
 
@@ -422,8 +422,8 @@ Caller must hold lock
 
 .. _`_gadget_stop_activity`:
 
-_gadget_stop_activity
-=====================
+\_gadget_stop_activity
+======================
 
 .. c:function:: int _gadget_stop_activity(struct usb_gadget *gadget)
 
@@ -482,8 +482,8 @@ Caller must release lock
 
 .. _`_ep_queue`:
 
-_ep_queue
-=========
+\_ep_queue
+==========
 
 .. c:function:: int _ep_queue(struct usb_ep *ep, struct usb_request *req, gfp_t __maybe_unused gfp_flags)
 

@@ -204,7 +204,7 @@ Definition
 Members
 -------
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 queue
@@ -238,7 +238,7 @@ tx_min_size
 handle_tso
     *undescribed*
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 old_write_count
@@ -258,7 +258,7 @@ bytes_compl
 pkts_compl
     *undescribed*
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 write_count
@@ -286,7 +286,7 @@ cb_packets
 tx_packets
     *undescribed*
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 flush_outstanding
@@ -391,7 +391,7 @@ Members
 dma_addr
     The dma address of this page.
 
-__pad
+\__pad
     *undescribed*
 
 .. _`ef4_rx_page_state.description`:
@@ -1157,7 +1157,7 @@ node
     List node for maintaning primary/secondary function lists
 
 primary
-    &struct ef4_nic instance for the primary function of this
+    \ :c:type:`struct ef4_nic <ef4_nic>`\  instance for the primary function of this
     controller.  May be the same structure, and may be \ ``NULL``\  if no
     primary function is bound.  Serialised by rtnl_lock.
 
@@ -1477,7 +1477,7 @@ flush_wq
 vpd_sn
     Serial number read from VPD
 
-____cacheline_aligned_in_smp
+\____cacheline_aligned_in_smp
     *undescribed*
 
 biu_lock

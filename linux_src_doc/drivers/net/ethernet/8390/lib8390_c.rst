@@ -3,8 +3,8 @@
 
 .. _`__ei_open`:
 
-__ei_open
-=========
+\__ei_open
+==========
 
 .. c:function:: int __ei_open(struct net_device *dev)
 
@@ -24,8 +24,8 @@ need to be set once at boot.
 
 .. _`__ei_close`:
 
-__ei_close
-==========
+\__ei_close
+===========
 
 .. c:function:: int __ei_close(struct net_device *dev)
 
@@ -43,8 +43,8 @@ Opposite of \ :c:func:`ei_open`\ . Only used when "ifconfig <devname> down" is d
 
 .. _`__ei_tx_timeout`:
 
-__ei_tx_timeout
-===============
+\__ei_tx_timeout
+================
 
 .. c:function:: void __ei_tx_timeout(struct net_device *dev)
 
@@ -63,8 +63,8 @@ completed (or failed) - i.e. never posted a Tx related interrupt.
 
 .. _`__ei_start_xmit`:
 
-__ei_start_xmit
-===============
+\__ei_start_xmit
+================
 
 .. c:function:: netdev_tx_t __ei_start_xmit(struct sk_buff *skb, struct net_device *dev)
 
@@ -85,8 +85,8 @@ Sends a packet to an 8390 network device.
 
 .. _`__ei_interrupt`:
 
-__ei_interrupt
-==============
+\__ei_interrupt
+===============
 
 .. c:function:: irqreturn_t __ei_interrupt(int irq, void *dev_id)
 
@@ -242,8 +242,8 @@ this, as it is used by 8390 based modular drivers too.
 
 .. _`____alloc_ei_netdev`:
 
-____alloc_ei_netdev
-===================
+\____alloc_ei_netdev
+====================
 
 .. c:function:: struct net_device *____alloc_ei_netdev(int size)
 
@@ -261,8 +261,8 @@ Allocate 8390-specific net_device.
 
 .. _`__ns8390_init`:
 
-__NS8390_init
-=============
+\__NS8390_init
+==============
 
 .. c:function:: void __NS8390_init(struct net_device *dev, int startp)
 

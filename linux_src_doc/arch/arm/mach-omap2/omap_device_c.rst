@@ -3,8 +3,8 @@
 
 .. _`_add_hwmod_clocks_clkdev`:
 
-_add_hwmod_clocks_clkdev
-========================
+\_add_hwmod_clocks_clkdev
+=========================
 
 .. c:function:: void _add_hwmod_clocks_clkdev(struct omap_device *od, struct omap_hwmod *oh)
 
@@ -57,8 +57,8 @@ Returns 0 or \ :c:func:`PTR_ERR`\  on error.
 
 .. _`_omap_device_enable_hwmods`:
 
-_omap_device_enable_hwmods
-==========================
+\_omap_device_enable_hwmods
+===========================
 
 .. c:function:: int _omap_device_enable_hwmods(struct omap_device *od)
 
@@ -76,8 +76,8 @@ Enable all underlying hwmods.  Returns 0.
 
 .. _`_omap_device_idle_hwmods`:
 
-_omap_device_idle_hwmods
-========================
+\_omap_device_idle_hwmods
+=========================
 
 .. c:function:: int _omap_device_idle_hwmods(struct omap_device *od)
 

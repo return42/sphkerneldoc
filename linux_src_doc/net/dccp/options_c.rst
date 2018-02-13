@@ -44,7 +44,7 @@ dccp_insert_fn_opt
         *undescribed*
 
     :param u8 type:
-        %DCCPO_CHANGE_L, \ ``DCCPO_CHANGE_R``\ , \ ``DCCPO_CONFIRM_L``\ , \ ``DCCPO_CONFIRM_R``\ 
+        \ ``DCCPO_CHANGE_L``\ , \ ``DCCPO_CHANGE_R``\ , \ ``DCCPO_CONFIRM_L``\ , \ ``DCCPO_CONFIRM_R``\ 
 
     :param u8 feat:
         one out of \ ``dccp_feature_numbers``\ 

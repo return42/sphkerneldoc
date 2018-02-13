@@ -29,7 +29,7 @@ Definition
 Members
 -------
 
-_msg
+\_msg
     message string to report - don't access directly, use
     \ ``NL_SET_ERR_MSG``\ 
 

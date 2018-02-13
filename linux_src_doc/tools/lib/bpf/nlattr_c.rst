@@ -8,7 +8,7 @@ nla_parse
 
 .. c:function:: int nla_parse(struct nlattr  *tb, int maxtype, struct nlattr *head, int len, struct nla_policy *policy)
 
-    @arg tb              Index array to be filled (maxtype+1 elements). \ ``arg``\  maxtype         Maximum attribute type expected and accepted. \ ``arg``\  head            Head of attribute stream. \ ``arg``\  len             Length of attribute stream. \ ``arg``\  policy          Attribute validation policy.
+    \ ``arg``\  tb              Index array to be filled (maxtype+1 elements). \ ``arg``\  maxtype         Maximum attribute type expected and accepted. \ ``arg``\  head            Head of attribute stream. \ ``arg``\  len             Length of attribute stream. \ ``arg``\  policy          Attribute validation policy.
 
     :param struct nlattr  \*tb:
         *undescribed*

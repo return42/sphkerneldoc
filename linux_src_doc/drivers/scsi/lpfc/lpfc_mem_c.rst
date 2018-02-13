@@ -143,8 +143,8 @@ NULL on failure
 
 .. _`__lpfc_mbuf_free`:
 
-__lpfc_mbuf_free
-================
+\__lpfc_mbuf_free
+=================
 
 .. c:function:: void __lpfc_mbuf_free(struct lpfc_hba *phba, void *virt, dma_addr_t dma)
 

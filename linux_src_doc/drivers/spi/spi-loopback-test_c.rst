@@ -27,7 +27,7 @@ spi_test_execute_msg
 spi
 ---
 
-@spi_device on which to run the \ ``spi_message``\ 
+\ ``spi_device``\  on which to run the \ ``spi_message``\ 
 
 .. _`spi_test_execute_msg.test`:
 

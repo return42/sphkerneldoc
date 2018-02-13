@@ -231,7 +231,7 @@ drm_rect_visible
 Return
 ------
 
-%true if the rectangle is visible, \ ``false``\  otherwise.
+\ ``true``\  if the rectangle is visible, \ ``false``\  otherwise.
 
 .. _`drm_rect_equals`:
 
@@ -253,7 +253,7 @@ drm_rect_equals
 Return
 ------
 
-%true if the rectangles are equal, \ ``false``\  otherwise.
+\ ``true``\  if the rectangles are equal, \ ``false``\  otherwise.
 
 .. This file was automatic generated / don't edit.
 

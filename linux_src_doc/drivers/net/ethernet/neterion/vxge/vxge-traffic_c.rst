@@ -129,7 +129,7 @@ Titan initialization sequence.
 See also
 --------
 
-vxge_hw_device_intr_disable()
+\ :c:func:`vxge_hw_device_intr_disable`\ 
 
 .. _`vxge_hw_device_intr_disable`:
 
@@ -155,7 +155,7 @@ Disable Titan interrupts.
 See also
 --------
 
-vxge_hw_device_intr_enable()
+\ :c:func:`vxge_hw_device_intr_enable`\ 
 
 .. _`vxge_hw_device_mask_all`:
 
@@ -181,7 +181,7 @@ Mask all device interrupts.
 See also
 --------
 
-vxge_hw_device_unmask_all()
+\ :c:func:`vxge_hw_device_unmask_all`\ 
 
 .. _`vxge_hw_device_unmask_all`:
 
@@ -207,7 +207,7 @@ Unmask all device interrupts.
 See also
 --------
 
-vxge_hw_device_mask_all()
+\ :c:func:`vxge_hw_device_mask_all`\ 
 
 .. _`vxge_hw_device_flush_io`:
 
@@ -237,8 +237,8 @@ void
 
 .. _`__vxge_hw_device_handle_error`:
 
-__vxge_hw_device_handle_error
-=============================
+\__vxge_hw_device_handle_error
+==============================
 
 .. c:function:: enum vxge_hw_status __vxge_hw_device_handle_error(struct __vxge_hw_device *hldev, u32 vp_id, enum vxge_hw_event type)
 
@@ -292,7 +292,7 @@ interrupt was raised by the device. Next, it masks the device interrupts.
 Note
 ----
 
-vxge_hw_device_begin_irq() does not flush MMIO writes through the
+\ :c:func:`vxge_hw_device_begin_irq`\  does not flush MMIO writes through the
 bridge. Therefore, two back-to-back interrupts are potentially possible.
 
 .. _`vxge_hw_device_begin_irq.return`:
@@ -330,7 +330,7 @@ the Tx and Rx interrupt.
 See also
 --------
 
-vxge_hw_device_begin_irq(),
+\ :c:func:`vxge_hw_device_begin_irq`\ ,
 \ :c:func:`vxge_hw_device_mask_tx_rx`\ , \ :c:func:`vxge_hw_device_unmask_tx_rx`\ .
 
 .. _`vxge_hw_ring_rxd_reserve`:
@@ -592,8 +592,8 @@ VXGE_HW_ERR_CRITICAL         - when encounters critical error.
 
 .. _`__vxge_hw_non_offload_db_post`:
 
-__vxge_hw_non_offload_db_post
-=============================
+\__vxge_hw_non_offload_db_post
+==============================
 
 .. c:function:: void __vxge_hw_non_offload_db_post(struct __vxge_hw_fifo *fifo, u64 txdl_ptr, u32 num_txds, u32 no_snoop)
 
@@ -1083,7 +1083,7 @@ Enable promiscuous mode of Titan-e operation.
 See also
 --------
 
-vxge_hw_vpath_promisc_disable().
+\ :c:func:`vxge_hw_vpath_promisc_disable`\ .
 
 .. _`vxge_hw_vpath_promisc_disable`:
 
@@ -1109,7 +1109,7 @@ Disable promiscuous mode of Titan-e operation.
 See also
 --------
 
-vxge_hw_vpath_promisc_enable().
+\ :c:func:`vxge_hw_vpath_promisc_enable`\ .
 
 .. _`vxge_hw_vpath_mcast_enable`:
 
@@ -1309,7 +1309,7 @@ Mask Tx and Rx vpath interrupts.
 See also
 --------
 
-vxge_hw_vpath_inta_mask_tx_rx()
+\ :c:func:`vxge_hw_vpath_inta_mask_tx_rx`\ 
 
 .. _`vxge_hw_vpath_inta_unmask_tx_rx`:
 
@@ -1335,7 +1335,7 @@ Unmask Tx and Rx vpath interrupts.
 See also
 --------
 
-vxge_hw_vpath_inta_mask_tx_rx()
+\ :c:func:`vxge_hw_vpath_inta_mask_tx_rx`\ 
 
 .. _`vxge_hw_vpath_poll_rx`:
 
@@ -1377,7 +1377,7 @@ descriptors available which are yet to be processed.
 See also
 --------
 
-vxge_hw_vpath_poll_rx()
+\ :c:func:`vxge_hw_vpath_poll_rx`\ 
 
 .. _`vxge_hw_vpath_poll_tx`:
 

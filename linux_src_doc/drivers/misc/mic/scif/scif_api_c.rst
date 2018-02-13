@@ -3,8 +3,8 @@
 
 .. _`__scif_flush`:
 
-__scif_flush
-============
+\__scif_flush
+=============
 
 .. c:function:: int __scif_flush(scif_epd_t epd)
 

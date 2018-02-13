@@ -75,8 +75,8 @@ Returns 0 on success, or a kernel error code on failure.
 
 .. _`__efivar_entry_delete`:
 
-__efivar_entry_delete
-=====================
+\__efivar_entry_delete
+======================
 
 .. c:function:: int __efivar_entry_delete(struct efivar_entry *entry)
 
@@ -260,8 +260,8 @@ efivar_entry_size
 
 .. _`__efivar_entry_get`:
 
-__efivar_entry_get
-==================
+\__efivar_entry_get
+===================
 
 .. c:function:: int __efivar_entry_get(struct efivar_entry *entry, u32 *attributes, unsigned long *size, void *data)
 
@@ -394,8 +394,8 @@ Unlock the variable list and allow modifications to the list again.
 
 .. _`__efivar_entry_iter`:
 
-__efivar_entry_iter
-===================
+\__efivar_entry_iter
+====================
 
 .. c:function:: int __efivar_entry_iter(int (*func)(struct efivar_entry *, void *), struct list_head *head, void *data, struct efivar_entry **prev)
 
@@ -516,7 +516,7 @@ efivars_register
         efivars operations
 
     :param struct kobject \*kobject:
-        @efivars-specific kobject
+        \ ``efivars``\ -specific kobject
 
 .. _`efivars_register.description`:
 

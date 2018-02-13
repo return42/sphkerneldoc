@@ -123,8 +123,8 @@ lcs_stop_channels
 
 .. _`__lcs_get_buffer`:
 
-__lcs_get_buffer
-================
+\__lcs_get_buffer
+=================
 
 .. c:function:: struct lcs_buffer *__lcs_get_buffer(struct lcs_channel *channel)
 
@@ -133,8 +133,8 @@ __lcs_get_buffer
 
 .. _`__lcs_resume_channel`:
 
-__lcs_resume_channel
-====================
+\__lcs_resume_channel
+=====================
 
 .. c:function:: int __lcs_resume_channel(struct lcs_channel *channel)
 
@@ -143,8 +143,8 @@ __lcs_resume_channel
 
 .. _`__lcs_ready_buffer_bits`:
 
-__lcs_ready_buffer_bits
-=======================
+\__lcs_ready_buffer_bits
+========================
 
 .. c:function:: void __lcs_ready_buffer_bits(struct lcs_channel *channel, int index)
 
@@ -156,8 +156,8 @@ __lcs_ready_buffer_bits
 
 .. _`__lcs_processed_buffer`:
 
-__lcs_processed_buffer
-======================
+\__lcs_processed_buffer
+=======================
 
 .. c:function:: int __lcs_processed_buffer(struct lcs_channel *channel, struct lcs_buffer *buffer)
 
@@ -243,8 +243,8 @@ lcs_send_shutdown
 
 .. _`__lcs_lanstat_cb`:
 
-__lcs_lanstat_cb
-================
+\__lcs_lanstat_cb
+=================
 
 .. c:function:: void __lcs_lanstat_cb(struct lcs_card *card, struct lcs_cmd *cmd)
 
@@ -269,8 +269,8 @@ lcs_send_stoplan
 
 .. _`__lcs_send_startlan_cb`:
 
-__lcs_send_startlan_cb
-======================
+\__lcs_send_startlan_cb
+=======================
 
 .. c:function:: void __lcs_send_startlan_cb(struct lcs_card *card, struct lcs_cmd *cmd)
 
@@ -308,8 +308,8 @@ lcs_send_delipm
 
 .. _`__lcs_check_multicast_cb`:
 
-__lcs_check_multicast_cb
-========================
+\__lcs_check_multicast_cb
+=========================
 
 .. c:function:: void __lcs_check_multicast_cb(struct lcs_card *card, struct lcs_cmd *cmd)
 
@@ -398,8 +398,8 @@ lcs_tasklet
 
 .. _`__lcs_emit_txbuffer`:
 
-__lcs_emit_txbuffer
-===================
+\__lcs_emit_txbuffer
+====================
 
 .. c:function:: void __lcs_emit_txbuffer(struct lcs_card *card)
 
@@ -421,8 +421,8 @@ lcs_txbuffer_cb
 
 .. _`__lcs_start_xmit`:
 
-__lcs_start_xmit
-================
+\__lcs_start_xmit
+=================
 
 .. c:function:: int __lcs_start_xmit(struct lcs_card *card, struct sk_buff *skb, struct net_device *dev)
 
@@ -600,8 +600,8 @@ lcs_probe_device
 
 .. _`__lcs_shutdown_device`:
 
-__lcs_shutdown_device
-=====================
+\__lcs_shutdown_device
+======================
 
 .. c:function:: int __lcs_shutdown_device(struct ccwgroup_device *ccwgdev, int recovery_mode)
 

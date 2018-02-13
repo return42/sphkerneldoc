@@ -60,7 +60,7 @@ page_cache_sync_readahead
 Description
 -----------
 
-page_cache_sync_readahead() should be called when a cache miss happened:
+\ :c:func:`page_cache_sync_readahead`\  should be called when a cache miss happened:
 it will submit the read.  The readahead logic may decide to piggyback more
 pages onto the read request if access patterns suggest it will improve
 performance.
@@ -98,7 +98,7 @@ page_cache_async_readahead
 Description
 -----------
 
-page_cache_async_readahead() should be called when a page is used which
+\ :c:func:`page_cache_async_readahead`\  should be called when a page is used which
 has the PG_readahead flag; this is a marker to suggest that the application
 has used up enough of the readahead window that we should start pulling in
 more pages.

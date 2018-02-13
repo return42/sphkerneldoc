@@ -60,7 +60,7 @@ of_nvmem_device_get
 Return
 ------
 
-ERR_PTR() on error or a valid pointer to a struct nvmem_device
+\ :c:func:`ERR_PTR`\  on error or a valid pointer to a struct nvmem_device
 on success.
 
 .. _`nvmem_device_get`:
@@ -83,7 +83,7 @@ nvmem_device_get
 Return
 ------
 
-ERR_PTR() on error or a valid pointer to a struct nvmem_device
+\ :c:func:`ERR_PTR`\  on error or a valid pointer to a struct nvmem_device
 on success.
 
 .. _`devm_nvmem_device_put`:
@@ -134,7 +134,7 @@ devm_nvmem_device_get
 Return
 ------
 
-ERR_PTR() on error or a valid pointer to a struct nvmem_cell
+\ :c:func:`ERR_PTR`\  on error or a valid pointer to a struct nvmem_cell
 on success.  The nvmem_cell will be freed by the automatically once the
 device is freed.
 
@@ -260,7 +260,7 @@ nvmem_cell_read
 Return
 ------
 
-ERR_PTR() on error or a valid pointer to a buffer on success. The
+\ :c:func:`ERR_PTR`\  on error or a valid pointer to a buffer on success. The
 buffer should be freed by the consumer with a \ :c:func:`kfree`\ .
 
 .. _`nvmem_cell_write`:

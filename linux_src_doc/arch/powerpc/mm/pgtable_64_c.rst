@@ -3,8 +3,8 @@
 
 .. _`__ioremap_at`:
 
-__ioremap_at
-============
+\__ioremap_at
+=============
 
 .. c:function:: void __iomem *__ioremap_at(phys_addr_t pa, void *ea, unsigned long size, unsigned long flags)
 
@@ -24,8 +24,8 @@ __ioremap_at
 
 .. _`__iounmap_at`:
 
-__iounmap_at
-============
+\__iounmap_at
+=============
 
 .. c:function:: void __iounmap_at(void *ea, unsigned long size)
 

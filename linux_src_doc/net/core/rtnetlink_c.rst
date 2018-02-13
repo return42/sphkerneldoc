@@ -116,8 +116,8 @@ of a certain protocol family.
 
 .. _`__rtnl_link_register`:
 
-__rtnl_link_register
-====================
+\__rtnl_link_register
+=====================
 
 .. c:function:: int __rtnl_link_register(struct rtnl_link_ops *ops)
 
@@ -158,8 +158,8 @@ Returns 0 on success or a negative error code.
 
 .. _`__rtnl_link_unregister`:
 
-__rtnl_link_unregister
-======================
+\__rtnl_link_unregister
+=======================
 
 .. c:function:: void __rtnl_link_unregister(struct rtnl_link_ops *ops)
 

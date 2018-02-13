@@ -68,8 +68,8 @@ ioat_check_space_lock
 
 .. _`__cleanup`:
 
-__cleanup
-=========
+\__cleanup
+==========
 
 .. c:function:: void __cleanup(struct ioatdma_chan *ioat_chan, dma_addr_t phys_complete)
 

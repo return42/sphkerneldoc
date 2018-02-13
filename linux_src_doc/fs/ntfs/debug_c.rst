@@ -3,8 +3,8 @@
 
 .. _`__ntfs_warning`:
 
-__ntfs_warning
-==============
+\__ntfs_warning
+===============
 
 .. c:function:: void __ntfs_warning(const char *function, const struct super_block *sb, const char *fmt,  ...)
 
@@ -41,8 +41,8 @@ as this provides the \ ``function``\  parameter automatically.
 
 .. _`__ntfs_error`:
 
-__ntfs_error
-============
+\__ntfs_error
+=============
 
 .. c:function:: void __ntfs_error(const char *function, const struct super_block *sb, const char *fmt,  ...)
 

@@ -52,7 +52,7 @@ mc_polling_wait_preemptible
 
 .. c:function:: int mc_polling_wait_preemptible(struct fsl_mc_io *mc_io, struct mc_command *cmd, enum mc_cmd_status *mc_status)
 
-    uslepp_range() is called between polling iterations.
+    \ :c:func:`uslepp_range`\  is called between polling iterations.
 
     :param struct fsl_mc_io \*mc_io:
         MC I/O object to be used
@@ -70,7 +70,7 @@ mc_polling_wait_atomic
 
 .. c:function:: int mc_polling_wait_atomic(struct fsl_mc_io *mc_io, struct mc_command *cmd, enum mc_cmd_status *mc_status)
 
-    udelay() is called between polling iterations.
+    \ :c:func:`udelay`\  is called between polling iterations.
 
     :param struct fsl_mc_io \*mc_io:
         MC I/O object to be used

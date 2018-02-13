@@ -146,7 +146,7 @@ nr_free_zone_pages
 Description
 -----------
 
-nr_free_zone_pages() counts the number of counts pages which are beyond the
+\ :c:func:`nr_free_zone_pages`\  counts the number of counts pages which are beyond the
 high watermark within all zones at or below a given zone index.  For each
 zone, the number of pages is calculated as:
 
@@ -169,7 +169,7 @@ nr_free_buffer_pages
 Description
 -----------
 
-nr_free_buffer_pages() counts the number of pages which are beyond the high
+\ :c:func:`nr_free_buffer_pages`\  counts the number of pages which are beyond the high
 watermark within ZONE_DMA and ZONE_NORMAL.
 
 .. _`nr_free_pagecache_pages`:
@@ -189,7 +189,7 @@ nr_free_pagecache_pages
 Description
 -----------
 
-nr_free_pagecache_pages() counts the number of pages which are beyond the
+\ :c:func:`nr_free_pagecache_pages`\  counts the number of pages which are beyond the
 high watermark within all zones.
 
 .. _`find_next_best_node`:

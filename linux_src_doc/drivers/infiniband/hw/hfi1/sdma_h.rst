@@ -80,7 +80,7 @@ handled.
 Infrastructure calls
 ====================
 
-sdma_init() is used to initialize data structures and
+\ :c:func:`sdma_init`\  is used to initialize data structures and
 CSRs for the desired number of SDMA engines.
 
 \ :c:func:`sdma_start`\  is used to kick the SDMA engines initialized

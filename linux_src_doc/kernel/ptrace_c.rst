@@ -3,8 +3,8 @@
 
 .. _`__ptrace_unlink`:
 
-__ptrace_unlink
-===============
+\__ptrace_unlink
+================
 
 .. c:function:: void __ptrace_unlink(struct task_struct *child)
 

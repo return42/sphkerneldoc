@@ -8,7 +8,7 @@ VFIO_GET_API_VERSION
 
 .. c:function::  VFIO_GET_API_VERSION()
 
-    _IO(VFIO_TYPE, VFIO_BASE + 0)
+    \_IO(VFIO_TYPE, VFIO_BASE + 0)
 
 .. _`vfio_get_api_version.description`:
 
@@ -40,7 +40,7 @@ VFIO_CHECK_EXTENSION
 
 .. c:function::  VFIO_CHECK_EXTENSION()
 
-    _IOW(VFIO_TYPE, VFIO_BASE + 1, \__u32)
+    \_IOW(VFIO_TYPE, VFIO_BASE + 1, \__u32)
 
 .. _`vfio_check_extension.description`:
 
@@ -70,7 +70,7 @@ VFIO_SET_IOMMU
 
 .. c:function::  VFIO_SET_IOMMU()
 
-    _IOW(VFIO_TYPE, VFIO_BASE + 2, \__s32)
+    \_IOW(VFIO_TYPE, VFIO_BASE + 2, \__s32)
 
 .. _`vfio_set_iommu.description`:
 
@@ -104,7 +104,7 @@ VFIO_GROUP_SET_CONTAINER
 
 .. c:function::  VFIO_GROUP_SET_CONTAINER()
 
-    _IOW(VFIO_TYPE, VFIO_BASE + 4, \__s32)
+    \_IOW(VFIO_TYPE, VFIO_BASE + 4, \__s32)
 
 .. _`vfio_group_set_container.description`:
 
@@ -139,7 +139,7 @@ VFIO_GROUP_UNSET_CONTAINER
 
 .. c:function::  VFIO_GROUP_UNSET_CONTAINER()
 
-    _IO(VFIO_TYPE, VFIO_BASE + 5)
+    \_IO(VFIO_TYPE, VFIO_BASE + 5)
 
 .. _`vfio_group_unset_container.description`:
 
@@ -175,7 +175,7 @@ VFIO_GROUP_GET_DEVICE_FD
 
 .. c:function::  VFIO_GROUP_GET_DEVICE_FD()
 
-    _IOW(VFIO_TYPE, VFIO_BASE + 6, char)
+    \_IOW(VFIO_TYPE, VFIO_BASE + 6, char)
 
 .. _`vfio_group_get_device_fd.description`:
 
@@ -208,7 +208,7 @@ VFIO_DEVICE_RESET
 
 .. c:function::  VFIO_DEVICE_RESET()
 
-    _IO(VFIO_TYPE, VFIO_BASE + 11)
+    \_IO(VFIO_TYPE, VFIO_BASE + 11)
 
 .. _`vfio_device_reset.description`:
 
@@ -224,7 +224,7 @@ VFIO_DEVICE_GET_GFX_DMABUF
 
 .. c:function::  VFIO_DEVICE_GET_GFX_DMABUF()
 
-    _IOW(VFIO_TYPE, VFIO_BASE + 15, \__u32)
+    \_IOW(VFIO_TYPE, VFIO_BASE + 15, \__u32)
 
 .. _`vfio_device_get_gfx_dmabuf.description`:
 
@@ -232,7 +232,7 @@ Description
 -----------
 
 Return a new dma-buf file descriptor for an exposed guest framebuffer
-described by the provided dmabuf_id. The dmabuf_id is returned from VFIO\_
+described by the provided dmabuf_id. The dmabuf_id is returned from VFIO_
 DEVICE_QUERY_GFX_PLANE as a token of the exposed guest framebuffer.
 
 .. _`vfio_iommu_spapr_unregister_memory`:
@@ -242,7 +242,7 @@ VFIO_IOMMU_SPAPR_UNREGISTER_MEMORY
 
 .. c:function::  VFIO_IOMMU_SPAPR_UNREGISTER_MEMORY()
 
-    _IOW(VFIO_TYPE, VFIO_BASE + 18, struct vfio_iommu_spapr_register_memory)
+    \_IOW(VFIO_TYPE, VFIO_BASE + 18, struct vfio_iommu_spapr_register_memory)
 
 .. _`vfio_iommu_spapr_unregister_memory.description`:
 

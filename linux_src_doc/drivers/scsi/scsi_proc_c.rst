@@ -69,7 +69,7 @@ proc_print_scsidevice
         A scsi device
 
     :param void \*data:
-        &struct seq_file to output to.
+        \ :c:type:`struct seq_file <seq_file>`\  to output to.
 
 .. _`proc_print_scsidevice.description`:
 

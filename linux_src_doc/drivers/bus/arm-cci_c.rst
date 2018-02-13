@@ -3,8 +3,8 @@
 
 .. _`__cci_ace_get_port`:
 
-__cci_ace_get_port
-==================
+\__cci_ace_get_port
+===================
 
 .. c:function:: int __cci_ace_get_port(struct device_node *dn, int type)
 
@@ -103,8 +103,8 @@ fatal and there is no possible recovery at this stage.
 
 .. _`__cci_control_port_by_device`:
 
-__cci_control_port_by_device
-============================
+\__cci_control_port_by_device
+=============================
 
 .. c:function:: int notrace __cci_control_port_by_device(struct device_node *dn, bool enable)
 
@@ -127,8 +127,8 @@ Return
 
 .. _`__cci_control_port_by_index`:
 
-__cci_control_port_by_index
-===========================
+\__cci_control_port_by_index
+============================
 
 .. c:function:: int notrace __cci_control_port_by_index(u32 port, bool enable)
 

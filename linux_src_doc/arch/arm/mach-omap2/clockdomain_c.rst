@@ -3,8 +3,8 @@
 
 .. _`_clkdm_register`:
 
-_clkdm_register
-===============
+\_clkdm_register
+================
 
 .. c:function:: int _clkdm_register(struct clockdomain *clkdm)
 
@@ -24,8 +24,8 @@ already registered by the provided name, or 0 upon success.
 
 .. _`_autodep_lookup`:
 
-_autodep_lookup
-===============
+\_autodep_lookup
+================
 
 .. c:function:: void _autodep_lookup(struct clkdm_autodep *autodep)
 
@@ -53,8 +53,8 @@ opportunity
 
 .. _`_resolve_clkdm_deps`:
 
-_resolve_clkdm_deps
-===================
+\_resolve_clkdm_deps
+====================
 
 .. c:function:: void _resolve_clkdm_deps(struct clockdomain *clkdm, struct clkdm_dep *clkdm_deps)
 
@@ -77,8 +77,8 @@ No return value.
 
 .. _`_clkdm_add_wkdep`:
 
-_clkdm_add_wkdep
-================
+\_clkdm_add_wkdep
+=================
 
 .. c:function:: int _clkdm_add_wkdep(struct clockdomain *clkdm1, struct clockdomain *clkdm2)
 
@@ -104,8 +104,8 @@ success.
 
 .. _`_clkdm_del_wkdep`:
 
-_clkdm_del_wkdep
-================
+\_clkdm_del_wkdep
+=================
 
 .. c:function:: int _clkdm_del_wkdep(struct clockdomain *clkdm1, struct clockdomain *clkdm2)
 
@@ -129,8 +129,8 @@ pointers, -ENOENT if \ ``clkdm2``\  cannot wake up clkdm1 in hardware, or
 
 .. _`_clkdm_add_sleepdep`:
 
-_clkdm_add_sleepdep
-===================
+\_clkdm_add_sleepdep
+====================
 
 .. c:function:: int _clkdm_add_sleepdep(struct clockdomain *clkdm1, struct clockdomain *clkdm2)
 
@@ -156,8 +156,8 @@ hardware, or 0 upon success.
 
 .. _`_clkdm_del_sleepdep`:
 
-_clkdm_del_sleepdep
-===================
+\_clkdm_del_sleepdep
+====================
 
 .. c:function:: int _clkdm_del_sleepdep(struct clockdomain *clkdm1, struct clockdomain *clkdm2)
 

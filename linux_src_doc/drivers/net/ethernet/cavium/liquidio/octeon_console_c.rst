@@ -3,8 +3,8 @@
 
 .. _`__cvmx_bootmem_desc_get`:
 
-__cvmx_bootmem_desc_get
-=======================
+\__cvmx_bootmem_desc_get
+========================
 
 .. c:function:: u64 __cvmx_bootmem_desc_get(struct octeon_device *oct, u64 base, u32 offset, u32 size)
 
@@ -27,7 +27,7 @@ __cvmx_bootmem_desc_get
 Description
 -----------
 
-@param oct    Pointer to current octeon device
+\ ``param``\  oct    Pointer to current octeon device
 \ ``param``\  base   64bit physical address of the complete structure
 \ ``param``\  offset Offset from the beginning of the structure to the member being
 accessed.
@@ -61,15 +61,15 @@ CVMX_BOOTMEM_NAMED_GET_NAME
 Description
 -----------
 
-@param addr   Physical address of the named block descriptor
+\ ``param``\  addr   Physical address of the named block descriptor
 \ ``param``\  str    String to receive the named block string name
 \ ``param``\  len    Length of the string buffer, which must match the length
 stored in the bootmem descriptor.
 
 .. _`__cvmx_bootmem_check_version`:
 
-__cvmx_bootmem_check_version
-============================
+\__cvmx_bootmem_check_version
+=============================
 
 .. c:function:: int __cvmx_bootmem_check_version(struct octeon_device *oct, u32 exact_match)
 
@@ -84,7 +84,7 @@ __cvmx_bootmem_check_version
 Description
 -----------
 
-@param exact_match
+\ ``param``\  exact_match
 Exact major version to check against. A zero means
 check that the version supports named blocks.
 
@@ -115,7 +115,7 @@ octeon_named_block_find
 Description
 -----------
 
-@param name      Name of block to find
+\ ``param``\  name      Name of block to find
 \ ``param``\  base_addr Address the block is at (OUTPUT)
 \ ``param``\  size      The size of the block (OUTPUT)
 
@@ -136,7 +136,7 @@ octeon_remove_consoles
 Description
 -----------
 
-@param oct         octeon device
+\ ``param``\  oct         octeon device
 
 .. This file was automatic generated / don't edit.
 

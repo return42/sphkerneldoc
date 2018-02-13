@@ -3,8 +3,8 @@
 
 .. _`__ioread64_copy`:
 
-__ioread64_copy
-===============
+\__ioread64_copy
+================
 
 .. c:function:: void __ioread64_copy(void *to, const void __iomem *from, size_t count)
 

@@ -91,7 +91,7 @@ Caller holds the transport's write lock.
 Return
 ------
 
-%0 if the RPC message has been sent
+\ ``0``\  if the RPC message has been sent
 \ ``-ENOTCONN``\  if the caller should reconnect and call again
 \ ``-EIO``\  if a permanent error occurred and the request was not
 sent. Do not try to send this message again.

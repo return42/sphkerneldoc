@@ -3,8 +3,8 @@
 
 .. _`_wait_idlest_generic`:
 
-_wait_idlest_generic
-====================
+\_wait_idlest_generic
+=====================
 
 .. c:function:: int _wait_idlest_generic(struct clk_hw_omap *clk, struct clk_omap_reg *reg, u32 mask, u8 idlest, const char *name)
 
@@ -38,8 +38,8 @@ individual IP block that the IDLEST register exists in.
 
 .. _`_omap2_module_wait_ready`:
 
-_omap2_module_wait_ready
-========================
+\_omap2_module_wait_ready
+=========================
 
 .. c:function:: void _omap2_module_wait_ready(struct clk_hw_omap *clk)
 

@@ -409,7 +409,7 @@ drm_mode_hsync
 Return
 ------
 
-@modes's hsync rate in kHz, rounded to the nearest integer. Calculates the
+\ ``modes``\ 's hsync rate in kHz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
 
 .. _`drm_mode_vrefresh`:
@@ -429,7 +429,7 @@ drm_mode_vrefresh
 Return
 ------
 
-@modes's vrefresh rate in Hz, rounded to the nearest integer. Calculates the
+\ ``modes``\ 's vrefresh rate in Hz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
 
 .. _`drm_mode_get_hv_timing`:

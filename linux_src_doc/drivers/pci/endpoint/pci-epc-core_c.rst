@@ -406,8 +406,8 @@ pci_epc and destroy the EPC device.
 
 .. _`__pci_epc_create`:
 
-__pci_epc_create
-================
+\__pci_epc_create
+=================
 
 .. c:function:: struct pci_epc *__pci_epc_create(struct device *dev, const struct pci_epc_ops *ops, struct module *owner)
 
@@ -431,8 +431,8 @@ Invoke to create a new EPC device and add it to pci_epc class.
 
 .. _`__devm_pci_epc_create`:
 
-__devm_pci_epc_create
-=====================
+\__devm_pci_epc_create
+======================
 
 .. c:function:: struct pci_epc *__devm_pci_epc_create(struct device *dev, const struct pci_epc_ops *ops, struct module *owner)
 

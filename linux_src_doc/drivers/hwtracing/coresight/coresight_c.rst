@@ -50,7 +50,7 @@ coresight_disable_source
 Description
 -----------
 
-@csdev - The coresight device to disable
+\ ``csdev``\  - The coresight device to disable
 
 Returns true if the device has been disabled.
 
@@ -81,8 +81,8 @@ clear the flag.
 
 .. _`_coresight_build_path`:
 
-_coresight_build_path
-=====================
+\_coresight_build_path
+======================
 
 .. c:function:: int _coresight_build_path(struct coresight_device *csdev, struct coresight_device *sink, struct list_head *path)
 

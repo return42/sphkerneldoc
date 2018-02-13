@@ -174,8 +174,8 @@ fetched.
 
 The FIFO level vs. time graph might look something like:
 
-\|\__\_       \|\__\_
-\|    \__\_   \|    \__\_
+\|\__\_       \|\___
+\|    \__\_   \|    \___
 \|        \  \|        \
 _\_ --__--__--__--__--__--_\_ (- plane active, _ blanking)
 -> time

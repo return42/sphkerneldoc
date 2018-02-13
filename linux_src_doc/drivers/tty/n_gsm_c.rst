@@ -343,8 +343,8 @@ lock against link layer control transmissions
 
 .. _`__gsm_data_queue`:
 
-__gsm_data_queue
-================
+\__gsm_data_queue
+=================
 
 .. c:function:: void __gsm_data_queue(struct gsm_dlci *dlci, struct gsm_msg *msg)
 

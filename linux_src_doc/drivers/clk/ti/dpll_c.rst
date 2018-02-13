@@ -3,8 +3,8 @@
 
 .. _`_register_dpll`:
 
-_register_dpll
-==============
+\_register_dpll
+===============
 
 .. c:function:: void _register_dpll(void *user, struct device_node *node)
 
@@ -27,8 +27,8 @@ the initialization is retried on later stage.
 
 .. _`_register_dpll_x2`:
 
-_register_dpll_x2
-=================
+\_register_dpll_x2
+==================
 
 .. c:function:: void _register_dpll_x2(struct device_node *node, const struct clk_ops *ops, const struct clk_hw_omap_ops *hw_ops)
 

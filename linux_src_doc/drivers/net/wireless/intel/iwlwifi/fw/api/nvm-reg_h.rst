@@ -28,7 +28,7 @@ Constants
 ---------
 
 NVM_ACCESS_COMPLETE
-    &struct iwl_nvm_access_complete_cmd
+    \ :c:type:`struct iwl_nvm_access_complete_cmd <iwl_nvm_access_complete_cmd>`\ 
 
 NVM_GET_INFO
     Command is \ :c:type:`struct iwl_nvm_get_info <iwl_nvm_get_info>`\ ,
@@ -189,13 +189,13 @@ Members
 -------
 
 op_code
-    &enum iwl_nvm_access_op
+    \ :c:type:`enum iwl_nvm_access_op <iwl_nvm_access_op>`\ 
 
 target
-    &enum iwl_nvm_access_target
+    \ :c:type:`enum iwl_nvm_access_target <iwl_nvm_access_target>`\ 
 
 type
-    &enum iwl_nvm_section_type
+    \ :c:type:`enum iwl_nvm_section_type <iwl_nvm_section_type>`\ 
 
 offset
     offset in bytes into the section

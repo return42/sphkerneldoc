@@ -249,8 +249,8 @@ cpuidle_resume_and_unlock when used externally.
 
 .. _`__cpuidle_register_device`:
 
-__cpuidle_register_device
-=========================
+\__cpuidle_register_device
+==========================
 
 .. c:function:: int __cpuidle_register_device(struct cpuidle_device *dev)
 

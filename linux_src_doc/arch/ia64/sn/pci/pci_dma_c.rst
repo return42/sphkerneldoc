@@ -78,7 +78,7 @@ sn_dma_alloc_coherent
 Description
 -----------
 
-dma_alloc_coherent() returns a pointer to a memory region suitable for
+\ :c:func:`dma_alloc_coherent`\  returns a pointer to a memory region suitable for
 coherent DMA traffic to/from a PCI device.  On SN platforms, this means
 that \ ``dma_handle``\  will have the \ ``PCIIO_DMA_CMD``\  flag set.
 

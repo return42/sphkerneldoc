@@ -224,7 +224,7 @@ RESET_TYPE_MAX
 Description
 -----------
 
-%RESET_TYPE_INVSIBLE, \ ``RESET_TYPE_ALL``\ , \ ``RESET_TYPE_WORLD``\  and
+\ ``RESET_TYPE_INVSIBLE``\ , \ ``RESET_TYPE_ALL``\ , \ ``RESET_TYPE_WORLD``\  and
 \ ``RESET_TYPE_DISABLE``\  specify the method/scope of the reset.  The
 other valuesspecify reasons, which \ :c:func:`ef4_schedule_reset`\  will choose
 a method for.

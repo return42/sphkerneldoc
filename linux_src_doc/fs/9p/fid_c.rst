@@ -3,8 +3,8 @@
 
 .. _`__add_fid`:
 
-__add_fid
-=========
+\__add_fid
+==========
 
 .. c:function:: void __add_fid(struct dentry *dentry, struct p9_fid *fid)
 

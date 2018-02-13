@@ -3,8 +3,8 @@
 
 .. _`__read_seqcount_begin`:
 
-__read_seqcount_begin
-=====================
+\__read_seqcount_begin
+======================
 
 .. c:function:: unsigned __read_seqcount_begin(const seqcount_t *s)
 
@@ -127,8 +127,8 @@ critical section.
 
 .. _`__read_seqcount_retry`:
 
-__read_seqcount_retry
-=====================
+\__read_seqcount_retry
+======================
 
 .. c:function:: int __read_seqcount_retry(const seqcount_t *s, unsigned start)
 

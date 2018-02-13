@@ -22,7 +22,7 @@ report_error
 Description
 -----------
 
-@param name          Node name to report error on
+\ ``param``\  name          Node name to report error on
 \ ``param``\  namelen       Length of node name, or -1 to use entire string
 \ ``param``\  err           Error number to report (-FDT_ERR_...)
 
@@ -53,7 +53,7 @@ encode_value
 Description
 -----------
 
-@param disp          Display information / options
+\ ``param``\  disp          Display information / options
 \ ``param``\  arg           List of arguments from command line
 \ ``param``\  arg_count     Number of arguments (may be 0)
 \ ``param``\  valuep        Returns buffer containing value

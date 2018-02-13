@@ -8,7 +8,7 @@ struct drv260x_data
 
 .. c:type:: struct drv260x_data
 
-    @input_dev - Pointer to the input device \ ``client``\  - Pointer to the I2C client \ ``regmap``\  - Register map of the device \ ``work``\  - Work item used to off load the enable/disable of the vibration \ ``enable_gpio``\  - Pointer to the gpio used for enable/disabling \ ``regulator``\  - Pointer to the regulator for the IC \ ``magnitude``\  - Magnitude of the vibration event \ ``mode``\  - The operating mode of the IC (LRA_NO_CAL, ERM or LRA) \ ``library``\  - The vibration library to be used \ ``rated_voltage``\  - The rated_voltage of the actuator \ ``overdriver_voltage``\  - The over drive voltage of the actuator
+    \ ``input_dev``\  - Pointer to the input device \ ``client``\  - Pointer to the I2C client \ ``regmap``\  - Register map of the device \ ``work``\  - Work item used to off load the enable/disable of the vibration \ ``enable_gpio``\  - Pointer to the gpio used for enable/disabling \ ``regulator``\  - Pointer to the regulator for the IC \ ``magnitude``\  - Magnitude of the vibration event \ ``mode``\  - The operating mode of the IC (LRA_NO_CAL, ERM or LRA) \ ``library``\  - The vibration library to be used \ ``rated_voltage``\  - The rated_voltage of the actuator \ ``overdriver_voltage``\  - The over drive voltage of the actuator
 
 .. _`drv260x_data.definition`:
 

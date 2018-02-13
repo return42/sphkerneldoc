@@ -27,7 +27,7 @@ cros_ec_lpc_io_bytes_mec
 Description
 -----------
 
-@return 8-bit checksum of all bytes read / written
+\ ``return``\  8-bit checksum of all bytes read / written
 
 .. This file was automatic generated / don't edit.
 

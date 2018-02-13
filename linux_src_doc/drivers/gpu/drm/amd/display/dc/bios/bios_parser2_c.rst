@@ -24,7 +24,7 @@ bios_parser_get_gpio_pin_info
 Description
 -----------
 
-@param gpio_id, GPIO ID
+\ ``param``\  gpio_id, GPIO ID
 \ ``param``\  info, GpioPin information structure
 \ ``return``\  Bios parser result code
 \ ``note``\ 
@@ -72,7 +72,7 @@ bios_parser_set_scratch_critical_state
 Description
 -----------
 
-@brief
+\ ``brief``\ 
 update critical state bit in VBIOS scratch register
 
 \ ``param``\ 

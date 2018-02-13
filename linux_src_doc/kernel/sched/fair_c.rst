@@ -247,7 +247,7 @@ busiest group.
 Return
 ------
 
-%true if \ ``sg``\  is a busier group than the previously selected
+\ ``true``\  if \ ``sg``\  is a busier group than the previously selected
 busiest group. \ ``false``\  otherwise.
 
 .. _`update_sd_lb_stats`:

@@ -3,8 +3,8 @@
 
 .. _`ioremap---and-ioremap_----variants`:
 
-ioremap() and ioremap\_\*() variants
-====================================
+\ :c:func:`ioremap`\  and ioremap\_\*() variants
+================================================
 
 If you have an IOMMU your architecture is expected to have both \ :c:func:`ioremap`\ 
 and \ :c:func:`iounmap`\  implemented otherwise the asm-generic helpers will provide a

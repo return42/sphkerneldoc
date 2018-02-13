@@ -183,7 +183,7 @@ pad64
 Description
 -----------
 
-@width - mip level width
+\ ``width``\  - mip level width
 \ ``height``\  - mip level height
 \ ``depth``\  - mip level depth
 

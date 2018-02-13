@@ -274,7 +274,7 @@ struct MPT3_IOCTL_EVENTS
 
 .. c:type:: struct MPT3_IOCTL_EVENTS
 
-    @event - the event that was reported \ ``context``\  - unique value for each event assigned by driver \ ``data``\  - event data returned in fw reply message
+    \ ``event``\  - the event that was reported \ ``context``\  - unique value for each event assigned by driver \ ``data``\  - event data returned in fw reply message
 
 .. _`mpt3_ioctl_events.definition`:
 

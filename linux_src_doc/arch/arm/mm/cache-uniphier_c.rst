@@ -3,8 +3,8 @@
 
 .. _`__uniphier_cache_sync`:
 
-__uniphier_cache_sync
-=====================
+\__uniphier_cache_sync
+======================
 
 .. c:function:: void __uniphier_cache_sync(struct uniphier_cache_data *data)
 
@@ -15,8 +15,8 @@ __uniphier_cache_sync
 
 .. _`__uniphier_cache_maint_common`:
 
-__uniphier_cache_maint_common
-=============================
+\__uniphier_cache_maint_common
+==============================
 
 .. c:function:: void __uniphier_cache_maint_common(struct uniphier_cache_data *data, unsigned long start, unsigned long size, u32 operation)
 

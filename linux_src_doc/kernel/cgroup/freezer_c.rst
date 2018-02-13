@@ -39,7 +39,7 @@ freezer_css_offline
 Description
 -----------
 
-@css is going away.  Mark it dead and decrement system_freezing_count if
+\ ``css``\  is going away.  Mark it dead and decrement system_freezing_count if
 it was holding one.
 
 .. _`freezer_fork`:
@@ -59,7 +59,7 @@ freezer_fork
 Description
 -----------
 
-@task has just been created and should conform to the current state of
+\ ``task``\  has just been created and should conform to the current state of
 the cgroup_freezer it belongs to.  This function may race against
 \ :c:func:`freezer_attach`\ .  Losing to \ :c:func:`freezer_attach`\  means that we don't have
 to do anything as \ :c:func:`freezer_attach`\  will put \ ``task``\  into the appropriate

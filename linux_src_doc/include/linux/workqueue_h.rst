@@ -212,7 +212,7 @@ mod_delayed_work
 Description
 -----------
 
-mod_delayed_work_on() on local CPU.
+\ :c:func:`mod_delayed_work_on`\  on local CPU.
 
 .. _`schedule_work_on`:
 

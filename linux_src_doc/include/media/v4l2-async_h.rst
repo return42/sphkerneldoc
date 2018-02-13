@@ -30,7 +30,8 @@ Constants
 ---------
 
 V4L2_ASYNC_MATCH_CUSTOM
-    Match will use the logic provided by \ :c:type:`struct v4l2_async_subdev <v4l2_async_subdev>`\ .match ops
+    Match will use the logic provided by \ :c:type:`struct struct <struct>`\ 
+    v4l2_async_subdev.match ops
 
 V4L2_ASYNC_MATCH_DEVNAME
     Match will use the device name
@@ -137,7 +138,8 @@ Description
 -----------
 
 When this struct is used as a member in a driver specific struct,
-the driver specific struct shall contain the \ :c:type:`struct v4l2_async_subdev <v4l2_async_subdev>`\  as its first member.
+the driver specific struct shall contain the \ :c:type:`struct struct <struct>`\ 
+v4l2_async_subdev as its first member.
 
 .. _`v4l2_async_notifier_operations`:
 

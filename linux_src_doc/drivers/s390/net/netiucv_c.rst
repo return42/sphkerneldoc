@@ -57,7 +57,7 @@ netiucv_printname
 Description
 -----------
 
-@param An iucv userId
+\ ``param``\  An iucv userId
 
 \ ``returns``\  The printable string (static data!!)
 
@@ -142,7 +142,7 @@ dev_action_stop
 Description
 -----------
 
-@param fi    An instance of an interface statemachine.
+\ ``param``\  fi    An instance of an interface statemachine.
 \ ``param``\  event The event, just happened.
 \ ``param``\  arg   Generic pointer, casted from struct net_device \* upon call.
 
@@ -169,7 +169,7 @@ dev_action_connup
 Description
 -----------
 
-@param fi    An instance of an interface statemachine.
+\ ``param``\  fi    An instance of an interface statemachine.
 \ ``param``\  event The event, just happened.
 \ ``param``\  arg   Generic pointer, casted from struct net_device \* upon call.
 
@@ -196,7 +196,7 @@ dev_action_conndown
 Description
 -----------
 
-@param fi    An instance of an interface statemachine.
+\ ``param``\  fi    An instance of an interface statemachine.
 \ ``param``\  event The event, just happened.
 \ ``param``\  arg   Generic pointer, casted from struct net_device \* upon call.
 
@@ -220,7 +220,7 @@ netiucv_transmit_skb
 Description
 -----------
 
-@param conn Connection to be used for sending.
+\ ``param``\  conn Connection to be used for sending.
 \ ``param``\  skb Pointer to struct sk_buff of packet to send.
 The linklevel header has already been set up
 by \ :c:func:`netiucv_tx`\ .
@@ -244,7 +244,7 @@ netiucv_open
 Description
 -----------
 
-@param dev Pointer to interface struct.
+\ ``param``\  dev Pointer to interface struct.
 
 \ ``return``\  0 on success, -ERRNO on failure. (Never fails.)
 
@@ -265,7 +265,7 @@ netiucv_close
 Description
 -----------
 
-@param dev Pointer to interface struct.
+\ ``param``\  dev Pointer to interface struct.
 
 \ ``return``\  0 on success, -ERRNO on failure. (Never fails.)
 
@@ -327,7 +327,7 @@ netiucv_tx
 Description
 -----------
 
-@param skb Pointer to buffer containing the packet.
+\ ``param``\  skb Pointer to buffer containing the packet.
 \ ``param``\  dev Pointer to interface struct.
 
 \ ``return``\  0 if packet consumed, !0 if packet rejected.

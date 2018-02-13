@@ -41,8 +41,8 @@ Mainly used by Hyper-V drivers.
 
 .. _`__vmbus_recvpacket`:
 
-__vmbus_recvpacket
-==================
+\__vmbus_recvpacket
+===================
 
 .. c:function:: int __vmbus_recvpacket(struct vmbus_channel *channel, void *buffer, u32 bufferlen, u32 *buffer_actual_len, u64 *requestid, bool raw)
 

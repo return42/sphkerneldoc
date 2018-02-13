@@ -173,7 +173,7 @@ suspend_save_flag
 Description
 -----------
 
-@saved_mask, \ ``priority_mask``\ , \ ``base_irq``\ , \ ``suspended``\ , and
+\ ``saved_mask``\ , \ ``priority_mask``\ , \ ``base_irq``\ , \ ``suspended``\ , and
 \ ``suspend_save_flag``\  are populated dynamically, and are not to be
 specified in static initializers.
 

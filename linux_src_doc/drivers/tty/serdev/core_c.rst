@@ -112,8 +112,8 @@ Remove a serdev controller.  Caller is responsible for calling
 
 .. _`__serdev_device_driver_register`:
 
-__serdev_device_driver_register
-===============================
+\__serdev_device_driver_register
+================================
 
 .. c:function:: int __serdev_device_driver_register(struct serdev_device_driver *sdrv, struct module *owner)
 

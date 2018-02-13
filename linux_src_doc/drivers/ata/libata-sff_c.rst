@@ -725,8 +725,8 @@ caller.
 
 .. _`__atapi_pio_bytes`:
 
-__atapi_pio_bytes
-=================
+\__atapi_pio_bytes
+==================
 
 .. c:function:: int __atapi_pio_bytes(struct ata_queued_cmd *qc, unsigned int bytes)
 
@@ -909,7 +909,7 @@ ata_sff_qc_fill_rtf
 Description
 -----------
 
-@qc is finished and result TF needs to be filled.  Fill it
+\ ``qc``\  is finished and result TF needs to be filled.  Fill it
 using ->sff_tf_read.
 
 .. _`ata_sff_qc_fill_rtf.locking`:

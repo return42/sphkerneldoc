@@ -73,7 +73,7 @@ genwqe_bus_reset
 Description
 -----------
 
-pci_reset_function() will recover the device and ensure that the
+\ :c:func:`pci_reset_function`\  will recover the device and ensure that the
 registers are accessible again when it completes with success. If
 not, the card will stay dead and registers will be unaccessible
 still.
@@ -251,7 +251,7 @@ genwqe_pci_fundamental_reset
 Note
 ----
 
-pci_set_pcie_reset_state() is not implemented on all archs, so this
+\ :c:func:`pci_set_pcie_reset_state`\  is not implemented on all archs, so this
 reset method will not work in all cases.
 
 .. _`genwqe_pci_fundamental_reset.return`:

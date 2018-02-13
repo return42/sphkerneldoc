@@ -81,8 +81,8 @@ Always IRQ_HANDLED - success
 
 .. _`__ttc_clocksource_read`:
 
-__ttc_clocksource_read
-======================
+\__ttc_clocksource_read
+=======================
 
 .. c:function:: u64 __ttc_clocksource_read(struct clocksource *cs)
 

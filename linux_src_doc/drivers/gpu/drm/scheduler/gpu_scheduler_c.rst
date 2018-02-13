@@ -16,7 +16,7 @@ drm_sched_rq_select_entity
 Description
 -----------
 
-@rq          The run queue to check.
+\ ``rq``\           The run queue to check.
 
 Try to find a ready entity, returns NULL if none found.
 
@@ -47,7 +47,7 @@ drm_sched_entity_init
 Description
 -----------
 
-@sched       The pointer to the scheduler
+\ ``sched``\        The pointer to the scheduler
 \ ``entity``\       The pointer to a valid drm_sched_entity
 \ ``rq``\           The run queue this entity belongs
 \ ``kernel``\       If this is an entity for the kernel
@@ -73,7 +73,7 @@ drm_sched_entity_is_initialized
 Description
 -----------
 
-@sched       Pointer to scheduler instance
+\ ``sched``\        Pointer to scheduler instance
 \ ``entity``\       The pointer to a valid scheduler entity
 
 return true if entity is initialized, false otherwise
@@ -93,7 +93,7 @@ drm_sched_entity_is_idle
 Description
 -----------
 
-@entity      The pointer to a valid scheduler entity
+\ ``entity``\       The pointer to a valid scheduler entity
 
 Return true if entity don't has any unscheduled jobs.
 
@@ -112,7 +112,7 @@ drm_sched_entity_is_ready
 Description
 -----------
 
-@entity      The pointer to a valid scheduler entity
+\ ``entity``\       The pointer to a valid scheduler entity
 
 Return true if entity could provide a job.
 
@@ -134,7 +134,7 @@ drm_sched_entity_fini
 Description
 -----------
 
-@sched       Pointer to scheduler instance
+\ ``sched``\        Pointer to scheduler instance
 \ ``entity``\       The pointer to a valid scheduler entity
 
 Cleanup and free the allocated resources.
@@ -157,7 +157,7 @@ drm_sched_entity_push_job
 Description
 -----------
 
-@sched_job           The pointer to job required to submit
+\ ``sched_job``\            The pointer to job required to submit
 
 Returns 0 for success, negative error code otherwise.
 
@@ -221,7 +221,7 @@ drm_sched_init
 Description
 -----------
 
-@sched               The pointer to the scheduler
+\ ``sched``\                The pointer to the scheduler
 \ ``ops``\                  The backend operations for this scheduler.
 \ ``hw_submissions``\       Number of hw submissions to do.
 \ ``name``\                 Name used for debugging
@@ -243,7 +243,7 @@ drm_sched_fini
 Description
 -----------
 
-@sched       The pointer to the scheduler
+\ ``sched``\        The pointer to the scheduler
 
 .. This file was automatic generated / don't edit.
 

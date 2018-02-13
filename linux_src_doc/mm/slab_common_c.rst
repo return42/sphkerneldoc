@@ -48,8 +48,8 @@ To help debugging, a zero exit status indicates all slabs were released.
 
 .. _`__krealloc`:
 
-__krealloc
-==========
+\__krealloc
+===========
 
 .. c:function:: void *__krealloc(const void *p, size_t new_size, gfp_t flags)
 

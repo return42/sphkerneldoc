@@ -475,7 +475,7 @@ put_pwq_unlocked
 
 .. c:function:: void put_pwq_unlocked(struct pool_workqueue *pwq)
 
-    put_pwq() with surrounding pool lock/unlock
+    \ :c:func:`put_pwq`\  with surrounding pool lock/unlock
 
     :param struct pool_workqueue \*pwq:
         pool_workqueue to put (can be \ ``NULL``\ )
@@ -485,7 +485,7 @@ put_pwq_unlocked
 Description
 -----------
 
-put_pwq() with locking.  This function also allows \ ``NULL``\  \ ``pwq``\ .
+\ :c:func:`put_pwq`\  with locking.  This function also allows \ ``NULL``\  \ ``pwq``\ .
 
 .. _`pwq_dec_nr_in_flight`:
 
@@ -530,7 +530,7 @@ try_to_grab_pending
         work item to steal
 
     :param bool is_dwork:
-        @work is a delayed_work
+        \ ``work``\  is a delayed_work
 
     :param unsigned long \*flags:
         place to store irq state
@@ -636,7 +636,7 @@ can't go away.
 Return
 ------
 
-%false if \ ``work``\  was already on a queue, \ ``true``\  otherwise.
+\ ``false``\  if \ ``work``\  was already on a queue, \ ``true``\  otherwise.
 
 .. _`queue_delayed_work_on`:
 
@@ -664,7 +664,7 @@ queue_delayed_work_on
 Return
 ------
 
-%false if \ ``work``\  was already on a queue, \ ``true``\  otherwise.  If
+\ ``false``\  if \ ``work``\  was already on a queue, \ ``true``\  otherwise.  If
 \ ``delay``\  is zero and \ ``dwork``\  is idle, it will be scheduled for immediate
 execution.
 
@@ -704,7 +704,7 @@ current state.
 Return
 ------
 
-%false if \ ``dwork``\  was idle and queued, \ ``true``\  if \ ``dwork``\  was
+\ ``false``\  if \ ``dwork``\  was idle and queued, \ ``true``\  if \ ``dwork``\  was
 pending and its timer was modified.
 
 This function is safe to call from any context including IRQ handler.
@@ -727,7 +727,7 @@ worker_enter_idle
 Description
 -----------
 
-@worker is entering idle state.  Update stats and idle timer if
+\ ``worker``\  is entering idle state.  Update stats and idle timer if
 necessary.
 
 .. _`worker_enter_idle.locking`:
@@ -754,7 +754,7 @@ worker_leave_idle
 Description
 -----------
 
-@worker is leaving idle state.  Update stats.
+\ ``worker``\  is leaving idle state.  Update stats.
 
 .. _`worker_leave_idle.locking`:
 
@@ -944,7 +944,7 @@ multiple times.  Does GFP_KERNEL allocations.
 Return
 ------
 
-%false if the pool doesn't need management and the caller can safely
+\ ``false``\  if the pool doesn't need management and the caller can safely
 start processing works, \ ``true``\  if management function was performed and
 the conditions that the caller verified before calling the function may
 no longer be true.
@@ -1100,7 +1100,7 @@ check_flush_dependency
 Description
 -----------
 
-%current is trying to flush the whole \ ``target_wq``\  or \ ``target_work``\  on it.
+\ ``current``\  is trying to flush the whole \ ``target_wq``\  or \ ``target_work``\  on it.
 If \ ``target_wq``\  doesn't have \ ``WQ_MEM_RECLAIM``\ , verify that \ ``current``\  is not
 reclaiming memory or running on a workqueue which doesn't have
 \ ``WQ_MEM_RECLAIM``\  as that can break forward-progress guarantee leading to
@@ -1132,7 +1132,7 @@ insert_wq_barrier
 Description
 -----------
 
-@barr is linked to \ ``target``\  such that \ ``barr``\  is completed only after
+\ ``barr``\  is linked to \ ``target``\  such that \ ``barr``\  is completed only after
 \ ``target``\  finishes execution.  Please note that the ordering
 guarantee is observed only with respect to \ ``target``\  and on the local
 cpu.
@@ -1206,7 +1206,7 @@ mutex_lock(wq->mutex).
 Return
 ------
 
-%true if \ ``flush_color``\  >= 0 and there's something to flush.  \ ``false``\ 
+\ ``true``\  if \ ``flush_color``\  >= 0 and there's something to flush.  \ ``false``\ 
 otherwise.
 
 .. _`flush_workqueue`:
@@ -1278,7 +1278,7 @@ on return if it hasn't been requeued since flush started.
 Return
 ------
 
-%true if \ :c:func:`flush_work`\  waited for the work to finish execution,
+\ ``true``\  if \ :c:func:`flush_work`\  waited for the work to finish execution,
 \ ``false``\  if it was already idle.
 
 .. _`cancel_work_sync`:
@@ -1314,7 +1314,7 @@ queued can't be destroyed before this function returns.
 Return
 ------
 
-%true if \ ``work``\  was pending, \ ``false``\  otherwise.
+\ ``true``\  if \ ``work``\  was pending, \ ``false``\  otherwise.
 
 .. _`flush_delayed_work`:
 
@@ -1342,7 +1342,7 @@ considers the last queueing instance of \ ``dwork``\ .
 Return
 ------
 
-%true if \ :c:func:`flush_work`\  waited for the work to finish execution,
+\ ``true``\  if \ :c:func:`flush_work`\  waited for the work to finish execution,
 \ ``false``\  if it was already idle.
 
 .. _`cancel_delayed_work`:
@@ -1369,7 +1369,7 @@ Kill off a pending delayed_work.
 Return
 ------
 
-%true if \ ``dwork``\  was pending and canceled; \ ``false``\  if it wasn't
+\ ``true``\  if \ ``dwork``\  was pending and canceled; \ ``false``\  if it wasn't
 pending.
 
 .. _`cancel_delayed_work.note`:
@@ -1407,7 +1407,7 @@ This is \ :c:func:`cancel_work_sync`\  for delayed works.
 Return
 ------
 
-%true if \ ``dwork``\  was pending, \ ``false``\  otherwise.
+\ ``true``\  if \ ``dwork``\  was pending, \ ``false``\  otherwise.
 
 .. _`schedule_on_each_cpu`:
 
@@ -1426,7 +1426,7 @@ schedule_on_each_cpu
 Description
 -----------
 
-schedule_on_each_cpu() executes \ ``func``\  on each online CPU using the
+\ :c:func:`schedule_on_each_cpu`\  executes \ ``func``\  on each online CPU using the
 system workqueue and blocks until all CPUs have completed.
 \ :c:func:`schedule_on_each_cpu`\  is very slow.
 
@@ -1663,7 +1663,7 @@ stable.
 Return
 ------
 
-%true if the resulting \ ``cpumask``\  is different from \ ``attrs``\ ->cpumask,
+\ ``true``\  if the resulting \ ``cpumask``\  is different from \ ``attrs``\ ->cpumask,
 \ ``false``\  if equal.
 
 .. _`apply_workqueue_attrs`:
@@ -1814,7 +1814,7 @@ work functions to determine whether it's being run off the rescuer task.
 Return
 ------
 
-%true if \ ``current``\  is a workqueue rescuer. \ ``false``\  otherwise.
+\ ``true``\  if \ ``current``\  is a workqueue rescuer. \ ``false``\  otherwise.
 
 .. _`workqueue_congested`:
 
@@ -1851,7 +1851,7 @@ contested on other CPUs / NUMA nodes.
 Return
 ------
 
-%true if congested, \ ``false``\  otherwise.
+\ ``true``\  if congested, \ ``false``\  otherwise.
 
 .. _`work_busy`:
 
@@ -1971,7 +1971,7 @@ rebind_workers
 Description
 -----------
 
-@pool->cpu is coming online.  Rebind all workers to the CPU.
+\ ``pool``\ ->cpu is coming online.  Rebind all workers to the CPU.
 
 .. _`restore_unbound_workers_cpumask`:
 
@@ -2124,7 +2124,7 @@ Grabs and releases wq_pool_mutex.
 Return
 ------
 
-%true if some freezable workqueues are still busy.  \ ``false``\  if freezing
+\ ``true``\  if some freezable workqueues are still busy.  \ ``false``\  if freezing
 is complete.
 
 .. _`thaw_workqueues`:

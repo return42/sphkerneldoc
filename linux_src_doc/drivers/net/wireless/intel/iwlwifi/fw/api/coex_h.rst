@@ -28,10 +28,10 @@ Members
 -------
 
 mode
-    &enum iwl_bt_coex_mode
+    \ :c:type:`enum iwl_bt_coex_mode <iwl_bt_coex_mode>`\ 
 
 enabled_modules
-    &enum iwl_bt_coex_enabled_modules
+    \ :c:type:`enum iwl_bt_coex_enabled_modules <iwl_bt_coex_enabled_modules>`\ 
 
 .. _`iwl_bt_coex_cmd.description`:
 

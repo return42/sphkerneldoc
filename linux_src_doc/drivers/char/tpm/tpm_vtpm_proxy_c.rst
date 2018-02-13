@@ -74,7 +74,7 @@ vtpm_proxy_fops_undo_open
 Description
 -----------
 
-@proxy_dev: tpm proxy device
+\ ``proxy_dev``\ : tpm proxy device
 
 .. _`vtpmx_ioc_new_dev`:
 

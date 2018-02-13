@@ -150,7 +150,7 @@ use the \ :c:func:`module_comedi_usb_driver`\  helper macro instead.
 Return
 ------
 
-%0 on success, or a negative error number on failure.
+\ ``0``\  on success, or a negative error number on failure.
 
 .. _`comedi_usb_driver_unregister`:
 

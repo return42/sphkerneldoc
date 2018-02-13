@@ -22,7 +22,7 @@ xfs_trans_ail_delete
 Description
 -----------
 
-@xfs_trans_ail_delete_bulk takes an array of log items that all need to
+\ ``xfs_trans_ail_delete_bulk``\  takes an array of log items that all need to
 removed from the AIL. The caller is already holding the AIL lock, and done
 all the checks necessary to ensure the items passed in via \ ``log_items``\  are
 ready for deletion. This includes checking that the items are in the AIL.

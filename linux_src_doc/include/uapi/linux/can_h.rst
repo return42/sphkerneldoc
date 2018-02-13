@@ -39,13 +39,13 @@ can_dlc
     N.B. the DLC field from ISO 11898-1 Chapter 8.4.2.3 has a 1:1
     mapping of the 'data length code' to the real payload length
 
-__pad
+\__pad
     padding
 
-__res0
+\__res0
     reserved / padding
 
-__res1
+\__res1
     reserved / padding
 
 data
@@ -90,10 +90,10 @@ len
 flags
     additional flags for CAN FD
 
-__res0
+\__res0
     reserved / padding
 
-__res1
+\__res1
     reserved / padding
 
 data

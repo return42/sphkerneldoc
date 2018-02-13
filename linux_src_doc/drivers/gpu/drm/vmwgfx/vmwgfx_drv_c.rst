@@ -180,8 +180,8 @@ restriction also for 64-bit systems.
 
 .. _`__vmw_svga_enable`:
 
-__vmw_svga_enable
-=================
+\__vmw_svga_enable
+==================
 
 .. c:function:: void __vmw_svga_enable(struct vmw_private *dev_priv)
 
@@ -205,8 +205,8 @@ vmw_svga_enable
 
 .. _`__vmw_svga_disable`:
 
-__vmw_svga_disable
-==================
+\__vmw_svga_disable
+===================
 
 .. c:function:: void __vmw_svga_disable(struct vmw_private *dev_priv)
 

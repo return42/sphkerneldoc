@@ -35,7 +35,7 @@ match against the fscrypt_digested_name.
 Return
 ------
 
-%true if the name matches, otherwise \ ``false``\ .
+\ ``true``\  if the name matches, otherwise \ ``false``\ .
 
 .. This file was automatic generated / don't edit.
 

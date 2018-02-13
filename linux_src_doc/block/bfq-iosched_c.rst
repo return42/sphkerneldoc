@@ -59,8 +59,8 @@ rounds to actually get it dispatched.
 
 .. _`__bfq_bfqq_recalc_budget`:
 
-__bfq_bfqq_recalc_budget
-========================
+\__bfq_bfqq_recalc_budget
+=========================
 
 .. c:function:: void __bfq_bfqq_recalc_budget(struct bfq_data *bfqd, struct bfq_queue *bfqq, enum bfqq_expiration reason)
 

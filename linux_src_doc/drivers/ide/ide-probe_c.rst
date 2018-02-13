@@ -106,7 +106,7 @@ do_probe
 Description
 -----------
 
-do_probe() has the difficult job of finding a drive if it exists,
+\ :c:func:`do_probe`\  has the difficult job of finding a drive if it exists,
 without getting hung up if it doesn't exist, without trampling on
 ethernet cards, and without leaving any IRQs dangling to haunt us later.
 
@@ -143,7 +143,7 @@ probe_for_drive
 Description
 -----------
 
-probe_for_drive() tests for existence of a given drive using \ :c:func:`do_probe`\ 
+\ :c:func:`probe_for_drive`\  tests for existence of a given drive using \ :c:func:`do_probe`\ 
 and presents things to the user as needed.
 
 .. _`probe_for_drive.return`:

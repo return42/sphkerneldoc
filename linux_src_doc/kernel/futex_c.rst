@@ -384,7 +384,7 @@ futex_requeue
         number of waiters to requeue (0-INT_MAX)
 
     :param u32 \*cmpval:
-        @uaddr1 expected value (or \ ``NULL``\ )
+        \ ``uaddr1``\  expected value (or \ ``NULL``\ )
 
     :param int requeue_pi:
         if we are attempting to requeue from a non-pi futex to a
@@ -504,7 +504,7 @@ futex_wait_queue_me
 
 .. c:function:: void futex_wait_queue_me(struct futex_hash_bucket *hb, struct futex_q *q, struct hrtimer_sleeper *timeout)
 
-    queue_me() and wait for wakeup, timeout, or signal
+    \ :c:func:`queue_me`\  and wait for wakeup, timeout, or signal
 
     :param struct futex_hash_bucket \*hb:
         the futex hash bucket, must be locked by the caller

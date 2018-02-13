@@ -231,8 +231,8 @@ or Replies they may be registered externally via ro_map.
 
 .. _`__rpcrdma_dma_map_regbuf`:
 
-__rpcrdma_dma_map_regbuf
-========================
+\__rpcrdma_dma_map_regbuf
+=========================
 
 .. c:function:: bool __rpcrdma_dma_map_regbuf(struct rpcrdma_ia *ia, struct rpcrdma_regbuf *rb)
 

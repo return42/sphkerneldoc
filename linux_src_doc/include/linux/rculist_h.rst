@@ -80,7 +80,7 @@ list_del_rcu
 Note
 ----
 
-list_empty() on entry does not return true after this,
+\ :c:func:`list_empty`\  on entry does not return true after this,
 the entry is in an undefined state. It is useful for RCU based
 lockfree traversal.
 
@@ -117,7 +117,7 @@ hlist_del_init_rcu
 Note
 ----
 
-list_unhashed() on the node return true after this. It is
+\ :c:func:`list_unhashed`\  on the node return true after this. It is
 useful for RCU based read lockfree traversal if the writer side
 must know if the list entry is still hashed or already unhashed.
 
@@ -160,7 +160,7 @@ The \ ``old``\  entry will be replaced with the \ ``new``\  entry atomically.
 Note
 ----
 
-@old should not be empty.
+\ ``old``\  should not be empty.
 
 .. _`__list_splice_init_rcu`:
 
@@ -453,7 +453,7 @@ hlist_del_rcu
 Note
 ----
 
-list_unhashed() on entry does not return true after this,
+\ :c:func:`list_unhashed`\  on entry does not return true after this,
 the entry is in an undefined state. It is useful for RCU based
 lockfree traversal.
 

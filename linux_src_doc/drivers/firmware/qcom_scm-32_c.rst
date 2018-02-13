@@ -263,8 +263,8 @@ uninterruptable, atomic and SMP safe.
 
 .. _`__qcom_scm_set_cold_boot_addr`:
 
-__qcom_scm_set_cold_boot_addr
-=============================
+\__qcom_scm_set_cold_boot_addr
+==============================
 
 .. c:function:: int __qcom_scm_set_cold_boot_addr(void *entry, const cpumask_t *cpus)
 
@@ -286,8 +286,8 @@ range would be removed from the cpu present mask.
 
 .. _`__qcom_scm_set_warm_boot_addr`:
 
-__qcom_scm_set_warm_boot_addr
-=============================
+\__qcom_scm_set_warm_boot_addr
+==============================
 
 .. c:function:: int __qcom_scm_set_warm_boot_addr(struct device *dev, void *entry, const cpumask_t *cpus)
 
@@ -312,8 +312,8 @@ out of a power down. CPU power down may be executed on cpuidle or hotplug.
 
 .. _`__qcom_scm_cpu_power_down`:
 
-__qcom_scm_cpu_power_down
-=========================
+\__qcom_scm_cpu_power_down
+==========================
 
 .. c:function:: void __qcom_scm_cpu_power_down(u32 flags)
 

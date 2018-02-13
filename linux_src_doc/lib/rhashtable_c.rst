@@ -117,8 +117,8 @@ resize events and always continue.
 
 .. _`__rhashtable_walk_find_next`:
 
-__rhashtable_walk_find_next
-===========================
+\__rhashtable_walk_find_next
+============================
 
 .. c:function:: void *__rhashtable_walk_find_next(struct rhashtable_iter *iter)
 

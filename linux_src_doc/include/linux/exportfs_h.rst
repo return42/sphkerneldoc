@@ -74,7 +74,7 @@ this interface correctly.
 encode_fh
 ---------
 
-@encode_fh should store in the file handle fragment \ ``fh``\  (using at most
+\ ``encode_fh``\  should store in the file handle fragment \ ``fh``\  (using at most
 \ ``max_len``\  bytes) information that can be used by \ ``decode_fh``\  to recover the
 file referred to by the \ :c:type:`struct dentry <dentry>`\  \ ``de``\ .  If the \ ``connectable``\  flag is
 set, the \ :c:func:`encode_fh`\  should store sufficient information so that a good
@@ -90,7 +90,7 @@ size(in 4 byte unit) needed to encode the file handle.
 fh_to_dentry
 ------------
 
-@fh_to_dentry is given a \ :c:type:`struct super_block <super_block>`\  (@sb) and a file handle
+\ ``fh_to_dentry``\  is given a \ :c:type:`struct super_block <super_block>`\  (@sb) and a file handle
 fragment (@fh, \ ``fh_len``\ ). It should return a \ :c:type:`struct dentry <dentry>`\  which refers
 to the same file that the file handle fragment refers to.  If it cannot,
 it should return a \ ``NULL``\  pointer if the file cannot be found, or an
@@ -114,7 +114,7 @@ dentry if it was encoded into the filehandle fragment by \ ``encode_fh``\ .
 get_name
 --------
 
-@get_name should find a name for the given \ ``child``\  in the given \ ``parent``\ 
+\ ``get_name``\  should find a name for the given \ ``child``\  in the given \ ``parent``\ 
 directory.  The name should be stored in the \ ``name``\  (with the
 understanding that it is already pointing to a a \ ``NAME_MAX``\ +1 sized
 buffer.   \ :c:func:`get_name`\  should return \ ``0``\  on success, a negative error code
@@ -125,7 +125,7 @@ or error.  \ ``get_name``\  will be called without \ ``parent``\ ->i_mutex held.
 get_parent
 ----------
 
-@get_parent should find the parent directory for the given \ ``child``\  which
+\ ``get_parent``\  should find the parent directory for the given \ ``child``\  which
 is also a directory.  In the event that it cannot be found, or storage
 space cannot be allocated, a \ ``ERR_PTR``\  should be returned.
 
@@ -134,7 +134,7 @@ space cannot be allocated, a \ ``ERR_PTR``\  should be returned.
 commit_metadata
 ---------------
 
-@commit_metadata should commit metadata changes to stable storage.
+\ ``commit_metadata``\  should commit metadata changes to stable storage.
 
 .. _`export_operations.locking-rules`:
 

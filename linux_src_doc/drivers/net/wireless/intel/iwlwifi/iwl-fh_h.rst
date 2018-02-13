@@ -427,7 +427,7 @@ finished_rb_num
 finished_fr_nam
     *undescribed*
 
-__unused
+\__unused
     *undescribed*
 
 .. _`iwl_tfd_tb_hi_n_len`:
@@ -492,7 +492,7 @@ lo
     every even is unaligned on 16 bit boundary
 
 hi_n_len
-    &enum iwl_tfd_tb_hi_n_len
+    \ :c:type:`enum iwl_tfd_tb_hi_n_len <iwl_tfd_tb_hi_n_len>`\ 
 
 .. _`iwl_tfd_tb.description`:
 
@@ -575,7 +575,7 @@ num_tbs
 tbs
     *undescribed*
 
-__pad
+\__pad
     *undescribed*
 
 .. _`iwlagn_scd_bc_tbl`:
@@ -611,7 +611,7 @@ tfd_offset
 For devices up to 22000
 -----------------------
 
-@tfd_offset  0-12 - tx command byte count
+\ ``tfd_offset``\   0-12 - tx command byte count
 12-16 - station index
 
 .. _`iwlagn_scd_bc_tbl.for-22000-and-on`:
@@ -619,7 +619,7 @@ For devices up to 22000
 For 22000 and on
 ----------------
 
-@tfd_offset  0-12 - tx command byte count
+\ ``tfd_offset``\   0-12 - tx command byte count
 12-13 - number of 64 byte chunks
 14-16 - reserved
 

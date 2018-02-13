@@ -176,7 +176,7 @@ mipi_dbi_init
         Parent device
 
     :param struct mipi_dbi \*mipi:
-        &mipi_dbi structure to initialize
+        \ :c:type:`struct mipi_dbi <mipi_dbi>`\  structure to initialize
 
     :param const struct drm_simple_display_pipe_funcs \*pipe_funcs:
         Display pipe functions
@@ -295,7 +295,7 @@ mipi_dbi_spi_init
         SPI device
 
     :param struct mipi_dbi \*mipi:
-        &mipi_dbi structure to initialize
+        \ :c:type:`struct mipi_dbi <mipi_dbi>`\  structure to initialize
 
     :param struct gpio_desc \*dc:
         D/C gpio (optional)

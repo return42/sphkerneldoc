@@ -30,7 +30,7 @@ wm8350_register_led
 Description
 -----------
 
-@param wm8350 The WM8350 device to configure.
+\ ``param``\  wm8350 The WM8350 device to configure.
 \ ``param``\  lednum LED device index to create.
 \ ``param``\  dcdc The DCDC to use for the LED.
 \ ``param``\  isink The ISINK to use for the LED.

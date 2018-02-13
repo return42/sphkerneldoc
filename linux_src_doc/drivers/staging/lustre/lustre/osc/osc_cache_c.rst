@@ -137,7 +137,7 @@ osc_extent_truncate
 
 .. c:function:: int osc_extent_truncate(struct osc_extent *ext, pgoff_t trunc_index, bool partial)
 
-    @size, then partial truncate happens.
+    \ ``size``\ , then partial truncate happens.
 
     :param struct osc_extent \*ext:
         *undescribed*
@@ -224,7 +224,7 @@ osc_free_grant
 Description
 -----------
 
-@lost_grant is used to remember how many grants we have allocated but not
+\ ``lost_grant``\  is used to remember how many grants we have allocated but not
 used, we should return these grants to OST. There're two cases where grants
 
 .. _`osc_free_grant.can-be-lost`:
@@ -328,7 +328,7 @@ get_write_extents
 
 .. c:function:: unsigned int get_write_extents(struct osc_object *obj, struct list_head *rpclist)
 
-    get_write_extent() takes all appropriate extents in atomic.
+    \ :c:func:`get_write_extent`\  takes all appropriate extents in atomic.
 
     :param struct osc_object \*obj:
         *undescribed*

@@ -3,8 +3,8 @@
 
 .. _`__alloc_zeroed_user_highpage`:
 
-__alloc_zeroed_user_highpage
-============================
+\__alloc_zeroed_user_highpage
+=============================
 
 .. c:function:: struct page *__alloc_zeroed_user_highpage(gfp_t movableflags, struct vm_area_struct *vma, unsigned long vaddr)
 

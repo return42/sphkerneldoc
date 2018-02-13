@@ -331,8 +331,8 @@ SLI-2/SLI-3 provide different sized iocbs.
 
 .. _`__lpfc_sli_get_iocbq`:
 
-__lpfc_sli_get_iocbq
-====================
+\__lpfc_sli_get_iocbq
+=====================
 
 .. c:function:: struct lpfc_iocbq *__lpfc_sli_get_iocbq(struct lpfc_hba *phba)
 
@@ -353,8 +353,8 @@ allocated iocb object else it returns NULL.
 
 .. _`__lpfc_clear_active_sglq`:
 
-__lpfc_clear_active_sglq
-========================
+\__lpfc_clear_active_sglq
+=========================
 
 .. c:function:: struct lpfc_sglq *__lpfc_clear_active_sglq(struct lpfc_hba *phba, uint16_t xritag)
 
@@ -380,8 +380,8 @@ Returns sglq ponter = success, NULL = Failure.
 
 .. _`__lpfc_get_active_sglq`:
 
-__lpfc_get_active_sglq
-======================
+\__lpfc_get_active_sglq
+=======================
 
 .. c:function:: struct lpfc_sglq *__lpfc_get_active_sglq(struct lpfc_hba *phba, uint16_t xritag)
 
@@ -559,8 +559,8 @@ returns 0 rrq actived for this xri
 
 .. _`__lpfc_sli_get_els_sglq`:
 
-__lpfc_sli_get_els_sglq
-=======================
+\__lpfc_sli_get_els_sglq
+========================
 
 .. c:function:: struct lpfc_sglq *__lpfc_sli_get_els_sglq(struct lpfc_hba *phba, struct lpfc_iocbq *piocbq)
 
@@ -584,8 +584,8 @@ allocated sglq object else it returns NULL.
 
 .. _`__lpfc_sli_get_nvmet_sglq`:
 
-__lpfc_sli_get_nvmet_sglq
-=========================
+\__lpfc_sli_get_nvmet_sglq
+==========================
 
 .. c:function:: struct lpfc_sglq *__lpfc_sli_get_nvmet_sglq(struct lpfc_hba *phba, struct lpfc_iocbq *piocbq)
 
@@ -631,8 +631,8 @@ allocated iocb object else it returns NULL.
 
 .. _`__lpfc_sli_release_iocbq_s4`:
 
-__lpfc_sli_release_iocbq_s4
-===========================
+\__lpfc_sli_release_iocbq_s4
+============================
 
 .. c:function:: void __lpfc_sli_release_iocbq_s4(struct lpfc_hba *phba, struct lpfc_iocbq *iocbq)
 
@@ -664,8 +664,8 @@ entry is added to the free list (lpfc_els_sgl_list).
 
 .. _`__lpfc_sli_release_iocbq_s3`:
 
-__lpfc_sli_release_iocbq_s3
-===========================
+\__lpfc_sli_release_iocbq_s3
+============================
 
 .. c:function:: void __lpfc_sli_release_iocbq_s3(struct lpfc_hba *phba, struct lpfc_iocbq *iocbq)
 
@@ -689,8 +689,8 @@ clears all other fields of the iocb object when it is freed.
 
 .. _`__lpfc_sli_release_iocbq`:
 
-__lpfc_sli_release_iocbq
-========================
+\__lpfc_sli_release_iocbq
+=========================
 
 .. c:function:: void __lpfc_sli_release_iocbq(struct lpfc_hba *phba, struct lpfc_iocbq *iocbq)
 
@@ -3111,8 +3111,8 @@ Return
 
 .. _`__lpfc_sli_ringtx_put`:
 
-__lpfc_sli_ringtx_put
-=====================
+\__lpfc_sli_ringtx_put
+======================
 
 .. c:function:: void __lpfc_sli_ringtx_put(struct lpfc_hba *phba, struct lpfc_sli_ring *pring, struct lpfc_iocbq *piocb)
 
@@ -3172,8 +3172,8 @@ If there is no iocb in the txq then the function will return
 
 .. _`__lpfc_sli_issue_iocb_s3`:
 
-__lpfc_sli_issue_iocb_s3
-========================
+\__lpfc_sli_issue_iocb_s3
+=========================
 
 .. c:function:: int __lpfc_sli_issue_iocb_s3(struct lpfc_hba *phba, uint32_t ring_number, struct lpfc_iocbq *piocb, uint32_t flag)
 
@@ -3196,7 +3196,7 @@ __lpfc_sli_issue_iocb_s3
 Description
 -----------
 
-__lpfc_sli_issue_iocb_s3 is used by other functions in the driver to issue
+\__lpfc_sli_issue_iocb_s3 is used by other functions in the driver to issue
 an iocb command to an HBA with SLI-3 interface spec. If the PCI slot is
 recovering from error state, if HBA is resetting or if LPFC_STOP_IOCB_EVENT
 flag is turned on, the function returns IOCB_ERROR. When the link is down,
@@ -3283,8 +3283,8 @@ Return
 
 .. _`__lpfc_sli_issue_iocb_s4`:
 
-__lpfc_sli_issue_iocb_s4
-========================
+\__lpfc_sli_issue_iocb_s4
+=========================
 
 .. c:function:: int __lpfc_sli_issue_iocb_s4(struct lpfc_hba *phba, uint32_t ring_number, struct lpfc_iocbq *piocb, uint32_t flag)
 
@@ -3307,7 +3307,7 @@ __lpfc_sli_issue_iocb_s4
 Description
 -----------
 
-__lpfc_sli_issue_iocb_s4 is used by other functions in the driver to issue
+\__lpfc_sli_issue_iocb_s4 is used by other functions in the driver to issue
 an iocb command to an HBA with SLI-4 interface spec.
 
 This function is called with hbalock held. The function will return success
@@ -3316,8 +3316,8 @@ txq.
 
 .. _`__lpfc_sli_issue_iocb`:
 
-__lpfc_sli_issue_iocb
-=====================
+\__lpfc_sli_issue_iocb
+======================
 
 .. c:function:: int __lpfc_sli_issue_iocb(struct lpfc_hba *phba, uint32_t ring_number, struct lpfc_iocbq *piocb, uint32_t flag)
 
@@ -5963,8 +5963,8 @@ LPFC_RPI_ALLOC_ERROR if no rpis are available.
 
 .. _`__lpfc_sli4_free_xri`:
 
-__lpfc_sli4_free_xri
-====================
+\__lpfc_sli4_free_xri
+=====================
 
 .. c:function:: void __lpfc_sli4_free_xri(struct lpfc_hba *phba, int xri)
 
@@ -6597,8 +6597,8 @@ LPFC_RPI_ALLOC_ERROR if no rpis are available.
 
 .. _`__lpfc_sli4_free_rpi`:
 
-__lpfc_sli4_free_rpi
-====================
+\__lpfc_sli4_free_rpi
+=====================
 
 .. c:function:: void __lpfc_sli4_free_rpi(struct lpfc_hba *phba, int rpi)
 

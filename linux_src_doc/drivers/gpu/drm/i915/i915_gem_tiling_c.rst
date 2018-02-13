@@ -6,7 +6,7 @@
 buffer object tiling
 ====================
 
-i915_gem_set_tiling_ioctl() and \ :c:func:`i915_gem_get_tiling_ioctl`\  is the userspace
+\ :c:func:`i915_gem_set_tiling_ioctl`\  and \ :c:func:`i915_gem_get_tiling_ioctl`\  is the userspace
 interface to declare fence register requirements.
 
 In principle GEM doesn't care at all about the internal data layout of an

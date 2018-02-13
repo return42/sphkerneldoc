@@ -132,8 +132,8 @@ Invoke to unregister the PCI EPF driver.
 
 .. _`__pci_epf_register_driver`:
 
-__pci_epf_register_driver
-=========================
+\__pci_epf_register_driver
+==========================
 
 .. c:function:: int __pci_epf_register_driver(struct pci_epf_driver *driver, struct module *owner)
 

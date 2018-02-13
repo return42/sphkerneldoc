@@ -110,7 +110,7 @@ Description
 -----------
 
 .. note::
-   The \ ``fh``\  file handle must be initialised first.
+   The @fh file handle must be initialised first.
 
 .. _`v4l2_fh_open`:
 
@@ -153,8 +153,8 @@ On error filp->private_data will be \ ``NULL``\ , otherwise it will point to
 the \ :c:type:`struct v4l2_fh <v4l2_fh>`\ .
 
 .. note::
-   Must be called in v4l2_file_operations->release(\) handler if the driver
-   uses \ :c:type:`struct v4l2_fh <v4l2_fh>`\ .
+   Must be called in v4l2_file_operations->release\(\) handler if the driver
+   uses &struct v4l2_fh.
 
 .. _`v4l2_fh_exit`:
 
@@ -177,8 +177,8 @@ Parts of the V4L2 framework using the v4l2_fh must release their
 resources here, too.
 
 .. note::
-   Must be called in v4l2_file_operations->release(\) handler if the
-   driver uses \ :c:type:`struct v4l2_fh <v4l2_fh>`\ .
+   Must be called in v4l2_file_operations->release\(\) handler if the
+   driver uses &struct v4l2_fh.
 
 .. _`v4l2_fh_release`:
 

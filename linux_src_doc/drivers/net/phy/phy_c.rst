@@ -241,7 +241,7 @@ phy_mii_ioctl
         the phy_device struct
 
     :param struct ifreq \*ifr:
-        &struct ifreq for socket ioctl's
+        \ :c:type:`struct ifreq <ifreq>`\  for socket ioctl's
 
     :param int cmd:
         ioctl cmd to execute

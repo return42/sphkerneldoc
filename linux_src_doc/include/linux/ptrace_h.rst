@@ -66,7 +66,7 @@ ptrace_event_enabled
         ptracee of interest
 
     :param int event:
-        %PTRACE_EVENT\_\* to test
+        \ ``PTRACE_EVENT``\ \_\* to test
 
 .. _`ptrace_event_enabled.description`:
 
@@ -87,7 +87,7 @@ ptrace_event
     possibly stop for a ptrace event notification
 
     :param int event:
-        %PTRACE_EVENT\_\* value to report
+        \ ``PTRACE_EVENT``\ \_\* value to report
 
     :param unsigned long message:
         value for \ ``PTRACE_GETEVENTMSG``\  to return
@@ -112,7 +112,7 @@ ptrace_event_pid
     possibly stop for a ptrace event notification
 
     :param int event:
-        %PTRACE_EVENT\_\* value to report
+        \ ``PTRACE_EVENT``\ \_\* value to report
 
     :param struct pid \*pid:
         process identifier for \ ``PTRACE_GETEVENTMSG``\  to return

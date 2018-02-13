@@ -22,8 +22,8 @@ Return the parent blkcg of \ ``blkcg``\ .  Can be called anytime.
 
 .. _`__blkg_lookup`:
 
-__blkg_lookup
-=============
+\__blkg_lookup
+==============
 
 .. c:function:: struct blkcg_gq *__blkg_lookup(struct blkcg *blkcg, struct request_queue *q, bool update_hint)
 
@@ -111,7 +111,7 @@ pd_to_blkg
 Description
 -----------
 
-@pd is policy private data.  Determine the blkg it's associated with.
+\ ``pd``\  is policy private data.  Determine the blkg it's associated with.
 
 .. _`blkg_path`:
 

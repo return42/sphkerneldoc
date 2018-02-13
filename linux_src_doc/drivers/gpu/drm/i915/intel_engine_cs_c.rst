@@ -3,8 +3,8 @@
 
 .. _`__intel_engine_context_size`:
 
-__intel_engine_context_size
-===========================
+\__intel_engine_context_size
+============================
 
 .. c:function:: u32 __intel_engine_context_size(struct drm_i915_private *dev_priv, u8 class)
 

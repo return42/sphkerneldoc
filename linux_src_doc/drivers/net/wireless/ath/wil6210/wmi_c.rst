@@ -8,7 +8,7 @@ wmi_addr_remap
 
 .. c:function:: u32 wmi_addr_remap(u32 x)
 
-    @x - internal address If address have no valid AHB mapping, return 0
+    \ ``x``\  - internal address If address have no valid AHB mapping, return 0
 
     :param u32 x:
         *undescribed*
@@ -20,7 +20,7 @@ wil_find_fw_mapping
 
 .. c:function:: struct fw_map *wil_find_fw_mapping(const char *section)
 
-    @section - section name
+    \ ``section``\  - section name
 
     :param const char \*section:
         *undescribed*
@@ -39,7 +39,7 @@ wmi_buffer_block
 
 .. c:function:: void __iomem *wmi_buffer_block(struct wil6210_priv *wil, __le32 ptr_, u32 size)
 
-    @ptr - internal (linker) fw/ucode address \ ``size``\  - if non zero, validate the block does not exceed the device memory (bar)
+    \ ``ptr``\  - internal (linker) fw/ucode address \ ``size``\  - if non zero, validate the block does not exceed the device memory (bar)
 
     :param struct wil6210_priv \*wil:
         *undescribed*

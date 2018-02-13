@@ -6,7 +6,7 @@
 overview
 ========
 
-&struct drm_bridge represents a device that hangs on to an encoder. These are
+\ :c:type:`struct drm_bridge <drm_bridge>`\  represents a device that hangs on to an encoder. These are
 handy when a regular \ :c:type:`struct drm_encoder <drm_encoder>`\  entity isn't enough to represent the entire
 encoder chain.
 

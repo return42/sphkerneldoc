@@ -135,7 +135,7 @@ bss_sta_index
 bss_dpu_desc_index
     DPU descriptor index is returned from HW after
     config_bss call and is used in TX BD.
-    \_____________________________________________\_
+    \______________________________________________
     \|              \|     STA     \|       AP      \|
     \|______________\|_____________\|_______________\|
     \|    TX BD     \|bss_sta_index\|   sta_index   \|

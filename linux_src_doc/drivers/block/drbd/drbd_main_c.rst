@@ -30,8 +30,8 @@ termination of the connection.
 
 .. _`_tl_restart`:
 
-_tl_restart
-===========
+\_tl_restart
+============
 
 .. c:function:: void _tl_restart(struct drbd_connection *connection, enum drbd_req_event what)
 
@@ -48,7 +48,7 @@ _tl_restart
 Description
 -----------
 
-@what might be one of CONNECTION_LOST_WHILE_PENDING, RESEND, FAIL_FROZEN_DISK_IO,
+\ ``what``\  might be one of CONNECTION_LOST_WHILE_PENDING, RESEND, FAIL_FROZEN_DISK_IO,
 RESTART_FROZEN_DISK_IO.
 
 .. _`tl_clear`:
@@ -205,8 +205,8 @@ code upon failure.
 
 .. _`_drbd_send_ack`:
 
-_drbd_send_ack
-==============
+\_drbd_send_ack
+===============
 
 .. c:function:: int _drbd_send_ack(struct drbd_peer_device *peer_device, enum drbd_packet cmd, u64 sector, u32 blksize, u64 block_id)
 

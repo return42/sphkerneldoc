@@ -159,8 +159,8 @@ Return
 
 .. _`__aa_label_next_not_in_set`:
 
-__aa_label_next_not_in_set
-==========================
+\__aa_label_next_not_in_set
+===========================
 
 .. c:function:: struct aa_profile *__aa_label_next_not_in_set(struct label_it *I, struct aa_label *set, struct aa_label *sub)
 
@@ -208,8 +208,8 @@ else false
 
 .. _`__label_remove`:
 
-__label_remove
-==============
+\__label_remove
+===============
 
 .. c:function:: bool __label_remove(struct aa_label *label, struct aa_label *new)
 
@@ -237,8 +237,8 @@ true if the label was in the tree and removed
 
 .. _`__label_replace`:
 
-__label_replace
-===============
+\__label_replace
+================
 
 .. c:function:: bool __label_replace(struct aa_label *old, struct aa_label *new)
 
@@ -276,8 +276,8 @@ using pointer comparison of the label address would not work)
 
 .. _`__label_insert`:
 
-__label_insert
-==============
+\__label_insert
+===============
 
 .. c:function:: struct aa_label *__label_insert(struct aa_labelset *ls, struct aa_label *label, bool replace)
 
@@ -297,7 +297,7 @@ __label_insert
 Requires
 --------
 
-@ls->lock
+\ ``ls``\ ->lock
 caller to hold a valid ref on l
 if \ ``replace``\  is true l has a preallocated proxy associated
 
@@ -306,14 +306,14 @@ if \ ``replace``\  is true l has a preallocated proxy associated
 Return
 ------
 
-@l if successful in inserting \ ``l``\  - with additional refcount
+\ ``l``\  if successful in inserting \ ``l``\  - with additional refcount
 else ref counted equivalent label that is already in the set,
 the else condition only happens if \ ``replace``\  is false
 
 .. _`__vec_find`:
 
-__vec_find
-==========
+\__vec_find
+===========
 
 .. c:function:: struct aa_label *__vec_find(struct aa_profile **vec, int n)
 
@@ -330,7 +330,7 @@ __vec_find
 Requires
 --------
 
-@vec_labelset(vec) lock held
+\ ``vec_labelset``\ (vec) lock held
 caller to hold a valid ref on l
 
 .. _`__vec_find.return`:
@@ -344,8 +344,8 @@ else NULL if \ ``vec``\  equiv is not in tree
 
 .. _`__label_find`:
 
-__label_find
-============
+\__label_find
+=============
 
 .. c:function:: struct aa_label *__label_find(struct aa_label *label)
 
@@ -623,8 +623,8 @@ labelset that the merged label should be inserted into
 
 .. _`__label_find_merge`:
 
-__label_find_merge
-==================
+\__label_find_merge
+===================
 
 .. c:function:: struct aa_label *__label_find_merge(struct aa_labelset *ls, struct aa_label *a, struct aa_label *b)
 
@@ -1065,8 +1065,8 @@ being destroyed depending on their reference counting
 
 .. _`__label_update`:
 
-__label_update
-==============
+\__label_update
+===============
 
 .. c:function:: struct aa_label *__label_update(struct aa_label *label)
 
@@ -1088,7 +1088,7 @@ else NULL on failure
 Requires
 --------
 
-@ns lock be held
+\ ``ns``\  lock be held
 
 .. _`__label_update.note`:
 
@@ -1100,8 +1100,8 @@ to be updated at a later time.
 
 .. _`__labelset_update`:
 
-__labelset_update
-=================
+\__labelset_update
+==================
 
 .. c:function:: void __labelset_update(struct aa_ns *ns)
 
@@ -1115,7 +1115,7 @@ __labelset_update
 Requires
 --------
 
-@ns lock be held
+\ ``ns``\  lock be held
 
 Walk the labelset ensuring that all labels are up to date and valid
 Any label that has a stale component is marked stale and replaced and
@@ -1126,8 +1126,8 @@ be left in place until the next pass.
 
 .. _`__aa_labelset_update_subtree`:
 
-__aa_labelset_update_subtree
-============================
+\__aa_labelset_update_subtree
+=============================
 
 .. c:function:: void __aa_labelset_update_subtree(struct aa_ns *ns)
 
@@ -1141,7 +1141,7 @@ __aa_labelset_update_subtree
 Requires
 --------
 
-@ns lock be held
+\ ``ns``\  lock be held
 
 Invalidates labels based on \ ``p``\  in \ ``ns``\  and any children namespaces.
 

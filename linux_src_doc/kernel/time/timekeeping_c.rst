@@ -99,8 +99,8 @@ slightly wrong timestamp (a few nanoseconds). See
 
 .. _`__ktime_get_fast_ns`:
 
-__ktime_get_fast_ns
-===================
+\__ktime_get_fast_ns
+====================
 
 .. c:function:: u64 __ktime_get_fast_ns(struct tk_fast *tkf)
 
@@ -270,8 +270,8 @@ as it avoids having to deal with this time offset explicitly.
 
 .. _`__getnstimeofday64`:
 
-__getnstimeofday64
-==================
+\__getnstimeofday64
+===================
 
 .. c:function:: int __getnstimeofday64(struct timespec64 *ts)
 
@@ -405,8 +405,8 @@ value.
 
 .. _`__ktime_get_real_seconds`:
 
-__ktime_get_real_seconds
-========================
+\__ktime_get_real_seconds
+=========================
 
 .. c:function:: time64_t __ktime_get_real_seconds( void)
 
@@ -554,8 +554,8 @@ Adds or subtracts an offset value from the current time.
 
 .. _`__timekeeping_set_tai_offset`:
 
-__timekeeping_set_tai_offset
-============================
+\__timekeeping_set_tai_offset
+=============================
 
 .. c:function:: void __timekeeping_set_tai_offset(struct timekeeper *tk, s32 tai_offset)
 
@@ -697,8 +697,8 @@ XXX - Do be sure to remove it once all arches implement it.
 
 .. _`__timekeeping_inject_sleeptime`:
 
-__timekeeping_inject_sleeptime
-==============================
+\__timekeeping_inject_sleeptime
+===============================
 
 .. c:function:: void __timekeeping_inject_sleeptime(struct timekeeper *tk, struct timespec64 *delta)
 
@@ -751,7 +751,7 @@ timekeeping_rtc_skipsuspend
 
 .. c:function:: bool timekeeping_rtc_skipsuspend( void)
 
-    timekeeping_resume() which is invoked after \ :c:func:`rtc_suspend`\ , so we can't skip \ :c:func:`rtc_suspend`\  surely if system has 1).
+    \ :c:func:`timekeeping_resume`\  which is invoked after \ :c:func:`rtc_suspend`\ , so we can't skip \ :c:func:`rtc_suspend`\  surely if system has 1).
 
     :param  void:
         no arguments

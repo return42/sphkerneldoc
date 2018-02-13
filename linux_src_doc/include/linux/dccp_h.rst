@@ -251,7 +251,7 @@ dccps_xmit_timer
 Description
 -----------
 
-@dccps_swl - sequence number window low
+\ ``dccps_swl``\  - sequence number window low
 \ ``dccps_swh``\  - sequence number window high
 \ ``dccps_awl``\  - acknowledgement number window low
 \ ``dccps_awh``\  - acknowledgement number window high

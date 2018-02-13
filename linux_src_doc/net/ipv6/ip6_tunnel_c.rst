@@ -42,7 +42,7 @@ ip6_tnl_bucket
 Description
 -----------
 
-ip6_tnl_bucket() returns the head of the list matching the
+\ :c:func:`ip6_tnl_bucket`\  returns the head of the list matching the
 \ :c:type:`struct in6_addr <in6_addr>`\  entries laddr and raddr in \ ``p``\ .
 
 .. _`ip6_tnl_bucket.return`:
@@ -134,7 +134,7 @@ ip6_tnl_locate
 Description
 -----------
 
-ip6_tnl_locate() first tries to locate an existing tunnel
+\ :c:func:`ip6_tnl_locate`\  first tries to locate an existing tunnel
 based on \ ``parms``\ . If this is unsuccessful, but \ ``create``\  is set a new
 tunnel device is created and registered for use.
 
@@ -162,7 +162,7 @@ ip6_tnl_dev_uninit
 Description
 -----------
 
-ip6_tnl_dev_uninit() removes tunnel from its list
+\ :c:func:`ip6_tnl_dev_uninit`\  removes tunnel from its list
 
 .. _`ip6_tnl_parse_tlv_enc_lim`:
 
@@ -225,7 +225,7 @@ ip6_tnl_err
 Description
 -----------
 
-ip6_tnl_err() should handle errors in the tunnel according
+\ :c:func:`ip6_tnl_err`\  should handle errors in the tunnel according
 to the specifications in RFC 2473.
 
 .. _`ip6_tnl_addr_conflict`:
@@ -326,7 +326,7 @@ ip6_tnl_change
 Description
 -----------
 
-ip6_tnl_change() updates the tunnel parameters
+\ :c:func:`ip6_tnl_change`\  updates the tunnel parameters
 
 .. _`ip6_tnl_ioctl`:
 
@@ -351,7 +351,7 @@ ip6_tnl_ioctl
 Description
 -----------
 
-ip6_tnl_ioctl() is used for managing IPv6 tunnels
+\ :c:func:`ip6_tnl_ioctl`\  is used for managing IPv6 tunnels
 from userspace.
 
 .. _`ip6_tnl_ioctl.the-possible-commands-are-the-following`:
@@ -359,7 +359,7 @@ from userspace.
 The possible commands are the following
 ---------------------------------------
 
-%SIOCGETTUNNEL: get tunnel parameters for device
+\ ``SIOCGETTUNNEL``\ : get tunnel parameters for device
 \ ``SIOCADDTUNNEL``\ : add tunnel matching given tunnel parameters
 \ ``SIOCCHGTUNNEL``\ : change tunnel parameters to those given
 \ ``SIOCDELTUNNEL``\ : delete tunnel

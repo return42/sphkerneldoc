@@ -77,8 +77,8 @@ Returns hwirq value on success and INVALID_HWIRQ on failure.
 
 .. _`__ipi_send_single`:
 
-__ipi_send_single
-=================
+\__ipi_send_single
+==================
 
 .. c:function:: int __ipi_send_single(struct irq_desc *desc, unsigned int cpu)
 
@@ -103,8 +103,8 @@ Returns zero on success and negative error number on failure.
 
 .. _`__ipi_send_mask`:
 
-__ipi_send_mask
-===============
+\__ipi_send_mask
+================
 
 .. c:function:: int __ipi_send_mask(struct irq_desc *desc, const struct cpumask *dest)
 

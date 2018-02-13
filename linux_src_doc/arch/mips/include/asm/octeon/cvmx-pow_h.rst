@@ -118,8 +118,8 @@ Returns WQE pointer
 
 .. _`__cvmx_pow_warn_if_pending_switch`:
 
-__cvmx_pow_warn_if_pending_switch
-=================================
+\__cvmx_pow_warn_if_pending_switch
+==================================
 
 .. c:function:: void __cvmx_pow_warn_if_pending_switch(const char *function)
 

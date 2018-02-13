@@ -161,7 +161,7 @@ af_alg_sndbuf
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``return``\  number of bytes still available
 
 .. _`af_alg_writable`:
@@ -179,7 +179,7 @@ af_alg_writable
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``return``\  true => writable, false => not writable
 
 .. _`af_alg_rcvbuf`:
@@ -197,7 +197,7 @@ af_alg_rcvbuf
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``return``\  number of bytes still available
 
 .. _`af_alg_readable`:
@@ -215,7 +215,7 @@ af_alg_readable
 Description
 -----------
 
-@sk socket of connection to user space
+\ ``sk``\  socket of connection to user space
 \ ``return``\  true => writable, false => not writable
 
 .. This file was automatic generated / don't edit.

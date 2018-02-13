@@ -24,8 +24,8 @@ Returns a node pointer with refcount incremented, use
 
 .. _`__of_find_n_match_cpu_property`:
 
-__of_find_n_match_cpu_property
-==============================
+\__of_find_n_match_cpu_property
+===============================
 
 .. c:function:: bool __of_find_n_match_cpu_property(struct device_node *cpun, const char *prop_name, int cpu, unsigned int *thread)
 
@@ -98,8 +98,8 @@ Returns -ENODEV if the CPU is not found.
 
 .. _`__of_device_is_compatible`:
 
-__of_device_is_compatible
-=========================
+\__of_device_is_compatible
+==========================
 
 .. c:function:: int __of_device_is_compatible(const struct device_node *device, const char *compat, const char *type, const char *name)
 
@@ -172,8 +172,8 @@ compatible property.
 
 .. _`__of_device_is_available`:
 
-__of_device_is_available
-========================
+\__of_device_is_available
+=========================
 
 .. c:function:: bool __of_device_is_available(const struct device_node *device)
 
@@ -775,8 +775,8 @@ phandle.
 
 .. _`__of_add_property`:
 
-__of_add_property
-=================
+\__of_add_property
+==================
 
 .. c:function:: int __of_add_property(struct device_node *np, struct property *prop)
 

@@ -97,7 +97,7 @@ dccph_seq
 Description
 -----------
 
-@dccph_sport - Relevant port on the endpoint that sent this packet
+\ ``dccph_sport``\  - Relevant port on the endpoint that sent this packet
 \ ``dccph_dport``\  - Relevant port on the other endpoint
 \ ``dccph_doff``\  - Data Offset from the start of the DCCP header, in 32-bit words
 \ ``dccph_ccval``\  - Used by the HC-Sender CCID
@@ -140,7 +140,7 @@ dccph_seq_low
 Description
 -----------
 
-@dccph_seq_low - low 24 bits of a 48 bit seq packet
+\ ``dccph_seq_low``\  - low 24 bits of a 48 bit seq packet
 
 .. _`dccp_hdr_request`:
 
@@ -175,7 +175,7 @@ dccph_req_service
 Description
 -----------
 
-@dccph_req_service - Service to which the client app wants to connect
+\ ``dccph_req_service``\  - Service to which the client app wants to connect
 
 .. _`dccp_hdr_ack_bits`:
 
@@ -218,7 +218,7 @@ dccph_ack_nr_low
 Description
 -----------
 
-@dccph_resp_ack_nr_high - 48 bit ack number high order bits, contains GSR
+\ ``dccph_resp_ack_nr_high``\  - 48 bit ack number high order bits, contains GSR
 \ ``dccph_resp_ack_nr_low``\  - 48 bit ack number low order bits, contains GSR
 
 .. _`dccp_hdr_response`:
@@ -258,7 +258,7 @@ dccph_resp_service
 Description
 -----------
 
-@dccph_resp_ack - 48 bit Acknowledgment Number Subheader (5.3)
+\ ``dccph_resp_ack``\  - 48 bit Acknowledgment Number Subheader (5.3)
 \ ``dccph_resp_service``\  - Echoes the Service Code on a received DCCP-Request
 
 .. _`dccp_hdr_reset`:
@@ -301,7 +301,7 @@ dccph_reset_data
 Description
 -----------
 
-@dccph_reset_ack - 48 bit Acknowledgment Number Subheader (5.6)
+\ ``dccph_reset_ack``\  - 48 bit Acknowledgment Number Subheader (5.6)
 \ ``dccph_reset_code``\  - one of \ ``dccp_reset_codes``\ 
 \ ``dccph_reset_data``\  - the Data 1 ... Data 3 fields from 5.6
 

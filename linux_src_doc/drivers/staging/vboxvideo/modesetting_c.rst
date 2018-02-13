@@ -71,7 +71,7 @@ hgsmi_get_mode_hints
 
 .. c:function:: int hgsmi_get_mode_hints(struct gen_pool *ctx, unsigned int screens, struct vbva_modehint *hints)
 
-    @param  ctx      The context containing the heap to use. \ ``param``\   screens  The number of screens to query hints for, starting at 0. \ ``param``\   hints    Array of vbva_modehint structures for receiving the hints. \ ``returns``\  0 on success, -errno on failure
+    \ ``param``\   ctx      The context containing the heap to use. \ ``param``\   screens  The number of screens to query hints for, starting at 0. \ ``param``\   hints    Array of vbva_modehint structures for receiving the hints. \ ``returns``\  0 on success, -errno on failure
 
     :param struct gen_pool \*ctx:
         *undescribed*

@@ -18,7 +18,7 @@ cgroup_ssid_enabled
 Description
 -----------
 
-cgroup_subsys_enabled() can only be used with literal subsys names which
+\ :c:func:`cgroup_subsys_enabled`\  can only be used with literal subsys names which
 is fine for individual subsystems but unsuitable for cgroup core.  This
 is slower \ :c:func:`static_key_enabled`\  based test indexed by \ ``ssid``\ .
 
@@ -285,7 +285,7 @@ css_set_populated
 Description
 -----------
 
-css_set_populated() should be the same as !!cset->nr_tasks at steady
+\ :c:func:`css_set_populated`\  should be the same as !!cset->nr_tasks at steady
 state. However, \ :c:func:`css_set_populated`\  can be called while a task is being
 added to or removed from the linked list before the nr_tasks is
 properly updated. Hence, we can't just look at ->nr_tasks here.
@@ -342,7 +342,7 @@ css_set_update_populated
 Description
 -----------
 
-@cset is either getting the first task or losing the last.  Update the
+\ ``cset``\  is either getting the first task or losing the last.  Update the
 populated counters of all associated cgroups accordingly.
 
 .. _`css_set_move_task`:
@@ -697,7 +697,7 @@ cgroup_taskset_first
 Description
 -----------
 
-@tset iteration is initialized and the first task is returned.
+\ ``tset``\  iteration is initialized and the first task is returned.
 
 .. _`cgroup_taskset_next`:
 
@@ -923,7 +923,7 @@ cgroup_update_dfl_csses
 Description
 -----------
 
-@cgrp's control masks have changed and its subtree's css associations
+\ ``cgrp``\ 's control masks have changed and its subtree's css associations
 need to be updated accordingly.  This function looks up all css_sets
 which are attached to the subtree, creates the matching updated css_sets
 and migrates the tasks to the new ones.
@@ -966,7 +966,7 @@ cgroup_save_control
 Description
 -----------
 
-Save ->subtree_control and ->subtree_ss_mask to the respective old\_
+Save ->subtree_control and ->subtree_ss_mask to the respective old_
 prefixed fields for \ ``cgrp``\ 's subtree including \ ``cgrp``\  itself.
 
 .. _`cgroup_propagate_control`:
@@ -1007,7 +1007,7 @@ cgroup_restore_control
 Description
 -----------
 
-Restore ->subtree_control and ->subtree_ss_mask from the respective old\_
+Restore ->subtree_control and ->subtree_ss_mask from the respective old_
 prefixed fields for \ ``cgrp``\ 's subtree including \ ``cgrp``\  itself.
 
 .. _`cgroup_apply_control_enable`:
@@ -1281,7 +1281,7 @@ cgroup_file_notify
 Description
 -----------
 
-@cfile must have been obtained by setting cftype->file_offset.
+\ ``cfile``\  must have been obtained by setting cftype->file_offset.
 
 .. _`css_next_child`:
 

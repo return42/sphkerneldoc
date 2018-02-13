@@ -51,7 +51,7 @@ object, in that several ioctls are banned. These are the CPU access
 ioctls
 ------
 
-mmap(), pwrite and pread. In practice, you are expected to use
+\ :c:func:`mmap`\ , pwrite and pread. In practice, you are expected to use
 direct access via your pointer rather than use those ioctls. Another
 restriction is that we do not allow userptr surfaces to be pinned to the
 hardware and so we reject any attempt to create a framebuffer out of a

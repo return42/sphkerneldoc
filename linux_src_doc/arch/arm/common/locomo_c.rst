@@ -3,8 +3,8 @@
 
 .. _`__locomo_probe`:
 
-__locomo_probe
-==============
+\__locomo_probe
+===============
 
 .. c:function:: int __locomo_probe(struct device *me, struct resource *mem, int irq)
 
@@ -32,7 +32,7 @@ before any other locomo-specific code.
 Return
 ------
 
-%-ENODEV        device not found.
+\ ``-ENODEV``\         device not found.
 \ ``-EBUSY``\          physical address already marked in-use.
 \ ``0``\               successful.
 

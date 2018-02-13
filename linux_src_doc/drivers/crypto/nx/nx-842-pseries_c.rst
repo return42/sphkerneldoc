@@ -115,7 +115,7 @@ nx842_OF_set_defaults
 Description
 -----------
 
-@devdata - struct nx842_devdata to update
+\ ``devdata``\  - struct nx842_devdata to update
 
 .. _`nx842_of_set_defaults.return`:
 

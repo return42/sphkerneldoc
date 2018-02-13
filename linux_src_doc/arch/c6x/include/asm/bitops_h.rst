@@ -3,8 +3,8 @@
 
 .. _`__ffs`:
 
-__ffs
-=====
+\__ffs
+======
 
 .. c:function:: unsigned long __ffs(unsigned long x)
 

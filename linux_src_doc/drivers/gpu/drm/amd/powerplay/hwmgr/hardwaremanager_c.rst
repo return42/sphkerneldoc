@@ -19,7 +19,7 @@ phm_start_thermal_controller
 Description
 -----------
 
-@param    pHwMgr  the address of the powerplay hardware manager.
+\ ``param``\     pHwMgr  the address of the powerplay hardware manager.
 \ ``param``\     pTemperatureRange the address of the structure holding the temperature range.
 \ ``exception``\  PP_Result_Failed if any of the paramters is NULL, otherwise the return value from the dispatcher.
 
@@ -47,7 +47,7 @@ phm_get_clock_info
 Description
 -----------
 
-@param    pHwMgr  the address of the powerplay hardware manager.
+\ ``param``\     pHwMgr  the address of the powerplay hardware manager.
 \ ``param``\     pPowerState the address of the Power State structure.
 \ ``param``\     pClockInfo the address of PP_ClockInfo structure where the result will be returned.
 \ ``exception``\  PP_Result_Failed if any of the paramters is NULL, otherwise the return value from the back-end.

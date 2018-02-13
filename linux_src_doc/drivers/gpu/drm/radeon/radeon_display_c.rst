@@ -18,7 +18,7 @@ radeon_unpin_work_func
 Description
 -----------
 
-@__work - kernel work item
+\ ``__work``\  - kernel work item
 
 Unpin the old frame buffer object outside of the interrupt handler
 
@@ -61,7 +61,7 @@ radeon_flip_work_func
 Description
 -----------
 
-@work - kernel work item
+\ ``work``\  - kernel work item
 
 Wait for the buffer object to become idle and do the actual page flip
 

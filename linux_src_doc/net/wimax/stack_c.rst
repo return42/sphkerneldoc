@@ -38,7 +38,7 @@ This implements the state changes for the wimax devices. It will
 NOTE
 ----
 
-@wimax_dev must be locked
+\ ``wimax_dev``\  must be locked
 
 .. _`wimax_state_get`:
 

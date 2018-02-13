@@ -151,7 +151,7 @@ lock
 statelock
     Lock on this structure for tx list.
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 rxd
@@ -160,7 +160,7 @@ rxd
 txd
     Space for transmitting SPI data, in DMA-able space.
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 tx_space

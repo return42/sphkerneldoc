@@ -218,7 +218,7 @@ nvdimm_read_bytes
 Description
 -----------
 
-@buf is up-to-date upon return from this routine.
+\ ``buf``\  is up-to-date upon return from this routine.
 
 .. _`nvdimm_write_bytes`:
 

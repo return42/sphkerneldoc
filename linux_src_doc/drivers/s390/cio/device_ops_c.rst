@@ -142,7 +142,7 @@ ccw_device_clear
 Description
 -----------
 
-ccw_device_clear() calls csch on \ ``cdev``\ 's subchannel.
+\ :c:func:`ccw_device_clear`\  calls csch on \ ``cdev``\ 's subchannel.
 
 .. _`ccw_device_clear.return`:
 
@@ -418,7 +418,7 @@ ccw_device_halt
 Description
 -----------
 
-ccw_device_halt() calls hsch on \ ``cdev``\ 's subchannel.
+\ :c:func:`ccw_device_halt`\  calls hsch on \ ``cdev``\ 's subchannel.
 
 .. _`ccw_device_halt.return`:
 
@@ -454,7 +454,7 @@ ccw_device_resume
 Description
 -----------
 
-ccw_device_resume() calls rsch on \ ``cdev``\ 's subchannel.
+\ :c:func:`ccw_device_resume`\  calls rsch on \ ``cdev``\ 's subchannel.
 
 .. _`ccw_device_resume.return`:
 

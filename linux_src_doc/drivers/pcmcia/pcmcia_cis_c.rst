@@ -27,7 +27,7 @@ pccard_read_tuple
 Description
 -----------
 
-pccard_read_tuple() reads out one tuple and attempts to parse it
+\ :c:func:`pccard_read_tuple`\  reads out one tuple and attempts to parse it
 
 .. _`pccard_loop_tuple`:
 
@@ -63,7 +63,7 @@ pccard_loop_tuple
 Description
 -----------
 
-pccard_loop_tuple() loops over all CIS entries of type \ ``function``\ , and
+\ :c:func:`pccard_loop_tuple`\  loops over all CIS entries of type \ ``function``\ , and
 calls the \ ``loop_tuple``\  function for each entry. If the call to \ ``loop_tuple``\ 
 returns 0, the loop exits. Returns 0 on success or errorcode otherwise.
 
@@ -102,7 +102,7 @@ pcmcia_do_loop_config
 Description
 -----------
 
-pcmcia_do_loop_config() is the internal callback for the call from
+\ :c:func:`pcmcia_do_loop_config`\  is the internal callback for the call from
 \ :c:func:`pcmcia_loop_config`\  to \ :c:func:`pccard_loop_tuple`\ . Data is transferred
 by a struct pcmcia_cfg_mem.
 
@@ -131,7 +131,7 @@ pcmcia_loop_config
 Description
 -----------
 
-pcmcia_loop_config() loops over all configuration options, and calls
+\ :c:func:`pcmcia_loop_config`\  loops over all configuration options, and calls
 the driver-specific \ :c:func:`conf_check`\  for each one, checking whether
 it is a valid one. Returns 0 on success or errorcode otherwise.
 
@@ -158,7 +158,7 @@ pcmcia_do_loop_tuple
 Description
 -----------
 
-pcmcia_do_loop_tuple() is the internal callback for the call from
+\ :c:func:`pcmcia_do_loop_tuple`\  is the internal callback for the call from
 \ :c:func:`pcmcia_loop_tuple`\  to \ :c:func:`pccard_loop_tuple`\ . Data is transferred
 by a struct pcmcia_cfg_mem.
 
@@ -189,7 +189,7 @@ pcmcia_loop_tuple
 Description
 -----------
 
-pcmcia_loop_tuple() loops over all CIS entries of type \ ``function``\ , and
+\ :c:func:`pcmcia_loop_tuple`\  loops over all CIS entries of type \ ``function``\ , and
 calls the \ ``loop_tuple``\  function for each entry. If the call to \ ``loop_tuple``\ 
 returns 0, the loop exits. Returns 0 on success or errorcode otherwise.
 
@@ -216,7 +216,7 @@ pcmcia_do_get_tuple
 Description
 -----------
 
-pcmcia_do_get_tuple() is the internal callback for the call from
+\ :c:func:`pcmcia_do_get_tuple`\  is the internal callback for the call from
 \ :c:func:`pcmcia_get_tuple`\  to \ :c:func:`pcmcia_loop_tuple`\ . As we're only interested in
 the first tuple, return 0 unconditionally. Create a memory buffer large
 enough to hold the content of the tuple, and fill it with the tuple data.
@@ -245,7 +245,7 @@ pcmcia_get_tuple
 Description
 -----------
 
-pcmcia_get_tuple() gets the content of the first CIS entry of type \ ``code``\ .
+\ :c:func:`pcmcia_get_tuple`\  gets the content of the first CIS entry of type \ ``code``\ .
 It returns the buffer length (or zero). The caller is responsible to free
 the buffer passed in \ ``buf``\ .
 
@@ -272,7 +272,7 @@ pcmcia_do_get_mac
 Description
 -----------
 
-pcmcia_do_get_mac() is the internal callback for the call from
+\ :c:func:`pcmcia_do_get_mac`\  is the internal callback for the call from
 \ :c:func:`pcmcia_get_mac_from_cis`\  to \ :c:func:`pcmcia_loop_tuple`\ . We check whether the
 tuple contains a proper LAN_NODE_ID of length 6, and copy the data
 to struct net_device->dev_addr[i].
@@ -297,7 +297,7 @@ pcmcia_get_mac_from_cis
 Description
 -----------
 
-pcmcia_get_mac_from_cis() reads out the hardware MAC address from
+\ :c:func:`pcmcia_get_mac_from_cis`\  reads out the hardware MAC address from
 CISTPL_FUNCE and stores it into struct net_device \*dev->dev_addr which
 must be set up properly by the driver (see examples!).
 

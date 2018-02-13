@@ -25,8 +25,8 @@ length of mangled name
 
 .. _`__aafs_setup_d_inode`:
 
-__aafs_setup_d_inode
-====================
+\__aafs_setup_d_inode
+=====================
 
 .. c:function:: int __aafs_setup_d_inode(struct inode *dir, struct dentry *dentry, umode_t mode, void *data, char *link, const struct file_operations *fops, const struct inode_operations *iops)
 
@@ -351,8 +351,8 @@ number of bytes written or -errno on failure
 
 .. _`__next_ns`:
 
-__next_ns
-=========
+\__next_ns
+==========
 
 .. c:function:: struct aa_ns *__next_ns(struct aa_ns *root, struct aa_ns *ns)
 
@@ -395,8 +395,8 @@ will not unlock root->lock
 
 .. _`__first_profile`:
 
-__first_profile
-===============
+\__first_profile
+================
 
 .. c:function:: struct aa_profile *__first_profile(struct aa_ns *root, struct aa_ns *ns)
 
@@ -424,8 +424,8 @@ profile->ns.lock to be held
 
 .. _`__next_profile`:
 
-__next_profile
-==============
+\__next_profile
+===============
 
 .. c:function:: struct aa_profile *__next_profile(struct aa_profile *p)
 

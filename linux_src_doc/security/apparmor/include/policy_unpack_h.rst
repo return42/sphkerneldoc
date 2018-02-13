@@ -3,8 +3,8 @@
 
 .. _`__aa_get_loaddata`:
 
-__aa_get_loaddata
-=================
+\__aa_get_loaddata
+==================
 
 .. c:function:: struct aa_loaddata *__aa_get_loaddata(struct aa_loaddata *data)
 
@@ -26,7 +26,7 @@ being repeated.
 Requires
 --------
 
-@data->ns->lock held, and the return code MUST be checked
+\ ``data``\ ->ns->lock held, and the return code MUST be checked
 
 Use only from inode->i_private and \ ``data``\ ->list found references
 
@@ -54,7 +54,7 @@ point to reference
 Requires
 --------
 
-@data to have a valid reference count on it. It is a bug
+\ ``data``\  to have a valid reference count on it. It is a bug
 if the race to reap can be encountered when it is used.
 
 .. This file was automatic generated / don't edit.

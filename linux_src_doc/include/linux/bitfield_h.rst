@@ -43,7 +43,7 @@ FIELD_PREP
 Description
 -----------
 
-FIELD_PREP() masks and shifts up the value.  The result should
+\ :c:func:`FIELD_PREP`\  masks and shifts up the value.  The result should
 be combined with other fields of the bitfield using logical OR.
 
 .. _`field_get`:
@@ -66,7 +66,7 @@ FIELD_GET
 Description
 -----------
 
-FIELD_GET() extracts the field specified by \ ``_mask``\  from the
+\ :c:func:`FIELD_GET`\  extracts the field specified by \ ``_mask``\  from the
 bitfield passed in as \ ``_reg``\  by masking and shifting it down.
 
 .. This file was automatic generated / don't edit.

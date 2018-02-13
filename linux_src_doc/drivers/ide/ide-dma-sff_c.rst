@@ -67,7 +67,7 @@ ide_build_dmatable
 Description
 -----------
 
-ide_build_dmatable() prepares a dma request. We map the command
+\ :c:func:`ide_build_dmatable`\  prepares a dma request. We map the command
 to get the pci bus addresses of the buffers and then build up
 the PRD table that the IDE layer wants to be fed.
 

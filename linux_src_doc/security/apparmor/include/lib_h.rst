@@ -71,8 +71,8 @@ the tail (base profile name) name component of an hname
 
 .. _`__policy_find`:
 
-__policy_find
-=============
+\__policy_find
+==============
 
 .. c:function:: struct aa_policy *__policy_find(struct list_head *head, const char *name)
 
@@ -100,8 +100,8 @@ unrefcounted policy that match \ ``name``\  or NULL if not found
 
 .. _`__policy_strn_find`:
 
-__policy_strn_find
-==================
+\__policy_strn_find
+===================
 
 .. c:function:: struct aa_policy *__policy_strn_find(struct list_head *head, const char *str, int len)
 

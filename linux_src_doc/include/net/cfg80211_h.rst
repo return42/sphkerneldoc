@@ -838,7 +838,7 @@ cfg80211_chandef_identical
 Return
 ------
 
-%true if the channels defined by the channel definitions are
+\ ``true``\  if the channels defined by the channel definitions are
 identical, \ ``false``\  otherwise.
 
 .. _`cfg80211_chandef_compatible`:
@@ -861,7 +861,7 @@ cfg80211_chandef_compatible
 Return
 ------
 
-%NULL if the given channel definitions are incompatible,
+\ ``NULL``\  if the given channel definitions are incompatible,
 chandef1 or chandef2 otherwise.
 
 .. _`cfg80211_chandef_valid`:
@@ -881,7 +881,7 @@ cfg80211_chandef_valid
 Return
 ------
 
-%true if the channel definition is valid. \ ``false``\  otherwise.
+\ ``true``\  if the channel definition is valid. \ ``false``\  otherwise.
 
 .. _`cfg80211_chandef_usable`:
 
@@ -906,7 +906,7 @@ cfg80211_chandef_usable
 Return
 ------
 
-%true if secondary channels are usable. \ ``false``\  otherwise.
+\ ``true``\  if secondary channels are usable. \ ``false``\  otherwise.
 
 .. _`cfg80211_chandef_dfs_required`:
 
@@ -1540,7 +1540,8 @@ radar_detect
 
 iftype_num
     array with the number of interfaces of each interface
-    type.  The index is the interface type as specified in \ :c:type:`enum nl80211_iftype <nl80211_iftype>`\ .
+    type.  The index is the interface type as specified in \ :c:type:`struct enum <enum>`\ 
+    nl80211_iftype.
 
 new_beacon_int
     set this to the beacon interval of a new interface
@@ -2468,25 +2469,25 @@ Constants
 ---------
 
 MPATH_INFO_FRAME_QLEN
-    @frame_qlen filled
+    \ ``frame_qlen``\  filled
 
 MPATH_INFO_SN
-    @sn filled
+    \ ``sn``\  filled
 
 MPATH_INFO_METRIC
-    @metric filled
+    \ ``metric``\  filled
 
 MPATH_INFO_EXPTIME
-    @exptime filled
+    \ ``exptime``\  filled
 
 MPATH_INFO_DISCOVERY_TIMEOUT
-    @discovery_timeout filled
+    \ ``discovery_timeout``\  filled
 
 MPATH_INFO_DISCOVERY_RETRIES
-    @discovery_retries filled
+    \ ``discovery_retries``\  filled
 
 MPATH_INFO_FLAGS
-    @flags filled
+    \ ``flags``\  filled
 
 .. _`mpath_info_flags.description`:
 
@@ -3729,7 +3730,7 @@ Note that the return value is an RCU-protected pointer, so
 Return
 ------
 
-%NULL if not found.
+\ ``NULL``\  if not found.
 
 .. _`cfg80211_auth_request`:
 
@@ -5358,13 +5359,13 @@ Members
 -------
 
 type
-    &enum nl80211_nan_function_type
+    \ :c:type:`enum nl80211_nan_function_type <nl80211_nan_function_type>`\ 
 
 service_id
     the service ID of the function
 
 publish_type
-    &nl80211_nan_publish_type
+    \ :c:type:`struct nl80211_nan_publish_type <nl80211_nan_publish_type>`\ 
 
 close_range
     if true, the range should be limited. Threshold is
@@ -7921,7 +7922,7 @@ cfg80211_find_ie_match
 Return
 ------
 
-%NULL if the element ID could not be found or if
+\ ``NULL``\  if the element ID could not be found or if
 the element is invalid (claims to be longer than the given
 data) or if the byte array doesn't match, or a pointer to the first
 byte of the requested element, that is the byte containing the
@@ -7959,7 +7960,7 @@ cfg80211_find_ie
 Return
 ------
 
-%NULL if the element ID could not be found or if
+\ ``NULL``\  if the element ID could not be found or if
 the element is invalid (claims to be longer than the given
 data), or a pointer to the first byte of the requested
 element, that is the byte containing the element ID.
@@ -7995,7 +7996,7 @@ cfg80211_find_ext_ie
 Return
 ------
 
-%NULL if the extended element ID could not be found or if
+\ ``NULL``\  if the extended element ID could not be found or if
 the element is invalid (claims to be longer than the given
 data), or a pointer to the first byte of the requested
 element, that is the byte containing the element ID.
@@ -8034,7 +8035,7 @@ cfg80211_find_vendor_ie
 Return
 ------
 
-%NULL if the vendor specific element ID could not be found or if the
+\ ``NULL``\  if the vendor specific element ID could not be found or if the
 element is invalid (claims to be longer than the given data), or a pointer to
 the first byte of the requested element, that is the byte containing the
 element ID.
@@ -9840,7 +9841,7 @@ mode interface, but is not processed in kernel.
 Return
 ------
 
-%true if a user space application has registered for this frame.
+\ ``true``\  if a user space application has registered for this frame.
 For action frames, that makes it responsible for rejecting unrecognized
 action frames; \ ``false``\  otherwise, in which case for action frames the
 driver is responsible for rejecting the frame.
@@ -10122,7 +10123,7 @@ sender.
 Return
 ------
 
-%true if the frame was passed to userspace (or this failed
+\ ``true``\  if the frame was passed to userspace (or this failed
 for a reason other than not having a subscription.)
 
 .. _`cfg80211_rx_unexpected_4addr_frame`:
@@ -10158,7 +10159,7 @@ station to avoid event flooding.
 Return
 ------
 
-%true if the frame was passed to userspace (or this failed
+\ ``true``\  if the frame was passed to userspace (or this failed
 for a reason other than not having a subscription.)
 
 .. _`cfg80211_probe_status`:
@@ -10241,7 +10242,7 @@ cfg80211_reg_can_beacon
 Return
 ------
 
-%true if there is no secondary channel or the secondary channel(s)
+\ ``true``\  if there is no secondary channel or the secondary channel(s)
 can be used for beaconing (i.e. is not a radar channel etc.)
 
 .. _`cfg80211_reg_can_beacon_relax`:
@@ -10267,7 +10268,7 @@ cfg80211_reg_can_beacon_relax
 Return
 ------
 
-%true if there is no secondary channel or the secondary channel(s)
+\ ``true``\  if there is no secondary channel or the secondary channel(s)
 can be used for beaconing (i.e. is not a radar channel etc.). This version
 also checks if IR-relaxation conditions apply, to allow beaconing under
 more permissive conditions.

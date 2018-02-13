@@ -27,7 +27,7 @@ ib_pack
 Description
 -----------
 
-ib_pack() packs a list of structure fields into a buffer,
+\ :c:func:`ib_pack`\  packs a list of structure fields into a buffer,
 controlled by the array of fields in \ ``desc``\ .
 
 .. _`ib_unpack`:
@@ -56,7 +56,7 @@ ib_unpack
 Description
 -----------
 
-ib_pack() unpacks a list of structure fields from a buffer,
+\ :c:func:`ib_pack`\  unpacks a list of structure fields from a buffer,
 controlled by the array of fields in \ ``desc``\ .
 
 .. This file was automatic generated / don't edit.

@@ -3,8 +3,8 @@
 
 .. _`__account_scheduler_latency`:
 
-__account_scheduler_latency
-===========================
+\__account_scheduler_latency
+============================
 
 .. c:function:: void __sched __account_scheduler_latency(struct task_struct *tsk, int usecs, int inter)
 

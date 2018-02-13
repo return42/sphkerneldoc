@@ -710,17 +710,17 @@ for_each_oldnew_connector_in_state
     iterate over all connectors in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  connector:
-        &struct drm_connector iteration cursor
+        \ :c:type:`struct drm_connector <drm_connector>`\  iteration cursor
 
     :param  old_connector_state:
-        &struct drm_connector_state iteration cursor for the
+        \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         old state
 
     :param  new_connector_state:
-        &struct drm_connector_state iteration cursor for the
+        \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         new state
 
     :param  __i:
@@ -745,13 +745,13 @@ for_each_old_connector_in_state
     iterate over all connectors in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  connector:
-        &struct drm_connector iteration cursor
+        \ :c:type:`struct drm_connector <drm_connector>`\  iteration cursor
 
     :param  old_connector_state:
-        &struct drm_connector_state iteration cursor for the
+        \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         old state
 
     :param  __i:
@@ -776,13 +776,13 @@ for_each_new_connector_in_state
     iterate over all connectors in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  connector:
-        &struct drm_connector iteration cursor
+        \ :c:type:`struct drm_connector <drm_connector>`\  iteration cursor
 
     :param  new_connector_state:
-        &struct drm_connector_state iteration cursor for the
+        \ :c:type:`struct drm_connector_state <drm_connector_state>`\  iteration cursor for the
         new state
 
     :param  __i:
@@ -807,16 +807,16 @@ for_each_oldnew_crtc_in_state
     iterate over all CRTCs in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  crtc:
-        &struct drm_crtc iteration cursor
+        \ :c:type:`struct drm_crtc <drm_crtc>`\  iteration cursor
 
     :param  old_crtc_state:
-        &struct drm_crtc_state iteration cursor for the old state
+        \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the old state
 
     :param  new_crtc_state:
-        &struct drm_crtc_state iteration cursor for the new state
+        \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the new state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -840,13 +840,13 @@ for_each_old_crtc_in_state
     iterate over all CRTCs in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  crtc:
-        &struct drm_crtc iteration cursor
+        \ :c:type:`struct drm_crtc <drm_crtc>`\  iteration cursor
 
     :param  old_crtc_state:
-        &struct drm_crtc_state iteration cursor for the old state
+        \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the old state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -870,13 +870,13 @@ for_each_new_crtc_in_state
     iterate over all CRTCs in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  crtc:
-        &struct drm_crtc iteration cursor
+        \ :c:type:`struct drm_crtc <drm_crtc>`\  iteration cursor
 
     :param  new_crtc_state:
-        &struct drm_crtc_state iteration cursor for the new state
+        \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  iteration cursor for the new state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -900,16 +900,16 @@ for_each_oldnew_plane_in_state
     iterate over all planes in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  plane:
-        &struct drm_plane iteration cursor
+        \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
 
     :param  old_plane_state:
-        &struct drm_plane_state iteration cursor for the old state
+        \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the old state
 
     :param  new_plane_state:
-        &struct drm_plane_state iteration cursor for the new state
+        \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the new state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -933,13 +933,13 @@ for_each_old_plane_in_state
     iterate over all planes in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  plane:
-        &struct drm_plane iteration cursor
+        \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
 
     :param  old_plane_state:
-        &struct drm_plane_state iteration cursor for the old state
+        \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the old state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -963,13 +963,13 @@ for_each_new_plane_in_state
     iterate over all planes in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  plane:
-        &struct drm_plane iteration cursor
+        \ :c:type:`struct drm_plane <drm_plane>`\  iteration cursor
 
     :param  new_plane_state:
-        &struct drm_plane_state iteration cursor for the new state
+        \ :c:type:`struct drm_plane_state <drm_plane_state>`\  iteration cursor for the new state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -993,16 +993,16 @@ for_each_oldnew_private_obj_in_state
     iterate over all private objects in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  obj:
-        &struct drm_private_obj iteration cursor
+        \ :c:type:`struct drm_private_obj <drm_private_obj>`\  iteration cursor
 
     :param  old_obj_state:
-        &struct drm_private_state iteration cursor for the old state
+        \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the old state
 
     :param  new_obj_state:
-        &struct drm_private_state iteration cursor for the new state
+        \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the new state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -1026,13 +1026,13 @@ for_each_old_private_obj_in_state
     iterate over all private objects in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  obj:
-        &struct drm_private_obj iteration cursor
+        \ :c:type:`struct drm_private_obj <drm_private_obj>`\  iteration cursor
 
     :param  old_obj_state:
-        &struct drm_private_state iteration cursor for the old state
+        \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the old state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -1056,13 +1056,13 @@ for_each_new_private_obj_in_state
     iterate over all private objects in an atomic update
 
     :param  __state:
-        &struct drm_atomic_state pointer
+        \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  pointer
 
     :param  obj:
-        &struct drm_private_obj iteration cursor
+        \ :c:type:`struct drm_private_obj <drm_private_obj>`\  iteration cursor
 
     :param  new_obj_state:
-        &struct drm_private_state iteration cursor for the new state
+        \ :c:type:`struct drm_private_state <drm_private_state>`\  iteration cursor for the new state
 
     :param  __i:
         int iteration cursor, for macro-internal use
@@ -1086,7 +1086,7 @@ drm_atomic_crtc_needs_modeset
     compute combined modeset need
 
     :param const struct drm_crtc_state \*state:
-        &drm_crtc_state for the CRTC
+        \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  for the CRTC
 
 .. _`drm_atomic_crtc_needs_modeset.description`:
 

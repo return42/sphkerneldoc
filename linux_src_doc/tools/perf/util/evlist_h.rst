@@ -3,8 +3,8 @@
 
 .. _`__evlist__for_each_entry`:
 
-__evlist__for_each_entry
-========================
+\__evlist__for_each_entry
+=========================
 
 .. c:function::  __evlist__for_each_entry( list,  evsel)
 
@@ -33,8 +33,8 @@ evlist__for_each_entry
 
 .. _`__evlist__for_each_entry_continue`:
 
-__evlist__for_each_entry_continue
-=================================
+\__evlist__for_each_entry_continue
+==================================
 
 .. c:function::  __evlist__for_each_entry_continue( list,  evsel)
 
@@ -63,8 +63,8 @@ evlist__for_each_entry_continue
 
 .. _`__evlist__for_each_entry_reverse`:
 
-__evlist__for_each_entry_reverse
-================================
+\__evlist__for_each_entry_reverse
+=================================
 
 .. c:function::  __evlist__for_each_entry_reverse( list,  evsel)
 
@@ -93,8 +93,8 @@ evlist__for_each_entry_reverse
 
 .. _`__evlist__for_each_entry_safe`:
 
-__evlist__for_each_entry_safe
-=============================
+\__evlist__for_each_entry_safe
+==============================
 
 .. c:function::  __evlist__for_each_entry_safe( list,  tmp,  evsel)
 

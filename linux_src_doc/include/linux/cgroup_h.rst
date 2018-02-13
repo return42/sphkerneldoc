@@ -186,7 +186,7 @@ cgroup_taskset_for_each
 Description
 -----------
 
-@tset may contain multiple tasks and they may belong to multiple
+\ ``tset``\  may contain multiple tasks and they may belong to multiple
 processes.
 
 On the v2 hierarchy, there may be tasks from multiple processes and they

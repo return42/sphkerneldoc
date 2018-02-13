@@ -3,8 +3,8 @@
 
 .. _`__rt_mutex_slowlock`:
 
-__rt_mutex_slowlock
-===================
+\__rt_mutex_slowlock
+====================
 
 .. c:function:: int __sched __rt_mutex_slowlock(struct rt_mutex *lock, int state, struct hrtimer_sleeper *timeout, struct rt_mutex_waiter *waiter)
 
@@ -123,8 +123,8 @@ rt_mutex_unlock
 
 .. _`__rt_mutex_futex_unlock`:
 
-__rt_mutex_futex_unlock
-=======================
+\__rt_mutex_futex_unlock
+========================
 
 .. c:function:: bool __sched __rt_mutex_futex_unlock(struct rt_mutex *lock, struct wake_q_head *wake_q)
 
@@ -159,8 +159,8 @@ this function is called.
 
 .. _`__rt_mutex_init`:
 
-__rt_mutex_init
-===============
+\__rt_mutex_init
+================
 
 .. c:function:: void __rt_mutex_init(struct rt_mutex *lock, const char *name, struct lock_class_key *key)
 

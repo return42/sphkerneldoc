@@ -18,7 +18,7 @@ check_pte
 Description
 -----------
 
-page_vma_mapped_walk() found a place where \ ``pvmw``\ ->page is \*potentially\*
+\ :c:func:`page_vma_mapped_walk`\  found a place where \ ``pvmw``\ ->page is \*potentially\*
 mapped. \ :c:func:`check_pte`\  has to validate this.
 
 \ ``pvmw``\ ->pte may point to empty PTE, swap PTE or PTE pointing to arbitrary

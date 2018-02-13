@@ -118,7 +118,7 @@ iommu_dma_init_domain
 Description
 -----------
 
-@base and \ ``size``\  should be exact multiples of IOMMU page granularity to
+\ ``base``\  and \ ``size``\  should be exact multiples of IOMMU page granularity to
 avoid rounding surprises. If necessary, we reserve the page at address 0
 to ensure it is an invalid IOVA. It is safe to reinitialise a domain, but
 any change which could make prior IOVAs invalid will fail.

@@ -185,8 +185,8 @@ commands for target w/o soft reset
 
 .. _`__orc_alloc_scb`:
 
-__orc_alloc_scb
-===============
+\__orc_alloc_scb
+================
 
 .. c:function:: struct orc_scb *__orc_alloc_scb(struct orc_host *host)
 

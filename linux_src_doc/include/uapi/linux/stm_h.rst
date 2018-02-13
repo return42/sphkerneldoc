@@ -44,10 +44,10 @@ channel
 width
     number of requested channels
 
-__reserved_0
+\__reserved_0
     *undescribed*
 
-__reserved_1
+\__reserved_1
     *undescribed*
 
 id

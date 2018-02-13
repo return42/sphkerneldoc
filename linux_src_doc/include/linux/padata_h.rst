@@ -259,7 +259,7 @@ seq_nr
 cpumask
     The cpumasks in use for parallel and serial workers.
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 processed

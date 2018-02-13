@@ -27,8 +27,8 @@ nfp_nsp_close
 
 .. _`__nfp_nsp_command`:
 
-__nfp_nsp_command
-=================
+\__nfp_nsp_command
+==================
 
 .. c:function:: int __nfp_nsp_command(struct nfp_nsp *state, u16 code, u32 option, u32 buff_cpp, u64 buff_addr, u32 timeout_sec)
 

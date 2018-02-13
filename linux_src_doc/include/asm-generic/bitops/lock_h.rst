@@ -48,8 +48,8 @@ This operation is atomic and provides release barrier semantics.
 
 .. _`__clear_bit_unlock`:
 
-__clear_bit_unlock
-==================
+\__clear_bit_unlock
+===================
 
 .. c:function::  __clear_bit_unlock( nr,  addr)
 

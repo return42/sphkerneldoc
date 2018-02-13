@@ -436,8 +436,8 @@ snd_hda_codec_setup_stream
 
 .. _`__snd_hda_codec_cleanup_stream`:
 
-__snd_hda_codec_cleanup_stream
-==============================
+\__snd_hda_codec_cleanup_stream
+===============================
 
 .. c:function:: void __snd_hda_codec_cleanup_stream(struct hda_codec *codec, hda_nid_t nid, int do_now)
 
@@ -970,8 +970,8 @@ returns zero.
 
 .. _`__snd_hda_add_vmaster`:
 
-__snd_hda_add_vmaster
-=====================
+\__snd_hda_add_vmaster
+======================
 
 .. c:function:: int __snd_hda_add_vmaster(struct hda_codec *codec, char *name, unsigned int *tlv, const char * const *slaves, const char *suffix, bool init_slave_vol, struct snd_kcontrol **ctl_ret)
 
@@ -1717,8 +1717,8 @@ snd_hda_correct_pin_ctl
 
 .. _`_snd_hda_set_pin_ctl`:
 
-_snd_hda_set_pin_ctl
-====================
+\_snd_hda_set_pin_ctl
+=====================
 
 .. c:function:: int _snd_hda_set_pin_ctl(struct hda_codec *codec, hda_nid_t pin, unsigned int val, bool cached)
 

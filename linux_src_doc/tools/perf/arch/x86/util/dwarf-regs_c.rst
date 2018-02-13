@@ -18,7 +18,7 @@ regs_query_register_offset
 Description
 -----------
 
-regs_query_register_offset() returns the offset of a register in struct
+\ :c:func:`regs_query_register_offset`\  returns the offset of a register in struct
 pt_regs from its name. If the name is invalid, this returns -EINVAL;
 
 .. This file was automatic generated / don't edit.

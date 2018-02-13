@@ -37,8 +37,8 @@ of completions that will be processed is small.
 
 .. _`__ib_alloc_cq`:
 
-__ib_alloc_cq
-=============
+\__ib_alloc_cq
+==============
 
 .. c:function:: struct ib_cq *__ib_alloc_cq(struct ib_device *dev, void *private, int nr_cqe, int comp_vector, enum ib_poll_context poll_ctx, const char *caller)
 

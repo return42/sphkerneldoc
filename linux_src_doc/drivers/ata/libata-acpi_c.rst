@@ -359,8 +359,8 @@ ata_acpi_push_id
 
 .. _`ata_acpi_push_id._sdd-acpi-object`:
 
-_SDD ACPI object
-----------------
+\_SDD ACPI object
+-----------------
 
 for SATA mode only
 Must be after Identify (Packet) Device -- uses its data

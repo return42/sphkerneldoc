@@ -18,7 +18,7 @@ rdtsc
 Description
 -----------
 
-rdtsc() returns the result of RDTSC as a 64-bit integer.  The
+\ :c:func:`rdtsc`\  returns the result of RDTSC as a 64-bit integer.  The
 only ordering constraint it supplies is the ordering implied by
 "asm volatile": it will put the RDTSC in the place you expect.  The
 CPU can and will speculatively execute that RDTSC, though, so the
@@ -41,7 +41,7 @@ rdtsc_ordered
 Description
 -----------
 
-rdtsc_ordered() returns the result of RDTSC as a 64-bit integer.
+\ :c:func:`rdtsc_ordered`\  returns the result of RDTSC as a 64-bit integer.
 It is ordered like a load to a global in-memory counter.  It should
 be impossible to observe non-monotonic \ :c:func:`rdtsc_unordered`\  behavior
 across multiple CPUs as long as the TSC is synced.

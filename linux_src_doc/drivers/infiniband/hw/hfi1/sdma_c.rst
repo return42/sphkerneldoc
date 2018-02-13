@@ -304,8 +304,8 @@ sdma_exit
 
 .. _`__sdma_txclean`:
 
-__sdma_txclean
-==============
+\__sdma_txclean
+===============
 
 .. c:function:: void __sdma_txclean(struct hfi1_devdata *dd, struct sdma_txreq *tx)
 
@@ -493,8 +493,8 @@ This routine frees the indicate AHG entry.
 
 .. _`_sdma_engine_progress_schedule`:
 
-_sdma_engine_progress_schedule
-==============================
+\_sdma_engine_progress_schedule
+===============================
 
 .. c:function:: void _sdma_engine_progress_schedule(struct sdma_engine *sde)
 

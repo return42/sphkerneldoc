@@ -153,8 +153,8 @@ Returns the timespec64 representation of the nsec parameter.
 
 .. _`__msecs_to_jiffies`:
 
-__msecs_to_jiffies
-==================
+\__msecs_to_jiffies
+===================
 
 .. c:function:: unsigned long __msecs_to_jiffies(const unsigned int m)
 

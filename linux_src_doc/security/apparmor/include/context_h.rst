@@ -98,8 +98,8 @@ newest version of confining label
 
 .. _`__aa_task_raw_label`:
 
-__aa_task_raw_label
-===================
+\__aa_task_raw_label
+====================
 
 .. c:function:: struct aa_label *__aa_task_raw_label(struct task_struct *task)
 
@@ -113,14 +113,14 @@ __aa_task_raw_label
 Return
 ------
 
-@task's label without incrementing its ref count
+\ ``task``\ 's label without incrementing its ref count
 
 If \ ``task``\  != current needs to be called in RCU safe critical section
 
 .. _`__aa_task_is_confined`:
 
-__aa_task_is_confined
-=====================
+\__aa_task_is_confined
+======================
 
 .. c:function:: bool __aa_task_is_confined(struct task_struct *task)
 
@@ -204,8 +204,8 @@ task cred may be updated
 
 .. _`__begin_current_label_crit_section`:
 
-__begin_current_label_crit_section
-==================================
+\__begin_current_label_crit_section
+===================================
 
 .. c:function:: struct aa_label *__begin_current_label_crit_section( void)
 

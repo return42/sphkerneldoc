@@ -314,7 +314,7 @@ prog
 prog_len
     number of valid instructions in \ ``prog``\  array
 
-__prog_alloc_len
+\__prog_alloc_len
     alloc size of \ ``prog``\  array
 
 verifier_meta

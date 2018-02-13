@@ -61,7 +61,7 @@ phm_initializa_dynamic_state_adjustment_rule_settings
 Description
 -----------
 
-@param    hwmgr  the address of the powerplay hardware manager.
+\ ``param``\     hwmgr  the address of the powerplay hardware manager.
 
 .. This file was automatic generated / don't edit.
 

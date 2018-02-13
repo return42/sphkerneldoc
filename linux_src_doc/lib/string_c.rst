@@ -426,7 +426,7 @@ strsep
 Description
 -----------
 
-strsep() updates \ ``s``\  to point after the token, ready for the next call.
+\ :c:func:`strsep`\  updates \ ``s``\  to point after the token, ready for the next call.
 
 It returns empty tokens, too, behaving exactly like the libc function
 of that name. In fact, it was stolen from glibc2 and de-fancy-fied.

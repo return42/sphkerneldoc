@@ -47,7 +47,7 @@ uwb_rc_class_device_exists
 Description
 -----------
 
-@returns false if the rc does not exist or is quiescing; true otherwise.
+\ ``returns``\  false if the rc does not exist or is quiescing; true otherwise.
 
 .. _`uwb_pal_unregister`:
 

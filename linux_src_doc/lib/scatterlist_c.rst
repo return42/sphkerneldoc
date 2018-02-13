@@ -142,8 +142,8 @@ sg_init_one
 
 .. _`__sg_free_table`:
 
-__sg_free_table
-===============
+\__sg_free_table
+================
 
 .. c:function:: void __sg_free_table(struct sg_table *table, unsigned int max_ents, bool skip_first_chunk, sg_free_fn *free_fn)
 
@@ -184,8 +184,8 @@ sg_free_table
 
 .. _`__sg_alloc_table`:
 
-__sg_alloc_table
-================
+\__sg_alloc_table
+=================
 
 .. c:function:: int __sg_alloc_table(struct sg_table *table, unsigned int nents, unsigned int max_ents, struct scatterlist *first_chunk, gfp_t gfp_mask, sg_alloc_fn *alloc_fn)
 
@@ -255,8 +255,8 @@ SG_MAX_SINGLE_ALLOC a chained sg table will be setup.
 
 .. _`__sg_alloc_table_from_pages`:
 
-__sg_alloc_table_from_pages
-===========================
+\__sg_alloc_table_from_pages
+============================
 
 .. c:function:: int __sg_alloc_table_from_pages(struct sg_table *sgt, struct page **pages, unsigned int n_pages, unsigned int offset, unsigned long size, unsigned int max_segment, gfp_t gfp_mask)
 

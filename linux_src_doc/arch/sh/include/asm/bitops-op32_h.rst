@@ -3,8 +3,8 @@
 
 .. _`__change_bit`:
 
-__change_bit
-============
+\__change_bit
+=============
 
 .. c:function:: void __change_bit(int nr, volatile unsigned long *addr)
 
@@ -27,8 +27,8 @@ may be that only one operation succeeds.
 
 .. _`__test_and_set_bit`:
 
-__test_and_set_bit
-==================
+\__test_and_set_bit
+===================
 
 .. c:function:: int __test_and_set_bit(int nr, volatile unsigned long *addr)
 
@@ -51,8 +51,8 @@ but actually fail.  You must protect multiple accesses with a lock.
 
 .. _`__test_and_clear_bit`:
 
-__test_and_clear_bit
-====================
+\__test_and_clear_bit
+=====================
 
 .. c:function:: int __test_and_clear_bit(int nr, volatile unsigned long *addr)
 

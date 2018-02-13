@@ -84,7 +84,7 @@ hash_del
     remove an object from a hashtable
 
     :param struct hlist_node \*node:
-        &struct hlist_node of the object to remove
+        \ :c:type:`struct hlist_node <hlist_node>`\  of the object to remove
 
 .. _`hash_for_each`:
 

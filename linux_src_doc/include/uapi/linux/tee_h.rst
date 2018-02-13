@@ -215,7 +215,7 @@ c
 Description
 -----------
 
-@attr & TEE_PARAM_ATTR_TYPE_MASK indicates if memref or value is used in
+\ ``attr``\  & TEE_PARAM_ATTR_TYPE_MASK indicates if memref or value is used in
 the union. TEE_PARAM_ATTR_TYPE_VALUE\_\* indicates value and
 TEE_PARAM_ATTR_TYPE_MEMREF\_\* indicates memref. TEE_PARAM_ATTR_TYPE_NONE
 indicates that none of the members are used.
@@ -497,7 +497,7 @@ params
 Description
 -----------
 
-@num_params is the number of params that tee-supplicant has room to
+\ ``num_params``\  is the number of params that tee-supplicant has room to
 receive when input, \ ``num_params``\  is the number of actual params
 tee-supplicant receives when output.
 

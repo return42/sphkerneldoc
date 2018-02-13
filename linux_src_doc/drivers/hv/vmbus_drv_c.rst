@@ -3,8 +3,8 @@
 
 .. _`__vmbus_driver_register`:
 
-__vmbus_driver_register
-=======================
+\__vmbus_driver_register
+========================
 
 .. c:function:: int __vmbus_driver_register(struct hv_driver *hv_driver, struct module *owner, const char *mod_name)
 

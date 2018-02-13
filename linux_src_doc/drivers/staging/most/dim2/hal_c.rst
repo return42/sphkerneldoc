@@ -8,7 +8,7 @@ alloc_dbr
 
 .. c:function:: int alloc_dbr(u16 size)
 
-    @param size Allocating memory size. \ ``return``\  Offset in DBR memory by success or DBR_SIZE if out of memory.
+    \ ``param``\  size Allocating memory size. \ ``return``\  Offset in DBR memory by success or DBR_SIZE if out of memory.
 
     :param u16 size:
         *undescribed*

@@ -89,7 +89,7 @@ update_pxa_ep_matches
 Context
 -------
 
-in_interrupt()
+\ :c:func:`in_interrupt`\ 
 
 .. _`update_pxa_ep_matches.description`:
 

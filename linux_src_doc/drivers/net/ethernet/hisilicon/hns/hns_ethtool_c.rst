@@ -45,8 +45,8 @@ hns_nic_set_link_ksettings
 
 .. _`__lb_run_test`:
 
-__lb_run_test
-=============
+\__lb_run_test
+==============
 
 .. c:function:: int __lb_run_test(struct net_device *ndev, enum hnae_loop loop_mode)
 

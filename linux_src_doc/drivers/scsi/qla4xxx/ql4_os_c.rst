@@ -1056,7 +1056,7 @@ qla4xxx_pci_mmio_enabled
 
 .. c:function:: pci_ers_result_t qla4xxx_pci_mmio_enabled(struct pci_dev *pdev)
 
-    qla4xxx_pci_error_detected() returns PCI_ERS_RESULT_CAN_RECOVER and read/write to the device still works.
+    \ :c:func:`qla4xxx_pci_error_detected`\  returns PCI_ERS_RESULT_CAN_RECOVER and read/write to the device still works.
 
     :param struct pci_dev \*pdev:
         *undescribed*

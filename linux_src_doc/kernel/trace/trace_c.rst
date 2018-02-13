@@ -199,8 +199,8 @@ disabled with tracing_off.
 
 .. _`__trace_puts`:
 
-__trace_puts
-============
+\__trace_puts
+=============
 
 .. c:function:: int __trace_puts(unsigned long ip, const char *str, int size)
 
@@ -217,8 +217,8 @@ __trace_puts
 
 .. _`__trace_bputs`:
 
-__trace_bputs
-=============
+\__trace_bputs
+==============
 
 .. c:function:: int __trace_bputs(unsigned long ip, const char *str)
 
@@ -496,7 +496,7 @@ tracing_record_taskinfo
 Description
 -----------
 
-@task  - task to record
+\ ``task``\   - task to record
 \ ``flags``\  - TRACE_RECORD_CMDLINE for recording comm
 - TRACE_RECORD_TGID for recording tgid
 
@@ -523,7 +523,7 @@ tracing_record_taskinfo_sched_switch
 Description
 -----------
 
-@prev - previous task during sched_switch
+\ ``prev``\  - previous task during sched_switch
 \ ``next``\  - next task during sched_switch
 \ ``flags``\  - TRACE_RECORD_CMDLINE for recording comm
 TRACE_RECORD_TGID for recording tgid

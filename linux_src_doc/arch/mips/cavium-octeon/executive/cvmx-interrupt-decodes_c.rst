@@ -3,8 +3,8 @@
 
 .. _`__cvmx_interrupt_gmxx_rxx_int_en_enable`:
 
-__cvmx_interrupt_gmxx_rxx_int_en_enable
-=======================================
+\__cvmx_interrupt_gmxx_rxx_int_en_enable
+========================================
 
 .. c:function:: void __cvmx_interrupt_gmxx_rxx_int_en_enable(int index, int block)
 
@@ -16,8 +16,8 @@ __cvmx_interrupt_gmxx_rxx_int_en_enable
 
 .. _`__cvmx_interrupt_pcsx_intx_en_reg_enable`:
 
-__cvmx_interrupt_pcsx_intx_en_reg_enable
-========================================
+\__cvmx_interrupt_pcsx_intx_en_reg_enable
+=========================================
 
 .. c:function:: void __cvmx_interrupt_pcsx_intx_en_reg_enable(int index, int block)
 
@@ -29,8 +29,8 @@ __cvmx_interrupt_pcsx_intx_en_reg_enable
 
 .. _`__cvmx_interrupt_pcsxx_int_en_reg_enable`:
 
-__cvmx_interrupt_pcsxx_int_en_reg_enable
-========================================
+\__cvmx_interrupt_pcsxx_int_en_reg_enable
+=========================================
 
 .. c:function:: void __cvmx_interrupt_pcsxx_int_en_reg_enable(int index)
 
@@ -39,8 +39,8 @@ __cvmx_interrupt_pcsxx_int_en_reg_enable
 
 .. _`__cvmx_interrupt_spxx_int_msk_enable`:
 
-__cvmx_interrupt_spxx_int_msk_enable
-====================================
+\__cvmx_interrupt_spxx_int_msk_enable
+=====================================
 
 .. c:function:: void __cvmx_interrupt_spxx_int_msk_enable(int index)
 
@@ -49,8 +49,8 @@ __cvmx_interrupt_spxx_int_msk_enable
 
 .. _`__cvmx_interrupt_stxx_int_msk_enable`:
 
-__cvmx_interrupt_stxx_int_msk_enable
-====================================
+\__cvmx_interrupt_stxx_int_msk_enable
+=====================================
 
 .. c:function:: void __cvmx_interrupt_stxx_int_msk_enable(int index)
 

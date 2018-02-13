@@ -490,8 +490,8 @@ sleep state.
 
 .. _`__device_suspend_noirq`:
 
-__device_suspend_noirq
-======================
+\__device_suspend_noirq
+=======================
 
 .. c:function:: int __device_suspend_noirq(struct device *dev, pm_message_t state, bool async)
 
@@ -536,8 +536,8 @@ Prevent device drivers' interrupt handlers from being called and invoke
 
 .. _`__device_suspend_late`:
 
-__device_suspend_late
-=====================
+\__device_suspend_late
+======================
 
 .. c:function:: int __device_suspend_late(struct device *dev, pm_message_t state, bool async)
 
@@ -606,8 +606,8 @@ legacy_suspend
 
 .. _`__device_suspend`:
 
-__device_suspend
-================
+\__device_suspend
+=================
 
 .. c:function:: int __device_suspend(struct device *dev, pm_message_t state, bool async)
 

@@ -3,8 +3,8 @@
 
 .. _`__ip_dev_find`:
 
-__ip_dev_find
-=============
+\__ip_dev_find
+==============
 
 .. c:function:: struct net_device *__ip_dev_find(struct net *net, __be32 addr, bool devref)
 

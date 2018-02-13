@@ -40,7 +40,7 @@ vpbe_find_encoder_sd_index
 Description
 -----------
 
-@vpbe_config - ptr to vpbe cfg
+\ ``vpbe_config``\  - ptr to vpbe cfg
 \ ``output_index``\  - index used by application
 
 Return sd index of the encoder

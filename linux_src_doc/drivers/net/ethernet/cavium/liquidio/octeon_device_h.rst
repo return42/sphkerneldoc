@@ -16,7 +16,7 @@ octeon_mem_access_ok
 Description
 -----------
 
-@param oct which octeon to send to
+\ ``param``\  oct which octeon to send to
 \ ``return``\  Zero on success, negative on failure.
 
 .. _`octeon_wait_for_ddr_init`:
@@ -37,7 +37,7 @@ octeon_wait_for_ddr_init
 Description
 -----------
 
-@param oct which octeon to send to
+\ ``param``\  oct which octeon to send to
 \ ``param``\  timeout_in_ms pointer to how long to wait until DDR is initialized
 in ms.
 If contents are 0, it waits until contents are non-zero
@@ -64,7 +64,7 @@ octeon_wait_for_bootloader
 Description
 -----------
 
-@param wait_time_hundredths
+\ ``param``\  wait_time_hundredths
 Maximum time to wait
 
 \ ``return``\  Zero on success, negative on failure.
@@ -84,7 +84,7 @@ octeon_init_consoles
 Description
 -----------
 
-@param oct which octeon initialize
+\ ``param``\  oct which octeon initialize
 \ ``return``\  Zero on success, negative on failure.
 
 .. _`octeon_add_console`:
@@ -108,7 +108,7 @@ octeon_add_console
 Description
 -----------
 
-@return Zero on success, negative on failure.
+\ ``return``\  Zero on success, negative on failure.
 
 .. _`octeon_console_send_cmd`:
 
@@ -133,7 +133,7 @@ octeon_console_send_cmd
 Description
 -----------
 
-@param oct which octeon to send to
+\ ``param``\  oct which octeon to send to
 \ ``param``\  cmd_str String to send
 \ ``param``\  wait_hundredths Time to wait for u-boot to accept the command.
 

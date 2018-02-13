@@ -45,7 +45,7 @@ w1_f23_write
 Description
 -----------
 
-@param sl    The slave structure
+\ ``param``\  sl    The slave structure
 \ ``param``\  addr  Address for the write
 \ ``param``\  len   length must be <= (W1_PAGE_SIZE - (addr & W1_PAGE_MASK))
 \ ``param``\  data  The data to write

@@ -62,7 +62,7 @@ type
     the thermal zone device type
 
 device
-    &struct device for this thermal zone
+    \ :c:type:`struct device <device>`\  for this thermal zone
 
 trips_attribute_group
     *undescribed*
@@ -139,7 +139,7 @@ thermal_instances
     list of \ :c:type:`struct thermal_instance <thermal_instance>`\  of this thermal zone
 
 ida
-    &struct ida to generate unique id for this zone's cooling
+    \ :c:type:`struct ida <ida>`\  to generate unique id for this zone's cooling
     devices
 
 lock

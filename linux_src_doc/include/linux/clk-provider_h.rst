@@ -222,7 +222,7 @@ debug_init
 Description
 -----------
 
-@recalc_rate Recalculate the rate of this clock, by querying hardware. The
+\ ``recalc_rate``\  Recalculate the rate of this clock, by querying hardware. The
 parent rate is an input parameter.  It is up to the caller to
 ensure that the prepare_mutex is held across this call.
 Returns the calculated rate.  Optional, but recommended - if

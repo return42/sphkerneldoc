@@ -110,8 +110,8 @@ this function).
 
 .. _`__req_capsule_offset`:
 
-__req_capsule_offset
-====================
+\__req_capsule_offset
+=====================
 
 .. c:function:: u32 __req_capsule_offset(const struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc)
 
@@ -161,8 +161,8 @@ swabber_dumper_helper
 
 .. _`__req_capsule_get`:
 
-__req_capsule_get
-=================
+\__req_capsule_get
+==================
 
 .. c:function:: void *__req_capsule_get(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, void (*swabber)(void *), int dump)
 

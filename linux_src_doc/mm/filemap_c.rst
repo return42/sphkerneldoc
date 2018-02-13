@@ -633,7 +633,7 @@ find_get_entries
 Description
 -----------
 
-find_get_entries() will search for and return a group of up to
+\ :c:func:`find_get_entries`\  will search for and return a group of up to
 \ ``nr_entries``\  entries in the mapping.  The entries are placed at
 \ ``entries``\ .  \ :c:func:`find_get_entries`\  takes a reference against any actual
 pages it returns.
@@ -677,7 +677,7 @@ find_get_pages_range
 Description
 -----------
 
-find_get_pages_range() will search for and return a group of up to \ ``nr_pages``\ 
+\ :c:func:`find_get_pages_range`\  will search for and return a group of up to \ ``nr_pages``\ 
 pages in the mapping starting at index \ ``start``\  and up to index \ ``end``\ 
 (inclusive).  The pages are placed at \ ``pages``\ .  \ :c:func:`find_get_pages_range`\  takes
 a reference against the returned pages.
@@ -716,7 +716,7 @@ find_get_pages_contig
 Description
 -----------
 
-find_get_pages_contig() works exactly like \ :c:func:`find_get_pages`\ , except
+\ :c:func:`find_get_pages_contig`\  works exactly like \ :c:func:`find_get_pages`\ , except
 that the returned number of pages are guaranteed to be contiguous.
 
 \ :c:func:`find_get_pages_contig`\  returns the number of pages which were found.
@@ -886,7 +886,7 @@ filemap_fault
 Description
 -----------
 
-filemap_fault() is invoked via the vma operations vector for a
+\ :c:func:`filemap_fault`\  is invoked via the vma operations vector for a
 mapped memory region to read in file data during a page fault.
 
 The goto's are kind of ugly, but this streamlines the normal case of having

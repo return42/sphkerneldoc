@@ -135,7 +135,7 @@ scif_bind
 Description
 -----------
 
-scif_bind() binds endpoint epd to port pn, where pn is a port number on the
+\ :c:func:`scif_bind`\  binds endpoint epd to port pn, where pn is a port number on the
 local node. If pn is zero, a port number greater than or equal to
 SCIF_PORT_RSVD is assigned and returned. Each endpoint may be bound to
 exactly one local port. Ports less than 1024 when requested can only be bound
@@ -182,7 +182,7 @@ scif_listen
 Description
 -----------
 
-scif_listen() marks the endpoint epd as a listening endpoint - that is, as
+\ :c:func:`scif_listen`\  marks the endpoint epd as a listening endpoint - that is, as
 an endpoint that will be used to accept incoming connection requests. Once
 so marked, the endpoint is said to be in the listening state and may not be
 used as the endpoint of a connection.
@@ -373,7 +373,7 @@ scif_close
 Description
 -----------
 
-scif_close() closes an endpoint and performs necessary teardown of
+\ :c:func:`scif_close`\  closes an endpoint and performs necessary teardown of
 facilities associated with that endpoint.
 
 If epd is a listening endpoint then it will no longer accept connection
@@ -437,7 +437,7 @@ scif_send
 Description
 -----------
 
-scif_send() sends data to the peer of endpoint epd. Up to len bytes of data
+\ :c:func:`scif_send`\  sends data to the peer of endpoint epd. Up to len bytes of data
 are copied from memory starting at address msg. On successful execution the
 return value of \ :c:func:`scif_send`\  is the number of bytes that were sent, and is
 zero if no bytes were sent because len was zero. \ :c:func:`scif_send`\  may be called
@@ -513,7 +513,7 @@ scif_recv
 Description
 -----------
 
-scif_recv() receives data from the peer of endpoint epd. Up to len bytes of
+\ :c:func:`scif_recv`\  receives data from the peer of endpoint epd. Up to len bytes of
 data are copied to memory starting at address msg. On successful execution
 the return value of \ :c:func:`scif_recv`\  is the number of bytes that were received,
 and is zero if no bytes were received because len was zero. \ :c:func:`scif_recv`\  may
@@ -772,7 +772,7 @@ scif_readfrom
 Description
 -----------
 
-scif_readfrom() copies len bytes from the remote registered address space of
+\ :c:func:`scif_readfrom`\  copies len bytes from the remote registered address space of
 the peer of endpoint epd, starting at the offset roffset to the local
 registered address space of epd, starting at the offset loffset.
 
@@ -874,7 +874,7 @@ scif_writeto
 Description
 -----------
 
-scif_writeto() copies len bytes from the local registered address space of
+\ :c:func:`scif_writeto`\  copies len bytes from the local registered address space of
 epd, starting at the offset loffset to the remote registered address space
 of the peer of endpoint epd, starting at the offset roffset.
 
@@ -975,7 +975,7 @@ scif_vreadfrom
 Description
 -----------
 
-scif_vreadfrom() copies len bytes from the remote registered address
+\ :c:func:`scif_vreadfrom`\  copies len bytes from the remote registered address
 space of the peer of endpoint epd, starting at the offset roffset, to local
 memory, starting at addr.
 
@@ -1081,7 +1081,7 @@ scif_vwriteto
 Description
 -----------
 
-scif_vwriteto() copies len bytes from the local memory, starting at addr, to
+\ :c:func:`scif_vwriteto`\  copies len bytes from the local memory, starting at addr, to
 the remote registered address space of the peer of endpoint epd, starting at
 the offset roffset.
 
@@ -1180,7 +1180,7 @@ scif_fence_mark
 Description
 -----------
 
-scif_fence_mark() returns after marking the current set of all uncompleted
+\ :c:func:`scif_fence_mark`\  returns after marking the current set of all uncompleted
 RMAs initiated through the endpoint epd or the current set of all
 uncompleted RMAs initiated through the peer of endpoint epd. The RMAs are
 marked with a value returned at mark. The application may subsequently call
@@ -1235,7 +1235,7 @@ scif_fence_wait
 Description
 -----------
 
-scif_fence_wait() returns after all RMAs marked with mark have completed.
+\ :c:func:`scif_fence_wait`\  returns after all RMAs marked with mark have completed.
 The value passed in mark must have been obtained in a previous call to
 \ :c:func:`scif_fence_mark`\ .
 
@@ -1292,7 +1292,7 @@ scif_fence_signal
 Description
 -----------
 
-scif_fence_signal() returns after marking the current set of all uncompleted
+\ :c:func:`scif_fence_signal`\  returns after marking the current set of all uncompleted
 RMAs initiated through the endpoint epd or marking the current set of all
 uncompleted RMAs initiated through the peer of endpoint epd.
 
@@ -1365,7 +1365,7 @@ scif_get_node_ids
 Description
 -----------
 
-scif_get_node_ids() fills in the nodes array with up to len node IDs of the
+\ :c:func:`scif_get_node_ids`\  fills in the nodes array with up to len node IDs of the
 nodes in the SCIF network. If there is not enough space in nodes, as
 indicated by the len parameter, only len node IDs are returned in nodes. The
 return value of \ :c:func:`scif_get_node_ids`\  is the total number of nodes currently in
@@ -1413,7 +1413,7 @@ scif_pin_pages
 Description
 -----------
 
-scif_pin_pages() pins (locks in physical memory) the physical pages which
+\ :c:func:`scif_pin_pages`\  pins (locks in physical memory) the physical pages which
 back the range of virtual address pages starting at addr and continuing for
 len bytes. addr and len are constrained to be multiples of the page size. A
 successful \ :c:func:`scif_pin_pages`\  call returns a handle to pinned_pages which may
@@ -1476,7 +1476,7 @@ scif_unpin_pages
 Description
 -----------
 
-scif_unpin_pages() prevents \ :c:func:`scif_register_pinned_pages`\  from registering new
+\ :c:func:`scif_unpin_pages`\  prevents \ :c:func:`scif_register_pinned_pages`\  from registering new
 windows against pinned_pages. The physical pages represented by pinned_pages
 will remain pinned until all windows previously registered against
 pinned_pages are deleted (the window is \ :c:func:`scif_unregister`\ 'd and all
@@ -1616,7 +1616,7 @@ scif_get_pages
 Description
 -----------
 
-scif_get_pages() returns the addresses of the physical pages represented by
+\ :c:func:`scif_get_pages`\  returns the addresses of the physical pages represented by
 those pages of the registered address space of the peer of epd, starting at
 offset and continuing for len bytes. offset and len are constrained to be
 multiples of the page size.
@@ -1677,7 +1677,7 @@ scif_put_pages
 Description
 -----------
 
-scif_put_pages() releases a scif_range structure previously obtained by
+\ :c:func:`scif_put_pages`\  releases a scif_range structure previously obtained by
 calling \ :c:func:`scif_get_pages`\ . The physical pages represented by pages may
 be reused when the window which represented those pages is unregistered.
 Therefore, those pages must not be accessed after calling \ :c:func:`scif_put_pages`\ .
@@ -1724,7 +1724,7 @@ scif_poll
 Description
 -----------
 
-scif_poll() waits for one of a set of endpoints to become ready to perform
+\ :c:func:`scif_poll`\  waits for one of a set of endpoints to become ready to perform
 an I/O operation.
 
 The epds argument specifies the endpoint descriptors to be examined and the
@@ -1803,7 +1803,7 @@ scif_client_register
 Description
 -----------
 
-scif_client_register() registers a SCIF client. The \ :c:func:`probe`\  method
+\ :c:func:`scif_client_register`\  registers a SCIF client. The \ :c:func:`probe`\  method
 of the client is called when SCIF peer devices come online and the
 \ :c:func:`remove`\  method is called when the peer devices disappear.
 
@@ -1833,7 +1833,7 @@ scif_client_unregister
 Description
 -----------
 
-scif_client_unregister() unregisters a SCIF client.
+\ :c:func:`scif_client_unregister`\  unregisters a SCIF client.
 
 .. _`scif_client_unregister.return`:
 

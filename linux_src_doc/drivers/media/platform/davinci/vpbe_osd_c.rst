@@ -3,8 +3,8 @@
 
 .. _`_osd_dm6446_vid0_pingpong`:
 
-_osd_dm6446_vid0_pingpong
-=========================
+\_osd_dm6446_vid0_pingpong
+==========================
 
 .. c:function:: int _osd_dm6446_vid0_pingpong(struct osd_state *sd, int field_inversion, unsigned long fb_base_phys, const struct osd_layer_config *lconfig)
 

@@ -110,8 +110,8 @@ efuse_voltage_uv
 
 .. _`_store_optimized_voltages`:
 
-_store_optimized_voltages
-=========================
+\_store_optimized_voltages
+==========================
 
 .. c:function:: int _store_optimized_voltages(struct device *dev, struct ti_opp_supply_data *data)
 
@@ -140,8 +140,8 @@ If successful, 0, else appropriate error value.
 
 .. _`_free_optimized_voltages`:
 
-_free_optimized_voltages
-========================
+\_free_optimized_voltages
+=========================
 
 .. c:function:: void _free_optimized_voltages(struct device *dev, struct ti_opp_supply_data *data)
 
@@ -155,8 +155,8 @@ _free_optimized_voltages
 
 .. _`_get_optimal_vdd_voltage`:
 
-_get_optimal_vdd_voltage
-========================
+\_get_optimal_vdd_voltage
+=========================
 
 .. c:function:: int _get_optimal_vdd_voltage(struct device *dev, struct ti_opp_supply_data *data, int reference_uv)
 

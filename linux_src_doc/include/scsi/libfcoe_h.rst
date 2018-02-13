@@ -130,7 +130,7 @@ mode
     LLD-selected mode.
 
 lp
-    &fc_lport: libfc local port.
+    \ :c:type:`struct fc_lport <fc_lport>`\ : libfc local port.
 
 sel_fcf
     currently selected FCF, or NULL.
@@ -160,10 +160,10 @@ timer
     timer struct used for all delayed events.
 
 timer_work
-    &work_struct for doing keep-alives and resets.
+    \ :c:type:`struct work_struct <work_struct>`\  for doing keep-alives and resets.
 
 recv_work
-    &work_struct for receiving FIP frames.
+    \ :c:type:`struct work_struct <work_struct>`\  for receiving FIP frames.
 
 fip_recv_list
     list of received FIP frames.

@@ -46,7 +46,7 @@ data
 Description
 -----------
 
-@hbm_cmd - bus message command header
+\ ``hbm_cmd``\  - bus message command header
 \ ``fw_addr``\  - address of the fw client
 \ ``host_addr``\  - address of the client in the driver
 \ ``data``\ 
@@ -96,7 +96,7 @@ reserved
 Description
 -----------
 
-@hbm_cmd - bus message command header
+\ ``hbm_cmd``\  - bus message command header
 \ ``fw_addr``\  - address of the fw client
 \ ``host_addr``\  - address of the client in the driver
 \ ``reserved``\ 
@@ -146,7 +146,7 @@ status
 Description
 -----------
 
-@hbm_cmd - bus message command header
+\ ``hbm_cmd``\  - bus message command header
 \ ``fw_addr``\  - address of the fw client
 \ ``host_addr``\  - address of the client in the driver
 \ ``status``\  - status of the request

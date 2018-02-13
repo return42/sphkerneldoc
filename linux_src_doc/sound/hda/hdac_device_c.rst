@@ -223,8 +223,8 @@ Returns zero if successful, or a negative error code.
 
 .. _`_snd_hdac_read_parm`:
 
-_snd_hdac_read_parm
-===================
+\_snd_hdac_read_parm
+====================
 
 .. c:function:: int _snd_hdac_read_parm(struct hdac_device *codec, hda_nid_t nid, int parm, unsigned int *res)
 

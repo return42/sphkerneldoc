@@ -3,8 +3,8 @@
 
 .. _`__compute_return_epc_for_insn`:
 
-__compute_return_epc_for_insn
-=============================
+\__compute_return_epc_for_insn
+==============================
 
 .. c:function:: int __compute_return_epc_for_insn(struct pt_regs *regs, union mips_instruction insn)
 

@@ -25,7 +25,7 @@ returns true if the wait list is not empty
 NOTE
 ----
 
-this function is lockless and requires care, incorrect usage \_will\_
+this function is lockless and requires care, incorrect usage \_will_
 lead to sporadic and non-obvious failure.
 
 .. _`swait_active.note2`:

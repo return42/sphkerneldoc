@@ -117,10 +117,10 @@ turbo_pstate
     Max Turbo P state possible for this platform
 
 max_freq
-    @max_pstate frequency in cpufreq units
+    \ ``max_pstate``\  frequency in cpufreq units
 
 turbo_freq
-    @turbo_pstate frequency in cpufreq units
+    \ ``turbo_pstate``\  frequency in cpufreq units
 
 .. _`pstate_data.description`:
 

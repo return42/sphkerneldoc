@@ -82,8 +82,8 @@ This function returns port test mode value
 
 .. _`_ci_usb_phy_init`:
 
-_ci_usb_phy_init
-================
+\_ci_usb_phy_init
+=================
 
 .. c:function:: int _ci_usb_phy_init(struct ci_hdrc *ci)
 

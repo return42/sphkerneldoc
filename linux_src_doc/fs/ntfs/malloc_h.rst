@@ -3,8 +3,8 @@
 
 .. _`__ntfs_malloc`:
 
-__ntfs_malloc
-=============
+\__ntfs_malloc
+==============
 
 .. c:function:: void *__ntfs_malloc(unsigned long size, gfp_t gfp_mask)
 

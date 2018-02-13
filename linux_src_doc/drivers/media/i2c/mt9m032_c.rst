@@ -3,8 +3,8 @@
 
 .. _`__mt9m032_get_pad_crop`:
 
-__mt9m032_get_pad_crop
-======================
+\__mt9m032_get_pad_crop
+=======================
 
 .. c:function:: struct v4l2_rect *__mt9m032_get_pad_crop(struct mt9m032 *sensor, struct v4l2_subdev_pad_config *cfg, enum v4l2_subdev_format_whence which)
 
@@ -28,8 +28,8 @@ Returns a pointer the current active or fh relative try crop rect
 
 .. _`__mt9m032_get_pad_format`:
 
-__mt9m032_get_pad_format
-========================
+\__mt9m032_get_pad_format
+=========================
 
 .. c:function:: struct v4l2_mbus_framefmt *__mt9m032_get_pad_format(struct mt9m032 *sensor, struct v4l2_subdev_pad_config *cfg, enum v4l2_subdev_format_whence which)
 

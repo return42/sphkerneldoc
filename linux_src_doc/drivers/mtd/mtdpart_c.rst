@@ -68,8 +68,8 @@ subpartitions on success.
 
 .. _`__mtd_del_partition`:
 
-__mtd_del_partition
-===================
+\__mtd_del_partition
+====================
 
 .. c:function:: int __mtd_del_partition(struct mtd_part *priv)
 

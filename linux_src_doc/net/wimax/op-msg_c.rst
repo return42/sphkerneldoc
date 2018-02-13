@@ -30,7 +30,7 @@ wimax_msg_alloc
 Return
 ------
 
-%0 if ok, negative errno code on error
+\ ``0``\  if ok, negative errno code on error
 
 .. _`wimax_msg_alloc.description`:
 
@@ -120,7 +120,7 @@ wimax_msg_send
         WiMAX device descriptor
 
     :param struct sk_buff \*skb:
-        &struct sk_buff returned by \ :c:func:`wimax_msg_alloc`\ . Note the
+        \ :c:type:`struct sk_buff <sk_buff>`\  returned by \ :c:func:`wimax_msg_alloc`\ . Note the
         ownership of \ ``skb``\  is transferred to this function.
 
 .. _`wimax_msg_send.return`:
@@ -187,7 +187,7 @@ wimax_msg
 Return
 ------
 
-%0 if ok, negative errno code on error.
+\ ``0``\  if ok, negative errno code on error.
 
 .. _`wimax_msg.description`:
 

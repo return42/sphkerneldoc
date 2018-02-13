@@ -742,7 +742,7 @@ cl_sync_io_wait
 
 .. c:function:: int cl_sync_io_wait(const struct lu_env *env, struct cl_sync_io *anchor, long timeout)
 
-    cl_sync_io_note() for every entity.
+    \ :c:func:`cl_sync_io_note`\  for every entity.
 
     :param const struct lu_env \*env:
         *undescribed*

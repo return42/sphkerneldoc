@@ -791,7 +791,7 @@ ata_scsi_rbuf_put
         copy out result
 
     :param unsigned long \*flags:
-        @flags passed to \ :c:func:`ata_scsi_rbuf_get`\ 
+        \ ``flags``\  passed to \ :c:func:`ata_scsi_rbuf_get`\ 
 
 .. _`ata_scsi_rbuf_put.description`:
 

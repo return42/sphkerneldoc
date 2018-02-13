@@ -59,7 +59,7 @@ lock
 chip_info
     ADC properties
 
-____cacheline_aligned
+\____cacheline_aligned
     *undescribed*
 
 rx_buf

@@ -38,8 +38,8 @@ don't attempt to reclaim the port->lock.
 
 .. _`__fwtty_port_line_status`:
 
-__fwtty_port_line_status
-========================
+\__fwtty_port_line_status
+=========================
 
 .. c:function:: unsigned int __fwtty_port_line_status(struct fwtty_port *port)
 
@@ -66,8 +66,8 @@ caller must be holding port lock
 
 .. _`__fwtty_write_port_status`:
 
-__fwtty_write_port_status
-=========================
+\__fwtty_write_port_status
+==========================
 
 .. c:function:: int __fwtty_write_port_status(struct fwtty_port *port)
 
@@ -377,8 +377,8 @@ NB: caller must be holding fwserial_list_mutex
 
 .. _`__fwserial_lookup_rcu`:
 
-__fwserial_lookup_rcu
-=====================
+\__fwserial_lookup_rcu
+======================
 
 .. c:function:: struct fw_serial *__fwserial_lookup_rcu(struct fw_card *card)
 
@@ -396,8 +396,8 @@ NB: caller must be inside \ :c:func:`rcu_read_lock`\  section
 
 .. _`__fwserial_peer_by_node_id`:
 
-__fwserial_peer_by_node_id
-==========================
+\__fwserial_peer_by_node_id
+===========================
 
 .. c:function:: struct fwtty_peer *__fwserial_peer_by_node_id(struct fw_card *card, int generation, int id)
 

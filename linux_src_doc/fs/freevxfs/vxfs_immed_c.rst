@@ -36,7 +36,7 @@ Zero on success, else a negative error code.
 Locking status
 --------------
 
-@page is locked and will be unlocked.
+\ ``page``\  is locked and will be unlocked.
 
 .. This file was automatic generated / don't edit.
 

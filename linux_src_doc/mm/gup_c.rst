@@ -27,7 +27,7 @@ follow_page_mask
 Description
 -----------
 
-@flags can have FOLL\_ flags set, defined in <linux/mm.h>
+\ ``flags``\  can have FOLL\_ flags set, defined in <linux/mm.h>
 
 Returns the mapped (struct page \*), \ ``NULL``\  if no mapping exists, or
 an error pointer if there is a mapping to something not represented
@@ -35,8 +35,8 @@ by a page descriptor (see also \ :c:func:`vm_normal_page`\ ).
 
 .. _`__get_user_pages`:
 
-__get_user_pages
-================
+\__get_user_pages
+=================
 
 .. c:function:: long __get_user_pages(struct task_struct *tsk, struct mm_struct *mm, unsigned long start, unsigned long nr_pages, unsigned int gup_flags, struct page **pages, struct vm_area_struct **vmas, int *nonblocking)
 

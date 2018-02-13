@@ -35,7 +35,7 @@ devices to report input events. See also \ :c:func:`input_inject_event`\ .
 NOTE
 ----
 
-input_event() may be safely used right after input device was
+\ :c:func:`input_event`\  may be safely used right after input device was
 allocated with \ :c:func:`input_allocate_device`\ , even before it is registered
 with \ :c:func:`input_register_device`\ , but the event will not reach any of the
 input handlers. Such early invocation of \ :c:func:`input_event`\  may be used

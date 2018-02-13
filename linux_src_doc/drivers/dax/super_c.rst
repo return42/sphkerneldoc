@@ -3,8 +3,8 @@
 
 .. _`__bdev_dax_supported`:
 
-__bdev_dax_supported
-====================
+\__bdev_dax_supported
+=====================
 
 .. c:function:: int __bdev_dax_supported(struct super_block *sb, int blocksize)
 

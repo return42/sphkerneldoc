@@ -109,7 +109,7 @@ bsg_setup_queue
         size of LLD data needed for each job
 
     :param void (\*release)(struct device \*):
-        @dev release function
+        \ ``dev``\  release function
 
 .. This file was automatic generated / don't edit.
 

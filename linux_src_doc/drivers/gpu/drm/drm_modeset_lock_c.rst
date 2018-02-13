@@ -34,7 +34,8 @@ The basic usage pattern is to::
     drm_modeset_drop_locks(ctx);
     drm_modeset_acquire_fini(ctx);
 
-If all that is needed is a single modeset lock, then the \ :c:type:`struct drm_modeset_acquire_ctx <drm_modeset_acquire_ctx>`\  is not needed and the locking can be simplified
+If all that is needed is a single modeset lock, then the \ :c:type:`struct struct <struct>`\ 
+drm_modeset_acquire_ctx is not needed and the locking can be simplified
 by passing a NULL instead of ctx in the \ :c:func:`drm_modeset_lock`\  call or
 calling  \ :c:func:`drm_modeset_lock_single_interruptible`\ . To unlock afterwards
 call \ :c:func:`drm_modeset_unlock`\ .
