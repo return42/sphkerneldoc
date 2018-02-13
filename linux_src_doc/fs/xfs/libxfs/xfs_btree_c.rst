@@ -6,7 +6,7 @@
 xfs_btree_sblock_v5hdr_verify
 =============================
 
-.. c:function:: bool xfs_btree_sblock_v5hdr_verify(struct xfs_buf *bp)
+.. c:function:: xfs_failaddr_t xfs_btree_sblock_v5hdr_verify(struct xfs_buf *bp)
 
     - verify the v5 fields of a short-format btree block
 
@@ -18,7 +18,7 @@ xfs_btree_sblock_v5hdr_verify
 xfs_btree_sblock_verify
 =======================
 
-.. c:function:: bool xfs_btree_sblock_verify(struct xfs_buf *bp, unsigned int max_recs)
+.. c:function:: xfs_failaddr_t xfs_btree_sblock_verify(struct xfs_buf *bp, unsigned int max_recs)
 
     - verify a short-format btree block
 

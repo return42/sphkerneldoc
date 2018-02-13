@@ -197,5 +197,93 @@ Return
 0 on success, -ENOKEY if the key is missing, or another -errno code
 if a problem occurred while setting up the encryption key.
 
+.. _`fscrypt_prepare_symlink`:
+
+fscrypt_prepare_symlink
+=======================
+
+.. c:function:: int fscrypt_prepare_symlink(struct inode *dir, const char *target, unsigned int len, unsigned int max_len, struct fscrypt_str *disk_link)
+
+    prepare to create a possibly-encrypted symlink
+
+    :param struct inode \*dir:
+        directory in which the symlink is being created
+
+    :param const char \*target:
+        plaintext symlink target
+
+    :param unsigned int len:
+        length of \ ``target``\  excluding null terminator
+
+    :param unsigned int max_len:
+        space the filesystem has available to store the symlink target
+
+    :param struct fscrypt_str \*disk_link:
+        (out) the on-disk symlink target being prepared
+
+.. _`fscrypt_prepare_symlink.description`:
+
+Description
+-----------
+
+This function computes the size the symlink target will require on-disk,
+stores it in \ ``disk_link``\ ->len, and validates it against \ ``max_len``\ .  An
+encrypted symlink may be longer than the original.
+
+Additionally, \ ``disk_link``\ ->name is set to \ ``target``\  if the symlink will be
+unencrypted, but left NULL if the symlink will be encrypted.  For encrypted
+symlinks, the filesystem must call \ :c:func:`fscrypt_encrypt_symlink`\  to create the
+on-disk target later.  (The reason for the two-step process is that some
+filesystems need to know the size of the symlink target before creating the
+inode, e.g. to determine whether it will be a "fast" or "slow" symlink.)
+
+.. _`fscrypt_prepare_symlink.return`:
+
+Return
+------
+
+0 on success, -ENAMETOOLONG if the symlink target is too long,
+-ENOKEY if the encryption key is missing, or another -errno code if a problem
+occurred while setting up the encryption key.
+
+.. _`fscrypt_encrypt_symlink`:
+
+fscrypt_encrypt_symlink
+=======================
+
+.. c:function:: int fscrypt_encrypt_symlink(struct inode *inode, const char *target, unsigned int len, struct fscrypt_str *disk_link)
+
+    encrypt the symlink target if needed
+
+    :param struct inode \*inode:
+        symlink inode
+
+    :param const char \*target:
+        plaintext symlink target
+
+    :param unsigned int len:
+        length of \ ``target``\  excluding null terminator
+
+    :param struct fscrypt_str \*disk_link:
+        (in/out) the on-disk symlink target being prepared
+
+.. _`fscrypt_encrypt_symlink.description`:
+
+Description
+-----------
+
+If the symlink target needs to be encrypted, then this function encrypts it
+into \ ``disk_link``\ ->name.  \ :c:func:`fscrypt_prepare_symlink`\  must have been called
+previously to compute \ ``disk_link``\ ->len.  If the filesystem did not allocate a
+buffer for \ ``disk_link``\ ->name after calling \ :c:func:`fscrypt_prepare_link`\ , then one
+will be \ :c:func:`kmalloc`\ 'ed and the filesystem will be responsible for freeing it.
+
+.. _`fscrypt_encrypt_symlink.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
 .. This file was automatic generated / don't edit.
 

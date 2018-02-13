@@ -6,11 +6,11 @@
 i915_gem_shrink
 ===============
 
-.. c:function:: unsigned long i915_gem_shrink(struct drm_i915_private *dev_priv, unsigned long target, unsigned long *nr_scanned, unsigned flags)
+.. c:function:: unsigned long i915_gem_shrink(struct drm_i915_private *i915, unsigned long target, unsigned long *nr_scanned, unsigned flags)
 
     Shrink buffer object caches
 
-    :param struct drm_i915_private \*dev_priv:
+    :param struct drm_i915_private \*i915:
         i915 device
 
     :param unsigned long target:
@@ -54,11 +54,11 @@ The number of pages of backing storage actually released.
 i915_gem_shrink_all
 ===================
 
-.. c:function:: unsigned long i915_gem_shrink_all(struct drm_i915_private *dev_priv)
+.. c:function:: unsigned long i915_gem_shrink_all(struct drm_i915_private *i915)
 
     Shrink buffer object caches completely
 
-    :param struct drm_i915_private \*dev_priv:
+    :param struct drm_i915_private \*i915:
         i915 device
 
 .. _`i915_gem_shrink_all.description`:
@@ -80,38 +80,38 @@ Return
 
 The number of pages of backing storage actually released.
 
-.. _`i915_gem_shrinker_init`:
+.. _`i915_gem_shrinker_register`:
 
-i915_gem_shrinker_init
-======================
+i915_gem_shrinker_register
+==========================
 
-.. c:function:: void i915_gem_shrinker_init(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_gem_shrinker_register(struct drm_i915_private *i915)
 
-    Initialize i915 shrinker
+    Register the i915 shrinker
 
-    :param struct drm_i915_private \*dev_priv:
+    :param struct drm_i915_private \*i915:
         i915 device
 
-.. _`i915_gem_shrinker_init.description`:
+.. _`i915_gem_shrinker_register.description`:
 
 Description
 -----------
 
 This function registers and sets up the i915 shrinker and OOM handler.
 
-.. _`i915_gem_shrinker_cleanup`:
+.. _`i915_gem_shrinker_unregister`:
 
-i915_gem_shrinker_cleanup
-=========================
+i915_gem_shrinker_unregister
+============================
 
-.. c:function:: void i915_gem_shrinker_cleanup(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_gem_shrinker_unregister(struct drm_i915_private *i915)
 
-    Clean up i915 shrinker
+    Unregisters the i915 shrinker
 
-    :param struct drm_i915_private \*dev_priv:
+    :param struct drm_i915_private \*i915:
         i915 device
 
-.. _`i915_gem_shrinker_cleanup.description`:
+.. _`i915_gem_shrinker_unregister.description`:
 
 Description
 -----------

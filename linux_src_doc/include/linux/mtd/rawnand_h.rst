@@ -171,6 +171,8 @@ Definition
         int postpad;
         unsigned int options;
         void *priv;
+        u8 *calc_buf;
+        u8 *code_buf;
         void (*hwctl)(struct mtd_info *mtd, int mode);
         int (*calculate)(struct mtd_info *mtd, const uint8_t *dat, uint8_t *ecc_code);
         int (*correct)(struct mtd_info *mtd, uint8_t *dat, uint8_t *read_ecc, uint8_t *calc_ecc);
@@ -223,6 +225,12 @@ options
 
 priv
     pointer to private ECC control data
+
+calc_buf
+    buffer for calculated ECC, size is oobsize.
+
+code_buf
+    buffer for ECC read from flash, size is oobsize.
 
 hwctl
     function to control hardware ECC generator. Must only
@@ -286,50 +294,6 @@ read_oob
 
 write_oob
     function to write chip OOB data
-
-.. _`nand_buffers`:
-
-struct nand_buffers
-===================
-
-.. c:type:: struct nand_buffers
-
-    buffer structure for read/write
-
-.. _`nand_buffers.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct nand_buffers {
-        uint8_t *ecccalc;
-        uint8_t *ecccode;
-        uint8_t *databuf;
-    }
-
-.. _`nand_buffers.members`:
-
-Members
--------
-
-ecccalc
-    buffer pointer for calculated ECC, size is oobsize.
-
-ecccode
-    buffer pointer for ECC read from flash, size is oobsize.
-
-databuf
-    buffer pointer for data, size is (page size + oobsize).
-
-.. _`nand_buffers.description`:
-
-Description
------------
-
-Do not change the order of buffers. databuf and oobrbuf must be in
-consecutive order.
 
 .. _`nand_sdr_timings`:
 
@@ -638,6 +602,518 @@ cleanup
     the ->init() function may have allocated resources, ->cleanup()
     is here to let vendor specific code release those resources.
 
+.. _`nand_op_cmd_instr`:
+
+struct nand_op_cmd_instr
+========================
+
+.. c:type:: struct nand_op_cmd_instr
+
+    Definition of a command instruction
+
+.. _`nand_op_cmd_instr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_cmd_instr {
+        u8 opcode;
+    }
+
+.. _`nand_op_cmd_instr.members`:
+
+Members
+-------
+
+opcode
+    the command to issue in one cycle
+
+.. _`nand_op_addr_instr`:
+
+struct nand_op_addr_instr
+=========================
+
+.. c:type:: struct nand_op_addr_instr
+
+    Definition of an address instruction
+
+.. _`nand_op_addr_instr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_addr_instr {
+        unsigned int naddrs;
+        const u8 *addrs;
+    }
+
+.. _`nand_op_addr_instr.members`:
+
+Members
+-------
+
+naddrs
+    length of the \ ``addrs``\  array
+
+addrs
+    array containing the address cycles to issue
+
+.. _`nand_op_data_instr`:
+
+struct nand_op_data_instr
+=========================
+
+.. c:type:: struct nand_op_data_instr
+
+    Definition of a data instruction
+
+.. _`nand_op_data_instr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_data_instr {
+        unsigned int len;
+        union {
+            void *in;
+            const void *out;
+        } buf;
+        bool force_8bit;
+    }
+
+.. _`nand_op_data_instr.members`:
+
+Members
+-------
+
+len
+    number of data bytes to move
+
+buf
+    *undescribed*
+
+force_8bit
+    force 8-bit access
+
+.. _`nand_op_data_instr.description`:
+
+Description
+-----------
+
+Please note that "in" and "out" are inverted from the ONFI specification
+and are from the controller perspective, so a "in" is a read from the NAND
+chip while a "out" is a write to the NAND chip.
+
+.. _`nand_op_waitrdy_instr`:
+
+struct nand_op_waitrdy_instr
+============================
+
+.. c:type:: struct nand_op_waitrdy_instr
+
+    Definition of a wait ready instruction
+
+.. _`nand_op_waitrdy_instr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_waitrdy_instr {
+        unsigned int timeout_ms;
+    }
+
+.. _`nand_op_waitrdy_instr.members`:
+
+Members
+-------
+
+timeout_ms
+    maximum delay while waiting for the ready/busy pin in ms
+
+.. _`nand_op_instr_type`:
+
+enum nand_op_instr_type
+=======================
+
+.. c:type:: enum nand_op_instr_type
+
+    Definition of all instruction types
+
+.. _`nand_op_instr_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nand_op_instr_type {
+        NAND_OP_CMD_INSTR,
+        NAND_OP_ADDR_INSTR,
+        NAND_OP_DATA_IN_INSTR,
+        NAND_OP_DATA_OUT_INSTR,
+        NAND_OP_WAITRDY_INSTR
+    };
+
+.. _`nand_op_instr_type.constants`:
+
+Constants
+---------
+
+NAND_OP_CMD_INSTR
+    command instruction
+
+NAND_OP_ADDR_INSTR
+    address instruction
+
+NAND_OP_DATA_IN_INSTR
+    data in instruction
+
+NAND_OP_DATA_OUT_INSTR
+    data out instruction
+
+NAND_OP_WAITRDY_INSTR
+    wait ready instruction
+
+.. _`nand_op_instr`:
+
+struct nand_op_instr
+====================
+
+.. c:type:: struct nand_op_instr
+
+    Instruction object
+
+.. _`nand_op_instr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_instr {
+        enum nand_op_instr_type type;
+        union {
+            struct nand_op_cmd_instr cmd;
+            struct nand_op_addr_instr addr;
+            struct nand_op_data_instr data;
+            struct nand_op_waitrdy_instr waitrdy;
+        } ctx;
+        unsigned int delay_ns;
+    }
+
+.. _`nand_op_instr.members`:
+
+Members
+-------
+
+type
+    the instruction type
+
+ctx
+    *undescribed*
+
+delay_ns
+    delay the controller should apply after the instruction has been
+    issued on the bus. Most modern controllers have internal timings
+    control logic, and in this case, the controller driver can ignore
+    this field.
+
+.. _`nand_subop`:
+
+struct nand_subop
+=================
+
+.. c:type:: struct nand_subop
+
+    a sub operation
+
+.. _`nand_subop.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_subop {
+        const struct nand_op_instr *instrs;
+        unsigned int ninstrs;
+        unsigned int first_instr_start_off;
+        unsigned int last_instr_end_off;
+    }
+
+.. _`nand_subop.members`:
+
+Members
+-------
+
+instrs
+    array of instructions
+
+ninstrs
+    length of the \ ``instrs``\  array
+
+first_instr_start_off
+    offset to start from for the first instruction
+    of the sub-operation
+
+last_instr_end_off
+    offset to end at (excluded) for the last instruction
+    of the sub-operation
+
+.. _`nand_subop.description`:
+
+Description
+-----------
+
+Both \ ``first_instr_start_off``\  and \ ``last_instr_end_off``\  only apply to data or
+address instructions.
+
+When an operation cannot be handled as is by the NAND controller, it will
+be split by the parser into sub-operations which will be passed to the
+controller driver.
+
+.. _`nand_op_parser_addr_constraints`:
+
+struct nand_op_parser_addr_constraints
+======================================
+
+.. c:type:: struct nand_op_parser_addr_constraints
+
+    Constraints for address instructions
+
+.. _`nand_op_parser_addr_constraints.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_parser_addr_constraints {
+        unsigned int maxcycles;
+    }
+
+.. _`nand_op_parser_addr_constraints.members`:
+
+Members
+-------
+
+maxcycles
+    maximum number of address cycles the controller can issue in a
+    single step
+
+.. _`nand_op_parser_data_constraints`:
+
+struct nand_op_parser_data_constraints
+======================================
+
+.. c:type:: struct nand_op_parser_data_constraints
+
+    Constraints for data instructions
+
+.. _`nand_op_parser_data_constraints.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_parser_data_constraints {
+        unsigned int maxlen;
+    }
+
+.. _`nand_op_parser_data_constraints.members`:
+
+Members
+-------
+
+maxlen
+    maximum data length that the controller can handle in a single step
+
+.. _`nand_op_parser_pattern_elem`:
+
+struct nand_op_parser_pattern_elem
+==================================
+
+.. c:type:: struct nand_op_parser_pattern_elem
+
+    One element of a pattern
+
+.. _`nand_op_parser_pattern_elem.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_parser_pattern_elem {
+        enum nand_op_instr_type type;
+        bool optional;
+        union {
+            struct nand_op_parser_addr_constraints addr;
+            struct nand_op_parser_data_constraints data;
+        } ctx;
+    }
+
+.. _`nand_op_parser_pattern_elem.members`:
+
+Members
+-------
+
+type
+    the instructuction type
+
+optional
+    whether this element of the pattern is optional or mandatory
+
+ctx
+    *undescribed*
+
+.. _`nand_op_parser_pattern`:
+
+struct nand_op_parser_pattern
+=============================
+
+.. c:type:: struct nand_op_parser_pattern
+
+    NAND sub-operation pattern descriptor
+
+.. _`nand_op_parser_pattern.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_parser_pattern {
+        const struct nand_op_parser_pattern_elem *elems;
+        unsigned int nelems;
+        int (*exec)(struct nand_chip *chip, const struct nand_subop *subop);
+    }
+
+.. _`nand_op_parser_pattern.members`:
+
+Members
+-------
+
+elems
+    array of pattern elements
+
+nelems
+    number of pattern elements in \ ``elems``\  array
+
+exec
+    the function that will issue a sub-operation
+
+.. _`nand_op_parser_pattern.description`:
+
+Description
+-----------
+
+A pattern is a list of elements, each element reprensenting one instruction
+with its constraints. The pattern itself is used by the core to match NAND
+chip operation with NAND controller operations.
+Once a match between a NAND controller operation pattern and a NAND chip
+operation (or a sub-set of a NAND operation) is found, the pattern ->exec()
+hook is called so that the controller driver can issue the operation on the
+bus.
+
+Controller drivers should declare as many patterns as they support and pass
+this list of patterns (created with the help of the following macro) to
+the \ :c:func:`nand_op_parser_exec_op`\  helper.
+
+.. _`nand_op_parser`:
+
+struct nand_op_parser
+=====================
+
+.. c:type:: struct nand_op_parser
+
+    NAND controller operation parser descriptor
+
+.. _`nand_op_parser.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_op_parser {
+        const struct nand_op_parser_pattern *patterns;
+        unsigned int npatterns;
+    }
+
+.. _`nand_op_parser.members`:
+
+Members
+-------
+
+patterns
+    array of supported patterns
+
+npatterns
+    length of the \ ``patterns``\  array
+
+.. _`nand_op_parser.description`:
+
+Description
+-----------
+
+The parser descriptor is just an array of supported patterns which will be
+iterated by \ :c:func:`nand_op_parser_exec_op`\  everytime it tries to execute an
+NAND operation (or tries to determine if a specific operation is supported).
+
+It is worth mentioning that patterns will be tested in their declaration
+order, and the first match will be taken, so it's important to order patterns
+appropriately so that simple/inefficient patterns are placed at the end of
+the list. Usually, this is where you put single instruction patterns.
+
+.. _`nand_operation`:
+
+struct nand_operation
+=====================
+
+.. c:type:: struct nand_operation
+
+    NAND operation descriptor
+
+.. _`nand_operation.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_operation {
+        const struct nand_op_instr *instrs;
+        unsigned int ninstrs;
+    }
+
+.. _`nand_operation.members`:
+
+Members
+-------
+
+instrs
+    array of instructions to execute
+
+ninstrs
+    length of the \ ``instrs``\  array
+
+.. _`nand_operation.description`:
+
+Description
+-----------
+
+The actual operation structure that will be passed to chip->exec_op().
+
 .. _`nand_chip`:
 
 struct nand_chip
@@ -670,6 +1146,7 @@ Definition
         int (*dev_ready)(struct mtd_info *mtd);
         void (*cmdfunc)(struct mtd_info *mtd, unsigned command, int column, int page_addr);
         int(*waitfunc)(struct mtd_info *mtd, struct nand_chip *this);
+        int (*exec_op)(struct nand_chip *chip,const struct nand_operation *op, bool check_only);
         int (*erase)(struct mtd_info *mtd, int page);
         int (*scan_bbt)(struct mtd_info *mtd);
         int (*onfi_set_features)(struct mtd_info *mtd, struct nand_chip *chip, int feature_addr, uint8_t *subfeature_para);
@@ -686,6 +1163,7 @@ Definition
         int numchips;
         uint64_t chipsize;
         int pagemask;
+        u8 *data_buf;
         int pagebuf;
         unsigned int pagebuf_bitflips;
         int subpagesize;
@@ -704,13 +1182,12 @@ Definition
         } ;
         u16 max_bb_per_die;
         u32 blocks_per_die;
-        struct nand_data_interface *data_interface;
+        struct nand_data_interface data_interface;
         int read_retries;
         flstate_t state;
         uint8_t *oob_poi;
         struct nand_hw_control *controller;
         struct nand_ecc_ctrl ecc;
-        struct nand_buffers *buffers;
         unsigned long buf_align;
         struct nand_hw_control hwcontrol;
         uint8_t *bbt;
@@ -783,6 +1260,12 @@ waitfunc
     [REPLACEABLE] hardwarespecific function for wait on
     ready.
 
+exec_op
+    controller specific method to execute NAND operations.
+    This method replaces ->cmdfunc(),
+    ->{read,write}_{buf,byte,word}(), ->dev_ready() and
+    ->waifunc().
+
 erase
     [REPLACEABLE] erase function
 
@@ -840,6 +1323,9 @@ chipsize
 
 pagemask
     [INTERN] page number mask = number of (pages / chip) - 1
+
+data_buf
+    [INTERN] buffer for data, size is (page size + oobsize).
 
 pagebuf
     [INTERN] holds the pagenumber which is currently in
@@ -929,9 +1415,6 @@ controller
 
 ecc
     [BOARDSPECIFIC] ECC control structure
-
-buffers
-    buffer structure for read/write
 
 buf_align
     minimum buffer alignment required by a platform

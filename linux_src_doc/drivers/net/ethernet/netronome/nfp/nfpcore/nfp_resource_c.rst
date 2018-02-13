@@ -39,10 +39,37 @@ Members
 -------
 
 mutex
-    *undescribed*
+    NFP CPP Lock
+
+mutex.owner
+    NFP CPP Lock, interface owner
+
+mutex.key
+    NFP CPP Lock, posix_crc32(name, 8)
 
 region
     Memory region descriptor
+
+region.name
+    ASCII, zero padded name
+
+region.reserved
+    padding
+
+region.cpp_action
+    CPP Action
+
+region.cpp_token
+    CPP Token
+
+region.cpp_target
+    CPP Target ID
+
+region.page_offset
+    256-byte page offset into target's CPP address
+
+region.page_size
+    size, in 256-byte pages
 
 .. _`nfp_resource_acquire`:
 

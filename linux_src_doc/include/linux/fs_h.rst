@@ -185,26 +185,6 @@ handling code implies lock dependency
 mmap_sem
   -> sb_start_pagefault
 
-.. _`inode_inc_iversion`:
-
-inode_inc_iversion
-==================
-
-.. c:function:: void inode_inc_iversion(struct inode *inode)
-
-    increments i_version
-
-    :param struct inode \*inode:
-        inode that need to be updated
-
-.. _`inode_inc_iversion.description`:
-
-Description
------------
-
-Every time the inode is modified, the i_version field will be incremented.
-The filesystem has to be mounted with i_version flag
-
 .. _`filemap_set_wb_err`:
 
 filemap_set_wb_err

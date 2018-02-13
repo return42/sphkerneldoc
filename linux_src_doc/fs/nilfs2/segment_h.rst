@@ -149,7 +149,7 @@ Definition
         unsigned long sc_blk_cnt;
         unsigned long sc_datablk_cnt;
         unsigned long sc_nblk_this_inc;
-        time_t sc_seg_ctime;
+        time64_t sc_seg_ctime;
         __u64 sc_cno;
         unsigned long sc_flags;
         spinlock_t sc_state_lock;

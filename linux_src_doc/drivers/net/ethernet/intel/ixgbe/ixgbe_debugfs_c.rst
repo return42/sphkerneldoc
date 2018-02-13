@@ -107,7 +107,7 @@ ixgbe_dbg_adapter_exit
     clear out the adapter's debugfs entries
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        the adapter that is exiting
 
 .. _`ixgbe_dbg_init`:
 

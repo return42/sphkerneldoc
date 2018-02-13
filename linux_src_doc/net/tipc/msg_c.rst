@@ -58,6 +58,14 @@ tipc_msg_build
     :param struct sk_buff_head \*list:
         Buffer or chain of buffers to be returned to caller
 
+.. _`tipc_msg_build.description`:
+
+Description
+-----------
+
+Note that the recursive call we are making here is safe, since it can
+logically go only one further level down.
+
 .. _`tipc_msg_build.returns-message-data-size-or-errno`:
 
 Returns message data size or errno

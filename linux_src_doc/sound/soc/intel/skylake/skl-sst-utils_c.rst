@@ -14,10 +14,10 @@ skl_get_pvt_id
         driver context
 
     :param uuid_le \*uuid_mod:
-        *undescribed*
+        module's uuid
 
     :param int instance_id:
-        *undescribed*
+        module's instance id
 
 .. _`skl_get_pvt_id.description`:
 
@@ -40,10 +40,10 @@ skl_put_pvt_id
         driver context
 
     :param uuid_le \*uuid_mod:
-        *undescribed*
+        module's uuid
 
     :param int \*pvt_id:
-        *undescribed*
+        module pvt id
 
 .. _`skl_put_pvt_id.description`:
 

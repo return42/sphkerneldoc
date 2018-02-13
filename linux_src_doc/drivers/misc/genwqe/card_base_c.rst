@@ -292,7 +292,7 @@ a) when a \ :c:func:`kthread_stop`\  request comes in or
 b) a critical GFIR occured
 
 Informational GFIRs are checked and potentially printed in
-health_check_interval seconds.
+GENWQE_HEALTH_CHECK_INTERVAL seconds.
 
 .. _`genwqe_pci_setup`:
 

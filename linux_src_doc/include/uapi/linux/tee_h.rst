@@ -572,5 +572,74 @@ Description
 Takes a struct tee_ioctl_buf_data which contains a struct
 tee_iocl_supp_send_arg followed by any array of struct tee_param
 
+.. _`tee_ioctl_shm_register_data`:
+
+struct tee_ioctl_shm_register_data
+==================================
+
+.. c:type:: struct tee_ioctl_shm_register_data
+
+    Shared memory register argument
+
+.. _`tee_ioctl_shm_register_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tee_ioctl_shm_register_data {
+        __u64 addr;
+        __u64 length;
+        __u32 flags;
+        __s32 id;
+    }
+
+.. _`tee_ioctl_shm_register_data.members`:
+
+Members
+-------
+
+addr
+    [in] Start address of shared memory to register
+
+length
+    [in/out] Length of shared memory to register
+
+flags
+    [in/out] Flags to/from registration.
+
+id
+    [out] Identifier of the shared memory
+
+.. _`tee_ioctl_shm_register_data.description`:
+
+Description
+-----------
+
+The flags field should currently be zero as input. Updated by the call
+with actual flags as defined by TEE_IOCTL_SHM\_\* above.
+This structure is used as argument for TEE_IOC_SHM_REGISTER below.
+
+.. _`tee_ioc_shm_register`:
+
+TEE_IOC_SHM_REGISTER
+====================
+
+.. c:function::  TEE_IOC_SHM_REGISTER()
+
+    Register shared memory argument
+
+.. _`tee_ioc_shm_register.description`:
+
+Description
+-----------
+
+Registers shared memory between the user space process and secure OS.
+
+Returns a file descriptor on success or < 0 on failure
+
+The shared memory is unregisterred when the descriptor is closed.
+
 .. This file was automatic generated / don't edit.
 

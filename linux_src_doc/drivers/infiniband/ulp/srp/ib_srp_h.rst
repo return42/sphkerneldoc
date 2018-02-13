@@ -30,10 +30,17 @@ Definition
         } ;
         struct completion done;
         int status;
-        struct sa_path_rec path;
-        struct ib_sa_query *path_query;
-        int path_query_id;
-        struct ib_cm_id *cm_id;
+        union {
+            struct ib_cm {
+                struct sa_path_rec path;
+                struct ib_sa_query *path_query;
+                int path_query_id;
+                struct ib_cm_id *cm_id;
+            } ib_cm;
+            struct rdma_cm {
+                struct rdma_cm_id *cm_id;
+            } rdma_cm;
+        } ;
         struct srp_iu **tx_ring;
         struct srp_iu **rx_ring;
         struct srp_request *req_ring;
@@ -86,16 +93,13 @@ done
 status
     *undescribed*
 
-path
+{unnamed_union}
+    anonymous
+
+ib_cm
     *undescribed*
 
-path_query
-    *undescribed*
-
-path_query_id
-    *undescribed*
-
-cm_id
+rdma_cm
     *undescribed*
 
 tx_ring
@@ -144,6 +148,7 @@ Definition
         spinlock_t lock;
         u32 global_rkey;
         struct srp_rdma_ch *ch;
+        struct net *net;
         u32 ch_count;
         u32 lkey;
         enum srp_target_state state;
@@ -154,7 +159,6 @@ Definition
         union ib_gid sgid;
         __be64 id_ext;
         __be64 ioc_guid;
-        __be64 service_id;
         __be64 initiator_ext;
         u16 io_class;
         struct srp_host *srp_host;
@@ -163,14 +167,34 @@ Definition
         char target_name[32];
         unsigned int scsi_id;
         unsigned int sg_tablesize;
+        unsigned int target_can_queue;
         int mr_pool_size;
         int mr_per_cmd;
         int queue_size;
         int req_ring_size;
         int comp_vector;
         int tl_retry_count;
-        union ib_gid orig_dgid;
-        __be16 pkey;
+        bool using_rdma_cm;
+        union {
+            struct {
+                __be64 service_id;
+                union ib_gid orig_dgid;
+                __be16 pkey;
+            } ib_cm;
+            struct {
+                union {
+                    struct sockaddr_in ip4;
+                    struct sockaddr_in6 ip6;
+                    struct sockaddr_storage ss;
+                } src;
+                union {
+                    struct sockaddr_in ip4;
+                    struct sockaddr_in6 ip6;
+                    struct sockaddr_storage ss;
+                } dst;
+                bool src_specified;
+            } rdma_cm;
+        } ;
         u32 rq_tmo_jiffies;
         int zero_req_lim;
         struct work_struct tl_err_work;
@@ -191,6 +215,9 @@ global_rkey
     *undescribed*
 
 ch
+    *undescribed*
+
+net
     *undescribed*
 
 ch_count
@@ -223,9 +250,6 @@ id_ext
 ioc_guid
     *undescribed*
 
-service_id
-    *undescribed*
-
 initiator_ext
     *undescribed*
 
@@ -250,6 +274,9 @@ scsi_id
 sg_tablesize
     *undescribed*
 
+target_can_queue
+    *undescribed*
+
 mr_pool_size
     *undescribed*
 
@@ -269,10 +296,16 @@ comp_vector
 tl_retry_count
     *undescribed*
 
-orig_dgid
+using_rdma_cm
     *undescribed*
 
-pkey
+{unnamed_union}
+    anonymous
+
+ib_cm
+    *undescribed*
+
+rdma_cm
     *undescribed*
 
 rq_tmo_jiffies

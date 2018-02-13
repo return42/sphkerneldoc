@@ -8,6 +8,7 @@ cifs
     :maxdepth: 1
 
     cifs_dfs_ref_c
+    connect_c
     dns_resolve_c
     file_c
     inode_c

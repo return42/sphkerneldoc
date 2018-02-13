@@ -62,6 +62,55 @@ Description
 The function will try to retrieve the ports at offset thoff + poff where poff
 is the protocol port offset returned from proto_ports_offset
 
+.. _`__skb_flow_dissect_batadv`:
+
+__skb_flow_dissect_batadv
+=========================
+
+.. c:function:: enum flow_dissect_ret __skb_flow_dissect_batadv(const struct sk_buff *skb, struct flow_dissector_key_control *key_control, void *data, __be16 *p_proto, int *p_nhoff, int hlen, unsigned int flags)
+
+    dissect batman-adv header
+
+    :param const struct sk_buff \*skb:
+        sk_buff to with the batman-adv header
+
+    :param struct flow_dissector_key_control \*key_control:
+        flow dissectors control key
+
+    :param void \*data:
+        raw buffer pointer to the packet, if NULL use skb->data
+
+    :param __be16 \*p_proto:
+        pointer used to update the protocol to process next
+
+    :param int \*p_nhoff:
+        pointer used to update inner network header offset
+
+    :param int hlen:
+        packet header length
+
+    :param unsigned int flags:
+        any combination of FLOW_DISSECTOR_F\_\*
+
+.. _`__skb_flow_dissect_batadv.description`:
+
+Description
+-----------
+
+ETH_P_BATMAN packets are tried to be dissected. Only
+\ :c:type:`struct batadv_unicast <batadv_unicast>`\  packets are actually processed because they contain an
+inner ethernet header and are usually followed by actual network header. This
+allows the flow dissector to continue processing the packet.
+
+.. _`__skb_flow_dissect_batadv.return`:
+
+Return
+------
+
+FLOW_DISSECT_RET_PROTO_AGAIN when \ :c:type:`struct batadv_unicast <batadv_unicast>`\  was found,
+FLOW_DISSECT_RET_OUT_GOOD when dissector should stop after encapsulation,
+otherwise FLOW_DISSECT_RET_OUT_BAD
+
 .. _`__skb_flow_dissect`:
 
 __skb_flow_dissect

@@ -70,7 +70,7 @@ Definition
         int (*trysend)(struct rpmsg_endpoint *ept, void *data, int len);
         int (*trysendto)(struct rpmsg_endpoint *ept, void *data, int len, u32 dst);
         int (*trysend_offchannel)(struct rpmsg_endpoint *ept, u32 src, u32 dst, void *data, int len);
-        unsigned int (*poll)(struct rpmsg_endpoint *ept, struct file *filp, poll_table *wait);
+        __poll_t (*poll)(struct rpmsg_endpoint *ept, struct file *filp, poll_table *wait);
     }
 
 .. _`rpmsg_endpoint_ops.members`:

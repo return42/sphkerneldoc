@@ -13,3 +13,4 @@ memory
     of_memory_c
     omap-gpmc_c
     ti-aemif_c
+    ti-emif-pm_c

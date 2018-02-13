@@ -7,4 +7,5 @@ cavium
 .. toctree::
     :maxdepth: 1
 
+    common/index
     liquidio/index

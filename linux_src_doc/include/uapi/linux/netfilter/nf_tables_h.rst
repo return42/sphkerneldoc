@@ -214,6 +214,9 @@ Definition
         NFT_MSG_GETOBJ,
         NFT_MSG_DELOBJ,
         NFT_MSG_GETOBJ_RESET,
+        NFT_MSG_NEWFLOWTABLE,
+        NFT_MSG_GETFLOWTABLE,
+        NFT_MSG_DELFLOWTABLE,
         NFT_MSG_MAX
     };
 
@@ -287,6 +290,15 @@ NFT_MSG_DELOBJ
 
 NFT_MSG_GETOBJ_RESET
     get and reset a stateful object (enum nft_obj_attributes)
+
+NFT_MSG_NEWFLOWTABLE
+    add new flow table (enum nft_flowtable_attributes)
+
+NFT_MSG_GETFLOWTABLE
+    get flow table (enum nft_flowtable_attributes)
+
+NFT_MSG_DELFLOWTABLE
+    delete flow table (enum nft_flowtable_attributes)
 
 NFT_MSG_MAX
     *undescribed*
@@ -420,6 +432,8 @@ Definition
         NFTA_TABLE_NAME,
         NFTA_TABLE_FLAGS,
         NFTA_TABLE_USE,
+        NFTA_TABLE_HANDLE,
+        NFTA_TABLE_PAD,
         __NFTA_TABLE_MAX
     };
 
@@ -439,6 +453,12 @@ NFTA_TABLE_FLAGS
 
 NFTA_TABLE_USE
     number of chains in this table (NLA_U32)
+
+NFTA_TABLE_HANDLE
+    *undescribed*
+
+NFTA_TABLE_PAD
+    *undescribed*
 
 __NFTA_TABLE_MAX
     *undescribed*
@@ -804,6 +824,7 @@ Definition
         NFTA_SET_USERDATA,
         NFTA_SET_PAD,
         NFTA_SET_OBJ_TYPE,
+        NFTA_SET_HANDLE,
         __NFTA_SET_MAX
     };
 
@@ -859,6 +880,9 @@ NFTA_SET_PAD
 
 NFTA_SET_OBJ_TYPE
     stateful object type (NLA_U32: NFT_OBJECT\_\*)
+
+NFTA_SET_HANDLE
+    set handle (NLA_U64)
 
 __NFTA_SET_MAX
     *undescribed*
@@ -1947,7 +1971,8 @@ Definition
         NFT_META_IIFGROUP,
         NFT_META_OIFGROUP,
         NFT_META_CGROUP,
-        NFT_META_PRANDOM
+        NFT_META_PRANDOM,
+        NFT_META_SECPATH
     };
 
 .. _`nft_meta_keys.constants`:
@@ -2029,6 +2054,9 @@ NFT_META_CGROUP
 
 NFT_META_PRANDOM
     a 32bit pseudo-random number
+
+NFT_META_SECPATH
+    boolean, secpath_exists (!!skb->sp)
 
 .. _`nft_rt_keys`:
 
@@ -2392,6 +2420,42 @@ NFTA_CT_SREG
     source register (NLA_U32)
 
 __NFTA_CT_MAX
+    *undescribed*
+
+.. _`nft_offload_attributes`:
+
+enum nft_offload_attributes
+===========================
+
+.. c:type:: enum nft_offload_attributes
+
+    ct offload expression attributes
+
+.. _`nft_offload_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_offload_attributes {
+        NFTA_FLOW_UNSPEC,
+        NFTA_FLOW_TABLE_NAME,
+        __NFTA_FLOW_MAX
+    };
+
+.. _`nft_offload_attributes.constants`:
+
+Constants
+---------
+
+NFTA_FLOW_UNSPEC
+    *undescribed*
+
+NFTA_FLOW_TABLE_NAME
+    flow table name (NLA_STRING)
+
+__NFTA_FLOW_MAX
     *undescribed*
 
 .. _`nft_limit_attributes`:
@@ -3148,6 +3212,8 @@ Definition
         NFTA_OBJ_TYPE,
         NFTA_OBJ_DATA,
         NFTA_OBJ_USE,
+        NFTA_OBJ_HANDLE,
+        NFTA_OBJ_PAD,
         __NFTA_OBJ_MAX
     };
 
@@ -3174,7 +3240,149 @@ NFTA_OBJ_DATA
 NFTA_OBJ_USE
     number of references to this expression (NLA_U32)
 
+NFTA_OBJ_HANDLE
+    object handle (NLA_U64)
+
+NFTA_OBJ_PAD
+    *undescribed*
+
 __NFTA_OBJ_MAX
+    *undescribed*
+
+.. _`nft_flowtable_attributes`:
+
+enum nft_flowtable_attributes
+=============================
+
+.. c:type:: enum nft_flowtable_attributes
+
+    nf_tables flow table netlink attributes
+
+.. _`nft_flowtable_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_flowtable_attributes {
+        NFTA_FLOWTABLE_UNSPEC,
+        NFTA_FLOWTABLE_TABLE,
+        NFTA_FLOWTABLE_NAME,
+        NFTA_FLOWTABLE_HOOK,
+        NFTA_FLOWTABLE_USE,
+        NFTA_FLOWTABLE_HANDLE,
+        NFTA_FLOWTABLE_PAD,
+        __NFTA_FLOWTABLE_MAX
+    };
+
+.. _`nft_flowtable_attributes.constants`:
+
+Constants
+---------
+
+NFTA_FLOWTABLE_UNSPEC
+    *undescribed*
+
+NFTA_FLOWTABLE_TABLE
+    name of the table containing the expression (NLA_STRING)
+
+NFTA_FLOWTABLE_NAME
+    name of this flow table (NLA_STRING)
+
+NFTA_FLOWTABLE_HOOK
+    netfilter hook configuration(NLA_U32)
+
+NFTA_FLOWTABLE_USE
+    number of references to this flow table (NLA_U32)
+
+NFTA_FLOWTABLE_HANDLE
+    object handle (NLA_U64)
+
+NFTA_FLOWTABLE_PAD
+    *undescribed*
+
+__NFTA_FLOWTABLE_MAX
+    *undescribed*
+
+.. _`nft_flowtable_hook_attributes`:
+
+enum nft_flowtable_hook_attributes
+==================================
+
+.. c:type:: enum nft_flowtable_hook_attributes
+
+    nf_tables flow table hook netlink attributes
+
+.. _`nft_flowtable_hook_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_flowtable_hook_attributes {
+        NFTA_FLOWTABLE_HOOK_UNSPEC,
+        NFTA_FLOWTABLE_HOOK_NUM,
+        NFTA_FLOWTABLE_HOOK_PRIORITY,
+        NFTA_FLOWTABLE_HOOK_DEVS,
+        __NFTA_FLOWTABLE_HOOK_MAX
+    };
+
+.. _`nft_flowtable_hook_attributes.constants`:
+
+Constants
+---------
+
+NFTA_FLOWTABLE_HOOK_UNSPEC
+    *undescribed*
+
+NFTA_FLOWTABLE_HOOK_NUM
+    netfilter hook number (NLA_U32)
+
+NFTA_FLOWTABLE_HOOK_PRIORITY
+    netfilter hook priority (NLA_U32)
+
+NFTA_FLOWTABLE_HOOK_DEVS
+    input devices this flow table is bound to (NLA_NESTED)
+
+__NFTA_FLOWTABLE_HOOK_MAX
+    *undescribed*
+
+.. _`nft_devices_attributes`:
+
+enum nft_devices_attributes
+===========================
+
+.. c:type:: enum nft_devices_attributes
+
+    nf_tables device netlink attributes
+
+.. _`nft_devices_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_devices_attributes {
+        NFTA_DEVICE_UNSPEC,
+        NFTA_DEVICE_NAME,
+        __NFTA_DEVICE_MAX
+    };
+
+.. _`nft_devices_attributes.constants`:
+
+Constants
+---------
+
+NFTA_DEVICE_UNSPEC
+    *undescribed*
+
+NFTA_DEVICE_NAME
+    name of this device (NLA_STRING)
+
+__NFTA_DEVICE_MAX
     *undescribed*
 
 .. _`nft_trace_attributes`:

@@ -143,7 +143,7 @@ mem_cgroup_page_lruvec
         the page
 
     :param struct pglist_data \*pgdat:
-        *undescribed*
+        pgdat of the page
 
 .. _`mem_cgroup_page_lruvec.description`:
 
@@ -911,13 +911,13 @@ mem_cgroup_uncharge_skmem
 
 .. c:function:: void mem_cgroup_uncharge_skmem(struct mem_cgroup *memcg, unsigned int nr_pages)
 
-    uncharge socket memory \ ``memcg``\  - memcg to uncharge \ ``nr_pages``\  - number of pages to uncharge
+    uncharge socket memory
 
     :param struct mem_cgroup \*memcg:
-        *undescribed*
+        memcg to uncharge
 
     :param unsigned int nr_pages:
-        *undescribed*
+        number of pages to uncharge
 
 .. _`mem_cgroup_swapout`:
 

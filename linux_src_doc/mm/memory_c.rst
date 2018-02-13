@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/memory.c
 
+.. _`tlb_gather_mmu`:
+
+tlb_gather_mmu
+==============
+
+.. c:function:: void tlb_gather_mmu(struct mmu_gather *tlb, struct mm_struct *mm, unsigned long start, unsigned long end)
+
+    initialize an mmu_gather structure for page-table tear-down
+
+    :param struct mmu_gather \*tlb:
+        the mmu_gather structure to initialize
+
+    :param struct mm_struct \*mm:
+        the mm_struct of the target address space
+
+    :param unsigned long start:
+        start of the region that will be removed from the page-table
+
+    :param unsigned long end:
+        end of the region that will be removed from the page-table
+
+.. _`tlb_gather_mmu.description`:
+
+Description
+-----------
+
+Called to initialize an (on-stack) mmu_gather structure for page-table
+tear-down from \ ``mm``\ . The \ ``start``\  and \ ``end``\  are set to 0 and -1
+respectively when \ ``mm``\  is without users and we're going to destroy
+the full address space (exit/execve).
+
 .. _`unmap_vmas`:
 
 unmap_vmas
@@ -319,6 +350,37 @@ lock.
 The function expects the page to be locked or other protection against
 concurrent faults / writeback (such as DAX radix tree locks).
 
+.. _`unmap_mapping_pages`:
+
+unmap_mapping_pages
+===================
+
+.. c:function:: void unmap_mapping_pages(struct address_space *mapping, pgoff_t start, pgoff_t nr, bool even_cows)
+
+    Unmap pages from processes.
+
+    :param struct address_space \*mapping:
+        The address space containing pages to be unmapped.
+
+    :param pgoff_t start:
+        Index of first page to be unmapped.
+
+    :param pgoff_t nr:
+        Number of pages to be unmapped.  0 to unmap to end of file.
+
+    :param bool even_cows:
+        Whether to unmap even private COWed pages.
+
+.. _`unmap_mapping_pages.description`:
+
+Description
+-----------
+
+Unmap the pages in this address space from any userspace process which
+has them mmaped.  Generally, you want to remove COWed pages as well when
+a file is being truncated, but not when invalidating pages from the page
+cache.
+
 .. _`unmap_mapping_range`:
 
 unmap_mapping_range
@@ -326,7 +388,7 @@ unmap_mapping_range
 
 .. c:function:: void unmap_mapping_range(struct address_space *mapping, loff_t const holebegin, loff_t const holelen, int even_cows)
 
-    unmap the portion of all mmaps in the specified address_space corresponding to the specified page range in the underlying file.
+    unmap the portion of all mmaps in the specified address_space corresponding to the specified byte range in the underlying file.
 
     :param struct address_space \*mapping:
         the address space containing mmaps to be unmapped.

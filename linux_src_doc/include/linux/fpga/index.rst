@@ -9,3 +9,4 @@ fpga
 
     fpga-bridge_h
     fpga-mgr_h
+    fpga-region_h

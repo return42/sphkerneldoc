@@ -67,6 +67,30 @@ Return
 
 0 on success or negative error number in case of failure
 
+.. _`batadv_debugfs_init`:
+
+batadv_debugfs_init
+===================
+
+.. c:function:: void batadv_debugfs_init( void)
+
+    Initialize soft interface independent debugfs entries
+
+    :param  void:
+        no arguments
+
+.. _`batadv_debugfs_destroy`:
+
+batadv_debugfs_destroy
+======================
+
+.. c:function:: void batadv_debugfs_destroy( void)
+
+    Remove all debugfs entries
+
+    :param  void:
+        no arguments
+
 .. _`batadv_debugfs_add_hardif`:
 
 batadv_debugfs_add_hardif
@@ -97,6 +121,37 @@ batadv_debugfs_del_hardif
 
     :param struct batadv_hard_iface \*hard_iface:
         hard interface which is deleted.
+
+.. _`batadv_debugfs_add_meshif`:
+
+batadv_debugfs_add_meshif
+=========================
+
+.. c:function:: int batadv_debugfs_add_meshif(struct net_device *dev)
+
+    Initialize interface dependent debugfs entries
+
+    :param struct net_device \*dev:
+        netdev struct of the soft interface
+
+.. _`batadv_debugfs_add_meshif.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_debugfs_del_meshif`:
+
+batadv_debugfs_del_meshif
+=========================
+
+.. c:function:: void batadv_debugfs_del_meshif(struct net_device *dev)
+
+    Remove interface dependent debugfs entries
+
+    :param struct net_device \*dev:
+        netdev struct of the soft interface
 
 .. This file was automatic generated / don't edit.
 

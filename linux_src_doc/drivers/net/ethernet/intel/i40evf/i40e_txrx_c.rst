@@ -70,6 +70,26 @@ Description
 Since there is no access to the ring head register
 in XL710, we need to use our local copies
 
+.. _`i40evf_detect_recover_hung`:
+
+i40evf_detect_recover_hung
+==========================
+
+.. c:function:: void i40evf_detect_recover_hung(struct i40e_vsi *vsi)
+
+    Function to detect and recover hung_queues
+
+    :param struct i40e_vsi \*vsi:
+        pointer to vsi struct with tx queues
+
+.. _`i40evf_detect_recover_hung.description`:
+
+Description
+-----------
+
+VSI has netdev and netdev has TX queues. This function is to check each of
+those TX queues if they are hung, trigger recovery by issuing SW interrupt.
+
 .. _`i40e_clean_tx_irq`:
 
 i40e_clean_tx_irq

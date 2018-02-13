@@ -25,7 +25,7 @@ Definition
         int (*clock_settime)(struct posix_clock *pc, const struct timespec64 *ts);
         long (*ioctl) (struct posix_clock *pc, unsigned int cmd, unsigned long arg);
         int (*open) (struct posix_clock *pc, fmode_t f_mode);
-        uint (*poll) (struct posix_clock *pc, struct file *file, poll_table *wait);
+        __poll_t (*poll) (struct posix_clock *pc, struct file *file, poll_table *wait);
         int (*release) (struct posix_clock *pc);
         ssize_t (*read) (struct posix_clock *pc, uint flags, char __user *buf, size_t cnt);
     }

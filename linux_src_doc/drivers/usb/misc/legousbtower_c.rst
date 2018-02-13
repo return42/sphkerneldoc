@@ -93,7 +93,7 @@ dev->packet_timeout_jiffies, or until the buffer is full.
 tower_poll
 ==========
 
-.. c:function:: unsigned int tower_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t tower_poll(struct file *file, poll_table *wait)
 
     :param struct file \*file:
         *undescribed*

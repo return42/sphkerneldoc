@@ -272,6 +272,7 @@ Definition
         bool (*readable_reg)(struct device *dev, unsigned int reg);
         bool (*volatile_reg)(struct device *dev, unsigned int reg);
         bool (*precious_reg)(struct device *dev, unsigned int reg);
+        bool disable_locking;
         regmap_lock lock;
         regmap_unlock unlock;
         void *lock_arg;
@@ -290,12 +291,14 @@ Definition
         unsigned int num_reg_defaults_raw;
         unsigned long read_flag_mask;
         unsigned long write_flag_mask;
+        bool zero_flag_mask;
         bool use_single_rw;
         bool can_multi_write;
         enum regmap_endian reg_format_endian;
         enum regmap_endian val_format_endian;
         const struct regmap_range_cfg *ranges;
         unsigned int num_ranges;
+        bool use_hwlock;
         unsigned int hwlock_id;
         unsigned int hwlock_mode;
     }
@@ -351,6 +354,11 @@ precious_reg
     field is NULL but precious_table (see below) is not, the
     check is performed on such table (a register is precious if
     it belongs to one of the ranges specified by precious_table).
+
+disable_locking
+    This regmap is either protected by external means or
+    is guaranteed not be be accessed from multiple threads.
+    Don't use any locking mechanisms.
 
 lock
     Optional lock callback (overrides regmap's default lock
@@ -422,7 +430,12 @@ read_flag_mask
 write_flag_mask
     Mask to be set in the top bytes of the register when doing
     a write. If both read_flag_mask and write_flag_mask are
-    empty the regmap_bus default masks are used.
+    empty and zero_flag_mask is not set the regmap_bus default
+    masks are used.
+
+zero_flag_mask
+    If set, read_flag_mask and write_flag_mask are used even
+    if they are both empty.
 
 use_single_rw
     If set, converts the bulk read and write operations into
@@ -449,6 +462,9 @@ ranges
 
 num_ranges
     Number of range configuration entries.
+
+use_hwlock
+    Indicate if a hardware spinlock should be used.
 
 hwlock_id
     Specify the hardware spinlock id.
@@ -674,6 +690,29 @@ Description
 The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to
 a struct regmap.
 
+.. _`regmap_init_slimbus`:
+
+regmap_init_slimbus
+===================
+
+.. c:function::  regmap_init_slimbus( slimbus,  config)
+
+    Initialise register map
+
+    :param  slimbus:
+        Device that will be interacted with
+
+    :param  config:
+        Configuration for register map
+
+.. _`regmap_init_slimbus.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to
+a struct regmap.
+
 .. _`regmap_init_spi`:
 
 regmap_init_spi
@@ -837,6 +876,29 @@ regmap_init_ac97
         Configuration for register map
 
 .. _`regmap_init_ac97.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer to
+a struct regmap.
+
+.. _`regmap_init_sdw`:
+
+regmap_init_sdw
+===============
+
+.. c:function::  regmap_init_sdw( sdw,  config)
+
+    Initialise register map
+
+    :param  sdw:
+        Device that will be interacted with
+
+    :param  config:
+        Configuration for register map
+
+.. _`regmap_init_sdw.description`:
 
 Description
 -----------
@@ -1074,6 +1136,30 @@ Description
 
 The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
 to a struct regmap.  The regmap will be automatically freed by the
+device management code.
+
+.. _`devm_regmap_init_sdw`:
+
+devm_regmap_init_sdw
+====================
+
+.. c:function::  devm_regmap_init_sdw( sdw,  config)
+
+    Initialise managed register map
+
+    :param  sdw:
+        Device that will be interacted with
+
+    :param  config:
+        Configuration for register map
+
+.. _`devm_regmap_init_sdw.description`:
+
+Description
+-----------
+
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
+to a struct regmap. The regmap will be automatically freed by the
 device management code.
 
 .. _`reg_field`:

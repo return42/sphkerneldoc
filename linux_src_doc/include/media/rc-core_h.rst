@@ -8,7 +8,7 @@ enum rc_driver_type
 
 .. c:type:: enum rc_driver_type
 
-    type of the RC output
+    type of the RC driver.
 
 .. _`rc_driver_type.definition`:
 
@@ -29,7 +29,7 @@ Constants
 ---------
 
 RC_DRIVER_SCANCODE
-    Driver or hardware generates a scancode
+    Driver or hardware generates a scancode.
 
 RC_DRIVER_IR_RAW
     Driver or hardware generates pulse/space sequences.
@@ -107,6 +107,69 @@ RC_FILTER_WAKEUP
 RC_FILTER_MAX
     Number of filter types.
 
+.. _`lirc_fh`:
+
+struct lirc_fh
+==============
+
+.. c:type:: struct lirc_fh
+
+    represents an open lirc file
+
+.. _`lirc_fh.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct lirc_fh {
+        struct list_head list;
+        struct rc_dev *rc;
+        int carrier_low;
+        bool send_timeout_reports;
+        DECLARE_KFIFO_PTR(rawir, unsigned int);
+        DECLARE_KFIFO_PTR(scancodes, struct lirc_scancode);
+        wait_queue_head_t wait_poll;
+        u8 send_mode;
+        u8 rec_mode;
+    }
+
+.. _`lirc_fh.members`:
+
+Members
+-------
+
+list
+    list of open file handles
+
+rc
+    rcdev for this lirc chardev
+
+carrier_low
+    when setting the carrier range, first the low end must be
+    set with an ioctl and then the high end with another ioctl
+
+send_timeout_reports
+    report timeouts in lirc raw IR.
+
+rawir
+    queue for incoming raw IR
+
+scancodes
+    queue for incoming decoded scancodes
+
+wait_poll
+    poll struct for lirc device
+
+send_mode
+    lirc mode for sending, either LIRC_MODE_SCANCODE or
+    LIRC_MODE_PULSE
+
+rec_mode
+    lirc mode for receiving, either LIRC_MODE_SCANCODE or
+    LIRC_MODE_MODE2
+
 .. _`rc_dev`:
 
 struct rc_dev
@@ -153,6 +216,7 @@ Definition
         bool keypressed;
         unsigned long keyup_jiffies;
         struct timer_list timer_keyup;
+        struct timer_list timer_repeat;
         u32 last_keycode;
         enum rc_proto last_protocol;
         u32 last_scancode;
@@ -162,6 +226,16 @@ Definition
         u32 max_timeout;
         u32 rx_resolution;
         u32 tx_resolution;
+    #ifdef CONFIG_LIRC
+        struct device lirc_dev;
+        struct cdev lirc_cdev;
+        ktime_t gap_start;
+        u64 gap_duration;
+        bool gap;
+        spinlock_t lirc_fh_lock;
+        struct list_head lirc_fh;
+    #endif
+        bool registered;
         int (*change_protocol)(struct rc_dev *dev, u64 *rc_proto);
         int (*open)(struct rc_dev *dev);
         void (*close)(struct rc_dev *dev);
@@ -278,6 +352,10 @@ keyup_jiffies
 timer_keyup
     timer for releasing a keypress
 
+timer_repeat
+    timer for autorepeat events. This is needed for CEC, which
+    has non-standard repeats.
+
 last_keycode
     keycode of last keypress
 
@@ -304,6 +382,31 @@ rx_resolution
 
 tx_resolution
     resolution (in ns) of output sampler
+
+lirc_dev
+    lirc device
+
+lirc_cdev
+    lirc char cdev
+
+gap_start
+    time when gap starts
+
+gap_duration
+    duration of initial gap
+
+gap
+    true if we're in a gap
+
+lirc_fh_lock
+    protects lirc_fh list
+
+lirc_fh
+    list of open files
+
+registered
+    set to true by \ :c:func:`rc_register_device`\ , false by
+    rc_unregister_device
 
 change_protocol
     allow changing the protocol used on hardware decoders
@@ -430,30 +533,6 @@ rc_unregister_device
     Unregisters a RC device
 
     :param struct rc_dev \*dev:
-        pointer to struct rc_dev.
-
-.. _`rc_open`:
-
-rc_open
-=======
-
-.. c:function:: int rc_open(struct rc_dev *rdev)
-
-    Opens a RC device
-
-    :param struct rc_dev \*rdev:
-        pointer to struct rc_dev.
-
-.. _`rc_close`:
-
-rc_close
-========
-
-.. c:function:: void rc_close(struct rc_dev *rdev)
-
-    Closes a RC device
-
-    :param struct rc_dev \*rdev:
         pointer to struct rc_dev.
 
 .. This file was automatic generated / don't edit.

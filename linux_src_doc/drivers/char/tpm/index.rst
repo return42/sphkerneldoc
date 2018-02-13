@@ -12,5 +12,5 @@ tpm
     tpm2-cmd_c
     tpm_crb_c
     tpm_ibmvtpm_c
-    tpm_tis_c
+    tpm_tis_core_c
     tpm_vtpm_proxy_c

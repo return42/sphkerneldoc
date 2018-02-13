@@ -166,21 +166,6 @@ i40evf_irq_enable_queues
     :param u32 mask:
         bitmap of queues to enable
 
-.. _`i40evf_fire_sw_int`:
-
-i40evf_fire_sw_int
-==================
-
-.. c:function:: void i40evf_fire_sw_int(struct i40evf_adapter *adapter, u32 mask)
-
-    Generate SW interrupt for specified vectors
-
-    :param struct i40evf_adapter \*adapter:
-        board private structure
-
-    :param u32 mask:
-        bitmap of vectors to trigger
-
 .. _`i40evf_irq_enable`:
 
 i40evf_irq_enable
@@ -489,7 +474,8 @@ i40evf_find_vlan
 Description
 -----------
 
-Returns ptr to the filter object or NULL
+Returns ptr to the filter object or NULL. Must be called while holding the
+mac_vlan_list_lock.
 
 .. _`i40evf_add_vlan`:
 
@@ -584,7 +570,8 @@ i40evf_find_filter
 Description
 -----------
 
-Returns ptr to the filter object or NULL
+Returns ptr to the filter object or NULL. Must be called while holding the
+mac_vlan_list_lock.
 
 .. _`i40evf_add_filter`:
 
@@ -690,6 +677,13 @@ i40evf_up_complete
     :param struct i40evf_adapter \*adapter:
         board private structure
 
+.. _`i40evf_up_complete.description`:
+
+Description
+-----------
+
+Expects to be called while holding the \__I40EVF_IN_CRITICAL_TASK bit lock.
+
 .. _`i40evf_down`:
 
 i40evf_down
@@ -701,6 +695,13 @@ i40evf_down
 
     :param struct i40evf_adapter \*adapter:
         board private structure
+
+.. _`i40evf_down.description`:
+
+Description
+-----------
+
+Expects to be called while holding the \__I40EVF_IN_CRITICAL_TASK bit lock.
 
 .. _`i40evf_acquire_msix_vectors`:
 

@@ -68,7 +68,7 @@ ixgbe_fcoe_ddp_setup
         the number of scatter-gather items
 
     :param int target_mode:
-        *undescribed*
+        1 to setup target mode, 0 to setup initiator mode
 
 .. _`ixgbe_fcoe_ddp_setup.description`:
 
@@ -365,10 +365,10 @@ ixgbe_fcoe_get_tc
 
 .. c:function:: u8 ixgbe_fcoe_get_tc(struct ixgbe_adapter *adapter)
 
-    get the current TC that fcoe is mapped to \ ``adapter``\  - pointer to the device adapter structure
+    get the current TC that fcoe is mapped to
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        pointer to the device adapter structure
 
 .. _`ixgbe_fcoe_get_tc.description`:
 

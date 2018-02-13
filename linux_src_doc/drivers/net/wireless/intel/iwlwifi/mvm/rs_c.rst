@@ -104,7 +104,7 @@ iwl_mvm_tx_protection
 
 .. c:function:: int iwl_mvm_tx_protection(struct iwl_mvm *mvm, struct iwl_mvm_sta *mvmsta, bool enable)
 
-    Gets LQ command, change it to enable/disable Tx protection, according to this request and previous requests, and send the LQ command.
+    ask FW to enable RTS/CTS protection
 
     :param struct iwl_mvm \*mvm:
         *undescribed*

@@ -33,8 +33,7 @@ spi
     SPI device we are connected to
 
 last_transfer_ns
-    time that we last finished a transfer, or 0 if there
-    if no record
+    time that we last finished a transfer.
 
 start_of_msg_delay
     used to set the delay_usecs on the spi_transfer that

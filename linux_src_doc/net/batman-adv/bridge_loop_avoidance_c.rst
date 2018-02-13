@@ -811,7 +811,7 @@ batadv_bla_is_backbone_gw
 
 .. c:function:: bool batadv_bla_is_backbone_gw(struct sk_buff *skb, struct batadv_orig_node *orig_node, int hdr_size)
 
-    check if originator is a backbone gw for a VLAN.
+    check if originator is a backbone gw for a VLAN
 
     :param struct sk_buff \*skb:
         the frame to be checked

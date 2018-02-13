@@ -167,6 +167,77 @@ Description
 
 Data describing a single virtual interface.
 
+.. _`qlink_channel`:
+
+struct qlink_channel
+====================
+
+.. c:type:: struct qlink_channel
+
+    qlink control channel definition
+
+.. _`qlink_channel.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_channel {
+        __le16 hw_value;
+        __le16 center_freq;
+        __le32 flags;
+        u8 band;
+        u8 max_antenna_gain;
+        u8 max_power;
+        u8 max_reg_power;
+        __le32 dfs_cac_ms;
+        u8 dfs_state;
+        u8 beacon_found;
+        u8 rsvd[2];
+    }
+
+.. _`qlink_channel.members`:
+
+Members
+-------
+
+hw_value
+    hardware-specific value for the channel
+
+center_freq
+    center frequency in MHz
+
+flags
+    channel flags from \ :c:type:`enum qlink_channel_flags <qlink_channel_flags>`\ 
+
+band
+    band this channel belongs to
+
+max_antenna_gain
+    maximum antenna gain in dBi
+
+max_power
+    maximum transmission power (in dBm)
+
+max_reg_power
+    maximum regulatory transmission power (in dBm)
+
+dfs_cac_ms
+    *undescribed*
+
+dfs_state
+    current state of this channel.
+    Only relevant if radar is required on this channel.
+
+beacon_found
+    helper to regulatory code to indicate when a beacon
+    has been found on this channel. Use \ :c:func:`regulatory_hint_found_beacon`\ 
+    to enable this, this is useful only on 5 GHz band.
+
+rsvd
+    *undescribed*
+
 .. _`qlink_chandef`:
 
 struct qlink_chandef
@@ -184,16 +255,20 @@ Definition
 .. code-block:: c
 
     struct qlink_chandef {
+        struct qlink_channel chan;
         __le16 center_freq1;
         __le16 center_freq2;
         u8 width;
-        u8 rsvd[3];
+        u8 rsvd;
     }
 
 .. _`qlink_chandef.members`:
 
 Members
 -------
+
+chan
+    primary channel definition
 
 center_freq1
     center frequency of first segment
@@ -206,6 +281,38 @@ width
 
 rsvd
     *undescribed*
+
+.. _`qlink_sta_info_state`:
+
+struct qlink_sta_info_state
+===========================
+
+.. c:type:: struct qlink_sta_info_state
+
+    station flags mask/value
+
+.. _`qlink_sta_info_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_sta_info_state {
+        __le32 mask;
+        __le32 value;
+    }
+
+.. _`qlink_sta_info_state.members`:
+
+Members
+-------
+
+mask
+    STA flags mask, bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ 
+
+value
+    STA flags values, bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ 
 
 .. _`qlink_cmd_type`:
 
@@ -241,8 +348,10 @@ Definition
         QLINK_CMD_BAND_INFO_GET,
         QLINK_CMD_CHAN_SWITCH,
         QLINK_CMD_CHAN_GET,
+        QLINK_CMD_START_CAC,
         QLINK_CMD_START_AP,
         QLINK_CMD_STOP_AP,
+        QLINK_CMD_SET_MAC_ACL,
         QLINK_CMD_GET_STA_INFO,
         QLINK_CMD_ADD_KEY,
         QLINK_CMD_DEL_KEY,
@@ -318,10 +427,16 @@ QLINK_CMD_CHAN_SWITCH
 QLINK_CMD_CHAN_GET
     *undescribed*
 
+QLINK_CMD_START_CAC
+    start radar detection procedure on a specified channel.
+
 QLINK_CMD_START_AP
     *undescribed*
 
 QLINK_CMD_STOP_AP
+    *undescribed*
+
+QLINK_CMD_SET_MAC_ACL
     *undescribed*
 
 QLINK_CMD_GET_STA_INFO
@@ -762,8 +877,7 @@ Definition
 
     struct qlink_cmd_change_sta {
         struct qlink_cmd chdr;
-        __le32 sta_flags_mask;
-        __le32 sta_flags_set;
+        struct qlink_sta_info_state flag_update;
         __le16 if_type;
         __le16 vlanid;
         u8 sta_addr[ETH_ALEN];
@@ -777,11 +891,8 @@ Members
 chdr
     *undescribed*
 
-sta_flags_mask
-    STA flags mask, bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ 
-
-sta_flags_set
-    STA flags values, bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ 
+flag_update
+    STA flags to update
 
 if_type
     Mode of interface operation, one of \ :c:type:`enum qlink_iface_type <qlink_iface_type>`\ 
@@ -1384,6 +1495,78 @@ aen
 info
     variable configurations
 
+.. _`qlink_cmd_start_cac`:
+
+struct qlink_cmd_start_cac
+==========================
+
+.. c:type:: struct qlink_cmd_start_cac
+
+    data for QLINK_CMD_START_CAC command
+
+.. _`qlink_cmd_start_cac.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_cmd_start_cac {
+        struct qlink_cmd chdr;
+        struct qlink_chandef chan;
+        __le32 cac_time_ms;
+    }
+
+.. _`qlink_cmd_start_cac.members`:
+
+Members
+-------
+
+chdr
+    *undescribed*
+
+chan
+    a channel to start a radar detection procedure on.
+
+cac_time_ms
+    CAC time.
+
+.. _`qlink_acl_data`:
+
+struct qlink_acl_data
+=====================
+
+.. c:type:: struct qlink_acl_data
+
+    ACL data
+
+.. _`qlink_acl_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_acl_data {
+        __le32 policy;
+        __le32 num_entries;
+        struct qlink_mac_address mac_addrs[0];
+    }
+
+.. _`qlink_acl_data.members`:
+
+Members
+-------
+
+policy
+    filter policy, one of \ :c:type:`enum qlink_acl_policy <qlink_acl_policy>`\ .
+
+num_entries
+    number of MAC addresses in array.
+
+mac_addrs
+    *undescribed*
+
 .. _`qlink_resp`:
 
 struct qlink_resp
@@ -1467,6 +1650,7 @@ Definition
         struct ieee80211_ht_cap ht_cap_mod_mask;
         __le16 max_ap_assoc_sta;
         __le16 radar_detect_widths;
+        __le32 max_acl_mac_addrs;
         u8 bands_cap;
         u8 rsvd[1];
         u8 var_info[0];
@@ -1501,6 +1685,9 @@ max_ap_assoc_sta
 
 radar_detect_widths
     bitmask of channels BW for which WMAC can detect radar.
+
+max_acl_mac_addrs
+    *undescribed*
 
 bands_cap
     wireless bands WMAC can operate in, bitmap of \ :c:type:`enum qlink_band <qlink_band>`\ .
@@ -1586,6 +1773,9 @@ Definition
         struct qlink_resp rhdr;
         __le32 fw_ver;
         __le32 hw_capab;
+        __le32 bld_tmstamp;
+        __le32 plat_id;
+        __le32 hw_ver;
         __le16 ql_proto_ver;
         u8 num_mac;
         u8 mac_bitmap;
@@ -1610,6 +1800,15 @@ fw_ver
 
 hw_capab
     Bitmap of capabilities supported by firmware.
+
+bld_tmstamp
+    *undescribed*
+
+plat_id
+    *undescribed*
+
+hw_ver
+    *undescribed*
 
 ql_proto_ver
     Version of QLINK protocol used by firmware.
@@ -1704,6 +1903,7 @@ Definition
     struct qlink_resp_get_sta_info {
         struct qlink_resp rhdr;
         u8 sta_addr[ETH_ALEN];
+        u8 rsvd[2];
         u8 info[0];
     }
 
@@ -1718,8 +1918,11 @@ rhdr
 sta_addr
     MAC address of STA the response carries statistic for.
 
+rsvd
+    *undescribed*
+
 info
-    statistics for specified STA.
+    variable statistics for specified STA.
 
 .. _`qlink_resp_get_sta_info.description`:
 
@@ -2116,8 +2319,9 @@ Definition
     struct qlink_event_rxmgmt {
         struct qlink_event ehdr;
         __le32 freq;
-        __le32 sig_dbm;
         __le32 flags;
+        s8 sig_dbm;
+        u8 rsvd[3];
         u8 frame_data[0];
     }
 
@@ -2132,11 +2336,14 @@ ehdr
 freq
     Frequency on which the frame was received in MHz.
 
+flags
+    bitmap of \ :c:type:`enum qlink_rxmgmt_flags <qlink_rxmgmt_flags>`\ .
+
 sig_dbm
     signal strength in dBm.
 
-flags
-    bitmap of \ :c:type:`enum qlink_rxmgmt_flags <qlink_rxmgmt_flags>`\ .
+rsvd
+    *undescribed*
 
 frame_data
     data of Rx'd frame itself.
@@ -2163,7 +2370,7 @@ Definition
         __le16 freq;
         __le16 capab;
         __le16 bintval;
-        s8 signal;
+        s8 sig_dbm;
         u8 ssid_len;
         u8 ssid[IEEE80211_MAX_SSID_LEN];
         u8 bssid[ETH_ALEN];
@@ -2192,8 +2399,8 @@ capab
 bintval
     beacon interval announced by discovered BSS.
 
-signal
-    signal strength.
+sig_dbm
+    signal strength in dBm.
 
 ssid_len
     length of SSID announced by BSS.
@@ -2275,56 +2482,172 @@ flags
     flags indicating the status of pending scan request,
     see \ :c:type:`enum qlink_scan_complete_flags <qlink_scan_complete_flags>`\ .
 
-.. _`qlink_sta_info_rate`:
+.. _`qlink_event_radar`:
 
-struct qlink_sta_info_rate
-==========================
+struct qlink_event_radar
+========================
 
-.. c:type:: struct qlink_sta_info_rate
+.. c:type:: struct qlink_event_radar
 
-    STA rate statistics
+    data for QLINK_EVENT_RADAR event
 
-.. _`qlink_sta_info_rate.definition`:
+.. _`qlink_event_radar.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct qlink_sta_info_rate {
-        __le16 rate;
-        u8 flags;
-        u8 mcs;
-        u8 nss;
-        u8 bw;
+    struct qlink_event_radar {
+        struct qlink_event ehdr;
+        struct qlink_chandef chan;
+        u8 event;
+        u8 rsvd[3];
     }
 
-.. _`qlink_sta_info_rate.members`:
+.. _`qlink_event_radar.members`:
 
 Members
 -------
 
-rate
-    data rate in Mbps.
-
-flags
-    bitmap of \ :c:type:`enum qlink_sta_flags <qlink_sta_flags>`\ .
-
-mcs
-    802.11-defined MCS index.
-
-nss
+ehdr
     *undescribed*
 
-bw
-    bandwidth, one of \ :c:type:`enum qlink_sta_info_rate_bw <qlink_sta_info_rate_bw>`\ .
+chan
+    channel on which radar event happened.
 
-.. _`qlink_sta_info_rate.nss`:
+event
+    radar event type, one of \ :c:type:`enum qlink_radar_event <qlink_radar_event>`\ .
 
-nss
----
+rsvd
+    *undescribed*
 
-Number of Spatial Streams.
+.. _`qlink_tlv_id`:
+
+enum qlink_tlv_id
+=================
+
+.. c:type:: enum qlink_tlv_id
+
+    list of TLVs that Qlink messages can carry
+
+.. _`qlink_tlv_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_tlv_id {
+        QTN_TLV_ID_FRAG_THRESH,
+        QTN_TLV_ID_RTS_THRESH,
+        QTN_TLV_ID_SRETRY_LIMIT,
+        QTN_TLV_ID_LRETRY_LIMIT,
+        QTN_TLV_ID_REG_RULE,
+        QTN_TLV_ID_CHANNEL,
+        QTN_TLV_ID_CHANDEF,
+        QTN_TLV_ID_STA_STATS_MAP,
+        QTN_TLV_ID_STA_STATS,
+        QTN_TLV_ID_COVERAGE_CLASS,
+        QTN_TLV_ID_IFACE_LIMIT,
+        QTN_TLV_ID_NUM_IFACE_COMB,
+        QTN_TLV_ID_CHANNEL_STATS,
+        QTN_TLV_ID_KEY,
+        QTN_TLV_ID_SEQ,
+        QTN_TLV_ID_IE_SET,
+        QTN_TLV_ID_EXT_CAPABILITY_MASK,
+        QTN_TLV_ID_ACL_DATA,
+        QTN_TLV_ID_BUILD_NAME,
+        QTN_TLV_ID_BUILD_REV,
+        QTN_TLV_ID_BUILD_TYPE,
+        QTN_TLV_ID_BUILD_LABEL,
+        QTN_TLV_ID_HW_ID,
+        QTN_TLV_ID_CALIBRATION_VER,
+        QTN_TLV_ID_UBOOT_VER
+    };
+
+.. _`qlink_tlv_id.constants`:
+
+Constants
+---------
+
+QTN_TLV_ID_FRAG_THRESH
+    *undescribed*
+
+QTN_TLV_ID_RTS_THRESH
+    *undescribed*
+
+QTN_TLV_ID_SRETRY_LIMIT
+    *undescribed*
+
+QTN_TLV_ID_LRETRY_LIMIT
+    *undescribed*
+
+QTN_TLV_ID_REG_RULE
+    *undescribed*
+
+QTN_TLV_ID_CHANNEL
+    *undescribed*
+
+QTN_TLV_ID_CHANDEF
+    *undescribed*
+
+QTN_TLV_ID_STA_STATS_MAP
+    a bitmap of \ :c:type:`enum qlink_sta_info <qlink_sta_info>`\ , used to
+    indicate which statistic carried in QTN_TLV_ID_STA_STATS is valid.
+
+QTN_TLV_ID_STA_STATS
+    per-STA statistics as defined by
+    \ :c:type:`struct qlink_sta_stats <qlink_sta_stats>`\ . Valid values are marked as such in a bitmap
+    carried by QTN_TLV_ID_STA_STATS_MAP.
+
+QTN_TLV_ID_COVERAGE_CLASS
+    *undescribed*
+
+QTN_TLV_ID_IFACE_LIMIT
+    *undescribed*
+
+QTN_TLV_ID_NUM_IFACE_COMB
+    *undescribed*
+
+QTN_TLV_ID_CHANNEL_STATS
+    *undescribed*
+
+QTN_TLV_ID_KEY
+    *undescribed*
+
+QTN_TLV_ID_SEQ
+    *undescribed*
+
+QTN_TLV_ID_IE_SET
+    *undescribed*
+
+QTN_TLV_ID_EXT_CAPABILITY_MASK
+    *undescribed*
+
+QTN_TLV_ID_ACL_DATA
+    *undescribed*
+
+QTN_TLV_ID_BUILD_NAME
+    *undescribed*
+
+QTN_TLV_ID_BUILD_REV
+    *undescribed*
+
+QTN_TLV_ID_BUILD_TYPE
+    *undescribed*
+
+QTN_TLV_ID_BUILD_LABEL
+    *undescribed*
+
+QTN_TLV_ID_HW_ID
+    *undescribed*
+
+QTN_TLV_ID_CALIBRATION_VER
+    *undescribed*
+
+QTN_TLV_ID_UBOOT_VER
+    *undescribed*
 
 .. _`qlink_reg_rule_flags`:
 
@@ -2478,6 +2801,45 @@ Description
 
 Regulatory rule description.
 
+.. _`qlink_tlv_channel`:
+
+struct qlink_tlv_channel
+========================
+
+.. c:type:: struct qlink_tlv_channel
+
+    data for QTN_TLV_ID_CHANNEL TLV
+
+.. _`qlink_tlv_channel.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_tlv_channel {
+        struct qlink_tlv_hdr hdr;
+        struct qlink_channel chan;
+    }
+
+.. _`qlink_tlv_channel.members`:
+
+Members
+-------
+
+hdr
+    *undescribed*
+
+chan
+    *undescribed*
+
+.. _`qlink_tlv_channel.description`:
+
+Description
+-----------
+
+Channel settings.
+
 .. _`qlink_tlv_chandef`:
 
 struct qlink_tlv_chandef
@@ -2496,7 +2858,7 @@ Definition
 
     struct qlink_tlv_chandef {
         struct qlink_tlv_hdr hdr;
-        struct qlink_chandef chan;
+        struct qlink_chandef chdef;
     }
 
 .. _`qlink_tlv_chandef.members`:
@@ -2507,8 +2869,8 @@ Members
 hdr
     *undescribed*
 
-chan
-    channel definition data.
+chdef
+    *undescribed*
 
 .. _`qlink_tlv_chandef.description`:
 
@@ -2556,6 +2918,304 @@ flags
 
 ie_data
     IEs data.
+
+.. _`qlink_sta_info`:
+
+enum qlink_sta_info
+===================
+
+.. c:type:: enum qlink_sta_info
+
+    station information bitmap
+
+.. _`qlink_sta_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum qlink_sta_info {
+        QLINK_STA_INFO_CONNECTED_TIME,
+        QLINK_STA_INFO_INACTIVE_TIME,
+        QLINK_STA_INFO_RX_BYTES,
+        QLINK_STA_INFO_TX_BYTES,
+        QLINK_STA_INFO_RX_BYTES64,
+        QLINK_STA_INFO_TX_BYTES64,
+        QLINK_STA_INFO_RX_DROP_MISC,
+        QLINK_STA_INFO_BEACON_RX,
+        QLINK_STA_INFO_SIGNAL,
+        QLINK_STA_INFO_SIGNAL_AVG,
+        QLINK_STA_INFO_RX_BITRATE,
+        QLINK_STA_INFO_TX_BITRATE,
+        QLINK_STA_INFO_RX_PACKETS,
+        QLINK_STA_INFO_TX_PACKETS,
+        QLINK_STA_INFO_TX_RETRIES,
+        QLINK_STA_INFO_TX_FAILED,
+        QLINK_STA_INFO_STA_FLAGS,
+        QLINK_STA_INFO_NUM
+    };
+
+.. _`qlink_sta_info.constants`:
+
+Constants
+---------
+
+QLINK_STA_INFO_CONNECTED_TIME
+    connected_time value is valid.
+
+QLINK_STA_INFO_INACTIVE_TIME
+    inactive_time value is valid.
+
+QLINK_STA_INFO_RX_BYTES
+    lower 32 bits of rx_bytes value are valid.
+
+QLINK_STA_INFO_TX_BYTES
+    lower 32 bits of tx_bytes value are valid.
+
+QLINK_STA_INFO_RX_BYTES64
+    rx_bytes value is valid.
+
+QLINK_STA_INFO_TX_BYTES64
+    tx_bytes value is valid.
+
+QLINK_STA_INFO_RX_DROP_MISC
+    rx_dropped_misc value is valid.
+
+QLINK_STA_INFO_BEACON_RX
+    rx_beacon value is valid.
+
+QLINK_STA_INFO_SIGNAL
+    signal value is valid.
+
+QLINK_STA_INFO_SIGNAL_AVG
+    signal_avg value is valid.
+
+QLINK_STA_INFO_RX_BITRATE
+    rxrate value is valid.
+
+QLINK_STA_INFO_TX_BITRATE
+    txrate value is valid.
+
+QLINK_STA_INFO_RX_PACKETS
+    rx_packets value is valid.
+
+QLINK_STA_INFO_TX_PACKETS
+    tx_packets value is valid.
+
+QLINK_STA_INFO_TX_RETRIES
+    tx_retries value is valid.
+
+QLINK_STA_INFO_TX_FAILED
+    tx_failed value is valid.
+
+QLINK_STA_INFO_STA_FLAGS
+    sta_flags value is valid.
+
+QLINK_STA_INFO_NUM
+    *undescribed*
+
+.. _`qlink_sta_info.description`:
+
+Description
+-----------
+
+Used to indicate which statistics values in \ :c:type:`struct qlink_sta_stats <qlink_sta_stats>`\ 
+are valid. Individual values are used to fill a bitmap carried in a
+payload of QTN_TLV_ID_STA_STATS_MAP.
+
+.. _`qlink_sta_info_rate`:
+
+struct qlink_sta_info_rate
+==========================
+
+.. c:type:: struct qlink_sta_info_rate
+
+    STA rate statistics
+
+.. _`qlink_sta_info_rate.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_sta_info_rate {
+        __le16 rate;
+        u8 flags;
+        u8 mcs;
+        u8 nss;
+        u8 bw;
+    }
+
+.. _`qlink_sta_info_rate.members`:
+
+Members
+-------
+
+rate
+    data rate in Mbps.
+
+flags
+    bitmap of \ :c:type:`enum qlink_sta_info_rate_flags <qlink_sta_info_rate_flags>`\ .
+
+mcs
+    802.11-defined MCS index.
+
+nss
+    *undescribed*
+
+bw
+    bandwidth, one of \ :c:type:`enum qlink_channel_width <qlink_channel_width>`\ .
+
+.. _`qlink_sta_info_rate.nss`:
+
+nss
+---
+
+Number of Spatial Streams.
+
+.. _`qlink_sta_stats`:
+
+struct qlink_sta_stats
+======================
+
+.. c:type:: struct qlink_sta_stats
+
+    data for QTN_TLV_ID_STA_STATS
+
+.. _`qlink_sta_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct qlink_sta_stats {
+        __le64 rx_bytes;
+        __le64 tx_bytes;
+        __le64 rx_beacon;
+        __le64 rx_duration;
+        __le64 t_offset;
+        __le32 connected_time;
+        __le32 inactive_time;
+        __le32 rx_packets;
+        __le32 tx_packets;
+        __le32 tx_retries;
+        __le32 tx_failed;
+        __le32 rx_dropped_misc;
+        __le32 beacon_loss_count;
+        __le32 expected_throughput;
+        struct qlink_sta_info_state sta_flags;
+        struct qlink_sta_info_rate txrate;
+        struct qlink_sta_info_rate rxrate;
+        __le16 llid;
+        __le16 plid;
+        u8 local_pm;
+        u8 peer_pm;
+        u8 nonpeer_pm;
+        u8 rx_beacon_signal_avg;
+        u8 plink_state;
+        u8 signal;
+        u8 signal_avg;
+        u8 rsvd[1];
+    }
+
+.. _`qlink_sta_stats.members`:
+
+Members
+-------
+
+rx_bytes
+    *undescribed*
+
+tx_bytes
+    *undescribed*
+
+rx_beacon
+    *undescribed*
+
+rx_duration
+    *undescribed*
+
+t_offset
+    *undescribed*
+
+connected_time
+    *undescribed*
+
+inactive_time
+    *undescribed*
+
+rx_packets
+    *undescribed*
+
+tx_packets
+    *undescribed*
+
+tx_retries
+    *undescribed*
+
+tx_failed
+    *undescribed*
+
+rx_dropped_misc
+    *undescribed*
+
+beacon_loss_count
+    *undescribed*
+
+expected_throughput
+    *undescribed*
+
+sta_flags
+    *undescribed*
+
+txrate
+    *undescribed*
+
+rxrate
+    *undescribed*
+
+llid
+    *undescribed*
+
+plid
+    *undescribed*
+
+local_pm
+    *undescribed*
+
+peer_pm
+    *undescribed*
+
+nonpeer_pm
+    *undescribed*
+
+rx_beacon_signal_avg
+    *undescribed*
+
+plink_state
+    *undescribed*
+
+signal
+    *undescribed*
+
+signal_avg
+    *undescribed*
+
+rsvd
+    *undescribed*
+
+.. _`qlink_sta_stats.description`:
+
+Description
+-----------
+
+Carries statistics of a STA. Not all fields may be filled with
+valid values. Valid fields should be indicated as such using a bitmap of
+\ :c:type:`enum qlink_sta_info <qlink_sta_info>`\ . Bitmap is carried separately in a payload of
+QTN_TLV_ID_STA_STATS_MAP.
 
 .. This file was automatic generated / don't edit.
 

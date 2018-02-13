@@ -137,9 +137,8 @@ BATADV_FULL_DUPLEX
     tells if the connection over this link is full-duplex
 
 BATADV_WARNING_DEFAULT
-    tells whether we have warned the user that no
-    throughput data is available for this interface and that default values are
-    assumed.
+    tells whether we have warned the user that no throughput data is available for this interface and that default
+    values are assumed.
 
 .. _`batadv_hard_iface_bat_v`:
 
@@ -227,7 +226,7 @@ BATADV_HARDIF_WIFI_WEXT_INDIRECT
     link device is a wext wifi device
 
 BATADV_HARDIF_WIFI_CFG80211_INDIRECT
-    link device is a cfg80211 wifi device
+    link device is a cfg80211 wifidevice
 
 .. _`batadv_hard_iface`:
 
@@ -296,8 +295,7 @@ refcount
     number of contexts the object is used
 
 batman_adv_ptype
-    packet type describing packets that should be processed by
-    batman-adv for this interface
+    packet type describing packets that should beprocessed by batman-adv for this interface
 
 soft_iface
     the batman-adv interface which uses this network interface
@@ -354,7 +352,7 @@ Members
 -------
 
 list
-    list node for orig_node::ifinfo_list
+    list node for \ :c:type:`batadv_orig_node.ifinfo_list <batadv_orig_node>`\ 
 
 if_outgoing
     pointer to outgoing hard-interface
@@ -532,7 +530,7 @@ tt
     VLAN specific TT attributes
 
 list
-    list node for orig_node::vlan_list
+    list node for \ :c:type:`batadv_orig_node.vlan_list <batadv_orig_node>`\ 
 
 refcount
     number of context where this object is currently in use
@@ -568,16 +566,15 @@ Members
 -------
 
 bcast_own
-    set of bitfields (one per hard-interface) where each one counts
-    the number of our OGMs this orig_node rebroadcasted "back" to us  (relative
-    to last_real_seqno). Every bitfield is BATADV_TQ_LOCAL_WINDOW_SIZE bits long.
+    set of bitfields (one per hard-interface) where each onecounts the number of our OGMs this orig_node rebroadcasted "back" to
+    us  (relative to last_real_seqno). Every bitfield is
+    BATADV_TQ_LOCAL_WINDOW_SIZE bits long.
 
 bcast_own_sum
     sum of bcast_own
 
 ogm_cnt_lock
-    lock protecting bcast_own, bcast_own_sum,
-    neigh_node->bat_iv.real_bits & neigh_node->bat_iv.real_packet_count
+    lock protecting bcast_own, bcast_own_sum,neigh_node->bat_iv.real_bits & neigh_node->bat_iv.real_packet_count
 
 .. _`batadv_orig_node`:
 
@@ -669,8 +666,7 @@ mcast_flags
     multicast flags announced by the orig node
 
 mcast_want_all_unsnoopables_node
-    a list node for the
-    mcast.want_all_unsnoopables list
+    a list node for the mcast.want_all_unsnoopables list
 
 mcast_want_all_ipv4_node
     a list node for the mcast.want_all_ipv4 list
@@ -691,22 +687,20 @@ tt_buff
     last tt changeset this node received from the orig node
 
 tt_buff_len
-    length of the last tt changeset this node received from the
-    orig node
+    length of the last tt changeset this node received from the orig node
 
 tt_buff_lock
     lock that protects tt_buff and tt_buff_len
 
 tt_lock
-    prevents from updating the table while reading it. Table update is
-    made up by two operations (data structure update and metdata -CRC/TTVN-
-    recalculation) and they have to be executed atomically in order to avoid
-    another thread to read the table/metadata between those.
+    prevents from updating the table while reading it. Table update is made up by two operations (data structure update and
+    metdata -CRC/TTVN-recalculation) and they have to be executed
+    atomically in order to avoid another thread to read the
+    table/metadata between those.
 
 bcast_bits
-    bitfield containing the info which payload broadcast originated
-    from this orig node this host already has seen (relative to
-    last_bcast_seqno)
+    bitfield containing the info which payload broadcast originated from this orig node this host already has seen (relative
+    to last_bcast_seqno)
 
 last_bcast_seqno
     last broadcast sequence number received by this host
@@ -715,10 +709,10 @@ neigh_list
     list of potential next hop neighbor towards this orig node
 
 neigh_list_lock
-    lock protecting neigh_list and router
+    lock protecting neigh_list, ifinfo_list, last_bonding_candidate and router
 
 hash_entry
-    hlist node for batadv_priv::orig_hash
+    hlist node for \ :c:type:`batadv_priv.orig_hash <batadv_priv>`\ 
 
 bat_priv
     pointer to soft_iface this orig node belongs to
@@ -748,8 +742,7 @@ fragments
     array with heads for fragment chains
 
 vlan_list
-    a list of orig_node_vlan structs, one per VLAN served by the
-    originator represented by this object
+    a list of orig_node_vlan structs, one per VLAN served by the originator represented by this object
 
 vlan_list_lock
     lock protecting vlan_list
@@ -795,8 +788,7 @@ BATADV_ORIG_CAPA_HAS_TT
     orig node has tt capability
 
 BATADV_ORIG_CAPA_HAS_MCAST
-    orig node has some multicast capability
-    (= orig node announces a tvlv of type BATADV_TVLV_MCAST)
+    orig node has some multicast capability (= orig node announces a tvlv of type BATADV_TVLV_MCAST)
 
 .. _`batadv_gw_node`:
 
@@ -829,7 +821,7 @@ Members
 -------
 
 list
-    list node for batadv_priv_gw::list
+    list node for \ :c:type:`batadv_priv_gw.list <batadv_priv_gw>`\ 
 
 orig_node
     pointer to corresponding orig node
@@ -925,7 +917,7 @@ Members
 -------
 
 list
-    list node for batadv_hard_iface::neigh_list
+    list node for \ :c:type:`batadv_hard_iface.neigh_list <batadv_hard_iface>`\ 
 
 addr
     the MAC address of the neighboring interface
@@ -983,7 +975,7 @@ Members
 -------
 
 list
-    list node for batadv_orig_node::neigh_list
+    list node for \ :c:type:`batadv_orig_node.neigh_list <batadv_orig_node>`\ 
 
 orig_node
     pointer to corresponding orig_node
@@ -995,7 +987,7 @@ ifinfo_list
     list for routing metrics per outgoing interface
 
 ifinfo_lock
-    lock protecting private ifinfo members and list
+    lock protecting ifinfo_list and its members
 
 if_incoming
     pointer to incoming hard-interface
@@ -1051,8 +1043,7 @@ tq_avg
     averaged tq of all tq values in the ring buffer (tq_recv)
 
 real_bits
-    bitfield containing the number of OGMs received from this neigh
-    node (relative to orig_node->last_real_seqno)
+    bitfield containing the number of OGMs received from this neigh node (relative to orig_node->last_real_seqno)
 
 real_packet_count
     counted result of real_bits
@@ -1123,7 +1114,7 @@ Members
 -------
 
 list
-    list node for batadv_neigh_node::ifinfo_list
+    list node for \ :c:type:`batadv_neigh_node.ifinfo_list <batadv_neigh_node>`\ 
 
 if_outgoing
     pointer to outgoing hard-interface
@@ -1323,8 +1314,7 @@ BATADV_CNT_DAT_PUT_RX
     received dht PUT traffic packet counter
 
 BATADV_CNT_DAT_CACHED_REPLY_TX
-    transmitted dat cache reply traffic packet
-    counter
+    transmitted dat cache reply traffic packet counter
 
 BATADV_CNT_NC_CODE
     transmitted nc-combined traffic packet counter
@@ -1348,12 +1338,10 @@ BATADV_CNT_NC_DECODE_BYTES
     received and nc-decoded traffic bytes counter
 
 BATADV_CNT_NC_DECODE_FAILED
-    received and decode-failed traffic packet
-    counter
+    received and decode-failed traffic packet counter
 
 BATADV_CNT_NC_SNIFFED
-    counter for nc-decoded packets received in promisc
-    mode.
+    counter for nc-decoded packets received in promisc mode.
 
 BATADV_CNT_NUM
     number of traffic counters
@@ -1420,8 +1408,7 @@ req_list
     list of pending & unanswered tt_requests
 
 roam_list
-    list of the last roaming events of each client limiting the
-    number of roaming events to avoid route flapping
+    list of the last roaming events of each client limiting the number of roaming events to avoid route flapping
 
 changes_list_lock
     lock protecting changes_list
@@ -1442,11 +1429,10 @@ last_changeset_lock
     lock protecting last_changeset & last_changeset_len
 
 commit_lock
-    prevents from executing a local TT commit while reading the
-    local table. The local TT commit is made up by two operations (data
-    structure update and metdata -CRC/TTVN- recalculation) and they have to be
-    executed atomically in order to avoid another thread to read the
-    table/metadata between those.
+    prevents from executing a local TT commit while reading the local table. The local TT commit is made up by two operations
+    (data structure update and metdata -CRC/TTVN- recalculation) and
+    they have to be executed atomically in order to avoid another thread
+    to read the table/metadata between those.
 
 work
     work queue callback item for translation table purging
@@ -1505,8 +1491,7 @@ loopdetect_next
     how many periods to wait for the next loopdetect process
 
 bcast_duplist
-    recently received broadcast packets array (for broadcast
-    duplicate suppression)
+    recently received broadcast packets array (for broadcast duplicate suppression)
 
 bcast_duplist_curr
     index of last broadcast packet added to bcast_duplist
@@ -1726,8 +1711,7 @@ exists
     whether a querier exists in the mesh
 
 shadowing
-    if a querier exists, whether it is potentially shadowing
-    multicast listeners (i.e. querier is behind our own bridge segment)
+    if a querier exists, whether it is potentially shadowing multicast listeners (i.e. querier is behind our own bridge segment)
 
 .. _`batadv_priv_mcast`:
 
@@ -1772,8 +1756,7 @@ mla_list
     list of multicast addresses we are currently announcing via TT
 
 want_all_unsnoopables_list
-    a list of orig_nodes wanting all unsnoopable
-    multicast traffic
+    a list of orig_nodes wanting all unsnoopable multicast traffic
 
 want_all_ipv4_list
     a list of orig_nodes wanting all IPv4 multicast traffic
@@ -1809,8 +1792,7 @@ num_want_all_ipv6
     counter for items in want_all_ipv6_list
 
 want_lists_lock
-    lock for protecting modifications to mcast want lists
-    (traversals are rcu-locked)
+    lock for protecting modifications to mcasts want_all_{unsnoopables,ipv4,ipv6}_list (traversals are rcu-locked)
 
 work
     work queue callback item for multicast TT and TVLV updates
@@ -1870,15 +1852,13 @@ timestamp_sniffed_purge
     timestamp of last sniffed packet queue purge
 
 coding_hash
-    Hash table used to buffer skbs while waiting for another
-    incoming skb to code it with. Skbs are added to the buffer just before being
-    forwarded in routing.c
+    Hash table used to buffer skbs while waiting for another incoming skb to code it with. Skbs are added to the buffer
+    just before being forwarded in routing.c
 
 decoding_hash
-    Hash table used to buffer skbs that might be needed to decode
-    a received coded skb. The buffer is used for 1) skbs arriving on the
-    soft-interface; 2) skbs overheard on the hard-interface; and 3) skbs
-    forwarded by batman-adv.
+    Hash table used to buffer skbs that might be needed to decode a received coded skb. The buffer is used for 1) skbs
+    arriving on the soft-interface; 2) skbs overheard on the
+    hard-interface; and 3) skbs forwarded by batman-adv.
 
 .. _`batadv_tp_unacked`:
 
@@ -1914,7 +1894,7 @@ len
     length of the packet
 
 list
-    list node for batadv_tp_vars::unacked_list
+    list node for \ :c:type:`batadv_tp_vars.unacked_list <batadv_tp_vars>`\ 
 
 .. _`batadv_tp_unacked.description`:
 
@@ -2016,7 +1996,7 @@ Members
 -------
 
 list
-    list node for bat_priv::tp_list
+    list node for \ :c:type:`bat_priv.tp_list <bat_priv>`\ 
 
 timer
     timer for ack (receiver) and retry (sender)
@@ -2061,8 +2041,7 @@ cwnd_lock
     lock do protect \ ``cwnd``\  & \ ``dec_cwnd``\ 
 
 ss_threshold
-    Slow Start threshold. Once cwnd exceeds this value the
-    connection switches to the Congestion Avoidance state
+    Slow Start threshold. Once cwnd exceeds this value the connection switches to the Congestion Avoidance state
 
 last_acked
     last acked byte
@@ -2166,7 +2145,7 @@ tt
     TT private attributes (VLAN specific)
 
 list
-    list node for bat_priv::softif_vlan_list
+    list node for \ :c:type:`bat_priv.softif_vlan_list <bat_priv>`\ 
 
 refcount
     number of context where this object is currently in use
@@ -2322,23 +2301,20 @@ fragmentation
     bool indicating whether traffic fragmentation is enabled
 
 packet_size_max
-    max packet size that can be transmitted via
-    multiple fragmented skbs or a single frame if fragmentation is disabled
+    max packet size that can be transmitted via multiple fragmented skbs or a single frame if fragmentation is
+    disabled
 
 frag_seqno
     incremental counter to identify chains of egress fragments
 
 bridge_loop_avoidance
-    bool indicating whether bridge loop avoidance is
-    enabled
+    bool indicating whether bridge loop avoidance is enabled
 
 distributed_arp_table
-    bool indicating whether distributed ARP table is
-    enabled
+    bool indicating whether distributed ARP table is enabled
 
 multicast_mode
-    Enable or disable multicast optimizations on this node's
-    sender/originating side
+    Enable or disable multicast optimizations on this node's sender/originating side
 
 orig_interval
     OGM broadcast interval in milliseconds
@@ -2353,8 +2329,7 @@ isolation_mark
     the skb->mark value used to match packets for AP isolation
 
 isolation_mark_mask
-    bitmask identifying the bits in skb->mark to be used
-    for the isolation mark
+    bitmask identifying the bits in skb->mark to be used for the isolation mark
 
 bcast_seqno
     last sent broadcast packet sequence number
@@ -2402,15 +2377,13 @@ orig_work
     work queue callback item for orig node purging
 
 primary_if
-    one of the hard-interfaces assigned to this mesh interface
-    becomes the primary interface
+    one of the hard-interfaces assigned to this mesh interface becomes the primary interface
 
 algo_ops
     routing algorithm used by this mesh interface
 
 softif_vlan_list
-    a list of softif_vlan structs, one per VLAN created on top
-    of the mesh interface represented by this object
+    a list of softif_vlan structs, one per VLAN created on top of the mesh interface represented by this object
 
 softif_vlan_list_lock
     lock protecting softif_vlan_list
@@ -2521,7 +2494,7 @@ Members
 -------
 
 list
-    list node for batadv_socket_client::queue_list
+    list node for \ :c:type:`batadv_socket_client.queue_list <batadv_socket_client>`\ 
 
 icmp_len
     size of the layer2 icmp packet
@@ -2572,7 +2545,7 @@ vid
     vlan id this gateway was detected on
 
 hash_entry
-    hlist node for batadv_priv_bla::backbone_hash
+    hlist node for \ :c:type:`batadv_priv_bla.backbone_hash <batadv_priv_bla>`\ 
 
 bat_priv
     pointer to soft_iface this backbone gateway belongs to
@@ -2581,13 +2554,12 @@ lasttime
     last time we heard of this backbone gw
 
 wait_periods
-    grace time for bridge forward delays and bla group forming at
-    bootup phase - no bcast traffic is formwared until it has elapsed
+    grace time for bridge forward delays and bla group forming at bootup phase - no bcast traffic is formwared until it has
+    elapsed
 
 request_sent
-    if this bool is set to true we are out of sync with this
-    backbone gateway - no bcast traffic is formwared until the situation was
-    resolved
+    if this bool is set to true we are out of sync with this backbone gateway - no bcast traffic is formwared until the
+    situation was resolved
 
 crc
     crc16 checksum over all claims
@@ -2652,7 +2624,7 @@ lasttime
     last time we heard of claim (locals only)
 
 hash_entry
-    hlist node for batadv_priv_bla::claim_hash
+    hlist node for \ :c:type:`batadv_priv_bla.claim_hash <batadv_priv_bla>`\ 
 
 rcu
     struct used for freeing in an RCU-safe manner
@@ -2698,8 +2670,7 @@ vid
     VLAN identifier
 
 hash_entry
-    hlist node for batadv_priv_tt::local_hash or for
-    batadv_priv_tt::global_hash
+    hlist node for \ :c:type:`batadv_priv_tt.local_hash <batadv_priv_tt>`\  or for \ :c:type:`batadv_priv_tt.global_hash <batadv_priv_tt>`\ 
 
 flags
     various state handling flags (see batadv_tt_client_flags)
@@ -2833,7 +2804,7 @@ flags
     per orig entry TT sync flags
 
 list
-    list node for batadv_tt_global_entry::orig_list
+    list node for \ :c:type:`batadv_tt_global_entry.orig_list <batadv_tt_global_entry>`\ 
 
 refcount
     number of contexts the object is used
@@ -2868,7 +2839,7 @@ Members
 -------
 
 list
-    list node for batadv_priv_tt::changes_list
+    list node for \ :c:type:`batadv_priv_tt.changes_list <batadv_priv_tt>`\ 
 
 change
     holds the actual translation table diff data
@@ -2911,7 +2882,7 @@ refcount
     number of contexts the object is used by
 
 list
-    list node for batadv_priv_tt::req_list
+    list node for \ :c:type:`batadv_priv_tt.req_list <batadv_priv_tt>`\ 
 
 .. _`batadv_tt_roam_node`:
 
@@ -2945,14 +2916,13 @@ addr
     mac address of the client in the roaming phase
 
 counter
-    number of allowed roaming events per client within a single
-    OGM interval (changes are committed with each OGM)
+    number of allowed roaming events per client within a singleOGM interval (changes are committed with each OGM)
 
 first_time
     timestamp used for purging stale roaming node entries
 
 list
-    list node for batadv_priv_tt::roam_list
+    list node for \ :c:type:`batadv_priv_tt.roam_list <batadv_priv_tt>`\ 
 
 .. _`batadv_nc_node`:
 
@@ -3133,8 +3103,7 @@ Members
 -------
 
 decoded
-    Marks a skb as decoded, which is checked when searching for coding
-    opportunities in network-coding.c
+    Marks a skb as decoded, which is checked when searching for coding opportunities in network-coding.c
 
 num_bcasts
     Counter for broadcast packet retransmissions
@@ -3176,7 +3145,7 @@ Members
 -------
 
 list
-    list node for batadv_priv::forw_{bat,bcast}_list
+    list node for \ :c:type:`batadv_priv.forw <batadv_priv>`\ .bcast_list and \ :c:type:`batadv_priv.forw <batadv_priv>`\ .bat_list
 
 cleanup_list
     list node for purging functions
@@ -3185,8 +3154,7 @@ send_time
     execution time for delayed_work (packet sending)
 
 own
-    bool for locally generated packets (local OGMs are re-scheduled after
-    sending)
+    bool for locally generated packets (local OGMs are re-scheduledafter sending)
 
 skb
     bcast packet's skb buffer
@@ -3204,12 +3172,10 @@ delayed_work
     work queue callback item for packet sending
 
 if_incoming
-    pointer to incoming hard-iface or primary iface if
-    locally generated packet
+    pointer to incoming hard-iface or primary iface if locally generated packet
 
 if_outgoing
-    packet where the packet should be sent to, or NULL if
-    unspecified
+    packet where the packet should be sent to, or NULL if unspecified
 
 queue_left
     The queue (counter) this packet was applied to
@@ -3244,8 +3210,7 @@ Members
 -------
 
 activate
-    start routing mechanisms when hard-interface is brought up
-    (optional)
+    start routing mechanisms when hard-interface is brought up (optional)
 
 enable
     init routing info when hard-interface is enabled
@@ -3254,8 +3219,7 @@ disable
     de-init routing info when hard-interface is disabled
 
 update_mac
-    (re-)init mac addresses of the protocol information
-    belonging to this hard-interface
+    (re-)init mac addresses of the protocol information belonging to this hard-interface
 
 primary_set
     called when primary interface is selected / changed
@@ -3292,16 +3256,14 @@ Members
 -------
 
 hardif_init
-    called on creation of single hop entry
-    (optional)
+    called on creation of single hop entry (optional)
 
 cmp
-    compare the metrics of two neighbors for their respective outgoing
-    interfaces
+    compare the metrics of two neighbors for their respective outgoing interfaces
 
 is_similar_or_better
-    check if neigh1 is equally similar or better than
-    neigh2 for their respective outgoing interface from the metric prospective
+    check if neigh1 is equally similar or better than neigh2 for their respective outgoing interface from the metric
+    prospective
 
 print
     print the single hop neighbor list (optional)
@@ -3341,16 +3303,15 @@ Members
 -------
 
 free
-    free the resources allocated by the routing algorithm for an orig_node
-    object (optional)
+    free the resources allocated by the routing algorithm for an orig_node object (optional)
 
 add_if
-    ask the routing algorithm to apply the needed changes to the
-    orig_node due to a new hard-interface being added into the mesh (optional)
+    ask the routing algorithm to apply the needed changes to the orig_node due to a new hard-interface being added into the mesh
+    (optional)
 
 del_if
-    ask the routing algorithm to apply the needed changes to the
-    orig_node due to an hard-interface being removed from the mesh (optional)
+    ask the routing algorithm to apply the needed changes to the orig_node due to an hard-interface being removed from the mesh
+    (optional)
 
 print
     print the originator table (optional)
@@ -3401,12 +3362,10 @@ show_sel_class
     prints the current GW selection class (optional)
 
 get_best_gw_node
-    select the best GW from the list of available nodes
-    (optional)
+    select the best GW from the list of available nodes (optional)
 
 is_eligible
-    check if a newly discovered GW is a potential candidate for
-    the election as best GW (optional)
+    check if a newly discovered GW is a potential candidate for the election as best GW (optional)
 
 print
     print the gateway table (optional)
@@ -3506,7 +3465,7 @@ last_update
     time in jiffies when this entry was refreshed last time
 
 hash_entry
-    hlist node for batadv_priv_dat::hash
+    hlist node for \ :c:type:`batadv_priv_dat.hash <batadv_priv_dat>`\ 
 
 refcount
     number of contexts the object is used
@@ -3578,8 +3537,7 @@ type
     - BATADV_DAT_CANDIDATE_ORIG
 
 orig_node
-    if type is BATADV_DAT_CANDIDATE_ORIG this field points to the
-    corresponding originator node structure
+    if type is BATADV_DAT_CANDIDATE_ORIG this field points tothe corresponding originator node structure
 
 .. _`batadv_tvlv_container`:
 
@@ -3609,7 +3567,7 @@ Members
 -------
 
 list
-    hlist node for batadv_priv_tvlv::container_list
+    hlist node for \ :c:type:`batadv_priv_tvlv.container_list <batadv_priv_tvlv>`\ 
 
 tvlv_hdr
     tvlv header information needed to construct the tvlv
@@ -3650,15 +3608,13 @@ Members
 -------
 
 list
-    hlist node for batadv_priv_tvlv::handler_list
+    hlist node for \ :c:type:`batadv_priv_tvlv.handler_list <batadv_priv_tvlv>`\ 
 
 ogm_handler
-    handler callback which is given the tvlv payload to process on
-    incoming OGM packets
+    handler callback which is given the tvlv payload to process on incoming OGM packets
 
 unicast_handler
-    handler callback which is given the tvlv payload to process
-    on incoming unicast tvlv packets
+    handler callback which is given the tvlv payload to process on incoming unicast tvlv packets
 
 type
     tvlv type this handler feels responsible for
@@ -3702,12 +3658,10 @@ Constants
 ---------
 
 BATADV_TVLV_HANDLER_OGM_CIFNOTFND
-    tvlv ogm processing function will call
-    this handler even if its type was not found (with no data)
+    tvlv ogm processing function will call this handler even if its type was not found (with no data)
 
 BATADV_TVLV_HANDLER_OGM_CALLED
-    interval tvlv handling flag - the API marks
-    a handler as being called, so it won't be called if the
+    interval tvlv handling flag - the API marks a handler as being called, so it won't be called if the
     BATADV_TVLV_HANDLER_OGM_CIFNOTFND flag was set
 
 .. _`batadv_store_mesh_work`:

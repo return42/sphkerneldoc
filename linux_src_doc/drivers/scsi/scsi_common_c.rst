@@ -8,7 +8,7 @@ scsi_device_type
 
 .. c:function:: const char *scsi_device_type(unsigned type)
 
-    Return 17 char string indicating device type.
+    Return 17-char string indicating device type.
 
     :param unsigned type:
         type number to look up
@@ -30,35 +30,24 @@ scsilun_to_int
 Description
 -----------
 
-Convert \ ``scsilun``\  from a struct scsi_lun to a four byte host byte-ordered
-integer, and return the result. The caller must check for
-truncation before using this function.
+    Convert \ ``scsilun``\  from a struct scsi_lun to a four-byte host byte-ordered
+    integer, and return the result. The caller must check for
+    truncation before using this function.
 
 .. _`scsilun_to_int.notes`:
 
 Notes
 -----
 
-For a description of the LUN format, post SCSI-3 see the SCSI
-Architecture Model, for SCSI-3 see the SCSI Controller Commands.
+    For a description of the LUN format, post SCSI-3 see the SCSI
+    Architecture Model, for SCSI-3 see the SCSI Controller Commands.
 
-.. _`scsilun_to_int.given-a-struct-scsi_lun-of`:
+    Given a struct scsi_lun of: d2 04 0b 03 00 00 00 00, this function
+    returns the integer: 0x0b03d204
 
-Given a struct scsi_lun of
---------------------------
-
-d2 04 0b 03 00 00 00 00, this function
-
-.. _`scsilun_to_int.returns-the-integer`:
-
-returns the integer
--------------------
-
-0x0b03d204
-
-This encoding will return a standard integer LUN for LUNs smaller
-than 256, which typically use a single level LUN structure with
-addressing method 0.
+    This encoding will return a standard integer LUN for LUNs smaller
+    than 256, which typically use a single level LUN structure with
+    addressing method 0.
 
 .. _`int_to_scsilun`:
 
@@ -80,23 +69,17 @@ int_to_scsilun
 Description
 -----------
 
-Reverts the functionality of the scsilun_to_int, which packed
-an 8-byte lun value into an int. This routine unpacks the int
-back into the lun value.
+    Reverts the functionality of the scsilun_to_int, which packed
+    an 8-byte lun value into an int. This routine unpacks the int
+    back into the lun value.
 
 .. _`int_to_scsilun.notes`:
 
 Notes
 -----
 
-Given an integer : 0x0b03d204,  this function returns a
-
-.. _`int_to_scsilun.struct-scsi_lun-of`:
-
-struct scsi_lun of
-------------------
-
-d2 04 0b 03 00 00 00 00
+    Given an integer : 0x0b03d204, this function returns a
+    struct scsi_lun of: d2 04 0b 03 00 00 00 00
 
 .. _`scsi_normalize_sense`:
 
@@ -122,18 +105,18 @@ scsi_normalize_sense
 Notes
 -----
 
-The "main elements" from sense data are: response_code, sense_key,
-asc, ascq and additional_length (only for descriptor format).
+     The "main elements" from sense data are: response_code, sense_key,
+     asc, ascq and additional_length (only for descriptor format).
 
-Typically this function can be called after a device has
-responded to a SCSI command with the CHECK_CONDITION status.
+     Typically this function can be called after a device has
+     responded to a SCSI command with the CHECK_CONDITION status.
 
 .. _`scsi_normalize_sense.return-value`:
 
 Return value
 ------------
 
-true if valid sense data information found, else false;
+     true if valid sense data information found, else false;
 
 .. _`scsi_sense_desc_find`:
 
@@ -159,14 +142,14 @@ scsi_sense_desc_find
 Notes
 -----
 
-only valid when sense data is in descriptor format
+     only valid when sense data is in descriptor format
 
 .. _`scsi_sense_desc_find.return-value`:
 
 Return value
 ------------
 
-pointer to start of (first) descriptor if found else NULL
+     pointer to start of (first) descriptor if found else NULL
 
 .. _`scsi_build_sense_buffer`:
 
@@ -178,7 +161,7 @@ scsi_build_sense_buffer
     build sense data in a buffer
 
     :param int desc:
-        Sense format (non zero == descriptor format,
+        Sense format (non-zero == descriptor format,
         0 == fixed format)
 
     :param u8 \*buf:
@@ -216,7 +199,7 @@ scsi_set_sense_information
 Return value
 ------------
 
-0 on success or EINVAL for invalid sense buffer length
+     0 on success or -EINVAL for invalid sense buffer length
 
 .. _`scsi_set_sense_field_pointer`:
 
@@ -247,7 +230,7 @@ scsi_set_sense_field_pointer
 Return value
 ------------
 
-0 on success or EINVAL for invalid sense buffer length
+     0 on success or -EINVAL for invalid sense buffer length
 
 .. This file was automatic generated / don't edit.
 

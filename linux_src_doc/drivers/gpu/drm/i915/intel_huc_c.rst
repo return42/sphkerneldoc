@@ -17,17 +17,24 @@ loading to HW is deferred until GEM initialization is done.
 
 Note that HuC firmware loading must be done before GuC loading.
 
-.. _`intel_huc_select_fw`:
+.. _`intel_huc_init_early`:
 
-intel_huc_select_fw
-===================
+intel_huc_init_early
+====================
 
-.. c:function:: void intel_huc_select_fw(struct intel_huc *huc)
+.. c:function:: void intel_huc_init_early(struct intel_huc *huc)
 
-    selects HuC firmware for loading
+    initializes HuC struct
 
     :param struct intel_huc \*huc:
         intel_huc struct
+
+.. _`intel_huc_init_early.description`:
+
+Description
+-----------
+
+On platforms with HuC selects firmware for uploading
 
 .. _`huc_ucode_xfer`:
 
@@ -63,7 +70,7 @@ Return
 intel_huc_init_hw
 =================
 
-.. c:function:: void intel_huc_init_hw(struct intel_huc *huc)
+.. c:function:: int intel_huc_init_hw(struct intel_huc *huc)
 
     load HuC uCode to device
 
@@ -75,11 +82,11 @@ intel_huc_init_hw
 Description
 -----------
 
-Called from \ :c:func:`guc_setup`\  during driver loading and also after a GPU reset.
-Be note that HuC loading must be done before GuC loading.
+Called from \ :c:func:`intel_uc_init_hw`\  during driver loading and also after a GPU
+reset. Be note that HuC loading must be done before GuC loading.
 
 The firmware image should have already been fetched into memory by the
-earlier call to \ :c:func:`intel_huc_init`\ , so here we need only check that
+earlier call to \ :c:func:`intel_uc_init_fw`\ , so here we need only check that
 is succeeded, and then transfer the image to the h/w.
 
 .. _`intel_huc_auth`:
@@ -87,7 +94,7 @@ is succeeded, and then transfer the image to the h/w.
 intel_huc_auth
 ==============
 
-.. c:function:: void intel_huc_auth(struct intel_huc *huc)
+.. c:function:: int intel_huc_auth(struct intel_huc *huc)
 
     Authenticate HuC uCode
 

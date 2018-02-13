@@ -43,10 +43,10 @@ zpool_has_pool
 
 .. c:function:: bool zpool_has_pool(char *type)
 
-    Check if the pool driver is available \ ``type``\         The type of the zpool to check (e.g. zbud, zsmalloc)
+    Check if the pool driver is available
 
     :param char \*type:
-        *undescribed*
+        The type of the zpool to check (e.g. zbud, zsmalloc)
 
 .. _`zpool_has_pool.description`:
 
@@ -79,19 +79,19 @@ zpool_create_pool
 
 .. c:function:: struct zpool *zpool_create_pool(const char *type, const char *name, gfp_t gfp, const struct zpool_ops *ops)
 
-    Create a new zpool \ ``type``\         The type of the zpool to create (e.g. zbud, zsmalloc) \ ``name``\         The name of the zpool (e.g. zram0, zswap) \ ``gfp``\          The GFP flags to use when allocating the pool. \ ``ops``\          The optional ops callback.
+    Create a new zpool
 
     :param const char \*type:
-        *undescribed*
+        The type of the zpool to create (e.g. zbud, zsmalloc)
 
     :param const char \*name:
-        *undescribed*
+        The name of the zpool (e.g. zram0, zswap)
 
     :param gfp_t gfp:
-        *undescribed*
+        The GFP flags to use when allocating the pool.
 
     :param const struct zpool_ops \*ops:
-        *undescribed*
+        The optional ops callback.
 
 .. _`zpool_create_pool.description`:
 
@@ -100,7 +100,7 @@ Description
 
 This creates a new zpool of the specified type.  The gfp flags will be
 used when allocating memory, if the implementation supports it.  If the
-ops param is NULL, then the created zpool will not be shrinkable.
+ops param is NULL, then the created zpool will not be evictable.
 
 Implementations must guarantee this to be thread-safe.
 
@@ -120,10 +120,10 @@ zpool_destroy_pool
 
 .. c:function:: void zpool_destroy_pool(struct zpool *zpool)
 
-    Destroy a zpool \ ``pool``\         The zpool to destroy.
+    Destroy a zpool
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool to destroy.
 
 .. _`zpool_destroy_pool.description`:
 
@@ -144,10 +144,10 @@ zpool_get_type
 
 .. c:function:: const char *zpool_get_type(struct zpool *zpool)
 
-    Get the type of the zpool \ ``pool``\         The zpool to check
+    Get the type of the zpool
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool to check
 
 .. _`zpool_get_type.description`:
 
@@ -172,19 +172,19 @@ zpool_malloc
 
 .. c:function:: int zpool_malloc(struct zpool *zpool, size_t size, gfp_t gfp, unsigned long *handle)
 
-    Allocate memory \ ``pool``\         The zpool to allocate from. \ ``size``\         The amount of memory to allocate. \ ``gfp``\          The GFP flags to use when allocating memory. \ ``handle``\       Pointer to the handle to set
+    Allocate memory
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool to allocate from.
 
     :param size_t size:
-        *undescribed*
+        The amount of memory to allocate.
 
     :param gfp_t gfp:
-        *undescribed*
+        The GFP flags to use when allocating memory.
 
     :param unsigned long \*handle:
-        *undescribed*
+        Pointer to the handle to set
 
 .. _`zpool_malloc.description`:
 
@@ -212,13 +212,13 @@ zpool_free
 
 .. c:function:: void zpool_free(struct zpool *zpool, unsigned long handle)
 
-    Free previously allocated memory \ ``pool``\         The zpool that allocated the memory. \ ``handle``\       The handle to the memory to free.
+    Free previously allocated memory
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool that allocated the memory.
 
     :param unsigned long handle:
-        *undescribed*
+        The handle to the memory to free.
 
 .. _`zpool_free.description`:
 
@@ -241,16 +241,16 @@ zpool_shrink
 
 .. c:function:: int zpool_shrink(struct zpool *zpool, unsigned int pages, unsigned int *reclaimed)
 
-    Shrink the pool size \ ``pool``\         The zpool to shrink. \ ``pages``\        The number of pages to shrink the pool. \ ``reclaimed``\    The number of pages successfully evicted.
+    Shrink the pool size
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool to shrink.
 
     :param unsigned int pages:
-        *undescribed*
+        The number of pages to shrink the pool.
 
     :param unsigned int \*reclaimed:
-        *undescribed*
+        The number of pages successfully evicted.
 
 .. _`zpool_shrink.description`:
 
@@ -280,23 +280,23 @@ zpool_map_handle
 
 .. c:function:: void *zpool_map_handle(struct zpool *zpool, unsigned long handle, enum zpool_mapmode mapmode)
 
-    Map a previously allocated handle into memory \ ``pool``\         The zpool that the handle was allocated from \ ``handle``\       The handle to map \ ``mm``\           How the memory should be mapped
+    Map a previously allocated handle into memory
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool that the handle was allocated from
 
     :param unsigned long handle:
-        *undescribed*
+        The handle to map
 
     :param enum zpool_mapmode mapmode:
-        *undescribed*
+        How the memory should be mapped
 
 .. _`zpool_map_handle.description`:
 
 Description
 -----------
 
-This maps a previously allocated handle into memory.  The \ ``mm``\ 
+This maps a previously allocated handle into memory.  The \ ``mapmode``\ 
 param indicates to the implementation how the memory will be
 used, i.e. read-only, write-only, read-write.  If the
 implementation does not support it, the memory will be treated
@@ -324,13 +324,13 @@ zpool_unmap_handle
 
 .. c:function:: void zpool_unmap_handle(struct zpool *zpool, unsigned long handle)
 
-    Unmap a previously mapped handle \ ``pool``\         The zpool that the handle was allocated from \ ``handle``\       The handle to unmap
+    Unmap a previously mapped handle
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool that the handle was allocated from
 
     :param unsigned long handle:
-        *undescribed*
+        The handle to unmap
 
 .. _`zpool_unmap_handle.description`:
 
@@ -349,10 +349,10 @@ zpool_get_total_size
 
 .. c:function:: u64 zpool_get_total_size(struct zpool *zpool)
 
-    The total size of the pool \ ``pool``\         The zpool to check
+    The total size of the pool
 
     :param struct zpool \*zpool:
-        *undescribed*
+        The zpool to check
 
 .. _`zpool_get_total_size.description`:
 
@@ -367,6 +367,37 @@ Return
 ------
 
 Total size of the zpool in bytes.
+
+.. _`zpool_evictable`:
+
+zpool_evictable
+===============
+
+.. c:function:: bool zpool_evictable(struct zpool *zpool)
+
+    Test if zpool is potentially evictable \ ``pool``\         The zpool to test
+
+    :param struct zpool \*zpool:
+        *undescribed*
+
+.. _`zpool_evictable.description`:
+
+Description
+-----------
+
+Zpool is only potentially evictable when it's created with struct
+zpool_ops.evict and its driver implements struct zpool_driver.shrink.
+
+However, it doesn't necessarily mean driver will use zpool_ops.evict
+in its implementation of zpool_driver.shrink. It could do internal
+defragmentation instead.
+
+.. _`zpool_evictable.return`:
+
+Return
+------
+
+true if potentially evictable; false otherwise.
 
 .. This file was automatic generated / don't edit.
 

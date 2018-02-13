@@ -167,21 +167,30 @@ Definition
         struct hwtstamp_config config;
         bool enabled;
         unsigned int mode;
-        unsigned int time_format;
         void (*ns_to_nic_time)(s64 ns, u32 *nic_major, u32 *nic_minor);
         ktime_t (*nic_to_kernel_time)(u32 nic_major, u32 nic_minor, s32 correction);
-        unsigned int min_synchronisation_ns;
         struct {
-            s32 tx;
-            s32 rx;
+            u32 minor_max;
+            u32 sync_event_diff_min;
+            u32 sync_event_diff_max;
+            unsigned int sync_event_minor_shift;
+        } nic_time;
+        unsigned int min_synchronisation_ns;
+        unsigned int capabilities;
+        struct {
+            s32 ptp_tx;
+            s32 ptp_rx;
             s32 pps_out;
             s32 pps_in;
+            s32 general_tx;
+            s32 general_rx;
         } ts_corrections;
         efx_qword_t evt_frags[MAX_EVENT_FRAGS];
         int evt_frag_idx;
         int evt_code;
         struct efx_buffer start;
         struct pps_event_time host_time_pps;
+        unsigned int adjfreq_ppb_shift;
         s64 current_adjfreq;
         struct ptp_clock *phc_clock;
         struct ptp_clock_info phc_clock_info;
@@ -199,6 +208,7 @@ Definition
         unsigned int oversize_sync_windows;
         unsigned int rx_no_timestamp;
         struct efx_ptp_timeset timeset[MC_CMD_PTP_OUT_SYNCHRONIZE_TIMESET_MAXNUM];
+        void (*xmit_skb)(struct efx_nic *efx, struct sk_buff *skb);
     }
 
 .. _`efx_ptp_data.members`:
@@ -217,10 +227,10 @@ rx_ts_inline
     separate events)
 
 rxq
-    Receive queue (awaiting timestamps)
+    Receive SKB queue (awaiting timestamps)
 
 txq
-    Transmit queue
+    Transmit SKB queue
 
 evt_list
     List of MC receive events awaiting packets
@@ -262,32 +272,62 @@ enabled
 mode
     Mode in which PTP operating (PTP version)
 
-time_format
-    Time format supported by this NIC
-
 ns_to_nic_time
     Function to convert from scalar nanoseconds to NIC time
 
 nic_to_kernel_time
     Function to convert from NIC to kernel time
 
+nic_time
+    *undescribed*
+
+nic_time.minor_max
+    Wrap point for NIC minor times
+
+nic_time.sync_event_diff_min
+    Minimum acceptable difference between time
+    in packet prefix and last MCDI time sync event i.e. how much earlier than
+    the last sync event time a packet timestamp can be.
+
+nic_time.sync_event_diff_max
+    Maximum acceptable difference between time
+    in packet prefix and last MCDI time sync event i.e. how much later than
+    the last sync event time a packet timestamp can be.
+
+nic_time.sync_event_minor_shift
+    Shift required to make minor time from
+    field in MCDI time sync event.
+
 min_synchronisation_ns
     Minimum acceptable corrected sync window
+
+capabilities
+    Capabilities flags from the NIC
 
 ts_corrections
     *undescribed*
 
-ts_corrections.tx
-    Required driver correction of transmit timestamps
+ts_corrections.ptp_tx
+    Required driver correction of PTP packet transmit
+    timestamps
 
-ts_corrections.rx
-    Required driver correction of receive timestamps
+ts_corrections.ptp_rx
+    Required driver correction of PTP packet receive
+    timestamps
 
 ts_corrections.pps_out
     PPS output error (information only)
 
 ts_corrections.pps_in
     Required driver correction of PPS input timestamps
+
+ts_corrections.general_tx
+    Required driver correction of general packet
+    transmit timestamps
+
+ts_corrections.general_rx
+    Required driver correction of general packet
+    receive timestamps
 
 evt_frags
     Partly assembled PTP events
@@ -303,6 +343,10 @@ start
 
 host_time_pps
     Host time at last PPS
+
+adjfreq_ppb_shift
+    Shift required to convert scaled parts-per-billion
+    frequency adjustment into a fixed point fractional nanosecond format.
 
 current_adjfreq
     Current ppb adjustment.
@@ -354,6 +398,9 @@ rx_no_timestamp
 
 timeset
     Last set of synchronisation statistics.
+
+xmit_skb
+    Transmit SKB function.
 
 .. This file was automatic generated / don't edit.
 

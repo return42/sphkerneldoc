@@ -415,6 +415,18 @@ Connectors also have one standardized atomic property:
 CRTC_ID:
      Mode object ID of the \ :c:type:`struct drm_crtc <drm_crtc>`\  this connector should be connected to.
 
+Connectors for LCD panels may also have one standardized property:
+
+panel orientation:
+     On some devices the LCD panel is mounted in the casing in such a way
+     that the up/top side of the panel does not match with the top side of
+     the device. Userspace can use this property to check for this.
+     Note that input coordinates from touchscreens (input devices with
+     INPUT_PROP_DIRECT) will still map 1:1 to the actual LCD panel
+     coordinates, so if userspace rotates the picture to adjust for
+     the orientation it must also apply the same transformation to the
+     touchscreen input coordinates.
+
 .. _`drm_mode_create_dvi_i_properties`:
 
 drm_mode_create_dvi_i_properties
@@ -693,6 +705,44 @@ re-training a link) without userspace's intervention.
 The reason for adding this property is to handle link training failures, but
 it is not limited to DP or link training. For example, if we implement
 asynchronous setcrtc, this property can be used to report any failures in that.
+
+.. _`drm_connector_init_panel_orientation_property`:
+
+drm_connector_init_panel_orientation_property
+=============================================
+
+.. c:function:: int drm_connector_init_panel_orientation_property(struct drm_connector *connector, int width, int height)
+
+    initialize the connecters panel_orientation property
+
+    :param struct drm_connector \*connector:
+        connector for which to init the panel-orientation property.
+
+    :param int width:
+        width in pixels of the panel, used for panel quirk detection
+
+    :param int height:
+        height in pixels of the panel, used for panel quirk detection
+
+.. _`drm_connector_init_panel_orientation_property.description`:
+
+Description
+-----------
+
+This function should only be called for built-in panels, after setting
+connector->display_info.panel_orientation first (if known).
+
+This function will check for platform specific (e.g. DMI based) quirks
+overriding display_info.panel_orientation first, then if panel_orientation
+is not DRM_MODE_PANEL_ORIENTATION_UNKNOWN it will attach the
+"panel orientation" property to the connector.
+
+.. _`drm_connector_init_panel_orientation_property.return`:
+
+Return
+------
+
+Zero on success, negative errno on failure.
 
 .. _`tile-group`:
 

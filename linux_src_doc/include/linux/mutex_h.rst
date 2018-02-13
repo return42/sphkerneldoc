@@ -27,7 +27,7 @@ It is not allowed to initialize an already locked mutex.
 mutex_is_locked
 ===============
 
-.. c:function:: int mutex_is_locked(struct mutex *lock)
+.. c:function:: bool mutex_is_locked(struct mutex *lock)
 
     is the mutex locked
 
@@ -39,7 +39,7 @@ mutex_is_locked
 Description
 -----------
 
-Returns 1 if the mutex is locked, 0 if unlocked.
+Returns true if the mutex is locked, false if unlocked.
 
 .. _`mutex_trylock_recursive`:
 

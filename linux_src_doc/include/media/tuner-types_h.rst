@@ -276,5 +276,63 @@ ranges
     Array with the frequency ranges supported by
     the tuner.
 
+.. _`tunertype`:
+
+struct tunertype
+================
+
+.. c:type:: struct tunertype
+
+    describes the known tuners.
+
+.. _`tunertype.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tunertype {
+        char *name;
+        unsigned int count;
+        struct tuner_params *params;
+        u16 min;
+        u16 max;
+        u32 stepsize;
+        u8 *initdata;
+        u8 *sleepdata;
+    }
+
+.. _`tunertype.members`:
+
+Members
+-------
+
+name
+    string with the tuner's name.
+
+count
+    size of \ :c:type:`struct tuner_params <tuner_params>`\  array.
+
+params
+    pointer to \ :c:type:`struct tuner_params <tuner_params>`\  array.
+
+min
+    minimal tuner frequency, in 62.5 kHz step.
+    should be multiplied to 16 to convert to MHz.
+
+max
+    minimal tuner frequency, in 62.5 kHz step.
+    Should be multiplied to 16 to convert to MHz.
+
+stepsize
+    frequency step, in Hz.
+
+initdata
+    optional byte sequence to initialize the tuner.
+
+sleepdata
+    optional byte sequence to power down the tuner.
+
 .. This file was automatic generated / don't edit.
 

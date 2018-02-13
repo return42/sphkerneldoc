@@ -61,7 +61,7 @@ platform_data
     lp8755_h
     macb_h
     max197_h
-    mlxcpld-hotplug_h
+    mlxreg_h
     mmc-esdhc-imx_h
     mmc-s3cmci_h
     mmc-sdhci-s3c_h
@@ -78,6 +78,7 @@ platform_data
     spi-s3c64xx_h
     ssm2518_h
     st_sensors_pdata_h
+    ti-sysc_h
     ux500_wdt_h
     video-mx3fb_h
     video_s3c_h

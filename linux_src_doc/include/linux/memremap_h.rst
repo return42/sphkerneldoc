@@ -64,8 +64,9 @@ Definition
     struct dev_pagemap {
         dev_page_fault_t page_fault;
         dev_page_free_t page_free;
-        struct vmem_altmap *altmap;
-        const struct resource *res;
+        struct vmem_altmap altmap;
+        bool altmap_valid;
+        struct resource res;
         struct percpu_ref *ref;
         struct device *dev;
         void *data;
@@ -86,6 +87,9 @@ page_free
 altmap
     pre-allocated/reserved memory for vmemmap allocations
 
+altmap_valid
+    *undescribed*
+
 res
     physical address range covered by \ ``ref``\ 
 
@@ -100,29 +104,6 @@ data
 
 type
     memory type: see MEMORY\_\* in memory_hotplug.h
-
-.. _`get_dev_pagemap`:
-
-get_dev_pagemap
-===============
-
-.. c:function:: struct dev_pagemap *get_dev_pagemap(unsigned long pfn, struct dev_pagemap *pgmap)
-
-    take a new live reference on the dev_pagemap for \ ``pfn``\ 
-
-    :param unsigned long pfn:
-        page frame number to lookup page_map
-
-    :param struct dev_pagemap \*pgmap:
-        optional known pgmap that already has a reference
-
-.. _`get_dev_pagemap.description`:
-
-Description
------------
-
-@pgmap allows the overhead of a lookup to be bypassed when \ ``pfn``\  lands in the
-same mapping.
 
 .. This file was automatic generated / don't edit.
 

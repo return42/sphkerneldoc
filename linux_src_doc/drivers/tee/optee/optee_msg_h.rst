@@ -171,8 +171,8 @@ Description
 
 @attr & OPTEE_MSG_ATTR_TYPE_MASK indicates if tmem, rmem or value is used in
 the union. OPTEE_MSG_ATTR_TYPE_VALUE\_\* indicates value,
-OPTEE_MSG_ATTR_TYPE_TMEM\_\* indicates tmem and
-OPTEE_MSG_ATTR_TYPE_RMEM\_\* indicates rmem.
+OPTEE_MSG_ATTR_TYPE_TMEM\_\* indicates \ ``tmem``\  and
+OPTEE_MSG_ATTR_TYPE_RMEM\_\* indicates \ ``rmem``\ ,
 OPTEE_MSG_ATTR_TYPE_NONE indicates that none of the members are used.
 
 .. _`optee_msg_arg`:

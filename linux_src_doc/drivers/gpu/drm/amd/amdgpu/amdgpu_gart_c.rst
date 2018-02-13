@@ -1,48 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c
 
-.. _`amdgpu_gart_table_ram_alloc`:
+.. _`amdgpu_gart_dummy_page_init`:
 
-amdgpu_gart_table_ram_alloc
+amdgpu_gart_dummy_page_init
 ===========================
 
-.. c:function:: int amdgpu_gart_table_ram_alloc(struct amdgpu_device *adev)
+.. c:function:: int amdgpu_gart_dummy_page_init(struct amdgpu_device *adev)
 
-    allocate system ram for gart page table
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`amdgpu_gart_table_ram_alloc.description`:
-
-Description
------------
-
-Allocate system memory for GART page table
-(r1xx-r3xx, non-pcie r4xx, rs400).  These asics require the
-gart table to be in system memory.
-Returns 0 for success, -ENOMEM for failure.
-
-.. _`amdgpu_gart_table_ram_free`:
-
-amdgpu_gart_table_ram_free
-==========================
-
-.. c:function:: void amdgpu_gart_table_ram_free(struct amdgpu_device *adev)
-
-    free system ram for gart page table
+    init dummy page used by the driver
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-.. _`amdgpu_gart_table_ram_free.description`:
+.. _`amdgpu_gart_dummy_page_init.description`:
 
 Description
 -----------
 
-Free system memory for GART page table
-(r1xx-r3xx, non-pcie r4xx, rs400).  These asics require the
-gart table to be in system memory.
+Allocate the dummy page used by the driver (all asics).
+This dummy page is used by the driver as a filler for gart entries
+when pages are taken out of the GART
+Returns 0 on sucess, -ENOMEM on failure.
+
+.. _`amdgpu_gart_dummy_page_fini`:
+
+amdgpu_gart_dummy_page_fini
+===========================
+
+.. c:function:: void amdgpu_gart_dummy_page_fini(struct amdgpu_device *adev)
+
+    free dummy page used by the driver
+
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
+
+.. _`amdgpu_gart_dummy_page_fini.description`:
+
+Description
+-----------
+
+Frees the dummy page used by the driver (all asics).
 
 .. _`amdgpu_gart_table_vram_alloc`:
 

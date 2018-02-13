@@ -34,5 +34,37 @@ Notes
     Although \ :c:func:`blk_release_queue`\  may be called with preemption disabled,
     \ :c:func:`__blk_release_queue`\  may sleep.
 
+.. _`blk_register_queue`:
+
+blk_register_queue
+==================
+
+.. c:function:: int blk_register_queue(struct gendisk *disk)
+
+    register a block layer queue with sysfs
+
+    :param struct gendisk \*disk:
+        Disk of which the request queue should be registered with sysfs.
+
+.. _`blk_unregister_queue`:
+
+blk_unregister_queue
+====================
+
+.. c:function:: void blk_unregister_queue(struct gendisk *disk)
+
+    counterpart of \ :c:func:`blk_register_queue`\ 
+
+    :param struct gendisk \*disk:
+        Disk of which the request queue should be unregistered from sysfs.
+
+.. _`blk_unregister_queue.note`:
+
+Note
+----
+
+the caller is responsible for guaranteeing that this function is called
+after \ :c:func:`blk_register_queue`\  has finished.
+
 .. This file was automatic generated / don't edit.
 

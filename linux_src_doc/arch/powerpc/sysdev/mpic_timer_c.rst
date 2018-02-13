@@ -19,7 +19,7 @@ Description
 -----------
 
 It will do ->fn(->dev) callback from the hardware interrupt at
-the ->timeval point in the future.
+the 'time64_t' point in the future.
 
 .. _`mpic_stop_timer`:
 
@@ -45,14 +45,14 @@ The timer periodically generates an interrupt. Unless user stops the timer.
 mpic_get_remain_time
 ====================
 
-.. c:function:: void mpic_get_remain_time(struct mpic_timer *handle, struct timeval *time)
+.. c:function:: void mpic_get_remain_time(struct mpic_timer *handle, time64_t *time)
 
     get timer time
 
     :param struct mpic_timer \*handle:
         the timer to be selected.
 
-    :param struct timeval \*time:
+    :param time64_t \*time:
         time for timer
 
 .. _`mpic_get_remain_time.description`:
@@ -93,7 +93,7 @@ can not be used in interrupt context.
 mpic_request_timer
 ==================
 
-.. c:function:: struct mpic_timer *mpic_request_timer(irq_handler_t fn, void *dev, const struct timeval *time)
+.. c:function:: struct mpic_timer *mpic_request_timer(irq_handler_t fn, void *dev, time64_t time)
 
     get a hardware timer
 
@@ -103,7 +103,7 @@ mpic_request_timer
     :param void \*dev:
         callback function of the data
 
-    :param const struct timeval \*time:
+    :param time64_t time:
         time for timer
 
 .. _`mpic_request_timer.description`:

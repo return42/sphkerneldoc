@@ -207,14 +207,14 @@ Make sure all previous operations are completed (CIK).
 si_dma_ring_emit_vm_flush
 =========================
 
-.. c:function:: void si_dma_ring_emit_vm_flush(struct amdgpu_ring *ring, unsigned vm_id, uint64_t pd_addr)
+.. c:function:: void si_dma_ring_emit_vm_flush(struct amdgpu_ring *ring, unsigned vmid, uint64_t pd_addr)
 
     cik vm flush using sDMA
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring pointer
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param uint64_t pd_addr:

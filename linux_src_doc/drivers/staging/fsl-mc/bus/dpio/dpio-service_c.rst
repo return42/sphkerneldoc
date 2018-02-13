@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/fsl-mc/bus/dpio/dpio-service.c
 
+.. _`dpaa2_io_service_select`:
+
+dpaa2_io_service_select
+=======================
+
+.. c:function:: struct dpaa2_io *dpaa2_io_service_select(int cpu)
+
+    return a dpaa2_io service affined to this cpu
+
+    :param int cpu:
+        the cpu id
+
+.. _`dpaa2_io_service_select.description`:
+
+Description
+-----------
+
+Return the affine dpaa2_io service, or NULL if there is no service affined
+to the specified cpu. If DPAA2_IO_ANY_CPU is used, return the next available
+service.
+
 .. _`dpaa2_io_create`:
 
 dpaa2_io_create
@@ -148,31 +169,6 @@ function achieves.
 
 Return 0 for success.
 
-.. _`dpaa2_io_service_pull_fq`:
-
-dpaa2_io_service_pull_fq
-========================
-
-.. c:function:: int dpaa2_io_service_pull_fq(struct dpaa2_io *d, u32 fqid, struct dpaa2_io_store *s)
-
-    pull dequeue functions from a fq.
-
-    :param struct dpaa2_io \*d:
-        the given DPIO service.
-
-    :param u32 fqid:
-        the given frame queue id.
-
-    :param struct dpaa2_io_store \*s:
-        the dpaa2_io_store object for the result.
-
-.. _`dpaa2_io_service_pull_fq.description`:
-
-Description
------------
-
-Return 0 for success, or error code for failure.
-
 .. _`dpaa2_io_service_pull_channel`:
 
 dpaa2_io_service_pull_channel
@@ -197,32 +193,6 @@ Description
 -----------
 
 Return 0 for success, or error code for failure.
-
-.. _`dpaa2_io_service_enqueue_fq`:
-
-dpaa2_io_service_enqueue_fq
-===========================
-
-.. c:function:: int dpaa2_io_service_enqueue_fq(struct dpaa2_io *d, u32 fqid, const struct dpaa2_fd *fd)
-
-    Enqueue a frame to a frame queue.
-
-    :param struct dpaa2_io \*d:
-        the given DPIO service.
-
-    :param u32 fqid:
-        the given frame queue id.
-
-    :param const struct dpaa2_fd \*fd:
-        the frame descriptor which is enqueued.
-
-.. _`dpaa2_io_service_enqueue_fq.description`:
-
-Description
------------
-
-Return 0 for successful enqueue, -EBUSY if the enqueue ring is not ready,
-or -ENODEV if there is no dpio service.
 
 .. _`dpaa2_io_service_enqueue_qd`:
 

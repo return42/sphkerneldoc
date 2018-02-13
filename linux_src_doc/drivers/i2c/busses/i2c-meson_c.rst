@@ -32,6 +32,7 @@ Definition
         struct completion done;
         u32 tokens[2];
         int num_tokens;
+        const struct meson_i2c_data *data;
     }
 
 .. _`meson_i2c.members`:
@@ -80,6 +81,9 @@ tokens
 
 num_tokens
     Number of tokens
+
+data
+    Pointer to the controlller's platform data
 
 .. This file was automatic generated / don't edit.
 

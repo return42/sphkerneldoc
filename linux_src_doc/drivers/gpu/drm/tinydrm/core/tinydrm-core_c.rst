@@ -22,27 +22,6 @@ The driver allocates \ :c:type:`struct tinydrm_device <tinydrm_device>`\ , initi
 \ :c:func:`devm_tinydrm_init`\ , sets up the pipeline using \ :c:func:`tinydrm_display_pipe_init`\ 
 and registers the DRM device using \ :c:func:`devm_tinydrm_register`\ .
 
-.. _`tinydrm_lastclose`:
-
-tinydrm_lastclose
-=================
-
-.. c:function:: void tinydrm_lastclose(struct drm_device *drm)
-
-    DRM lastclose helper
-
-    :param struct drm_device \*drm:
-        DRM device
-
-.. _`tinydrm_lastclose.description`:
-
-Description
------------
-
-This function ensures that fbdev is restored when \ :c:func:`drm_lastclose`\  is called
-on the last \ :c:func:`drm_release`\ . Drivers can use this as their
-\ :c:type:`drm_driver->lastclose <drm_driver>`\  callback.
-
 .. _`tinydrm_gem_cma_prime_import_sg_table`:
 
 tinydrm_gem_cma_prime_import_sg_table
@@ -189,61 +168,6 @@ Description
 This function makes sure that the display pipeline is disabled.
 Used by drivers in their shutdown callback to turn off the display
 on machine shutdown and reboot.
-
-.. _`tinydrm_suspend`:
-
-tinydrm_suspend
-===============
-
-.. c:function:: int tinydrm_suspend(struct tinydrm_device *tdev)
-
-    Suspend tinydrm
-
-    :param struct tinydrm_device \*tdev:
-        tinydrm device
-
-.. _`tinydrm_suspend.description`:
-
-Description
------------
-
-Used in driver PM operations to suspend tinydrm.
-Suspends fbdev and DRM.
-Resume with \ :c:func:`tinydrm_resume`\ .
-
-.. _`tinydrm_suspend.return`:
-
-Return
-------
-
-Zero on success, negative error code on failure.
-
-.. _`tinydrm_resume`:
-
-tinydrm_resume
-==============
-
-.. c:function:: int tinydrm_resume(struct tinydrm_device *tdev)
-
-    Resume tinydrm
-
-    :param struct tinydrm_device \*tdev:
-        tinydrm device
-
-.. _`tinydrm_resume.description`:
-
-Description
------------
-
-Used in driver PM operations to resume tinydrm.
-Suspend with \ :c:func:`tinydrm_suspend`\ .
-
-.. _`tinydrm_resume.return`:
-
-Return
-------
-
-Zero on success, negative error code on failure.
 
 .. This file was automatic generated / don't edit.
 

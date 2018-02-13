@@ -279,24 +279,27 @@ reset_control_put
     :param struct reset_control \*rstc:
         reset controller
 
-.. _`device_reset`:
+.. _`__device_reset`:
 
-device_reset
-============
+__device_reset
+==============
 
-.. c:function:: int device_reset(struct device *dev)
+.. c:function:: int __device_reset(struct device *dev, bool optional)
 
     find reset controller associated with the device and perform reset
 
     :param struct device \*dev:
         device to be reset by the controller
 
-.. _`device_reset.description`:
+    :param bool optional:
+        whether it is optional to reset the device
+
+.. _`__device_reset.description`:
 
 Description
 -----------
 
-Convenience wrapper for \ :c:func:`reset_control_get`\  and \ :c:func:`reset_control_reset`\ .
+Convenience wrapper for \__reset_control_get() and \ :c:func:`reset_control_reset`\ .
 This is useful for the common case of devices with single, dedicated reset
 lines.
 

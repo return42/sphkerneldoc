@@ -112,6 +112,7 @@ Definition
         char *name;
         enum smd_channel_state state;
         enum smd_channel_state remote_state;
+        wait_queue_head_t state_change_event;
         struct smd_channel_info_pair *info;
         struct smd_channel_info_word_pair *info_word;
         struct mutex tx_lock;
@@ -148,6 +149,9 @@ state
 
 remote_state
     remote state of the channel
+
+state_change_event
+    *undescribed*
 
 info
     byte aligned outgoing/incoming channel info

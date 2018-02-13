@@ -221,6 +221,7 @@ Definition
         int (*resume) (struct device *dev);
         const struct attribute_group **groups;
         const struct dev_pm_ops *pm;
+        int (*coredump) (struct device *dev);
         struct driver_private *p;
     }
 
@@ -279,6 +280,9 @@ groups
 pm
     Power management operations of the device which matched
     this driver.
+
+coredump
+    *undescribed*
 
 p
     Driver core's private data, no one other than the driver

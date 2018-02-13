@@ -214,7 +214,7 @@ ixgbe_get_phy_type_from_id
     Get the phy type
 
     :param u32 phy_id:
-        *undescribed*
+        hardware phy id
 
 .. _`ixgbe_reset_phy_generic`:
 
@@ -244,7 +244,7 @@ ixgbe_read_phy_reg_mdi
         32 bit address of PHY register to read
 
     :param u32 device_type:
-        *undescribed*
+        5 bit device type
 
     :param u16 \*phy_data:
         Pointer to read data from PHY register
@@ -265,7 +265,7 @@ ixgbe_read_phy_reg_generic
         32 bit address of PHY register to read
 
     :param u32 device_type:
-        *undescribed*
+        5 bit device type
 
     :param u16 \*phy_data:
         Pointer to read data from PHY register
@@ -347,7 +347,7 @@ ixgbe_setup_phy_link_speed_generic
         new link speed
 
     :param bool autoneg_wait_to_complete:
-        *undescribed*
+        unused
 
 .. _`ixgbe_get_copper_speeds_supported`:
 
@@ -400,10 +400,10 @@ ixgbe_check_phy_link_tnx
         pointer to hardware structure
 
     :param ixgbe_link_speed \*speed:
-        *undescribed*
+        link speed
 
     :param bool \*link_up:
-        *undescribed*
+        status of link
 
 .. _`ixgbe_check_phy_link_tnx.description`:
 
@@ -571,7 +571,7 @@ ixgbe_read_i2c_sff8472_generic
         byte offset at address 0xA2
 
     :param u8 \*sff8472_data:
-        *undescribed*
+        value read
 
 .. _`ixgbe_read_i2c_sff8472_generic.description`:
 
@@ -639,7 +639,7 @@ ixgbe_read_i2c_byte_generic_int
         byte offset to read
 
     :param u8 dev_addr:
-        *undescribed*
+        device address
 
     :param u8 \*data:
         value read
@@ -671,7 +671,7 @@ ixgbe_read_i2c_byte_generic
         byte offset to read
 
     :param u8 dev_addr:
-        *undescribed*
+        device address
 
     :param u8 \*data:
         value read
@@ -700,7 +700,7 @@ ixgbe_read_i2c_byte_generic_unlocked
         byte offset to read
 
     :param u8 dev_addr:
-        *undescribed*
+        device address
 
     :param u8 \*data:
         value read
@@ -729,7 +729,7 @@ ixgbe_write_i2c_byte_generic_int
         byte offset to write
 
     :param u8 dev_addr:
-        *undescribed*
+        device address
 
     :param u8 data:
         value to write
@@ -761,7 +761,7 @@ ixgbe_write_i2c_byte_generic
         byte offset to write
 
     :param u8 dev_addr:
-        *undescribed*
+        device address
 
     :param u8 data:
         value to write
@@ -790,7 +790,7 @@ ixgbe_write_i2c_byte_generic_unlocked
         byte offset to write
 
     :param u8 dev_addr:
-        *undescribed*
+        device address
 
     :param u8 data:
         value to write

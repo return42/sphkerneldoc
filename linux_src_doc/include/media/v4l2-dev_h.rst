@@ -1,6 +1,133 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/v4l2-dev.h
 
+.. _`vfl_devnode_type`:
+
+enum vfl_devnode_type
+=====================
+
+.. c:type:: enum vfl_devnode_type
+
+    type of V4L2 device node
+
+.. _`vfl_devnode_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vfl_devnode_type {
+        VFL_TYPE_GRABBER,
+        VFL_TYPE_VBI,
+        VFL_TYPE_RADIO,
+        VFL_TYPE_SUBDEV,
+        VFL_TYPE_SDR,
+        VFL_TYPE_TOUCH
+    };
+
+.. _`vfl_devnode_type.constants`:
+
+Constants
+---------
+
+VFL_TYPE_GRABBER
+    for video input/output devices
+
+VFL_TYPE_VBI
+    for vertical blank data (i.e. closed captions, teletext)
+
+VFL_TYPE_RADIO
+    for radio tuners
+
+VFL_TYPE_SUBDEV
+    for V4L2 subdevices
+
+VFL_TYPE_SDR
+    for Software Defined Radio tuners
+
+VFL_TYPE_TOUCH
+    for touch sensors
+
+.. _`vfl_devnode_direction`:
+
+enum vfl_devnode_direction
+==========================
+
+.. c:type:: enum vfl_devnode_direction
+
+    Identifies if a \ :c:type:`struct video_device <video_device>`\  corresponds to a receiver, a transmitter or a mem-to-mem device.
+
+.. _`vfl_devnode_direction.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vfl_devnode_direction {
+        VFL_DIR_RX,
+        VFL_DIR_TX,
+        VFL_DIR_M2M
+    };
+
+.. _`vfl_devnode_direction.constants`:
+
+Constants
+---------
+
+VFL_DIR_RX
+    device is a receiver.
+
+VFL_DIR_TX
+    device is a transmitter.
+
+VFL_DIR_M2M
+    device is a memory to memory device.
+
+.. _`vfl_devnode_direction.note`:
+
+Note
+----
+
+Ignored if \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\  is \ ``VFL_TYPE_SUBDEV``\ .
+
+.. _`v4l2_video_device_flags`:
+
+enum v4l2_video_device_flags
+============================
+
+.. c:type:: enum v4l2_video_device_flags
+
+    Flags used by \ :c:type:`struct video_device <video_device>`\ 
+
+.. _`v4l2_video_device_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum v4l2_video_device_flags {
+        V4L2_FL_REGISTERED,
+        V4L2_FL_USES_V4L2_FH
+    };
+
+.. _`v4l2_video_device_flags.constants`:
+
+Constants
+---------
+
+V4L2_FL_REGISTERED
+    indicates that a \ :c:type:`struct video_device <video_device>`\  is registered.
+    Drivers can clear this flag if they want to block all future
+    device access. It is cleared by video_unregister_device.
+
+V4L2_FL_USES_V4L2_FH
+    indicates that file->private_data points to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ .
+    This flag is set by the core when \ :c:func:`v4l2_fh_init`\  is called.
+    All new drivers should use it.
+
 .. _`v4l2_prio_state`:
 
 struct v4l2_prio_state
@@ -186,7 +313,7 @@ Definition
         struct module *owner;
         ssize_t (*read) (struct file *, char __user *, size_t, loff_t *);
         ssize_t (*write) (struct file *, const char __user *, size_t, loff_t *);
-        unsigned int (*poll) (struct file *, struct poll_table_struct *);
+        __poll_t (*poll) (struct file *, struct poll_table_struct *);
         long (*unlocked_ioctl) (struct file *, unsigned int, unsigned long);
     #ifdef CONFIG_COMPAT
         long (*compat_ioctl32) (struct file *, unsigned int, unsigned long);
@@ -277,8 +404,8 @@ Definition
         struct vb2_queue *queue;
         struct v4l2_prio_state *prio;
         char name[32];
-        int vfl_type;
-        int vfl_dir;
+        enum vfl_devnode_type vfl_type;
+        enum vfl_devnode_direction vfl_dir;
         int minor;
         u16 num;
         unsigned long flags;
@@ -341,7 +468,7 @@ name
     video device name
 
 vfl_type
-    V4L device type
+    V4L device type, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
 
 vfl_dir
     V4L receiver, transmitter or m2m
@@ -353,7 +480,8 @@ num
     number of the video device node
 
 flags
-    video device flags. Use bitops to set/clear/test flags
+    video device flags. Use bitops to set/clear/test flags.
+    Contains a set of \ :c:type:`enum v4l2_video_device_flags <v4l2_video_device_flags>`\ .
 
 index
     attribute to differentiate multiple indices on one physical device
@@ -393,20 +521,44 @@ Description
 .. note::
      Only set \ ``dev_parent``\  if that can't be deduced from \ ``v4l2_dev``\ .
 
+.. _`media_entity_to_video_device`:
+
+media_entity_to_video_device
+============================
+
+.. c:function::  media_entity_to_video_device( entity)
+
+    Returns a \ :c:type:`struct video_device <video_device>`\  from the \ :c:type:`struct media_entity <media_entity>`\  embedded on it.
+
+    :param  entity:
+        pointer to \ :c:type:`struct media_entity <media_entity>`\ 
+
+.. _`to_video_device`:
+
+to_video_device
+===============
+
+.. c:function::  to_video_device( cd)
+
+    Returns a \ :c:type:`struct video_device <video_device>`\  from the \ :c:type:`struct device <device>`\  embedded on it.
+
+    :param  cd:
+        pointer to \ :c:type:`struct device <device>`\ 
+
 .. _`__video_register_device`:
 
 __video_register_device
 =======================
 
-.. c:function:: int __video_register_device(struct video_device *vdev, int type, int nr, int warn_if_nr_in_use, struct module *owner)
+.. c:function:: int __video_register_device(struct video_device *vdev, enum vfl_devnode_type type, int nr, int warn_if_nr_in_use, struct module *owner)
 
     register video4linux devices
 
     :param struct video_device \*vdev:
         struct video_device to register
 
-    :param int type:
-        type of device to register
+    :param enum vfl_devnode_type type:
+        type of device to register, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
 
     :param int nr:
         which device node number is desired:
@@ -436,15 +588,6 @@ found, or if the registration of the device node failed.
 
 Returns 0 on success.
 
-Valid values for \ ``type``\  are:
-
-     - \ ``VFL_TYPE_GRABBER``\  - A frame grabber
-     - \ ``VFL_TYPE_VBI``\  - Vertical blank data (undecoded)
-     - \ ``VFL_TYPE_RADIO``\  - A radio card
-     - \ ``VFL_TYPE_SUBDEV``\  - A subdevice
-     - \ ``VFL_TYPE_SDR``\  - Software Defined Radio
-     - \ ``VFL_TYPE_TOUCH``\  - A touch sensor
-
 .. note::
 
      This function is meant to be used only inside the V4L2 core.
@@ -456,15 +599,15 @@ Valid values for \ ``type``\  are:
 video_register_device
 =====================
 
-.. c:function:: int video_register_device(struct video_device *vdev, int type, int nr)
+.. c:function:: int video_register_device(struct video_device *vdev, enum vfl_devnode_type type, int nr)
 
     register video4linux devices
 
     :param struct video_device \*vdev:
         struct video_device to register
 
-    :param int type:
-        type of device to register
+    :param enum vfl_devnode_type type:
+        type of device to register, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
 
     :param int nr:
         which device node number is desired:
@@ -489,15 +632,15 @@ documentation for more details.
 video_register_device_no_warn
 =============================
 
-.. c:function:: int video_register_device_no_warn(struct video_device *vdev, int type, int nr)
+.. c:function:: int video_register_device_no_warn(struct video_device *vdev, enum vfl_devnode_type type, int nr)
 
     register video4linux devices
 
     :param struct video_device \*vdev:
         struct video_device to register
 
-    :param int type:
-        type of device to register
+    :param enum vfl_devnode_type type:
+        type of device to register, as defined by \ :c:type:`enum vfl_devnode_type <vfl_devnode_type>`\ 
 
     :param int nr:
         which device node number is desired:

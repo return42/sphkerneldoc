@@ -740,7 +740,7 @@ Returns -errno, or 0 for success.
 cpumask_size
 ============
 
-.. c:function:: size_t cpumask_size( void)
+.. c:function:: unsigned int cpumask_size( void)
 
     size to allocate for a 'struct cpumask' in bytes
 

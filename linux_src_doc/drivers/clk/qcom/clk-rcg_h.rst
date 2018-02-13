@@ -1,38 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/qcom/clk-rcg.h
 
-.. _`parent_map`:
-
-struct parent_map
-=================
-
-.. c:type:: struct parent_map
-
-    map table for PLL source select configuration values
-
-.. _`parent_map.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct parent_map {
-        u8 src;
-        u8 cfg;
-    }
-
-.. _`parent_map.members`:
-
-Members
--------
-
-src
-    source PLL
-
-cfg
-    configuration value
-
 .. _`mn`:
 
 struct mn

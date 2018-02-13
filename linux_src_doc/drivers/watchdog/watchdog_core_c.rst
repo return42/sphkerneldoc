@@ -11,7 +11,7 @@ watchdog_init_timeout
     initialize the timeout field
 
     :param struct watchdog_device \*wdd:
-        *undescribed*
+        watchdog device
 
     :param unsigned int timeout_parm:
         timeout module parameter

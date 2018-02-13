@@ -8,7 +8,7 @@ struct vb2_v4l2_buffer
 
 .. c:type:: struct vb2_v4l2_buffer
 
-    video buffer information for v4l2
+    video buffer information for v4l2.
 
 .. _`vb2_v4l2_buffer.definition`:
 
@@ -31,19 +31,20 @@ Members
 -------
 
 vb2_buf
-    video buffer 2
+    embedded struct \ :c:type:`struct vb2_buffer <vb2_buffer>`\ .
 
 flags
-    buffer informational flags
+    buffer informational flags.
 
 field
-    enum v4l2_field; field order of the image in the buffer
+    field order of the image in the buffer, as defined by
+    \ :c:type:`enum v4l2_field <v4l2_field>`\ .
 
 timecode
-    frame timecode
+    frame timecode.
 
 sequence
-    sequence count of this frame
+    sequence count of this frame.
 
 .. _`vb2_v4l2_buffer.description`:
 
@@ -51,7 +52,7 @@ Description
 -----------
 
 Should contain enough information to be able to cover all the fields
-of struct v4l2_buffer at videodev2.h
+of \ :c:type:`struct v4l2_buffer <v4l2_buffer>`\  at ``videodev2.h``.
 
 .. _`vb2_reqbufs`:
 
@@ -63,11 +64,11 @@ vb2_reqbufs
     Wrapper for \ :c:func:`vb2_core_reqbufs`\  that also verifies the memory and type values.
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_requestbuffers \*req:
-        struct passed from userspace to vidioc_reqbufs handler
-        in driver
+        &struct v4l2_requestbuffers passed from userspace to
+        \ :c:type:`v4l2_ioctl_ops->vidioc_reqbufs <v4l2_ioctl_ops>`\  handler in driver.
 
 .. _`vb2_create_bufs`:
 
@@ -79,11 +80,11 @@ vb2_create_bufs
     Wrapper for \ :c:func:`vb2_core_create_bufs`\  that also verifies the memory and type values.
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_create_buffers \*create:
-        creation parameters, passed from userspace to vidioc_create_bufs
-        handler in driver
+        creation parameters, passed from userspace to
+        \ :c:type:`v4l2_ioctl_ops->vidioc_create_bufs <v4l2_ioctl_ops>`\  handler in driver
 
 .. _`vb2_prepare_buf`:
 
@@ -95,18 +96,19 @@ vb2_prepare_buf
     Pass ownership of a buffer from userspace to the kernel
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_buffer \*b:
-        buffer structure passed from userspace to vidioc_prepare_buf
-        handler in driver
+        buffer structure passed from userspace to
+        \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  handler in driver
 
 .. _`vb2_prepare_buf.description`:
 
 Description
 -----------
 
-Should be called from vidioc_prepare_buf ioctl handler of a driver.
+Should be called from \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  ioctl handler
+of a driver.
 
 .. _`vb2_prepare_buf.this-function`:
 
@@ -115,11 +117,11 @@ This function
 
 
 #) verifies the passed buffer,
-#) calls buf_prepare callback in the driver (if provided), in which
-   driver-specific buffer initialization can be performed.
+#) calls \ :c:type:`vb2_ops->buf_prepare <vb2_ops>`\  callback in the driver (if provided),
+   in which driver-specific buffer initialization can be performed.
 
 The return values from this function are intended to be directly returned
-from vidioc_prepare_buf handler in driver.
+from \ :c:type:`v4l2_ioctl_ops->vidioc_prepare_buf <v4l2_ioctl_ops>`\  handler in driver.
 
 .. _`vb2_qbuf`:
 
@@ -131,18 +133,18 @@ vb2_qbuf
     Queue a buffer from userspace
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_buffer \*b:
-        buffer structure passed from userspace to \ :c:func:`VIDIOC_QBUF`\  handler
-        in driver
+        buffer structure passed from userspace to
+        \ :c:type:`v4l2_ioctl_ops->vidioc_qbuf <v4l2_ioctl_ops>`\  handler in driver
 
 .. _`vb2_qbuf.description`:
 
 Description
 -----------
 
-Should be called from \ :c:func:`VIDIOC_QBUF`\  ioctl handler of a driver.
+Should be called from \ :c:type:`v4l2_ioctl_ops->vidioc_qbuf <v4l2_ioctl_ops>`\  handler of a driver.
 
 .. _`vb2_qbuf.this-function`:
 
@@ -150,14 +152,15 @@ This function
 -------------
 
 
-#) verifies the passed buffer,
-#) if necessary, calls buf_prepare callback in the driver (if provided), in
-   which driver-specific buffer initialization can be performed,
-#) if streaming is on, queues the buffer in driver by the means of buf_queue
-   callback for processing.
+#) verifies the passed buffer;
+#) if necessary, calls \ :c:type:`vb2_ops->buf_prepare <vb2_ops>`\  callback in the driver
+   (if provided), in which driver-specific buffer initialization can
+   be performed;
+#) if streaming is on, queues the buffer in driver by the means of
+   \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  callback for processing.
 
 The return values from this function are intended to be directly returned
-from \ :c:func:`VIDIOC_QBUF`\  handler in driver.
+from \ :c:type:`v4l2_ioctl_ops->vidioc_qbuf <v4l2_ioctl_ops>`\  handler in driver.
 
 .. _`vb2_expbuf`:
 
@@ -169,11 +172,11 @@ vb2_expbuf
     Export a buffer as a file descriptor
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_exportbuffer \*eb:
-        export buffer structure passed from userspace to \ :c:func:`VIDIOC_EXPBUF`\ 
-        handler in driver
+        export buffer structure passed from userspace to
+        \ :c:type:`v4l2_ioctl_ops->vidioc_expbuf <v4l2_ioctl_ops>`\  handler in driver
 
 .. _`vb2_expbuf.description`:
 
@@ -181,7 +184,7 @@ Description
 -----------
 
 The return values from this function are intended to be directly returned
-from \ :c:func:`VIDIOC_EXPBUF`\  handler in driver.
+from \ :c:type:`v4l2_ioctl_ops->vidioc_expbuf <v4l2_ioctl_ops>`\  handler in driver.
 
 .. _`vb2_dqbuf`:
 
@@ -193,23 +196,24 @@ vb2_dqbuf
     Dequeue a buffer to the userspace
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct v4l2_buffer \*b:
-        buffer structure passed from userspace to \ :c:func:`VIDIOC_DQBUF`\  handler
-        in driver
+        buffer structure passed from userspace to
+        \ :c:type:`v4l2_ioctl_ops->vidioc_dqbuf <v4l2_ioctl_ops>`\  handler in driver
 
     :param bool nonblocking:
         if true, this call will not sleep waiting for a buffer if no
         buffers ready for dequeuing are present. Normally the driver
-        would be passing (file->f_flags & O_NONBLOCK) here
+        would be passing (&file->f_flags & \ ``O_NONBLOCK``\ ) here
 
 .. _`vb2_dqbuf.description`:
 
 Description
 -----------
 
-Should be called from \ :c:func:`VIDIOC_DQBUF`\  ioctl handler of a driver.
+Should be called from \ :c:type:`v4l2_ioctl_ops->vidioc_dqbuf <v4l2_ioctl_ops>`\  ioctl handler
+of a driver.
 
 .. _`vb2_dqbuf.this-function`:
 
@@ -217,15 +221,15 @@ This function
 -------------
 
 
-#) verifies the passed buffer,
-#) calls buf_finish callback in the driver (if provided), in which
+#) verifies the passed buffer;
+#) calls \ :c:type:`vb2_ops->buf_finish <vb2_ops>`\  callback in the driver (if provided), in which
    driver can perform any additional operations that may be required before
-   returning the buffer to userspace, such as cache sync,
+   returning the buffer to userspace, such as cache sync;
 #) the buffer struct members are filled with relevant information for
    the userspace.
 
 The return values from this function are intended to be directly returned
-from \ :c:func:`VIDIOC_DQBUF`\  handler in driver.
+from \ :c:type:`v4l2_ioctl_ops->vidioc_dqbuf <v4l2_ioctl_ops>`\  handler in driver.
 
 .. _`vb2_streamon`:
 
@@ -237,17 +241,18 @@ vb2_streamon
     start streaming
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param enum v4l2_buf_type type:
-        type argument passed from userspace to vidioc_streamon handler
+        type argument passed from userspace to vidioc_streamon handler,
+        as defined by \ :c:type:`enum v4l2_buf_type <v4l2_buf_type>`\ .
 
 .. _`vb2_streamon.description`:
 
 Description
 -----------
 
-Should be called from vidioc_streamon handler of a driver.
+Should be called from \ :c:type:`v4l2_ioctl_ops->vidioc_streamon <v4l2_ioctl_ops>`\  handler of a driver.
 
 .. _`vb2_streamon.this-function`:
 
@@ -259,7 +264,7 @@ This function
 2) passes any previously queued buffers to the driver and starts streaming
 
 The return values from this function are intended to be directly returned
-from vidioc_streamon handler in the driver.
+from \ :c:type:`v4l2_ioctl_ops->vidioc_streamon <v4l2_ioctl_ops>`\  handler in the driver.
 
 .. _`vb2_streamoff`:
 
@@ -271,7 +276,7 @@ vb2_streamoff
     stop streaming
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param enum v4l2_buf_type type:
         type argument passed from userspace to vidioc_streamoff handler
@@ -307,7 +312,7 @@ vb2_queue_init
     initialize a videobuf2 queue
 
     :param struct vb2_queue \*q:
-        videobuf2 queue; this structure should be allocated in driver
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
 .. _`vb2_queue_init.description`:
 
@@ -331,7 +336,7 @@ vb2_queue_release
     stop streaming, release the queue and free memory
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
 .. _`vb2_queue_release.description`:
 
@@ -347,12 +352,12 @@ the vb2_queue structure itself.
 vb2_poll
 ========
 
-.. c:function:: unsigned int vb2_poll(struct vb2_queue *q, struct file *file, poll_table *wait)
+.. c:function:: __poll_t vb2_poll(struct vb2_queue *q, struct file *file, poll_table *wait)
 
     implements poll userspace operation
 
     :param struct vb2_queue \*q:
-        videobuf2 queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\  with videobuf2 queue.
 
     :param struct file \*file:
         file argument passed to the poll file operation handler
@@ -388,7 +393,7 @@ vb2_ops_wait_prepare
     helper function to lock a struct \ :c:type:`struct vb2_queue <vb2_queue>`\ 
 
     :param struct vb2_queue \*vq:
-        pointer to struct vb2_queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\ 
 
 .. _`vb2_ops_wait_prepare.description`:
 
@@ -407,7 +412,7 @@ vb2_ops_wait_finish
     helper function to unlock a struct \ :c:type:`struct vb2_queue <vb2_queue>`\ 
 
     :param struct vb2_queue \*vq:
-        pointer to struct vb2_queue
+        pointer to \ :c:type:`struct vb2_queue <vb2_queue>`\ 
 
 .. _`vb2_ops_wait_finish.description`:
 

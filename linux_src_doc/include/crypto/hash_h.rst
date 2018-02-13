@@ -92,14 +92,13 @@ Members
 -------
 
 init
-    Initialize the transformation context. Intended only to initialize the
+    **[mandatory]** Initialize the transformation context. Intended only to initialize the
     state of the HASH transformation at the beginning. This shall fill in
     the internal structures used during the entire duration of the whole
     transformation. No data processing happens at this point.
-    Note: mandatory.
 
 update
-    Push a chunk of data into the driver for transformation. This
+    **[mandatory]** Push a chunk of data into the driver for transformation. This
     function actually pushes blocks of data from upper layers into the
     driver, which then passes those to the hardware as seen fit. This
     function must not finalize the HASH transformation by calculating the
@@ -108,24 +107,21 @@ update
     context, as this function may be called in parallel with the same
     transformation object. Data processing can happen synchronously
     [SHASH] or asynchronously [AHASH] at this point.
-    Note: mandatory.
 
 final
-    Retrieve result from the driver. This function finalizes the
+    **[mandatory]** Retrieve result from the driver. This function finalizes the
     transformation and retrieves the resulting hash from the driver and
     pushes it back to upper layers. No data processing happens at this
     point unless hardware requires it to finish the transformation
     (then the data buffered by the device driver is processed).
-    Note: mandatory.
 
 finup
-    Combination of \ ``update``\  and \ ``final``\ . This function is effectively a
+    **[optional]** Combination of \ ``update``\  and \ ``final``\ . This function is effectively a
     combination of \ ``update``\  and \ ``final``\  calls issued in sequence. As some
     hardware cannot do \ ``update``\  and \ ``final``\  separately, this callback was
     added to allow such hardware to be used at least by IPsec. Data
     processing can happen synchronously [SHASH] or asynchronously [AHASH]
     at this point.
-    Note: optional.
 
 digest
     Combination of \ ``init``\  and \ ``update``\  and \ ``final``\ . This function

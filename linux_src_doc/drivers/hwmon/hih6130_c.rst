@@ -33,7 +33,7 @@ Members
 -------
 
 client
-    *undescribed*
+    pointer to I2C client device
 
 lock
     mutex to protect measurement values

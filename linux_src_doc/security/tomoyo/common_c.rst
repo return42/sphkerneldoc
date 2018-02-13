@@ -1034,7 +1034,7 @@ Returns pointer to "struct tomoyo_domain_info" if found, NULL otherwise.
 tomoyo_poll_query
 =================
 
-.. c:function:: unsigned int tomoyo_poll_query(struct file *file, poll_table *wait)
+.. c:function:: __poll_t tomoyo_poll_query(struct file *file, poll_table *wait)
 
     poll() for /sys/kernel/security/tomoyo/query.
 
@@ -1049,7 +1049,7 @@ tomoyo_poll_query
 Description
 -----------
 
-Returns POLLIN \| POLLRDNORM when ready to read, 0 otherwise.
+Returns EPOLLIN \| EPOLLRDNORM when ready to read, 0 otherwise.
 
 Waits for access requests which violated policy in enforcing mode.
 
@@ -1187,7 +1187,7 @@ Returns 0 on success, negative value otherwise.
 tomoyo_poll_control
 ===================
 
-.. c:function:: unsigned int tomoyo_poll_control(struct file *file, poll_table *wait)
+.. c:function:: __poll_t tomoyo_poll_control(struct file *file, poll_table *wait)
 
     poll() for /sys/kernel/security/tomoyo/ interface.
 
@@ -1202,8 +1202,8 @@ tomoyo_poll_control
 Description
 -----------
 
-Returns POLLIN \| POLLRDNORM \| POLLOUT \| POLLWRNORM if ready to read/write,
-POLLOUT \| POLLWRNORM otherwise.
+Returns EPOLLIN \| EPOLLRDNORM \| EPOLLOUT \| EPOLLWRNORM if ready to read/write,
+EPOLLOUT \| EPOLLWRNORM otherwise.
 
 .. _`tomoyo_set_namespace_cursor`:
 

@@ -8,10 +8,10 @@ munlock_vma_page
 
 .. c:function:: unsigned int munlock_vma_page(struct page *page)
 
-    munlock a vma page \ ``page``\  - page to be unlocked, either a normal page or THP page head
+    munlock a vma page
 
     :param struct page \*page:
-        *undescribed*
+        page to be unlocked, either a normal page or THP page head
 
 .. _`munlock_vma_page.description`:
 

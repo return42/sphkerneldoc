@@ -54,7 +54,7 @@ available in this kernel then it becomes a nop.
 dev_ioctl
 =========
 
-.. c:function:: int dev_ioctl(struct net *net, unsigned int cmd, void __user *arg)
+.. c:function:: int dev_ioctl(struct net *net, unsigned int cmd, struct ifreq *ifr, bool *need_copyout)
 
     network device ioctl
 
@@ -64,8 +64,11 @@ dev_ioctl
     :param unsigned int cmd:
         command to issue
 
-    :param void __user \*arg:
-        pointer to a struct ifreq in user space
+    :param struct ifreq \*ifr:
+        *undescribed*
+
+    :param bool \*need_copyout:
+        *undescribed*
 
 .. _`dev_ioctl.description`:
 

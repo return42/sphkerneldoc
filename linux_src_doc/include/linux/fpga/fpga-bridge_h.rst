@@ -21,6 +21,7 @@ Definition
         int (*enable_show)(struct fpga_bridge *bridge);
         int (*enable_set)(struct fpga_bridge *bridge, bool enable);
         void (*fpga_bridge_remove)(struct fpga_bridge *bridge);
+        const struct attribute_group **groups;
     }
 
 .. _`fpga_bridge_ops.members`:
@@ -36,6 +37,9 @@ enable_set
 
 fpga_bridge_remove
     set FPGA into a specific state during driver remove
+
+groups
+    optional attribute groups.
 
 .. _`fpga_bridge`:
 

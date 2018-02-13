@@ -991,12 +991,12 @@ ib_get_rdma_header_version
     :param const union rdma_network_hdr \*hdr:
         the L3 header to parse
 
-.. _`ib_init_ah_from_wc`:
+.. _`ib_init_ah_attr_from_wc`:
 
-ib_init_ah_from_wc
-==================
+ib_init_ah_attr_from_wc
+=======================
 
-.. c:function:: int ib_init_ah_from_wc(struct ib_device *device, u8 port_num, const struct ib_wc *wc, const struct ib_grh *grh, struct rdma_ah_attr *ah_attr)
+.. c:function:: int ib_init_ah_attr_from_wc(struct ib_device *device, u8 port_num, const struct ib_wc *wc, const struct ib_grh *grh, struct rdma_ah_attr *ah_attr)
 
     Initializes address handle attributes from a work completion.
 
@@ -2019,17 +2019,20 @@ ib_detach_mcast
     :param u16 lid:
         Multicast group LID in host byte order.
 
-.. _`ib_alloc_xrcd`:
+.. _`__ib_alloc_xrcd`:
 
-ib_alloc_xrcd
-=============
+__ib_alloc_xrcd
+===============
 
-.. c:function:: struct ib_xrcd *ib_alloc_xrcd(struct ib_device *device)
+.. c:function:: struct ib_xrcd *__ib_alloc_xrcd(struct ib_device *device, const char *caller)
 
     Allocates an XRC domain.
 
     :param struct ib_device \*device:
         The device on which to allocate the XRC domain.
+
+    :param const char \*caller:
+        Module name for kernel consumers
 
 .. _`ib_dealloc_xrcd`:
 
@@ -2063,6 +2066,21 @@ ib_check_mr_status
         The container of relevant status checks.
         failed checks will be indicated in the status bitmask
         and the relevant info shall be in the error item.
+
+.. _`rdma_ah_find_type`:
+
+rdma_ah_find_type
+=================
+
+.. c:function:: enum rdma_ah_attr_type rdma_ah_find_type(struct ib_device *dev, u8 port_num)
+
+    Return address handle type.
+
+    :param struct ib_device \*dev:
+        Device to be checked
+
+    :param u8 port_num:
+        Port number
 
 .. _`ib_lid_cpu16`:
 
@@ -2111,6 +2129,18 @@ Description
 Returns NULL on failure, otherwise a corresponding cpu map of the
 completion vector (returns all-cpus map if the device driver doesn't
 implement get_vector_affinity).
+
+.. _`rdma_roce_rescan_device`:
+
+rdma_roce_rescan_device
+=======================
+
+.. c:function:: void rdma_roce_rescan_device(struct ib_device *ibdev)
+
+    Rescan all of the network devices in the system and add their gids, as needed, to the relevant RoCE devices.
+
+    :param struct ib_device \*ibdev:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -344,6 +344,9 @@ Definition
         const char *name;
         bool counters_enabled;
         bool counter_control_extern;
+        bool resource_valid;
+        u64 resource_id;
+        u64 resource_units;
         struct devlink_dpipe_table_ops *table_ops;
         struct rcu_head rcu;
     }
@@ -368,6 +371,15 @@ counters_enabled
 counter_control_extern
     indicates if counter control is in dpipe or
     external tool
+
+resource_valid
+    Indicate that the resource id is valid
+
+resource_id
+    relative resource this table is related to
+
+resource_units
+    number of resource's unit consumed per table's entry
 
 table_ops
     table operations
@@ -450,6 +462,144 @@ headers
 
 headers_count
     *undescribed*
+
+.. _`devlink_resource_ops`:
+
+struct devlink_resource_ops
+===========================
+
+.. c:type:: struct devlink_resource_ops
+
+    resource ops
+
+.. _`devlink_resource_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct devlink_resource_ops {
+        u64 (*occ_get)(struct devlink *devlink);
+        int (*size_validate)(struct devlink *devlink, u64 size, struct netlink_ext_ack *extack);
+    }
+
+.. _`devlink_resource_ops.members`:
+
+Members
+-------
+
+occ_get
+    get the occupied size
+
+size_validate
+    validate the size of the resource before update, reload
+    is needed for changes to take place
+
+.. _`devlink_resource_size_params`:
+
+struct devlink_resource_size_params
+===================================
+
+.. c:type:: struct devlink_resource_size_params
+
+    resource's size parameters
+
+.. _`devlink_resource_size_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct devlink_resource_size_params {
+        u64 size_min;
+        u64 size_max;
+        u64 size_granularity;
+        enum devlink_resource_unit unit;
+    }
+
+.. _`devlink_resource_size_params.members`:
+
+Members
+-------
+
+size_min
+    minimum size which can be set
+
+size_max
+    maximum size which can be set
+
+size_granularity
+    size granularity
+
+unit
+    *undescribed*
+
+.. _`devlink_resource`:
+
+struct devlink_resource
+=======================
+
+.. c:type:: struct devlink_resource
+
+    devlink resource
+
+.. _`devlink_resource.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct devlink_resource {
+        const char *name;
+        u64 id;
+        u64 size;
+        u64 size_new;
+        bool size_valid;
+        struct devlink_resource *parent;
+        struct devlink_resource_size_params *size_params;
+        struct list_head list;
+        struct list_head resource_list;
+        const struct devlink_resource_ops *resource_ops;
+    }
+
+.. _`devlink_resource.members`:
+
+Members
+-------
+
+name
+    name of the resource
+
+id
+    id, per devlink instance
+
+size
+    size of the resource
+
+size_new
+    updated size of the resource, reload is needed
+
+size_valid
+    valid in case the total size of the resource is valid
+    including its children
+
+parent
+    parent resource
+
+size_params
+    size parameters
+
+list
+    parent list
+
+resource_list
+    list of child resources
+
+resource_ops
+    resource ops
 
 .. This file was automatic generated / don't edit.
 

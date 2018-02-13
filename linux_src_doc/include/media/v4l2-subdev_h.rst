@@ -43,6 +43,52 @@ line
 type
     VBI service type (V4L2_SLICED_*). 0 if no service found
 
+.. _`v4l2_subdev_io_pin_bits`:
+
+enum v4l2_subdev_io_pin_bits
+============================
+
+.. c:type:: enum v4l2_subdev_io_pin_bits
+
+    Subdevice external IO pin configuration bits
+
+.. _`v4l2_subdev_io_pin_bits.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum v4l2_subdev_io_pin_bits {
+        V4L2_SUBDEV_IO_PIN_DISABLE,
+        V4L2_SUBDEV_IO_PIN_OUTPUT,
+        V4L2_SUBDEV_IO_PIN_INPUT,
+        V4L2_SUBDEV_IO_PIN_SET_VALUE,
+        V4L2_SUBDEV_IO_PIN_ACTIVE_LOW
+    };
+
+.. _`v4l2_subdev_io_pin_bits.constants`:
+
+Constants
+---------
+
+V4L2_SUBDEV_IO_PIN_DISABLE
+    disables a pin config. ENABLE assumed.
+
+V4L2_SUBDEV_IO_PIN_OUTPUT
+    set it if pin is an output.
+
+V4L2_SUBDEV_IO_PIN_INPUT
+    set it if pin is an input.
+
+V4L2_SUBDEV_IO_PIN_SET_VALUE
+    to set the output value via
+    \ :c:type:`struct v4l2_subdev_io_pin_config <v4l2_subdev_io_pin_config>`\ ->value.
+
+V4L2_SUBDEV_IO_PIN_ACTIVE_LOW
+    pin active is bit 0.
+    Otherwise, ACTIVE HIGH is assumed.
+
 .. _`v4l2_subdev_io_pin_config`:
 
 struct v4l2_subdev_io_pin_config
@@ -73,12 +119,8 @@ Members
 -------
 
 flags
-    bitmask with flags for this pin's config:
-    \ ``V4L2_SUBDEV_IO_PIN_DISABLE``\  - disables a pin config,
-    \ ``V4L2_SUBDEV_IO_PIN_OUTPUT``\  - if pin is an output,
-    \ ``V4L2_SUBDEV_IO_PIN_INPUT``\  - if pin is an input,
-    \ ``V4L2_SUBDEV_IO_PIN_SET_VALUE``\  - to set the output value via \ ``value``\ 
-    and \ ``V4L2_SUBDEV_IO_PIN_ACTIVE_LOW``\  - if active is 0.
+    bitmask with flags for this pin's config, whose bits are defined by
+    \ :c:type:`enum v4l2_subdev_io_pin_bits <v4l2_subdev_io_pin_bits>`\ .
 
 pin
     Chip external IO pin to configure
@@ -135,7 +177,7 @@ Members
 -------
 
 log_status
-    callback for \ ``VIDIOC_LOG_STATUS``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_LOG_STATUS`\  ioctl handler code.
 
 s_io_pin_config
     configure one or more chip I/O pins for chips that
@@ -171,10 +213,10 @@ compat_ioctl32
     in order to fix data passed from/to userspace.
 
 g_register
-    callback for \ ``VIDIOC_G_REGISTER``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_DBG_G_REGISTER`\  ioctl handler code.
 
 s_register
-    callback for \ ``VIDIOC_G_REGISTER``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_DBG_S_REGISTER`\  ioctl handler code.
 
 s_power
     puts subdevice in power saving mode (on == 0) or normal operation
@@ -228,38 +270,62 @@ Members
 -------
 
 s_radio
-    callback for \ ``VIDIOC_S_RADIO``\  ioctl handler code.
+    callback that switches the tuner to radio mode.
+    drivers should explicitly call it when a tuner ops should
+    operate on radio mode, before being able to handle it.
+    Used on devices that have both AM/FM radio receiver and TV.
 
 s_frequency
-    callback for \ ``VIDIOC_S_FREQUENCY``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_S_FREQUENCY`\  ioctl handler code.
 
 g_frequency
-    callback for \ ``VIDIOC_G_FREQUENCY``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_G_FREQUENCY`\  ioctl handler code.
     freq->type must be filled in. Normally done by \ :c:func:`video_ioctl2`\ 
     or the bridge driver.
 
 enum_freq_bands
-    callback for \ ``VIDIOC_ENUM_FREQ_BANDS``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_ENUM_FREQ_BANDS`\  ioctl handler code.
 
 g_tuner
-    callback for \ ``VIDIOC_G_TUNER``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_G_TUNER`\  ioctl handler code.
 
 s_tuner
-    callback for \ ``VIDIOC_S_TUNER``\  ioctl handler code. \ ``vt``\ ->type must be
+    callback for \ :c:func:`VIDIOC_S_TUNER`\  ioctl handler code. \ ``vt``\ ->type must be
     filled in. Normally done by video_ioctl2 or the
     bridge driver.
 
 g_modulator
-    callback for \ ``VIDIOC_G_MODULATOR``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_G_MODULATOR`\  ioctl handler code.
 
 s_modulator
-    callback for \ ``VIDIOC_S_MODULATOR``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_S_MODULATOR`\  ioctl handler code.
 
 s_type_addr
     sets tuner type and its I2C addr.
 
 s_config
     sets tda9887 specific stuff, like port1, port2 and qss
+
+.. _`v4l2_subdev_tuner_ops.description`:
+
+Description
+-----------
+
+.. note::
+
+     On devices that have both AM/FM and TV, it is up to the driver
+     to explicitly call s_radio when the tuner should be switched to
+     radio mode, before handling other \ :c:type:`struct v4l2_subdev_tuner_ops <v4l2_subdev_tuner_ops>`\ 
+     that would require it. An example of such usage is::
+
+       static void s_frequency(void *priv, const struct v4l2_frequency *f)
+       {
+             ...
+             if (f.type == V4L2_TUNER_RADIO)
+                     v4l2_device_call_all(v4l2_dev, 0, tuner, s_radio);
+             ...
+             v4l2_device_call_all(v4l2_dev, 0, tuner, s_frequency);
+       }
 
 .. _`v4l2_subdev_audio_ops`:
 
@@ -316,6 +382,40 @@ s_stream
     used to notify the audio code that stream will start or has
     stopped.
 
+.. _`v4l2_mbus_frame_desc_flags`:
+
+enum v4l2_mbus_frame_desc_flags
+===============================
+
+.. c:type:: enum v4l2_mbus_frame_desc_flags
+
+    media bus frame description flags
+
+.. _`v4l2_mbus_frame_desc_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum v4l2_mbus_frame_desc_flags {
+        V4L2_MBUS_FRAME_DESC_FL_LEN_MAX,
+        V4L2_MBUS_FRAME_DESC_FL_BLOB
+    };
+
+.. _`v4l2_mbus_frame_desc_flags.constants`:
+
+Constants
+---------
+
+V4L2_MBUS_FRAME_DESC_FL_LEN_MAX
+    Indicates that \ :c:type:`struct v4l2_mbus_frame_desc_entry <v4l2_mbus_frame_desc_entry>`\ ->length field
+    specifies maximum data length.
+
+V4L2_MBUS_FRAME_DESC_FL_BLOB
+    Indicates that the format does not have line offsets, i.e.
+    the receiver should use 1D DMA.
+
 .. _`v4l2_mbus_frame_desc_entry`:
 
 struct v4l2_mbus_frame_desc_entry
@@ -333,7 +433,7 @@ Definition
 .. code-block:: c
 
     struct v4l2_mbus_frame_desc_entry {
-        u16 flags;
+        enum v4l2_mbus_frame_desc_flags flags;
         u32 pixelcode;
         u32 length;
     }
@@ -344,15 +444,15 @@ Members
 -------
 
 flags
-    bitmask flags: \ ``V4L2_MBUS_FRAME_DESC_FL_LEN_MAX``\  and
-    \ ``V4L2_MBUS_FRAME_DESC_FL_BLOB``\ .
+    bitmask flags, as defined by \ :c:type:`enum v4l2_mbus_frame_desc_flags <v4l2_mbus_frame_desc_flags>`\ .
 
 pixelcode
-    media bus pixel code, valid if FRAME_DESC_FL_BLOB is not set
+    media bus pixel code, valid if \ ``flags``\ 
+    \ ``FRAME_DESC_FL_BLOB``\  is not set.
 
 length
-    number of octets per frame, valid if V4L2_MBUS_FRAME_DESC_FL_BLOB
-    is set
+    number of octets per frame, valid if \ ``flags``\ 
+    \ ``V4L2_MBUS_FRAME_DESC_FL_LEN_MAX``\  is set.
 
 .. _`v4l2_mbus_frame_desc`:
 
@@ -443,10 +543,10 @@ s_crystal_freq
     to 0. If the frequency is not supported, then -EINVAL is returned.
 
 g_std
-    callback for \ ``VIDIOC_G_STD``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_G_STD`\  ioctl handler code.
 
 s_std
-    callback for \ ``VIDIOC_S_STD``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_S_STD`\  ioctl handler code.
 
 s_std_output
     set v4l2_std_id for video OUTPUT devices. This is ignored by
@@ -457,7 +557,7 @@ g_std_output
     by video input devices.
 
 querystd
-    callback for \ ``VIDIOC_QUERYSTD``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_QUERYSTD`\  ioctl handler code.
 
 g_tvnorms
     get \ :c:type:`struct v4l2_std_id <v4l2_std_id>`\  with all standards supported by the video
@@ -479,16 +579,18 @@ g_pixelaspect
     callback to return the pixelaspect ratio.
 
 g_parm
-    callback for \ ``VIDIOC_G_PARM``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_G_PARM`\  ioctl handler code.
 
 s_parm
-    callback for \ ``VIDIOC_S_PARM``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_S_PARM`\  ioctl handler code.
 
 g_frame_interval
-    callback for \ ``VIDIOC_G_FRAMEINTERVAL``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_G_FRAME_INTERVAL`\ 
+    ioctl handler code.
 
 s_frame_interval
-    callback for \ ``VIDIOC_S_FRAMEINTERVAL``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_S_FRAME_INTERVAL`\ 
+    ioctl handler code.
 
 s_dv_timings
     Set custom dv timings in the sub device. This is used
@@ -499,7 +601,7 @@ g_dv_timings
     Get custom dv timings in the sub device.
 
 query_dv_timings
-    callback for \ ``VIDIOC_QUERY_DV_TIMINGS``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_QUERY_DV_TIMINGS`\  ioctl handler code.
 
 g_mbus_config
     get supported mediabus configurations
@@ -571,7 +673,8 @@ g_vbi_data
     should be obtained).
 
 g_sliced_vbi_cap
-    callback for \ ``VIDIOC_SLICED_VBI_CAP``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_G_SLICED_VBI_CAP`\  ioctl handler
+    code.
 
 s_raw_fmt
     setup the video encoder/decoder for raw VBI.
@@ -896,41 +999,41 @@ init_cfg
     initialize the pad config to default values
 
 enum_mbus_code
-    callback for \ ``VIDIOC_SUBDEV_ENUM_MBUS_CODE``\  ioctl handler
+    callback for \ :c:func:`VIDIOC_SUBDEV_ENUM_MBUS_CODE`\  ioctl handler
     code.
 
 enum_frame_size
-    callback for \ ``VIDIOC_SUBDEV_ENUM_FRAME_SIZE``\  ioctl handler
+    callback for \ :c:func:`VIDIOC_SUBDEV_ENUM_FRAME_SIZE`\  ioctl handler
     code.
 
 enum_frame_interval
-    callback for \ ``VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL``\  ioctl
+    callback for \ :c:func:`VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL`\  ioctl
     handler code.
 
 get_fmt
-    callback for \ ``VIDIOC_SUBDEV_G_FMT``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_G_FMT`\  ioctl handler code.
 
 set_fmt
-    callback for \ ``VIDIOC_SUBDEV_S_FMT``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_S_FMT`\  ioctl handler code.
 
 get_selection
-    callback for \ ``VIDIOC_SUBDEV_G_SELECTION``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_G_SELECTION`\  ioctl handler code.
 
 set_selection
-    callback for \ ``VIDIOC_SUBDEV_S_SELECTION``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_S_SELECTION`\  ioctl handler code.
 
 get_edid
-    callback for \ ``VIDIOC_SUBDEV_G_EDID``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_G_EDID`\  ioctl handler code.
 
 set_edid
-    callback for \ ``VIDIOC_SUBDEV_S_EDID``\  ioctl handler code.
+    callback for \ :c:func:`VIDIOC_SUBDEV_S_EDID`\  ioctl handler code.
 
 dv_timings_cap
-    callback for \ ``VIDIOC_SUBDEV_DV_TIMINGS_CAP``\  ioctl handler
+    callback for \ :c:func:`VIDIOC_SUBDEV_DV_TIMINGS_CAP`\  ioctl handler
     code.
 
 enum_dv_timings
-    callback for \ ``VIDIOC_SUBDEV_ENUM_DV_TIMINGS``\  ioctl handler
+    callback for \ :c:func:`VIDIOC_SUBDEV_ENUM_DV_TIMINGS`\  ioctl handler
     code.
 
 link_validate
@@ -1145,7 +1248,7 @@ owner
 
 owner_v4l2_dev
     true if the \ :c:type:`sd->owner <sd>`\  matches the owner of \ ``v4l2_dev``\ ->dev
-    ownner. Initialized by \ :c:func:`v4l2_device_register_subdev`\ .
+    owner. Initialized by \ :c:func:`v4l2_device_register_subdev`\ .
 
 flags
     subdev flags. Can be:

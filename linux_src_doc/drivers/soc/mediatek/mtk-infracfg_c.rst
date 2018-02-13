@@ -6,7 +6,7 @@
 mtk_infracfg_set_bus_protection
 ===============================
 
-.. c:function:: int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
+.. c:function:: int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask, bool reg_update)
 
     enable bus protection
 
@@ -15,6 +15,11 @@ mtk_infracfg_set_bus_protection
 
     :param u32 mask:
         The mask containing the protection bits to be enabled.
+
+    :param bool reg_update:
+        The boolean flag determines to set the protection bits
+        by regmap_update_bits with enable register(PROTECTEN) or
+        by regmap_write with set register(PROTECTEN_SET).
 
 .. _`mtk_infracfg_set_bus_protection.description`:
 
@@ -30,7 +35,7 @@ bus while in power down.
 mtk_infracfg_clear_bus_protection
 =================================
 
-.. c:function:: int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
+.. c:function:: int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask, bool reg_update)
 
     disable bus protection
 
@@ -39,6 +44,11 @@ mtk_infracfg_clear_bus_protection
 
     :param u32 mask:
         The mask containing the protection bits to be disabled.
+
+    :param bool reg_update:
+        The boolean flag determines to clear the protection bits
+        by regmap_update_bits with enable register(PROTECTEN) or
+        by regmap_write with clear register(PROTECTEN_CLR).
 
 .. _`mtk_infracfg_clear_bus_protection.description`:
 

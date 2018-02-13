@@ -37,10 +37,10 @@ Members
     anonymous
 
 skb
-    sk_buff associated with this buffer
+    normal ring, sk_buff associated with this buffer
 
 frag
-    *undescribed*
+    XDP ring, page frag associated with this buffer
 
 dma_addr
     DMA mapping address of the buffer
@@ -193,11 +193,12 @@ Definition
         u32 rd_p;
         u32 idx;
         int fl_qcidx;
+        unsigned int size;
         u8 __iomem *qcp_fl;
         struct nfp_net_rx_buf *rxbufs;
         struct nfp_net_rx_desc *rxds;
         dma_addr_t dma;
-        unsigned int size;
+        struct xdp_rxq_info xdp_rxq;
     }
 
 .. _`nfp_net_rx_ring.members`:
@@ -223,6 +224,9 @@ idx
 fl_qcidx
     Queue Controller Peripheral (QCP) queue index for the freelist
 
+size
+    Size, in bytes, of the FL/RX ring (needed to free)
+
 qcp_fl
     Pointer to base of the QCP freelist queue
 
@@ -235,8 +239,8 @@ rxds
 dma
     DMA address of the FL/RX ring
 
-size
-    Size, in bytes, of the FL/RX ring (needed to free)
+xdp_rxq
+    RX-ring info avail for XDP
 
 .. _`nfp_net_r_vector`:
 
@@ -309,13 +313,13 @@ napi
     anonymous
 
 tasklet
-    *undescribed*
+    ctrl vNIC, tasklet for servicing the r_vec
 
 queue
-    *undescribed*
+    ctrl vNIC, send queue
 
 lock
-    *undescribed*
+    ctrl vNIC, r_vec lock protects \ ``queue``\ 
 
 tx_ring
     Pointer to TX ring
@@ -567,6 +571,7 @@ Definition
         u8 __iomem *qcp_cfg;
         u8 __iomem *tx_bar;
         u8 __iomem *rx_bar;
+        struct nfp_net_tlv_caps tlv_caps;
         struct dentry *debugfs_dir;
         struct list_head vnic_list;
         struct pci_dev *pdev;
@@ -617,10 +622,10 @@ max_rx_rings
     Maximum number of RX rings supported by the Firmware
 
 stride_tx
-    *undescribed*
+    Queue controller TX queue spacing
 
 stride_rx
-    *undescribed*
+    Queue controller RX queue spacing
 
 max_r_vecs
     Number of allocated interrupt vectors for RX/TX
@@ -699,6 +704,9 @@ tx_bar
 
 rx_bar
     Pointer to mapped FL/RX queues
+
+tlv_caps
+    Parsed TLV capabilities
 
 debugfs_dir
     Device directory in debugfs

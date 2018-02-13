@@ -47,7 +47,7 @@ hrtimer_start_range_ns
 
 .. c:function:: void hrtimer_start_range_ns(struct hrtimer *timer, ktime_t tim, u64 delta_ns, const enum hrtimer_mode mode)
 
-    (re)start an hrtimer on the current CPU
+    (re)start an hrtimer
 
     :param struct hrtimer \*timer:
         the timer to be added
@@ -59,8 +59,9 @@ hrtimer_start_range_ns
         "slack" range for the timer
 
     :param const enum hrtimer_mode mode:
-        expiry mode: absolute (HRTIMER_MODE_ABS) or
-        relative (HRTIMER_MODE_REL)
+        timer mode: absolute (HRTIMER_MODE_ABS) or
+        relative (HRTIMER_MODE_REL), and pinned (HRTIMER_MODE_PINNED);
+        softirq based mode is considered for debug purpose only!
 
 .. _`hrtimer_try_to_cancel`:
 
@@ -154,14 +155,25 @@ hrtimer_init
         the clock to be used
 
     :param enum hrtimer_mode mode:
-        timer mode abs/rel
+        The modes which are relevant for intitialization:
+        HRTIMER_MODE_ABS, HRTIMER_MODE_REL, HRTIMER_MODE_ABS_SOFT,
+        HRTIMER_MODE_REL_SOFT
+
+.. _`hrtimer_init.description`:
+
+Description
+-----------
+
+             The PINNED variants of the above can be handed in,
+             but the PINNED bit is ignored as pinning happens
+             when the hrtimer is started
 
 .. _`schedule_hrtimeout_range_clock`:
 
 schedule_hrtimeout_range_clock
 ==============================
 
-.. c:function:: int __sched schedule_hrtimeout_range_clock(ktime_t *expires, u64 delta, const enum hrtimer_mode mode, int clock)
+.. c:function:: int __sched schedule_hrtimeout_range_clock(ktime_t *expires, u64 delta, const enum hrtimer_mode mode, clockid_t clock_id)
 
     sleep until timeout
 
@@ -172,10 +184,10 @@ schedule_hrtimeout_range_clock
         slack in expires timeout (ktime_t)
 
     :param const enum hrtimer_mode mode:
-        timer mode, HRTIMER_MODE_ABS or HRTIMER_MODE_REL
+        timer mode
 
-    :param int clock:
-        timer clock, CLOCK_MONOTONIC or CLOCK_REALTIME
+    :param clockid_t clock_id:
+        timer clock to be used
 
 .. _`schedule_hrtimeout_range`:
 
@@ -193,7 +205,7 @@ schedule_hrtimeout_range
         slack in expires timeout (ktime_t)
 
     :param const enum hrtimer_mode mode:
-        timer mode, HRTIMER_MODE_ABS or HRTIMER_MODE_REL
+        timer mode
 
 .. _`schedule_hrtimeout_range.description`:
 
@@ -239,7 +251,7 @@ schedule_hrtimeout
         timeout value (ktime_t)
 
     :param const enum hrtimer_mode mode:
-        timer mode, HRTIMER_MODE_ABS or HRTIMER_MODE_REL
+        timer mode
 
 .. _`schedule_hrtimeout.description`:
 

@@ -631,41 +631,6 @@ Reads flash memory OOB area of pages.
 
 Returns 0 if read successful, of -EIO, -EINVAL if an error occurred
 
-.. _`doc_read`:
-
-doc_read
-========
-
-.. c:function:: int doc_read(struct mtd_info *mtd, loff_t from, size_t len, size_t *retlen, u_char *buf)
-
-    Read bytes from flash
-
-    :param struct mtd_info \*mtd:
-        the device
-
-    :param loff_t from:
-        the offset from first block and first page, in bytes, aligned on page
-        size
-
-    :param size_t len:
-        the number of bytes to read (must be a multiple of 4)
-
-    :param size_t \*retlen:
-        the number of bytes actually read
-
-    :param u_char \*buf:
-        the filled in buffer
-
-.. _`doc_read.description`:
-
-Description
------------
-
-Reads flash memory pages. This function does not read the OOB chunk, but only
-the page data.
-
-Returns 0 if read successful, of -EIO, -EINVAL if an error occurred
-
 .. _`doc_block_isbad`:
 
 doc_block_isbad
@@ -950,40 +915,6 @@ Or provide data without OOB, and then a all zeroed OOB will be used (ECC will
 still be filled in if asked for).
 
 Returns 0 is successful, EINVAL if length is not 14 bytes
-
-.. _`doc_write`:
-
-doc_write
-=========
-
-.. c:function:: int doc_write(struct mtd_info *mtd, loff_t to, size_t len, size_t *retlen, const u_char *buf)
-
-    Write a buffer to the chip
-
-    :param struct mtd_info \*mtd:
-        the device
-
-    :param loff_t to:
-        the offset from first block and first page, in bytes, aligned on page
-        size
-
-    :param size_t len:
-        the number of bytes to write (must be a full page size, ie. 512)
-
-    :param size_t \*retlen:
-        the number of bytes actually written (0 or 512)
-
-    :param const u_char \*buf:
-        the buffer to get bytes from
-
-.. _`doc_write.description`:
-
-Description
------------
-
-Writes data to the chip.
-
-Returns 0 if write successful, -EIO if write error
 
 .. _`doc_set_driver_info`:
 

@@ -468,7 +468,7 @@ Return
 dvb_ca_en50221_io_poll
 ======================
 
-.. c:function:: unsigned int dvb_ca_en50221_io_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t dvb_ca_en50221_io_poll(struct file *file, poll_table *wait)
 
     :param struct file \*file:
         File concerned.

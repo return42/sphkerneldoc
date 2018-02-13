@@ -209,7 +209,7 @@ cp_iova_pinned
     check if an iova is pinned for a ccw chain.
 
     :param struct channel_program \*cp:
-        *undescribed*
+        channel_program on which to perform the operation
 
     :param u64 iova:
         the iova to check

@@ -59,6 +59,70 @@ max_index
 ports
     table of ports
 
+ports.eth_index
+    port index according to legacy ethX numbering
+
+ports.index
+    chip-wide first channel index
+
+ports.nbi
+    NBI index
+
+ports.base
+    first channel index (within NBI)
+
+ports.lanes
+    number of channels
+
+ports.speed
+    interface speed (in Mbps)
+
+ports.interface
+    interface (module) plugged in
+
+ports.media
+    media type of the \ ``interface``\ 
+
+ports.fec
+    forward error correction mode
+
+ports.aneg
+    auto negotiation mode
+
+ports.mac_addr
+    interface MAC address
+
+ports.label_port
+    port id
+
+ports.label_subport
+    id of interface within port (for split ports)
+
+ports.enabled
+    is enabled?
+
+ports.tx_enabled
+    is TX enabled?
+
+ports.rx_enabled
+    is RX enabled?
+
+ports.override_changed
+    is media reconfig pending?
+
+ports.port_type
+    one of \ ``PORT``\ \_\* defines for ethtool
+
+ports.port_lanes
+    total number of lanes on the port (sum of lanes of all
+    subports)
+
+ports.is_split
+    is interface part of a split port
+
+ports.fec_modes_supported
+    bitmap of FEC modes supported
+
 .. _`nfp_nsp_identify`:
 
 struct nfp_nsp_identify

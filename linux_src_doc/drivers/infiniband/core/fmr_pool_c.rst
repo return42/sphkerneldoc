@@ -69,8 +69,10 @@ ib_fmr_pool_map_phys
 
 .. c:function:: struct ib_pool_fmr *ib_fmr_pool_map_phys(struct ib_fmr_pool *pool_handle, u64 *page_list, int list_len, u64 io_virtual_address)
 
+    Map an FMR from an FMR pool.
+
     :param struct ib_fmr_pool \*pool_handle:
-        *undescribed*
+        FMR pool to allocate FMR from
 
     :param u64 \*page_list:
         List of pages to map
@@ -80,13 +82,6 @@ ib_fmr_pool_map_phys
 
     :param u64 io_virtual_address:
         I/O virtual address for new FMR
-
-.. _`ib_fmr_pool_map_phys.description`:
-
-Description
------------
-
-Map an FMR from an FMR pool.
 
 .. _`ib_fmr_pool_unmap`:
 

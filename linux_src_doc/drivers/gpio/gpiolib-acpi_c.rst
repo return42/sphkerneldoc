@@ -1,34 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpio/gpiolib-acpi.c
 
-.. _`acpi_gpiochip_pin_to_gpio_offset`:
-
-acpi_gpiochip_pin_to_gpio_offset
-================================
-
-.. c:function:: int acpi_gpiochip_pin_to_gpio_offset(struct gpio_device *gdev, int pin)
-
-    translates ACPI GPIO to Linux GPIO
-
-    :param struct gpio_device \*gdev:
-        GPIO device
-
-    :param int pin:
-        ACPI GPIO pin number from GpioIo/GpioInt resource
-
-.. _`acpi_gpiochip_pin_to_gpio_offset.description`:
-
-Description
------------
-
-Function takes ACPI GpioIo/GpioInt pin number as a parameter and
-translates it to a corresponding offset suitable to be passed to a
-GPIO controller driver.
-
-Typically the returned offset is same as \ ``pin``\ , but if the GPIO
-controller uses pin controller and the mapping is not contiguous the
-offset might be different.
-
 .. _`acpi_get_gpiod`:
 
 acpi_get_gpiod

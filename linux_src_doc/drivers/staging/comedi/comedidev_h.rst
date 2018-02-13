@@ -36,15 +36,15 @@ Definition
         const struct comedi_lrange *range_table;
         const struct comedi_lrange *const *range_table_list;
         unsigned int *chanlist;
-        int (*insn_read)(struct comedi_device *, struct comedi_subdevice *, struct comedi_insn *, unsigned int *);
-        int (*insn_write)(struct comedi_device *, struct comedi_subdevice *, struct comedi_insn *, unsigned int *);
-        int (*insn_bits)(struct comedi_device *, struct comedi_subdevice *, struct comedi_insn *, unsigned int *);
-        int (*insn_config)(struct comedi_device *, struct comedi_subdevice *, struct comedi_insn *, unsigned int *);
-        int (*do_cmd)(struct comedi_device *, struct comedi_subdevice *);
-        int (*do_cmdtest)(struct comedi_device *, struct comedi_subdevice *, struct comedi_cmd *);
-        int (*poll)(struct comedi_device *, struct comedi_subdevice *);
-        int (*cancel)(struct comedi_device *, struct comedi_subdevice *);
-        int (*buf_change)(struct comedi_device *, struct comedi_subdevice *);
+        int (*insn_read)(struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, unsigned int *data);
+        int (*insn_write)(struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, unsigned int *data);
+        int (*insn_bits)(struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, unsigned int *data);
+        int (*insn_config)(struct comedi_device *dev,struct comedi_subdevice *s,struct comedi_insn *insn, unsigned int *data);
+        int (*do_cmd)(struct comedi_device *dev, struct comedi_subdevice *s);
+        int (*do_cmdtest)(struct comedi_device *dev,struct comedi_subdevice *s, struct comedi_cmd *cmd);
+        int (*poll)(struct comedi_device *dev, struct comedi_subdevice *s);
+        int (*cancel)(struct comedi_device *dev, struct comedi_subdevice *s);
+        int (*buf_change)(struct comedi_device *dev, struct comedi_subdevice *s);
         void (*munge)(struct comedi_device *dev, struct comedi_subdevice *s,void *data, unsigned int num_bytes, unsigned int start_chan_index);
         enum dma_data_direction async_dma_dir;
         unsigned int state;
@@ -602,9 +602,9 @@ Definition
     struct comedi_driver {
         const char *driver_name;
         struct module *module;
-        int (*attach)(struct comedi_device *, struct comedi_devconfig *);
-        void (*detach)(struct comedi_device *);
-        int (*auto_attach)(struct comedi_device *, unsigned long);
+        int (*attach)(struct comedi_device *dev, struct comedi_devconfig *it);
+        void (*detach)(struct comedi_device *dev);
+        int (*auto_attach)(struct comedi_device *dev, unsigned long context);
         unsigned int num_names;
         const char *const *board_name;
         int offset;

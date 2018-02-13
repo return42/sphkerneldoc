@@ -194,6 +194,26 @@ iosf_mbi_unregister_pmic_bus_access_notifier
     :param struct notifier_block \*nb:
         notifier_block to unregister
 
+.. _`iosf_mbi_unregister_pmic_bus_access_notifier_unlocked`:
+
+iosf_mbi_unregister_pmic_bus_access_notifier_unlocked
+=====================================================
+
+.. c:function:: int iosf_mbi_unregister_pmic_bus_access_notifier_unlocked(struct notifier_block *nb)
+
+    Unregister PMIC bus notifier, unlocked
+
+    :param struct notifier_block \*nb:
+        notifier_block to unregister
+
+.. _`iosf_mbi_unregister_pmic_bus_access_notifier_unlocked.description`:
+
+Description
+-----------
+
+Like \ :c:func:`iosf_mbi_unregister_pmic_bus_access_notifier`\ , but for use when the
+caller has already called \ :c:func:`iosf_mbi_punit_acquire`\  itself.
+
 .. _`iosf_mbi_call_pmic_bus_access_notifier_chain`:
 
 iosf_mbi_call_pmic_bus_access_notifier_chain
@@ -208,6 +228,18 @@ iosf_mbi_call_pmic_bus_access_notifier_chain
 
     :param void \*v:
         data pointer to pass into listener's notifier_call function
+
+.. _`iosf_mbi_assert_punit_acquired`:
+
+iosf_mbi_assert_punit_acquired
+==============================
+
+.. c:function:: void iosf_mbi_assert_punit_acquired( void)
+
+    Assert that the P-Unit has been acquired.
+
+    :param  void:
+        no arguments
 
 .. This file was automatic generated / don't edit.
 

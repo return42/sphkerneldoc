@@ -20,6 +20,7 @@ watchdog
     pcwd_usb_c
     pretimeout_noop_c
     pretimeout_panic_c
+    rave-sp-wdt_c
     s3c2410_wdt_c
     sbsa_gwdt_c
     sp805_wdt_c

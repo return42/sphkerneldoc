@@ -63,6 +63,25 @@ This structure represents a cec-related device node.
 The \ ``parent``\  is a physical device. It must be set by core or device drivers
 before registering the node.
 
+.. _`cec_is_registered`:
+
+cec_is_registered
+=================
+
+.. c:function:: bool cec_is_registered(const struct cec_adapter *adap)
+
+    is the CEC adapter registered?
+
+    :param const struct cec_adapter \*adap:
+        the CEC adapter, may be NULL.
+
+.. _`cec_is_registered.return`:
+
+Return
+------
+
+true if the adapter is registered, false otherwise.
+
 .. _`cec_queue_pin_cec_event`:
 
 cec_queue_pin_cec_event

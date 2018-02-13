@@ -16,6 +16,7 @@ hid
     hid-kye_c
     hid-logitech-hidpp_c
     hid-magicmouse_c
+    hid-quirks_c
     hid-rmi_c
     hid-sensor-hub_c
     hid-uclogic_c

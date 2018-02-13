@@ -9,6 +9,8 @@ qcom
 
     glink_ssr_c
     mdt_loader_c
+    qmi_encdec_c
+    qmi_interface_c
     smd-rpm_c
     smem_c
     smem_state_c

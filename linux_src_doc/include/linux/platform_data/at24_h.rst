@@ -27,6 +27,7 @@ Definition
     #define AT24_FLAG_TAKE8ADDR BIT(4)
     #define AT24_FLAG_SERIAL BIT(3)
     #define AT24_FLAG_MAC BIT(2)
+    #define AT24_FLAG_NO_RDROL BIT(1)
         void (*setup)(struct nvmem_device *nvmem, void *context);
         void *context;
     }

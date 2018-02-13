@@ -19,7 +19,7 @@ Definition
     struct kfd2kgd_calls {
         int (*init_gtt_mem_allocation)(struct kgd_dev *kgd, size_t size,void **mem_obj, uint64_t *gpu_addr, void **cpu_ptr);
         void (*free_gtt_mem)(struct kgd_dev *kgd, void *mem_obj);
-        uint64_t (*get_vmem_size)(struct kgd_dev *kgd);
+        void (*get_local_mem_info)(struct kgd_dev *kgd, struct kfd_local_mem_info *mem_info);
         uint64_t (*get_gpu_clock_counter)(struct kgd_dev *kgd);
         uint32_t (*get_max_engine_clock_in_mhz)(struct kgd_dev *kgd);
         int (*alloc_pasid)(unsigned int bits);
@@ -29,7 +29,9 @@ Definition
         int (*init_pipeline)(struct kgd_dev *kgd, uint32_t pipe_id, uint32_t hpd_size, uint64_t hpd_gpu_addr);
         int (*init_interrupts)(struct kgd_dev *kgd, uint32_t pipe_id);
         int (*hqd_load)(struct kgd_dev *kgd, void *mqd, uint32_t pipe_id,uint32_t queue_id, uint32_t __user *wptr,uint32_t wptr_shift, uint32_t wptr_mask, struct mm_struct *mm);
-        int (*hqd_sdma_load)(struct kgd_dev *kgd, void *mqd);
+        int (*hqd_sdma_load)(struct kgd_dev *kgd, void *mqd, uint32_t __user *wptr, struct mm_struct *mm);
+        int (*hqd_dump)(struct kgd_dev *kgd,uint32_t pipe_id, uint32_t queue_id, uint32_t (**dump)[2], uint32_t *n_regs);
+        int (*hqd_sdma_dump)(struct kgd_dev *kgd,uint32_t engine_id, uint32_t queue_id, uint32_t (**dump)[2], uint32_t *n_regs);
         bool (*hqd_is_occupied)(struct kgd_dev *kgd, uint64_t queue_address, uint32_t pipe_id, uint32_t queue_id);
         int (*hqd_destroy)(struct kgd_dev *kgd, void *mqd, uint32_t reset_type,unsigned int timeout, uint32_t pipe_id, uint32_t queue_id);
         bool (*hqd_sdma_is_occupied)(struct kgd_dev *kgd, void *mqd);
@@ -44,6 +46,8 @@ Definition
         uint16_t (*get_fw_version)(struct kgd_dev *kgd, enum kgd_engine_type type);
         void (*set_scratch_backing_va)(struct kgd_dev *kgd, uint64_t va, uint32_t vmid);
         int (*get_tile_config)(struct kgd_dev *kgd, struct tile_config *config);
+        void (*get_cu_info)(struct kgd_dev *kgd, struct kfd_cu_info *cu_info);
+        uint64_t (*get_vram_usage)(struct kgd_dev *kgd);
     }
 
 .. _`kfd2kgd_calls.members`:
@@ -58,8 +62,8 @@ init_gtt_mem_allocation
 free_gtt_mem
     Frees a buffer that was allocated on the gart aperture
 
-get_vmem_size
-    Retrieves (physical) size of VRAM
+get_local_mem_info
+    Retrieves information about GPU local memory
 
 get_gpu_clock_counter
     Retrieves GPU clock counter
@@ -96,6 +100,14 @@ hqd_load
 hqd_sdma_load
     Loads the SDMA mqd structure to a H/W SDMA hqd slot.
     used only for no HWS mode.
+
+hqd_dump
+    Dumps CPC HQD registers to an array of address-value pairs.
+    Array is allocated with kmalloc, needs to be freed with kfree by caller.
+
+hqd_sdma_dump
+    Dumps SDMA HQD registers to an array of address-value pairs.
+    Array is allocated with kmalloc, needs to be freed with kfree by caller.
 
 hqd_is_occupied
     *undescribed*
@@ -140,6 +152,12 @@ set_scratch_backing_va
 
 get_tile_config
     Returns GPU-specific tiling mode information
+
+get_cu_info
+    Retrieves activated cu info
+
+get_vram_usage
+    Returns current VRAM usage
 
 .. _`kfd2kgd_calls.description`:
 

@@ -42,7 +42,7 @@ prot_autoc_write_82599
         pointer to hardware structure
 
     :param u32 autoc:
-        *undescribed*
+        value to write to AUTOC
 
     :param bool locked:
         bool to indicate whether the SW/FW lock was already taken by
@@ -432,10 +432,10 @@ ixgbe_atr_compute_sig_hash_82599
     Compute the signature hash
 
     :param union ixgbe_atr_hash_dword input:
-        *undescribed*
+        input bitstream to compute the hash on
 
     :param union ixgbe_atr_hash_dword common:
-        *undescribed*
+        compressed common input dword
 
 .. _`ixgbe_atr_compute_sig_hash_82599.description`:
 
@@ -443,7 +443,7 @@ Description
 -----------
 
 This function is almost identical to the function above but contains
-several optomizations such as unwinding all of the loops, letting the
+several optimizations such as unwinding all of the loops, letting the
 compiler work out all of the conditional ifs since the keys are static
 defines, and computing two keys at once since the hashed dword stream
 will be the same for both keys.
@@ -487,7 +487,7 @@ ixgbe_atr_compute_perfect_hash_82599
     Compute the perfect filter hash
 
     :param union ixgbe_atr_input \*input:
-        *undescribed*
+        input bitstream to compute the hash on
 
     :param union ixgbe_atr_input \*input_mask:
         mask for the input bitstream
@@ -772,7 +772,7 @@ ixgbe_read_i2c_byte_82599
         byte offset to read
 
     :param u8 dev_addr:
-        *undescribed*
+        address to read from
 
     :param u8 \*data:
         value read
@@ -801,7 +801,7 @@ ixgbe_write_i2c_byte_82599
         byte offset to write
 
     :param u8 dev_addr:
-        *undescribed*
+        address to write to
 
     :param u8 data:
         value to write

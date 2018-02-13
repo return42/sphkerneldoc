@@ -382,7 +382,7 @@ Emits an hdp invalidate.
 vcn_v1_0_dec_ring_emit_ib
 =========================
 
-.. c:function:: void vcn_v1_0_dec_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vm_id, bool ctx_switch)
+.. c:function:: void vcn_v1_0_dec_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vmid, bool ctx_switch)
 
     execute indirect buffer
 
@@ -392,7 +392,7 @@ vcn_v1_0_dec_ring_emit_ib
     :param struct amdgpu_ib \*ib:
         indirect buffer to execute
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param bool ctx_switch:
@@ -457,7 +457,7 @@ Write enc a fence and a trap command to the ring.
 vcn_v1_0_enc_ring_emit_ib
 =========================
 
-.. c:function:: void vcn_v1_0_enc_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned int vm_id, bool ctx_switch)
+.. c:function:: void vcn_v1_0_enc_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned int vmid, bool ctx_switch)
 
     enc execute indirect buffer
 
@@ -467,7 +467,7 @@ vcn_v1_0_enc_ring_emit_ib
     :param struct amdgpu_ib \*ib:
         indirect buffer to execute
 
-    :param unsigned int vm_id:
+    :param unsigned int vmid:
         *undescribed*
 
     :param bool ctx_switch:

@@ -42,6 +42,7 @@ Definition
         struct dentry *debugfs_dir;
         u32 flags;
         struct mutex err_lock;
+        int log_index[2];
     }
 
 .. _`arena_info.members`:
@@ -125,7 +126,10 @@ flags
     Arena flags - may signify error states.
 
 err_lock
-    *undescribed*
+    Mutex for synchronizing error clearing.
+
+log_index
+    Indices of the valid log entries in a log_group
 
 .. _`arena_info.description`:
 
@@ -215,7 +219,7 @@ num_arenas
     Number of arenas in the BTT instance
 
 phys_bb
-    *undescribed*
+    Pointer to the namespace's badblocks structure
 
 .. This file was automatic generated / don't edit.
 

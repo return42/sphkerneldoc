@@ -298,7 +298,7 @@ tipc_link_bc_create
         *undescribed*
 
     :param int mtu:
-        mtu to be used
+        mtu to be used initially if no peers
 
     :param int window:
         send window to be used

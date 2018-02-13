@@ -353,9 +353,13 @@ qmenu
     empty strings ("") correspond to non-existing menu items (this
     is in addition to the menu_skip_mask above). The last entry
     must be NULL.
+    Used only if the \ ``type``\  is \ ``V4L2_CTRL_TYPE_MENU``\ .
 
 qmenu_int
-    *undescribed*
+    A 64-bit integer array for with integer menu items.
+    The size of array must be equal to the menu size, e. g.:
+    :math:`ceil(\frac{maximum - minimum}{step}) + 1`.
+    Used only if the \ ``type``\  is \ ``V4L2_CTRL_TYPE_INTEGER_MENU``\ .
 
 flags
     The control's flags.
@@ -371,7 +375,11 @@ val
     The control's new s32 value.
 
 cur
-    The control's current value.
+    Structure to store the current value.
+
+cur.val
+    The control's current value, if the \ ``type``\  is represented via
+    a u32 integer (see \ :c:type:`enum v4l2_ctrl_type <v4l2_ctrl_type>`\ ).
 
 p_new
     The control's new value represented via a union with provides
@@ -1704,7 +1712,7 @@ control events.
 v4l2_ctrl_poll
 ==============
 
-.. c:function:: unsigned int v4l2_ctrl_poll(struct file *file, struct poll_table_struct *wait)
+.. c:function:: __poll_t v4l2_ctrl_poll(struct file *file, struct poll_table_struct *wait)
 
     function to be used as a callback to the \ :c:func:`poll`\  That just polls for control events.
 

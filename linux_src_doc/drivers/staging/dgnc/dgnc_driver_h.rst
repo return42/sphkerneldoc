@@ -24,18 +24,17 @@ Definition
         void (*uart_off)(struct channel_t *ch);
         int (*drain)(struct tty_struct *tty, uint seconds);
         void (*param)(struct tty_struct *tty);
-        void (*vpd)(struct dgnc_board *brd);
         void (*assert_modem_signals)(struct channel_t *ch);
         void (*flush_uart_write)(struct channel_t *ch);
         void (*flush_uart_read)(struct channel_t *ch);
         void (*disable_receiver)(struct channel_t *ch);
         void (*enable_receiver)(struct channel_t *ch);
-        void (*send_break)(struct channel_t *ch, int);
+        void (*send_break)(struct channel_t *ch, int msec);
         void (*send_start_character)(struct channel_t *ch);
         void (*send_stop_character)(struct channel_t *ch);
         void (*copy_data_from_queue_to_uart)(struct channel_t *ch);
         uint (*get_uart_bytes_left)(struct channel_t *ch);
-        void (*send_immediate_char)(struct channel_t *ch, unsigned char);
+        void (*send_immediate_char)(struct channel_t *ch, unsigned char c);
     }
 
 .. _`board_ops.members`:
@@ -59,9 +58,6 @@ drain
     *undescribed*
 
 param
-    *undescribed*
-
-vpd
     *undescribed*
 
 assert_modem_signals
@@ -117,18 +113,8 @@ Definition
         int boardnum;
         char *name;
         struct pci_dev *pdev;
-        unsigned long bd_flags;
-        u16 vendor;
         u16 device;
-        u16 subvendor;
-        u16 subdevice;
-        unsigned char rev;
-        uint pci_bus;
-        uint pci_slot;
         uint maxports;
-        unsigned char dvid;
-        unsigned char vpd[128];
-        unsigned char serial_num[20];
         spinlock_t bd_lock;
         spinlock_t bd_intr_lock;
         uint state;
@@ -147,8 +133,6 @@ Definition
         char serial_name[200];
         struct tty_driver *print_driver;
         char print_name[200];
-        u16 dpatype;
-        u16 dpastatus;
         uint bd_dividend;
         struct board_ops *bd_ops;
     }
@@ -167,41 +151,11 @@ name
 pdev
     Pointer to the pci_dev structure.
 
-bd_flags
-    Board flags.
-
-vendor
-    PCI vendor ID.
-
 device
     PCI device ID.
 
-subvendor
-    PCI subsystem vendor ID.
-
-subdevice
-    PCI subsystem device ID.
-
-rev
-    PCI revision ID.
-
-pci_bus
-    PCI bus value.
-
-pci_slot
-    PCI slot value.
-
 maxports
     Maximum ports this board can handle.
-
-dvid
-    Board specific device ID.
-
-vpd
-    VPD of this board, if found.
-
-serial_num
-    Serial number of this board, if found in VPD.
 
 bd_lock
     Used to protect board.
@@ -256,12 +210,6 @@ print_driver
 
 print_name
     Print driver name.
-
-dpatype
-    Board type as defined by DPA.
-
-dpastatus
-    Board status as defined by DPA.
 
 bd_dividend
     Board/UART's specific dividend.
@@ -364,7 +312,6 @@ Definition
         uint ch_wopen;
         unsigned char ch_mostat;
         unsigned char ch_mistat;
-        struct neo_uart_struct __iomem *ch_neo_uart;
         struct cls_uart_struct __iomem *ch_cls_uart;
         unsigned char ch_cached_lsr;
         unsigned char *ch_rqueue;
@@ -461,9 +408,6 @@ ch_mostat
 
 ch_mistat
     FEP input modem status.
-
-ch_neo_uart
-    *undescribed*
 
 ch_cls_uart
     Pointer to the mapped cls UART struct

@@ -6,7 +6,7 @@
 cnstr_shdsc_aead_null_encap
 ===========================
 
-.. c:function:: void cnstr_shdsc_aead_null_encap(u32 * const desc, struct alginfo *adata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_aead_null_encap(u32 * const desc, struct alginfo *adata, unsigned int icvsize, int era)
 
     IPSec ESP encapsulation shared descriptor (non-protocol) with no (null) encryption.
 
@@ -14,27 +14,24 @@ cnstr_shdsc_aead_null_encap
         pointer to buffer used for descriptor construction
 
     :param struct alginfo \*adata:
-        pointer to authentication transform definitions. Note that since a
-        split key is to be used, the size of the split key itself is
-        specified. Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1,
-        SHA224, SHA256, SHA384, SHA512} ANDed with OP_ALG_AAI_HMAC_PRECOMP.
+        pointer to authentication transform definitions.
+        A split key is required for SEC Era < 6; the size of the split key
+        is specified in this case. Valid algorithm values - one of
+        OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
+        with OP_ALG_AAI_HMAC_PRECOMP.
 
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
 
-.. _`cnstr_shdsc_aead_null_encap.note`:
-
-Note
-----
-
-Requires an MDHA split key.
+    :param int era:
+        SEC Era
 
 .. _`cnstr_shdsc_aead_null_decap`:
 
 cnstr_shdsc_aead_null_decap
 ===========================
 
-.. c:function:: void cnstr_shdsc_aead_null_decap(u32 * const desc, struct alginfo *adata, unsigned int icvsize)
+.. c:function:: void cnstr_shdsc_aead_null_decap(u32 * const desc, struct alginfo *adata, unsigned int icvsize, int era)
 
     IPSec ESP decapsulation shared descriptor (non-protocol) with no (null) decryption.
 
@@ -42,27 +39,24 @@ cnstr_shdsc_aead_null_decap
         pointer to buffer used for descriptor construction
 
     :param struct alginfo \*adata:
-        pointer to authentication transform definitions. Note that since a
-        split key is to be used, the size of the split key itself is
-        specified. Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1,
-        SHA224, SHA256, SHA384, SHA512} ANDed with OP_ALG_AAI_HMAC_PRECOMP.
+        pointer to authentication transform definitions.
+        A split key is required for SEC Era < 6; the size of the split key
+        is specified in this case. Valid algorithm values - one of
+        OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
+        with OP_ALG_AAI_HMAC_PRECOMP.
 
     :param unsigned int icvsize:
         integrity check value (ICV) size (truncated or full)
 
-.. _`cnstr_shdsc_aead_null_decap.note`:
-
-Note
-----
-
-Requires an MDHA split key.
+    :param int era:
+        SEC Era
 
 .. _`cnstr_shdsc_aead_encap`:
 
 cnstr_shdsc_aead_encap
 ======================
 
-.. c:function:: void cnstr_shdsc_aead_encap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi)
+.. c:function:: void cnstr_shdsc_aead_encap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi, int era)
 
     IPSec ESP encapsulation shared descriptor (non-protocol).
 
@@ -75,10 +69,11 @@ cnstr_shdsc_aead_encap
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
 
     :param struct alginfo \*adata:
-        pointer to authentication transform definitions. Note that since a
-        split key is to be used, the size of the split key itself is
-        specified. Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1,
-        SHA224, SHA256, SHA384, SHA512} ANDed with OP_ALG_AAI_HMAC_PRECOMP.
+        pointer to authentication transform definitions.
+        A split key is required for SEC Era < 6; the size of the split key
+        is specified in this case. Valid algorithm values - one of
+        OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
+        with OP_ALG_AAI_HMAC_PRECOMP.
 
     :param unsigned int ivsize:
         initialization vector size
@@ -98,19 +93,15 @@ cnstr_shdsc_aead_encap
     :param const bool is_qi:
         true when called from caam/qi
 
-.. _`cnstr_shdsc_aead_encap.note`:
-
-Note
-----
-
-Requires an MDHA split key.
+    :param int era:
+        SEC Era
 
 .. _`cnstr_shdsc_aead_decap`:
 
 cnstr_shdsc_aead_decap
 ======================
 
-.. c:function:: void cnstr_shdsc_aead_decap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool geniv, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi)
+.. c:function:: void cnstr_shdsc_aead_decap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool geniv, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi, int era)
 
     IPSec ESP decapsulation shared descriptor (non-protocol).
 
@@ -123,10 +114,11 @@ cnstr_shdsc_aead_decap
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
 
     :param struct alginfo \*adata:
-        pointer to authentication transform definitions. Note that since a
-        split key is to be used, the size of the split key itself is
-        specified. Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1,
-        SHA224, SHA256, SHA384, SHA512} ANDed with OP_ALG_AAI_HMAC_PRECOMP.
+        pointer to authentication transform definitions.
+        A split key is required for SEC Era < 6; the size of the split key
+        is specified in this case. Valid algorithm values - one of
+        OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
+        with OP_ALG_AAI_HMAC_PRECOMP.
 
     :param unsigned int ivsize:
         initialization vector size
@@ -149,19 +141,15 @@ cnstr_shdsc_aead_decap
     :param const bool is_qi:
         true when called from caam/qi
 
-.. _`cnstr_shdsc_aead_decap.note`:
-
-Note
-----
-
-Requires an MDHA split key.
+    :param int era:
+        SEC Era
 
 .. _`cnstr_shdsc_aead_givencap`:
 
 cnstr_shdsc_aead_givencap
 =========================
 
-.. c:function:: void cnstr_shdsc_aead_givencap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi)
+.. c:function:: void cnstr_shdsc_aead_givencap(u32 * const desc, struct alginfo *cdata, struct alginfo *adata, unsigned int ivsize, unsigned int icvsize, const bool is_rfc3686, u32 *nonce, const u32 ctx1_iv_off, const bool is_qi, int era)
 
     IPSec ESP encapsulation shared descriptor (non-protocol) with HW-generated initialization vector.
 
@@ -174,10 +162,11 @@ cnstr_shdsc_aead_givencap
         with OP_ALG_AAI_CBC or OP_ALG_AAI_CTR_MOD128.
 
     :param struct alginfo \*adata:
-        pointer to authentication transform definitions. Note that since a
-        split key is to be used, the size of the split key itself is
-        specified. Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1,
-        SHA224, SHA256, SHA384, SHA512} ANDed with OP_ALG_AAI_HMAC_PRECOMP.
+        pointer to authentication transform definitions.
+        A split key is required for SEC Era < 6; the size of the split key
+        is specified in this case. Valid algorithm values - one of
+        OP_ALG_ALGSEL_{MD5, SHA1, SHA224, SHA256, SHA384, SHA512} ANDed
+        with OP_ALG_AAI_HMAC_PRECOMP.
 
     :param unsigned int ivsize:
         initialization vector size
@@ -197,12 +186,8 @@ cnstr_shdsc_aead_givencap
     :param const bool is_qi:
         true when called from caam/qi
 
-.. _`cnstr_shdsc_aead_givencap.note`:
-
-Note
-----
-
-Requires an MDHA split key.
+    :param int era:
+        SEC Era
 
 .. _`cnstr_shdsc_gcm_encap`:
 

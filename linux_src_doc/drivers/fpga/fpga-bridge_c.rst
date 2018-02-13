@@ -63,6 +63,35 @@ Return fpga_bridge struct if successful.
 Return -EBUSY if someone already has a reference to the bridge.
 Return -ENODEV if \ ``np``\  is not a FPGA Bridge.
 
+.. _`fpga_bridge_get`:
+
+fpga_bridge_get
+===============
+
+.. c:function:: struct fpga_bridge *fpga_bridge_get(struct device *dev, struct fpga_image_info *info)
+
+    get an exclusive reference to a fpga bridge
+
+    :param struct device \*dev:
+        parent device that fpga bridge was registered with
+
+    :param struct fpga_image_info \*info:
+        *undescribed*
+
+.. _`fpga_bridge_get.description`:
+
+Description
+-----------
+
+Given a device, get an exclusive reference to a fpga bridge.
+
+.. _`fpga_bridge_get.return`:
+
+Return
+------
+
+fpga manager struct or \ :c:func:`IS_ERR`\  condition containing error code.
+
 .. _`fpga_bridge_put`:
 
 fpga_bridge_put
@@ -137,17 +166,44 @@ Description
 For each bridge in the list, put the bridge and remove it from the list.
 If list is empty, do nothing.
 
-.. _`fpga_bridge_get_to_list`:
+.. _`of_fpga_bridge_get_to_list`:
 
-fpga_bridge_get_to_list
-=======================
+of_fpga_bridge_get_to_list
+==========================
 
-.. c:function:: int fpga_bridge_get_to_list(struct device_node *np, struct fpga_image_info *info, struct list_head *bridge_list)
+.. c:function:: int of_fpga_bridge_get_to_list(struct device_node *np, struct fpga_image_info *info, struct list_head *bridge_list)
 
     get a bridge, add it to a list
 
     :param struct device_node \*np:
         node pointer of a FPGA bridge
+
+    :param struct fpga_image_info \*info:
+        fpga image specific information
+
+    :param struct list_head \*bridge_list:
+        list of FPGA bridges
+
+.. _`of_fpga_bridge_get_to_list.description`:
+
+Description
+-----------
+
+Get an exclusive reference to the bridge and and it to the list.
+
+Return 0 for success, error code from \ :c:func:`of_fpga_bridge_get`\  othewise.
+
+.. _`fpga_bridge_get_to_list`:
+
+fpga_bridge_get_to_list
+=======================
+
+.. c:function:: int fpga_bridge_get_to_list(struct device *dev, struct fpga_image_info *info, struct list_head *bridge_list)
+
+    given device, get a bridge, add it to a list
+
+    :param struct device \*dev:
+        FPGA bridge device
 
     :param struct fpga_image_info \*info:
         fpga image specific information
@@ -162,7 +218,7 @@ Description
 
 Get an exclusive reference to the bridge and and it to the list.
 
-Return 0 for success, error code from \ :c:func:`of_fpga_bridge_get`\  othewise.
+Return 0 for success, error code from \ :c:func:`fpga_bridge_get`\  othewise.
 
 .. _`fpga_bridge_register`:
 

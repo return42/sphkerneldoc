@@ -100,10 +100,10 @@ buf_addr_msb
     MSB of Buffer address \ ``0x0C``\ 
 
 mcdma_control
-    *undescribed*
+    Control field for mcdma \ ``0x10``\ 
 
 vsize_stride
-    *undescribed*
+    Vsize and Stride field for mcdma \ ``0x14``\ 
 
 control
     Control field \ ``0x18``\ 
@@ -150,19 +150,19 @@ next_desc
     Next Descriptor Pointer \ ``0x00``\ 
 
 next_desc_msb
-    *undescribed*
+    Next Descriptor Pointer MSB \ ``0x04``\ 
 
 src_addr
     Source address \ ``0x08``\ 
 
 src_addr_msb
-    *undescribed*
+    Source address MSB \ ``0x0C``\ 
 
 dest_addr
     Destination address \ ``0x10``\ 
 
 dest_addr_msb
-    *undescribed*
+    Destination address MSB \ ``0x14``\ 
 
 control
     Control field \ ``0x18``\ 
@@ -342,6 +342,7 @@ Definition
         struct list_head pending_list;
         struct list_head active_list;
         struct list_head done_list;
+        struct list_head free_seg_list;
         struct dma_chan common;
         struct dma_pool *desc_pool;
         struct device *dev;
@@ -353,6 +354,7 @@ Definition
         bool cyclic;
         bool genlock;
         bool err;
+        bool idle;
         struct tasklet_struct tasklet;
         struct xilinx_vdma_config config;
         bool flush_on_fsync;
@@ -361,7 +363,9 @@ Definition
         u32 desc_submitcount;
         u32 residue;
         struct xilinx_axidma_tx_segment *seg_v;
+        dma_addr_t seg_p;
         struct xilinx_axidma_tx_segment *cyclic_seg_v;
+        dma_addr_t cyclic_seg_p;
         void (*start_transfer)(struct xilinx_dma_chan *chan);
         int (*stop_transfer)(struct xilinx_dma_chan *chan);
         u16 tdest;
@@ -392,6 +396,9 @@ active_list
 
 done_list
     Complete descriptors
+
+free_seg_list
+    Free descriptors
 
 common
     DMA common channel
@@ -426,6 +433,9 @@ genlock
 err
     Channel has errors
 
+idle
+    Check for channel idle
+
 tasklet
     Cleanup work after irq
 
@@ -450,8 +460,14 @@ residue
 seg_v
     Statically allocated segments base
 
+seg_p
+    Physical allocated segments base
+
 cyclic_seg_v
     Statically allocated segment base for cyclic transfers
+
+cyclic_seg_p
+    Physical allocated segments base for cyclic dma
 
 start_transfer
     Differentiate b/w DMA IP's transfer
@@ -460,7 +476,7 @@ stop_transfer
     Differentiate b/w DMA IP's quiesce
 
 tdest
-    *undescribed*
+    TDEST value for mcdma
 
 .. _`xdma_ip_type`:
 
@@ -490,34 +506,13 @@ Constants
 ---------
 
 XDMA_TYPE_AXIDMA
-    *undescribed*
+    Axi dma ip.
 
 XDMA_TYPE_CDMA
-    *undescribed*
+    Axi cdma ip.
 
 XDMA_TYPE_VDMA
-    *undescribed*
-
-.. _`xdma_ip_type.xdma_type_axidma`:
-
-XDMA_TYPE_AXIDMA
-----------------
-
-Axi dma ip.
-
-.. _`xdma_ip_type.xdma_type_cdma`:
-
-XDMA_TYPE_CDMA
---------------
-
-Axi cdma ip.
-
-.. _`xdma_ip_type.xdma_type_vdma`:
-
-XDMA_TYPE_VDMA
---------------
-
-Axi vdma ip.
+    Axi vdma ip.
 
 .. _`xilinx_dma_device`:
 
@@ -902,44 +897,6 @@ Return
 
 DMA transaction status
 
-.. _`xilinx_dma_is_running`:
-
-xilinx_dma_is_running
-=====================
-
-.. c:function:: bool xilinx_dma_is_running(struct xilinx_dma_chan *chan)
-
-    Check if DMA channel is running
-
-    :param struct xilinx_dma_chan \*chan:
-        Driver specific DMA channel
-
-.. _`xilinx_dma_is_running.return`:
-
-Return
-------
-
-'1' if running, '0' if not.
-
-.. _`xilinx_dma_is_idle`:
-
-xilinx_dma_is_idle
-==================
-
-.. c:function:: bool xilinx_dma_is_idle(struct xilinx_dma_chan *chan)
-
-    Check if DMA channel is idle
-
-    :param struct xilinx_dma_chan \*chan:
-        Driver specific DMA channel
-
-.. _`xilinx_dma_is_idle.return`:
-
-Return
-------
-
-'1' if idle, '0' if not.
-
 .. _`xilinx_dma_stop_transfer`:
 
 xilinx_dma_stop_transfer
@@ -952,6 +909,13 @@ xilinx_dma_stop_transfer
     :param struct xilinx_dma_chan \*chan:
         Driver specific DMA channel
 
+.. _`xilinx_dma_stop_transfer.return`:
+
+Return
+------
+
+'0' on success and failure value on error
+
 .. _`xilinx_cdma_stop_transfer`:
 
 xilinx_cdma_stop_transfer
@@ -963,6 +927,13 @@ xilinx_cdma_stop_transfer
 
     :param struct xilinx_dma_chan \*chan:
         Driver specific DMA channel
+
+.. _`xilinx_cdma_stop_transfer.return`:
+
+Return
+------
+
+'0' on success and failure value on error
 
 .. _`xilinx_dma_start`:
 
@@ -1237,22 +1208,29 @@ xilinx_dma_prep_dma_cyclic
     prepare descriptors for a DMA_SLAVE transaction
 
     :param struct dma_chan \*dchan:
-        *undescribed*
+        DMA channel
 
     :param dma_addr_t buf_addr:
-        *undescribed*
+        Physical address of the buffer
 
     :param size_t buf_len:
-        *undescribed*
+        Total length of the cyclic buffers
 
     :param size_t period_len:
-        *undescribed*
+        length of individual cyclic buffer
 
     :param enum dma_transfer_direction direction:
         DMA direction
 
     :param unsigned long flags:
         transfer ack flags
+
+.. _`xilinx_dma_prep_dma_cyclic.return`:
+
+Return
+------
+
+Async transaction descriptor on success and NULL on failure
 
 .. _`xilinx_dma_prep_interleaved`:
 
@@ -1289,7 +1267,14 @@ xilinx_dma_terminate_all
     Halt the channel and free descriptors
 
     :param struct dma_chan \*dchan:
-        *undescribed*
+        Driver specific DMA Channel pointer
+
+.. _`xilinx_dma_terminate_all.return`:
+
+Return
+------
+
+'0' always.
 
 .. _`xilinx_vdma_channel_set_config`:
 
@@ -1341,7 +1326,7 @@ xilinx_dma_chan_probe
         Device node
 
     :param int chan_id:
-        *undescribed*
+        DMA Channel id
 
 .. _`xilinx_dma_chan_probe.return`:
 

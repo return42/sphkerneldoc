@@ -29,10 +29,13 @@ ttm_page_alloc_fini
 ttm_pool_populate
 =================
 
-.. c:function:: int ttm_pool_populate(struct ttm_tt *ttm)
+.. c:function:: int ttm_pool_populate(struct ttm_tt *ttm, struct ttm_operation_ctx *ctx)
 
     :param struct ttm_tt \*ttm:
         The struct ttm_tt to contain the backing pages.
+
+    :param struct ttm_operation_ctx \*ctx:
+        *undescribed*
 
 .. _`ttm_pool_populate.description`:
 
@@ -63,12 +66,15 @@ Free all pages of \ ``ttm``\
 ttm_populate_and_map_pages
 ==========================
 
-.. c:function:: int ttm_populate_and_map_pages(struct device *dev, struct ttm_dma_tt *tt)
+.. c:function:: int ttm_populate_and_map_pages(struct device *dev, struct ttm_dma_tt *tt, struct ttm_operation_ctx *ctx)
 
     :param struct device \*dev:
         *undescribed*
 
     :param struct ttm_dma_tt \*tt:
+        *undescribed*
+
+    :param struct ttm_operation_ctx \*ctx:
         *undescribed*
 
 .. _`ttm_unmap_and_unpopulate_pages`:

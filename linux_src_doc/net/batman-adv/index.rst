@@ -26,8 +26,10 @@ batman-adv
     gateway_common_h
     hard-interface_c
     hard-interface_h
+    hash_c
     hash_h
     icmp_socket_c
+    log_c
     log_h
     main_c
     main_h
@@ -36,7 +38,7 @@ batman-adv
     netlink_c
     network-coding_c
     originator_c
-    packet_h
+    originator_h
     routing_c
     send_c
     send_h

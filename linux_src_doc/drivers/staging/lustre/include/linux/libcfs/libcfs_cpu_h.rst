@@ -6,7 +6,7 @@
 cfs_cpt_cpumask
 ===============
 
-.. c:function:: cpumask_t *cfs_cpt_cpumask(struct cfs_cpt_table *cptab, int cpt)
+.. c:function:: cpumask_var_t *cfs_cpt_cpumask(struct cfs_cpt_table *cptab, int cpt)
 
     :param struct cfs_cpt_table \*cptab:
         *undescribed*

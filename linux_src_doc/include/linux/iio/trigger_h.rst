@@ -89,7 +89,7 @@ ops
     [DRIVER] operations structure
 
 owner
-    *undescribed*
+    [INTERN] owner of this driver module
 
 id
     [INTERN] unique id number
@@ -107,7 +107,7 @@ alloc_list
     [DRIVER] used for driver specific trigger list
 
 use_count
-    use count for the trigger
+    [INTERN] use count for the trigger.
 
 subirq_chip
     [INTERN] associate 'virtual' irq chip.

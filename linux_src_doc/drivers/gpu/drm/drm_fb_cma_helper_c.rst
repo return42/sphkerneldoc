@@ -13,7 +13,7 @@ backed framebuffer.
 callback function to create a cma backed framebuffer.
 
 An fbdev framebuffer backed by cma is also available by calling
-\ :c:func:`drm_fbdev_cma_init`\ . \ :c:func:`drm_fbdev_cma_fini`\  tears it down.
+\ :c:func:`drm_fb_cma_fbdev_init`\ . \ :c:func:`drm_fb_cma_fbdev_fini`\  tears it down.
 If the \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  callback is set, fb_deferred_io will be
 set up automatically. \ :c:type:`drm_framebuffer_funcs.dirty <drm_framebuffer_funcs>`\  is called by
 \ :c:func:`drm_fb_helper_deferred_io`\  in process context (&struct delayed_work).
@@ -39,7 +39,7 @@ Example fbdev deferred io code::
 
 Initialize::
 
-    fbdev = drm_fbdev_cma_init_with_funcs(dev, 16,
+    fbdev = drm_fb_cma_fbdev_init_with_funcs(dev, 16,
                                           dev->mode_config.num_crtc,
                                           dev->mode_config.num_connector,
                                           \ :c:type:`struct driver_fb_funcs <driver_fb_funcs>`\ );
@@ -94,20 +94,75 @@ Description
 
 This function will usually be called from the PLANE callback functions.
 
-.. _`drm_fb_cma_debugfs_show`:
+.. _`drm_fb_cma_fbdev_init_with_funcs`:
 
-drm_fb_cma_debugfs_show
-=======================
+drm_fb_cma_fbdev_init_with_funcs
+================================
 
-.. c:function:: int drm_fb_cma_debugfs_show(struct seq_file *m, void *arg)
+.. c:function:: int drm_fb_cma_fbdev_init_with_funcs(struct drm_device *dev, unsigned int preferred_bpp, unsigned int max_conn_count, const struct drm_framebuffer_funcs *funcs)
 
-    Helper to list CMA framebuffer objects in debugfs.
+    Allocate and initialize fbdev emulation
 
-    :param struct seq_file \*m:
-        output file
+    :param struct drm_device \*dev:
+        DRM device
 
-    :param void \*arg:
-        private data for the callback
+    :param unsigned int preferred_bpp:
+        Preferred bits per pixel for the device.
+        \ ``dev``\ ->mode_config.preferred_depth is used if this is zero.
+
+    :param unsigned int max_conn_count:
+        Maximum number of connectors.
+        \ ``dev``\ ->mode_config.num_connector is used if this is zero.
+
+    :param const struct drm_framebuffer_funcs \*funcs:
+        Framebuffer functions, in particular a custom \ :c:func:`dirty`\  callback.
+        Can be NULL.
+
+.. _`drm_fb_cma_fbdev_init_with_funcs.return`:
+
+Return
+------
+
+Zero on success or negative error code on failure.
+
+.. _`drm_fb_cma_fbdev_init`:
+
+drm_fb_cma_fbdev_init
+=====================
+
+.. c:function:: int drm_fb_cma_fbdev_init(struct drm_device *dev, unsigned int preferred_bpp, unsigned int max_conn_count)
+
+    Allocate and initialize fbdev emulation
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param unsigned int preferred_bpp:
+        Preferred bits per pixel for the device.
+        \ ``dev``\ ->mode_config.preferred_depth is used if this is zero.
+
+    :param unsigned int max_conn_count:
+        Maximum number of connectors.
+        \ ``dev``\ ->mode_config.num_connector is used if this is zero.
+
+.. _`drm_fb_cma_fbdev_init.return`:
+
+Return
+------
+
+Zero on success or negative error code on failure.
+
+.. _`drm_fb_cma_fbdev_fini`:
+
+drm_fb_cma_fbdev_fini
+=====================
+
+.. c:function:: void drm_fb_cma_fbdev_fini(struct drm_device *dev)
+
+    Teardown fbdev emulation
+
+    :param struct drm_device \*dev:
+        DRM device
 
 .. _`drm_fbdev_cma_init_with_funcs`:
 

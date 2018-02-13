@@ -164,6 +164,9 @@ Definition
         uint32_t eop_ring_buffer_size;
         uint64_t ctx_save_restore_area_address;
         uint32_t ctx_save_restore_area_size;
+        uint32_t ctl_stack_size;
+        uint64_t tba_addr;
+        uint64_t tma_addr;
     }
 
 .. _`queue_properties.members`:
@@ -243,6 +246,15 @@ ctx_save_restore_area_address
     *undescribed*
 
 ctx_save_restore_area_size
+    *undescribed*
+
+ctl_stack_size
+    *undescribed*
+
+tba_addr
+    *undescribed*
+
+tma_addr
     *undescribed*
 
 .. _`queue_properties.description`:

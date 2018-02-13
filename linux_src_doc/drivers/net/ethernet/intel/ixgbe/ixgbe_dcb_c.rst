@@ -11,16 +11,16 @@ ixgbe_ieee_credits
     This calculates the ieee traffic class credits from the configured bandwidth percentages. Credits are the smallest unit programmable into the underlying hardware. The IEEE 802.1Qaz specification do not use bandwidth groups so this is much simplified from the CEE case.
 
     :param __u8 \*bw:
-        *undescribed*
+        bandwidth index by traffic class
 
     :param __u16 \*refill:
-        *undescribed*
+        refill credits index by traffic class
 
     :param __u16 \*max:
-        *undescribed*
+        max credits by traffic class
 
     :param int max_frame:
-        *undescribed*
+        maximum frame size
 
 .. _`ixgbe_dcb_calculate_tc_credits`:
 
@@ -32,16 +32,16 @@ ixgbe_dcb_calculate_tc_credits
     Calculates traffic class credits
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        pointer to hardware structure
 
     :param struct ixgbe_dcb_config \*dcb_config:
-        *undescribed*
+        Struct containing DCB settings
 
     :param int max_frame:
-        *undescribed*
+        Maximum frame size
 
     :param u8 direction:
-        Configuring either Tx or Rx.
+        Configuring either Tx or Rx
 
 .. _`ixgbe_dcb_calculate_tc_credits.description`:
 

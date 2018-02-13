@@ -175,7 +175,7 @@ negative error code on failure.
 drm_poll
 ========
 
-.. c:function:: unsigned int drm_poll(struct file *filp, struct poll_table_struct *wait)
+.. c:function:: __poll_t drm_poll(struct file *filp, struct poll_table_struct *wait)
 
     poll method for DRM file
 

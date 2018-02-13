@@ -26,7 +26,7 @@ Definition
         struct mutex ns_snapshot_mount_mutex;
         struct buffer_head *ns_sbh[2];
         struct nilfs_super_block *ns_sbp[2];
-        time_t ns_sbwtime;
+        time64_t ns_sbwtime;
         unsigned int ns_sbwcount;
         unsigned int ns_sbsize;
         unsigned int ns_mount_state;
@@ -36,8 +36,8 @@ Definition
         __u64 ns_nextnum;
         unsigned long ns_pseg_offset;
         __u64 ns_cno;
-        time_t ns_ctime;
-        time_t ns_nongc_ctime;
+        time64_t ns_ctime;
+        time64_t ns_nongc_ctime;
         atomic_t ns_ndirtyblks;
         spinlock_t ns_last_segment_lock;
         sector_t ns_last_pseg;

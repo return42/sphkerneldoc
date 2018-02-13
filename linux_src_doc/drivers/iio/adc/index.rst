@@ -26,6 +26,9 @@ adc
     stm32-adc-core_c
     stm32-adc-core_h
     stm32-adc_c
+    stm32-dfsdm-adc_c
+    stm32-dfsdm-core_c
+    stm32-dfsdm_h
     stx104_c
     ti-adc084s021_c
     twl4030-madc_c

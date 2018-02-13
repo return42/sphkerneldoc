@@ -346,6 +346,119 @@ Return
 
 0 on success, negative error on failure
 
+.. _`sgl_alloc_order`:
+
+sgl_alloc_order
+===============
+
+.. c:function:: struct scatterlist *sgl_alloc_order(unsigned long long length, unsigned int order, bool chainable, gfp_t gfp, unsigned int *nent_p)
+
+    allocate a scatterlist and its pages
+
+    :param unsigned long long length:
+        Length in bytes of the scatterlist. Must be at least one
+
+    :param unsigned int order:
+        Second argument for \ :c:func:`alloc_pages`\ 
+
+    :param bool chainable:
+        Whether or not to allocate an extra element in the scatterlist
+        for scatterlist chaining purposes
+
+    :param gfp_t gfp:
+        Memory allocation flags
+
+    :param unsigned int \*nent_p:
+        [out] Number of entries in the scatterlist that have pages
+
+.. _`sgl_alloc_order.return`:
+
+Return
+------
+
+A pointer to an initialized scatterlist or \ ``NULL``\  upon failure.
+
+.. _`sgl_alloc`:
+
+sgl_alloc
+=========
+
+.. c:function:: struct scatterlist *sgl_alloc(unsigned long long length, gfp_t gfp, unsigned int *nent_p)
+
+    allocate a scatterlist and its pages
+
+    :param unsigned long long length:
+        Length in bytes of the scatterlist
+
+    :param gfp_t gfp:
+        Memory allocation flags
+
+    :param unsigned int \*nent_p:
+        [out] Number of entries in the scatterlist
+
+.. _`sgl_alloc.return`:
+
+Return
+------
+
+A pointer to an initialized scatterlist or \ ``NULL``\  upon failure.
+
+.. _`sgl_free_n_order`:
+
+sgl_free_n_order
+================
+
+.. c:function:: void sgl_free_n_order(struct scatterlist *sgl, int nents, int order)
+
+    free a scatterlist and its pages
+
+    :param struct scatterlist \*sgl:
+        Scatterlist with one or more elements
+
+    :param int nents:
+        Maximum number of elements to free
+
+    :param int order:
+        Second argument for \__free_pages()
+
+.. _`sgl_free_n_order.notes`:
+
+Notes
+-----
+
+- If several scatterlists have been chained and each chain element is
+freed separately then it's essential to set nents correctly to avoid that a
+page would get freed twice.
+- All pages in a chained scatterlist can be freed at once by setting \ ``nents``\ 
+to a high number.
+
+.. _`sgl_free_order`:
+
+sgl_free_order
+==============
+
+.. c:function:: void sgl_free_order(struct scatterlist *sgl, int order)
+
+    free a scatterlist and its pages
+
+    :param struct scatterlist \*sgl:
+        Scatterlist with one or more elements
+
+    :param int order:
+        Second argument for \__free_pages()
+
+.. _`sgl_free`:
+
+sgl_free
+========
+
+.. c:function:: void sgl_free(struct scatterlist *sgl)
+
+    free a scatterlist and its pages
+
+    :param struct scatterlist \*sgl:
+        Scatterlist with one or more elements
+
 .. _`sg_miter_start`:
 
 sg_miter_start

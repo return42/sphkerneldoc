@@ -57,7 +57,7 @@ rvt_free_all_qps
     check for QPs still in use
 
     :param struct rvt_dev_info \*rdi:
-        *undescribed*
+        rvt device info structure
 
 .. _`rvt_free_all_qps.description`:
 
@@ -93,19 +93,19 @@ alloc_qpn
 
 .. c:function:: int alloc_qpn(struct rvt_dev_info *rdi, struct rvt_qpn_table *qpt, enum ib_qp_type type, u8 port_num)
 
-    Allocate the next available qpn or zero/one for QP type IB_QPT_SMI/IB_QPT_GSI \ ``rdi``\ : rvt device info structure \ ``qpt``\ : queue pair number table pointer \ ``port_num``\ : IB port number, 1 based, comes from core
+    Allocate the next available qpn or zero/one for QP type IB_QPT_SMI/IB_QPT_GSI
 
     :param struct rvt_dev_info \*rdi:
-        *undescribed*
+        rvt device info structure
 
     :param struct rvt_qpn_table \*qpt:
-        *undescribed*
+        queue pair number table pointer
 
     :param enum ib_qp_type type:
         *undescribed*
 
     :param u8 port_num:
-        *undescribed*
+        IB port number, 1 based, comes from core
 
 .. _`alloc_qpn.return`:
 
@@ -481,16 +481,16 @@ rvt_qp_is_avail
 
 .. c:function:: int rvt_qp_is_avail(struct rvt_qp *qp, struct rvt_dev_info *rdi, bool reserved_op)
 
-    determine queue capacity \ ``qp``\  - the qp \ ``rdi``\  - the rdmavt device \ ``reserved_op``\  - is reserved operation
+    determine queue capacity
 
     :param struct rvt_qp \*qp:
-        *undescribed*
+        the qp
 
     :param struct rvt_dev_info \*rdi:
-        *undescribed*
+        the rdmavt device
 
     :param bool reserved_op:
-        *undescribed*
+        is reserved operation
 
 .. _`rvt_qp_is_avail.description`:
 
@@ -631,7 +631,7 @@ rvt_stop_rc_timers
 rvt_stop_rnr_timer
 ==================
 
-.. c:function:: int rvt_stop_rnr_timer(struct rvt_qp *qp)
+.. c:function:: void rvt_stop_rnr_timer(struct rvt_qp *qp)
 
     stop an rnr timer \ ``qp``\  - the QP
 
@@ -675,13 +675,13 @@ rvt_qp_iter_init
 
 .. c:function:: struct rvt_qp_iter *rvt_qp_iter_init(struct rvt_dev_info *rdi, u64 v, void (*cb)(struct rvt_qp *qp, u64 v))
 
-    initial for QP iteration \ ``rdi``\  - rvt devinfo \ ``v``\  - u64 value
+    initial for QP iteration
 
     :param struct rvt_dev_info \*rdi:
-        *undescribed*
+        rvt devinfo
 
     :param u64 v:
-        *undescribed*
+        u64 value
 
     :param void (\*cb)(struct rvt_qp \*qp, u64 v):
         *undescribed*

@@ -13,4 +13,3 @@ amd
     include/index
     lib/index
     powerplay/index
-    scheduler/index

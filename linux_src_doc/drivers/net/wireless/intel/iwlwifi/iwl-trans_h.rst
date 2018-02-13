@@ -485,6 +485,7 @@ Definition
         int (*write_mem)(struct iwl_trans *trans, u32 addr, const void *buf, int dwords);
         void (*configure)(struct iwl_trans *trans, const struct iwl_trans_config *trans_cfg);
         void (*set_pmi)(struct iwl_trans *trans, bool state);
+        void (*sw_reset)(struct iwl_trans *trans);
         bool (*grab_nic_access)(struct iwl_trans *trans, unsigned long *flags);
         void (*release_nic_access)(struct iwl_trans *trans, unsigned long *flags);
         void (*set_bits_mask)(struct iwl_trans *trans, u32 reg, u32 mask, u32 value);
@@ -624,6 +625,9 @@ configure
 
 set_pmi
     set the power pmi state
+
+sw_reset
+    *undescribed*
 
 grab_nic_access
     wake the NIC to be able to access non-HBUS regs.
@@ -831,7 +835,7 @@ Definition
     #ifdef CONFIG_LOCKDEP
         struct lockdep_map sync_cmd_lockdep_map;
     #endif
-        const struct iwl_fw_dbg_dest_tlv *dbg_dest_tlv;
+        const struct iwl_fw_dbg_dest_tlv_v1 *dbg_dest_tlv;
         const struct iwl_fw_dbg_conf_tlv *dbg_conf_tlv[FW_DBG_CONF_MAX];
         struct iwl_fw_dbg_trigger_tlv * const *dbg_trigger_tlv;
         u8 dbg_dest_reg_num;

@@ -20,6 +20,7 @@ Definition
     struct nfp_app_type {
         enum nfp_app_id id;
         const char *name;
+        u32 ctrl_cap_mask;
         bool ctrl_has_meta;
         int (*init)(struct nfp_app *app);
         void (*clean)(struct nfp_app *app);
@@ -29,18 +30,17 @@ Definition
         int (*vnic_init)(struct nfp_app *app, struct nfp_net *nn);
         void (*vnic_clean)(struct nfp_app *app, struct nfp_net *nn);
         int (*repr_init)(struct nfp_app *app, struct net_device *netdev);
+        void (*repr_preclean)(struct nfp_app *app, struct net_device *netdev);
         void (*repr_clean)(struct nfp_app *app, struct net_device *netdev);
         int (*repr_open)(struct nfp_app *app, struct nfp_repr *repr);
         int (*repr_stop)(struct nfp_app *app, struct nfp_repr *repr);
+        int (*change_mtu)(struct nfp_app *app, struct net_device *netdev, int new_mtu);
         int (*start)(struct nfp_app *app);
         void (*stop)(struct nfp_app *app);
         void (*ctrl_msg_rx)(struct nfp_app *app, struct sk_buff *skb);
         int (*setup_tc)(struct nfp_app *app, struct net_device *netdev, enum tc_setup_type type, void *type_data);
-        bool (*tc_busy)(struct nfp_app *app, struct nfp_net *nn);
-        int (*xdp_offload)(struct nfp_app *app, struct nfp_net *nn, struct bpf_prog *prog);
-        int (*bpf_verifier_prep)(struct nfp_app *app, struct nfp_net *nn, struct netdev_bpf *bpf);
-        int (*bpf_translate)(struct nfp_app *app, struct nfp_net *nn, struct bpf_prog *prog);
-        int (*bpf_destroy)(struct nfp_app *app, struct nfp_net *nn, struct bpf_prog *prog);
+        int (*bpf)(struct nfp_app *app, struct nfp_net *nn, struct netdev_bpf *xdp);
+        int (*xdp_offload)(struct nfp_app *app, struct nfp_net *nn,struct bpf_prog *prog, struct netlink_ext_ack *extack);
         int (*sriov_enable)(struct nfp_app *app, int num_vfs);
         void (*sriov_disable)(struct nfp_app *app);
         enum devlink_eswitch_mode (*eswitch_mode_get)(struct nfp_app *app);
@@ -57,6 +57,11 @@ id
 
 name
     application name
+
+ctrl_cap_mask
+    ctrl vNIC capability mask, allows disabling features like
+    IRQMOD which are on by default but counter-productive for
+    control messages which are often latency-sensitive
 
 ctrl_has_meta
     control messages have prepend of type:5/port:CTRL
@@ -85,6 +90,10 @@ vnic_clean
 repr_init
     representor about to be registered
 
+repr_preclean
+    representor about to unregistered, executed before app
+    reference to the it is removed
+
 repr_clean
     representor about to be unregistered
 
@@ -93,6 +102,10 @@ repr_open
 
 repr_stop
     representor netdev stop callback
+
+change_mtu
+    MTU change on a netdev has been requested (veto-only, change
+    is not guaranteed to be committed)
 
 start
     start application logic
@@ -106,20 +119,11 @@ ctrl_msg_rx
 setup_tc
     setup TC ndo
 
-tc_busy
-    TC HW offload busy (rules loaded)
+bpf
+    BPF ndo offload-related calls
 
 xdp_offload
     offload an XDP program
-
-bpf_verifier_prep
-    verifier prep for dev-specific BPF programs
-
-bpf_translate
-    translate call for dev-specific BPF programs
-
-bpf_destroy
-    destroy for dev-specific BPF programs
 
 sriov_enable
     app-specific sriov initialisation

@@ -6,9 +6,12 @@
 stm_ftrace_write
 ================
 
-.. c:function:: void notrace stm_ftrace_write(const void *buf, unsigned int len)
+.. c:function:: void notrace stm_ftrace_write(struct trace_export *export, const void *buf, unsigned int len)
 
     write data to STM via 'stm_ftrace' source
+
+    :param struct trace_export \*export:
+        *undescribed*
 
     :param const void \*buf:
         buffer containing the data packet

@@ -221,6 +221,73 @@ do. Hence this function assumes anything found is a PHY, or can be
 treated as a PHY. Other MDIO devices, such as switches, will
 probably not be found during the scan.
 
+.. _`__mdiobus_read`:
+
+__mdiobus_read
+==============
+
+.. c:function:: int __mdiobus_read(struct mii_bus *bus, int addr, u32 regnum)
+
+    Unlocked version of the mdiobus_read function
+
+    :param struct mii_bus \*bus:
+        the mii_bus struct
+
+    :param int addr:
+        the phy address
+
+    :param u32 regnum:
+        register number to read
+
+.. _`__mdiobus_read.description`:
+
+Description
+-----------
+
+Read a MDIO bus register. Caller must hold the mdio bus lock.
+
+.. _`__mdiobus_read.note`:
+
+NOTE
+----
+
+MUST NOT be called from interrupt context.
+
+.. _`__mdiobus_write`:
+
+__mdiobus_write
+===============
+
+.. c:function:: int __mdiobus_write(struct mii_bus *bus, int addr, u32 regnum, u16 val)
+
+    Unlocked version of the mdiobus_write function
+
+    :param struct mii_bus \*bus:
+        the mii_bus struct
+
+    :param int addr:
+        the phy address
+
+    :param u32 regnum:
+        register number to write
+
+    :param u16 val:
+        value to write to \ ``regnum``\ 
+
+.. _`__mdiobus_write.description`:
+
+Description
+-----------
+
+Write a MDIO bus register. Caller must hold the mdio bus lock.
+
+.. _`__mdiobus_write.note`:
+
+NOTE
+----
+
+MUST NOT be called from interrupt context.
+
 .. _`mdiobus_read_nested`:
 
 mdiobus_read_nested

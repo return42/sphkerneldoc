@@ -317,6 +317,18 @@ gfs2_blk2rgrpd
     :param bool exact:
         True if this needs to be an exact match
 
+.. _`gfs2_blk2rgrpd.description`:
+
+Description
+-----------
+
+The \ ``exact``\  argument should be set to true by most callers. The exception
+is when we need to match blocks which are not represented by the rgrp
+bitmap, but which are part of the rgrp (i.e. padding blocks) which are
+there for alignment purposes. Another way of looking at it is that \ ``exact``\ 
+matches only valid data/metadata blocks, but with \ ``exact``\  false, it will
+match any block within the extent of the rgrp.
+
 .. _`gfs2_blk2rgrpd.return`:
 
 Return

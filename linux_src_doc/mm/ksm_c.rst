@@ -283,10 +283,10 @@ ksm_do_scan
 
 .. c:function:: void ksm_do_scan(unsigned int scan_npages)
 
-    the ksm scanner main worker function. \ ``scan_npages``\  - number of pages we want to scan before we return.
+    the ksm scanner main worker function.
 
     :param unsigned int scan_npages:
-        *undescribed*
+        number of pages we want to scan before we return.
 
 .. This file was automatic generated / don't edit.
 

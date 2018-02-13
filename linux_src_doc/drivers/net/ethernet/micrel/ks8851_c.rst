@@ -491,7 +491,8 @@ Description
 -----------
 
 Get or create the initial mac address for the device and then set that
-into the station address register. If there is an EEPROM present, then
+into the station address register. A mac address supplied in the device
+tree takes precedence. Otherwise, if there is an EEPROM present, then
 we try that. If no valid mac address is found we use \ :c:func:`eth_random_addr`\ 
 to create a new one.
 

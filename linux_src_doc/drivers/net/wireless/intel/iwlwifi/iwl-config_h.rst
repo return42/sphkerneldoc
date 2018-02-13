@@ -291,7 +291,7 @@ use_tfh
     *undescribed*
 
 gen2
-    a000 and on transport operation
+    22000 and on transport operation
 
 cdb
     CDB support

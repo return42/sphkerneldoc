@@ -10,3 +10,4 @@ target
     tcm_fc/index
     target_core_device_c
     target_core_transport_c
+    target_core_user_c

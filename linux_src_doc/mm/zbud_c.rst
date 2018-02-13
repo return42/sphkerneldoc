@@ -196,7 +196,8 @@ zbud_reclaim_page
         pool from which a page will attempt to be evicted
 
     :param unsigned int retries:
-        *undescribed*
+        number of pages on the LRU list for which eviction will
+        be attempted before failing
 
 .. _`zbud_reclaim_page.description`:
 
@@ -210,6 +211,7 @@ has the potential to create interesting locking situations between zbud and
 the user, however.
 
 To avoid these, this is how \ :c:func:`zbud_reclaim_page`\  should be called:
+
 The user detects a page should be reclaimed and calls \ :c:func:`zbud_reclaim_page`\ .
 \ :c:func:`zbud_reclaim_page`\  will remove a zbud page from the pool LRU list and call
 the user-defined eviction handler with the pool and handle as arguments.

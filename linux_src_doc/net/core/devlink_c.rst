@@ -270,5 +270,92 @@ devlink_dpipe_table_unregister
     :param const char \*table_name:
         table name
 
+.. _`devlink_resource_register`:
+
+devlink_resource_register
+=========================
+
+.. c:function:: int devlink_resource_register(struct devlink *devlink, const char *resource_name, bool top_hierarchy, u64 resource_size, u64 resource_id, u64 parent_resource_id, struct devlink_resource_size_params *size_params, const struct devlink_resource_ops *resource_ops)
+
+    devlink resource register
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param const char \*resource_name:
+        resource's name
+
+    :param bool top_hierarchy:
+        top hierarchy
+
+    :param u64 resource_size:
+        resource's size
+
+    :param u64 resource_id:
+        resource's id
+
+    :param u64 parent_resource_id:
+        *undescribed*
+
+    :param struct devlink_resource_size_params \*size_params:
+        *undescribed*
+
+    :param const struct devlink_resource_ops \*resource_ops:
+        resource ops
+
+.. _`devlink_resources_unregister`:
+
+devlink_resources_unregister
+============================
+
+.. c:function:: void devlink_resources_unregister(struct devlink *devlink, struct devlink_resource *resource)
+
+    free all resources
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param struct devlink_resource \*resource:
+        resource
+
+.. _`devlink_resource_size_get`:
+
+devlink_resource_size_get
+=========================
+
+.. c:function:: int devlink_resource_size_get(struct devlink *devlink, u64 resource_id, u64 *p_resource_size)
+
+    get and update size
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param u64 resource_id:
+        the requested resource id
+
+    :param u64 \*p_resource_size:
+        ptr to update
+
+.. _`devlink_dpipe_table_resource_set`:
+
+devlink_dpipe_table_resource_set
+================================
+
+.. c:function:: int devlink_dpipe_table_resource_set(struct devlink *devlink, const char *table_name, u64 resource_id, u64 resource_units)
+
+    set the resource id
+
+    :param struct devlink \*devlink:
+        devlink
+
+    :param const char \*table_name:
+        table name
+
+    :param u64 resource_id:
+        resource id
+
+    :param u64 resource_units:
+        number of resource's units consumed per table's entry
+
 .. This file was automatic generated / don't edit.
 

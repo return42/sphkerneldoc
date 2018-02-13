@@ -84,19 +84,19 @@ Description
 
 This function frees resources allocated by rhashtable_walk_init.
 
-.. _`rhashtable_walk_start`:
+.. _`rhashtable_walk_start_check`:
 
-rhashtable_walk_start
-=====================
+rhashtable_walk_start_check
+===========================
 
-.. c:function:: int rhashtable_walk_start(struct rhashtable_iter *iter)
+.. c:function:: int rhashtable_walk_start_check(struct rhashtable_iter *iter)
 
     Start a hash table walk
 
     :param struct rhashtable_iter \*iter:
         Hash table iterator
 
-.. _`rhashtable_walk_start.description`:
+.. _`rhashtable_walk_start_check.description`:
 
 Description
 -----------
@@ -110,6 +110,31 @@ Returns zero if successful.
 Returns -EAGAIN if resize event occured.  Note that the iterator
 will rewind back to the beginning and you may use it immediately
 by calling rhashtable_walk_next.
+
+rhashtable_walk_start is defined as an inline variant that returns
+void. This is preferred in cases where the caller would ignore
+resize events and always continue.
+
+.. _`__rhashtable_walk_find_next`:
+
+__rhashtable_walk_find_next
+===========================
+
+.. c:function:: void *__rhashtable_walk_find_next(struct rhashtable_iter *iter)
+
+    Find the next element in a table (or the first one in case of a new walk).
+
+    :param struct rhashtable_iter \*iter:
+        Hash table iterator
+
+.. _`__rhashtable_walk_find_next.description`:
+
+Description
+-----------
+
+Returns the found object or NULL when the end of the table is reached.
+
+Returns -EAGAIN if resize event occurred.
 
 .. _`rhashtable_walk_next`:
 
@@ -133,7 +158,29 @@ with the walk.
 
 Returns the next object or NULL when the end of the table is reached.
 
-Returns -EAGAIN if resize event occured.  Note that the iterator
+Returns -EAGAIN if resize event occurred.  Note that the iterator
+will rewind back to the beginning and you may continue to use it.
+
+.. _`rhashtable_walk_peek`:
+
+rhashtable_walk_peek
+====================
+
+.. c:function:: void *rhashtable_walk_peek(struct rhashtable_iter *iter)
+
+    Return the next object but don't advance the iterator
+
+    :param struct rhashtable_iter \*iter:
+        Hash table iterator
+
+.. _`rhashtable_walk_peek.description`:
+
+Description
+-----------
+
+Returns the next object or NULL when the end of the table is reached.
+
+Returns -EAGAIN if resize event occurred.  Note that the iterator
 will rewind back to the beginning and you may continue to use it.
 
 .. _`rhashtable_walk_stop`:

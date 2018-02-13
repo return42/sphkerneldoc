@@ -26,7 +26,7 @@ Definition
         unsigned long nfileblk;
         u64 seg_seq;
         __u64 cno;
-        time_t ctime;
+        time64_t ctime;
         sector_t next;
     }
 

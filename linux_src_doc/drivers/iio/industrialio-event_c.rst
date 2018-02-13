@@ -85,7 +85,7 @@ discarded.
 iio_event_poll
 ==============
 
-.. c:function:: unsigned int iio_event_poll(struct file *filep, struct poll_table_struct *wait)
+.. c:function:: __poll_t iio_event_poll(struct file *filep, struct poll_table_struct *wait)
 
     poll the event queue to find out if it has data
 
@@ -100,7 +100,7 @@ iio_event_poll
 Return
 ------
 
-(POLLIN \| POLLRDNORM) if data is available for reading
+(EPOLLIN \| EPOLLRDNORM) if data is available for reading
 or a negative error code on failure
 
 .. _`iio_device_wakeup_eventset`:

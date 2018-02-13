@@ -1052,12 +1052,12 @@ Description
 
 Returns 1 if nvme device.
 
-.. _`_scsih_scsi_lookup_get`:
+.. _`mpt3sas_scsih_scsi_lookup_get`:
 
-_scsih_scsi_lookup_get
-======================
+mpt3sas_scsih_scsi_lookup_get
+=============================
 
-.. c:function:: struct scsi_cmnd *_scsih_scsi_lookup_get(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+.. c:function:: struct scsi_cmnd *mpt3sas_scsih_scsi_lookup_get(struct MPT3SAS_ADAPTER *ioc, u16 smid)
 
     returns scmd entry
 
@@ -1067,157 +1067,13 @@ _scsih_scsi_lookup_get
     :param u16 smid:
         system request message index
 
-.. _`_scsih_scsi_lookup_get.description`:
-
-Description
------------
-
-Returns the smid stored scmd pointer.
-
-.. _`__scsih_scsi_lookup_get_clear`:
-
-__scsih_scsi_lookup_get_clear
-=============================
-
-.. c:function:: struct scsi_cmnd *__scsih_scsi_lookup_get_clear(struct MPT3SAS_ADAPTER *ioc, u16 smid)
-
-    returns scmd entry without holding any lock.
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-.. _`__scsih_scsi_lookup_get_clear.description`:
+.. _`mpt3sas_scsih_scsi_lookup_get.description`:
 
 Description
 -----------
 
 Returns the smid stored scmd pointer.
 Then will dereference the stored scmd pointer.
-
-.. _`_scsih_scsi_lookup_get_clear`:
-
-_scsih_scsi_lookup_get_clear
-============================
-
-.. c:function:: struct scsi_cmnd *_scsih_scsi_lookup_get_clear(struct MPT3SAS_ADAPTER *ioc, u16 smid)
-
-    returns scmd entry
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-.. _`_scsih_scsi_lookup_get_clear.description`:
-
-Description
------------
-
-Returns the smid stored scmd pointer.
-Then will derefrence the stored scmd pointer.
-
-.. _`_scsih_scsi_lookup_find_by_scmd`:
-
-_scsih_scsi_lookup_find_by_scmd
-===============================
-
-.. c:function:: u16 _scsih_scsi_lookup_find_by_scmd(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd)
-
-    scmd lookup
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param struct scsi_cmnd \*scmd:
-        pointer to scsi command object
-
-.. _`_scsih_scsi_lookup_find_by_scmd.context`:
-
-Context
--------
-
-This function will acquire ioc->scsi_lookup_lock.
-
-.. _`_scsih_scsi_lookup_find_by_scmd.description`:
-
-Description
------------
-
-This will search for a scmd pointer in the scsi_lookup array,
-returning the revelent smid.  A returned value of zero means invalid.
-
-.. _`_scsih_scsi_lookup_find_by_target`:
-
-_scsih_scsi_lookup_find_by_target
-=================================
-
-.. c:function:: u8 _scsih_scsi_lookup_find_by_target(struct MPT3SAS_ADAPTER *ioc, int id, int channel)
-
-    search for matching channel:id
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param int id:
-        target id
-
-    :param int channel:
-        channel
-
-.. _`_scsih_scsi_lookup_find_by_target.context`:
-
-Context
--------
-
-This function will acquire ioc->scsi_lookup_lock.
-
-.. _`_scsih_scsi_lookup_find_by_target.description`:
-
-Description
------------
-
-This will search for a matching channel:id in the scsi_lookup array,
-returning 1 if found.
-
-.. _`_scsih_scsi_lookup_find_by_lun`:
-
-_scsih_scsi_lookup_find_by_lun
-==============================
-
-.. c:function:: u8 _scsih_scsi_lookup_find_by_lun(struct MPT3SAS_ADAPTER *ioc, int id, unsigned int lun, int channel)
-
-    search for matching channel:id:lun
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param int id:
-        target id
-
-    :param unsigned int lun:
-        lun number
-
-    :param int channel:
-        channel
-
-.. _`_scsih_scsi_lookup_find_by_lun.context`:
-
-Context
--------
-
-This function will acquire ioc->scsi_lookup_lock.
-
-.. _`_scsih_scsi_lookup_find_by_lun.description`:
-
-Description
------------
-
-This will search for a matching channel:id:lun in the scsi_lookup array,
-returning 1 if found.
 
 .. _`scsih_change_queue_depth`:
 
@@ -1596,7 +1452,7 @@ During taskmangement request, we need to freeze the device queue.
 mpt3sas_scsih_issue_tm
 ======================
 
-.. c:function:: int mpt3sas_scsih_issue_tm(struct MPT3SAS_ADAPTER *ioc, u16 handle, uint channel, uint id, uint lun, u8 type, u16 smid_task, ulong timeout)
+.. c:function:: int mpt3sas_scsih_issue_tm(struct MPT3SAS_ADAPTER *ioc, u16 handle, u64 lun, u8 type, u16 smid_task, u16 msix_task, ulong timeout)
 
     main routine for sending tm requests
 
@@ -1604,15 +1460,9 @@ mpt3sas_scsih_issue_tm
         per adapter struct
 
     :param u16 handle:
-        *undescribed*
+        device handle
 
-    :param uint channel:
-        the channel assigned by the OS
-
-    :param uint id:
-        the id assigned by the OS
-
-    :param uint lun:
+    :param u64 lun:
         lun number
 
     :param u8 type:
@@ -1620,6 +1470,9 @@ mpt3sas_scsih_issue_tm
 
     :param u16 smid_task:
         smid assigned to the task
+
+    :param u16 msix_task:
+        MSIX table index supplied by the OS
 
     :param ulong timeout:
         timeout in seconds
@@ -1639,6 +1492,7 @@ Description
 A generic API for sending task management requests to firmware.
 
 The callback index is set inside \`ioc->tm_cb_idx\`.
+The caller is responsible to check for outstanding commands.
 
 Return SUCCESS or FAILED.
 
@@ -3332,7 +3186,7 @@ user.
 _scsih_pcie_topology_change_event
 =================================
 
-.. c:function:: int _scsih_pcie_topology_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
+.. c:function:: void _scsih_pcie_topology_change_event(struct MPT3SAS_ADAPTER *ioc, struct fw_event_work *fw_event)
 
     handle PCIe topology changes
 

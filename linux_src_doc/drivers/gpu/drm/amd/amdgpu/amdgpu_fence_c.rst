@@ -356,20 +356,12 @@ Returns 0 for success.
 amdgpu_fence_driver_force_completion
 ====================================
 
-.. c:function:: void amdgpu_fence_driver_force_completion(struct amdgpu_device *adev)
+.. c:function:: void amdgpu_fence_driver_force_completion(struct amdgpu_ring *ring)
 
-    force all fence waiter to complete
+    force signal latest fence of ring
 
-    :param struct amdgpu_device \*adev:
-        amdgpu device pointer
-
-.. _`amdgpu_fence_driver_force_completion.description`:
-
-Description
------------
-
-In case of GPU reset failure make sure no process keep waiting on fence
-that will never complete.
+    :param struct amdgpu_ring \*ring:
+        fence of the ring to signal
 
 .. _`amdgpu_fence_enable_signaling`:
 
@@ -431,14 +423,14 @@ Description
 This function is called when the reference count becomes zero.
 It just RCU schedules freeing up the fence.
 
-.. _`amdgpu_debugfs_gpu_reset`:
+.. _`amdgpu_debugfs_gpu_recover`:
 
-amdgpu_debugfs_gpu_reset
-========================
+amdgpu_debugfs_gpu_recover
+==========================
 
-.. c:function:: int amdgpu_debugfs_gpu_reset(struct seq_file *m, void *data)
+.. c:function:: int amdgpu_debugfs_gpu_recover(struct seq_file *m, void *data)
 
-    manually trigger a gpu reset
+    manually trigger a gpu reset & recover
 
     :param struct seq_file \*m:
         *undescribed*
@@ -446,7 +438,7 @@ amdgpu_debugfs_gpu_reset
     :param void \*data:
         *undescribed*
 
-.. _`amdgpu_debugfs_gpu_reset.description`:
+.. _`amdgpu_debugfs_gpu_recover.description`:
 
 Description
 -----------

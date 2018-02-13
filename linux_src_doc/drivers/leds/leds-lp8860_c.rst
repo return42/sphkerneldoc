@@ -25,7 +25,7 @@ Definition
         struct regmap *eeprom_regmap;
         struct gpio_desc *enable_gpio;
         struct regulator *regulator;
-        const char *label;
+        char label[LED_MAX_NAME_SIZE];
     }
 
 .. _`lp8860_led.members`:

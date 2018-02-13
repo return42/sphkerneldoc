@@ -119,7 +119,7 @@ free_bootmem
     mark a page range as usable
 
     :param unsigned long physaddr:
-        *undescribed*
+        starting physical address of the range
 
     :param unsigned long size:
         size of the range in bytes

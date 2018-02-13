@@ -336,5 +336,52 @@ Description
 Returns a pointer to the appropriate Smack label entry if there is one,
 otherwise a pointer to the invalid Smack label.
 
+.. _`smack_privileged_cred`:
+
+smack_privileged_cred
+=====================
+
+.. c:function:: bool smack_privileged_cred(int cap, const struct cred *cred)
+
+    are all privilege requirements met by cred
+
+    :param int cap:
+        The requested capability
+
+    :param const struct cred \*cred:
+        the credential to use
+
+.. _`smack_privileged_cred.description`:
+
+Description
+-----------
+
+Is the task privileged and allowed to be privileged
+by the onlycap rule.
+
+Returns true if the task is allowed to be privileged, false if it's not.
+
+.. _`smack_privileged`:
+
+smack_privileged
+================
+
+.. c:function:: bool smack_privileged(int cap)
+
+    are all privilege requirements met
+
+    :param int cap:
+        The requested capability
+
+.. _`smack_privileged.description`:
+
+Description
+-----------
+
+Is the task privileged and allowed to be privileged
+by the onlycap rule.
+
+Returns true if the task is allowed to be privileged, false if it's not.
+
 .. This file was automatic generated / don't edit.
 

@@ -376,6 +376,26 @@ Description
 This routine will generate a keyup event some time after a keydown event
 is generated when no further activity has been detected.
 
+.. _`ir_timer_repeat`:
+
+ir_timer_repeat
+===============
+
+.. c:function:: void ir_timer_repeat(struct timer_list *t)
+
+    generates a repeat event after a timeout
+
+    :param struct timer_list \*t:
+        a pointer to the struct timer_list
+
+.. _`ir_timer_repeat.description`:
+
+Description
+-----------
+
+This routine will generate a soft repeat event every REP_PERIOD
+milliseconds.
+
 .. _`rc_repeat`:
 
 rc_repeat
@@ -488,6 +508,21 @@ Description
 
 This routine is used to signal that a key has been pressed on the
 remote control. The driver must manually call \ :c:func:`rc_keyup`\  at a later stage.
+
+.. _`rc_validate_scancode`:
+
+rc_validate_scancode
+====================
+
+.. c:function:: bool rc_validate_scancode(enum rc_proto proto, u32 scancode)
+
+    checks that a scancode is valid for a protocol. For nec, it should do the opposite of \ :c:func:`ir_nec_bytes_to_scancode`\ 
+
+    :param enum rc_proto proto:
+        protocol
+
+    :param u32 scancode:
+        scancode
 
 .. _`rc_validate_filter`:
 

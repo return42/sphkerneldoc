@@ -24,6 +24,29 @@ Description
 This function is called by any function which wants to start
 a stream.
 
+.. _`sst_pause_stream`:
+
+sst_pause_stream
+================
+
+.. c:function:: int sst_pause_stream(struct intel_sst_drv *sst_drv_ctx, int str_id)
+
+    Send msg for a pausing stream
+
+    :param struct intel_sst_drv \*sst_drv_ctx:
+        *undescribed*
+
+    :param int str_id:
+        stream ID
+
+.. _`sst_pause_stream.description`:
+
+Description
+-----------
+
+This function is called by any function which wants to pause
+an already running stream.
+
 .. _`sst_resume_stream`:
 
 sst_resume_stream

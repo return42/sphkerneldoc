@@ -166,6 +166,14 @@ evm_inode_setattr
     :param struct iattr \*attr:
         *undescribed*
 
+.. _`evm_inode_setattr.description`:
+
+Description
+-----------
+
+Permit update of file attributes when files have a valid EVM signature,
+except in the case of them having an immutable portable signature.
+
 .. _`evm_inode_post_setattr`:
 
 evm_inode_post_setattr

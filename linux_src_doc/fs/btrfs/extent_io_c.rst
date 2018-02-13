@@ -46,7 +46,7 @@ All allocations are done with GFP_NOFS.
 extent_write_cache_pages
 ========================
 
-.. c:function:: int extent_write_cache_pages(struct address_space *mapping, struct writeback_control *wbc, writepage_t writepage, void *data, void (*flush_fn)(void *))
+.. c:function:: int extent_write_cache_pages(struct address_space *mapping, struct writeback_control *wbc, struct extent_page_data *epd)
 
     walk the list of dirty pages of the given address space and write all of them.
 
@@ -56,13 +56,7 @@ extent_write_cache_pages
     :param struct writeback_control \*wbc:
         subtract the number of written pages from \*@wbc->nr_to_write
 
-    :param writepage_t writepage:
-        function called for each page
-
-    :param void \*data:
-        data passed to writepage function
-
-    :param void (\*flush_fn)(void \*):
+    :param struct extent_page_data \*epd:
         *undescribed*
 
 .. _`extent_write_cache_pages.description`:

@@ -90,7 +90,7 @@ Definition
         size_t aead_assoclen;
         struct crypto_wait wait;
         size_t used;
-        size_t rcvused;
+        atomic_t rcvused;
         bool more;
         bool merge;
         bool enc;

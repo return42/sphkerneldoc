@@ -116,12 +116,12 @@ Description
 Reclaims Tx descriptors from an SGE Tx queue and frees the associated
 Tx buffers.  Called with the Tx queue lock held.
 
-.. _`reclaim_completed_tx`:
+.. _`cxgb4_reclaim_completed_tx`:
 
-reclaim_completed_tx
-====================
+cxgb4_reclaim_completed_tx
+==========================
 
-.. c:function:: void reclaim_completed_tx(struct adapter *adap, struct sge_txq *q, bool unmap)
+.. c:function:: void cxgb4_reclaim_completed_tx(struct adapter *adap, struct sge_txq *q, bool unmap)
 
     reclaims completed Tx descriptors
 
@@ -134,7 +134,7 @@ reclaim_completed_tx
     :param bool unmap:
         whether the buffers should be unmapped for DMA
 
-.. _`reclaim_completed_tx.description`:
+.. _`cxgb4_reclaim_completed_tx.description`:
 
 Description
 -----------
@@ -325,12 +325,15 @@ of flits.
 is_eth_imm
 ==========
 
-.. c:function:: int is_eth_imm(const struct sk_buff *skb)
+.. c:function:: int is_eth_imm(const struct sk_buff *skb, unsigned int chip_ver)
 
     can an Ethernet packet be sent as immediate data?
 
     :param const struct sk_buff \*skb:
         the packet
+
+    :param unsigned int chip_ver:
+        *undescribed*
 
 .. _`is_eth_imm.description`:
 
@@ -345,12 +348,15 @@ immediate data. Return value corresponds to headroom required.
 calc_tx_flits
 =============
 
-.. c:function:: unsigned int calc_tx_flits(const struct sk_buff *skb)
+.. c:function:: unsigned int calc_tx_flits(const struct sk_buff *skb, unsigned int chip_ver)
 
     calculate the number of flits for a packet Tx WR
 
     :param const struct sk_buff \*skb:
         the packet
+
+    :param unsigned int chip_ver:
+        *undescribed*
 
 .. _`calc_tx_flits.description`:
 
@@ -365,12 +371,15 @@ packet, including the needed WR and CPL headers.
 calc_tx_descs
 =============
 
-.. c:function:: unsigned int calc_tx_descs(const struct sk_buff *skb)
+.. c:function:: unsigned int calc_tx_descs(const struct sk_buff *skb, unsigned int chip_ver)
 
     calculate the number of Tx descriptors for a packet
 
     :param const struct sk_buff \*skb:
         the packet
+
+    :param unsigned int chip_ver:
+        *undescribed*
 
 .. _`calc_tx_descs.description`:
 
@@ -380,12 +389,12 @@ Description
 Returns the number of Tx descriptors needed for the given Ethernet
 packet, including the needed WR and CPL headers.
 
-.. _`write_sgl`:
+.. _`cxgb4_write_sgl`:
 
-write_sgl
-=========
+cxgb4_write_sgl
+===============
 
-.. c:function:: void write_sgl(const struct sk_buff *skb, struct sge_txq *q, struct ulptx_sgl *sgl, u64 *end, unsigned int start, const dma_addr_t *addr)
+.. c:function:: void cxgb4_write_sgl(const struct sk_buff *skb, struct sge_txq *q, struct ulptx_sgl *sgl, u64 *end, unsigned int start, const dma_addr_t *addr)
 
     populate a scatter/gather list for a packet
 
@@ -407,7 +416,7 @@ write_sgl
     :param const dma_addr_t \*addr:
         the list of bus addresses for the SGL elements
 
-.. _`write_sgl.description`:
+.. _`cxgb4_write_sgl.description`:
 
 Description
 -----------
@@ -420,12 +429,12 @@ aligned and within a Tx descriptor with available space.  \ ``end``\  points
 right after the end of the SGL but does not account for any potential
 wrap around, i.e., \ ``end``\  > \ ``sgl``\ .
 
-.. _`ring_tx_db`:
+.. _`cxgb4_ring_tx_db`:
 
-ring_tx_db
-==========
+cxgb4_ring_tx_db
+================
 
-.. c:function:: void ring_tx_db(struct adapter *adap, struct sge_txq *q, int n)
+.. c:function:: void cxgb4_ring_tx_db(struct adapter *adap, struct sge_txq *q, int n)
 
     check and potentially ring a Tx queue's doorbell
 
@@ -438,19 +447,19 @@ ring_tx_db
     :param int n:
         number of new descriptors to give to HW
 
-.. _`ring_tx_db.description`:
+.. _`cxgb4_ring_tx_db.description`:
 
 Description
 -----------
 
 Ring the doorbel for a Tx queue.
 
-.. _`inline_tx_skb`:
+.. _`cxgb4_inline_tx_skb`:
 
-inline_tx_skb
-=============
+cxgb4_inline_tx_skb
+===================
 
-.. c:function:: void inline_tx_skb(const struct sk_buff *skb, const struct sge_txq *q, void *pos)
+.. c:function:: void cxgb4_inline_tx_skb(const struct sk_buff *skb, const struct sge_txq *q, void *pos)
 
     inline a packet's data into Tx descriptors
 
@@ -463,7 +472,7 @@ inline_tx_skb
     :param void \*pos:
         starting position in the Tx queue where to inline the packet
 
-.. _`inline_tx_skb.description`:
+.. _`cxgb4_inline_tx_skb.description`:
 
 Description
 -----------
@@ -512,9 +521,9 @@ reclaim_completed_tx_imm
 Description
 -----------
 
-This is a variant of \ :c:func:`reclaim_completed_tx`\  that is used for Tx queues
-that send only immediate data (presently just the control queues) and
-thus do not have any sk_buffs to release.
+This is a variant of \ :c:func:`cxgb4_reclaim_completed_tx`\  that is used
+for Tx queues that send only immediate data (presently just
+the control queues) and thus do not have any sk_buffs to release.
 
 .. _`is_imm`:
 

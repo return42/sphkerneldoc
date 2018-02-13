@@ -168,7 +168,23 @@ bus_type
     bus type
 
 bus
-    bus configuration data structure
+    union with bus configuration data structure
+
+bus.parallel
+    embedded \ :c:type:`struct v4l2_fwnode_bus_parallel <v4l2_fwnode_bus_parallel>`\ .
+    Used if the bus is parallel.
+
+bus.mipi_csi1
+    embedded \ :c:type:`struct v4l2_fwnode_bus_mipi_csi1 <v4l2_fwnode_bus_mipi_csi1>`\ .
+    Used if the bus is MIPI Alliance's Camera Serial
+    Interface version 1 (MIPI CSI1) or Standard
+    Mobile Imaging Architecture's Compact Camera Port 2
+    (SMIA CCP2).
+
+bus.mipi_csi2
+    embedded \ :c:type:`struct v4l2_fwnode_bus_mipi_csi2 <v4l2_fwnode_bus_mipi_csi2>`\ .
+    Used if the bus is MIPI Alliance's Camera Serial
+    Interface version 2 (MIPI CSI2).
 
 link_frequencies
     array of supported link frequencies

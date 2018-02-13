@@ -84,29 +84,5 @@ Description
 Update the mailbox registers in the \*other\* rings with the current seqno.
 This acts like a signal in the canonical semaphore.
 
-.. _`gen8_ring_sync_to`:
-
-gen8_ring_sync_to
-=================
-
-.. c:function:: int gen8_ring_sync_to(struct drm_i915_gem_request *req, struct drm_i915_gem_request *signal)
-
-    sync the waiter to the signaller on seqno
-
-    :param struct drm_i915_gem_request \*req:
-        *undescribed*
-
-    :param struct drm_i915_gem_request \*signal:
-        *undescribed*
-
-.. _`gen8_ring_sync_to.description`:
-
-Description
------------
-
-@waiter - ring that is waiting
-\ ``signaller``\  - ring which has, or will signal
-\ ``seqno``\  - seqno which the waiter will block on
-
 .. This file was automatic generated / don't edit.
 

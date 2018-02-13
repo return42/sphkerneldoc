@@ -3522,6 +3522,8 @@ Definition
         u64 boottime_ns;
         u64 parent_tsf;
         u8 parent_bssid[ETH_ALEN] __aligned(2);
+        u8 chains;
+        s8 chain_signal[IEEE80211_MAX_CHAINS];
     }
 
 .. _`cfg80211_inform_bss.members`:
@@ -3555,6 +3557,12 @@ parent_tsf
 parent_bssid
     the BSS according to which \ ``parent_tsf``\  is set. This is set to
     the BSS that requested the scan in which the beacon/probe was received.
+
+chains
+    bitmask for filled values in \ ``chain_signal``\ .
+
+chain_signal
+    per-chain signal strength of last received BSS in dBm.
 
 .. _`cfg80211_bss_ies`:
 
@@ -3627,6 +3635,8 @@ Definition
         u16 beacon_interval;
         u16 capability;
         u8 bssid[ETH_ALEN];
+        u8 chains;
+        s8 chain_signal[IEEE80211_MAX_CHAINS];
         u8 priv[0] __aligned(sizeof(void *));
     }
 
@@ -3673,6 +3683,12 @@ capability
 
 bssid
     BSSID of the BSS
+
+chains
+    bitmask for filled values in \ ``chain_signal``\ .
+
+chain_signal
+    per-chain signal strength of last received BSS in dBm.
 
 priv
     private area for driver use, has at least wiphy->bss_priv_size bytes
@@ -4057,6 +4073,8 @@ Definition
         int mcast_rate[NUM_NL80211_BANDS];
         struct ieee80211_ht_cap ht_capa;
         struct ieee80211_ht_cap ht_capa_mask;
+        struct key_params *wep_keys;
+        int wep_tx_key;
     }
 
 .. _`cfg80211_ibss_params.members`:
@@ -4117,6 +4135,13 @@ ht_capa
 
 ht_capa_mask
     The bits of ht_capa which are to be used.
+
+wep_keys
+    static WEP keys, if not NULL points to an array of
+    CFG80211_MAX_WEP_KEYS WEP keys
+
+wep_tx_key
+    key index (0..3) of the default TX static WEP key
 
 .. _`cfg80211_ibss_params.description`:
 
@@ -9791,7 +9816,7 @@ cfg80211_rx_mgmt
         Frequency on which the frame was received in MHz
 
     :param int sig_dbm:
-        signal strength in mBm, or 0 if unknown
+        signal strength in dBm, or 0 if unknown
 
     :param const u8 \*buf:
         Management frame (header + body)
@@ -10182,7 +10207,7 @@ cfg80211_report_obss_beacon
         frequency the frame was received on
 
     :param int sig_dbm:
-        signal strength in mBm, or 0 if unknown
+        signal strength in dBm, or 0 if unknown
 
 .. _`cfg80211_report_obss_beacon.description`:
 

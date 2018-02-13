@@ -229,7 +229,7 @@ Return
 mei_poll
 ========
 
-.. c:function:: unsigned int mei_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t mei_poll(struct file *file, poll_table *wait)
 
     the poll function
 

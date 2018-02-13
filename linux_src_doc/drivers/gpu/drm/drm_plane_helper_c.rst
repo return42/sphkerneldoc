@@ -32,54 +32,6 @@ The plane helpers share the function table structures with other helpers,
 specifically also the atomic helpers. See \ :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>`\  for
 the details.
 
-.. _`drm_plane_helper_check_state`:
-
-drm_plane_helper_check_state
-============================
-
-.. c:function:: int drm_plane_helper_check_state(struct drm_plane_state *state, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled)
-
-    Check plane state for validity
-
-    :param struct drm_plane_state \*state:
-        plane state to check
-
-    :param const struct drm_rect \*clip:
-        integer clipping coordinates
-
-    :param int min_scale:
-        minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
-
-    :param int max_scale:
-        maximum \ ``src``\ :@dest scaling factor in 16.16 fixed point
-
-    :param bool can_position:
-        is it legal to position the plane such that it
-        doesn't cover the entire crtc?  This will generally
-        only be false for primary planes.
-
-    :param bool can_update_disabled:
-        can the plane be updated while the crtc
-        is disabled?
-
-.. _`drm_plane_helper_check_state.description`:
-
-Description
------------
-
-Checks that a desired plane update is valid, and updates various
-bits of derived state (clipped coordinates etc.). Drivers that provide
-their own plane handling rather than helper-provided implementations may
-still wish to call this function to avoid duplication of error checking
-code.
-
-.. _`drm_plane_helper_check_state.return`:
-
-Return
-------
-
-Zero if update appears valid, error code on failure
-
 .. _`drm_plane_helper_check_update`:
 
 drm_plane_helper_check_update

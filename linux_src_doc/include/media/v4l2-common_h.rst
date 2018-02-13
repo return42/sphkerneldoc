@@ -137,6 +137,85 @@ Description
 
 Returns the address of an I2C sub-device
 
+.. _`v4l2_i2c_tuner_type`:
+
+enum v4l2_i2c_tuner_type
+========================
+
+.. c:type:: enum v4l2_i2c_tuner_type
+
+    specifies the range of tuner address that should be used when seeking for I2C devices.
+
+.. _`v4l2_i2c_tuner_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum v4l2_i2c_tuner_type {
+        ADDRS_RADIO,
+        ADDRS_DEMOD,
+        ADDRS_TV,
+        ADDRS_TV_WITH_DEMOD
+    };
+
+.. _`v4l2_i2c_tuner_type.constants`:
+
+Constants
+---------
+
+ADDRS_RADIO
+    Radio tuner addresses.
+    Represent the following I2C addresses:
+    0x10 (if compiled with tea5761 support)
+    and 0x60.
+
+ADDRS_DEMOD
+    Demod tuner addresses.
+    Represent the following I2C addresses:
+    0x42, 0x43, 0x4a and 0x4b.
+
+ADDRS_TV
+    TV tuner addresses.
+    Represent the following I2C addresses:
+    0x42, 0x43, 0x4a, 0x4b, 0x60, 0x61, 0x62,
+    0x63 and 0x64.
+
+ADDRS_TV_WITH_DEMOD
+    TV tuner addresses if demod is present, this
+    excludes addresses used by the demodulator
+    from the list of candidates.
+    Represent the following I2C addresses:
+    0x60, 0x61, 0x62, 0x63 and 0x64.
+
+.. _`v4l2_i2c_tuner_type.note`:
+
+NOTE
+----
+
+All I2C addresses above use the 7-bit notation.
+
+.. _`v4l2_i2c_tuner_addrs`:
+
+v4l2_i2c_tuner_addrs
+====================
+
+.. c:function:: const unsigned short *v4l2_i2c_tuner_addrs(enum v4l2_i2c_tuner_type type)
+
+    Return a list of I2C tuner addresses to probe.
+
+    :param enum v4l2_i2c_tuner_type type:
+        type of the tuner to seek, as defined by
+        \ :c:type:`enum v4l2_i2c_tuner_type <v4l2_i2c_tuner_type>`\ .
+
+.. _`v4l2_i2c_tuner_addrs.note`:
+
+NOTE
+----
+
+Use only if the tuner addresses are unknown.
+
 .. _`v4l2_spi_new_subdev`:
 
 v4l2_spi_new_subdev
@@ -179,6 +258,111 @@ v4l2_spi_subdev_init
 
     :param const struct v4l2_subdev_ops \*ops:
         pointer to \ :c:type:`struct v4l2_subdev_ops <v4l2_subdev_ops>`\ 
+
+.. _`v4l_bound_align_image`:
+
+v4l_bound_align_image
+=====================
+
+.. c:function:: void v4l_bound_align_image(unsigned int *width, unsigned int wmin, unsigned int wmax, unsigned int walign, unsigned int *height, unsigned int hmin, unsigned int hmax, unsigned int halign, unsigned int salign)
+
+    adjust video dimensions according to a given constraints.
+
+    :param unsigned int \*width:
+        pointer to width that will be adjusted if needed.
+
+    :param unsigned int wmin:
+        minimum width.
+
+    :param unsigned int wmax:
+        maximum width.
+
+    :param unsigned int walign:
+        least significant bit on width.
+
+    :param unsigned int \*height:
+        pointer to height that will be adjusted if needed.
+
+    :param unsigned int hmin:
+        minimum height.
+
+    :param unsigned int hmax:
+        maximum height.
+
+    :param unsigned int halign:
+        least significant bit on width.
+
+    :param unsigned int salign:
+        least significant bit for the image size (e. g.
+        :math:`width * height`).
+
+.. _`v4l_bound_align_image.description`:
+
+Description
+-----------
+
+Clip an image to have \ ``width``\  between \ ``wmin``\  and \ ``wmax``\ , and \ ``height``\  between
+\ ``hmin``\  and \ ``hmax``\ , inclusive.
+
+Additionally, the \ ``width``\  will be a multiple of :math:`2^{walign}`,
+the \ ``height``\  will be a multiple of :math:`2^{halign}`, and the overall
+size :math:`width * height` will be a multiple of :math:`2^{salign}`.
+
+.. note::
+
+   #. The clipping rectangle may be shrunk or enlarged to fit the alignment
+      constraints.
+   #. \ ``wmax``\  must not be smaller than \ ``wmin``\ .
+   #. \ ``hmax``\  must not be smaller than \ ``hmin``\ .
+   #. The alignments must not be so high there are no possible image
+      sizes within the allowed bounds.
+   #. \ ``wmin``\  and \ ``hmin``\  must be at least 1 (don't use 0).
+   #. For \ ``walign``\ , \ ``halign``\  and \ ``salign``\ , if you don't care about a certain
+      alignment, specify ``0``, as :math:`2^0 = 1` and one byte alignment
+      is equivalent to no alignment.
+   #. If you only want to adjust downward, specify a maximum that's the
+      same as the initial value.
+
+.. _`v4l2_find_nearest_format`:
+
+v4l2_find_nearest_format
+========================
+
+.. c:function:: const struct v4l2_frmsize_discrete *v4l2_find_nearest_format(const struct v4l2_frmsize_discrete *sizes, const size_t num_sizes, s32 width, s32 height)
+
+    find the nearest format size among a discrete set of resolutions.
+
+    :param const struct v4l2_frmsize_discrete \*sizes:
+        array of \ :c:type:`struct v4l2_frmsize_discrete <v4l2_frmsize_discrete>`\  image sizes.
+
+    :param const size_t num_sizes:
+        length of \ ``sizes``\  array.
+
+    :param s32 width:
+        desired width.
+
+    :param s32 height:
+        desired height.
+
+.. _`v4l2_find_nearest_format.description`:
+
+Description
+-----------
+
+Finds the closest resolution to minimize the width and height differences
+between what requested and the supported resolutions.
+
+.. _`v4l2_get_timestamp`:
+
+v4l2_get_timestamp
+==================
+
+.. c:function:: void v4l2_get_timestamp(struct timeval *tv)
+
+    helper routine to get a timestamp to be used when filling streaming metadata. Internally, it uses \ :c:func:`ktime_get_ts`\ , which is the recommended way to get it.
+
+    :param struct timeval \*tv:
+        pointer to \ :c:type:`struct timeval <timeval>`\  to be filled.
 
 .. This file was automatic generated / don't edit.
 

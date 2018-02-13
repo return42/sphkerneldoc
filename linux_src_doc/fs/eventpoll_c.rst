@@ -61,14 +61,14 @@ the maximum recursion limit has been exceeded.
 ep_scan_ready_list
 ==================
 
-.. c:function:: int ep_scan_ready_list(struct eventpoll *ep, int (*sproc)(struct eventpoll *, struct list_head *, void *), void *priv, int depth, bool ep_locked)
+.. c:function:: __poll_t ep_scan_ready_list(struct eventpoll *ep, __poll_t (*sproc)(struct eventpoll *, struct list_head *, void *), void *priv, int depth, bool ep_locked)
 
     Scans the ready list in a way that makes possible for the scan code, to call f_op->poll(). Also allows for O(NumReady) performance.
 
     :param struct eventpoll \*ep:
         Pointer to the epoll private data structure.
 
-    :param int (\*sproc)(struct eventpoll \*, struct list_head \*, void \*):
+    :param __poll_t (\*sproc)(struct eventpoll \*, struct list_head \*, void \*):
         Pointer to the scan callback.
 
     :param void \*priv:

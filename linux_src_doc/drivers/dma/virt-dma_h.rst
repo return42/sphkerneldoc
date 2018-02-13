@@ -57,6 +57,18 @@ Description
 
 vc.lock must be held by caller
 
+.. _`vchan_vdesc_fini`:
+
+vchan_vdesc_fini
+================
+
+.. c:function:: void vchan_vdesc_fini(struct virt_dma_desc *vd)
+
+    Free or reuse a descriptor
+
+    :param struct virt_dma_desc \*vd:
+        virtual descriptor to free/reuse
+
 .. _`vchan_cyclic_callback`:
 
 vchan_cyclic_callback
@@ -68,6 +80,25 @@ vchan_cyclic_callback
 
     :param struct virt_dma_desc \*vd:
         virtual descriptor
+
+.. _`vchan_terminate_vdesc`:
+
+vchan_terminate_vdesc
+=====================
+
+.. c:function:: void vchan_terminate_vdesc(struct virt_dma_desc *vd)
+
+    Disable pending cyclic callback
+
+    :param struct virt_dma_desc \*vd:
+        virtual descriptor to be terminated
+
+.. _`vchan_terminate_vdesc.description`:
+
+Description
+-----------
+
+vc.lock must be held by caller
 
 .. _`vchan_next_desc`:
 
@@ -133,6 +164,7 @@ Description
 Makes sure that all scheduled or active callbacks have finished running. For
 proper operation the caller has to ensure that no new callbacks are scheduled
 after the invocation of this function started.
+Free up the terminated cyclic descriptor to prevent memory leakage.
 
 .. This file was automatic generated / don't edit.
 

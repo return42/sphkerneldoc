@@ -11,6 +11,7 @@ asm
     atomic64_32_h
     atomic64_64_h
     atomic_h
+    barrier_h
     bitops_h
     checksum_64_h
     intel-mid_h

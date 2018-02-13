@@ -23,10 +23,6 @@ read-side critical sections can occur.  (Though RCU read-side
 critical sections can occur in irq handlers in idle, a possibility
 handled by \ :c:func:`irq_enter`\  and \ :c:func:`irq_exit`\ .)
 
-We crowbar the ->dynticks_nesting field to zero to allow for
-the possibility of usermode upcalls having messed up our count
-of interrupt nesting level during the prior busy period.
-
 If you add or remove a call to \ :c:func:`rcu_idle_enter`\ , be sure to test with
 CONFIG_RCU_EQS_DEBUG=y.
 
@@ -55,6 +51,31 @@ when the CPU runs in userspace.
 If you add or remove a call to \ :c:func:`rcu_user_enter`\ , be sure to test with
 CONFIG_RCU_EQS_DEBUG=y.
 
+.. _`rcu_nmi_exit`:
+
+rcu_nmi_exit
+============
+
+.. c:function:: void rcu_nmi_exit( void)
+
+    inform RCU of exit from NMI context
+
+    :param  void:
+        no arguments
+
+.. _`rcu_nmi_exit.description`:
+
+Description
+-----------
+
+If we are returning from the outermost NMI handler that interrupted an
+RCU-idle period, update rdtp->dynticks and rdtp->dynticks_nmi_nesting
+to let the RCU grace-period handling know that the CPU is back to
+being RCU-idle.
+
+If you add or remove a call to \ :c:func:`rcu_nmi_exit`\ , be sure to test
+with CONFIG_RCU_EQS_DEBUG=y.
+
 .. _`rcu_irq_exit`:
 
 rcu_irq_exit
@@ -78,8 +99,8 @@ sections can occur.  The caller must have disabled interrupts.
 
 This code assumes that the idle loop never does anything that might
 result in unbalanced calls to \ :c:func:`irq_enter`\  and \ :c:func:`irq_exit`\ .  If your
-architecture violates this assumption, RCU will give you what you
-deserve, good and hard.  But very infrequently and irreproducibly.
+architecture's idle loop violates this assumption, RCU will give you what
+you deserve, good and hard.  But very infrequently and irreproducibly.
 
 Use things like work queues to work around this limitation.
 
@@ -108,11 +129,6 @@ Description
 Exit idle mode, in other words, -enter- the mode in which RCU
 read-side critical sections can occur.
 
-We crowbar the ->dynticks_nesting field to DYNTICK_TASK_NEST to
-allow for the possibility of usermode upcalls messing up our count
-of interrupt nesting level during the busy period that is just
-now starting.
-
 If you add or remove a call to \ :c:func:`rcu_idle_exit`\ , be sure to test with
 CONFIG_RCU_EQS_DEBUG=y.
 
@@ -137,42 +153,6 @@ Exit RCU idle mode while entering the kernel because it can
 run a RCU read side critical section anytime.
 
 If you add or remove a call to \ :c:func:`rcu_user_exit`\ , be sure to test with
-CONFIG_RCU_EQS_DEBUG=y.
-
-.. _`rcu_irq_enter`:
-
-rcu_irq_enter
-=============
-
-.. c:function:: void rcu_irq_enter( void)
-
-    inform RCU that current CPU is entering irq away from idle
-
-    :param  void:
-        no arguments
-
-.. _`rcu_irq_enter.description`:
-
-Description
------------
-
-Enter an interrupt handler, which might possibly result in exiting
-idle mode, in other words, entering the mode in which read-side critical
-sections can occur.  The caller must have disabled interrupts.
-
-Note that the Linux kernel is fully capable of entering an interrupt
-handler that it never exits, for example when doing upcalls to
-user mode!  This code assumes that the idle loop never does upcalls to
-user mode.  If your architecture does do upcalls from the idle loop (or
-does anything else that results in unbalanced calls to the \ :c:func:`irq_enter`\ 
-and \ :c:func:`irq_exit`\  functions), RCU will give you what you deserve, good
-and hard.  But very infrequently and irreproducibly.
-
-Use things like work queues to work around this limitation.
-
-You have been warned.
-
-If you add or remove a call to \ :c:func:`rcu_irq_enter`\ , be sure to test with
 CONFIG_RCU_EQS_DEBUG=y.
 
 .. _`rcu_nmi_enter`:
@@ -201,30 +181,41 @@ run out of stack space first.)
 If you add or remove a call to \ :c:func:`rcu_nmi_enter`\ , be sure to test
 with CONFIG_RCU_EQS_DEBUG=y.
 
-.. _`rcu_nmi_exit`:
+.. _`rcu_irq_enter`:
 
-rcu_nmi_exit
-============
+rcu_irq_enter
+=============
 
-.. c:function:: void rcu_nmi_exit( void)
+.. c:function:: void rcu_irq_enter( void)
 
-    inform RCU of exit from NMI context
+    inform RCU that current CPU is entering irq away from idle
 
     :param  void:
         no arguments
 
-.. _`rcu_nmi_exit.description`:
+.. _`rcu_irq_enter.description`:
 
 Description
 -----------
 
-If we are returning from the outermost NMI handler that interrupted an
-RCU-idle period, update rdtp->dynticks and rdtp->dynticks_nmi_nesting
-to let the RCU grace-period handling know that the CPU is back to
-being RCU-idle.
+Enter an interrupt handler, which might possibly result in exiting
+idle mode, in other words, entering the mode in which read-side critical
+sections can occur.  The caller must have disabled interrupts.
 
-If you add or remove a call to \ :c:func:`rcu_nmi_exit`\ , be sure to test
-with CONFIG_RCU_EQS_DEBUG=y.
+Note that the Linux kernel is fully capable of entering an interrupt
+handler that it never exits, for example when doing upcalls to user mode!
+This code assumes that the idle loop never does upcalls to user mode.
+If your architecture's idle loop does do upcalls to user mode (or does
+anything else that results in unbalanced calls to the \ :c:func:`irq_enter`\  and
+\ :c:func:`irq_exit`\  functions), RCU will give you what you deserve, good and hard.
+But very infrequently and irreproducibly.
+
+Use things like work queues to work around this limitation.
+
+You have been warned.
+
+If you add or remove a call to \ :c:func:`rcu_irq_enter`\ , be sure to test with
+CONFIG_RCU_EQS_DEBUG=y.
 
 .. _`rcu_is_watching`:
 

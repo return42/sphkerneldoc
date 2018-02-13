@@ -722,70 +722,6 @@ Allocate (set bits in) a specified region of a bitmap.
 Return 0 on success, or \ ``-EBUSY``\  if specified region wasn't
 free (not all bits were zero).
 
-.. _`bitmap_from_u32array`:
-
-bitmap_from_u32array
-====================
-
-.. c:function:: unsigned int bitmap_from_u32array(unsigned long *bitmap, unsigned int nbits, const u32 *buf, unsigned int nwords)
-
-    copy the contents of a u32 array of bits to bitmap
-
-    :param unsigned long \*bitmap:
-        array of unsigned longs, the destination bitmap, non NULL
-
-    :param unsigned int nbits:
-        number of bits in \ ``bitmap``\ 
-
-    :param const u32 \*buf:
-        array of u32 (in host byte order), the source bitmap, non NULL
-
-    :param unsigned int nwords:
-        number of u32 words in \ ``buf``\ 
-
-.. _`bitmap_from_u32array.description`:
-
-Description
------------
-
-copy min(nbits, 32*nwords) bits from \ ``buf``\  to \ ``bitmap``\ , remaining
-bits between nword and nbits in \ ``bitmap``\  (if any) are cleared. In
-last word of \ ``bitmap``\ , the bits beyond nbits (if any) are kept
-unchanged.
-
-Return the number of bits effectively copied.
-
-.. _`bitmap_to_u32array`:
-
-bitmap_to_u32array
-==================
-
-.. c:function:: unsigned int bitmap_to_u32array(u32 *buf, unsigned int nwords, const unsigned long *bitmap, unsigned int nbits)
-
-    copy the contents of bitmap to a u32 array of bits
-
-    :param u32 \*buf:
-        array of u32 (in host byte order), the dest bitmap, non NULL
-
-    :param unsigned int nwords:
-        number of u32 words in \ ``buf``\ 
-
-    :param const unsigned long \*bitmap:
-        array of unsigned longs, the source bitmap, non NULL
-
-    :param unsigned int nbits:
-        number of bits in \ ``bitmap``\ 
-
-.. _`bitmap_to_u32array.description`:
-
-Description
------------
-
-copy min(nbits, 32*nwords) bits from \ ``bitmap``\  to \ ``buf``\ . Remaining
-bits after nbits in \ ``buf``\  (if any) are cleared.
-
-Return the number of bits effectively copied.
-
 .. _`bitmap_copy_le`:
 
 bitmap_copy_le
@@ -810,6 +746,42 @@ Description
 -----------
 
 Require nbits % BITS_PER_LONG == 0.
+
+.. _`bitmap_from_arr32`:
+
+bitmap_from_arr32
+=================
+
+.. c:function:: void bitmap_from_arr32(unsigned long *bitmap, const u32 *buf, unsigned int nbits)
+
+    copy the contents of u32 array of bits to bitmap
+
+    :param unsigned long \*bitmap:
+        array of unsigned longs, the destination bitmap
+
+    :param const u32 \*buf:
+        array of u32 (in host byte order), the source bitmap
+
+    :param unsigned int nbits:
+        number of bits in \ ``bitmap``\ 
+
+.. _`bitmap_to_arr32`:
+
+bitmap_to_arr32
+===============
+
+.. c:function:: void bitmap_to_arr32(u32 *buf, const unsigned long *bitmap, unsigned int nbits)
+
+    copy the contents of bitmap to a u32 array of bits
+
+    :param u32 \*buf:
+        array of u32 (in host byte order), the dest bitmap
+
+    :param const unsigned long \*bitmap:
+        array of unsigned longs, the source bitmap
+
+    :param unsigned int nbits:
+        number of bits in \ ``bitmap``\ 
 
 .. This file was automatic generated / don't edit.
 

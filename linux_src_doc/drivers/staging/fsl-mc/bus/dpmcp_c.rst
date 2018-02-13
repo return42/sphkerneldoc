@@ -100,33 +100,5 @@ Return
 
 '0' on Success; Error code otherwise.
 
-.. _`dpmcp_get_api_version`:
-
-dpmcp_get_api_version
-=====================
-
-.. c:function:: int dpmcp_get_api_version(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 *major_ver, u16 *minor_ver)
-
-    Get Data Path Management Command Portal API version
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to Mc portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 \*major_ver:
-        Major version of Data Path Management Command Portal API
-
-    :param u16 \*minor_ver:
-        Minor version of Data Path Management Command Portal API
-
-.. _`dpmcp_get_api_version.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
 .. This file was automatic generated / don't edit.
 

@@ -68,14 +68,14 @@ Reset the driver's copy of the wptr (all asics).
 amdgpu_ring_priority_put
 ========================
 
-.. c:function:: void amdgpu_ring_priority_put(struct amdgpu_ring *ring, enum amd_sched_priority priority)
+.. c:function:: void amdgpu_ring_priority_put(struct amdgpu_ring *ring, enum drm_sched_priority priority)
 
     restore a ring's priority
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring structure holding the information
 
-    :param enum amd_sched_priority priority:
+    :param enum drm_sched_priority priority:
         target priority
 
 .. _`amdgpu_ring_priority_put.description`:
@@ -90,14 +90,14 @@ Release a request for executing at \ ``priority``\
 amdgpu_ring_priority_get
 ========================
 
-.. c:function:: void amdgpu_ring_priority_get(struct amdgpu_ring *ring, enum amd_sched_priority priority)
+.. c:function:: void amdgpu_ring_priority_get(struct amdgpu_ring *ring, enum drm_sched_priority priority)
 
     change the ring's priority
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring structure holding the information
 
-    :param enum amd_sched_priority priority:
+    :param enum drm_sched_priority priority:
         target priority
 
 .. _`amdgpu_ring_priority_get.description`:

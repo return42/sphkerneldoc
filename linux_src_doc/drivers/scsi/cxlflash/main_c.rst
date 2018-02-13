@@ -895,28 +895,6 @@ Return
 
 Always return IRQ_HANDLED.
 
-.. _`start_context`:
-
-start_context
-=============
-
-.. c:function:: int start_context(struct cxlflash_cfg *cfg, u32 index)
-
-    starts the master context
-
-    :param struct cxlflash_cfg \*cfg:
-        Internal structure associated with the host.
-
-    :param u32 index:
-        Index of the hardware queue.
-
-.. _`start_context.return`:
-
-Return
-------
-
-A success or failure value from CXL services.
-
 .. _`read_vpd`:
 
 read_vpd

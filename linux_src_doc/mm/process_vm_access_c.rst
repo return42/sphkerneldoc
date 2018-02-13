@@ -14,7 +14,7 @@ process_vm_rw_pages
         array of pointers to pages we want to copy
 
     :param unsigned offset:
-        *undescribed*
+        offset in page to start copying from/to
 
     :param size_t len:
         number of bytes to copy
@@ -84,9 +84,15 @@ process_vm_rw_core
 
     :param int vm_write:
         0 if reading from other process, 1 if writing to other process
-        Returns the number of bytes read/written or error code. May
-        return less bytes than expected if an error occurs during the copying
-        process.
+
+.. _`process_vm_rw_core.description`:
+
+Description
+-----------
+
+Returns the number of bytes read/written or error code. May
+return less bytes than expected if an error occurs during the copying
+process.
 
 .. _`process_vm_rw`:
 
@@ -117,9 +123,15 @@ process_vm_rw
 
     :param int vm_write:
         0 if reading from other process, 1 if writing to other process
-        Returns the number of bytes read/written or error code. May
-        return less bytes than expected if an error occurs during the copying
-        process.
+
+.. _`process_vm_rw.description`:
+
+Description
+-----------
+
+Returns the number of bytes read/written or error code. May
+return less bytes than expected if an error occurs during the copying
+process.
 
 .. This file was automatic generated / don't edit.
 

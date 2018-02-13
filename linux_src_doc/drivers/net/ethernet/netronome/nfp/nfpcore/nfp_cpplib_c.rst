@@ -27,7 +27,7 @@ nfp_cpp_readl
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_writel`:
 
@@ -55,7 +55,7 @@ nfp_cpp_writel
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_readq`:
 
@@ -83,7 +83,7 @@ nfp_cpp_readq
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_writeq`:
 
@@ -111,7 +111,7 @@ nfp_cpp_writeq
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_map_area`:
 

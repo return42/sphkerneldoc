@@ -1400,7 +1400,7 @@ status
 ca8210_test_int_poll
 ====================
 
-.. c:function:: unsigned int ca8210_test_int_poll(struct file *filp, struct poll_table_struct *ptable)
+.. c:function:: __poll_t ca8210_test_int_poll(struct file *filp, struct poll_table_struct *ptable)
 
     Called by a process in userspace to determine which actions are currently possible for the file
 

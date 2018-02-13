@@ -217,6 +217,24 @@ Description
 
 Reset a device.
 
+.. _`vfio_device_get_gfx_dmabuf`:
+
+VFIO_DEVICE_GET_GFX_DMABUF
+==========================
+
+.. c:function::  VFIO_DEVICE_GET_GFX_DMABUF()
+
+    _IOW(VFIO_TYPE, VFIO_BASE + 15, \__u32)
+
+.. _`vfio_device_get_gfx_dmabuf.description`:
+
+Description
+-----------
+
+Return a new dma-buf file descriptor for an exposed guest framebuffer
+described by the provided dmabuf_id. The dmabuf_id is returned from VFIO\_
+DEVICE_QUERY_GFX_PLANE as a token of the exposed guest framebuffer.
+
 .. _`vfio_iommu_spapr_unregister_memory`:
 
 VFIO_IOMMU_SPAPR_UNREGISTER_MEMORY

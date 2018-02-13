@@ -7,5 +7,6 @@ skylake
 .. toctree::
     :maxdepth: 1
 
+    skl-i2s_h
     skl-sst-utils_c
     skl-tplg-interface_h

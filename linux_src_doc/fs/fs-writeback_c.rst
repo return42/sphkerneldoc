@@ -17,7 +17,7 @@ inode_io_list_move_locked
         target bdi_writeback
 
     :param struct list_head \*head:
-        one of \ ``wb``\ ->b_{dirty|io|more_io}
+        one of \ ``wb``\ ->b_{dirty|io|more_io|dirty_time}
 
 .. _`inode_io_list_move_locked.description`:
 

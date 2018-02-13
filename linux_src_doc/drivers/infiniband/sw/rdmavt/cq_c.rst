@@ -17,7 +17,7 @@ rvt_cq_enter
         work completion entry to add
 
     :param bool solicited:
-        *undescribed*
+        true if \ ``entry``\  is solicited
 
 .. _`rvt_cq_enter.description`:
 

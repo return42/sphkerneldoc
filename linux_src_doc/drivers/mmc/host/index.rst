@@ -8,6 +8,7 @@ host
     :maxdepth: 1
 
     atmel-mci_c
+    cqhci_c
     dw_mmc-exynos_c
     dw_mmc_h
     mmci_c

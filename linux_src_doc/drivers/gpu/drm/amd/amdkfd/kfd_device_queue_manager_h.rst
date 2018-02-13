@@ -17,7 +17,7 @@ Definition
 .. code-block:: c
 
     struct device_queue_manager_ops {
-        int (*create_queue)(struct device_queue_manager *dqm,struct queue *q,struct qcm_process_device *qpd, int *allocate_vmid);
+        int (*create_queue)(struct device_queue_manager *dqm,struct queue *q, struct qcm_process_device *qpd);
         int (*destroy_queue)(struct device_queue_manager *dqm,struct qcm_process_device *qpd, struct queue *q);
         int (*update_queue)(struct device_queue_manager *dqm, struct queue *q);
         struct mqd_manager * (*get_mqd_manager)(struct device_queue_manager *dqm, enum KFD_MQD_TYPE type);
@@ -30,6 +30,7 @@ Definition
         int (*create_kernel_queue)(struct device_queue_manager *dqm,struct kernel_queue *kq, struct qcm_process_device *qpd);
         void (*destroy_kernel_queue)(struct device_queue_manager *dqm,struct kernel_queue *kq, struct qcm_process_device *qpd);
         bool (*set_cache_memory_policy)(struct device_queue_manager *dqm,struct qcm_process_device *qpd,enum cache_policy default_policy,enum cache_policy alternate_policy,void __user *alternate_aperture_base, uint64_t alternate_aperture_size);
+        int (*set_trap_handler)(struct device_queue_manager *dqm,struct qcm_process_device *qpd,uint64_t tba_addr, uint64_t tma_addr);
         int (*process_termination)(struct device_queue_manager *dqm, struct qcm_process_device *qpd);
     }
 
@@ -81,6 +82,9 @@ destroy_kernel_queue
 set_cache_memory_policy
     Sets memory policy (cached/ non cached) for the
     memory apertures.
+
+set_trap_handler
+    *undescribed*
 
 process_termination
     Clears all process queues belongs to that device.

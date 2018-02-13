@@ -15,8 +15,10 @@ linux
     iio/index
     mmc/index
     netfilter/index
+    netfilter_ipv6/index
     spi/index
     usb/index
+    batadv_packet_h
     batman_adv_h
     blkzoned_h
     can_h
@@ -35,6 +37,7 @@ linux
     if_h
     input_h
     l2tp_h
+    lirc_h
     mei_h
     membarrier_h
     mic_common_h
@@ -47,6 +50,7 @@ linux
     omap3isp_h
     openvswitch_h
     perf_event_h
+    psp-sev_h
     rfkill_h
     rpmsg_h
     scif_ioctl_h
@@ -56,8 +60,10 @@ linux
     sync_file_h
     tee_h
     uinput_h
+    uvcvideo_h
     v4l2-mediabus_h
     v4l2-subdev_h
+    vbox_vmmdev_types_h
     vfio_h
     videodev2_h
     vtpm_proxy_h

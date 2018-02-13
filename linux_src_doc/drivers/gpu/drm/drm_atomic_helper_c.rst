@@ -96,6 +96,57 @@ Return
 
 Zero for success or -errno
 
+.. _`drm_atomic_helper_check_plane_state`:
+
+drm_atomic_helper_check_plane_state
+===================================
+
+.. c:function:: int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state, const struct drm_crtc_state *crtc_state, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled)
+
+    Check plane state for validity
+
+    :param struct drm_plane_state \*plane_state:
+        plane state to check
+
+    :param const struct drm_crtc_state \*crtc_state:
+        crtc state to check
+
+    :param const struct drm_rect \*clip:
+        integer clipping coordinates
+
+    :param int min_scale:
+        minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+
+    :param int max_scale:
+        maximum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+
+    :param bool can_position:
+        is it legal to position the plane such that it
+        doesn't cover the entire crtc?  This will generally
+        only be false for primary planes.
+
+    :param bool can_update_disabled:
+        can the plane be updated while the crtc
+        is disabled?
+
+.. _`drm_atomic_helper_check_plane_state.description`:
+
+Description
+-----------
+
+Checks that a desired plane update is valid, and updates various
+bits of derived state (clipped coordinates etc.). Drivers that provide
+their own plane handling rather than helper-provided implementations may
+still wish to call this function to avoid duplication of error checking
+code.
+
+.. _`drm_atomic_helper_check_plane_state.return`:
+
+Return
+------
+
+Zero if update appears valid, error code on failure
+
 .. _`drm_atomic_helper_check_planes`:
 
 drm_atomic_helper_check_planes
@@ -198,6 +249,12 @@ used for precise vblank timestamps by calling
 
 Drivers can use this for building their own atomic commit if they don't have
 a pure helper-based modeset implementation.
+
+Since these updates are not synchronized with lockings, only code paths
+called from \ :c:type:`drm_mode_config_helper_funcs.atomic_commit_tail <drm_mode_config_helper_funcs>`\  can look at the
+legacy state filled out by this helper. Defacto this means this helper and
+the legacy state pointers are only really useful for transitioning an
+existing driver to the atomic world.
 
 .. _`drm_atomic_helper_commit_modeset_disables`:
 

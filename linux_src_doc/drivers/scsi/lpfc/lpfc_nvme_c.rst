@@ -492,7 +492,7 @@ int - number of nvme buffers that were allocated and posted.
 lpfc_get_nvme_buf
 =================
 
-.. c:function:: struct lpfc_nvme_buf *lpfc_get_nvme_buf(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
+.. c:function:: struct lpfc_nvme_buf *lpfc_get_nvme_buf(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp, int expedite)
 
     Get a nvme buffer from lpfc_nvme_buf_list of the HBA
 
@@ -500,6 +500,9 @@ lpfc_get_nvme_buf
         The HBA for which this call is being executed.
 
     :param struct lpfc_nodelist \*ndlp:
+        *undescribed*
+
+    :param int expedite:
         *undescribed*
 
 .. _`lpfc_get_nvme_buf.description`:
@@ -617,6 +620,29 @@ Description
 This routine is invoked by the worker thread to process a SLI4 fast-path
 NVME aborted xri.  Aborted NVME IO commands are completed to the transport
 here.
+
+.. _`lpfc_nvme_wait_for_io_drain`:
+
+lpfc_nvme_wait_for_io_drain
+===========================
+
+.. c:function:: void lpfc_nvme_wait_for_io_drain(struct lpfc_hba *phba)
+
+    Wait for all NVME wqes to complete
+
+    :param struct lpfc_hba \*phba:
+        Pointer to HBA context object.
+
+.. _`lpfc_nvme_wait_for_io_drain.description`:
+
+Description
+-----------
+
+This function flushes all wqes in the nvme rings and frees all resources
+in the txcmplq. This function does not issue abort wqes for the IO
+commands in txcmplq, they will just be returned with
+IOERR_SLI_DOWN. This function is invoked with EEH when device's PCI
+slot has been permanently disabled.
 
 .. This file was automatic generated / don't edit.
 

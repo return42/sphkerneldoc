@@ -19,7 +19,7 @@ Definition
 
     struct nfp_reprs {
         unsigned int num_reprs;
-        struct net_device *reprs[0];
+        struct net_device __rcu *reprs[0];
     }
 
 .. _`nfp_reprs.members`:
@@ -162,7 +162,7 @@ NFP_REPR_TYPE_VF
     virtual function
 
 __NFP_REPR_TYPE_MAX
-    *undescribed*
+    number of representor types
 
 .. This file was automatic generated / don't edit.
 

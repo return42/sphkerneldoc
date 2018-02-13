@@ -23,7 +23,7 @@ dns_query
         Request options (or NULL if no options)
 
     :param char \*\*_result:
-        Where to place the returned data.
+        Where to place the returned data (or NULL)
 
     :param time64_t \*_expiry:
         Where to store the result expiry time (or NULL)
@@ -33,8 +33,8 @@ dns_query
 Description
 -----------
 
-The data will be returned in the pointer at \*result, and the caller is
-responsible for freeing it.
+The data will be returned in the pointer at \*result, if provided, and the
+caller is responsible for freeing it.
 
 The description should be of the form "[<query_type>:]<domain_name>", and
 the options need to be appropriate for the query type requested.  If no

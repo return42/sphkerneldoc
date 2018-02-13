@@ -14,13 +14,13 @@ ixgbe_dcb_config_rx_arbiter_82598
         pointer to hardware structure
 
     :param u16 \*refill:
-        *undescribed*
+        refill credits index by traffic class
 
     :param u16 \*max:
-        *undescribed*
+        max credits index by traffic class
 
     :param u8 \*prio_type:
-        *undescribed*
+        priority type indexed by traffic class
 
 .. _`ixgbe_dcb_config_rx_arbiter_82598.description`:
 
@@ -42,16 +42,16 @@ ixgbe_dcb_config_tx_desc_arbiter_82598
         pointer to hardware structure
 
     :param u16 \*refill:
-        *undescribed*
+        refill credits index by traffic class
 
     :param u16 \*max:
-        *undescribed*
+        max credits index by traffic class
 
     :param u8 \*bwg_id:
-        *undescribed*
+        bandwidth grouping indexed by traffic class
 
     :param u8 \*prio_type:
-        *undescribed*
+        priority type indexed by traffic class
 
 .. _`ixgbe_dcb_config_tx_desc_arbiter_82598.description`:
 
@@ -73,16 +73,16 @@ ixgbe_dcb_config_tx_data_arbiter_82598
         pointer to hardware structure
 
     :param u16 \*refill:
-        *undescribed*
+        refill credits index by traffic class
 
     :param u16 \*max:
-        *undescribed*
+        max credits index by traffic class
 
     :param u8 \*bwg_id:
-        *undescribed*
+        bandwidth grouping indexed by traffic class
 
     :param u8 \*prio_type:
-        *undescribed*
+        priority type indexed by traffic class
 
 .. _`ixgbe_dcb_config_tx_data_arbiter_82598.description`:
 
@@ -104,7 +104,7 @@ ixgbe_dcb_config_pfc_82598
         pointer to hardware structure
 
     :param u8 pfc_en:
-        *undescribed*
+        enabled pfc bitmask
 
 .. _`ixgbe_dcb_config_pfc_82598.description`:
 
@@ -146,19 +146,19 @@ ixgbe_dcb_hw_config_82598
         pointer to hardware structure
 
     :param u8 pfc_en:
-        *undescribed*
+        enabled pfc bitmask
 
     :param u16 \*refill:
-        *undescribed*
+        refill credits index by traffic class
 
     :param u16 \*max:
-        *undescribed*
+        max credits index by traffic class
 
     :param u8 \*bwg_id:
-        *undescribed*
+        bandwidth grouping indexed by traffic class
 
     :param u8 \*prio_type:
-        *undescribed*
+        priority type indexed by traffic class
 
 .. _`ixgbe_dcb_hw_config_82598.description`:
 

@@ -26,7 +26,7 @@ and is_pos.  For convenience, put a copy on evlist.
 perf_evlist__mmap_ex
 ====================
 
-.. c:function:: int perf_evlist__mmap_ex(struct perf_evlist *evlist, unsigned int pages, bool overwrite, unsigned int auxtrace_pages, bool auxtrace_overwrite)
+.. c:function:: int perf_evlist__mmap_ex(struct perf_evlist *evlist, unsigned int pages, unsigned int auxtrace_pages, bool auxtrace_overwrite)
 
     Create mmaps to receive events.
 
@@ -35,11 +35,6 @@ perf_evlist__mmap_ex
 
     :param unsigned int pages:
         map length in pages
-
-    :param bool overwrite:
-        overwrite older events?
-        \ ``auxtrace_pages``\  - auxtrace map length in pages
-        \ ``auxtrace_overwrite``\  - overwrite older auxtrace data?
 
     :param unsigned int auxtrace_pages:
         *undescribed*

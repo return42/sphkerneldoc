@@ -796,12 +796,12 @@ cached_reg_addr
 iio_device_register
 ===================
 
-.. c:function::  iio_device_register( iio_dev)
+.. c:function::  iio_device_register( indio_dev)
 
     register a device with the IIO subsystem
 
-    :param  iio_dev:
-        *undescribed*
+    :param  indio_dev:
+        Device structure filled by the device driver
 
 .. _`devm_iio_device_register`:
 

@@ -215,7 +215,8 @@ z3fold_reclaim_page
         pool from which a page will attempt to be evicted
 
     :param unsigned int retries:
-        *undescribed*
+        number of pages on the LRU list for which eviction will
+        be attempted before failing
 
 .. _`z3fold_reclaim_page.description`:
 
@@ -229,6 +230,7 @@ This has the potential to create interesting locking situations between
 z3fold and the user, however.
 
 To avoid these, this is how \ :c:func:`z3fold_reclaim_page`\  should be called:
+
 The user detects a page should be reclaimed and calls \ :c:func:`z3fold_reclaim_page`\ .
 \ :c:func:`z3fold_reclaim_page`\  will remove a z3fold page from the pool LRU list and
 call the user-defined eviction handler with the pool and handle as

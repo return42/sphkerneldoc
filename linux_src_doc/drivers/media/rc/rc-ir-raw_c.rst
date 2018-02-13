@@ -284,5 +284,33 @@ encoding. In this case all \ ``max``\  events will have been written.
 -EINVAL if the scancode is ambiguous or invalid, or if no
 compatible encoder was found.
 
+.. _`ir_raw_encode_carrier`:
+
+ir_raw_encode_carrier
+=====================
+
+.. c:function:: int ir_raw_encode_carrier(enum rc_proto protocol)
+
+    Get carrier used for protocol
+
+    :param enum rc_proto protocol:
+        protocol
+
+.. _`ir_raw_encode_carrier.description`:
+
+Description
+-----------
+
+Attempts to find the carrier for the specified protocol
+
+.. _`ir_raw_encode_carrier.return`:
+
+Return
+------
+
+The carrier in Hz
+-EINVAL if the protocol is invalid, or if no
+compatible encoder was found.
+
 .. This file was automatic generated / don't edit.
 

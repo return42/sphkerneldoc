@@ -231,7 +231,8 @@ drm_gem_fbdev_fb_create
         GEM object backing the framebuffer
 
     :param const struct drm_framebuffer_funcs \*funcs:
-        vtable to be used for the new framebuffer object
+        Optional vtable to be used for the new framebuffer object when the
+        dirty callback is needed.
 
 .. _`drm_gem_fbdev_fb_create.description`:
 

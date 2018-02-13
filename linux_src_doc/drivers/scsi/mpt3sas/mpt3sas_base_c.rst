@@ -572,15 +572,15 @@ Return nothing.
 _base_get_chain_buffer_tracker
 ==============================
 
-.. c:function:: struct chain_tracker *_base_get_chain_buffer_tracker(struct MPT3SAS_ADAPTER *ioc, u16 smid)
+.. c:function:: struct chain_tracker *_base_get_chain_buffer_tracker(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd)
 
     obtain chain tracker
 
     :param struct MPT3SAS_ADAPTER \*ioc:
         per adapter object
 
-    :param u16 smid:
-        smid associated to an IO request
+    :param struct scsi_cmnd \*scmd:
+        SCSI commands of the IO request
 
 .. _`_base_get_chain_buffer_tracker.description`:
 
@@ -2320,7 +2320,7 @@ _wait_for_commands_to_complete
 Description
 -----------
 
-This function waiting(3s) for all pending commands to complete
+This function is waiting 10s for all pending commands to complete
 prior to putting controller in reset.
 
 .. _`mpt3sas_base_hard_reset_handler`:

@@ -105,36 +105,6 @@ the new request (the GPU detects the condition of a context getting preempted
 with the same context and optimizes the context switch flow by not doing
 preemption, but just sampling the new tail pointer).
 
-.. _`intel_sanitize_enable_execlists`:
-
-intel_sanitize_enable_execlists
-===============================
-
-.. c:function:: int intel_sanitize_enable_execlists(struct drm_i915_private *dev_priv, int enable_execlists)
-
-    sanitize i915.enable_execlists
-
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
-
-    :param int enable_execlists:
-        value of i915.enable_execlists module parameter.
-
-.. _`intel_sanitize_enable_execlists.description`:
-
-Description
------------
-
-Only certain platforms support Execlists (the prerequisites being
-support for Logical Ring Contexts and Aliasing PPGTT or better).
-
-.. _`intel_sanitize_enable_execlists.return`:
-
-Return
-------
-
-1 if Execlists is supported and has to be enabled.
-
 .. _`intel_lr_context_descriptor_update`:
 
 intel_lr_context_descriptor_update

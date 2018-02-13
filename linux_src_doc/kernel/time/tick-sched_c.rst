@@ -154,6 +154,25 @@ Description
 
 Called from power state control code with interrupts disabled
 
+.. _`tick_nohz_get_idle_calls_cpu`:
+
+tick_nohz_get_idle_calls_cpu
+============================
+
+.. c:function:: unsigned long tick_nohz_get_idle_calls_cpu(int cpu)
+
+    return the current idle calls counter value for a particular CPU.
+
+    :param int cpu:
+        *undescribed*
+
+.. _`tick_nohz_get_idle_calls_cpu.description`:
+
+Description
+-----------
+
+Called from the schedutil frequency scaling governor in scheduler context.
+
 .. _`tick_nohz_get_idle_calls`:
 
 tick_nohz_get_idle_calls

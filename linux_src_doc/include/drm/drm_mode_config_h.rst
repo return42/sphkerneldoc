@@ -237,6 +237,9 @@ atomic_state_alloc
     state easily. If this hook is implemented, drivers must also
     implement \ ``atomic_state_clear``\  and \ ``atomic_state_free``\ .
 
+    Subclassing of \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  is deprecated in favour of using
+    \ :c:type:`struct drm_private_state <drm_private_state>`\  and \ :c:type:`struct drm_private_obj <drm_private_obj>`\ .
+
     RETURNS:
 
     A new \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  on success or NULL on failure.
@@ -256,6 +259,9 @@ atomic_state_clear
     Drivers that implement this must call \ :c:func:`drm_atomic_state_default_clear`\ 
     to clear common state.
 
+    Subclassing of \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  is deprecated in favour of using
+    \ :c:type:`struct drm_private_state <drm_private_state>`\  and \ :c:type:`struct drm_private_obj <drm_private_obj>`\ .
+
 atomic_state_free
 
     This hook needs driver private resources and the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ 
@@ -264,6 +270,9 @@ atomic_state_free
 
     Drivers that implement this must call
     \ :c:func:`drm_atomic_state_default_release`\  to release common resources.
+
+    Subclassing of \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  is deprecated in favour of using
+    \ :c:type:`struct drm_private_state <drm_private_state>`\  and \ :c:type:`struct drm_private_obj <drm_private_obj>`\ .
 
 .. _`drm_mode_config_funcs.description`:
 
@@ -303,6 +312,8 @@ Definition
         int num_connector;
         struct ida connector_ida;
         struct list_head connector_list;
+        struct llist_head connector_free_list;
+        struct work_struct connector_free_work;
         int num_encoder;
         struct list_head encoder_list;
         int num_total_plane;
@@ -365,11 +376,13 @@ Definition
         struct drm_property *suggested_x_property;
         struct drm_property *suggested_y_property;
         struct drm_property *non_desktop_property;
+        struct drm_property *panel_orientation_property;
         uint32_t preferred_depth, prefer_shadow;
         bool async_page_flip;
         bool allow_fb_modifiers;
         struct drm_property *modifiers_property;
         uint32_t cursor_width, cursor_height;
+        struct drm_atomic_state *suspend_state;
         const struct drm_mode_config_helper_funcs *helper_private;
     }
 
@@ -426,7 +439,7 @@ fb_list
     List of all \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
 
 connector_list_lock
-    Protects \ ``num_connector``\  and@connector_list.
+    Protects \ ``num_connector``\  and@connector_list and \ ``connector_free_list``\ .
 
 num_connector
     Number of connectors on this device. Protected by@connector_list_lock.
@@ -439,6 +452,17 @@ connector_list
     List of connector objects linked with \ :c:type:`drm_connector.head <drm_connector>`\ . Protected
     by \ ``connector_list_lock``\ . Only use \ :c:func:`drm_for_each_connector_iter`\  and
     \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\  to walk this list.
+
+connector_free_list
+
+    List of connector objects linked with \ :c:type:`drm_connector.free_head <drm_connector>`\ .
+    Protected by \ ``connector_list_lock``\ . Used by
+    \ :c:func:`drm_for_each_connector_iter`\  and
+    \ :c:type:`struct drm_connector_list_iter <drm_connector_list_iter>`\  to savely free connectors using
+    \ ``connector_free_work``\ .
+
+connector_free_work
+    Work to clean up \ ``connector_free_list``\ .
 
 num_encoder
 
@@ -660,6 +684,10 @@ non_desktop_property
     Optional connector property with a hintthat device isn't a standard display, and the console/desktop,
     should not be displayed on it.
 
+panel_orientation_property
+    Optional connector property indicatinghow the lcd-panel is mounted inside the casing (e.g. normal or
+    upside-down).
+
 preferred_depth
     preferred RBG pixel depth, used by fb helpers
 
@@ -674,13 +702,19 @@ allow_fb_modifiers
     Whether the driver supports fb modifiers in the ADDFB2.1 ioctl call.
 
 modifiers_property
-    *undescribed*
+    Plane property to list support modifier/formatcombination.
 
 cursor_width
     hint to userspace for max cursor width
 
 cursor_height
     hint to userspace for max cursor height
+
+suspend_state
+
+    Atomic state when suspended.
+    Set by \ :c:func:`drm_mode_config_helper_suspend`\  and cleared by
+    \ :c:func:`drm_mode_config_helper_resume`\ .
 
 helper_private
     mid-layer private data

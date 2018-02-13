@@ -117,7 +117,7 @@ try_to_compact_pages
         The context of current allocation
 
     :param enum compact_priority prio:
-        *undescribed*
+        Determines how hard direct compaction should try to succeed
 
 .. _`try_to_compact_pages.description`:
 

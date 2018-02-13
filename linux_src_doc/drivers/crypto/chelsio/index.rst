@@ -9,3 +9,4 @@ chelsio
 
     chcr_algo_c
     chcr_core_c
+    chcr_ipsec_c

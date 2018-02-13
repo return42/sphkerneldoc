@@ -64,7 +64,7 @@ gfs2_end_log_write_bh
 Description
 -----------
 
-This finds the relavent buffers and unlocks then and sets the
+This finds the relevant buffers and unlocks them and sets the
 error flag according to the status of the i/o request. This is
 used when the log is writing data which has an in-place version
 that is pinned in the pagecache.
@@ -185,7 +185,7 @@ The bio to use for log writes
 gfs2_log_write
 ==============
 
-.. c:function:: void gfs2_log_write(struct gfs2_sbd *sdp, struct page *page, unsigned size, unsigned offset)
+.. c:function:: void gfs2_log_write(struct gfs2_sbd *sdp, struct page *page, unsigned size, unsigned offset, u64 blkno)
 
     write to log
 
@@ -200,6 +200,9 @@ gfs2_log_write
 
     :param unsigned offset:
         the offset within the page
+
+    :param u64 blkno:
+        block number of the log entry
 
 .. _`gfs2_log_write.description`:
 

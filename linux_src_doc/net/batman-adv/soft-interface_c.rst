@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/soft-interface.c
 
+.. _`batadv_skb_head_push`:
+
+batadv_skb_head_push
+====================
+
+.. c:function:: int batadv_skb_head_push(struct sk_buff *skb, unsigned int len)
+
+    Increase header size and move (push) head pointer
+
+    :param struct sk_buff \*skb:
+        packet buffer which should be modified
+
+    :param unsigned int len:
+        number of bytes to add
+
+.. _`batadv_skb_head_push.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
 .. _`batadv_sum_counter`:
 
 batadv_sum_counter
@@ -351,6 +373,28 @@ batadv_softif_init_early
     :param struct net_device \*dev:
         registered network device to modify
 
+.. _`batadv_softif_create`:
+
+batadv_softif_create
+====================
+
+.. c:function:: struct net_device *batadv_softif_create(struct net *net, const char *name)
+
+    Create and register soft interface
+
+    :param struct net \*net:
+        the applicable net namespace
+
+    :param const char \*name:
+        name of the new soft interface
+
+.. _`batadv_softif_create.return`:
+
+Return
+------
+
+newly allocated soft_interface, NULL on errors
+
 .. _`batadv_softif_destroy_sysfs`:
 
 batadv_softif_destroy_sysfs
@@ -377,6 +421,25 @@ batadv_softif_destroy_netlink
 
     :param struct list_head \*head:
         list pointer
+
+.. _`batadv_softif_is_valid`:
+
+batadv_softif_is_valid
+======================
+
+.. c:function:: bool batadv_softif_is_valid(const struct net_device *net_dev)
+
+    Check whether device is a batadv soft interface
+
+    :param const struct net_device \*net_dev:
+        device which should be checked
+
+.. _`batadv_softif_is_valid.return`:
+
+Return
+------
+
+true when net_dev is a batman-adv interface, false otherwise
 
 .. This file was automatic generated / don't edit.
 

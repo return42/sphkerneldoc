@@ -249,13 +249,13 @@ Definition
 
     struct ttm_bo_driver {
         struct ttm_tt *(*ttm_tt_create)(struct ttm_bo_device *bdev,unsigned long size,uint32_t page_flags, struct page *dummy_read_page);
-        int (*ttm_tt_populate)(struct ttm_tt *ttm);
+        int (*ttm_tt_populate)(struct ttm_tt *ttm, struct ttm_operation_ctx *ctx);
         void (*ttm_tt_unpopulate)(struct ttm_tt *ttm);
         int (*invalidate_caches)(struct ttm_bo_device *bdev, uint32_t flags);
         int (*init_mem_type)(struct ttm_bo_device *bdev, uint32_t type, struct ttm_mem_type_manager *man);
         bool (*eviction_valuable)(struct ttm_buffer_object *bo, const struct ttm_place *place);
         void (*evict_flags)(struct ttm_buffer_object *bo, struct ttm_placement *placement);
-        int (*move)(struct ttm_buffer_object *bo, bool evict,bool interruptible, bool no_wait_gpu, struct ttm_mem_reg *new_mem);
+        int (*move)(struct ttm_buffer_object *bo, bool evict,struct ttm_operation_ctx *ctx, struct ttm_mem_reg *new_mem);
         int (*verify_access)(struct ttm_buffer_object *bo, struct file *filp);
         void (*move_notify)(struct ttm_buffer_object *bo,bool evict, struct ttm_mem_reg *new_mem);
         int (*fault_reserve_notify)(struct ttm_buffer_object *bo);
@@ -375,7 +375,6 @@ Definition
         struct kobject kobj;
         struct ttm_mem_global *mem_glob;
         struct page *dummy_read_page;
-        struct ttm_mem_shrink shrink;
         struct mutex device_list_mutex;
         spinlock_t lru_lock;
         struct list_head device_list;
@@ -397,9 +396,6 @@ mem_glob
 dummy_read_page
     Pointer to a dummy page used for mapping requests
     of unpopulated pages.
-
-shrink
-    A shrink callback object used for buffer object swap.
 
 device_list_mutex
     Mutex protecting the device list.
@@ -568,13 +564,16 @@ Free memory of ttm_tt structure
 ttm_tt_bind
 ===========
 
-.. c:function:: int ttm_tt_bind(struct ttm_tt *ttm, struct ttm_mem_reg *bo_mem)
+.. c:function:: int ttm_tt_bind(struct ttm_tt *ttm, struct ttm_mem_reg *bo_mem, struct ttm_operation_ctx *ctx)
 
     :param struct ttm_tt \*ttm:
         The struct ttm_tt containing backing pages.
 
     :param struct ttm_mem_reg \*bo_mem:
         The struct ttm_mem_reg identifying the binding location.
+
+    :param struct ttm_operation_ctx \*ctx:
+        *undescribed*
 
 .. _`ttm_tt_bind.description`:
 
@@ -706,7 +705,7 @@ false otherwise.
 ttm_bo_mem_space
 ================
 
-.. c:function:: int ttm_bo_mem_space(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_mem_reg *mem, bool interruptible, bool no_wait_gpu)
+.. c:function:: int ttm_bo_mem_space(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_mem_reg *mem, struct ttm_operation_ctx *ctx)
 
     :param struct ttm_buffer_object \*bo:
         Pointer to a struct ttm_buffer_object. the data of which
@@ -718,11 +717,8 @@ ttm_bo_mem_space
     :param struct ttm_mem_reg \*mem:
         A struct ttm_mem_reg.
 
-    :param bool interruptible:
-        Sleep interruptible when sliping.
-
-    :param bool no_wait_gpu:
-        Return immediately if the GPU is busy.
+    :param struct ttm_operation_ctx \*ctx:
+        *undescribed*
 
 .. _`ttm_bo_mem_space.description`:
 
@@ -939,24 +935,6 @@ This is called after ttm_bo_reserve returns -EAGAIN and we backed off
 from all our other reservations. Because there are no other reservations
 held by us, this function cannot deadlock any more.
 
-.. _`__ttm_bo_unreserve`:
-
-__ttm_bo_unreserve
-==================
-
-.. c:function:: void __ttm_bo_unreserve(struct ttm_buffer_object *bo)
-
-    :param struct ttm_buffer_object \*bo:
-        A pointer to a struct ttm_buffer_object.
-
-.. _`__ttm_bo_unreserve.description`:
-
-Description
------------
-
-Unreserve a previous reservation of \ ``bo``\  where the buffer object is
-already on lru lists.
-
 .. _`ttm_bo_unreserve`:
 
 ttm_bo_unreserve
@@ -974,41 +952,18 @@ Description
 
 Unreserve a previous reservation of \ ``bo``\ .
 
-.. _`ttm_bo_unreserve_ticket`:
-
-ttm_bo_unreserve_ticket
-=======================
-
-.. c:function:: void ttm_bo_unreserve_ticket(struct ttm_buffer_object *bo, struct ww_acquire_ctx *t)
-
-    :param struct ttm_buffer_object \*bo:
-        A pointer to a struct ttm_buffer_object.
-
-    :param struct ww_acquire_ctx \*t:
-        *undescribed*
-
-.. _`ttm_bo_unreserve_ticket.description`:
-
-Description
------------
-
-Unreserve a previous reservation of \ ``bo``\  made with \ ``ticket``\ .
-
 .. _`ttm_bo_move_ttm`:
 
 ttm_bo_move_ttm
 ===============
 
-.. c:function:: int ttm_bo_move_ttm(struct ttm_buffer_object *bo, bool interruptible, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_move_ttm(struct ttm_buffer_object *bo, struct ttm_operation_ctx *ctx, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
 
-    :param bool interruptible:
-        Sleep interruptible if waiting.
-
-    :param bool no_wait_gpu:
-        Return immediately if the GPU is busy.
+    :param struct ttm_operation_ctx \*ctx:
+        *undescribed*
 
     :param struct ttm_mem_reg \*new_mem:
         struct ttm_mem_reg indicating where to move.
@@ -1037,16 +992,13 @@ Return
 ttm_bo_move_memcpy
 ==================
 
-.. c:function:: int ttm_bo_move_memcpy(struct ttm_buffer_object *bo, bool interruptible, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_move_memcpy(struct ttm_buffer_object *bo, struct ttm_operation_ctx *ctx, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
 
-    :param bool interruptible:
-        Sleep interruptible if waiting.
-
-    :param bool no_wait_gpu:
-        Return immediately if the GPU is busy.
+    :param struct ttm_operation_ctx \*ctx:
+        *undescribed*
 
     :param struct ttm_mem_reg \*new_mem:
         struct ttm_mem_reg indicating where to move.

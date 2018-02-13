@@ -172,12 +172,12 @@ Description
 -----------
 
 Return the value of the specified RCU-protected pointer, but omit the
-\ :c:func:`smp_read_barrier_depends`\  and keep the \ :c:func:`READ_ONCE`\ .  This is useful
-when the value of this pointer is accessed, but the pointer is not
-dereferenced, for example, when testing an RCU-protected pointer against
-NULL.  Although \ :c:func:`rcu_access_pointer`\  may also be used in cases where
-update-side locks prevent the value of the pointer from changing, you
-should instead use \ :c:func:`rcu_dereference_protected`\  for this use case.
+lockdep checks for being in an RCU read-side critical section.  This is
+useful when the value of this pointer is accessed, but the pointer is
+not dereferenced, for example, when testing an RCU-protected pointer
+against NULL.  Although \ :c:func:`rcu_access_pointer`\  may also be used in cases
+where update-side locks prevent the value of the pointer from changing,
+you should instead use \ :c:func:`rcu_dereference_protected`\  for this use case.
 
 It is also permissible to use \ :c:func:`rcu_access_pointer`\  when read-side
 access to the pointer was removed at least one grace period ago, as
@@ -308,12 +308,11 @@ Description
 -----------
 
 Return the value of the specified RCU-protected pointer, but omit
-both the \ :c:func:`smp_read_barrier_depends`\  and the \ :c:func:`READ_ONCE`\ .  This
-is useful in cases where update-side locks prevent the value of the
-pointer from changing.  Please note that this primitive does *not*
-prevent the compiler from repeating this reference or combining it
-with other references, so it should not be used without protection
-of appropriate locks.
+the \ :c:func:`READ_ONCE`\ .  This is useful in cases where update-side locks
+prevent the value of the pointer from changing.  Please note that this
+primitive does *not* prevent the compiler from repeating this reference
+or combining it with other references, so it should not be used without
+protection of appropriate locks.
 
 This function is only for update-side use.  Using this function
 when protected only by \ :c:func:`rcu_read_lock`\  will result in infrequent

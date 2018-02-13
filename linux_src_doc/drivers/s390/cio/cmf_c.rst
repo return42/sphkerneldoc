@@ -299,15 +299,16 @@ enable_cmf
 Description
 -----------
 
- Returns \ ``0``\  for success or a negative error value.
+ Enable channel measurements for \ ``cdev``\ . If this is called on a device
+ for which channel measurement is already enabled a reset of the
+ measurement data is triggered.
 
-.. _`enable_cmf.note`:
+.. _`enable_cmf.return`:
 
-Note
-----
+Return
+------
 
-If this is called on a device for which channel measurement is already
-       enabled a reset of the measurement data is triggered.
+%0 for success or a negative error value.
 
 .. _`enable_cmf.context`:
 
@@ -328,12 +329,12 @@ __disable_cmf
     :param struct ccw_device \*cdev:
         The ccw device to be disabled
 
-.. _`__disable_cmf.description`:
+.. _`__disable_cmf.return`:
 
-Description
------------
+Return
+------
 
- Returns \ ``0``\  for success or a negative error value.
+%0 for success or a negative error value.
 
 .. _`__disable_cmf.context`:
 
@@ -354,12 +355,12 @@ disable_cmf
     :param struct ccw_device \*cdev:
         The ccw device to be disabled
 
-.. _`disable_cmf.description`:
+.. _`disable_cmf.return`:
 
-Description
------------
+Return
+------
 
- Returns \ ``0``\  for success or a negative error value.
+%0 for success or a negative error value.
 
 .. _`disable_cmf.context`:
 
@@ -383,12 +384,12 @@ cmf_read
     :param int index:
         the index of the value to be read
 
-.. _`cmf_read.description`:
+.. _`cmf_read.return`:
 
-Description
------------
+Return
+------
 
-Returns the value read or \ ``0``\  if the value cannot be read.
+The value read or \ ``0``\  if the value cannot be read.
 
 .. _`cmf_read.context`:
 
@@ -412,12 +413,12 @@ cmf_readall
     :param struct cmbdata \*data:
         a pointer to a data block that will be filled
 
-.. _`cmf_readall.description`:
+.. _`cmf_readall.return`:
 
-Description
------------
+Return
+------
 
-Returns \ ``0``\  on success, a negative error value otherwise.
+%0 on success, a negative error value otherwise.
 
 .. _`cmf_readall.context`:
 

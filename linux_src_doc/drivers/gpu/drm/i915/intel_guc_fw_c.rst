@@ -1,24 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_guc_fw.c
 
-.. _`intel_guc_fw_select`:
+.. _`intel_guc_fw_init_early`:
 
-intel_guc_fw_select
-===================
+intel_guc_fw_init_early
+=======================
 
-.. c:function:: int intel_guc_fw_select(struct intel_guc *guc)
+.. c:function:: void intel_guc_fw_init_early(struct intel_guc *guc)
 
-    selects GuC firmware for uploading
+    initializes GuC firmware struct
 
     :param struct intel_guc \*guc:
         intel_guc struct
 
-.. _`intel_guc_fw_select.return`:
+.. _`intel_guc_fw_init_early.description`:
 
-Return
-------
+Description
+-----------
 
-zero when we know firmware, non-zero in other case
+On platforms with GuC selects firmware for uploading
 
 .. _`intel_guc_fw_upload`:
 

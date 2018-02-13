@@ -17,6 +17,7 @@ ethernet
     cavium/index
     chelsio/index
     cisco/index
+    cortina/index
     dec/index
     ezchip/index
     freescale/index
@@ -37,6 +38,7 @@ ethernet
     sfc/index
     sis/index
     smsc/index
+    socionext/index
     stmicro/index
     tehuti/index
     ti/index

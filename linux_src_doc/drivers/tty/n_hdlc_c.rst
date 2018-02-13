@@ -281,7 +281,7 @@ Returns command dependent result.
 n_hdlc_tty_poll
 ===============
 
-.. c:function:: unsigned int n_hdlc_tty_poll(struct tty_struct *tty, struct file *filp, poll_table *wait)
+.. c:function:: __poll_t n_hdlc_tty_poll(struct tty_struct *tty, struct file *filp, poll_table *wait)
 
     TTY callback for poll system call \ ``tty``\  - pointer to tty instance data \ ``filp``\  - pointer to open file object for device \ ``poll_table``\  - wait queue for operations
 

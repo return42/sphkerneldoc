@@ -1,6 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/idr.h
 
+.. _`idr_init`:
+
+IDR_INIT
+========
+
+.. c:function::  IDR_INIT()
+
+    Initialise an IDR.
+
+.. _`idr_init.description`:
+
+Description
+-----------
+
+A freshly-initialised IDR contains no IDs.
+
+.. _`define_idr`:
+
+DEFINE_IDR
+==========
+
+.. c:function::  DEFINE_IDR( name)
+
+    Define a statically-allocated IDR
+
+    :param  name:
+        Name of IDR
+
+.. _`define_idr.description`:
+
+Description
+-----------
+
+An IDR defined using this macro is ready for use with no additional
+initialisation required.  It contains no IDs.
+
 .. _`idr_get_cursor`:
 
 idr_get_cursor
@@ -64,45 +100,67 @@ lock-free access; and that the items are freed by RCU (or only freed after
 having been deleted from the idr tree *and* a \ :c:func:`synchronize_rcu`\  grace
 period).
 
-.. _`idr_alloc`:
+.. _`idr_init_base`:
 
-idr_alloc
-=========
+idr_init_base
+=============
 
-.. c:function:: int idr_alloc(struct idr *idr, void *ptr, int start, int end, gfp_t gfp)
+.. c:function:: void idr_init_base(struct idr *idr, int base)
 
-    allocate an id
+    Initialise an IDR.
 
     :param struct idr \*idr:
-        idr handle
+        IDR handle.
 
-    :param void \*ptr:
-        pointer to be associated with the new id
+    :param int base:
+        The base value for the IDR.
 
-    :param int start:
-        the minimum id (inclusive)
-
-    :param int end:
-        the maximum id (exclusive)
-
-    :param gfp_t gfp:
-        memory allocation flags
-
-.. _`idr_alloc.description`:
+.. _`idr_init_base.description`:
 
 Description
 -----------
 
-Allocates an unused ID in the range [start, end).  Returns -ENOSPC
-if there are no unused IDs in that range.
+This variation of \ :c:func:`idr_init`\  creates an IDR which will allocate IDs
+starting at \ ``base``\ .
 
-Note that \ ``end``\  is treated as max when <= 0.  This is to always allow
-using \ ``start``\  + N as \ ``end``\  as long as N is inside integer range.
+.. _`idr_init`:
 
-Simultaneous modifications to the \ ``idr``\  are not allowed and should be
-prevented by the user, usually with a lock.  \ :c:func:`idr_alloc`\  may be called
-concurrently with read-only accesses to the \ ``idr``\ , such as \ :c:func:`idr_find`\  and
-\ :c:func:`idr_for_each_entry`\ .
+idr_init
+========
+
+.. c:function:: void idr_init(struct idr *idr)
+
+    Initialise an IDR.
+
+    :param struct idr \*idr:
+        IDR handle.
+
+.. _`idr_init.description`:
+
+Description
+-----------
+
+Initialise a dynamically allocated IDR.  To initialise a
+statically allocated IDR, use \ :c:func:`DEFINE_IDR`\ .
+
+.. _`idr_is_empty`:
+
+idr_is_empty
+============
+
+.. c:function:: bool idr_is_empty(const struct idr *idr)
+
+    Are there any IDs allocated?
+
+    :param const struct idr \*idr:
+        IDR handle.
+
+.. _`idr_is_empty.return`:
+
+Return
+------
+
+%true if any IDs have been allocated from this IDR.
 
 .. _`idr_preload_end`:
 
@@ -124,33 +182,6 @@ Description
 Each \ :c:func:`idr_preload`\  should be matched with an invocation of this
 function.  See \ :c:func:`idr_preload`\  for details.
 
-.. _`idr_find_ext`:
-
-idr_find_ext
-============
-
-.. c:function:: void *idr_find_ext(const struct idr *idr, unsigned long id)
-
-    return pointer for given id
-
-    :param const struct idr \*idr:
-        idr handle
-
-    :param unsigned long id:
-        lookup key
-
-.. _`idr_find_ext.description`:
-
-Description
------------
-
-Return the pointer given the id it has been registered with.  A \ ``NULL``\ 
-return indicates that \ ``id``\  is not valid or you passed \ ``NULL``\  in
-\ :c:func:`idr_get_new`\ .
-
-This function can be called under \ :c:func:`rcu_read_lock`\ , given that the leaf
-pointers lifetimes are correctly managed.
-
 .. _`idr_for_each_entry`:
 
 idr_for_each_entry
@@ -158,16 +189,16 @@ idr_for_each_entry
 
 .. c:function::  idr_for_each_entry( idr,  entry,  id)
 
-    iterate over an idr's elements of a given type
+    Iterate over an IDR's elements of a given type.
 
     :param  idr:
-        idr handle
+        IDR handle.
 
     :param  entry:
-        the type * to use as cursor
+        The type * to use as cursor
 
     :param  id:
-        id entry's key
+        Entry ID.
 
 .. _`idr_for_each_entry.description`:
 
@@ -175,7 +206,34 @@ Description
 -----------
 
 @entry and \ ``id``\  do not need to be initialized before the loop, and
-after normal terminatinon \ ``entry``\  is left with the value NULL.  This
+after normal termination \ ``entry``\  is left with the value NULL.  This
+is convenient for a "not found" value.
+
+.. _`idr_for_each_entry_ul`:
+
+idr_for_each_entry_ul
+=====================
+
+.. c:function::  idr_for_each_entry_ul( idr,  entry,  id)
+
+    Iterate over an IDR's elements of a given type.
+
+    :param  idr:
+        IDR handle.
+
+    :param  entry:
+        The type * to use as cursor.
+
+    :param  id:
+        Entry ID.
+
+.. _`idr_for_each_entry_ul.description`:
+
+Description
+-----------
+
+@entry and \ ``id``\  do not need to be initialized before the loop, and
+after normal termination \ ``entry``\  is left with the value NULL.  This
 is convenient for a "not found" value.
 
 .. _`idr_for_each_entry_continue`:
@@ -185,24 +243,23 @@ idr_for_each_entry_continue
 
 .. c:function::  idr_for_each_entry_continue( idr,  entry,  id)
 
-    continue iteration over an idr's elements of a given type
+    Continue iteration over an IDR's elements of a given type
 
     :param  idr:
-        idr handle
+        IDR handle.
 
     :param  entry:
-        the type * to use as cursor
+        The type * to use as a cursor.
 
     :param  id:
-        id entry's key
+        Entry ID.
 
 .. _`idr_for_each_entry_continue.description`:
 
 Description
 -----------
 
-Continue to iterate over list of given type, continuing after
-the current position.
+Continue to iterate over entries, continuing after the current position.
 
 .. _`ida_get_new`:
 

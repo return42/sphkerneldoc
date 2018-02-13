@@ -12,5 +12,5 @@ caam
     ctrl_c
     desc_constr_h
     jr_c
-    key_gen_c
+    key_gen_h
     qi_h

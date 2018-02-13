@@ -139,5 +139,17 @@ genphy_c45_read_pma
     :param struct phy_device \*phydev:
         target phy_device struct
 
+.. _`genphy_c45_read_mdix`:
+
+genphy_c45_read_mdix
+====================
+
+.. c:function:: int genphy_c45_read_mdix(struct phy_device *phydev)
+
+    read mdix status from PMA
+
+    :param struct phy_device \*phydev:
+        target phy_device struct
+
 .. This file was automatic generated / don't edit.
 

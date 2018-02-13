@@ -67,6 +67,60 @@ set_pkeys
     :param u16 \*pkeys:
         the PKEY table
 
+.. _`tx_link_width`:
+
+tx_link_width
+=============
+
+.. c:function:: u16 tx_link_width(u16 link_width)
+
+    convert link width bitmask to integer value representing actual link width.
+
+    :param u16 link_width:
+        width of active link
+
+.. _`tx_link_width.description`:
+
+Description
+-----------
+
+The function convert and return the index of bit set
+that indicate the current link width.
+
+.. _`get_xmit_wait_counters`:
+
+get_xmit_wait_counters
+======================
+
+.. c:function:: u64 get_xmit_wait_counters(struct hfi1_pportdata *ppd, u16 link_width, u16 link_speed, int vl)
+
+    Convert HFI 's SendWaitCnt/SendWaitVlCnt counter in unit of TXE cycle times to flit times.
+
+    :param struct hfi1_pportdata \*ppd:
+        info of physical Hfi port
+
+    :param u16 link_width:
+        width of active link
+
+    :param u16 link_speed:
+        speed of active link
+
+    :param int vl:
+        represent VL0-VL7, VL15 for PortVLXmitWait counters request
+        and if vl value is C_VL_COUNT, it represent SendWaitCnt
+        counter request
+
+.. _`get_xmit_wait_counters.description`:
+
+Description
+-----------
+
+Convert SendWaitCnt/SendWaitVlCnt counter from TXE cycle times to
+flit times. Call this function to samples these counters. This
+function will calculate for previous state transition and update
+current state at end of function using ppd->prev_link_width and
+ppd->port_vl_xmit_wait_last to port_vl_xmit_wait_curr and link_width.
+
 .. _`hfi1_pkey_validation_pma`:
 
 hfi1_pkey_validation_pma

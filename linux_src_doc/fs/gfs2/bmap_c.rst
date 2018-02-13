@@ -179,24 +179,6 @@ Return a pointer to the block number of the next height of the metadata
 tree given a buffer containing the pointer to the current height of the
 metadata tree.
 
-.. _`lookup_mp_height`:
-
-lookup_mp_height
-================
-
-.. c:function:: int lookup_mp_height(struct gfs2_inode *ip, struct metapath *mp, int h)
-
-    helper function for lookup_metapath
-
-    :param struct gfs2_inode \*ip:
-        the inode
-
-    :param struct metapath \*mp:
-        the metapath
-
-    :param int h:
-        the height which needs looking up
-
 .. _`lookup_metapath`:
 
 lookup_metapath
@@ -231,7 +213,7 @@ added to the mp->mp_bh[] list.
 Return
 ------
 
-error or height of metadata tree
+error
 
 .. _`fillup_metapath`:
 
@@ -263,7 +245,7 @@ Similar to lookup_metapath, but does lookups for a range of heights
 Return
 ------
 
-error or height of metadata tree
+error or the number of buffers filled
 
 .. _`gfs2_extent_length`:
 
@@ -441,22 +423,25 @@ Return
 
 errno
 
-.. _`gfs2_block_truncate_page`:
+.. _`gfs2_block_zero_range`:
 
-gfs2_block_truncate_page
-========================
+gfs2_block_zero_range
+=====================
 
-.. c:function:: int gfs2_block_truncate_page(struct address_space *mapping, loff_t from)
+.. c:function:: int gfs2_block_zero_range(struct inode *inode, loff_t from, unsigned int length)
 
-    Deal with zeroing out data for truncate
+    Deal with zeroing out data
 
-    :param struct address_space \*mapping:
+    :param struct inode \*inode:
         *undescribed*
 
     :param loff_t from:
         *undescribed*
 
-.. _`gfs2_block_truncate_page.description`:
+    :param unsigned int length:
+        *undescribed*
+
+.. _`gfs2_block_zero_range.description`:
 
 Description
 -----------
@@ -495,7 +480,7 @@ if the number of pages being truncated gets too large.
 sweep_bh_for_rgrps
 ==================
 
-.. c:function:: int sweep_bh_for_rgrps(struct gfs2_inode *ip, struct gfs2_holder *rd_gh, const struct metapath *mp, u32 *btotal, int hgt, bool preserve1)
+.. c:function:: int sweep_bh_for_rgrps(struct gfs2_inode *ip, struct gfs2_holder *rd_gh, struct buffer_head *bh, __be64 *start, __be64 *end, bool meta, u32 *btotal)
 
     find an rgrp in a meta buffer and free blocks therein
 
@@ -505,17 +490,20 @@ sweep_bh_for_rgrps
     :param struct gfs2_holder \*rd_gh:
         *undescribed*
 
-    :param const struct metapath \*mp:
-        current metapath fully populated with buffers
+    :param struct buffer_head \*bh:
+        buffer head to sweep
+
+    :param __be64 \*start:
+        starting point in bh
+
+    :param __be64 \*end:
+        end point in bh
+
+    :param bool meta:
+        true if bh points to metadata (rather than data)
 
     :param u32 \*btotal:
         place to keep count of total blocks freed
-
-    :param int hgt:
-        height we're processing
-
-    :param bool preserve1:
-        *undescribed*
 
 .. _`sweep_bh_for_rgrps.description`:
 
@@ -544,9 +532,9 @@ Return
 find_nonnull_ptr
 ================
 
-.. c:function:: bool find_nonnull_ptr(struct gfs2_sbd *sdp, struct metapath *mp, unsigned int h)
+.. c:function:: bool find_nonnull_ptr(struct gfs2_sbd *sdp, struct metapath *mp, unsigned int h, __u16 *end_list, unsigned int end_aligned)
 
-    find a non-null pointer given a metapath and height assumes the metapath is valid (with buffers) out to height h
+    find a non-null pointer given a metapath and height
 
     :param struct gfs2_sbd \*sdp:
         *undescribed*
@@ -557,6 +545,19 @@ find_nonnull_ptr
     :param unsigned int h:
         desired height to search
 
+    :param __u16 \*end_list:
+        *undescribed*
+
+    :param unsigned int end_aligned:
+        *undescribed*
+
+.. _`find_nonnull_ptr.description`:
+
+Description
+-----------
+
+Assumes the metapath is valid (with buffers) out to height h.
+
 .. _`find_nonnull_ptr.return`:
 
 Return
@@ -565,46 +566,50 @@ Return
 true if a non-null pointer was found in the metapath buffer
 false if all remaining pointers are NULL in the buffer
 
-.. _`trunc_dealloc`:
+.. _`punch_hole`:
 
-trunc_dealloc
-=============
+punch_hole
+==========
 
-.. c:function:: int trunc_dealloc(struct gfs2_inode *ip, u64 newsize)
+.. c:function:: int punch_hole(struct gfs2_inode *ip, u64 offset, u64 length)
 
-    truncate a file down to a desired size
+    deallocate blocks in a file
 
     :param struct gfs2_inode \*ip:
         inode to truncate
 
-    :param u64 newsize:
-        The desired size of the file
+    :param u64 offset:
+        the start of the hole
 
-.. _`trunc_dealloc.description`:
+    :param u64 length:
+        the size of the hole (or 0 for truncate)
+
+.. _`punch_hole.description`:
 
 Description
 -----------
 
-This function truncates a file to newsize. It works from the
-bottom up, and from the right to the left. In other words, it strips off
-the highest layer (data) before stripping any of the metadata. Doing it
-this way is best in case the operation is interrupted by power failure, etc.
-The dinode is rewritten in every transaction to guarantee integrity.
+Punch a hole into a file or truncate a file at a given position.  This
+function operates in whole blocks (@offset and \ ``length``\  are rounded
+accordingly); partially filled blocks must be cleared otherwise.
+
+This function works from the bottom up, and from the right to the left. In
+other words, it strips off the highest layer (data) before stripping any of
+the metadata. Doing it this way is best in case the operation is interrupted
+by power failure, etc.  The dinode is rewritten in every transaction to
+guarantee integrity.
 
 .. _`do_shrink`:
 
 do_shrink
 =========
 
-.. c:function:: int do_shrink(struct inode *inode, u64 oldsize, u64 newsize)
+.. c:function:: int do_shrink(struct inode *inode, u64 newsize)
 
     make a file smaller
 
     :param struct inode \*inode:
         the inode
-
-    :param u64 oldsize:
-        the current inode size
 
     :param u64 newsize:
         the size to make the file

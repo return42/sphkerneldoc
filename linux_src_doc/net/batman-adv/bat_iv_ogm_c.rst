@@ -33,8 +33,7 @@ BATADV_NO_DUP
     the packet is no duplicate
 
 BATADV_ORIG_DUP
-    OGM is a duplicate in the originator (but not for the
-    neighbor)
+    OGM is a duplicate in the originator (but not for the neighbor)
 
 BATADV_NEIGH_DUP
     OGM is a duplicate for the neighbor
@@ -434,7 +433,7 @@ batadv_iv_ogm_process_per_outif
 
 .. c:function:: void batadv_iv_ogm_process_per_outif(const struct sk_buff *skb, int ogm_offset, struct batadv_orig_node *orig_node, struct batadv_hard_iface *if_incoming, struct batadv_hard_iface *if_outgoing)
 
-    process a batman iv OGM for an outgoing if
+    process a batman iv OGM for an outgoing interface
 
     :param const struct sk_buff \*skb:
         the skb containing the OGM
@@ -960,6 +959,25 @@ batadv_iv_gw_dump
 
     :param struct batadv_priv \*bat_priv:
         The bat priv with all the soft interface information
+
+.. _`batadv_iv_init`:
+
+batadv_iv_init
+==============
+
+.. c:function:: int batadv_iv_init( void)
+
+    B.A.T.M.A.N. IV initialization function
+
+    :param  void:
+        no arguments
+
+.. _`batadv_iv_init.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
 
 .. This file was automatic generated / don't edit.
 

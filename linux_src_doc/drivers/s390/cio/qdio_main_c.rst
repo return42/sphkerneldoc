@@ -23,7 +23,7 @@ do_siga_output
         function code to perform
 
     :param unsigned long aob:
-        *undescribed*
+        asynchronous operation block
 
 .. _`do_siga_output.description`:
 

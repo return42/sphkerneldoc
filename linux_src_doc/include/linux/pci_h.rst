@@ -53,6 +53,15 @@ Description
 Corresponds to values for legacy PCI INTx interrupts, as can be found in the
 PCI_INTERRUPT_PIN register.
 
+.. _`pci_channel_state_t`:
+
+typedef pci_channel_state_t
+===========================
+
+.. c:type:: typedef pci_channel_state_t
+
+    the PCI device.  If some PCI bus between here and the PCI device has crashed or locked up, this info is reflected here.
+
 .. _`pci_is_bridge`:
 
 pci_is_bridge
@@ -80,7 +89,7 @@ PCI_DEVICE
 
 .. c:function::  PCI_DEVICE( vend,  dev)
 
-    macro used to describe a specific pci device
+    macro used to describe a specific PCI device
 
     :param  vend:
         the 16 bit PCI Vendor ID
@@ -104,7 +113,7 @@ PCI_DEVICE_SUB
 
 .. c:function::  PCI_DEVICE_SUB( vend,  dev,  subvend,  subdev)
 
-    macro used to describe a specific pci device with subsystem
+    macro used to describe a specific PCI device with subsystem
 
     :param  vend:
         the 16 bit PCI Vendor ID
@@ -133,7 +142,7 @@ PCI_DEVICE_CLASS
 
 .. c:function::  PCI_DEVICE_CLASS( dev_class,  dev_class_mask)
 
-    macro used to describe a specific pci device class
+    macro used to describe a specific PCI device class
 
     :param  dev_class:
         the class, subclass, prog-if triple for this device
@@ -157,7 +166,7 @@ PCI_VDEVICE
 
 .. c:function::  PCI_VDEVICE( vend,  dev)
 
-    macro used to describe a specific pci device in short form
+    macro used to describe a specific PCI device in short form
 
     :param  vend:
         the vendor name
@@ -515,6 +524,21 @@ Description
 Walk upwards from \ ``pdev``\  and check for each encountered bridge if it's part
 of a Thunderbolt controller.  Reaching the host bridge means \ ``pdev``\  is not
 Thunderbolt-attached.  (But rather soldered to the mainboard usually.)
+
+.. _`pci_uevent_ers`:
+
+pci_uevent_ers
+==============
+
+.. c:function:: void pci_uevent_ers(struct pci_dev *pdev, enum pci_ers_result err_type)
+
+    emit a uevent during recovery path of pci device
+
+    :param struct pci_dev \*pdev:
+        pci device to check
+
+    :param enum pci_ers_result err_type:
+        type of error event
 
 .. This file was automatic generated / don't edit.
 

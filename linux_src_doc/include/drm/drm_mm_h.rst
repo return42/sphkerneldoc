@@ -496,7 +496,7 @@ drm_mm_insert_node_generic
 Description
 -----------
 
-This is a simplified version of \ :c:func:`drm_mm_insert_node_in_range_generic`\  with no
+This is a simplified version of \ :c:func:`drm_mm_insert_node_in_range`\  with no
 range restrictions applied.
 
 The preallocated node must be cleared to 0.

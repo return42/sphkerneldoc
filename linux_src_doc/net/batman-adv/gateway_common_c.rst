@@ -69,6 +69,31 @@ batadv_gw_tvlv_container_update
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
 
+.. _`batadv_gw_bandwidth_set`:
+
+batadv_gw_bandwidth_set
+=======================
+
+.. c:function:: ssize_t batadv_gw_bandwidth_set(struct net_device *net_dev, char *buff, size_t count)
+
+    Parse and set download/upload gateway bandwidth from supplied string buffer
+
+    :param struct net_device \*net_dev:
+        netdev struct of the soft interface
+
+    :param char \*buff:
+        the buffer containing the user data
+
+    :param size_t count:
+        number of bytes in the buffer
+
+.. _`batadv_gw_bandwidth_set.return`:
+
+Return
+------
+
+'count' on success or a negative error code in case of failure
+
 .. _`batadv_gw_tvlv_ogm_handler_v1`:
 
 batadv_gw_tvlv_ogm_handler_v1

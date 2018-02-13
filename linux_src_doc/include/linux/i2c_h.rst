@@ -1,6 +1,106 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/i2c.h
 
+.. _`i2c_master_recv`:
+
+i2c_master_recv
+===============
+
+.. c:function:: int i2c_master_recv(const struct i2c_client *client, char *buf, int count)
+
+    issue a single I2C message in master receive mode
+
+    :param const struct i2c_client \*client:
+        Handle to slave device
+
+    :param char \*buf:
+        Where to store data read from slave
+
+    :param int count:
+        How many bytes to read, must be less than 64k since msg.len is u16
+
+.. _`i2c_master_recv.description`:
+
+Description
+-----------
+
+Returns negative errno, or else the number of bytes read.
+
+.. _`i2c_master_recv_dmasafe`:
+
+i2c_master_recv_dmasafe
+=======================
+
+.. c:function:: int i2c_master_recv_dmasafe(const struct i2c_client *client, char *buf, int count)
+
+    issue a single I2C message in master receive mode using a DMA safe buffer
+
+    :param const struct i2c_client \*client:
+        Handle to slave device
+
+    :param char \*buf:
+        Where to store data read from slave, must be safe to use with DMA
+
+    :param int count:
+        How many bytes to read, must be less than 64k since msg.len is u16
+
+.. _`i2c_master_recv_dmasafe.description`:
+
+Description
+-----------
+
+Returns negative errno, or else the number of bytes read.
+
+.. _`i2c_master_send`:
+
+i2c_master_send
+===============
+
+.. c:function:: int i2c_master_send(const struct i2c_client *client, const char *buf, int count)
+
+    issue a single I2C message in master transmit mode
+
+    :param const struct i2c_client \*client:
+        Handle to slave device
+
+    :param const char \*buf:
+        Data that will be written to the slave
+
+    :param int count:
+        How many bytes to write, must be less than 64k since msg.len is u16
+
+.. _`i2c_master_send.description`:
+
+Description
+-----------
+
+Returns negative errno, or else the number of bytes written.
+
+.. _`i2c_master_send_dmasafe`:
+
+i2c_master_send_dmasafe
+=======================
+
+.. c:function:: int i2c_master_send_dmasafe(const struct i2c_client *client, const char *buf, int count)
+
+    issue a single I2C message in master transmit mode using a DMA safe buffer
+
+    :param const struct i2c_client \*client:
+        Handle to slave device
+
+    :param const char \*buf:
+        Data that will be written to the slave, must be safe to use with DMA
+
+    :param int count:
+        How many bytes to write, must be less than 64k since msg.len is u16
+
+.. _`i2c_master_send_dmasafe.description`:
+
+Description
+-----------
+
+Returns negative errno, or else the number of bytes written.
+
 .. _`i2c_driver`:
 
 struct i2c_driver
@@ -458,14 +558,15 @@ Definition
 .. code-block:: c
 
     struct i2c_bus_recovery_info {
-        int (*recover_bus)(struct i2c_adapter *);
-        int (*get_scl)(struct i2c_adapter *);
-        void (*set_scl)(struct i2c_adapter *, int val);
-        int (*get_sda)(struct i2c_adapter *);
-        void (*prepare_recovery)(struct i2c_adapter *);
-        void (*unprepare_recovery)(struct i2c_adapter *);
-        int scl_gpio;
-        int sda_gpio;
+        int (*recover_bus)(struct i2c_adapter *adap);
+        int (*get_scl)(struct i2c_adapter *adap);
+        void (*set_scl)(struct i2c_adapter *adap, int val);
+        int (*get_sda)(struct i2c_adapter *adap);
+        void (*set_sda)(struct i2c_adapter *adap, int val);
+        void (*prepare_recovery)(struct i2c_adapter *adap);
+        void (*unprepare_recovery)(struct i2c_adapter *adap);
+        struct gpio_desc *scl_gpiod;
+        struct gpio_desc *sda_gpiod;
     }
 
 .. _`i2c_bus_recovery_info.members`:
@@ -475,19 +576,24 @@ Members
 
 recover_bus
     Recover routine. Either pass driver's \ :c:func:`recover_bus`\  routine, or
-    \ :c:func:`i2c_generic_scl_recovery`\  or \ :c:func:`i2c_generic_gpio_recovery`\ .
+    \ :c:func:`i2c_generic_scl_recovery`\ .
 
 get_scl
     This gets current value of SCL line. Mandatory for generic SCL
-    recovery. Used internally for generic GPIO recovery.
+    recovery. Populated internally for generic GPIO recovery.
 
 set_scl
-    This sets/clears SCL line. Mandatory for generic SCL recovery. Used
-    internally for generic GPIO recovery.
+    This sets/clears the SCL line. Mandatory for generic SCL recovery.
+    Populated internally for generic GPIO recovery.
 
 get_sda
     This gets current value of SDA line. Optional for generic SCL
-    recovery. Used internally, if sda_gpio is a valid GPIO, for generic GPIO
+    recovery. Populated internally, if sda_gpio is a valid GPIO, for generic
+    GPIO recovery.
+
+set_sda
+    This sets/clears the SDA line. Optional for generic SCL recovery.
+    Populated internally, if sda_gpio is a valid GPIO, for generic GPIO
     recovery.
 
 prepare_recovery
@@ -498,11 +604,11 @@ unprepare_recovery
     This will be called after completing recovery. Platform
     may configure padmux here for SDA/SCL line or something else they want.
 
-scl_gpio
-    gpio number of the SCL line. Only required for GPIO recovery.
+scl_gpiod
+    gpiod of the SCL line. Only required for GPIO recovery.
 
-sda_gpio
-    gpio number of the SDA line. Only required for GPIO recovery.
+sda_gpiod
+    gpiod of the SDA line. Only required for GPIO recovery.
 
 .. _`i2c_adapter_quirks`:
 

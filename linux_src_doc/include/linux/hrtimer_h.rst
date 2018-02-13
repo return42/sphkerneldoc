@@ -24,6 +24,7 @@ Definition
         struct hrtimer_clock_base *base;
         u8 state;
         u8 is_rel;
+        u8 is_soft;
     }
 
 .. _`hrtimer.members`:
@@ -55,6 +56,9 @@ state
 
 is_rel
     Set if the timer was armed relative
+
+is_soft
+    Set if hrtimer will be expired in soft interrupt context.
 
 .. _`hrtimer.description`:
 
@@ -120,8 +124,10 @@ Definition
 
     struct hrtimer_clock_base {
         struct hrtimer_cpu_base *cpu_base;
-        int index;
+        unsigned int index;
         clockid_t clockid;
+        seqcount_t seq;
+        struct hrtimer *running;
         struct timerqueue_head active;
         ktime_t (*get_time)(void);
         ktime_t offset;
@@ -142,6 +148,12 @@ index
 clockid
     clock id for per_cpu support
 
+seq
+    seqcount around __run_hrtimer
+
+running
+    pointer to the currently running hrtimer
+
 active
     red black tree root node for the active timers
 
@@ -151,6 +163,110 @@ get_time
 offset
     offset of this clock to the monotonic base
 
+.. _`hrtimer_cpu_base`:
+
+struct hrtimer_cpu_base
+=======================
+
+.. c:type:: struct hrtimer_cpu_base
+
+    the per cpu clock bases
+
+.. _`hrtimer_cpu_base.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hrtimer_cpu_base {
+        raw_spinlock_t lock;
+        unsigned int cpu;
+        unsigned int active_bases;
+        unsigned int clock_was_set_seq;
+        unsigned int hres_active : 1,in_hrtirq : 1,hang_detected : 1, softirq_activated : 1;
+    #ifdef CONFIG_HIGH_RES_TIMERS
+        unsigned int nr_events;
+        unsigned short nr_retries;
+        unsigned short nr_hangs;
+        unsigned int max_hang_time;
+    #endif
+        ktime_t expires_next;
+        struct hrtimer *next_timer;
+        ktime_t softirq_expires_next;
+        struct hrtimer *softirq_next_timer;
+        struct hrtimer_clock_base clock_base[HRTIMER_MAX_CLOCK_BASES];
+    }
+
+.. _`hrtimer_cpu_base.members`:
+
+Members
+-------
+
+lock
+    lock protecting the base and associated clock bases
+    and timers
+
+cpu
+    cpu number
+
+active_bases
+    Bitfield to mark bases with active timers
+
+clock_was_set_seq
+    Sequence counter of clock was set events
+
+hres_active
+    State of high resolution mode
+
+in_hrtirq
+    hrtimer_interrupt() is currently executing
+
+hang_detected
+    The last hrtimer interrupt detected a hang
+
+softirq_activated
+    displays, if the softirq is raised - update of softirq
+    related settings is not required then.
+
+nr_events
+    Total number of hrtimer interrupt events
+
+nr_retries
+    Total number of hrtimer interrupt retries
+
+nr_hangs
+    Total number of hrtimer interrupt hangs
+
+max_hang_time
+    Maximum time spent in hrtimer_interrupt
+
+expires_next
+    absolute time of the next event, is required for remote
+    hrtimer enqueue; it is the total first expiry time (hard
+    and soft hrtimer are taken into account)
+
+next_timer
+    Pointer to the first expiring timer
+
+softirq_expires_next
+    Time to check, if soft queues needs also to be expired
+
+softirq_next_timer
+    Pointer to the first expiring softirq based timer
+
+clock_base
+    array of clock bases for this cpu
+
+.. _`hrtimer_cpu_base.note`:
+
+Note
+----
+
+next_timer is just an optimization for \ :c:func:`__remove_hrtimer`\ .
+      Do not dereference the pointer because it is not reliable on
+      cross cpu removals.
+
 .. _`hrtimer_start`:
 
 hrtimer_start
@@ -158,7 +274,7 @@ hrtimer_start
 
 .. c:function:: void hrtimer_start(struct hrtimer *timer, ktime_t tim, const enum hrtimer_mode mode)
 
-    (re)start an hrtimer on the current CPU
+    (re)start an hrtimer
 
     :param struct hrtimer \*timer:
         the timer to be added
@@ -167,8 +283,9 @@ hrtimer_start
         expiry time
 
     :param const enum hrtimer_mode mode:
-        expiry mode: absolute (HRTIMER_MODE_ABS) or
-        relative (HRTIMER_MODE_REL)
+        timer mode: absolute (HRTIMER_MODE_ABS) or
+        relative (HRTIMER_MODE_REL), and pinned (HRTIMER_MODE_PINNED);
+        softirq based mode is considered for debug purpose only!
 
 .. _`hrtimer_forward_now`:
 

@@ -100,7 +100,7 @@ gpiod_get_direction
 Description
 -----------
 
-Return GPIOF_DIR_IN or GPIOF_DIR_OUT, or an error code in case of error.
+Returns 0 for output, 1 for input, or an error code in case of error.
 
 This function may sleep if \ :c:func:`gpiod_cansleep`\  is true.
 
@@ -169,6 +169,7 @@ Definition
         wait_queue_head_t wait;
         DECLARE_KFIFO(events, struct gpioevent_data, 16);
         struct mutex read_lock;
+        u64 timestamp;
     }
 
 .. _`lineevent_state.members`:
@@ -200,6 +201,11 @@ events
 read_lock
     mutex lock to protect reads from colliding with adding
     new events to the FIFO
+
+timestamp
+    cache for the timestamp storing it between hardirq
+    and IRQ thread, used to bring the timestamp close to the actual
+    event
 
 .. _`gpio_chrdev_open`:
 
@@ -278,7 +284,7 @@ devm_gpiochip_add_data
 
 .. c:function:: int devm_gpiochip_add_data(struct device *dev, struct gpio_chip *chip, void *data)
 
-    Resource manager \ :c:func:`piochip_add_data`\ 
+    Resource manager \ :c:func:`gpiochip_add_data`\ 
 
     :param struct device \*dev:
         the device pointer on which irq_chip belongs to.
@@ -459,7 +465,7 @@ stored inside the gpiochip.
 gpiochip_add_irqchip
 ====================
 
-.. c:function:: int gpiochip_add_irqchip(struct gpio_chip *gpiochip, struct lock_class_key *lock_key)
+.. c:function:: int gpiochip_add_irqchip(struct gpio_chip *gpiochip, struct lock_class_key *lock_key, struct lock_class_key *request_key)
 
     adds an IRQ chip to a GPIO chip
 
@@ -467,7 +473,10 @@ gpiochip_add_irqchip
         the GPIO chip to add the IRQ chip to
 
     :param struct lock_class_key \*lock_key:
-        lockdep class
+        lockdep class for IRQ lock
+
+    :param struct lock_class_key \*request_key:
+        lockdep class for IRQ request
 
 .. _`gpiochip_irqchip_remove`:
 
@@ -493,7 +502,7 @@ This is called only from \ :c:func:`gpiochip_remove`\
 gpiochip_irqchip_add_key
 ========================
 
-.. c:function:: int gpiochip_irqchip_add_key(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool threaded, struct lock_class_key *lock_key)
+.. c:function:: int gpiochip_irqchip_add_key(struct gpio_chip *gpiochip, struct irq_chip *irqchip, unsigned int first_irq, irq_flow_handler_t handler, unsigned int type, bool threaded, struct lock_class_key *lock_key, struct lock_class_key *request_key)
 
     adds an irqchip to a gpiochip
 
@@ -518,7 +527,10 @@ gpiochip_irqchip_add_key
         whether this irqchip uses a nested thread handler
 
     :param struct lock_class_key \*lock_key:
-        lockdep class
+        lockdep class for IRQ lock
+
+    :param struct lock_class_key \*request_key:
+        lockdep class for IRQ request
 
 .. _`gpiochip_irqchip_add_key.description`:
 
@@ -835,6 +847,28 @@ Return
 0 on success, \ ``-ENOTSUPP``\  if the controller doesn't support setting the
 debounce time.
 
+.. _`gpiod_set_transitory`:
+
+gpiod_set_transitory
+====================
+
+.. c:function:: int gpiod_set_transitory(struct gpio_desc *desc, bool transitory)
+
+    Lose or retain GPIO state on suspend or reset
+
+    :param struct gpio_desc \*desc:
+        descriptor of the GPIO for which to configure persistence
+
+    :param bool transitory:
+        True to lose state on suspend or reset, false for persistence
+
+.. _`gpiod_set_transitory.return`:
+
+Return
+------
+
+0 on success, otherwise a negative error code.
+
 .. _`gpiod_is_active_low`:
 
 gpiod_is_active_low
@@ -984,6 +1018,30 @@ regard for its ACTIVE_LOW status.
 
 This function should be called from contexts where we cannot sleep, and will
 complain if the GPIO chip functions potentially sleep.
+
+.. _`gpiod_set_value_nocheck`:
+
+gpiod_set_value_nocheck
+=======================
+
+.. c:function:: void gpiod_set_value_nocheck(struct gpio_desc *desc, int value)
+
+    set a GPIO line value without checking
+
+    :param struct gpio_desc \*desc:
+        the descriptor to set the value on
+
+    :param int value:
+        value to set
+
+.. _`gpiod_set_value_nocheck.description`:
+
+Description
+-----------
+
+This sets the value of a GPIO line backing a descriptor, applying
+different semantic quirks like active low and open drain/source
+handling.
 
 .. _`gpiod_set_value`:
 
@@ -1526,6 +1584,41 @@ Return a valid GPIO descriptor, -ENOENT if no GPIO has been assigned to the
 requested function and/or index, or another \ :c:func:`IS_ERR`\  code if an error
 occurred while trying to acquire the GPIO.
 
+.. _`gpiod_get_from_of_node`:
+
+gpiod_get_from_of_node
+======================
+
+.. c:function:: struct gpio_desc *gpiod_get_from_of_node(struct device_node *node, const char *propname, int index, enum gpiod_flags dflags, const char *label)
+
+    obtain a GPIO from an OF node
+
+    :param struct device_node \*node:
+        handle of the OF node
+
+    :param const char \*propname:
+        name of the DT property representing the GPIO
+
+    :param int index:
+        index of the GPIO to obtain for the consumer
+
+    :param enum gpiod_flags dflags:
+        GPIO initialization flags
+
+    :param const char \*label:
+        label to attach to the requested GPIO
+
+.. _`gpiod_get_from_of_node.return`:
+
+Return
+------
+
+On successful request the GPIO pin is configured in accordance with
+provided \ ``dflags``\ . If the node does not have the requested GPIO
+property, NULL is returned.
+
+In case of error an \ :c:func:`ERR_PTR`\  is returned.
+
 .. _`fwnode_get_named_gpiod`:
 
 fwnode_get_named_gpiod
@@ -1542,7 +1635,7 @@ fwnode_get_named_gpiod
         name of the firmware property representing the GPIO
 
     :param int index:
-        index of the GPIO to obtain in the consumer
+        index of the GPIO to obtain for the consumer
 
     :param enum gpiod_flags dflags:
         GPIO initialization flags
@@ -1556,9 +1649,9 @@ Description
 -----------
 
 This function can be used for drivers that get their configuration
-from firmware.
+from opaque firmware.
 
-Function properly finds the corresponding GPIO using whatever is the
+The function properly finds the corresponding GPIO using whatever is the
 underlying firmware interface and then makes sure that the GPIO
 descriptor is requested before it is returned to the caller.
 

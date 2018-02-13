@@ -66,6 +66,25 @@ Return
 
 Zero if reset success, otherwise will return error.
 
+.. _`amdgpu_virt_wait_reset`:
+
+amdgpu_virt_wait_reset
+======================
+
+.. c:function:: int amdgpu_virt_wait_reset(struct amdgpu_device *adev)
+
+    wait for reset gpu completed
+
+    :param struct amdgpu_device \*adev:
+        *undescribed*
+
+.. _`amdgpu_virt_wait_reset.return`:
+
+Return
+------
+
+Zero if reset success, otherwise will return error.
+
 .. _`amdgpu_virt_alloc_mm_table`:
 
 amdgpu_virt_alloc_mm_table

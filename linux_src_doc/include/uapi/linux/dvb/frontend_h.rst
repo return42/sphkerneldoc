@@ -1397,32 +1397,24 @@ Members
 -------
 
 scale
-    Filled with enum fecap_scale_params - the scale
-    in usage for that parameter
+    Filled with enum fecap_scale_params - the scale in usage
+    for that parameter
 
 {unnamed_union}
     anonymous
 
 uvalue
-    *undescribed*
+    unsigned integer value of the measure, used when \ ``scale``\  is
+    either \ ``FE_SCALE_RELATIVE``\  or \ ``FE_SCALE_COUNTER``\ .
 
 svalue
-    *undescribed*
+    integer value of the measure, for \ ``FE_SCALE_DECIBEL``\ ,
+    used for dB measures. The unit is 0.001 dB.
 
 .. _`dtv_stats.description`:
 
 Description
 -----------
-
-The ``{unnamed_union}`` may have either one of the values below:
-
-\ ``svalue``\ 
-     integer value of the measure, for \ ``FE_SCALE_DECIBEL``\ ,
-     used for dB measures. The unit is 0.001 dB.
-
-\ ``uvalue``\ 
-     unsigned integer value of the measure, used when \ ``scale``\  is
-     either \ ``FE_SCALE_RELATIVE``\  or \ ``FE_SCALE_COUNTER``\ .
 
 For most delivery systems, this will return a single value for each
 parameter.
@@ -1541,22 +1533,30 @@ reserved
 u
     Union with the values for the command.
 
+u.data
+    A unsigned 32 bits integer with command value.
+
+u.buffer
+    Struct to store bigger properties.
+    Currently unused.
+
+u.buffer.data
+    an unsigned 32-bits array.
+
+u.buffer.len
+    number of elements of the buffer.
+
+u.buffer.reserved1
+    Reserved.
+
+u.buffer.reserved2
+    Reserved.
+
+u.st
+    a \ :c:type:`struct dtv_fe_stats <dtv_fe_stats>`\  array of statistics.
+
 result
-    Unused
-
-.. _`dtv_property.description`:
-
-Description
------------
-
-The \ ``u``\  union may have either one of the values below:
-
-\ ``data``\ 
-     an unsigned 32-bits number.
-\ ``st``\ 
-     a \ :c:type:`struct dtv_fe_stats <dtv_fe_stats>`\  array of statistics.
-\ ``buffer``\ 
-     a buffer of up to 32 characters (currently unused).
+    Currently unused.
 
 .. _`dtv_properties`:
 

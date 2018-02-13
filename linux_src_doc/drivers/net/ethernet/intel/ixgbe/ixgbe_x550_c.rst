@@ -525,10 +525,10 @@ ixgbe_setup_mac_link_sfp_x550em
         pointer to hardware structure
 
     :param ixgbe_link_speed speed:
-        *undescribed*
+        the link speed to force
 
     :param __always_unused bool autoneg_wait_to_complete:
-        *undescribed*
+        unused
 
 .. _`ixgbe_setup_mac_link_sfp_x550em.description`:
 
@@ -573,10 +573,10 @@ ixgbe_setup_mac_link_sfp_n
         pointer to hardware structure
 
     :param ixgbe_link_speed speed:
-        *undescribed*
+        link speed
 
     :param __always_unused bool autoneg_wait_to_complete:
-        *undescribed*
+        unused
 
 .. _`ixgbe_setup_mac_link_sfp_n.description`:
 
@@ -598,10 +598,10 @@ ixgbe_setup_mac_link_sfp_x550a
         pointer to hardware structure
 
     :param ixgbe_link_speed speed:
-        *undescribed*
+        link speed
 
     :param __always_unused bool autoneg_wait_to_complete:
-        *undescribed*
+        unused
 
 .. _`ixgbe_setup_mac_link_sfp_x550a.description`:
 
@@ -626,7 +626,7 @@ ixgbe_setup_mac_link_t_X550em
         new link speed
 
     :param bool autoneg_wait:
-        *undescribed*
+        true when waiting for completion is needed
 
 .. _`ixgbe_setup_mac_link_t_x550em.description`:
 
@@ -651,10 +651,10 @@ ixgbe_setup_sgmii
         pointer to hardware structure
 
     :param __always_unused ixgbe_link_speed speed:
-        *undescribed*
+        unused
 
     :param __always_unused bool autoneg_wait_to_complete:
-        *undescribed*
+        unused
 
 .. _`ixgbe_setup_sgmii_fw`:
 
@@ -669,10 +669,10 @@ ixgbe_setup_sgmii_fw
         pointer to hardware structure
 
     :param ixgbe_link_speed speed:
-        *undescribed*
+        the link speed to force
 
     :param bool autoneg_wait:
-        *undescribed*
+        true when waiting for completion is needed
 
 .. _`ixgbe_fc_autoneg_sgmii_x550em_a`:
 
@@ -1099,7 +1099,7 @@ ixgbe_read_phy_reg_x550a
         32 bit address of PHY register to read
 
     :param u32 device_type:
-        *undescribed*
+        5 bit device type
 
     :param u16 \*phy_data:
         Pointer to read data from PHY register

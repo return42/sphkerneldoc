@@ -13,12 +13,12 @@ ttm_bo_cleanup_memtype_use
     :param struct ttm_buffer_object \*bo:
         *undescribed*
 
-.. _`ttm_bo_cleanup_refs_and_unlock`:
+.. _`ttm_bo_cleanup_refs`:
 
-ttm_bo_cleanup_refs_and_unlock
-==============================
+ttm_bo_cleanup_refs
+===================
 
-.. c:function:: int ttm_bo_cleanup_refs_and_unlock(struct ttm_buffer_object *bo, bool interruptible, bool no_wait_gpu)
+.. c:function:: int ttm_bo_cleanup_refs(struct ttm_buffer_object *bo, bool interruptible, bool no_wait_gpu, bool unlock_resv)
 
     If bo idle, remove from delayed- and lru lists, and unref. If not idle, do nothing.
 
@@ -31,23 +31,27 @@ ttm_bo_cleanup_refs_and_unlock
     :param bool no_wait_gpu:
         *undescribed*
 
-.. _`ttm_bo_cleanup_refs_and_unlock.description`:
+    :param bool unlock_resv:
+        *undescribed*
+
+.. _`ttm_bo_cleanup_refs.description`:
 
 Description
 -----------
 
 Must be called with lru_lock and reservation held, this function
-will drop both before returning.
+will drop the lru lock and optionally the reservation lock before returning.
 
 \ ``interruptible``\          Any sleeps should occur interruptibly.
 \ ``no_wait_gpu``\            Never wait for gpu. Return -EBUSY instead.
+\ ``unlock_resv``\            Unlock the reservation lock as well.
 
 .. _`ttm_bo_delayed_delete`:
 
 ttm_bo_delayed_delete
 =====================
 
-.. c:function:: int ttm_bo_delayed_delete(struct ttm_bo_device *bdev, bool remove_all)
+.. c:function:: bool ttm_bo_delayed_delete(struct ttm_bo_device *bdev, bool remove_all)
 
     encountered buffers.
 
@@ -56,6 +60,34 @@ ttm_bo_delayed_delete
 
     :param bool remove_all:
         *undescribed*
+
+.. _`ttm_bo_evict_swapout_allowable`:
+
+ttm_bo_evict_swapout_allowable
+==============================
+
+.. c:function:: bool ttm_bo_evict_swapout_allowable(struct ttm_buffer_object *bo, struct ttm_operation_ctx *ctx, bool *locked)
+
+    :param struct ttm_buffer_object \*bo:
+        *undescribed*
+
+    :param struct ttm_operation_ctx \*ctx:
+        *undescribed*
+
+    :param bool \*locked:
+        *undescribed*
+
+.. _`ttm_bo_evict_swapout_allowable.description`:
+
+Description
+-----------
+
+a. if share same reservation object with ctx->resv, have assumption
+reservation objects should already be locked, so not lock again and
+return true directly when either the opreation allow_reserved_eviction
+or the target bo already is in delayed free list;
+
+b. Otherwise, trylock it.
 
 .. _`ttm_bo_add_move_fence`:
 
@@ -78,7 +110,7 @@ ttm_bo_add_move_fence
 ttm_bo_mem_force_space
 ======================
 
-.. c:function:: int ttm_bo_mem_force_space(struct ttm_buffer_object *bo, uint32_t mem_type, const struct ttm_place *place, struct ttm_mem_reg *mem, bool interruptible, bool no_wait_gpu)
+.. c:function:: int ttm_bo_mem_force_space(struct ttm_buffer_object *bo, uint32_t mem_type, const struct ttm_place *place, struct ttm_mem_reg *mem, struct ttm_operation_ctx *ctx)
 
     space, or we've evicted everything and there isn't enough space.
 
@@ -94,10 +126,7 @@ ttm_bo_mem_force_space
     :param struct ttm_mem_reg \*mem:
         *undescribed*
 
-    :param bool interruptible:
-        *undescribed*
-
-    :param bool no_wait_gpu:
+    :param struct ttm_operation_ctx \*ctx:
         *undescribed*
 
 .. _`ttm_bo_mem_space`:
@@ -105,7 +134,7 @@ ttm_bo_mem_force_space
 ttm_bo_mem_space
 ================
 
-.. c:function:: int ttm_bo_mem_space(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_mem_reg *mem, bool interruptible, bool no_wait_gpu)
+.. c:function:: int ttm_bo_mem_space(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_mem_reg *mem, struct ttm_operation_ctx *ctx)
 
     :param struct ttm_buffer_object \*bo:
         *undescribed*
@@ -116,10 +145,7 @@ ttm_bo_mem_space
     :param struct ttm_mem_reg \*mem:
         *undescribed*
 
-    :param bool interruptible:
-        *undescribed*
-
-    :param bool no_wait_gpu:
+    :param struct ttm_operation_ctx \*ctx:
         *undescribed*
 
 .. _`ttm_bo_mem_space.description`:
@@ -137,11 +163,14 @@ space.
 ttm_bo_swapout
 ==============
 
-.. c:function:: int ttm_bo_swapout(struct ttm_mem_shrink *shrink)
+.. c:function:: int ttm_bo_swapout(struct ttm_bo_global *glob, struct ttm_operation_ctx *ctx)
 
     buffer object on the bo_global::swap_lru list.
 
-    :param struct ttm_mem_shrink \*shrink:
+    :param struct ttm_bo_global \*glob:
+        *undescribed*
+
+    :param struct ttm_operation_ctx \*ctx:
         *undescribed*
 
 .. _`ttm_bo_wait_unreserved`:

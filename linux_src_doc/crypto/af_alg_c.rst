@@ -307,7 +307,7 @@ in areq->outlen before the AIO callback handler is invoked.
 af_alg_poll
 ===========
 
-.. c:function:: unsigned int af_alg_poll(struct file *file, struct socket *sock, poll_table *wait)
+.. c:function:: __poll_t af_alg_poll(struct file *file, struct socket *sock, poll_table *wait)
 
     poll system call handler
 

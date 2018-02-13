@@ -1,16 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: block/scsi_ioctl.c
 
-.. _`omax_sb_len`:
+.. _`sg_scsi_ioctl`:
 
-OMAX_SB_LEN
-===========
+sg_scsi_ioctl
+=============
 
-.. c:function::  OMAX_SB_LEN()
+.. c:function:: int sg_scsi_ioctl(struct request_queue *q, struct gendisk *disk, fmode_t mode, struct scsi_ioctl_command __user *sic)
 
     -  handle deprecated SCSI_IOCTL_SEND_COMMAND ioctl
 
-.. _`omax_sb_len.description`:
+    :param struct request_queue \*q:
+        request queue to send scsi commands down
+
+    :param struct gendisk \*disk:
+        gendisk to operate on (option)
+
+    :param fmode_t mode:
+        mode used to open the file through which the ioctl has been
+        submitted
+
+    :param struct scsi_ioctl_command __user \*sic:
+        userspace structure describing the command to perform
+
+.. _`sg_scsi_ioctl.description`:
 
 Description
 -----------
@@ -24,7 +37,7 @@ driver to use the information contained in it.  A non-NULL \ ``disk``\
 is only allowed if the caller knows that the low level driver doesn't
 need it (e.g. in the scsi subsystem).
 
-.. _`omax_sb_len.notes`:
+.. _`sg_scsi_ioctl.notes`:
 
 Notes
 -----

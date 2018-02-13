@@ -1,6 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/media/rc/rc-core-priv.h
 
+.. _`rc_open`:
+
+rc_open
+=======
+
+.. c:function:: int rc_open(struct rc_dev *rdev)
+
+    Opens a RC device
+
+    :param struct rc_dev \*rdev:
+        pointer to struct rc_dev.
+
+.. _`rc_close`:
+
+rc_close
+========
+
+.. c:function:: void rc_close(struct rc_dev *rdev)
+
+    Closes a RC device
+
+    :param struct rc_dev \*rdev:
+        pointer to struct rc_dev.
+
 .. _`ir_raw_timings_manchester`:
 
 struct ir_raw_timings_manchester
@@ -18,8 +42,8 @@ Definition
 .. code-block:: c
 
     struct ir_raw_timings_manchester {
-        unsigned int leader;
-        unsigned int pulse_space_start:1;
+        unsigned int leader_pulse;
+        unsigned int leader_space;
         unsigned int clock;
         unsigned int invert:1;
         unsigned int trailer_space;
@@ -30,12 +54,12 @@ Definition
 Members
 -------
 
-leader
+leader_pulse
     duration of leader pulse (if any) 0 if continuing
-    existing signal (see \ ``pulse_space_start``\ )
+    existing signal
 
-pulse_space_start
-    1 for starting with pulse (0 for starting with space)
+leader_space
+    duration of leader space (if any)
 
 clock
     duration of each pulse/space in ns

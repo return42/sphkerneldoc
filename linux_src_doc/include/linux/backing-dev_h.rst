@@ -115,11 +115,11 @@ locking.
 inode_to_wb
 ===========
 
-.. c:function:: struct bdi_writeback *inode_to_wb(struct inode *inode)
+.. c:function:: struct bdi_writeback *inode_to_wb(const struct inode *inode)
 
     determine the wb of an inode
 
-    :param struct inode \*inode:
+    :param const struct inode \*inode:
         inode of interest
 
 .. _`inode_to_wb.description`:

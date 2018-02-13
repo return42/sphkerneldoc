@@ -44,6 +44,21 @@ intel_guc_suspend
     :param struct drm_i915_private \*dev_priv:
         i915 device private
 
+.. _`intel_guc_reset_engine`:
+
+intel_guc_reset_engine
+======================
+
+.. c:function:: int intel_guc_reset_engine(struct intel_guc *guc, struct intel_engine_cs *engine)
+
+    ask GuC to reset an engine
+
+    :param struct intel_guc \*guc:
+        intel_guc structure
+
+    :param struct intel_engine_cs \*engine:
+        engine to be reset
+
 .. _`intel_guc_resume`:
 
 intel_guc_resume

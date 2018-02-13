@@ -22,6 +22,7 @@ Definition
         struct nfp_net *nn;
         u32 mask_id_seed;
         u64 flower_version;
+        u64 flower_ext_feats;
         struct nfp_fl_stats_id stats_ids;
         struct nfp_fl_mask_id mask_ids;
         DECLARE_HASHTABLE(mask_table, NFP_FLOWER_MASK_HASH_BITS);
@@ -40,6 +41,8 @@ Definition
         int nfp_mac_off_count;
         struct notifier_block nfp_tun_mac_nb;
         struct notifier_block nfp_tun_neigh_nb;
+        atomic_t reify_replies;
+        wait_queue_head_t reify_wait_queue;
     }
 
 .. _`nfp_flower_priv.members`:
@@ -58,6 +61,9 @@ mask_id_seed
 
 flower_version
     HW version of flower
+
+flower_ext_feats
+    Bitmap of extra features the HW supports
 
 stats_ids
     List of free stats ids
@@ -112,6 +118,13 @@ nfp_tun_mac_nb
 
 nfp_tun_neigh_nb
     Notifier to monitor neighbour state
+
+reify_replies
+    atomically stores the number of replies received
+    from firmware for repr reify
+
+reify_wait_queue
+    wait queue for repr reify response counting
 
 .. This file was automatic generated / don't edit.
 

@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/dcache.c
 
-.. _`__d_drop`:
+.. _`___d_drop`:
 
-__d_drop
-========
+___d_drop
+=========
 
-.. c:function:: void __d_drop(struct dentry *dentry)
+.. c:function:: void ___d_drop(struct dentry *dentry)
 
     drop a dentry
 
     :param struct dentry \*dentry:
         dentry to drop
 
-.. _`__d_drop.description`:
+.. _`___d_drop.description`:
 
 Description
 -----------
@@ -27,7 +27,9 @@ just make the cache lookup fail.
 \ :c:func:`d_drop`\  is used mainly for stuff that wants to invalidate a dentry for some
 reason (NFS timeouts or autofs deletes).
 
-__d_drop requires dentry->d_lock.
+__d_drop requires dentry->d_lock
+___d_drop doesn't mark dentry as "unhashed"
+  (dentry->d_hash.pprev will be LIST_POISON2, not NULL).
 
 .. _`__d_find_alias`:
 
@@ -806,8 +808,7 @@ the beginning of the name. The sequence number check at the caller will
 retry it again when a \ :c:func:`d_move`\  does happen. So any garbage in the buffer
 due to mismatched pointer and length will be discarded.
 
-Data dependency barrier is needed to make sure that we see that terminating
-NUL.  Alpha strikes again, film at 11...
+Load acquire is needed to make sure that we see that terminating NUL.
 
 .. _`prepend_path`:
 

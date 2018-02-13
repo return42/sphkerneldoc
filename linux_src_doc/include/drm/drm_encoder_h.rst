@@ -169,7 +169,8 @@ possible_clones
     are stable and hence known before registering all objects.
 
 crtc
-    currently bound CRTC
+    Currently bound CRTC, only really meaningful for non-atomicdrivers.  Atomic drivers should instead check
+    \ :c:type:`drm_connector_state.crtc <drm_connector_state>`\ .
 
 bridge
     bridge associated to the encoder

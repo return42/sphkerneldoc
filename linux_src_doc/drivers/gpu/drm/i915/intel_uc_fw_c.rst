@@ -69,11 +69,11 @@ Cleans up uC firmware by releasing the firmware GEM obj.
 intel_uc_fw_dump
 ================
 
-.. c:function:: void intel_uc_fw_dump(struct intel_uc_fw *uc_fw, struct drm_printer *p)
+.. c:function:: void intel_uc_fw_dump(const struct intel_uc_fw *uc_fw, struct drm_printer *p)
 
     dump information about uC firmware
 
-    :param struct intel_uc_fw \*uc_fw:
+    :param const struct intel_uc_fw \*uc_fw:
         uC firmware
 
     :param struct drm_printer \*p:

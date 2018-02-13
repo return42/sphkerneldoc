@@ -9,8 +9,11 @@ gvt
 
     aperture_gm_c
     cfg_space_c
+    debugfs_c
     display_c
+    dmabuf_h
     edid_c
+    fb_decoder_c
     firmware_c
     gtt_c
     gvt_c
@@ -18,8 +21,8 @@ gvt
     handlers_c
     interrupt_c
     mmio_c
+    mmio_context_c
     mpt_h
     opregion_c
-    render_c
     scheduler_c
     vgpu_c

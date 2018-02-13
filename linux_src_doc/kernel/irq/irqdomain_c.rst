@@ -809,15 +809,15 @@ through the parent domain.
 irq_domain_activate_irq
 =======================
 
-.. c:function:: int irq_domain_activate_irq(struct irq_data *irq_data, bool early)
+.. c:function:: int irq_domain_activate_irq(struct irq_data *irq_data, bool reserve)
 
     Call domain_ops->activate recursively to activate interrupt
 
     :param struct irq_data \*irq_data:
-        outermost irq_data associated with interrupt
+        Outermost irq_data associated with interrupt
 
-    :param bool early:
-        *undescribed*
+    :param bool reserve:
+        If set only reserve an interrupt vector instead of assigning one
 
 .. _`irq_domain_activate_irq.description`:
 

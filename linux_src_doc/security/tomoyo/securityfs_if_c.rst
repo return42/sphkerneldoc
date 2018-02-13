@@ -124,7 +124,7 @@ tomoyo_release
 tomoyo_poll
 ===========
 
-.. c:function:: unsigned int tomoyo_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t tomoyo_poll(struct file *file, poll_table *wait)
 
     poll() for /sys/kernel/security/tomoyo/ interface.
 
@@ -139,8 +139,8 @@ tomoyo_poll
 Description
 -----------
 
-Returns POLLIN \| POLLRDNORM \| POLLOUT \| POLLWRNORM if ready to read/write,
-POLLOUT \| POLLWRNORM otherwise.
+Returns EPOLLIN \| EPOLLRDNORM \| EPOLLOUT \| EPOLLWRNORM if ready to read/write,
+EPOLLOUT \| EPOLLWRNORM otherwise.
 
 .. _`tomoyo_read`:
 

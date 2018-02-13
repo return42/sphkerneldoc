@@ -220,6 +220,29 @@ NB right now we have no ability to mux data from multiple devices.
 So if the channels requested come from different devices this will
 fail.
 
+.. _`iio_channel_cb_set_buffer_watermark`:
+
+iio_channel_cb_set_buffer_watermark
+===================================
+
+.. c:function:: int iio_channel_cb_set_buffer_watermark(struct iio_cb_buffer *cb_buffer, size_t watermark)
+
+    set the buffer watermark.
+
+    :param struct iio_cb_buffer \*cb_buffer:
+        The callback buffer from whom we want the channel
+        information.
+
+    :param size_t watermark:
+        buffer watermark in bytes.
+
+.. _`iio_channel_cb_set_buffer_watermark.description`:
+
+Description
+-----------
+
+This function allows to configure the buffer watermark.
+
 .. _`iio_channel_release_all_cb`:
 
 iio_channel_release_all_cb
@@ -377,6 +400,64 @@ means that this value will have the correct unit and not some device internal
 representation. If the device does not support reporting a processed value
 the function will query the raw value and the channels scale and offset and
 do the appropriate transformation.
+
+.. _`iio_write_channel_attribute`:
+
+iio_write_channel_attribute
+===========================
+
+.. c:function:: int iio_write_channel_attribute(struct iio_channel *chan, int val, int val2, enum iio_chan_info_enum attribute)
+
+    Write values to the device attribute.
+
+    :param struct iio_channel \*chan:
+        The channel being queried.
+
+    :param int val:
+        Value being written.
+
+    :param int val2:
+        Value being written.val2 use depends on attribute type.
+
+    :param enum iio_chan_info_enum attribute:
+        info attribute to be read.
+
+.. _`iio_write_channel_attribute.description`:
+
+Description
+-----------
+
+Returns an error code or 0.
+
+.. _`iio_read_channel_attribute`:
+
+iio_read_channel_attribute
+==========================
+
+.. c:function:: int iio_read_channel_attribute(struct iio_channel *chan, int *val, int *val2, enum iio_chan_info_enum attribute)
+
+    Read values from the device attribute.
+
+    :param struct iio_channel \*chan:
+        The channel being queried.
+
+    :param int \*val:
+        Value being written.
+
+    :param int \*val2:
+        Value being written.Val2 use depends on attribute type.
+
+    :param enum iio_chan_info_enum attribute:
+        info attribute to be written.
+
+.. _`iio_read_channel_attribute.description`:
+
+Description
+-----------
+
+Returns an error code if failed. Else returns a description of what is in val
+and val2, such as IIO_VAL_INT_PLUS_MICRO telling us we have a value of val
++ val2/1e6
 
 .. _`iio_write_channel_raw`:
 

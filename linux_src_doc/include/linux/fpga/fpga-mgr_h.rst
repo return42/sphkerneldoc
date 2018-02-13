@@ -98,6 +98,14 @@ Definition
         u32 enable_timeout_us;
         u32 disable_timeout_us;
         u32 config_complete_timeout_us;
+        char *firmware_name;
+        struct sg_table *sgt;
+        const char *buf;
+        size_t count;
+        struct device *dev;
+    #ifdef CONFIG_OF
+        struct device_node *overlay;
+    #endif
     }
 
 .. _`fpga_image_info.members`:
@@ -117,6 +125,24 @@ disable_timeout_us
 config_complete_timeout_us
     maximum time for FPGA to switch to operating
     status in the write_complete op.
+
+firmware_name
+    name of FPGA image firmware file
+
+sgt
+    scatter/gather table containing FPGA image
+
+buf
+    contiguous buffer containing FPGA image
+
+count
+    size of buf
+
+dev
+    device that owns this
+
+overlay
+    Device Tree overlay
 
 .. _`fpga_manager_ops`:
 
@@ -142,6 +168,7 @@ Definition
         int (*write_sg)(struct fpga_manager *mgr, struct sg_table *sgt);
         int (*write_complete)(struct fpga_manager *mgr, struct fpga_image_info *info);
         void (*fpga_remove)(struct fpga_manager *mgr);
+        const struct attribute_group **groups;
     }
 
 .. _`fpga_manager_ops.members`:
@@ -169,6 +196,9 @@ write_complete
 
 fpga_remove
     optional: Set FPGA into a specific state during driver remove
+
+groups
+    optional attribute groups.
 
 .. _`fpga_manager_ops.description`:
 

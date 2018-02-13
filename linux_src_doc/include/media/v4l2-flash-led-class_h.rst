@@ -167,6 +167,30 @@ ctrls
     array of pointers to controls, whose values define
     the sub-device state
 
+.. _`v4l2_subdev_to_v4l2_flash`:
+
+v4l2_subdev_to_v4l2_flash
+=========================
+
+.. c:function:: struct v4l2_flash *v4l2_subdev_to_v4l2_flash(struct v4l2_subdev *sd)
+
+    Returns a \ :c:type:`struct v4l2_flash <v4l2_flash>`\  from the \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  embedded on it.
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+.. _`v4l2_ctrl_to_v4l2_flash`:
+
+v4l2_ctrl_to_v4l2_flash
+=======================
+
+.. c:function:: struct v4l2_flash *v4l2_ctrl_to_v4l2_flash(struct v4l2_ctrl *c)
+
+    Returns a \ :c:type:`struct v4l2_flash <v4l2_flash>`\  from the \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\  embedded on it.
+
+    :param struct v4l2_ctrl \*c:
+        pointer to \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\ 
+
 .. _`v4l2_flash_init`:
 
 v4l2_flash_init

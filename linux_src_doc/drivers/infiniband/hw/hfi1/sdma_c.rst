@@ -181,6 +181,27 @@ in a round robin fashion.
 If an error occurs the map change is not done and the mapping is
 not changed.
 
+.. _`sdma_clean`:
+
+sdma_clean
+==========
+
+.. c:function:: void sdma_clean(struct hfi1_devdata *dd, size_t num_engines)
+
+    :param struct hfi1_devdata \*dd:
+        struct hfi1_devdata
+
+    :param size_t num_engines:
+        num sdma engines
+
+.. _`sdma_clean.description`:
+
+Description
+-----------
+
+This routine can be called regardless of the success of
+\ :c:func:`sdma_init`\ 
+
 .. _`sdma_init`:
 
 sdma_init

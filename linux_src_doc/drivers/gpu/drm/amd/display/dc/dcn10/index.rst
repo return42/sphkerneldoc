@@ -8,4 +8,4 @@ dcn10
     :maxdepth: 1
 
     dcn10_opp_c
-    dcn10_timing_generator_c
+    dcn10_optc_c

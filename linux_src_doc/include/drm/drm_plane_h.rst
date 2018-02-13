@@ -503,16 +503,17 @@ format_default
     driver hasn't supplied supported formats for the plane
 
 modifiers
-    *undescribed*
+    array of modifiers supported by this plane
 
 modifier_count
-    *undescribed*
+    number of modifiers supported
 
 crtc
-    currently bound CRTC
+    Currently bound CRTC, only really meaningful for non-atomicdrivers.  Atomic drivers should instead check \ :c:type:`drm_plane_state.crtc <drm_plane_state>`\ .
 
 fb
-    currently bound fb
+    Currently bound framebuffer, only really meaningful fornon-atomic drivers.  Atomic drivers should instead check
+    \ :c:type:`drm_plane_state.fb <drm_plane_state>`\ .
 
 old_fb
     Temporary tracking of the old fb while a modeset is ongoing. Used by

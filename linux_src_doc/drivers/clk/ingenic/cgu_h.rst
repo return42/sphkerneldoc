@@ -26,6 +26,7 @@ Definition
         u8 bypass_bit;
         u8 enable_bit;
         u8 stable_bit;
+        bool no_bypass_bit;
     }
 
 .. _`ingenic_cgu_pll_info.members`:
@@ -84,6 +85,9 @@ enable_bit
 
 stable_bit
     the index of the stable bit in the PLL control register
+
+no_bypass_bit
+    if set, the PLL has no bypass functionality
 
 .. _`ingenic_cgu_mux_info`:
 
@@ -255,7 +259,7 @@ Definition
 .. code-block:: c
 
     struct ingenic_cgu_custom_info {
-        struct clk_ops *clk_ops;
+        const struct clk_ops *clk_ops;
     }
 
 .. _`ingenic_cgu_custom_info.members`:

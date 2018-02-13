@@ -47,7 +47,7 @@ Return
 scsi_dev_info_list_add_keyed
 ============================
 
-.. c:function:: int scsi_dev_info_list_add_keyed(int compatible, char *vendor, char *model, char *strflags, blist_flags_t flags, int key)
+.. c:function:: int scsi_dev_info_list_add_keyed(int compatible, char *vendor, char *model, char *strflags, blist_flags_t flags, enum scsi_devinfo_key key)
 
     add one dev_info list entry.
 
@@ -66,7 +66,7 @@ scsi_dev_info_list_add_keyed
     :param blist_flags_t flags:
         if strflags NULL, use this flag value
 
-    :param int key:
+    :param enum scsi_devinfo_key key:
         specify list to use
 
 .. _`scsi_dev_info_list_add_keyed.description`:
@@ -92,7 +92,7 @@ Return
 scsi_dev_info_list_find
 =======================
 
-.. c:function:: struct scsi_dev_info_list *scsi_dev_info_list_find(const char *vendor, const char *model, int key)
+.. c:function:: struct scsi_dev_info_list *scsi_dev_info_list_find(const char *vendor, const char *model, enum scsi_devinfo_key key)
 
     find a matching dev_info list entry.
 
@@ -102,7 +102,7 @@ scsi_dev_info_list_find
     :param const char \*model:
         full model (product) string
 
-    :param int key:
+    :param enum scsi_devinfo_key key:
         specify list to use
 
 .. _`scsi_dev_info_list_find.description`:
@@ -125,7 +125,7 @@ pointer to matching entry, or ERR_PTR on failure.
 scsi_dev_info_list_del_keyed
 ============================
 
-.. c:function:: int scsi_dev_info_list_del_keyed(char *vendor, char *model, int key)
+.. c:function:: int scsi_dev_info_list_del_keyed(char *vendor, char *model, enum scsi_devinfo_key key)
 
     remove one dev_info list entry.
 
@@ -135,7 +135,7 @@ scsi_dev_info_list_del_keyed
     :param char \*model:
         model (product) string
 
-    :param int key:
+    :param enum scsi_devinfo_key key:
         specify list to use
 
 .. _`scsi_dev_info_list_del_keyed.description`:
@@ -215,7 +215,7 @@ Description
 scsi_get_device_flags_keyed
 ===========================
 
-.. c:function:: blist_flags_t scsi_get_device_flags_keyed(struct scsi_device *sdev, const unsigned char *vendor, const unsigned char *model, int key)
+.. c:function:: blist_flags_t scsi_get_device_flags_keyed(struct scsi_device *sdev, const unsigned char *vendor, const unsigned char *model, enum scsi_devinfo_key key)
 
     get device specific flags from the dynamic device list
 
@@ -228,7 +228,7 @@ scsi_get_device_flags_keyed
     :param const unsigned char \*model:
         model name
 
-    :param int key:
+    :param enum scsi_devinfo_key key:
         list to look up
 
 .. _`scsi_get_device_flags_keyed.description`:
@@ -258,11 +258,11 @@ scsi_exit_devinfo
 scsi_dev_info_add_list
 ======================
 
-.. c:function:: int scsi_dev_info_add_list(int key, const char *name)
+.. c:function:: int scsi_dev_info_add_list(enum scsi_devinfo_key key, const char *name)
 
     add a new devinfo list
 
-    :param int key:
+    :param enum scsi_devinfo_key key:
         key of the list to add
 
     :param const char \*name:
@@ -281,11 +281,11 @@ key is already registered to a list, or other error on failure.
 scsi_dev_info_remove_list
 =========================
 
-.. c:function:: int scsi_dev_info_remove_list(int key)
+.. c:function:: int scsi_dev_info_remove_list(enum scsi_devinfo_key key)
 
     destroy an added devinfo list
 
-    :param int key:
+    :param enum scsi_devinfo_key key:
         key of the list to destroy
 
 .. _`scsi_dev_info_remove_list.description`:

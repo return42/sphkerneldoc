@@ -169,6 +169,90 @@ added to the atomic states is expected to have an implementation of these
 hooks and pass a pointer to it's drm_private_state_funcs struct to
 \ :c:func:`drm_atomic_get_private_obj_state`\ .
 
+.. _`drm_private_obj`:
+
+struct drm_private_obj
+======================
+
+.. c:type:: struct drm_private_obj
+
+    base struct for driver private atomic object
+
+.. _`drm_private_obj.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_private_obj {
+        struct drm_private_state *state;
+        const struct drm_private_state_funcs *funcs;
+    }
+
+.. _`drm_private_obj.members`:
+
+Members
+-------
+
+state
+    Current atomic state for this driver private object.
+
+funcs
+
+    Functions to manipulate the state of this driver private object, see
+    \ :c:type:`struct drm_private_state_funcs <drm_private_state_funcs>`\ .
+
+.. _`drm_private_obj.description`:
+
+Description
+-----------
+
+A driver private object is initialized by calling
+\ :c:func:`drm_atomic_private_obj_init`\  and cleaned up by calling
+\ :c:func:`drm_atomic_private_obj_fini`\ .
+
+Currently only tracks the state update functions and the opaque driver
+private state itself, but in the future might also track which
+\ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\  is required to duplicate and update this object's state.
+
+.. _`drm_private_state`:
+
+struct drm_private_state
+========================
+
+.. c:type:: struct drm_private_state
+
+    base struct for driver private object state
+
+.. _`drm_private_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_private_state {
+        struct drm_atomic_state *state;
+    }
+
+.. _`drm_private_state.members`:
+
+Members
+-------
+
+state
+    backpointer to global drm_atomic_state
+
+.. _`drm_private_state.description`:
+
+Description
+-----------
+
+Currently only contains a backpointer to the overall atomic update, but in
+the future also might hold synchronization information similar to e.g.
+\ :c:type:`drm_crtc.commit <drm_crtc>`\ .
+
 .. _`drm_atomic_state`:
 
 struct drm_atomic_state
@@ -256,6 +340,15 @@ commit_work
 
     Work item which can be used by the driver or helpers to execute the
     commit without blocking.
+
+.. _`drm_atomic_state.description`:
+
+Description
+-----------
+
+States are added to an atomic update by calling \ :c:func:`drm_atomic_get_crtc_state`\ ,
+\ :c:func:`drm_atomic_get_plane_state`\ , \ :c:func:`drm_atomic_get_connector_state`\ , or for
+private state structures, \ :c:func:`drm_atomic_get_private_obj_state`\ .
 
 .. _`drm_crtc_commit_get`:
 

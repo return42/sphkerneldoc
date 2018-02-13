@@ -142,7 +142,7 @@ ixgbe_start_mac_link_82598
         pointer to hardware structure
 
     :param bool autoneg_wait_to_complete:
-        *undescribed*
+        true when waiting for completion is needed
 
 .. _`ixgbe_start_mac_link_82598.description`:
 
@@ -476,7 +476,7 @@ ixgbe_read_i2c_sff8472_82598
         byte offset at address 0xA2
 
     :param u8 \*sff8472_data:
-        *undescribed*
+        value read
 
 .. _`ixgbe_read_i2c_sff8472_82598.description`:
 

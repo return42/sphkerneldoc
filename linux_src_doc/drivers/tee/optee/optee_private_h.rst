@@ -18,18 +18,12 @@ Definition
 .. code-block:: c
 
     struct optee_supp {
+        struct mutex mutex;
         struct tee_context *ctx;
-        struct mutex ctx_mutex;
-        u32 func;
-        u32 ret;
-        size_t num_params;
-        struct tee_param *param;
-        bool req_posted;
-        bool supp_next_send;
-        struct mutex thrd_mutex;
-        struct mutex supp_mutex;
-        struct completion data_to_supp;
-        struct completion data_from_supp;
+        int req_id;
+        struct list_head reqs;
+        struct idr idr;
+        struct completion reqs_c;
     }
 
 .. _`optee_supp.members`:
@@ -37,41 +31,26 @@ Definition
 Members
 -------
 
+mutex
+    held while accessing content of this struct
+
 ctx
     *undescribed*
 
-ctx_mutex
-    held while accessing \ ``ctx``\ 
+req_id
+    current request id if supplicant is doing synchronous
+    communication, else -1
 
-func
-    supplicant function id to call
+reqs
+    queued request not yet retrieved by supplicant
 
-ret
-    call return value
+idr
+    IDR holding all requests currently being processed
+    by supplicant
 
-num_params
-    number of elements in \ ``param``\ 
-
-param
-    parameters for \ ``func``\ 
-
-req_posted
-    if true, a request has been posted to the supplicant
-
-supp_next_send
-    if true, next step is for supplicant to send response
-
-thrd_mutex
-    held by the thread doing a request to supplicant
-
-supp_mutex
-    held by supplicant while operating on this struct
-
-data_to_supp
-    supplicant is waiting on this for next request
-
-data_from_supp
-    requesting thread is waiting on this to get the result
+reqs_c
+    completion used by supplicant when waiting for a
+    request to be queued.
 
 .. _`optee`:
 
@@ -98,6 +77,7 @@ Definition
         struct optee_supp supp;
         struct tee_shm_pool *pool;
         void *memremaped_shm;
+        u32 sec_caps;
     }
 
 .. _`optee.members`:
@@ -130,6 +110,10 @@ pool
 
 memremaped_shm
     *undescribed*
+
+sec_caps
+    secure world capabilities defined by
+    OPTEE_SMC_SEC_CAP\_\* in optee_smc.h
 
 .. This file was automatic generated / don't edit.
 

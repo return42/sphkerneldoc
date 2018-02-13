@@ -1,6 +1,101 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: lib/idr.c
 
+.. _`idr_alloc_u32`:
+
+idr_alloc_u32
+=============
+
+.. c:function:: int idr_alloc_u32(struct idr *idr, void *ptr, u32 *nextid, unsigned long max, gfp_t gfp)
+
+    Allocate an ID.
+
+    :param struct idr \*idr:
+        IDR handle.
+
+    :param void \*ptr:
+        Pointer to be associated with the new ID.
+
+    :param u32 \*nextid:
+        Pointer to an ID.
+
+    :param unsigned long max:
+        The maximum ID to allocate (inclusive).
+
+    :param gfp_t gfp:
+        Memory allocation flags.
+
+.. _`idr_alloc_u32.description`:
+
+Description
+-----------
+
+Allocates an unused ID in the range specified by \ ``nextid``\  and \ ``max``\ .
+Note that \ ``max``\  is inclusive whereas the \ ``end``\  parameter to \ :c:func:`idr_alloc`\ 
+is exclusive.  The new ID is assigned to \ ``nextid``\  before the pointer
+is inserted into the IDR, so if \ ``nextid``\  points into the object pointed
+to by \ ``ptr``\ , a concurrent lookup will not find an uninitialised ID.
+
+The caller should provide their own locking to ensure that two
+concurrent modifications to the IDR are not possible.  Read-only
+accesses to the IDR may be done under the RCU read lock or may
+exclude simultaneous writers.
+
+.. _`idr_alloc_u32.return`:
+
+Return
+------
+
+0 if an ID was allocated, -ENOMEM if memory allocation failed,
+or -ENOSPC if no free IDs could be found.  If an error occurred,
+\ ``nextid``\  is unchanged.
+
+.. _`idr_alloc`:
+
+idr_alloc
+=========
+
+.. c:function:: int idr_alloc(struct idr *idr, void *ptr, int start, int end, gfp_t gfp)
+
+    Allocate an ID.
+
+    :param struct idr \*idr:
+        IDR handle.
+
+    :param void \*ptr:
+        Pointer to be associated with the new ID.
+
+    :param int start:
+        The minimum ID (inclusive).
+
+    :param int end:
+        The maximum ID (exclusive).
+
+    :param gfp_t gfp:
+        Memory allocation flags.
+
+.. _`idr_alloc.description`:
+
+Description
+-----------
+
+Allocates an unused ID in the range specified by \ ``start``\  and \ ``end``\ .  If
+\ ``end``\  is <= 0, it is treated as one larger than \ ``INT_MAX``\ .  This allows
+callers to use \ ``start``\  + N as \ ``end``\  as long as N is within integer range.
+
+The caller should provide their own locking to ensure that two
+concurrent modifications to the IDR are not possible.  Read-only
+accesses to the IDR may be done under the RCU read lock or may
+exclude simultaneous writers.
+
+.. _`idr_alloc.return`:
+
+Return
+------
+
+The newly allocated ID, -ENOMEM if memory allocation failed,
+or -ENOSPC if no free IDs could be found.
+
 .. _`idr_alloc_cyclic`:
 
 idr_alloc_cyclic
@@ -8,31 +103,114 @@ idr_alloc_cyclic
 
 .. c:function:: int idr_alloc_cyclic(struct idr *idr, void *ptr, int start, int end, gfp_t gfp)
 
-    allocate new idr entry in a cyclical fashion
+    Allocate an ID cyclically.
 
     :param struct idr \*idr:
-        idr handle
+        IDR handle.
 
     :param void \*ptr:
-        pointer to be associated with the new id
+        Pointer to be associated with the new ID.
 
     :param int start:
-        the minimum id (inclusive)
+        The minimum ID (inclusive).
 
     :param int end:
-        the maximum id (exclusive)
+        The maximum ID (exclusive).
 
     :param gfp_t gfp:
-        memory allocation flags
+        Memory allocation flags.
 
 .. _`idr_alloc_cyclic.description`:
 
 Description
 -----------
 
-Allocates an ID larger than the last ID allocated if one is available.
-If not, it will attempt to allocate the smallest ID that is larger or
-equal to \ ``start``\ .
+Allocates an unused ID in the range specified by \ ``nextid``\  and \ ``end``\ .  If
+\ ``end``\  is <= 0, it is treated as one larger than \ ``INT_MAX``\ .  This allows
+callers to use \ ``start``\  + N as \ ``end``\  as long as N is within integer range.
+The search for an unused ID will start at the last ID allocated and will
+wrap around to \ ``start``\  if no free IDs are found before reaching \ ``end``\ .
+
+The caller should provide their own locking to ensure that two
+concurrent modifications to the IDR are not possible.  Read-only
+accesses to the IDR may be done under the RCU read lock or may
+exclude simultaneous writers.
+
+.. _`idr_alloc_cyclic.return`:
+
+Return
+------
+
+The newly allocated ID, -ENOMEM if memory allocation failed,
+or -ENOSPC if no free IDs could be found.
+
+.. _`idr_remove`:
+
+idr_remove
+==========
+
+.. c:function:: void *idr_remove(struct idr *idr, unsigned long id)
+
+    Remove an ID from the IDR.
+
+    :param struct idr \*idr:
+        IDR handle.
+
+    :param unsigned long id:
+        Pointer ID.
+
+.. _`idr_remove.description`:
+
+Description
+-----------
+
+Removes this ID from the IDR.  If the ID was not previously in the IDR,
+this function returns \ ``NULL``\ .
+
+Since this function modifies the IDR, the caller should provide their
+own locking to ensure that concurrent modification of the same IDR is
+not possible.
+
+.. _`idr_remove.return`:
+
+Return
+------
+
+The pointer formerly associated with this ID.
+
+.. _`idr_find`:
+
+idr_find
+========
+
+.. c:function:: void *idr_find(const struct idr *idr, unsigned long id)
+
+    Return pointer for given ID.
+
+    :param const struct idr \*idr:
+        IDR handle.
+
+    :param unsigned long id:
+        Pointer ID.
+
+.. _`idr_find.description`:
+
+Description
+-----------
+
+Looks up the pointer associated with this ID.  A \ ``NULL``\  pointer may
+indicate that \ ``id``\  is not allocated or that the \ ``NULL``\  pointer was
+associated with this ID.
+
+This function can be called under \ :c:func:`rcu_read_lock`\ , given that the leaf
+pointers lifetimes are correctly managed.
+
+.. _`idr_find.return`:
+
+Return
+------
+
+The pointer associated with this ID.
 
 .. _`idr_for_each`:
 
@@ -41,16 +219,16 @@ idr_for_each
 
 .. c:function:: int idr_for_each(const struct idr *idr, int (*fn)(int id, void *p, void *data), void *data)
 
-    iterate through all stored pointers
+    Iterate through all stored pointers.
 
     :param const struct idr \*idr:
-        idr handle
+        IDR handle.
 
     :param int (\*fn)(int id, void \*p, void \*data):
-        function to be called for each pointer
+        Function to be called for each pointer.
 
     :param void \*data:
-        data passed to callback function
+        Data passed to callback function.
 
 .. _`idr_for_each.description`:
 
@@ -58,7 +236,7 @@ Description
 -----------
 
 The callback function will be called for each entry in \ ``idr``\ , passing
-the id, the pointer and the data pointer passed to this function.
+the ID, the entry and \ ``data``\ .
 
 If \ ``fn``\  returns anything other than \ ``0``\ , the iteration stops and that
 value is returned from this function.
@@ -75,15 +253,40 @@ idr_get_next
 
 .. c:function:: void *idr_get_next(struct idr *idr, int *nextid)
 
-    Find next populated entry
+    Find next populated entry.
 
     :param struct idr \*idr:
-        idr handle
+        IDR handle.
 
     :param int \*nextid:
-        Pointer to lowest possible ID to return
+        Pointer to an ID.
 
 .. _`idr_get_next.description`:
+
+Description
+-----------
+
+Returns the next populated entry in the tree with an ID greater than
+or equal to the value pointed to by \ ``nextid``\ .  On exit, \ ``nextid``\  is updated
+to the ID of the found value.  To use in a loop, the value pointed to by
+nextid must be incremented by the user.
+
+.. _`idr_get_next_ul`:
+
+idr_get_next_ul
+===============
+
+.. c:function:: void *idr_get_next_ul(struct idr *idr, unsigned long *nextid)
+
+    Find next populated entry.
+
+    :param struct idr \*idr:
+        IDR handle.
+
+    :param unsigned long \*nextid:
+        Pointer to an ID.
+
+.. _`idr_get_next_ul.description`:
 
 Description
 -----------
@@ -98,18 +301,18 @@ nextid must be incremented by the user.
 idr_replace
 ===========
 
-.. c:function:: void *idr_replace(struct idr *idr, void *ptr, int id)
+.. c:function:: void *idr_replace(struct idr *idr, void *ptr, unsigned long id)
 
-    replace pointer for given id
+    replace pointer for given ID.
 
     :param struct idr \*idr:
-        idr handle
+        IDR handle.
 
     :param void \*ptr:
-        New pointer to associate with the ID
+        New pointer to associate with the ID.
 
-    :param int id:
-        Lookup key
+    :param unsigned long id:
+        ID to change.
 
 .. _`idr_replace.description`:
 
@@ -127,7 +330,7 @@ Return
 ------
 
 the old value on success.  \ ``-ENOENT``\  indicates that \ ``id``\  was not
-found.  \ ``-EINVAL``\  indicates that \ ``id``\  or \ ``ptr``\  were not valid.
+found.  \ ``-EINVAL``\  indicates that \ ``ptr``\  was not valid.
 
 .. _`ida-description`:
 

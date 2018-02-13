@@ -67,8 +67,8 @@ Definition
 
     struct scif_pollepd {
         scif_epd_t epd;
-        short events;
-        short revents;
+        __poll_t events;
+        __poll_t revents;
     }
 
 .. _`scif_pollepd.members`:
@@ -1736,8 +1736,8 @@ of scif_pollepd is an endpoint descriptor of an open endpoint. The field
 events is a bitmask specifying the events which the application is
 interested in. The field revents is an output parameter, filled by the
 kernel with the events that actually occurred. The bits returned in revents
-can include any of those specified in events, or one of the values POLLERR,
-POLLHUP, or POLLNVAL. (These three bits are meaningless in the events
+can include any of those specified in events, or one of the values EPOLLERR,
+EPOLLHUP, or EPOLLNVAL. (These three bits are meaningless in the events
 field, and will be set in the revents field whenever the corresponding
 condition is true.)
 
@@ -1749,20 +1749,20 @@ The timeout argument specifies an upper limit on the time for which
 timeout means an infinite timeout.
 
 The following bits may be set in events and returned in revents.
-POLLIN - Data may be received without blocking. For a connected
+EPOLLIN - Data may be received without blocking. For a connected
 endpoint, this means that \ :c:func:`scif_recv`\  may be called without blocking. For a
 listening endpoint, this means that \ :c:func:`scif_accept`\  may be called without
 blocking.
-POLLOUT - Data may be sent without blocking. For a connected endpoint, this
-means that \ :c:func:`scif_send`\  may be called without blocking. POLLOUT may also be
+EPOLLOUT - Data may be sent without blocking. For a connected endpoint, this
+means that \ :c:func:`scif_send`\  may be called without blocking. EPOLLOUT may also be
 used to block waiting for a non-blocking connect to complete. This bit value
 has no meaning for a listening endpoint and is ignored if specified.
 
 The following bits are only returned in revents, and are ignored if set in
 events.
-POLLERR - An error occurred on the endpoint
-POLLHUP - The connection to the peer endpoint was disconnected
-POLLNVAL - The specified endpoint descriptor is invalid.
+EPOLLERR - An error occurred on the endpoint
+EPOLLHUP - The connection to the peer endpoint was disconnected
+EPOLLNVAL - The specified endpoint descriptor is invalid.
 
 .. _`scif_poll.return`:
 

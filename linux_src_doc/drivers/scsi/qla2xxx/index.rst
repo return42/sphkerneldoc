@@ -14,6 +14,7 @@ qla2xxx
     qla_iocb_c
     qla_isr_c
     qla_mbx_c
+    qla_mid_c
     qla_mr_c
     qla_nx2_c
     qla_nx_c

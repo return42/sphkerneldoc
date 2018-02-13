@@ -50,20 +50,29 @@ be kfree'd.
 tpm_chip_find_get
 =================
 
-.. c:function:: struct tpm_chip *tpm_chip_find_get(int chip_num)
+.. c:function:: struct tpm_chip *tpm_chip_find_get(struct tpm_chip *chip)
 
-    return tpm_chip for a given chip number
+    find and reserve a TPM chip
 
-    :param int chip_num:
-        id to find
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
 .. _`tpm_chip_find_get.description`:
 
 Description
 -----------
 
-The return'd chip has been tpm_try_get_ops'd and must be released via
-tpm_put_ops
+Finds a TPM chip and reserves its class device and operations. The chip must
+be released with \ :c:func:`tpm_chip_put_ops`\  after use.
+
+.. _`tpm_chip_find_get.return`:
+
+Return
+------
+
+A reserved \ :c:type:`struct tpm_chip <tpm_chip>`\  instance.
+\ ``NULL``\  if a chip is not found.
+\ ``NULL``\  if the chip is not available.
 
 .. _`tpm_dev_release`:
 

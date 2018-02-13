@@ -7,4 +7,5 @@ panel
 .. toctree::
     :maxdepth: 1
 
+    panel-ilitek-ili9322_c
     panel-raspberrypi-touchscreen_c

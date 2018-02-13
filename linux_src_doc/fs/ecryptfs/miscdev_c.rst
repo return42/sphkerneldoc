@@ -6,7 +6,7 @@
 ecryptfs_miscdev_poll
 =====================
 
-.. c:function:: unsigned int ecryptfs_miscdev_poll(struct file *file, poll_table *pt)
+.. c:function:: __poll_t ecryptfs_miscdev_poll(struct file *file, poll_table *pt)
 
     :param struct file \*file:
         dev file

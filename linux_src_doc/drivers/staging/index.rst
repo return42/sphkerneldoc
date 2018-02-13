@@ -18,11 +18,13 @@ staging
     fwserial/index
     greybus/index
     iio/index
+    ipx/index
     ks7010/index
     lustre/index
     media/index
     most/index
     mt29f_spinand/index
+    ncpfs/index
     nvec/index
     octeon/index
     octeon-usb/index
@@ -34,7 +36,6 @@ staging
     rtlwifi/index
     rts5208/index
     skein/index
-    unisys/index
     vboxvideo/index
     vc04_services/index
     vt6655/index

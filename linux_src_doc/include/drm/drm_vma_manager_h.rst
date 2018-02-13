@@ -115,11 +115,11 @@ memory.
 drm_vma_node_start
 ==================
 
-.. c:function:: unsigned long drm_vma_node_start(struct drm_vma_offset_node *node)
+.. c:function:: unsigned long drm_vma_node_start(const struct drm_vma_offset_node *node)
 
     Return start address for page-based addressing
 
-    :param struct drm_vma_offset_node \*node:
+    :param const struct drm_vma_offset_node \*node:
         Node to inspect
 
 .. _`drm_vma_node_start.description`:

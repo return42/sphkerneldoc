@@ -170,7 +170,7 @@ errno
 clean_journal
 =============
 
-.. c:function:: int clean_journal(struct gfs2_jdesc *jd, struct gfs2_log_header_host *head)
+.. c:function:: void clean_journal(struct gfs2_jdesc *jd, struct gfs2_log_header_host *head)
 
     mark a dirty journal as being clean
 

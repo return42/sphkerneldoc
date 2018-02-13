@@ -180,7 +180,6 @@ Definition
         size_t nfunctions;
         const struct chv_gpio_pinrange *gpio_ranges;
         size_t ngpio_ranges;
-        size_t ngpios;
         size_t nirqs;
         acpi_adr_space_type acpi_space_id;
     }
@@ -216,9 +215,6 @@ gpio_ranges
 
 ngpio_ranges
     Number of GPIO ranges
-
-ngpios
-    Total number of GPIOs in this community
 
 nirqs
     Total number of IRQs this community can generate

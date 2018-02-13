@@ -42,17 +42,17 @@ qp_ctx
 i40iw_record_ird_ord
 ====================
 
-.. c:function:: void i40iw_record_ird_ord(struct i40iw_cm_node *cm_node, u16 conn_ird, u16 conn_ord)
+.. c:function:: void i40iw_record_ird_ord(struct i40iw_cm_node *cm_node, u32 conn_ird, u32 conn_ord)
 
     Record IRD/ORD passed in
 
     :param struct i40iw_cm_node \*cm_node:
         connection's node
 
-    :param u16 conn_ird:
+    :param u32 conn_ird:
         connection IRD
 
-    :param u16 conn_ord:
+    :param u32 conn_ord:
         connection ORD
 
 .. _`i40iw_copy_ip_ntohl`:
@@ -1050,7 +1050,7 @@ i40iw_make_listen_node
 i40iw_create_cm_node
 ====================
 
-.. c:function:: struct i40iw_cm_node *i40iw_create_cm_node(struct i40iw_cm_core *cm_core, struct i40iw_device *iwdev, u16 private_data_len, void *private_data, struct i40iw_cm_info *cm_info)
+.. c:function:: struct i40iw_cm_node *i40iw_create_cm_node(struct i40iw_cm_core *cm_core, struct i40iw_device *iwdev, struct iw_cm_conn_param *conn_param, struct i40iw_cm_info *cm_info)
 
     make a connection node with params
 
@@ -1060,11 +1060,8 @@ i40iw_create_cm_node
     :param struct i40iw_device \*iwdev:
         iwarp device structure
 
-    :param u16 private_data_len:
-        len to provate data for mpa request
-
-    :param void \*private_data:
-        pointer to private data for connection
+    :param struct iw_cm_conn_param \*conn_param:
+        upper layer connection parameters
 
     :param struct i40iw_cm_info \*cm_info:
         quad info for connection
@@ -1380,17 +1377,27 @@ it will allocate and add a new child listen node to the
 parent listen node. The listen_list_lock is assumed to be
 held when called.
 
-.. _`i40iw_cm_disconnect_all`:
+.. _`i40iw_cm_teardown_connections`:
 
-i40iw_cm_disconnect_all
-=======================
+i40iw_cm_teardown_connections
+=============================
 
-.. c:function:: void i40iw_cm_disconnect_all(struct i40iw_device *iwdev)
+.. c:function:: void i40iw_cm_teardown_connections(struct i40iw_device *iwdev, u32 *ipaddr, struct i40iw_cm_info *nfo, bool disconnect_all)
 
-    disconnect all connected qp's
+    teardown QPs
 
     :param struct i40iw_device \*iwdev:
         device pointer
+
+    :param u32 \*ipaddr:
+        Pointer to IPv4 or IPv6 address
+
+    :param struct i40iw_cm_info \*nfo:
+        *undescribed*
+
+    :param bool disconnect_all:
+        flag indicating disconnect all QPs
+        teardown QPs where source or destination addr matches ip addr
 
 .. _`i40iw_if_notify`:
 

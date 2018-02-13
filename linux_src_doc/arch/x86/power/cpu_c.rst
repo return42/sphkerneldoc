@@ -40,5 +40,13 @@ __restore_processor_state
     :param struct saved_context \*ctxt:
         *undescribed*
 
+.. _`__restore_processor_state.description`:
+
+Description
+-----------
+
+The asm code that gets us here will have restored a usable GDT, although
+it will be pointing to the wrong alias.
+
 .. This file was automatic generated / don't edit.
 

@@ -206,7 +206,7 @@ Returns nothing.
 tomoyo_poll_log
 ===============
 
-.. c:function:: unsigned int tomoyo_poll_log(struct file *file, poll_table *wait)
+.. c:function:: __poll_t tomoyo_poll_log(struct file *file, poll_table *wait)
 
     Wait for an audit log.
 
@@ -221,7 +221,7 @@ tomoyo_poll_log
 Description
 -----------
 
-Returns POLLIN \| POLLRDNORM when ready to read an audit log.
+Returns EPOLLIN \| EPOLLRDNORM when ready to read an audit log.
 
 .. This file was automatic generated / don't edit.
 

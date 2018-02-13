@@ -26,13 +26,14 @@ Attempts to acquire the semaphore with number of jiffies. If no more
 tasks are allowed to acquire the semaphore, calling this function will
 put the task to sleep. If the semaphore is not released within the
 specified number of jiffies, this function returns.
-Acquires the semaphore without jiffies. If no more tasks are allowed
-to acquire the semaphore, calling this function will put the task to
-sleep until the semaphore is released.
 If the semaphore is not released within the specified number of jiffies,
-this function returns -ETIME.
-If the sleep is interrupted by a signal, this function will return -EINTR.
-It returns 0 if the semaphore was acquired successfully.
+this function returns -ETIME. If the sleep is interrupted by a signal,
+this function will return -EINTR. It returns 0 if the semaphore was
+acquired successfully.
+
+Acquires the semaphore without jiffies. Try to acquire the semaphore
+atomically. Returns 0 if the semaphore has been acquired successfully
+or 1 if it it cannot be acquired.
 
 .. _`nau8825_sema_release`:
 

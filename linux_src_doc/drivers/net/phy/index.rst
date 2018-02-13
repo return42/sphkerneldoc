@@ -15,5 +15,7 @@ phy
     phy-core_c
     phy_c
     phy_device_c
+    phylink_c
     rockchip_c
+    sfp-bus_c
     swphy_c

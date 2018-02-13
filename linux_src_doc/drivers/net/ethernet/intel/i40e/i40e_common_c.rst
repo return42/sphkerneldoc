@@ -1746,7 +1746,7 @@ Get the device capabilities descriptions from the firmware
 i40e_aq_update_nvm
 ==================
 
-.. c:function:: i40e_status i40e_aq_update_nvm(struct i40e_hw *hw, u8 module_pointer, u32 offset, u16 length, void *data, bool last_command, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: i40e_status i40e_aq_update_nvm(struct i40e_hw *hw, u8 module_pointer, u32 offset, u16 length, void *data, bool last_command, u8 preservation_flags, struct i40e_asq_cmd_details *cmd_details)
 
     :param struct i40e_hw \*hw:
         pointer to the hw struct
@@ -1765,6 +1765,9 @@ i40e_aq_update_nvm
 
     :param bool last_command:
         tells if this is the last command in a series
+
+    :param u8 preservation_flags:
+        Preservation mode flags
 
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
@@ -1880,6 +1883,22 @@ Description
 -----------
 
 Start the embedded LLDP Agent on all ports.
+
+.. _`i40e_aq_set_dcb_parameters`:
+
+i40e_aq_set_dcb_parameters
+==========================
+
+.. c:function:: enum i40e_status_code i40e_aq_set_dcb_parameters(struct i40e_hw *hw, bool dcb_enable, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param bool dcb_enable:
+        True if DCB configuration needs to be applied
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
 
 .. _`i40e_aq_get_cee_dcb_config`:
 
@@ -2940,14 +2959,14 @@ Description
 
 Read the external PHY register.
 
-.. _`i40e_aq_write_ppp`:
+.. _`i40e_aq_write_ddp`:
 
-i40e_aq_write_ppp
+i40e_aq_write_ddp
 =================
 
-.. c:function:: enum i40e_status_code i40e_aq_write_ppp(struct i40e_hw *hw, void *buff, u16 buff_size, u32 track_id, u32 *error_offset, u32 *error_info, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: enum i40e_status_code i40e_aq_write_ddp(struct i40e_hw *hw, void *buff, u16 buff_size, u32 track_id, u32 *error_offset, u32 *error_info, struct i40e_asq_cmd_details *cmd_details)
 
-    Write pipeline personalization profile (ppp)
+    Write dynamic device personalization (ddp)
 
     :param struct i40e_hw \*hw:
         pointer to the hw struct
@@ -2970,14 +2989,14 @@ i40e_aq_write_ppp
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
 
-.. _`i40e_aq_get_ppp_list`:
+.. _`i40e_aq_get_ddp_list`:
 
-i40e_aq_get_ppp_list
+i40e_aq_get_ddp_list
 ====================
 
-.. c:function:: enum i40e_status_code i40e_aq_get_ppp_list(struct i40e_hw *hw, void *buff, u16 buff_size, u8 flags, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: enum i40e_status_code i40e_aq_get_ddp_list(struct i40e_hw *hw, void *buff, u16 buff_size, u8 flags, struct i40e_asq_cmd_details *cmd_details)
 
-    Read pipeline personalization profile (ppp)
+    Read dynamic device personalization (ddp)
 
     :param struct i40e_hw \*hw:
         pointer to the hw struct

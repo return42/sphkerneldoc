@@ -194,36 +194,6 @@ Description
 
 Free a doorbell allocated for use by the driver (all asics)
 
-.. _`radeon_doorbell_get_kfd_info`:
-
-radeon_doorbell_get_kfd_info
-============================
-
-.. c:function:: void radeon_doorbell_get_kfd_info(struct radeon_device *rdev, phys_addr_t *aperture_base, size_t *aperture_size, size_t *start_offset)
-
-    Report doorbell configuration required to setup KFD
-
-    :param struct radeon_device \*rdev:
-        radeon_device pointer
-
-    :param phys_addr_t \*aperture_base:
-        output returning doorbell aperture base physical address
-
-    :param size_t \*aperture_size:
-        output returning doorbell aperture size in bytes
-
-    :param size_t \*start_offset:
-        output returning # of doorbell bytes reserved for radeon.
-
-.. _`radeon_doorbell_get_kfd_info.description`:
-
-Description
------------
-
-Radeon and the KFD share the doorbell aperture. Radeon sets it up,
-takes doorbells required for its own rings and reports the setup to KFD.
-Radeon reserved doorbells are at the start of the doorbell aperture.
-
 .. _`radeon_wb_disable`:
 
 radeon_wb_disable

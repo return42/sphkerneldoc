@@ -511,7 +511,7 @@ iscsi_session_setup
         session can queue
 
     :param int dd_size:
-        *undescribed*
+        private driver data size, added to session allocation size
 
     :param int cmd_task_size:
         LLD task private data size
@@ -520,7 +520,7 @@ iscsi_session_setup
         initial CmdSN
 
     :param unsigned int id:
-        *undescribed*
+        target ID to add to this session
 
 .. _`iscsi_session_setup.description`:
 
@@ -574,14 +574,7 @@ iscsi_conn_teardown
     teardown iscsi connection
 
     :param struct iscsi_cls_conn \*cls_conn:
-        *undescribed*
-
-.. _`iscsi_conn_teardown.cls_conn`:
-
-cls_conn
---------
-
-iscsi class connection
+        iscsi class connection
 
 .. _`iscsi_conn_teardown.todo`:
 

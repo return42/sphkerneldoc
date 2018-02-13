@@ -433,6 +433,7 @@ Definition
         struct s5p_mfc_hw_cmds *mfc_cmds;
         const struct s5p_mfc_regs *mfc_regs;
         enum s5p_mfc_fw_ver fw_ver;
+        bool fw_get_done;
         bool risc_on;
     }
 
@@ -561,6 +562,11 @@ mfc_regs
 
 fw_ver
     loaded firmware sub-version
+    \ ``fw_get_done``\          flag set when \ :c:func:`request_firmware`\  is complete and
+    copied into fw_buf
+
+fw_get_done
+    *undescribed*
 
 risc_on
     *undescribed*

@@ -128,44 +128,44 @@ Return
 
 MFN on success, INTEL_GVT_INVALID_ADDR if failed.
 
-.. _`intel_gvt_hypervisor_set_wp_page`:
+.. _`intel_gvt_hypervisor_enable_page_track`:
 
-intel_gvt_hypervisor_set_wp_page
-================================
+intel_gvt_hypervisor_enable_page_track
+======================================
 
-.. c:function:: int intel_gvt_hypervisor_set_wp_page(struct intel_vgpu *vgpu, struct intel_vgpu_guest_page *p)
+.. c:function:: int intel_gvt_hypervisor_enable_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t)
 
     set a guest page to write-protected
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param struct intel_vgpu_guest_page \*p:
-        intel_vgpu_guest_page
+    :param struct intel_vgpu_page_track \*t:
+        page track data structure
 
-.. _`intel_gvt_hypervisor_set_wp_page.return`:
+.. _`intel_gvt_hypervisor_enable_page_track.return`:
 
 Return
 ------
 
 Zero on success, negative error code if failed.
 
-.. _`intel_gvt_hypervisor_unset_wp_page`:
+.. _`intel_gvt_hypervisor_disable_page_track`:
 
-intel_gvt_hypervisor_unset_wp_page
-==================================
+intel_gvt_hypervisor_disable_page_track
+=======================================
 
-.. c:function:: int intel_gvt_hypervisor_unset_wp_page(struct intel_vgpu *vgpu, struct intel_vgpu_guest_page *p)
+.. c:function:: int intel_gvt_hypervisor_disable_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t)
 
     remove the write-protection of a guest page
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param struct intel_vgpu_guest_page \*p:
-        intel_vgpu_guest_page
+    :param struct intel_vgpu_page_track \*t:
+        page track data structure
 
-.. _`intel_gvt_hypervisor_unset_wp_page.return`:
+.. _`intel_gvt_hypervisor_disable_page_track.return`:
 
 Return
 ------
@@ -308,6 +308,85 @@ Return
 ------
 
 Zero on success, negative error code if failed.
+
+.. _`intel_gvt_hypervisor_set_opregion`:
+
+intel_gvt_hypervisor_set_opregion
+=================================
+
+.. c:function:: int intel_gvt_hypervisor_set_opregion(struct intel_vgpu *vgpu)
+
+    Set opregion for guest
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_gvt_hypervisor_set_opregion.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
+.. _`intel_gvt_hypervisor_get_vfio_device`:
+
+intel_gvt_hypervisor_get_vfio_device
+====================================
+
+.. c:function:: int intel_gvt_hypervisor_get_vfio_device(struct intel_vgpu *vgpu)
+
+    increase vfio device ref count
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_gvt_hypervisor_get_vfio_device.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
+.. _`intel_gvt_hypervisor_put_vfio_device`:
+
+intel_gvt_hypervisor_put_vfio_device
+====================================
+
+.. c:function:: void intel_gvt_hypervisor_put_vfio_device(struct intel_vgpu *vgpu)
+
+    decrease vfio device ref count
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_gvt_hypervisor_put_vfio_device.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
+.. _`intel_gvt_hypervisor_is_valid_gfn`:
+
+intel_gvt_hypervisor_is_valid_gfn
+=================================
+
+.. c:function:: bool intel_gvt_hypervisor_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn)
+
+    check if a visible gfn
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+    :param unsigned long gfn:
+        guest PFN
+
+.. _`intel_gvt_hypervisor_is_valid_gfn.return`:
+
+Return
+------
+
+true on valid gfn, false on not.
 
 .. This file was automatic generated / don't edit.
 

@@ -6,15 +6,15 @@
 brcmf_sdiod_sglist_rw
 =====================
 
-.. c:function:: int brcmf_sdiod_sglist_rw(struct brcmf_sdio_dev *sdiodev, uint fn, bool write, u32 addr, struct sk_buff_head *pktlist)
+.. c:function:: int brcmf_sdiod_sglist_rw(struct brcmf_sdio_dev *sdiodev, struct sdio_func *func, bool write, u32 addr, struct sk_buff_head *pktlist)
 
     SDIO interface function for block data access
 
     :param struct brcmf_sdio_dev \*sdiodev:
         brcmfmac sdio device
 
-    :param uint fn:
-        SDIO function number
+    :param struct sdio_func \*func:
+        SDIO function
 
     :param bool write:
         direction flag

@@ -744,7 +744,7 @@ ixgbe_shift_in_eeprom_bits
         pointer to hardware structure
 
     :param u16 count:
-        *undescribed*
+        number of bits to shift
 
 .. _`ixgbe_raise_eeprom_clk`:
 
@@ -774,7 +774,7 @@ ixgbe_lower_eeprom_clk
         pointer to hardware structure
 
     :param u32 \*eec:
-        *undescribed*
+        EEC's current value
 
 .. _`ixgbe_release_eeprom`:
 
@@ -949,7 +949,7 @@ ixgbe_set_mta
         pointer to hardware structure
 
     :param u8 \*mc_addr:
-        *undescribed*
+        Multicast address
 
 .. _`ixgbe_set_mta.description`:
 
@@ -1537,7 +1537,8 @@ ixgbe_find_vlvf_slot
         VLAN id to write to VLAN filter
 
     :param bool vlvf_bypass:
-        *undescribed*
+        true to find vlanid only, false returns first empty slot if
+        vlanid not found
 
 .. _`ixgbe_find_vlvf_slot.description`:
 
@@ -1704,7 +1705,7 @@ ixgbe_set_vlan_anti_spoofing
         enable or disable switch for VLAN anti-spoofing
 
     :param int vf:
-        *undescribed*
+        Virtual Function pool - VF Pool to set for VLAN anti-spoofing
 
 .. _`ixgbe_get_device_caps_generic`:
 
@@ -1968,6 +1969,72 @@ Description
 
 Inits the thermal sensor thresholds according to the NVM map
 and save off the threshold and location values into mac.thermal_sensor_data
+
+.. _`ixgbe_get_orom_version`:
+
+ixgbe_get_orom_version
+======================
+
+.. c:function:: void ixgbe_get_orom_version(struct ixgbe_hw *hw, struct ixgbe_nvm_version *nvm_ver)
+
+    Return option ROM from EEPROM
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+    :param struct ixgbe_nvm_version \*nvm_ver:
+        pointer to output structure
+
+.. _`ixgbe_get_orom_version.description`:
+
+Description
+-----------
+
+if valid option ROM version, nvm_ver->or_valid set to true
+else nvm_ver->or_valid is false.
+
+.. _`ixgbe_get_oem_prod_version`:
+
+ixgbe_get_oem_prod_version
+==========================
+
+.. c:function:: void ixgbe_get_oem_prod_version(struct ixgbe_hw *hw, struct ixgbe_nvm_version *nvm_ver)
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+    :param struct ixgbe_nvm_version \*nvm_ver:
+        pointer to output structure
+
+.. _`ixgbe_get_oem_prod_version.description`:
+
+Description
+-----------
+
+if valid OEM product version, nvm_ver->oem_valid set to true
+else nvm_ver->oem_valid is false.
+
+.. _`ixgbe_get_etk_id`:
+
+ixgbe_get_etk_id
+================
+
+.. c:function:: void ixgbe_get_etk_id(struct ixgbe_hw *hw, struct ixgbe_nvm_version *nvm_ver)
+
+    Return Etrack ID from EEPROM
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+    :param struct ixgbe_nvm_version \*nvm_ver:
+        pointer to output structure
+
+.. _`ixgbe_get_etk_id.description`:
+
+Description
+-----------
+
+word read errors will return 0xFFFF
 
 .. _`ixgbe_setup_mac_link_multispeed_fiber`:
 

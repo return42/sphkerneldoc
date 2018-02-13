@@ -85,6 +85,31 @@ Return
 false if the packet is to be accepted.
 true if the packet is to be ignored.
 
+.. _`batadv_check_management_packet`:
+
+batadv_check_management_packet
+==============================
+
+.. c:function:: bool batadv_check_management_packet(struct sk_buff *skb, struct batadv_hard_iface *hard_iface, int header_len)
+
+    Check preconditions for management packets
+
+    :param struct sk_buff \*skb:
+        incoming packet buffer
+
+    :param struct batadv_hard_iface \*hard_iface:
+        incoming hard interface
+
+    :param int header_len:
+        minimal header length of packet type
+
+.. _`batadv_check_management_packet.return`:
+
+Return
+------
+
+true when management preconditions are met, false otherwise
+
 .. _`batadv_recv_my_icmp_packet`:
 
 batadv_recv_my_icmp_packet
@@ -107,6 +132,28 @@ Return
 
 NET_RX_SUCCESS if the packet has been consumed or NET_RX_DROP
 otherwise.
+
+.. _`batadv_recv_icmp_packet`:
+
+batadv_recv_icmp_packet
+=======================
+
+.. c:function:: int batadv_recv_icmp_packet(struct sk_buff *skb, struct batadv_hard_iface *recv_if)
+
+    Process incoming icmp packet
+
+    :param struct sk_buff \*skb:
+        incoming packet buffer
+
+    :param struct batadv_hard_iface \*recv_if:
+        incoming hard interface
+
+.. _`batadv_recv_icmp_packet.return`:
+
+Return
+------
+
+NET_RX_SUCCESS on success or NET_RX_DROP in case of failure
 
 .. _`batadv_check_unicast_packet`:
 
@@ -270,6 +317,28 @@ Return
 NET_RX_SUCCESS if the packet has been consumed or NET_RX_DROP
 otherwise.
 
+.. _`batadv_recv_unicast_packet`:
+
+batadv_recv_unicast_packet
+==========================
+
+.. c:function:: int batadv_recv_unicast_packet(struct sk_buff *skb, struct batadv_hard_iface *recv_if)
+
+    Process incoming unicast packet
+
+    :param struct sk_buff \*skb:
+        incoming packet buffer
+
+    :param struct batadv_hard_iface \*recv_if:
+        incoming hard interface
+
+.. _`batadv_recv_unicast_packet.return`:
+
+Return
+------
+
+NET_RX_SUCCESS on success or NET_RX_DROP in case of failure
+
 .. _`batadv_recv_unicast_tvlv`:
 
 batadv_recv_unicast_tvlv
@@ -323,6 +392,28 @@ Return
 ------
 
 NET_RX_DROP if the skb is not consumed, NET_RX_SUCCESS otherwise.
+
+.. _`batadv_recv_bcast_packet`:
+
+batadv_recv_bcast_packet
+========================
+
+.. c:function:: int batadv_recv_bcast_packet(struct sk_buff *skb, struct batadv_hard_iface *recv_if)
+
+    Process incoming broadcast packet
+
+    :param struct sk_buff \*skb:
+        incoming packet buffer
+
+    :param struct batadv_hard_iface \*recv_if:
+        incoming hard interface
+
+.. _`batadv_recv_bcast_packet.return`:
+
+Return
+------
+
+NET_RX_SUCCESS on success or NET_RX_DROP in case of failure
 
 .. This file was automatic generated / don't edit.
 

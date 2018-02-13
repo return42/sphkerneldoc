@@ -93,6 +93,7 @@ Definition
         struct net_device *netdev;
         enum nfp_port_type type;
         unsigned long flags;
+        unsigned long tc_offload_cnt;
         struct nfp_app *app;
         struct devlink_port dl_port;
         union {
@@ -123,6 +124,10 @@ type
 
 flags
     port flags
+
+tc_offload_cnt
+    number of active TC offloads, how offloads are counted
+    is not defined, use as a boolean
 
 app
     backpointer to the app structure

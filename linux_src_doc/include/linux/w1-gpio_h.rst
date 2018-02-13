@@ -18,10 +18,9 @@ Definition
 .. code-block:: c
 
     struct w1_gpio_platform_data {
-        unsigned int pin;
-        unsigned int is_open_drain:1;
+        struct gpio_desc *gpiod;
+        struct gpio_desc *pullup_gpiod;
         void (*enable_external_pullup)(int enable);
-        unsigned int ext_pullup_enable_pin;
         unsigned int pullup_duration;
     }
 
@@ -30,16 +29,13 @@ Definition
 Members
 -------
 
-pin
-    GPIO pin to use
-
-is_open_drain
-    GPIO pin is configured as open drain
-
-enable_external_pullup
+gpiod
     *undescribed*
 
-ext_pullup_enable_pin
+pullup_gpiod
+    *undescribed*
+
+enable_external_pullup
     *undescribed*
 
 pullup_duration

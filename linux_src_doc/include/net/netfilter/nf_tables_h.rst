@@ -95,12 +95,12 @@ Definition
 
     struct nft_ctx {
         struct net *net;
-        struct nft_af_info *afi;
         struct nft_table *table;
         struct nft_chain *chain;
         const struct nlattr * const *nla;
         u32 portid;
         u32 seq;
+        u8 family;
         bool report;
     }
 
@@ -111,9 +111,6 @@ Members
 
 net
     net namespace
-
-afi
-    address family info
 
 table
     the table the chain is contained in
@@ -129,6 +126,9 @@ portid
 
 seq
     netlink sequence number
+
+family
+    protocol family
 
 report
     notify via unicast netlink message
@@ -465,6 +465,7 @@ Definition
         struct list_head list;
         struct list_head bindings;
         char *name;
+        u64 handle;
         u32 ktype;
         u32 dtype;
         u32 objtype;
@@ -496,6 +497,9 @@ bindings
 
 name
     name of the set
+
+handle
+    unique handle of the set
 
 ktype
     key type (numeric type defined by userspace, not used in the kernel)
@@ -1062,7 +1066,7 @@ hook_mask
     mask of valid hooks
 
 hooks
-    hookfn overrides
+    array of hook functions
 
 .. _`nft_base_chain`:
 
@@ -1081,7 +1085,7 @@ Definition
 .. code-block:: c
 
     struct nft_base_chain {
-        struct nf_hook_ops ops[NFT_HOOK_OPS_MAX];
+        struct nf_hook_ops ops;
         const struct nf_chain_type *type;
         u8 policy;
         u8 flags;
@@ -1137,9 +1141,11 @@ Definition
         struct list_head chains;
         struct list_head sets;
         struct list_head objects;
+        struct list_head flowtables;
         u64 hgenerator;
+        u64 handle;
         u32 use;
-        u16 flags:14, genmask:2;
+        u16 family:6,flags:8, genmask:2;
         char *name;
     }
 
@@ -1160,11 +1166,20 @@ sets
 objects
     stateful objects in the table
 
+flowtables
+    flow tables in the table
+
 hgenerator
     handle generator state
 
+handle
+    table handle
+
 use
     number of chain references to this table
+
+family
+    *undescribed*
 
 flags
     table flag (see enum nft_table_flags)
@@ -1174,66 +1189,6 @@ genmask
 
 name
     name of the table
-
-.. _`nft_af_info`:
-
-struct nft_af_info
-==================
-
-.. c:type:: struct nft_af_info
-
-    nf_tables address family info
-
-.. _`nft_af_info.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct nft_af_info {
-        struct list_head list;
-        int family;
-        unsigned int nhooks;
-        struct module *owner;
-        struct list_head tables;
-        u32 flags;
-        unsigned int nops;
-        void (*hook_ops_init)(struct nf_hook_ops *, unsigned int);
-        nf_hookfn *hooks[NF_MAX_HOOKS];
-    }
-
-.. _`nft_af_info.members`:
-
-Members
--------
-
-list
-    used internally
-
-family
-    address family
-
-nhooks
-    number of hooks in this family
-
-owner
-    module owner
-
-tables
-    used internally
-
-flags
-    family flags
-
-nops
-    number of hook ops in this family
-
-hook_ops_init
-    initialization function for chain hook ops
-
-hooks
-    hookfn overrides for packet validation
 
 .. _`nft_object`:
 
@@ -1256,6 +1211,7 @@ Definition
         char *name;
         struct nft_table *table;
         u32 genmask:2, use:30;
+        u64 handle;
         const struct nft_object_ops *ops ____cacheline_aligned;
         unsigned char data[] __attribute__((aligned(__alignof__(u64))));
     }
@@ -1280,11 +1236,14 @@ genmask
 use
     number of references to this stateful object
 
+handle
+    unique object handle
+
 ____cacheline_aligned
     *undescribed*
 
 data
-    pointer to object data
+    object data, layout depends on type
 
 .. _`nft_object_type`:
 
@@ -1385,6 +1344,73 @@ dump
 
 type
     *undescribed*
+
+.. _`nft_flowtable`:
+
+struct nft_flowtable
+====================
+
+.. c:type:: struct nft_flowtable
+
+    nf_tables flow table
+
+.. _`nft_flowtable.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nft_flowtable {
+        struct list_head list;
+        struct nft_table *table;
+        char *name;
+        int hooknum;
+        int priority;
+        int ops_len;
+        u32 genmask:2, use:30;
+        u64 handle;
+        struct nf_hook_ops *ops ____cacheline_aligned;
+        struct nf_flowtable data;
+    }
+
+.. _`nft_flowtable.members`:
+
+Members
+-------
+
+list
+    flow table list node in table list
+
+table
+    the table the flow table is contained in
+
+name
+    name of this flow table
+
+hooknum
+    hook number
+
+priority
+    hook priority
+
+ops_len
+    number of hooks in array
+
+genmask
+    generation mask
+
+use
+    number of references to this flow table
+
+handle
+    unique object handle
+
+____cacheline_aligned
+    *undescribed*
+
+data
+    rhashtable and garbage collector
 
 .. _`nft_traceinfo`:
 

@@ -31,14 +31,7 @@ cpuidle_switch_governor
 
     :param struct cpuidle_governor \*gov:
         the new target governor
-
-.. _`cpuidle_switch_governor.note`:
-
-NOTE
-----
-
-"gov" can be NULL to specify disabled
-Must be called with cpuidle_lock acquired.
+        Must be called with cpuidle_lock acquired.
 
 .. _`cpuidle_register_governor`:
 

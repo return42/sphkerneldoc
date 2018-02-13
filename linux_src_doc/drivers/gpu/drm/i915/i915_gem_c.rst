@@ -18,7 +18,7 @@ i915_gem_object_wait
         how long to wait
 
     :param struct intel_rps_client \*rps_client:
-        *undescribed*
+        client (user process) to charge for any waitboosting
 
 .. _`i915_gem_create_ioctl`:
 

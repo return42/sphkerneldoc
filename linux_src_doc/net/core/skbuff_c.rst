@@ -1537,6 +1537,45 @@ individual segments, including Layer4 headers (TCP/UDP).
 
 The MAC/L2 or network (IP, IPv6) headers are not accounted for.
 
+.. _`skb_gso_size_check`:
+
+skb_gso_size_check
+==================
+
+.. c:function:: bool skb_gso_size_check(const struct sk_buff *skb, unsigned int seg_len, unsigned int max_len)
+
+    check the skb size, considering GSO_BY_FRAGS
+
+    :param const struct sk_buff \*skb:
+        *undescribed*
+
+    :param unsigned int seg_len:
+        The segmented length (from skb_gso_*_seglen). In the
+        GSO_BY_FRAGS case this will be [header sizes + GSO_BY_FRAGS].
+
+    :param unsigned int max_len:
+        The maximum permissible length.
+
+.. _`skb_gso_size_check.description`:
+
+Description
+-----------
+
+There are a couple of instances where we have a GSO skb, and we
+want to determine what size it would be after it is segmented.
+
+Returns true if the segmented length <= max length.
+
+.. _`skb_gso_size_check.we-might-want-to-check`:
+
+We might want to check
+----------------------
+
+-    L3+L4+payload size (e.g. IP forwarding)
+- L2+L3+L4+payload size (e.g. sanity check before passing to driver)
+
+This is a helper to do that correctly considering GSO_BY_FRAGS.
+
 .. _`skb_gso_validate_mtu`:
 
 skb_gso_validate_mtu
@@ -1559,6 +1598,29 @@ Description
 
 skb_gso_validate_mtu validates if a given skb will fit a wanted MTU
 once split.
+
+.. _`skb_gso_validate_mac_len`:
+
+skb_gso_validate_mac_len
+========================
+
+.. c:function:: bool skb_gso_validate_mac_len(const struct sk_buff *skb, unsigned int len)
+
+    Will a split GSO skb fit in a given length?
+
+    :param const struct sk_buff \*skb:
+        GSO skb
+
+    :param unsigned int len:
+        length to validate against
+
+.. _`skb_gso_validate_mac_len.description`:
+
+Description
+-----------
+
+skb_gso_validate_mac_len validates if a given skb will fit a wanted
+length once split, including L2, L3 and L4 headers and the payload.
 
 .. _`alloc_skb_with_frags`:
 

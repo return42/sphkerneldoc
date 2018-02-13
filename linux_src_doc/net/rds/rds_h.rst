@@ -45,6 +45,7 @@ Definition
         void (*sync_mr)(void *trans_private, int direction);
         void (*free_mr)(void *trans_private, int invalidate);
         void (*flush_mrs)(void);
+        bool (*t_unloading)(struct rds_connection *conn);
     }
 
 .. _`rds_transport.members`:
@@ -146,6 +147,9 @@ free_mr
     *undescribed*
 
 flush_mrs
+    *undescribed*
+
+t_unloading
     *undescribed*
 
 .. This file was automatic generated / don't edit.

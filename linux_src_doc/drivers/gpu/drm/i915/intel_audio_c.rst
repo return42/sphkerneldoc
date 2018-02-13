@@ -34,11 +34,11 @@ struct \ :c:type:`struct i915_audio_component_audio_ops <i915_audio_component_au
 intel_audio_codec_enable
 ========================
 
-.. c:function:: void intel_audio_codec_enable(struct intel_encoder *intel_encoder, const struct intel_crtc_state *crtc_state, const struct drm_connector_state *conn_state)
+.. c:function:: void intel_audio_codec_enable(struct intel_encoder *encoder, const struct intel_crtc_state *crtc_state, const struct drm_connector_state *conn_state)
 
     Enable the audio codec for HD audio
 
-    :param struct intel_encoder \*intel_encoder:
+    :param struct intel_encoder \*encoder:
         encoder on which to enable audio
 
     :param const struct intel_crtc_state \*crtc_state:
@@ -60,12 +60,18 @@ port, and after completed link training.
 intel_audio_codec_disable
 =========================
 
-.. c:function:: void intel_audio_codec_disable(struct intel_encoder *intel_encoder)
+.. c:function:: void intel_audio_codec_disable(struct intel_encoder *encoder, const struct intel_crtc_state *old_crtc_state, const struct drm_connector_state *old_conn_state)
 
     Disable the audio codec for HD audio
 
-    :param struct intel_encoder \*intel_encoder:
+    :param struct intel_encoder \*encoder:
         encoder on which to disable audio
+
+    :param const struct intel_crtc_state \*old_crtc_state:
+        pointer to the old crtc state.
+
+    :param const struct drm_connector_state \*old_conn_state:
+        pointer to the old connector state.
 
 .. _`intel_audio_codec_disable.description`:
 

@@ -783,7 +783,7 @@ The freeing memory will not be released to the buddy allocator.
 memblock_is_region_memory
 =========================
 
-.. c:function:: int __init_memblock memblock_is_region_memory(phys_addr_t base, phys_addr_t size)
+.. c:function:: bool __init_memblock memblock_is_region_memory(phys_addr_t base, phys_addr_t size)
 
     check if a region is a subset of memory
 

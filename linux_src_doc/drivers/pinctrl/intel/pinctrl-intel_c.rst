@@ -65,5 +65,35 @@ context
 irq
     pinctrl/GPIO chip irq number
 
+.. _`intel_gpio_to_pin`:
+
+intel_gpio_to_pin
+=================
+
+.. c:function:: int intel_gpio_to_pin(struct intel_pinctrl *pctrl, unsigned offset, const struct intel_community **community, const struct intel_padgroup **padgrp)
+
+    Translate from GPIO offset to pin number
+
+    :param struct intel_pinctrl \*pctrl:
+        Pinctrl structure
+
+    :param unsigned offset:
+        GPIO offset from gpiolib
+
+    :param const struct intel_community \*\*community:
+        *undescribed*
+
+    :param const struct intel_padgroup \*\*padgrp:
+        Pad group is filled here if not \ ``NULL``\ 
+
+.. _`intel_gpio_to_pin.description`:
+
+Description
+-----------
+
+When coming through gpiolib irqchip, the GPIO offset is not
+automatically translated to pinctrl pin number. This function can be
+used to find out the corresponding pinctrl pin.
+
 .. This file was automatic generated / don't edit.
 

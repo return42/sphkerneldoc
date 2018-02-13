@@ -279,7 +279,7 @@ Called when application request fasyn callback handler.
 _ctl_poll
 =========
 
-.. c:function:: unsigned int _ctl_poll(struct file *filep, poll_table *wait)
+.. c:function:: __poll_t _ctl_poll(struct file *filep, poll_table *wait)
 
     @file - \ ``wait``\  -
 

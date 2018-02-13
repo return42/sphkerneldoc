@@ -282,7 +282,7 @@ pdc_detect_pll_input_clock
 pdc_hardware_init
 =================
 
-.. c:function:: int pdc_hardware_init(struct ata_host *host, unsigned int board_idx)
+.. c:function:: void pdc_hardware_init(struct ata_host *host, unsigned int board_idx)
 
     Initialize the hardware.
 

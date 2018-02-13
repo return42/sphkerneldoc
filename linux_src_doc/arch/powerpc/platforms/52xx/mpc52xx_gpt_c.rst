@@ -21,7 +21,7 @@ Definition
         struct list_head list;
         struct device *dev;
         struct mpc52xx_gpt __iomem *regs;
-        spinlock_t lock;
+        raw_spinlock_t lock;
         struct irq_domain *irqhost;
         u32 ipb_freq;
         u8 wdt_mode;

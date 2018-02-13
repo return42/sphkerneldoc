@@ -26,15 +26,12 @@ non-zero value.)
 memory_failure
 ==============
 
-.. c:function:: int memory_failure(unsigned long pfn, int trapno, int flags)
+.. c:function:: int memory_failure(unsigned long pfn, int flags)
 
     Handle memory failure of a page.
 
     :param unsigned long pfn:
         Page Number of the corrupted page
-
-    :param int trapno:
-        Trap number reported in the signal to user space.
 
     :param int flags:
         fine tune action taken
@@ -61,15 +58,12 @@ enabled and no spinlocks hold.
 memory_failure_queue
 ====================
 
-.. c:function:: void memory_failure_queue(unsigned long pfn, int trapno, int flags)
+.. c:function:: void memory_failure_queue(unsigned long pfn, int flags)
 
     Schedule handling memory failure of a page.
 
     :param unsigned long pfn:
         Page Number of the corrupted page
-
-    :param int trapno:
-        Trap number reported in the signal to user space.
 
     :param int flags:
         Flags for memory failure handling

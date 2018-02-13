@@ -8,4 +8,3 @@ hns3pf
     :maxdepth: 1
 
     hclge_cmd_c
-    hns3_ethtool_c

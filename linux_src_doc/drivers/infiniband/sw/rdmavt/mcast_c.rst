@@ -138,7 +138,7 @@ rvt_attach_mcast
         Infiniband qp
 
     :param union ib_gid \*gid:
-        *undescribed*
+        multicast guid
 
     :param u16 lid:
         multicast lid
@@ -163,7 +163,7 @@ rvt_detach_mcast
         Infiniband qp
 
     :param union ib_gid \*gid:
-        *undescribed*
+        multicast guid
 
     :param u16 lid:
         multicast lid

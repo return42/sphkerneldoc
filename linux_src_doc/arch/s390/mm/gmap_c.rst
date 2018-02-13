@@ -501,13 +501,6 @@ Description
 
 Returns a pointer to the locked pte for a guest address, or NULL
 
-.. _`gmap_pte_op_walk.note`:
-
-Note
-----
-
-Can also be called for shadow gmaps.
-
 .. _`gmap_pte_op_fixup`:
 
 gmap_pte_op_fixup
@@ -606,7 +599,8 @@ Description
 -----------
 
 Returns 0 if the value was read, -ENOMEM if out of memory and -EFAULT
-if reading using the virtual address failed.
+if reading using the virtual address failed. -EINVAL if called on a gmap
+shadow.
 
 Called with gmap->mm->mmap_sem in read.
 
@@ -640,9 +634,9 @@ Called with the sg->guest_table_lock
 gmap_protect_rmap
 =================
 
-.. c:function:: int gmap_protect_rmap(struct gmap *sg, unsigned long raddr, unsigned long paddr, unsigned long len, int prot)
+.. c:function:: int gmap_protect_rmap(struct gmap *sg, unsigned long raddr, unsigned long paddr, unsigned long len)
 
-    modify access rights to memory and create an rmap
+    restrict access rights to memory (RO) and create an rmap
 
     :param struct gmap \*sg:
         pointer to the shadow guest address space structure
@@ -655,9 +649,6 @@ gmap_protect_rmap
 
     :param unsigned long len:
         length of the memory area to protect
-
-    :param int prot:
-        indicates access rights: none, read-only or read-write
 
 .. _`gmap_protect_rmap.description`:
 
@@ -1233,7 +1224,7 @@ Called with sg->mm->mmap_sem in read.
 gmap_shadow_notify
 ==================
 
-.. c:function:: void gmap_shadow_notify(struct gmap *sg, unsigned long vmaddr, unsigned long gaddr, pte_t *pte)
+.. c:function:: void gmap_shadow_notify(struct gmap *sg, unsigned long vmaddr, unsigned long gaddr)
 
     handle notifications for shadow gmap
 
@@ -1244,9 +1235,6 @@ gmap_shadow_notify
         *undescribed*
 
     :param unsigned long gaddr:
-        *undescribed*
-
-    :param pte_t \*pte:
         *undescribed*
 
 .. _`gmap_shadow_notify.description`:

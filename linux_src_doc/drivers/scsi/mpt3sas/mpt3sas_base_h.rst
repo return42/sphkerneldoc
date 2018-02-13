@@ -680,12 +680,10 @@ Definition
 
     struct scsiio_tracker {
         u16 smid;
-        struct scsi_cmnd *scmd;
         u8 cb_idx;
         u8 direct_io;
         struct pcie_sg_list pcie_sg_list;
         struct list_head chain_list;
-        struct list_head tracker_list;
         u16 msix_io;
     }
 
@@ -697,9 +695,6 @@ Members
 smid
     system message id
 
-scmd
-    scsi request pointer
-
 cb_idx
     callback index
 
@@ -710,10 +705,7 @@ pcie_sg_list
     *undescribed*
 
 chain_list
-    *undescribed*
-
-tracker_list
-    list of free request (ioc->free_list)
+    list of associated firmware chain tracker
 
 msix_io
     IO's msix
@@ -1050,10 +1042,8 @@ Definition
         u8 *request;
         dma_addr_t request_dma;
         u32 request_dma_sz;
-        struct scsiio_tracker *scsi_lookup;
-        ulong scsi_lookup_pages;
+        struct pcie_sg_list *pcie_sg_lookup;
         spinlock_t scsi_lookup_lock;
-        struct list_head free_list;
         int pending_io_count;
         wait_queue_head_t reset_wq;
         struct dma_pool *pcie_sgl_dma_pool;
@@ -1067,6 +1057,7 @@ Definition
         u16 chains_needed_per_io;
         u32 chain_depth;
         u16 chain_segment_sz;
+        u16 chains_per_prp_buffer;
         u16 hi_priority_smid;
         u8 *hi_priority;
         dma_addr_t hi_priority_dma;
@@ -1515,17 +1506,11 @@ request_dma
 request_dma_sz
     *undescribed*
 
-scsi_lookup
-    firmware request tracker list
-
-scsi_lookup_pages
+pcie_sg_lookup
     *undescribed*
 
 scsi_lookup_lock
     *undescribed*
-
-free_list
-    free list of request
 
 pending_io_count
     *undescribed*
@@ -1566,6 +1551,9 @@ chain_depth
 chain_segment_sz
     gives the max number of
     SGEs accommodate on single chain buffer
+
+chains_per_prp_buffer
+    *undescribed*
 
 hi_priority_smid
     *undescribed*

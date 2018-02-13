@@ -111,7 +111,7 @@ batadv_v_neigh_dump_hardif
 
 .. c:function:: int batadv_v_neigh_dump_hardif(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_hard_iface *hard_iface, int *idx_s)
 
-    Dump the  neighbours of a hard interface  into a message
+    Dump the  neighbours of a hard interface into a message
 
     :param struct sk_buff \*msg:
         Netlink message to dump into

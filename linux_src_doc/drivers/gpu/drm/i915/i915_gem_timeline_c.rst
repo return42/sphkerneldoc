@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem_timeline.c
 
-.. _`i915_gem_timelines_mark_idle`:
+.. _`i915_gem_timelines_park`:
 
-i915_gem_timelines_mark_idle
-============================
+i915_gem_timelines_park
+=======================
 
-.. c:function:: void i915_gem_timelines_mark_idle(struct drm_i915_private *i915)
+.. c:function:: void i915_gem_timelines_park(struct drm_i915_private *i915)
 
-    - called when the driver idles \ ``i915``\  - the drm_i915_private device
+    called when the driver idles
 
     :param struct drm_i915_private \*i915:
-        *undescribed*
+        the drm_i915_private device
 
-.. _`i915_gem_timelines_mark_idle.description`:
+.. _`i915_gem_timelines_park.description`:
 
 Description
 -----------

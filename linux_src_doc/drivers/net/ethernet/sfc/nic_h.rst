@@ -126,6 +126,7 @@ Definition
         struct efx_udp_tunnel udp_tunnels[16];
         bool udp_tunnels_dirty;
         struct mutex udp_tunnels_lock;
+        u64 licensed_features;
     }
 
 .. _`efx_ef10_nic_data.members`:
@@ -245,6 +246,9 @@ udp_tunnels_dirty
 
 udp_tunnels_lock
     Serialises writes to \ ``udp_tunnels``\  and \ ``udp_tunnels_dirty``\ .
+
+licensed_features
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

@@ -122,6 +122,28 @@ MUST NOT be called from interrupt context,
 because the bus read/write functions may wait for an interrupt
 to conclude the operation.
 
+.. _`__phy_read`:
+
+__phy_read
+==========
+
+.. c:function:: int __phy_read(struct phy_device *phydev, u32 regnum)
+
+    convenience function for reading a given PHY register
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param u32 regnum:
+        register number to read
+
+.. _`__phy_read.description`:
+
+Description
+-----------
+
+The caller must have taken the MDIO bus lock.
+
 .. _`phy_write`:
 
 phy_write
@@ -148,6 +170,117 @@ NOTE
 MUST NOT be called from interrupt context,
 because the bus read/write functions may wait for an interrupt
 to conclude the operation.
+
+.. _`__phy_write`:
+
+__phy_write
+===========
+
+.. c:function:: int __phy_write(struct phy_device *phydev, u32 regnum, u16 val)
+
+    Convenience function for writing a given PHY register
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param u32 regnum:
+        register number to write
+
+    :param u16 val:
+        value to write to \ ``regnum``\ 
+
+.. _`__phy_write.description`:
+
+Description
+-----------
+
+The caller must have taken the MDIO bus lock.
+
+.. _`__phy_set_bits`:
+
+__phy_set_bits
+==============
+
+.. c:function:: int __phy_set_bits(struct phy_device *phydev, u32 regnum, u16 val)
+
+    Convenience function for setting bits in a PHY register
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param u32 regnum:
+        register number to write
+
+    :param u16 val:
+        bits to set
+
+.. _`__phy_set_bits.description`:
+
+Description
+-----------
+
+The caller must have taken the MDIO bus lock.
+
+.. _`__phy_clear_bits`:
+
+__phy_clear_bits
+================
+
+.. c:function:: int __phy_clear_bits(struct phy_device *phydev, u32 regnum, u16 val)
+
+    Convenience function for clearing bits in a PHY register
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param u32 regnum:
+        register number to write
+
+    :param u16 val:
+        bits to clear
+
+.. _`__phy_clear_bits.description`:
+
+Description
+-----------
+
+The caller must have taken the MDIO bus lock.
+
+.. _`phy_set_bits`:
+
+phy_set_bits
+============
+
+.. c:function:: int phy_set_bits(struct phy_device *phydev, u32 regnum, u16 val)
+
+    Convenience function for setting bits in a PHY register
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param u32 regnum:
+        register number to write
+
+    :param u16 val:
+        bits to set
+
+.. _`phy_clear_bits`:
+
+phy_clear_bits
+==============
+
+.. c:function:: int phy_clear_bits(struct phy_device *phydev, u32 regnum, u16 val)
+
+    Convenience function for clearing bits in a PHY register
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+    :param u32 regnum:
+        register number to write
+
+    :param u16 val:
+        bits to clear
 
 .. _`phy_interrupt_is_valid`:
 
@@ -192,6 +325,26 @@ phy_interface_mode_is_rgmii
 
     :param phy_interface_t mode:
         the phy_interface_t enum
+
+.. _`phy_interface_mode_is_8023z`:
+
+phy_interface_mode_is_8023z
+===========================
+
+.. c:function:: bool phy_interface_mode_is_8023z(phy_interface_t mode)
+
+    does the phy interface mode use 802.3z negotiation
+
+    :param phy_interface_t mode:
+        one of \ :c:type:`enum phy_interface_t <phy_interface_t>`\ 
+
+.. _`phy_interface_mode_is_8023z.description`:
+
+Description
+-----------
+
+Returns true if the phy interface mode uses the 16-bit negotiation
+word as defined in 802.3z. (See 802.3-2015 37.2.1 Config_Reg encoding)
 
 .. _`phy_interface_is_rgmii`:
 

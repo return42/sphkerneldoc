@@ -13,14 +13,33 @@ wmi_addr_remap
     :param u32 x:
         *undescribed*
 
-.. _`wmi_buffer`:
+.. _`wil_find_fw_mapping`:
 
-wmi_buffer
-==========
+wil_find_fw_mapping
+===================
 
-.. c:function:: void __iomem *wmi_buffer(struct wil6210_priv *wil, __le32 ptr_)
+.. c:function:: struct fw_map *wil_find_fw_mapping(const char *section)
 
-    @ptr - internal (linker) fw/ucode address
+    @section - section name
+
+    :param const char \*section:
+        *undescribed*
+
+.. _`wil_find_fw_mapping.description`:
+
+Description
+-----------
+
+Return pointer to section or NULL if not found
+
+.. _`wmi_buffer_block`:
+
+wmi_buffer_block
+================
+
+.. c:function:: void __iomem *wmi_buffer_block(struct wil6210_priv *wil, __le32 ptr_, u32 size)
+
+    @ptr - internal (linker) fw/ucode address \ ``size``\  - if non zero, validate the block does not exceed the device memory (bar)
 
     :param struct wil6210_priv \*wil:
         *undescribed*
@@ -28,7 +47,10 @@ wmi_buffer
     :param __le32 ptr_:
         *undescribed*
 
-.. _`wmi_buffer.description`:
+    :param u32 size:
+        *undescribed*
+
+.. _`wmi_buffer_block.description`:
 
 Description
 -----------

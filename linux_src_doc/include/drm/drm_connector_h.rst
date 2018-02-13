@@ -184,6 +184,67 @@ Description
 This enum is used as the connector's link status property value.
 It is set to the values defined in uapi.
 
+.. _`drm_panel_orientation`:
+
+enum drm_panel_orientation
+==========================
+
+.. c:type:: enum drm_panel_orientation
+
+    panel_orientation info for \ :c:type:`struct drm_display_info <drm_display_info>`\ 
+
+.. _`drm_panel_orientation.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_panel_orientation {
+        DRM_MODE_PANEL_ORIENTATION_UNKNOWN,
+        DRM_MODE_PANEL_ORIENTATION_NORMAL,
+        DRM_MODE_PANEL_ORIENTATION_BOTTOM_UP,
+        DRM_MODE_PANEL_ORIENTATION_LEFT_UP,
+        DRM_MODE_PANEL_ORIENTATION_RIGHT_UP
+    };
+
+.. _`drm_panel_orientation.constants`:
+
+Constants
+---------
+
+DRM_MODE_PANEL_ORIENTATION_UNKNOWN
+    The drm driver has not provided any
+    panel orientation information (normal
+    for non panels) in this case the "panel
+    orientation" connector prop will not be
+    attached.
+
+DRM_MODE_PANEL_ORIENTATION_NORMAL
+    The top side of the panel matches the
+    top side of the device's casing.
+
+DRM_MODE_PANEL_ORIENTATION_BOTTOM_UP
+    The top side of the panel matches the
+    bottom side of the device's casing, iow
+    the panel is mounted upside-down.
+
+DRM_MODE_PANEL_ORIENTATION_LEFT_UP
+    The left side of the panel matches the
+    top side of the device's casing.
+
+DRM_MODE_PANEL_ORIENTATION_RIGHT_UP
+    The right side of the panel matches the
+    top side of the device's casing.
+
+.. _`drm_panel_orientation.description`:
+
+Description
+-----------
+
+This enum is used to track the (LCD) panel orientation. There are no
+separate #defines for the uapi!
+
 .. _`drm_display_info`:
 
 struct drm_display_info
@@ -211,6 +272,7 @@ Definition
     #define DRM_COLOR_FORMAT_YCRCB444 (1<<1)
     #define DRM_COLOR_FORMAT_YCRCB422 (1<<2)
     #define DRM_COLOR_FORMAT_YCRCB420 (1<<3)
+        int panel_orientation;
         u32 color_formats;
         const u32 *bus_formats;
         unsigned int num_bus_formats;
@@ -223,6 +285,7 @@ Definition
         u32 bus_flags;
         int max_tmds_clock;
         bool dvi_dual;
+        bool has_hdmi_infoframe;
         u8 edid_hdmi_dc_modes;
         u8 cea_rev;
         struct drm_hdmi_info hdmi;
@@ -253,6 +316,12 @@ bpc
 subpixel_order
     Subpixel order of LCD panels.
 
+panel_orientation
+    Read only connector property for built-in panels,indicating the orientation of the panel vs the device's casing.
+    \ :c:func:`drm_connector_init`\  sets this to DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
+    When not UNKNOWN this gets used by the drm_fb_helpers to rotate the
+    fb to compensate and gets exported as prop to userspace.
+
 color_formats
     HDMI Color formats, selects between RGB and YCrCbmodes. Used DRM_COLOR_FORMAT\_ defines, which are _not_ the same ones
     as used to describe the pixel format in framebuffers, and also don't
@@ -273,6 +342,9 @@ max_tmds_clock
 
 dvi_dual
     Dual-link DVI sink?
+
+has_hdmi_infoframe
+    Does the sink support the HDMI infoframe?
 
 edid_hdmi_dc_modes
     Mask of supported hdmi deep color modes. Evenmore stuff redundant with \ ``bus_formats``\ .
@@ -776,7 +848,7 @@ Definition
         uint8_t num_h_tile, num_v_tile;
         uint8_t tile_h_loc, tile_v_loc;
         uint16_t tile_h_size, tile_v_size;
-        struct work_struct free_work;
+        struct llist_node free_node;
     }
 
 .. _`drm_connector.members`:
@@ -917,7 +989,9 @@ encoder_ids
     valid encoders for this connector
 
 encoder
-    encoder driving this connector, if any
+    Currently bound encoder driving this connector, if any.Only really meaningful for non-atomic drivers. Atomic drivers should
+    instead look at \ :c:type:`drm_connector_state.best_encoder <drm_connector_state>`\ , and in case they
+    need the CRTC driving this output, \ :c:type:`drm_connector_state.crtc <drm_connector_state>`\ .
 
 eld
     EDID-like data, if present
@@ -983,10 +1057,11 @@ tile_h_size
 tile_v_size
     vertical size of this tile.
 
-free_work
+free_node
 
-    Work used only by \ :c:type:`struct drm_connector_iter <drm_connector_iter>`\  to be able to clean up a
-    connector from any context.
+    List used only by \ :c:type:`struct drm_connector_iter <drm_connector_iter>`\  to be able to clean up a
+    connector from any context, in conjunction with
+    \ :c:type:`drm_mode_config.connector_free_work <drm_mode_config>`\ .
 
 .. _`drm_connector.description`:
 

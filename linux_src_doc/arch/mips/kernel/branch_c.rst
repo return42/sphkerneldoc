@@ -16,6 +16,15 @@ __compute_return_epc_for_insn
     :param union mips_instruction insn:
         branch instruction to decode
 
+.. _`__compute_return_epc_for_insn.return`:
+
+Return
+------
+
+-EFAULT on error and forces SIGILL, and on success
+returns 0 or BRANCH_LIKELY_TAKEN as appropriate after
+evaluating the branch.
+
 .. _`__compute_return_epc_for_insn.mips-r6-compact-branches-and-forbidden-slots`:
 
 MIPS R6 Compact branches and forbidden slots

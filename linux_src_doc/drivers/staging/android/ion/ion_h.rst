@@ -307,7 +307,7 @@ Definition
         spinlock_t free_lock;
         wait_queue_head_t waitqueue;
         struct task_struct *task;
-        int (*debug_show)(struct ion_heap *heap, struct seq_file *, void *);
+        int (*debug_show)(struct ion_heap *heap, struct seq_file *s, void *unused);
     }
 
 .. _`ion_heap.members`:
@@ -442,7 +442,7 @@ ion_heap_map_kernel
 ion_heap_init_shrinker
 ======================
 
-.. c:function:: void ion_heap_init_shrinker(struct ion_heap *heap)
+.. c:function:: int ion_heap_init_shrinker(struct ion_heap *heap)
 
     :param struct ion_heap \*heap:
         the heap

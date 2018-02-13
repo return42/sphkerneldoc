@@ -183,12 +183,16 @@ Definition
         void __iomem *piobuf;
         unsigned int piobuf_offset;
         bool initialised;
+        bool timestamping;
         int (*handle_tso)(struct efx_tx_queue*, struct sk_buff*, bool *);
         unsigned int read_count ____cacheline_aligned_in_smp;
         unsigned int old_write_count;
         unsigned int merge_events;
         unsigned int bytes_compl;
         unsigned int pkts_compl;
+        unsigned int completed_desc_ptr;
+        u32 completed_timestamp_major;
+        u32 completed_timestamp_minor;
         unsigned int insert_count ____cacheline_aligned_in_smp;
         unsigned int write_count;
         unsigned int packet_write_count;
@@ -250,6 +254,9 @@ piobuf_offset
 initialised
     Has hardware queue been initialised?
 
+timestamping
+    Is timestamping enabled for this channel?
+
 handle_tso
     TSO xmit preparation handler.  Sets up the TSO metadata and
     may also map tx data, depending on the nature of the TSO implementation.
@@ -273,6 +280,16 @@ bytes_compl
 
 pkts_compl
     *undescribed*
+
+completed_desc_ptr
+    Most recent completed pointer - only used with
+    timestamping.
+
+completed_timestamp_major
+    Top part of the most recent tx timestamp.
+
+completed_timestamp_minor
+    Low part of the most recent tx timestamp.
 
 ____cacheline_aligned_in_smp
     *undescribed*
@@ -851,7 +868,9 @@ Definition
         void (*get_name)(struct efx_channel *, char *buf, size_t len);
         struct efx_channel *(*copy)(const struct efx_channel *);
         bool (*receive_skb)(struct efx_channel *, struct sk_buff *);
+        bool (*want_txqs)(struct efx_channel *);
         bool keep_eventq;
+        bool want_pio;
     }
 
 .. _`efx_channel_type.members`:
@@ -879,9 +898,17 @@ copy
 receive_skb
     Handle an skb ready to be passed to \ :c:func:`netif_receive_skb`\ 
 
+want_txqs
+    Determine whether this channel should have TX queues
+    created.  If \ ``NULL``\ , TX queues are not created.
+
 keep_eventq
     Flag for whether event queue should be kept initialised
     while the device is stopped
+
+want_pio
+    Flag for whether PIO buffers should be linked to this
+    channel's TX queues.
 
 .. _`efx_link_state`:
 
@@ -1119,6 +1146,7 @@ Definition
         struct work_struct reset_work;
         resource_size_t membase_phys;
         void __iomem *membase;
+        unsigned int vi_stride;
         enum efx_int_mode interrupt_mode;
         unsigned int timer_quantum_ns;
         unsigned int timer_max_ns;
@@ -1146,6 +1174,7 @@ Definition
         unsigned rss_spread;
         unsigned tx_channel_offset;
         unsigned n_tx_channels;
+        unsigned n_extra_tx_channels;
         unsigned int rx_ip_align;
         unsigned int rx_dma_len;
         unsigned int rx_buffer_order;
@@ -1181,6 +1210,7 @@ Definition
         bool port_initialized;
         struct net_device *net_dev;
         netdev_features_t fixed_features;
+        u16 num_mac_stats;
         struct efx_buffer stats_buffer;
         u64 rx_nodesc_drops_total;
         u64 rx_nodesc_drops_while_down;
@@ -1191,7 +1221,7 @@ Definition
         struct mdio_if_info mdio;
         unsigned int mdio_bus;
         enum efx_phy_mode phy_mode;
-        u32 link_advertising;
+        __ETHTOOL_DECLARE_LINK_MODE_MASK(link_advertising);
         struct efx_link_state link_state;
         unsigned int n_link_state_changes;
         bool unicast_filter;
@@ -1219,6 +1249,7 @@ Definition
         unsigned vi_scale;
     #endif
         struct efx_ptp_data *ptp_data;
+        bool ptp_warned;
         char *vpd_sn;
         struct delayed_work monitor_work ____cacheline_aligned_in_smp;
         spinlock_t biu_lock;
@@ -1278,6 +1309,9 @@ membase_phys
 
 membase
     Memory BAR value
+
+vi_stride
+    step between per-VI registers / memory regions
 
 interrupt_mode
     Interrupt mode
@@ -1359,6 +1393,9 @@ tx_channel_offset
 
 n_tx_channels
     Number of channels used for TX
+
+n_extra_tx_channels
+    Number of extra channels with TX queues
 
 rx_ip_align
     RX DMA address offset to have IP header aligned in
@@ -1470,6 +1507,10 @@ net_dev
 fixed_features
     Features which cannot be turned off
 
+num_mac_stats
+    Number of MAC stats reported by firmware (MAC_STATS_NUM_STATS
+    field of \ ``MC_CMD_GET_CAPABILITIES_V4``\  response, or \ ``MC_CMD_MAC_NSTATS``\ )
+
 stats_buffer
     DMA buffer for statistics
 
@@ -1500,8 +1541,8 @@ mdio_bus
 phy_mode
     PHY operating mode. Serialised by \ ``mac_lock``\ .
 
-link_advertising
-    Autonegotiation advertising flags
+__ETHTOOL_DECLARE_LINK_MODE_MASKlink_advertising
+    *undescribed*
 
 link_state
     Current state of the link
@@ -1580,6 +1621,9 @@ vi_scale
 ptp_data
     PTP state data
 
+ptp_warned
+    has this NIC seen and warned about unexpected PTP events?
+
 vpd_sn
     Serial number read from VPD
 
@@ -1626,7 +1670,7 @@ Definition
 
     struct efx_nic_type {
         bool is_vf;
-        unsigned int mem_bar;
+        unsigned int (*mem_bar)(struct efx_nic *efx);
         unsigned int (*mem_map_size)(struct efx_nic *efx);
         int (*probe)(struct efx_nic *efx);
         void (*remove)(struct efx_nic *efx);

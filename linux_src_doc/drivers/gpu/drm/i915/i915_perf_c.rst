@@ -196,7 +196,7 @@ To manage this we actually track two tail pointers:
 The two separate pointers let us decouple \ :c:func:`read`\ s from tail pointer aging.
 
 The tail pointers are checked and updated at a limited rate within a hrtimer
-callback (the same callback that is used for delivering POLLIN events)
+callback (the same callback that is used for delivering EPOLLIN events)
 
 Initially the tails are marked invalid with \ ``INVALID_TAIL_PTR``\  which
 indicates that an updated tail pointer is needed.
@@ -915,7 +915,7 @@ The number of bytes copied or a negative error code on failure.
 i915_perf_poll_locked
 =====================
 
-.. c:function:: unsigned int i915_perf_poll_locked(struct drm_i915_private *dev_priv, struct i915_perf_stream *stream, struct file *file, poll_table *wait)
+.. c:function:: __poll_t i915_perf_poll_locked(struct drm_i915_private *dev_priv, struct i915_perf_stream *stream, struct file *file, poll_table *wait)
 
     poll_wait() with a suitable wait queue for stream
 
@@ -960,7 +960,7 @@ any poll events that are ready without sleeping
 i915_perf_poll
 ==============
 
-.. c:function:: unsigned int i915_perf_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t i915_perf_poll(struct file *file, poll_table *wait)
 
     call \ :c:func:`poll_wait`\  with a suitable wait queue for stream
 

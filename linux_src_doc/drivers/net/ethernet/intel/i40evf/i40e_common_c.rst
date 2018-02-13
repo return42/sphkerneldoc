@@ -500,14 +500,14 @@ Send a VF_RESET message to the PF. Does not wait for response from PF
 as none will be forthcoming. Immediately after calling this function,
 the admin queue should be shut down and (optionally) reinitialized.
 
-.. _`i40evf_aq_write_ppp`:
+.. _`i40evf_aq_write_ddp`:
 
-i40evf_aq_write_ppp
+i40evf_aq_write_ddp
 ===================
 
-.. c:function:: enum i40e_status_code i40evf_aq_write_ppp(struct i40e_hw *hw, void *buff, u16 buff_size, u32 track_id, u32 *error_offset, u32 *error_info, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: enum i40e_status_code i40evf_aq_write_ddp(struct i40e_hw *hw, void *buff, u16 buff_size, u32 track_id, u32 *error_offset, u32 *error_info, struct i40e_asq_cmd_details *cmd_details)
 
-    Write pipeline personalization profile (ppp)
+    Write dynamic device personalization (ddp)
 
     :param struct i40e_hw \*hw:
         pointer to the hw struct
@@ -530,14 +530,14 @@ i40evf_aq_write_ppp
     :param struct i40e_asq_cmd_details \*cmd_details:
         pointer to command details structure or NULL
 
-.. _`i40evf_aq_get_ppp_list`:
+.. _`i40evf_aq_get_ddp_list`:
 
-i40evf_aq_get_ppp_list
+i40evf_aq_get_ddp_list
 ======================
 
-.. c:function:: enum i40e_status_code i40evf_aq_get_ppp_list(struct i40e_hw *hw, void *buff, u16 buff_size, u8 flags, struct i40e_asq_cmd_details *cmd_details)
+.. c:function:: enum i40e_status_code i40evf_aq_get_ddp_list(struct i40e_hw *hw, void *buff, u16 buff_size, u8 flags, struct i40e_asq_cmd_details *cmd_details)
 
-    Read pipeline personalization profile (ppp)
+    Read dynamic device personalization (ddp)
 
     :param struct i40e_hw \*hw:
         pointer to the hw struct

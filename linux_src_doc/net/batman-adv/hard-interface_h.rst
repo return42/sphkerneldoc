@@ -1,6 +1,54 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/hard-interface.h
 
+.. _`batadv_hard_if_state`:
+
+enum batadv_hard_if_state
+=========================
+
+.. c:type:: enum batadv_hard_if_state
+
+    State of a hard interface
+
+.. _`batadv_hard_if_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum batadv_hard_if_state {
+        BATADV_IF_NOT_IN_USE,
+        BATADV_IF_TO_BE_REMOVED,
+        BATADV_IF_INACTIVE,
+        BATADV_IF_ACTIVE,
+        BATADV_IF_TO_BE_ACTIVATED,
+        BATADV_IF_I_WANT_YOU
+    };
+
+.. _`batadv_hard_if_state.constants`:
+
+Constants
+---------
+
+BATADV_IF_NOT_IN_USE
+    interface is not used as slave interface of abatman-adv soft interface
+
+BATADV_IF_TO_BE_REMOVED
+    interface will be removed from softinterface
+
+BATADV_IF_INACTIVE
+    interface is deactivated
+
+BATADV_IF_ACTIVE
+    interface is used
+
+BATADV_IF_TO_BE_ACTIVATED
+    interface is getting activated
+
+BATADV_IF_I_WANT_YOU
+    interface is queued up (using sysfs) for beingadded as slave interface of a batman-adv soft interface
+
 .. _`batadv_hard_if_bcast`:
 
 enum batadv_hard_if_bcast
@@ -84,6 +132,25 @@ batadv_hardif_put
 
     :param struct batadv_hard_iface \*hard_iface:
         the hard interface to free
+
+.. _`batadv_primary_if_get_selected`:
+
+batadv_primary_if_get_selected
+==============================
+
+.. c:function:: struct batadv_hard_iface *batadv_primary_if_get_selected(struct batadv_priv *bat_priv)
+
+    Get reference to primary interface
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_primary_if_get_selected.return`:
+
+Return
+------
+
+primary interface (with increased refcnt), otherwise NULL
 
 .. This file was automatic generated / don't edit.
 

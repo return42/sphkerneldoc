@@ -46,14 +46,14 @@ instead of queried at runtime for most callers.
 intel_fbc_choose_crtc
 =====================
 
-.. c:function:: void intel_fbc_choose_crtc(struct drm_i915_private *dev_priv, struct drm_atomic_state *state)
+.. c:function:: void intel_fbc_choose_crtc(struct drm_i915_private *dev_priv, struct intel_atomic_state *state)
 
     select a CRTC to enable FBC on
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
 
-    :param struct drm_atomic_state \*state:
+    :param struct intel_atomic_state \*state:
         the atomic state structure
 
 .. _`intel_fbc_choose_crtc.description`:

@@ -8,3 +8,5 @@ hns3
     :maxdepth: 1
 
     hns3pf/index
+    hns3vf/index
+    hns3_ethtool_c

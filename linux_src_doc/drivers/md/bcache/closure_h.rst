@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/md/bcache/closure.h
 
+.. _`closure_sync`:
+
+closure_sync
+============
+
+.. c:function:: void closure_sync(struct closure *cl)
+
+    sleep until a closure a closure has nothing left to wait on
+
+    :param struct closure \*cl:
+        *undescribed*
+
+.. _`closure_sync.description`:
+
+Description
+-----------
+
+Sleeps until the refcount hits 1 - the thread that's running the closure owns
+the last refcount.
+
 .. _`closure_get`:
 
 closure_get
@@ -71,6 +91,8 @@ of \ ``wq``\  (or, if \ ``wq``\  is NULL, \ ``fn``\  will be called by \ :c:func
 This is because after calling \ :c:func:`continue_at`\  you no longer have a ref on \ ``cl``\ ,
 and whatever \ ``cl``\  owns may be freed out from under you - a running closure fn
 has a ref on its own closure which \ :c:func:`continue_at`\  drops.
+
+Note you are expected to immediately return after using this macro.
 
 .. _`closure_return`:
 

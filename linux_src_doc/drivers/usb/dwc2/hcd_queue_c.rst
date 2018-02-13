@@ -637,6 +637,39 @@ dwc2_deschedule_periodic
     :param struct dwc2_qh \*qh:
         QH for the periodic transfer
 
+.. _`dwc2_wait_timer_fn`:
+
+dwc2_wait_timer_fn
+==================
+
+.. c:function:: void dwc2_wait_timer_fn(struct timer_list *t)
+
+    Timer function to re-queue after waiting
+
+    :param struct timer_list \*t:
+        Pointer to wait_timer in a qh.
+
+.. _`dwc2_wait_timer_fn.description`:
+
+Description
+-----------
+
+As per the spec, a NAK indicates that "a function is temporarily unable to
+transmit or receive data, but will eventually be able to do so without need
+of host intervention".
+
+That means that when we encounter a NAK we're supposed to retry.
+
+...but if we retry right away (from the interrupt handler that saw the NAK)
+then we can end up with an interrupt storm (if the other side keeps NAKing
+us) because on slow enough CPUs it could take us longer to get out of the
+interrupt routine than it takes for the device to send another NAK.  That
+leads to a constant stream of NAK interrupts and the CPU locks.
+
+...so instead of retrying right away in the case of a NAK we'll set a timer
+to retry some time later.  This function handles that timer and moves the
+qh back to the "inactive" list, then queues transactions.
+
 .. _`dwc2_qh_init`:
 
 dwc2_qh_init

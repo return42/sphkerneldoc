@@ -21,7 +21,6 @@ Definition
         const char *old_name;
         void *new_func;
         unsigned long old_sympos;
-        bool immediate;
         unsigned long old_addr;
         struct kobject kobj;
         struct list_head stack_node;
@@ -44,9 +43,6 @@ new_func
 old_sympos
     a hint indicating which symbol position the old function
     can be found (optional)
-
-immediate
-    patch the func immediately, bypassing safety mechanisms
 
 old_addr
     the address of the function being patched
@@ -212,7 +208,6 @@ Definition
     struct klp_patch {
         struct module *mod;
         struct klp_object *objs;
-        bool immediate;
         struct list_head list;
         struct kobject kobj;
         bool enabled;
@@ -229,9 +224,6 @@ mod
 
 objs
     object entries for kernel objects to be patched
-
-immediate
-    patch all funcs immediately, bypassing safety mechanisms
 
 list
     list node for global list of registered patches

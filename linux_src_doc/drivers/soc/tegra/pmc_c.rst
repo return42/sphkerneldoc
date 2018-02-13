@@ -20,6 +20,9 @@ Definition
     struct tegra_pmc {
         struct device *dev;
         void __iomem *base;
+        void __iomem *wake;
+        void __iomem *aotag;
+        void __iomem *scratch;
         struct clk *clk;
         struct dentry *debugfs;
         const struct tegra_pmc_soc *soc;
@@ -50,6 +53,15 @@ dev
 
 base
     pointer to I/O remapped register region
+
+wake
+    *undescribed*
+
+aotag
+    *undescribed*
+
+scratch
+    *undescribed*
 
 clk
     pointer to pclk clock

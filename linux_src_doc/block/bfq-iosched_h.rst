@@ -371,8 +371,10 @@ Definition
         unsigned int wr_coeff;
         unsigned long last_idle_bklogged;
         unsigned long service_from_backlogged;
+        unsigned long service_from_wr;
         unsigned long wr_start_at_switch_to_srt;
         unsigned long split_time;
+        unsigned long first_IO_time;
     }
 
 .. _`bfq_queue.members`:
@@ -482,10 +484,16 @@ last_idle_bklogged
 service_from_backlogged
     *undescribed*
 
+service_from_wr
+    *undescribed*
+
 wr_start_at_switch_to_srt
     *undescribed*
 
 split_time
+    *undescribed*
+
+first_IO_time
     *undescribed*
 
 .. _`bfq_queue.description`:
@@ -654,6 +662,8 @@ Definition
         spinlock_t lock;
         struct bfq_io_cq *bio_bic;
         struct bfq_queue *bio_bfqq;
+        unsigned int sb_shift;
+        unsigned int word_depths[2][2];
     }
 
 .. _`bfq_data.members`:
@@ -833,6 +843,12 @@ bio_bic
     *undescribed*
 
 bio_bfqq
+    *undescribed*
+
+sb_shift
+    *undescribed*
+
+word_depths
     *undescribed*
 
 .. _`bfq_data.description`:

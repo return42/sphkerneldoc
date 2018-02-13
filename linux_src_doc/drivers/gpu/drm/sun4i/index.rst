@@ -7,4 +7,5 @@ sun4i
 .. toctree::
     :maxdepth: 1
 
+    sun8i_mixer_h
     sunxi_engine_h

@@ -16,8 +16,6 @@ of
     irq_c
     of_mdio_c
     of_net_c
-    of_pci_c
-    of_pci_irq_c
     of_private_h
     of_reserved_mem_c
     overlay_c

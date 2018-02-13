@@ -16,6 +16,7 @@ ixgbe
     ixgbe_dcb_nl_c
     ixgbe_debugfs_c
     ixgbe_fcoe_c
+    ixgbe_ipsec_c
     ixgbe_lib_c
     ixgbe_main_c
     ixgbe_mbx_c

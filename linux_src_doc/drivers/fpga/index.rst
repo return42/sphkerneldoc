@@ -10,3 +10,4 @@ fpga
     fpga-bridge_c
     fpga-mgr_c
     fpga-region_c
+    of-fpga-region_c

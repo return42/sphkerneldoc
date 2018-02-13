@@ -11,7 +11,7 @@ bsg_teardown_job
     routine to teardown a bsg job
 
     :param struct kref \*kref:
-        *undescribed*
+        kref inside bsg_job that is to be torn down
 
 .. _`bsg_job_done`:
 
@@ -109,7 +109,7 @@ bsg_setup_queue
         size of LLD data needed for each job
 
     :param void (\*release)(struct device \*):
-        *undescribed*
+        @dev release function
 
 .. This file was automatic generated / don't edit.
 

@@ -155,12 +155,12 @@ ib_init_ah_from_mcmember
     :param struct rdma_ah_attr \*ah_attr:
         *undescribed*
 
-.. _`ib_init_ah_from_path`:
+.. _`ib_init_ah_attr_from_path`:
 
-ib_init_ah_from_path
-====================
+ib_init_ah_attr_from_path
+=========================
 
-.. c:function:: int ib_init_ah_from_path(struct ib_device *device, u8 port_num, struct sa_path_rec *rec, struct rdma_ah_attr *ah_attr)
+.. c:function:: int ib_init_ah_attr_from_path(struct ib_device *device, u8 port_num, struct sa_path_rec *rec, struct rdma_ah_attr *ah_attr)
 
     Initialize address handle attributes based on an SA path record.
 

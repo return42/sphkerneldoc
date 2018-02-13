@@ -1,31 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/remoteproc/qcom_common.c
 
-.. _`qcom_mdt_find_rsc_table`:
-
-qcom_mdt_find_rsc_table
-=======================
-
-.. c:function:: struct resource_table *qcom_mdt_find_rsc_table(struct rproc *rproc, const struct firmware *fw, int *tablesz)
-
-    provide dummy resource table for remoteproc
-
-    :param struct rproc \*rproc:
-        remoteproc handle
-
-    :param const struct firmware \*fw:
-        firmware header
-
-    :param int \*tablesz:
-        outgoing size of the table
-
-.. _`qcom_mdt_find_rsc_table.description`:
-
-Description
------------
-
-Returns a dummy table.
-
 .. _`qcom_add_glink_subdev`:
 
 qcom_add_glink_subdev

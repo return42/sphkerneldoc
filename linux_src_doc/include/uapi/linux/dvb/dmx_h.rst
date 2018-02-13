@@ -369,5 +369,144 @@ base
 stc
     output: stc in \ ``base``\  * 90 kHz units.
 
+.. _`dmx_buffer`:
+
+struct dmx_buffer
+=================
+
+.. c:type:: struct dmx_buffer
+
+    dmx buffer info
+
+.. _`dmx_buffer.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dmx_buffer {
+        __u32 index;
+        __u32 bytesused;
+        __u32 offset;
+        __u32 length;
+    }
+
+.. _`dmx_buffer.members`:
+
+Members
+-------
+
+index
+    id number of the buffer
+
+bytesused
+    number of bytes occupied by data in the buffer (payload);
+
+offset
+    for buffers with memory == DMX_MEMORY_MMAP;
+    offset from the start of the device memory for this plane,
+    (or a "cookie" that should be passed to \ :c:func:`mmap`\  as offset)
+
+length
+    size in bytes of the buffer
+
+.. _`dmx_buffer.description`:
+
+Description
+-----------
+
+Contains data exchanged by application and driver using one of the streaming
+I/O methods.
+
+.. _`dmx_requestbuffers`:
+
+struct dmx_requestbuffers
+=========================
+
+.. c:type:: struct dmx_requestbuffers
+
+    request dmx buffer information
+
+.. _`dmx_requestbuffers.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dmx_requestbuffers {
+        __u32 count;
+        __u32 size;
+    }
+
+.. _`dmx_requestbuffers.members`:
+
+Members
+-------
+
+count
+    number of requested buffers,
+
+size
+    size in bytes of the requested buffer
+
+.. _`dmx_requestbuffers.description`:
+
+Description
+-----------
+
+Contains data used for requesting a dmx buffer.
+All reserved fields must be set to zero.
+
+.. _`dmx_exportbuffer`:
+
+struct dmx_exportbuffer
+=======================
+
+.. c:type:: struct dmx_exportbuffer
+
+    export of dmx buffer as DMABUF file descriptor
+
+.. _`dmx_exportbuffer.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dmx_exportbuffer {
+        __u32 index;
+        __u32 flags;
+        __s32 fd;
+    }
+
+.. _`dmx_exportbuffer.members`:
+
+Members
+-------
+
+index
+    id number of the buffer
+
+flags
+    flags for newly created file, currently only O_CLOEXEC is
+    supported, refer to manual of open syscall for more details
+
+fd
+    file descriptor associated with DMABUF (set by driver)
+
+.. _`dmx_exportbuffer.description`:
+
+Description
+-----------
+
+Contains data used for exporting a dmx buffer as DMABUF file descriptor.
+The buffer is identified by a 'cookie' returned by DMX_QUERYBUF
+(identical to the cookie used to \ :c:func:`mmap`\  the buffer to userspace). All
+reserved fields must be set to zero. The field reserved0 is expected to
+become a structure 'type' allowing an alternative layout of the structure
+content. Therefore this field should not be used for any other extensions.
+
 .. This file was automatic generated / don't edit.
 

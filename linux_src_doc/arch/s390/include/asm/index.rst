@@ -9,6 +9,7 @@ asm
 
     trace/index
     ap_h
+    barrier_h
     bitops_h
     ccwdev_h
     ccwgroup_h

@@ -45,6 +45,15 @@ flags
 tun_info
     tunnels that have sent traffic in reported period
 
+tun_info.ipv4
+    dest IPv4 address of active route
+
+tun_info.egress_port
+    port the encapsulated packet egressed
+
+tun_info.extra
+    reserved for future use
+
 .. _`nfp_tun_neigh`:
 
 struct nfp_tun_neigh
@@ -263,6 +272,12 @@ count
 
 addresses
     series of MACs to offload
+
+addresses.index
+    index of MAC address in the lookup table
+
+addresses.addr
+    interface MAC address
 
 .. _`nfp_tun_mac_offload_entry`:
 

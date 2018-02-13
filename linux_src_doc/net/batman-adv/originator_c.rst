@@ -1,6 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/originator.c
 
+.. _`batadv_orig_hash_find`:
+
+batadv_orig_hash_find
+=====================
+
+.. c:function:: struct batadv_orig_node *batadv_orig_hash_find(struct batadv_priv *bat_priv, const void *data)
+
+    Find and return originator from orig_hash
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param const void \*data:
+        mac address of the originator
+
+.. _`batadv_orig_hash_find.return`:
+
+Return
+------
+
+orig_node (with increased refcnt), NULL on errors
+
 .. _`batadv_compare_orig`:
 
 batadv_compare_orig
@@ -95,6 +117,25 @@ batadv_orig_node_vlan_put
 
     :param struct batadv_orig_node_vlan \*orig_vlan:
         the originator-vlan object to release
+
+.. _`batadv_originator_init`:
+
+batadv_originator_init
+======================
+
+.. c:function:: int batadv_originator_init(struct batadv_priv *bat_priv)
+
+    Initialize all originator structures
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_originator_init.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
 
 .. _`batadv_neigh_ifinfo_release`:
 
@@ -571,6 +612,18 @@ batadv_orig_node_put
     :param struct batadv_orig_node \*orig_node:
         the orig node to free
 
+.. _`batadv_originator_free`:
+
+batadv_originator_free
+======================
+
+.. c:function:: void batadv_originator_free(struct batadv_priv *bat_priv)
+
+    Free all originator structures
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
 .. _`batadv_orig_node_new`:
 
 batadv_orig_node_new
@@ -715,6 +768,40 @@ Return
 
 true if the orig_node is to be removed, false otherwise.
 
+.. _`batadv_purge_orig_ref`:
+
+batadv_purge_orig_ref
+=====================
+
+.. c:function:: void batadv_purge_orig_ref(struct batadv_priv *bat_priv)
+
+    Purge all outdated originators
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_orig_seq_print_text`:
+
+batadv_orig_seq_print_text
+==========================
+
+.. c:function:: int batadv_orig_seq_print_text(struct seq_file *seq, void *offset)
+
+    Print the originator table in a seq file
+
+    :param struct seq_file \*seq:
+        seq file to print on
+
+    :param void \*offset:
+        not used
+
+.. _`batadv_orig_seq_print_text.return`:
+
+Return
+------
+
+always 0
+
 .. _`batadv_orig_hardif_seq_print_text`:
 
 batadv_orig_hardif_seq_print_text
@@ -758,6 +845,50 @@ Return
 ------
 
 0 or error value
+
+.. _`batadv_orig_hash_add_if`:
+
+batadv_orig_hash_add_if
+=======================
+
+.. c:function:: int batadv_orig_hash_add_if(struct batadv_hard_iface *hard_iface, int max_if_num)
+
+    Add interface to originators in orig_hash
+
+    :param struct batadv_hard_iface \*hard_iface:
+        hard interface to add (already slave of the soft interface)
+
+    :param int max_if_num:
+        new number of interfaces
+
+.. _`batadv_orig_hash_add_if.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_orig_hash_del_if`:
+
+batadv_orig_hash_del_if
+=======================
+
+.. c:function:: int batadv_orig_hash_del_if(struct batadv_hard_iface *hard_iface, int max_if_num)
+
+    Remove interface from originators in orig_hash
+
+    :param struct batadv_hard_iface \*hard_iface:
+        hard interface to remove (still slave of the soft interface)
+
+    :param int max_if_num:
+        new number of interfaces
+
+.. _`batadv_orig_hash_del_if.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
 
 .. This file was automatic generated / don't edit.
 

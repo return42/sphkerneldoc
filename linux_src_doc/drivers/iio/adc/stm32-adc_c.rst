@@ -102,9 +102,11 @@ Definition
         u8 *rx_buf;
         dma_addr_t rx_dma_buf;
         unsigned int rx_buf_sz;
+        u32 difsel;
         u32 pcsel;
         u32 smpr_val[2];
         struct stm32_adc_calib cal;
+        char chan_name[STM32_ADC_CH_MAX][STM32_ADC_CH_SZ];
     }
 
 .. _`stm32_adc.members`:
@@ -159,7 +161,11 @@ rx_dma_buf
 
 rx_buf_sz
     dma rx buffer size
+    \ ``difsel``\               bitmask to set single-ended/differential channel
     \ ``pcsel``\                bitmask to preselect channels on some devices
+
+difsel
+    *undescribed*
 
 pcsel
     *undescribed*
@@ -170,41 +176,8 @@ smpr_val
 cal
     optional calibration data on some devices
 
-.. _`stm32_adc_chan_spec`:
-
-struct stm32_adc_chan_spec
-==========================
-
-.. c:type:: struct stm32_adc_chan_spec
-
-    specification of stm32 adc channel
-
-.. _`stm32_adc_chan_spec.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct stm32_adc_chan_spec {
-        enum iio_chan_type type;
-        int channel;
-        const char *name;
-    }
-
-.. _`stm32_adc_chan_spec.members`:
-
-Members
--------
-
-type
-    IIO channel type
-
-channel
-    channel number (single ended)
-
-name
-    channel name (single ended)
+chan_name
+    channel name array
 
 .. _`stm32_adc_info`:
 
@@ -223,7 +196,6 @@ Definition
 .. code-block:: c
 
     struct stm32_adc_info {
-        const struct stm32_adc_chan_spec *channels;
         int max_channels;
         const unsigned int *resolutions;
         const unsigned int num_res;
@@ -233,9 +205,6 @@ Definition
 
 Members
 -------
-
-channels
-    Reference to stm32 channels spec
 
 max_channels
     Number of channels
@@ -397,9 +366,12 @@ stm32h7_adc_prepare
     :param struct stm32_adc \*adc:
         stm32 adc instance
         Leave power down mode.
+        Configure channels as single ended or differential before enabling ADC.
         Enable ADC.
         Restore calibration data.
-        Pre-select channels that may be used in PCSEL (required by input MUX / IO).
+        Pre-select channels that may be used in PCSEL (required by input MUX / IO):
+        - Only one input is selected for single ended (e.g. 'vinp')
+        - Two inputs are selected for differential channels (e.g. 'vinp' & 'vinn')
 
 .. _`stm32_adc_conf_scan_seq`:
 

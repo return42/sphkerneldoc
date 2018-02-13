@@ -217,7 +217,7 @@ Description
 scsi_add_lun
 ============
 
-.. c:function:: int scsi_add_lun(struct scsi_device *sdev, unsigned char *inq_result, int *bflags, int async)
+.. c:function:: int scsi_add_lun(struct scsi_device *sdev, unsigned char *inq_result, blist_flags_t *bflags, int async)
 
     allocate and fully initialze a scsi_device
 
@@ -227,7 +227,7 @@ scsi_add_lun
     :param unsigned char \*inq_result:
         holds the result of a previous INQUIRY to the LUN
 
-    :param int \*bflags:
+    :param blist_flags_t \*bflags:
         black/white list flag
 
     :param int async:
@@ -275,7 +275,7 @@ scsi_inq_str
 scsi_probe_and_add_lun
 ======================
 
-.. c:function:: int scsi_probe_and_add_lun(struct scsi_target *starget, u64 lun, int *bflagsp, struct scsi_device **sdevp, enum scsi_scan_mode rescan, void *hostdata)
+.. c:function:: int scsi_probe_and_add_lun(struct scsi_target *starget, u64 lun, blist_flags_t *bflagsp, struct scsi_device **sdevp, enum scsi_scan_mode rescan, void *hostdata)
 
     probe a LUN, if a LUN is found add it
 
@@ -285,7 +285,7 @@ scsi_probe_and_add_lun
     :param u64 lun:
         LUN of target device
 
-    :param int \*bflagsp:
+    :param blist_flags_t \*bflagsp:
         store bflags here if not NULL
 
     :param struct scsi_device \*\*sdevp:
@@ -322,14 +322,14 @@ Return
 scsi_sequential_lun_scan
 ========================
 
-.. c:function:: void scsi_sequential_lun_scan(struct scsi_target *starget, int bflags, int scsi_level, enum scsi_scan_mode rescan)
+.. c:function:: void scsi_sequential_lun_scan(struct scsi_target *starget, blist_flags_t bflags, int scsi_level, enum scsi_scan_mode rescan)
 
     sequentially scan a SCSI target
 
     :param struct scsi_target \*starget:
         pointer to target structure to scan
 
-    :param int bflags:
+    :param blist_flags_t bflags:
         black/white list flag for LUN 0
 
     :param int scsi_level:
@@ -354,14 +354,14 @@ Description
 scsi_report_lun_scan
 ====================
 
-.. c:function:: int scsi_report_lun_scan(struct scsi_target *starget, int bflags, enum scsi_scan_mode rescan)
+.. c:function:: int scsi_report_lun_scan(struct scsi_target *starget, blist_flags_t bflags, enum scsi_scan_mode rescan)
 
     Scan using SCSI REPORT LUN results
 
     :param struct scsi_target \*starget:
         which target
 
-    :param int bflags:
+    :param blist_flags_t bflags:
         Zero or a mix of BLIST_NOLUN, BLIST_REPORTLUN2, or BLIST_NOREPORTLUN
 
     :param enum scsi_scan_mode rescan:

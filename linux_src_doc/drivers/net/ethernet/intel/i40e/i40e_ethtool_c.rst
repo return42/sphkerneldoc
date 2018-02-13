@@ -882,6 +882,76 @@ would change and warning to delete the preexisting filters if required.
 Returns 0 on successful input set match, and a negative return code on
 failure.
 
+.. _`i40e_match_fdir_filter`:
+
+i40e_match_fdir_filter
+======================
+
+.. c:function:: bool i40e_match_fdir_filter(struct i40e_fdir_filter *a, struct i40e_fdir_filter *b)
+
+    Return true of two filters match
+
+    :param struct i40e_fdir_filter \*a:
+        pointer to filter struct
+
+    :param struct i40e_fdir_filter \*b:
+        pointer to filter struct
+
+.. _`i40e_match_fdir_filter.description`:
+
+Description
+-----------
+
+Returns true if the two filters match exactly the same criteria. I.e. they
+match the same flow type and have the same parameters. We don't need to
+check any input-set since all filters of the same flow type must use the
+same input set.
+
+.. _`i40e_disallow_matching_filters`:
+
+i40e_disallow_matching_filters
+==============================
+
+.. c:function:: int i40e_disallow_matching_filters(struct i40e_vsi *vsi, struct i40e_fdir_filter *input)
+
+    Check that new filters differ
+
+    :param struct i40e_vsi \*vsi:
+        pointer to the targeted VSI
+
+    :param struct i40e_fdir_filter \*input:
+        new filter to check
+
+.. _`i40e_disallow_matching_filters.description`:
+
+Description
+-----------
+
+Due to hardware limitations, it is not possible for two filters that match
+similar criteria to be programmed at the same time. This is true for a few
+
+.. _`i40e_disallow_matching_filters.reasons`:
+
+reasons
+-------
+
+
+(a) all filters matching a particular flow type must use the same input
+set, that is they must match the same criteria.
+(b) different flow types will never match the same packet, as the flow type
+is decided by hardware before checking which rules apply.
+(c) hardware has no way to distinguish which order filters apply in.
+
+Due to this, we can't really support using the location data to order
+filters in the hardware parsing. It is technically possible for the user to
+request two filters matching the same criteria but which select different
+queues. In this case, rather than keep both filters in the list, we reject
+the 2nd filter when the user requests adding it.
+
+This avoids needing to track location for programming the filter to
+hardware, and ensures that we avoid some strange scenarios involving
+deleting filters which match the same criteria.
+
 .. _`i40e_add_fdir_ethtool`:
 
 i40e_add_fdir_ethtool

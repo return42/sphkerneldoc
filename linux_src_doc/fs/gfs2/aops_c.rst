@@ -140,7 +140,7 @@ Used for both ordered and writeback modes.
 gfs2_write_jdata_pagevec
 ========================
 
-.. c:function:: int gfs2_write_jdata_pagevec(struct address_space *mapping, struct writeback_control *wbc, struct pagevec *pvec, int nr_pages, pgoff_t end, pgoff_t *done_index)
+.. c:function:: int gfs2_write_jdata_pagevec(struct address_space *mapping, struct writeback_control *wbc, struct pagevec *pvec, int nr_pages, pgoff_t *done_index)
 
     Write back a pagevec's worth of pages
 
@@ -155,9 +155,6 @@ gfs2_write_jdata_pagevec
 
     :param int nr_pages:
         The number of pages to write
-
-    :param pgoff_t end:
-        End position
 
     :param pgoff_t \*done_index:
         Page index
@@ -250,8 +247,8 @@ __gfs2_readpage
 Description
 -----------
 
-This is the core of gfs2's readpage. Its used by the internal file
-reading code as in that case we already hold the glock. Also its
+This is the core of gfs2's readpage. It's used by the internal file
+reading code as in that case we already hold the glock. Also it's
 called by \ :c:func:`gfs2_readpage`\  once the required lock has been granted.
 
 .. _`gfs2_readpage`:

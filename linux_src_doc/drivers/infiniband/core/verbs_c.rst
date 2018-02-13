@@ -79,16 +79,35 @@ It returns 0 on success and returns appropriate error code on error.
 The address handle is used to reference a local or global destination
 in all UD QP post sends.
 
+.. _`_ib_modify_qp`:
+
+_ib_modify_qp
+=============
+
+.. c:function:: int _ib_modify_qp(struct ib_qp *qp, struct ib_qp_attr *attr, int attr_mask, struct ib_udata *udata)
+
+    :param struct ib_qp \*qp:
+        *undescribed*
+
+    :param struct ib_qp_attr \*attr:
+        *undescribed*
+
+    :param int attr_mask:
+        *undescribed*
+
+    :param struct ib_udata \*udata:
+        *undescribed*
+
 .. _`ib_modify_qp_with_udata`:
 
 ib_modify_qp_with_udata
 =======================
 
-.. c:function:: int ib_modify_qp_with_udata(struct ib_qp *qp, struct ib_qp_attr *attr, int attr_mask, struct ib_udata *udata)
+.. c:function:: int ib_modify_qp_with_udata(struct ib_qp *ib_qp, struct ib_qp_attr *attr, int attr_mask, struct ib_udata *udata)
 
     Modifies the attributes for the specified QP.
 
-    :param struct ib_qp \*qp:
+    :param struct ib_qp \*ib_qp:
         The QP to modify.
 
     :param struct ib_qp_attr \*attr:
@@ -144,14 +163,16 @@ ib_create_wq
         The protection domain associated with the WQ.
 
     :param struct ib_wq_init_attr \*wq_attr:
-        *undescribed*
+        A list of initial attributes required to create the
+        WQ. If WQ creation succeeds, then the attributes are updated to
+        the actual capabilities of the created WQ.
 
 .. _`ib_create_wq.description`:
 
 Description
 -----------
 
-wq_init_attr->max_wr and wq_init_attr->max_sge determine
+wq_attr->max_wr and wq_attr->max_sge determine
 the requested size of the WQ, and set to the actual values allocated
 on return.
 If \ :c:func:`ib_create_wq`\  succeeds, then max_wr and max_sge will always be

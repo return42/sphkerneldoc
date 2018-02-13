@@ -64,41 +64,6 @@ Return
 
 '0' on Success; Error code otherwise.
 
-.. _`dprc_get_irq`:
-
-dprc_get_irq
-============
-
-.. c:function:: int dprc_get_irq(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, int *type, struct dprc_irq_cfg *irq_cfg)
-
-    Get IRQ information from the DPRC.
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 token:
-        Token of DPRC object
-
-    :param u8 irq_index:
-        The interrupt index to configure
-
-    :param int \*type:
-        Interrupt type: 0 represents message interrupt
-        type (both irq_addr and irq_val are valid)
-
-    :param struct dprc_irq_cfg \*irq_cfg:
-        IRQ attributes
-
-.. _`dprc_get_irq.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
 .. _`dprc_set_irq`:
 
 dprc_set_irq
@@ -124,37 +89,6 @@ dprc_set_irq
         IRQ configuration
 
 .. _`dprc_set_irq.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
-.. _`dprc_get_irq_enable`:
-
-dprc_get_irq_enable
-===================
-
-.. c:function:: int dprc_get_irq_enable(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u8 *en)
-
-    Get overall interrupt state.
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 token:
-        Token of DPRC object
-
-    :param u8 irq_index:
-        The interrupt index to configure
-
-    :param u8 \*en:
-        Returned interrupt state - enable = 1, disable = 0
-
-.. _`dprc_get_irq_enable.return`:
 
 Return
 ------
@@ -196,45 +130,6 @@ overall interrupt state. if the interrupt is disabled no causes will cause
 an interrupt.
 
 .. _`dprc_set_irq_enable.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
-.. _`dprc_get_irq_mask`:
-
-dprc_get_irq_mask
-=================
-
-.. c:function:: int dprc_get_irq_mask(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 *mask)
-
-    Get interrupt mask.
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 token:
-        Token of DPRC object
-
-    :param u8 irq_index:
-        The interrupt index to configure
-
-    :param u32 \*mask:
-        Returned event mask to trigger interrupt
-
-.. _`dprc_get_irq_mask.description`:
-
-Description
------------
-
-Every interrupt can have up to 32 causes and the interrupt model supports
-masking/unmasking each cause independently
-
-.. _`dprc_get_irq_mask.return`:
 
 Return
 ------
@@ -478,79 +373,6 @@ dprc_set_obj_irq
         IRQ configuration
 
 .. _`dprc_set_obj_irq.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
-.. _`dprc_get_obj_irq`:
-
-dprc_get_obj_irq
-================
-
-.. c:function:: int dprc_get_obj_irq(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 irq_index, int *type, struct dprc_irq_cfg *irq_cfg)
-
-    Get IRQ information from object.
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 token:
-        Token of DPRC object
-
-    :param char \*obj_type:
-        Type od the object to get its IRQ
-
-    :param int obj_id:
-        ID of the object to get its IRQ
-
-    :param u8 irq_index:
-        The interrupt index to configure
-
-    :param int \*type:
-        Interrupt type: 0 represents message interrupt
-        type (both irq_addr and irq_val are valid)
-
-    :param struct dprc_irq_cfg \*irq_cfg:
-        The returned IRQ attributes
-
-.. _`dprc_get_obj_irq.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
-.. _`dprc_get_res_count`:
-
-dprc_get_res_count
-==================
-
-.. c:function:: int dprc_get_res_count(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *type, int *res_count)
-
-    Obtains the number of free resources that are assigned to this container, by pool type
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 token:
-        Token of DPRC object
-
-    :param char \*type:
-        pool type
-
-    :param int \*res_count:
-        Returned number of free resources of the given
-        resource type that are assigned to this DPRC
-
-.. _`dprc_get_res_count.return`:
 
 Return
 ------

@@ -69,7 +69,7 @@ Hash value from 0x000 - 0x3FF ( enforced by CAN_EFF_RCV_HASH_BITS mask )
 find_rcv_list
 =============
 
-.. c:function:: struct hlist_head *find_rcv_list(canid_t *can_id, canid_t *mask, struct dev_rcv_lists *d)
+.. c:function:: struct hlist_head *find_rcv_list(canid_t *can_id, canid_t *mask, struct can_dev_rcv_lists *d)
 
     determine optimal filterlist inside device filter struct
 
@@ -79,7 +79,7 @@ find_rcv_list
     :param canid_t \*mask:
         pointer to CAN mask of a given can_filter
 
-    :param struct dev_rcv_lists \*d:
+    :param struct can_dev_rcv_lists \*d:
         pointer to the device filter struct
 
 .. _`find_rcv_list.description`:

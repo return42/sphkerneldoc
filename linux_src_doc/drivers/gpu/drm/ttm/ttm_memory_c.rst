@@ -6,7 +6,7 @@
 ttm_shrink
 ==========
 
-.. c:function:: void ttm_shrink(struct ttm_mem_global *glob, bool from_wq, uint64_t extra)
+.. c:function:: void ttm_shrink(struct ttm_mem_global *glob, bool from_wq, uint64_t extra, struct ttm_operation_ctx *ctx)
 
     Extend this if needed, perhaps using a linked list of callbacks.
 
@@ -17,6 +17,9 @@ ttm_shrink
         *undescribed*
 
     :param uint64_t extra:
+        *undescribed*
+
+    :param struct ttm_operation_ctx \*ctx:
         *undescribed*
 
 .. _`ttm_shrink.note-that-this-function-is-reentrant`:

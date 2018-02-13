@@ -19,7 +19,7 @@ Definition
 
     struct drm_syncobj {
         struct kref refcount;
-        struct dma_fence *fence;
+        struct dma_fence __rcu *fence;
         struct list_head cb_list;
         spinlock_t lock;
         struct file *file;
@@ -31,30 +31,29 @@ Members
 -------
 
 refcount
-
     Reference count of this object.
 
 fence
     NULL or a pointer to the fence bound to this object.
 
-    This field should not be used directly.  Use drm_syncobj_fence_get
-    and drm_syncobj_replace_fence instead.
+    This field should not be used directly. Use \ :c:func:`drm_syncobj_fence_get`\ 
+    and \ :c:func:`drm_syncobj_replace_fence`\  instead.
 
 cb_list
-    List of callbacks to call when the fence gets replaced
+    List of callbacks to call when the \ :c:type:`struct fence <fence>`\  gets replaced.
 
 lock
-    locks cb_list and write-locks fence.
+    Protects \ :c:type:`struct cb_list <cb_list>`\  and write-locks \ :c:type:`struct fence <fence>`\ .
 
 file
-    a file backing for this syncobj.
+    A file backing for this syncobj.
 
 .. _`drm_syncobj.description`:
 
 Description
 -----------
 
-This structure defines a generic sync object which wraps a dma fence.
+This structure defines a generic sync object which wraps a \ :c:type:`struct dma_fence <dma_fence>`\ .
 
 .. _`drm_syncobj_cb`:
 
@@ -84,7 +83,7 @@ Members
 
 node
     used by drm_syncob_add_callback to append this struct to
-    syncobj::cb_list
+    \ :c:type:`drm_syncobj.cb_list <drm_syncobj>`\ 
 
 func
     drm_syncobj_func_t to call
@@ -116,7 +115,7 @@ drm_syncobj_get
 Description
 -----------
 
-This acquires additional reference to \ ``obj``\ . It is illegal to call this
+This acquires an additional reference to \ ``obj``\ . It is illegal to call this
 without already holding a reference. No locks required.
 
 .. _`drm_syncobj_put`:
@@ -130,6 +129,34 @@ drm_syncobj_put
 
     :param struct drm_syncobj \*obj:
         sync object.
+
+.. _`drm_syncobj_fence_get`:
+
+drm_syncobj_fence_get
+=====================
+
+.. c:function:: struct dma_fence *drm_syncobj_fence_get(struct drm_syncobj *syncobj)
+
+    get a reference to a fence in a sync object
+
+    :param struct drm_syncobj \*syncobj:
+        sync object.
+
+.. _`drm_syncobj_fence_get.description`:
+
+Description
+-----------
+
+This acquires additional reference to \ :c:type:`drm_syncobj.fence <drm_syncobj>`\  contained in \ ``obj``\ ,
+if not NULL. It is illegal to call this without already holding a reference.
+No locks required.
+
+.. _`drm_syncobj_fence_get.return`:
+
+Return
+------
+
+Either the fence of \ ``obj``\  or NULL if there's none.
 
 .. This file was automatic generated / don't edit.
 

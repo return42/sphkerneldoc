@@ -320,5 +320,33 @@ v4l2_dv_timings_aspect_ratio
     :param const struct v4l2_dv_timings \*t:
         the timings data.
 
+.. _`can_reduce_fps`:
+
+can_reduce_fps
+==============
+
+.. c:function:: bool can_reduce_fps(struct v4l2_bt_timings *bt)
+
+    check if conditions for reduced fps are true.
+
+    :param struct v4l2_bt_timings \*bt:
+        v4l2 timing structure
+
+.. _`can_reduce_fps.description`:
+
+Description
+-----------
+
+For different timings reduced fps is allowed if the following conditions
+
+.. _`can_reduce_fps.are-met`:
+
+are met
+-------
+
+
+  - For CVT timings: if reduced blanking v2 (vsync == 8) is true.
+  - For CEA861 timings: if \ ``V4L2_DV_FL_CAN_REDUCE_FPS``\  flag is true.
+
 .. This file was automatic generated / don't edit.
 

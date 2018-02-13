@@ -258,7 +258,7 @@ MGMT_MCAST_KEY
 
 SCD_QUEUE_CFG
     &struct iwl_scd_txq_cfg_cmd for older hardware,     \ :c:type:`struct iwl_tx_queue_cfg_cmd <iwl_tx_queue_cfg_cmd>`\  with \ :c:type:`struct iwl_tx_queue_cfg_rsp <iwl_tx_queue_cfg_rsp>`\ 
-    for newer (A000) hardware.
+    for newer (22000) hardware.
 
 WEP_KEY
     uses \ :c:type:`struct iwl_mvm_wep_key_cmd <iwl_mvm_wep_key_cmd>`\ 

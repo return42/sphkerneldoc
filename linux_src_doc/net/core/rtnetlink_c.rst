@@ -1,12 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/core/rtnetlink.c
 
-.. _`__rtnl_register`:
+.. _`rtnl_register_module`:
 
-__rtnl_register
-===============
+rtnl_register_module
+====================
 
-.. c:function:: int __rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, unsigned int flags)
+.. c:function:: int rtnl_register_module(struct module *owner, int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, unsigned int flags)
+
+    Register a rtnetlink message type
+
+    :param struct module \*owner:
+        module registering the hook (THIS_MODULE)
+
+    :param int protocol:
+        Protocol family or PF_UNSPEC
+
+    :param int msgtype:
+        rtnetlink message type
+
+    :param rtnl_doit_func doit:
+        Function pointer called for each request message
+
+    :param rtnl_dumpit_func dumpit:
+        Function pointer called for each dump request (NLM_F_DUMP) message
+
+    :param unsigned int flags:
+        rtnl_link_flags to modifiy behaviour of doit/dumpit functions
+
+.. _`rtnl_register_module.description`:
+
+Description
+-----------
+
+Like rtnl_register, but for use by removable modules.
+
+.. _`rtnl_register`:
+
+rtnl_register
+=============
+
+.. c:function:: void rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, unsigned int flags)
 
     Register a rtnetlink message type
 
@@ -25,7 +59,7 @@ __rtnl_register
     :param unsigned int flags:
         rtnl_link_flags to modifiy behaviour of doit/dumpit functions
 
-.. _`__rtnl_register.description`:
+.. _`rtnl_register.description`:
 
 Description
 -----------
@@ -37,43 +71,6 @@ specified protocol family and message type is received.
 The special protocol family PF_UNSPEC may be used to define fallback
 function pointers for the case when no entry for the specific protocol
 family exists.
-
-Returns 0 on success or a negative error code.
-
-.. _`rtnl_register`:
-
-rtnl_register
-=============
-
-.. c:function:: void rtnl_register(int protocol, int msgtype, rtnl_doit_func doit, rtnl_dumpit_func dumpit, unsigned int flags)
-
-    Register a rtnetlink message type
-
-    :param int protocol:
-        *undescribed*
-
-    :param int msgtype:
-        *undescribed*
-
-    :param rtnl_doit_func doit:
-        *undescribed*
-
-    :param rtnl_dumpit_func dumpit:
-        *undescribed*
-
-    :param unsigned int flags:
-        *undescribed*
-
-.. _`rtnl_register.description`:
-
-Description
------------
-
-Identical to \__rtnl_register() but panics on failure. This is useful
-as failure of this function is very unlikely, it can only happen due
-to lack of memory when allocating the chain to store all message
-handlers for a protocol. Meant for use in init functions where lack
-of memory implies no sense in continuing.
 
 .. _`rtnl_unregister`:
 

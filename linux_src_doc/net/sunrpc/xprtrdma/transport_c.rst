@@ -33,6 +33,28 @@ Description
 Called during transport shutdown reconnect, or device
 removal. Caller holds the transport's write lock.
 
+.. _`xprt_rdma_set_port`:
+
+xprt_rdma_set_port
+==================
+
+.. c:function:: void xprt_rdma_set_port(struct rpc_xprt *xprt, u16 port)
+
+    update server port with rpcbind result
+
+    :param struct rpc_xprt \*xprt:
+        controlling RPC transport
+
+    :param u16 port:
+        new port value
+
+.. _`xprt_rdma_set_port.description`:
+
+Description
+-----------
+
+Transport connect status is unchanged.
+
 .. _`xprt_rdma_timer`:
 
 xprt_rdma_timer
@@ -139,44 +161,16 @@ Description
 
 Caller holds the transport's write lock.
 
-.. _`xprt_rdma_send_request.return-values`:
+.. _`xprt_rdma_send_request.return`:
 
-Return values
--------------
+Return
+------
 
-0:    The request has been sent
-
-.. _`xprt_rdma_send_request.enotconn`:
-
-ENOTCONN
---------
-
-Caller needs to invoke connect logic then call again
-
-.. _`xprt_rdma_send_request.enobufs`:
-
-ENOBUFS
--------
-
-Call again later to send the request
-
-.. _`xprt_rdma_send_request.eio`:
-
-EIO
----
-
-A permanent error occurred. The request was not sent,
-and don't try it again
-
-send_request invokes the meat of RPC RDMA. It must do the following:
-
-1.  Marshal the RPC request into an RPC RDMA request, which means
-putting a header in front of data, and creating IOVs for RDMA
-from those in the request.
-2.  In marshaling, detect opportunities for RDMA, and use them.
-3.  Post a recv message to set up asynch completion, then send
-the request (rpcrdma_ep_post).
-4.  No partial sends are possible in the RPC-RDMA protocol (as in UDP).
+%0 if the RPC message has been sent
+\ ``-ENOTCONN``\  if the caller should reconnect and call again
+\ ``-ENOBUFS``\  if the caller should call again later
+\ ``-EIO``\  if a permanent error occurred and the request was not
+sent. Do not try to send this message again.
 
 .. This file was automatic generated / don't edit.
 

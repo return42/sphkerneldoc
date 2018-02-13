@@ -31,12 +31,13 @@ i915
     i915_gem_timeline_c
     i915_gem_userptr_c
     i915_gpu_error_c
-    i915_guc_submission_c
     i915_ioc32_c
     i915_irq_c
     i915_memcpy_c
     i915_mm_c
+    i915_params_c
     i915_perf_c
+    i915_pmu_h
     i915_reg_h
     i915_syncmap_c
     i915_trace_h
@@ -50,6 +51,7 @@ i915
     intel_cdclk_c
     intel_crt_c
     intel_csr_c
+    intel_device_info_c
     intel_display_c
     intel_dp_c
     intel_dpio_phy_c
@@ -68,6 +70,7 @@ i915
     intel_guc_fw_c
     intel_guc_fwif_h
     intel_guc_log_c
+    intel_guc_submission_c
     intel_gvt_c
     intel_hotplug_c
     intel_huc_c

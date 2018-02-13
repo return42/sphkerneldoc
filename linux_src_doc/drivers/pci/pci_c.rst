@@ -1541,6 +1541,34 @@ Description
 Set the new size of a BAR as defined in the spec.
 Returns zero if resizing was successful, error code otherwise.
 
+.. _`pci_enable_atomic_ops_to_root`:
+
+pci_enable_atomic_ops_to_root
+=============================
+
+.. c:function:: int pci_enable_atomic_ops_to_root(struct pci_dev *dev, u32 cap_mask)
+
+    enable AtomicOp requests to root port
+
+    :param struct pci_dev \*dev:
+        the PCI device
+
+    :param u32 cap_mask:
+        mask of desired AtomicOp sizes, including one or more of:
+        PCI_EXP_DEVCAP2_ATOMIC_COMP32
+        PCI_EXP_DEVCAP2_ATOMIC_COMP64
+        PCI_EXP_DEVCAP2_ATOMIC_COMP128
+
+.. _`pci_enable_atomic_ops_to_root.description`:
+
+Description
+-----------
+
+Return 0 if all upstream bridges support AtomicOp routing, egress
+blocking is disabled on all upstream ports, and the root port supports
+the requested completion capabilities (32-bit, 64-bit and/or 128-bit
+AtomicOp completion), or negative otherwise.
+
 .. _`pci_swizzle_interrupt_pin`:
 
 pci_swizzle_interrupt_pin
@@ -2066,6 +2094,32 @@ Description
 Enables the Memory-Write-Invalidate transaction in \ ``PCI_COMMAND``\ .
 
 .. _`pci_set_mwi.return`:
+
+Return
+------
+
+An appropriate -ERRNO error value on error, or zero for success.
+
+.. _`pcim_set_mwi`:
+
+pcim_set_mwi
+============
+
+.. c:function:: int pcim_set_mwi(struct pci_dev *dev)
+
+    a device-managed \ :c:func:`pci_set_mwi`\ 
+
+    :param struct pci_dev \*dev:
+        the PCI device for which MWI is enabled
+
+.. _`pcim_set_mwi.description`:
+
+Description
+-----------
+
+Managed \ :c:func:`pci_set_mwi`\ .
+
+.. _`pcim_set_mwi.return`:
 
 Return
 ------

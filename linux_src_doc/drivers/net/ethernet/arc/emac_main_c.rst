@@ -99,6 +99,46 @@ Number of processed BDs
 
 Iterate through Rx BDs and deliver received packages to upper layer.
 
+.. _`arc_emac_rx_miss_handle`:
+
+arc_emac_rx_miss_handle
+=======================
+
+.. c:function:: void arc_emac_rx_miss_handle(struct net_device *ndev)
+
+    handle R_MISS register
+
+    :param struct net_device \*ndev:
+        Pointer to the net_device structure.
+
+.. _`arc_emac_rx_stall_check`:
+
+arc_emac_rx_stall_check
+=======================
+
+.. c:function:: void arc_emac_rx_stall_check(struct net_device *ndev, int budget, unsigned int work_done)
+
+    check RX stall
+
+    :param struct net_device \*ndev:
+        Pointer to the net_device structure.
+
+    :param int budget:
+        How many BDs requested to process on 1 call.
+
+    :param unsigned int work_done:
+        How many BDs processed
+
+.. _`arc_emac_rx_stall_check.description`:
+
+Description
+-----------
+
+Under certain conditions EMAC stop reception of incoming packets and
+continuously increment R_MISS register instead of saving data into
+provided buffer. This function detect that condition and restart
+EMAC.
+
 .. _`arc_emac_poll`:
 
 arc_emac_poll
@@ -323,6 +363,26 @@ Return
 
 -EBUSY if the net device is busy or 0 if the address is set
 successfully.
+
+.. _`arc_emac_restart`:
+
+arc_emac_restart
+================
+
+.. c:function:: void arc_emac_restart(struct net_device *ndev)
+
+    Restart EMAC
+
+    :param struct net_device \*ndev:
+        Pointer to net_device structure.
+
+.. _`arc_emac_restart.description`:
+
+Description
+-----------
+
+This function do hardware reset of EMAC in order to restore
+network packets reception.
 
 .. This file was automatic generated / don't edit.
 

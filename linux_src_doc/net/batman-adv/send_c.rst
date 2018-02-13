@@ -41,6 +41,54 @@ A negative errno code is returned on a failure. A success does not
 guarantee the frame will be transmitted as it may be dropped due
 to congestion or traffic shaping.
 
+.. _`batadv_send_broadcast_skb`:
+
+batadv_send_broadcast_skb
+=========================
+
+.. c:function:: int batadv_send_broadcast_skb(struct sk_buff *skb, struct batadv_hard_iface *hard_iface)
+
+    Send broadcast packet via hard interface
+
+    :param struct sk_buff \*skb:
+        packet to be transmitted (with batadv header and no outer eth header)
+
+    :param struct batadv_hard_iface \*hard_iface:
+        outgoing interface
+
+.. _`batadv_send_broadcast_skb.return`:
+
+Return
+------
+
+A negative errno code is returned on a failure. A success does not
+guarantee the frame will be transmitted as it may be dropped due
+to congestion or traffic shaping.
+
+.. _`batadv_send_unicast_skb`:
+
+batadv_send_unicast_skb
+=======================
+
+.. c:function:: int batadv_send_unicast_skb(struct sk_buff *skb, struct batadv_neigh_node *neigh)
+
+    Send unicast packet to neighbor
+
+    :param struct sk_buff \*skb:
+        packet to be transmitted (with batadv header and no outer eth header)
+
+    :param struct batadv_neigh_node \*neigh:
+        neighbor which is used as next hop to destination
+
+.. _`batadv_send_unicast_skb.return`:
+
+Return
+------
+
+A negative errno code is returned on a failure. A success does not
+guarantee the frame will be transmitted as it may be dropped due
+to congestion or traffic shaping.
+
 .. _`batadv_send_skb_to_orig`:
 
 batadv_send_skb_to_orig

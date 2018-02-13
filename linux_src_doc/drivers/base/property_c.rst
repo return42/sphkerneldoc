@@ -848,6 +848,21 @@ fwnode_get_next_child_node
     :param struct fwnode_handle \*child:
         Handle to one of the node's child nodes or a \ ``NULL``\  handle.
 
+.. _`fwnode_get_next_available_child_node`:
+
+fwnode_get_next_available_child_node
+====================================
+
+.. c:function:: struct fwnode_handle *fwnode_get_next_available_child_node(const struct fwnode_handle *fwnode, struct fwnode_handle *child)
+
+    Return the next available child node handle for a node
+
+    :param const struct fwnode_handle \*fwnode:
+        Firmware node to find the next child node for.
+
+    :param struct fwnode_handle \*child:
+        Handle to one of the node's child nodes or a \ ``NULL``\  handle.
+
 .. _`device_get_next_child_node`:
 
 device_get_next_child_node
@@ -957,6 +972,27 @@ device_get_child_node_count
     :param struct device \*dev:
         Device to cound the child nodes for
 
+.. _`fwnode_get_phy_mode`:
+
+fwnode_get_phy_mode
+===================
+
+.. c:function:: int fwnode_get_phy_mode(struct fwnode_handle *fwnode)
+
+    Get phy mode for given firmware node
+
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the given node
+
+.. _`fwnode_get_phy_mode.description`:
+
+Description
+-----------
+
+The function gets phy interface string from property 'phy-mode' or
+'phy-connection-type', and return its index in phy_modes table, or errno in
+error case.
+
 .. _`device_get_phy_mode`:
 
 device_get_phy_mode
@@ -978,17 +1014,17 @@ The function gets phy interface string from property 'phy-mode' or
 'phy-connection-type', and return its index in phy_modes table, or errno in
 error case.
 
-.. _`device_get_mac_address`:
+.. _`fwnode_get_mac_address`:
 
-device_get_mac_address
+fwnode_get_mac_address
 ======================
 
-.. c:function:: void *device_get_mac_address(struct device *dev, char *addr, int alen)
+.. c:function:: void *fwnode_get_mac_address(struct fwnode_handle *fwnode, char *addr, int alen)
 
-    Get the MAC for a given device
+    Get the MAC from the firmware node
 
-    :param struct device \*dev:
-        Pointer to the device
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the firmware node
 
     :param char \*addr:
         Address of buffer to store the MAC in
@@ -996,7 +1032,7 @@ device_get_mac_address
     :param int alen:
         Length of the buffer pointed to by addr, should be ETH_ALEN
 
-.. _`device_get_mac_address.description`:
+.. _`fwnode_get_mac_address.description`:
 
 Description
 -----------
@@ -1017,6 +1053,47 @@ example, the DTS could define 'mac-address' and 'local-mac-address', with
 zero MAC addresses.  Some older U-Boots only initialized 'local-mac-address'.
 In this case, the real MAC is in 'local-mac-address', and 'mac-address'
 exists but is all zeros.
+
+.. _`device_get_mac_address`:
+
+device_get_mac_address
+======================
+
+.. c:function:: void *device_get_mac_address(struct device *dev, char *addr, int alen)
+
+    Get the MAC for a given device
+
+    :param struct device \*dev:
+        Pointer to the device
+
+    :param char \*addr:
+        Address of buffer to store the MAC in
+
+    :param int alen:
+        Length of the buffer pointed to by addr, should be ETH_ALEN
+
+.. _`fwnode_irq_get`:
+
+fwnode_irq_get
+==============
+
+.. c:function:: int fwnode_irq_get(struct fwnode_handle *fwnode, unsigned int index)
+
+    Get IRQ directly from a fwnode
+
+    :param struct fwnode_handle \*fwnode:
+        Pointer to the firmware node
+
+    :param unsigned int index:
+        Zero-based index of the IRQ
+
+.. _`fwnode_irq_get.description`:
+
+Description
+-----------
+
+Returns Linux IRQ number on success. Other values are determined
+accordingly to acpi_/of\_ \ :c:func:`irq_get`\  operation.
 
 .. _`fwnode_graph_get_next_endpoint`:
 

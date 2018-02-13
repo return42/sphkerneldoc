@@ -6,11 +6,11 @@
 cfs_hash_rehash_worker
 ======================
 
-.. c:function:: int cfs_hash_rehash_worker(struct cfs_workitem *wi)
+.. c:function:: void cfs_hash_rehash_worker(struct work_struct *work)
 
     @name     - Descriptive hash name \ ``cur_bits``\  - Initial hash table size, in bits \ ``max_bits``\  - Maximum allowed hash table resize, in bits \ ``ops``\       - Registered hash table operations \ ``flags``\     - CFS_HASH_REHASH enable synamic hash resizing - CFS_HASH_SORT enable chained hash sort
 
-    :param struct cfs_workitem \*wi:
+    :param struct work_struct \*work:
         *undescribed*
 
 .. _`cfs_hash_destroy`:
@@ -205,12 +205,12 @@ cfs_hash_for_each_empty
     :param void \*data:
         *undescribed*
 
-.. _`cfs_hash_rehash_cancel_locked`:
+.. _`cfs_hash_rehash_cancel`:
 
-cfs_hash_rehash_cancel_locked
-=============================
+cfs_hash_rehash_cancel
+======================
 
-.. c:function:: void cfs_hash_rehash_cancel_locked(struct cfs_hash *hs)
+.. c:function:: void cfs_hash_rehash_cancel(struct cfs_hash *hs)
 
     to grow the hash size when excessive chaining is detected, or to shrink the hash when it is larger than needed.  When the CFS_HASH_REHASH flag is set in \ ``hs``\  the libcfs hash may be dynamically rehashed during addition or removal if the hash's theta value exceeds either the hs->hs_min_theta or hs->max_theta values.  By default these values are tuned to keep the chained hash depth small, and this approach assumes a reasonably uniform hashing function.  The theta thresholds for \ ``hs``\  are tunable via \ :c:func:`cfs_hash_set_theta`\ .
 

@@ -6,7 +6,7 @@
 __remove_pages
 ==============
 
-.. c:function:: int __remove_pages(struct zone *zone, unsigned long phys_start_pfn, unsigned long nr_pages)
+.. c:function:: int __remove_pages(struct zone *zone, unsigned long phys_start_pfn, unsigned long nr_pages, struct vmem_altmap *altmap)
 
     remove sections of pages from a zone
 
@@ -18,6 +18,9 @@ __remove_pages
 
     :param unsigned long nr_pages:
         number of pages to remove (must be multiple of section size)
+
+    :param struct vmem_altmap \*altmap:
+        *undescribed*
 
 .. _`__remove_pages.description`:
 

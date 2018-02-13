@@ -7,8 +7,8 @@ ccree
 .. toctree::
     :maxdepth: 1
 
-    ssi_buffer_mgr_c
-    ssi_driver_h
-    ssi_ivgen_c
-    ssi_sram_mgr_c
-    ssi_sram_mgr_h
+    cc_buffer_mgr_c
+    cc_driver_h
+    cc_ivgen_c
+    cc_sram_mgr_c
+    cc_sram_mgr_h

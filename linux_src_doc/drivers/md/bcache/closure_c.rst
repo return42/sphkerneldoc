@@ -48,25 +48,5 @@ Description
 @waitlist will own a ref on \ ``cl``\ , which will be released when
 \ :c:func:`closure_wake_up`\  is called on \ ``waitlist``\ .
 
-.. _`closure_sync`:
-
-closure_sync
-============
-
-.. c:function:: void closure_sync(struct closure *cl)
-
-    sleep until a closure has nothing left to wait on
-
-    :param struct closure \*cl:
-        *undescribed*
-
-.. _`closure_sync.description`:
-
-Description
------------
-
-Sleeps until the refcount hits 1 - the thread that's running the closure owns
-the last refcount.
-
 .. This file was automatic generated / don't edit.
 

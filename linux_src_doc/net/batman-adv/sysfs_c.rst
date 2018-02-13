@@ -96,6 +96,37 @@ Return
 
 'count' on success or a negative error code in case of failure
 
+.. _`batadv_sysfs_add_meshif`:
+
+batadv_sysfs_add_meshif
+=======================
+
+.. c:function:: int batadv_sysfs_add_meshif(struct net_device *dev)
+
+    Add soft interface specific sysfs entries
+
+    :param struct net_device \*dev:
+        netdev struct of the soft interface
+
+.. _`batadv_sysfs_add_meshif.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_sysfs_del_meshif`:
+
+batadv_sysfs_del_meshif
+=======================
+
+.. c:function:: void batadv_sysfs_del_meshif(struct net_device *dev)
+
+    Remove soft interface specific sysfs entries
+
+    :param struct net_device \*dev:
+        netdev struct of the soft interface
+
 .. _`batadv_sysfs_add_vlan`:
 
 batadv_sysfs_add_vlan
@@ -210,6 +241,70 @@ Return
 ------
 
 'count' on success or a negative error code in case of failure
+
+.. _`batadv_sysfs_add_hardif`:
+
+batadv_sysfs_add_hardif
+=======================
+
+.. c:function:: int batadv_sysfs_add_hardif(struct kobject **hardif_obj, struct net_device *dev)
+
+    Add hard interface specific sysfs entries
+
+    :param struct kobject \*\*hardif_obj:
+        address where to store the pointer to new sysfs folder
+
+    :param struct net_device \*dev:
+        netdev struct of the hard interface
+
+.. _`batadv_sysfs_add_hardif.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_sysfs_del_hardif`:
+
+batadv_sysfs_del_hardif
+=======================
+
+.. c:function:: void batadv_sysfs_del_hardif(struct kobject **hardif_obj)
+
+    Remove hard interface specific sysfs entries
+
+    :param struct kobject \*\*hardif_obj:
+        address to the pointer to which stores batman-adv sysfs folder
+        of the hard interface
+
+.. _`batadv_throw_uevent`:
+
+batadv_throw_uevent
+===================
+
+.. c:function:: int batadv_throw_uevent(struct batadv_priv *bat_priv, enum batadv_uev_type type, enum batadv_uev_action action, const char *data)
+
+    Send an uevent with batman-adv specific env data
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param enum batadv_uev_type type:
+        subsystem type of event. Stored in uevent's BATTYPE
+
+    :param enum batadv_uev_action action:
+        action type of event. Stored in uevent's BATACTION
+
+    :param const char \*data:
+        string with additional information to the event (ignored for
+        BATADV_UEV_DEL). Stored in uevent's BATDATA
+
+.. _`batadv_throw_uevent.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
 
 .. This file was automatic generated / don't edit.
 

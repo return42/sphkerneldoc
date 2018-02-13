@@ -66,6 +66,45 @@ Description
 Do not use struct members directly.  Use \ :c:func:`drm_printer_seq_file`\ ,
 \ :c:func:`drm_printer_info`\ , etc to initialize.  And \ :c:func:`drm_printf`\  for output.
 
+.. _`drm_vprintf`:
+
+drm_vprintf
+===========
+
+.. c:function:: void drm_vprintf(struct drm_printer *p, const char *fmt, va_list *va)
+
+    print to a \ :c:type:`struct drm_printer <drm_printer>`\  stream
+
+    :param struct drm_printer \*p:
+        the \ :c:type:`struct drm_printer <drm_printer>`\ 
+
+    :param const char \*fmt:
+        format string
+
+    :param va_list \*va:
+        the va_list
+
+.. _`drm_printf_indent`:
+
+drm_printf_indent
+=================
+
+.. c:function::  drm_printf_indent( printer,  indent,  fmt,  ...)
+
+    Print to a \ :c:type:`struct drm_printer <drm_printer>`\  stream with indentation
+
+    :param  printer:
+        DRM printer
+
+    :param  indent:
+        Tab indentation level (max 5)
+
+    :param  fmt:
+        Format string
+
+    :param ellipsis ellipsis:
+        variable arguments
+
 .. _`drm_seq_file_printer`:
 
 drm_seq_file_printer
@@ -122,6 +161,64 @@ Return
 ------
 
 The \ :c:type:`struct drm_printer <drm_printer>`\  object
+
+.. _`drm_dev_error`:
+
+DRM_DEV_ERROR
+=============
+
+.. c:function::  DRM_DEV_ERROR( dev,  fmt,  ...)
+
+    :param  dev:
+        device pointer
+
+    :param  fmt:
+        printf() like format string.
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`drm_dev_error_ratelimited`:
+
+DRM_DEV_ERROR_RATELIMITED
+=========================
+
+.. c:function::  DRM_DEV_ERROR_RATELIMITED( dev,  fmt,  ...)
+
+    :param  dev:
+        device pointer
+
+    :param  fmt:
+        printf() like format string.
+
+    :param ellipsis ellipsis:
+        variable arguments
+
+.. _`drm_dev_debug`:
+
+DRM_DEV_DEBUG
+=============
+
+.. c:function::  DRM_DEV_DEBUG( dev,  fmt,  args...)
+
+    :param  dev:
+        device pointer
+
+    :param  fmt:
+        printf() like format string.
+
+.. _`drm_dev_debug_ratelimited`:
+
+DRM_DEV_DEBUG_RATELIMITED
+=========================
+
+.. c:function::  DRM_DEV_DEBUG_RATELIMITED( dev,  fmt,  args...)
+
+    :param  dev:
+        device pointer
+
+    :param  fmt:
+        printf() like format string.
 
 .. This file was automatic generated / don't edit.
 

@@ -183,11 +183,11 @@ requested by userspace.
 intel_dp_drrs_init
 ==================
 
-.. c:function:: struct drm_display_mode *intel_dp_drrs_init(struct intel_connector *intel_connector, struct drm_display_mode *fixed_mode)
+.. c:function:: struct drm_display_mode *intel_dp_drrs_init(struct intel_connector *connector, struct drm_display_mode *fixed_mode)
 
     Init basic DRRS work and mutex.
 
-    :param struct intel_connector \*intel_connector:
+    :param struct intel_connector \*connector:
         eDP connector
 
     :param struct drm_display_mode \*fixed_mode:

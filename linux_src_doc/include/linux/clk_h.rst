@@ -483,6 +483,59 @@ struct clk from the registered list of clock providers by using
 The clock will automatically be freed when the device is unbound
 from the bus.
 
+.. _`clk_rate_exclusive_get`:
+
+clk_rate_exclusive_get
+======================
+
+.. c:function:: int clk_rate_exclusive_get(struct clk *clk)
+
+    get exclusivity over the rate control of a producer
+
+    :param struct clk \*clk:
+        clock source
+
+.. _`clk_rate_exclusive_get.description`:
+
+Description
+-----------
+
+This function allows drivers to get exclusive control over the rate of a
+provider. It prevents any other consumer to execute, even indirectly,
+opereation which could alter the rate of the provider or cause glitches
+
+If exlusivity is claimed more than once on clock, even by the same driver,
+the rate effectively gets locked as exclusivity can't be preempted.
+
+Must not be called from within atomic context.
+
+Returns success (0) or negative errno.
+
+.. _`clk_rate_exclusive_put`:
+
+clk_rate_exclusive_put
+======================
+
+.. c:function:: void clk_rate_exclusive_put(struct clk *clk)
+
+    release exclusivity over the rate control of a producer
+
+    :param struct clk \*clk:
+        clock source
+
+.. _`clk_rate_exclusive_put.description`:
+
+Description
+-----------
+
+This function allows drivers to release the exclusivity it previously got
+from \ :c:func:`clk_rate_exclusive_get`\ 
+
+The caller must balance the number of \ :c:func:`clk_rate_exclusive_get`\  and
+\ :c:func:`clk_rate_exclusive_put`\  calls.
+
+Must not be called from within atomic context.
+
 .. _`clk_enable`:
 
 clk_enable
@@ -733,6 +786,35 @@ clk_set_rate
 
 Description
 -----------
+
+Returns success (0) or negative errno.
+
+.. _`clk_set_rate_exclusive`:
+
+clk_set_rate_exclusive
+======================
+
+.. c:function:: int clk_set_rate_exclusive(struct clk *clk, unsigned long rate)
+
+    set the clock rate and claim exclusivity over clock source
+
+    :param struct clk \*clk:
+        clock source
+
+    :param unsigned long rate:
+        desired clock rate in Hz
+
+.. _`clk_set_rate_exclusive.description`:
+
+Description
+-----------
+
+This helper function allows drivers to atomically set the rate of a producer
+and claim exclusivity over the rate control of the producer.
+
+It is essentially a combination of \ :c:func:`clk_set_rate`\  and
+\ :c:func:`clk_rate_exclusite_get`\ . Caller must balance this call with a call to
+\ :c:func:`clk_rate_exclusive_put`\ 
 
 Returns success (0) or negative errno.
 

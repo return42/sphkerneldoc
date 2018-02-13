@@ -113,12 +113,15 @@ trace_hrtimer_init
 trace_hrtimer_start
 ===================
 
-.. c:function:: void trace_hrtimer_start(struct hrtimer *hrtimer)
+.. c:function:: void trace_hrtimer_start(struct hrtimer *hrtimer, enum hrtimer_mode mode)
 
     called when the hrtimer is started
 
     :param struct hrtimer \*hrtimer:
         pointer to struct hrtimer
+
+    :param enum hrtimer_mode mode:
+        *undescribed*
 
 .. _`trace_hrtimer_expire_entry`:
 

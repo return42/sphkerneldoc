@@ -44,7 +44,7 @@ attr_group
     the group of attributes
 
 groups
-    *undescribed*
+    null terminated array of attribute groups
 
 attrs
     null terminated array of attribute pointers.

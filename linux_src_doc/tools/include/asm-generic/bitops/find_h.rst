@@ -27,6 +27,35 @@ Description
 Returns the bit number for the next set bit
 If no bits are set, returns \ ``size``\ .
 
+.. _`find_next_and_bit`:
+
+find_next_and_bit
+=================
+
+.. c:function:: unsigned long find_next_and_bit(const unsigned long *addr1, const unsigned long *addr2, unsigned long size, unsigned long offset)
+
+    find the next set bit in both memory regions
+
+    :param const unsigned long \*addr1:
+        The first address to base the search on
+
+    :param const unsigned long \*addr2:
+        The second address to base the search on
+
+    :param unsigned long size:
+        The bitmap size in bits
+
+    :param unsigned long offset:
+        The bitnumber to start searching at
+
+.. _`find_next_and_bit.description`:
+
+Description
+-----------
+
+Returns the bit number for the next set bit
+If no bits are set, returns \ ``size``\ .
+
 .. _`find_next_zero_bit`:
 
 find_next_zero_bit

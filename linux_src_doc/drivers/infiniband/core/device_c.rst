@@ -501,18 +501,15 @@ ib_modify_port() changes a port's attributes as specified by the
 ib_find_gid
 ===========
 
-.. c:function:: int ib_find_gid(struct ib_device *device, union ib_gid *gid, enum ib_gid_type gid_type, struct net_device *ndev, u8 *port_num, u16 *index)
+.. c:function:: int ib_find_gid(struct ib_device *device, union ib_gid *gid, struct net_device *ndev, u8 *port_num, u16 *index)
 
-    Returns the port number and GID table index where a specified GID value occurs.
+    Returns the port number and GID table index where a specified GID value occurs. Its searches only for IB link layer.
 
     :param struct ib_device \*device:
         The device to query.
 
     :param union ib_gid \*gid:
         The GID value to search for.
-
-    :param enum ib_gid_type gid_type:
-        Type of GID.
 
     :param struct net_device \*ndev:
         The ndev related to the GID to search for.

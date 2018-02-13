@@ -9,6 +9,8 @@ amdgpu
 
     amdgpu_acp_c
     amdgpu_acpi_c
+    amdgpu_amdkfd_c
+    amdgpu_atombios_c
     amdgpu_atpx_handler_c
     amdgpu_bios_c
     amdgpu_cs_c
@@ -21,6 +23,7 @@ amdgpu
     amdgpu_gfx_h
     amdgpu_gtt_mgr_c
     amdgpu_ib_c
+    amdgpu_ids_c
     amdgpu_ih_c
     amdgpu_irq_c
     amdgpu_kms_c
@@ -64,6 +67,7 @@ amdgpu
     si_dma_c
     si_dpm_c
     si_ih_c
+    soc15_c
     tonga_ih_c
     uvd_v4_2_c
     uvd_v5_0_c

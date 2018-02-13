@@ -169,7 +169,7 @@ sht15_crc8
         sht15 retrieved data.
 
     :param int len:
-        *undescribed*
+        Length of retrieved data
 
 .. _`sht15_crc8.description`:
 

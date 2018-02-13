@@ -272,7 +272,6 @@ NOTE
 ----
 
 @address and \ ``size``\  must be 32-bit aligned values.
-
 The area must also be 'released' when the structure is freed.
 
 .. _`nfp_cpp_area_alloc_acquire.return`:
@@ -434,7 +433,6 @@ NOTE
 ----
 
 @offset and \ ``length``\  must be 32-bit aligned values.
-
 Area must have been locked down with an 'acquire'.
 
 .. _`nfp_cpp_area_read.return`:
@@ -478,7 +476,6 @@ NOTE
 ----
 
 @offset and \ ``length``\  must be 32-bit aligned values.
-
 Area must have been locked down with an 'acquire'.
 
 .. _`nfp_cpp_area_write.return`:
@@ -487,6 +484,25 @@ Return
 ------
 
 length of io, or -ERRNO
+
+.. _`nfp_cpp_area_size`:
+
+nfp_cpp_area_size
+=================
+
+.. c:function:: size_t nfp_cpp_area_size(struct nfp_cpp_area *cpp_area)
+
+    return size of a CPP area
+
+    :param struct nfp_cpp_area \*cpp_area:
+        CPP area handle
+
+.. _`nfp_cpp_area_size.return`:
+
+Return
+------
+
+Size of the area
 
 .. _`nfp_cpp_area_name`:
 
@@ -654,7 +670,7 @@ nfp_cpp_area_readl
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_area_writel`:
 
@@ -679,7 +695,7 @@ nfp_cpp_area_writel
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_area_readq`:
 
@@ -704,7 +720,7 @@ nfp_cpp_area_readq
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_area_writeq`:
 
@@ -729,7 +745,7 @@ nfp_cpp_area_writeq
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_area_fill`:
 
@@ -866,7 +882,7 @@ nfp_xpb_readl
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_xpb_writel`:
 
@@ -891,7 +907,7 @@ nfp_xpb_writel
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_xpb_writelm`:
 
@@ -926,7 +942,7 @@ This operation is safe to call in interrupt or softirq context.
 Return
 ------
 
-length of the io, or -ERRNO
+0 on success, or -ERRNO
 
 .. _`nfp_cpp_from_operations`:
 

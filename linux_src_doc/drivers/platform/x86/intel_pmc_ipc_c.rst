@@ -8,7 +8,7 @@ intel_pmc_gcr_read
 
 .. c:function:: int intel_pmc_gcr_read(u32 offset, u32 *data)
 
-    Read PMC GCR register
+    Read a 32-bit PMC GCR register
 
     :param u32 offset:
         offset of GCR register from GCR address base
@@ -21,9 +21,38 @@ intel_pmc_gcr_read
 Description
 -----------
 
-Reads the PMC GCR register of given offset.
+Reads the 32-bit PMC GCR register at given offset.
 
 .. _`intel_pmc_gcr_read.return`:
+
+Return
+------
+
+negative value on error or 0 on success.
+
+.. _`intel_pmc_gcr_read64`:
+
+intel_pmc_gcr_read64
+====================
+
+.. c:function:: int intel_pmc_gcr_read64(u32 offset, u64 *data)
+
+    Read a 64-bit PMC GCR register
+
+    :param u32 offset:
+        offset of GCR register from GCR address base
+
+    :param u64 \*data:
+        data pointer for storing the register output
+
+.. _`intel_pmc_gcr_read64.description`:
+
+Description
+-----------
+
+Reads the 64-bit PMC GCR register at given offset.
+
+.. _`intel_pmc_gcr_read64.return`:
 
 Return
 ------

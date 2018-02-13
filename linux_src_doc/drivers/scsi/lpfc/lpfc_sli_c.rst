@@ -4628,26 +4628,6 @@ Description
 This routine is invoked by the worker thread to process all the pending
 SLI4 FCP abort XRI events.
 
-.. _`lpfc_sli4_nvme_xri_abort_event_proc`:
-
-lpfc_sli4_nvme_xri_abort_event_proc
-===================================
-
-.. c:function:: void lpfc_sli4_nvme_xri_abort_event_proc(struct lpfc_hba *phba)
-
-    Process nvme xri abort event
-
-    :param struct lpfc_hba \*phba:
-        pointer to lpfc hba data structure.
-
-.. _`lpfc_sli4_nvme_xri_abort_event_proc.description`:
-
-Description
------------
-
-This routine is invoked by the worker thread to process all the pending
-SLI4 NVME abort XRI events.
-
 .. _`lpfc_sli4_els_xri_abort_event_proc`:
 
 lpfc_sli4_els_xri_abort_event_proc
@@ -5349,12 +5329,15 @@ queue on the HBA.
 lpfc_sli4_queue_alloc
 =====================
 
-.. c:function:: struct lpfc_queue *lpfc_sli4_queue_alloc(struct lpfc_hba *phba, uint32_t entry_size, uint32_t entry_count)
+.. c:function:: struct lpfc_queue *lpfc_sli4_queue_alloc(struct lpfc_hba *phba, uint32_t page_size, uint32_t entry_size, uint32_t entry_count)
 
     Allocate and initialize a queue structure
 
     :param struct lpfc_hba \*phba:
         The HBA that this queue is being created on.
+
+    :param uint32_t page_size:
+        The size of a queue page
 
     :param uint32_t entry_size:
         The size of each queue entry for this queue.

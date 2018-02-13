@@ -292,7 +292,7 @@ Definition
         unsigned int cra_ctxsize;
         unsigned int cra_alignmask;
         int cra_priority;
-        atomic_t cra_refcnt;
+        refcount_t cra_refcnt;
         char cra_name[CRYPTO_MAX_ALG_NAME];
         char cra_driver_name[CRYPTO_MAX_ALG_NAME];
         const struct crypto_type *cra_type;

@@ -13,3 +13,4 @@ soc
     tegra/index
     ti/index
     ux500/index
+    xilinx/index

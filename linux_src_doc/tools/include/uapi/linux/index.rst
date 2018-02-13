@@ -7,4 +7,5 @@ linux
 .. toctree::
     :maxdepth: 1
 
+    netlink_h
     perf_event_h

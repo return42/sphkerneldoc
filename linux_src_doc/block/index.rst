@@ -30,6 +30,7 @@ block
     blk-mq-tag_c
     blk-mq-virtio_c
     blk-mq_c
+    blk-mq_h
     blk-settings_c
     blk-softirq_c
     blk-stat_h

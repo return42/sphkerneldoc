@@ -2396,52 +2396,6 @@ Description
 This function waits for the queues to be in disabled state for all the
 VSIs that are managed by this PF.
 
-.. _`i40e_detect_recover_hung_queue`:
-
-i40e_detect_recover_hung_queue
-==============================
-
-.. c:function:: void i40e_detect_recover_hung_queue(int q_idx, struct i40e_vsi *vsi)
-
-    Function to detect and recover hung_queue
-
-    :param int q_idx:
-        TX queue number
-
-    :param struct i40e_vsi \*vsi:
-        Pointer to VSI struct
-
-.. _`i40e_detect_recover_hung_queue.description`:
-
-Description
------------
-
-This function checks specified queue for given VSI. Detects hung condition.
-We proactively detect hung TX queues by checking if interrupts are disabled
-but there are pending descriptors.  If it appears hung, attempt to recover
-by triggering a SW interrupt.
-
-.. _`i40e_detect_recover_hung`:
-
-i40e_detect_recover_hung
-========================
-
-.. c:function:: void i40e_detect_recover_hung(struct i40e_pf *pf)
-
-    Function to detect and recover hung_queues
-
-    :param struct i40e_pf \*pf:
-        pointer to PF struct
-
-.. _`i40e_detect_recover_hung.description`:
-
-Description
------------
-
-LAN VSI has netdev and netdev has TX queues. This function is to check
-each of those TX queues if they are hung, trigger recovery by issuing
-SW interrupt.
-
 .. _`i40e_get_iscsi_tc_map`:
 
 i40e_get_iscsi_tc_map

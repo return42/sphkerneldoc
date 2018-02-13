@@ -42,6 +42,7 @@ Definition
         void (*gem_free_object_unlocked) (struct drm_gem_object *obj);
         int (*gem_open_object) (struct drm_gem_object *, struct drm_file *);
         void (*gem_close_object) (struct drm_gem_object *, struct drm_file *);
+        void (*gem_print_info)(struct drm_printer *p, unsigned int indent, const struct drm_gem_object *obj);
         struct drm_gem_object *(*gem_create_object)(struct drm_device *dev, size_t size);
         int (*prime_handle_to_fd)(struct drm_device *dev, struct drm_file *file_priv, uint32_t handle, uint32_t flags, int *prime_fd);
         int (*prime_fd_to_handle)(struct drm_device *dev, struct drm_file *file_priv, int prime_fd, uint32_t *handle);
@@ -358,6 +359,16 @@ gem_open_object
 gem_close_object
 
     Driver hook called upon gem handle release
+
+gem_print_info
+
+    If driver subclasses struct \ :c:type:`struct drm_gem_object <drm_gem_object>`\ , it can implement this
+    optional hook for printing additional driver specific info.
+
+    \ :c:func:`drm_printf_indent`\  should be used in the callback passing it the
+    indent argument.
+
+    This callback is called from \ :c:func:`drm_gem_print_info`\ .
 
 gem_create_object
     constructor for gem objects

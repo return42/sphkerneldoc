@@ -529,12 +529,24 @@ Description
 NVM ownership is already held.  Process legitimate commands and set any
 change in state; reject all other commands
 
+.. _`i40e_nvmupd_clear_wait_state`:
+
+i40e_nvmupd_clear_wait_state
+============================
+
+.. c:function:: void i40e_nvmupd_clear_wait_state(struct i40e_hw *hw)
+
+    clear wait state on hw
+
+    :param struct i40e_hw \*hw:
+        pointer to the hardware structure
+
 .. _`i40e_nvmupd_check_wait_event`:
 
 i40e_nvmupd_check_wait_event
 ============================
 
-.. c:function:: void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode)
+.. c:function:: void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode, struct i40e_aq_desc *desc)
 
     handle NVM update operation events
 
@@ -543,6 +555,9 @@ i40e_nvmupd_check_wait_event
 
     :param u16 opcode:
         the event that just happened
+
+    :param struct i40e_aq_desc \*desc:
+        *undescribed*
 
 .. _`i40e_nvmupd_validate_command`:
 
@@ -619,6 +634,34 @@ i40e_nvmupd_get_aq_result
         pointer to return error code
 
 .. _`i40e_nvmupd_get_aq_result.description`:
+
+Description
+-----------
+
+cmd structure contains identifiers and data buffer
+
+.. _`i40e_nvmupd_get_aq_event`:
+
+i40e_nvmupd_get_aq_event
+========================
+
+.. c:function:: i40e_status i40e_nvmupd_get_aq_event(struct i40e_hw *hw, struct i40e_nvm_access *cmd, u8 *bytes, int *perrno)
+
+    Get the Admin Queue event from previous exec_aq
+
+    :param struct i40e_hw \*hw:
+        pointer to hardware structure
+
+    :param struct i40e_nvm_access \*cmd:
+        pointer to nvm update command buffer
+
+    :param u8 \*bytes:
+        pointer to the data buffer
+
+    :param int \*perrno:
+        pointer to return error code
+
+.. _`i40e_nvmupd_get_aq_event.description`:
 
 Description
 -----------

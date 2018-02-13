@@ -564,6 +564,24 @@ shutdown_work
     :param struct ubi_device \*ubi:
         UBI device description object
 
+.. _`erase_aeb`:
+
+erase_aeb
+=========
+
+.. c:function:: int erase_aeb(struct ubi_device *ubi, struct ubi_ainf_peb *aeb, bool sync)
+
+    erase a PEB given in UBI attach info PEB
+
+    :param struct ubi_device \*ubi:
+        UBI device description object
+
+    :param struct ubi_ainf_peb \*aeb:
+        UBI attach info PEB
+
+    :param bool sync:
+        If true, erase synchronously. Otherwise schedule for erasure
+
 .. _`ubi_wl_init`:
 
 ubi_wl_init

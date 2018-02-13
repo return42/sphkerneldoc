@@ -148,18 +148,6 @@ dwc2_hsotg_tx_fifo_count
     :param struct dwc2_hsotg \*hsotg:
         *undescribed*
 
-.. _`dwc2_hsotg_ep_info_size`:
-
-dwc2_hsotg_ep_info_size
-=======================
-
-.. c:function:: int dwc2_hsotg_ep_info_size(struct dwc2_hsotg *hsotg)
-
-    return Endpoint Info Control block size in DWORDs
-
-    :param struct dwc2_hsotg \*hsotg:
-        *undescribed*
-
 .. _`dwc2_hsotg_tx_fifo_total_depth`:
 
 dwc2_hsotg_tx_fifo_total_depth

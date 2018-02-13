@@ -826,6 +826,10 @@ in which case an opening port goes back to closed and a closing port
 is simply put into closed state (any further frames from the other
 end will get a DM response)
 
+Some control dlci can stay in ADM mode with other dlci working just
+fine. In that case we can just keep the control dlci open after the
+DLCI_OPENING retries time out.
+
 .. _`gsm_dlci_begin_open`:
 
 gsm_dlci_begin_open
@@ -844,8 +848,8 @@ Description
 -----------
 
 Commence opening a DLCI from the Linux side. We issue SABM messages
-to the modem which should then reply with a UA, at which point we
-will move into open state. Opening is done asynchronously with retry
+to the modem which should then reply with a UA or ADM, at which point
+we will move into open state. Opening is done asynchronously with retry
 running off timers and the responses.
 
 .. _`gsm_dlci_begin_close`:
@@ -1424,7 +1428,7 @@ avoids pain user side.
 gsmld_poll
 ==========
 
-.. c:function:: unsigned int gsmld_poll(struct tty_struct *tty, struct file *file, poll_table *wait)
+.. c:function:: __poll_t gsmld_poll(struct tty_struct *tty, struct file *file, poll_table *wait)
 
     poll method for N_GSM0710
 

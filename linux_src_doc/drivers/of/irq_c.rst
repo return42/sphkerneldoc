@@ -57,7 +57,7 @@ of_irq_parse_raw
         address specifier (start of "reg" property of the device) in be32 format
 
     :param struct of_phandle_args \*out_irq:
-        structure of_irq updated by this function
+        structure of_phandle_args updated by this function
 
 .. _`of_irq_parse_raw.description`:
 

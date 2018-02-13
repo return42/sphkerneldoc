@@ -31,63 +31,95 @@ fsl_ssi_isr
 
 .. c:function:: irqreturn_t fsl_ssi_isr(int irq, void *dev_id)
 
-    SSI interrupt handler
-
     :param int irq:
-        IRQ of the SSI device
+        *undescribed*
 
     :param void \*dev_id:
-        pointer to the ssi_private structure for this SSI device
-
-.. _`fsl_ssi_isr.description`:
-
-Description
------------
-
-Although it's possible to use the interrupt handler to send and receive
-data to/from the SSI, we use the DMA instead.  Programming is more
-complicated, but the performance is much better.
-
-This interrupt handler is used only to gather statistics.
-
-.. _`fsl_ssi_startup`:
-
-fsl_ssi_startup
-===============
-
-.. c:function:: int fsl_ssi_startup(struct snd_pcm_substream *substream, struct snd_soc_dai *dai)
-
-    create a new substream
-
-    :param struct snd_pcm_substream \*substream:
         *undescribed*
 
-    :param struct snd_soc_dai \*dai:
+.. _`fsl_ssi_rxtx_config`:
+
+fsl_ssi_rxtx_config
+===================
+
+.. c:function:: void fsl_ssi_rxtx_config(struct fsl_ssi *ssi, bool enable)
+
+    :param struct fsl_ssi \*ssi:
         *undescribed*
 
-.. _`fsl_ssi_startup.description`:
-
-Description
------------
-
-This is the first function called when a stream is opened.
-
-If this is the first stream open, then grab the IRQ and program most of
-the SSI registers.
-
-.. _`fsl_ssi_shutdown`:
-
-fsl_ssi_shutdown
-================
-
-.. c:function:: void fsl_ssi_shutdown(struct snd_pcm_substream *substream, struct snd_soc_dai *dai)
-
-    shutdown the SSI
-
-    :param struct snd_pcm_substream \*substream:
+    :param bool enable:
         *undescribed*
 
-    :param struct snd_soc_dai \*dai:
+.. _`fsl_ssi_fifo_clear`:
+
+fsl_ssi_fifo_clear
+==================
+
+.. c:function:: void fsl_ssi_fifo_clear(struct fsl_ssi *ssi, bool is_rx)
+
+    :param struct fsl_ssi \*ssi:
+        *undescribed*
+
+    :param bool is_rx:
+        *undescribed*
+
+.. _`fsl_ssi_disable_val`:
+
+fsl_ssi_disable_val
+===================
+
+.. c:function::  fsl_ssi_disable_val( vals_disable,  vals_stream,  stream_active)
+
+    getting disabled. This keeps the bits enabled that are necessary for the second stream to work if 'stream_active' is true.
+
+    :param  vals_disable:
+        *undescribed*
+
+    :param  vals_stream:
+        *undescribed*
+
+    :param  stream_active:
+        *undescribed*
+
+.. _`fsl_ssi_disable_val.detailed-calculation`:
+
+Detailed calculation
+--------------------
+
+These are the values that need to be active after disabling. For non-active
+second stream, this is 0:
+vals_stream \* !!stream_active
+
+The following computes the overall differences between the setup for the
+to-disable stream and the active stream, a simple XOR:
+vals_disable ^ (vals_stream \* !!(stream_active))
+
+The full expression adds a mask on all values we care about
+
+.. _`fsl_ssi_config`:
+
+fsl_ssi_config
+==============
+
+.. c:function:: void fsl_ssi_config(struct fsl_ssi *ssi, bool enable, struct fsl_ssi_regvals *vals)
+
+    :param struct fsl_ssi \*ssi:
+        *undescribed*
+
+    :param bool enable:
+        *undescribed*
+
+    :param struct fsl_ssi_regvals \*vals:
+        *undescribed*
+
+.. _`fsl_ssi_setup_regvals`:
+
+fsl_ssi_setup_regvals
+=====================
+
+.. c:function:: void fsl_ssi_setup_regvals(struct fsl_ssi *ssi)
+
+    :param struct fsl_ssi \*ssi:
         *undescribed*
 
 .. _`fsl_ssi_set_bclk`:
@@ -95,14 +127,12 @@ fsl_ssi_shutdown
 fsl_ssi_set_bclk
 ================
 
-.. c:function:: int fsl_ssi_set_bclk(struct snd_pcm_substream *substream, struct snd_soc_dai *cpu_dai, struct snd_pcm_hw_params *hw_params)
-
-    configure Digital Audio Interface bit clock
+.. c:function:: int fsl_ssi_set_bclk(struct snd_pcm_substream *substream, struct snd_soc_dai *dai, struct snd_pcm_hw_params *hw_params)
 
     :param struct snd_pcm_substream \*substream:
         *undescribed*
 
-    :param struct snd_soc_dai \*cpu_dai:
+    :param struct snd_soc_dai \*dai:
         *undescribed*
 
     :param struct snd_pcm_hw_params \*hw_params:
@@ -128,9 +158,7 @@ Output BCLK frequency = samplerate \* slots \* slot_width
 fsl_ssi_hw_params
 =================
 
-.. c:function:: int fsl_ssi_hw_params(struct snd_pcm_substream *substream, struct snd_pcm_hw_params *hw_params, struct snd_soc_dai *cpu_dai)
-
-    program the sample size
+.. c:function:: int fsl_ssi_hw_params(struct snd_pcm_substream *substream, struct snd_pcm_hw_params *hw_params, struct snd_soc_dai *dai)
 
     :param struct snd_pcm_substream \*substream:
         *undescribed*
@@ -138,39 +166,29 @@ fsl_ssi_hw_params
     :param struct snd_pcm_hw_params \*hw_params:
         *undescribed*
 
-    :param struct snd_soc_dai \*cpu_dai:
+    :param struct snd_soc_dai \*dai:
         *undescribed*
 
-.. _`fsl_ssi_hw_params.description`:
+.. _`fsl_ssi_hw_params.notes`:
 
-Description
------------
+Notes
+-----
 
-Most of the SSI registers have been programmed in the startup function,
-but the word length must be programmed here.  Unfortunately, programming
-the SxCCR.WL bits requires the SSI to be temporarily disabled.  This can
-cause a problem with supporting simultaneous playback and capture.  If
-the SSI is already playing a stream, then that stream may be temporarily
-stopped when you start capture.
-
-.. _`fsl_ssi_hw_params.note`:
-
-Note
-----
-
-The SxCCR.DC and SxCCR.PM bits are only used if the SSI is the
-clock master.
+1) SxCCR.WL bits are critical bits that require SSI to be temporarily
+disabled on offline_config SoCs. Even for online configurable SoCs
+running in synchronous mode (both TX and RX use STCCR), it is not
+safe to re-configure them when both two streams start running.
+2) SxCCR.PM, SxCCR.DIV2 and SxCCR.PSR bits will be configured in the
+\ :c:func:`fsl_ssi_set_bclk`\  if SSI is the DAI clock master.
 
 .. _`fsl_ssi_set_dai_fmt`:
 
 fsl_ssi_set_dai_fmt
 ===================
 
-.. c:function:: int fsl_ssi_set_dai_fmt(struct snd_soc_dai *cpu_dai, unsigned int fmt)
+.. c:function:: int fsl_ssi_set_dai_fmt(struct snd_soc_dai *dai, unsigned int fmt)
 
-    configure Digital Audio Interface Format.
-
-    :param struct snd_soc_dai \*cpu_dai:
+    :param struct snd_soc_dai \*dai:
         *undescribed*
 
     :param unsigned int fmt:
@@ -181,11 +199,9 @@ fsl_ssi_set_dai_fmt
 fsl_ssi_set_dai_tdm_slot
 ========================
 
-.. c:function:: int fsl_ssi_set_dai_tdm_slot(struct snd_soc_dai *cpu_dai, u32 tx_mask, u32 rx_mask, int slots, int slot_width)
+.. c:function:: int fsl_ssi_set_dai_tdm_slot(struct snd_soc_dai *dai, u32 tx_mask, u32 rx_mask, int slots, int slot_width)
 
-    set TDM slot number
-
-    :param struct snd_soc_dai \*cpu_dai:
+    :param struct snd_soc_dai \*dai:
         *undescribed*
 
     :param u32 tx_mask:
@@ -200,21 +216,12 @@ fsl_ssi_set_dai_tdm_slot
     :param int slot_width:
         *undescribed*
 
-.. _`fsl_ssi_set_dai_tdm_slot.note`:
-
-Note
-----
-
-This function can be only called when using SSI as DAI master
-
 .. _`fsl_ssi_trigger`:
 
 fsl_ssi_trigger
 ===============
 
 .. c:function:: int fsl_ssi_trigger(struct snd_pcm_substream *substream, int cmd, struct snd_soc_dai *dai)
-
-    start and stop the DMA transfer.
 
     :param struct snd_pcm_substream \*substream:
         *undescribed*
@@ -229,9 +236,6 @@ fsl_ssi_trigger
 
 Description
 -----------
-
-This function is called by ALSA to start, stop, pause, and resume the DMA
-transfer of data.
 
 The DMA channel is in external master start and pause mode, which
 means the SSI completely controls the flow of data.

@@ -1,27 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/sparse-vmemmap.c
 
-.. _`vmem_altmap_alloc`:
+.. _`altmap_alloc_block_buf`:
 
-vmem_altmap_alloc
-=================
+altmap_alloc_block_buf
+======================
 
-.. c:function:: unsigned long vmem_altmap_alloc(struct vmem_altmap *altmap, unsigned long nr_pfns)
+.. c:function:: void *altmap_alloc_block_buf(unsigned long size, struct vmem_altmap *altmap)
 
-    allocate pages from the vmem_altmap reservation \ ``altmap``\  - reserved page pool for the allocation \ ``nr_pfns``\  - size (in pages) of the allocation
+    allocate pages from the device page map
+
+    :param unsigned long size:
+        size (in bytes) of the allocation
 
     :param struct vmem_altmap \*altmap:
-        *undescribed*
+        device page map
 
-    :param unsigned long nr_pfns:
-        *undescribed*
-
-.. _`vmem_altmap_alloc.description`:
+.. _`altmap_alloc_block_buf.description`:
 
 Description
 -----------
 
-Allocations are aligned to the size of the request
+Allocations are aligned to the size of the request.
 
 .. This file was automatic generated / don't edit.
 

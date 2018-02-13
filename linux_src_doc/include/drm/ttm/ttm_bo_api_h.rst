@@ -198,7 +198,6 @@ Definition
         struct drm_vma_offset_node vma_node;
         unsigned priority;
         uint64_t offset;
-        uint32_t cur_placement;
         struct sg_table *sg;
         struct reservation_object *resv;
         struct reservation_object ttm_resv;
@@ -281,9 +280,6 @@ offset
     The current GPU offset, which can have different meanings
     depending on the memory type. For SYSTEM type memory, it should be 0.
 
-cur_placement
-    Hint of current placement.
-
 sg
     *undescribed*
 
@@ -311,6 +307,57 @@ placement and caching for these GPU maps. This makes it possible to use
 these objects for even quite elaborate memory management schemes.
 The destroy member, the API visibility of this object makes it possible
 to derive driver specific types.
+
+.. _`ttm_operation_ctx`:
+
+struct ttm_operation_ctx
+========================
+
+.. c:type:: struct ttm_operation_ctx
+
+
+.. _`ttm_operation_ctx.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ttm_operation_ctx {
+        bool interruptible;
+        bool no_wait_gpu;
+        bool allow_reserved_eviction;
+        struct reservation_object *resv;
+        uint64_t bytes_moved;
+    }
+
+.. _`ttm_operation_ctx.members`:
+
+Members
+-------
+
+interruptible
+    Sleep interruptible if sleeping.
+
+no_wait_gpu
+    Return immediately if the GPU is busy.
+
+allow_reserved_eviction
+    Allow eviction of reserved BOs.
+
+resv
+    Reservation object to allow reserved evictions with.
+
+bytes_moved
+    *undescribed*
+
+.. _`ttm_operation_ctx.description`:
+
+Description
+-----------
+
+Context for TTM operations like changing buffer placement or general memory
+allocation.
 
 .. _`ttm_bo_reference`:
 
@@ -397,7 +444,7 @@ Returns true if the placement is compatible
 ttm_bo_validate
 ===============
 
-.. c:function:: int ttm_bo_validate(struct ttm_buffer_object *bo, struct ttm_placement *placement, bool interruptible, bool no_wait_gpu)
+.. c:function:: int ttm_bo_validate(struct ttm_buffer_object *bo, struct ttm_placement *placement, struct ttm_operation_ctx *ctx)
 
     :param struct ttm_buffer_object \*bo:
         The buffer object.
@@ -405,11 +452,8 @@ ttm_bo_validate
     :param struct ttm_placement \*placement:
         Proposed placement for the buffer object.
 
-    :param bool interruptible:
-        Sleep interruptible if sleeping.
-
-    :param bool no_wait_gpu:
-        Return immediately if the GPU is busy.
+    :param struct ttm_operation_ctx \*ctx:
+        validation parameters.
 
 .. _`ttm_bo_validate.description`:
 
@@ -630,7 +674,7 @@ Returns size to account for a buffer object
 ttm_bo_init_reserved
 ====================
 
-.. c:function:: int ttm_bo_init_reserved(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interrubtible, struct file *persistent_swap_storage, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
+.. c:function:: int ttm_bo_init_reserved(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, struct ttm_operation_ctx *ctx, struct file *persistent_swap_storage, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
 
     :param struct ttm_bo_device \*bdev:
         Pointer to a ttm_bo_device struct.
@@ -650,8 +694,8 @@ ttm_bo_init_reserved
     :param uint32_t page_alignment:
         Data alignment in pages.
 
-    :param bool interrubtible:
-        *undescribed*
+    :param struct ttm_operation_ctx \*ctx:
+        TTM operation context for memory allocation.
 
     :param struct file \*persistent_swap_storage:
         Usually the swap storage is deleted for buffers
@@ -1026,28 +1070,6 @@ Description
 
 This function is intended to be called by the fbdev mmap method
 if the fbdev address space is to be backed by a bo.
-
-.. _`ttm_bo_default_io_mem_pfn`:
-
-ttm_bo_default_io_mem_pfn
-=========================
-
-.. c:function:: unsigned long ttm_bo_default_io_mem_pfn(struct ttm_buffer_object *bo, unsigned long page_offset)
-
-    get a pfn for a page offset
-
-    :param struct ttm_buffer_object \*bo:
-        the BO we need to look up the pfn for
-
-    :param unsigned long page_offset:
-        offset inside the BO to look up.
-
-.. _`ttm_bo_default_io_mem_pfn.description`:
-
-Description
------------
-
-Calculate the PFN for iomem based mappings during page fault
 
 .. _`ttm_bo_mmap`:
 

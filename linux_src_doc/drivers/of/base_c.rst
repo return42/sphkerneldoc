@@ -76,6 +76,26 @@ which can be overridden by architecture specific implementation.
 Returns a node pointer for the logical cpu with refcount incremented, use
 \ :c:func:`of_node_put`\  on it when done. Returns NULL if not found.
 
+.. _`of_cpu_node_to_id`:
+
+of_cpu_node_to_id
+=================
+
+.. c:function:: int of_cpu_node_to_id(struct device_node *cpu_node)
+
+    Get the logical CPU number for a given device_node
+
+    :param struct device_node \*cpu_node:
+        Pointer to the device_node for CPU.
+
+.. _`of_cpu_node_to_id.description`:
+
+Description
+-----------
+
+Returns the logical CPU number of the given CPU device_node.
+Returns -ENODEV if the CPU is not found.
+
 .. _`__of_device_is_compatible`:
 
 __of_device_is_compatible

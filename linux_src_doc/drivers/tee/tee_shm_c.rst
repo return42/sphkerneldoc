@@ -146,19 +146,6 @@ tee_shm_get_from_id
         Id of shared memory object
         \ ``returns``\  a pointer to 'struct tee_shm' on success or an ERR_PTR on failure
 
-.. _`tee_shm_get_id`:
-
-tee_shm_get_id
-==============
-
-.. c:function:: int tee_shm_get_id(struct tee_shm *shm)
-
-    Get id of a shared memory object
-
-    :param struct tee_shm \*shm:
-        Shared memory handle
-        \ ``returns``\  id
-
 .. _`tee_shm_put`:
 
 tee_shm_put

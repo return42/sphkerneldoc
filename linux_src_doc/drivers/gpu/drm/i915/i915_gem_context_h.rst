@@ -44,7 +44,6 @@ Definition
             u32 *lrc_reg_state;
             u64 lrc_desc;
             int pin_count;
-            bool initialised;
         } engine[I915_NUM_ENGINES];
         u32 ring_size;
         u32 desc_template;

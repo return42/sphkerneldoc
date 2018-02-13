@@ -199,5 +199,42 @@ Description
 Removes \ ``em``\  from \ ``tree``\ .  No reference counts are dropped, and no checks
 are done to see if the range is in use
 
+.. _`btrfs_add_extent_mapping`:
+
+btrfs_add_extent_mapping
+========================
+
+.. c:function:: int btrfs_add_extent_mapping(struct extent_map_tree *em_tree, struct extent_map **em_in, u64 start, u64 len)
+
+    add extent mapping into em_tree \ ``em_tree``\  - the extent tree into which we want to insert the extent mapping \ ``em_in``\    - extent we are inserting \ ``start``\    - start of the logical range \ :c:func:`btrfs_get_extent`\  is requesting \ ``len``\      - length of the logical range \ :c:func:`btrfs_get_extent`\  is requesting
+
+    :param struct extent_map_tree \*em_tree:
+        *undescribed*
+
+    :param struct extent_map \*\*em_in:
+        *undescribed*
+
+    :param u64 start:
+        *undescribed*
+
+    :param u64 len:
+        *undescribed*
+
+.. _`btrfs_add_extent_mapping.description`:
+
+Description
+-----------
+
+Note that \ ``em_in``\ 's range may be different from [start, start+len),
+but they must be overlapped.
+
+Insert \ ``em_in``\  into \ ``em_tree``\ . In case there is an overlapping range, handle
+the -EEXIST by either:
+a) Returning the existing extent in \ ``em_in``\  if \ ``start``\  is within the
+existing em.
+b) Merge the existing extent with \ ``em_in``\  passed in.
+
+Return 0 on success, otherwise -EEXIST.
+
 .. This file was automatic generated / don't edit.
 

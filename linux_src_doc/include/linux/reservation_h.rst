@@ -158,6 +158,36 @@ undefined order, a #ww_acquire_ctx is passed to unwind if a cycle
 is detected. See \ :c:func:`ww_mutex_lock`\  and \ :c:func:`ww_acquire_init`\ . A reservation
 object may be locked by itself by passing NULL as \ ``ctx``\ .
 
+.. _`reservation_object_lock_interruptible`:
+
+reservation_object_lock_interruptible
+=====================================
+
+.. c:function:: int reservation_object_lock_interruptible(struct reservation_object *obj, struct ww_acquire_ctx *ctx)
+
+    lock the reservation object
+
+    :param struct reservation_object \*obj:
+        the reservation object
+
+    :param struct ww_acquire_ctx \*ctx:
+        the locking context
+
+.. _`reservation_object_lock_interruptible.description`:
+
+Description
+-----------
+
+Locks the reservation object interruptible for exclusive access and
+modification. Note, that the lock is only against other writers, readers
+will run concurrently with a writer under RCU. The seqlock is used to
+notify readers if they overlap with a writer.
+
+As the reservation object may be locked by multiple parties in an
+undefined order, a #ww_acquire_ctx is passed to unwind if a cycle
+is detected. See \ :c:func:`ww_mutex_lock`\  and \ :c:func:`ww_acquire_init`\ . A reservation
+object may be locked by itself by passing NULL as \ ``ctx``\ .
+
 .. _`reservation_object_trylock`:
 
 reservation_object_trylock

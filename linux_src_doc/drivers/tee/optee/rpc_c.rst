@@ -6,7 +6,7 @@
 optee_handle_rpc
 ================
 
-.. c:function:: void optee_handle_rpc(struct tee_context *ctx, struct optee_rpc_param *param)
+.. c:function:: void optee_handle_rpc(struct tee_context *ctx, struct optee_rpc_param *param, struct optee_call_ctx *call_ctx)
 
     handle RPC from secure world
 
@@ -15,6 +15,9 @@ optee_handle_rpc
 
     :param struct optee_rpc_param \*param:
         value of registers for the RPC
+
+    :param struct optee_call_ctx \*call_ctx:
+        call context. Preserved during one OP-TEE invocation
 
 .. _`optee_handle_rpc.description`:
 

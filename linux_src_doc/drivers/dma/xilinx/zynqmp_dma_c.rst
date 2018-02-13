@@ -148,8 +148,6 @@ Definition
         u32 bus_width;
         u32 src_burst_len;
         u32 dst_burst_len;
-        struct clk *clk_main;
-        struct clk *clk_apb;
     }
 
 .. _`zynqmp_dma_chan.members`:
@@ -223,12 +221,6 @@ src_burst_len
 dst_burst_len
     Dest burst length
 
-clk_main
-    Pointer to main clock
-
-clk_apb
-    Pointer to apb clock
-
 .. _`zynqmp_dma_device`:
 
 struct zynqmp_dma_device
@@ -249,6 +241,8 @@ Definition
         struct device *dev;
         struct dma_device common;
         struct zynqmp_dma_chan *chan;
+        struct clk *clk_main;
+        struct clk *clk_apb;
     }
 
 .. _`zynqmp_dma_device.members`:
@@ -264,6 +258,12 @@ common
 
 chan
     Driver specific DMA channel
+
+clk_main
+    Pointer to main clock
+
+clk_apb
+    Pointer to apb clock
 
 .. _`zynqmp_dma_update_desc_to_ctrlr`:
 
@@ -463,6 +463,13 @@ zynqmp_dma_device_config
     :param struct dma_slave_config \*config:
         DMA device config
 
+.. _`zynqmp_dma_device_config.return`:
+
+Return
+------
+
+0 always
+
 .. _`zynqmp_dma_start_transfer`:
 
 zynqmp_dma_start_transfer
@@ -521,7 +528,7 @@ zynqmp_dma_free_descriptors
     Free channel descriptors
 
     :param struct zynqmp_dma_chan \*chan:
-        *undescribed*
+        ZynqMP DMA channel pointer
 
 .. _`zynqmp_dma_free_chan_resources`:
 
@@ -686,6 +693,110 @@ Return
 ------
 
 DMA channel pointer on success and NULL on error
+
+.. _`zynqmp_dma_suspend`:
+
+zynqmp_dma_suspend
+==================
+
+.. c:function:: int __maybe_unused zynqmp_dma_suspend(struct device *dev)
+
+    Suspend method for the driver
+
+    :param struct device \*dev:
+        Address of the device structure
+
+.. _`zynqmp_dma_suspend.description`:
+
+Description
+-----------
+
+Put the driver into low power mode.
+
+.. _`zynqmp_dma_suspend.return`:
+
+Return
+------
+
+0 on success and failure value on error
+
+.. _`zynqmp_dma_resume`:
+
+zynqmp_dma_resume
+=================
+
+.. c:function:: int __maybe_unused zynqmp_dma_resume(struct device *dev)
+
+    Resume from suspend
+
+    :param struct device \*dev:
+        Address of the device structure
+
+.. _`zynqmp_dma_resume.description`:
+
+Description
+-----------
+
+Resume operation after suspend.
+
+.. _`zynqmp_dma_resume.return`:
+
+Return
+------
+
+0 on success and failure value on error
+
+.. _`zynqmp_dma_runtime_suspend`:
+
+zynqmp_dma_runtime_suspend
+==========================
+
+.. c:function:: int __maybe_unused zynqmp_dma_runtime_suspend(struct device *dev)
+
+    Runtime suspend method for the driver
+
+    :param struct device \*dev:
+        Address of the device structure
+
+.. _`zynqmp_dma_runtime_suspend.description`:
+
+Description
+-----------
+
+Put the driver into low power mode.
+
+.. _`zynqmp_dma_runtime_suspend.return`:
+
+Return
+------
+
+0 always
+
+.. _`zynqmp_dma_runtime_resume`:
+
+zynqmp_dma_runtime_resume
+=========================
+
+.. c:function:: int __maybe_unused zynqmp_dma_runtime_resume(struct device *dev)
+
+    Runtime suspend method for the driver
+
+    :param struct device \*dev:
+        Address of the device structure
+
+.. _`zynqmp_dma_runtime_resume.description`:
+
+Description
+-----------
+
+Put the driver into low power mode.
+
+.. _`zynqmp_dma_runtime_resume.return`:
+
+Return
+------
+
+0 always
 
 .. _`zynqmp_dma_probe`:
 

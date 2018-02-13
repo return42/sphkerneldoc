@@ -39,6 +39,7 @@ Definition
         PIN_CONFIG_SLEEP_HARDWARE_STATE,
         PIN_CONFIG_SLEW_RATE,
         PIN_CONFIG_SKEW_DELAY,
+        PIN_CONFIG_PERSIST_STATE,
         PIN_CONFIG_END,
         PIN_CONFIG_MAX
     };
@@ -169,6 +170,9 @@ PIN_CONFIG_SKEW_DELAY
     or latch delay (on outputs) this parameter (in a custom format)
     specifies the clock skew or latch delay. It typically controls how
     many double inverters are put in front of the line.
+
+PIN_CONFIG_PERSIST_STATE
+    retain pin state across sleep or controller reset
 
 PIN_CONFIG_END
     this is the last enumerator for pin configurations, if

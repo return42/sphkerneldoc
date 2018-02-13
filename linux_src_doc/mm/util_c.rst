@@ -140,7 +140,31 @@ memdup_user
 Description
 -----------
 
-Returns an \ :c:func:`ERR_PTR`\  on failure.
+Returns an \ :c:func:`ERR_PTR`\  on failure.  Result is physically
+contiguous, to be freed by \ :c:func:`kfree`\ .
+
+.. _`vmemdup_user`:
+
+vmemdup_user
+============
+
+.. c:function:: void *vmemdup_user(const void __user *src, size_t len)
+
+    duplicate memory region from user space
+
+    :param const void __user \*src:
+        source address in user space
+
+    :param size_t len:
+        number of bytes to copy
+
+.. _`vmemdup_user.description`:
+
+Description
+-----------
+
+Returns an \ :c:func:`ERR_PTR`\  on failure.  Result may be not
+physically contiguous.  Use \ :c:func:`kvfree`\  to free.
 
 .. _`memdup_user_nul`:
 

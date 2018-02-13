@@ -11,19 +11,23 @@ mode setting driver. They can be used mostly independently from the crtc
 helper functions used by many drivers to implement the kernel mode setting
 interfaces.
 
-Initialization is done as a four-step process with \ :c:func:`drm_fb_helper_prepare`\ ,
-\ :c:func:`drm_fb_helper_init`\ , \ :c:func:`drm_fb_helper_single_add_all_connectors`\  and
-\ :c:func:`drm_fb_helper_initial_config`\ . Drivers with fancier requirements than the
-default behaviour can override the third step with their own code.
-Teardown is done with \ :c:func:`drm_fb_helper_fini`\  after the fbdev device is
-unregisters using \ :c:func:`drm_fb_helper_unregister_fbi`\ .
+Setup fbdev emulation by calling \ :c:func:`drm_fb_helper_fbdev_setup`\  and tear it
+down by calling \ :c:func:`drm_fb_helper_fbdev_teardown`\ .
 
-At runtime drivers should restore the fbdev console by calling
-\ :c:func:`drm_fb_helper_restore_fbdev_mode_unlocked`\  from their \ :c:type:`drm_driver.lastclose <drm_driver>`\ 
-callback.  They should also notify the fb helper code from updates to the
-output configuration by calling \ :c:func:`drm_fb_helper_hotplug_event`\ . For easier
-integration with the output polling code in drm_crtc_helper.c the modeset
-code provides a \ :c:type:`drm_mode_config_funcs.output_poll_changed <drm_mode_config_funcs>`\  callback.
+Drivers that need to handle connector hotplugging (e.g. dp mst) can't use
+the setup helper and will need to do the whole four-step setup process with
+\ :c:func:`drm_fb_helper_prepare`\ , \ :c:func:`drm_fb_helper_init`\ ,
+\ :c:func:`drm_fb_helper_single_add_all_connectors`\ , enable hotplugging and
+\ :c:func:`drm_fb_helper_initial_config`\  to avoid a possible race window.
+
+At runtime drivers should restore the fbdev console by using
+\ :c:func:`drm_fb_helper_lastclose`\  as their \ :c:type:`drm_driver.lastclose <drm_driver>`\  callback.
+They should also notify the fb helper code from updates to the output
+configuration by using \ :c:func:`drm_fb_helper_output_poll_changed`\  as their
+\ :c:type:`drm_mode_config_funcs.output_poll_changed <drm_mode_config_funcs>`\  callback.
+
+For suspend/resume consider using \ :c:func:`drm_mode_config_helper_suspend`\  and
+\ :c:func:`drm_mode_config_helper_resume`\  which takes care of fbdev as well.
 
 All other functions exported by the fb helper library can be used to
 implement the fbdev driver interface by the driver.
@@ -48,7 +52,8 @@ away. This worker then calls the \ :c:func:`dirty`\  function ensuring that it w
 always run in process context since the fb_*() function could be running in
 atomic context. If \ :c:func:`drm_fb_helper_deferred_io`\  is used as the deferred_io
 callback it will also schedule dirty_work with the damage collected from the
-mmap page writes.
+mmap page writes. Drivers can use \ :c:func:`drm_fb_helper_defio_init`\  to setup
+deferred I/O (coupled with \ :c:func:`drm_fb_helper_fbdev_teardown`\ ).
 
 .. _`drm_fb_helper_single_add_all_connectors`:
 
@@ -60,7 +65,7 @@ drm_fb_helper_single_add_all_connectors
     add all connectors to fbdev emulation helper
 
     :param struct drm_fb_helper \*fb_helper:
-        fbdev initialized with drm_fb_helper_init
+        fbdev initialized with drm_fb_helper_init, can be NULL
 
 .. _`drm_fb_helper_single_add_all_connectors.description`:
 
@@ -110,7 +115,7 @@ drm_fb_helper_restore_fbdev_mode_unlocked
     restore fbdev configuration
 
     :param struct drm_fb_helper \*fb_helper:
-        fbcon to restore
+        driver-allocated fbdev helper, can be NULL
 
 .. _`drm_fb_helper_restore_fbdev_mode_unlocked.description`:
 
@@ -246,7 +251,7 @@ drm_fb_helper_unregister_fbi
     unregister fb_info framebuffer device
 
     :param struct drm_fb_helper \*fb_helper:
-        driver-allocated fbdev helper
+        driver-allocated fbdev helper, can be NULL
 
 .. _`drm_fb_helper_unregister_fbi.description`:
 
@@ -267,7 +272,7 @@ drm_fb_helper_fini
     finialize a \ :c:type:`struct drm_fb_helper <drm_fb_helper>`\ 
 
     :param struct drm_fb_helper \*fb_helper:
-        driver-allocated fbdev helper
+        driver-allocated fbdev helper, can be NULL
 
 .. _`drm_fb_helper_fini.description`:
 
@@ -287,7 +292,7 @@ drm_fb_helper_unlink_fbi
     wrapper around unlink_framebuffer
 
     :param struct drm_fb_helper \*fb_helper:
-        driver-allocated fbdev helper
+        driver-allocated fbdev helper, can be NULL
 
 .. _`drm_fb_helper_unlink_fbi.description`:
 
@@ -318,6 +323,44 @@ Description
 
 This function is used as the \ :c:type:`fb_deferred_io.deferred_io <fb_deferred_io>`\ 
 callback function for flushing the fbdev mmap writes.
+
+.. _`drm_fb_helper_defio_init`:
+
+drm_fb_helper_defio_init
+========================
+
+.. c:function:: int drm_fb_helper_defio_init(struct drm_fb_helper *fb_helper)
+
+    fbdev deferred I/O initialization
+
+    :param struct drm_fb_helper \*fb_helper:
+        driver-allocated fbdev helper
+
+.. _`drm_fb_helper_defio_init.description`:
+
+Description
+-----------
+
+This function allocates \ :c:type:`struct fb_deferred_io <fb_deferred_io>`\ , sets callback to
+\ :c:func:`drm_fb_helper_deferred_io`\ , delay to 50ms and calls \ :c:func:`fb_deferred_io_init`\ .
+It should be called from the \ :c:type:`drm_fb_helper_funcs->fb_probe <drm_fb_helper_funcs>`\  callback.
+\ :c:func:`drm_fb_helper_fbdev_teardown`\  cleans up deferred I/O.
+
+.. _`drm_fb_helper_defio_init.note`:
+
+NOTE
+----
+
+A copy of \ :c:type:`struct fb_ops <fb_ops>`\  is made and assigned to \ :c:type:`info->fbops <info>`\ . This is done
+because \ :c:func:`fb_deferred_io_cleanup`\  clears \ :c:type:`fbops->fb_mmap <fbops>`\  and would thereby
+affect other instances of that \ :c:type:`struct fb_ops <fb_ops>`\ .
+
+.. _`drm_fb_helper_defio_init.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
 
 .. _`drm_fb_helper_sys_read`:
 
@@ -517,7 +560,7 @@ drm_fb_helper_set_suspend
     wrapper around fb_set_suspend
 
     :param struct drm_fb_helper \*fb_helper:
-        driver-allocated fbdev helper
+        driver-allocated fbdev helper, can be NULL
 
     :param bool suspend:
         whether to suspend or resume
@@ -541,7 +584,7 @@ drm_fb_helper_set_suspend_unlocked
     wrapper around fb_set_suspend that also takes the console lock
 
     :param struct drm_fb_helper \*fb_helper:
-        driver-allocated fbdev helper
+        driver-allocated fbdev helper, can be NULL
 
     :param bool suspend:
         whether to suspend or resume
@@ -791,7 +834,7 @@ drm_fb_helper_hotplug_event
     respond to a hotplug notification by probing all the outputs attached to the fb
 
     :param struct drm_fb_helper \*fb_helper:
-        the drm_fb_helper
+        driver-allocated fbdev helper, can be NULL
 
 .. _`drm_fb_helper_hotplug_event.description`:
 
@@ -817,6 +860,121 @@ Return
 ------
 
 0 on success and a non-zero error code otherwise.
+
+.. _`drm_fb_helper_fbdev_setup`:
+
+drm_fb_helper_fbdev_setup
+=========================
+
+.. c:function:: int drm_fb_helper_fbdev_setup(struct drm_device *dev, struct drm_fb_helper *fb_helper, const struct drm_fb_helper_funcs *funcs, unsigned int preferred_bpp, unsigned int max_conn_count)
+
+    Setup fbdev emulation
+
+    :param struct drm_device \*dev:
+        DRM device
+
+    :param struct drm_fb_helper \*fb_helper:
+        fbdev helper structure to set up
+
+    :param const struct drm_fb_helper_funcs \*funcs:
+        fbdev helper functions
+
+    :param unsigned int preferred_bpp:
+        Preferred bits per pixel for the device.
+        \ ``dev``\ ->mode_config.preferred_depth is used if this is zero.
+
+    :param unsigned int max_conn_count:
+        Maximum number of connectors.
+        \ ``dev``\ ->mode_config.num_connector is used if this is zero.
+
+.. _`drm_fb_helper_fbdev_setup.description`:
+
+Description
+-----------
+
+This function sets up fbdev emulation and registers fbdev for access by
+userspace. If all connectors are disconnected, setup is deferred to the next
+time \ :c:func:`drm_fb_helper_hotplug_event`\  is called.
+The caller must to provide a \ :c:type:`drm_fb_helper_funcs->fb_probe <drm_fb_helper_funcs>`\  callback
+function.
+
+See also: \ :c:func:`drm_fb_helper_initial_config`\ 
+
+.. _`drm_fb_helper_fbdev_setup.return`:
+
+Return
+------
+
+Zero on success or negative error code on failure.
+
+.. _`drm_fb_helper_fbdev_teardown`:
+
+drm_fb_helper_fbdev_teardown
+============================
+
+.. c:function:: void drm_fb_helper_fbdev_teardown(struct drm_device *dev)
+
+    Tear down fbdev emulation
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_fb_helper_fbdev_teardown.description`:
+
+Description
+-----------
+
+This function unregisters fbdev if not already done and cleans up the
+associated resources including the \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
+The driver is responsible for freeing the \ :c:type:`struct drm_fb_helper <drm_fb_helper>`\  structure which is
+stored in \ :c:type:`drm_device->fb_helper <drm_device>`\ . Do note that this pointer has been cleared
+when this function returns.
+
+In order to support device removal/unplug while file handles are still open,
+\ :c:func:`drm_fb_helper_unregister_fbi`\  should be called on device removal and
+\ :c:func:`drm_fb_helper_fbdev_teardown`\  in the \ :c:type:`drm_driver->release <drm_driver>`\  callback when
+file handles are closed.
+
+.. _`drm_fb_helper_lastclose`:
+
+drm_fb_helper_lastclose
+=======================
+
+.. c:function:: void drm_fb_helper_lastclose(struct drm_device *dev)
+
+    DRM driver lastclose helper for fbdev emulation
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_fb_helper_lastclose.description`:
+
+Description
+-----------
+
+This function can be used as the \ :c:type:`drm_driver->lastclose <drm_driver>`\  callback for drivers
+that only need to call \ :c:func:`drm_fb_helper_restore_fbdev_mode_unlocked`\ .
+
+.. _`drm_fb_helper_output_poll_changed`:
+
+drm_fb_helper_output_poll_changed
+=================================
+
+.. c:function:: void drm_fb_helper_output_poll_changed(struct drm_device *dev)
+
+    DRM mode config \.output_poll_changed helper for fbdev emulation
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_fb_helper_output_poll_changed.description`:
+
+Description
+-----------
+
+This function can be used as the
+\ :c:type:`drm_mode_config_funcs.output_poll_changed <drm_mode_config_funcs>`\  callback for drivers that only
+need to call \ :c:func:`drm_fb_helper_hotplug_event`\ .
 
 .. This file was automatic generated / don't edit.
 

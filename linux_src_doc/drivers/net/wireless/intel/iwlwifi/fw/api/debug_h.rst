@@ -386,7 +386,8 @@ Definition
 .. code-block:: c
 
     enum iwl_mvm_marker_id {
-        MARKER_ID_TX_FRAME_LATENCY
+        MARKER_ID_TX_FRAME_LATENCY,
+        MARKER_ID_SYNC_CLOCK
     };
 
 .. _`iwl_mvm_marker_id.constants`:
@@ -396,6 +397,9 @@ Constants
 
 MARKER_ID_TX_FRAME_LATENCY
     TX latency marker
+
+MARKER_ID_SYNC_CLOCK
+    sync FW time and systime
 
 .. _`iwl_mvm_marker_id.description`:
 

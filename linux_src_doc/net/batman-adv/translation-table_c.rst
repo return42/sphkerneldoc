@@ -558,6 +558,28 @@ batadv_tt_tvlv_container_update
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
 
+.. _`batadv_tt_local_seq_print_text`:
+
+batadv_tt_local_seq_print_text
+==============================
+
+.. c:function:: int batadv_tt_local_seq_print_text(struct seq_file *seq, void *offset)
+
+    Print the local tt table in a seq file
+
+    :param struct seq_file \*seq:
+        seq file to print on
+
+    :param void \*offset:
+        not used
+
+.. _`batadv_tt_local_seq_print_text.return`:
+
+Return
+------
+
+always 0
+
 .. _`batadv_tt_local_dump_entry`:
 
 batadv_tt_local_dump_entry
@@ -912,6 +934,28 @@ Description
 -----------
 
 This functon assumes the caller holds \ :c:func:`rcu_read_lock`\ .
+
+.. _`batadv_tt_global_seq_print_text`:
+
+batadv_tt_global_seq_print_text
+===============================
+
+.. c:function:: int batadv_tt_global_seq_print_text(struct seq_file *seq, void *offset)
+
+    Print the global tt table in a seq file
+
+    :param struct seq_file \*seq:
+        seq file to print on
+
+    :param void \*offset:
+        not used
+
+.. _`batadv_tt_global_seq_print_text.return`:
+
+Return
+------
+
+always 0
 
 .. _`batadv_tt_global_dump_subentry`:
 
@@ -1633,6 +1677,18 @@ client. This is done to inform the node that from now on all traffic destined
 for this particular roamed client has to be forwarded to the sender of the
 roaming message.
 
+.. _`batadv_tt_free`:
+
+batadv_tt_free
+==============
+
+.. c:function:: void batadv_tt_free(struct batadv_priv *bat_priv)
+
+    Free translation table of soft interface
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
 .. _`batadv_tt_local_set_flags`:
 
 batadv_tt_local_set_flags
@@ -1684,6 +1740,34 @@ batadv_tt_local_commit_changes
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
+
+.. _`batadv_is_ap_isolated`:
+
+batadv_is_ap_isolated
+=====================
+
+.. c:function:: bool batadv_is_ap_isolated(struct batadv_priv *bat_priv, u8 *src, u8 *dst, unsigned short vid)
+
+    Check if packet from upper layer should be dropped
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param u8 \*src:
+        source mac address of packet
+
+    :param u8 \*dst:
+        destination mac address of packet
+
+    :param unsigned short vid:
+        vlan id of packet
+
+.. _`batadv_is_ap_isolated.return`:
+
+Return
+------
+
+true when src+dst(+vid) pair should be isolated, false otherwise
 
 .. _`batadv_tt_update_orig`:
 
@@ -1768,6 +1852,34 @@ Return
 true if the local client is known to be roaming (it is not served by
 this node anymore) or not. If yes, the client is still present in the table
 to keep the latter consistent with the node TTVN
+
+.. _`batadv_tt_add_temporary_global_entry`:
+
+batadv_tt_add_temporary_global_entry
+====================================
+
+.. c:function:: bool batadv_tt_add_temporary_global_entry(struct batadv_priv *bat_priv, struct batadv_orig_node *orig_node, const unsigned char *addr, unsigned short vid)
+
+    Add temporary entry to global TT
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param struct batadv_orig_node \*orig_node:
+        orig node which the temporary entry should be associated with
+
+    :param const unsigned char \*addr:
+        mac address of the client
+
+    :param unsigned short vid:
+        VLAN id of the new temporary global translation table
+
+.. _`batadv_tt_add_temporary_global_entry.return`:
+
+Return
+------
+
+true when temporary tt entry could be added, false otherwise
 
 .. _`batadv_tt_local_resize_to_mtu`:
 

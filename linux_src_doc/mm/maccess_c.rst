@@ -72,7 +72,7 @@ strncpy_from_unsafe
         least \ ``count``\  bytes long.
 
     :param const void \*unsafe_addr:
-        *undescribed*
+        Unsafe address.
 
     :param long count:
         Maximum number of bytes to copy, including the trailing NUL.

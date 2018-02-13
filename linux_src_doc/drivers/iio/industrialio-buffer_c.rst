@@ -43,7 +43,7 @@ negative values corresponding to error codes or ret != 0
 iio_buffer_poll
 ===============
 
-.. c:function:: unsigned int iio_buffer_poll(struct file *filp, struct poll_table_struct *wait)
+.. c:function:: __poll_t iio_buffer_poll(struct file *filp, struct poll_table_struct *wait)
 
     poll the buffer to find out if it has data
 
@@ -59,7 +59,7 @@ iio_buffer_poll
 Return
 ------
 
-(POLLIN | POLLRDNORM) if data is available for reading
+(EPOLLIN | EPOLLRDNORM) if data is available for reading
         or 0 for other cases
 
 .. _`iio_buffer_wakeup_poll`:

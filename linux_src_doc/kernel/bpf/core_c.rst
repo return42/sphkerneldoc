@@ -6,7 +6,7 @@
 ___bpf_prog_run
 ===============
 
-.. c:function:: unsigned int ___bpf_prog_run(u64 *regs, const struct bpf_insn *insn, u64 *stack)
+.. c:function:: u64 ___bpf_prog_run(u64 *regs, const struct bpf_insn *insn, u64 *stack)
 
     run eBPF program on a given context
 

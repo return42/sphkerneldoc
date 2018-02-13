@@ -21,6 +21,8 @@ host
     ohci-s3c2410_c
     ohci-sa1111_c
     pci-quirks_c
+    xhci-dbgcap_c
+    xhci-dbgtty_c
     xhci-ext-caps_h
     xhci-mem_c
     xhci-mtk_h

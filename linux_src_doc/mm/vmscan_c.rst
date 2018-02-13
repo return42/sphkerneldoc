@@ -50,7 +50,7 @@ lruvec_lru_size
 shrink_slab
 ===========
 
-.. c:function:: unsigned long shrink_slab(gfp_t gfp_mask, int nid, struct mem_cgroup *memcg, unsigned long nr_scanned, unsigned long nr_eligible)
+.. c:function:: unsigned long shrink_slab(gfp_t gfp_mask, int nid, struct mem_cgroup *memcg, int priority)
 
     shrink slab caches
 
@@ -63,11 +63,8 @@ shrink_slab
     :param struct mem_cgroup \*memcg:
         memory cgroup whose slab caches to target
 
-    :param unsigned long nr_scanned:
-        pressure numerator
-
-    :param unsigned long nr_eligible:
-        pressure denominator
+    :param int priority:
+        the reclaim priority
 
 .. _`shrink_slab.description`:
 
@@ -84,13 +81,8 @@ only shrinkers with SHRINKER_MEMCG_AWARE set will be called to scan
 objects from the memory cgroup specified. Otherwise, only unaware
 shrinkers are called.
 
-\ ``nr_scanned``\  and \ ``nr_eligible``\  form a ratio that indicate how much of
-the available objects should be scanned.  Page reclaim for example
-passes the number of pages scanned and the number of pages on the
-LRU lists that it considered on \ ``nid``\ , plus a bias in \ ``nr_scanned``\ 
-when it encountered mapped pages.  The ratio is further biased by
-the ->seeks setting of the shrink function, which indicates the
-cost to recreate an object relative to that of an LRU page.
+\ ``priority``\  is sc->priority, we take the number of objects and >> by priority
+in order to get the scan target.
 
 Returns the number of reclaimed slab objects.
 
@@ -151,6 +143,7 @@ found will be decremented.
 
 Restrictions
 ------------
+
 
 (1) Must be called with an elevated refcount on the page. This is a
 fundamentnal difference from isolate_lru_pages (which is called

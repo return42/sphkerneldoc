@@ -100,7 +100,7 @@ ld_usb_release
 ld_usb_poll
 ===========
 
-.. c:function:: unsigned int ld_usb_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t ld_usb_poll(struct file *file, poll_table *wait)
 
     :param struct file \*file:
         *undescribed*

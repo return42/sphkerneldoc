@@ -107,5 +107,25 @@ Description
 Hashes a MAC address according to the hash function used by HW inexact
 (hash) address matching.
 
+.. _`t4_is_inserted_mod_type`:
+
+t4_is_inserted_mod_type
+=======================
+
+.. c:function:: bool t4_is_inserted_mod_type(unsigned int fw_mod_type)
+
+    is a plugged in Firmware Module Type
+
+    :param unsigned int fw_mod_type:
+        the Firmware Mofule Type
+
+.. _`t4_is_inserted_mod_type.description`:
+
+Description
+-----------
+
+Return whether the Firmware Module Type represents a real Transceiver
+Module/Cable Module Type which has been inserted.
+
 .. This file was automatic generated / don't edit.
 

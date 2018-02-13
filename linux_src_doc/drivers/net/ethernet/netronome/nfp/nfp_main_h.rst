@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/netronome/nfp/nfp_main.h
 
+.. _`nfp_dumpspec`:
+
+struct nfp_dumpspec
+===================
+
+.. c:type:: struct nfp_dumpspec
+
+    NFP FW dump specification structure
+
+.. _`nfp_dumpspec.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nfp_dumpspec {
+        u32 size;
+        u8 data[0];
+    }
+
+.. _`nfp_dumpspec.members`:
+
+Members
+-------
+
+size
+    Size of the data
+
+data
+    Sequence of TLVs, each being an instruction to dump some data
+    from FW
+
 .. _`nfp_pf`:
 
 struct nfp_pf
@@ -38,6 +71,9 @@ Definition
         const struct nfp_mip *mip;
         struct nfp_rtsym_table *rtbl;
         struct nfp_hwinfo *hwinfo;
+        struct nfp_dumpspec *dumpspec;
+        u32 dump_flag;
+        u32 dump_len;
         struct nfp_eth_table *eth_tbl;
         struct nfp_nsp_identify *nspi;
         struct device *hwmon_dev;
@@ -115,6 +151,15 @@ rtbl
 
 hwinfo
     HWInfo table
+
+dumpspec
+    Debug dump specification
+
+dump_flag
+    Store dump flag between set_dump and get_dump_flag
+
+dump_len
+    Store dump length between set_dump and get_dump_flag
 
 eth_tbl
     NSP ETH table

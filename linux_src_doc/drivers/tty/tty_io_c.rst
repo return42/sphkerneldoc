@@ -1133,7 +1133,7 @@ tty_mutex
 tty_poll
 ========
 
-.. c:function:: unsigned int tty_poll(struct file *filp, poll_table *wait)
+.. c:function:: __poll_t tty_poll(struct file *filp, poll_table *wait)
 
     check tty status
 

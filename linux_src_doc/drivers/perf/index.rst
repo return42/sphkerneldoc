@@ -7,4 +7,5 @@ perf
 .. toctree::
     :maxdepth: 1
 
+    arm_dsu_pmu_c
     qcom_l2_pmu_c

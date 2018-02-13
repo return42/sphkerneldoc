@@ -8,7 +8,7 @@ struct vb2_vmarea_handler
 
 .. c:type:: struct vb2_vmarea_handler
 
-    common vma refcount tracking handler
+    common vma refcount tracking handler.
 
 .. _`vb2_vmarea_handler.definition`:
 
@@ -29,13 +29,13 @@ Members
 -------
 
 refcount
-    pointer to refcount entry in the buffer
+    pointer to \ :c:type:`struct refcount_t <refcount_t>`\  entry in the buffer.
 
 put
-    callback to function that decreases buffer refcount
+    callback to function that decreases buffer refcount.
 
 arg
-    argument for \ ``put``\  callback
+    argument for \ ``put``\  callback.
 
 .. This file was automatic generated / don't edit.
 

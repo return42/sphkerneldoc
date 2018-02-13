@@ -367,7 +367,7 @@ leb_write_trylock
 
 .. c:function:: int leb_write_trylock(struct ubi_device *ubi, int vol_id, int lnum)
 
-    lock logical eraseblock for writing.
+    try to lock logical eraseblock for writing.
 
     :param struct ubi_device \*ubi:
         UBI device description object

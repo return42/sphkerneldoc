@@ -324,11 +324,14 @@ Definition
         u32 desc_list_sz;
         u32 *n_bytes;
         struct timer_list unreserve_timer;
+        struct timer_list wait_timer;
         struct dwc2_tt *dwc_tt;
         int ttport;
         unsigned tt_buffer_dirty:1;
         unsigned unreserve_pending:1;
         unsigned schedule_low_speed:1;
+        unsigned want_wait:1;
+        unsigned wait_timer_cancel:1;
     }
 
 .. _`dwc2_qh.members`:
@@ -452,6 +455,9 @@ n_bytes
 unreserve_timer
     Timer for releasing periodic reservation.
 
+wait_timer
+    Timer used to wait before re-queuing.
+
 dwc_tt
     *undescribed*
 
@@ -468,6 +474,13 @@ unreserve_pending
 schedule_low_speed
     True if we have a low/full speed component (either the
     host is in low/full speed mode or do_split).
+
+want_wait
+    We should wait before re-queuing; only matters for non-
+    periodic transfers and is ignored for periodic ones.
+
+wait_timer_cancel
+    Set to true to cancel the wait_timer.
 
 .. _`dwc2_qh.description`:
 
@@ -508,6 +521,7 @@ Definition
         u8 error_count;
         u8 n_desc;
         u16 isoc_frame_index_last;
+        u16 num_naks;
         struct dwc2_hcd_urb *urb;
         struct dwc2_qh *qh;
         struct list_head qtd_list_entry;
@@ -570,6 +584,9 @@ n_desc
 isoc_frame_index_last
     Last activated frame (packet) index, used in
     descriptor DMA mode only
+
+num_naks
+    Number of NAKs received on this QTD.
 
 urb
     URB for this transfer

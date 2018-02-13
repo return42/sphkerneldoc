@@ -1,6 +1,47 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/opregion.c
 
+.. _`intel_vgpu_init_opregion`:
+
+intel_vgpu_init_opregion
+========================
+
+.. c:function:: int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
+
+    initialize the stuff used to emulate opregion
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+.. _`intel_vgpu_init_opregion.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
+.. _`intel_vgpu_opregion_base_write_handler`:
+
+intel_vgpu_opregion_base_write_handler
+======================================
+
+.. c:function:: int intel_vgpu_opregion_base_write_handler(struct intel_vgpu *vgpu, u32 gpa)
+
+    Opregion base register write handler
+
+    :param struct intel_vgpu \*vgpu:
+        a vGPU
+
+    :param u32 gpa:
+        guest physical address of opregion
+
+.. _`intel_vgpu_opregion_base_write_handler.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
 .. _`intel_vgpu_clean_opregion`:
 
 intel_vgpu_clean_opregion
@@ -12,59 +53,6 @@ intel_vgpu_clean_opregion
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
-
-.. _`intel_vgpu_init_opregion`:
-
-intel_vgpu_init_opregion
-========================
-
-.. c:function:: int intel_vgpu_init_opregion(struct intel_vgpu *vgpu, u32 gpa)
-
-    initialize the stuff used to emulate opregion
-
-    :param struct intel_vgpu \*vgpu:
-        a vGPU
-
-    :param u32 gpa:
-        guest physical address of opregion
-
-.. _`intel_vgpu_init_opregion.return`:
-
-Return
-------
-
-Zero on success, negative error code if failed.
-
-.. _`intel_gvt_clean_opregion`:
-
-intel_gvt_clean_opregion
-========================
-
-.. c:function:: void intel_gvt_clean_opregion(struct intel_gvt *gvt)
-
-    clean host opergion related stuffs
-
-    :param struct intel_gvt \*gvt:
-        a GVT device
-
-.. _`intel_gvt_init_opregion`:
-
-intel_gvt_init_opregion
-=======================
-
-.. c:function:: int intel_gvt_init_opregion(struct intel_gvt *gvt)
-
-    initialize host opergion related stuffs
-
-    :param struct intel_gvt \*gvt:
-        a GVT device
-
-.. _`intel_gvt_init_opregion.return`:
-
-Return
-------
-
-Zero on success, negative error code if failed.
 
 .. _`intel_vgpu_emulate_opregion_request`:
 

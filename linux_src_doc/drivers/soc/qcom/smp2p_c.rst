@@ -159,6 +159,8 @@ Definition
         struct regmap *ipc_regmap;
         int ipc_offset;
         int ipc_bit;
+        struct mbox_client mbox_client;
+        struct mbox_chan *mbox_chan;
         struct list_head inbound;
         struct list_head outbound;
     }
@@ -197,6 +199,12 @@ ipc_offset
 
 ipc_bit
     bit in regmap@offset to kick to signal remote processor
+
+mbox_client
+    mailbox client handle
+
+mbox_chan
+    apcs ipc mailbox channel handle
 
 inbound
     list of inbound entries

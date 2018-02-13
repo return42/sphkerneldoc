@@ -214,7 +214,7 @@ Synchronizes page for reuse by the adapter
 ixgbevf_add_rx_frag
 ===================
 
-.. c:function:: bool ixgbevf_add_rx_frag(struct ixgbevf_ring *rx_ring, struct ixgbevf_rx_buffer *rx_buffer, union ixgbe_adv_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: bool ixgbevf_add_rx_frag(struct ixgbevf_ring *rx_ring, struct ixgbevf_rx_buffer *rx_buffer, u16 size, union ixgbe_adv_rx_desc *rx_desc, struct sk_buff *skb)
 
     Add contents of Rx buffer to sk_buff
 
@@ -223,6 +223,9 @@ ixgbevf_add_rx_frag
 
     :param struct ixgbevf_rx_buffer \*rx_buffer:
         buffer containing page to add
+
+    :param u16 size:
+        *undescribed*
 
     :param union ixgbe_adv_rx_desc \*rx_desc:
         descriptor containing length of buffer written by hardware
@@ -769,7 +772,7 @@ ixgbevf_service_timer
     Timer Call-back
 
     :param struct timer_list \*t:
-        *undescribed*
+        pointer to timer_list struct
 
 .. _`ixgbevf_check_hang_subtask`:
 
@@ -839,7 +842,7 @@ ixgbevf_watchdog_subtask
     worker thread to bring link up
 
     :param struct ixgbevf_adapter \*adapter:
-        *undescribed*
+        board private structure
 
 .. _`ixgbevf_service_task`:
 
@@ -1288,7 +1291,7 @@ ixgbevf_get_hw_dev_name
     return device name string used by hardware layer to print debugging information
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        pointer to private hardware struct
 
 .. This file was automatic generated / don't edit.
 

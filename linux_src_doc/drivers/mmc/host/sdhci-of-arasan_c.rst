@@ -102,6 +102,7 @@ Definition
         struct clk *clk_ahb;
         struct phy *phy;
         bool is_phy_on;
+        bool has_cqe;
         struct clk_hw sdcardclk_hw;
         struct clk *sdcardclk;
         struct regmap *soc_ctl_base;
@@ -126,6 +127,9 @@ phy
 
 is_phy_on
     True if the PHY is on; false if not.
+
+has_cqe
+    *undescribed*
 
 sdcardclk_hw
     Struct for the clock we might provide to a PHY.

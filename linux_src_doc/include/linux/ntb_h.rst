@@ -23,7 +23,8 @@ Definition
         NTB_TOPO_SEC,
         NTB_TOPO_B2B_USD,
         NTB_TOPO_B2B_DSD,
-        NTB_TOPO_SWITCH
+        NTB_TOPO_SWITCH,
+        NTB_TOPO_CROSSLINK
     };
 
 .. _`ntb_topo.constants`:
@@ -48,6 +49,9 @@ NTB_TOPO_B2B_DSD
 
 NTB_TOPO_SWITCH
     Connected via a switch which supports ntb.
+
+NTB_TOPO_CROSSLINK
+    Connected via two symmetric switchecs
 
 .. _`ntb_speed`:
 
@@ -322,8 +326,8 @@ Definition
         int (*msg_clear_sts)(struct ntb_dev *ntb, u64 sts_bits);
         int (*msg_set_mask)(struct ntb_dev *ntb, u64 mask_bits);
         int (*msg_clear_mask)(struct ntb_dev *ntb, u64 mask_bits);
-        int (*msg_read)(struct ntb_dev *ntb, int midx, int *pidx, u32 *msg);
-        int (*msg_write)(struct ntb_dev *ntb, int midx, int pidx, u32 msg);
+        u32 (*msg_read)(struct ntb_dev *ntb, int *pidx, int midx);
+        int (*peer_msg_write)(struct ntb_dev *ntb, int pidx, int midx, u32 msg);
     }
 
 .. _`ntb_dev_ops.members`:
@@ -472,8 +476,8 @@ msg_clear_mask
 msg_read
     See \ :c:func:`ntb_msg_read`\ .
 
-msg_write
-    See \ :c:func:`ntb_msg_write`\ .
+peer_msg_write
+    See \ :c:func:`ntb_peer_msg_write`\ .
 
 .. _`ntb_client`:
 
@@ -2351,21 +2355,18 @@ Zero on success, otherwise a negative error number.
 ntb_msg_read
 ============
 
-.. c:function:: int ntb_msg_read(struct ntb_dev *ntb, int midx, int *pidx, u32 *msg)
+.. c:function:: u32 ntb_msg_read(struct ntb_dev *ntb, int *pidx, int midx)
 
-    read message register with specified index
+    read inbound message register with specified index
 
     :param struct ntb_dev \*ntb:
         NTB device context.
 
-    :param int midx:
-        Message register index
-
     :param int \*pidx:
         OUT - Port index of peer device a message retrieved from
 
-    :param u32 \*msg:
-        OUT - Data
+    :param int midx:
+        Message register index
 
 .. _`ntb_msg_read.description`:
 
@@ -2380,30 +2381,30 @@ message is retrieved as well.
 Return
 ------
 
-Zero on success, otherwise a negative error number.
+The value of the inbound message register.
 
-.. _`ntb_msg_write`:
+.. _`ntb_peer_msg_write`:
 
-ntb_msg_write
-=============
+ntb_peer_msg_write
+==================
 
-.. c:function:: int ntb_msg_write(struct ntb_dev *ntb, int midx, int pidx, u32 msg)
+.. c:function:: int ntb_peer_msg_write(struct ntb_dev *ntb, int pidx, int midx, u32 msg)
 
-    write data to the specified message register
+    write data to the specified peer message register
 
     :param struct ntb_dev \*ntb:
         NTB device context.
 
-    :param int midx:
-        Message register index
-
     :param int pidx:
         Port index of peer device a message being sent to
+
+    :param int midx:
+        Message register index
 
     :param u32 msg:
         Data to send
 
-.. _`ntb_msg_write.description`:
+.. _`ntb_peer_msg_write.description`:
 
 Description
 -----------
@@ -2412,7 +2413,7 @@ Send data to a specified peer device using the defined message register.
 Message event can be raised if the midx registers isn't empty while
 calling this method and the corresponding interrupt isn't masked.
 
-.. _`ntb_msg_write.return`:
+.. _`ntb_peer_msg_write.return`:
 
 Return
 ------

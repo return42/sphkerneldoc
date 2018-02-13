@@ -64,7 +64,7 @@ Returns the length of found skb, or -1 if none is found.
 udp_poll
 ========
 
-.. c:function:: unsigned int udp_poll(struct file *file, struct socket *sock, poll_table *wait)
+.. c:function:: __poll_t udp_poll(struct file *file, struct socket *sock, poll_table *wait)
 
     wait for a UDP event. \ ``file``\  - file struct \ ``sock``\  - socket \ ``wait``\  - poll table
 

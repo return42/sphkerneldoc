@@ -25,6 +25,7 @@ gpio
     gpio-omap_c
     gpio-pch_c
     gpio-pci-idio-16_c
+    gpio-pcie-idio-24_c
     gpio-pisosr_c
     gpio-pl061_c
     gpio-reg_c
@@ -34,6 +35,7 @@ gpio
     gpio-tpic2810_c
     gpio-tz1090-pdc_c
     gpio-tz1090_c
+    gpio-winbond_c
     gpio-ws16c48_c
     gpio-xgene-sb_c
     gpio-xilinx_c

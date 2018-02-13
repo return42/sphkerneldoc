@@ -91,5 +91,76 @@ Return
 
 Zero on success, error code on failure.
 
+.. _`drm_mode_config_helper_suspend`:
+
+drm_mode_config_helper_suspend
+==============================
+
+.. c:function:: int drm_mode_config_helper_suspend(struct drm_device *dev)
+
+    Modeset suspend helper
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_mode_config_helper_suspend.description`:
+
+Description
+-----------
+
+This helper function takes care of suspending the modeset side. It disables
+output polling if initialized, suspends fbdev if used and finally calls
+\ :c:func:`drm_atomic_helper_suspend`\ .
+If suspending fails, fbdev and polling is re-enabled.
+
+.. _`drm_mode_config_helper_suspend.return`:
+
+Return
+------
+
+Zero on success, negative error code on error.
+
+.. _`drm_mode_config_helper_suspend.see-also`:
+
+See also
+--------
+
+drm_kms_helper_poll_disable() and \ :c:func:`drm_fb_helper_set_suspend_unlocked`\ .
+
+.. _`drm_mode_config_helper_resume`:
+
+drm_mode_config_helper_resume
+=============================
+
+.. c:function:: int drm_mode_config_helper_resume(struct drm_device *dev)
+
+    Modeset resume helper
+
+    :param struct drm_device \*dev:
+        DRM device
+
+.. _`drm_mode_config_helper_resume.description`:
+
+Description
+-----------
+
+This helper function takes care of resuming the modeset side. It calls
+\ :c:func:`drm_atomic_helper_resume`\ , resumes fbdev if used and enables output polling
+if initiaized.
+
+.. _`drm_mode_config_helper_resume.return`:
+
+Return
+------
+
+Zero on success, negative error code on error.
+
+.. _`drm_mode_config_helper_resume.see-also`:
+
+See also
+--------
+
+drm_fb_helper_set_suspend_unlocked() and \ :c:func:`drm_kms_helper_poll_enable`\ .
+
 .. This file was automatic generated / don't edit.
 

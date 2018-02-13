@@ -23,7 +23,6 @@ net
     ethernet/index
     ipv4/index
     ipv6/index
-    ipx/index
     iucv/index
     l3mdev/index
     llc/index

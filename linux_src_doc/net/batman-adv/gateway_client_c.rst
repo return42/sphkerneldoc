@@ -25,6 +25,44 @@ batadv_gw_node_put
     :param struct batadv_gw_node \*gw_node:
         gateway node to free
 
+.. _`batadv_gw_get_selected_gw_node`:
+
+batadv_gw_get_selected_gw_node
+==============================
+
+.. c:function:: struct batadv_gw_node *batadv_gw_get_selected_gw_node(struct batadv_priv *bat_priv)
+
+    Get currently selected gateway
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_gw_get_selected_gw_node.return`:
+
+Return
+------
+
+selected gateway (with increased refcnt), NULL on errors
+
+.. _`batadv_gw_get_selected_orig`:
+
+batadv_gw_get_selected_orig
+===========================
+
+.. c:function:: struct batadv_orig_node *batadv_gw_get_selected_orig(struct batadv_priv *bat_priv)
+
+    Get originator of currently selected gateway
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_gw_get_selected_orig.return`:
+
+Return
+------
+
+orig_node of selected gateway (with increased refcnt), NULL on errors
+
 .. _`batadv_gw_reselect`:
 
 batadv_gw_reselect
@@ -69,6 +107,33 @@ Description
 This function assumes the caller has checked that the gw state \*is actually
 changing\*. This function is not supposed to be called when there is no state
 change.
+
+.. _`batadv_gw_election`:
+
+batadv_gw_election
+==================
+
+.. c:function:: void batadv_gw_election(struct batadv_priv *bat_priv)
+
+    Elect the best gateway
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_gw_check_election`:
+
+batadv_gw_check_election
+========================
+
+.. c:function:: void batadv_gw_check_election(struct batadv_priv *bat_priv, struct batadv_orig_node *orig_node)
+
+    Elect orig node as best gateway when eligible
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param struct batadv_orig_node \*orig_node:
+        orig node which is to be checked
 
 .. _`batadv_gw_node_add`:
 
@@ -127,6 +192,55 @@ batadv_gw_node_update
 
     :param struct batadv_tvlv_gateway_data \*gateway:
         announced bandwidth information
+
+.. _`batadv_gw_node_delete`:
+
+batadv_gw_node_delete
+=====================
+
+.. c:function:: void batadv_gw_node_delete(struct batadv_priv *bat_priv, struct batadv_orig_node *orig_node)
+
+    Remove orig_node from gateway list
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param struct batadv_orig_node \*orig_node:
+        orig node which is currently in process of being removed
+
+.. _`batadv_gw_node_free`:
+
+batadv_gw_node_free
+===================
+
+.. c:function:: void batadv_gw_node_free(struct batadv_priv *bat_priv)
+
+    Free gateway information from soft interface
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_gw_client_seq_print_text`:
+
+batadv_gw_client_seq_print_text
+===============================
+
+.. c:function:: int batadv_gw_client_seq_print_text(struct seq_file *seq, void *offset)
+
+    Print the gateway table in a seq file
+
+    :param struct seq_file \*seq:
+        seq file to print on
+
+    :param void \*offset:
+        not used
+
+.. _`batadv_gw_client_seq_print_text.return`:
+
+Return
+------
+
+always 0
 
 .. _`batadv_gw_dump`:
 
@@ -193,7 +307,7 @@ batadv_gw_out_of_range
 
 .. c:function:: bool batadv_gw_out_of_range(struct batadv_priv *bat_priv, struct sk_buff *skb)
 
-    check if the dhcp request destination is the best gw
+    check if the dhcp request destination is the best gateway
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information

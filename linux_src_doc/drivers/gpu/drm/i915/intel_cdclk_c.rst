@@ -156,14 +156,14 @@ Description
 Uninitialize CDCLK for CNL. This is done only
 during the display core uninitialization sequence.
 
-.. _`intel_cdclk_state_compare`:
+.. _`intel_cdclk_needs_modeset`:
 
-intel_cdclk_state_compare
+intel_cdclk_needs_modeset
 =========================
 
-.. c:function:: bool intel_cdclk_state_compare(const struct intel_cdclk_state *a, const struct intel_cdclk_state *b)
+.. c:function:: bool intel_cdclk_needs_modeset(const struct intel_cdclk_state *a, const struct intel_cdclk_state *b)
 
-    Determine if two CDCLK states differ
+    Determine if two CDCLK states require a modeset on all pipes
 
     :param const struct intel_cdclk_state \*a:
         first CDCLK state
@@ -171,12 +171,34 @@ intel_cdclk_state_compare
     :param const struct intel_cdclk_state \*b:
         second CDCLK state
 
-.. _`intel_cdclk_state_compare.return`:
+.. _`intel_cdclk_needs_modeset.return`:
 
 Return
 ------
 
-True if the CDCLK states are identical, false if they differ.
+True if the CDCLK states require pipes to be off during reprogramming, false if not.
+
+.. _`intel_cdclk_changed`:
+
+intel_cdclk_changed
+===================
+
+.. c:function:: bool intel_cdclk_changed(const struct intel_cdclk_state *a, const struct intel_cdclk_state *b)
+
+    Determine if two CDCLK states are different
+
+    :param const struct intel_cdclk_state \*a:
+        first CDCLK state
+
+    :param const struct intel_cdclk_state \*b:
+        second CDCLK state
+
+.. _`intel_cdclk_changed.return`:
+
+Return
+------
+
+True if the CDCLK states don't match, false if they do.
 
 .. _`intel_set_cdclk`:
 

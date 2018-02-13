@@ -178,11 +178,11 @@ no per-SoC \ :c:func:`module_disable`\  function pointer has been registered.
 cm_register
 ===========
 
-.. c:function:: int cm_register(struct cm_ll_data *cld)
+.. c:function:: int cm_register(const struct cm_ll_data *cld)
 
     register per-SoC low-level data with the CM
 
-    :param struct cm_ll_data \*cld:
+    :param const struct cm_ll_data \*cld:
         low-level per-SoC OMAP CM data & function pointers to register
 
 .. _`cm_register.description`:
@@ -202,11 +202,11 @@ without an intervening \ :c:func:`cm_unregister`\ .
 cm_unregister
 =============
 
-.. c:function:: int cm_unregister(struct cm_ll_data *cld)
+.. c:function:: int cm_unregister(const struct cm_ll_data *cld)
 
     unregister per-SoC low-level data & function pointers
 
-    :param struct cm_ll_data \*cld:
+    :param const struct cm_ll_data \*cld:
         low-level per-SoC OMAP CM data & function pointers to unregister
 
 .. _`cm_unregister.description`:

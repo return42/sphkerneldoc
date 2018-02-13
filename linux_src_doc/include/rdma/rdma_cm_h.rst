@@ -510,5 +510,33 @@ rdma_consumer_reject_data
     :param u8 \*data_len:
         Pointer to the resulting length of the consumer data.
 
+.. _`rdma_read_gids`:
+
+rdma_read_gids
+==============
+
+.. c:function:: void rdma_read_gids(struct rdma_cm_id *cm_id, union ib_gid *sgid, union ib_gid *dgid)
+
+    Return the SGID and DGID used for establishing connection. This can be used after \ :c:func:`rdma_resolve_addr`\  on client side. This can be use on new connection on server side. This is applicable to IB, RoCE, iWarp. If cm_id is not bound yet to the RDMA device, it doesn't copy and SGID or DGID to the given pointers.
+
+    :param struct rdma_cm_id \*cm_id:
+        *undescribed*
+
+    :param union ib_gid \*sgid:
+        Pointer to SGID where SGID will be returned. It is optional.
+
+    :param union ib_gid \*dgid:
+        Pointer to DGID where DGID will be returned. It is optional.
+
+.. _`rdma_read_gids.note`:
+
+Note
+----
+
+This API should not be used by any new ULPs or new code.
+Instead, users interested in querying GIDs should refer to path record
+of the rdma_cm_id to query the GIDs.
+This API is provided for compatibility for existing users.
+
 .. This file was automatic generated / don't edit.
 

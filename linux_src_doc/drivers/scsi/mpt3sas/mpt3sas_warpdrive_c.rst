@@ -40,59 +40,12 @@ mpt3sas_init_warpdrive_properties
     :param struct _raid_device \*raid_device:
         the raid_device object
 
-.. _`mpt3sas_scsi_direct_io_get`:
-
-mpt3sas_scsi_direct_io_get
-==========================
-
-.. c:function:: u8 mpt3sas_scsi_direct_io_get(struct MPT3SAS_ADAPTER *ioc, u16 smid)
-
-    returns direct io flag
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-.. _`mpt3sas_scsi_direct_io_get.description`:
-
-Description
------------
-
-Returns the smid stored scmd pointer.
-
-.. _`mpt3sas_scsi_direct_io_set`:
-
-mpt3sas_scsi_direct_io_set
-==========================
-
-.. c:function:: void mpt3sas_scsi_direct_io_set(struct MPT3SAS_ADAPTER *ioc, u16 smid, u8 direct_io)
-
-    sets direct io flag
-
-    :param struct MPT3SAS_ADAPTER \*ioc:
-        per adapter object
-
-    :param u16 smid:
-        system request message index
-
-    :param u8 direct_io:
-        Zero or non-zero value to set in the direct_io flag
-
-.. _`mpt3sas_scsi_direct_io_set.description`:
-
-Description
------------
-
-Returns Nothing.
-
 .. _`mpt3sas_setup_direct_io`:
 
 mpt3sas_setup_direct_io
 =======================
 
-.. c:function:: void mpt3sas_setup_direct_io(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, struct _raid_device *raid_device, Mpi25SCSIIORequest_t *mpi_request, u16 smid)
+.. c:function:: void mpt3sas_setup_direct_io(struct MPT3SAS_ADAPTER *ioc, struct scsi_cmnd *scmd, struct _raid_device *raid_device, Mpi25SCSIIORequest_t *mpi_request)
 
     setup MPI request for WARPDRIVE Direct I/O
 
@@ -107,9 +60,6 @@ mpt3sas_setup_direct_io
 
     :param Mpi25SCSIIORequest_t \*mpi_request:
         pointer to the SCSI_IO reqest message frame
-
-    :param u16 smid:
-        system request message index
 
 .. _`mpt3sas_setup_direct_io.description`:
 

@@ -120,10 +120,10 @@ rvt_query_pkey
         Port number, 1 based from ib core
 
     :param u16 index:
-        *undescribed*
+        Index into pkey table
 
     :param u16 \*pkey:
-        *undescribed*
+        returned pkey from the port pkey table
 
 .. _`rvt_query_pkey.return`:
 
@@ -148,7 +148,7 @@ rvt_query_gid
         Port number, 1 based from ib core
 
     :param int guid_index:
-        *undescribed*
+        Index in table
 
     :param union ib_gid \*gid:
         Gid to return
@@ -170,10 +170,10 @@ rvt_alloc_ucontext
     Allocate a user context
 
     :param struct ib_device \*ibdev:
-        Vers IB dev
+        Verbs IB dev
 
     :param struct ib_udata \*udata:
-        *undescribed*
+        User data allocated
 
 .. _`rvt_dealloc_ucontext`:
 

@@ -284,6 +284,40 @@ Return
 
 the number of blocks reserved
 
+.. _`gfs2_write_log_header`:
+
+gfs2_write_log_header
+=====================
+
+.. c:function:: void gfs2_write_log_header(struct gfs2_sbd *sdp, struct gfs2_jdesc *jd, u64 seq, u32 tail, u32 flags, int op_flags)
+
+    Write a journal log header buffer at sd_log_flush_head
+
+    :param struct gfs2_sbd \*sdp:
+        The GFS2 superblock
+
+    :param struct gfs2_jdesc \*jd:
+        journal descriptor of the journal to which we are writing
+
+    :param u64 seq:
+        sequence number
+
+    :param u32 tail:
+        tail of the log
+
+    :param u32 flags:
+        log header flags GFS2_LOG_HEAD\_\*
+
+    :param int op_flags:
+        flags to pass to the bio
+
+.. _`gfs2_write_log_header.return`:
+
+Return
+------
+
+the initialized log buffer descriptor
+
 .. _`log_write_header`:
 
 log_write_header
@@ -297,7 +331,7 @@ log_write_header
         The GFS2 superblock
 
     :param u32 flags:
-        *undescribed*
+        The log header flags, including log header origin
 
 .. _`log_write_header.return`:
 
@@ -311,7 +345,7 @@ the initialized log buffer descriptor
 gfs2_log_flush
 ==============
 
-.. c:function:: void gfs2_log_flush(struct gfs2_sbd *sdp, struct gfs2_glock *gl, enum gfs2_flush_type type)
+.. c:function:: void gfs2_log_flush(struct gfs2_sbd *sdp, struct gfs2_glock *gl, u32 flags)
 
     flush incore transaction(s)
 
@@ -321,8 +355,8 @@ gfs2_log_flush
     :param struct gfs2_glock \*gl:
         The glock structure to flush.  If NULL, flush the whole incore log
 
-    :param enum gfs2_flush_type type:
-        *undescribed*
+    :param u32 flags:
+        The log header flags: GFS2_LOG_HEAD_FLUSH\_\* and debug flags
 
 .. _`gfs2_merge_trans`:
 

@@ -116,6 +116,7 @@ Definition
         const unsigned int num_pins;
         u32 mask;
         u32 value;
+        u32 driving_mask;
     }
 
 .. _`gemini_pin_group.members`:
@@ -139,6 +140,11 @@ mask
 
 value
     bits to set to enable this when doing pin muxing
+
+driving_mask
+    bitmask for the IO Pad driving register for this
+    group, if it supports altering the driving strength of
+    its lines.
 
 .. _`gemini_pmx_func`:
 

@@ -29,12 +29,10 @@ Constants
 ---------
 
 BATADV_FORW_ALL
-    forward the packet to all nodes (currently via classic
-    flooding)
+    forward the packet to all nodes (currently via classic flooding)
 
 BATADV_FORW_SINGLE
-    forward the packet to a single node (currently via the
-    BATMAN unicast routing protocol)
+    forward the packet to a single node (currently via the BATMAN unicast routing protocol)
 
 BATADV_FORW_NONE
     don't forward, drop it

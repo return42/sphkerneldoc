@@ -350,11 +350,11 @@ Definition
         int pid;
         struct task_struct *tsk;
         struct files_struct *files;
+        struct mutex files_lock;
         struct hlist_node deferred_work_node;
         int deferred_work;
         bool is_dead;
         struct list_head todo;
-        wait_queue_head_t wait;
         struct binder_stats stats;
         struct list_head delivered_death;
         int max_threads;
@@ -402,7 +402,8 @@ waiting_threads
     \ ``tsk``\                    task_struct for group_leader of process
     (invariant after initialized)
     \ ``files``\                  files_struct for process
-    (invariant after initialized)
+    (protected by \ ``files_lock``\ )
+    \ ``files_lock``\             mutex to protect \ ``files``\ 
 
 pid
     *undescribed*
@@ -411,6 +412,9 @@ tsk
     *undescribed*
 
 files
+    *undescribed*
+
+files_lock
     *undescribed*
 
 deferred_work_node
@@ -429,10 +433,6 @@ is_dead
 todo
     list of work for this process
     (protected by \ ``inner_lock``\ )
-
-wait
-    wait queue head to wait for proc work
-    (invariant after initialized)
 
 stats
     per-process binder statistics
@@ -513,6 +513,7 @@ Definition
         bool looper_need_return;
         struct binder_transaction *transaction_stack;
         struct list_head todo;
+        bool process_todo;
         struct binder_error return_error;
         struct binder_error reply_error;
         wait_queue_head_t wait;
@@ -555,6 +556,10 @@ transaction_stack
 
 todo
     list of work to do for this thread
+    (protected by \ ``proc``\ ->inner_lock)
+
+process_todo
+    whether work in \ ``todo``\  should be processed
     (protected by \ ``proc``\ ->inner_lock)
 
 return_error
@@ -765,17 +770,14 @@ Return
 
 true if there are no items on list, else false
 
-.. _`binder_enqueue_work`:
+.. _`binder_enqueue_work_ilocked`:
 
-binder_enqueue_work
-===================
+binder_enqueue_work_ilocked
+===========================
 
-.. c:function:: void binder_enqueue_work(struct binder_proc *proc, struct binder_work *work, struct list_head *target_list)
+.. c:function:: void binder_enqueue_work_ilocked(struct binder_work *work, struct list_head *target_list)
 
     Add an item to the work list
-
-    :param struct binder_proc \*proc:
-        binder_proc associated with list
 
     :param struct binder_work \*work:
         struct binder_work to add to list
@@ -783,13 +785,89 @@ binder_enqueue_work
     :param struct list_head \*target_list:
         list to add work to
 
-.. _`binder_enqueue_work.description`:
+.. _`binder_enqueue_work_ilocked.description`:
 
 Description
 -----------
 
 Adds the work to the specified list. Asserts that work
 is not already on a list.
+
+Requires the proc->inner_lock to be held.
+
+.. _`binder_enqueue_deferred_thread_work_ilocked`:
+
+binder_enqueue_deferred_thread_work_ilocked
+===========================================
+
+.. c:function:: void binder_enqueue_deferred_thread_work_ilocked(struct binder_thread *thread, struct binder_work *work)
+
+    Add deferred thread work
+
+    :param struct binder_thread \*thread:
+        thread to queue work to
+
+    :param struct binder_work \*work:
+        struct binder_work to add to list
+
+.. _`binder_enqueue_deferred_thread_work_ilocked.description`:
+
+Description
+-----------
+
+Adds the work to the todo list of the thread. Doesn't set the process_todo
+flag, which means that (if it wasn't already set) the thread will go to
+sleep without handling this work when it calls read.
+
+Requires the proc->inner_lock to be held.
+
+.. _`binder_enqueue_thread_work_ilocked`:
+
+binder_enqueue_thread_work_ilocked
+==================================
+
+.. c:function:: void binder_enqueue_thread_work_ilocked(struct binder_thread *thread, struct binder_work *work)
+
+    Add an item to the thread work list
+
+    :param struct binder_thread \*thread:
+        thread to queue work to
+
+    :param struct binder_work \*work:
+        struct binder_work to add to list
+
+.. _`binder_enqueue_thread_work_ilocked.description`:
+
+Description
+-----------
+
+Adds the work to the todo list of the thread, and enables processing
+of the todo queue.
+
+Requires the proc->inner_lock to be held.
+
+.. _`binder_enqueue_thread_work`:
+
+binder_enqueue_thread_work
+==========================
+
+.. c:function:: void binder_enqueue_thread_work(struct binder_thread *thread, struct binder_work *work)
+
+    Add an item to the thread work list
+
+    :param struct binder_thread \*thread:
+        thread to queue work to
+
+    :param struct binder_work \*work:
+        struct binder_work to add to list
+
+.. _`binder_enqueue_thread_work.description`:
+
+Description
+-----------
+
+Adds the work to the todo list of the thread, and enables processing
+of the todo queue.
 
 .. _`binder_dequeue_work`:
 

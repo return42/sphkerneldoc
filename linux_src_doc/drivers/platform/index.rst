@@ -8,4 +8,5 @@ platform
     :maxdepth: 1
 
     goldfish/index
+    mellanox/index
     x86/index

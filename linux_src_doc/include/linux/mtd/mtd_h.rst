@@ -278,5 +278,28 @@ Members
 dfs_dir
     direntry object of the MTD device debugfs directory
 
+.. _`mtd_align_erase_req`:
+
+mtd_align_erase_req
+===================
+
+.. c:function:: void mtd_align_erase_req(struct mtd_info *mtd, struct erase_info *req)
+
+    Adjust an erase request to align things on eraseblock boundaries.
+
+    :param struct mtd_info \*mtd:
+        the MTD device this erase request applies on
+
+    :param struct erase_info \*req:
+        the erase request to adjust
+
+.. _`mtd_align_erase_req.description`:
+
+Description
+-----------
+
+This function will adjust \ ``req``\ ->addr and \ ``req``\ ->len to align them on
+\ ``mtd``\ ->erasesize. Of course we expect \ ``mtd``\ ->erasesize to be != 0.
+
 .. This file was automatic generated / don't edit.
 

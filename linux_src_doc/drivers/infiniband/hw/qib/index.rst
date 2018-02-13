@@ -16,7 +16,6 @@ qib
     qib_iba7322_c
     qib_init_c
     qib_intr_c
-    qib_keys_c
     qib_mad_c
     qib_pcie_c
     qib_pio_copy_c

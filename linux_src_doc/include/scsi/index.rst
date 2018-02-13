@@ -19,3 +19,4 @@ scsi
     scsi_transport_fc_h
     scsi_transport_iscsi_h
     scsi_transport_srp_h
+    srp_h

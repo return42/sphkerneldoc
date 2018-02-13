@@ -19,9 +19,11 @@ Definition
 
     struct regulator_state {
         int uV;
+        int min_uV;
+        int max_uV;
         unsigned int mode;
         int enabled;
-        int disabled;
+        bool changeable;
     }
 
 .. _`regulator_state.members`:
@@ -30,16 +32,26 @@ Members
 -------
 
 uV
-    Operating voltage during suspend.
+    Default operating voltage during suspend, it can be adjusted
+    among <min_uV, max_uV>.
+
+min_uV
+    Minimum suspend voltage may be set.
+
+max_uV
+    Maximum suspend voltage may be set.
 
 mode
     Operating mode during suspend.
 
 enabled
-    Enabled during suspend.
+    operations during suspend.
+    - DO_NOTHING_IN_SUSPEND
+    - DISABLE_IN_SUSPEND
+    - ENABLE_IN_SUSPEND
 
-disabled
-    Disabled during suspend.
+changeable
+    Is this state can be switched between enabled/disabled,
 
 .. _`regulator_state.description`:
 

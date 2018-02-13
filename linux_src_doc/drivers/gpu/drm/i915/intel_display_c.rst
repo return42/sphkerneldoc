@@ -19,49 +19,6 @@ intel_PLL_is_valid
     :param const struct dpll \*clock:
         *undescribed*
 
-.. _`intel_enable_pipe`:
-
-intel_enable_pipe
-=================
-
-.. c:function:: void intel_enable_pipe(struct intel_crtc *crtc)
-
-    enable a pipe, asserting requirements
-
-    :param struct intel_crtc \*crtc:
-        crtc responsible for the pipe
-
-.. _`intel_enable_pipe.description`:
-
-Description
------------
-
-Enable \ ``crtc``\ 's pipe, making sure that various hardware specific requirements
-are met, if applicable, e.g. PLL enabled, LVDS pairs enabled, etc.
-
-.. _`intel_disable_pipe`:
-
-intel_disable_pipe
-==================
-
-.. c:function:: void intel_disable_pipe(struct intel_crtc *crtc)
-
-    disable a pipe, asserting requirements
-
-    :param struct intel_crtc \*crtc:
-        crtc whose pipes is to be disabled
-
-.. _`intel_disable_pipe.description`:
-
-Description
------------
-
-Disable the pipe of \ ``crtc``\ , making sure that various hardware
-specific requirements are met, if applicable, e.g. plane
-disabled, panel fitter off, etc.
-
-Will wait until the pipe has shut down before returning.
-
 .. _`skl_update_scaler_crtc`:
 
 skl_update_scaler_crtc
@@ -112,12 +69,15 @@ error - requested scaling cannot be supported or other error condition
 intel_post_enable_primary
 =========================
 
-.. c:function:: void intel_post_enable_primary(struct drm_crtc *crtc)
+.. c:function:: void intel_post_enable_primary(struct drm_crtc *crtc, const struct intel_crtc_state *new_crtc_state)
 
     Perform operations after enabling primary plane
 
     :param struct drm_crtc \*crtc:
         the CRTC whose primary plane was just enabled
+
+    :param const struct intel_crtc_state \*new_crtc_state:
+        *undescribed*
 
 .. _`intel_post_enable_primary.description`:
 

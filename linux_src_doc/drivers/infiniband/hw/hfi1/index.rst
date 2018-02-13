@@ -16,6 +16,7 @@ hfi1
     intr_c
     iowait_h
     mad_c
+    mad_h
     pio_c
     pio_copy_c
     qp_c

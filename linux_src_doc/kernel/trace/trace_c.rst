@@ -305,7 +305,7 @@ tracing_snapshot_alloc
 Description
 -----------
 
-This is similar to \ :c:func:`trace_snapshot`\ , but it will allocate the
+This is similar to \ :c:func:`tracing_snapshot`\ , but it will allocate the
 snapshot buffer if it isn't already allocated. Use this only
 where it is safe to sleep, as the allocation may sleep.
 

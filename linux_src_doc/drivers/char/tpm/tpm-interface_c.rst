@@ -125,75 +125,80 @@ a TPM error code.
 tpm_is_tpm2
 ===========
 
-.. c:function:: int tpm_is_tpm2(u32 chip_num)
+.. c:function:: int tpm_is_tpm2(struct tpm_chip *chip)
 
-    is the chip a TPM2 chip?
+    do we a have a TPM2 chip?
 
-    :param u32 chip_num:
-        tpm idx # or ANY
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
-.. _`tpm_is_tpm2.description`:
+.. _`tpm_is_tpm2.return`:
 
-Description
------------
+Return
+------
 
-Returns < 0 on error, and 1 or 0 on success depending whether the chip
-is a TPM2 chip.
+1 if we have a TPM2 chip.
+0 if we don't have a TPM2 chip.
+A negative number for system errors (errno).
 
 .. _`tpm_pcr_read`:
 
 tpm_pcr_read
 ============
 
-.. c:function:: int tpm_pcr_read(u32 chip_num, int pcr_idx, u8 *res_buf)
+.. c:function:: int tpm_pcr_read(struct tpm_chip *chip, int pcr_idx, u8 *res_buf)
 
-    read a pcr value
+    read a PCR value from SHA1 bank
 
-    :param u32 chip_num:
-        tpm idx # or ANY
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
     :param int pcr_idx:
-        pcr idx to retrieve
+        the PCR to be retrieved
 
     :param u8 \*res_buf:
-        TPM_PCR value
-        size of res_buf is 20 bytes (or NULL if you don't care)
+        the value of the PCR
 
-.. _`tpm_pcr_read.description`:
+.. _`tpm_pcr_read.return`:
 
-Description
------------
+Return
+------
 
-The TPM driver should be built-in, but for whatever reason it
-isn't, protect against the chip disappearing, by incrementing
-the module usage count.
+same as with \ :c:func:`tpm_transmit_cmd`\ 
 
 .. _`tpm_pcr_extend`:
 
 tpm_pcr_extend
 ==============
 
-.. c:function:: int tpm_pcr_extend(u32 chip_num, int pcr_idx, const u8 *hash)
+.. c:function:: int tpm_pcr_extend(struct tpm_chip *chip, int pcr_idx, const u8 *hash)
 
-    extend pcr value with hash
+    extend a PCR value in SHA1 bank.
 
-    :param u32 chip_num:
-        tpm idx # or AN&
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
     :param int pcr_idx:
-        pcr idx to extend
+        the PCR to be retrieved
 
     :param const u8 \*hash:
-        hash value used to extend pcr value
+        the hash value used to extend the PCR value
 
-.. _`tpm_pcr_extend.description`:
+.. _`tpm_pcr_extend.note`:
 
-Description
------------
+Note
+----
 
-The TPM driver should be built-in, but for whatever reason it
-isn't, protect against the chip disappearing, by incrementing
-the module usage count.
+with TPM 2.0 extends also those banks with a known digest size to the
+cryto subsystem in order to prevent malicious use of those PCR banks. In the
+future we should dynamically determine digest sizes.
+
+.. _`tpm_pcr_extend.return`:
+
+Return
+------
+
+same as with \ :c:func:`tpm_transmit_cmd`\ 
 
 .. _`tpm_do_selftest`:
 
@@ -234,17 +239,42 @@ Description
 
 Returns 0 on success, < 0 in case of fatal error.
 
+.. _`tpm_send`:
+
+tpm_send
+========
+
+.. c:function:: int tpm_send(struct tpm_chip *chip, void *cmd, size_t buflen)
+
+    send a TPM command
+
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
+
+    :param void \*cmd:
+        a TPM command buffer
+
+    :param size_t buflen:
+        the length of the TPM command buffer
+
+.. _`tpm_send.return`:
+
+Return
+------
+
+same as with \ :c:func:`tpm_transmit_cmd`\ 
+
 .. _`tpm_get_random`:
 
 tpm_get_random
 ==============
 
-.. c:function:: int tpm_get_random(u32 chip_num, u8 *out, size_t max)
+.. c:function:: int tpm_get_random(struct tpm_chip *chip, u8 *out, size_t max)
 
-    Get random bytes from the tpm's RNG
+    get random bytes from the TPM's RNG
 
-    :param u32 chip_num:
-        A specific chip number for the request or TPM_ANY_NUM
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
     :param u8 \*out:
         destination buffer for the random bytes
@@ -252,24 +282,24 @@ tpm_get_random
     :param size_t max:
         the max number of bytes to write to \ ``out``\ 
 
-.. _`tpm_get_random.description`:
+.. _`tpm_get_random.return`:
 
-Description
------------
+Return
+------
 
-Returns < 0 on error and the number of bytes read on success
+same as with \ :c:func:`tpm_transmit_cmd`\ 
 
 .. _`tpm_seal_trusted`:
 
 tpm_seal_trusted
 ================
 
-.. c:function:: int tpm_seal_trusted(u32 chip_num, struct trusted_key_payload *payload, struct trusted_key_options *options)
+.. c:function:: int tpm_seal_trusted(struct tpm_chip *chip, struct trusted_key_payload *payload, struct trusted_key_options *options)
 
-    seal a trusted key
+    seal a trusted key payload
 
-    :param u32 chip_num:
-        A specific chip number for the request or TPM_ANY_NUM
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
     :param struct trusted_key_payload \*payload:
         the key data in clear and encrypted form
@@ -277,25 +307,32 @@ tpm_seal_trusted
     :param struct trusted_key_options \*options:
         authentication values and other options
 
-.. _`tpm_seal_trusted.description`:
+.. _`tpm_seal_trusted.note`:
 
-Description
------------
+Note
+----
 
-Returns < 0 on error and 0 on success. At the moment, only TPM 2.0 chips
-are supported.
+only TPM 2.0 chip are supported. TPM 1.x implementation is located in
+the keyring subsystem.
+
+.. _`tpm_seal_trusted.return`:
+
+Return
+------
+
+same as with \ :c:func:`tpm_transmit_cmd`\ 
 
 .. _`tpm_unseal_trusted`:
 
 tpm_unseal_trusted
 ==================
 
-.. c:function:: int tpm_unseal_trusted(u32 chip_num, struct trusted_key_payload *payload, struct trusted_key_options *options)
+.. c:function:: int tpm_unseal_trusted(struct tpm_chip *chip, struct trusted_key_payload *payload, struct trusted_key_options *options)
 
     unseal a trusted key
 
-    :param u32 chip_num:
-        A specific chip number for the request or TPM_ANY_NUM
+    :param struct tpm_chip \*chip:
+        a \ :c:type:`struct tpm_chip <tpm_chip>`\  instance, \ ``NULL``\  for the default chip
 
     :param struct trusted_key_payload \*payload:
         the key data in clear and encrypted form
@@ -303,13 +340,20 @@ tpm_unseal_trusted
     :param struct trusted_key_options \*options:
         authentication values and other options
 
-.. _`tpm_unseal_trusted.description`:
+.. _`tpm_unseal_trusted.note`:
 
-Description
------------
+Note
+----
 
-Returns < 0 on error and 0 on success. At the moment, only TPM 2.0 chips
-are supported.
+only TPM 2.0 chip are supported. TPM 1.x implementation is located in
+the keyring subsystem.
+
+.. _`tpm_unseal_trusted.return`:
+
+Return
+------
+
+same as with \ :c:func:`tpm_transmit_cmd`\ 
 
 .. This file was automatic generated / don't edit.
 

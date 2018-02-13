@@ -42,6 +42,7 @@ Definition
         struct tipc_mc_method mc_method;
         struct rcu_head rcu;
         struct tipc_group *group;
+        bool group_is_open;
     }
 
 .. _`tipc_sock.members`:
@@ -120,6 +121,9 @@ rcu
     rcu struct for tipc_sock
 
 group
+    *undescribed*
+
+group_is_open
     *undescribed*
 
 .. _`tsk_advance_rx_queue`:
@@ -304,7 +308,7 @@ a completely predictable manner).
 tipc_poll
 =========
 
-.. c:function:: unsigned int tipc_poll(struct file *file, struct socket *sock, poll_table *wait)
+.. c:function:: __poll_t tipc_poll(struct file *file, struct socket *sock, poll_table *wait)
 
     read and possibly block on pollmask
 

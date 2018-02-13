@@ -12,4 +12,5 @@ optee
     optee_msg_h
     optee_private_h
     rpc_c
+    shm_pool_c
     supp_c

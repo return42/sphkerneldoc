@@ -228,10 +228,10 @@ iscsi_tcp_hdr_recv_done
     process PDU header
 
     :param struct iscsi_tcp_conn \*tcp_conn:
-        *undescribed*
+        iSCSI TCP connection
 
     :param struct iscsi_segment \*segment:
-        *undescribed*
+        the buffer segment being processed
 
 .. _`iscsi_tcp_hdr_recv_done.description`:
 
@@ -281,17 +281,17 @@ iscsi_tcp_recv_skb
         offset in skb
 
     :param bool offloaded:
-        *undescribed*
+        bool indicating if transfer was offloaded
 
     :param int \*status:
-        *undescribed*
+        iscsi TCP status result
 
 .. _`iscsi_tcp_recv_skb.description`:
 
 Description
 -----------
 
-Will return status of transfer in status. And will return
+Will return status of transfer in \ ``status``\ . And will return
 number of bytes copied.
 
 .. _`iscsi_tcp_task_init`:

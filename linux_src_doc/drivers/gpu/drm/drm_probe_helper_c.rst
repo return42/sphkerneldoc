@@ -43,8 +43,7 @@ temporarily disabled using \ :c:func:`drm_kms_helper_poll_disable`\ , for exampl
 suspend/resume.
 
 Drivers can call this helper from their device resume implementation. It is
-an error to call this when the output polling support has not yet been set
-up.
+not an error to call this even when output polling isn't enabled.
 
 Note that calls to enable and disable polling must be strictly ordered, which
 is automatically the case when they're only call from suspend/resume

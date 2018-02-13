@@ -36,6 +36,13 @@ Definition
             u8 conf;
             unsigned long non_collect_ts_start[FW_DBG_TRIGGER_MAX - 1];
         } dump;
+    #ifdef CONFIG_IWLWIFI_DEBUGFS
+        struct {
+            struct delayed_work wk;
+            u32 delay;
+            u64 seq;
+        } timestamp;
+    #endif
     }
 
 .. _`iwl_fw_runtime.members`:
@@ -79,6 +86,9 @@ smem_cfg
 
 dump
     debug dump data
+
+timestamp
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

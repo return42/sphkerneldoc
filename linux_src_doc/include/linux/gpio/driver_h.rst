@@ -24,6 +24,7 @@ Definition
         irq_flow_handler_t handler;
         unsigned int default_type;
         struct lock_class_key *lock_key;
+        struct lock_class_key *request_key;
         irq_flow_handler_t parent_handler;
         void *parent_handler_data;
         unsigned int num_parents;
@@ -65,7 +66,10 @@ default_type
 
 lock_key
 
-    Per GPIO IRQ chip lockdep class.
+    Per GPIO IRQ chip lockdep classes.
+
+request_key
+    *undescribed*
 
 parent_handler
 

@@ -32,7 +32,6 @@ Definition
         bool swseq_erase;
         bool erase_64k;
         u8 opcodes[8];
-        u8 preopcodes[2];
     }
 
 .. _`intel_spi.members`:
@@ -82,9 +81,6 @@ erase_64k
 opcodes
     Opcodes which are supported. This are programmed by BIOS
     before it locks down the controller.
-
-preopcodes
-    Preopcodes which are supported.
 
 .. This file was automatic generated / don't edit.
 

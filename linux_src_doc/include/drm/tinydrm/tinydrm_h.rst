@@ -21,8 +21,6 @@ Definition
         struct drm_device *drm;
         struct drm_simple_display_pipe pipe;
         struct mutex dirty_lock;
-        struct drm_fbdev_cma *fbdev_cma;
-        struct drm_atomic_state *suspend_state;
         const struct drm_framebuffer_funcs *fb_funcs;
     }
 
@@ -39,12 +37,6 @@ pipe
 
 dirty_lock
     Serializes framebuffer flushing
-
-fbdev_cma
-    CMA fbdev structure
-
-suspend_state
-    Atomic state when suspended
 
 fb_funcs
     Framebuffer functions used when creating framebuffers

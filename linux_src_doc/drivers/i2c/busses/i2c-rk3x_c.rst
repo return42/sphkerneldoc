@@ -95,6 +95,37 @@ tuning
     v1's calc_timings, the tuning should all be 0
     for old hardware anyone using v0's calc_timings.
 
+.. _`rk3x_i2c_soc_data`:
+
+struct rk3x_i2c_soc_data
+========================
+
+.. c:type:: struct rk3x_i2c_soc_data
+
+
+.. _`rk3x_i2c_soc_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rk3x_i2c_soc_data {
+        int grf_offset;
+        int (*calc_timings)(unsigned long, struct i2c_timings *, struct rk3x_i2c_calced_timings *);
+    }
+
+.. _`rk3x_i2c_soc_data.members`:
+
+Members
+-------
+
+grf_offset
+    offset inside the grf regmap for setting the i2c type
+
+calc_timings
+    Callback function for i2c timing information calculated
+
 .. _`rk3x_i2c`:
 
 struct rk3x_i2c
@@ -114,7 +145,7 @@ Definition
     struct rk3x_i2c {
         struct i2c_adapter adap;
         struct device *dev;
-        struct rk3x_i2c_soc_data *soc_data;
+        const struct rk3x_i2c_soc_data *soc_data;
         void __iomem *regs;
         struct clk *clk;
         struct clk *pclk;

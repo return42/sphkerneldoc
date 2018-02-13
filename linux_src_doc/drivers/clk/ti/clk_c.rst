@@ -50,15 +50,15 @@ function to list these.
 ti_clk_retry_init
 =================
 
-.. c:function:: int ti_clk_retry_init(struct device_node *node, struct clk_hw *hw, ti_of_clk_init_cb_t func)
+.. c:function:: int ti_clk_retry_init(struct device_node *node, void *user, ti_of_clk_init_cb_t func)
 
     retries a failed clock init at later phase
 
     :param struct device_node \*node:
         device not for the clock
 
-    :param struct clk_hw \*hw:
-        partially initialized clk_hw struct for the clock
+    :param void \*user:
+        user data pointer
 
     :param ti_of_clk_init_cb_t func:
         init function to be called for the clock

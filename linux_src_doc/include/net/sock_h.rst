@@ -853,48 +853,5 @@ Description
 This routine must be called with interrupts disabled or with the socket
 locked so that the sk_buff queue operation is ok.
 
-.. _`sk_state_load`:
-
-sk_state_load
-=============
-
-.. c:function:: int sk_state_load(const struct sock *sk)
-
-    read sk->sk_state for lockless contexts
-
-    :param const struct sock \*sk:
-        socket pointer
-
-.. _`sk_state_load.description`:
-
-Description
------------
-
-Paired with \ :c:func:`sk_state_store`\ . Used in places we do not hold socket lock :
-\ :c:func:`tcp_diag_get_info`\ , \ :c:func:`tcp_get_info`\ , \ :c:func:`tcp_poll`\ , \ :c:func:`get_tcp4_sock`\  ...
-
-.. _`sk_state_store`:
-
-sk_state_store
-==============
-
-.. c:function:: void sk_state_store(struct sock *sk, int newstate)
-
-    update sk->sk_state
-
-    :param struct sock \*sk:
-        socket pointer
-
-    :param int newstate:
-        new state
-
-.. _`sk_state_store.description`:
-
-Description
------------
-
-Paired with \ :c:func:`sk_state_load`\ . Should be used in contexts where
-state change might impact lockless readers.
-
 .. This file was automatic generated / don't edit.
 

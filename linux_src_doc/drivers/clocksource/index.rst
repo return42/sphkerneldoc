@@ -15,4 +15,5 @@ clocksource
     mmio_c
     timer-keystone_c
     timer-of_c
+    timer-stm32_c
     timer-ti-32k_c

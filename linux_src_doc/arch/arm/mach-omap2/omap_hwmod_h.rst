@@ -209,58 +209,6 @@ It may also be useful to add a tag_cnt field for OCP2.x devices.
 Parameter names beginning with an underscore are managed internally by
 the omap_hwmod code and should not be set during initialization.
 
-.. _`omap_hwmod_sysc_fields`:
-
-struct omap_hwmod_sysc_fields
-=============================
-
-.. c:type:: struct omap_hwmod_sysc_fields
-
-    hwmod OCP_SYSCONFIG register field offsets.
-
-.. _`omap_hwmod_sysc_fields.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct omap_hwmod_sysc_fields {
-        u8 midle_shift;
-        u8 clkact_shift;
-        u8 sidle_shift;
-        u8 enwkup_shift;
-        u8 srst_shift;
-        u8 autoidle_shift;
-        u8 dmadisable_shift;
-    }
-
-.. _`omap_hwmod_sysc_fields.members`:
-
-Members
--------
-
-midle_shift
-    Offset of the midle bit
-
-clkact_shift
-    Offset of the clockactivity bit
-
-sidle_shift
-    Offset of the sidle bit
-
-enwkup_shift
-    Offset of the enawakeup bit
-
-srst_shift
-    Offset of the softreset bit
-
-autoidle_shift
-    Offset of the autoidle bit
-
-dmadisable_shift
-    Offset of the dmadisable bit
-
 .. _`omap_hwmod_class_sysconfig`:
 
 struct omap_hwmod_class_sysconfig
@@ -282,7 +230,7 @@ Definition
         u32 sysc_offs;
         u32 syss_offs;
         u16 sysc_flags;
-        struct omap_hwmod_sysc_fields *sysc_fields;
+        struct sysc_regbits *sysc_fields;
         u8 srst_udelay;
         u8 idlemodes;
     }
@@ -350,11 +298,8 @@ Definition
 
     struct omap_hwmod_omap2_prcm {
         s16 module_offs;
-        u8 prcm_reg_id;
-        u8 module_bit;
         u8 idlest_reg_id;
         u8 idlest_idle_bit;
-        u8 idlest_stdby_bit;
     }
 
 .. _`omap_hwmod_omap2_prcm.members`:
@@ -365,20 +310,11 @@ Members
 module_offs
     PRCM submodule offset from the start of the PRM/CM
 
-prcm_reg_id
-    PRCM register ID (e.g., 3 for CM_AUTOIDLE3)
-
-module_bit
-    register bit shift for AUTOIDLE, WKST, WKEN, GRPSEL regs
-
 idlest_reg_id
     IDLEST register ID (e.g., 3 for CM_IDLEST3)
 
 idlest_idle_bit
     register bit shift for CM_IDLEST slave idle bit
-
-idlest_stdby_bit
-    register bit shift for CM_IDLEST master standby bit
 
 .. _`omap_hwmod_omap2_prcm.description`:
 

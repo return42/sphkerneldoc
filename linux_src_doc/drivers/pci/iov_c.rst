@@ -91,6 +91,21 @@ pci_restore_iov_state
     :param struct pci_dev \*dev:
         the PCI device
 
+.. _`pci_vf_drivers_autoprobe`:
+
+pci_vf_drivers_autoprobe
+========================
+
+.. c:function:: void pci_vf_drivers_autoprobe(struct pci_dev *dev, bool auto_probe)
+
+    set PF property drivers_autoprobe for VFs
+
+    :param struct pci_dev \*dev:
+        the PCI device
+
+    :param bool auto_probe:
+        set VF drivers auto probe flag
+
 .. _`pci_iov_bus_range`:
 
 pci_iov_bus_range

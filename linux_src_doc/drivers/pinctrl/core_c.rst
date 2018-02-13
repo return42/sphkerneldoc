@@ -563,6 +563,21 @@ pinctrl_lookup_state
     :param const char \*name:
         the state name to retrieve
 
+.. _`pinctrl_commit_state`:
+
+pinctrl_commit_state
+====================
+
+.. c:function:: int pinctrl_commit_state(struct pinctrl *p, struct pinctrl_state *state)
+
+    select/activate/program a pinctrl state to HW
+
+    :param struct pinctrl \*p:
+        the pinctrl handle for the device that requests configuration
+
+    :param struct pinctrl_state \*state:
+        the state handle to select/activate/program
+
 .. _`pinctrl_select_state`:
 
 pinctrl_select_state

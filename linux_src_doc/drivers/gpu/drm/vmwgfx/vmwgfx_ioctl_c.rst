@@ -6,7 +6,7 @@
 vmw_fops_poll
 =============
 
-.. c:function:: unsigned int vmw_fops_poll(struct file *filp, struct poll_table_struct *wait)
+.. c:function:: __poll_t vmw_fops_poll(struct file *filp, struct poll_table_struct *wait)
 
     wrapper around the drm_poll function
 

@@ -6,7 +6,7 @@
 _wait_for
 =========
 
-.. c:function::  _wait_for( COND,  US,  W)
+.. c:function::  _wait_for( COND,  US,  Wmin,  Wmax)
 
     magic (register) wait macro
 
@@ -16,7 +16,10 @@ _wait_for
     :param  US:
         *undescribed*
 
-    :param  W:
+    :param  Wmin:
+        *undescribed*
+
+    :param  Wmax:
         *undescribed*
 
 .. _`_wait_for.description`:
@@ -28,15 +31,6 @@ Does the right thing for modeset paths when run under kdgb or similar atomic
 contexts. Note that it's important that we check the condition again after
 having timed out, since the timeout could be due to preemption or similar and
 we've never had a chance to check the condition before the timeout.
-
-.. _`_wait_for.todo`:
-
-TODO
-----
-
-When modesetting has fully transitioned to atomic, the below
-\ :c:func:`drm_can_sleep`\  can be removed and \ :c:func:`in_atomic`\ /!in_atomic() asserts
-added.
 
 .. _`disable_rpm_wakeref_asserts`:
 

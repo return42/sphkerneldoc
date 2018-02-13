@@ -614,6 +614,11 @@ Definition
         int (*stop)(struct rproc *rproc);
         void (*kick)(struct rproc *rproc, int vqid);
         void * (*da_to_va)(struct rproc *rproc, u64 da, int len);
+        int (*load_rsc_table)(struct rproc *rproc, const struct firmware *fw);
+        struct resource_table *(*find_loaded_rsc_table)( struct rproc *rproc, const struct firmware *fw);
+        int (*load)(struct rproc *rproc, const struct firmware *fw);
+        int (*sanity_check)(struct rproc *rproc, const struct firmware *fw);
+        u32 (*get_boot_addr)(struct rproc *rproc, const struct firmware *fw);
     }
 
 .. _`rproc_ops.members`:
@@ -632,6 +637,22 @@ kick
 
 da_to_va
     optional platform hook to perform address translations
+
+load_rsc_table
+    load resource table from firmware image
+
+find_loaded_rsc_table
+    find the loaded resouce table
+
+load
+    load firmeware to memory, where the remote processor
+    expects to find it
+
+sanity_check
+    sanity check the fw image
+
+get_boot_addr
+    get boot address to entry point specified in firmware
 
 .. _`rproc_state`:
 
@@ -762,9 +783,8 @@ Definition
         const char *name;
         char *firmware;
         void *priv;
-        const struct rproc_ops *ops;
+        struct rproc_ops *ops;
         struct device dev;
-        const struct rproc_fw_ops *fw_ops;
         atomic_t power;
         unsigned int state;
         struct mutex lock;
@@ -780,11 +800,11 @@ Definition
         int index;
         struct work_struct crash_handler;
         unsigned int crash_cnt;
-        struct completion crash_comp;
         bool recovery_disabled;
         int max_notifyid;
         struct resource_table *table_ptr;
         struct resource_table *cached_table;
+        size_t table_sz;
         bool has_iommu;
         bool auto_boot;
     }
@@ -814,9 +834,6 @@ ops
 
 dev
     virtual device for refcounting and common remoteproc behavior
-
-fw_ops
-    firmware-specific handlers
 
 power
     refcount of users who need this rproc powered up
@@ -863,9 +880,6 @@ crash_handler
 crash_cnt
     crash counter
 
-crash_comp
-    completion used to sync crash handler and the rproc reload
-
 recovery_disabled
     flag that state if recovery was disabled
 
@@ -877,6 +891,9 @@ table_ptr
 
 cached_table
     copy of the resource table
+
+table_sz
+    size of \ ``cached_table``\ 
 
 has_iommu
     flag to indicate if remote processor is behind an MMU

@@ -755,22 +755,22 @@ On success, this syscall returns the minimum
 rt_priority that can be used by a given scheduling class.
 On failure, a negative error code is returned.
 
-.. _`sched_rr_get_interval`:
+.. _`sys_sched_rr_get_interval`:
 
-sched_rr_get_interval
-=====================
+sys_sched_rr_get_interval
+=========================
 
-.. c:function:: int sched_rr_get_interval(pid_t pid, struct timespec64 *t)
+.. c:function:: long sys_sched_rr_get_interval(pid_t pid, struct timespec __user *interval)
 
     return the default timeslice of a process.
 
     :param pid_t pid:
         pid of the process.
 
-    :param struct timespec64 \*t:
-        *undescribed*
+    :param struct timespec __user \*interval:
+        userspace pointer to the timeslice value.
 
-.. _`sched_rr_get_interval.description`:
+.. _`sys_sched_rr_get_interval.description`:
 
 Description
 -----------
@@ -778,7 +778,7 @@ Description
 this syscall writes the default timeslice value of a given process
 into the user-space timespec buffer. A value of '0' means infinity.
 
-.. _`sched_rr_get_interval.return`:
+.. _`sys_sched_rr_get_interval.return`:
 
 Return
 ------

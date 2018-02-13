@@ -288,28 +288,31 @@ Return
 
 mapping address on success or a negative error code on failure.
 
-.. _`drm_gem_cma_describe`:
+.. _`drm_gem_cma_print_info`:
 
-drm_gem_cma_describe
-====================
+drm_gem_cma_print_info
+======================
 
-.. c:function:: void drm_gem_cma_describe(struct drm_gem_cma_object *cma_obj, struct seq_file *m)
+.. c:function:: void drm_gem_cma_print_info(struct drm_printer *p, unsigned int indent, const struct drm_gem_object *obj)
 
-    describe a CMA GEM object for debugfs
+    Print \ :c:type:`struct drm_gem_cma_object <drm_gem_cma_object>`\  info for debugfs
 
-    :param struct drm_gem_cma_object \*cma_obj:
-        CMA GEM object
+    :param struct drm_printer \*p:
+        DRM printer
 
-    :param struct seq_file \*m:
-        debugfs file handle
+    :param unsigned int indent:
+        Tab indentation level
 
-.. _`drm_gem_cma_describe.description`:
+    :param const struct drm_gem_object \*obj:
+        GEM object
+
+.. _`drm_gem_cma_print_info.description`:
 
 Description
 -----------
 
-This function can be used to dump a human-readable representation of the
-CMA GEM object into a synthetic file.
+This function can be used as the \ :c:type:`drm_driver->gem_print_info <drm_driver>`\  callback.
+It prints paddr and vaddr for use in e.g. debugfs output.
 
 .. _`drm_gem_cma_prime_get_sg_table`:
 

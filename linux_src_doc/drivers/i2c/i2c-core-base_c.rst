@@ -542,55 +542,74 @@ Returns negative errno, else the number of messages executed.
 Note that there is no requirement that each message be sent to
 the same slave address, although that is the most common model.
 
-.. _`i2c_master_send`:
+.. _`i2c_transfer_buffer_flags`:
 
-i2c_master_send
-===============
+i2c_transfer_buffer_flags
+=========================
 
-.. c:function:: int i2c_master_send(const struct i2c_client *client, const char *buf, int count)
+.. c:function:: int i2c_transfer_buffer_flags(const struct i2c_client *client, char *buf, int count, u16 flags)
 
-    issue a single I2C message in master transmit mode
-
-    :param const struct i2c_client \*client:
-        Handle to slave device
-
-    :param const char \*buf:
-        Data that will be written to the slave
-
-    :param int count:
-        How many bytes to write, must be less than 64k since msg.len is u16
-
-.. _`i2c_master_send.description`:
-
-Description
------------
-
-Returns negative errno, or else the number of bytes written.
-
-.. _`i2c_master_recv`:
-
-i2c_master_recv
-===============
-
-.. c:function:: int i2c_master_recv(const struct i2c_client *client, char *buf, int count)
-
-    issue a single I2C message in master receive mode
+    issue a single I2C message transferring data to/from a buffer
 
     :param const struct i2c_client \*client:
         Handle to slave device
 
     :param char \*buf:
-        Where to store data read from slave
+        Where the data is stored
 
     :param int count:
-        How many bytes to read, must be less than 64k since msg.len is u16
+        How many bytes to transfer, must be less than 64k since msg.len is u16
 
-.. _`i2c_master_recv.description`:
+    :param u16 flags:
+        The flags to be used for the message, e.g. I2C_M_RD for reads
+
+.. _`i2c_transfer_buffer_flags.description`:
 
 Description
 -----------
 
-Returns negative errno, or else the number of bytes read.
+Returns negative errno, or else the number of bytes transferred.
+
+.. _`i2c_get_dma_safe_msg_buf`:
+
+i2c_get_dma_safe_msg_buf
+========================
+
+.. c:function:: u8 *i2c_get_dma_safe_msg_buf(struct i2c_msg *msg, unsigned int threshold)
+
+    get a DMA safe buffer for the given i2c_msg
+
+    :param struct i2c_msg \*msg:
+        the message to be checked
+
+    :param unsigned int threshold:
+        the minimum number of bytes for which using DMA makes sense
+
+.. _`i2c_get_dma_safe_msg_buf.return`:
+
+Return
+------
+
+NULL if a DMA safe buffer was not obtained. Use msg->buf with PIO.
+        Or a valid pointer to be used with DMA. After use, release it by
+        calling \ :c:func:`i2c_release_dma_safe_msg_buf`\ .
+
+This function must only be called from process context!
+
+.. _`i2c_release_dma_safe_msg_buf`:
+
+i2c_release_dma_safe_msg_buf
+============================
+
+.. c:function:: void i2c_release_dma_safe_msg_buf(struct i2c_msg *msg, u8 *buf)
+
+    release DMA safe buffer and sync with i2c_msg
+
+    :param struct i2c_msg \*msg:
+        the message to be synced with
+
+    :param u8 \*buf:
+        the buffer obtained from \ :c:func:`i2c_get_dma_safe_msg_buf`\ . May be NULL.
 
 .. This file was automatic generated / don't edit.
 

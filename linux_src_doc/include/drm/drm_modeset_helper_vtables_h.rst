@@ -771,9 +771,6 @@ get_modes
     resolution can call \ :c:func:`drm_add_modes_noedid`\ , and mark the preferred
     one using \ :c:func:`drm_set_preferred_mode`\ .
 
-    Finally drivers that support audio probably want to update the ELD
-    data, too, using \ :c:func:`drm_edid_to_eld`\ .
-
     This function is only called after the \ ``detect``\  hook has indicated
     that a sink is connected and when the EDID isn't overridden through
     sysfs or the kernel commandline.

@@ -139,10 +139,10 @@ cio_tm_intrg
 
 .. c:function:: int cio_tm_intrg(struct subchannel *sch)
 
-    perform interrogate function \ ``sch``\  - subchannel on which to perform the interrogate function
+    perform interrogate function
 
     :param struct subchannel \*sch:
-        *undescribed*
+        subchannel on which to perform the interrogate function
 
 .. _`cio_tm_intrg.description`:
 

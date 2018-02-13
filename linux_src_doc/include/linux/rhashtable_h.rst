@@ -312,6 +312,7 @@ Definition
         struct rhashtable_walker walker;
         unsigned int slot;
         unsigned int skip;
+        bool end_of_table;
     }
 
 .. _`rhashtable_iter.members`:
@@ -336,6 +337,9 @@ slot
 
 skip
     Number of entries to skip in slot
+
+end_of_table
+    *undescribed*
 
 .. _`rht_grow_above_75`:
 

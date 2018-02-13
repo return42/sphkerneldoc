@@ -47,6 +47,28 @@ Only to be called when PAT is enabled
 Returns \_PAGE_CACHE_MODE_WB, \_PAGE_CACHE_MODE_WC, \_PAGE_CACHE_MODE_UC_MINUS
 or \_PAGE_CACHE_MODE_WT.
 
+.. _`pat_pfn_immune_to_uc_mtrr`:
+
+pat_pfn_immune_to_uc_mtrr
+=========================
+
+.. c:function:: bool pat_pfn_immune_to_uc_mtrr(unsigned long pfn)
+
+    Check whether the PAT memory type of \ ``pfn``\  cannot be overridden by UC MTRR memory type.
+
+    :param unsigned long pfn:
+        *undescribed*
+
+.. _`pat_pfn_immune_to_uc_mtrr.description`:
+
+Description
+-----------
+
+Only to be called when PAT is enabled.
+
+Returns true, if the PAT memory type of \ ``pfn``\  is UC, UC-, or WC.
+Returns false in other cases.
+
 .. _`io_reserve_memtype`:
 
 io_reserve_memtype

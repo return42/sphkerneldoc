@@ -186,17 +186,14 @@ given target_freq, subject to policy (min/max) and driver limitations.
 cpufreq_parse_governor
 ======================
 
-.. c:function:: int cpufreq_parse_governor(char *str_governor, unsigned int *policy, struct cpufreq_governor **governor)
+.. c:function:: int cpufreq_parse_governor(char *str_governor, struct cpufreq_policy *policy)
 
     parse a governor string
 
     :param char \*str_governor:
         *undescribed*
 
-    :param unsigned int \*policy:
-        *undescribed*
-
-    :param struct cpufreq_governor \*\*governor:
+    :param struct cpufreq_policy \*policy:
         *undescribed*
 
 .. _`show_one`:

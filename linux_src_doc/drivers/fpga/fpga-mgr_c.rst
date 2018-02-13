@@ -121,7 +121,7 @@ fpga_mgr_get
 
 .. c:function:: struct fpga_manager *fpga_mgr_get(struct device *dev)
 
-    get an exclusive reference to a fpga mgr
+    get a reference to a fpga mgr
 
     :param struct device \*dev:
         parent device that fpga mgr was registered with
@@ -131,7 +131,7 @@ fpga_mgr_get
 Description
 -----------
 
-Given a device, get an exclusive reference to a fpga mgr.
+Given a device, get a reference to a fpga mgr.
 
 .. _`fpga_mgr_get.return`:
 
@@ -147,7 +147,7 @@ of_fpga_mgr_get
 
 .. c:function:: struct fpga_manager *of_fpga_mgr_get(struct device_node *node)
 
-    get an exclusive reference to a fpga mgr
+    get a reference to a fpga mgr
 
     :param struct device_node \*node:
         device node
@@ -157,7 +157,7 @@ of_fpga_mgr_get
 Description
 -----------
 
-Given a device node, get an exclusive reference to a fpga mgr.
+Given a device node, get a reference to a fpga mgr.
 
 .. _`of_fpga_mgr_get.return`:
 
@@ -177,6 +177,45 @@ fpga_mgr_put
 
     :param struct fpga_manager \*mgr:
         fpga manager structure
+
+.. _`fpga_mgr_lock`:
+
+fpga_mgr_lock
+=============
+
+.. c:function:: int fpga_mgr_lock(struct fpga_manager *mgr)
+
+    Lock FPGA manager for exclusive use
+
+    :param struct fpga_manager \*mgr:
+        fpga manager
+
+.. _`fpga_mgr_lock.description`:
+
+Description
+-----------
+
+Given a pointer to FPGA Manager (from \ :c:func:`fpga_mgr_get`\  or
+\ :c:func:`of_fpga_mgr_put`\ ) attempt to get the mutex.
+
+.. _`fpga_mgr_lock.return`:
+
+Return
+------
+
+0 for success or -EBUSY
+
+.. _`fpga_mgr_unlock`:
+
+fpga_mgr_unlock
+===============
+
+.. c:function:: void fpga_mgr_unlock(struct fpga_manager *mgr)
+
+    Unlock FPGA manager
+
+    :param struct fpga_manager \*mgr:
+        fpga manager
 
 .. _`fpga_mgr_register`:
 

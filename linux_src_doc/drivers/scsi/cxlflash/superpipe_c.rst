@@ -462,7 +462,7 @@ Allocated context on success, NULL on failure
 init_context
 ============
 
-.. c:function:: void init_context(struct ctx_info *ctxi, struct cxlflash_cfg *cfg, struct cxl_context *ctx, int ctxid, struct file *file, u32 perms)
+.. c:function:: void init_context(struct ctx_info *ctxi, struct cxlflash_cfg *cfg, void *ctx, int ctxid, struct file *file, u32 perms, u64 irqs)
 
     initializes a previously allocated context
 
@@ -472,8 +472,8 @@ init_context
     :param struct cxlflash_cfg \*cfg:
         Internal structure associated with the host.
 
-    :param struct cxl_context \*ctx:
-        Previously obtained CXL context reference.
+    :param void \*ctx:
+        Previously obtained context cookie.
 
     :param int ctxid:
         Previously obtained process element associated with CXL context.
@@ -483,6 +483,9 @@ init_context
 
     :param u32 perms:
         User-specified permissions.
+
+    :param u64 irqs:
+        User-specified number of interrupts.
 
 .. _`remove_context`:
 

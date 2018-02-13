@@ -90,6 +90,58 @@ only parse and extract capabilities
 
 Return error code
 
+.. _`wil_brd_process`:
+
+wil_brd_process
+===============
+
+.. c:function:: int wil_brd_process(struct wil6210_priv *wil, const void *data, size_t size)
+
+    process section from BRD file
+
+    :param struct wil6210_priv \*wil:
+        *undescribed*
+
+    :param const void \*data:
+        *undescribed*
+
+    :param size_t size:
+        *undescribed*
+
+.. _`wil_brd_process.description`:
+
+Description
+-----------
+
+Return error code
+
+.. _`wil_request_board`:
+
+wil_request_board
+=================
+
+.. c:function:: int wil_request_board(struct wil6210_priv *wil, const char *name)
+
+    Request board file
+
+    :param struct wil6210_priv \*wil:
+        *undescribed*
+
+    :param const char \*name:
+        *undescribed*
+
+.. _`wil_request_board.description`:
+
+Description
+-----------
+
+Request board image from the file
+board file address and max size are read from FW file
+during initialization.
+brd file shall include one header and one data section.
+
+Return error code
+
 .. _`wil_fw_verify_file_exists`:
 
 wil_fw_verify_file_exists

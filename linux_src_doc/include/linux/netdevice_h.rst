@@ -329,7 +329,6 @@ Definition
         unsigned long mem_start;
         unsigned long base_addr;
         int irq;
-        atomic_t carrier_changes;
         unsigned long state;
         struct list_head dev_list;
         struct list_head napi_list;
@@ -354,6 +353,8 @@ Definition
         atomic_long_t rx_dropped;
         atomic_long_t tx_dropped;
         atomic_long_t rx_nohandler;
+        atomic_t carrier_up_count;
+        atomic_t carrier_down_count;
     #ifdef CONFIG_WIRELESS_EXT
         const struct iw_handler_def *wireless_handlers;
         struct iw_public_data *wireless_data;
@@ -369,7 +370,7 @@ Definition
     #if IS_ENABLED(CONFIG_IPV6)
         const struct ndisc_ops *ndisc_ops;
     #endif
-    #ifdef CONFIG_XFRM
+    #ifdef CONFIG_XFRM_OFFLOAD
         const struct xfrmdev_ops *xfrmdev_ops;
     #endif
         const struct header_ops *header_ops;
@@ -426,11 +427,9 @@ Definition
         struct mpls_dev __rcu *mpls_ptr;
     #endif
         unsigned char *dev_addr;
-    #ifdef CONFIG_SYSFS
         struct netdev_rx_queue *_rx;
         unsigned int num_rx_queues;
         unsigned int real_num_rx_queues;
-    #endif
         struct bpf_prog __rcu *xdp_prog;
         unsigned long gro_flush_timeout;
         rx_handler_func_t __rcu *rx_handler;
@@ -553,9 +552,6 @@ base_addr
 irq
     Device IRQ number
 
-carrier_changes
-    Stats to monitor carrier on<->off transitions
-
 state
     Generic network queuing layer state, see netdev_state_t
 
@@ -626,6 +622,12 @@ tx_dropped
 rx_nohandler
     nohandler dropped packets by core network on
     inactive devices, do not use this in drivers
+
+carrier_up_count
+    Number of times the carrier has been up
+
+carrier_down_count
+    Number of times the carrier has been down
 
 wireless_handlers
     List of functions to handle Wireless Extensions,

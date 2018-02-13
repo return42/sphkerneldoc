@@ -1,6 +1,169 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/netronome/nfp/bpf/main.h
 
+.. _`nfp_app_bpf`:
+
+struct nfp_app_bpf
+==================
+
+.. c:type:: struct nfp_app_bpf
+
+    bpf app priv structure
+
+.. _`nfp_app_bpf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nfp_app_bpf {
+        struct nfp_app *app;
+        DECLARE_BITMAP(tag_allocator, U16_MAX + 1);
+        u16 tag_alloc_next;
+        u16 tag_alloc_last;
+        struct sk_buff_head cmsg_replies;
+        struct wait_queue_head cmsg_wq;
+        struct list_head map_list;
+        unsigned int maps_in_use;
+        unsigned int map_elems_in_use;
+        struct nfp_bpf_cap_adjust_head {
+            u32 flags;
+            int off_min;
+            int off_max;
+            int guaranteed_sub;
+            int guaranteed_add;
+        } adjust_head;
+        struct {
+            u32 types;
+            u32 max_maps;
+            u32 max_elems;
+            u32 max_key_sz;
+            u32 max_val_sz;
+            u32 max_elem_sz;
+        } maps;
+        struct {
+            u32 map_lookup;
+        } helpers;
+    }
+
+.. _`nfp_app_bpf.members`:
+
+Members
+-------
+
+app
+    backpointer to the app
+
+tag_allocator
+    bitmap of control message tags in use
+
+tag_alloc_next
+    next tag bit to allocate
+
+tag_alloc_last
+    next tag bit to be freed
+
+cmsg_replies
+    received cmsg replies waiting to be consumed
+
+cmsg_wq
+    work queue for waiting for cmsg replies
+
+map_list
+    list of offloaded maps
+
+maps_in_use
+    number of currently offloaded maps
+
+map_elems_in_use
+    number of elements allocated to offloaded maps
+
+adjust_head
+    adjust head capability
+
+adjust_head.flags
+    extra flags for adjust head
+
+adjust_head.off_min
+    minimal packet offset within buffer required
+
+adjust_head.off_max
+    maximum packet offset within buffer required
+
+adjust_head.guaranteed_sub
+    negative adjustment guaranteed possible
+
+adjust_head.guaranteed_add
+    positive adjustment guaranteed possible
+
+maps
+    map capability
+
+maps.types
+    supported map types
+
+maps.max_maps
+    max number of maps supported
+
+maps.max_elems
+    max number of entries in each map
+
+maps.max_key_sz
+    max size of map key
+
+maps.max_val_sz
+    max size of map value
+
+maps.max_elem_sz
+    max size of map entry (key + value)
+
+helpers
+    helper addressess for various calls
+
+helpers.map_lookup
+    map lookup helper address
+
+.. _`nfp_bpf_map`:
+
+struct nfp_bpf_map
+==================
+
+.. c:type:: struct nfp_bpf_map
+
+    private per-map data attached to BPF maps for offload
+
+.. _`nfp_bpf_map.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nfp_bpf_map {
+        struct bpf_offloaded_map *offmap;
+        struct nfp_app_bpf *bpf;
+        u32 tid;
+        struct list_head l;
+    }
+
+.. _`nfp_bpf_map.members`:
+
+Members
+-------
+
+offmap
+    pointer to the offloaded BPF map
+
+bpf
+    back pointer to bpf app private structure
+
+tid
+    table id identifying map on datapath
+
+l
+    link on the nfp_app_bpf->map_list list
+
 .. _`nfp_insn_meta`:
 
 struct nfp_insn_meta
@@ -19,10 +182,24 @@ Definition
 
     struct nfp_insn_meta {
         struct bpf_insn insn;
-        struct bpf_reg_state ptr;
-        bool ptr_not_const;
+        union {
+            struct {
+                struct bpf_reg_state ptr;
+                struct bpf_insn *paired_st;
+                s16 ldst_gather_len;
+                bool ptr_not_const;
+            } ;
+            struct nfp_insn_meta *jmp_dst;
+            struct {
+                u32 func_id;
+                struct bpf_reg_state arg1;
+                struct bpf_reg_state arg2;
+                bool arg2_var_off;
+            } ;
+        } ;
         unsigned int off;
         unsigned short n;
+        unsigned short flags;
         bool skip;
         instr_cb_t double_cb;
         struct list_head l;
@@ -36,17 +213,50 @@ Members
 insn
     BPF instruction
 
+{unnamed_union}
+    anonymous
+
+{unnamed_struct}
+    anonymous
+
 ptr
     pointer type for memory operations
 
+paired_st
+    the paired store insn at the head of the sequence
+
+ldst_gather_len
+    memcpy length gathered from load/store sequence
+
 ptr_not_const
     pointer is not always constant
+
+jmp_dst
+    destination info for jump instructions
+
+{unnamed_struct}
+    anonymous
+
+func_id
+    function id for call instructions
+
+arg1
+    arg1 for call instructions
+
+arg2
+    arg2 for call instructions
+
+arg2_var_off
+    arg2 changes stack offset on different paths
 
 off
     index of first generated machine instruction (in nfp_prog.prog)
 
 n
     eBPF instruction number
+
+flags
+    eBPF instruction extra optimization flags
 
 skip
     skip this instruction (optimized out)
@@ -74,18 +284,19 @@ Definition
 .. code-block:: c
 
     struct nfp_prog {
+        struct nfp_app_bpf *bpf;
         u64 *prog;
         unsigned int prog_len;
         unsigned int __prog_alloc_len;
         struct nfp_insn_meta *verifier_meta;
         enum bpf_prog_type type;
-        unsigned int start_off;
+        unsigned int last_bpf_off;
         unsigned int tgt_out;
         unsigned int tgt_abort;
-        unsigned int tgt_done;
         unsigned int n_translated;
         int error;
         unsigned int stack_depth;
+        unsigned int adjust_head_location;
         struct list_head insns;
     }
 
@@ -93,6 +304,9 @@ Definition
 
 Members
 -------
+
+bpf
+    backpointer to the bpf app priv structure
 
 prog
     machine code
@@ -109,17 +323,14 @@ verifier_meta
 type
     BPF program type
 
-start_off
-    address of the first instruction in the memory
+last_bpf_off
+    address of the last instruction translated from BPF
 
 tgt_out
     jump target for normal exit
 
 tgt_abort
     jump target for abort (e.g. access outside of packet buffer)
-
-tgt_done
-    jump target to get the next packet
 
 n_translated
     number of successfully translated instructions (for errors)
@@ -130,8 +341,47 @@ error
 stack_depth
     max stack depth from the verifier
 
+adjust_head_location
+    if program has single adjust head call - the insn no.
+
 insns
     list of BPF instruction wrappers (struct nfp_insn_meta)
+
+.. _`nfp_bpf_vnic`:
+
+struct nfp_bpf_vnic
+===================
+
+.. c:type:: struct nfp_bpf_vnic
+
+    per-vNIC BPF priv structure
+
+.. _`nfp_bpf_vnic.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nfp_bpf_vnic {
+        struct bpf_prog *tc_prog;
+        unsigned int start_off;
+        unsigned int tgt_done;
+    }
+
+.. _`nfp_bpf_vnic.members`:
+
+Members
+-------
+
+tc_prog
+    currently loaded cls_bpf program
+
+start_off
+    address of the first instruction in the memory
+
+tgt_done
+    jump target to get the next packet
 
 .. This file was automatic generated / don't edit.
 

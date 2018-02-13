@@ -270,11 +270,11 @@ Pointer to duplicated EDID or NULL on allocation failure.
 edid_vendor
 ===========
 
-.. c:function:: bool edid_vendor(struct edid *edid, const char *vendor)
+.. c:function:: bool edid_vendor(const struct edid *edid, const char *vendor)
 
     match a string against EDID's obfuscated vendor field
 
-    :param struct edid \*edid:
+    :param const struct edid \*edid:
         EDID to match
 
     :param const char \*vendor:
@@ -292,11 +292,11 @@ Returns true if \ ``vendor``\  is in \ ``edid``\ , false otherwise
 edid_get_quirks
 ===============
 
-.. c:function:: u32 edid_get_quirks(struct edid *edid)
+.. c:function:: u32 edid_get_quirks(const struct edid *edid)
 
     return quirk flags for a given EDID
 
-    :param struct edid \*edid:
+    :param const struct edid \*edid:
         EDID to process
 
 .. _`edid_get_quirks.description`:
@@ -498,30 +498,6 @@ drm_edid_get_monitor_name
 
     :param int bufsize:
         The size of the name buffer (should be at least 14 chars.)
-
-.. _`drm_edid_to_eld`:
-
-drm_edid_to_eld
-===============
-
-.. c:function:: void drm_edid_to_eld(struct drm_connector *connector, struct edid *edid)
-
-    build ELD from EDID
-
-    :param struct drm_connector \*connector:
-        connector corresponding to the HDMI/DP sink
-
-    :param struct edid \*edid:
-        EDID to parse
-
-.. _`drm_edid_to_eld.description`:
-
-Description
------------
-
-Fill the ELD (EDID-Like Data) buffer for passing to the audio driver. The
-Conn_Type, HDCP and Port_ID ELD fields are left for the graphics driver to
-fill in.
 
 .. _`drm_edid_to_sad`:
 
@@ -751,8 +727,8 @@ Description
 -----------
 
 Add the specified modes to the connector's mode list. Also fills out the
-\ :c:type:`struct drm_display_info <drm_display_info>`\  structure in \ ``connector``\  with any information which can be
-derived from the edid.
+\ :c:type:`struct drm_display_info <drm_display_info>`\  structure and ELD in \ ``connector``\  with any information which
+can be derived from the edid.
 
 .. _`drm_add_edid_modes.return`:
 
@@ -867,19 +843,31 @@ drm_hdmi_avi_infoframe_quant_range
         Sink support selectable RGB quantization range (QS)
 
     :param bool is_hdmi2_sink:
-        *undescribed*
+        HDMI 2.0 sink, which has different default recommendations
+
+.. _`drm_hdmi_avi_infoframe_quant_range.description`:
+
+Description
+-----------
+
+Note that \ ``is_hdmi2_sink``\  can be derived by looking at the
+\ :c:type:`drm_scdc.supported <drm_scdc>`\  flag stored in \ :c:type:`drm_hdmi_info.scdc <drm_hdmi_info>`\ ,
+\ :c:type:`drm_display_info.hdmi <drm_display_info>`\ , which can be found in \ :c:type:`drm_connector.display_info <drm_connector>`\ .
 
 .. _`drm_hdmi_vendor_infoframe_from_display_mode`:
 
 drm_hdmi_vendor_infoframe_from_display_mode
 ===========================================
 
-.. c:function:: int drm_hdmi_vendor_infoframe_from_display_mode(struct hdmi_vendor_infoframe *frame, const struct drm_display_mode *mode)
+.. c:function:: int drm_hdmi_vendor_infoframe_from_display_mode(struct hdmi_vendor_infoframe *frame, struct drm_connector *connector, const struct drm_display_mode *mode)
 
     fill an HDMI infoframe with data from a DRM display mode
 
     :param struct hdmi_vendor_infoframe \*frame:
         HDMI vendor infoframe
+
+    :param struct drm_connector \*connector:
+        the connector
 
     :param const struct drm_display_mode \*mode:
         DRM display mode

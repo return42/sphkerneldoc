@@ -88,6 +88,55 @@ Return
 The iomem address to use in subsequent
 writeq/readq operations.
 
+.. _`update_xmit_counters`:
+
+update_xmit_counters
+====================
+
+.. c:function:: void update_xmit_counters(struct hfi1_pportdata *ppd, u16 link_width)
+
+    update PortXmitWait/PortVlXmitWait counters.
+
+    :param struct hfi1_pportdata \*ppd:
+        info of physical Hfi port
+
+    :param u16 link_width:
+        new link width after link up or downgrade
+
+.. _`update_xmit_counters.description`:
+
+Description
+-----------
+
+Update the PortXmitWait and PortVlXmitWait counters after
+a link up or downgrade event to reflect a link width change.
+
+.. _`apply_link_downgrade_policy`:
+
+apply_link_downgrade_policy
+===========================
+
+.. c:function:: bool apply_link_downgrade_policy(struct hfi1_pportdata *ppd, bool refresh_widths)
+
+    Apply the link width downgrade enabled policy against the current active link widths.
+
+    :param struct hfi1_pportdata \*ppd:
+        info of physical Hfi port
+
+    :param bool refresh_widths:
+        True indicates link downgrade event
+
+.. _`apply_link_downgrade_policy.description`:
+
+Description
+-----------
+
+Called when the enabled policy changes or the active link widths
+change.
+Refresh_widths indicates that a link downgrade occurred. The
+link_downgraded variable is set by refresh_widths and
+determines the success/failure of the policy application.
+
 .. _`update_statusp`:
 
 update_statusp
@@ -163,6 +212,26 @@ Description
 
 Returns the mask with the urgent interrupt mask
 bit clear for kernel receive contexts.
+
+.. _`hfi1_clean_up_interrupts`:
+
+hfi1_clean_up_interrupts
+========================
+
+.. c:function:: void hfi1_clean_up_interrupts(struct hfi1_devdata *dd)
+
+    Free all IRQ resources
+
+    :param struct hfi1_devdata \*dd:
+        valid device data data structure
+
+.. _`hfi1_clean_up_interrupts.description`:
+
+Description
+-----------
+
+Free the MSI or INTx IRQs and assoicated PCI resources,
+if they have been allocated.
 
 .. _`init_qpmap_table`:
 

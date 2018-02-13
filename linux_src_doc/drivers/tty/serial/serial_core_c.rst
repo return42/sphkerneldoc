@@ -170,11 +170,11 @@ Description
 uart_parse_options
 ==================
 
-.. c:function:: void uart_parse_options(char *options, int *baud, int *parity, int *bits, int *flow)
+.. c:function:: void uart_parse_options(const char *options, int *baud, int *parity, int *bits, int *flow)
 
     Parse serial port baud/parity/bits/flow control.
 
-    :param char \*options:
+    :param const char \*options:
         pointer to option string
 
     :param int \*baud:
@@ -420,22 +420,22 @@ Description
 User is responsible to call tty_flip_buffer_push when they are done with
 insertion.
 
-.. _`of_get_rs485_mode`:
+.. _`uart_get_rs485_mode`:
 
-of_get_rs485_mode
-=================
+uart_get_rs485_mode
+===================
 
-.. c:function:: void of_get_rs485_mode(struct device_node *np, struct serial_rs485 *rs485conf)
+.. c:function:: void uart_get_rs485_mode(struct device *dev, struct serial_rs485 *rs485conf)
 
-    Implement parsing rs485 properties
+    retrieve rs485 properties for given uart
 
-    :param struct device_node \*np:
-        uart node
+    :param struct device \*dev:
+        uart device
 
     :param struct serial_rs485 \*rs485conf:
         output parameter
 
-.. _`of_get_rs485_mode.description`:
+.. _`uart_get_rs485_mode.description`:
 
 Description
 -----------

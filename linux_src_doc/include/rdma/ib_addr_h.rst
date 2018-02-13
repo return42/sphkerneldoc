@@ -90,7 +90,7 @@ hoplimit
 rdma_translate_ip
 =================
 
-.. c:function:: int rdma_translate_ip(const struct sockaddr *addr, struct rdma_dev_addr *dev_addr, u16 *vlan_id)
+.. c:function:: int rdma_translate_ip(const struct sockaddr *addr, struct rdma_dev_addr *dev_addr)
 
     Translate a local IP address to an RDMA hardware address.
 
@@ -98,9 +98,6 @@ rdma_translate_ip
         *undescribed*
 
     :param struct rdma_dev_addr \*dev_addr:
-        *undescribed*
-
-    :param u16 \*vlan_id:
         *undescribed*
 
 .. _`rdma_translate_ip.description`:

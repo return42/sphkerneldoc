@@ -48,10 +48,10 @@ jbd2_journal_start_reserved
         handle to start
 
     :param unsigned int type:
-        *undescribed*
+        for handle statistics
 
     :param unsigned int line_no:
-        *undescribed*
+        for handle statistics
 
 .. _`jbd2_journal_start_reserved.description`:
 
@@ -117,7 +117,7 @@ jbd2__journal_restart
         nr credits requested
 
     :param gfp_t gfp_mask:
-        *undescribed*
+        memory allocation flags (for start_this_handle)
 
 .. _`jbd2__journal_restart.description`:
 

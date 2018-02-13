@@ -6,7 +6,7 @@
 __scsi_queue_insert
 ===================
 
-.. c:function:: void __scsi_queue_insert(struct scsi_cmnd *cmd, int reason, int unbusy)
+.. c:function:: void __scsi_queue_insert(struct scsi_cmnd *cmd, int reason, bool unbusy)
 
     private queue insertion
 
@@ -16,7 +16,7 @@ __scsi_queue_insert
     :param int reason:
         The reason for the requeue
 
-    :param int unbusy:
+    :param bool unbusy:
         Whether the queue should be unbusied
 
 .. _`__scsi_queue_insert.description`:

@@ -65,6 +65,86 @@ timer
 policy
     *undescribed*
 
+.. _`pstate_idx_revmap_data`:
+
+struct pstate_idx_revmap_data
+=============================
+
+.. c:type:: struct pstate_idx_revmap_data
+
+    Entry in the hashmap pstate_revmap indexed by a function of pstate id.
+
+.. _`pstate_idx_revmap_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct pstate_idx_revmap_data {
+        u8 pstate_id;
+        unsigned int cpufreq_table_idx;
+        struct hlist_node hentry;
+    }
+
+.. _`pstate_idx_revmap_data.members`:
+
+Members
+-------
+
+pstate_id
+    pstate id for this entry.
+
+cpufreq_table_idx
+    Index into the powernv_freqs
+    cpufreq_frequency_table for frequency
+    corresponding to pstate_id.
+
+hentry
+    hlist_node that hooks this entry into the pstate_revmap
+    hashtable
+
+.. _`idx_to_pstate`:
+
+idx_to_pstate
+=============
+
+.. c:function:: u8 idx_to_pstate(unsigned int i)
+
+    Returns the pstate id corresponding to the frequency in the cpufreq frequency table powernv_freqs indexed by \ ``i``\ .
+
+    :param unsigned int i:
+        *undescribed*
+
+.. _`idx_to_pstate.description`:
+
+Description
+-----------
+
+If \ ``i``\  is out of bound, this will return the pstate
+corresponding to the nominal frequency.
+
+.. _`pstate_to_idx`:
+
+pstate_to_idx
+=============
+
+.. c:function:: unsigned int pstate_to_idx(u8 pstate)
+
+    Returns the index in the cpufreq frequencytable powernv_freqs for the frequency whose corresponding pstate id is \ ``pstate``\ .
+
+    :param u8 pstate:
+        *undescribed*
+
+.. _`pstate_to_idx.description`:
+
+Description
+-----------
+
+If no frequency corresponding to \ ``pstate``\  is found,
+this will return the index of the nominal
+frequency.
+
 .. _`calc_global_pstate`:
 
 calc_global_pstate

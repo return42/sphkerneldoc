@@ -24,30 +24,11 @@ Description
 
 This function is supposed to be called by the kernel in paths that do not
 allow sleeping. In this function we allow the counter to reach the ULLONG_MAX
-value, and we signal this as overflow condition by returning a POLLERR
+value, and we signal this as overflow condition by returning a EPOLLERR
 to poll(2).
 
 Returns the amount by which the counter was incremented.  This will be less
 than \ ``n``\  if the counter has overflowed.
-
-.. _`eventfd_ctx_get`:
-
-eventfd_ctx_get
-===============
-
-.. c:function:: struct eventfd_ctx *eventfd_ctx_get(struct eventfd_ctx *ctx)
-
-    Acquires a reference to the internal eventfd context.
-
-    :param struct eventfd_ctx \*ctx:
-        [in] Pointer to the eventfd context.
-
-.. _`eventfd_ctx_get.return`:
-
-Return
-------
-
-In case of success, returns a pointer to the eventfd context.
 
 .. _`eventfd_ctx_put`:
 
@@ -67,7 +48,7 @@ Description
 -----------
 
 The eventfd context reference must have been previously acquired either
-with \ :c:func:`eventfd_ctx_get`\  or \ :c:func:`eventfd_ctx_fdget`\ .
+with \ :c:func:`eventfd_ctx_fdget`\  or \ :c:func:`eventfd_ctx_fileget`\ .
 
 .. _`eventfd_ctx_remove_wait_queue`:
 
@@ -98,37 +79,6 @@ Returns \ ``0``\  if successful, or the following error codes:
 
 This is used to atomically remove a wait queue entry from the eventfd wait
 queue head, and read/reset the counter value.
-
-.. _`eventfd_ctx_read`:
-
-eventfd_ctx_read
-================
-
-.. c:function:: ssize_t eventfd_ctx_read(struct eventfd_ctx *ctx, int no_wait, __u64 *cnt)
-
-    Reads the eventfd counter or wait if it is zero.
-
-    :param struct eventfd_ctx \*ctx:
-        [in] Pointer to eventfd context.
-
-    :param int no_wait:
-        [in] Different from zero if the operation should not block.
-
-    :param __u64 \*cnt:
-        [out] Pointer to the 64-bit counter value.
-
-.. _`eventfd_ctx_read.description`:
-
-Description
------------
-
-Returns \ ``0``\  if successful, or the following error codes:
-
- - -EAGAIN      : The operation would have blocked but \ ``no_wait``\  was non-zero.
- - -ERESTARTSYS : A signal interrupted the wait operation.
-
-If \ ``no_wait``\  is zero, the function might sleep until the eventfd internal
-counter becomes greater than zero.
 
 .. _`eventfd_fget`:
 
@@ -211,35 +161,6 @@ pointer
 
 
 -EINVAL   : The \ ``fd``\  file descriptor is not an eventfd file.
-
-.. _`eventfd_file_create`:
-
-eventfd_file_create
-===================
-
-.. c:function:: struct file *eventfd_file_create(unsigned int count, int flags)
-
-    Creates an eventfd file pointer.
-
-    :param unsigned int count:
-        Initial eventfd counter value.
-
-    :param int flags:
-        Flags for the eventfd file.
-
-.. _`eventfd_file_create.description`:
-
-Description
------------
-
-This function creates an eventfd file pointer, w/out installing it into
-the fd table. This is useful when the eventfd file is used during the
-initialization of data structures that require extra setup after the eventfd
-creation. So the eventfd creation is split into the file pointer creation
-phase, and the file descriptor installation phase.
-In this way races with userspace closing the newly installed file descriptor
-can be avoided.
-Returns an eventfd file pointer, or a proper error pointer.
 
 .. This file was automatic generated / don't edit.
 

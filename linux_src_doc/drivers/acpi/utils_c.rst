@@ -303,6 +303,34 @@ call from a \ :c:func:`subsys_initcall`\  or earlier (use \ :c:func:`acpi_get_de
 instead). Calling from \ :c:func:`module_init`\  is fine (which is synonymous
 with \ :c:func:`device_initcall`\ ).
 
+.. _`acpi_dev_get_first_match_name`:
+
+acpi_dev_get_first_match_name
+=============================
+
+.. c:function:: const char *acpi_dev_get_first_match_name(const char *hid, const char *uid, s64 hrv)
+
+    Return name of first match of ACPI device
+
+    :param const char \*hid:
+        Hardware ID of the device.
+
+    :param const char \*uid:
+        Unique ID of the device, pass NULL to not check \_UID
+
+    :param s64 hrv:
+        Hardware Revision of the device, pass -1 to not check \_HRV
+
+.. _`acpi_dev_get_first_match_name.description`:
+
+Description
+-----------
+
+Return device name if a matching device was present
+at the moment of invocation, or NULL otherwise.
+
+See additional information in \ :c:func:`acpi_dev_present`\  as well.
+
 .. _`acpi_match_platform_list`:
 
 acpi_match_platform_list

@@ -6,11 +6,11 @@
 srcu_read_lock_held
 ===================
 
-.. c:function:: int srcu_read_lock_held(struct srcu_struct *sp)
+.. c:function:: int srcu_read_lock_held(const struct srcu_struct *sp)
 
     might we be in SRCU read-side critical section?
 
-    :param struct srcu_struct \*sp:
+    :param const struct srcu_struct \*sp:
         The srcu_struct structure to check
 
 .. _`srcu_read_lock_held.description`:

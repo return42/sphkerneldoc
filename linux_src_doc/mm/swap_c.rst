@@ -170,7 +170,7 @@ fell to zero, remove the page from the LRU and free it.
 pagevec_lookup_entries
 ======================
 
-.. c:function:: unsigned pagevec_lookup_entries(struct pagevec *pvec, struct address_space *mapping, pgoff_t start, unsigned nr_pages, pgoff_t *indices)
+.. c:function:: unsigned pagevec_lookup_entries(struct pagevec *pvec, struct address_space *mapping, pgoff_t start, unsigned nr_entries, pgoff_t *indices)
 
     gang pagecache lookup
 
@@ -183,7 +183,7 @@ pagevec_lookup_entries
     :param pgoff_t start:
         The starting entry index
 
-    :param unsigned nr_pages:
+    :param unsigned nr_entries:
         *undescribed*
 
     :param pgoff_t \*indices:
@@ -195,7 +195,7 @@ Description
 -----------
 
 pagevec_lookup_entries() will search for and return a group of up
-to \ ``nr_entries``\  pages and shadow entries in the mapping.  All
+to \ ``nr_pages``\  pages and shadow entries in the mapping.  All
 entries are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup_entries`\  takes a
 reference against actual pages in \ ``pvec``\ .
 
@@ -254,7 +254,7 @@ pagevec_lookup_range
 Description
 -----------
 
-pagevec_lookup_range() will search for and return a group of up to \ ``nr_pages``\ 
+pagevec_lookup_range() will search for & return a group of up to PAGEVEC_SIZE
 pages in the mapping starting from index \ ``start``\  and upto index \ ``end``\ 
 (inclusive).  The pages are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup`\  takes a
 reference against the pages in \ ``pvec``\ .
@@ -264,7 +264,7 @@ indexes.  There may be holes in the indices due to not-present pages. We
 also update \ ``start``\  to index the next page for the traversal.
 
 \ :c:func:`pagevec_lookup_range`\  returns the number of pages which were found. If this
-number is smaller than \ ``nr_pages``\ , the end of specified range has been
+number is smaller than PAGEVEC_SIZE, the end of specified range has been
 reached.
 
 .. This file was automatic generated / don't edit.

@@ -51,7 +51,7 @@ hwmon_device_register_with_info
         driver data to attach to created device
 
     :param const struct hwmon_chip_info \*chip:
-        *undescribed*
+        pointer to hwmon chip information
 
     :param const struct attribute_group \*\*extra_groups:
         pointer to list of additional non-standard attribute groups
@@ -148,10 +148,10 @@ devm_hwmon_device_register_with_info
         driver data to attach to created device
 
     :param const struct hwmon_chip_info \*chip:
-        *undescribed*
+        pointer to hwmon chip information
 
     :param const struct attribute_group \*\*groups:
-        *undescribed*
+        pointer to list of driver specific attribute groups
 
 .. _`devm_hwmon_device_register_with_info.description`:
 

@@ -1525,7 +1525,7 @@ event occurs, SIGIO will be sent to all processes in this queue.
 megasas_mgmt_poll
 =================
 
-.. c:function:: unsigned int megasas_mgmt_poll(struct file *file, poll_table *wait)
+.. c:function:: __poll_t megasas_mgmt_poll(struct file *file, poll_table *wait)
 
     char node "poll" entry point
 

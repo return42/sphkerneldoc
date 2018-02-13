@@ -19,7 +19,8 @@ Description
 -----------
 
 Free all the memory allocated by drm_atomic_state_init.
-This is useful for drivers that subclass the atomic state.
+This should only be used by drivers which are still subclassing
+\ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  and haven't switched to \ :c:type:`struct drm_private_state <drm_private_state>`\  yet.
 
 .. _`drm_atomic_state_init`:
 
@@ -42,7 +43,8 @@ Description
 -----------
 
 Default implementation for filling in a new atomic state.
-This is useful for drivers that subclass the atomic state.
+This should only be used by drivers which are still subclassing
+\ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  and haven't switched to \ :c:type:`struct drm_private_state <drm_private_state>`\  yet.
 
 .. _`drm_atomic_state_alloc`:
 
@@ -81,7 +83,8 @@ Description
 -----------
 
 Default implementation for clearing atomic state.
-This is useful for drivers that subclass the atomic state.
+This should only be used by drivers which are still subclassing
+\ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  and haven't switched to \ :c:type:`struct drm_private_state <drm_private_state>`\  yet.
 
 .. _`drm_atomic_state_clear`:
 
@@ -469,6 +472,43 @@ Return
 ------
 
 Zero on success, error code on failure
+
+.. _`handling-driver-private-state`:
+
+handling driver private state
+=============================
+
+Very often the DRM objects exposed to userspace in the atomic modeset api
+(&drm_connector, \ :c:type:`struct drm_crtc <drm_crtc>`\  and \ :c:type:`struct drm_plane <drm_plane>`\ ) do not map neatly to the
+underlying hardware. Especially for any kind of shared resources (e.g. shared
+clocks, scaler units, bandwidth and fifo limits shared among a group of
+planes or CRTCs, and so on) it makes sense to model these as independent
+objects. Drivers then need to do similar state tracking and commit ordering for
+such private (since not exposed to userpace) objects as the atomic core and
+helpers already provide for connectors, planes and CRTCs.
+
+To make this easier on drivers the atomic core provides some support to track
+driver private state objects using struct \ :c:type:`struct drm_private_obj <drm_private_obj>`\ , with the
+associated state struct \ :c:type:`struct drm_private_state <drm_private_state>`\ .
+
+Similar to userspace-exposed objects, private state structures can be
+acquired by calling \ :c:func:`drm_atomic_get_private_obj_state`\ . Since this function
+does not take care of locking, drivers should wrap it for each type of
+private state object they have with the required call to \ :c:func:`drm_modeset_lock`\ 
+for the corresponding \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\ .
+
+All private state structures contained in a \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  update can be
+iterated using \ :c:func:`for_each_oldnew_private_obj_in_state`\ ,
+\ :c:func:`for_each_new_private_obj_in_state`\  and \ :c:func:`for_each_old_private_obj_in_state`\ .
+Drivers are recommended to wrap these for each type of driver private state
+object they have, filtering on \ :c:type:`drm_private_obj.funcs <drm_private_obj>`\  using \ :c:func:`for_each_if`\ , at
+least if they want to iterate over all objects of a given type.
+
+An earlier way to handle driver private state was by subclassing struct
+\ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ . But since that encourages non-standard ways to implement
+the check/commit split atomic requires (by using e.g. "check and rollback or
+commit instead" of "duplicate state, check, then either commit or release
+duplicated state) it is deprecated in favour of using \ :c:type:`struct drm_private_state <drm_private_state>`\ .
 
 .. _`drm_atomic_private_obj_init`:
 

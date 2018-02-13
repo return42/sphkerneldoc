@@ -433,7 +433,7 @@ rvt_map_phys_fmr
     set up a fast memory region
 
     :param struct ib_fmr \*ibfmr:
-        *undescribed*
+        the fast memory region to set up
 
     :param u64 \*page_list:
         the list of pages to associate with the fast memory region

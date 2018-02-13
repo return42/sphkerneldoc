@@ -540,7 +540,7 @@ memory.
 fm10k_resume
 ============
 
-.. c:function:: int fm10k_resume(struct device *dev)
+.. c:function:: int __maybe_unused fm10k_resume(struct device *dev)
 
     Generic PM resume hook
 
@@ -561,7 +561,7 @@ device state as the stack takes care of that for us.
 fm10k_suspend
 =============
 
-.. c:function:: int fm10k_suspend(struct device *dev)
+.. c:function:: int __maybe_unused fm10k_suspend(struct device *dev)
 
     Generic PM suspend hook
 

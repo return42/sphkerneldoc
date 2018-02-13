@@ -23,6 +23,7 @@ Definition
         int (*wait_module_idle)(u8 part, s16 prcm_mod, u16 idlest_reg, u8 idlest_shift);
         void (*module_enable)(u8 mode, u8 part, u16 inst, u16 clkctrl_offs);
         void (*module_disable)(u8 part, u16 inst, u16 clkctrl_offs);
+        u32 (*xlate_clkctrl)(u8 part, u16 inst, u16 clkctrl_offs);
     }
 
 .. _`cm_ll_data.members`:
@@ -44,6 +45,9 @@ module_enable
 
 module_disable
     ptr to the SoC CM-specific module_disable impl
+
+xlate_clkctrl
+    ptr to the SoC CM-specific clkctrl xlate addr impl
 
 .. This file was automatic generated / don't edit.
 

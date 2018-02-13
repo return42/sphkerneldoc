@@ -301,7 +301,7 @@ GPU caches.
 gfx_v7_0_ring_emit_ib_gfx
 =========================
 
-.. c:function:: void gfx_v7_0_ring_emit_ib_gfx(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vm_id, bool ctx_switch)
+.. c:function:: void gfx_v7_0_ring_emit_ib_gfx(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vmid, bool ctx_switch)
 
     emit an IB (Indirect Buffer) on the ring
 
@@ -311,7 +311,7 @@ gfx_v7_0_ring_emit_ib_gfx
     :param struct amdgpu_ib \*ib:
         amdgpu indirect buffer object
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param bool ctx_switch:
@@ -544,14 +544,14 @@ to be completed.
 gfx_v7_0_ring_emit_vm_flush
 ===========================
 
-.. c:function:: void gfx_v7_0_ring_emit_vm_flush(struct amdgpu_ring *ring, unsigned vm_id, uint64_t pd_addr)
+.. c:function:: void gfx_v7_0_ring_emit_vm_flush(struct amdgpu_ring *ring, unsigned vmid, uint64_t pd_addr)
 
     cik vm flush using the CP
 
     :param struct amdgpu_ring \*ring:
         *undescribed*
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param uint64_t pd_addr:

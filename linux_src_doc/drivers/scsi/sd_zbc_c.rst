@@ -108,21 +108,6 @@ sd_zbc_zone_sectors
     :param struct scsi_disk \*sdkp:
         The target disk
 
-.. _`sd_zbc_zone_no`:
-
-sd_zbc_zone_no
-==============
-
-.. c:function:: unsigned int sd_zbc_zone_no(struct scsi_disk *sdkp, sector_t sector)
-
-    Get the number of the zone conataining a sector.
-
-    :param struct scsi_disk \*sdkp:
-        The target disk
-
-    :param sector_t sector:
-        512B sector address contained in the zone
-
 .. _`sd_zbc_setup_reset_cmnd`:
 
 sd_zbc_setup_reset_cmnd
@@ -141,56 +126,6 @@ Description
 -----------
 
 Called from \ :c:func:`sd_init_command`\  for a REQ_OP_ZONE_RESET request.
-
-.. _`sd_zbc_write_lock_zone`:
-
-sd_zbc_write_lock_zone
-======================
-
-.. c:function:: int sd_zbc_write_lock_zone(struct scsi_cmnd *cmd)
-
-    Write lock a sequential zone.
-
-    :param struct scsi_cmnd \*cmd:
-        write command
-
-.. _`sd_zbc_write_lock_zone.description`:
-
-Description
------------
-
-Called from \ :c:func:`sd_init_cmd`\  for write requests (standard write, write same or
-write zeroes operations). If the request target zone is not already locked,
-the zone is locked and BLKPREP_OK returned, allowing the request to proceed
-through dispatch in \ :c:func:`scsi_request_fn`\ . Otherwise, BLKPREP_DEFER is returned,
-forcing the request to wait for the zone to be unlocked, that is, for the
-previously issued write request targeting the same zone to complete.
-
-This is called from \ :c:func:`blk_peek_request`\  context with the queue lock held and
-before the request is removed from the scheduler. As a result, multiple
-contexts executing concurrently \ :c:func:`scsi_request_fn`\  cannot result in write
-sequence reordering as only a single write request per zone is allowed to
-proceed.
-
-.. _`sd_zbc_write_unlock_zone`:
-
-sd_zbc_write_unlock_zone
-========================
-
-.. c:function:: void sd_zbc_write_unlock_zone(struct scsi_cmnd *cmd)
-
-    Write unlock a sequential zone.
-
-    :param struct scsi_cmnd \*cmd:
-        write command
-
-.. _`sd_zbc_write_unlock_zone.description`:
-
-Description
------------
-
-Called from \ :c:func:`sd_uninit_cmd`\ . Unlocking the request target zone will allow
-dispatching the next write request for the zone.
 
 .. _`sd_zbc_complete`:
 
@@ -284,6 +219,69 @@ Description
 
 Check that all zones of the device are equal. The last zone can however
 be smaller. The zone size must also be a power of two number of LBAs.
+
+.. _`sd_zbc_alloc_zone_bitmap`:
+
+sd_zbc_alloc_zone_bitmap
+========================
+
+.. c:function:: unsigned long *sd_zbc_alloc_zone_bitmap(struct scsi_disk *sdkp)
+
+    Allocate a zone bitmap (one bit per zone).
+
+    :param struct scsi_disk \*sdkp:
+        The disk of the bitmap
+
+.. _`sd_zbc_get_seq_zones`:
+
+sd_zbc_get_seq_zones
+====================
+
+.. c:function:: sector_t sd_zbc_get_seq_zones(struct scsi_disk *sdkp, unsigned char *buf, unsigned int buflen, unsigned long *seq_zones_bitmap)
+
+    Parse report zones reply to identify sequential zones
+
+    :param struct scsi_disk \*sdkp:
+        disk used
+
+    :param unsigned char \*buf:
+        report reply buffer
+
+    :param unsigned int buflen:
+        *undescribed*
+
+    :param unsigned long \*seq_zones_bitmap:
+        *undescribed*
+
+.. _`sd_zbc_get_seq_zones.description`:
+
+Description
+-----------
+
+Parse reported zone descriptors in \ ``buf``\  to identify sequential zones and
+set the reported zone bit in \ ``seq_zones_bitmap``\  accordingly.
+Since read-only and offline zones cannot be written, do not
+mark them as sequential in the bitmap.
+Return the LBA after the last zone reported.
+
+.. _`sd_zbc_setup_seq_zones_bitmap`:
+
+sd_zbc_setup_seq_zones_bitmap
+=============================
+
+.. c:function:: int sd_zbc_setup_seq_zones_bitmap(struct scsi_disk *sdkp)
+
+    Initialize the disk seq zone bitmap.
+
+    :param struct scsi_disk \*sdkp:
+        target disk
+
+.. _`sd_zbc_setup_seq_zones_bitmap.description`:
+
+Description
+-----------
+
+Allocate a zone bitmap and initialize it by identifying sequential zones.
 
 .. This file was automatic generated / don't edit.
 

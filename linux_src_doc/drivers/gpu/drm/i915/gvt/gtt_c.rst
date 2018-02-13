@@ -1,76 +1,76 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/gvt/gtt.c
 
-.. _`intel_vgpu_init_guest_page`:
+.. _`intel_vgpu_init_page_track`:
 
-intel_vgpu_init_guest_page
+intel_vgpu_init_page_track
 ==========================
 
-.. c:function:: int intel_vgpu_init_guest_page(struct intel_vgpu *vgpu, struct intel_vgpu_guest_page *p, unsigned long gfn, int (*handler)(void *, u64, void *, int), void *data)
+.. c:function:: int intel_vgpu_init_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t, unsigned long gfn, int (*handler)(void *, u64, void *, int), void *data)
 
-    init a guest page data structure
+    init a page track data structure
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param struct intel_vgpu_guest_page \*p:
-        a guest page data structure
+    :param struct intel_vgpu_page_track \*t:
+        a page track data structure
 
     :param unsigned long gfn:
         guest memory page frame number
 
     :param int (\*handler)(void \*, u64, void \*, int):
-        function will be called when target guest memory page has
+        the function will be called when target guest memory page has
         been modified.
 
     :param void \*data:
         *undescribed*
 
-.. _`intel_vgpu_init_guest_page.description`:
+.. _`intel_vgpu_init_page_track.description`:
 
 Description
 -----------
 
-This function is called when user wants to track a guest memory page.
+This function is called when a user wants to prepare a page track data
+structure to track a guest memory page.
 
-.. _`intel_vgpu_init_guest_page.return`:
+.. _`intel_vgpu_init_page_track.return`:
 
 Return
 ------
 
 Zero on success, negative error code if failed.
 
-.. _`intel_vgpu_clean_guest_page`:
+.. _`intel_vgpu_clean_page_track`:
 
-intel_vgpu_clean_guest_page
+intel_vgpu_clean_page_track
 ===========================
 
-.. c:function:: void intel_vgpu_clean_guest_page(struct intel_vgpu *vgpu, struct intel_vgpu_guest_page *p)
+.. c:function:: void intel_vgpu_clean_page_track(struct intel_vgpu *vgpu, struct intel_vgpu_page_track *t)
 
-    release the resource owned by guest page data structure
+    release a page track data structure
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
 
-    :param struct intel_vgpu_guest_page \*p:
-        a tracked guest page
+    :param struct intel_vgpu_page_track \*t:
+        a page track data structure
 
-.. _`intel_vgpu_clean_guest_page.description`:
+.. _`intel_vgpu_clean_page_track.description`:
 
 Description
 -----------
 
-This function is called when user tries to stop tracking a guest memory
-page.
+This function is called before a user frees a page track data structure.
 
-.. _`intel_vgpu_find_guest_page`:
+.. _`intel_vgpu_find_tracked_page`:
 
-intel_vgpu_find_guest_page
-==========================
+intel_vgpu_find_tracked_page
+============================
 
-.. c:function:: struct intel_vgpu_guest_page *intel_vgpu_find_guest_page(struct intel_vgpu *vgpu, unsigned long gfn)
+.. c:function:: struct intel_vgpu_page_track *intel_vgpu_find_tracked_page(struct intel_vgpu *vgpu, unsigned long gfn)
 
-    find a guest page data structure by GFN.
+    find a tracked guest page
 
     :param struct intel_vgpu \*vgpu:
         a vGPU
@@ -78,20 +78,20 @@ intel_vgpu_find_guest_page
     :param unsigned long gfn:
         guest memory page frame number
 
-.. _`intel_vgpu_find_guest_page.description`:
+.. _`intel_vgpu_find_tracked_page.description`:
 
 Description
 -----------
 
-This function is called when emulation logic wants to know if a trapped GFN
-is a tracked guest page.
+This function is called when the emulation layer wants to figure out if a
+trapped GFN is a tracked guest page.
 
-.. _`intel_vgpu_find_guest_page.return`:
+.. _`intel_vgpu_find_tracked_page.return`:
 
 Return
 ------
 
-Pointer to guest page data structure, NULL if failed.
+Pointer to page track data structure, NULL if not found.
 
 .. _`intel_vgpu_sync_oos_pages`:
 

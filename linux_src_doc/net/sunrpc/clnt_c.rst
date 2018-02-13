@@ -300,18 +300,6 @@ The result of this function call is transient: multiple calls in
 succession may give different results, depending on how local
 networking configuration changes over time.
 
-.. _`rpc_protocol`:
-
-rpc_protocol
-============
-
-.. c:function:: int rpc_protocol(struct rpc_clnt *clnt)
-
-    Get transport protocol number for an RPC client
-
-    :param struct rpc_clnt \*clnt:
-        RPC client to query
-
 .. _`rpc_net_ns`:
 
 rpc_net_ns

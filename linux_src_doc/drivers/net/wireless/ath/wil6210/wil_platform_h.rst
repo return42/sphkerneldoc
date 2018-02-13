@@ -23,7 +23,8 @@ Definition
         int (*resume)(void *handle, bool device_powered_on);
         void (*uninit)(void *handle);
         int (*notify)(void *handle, enum wil_platform_event evt);
-        bool (*keep_radio_on_during_sleep)(void *handle);
+        int (*get_capa)(void *handle);
+        void (*set_features)(void *handle, int features);
     }
 
 .. _`wil_platform_ops.members`:
@@ -46,7 +47,10 @@ uninit
 notify
     *undescribed*
 
-keep_radio_on_during_sleep
+get_capa
+    *undescribed*
+
+set_features
     *undescribed*
 
 .. _`wil_platform_rops`:

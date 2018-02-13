@@ -88,7 +88,7 @@ Either keep the existing fence or the new one, depending which one is later.
 amdgpu_sync_add_later
 =====================
 
-.. c:function:: bool amdgpu_sync_add_later(struct amdgpu_sync *sync, struct dma_fence *f)
+.. c:function:: bool amdgpu_sync_add_later(struct amdgpu_sync *sync, struct dma_fence *f, bool explicit)
 
     add the fence to the hash
 
@@ -97,6 +97,9 @@ amdgpu_sync_add_later
 
     :param struct dma_fence \*f:
         fence to add
+
+    :param bool explicit:
+        *undescribed*
 
 .. _`amdgpu_sync_add_later.description`:
 
@@ -111,7 +114,7 @@ was found, false otherwise.
 amdgpu_sync_fence
 =================
 
-.. c:function:: int amdgpu_sync_fence(struct amdgpu_device *adev, struct amdgpu_sync *sync, struct dma_fence *f)
+.. c:function:: int amdgpu_sync_fence(struct amdgpu_device *adev, struct amdgpu_sync *sync, struct dma_fence *f, bool explicit)
 
     remember to sync to this fence
 
@@ -122,6 +125,9 @@ amdgpu_sync_fence
         sync object to add fence to
 
     :param struct dma_fence \*f:
+        *undescribed*
+
+    :param bool explicit:
         *undescribed*
 
 .. _`amdgpu_sync_resv`:
@@ -183,12 +189,15 @@ object.
 amdgpu_sync_get_fence
 =====================
 
-.. c:function:: struct dma_fence *amdgpu_sync_get_fence(struct amdgpu_sync *sync)
+.. c:function:: struct dma_fence *amdgpu_sync_get_fence(struct amdgpu_sync *sync, bool *explicit)
 
     get the next fence from the sync object
 
     :param struct amdgpu_sync \*sync:
         sync object to use
+
+    :param bool \*explicit:
+        true if the next fence is explicit
 
 .. _`amdgpu_sync_get_fence.description`:
 

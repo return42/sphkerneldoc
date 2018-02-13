@@ -1,51 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/netfilter/nf_tables_api.c
 
-.. _`nft_register_afinfo`:
-
-nft_register_afinfo
-===================
-
-.. c:function:: int nft_register_afinfo(struct net *net, struct nft_af_info *afi)
-
-    register nf_tables address family info
-
-    :param struct net \*net:
-        *undescribed*
-
-    :param struct nft_af_info \*afi:
-        address family info to register
-
-.. _`nft_register_afinfo.description`:
-
-Description
------------
-
-Register the address family for use with nf_tables. Returns zero on
-success or a negative errno code otherwise.
-
-.. _`nft_unregister_afinfo`:
-
-nft_unregister_afinfo
-=====================
-
-.. c:function:: void nft_unregister_afinfo(struct net *net, struct nft_af_info *afi)
-
-    unregister nf_tables address family info
-
-    :param struct net \*net:
-        *undescribed*
-
-    :param struct nft_af_info \*afi:
-        address family info to unregister
-
-.. _`nft_unregister_afinfo.description`:
-
-Description
------------
-
-Unregister the address family for use with nf_tables.
-
 .. _`nft_register_expr`:
 
 nft_register_expr

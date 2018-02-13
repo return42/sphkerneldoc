@@ -145,7 +145,7 @@ Definition
         struct list_head link;
         unsigned int count;
         unsigned int sectors;
-        struct timespec ts;
+        struct timespec64 ts;
         unsigned int rate;
         unsigned int iops;
     }

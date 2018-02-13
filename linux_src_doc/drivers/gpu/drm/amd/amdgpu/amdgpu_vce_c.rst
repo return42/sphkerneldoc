@@ -198,6 +198,40 @@ Description
 
 Close up a stream for HW test or if userspace failed to do so
 
+.. _`amdgpu_vce_validate_bo`:
+
+amdgpu_vce_validate_bo
+======================
+
+.. c:function:: int amdgpu_vce_validate_bo(struct amdgpu_cs_parser *p, uint32_t ib_idx, int lo, int hi, unsigned size, int32_t index)
+
+    make sure not to cross 4GB boundary
+
+    :param struct amdgpu_cs_parser \*p:
+        parser context
+
+    :param uint32_t ib_idx:
+        *undescribed*
+
+    :param int lo:
+        address of lower dword
+
+    :param int hi:
+        address of higher dword
+
+    :param unsigned size:
+        minimum size
+
+    :param int32_t index:
+        bs/fb index
+
+.. _`amdgpu_vce_validate_bo.description`:
+
+Description
+-----------
+
+Make sure that no BO cross a 4GB boundary.
+
 .. _`amdgpu_vce_cs_reloc`:
 
 amdgpu_vce_cs_reloc
@@ -293,7 +327,7 @@ amdgpu_vce_ring_parse_cs_vm
 amdgpu_vce_ring_emit_ib
 =======================
 
-.. c:function:: void amdgpu_vce_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vm_id, bool ctx_switch)
+.. c:function:: void amdgpu_vce_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vmid, bool ctx_switch)
 
     execute indirect buffer
 
@@ -303,7 +337,7 @@ amdgpu_vce_ring_emit_ib
     :param struct amdgpu_ib \*ib:
         the IB to execute
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param bool ctx_switch:

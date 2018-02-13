@@ -36,15 +36,12 @@ rpcrdma_wc_receive
 rpcrdma_ia_open
 ===============
 
-.. c:function:: int rpcrdma_ia_open(struct rpcrdma_xprt *xprt, struct sockaddr *addr)
+.. c:function:: int rpcrdma_ia_open(struct rpcrdma_xprt *xprt)
 
     Open and initialize an Interface Adapter.
 
     :param struct rpcrdma_xprt \*xprt:
-        controlling transport
-
-    :param struct sockaddr \*addr:
-        IP address of remote peer
+        transport with IA to (re)initialize
 
 .. _`rpcrdma_ia_open.description`:
 
@@ -139,6 +136,69 @@ to the queue.
 
 The caller serializes calls to this function (per rpcrdma_buffer).
 
+.. _`rpcrdma_create_rep`:
+
+rpcrdma_create_rep
+==================
+
+.. c:function:: int rpcrdma_create_rep(struct rpcrdma_xprt *r_xprt)
+
+    Allocate an rpcrdma_rep object
+
+    :param struct rpcrdma_xprt \*r_xprt:
+        controlling transport
+
+.. _`rpcrdma_create_rep.description`:
+
+Description
+-----------
+
+Returns 0 on success or a negative errno on failure.
+
+.. _`rpcrdma_mr_get`:
+
+rpcrdma_mr_get
+==============
+
+.. c:function:: struct rpcrdma_mr *rpcrdma_mr_get(struct rpcrdma_xprt *r_xprt)
+
+    Allocate an rpcrdma_mr object
+
+    :param struct rpcrdma_xprt \*r_xprt:
+        controlling transport
+
+.. _`rpcrdma_mr_get.description`:
+
+Description
+-----------
+
+Returns an initialized rpcrdma_mr or NULL if no free
+rpcrdma_mr objects are available.
+
+.. _`rpcrdma_mr_put`:
+
+rpcrdma_mr_put
+==============
+
+.. c:function:: void rpcrdma_mr_put(struct rpcrdma_mr *mr)
+
+    Release an rpcrdma_mr object
+
+    :param struct rpcrdma_mr \*mr:
+        object to release
+
+.. _`rpcrdma_mr_unmap_and_put`:
+
+rpcrdma_mr_unmap_and_put
+========================
+
+.. c:function:: void rpcrdma_mr_unmap_and_put(struct rpcrdma_mr *mr)
+
+    DMA unmap an MR and release it
+
+    :param struct rpcrdma_mr \*mr:
+        object to release
+
 .. _`rpcrdma_alloc_regbuf`:
 
 rpcrdma_alloc_regbuf
@@ -209,7 +269,7 @@ rpcrdma_ep_post_extra_recv
         transport associated with these backchannel resources
 
     :param unsigned int count:
-        *undescribed*
+        minimum number of incoming requests expected
 
 .. _`rpcrdma_ep_post_extra_recv.description`:
 

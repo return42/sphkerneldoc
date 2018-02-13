@@ -106,8 +106,8 @@ Definition
         IWL_UCODE_TLV_API_ADAPTIVE_DWELL,
         IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE,
         IWL_UCODE_TLV_API_NEW_RX_STATS,
-        IWL_UCODE_TLV_API_COEX_ATS_EXTERNAL,
         IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY,
+        IWL_UCODE_TLV_API_DEPRECATE_TTAK,
         NUM_IWL_UCODE_TLV_API
     };
 
@@ -154,12 +154,13 @@ IWL_UCODE_TLV_API_NEW_BEACON_TEMPLATE
 IWL_UCODE_TLV_API_NEW_RX_STATS
     should new RX STATISTICS API be used
 
-IWL_UCODE_TLV_API_COEX_ATS_EXTERNAL
-    *undescribed*
-
 IWL_UCODE_TLV_API_QUOTA_LOW_LATENCY
     Quota command includes a field
     indicating low latency direction.
+
+IWL_UCODE_TLV_API_DEPRECATE_TTAK
+    RX status flag TTAK ok (bit 7) is
+    deprecated.
 
 NUM_IWL_UCODE_TLV_API
     number of bits used
@@ -207,6 +208,8 @@ Definition
         IWL_UCODE_TLV_CAPA_BINDING_CDB_SUPPORT,
         IWL_UCODE_TLV_CAPA_CDB_SUPPORT,
         IWL_UCODE_TLV_CAPA_D0I3_END_FIRST,
+        IWL_UCODE_TLV_CAPA_TLC_OFFLOAD,
+        IWL_UCODE_TLV_CAPA_DYNAMIC_QUOTA,
         IWL_UCODE_TLV_CAPA_EXTENDED_DTS_MEASURE,
         IWL_UCODE_TLV_CAPA_SHORT_PM_TIMEOUTS,
         IWL_UCODE_TLV_CAPA_BT_MPLUT_SUPPORT,
@@ -318,6 +321,12 @@ IWL_UCODE_TLV_CAPA_CDB_SUPPORT
 
 IWL_UCODE_TLV_CAPA_D0I3_END_FIRST
     *undescribed*
+
+IWL_UCODE_TLV_CAPA_TLC_OFFLOAD
+    firmware implements rate scaling algorithm
+
+IWL_UCODE_TLV_CAPA_DYNAMIC_QUOTA
+    firmware implements quota related
 
 IWL_UCODE_TLV_CAPA_EXTENDED_DTS_MEASURE
     extended DTS measurement
@@ -640,23 +649,23 @@ Description
 
 This parses IWL_UCODE_TLV_FW_MEM_SEG
 
-.. _`iwl_fw_dbg_dest_tlv`:
+.. _`iwl_fw_dbg_dest_tlv_v1`:
 
-struct iwl_fw_dbg_dest_tlv
-==========================
+struct iwl_fw_dbg_dest_tlv_v1
+=============================
 
-.. c:type:: struct iwl_fw_dbg_dest_tlv
+.. c:type:: struct iwl_fw_dbg_dest_tlv_v1
 
     configures the destination of the debug data
 
-.. _`iwl_fw_dbg_dest_tlv.definition`:
+.. _`iwl_fw_dbg_dest_tlv_v1.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_fw_dbg_dest_tlv {
+    struct iwl_fw_dbg_dest_tlv_v1 {
         u8 version;
         u8 monitor_mode;
         u8 size_power;
@@ -670,7 +679,7 @@ Definition
         struct iwl_fw_dbg_reg_op reg_ops[0];
     }
 
-.. _`iwl_fw_dbg_dest_tlv.members`:
+.. _`iwl_fw_dbg_dest_tlv_v1.members`:
 
 Members
 -------
@@ -708,7 +717,7 @@ end_shift
 reg_ops
     array of registers operations
 
-.. _`iwl_fw_dbg_dest_tlv.description`:
+.. _`iwl_fw_dbg_dest_tlv_v1.description`:
 
 Description
 -----------

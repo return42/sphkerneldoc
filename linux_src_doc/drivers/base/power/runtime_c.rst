@@ -735,12 +735,17 @@ Description
 -----------
 
 Disable runtime PM so we safely can check the device's runtime PM status and
-if it is active, invoke it's .runtime_suspend callback to bring it into
-suspend state. Keep runtime PM disabled to preserve the state unless we
-encounter errors.
+if it is active, invoke its ->runtime_suspend callback to suspend it and
+change its runtime PM status field to RPM_SUSPENDED.  Also, if the device's
+usage and children counters don't indicate that the device was in use before
+the system-wide transition under way, decrement its parent's children counter
+(if there is a parent).  Keep runtime PM disabled to preserve the state
+unless we encounter errors.
 
 Typically this function may be invoked from a system suspend callback to make
-sure the device is put into low power state.
+sure the device is put into low power state and it should only be used during
+system-wide PM transitions to sleep states.  It assumes that the analogous
+\ :c:func:`pm_runtime_force_resume`\  will be used to resume the device.
 
 .. _`pm_runtime_force_resume`:
 
@@ -761,13 +766,9 @@ Description
 
 Prior invoking this function we expect the user to have brought the device
 into low power state by a call to \ :c:func:`pm_runtime_force_suspend`\ . Here we reverse
-those actions and brings the device into full power, if it is expected to be
-used on system resume. To distinguish that, we check whether the runtime PM
-usage count is greater than 1 (the PM core increases the usage count in the
-system PM prepare phase), as that indicates a real user (such as a subsystem,
-driver, userspace, etc.) is using it. If that is the case, the device is
-expected to be used on system resume as well, so then we resume it. In the
-other case, we defer the resume to be managed via runtime PM.
+those actions and bring the device into full power, if it is expected to be
+used on system resume.  In the other case, we defer the resume to be managed
+via runtime PM.
 
 Typically this function may be invoked from a system resume callback.
 

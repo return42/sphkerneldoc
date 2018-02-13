@@ -97,6 +97,7 @@ Definition
         int (*set_suspend_enable) (struct regulator_dev *);
         int (*set_suspend_disable) (struct regulator_dev *);
         int (*set_suspend_mode) (struct regulator_dev *, unsigned int mode);
+        int (*resume_early)(struct regulator_dev *rdev);
         int (*set_pull_down) (struct regulator_dev *);
     }
 
@@ -220,6 +221,9 @@ set_suspend_disable
 set_suspend_mode
     Set the operating mode for the regulator when the
     system is suspended.
+
+resume_early
+    *undescribed*
 
 set_pull_down
     Configure the regulator to pull down when the regulator

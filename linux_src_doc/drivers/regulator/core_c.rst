@@ -1372,45 +1372,24 @@ Description
 
 Called by regulator drivers to unregister a regulator.
 
-.. _`regulator_suspend_prepare`:
+.. _`regulator_suspend_late`:
 
-regulator_suspend_prepare
-=========================
+regulator_suspend_late
+======================
 
-.. c:function:: int regulator_suspend_prepare(suspend_state_t state)
+.. c:function:: int regulator_suspend_late(struct device *dev)
 
     prepare regulators for system wide suspend
 
-    :param suspend_state_t state:
-        system suspend state
+    :param struct device \*dev:
+        *undescribed*
 
-.. _`regulator_suspend_prepare.description`:
+.. _`regulator_suspend_late.description`:
 
 Description
 -----------
 
 Configure each regulator with it's suspend operating parameters for state.
-This will usually be called by machine suspend code prior to supending.
-
-.. _`regulator_suspend_finish`:
-
-regulator_suspend_finish
-========================
-
-.. c:function:: int regulator_suspend_finish( void)
-
-    resume regulators from system wide suspend
-
-    :param  void:
-        no arguments
-
-.. _`regulator_suspend_finish.description`:
-
-Description
------------
-
-Turn on regulators that might be turned off by regulator_suspend_prepare
-and that should be turned on according to the regulators properties.
 
 .. _`regulator_has_full_constraints`:
 

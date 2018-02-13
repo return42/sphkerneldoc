@@ -35,6 +35,7 @@ linux
     rtc/index
     sched/index
     soc/index
+    soundwire/index
     spi/index
     sunrpc/index
     ulpi/index
@@ -62,6 +63,7 @@ linux
     bitmap_h
     bitops_h
     blk-cgroup_h
+    blk_types_h
     blktrace_api_h
     btree_h
     buffer_head_h
@@ -167,6 +169,7 @@ linux
     irqdomain_h
     irqreturn_h
     isa_h
+    iversion_h
     jbd2_h
     jiffies_h
     jz4780-nemc_h
@@ -228,6 +231,7 @@ linux
     nfs_page_h
     nmi_h
     nodemask_h
+    nospec_h
     ntb_h
     nvme-fc-driver_h
     nvme-rdma_h
@@ -237,6 +241,7 @@ linux
     of_h
     of_platform_h
     of_reserved_mem_h
+    omap-gpmc_h
     oprofile_h
     padata_h
     page-flags_h
@@ -249,6 +254,7 @@ linux
     percpu-refcount_h
     perf_event_h
     phy_h
+    phylink_h
     pipe_fs_i_h
     platform_device_h
     plist_h
@@ -262,6 +268,7 @@ linux
     powercap_h
     prime_numbers_h
     property_h
+    psp-sev_h
     pstore_h
     ptp_classify_h
     ptp_clock_kernel_h
@@ -313,11 +320,13 @@ linux
     serial_core_h
     serial_max3100_h
     serio_h
+    sfp_h
     sh_dma_h
     shdma-base_h
     siphash_h
     skbuff_h
     slab_h
+    slimbus_h
     smpboot_h
     spinlock_h
     spmi_h
@@ -361,10 +370,12 @@ linux
     usb_h
     util_macros_h
     uwb_h
+    vbox_utils_h
     vfio_h
     vga_switcheroo_h
     vgaarb_h
     virtio_config_h
+    visorbus_h
     vme_h
     vringh_h
     w1-gpio_h

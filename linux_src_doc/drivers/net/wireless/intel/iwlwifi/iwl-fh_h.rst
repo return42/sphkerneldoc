@@ -606,18 +606,18 @@ Members
 tfd_offset
     *undescribed*
 
-.. _`iwlagn_scd_bc_tbl.for-devices-up-to-a000`:
+.. _`iwlagn_scd_bc_tbl.for-devices-up-to-22000`:
 
-For devices up to a000
-----------------------
+For devices up to 22000
+-----------------------
 
 @tfd_offset  0-12 - tx command byte count
 12-16 - station index
 
-.. _`iwlagn_scd_bc_tbl.for-a000-and-on`:
+.. _`iwlagn_scd_bc_tbl.for-22000-and-on`:
 
-For a000 and on
----------------
+For 22000 and on
+----------------
 
 @tfd_offset  0-12 - tx command byte count
 12-13 - number of 64 byte chunks

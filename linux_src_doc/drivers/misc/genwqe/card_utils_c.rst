@@ -262,12 +262,12 @@ After the DMA transfer has been completed we free the memory for
 the sgl and the cached pages. Data is being transfered from cached
 pages into user-space buffers.
 
-.. _`free_user_pages`:
+.. _`genwqe_free_user_pages`:
 
-free_user_pages
-===============
+genwqe_free_user_pages
+======================
 
-.. c:function:: int free_user_pages(struct page **page_list, unsigned int nr_pages, int dirty)
+.. c:function:: int genwqe_free_user_pages(struct page **page_list, unsigned int nr_pages, int dirty)
 
     Give pinned pages back
 
@@ -280,29 +280,23 @@ free_user_pages
     :param int dirty:
         *undescribed*
 
-.. _`free_user_pages.description`:
+.. _`genwqe_free_user_pages.description`:
 
 Description
 -----------
 
-Documentation of get_user_pages is in mm/memory.c:
+Documentation of get_user_pages is in mm/gup.c:
 
 If the page is written to, set_page_dirty (or set_page_dirty_lock,
 as appropriate) must be called after the page is finished with, and
 before put_page is called.
-
-FIXME Could be of use to others and might belong in the generic
-code, if others agree. E.g.
-ll_free_user_pages in drivers/staging/lustre/lustre/llite/rw26.c
-ceph_put_page_vector in net/ceph/pagevec.c
-maybe more?
 
 .. _`genwqe_user_vmap`:
 
 genwqe_user_vmap
 ================
 
-.. c:function:: int genwqe_user_vmap(struct genwqe_dev *cd, struct dma_mapping *m, void *uaddr, unsigned long size, struct ddcb_requ *req)
+.. c:function:: int genwqe_user_vmap(struct genwqe_dev *cd, struct dma_mapping *m, void *uaddr, unsigned long size)
 
     Map user-space memory to virtual kernel memory
 
@@ -317,9 +311,6 @@ genwqe_user_vmap
 
     :param unsigned long size:
         size of memory to be mapped
-
-    :param struct ddcb_requ \*req:
-        *undescribed*
 
 .. _`genwqe_user_vmap.description`:
 
@@ -357,7 +348,7 @@ Return
 genwqe_user_vunmap
 ==================
 
-.. c:function:: int genwqe_user_vunmap(struct genwqe_dev *cd, struct dma_mapping *m, struct ddcb_requ *req)
+.. c:function:: int genwqe_user_vunmap(struct genwqe_dev *cd, struct dma_mapping *m)
 
     Undo mapping of user-space mem to virtual kernel memory
 
@@ -366,9 +357,6 @@ genwqe_user_vunmap
 
     :param struct dma_mapping \*m:
         mapping params
-
-    :param struct ddcb_requ \*req:
-        *undescribed*
 
 .. _`genwqe_card_type`:
 

@@ -125,34 +125,6 @@ Return
 
 '0' on Success; Error code otherwise
 
-.. _`dpcon_is_enabled`:
-
-dpcon_is_enabled
-================
-
-.. c:function:: int dpcon_is_enabled(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int *en)
-
-    Check if the DPCON is enabled.
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's I/O object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 token:
-        Token of DPCON object
-
-    :param int \*en:
-        Returns '1' if object is enabled; '0' otherwise
-
-.. _`dpcon_is_enabled.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise.
-
 .. _`dpcon_reset`:
 
 dpcon_reset
@@ -228,34 +200,6 @@ dpcon_set_notification
         Notification parameters
 
 .. _`dpcon_set_notification.return`:
-
-Return
-------
-
-'0' on Success; Error code otherwise
-
-.. _`dpcon_get_api_version`:
-
-dpcon_get_api_version
-=====================
-
-.. c:function:: int dpcon_get_api_version(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 *major_ver, u16 *minor_ver)
-
-    Get Data Path Concentrator API version
-
-    :param struct fsl_mc_io \*mc_io:
-        Pointer to MC portal's DPCON object
-
-    :param u32 cmd_flags:
-        Command flags; one or more of 'MC_CMD_FLAG_'
-
-    :param u16 \*major_ver:
-        Major version of DPCON API
-
-    :param u16 \*minor_ver:
-        Minor version of DPCON API
-
-.. _`dpcon_get_api_version.return`:
 
 Return
 ------

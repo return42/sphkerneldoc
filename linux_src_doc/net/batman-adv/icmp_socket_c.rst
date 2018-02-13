@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/icmp_socket.c
 
+.. _`batadv_socket_init`:
+
+batadv_socket_init
+==================
+
+.. c:function:: void batadv_socket_init( void)
+
+    Initialize soft interface independent socket data
+
+    :param  void:
+        no arguments
+
+.. _`batadv_socket_setup`:
+
+batadv_socket_setup
+===================
+
+.. c:function:: int batadv_socket_setup(struct batadv_priv *bat_priv)
+
+    Create debugfs "socket" file
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+.. _`batadv_socket_setup.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
 .. _`batadv_socket_add_packet`:
 
 batadv_socket_add_packet

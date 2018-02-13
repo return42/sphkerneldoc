@@ -344,14 +344,17 @@ caller issue any error or warning messages associated with such a problem.
 tipc_nameseq_subscribe
 ======================
 
-.. c:function:: void tipc_nameseq_subscribe(struct name_seq *nseq, struct tipc_subscription *s)
+.. c:function:: void tipc_nameseq_subscribe(struct name_seq *nseq, struct tipc_subscription *s, bool status)
 
-    attach a subscription, and issue the prescribed number of events if there is any sub- sequence overlapping with the requested sequence
+    attach a subscription, and optionally issue the prescribed number of events if there is any sub- sequence overlapping with the requested sequence
 
     :param struct name_seq \*nseq:
         *undescribed*
 
     :param struct tipc_subscription \*s:
+        *undescribed*
+
+    :param bool status:
         *undescribed*
 
 .. _`tipc_nametbl_translate`:
@@ -423,11 +426,14 @@ tipc_nametbl_withdraw
 tipc_nametbl_subscribe
 ======================
 
-.. c:function:: void tipc_nametbl_subscribe(struct tipc_subscription *s)
+.. c:function:: void tipc_nametbl_subscribe(struct tipc_subscription *s, bool status)
 
     add a subscription object to the name table
 
     :param struct tipc_subscription \*s:
+        *undescribed*
+
+    :param bool status:
         *undescribed*
 
 .. _`tipc_nametbl_unsubscribe`:

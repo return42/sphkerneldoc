@@ -102,5 +102,29 @@ This releases the fence pin reference acquired through
 i915_vma_pin_fence. It will handle both objects with and without an
 attached fence correctly, callers do not need to distinguish this.
 
+.. _`for_each_ggtt_vma`:
+
+for_each_ggtt_vma
+=================
+
+.. c:function::  for_each_ggtt_vma( V,  OBJ)
+
+    Iterate over the GGTT VMA belonging to an object.
+
+    :param  V:
+        the #i915_vma iterator
+
+    :param  OBJ:
+        the #drm_i915_gem_object
+
+.. _`for_each_ggtt_vma.description`:
+
+Description
+-----------
+
+GGTT VMA are placed at the being of the object's vma_list, see
+\ :c:func:`vma_create`\ , so we can stop our walk as soon as we see a ppgtt VMA,
+or the list is empty ofc.
+
 .. This file was automatic generated / don't edit.
 

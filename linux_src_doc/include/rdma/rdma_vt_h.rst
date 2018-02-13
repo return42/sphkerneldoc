@@ -1,6 +1,46 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/rdma_vt.h
 
+.. _`rvt_set_ibdev_name`:
+
+rvt_set_ibdev_name
+==================
+
+.. c:function:: void rvt_set_ibdev_name(struct rvt_dev_info *rdi, const char *fmt, const char *name, const int unit)
+
+    Craft an IB device name from client info
+
+    :param struct rvt_dev_info \*rdi:
+        pointer to the client rvt_dev_info structure
+
+    :param const char \*fmt:
+        *undescribed*
+
+    :param const char \*name:
+        client specific name
+
+    :param const int unit:
+        client specific unit number.
+
+.. _`rvt_get_ibdev_name`:
+
+rvt_get_ibdev_name
+==================
+
+.. c:function:: const char *rvt_get_ibdev_name(const struct rvt_dev_info *rdi)
+
+    return the IB name
+
+    :param const struct rvt_dev_info \*rdi:
+        rdmavt device
+
+.. _`rvt_get_ibdev_name.description`:
+
+Description
+-----------
+
+Return the registered name of the device.
+
 .. _`rvt_lookup_qpn`:
 
 rvt_lookup_qpn

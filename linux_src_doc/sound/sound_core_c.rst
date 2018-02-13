@@ -66,37 +66,6 @@ Return
 On success, the allocated number is returned. On failure,
      a negative error code is returned.
 
-.. _`register_sound_midi`:
-
-register_sound_midi
-===================
-
-.. c:function:: int register_sound_midi(const struct file_operations *fops, int dev)
-
-    register a midi device
-
-    :param const struct file_operations \*fops:
-        File operations for the driver
-
-    :param int dev:
-        Unit number to allocate
-
-.. _`register_sound_midi.description`:
-
-Description
------------
-
-     Allocate a midi device. Unit is the number of the midi device requested.
-     Pass -1 to request the next free midi unit.
-
-.. _`register_sound_midi.return`:
-
-Return
-------
-
-On success, the allocated number is returned. On failure,
-     a negative error code is returned.
-
 .. _`register_sound_dsp`:
 
 register_sound_dsp
@@ -170,26 +139,6 @@ Description
 -----------
 
      Release a sound device that was allocated with \ :c:func:`register_sound_mixer`\ .
-     The unit passed is the return value from the register function.
-
-.. _`unregister_sound_midi`:
-
-unregister_sound_midi
-=====================
-
-.. c:function:: void unregister_sound_midi(int unit)
-
-    unregister a midi device
-
-    :param int unit:
-        unit number to allocate
-
-.. _`unregister_sound_midi.description`:
-
-Description
------------
-
-     Release a sound device that was allocated with \ :c:func:`register_sound_midi`\ .
      The unit passed is the return value from the register function.
 
 .. _`unregister_sound_dsp`:

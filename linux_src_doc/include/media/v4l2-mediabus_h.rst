@@ -78,5 +78,68 @@ type
 flags
     in / out: configuration flags, depending on \ ``type``\ 
 
+.. _`v4l2_fill_pix_format`:
+
+v4l2_fill_pix_format
+====================
+
+.. c:function:: void v4l2_fill_pix_format(struct v4l2_pix_format *pix_fmt, const struct v4l2_mbus_framefmt *mbus_fmt)
+
+    Ancillary routine that fills a \ :c:type:`struct v4l2_pix_format <v4l2_pix_format>`\  fields from a \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\ .
+
+    :param struct v4l2_pix_format \*pix_fmt:
+        pointer to \ :c:type:`struct v4l2_pix_format <v4l2_pix_format>`\  to be filled
+
+    :param const struct v4l2_mbus_framefmt \*mbus_fmt:
+        pointer to \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\  to be used as model
+
+.. _`v4l2_fill_mbus_format`:
+
+v4l2_fill_mbus_format
+=====================
+
+.. c:function:: void v4l2_fill_mbus_format(struct v4l2_mbus_framefmt *mbus_fmt, const struct v4l2_pix_format *pix_fmt, u32 code)
+
+    Ancillary routine that fills a \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\  from a \ :c:type:`struct v4l2_pix_format <v4l2_pix_format>`\  and a data format code.
+
+    :param struct v4l2_mbus_framefmt \*mbus_fmt:
+        pointer to \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\  to be filled
+
+    :param const struct v4l2_pix_format \*pix_fmt:
+        pointer to \ :c:type:`struct v4l2_pix_format <v4l2_pix_format>`\  to be used as model
+
+    :param u32 code:
+        data format code (from \ :c:type:`enum v4l2_mbus_pixelcode <v4l2_mbus_pixelcode>`\ )
+
+.. _`v4l2_fill_pix_format_mplane`:
+
+v4l2_fill_pix_format_mplane
+===========================
+
+.. c:function:: void v4l2_fill_pix_format_mplane(struct v4l2_pix_format_mplane *pix_mp_fmt, const struct v4l2_mbus_framefmt *mbus_fmt)
+
+    Ancillary routine that fills a \ :c:type:`struct v4l2_pix_format_mplane <v4l2_pix_format_mplane>`\  fields from a media bus structure.
+
+    :param struct v4l2_pix_format_mplane \*pix_mp_fmt:
+        pointer to \ :c:type:`struct v4l2_pix_format_mplane <v4l2_pix_format_mplane>`\  to be filled
+
+    :param const struct v4l2_mbus_framefmt \*mbus_fmt:
+        pointer to \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\  to be used as model
+
+.. _`v4l2_fill_mbus_format_mplane`:
+
+v4l2_fill_mbus_format_mplane
+============================
+
+.. c:function:: void v4l2_fill_mbus_format_mplane(struct v4l2_mbus_framefmt *mbus_fmt, const struct v4l2_pix_format_mplane *pix_mp_fmt)
+
+    Ancillary routine that fills a \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\  from a \ :c:type:`struct v4l2_pix_format_mplane <v4l2_pix_format_mplane>`\ .
+
+    :param struct v4l2_mbus_framefmt \*mbus_fmt:
+        pointer to \ :c:type:`struct v4l2_mbus_framefmt <v4l2_mbus_framefmt>`\  to be filled
+
+    :param const struct v4l2_pix_format_mplane \*pix_mp_fmt:
+        pointer to \ :c:type:`struct v4l2_pix_format_mplane <v4l2_pix_format_mplane>`\  to be used as model
+
 .. This file was automatic generated / don't edit.
 

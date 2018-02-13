@@ -21,9 +21,11 @@ ib_process_cq_direct
 Description
 -----------
 
-This function is used to process all outstanding CQ entries on a
-\ ``IB_POLL_DIRECT``\  CQ.  It does not offload CQ processing to a different
-context and does not ask for completion interrupts from the HCA.
+This function is used to process all outstanding CQ entries.
+It does not offload CQ processing to a different context and does
+not ask for completion interrupts from the HCA.
+Using direct processing on CQ with non IB_POLL_DIRECT type may trigger
+concurrent processing.
 
 .. _`ib_process_cq_direct.note`:
 
@@ -33,12 +35,12 @@ Note
 do not pass -1 as \ ``budget``\  unless it is guaranteed that the number
 of completions that will be processed is small.
 
-.. _`ib_alloc_cq`:
+.. _`__ib_alloc_cq`:
 
-ib_alloc_cq
-===========
+__ib_alloc_cq
+=============
 
-.. c:function:: struct ib_cq *ib_alloc_cq(struct ib_device *dev, void *private, int nr_cqe, int comp_vector, enum ib_poll_context poll_ctx)
+.. c:function:: struct ib_cq *__ib_alloc_cq(struct ib_device *dev, void *private, int nr_cqe, int comp_vector, enum ib_poll_context poll_ctx, const char *caller)
 
     allocate a completion queue
 
@@ -57,7 +59,10 @@ ib_alloc_cq
     :param enum ib_poll_context poll_ctx:
         context to poll the CQ from.
 
-.. _`ib_alloc_cq.description`:
+    :param const char \*caller:
+        module owner name.
+
+.. _`__ib_alloc_cq.description`:
 
 Description
 -----------

@@ -9,5 +9,6 @@ buffer
 
     industrialio-buffer-dma_c
     industrialio-buffer-dmaengine_c
+    industrialio-hw-consumer_c
     industrialio-triggered-buffer_c
     kfifo_buf_c

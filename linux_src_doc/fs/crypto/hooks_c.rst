@@ -41,5 +41,43 @@ Return
 
 0 on success, -ENOKEY if the key is missing, or another -errno code
 
+.. _`fscrypt_get_symlink`:
+
+fscrypt_get_symlink
+===================
+
+.. c:function:: const char *fscrypt_get_symlink(struct inode *inode, const void *caddr, unsigned int max_size, struct delayed_call *done)
+
+    get the target of an encrypted symlink
+
+    :param struct inode \*inode:
+        the symlink inode
+
+    :param const void \*caddr:
+        the on-disk contents of the symlink
+
+    :param unsigned int max_size:
+        size of \ ``caddr``\  buffer
+
+    :param struct delayed_call \*done:
+        if successful, will be set up to free the returned target
+
+.. _`fscrypt_get_symlink.description`:
+
+Description
+-----------
+
+If the symlink's encryption key is available, we decrypt its target.
+Otherwise, we encode its target for presentation.
+
+This may sleep, so the filesystem must have dropped out of RCU mode already.
+
+.. _`fscrypt_get_symlink.return`:
+
+Return
+------
+
+the presentable symlink target or an \ :c:func:`ERR_PTR`\ 
+
 .. This file was automatic generated / don't edit.
 

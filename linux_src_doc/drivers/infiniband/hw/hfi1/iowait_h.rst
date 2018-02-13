@@ -411,5 +411,17 @@ given iowait with the given max starve count. The max starve
 count and the index will be updated if the iowait's start
 count is larger.
 
+.. _`iowait_packet_queued`:
+
+iowait_packet_queued
+====================
+
+.. c:function:: bool iowait_packet_queued(struct iowait *wait)
+
+    determine if a packet is already built
+
+    :param struct iowait \*wait:
+        the wait structure
+
 .. This file was automatic generated / don't edit.
 

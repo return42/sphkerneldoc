@@ -60,15 +60,12 @@ Return 1 if constructed; otherwise, return 0.
 hfi1_send_rc_ack
 ================
 
-.. c:function:: void hfi1_send_rc_ack(struct hfi1_ctxtdata *rcd, struct rvt_qp *qp, bool is_fecn)
+.. c:function:: void hfi1_send_rc_ack(struct hfi1_packet *packet, bool is_fecn)
 
     Construct an ACK packet and send it
 
-    :param struct hfi1_ctxtdata \*rcd:
+    :param struct hfi1_packet \*packet:
         *undescribed*
-
-    :param struct rvt_qp \*qp:
-        a pointer to the QP
 
     :param bool is_fecn:
         *undescribed*

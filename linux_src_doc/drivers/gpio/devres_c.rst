@@ -85,6 +85,43 @@ Managed \ :c:func:`gpiod_get_index`\ . GPIO descriptors returned from this funct
 automatically disposed on driver detach. See \ :c:func:`gpiod_get_index`\  for detailed
 information about behavior and return values.
 
+.. _`devm_gpiod_get_from_of_node`:
+
+devm_gpiod_get_from_of_node
+===========================
+
+.. c:function:: struct gpio_desc *devm_gpiod_get_from_of_node(struct device *dev, struct device_node *node, const char *propname, int index, enum gpiod_flags dflags, const char *label)
+
+    obtain a GPIO from an OF node
+
+    :param struct device \*dev:
+        device for lifecycle management
+
+    :param struct device_node \*node:
+        handle of the OF node
+
+    :param const char \*propname:
+        name of the DT property representing the GPIO
+
+    :param int index:
+        index of the GPIO to obtain for the consumer
+
+    :param enum gpiod_flags dflags:
+        GPIO initialization flags
+
+    :param const char \*label:
+        label to attach to the requested GPIO
+
+.. _`devm_gpiod_get_from_of_node.return`:
+
+Return
+------
+
+On successful request the GPIO pin is configured in accordance with
+provided \ ``dflags``\ .
+
+In case of error an \ :c:func:`ERR_PTR`\  is returned.
+
 .. _`devm_fwnode_get_index_gpiod_from_child`:
 
 devm_fwnode_get_index_gpiod_from_child

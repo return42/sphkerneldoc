@@ -812,6 +812,27 @@ Description
      called under RTNL.  This is needed if received packets may be
      forwarded to another interface.
 
+.. _`dev_disable_gro_hw`:
+
+dev_disable_gro_hw
+==================
+
+.. c:function:: void dev_disable_gro_hw(struct net_device *dev)
+
+    disable HW Generic Receive Offload on a device
+
+    :param struct net_device \*dev:
+        device
+
+.. _`dev_disable_gro_hw.description`:
+
+Description
+-----------
+
+     Disable HW Generic Receive Offload (GRO_HW) on a net device.  Must be
+     called under RTNL.  This is needed if Generic XDP is installed on
+     the device.
+
 .. _`register_netdevice_notifier`:
 
 register_netdevice_notifier
@@ -1667,7 +1688,7 @@ netdev_upper_dev_link
         new upper device
 
     :param struct netlink_ext_ack \*extack:
-        *undescribed*
+        netlink extended ack
 
 .. _`netdev_upper_dev_link.description`:
 
@@ -1701,7 +1722,7 @@ netdev_master_upper_dev_link
         upper info to be passed down via notifier
 
     :param struct netlink_ext_ack \*extack:
-        *undescribed*
+        netlink extended ack
 
 .. _`netdev_master_upper_dev_link.description`:
 
@@ -1899,6 +1920,21 @@ Description
 -----------
 
      Change the maximum transfer size of the network device.
+
+.. _`dev_change_tx_queue_len`:
+
+dev_change_tx_queue_len
+=======================
+
+.. c:function:: int dev_change_tx_queue_len(struct net_device *dev, unsigned long new_len)
+
+    Change TX queue length of a netdevice
+
+    :param struct net_device \*dev:
+        device
+
+    :param unsigned long new_len:
+        new tx queue length
 
 .. _`dev_set_group`:
 

@@ -373,7 +373,7 @@ batadv_tp_sender_timeout
     timer that fires in case of packet loss
 
     :param struct timer_list \*t:
-        *undescribed*
+        address to timer_list inside tp_vars
 
 .. _`batadv_tp_sender_timeout.description`:
 
@@ -619,7 +619,7 @@ batadv_tp_receiver_shutdown
     stop a tp meter receiver when timeout is reached without received ack
 
     :param struct timer_list \*t:
-        *undescribed*
+        address to timer_list inside tp_vars
 
 .. _`batadv_tp_send_ack`:
 

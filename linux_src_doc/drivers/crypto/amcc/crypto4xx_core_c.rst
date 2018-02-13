@@ -88,17 +88,20 @@ crypto4xx_ctx_init
     :param struct crypto4xx_ctx \*ctx:
         *undescribed*
 
-.. _`crypto4xx_ce_interrupt_handler`:
+.. _`crypto4xx_interrupt_handler`:
 
-crypto4xx_ce_interrupt_handler
-==============================
+crypto4xx_interrupt_handler
+===========================
 
-.. c:function:: irqreturn_t crypto4xx_ce_interrupt_handler(int irq, void *data)
+.. c:function:: irqreturn_t crypto4xx_interrupt_handler(int irq, void *data, u32 clr_val)
 
     :param int irq:
         *undescribed*
 
     :param void \*data:
+        *undescribed*
+
+    :param u32 clr_val:
         *undescribed*
 
 .. _`crypto4xx_probe`:

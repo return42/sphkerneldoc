@@ -18,9 +18,10 @@ Definition
 .. code-block:: c
 
     struct intel_engine_execlists {
-        struct tasklet_struct irq_tasklet;
+        struct tasklet_struct tasklet;
         struct i915_priolist default_priolist;
         bool no_priolist;
+        u32 __iomem *elsp;
         struct execlist_port {
             struct drm_i915_gem_request *request_count;
     #define EXECLIST_COUNT_BITS 2
@@ -37,6 +38,7 @@ Definition
         unsigned int active;
     #define EXECLISTS_ACTIVE_USER 0
     #define EXECLISTS_ACTIVE_PREEMPT 1
+    #define EXECLISTS_ACTIVE_HWACK 2
         unsigned int port_mask;
         struct rb_root queue;
         struct rb_node *first;
@@ -50,7 +52,7 @@ Definition
 Members
 -------
 
-irq_tasklet
+tasklet
     softirq tasklet for bottom handler
 
 default_priolist
@@ -58,6 +60,9 @@ default_priolist
 
 no_priolist
     priority lists disabled
+
+elsp
+    the ExecList Submission Port register
 
 port
     execlist port states

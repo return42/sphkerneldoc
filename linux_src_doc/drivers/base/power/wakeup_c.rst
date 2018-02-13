@@ -169,7 +169,7 @@ Create a wakeup source object, register it and attach it to \ ``dev``\ .
 device_wakeup_attach_irq
 ========================
 
-.. c:function:: int device_wakeup_attach_irq(struct device *dev, struct wake_irq *wakeirq)
+.. c:function:: void device_wakeup_attach_irq(struct device *dev, struct wake_irq *wakeirq)
 
     Attach a wakeirq to a wakeup source
 

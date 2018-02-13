@@ -73,7 +73,7 @@ ixgbevf_hv_reset_hw_vf
     V variant; the VF/PF communication is through the PCI config space.
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        pointer to private hardware struct
 
 .. _`ixgbevf_stop_hw_vf`:
 
@@ -149,7 +149,7 @@ ixgbevf_get_reta_locked
     get the RSS redirection table (RETA) contents.
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        pointer to hardware structure
 
     :param u32 \*reta:
         buffer to fill with RETA contents.
@@ -285,10 +285,10 @@ ixgbevf_hv_update_mc_addr_list_vf
     V variant - just a stub.
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        unused
 
     :param struct net_device \*netdev:
-        *undescribed*
+        unused
 
 .. _`ixgbevf_update_xcast_mode`:
 
@@ -322,10 +322,10 @@ ixgbevf_hv_update_xcast_mode
     V variant - just a stub.
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        unused
 
     :param int xcast_mode:
-        *undescribed*
+        unused
 
 .. _`ixgbevf_set_vfta_vf`:
 
@@ -358,16 +358,16 @@ ixgbevf_hv_set_vfta_vf
     V variant - just a stub.
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        unused
 
     :param u32 vlan:
-        *undescribed*
+        unused
 
     :param u32 vind:
-        *undescribed*
+        unused
 
     :param bool vlan_on:
-        *undescribed*
+        unused
 
 .. _`ixgbevf_setup_mac_link_vf`:
 
@@ -417,7 +417,7 @@ ixgbevf_check_mac_link_vf
         true is link is up, false otherwise
 
     :param bool autoneg_wait_to_complete:
-        true when waiting for completion is needed
+        unused
 
 .. _`ixgbevf_check_mac_link_vf.description`:
 
@@ -436,16 +436,16 @@ ixgbevf_hv_check_mac_link_vf
     V variant; there is no mailbox communication.
 
     :param struct ixgbe_hw \*hw:
-        *undescribed*
+        pointer to private hardware struct
 
     :param ixgbe_link_speed \*speed:
-        *undescribed*
+        pointer to link speed
 
     :param bool \*link_up:
-        *undescribed*
+        true is link is up, false otherwise
 
     :param bool autoneg_wait_to_complete:
-        *undescribed*
+        unused
 
 .. _`ixgbevf_set_rlpml_vf`:
 

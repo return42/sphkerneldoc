@@ -24,6 +24,7 @@ drm
     radeon/index
     rcar-du/index
     rockchip/index
+    scheduler/index
     sti/index
     sun4i/index
     tegra/index
@@ -82,6 +83,7 @@ drm
     drm_modeset_lock_c
     drm_of_c
     drm_panel_c
+    drm_panel_orientation_quirks_c
     drm_pci_c
     drm_plane_c
     drm_plane_helper_c

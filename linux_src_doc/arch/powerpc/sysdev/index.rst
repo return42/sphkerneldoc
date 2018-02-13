@@ -7,7 +7,6 @@ sysdev
 .. toctree::
     :maxdepth: 1
 
-    axonram_c
     fsl_gtm_c
     fsl_lbc_c
     fsl_rio_c

@@ -8,7 +8,7 @@ __pci_read_base
 
 .. c:function:: int __pci_read_base(struct pci_dev *dev, enum pci_bar_type type, struct resource *res, unsigned int pos)
 
-    read a PCI BAR
+    Read a PCI BAR
 
     :param struct pci_dev \*dev:
         the PCI device
@@ -36,7 +36,7 @@ pci_ext_cfg_is_aliased
 
 .. c:function:: bool pci_ext_cfg_is_aliased(struct pci_dev *dev)
 
-    is ext config space just an alias of std config?
+    Is ext config space just an alias of std config?
 
     :param struct pci_dev \*dev:
         PCI device
@@ -70,7 +70,7 @@ pci_cfg_space_size_ext
 
 .. c:function:: int pci_cfg_space_size_ext(struct pci_dev *dev)
 
-    get the configuration space size of the PCI device.
+    Get the configuration space size of the PCI device
 
     :param struct pci_dev \*dev:
         PCI device
@@ -94,7 +94,7 @@ pci_intx_mask_broken
 
 .. c:function:: int pci_intx_mask_broken(struct pci_dev *dev)
 
-    test PCI_COMMAND_INTX_DISABLE writability
+    Test PCI_COMMAND_INTX_DISABLE writability
 
     :param struct pci_dev \*dev:
         PCI device
@@ -114,7 +114,7 @@ pci_setup_device
 
 .. c:function:: int pci_setup_device(struct pci_dev *dev)
 
-    fill in class and map information of a device
+    Fill in class and map information of a device
 
     :param struct pci_dev \*dev:
         the device structure to fill
@@ -125,7 +125,7 @@ Description
 -----------
 
 Initialize the device structure with information about the device's
-vendor,class,memory and IO-space addresses,IRQ lines etc.
+vendor,class,memory and IO-space addresses, IRQ lines etc.
 Called at initialisation of the PCI subsystem and by CardBus services.
 Returns 0 on success and negative if unknown type of device (not normal,
 bridge or CardBus).
@@ -156,7 +156,7 @@ pci_release_dev
 
 .. c:function:: void pci_release_dev(struct device *dev)
 
-    free a pci device structure when all users of it are finished.
+    Free a PCI device structure when all users of it are finished
 
     :param struct device \*dev:
         device that's been disconnected
@@ -166,7 +166,7 @@ pci_release_dev
 Description
 -----------
 
-Will be called only by the device core when all users of this pci device are
+Will be called only by the device core when all users of this PCI device are
 done.
 
 .. _`pci_scan_slot`:
@@ -176,13 +176,13 @@ pci_scan_slot
 
 .. c:function:: int pci_scan_slot(struct pci_bus *bus, int devfn)
 
-    scan a PCI slot on a bus for devices.
+    Scan a PCI slot on a bus for devices
 
     :param struct pci_bus \*bus:
         PCI bus to scan
 
     :param int devfn:
-        slot number to scan (must have zero function.)
+        slot number to scan (must have zero function)
 
 .. _`pci_scan_slot.description`:
 
@@ -249,10 +249,10 @@ pcibios_root_bridge_prepare
 
 .. c:function:: int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
 
-    Platform-specific host bridge setup.
+    Platform-specific host bridge setup
 
     :param struct pci_host_bridge \*bridge:
-        Host bridge to set up.
+        Host bridge to set up
 
 .. _`pcibios_root_bridge_prepare.description`:
 
@@ -269,7 +269,7 @@ pci_rescan_bus_bridge_resize
 
 .. c:function:: unsigned int pci_rescan_bus_bridge_resize(struct pci_dev *bridge)
 
-    scan a PCI bus for devices.
+    Scan a PCI bus for devices
 
     :param struct pci_dev \*bridge:
         PCI bridge for the bus to scan
@@ -293,7 +293,7 @@ pci_rescan_bus
 
 .. c:function:: unsigned int pci_rescan_bus(struct pci_bus *bus)
 
-    scan a PCI bus for devices.
+    Scan a PCI bus for devices
 
     :param struct pci_bus \*bus:
         PCI bus to scan
@@ -303,8 +303,8 @@ pci_rescan_bus
 Description
 -----------
 
-Scan a PCI bus and child buses for new devices, adds them,
-and enables them.
+Scan a PCI bus and child buses for new devices, add them,
+and enable them.
 
 Returns the max number of subordinate bus discovered.
 

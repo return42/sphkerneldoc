@@ -67,24 +67,34 @@ Description
 
 Returns maximum size, in bytes, of a backchannel message
 
-.. _`rpcrdma_bc_marshal_reply`:
+.. _`xprt_rdma_bc_send_reply`:
 
-rpcrdma_bc_marshal_reply
-========================
+xprt_rdma_bc_send_reply
+=======================
 
-.. c:function:: int rpcrdma_bc_marshal_reply(struct rpc_rqst *rqst)
+.. c:function:: int xprt_rdma_bc_send_reply(struct rpc_rqst *rqst)
 
-    Send backwards direction reply
+    marshal and send a backchannel reply
 
     :param struct rpc_rqst \*rqst:
-        buffer containing RPC reply data
+        RPC rqst with a backchannel RPC reply in rq_snd_buf
 
-.. _`rpcrdma_bc_marshal_reply.description`:
+.. _`xprt_rdma_bc_send_reply.description`:
 
 Description
 -----------
 
-Returns zero on success.
+Caller holds the transport's write lock.
+
+.. _`xprt_rdma_bc_send_reply.return`:
+
+Return
+------
+
+%0 if the RPC message has been sent
+\ ``-ENOTCONN``\  if the caller should reconnect and call again
+\ ``-EIO``\  if a permanent error occurred and the request was not
+sent. Do not try to send this message again.
 
 .. _`xprt_rdma_bc_destroy`:
 
@@ -123,7 +133,7 @@ rpcrdma_bc_receive_call
     Handle a backward direction call
 
     :param struct rpcrdma_xprt \*r_xprt:
-        *undescribed*
+        transport receiving the call
 
     :param struct rpcrdma_rep \*rep:
         receive buffer containing the call

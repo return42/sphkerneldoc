@@ -460,7 +460,7 @@ Description
 relay_file_poll
 ===============
 
-.. c:function:: unsigned int relay_file_poll(struct file *filp, poll_table *wait)
+.. c:function:: __poll_t relay_file_poll(struct file *filp, poll_table *wait)
 
     poll file op for relay files
 

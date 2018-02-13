@@ -22,6 +22,7 @@ Definition
         __u16 flags;
     #define I2C_M_RD 0x0001
     #define I2C_M_TEN 0x0010
+    #define I2C_M_DMA_SAFE 0x0200
     #define I2C_M_RECV_LEN 0x0400
     #define I2C_M_NO_RD_ACK 0x0800
     #define I2C_M_IGNORE_NAK 0x1000

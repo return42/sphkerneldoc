@@ -94,14 +94,14 @@ they might not have iommus, and would prefer to
 directly allocate memory for every segment/resource. This is not yet
 supported, though.
 
-.. _`rproc_elf_find_rsc_table`:
+.. _`rproc_elf_load_rsc_table`:
 
-rproc_elf_find_rsc_table
+rproc_elf_load_rsc_table
 ========================
 
-.. c:function:: struct resource_table *rproc_elf_find_rsc_table(struct rproc *rproc, const struct firmware *fw, int *tablesz)
+.. c:function:: int rproc_elf_load_rsc_table(struct rproc *rproc, const struct firmware *fw)
 
-    find the resource table
+    load the resource table
 
     :param struct rproc \*rproc:
         the rproc handle
@@ -109,22 +109,20 @@ rproc_elf_find_rsc_table
     :param const struct firmware \*fw:
         the ELF firmware image
 
-    :param int \*tablesz:
-        place holder for providing back the table size
-
-.. _`rproc_elf_find_rsc_table.description`:
+.. _`rproc_elf_load_rsc_table.description`:
 
 Description
 -----------
 
 This function finds the resource table inside the remote processor's
-firmware. It is used both upon the registration of \ ``rproc``\  (in order
-to look for and register the supported virito devices), and when the
-\ ``rproc``\  is booted.
+firmware, load it into the \ ``cached_table``\  and update \ ``table_ptr``\ .
 
-Returns the pointer to the resource table if it is found, and write its
-size into \ ``tablesz``\ . If a valid table isn't found, NULL is returned
-(and \ ``tablesz``\  isn't set).
+.. _`rproc_elf_load_rsc_table.return`:
+
+Return
+------
+
+0 on success, negative errno on failure.
 
 .. _`rproc_elf_find_loaded_rsc_table`:
 

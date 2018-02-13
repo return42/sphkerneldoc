@@ -66,7 +66,7 @@ read_ns_show
 
 .. c:function:: ssize_t read_ns_show(struct device *dev, struct device_attribute *attr, char *buf)
 
-    return read us - overall time spent waiting on reads in ns.
+    return read ns - overall time spent waiting on reads in ns.
 
     :param struct device \*dev:
         struct device

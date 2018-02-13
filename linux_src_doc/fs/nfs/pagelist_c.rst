@@ -165,7 +165,7 @@ be called again.
 nfs_pgio_rpcsetup
 =================
 
-.. c:function:: void nfs_pgio_rpcsetup(struct nfs_pgio_header *hdr, unsigned int count, unsigned int offset, int how, struct nfs_commit_info *cinfo)
+.. c:function:: void nfs_pgio_rpcsetup(struct nfs_pgio_header *hdr, unsigned int count, int how, struct nfs_commit_info *cinfo)
 
     Set up arguments for a pageio call
 
@@ -174,9 +174,6 @@ nfs_pgio_rpcsetup
 
     :param unsigned int count:
         Number of bytes to read
-
-    :param unsigned int offset:
-        Initial offset
 
     :param int how:
         How to commit data (writes only)

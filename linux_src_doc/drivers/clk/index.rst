@@ -18,6 +18,7 @@ clk
     renesas/index
     rockchip/index
     samsung/index
+    sprd/index
     st/index
     sunxi/index
     sunxi-ng/index
@@ -25,6 +26,7 @@ clk
     ti/index
     versatile/index
     zynq/index
+    clk-aspeed_c
     clk-axm5516_c
     clk-bulk_c
     clk-conf_c

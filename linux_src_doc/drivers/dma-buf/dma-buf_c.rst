@@ -14,10 +14,10 @@ provided in the \ :c:type:`struct reservation_object <reservation_object>`\  str
 Userspace can query the state of these implicitly tracked fences using \ :c:func:`poll`\ 
 and related system calls:
 
-- Checking for POLLIN, i.e. read access, can be use to query the state of the
+- Checking for EPOLLIN, i.e. read access, can be use to query the state of the
   most recent write or exclusive fence.
 
-- Checking for POLLOUT, i.e. write access, can be used to query the state of
+- Checking for EPOLLOUT, i.e. write access, can be used to query the state of
   all attached fences, shared and exclusive ones.
 
 Note that this only signals the completion of the respective fences, i.e. the
@@ -39,13 +39,13 @@ is fairly simple:
 
 2. Userspace passes this file-descriptors to all drivers it wants this buffer
    to share with: First the filedescriptor is converted to a \ :c:type:`struct dma_buf <dma_buf>`\  using
-   \ :c:func:`dma_buf_get`\ . The the buffer is attached to the device using
+   \ :c:func:`dma_buf_get`\ . Then the buffer is attached to the device using
    \ :c:func:`dma_buf_attach`\ .
 
    Up to this stage the exporter is still free to migrate or reallocate the
    backing storage.
 
-3. Once the buffer is attached to all devices userspace can inniate DMA
+3. Once the buffer is attached to all devices userspace can initiate DMA
    access to the shared buffer. In the kernel this is done by calling
    \ :c:func:`dma_buf_map_attachment`\  and \ :c:func:`dma_buf_unmap_attachment`\ .
 
@@ -229,7 +229,7 @@ Description
 Returns sg_table containing the scatterlist to be returned; returns ERR_PTR
 on error. May return -EINTR if it is interrupted by a signal.
 
-A mapping must be unmapped again using \ :c:func:`dma_buf_map_attachment`\ . Note that
+A mapping must be unmapped by using \ :c:func:`dma_buf_unmap_attachment`\ . Note that
 the underlying backing storage is pinned for as long as a mapping exists,
 therefore users/importers should not hold onto a mapping for undue amounts of
 time.

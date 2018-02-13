@@ -25,12 +25,12 @@ nfp_nsp_close
     :param struct nfp_nsp \*state:
         NFP SP state
 
-.. _`nfp_nsp_command`:
+.. _`__nfp_nsp_command`:
 
-nfp_nsp_command
-===============
+__nfp_nsp_command
+=================
 
-.. c:function:: int nfp_nsp_command(struct nfp_nsp *state, u16 code, u32 option, u32 buff_cpp, u64 buff_addr)
+.. c:function:: int __nfp_nsp_command(struct nfp_nsp *state, u16 code, u32 option, u32 buff_cpp, u64 buff_addr, u32 timeout_sec)
 
     Execute a command on the NFP Service Processor
 
@@ -49,7 +49,10 @@ nfp_nsp_command
     :param u64 buff_addr:
         NFP SP Buffer Host address
 
-.. _`nfp_nsp_command.return`:
+    :param u32 timeout_sec:
+        Timeout value to wait for completion in seconds
+
+.. _`__nfp_nsp_command.return`:
 
 Return
 ------
@@ -62,7 +65,7 @@ positive value for NSP completion with a result code
 -ENODEV if the NSP is not a supported model
 -EBUSY if the NSP is stuck
 -EINTR if interrupted while waiting for completion
--ETIMEDOUT if the NSP took longer than 30 seconds to complete
+-ETIMEDOUT if the NSP took longer than \ ``timeout_sec``\  seconds to complete
 
 .. This file was automatic generated / don't edit.
 

@@ -91,7 +91,7 @@ Definition
         enum stdu_content_type content_fb_type;
         s32 display_width, display_height;
         bool defined;
-        struct ttm_bo_kmap_obj host_map, guest_map;
+        struct ttm_bo_kmap_obj host_map;
         unsigned int cpp;
     }
 
@@ -123,9 +123,6 @@ defined
     true if the current display unit has been initialized
 
 host_map
-    *undescribed*
-
-guest_map
     *undescribed*
 
 cpp

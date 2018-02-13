@@ -43,19 +43,19 @@ Description
 Destroy and free the GTT manager, returns -EBUSY if ranges are still
 allocated inside it.
 
-.. _`amdgpu_gtt_mgr_is_allocated`:
+.. _`amdgpu_gtt_mgr_has_gart_addr`:
 
-amdgpu_gtt_mgr_is_allocated
-===========================
+amdgpu_gtt_mgr_has_gart_addr
+============================
 
-.. c:function:: bool amdgpu_gtt_mgr_is_allocated(struct ttm_mem_reg *mem)
+.. c:function:: bool amdgpu_gtt_mgr_has_gart_addr(struct ttm_mem_reg *mem)
 
     Check if mem has address space
 
     :param struct ttm_mem_reg \*mem:
         the mem object to check
 
-.. _`amdgpu_gtt_mgr_is_allocated.description`:
+.. _`amdgpu_gtt_mgr_has_gart_addr.description`:
 
 Description
 -----------

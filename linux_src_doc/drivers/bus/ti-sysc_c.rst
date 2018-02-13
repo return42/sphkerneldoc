@@ -25,6 +25,10 @@ Definition
         int offsets[SYSC_MAX_REGS];
         struct clk *clocks[SYSC_MAX_CLOCKS];
         const char *legacy_mode;
+        const struct sysc_capabilities *cap;
+        struct sysc_config cfg;
+        const char *name;
+        u32 revision;
     }
 
 .. _`sysc.members`:
@@ -52,6 +56,18 @@ clocks
 
 legacy_mode
     configured for legacy mode if set
+
+cap
+    interconnect target module capabilities
+
+cfg
+    interconnect target module configuration
+
+name
+    name if available
+
+revision
+    interconnect target module revision
 
 .. _`sysc_parse_and_check_child_range`:
 

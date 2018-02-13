@@ -9,7 +9,6 @@ arm
 
     vgic/index
     aarch32_c
-    arch_timer_c
     arm_c
     mmio_c
     mmu_c

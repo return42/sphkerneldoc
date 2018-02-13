@@ -30,33 +30,6 @@ generic_permission is rcu-walk aware. It returns -ECHILD in case an rcu-walk
 request cannot be satisfied (eg. requires blocking or too much complexity).
 It would then be called again in ref-walk mode.
 
-.. _`__inode_permission`:
-
-__inode_permission
-==================
-
-.. c:function:: int __inode_permission(struct inode *inode, int mask)
-
-    Check for access rights to a given inode
-
-    :param struct inode \*inode:
-        Inode to check permission on
-
-    :param int mask:
-        Right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
-
-.. _`__inode_permission.description`:
-
-Description
------------
-
-Check for read/write/execute permissions on an inode.
-
-When checking for MAY_APPEND, MAY_WRITE must also be set in \ ``mask``\ .
-
-This does not check for a read-only file system.  You probably want
-\ :c:func:`inode_permission`\ .
-
 .. _`sb_permission`:
 
 sb_permission

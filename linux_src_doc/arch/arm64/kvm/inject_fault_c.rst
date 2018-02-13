@@ -87,5 +87,10 @@ Description
 It is assumed that this code is called from the VCPU thread and that the
 VCPU therefore is not currently executing guest code.
 
+Systems with the RAS Extensions specify an imp-def ESR (ISV/IDS = 1) with
+the remaining ISS all-zeros so that this error is not interpreted as an
+uncategorized RAS error. Without the RAS Extensions we can't specify an ESR
+value, so the CPU generates an imp-def value.
+
 .. This file was automatic generated / don't edit.
 

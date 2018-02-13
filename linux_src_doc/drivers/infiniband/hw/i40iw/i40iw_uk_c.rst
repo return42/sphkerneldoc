@@ -292,18 +292,6 @@ i40iw_cq_poll_completion
     :param struct i40iw_cq_poll_info \*info:
         cq poll information returned
 
-.. _`i40iw_qp_round_up`:
-
-i40iw_qp_round_up
-=================
-
-.. c:function:: int i40iw_qp_round_up(u32 wqdepth)
-
-    return round up QP WQ depth
-
-    :param u32 wqdepth:
-        WQ depth in quantas to round up
-
 .. _`i40iw_get_wqe_shift`:
 
 i40iw_get_wqe_shift

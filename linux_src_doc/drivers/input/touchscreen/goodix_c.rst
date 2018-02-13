@@ -175,25 +175,6 @@ goodix_i2c_test
     :param struct i2c_client \*client:
         the i2c client
 
-.. _`goodix_request_input_dev`:
-
-goodix_request_input_dev
-========================
-
-.. c:function:: int goodix_request_input_dev(struct goodix_ts_data *ts)
-
-    Allocate, populate and register the input device
-
-    :param struct goodix_ts_data \*ts:
-        our goodix_ts_data pointer
-
-.. _`goodix_request_input_dev.description`:
-
-Description
------------
-
-Must be called during probe
-
 .. _`goodix_configure_dev`:
 
 goodix_configure_dev

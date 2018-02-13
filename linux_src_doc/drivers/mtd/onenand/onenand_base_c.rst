@@ -664,37 +664,6 @@ Description
 
 OneNAND read out-of-band data from the spare area
 
-.. _`onenand_read`:
-
-onenand_read
-============
-
-.. c:function:: int onenand_read(struct mtd_info *mtd, loff_t from, size_t len, size_t *retlen, u_char *buf)
-
-    [MTD Interface] Read data from flash \ ``param``\  mtd           MTD device structure \ ``param``\  from          offset to read from \ ``param``\  len           number of bytes to read \ ``param``\  retlen        pointer to variable to store the number of read bytes \ ``param``\  buf           the databuffer to put data
-
-    :param struct mtd_info \*mtd:
-        *undescribed*
-
-    :param loff_t from:
-        *undescribed*
-
-    :param size_t len:
-        *undescribed*
-
-    :param size_t \*retlen:
-        *undescribed*
-
-    :param u_char \*buf:
-        *undescribed*
-
-.. _`onenand_read.description`:
-
-Description
------------
-
-Read with ecc
-
 .. _`onenand_read_oob`:
 
 onenand_read_oob
@@ -903,37 +872,6 @@ Description
 -----------
 
 OneNAND write out-of-band
-
-.. _`onenand_write`:
-
-onenand_write
-=============
-
-.. c:function:: int onenand_write(struct mtd_info *mtd, loff_t to, size_t len, size_t *retlen, const u_char *buf)
-
-    [MTD Interface] write buffer to FLASH \ ``param``\  mtd           MTD device structure \ ``param``\  to            offset to write to \ ``param``\  len           number of bytes to write \ ``param``\  retlen        pointer to variable to store the number of written bytes \ ``param``\  buf           the data to write
-
-    :param struct mtd_info \*mtd:
-        *undescribed*
-
-    :param loff_t to:
-        *undescribed*
-
-    :param size_t len:
-        *undescribed*
-
-    :param size_t \*retlen:
-        *undescribed*
-
-    :param const u_char \*buf:
-        *undescribed*
-
-.. _`onenand_write.description`:
-
-Description
------------
-
-Write with ECC
 
 .. _`onenand_write_oob`:
 

@@ -508,7 +508,7 @@ opa_vnic_vema_send_trap
     - This function sends a trap to the EM
 
     :param struct opa_vnic_adapter \*adapter:
-        *undescribed*
+        pointer to vnic adapter
 
     :param struct __opa_veswport_trap \*data:
         pointer to trap data filled by calling function

@@ -132,66 +132,6 @@ Definition
 .. code-block:: c
 
     struct iwl_bt_coex_profile_notif {
-        __le32 mbox_msg[8];
-        __le32 msg_idx;
-        __le32 bt_ci_compliance;
-        __le32 primary_ch_lut;
-        __le32 secondary_ch_lut;
-        __le32 bt_activity_grading;
-        u8 ttc_status;
-        u8 rrc_status;
-        __le16 reserved;
-    }
-
-.. _`iwl_bt_coex_profile_notif.members`:
-
-Members
--------
-
-mbox_msg
-    message from BT to WiFi
-
-msg_idx
-    the index of the message
-
-bt_ci_compliance
-    enum \ ``iwl_bt_ci_compliance``\ 
-
-primary_ch_lut
-    LUT used for primary channel \ :c:type:`enum iwl_bt_coex_lut_type <iwl_bt_coex_lut_type>`\ 
-
-secondary_ch_lut
-    LUT used for secondary channel \ :c:type:`enum iwl_bt_coex_lut_type <iwl_bt_coex_lut_type>`\ 
-
-bt_activity_grading
-    the activity of BT \ :c:type:`enum iwl_bt_activity_grading <iwl_bt_activity_grading>`\ 
-
-ttc_status
-    is TTC enabled - one bit per PHY
-
-rrc_status
-    is RRC enabled - one bit per PHY
-
-reserved
-    reserved
-
-.. _`iwl_bt_coex_profile_notif_v4`:
-
-struct iwl_bt_coex_profile_notif_v4
-===================================
-
-.. c:type:: struct iwl_bt_coex_profile_notif_v4
-
-    notification about BT coex
-
-.. _`iwl_bt_coex_profile_notif_v4.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct iwl_bt_coex_profile_notif_v4 {
         __le32 mbox_msg[4];
         __le32 msg_idx;
         __le32 bt_ci_compliance;
@@ -203,7 +143,7 @@ Definition
         __le16 reserved;
     }
 
-.. _`iwl_bt_coex_profile_notif_v4.members`:
+.. _`iwl_bt_coex_profile_notif.members`:
 
 Members
 -------

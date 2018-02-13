@@ -33,7 +33,7 @@ and evicting any page cache pages in the region under I/O.
 dax_iomap_fault
 ===============
 
-.. c:function:: int dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t *pfnp, const struct iomap_ops *ops)
+.. c:function:: int dax_iomap_fault(struct vm_fault *vmf, enum page_entry_size pe_size, pfn_t *pfnp, int *iomap_errp, const struct iomap_ops *ops)
 
     handle a page fault on a DAX file
 
@@ -45,6 +45,9 @@ dax_iomap_fault
 
     :param pfn_t \*pfnp:
         PFN to insert for synchronous faults if fsync is required
+
+    :param int \*iomap_errp:
+        Storage for detailed error code in case of error
 
     :param const struct iomap_ops \*ops:
         Iomap ops passed from the file system

@@ -927,7 +927,8 @@ Description
 
 Returns the device states parsed from the OF node. The memory for the states
 is allocated by this function and is the responsibility of the caller to
-free the memory after use.
+free the memory after use. If no domain idle states is found it returns
+-EINVAL and in case of errors, a negative error code.
 
 .. This file was automatic generated / don't edit.
 

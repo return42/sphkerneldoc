@@ -288,14 +288,14 @@ Context
 
 Might sleep.
 
-.. _`device_add_disk`:
+.. _`__device_add_disk`:
 
-device_add_disk
-===============
+__device_add_disk
+=================
 
-.. c:function:: void device_add_disk(struct device *parent, struct gendisk *disk)
+.. c:function:: void __device_add_disk(struct device *parent, struct gendisk *disk, bool register_queue)
 
-    add partitioning information to kernel list
+    add disk information to kernel list
 
     :param struct device \*parent:
         parent device for the disk
@@ -303,7 +303,10 @@ device_add_disk
     :param struct gendisk \*disk:
         per-device partitioning information
 
-.. _`device_add_disk.description`:
+    :param bool register_queue:
+        register the queue if set to true
+
+.. _`__device_add_disk.description`:
 
 Description
 -----------

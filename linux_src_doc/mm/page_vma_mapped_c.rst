@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/page_vma_mapped.c
 
+.. _`check_pte`:
+
+check_pte
+=========
+
+.. c:function:: bool check_pte(struct page_vma_mapped_walk *pvmw)
+
+    check if \ ``pvmw``\ ->page is mapped at the \ ``pvmw``\ ->pte
+
+    :param struct page_vma_mapped_walk \*pvmw:
+        *undescribed*
+
+.. _`check_pte.description`:
+
+Description
+-----------
+
+page_vma_mapped_walk() found a place where \ ``pvmw``\ ->page is \*potentially\*
+mapped. \ :c:func:`check_pte`\  has to validate this.
+
+\ ``pvmw``\ ->pte may point to empty PTE, swap PTE or PTE pointing to arbitrary
+page.
+
+If PVMW_MIGRATION flag is set, returns true if \ ``pvmw``\ ->pte contains migration
+entry that points to \ ``pvmw``\ ->page or any subpage in case of THP.
+
+If PVMW_MIGRATION flag is not set, returns true if \ ``pvmw``\ ->pte points to
+\ ``pvmw``\ ->page or any subpage in case of THP.
+
+Otherwise, return false.
+
 .. _`page_vma_mapped_walk`:
 
 page_vma_mapped_walk

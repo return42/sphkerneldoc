@@ -226,6 +226,60 @@ dpm_watchdog_clear
     :param struct dpm_watchdog \*wd:
         Watchdog to disable.
 
+.. _`dev_pm_skip_next_resume_phases`:
+
+dev_pm_skip_next_resume_phases
+==============================
+
+.. c:function:: void dev_pm_skip_next_resume_phases(struct device *dev)
+
+    Skip next system resume phases for device.
+
+    :param struct device \*dev:
+        Target device.
+
+.. _`dev_pm_skip_next_resume_phases.description`:
+
+Description
+-----------
+
+Make the core skip the "early resume" and "resume" phases for \ ``dev``\ .
+
+This function can be called by middle-layer code during the "noirq" phase of
+system resume if necessary, but not by device drivers.
+
+.. _`suspend_event`:
+
+suspend_event
+=============
+
+.. c:function:: pm_message_t suspend_event(pm_message_t resume_msg)
+
+    Return a "suspend" message for given "resume" one.
+
+    :param pm_message_t resume_msg:
+        PM message representing a system-wide resume transition.
+
+.. _`dev_pm_may_skip_resume`:
+
+dev_pm_may_skip_resume
+======================
+
+.. c:function:: bool dev_pm_may_skip_resume(struct device *dev)
+
+    System-wide device resume optimization check.
+
+    :param struct device \*dev:
+        Target device.
+
+.. _`dev_pm_may_skip_resume.description`:
+
+Description
+-----------
+
+Checks whether or not the device may be left in suspend after a system-wide
+transition to the working state.
+
 .. _`device_resume_noirq`:
 
 device_resume_noirq

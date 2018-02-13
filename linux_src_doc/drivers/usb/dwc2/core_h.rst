@@ -540,12 +540,14 @@ Definition
         unsigned fs_phy_type:2;
         unsigned i2c_enable:1;
         unsigned num_dev_ep:4;
+        unsigned num_dev_in_eps : 4;
         unsigned num_dev_perio_in_ep:4;
         unsigned total_fifo_size:16;
         unsigned power_optimized:1;
         unsigned utmi_phy_data_width:2;
         u32 snpsid;
         u32 dev_ep_dirs;
+        u32 g_tx_fifo_size[MAX_EPS_CHANNELS];
     }
 
 .. _`dwc2_hw_params.members`:
@@ -610,6 +612,9 @@ i2c_enable
 num_dev_ep
     *undescribed*
 
+num_dev_in_eps
+    *undescribed*
+
 num_dev_perio_in_ep
     *undescribed*
 
@@ -631,6 +636,10 @@ snpsid
 
 dev_ep_dirs
     Direction of device endpoints (GHWCFG1)
+    \ ``g_tx_fifo_size``\ []    Power-on values of TxFIFO sizes
+
+g_tx_fifo_size
+    *undescribed*
 
 .. _`dwc2_hw_params.description`:
 
@@ -658,6 +667,7 @@ The values that are not in dwc2_core_params are documented below.
 2 - Internal DMA
 \ ``power_optimized``\      Are power optimizations enabled?
 \ ``num_dev_ep``\           Number of device endpoints available
+\ ``num_dev_in_eps``\       Number of device IN endpoints available
 \ ``num_dev_perio_in_ep``\  Number of device periodic IN endpoints
 available
 \ ``dev_token_q_depth``\    Device Mode IN Token Sequence Learning Queue
@@ -912,6 +922,7 @@ Definition
         int irq;
         struct clk *clk;
         struct reset_control *reset;
+        struct reset_control *reset_ecc;
         unsigned int queuing_high_bandwidth:1;
         unsigned int srp_success:1;
         struct workqueue_struct *wq_otg;
@@ -947,6 +958,7 @@ Definition
             } b;
         } flags;
         struct list_head non_periodic_sched_inactive;
+        struct list_head non_periodic_sched_waiting;
         struct list_head non_periodic_sched_active;
         struct list_head *non_periodic_qh_ptr;
         struct list_head periodic_sched_inactive;
@@ -1101,6 +1113,9 @@ clk
 reset
     *undescribed*
 
+reset_ecc
+    *undescribed*
+
 queuing_high_bandwidth
     True if multiple packets of a high-bandwidth
     transfer are in process of being queued
@@ -1144,6 +1159,9 @@ non_periodic_sched_inactive
     Inactive QHs in the non-periodic schedule.
     Transfers associated with these QHs are not currently
     assigned to a host channel.
+
+non_periodic_sched_waiting
+    *undescribed*
 
 non_periodic_sched_active
     Active QHs in the non-periodic schedule.

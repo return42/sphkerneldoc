@@ -150,6 +150,7 @@ Definition
         size_t buffer_size;
         uint32_t buffer_free;
         int pid;
+        size_t pages_high;
     }
 
 .. _`binder_alloc.members`:
@@ -198,6 +199,9 @@ buffer_free
 
 pid
     pid for associated binder_proc (invariant after init)
+
+pages_high
+    high watermark of offset in \ ``pages``\ 
 
 .. _`binder_alloc.description`:
 

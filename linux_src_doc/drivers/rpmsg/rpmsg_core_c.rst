@@ -274,7 +274,7 @@ Returns 0 on success and an appropriate error value on failure.
 rpmsg_poll
 ==========
 
-.. c:function:: unsigned int rpmsg_poll(struct rpmsg_endpoint *ept, struct file *filp, poll_table *wait)
+.. c:function:: __poll_t rpmsg_poll(struct rpmsg_endpoint *ept, struct file *filp, poll_table *wait)
 
     poll the endpoint's send buffers
 

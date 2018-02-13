@@ -317,6 +317,7 @@ Definition
         enum usb_device_state state;
         const char *name;
         struct device dev;
+        unsigned isoch_delay;
         unsigned out_epnum;
         unsigned in_epnum;
         unsigned mA;
@@ -377,6 +378,9 @@ name
 
 dev
     Driver model state for this abstract device.
+
+isoch_delay
+    value from Set Isoch Delay request. Only valid on SS/SSP
 
 out_epnum
     last used out ep number

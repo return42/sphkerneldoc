@@ -15,5 +15,5 @@ dc
     dce110/index
     dcn10/index
     inc/index
-    dc_h
+    dc_stream_h
     dm_helpers_h

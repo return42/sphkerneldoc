@@ -183,7 +183,7 @@ modalias
 
 cs_gpio
     gpio number of the chipselect line (optional, -ENOENT when
-    when not using a GPIO line)
+    not using a GPIO line)
 
 statistics
     statistics for the spi_device

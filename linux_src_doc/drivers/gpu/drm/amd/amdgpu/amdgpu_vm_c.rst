@@ -1,41 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
 
-.. _`amdgpu_vm_alloc_pasid`:
+.. _`amdgpu_vm_level_shift`:
 
-amdgpu_vm_alloc_pasid
+amdgpu_vm_level_shift
 =====================
 
-.. c:function:: int amdgpu_vm_alloc_pasid(unsigned int bits)
+.. c:function:: unsigned amdgpu_vm_level_shift(struct amdgpu_device *adev, unsigned level)
 
-    Allocate a PASID
+    return the addr shift for each level
 
-    :param unsigned int bits:
-        Maximum width of the PASID in bits, must be at least 1
+    :param struct amdgpu_device \*adev:
+        amdgpu_device pointer
 
-.. _`amdgpu_vm_alloc_pasid.description`:
+    :param unsigned level:
+        *undescribed*
+
+.. _`amdgpu_vm_level_shift.description`:
 
 Description
 -----------
 
-Allocates a PASID of the given width while keeping smaller PASIDs
-available if possible.
-
-Returns a positive integer on success. Returns \ ``-EINVAL``\  if bits==0.
-Returns \ ``-ENOSPC``\  if no PASID was available. Returns \ ``-ENOMEM``\  on
-memory allocation failure.
-
-.. _`amdgpu_vm_free_pasid`:
-
-amdgpu_vm_free_pasid
-====================
-
-.. c:function:: void amdgpu_vm_free_pasid(unsigned int pasid)
-
-    Free a PASID
-
-    :param unsigned int pasid:
-        PASID to free
+Returns the number of bits the pfn needs to be right shifted for a level.
 
 .. _`amdgpu_vm_num_entries`:
 
@@ -216,59 +202,6 @@ Description
 
 Make sure the page tables are allocated.
 
-.. _`amdgpu_vm_had_gpu_reset`:
-
-amdgpu_vm_had_gpu_reset
-=======================
-
-.. c:function:: bool amdgpu_vm_had_gpu_reset(struct amdgpu_device *adev, struct amdgpu_vm_id *id)
-
-    check if reset occured since last use
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_vm_id \*id:
-        VMID structure
-
-.. _`amdgpu_vm_had_gpu_reset.description`:
-
-Description
------------
-
-Check if GPU reset occured since last use of the VMID.
-
-.. _`amdgpu_vm_grab_id`:
-
-amdgpu_vm_grab_id
-=================
-
-.. c:function:: int amdgpu_vm_grab_id(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct dma_fence *fence, struct amdgpu_job *job)
-
-    allocate the next free VMID
-
-    :param struct amdgpu_vm \*vm:
-        vm to allocate id for
-
-    :param struct amdgpu_ring \*ring:
-        ring we want to submit job to
-
-    :param struct amdgpu_sync \*sync:
-        sync object where we add dependencies
-
-    :param struct dma_fence \*fence:
-        fence protecting ID from reuse
-
-    :param struct amdgpu_job \*job:
-        *undescribed*
-
-.. _`amdgpu_vm_grab_id.description`:
-
-Description
------------
-
-Allocate an id for the vm, adding fences to the sync obj as necessary.
-
 .. _`amdgpu_vm_check_compute_bug`:
 
 amdgpu_vm_check_compute_bug
@@ -305,50 +238,6 @@ Description
 -----------
 
 Emit a VM flush when it is necessary.
-
-.. _`amdgpu_vm_reset_id`:
-
-amdgpu_vm_reset_id
-==================
-
-.. c:function:: void amdgpu_vm_reset_id(struct amdgpu_device *adev, unsigned vmhub, unsigned vmid)
-
-    reset VMID to zero
-
-    :param struct amdgpu_device \*adev:
-        amdgpu device structure
-
-    :param unsigned vmhub:
-        *undescribed*
-
-    :param unsigned vmid:
-        *undescribed*
-
-.. _`amdgpu_vm_reset_id.description`:
-
-Description
------------
-
-Reset saved GDW, GWS and OA to force switch on next flush.
-
-.. _`amdgpu_vm_reset_all_ids`:
-
-amdgpu_vm_reset_all_ids
-=======================
-
-.. c:function:: void amdgpu_vm_reset_all_ids(struct amdgpu_device *adev)
-
-    reset VMID to zero
-
-    :param struct amdgpu_device \*adev:
-        amdgpu device structure
-
-.. _`amdgpu_vm_reset_all_ids.description`:
-
-Description
------------
-
-Reset VMID to force flush on next use
 
 .. _`amdgpu_vm_bo_find`:
 
@@ -1135,37 +1024,28 @@ Description
 
 Mark \ ``bo``\  as invalid.
 
-.. _`amdgpu_vm_set_fragment_size`:
-
-amdgpu_vm_set_fragment_size
-===========================
-
-.. c:function:: void amdgpu_vm_set_fragment_size(struct amdgpu_device *adev, uint32_t fragment_size_default)
-
-    adjust fragment size in PTE
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param uint32_t fragment_size_default:
-        the default fragment size if it's set auto
-
 .. _`amdgpu_vm_adjust_size`:
 
 amdgpu_vm_adjust_size
 =====================
 
-.. c:function:: void amdgpu_vm_adjust_size(struct amdgpu_device *adev, uint64_t vm_size, uint32_t fragment_size_default)
+.. c:function:: void amdgpu_vm_adjust_size(struct amdgpu_device *adev, uint32_t vm_size, uint32_t fragment_size_default, unsigned max_level, unsigned max_bits)
 
     adjust vm size, block size and fragment size
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-    :param uint64_t vm_size:
+    :param uint32_t vm_size:
         the default vm size if it's set auto
 
     :param uint32_t fragment_size_default:
+        *undescribed*
+
+    :param unsigned max_level:
+        *undescribed*
+
+    :param unsigned max_bits:
         *undescribed*
 
 .. _`amdgpu_vm_init`:
@@ -1201,12 +1081,18 @@ Init \ ``vm``\  fields.
 amdgpu_vm_free_levels
 =====================
 
-.. c:function:: void amdgpu_vm_free_levels(struct amdgpu_vm_pt *level)
+.. c:function:: void amdgpu_vm_free_levels(struct amdgpu_device *adev, struct amdgpu_vm_pt *parent, unsigned level)
 
     free PD/PT levels
 
-    :param struct amdgpu_vm_pt \*level:
+    :param struct amdgpu_device \*adev:
+        amdgpu device structure
+
+    :param struct amdgpu_vm_pt \*parent:
         PD/PT starting level to free
+
+    :param unsigned level:
+        level of parent structure
 
 .. _`amdgpu_vm_free_levels.description`:
 

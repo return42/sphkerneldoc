@@ -94,13 +94,13 @@ ixgbe_tx_maxrate
     callback to set the maximum per-queue bitrate
 
     :param struct net_device \*netdev:
-        *undescribed*
+        network interface device structure
 
     :param int queue_index:
-        *undescribed*
+        Tx queue to set
 
     :param u32 maxrate:
-        *undescribed*
+        desired maximum transmit bitrate
 
 .. _`ixgbe_clean_tx_irq`:
 
@@ -362,7 +362,7 @@ ixgbe_add_rx_frag
         sk_buff to place the data into
 
     :param unsigned int size:
-        *undescribed*
+        size of data in rx_buffer
 
 .. _`ixgbe_add_rx_frag.description`:
 
@@ -454,8 +454,6 @@ traffic pattern.  Constants in this function were computed
 based on theoretical maximum wire speed and thresholds were set based
 on testing data as well as attempting to minimize response time
 while increasing bulk throughput.
-this functionality is controlled by the InterruptThrottleRate module
-parameter (see ixgbe_param.c)
 
 .. _`ixgbe_write_eitr`:
 
@@ -503,10 +501,10 @@ ixgbe_irq_enable
         board private structure
 
     :param bool queues:
-        *undescribed*
+        enable irqs for queues
 
     :param bool flush:
-        *undescribed*
+        flush register write
 
 .. _`ixgbe_poll`:
 
@@ -607,7 +605,7 @@ ixgbe_configure_msi_and_legacy
     Initialize PIN (INTA...) and MSI interrupts
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        board private structure
 
 .. _`ixgbe_configure_tx_ring`:
 
@@ -760,7 +758,7 @@ ixgbe_configure_rscctl
         address of board private structure
 
     :param struct ixgbe_ring \*ring:
-        *undescribed*
+        structure containing ring specific data
 
 .. _`ixgbe_configure_rx`:
 
@@ -846,7 +844,7 @@ ixgbe_write_uc_addr_list
         network interface device structure
 
     :param int vfn:
-        *undescribed*
+        pool to associate with unicast addresses
 
 .. _`ixgbe_write_uc_addr_list.description`:
 
@@ -1053,7 +1051,7 @@ ixgbe_sw_init
         board private structure to initialize
 
     :param const struct ixgbe_info \*ii:
-        *undescribed*
+        pointer to ixgbe_info for device
 
 .. _`ixgbe_sw_init.description`:
 
@@ -1116,7 +1114,7 @@ ixgbe_setup_rx_resources
     allocate Rx resources (Descriptors)
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        pointer to ixgbe_adapter
 
     :param struct ixgbe_ring \*rx_ring:
         rx descriptor ring (for a specific queue) to setup
@@ -1438,7 +1436,7 @@ ixgbe_service_timer
     Timer Call-back
 
     :param struct timer_list \*t:
-        *undescribed*
+        pointer to timer_list structure
 
 .. _`ixgbe_service_task`:
 
@@ -1484,7 +1482,7 @@ ixgbe_add_sanmac_netdev
     Add the SAN MAC address to the corresponding netdev->dev_addrs
 
     :param struct net_device \*dev:
-        *undescribed*
+        network interface device structure
 
 .. _`ixgbe_add_sanmac_netdev.description`:
 
@@ -1503,7 +1501,7 @@ ixgbe_del_sanmac_netdev
     Removes the SAN MAC address to the corresponding netdev->dev_addrs
 
     :param struct net_device \*dev:
-        *undescribed*
+        network interface device structure
 
 .. _`ixgbe_del_sanmac_netdev.description`:
 
@@ -1564,7 +1562,7 @@ ixgbe_setup_tc
     configure net_device for multiple traffic classes
 
     :param struct net_device \*dev:
-        *undescribed*
+        net device to configure
 
     :param u8 tc:
         number of traffic classes to enable
@@ -1606,13 +1604,13 @@ ixgbe_configure_bridge_mode
 
 .. c:function:: int ixgbe_configure_bridge_mode(struct ixgbe_adapter *adapter, __u16 mode)
 
-    set various bridge modes \ ``adapter``\  - the private structure \ ``mode``\  - requested bridge mode
+    set various bridge modes
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        the private structure
 
     :param __u16 mode:
-        *undescribed*
+        requested bridge mode
 
 .. _`ixgbe_configure_bridge_mode.description`:
 
@@ -1659,7 +1657,7 @@ ixgbe_wol_supported
         the device ID
 
     :param u16 subdevice_id:
-        *undescribed*
+        the subsystem device ID
 
 .. _`ixgbe_wol_supported.description`:
 
@@ -1668,6 +1666,26 @@ Description
 
 This function is used by probe and ethtool to determine
 which devices have WoL support
+
+.. _`ixgbe_set_fw_version`:
+
+ixgbe_set_fw_version
+====================
+
+.. c:function:: void ixgbe_set_fw_version(struct ixgbe_adapter *adapter)
+
+    Set FW version
+
+    :param struct ixgbe_adapter \*adapter:
+        the adapter private structure
+
+.. _`ixgbe_set_fw_version.description`:
+
+Description
+-----------
+
+This function is used by probe and ethtool to determine the FW version to
+format to display. The FW version is taken from the EEPROM/NVM.
 
 .. _`ixgbe_probe`:
 

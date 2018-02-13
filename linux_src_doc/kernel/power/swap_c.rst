@@ -123,14 +123,11 @@ save_image_lzo
 enough_swap
 ===========
 
-.. c:function:: int enough_swap(unsigned int nr_pages, unsigned int flags)
+.. c:function:: int enough_swap(unsigned int nr_pages)
 
     Make sure we have enough swap to save the image.
 
     :param unsigned int nr_pages:
-        *undescribed*
-
-    :param unsigned int flags:
         *undescribed*
 
 .. _`enough_swap.description`:

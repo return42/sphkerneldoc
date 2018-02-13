@@ -8,5 +8,4 @@ usbhid
     :maxdepth: 1
 
     hid-pidff_c
-    hid-quirks_c
     usbkbd_c

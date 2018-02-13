@@ -26,7 +26,7 @@ ixgbe_dcb_config_rx_arbiter_82599
         priority type indexed by traffic class
 
     :param u8 \*prio_tc:
-        *undescribed*
+        priority to tc assignments indexed by priority
 
 .. _`ixgbe_dcb_config_rx_arbiter_82599.description`:
 
@@ -91,7 +91,7 @@ ixgbe_dcb_config_tx_data_arbiter_82599
         priority type indexed by traffic class
 
     :param u8 \*prio_tc:
-        *undescribed*
+        priority to tc assignments indexed by priority
 
 .. _`ixgbe_dcb_config_tx_data_arbiter_82599.description`:
 
@@ -173,7 +173,7 @@ ixgbe_dcb_hw_config_82599
         priority type indexed by traffic class
 
     :param u8 \*prio_tc:
-        *undescribed*
+        priority to tc assignments indexed by priority
 
 .. _`ixgbe_dcb_hw_config_82599.description`:
 

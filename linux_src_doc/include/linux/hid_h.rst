@@ -21,6 +21,7 @@ Definition
         const struct hid_device_id *id_table;
         struct list_head dyn_list;
         spinlock_t dyn_lock;
+        bool (*match)(struct hid_device *dev, bool ignore_special_driver);
         int (*probe)(struct hid_device *dev, const struct hid_device_id *id);
         void (*remove)(struct hid_device *dev);
         const struct hid_report_id *report_table;
@@ -33,6 +34,8 @@ Definition
         int (*input_mapped)(struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field, struct hid_usage *usage, unsigned long **bit, int *max);
         int (*input_configured)(struct hid_device *hdev, struct hid_input *hidinput);
         void (*feature_mapping)(struct hid_device *hdev,struct hid_field *field, struct hid_usage *usage);
+        void (*bus_add_driver)(struct hid_driver *driver);
+        void (*bus_removed_driver)(struct hid_driver *driver);
     #ifdef CONFIG_PM
         int (*suspend)(struct hid_device *hdev, pm_message_t message);
         int (*resume)(struct hid_device *hdev);
@@ -57,6 +60,9 @@ dyn_list
 
 dyn_lock
     lock protecting \ ``dyn_list``\ 
+
+match
+    check if the given device is handled by this driver
 
 probe
     new device inserted
@@ -93,6 +99,12 @@ input_configured
 
 feature_mapping
     invoked on feature registering
+
+bus_add_driver
+    invoked when a HID driver is about to be added
+
+bus_removed_driver
+    invoked when a HID driver has been removed
 
 suspend
     invoked on suspend (NULL means nop)

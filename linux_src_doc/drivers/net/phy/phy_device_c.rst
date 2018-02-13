@@ -385,6 +385,28 @@ Description
 This detaches the phy device from its network device and the phy
 driver, and drops the reference count taken in \ :c:func:`phy_attach_direct`\ .
 
+.. _`phy_reset_after_clk_enable`:
+
+phy_reset_after_clk_enable
+==========================
+
+.. c:function:: int phy_reset_after_clk_enable(struct phy_device *phydev)
+
+    perform a PHY reset if needed
+
+    :param struct phy_device \*phydev:
+        target phy_device struct
+
+.. _`phy_reset_after_clk_enable.description`:
+
+Description
+-----------
+
+Some PHYs are known to need a reset after their refclk was
+  enabled. This function evaluates the flags and perform the reset if it's
+  needed. Returns < 0 on error, 0 if the phy wasn't reset and 1 if the phy
+  was reset.
+
 .. _`genphy_config_advert`:
 
 genphy_config_advert

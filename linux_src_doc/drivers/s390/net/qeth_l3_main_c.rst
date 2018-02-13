@@ -1,6 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/net/qeth_l3_main.c
 
+.. _`qeth_l3_update_ipato`:
+
+qeth_l3_update_ipato
+====================
+
+.. c:function:: void qeth_l3_update_ipato(struct qeth_card *card)
+
+    Update 'takeover' property, for all NORMAL IPs.
+
+    :param struct qeth_card \*card:
+        *undescribed*
+
+.. _`qeth_l3_update_ipato.description`:
+
+Description
+-----------
+
+Caller must hold ip_lock.
+
 .. _`qeth_l3_get_elements_no_tso`:
 
 qeth_l3_get_elements_no_tso
@@ -36,22 +55,6 @@ Note
 ----
 
 extra_elems is not included in the returned result.
-
-.. _`qeth_l3_ip6_event`:
-
-qeth_l3_ip6_event
-=================
-
-.. c:function:: int qeth_l3_ip6_event(struct notifier_block *this, unsigned long event, void *ptr)
-
-    :param struct notifier_block \*this:
-        *undescribed*
-
-    :param unsigned long event:
-        *undescribed*
-
-    :param void \*ptr:
-        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

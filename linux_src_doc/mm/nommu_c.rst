@@ -176,6 +176,37 @@ are created.  If the kernel address space is not shared
 between processes, it syncs the pagetable across all
 processes.
 
+.. _`access_remote_vm`:
+
+access_remote_vm
+================
+
+.. c:function:: int access_remote_vm(struct mm_struct *mm, unsigned long addr, void *buf, int len, unsigned int gup_flags)
+
+    access another process' address space
+
+    :param struct mm_struct \*mm:
+        the mm_struct of the target address space
+
+    :param unsigned long addr:
+        start address to access
+
+    :param void \*buf:
+        source or destination buffer
+
+    :param int len:
+        number of bytes to transfer
+
+    :param unsigned int gup_flags:
+        flags modifying lookup behaviour
+
+.. _`access_remote_vm.description`:
+
+Description
+-----------
+
+The caller must hold a reference on \ ``mm``\ .
+
 .. _`nommu_shrink_inode_mappings`:
 
 nommu_shrink_inode_mappings

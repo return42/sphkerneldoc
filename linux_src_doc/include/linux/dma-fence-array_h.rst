@@ -55,6 +55,7 @@ Definition
         unsigned num_fences;
         atomic_t num_pending;
         struct dma_fence **fences;
+        struct irq_work work;
     }
 
 .. _`dma_fence_array.members`:
@@ -76,6 +77,9 @@ num_pending
 
 fences
     array of the fences
+
+work
+    *undescribed*
 
 .. _`dma_fence_is_array`:
 

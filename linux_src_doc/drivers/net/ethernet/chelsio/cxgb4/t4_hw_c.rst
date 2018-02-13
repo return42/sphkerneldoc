@@ -2301,7 +2301,7 @@ t4_sge_decode_idma_state
 t4_sge_ctxt_flush
 =================
 
-.. c:function:: int t4_sge_ctxt_flush(struct adapter *adap, unsigned int mbox)
+.. c:function:: int t4_sge_ctxt_flush(struct adapter *adap, unsigned int mbox, int ctxt_type)
 
     flush the SGE context cache
 
@@ -2310,6 +2310,9 @@ t4_sge_ctxt_flush
 
     :param unsigned int mbox:
         mailbox to use for the FW command
+
+    :param int ctxt_type:
+        *undescribed*
 
 .. _`t4_sge_ctxt_flush.description`:
 
@@ -2912,6 +2915,90 @@ Description
 -----------
 
 Sets Rx properties of a virtual interface.
+
+.. _`t4_free_raw_mac_filt`:
+
+t4_free_raw_mac_filt
+====================
+
+.. c:function:: int t4_free_raw_mac_filt(struct adapter *adap, unsigned int viid, const u8 *addr, const u8 *mask, unsigned int idx, u8 lookup_type, u8 port_id, bool sleep_ok)
+
+    Frees a raw mac entry in mps tcam
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int viid:
+        the VI id
+
+    :param const u8 \*addr:
+        the MAC address
+
+    :param const u8 \*mask:
+        the mask
+
+    :param unsigned int idx:
+        index of the entry in mps tcam
+
+    :param u8 lookup_type:
+        MAC address for inner (1) or outer (0) header
+
+    :param u8 port_id:
+        the port index
+
+    :param bool sleep_ok:
+        call is allowed to sleep
+
+.. _`t4_free_raw_mac_filt.description`:
+
+Description
+-----------
+
+Removes the mac entry at the specified index using raw mac interface.
+
+Returns a negative error number on failure.
+
+.. _`t4_alloc_raw_mac_filt`:
+
+t4_alloc_raw_mac_filt
+=====================
+
+.. c:function:: int t4_alloc_raw_mac_filt(struct adapter *adap, unsigned int viid, const u8 *addr, const u8 *mask, unsigned int idx, u8 lookup_type, u8 port_id, bool sleep_ok)
+
+    Adds a mac entry in mps tcam
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int viid:
+        the VI id
+
+    :param const u8 \*addr:
+        *undescribed*
+
+    :param const u8 \*mask:
+        the mask
+
+    :param unsigned int idx:
+        index at which to add this entry
+
+    :param u8 lookup_type:
+        MAC address for inner (1) or outer (0) header
+
+    :param u8 port_id:
+        the port index
+
+    :param bool sleep_ok:
+        call is allowed to sleep
+
+.. _`t4_alloc_raw_mac_filt.description`:
+
+Description
+-----------
+
+Adds the mac entry at the specified index using raw mac interface.
+
+Returns a negative error number or the allocated index for this mac.
 
 .. _`t4_alloc_mac_filt`:
 
@@ -4129,6 +4216,64 @@ Description
 
 Reads an SGE context directly, bypassing FW.  This is only for
 debugging when FW is unavailable.
+
+.. _`t4_i2c_rd`:
+
+t4_i2c_rd
+=========
+
+.. c:function:: int t4_i2c_rd(struct adapter *adap, unsigned int mbox, int port, unsigned int devid, unsigned int offset, unsigned int len, u8 *buf)
+
+    read I2C data from adapter
+
+    :param struct adapter \*adap:
+        the adapter
+
+    :param unsigned int mbox:
+        *undescribed*
+
+    :param int port:
+        Port number if per-port device; <0 if not
+
+    :param unsigned int devid:
+        per-port device ID or absolute device ID
+
+    :param unsigned int offset:
+        byte offset into device I2C space
+
+    :param unsigned int len:
+        byte length of I2C space data
+
+    :param u8 \*buf:
+        buffer in which to return I2C data
+
+.. _`t4_i2c_rd.description`:
+
+Description
+-----------
+
+Reads the I2C data from the indicated device and location.
+
+.. _`t4_set_vlan_acl`:
+
+t4_set_vlan_acl
+===============
+
+.. c:function:: int t4_set_vlan_acl(struct adapter *adap, unsigned int mbox, unsigned int vf, u16 vlan)
+
+    Set a VLAN id for the specified VF
+
+    :param struct adapter \*adap:
+        *undescribed*
+
+    :param unsigned int mbox:
+        mailbox to use for the FW command
+
+    :param unsigned int vf:
+        one of the VFs instantiated by the specified PF
+
+    :param u16 vlan:
+        The vlanid to be set
 
 .. This file was automatic generated / don't edit.
 

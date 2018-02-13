@@ -55,5 +55,20 @@ return it.
 
 Callers should call ib_destroy_cm_id when done with the listener ID.
 
+.. _`cm_opa_to_ib_sgid`:
+
+cm_opa_to_ib_sgid
+=================
+
+.. c:function:: void cm_opa_to_ib_sgid(struct cm_work *work, struct sa_path_rec *path)
+
+    ULPs (such as IPoIB) do not understand OPA GIDs and will reject them as the local_gid will not match the sgid. Therefore, change the pathrec's SGID to an IB SGID.
+
+    :param struct cm_work \*work:
+        Work completion
+
+    :param struct sa_path_rec \*path:
+        Path record
+
 .. This file was automatic generated / don't edit.
 

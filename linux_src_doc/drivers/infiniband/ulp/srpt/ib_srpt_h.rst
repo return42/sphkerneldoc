@@ -8,7 +8,7 @@ enum srpt_command_state
 
 .. c:type:: enum srpt_command_state
 
-    SCSI command state managed by SRPT.
+    SCSI command state managed by SRPT
 
 .. _`srpt_command_state.definition`:
 
@@ -64,7 +64,7 @@ struct srpt_ioctx
 
 .. c:type:: struct srpt_ioctx
 
-    Shared SRPT I/O context information.
+    shared SRPT I/O context information
 
 .. _`srpt_ioctx.definition`:
 
@@ -86,7 +86,7 @@ Members
 -------
 
 cqe
-    *undescribed*
+    Completion queue element.
 
 buf
     Pointer to the buffer.
@@ -104,7 +104,7 @@ struct srpt_recv_ioctx
 
 .. c:type:: struct srpt_recv_ioctx
 
-    SRPT receive I/O context.
+    SRPT receive I/O context
 
 .. _`srpt_recv_ioctx.definition`:
 
@@ -136,7 +136,7 @@ struct srpt_send_ioctx
 
 .. c:type:: struct srpt_send_ioctx
 
-    SRPT send I/O context.
+    SRPT send I/O context
 
 .. _`srpt_send_ioctx.definition`:
 
@@ -152,10 +152,8 @@ Definition
         struct srpt_rw_ctx *rw_ctxs;
         struct ib_cqe rdma_cqe;
         struct list_head free_list;
-        spinlock_t spinlock;
         enum srpt_command_state state;
         struct se_cmd cmd;
-        struct completion tx_done;
         u8 n_rdma;
         u8 n_rw_ctx;
         bool queue_status_only;
@@ -174,19 +172,16 @@ ch
     Channel pointer.
 
 s_rw_ctx
-    *undescribed*
+    @rw_ctxs points here if only a single rw_ctx is needed.
 
 rw_ctxs
-    *undescribed*
+    RDMA read/write contexts.
 
 rdma_cqe
-    *undescribed*
+    RDMA completion queue element.
 
 free_list
-    *undescribed*
-
-spinlock
-    Protects 'state'.
+    Node in srpt_rdma_ch.free_list.
 
 state
     I/O context state.
@@ -194,20 +189,17 @@ state
 cmd
     Target core command data structure.
 
-tx_done
-    *undescribed*
-
 n_rdma
-    *undescribed*
+    Number of work requests needed to transfer this ioctx.
 
 n_rw_ctx
-    *undescribed*
+    Size of rw_ctxs array.
 
 queue_status_only
-    *undescribed*
+    Send a SCSI status back to the initiator but no data.
 
 sense_data
-    SCSI sense data.
+    Sense data to be sent to the initiator.
 
 .. _`rdma_ch_state`:
 
@@ -216,7 +208,7 @@ enum rdma_ch_state
 
 .. c:type:: enum rdma_ch_state
 
-    SRP channel state.
+    SRP channel state
 
 .. _`rdma_ch_state.definition`:
 
@@ -262,7 +254,7 @@ struct srpt_rdma_ch
 
 .. c:type:: struct srpt_rdma_ch
 
-    RDMA channel.
+    RDMA channel
 
 .. _`srpt_rdma_ch.definition`:
 
@@ -272,17 +264,21 @@ Definition
 .. code-block:: c
 
     struct srpt_rdma_ch {
-        struct ib_cm_id *cm_id;
+        struct srpt_nexus *nexus;
         struct ib_qp *qp;
+        union {
+            struct {
+                struct ib_cm_id *cm_id;
+            } ib_cm;
+        } ;
         struct ib_cq *cq;
         struct ib_cqe zw_cqe;
+        struct rcu_head rcu;
         struct kref kref;
         int rq_size;
-        u32 rsp_size;
+        u32 max_rsp_size;
         atomic_t sq_wr_avail;
         struct srpt_port *sport;
-        u8 i_port_id[16];
-        u8 t_port_id[16];
         int max_ti_iu_len;
         atomic_t req_lim;
         atomic_t req_lim_delta;
@@ -293,11 +289,11 @@ Definition
         struct srpt_recv_ioctx **ioctx_recv_ring;
         struct list_head list;
         struct list_head cmd_wait_list;
+        uint16_t pkey;
+        bool processing_wait_list;
         struct se_session *sess;
-        u8 sess_name[36];
-        u8 ini_guid[24];
+        u8 sess_name[24];
         struct work_struct release_work;
-        struct completion *release_done;
     }
 
 .. _`srpt_rdma_ch.members`:
@@ -305,27 +301,35 @@ Definition
 Members
 -------
 
-cm_id
-    IB CM ID associated with the channel.
+nexus
+    I_T nexus this channel is associated with.
 
 qp
     IB queue pair used for communicating over this channel.
+
+{unnamed_union}
+    anonymous
+
+ib_cm
+    *undescribed*
 
 cq
     IB completion queue for this channel.
 
 zw_cqe
-    *undescribed*
+    Zero-length write CQE.
+
+rcu
+    RCU head.
 
 kref
-    *undescribed*
+    kref for this channel.
 
 rq_size
     IB receive queue size.
-    \ ``rsp_size``\        IB response message size in bytes.
 
-rsp_size
-    *undescribed*
+max_rsp_size
+    Maximum size of an RSP response message in bytes.
 
 sq_wr_avail
     number of work requests available in the send queue.
@@ -333,12 +337,6 @@ sq_wr_avail
 sport
     pointer to the information of the HCA port used by this
     channel.
-
-i_port_id
-    128-bit initiator port identifier copied from SRP_LOGIN_REQ.
-
-t_port_id
-    128-bit target port identifier copied from SRP_LOGIN_REQ.
 
 max_ti_iu_len
     maximum target-to-initiator information unit length.
@@ -366,12 +364,18 @@ ioctx_recv_ring
     Receive I/O context ring.
 
 list
-    Node for insertion in the srpt_device.rch_list list.
+    Node in srpt_nexus.ch_list.
 
 cmd_wait_list
     List of SCSI commands that arrived before the RTU event. This
     list contains struct srpt_ioctx elements and is protected
     against concurrent modification by the cm_id spinlock.
+
+pkey
+    P_Key of the IB partition for this SRP channel.
+
+processing_wait_list
+    Whether or not cmd_wait_list is being processed.
 
 sess
     Session information associated with this SRP channel.
@@ -379,14 +383,52 @@ sess
 sess_name
     Session name.
 
-ini_guid
-    Initiator port GUID.
-
 release_work
     Allows scheduling of \ :c:func:`srpt_release_channel`\ .
 
-release_done
-    Enables waiting for \ :c:func:`srpt_release_channel`\  completion.
+.. _`srpt_nexus`:
+
+struct srpt_nexus
+=================
+
+.. c:type:: struct srpt_nexus
+
+    I_T nexus
+
+.. _`srpt_nexus.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct srpt_nexus {
+        struct rcu_head rcu;
+        struct list_head entry;
+        struct list_head ch_list;
+        u8 i_port_id[16];
+        u8 t_port_id[16];
+    }
+
+.. _`srpt_nexus.members`:
+
+Members
+-------
+
+rcu
+    RCU head for this data structure.
+
+entry
+    srpt_port.nexus_list list node.
+
+ch_list
+    struct srpt_rdma_ch list. Protected by srpt_port.mutex.
+
+i_port_id
+    128-bit initiator port identifier copied from SRP_LOGIN_REQ.
+
+t_port_id
+    128-bit target port identifier copied from SRP_LOGIN_REQ.
 
 .. _`srpt_port_attrib`:
 
@@ -395,7 +437,7 @@ struct srpt_port_attrib
 
 .. c:type:: struct srpt_port_attrib
 
-    Attributes for SRPT port
+    attributes for SRPT port
 
 .. _`srpt_port_attrib.definition`:
 
@@ -435,7 +477,7 @@ struct srpt_port
 
 .. c:type:: struct srpt_port
 
-    Information associated by SRPT with a single IB port.
+    information associated by SRPT with a single IB port
 
 .. _`srpt_port.definition`:
 
@@ -460,6 +502,9 @@ Definition
         struct se_portal_group port_gid_tpg;
         struct se_wwn port_gid_wwn;
         struct srpt_port_attrib port_attrib;
+        wait_queue_head_t ch_releaseQ;
+        struct mutex mutex;
+        struct list_head nexus_list;
     }
 
 .. _`srpt_port.members`:
@@ -510,7 +555,16 @@ port_gid_wwn
     WWN associated with target port GID.
 
 port_attrib
-    *undescribed*
+    Port attributes that can be accessed through configfs.
+
+ch_releaseQ
+    Enables waiting for removal from nexus_list.
+
+mutex
+    Protects nexus_list.
+
+nexus_list
+    Nexus list. See also srpt_nexus.entry.
 
 .. _`srpt_device`:
 
@@ -519,7 +573,7 @@ struct srpt_device
 
 .. c:type:: struct srpt_device
 
-    Information associated by SRPT with a single HCA.
+    information associated by SRPT with a single HCA
 
 .. _`srpt_device.definition`:
 
@@ -535,11 +589,9 @@ Definition
         struct ib_srq *srq;
         struct ib_cm_id *cm_id;
         int srq_size;
+        struct mutex sdev_mutex;
         bool use_srq;
         struct srpt_recv_ioctx **ioctx_ring;
-        struct list_head rch_list;
-        wait_queue_head_t ch_releaseQ;
-        struct mutex mutex;
         struct srpt_port port[2];
         struct ib_event_handler event_handler;
         struct list_head list;
@@ -568,20 +620,14 @@ cm_id
 srq_size
     SRQ size.
 
+sdev_mutex
+    Serializes use_srq changes.
+
 use_srq
     Whether or not to use SRQ.
 
 ioctx_ring
     Per-HCA SRQ.
-
-rch_list
-    Per-device channel list -- see also srpt_rdma_ch.list.
-
-ch_releaseQ
-    Enables waiting for removal from rch_list.
-
-mutex
-    Protects rch_list.
 
 port
     Information about the ports owned by this HCA.

@@ -339,31 +339,6 @@ be updated on the last bvec as well.
 
 \ ``bio``\  will then represent the remaining, uncompleted portion of the io.
 
-.. _`bio_alloc_pages`:
-
-bio_alloc_pages
-===============
-
-.. c:function:: int bio_alloc_pages(struct bio *bio, gfp_t gfp_mask)
-
-    allocates a single page for each bvec in a bio
-
-    :param struct bio \*bio:
-        bio to allocate pages for
-
-    :param gfp_t gfp_mask:
-        flags for allocation
-
-.. _`bio_alloc_pages.description`:
-
-Description
------------
-
-Allocates pages up to \ ``bio``\ ->bi_vcnt.
-
-Returns 0 on success, -ENOMEM on failure. On failure, any allocated pages are
-freed.
-
 .. _`bio_copy_data`:
 
 bio_copy_data

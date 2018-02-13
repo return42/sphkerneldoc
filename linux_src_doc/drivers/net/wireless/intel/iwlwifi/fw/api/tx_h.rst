@@ -134,7 +134,7 @@ enum iwl_tx_cmd_flags
 
 .. c:type:: enum iwl_tx_cmd_flags
 
-    bitmasks for tx_flags in TX command for a000
+    bitmasks for tx_flags in TX command for 22000
 
 .. _`iwl_tx_cmd_flags.definition`:
 
@@ -464,7 +464,7 @@ struct iwl_tx_cmd_gen2
 
 .. c:type:: struct iwl_tx_cmd_gen2
 
-    TX command struct to FW for a000 devices ( TX_CMD = 0x1c )
+    TX command struct to FW for 22000 devices ( TX_CMD = 0x1c )
 
 .. _`iwl_tx_cmd_gen2.definition`:
 

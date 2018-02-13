@@ -986,7 +986,7 @@ lock themselves)
 n_tty_poll
 ==========
 
-.. c:function:: unsigned int n_tty_poll(struct tty_struct *tty, struct file *file, poll_table *wait)
+.. c:function:: __poll_t n_tty_poll(struct tty_struct *tty, struct file *file, poll_table *wait)
 
     poll method for N_TTY
 

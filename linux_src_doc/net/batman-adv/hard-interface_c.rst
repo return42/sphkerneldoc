@@ -13,6 +13,25 @@ batadv_hardif_release
     :param struct kref \*ref:
         kref pointer of the hard interface
 
+.. _`batadv_hardif_get_by_netdev`:
+
+batadv_hardif_get_by_netdev
+===========================
+
+.. c:function:: struct batadv_hard_iface *batadv_hardif_get_by_netdev(const struct net_device *net_dev)
+
+    Get hard interface object of a net_device
+
+    :param const struct net_device \*net_dev:
+        net_device to search for
+
+.. _`batadv_hardif_get_by_netdev.return`:
+
+Return
+------
+
+batadv_hard_iface of net_dev (with increased refcnt), NULL on errors
+
 .. _`batadv_getlink_net`:
 
 batadv_getlink_net
@@ -313,6 +332,38 @@ batadv_hardif_recalc_extra_skbroom
     :param struct net_device \*soft_iface:
         netdev struct of the mesh interface
 
+.. _`batadv_hardif_min_mtu`:
+
+batadv_hardif_min_mtu
+=====================
+
+.. c:function:: int batadv_hardif_min_mtu(struct net_device *soft_iface)
+
+    Calculate maximum MTU for soft interface
+
+    :param struct net_device \*soft_iface:
+        netdev struct of the soft interface
+
+.. _`batadv_hardif_min_mtu.return`:
+
+Return
+------
+
+MTU for the soft-interface (limited by the minimal MTU of all active
+slave interfaces)
+
+.. _`batadv_update_min_mtu`:
+
+batadv_update_min_mtu
+=====================
+
+.. c:function:: void batadv_update_min_mtu(struct net_device *soft_iface)
+
+    Adjusts the MTU if a new interface with a smaller MTU appeared
+
+    :param struct net_device \*soft_iface:
+        netdev struct of the soft interface
+
 .. _`batadv_master_del_slave`:
 
 batadv_master_del_slave
@@ -320,7 +371,7 @@ batadv_master_del_slave
 
 .. c:function:: int batadv_master_del_slave(struct batadv_hard_iface *slave, struct net_device *master)
 
-    remove hard_iface from the current master interface
+    remove hard_iface from the current master iface
 
     :param struct batadv_hard_iface \*slave:
         the interface enslaved in another master
@@ -342,6 +393,59 @@ Return
 ------
 
 0 on success, a negative value representing the error otherwise
+
+.. _`batadv_hardif_enable_interface`:
+
+batadv_hardif_enable_interface
+==============================
+
+.. c:function:: int batadv_hardif_enable_interface(struct batadv_hard_iface *hard_iface, struct net *net, const char *iface_name)
+
+    Enslave hard interface to soft interface
+
+    :param struct batadv_hard_iface \*hard_iface:
+        hard interface to add to soft interface
+
+    :param struct net \*net:
+        the applicable net namespace
+
+    :param const char \*iface_name:
+        name of the soft interface
+
+.. _`batadv_hardif_enable_interface.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_hardif_disable_interface`:
+
+batadv_hardif_disable_interface
+===============================
+
+.. c:function:: void batadv_hardif_disable_interface(struct batadv_hard_iface *hard_iface, enum batadv_hard_if_cleanup autodel)
+
+    Remove hard interface from soft interface
+
+    :param struct batadv_hard_iface \*hard_iface:
+        hard interface to be removed
+
+    :param enum batadv_hard_if_cleanup autodel:
+        whether to delete soft interface when it doesn't contain any other
+        slave interfaces
+
+.. _`batadv_hardif_remove_interfaces`:
+
+batadv_hardif_remove_interfaces
+===============================
+
+.. c:function:: void batadv_hardif_remove_interfaces( void)
+
+    Remove all hard interfaces
+
+    :param  void:
+        no arguments
 
 .. This file was automatic generated / don't edit.
 

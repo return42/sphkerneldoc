@@ -51,5 +51,30 @@ Description
 
 Returns the amount of time to delay by, in jiffies
 
+.. _`bch_bio_alloc_pages`:
+
+bch_bio_alloc_pages
+===================
+
+.. c:function:: int bch_bio_alloc_pages(struct bio *bio, gfp_t gfp_mask)
+
+    allocates a single page for each bvec in a bio
+
+    :param struct bio \*bio:
+        bio to allocate pages for
+
+    :param gfp_t gfp_mask:
+        flags for allocation
+
+.. _`bch_bio_alloc_pages.description`:
+
+Description
+-----------
+
+Allocates pages up to \ ``bio``\ ->bi_vcnt.
+
+Returns 0 on success, -ENOMEM on failure. On failure, any allocated pages are
+freed.
+
 .. This file was automatic generated / don't edit.
 

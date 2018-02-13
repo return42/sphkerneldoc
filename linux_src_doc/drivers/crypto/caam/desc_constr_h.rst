@@ -23,7 +23,7 @@ Definition
         unsigned int keylen_pad;
         union {
             dma_addr_t key_dma;
-            void *key_virt;
+            const void *key_virt;
         } ;
         bool key_inline;
     }
@@ -93,6 +93,25 @@ Return
 
 0 if data can be inlined / referenced, negative value if not. If 0,
 check \ ``inl_mask``\  for details.
+
+.. _`append_proto_dkp`:
+
+append_proto_dkp
+================
+
+.. c:function:: void append_proto_dkp(u32 * const desc, struct alginfo *adata)
+
+    Derived Key Protocol (DKP): key -> split key
+
+    :param u32 \* const desc:
+        pointer to buffer used for descriptor construction
+
+    :param struct alginfo \*adata:
+        pointer to authentication transform definitions.
+        keylen should be the length of initial key, while keylen_pad
+        the length of the derived (split) key.
+        Valid algorithm values - one of OP_ALG_ALGSEL_{MD5, SHA1, SHA224,
+        SHA256, SHA384, SHA512}.
 
 .. This file was automatic generated / don't edit.
 

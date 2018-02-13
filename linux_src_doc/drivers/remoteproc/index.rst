@@ -14,7 +14,6 @@ remoteproc
     qcom_common_c
     remoteproc_core_c
     remoteproc_elf_loader_c
-    remoteproc_internal_h
     remoteproc_virtio_c
     st_slim_rproc_c
     wkup_m3_rproc_c

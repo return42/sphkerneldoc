@@ -12,3 +12,4 @@ opp
     debugfs_c
     of_c
     opp_h
+    ti-opp-supply_c

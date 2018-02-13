@@ -14,6 +14,7 @@ nand
     fsmc_nand_c
     jz4780_bch_c
     jz4780_bch_h
+    marvell_nand_c
     nand_base_c
     nand_bbt_c
     nand_bch_c

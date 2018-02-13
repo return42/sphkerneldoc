@@ -149,6 +149,7 @@ Definition
         struct drm_fb_helper_crtc *crtc_info;
         int connector_count;
         int connector_info_alloc_count;
+        int sw_rotations;
         struct drm_fb_helper_connector **connector_info;
         const struct drm_fb_helper_funcs *funcs;
         struct fb_info *fbdev;
@@ -186,6 +187,11 @@ connector_count
 
 connector_info_alloc_count
     size of connector_info
+
+sw_rotations
+    Bitmask of all rotations requested for panel-orientation which
+    could not be handled in hardware. If only one bit is set
+    fbdev->fbcon_rotate_hint gets set to the requested rotation.
 
 connector_info
 

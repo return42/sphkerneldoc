@@ -1,6 +1,90 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/printk/printk.c
 
+.. _`console_lock_spinning_enable`:
+
+console_lock_spinning_enable
+============================
+
+.. c:function:: void console_lock_spinning_enable( void)
+
+    mark beginning of code where another thread might safely busy wait
+
+    :param  void:
+        no arguments
+
+.. _`console_lock_spinning_enable.description`:
+
+Description
+-----------
+
+This basically converts console_lock into a spinlock. This marks
+the section where the console_lock owner can not sleep, because
+there may be a waiter spinning (like a spinlock). Also it must be
+ready to hand over the lock at the end of the section.
+
+.. _`console_lock_spinning_disable_and_check`:
+
+console_lock_spinning_disable_and_check
+=======================================
+
+.. c:function:: int console_lock_spinning_disable_and_check( void)
+
+    mark end of code where another thread was able to busy wait and check if there is a waiter
+
+    :param  void:
+        no arguments
+
+.. _`console_lock_spinning_disable_and_check.description`:
+
+Description
+-----------
+
+This is called at the end of the section where spinning is allowed.
+It has two functions. First, it is a signal that it is no longer
+safe to start busy waiting for the lock. Second, it checks if
+there is a busy waiter and passes the lock rights to her.
+
+Important: Callers lose the lock if there was a busy waiter.
+     They must not touch items synchronized by console_lock
+     in this case.
+
+.. _`console_lock_spinning_disable_and_check.return`:
+
+Return
+------
+
+1 if the lock rights were passed, 0 otherwise.
+
+.. _`console_trylock_spinning`:
+
+console_trylock_spinning
+========================
+
+.. c:function:: int console_trylock_spinning( void)
+
+    try to get console_lock by busy waiting
+
+    :param  void:
+        no arguments
+
+.. _`console_trylock_spinning.description`:
+
+Description
+-----------
+
+This allows to busy wait for the console_lock when the current
+owner is running in specially marked sections. It means that
+the current owner is running and cannot reschedule until it
+is ready to lose the lock.
+
+.. _`console_trylock_spinning.return`:
+
+Return
+------
+
+1 if we got the lock, 0 othrewise
+
 .. _`printk`:
 
 printk

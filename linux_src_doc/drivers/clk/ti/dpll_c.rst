@@ -6,12 +6,12 @@
 _register_dpll
 ==============
 
-.. c:function:: void _register_dpll(struct clk_hw *hw, struct device_node *node)
+.. c:function:: void _register_dpll(void *user, struct device_node *node)
 
     low level registration of a DPLL clock
 
-    :param struct clk_hw \*hw:
-        hardware clock definition for the clock
+    :param void \*user:
+        *undescribed*
 
     :param struct device_node \*node:
         device node for the clock

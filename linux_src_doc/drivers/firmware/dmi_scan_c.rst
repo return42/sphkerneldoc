@@ -73,6 +73,8 @@ Description
      returns non zero or we hit the end. Callback function is called for
      each successful match. Returns the number of matches.
 
+     dmi_scan_machine must be called before this function is called.
+
 .. _`dmi_first_match`:
 
 dmi_first_match
@@ -97,6 +99,8 @@ Description
 
      Walk the blacklist table until the first match is found.  Return the
      pointer to the matching entry or NULL if there's no match.
+
+     dmi_scan_machine must be called before this function is called.
 
 .. _`dmi_get_system_info`:
 

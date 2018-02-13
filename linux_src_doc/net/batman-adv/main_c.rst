@@ -1,6 +1,37 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/main.c
 
+.. _`batadv_mesh_init`:
+
+batadv_mesh_init
+================
+
+.. c:function:: int batadv_mesh_init(struct net_device *soft_iface)
+
+    Initialize soft interface
+
+    :param struct net_device \*soft_iface:
+        netdev struct of the soft interface
+
+.. _`batadv_mesh_init.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_mesh_free`:
+
+batadv_mesh_free
+================
+
+.. c:function:: void batadv_mesh_free(struct net_device *soft_iface)
+
+    Deinitialize soft interface
+
+    :param struct net_device \*soft_iface:
+        netdev struct of the soft interface
+
 .. _`batadv_is_my_mac`:
 
 batadv_is_my_mac
@@ -84,6 +115,68 @@ Description
 This function sets a value between 256 and 263 (802.1d priority), which
 can be interpreted by the cfg80211 or other drivers.
 
+.. _`batadv_batman_skb_recv`:
+
+batadv_batman_skb_recv
+======================
+
+.. c:function:: int batadv_batman_skb_recv(struct sk_buff *skb, struct net_device *dev, struct packet_type *ptype, struct net_device *orig_dev)
+
+    Handle incoming message from an hard interface
+
+    :param struct sk_buff \*skb:
+        the received packet
+
+    :param struct net_device \*dev:
+        the net device that the packet was received on
+
+    :param struct packet_type \*ptype:
+        packet type of incoming packet (ETH_P_BATMAN)
+
+    :param struct net_device \*orig_dev:
+        the original receive net device (e.g. bonded device)
+
+.. _`batadv_batman_skb_recv.return`:
+
+Return
+------
+
+NET_RX_SUCCESS on success or NET_RX_DROP in case of failure
+
+.. _`batadv_recv_handler_register`:
+
+batadv_recv_handler_register
+============================
+
+.. c:function:: int batadv_recv_handler_register(u8 packet_type, int (*recv_handler)(struct sk_buff *, struct batadv_hard_iface *))
+
+    Register handler for batman-adv packet type
+
+    :param u8 packet_type:
+        batadv_packettype which should be handled
+
+    :param int (\*recv_handler)(struct sk_buff \*, struct batadv_hard_iface \*):
+        receive handler for the packet type
+
+.. _`batadv_recv_handler_register.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
+.. _`batadv_recv_handler_unregister`:
+
+batadv_recv_handler_unregister
+==============================
+
+.. c:function:: void batadv_recv_handler_unregister(u8 packet_type)
+
+    Unregister handler for packet type
+
+    :param u8 packet_type:
+        batadv_packettype which should no longer be handled
+
 .. _`batadv_skb_crc32`:
 
 batadv_skb_crc32
@@ -145,7 +238,7 @@ batadv_vlan_ap_isola_get
 
 .. c:function:: bool batadv_vlan_ap_isola_get(struct batadv_priv *bat_priv, unsigned short vid)
 
-    return the AP isolation status for the given vlan
+    return AP isolation status for the given vlan
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information

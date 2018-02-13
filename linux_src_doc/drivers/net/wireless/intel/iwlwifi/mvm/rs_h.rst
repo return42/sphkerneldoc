@@ -1,6 +1,48 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/wireless/intel/iwlwifi/mvm/rs.h
 
+.. _`iwl_lq_sta_rs_fw`:
+
+struct iwl_lq_sta_rs_fw
+=======================
+
+.. c:type:: struct iwl_lq_sta_rs_fw
+
+    rate and related statistics for RS in FW
+
+.. _`iwl_lq_sta_rs_fw.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_lq_sta_rs_fw {
+        u32 last_rate_n_flags;
+        struct lq_sta_pers_rs_fw {
+            u32 sta_id;
+    #ifdef CONFIG_MAC80211_DEBUGFS
+            u32 dbg_fixed_rate;
+            u16 dbg_agg_frame_count_lim;
+    #endif
+            u8 chains;
+            s8 chain_signal[IEEE80211_MAX_CHAINS];
+            s8 last_rssi;
+            struct iwl_mvm *drv;
+        } pers;
+    }
+
+.. _`iwl_lq_sta_rs_fw.members`:
+
+Members
+-------
+
+last_rate_n_flags
+    last rate reported by FW
+
+pers
+    *undescribed*
+
 .. _`iwl_rate_scale_data`:
 
 struct iwl_rate_scale_data

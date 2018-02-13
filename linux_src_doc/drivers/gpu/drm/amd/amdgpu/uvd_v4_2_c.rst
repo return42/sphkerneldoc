@@ -224,7 +224,7 @@ Test if we can successfully write to the context register
 uvd_v4_2_ring_emit_ib
 =====================
 
-.. c:function:: void uvd_v4_2_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vm_id, bool ctx_switch)
+.. c:function:: void uvd_v4_2_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vmid, bool ctx_switch)
 
     execute indirect buffer
 
@@ -234,7 +234,7 @@ uvd_v4_2_ring_emit_ib
     :param struct amdgpu_ib \*ib:
         indirect buffer to execute
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param bool ctx_switch:

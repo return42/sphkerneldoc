@@ -27,7 +27,7 @@ Definition
         struct gpio_desc *descs;
         int base;
         u16 ngpio;
-        char *label;
+        const char *label;
         void *data;
         struct list_head list;
     #ifdef CONFIG_PINCTRL
@@ -111,16 +111,21 @@ Definition
 .. code-block:: c
 
     struct acpi_gpio_info {
+        struct acpi_device *adev;
         enum gpiod_flags flags;
         bool gpioint;
         int polarity;
         int triggering;
+        unsigned int quirks;
     }
 
 .. _`acpi_gpio_info.members`:
 
 Members
 -------
+
+adev
+    reference to ACPI device which consumes GPIO resource
 
 flags
     GPIO initialization flags
@@ -133,6 +138,9 @@ polarity
 
 triggering
     triggering type as provided by ACPI
+
+quirks
+    Linux specific quirks as provided by struct acpi_gpio_mapping
 
 .. This file was automatic generated / don't edit.
 

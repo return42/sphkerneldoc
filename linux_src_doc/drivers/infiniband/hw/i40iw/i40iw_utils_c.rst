@@ -72,7 +72,7 @@ i40iw_inetaddr_event
 
 .. c:function:: int i40iw_inetaddr_event(struct notifier_block *notifier, unsigned long event, void *ptr)
 
-    system notifier for netdev events
+    system notifier for ipv4 addr events
 
     :param struct notifier_block \*notifier:
         *undescribed*
@@ -90,7 +90,7 @@ i40iw_inet6addr_event
 
 .. c:function:: int i40iw_inet6addr_event(struct notifier_block *notifier, unsigned long event, void *ptr)
 
-    system notifier for ipv6 netdev events
+    system notifier for ipv6 addr events
 
     :param struct notifier_block \*notifier:
         *undescribed*
@@ -108,7 +108,7 @@ i40iw_net_event
 
 .. c:function:: int i40iw_net_event(struct notifier_block *notifier, unsigned long event, void *ptr)
 
-    system notifier for net events
+    system notifier for netevents
 
     :param struct notifier_block \*notifier:
         *undescribed*
@@ -118,6 +118,24 @@ i40iw_net_event
 
     :param void \*ptr:
         neighbor
+
+.. _`i40iw_netdevice_event`:
+
+i40iw_netdevice_event
+=====================
+
+.. c:function:: int i40iw_netdevice_event(struct notifier_block *notifier, unsigned long event, void *ptr)
+
+    system notifier for netdev events
+
+    :param struct notifier_block \*notifier:
+        *undescribed*
+
+    :param unsigned long event:
+        event for notifier
+
+    :param void \*ptr:
+        netdev
 
 .. _`i40iw_get_cqp_request`:
 

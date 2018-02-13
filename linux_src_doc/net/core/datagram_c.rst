@@ -212,7 +212,7 @@ Return
 datagram_poll
 =============
 
-.. c:function:: unsigned int datagram_poll(struct file *file, struct socket *sock, poll_table *wait)
+.. c:function:: __poll_t datagram_poll(struct file *file, struct socket *sock, poll_table *wait)
 
     generic datagram poll
 

@@ -107,6 +107,7 @@ Definition
         unsigned int link;
         unsigned int duplex;
         unsigned int speed;
+        unsigned int rx_missed_errors;
     }
 
 .. _`arc_emac_priv.members`:
@@ -176,6 +177,9 @@ duplex
 
 speed
     PHY's last set speed.
+
+rx_missed_errors
+    *undescribed*
 
 .. _`arc_reg_set`:
 

@@ -84,7 +84,7 @@ Write the wptr back to the hardware (VI+).
 sdma_v2_4_ring_emit_ib
 ======================
 
-.. c:function:: void sdma_v2_4_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vm_id, bool ctx_switch)
+.. c:function:: void sdma_v2_4_ring_emit_ib(struct amdgpu_ring *ring, struct amdgpu_ib *ib, unsigned vmid, bool ctx_switch)
 
     Schedule an IB on the DMA engine
 
@@ -94,7 +94,7 @@ sdma_v2_4_ring_emit_ib
     :param struct amdgpu_ib \*ib:
         IB object to schedule
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param bool ctx_switch:
@@ -472,14 +472,14 @@ Make sure all previous operations are completed (CIK).
 sdma_v2_4_ring_emit_vm_flush
 ============================
 
-.. c:function:: void sdma_v2_4_ring_emit_vm_flush(struct amdgpu_ring *ring, unsigned vm_id, uint64_t pd_addr)
+.. c:function:: void sdma_v2_4_ring_emit_vm_flush(struct amdgpu_ring *ring, unsigned vmid, uint64_t pd_addr)
 
     cik vm flush using sDMA
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring pointer
 
-    :param unsigned vm_id:
+    :param unsigned vmid:
         *undescribed*
 
     :param uint64_t pd_addr:

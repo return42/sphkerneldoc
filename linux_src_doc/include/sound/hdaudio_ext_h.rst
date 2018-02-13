@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct hdac_ext_device {
-        struct hdac_device hdac;
+        struct hdac_device hdev;
         struct hdac_ext_bus *ebus;
         struct hda_dai_map nid_list[HDA_MAX_NIDS];
         unsigned int map_cur_idx;
@@ -33,12 +33,8 @@ Definition
 Members
 -------
 
-hdac
-    hdac core device
-    \ ``nid_list``\  - the dai map which matches the dai-name with the nid
-    \ ``map_cur_idx``\  - the idx in use in dai_map
-    \ ``ops``\  - the hda codec ops common to all codec drivers
-    \ ``pvt_data``\  - private data, for asoc contains asoc codec object
+hdev
+    *undescribed*
 
 ebus
     *undescribed*

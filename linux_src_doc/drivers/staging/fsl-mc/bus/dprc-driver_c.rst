@@ -95,7 +95,8 @@ dprc_scan_objects
         pointer to the fsl-mc device that represents a DPRC object
 
     :param unsigned int \*total_irq_count:
-        total number of IRQs needed by objects in the DPRC.
+        If argument is provided the function populates the
+        total number of IRQs created by objects in the DPRC.
 
 .. _`dprc_scan_objects.description`:
 

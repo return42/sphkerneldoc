@@ -7,6 +7,7 @@ pci
 .. toctree::
     :maxdepth: 1
 
+    cadence/index
     dwc/index
     endpoint/index
     host/index
@@ -18,6 +19,7 @@ pci
     iov_c
     irq_c
     msi_c
+    of_c
     pci-acpi_c
     pci-driver_c
     pci-sysfs_c

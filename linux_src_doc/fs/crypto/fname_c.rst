@@ -6,7 +6,7 @@
 fname_encrypt
 =============
 
-.. c:function:: int fname_encrypt(struct inode *inode, const struct qstr *iname, struct fscrypt_str *oname)
+.. c:function:: int fname_encrypt(struct inode *inode, const struct qstr *iname, u8 *out, unsigned int olen)
 
     encrypt a filename
 
@@ -16,7 +16,10 @@ fname_encrypt
     :param const struct qstr \*iname:
         *undescribed*
 
-    :param struct fscrypt_str \*oname:
+    :param u8 \*out:
+        *undescribed*
+
+    :param unsigned int olen:
         *undescribed*
 
 .. _`fname_encrypt.description`:
@@ -24,7 +27,8 @@ fname_encrypt
 Description
 -----------
 
-The caller must have allocated sufficient memory for the \ ``oname``\  string.
+The output buffer must be at least as large as the input buffer.
+Any extra space is filled with NUL padding before encryption.
 
 .. _`fname_encrypt.return`:
 
@@ -94,12 +98,14 @@ The encoded string is roughly 4/3 times the size of the input string.
 fscrypt_fname_alloc_buffer
 ==========================
 
-.. c:function:: int fscrypt_fname_alloc_buffer(const struct inode *inode, u32 ilen, struct fscrypt_str *crypto_str)
+.. c:function:: int fscrypt_fname_alloc_buffer(const struct inode *inode, u32 max_encrypted_len, struct fscrypt_str *crypto_str)
+
+    allocate a buffer for presented filenames
 
     :param const struct inode \*inode:
         *undescribed*
 
-    :param u32 ilen:
+    :param u32 max_encrypted_len:
         *undescribed*
 
     :param struct fscrypt_str \*crypto_str:
@@ -110,8 +116,15 @@ fscrypt_fname_alloc_buffer
 Description
 -----------
 
-Allocates an output buffer that is sufficient for the crypto operation
-specified by the context and the direction.
+Allocate a buffer that is large enough to hold any decrypted or encoded
+filename (null-terminated), for the given maximum encrypted filename length.
+
+.. _`fscrypt_fname_alloc_buffer.return`:
+
+Return
+------
+
+0 on success, -errno on failure
 
 .. _`fscrypt_fname_free_buffer`:
 
@@ -119,6 +132,8 @@ fscrypt_fname_free_buffer
 =========================
 
 .. c:function:: void fscrypt_fname_free_buffer(struct fscrypt_str *crypto_str)
+
+    free the buffer for presented filenames
 
     :param struct fscrypt_str \*crypto_str:
         *undescribed*
@@ -128,7 +143,7 @@ fscrypt_fname_free_buffer
 Description
 -----------
 
-Frees the buffer allocated for crypto operation.
+Free the buffer allocated by \ :c:func:`fscrypt_fname_alloc_buffer`\ .
 
 .. _`fscrypt_fname_disk_to_usr`:
 
@@ -166,38 +181,6 @@ it for presentation.  Short names are directly base64-encoded, while long
 names are encoded in fscrypt_digested_name format.
 
 .. _`fscrypt_fname_disk_to_usr.return`:
-
-Return
-------
-
-0 on success, -errno on failure
-
-.. _`fscrypt_fname_usr_to_disk`:
-
-fscrypt_fname_usr_to_disk
-=========================
-
-.. c:function:: int fscrypt_fname_usr_to_disk(struct inode *inode, const struct qstr *iname, struct fscrypt_str *oname)
-
-    converts a filename from user space to disk space
-
-    :param struct inode \*inode:
-        *undescribed*
-
-    :param const struct qstr \*iname:
-        *undescribed*
-
-    :param struct fscrypt_str \*oname:
-        *undescribed*
-
-.. _`fscrypt_fname_usr_to_disk.description`:
-
-Description
------------
-
-The caller must have allocated sufficient memory for the \ ``oname``\  string.
-
-.. _`fscrypt_fname_usr_to_disk.return`:
 
 Return
 ------

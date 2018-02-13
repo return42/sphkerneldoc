@@ -58,7 +58,7 @@ struct jbd2_inode
 
 .. c:type:: struct jbd2_inode
 
-    present in a transaction so that we can sync them during commit.
+    The jbd_inode type is the structure linking inodes in ordered mode present in a transaction so that we can sync them during commit.
 
 .. _`jbd2_inode.definition`:
 
@@ -81,19 +81,24 @@ Members
 -------
 
 i_transaction
-    *undescribed*
+
+    Which transaction does this inode belong to? Either the running
+    transaction or the committing one. [j_list_lock]
 
 i_next_transaction
-    *undescribed*
+
+    Pointer to the running transaction modifying inode's data in case
+    there is already a committing transaction touching it. [j_list_lock]
 
 i_list
-    *undescribed*
+    List of inodes in the i_transaction [j_list_lock]
 
 i_vfs_inode
-    *undescribed*
+
+    VFS inode this inode belongs to [constant for lifetime of structure]
 
 i_flags
-    *undescribed*
+    Flags of inode [j_list_lock]
 
 .. _`journal_s`:
 
@@ -181,194 +186,249 @@ Members
 -------
 
 j_flags
-    General journaling state flags
+    General journaling state flags [j_state_lock]
 
 j_errno
-    Is there an outstanding uncleared error on the journal (from a
-    prior abort)?
+
+    Is there an outstanding uncleared error on the journal (from a prior
+    abort)? [j_state_lock]
 
 j_sb_buffer
-    First part of superblock buffer
+    The first part of the superblock buffer.
 
 j_superblock
-    Second part of superblock buffer
+    The second part of the superblock buffer.
 
 j_format_version
-    Version of the superblock format
+    Version of the superblock format.
 
 j_state_lock
-    Protect the various scalars in the journal
+    Protect the various scalars in the journal.
 
 j_barrier_count
-    Number of processes waiting to create a barrier lock
+
+    Number of processes waiting to create a barrier lock [j_state_lock]
 
 j_barrier
-    The barrier lock itself
+    The barrier lock itself.
 
 j_running_transaction
-    The current running transaction..
+
+    Transactions: The current running transaction...
+    [j_state_lock] [caller holding open handle]
 
 j_committing_transaction
+
     the transaction we are pushing to disk
+    [j_state_lock] [caller holding open handle]
 
 j_checkpoint_transactions
-    a linked circular list of all transactions
-    waiting for checkpointing
+
+    ... and a linked circular list of all transactions waiting for
+    checkpointing. [j_list_lock]
 
 j_wait_transaction_locked
-    Wait queue for waiting for a locked transaction
-    to start committing, or for a barrier lock to be released
+
+    Wait queue for waiting for a locked transaction to start committing,
+    or for a barrier lock to be released.
 
 j_wait_done_commit
-    Wait queue for waiting for commit to complete
+    Wait queue for waiting for commit to complete.
 
 j_wait_commit
-    Wait queue to trigger commit
+    Wait queue to trigger commit.
 
 j_wait_updates
-    Wait queue to wait for updates to complete
+    Wait queue to wait for updates to complete.
 
 j_wait_reserved
-    Wait queue to wait for reserved buffer credits to drop
+
+    Wait queue to wait for reserved buffer credits to drop.
 
 j_checkpoint_mutex
-    Mutex for locking against concurrent checkpoints
+
+    Semaphore for locking against concurrent checkpoints.
 
 j_chkpt_bhs
-    *undescribed*
+
+    List of buffer heads used by the checkpoint routine.  This
+    was moved from \ :c:func:`jbd2_log_do_checkpoint`\  to reduce stack
+    usage.  Access to this array is controlled by the
+    \ ``j_checkpoint_mutex``\ .  [j_checkpoint_mutex]
 
 j_head
-    Journal head - identifies the first unused block in the journal
+
+    Journal head: identifies the first unused block in the journal.
+    [j_state_lock]
 
 j_tail
-    Journal tail - identifies the oldest still-used block in the
-    journal.
+
+    Journal tail: identifies the oldest still-used block in the journal.
+    [j_state_lock]
 
 j_free
-    Journal free - how many free blocks are there in the journal?
+
+    Journal free: how many free blocks are there in the journal?
+    [j_state_lock]
 
 j_first
-    The block number of the first usable block
+
+    The block number of the first usable block in the journal
+    [j_state_lock].
 
 j_last
-    The block number one beyond the last usable block
+
+    The block number one beyond the last usable block in the journal
+    [j_state_lock].
 
 j_dev
-    Device where we store the journal
+    Device where we store the journal.
 
 j_blocksize
-    blocksize for the location where we store the journal.
+    Block size for the location where we store the journal.
 
 j_blk_offset
-    starting block offset for into the device where we store the
-    journal
+
+    Starting block offset into the device where we store the journal.
 
 j_devname
-    *undescribed*
+    Journal device name.
 
 j_fs_dev
-    Device which holds the client fs.  For internal journal this will
-    be equal to j_dev
+
+    Device which holds the client fs.  For internal journal this will be
+    equal to j_dev.
 
 j_maxlen
     Total maximum capacity of the journal region on disk.
 
 j_reserved_credits
-    Number of buffers reserved from the running transaction
+
+    Number of buffers reserved from the running transaction.
 
 j_list_lock
     Protects the buffer lists and internal buffer state.
 
 j_inode
-    Optional inode where we store the journal.  If present, all journal
-    block numbers are mapped into this inode via \ :c:func:`bmap`\ .
+
+    Optional inode where we store the journal.  If present, all
+    journal block numbers are mapped into this inode via \ :c:func:`bmap`\ .
 
 j_tail_sequence
-    Sequence number of the oldest transaction in the log
+
+    Sequence number of the oldest transaction in the log [j_state_lock]
 
 j_transaction_sequence
-    Sequence number of the next transaction to grant
+
+    Sequence number of the next transaction to grant [j_state_lock]
 
 j_commit_sequence
-    Sequence number of the most recently committed
-    transaction
+
+    Sequence number of the most recently committed transaction
+    [j_state_lock].
 
 j_commit_request
-    Sequence number of the most recent transaction wanting
-    commit
+
+    Sequence number of the most recent transaction wanting commit
+    [j_state_lock]
 
 j_uuid
-    Uuid of client object.
+
+    Journal uuid: identifies the object (filesystem, LVM volume etc)
+    backed by this journal.  This will eventually be replaced by an array
+    of uuids, allowing us to index multiple devices within a single
+    journal and to perform atomic updates across them.
 
 j_task
-    Pointer to the current commit thread for this journal
+    Pointer to the current commit thread for this journal.
 
 j_max_transaction_buffers
-    Maximum number of metadata buffers to allow in a
-    single compound commit transaction
+
+    Maximum number of metadata buffers to allow in a single compound
+    commit transaction.
 
 j_commit_interval
-    What is the maximum transaction lifetime before we begin
-    a commit?
+
+    What is the maximum transaction lifetime before we begin a commit?
 
 j_commit_timer
-    The timer used to wakeup the commit thread
+    The timer used to wakeup the commit thread.
 
 j_revoke_lock
-    Protect the revoke table
+    Protect the revoke table.
 
 j_revoke
+
     The revoke table - maintains the list of revoked blocks in the
     current transaction.
 
 j_revoke_table
-    alternate revoke tables for j_revoke
+    Alternate revoke tables for j_revoke.
 
 j_wbuf
-    array of buffer_heads for jbd2_journal_commit_transaction
+    Array of bhs for jbd2_journal_commit_transaction.
 
 j_wbufsize
-    maximum number of buffer_heads allowed in j_wbuf, the
-    number that will fit in j_blocksize
+
+    Size of \ ``j_wbuf``\  array.
 
 j_last_sync_writer
-    most recent pid which did a synchronous write
+
+    The pid of the last person to run a synchronous operation
+    through the journal.
 
 j_average_commit_time
-    *undescribed*
+
+    The average amount of time in nanoseconds it takes to commit a
+    transaction to disk. [j_state_lock]
 
 j_min_batch_time
-    *undescribed*
+
+    Minimum time that we should wait for additional filesystem operations
+    to get batched into a synchronous handle in microseconds.
 
 j_max_batch_time
-    *undescribed*
+
+    Maximum time that we should wait for additional filesystem operations
+    to get batched into a synchronous handle in microseconds.
 
 j_commit_callback
-    *undescribed*
+
+    This function is called when a transaction is closed.
 
 j_history_lock
-    Protect the transactions statistics history
+    Protect the transactions statistics history.
 
 j_proc_entry
-    procfs entry for the jbd statistics directory
+    procfs entry for the jbd statistics directory.
 
 j_stats
-    Overall statistics
+    Overall statistics.
 
 j_failed_commit
-    *undescribed*
+    Failed journal commit ID.
 
 j_private
-    An opaque pointer to fs-private information.
+
+    An opaque pointer to fs-private information.  ext3 puts its
+    superblock pointer here.
 
 j_chksum_driver
-    *undescribed*
+
+    Reference to checksum algorithm driver via cryptoapi.
 
 j_csum_seed
-    *undescribed*
+
+    Precomputed journal UUID checksum for seeding other checksums.
 
 j_trans_commit_map
-    Lockdep entity to track transaction commit dependencies
+
+    Lockdep entity to track transaction commit dependencies. Handles
+    hold this "lock" for read, when we wait for commit, we acquire the
+    "lock" for writing. This matches the properties of jbd2 journalling
+    where the running transaction has to wait for all handles to be
+    dropped to commit that transaction and also acquiring a handle may
+    require transaction commit to finish.
 
 .. This file was automatic generated / don't edit.
 

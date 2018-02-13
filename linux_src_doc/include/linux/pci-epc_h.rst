@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct pci_epc_ops {
-        int (*write_header)(struct pci_epc *pci_epc, struct pci_epf_header *hdr);
-        int (*set_bar)(struct pci_epc *epc, enum pci_barno bar, dma_addr_t bar_phys, size_t size, int flags);
-        void (*clear_bar)(struct pci_epc *epc, enum pci_barno bar);
-        int (*map_addr)(struct pci_epc *epc, phys_addr_t addr, u64 pci_addr, size_t size);
-        void (*unmap_addr)(struct pci_epc *epc, phys_addr_t addr);
-        int (*set_msi)(struct pci_epc *epc, u8 interrupts);
-        int (*get_msi)(struct pci_epc *epc);
-        int (*raise_irq)(struct pci_epc *pci_epc, enum pci_epc_irq_type type, u8 interrupt_num);
+        int (*write_header)(struct pci_epc *epc, u8 func_no, struct pci_epf_header *hdr);
+        int (*set_bar)(struct pci_epc *epc, u8 func_no,enum pci_barno bar, dma_addr_t bar_phys, size_t size, int flags);
+        void (*clear_bar)(struct pci_epc *epc, u8 func_no, enum pci_barno bar);
+        int (*map_addr)(struct pci_epc *epc, u8 func_no, phys_addr_t addr, u64 pci_addr, size_t size);
+        void (*unmap_addr)(struct pci_epc *epc, u8 func_no, phys_addr_t addr);
+        int (*set_msi)(struct pci_epc *epc, u8 func_no, u8 interrupts);
+        int (*get_msi)(struct pci_epc *epc, u8 func_no);
+        int (*raise_irq)(struct pci_epc *epc, u8 func_no, enum pci_epc_irq_type type, u8 interrupt_num);
         int (*start)(struct pci_epc *epc);
         void (*stop)(struct pci_epc *epc);
         struct module *owner;

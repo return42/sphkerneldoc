@@ -937,5 +937,25 @@ Description
 Find the MAC address to be set to the VF's VI. The requested MAC address
 is from the host OS via callback in the PF driver.
 
+.. _`t4vf_get_vf_vlan_acl`:
+
+t4vf_get_vf_vlan_acl
+====================
+
+.. c:function:: int t4vf_get_vf_vlan_acl(struct adapter *adapter)
+
+    Get the VLAN ID to be set to the VI of this VF.
+
+    :param struct adapter \*adapter:
+        The adapter
+
+.. _`t4vf_get_vf_vlan_acl.description`:
+
+Description
+-----------
+
+Find the VLAN ID to be set to the VF's VI. The requested VLAN ID
+is from the host OS via callback in the PF driver.
+
 .. This file was automatic generated / don't edit.
 

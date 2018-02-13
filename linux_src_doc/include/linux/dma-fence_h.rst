@@ -311,11 +311,11 @@ Function returns NULL if no refcount could be obtained, or the fence.
 dma_fence_get_rcu_safe
 ======================
 
-.. c:function:: struct dma_fence *dma_fence_get_rcu_safe(struct dma_fence * __rcu *fencep)
+.. c:function:: struct dma_fence *dma_fence_get_rcu_safe(struct dma_fence __rcu **fencep)
 
     acquire a reference to an RCU tracked fence
 
-    :param struct dma_fence \* __rcu \*fencep:
+    :param struct dma_fence __rcu \*\*fencep:
         [in]    pointer to fence to increase refcount of
 
 .. _`dma_fence_get_rcu_safe.description`:

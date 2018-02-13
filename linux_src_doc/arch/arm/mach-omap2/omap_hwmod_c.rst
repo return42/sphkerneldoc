@@ -19,8 +19,8 @@ Definition
 
     struct clkctrl_provider {
         u32 addr;
+        u32 size;
         u16 offset;
-        struct clockdomain *clkdm;
         struct device_node *node;
         struct list_head link;
     }
@@ -33,11 +33,11 @@ Members
 addr
     base address for the provider
 
-offset
-    base offset for the provider
+size
+    size of the provider address space
 
-clkdm
-    base clockdomain for provider
+offset
+    offset of the provider from PRCM instance base
 
 node
     device node associated with the provider
@@ -72,7 +72,7 @@ Definition
         void (*update_context_lost)(struct omap_hwmod *oh);
         int (*get_context_lost)(struct omap_hwmod *oh);
         int (*disable_direct_prcm)(struct omap_hwmod *oh);
-        u32 (*xlate_clkctrl)(struct omap_hwmod *oh, struct clkctrl_provider *provider);
+        u32 (*xlate_clkctrl)(struct omap_hwmod *oh);
     }
 
 .. _`omap_hwmod_soc_ops.members`:

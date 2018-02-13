@@ -19,11 +19,12 @@ Definition
 
     struct clk_alpha_pll {
         u32 offset;
+        const u8 *regs;
         const struct pll_vco *vco_table;
         size_t num_vco;
     #define SUPPORTS_OFFLINE_REQ BIT(0)
-    #define SUPPORTS_16BIT_ALPHA BIT(1)
     #define SUPPORTS_FSM_MODE BIT(2)
+    #define SUPPORTS_DYNAMIC_UPDATE BIT(3)
         u8 flags;
         struct clk_regmap clkr;
     }
@@ -35,6 +36,9 @@ Members
 
 offset
     base address of registers
+
+regs
+    alpha pll register map (see \ ``clk_alpha_pll_regs``\ )
 
 vco_table
     array of VCO settings
@@ -67,6 +71,7 @@ Definition
     struct clk_alpha_pll_postdiv {
         u32 offset;
         u8 width;
+        const u8 *regs;
         struct clk_regmap clkr;
     }
 
@@ -80,6 +85,9 @@ offset
 
 width
     width of post-divider
+
+regs
+    alpha pll register map (see \ ``clk_alpha_pll_regs``\ )
 
 clkr
     regmap clock handle

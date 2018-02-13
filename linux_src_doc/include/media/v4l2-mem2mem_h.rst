@@ -472,7 +472,7 @@ v4l2_m2m_streamoff
 v4l2_m2m_poll
 =============
 
-.. c:function:: unsigned int v4l2_m2m_poll(struct file *file, struct v4l2_m2m_ctx *m2m_ctx, struct poll_table_struct *wait)
+.. c:function:: __poll_t v4l2_m2m_poll(struct file *file, struct v4l2_m2m_ctx *m2m_ctx, struct poll_table_struct *wait)
 
     poll replacement, for destination buffers only
 

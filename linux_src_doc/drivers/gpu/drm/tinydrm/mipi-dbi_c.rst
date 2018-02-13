@@ -91,6 +91,34 @@ Return
 
 Zero on success, negative error code on failure.
 
+.. _`mipi_dbi_buf_copy`:
+
+mipi_dbi_buf_copy
+=================
+
+.. c:function:: int mipi_dbi_buf_copy(void *dst, struct drm_framebuffer *fb, struct drm_clip_rect *clip, bool swap)
+
+    Copy a framebuffer, transforming it if necessary
+
+    :param void \*dst:
+        The destination buffer
+
+    :param struct drm_framebuffer \*fb:
+        The source framebuffer
+
+    :param struct drm_clip_rect \*clip:
+        Clipping rectangle of the area to be copied
+
+    :param bool swap:
+        When true, swap MSB/LSB of 16-bit values
+
+.. _`mipi_dbi_buf_copy.return`:
+
+Return
+------
+
+Zero on success, negative error code on failure.
+
 .. _`mipi_dbi_pipe_enable`:
 
 mipi_dbi_pipe_enable
@@ -229,6 +257,30 @@ Return
 ------
 
 true if the display can be verified to be on, false otherwise.
+
+.. _`mipi_dbi_spi_cmd_max_speed`:
+
+mipi_dbi_spi_cmd_max_speed
+==========================
+
+.. c:function:: u32 mipi_dbi_spi_cmd_max_speed(struct spi_device *spi, size_t len)
+
+    get the maximum SPI bus speed
+
+    :param struct spi_device \*spi:
+        SPI device
+
+    :param size_t len:
+        The transfer buffer length.
+
+.. _`mipi_dbi_spi_cmd_max_speed.description`:
+
+Description
+-----------
+
+Many controllers have a max speed of 10MHz, but can be pushed way beyond
+that. Increase reliability by running pixel data at max speed and the rest
+at 10MHz, preventing transfer glitches from messing up the init settings.
 
 .. _`mipi_dbi_spi_init`:
 

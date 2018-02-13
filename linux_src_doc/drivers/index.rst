@@ -100,7 +100,9 @@ drivers
     s390/index
     scsi/index
     sh/index
+    slimbus/index
     soc/index
+    soundwire/index
     spi/index
     spmi/index
     ssb/index
@@ -117,7 +119,9 @@ drivers
     vfio/index
     vhost/index
     video/index
+    virt/index
     virtio/index
+    visorbus/index
     vme/index
     w1/index
     watchdog/index

@@ -91,6 +91,7 @@ Definition
         struct drm_device *dev;
         struct list_head head;
         struct drm_mode_object base;
+        char comm[TASK_COMM_LEN];
         const struct drm_format_info *format;
         const struct drm_framebuffer_funcs *funcs;
         unsigned int pitches[4];
@@ -118,6 +119,9 @@ head
 
 base
     base modeset object structure, contains the reference count.
+
+comm
+    Name of the process allocating the fb, used for fb dumping.
 
 format
     framebuffer format information
@@ -274,11 +278,11 @@ used by new code.
 drm_framebuffer_read_refcount
 =============================
 
-.. c:function:: uint32_t drm_framebuffer_read_refcount(struct drm_framebuffer *fb)
+.. c:function:: uint32_t drm_framebuffer_read_refcount(const struct drm_framebuffer *fb)
 
     read the framebuffer reference count.
 
-    :param struct drm_framebuffer \*fb:
+    :param const struct drm_framebuffer \*fb:
         framebuffer
 
 .. _`drm_framebuffer_read_refcount.description`:

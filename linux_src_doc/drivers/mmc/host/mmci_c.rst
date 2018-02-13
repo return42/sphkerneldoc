@@ -45,6 +45,9 @@ Definition
         bool qcom_fifo;
         bool qcom_dml;
         bool reversed_irq_handling;
+        bool mmcimask1;
+        u32 start_err;
+        u32 opendrain;
     }
 
 .. _`variant_data.members`:
@@ -137,6 +140,16 @@ qcom_dml
 
 reversed_irq_handling
     handle data irq before cmd irq.
+
+mmcimask1
+    true if variant have a MMCIMASK1 register.
+
+start_err
+    bitmask identifying the STARTBITERR bit inside MMCISTATUS
+    register.
+
+opendrain
+    bitmask identifying the OPENDRAIN bit inside MMCIPOWER register
 
 .. This file was automatic generated / don't edit.
 

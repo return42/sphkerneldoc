@@ -423,6 +423,7 @@ Definition
         struct usb3_lpm_parameters u1_params;
         struct usb3_lpm_parameters u2_params;
         unsigned lpm_disable_count;
+        u16 hub_delay;
     }
 
 .. _`usb_device.members`:
@@ -602,6 +603,17 @@ lpm_disable_count
     to keep track of the number of functions that require USB 3.0 Link Power
     Management to be disabled for this usb_device.  This count should only
     be manipulated by those functions, with the bandwidth_mutex is held.
+
+hub_delay
+    cached value consisting of:
+    parent->hub_delay + wHubDelay + tTPTransmissionDelay (40ns)
+
+.. _`usb_device.description`:
+
+Description
+-----------
+
+     Will be used as wValue for SetIsochDelay requests.
 
 .. _`usb_device.notes`:
 

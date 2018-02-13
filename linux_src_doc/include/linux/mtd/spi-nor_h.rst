@@ -207,5 +207,17 @@ Return
 
 0 for success, others for failure.
 
+.. _`spi_nor_restore`:
+
+spi_nor_restore
+===============
+
+.. c:function:: void spi_nor_restore(struct spi_nor *nor)
+
+    restore the status of SPI NOR
+
+    :param struct spi_nor \*nor:
+        the spi_nor structure
+
 .. This file was automatic generated / don't edit.
 

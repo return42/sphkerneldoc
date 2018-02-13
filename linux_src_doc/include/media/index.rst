@@ -13,7 +13,16 @@ media
     cec-notifier_h
     cec-pin_h
     cec_h
-    lirc_dev_h
+    demux_h
+    dmxdev_h
+    dvb_ca_en50221_h
+    dvb_demux_h
+    dvb_frontend_h
+    dvb_math_h
+    dvb_net_h
+    dvb_ringbuffer_h
+    dvb_vb2_h
+    dvbdev_h
     media-device_h
     media-devnode_h
     media-entity_h

@@ -156,6 +156,12 @@ stack
     on the path the media entities to be walked and the
     links through which they were reached.
 
+stack.entity
+    pointer to \ :c:type:`struct media_entity <media_entity>`\  at the graph.
+
+stack.link
+    pointer to \ :c:type:`struct list_head <list_head>`\ .
+
 ent_enum
     Visited entities
 
@@ -524,6 +530,15 @@ pipe
 info
     Union with devnode information.  Kept just for backward
     compatibility.
+
+info.dev
+    Contains device major and minor info.
+
+info.dev.major
+    device node major, if the device is a devnode.
+
+info.dev.minor
+    device node minor, if the device is a devnode.
 
 .. _`media_entity.description`:
 

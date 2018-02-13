@@ -36,7 +36,9 @@ paddr
     physical address of the backing memory
 
 sgt
-    scatter/gather table for imported PRIME buffers
+    scatter/gather table for imported PRIME buffers. The table can have
+    more than one entry but they are guaranteed to have contiguous
+    DMA addresses.
 
 vaddr
     kernel virtual address of the backing memory

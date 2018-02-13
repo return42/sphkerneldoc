@@ -1,6 +1,68 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/clk.c
 
+.. _`clk_rate_exclusive_put`:
+
+clk_rate_exclusive_put
+======================
+
+.. c:function:: void clk_rate_exclusive_put(struct clk *clk)
+
+    release exclusivity over clock rate control
+
+    :param struct clk \*clk:
+        the clk over which the exclusivity is released
+
+.. _`clk_rate_exclusive_put.description`:
+
+Description
+-----------
+
+clk_rate_exclusive_put() completes a critical section during which a clock
+consumer cannot tolerate any other consumer making any operation on the
+clock which could result in a rate change or rate glitch. Exclusive clocks
+cannot have their rate changed, either directly or indirectly due to changes
+further up the parent chain of clocks. As a result, clocks up parent chain
+also get under exclusive control of the calling consumer.
+
+If exlusivity is claimed more than once on clock, even by the same consumer,
+the rate effectively gets locked as exclusivity can't be preempted.
+
+Calls to \ :c:func:`clk_rate_exclusive_put`\  must be balanced with calls to
+\ :c:func:`clk_rate_exclusive_get`\ . Calls to this function may sleep, and do not return
+error status.
+
+.. _`clk_rate_exclusive_get`:
+
+clk_rate_exclusive_get
+======================
+
+.. c:function:: int clk_rate_exclusive_get(struct clk *clk)
+
+    get exclusivity over the clk rate control
+
+    :param struct clk \*clk:
+        the clk over which the exclusity of rate control is requested
+
+.. _`clk_rate_exclusive_get.description`:
+
+Description
+-----------
+
+clk_rate_exlusive_get() begins a critical section during which a clock
+consumer cannot tolerate any other consumer making any operation on the
+clock which could result in a rate change or rate glitch. Exclusive clocks
+cannot have their rate changed, either directly or indirectly due to changes
+further up the parent chain of clocks. As a result, clocks up parent chain
+also get under exclusive control of the calling consumer.
+
+If exlusivity is claimed more than once on clock, even by the same consumer,
+the rate effectively gets locked as exclusivity can't be preempted.
+
+Calls to \ :c:func:`clk_rate_exclusive_get`\  should be balanced with calls to
+\ :c:func:`clk_rate_exclusive_put`\ . Calls to this function may sleep.
+Returns 0 on success, -EERROR otherwise
+
 .. _`clk_unprepare`:
 
 clk_unprepare
@@ -328,6 +390,40 @@ until either a clk does not support the CLK_SET_RATE_PARENT flag or
 
 Rate changes are accomplished via tree traversal that also recalculates the
 rates for the clocks and fires off POST_RATE_CHANGE notifiers.
+
+Returns 0 on success, -EERROR otherwise.
+
+.. _`clk_set_rate_exclusive`:
+
+clk_set_rate_exclusive
+======================
+
+.. c:function:: int clk_set_rate_exclusive(struct clk *clk, unsigned long rate)
+
+    specify a new rate get exclusive control
+
+    :param struct clk \*clk:
+        the clk whose rate is being changed
+
+    :param unsigned long rate:
+        the new rate for clk
+
+.. _`clk_set_rate_exclusive.description`:
+
+Description
+-----------
+
+This is a combination of \ :c:func:`clk_set_rate`\  and \ :c:func:`clk_rate_exclusive_get`\ 
+within a critical section
+
+This can be used initially to ensure that at least 1 consumer is
+statisfied when several consumers are competing for exclusivity over the
+same clock provider.
+
+The exclusivity is not applied if setting the rate failed.
+
+Calls to \ :c:func:`clk_rate_exclusive_get`\  should be balanced with calls to
+\ :c:func:`clk_rate_exclusive_put`\ .
 
 Returns 0 on success, -EERROR otherwise.
 
@@ -1027,7 +1123,7 @@ of_clk_detect_critical
         clock index
 
     :param unsigned long \*flags:
-        pointer to clk_core->flags
+        pointer to top-level framework flags
 
 .. _`of_clk_detect_critical.description`:
 

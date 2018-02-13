@@ -102,6 +102,7 @@ Definition
         unsigned reg_num;
         unsigned base;
         unsigned size;
+        int gpio_base;
         unsigned padown_num;
     }
 
@@ -118,6 +119,10 @@ base
 
 size
     Size of this group (maximum is 32).
+
+gpio_base
+    Starting GPIO base of this group (%0 if matches with \ ``base``\ ,
+    and \ ``-1``\  if no GPIO mapping should be created)
 
 padown_num
     PAD_OWN register number (assigned by the core driver)

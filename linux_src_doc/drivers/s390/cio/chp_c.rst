@@ -48,10 +48,10 @@ chp_update_desc
 
 .. c:function:: int chp_update_desc(struct channel_path *chp)
 
-    update channel-path description \ ``chp``\  - channel-path
+    update channel-path description
 
     :param struct channel_path \*chp:
-        *undescribed*
+        channel-path
 
 .. _`chp_update_desc.description`:
 
@@ -69,10 +69,10 @@ chp_new
 
 .. c:function:: int chp_new(struct chp_id chpid)
 
-    register a new channel-path \ ``chpid``\  - channel-path ID
+    register a new channel-path
 
     :param struct chp_id chpid:
-        *undescribed*
+        channel-path ID
 
 .. _`chp_new.description`:
 
@@ -155,13 +155,13 @@ chp_cfg_schedule
 
 .. c:function:: void chp_cfg_schedule(struct chp_id chpid, int configure)
 
-    schedule chpid configuration request \ ``chpid``\  - channel-path ID \ ``configure``\  - Non-zero for configure, zero for deconfigure
+    schedule chpid configuration request
 
     :param struct chp_id chpid:
-        *undescribed*
+        channel-path ID
 
     :param int configure:
-        *undescribed*
+        Non-zero for configure, zero for deconfigure
 
 .. _`chp_cfg_schedule.description`:
 
@@ -177,10 +177,10 @@ chp_cfg_cancel_deconfigure
 
 .. c:function:: void chp_cfg_cancel_deconfigure(struct chp_id chpid)
 
-    cancel chpid deconfiguration request \ ``chpid``\  - channel-path ID
+    cancel chpid deconfiguration request
 
     :param struct chp_id chpid:
-        *undescribed*
+        channel-path ID
 
 .. _`chp_cfg_cancel_deconfigure.description`:
 

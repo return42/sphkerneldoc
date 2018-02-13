@@ -194,7 +194,7 @@ nilfs_sufile_mark_dirty
 nilfs_sufile_set_segment_usage
 ==============================
 
-.. c:function:: int nilfs_sufile_set_segment_usage(struct inode *sufile, __u64 segnum, unsigned long nblocks, time_t modtime)
+.. c:function:: int nilfs_sufile_set_segment_usage(struct inode *sufile, __u64 segnum, unsigned long nblocks, time64_t modtime)
 
     set usage of a segment
 
@@ -207,7 +207,7 @@ nilfs_sufile_set_segment_usage
     :param unsigned long nblocks:
         number of live blocks in the segment
 
-    :param time_t modtime:
+    :param time64_t modtime:
         modification time (option)
 
 .. _`nilfs_sufile_get_stat`:

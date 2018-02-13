@@ -95,7 +95,7 @@ iscsi_sw_tcp_xmit
     TCP transmit
 
     :param struct iscsi_conn \*conn:
-        *undescribed*
+        iscsi connection
 
 .. _`iscsi_sw_tcp_xmit_qlen`:
 
@@ -107,7 +107,7 @@ iscsi_sw_tcp_xmit_qlen
     return the number of bytes queued for xmit
 
     :param struct iscsi_conn \*conn:
-        *undescribed*
+        iscsi connection
 
 .. This file was automatic generated / don't edit.
 

@@ -70,6 +70,31 @@ Return
 
 zero on success, negative if failed.
 
+.. _`intel_gvt_for_each_tracked_mmio`:
+
+intel_gvt_for_each_tracked_mmio
+===============================
+
+.. c:function:: int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt, int (*handler)(struct intel_gvt *gvt, u32 offset, void *data), void *data)
+
+    iterate each tracked mmio
+
+    :param struct intel_gvt \*gvt:
+        a GVT device
+
+    :param int (\*handler)(struct intel_gvt \*gvt, u32 offset, void \*data):
+        the handler
+
+    :param void \*data:
+        private data given to handler
+
+.. _`intel_gvt_for_each_tracked_mmio.return`:
+
+Return
+------
+
+Zero on success, negative error code if failed.
+
 .. _`intel_vgpu_default_mmio_read`:
 
 intel_vgpu_default_mmio_read

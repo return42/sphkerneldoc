@@ -21,6 +21,7 @@ Definition
         int (*req_full_gpu)(struct amdgpu_device *adev, bool init);
         int (*rel_full_gpu)(struct amdgpu_device *adev, bool init);
         int (*reset_gpu)(struct amdgpu_device *adev);
+        int (*wait_reset)(struct amdgpu_device *adev);
         void (*trans_msg)(struct amdgpu_device *adev, u32 req, u32 data1, u32 data2, u32 data3);
     }
 
@@ -36,6 +37,9 @@ rel_full_gpu
     *undescribed*
 
 reset_gpu
+    *undescribed*
+
+wait_reset
     *undescribed*
 
 trans_msg

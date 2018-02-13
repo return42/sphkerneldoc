@@ -42,31 +42,5 @@ Return
 
 pointer to i915_gem_context on success, error pointer if failed
 
-.. _`i915_switch_context`:
-
-i915_switch_context
-===================
-
-.. c:function:: int i915_switch_context(struct drm_i915_gem_request *req)
-
-    perform a GPU context switch.
-
-    :param struct drm_i915_gem_request \*req:
-        request for which we'll execute the context switch
-
-.. _`i915_switch_context.description`:
-
-Description
------------
-
-The context life cycle is simple. The context refcount is incremented and
-decremented by 1 and create and destroy. If the context is in use by the GPU,
-it will have a refcount > 1. This allows us to destroy the context abstract
-object while letting the normal object tracking destroy the backing BO.
-
-This function should not be used in execlists mode.  Instead the context is
-switched by writing to the ELSP and requests keep a reference to their
-context.
-
 .. This file was automatic generated / don't edit.
 

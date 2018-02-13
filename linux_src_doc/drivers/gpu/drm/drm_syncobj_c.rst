@@ -6,9 +6,9 @@
 Overview
 ========
 
-DRM synchronisation objects (syncobj) are a persistent objects,
-that contain an optional fence. The fence can be updated with a new
-fence, or be NULL.
+DRM synchronisation objects (syncobj, see struct \ :c:type:`struct drm_syncobj <drm_syncobj>`\ ) are
+persistent objects that contain an optional fence. The fence can be updated
+with a new fence, or be NULL.
 
 syncobj's can be waited upon, where it will wait for the underlying
 fence.
@@ -42,7 +42,8 @@ drm_syncobj_find
 Description
 -----------
 
-Returns a reference to the syncobj pointed to by handle or NULL.
+Returns a reference to the syncobj pointed to by handle or NULL. The
+reference must be released by calling \ :c:func:`drm_syncobj_put`\ .
 
 .. _`drm_syncobj_add_callback`:
 
@@ -106,6 +107,36 @@ Description
 
 This replaces the fence on a sync object.
 
+.. _`drm_syncobj_find_fence`:
+
+drm_syncobj_find_fence
+======================
+
+.. c:function:: int drm_syncobj_find_fence(struct drm_file *file_private, u32 handle, struct dma_fence **fence)
+
+    lookup and reference the fence in a sync object
+
+    :param struct drm_file \*file_private:
+        drm file private pointer
+
+    :param u32 handle:
+        sync object handle to lookup.
+
+    :param struct dma_fence \*\*fence:
+        out parameter for the fence
+
+.. _`drm_syncobj_find_fence.description`:
+
+Description
+-----------
+
+This is just a convenience function that combines \ :c:func:`drm_syncobj_find`\  and
+\ :c:func:`drm_syncobj_fence_get`\ .
+
+Returns 0 on success or a negative error value on failure. On success \ ``fence``\ 
+contains a reference to the fence, which must be released by calling
+\ :c:func:`dma_fence_put`\ .
+
 .. _`drm_syncobj_free`:
 
 drm_syncobj_free
@@ -143,6 +174,17 @@ drm_syncobj_create
     :param struct dma_fence \*fence:
         if non-NULL, the syncobj will represent this fence
 
+.. _`drm_syncobj_create.description`:
+
+Description
+-----------
+
+This is the first function to create a sync object. After creating, drivers
+probably want to make it available to userspace, either through
+\ :c:func:`drm_syncobj_get_handle`\  or \ :c:func:`drm_syncobj_get_fd`\ .
+
+Returns 0 on success or a negative error value on failure.
+
 .. _`drm_syncobj_get_handle`:
 
 drm_syncobj_get_handle
@@ -153,13 +195,47 @@ drm_syncobj_get_handle
     get a handle from a syncobj
 
     :param struct drm_file \*file_private:
-        *undescribed*
+        drm file private pointer
 
     :param struct drm_syncobj \*syncobj:
-        *undescribed*
+        Sync object to export
 
     :param u32 \*handle:
-        *undescribed*
+        out parameter with the new handle
+
+.. _`drm_syncobj_get_handle.description`:
+
+Description
+-----------
+
+Exports a sync object created with \ :c:func:`drm_syncobj_create`\  as a handle on
+\ ``file_private``\  to userspace.
+
+Returns 0 on success or a negative error value on failure.
+
+.. _`drm_syncobj_get_fd`:
+
+drm_syncobj_get_fd
+==================
+
+.. c:function:: int drm_syncobj_get_fd(struct drm_syncobj *syncobj, int *p_fd)
+
+    get a file descriptor from a syncobj
+
+    :param struct drm_syncobj \*syncobj:
+        Sync object to export
+
+    :param int \*p_fd:
+        out parameter with the new file descriptor
+
+.. _`drm_syncobj_get_fd.description`:
+
+Description
+-----------
+
+Exports a sync object created with \ :c:func:`drm_syncobj_create`\  as a file descriptor.
+
+Returns 0 on success or a negative error value on failure.
 
 .. _`drm_syncobj_open`:
 

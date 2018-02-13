@@ -83,12 +83,15 @@ Invoke to start the PCI link
 pci_epc_raise_irq
 =================
 
-.. c:function:: int pci_epc_raise_irq(struct pci_epc *epc, enum pci_epc_irq_type type, u8 interrupt_num)
+.. c:function:: int pci_epc_raise_irq(struct pci_epc *epc, u8 func_no, enum pci_epc_irq_type type, u8 interrupt_num)
 
     interrupt the host system
 
     :param struct pci_epc \*epc:
         the EPC device which has to interrupt the host
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param enum pci_epc_irq_type type:
         specify the type of interrupt; legacy or MSI
@@ -108,12 +111,15 @@ Invoke to raise an MSI or legacy interrupt
 pci_epc_get_msi
 ===============
 
-.. c:function:: int pci_epc_get_msi(struct pci_epc *epc)
+.. c:function:: int pci_epc_get_msi(struct pci_epc *epc, u8 func_no)
 
     get the number of MSI interrupt numbers allocated
 
     :param struct pci_epc \*epc:
         the EPC device to which MSI interrupts was requested
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
 .. _`pci_epc_get_msi.description`:
 
@@ -127,12 +133,15 @@ Invoke to get the number of MSI interrupts allocated by the RC
 pci_epc_set_msi
 ===============
 
-.. c:function:: int pci_epc_set_msi(struct pci_epc *epc, u8 interrupts)
+.. c:function:: int pci_epc_set_msi(struct pci_epc *epc, u8 func_no, u8 interrupts)
 
     set the number of MSI interrupt numbers required
 
     :param struct pci_epc \*epc:
         the EPC device on which MSI has to be configured
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param u8 interrupts:
         number of MSI interrupts required by the EPF
@@ -149,12 +158,15 @@ Invoke to set the required number of MSI interrupts.
 pci_epc_unmap_addr
 ==================
 
-.. c:function:: void pci_epc_unmap_addr(struct pci_epc *epc, phys_addr_t phys_addr)
+.. c:function:: void pci_epc_unmap_addr(struct pci_epc *epc, u8 func_no, phys_addr_t phys_addr)
 
     unmap CPU address from PCI address
 
     :param struct pci_epc \*epc:
         the EPC device on which address is allocated
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param phys_addr_t phys_addr:
         physical address of the local system
@@ -171,12 +183,15 @@ Invoke to unmap the CPU address from PCI address.
 pci_epc_map_addr
 ================
 
-.. c:function:: int pci_epc_map_addr(struct pci_epc *epc, phys_addr_t phys_addr, u64 pci_addr, size_t size)
+.. c:function:: int pci_epc_map_addr(struct pci_epc *epc, u8 func_no, phys_addr_t phys_addr, u64 pci_addr, size_t size)
 
     map CPU address to PCI address
 
     :param struct pci_epc \*epc:
         the EPC device on which address is allocated
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param phys_addr_t phys_addr:
         physical address of the local system
@@ -199,12 +214,15 @@ Invoke to map CPU address with PCI address.
 pci_epc_clear_bar
 =================
 
-.. c:function:: void pci_epc_clear_bar(struct pci_epc *epc, int bar)
+.. c:function:: void pci_epc_clear_bar(struct pci_epc *epc, u8 func_no, int bar)
 
     reset the BAR
 
     :param struct pci_epc \*epc:
         the EPC device for which the BAR has to be cleared
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param int bar:
         the BAR number that has to be reset
@@ -221,12 +239,15 @@ Invoke to reset the BAR of the endpoint device.
 pci_epc_set_bar
 ===============
 
-.. c:function:: int pci_epc_set_bar(struct pci_epc *epc, enum pci_barno bar, dma_addr_t bar_phys, size_t size, int flags)
+.. c:function:: int pci_epc_set_bar(struct pci_epc *epc, u8 func_no, enum pci_barno bar, dma_addr_t bar_phys, size_t size, int flags)
 
     configure BAR in order for host to assign PCI addr space
 
     :param struct pci_epc \*epc:
         the EPC device on which BAR has to be configured
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param enum pci_barno bar:
         the BAR number that has to be configured
@@ -252,12 +273,15 @@ Invoke to configure the BAR of the endpoint device.
 pci_epc_write_header
 ====================
 
-.. c:function:: int pci_epc_write_header(struct pci_epc *epc, struct pci_epf_header *header)
+.. c:function:: int pci_epc_write_header(struct pci_epc *epc, u8 func_no, struct pci_epf_header *header)
 
     write standard configuration header
 
     :param struct pci_epc \*epc:
         the EPC device to which the configuration header should be written
+
+    :param u8 func_no:
+        the endpoint function number in the EPC device
 
     :param struct pci_epf_header \*header:
         standard configuration header fields

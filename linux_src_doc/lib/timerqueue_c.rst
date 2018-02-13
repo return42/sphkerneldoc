@@ -21,8 +21,9 @@ timerqueue_add
 Description
 -----------
 
-Adds the timer node to the timerqueue, sorted by the
-node's expires value.
+Adds the timer node to the timerqueue, sorted by the node's expires
+value. Returns true if the newly added timer is the first expiring timer in
+the queue.
 
 .. _`timerqueue_del`:
 
@@ -44,7 +45,8 @@ timerqueue_del
 Description
 -----------
 
-Removes the timer node from the timerqueue.
+Removes the timer node from the timerqueue. Returns true if the queue is
+not empty after the remove.
 
 .. _`timerqueue_iterate_next`:
 

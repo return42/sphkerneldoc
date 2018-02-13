@@ -9,7 +9,7 @@ ixgbe_ptp_setup_sdp_x540
 .. c:function:: void ixgbe_ptp_setup_sdp_x540(struct ixgbe_adapter *adapter)
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        private adapter structure
 
 .. _`ixgbe_ptp_setup_sdp_x540.description`:
 
@@ -84,7 +84,7 @@ ixgbe_ptp_convert_to_hwtstamp
         stack timestamp structure
 
     :param u64 timestamp:
-        *undescribed*
+        unsigned 64bit system time value
 
 .. _`ixgbe_ptp_convert_to_hwtstamp.description`:
 
@@ -470,7 +470,7 @@ ixgbe_ptp_set_ts_config
         pointer to adapter struct
 
     :param struct ifreq \*ifr:
-        *undescribed*
+        ioctl data
 
 .. _`ixgbe_ptp_set_ts_config.description`:
 
@@ -573,10 +573,10 @@ ixgbe_ptp_suspend
 
 .. c:function:: void ixgbe_ptp_suspend(struct ixgbe_adapter *adapter)
 
-    stop PTP work items @ adapter: pointer to adapter struct
+    stop PTP work items
 
     :param struct ixgbe_adapter \*adapter:
-        *undescribed*
+        pointer to adapter struct
 
 .. _`ixgbe_ptp_suspend.description`:
 
